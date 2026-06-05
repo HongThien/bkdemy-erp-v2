@@ -1,0 +1,13 @@
+# Secrets — KHÔNG commit
+.env
+.env.local
+.env.*.local
+
+# Node
+node_modules/
+dist/
+build/
+.DS_Store
+*.log
+
+# LƯU Ý: schema.sql được COMMIT cố ý (là bản schema chuẩn để đọc) — KHÔNG ignore nó.
