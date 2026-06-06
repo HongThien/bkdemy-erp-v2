@@ -3,6 +3,7 @@ import { useStore, adminNavForUser } from '../store/useStore'
 import { adminLeaves } from '../mock/fixtures'
 import PersonalCard from '../components/PersonalCard'
 import NavTree from '../components/NavTree'
+import KhoScreen from './kho/KhoScreen'
 
 export default function AdminScreen({ user }: { user: User }) {
   const { adminLeaf, setAdminLeaf } = useStore()
@@ -15,6 +16,9 @@ export default function AdminScreen({ user }: { user: User }) {
         <PersonalCard user={user} />
         <NavTree groups={groups} selected={adminLeaf} onSelect={setAdminLeaf} />
       </aside>
+      {adminLeaf === 'bdkt' ? (
+        <KhoScreen />
+      ) : (
       <section className="p-8">
         <h2 className="mb-1 text-sm font-semibold">{leaf?.ten ?? 'Admin'}</h2>
         <p className="text-xs text-slate-400">
@@ -28,6 +32,7 @@ export default function AdminScreen({ user }: { user: User }) {
           nội dung "{leaf?.ten}" (dựng ở P2/P3)
         </div>
       </section>
+      )}
     </div>
   )
 }

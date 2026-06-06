@@ -7,6 +7,19 @@
 
 ---
 
+## ⚠ CẬP NHẬT — migration `0002` (Thùy duyệt, đã áp vào DB)
+
+Hai thay đổi so với bản gốc bên dưới (bản gốc giữ làm lịch sử, **đọc mục này trước**):
+
+1. **BỎ tầng Chương ở Đại.** Cây Đại còn **3 tầng**: Chủ đề → Chuyên đề → **Dạng**. Lý do: Chương phạm vi quá rộng, không ai dùng để đánh giá. (`dai_ban_do` đã drop `ma_chuong`/`ten_chuong`.) → mọi đoạn nói "4 tầng" / "Chương" bên dưới đọc là 3 tầng.
+2. **THÊM chiều "bậc lớp" S>A>B>C** cho **mỗi dạng cả Đại lẫn Hình** (`dai_ban_do.bac_toi_thieu`, `hinh_ban_do.bac_toi_thieu`, FK → danh mục `lop_bac`).
+   - `bac_toi_thieu` = bậc lớp **thấp nhất** còn học dạng đó. Lớp bậc T học dạng D iff `thu_tu(T) ≥ thu_tu(D.bac_toi_thieu)` (tập "lớp học" **đóng-lên-trên**).
+   - **Độc lập với `muc_do`** (độ khó 1–5) — đây là *phạm vi kiến thức*, không phải độ khó.
+   - Tác dụng: làm **must-exist tương đối theo bậc lớp** → mẫu số đánh giá đúng (lớp S 300 dạng vs lớp B 200 dạng). Cái v1 thiếu.
+   - Bảng `lop_bac`: 14 bảng (was 13). Seed S=4, A=3, B=2, C=1 (`thu_tu`).
+
+---
+
 ## 0. Hai nhánh — vì sao tách
 
 Đại và Hình **khác nhau về số chiều**, không phải khác về số tầng:

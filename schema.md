@@ -2,7 +2,7 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-13 bảng · 0 enum · 0 trigger · 0 function
+14 bảng · 0 enum · 0 trigger · 0 function
 
 ## dai_ban_do
 
@@ -10,8 +10,6 @@
 |---|---|---|---|---|
 | ma_dang | text |  | ('DG'::text \|\| lpad((nextval('dai_dang_seq'::regclass))::text, 5, '0'::text)) | PK |
 | khoi | text |  |  |  |
-| ma_chuong | text |  |  |  |
-| ten_chuong | text |  |  |  |
 | ma_chu_de | text |  |  |  |
 | ten_chu_de | text |  |  |  |
 | ma_chuyen_de | text |  |  |  |
@@ -19,6 +17,7 @@
 | ten_dang | text |  |  |  |
 | muc_do | smallint |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |
+| bac_toi_thieu | text |  |  | FK→lop_bac.ma |
 
 ## dai_cau_bo_de
 
@@ -94,6 +93,7 @@
 | ten_loai_ch | text |  |  |  |
 | ten_dang | text |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |
+| bac_toi_thieu | text |  |  | FK→lop_bac.ma |
 
 ## hinh_danh_muc_bo_de
 
@@ -127,4 +127,12 @@
 |---|---|---|---|---|
 | ma_y | text |  |  | PK FK→hinh_y.ma_y |
 | id_bo_de | text |  |  | PK FK→hinh_danh_muc_bo_de.id |
+
+## lop_bac
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| ma | text |  |  | PK |
+| ten | text |  |  |  |
+| thu_tu | smallint |  |  |  |
 
