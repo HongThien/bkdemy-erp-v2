@@ -16,7 +16,7 @@ Câu 2.
 Đáp án: $\\frac{5}{6}$
 Lời giải chi tiết: Quy đồng: $\\frac{4}{6} + \\frac{1}{6} = \\frac{5}{6}$.`
 import type { BranchConfig } from './branches'
-import { BacChip, Code, inp, Shell, Field, Seg, Actions, mucDoTone, MathText } from './ui'
+import { BacChip, Code, inp, mucDoTone, MathText } from './ui'
 
 const loaiLabel = (v: string) => LOAI_CAU.find((x) => x.value === v)?.label ?? v
 const ta = `${inp} min-h-[72px] resize-y leading-relaxed`
@@ -110,6 +110,7 @@ export default function DangHub({ d, config, chuan, onClose, onEditDang, onDelet
                         <div className="mb-2 flex items-center justify-between">
                           <div className="flex items-center gap-2">
                             <span className="text-[13px] font-bold text-slate-400">#{i + 1}</span>
+                            <Code>{c.ma_cau}</Code>
                             <span className="rounded bg-slate-100 px-2 py-0.5 text-[12px] font-medium text-slate-600">{loaiLabel(c.loai_cau)}</span>
                             <span className={`rounded px-2 py-0.5 text-[12px] font-medium ${c.nguon === 'clone' ? 'bg-violet-50 text-violet-600' : 'bg-emerald-50 text-emerald-600'}`}>{c.nguon === 'clone' ? 'clone' : 'gốc'}</span>
                           </div>
@@ -119,6 +120,7 @@ export default function DangHub({ d, config, chuan, onClose, onEditDang, onDelet
                           </div>
                         </div>
                         <div className="text-[16px] leading-loose text-slate-800"><MathText>{c.noi_dung}</MathText></div>
+                        {c.anh_de && <img src={c.anh_de} alt="" className="mx-auto mt-2 block max-h-44 w-auto max-w-full rounded-lg border border-slate-200" />}
                         {c.lua_chon && c.lua_chon.length ? (
                           <div className="mt-1.5 space-y-0.5 text-[14px]">
                             {c.lua_chon.map((o, oi) => {
@@ -148,31 +150,45 @@ export default function DangHub({ d, config, chuan, onClose, onEditDang, onDelet
   )
 }
 
-// ── Sửa 1 câu ──────────────────────────────────────────────────────
+// ── Sửa 1 câu — preview giống lúc duyệt; bấm ✎ Sửa để chỉnh code ──
 function CauModal({ editing, onClose, onSaved }: { editing: CauHoi; onClose: () => void; onSaved: () => void }) {
+  const [item, setItem] = useState<ReviewItem>(() => toRI(editing))
   const [loai, setLoai] = useState(editing.loai_cau)
-  const [noiDung, setNoiDung] = useState(editing.noi_dung)
-  const [dapAn, setDapAn] = useState(editing.dap_an ?? '')
-  const [loiGiai, setLoiGiai] = useState(editing.loi_giai ?? '')
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState<string | null>(null)
   async function save() {
-    if (!noiDung.trim()) return
+    if (!item.noi_dung.trim()) return
     setSaving(true); setError(null)
     try {
-      await updateCau(editing.ma_cau, { loai_cau: loai, noi_dung: noiDung.trim(), dap_an: dapAn.trim() || null, loi_giai: loiGiai.trim() || null })
+      const c = toCND(item)
+      await updateCau(editing.ma_cau, { loai_cau: loai, noi_dung: c.noi_dung, dap_an: c.dap_an, loi_giai: c.loi_giai, lua_chon: c.lua_chon, anh_de: c.anh_de, anh_dap_an: c.anh_dap_an })
       onSaved()
     } catch (e: any) { setError(e.message ?? String(e)); setSaving(false) }
   }
   return (
-    <Shell title={`Sửa câu · ${editing.ma_cau}`} onClose={onClose}>
-      <Field label="Loại câu"><Seg options={LOAI_CAU.map((x) => x.value)} value={loai} onChange={setLoai} render={(v) => loaiLabel(v)} /></Field>
-      <Field label="Nội dung (đề)"><textarea value={noiDung} onChange={(e) => setNoiDung(e.target.value)} className={ta} autoFocus /></Field>
-      <Field label="Đáp án"><input value={dapAn} onChange={(e) => setDapAn(e.target.value)} className={inp} /></Field>
-      <Field label="Lời giải"><textarea value={loiGiai} onChange={(e) => setLoiGiai(e.target.value)} className={ta} /></Field>
-      {error && <p className="mt-2 text-xs text-rose-600">{error}</p>}
-      <Actions onClose={onClose} onSave={save} disabled={!noiDung.trim() || saving} saving={saving} label="Lưu" />
-    </Shell>
+    <div className="fixed inset-0 z-[60] bg-slate-900/50 backdrop-blur-sm" onClick={onClose}>
+      <div className="absolute inset-x-[6%] inset-y-8 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <div className="flex items-center gap-3 border-b border-slate-200 px-6 py-3.5">
+          <h3 className="text-base font-semibold text-slate-900">Sửa câu</h3>
+          <Code>{editing.ma_cau}</Code>
+          <div className="ml-2 flex items-center gap-1.5">
+            <span className="text-[12px] font-semibold uppercase tracking-wide text-slate-500">Loại</span>
+            <select value={loai} onChange={(e) => setLoai(e.target.value)} className={sel}>
+              {LOAI_CAU.map((x) => <option key={x.value} value={x.value}>{x.label}</option>)}
+            </select>
+          </div>
+          <button onClick={onClose} className="ml-auto flex h-8 w-8 items-center justify-center rounded-md text-slate-400 hover:bg-slate-100">✕</button>
+        </div>
+        <div className="min-h-0 flex-1 p-5">
+          <CauEditor item={item} fill onChange={(p) => setItem((x) => ({ ...x, ...p }))} />
+        </div>
+        {error && <p className="px-6 pb-1 text-xs text-rose-600">{error}</p>}
+        <div className="flex items-center justify-end gap-2 border-t border-slate-200 px-6 py-4">
+          <button onClick={onClose} className="rounded-md px-3 py-1.5 text-sm text-slate-500 hover:bg-slate-100">Huỷ</button>
+          <button onClick={save} disabled={!item.noi_dung.trim() || saving} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">{saving ? 'Đang lưu…' : 'Lưu'}</button>
+        </div>
+      </div>
+    </div>
   )
 }
 
@@ -516,12 +532,8 @@ function CauEditor({ item, label, onChange, onToggle, fill }: {
   if (!edit) {
     const box = 'rounded-md border border-slate-200 bg-slate-50/50 px-3 py-2 text-[16px] leading-loose'
     const ilbl = 'mr-2 text-[11px] font-bold uppercase tracking-wide text-slate-400'
-    const deBox = (
-      <div className="flex items-start gap-2">
-        <div className={`${box} min-w-0 flex-1 text-slate-800`}><span className={ilbl}>Đề</span><MathText>{item.noi_dung}</MathText></div>
-        <ImageSlot url={item.anhDe} label="Ảnh đề" onChange={(v) => onChange({ anhDe: v })} />
-      </div>
-    )
+    const deBox = <div className={`${box} text-slate-800`}><span className={ilbl}>Đề</span><MathText>{item.noi_dung}</MathText></div>
+    const deImg = <ImageSlot url={item.anhDe} label="Ảnh đề" onChange={(v) => onChange({ anhDe: v })} />
     const dapAn = hasOpts ? (
       <div>
         <div className="mb-1 text-[12px] font-bold uppercase tracking-wide text-slate-600">Phương án — đúng: <span className="text-emerald-700">{item.dap_an || '?'}</span></div>
@@ -538,28 +550,25 @@ function CauEditor({ item, label, onChange, onToggle, fill }: {
     ) : (
       <div className={`${box} text-slate-800`}><span className={ilbl}>Đáp án</span><MathText>{item.dap_an || '—'}</MathText></div>
     )
-    const lgImg = <ImageSlot url={item.anhDapAn} label="Ảnh đáp án" onChange={(v) => onChange({ anhDapAn: v })} />
-    // FILL: trái = đề + đáp án · phải = lời giải chi tiết (tận dụng bề ngang)
+    const lgImg = <ImageSlot url={item.anhDapAn} label="Ảnh giải" onChange={(v) => onChange({ anhDapAn: v })} />
+    const lgBox = (full: boolean) => <div className={`${box} text-slate-700 ${full ? 'min-h-0 flex-1 overflow-auto' : ''}`}><span className={ilbl}>Lời giải</span><MathText>{item.loi_giai || '—'}</MathText></div>
+    // Quy tắc ảnh: ảnh đề DƯỚI đề–TRÊN đáp án · ảnh giải TRÊN CÙNG phần lời giải.
+    // FILL: trái = đề + ảnh đề + đáp án · phải = ảnh giải + lời giải (tận dụng bề ngang)
     if (fill) return (
       <div className={`flex h-full flex-col ${cls}`}>
         {header}
         <div className="grid min-h-0 flex-1 grid-cols-2 gap-3">
-          <div className="flex min-h-0 flex-col gap-2 overflow-auto pr-1">{deBox}{dapAn}</div>
-          <div className="flex min-h-0 flex-1 items-start gap-2">
-            <div className={`${box} h-full min-w-0 flex-1 overflow-auto text-slate-700`}><span className={ilbl}>Lời giải</span><MathText>{item.loi_giai || '—'}</MathText></div>
-            {lgImg}
-          </div>
+          <div className="flex min-h-0 flex-col gap-2 overflow-auto pr-1">{deBox}{deImg}{dapAn}</div>
+          <div className="flex min-h-0 flex-col gap-2">{lgImg}{lgBox(true)}</div>
         </div>
       </div>
     )
     return (
       <div className={cls}>
         {header}{deBox}
+        <div className="mt-2">{deImg}</div>
         <div className="mt-2">{dapAn}</div>
-        <div className="mt-2 flex items-start gap-2">
-          <div className={`${box} min-w-0 flex-1 text-slate-700`}><span className={ilbl}>Lời giải</span><MathText>{item.loi_giai || '—'}</MathText></div>
-          {lgImg}
-        </div>
+        <div className="mt-2 flex flex-col gap-2">{lgImg}{lgBox(false)}</div>
       </div>
     )
   }
@@ -572,20 +581,16 @@ function CauEditor({ item, label, onChange, onToggle, fill }: {
         <div className="flex min-h-0 flex-1 flex-col gap-2.5">
           <div className="shrink-0">
             <label className={lbl}>Đề</label>
-            <div className="flex items-start gap-3">
-              <AutoTextarea value={item.noi_dung} onChange={(v) => onChange({ noi_dung: v })} maxPx={200} className={`${inp} flex-1 resize-none leading-relaxed`} />
-              <ImageSlot url={item.anhDe} label="Ảnh đề" onChange={(v) => onChange({ anhDe: v })} />
-            </div>
+            <AutoTextarea value={item.noi_dung} onChange={(v) => onChange({ noi_dung: v })} maxPx={200} className={`${inp} w-full resize-none leading-relaxed`} />
+            <div className="mt-1.5"><ImageSlot url={item.anhDe} label="Ảnh đề" onChange={(v) => onChange({ anhDe: v })} /></div>
           </div>
           <div className="shrink-0">
             {hasOpts ? optsEdit : (<><label className={lbl}>Đáp án</label><input value={item.dap_an} onChange={(e) => onChange({ dap_an: e.target.value })} className={inp} /></>)}
           </div>
           <div className="flex min-h-0 flex-1 flex-col">
             <label className={lbl}>Đáp án chi tiết</label>
-            <div className="flex min-h-0 flex-1 gap-3">
-              <textarea value={item.loi_giai} onChange={(e) => onChange({ loi_giai: e.target.value })} className={`${inp} min-h-0 flex-1 resize-none leading-relaxed`} />
-              <ImageSlot url={item.anhDapAn} label="Ảnh đáp án" onChange={(v) => onChange({ anhDapAn: v })} />
-            </div>
+            <div className="mb-1.5"><ImageSlot url={item.anhDapAn} label="Ảnh giải" onChange={(v) => onChange({ anhDapAn: v })} /></div>
+            <textarea value={item.loi_giai} onChange={(e) => onChange({ loi_giai: e.target.value })} className={`${inp} min-h-0 flex-1 resize-none leading-relaxed`} />
           </div>
         </div>
       </div>
@@ -648,20 +653,19 @@ function ImageSlot({ url, label, onChange }: { url: string | null; label: string
   }
   const onPaste = (e: React.ClipboardEvent) => {
     const f = Array.from(e.clipboardData.files).find((x) => x.type.startsWith('image/'))
-    if (f) { e.preventDefault(); load(f) }
+    if (f) { e.preventDefault(); e.stopPropagation(); load(f) } // stopPropagation: KHÔNG để listener ảnh-AI ngoài cùng cũng nuốt
   }
   if (url) return (
-    <div className="group/img relative shrink-0 self-start">
-      <img src={url} alt={label} className="h-28 w-36 rounded-lg border border-slate-200 bg-slate-50 object-contain" />
-      <button onClick={() => onChange(null)} title="Gỡ ảnh" className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full border border-slate-200 bg-white text-[12px] text-rose-500 shadow hover:bg-rose-50">✕</button>
+    <div className="relative inline-block max-w-full self-center">
+      <img src={url} alt={label} className="max-h-52 w-auto max-w-full rounded-lg border border-slate-200 bg-white" />
+      <button onClick={() => onChange(null)} title="Gỡ ảnh" className="absolute right-1 top-1 flex h-6 w-6 items-center justify-center rounded-full border border-slate-200 bg-white/90 text-[12px] text-rose-500 shadow hover:bg-rose-50">✕</button>
     </div>
   )
   return (
     <button type="button" onClick={() => ref.current?.click()} onPaste={onPaste}
       title={`${label} — click chọn ảnh, hoặc bấm vào đây rồi Ctrl+V dán ảnh`}
-      className="flex h-16 w-20 shrink-0 flex-col items-center justify-center self-start rounded-lg border border-dashed border-slate-300 text-slate-400 transition hover:border-indigo-400 hover:text-indigo-500 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/30">
-      <span className="text-lg leading-none">🖼</span>
-      <span className="mt-0.5 text-[9px] font-medium">dán / chọn</span>
+      className="inline-flex w-fit shrink-0 items-center gap-1.5 self-start rounded-md border border-dashed border-slate-300 px-2.5 py-1 text-[12px] font-medium text-slate-400 transition hover:border-indigo-400 hover:text-indigo-500 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/30">
+      <span>🖼</span><span>{label} — dán / chọn</span>
       <input ref={ref} type="file" accept="image/*" hidden onChange={(e) => { load(e.target.files?.[0]); e.target.value = '' }} />
     </button>
   )

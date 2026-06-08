@@ -83,7 +83,7 @@ export default function BanDo({ config, khoi }: { config: BranchConfig; khoi: st
   const anyFilter = fMuc.size > 0 || fBac.size > 0
 
   return (
-    <div className="grid h-full min-h-0 grid-cols-[320px_1fr] overflow-hidden bg-[#fafafb]">
+    <div className="grid h-full min-h-0 grid-rows-[minmax(0,1fr)] grid-cols-[320px_1fr] overflow-hidden bg-[#fafafb]">
       {/* CỘT TRÁI — tầng 1 */}
       <aside className="flex min-h-0 flex-col border-r border-slate-200 bg-white">
         <div className="flex items-center justify-between px-4 py-3">

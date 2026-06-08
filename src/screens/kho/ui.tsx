@@ -4,6 +4,17 @@ import katex from 'katex'
 
 // Render text có LaTeX ($…$ inline, $$…$$ block) thành công thức đẹp.
 const esc = (t: string) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+// Lưới an toàn: lệnh toán đứng TRẦN ngoài $…$ (AI quên bọc $) → đổi sang ký tự Unicode để vẫn hiện đúng.
+// (Bên trong $…$ do KaTeX lo, hàm này CHỈ chạy trên phần text ngoài công thức.)
+const UNI: [RegExp, string][] = [
+  [/\\infty/g, '∞'], [/\\leq/g, '≤'], [/\\geq/g, '≥'], [/\\neq/g, '≠'], [/\\le\b/g, '≤'], [/\\ge\b/g, '≥'], [/\\ne\b/g, '≠'],
+  [/\\times/g, '×'], [/\\cdot/g, '·'], [/\\div/g, '÷'], [/\\pm/g, '±'], [/\\circ/g, '°'], [/\\sqrt/g, '√'],
+  [/\\Leftrightarrow/g, '⇔'], [/\\Rightarrow/g, '⇒'], [/\\rightarrow/g, '→'], [/\\to\b/g, '→'],
+  [/\\cup/g, '∪'], [/\\cap/g, '∩'], [/\\subset/g, '⊂'], [/\\notin/g, '∉'], [/\\in\b/g, '∈'],
+  [/\\forall/g, '∀'], [/\\exists/g, '∃'], [/\\varnothing/g, '∅'], [/\\emptyset/g, '∅'],
+  [/\\alpha/g, 'α'], [/\\beta/g, 'β'], [/\\gamma/g, 'γ'], [/\\pi/g, 'π'], [/\\Delta/g, 'Δ'],
+]
+const escText = (t: string) => { let s = esc(t); for (const [re, u] of UNI) s = s.replace(re, u); return s }
 const tex = (s: string, display: boolean) => {
   // \frac hiển thị bé (scriptstyle khi inline) → đổi sang \dfrac cho phân số to, đẹp.
   const fixed = s.replace(/\\frac(?![a-zA-Z])/g, '\\dfrac')
@@ -14,11 +25,11 @@ function lineToHtml(s: string): string {
   const re = /\$\$([\s\S]+?)\$\$|\$([^$]+?)\$/g
   let out = '', last = 0, m: RegExpExecArray | null
   while ((m = re.exec(s))) {
-    out += esc(s.slice(last, m.index))
+    out += escText(s.slice(last, m.index))
     out += m[1] != null ? tex(m[1], true) : tex(m[2]!, false)
     last = re.lastIndex
   }
-  return out + esc(s.slice(last))
+  return out + escText(s.slice(last))
 }
 // Mỗi dòng (tách bởi \n thật hoặc literal "\n") = 1 block → phân số dòng trên KHÔNG đè dòng dưới.
 // Chỉ coi "\n" + KHÔNG-phải-chữ-cái là xuống dòng. "\neq", "\nabla", "\ni"… là LaTeX → giữ nguyên.

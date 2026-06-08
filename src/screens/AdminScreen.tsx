@@ -11,7 +11,7 @@ export default function AdminScreen({ user }: { user: User }) {
   const leaf = adminLeaves.find((l) => l.id === adminLeaf)
 
   return (
-    <div className="grid h-full min-h-0 grid-cols-[240px_1fr] overflow-hidden">
+    <div className="grid h-full min-h-0 grid-rows-[minmax(0,1fr)] grid-cols-[240px_1fr] overflow-hidden">
       <aside className="min-h-0 overflow-auto border-r bg-white/60 p-3">
         <PersonalCard user={user} />
         <NavTree groups={groups} selected={adminLeaf} onSelect={setAdminLeaf} />

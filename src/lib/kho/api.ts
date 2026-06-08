@@ -77,6 +77,7 @@ export async function listCauByDang(maDang: string): Promise<CauHoi[]> {
   return (data ?? []) as CauHoi[]
 }
 type CauInput = {
+  ma_cau?: string
   dang_chinh: string; loai_cau: string; noi_dung: string
   dap_an: string | null; loi_giai: string | null; lua_chon?: string[] | null
   anh_de?: string | null; anh_dap_an?: string | null
@@ -94,6 +95,18 @@ export async function updateCau(ma_cau: string, patch: Partial<CauInput>): Promi
 export async function deleteCau(ma_cau: string): Promise<void> {
   const { error } = await supabase.from('dai_cau_hoi').delete().eq('ma_cau', ma_cau)
   if (error) throw error
+}
+// Mã câu = mã DẠNG + STT 3 chữ số (vd 07010103 → 07010103001). Lấy max STT hiện có +1 (không tái dùng số đã xoá).
+const maCau = (dangChinh: string, seq: number) => `${dangChinh}${String(seq).padStart(3, '0')}`
+async function nextCauSeq(dangChinh: string): Promise<number> {
+  const { data, error } = await supabase.from('dai_cau_hoi').select('ma_cau').eq('dang_chinh', dangChinh).limit(LIMIT)
+  if (error) throw error
+  let max = 0
+  for (const r of data ?? []) {
+    const n = parseInt(String((r as { ma_cau: string }).ma_cau).slice(dangChinh.length), 10)
+    if (Number.isFinite(n) && n > max) max = n
+  }
+  return max + 1
 }
 
 // ── CLONE: prompt + parse JSON + lưu batch (gốc 'le' + biến thể 'clone') ──
@@ -165,13 +178,16 @@ export function parseCloneJson(text: string): { goc: CauNoiDung; variants: CauNo
 export async function saveCloneBatch(a: {
   dangChinh: string; loaiCau: string; goc: CauNoiDung; variants: CauNoiDung[]
 }): Promise<{ goc: string; soClone: number }> {
+  const start = await nextCauSeq(a.dangChinh)
   const g = await createCau({
+    ma_cau: maCau(a.dangChinh, start),
     dang_chinh: a.dangChinh, loai_cau: a.loaiCau,
     noi_dung: a.goc.noi_dung, dap_an: a.goc.dap_an, loi_giai: a.goc.loi_giai, lua_chon: a.goc.lua_chon ?? null,
     anh_de: a.goc.anh_de ?? null, anh_dap_an: a.goc.anh_dap_an ?? null, nguon: 'le',
   })
   if (a.variants.length) {
-    const rows = a.variants.map((v) => ({
+    const rows = a.variants.map((v, i) => ({
+      ma_cau: maCau(a.dangChinh, start + 1 + i),
       dang_chinh: a.dangChinh, loai_cau: a.loaiCau,
       noi_dung: v.noi_dung, dap_an: v.dap_an, loi_giai: v.loi_giai, lua_chon: v.lua_chon ?? null,
       anh_de: v.anh_de ?? null, anh_dap_an: v.anh_dap_an ?? null,
@@ -245,7 +261,9 @@ export function parseStructuredText(text: string): CauNoiDung[] {
 
 export async function saveCauBatch(a: { dangChinh: string; loaiCau: string; items: CauNoiDung[] }): Promise<number> {
   if (!a.items.length) return 0
-  const rows = a.items.map((v) => ({
+  const start = await nextCauSeq(a.dangChinh)
+  const rows = a.items.map((v, i) => ({
+    ma_cau: maCau(a.dangChinh, start + i),
     dang_chinh: a.dangChinh, loai_cau: a.loaiCau,
     noi_dung: v.noi_dung, dap_an: v.dap_an, loi_giai: v.loi_giai, lua_chon: v.lua_chon ?? null,
     anh_de: v.anh_de ?? null, anh_dap_an: v.anh_dap_an ?? null, nguon: 'le',
