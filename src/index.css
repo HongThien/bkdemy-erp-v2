@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+/* Công thức KaTeX cỡ bằng chữ thường */
+.katex { font-size: 1.0em; }
+.katex-display { margin: 0.5em 0; }
+/* Mỗi dòng công thức là 1 block (.mline) → giãn bằng margin, phân số không đè nhau */
+.katex-text { line-height: 1.5; }
+.mline + .mline { margin-top: 0.55em; }
+
+/* Phóng to toàn bộ ~15% (chữ + layout). Chrome/Edge. */
+#root { zoom: 1.15; }

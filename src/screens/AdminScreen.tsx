@@ -11,15 +11,15 @@ export default function AdminScreen({ user }: { user: User }) {
   const leaf = adminLeaves.find((l) => l.id === adminLeaf)
 
   return (
-    <div className="grid min-h-[calc(100vh-49px)] grid-cols-[240px_1fr]">
-      <aside className="border-r bg-white/60 p-3">
+    <div className="grid h-full min-h-0 grid-cols-[240px_1fr] overflow-hidden">
+      <aside className="min-h-0 overflow-auto border-r bg-white/60 p-3">
         <PersonalCard user={user} />
         <NavTree groups={groups} selected={adminLeaf} onSelect={setAdminLeaf} />
       </aside>
       {adminLeaf === 'bdkt' ? (
         <KhoScreen />
       ) : (
-      <section className="p-8">
+      <section className="min-h-0 overflow-auto p-8">
         <h2 className="mb-1 text-sm font-semibold">{leaf?.ten ?? 'Admin'}</h2>
         <p className="text-xs text-slate-400">
           Nhóm: {leaf?.nhom}. {leaf?.nhom === 'Quan hệ'

@@ -1,16 +1,17 @@
 import { useStore, getUser, canAdmin, vaisOf } from '../store/useStore'
 import { users } from '../mock/fixtures'
+import { supabase } from '../lib/supabase'
 
 const tab = (active: boolean) =>
   `rounded px-3 py-1 ${active ? 'bg-slate-800 text-white' : 'hover:bg-slate-100'}`
 
-export default function TopBar() {
+export default function TopBar({ email }: { email: string }) {
   const { currentUserId, setCurrentUser, screen, setScreen } = useStore()
   const user = getUser(currentUserId)
   const admin = canAdmin(user)
 
   return (
-    <header className="flex items-center gap-4 border-b bg-white px-6 py-2.5">
+    <header className="flex shrink-0 items-center gap-4 border-b bg-white px-6 py-2.5">
       <h1 className="text-sm font-semibold">BKdemy ERP v2</h1>
 
       <nav className="flex gap-1 text-sm">
@@ -38,6 +39,8 @@ export default function TopBar() {
             </option>
           ))}
         </select>
+        <span className="ml-2 border-l pl-3 text-slate-500">{email}</span>
+        <button onClick={() => supabase.auth.signOut()} className="rounded border px-2 py-1 text-slate-500 hover:bg-slate-100 hover:text-rose-600">Đăng xuất</button>
       </div>
     </header>
   )

@@ -1,15 +1,25 @@
-import { useState } from 'react'
-import { KHOI_OPTIONS } from '../../lib/kho/api'
-import DaiBanDo from './DaiBanDo'
+import { Fragment, useEffect, useState } from 'react'
+import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../lib/kho/api'
+import BanDo from './BanDo'
+import { daiBranch, hinhBranch } from './branches'
 
 type Tab = 'dai' | 'hinh'
 
+// Nhớ màn hình gần nhất (preference cá nhân → localStorage, không phải data dùng chung)
+const readKhoi = () => {
+  const k = localStorage.getItem('kho.khoi')
+  return k && (KHOI_OPTIONS as readonly string[]).includes(k) ? k : DEFAULT_KHOI
+}
+const readTab = () => (localStorage.getItem('kho.tab') === 'hinh' ? 'hinh' : 'dai') as Tab
+
 export default function KhoScreen() {
-  const [tab, setTab] = useState<Tab>('dai')
-  const [khoi, setKhoi] = useState<string>(KHOI_OPTIONS[2]) // mặc định K8
+  const [tab, setTab] = useState<Tab>(readTab)
+  const [khoi, setKhoi] = useState<string>(readKhoi)
+  useEffect(() => { localStorage.setItem('kho.khoi', khoi) }, [khoi])
+  useEffect(() => { localStorage.setItem('kho.tab', tab) }, [tab])
 
   return (
-    <div className="flex h-[calc(100vh-49px)] flex-col bg-[#fafafb]">
+    <div className="flex h-full flex-col bg-[#fafafb]">
       {/* Thanh đầu */}
       <div className="flex items-center gap-4 border-b border-slate-200 bg-white px-6 py-2.5">
         <div className="flex items-baseline gap-2">
@@ -22,20 +32,28 @@ export default function KhoScreen() {
         </div>
         {/* Khối */}
         <div className="ml-auto flex items-center gap-1">
-          <span className="mr-1 text-[11px] font-medium uppercase tracking-wider text-slate-400">Khối</span>
-          {KHOI_OPTIONS.map((k) => (
-            <button key={k} onClick={() => setKhoi(k)}
-              className={`h-7 min-w-7 rounded-md px-1.5 text-xs font-medium transition ${
-                khoi === k ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'
-              }`}>{k}</button>
-          ))}
+          <span className="mr-1 text-[12px] font-semibold uppercase tracking-wider text-slate-600">Khối</span>
+          {KHOI_OPTIONS.map((k) => {
+            const tc = k.endsWith('T') // Tăng cường (CLC)
+            const active = khoi === k
+            return (
+              <Fragment key={k}>
+                {k === '6' && <span className="mx-1 h-5 w-px self-center bg-slate-200" />}
+                <button onClick={() => setKhoi(k)}
+                  title={tc ? `Khối ${k[0]} Tăng cường (CLC)` : `Khối ${k}`}
+                  className={`h-7 min-w-7 rounded-md px-1.5 text-xs font-semibold transition ${
+                    active
+                      ? tc ? 'bg-violet-600 text-white shadow-sm' : 'bg-indigo-600 text-white shadow-sm'
+                      : tc ? 'text-violet-600 hover:bg-violet-50' : 'text-slate-500 hover:bg-slate-100'
+                  }`}>{k}</button>
+              </Fragment>
+            )
+          })}
         </div>
       </div>
 
       <div className="min-h-0 flex-1">
-        {tab === 'dai'
-          ? <DaiBanDo key={khoi} khoi={khoi} />
-          : <div className="flex h-full items-center justify-center text-sm text-slate-400">Nhánh Hình — dựng tiếp sau khi Đại chạy ổn.</div>}
+        <BanDo key={`${tab}-${khoi}`} config={tab === 'dai' ? daiBranch : hinhBranch} khoi={khoi} />
       </div>
     </div>
   )
