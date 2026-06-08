@@ -2,7 +2,7 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-15 bảng · 0 enum · 0 trigger · 0 function
+16 bảng · 0 enum · 0 trigger · 0 function
 
 ## dai_ban_do
 
@@ -45,14 +45,25 @@
 | parent_ma_cau | text | Y |  | FK→dai_cau_hoi.ma_cau |
 | clone_method | text | Y |  |  |
 
+## dai_chuyen_de_ly_thuyet
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| ma_chuyen_de | text |  |  | PK |
+| noi_dung | text |  | ''::text |  |
+| file_url | text | Y |  |  |
+| ten_file | text | Y |  |  |
+| cap_nhat_at | timestamp with time zone |  | now() |  |
+
 ## dai_dang_ly_thuyet
 
 | cột | kiểu | null | default | khóa |
 |---|---|---|---|---|
 | ma_dang | text |  |  | PK FK→dai_ban_do.ma_dang |
-| file_url | text |  |  |  |
+| file_url | text | Y |  |  |
 | ten_file | text | Y |  |  |
 | cap_nhat_at | timestamp with time zone |  | now() |  |
+| noi_dung | text |  | ''::text |  |
 
 ## dai_dang_thuoc_tinh
 

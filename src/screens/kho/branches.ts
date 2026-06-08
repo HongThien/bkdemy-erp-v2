@@ -14,11 +14,14 @@ export type BranchConfig = {
   updateLeaf: (leafMa: string, patch: { leafTen: string; bac: string; mucDo: number | null }) => Promise<void>
   deleteLeaf: (leafMa: string) => Promise<void>
   deleteLeaves: (leafMas: string[]) => Promise<void>   // xoá cả cụm (chủ đề/chuyên đề)
-  lyThuyet?: {                                        // 1 lý thuyết/dạng (Đại); undefined = nhánh chưa có
-    list: () => Promise<Record<string, LyThuyet>>
-    upsert: (leafMa: string, noiDung: string, fileUrl: string | null, tenFile: string | null) => Promise<void>
-    remove: (leafMa: string) => Promise<void>
-  }
+  lyThuyet?: LyThuyetApi      // 1 lý thuyết/DẠNG (Đại); undefined = nhánh chưa có
+  lyThuyetT2?: LyThuyetApi    // lý thuyết CHUNG/CHUYÊN ĐỀ (tuỳ chọn), khoá theo ma_chuyen_de
+}
+// Cùng shape cho lý thuyết dạng & chuyên đề (key = leafMa | ma_chuyen_de)
+export type LyThuyetApi = {
+  list: () => Promise<Record<string, LyThuyet>>
+  upsert: (ma: string, noiDung: string, fileUrl: string | null, tenFile: string | null) => Promise<void>
+  remove: (ma: string) => Promise<void>
 }
 
 export const daiBranch: BranchConfig = {
@@ -37,6 +40,11 @@ export const daiBranch: BranchConfig = {
     list: api.listDaiLyThuyet,
     upsert: api.upsertDaiLyThuyet,
     remove: api.deleteDaiLyThuyet,
+  },
+  lyThuyetT2: {
+    list: api.listDaiChuyenDeLyThuyet,
+    upsert: api.upsertDaiChuyenDeLyThuyet,
+    remove: api.deleteDaiChuyenDeLyThuyet,
   },
 }
 

@@ -454,6 +454,30 @@ export async function deleteDaiLeaves(leafMas: string[]): Promise<void> {
   if (error) throw error
 }
 
+// ── LÝ THUYẾT: prompt bóc tài liệu (ảnh/PDF) → 1 khối text LaTeX (KHÔNG clone) ──
+export function buildLyThuyetPrompt(a: { tenDang: string; ghiChu?: string }): string {
+  return [
+    'Bạn là trợ lý số hoá tài liệu toán. Bên dưới là tài liệu LÝ THUYẾT của một dạng bài (ảnh/PDF).',
+    `Dạng: "${a.tenDang}".`,
+    'Chép lại TOÀN BỘ phần lý thuyết / phương pháp / ví dụ mẫu thành MỘT chuỗi text có định dạng — GIỮ nguyên nội dung, KHÔNG tóm tắt, KHÔNG thêm bớt.',
+    a.ghiChu ? `Ghi chú: ${a.ghiChu}` : '',
+    '',
+    'QUY TẮC:',
+    '- Công thức toán DÙNG LaTeX trong $...$ (inline) hoặc $$...$$ (block). Phân số DÙNG \\\\dfrac (không \\\\frac).',
+    '- Đề mục/tiêu đề để nguyên dòng; xuống dòng giữ bằng xuống dòng thật.',
+    '- Nếu có BẢNG / ĐỒ THỊ / HÌNH VẼ: ghi "[hình]" + mô tả 1 dòng ngắn, KHÔNG vẽ lại bằng LaTeX.',
+    '- Trong JSON: lệnh LaTeX PHẢI double backslash ("\\\\dfrac", "\\\\neq"); trích dẫn dùng nháy đơn; CHỈ trả JSON.',
+    'Trả về JSON: { "noi_dung": "..." }',
+  ].filter(Boolean).join('\n')
+}
+export function parseLyThuyetJson(text: string): string {
+  let t = text.trim()
+  const fence = t.match(/```(?:json)?\s*([\s\S]*?)```/i); if (fence) t = fence[1].trim()
+  let obj: any
+  try { obj = JSON.parse(t) } catch (e: any) { throw new Error('JSON không hợp lệ: ' + e.message) }
+  return String(obj.noi_dung ?? obj.noiDung ?? '').trim()
+}
+
 // ── Lý thuyết đi kèm dạng Đại (1-1) + chuẩn completeness ──────────
 export const CHUAN_SO_CAU = 50 // chuẩn kho: mỗi dạng ≥ 50 câu (sàn SỐ LƯỢNG, chỉnh 1 chỗ)
 // noi_dung = nội dung lý thuyết (text + LaTeX, render như bài tập); file_url/ten_file = đính kèm tuỳ chọn
@@ -473,6 +497,23 @@ export async function upsertDaiLyThuyet(ma_dang: string, noi_dung: string, file_
 }
 export async function deleteDaiLyThuyet(ma_dang: string): Promise<void> {
   const { error } = await supabase.from('dai_dang_ly_thuyet').delete().eq('ma_dang', ma_dang)
+  if (error) throw error
+}
+// Lý thuyết CHUNG cấp chuyên đề (Tier 2) — tuỳ chọn, khoá theo ma_chuyen_de
+export async function listDaiChuyenDeLyThuyet(): Promise<Record<string, LyThuyet>> {
+  const { data, error } = await supabase.from('dai_chuyen_de_ly_thuyet').select('*').limit(LIMIT)
+  if (error) throw error
+  const m: Record<string, LyThuyet> = {}
+  for (const r of data ?? []) m[r.ma_chuyen_de] = { noi_dung: r.noi_dung ?? '', file_url: r.file_url, ten_file: r.ten_file, cap_nhat_at: r.cap_nhat_at }
+  return m
+}
+export async function upsertDaiChuyenDeLyThuyet(ma_chuyen_de: string, noi_dung: string, file_url: string | null, ten_file: string | null): Promise<void> {
+  const { error } = await supabase.from('dai_chuyen_de_ly_thuyet')
+    .upsert({ ma_chuyen_de, noi_dung, file_url, ten_file }, { onConflict: 'ma_chuyen_de' })
+  if (error) throw error
+}
+export async function deleteDaiChuyenDeLyThuyet(ma_chuyen_de: string): Promise<void> {
+  const { error } = await supabase.from('dai_chuyen_de_ly_thuyet').delete().eq('ma_chuyen_de', ma_chuyen_de)
   if (error) throw error
 }
 

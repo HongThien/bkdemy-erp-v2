@@ -16,7 +16,7 @@ Câu 2.
 Đáp án: $\\frac{5}{6}$
 Lời giải chi tiết: Quy đồng: $\\frac{4}{6} + \\frac{1}{6} = \\frac{5}{6}$.`
 import type { BranchConfig } from './branches'
-import { BacChip, Code, inp, mucDoTone, MathText } from './ui'
+import { BacChip, Code, inp, mucDoTone, MathText, readClipboardImageFile } from './ui'
 
 const loaiLabel = (v: string) => LOAI_CAU.find((x) => x.value === v)?.label ?? v
 const ta = `${inp} min-h-[72px] resize-y leading-relaxed`
@@ -262,6 +262,10 @@ function AiImportModal({ mode, dangChinh, tenDang, onClose, onSaved }: {
     const loaded = await Promise.all(arr.map(async (f) => ({ name: f.name, mimeType: f.type, dataBase64: await fileToBase64(f), isImage: f.type.startsWith('image/') })))
     setFiles((p) => [...p, ...loaded])
   }
+  async function pasteClip() {
+    try { const f = await readClipboardImageFile(); if (f) addFiles([f]); else alert('Clipboard không có ảnh — copy ảnh trước.') }
+    catch (e: any) { alert(e?.message ?? String(e)) }
+  }
   useEffect(() => {
     if (method !== 'auto') return
     const onPaste = (e: ClipboardEvent) => {
@@ -374,7 +378,10 @@ function AiImportModal({ mode, dangChinh, tenDang, onClose, onSaved }: {
             ) : method === 'auto' ? (
               <>
                 <Cell label="Ảnh/PDF">
-                  <button onClick={() => fileRef.current?.click()} title="Click chọn, hoặc Ctrl+V dán ảnh" className="h-[34px] rounded-md border border-slate-300 bg-white px-3 text-[13px] font-medium text-slate-600 hover:border-indigo-400">📎 Chọn / dán</button>
+                  <div className="flex items-center gap-1.5">
+                    <button onClick={() => fileRef.current?.click()} title="Chọn ảnh/PDF từ máy" className="h-[34px] whitespace-nowrap rounded-md border border-slate-300 bg-white px-3 text-[13px] font-medium text-slate-600 hover:border-indigo-400">📎 Chọn</button>
+                    <button onClick={pasteClip} title="Dán ảnh từ clipboard (Ctrl+V)" className="h-[34px] whitespace-nowrap rounded-md border border-slate-300 bg-white px-3 text-[13px] font-medium text-slate-600 hover:border-indigo-400">📋 Dán</button>
+                  </div>
                   <input ref={fileRef} type="file" accept="image/*,application/pdf" multiple hidden onChange={(e) => e.target.files && addFiles(e.target.files)} />
                 </Cell>
                 {files.length > 0 && (
@@ -657,6 +664,10 @@ function ImageSlot({ url, label, onChange }: { url: string | null; label: string
     const f = Array.from(e.clipboardData.files).find((x) => x.type.startsWith('image/'))
     if (f) { e.preventDefault(); e.stopPropagation(); void load(f) } // stopPropagation: KHÔNG để listener ảnh-AI ngoài cùng cũng nuốt
   }
+  async function pasteClip() {
+    try { const f = await readClipboardImageFile(); if (f) void load(f); else alert('Clipboard không có ảnh — copy ảnh trước.') }
+    catch (e: any) { alert(e?.message ?? String(e)) }
+  }
   if (url) return (
     <div className="relative inline-block max-w-full self-center">
       <img src={url} alt={label} className="max-h-52 w-auto max-w-full rounded-lg border border-slate-200 bg-white" />
@@ -664,11 +675,15 @@ function ImageSlot({ url, label, onChange }: { url: string | null; label: string
     </div>
   )
   return (
-    <button type="button" onClick={() => !busy && ref.current?.click()} onPaste={onPaste} disabled={busy}
-      title={`${label} — click chọn ảnh, hoặc bấm vào đây rồi Ctrl+V dán ảnh`}
-      className="inline-flex w-fit shrink-0 items-center gap-1.5 self-start rounded-md border border-dashed border-slate-300 px-2.5 py-1 text-[12px] font-medium text-slate-400 transition hover:border-indigo-400 hover:text-indigo-500 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 disabled:opacity-60">
-      <span>{busy ? '⏳' : '🖼'}</span><span>{busy ? 'Đang tải ảnh…' : `${label} — dán / chọn`}</span>
+    <div className="inline-flex shrink-0 items-center gap-1 self-start" onPaste={onPaste}>
+      <button type="button" onClick={() => !busy && ref.current?.click()} disabled={busy}
+        title={`${label} — chọn ảnh từ máy`}
+        className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-md border border-dashed border-slate-300 px-2.5 py-1 text-[12px] font-medium text-slate-400 transition hover:border-indigo-400 hover:text-indigo-500 disabled:opacity-60">
+        <span>{busy ? '⏳' : '🖼'}</span><span>{busy ? 'Đang tải ảnh…' : `${label} — chọn`}</span>
+      </button>
+      <button type="button" onClick={() => !busy && pasteClip()} disabled={busy} title="Dán ảnh từ clipboard (Ctrl+V)"
+        className="inline-flex items-center gap-1 whitespace-nowrap rounded-md border border-dashed border-slate-300 px-2 py-1 text-[12px] font-medium text-slate-400 transition hover:border-indigo-400 hover:text-indigo-500 disabled:opacity-60">📋 Dán</button>
       <input ref={ref} type="file" accept="image/*" hidden onChange={(e) => { void load(e.target.files?.[0]); e.target.value = '' }} />
-    </button>
+    </div>
   )
 }

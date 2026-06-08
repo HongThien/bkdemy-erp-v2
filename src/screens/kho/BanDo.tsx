@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import {
   listLopBac, groupMap, suggestT1Ma, suggestT2Ma, suggestLeafMa, uploadKhoFile,
+  callGeminiJson, buildLyThuyetPrompt, parseLyThuyetJson,
   type MapRow, type Tier1Node, type Tier2Node, type LopBac, type LyThuyet,
 } from '../../lib/kho/api'
-import type { BranchConfig } from './branches'
-import { BacChip, Code, inp, Shell, Field, Row, Seg, Ghost, Actions, mucDoTone, MathText } from './ui'
+import type { BranchConfig, LyThuyetApi } from './branches'
+import { BacChip, Code, inp, Shell, Field, Row, Seg, Ghost, Actions, mucDoTone, MathText, readClipboardImageFile } from './ui'
 import DangHub from './DangHub'
 
 const MUC_DO = [1, 2, 3, 4, 5]
@@ -17,6 +18,7 @@ export default function BanDo({ config, khoi }: { config: BranchConfig; khoi: st
   const [lopBac, setLopBac] = useState<LopBac[]>([])
   const [counts, setCounts] = useState<Record<string, number>>({})
   const [lyThuyet, setLyThuyet] = useState<Record<string, LyThuyet>>({})
+  const [lyThuyetT2, setLyThuyetT2] = useState<Record<string, LyThuyet>>({})
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
 
@@ -24,6 +26,7 @@ export default function BanDo({ config, khoi }: { config: BranchConfig; khoi: st
   const [selT2, setSelT2] = useState<string | null>(null)
   const [modal, setModal] = useState<null | { editing: MapRow | null; prefill?: Partial<MapRow> }>(null)
   const [ltModal, setLtModal] = useState<null | { d: MapRow }>(null)
+  const [ltT2Modal, setLtT2Modal] = useState<null | { ma: string; ten: string }>(null)
   const [hub, setHub] = useState<MapRow | null>(null)
   const [fMuc, setFMuc] = useState<Set<number>>(new Set())
   const [fBac, setFBac] = useState<Set<string>>(new Set())
@@ -31,11 +34,12 @@ export default function BanDo({ config, khoi }: { config: BranchConfig; khoi: st
   async function reload() {
     setLoading(true); setErr(null)
     try {
-      const [r, c, lt] = await Promise.all([
+      const [r, c, lt, lt2] = await Promise.all([
         config.list(khoi), config.count(),
         config.lyThuyet ? config.lyThuyet.list() : Promise.resolve({} as Record<string, LyThuyet>),
+        config.lyThuyetT2 ? config.lyThuyetT2.list() : Promise.resolve({} as Record<string, LyThuyet>),
       ])
-      setRows(r); setCounts(c); setLyThuyet(lt)
+      setRows(r); setCounts(c); setLyThuyet(lt); setLyThuyetT2(lt2)
     } catch (e: any) { setErr(e.message ?? String(e)) }
     finally { setLoading(false) }
   }
@@ -175,6 +179,9 @@ export default function BanDo({ config, khoi }: { config: BranchConfig; khoi: st
                         {config.chuan && node.leaves.length > 0 && (
                           <span className={`rounded-full px-2.5 py-1 text-[13px] font-medium ${du === node.leaves.length ? 'bg-emerald-50 text-emerald-600' : 'bg-slate-100 text-slate-500'}`}>{du} đủ chuẩn</span>
                         )}
+                        {config.lyThuyetT2 && lyThuyetT2[node.t2Ma] && (
+                          <span className="rounded-full bg-violet-50 px-2 py-1 text-[13px] font-medium text-violet-600" title="Có lý thuyết chung">📖</span>
+                        )}
                       </span>
                       <span className="text-[15px] font-medium text-slate-300 transition group-hover:translate-x-1 group-hover:text-indigo-500">Mở →</span>
                     </div>
@@ -197,11 +204,20 @@ export default function BanDo({ config, khoi }: { config: BranchConfig; khoi: st
                 <Code>{t2.t2Ma}</Code>
                 <span className="text-xs text-slate-400">· {leaves.length} {leafLow}</span>
               </div>
-              <button
-                onClick={() => setModal({ editing: null, prefill: { t1Ma: t1.t1Ma, t1Ten: t1.t1Ten, t2Ma: t2.t2Ma, t2Ten: t2.t2Ten } })}
-                className="rounded-md bg-indigo-600 px-3 py-1.5 text-xs font-medium text-white shadow-sm transition hover:bg-indigo-500">
-                + Thêm {leafLow}
-              </button>
+              <div className="flex items-center gap-2">
+                {config.lyThuyetT2 && (
+                  <button onClick={() => setLtT2Modal({ ma: t2.t2Ma, ten: t2.t2Ten })}
+                    title="Lý thuyết chung của cả chuyên đề (tuỳ chọn)"
+                    className={`rounded-md border px-3 py-1.5 text-xs font-medium transition ${lyThuyetT2[t2.t2Ma] ? 'border-emerald-200 bg-emerald-50 text-emerald-700 hover:bg-emerald-100' : 'border-slate-200 text-slate-500 hover:border-indigo-300 hover:text-indigo-700'}`}>
+                    {lyThuyetT2[t2.t2Ma] ? '📖 Lý thuyết chung ✓' : '📖 Lý thuyết chung'}
+                  </button>
+                )}
+                <button
+                  onClick={() => setModal({ editing: null, prefill: { t1Ma: t1.t1Ma, t1Ten: t1.t1Ten, t2Ma: t2.t2Ma, t2Ten: t2.t2Ten } })}
+                  className="rounded-md bg-indigo-600 px-3 py-1.5 text-xs font-medium text-white shadow-sm transition hover:bg-indigo-500">
+                  + Thêm {leafLow}
+                </button>
+              </div>
             </div>
 
             {/* Filter toggle (không dropdown) */}
@@ -244,9 +260,14 @@ export default function BanDo({ config, khoi }: { config: BranchConfig; khoi: st
         />
       )}
       {ltModal && config.lyThuyet && (
-        <LyThuyetModal d={ltModal.d} current={lyThuyet[ltModal.d.leafMa]} api={config.lyThuyet} leafLow={leafLow}
+        <LyThuyetModal ma={ltModal.d.leafMa} ten={ltModal.d.leafTen} current={lyThuyet[ltModal.d.leafMa]} api={config.lyThuyet}
           onClose={() => setLtModal(null)}
           onSaved={async () => { setLtModal(null); await reload() }} />
+      )}
+      {ltT2Modal && config.lyThuyetT2 && (
+        <LyThuyetModal ma={ltT2Modal.ma} ten={ltT2Modal.ten} current={lyThuyetT2[ltT2Modal.ma]} api={config.lyThuyetT2}
+          onClose={() => setLtT2Modal(null)}
+          onSaved={async () => { setLtT2Modal(null); await reload() }} />
       )}
       {hub && (
         <DangHub d={hub} config={config} chuan={config.chuan}
@@ -333,85 +354,136 @@ function LeafCard({ d, config, cau, lt, onOpen, onDelete, onLyThuyet }: {
   )
 }
 
-// ── Modal lý thuyết — NỘI DUNG (text + LaTeX, render như bài tập) + đính kèm file/link tuỳ chọn ──
-function LyThuyetModal({ d, current, api, leafLow, onClose, onSaved }: {
-  d: MapRow; current?: LyThuyet; leafLow: string
-  api: NonNullable<BranchConfig['lyThuyet']>; onClose: () => void; onSaved: () => void
+// ── Modal lý thuyết — popup TO: trái code LaTeX (sửa), phải preview; upload ảnh/PDF → AI bóc LaTeX ──
+const LT_MODELS = [
+  { value: 'gemini-2.5-flash-lite', label: 'Flash-Lite' },
+  { value: 'gemini-2.5-flash', label: 'Flash' },
+  { value: 'gemini-2.5-pro', label: 'Pro' },
+]
+type LtFile = { name: string; mimeType: string; dataBase64: string; isImage: boolean }
+function ltToBase64(f: File): Promise<string> {
+  return new Promise((res, rej) => { const r = new FileReader(); r.onload = () => { const s = String(r.result); res(s.slice(s.indexOf(',') + 1)) }; r.onerror = rej; r.readAsDataURL(f) })
+}
+function LyThuyetModal({ ma, ten, current, api, onClose, onSaved }: {
+  ma: string; ten: string; current?: LyThuyet
+  api: LyThuyetApi; onClose: () => void; onSaved: () => void
 }) {
   const [noiDung, setNoiDung] = useState(current?.noi_dung ?? '')
   const [url, setUrl] = useState(current?.file_url ?? '')
-  const [ten, setTen] = useState(current?.ten_file ?? '')
-  const [mode, setMode] = useState<'edit' | 'preview'>(current?.noi_dung?.trim() ? 'preview' : 'edit')
-  const [saving, setSaving] = useState(false)
+  const [tenFile, setTenFile] = useState(current?.ten_file ?? '')
+  const [files, setFiles] = useState<LtFile[]>([])
+  const [model, setModel] = useState('gemini-2.5-flash')
+  const [ghiChu, setGhiChu] = useState('')
+  const [busy, setBusy] = useState(false)
   const [uploading, setUploading] = useState(false)
   const [showFile, setShowFile] = useState(!!current?.file_url)
+  const [saving, setSaving] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const fileRef = useRef<HTMLInputElement>(null)
+  const attachRef = useRef<HTMLInputElement>(null)
   const hasContent = !!noiDung.trim() || !!url.trim()
 
-  async function onPick(f: File | null | undefined) {
-    if (!f) return
-    setUploading(true); setError(null)
-    try { const r = await uploadKhoFile(f); setUrl(r.url); setTen(r.name) }
-    catch (e: any) { setError('Upload lỗi: ' + (e?.message ?? e)) }
-    finally { setUploading(false) }
+  async function addFiles(list: FileList | File[]) {
+    const arr = Array.from(list).filter((f) => f.type.startsWith('image/') || f.type === 'application/pdf')
+    const loaded = await Promise.all(arr.map(async (f) => ({ name: f.name, mimeType: f.type, dataBase64: await ltToBase64(f), isImage: f.type.startsWith('image/') })))
+    setFiles((p) => [...p, ...loaded])
+  }
+  async function pasteClip() {
+    try { const f = await readClipboardImageFile(); if (f) addFiles([f]); else setError('Clipboard không có ảnh — copy ảnh trước rồi bấm Dán.') }
+    catch (e: any) { setError(e?.message ?? String(e)) }
+  }
+  async function runAuto() {
+    setError(null); setBusy(true)
+    try {
+      const raw = await callGeminiJson(buildLyThuyetPrompt({ tenDang: ten, ghiChu }), { model, files: files.map((f) => ({ mimeType: f.mimeType, dataBase64: f.dataBase64 })) })
+      setNoiDung(parseLyThuyetJson(raw))
+    } catch (e: any) { setError(e.message ?? String(e)) } finally { setBusy(false) }
+  }
+  async function onAttach(f: File | null | undefined) {
+    if (!f) return; setUploading(true); setError(null)
+    try { const r = await uploadKhoFile(f); setUrl(r.url); setTenFile(r.name) }
+    catch (e: any) { setError('Upload lỗi: ' + (e?.message ?? e)) } finally { setUploading(false) }
   }
   async function save() {
     if (!hasContent) return
     setSaving(true); setError(null)
-    try { await api.upsert(d.leafMa, noiDung.trim(), url.trim() || null, ten.trim() || null); onSaved() }
+    try { await api.upsert(ma, noiDung.trim(), url.trim() || null, tenFile.trim() || null); onSaved() }
     catch (e: any) { setError(e.message ?? String(e)); setSaving(false) }
   }
   async function remove() {
     if (!confirm('Gỡ lý thuyết khỏi dạng này?')) return
     setSaving(true); setError(null)
-    try { await api.remove(d.leafMa); onSaved() }
+    try { await api.remove(ma); onSaved() }
     catch (e: any) { setError(e.message ?? String(e)); setSaving(false) }
   }
-  const segBtn = (on: boolean) => `rounded-md px-3 py-1 text-[13px] font-medium transition ${on ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`
+  const sel = 'h-[34px] rounded-md border border-slate-300 bg-white px-2 text-[13px] outline-none focus:border-indigo-500'
 
   return (
-    <Shell title={`Lý thuyết · ${d.leafTen}`} onClose={onClose}>
-      <div className="mb-2 flex items-center justify-between gap-2">
-        <span className="text-[11px] text-slate-400">1 lý thuyết / {leafLow}. Soạn như đề bài: công thức trong $…$ (vd $\dfrac{'{a}{b}'}$), xuống dòng tự do.</span>
-        <div className="flex shrink-0 gap-0.5 rounded-lg bg-slate-100 p-0.5">
-          <button onClick={() => setMode('edit')} className={segBtn(mode === 'edit')}>✎ Soạn</button>
-          <button onClick={() => setMode('preview')} className={segBtn(mode === 'preview')}>👁 Xem</button>
+    <div className="fixed inset-0 z-[60] bg-slate-900/50 backdrop-blur-sm" onClick={onClose}>
+      <div className="absolute inset-4 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        {/* Header: hàng tiêu đề + hàng công cụ AI (tách 2 hàng cho khỏi chen) */}
+        <div className="border-b border-slate-200 px-6 py-3">
+          <div className="flex items-center gap-3">
+            <h3 className="text-base font-semibold text-slate-900">Lý thuyết · {ten}</h3>
+            <span className="hidden text-[12px] text-slate-400 lg:inline">soạn tay, hoặc upload ảnh/PDF → AI bóc LaTeX</span>
+            <button onClick={onClose} className="ml-auto flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-slate-400 hover:bg-slate-100">✕</button>
+          </div>
+          <div className="mt-2.5 flex flex-wrap items-center gap-2">
+            <button onClick={() => fileRef.current?.click()} className="h-[34px] shrink-0 whitespace-nowrap rounded-md border border-slate-300 bg-white px-3 text-[13px] font-medium text-slate-600 hover:border-indigo-400">📎 Chọn ảnh/PDF</button>
+            <button onClick={pasteClip} className="h-[34px] shrink-0 whitespace-nowrap rounded-md border border-slate-300 bg-white px-3 text-[13px] font-medium text-slate-600 hover:border-indigo-400">📋 Dán clipboard</button>
+            <input ref={fileRef} type="file" accept="image/*,application/pdf" multiple hidden onChange={(e) => e.target.files && addFiles(e.target.files)} />
+            <select value={model} onChange={(e) => setModel(e.target.value)} className={`${sel} shrink-0`}>{LT_MODELS.map((m) => <option key={m.value} value={m.value}>{m.label}</option>)}</select>
+            <input value={ghiChu} onChange={(e) => setGhiChu(e.target.value)} placeholder="ghi chú AI (tuỳ)" className={`${inp} h-[34px] min-w-[120px] flex-1 text-[13px]`} />
+            <button onClick={runAuto} disabled={!files.length || busy} className="h-[34px] shrink-0 whitespace-nowrap rounded-md bg-indigo-600 px-4 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">{busy ? '⏳ Đang bóc…' : '🪄 Tạo bằng AI'}</button>
+          </div>
+          {files.length > 0 && (
+            <div className="mt-2 flex flex-wrap items-center gap-1.5">
+              {files.map((f, i) => (
+                <div key={i} className="relative h-10 w-12 shrink-0 overflow-hidden rounded border border-slate-200 bg-slate-50">
+                  {f.isImage ? <img src={`data:${f.mimeType};base64,${f.dataBase64}`} alt="" className="h-full w-full object-cover" /> : <div className="flex h-full items-center justify-center text-[9px] font-medium text-slate-500">PDF</div>}
+                  <button onClick={() => setFiles((p) => p.filter((_, idx) => idx !== i))} className="absolute right-0 top-0 flex h-4 w-4 items-center justify-center rounded bg-white/90 text-[10px] text-rose-600">✕</button>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Split: trái code LaTeX · phải preview */}
+        <div className="grid min-h-0 flex-1 grid-cols-2">
+          <div className="flex min-h-0 flex-col border-r border-slate-200">
+            <div className="border-b border-slate-100 px-4 py-1.5 text-[12px] font-bold uppercase tracking-wide text-slate-500">Code (LaTeX) — sửa tự do</div>
+            <textarea value={noiDung} onChange={(e) => setNoiDung(e.target.value)}
+              placeholder={'Lý thuyết · phương pháp · ví dụ…\nCông thức $\\dfrac{-b}{2a}$, $x \\neq 0$'}
+              className="min-h-0 flex-1 resize-none p-4 font-mono text-[13px] leading-relaxed outline-none" />
+          </div>
+          <div className="flex min-h-0 flex-col">
+            <div className="border-b border-slate-100 px-4 py-1.5 text-[12px] font-bold uppercase tracking-wide text-slate-500">Xem trước</div>
+            <div className="min-h-0 flex-1 overflow-auto p-4 text-[16px] leading-loose text-slate-800">
+              {noiDung.trim() ? <MathText>{noiDung}</MathText> : <span className="text-slate-400">— preview hiện ở đây</span>}
+            </div>
+          </div>
+        </div>
+
+        {/* Footer: đính kèm + lưu */}
+        <div className="flex flex-wrap items-center gap-3 border-t border-slate-200 px-6 py-3">
+          <button onClick={() => setShowFile((s) => !s)} className="text-[12px] font-medium text-slate-400 hover:text-indigo-600">{showFile ? '− Ẩn đính kèm' : '+ Đính kèm file / link (tuỳ chọn)'}</button>
+          {showFile && (
+            <div className="flex items-center gap-2">
+              <button onClick={() => attachRef.current?.click()} disabled={uploading} className="rounded-md border border-slate-300 px-2.5 py-1 text-[12px] text-slate-600 hover:border-indigo-400 disabled:opacity-60">{uploading ? '⏳ Đang tải…' : '📄 Tải file'}</button>
+              <input ref={attachRef} type="file" accept=".pdf,.doc,.docx,.ppt,.pptx,application/pdf,image/*" hidden onChange={(e) => { onAttach(e.target.files?.[0]); e.target.value = '' }} />
+              {url && <a href={url} target="_blank" rel="noreferrer" className="max-w-[200px] truncate text-[12px] font-medium text-indigo-600 hover:underline">{tenFile || 'file'} ↗</a>}
+              <input value={url} onChange={(e) => setUrl(e.target.value)} placeholder="link ngoài…" className={`${inp} h-[30px] w-44 text-[12px]`} />
+            </div>
+          )}
+          {error && <span className="max-w-[40%] truncate text-xs text-rose-600" title={error}>⚠ {error}</span>}
+          {current && <button onClick={remove} className="text-[13px] font-medium text-rose-500 hover:underline">Gỡ</button>}
+          <div className="ml-auto flex gap-2">
+            <button onClick={onClose} className="rounded-md px-3 py-1.5 text-sm text-slate-500 hover:bg-slate-100">Huỷ</button>
+            <button onClick={save} disabled={!hasContent || saving || uploading} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">{saving ? 'Đang lưu…' : 'Lưu'}</button>
+          </div>
         </div>
       </div>
-
-      {mode === 'edit' ? (
-        <textarea value={noiDung} onChange={(e) => setNoiDung(e.target.value)} autoFocus
-          className={`${inp} h-72 resize-none font-mono text-[13px] leading-relaxed`}
-          placeholder={'Lý thuyết · phương pháp · ví dụ mẫu…\nCông thức: $\\dfrac{-b}{2a}$, $x \\neq 0$'} />
-      ) : (
-        <div className="h-72 overflow-auto rounded-md border border-slate-200 bg-slate-50/50 px-4 py-3 text-[16px] leading-loose text-slate-800">
-          {noiDung.trim() ? <MathText>{noiDung}</MathText> : <span className="text-slate-400">— chưa có nội dung, bấm ✎ Soạn</span>}
-        </div>
-      )}
-
-      <button onClick={() => setShowFile((s) => !s)} className="mt-2 text-[12px] font-medium text-slate-400 hover:text-indigo-600">
-        {showFile ? '− Ẩn đính kèm' : '+ Đính kèm file / link (tuỳ chọn)'}
-      </button>
-      {showFile && (
-        <div className="mt-2 space-y-2">
-          <div className="flex items-center gap-2">
-            <button onClick={() => fileRef.current?.click()} disabled={uploading}
-              className="rounded-md border border-slate-300 bg-white px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-indigo-400 disabled:opacity-60">
-              {uploading ? '⏳ Đang tải…' : '📄 Tải file (PDF/Word…)'}
-            </button>
-            <input ref={fileRef} type="file" accept=".pdf,.doc,.docx,.ppt,.pptx,application/pdf,image/*" hidden
-              onChange={(e) => { onPick(e.target.files?.[0]); e.target.value = '' }} />
-            {url && <a href={url} target="_blank" rel="noreferrer" className="truncate text-[13px] font-medium text-indigo-600 hover:underline">{ten || 'Mở file'} ↗</a>}
-          </div>
-          <input value={url} onChange={(e) => setUrl(e.target.value)} placeholder="hoặc dán link ngoài https://…" className={`${inp} text-[13px]`} />
-        </div>
-      )}
-
-      {current && <div className="mt-3"><button onClick={remove} className="text-[13px] font-medium text-rose-500 hover:underline">Gỡ lý thuyết</button></div>}
-      {error && <p className="mt-3 text-xs text-rose-600">{error}</p>}
-      <Actions onClose={onClose} onSave={save} disabled={!hasContent || saving || uploading} saving={saving} label="Lưu" />
-    </Shell>
+    </div>
   )
 }
 
