@@ -106,6 +106,16 @@ export async function uploadKhoImage(file: File): Promise<string> {
   if (error) throw error
   return supabase.storage.from(KHO_BUCKET).getPublicUrl(path).data.publicUrl
 }
+
+// File lý thuyết / tài liệu (PDF, Word…) — bucket public 'kho-tailieu'. Trả URL + tên gốc.
+export const KHO_FILE_BUCKET = 'kho-tailieu'
+export async function uploadKhoFile(file: File): Promise<{ url: string; name: string }> {
+  const ext = (file.name.split('.').pop() || 'bin').toLowerCase().replace(/[^a-z0-9]/g, '') || 'bin'
+  const path = `${crypto.randomUUID()}.${ext}`
+  const { error } = await supabase.storage.from(KHO_FILE_BUCKET).upload(path, file, { contentType: file.type || 'application/octet-stream', upsert: false })
+  if (error) throw error
+  return { url: supabase.storage.from(KHO_FILE_BUCKET).getPublicUrl(path).data.publicUrl, name: file.name }
+}
 // Mã câu = mã DẠNG + STT 3 chữ số (vd 07010103 → 07010103001). Lấy max STT hiện có +1 (không tái dùng số đã xoá).
 const maCau = (dangChinh: string, seq: number) => `${dangChinh}${String(seq).padStart(3, '0')}`
 async function nextCauSeq(dangChinh: string): Promise<number> {
@@ -446,18 +456,19 @@ export async function deleteDaiLeaves(leafMas: string[]): Promise<void> {
 
 // ── Lý thuyết đi kèm dạng Đại (1-1) + chuẩn completeness ──────────
 export const CHUAN_SO_CAU = 50 // chuẩn kho: mỗi dạng ≥ 50 câu (sàn SỐ LƯỢNG, chỉnh 1 chỗ)
-export type LyThuyet = { file_url: string; ten_file: string | null; cap_nhat_at?: string }
+// noi_dung = nội dung lý thuyết (text + LaTeX, render như bài tập); file_url/ten_file = đính kèm tuỳ chọn
+export type LyThuyet = { noi_dung: string; file_url: string | null; ten_file: string | null; cap_nhat_at?: string }
 
 export async function listDaiLyThuyet(): Promise<Record<string, LyThuyet>> {
   const { data, error } = await supabase.from('dai_dang_ly_thuyet').select('*').limit(LIMIT)
   if (error) throw error
   const m: Record<string, LyThuyet> = {}
-  for (const r of data ?? []) m[r.ma_dang] = { file_url: r.file_url, ten_file: r.ten_file, cap_nhat_at: r.cap_nhat_at }
+  for (const r of data ?? []) m[r.ma_dang] = { noi_dung: r.noi_dung ?? '', file_url: r.file_url, ten_file: r.ten_file, cap_nhat_at: r.cap_nhat_at }
   return m
 }
-export async function upsertDaiLyThuyet(ma_dang: string, file_url: string, ten_file: string | null): Promise<void> {
+export async function upsertDaiLyThuyet(ma_dang: string, noi_dung: string, file_url: string | null, ten_file: string | null): Promise<void> {
   const { error } = await supabase.from('dai_dang_ly_thuyet')
-    .upsert({ ma_dang, file_url, ten_file }, { onConflict: 'ma_dang' })
+    .upsert({ ma_dang, noi_dung, file_url, ten_file }, { onConflict: 'ma_dang' })
   if (error) throw error
 }
 export async function deleteDaiLyThuyet(ma_dang: string): Promise<void> {

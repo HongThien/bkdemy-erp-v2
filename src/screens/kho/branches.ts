@@ -14,9 +14,9 @@ export type BranchConfig = {
   updateLeaf: (leafMa: string, patch: { leafTen: string; bac: string; mucDo: number | null }) => Promise<void>
   deleteLeaf: (leafMa: string) => Promise<void>
   deleteLeaves: (leafMas: string[]) => Promise<void>   // xoá cả cụm (chủ đề/chuyên đề)
-  lyThuyet?: {                                        // 1 file/dạng (Đại); undefined = nhánh chưa có
+  lyThuyet?: {                                        // 1 lý thuyết/dạng (Đại); undefined = nhánh chưa có
     list: () => Promise<Record<string, LyThuyet>>
-    upsert: (leafMa: string, fileUrl: string, tenFile: string | null) => Promise<void>
+    upsert: (leafMa: string, noiDung: string, fileUrl: string | null, tenFile: string | null) => Promise<void>
     remove: (leafMa: string) => Promise<void>
   }
 }

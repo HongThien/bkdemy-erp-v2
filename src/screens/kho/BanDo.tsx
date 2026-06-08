@@ -1,10 +1,10 @@
-import { useEffect, useMemo, useState, type ReactNode } from 'react'
+import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import {
-  listLopBac, groupMap, suggestT1Ma, suggestT2Ma, suggestLeafMa,
+  listLopBac, groupMap, suggestT1Ma, suggestT2Ma, suggestLeafMa, uploadKhoFile,
   type MapRow, type Tier1Node, type Tier2Node, type LopBac, type LyThuyet,
 } from '../../lib/kho/api'
 import type { BranchConfig } from './branches'
-import { BacChip, Code, inp, Shell, Field, Row, Seg, Ghost, Actions, mucDoTone } from './ui'
+import { BacChip, Code, inp, Shell, Field, Row, Seg, Ghost, Actions, mucDoTone, MathText } from './ui'
 import DangHub from './DangHub'
 
 const MUC_DO = [1, 2, 3, 4, 5]
@@ -323,10 +323,7 @@ function LeafCard({ d, config, cau, lt, onOpen, onDelete, onLyThuyet }: {
         <div className="mt-3 flex items-center justify-between text-[14px]">
           <span className="font-medium text-slate-500">Lý thuyết</span>
           {lt ? (
-            <span className="flex items-center gap-2">
-              <a href={lt.file_url} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()} className="font-semibold text-emerald-600 hover:underline">✓ Có</a>
-              <button onClick={(e) => { e.stopPropagation(); onLyThuyet() }} className="text-[13px] text-slate-400 hover:text-indigo-600">sửa</button>
-            </span>
+            <button onClick={(e) => { e.stopPropagation(); onLyThuyet() }} className="font-semibold text-emerald-600 hover:underline">✓ Có · xem/sửa</button>
           ) : (
             <button onClick={(e) => { e.stopPropagation(); onLyThuyet() }} className="font-semibold text-rose-500 hover:underline">✗ Chưa · Gắn</button>
           )}
@@ -336,20 +333,33 @@ function LeafCard({ d, config, cau, lt, onOpen, onDelete, onLyThuyet }: {
   )
 }
 
-// ── Modal lý thuyết (tạm: link file; upload Storage làm sau) ────────
+// ── Modal lý thuyết — NỘI DUNG (text + LaTeX, render như bài tập) + đính kèm file/link tuỳ chọn ──
 function LyThuyetModal({ d, current, api, leafLow, onClose, onSaved }: {
   d: MapRow; current?: LyThuyet; leafLow: string
   api: NonNullable<BranchConfig['lyThuyet']>; onClose: () => void; onSaved: () => void
 }) {
+  const [noiDung, setNoiDung] = useState(current?.noi_dung ?? '')
   const [url, setUrl] = useState(current?.file_url ?? '')
   const [ten, setTen] = useState(current?.ten_file ?? '')
+  const [mode, setMode] = useState<'edit' | 'preview'>(current?.noi_dung?.trim() ? 'preview' : 'edit')
   const [saving, setSaving] = useState(false)
+  const [uploading, setUploading] = useState(false)
+  const [showFile, setShowFile] = useState(!!current?.file_url)
   const [error, setError] = useState<string | null>(null)
+  const fileRef = useRef<HTMLInputElement>(null)
+  const hasContent = !!noiDung.trim() || !!url.trim()
 
+  async function onPick(f: File | null | undefined) {
+    if (!f) return
+    setUploading(true); setError(null)
+    try { const r = await uploadKhoFile(f); setUrl(r.url); setTen(r.name) }
+    catch (e: any) { setError('Upload lỗi: ' + (e?.message ?? e)) }
+    finally { setUploading(false) }
+  }
   async function save() {
-    if (!url.trim()) return
+    if (!hasContent) return
     setSaving(true); setError(null)
-    try { await api.upsert(d.leafMa, url.trim(), ten.trim() || null); onSaved() }
+    try { await api.upsert(d.leafMa, noiDung.trim(), url.trim() || null, ten.trim() || null); onSaved() }
     catch (e: any) { setError(e.message ?? String(e)); setSaving(false) }
   }
   async function remove() {
@@ -358,19 +368,49 @@ function LyThuyetModal({ d, current, api, leafLow, onClose, onSaved }: {
     try { await api.remove(d.leafMa); onSaved() }
     catch (e: any) { setError(e.message ?? String(e)); setSaving(false) }
   }
+  const segBtn = (on: boolean) => `rounded-md px-3 py-1 text-[13px] font-medium transition ${on ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`
 
   return (
     <Shell title={`Lý thuyết · ${d.leafTen}`} onClose={onClose}>
-      <div className="mb-3 text-[11px] text-slate-400">1 file/{leafLow} (lý thuyết + phương pháp + bài mẫu). Tạm lưu LINK; upload trực tiếp (Supabase Storage) làm sau.</div>
-      <Field label="Link file (PDF / Doc / Drive…)">
-        <input value={url} onChange={(e) => setUrl(e.target.value)} placeholder="https://…" className={inp} autoFocus />
-      </Field>
-      <Field label="Tên file (tuỳ chọn)">
-        <input value={ten} onChange={(e) => setTen(e.target.value)} placeholder="vd Lý thuyết UCLN.pdf" className={inp} />
-      </Field>
-      {current && <button onClick={remove} className="text-[13px] font-medium text-rose-500 hover:underline">Gỡ lý thuyết</button>}
+      <div className="mb-2 flex items-center justify-between gap-2">
+        <span className="text-[11px] text-slate-400">1 lý thuyết / {leafLow}. Soạn như đề bài: công thức trong $…$ (vd $\dfrac{'{a}{b}'}$), xuống dòng tự do.</span>
+        <div className="flex shrink-0 gap-0.5 rounded-lg bg-slate-100 p-0.5">
+          <button onClick={() => setMode('edit')} className={segBtn(mode === 'edit')}>✎ Soạn</button>
+          <button onClick={() => setMode('preview')} className={segBtn(mode === 'preview')}>👁 Xem</button>
+        </div>
+      </div>
+
+      {mode === 'edit' ? (
+        <textarea value={noiDung} onChange={(e) => setNoiDung(e.target.value)} autoFocus
+          className={`${inp} h-72 resize-none font-mono text-[13px] leading-relaxed`}
+          placeholder={'Lý thuyết · phương pháp · ví dụ mẫu…\nCông thức: $\\dfrac{-b}{2a}$, $x \\neq 0$'} />
+      ) : (
+        <div className="h-72 overflow-auto rounded-md border border-slate-200 bg-slate-50/50 px-4 py-3 text-[16px] leading-loose text-slate-800">
+          {noiDung.trim() ? <MathText>{noiDung}</MathText> : <span className="text-slate-400">— chưa có nội dung, bấm ✎ Soạn</span>}
+        </div>
+      )}
+
+      <button onClick={() => setShowFile((s) => !s)} className="mt-2 text-[12px] font-medium text-slate-400 hover:text-indigo-600">
+        {showFile ? '− Ẩn đính kèm' : '+ Đính kèm file / link (tuỳ chọn)'}
+      </button>
+      {showFile && (
+        <div className="mt-2 space-y-2">
+          <div className="flex items-center gap-2">
+            <button onClick={() => fileRef.current?.click()} disabled={uploading}
+              className="rounded-md border border-slate-300 bg-white px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-indigo-400 disabled:opacity-60">
+              {uploading ? '⏳ Đang tải…' : '📄 Tải file (PDF/Word…)'}
+            </button>
+            <input ref={fileRef} type="file" accept=".pdf,.doc,.docx,.ppt,.pptx,application/pdf,image/*" hidden
+              onChange={(e) => { onPick(e.target.files?.[0]); e.target.value = '' }} />
+            {url && <a href={url} target="_blank" rel="noreferrer" className="truncate text-[13px] font-medium text-indigo-600 hover:underline">{ten || 'Mở file'} ↗</a>}
+          </div>
+          <input value={url} onChange={(e) => setUrl(e.target.value)} placeholder="hoặc dán link ngoài https://…" className={`${inp} text-[13px]`} />
+        </div>
+      )}
+
+      {current && <div className="mt-3"><button onClick={remove} className="text-[13px] font-medium text-rose-500 hover:underline">Gỡ lý thuyết</button></div>}
       {error && <p className="mt-3 text-xs text-rose-600">{error}</p>}
-      <Actions onClose={onClose} onSave={save} disabled={!url.trim() || saving} saving={saving} label="Lưu" />
+      <Actions onClose={onClose} onSave={save} disabled={!hasContent || saving || uploading} saving={saving} label="Lưu" />
     </Shell>
   )
 }
