@@ -14,36 +14,39 @@ const UNI: [RegExp, string][] = [
   [/\\forall/g, '∀'], [/\\exists/g, '∃'], [/\\varnothing/g, '∅'], [/\\emptyset/g, '∅'],
   [/\\alpha/g, 'α'], [/\\beta/g, 'β'], [/\\gamma/g, 'γ'], [/\\pi/g, 'π'], [/\\Delta/g, 'Δ'],
 ]
-const escText = (t: string) => { let s = esc(t); for (const [re, u] of UNI) s = s.replace(re, u); return s }
+// Đổi ký hiệu toán TRẦN (ngoài $…$) → Unicode. Chạy TRƯỚC bước cắt dòng để "\neq" trần không bị nuốt "\n".
+const uni = (t: string) => { let s = t; for (const [re, u] of UNI) s = s.replace(re, u); return s }
 const tex = (s: string, display: boolean) => {
   // \frac hiển thị bé (scriptstyle khi inline) → đổi sang \dfrac cho phân số to, đẹp.
   const fixed = s.replace(/\\frac(?![a-zA-Z])/g, '\\dfrac')
   try { return katex.renderToString(fixed, { displayMode: display, throwOnError: false, output: 'html' }) }
   catch { return esc(s) }
 }
-function lineToHtml(s: string): string {
-  const re = /\$\$([\s\S]+?)\$\$|\$([^$]+?)\$/g
-  let out = '', last = 0, m: RegExpExecArray | null
-  while ((m = re.exec(s))) {
-    out += escText(s.slice(last, m.index))
-    out += m[1] != null ? tex(m[1], true) : tex(m[2]!, false)
-    last = re.lastIndex
+const MATH_RE = /\$\$([\s\S]+?)\$\$|\$([^$]+?)\$/g
+// Tách raw thành các DÒNG html. Xuống dòng (\n thật, "\\n" literal, CRLF) CHỈ tính ở phần TEXT ngoài $…$.
+// → KHÔNG bao giờ đụng lệnh LaTeX ("\neq", "\nabla"…) vì chúng nằm TRONG $…$. Hết mơ hồ "\neq" vs "\nVì".
+function buildLines(raw: string): string[] {
+  const lines: string[] = ['']
+  const pushText = (txt: string) => {
+    const parts = uni(txt).replace(/\\n|\r\n?|\n/g, '\n').split('\n') // đổi ký hiệu trước, rồi cắt mọi kiểu xuống dòng
+    lines[lines.length - 1] += esc(parts[0])
+    for (let i = 1; i < parts.length; i++) lines.push(esc(parts[i]))
   }
-  return out + escText(s.slice(last))
-}
-// Mỗi dòng (tách bởi \n thật hoặc literal "\n") = 1 block → phân số dòng trên KHÔNG đè dòng dưới.
-// Chỉ coi "\n" + KHÔNG-phải-chữ-cái là xuống dòng. "\neq", "\nabla", "\ni"… là LaTeX → giữ nguyên.
-const NL = /\\n(?![a-zA-Z])|\r\n?/g
-const HAS_NL = /\n|\\n(?![a-zA-Z])/
-function mathToHtml(s: string): string {
-  return (s ?? '').replace(NL, '\n').split('\n')
-    .map((line) => `<div class="mline">${lineToHtml(line) || '&nbsp;'}</div>`).join('')
+  let last = 0, m: RegExpExecArray | null
+  MATH_RE.lastIndex = 0
+  while ((m = MATH_RE.exec(raw))) {
+    if (m.index > last) pushText(raw.slice(last, m.index))
+    lines[lines.length - 1] += m[1] != null ? tex(m[1], true) : tex(m[2]!, false) // math luôn nằm TRONG dòng hiện tại
+    last = MATH_RE.lastIndex
+  }
+  if (last < raw.length) pushText(raw.slice(last))
+  return lines
 }
 export function MathText({ children, className }: { children: string | null | undefined; className?: string }) {
-  const s = children ?? ''
+  const lines = buildLines(children ?? '')
   // 1 dòng → inline (căn baseline đẹp); nhiều dòng → block từng dòng (phân số không đè).
-  if (!HAS_NL.test(s)) return <span className={`katex-text ${className ?? ''}`} dangerouslySetInnerHTML={{ __html: lineToHtml(s) }} />
-  return <div className={`katex-text ${className ?? ''}`} dangerouslySetInnerHTML={{ __html: mathToHtml(s) }} />
+  if (lines.length <= 1) return <span className={`katex-text ${className ?? ''}`} dangerouslySetInnerHTML={{ __html: lines[0] || '' }} />
+  return <div className={`katex-text ${className ?? ''}`} dangerouslySetInnerHTML={{ __html: lines.map((l) => `<div class="mline">${l || '&nbsp;'}</div>`).join('') }} />
 }
 
 export const inp = 'w-full rounded-md border border-slate-300 px-2.5 py-1.5 text-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20'

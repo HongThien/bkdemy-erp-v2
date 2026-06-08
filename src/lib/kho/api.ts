@@ -96,6 +96,16 @@ export async function deleteCau(ma_cau: string): Promise<void> {
   const { error } = await supabase.from('dai_cau_hoi').delete().eq('ma_cau', ma_cau)
   if (error) throw error
 }
+
+// ── Ảnh: upload lên Supabase Storage (bucket public 'kho-anh'), DB chỉ lưu URL ngắn (không base64) ──
+export const KHO_BUCKET = 'kho-anh'
+export async function uploadKhoImage(file: File): Promise<string> {
+  const ext = (file.name.split('.').pop() || 'png').toLowerCase().replace(/[^a-z0-9]/g, '') || 'png'
+  const path = `${crypto.randomUUID()}.${ext}`
+  const { error } = await supabase.storage.from(KHO_BUCKET).upload(path, file, { contentType: file.type || 'image/png', upsert: false })
+  if (error) throw error
+  return supabase.storage.from(KHO_BUCKET).getPublicUrl(path).data.publicUrl
+}
 // Mã câu = mã DẠNG + STT 3 chữ số (vd 07010103 → 07010103001). Lấy max STT hiện có +1 (không tái dùng số đã xoá).
 const maCau = (dangChinh: string, seq: number) => `${dangChinh}${String(seq).padStart(3, '0')}`
 async function nextCauSeq(dangChinh: string): Promise<number> {

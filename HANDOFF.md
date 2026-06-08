@@ -1,7 +1,18 @@
 # HANDOFF — Kho (Bản đồ kiến thức), phiên 2026-06-06
 
 > Tổng kết để tiếp tục ở máy khác (không còn context chat). Đọc nguyên file này trước.
-> Bối cảnh: **tạm dừng mockup TA**, ưu tiên dựng **tool Kho** trong màn Admin. Mới làm xong **nhánh Đại**.
+> Bối cảnh: **tạm dừng mockup TA**, ưu tiên dựng **tool Kho** trong màn Admin.
+
+---
+
+## 🔼 CẬP NHẬT phiên 2 (2026-06-08) — đọc trước, phần dưới có chỗ STALE
+
+- **App giờ CẦN ĐĂNG NHẬP.** Bật **Auth (Supabase email/password)** + **RLS toàn bộ bảng, chỉ `authenticated`** (migration **0006**). → Đoạn dưới ghi "RLS off, anon ghi OK" **ĐÃ SAI**. Tài khoản tạo **tay** ở Supabase Dashboard → Authentication → Add user (tick Auto-confirm). claude_build/anon KHÔNG tạo user được.
+- **Đã deploy Vercel**: project riêng v2, nhánh `main` → `bkdemy-erp-v2.vercel.app`. Env `VITE_*` khai trong Vercel (Settings → Environment → Production). Gemini key public trong bundle → đã/cần giới hạn HTTP referrer.
+- **Đã build**: kho câu hỏi per-dạng (Clone biến thể + Nhập chuỗi câu, Gemini), KaTeX, paste ảnh (base64 trong DB), auth.
+- **Migration đã áp thêm**: `0004` lý thuyết, `0005` provenance câu hỏi, `0006` RLS. (Tất cả ĐÃ ở DB live — đừng chạy lại.)
+- **Mã câu** `ma_cau` = `{ma_dang}`+STT 3 số (vd `07010103001`), tính client-side max+1.
+- **Bài học kỹ thuật** (zoom/100vh, grid-rows, MathText `\neq`, ma_cau no-trigger, paste stopPropagation…): xem memory **kho-tool-build** (auto-memory) — log đầy đủ ở đó.
 
 ---
 

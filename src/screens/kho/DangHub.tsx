@@ -3,7 +3,7 @@ import {
   listCauByDang, updateCau, deleteCau,
   buildClonePrompt, parseCloneJson, saveCloneBatch,
   buildBatchPrompt, parseBatchJson, parseStructuredText, saveCauBatch, callGeminiJson,
-  LOAI_CAU, type CauHoi, type MapRow,
+  uploadKhoImage, LOAI_CAU, type CauHoi, type MapRow,
 } from '../../lib/kho/api'
 
 const SAMPLE_TEXT = `Câu 1.
@@ -642,18 +642,20 @@ function AutoTextarea({ value, onChange, className, maxPx }: { value: string; on
   return <textarea ref={ref} rows={1} value={value} onChange={(e) => onChange(e.target.value)} className={className} />
 }
 
-// Ảnh đề/đáp án: click chọn file HOẶC bấm vào ô rồi Ctrl+V dán ảnh clipboard. Lưu data-URL base64.
+// Ảnh đề/đáp án: click chọn file HOẶC bấm vào ô rồi Ctrl+V dán ảnh → UPLOAD Supabase Storage, DB chỉ lưu URL.
 function ImageSlot({ url, label, onChange }: { url: string | null; label: string; onChange: (v: string | null) => void }) {
   const ref = useRef<HTMLInputElement>(null)
-  const load = (f: File | null | undefined) => {
+  const [busy, setBusy] = useState(false)
+  const load = async (f: File | null | undefined) => {
     if (!f || !f.type.startsWith('image/')) return
-    const r = new FileReader()
-    r.onload = () => onChange(String(r.result)) // data:image/...;base64,...
-    r.readAsDataURL(f)
+    setBusy(true)
+    try { onChange(await uploadKhoImage(f)) }
+    catch (e: any) { alert('Upload ảnh lỗi: ' + (e?.message ?? e)) }
+    finally { setBusy(false) }
   }
   const onPaste = (e: React.ClipboardEvent) => {
     const f = Array.from(e.clipboardData.files).find((x) => x.type.startsWith('image/'))
-    if (f) { e.preventDefault(); e.stopPropagation(); load(f) } // stopPropagation: KHÔNG để listener ảnh-AI ngoài cùng cũng nuốt
+    if (f) { e.preventDefault(); e.stopPropagation(); void load(f) } // stopPropagation: KHÔNG để listener ảnh-AI ngoài cùng cũng nuốt
   }
   if (url) return (
     <div className="relative inline-block max-w-full self-center">
@@ -662,11 +664,11 @@ function ImageSlot({ url, label, onChange }: { url: string | null; label: string
     </div>
   )
   return (
-    <button type="button" onClick={() => ref.current?.click()} onPaste={onPaste}
+    <button type="button" onClick={() => !busy && ref.current?.click()} onPaste={onPaste} disabled={busy}
       title={`${label} — click chọn ảnh, hoặc bấm vào đây rồi Ctrl+V dán ảnh`}
-      className="inline-flex w-fit shrink-0 items-center gap-1.5 self-start rounded-md border border-dashed border-slate-300 px-2.5 py-1 text-[12px] font-medium text-slate-400 transition hover:border-indigo-400 hover:text-indigo-500 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/30">
-      <span>🖼</span><span>{label} — dán / chọn</span>
-      <input ref={ref} type="file" accept="image/*" hidden onChange={(e) => { load(e.target.files?.[0]); e.target.value = '' }} />
+      className="inline-flex w-fit shrink-0 items-center gap-1.5 self-start rounded-md border border-dashed border-slate-300 px-2.5 py-1 text-[12px] font-medium text-slate-400 transition hover:border-indigo-400 hover:text-indigo-500 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 disabled:opacity-60">
+      <span>{busy ? '⏳' : '🖼'}</span><span>{busy ? 'Đang tải ảnh…' : `${label} — dán / chọn`}</span>
+      <input ref={ref} type="file" accept="image/*" hidden onChange={(e) => { void load(e.target.files?.[0]); e.target.value = '' }} />
     </button>
   )
 }
