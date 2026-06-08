@@ -5,14 +5,16 @@
 
 ---
 
-## 🔼 CẬP NHẬT phiên 2 (2026-06-08) — đọc trước, phần dưới có chỗ STALE
+## 🔼 CẬP NHẬT phiên 2 (2026-06-08/09) — đọc trước, phần dưới có chỗ STALE
 
 - **App giờ CẦN ĐĂNG NHẬP.** Bật **Auth (Supabase email/password)** + **RLS toàn bộ bảng, chỉ `authenticated`** (migration **0006**). → Đoạn dưới ghi "RLS off, anon ghi OK" **ĐÃ SAI**. Tài khoản tạo **tay** ở Supabase Dashboard → Authentication → Add user (tick Auto-confirm). claude_build/anon KHÔNG tạo user được.
-- **Đã deploy Vercel**: project riêng v2, nhánh `main` → `bkdemy-erp-v2.vercel.app`. Env `VITE_*` khai trong Vercel (Settings → Environment → Production). Gemini key public trong bundle → đã/cần giới hạn HTTP referrer.
-- **Đã build**: kho câu hỏi per-dạng (Clone biến thể + Nhập chuỗi câu, Gemini), KaTeX, paste ảnh (base64 trong DB), auth.
-- **Migration đã áp thêm**: `0004` lý thuyết, `0005` provenance câu hỏi, `0006` RLS. (Tất cả ĐÃ ở DB live — đừng chạy lại.)
-- **Mã câu** `ma_cau` = `{ma_dang}`+STT 3 số (vd `07010103001`), tính client-side max+1.
-- **Bài học kỹ thuật** (zoom/100vh, grid-rows, MathText `\neq`, ma_cau no-trigger, paste stopPropagation…): xem memory **kho-tool-build** (auto-memory) — log đầy đủ ở đó.
+- **Đã deploy Vercel**: project riêng v2, nhánh `main` → `bkdemy-erp-v2.vercel.app`. Env `VITE_*` khai trong Vercel (Settings → Environment → Production). Gemini key public trong bundle → giới hạn HTTP referrer.
+- **Kho câu hỏi per-dạng**: Clone biến thể + Nhập chuỗi câu (Gemini, ảnh/PDF/JSON/văn-bản), trắc nghiệm 4 PA, KaTeX (`\dfrac`), review 1-câu. **Mã câu** `ma_cau` = `{ma_dang}`+STT 3 số (client-side max+1).
+- **Ảnh đề/đáp án → Supabase Storage** bucket `kho-anh` (không còn base64); `uploadKhoImage()`. Có nút **📋 Dán clipboard** + chọn file mọi chỗ paste.
+- **Lý thuyết**: theo **NỘI DUNG text+LaTeX** (render như bài tập), KHÔNG phải file. Editor popup to: upload ảnh/PDF → **AI bóc LaTeX** (trái code / phải preview). Áp cho **dạng** (`dai_dang_ly_thuyet.noi_dung`) lẫn **chuyên đề** (`dai_chuyen_de_ly_thuyet`, khoá `ma_chuyen_de`, tuỳ chọn — nút "📖 Lý thuyết chung" khi zoom vào chuyên đề). Đính kèm file → bucket `kho-tailieu`.
+- **Migrations ĐÃ áp vào DB live (ĐỪNG chạy lại)**: `0002`–`0005` cũ · `0006` RLS · `0007` bucket `kho-anh` · `0008` bucket `kho-tailieu` · `0009` lý thuyết `noi_dung` · `0010` `dai_chuyen_de_ly_thuyet`. **2 bucket Storage đã có sẵn trên cloud** — ở nhà khỏi tạo.
+- **Bài học kỹ thuật** (zoom/100vh, `grid-rows-[minmax(0,1fr)]`, MathText tách `$…$` trước rồi xử lý xuống dòng, ma_cau no-trigger, paste stopPropagation…): xem memory **kho-tool-build** (auto-memory) — log đầy đủ.
+- **Quyết định** chốt ở **Notion**: trang "Kho — Bản đồ kiến thức · Quyết định build (ADR)" (con của ERP V2).
 
 ---
 
