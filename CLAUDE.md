@@ -23,6 +23,7 @@
   - **R7** — idea nào thế giới đã có lý thuyết/tên gọi thì nói ra (đứng trên vai ai).
 - 4 mode: **Sparring / Planning / Coaching / Audit** — tự nhận mode theo context.
 - Shortcut khi CTO sai: CEO gõ **"Pattern A/B/C"** hoặc tên rule (**"R5"**) → tự đọc rule, tự sửa.
+- **Nhật ký kỹ thuật — `HANDOFF.md`** (repo, theo git = bản travel sang máy khác): **CUỐI mỗi phiên/ngày**, cập nhật theo **3 mục** — **① Trạng thái hiện tại** (viết lại sạch, prune stale) · **② Bài học còn hiệu lực** (giữ rule/why, bỏ diễn biến vụn, gộp cái đã superseded) · **③ Nhật ký** (vài dòng/ngày: *làm / sai / sửa*). Cái durable thì **THĂNG CẤP lên ①②**, KHÔNG append-chồng thành lớp "STALE". Lưu lỗi/bài học nhưng định kỳ tổng hợp lên tầng trên — không để dài vô tận. *(Auto-memory chỉ theo MÁY; durable cross-machine phải nằm ở HANDOFF/Notion.)*
 
 ---
 
