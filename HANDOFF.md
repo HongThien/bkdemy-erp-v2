@@ -13,6 +13,7 @@
 - Kho = lá `bdkt` trong cây Admin → `src/screens/kho/KhoScreen.tsx`. Build **THẬT, wire Supabase DB v2** (ngoại lệ so với mock-first của shell — vì schema Kho đã đông cứng).
 - **Seam:** UI KHÔNG gọi `supabase` trực tiếp, chỉ qua `src/lib/kho/api.ts`.
 - `api.ts` (data-layer) · `KhoScreen.tsx` (tab Đại/Hình + khối) · `BanDo.tsx` (duyệt cây + modal dạng + lý thuyết) · `DangHub.tsx` (kho câu hỏi per-dạng + AI import) · `ui.tsx` (MathText/KaTeX + primitives) · `branches.ts` (config Đại/Hình) · `AdminScreen.tsx` · `App.tsx` (auth gate) · `auth/Login.tsx`.
+- **Làm tài liệu**: `src/lib/tailieu.ts` (data-layer) · `src/screens/tailieu/` — `TaiLieuScreen` (thư viện) · `TaiLieuBuilder` (config/builder) · `PrintView` (xuất PDF). Lá Admin `lamtailieu`. Logo: `public/Logo.png`.
 
 ### Đã build (nhánh ĐẠI)
 - **Bản đồ**: Chủ đề → Chuyên đề (card) → zoom Dạng (card + filter bậc/độ khó toggle). CRUD dạng thật, mã vị trí gợi ý sửa được.
@@ -21,13 +22,15 @@
 - **Badge % hoàn thành**: vòng tròn tiến độ (góc card chuyên đề) + pill (chủ đề/header), **5 thang màu**. % = câu(cap chuẩn) 70% + lý thuyết dạng 30%, gộp trục lý thuyết chuyên đề (Có=1/Chưa=0/Không-cần=loại). → liếc thấy chỗ thiếu.
 - **Ảnh & file → Supabase Storage** (bucket `kho-anh` ảnh, `kho-tailieu` file đính kèm); DB lưu URL. Nút 📋 Dán clipboard + chọn file.
 - **Auth + RLS**: đăng nhập Supabase Auth (email/pass); RLS toàn bộ bảng, chỉ `authenticated`.
+- **Làm tài liệu (giáo trình)** — tài liệu = **THAM CHIẾU** vào kho (xuất mới snapshot). Tạo (tên+khối) → **Builder**: **+ Thêm chuyên đề (NHIỀU cái gộp thành 1 tài liệu)**, mỗi dạng có số-câu-theo-loại + Gợi-ý-lại + chọn câu từ kho (KhoPicker) + ↑↓, BTVN cuối; setting chrome (header/footer/watermark/màu); **🖨 xuất PDF 2 bản HS/GV** (HTML→`window.print()`, gu "workbook" 4 màu brand + dải sóng + logo). *(Đang dở — xem "Chưa làm".)*
 - **Deploy**: Vercel project v2, nhánh `main` → `bkdemy-erp-v2.vercel.app`.
 
 ### Chưa làm
+- **Làm tài liệu — đang dở** (ưu tiên tiếp): header/footer **chọn nhiều mẫu** (mới có 1 dải sóng) · running header slim trang ruột · reorder câu trong dạng · áp `cau_hinh.mau` cho dải sóng · gu B (học thuật)/C (SaaS) · custom block · BTVN số-câu-theo-loại.
 - Nhánh **Hình** (tab stub "dựng sau"): cây Mảng→Loại→Dạng-hình + Bài/Ý/mô hình/bổ đề (spec §4).
 - Quản lý 4 danh mục (thuộc tính/bổ đề Đại, mô hình/bổ đề Hình); gắn thuộc tính cho Dạng.
 - `countCauByDang` đếm ở client → chuyển **view Postgres** khi data lớn.
-- **Kho tài liệu** (video/pdf/slide tag dạng 0..n). Theme **Classroom** cho màn Nhân sự.
+- **Kho tài liệu** (video/pdf/slide tag dạng — resource library, KHÁC "Làm tài liệu"). Theme **Classroom** cho màn Nhân sự.
 
 ### Quyết định & quy ước (đừng vô tình phá)
 - **3 tầng, BỎ Chương** (Chủ đề→Chuyên đề→Dạng).
@@ -41,8 +44,9 @@
 - `dai_ban_do`: ma_dang(PK)·khoi·ma_chu_de/ten·ma_chuyen_de/ten·ten_dang·muc_do·bac_toi_thieu(FK)·created_at. (DROP ma_chuong.)
 - `dai_cau_hoi`: ma_cau(PK)·dang_chinh·loai_cau·noi_dung·dap_an·loi_giai·lua_chon(jsonb)·anh_de·anh_dap_an·nguon·parent_ma_cau·clone_method.
 - `dai_dang_ly_thuyet`: ma_dang(PK)·noi_dung·file_url?·ten_file?. `dai_chuyen_de_ly_thuyet`: ma_chuyen_de(PK)·noi_dung·file_url?·ten_file?·**khong_can**.
+- **Tài liệu**: `tai_lieu`(id·loai·ten·khoi·ma_chuyen_de?·theme·**cau_hinh** jsonb) · `tai_lieu_phan`(tai_lieu_id·thu_tu·loai_phan[lt_chuyen_de|dang|btvn|custom]·ref_ma·tieu_de·noi_dung) · `tai_lieu_cau`(phan_id·ma_cau·thu_tu).
 - `hinh_ban_do` (+bac_toi_thieu) + bảng Hình/danh mục như `spec-kho-v2.md`.
-- **Migrations ĐÃ áp vào DB live (ĐỪNG chạy lại):** 0001 init · 0002 drop Chương + bậc lớp · 0003 grants · 0004 lý thuyết dạng · 0005 provenance câu · 0006 RLS · 0007 bucket `kho-anh` · 0008 bucket `kho-tailieu` · 0009 lý thuyết `noi_dung` · 0010 chuyên đề lý thuyết · 0011 cờ `khong_can`. **2 bucket Storage đã có trên cloud.**
+- **Migrations ĐÃ áp vào DB live (ĐỪNG chạy lại):** 0001–0007 (init→bucket kho-anh) · 0008 bucket `kho-tailieu` · 0009 lý thuyết `noi_dung` · 0010 chuyên đề LT · 0011 cờ `khong_can` · 0012 tài liệu · 0013 `tai_lieu.cau_hinh`. **2 bucket Storage đã có trên cloud.**
 
 ### Khởi động ở máy MỚI (về nhà)
 1. `git pull`.
