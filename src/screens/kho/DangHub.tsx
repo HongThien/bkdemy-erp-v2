@@ -247,13 +247,16 @@ function AiImportModal({ mode, dangChinh, tenDang, onClose, onSaved }: {
     setJson(text)
     if (!text.trim()) { setGoc(null); setItems([]); setParseErr(null); setShowVariants(false); return }
     try {
+      let note: string | null = null
       if (isClone) {
         const { goc, variants } = parseCloneJson(text)
-        setGoc(toRI(goc, true)); setItems(variants.map((v) => toRI(v))); setShowVariants(false); setVi(0)
+        const capped = variants.slice(0, soBienThe) // AI hay sinh DƯ → cap cứng theo số đã chọn
+        setGoc(toRI(goc, true)); setItems(capped.map((v) => toRI(v))); setShowVariants(false); setVi(0)
+        if (variants.length > soBienThe) note = `AI sinh ${variants.length} biến thể → đã lấy ${soBienThe} đầu (đúng số bạn chọn).`
       } else {
         setGoc(null); setItems(parseBatchJson(text).map((v) => toRI(v))); setVi(0)
       }
-      setParseErr(null)
+      setParseErr(note)
     } catch (e: any) { setGoc(null); setItems([]); setParseErr(e.message ?? String(e)) }
   }
 

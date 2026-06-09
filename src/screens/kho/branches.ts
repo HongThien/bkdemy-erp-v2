@@ -20,7 +20,7 @@ export type BranchConfig = {
 // Cùng shape cho lý thuyết dạng & chuyên đề (key = leafMa | ma_chuyen_de)
 export type LyThuyetApi = {
   list: () => Promise<Record<string, LyThuyet>>
-  upsert: (ma: string, noiDung: string, fileUrl: string | null, tenFile: string | null) => Promise<void>
+  upsert: (ma: string, noiDung: string, fileUrl: string | null, tenFile: string | null, khongCan?: boolean) => Promise<void>
   remove: (ma: string) => Promise<void>
 }
 

@@ -7,11 +7,12 @@ const esc = (t: string) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replac
 // Lưới an toàn: lệnh toán đứng TRẦN ngoài $…$ (AI quên bọc $) → đổi sang ký tự Unicode để vẫn hiện đúng.
 // (Bên trong $…$ do KaTeX lo, hàm này CHỈ chạy trên phần text ngoài công thức.)
 const UNI: [RegExp, string][] = [
-  [/\\infty/g, '∞'], [/\\leq/g, '≤'], [/\\geq/g, '≥'], [/\\neq/g, '≠'], [/\\le\b/g, '≤'], [/\\ge\b/g, '≥'], [/\\ne\b/g, '≠'],
-  [/\\times/g, '×'], [/\\cdot/g, '·'], [/\\div/g, '÷'], [/\\pm/g, '±'], [/\\circ/g, '°'], [/\\sqrt/g, '√'],
-  [/\\Leftrightarrow/g, '⇔'], [/\\Rightarrow/g, '⇒'], [/\\rightarrow/g, '→'], [/\\to\b/g, '→'],
+  [/\\infty/g, '∞'], [/\\leq/g, '≤'], [/\\geq/g, '≥'], [/\\neq/g, '≠'], [/\\le\b/g, '≤'], [/\\ge\b/g, '≥'], [/\\ne\b/g, '≠'], [/\\approx/g, '≈'], [/\\equiv/g, '≡'],
+  [/\\times/g, '×'], [/\\cdot/g, '·'], [/\\div/g, '÷'], [/\\pm/g, '±'], [/\\mp/g, '∓'], [/\\circ/g, '°'],
+  [/\\Leftrightarrow/g, '⇔'], [/\\iff/g, '⇔'], [/\\implies/g, '⇒'], [/\\Rightarrow/g, '⇒'], [/\\rightarrow/g, '→'], [/\\to\b/g, '→'],
   [/\\cup/g, '∪'], [/\\cap/g, '∩'], [/\\subset/g, '⊂'], [/\\notin/g, '∉'], [/\\in\b/g, '∈'],
   [/\\forall/g, '∀'], [/\\exists/g, '∃'], [/\\varnothing/g, '∅'], [/\\emptyset/g, '∅'],
+  [/\\ldots/g, '…'], [/\\cdots/g, '…'], [/\\dots/g, '…'],
   [/\\alpha/g, 'α'], [/\\beta/g, 'β'], [/\\gamma/g, 'γ'], [/\\pi/g, 'π'], [/\\Delta/g, 'Δ'],
 ]
 // Đổi ký hiệu toán TRẦN (ngoài $…$) → Unicode. Chạy TRƯỚC bước cắt dòng để "\neq" trần không bị nuốt "\n".
@@ -25,12 +26,21 @@ const tex = (s: string, display: boolean) => {
 const MATH_RE = /\$\$([\s\S]+?)\$\$|\$([^$]+?)\$/g
 // Tách raw thành các DÒNG html. Xuống dòng (\n thật, "\\n" literal, CRLF) CHỈ tính ở phần TEXT ngoài $…$.
 // → KHÔNG bao giờ đụng lệnh LaTeX ("\neq", "\nabla"…) vì chúng nằm TRONG $…$. Hết mơ hồ "\neq" vs "\nVì".
+// Render 1 phần TEXT (ngoài $…$): lệnh CÓ NGOẶC "\dfrac{6}{5}" (AI quên bọc $) → katex; phần còn lại esc.
+// (lệnh KHÔNG ngoặc như "\neq" đã được uni() đổi Unicode trước đó; "\nVì" không có ngoặc nên không đụng.)
+function renderText(s: string): string {
+  const re = /\\[a-zA-Z]+(?:\{[^{}]*\})+/g
+  let out = '', last = 0, m: RegExpExecArray | null
+  while ((m = re.exec(s))) { out += esc(s.slice(last, m.index)); out += tex(m[0], false); last = re.lastIndex }
+  return out + esc(s.slice(last))
+}
 function buildLines(raw: string): string[] {
   const lines: string[] = ['']
   const pushText = (txt: string) => {
-    const parts = uni(txt).replace(/\\n|\r\n?|\n/g, '\n').split('\n') // đổi ký hiệu trước, rồi cắt mọi kiểu xuống dòng
-    lines[lines.length - 1] += esc(parts[0])
-    for (let i = 1; i < parts.length; i++) lines.push(esc(parts[i]))
+    const t = uni(txt.replace(/<br\s*\/?>/gi, '\n'))        // <br> → xuống dòng; ký hiệu trần → Unicode
+    const parts = t.replace(/\\n|\r\n?|\n/g, '\n').split('\n') // rồi cắt mọi kiểu xuống dòng
+    lines[lines.length - 1] += renderText(parts[0])
+    for (let i = 1; i < parts.length; i++) lines.push(renderText(parts[i]))
   }
   let last = 0, m: RegExpExecArray | null
   MATH_RE.lastIndex = 0

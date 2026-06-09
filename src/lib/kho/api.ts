@@ -149,6 +149,8 @@ function loaiFields(loaiCau: string): { spec: string; obj: string; ruleDapAn: st
 const FMT_RULES = [
   'QUY TẮC TRÌNH BÀY:',
   '- Công thức toán DÙNG LaTeX trong $...$ (inline) hoặc $$...$$ (block).',
+  '- ⚠ MỖI công thức/phân số/biểu thức phải bọc RIÊNG trong $...$ — KỂ CẢ khi liệt kê nhiều: viết "$\\\\dfrac{6}{5}$; $\\\\dfrac{4}{3}$" (TUYỆT ĐỐI KHÔNG để "\\\\dfrac{6}{5}" trần ngoài $).',
+  '- ⚠ Xuống dòng DÙNG ký tự xuống dòng thật trong chuỗi — TUYỆT ĐỐI KHÔNG dùng thẻ "<br>".',
   '- Phân số DÙNG \\\\dfrac{a}{b} (KHÔNG dùng \\\\frac vì hiển thị bé). KHÔNG viết dạng a/b.',
   '- Số đơn lẻ KHÔNG cần $: viết "30 quả" không phải "$30$ quả". KHÔNG để tiếng Việt có dấu bên trong $...$.',
   '- Số thập phân dùng dấu chấm: "0.6" (không "0,6").',
@@ -173,7 +175,7 @@ export function buildClonePrompt(a: { soBienThe: number; ghiChu: string; tenDang
     '',
     'Làm 2 việc:',
     `1) Trích bài mẫu thành các trường: ${f.spec}.`,
-    `2) Sinh ${a.soBienThe} biến thể GIỮ NGUYÊN cấu trúc & phương pháp; đổi số liệu (kết quả hợp lý, "đẹp") / tên người / hoàn cảnh. Lời giải copy đúng format bài mẫu, thay số tương ứng. Mỗi biến thể ĐỦ trường như bài gốc.`,
+    `2) Sinh ĐÚNG ${a.soBienThe} biến thể (KHÔNG nhiều hơn, KHÔNG ít hơn — mảng "variants" có ĐÚNG ${a.soBienThe} phần tử) GIỮ NGUYÊN cấu trúc & phương pháp; đổi số liệu (kết quả hợp lý, "đẹp") / tên người / hoàn cảnh. Lời giải copy đúng format bài mẫu, thay số tương ứng. Mỗi biến thể ĐỦ trường như bài gốc.`,
     a.ghiChu ? `Ghi chú thêm: ${a.ghiChu}` : '',
     '',
     f.ruleDapAn,
@@ -303,12 +305,14 @@ export async function callGeminiJson(prompt: string, opts?: { model?: string; fi
   for (const f of opts?.files ?? []) parts.push({ inline_data: { mime_type: f.mimeType, data: f.dataBase64 } })
   const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`, {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ contents: [{ parts }], generationConfig: { responseMimeType: 'application/json' } }),
+    body: JSON.stringify({ contents: [{ parts }], generationConfig: { responseMimeType: 'application/json', maxOutputTokens: 65536 } }),
   })
   if (!res.ok) throw new Error(`Gemini API lỗi ${res.status}: ${(await res.text()).slice(0, 300)}`)
   const data = await res.json()
-  const txt: string = (data?.candidates?.[0]?.content?.parts ?? []).map((p: any) => p.text ?? '').join('')
-  if (!txt.trim()) throw new Error('Gemini trả rỗng.')
+  const cand = data?.candidates?.[0]
+  const txt: string = (cand?.content?.parts ?? []).map((p: any) => p.text ?? '').join('')
+  if (cand?.finishReason === 'MAX_TOKENS') throw new Error('AI bị CẮT do output quá dài (JSON dở) → giảm "Số biến thể" hoặc cho input ngắn hơn rồi thử lại.')
+  if (!txt.trim()) throw new Error(`Gemini trả rỗng${cand?.finishReason ? ` (lý do: ${cand.finishReason})` : ''}.`)
   return txt
 }
 
@@ -480,8 +484,8 @@ export function parseLyThuyetJson(text: string): string {
 
 // ── Lý thuyết đi kèm dạng Đại (1-1) + chuẩn completeness ──────────
 export const CHUAN_SO_CAU = 50 // chuẩn kho: mỗi dạng ≥ 50 câu (sàn SỐ LƯỢNG, chỉnh 1 chỗ)
-// noi_dung = nội dung lý thuyết (text + LaTeX, render như bài tập); file_url/ten_file = đính kèm tuỳ chọn
-export type LyThuyet = { noi_dung: string; file_url: string | null; ten_file: string | null; cap_nhat_at?: string }
+// noi_dung = nội dung lý thuyết (text + LaTeX); file_url/ten_file = đính kèm; khong_can = đánh dấu "không cần" (chỉ chuyên đề)
+export type LyThuyet = { noi_dung: string; file_url: string | null; ten_file: string | null; khong_can?: boolean; cap_nhat_at?: string }
 
 export async function listDaiLyThuyet(): Promise<Record<string, LyThuyet>> {
   const { data, error } = await supabase.from('dai_dang_ly_thuyet').select('*').limit(LIMIT)
@@ -504,12 +508,12 @@ export async function listDaiChuyenDeLyThuyet(): Promise<Record<string, LyThuyet
   const { data, error } = await supabase.from('dai_chuyen_de_ly_thuyet').select('*').limit(LIMIT)
   if (error) throw error
   const m: Record<string, LyThuyet> = {}
-  for (const r of data ?? []) m[r.ma_chuyen_de] = { noi_dung: r.noi_dung ?? '', file_url: r.file_url, ten_file: r.ten_file, cap_nhat_at: r.cap_nhat_at }
+  for (const r of data ?? []) m[r.ma_chuyen_de] = { noi_dung: r.noi_dung ?? '', file_url: r.file_url, ten_file: r.ten_file, khong_can: r.khong_can ?? false, cap_nhat_at: r.cap_nhat_at }
   return m
 }
-export async function upsertDaiChuyenDeLyThuyet(ma_chuyen_de: string, noi_dung: string, file_url: string | null, ten_file: string | null): Promise<void> {
+export async function upsertDaiChuyenDeLyThuyet(ma_chuyen_de: string, noi_dung: string, file_url: string | null, ten_file: string | null, khong_can = false): Promise<void> {
   const { error } = await supabase.from('dai_chuyen_de_ly_thuyet')
-    .upsert({ ma_chuyen_de, noi_dung, file_url, ten_file }, { onConflict: 'ma_chuyen_de' })
+    .upsert({ ma_chuyen_de, noi_dung, file_url, ten_file, khong_can }, { onConflict: 'ma_chuyen_de' })
   if (error) throw error
 }
 export async function deleteDaiChuyenDeLyThuyet(ma_chuyen_de: string): Promise<void> {

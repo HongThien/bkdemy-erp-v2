@@ -54,6 +54,7 @@
 | file_url | text | Y |  |  |
 | ten_file | text | Y |  |  |
 | cap_nhat_at | timestamp with time zone |  | now() |  |
+| khong_can | boolean |  | false |  |
 
 ## dai_dang_ly_thuyet
 
