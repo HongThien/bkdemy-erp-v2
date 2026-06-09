@@ -1,8 +1,9 @@
 # HANDOFF — Kho (Bản đồ kiến thức) · BKdemy ERP v2
 
 > Bản chuẩn để tiếp tục ở máy khác / session mới (không còn context chat). **Đọc nguyên file trước khi code.**
-> 3 mục: **① Trạng thái hiện tại** (sự thật current) · **② Bài học còn hiệu lực** (đừng đạp lại) · **③ Nhật ký** (lịch sử ngắn).
-> *Cập nhật cuối mỗi phiên: thăng cấp cái durable lên ①②, prune cái cũ; ③ chỉ vài dòng/ngày. Đừng append-chồng thành lớp "STALE". (Rule ở CLAUDE.md §0.)*
+> 2 mục: **① Trạng thái hiện tại** (sự thật current) · **② Bài học còn hiệu lực** (đừng đạp lại).
+> Nhật ký THÔ từng ngày ở **`DEVLOG.md`** — KHÔNG cần đọc khi làm, chỉ để truy lại / tổng hợp lại nếu bản này sai.
+> *Quy tắc (CLAUDE.md §0): trong ngày chỉ APPEND `DEVLOG.md`; **CUỐI NGÀY** mới distill durable lên ①②, prune stale. Không append-chồng "STALE".*
 
 ---
 
@@ -16,7 +17,8 @@
 ### Đã build (nhánh ĐẠI)
 - **Bản đồ**: Chủ đề → Chuyên đề (card) → zoom Dạng (card + filter bậc/độ khó toggle). CRUD dạng thật, mã vị trí gợi ý sửa được.
 - **Kho câu hỏi per-dạng** (`DangHub`): **Clone biến thể** + **Nhập chuỗi câu**; method Auto (ảnh/PDF→Gemini) / Manual (dán JSON) / Văn bản (parser). Trắc nghiệm 4 PA. Review 1-câu (Trước/Sau), layout đề+đáp án | lời giải. Sửa câu = preview + ✎.
-- **Lý thuyết** (text+LaTeX, render như bài tập — KHÔNG phải file): editor popup to, upload ảnh/PDF → **AI bóc LaTeX**, trái code / phải preview. Cho **dạng** lẫn **chuyên đề** (tuỳ chọn, nút 📖).
+- **Lý thuyết** (text+LaTeX, render như bài tập — KHÔNG phải file): editor popup to, upload ảnh/PDF → **AI bóc LaTeX**, trái code / phải preview. Cho **dạng** lẫn **chuyên đề**. Lý thuyết chuyên đề có **3 trạng thái: Có / Chưa / Không cần** (cờ `khong_can`); "không cần" loại khỏi tính %.
+- **Badge % hoàn thành**: vòng tròn tiến độ (góc card chuyên đề) + pill (chủ đề/header), **5 thang màu**. % = câu(cap chuẩn) 70% + lý thuyết dạng 30%, gộp trục lý thuyết chuyên đề (Có=1/Chưa=0/Không-cần=loại). → liếc thấy chỗ thiếu.
 - **Ảnh & file → Supabase Storage** (bucket `kho-anh` ảnh, `kho-tailieu` file đính kèm); DB lưu URL. Nút 📋 Dán clipboard + chọn file.
 - **Auth + RLS**: đăng nhập Supabase Auth (email/pass); RLS toàn bộ bảng, chỉ `authenticated`.
 - **Deploy**: Vercel project v2, nhánh `main` → `bkdemy-erp-v2.vercel.app`.
@@ -38,9 +40,9 @@
 - `lop_bac` (S/A/B/C, thu_tu) seeded.
 - `dai_ban_do`: ma_dang(PK)·khoi·ma_chu_de/ten·ma_chuyen_de/ten·ten_dang·muc_do·bac_toi_thieu(FK)·created_at. (DROP ma_chuong.)
 - `dai_cau_hoi`: ma_cau(PK)·dang_chinh·loai_cau·noi_dung·dap_an·loi_giai·lua_chon(jsonb)·anh_de·anh_dap_an·nguon·parent_ma_cau·clone_method.
-- `dai_dang_ly_thuyet`: ma_dang(PK)·noi_dung·file_url?·ten_file?. `dai_chuyen_de_ly_thuyet`: ma_chuyen_de(PK)·noi_dung·file_url?·ten_file?.
+- `dai_dang_ly_thuyet`: ma_dang(PK)·noi_dung·file_url?·ten_file?. `dai_chuyen_de_ly_thuyet`: ma_chuyen_de(PK)·noi_dung·file_url?·ten_file?·**khong_can**.
 - `hinh_ban_do` (+bac_toi_thieu) + bảng Hình/danh mục như `spec-kho-v2.md`.
-- **Migrations ĐÃ áp vào DB live (ĐỪNG chạy lại):** 0001 init · 0002 drop Chương + bậc lớp · 0003 grants · 0004 lý thuyết dạng · 0005 provenance câu · 0006 RLS · 0007 bucket `kho-anh` · 0008 bucket `kho-tailieu` · 0009 lý thuyết `noi_dung` · 0010 chuyên đề lý thuyết. **2 bucket Storage đã có trên cloud.**
+- **Migrations ĐÃ áp vào DB live (ĐỪNG chạy lại):** 0001 init · 0002 drop Chương + bậc lớp · 0003 grants · 0004 lý thuyết dạng · 0005 provenance câu · 0006 RLS · 0007 bucket `kho-anh` · 0008 bucket `kho-tailieu` · 0009 lý thuyết `noi_dung` · 0010 chuyên đề lý thuyết · 0011 cờ `khong_can`. **2 bucket Storage đã có trên cloud.**
 
 ### Khởi động ở máy MỚI (về nhà)
 1. `git pull`.
@@ -64,12 +66,12 @@
 - **Lưu phải ĐỦ cột**: patch thiếu `lua_chon`/`anh_*` → rớt data. Tái dùng editor + mapper đủ cột.
 - **claude_build KHÔNG đụng schema `auth`/`storage`**: tạo user + bucket/policy phải qua **Dashboard** (SQL Editor cho storage). Bảng `public` thì áp migration bình thường.
 - **Auth không vướng RLS**: login đi endpoint `/auth` riêng → bật RLS KHÔNG khoá đăng nhập (chỉ khoá đọc/ghi bảng).
+- **Render phải CHỊU output AI ẩu**: AI hay quên bọc `$` (để `\dfrac{6}{5}` trần) + dùng `<br>`. Renderer phải tự render lệnh-CÓ-NGOẶC trần + đổi `<br>`→xuống dòng. ĐỪNG tin AI bọc `$` chuẩn.
+- **AI hay LỜ số lượng yêu cầu** (xin 20 biến thể, trả 41) → **luôn CAP cứng ở CODE**, đừng tin prompt. `maxOutputTokens` thấp CHE lỗi này (output bị cắt) → nâng 65536 + bắt `finishReason==='MAX_TOKENS'`.
+- **Completeness phải có trạng thái "KHÔNG áp dụng" TƯỜNG MINH** (vd chuyên đề "không cần LT" → loại khỏi mẫu số %) — đừng tính ngầm/đoán, sẽ ra % sai.
 - **Op**: migration áp RIÊNG từng file (0001 không idempotent). Test regex/chuỗi bằng **file `.mjs` chạy `node`** — ĐỪNG `node -e` qua bash heredoc (nuốt backslash). Vercel env nằm TRONG từng Environment (click Production), thêm xong phải **Redeploy**. Gemini key public → giới hạn HTTP referrer + budget alert.
 
 ---
 
-## ③ NHẬT KÝ (mới → cũ, ngắn)
-
-- **2026-06-09** — Lý thuyết = nội dung text+LaTeX (bỏ hướng file/ảnh), editor popup AI bóc LaTeX (trái code/phải preview); lý thuyết chung cấp chuyên đề (`dai_chuyen_de_ly_thuyet`, tuỳ chọn); 📋 Dán clipboard mọi chỗ; chốt Gemini ưu tiên PDF; cơ chế log 3-mục này. Migrations 0008/0009/0010. *Sai→sửa:* header popup bẻ chữ (nút thiếu `whitespace-nowrap`).
-- **2026-06-08** — Auth + RLS (0006); kho câu hỏi AI import (clone/nhập chuỗi); mã câu `{dạng}+STT`; ảnh→Storage (0007); deploy Vercel; chốt Notion ADR. *Sai→sửa:* zoom/100vh scrollbar; grid không cuộn; `\neq` vỡ rồi `\nVì` mất xuống dòng (sửa 2 lần → fix gốc tách `$…$`); CauModal rớt cột; paste nhân đôi.
-- **2026-06-06** — Dựng nhánh Đại: bản đồ 3 tầng (bỏ Chương), bậc lớp S>A>B>C, mã vị trí, CRUD dạng. Migrations 0002/0003.
+## ③ Nhật ký
+→ Chuyển sang **`DEVLOG.md`** (log thô append-only, theo ngày, KHÔNG load khi làm). Là nguồn bất biến để truy lại / tổng hợp lại HANDOFF nếu bản này sai logic.

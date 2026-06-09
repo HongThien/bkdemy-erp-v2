@@ -77,6 +77,7 @@ export const adminLeaves: AdminLeaf[] = [
   { id: 'ns',          nhom: 'Danh mục',  ten: 'Nhân sự',                      founderOnly: false },
   { id: 'tl',          nhom: 'Danh mục',  ten: 'Kho tài liệu',                 founderOnly: false },
   { id: 'bdkt',        nhom: 'Danh mục',  ten: 'Bản đồ kiến thức (Kho)',       founderOnly: false }, // ← kho ở đây
+  { id: 'lamtailieu',  nhom: 'Danh mục',  ten: 'Làm tài liệu',                 founderOnly: false }, // ← giáo trình…
   { id: 'orgchart',    nhom: 'Quan hệ',   ten: 'Sơ đồ tổ chức',                founderOnly: true },
   { id: 'phancong',    nhom: 'Quan hệ',   ten: 'Phân công',                    founderOnly: false },
   { id: 'tkb',         nhom: 'Quan hệ',   ten: 'Thời khóa biểu',               founderOnly: false },

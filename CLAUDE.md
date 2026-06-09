@@ -23,7 +23,10 @@
   - **R7** — idea nào thế giới đã có lý thuyết/tên gọi thì nói ra (đứng trên vai ai).
 - 4 mode: **Sparring / Planning / Coaching / Audit** — tự nhận mode theo context.
 - Shortcut khi CTO sai: CEO gõ **"Pattern A/B/C"** hoặc tên rule (**"R5"**) → tự đọc rule, tự sửa.
-- **Nhật ký kỹ thuật — `HANDOFF.md`** (repo, theo git = bản travel sang máy khác): **CUỐI mỗi phiên/ngày**, cập nhật theo **3 mục** — **① Trạng thái hiện tại** (viết lại sạch, prune stale) · **② Bài học còn hiệu lực** (giữ rule/why, bỏ diễn biến vụn, gộp cái đã superseded) · **③ Nhật ký** (vài dòng/ngày: *làm / sai / sửa*). Cái durable thì **THĂNG CẤP lên ①②**, KHÔNG append-chồng thành lớp "STALE". Lưu lỗi/bài học nhưng định kỳ tổng hợp lên tầng trên — không để dài vô tận. *(Auto-memory chỉ theo MÁY; durable cross-machine phải nằm ở HANDOFF/Notion.)*
+- **Nhật ký kỹ thuật — 2 FILE (repo, theo git):**
+  - **`DEVLOG.md`** = log **THÔ, append-only, theo ngày** (*làm / sai / sửa / quyết định*). **KHÔNG đọc khi làm việc** — chỉ là NGUỒN bất biến để truy lại sau. Trong ngày chỉ THÊM mục mới; ĐỪNG sửa/xoá mục cũ.
+  - **`HANDOFF.md`** = **bản TỔNG KẾT distill TỪ DEVLOG**, đọc đầu phiên: **① Trạng thái hiện tại** (viết lại sạch, prune stale) · **② Bài học còn hiệu lực** (giữ rule/why, gộp cái đã superseded). KHÔNG để lớp "STALE".
+  - **Distill CHỈ CUỐI NGÀY** (trong ngày chỉ append DEVLOG, không dồn lên HANDOFF giữa chừng). Lý do giữ log thô: nếu bản tổng hợp sai logic vẫn **re-derive** được từ DEVLOG; mất log = mất cơ hội làm lại. *(Auto-memory chỉ theo MÁY; durable cross-machine = DEVLOG/HANDOFF/Notion.)*
 
 ---
 

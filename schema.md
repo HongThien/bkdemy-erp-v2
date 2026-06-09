@@ -2,7 +2,7 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-16 bảng · 0 enum · 0 trigger · 0 function
+19 bảng · 0 enum · 0 trigger · 0 function
 
 ## dai_ban_do
 
@@ -159,4 +159,39 @@
 | ma | text |  |  | PK |
 | ten | text |  |  |  |
 | thu_tu | smallint |  |  |  |
+
+## tai_lieu
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| loai | text |  | 'giao_trinh'::text |  |
+| ten | text |  |  |  |
+| khoi | text |  |  |  |
+| ma_chuyen_de | text | Y |  |  |
+| theme | text |  | 'bkdemy'::text |  |
+| created_at | timestamp with time zone |  | now() |  |
+| updated_at | timestamp with time zone |  | now() |  |
+| cau_hinh | jsonb |  | '{}'::jsonb |  |
+
+## tai_lieu_cau
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| phan_id | uuid |  |  | FK→tai_lieu_phan.id |
+| ma_cau | text |  |  | FK→dai_cau_hoi.ma_cau |
+| thu_tu | integer |  | 0 |  |
+
+## tai_lieu_phan
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| tai_lieu_id | uuid |  |  | FK→tai_lieu.id |
+| thu_tu | integer |  | 0 |  |
+| loai_phan | text |  |  |  |
+| ref_ma | text | Y |  |  |
+| tieu_de | text | Y |  |  |
+| noi_dung | text | Y |  |  |
 

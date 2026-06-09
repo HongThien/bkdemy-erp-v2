@@ -4,6 +4,7 @@ import { adminLeaves } from '../mock/fixtures'
 import PersonalCard from '../components/PersonalCard'
 import NavTree from '../components/NavTree'
 import KhoScreen from './kho/KhoScreen'
+import TaiLieuScreen from './tailieu/TaiLieuScreen'
 
 export default function AdminScreen({ user }: { user: User }) {
   const { adminLeaf, setAdminLeaf } = useStore()
@@ -18,6 +19,8 @@ export default function AdminScreen({ user }: { user: User }) {
       </aside>
       {adminLeaf === 'bdkt' ? (
         <KhoScreen />
+      ) : adminLeaf === 'lamtailieu' ? (
+        <TaiLieuScreen />
       ) : (
       <section className="min-h-0 overflow-auto p-8">
         <h2 className="mb-1 text-sm font-semibold">{leaf?.ten ?? 'Admin'}</h2>
