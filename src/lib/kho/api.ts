@@ -469,6 +469,8 @@ export function buildLyThuyetPrompt(a: { tenDang: string; ghiChu?: string }): st
     'QUY TẮC:',
     '- Công thức toán DÙNG LaTeX trong $...$ (inline) hoặc $$...$$ (block). Phân số DÙNG \\\\dfrac (không \\\\frac).',
     '- Đề mục/tiêu đề để nguyên dòng; xuống dòng giữ bằng xuống dòng thật.',
+    '- TÁCH mỗi ý/khối logic (mỗi Ví dụ, mỗi Quy tắc, mỗi Tính chất…) bằng MỘT DÒNG TRỐNG để khi in không bị xé ngang trang.',
+    '- Nhãn đầu dòng (Ví dụ, Quy tắc, Lưu ý, Chú ý, Nhận xét, Định nghĩa, Định lý, Tính chất, Hệ quả, Phương pháp…) bọc **đậm**, vd: "**Ví dụ 1:** ...".',
     '- Nếu có BẢNG / ĐỒ THỊ / HÌNH VẼ: ghi "[hình]" + mô tả 1 dòng ngắn, KHÔNG vẽ lại bằng LaTeX.',
     '- Trong JSON: lệnh LaTeX PHẢI double backslash ("\\\\dfrac", "\\\\neq"); trích dẫn dùng nháy đơn; CHỈ trả JSON.',
     'Trả về JSON: { "noi_dung": "..." }',

@@ -22,15 +22,25 @@
 - **Badge % hoàn thành**: vòng tròn tiến độ (góc card chuyên đề) + pill (chủ đề/header), **5 thang màu**. % = câu(cap chuẩn) 70% + lý thuyết dạng 30%, gộp trục lý thuyết chuyên đề (Có=1/Chưa=0/Không-cần=loại). → liếc thấy chỗ thiếu.
 - **Ảnh & file → Supabase Storage** (bucket `kho-anh` ảnh, `kho-tailieu` file đính kèm); DB lưu URL. Nút 📋 Dán clipboard + chọn file.
 - **Auth + RLS**: đăng nhập Supabase Auth (email/pass); RLS toàn bộ bảng, chỉ `authenticated`.
-- **Làm tài liệu (giáo trình)** — tài liệu = **THAM CHIẾU** vào kho (xuất mới snapshot). Tạo (tên+khối) → **Builder**: **+ Thêm chuyên đề (NHIỀU cái gộp thành 1 tài liệu)**, mỗi dạng có số-câu-theo-loại + Gợi-ý-lại + chọn câu từ kho (KhoPicker) + ↑↓, BTVN cuối; setting chrome (header/footer/watermark/màu); **🖨 xuất PDF 2 bản HS/GV** (HTML→`window.print()`, gu "workbook" 4 màu brand + dải sóng + logo). *(Đang dở — xem "Chưa làm".)*
+- **Làm tài liệu (giáo trình)** — tài liệu = **THAM CHIẾU** vào kho (xuất mới snapshot). Tạo (tên+khối) → **Builder**: **cây cấu trúc bên trái** (Chuyên đề→Dạng→BTVN, click nhảy tới) · **+ Thêm chuyên đề (NHIỀU cái gộp)** · mỗi dạng có số-câu-theo-loại (khớp setting) + Gợi-ý-lại + chọn câu từ kho (KhoPicker **có filter loại toggle**) + ↑↓ + **✕ xoá dạng**, BTVN cuối · setting chrome (header/footer/watermark/màu).
+- **Xuất PDF = paged.js** (`PrintView`): **preview = bản in** (phân trang A4 thật). Engine `new Previewer().preview(html,[cssBlobUrl],dst)`; Doc render ẩn `pv-src` → trang ra `pv-pages`. **Header/footer dải sóng full-bleed SÁT mép, lặp mọi trang** (qua `::before/::after` của `.pagedjs_pagebox`, data-URI SVG) · **logo góc trái header trên chip trắng** · **số trang** (`@page{@bottom-right{counter(page)/counter(pages)}}`) · **font Times New Roman** 16px · 2 bản **HS/GV**. Ngắt trang: lý thuyết tách **khối theo dòng trống** (`break-inside:avoid`), tiêu đề `break-after:avoid`, câu không xé. **In đậm nhãn** (Ví dụ/Quy tắc…) + `**markdown**` qua MathText.
 - **Deploy**: Vercel project v2, nhánh `main` → `bkdemy-erp-v2.vercel.app`.
 
 ### Chưa làm
-- **Làm tài liệu — đang dở** (ưu tiên tiếp): header/footer **chọn nhiều mẫu** (mới có 1 dải sóng) · running header slim trang ruột · reorder câu trong dạng · áp `cau_hinh.mau` cho dải sóng · gu B (học thuật)/C (SaaS) · custom block · BTVN số-câu-theo-loại.
+- **Làm tài liệu — còn lại**: header/footer/watermark **chọn nhiều mẫu** (mới 1 dải sóng — muốn thêm: Thùy gửi ảnh mẫu, code thành 1 option; nên tách registry khi có mẫu #2) · reorder câu trong dạng · áp `cau_hinh.mau` cho dải sóng · gu B (học thuật)/C (SaaS) · custom block · BTVN số-câu-theo-loại · nút "✎ Sửa lý thuyết" ngay trong Builder (Thùy chưa chốt).
 - Nhánh **Hình** (tab stub "dựng sau"): cây Mảng→Loại→Dạng-hình + Bài/Ý/mô hình/bổ đề (spec §4).
 - Quản lý 4 danh mục (thuộc tính/bổ đề Đại, mô hình/bổ đề Hình); gắn thuộc tính cho Dạng.
 - `countCauByDang` đếm ở client → chuyển **view Postgres** khi data lớn.
 - **Kho tài liệu** (video/pdf/slide tag dạng — resource library, KHÁC "Làm tài liệu"). Theme **Classroom** cho màn Nhân sự.
+
+### 🔜 Bài tập hàng ngày (V2) — ĐANG THIẾT KẾ (chưa code, chưa đụng DB)
+- **Mục tiêu**: port + nâng cấp "Daily 5T" của V1 (đọc `bkdemy-erp/src/components/student/TabDaily*`, `pages/admin/TabDaily5T`). Engine **cho MỌI khối** (không riêng 5T).
+- **⚠ Chặn lớn**: V2 **chưa có học sinh, chưa có lớp đo mastery (HS×dạng), chưa có bảng daily** — mới chỉ có Kho. → Làm daily = **dựng luôn nền HS + nền Đo của V2**. Daily là **kênh đo đầu tiên** đổ data vào (HS×dạng) (đúng model lõi §1).
+- **Logic Thùy chốt**: bộ câu/ngày = **50% rà-soát ngẫu nhiên + 50% luyện điểm-yếu**.
+- **Logic T đã phản biện & sửa lại** (Thùy chưa duyệt bản sửa): rà-soát giới hạn **dạng ĐÃ HỌC**; "điểm yếu" = mastery thấp **+ đủ mẫu** (ít data→đẩy sang rà-soát, §5 độ tin); mỗi câu→**1 phép đo bất biến** gắn `nguon=daily`+`cham_boi`, **trust THẤP** (home/không giám sát/AI chấm — triangulate với test, đừng để "thạo giả"); rà-soát nên **spaced-repetition + uncertainty-sampling** (hơn random thuần); luyện điểm-yếu lấy **CÂU KHÁC** (chống học vẹt); 50/50 là **mục tiêu mềm**; không phát lại câu trong N ngày; cờ **daily-ready** theo dạng đủ câu.
+- **⏳ ĐANG CHỜ Thùy quyết** trước khi đụng DB: "đã học tới dạng nào" lấy ở đâu — **(a)** theo lớp (lộ trình GV nhập) / **(b)** theo HS (suy từ data đo — cold-start rỗng) / **(c)** mở hết khối (T không khuyến nghị).
+- **Plan 4 lớp**: ① nền HS (`hoc_sinh`+lớp/khối, import từ V1) ② nền Đo (phép-đo bất biến, mastery **suy động**, anti-NULL: chưa làm=không có dòng) ③ engine Daily (chọn 50/50 từ `dai_cau_hoi`, **chấm 3 tầng** luật→cache→AI **qua proxy**, streak) ④ báo cáo + dashboard GV (HS báo sai→GV duyệt→backfill).
+- **Tái dùng từ V1** (thiết kế tốt): chấm 3 tầng + cache `accepted_answers` (unique theo đáp-án-chuẩn-hoá, càng dùng càng ít gọi AI) · `smartNormalize` (bỏ đơn vị, `1,5`→`1.5`, `1/2`→`.5`, hoán vị) · báo-sai→duyệt→backfill · streak.
 
 ### Quyết định & quy ước (đừng vô tình phá)
 - **3 tầng, BỎ Chương** (Chủ đề→Chuyên đề→Dạng).
@@ -46,7 +56,8 @@
 - `dai_dang_ly_thuyet`: ma_dang(PK)·noi_dung·file_url?·ten_file?. `dai_chuyen_de_ly_thuyet`: ma_chuyen_de(PK)·noi_dung·file_url?·ten_file?·**khong_can**.
 - **Tài liệu**: `tai_lieu`(id·loai·ten·khoi·ma_chuyen_de?·theme·**cau_hinh** jsonb) · `tai_lieu_phan`(tai_lieu_id·thu_tu·loai_phan[lt_chuyen_de|dang|btvn|custom]·ref_ma·tieu_de·noi_dung) · `tai_lieu_cau`(phan_id·ma_cau·thu_tu).
 - `hinh_ban_do` (+bac_toi_thieu) + bảng Hình/danh mục như `spec-kho-v2.md`.
-- **Migrations ĐÃ áp vào DB live (ĐỪNG chạy lại):** 0001–0007 (init→bucket kho-anh) · 0008 bucket `kho-tailieu` · 0009 lý thuyết `noi_dung` · 0010 chuyên đề LT · 0011 cờ `khong_can` · 0012 tài liệu · 0013 `tai_lieu.cau_hinh`. **2 bucket Storage đã có trên cloud.**
+- **Migrations ĐÃ áp vào DB live (ĐỪNG chạy lại):** 0001–0007 (init→bucket kho-anh) · 0008 bucket `kho-tailieu` · 0009 lý thuyết `noi_dung` · 0010 chuyên đề LT · 0011 cờ `khong_can` · 0012 tài liệu · 0013 `tai_lieu.cau_hinh`. **2 bucket Storage đã có trên cloud.** (06-10 KHÔNG thêm migration; thêm dep `pagedjs` + `src/pagedjs.d.ts`.)
+- **V2 hiện CHƯA có bảng:** học sinh / lớp / **phép-đo mastery (HS×dạng)** / daily — mới chỉ Kho + tài liệu. (Sẽ dựng khi làm Bài tập hàng ngày.)
 
 ### Khởi động ở máy MỚI (về nhà)
 1. `git pull`.
@@ -74,6 +85,9 @@
 - **AI hay LỜ số lượng yêu cầu** (xin 20 biến thể, trả 41) → **luôn CAP cứng ở CODE**, đừng tin prompt. `maxOutputTokens` thấp CHE lỗi này (output bị cắt) → nâng 65536 + bắt `finishReason==='MAX_TOKENS'`.
 - **Completeness phải có trạng thái "KHÔNG áp dụng" TƯỜNG MINH** (vd chuyên đề "không cần LT" → loại khỏi mẫu số %) — đừng tính ngầm/đoán, sẽ ra % sai.
 - **Op**: migration áp RIÊNG từng file (0001 không idempotent). Test regex/chuỗi bằng **file `.mjs` chạy `node`** — ĐỪNG `node -e` qua bash heredoc (nuốt backslash). Vercel env nằm TRONG từng Environment (click Production), thêm xong phải **Redeploy**. Gemini key public → giới hạn HTTP referrer + budget alert.
+- **Gemini `CONSUMER_SUSPENDED` (403) = CHẠM spend cap, KHÔNG mặc định là leak key.** Đoán "key bị trảm vì lộ" là SAI (đã sai 1 lần). Check **Console → Spend cap + email Google** trước. Nâng cap có **~10 phút latency** (F5 vô ích, không phải lỗi client). Cache `accepted_answers` + (sau) proxy server-side để giảm gọi/né cap.
+- **Preview-phải-bằng-bản-in → dùng paged.js, ĐỪNG tự cuộn 1 mạch.** Tự phân trang HTML là vô vọng: **flex chặn page-break**; `@page` counter (số trang) **cần có margin** mới hiện. paged.js cho A4 thật + header/footer mỗi trang + đếm trang, **1 engine cho cả preview lẫn in** nên khớp.
+- **paged.js rewrite mọi `url()` (trừ `data:`) theo base = blob URL của stylesheet** (`sheet.js`): `url("/x.png")` tương đối → `new URL('/x','blob:…')` **THROW → preview TRẮNG**. Trong CSS nạp vào paged.js phải dùng **URL tuyệt đối** (`location.origin+'/x'`) hoặc `data:`. Luôn để paged.js `.preview().catch()` **hiện lỗi**, đừng nuốt → trắng trơn khó mò.
 
 ---
 

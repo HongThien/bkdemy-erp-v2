@@ -12,6 +12,7 @@ type LtRow = { noi_dung: string; file_url: string | null; ten_file: string | nul
 type DangRow = { ma_dang: string; ten_dang: string; muc_do: number | null; bac_toi_thieu: string }
 export type PhanResolved = TaiLieuPhan & {
   ltChuyenDe?: LtRow | null   // lt_chuyen_de
+  tenChuyenDe?: string        // tên chuyên đề (lt_chuyen_de)
   dang?: DangRow | null       // dang
   lyThuyetDang?: LtRow | null // dang
   caus: CauHoi[]              // câu luyện (dang) / câu BTVN (btvn)
@@ -83,6 +84,8 @@ export async function autoSuggestCau(maDang: string, n = 6): Promise<string[]> {
   const sorted = [...caus].sort((a, b) => (a.nguon === 'le' ? 0 : 1) - (b.nguon === 'le' ? 0 : 1))
   return sorted.slice(0, n).map((c) => c.ma_cau)
 }
+// Số câu luyện mặc định mỗi dạng (theo loại) — dùng khi thêm chuyên đề + làm default cho ô nhập.
+export const DEFAULT_LUYEN_COUNTS: Record<string, number> = { trac_nghiem: 3, tra_loi_ngan: 2, tu_luan: 1 }
 // Gợi ý câu theo SỐ LƯỢNG mỗi loại: { trac_nghiem: 3, tra_loi_ngan: 2, tu_luan: 1 } → ưu tiên gốc.
 export async function autoSuggestByLoai(maDang: string, counts: Record<string, number>): Promise<string[]> {
   const caus = await listCauByDang(maDang)
@@ -97,7 +100,7 @@ export async function autoSuggestByLoai(maDang: string, counts: Record<string, n
 
 // ── Thêm 1 CHUYÊN ĐỀ vào tài liệu: nối [LT chuyên đề → mỗi dạng + câu luyện] vào CUỐI (giữ BTVN cuối cùng) ──
 // Tài liệu = NHIỀU chuyên đề gộp; gọi nhiều lần để thêm nhiều chuyên đề.
-export async function themChuyenDe(taiLieuId: string, khoi: string, maChuyenDe: string, soLuyen = 6): Promise<void> {
+export async function themChuyenDe(taiLieuId: string, khoi: string, maChuyenDe: string): Promise<void> {
   const phans = await listPhan(taiLieuId)
   const btvn = phans.find((p) => p.loai_phan === 'btvn')
   let tt = phans.length ? Math.max(...phans.map((p) => p.thu_tu)) + 1 : 0
@@ -107,7 +110,7 @@ export async function themChuyenDe(taiLieuId: string, khoi: string, maChuyenDe: 
   await addPhan({ tai_lieu_id: taiLieuId, thu_tu: tt++, loai_phan: 'lt_chuyen_de', ref_ma: maChuyenDe, tieu_de: null, noi_dung: null })
   for (const d of (dangs ?? []) as { ma_dang: string }[]) {
     const phan = await addPhan({ tai_lieu_id: taiLieuId, thu_tu: tt++, loai_phan: 'dang', ref_ma: d.ma_dang, tieu_de: null, noi_dung: null })
-    const caus = await autoSuggestCau(d.ma_dang, soLuyen)
+    const caus = await autoSuggestByLoai(d.ma_dang, DEFAULT_LUYEN_COUNTS) // lấp ĐÚNG theo số-lượng-mỗi-loại
     if (caus.length) await setCauOfPhan(phan.id, caus)
   }
   if (btvn) await updatePhan(btvn.id, { thu_tu: tt }) // đẩy BTVN xuống cuối
@@ -142,12 +145,15 @@ export async function getTaiLieuFull(id: string): Promise<TaiLieuFull> {
   const cdMas = phans.filter((p) => p.loai_phan === 'lt_chuyen_de' && p.ref_ma).map((p) => p.ref_ma as string)
   const ltCdRows = cdMas.length ? (((await supabase.from('dai_chuyen_de_ly_thuyet').select('*').in('ma_chuyen_de', cdMas).limit(LIMIT)).data ?? []) as (LtRow & { ma_chuyen_de: string })[]) : []
   const ltCdMap = new Map(ltCdRows.map((l) => [l.ma_chuyen_de, l]))
+  const cdNameRows = cdMas.length ? (((await supabase.from('dai_ban_do').select('ma_chuyen_de,ten_chuyen_de').in('ma_chuyen_de', cdMas).limit(LIMIT)).data ?? []) as { ma_chuyen_de: string; ten_chuyen_de: string }[]) : []
+  const cdNameMap = new Map(cdNameRows.map((r) => [r.ma_chuyen_de, r.ten_chuyen_de]))
 
   const phansResolved: PhanResolved[] = phans.map((p) => {
     const maList = cauRows.filter((r) => r.phan_id === p.id).sort((a, b) => a.thu_tu - b.thu_tu).map((r) => r.ma_cau)
     return {
       ...p,
       ltChuyenDe: p.loai_phan === 'lt_chuyen_de' && p.ref_ma ? ltCdMap.get(p.ref_ma) ?? null : undefined,
+      tenChuyenDe: p.loai_phan === 'lt_chuyen_de' && p.ref_ma ? cdNameMap.get(p.ref_ma) : undefined,
       dang: p.loai_phan === 'dang' && p.ref_ma ? dangMap.get(p.ref_ma) ?? null : undefined,
       lyThuyetDang: p.loai_phan === 'dang' && p.ref_ma ? ltDangMap.get(p.ref_ma) ?? null : undefined,
       caus: maList.map((ma) => cauMap.get(ma)).filter(Boolean) as CauHoi[],

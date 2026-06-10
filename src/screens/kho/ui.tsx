@@ -28,19 +28,30 @@ const MATH_RE = /\$\$([\s\S]+?)\$\$|\$([^$]+?)\$/g
 // → KHÔNG bao giờ đụng lệnh LaTeX ("\neq", "\nabla"…) vì chúng nằm TRONG $…$. Hết mơ hồ "\neq" vs "\nVì".
 // Render 1 phần TEXT (ngoài $…$): lệnh CÓ NGOẶC "\dfrac{6}{5}" (AI quên bọc $) → katex; phần còn lại esc.
 // (lệnh KHÔNG ngoặc như "\neq" đã được uni() đổi Unicode trước đó; "\nVì" không có ngoặc nên không đụng.)
-function renderText(s: string): string {
+function renderInline(s: string): string {
   const re = /\\[a-zA-Z]+(?:\{[^{}]*\})+/g
   let out = '', last = 0, m: RegExpExecArray | null
   while ((m = re.exec(s))) { out += esc(s.slice(last, m.index)); out += tex(m[0], false); last = re.lastIndex }
   return out + esc(s.slice(last))
 }
+// **đậm** (markdown) → <b>…</b>; phần còn lại render công thức trần + esc.
+function renderText(s: string): string {
+  const re = /\*\*([^*]+?)\*\*/g
+  let out = '', last = 0, m: RegExpExecArray | null
+  while ((m = re.exec(s))) { out += renderInline(s.slice(last, m.index)); out += '<b>' + renderInline(m[1]) + '</b>'; last = re.lastIndex }
+  return out + renderInline(s.slice(last))
+}
+// Nhãn đầu dòng (Ví dụ, Quy tắc, Lưu ý…) → tự bọc **…** để IN ĐẬM.
+const LABEL_RE = /^(\s*)(Ví dụ|VD|Quy tắc|Lưu ý|Chú ý|Nhận xét|Định nghĩa|Định lí|Định lý|Tính chất|Hệ quả|Ghi nhớ|Phương pháp|Bài toán|Mẹo|Dấu hiệu|Cách giải|Kết luận|Bước \d+)(\s*\d*)(\s*[:.])/u
+const autoBold = (line: string) => line.replace(LABEL_RE, (_m, sp: string, kw: string, num: string, p: string) => `${sp}**${kw}${num}${p}**`)
 function buildLines(raw: string): string[] {
   const lines: string[] = ['']
   const pushText = (txt: string) => {
     const t = uni(txt.replace(/<br\s*\/?>/gi, '\n'))        // <br> → xuống dòng; ký hiệu trần → Unicode
     const parts = t.replace(/\\n|\r\n?|\n/g, '\n').split('\n') // rồi cắt mọi kiểu xuống dòng
-    lines[lines.length - 1] += renderText(parts[0])
-    for (let i = 1; i < parts.length; i++) lines.push(renderText(parts[i]))
+    const curEmpty = lines[lines.length - 1] === ''           // chỉ auto-đậm khi ĐẦU dòng thật
+    lines[lines.length - 1] += renderText(curEmpty ? autoBold(parts[0]) : parts[0])
+    for (let i = 1; i < parts.length; i++) lines.push(renderText(autoBold(parts[i])))
   }
   let last = 0, m: RegExpExecArray | null
   MATH_RE.lastIndex = 0
