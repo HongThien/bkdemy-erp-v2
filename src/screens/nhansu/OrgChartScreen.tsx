@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { listTeam, listNhanSu, listViTri, createViTri, updateViTri, deleteViTri, type Team, type NhanSu, type ViTri } from '../../lib/nhansu'
+import { listTeam, listNhanSu, listViTri, createViTri, updateViTri, deleteViTri, listNhanSuTeamMap, type Team, type NhanSu, type ViTri } from '../../lib/nhansu'
 import { Shell, Field, inp } from '../kho/ui'
 
 const CAP_LABEL: Record<string, string> = { truong: 'Trưởng', pho: 'Phó', thanh_vien: 'Thành viên' }
@@ -23,14 +23,15 @@ export default function OrgChartScreen() {
   const [teams, setTeams] = useState<Team[]>([])
   const [teamId, setTeamId] = useState<string | null>(null)
   const [dsNhanSu, setDsNhanSu] = useState<NhanSu[]>([])
+  const [bienChe, setBienChe] = useState<Record<string, string[]>>({}) // nhan_su_id → [team_id] biên chế
   const [ghe, setGhe] = useState<ViTri[]>([])
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
   const [sel, setSel] = useState<ViTri | null>(null)
 
   useEffect(() => {
-    Promise.all([listTeam(), listNhanSu()])
-      .then(([t, ns]) => { setTeams(t); setDsNhanSu(ns); setTeamId((cur) => cur ?? t[0]?.id ?? null) })
+    Promise.all([listTeam(), listNhanSu(), listNhanSuTeamMap()])
+      .then(([t, ns, bc]) => { setTeams(t); setDsNhanSu(ns); setBienChe(bc); setTeamId((cur) => cur ?? t[0]?.id ?? null) })
       .catch((e) => setErr(e.message ?? String(e)))
   }, [])
 
@@ -124,7 +125,7 @@ export default function OrgChartScreen() {
       </div>
 
       {sel && (
-        <EditGhe g={sel} nsById={nsById} dsNhanSu={dsNhanSu} ghe={ghe} cam={descendants(sel.id)}
+        <EditGhe g={sel} nsById={nsById} dsNhanSu={dsNhanSu} bienChe={bienChe} ghe={ghe} cam={descendants(sel.id)}
           onClose={() => setSel(null)}
           onSaved={() => { setSel(null); if (teamId) reloadGhe(teamId) }} />
       )}
@@ -132,16 +133,21 @@ export default function OrgChartScreen() {
   )
 }
 
-function EditGhe({ g, nsById, dsNhanSu, ghe, cam, onClose, onSaved }: {
-  g: ViTri; nsById: Map<string, NhanSu>; dsNhanSu: NhanSu[]; ghe: ViTri[]; cam: Set<string>
+function EditGhe({ g, nsById, dsNhanSu, bienChe, ghe, cam, onClose, onSaved }: {
+  g: ViTri; nsById: Map<string, NhanSu>; dsNhanSu: NhanSu[]; bienChe: Record<string, string[]>; ghe: ViTri[]; cam: Set<string>
   onClose: () => void; onSaved: () => void
 }) {
   const [ten, setTen] = useState(g.ten ?? '')
   const [cap, setCap] = useState(g.cap)
   const [chaId, setChaId] = useState(g.cha_id ?? '')
   const [nsId, setNsId] = useState(g.nhan_su_id ?? '')
+  const [ngoaiTeam, setNgoaiTeam] = useState(false) // mặc định LỌC theo team biên chế của vị trí
   const [busy, setBusy] = useState(false)
   const gheLabel = (x: ViTri) => `${x.ten || 'Vị trí chưa tên'}${x.nhan_su_id ? ` · ${nsById.get(x.nhan_su_id)?.ho_ten ?? ''}` : ' · trống'}`
+  // Ứng viên: NS đang làm, BIÊN CHẾ (n-n) có team của vị trí (filter sẵn — 40 NS đủ team dồn 1 list thì rối).
+  // "ngoài team" mở hết; người ĐANG ngồi luôn giữ trong list (kể cả lệch team) để không mất lựa chọn hiện tại.
+  const thuocTeam = (n: NhanSu) => (bienChe[n.id] ?? []).includes(g.team_id)
+  const ungVien = dsNhanSu.filter((n) => n.trang_thai === 'dang_lam' && (ngoaiTeam || thuocTeam(n) || n.id === g.nhan_su_id))
 
   async function save() {
     setBusy(true)
@@ -185,8 +191,12 @@ function EditGhe({ g, nsById, dsNhanSu, ghe, cam, onClose, onSaved }: {
       <Field label="Người đảm nhiệm">
         <select value={nsId} onChange={(e) => setNsId(e.target.value)} className={inp}>
           <option value="">— vị trí trống —</option>
-          {dsNhanSu.filter((n) => n.trang_thai === 'dang_lam').map((n) => <option key={n.id} value={n.id}>{n.ho_ten}{n.ma_ns ? ` (${n.ma_ns})` : ''}</option>)}
+          {ungVien.map((n) => <option key={n.id} value={n.id}>{n.ho_ten}{n.ma_ns ? ` (${n.ma_ns})` : ''}{!thuocTeam(n) ? ' · ngoài team' : ''}</option>)}
         </select>
+        <label className="mt-1.5 flex cursor-pointer items-center gap-1.5 text-[12px] text-slate-500">
+          <input type="checkbox" checked={ngoaiTeam} onChange={(e) => setNgoaiTeam(e.target.checked)} />
+          Hiện cả nhân sự ngoài team ({dsNhanSu.filter((n) => n.trang_thai === 'dang_lam').length} người)
+        </label>
       </Field>
       <div className="mt-4 flex items-center justify-between">
         <div className="flex gap-2">

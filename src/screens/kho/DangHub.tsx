@@ -201,7 +201,7 @@ const toRI = (c: { noi_dung: string; dap_an: string | null; loi_giai: string | n
 const MODELS = [
   { value: 'gemini-2.5-flash-lite', label: 'Flash-Lite', sub: 'nhanh nhất' },
   { value: 'gemini-2.5-flash', label: 'Flash', sub: 'cân bằng (đề xuất)' },
-  { value: 'gemini-2.5-pro', label: 'Pro', sub: 'chất lượng cao' },
+  { value: 'gemini-2.5-pro', label: 'Pro', sub: '⚠ đắt ~4× Flash — chỉ khi Flash đọc trượt' },
 ]
 function fileToBase64(f: File): Promise<string> {
   return new Promise((res, rej) => {

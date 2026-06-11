@@ -303,12 +303,19 @@ export async function callGeminiJson(prompt: string, opts?: { model?: string; fi
   const model = opts?.model || (import.meta.env.VITE_GEMINI_MODEL as string | undefined) || 'gemini-2.5-flash'
   const parts: any[] = [{ text: prompt }]
   for (const f of opts?.files ?? []) parts.push({ inline_data: { mime_type: f.mimeType, data: f.dataBase64 } })
+  // ⚠ TIỀN: Gemini 2.5 mặc định BẬT thinking — token suy nghĩ TÍNH NHƯ OUTPUT (vô hình trong kết quả
+  // nhưng có trong bill; vụ cháy 1tr3/ngày 06-10). OCR/bóc đề/clone không cần nghĩ sâu →
+  // Flash: TẮT hẳn (budget 0) · Pro: không tắt được, ép min 128.
+  const thinkingBudget = model.includes('pro') ? 128 : 0
   const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`, {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ contents: [{ parts }], generationConfig: { responseMimeType: 'application/json', maxOutputTokens: 65536 } }),
+    body: JSON.stringify({ contents: [{ parts }], generationConfig: { responseMimeType: 'application/json', maxOutputTokens: 65536, thinkingConfig: { thinkingBudget } } }),
   })
   if (!res.ok) throw new Error(`Gemini API lỗi ${res.status}: ${(await res.text()).slice(0, 300)}`)
   const data = await res.json()
+  // Soi chi phí từng call ngay tại console: prompt/output/THINKING token.
+  const u = data?.usageMetadata
+  if (u) console.info(`[gemini ${model}] tokens — in:${u.promptTokenCount ?? 0} out:${u.candidatesTokenCount ?? 0} think:${u.thoughtsTokenCount ?? 0}`)
   const cand = data?.candidates?.[0]
   const txt: string = (cand?.content?.parts ?? []).map((p: any) => p.text ?? '').join('')
   if (cand?.finishReason === 'MAX_TOKENS') throw new Error('AI bị CẮT do output quá dài (JSON dở) → giảm "Số biến thể" hoặc cho input ngắn hơn rồi thử lại.')

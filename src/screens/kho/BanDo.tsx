@@ -433,7 +433,7 @@ function LeafCard({ d, config, cau, lt, onOpen, onDelete, onLyThuyet }: {
 const LT_MODELS = [
   { value: 'gemini-2.5-flash-lite', label: 'Flash-Lite' },
   { value: 'gemini-2.5-flash', label: 'Flash' },
-  { value: 'gemini-2.5-pro', label: 'Pro' },
+  { value: 'gemini-2.5-pro', label: 'Pro ⚠ đắt 4×' },
 ]
 type LtFile = { name: string; mimeType: string; dataBase64: string; isImage: boolean }
 function ltToBase64(f: File): Promise<string> {

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { listNhanSu, createNhanSu, updateNhanSu, deleteNhanSu, listTeam, listViTri, suggestMaNS, uploadAvatar, type NhanSu, type Team } from '../../lib/nhansu'
+import { listNhanSu, createNhanSu, updateNhanSu, deleteNhanSu, listTeam, listViTri, listNhanSuTeamMap, setTeamsOfNhanSu, listTaiKhoanMap, capTaiKhoan, suggestMaNS, uploadAvatar, type NhanSu, type Team } from '../../lib/nhansu'
 import { Shell, Field, inp, Seg, Actions } from '../kho/ui'
 
 const TT_LABEL: Record<string, string> = { dang_lam: 'Đang làm', nghi: 'Nghỉ' }
@@ -8,15 +8,18 @@ export default function NhanSuScreen() {
   const [list, setList] = useState<NhanSu[]>([])
   const [teams, setTeams] = useState<Team[]>([])
   const [teamOf, setTeamOf] = useState<Record<string, string[]>>({}) // nhan_su_id → [team ma] (suy từ GHẾ đang ngồi)
+  const [bienChe, setBienChe] = useState<Record<string, string[]>>({}) // nhan_su_id → [team_id] BIÊN CHẾ (n-n)
+  const [tkMap, setTkMap] = useState<Record<string, string>>({}) // nhan_su_id → email tài khoản
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
   const [edit, setEdit] = useState<NhanSu | null | 'new'>(null)
+  const [capTk, setCapTk] = useState<NhanSu | null>(null)
 
   async function reload() {
     setLoading(true); setErr(null)
     try {
-      const [ns, tm, ghe] = await Promise.all([listNhanSu(), listTeam(), listViTri()])
-      setList(ns); setTeams(tm)
+      const [ns, tm, ghe, bc, tk] = await Promise.all([listNhanSu(), listTeam(), listViTri(), listNhanSuTeamMap(), listTaiKhoanMap()])
+      setList(ns); setTeams(tm); setBienChe(bc); setTkMap(tk)
       const tmById = new Map(tm.map((t) => [t.id, t.ma]))
       const map: Record<string, string[]> = {}
       for (const g of ghe) {
@@ -45,7 +48,7 @@ export default function NhanSuScreen() {
           : (
             <table className="w-full border-separate border-spacing-y-1.5 text-sm">
               <thead><tr className="text-left text-[12px] uppercase tracking-wider text-slate-400">
-                <th className="px-3">Mã</th><th className="px-3">Họ tên</th><th className="px-3">SĐT</th><th className="px-3">Email</th><th className="px-3">Team (theo vị trí)</th><th className="px-3">Trạng thái</th><th></th>
+                <th className="px-3">Mã</th><th className="px-3">Họ tên</th><th className="px-3">SĐT</th><th className="px-3">Email</th><th className="px-3">Team</th><th className="px-3">Tài khoản</th><th className="px-3">Trạng thái</th><th></th>
               </tr></thead>
               <tbody>
                 {list.map((n) => (
@@ -62,10 +65,19 @@ export default function NhanSuScreen() {
                     <td className="px-3 text-slate-500">{n.so_dien_thoai ?? '—'}</td>
                     <td className="px-3 text-slate-500">{n.email ?? '—'}</td>
                     <td className="px-3">
-                      <div className="flex flex-wrap gap-1">
-                        {(teamOf[n.id] ?? []).map((ma) => <span key={ma} className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] font-medium text-slate-600">{teams.find((t) => t.ma === ma)?.ten ?? ma}</span>)}
-                        {(teamOf[n.id] ?? []).length === 0 && <span className="text-[12px] text-slate-300">chưa có vị trí</span>}
+                      <div className="flex flex-wrap items-center gap-1">
+                        {/* team BIÊN CHẾ (chính, n-n) */}
+                        {(bienChe[n.id] ?? []).map((tid) => <span key={tid} className="rounded bg-indigo-50 px-1.5 py-0.5 text-[11px] font-semibold text-indigo-700">{teams.find((t) => t.id === tid)?.ten ?? '?'}</span>)}
+                        {(bienChe[n.id] ?? []).length === 0 && <span className="text-[12px] text-slate-300">chưa xếp team</span>}
+                        {/* team theo VỊ TRÍ đang ngồi (phụ — chỉ hiện nếu NGOÀI biên chế) */}
+                        {(teamOf[n.id] ?? []).filter((ma) => { const tid = teams.find((t) => t.ma === ma)?.id; return tid && !(bienChe[n.id] ?? []).includes(tid) })
+                          .map((ma) => <span key={ma} title="đang giữ vị trí ở team này" className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] text-slate-500">+{teams.find((t) => t.ma === ma)?.ten ?? ma}</span>)}
                       </div>
+                    </td>
+                    <td className="px-3">
+                      {tkMap[n.id] !== undefined
+                        ? <span title={tkMap[n.id]} className="text-[12px] font-medium text-emerald-600">✓ có TK</span>
+                        : <button onClick={() => setCapTk(n)} className="rounded border border-slate-200 px-2 py-0.5 text-[12px] font-medium text-slate-500 hover:border-indigo-300 hover:text-indigo-700">+ Cấp TK</button>}
                     </td>
                     <td className="px-3"><span className={`rounded px-1.5 py-0.5 text-[11px] font-medium ${n.trang_thai === 'dang_lam' ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-500'}`}>{TT_LABEL[n.trang_thai]}</span></td>
                     <td className="rounded-r-lg px-3 text-right">
@@ -78,7 +90,8 @@ export default function NhanSuScreen() {
           )}
       </div>
 
-      {edit && <EditModal nhanSu={edit === 'new' ? null : edit} onClose={() => setEdit(null)} onSaved={() => { setEdit(null); reload() }} />}
+      {edit && <EditModal nhanSu={edit === 'new' ? null : edit} teams={teams} teamIds={edit === 'new' ? [] : bienChe[edit.id] ?? []} onClose={() => setEdit(null)} onSaved={() => { setEdit(null); reload() }} />}
+      {capTk && <CapTkModal nhanSu={capTk} onClose={() => setCapTk(null)} onDone={() => { setCapTk(null); reload() }} />}
     </div>
   )
 }
@@ -87,14 +100,65 @@ function Empty() {
   return <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">Chưa có nhân sự. Bấm <b className="text-slate-600">+ Thêm nhân sự</b>.</div>
 }
 
-// Form = chỉ THÔNG TIN NGƯỜI. Ghế/team gán ở Sơ đồ tổ chức (ghế sinh ghế → đặt người vào ghế).
-function EditModal({ nhanSu, onClose, onSaved }: { nhanSu: NhanSu | null; onClose: () => void; onSaved: () => void }) {
+// Mật khẩu ngẫu nhiên dễ đọc (đưa tay cho NS, họ tự đổi sau nếu muốn).
+function randPass(): string {
+  const chars = 'abcdefghjkmnpqrstuvwxyzACDEFHJKLMNPQRSTUVWXYZ23456789'
+  return Array.from(crypto.getRandomValues(new Uint8Array(10)), (b) => chars[b % chars.length]).join('')
+}
+
+// Cấp tài khoản đăng nhập NGAY TRÊN WEB (signUp bằng client phụ — admin không bị đá session).
+function CapTkModal({ nhanSu, onClose, onDone }: { nhanSu: NhanSu; onClose: () => void; onDone: () => void }) {
+  const [email, setEmail] = useState(nhanSu.email ?? '')
+  const [pass, setPass] = useState(randPass())
+  const [busy, setBusy] = useState(false)
+  const [ok, setOk] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+
+  async function create() {
+    setBusy(true); setError(null)
+    try { await capTaiKhoan(nhanSu.id, email.trim(), pass); setOk(true) }
+    catch (e: any) { setError(e.message ?? String(e)); setBusy(false) }
+  }
+
+  if (ok) return (
+    <Shell title={`Đã cấp tài khoản · ${nhanSu.ho_ten}`} onClose={onDone}>
+      <p className="mb-2 text-sm text-slate-600">Gửi thông tin này cho nhân sự (copy ngay — mật khẩu không hiện lại):</p>
+      <div className="mb-3 rounded-lg bg-slate-50 px-3 py-2.5 font-mono text-[13px] leading-6 text-slate-800">
+        Email: <b>{email.trim()}</b><br />Mật khẩu: <b>{pass}</b>
+      </div>
+      <div className="flex justify-end gap-2">
+        <button onClick={() => navigator.clipboard.writeText(`Email: ${email.trim()}\nMật khẩu: ${pass}`)} className="rounded-md border border-slate-200 px-3 py-1.5 text-sm text-slate-600 hover:border-indigo-300">📋 Copy</button>
+        <button onClick={onDone} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500">Xong</button>
+      </div>
+    </Shell>
+  )
+  return (
+    <Shell title={`Cấp tài khoản · ${nhanSu.ho_ten}`} onClose={onClose}>
+      <Field label="Email đăng nhập"><input value={email} onChange={(e) => setEmail(e.target.value)} className={inp} placeholder="email thật của nhân sự" autoFocus /></Field>
+      <Field label="Mật khẩu (đã sinh sẵn — sửa được)">
+        <div className="flex gap-1.5">
+          <input value={pass} onChange={(e) => setPass(e.target.value)} className={`${inp} font-mono`} />
+          <button onClick={() => setPass(randPass())} title="Sinh lại" className="shrink-0 rounded-md border border-slate-200 px-2.5 text-sm text-slate-500 hover:border-indigo-300">↻</button>
+        </div>
+      </Field>
+      <p className="mb-2 text-[11px] text-slate-400">Tài khoản tạo xong tự gắn với nhân sự này — họ đăng nhập là vào được Hồ sơ của tôi.</p>
+      {error && <p className="mb-2 text-xs text-rose-600">{error}</p>}
+      <Actions onClose={onClose} onSave={create} disabled={!email.trim() || pass.length < 6 || busy} saving={busy} label="Tạo tài khoản" />
+    </Shell>
+  )
+}
+
+// Form = thông tin người + TEAM BIÊN CHẾ n-n (Thùy chốt: 1 NS thuộc NHIỀU team; làm filter cho Sơ đồ).
+// VỊ TRÍ vẫn gán bên Sơ đồ tổ chức (vị trí sinh vị trí → đặt người vào).
+function EditModal({ nhanSu, teams, teamIds, onClose, onSaved }: { nhanSu: NhanSu | null; teams: Team[]; teamIds: string[]; onClose: () => void; onSaved: () => void }) {
   const isNew = !nhanSu
   const [ho_ten, setHoTen] = useState(nhanSu?.ho_ten ?? '')
   const [ma_ns, setMaNs] = useState(nhanSu?.ma_ns ?? '')
   useEffect(() => { if (isNew) suggestMaNS().then(setMaNs).catch(() => {}) }, [isNew]) // đề xuất sẵn, sửa được
   const [sdt, setSdt] = useState(nhanSu?.so_dien_thoai ?? '')
   const [email, setEmail] = useState(nhanSu?.email ?? '')
+  const [selTeams, setSelTeams] = useState<Set<string>>(new Set(teamIds))
+  const toggleTeam = (id: string) => setSelTeams((s) => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n })
   const [trang_thai, setTrangThai] = useState<NhanSu['trang_thai']>(nhanSu?.trang_thai ?? 'dang_lam')
   const [anh_url, setAnhUrl] = useState(nhanSu?.anh_url ?? '')
   const [uploading, setUploading] = useState(false)
@@ -107,8 +171,9 @@ function EditModal({ nhanSu, onClose, onSaved }: { nhanSu: NhanSu | null; onClos
     setBusy(true); setError(null)
     try {
       const patch = { ho_ten: ho_ten.trim(), so_dien_thoai: sdt.trim() || null, email: email.trim() || null, trang_thai, anh_url: anh_url || null, ...(ma_ns.trim() ? { ma_ns: ma_ns.trim() } : {}) }
-      if (isNew) await createNhanSu(patch)
-      else await updateNhanSu(nhanSu!.id, patch)
+      const id = isNew ? (await createNhanSu(patch)).id : nhanSu!.id
+      if (!isNew) await updateNhanSu(id, patch)
+      await setTeamsOfNhanSu(id, [...selTeams])
       onSaved()
     } catch (e: any) { setError(e.message ?? String(e)); setBusy(false) }
   }
@@ -139,11 +204,22 @@ function EditModal({ nhanSu, onClose, onSaved }: { nhanSu: NhanSu | null; onClos
         <Field label="Số điện thoại"><input value={sdt} onChange={(e) => setSdt(e.target.value)} className={inp} /></Field>
         <Field label="Email"><input value={email} onChange={(e) => setEmail(e.target.value)} className={inp} /></Field>
       </div>
+      <div className="mb-3">
+        <span className="mb-1.5 block text-[12px] font-semibold uppercase tracking-wider text-slate-600">Team (biên chế — chọn được NHIỀU)</span>
+        <div className="flex flex-wrap gap-1.5">
+          {teams.map((t) => (
+            <button key={t.id} onClick={() => toggleTeam(t.id)}
+              className={`h-8 rounded-lg border px-2.5 text-[13px] font-semibold transition ${selTeams.has(t.id) ? 'border-indigo-600 bg-indigo-600 text-white' : 'border-slate-200 text-slate-600 hover:border-indigo-300'}`}>
+              {selTeams.has(t.id) ? '✓ ' : ''}{t.ten}
+            </button>
+          ))}
+        </div>
+      </div>
       <Field label="Trạng thái"><Seg options={['dang_lam', 'nghi'] as const} value={trang_thai} onChange={setTrangThai} render={(o) => TT_LABEL[o]} /></Field>
-      <p className="mb-2 text-[11px] text-slate-400">Team/vị trí KHÔNG gán ở đây — vào <b>Sơ đồ tổ chức</b> tạo vị trí rồi đặt người vào.{!isNew && <> · Xoá nhân sự: <button onClick={async () => { if (confirm('Xoá nhân sự này? (vị trí đang đảm nhiệm sẽ thành vị trí trống)')) { await deleteNhanSu(nhanSu!.id); onSaved() } }} className="text-rose-600 hover:underline">tại đây</button></>}</p>
+      <p className="mb-2 text-[11px] text-slate-400">VỊ TRÍ gán bên <b>Sơ đồ tổ chức</b> (tạo vị trí → đặt người vào) — team ở đây là biên chế, dùng lọc sẵn danh sách bên đó.{!isNew && <> · Xoá nhân sự: <button onClick={async () => { if (confirm('Xoá nhân sự này? (vị trí đang đảm nhiệm sẽ thành vị trí trống)')) { await deleteNhanSu(nhanSu!.id); onSaved() } }} className="text-rose-600 hover:underline">tại đây</button></>}</p>
 
       {error && <p className="mb-2 text-xs text-rose-600">{error}</p>}
-      <Actions onClose={onClose} onSave={save} disabled={!ho_ten.trim() || busy} saving={busy} label={isNew ? 'Tạo' : 'Lưu'} />
+      <Actions onClose={onClose} onSave={save} disabled={!ho_ten.trim() || selTeams.size === 0 || busy} saving={busy} label={isNew ? 'Tạo' : 'Lưu'} />
     </Shell>
   )
 }

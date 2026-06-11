@@ -2,7 +2,7 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-30 bảng · 0 enum · 0 trigger · 0 function
+31 bảng · 0 enum · 0 trigger · 4 function
 
 ## dai_ban_do
 
@@ -231,6 +231,13 @@
 | ma_ns | text | Y | ('NS'::text \|\| lpad((nextval('ns_seq'::regclass))::text, 3, '0'::text)) |  |
 | anh_url | text | Y |  |  |
 
+## nhan_su_team
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| nhan_su_id | uuid |  |  | PK FK→nhan_su.id |
+| team_id | uuid |  |  | PK FK→team.id |
+
 ## phan_cong_lop
 
 | cột | kiểu | null | default | khóa |
@@ -334,4 +341,11 @@
 | cha_id | uuid | Y |  | FK→vi_tri.id |
 | nhan_su_id | uuid | Y |  | FK→nhan_su.id |
 | created_at | timestamp with time zone |  | now() |  |
+
+## Functions
+
+- `jwt_email()` → text
+- `jwt_uid()` → uuid
+- `la_thanh_vien()` → boolean
+- `self_link_account()` → uuid
 

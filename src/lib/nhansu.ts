@@ -1,5 +1,6 @@
 // Data-layer khối STATIC: nhân sự · team · lớp · phân công · học sinh · TKB.
 // UI KHÔNG gọi supabase trực tiếp — chỉ qua file này (seam, giống lib/kho/api.ts).
+import { createClient } from '@supabase/supabase-js'
 import { supabase } from './supabase'
 
 const LIMIT = 10000
@@ -66,6 +67,104 @@ export async function updateNhanSu(id: string, patch: Partial<NhanSu>): Promise<
 }
 export async function deleteNhanSu(id: string): Promise<void> {
   const { error } = await supabase.from('nhan_su').delete().eq('id', id)
+  if (error) throw error
+}
+
+// ── Cấp tài khoản NGAY TRÊN WEB (admin bấm, khỏi vào Dashboard) ───
+// Dùng CLIENT PHỤ (không persist session) để signUp → session admin đang đăng nhập KHÔNG bị đá.
+// ⚠ Cần Dashboard tắt "Confirm email" 1 lần (Authentication → Sign In/Up), không thì tài khoản
+// mới phải bấm link trong mail mới đăng nhập được.
+export async function capTaiKhoan(nhanSuId: string, email: string, password: string): Promise<void> {
+  const url = import.meta.env.VITE_SUPABASE_URL as string
+  const key = import.meta.env.VITE_SUPABASE_KEY as string
+  const tmp = createClient(url, key, { auth: { persistSession: false, autoRefreshToken: false } })
+  const { data, error } = await tmp.auth.signUp({ email, password })
+  if (error) throw new Error(error.message.includes('already registered')
+    ? 'Email này ĐÃ có tài khoản — người đó chỉ cần đăng nhập, app tự link theo email trùng.'
+    : error.message)
+  const uid = data.user?.id
+  if (!uid) throw new Error('Không lấy được id tài khoản mới (email có thể đã tồn tại).')
+  // link tài khoản ↔ nhân sự luôn (ghi bằng client CHÍNH của admin)
+  const { error: e2 } = await supabase.from('tai_khoan').upsert({ id: uid, nhan_su_id: nhanSuId, email }, { onConflict: 'id' })
+  if (e2) throw e2
+}
+// Map nhan_su_id → email tài khoản (để bảng Nhân sự hiện ai có TK rồi).
+export async function listTaiKhoanMap(): Promise<Record<string, string>> {
+  const { data, error } = await supabase.from('tai_khoan').select('nhan_su_id,email').limit(LIMIT)
+  if (error) throw error
+  const map: Record<string, string> = {}
+  for (const r of (data ?? []) as { nhan_su_id: string | null; email: string | null }[]) if (r.nhan_su_id) map[r.nhan_su_id] = r.email ?? ''
+  return map
+}
+
+// ── Hồ sơ CỦA TÔI (tài khoản nhân sự — Thùy chốt 06-11) ──────────
+// Link tài khoản: admin tạo user Auth (Dashboard) TRÙNG email nhân sự → lần đăng nhập đầu app TỰ LINK
+// (ghi tai_khoan id=auth.uid → nhan_su). NS tự sửa được ảnh/SĐT/email; team/vị trí/phân công CHỈ XEM.
+export type MyProfile = {
+  nhanSu: NhanSu
+  teams: Team[]                                   // biên chế (chỉ xem)
+  viTris: (ViTri & { team_ten: string })[]        // vị trí đang giữ (chỉ xem)
+  phanCong: (PhanCongLop & { lop?: Lop })[]       // phân công lớp (chỉ xem)
+}
+export async function getMyProfile(): Promise<MyProfile | null> {
+  const { data: au } = await supabase.auth.getUser()
+  const u = au?.user
+  if (!u) return null
+  // 1) đã link chưa?
+  const { data: tk, error: eTk } = await supabase.from('tai_khoan').select('*').eq('id', u.id).maybeSingle()
+  if (eTk) throw eTk
+  let nsId: string | null = (tk as { nhan_su_id: string | null } | null)?.nhan_su_id ?? null
+  // 2) chưa link → tự link theo email trùng (0 hoặc ≥2 kết quả thì KHÔNG tự quyết — thà bỏ trống còn hơn gán sai)
+  if (!nsId && u.email) {
+    const { data: cands, error } = await supabase.from('nhan_su').select('id').ilike('email', u.email).limit(2)
+    if (error) throw error
+    if (cands?.length === 1) {
+      nsId = (cands[0] as { id: string }).id
+      const { error: eUp } = await supabase.from('tai_khoan').upsert({ id: u.id, nhan_su_id: nsId, email: u.email }, { onConflict: 'id' })
+      if (eUp) throw eUp
+    }
+  }
+  if (!nsId) return null
+  const [nsRes, teamAll, teamMap, vtRes, pcRes] = await Promise.all([
+    supabase.from('nhan_su').select('*').eq('id', nsId).single(),
+    listTeam(), listNhanSuTeamMap(),
+    supabase.from('vi_tri').select('*').eq('nhan_su_id', nsId).limit(LIMIT),
+    supabase.from('phan_cong_lop').select('*, lop(*)').eq('nhan_su_id', nsId).limit(LIMIT),
+  ])
+  if (nsRes.error) throw nsRes.error
+  const tmById = new Map(teamAll.map((t) => [t.id, t]))
+  return {
+    nhanSu: nsRes.data as NhanSu,
+    teams: (teamMap[nsId] ?? []).map((tid) => tmById.get(tid)).filter(Boolean) as Team[],
+    viTris: ((vtRes.data ?? []) as ViTri[]).map((v) => ({ ...v, team_ten: tmById.get(v.team_id)?.ten ?? '?' })),
+    phanCong: (pcRes.data ?? []) as (PhanCongLop & { lop?: Lop })[],
+  }
+}
+// NS chỉ được sửa 3 trường cá nhân — whitelist ngay tại seam, UI không lách được.
+export async function updateMyProfile(nhanSuId: string, p: { so_dien_thoai?: string | null; email?: string | null; anh_url?: string | null }): Promise<void> {
+  const patch: Record<string, unknown> = { updated_at: new Date().toISOString() }
+  if ('so_dien_thoai' in p) patch.so_dien_thoai = p.so_dien_thoai
+  if ('email' in p) patch.email = p.email
+  if ('anh_url' in p) patch.anh_url = p.anh_url
+  const { error } = await supabase.from('nhan_su').update(patch).eq('id', nhanSuId)
+  if (error) throw error
+}
+
+// ── Biên chế team (n-n: 1 NS thuộc NHIỀU team — Thùy chốt 06-11) ──
+// Map nhan_su_id → [team_id]. Đọc 1 phát cho cả màn (bảng + filter sơ đồ).
+export async function listNhanSuTeamMap(): Promise<Record<string, string[]>> {
+  const { data, error } = await supabase.from('nhan_su_team').select('*').limit(LIMIT)
+  if (error) throw error
+  const map: Record<string, string[]> = {}
+  for (const r of (data ?? []) as { nhan_su_id: string; team_id: string }[]) (map[r.nhan_su_id] ??= []).push(r.team_id)
+  return map
+}
+// Set trọn bộ team của 1 NS (delete + insert — bảng nối nhỏ, đơn giản là đủ).
+export async function setTeamsOfNhanSu(nhanSuId: string, teamIds: string[]): Promise<void> {
+  const { error: e1 } = await supabase.from('nhan_su_team').delete().eq('nhan_su_id', nhanSuId)
+  if (e1) throw e1
+  if (!teamIds.length) return
+  const { error } = await supabase.from('nhan_su_team').insert(teamIds.map((t) => ({ nhan_su_id: nhanSuId, team_id: t })))
   if (error) throw error
 }
 
