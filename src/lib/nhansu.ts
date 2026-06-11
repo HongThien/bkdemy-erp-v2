@@ -16,11 +16,12 @@ export async function uploadAvatar(file: File): Promise<string> {
   return supabase.storage.from('avatars').getPublicUrl(path).data.publicUrl
 }
 export type Team = { id: string; ma: string; ten: string; thu_tu: number }
-export type ThanhVienTeam = { id: string; nhan_su_id: string; team_id: string; vai_tro: 'truong' | 'pho' | 'thanh_vien'; quan_ly_id: string | null; chuc_vu: string | null }
+// GHẾ (vị trí) — xương sống tổ chức. Cây = cha_id giữa GHẾ; người chỉ là kẻ ngồi (nhan_su_id null = ghế trống).
+export type ViTri = { id: string; team_id: string; ten: string | null; cap: 'truong' | 'pho' | 'thanh_vien'; cha_id: string | null; nhan_su_id: string | null }
 export type MucNangLuc = { id: string; ma: string; bac: string; muc: number; thu_tu: number; ten: string | null }
 export type Lop = { id: string; ten_lop: string; mon: string; khoi: number | null; bac: string | null; co_so: string | null; trang_thai: 'dang_hoc' | 'dong'; created_at?: string }
 export type PhanCongLop = { id: string; nhan_su_id: string; lop_id: string; vai_tro: 'gv' | 'tg'; la_chinh: boolean }
-export type HocSinh = { id: string; ma_hs: string | null; ho_ten: string; ngay_sinh: string | null; gioi_tinh: 'nam' | 'nu' | null; khoi: number | null; trang_thai: 'dang_hoc' | 'bao_luu' | 'nghi'; phu_huynh_id: string | null; diem_test_dau_vao: number | null; ngay_nhap_hoc: string | null; dia_chi: string | null; truong_hoc: string | null; created_at?: string }
+export type HocSinh = { id: string; ma_hs: string | null; ho_ten: string; ngay_sinh: string | null; gioi_tinh: 'nam' | 'nu' | null; khoi: number | null; trang_thai: 'dang_hoc' | 'bao_luu' | 'nghi'; phu_huynh_id: string | null; diem_test_dau_vao: number | null; ngay_nhap_hoc: string | null; dia_chi: string | null; truong_hoc: string | null; anh_url: string | null; created_at?: string }
 export type PhuHuynh = { id: string; ma_ph: string; ho_ten: string; so_dien_thoai: string | null; email: string | null; dia_chi: string | null; created_at?: string }
 export type HocSinhLop = { id: string; hoc_sinh_id: string; lop_id: string; muc_nang_luc_id: string | null; ngay_vao: string | null; trang_thai: 'dang_hoc' | 'da_roi' }
 export type ThoiKhoaBieu = { id: string; lop_id: string; thu: number; gio_bat_dau: string; gio_ket_thuc: string; phong: string | null; hieu_luc_tu: string; hieu_luc_den: string | null }
@@ -68,30 +69,30 @@ export async function deleteNhanSu(id: string): Promise<void> {
   if (error) throw error
 }
 
-// Thành viên team của 1 người
-export async function listMembership(nhanSuId: string): Promise<ThanhVienTeam[]> {
-  const { data, error } = await supabase.from('thanh_vien_team').select('*').eq('nhan_su_id', nhanSuId).limit(LIMIT)
+// ── Ghế (vị trí) ──────────────────────────────────────────────────
+export async function listViTri(teamId?: string): Promise<ViTri[]> {
+  let q = supabase.from('vi_tri').select('*').order('created_at').limit(LIMIT)
+  if (teamId) q = q.eq('team_id', teamId)
+  const { data, error } = await q
   if (error) throw error
-  return (data ?? []) as ThanhVienTeam[]
+  return (data ?? []) as ViTri[]
 }
-export async function setMembership(nhanSuId: string, teamId: string, on: boolean, vaiTro: ThanhVienTeam['vai_tro'] = 'thanh_vien', quanLyId: string | null = null): Promise<void> {
-  if (on) {
-    const { error } = await supabase.from('thanh_vien_team').upsert({ nhan_su_id: nhanSuId, team_id: teamId, vai_tro: vaiTro, quan_ly_id: quanLyId }, { onConflict: 'nhan_su_id,team_id' })
-    if (error) throw error
-  } else {
-    const { error } = await supabase.from('thanh_vien_team').delete().eq('nhan_su_id', nhanSuId).eq('team_id', teamId)
-    if (error) throw error
-  }
-}
-
-// Toàn bộ thành viên 1 team (cho sơ đồ tổ chức).
-export async function listMembershipByTeam(teamId: string): Promise<ThanhVienTeam[]> {
-  const { data, error } = await supabase.from('thanh_vien_team').select('*').eq('team_id', teamId).limit(LIMIT)
+export async function createViTri(p: Partial<ViTri> & { team_id: string }): Promise<ViTri> {
+  const { data, error } = await supabase.from('vi_tri').insert(p).select().single()
   if (error) throw error
-  return (data ?? []) as ThanhVienTeam[]
+  return data as ViTri
 }
-export async function updateMembership(id: string, patch: Partial<Pick<ThanhVienTeam, 'vai_tro' | 'quan_ly_id' | 'chuc_vu'>>): Promise<void> {
-  const { error } = await supabase.from('thanh_vien_team').update(patch).eq('id', id)
+export async function updateViTri(id: string, patch: Partial<Pick<ViTri, 'ten' | 'cap' | 'cha_id' | 'nhan_su_id'>>): Promise<void> {
+  const { error } = await supabase.from('vi_tri').update(patch).eq('id', id)
+  if (error) throw error
+}
+// Xoá ghế: con của nó được nối lên ghế ông (không mồ côi cả nhánh).
+export async function deleteViTri(id: string): Promise<void> {
+  const { data, error: e0 } = await supabase.from('vi_tri').select('cha_id').eq('id', id).single()
+  if (e0) throw e0
+  const { error: e1 } = await supabase.from('vi_tri').update({ cha_id: (data as ViTri).cha_id }).eq('cha_id', id)
+  if (e1) throw e1
+  const { error } = await supabase.from('vi_tri').delete().eq('id', id)
   if (error) throw error
 }
 

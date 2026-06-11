@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../lib/kho/api'
 import {
   listHocSinh, createHocSinh, updateHocSinh, deleteHocSinh,
   listLopCuaHS, ghiDanh, roiLop, setBandGhiDanh,
   listLop, listMucNangLuc,
-  listPhuHuynh, createPhuHuynh, listConByPH, suggestMaHS,
+  listPhuHuynh, createPhuHuynh, listConByPH, suggestMaHS, uploadAvatar,
   type HocSinh, type GhiDanh, type Lop, type MucNangLuc, type PhuHuynh,
 } from '../../lib/nhansu'
 import { Field, inp, Seg } from '../kho/ui'
@@ -62,7 +62,14 @@ export default function HocSinhScreen() {
               <tbody>
                 {shown.map((h) => (
                   <tr key={h.id} className="bg-white shadow-sm">
-                    <td className="rounded-l-lg px-3 py-2.5 font-medium text-slate-800">{h.ho_ten}</td>
+                    <td className="rounded-l-lg px-3 py-2.5 font-medium text-slate-800">
+                      <span className="flex items-center gap-2">
+                        {h.anh_url
+                          ? <img src={h.anh_url} alt="" className="h-7 w-7 rounded-lg object-cover" />
+                          : <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-sky-400 to-indigo-500 text-[12px] font-bold text-white">{h.ho_ten.trim().split(/\s+/).pop()?.[0]?.toUpperCase()}</span>}
+                        {h.ho_ten}
+                      </span>
+                    </td>
                     <td className="px-3 text-slate-500">{h.ma_hs ?? '—'}</td>
                     <td className="px-3 text-slate-500">{h.khoi ?? '—'}</td>
                     <td className="px-3">{countLop[h.id] ? <span className="rounded bg-slate-100 px-1.5 py-0.5 text-[12px] text-slate-600">{countLop[h.id]} lớp</span> : <span className="text-[12px] text-slate-300">chưa xếp</span>}</td>
@@ -94,6 +101,9 @@ function EditModal({ hocSinh, defaultKhoi, onClose, onSaved }: { hocSinh: HocSin
   const [dia_chi, setDiaChi] = useState(hocSinh?.dia_chi ?? '')
   const [ngay_nhap_hoc, setNgayNhap] = useState(hocSinh?.ngay_nhap_hoc ?? '')
   const [phId, setPhId] = useState<string | null>(hocSinh?.phu_huynh_id ?? null)
+  const [anh_url, setAnhUrl] = useState(hocSinh?.anh_url ?? '')
+  const [uploading, setUploading] = useState(false)
+  const fileRef = useRef<HTMLInputElement>(null)
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [dirty, setDirty] = useState(false)
@@ -107,7 +117,7 @@ function EditModal({ hocSinh, defaultKhoi, onClose, onSaved }: { hocSinh: HocSin
         ...(ma_hs.trim() ? { ma_hs: ma_hs.trim() } : {}), // trống → DB tự sinh HSxxxx (không gửi null đè default)
         ngay_sinh: ngay_sinh || null, gioi_tinh, trang_thai, truong_hoc: truong_hoc.trim() || null,
         dia_chi: dia_chi.trim() || null, ngay_nhap_hoc: ngay_nhap_hoc || null,
-        phu_huynh_id: phId,
+        phu_huynh_id: phId, anh_url: anh_url || null,
       }
       if (isNew) { const created = await createHocSinh(patch); setCur(created); setDirty(true) } // ở lại modal → ghi danh ngay
       else { await updateHocSinh(cur!.id, patch); onSaved() }
@@ -127,6 +137,23 @@ function EditModal({ hocSinh, defaultKhoi, onClose, onSaved }: { hocSinh: HocSin
           {/* Cột trái — thông tin */}
           <div>
             <div className="mb-2 text-[12px] font-semibold uppercase tracking-wider text-slate-500">Thông tin</div>
+            <div className="mb-4 flex items-center gap-3">
+              {anh_url
+                ? <img src={anh_url} alt="" className="h-16 w-16 rounded-xl border border-slate-200 object-cover" />
+                : <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-br from-sky-400 to-indigo-500 text-xl font-bold text-white">{ho_ten.trim().split(/\s+/).pop()?.[0]?.toUpperCase() ?? '?'}</div>}
+              <div>
+                <button onClick={() => fileRef.current?.click()} disabled={uploading} className="rounded-md border border-slate-200 px-2.5 py-1.5 text-[12px] font-medium text-slate-600 hover:border-indigo-300 hover:text-indigo-700 disabled:opacity-40">
+                  {uploading ? 'Đang tải…' : anh_url ? 'Đổi ảnh' : '+ Ảnh đại diện'}
+                </button>
+                {anh_url && <button onClick={() => setAnhUrl('')} className="ml-2 text-[12px] text-slate-400 hover:text-rose-600">gỡ</button>}
+                <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={async (e) => {
+                  const f = e.target.files?.[0]; e.target.value = ''
+                  if (!f) return
+                  setUploading(true)
+                  try { setAnhUrl(await uploadAvatar(f)) } catch (er: any) { setError(er.message ?? String(er)) } finally { setUploading(false) }
+                }} />
+              </div>
+            </div>
             <div className="grid grid-cols-2 gap-x-4">
               <Field label="Họ tên"><input value={ho_ten} onChange={(e) => setHoTen(e.target.value)} className={inp} autoFocus /></Field>
               <Field label="Mã HS"><input value={ma_hs} onChange={(e) => setMaHs(e.target.value)} className={`${inp} font-mono`} /></Field>

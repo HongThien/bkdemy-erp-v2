@@ -26,6 +26,13 @@
 
 **CHƯA làm (nợ):** trigger ghi-log lịch sử (§4 CLAUDE.md — đổi band/phân công/TKB chưa có vết; PHẢI làm trước vận hành thật, timeline tiến bộ HS dựa vào nó) · bucket avatars chưa chạy (0020) · màn Phụ huynh riêng · phân công xem từ phía NS · import HS từ V1.
 
+**(Chiều, máy cơ quan) ĐẢO MODEL TỔ CHỨC — Thùy chốt "VỊ TRÍ là xương sống":**
+- Lý do: 1 người kiêm nhiều vị trí NGAY TRONG 1 team (Trang = Trưởng khối THCS + Trưởng khối THPT). Model membership (người×team, unique) không tả nổi. Nguyên tắc Thùy: **"quản vị trí chứ không quản người — người chỉ là cái đặt lên; người đi, vị trí vẫn còn"**. Luồng: **vị trí sinh vị trí** (dựng cây trước) → mới chọn ai ngồi vào. (= position-based org của SAP/Workday.)
+- **Migration 0022**: bảng `vi_tri` (team_id · ten=chức vụ/scope · cap truong/pho/thanh_vien · **cha_id trỏ VỊ TRÍ cha** · nhan_su_id NULL=trống) — migrate data từ `thanh_vien_team` (giữ id để map cha qua quan_ly) rồi **DROP thanh_vien_team**. Xoá NS → vị trí thành trống (set null), cây không sập. Xoá vị trí → con nối lên ông.
+- **0023**: `hoc_sinh.anh_url` — avatar HS, chung bucket `avatars`.
+- Code: lib bỏ membership → `listViTri/createViTri/updateViTri/deleteViTri`. NhanSuScreen bỏ tick team (team suy từ vị trí đang ngồi). OrgChartScreen xoay quanh vị trí: + Vị trí gốc → click thẻ → tên/cấp/cha/+Vị trí con/Người đảm nhiệm; thẻ trống = viền đứt + "Vị trí trống" vàng. Thẻ lấy CHỨC VỤ làm chính, người là dòng phụ. Thẻ nới 128px, tên không truncate (tên dài bị cắt). Form HS thêm upload ảnh + avatar trong bảng.
+- **Wording (Thùy):** UI dùng "VỊ TRÍ", cấm "ghế". Level giữ "Trưởng/Phó" (T phản biện: đi cặp tự nhiên, "Quản lý" sống ở TÊN vị trí — Thùy chưa phản đối).
+
 ---
 
 ## 2026-06-10

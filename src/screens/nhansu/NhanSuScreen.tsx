@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react'
-import { useRef } from 'react'
-import { listNhanSu, createNhanSu, updateNhanSu, deleteNhanSu, listTeam, listMembership, setMembership, suggestMaNS, uploadAvatar, type NhanSu, type Team, type ThanhVienTeam } from '../../lib/nhansu'
+import { useEffect, useRef, useState } from 'react'
+import { listNhanSu, createNhanSu, updateNhanSu, deleteNhanSu, listTeam, listViTri, suggestMaNS, uploadAvatar, type NhanSu, type Team } from '../../lib/nhansu'
 import { Shell, Field, inp, Seg, Actions } from '../kho/ui'
 
 const TT_LABEL: Record<string, string> = { dang_lam: 'Đang làm', nghi: 'Nghỉ' }
@@ -8,7 +7,7 @@ const TT_LABEL: Record<string, string> = { dang_lam: 'Đang làm', nghi: 'Nghỉ
 export default function NhanSuScreen() {
   const [list, setList] = useState<NhanSu[]>([])
   const [teams, setTeams] = useState<Team[]>([])
-  const [teamOf, setTeamOf] = useState<Record<string, string[]>>({}) // nhan_su_id → [team ma]
+  const [teamOf, setTeamOf] = useState<Record<string, string[]>>({}) // nhan_su_id → [team ma] (suy từ GHẾ đang ngồi)
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
   const [edit, setEdit] = useState<NhanSu | null | 'new'>(null)
@@ -16,13 +15,16 @@ export default function NhanSuScreen() {
   async function reload() {
     setLoading(true); setErr(null)
     try {
-      const [ns, tm] = await Promise.all([listNhanSu(), listTeam()])
+      const [ns, tm, ghe] = await Promise.all([listNhanSu(), listTeam(), listViTri()])
       setList(ns); setTeams(tm)
-      // map team badges (1 query gộp)
       const tmById = new Map(tm.map((t) => [t.id, t.ma]))
-      const all = await Promise.all(ns.map((n) => listMembership(n.id)))
       const map: Record<string, string[]> = {}
-      ns.forEach((n, i) => { map[n.id] = all[i].map((m) => tmById.get(m.team_id) ?? '').filter(Boolean) })
+      for (const g of ghe) {
+        if (!g.nhan_su_id) continue
+        const ma = tmById.get(g.team_id); if (!ma) continue
+        const arr = (map[g.nhan_su_id] ??= [])
+        if (!arr.includes(ma)) arr.push(ma)
+      }
       setTeamOf(map)
     } catch (e: any) { setErr(e.message ?? String(e)) } finally { setLoading(false) }
   }
@@ -43,7 +45,7 @@ export default function NhanSuScreen() {
           : (
             <table className="w-full border-separate border-spacing-y-1.5 text-sm">
               <thead><tr className="text-left text-[12px] uppercase tracking-wider text-slate-400">
-                <th className="px-3">Mã</th><th className="px-3">Họ tên</th><th className="px-3">SĐT</th><th className="px-3">Email</th><th className="px-3">Team</th><th className="px-3">Trạng thái</th><th></th>
+                <th className="px-3">Mã</th><th className="px-3">Họ tên</th><th className="px-3">SĐT</th><th className="px-3">Email</th><th className="px-3">Team (theo vị trí)</th><th className="px-3">Trạng thái</th><th></th>
               </tr></thead>
               <tbody>
                 {list.map((n) => (
@@ -62,7 +64,7 @@ export default function NhanSuScreen() {
                     <td className="px-3">
                       <div className="flex flex-wrap gap-1">
                         {(teamOf[n.id] ?? []).map((ma) => <span key={ma} className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] font-medium text-slate-600">{teams.find((t) => t.ma === ma)?.ten ?? ma}</span>)}
-                        {(teamOf[n.id] ?? []).length === 0 && <span className="text-[12px] text-slate-300">—</span>}
+                        {(teamOf[n.id] ?? []).length === 0 && <span className="text-[12px] text-slate-300">chưa có vị trí</span>}
                       </div>
                     </td>
                     <td className="px-3"><span className={`rounded px-1.5 py-0.5 text-[11px] font-medium ${n.trang_thai === 'dang_lam' ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-500'}`}>{TT_LABEL[n.trang_thai]}</span></td>
@@ -76,7 +78,7 @@ export default function NhanSuScreen() {
           )}
       </div>
 
-      {edit && <EditModal nhanSu={edit === 'new' ? null : edit} teams={teams} dsNhanSu={list} onClose={() => setEdit(null)} onSaved={() => { setEdit(null); reload() }} />}
+      {edit && <EditModal nhanSu={edit === 'new' ? null : edit} onClose={() => setEdit(null)} onSaved={() => { setEdit(null); reload() }} />}
     </div>
   )
 }
@@ -85,10 +87,8 @@ function Empty() {
   return <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">Chưa có nhân sự. Bấm <b className="text-slate-600">+ Thêm nhân sự</b>.</div>
 }
 
-// 1 dòng membership trong form (local state — new: ghi lúc Tạo; sửa: ghi lúc Lưu)
-type MemDraft = { team_id: string; vai_tro: ThanhVienTeam['vai_tro']; quan_ly_id: string | null }
-
-function EditModal({ nhanSu, teams, onClose, onSaved }: { nhanSu: NhanSu | null; teams: Team[]; dsNhanSu: NhanSu[]; onClose: () => void; onSaved: () => void }) {
+// Form = chỉ THÔNG TIN NGƯỜI. Ghế/team gán ở Sơ đồ tổ chức (ghế sinh ghế → đặt người vào ghế).
+function EditModal({ nhanSu, onClose, onSaved }: { nhanSu: NhanSu | null; onClose: () => void; onSaved: () => void }) {
   const isNew = !nhanSu
   const [ho_ten, setHoTen] = useState(nhanSu?.ho_ten ?? '')
   const [ma_ns, setMaNs] = useState(nhanSu?.ma_ns ?? '')
@@ -101,27 +101,14 @@ function EditModal({ nhanSu, teams, onClose, onSaved }: { nhanSu: NhanSu | null;
   const fileRef = useRef<HTMLInputElement>(null)
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  // Draft membership: chọn ngay trong form (cả new lẫn sửa), bấm Tạo/Lưu mới ghi DB 1 mạch.
-  const [mem, setMem] = useState<MemDraft[]>([])
-  useEffect(() => {
-    if (nhanSu) listMembership(nhanSu.id).then((rows) => setMem(rows.map((r) => ({ team_id: r.team_id, vai_tro: r.vai_tro, quan_ly_id: r.quan_ly_id })))).catch(() => {})
-  }, [nhanSu])
-
-  const memOf = (teamId: string) => mem.find((m) => m.team_id === teamId)
-  const toggleTeam = (teamId: string, on: boolean) =>
-    setMem((p) => on ? [...p, { team_id: teamId, vai_tro: 'thanh_vien', quan_ly_id: null }] : p.filter((m) => m.team_id !== teamId))
 
   async function save() {
     if (!ho_ten.trim()) return
     setBusy(true); setError(null)
     try {
       const patch = { ho_ten: ho_ten.trim(), so_dien_thoai: sdt.trim() || null, email: email.trim() || null, trang_thai, anh_url: anh_url || null, ...(ma_ns.trim() ? { ma_ns: ma_ns.trim() } : {}) }
-      const id = isNew ? (await createNhanSu(patch)).id : nhanSu!.id
-      if (!isNew) await updateNhanSu(id, patch)
-      // sync membership: upsert các team đã chọn, gỡ team bỏ chọn
-      const before = isNew ? [] : await listMembership(id)
-      for (const m of mem) await setMembership(id, m.team_id, true, m.vai_tro, m.quan_ly_id)
-      for (const b of before) if (!mem.some((m) => m.team_id === b.team_id)) await setMembership(id, b.team_id, false)
+      if (isNew) await createNhanSu(patch)
+      else await updateNhanSu(nhanSu!.id, patch)
       onSaved()
     } catch (e: any) { setError(e.message ?? String(e)); setBusy(false) }
   }
@@ -149,26 +136,11 @@ function EditModal({ nhanSu, teams, onClose, onSaved }: { nhanSu: NhanSu | null;
       <div className="grid grid-cols-2 gap-x-4">
         <Field label="Họ tên"><input value={ho_ten} onChange={(e) => setHoTen(e.target.value)} className={inp} autoFocus /></Field>
         <Field label="Mã NS"><input value={ma_ns} onChange={(e) => setMaNs(e.target.value)} className={`${inp} font-mono`} /></Field>
-        <Field label="Trạng thái"><Seg options={['dang_lam', 'nghi'] as const} value={trang_thai} onChange={setTrangThai} render={(o) => TT_LABEL[o]} /></Field>
         <Field label="Số điện thoại"><input value={sdt} onChange={(e) => setSdt(e.target.value)} className={inp} /></Field>
         <Field label="Email"><input value={email} onChange={(e) => setEmail(e.target.value)} className={inp} /></Field>
       </div>
-
-      <div className="mb-3">
-        <div className="mb-1.5 text-[12px] font-semibold uppercase tracking-wider text-slate-600">Thuộc team</div>
-        <div className="grid grid-cols-2 gap-1.5 rounded-lg border border-slate-200 p-2">
-          {teams.map((t) => {
-            const m = memOf(t.id)
-            return (
-              <label key={t.id} className={`flex items-center gap-2 rounded-md px-2.5 py-1.5 ${m ? 'bg-indigo-50' : 'bg-slate-50'}`}>
-                <input type="checkbox" checked={!!m} onChange={(e) => toggleTeam(t.id, e.target.checked)} />
-                <span className="text-[13px] font-medium text-slate-700">{t.ten}</span>
-              </label>
-            )
-          })}
-        </div>
-        <p className="mt-1 text-[11px] text-slate-400">Phân cấp (trưởng/phó, ai dưới ai) chỉnh ở <b>Sơ đồ tổ chức</b>.{!isNew && <> · Xoá nhân sự: <button onClick={async () => { if (confirm('Xoá nhân sự này?')) { await deleteNhanSu(nhanSu!.id); onSaved() } }} className="text-rose-600 hover:underline">tại đây</button></>}</p>
-      </div>
+      <Field label="Trạng thái"><Seg options={['dang_lam', 'nghi'] as const} value={trang_thai} onChange={setTrangThai} render={(o) => TT_LABEL[o]} /></Field>
+      <p className="mb-2 text-[11px] text-slate-400">Team/vị trí KHÔNG gán ở đây — vào <b>Sơ đồ tổ chức</b> tạo vị trí rồi đặt người vào.{!isNew && <> · Xoá nhân sự: <button onClick={async () => { if (confirm('Xoá nhân sự này? (vị trí đang đảm nhiệm sẽ thành vị trí trống)')) { await deleteNhanSu(nhanSu!.id); onSaved() } }} className="text-rose-600 hover:underline">tại đây</button></>}</p>
 
       {error && <p className="mb-2 text-xs text-rose-600">{error}</p>}
       <Actions onClose={onClose} onSave={save} disabled={!ho_ten.trim() || busy} saving={busy} label={isNew ? 'Tạo' : 'Lưu'} />

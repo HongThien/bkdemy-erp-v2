@@ -170,6 +170,7 @@
 | dia_chi | text | Y |  |  |
 | truong_hoc | text | Y |  |  |
 | phu_huynh_id | uuid | Y |  | FK→phu_huynh.id |
+| anh_url | text | Y |  |  |
 
 ## hoc_sinh_lop
 
@@ -308,17 +309,6 @@
 | ten | text |  |  |  |
 | thu_tu | smallint |  | 0 |  |
 
-## thanh_vien_team
-
-| cột | kiểu | null | default | khóa |
-|---|---|---|---|---|
-| id | uuid |  | gen_random_uuid() | PK |
-| nhan_su_id | uuid |  |  | FK→nhan_su.id |
-| team_id | uuid |  |  | FK→team.id |
-| vai_tro | text |  | 'thanh_vien'::text |  |
-| quan_ly_id | uuid | Y |  | FK→nhan_su.id |
-| chuc_vu | text | Y |  |  |
-
 ## thoi_khoa_bieu
 
 | cột | kiểu | null | default | khóa |
@@ -331,5 +321,17 @@
 | phong | text | Y |  |  |
 | hieu_luc_tu | date |  |  |  |
 | hieu_luc_den | date | Y |  |  |
+| created_at | timestamp with time zone |  | now() |  |
+
+## vi_tri
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| team_id | uuid |  |  | FK→team.id |
+| ten | text | Y |  |  |
+| cap | text |  | 'thanh_vien'::text |  |
+| cha_id | uuid | Y |  | FK→vi_tri.id |
+| nhan_su_id | uuid | Y |  | FK→nhan_su.id |
 | created_at | timestamp with time zone |  | now() |  |
 

@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useState } from 'react'
-import { listTeam, listNhanSu, listMembershipByTeam, updateMembership, type Team, type NhanSu, type ThanhVienTeam } from '../../lib/nhansu'
-import { Shell } from '../kho/ui'
+import { listTeam, listNhanSu, listViTri, createViTri, updateViTri, deleteViTri, type Team, type NhanSu, type ViTri } from '../../lib/nhansu'
+import { Shell, Field, inp } from '../kho/ui'
 
-const VAI_LABEL: Record<string, string> = { truong: 'Trưởng', pho: 'Phó', thanh_vien: 'Thành viên' }
-const VAI_TONE: Record<string, string> = { truong: 'bg-indigo-600 text-white', pho: 'bg-indigo-100 text-indigo-700', thanh_vien: 'bg-slate-100 text-slate-500' }
+const CAP_LABEL: Record<string, string> = { truong: 'Trưởng', pho: 'Phó', thanh_vien: 'Thành viên' }
+const CAP_TONE: Record<string, string> = { truong: 'bg-indigo-600 text-white', pho: 'bg-indigo-100 text-indigo-700', thanh_vien: 'bg-slate-100 text-slate-500' }
 
 // CSS cây org chart: stub dọc + thanh ngang nối anh em (kiểu family-tree).
 const OC_CSS = `
@@ -18,15 +18,15 @@ const OC_CSS = `
 .oc-branch{display:flex;flex-direction:column;align-items:center}
 `
 
-// Sơ đồ tổ chức per-team: thẻ bài dựng (ảnh + tên + vai), nối dây. Click thẻ → sửa vai/cấp trên.
+// Sơ đồ tổ chức = CÂY GHẾ (vị trí). Ghế sinh ghế; người chỉ là kẻ được đặt vào ghế (trống vẫn hiện).
 export default function OrgChartScreen() {
   const [teams, setTeams] = useState<Team[]>([])
   const [teamId, setTeamId] = useState<string | null>(null)
   const [dsNhanSu, setDsNhanSu] = useState<NhanSu[]>([])
-  const [mem, setMem] = useState<ThanhVienTeam[]>([])
+  const [ghe, setGhe] = useState<ViTri[]>([])
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
-  const [sel, setSel] = useState<ThanhVienTeam | null>(null)
+  const [sel, setSel] = useState<ViTri | null>(null)
 
   useEffect(() => {
     Promise.all([listTeam(), listNhanSu()])
@@ -34,48 +34,61 @@ export default function OrgChartScreen() {
       .catch((e) => setErr(e.message ?? String(e)))
   }, [])
 
-  async function reloadMem(tid: string) {
+  async function reloadGhe(tid: string) {
     setLoading(true); setErr(null)
-    try { setMem(await listMembershipByTeam(tid)) } catch (e: any) { setErr(e.message ?? String(e)) } finally { setLoading(false) }
+    try { setGhe(await listViTri(tid)) } catch (e: any) { setErr(e.message ?? String(e)) } finally { setLoading(false) }
   }
-  useEffect(() => { if (teamId) reloadMem(teamId) }, [teamId])
+  useEffect(() => { if (teamId) reloadGhe(teamId) }, [teamId])
 
   const nsById = useMemo(() => new Map(dsNhanSu.map((n) => [n.id, n])), [dsNhanSu])
-  const inTeam = useMemo(() => new Set(mem.map((m) => m.nhan_su_id)), [mem])
-  const roots = mem.filter((m) => !m.quan_ly_id || !inTeam.has(m.quan_ly_id))
-    .sort((a, b) => (a.vai_tro === 'truong' ? 0 : a.vai_tro === 'pho' ? 1 : 2) - (b.vai_tro === 'truong' ? 0 : b.vai_tro === 'pho' ? 1 : 2))
-  const childrenOf = (nsId: string) => mem.filter((m) => m.quan_ly_id === nsId)
-  function descendants(nsId: string, acc = new Set<string>()): Set<string> {
-    for (const c of childrenOf(nsId)) if (!acc.has(c.nhan_su_id)) { acc.add(c.nhan_su_id); descendants(c.nhan_su_id, acc) }
+  const gheIds = useMemo(() => new Set(ghe.map((g) => g.id)), [ghe])
+  const roots = ghe.filter((g) => !g.cha_id || !gheIds.has(g.cha_id))
+    .sort((a, b) => (a.cap === 'truong' ? 0 : a.cap === 'pho' ? 1 : 2) - (b.cap === 'truong' ? 0 : b.cap === 'pho' ? 1 : 2))
+  const childrenOf = (gheId: string) => ghe.filter((g) => g.cha_id === gheId)
+  function descendants(gheId: string, acc = new Set<string>()): Set<string> {
+    for (const c of childrenOf(gheId)) if (!acc.has(c.id)) { acc.add(c.id); descendants(c.id, acc) }
     return acc
   }
 
-  function Card({ m }: { m: ThanhVienTeam }) {
-    const ns = nsById.get(m.nhan_su_id)
+  async function themGheGoc() {
+    if (!teamId) return
+    await createViTri({ team_id: teamId, ten: null, cap: 'truong', cha_id: null, nhan_su_id: null })
+    reloadGhe(teamId)
+  }
+
+  function Card({ g }: { g: ViTri }) {
+    const ns = g.nhan_su_id ? nsById.get(g.nhan_su_id) : null
+    const trong = !ns
     return (
-      <button onClick={() => setSel(m)}
-        className="w-28 overflow-hidden rounded-xl border border-slate-200 bg-white text-center shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-md">
+      <button onClick={() => setSel(g)}
+        className={`w-32 overflow-hidden rounded-xl border text-center shadow-sm transition hover:-translate-y-0.5 hover:shadow-md ${
+          trong ? 'border-dashed border-slate-300 bg-slate-50/60 hover:border-indigo-400' : 'border-slate-200 bg-white hover:border-indigo-300'}`}>
         {ns?.anh_url
-          ? <img src={ns.anh_url} alt="" className="h-24 w-full object-cover" />
-          : <div className="flex h-24 w-full items-center justify-center bg-gradient-to-br from-indigo-400 to-violet-500 text-3xl font-bold text-white">{ns?.ho_ten.trim().split(/\s+/).pop()?.[0]?.toUpperCase() ?? '?'}</div>}
+          ? <img src={ns.anh_url} alt="" className="h-28 w-full object-cover" />
+          : ns
+            ? <div className="flex h-28 w-full items-center justify-center bg-gradient-to-br from-indigo-400 to-violet-500 text-3xl font-bold text-white">{ns.ho_ten.trim().split(/\s+/).pop()?.[0]?.toUpperCase()}</div>
+            : <div className="flex h-28 w-full items-center justify-center bg-slate-100 text-3xl text-slate-300">＋</div>}
         <div className="px-1.5 py-1.5">
-          <div className="truncate text-[12px] font-semibold leading-tight text-slate-800">{ns?.ho_ten ?? '?'}</div>
-          <div className="font-mono text-[10px] text-slate-400">{ns?.ma_ns ?? ''}</div>
-          <span className={`mt-1 inline-block rounded px-1.5 py-0.5 text-[10px] font-semibold ${VAI_TONE[m.vai_tro]}`}>{VAI_LABEL[m.vai_tro]}</span>
-          {m.chuc_vu && <div className="mt-1 truncate rounded bg-amber-50 px-1 py-0.5 text-[10px] font-medium leading-tight text-amber-700" title={m.chuc_vu}>{m.chuc_vu}</div>}
+          {/* GHẾ là chính: chức vụ nổi nhất */}
+          <div className="text-[12px] font-semibold leading-tight text-slate-800">{g.ten || <span className="italic text-slate-400">Chưa đặt tên vị trí</span>}</div>
+          <span className={`mt-1 inline-block rounded px-1.5 py-0.5 text-[10px] font-semibold ${CAP_TONE[g.cap]}`}>{CAP_LABEL[g.cap]}</span>
+          {/* người ngồi (phụ) */}
+          {ns
+            ? <div className="mt-1 leading-tight"><span className="text-[11px] font-medium text-slate-600">{ns.ho_ten}</span> <span className="font-mono text-[9px] text-slate-400">{ns.ma_ns}</span></div>
+            : <div className="mt-1 text-[11px] font-medium text-amber-600">Vị trí trống</div>}
         </div>
       </button>
     )
   }
 
-  function Branch({ m }: { m: ThanhVienTeam }) {
-    const kids = childrenOf(m.nhan_su_id)
+  function Branch({ g }: { g: ViTri }) {
+    const kids = childrenOf(g.id)
     return (
       <div className="oc-branch">
-        <Card m={m} />
+        <Card g={g} />
         {kids.length > 0 && (
           <div className="oc-kids mt-4">
-            {kids.map((k) => <Branch key={k.id} m={k} />)}
+            {kids.map((k) => <Branch key={k.id} g={k} />)}
           </div>
         )}
       </div>
@@ -93,75 +106,97 @@ export default function OrgChartScreen() {
             {t.ten}
           </button>
         ))}
-        <span className="ml-auto text-[12px] text-slate-400">Click thẻ để đổi vai trò / cấp trên</span>
+        <button onClick={themGheGoc} className="ml-auto rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500">+ Vị trí gốc</button>
       </div>
 
       <div className="min-h-0 flex-1 overflow-auto p-8">
         {err ? <p className="text-sm text-rose-600">Lỗi: {err}</p>
           : loading ? <p className="text-sm text-slate-400">Đang tải…</p>
-          : mem.length === 0 ? (
+          : ghe.length === 0 ? (
             <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">
-              Team chưa có thành viên. Vào <b className="text-slate-600">Nhân sự</b> tick team cho từng người trước.
+              Team chưa có vị trí. Bấm <b className="text-slate-600">+ Vị trí gốc</b> để dựng cây (vị trí sinh vị trí), rồi đặt người vào.
             </div>
           ) : (
             <div className="flex min-w-max justify-center gap-12">
-              {roots.map((m) => <Branch key={m.id} m={m} />)}
+              {roots.map((g) => <Branch key={g.id} g={g} />)}
             </div>
           )}
       </div>
 
       {sel && (
-        <EditNode m={sel} nsById={nsById} mem={mem} inTeam={inTeam} cam={descendants(sel.nhan_su_id)}
+        <EditGhe g={sel} nsById={nsById} dsNhanSu={dsNhanSu} ghe={ghe} cam={descendants(sel.id)}
           onClose={() => setSel(null)}
-          onSaved={() => { setSel(null); if (teamId) reloadMem(teamId) }} />
+          onSaved={() => { setSel(null); if (teamId) reloadGhe(teamId) }} />
       )}
     </div>
   )
 }
 
-function EditNode({ m, nsById, mem, inTeam, cam, onClose, onSaved }: {
-  m: ThanhVienTeam; nsById: Map<string, NhanSu>; mem: ThanhVienTeam[]; inTeam: Set<string>; cam: Set<string>
+function EditGhe({ g, nsById, dsNhanSu, ghe, cam, onClose, onSaved }: {
+  g: ViTri; nsById: Map<string, NhanSu>; dsNhanSu: NhanSu[]; ghe: ViTri[]; cam: Set<string>
   onClose: () => void; onSaved: () => void
 }) {
-  const [vai, setVai] = useState(m.vai_tro)
-  const [ql, setQl] = useState(m.quan_ly_id && inTeam.has(m.quan_ly_id) ? m.quan_ly_id : '')
-  const [chucVu, setChucVu] = useState(m.chuc_vu ?? '')
+  const [ten, setTen] = useState(g.ten ?? '')
+  const [cap, setCap] = useState(g.cap)
+  const [chaId, setChaId] = useState(g.cha_id ?? '')
+  const [nsId, setNsId] = useState(g.nhan_su_id ?? '')
   const [busy, setBusy] = useState(false)
-  const ns = nsById.get(m.nhan_su_id)
+  const gheLabel = (x: ViTri) => `${x.ten || 'Vị trí chưa tên'}${x.nhan_su_id ? ` · ${nsById.get(x.nhan_su_id)?.ho_ten ?? ''}` : ' · trống'}`
+
   async function save() {
     setBusy(true)
-    try { await updateMembership(m.id, { vai_tro: vai, quan_ly_id: ql || null, chuc_vu: chucVu.trim() || null }); onSaved() }
+    try { await updateViTri(g.id, { ten: ten.trim() || null, cap, cha_id: chaId || null, nhan_su_id: nsId || null }); onSaved() }
     catch (e: any) { alert(e.message ?? String(e)); setBusy(false) }
   }
+  async function themGheCon() {
+    setBusy(true)
+    try { await createViTri({ team_id: g.team_id, ten: null, cap: 'thanh_vien', cha_id: g.id, nhan_su_id: null }); onSaved() }
+    catch (e: any) { alert(e.message ?? String(e)); setBusy(false) }
+  }
+  async function xoaGhe() {
+    if (!confirm('Xoá vị trí này? (vị trí con sẽ nối lên vị trí cha của nó)')) return
+    setBusy(true)
+    try { await deleteViTri(g.id); onSaved() }
+    catch (e: any) { alert(e.message ?? String(e)); setBusy(false) }
+  }
+
   return (
-    <Shell title={`${ns?.ho_ten ?? '?'} · vị trí trong team`} onClose={onClose}>
+    <Shell title={`Vị trí · ${g.ten || 'chưa đặt tên'}`} onClose={onClose}>
+      <Field label="Tên vị trí / chức vụ (scope phụ trách)">
+        <input value={ten} onChange={(e) => setTen(e.target.value)} placeholder="vd: Trưởng khối THCS / GV Toán 9" className={inp} autoFocus />
+      </Field>
       <div className="mb-3">
-        <span className="mb-1.5 block text-[12px] font-semibold uppercase tracking-wider text-slate-600">Vai trò</span>
+        <span className="mb-1.5 block text-[12px] font-semibold uppercase tracking-wider text-slate-600">Cấp (level)</span>
         <div className="flex gap-1.5">
           {(['truong', 'pho', 'thanh_vien'] as const).map((v) => (
-            <button key={v} onClick={() => setVai(v)}
-              className={`h-9 flex-1 rounded-lg border text-sm font-semibold transition ${vai === v ? 'border-indigo-600 bg-indigo-600 text-white' : 'border-slate-200 text-slate-600 hover:border-indigo-300'}`}>
-              {VAI_LABEL[v]}
+            <button key={v} onClick={() => setCap(v)}
+              className={`h-9 flex-1 rounded-lg border text-sm font-semibold transition ${cap === v ? 'border-indigo-600 bg-indigo-600 text-white' : 'border-slate-200 text-slate-600 hover:border-indigo-300'}`}>
+              {CAP_LABEL[v]}
             </button>
           ))}
         </div>
       </div>
-      <div className="mb-3">
-        <span className="mb-1.5 block text-[12px] font-semibold uppercase tracking-wider text-slate-600">Chức vụ (scope phụ trách — khác level)</span>
-        <input value={chucVu} onChange={(e) => setChucVu(e.target.value)} placeholder="vd: Quản lý khối THCS / Quản lý khối tiểu học" className="w-full rounded-md border border-slate-300 px-2.5 py-1.5 text-sm" />
-      </div>
-      <div className="mb-4">
-        <span className="mb-1.5 block text-[12px] font-semibold uppercase tracking-wider text-slate-600">Cấp trên trực tiếp</span>
-        <select value={ql} onChange={(e) => setQl(e.target.value)} className="w-full rounded-md border border-slate-300 px-2.5 py-1.5 text-sm">
-          <option value="">— đỉnh team (không có cấp trên) —</option>
-          {mem.filter((x) => x.nhan_su_id !== m.nhan_su_id && !cam.has(x.nhan_su_id)).map((x) => (
-            <option key={x.nhan_su_id} value={x.nhan_su_id}>{nsById.get(x.nhan_su_id)?.ho_ten ?? '?'}</option>
-          ))}
+      <Field label="Vị trí cha (nằm dưới vị trí nào)">
+        <select value={chaId} onChange={(e) => setChaId(e.target.value)} className={inp}>
+          <option value="">— đỉnh team —</option>
+          {ghe.filter((x) => x.id !== g.id && !cam.has(x.id)).map((x) => <option key={x.id} value={x.id}>{gheLabel(x)}</option>)}
         </select>
-      </div>
-      <div className="flex justify-end gap-2">
-        <button onClick={onClose} className="rounded-md px-3 py-1.5 text-sm text-slate-500 hover:bg-slate-100">Huỷ</button>
-        <button onClick={save} disabled={busy} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">{busy ? 'Đang lưu…' : 'Lưu'}</button>
+      </Field>
+      <Field label="Người đảm nhiệm">
+        <select value={nsId} onChange={(e) => setNsId(e.target.value)} className={inp}>
+          <option value="">— vị trí trống —</option>
+          {dsNhanSu.filter((n) => n.trang_thai === 'dang_lam').map((n) => <option key={n.id} value={n.id}>{n.ho_ten}{n.ma_ns ? ` (${n.ma_ns})` : ''}</option>)}
+        </select>
+      </Field>
+      <div className="mt-4 flex items-center justify-between">
+        <div className="flex gap-2">
+          <button onClick={themGheCon} disabled={busy} className="rounded-md border border-slate-200 px-2.5 py-1.5 text-[12px] font-medium text-slate-600 hover:border-indigo-300 hover:text-indigo-700 disabled:opacity-40">+ Vị trí con</button>
+          <button onClick={xoaGhe} disabled={busy} className="rounded-md border border-slate-200 px-2.5 py-1.5 text-[12px] text-slate-500 hover:border-rose-300 hover:text-rose-600 disabled:opacity-40">Xoá vị trí</button>
+        </div>
+        <div className="flex gap-2">
+          <button onClick={onClose} className="rounded-md px-3 py-1.5 text-sm text-slate-500 hover:bg-slate-100">Huỷ</button>
+          <button onClick={save} disabled={busy} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">{busy ? 'Đang lưu…' : 'Lưu'}</button>
+        </div>
       </div>
     </Shell>
   )
