@@ -115,7 +115,7 @@ export const Code = ({ children }: { children: ReactNode }) => (
 export function Shell({ title, onClose, children }: { title: string; onClose: () => void; children: ReactNode }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/30 p-4 backdrop-blur-sm" onClick={onClose}>
-      <div className="w-[680px] max-w-[94vw] rounded-2xl border border-slate-200 bg-white p-7 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+      <div className="max-h-[88vh] w-[680px] max-w-[94vw] overflow-y-auto rounded-2xl border border-slate-200 bg-white p-7 shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <h3 className="mb-5 text-base font-semibold text-slate-900">{title}</h3>
         {children}
       </div>

@@ -5,6 +5,10 @@ import PersonalCard from '../components/PersonalCard'
 import NavTree from '../components/NavTree'
 import KhoScreen from './kho/KhoScreen'
 import TaiLieuScreen from './tailieu/TaiLieuScreen'
+import NhanSuScreen from './nhansu/NhanSuScreen'
+import OrgChartScreen from './nhansu/OrgChartScreen'
+import LopScreen from './nhansu/LopScreen'
+import HocSinhScreen from './nhansu/HocSinhScreen'
 
 export default function AdminScreen({ user }: { user: User }) {
   const { adminLeaf, setAdminLeaf } = useStore()
@@ -21,6 +25,14 @@ export default function AdminScreen({ user }: { user: User }) {
         <KhoScreen />
       ) : adminLeaf === 'lamtailieu' ? (
         <TaiLieuScreen />
+      ) : adminLeaf === 'ns' ? (
+        <NhanSuScreen />
+      ) : adminLeaf === 'orgchart' ? (
+        <OrgChartScreen />
+      ) : adminLeaf === 'lop' ? (
+        <LopScreen />
+      ) : adminLeaf === 'hs' ? (
+        <HocSinhScreen />
       ) : (
       <section className="min-h-0 overflow-auto p-8">
         <h2 className="mb-1 text-sm font-semibold">{leaf?.ten ?? 'Admin'}</h2>

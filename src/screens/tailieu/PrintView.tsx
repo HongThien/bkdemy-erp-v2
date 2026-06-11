@@ -199,7 +199,7 @@ const CONTENT_CSS = `
 .pv-h-btvn{color:#F7941E;font-size:17px;font-weight:800;margin:0 0 5px}
 .pv-h-bt{color:#16a34a;font-weight:700;font-size:14px;margin:9px 0 2px}
 .pv-box-lt{background:#eff7fd;border:1px solid #cfe6f5;border-radius:9px;padding:11px 13px;margin-top:6px}
-.pv-box-label{font-size:10.5px;font-weight:700;text-transform:uppercase;color:#2D9CDB;letter-spacing:.5px;margin-bottom:4px}
+.pv-box-label{font-size:12.5px;font-weight:700;text-transform:uppercase;color:#2D9CDB;letter-spacing:.5px;margin-bottom:4px}
 .pv-caulist{list-style:none;margin:4px 0 0;padding:0}
 .pv-cau{margin:12px 0;break-inside:avoid}
 .pv-cau-no{font-weight:700;color:var(--pv-accent,#E91E8C);margin-right:5px}
@@ -236,7 +236,7 @@ function buildPagedCss(taiLieu: TaiLieuFull['taiLieu'], ch: CauHinh, accent: str
   // Chip trắng bo góc + viền làm nền cho logo (đọc rõ trên dải sóng). viewBox 140:30 = 42:9 mm → không méo.
   const chipUri = 'data:image/svg+xml,' + encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 30'><rect x='1.2' y='1.2' width='137.6' height='27.6' rx='7' fill='#ffffff' stroke='#dfe5ec' stroke-width='1.4'/></svg>`)
   return CONTENT_CSS + `
-.pagedjs_page{font-family:'Times New Roman',Tinos,Times,serif;font-size:16px;color:#23272b;line-height:1.55;--pv-accent:${accent}}
+.katex{font-size:0.95em!important}.pagedjs_page{font-family:'Times New Roman',Tinos,Times,serif;font-size:17px;color:#23272b;line-height:1.55;--pv-accent:${accent}}
 .pagedjs_pagebox{position:relative}
 ${head ? `.pagedjs_pagebox::before{content:${headTxt};position:absolute;top:0;left:0;right:0;height:18mm;padding:0 10mm 0 50mm;box-sizing:border-box;background:url("${logoUrl}") 8mm 3.5mm / auto 5mm no-repeat, url("${chipUri}") 4.5mm 1.5mm / 42mm 9mm no-repeat, url("${headUri}") center/100% 100% no-repeat;display:flex;align-items:center;justify-content:flex-end;color:#fff;font-weight:700;font-size:11px;letter-spacing:.3px;text-shadow:0 1px 2px rgba(0,0,0,.25);z-index:1}` : ''}
 ${foot ? `.pagedjs_pagebox::after{content:${footTxt};position:absolute;bottom:0;left:0;right:0;height:13mm;padding:0 16mm;box-sizing:border-box;background:url("${footUri}") center/100% 100% no-repeat;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:10px;letter-spacing:.3px;text-shadow:0 1px 2px rgba(0,0,0,.25);z-index:1}` : ''}

@@ -14,6 +14,7 @@
 - **Seam:** UI KHÔNG gọi `supabase` trực tiếp, chỉ qua `src/lib/kho/api.ts`.
 - `api.ts` (data-layer) · `KhoScreen.tsx` (tab Đại/Hình + khối) · `BanDo.tsx` (duyệt cây + modal dạng + lý thuyết) · `DangHub.tsx` (kho câu hỏi per-dạng + AI import) · `ui.tsx` (MathText/KaTeX + primitives) · `branches.ts` (config Đại/Hình) · `AdminScreen.tsx` · `App.tsx` (auth gate) · `auth/Login.tsx`.
 - **Làm tài liệu**: `src/lib/tailieu.ts` (data-layer) · `src/screens/tailieu/` — `TaiLieuScreen` (thư viện) · `TaiLieuBuilder` (config/builder) · `PrintView` (xuất PDF). Lá Admin `lamtailieu`. Logo: `public/Logo.png`.
+- **Nhân sự/Lớp/HS (khối STATIC)**: `src/lib/nhansu.ts` (data-layer seam) · `src/screens/nhansu/` — `NhanSuScreen` · `LopScreen` · `HocSinhScreen` · `OrgChartScreen`. Lá Admin `ns` / `lop` / `hs` / `orgchart`(founderOnly).
 
 ### Đã build (nhánh ĐẠI)
 - **Bản đồ**: Chủ đề → Chuyên đề (card) → zoom Dạng (card + filter bậc/độ khó toggle). CRUD dạng thật, mã vị trí gợi ý sửa được.
@@ -23,10 +24,22 @@
 - **Ảnh & file → Supabase Storage** (bucket `kho-anh` ảnh, `kho-tailieu` file đính kèm); DB lưu URL. Nút 📋 Dán clipboard + chọn file.
 - **Auth + RLS**: đăng nhập Supabase Auth (email/pass); RLS toàn bộ bảng, chỉ `authenticated`.
 - **Làm tài liệu (giáo trình)** — tài liệu = **THAM CHIẾU** vào kho (xuất mới snapshot). Tạo (tên+khối) → **Builder**: **cây cấu trúc bên trái** (Chuyên đề→Dạng→BTVN, click nhảy tới) · **+ Thêm chuyên đề (NHIỀU cái gộp)** · mỗi dạng có số-câu-theo-loại (khớp setting) + Gợi-ý-lại + chọn câu từ kho (KhoPicker **có filter loại toggle**) + ↑↓ + **✕ xoá dạng**, BTVN cuối · setting chrome (header/footer/watermark/màu).
-- **Xuất PDF = paged.js** (`PrintView`): **preview = bản in** (phân trang A4 thật). Engine `new Previewer().preview(html,[cssBlobUrl],dst)`; Doc render ẩn `pv-src` → trang ra `pv-pages`. **Header/footer dải sóng full-bleed SÁT mép, lặp mọi trang** (qua `::before/::after` của `.pagedjs_pagebox`, data-URI SVG) · **logo góc trái header trên chip trắng** · **số trang** (`@page{@bottom-right{counter(page)/counter(pages)}}`) · **font Times New Roman** 16px · 2 bản **HS/GV**. Ngắt trang: lý thuyết tách **khối theo dòng trống** (`break-inside:avoid`), tiêu đề `break-after:avoid`, câu không xé. **In đậm nhãn** (Ví dụ/Quy tắc…) + `**markdown**` qua MathText.
+- **Xuất PDF = paged.js** (`PrintView`): **preview = bản in** (phân trang A4 thật). Engine `new Previewer().preview(html,[cssBlobUrl],dst)`; Doc render ẩn `pv-src` → trang ra `pv-pages`. **Header/footer dải sóng full-bleed SÁT mép, lặp mọi trang** (qua `::before/::after` của `.pagedjs_pagebox`, data-URI SVG) · **logo góc trái header trên chip trắng** · **số trang** (`@page{@bottom-right{counter(page)/counter(pages)}}`) · **font Times New Roman 17px ≈ 13pt sách in** + KaTeX `0.95em` (Thùy chốt 06-11) · 2 bản **HS/GV**. Ngắt trang: lý thuyết tách **khối theo dòng trống** (`break-inside:avoid`), tiêu đề `break-after:avoid`, câu không xé. **In đậm nhãn** (Ví dụ/Quy tắc…) + `**markdown**` qua MathText.
+- **Thư viện tài liệu**: filter "Tất cả"/khối + search tên + sort + ngày tạo/sửa (giờ VN) + `created_by` (uuid auth — app set lúc tạo; hiển thị TÊN chờ map `tai_khoan`→`nhan_su`).
 - **Deploy**: Vercel project v2, nhánh `main` → `bkdemy-erp-v2.vercel.app`.
 
+### Đã build (NHÂN SỰ + LỚP + HỌC SINH — khối STATIC, 06-11)
+- **Thiết kế 2 trục độc lập (Thùy chốt):** NGHIỆP VỤ = 6 team (`gv ta ops hoc_thuat media marketing`), mỗi team 1 cây riêng, **1 người nhiều team** (`thanh_vien_team`) × PHẠM VI = GV/TA theo lớp (`phan_cong_lop`); 4 team kia phase này toàn hệ. Sơ đồ dùng THẬT cho luồng đánh giá/báo cáo sau → `quan_ly_id` per-team + đệ quy. Lọc quyền = **cách B** (filter ở query như V1), schema chừa đường siết RLS sau.
+- **STATIC vs DYNAMIC (Thùy):** HS/NS/lớp/TKB/phân công = dữ liệu GỐC (làm rồi); session/điểm danh/chấm = ĐỘNG, chỉ sinh khi có hoạt động (chưa làm). **TKB = khung lặp tuần effective-dated** (`hieu_luc_tu/den`; sửa = đóng dòng cũ + mở dòng mới, KHÔNG đè) → **session pure-derive** từ TKB-đang-hiệu-lực (không cron đẻ dòng; đổi TKB tương lai tự lan; buổi có hoạt động mới đông cứng thành dòng).
+- **Band năng lực MỊN** `muc_nang_luc` 12 mức = S/A/B/C × 3, **mức 1 = XỊN NHẤT** (S1 đỉnh `thu_tu`=12 … C3=1), cột `bac` roll-up về `lop_bac` (Kho không đổi). **Band per-MÔN** ở `hoc_sinh_lop.muc_nang_luc_id`. `lop.bac` = bậc thô của lớp.
+- **Phụ huynh = thực thể** (`phu_huynh`, `ma_ph` PH0001 tự sinh) — 1 PH nhiều con qua `hoc_sinh.phu_huynh_id` (nền thu học phí + tài khoản PH).
+- **Mã đề-xuất-sửa-được:** form hiện sẵn mã kế tiếp (max+1: NS001/HS0001) qua `suggestMaNS/HS`, user sửa được; DB default sequence làm lưới.
+- **Màn hình:** `NhanSuScreen` (bảng + form: ảnh đại diện → bucket `avatars`, tick team — KHÔNG phân cấp ở đây) · `LopScreen` (card → detail hub: phân công GV/TG + TKB + sĩ số/band) · `HocSinhScreen` (modal to 2 cột: trái thông tin + PhuHuynhPicker, phải **bảng Lớp & band THEO MÔN** kiểu V1 — môn data-driven, "không học" = rời giữ lịch sử) · `OrgChartScreen` (thẻ bài dọc có ảnh + dây nối, tab team, click thẻ → vai trò/**chức vụ**/cấp trên, chặn vòng). **Chức vụ ≠ level**: text scope ("QL khối THCS") trên membership.
+- **Luồng nhập HS×lớp:** HS mới → màn Học sinh (Tạo & xếp lớp 1 nhịp); sĩ số đầu kỳ → màn Lớp; 2 lối cùng ghi `hoc_sinh_lop` (upsert idempotent).
+
 ### Chưa làm
+- **⚠ NGAY:** bucket `avatars` **chưa tạo** — paste `supabase/migrations/0020_storage_avatars.sql` vào Dashboard → SQL Editor (claude_build không đụng storage). Chưa chạy thì upload ảnh NS lỗi "bucket not found".
+- **Nợ khối nhân sự (trước khi vận hành thật):** trigger ghi-log lịch sử §4 (đổi band/phân công/TKB/membership chưa có vết — timeline tiến bộ HS cần nó) · màn Phụ huynh riêng (list PH + các con) · hiện tên người tạo tài liệu (map `tai_khoan`→`nhan_su`) · import HS/NS từ V1 · siết RLS theo phạm vi (cách A).
 - **Làm tài liệu — còn lại**: header/footer/watermark **chọn nhiều mẫu** (mới 1 dải sóng — muốn thêm: Thùy gửi ảnh mẫu, code thành 1 option; nên tách registry khi có mẫu #2) · reorder câu trong dạng · áp `cau_hinh.mau` cho dải sóng · gu B (học thuật)/C (SaaS) · custom block · BTVN số-câu-theo-loại · nút "✎ Sửa lý thuyết" ngay trong Builder (Thùy chưa chốt).
 - Nhánh **Hình** (tab stub "dựng sau"): cây Mảng→Loại→Dạng-hình + Bài/Ý/mô hình/bổ đề (spec §4).
 - Quản lý 4 danh mục (thuộc tính/bổ đề Đại, mô hình/bổ đề Hình); gắn thuộc tính cho Dạng.
@@ -35,7 +48,7 @@
 
 ### 🔜 Bài tập hàng ngày (V2) — ĐANG THIẾT KẾ (chưa code, chưa đụng DB)
 - **Mục tiêu**: port + nâng cấp "Daily 5T" của V1 (đọc `bkdemy-erp/src/components/student/TabDaily*`, `pages/admin/TabDaily5T`). Engine **cho MỌI khối** (không riêng 5T).
-- **⚠ Chặn lớn**: V2 **chưa có học sinh, chưa có lớp đo mastery (HS×dạng), chưa có bảng daily** — mới chỉ có Kho. → Làm daily = **dựng luôn nền HS + nền Đo của V2**. Daily là **kênh đo đầu tiên** đổ data vào (HS×dạng) (đúng model lõi §1).
+- **Chặn đã GIẢM (06-11): nền HS + lớp + band ĐÃ CÓ** (khối static). Còn thiếu: nền Đo (phép-đo HS×dạng) + bảng daily + "đã học tới dạng nào".
 - **Logic Thùy chốt**: bộ câu/ngày = **50% rà-soát ngẫu nhiên + 50% luyện điểm-yếu**.
 - **Logic T đã phản biện & sửa lại** (Thùy chưa duyệt bản sửa): rà-soát giới hạn **dạng ĐÃ HỌC**; "điểm yếu" = mastery thấp **+ đủ mẫu** (ít data→đẩy sang rà-soát, §5 độ tin); mỗi câu→**1 phép đo bất biến** gắn `nguon=daily`+`cham_boi`, **trust THẤP** (home/không giám sát/AI chấm — triangulate với test, đừng để "thạo giả"); rà-soát nên **spaced-repetition + uncertainty-sampling** (hơn random thuần); luyện điểm-yếu lấy **CÂU KHÁC** (chống học vẹt); 50/50 là **mục tiêu mềm**; không phát lại câu trong N ngày; cờ **daily-ready** theo dạng đủ câu.
 - **⏳ ĐANG CHỜ Thùy quyết** trước khi đụng DB: "đã học tới dạng nào" lấy ở đâu — **(a)** theo lớp (lộ trình GV nhập) / **(b)** theo HS (suy từ data đo — cold-start rỗng) / **(c)** mở hết khối (T không khuyến nghị).
@@ -56,8 +69,9 @@
 - `dai_dang_ly_thuyet`: ma_dang(PK)·noi_dung·file_url?·ten_file?. `dai_chuyen_de_ly_thuyet`: ma_chuyen_de(PK)·noi_dung·file_url?·ten_file?·**khong_can**.
 - **Tài liệu**: `tai_lieu`(id·loai·ten·khoi·ma_chuyen_de?·theme·**cau_hinh** jsonb) · `tai_lieu_phan`(tai_lieu_id·thu_tu·loai_phan[lt_chuyen_de|dang|btvn|custom]·ref_ma·tieu_de·noi_dung) · `tai_lieu_cau`(phan_id·ma_cau·thu_tu).
 - `hinh_ban_do` (+bac_toi_thieu) + bảng Hình/danh mục như `spec-kho-v2.md`.
-- **Migrations ĐÃ áp vào DB live (ĐỪNG chạy lại):** 0001–0007 (init→bucket kho-anh) · 0008 bucket `kho-tailieu` · 0009 lý thuyết `noi_dung` · 0010 chuyên đề LT · 0011 cờ `khong_can` · 0012 tài liệu · 0013 `tai_lieu.cau_hinh`. **2 bucket Storage đã có trên cloud.** (06-10 KHÔNG thêm migration; thêm dep `pagedjs` + `src/pagedjs.d.ts`.)
-- **V2 hiện CHƯA có bảng:** học sinh / lớp / **phép-đo mastery (HS×dạng)** / daily — mới chỉ Kho + tài liệu. (Sẽ dựng khi làm Bài tập hàng ngày.)
+- **Khối static (0015–0021):** `nhan_su`(+ma_ns NS001 tự sinh, anh_url) · `tai_khoan`(id=auth.uid→nhan_su) · `team`(seed 6) · `thanh_vien_team`(unique ns×team · vai_tro truong/pho/thanh_vien · quan_ly_id · **chuc_vu**) · `lop`(ten_lop·mon·khoi·bac FK lop_bac·co_so) · `phan_cong_lop`(ns×lop×vai_tro gv/tg·la_chinh) · `hoc_sinh`(ma_hs HS0001 tự sinh·khoi·dia_chi·truong_hoc·phu_huynh_id) · `phu_huynh`(ma_ph PH0001) · `hoc_sinh_lop`(hs×lop·**muc_nang_luc_id**·trang_thai dang_hoc/da_roi) · `thoi_khoa_bieu`(lop·thu 2-8·giờ·hieu_luc_tu/den) · `muc_nang_luc`(12 mức seed).
+- **Migrations ĐÃ áp vào DB live (ĐỪNG chạy lại):** 0001–0019, 0021. **0020 (bucket avatars) CHƯA chạy — Dashboard SQL Editor.** Bucket đã có: `kho-anh`, `kho-tailieu`.
+- **V2 hiện CHƯA có bảng:** phép-đo mastery (HS×dạng) / session / điểm danh / daily — dữ liệu ĐỘNG, dựng khi làm Bài tập hàng ngày.
 
 ### Khởi động ở máy MỚI (về nhà)
 1. `git pull`.

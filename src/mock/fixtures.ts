@@ -74,6 +74,7 @@ export const notices: Notice[] = [
 // ── Cây Admin (derive theo role) ─────────────────────────────────
 export const adminLeaves: AdminLeaf[] = [
   { id: 'hs',          nhom: 'Danh mục',  ten: 'Học sinh',                     founderOnly: false },
+  { id: 'lop',         nhom: 'Danh mục',  ten: 'Lớp',                          founderOnly: false },
   { id: 'ns',          nhom: 'Danh mục',  ten: 'Nhân sự',                      founderOnly: false },
   { id: 'tl',          nhom: 'Danh mục',  ten: 'Kho tài liệu',                 founderOnly: false },
   { id: 'bdkt',        nhom: 'Danh mục',  ten: 'Bản đồ kiến thức (Kho)',       founderOnly: false }, // ← kho ở đây

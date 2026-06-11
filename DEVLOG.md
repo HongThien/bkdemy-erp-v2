@@ -8,6 +8,26 @@
 
 ---
 
+## 2026-06-11
+
+**Setup máy nhà (sáng):** pull về thiếu `katex` (npm install lại) + thiếu env. File env Thùy tải về sai tên: `env.local` (thiếu chấm đầu) + `d41d8cd9.env` → đổi tên `.env.local` / `.env` là chạy. Bài học: file env KHÔNG có đuôi, Windows hay giấu/lệch tên.
+
+**PrintView tinh chỉnh:** chốt font in **17px ≈ 13pt Times New Roman** (như sách), KaTeX `.katex{font-size:0.95em}` cho phân số cân chữ. `pv-box-label` (nhãn LÝ THUYẾT/VÍ DỤ) 10.5→12.5px.
+
+**Kho tài liệu (Mức 1):** màn Làm-tài-liệu thêm nút khối "Tất cả" + search tên + sort (mới nhất/A-Z) + hiện ngày tạo/sửa (giờ VN) + đếm. Migration **0014** `tai_lieu.created_by uuid` — app set từ `session.user.id` lúc tạo (KHÔNG default `auth.uid()` — claude_build không đụng schema auth, đã FAIL 1 lần). "Ai tạo" hiển thị tên → chờ nền nhân sự, đã chừa cột.
+
+**NHÂN SỰ + LỚP + HỌC SINH (khối STATIC — bàn xong mới code):**
+- **Bàn & chốt với Thùy:** 2 trục độc lập — NGHIỆP VỤ (6 team: GV/TA/OPS/Học thuật/Media/Marketing, mỗi team 1 cây riêng, 1 người nhiều team) × PHẠM VI (GV/TA theo lớp; 4 team kia phase này KHÔNG chia). Sơ đồ dùng THẬT (luồng đánh giá/báo cáo sau). Lọc quyền đi **cách B** (filter query như V1) nhưng schema chừa đường siết RLS. Static (HS/NS/lớp/TKB/phân công) = dữ liệu GỐC làm trước; động (session/điểm danh) để sau. **TKB = khung lặp tuần effective-dated** (sửa = đóng `hieu_luc_den` + mở dòng mới, KHÔNG đè) → session **pure-derive** từ TKB-đang-hiệu-lực, không cron đẻ dòng, đổi TKB tự lan; buổi có hoạt động mới thành dòng thật (bất biến).
+- **Band năng lực:** Thùy yêu cầu thang MỊN hơn S/A/B/C (1 band to đi cả năm) → bảng `muc_nang_luc` 12 mức = bậc×3, **mức 1 = XỊN NHẤT trong bậc** (S1 đỉnh, thu_tu 12→1), roll-up cột `bac` về `lop_bac` nên Kho không đổi gì. Band per-MÔN: sống ở `hoc_sinh_lop.muc_nang_luc_id` (HS giỏi Toán yếu Văn). `lop.bac` = bậc thô của lớp.
+- **Migration 0015** (10 bảng + RLS authenticated + seed team/mức): `nhan_su` `tai_khoan` `team` `thanh_vien_team`(vai_tro+quan_ly_id per-team) `lop`(1 lớp=1 môn) `phan_cong_lop`(gv/tg+la_chinh — thay gv1/gv2/tg1/tg2 V1) `hoc_sinh` `hoc_sinh_lop`(thay 4 cột lop_toan/van/anh/khtn V1 — đa lớp sạch) `thoi_khoa_bieu` `muc_nang_luc`. **0016** HS +dia_chi+truong_hoc. **0017** `phu_huynh` thực thể (ma_ph PH0001 tự sinh, 1 PH nhiều con, `hoc_sinh.phu_huynh_id`, DROP 3 cột PH text). **0018** mã tự sinh NS001/HS0001 (sequence default + backfill). **0019** `nhan_su.anh_url`. **0021** `thanh_vien_team.chuc_vu`. **0020 storage bucket `avatars` — CHƯA CHẠY, phải paste Dashboard SQL Editor.**
+- **Code:** `src/lib/nhansu.ts` (seam đầy đủ + `suggestMaNS/HS` đề xuất mã max+1 hiện sẵn form, sửa được) · `src/screens/nhansu/`: **NhanSuScreen** (bảng + form: ảnh đại diện upload bucket avatars, mã đề xuất, tick team — KHÔNG phân cấp ở đây) · **LopScreen** (card khối → detail hub: phân công GV/TA + TKB + sĩ số/band) · **HocSinhScreen** (form 2 cột 1040px: trái thông tin + PhuHuynhPicker tìm/tạo PH, phải bảng **Lớp & band THEO MÔN** kiểu V1 — môn data-driven từ lớp, chọn lớp + band 1 dòng/môn, "không học"=rời giữ lịch sử) · **OrgChartScreen** (org chart thẻ bài DỌC có ảnh + dây nối CSS family-tree, tab 6 team, click thẻ → popup vai trò/chức vụ/cấp trên, chặn vòng descendant). Leaf mới `lop`; wire ns/lop/hs/orgchart vào AdminScreen. NavTree: nhóm thu/mở kiểu Explorer.
+- **UX sửa theo phản hồi Thùy:** form NS lúc đầu bắt "lưu rồi mở lại mới gán team" → gom draft, Tạo 1 mạch. Phân cấp bỏ khỏi form NS → chỉnh ở org chart trực quan. Modal HS thiếu chỗ → Shell thêm max-h+scroll, rồi làm hẳn modal to 2 cột. **Chức vụ ≠ level**: cùng level QL nhưng khác scope (QL khối THCS vs tiểu học) → cột `chuc_vu` text hiện trên thẻ.
+- **Luồng nhập:** HS mới → màn Học sinh (Tạo & xếp lớp 1 nhịp); dựng sĩ số đầu kỳ → màn Lớp; 2 lối cùng ghi `hoc_sinh_lop` idempotent.
+
+**CHƯA làm (nợ):** trigger ghi-log lịch sử (§4 CLAUDE.md — đổi band/phân công/TKB chưa có vết; PHẢI làm trước vận hành thật, timeline tiến bộ HS dựa vào nó) · bucket avatars chưa chạy (0020) · màn Phụ huynh riêng · phân công xem từ phía NS · import HS từ V1.
+
+---
+
 ## 2026-06-10
 
 **Làm tài liệu — sửa Builder (theo phản hồi):**

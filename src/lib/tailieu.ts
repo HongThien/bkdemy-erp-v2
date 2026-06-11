@@ -6,7 +6,7 @@ const LIMIT = 10000
 
 export type PhanLoai = 'lt_chuyen_de' | 'dang' | 'btvn' | 'custom'
 export type CauHinh = { header?: 'wave' | 'none'; footer?: 'wave' | 'none'; watermark?: 'logo' | 'none'; mau?: string }
-export type TaiLieu = { id: string; loai: string; ten: string; khoi: string; ma_chuyen_de: string | null; theme: string; cau_hinh?: CauHinh; created_at?: string }
+export type TaiLieu = { id: string; loai: string; ten: string; khoi: string; ma_chuyen_de: string | null; theme: string; cau_hinh?: CauHinh; created_at?: string; updated_at?: string; created_by?: string | null }
 export type TaiLieuPhan = { id: string; tai_lieu_id: string; thu_tu: number; loai_phan: PhanLoai; ref_ma: string | null; tieu_de: string | null; noi_dung: string | null }
 type LtRow = { noi_dung: string; file_url: string | null; ten_file: string | null }
 type DangRow = { ma_dang: string; ten_dang: string; muc_do: number | null; bac_toi_thieu: string }
@@ -21,6 +21,7 @@ export type TaiLieuFull = { taiLieu: TaiLieu; phans: PhanResolved[] }
 
 // ── Thư viện (CRUD tài liệu) ──────────────────────────────────────
 export async function listTaiLieu(khoi?: string, loai = 'giao_trinh'): Promise<TaiLieu[]> {
+  // khoi = undefined → tất cả khối.
   let q = supabase.from('tai_lieu').select('*').eq('loai', loai).order('created_at', { ascending: false }).limit(LIMIT)
   if (khoi) q = q.eq('khoi', khoi)
   const { data, error } = await q
@@ -28,14 +29,15 @@ export async function listTaiLieu(khoi?: string, loai = 'giao_trinh'): Promise<T
   return (data ?? []) as TaiLieu[]
 }
 export async function createTaiLieu(input: { loai?: string; ten: string; khoi: string; ma_chuyen_de?: string | null; theme?: string }): Promise<TaiLieu> {
+  const { data: { user } } = await supabase.auth.getUser() // người tạo = session hiện tại
   const { data, error } = await supabase.from('tai_lieu')
-    .insert({ loai: input.loai ?? 'giao_trinh', ten: input.ten, khoi: input.khoi, ma_chuyen_de: input.ma_chuyen_de ?? null, theme: input.theme ?? 'bkdemy' })
+    .insert({ loai: input.loai ?? 'giao_trinh', ten: input.ten, khoi: input.khoi, ma_chuyen_de: input.ma_chuyen_de ?? null, theme: input.theme ?? 'bkdemy', created_by: user?.id ?? null })
     .select().single()
   if (error) throw error
   return data as TaiLieu
 }
 export async function updateTaiLieu(id: string, patch: Partial<Pick<TaiLieu, 'ten' | 'theme' | 'ma_chuyen_de' | 'cau_hinh'>>): Promise<void> {
-  const { error } = await supabase.from('tai_lieu').update(patch).eq('id', id)
+  const { error } = await supabase.from('tai_lieu').update({ ...patch, updated_at: new Date().toISOString() }).eq('id', id)
   if (error) throw error
 }
 export async function deleteTaiLieu(id: string): Promise<void> {

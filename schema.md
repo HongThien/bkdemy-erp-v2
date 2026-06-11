@@ -2,7 +2,7 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-19 bảng · 0 enum · 0 trigger · 0 function
+30 bảng · 0 enum · 0 trigger · 0 function
 
 ## dai_ban_do
 
@@ -152,6 +152,50 @@
 | ma_y | text |  |  | PK FK→hinh_y.ma_y |
 | id_bo_de | text |  |  | PK FK→hinh_danh_muc_bo_de.id |
 
+## hoc_sinh
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| ma_hs | text | Y | ('HS'::text \|\| lpad((nextval('hs_seq'::regclass))::text, 4, '0'::text)) |  |
+| ho_ten | text |  |  |  |
+| ngay_sinh | date | Y |  |  |
+| gioi_tinh | text | Y |  |  |
+| khoi | smallint | Y |  |  |
+| trang_thai | text |  | 'dang_hoc'::text |  |
+| diem_test_dau_vao | numeric | Y |  |  |
+| ngay_nhap_hoc | date | Y |  |  |
+| created_at | timestamp with time zone |  | now() |  |
+| updated_at | timestamp with time zone |  | now() |  |
+| dia_chi | text | Y |  |  |
+| truong_hoc | text | Y |  |  |
+| phu_huynh_id | uuid | Y |  | FK→phu_huynh.id |
+
+## hoc_sinh_lop
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |
+| lop_id | uuid |  |  | FK→lop.id |
+| muc_nang_luc_id | uuid | Y |  | FK→muc_nang_luc.id |
+| ngay_vao | date | Y |  |  |
+| trang_thai | text |  | 'dang_hoc'::text |  |
+
+## lop
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| ten_lop | text |  |  |  |
+| mon | text |  |  |  |
+| khoi | smallint | Y |  |  |
+| bac | text | Y |  | FK→lop_bac.ma |
+| co_so | text | Y |  |  |
+| trang_thai | text |  | 'dang_hoc'::text |  |
+| created_at | timestamp with time zone |  | now() |  |
+| updated_at | timestamp with time zone |  | now() |  |
+
 ## lop_bac
 
 | cột | kiểu | null | default | khóa |
@@ -159,6 +203,65 @@
 | ma | text |  |  | PK |
 | ten | text |  |  |  |
 | thu_tu | smallint |  |  |  |
+
+## muc_nang_luc
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| ma | text |  |  |  |
+| bac | text |  |  | FK→lop_bac.ma |
+| muc | smallint |  |  |  |
+| thu_tu | smallint |  |  |  |
+| ten | text | Y |  |  |
+
+## nhan_su
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| ho_ten | text |  |  |  |
+| so_dien_thoai | text | Y |  |  |
+| email | text | Y |  |  |
+| trang_thai | text |  | 'dang_lam'::text |  |
+| ngay_vao_lam | date | Y |  |  |
+| created_at | timestamp with time zone |  | now() |  |
+| updated_at | timestamp with time zone |  | now() |  |
+| ma_ns | text | Y | ('NS'::text \|\| lpad((nextval('ns_seq'::regclass))::text, 3, '0'::text)) |  |
+| anh_url | text | Y |  |  |
+
+## phan_cong_lop
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| nhan_su_id | uuid |  |  | FK→nhan_su.id |
+| lop_id | uuid |  |  | FK→lop.id |
+| vai_tro | text |  |  |  |
+| la_chinh | boolean |  | false |  |
+| created_at | timestamp with time zone |  | now() |  |
+
+## phu_huynh
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| ma_ph | text |  | ('PH'::text \|\| lpad((nextval('ph_seq'::regclass))::text, 4, '0'::text)) |  |
+| ho_ten | text |  |  |  |
+| so_dien_thoai | text | Y |  |  |
+| email | text | Y |  |  |
+| dia_chi | text | Y |  |  |
+| created_at | timestamp with time zone |  | now() |  |
+| updated_at | timestamp with time zone |  | now() |  |
+
+## tai_khoan
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  |  | PK |
+| nhan_su_id | uuid | Y |  | FK→nhan_su.id |
+| email | text | Y |  |  |
+| created_at | timestamp with time zone |  | now() |  |
 
 ## tai_lieu
 
@@ -173,6 +276,7 @@
 | created_at | timestamp with time zone |  | now() |  |
 | updated_at | timestamp with time zone |  | now() |  |
 | cau_hinh | jsonb |  | '{}'::jsonb |  |
+| created_by | uuid | Y |  |  |
 
 ## tai_lieu_cau
 
@@ -194,4 +298,38 @@
 | ref_ma | text | Y |  |  |
 | tieu_de | text | Y |  |  |
 | noi_dung | text | Y |  |  |
+
+## team
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| ma | text |  |  |  |
+| ten | text |  |  |  |
+| thu_tu | smallint |  | 0 |  |
+
+## thanh_vien_team
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| nhan_su_id | uuid |  |  | FK→nhan_su.id |
+| team_id | uuid |  |  | FK→team.id |
+| vai_tro | text |  | 'thanh_vien'::text |  |
+| quan_ly_id | uuid | Y |  | FK→nhan_su.id |
+| chuc_vu | text | Y |  |  |
+
+## thoi_khoa_bieu
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| lop_id | uuid |  |  | FK→lop.id |
+| thu | smallint |  |  |  |
+| gio_bat_dau | time without time zone |  |  |  |
+| gio_ket_thuc | time without time zone |  |  |  |
+| phong | text | Y |  |  |
+| hieu_luc_tu | date |  |  |  |
+| hieu_luc_den | date | Y |  |  |
+| created_at | timestamp with time zone |  | now() |  |
 
