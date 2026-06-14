@@ -8,6 +8,47 @@
 
 ---
 
+## 2026-06-12
+
+**(Gồm cả phần 06-11 tối ở cơ quan — commit `05a0d17 "dx"` chưa kịp log):**
+- **Biên chế team n-n** (mig 0024→0025): `nhan_su_team`. Form NS chọn team biên chế (để org chart LỌC picker người theo team). 0024 lỡ thêm `nhan_su.team_id` (1 team) → sai → 0025 thay bảng nối + drop cột.
+- **🔒 RLS member-gate (mig 0026):** bỏ "cứ authenticated là vào" → chỉ THÀNH VIÊN (có `tai_khoan` link nhân sự HOẶC email login trùng email 1 nhân sự). Người lạ signUp = tài khoản rỗng, mọi bảng từ chối. Functions `jwt_uid()/jwt_email()/la_thanh_vien()/self_link_account()` (security definer, KHÔNG dùng auth.uid() vì claude_build cấm schema auth — đọc `current_setting('request.jwt.claims')`).
+- **Cấp tài khoản trên web** (`capTaiKhoan`): signUp bằng CLIENT PHỤ (persistSession:false) → admin không bị đá session. Cột "Tài khoản" ở bảng NS: ✓ có TK (click = gỡ link) / + Cấp TK. ⚠ cần Dashboard tắt "Confirm email" 1 lần. `goTaiKhoan` gỡ dòng nối mồ côi (xóa user Auth không tự xóa `tai_khoan`).
+- **Hồ sơ của tôi** (`HoSoModal`, nút 👤 TopBar): NS tự sửa ảnh/SĐT/email; team/vị trí/phân công CHỈ XEM.
+
+**IMPORT V1 → V2 (data thật 2025-26):**
+- `scripts/import_v1.mjs` (idempotent): 327 HS (299 đang học/1 bảo lưu/28 nghỉ — nghỉ giữ hồ sơ ko ghi danh) · 46 lớp (bậc đoán từ tên: 8A1→A, 5T1→S) · 277 PH (dedup ma_ph → anh em chung PH) · 369 lượt ghi danh (4 cột lop_*→hoc_sinh_lop). Band V1 "Upper/Inter/Lower - X" → X1/X2/X3 (Upper=1 xịn nhất); band "T" → S1. Band gắn lớp TOÁN (per-môn).
+- `scripts/import_v1_tkb.mjs`: 76 ca/tuần từ V1 `timetable`+`ca_hoc` → `thoi_khoa_bieu`.
+- **LÊN LỚP 2026-27** `scripts/len_lop_2026.mjs` (1 transaction, guard chống chạy lại): K12→`tot_nghiep` (mig 0027 thêm trạng thái) + rời lớp; HS khác khoi+1 (314); lớp khoi+1 & đổi tên (8A1→9A1, K6→K7); lớp 12 đóng + ngừng TKB.
+
+**TKB — màn lịch tuần (lặp NHIỀU vòng, Thùy phản biện gắt):**
+- Tiến hóa: bảng-ca → calendar-tỷ-lệ (dị, phình khung tối) → **chốt: KHUNG LỚN cố định** (7:30-10 / 10-12 / 12-14 ẩn khi rỗng / 14-16 / 16-18 / 18-19:30 / 19:30-21:30). Ca xếp vào khung theo **giờ BẮT ĐẦU** (bỏ giờ kết thúc → 19:30-21:00 & 19:30-21:30 chung khung). 6-7 hàng cố định → LỌT 1 MÀN. Mỗi ô = lưới phòng 3×2 CỐ ĐỊNH (P101..P302), trống chừa trống. Card: tên lớp 13px đậm / giờ thật / phòng. Header thứ freeze.
+- **Bài học:** TKB trường học là CATEGORICAL (ca×phòng×lớp), KHÔNG phải calendar liên tục → đừng map tỷ lệ pixel theo giờ (vô nghĩa + phình). Mọi TKB giấy đều vẽ rời rạc vì lý do này.
+
+**Lớp — màu & khu vực:** chia 4 KHU theo môn (Toán→Văn→Anh→KHTN), trong khu sort S→A→B→C; chip màu = HỆ (BacChip S tím/A xanh/B teal/C vàng). Bỏ ý "màu theo môn" (lẫn) → môn phân bằng KHU, hệ bằng màu.
+
+**Ghi danh chuẩn §1.5 + §4 (Thùy chốt — đau V1):**
+- `ngay_vao`/`ngay_roi` (mig 0028) = cổng thời gian data học tập (BTVN/ET chỉ tính từ ngày vào). Viền vàng nếu trống.
+- **TRIGGER log §4**: `hoc_sinh_lop_log` + trigger tự đẻ dòng (actor jwt_uid + ts + cũ/mới jsonb) mọi ghi_danh/roi_lop/doi_band. App không phải nhớ.
+- **Add vào lớp chỉ HS CHƯA có lớp môn đó** (`listHSChuaCoLopMon`); HS có rồi → **CHUYỂN LỚP** (`chuyenLop` = rời cũ+vào mới, log 2 sự kiện).
+- **Khai giảng = thuộc tính LỚP** (mig 0029 `lop.ngay_khai_giang`, K9/K12=16/6, khác=1/7) — KHÁC `tkb.hieu_luc_tu` (cơ chế đổi-khung-giữa-năm). Luật suy buổi: `ngày ≥ lop.ngay_khai_giang AND slot TKB hiệu lực`. Sửa được trong form Lớp. Session pure-derive nên lớp chưa khai giảng tự ko sinh buổi — KHÔNG cần hủy tay.
+
+**Avatar HS (mig 0023 `hoc_sinh.anh_url`)** chung bucket `avatars`. Mã NS/HS/PH: đổi từ "tự sinh" → **ĐỀ XUẤT max+1 hiện sẵn form, sửa được** (`suggestMaNS/HS`); DB default sequence làm lưới (đẩy seq vượt max sau khi nhập tay).
+
+**Dev quick-login** (`Login.tsx`): nút vàng đăng-nhập-nhanh, CHỈ hiện `import.meta.env.DEV`, đọc `VITE_DEV_ACCOUNTS=Tên|email|pass,...` từ `.env.local`. Build production không bao giờ hiện.
+
+**Gamification:** đọc `bkdemy_gamification_tong_ket.md` (Thùy chốt 12/6) → tạo trang Notion con của ERP V2 (`37cd4530bcdb81f792fcf50e8c41e9d1`). 3 thước Elo/EXP/Level + xu, 4 món. CHƯA code.
+
+**⭐ SCOPE ENGINE — gốc rễ "ai thấy task nào" (`getMyScope`):**
+- ABAC: task mang nhãn (loại việc × lớp); người thấy nếu khớp 3 chiều. **① OWNER** = phan_cong_lop (vai gv→đánh giá/nội dung, tg→chấm ET/BTVN; OPS→điểm danh toàn hệ). **② GIÁM SÁT** = người dưới trong CÂY VỊ TRÍ.
+- **Sai → Thùy sửa 2 lần:** (a) T gắn "GV theo dõi lớp mình" theo VAI → SAI: GV chỉ phối hợp, không quản TA. Quản lý là CHỨC VỤ (ghế Trưởng/Phó), KHÔNG từ vai GV. GV "đến dạy rồi về" quản lý 0 người. → bỏ `theoDoiLop`. (b) Giám sát phải 2 TẦNG span-of-control: **trực tiếp** (cha_id = ghế tôi, view mặc định) vs **gián tiếp** (sâu hơn, passive drill).
+- **2 TRỤC QUYỀN tách:** A=task-scope (ai LÀM/NẮM, engine này) · B=data-scope (ai XEM data lớp — GV xem dashboard lớp mình, độc lập, dựng cùng dashboard). Trộn = lỗi V1.
+- Panel "Phạm vi việc của tôi" trong HoSoModal (test bằng dev login).
+
+**Màn PHÂN CÔNG (ma trận, leaf `phancong`):** hàng=lớp (nhóm môn, sort S→A→B→C), cột = GV chính(đánh giá+nội dung)/GV phụ/TG(chấm ET+BTVN)/Điểm danh(OPS toàn hệ). Gán theo VAI (TG ôm TOÀN BỘ chấm 1 lớp — ko tách task, Thùy chốt). Ghi `phan_cong_lop` (cùng seam màn Lớp — 1 sự thật 2 cửa, vô hại). `setPhanCongSlot`. Dropdown hiện (tải = số lớp); GV chính/TG thiếu → ô đỏ. 1 GV chính + ≤1 phụ; chính≠phụ.
+
+---
+
 ## 2026-06-11
 
 **Setup máy nhà (sáng):** pull về thiếu `katex` (npm install lại) + thiếu env. File env Thùy tải về sai tên: `env.local` (thiếu chấm đầu) + `d41d8cd9.env` → đổi tên `.env.local` / `.env` là chạy. Bài học: file env KHÔNG có đuôi, Windows hay giấu/lệch tên.

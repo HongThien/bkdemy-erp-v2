@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
-import { getMyProfile, updateMyProfile, uploadAvatar, type MyProfile } from '../../lib/nhansu'
+import { getMyProfile, getMyScope, updateMyProfile, uploadAvatar, type MyProfile, type MyScope } from '../../lib/nhansu'
 import { Shell, Field, inp } from '../kho/ui'
 
 const CAP_LABEL: Record<string, string> = { truong: 'Trưởng', pho: 'Phó', thanh_vien: 'Thành viên' }
 const VT_LABEL: Record<string, string> = { gv: 'Giáo viên', tg: 'Trợ giảng' }
+const WR_LABEL: Record<string, string> = { gv: 'GV', tg: 'TG', ops: 'OPS' }
 
 // Hồ sơ CỦA TÔI: NS tự sửa ảnh + SĐT + email. Team / vị trí / phân công = CHỈ XEM (quản trị sửa).
 export default function HoSoModal({ onClose }: { onClose: () => void }) {
@@ -15,6 +16,7 @@ export default function HoSoModal({ onClose }: { onClose: () => void }) {
   const [busy, setBusy] = useState(false)
   const [saved, setSaved] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [scope, setScope] = useState<MyScope | null>(null)
   const fileRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
@@ -24,6 +26,7 @@ export default function HoSoModal({ onClose }: { onClose: () => void }) {
         setProfile(p); setSdt(p.nhanSu.so_dien_thoai ?? ''); setEmail(p.nhanSu.email ?? ''); setAnhUrl(p.nhanSu.anh_url ?? '')
       })
       .catch((e) => { setError(e.message ?? String(e)); setProfile('unlinked') })
+    getMyScope().then(setScope).catch(() => {})
   }, [])
 
   async function save() {
@@ -93,6 +96,50 @@ export default function HoSoModal({ onClose }: { onClose: () => void }) {
                 </span>
               </div>
             </div>
+
+            {/* Phạm vi việc — ENGINE scope (ai thấy task nào) */}
+            {scope && (
+              <div className="mt-2 rounded-lg border border-indigo-100 bg-indigo-50/40 px-3 py-2.5">
+                <div className="mb-1.5 text-[11px] font-semibold uppercase tracking-wider text-indigo-400">Phạm vi việc của tôi (task nào sẽ hiện)</div>
+                {/* OWNER */}
+                <div className="mb-1 text-[12px] font-semibold text-slate-600">Việc của tôi:</div>
+                {scope.trucTiep.length === 0 && !scope.opsToanHe && <p className="text-[12px] text-slate-400">Chưa có phân công → không nhận việc vận hành nào.</p>}
+                <div className="flex flex-col gap-1">
+                  {scope.trucTiep.map((s) => (
+                    <div key={s.lop_id} className="flex flex-wrap items-center gap-1 text-[12px]">
+                      <span className="font-semibold text-slate-700">{s.ten_lop}</span>
+                      <span className="rounded bg-slate-200 px-1 text-[10px] text-slate-600">{WR_LABEL[s.work_role]}</span>
+                      {s.worktypes.map((w) => <span key={w.key} className="rounded bg-white px-1.5 py-0.5 text-[11px] text-indigo-700 ring-1 ring-indigo-100">{w.ten}</span>)}
+                    </div>
+                  ))}
+                  {scope.opsToanHe && (
+                    <div className="flex flex-wrap items-center gap-1 text-[12px]">
+                      <span className="font-semibold text-slate-700">Toàn hệ</span>
+                      <span className="rounded bg-slate-200 px-1 text-[10px] text-slate-600">OPS</span>
+                      <span className="rounded bg-white px-1.5 py-0.5 text-[11px] text-indigo-700 ring-1 ring-indigo-100">Điểm danh</span>
+                      <span className="rounded bg-white px-1.5 py-0.5 text-[11px] text-indigo-700 ring-1 ring-indigo-100">Xếp bù</span>
+                    </div>
+                  )}
+                </div>
+                {/* ② GIÁM SÁT (cây vị trí — quyền QL từ GHẾ, không từ vai GV); 2 tầng span-of-control */}
+                {scope.laQuanLy && (
+                  <>
+                    <div className="mb-1 mt-2 text-[12px] font-semibold text-slate-600">Giám sát trực tiếp ({scope.giamSatTrucTiep.length}):</div>
+                    <div className="flex flex-col gap-0.5">
+                      {scope.giamSatTrucTiep.map((g) => (
+                        <div key={g.nhan_su_id} className="text-[12px] text-slate-600">
+                          <span className="font-medium">{g.ho_ten}</span>
+                          <span className="text-slate-400"> · {g.lops.length ? g.lops.map((l) => `${l.ten_lop}(${WR_LABEL[l.work_role]})`).join(', ') : 'không phụ trách lớp'}</span>
+                        </div>
+                      ))}
+                    </div>
+                    {scope.giamSatSau.length > 0 && (
+                      <div className="mt-1 text-[11px] text-slate-400">+ {scope.giamSatSau.length} cấp dưới gián tiếp ({scope.giamSatSau.map((g) => g.ho_ten).join(', ')}) — chỉ xem khi drill sâu.</div>
+                    )}
+                  </>
+                )}
+              </div>
+            )}
 
             {error && <p className="mt-2 text-xs text-rose-600">{error}</p>}
             <div className="mt-4 flex items-center justify-end gap-2">

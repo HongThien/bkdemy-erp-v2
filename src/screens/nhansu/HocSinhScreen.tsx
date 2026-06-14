@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../lib/kho/api'
 import {
   listHocSinh, createHocSinh, updateHocSinh, deleteHocSinh,
-  listLopCuaHS, ghiDanh, roiLop, setBandGhiDanh,
+  listLopCuaHS, ghiDanh, roiLop, setBandGhiDanh, setNgayVao, chuyenLop,
   listLop, listMucNangLuc,
   listPhuHuynh, createPhuHuynh, listConByPH, suggestMaHS, uploadAvatar,
   type HocSinh, type GhiDanh, type Lop, type MucNangLuc, type PhuHuynh,
@@ -286,13 +286,20 @@ function EnrollBox({ hocSinhId }: { hocSinhId: string }) {
   // môn = hợp của (môn có lớp) ∪ (môn HS đang học) — data-driven, không cứng 4 môn.
   const mons = [...new Set([...lopActive.map((l) => l.mon), ...active.map((r) => r.lop?.mon).filter(Boolean) as string[]])].sort()
 
-  // đổi lớp của 1 môn: rời lớp cũ cùng môn (nếu khác) rồi ghi danh lớp mới (giữ band cũ).
+  // Đổi lớp trong 1 môn = CHUYỂN LỚP chính thức: rời cũ (ngay_roi) + vào mới (ngay_vao), trigger DB log cả 2.
   async function chonLop(mon: string, newLopId: string) {
     const cur = active.find((r) => r.lop?.mon === mon)
     if (cur && cur.lop_id === newLopId) return
-    const band = cur?.muc_nang_luc_id ?? null
-    if (cur) await roiLop(cur.id)
-    if (newLopId) await ghiDanh(hocSinhId, newLopId, band)
+    if (cur && newLopId) {
+      const tenMoi = lopActive.find((l) => l.id === newLopId)?.ten_lop ?? '?'
+      if (!confirm(`Chuyển lớp ${mon}: ${cur.lop?.ten_lop} → ${tenMoi}? (ghi nhận rời lớp cũ + vào lớp mới hôm nay)`)) { reload(); return }
+      await chuyenLop(cur.id, hocSinhId, newLopId, cur.muc_nang_luc_id ?? null)
+    } else if (cur) {
+      if (!confirm(`Cho rời lớp ${cur.lop?.ten_lop}? (giữ lịch sử)`)) { reload(); return }
+      await roiLop(cur.id)
+    } else if (newLopId) {
+      await ghiDanh(hocSinhId, newLopId)
+    }
     reload()
   }
   async function chonBand(mon: string, bandId: string) {
@@ -308,7 +315,7 @@ function EnrollBox({ hocSinhId }: { hocSinhId: string }) {
         <p className="text-[12px] text-slate-400">Chưa có lớp nào trong hệ thống. Tạo lớp ở mục <b>Lớp</b> trước.</p>
       ) : (
         <table className="w-full text-[13px]">
-          <thead><tr className="text-left text-[11px] uppercase tracking-wider text-slate-400"><th className="w-24 py-1">Môn</th><th>Lớp</th><th className="w-24">Band</th></tr></thead>
+          <thead><tr className="text-left text-[11px] uppercase tracking-wider text-slate-400"><th className="w-20 py-1">Môn</th><th>Lớp</th><th className="w-20">Band</th><th className="w-32">Vào lớp</th></tr></thead>
           <tbody>
             {mons.map((mon) => {
               const cur = active.find((r) => r.lop?.mon === mon)
@@ -328,13 +335,20 @@ function EnrollBox({ hocSinhId }: { hocSinhId: string }) {
                       {mnl.map((m) => <option key={m.id} value={m.id}>{m.ma}</option>)}
                     </select>
                   </td>
+                  <td>
+                    {cur ? (
+                      <input type="date" value={cur.ngay_vao ?? ''} onChange={async (e) => { if (e.target.value) { await setNgayVao(cur.id, e.target.value); reload() } }}
+                        className={`w-full rounded border px-1.5 py-1 text-[12px] ${cur.ngay_vao ? 'border-slate-300' : 'border-amber-400 bg-amber-50'}`}
+                        title="Ngày vào lớp — cổng tính data học tập (BTVN/ET)" />
+                    ) : <span className="text-[12px] text-slate-300">—</span>}
+                  </td>
                 </tr>
               )
             })}
           </tbody>
         </table>
       )}
-      <p className="mt-1.5 text-[11px] text-slate-400">Chọn "không học" = cho rời lớp môn đó (giữ lịch sử). Band là per-môn, đổi lưu ngay.</p>
+      <p className="mt-1.5 text-[11px] text-slate-400">Đổi lớp cùng môn = <b>chuyển lớp</b> (ghi nhận rời cũ + vào mới, log tự động). Ngày vào viền vàng = chưa có, cần điền.</p>
     </div>
   )
 }

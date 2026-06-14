@@ -2,7 +2,7 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-31 bảng · 0 enum · 0 trigger · 4 function
+32 bảng · 0 enum · 1 trigger · 5 function
 
 ## dai_ban_do
 
@@ -182,6 +182,21 @@
 | muc_nang_luc_id | uuid | Y |  | FK→muc_nang_luc.id |
 | ngay_vao | date | Y |  |  |
 | trang_thai | text |  | 'dang_hoc'::text |  |
+| ngay_roi | date | Y |  |  |
+
+## hoc_sinh_lop_log
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| ghi_danh_id | uuid | Y |  |  |
+| hoc_sinh_id | uuid | Y |  |  |
+| lop_id | uuid | Y |  |  |
+| hanh_dong | text |  |  |  |
+| truoc | jsonb | Y |  |  |
+| sau | jsonb |  |  |  |
+| actor | uuid | Y |  |  |
+| ts | timestamp with time zone |  | now() |  |
 
 ## lop
 
@@ -196,6 +211,7 @@
 | trang_thai | text |  | 'dang_hoc'::text |  |
 | created_at | timestamp with time zone |  | now() |  |
 | updated_at | timestamp with time zone |  | now() |  |
+| ngay_khai_giang | date | Y |  |  |
 
 ## lop_bac
 
@@ -342,10 +358,17 @@
 | nhan_su_id | uuid | Y |  | FK→nhan_su.id |
 | created_at | timestamp with time zone |  | now() |  |
 
+## Triggers
+
+| bảng | trigger | timing | event | function |
+|---|---|---|---|---|
+| hoc_sinh_lop | trg_log_hoc_sinh_lop | AFTER | INSERT/UPDATE | log_hoc_sinh_lop |
+
 ## Functions
 
 - `jwt_email()` → text
 - `jwt_uid()` → uuid
 - `la_thanh_vien()` → boolean
+- `log_hoc_sinh_lop()` → trigger
 - `self_link_account()` → uuid
 

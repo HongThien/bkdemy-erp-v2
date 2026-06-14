@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { listNhanSu, createNhanSu, updateNhanSu, deleteNhanSu, listTeam, listViTri, listNhanSuTeamMap, setTeamsOfNhanSu, listTaiKhoanMap, capTaiKhoan, suggestMaNS, uploadAvatar, type NhanSu, type Team } from '../../lib/nhansu'
+import { listNhanSu, createNhanSu, updateNhanSu, deleteNhanSu, listTeam, listViTri, listNhanSuTeamMap, setTeamsOfNhanSu, listTaiKhoanMap, capTaiKhoan, goTaiKhoan, suggestMaNS, uploadAvatar, type NhanSu, type Team } from '../../lib/nhansu'
 import { Shell, Field, inp, Seg, Actions } from '../kho/ui'
 
 const TT_LABEL: Record<string, string> = { dang_lam: 'Đang làm', nghi: 'Nghỉ' }
@@ -76,7 +76,9 @@ export default function NhanSuScreen() {
                     </td>
                     <td className="px-3">
                       {tkMap[n.id] !== undefined
-                        ? <span title={tkMap[n.id]} className="text-[12px] font-medium text-emerald-600">✓ có TK</span>
+                        ? <button title={`${tkMap[n.id]} — click để GỠ link (khi đã xóa user bên Auth Dashboard)`}
+                            onClick={async () => { if (confirm(`Gỡ link tài khoản ${tkMap[n.id]} khỏi ${n.ho_ten}? (chỉ gỡ liên kết trong app — xóa account thật thì vào Auth Dashboard)`)) { await goTaiKhoan(n.id); reload() } }}
+                            className="text-[12px] font-medium text-emerald-600 hover:text-rose-600">✓ có TK</button>
                         : <button onClick={() => setCapTk(n)} className="rounded border border-slate-200 px-2 py-0.5 text-[12px] font-medium text-slate-500 hover:border-indigo-300 hover:text-indigo-700">+ Cấp TK</button>}
                     </td>
                     <td className="px-3"><span className={`rounded px-1.5 py-0.5 text-[11px] font-medium ${n.trang_thai === 'dang_lam' ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-500'}`}>{TT_LABEL[n.trang_thai]}</span></td>

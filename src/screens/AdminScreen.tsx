@@ -7,6 +7,8 @@ import KhoScreen from './kho/KhoScreen'
 import TaiLieuScreen from './tailieu/TaiLieuScreen'
 import NhanSuScreen from './nhansu/NhanSuScreen'
 import OrgChartScreen from './nhansu/OrgChartScreen'
+import TKBScreen from './nhansu/TKBScreen'
+import PhanCongScreen from './nhansu/PhanCongScreen'
 import LopScreen from './nhansu/LopScreen'
 import HocSinhScreen from './nhansu/HocSinhScreen'
 
@@ -27,6 +29,10 @@ export default function AdminScreen({ user }: { user: User }) {
         <TaiLieuScreen />
       ) : adminLeaf === 'ns' ? (
         <NhanSuScreen />
+      ) : adminLeaf === 'phancong' ? (
+        <PhanCongScreen />
+      ) : adminLeaf === 'tkb' ? (
+        <TKBScreen />
       ) : adminLeaf === 'orgchart' ? (
         <OrgChartScreen />
       ) : adminLeaf === 'lop' ? (

@@ -20,11 +20,13 @@ export type Team = { id: string; ma: string; ten: string; thu_tu: number }
 // GHẾ (vị trí) — xương sống tổ chức. Cây = cha_id giữa GHẾ; người chỉ là kẻ ngồi (nhan_su_id null = ghế trống).
 export type ViTri = { id: string; team_id: string; ten: string | null; cap: 'truong' | 'pho' | 'thanh_vien'; cha_id: string | null; nhan_su_id: string | null }
 export type MucNangLuc = { id: string; ma: string; bac: string; muc: number; thu_tu: number; ten: string | null }
-export type Lop = { id: string; ten_lop: string; mon: string; khoi: number | null; bac: string | null; co_so: string | null; trang_thai: 'dang_hoc' | 'dong'; created_at?: string }
+export type Lop = { id: string; ten_lop: string; mon: string; khoi: number | null; bac: string | null; co_so: string | null; ngay_khai_giang: string | null; trang_thai: 'dang_hoc' | 'dong'; created_at?: string }
 export type PhanCongLop = { id: string; nhan_su_id: string; lop_id: string; vai_tro: 'gv' | 'tg'; la_chinh: boolean }
 export type HocSinh = { id: string; ma_hs: string | null; ho_ten: string; ngay_sinh: string | null; gioi_tinh: 'nam' | 'nu' | null; khoi: number | null; trang_thai: 'dang_hoc' | 'bao_luu' | 'nghi'; phu_huynh_id: string | null; diem_test_dau_vao: number | null; ngay_nhap_hoc: string | null; dia_chi: string | null; truong_hoc: string | null; anh_url: string | null; created_at?: string }
 export type PhuHuynh = { id: string; ma_ph: string; ho_ten: string; so_dien_thoai: string | null; email: string | null; dia_chi: string | null; created_at?: string }
-export type HocSinhLop = { id: string; hoc_sinh_id: string; lop_id: string; muc_nang_luc_id: string | null; ngay_vao: string | null; trang_thai: 'dang_hoc' | 'da_roi' }
+export type HocSinhLop = { id: string; hoc_sinh_id: string; lop_id: string; muc_nang_luc_id: string | null; ngay_vao: string | null; ngay_roi: string | null; trang_thai: 'dang_hoc' | 'da_roi' }
+// Ngày hôm nay giờ VN (CLAUDE.md §2 — không toISOString)
+export const todayVN = () => new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Ho_Chi_Minh' })
 export type ThoiKhoaBieu = { id: string; lop_id: string; thu: number; gio_bat_dau: string; gio_ket_thuc: string; phong: string | null; hieu_luc_tu: string; hieu_luc_den: string | null }
 
 // ── Danh mục seed (đọc 1 lần) ─────────────────────────────────────
@@ -88,6 +90,11 @@ export async function capTaiKhoan(nhanSuId: string, email: string, password: str
   const { error: e2 } = await supabase.from('tai_khoan').upsert({ id: uid, nhan_su_id: nhanSuId, email }, { onConflict: 'id' })
   if (e2) throw e2
 }
+// Gỡ link tài khoản ↔ nhân sự (vd đã xóa user bên Auth Dashboard → dọn dòng nối mồ côi).
+export async function goTaiKhoan(nhanSuId: string): Promise<void> {
+  const { error } = await supabase.from('tai_khoan').delete().eq('nhan_su_id', nhanSuId)
+  if (error) throw error
+}
 // Map nhan_su_id → email tài khoản (để bảng Nhân sự hiện ai có TK rồi).
 export async function listTaiKhoanMap(): Promise<Record<string, string>> {
   const { data, error } = await supabase.from('tai_khoan').select('nhan_su_id,email').limit(LIMIT)
@@ -140,6 +147,87 @@ export async function getMyProfile(): Promise<MyProfile | null> {
     phanCong: (pcRes.data ?? []) as (PhanCongLop & { lop?: Lop })[],
   }
 }
+// ── SCOPE ENGINE — "ai thấy task nào" (Thùy chốt 12/06) ──────────
+// Gốc rễ RBAC (ABAC): task mang nhãn (loại việc × lớp); người thấy task nếu khớp 3 chiều:
+//   ① LOẠI việc = từ phan_cong_lop.vai_tro (gv→đánh giá, tg→chấm) + team ops→điểm danh/xếp bù.
+//   ② PHẠM VI  = đúng lớp được phân (GV/TA); OPS = toàn hệ (phase này).
+//   ③ VAI TRÒ  = OWNER (việc của tôi) vs GIÁM SÁT (việc người DƯỚI tôi trong cây vị trí — đệ quy cha_id).
+// Task pure-derive (chưa có bảng) sẽ LỌC qua scope này khi dựng lớp vận hành (điểm danh/ET…).
+export type WorkRole = 'gv' | 'tg' | 'ops'
+export const WORKTYPE_BY_ROLE: Record<WorkRole, { key: string; ten: string }[]> = {
+  gv: [{ key: 'danh_gia', ten: 'Đánh giá buổi' }, { key: 'noi_dung', ten: 'Nội dung buổi' }],
+  tg: [{ key: 'cham_et', ten: 'Chấm ET' }, { key: 'cham_btvn', ten: 'Chấm BTVN' }],
+  ops: [{ key: 'diem_danh', ten: 'Điểm danh' }, { key: 'xep_bu', ten: 'Xếp bù' }],
+}
+export type ScopeLop = { lop_id: string; ten_lop: string; mon: string; work_role: WorkRole; worktypes: { key: string; ten: string }[] }
+export type ScopeNguoiDuoi = { nhan_su_id: string; ho_ten: string; ma_ns?: string; lops: { ten_lop: string; work_role: WorkRole }[] }
+export type MyScope = {
+  nhanSu: NhanSu
+  trucTiep: ScopeLop[]      // ① OWNER — việc tôi đích thân làm (từ phân công lớp; GV "đến dạy rồi về" cũng chỉ có cái này)
+  opsToanHe: boolean        // thuộc team OPS → worktype OPS áp MỌI lớp
+  // ② GIÁM SÁT (span-of-control): quyền QL từ GHẾ trong cây vị trí, KHÔNG từ vai GV.
+  giamSatTrucTiep: ScopeNguoiDuoi[] // cấp dưới TRỰC TIẾP — view MẶC ĐỊNH (mỗi người gánh tình trạng nhánh dưới họ)
+  giamSatSau: ScopeNguoiDuoi[]      // cấp dưới của cấp dưới — PASSIVE, drill khi cần
+  laQuanLy: boolean
+}
+export async function getMyScope(): Promise<MyScope | null> {
+  const prof = await getMyProfile()
+  if (!prof) return null
+  const nsId = prof.nhanSu.id
+
+  // ① + ② trực tiếp = phân công lớp của tôi (vai GV/TG = loại việc)
+  const trucTiep: ScopeLop[] = prof.phanCong.map((pc) => {
+    const role: WorkRole = pc.vai_tro === 'gv' ? 'gv' : 'tg'
+    return { lop_id: pc.lop_id, ten_lop: pc.lop?.ten_lop ?? '?', mon: pc.lop?.mon ?? '', work_role: role, worktypes: WORKTYPE_BY_ROLE[role] }
+  })
+  const opsToanHe = prof.teams.some((t) => t.ma === 'ops')
+
+  // ② giám sát = người DƯỚI tôi trong cây vị trí (mọi team tôi có vị trí), TÍNH ĐỘ SÂU.
+  // Quyền QL đến từ GHẾ (Trưởng/Phó), KHÔNG từ vai GV — GV thường quản lý ZERO người.
+  // GV xem được data lớp mình = trục B (data-scope, dashboard), KHÔNG nằm ở task-scope này.
+  const depthByNs = new Map<string, number>() // nhan_su_id → độ sâu NHỎ NHẤT dưới tôi (1 = trực tiếp)
+  for (const vt of prof.viTris) {
+    const all = await listViTri(vt.team_id)
+    const childrenOf = (id: string) => all.filter((x) => x.cha_id === id)
+    const seenSeat = new Set<string>()
+    let frontier = childrenOf(vt.id), depth = 1
+    while (frontier.length) {
+      const next: ViTri[] = []
+      for (const cur of frontier) {
+        if (seenSeat.has(cur.id)) continue
+        seenSeat.add(cur.id)
+        if (cur.nhan_su_id && cur.nhan_su_id !== nsId) {
+          const prev = depthByNs.get(cur.nhan_su_id)
+          if (prev === undefined || depth < prev) depthByNs.set(cur.nhan_su_id, depth)
+        }
+        next.push(...childrenOf(cur.id))
+      }
+      frontier = next; depth++
+    }
+  }
+  const giamSatTrucTiep: ScopeNguoiDuoi[] = [], giamSatSau: ScopeNguoiDuoi[] = []
+  if (depthByNs.size) {
+    const ids = [...depthByNs.keys()]
+    const [nsRows, pcRows] = await Promise.all([
+      supabase.from('nhan_su').select('id, ho_ten, ma_ns').in('id', ids).limit(LIMIT),
+      supabase.from('phan_cong_lop').select('nhan_su_id, vai_tro, lop(ten_lop)').in('nhan_su_id', ids).limit(LIMIT),
+    ])
+    const nsMap = new Map(((nsRows.data ?? []) as any[]).map((r) => [r.id, r]))
+    const pcByNs = new Map<string, { ten_lop: string; work_role: WorkRole }[]>()
+    for (const r of (pcRows.data ?? []) as any[]) {
+      const arr = pcByNs.get(r.nhan_su_id) ?? []
+      arr.push({ ten_lop: r.lop?.ten_lop ?? '?', work_role: r.vai_tro === 'gv' ? 'gv' : 'tg' })
+      pcByNs.set(r.nhan_su_id, arr)
+    }
+    for (const id of ids) {
+      const ns = nsMap.get(id)
+      const row: ScopeNguoiDuoi = { nhan_su_id: id, ho_ten: ns?.ho_ten ?? '?', ma_ns: ns?.ma_ns, lops: pcByNs.get(id) ?? [] }
+      ;(depthByNs.get(id) === 1 ? giamSatTrucTiep : giamSatSau).push(row)
+    }
+  }
+  return { nhanSu: prof.nhanSu, trucTiep, opsToanHe, giamSatTrucTiep, giamSatSau, laQuanLy: depthByNs.size > 0 }
+}
+
 // NS chỉ được sửa 3 trường cá nhân — whitelist ngay tại seam, UI không lách được.
 export async function updateMyProfile(nhanSuId: string, p: { so_dien_thoai?: string | null; email?: string | null; anh_url?: string | null }): Promise<void> {
   const patch: Record<string, unknown> = { updated_at: new Date().toISOString() }
@@ -227,6 +315,26 @@ export async function addPhanCong(p: Omit<PhanCongLop, 'id'>): Promise<void> {
   const { error } = await supabase.from('phan_cong_lop').insert(p)
   if (error) throw error
 }
+// Toàn bộ phân công (cho ma trận Phân công). Group client-side theo lớp.
+export async function listPhanCongAll(): Promise<PhanCongLop[]> {
+  const { data, error } = await supabase.from('phan_cong_lop').select('*').limit(LIMIT)
+  if (error) throw error
+  return (data ?? []) as PhanCongLop[]
+}
+// Set 1 SLOT của lớp (gv_chinh: 1 GV chịu trách nhiệm · gv_phu: 1 GV phụ · tg: 1 TG ôm toàn bộ chấm).
+// Xóa người cũ ở slot rồi gán mới. null = bỏ trống slot. Ghi vào phan_cong_lop (cùng seam với màn Lớp).
+export async function setPhanCongSlot(lopId: string, slot: 'gv_chinh' | 'gv_phu' | 'tg', nhanSuId: string | null): Promise<void> {
+  const vai: 'gv' | 'tg' = slot === 'tg' ? 'tg' : 'gv'
+  let del = supabase.from('phan_cong_lop').delete().eq('lop_id', lopId).eq('vai_tro', vai)
+  if (slot === 'gv_chinh') del = del.eq('la_chinh', true)
+  else if (slot === 'gv_phu') del = del.eq('la_chinh', false)
+  const { error: e1 } = await del   // tg: xóa hết TG của lớp (1 TG/lớp)
+  if (e1) throw e1
+  if (nhanSuId) {
+    const { error } = await supabase.from('phan_cong_lop').insert({ nhan_su_id: nhanSuId, lop_id: lopId, vai_tro: vai, la_chinh: slot !== 'gv_phu' })
+    if (error) throw error
+  }
+}
 export async function removePhanCong(id: string): Promise<void> {
   const { error } = await supabase.from('phan_cong_lop').delete().eq('id', id)
   if (error) throw error
@@ -296,20 +404,50 @@ export async function listHSCuaLop(lopId: string, gomDaRoi = false): Promise<HST
   if (error) throw error
   return (data ?? []) as HSTrongLop[]
 }
-export async function ghiDanh(hocSinhId: string, lopId: string, mucNangLucId: string | null = null): Promise<void> {
-  // upsert idempotent: ghi danh lại lớp cũ (đã rời) → bật lại 'dang_hoc'.
+export async function ghiDanh(hocSinhId: string, lopId: string, mucNangLucId: string | null = null, ngayVao?: string): Promise<void> {
+  // upsert idempotent: ghi danh lại lớp cũ (đã rời) → bật lại 'dang_hoc' với ngày vào MỚI.
+  // ngay_vao = cổng thời gian data học tập (BTVN/ET của HS chỉ tính từ ngày này). Trigger DB tự log.
   const { error } = await supabase.from('hoc_sinh_lop')
-    .upsert({ hoc_sinh_id: hocSinhId, lop_id: lopId, muc_nang_luc_id: mucNangLucId, trang_thai: 'dang_hoc' }, { onConflict: 'hoc_sinh_id,lop_id' })
+    .upsert({ hoc_sinh_id: hocSinhId, lop_id: lopId, muc_nang_luc_id: mucNangLucId, trang_thai: 'dang_hoc', ngay_vao: ngayVao ?? todayVN(), ngay_roi: null }, { onConflict: 'hoc_sinh_id,lop_id' })
   if (error) throw error
 }
-// Rời lớp = đánh dấu da_roi (GIỮ dòng — lịch sử), KHÔNG xoá cứng.
-export async function roiLop(ghiDanhId: string): Promise<void> {
-  const { error } = await supabase.from('hoc_sinh_lop').update({ trang_thai: 'da_roi' }).eq('id', ghiDanhId)
+// Rời lớp = đánh dấu da_roi + ngay_roi (GIỮ dòng — lịch sử), KHÔNG xoá cứng. Trigger DB tự log.
+export async function roiLop(ghiDanhId: string, ngayRoi?: string): Promise<void> {
+  const { error } = await supabase.from('hoc_sinh_lop').update({ trang_thai: 'da_roi', ngay_roi: ngayRoi ?? todayVN() }).eq('id', ghiDanhId)
   if (error) throw error
+}
+export async function setNgayVao(ghiDanhId: string, ngayVao: string): Promise<void> {
+  const { error } = await supabase.from('hoc_sinh_lop').update({ ngay_vao: ngayVao }).eq('id', ghiDanhId)
+  if (error) throw error
+}
+// CHUYỂN LỚP: rời lớp cũ (ngay_roi) + vào lớp mới (ngay_vao) — 2 sự kiện đều được trigger log.
+export async function chuyenLop(ghiDanhCuId: string, hocSinhId: string, lopMoiId: string, giuBandId: string | null, ngay?: string): Promise<void> {
+  const d = ngay ?? todayVN()
+  await roiLop(ghiDanhCuId, d)
+  await ghiDanh(hocSinhId, lopMoiId, giuBandId, d)
+}
+// HS đang học (khối tùy chọn) CHƯA có lớp môn này — nguồn hợp lệ duy nhất cho "thêm HS vào lớp".
+// (HS đã có lớp môn đó phải đi đường CHUYỂN LỚP từ hồ sơ HS — không add chồng.)
+export async function listHSChuaCoLopMon(mon: string, khoi?: string): Promise<HocSinh[]> {
+  const [hs, ghiDanhMon] = await Promise.all([
+    listHocSinh(khoi),
+    supabase.from('hoc_sinh_lop').select('hoc_sinh_id, lop!inner(mon)').eq('trang_thai', 'dang_hoc').eq('lop.mon', mon).limit(LIMIT),
+  ])
+  if (ghiDanhMon.error) throw ghiDanhMon.error
+  const daCo = new Set((ghiDanhMon.data ?? []).map((r: any) => r.hoc_sinh_id))
+  return hs.filter((h) => h.trang_thai === 'dang_hoc' && !daCo.has(h.id))
 }
 export async function setBandGhiDanh(ghiDanhId: string, mucNangLucId: string | null): Promise<void> {
   const { error } = await supabase.from('hoc_sinh_lop').update({ muc_nang_luc_id: mucNangLucId }).eq('id', ghiDanhId)
   if (error) throw error
+}
+
+// Toàn bộ slot đang hiệu lực + thông tin lớp (cho bảng TKB tuần).
+export type TKBSlot = ThoiKhoaBieu & { lop?: Lop }
+export async function listAllTKB(): Promise<TKBSlot[]> {
+  const { data, error } = await supabase.from('thoi_khoa_bieu').select('*, lop(*)').is('hieu_luc_den', null).limit(LIMIT)
+  if (error) throw error
+  return (data ?? []) as TKBSlot[]
 }
 
 // ── Thời khóa biểu (khung lặp, hiệu-lực-theo-thời-gian) ───────────
@@ -323,6 +461,11 @@ export async function listTKB(lopId: string, gomHetHan = false): Promise<ThoiKho
 }
 export async function addTKB(p: Omit<ThoiKhoaBieu, 'id'>): Promise<void> {
   const { error } = await supabase.from('thoi_khoa_bieu').insert(p)
+  if (error) throw error
+}
+// Chỉnh hiệu lực slot (hieu_luc_tu = ngày khai giảng / bắt đầu áp; hieu_luc_den = ngừng).
+export async function suaHieuLucTKB(id: string, patch: { hieu_luc_tu?: string; hieu_luc_den?: string | null }): Promise<void> {
+  const { error } = await supabase.from('thoi_khoa_bieu').update(patch).eq('id', id)
   if (error) throw error
 }
 // Bỏ 1 slot = ĐÓNG hiệu lực (không xoá — giữ vết để suy buổi quá khứ đúng).
