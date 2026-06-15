@@ -119,7 +119,7 @@ function CreateLopModal({ khoi, onClose, onCreated }: { khoi: string; onClose: (
   async function create() {
     if (!ten.trim() || !mon.trim()) return
     setBusy(true); setError(null)
-    try { const l = await createLop({ ten_lop: ten.trim(), mon: mon.trim(), khoi: Number(khoi), bac, co_so: coSo.trim() || null, ngay_khai_giang: khaiGiang || null }); onCreated(l.id) }
+    try { const l = await createLop({ ten_lop: ten.trim(), mon: mon.trim(), khoi, bac, co_so: coSo.trim() || null, ngay_khai_giang: khaiGiang || null }); onCreated(l.id) }
     catch (e: any) { setError(e.message ?? String(e)); setBusy(false) }
   }
   return (

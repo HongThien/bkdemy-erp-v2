@@ -20,9 +20,9 @@ export type Team = { id: string; ma: string; ten: string; thu_tu: number }
 // GHẾ (vị trí) — xương sống tổ chức. Cây = cha_id giữa GHẾ; người chỉ là kẻ ngồi (nhan_su_id null = ghế trống).
 export type ViTri = { id: string; team_id: string; ten: string | null; cap: 'truong' | 'pho' | 'thanh_vien'; cha_id: string | null; nhan_su_id: string | null }
 export type MucNangLuc = { id: string; ma: string; bac: string; muc: number; thu_tu: number; ten: string | null }
-export type Lop = { id: string; ten_lop: string; mon: string; khoi: number | null; bac: string | null; co_so: string | null; ngay_khai_giang: string | null; trang_thai: 'dang_hoc' | 'dong'; created_at?: string }
+export type Lop = { id: string; ten_lop: string; mon: string; khoi: string | null; bac: string | null; co_so: string | null; ngay_khai_giang: string | null; trang_thai: 'dang_hoc' | 'dong'; created_at?: string }
 export type PhanCongLop = { id: string; nhan_su_id: string; lop_id: string; vai_tro: 'gv' | 'tg'; la_chinh: boolean }
-export type HocSinh = { id: string; ma_hs: string | null; ho_ten: string; ngay_sinh: string | null; gioi_tinh: 'nam' | 'nu' | null; khoi: number | null; trang_thai: 'dang_hoc' | 'bao_luu' | 'nghi'; phu_huynh_id: string | null; diem_test_dau_vao: number | null; ngay_nhap_hoc: string | null; dia_chi: string | null; truong_hoc: string | null; anh_url: string | null; created_at?: string }
+export type HocSinh = { id: string; ma_hs: string | null; ho_ten: string; ngay_sinh: string | null; gioi_tinh: 'nam' | 'nu' | null; khoi: string | null; trang_thai: 'dang_hoc' | 'bao_luu' | 'nghi'; phu_huynh_id: string | null; diem_test_dau_vao: number | null; ngay_nhap_hoc: string | null; dia_chi: string | null; truong_hoc: string | null; anh_url: string | null; created_at?: string }
 export type PhuHuynh = { id: string; ma_ph: string; ho_ten: string; so_dien_thoai: string | null; email: string | null; dia_chi: string | null; created_at?: string }
 export type HocSinhLop = { id: string; hoc_sinh_id: string; lop_id: string; muc_nang_luc_id: string | null; ngay_vao: string | null; ngay_roi: string | null; trang_thai: 'dang_hoc' | 'da_roi' }
 // Ngày hôm nay giờ VN (CLAUDE.md §2 — không toISOString)
@@ -286,7 +286,7 @@ export async function deleteViTri(id: string): Promise<void> {
 // ── Lớp ───────────────────────────────────────────────────────────
 export async function listLop(khoi?: string): Promise<Lop[]> {
   let q = supabase.from('lop').select('*').order('ten_lop').limit(LIMIT)
-  if (khoi) q = q.eq('khoi', Number(khoi))
+  if (khoi) q = q.eq('khoi', khoi) // khoi là TEXT (4T/5T là khối riêng)
   const { data, error } = await q
   if (error) throw error
   return (data ?? []) as Lop[]
@@ -343,7 +343,7 @@ export async function removePhanCong(id: string): Promise<void> {
 // ── Học sinh ──────────────────────────────────────────────────────
 export async function listHocSinh(khoi?: string): Promise<HocSinh[]> {
   let q = supabase.from('hoc_sinh').select('*').order('ho_ten').limit(LIMIT)
-  if (khoi) q = q.eq('khoi', Number(khoi))
+  if (khoi) q = q.eq('khoi', khoi) // khoi là TEXT
   const { data, error } = await q
   if (error) throw error
   return (data ?? []) as HocSinh[]

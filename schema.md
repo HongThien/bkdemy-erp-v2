@@ -161,7 +161,7 @@
 | ho_ten | text |  |  |  |
 | ngay_sinh | date | Y |  |  |
 | gioi_tinh | text | Y |  |  |
-| khoi | smallint | Y |  |  |
+| khoi | text | Y |  |  |
 | trang_thai | text |  | 'dang_hoc'::text |  |
 | diem_test_dau_vao | numeric | Y |  |  |
 | ngay_nhap_hoc | date | Y |  |  |
@@ -205,7 +205,7 @@
 | id | uuid |  | gen_random_uuid() | PK |
 | ten_lop | text |  |  |  |
 | mon | text |  |  |  |
-| khoi | smallint | Y |  |  |
+| khoi | text | Y |  |  |
 | bac | text | Y |  | FK→lop_bac.ma |
 | co_so | text | Y |  |  |
 | trang_thai | text |  | 'dang_hoc'::text |  |

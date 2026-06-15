@@ -113,7 +113,7 @@ function EditModal({ hocSinh, defaultKhoi, onClose, onSaved }: { hocSinh: HocSin
     setBusy(true); setError(null)
     try {
       const patch = {
-        ho_ten: ho_ten.trim(), khoi: khoi ? Number(khoi) : null,
+        ho_ten: ho_ten.trim(), khoi: khoi || null,
         ...(ma_hs.trim() ? { ma_hs: ma_hs.trim() } : {}), // trống → DB tự sinh HSxxxx (không gửi null đè default)
         ngay_sinh: ngay_sinh || null, gioi_tinh, trang_thai, truong_hoc: truong_hoc.trim() || null,
         dia_chi: dia_chi.trim() || null, ngay_nhap_hoc: ngay_nhap_hoc || null,
