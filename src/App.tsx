@@ -15,13 +15,13 @@ export default function App() {
     return () => sub.subscription.unsubscribe()
   }, [])
 
-  const { currentUserId, screen, quyen, loadQuyen, clearQuyen } = useStore()
+  const { currentUserId, screen, quyen, loadQuyen, loadMe, clearQuyen } = useStore()
   const user = getUser(currentUserId)
   const showAdmin = screen === 'admin' && canAccessAdmin(quyen)
 
-  // Quyền feature-access THẬT theo tài khoản đăng nhập (rpc my_quyen). Reset khi đăng xuất.
+  // Danh tính + quyền THẬT theo tài khoản đăng nhập. Reset khi đăng xuất.
   useEffect(() => {
-    if (session) loadQuyen()
+    if (session) { loadQuyen(); loadMe() }
     else clearQuyen()
   }, [session?.user?.id]) // eslint-disable-line
 

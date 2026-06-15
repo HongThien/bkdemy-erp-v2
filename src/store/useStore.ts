@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 import { users, opTasks, devTasks, adminLeaves, classesOfCoSo, worktypesByVai } from '../mock/fixtures'
 import { myQuyen, type MyQuyen } from '../lib/quyen'
+import { getMyProfile, type MyProfile, type MyScope } from '../lib/nhansu'
 import type { User, Vai, NavGroup, NavLeaf, AdminLeaf } from '../types'
 
 interface UiState {
@@ -8,13 +9,15 @@ interface UiState {
   screen: 'nhansu' | 'admin'
   staffLeaf: string
   adminLeaf: string
-  // ── Quyền feature-access THẬT (từ tài khoản đăng nhập, rpc my_quyen). null = chưa load ──
+  // ── Danh tính + quyền THẬT (từ tài khoản đăng nhập). null = chưa load ──
   quyen: MyQuyen | null
+  me: MyProfile | null            // nhân sự thật của account đang đăng nhập (getMyProfile)
   setCurrentUser: (id: string) => void
   setScreen: (s: 'nhansu' | 'admin') => void
   setStaffLeaf: (id: string) => void
   setAdminLeaf: (id: string) => void
   loadQuyen: () => Promise<void>
+  loadMe: () => Promise<void>
   clearQuyen: () => void
 }
 
@@ -24,12 +27,14 @@ export const useStore = create<UiState>((set) => ({
   staffLeaf: 'viec',
   adminLeaf: 'db_tongquan',
   quyen: null,
+  me: null,
   setCurrentUser: (id) => set({ currentUserId: id, screen: 'nhansu', staffLeaf: 'viec' }),
   setScreen: (s) => set({ screen: s }),
   setStaffLeaf: (id) => set({ staffLeaf: id }),
   setAdminLeaf: (id) => set({ adminLeaf: id }),
   loadQuyen: async () => { try { set({ quyen: await myQuyen() }) } catch { set({ quyen: { laAdmin: false, chucNang: [] } }) } },
-  clearQuyen: () => set({ quyen: null }),
+  loadMe: async () => { try { set({ me: await getMyProfile() }) } catch { set({ me: null }) } },
+  clearQuyen: () => set({ quyen: null, me: null }),
 }))
 
 // ── Gate feature-access THẬT (lớp ①) — KHÔNG dùng cờ founderOnly mock nữa ─────────
@@ -81,7 +86,25 @@ export const adminNavForUser = (u: User): NavGroup[] => {
   }))
 }
 
-// Cây Nhân sự 2 tầng: Việc của tôi + (Tra cứu & sửa: loại-việc → lớp), derive theo role
+// Cây Nhân sự THẬT (từ getMyScope): Việc của tôi + (Tra cứu & sửa: loại-việc → lớp tôi phụ trách).
+export const staffNavFromScope = (scope: MyScope | null): NavGroup[] => {
+  const groups: NavGroup[] = [{ nhom: null, leaves: [{ id: 'viec', ten: 'Việc của tôi' }] }]
+  if (!scope) return groups
+  const m = new Map<string, { ten: string; lops: Set<string> }>() // wtKey → {ten, ten_lop set}
+  for (const sl of scope.trucTiep)
+    for (const wt of sl.worktypes) {
+      const e = m.get(wt.key) ?? { ten: wt.ten, lops: new Set<string>() }
+      e.lops.add(sl.ten_lop); m.set(wt.key, e)
+    }
+  const nodes: NavLeaf[] = [...m.entries()].map(([key, e]) => ({
+    id: `tc:${key}`, ten: e.ten,
+    children: [...e.lops].map((ten) => ({ id: `tc:${key}:${ten}`, ten })),
+  }))
+  if (nodes.length) groups.push({ nhom: 'Tra cứu & sửa', leaves: nodes })
+  return groups
+}
+
+// (cũ — mock) Cây Nhân sự 2 tầng derive theo role mock. Giữ tạm cho tham chiếu.
 export const staffNavForUser = (u: User): NavGroup[] => {
   const nodes: NavLeaf[] = []
   const seen = new Set<string>()
