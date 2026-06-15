@@ -282,7 +282,10 @@ function AiImportModal({ mode, dangChinh, tenDang, onClose, onSaved }: {
   async function copyPrompt() { try { await navigator.clipboard.writeText(effPrompt()); setCopied(true); setTimeout(() => setCopied(false), 1500) } catch { /* */ } }
   async function runAuto() {
     setError(null); setBusy(true)
-    try { applyJson(await callGeminiJson(effPrompt(), { model, files: files.map((f) => ({ mimeType: f.mimeType, dataBase64: f.dataBase64 })) })) }
+    // ⚠ CAP CỨNG Ở CODE (đừng tin UI): CLONE = đẻ biến thể từ text, KHÔNG bao giờ cần Pro.
+    // Pro chỉ hợp lệ ở luồng OCR khó (batch). Vụ cháy 920k là do clone lỡ chạy Pro → ép Flash.
+    const safeModel = isClone && model.includes('pro') ? 'gemini-2.5-flash' : model
+    try { applyJson(await callGeminiJson(effPrompt(), { model: safeModel, files: files.map((f) => ({ mimeType: f.mimeType, dataBase64: f.dataBase64 })) })) }
     catch (e: any) { setError(e.message ?? String(e)) } finally { setBusy(false) }
   }
   function parseText() {
@@ -358,8 +361,9 @@ function AiImportModal({ mode, dangChinh, tenDang, onClose, onSaved }: {
             )}
             {method === 'auto' && (
               <Cell label="Model">
+                {/* CLONE: ẩn Pro hẳn (clone không bao giờ cần Pro). Pro chỉ hiện ở batch/OCR khó. */}
                 <select value={model} onChange={(e) => setModel(e.target.value)} className={sel}>
-                  {MODELS.map((m) => <option key={m.value} value={m.value}>{m.label} · {m.sub}</option>)}
+                  {MODELS.filter((m) => !(isClone && m.value.includes('pro'))).map((m) => <option key={m.value} value={m.value}>{m.label} · {m.sub}</option>)}
                 </select>
               </Cell>
             )}
