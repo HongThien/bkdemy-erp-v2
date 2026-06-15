@@ -46,10 +46,21 @@ export const accessibleLeaves = (q: MyQuyen | null): AdminLeaf[] => {
   return adminLeaves.filter((l) => ok.has(l.id))
 }
 export const canAccessAdmin = (q: MyQuyen | null): boolean => accessibleLeaves(q).length > 0
+// "Làm tài liệu" = node CHA, con hiện thẳng trong tree (1 click tới loại tài liệu cần).
+export const LAMTAILIEU_CHILDREN: NavLeaf[] = [
+  { id: 'lamtailieu:giao_trinh', ten: 'Giáo trình' },
+  { id: 'lamtailieu:et', ten: 'ET' },
+  { id: 'lamtailieu:de_thi', ten: 'Đề thi' },
+  { id: 'lamtailieu:bo_tro', ten: 'Tài liệu bổ trợ' },
+]
 export const adminNavFromQuyen = (q: MyQuyen | null): NavGroup[] => {
   const leaves = accessibleLeaves(q)
   const nhoms = [...new Set(leaves.map((l) => l.nhom))]
-  return nhoms.map((n) => ({ nhom: n, leaves: leaves.filter((l) => l.nhom === n).map((l) => ({ id: l.id, ten: l.ten })) }))
+  return nhoms.map((n) => ({
+    nhom: n,
+    leaves: leaves.filter((l) => l.nhom === n).map((l): NavLeaf =>
+      l.id === 'lamtailieu' ? { id: l.id, ten: l.ten, children: LAMTAILIEU_CHILDREN } : { id: l.id, ten: l.ten }),
+  }))
 }
 
 // ── Selectors (mock derive theo role) ────────────────────────────

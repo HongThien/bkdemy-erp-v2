@@ -84,11 +84,31 @@ export async function setCauOfPhan(phanId: string, maCaus: string[]): Promise<vo
   if (error) throw error
 }
 
-// ── Rule auto gợi ý câu luyện: ưu tiên câu GỐC ('le') > clone, lấy N câu đầu ──
+// ── Chống LẠM DỤNG câu: đếm số lần mỗi câu đã dùng (mọi tai_lieu_cau) → gợi ý câu ÍT DÙNG NHẤT trước.
+// (Không khóa cứng toàn cục — câu vẫn dùng lại được, chỉ sau cùng → kho tự xoay vòng đều.)
+async function cauUsage(maCaus: string[]): Promise<Map<string, number>> {
+  if (!maCaus.length) return new Map()
+  const { data } = await supabase.from('tai_lieu_cau').select('ma_cau').in('ma_cau', maCaus).limit(LIMIT * 50)
+  const m = new Map<string, number>()
+  for (const r of (data ?? []) as { ma_cau: string }[]) m.set(r.ma_cau, (m.get(r.ma_cau) ?? 0) + 1)
+  return m
+}
+// So sánh ưu tiên: ÍT DÙNG nhất trước, rồi câu GỐC ('le') trước clone.
+const cmpUsageLe = (u: Map<string, number>) => (a: CauHoi, b: CauHoi) =>
+  (u.get(a.ma_cau) ?? 0) - (u.get(b.ma_cau) ?? 0) || (a.nguon === 'le' ? 0 : 1) - (b.nguon === 'le' ? 0 : 1)
+
+// ── Rule auto gợi ý câu luyện: ít-dùng-nhất + ưu tiên GỐC, lấy N câu đầu ──
 export async function autoSuggestCau(maDang: string, n = 6): Promise<string[]> {
   const caus = await listCauByDang(maDang)
-  const sorted = [...caus].sort((a, b) => (a.nguon === 'le' ? 0 : 1) - (b.nguon === 'le' ? 0 : 1))
-  return sorted.slice(0, n).map((c) => c.ma_cau)
+  const u = await cauUsage(caus.map((c) => c.ma_cau))
+  return [...caus].sort(cmpUsageLe(u)).slice(0, n).map((c) => c.ma_cau)
+}
+// 1 câu gợi ý cho 1 dạng (cho ET): loại trừ câu đã dùng trong buổi/đề (`exclude`), lấy câu ÍT DÙNG nhất.
+export async function suggestCauForDang(maDang: string, exclude: Set<string>): Promise<string | null> {
+  const caus = (await listCauByDang(maDang)).filter((c) => !exclude.has(c.ma_cau))
+  if (!caus.length) return null
+  const u = await cauUsage(caus.map((c) => c.ma_cau))
+  return [...caus].sort(cmpUsageLe(u))[0].ma_cau
 }
 // Số câu luyện mặc định mỗi dạng (theo loại) — dùng khi thêm chuyên đề + làm default cho ô nhập.
 export const DEFAULT_LUYEN_COUNTS: Record<string, number> = { trac_nghiem: 3, tra_loi_ngan: 2, tu_luan: 1 }
@@ -96,9 +116,10 @@ export const DEFAULT_LUYEN_COUNTS: Record<string, number> = { trac_nghiem: 3, tr
 export async function autoSuggestByLoai(maDang: string, counts: Record<string, number>): Promise<string[]> {
   const caus = await listCauByDang(maDang)
   const out: string[] = []
+  const u = await cauUsage(caus.map((c) => c.ma_cau))
   for (const [loai, n] of Object.entries(counts)) {
     if (n <= 0) continue
-    const pool = caus.filter((c) => c.loai_cau === loai).sort((a, b) => (a.nguon === 'le' ? 0 : 1) - (b.nguon === 'le' ? 0 : 1))
+    const pool = caus.filter((c) => c.loai_cau === loai).sort(cmpUsageLe(u))
     out.push(...pool.slice(0, n).map((c) => c.ma_cau))
   }
   return out
@@ -111,10 +132,10 @@ export async function autoSuggestBtvn(maDangs: string[], exclude: Set<string>, c
   const out: string[] = []
   for (const md of maDangs) {
     const caus = await listCauByDang(md)
+    const u = await cauUsage(caus.map((c) => c.ma_cau))
     for (const [loai, n] of Object.entries(counts)) {
       if (n <= 0) continue
-      const pool = caus.filter((c) => c.loai_cau === loai && !exclude.has(c.ma_cau))
-        .sort((a, b) => (a.nguon === 'le' ? 0 : 1) - (b.nguon === 'le' ? 0 : 1))
+      const pool = caus.filter((c) => c.loai_cau === loai && !exclude.has(c.ma_cau)).sort(cmpUsageLe(u))
       out.push(...pool.slice(0, n).map((c) => c.ma_cau))
     }
   }
@@ -224,4 +245,47 @@ export async function getTaiLieuFull(id: string): Promise<TaiLieuFull> {
     }
   })
   return { taiLieu: tl as TaiLieu, phans: phansResolved, ltChuyenDe, tenChuyenDe }
+}
+
+// ── ET (loai='et') — gắn buổi qua (lop_id, ngay); nội dung = phẳng các 'dang' (KHÔNG buổi/BTVN) ──
+export type ETDoc = TaiLieu & { lop_id: string | null; ngay: string | null }
+const thuLabelET = (ngay: string) => { const d = new Date(ngay + 'T00:00:00').getDay(); const t = d === 0 ? 8 : d + 1; return t === 8 ? 'CN' : 'T' + t }
+// Mã ET = ma_buoi + ".ET" (8A1.T3.16062026.ET) — danh tính suy ra từ lớp+ngày.
+export function maET(tenLop: string, ngay: string): string { const [y, m, d] = ngay.split('-'); return `${tenLop}.${thuLabelET(ngay)}.${d}${m}${y}.ET` }
+
+export async function listET(lopId?: string): Promise<ETDoc[]> {
+  let q = supabase.from('tai_lieu').select('*').eq('loai', 'et').order('ngay', { ascending: false }).limit(LIMIT)
+  if (lopId) q = q.eq('lop_id', lopId)
+  const { data, error } = await q
+  if (error) throw error
+  return (data ?? []) as ETDoc[]
+}
+export async function createET(input: { lopId: string; ngay: string; ten: string; khoi: string }): Promise<ETDoc> {
+  const { data: { user } } = await supabase.auth.getUser()
+  const { data, error } = await supabase.from('tai_lieu')
+    .insert({ loai: 'et', ten: input.ten, khoi: input.khoi, lop_id: input.lopId, ngay: input.ngay, created_by: user?.id ?? null })
+    .select().single()
+  if (error) throw error
+  return data as ETDoc
+}
+// ET tìm theo buổi (lớp+ngày) — dùng khi tab Chấm ET load (buổi materialize).
+export async function getETByBuoi(lopId: string, ngay: string): Promise<ETDoc | null> {
+  const { data, error } = await supabase.from('tai_lieu').select('*').eq('loai', 'et').eq('lop_id', lopId).eq('ngay', ngay).maybeSingle()
+  if (error) throw error
+  return (data as ETDoc) ?? null
+}
+// ET câu-centric: 1 phan 'custom' chứa câu THEO THỨ TỰ (mỗi câu 1 "hàng" trong UI; dạng = câu.dang_chinh).
+async function etPhanId(taiLieuId: string): Promise<string> {
+  const ex = (await listPhan(taiLieuId)).find((p) => p.loai_phan === 'custom')
+  if (ex) return ex.id
+  return (await addPhan({ tai_lieu_id: taiLieuId, thu_tu: 0, loai_phan: 'custom', ref_ma: null, tieu_de: 'ET', noi_dung: null })).id
+}
+// Câu của ET (đúng thứ tự) — mỗi CauHoi có dang_chinh để biết dạng của hàng đó.
+export async function getETCaus(taiLieuId: string): Promise<CauHoi[]> {
+  const full = await getTaiLieuFull(taiLieuId)
+  return full.phans.find((p) => p.loai_phan === 'custom')?.caus ?? []
+}
+// Đặt LẠI toàn bộ câu ET theo thứ tự (UI tự dedup trong đề — trong buổi không trùng).
+export async function setETCaus(taiLieuId: string, maCaus: string[]): Promise<void> {
+  await setCauOfPhan(await etPhanId(taiLieuId), maCaus)
 }

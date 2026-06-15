@@ -1,6 +1,11 @@
 import { useState } from 'react'
 import type { NavGroup, NavLeaf } from '../types'
 
+// branch có chứa mục đang chọn (đệ quy) → auto-mở để "1 click tới nơi"; branch khác tự gấp.
+function chuaSelected(leaf: NavLeaf, selected: string): boolean {
+  return !!leaf.children?.some((c) => c.id === selected || chuaSelected(c, selected))
+}
+
 function LeafItem({
   leaf,
   depth,
@@ -17,7 +22,7 @@ function LeafItem({
   toggle: (id: string) => void
 }) {
   const hasKids = !!leaf.children?.length
-  const isOpen = open.has(leaf.id)
+  const isOpen = open.has(leaf.id) || chuaSelected(leaf, selected) // mở nếu đang chứa mục chọn
   return (
     <li>
       <button

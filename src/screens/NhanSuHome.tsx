@@ -8,6 +8,7 @@ import PersonalCard from '../components/PersonalCard'
 import NavTree from '../components/NavTree'
 import KhoScreen from './kho/KhoScreen'
 import TaiLieuScreen from './tailieu/TaiLieuScreen'
+import ETScreen from './tailieu/ETScreen'
 import NhanSuScreen from './nhansu/NhanSuScreen'
 import OrgChartScreen from './nhansu/OrgChartScreen'
 import TKBScreen from './nhansu/TKBScreen'
@@ -152,7 +153,9 @@ export default function NhanSuHome({ user }: { user: User }) {
           </div>
         </section>
       ) : staffLeaf === 'bdkt' ? <KhoScreen />
-      : staffLeaf === 'lamtailieu' ? <TaiLieuScreen />
+      : (staffLeaf === 'lamtailieu' || staffLeaf === 'lamtailieu:giao_trinh') ? <TaiLieuScreen />
+      : staffLeaf === 'lamtailieu:et' ? <ETScreen />
+      : (staffLeaf === 'lamtailieu:de_thi' || staffLeaf === 'lamtailieu:bo_tro') ? <section className="flex min-h-0 items-center justify-center p-8 text-sm text-slate-400">Loại tài liệu này dựng sau.</section>
       : staffLeaf === 'ns' ? <NhanSuScreen />
       : staffLeaf === 'phancong' ? <PhanCongScreen />
       : staffLeaf === 'tkb' ? <TKBScreen />

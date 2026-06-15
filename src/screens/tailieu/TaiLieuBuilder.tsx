@@ -217,7 +217,7 @@ function CauRow({ no, c, onRemove }: { no: number; c: CauHoi; onRemove: () => vo
 }
 
 // ── Bộ chọn DẠNG cho 1 buổi (đa chọn, mọi chuyên đề; chọn 1 phần chuyên đề được) ──
-function DangPicker({ khoi, selected, onClose, onConfirm }: { khoi: string; selected: string[]; onClose: () => void; onConfirm: (maDangs: string[]) => void }) {
+export function DangPicker({ khoi, selected, onClose, onConfirm }: { khoi: string; selected: string[]; onClose: () => void; onConfirm: (maDangs: string[]) => void }) {
   const [tree, setTree] = useState<Tier1Node[]>([])
   const [sel, setSel] = useState<Set<string>>(new Set(selected))
   const [loading, setLoading] = useState(true)
@@ -295,7 +295,7 @@ function StructureTree({ buois, ten, onJump }: { buois: BuoiUI[]; ten: string; o
   )
 }
 
-function KhoPicker({ maDangs, selected, onClose, onConfirm }: { maDangs: string[]; selected: string[]; onClose: () => void; onConfirm: (m: string[]) => void }) {
+export function KhoPicker({ maDangs, selected, onClose, onConfirm }: { maDangs: string[]; selected: string[]; onClose: () => void; onConfirm: (m: string[]) => void }) {
   const [groups, setGroups] = useState<{ maDang: string; caus: CauHoi[] }[]>([])
   const [sel, setSel] = useState<Set<string>>(new Set(selected))
   const [fLoai, setFLoai] = useState<Set<string>>(new Set())

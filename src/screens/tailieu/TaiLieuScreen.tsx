@@ -38,7 +38,6 @@ export default function TaiLieuScreen() {
   return (
     <div className="flex h-full flex-col bg-[#fafafb]">
       <div className="flex items-center gap-4 border-b border-slate-200 bg-white px-6 py-2.5">
-        <span className="text-sm font-semibold text-slate-900">Làm tài liệu</span>
         <span className="rounded bg-indigo-50 px-2 py-0.5 text-[12px] font-medium text-indigo-600">Giáo trình</span>
         <div className="ml-auto flex items-center gap-1">
           <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm theo tên…" className="mr-2 h-7 w-44 rounded-md border border-slate-200 px-2.5 text-[13px] outline-none focus:border-indigo-400" />

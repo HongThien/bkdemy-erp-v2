@@ -422,6 +422,8 @@
 | updated_at | timestamp with time zone |  | now() |  |
 | cau_hinh | jsonb |  | '{}'::jsonb |  |
 | created_by | uuid | Y |  |  |
+| lop_id | uuid | Y |  | FK→lop.id |
+| ngay | date | Y |  |  |
 
 ## tai_lieu_cau
 
