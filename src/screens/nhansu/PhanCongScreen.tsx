@@ -1,6 +1,7 @@
 import { Fragment, useEffect, useMemo, useState } from 'react'
 import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../lib/kho/api'
 import { listLop, listNhanSu, listPhanCongAll, setPhanCongSlot, type Lop, type NhanSu, type PhanCongLop } from '../../lib/nhansu'
+import SearchSelect from '../../components/SearchSelect'
 
 // Ma trận PHÂN CÔNG: hàng = lớp, cột = SLOT việc. Gán theo vai (TG ôm toàn bộ chấm; GV chính/phụ làm đánh giá+nội dung).
 // Ghi vào phan_cong_lop (cùng seam màn Lớp — 1 sự thật, 2 cửa). Điểm danh = OPS toàn hệ (không gán per-lớp).
@@ -50,19 +51,14 @@ export default function PhanCongScreen() {
     catch (e: any) { alert(e.message ?? String(e)) }
   }
 
-  // dropdown 1 ô — loại trừ người đã giữ slot GV còn lại của lớp (tránh trùng vai gv)
+  // ô chọn người — search, loại trừ người đã giữ slot GV còn lại (tránh trùng vai gv); thiếu → đỏ
   function Picker({ lopId, slot, exclude }: { lopId: string; slot: 'gv_chinh' | 'gv_phu' | 'tg'; exclude?: (string | null)[] }) {
     const cur = slotOf(lopId, slot)
     const ex = new Set((exclude ?? []).filter(Boolean) as string[])
-    const missing = slot !== 'gv_phu' && !cur
     return (
-      <select value={cur ?? ''} onChange={(e) => setSlot(lopId, slot, e.target.value || null)}
-        className={`w-full rounded border px-1.5 py-1 text-[12px] ${missing ? 'border-rose-300 bg-rose-50 text-rose-600' : cur ? 'border-slate-200' : 'border-slate-200 text-slate-400'}`}>
-        <option value="">{slot === 'gv_phu' ? '— (không) —' : '⚠ chưa có —'}</option>
-        {ds.filter((n) => n.id === cur || !ex.has(n.id)).map((n) => (
-          <option key={n.id} value={n.id}>{n.ho_ten} ({tai[n.id] ?? 0})</option>
-        ))}
-      </select>
+      <SearchSelect value={cur} onChange={(id) => setSlot(lopId, slot, id)} invalid={slot !== 'gv_phu'}
+        placeholder={slot === 'gv_phu' ? '— (không) —' : '⚠ chưa có'}
+        options={ds.filter((n) => n.id === cur || !ex.has(n.id)).map((n) => ({ id: n.id, label: n.ho_ten, sub: `${tai[n.id] ?? 0} lớp` }))} />
     )
   }
 

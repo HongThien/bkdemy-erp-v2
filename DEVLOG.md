@@ -8,6 +8,34 @@
 
 ---
 
+## 2026-06-15
+
+**Fix khối = TEXT (mig 0030):** 4T/5T là KHỐI riêng (không phải hệ). `lop.khoi`/`hoc_sinh.khoi` smallint→text; re-derive lớp từ tên (`5T1`→'5T', `8A1`→'8'), HS từ lớp Toán. Quy tắc tên: số+T (chỉ 4T/5T) = khối; S/A/B/C = hệ; ≥6 không có T. Bỏ `Number(khoi)` + revert KHOI_LOP → screens dùng lại KHOI_OPTIONS đầy đủ.
+
+**Dọn data cơ cấu lại:** xóa ghi danh `hoc_sinh_lop` của HS khối 6-10 (289 dòng — Thùy xếp lại tay; giữ HS+lớp). Xóa 5 lớp T sai khối≥6 (6T1/6T2/6T3/7T1/8T1, cascade). Giữ 4T1/5T1 (khối hợp lệ).
+
+**THIẾT KẾ LUỒNG SESSION (bàn kỹ — mảnh khó nhất, cầu static→động):**
+- Mâu thuẫn lõi: "buổi pure-derive không đẻ dòng" vs "gami cần id buổi để FK". Giải: buổi **2 trạng thái** — ẢO (suy từ TKB×ngày, chưa dòng) → **THẬT** khi OPS bấm "Mở buổi" (đông cứng snapshot).
+- Mã buổi: `id`(uuid)+`lop_id` là khóa thật; `ma_buoi` text đọc = `8A1.T2.15062026` (snapshot). Bù: hậu tố `.B`.
+- Vòng đời: Ảo → Mở → điểm danh → chấm ingame → đóng → (HS về) chấm ET → đóng → Hoàn tất. "Hủy buổi" = lật trạng thái (không xóa con) → task tự ngừng (pure-derive). Nghỉ/hủy cả lớp = KHÔNG bù; HS lẻ vắng = bù cá nhân.
+- **Taxonomy buổi:** thường / bù (con-của-buổi-gốc, link bù gắn PER-HS trên `buoi_hoc_hs` — 1 buổi bù phục vụ HS nhiều buổi gốc/lớp khác nhau) / bổ trợ yếu (từ data đo, quan trọng nhất) / bổ trợ đuổi (kiến thức thiếu để vào lớp) / MT. Bổ trợ ad-hoc, tool xếp lịch riêng sau.
+- **Dạy thay:** `buoi_hoc.nguoi_day` = GV THỰC TẾ (mặc định = phân công); việc buổi theo người dạy thực tế.
+- **Elo/EXP/mastery theo loại:** thường+MT → Elo + EXP-theo-hạng + mastery; bù/bổ trợ → KHÔNG Elo (nhóm nhỏ), EXP = sàn (`attend_floor`, đi học là có), vẫn đo mastery. ET buổi thường VẪN tính Elo (cả lớp). Bổ trợ yếu/đuổi = luồng riêng, bàn sau.
+
+**GAMI GĐ A — code:**
+- **Schema (mig 0031):** `buoi_hoc` + `buoi_hoc_hs`(điểm danh+bu_cho_buoi_id per-HS) + 5 bảng gami (`gami_elo / session_problems / grades / elo_history / exp_ledger`). member-gate RLS (KHÔNG disable như spec gốc — chuẩn V2). Map students→hoc_sinh, sessions→buoi_hoc.
+- **Engine PURE** `src/gami/*.js` (spec ghi .js → JS thuần, test bằng `node scripts/verify_gami.mjs`, KHỎI cài vitest): `config.js · elo.js · exp.js`. Test PASS — fixture Elo khớp TUYỆT ĐỐI (An−28→1172…), ΣE=10 ΣΔ=0, expForRank đơn điệu mọi N 5-15. (tsconfig thêm allowJs để .ts import .js.)
+- **Service** `src/lib/gami.ts` (seam): buoiAoCuaNgay · moBuoi(snapshot+seed sĩ số) · huyBuoi · getRoster/diemDanh · addProblem/gradeProblem · **closePhase** (Elo cho thường/MT, EXP sàn cho bù/bổ trợ, idempotent qua cờ *_dong_at, 2 event ingame→et).
+- **UI** `src/screens/gami/BuoiHocScreen.tsx` (Admin→Vận hành→Buổi học): ngày→list buổi ảo→Mở buổi→detail 3 tab (Điểm danh / Buổi học chấm / ET) + ma trận chấm + popup 3 thang + Đóng phase→reveal hạng/EXP/Elo + đổi GV dạy thay + Hủy buổi. ⚠ CHƯA test e2e (cần login + lớp có TKB+khai giảng≤ngày+HS ghi danh). Màn TIVI (đường đua animation) CHƯA làm — reveal đang bảng tĩnh.
+
+**SearchSelect (Thùy chốt quy tắc cố định):** CẤM dropdown cho list dài → component `src/components/SearchSelect.tsx` (combobox, lọc bỏ-dấu tiếng Việt, prop `invalid`). Sweep: HS ghi danh(300)/nhân sự(40,×2)/lớp(46 TKB)/người+vị-trí-cha(Sơ đồ) → search. Giữ dropdown enum ngắn (vai/thứ/band/khối/lớp-theo-môn-đã-lọc). Memory rule đã lưu.
+
+**Card lớp** (LopScreen): thêm sĩ số + GV/TG + badge "✓ Đủ thông tin / Thiếu: GV chính·TG·TKB·band x/y" (`thongKeLop`).
+
+**Notion:** trang "Nhân sự·Tổ chức·Vận hành — Quyết định LOGIC" (con ERP V2) + đã có trang Gamification.
+
+---
+
 ## 2026-06-12
 
 **(Gồm cả phần 06-11 tối ở cơ quan — commit `05a0d17 "dx"` chưa kịp log):**

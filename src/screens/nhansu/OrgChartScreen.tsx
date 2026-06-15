@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { listTeam, listNhanSu, listViTri, createViTri, updateViTri, deleteViTri, listNhanSuTeamMap, type Team, type NhanSu, type ViTri } from '../../lib/nhansu'
 import { Shell, Field, inp } from '../kho/ui'
+import SearchSelect from '../../components/SearchSelect'
 
 const CAP_LABEL: Record<string, string> = { truong: 'Trưởng', pho: 'Phó', thanh_vien: 'Thành viên' }
 const CAP_TONE: Record<string, string> = { truong: 'bg-indigo-600 text-white', pho: 'bg-indigo-100 text-indigo-700', thanh_vien: 'bg-slate-100 text-slate-500' }
@@ -69,14 +70,15 @@ export default function OrgChartScreen() {
           : ns
             ? <div className="flex h-28 w-full items-center justify-center bg-gradient-to-br from-indigo-400 to-violet-500 text-3xl font-bold text-white">{ns.ho_ten.trim().split(/\s+/).pop()?.[0]?.toUpperCase()}</div>
             : <div className="flex h-28 w-full items-center justify-center bg-slate-100 text-3xl text-slate-300">＋</div>}
-        <div className="px-1.5 py-1.5">
-          {/* GHẾ là chính: chức vụ nổi nhất */}
-          <div className="text-[12px] font-semibold leading-tight text-slate-800">{g.ten || <span className="italic text-slate-400">Chưa đặt tên vị trí</span>}</div>
-          <span className={`mt-1 inline-block rounded px-1.5 py-0.5 text-[10px] font-semibold ${CAP_TONE[g.cap]}`}>{CAP_LABEL[g.cap]}</span>
+        {/* vùng chữ CHIỀU CAO CỐ ĐỊNH + canh giữa → mọi thẻ bằng nhau, không lệch */}
+        <div className="flex h-[78px] flex-col items-center justify-center gap-1 px-1.5">
+          {/* GHẾ là chính: chức vụ nổi nhất, cắt tối đa 2 dòng */}
+          <div className="line-clamp-2 text-[12px] font-semibold leading-tight text-slate-800">{g.ten || <span className="italic text-slate-400">Chưa đặt tên</span>}</div>
+          <span className={`inline-block rounded px-1.5 py-0.5 text-[10px] font-semibold ${CAP_TONE[g.cap]}`}>{CAP_LABEL[g.cap]}</span>
           {/* người ngồi (phụ) */}
           {ns
-            ? <div className="mt-1 leading-tight"><span className="text-[11px] font-medium text-slate-600">{ns.ho_ten}</span> <span className="font-mono text-[9px] text-slate-400">{ns.ma_ns}</span></div>
-            : <div className="mt-1 text-[11px] font-medium text-amber-600">Vị trí trống</div>}
+            ? <div className="line-clamp-1 leading-tight"><span className="text-[11px] font-medium text-slate-600">{ns.ho_ten}</span> <span className="font-mono text-[9px] text-slate-400">{ns.ma_ns}</span></div>
+            : <div className="text-[11px] font-medium text-amber-600">Vị trí trống</div>}
         </div>
       </button>
     )
@@ -183,16 +185,12 @@ function EditGhe({ g, nsById, dsNhanSu, bienChe, ghe, cam, onClose, onSaved }: {
         </div>
       </div>
       <Field label="Vị trí cha (nằm dưới vị trí nào)">
-        <select value={chaId} onChange={(e) => setChaId(e.target.value)} className={inp}>
-          <option value="">— đỉnh team —</option>
-          {ghe.filter((x) => x.id !== g.id && !cam.has(x.id)).map((x) => <option key={x.id} value={x.id}>{gheLabel(x)}</option>)}
-        </select>
+        <SearchSelect value={chaId || null} onChange={(id) => setChaId(id ?? '')} placeholder="— đỉnh team —"
+          options={ghe.filter((x) => x.id !== g.id && !cam.has(x.id)).map((x) => ({ id: x.id, label: gheLabel(x) }))} />
       </Field>
       <Field label="Người đảm nhiệm">
-        <select value={nsId} onChange={(e) => setNsId(e.target.value)} className={inp}>
-          <option value="">— vị trí trống —</option>
-          {ungVien.map((n) => <option key={n.id} value={n.id}>{n.ho_ten}{n.ma_ns ? ` (${n.ma_ns})` : ''}{!thuocTeam(n) ? ' · ngoài team' : ''}</option>)}
-        </select>
+        <SearchSelect value={nsId || null} onChange={(id) => setNsId(id ?? '')} placeholder="— vị trí trống —"
+          options={ungVien.map((n) => ({ id: n.id, label: n.ho_ten, sub: `${n.ma_ns ?? ''}${!thuocTeam(n) ? ' · ngoài team' : ''}`.trim() || undefined }))} />
         <label className="mt-1.5 flex cursor-pointer items-center gap-1.5 text-[12px] text-slate-500">
           <input type="checkbox" checked={ngoaiTeam} onChange={(e) => setNgoaiTeam(e.target.checked)} />
           Hiện cả nhân sự ngoài team ({dsNhanSu.filter((n) => n.trang_thai === 'dang_lam').length} người)

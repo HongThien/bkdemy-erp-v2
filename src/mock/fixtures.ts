@@ -86,5 +86,6 @@ export const adminLeaves: AdminLeaf[] = [
   { id: 'db_taichinh', nhom: 'Dashboard', ten: 'Tài chính',                    founderOnly: true },
   { id: 'db_chatluong',nhom: 'Dashboard', ten: 'Chất lượng',                   founderOnly: false },
   { id: 'db_tuyendung',nhom: 'Dashboard', ten: 'Tuyển dụng',                   founderOnly: true },
+  { id: 'buoihoc',     nhom: 'Vận hành',  ten: 'Buổi học',                     founderOnly: false },
   { id: 'giaoviec',    nhom: 'Vận hành',  ten: 'Tạo & giao việc phát triển',   founderOnly: false },
 ]

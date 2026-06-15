@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { listAllTKB, listLop, addTKB, dongTKB, suaHieuLucTKB, type TKBSlot, type Lop } from '../../lib/nhansu'
+import SearchSelect from '../../components/SearchSelect'
 import { Shell, Field, inp } from '../kho/ui'
 
 const THU_COLS = [2, 3, 4, 5, 6, 7, 8]
@@ -161,10 +162,8 @@ function AddModal({ thu, tu, den, dsLop, onClose, onAdded }: { thu: number; tu: 
   return (
     <Shell title={`Xếp ca · ${THU_LABEL[thu]} ${tu}–${den}`} onClose={onClose}>
       <Field label="Lớp">
-        <select value={lopId} onChange={(e) => setLopId(e.target.value)} className={inp} autoFocus>
-          <option value="">— chọn lớp —</option>
-          {dsLop.filter((l) => l.trang_thai === 'dang_hoc').map((l) => <option key={l.id} value={l.id}>{l.ten_lop} · {l.mon}{l.khoi ? ` · K${l.khoi}` : ''}</option>)}
-        </select>
+        <SearchSelect value={lopId || null} onChange={(id) => setLopId(id ?? '')} autoFocus placeholder="Gõ tên lớp…"
+          options={dsLop.filter((l) => l.trang_thai === 'dang_hoc').map((l) => ({ id: l.id, label: l.ten_lop, sub: `${l.mon}${l.khoi ? ' · K' + l.khoi : ''}` }))} />
       </Field>
       <Field label="Phòng">
         <div className="flex gap-1.5">

@@ -305,6 +305,23 @@ export async function deleteLop(id: string): Promise<void> {
   if (error) throw error
 }
 
+// Thống kê per-lớp cho card (sĩ số · GV/TG · có TKB · band đủ chưa).
+export type LopThongKe = { siSo: number; gvChinh?: string; gvPhu?: string; tg?: string; coTkb: boolean; bandDu: number }
+export async function thongKeLop(lopIds: string[]): Promise<Record<string, LopThongKe>> {
+  const out: Record<string, LopThongKe> = {}
+  for (const id of lopIds) out[id] = { siSo: 0, coTkb: false, bandDu: 0 }
+  if (!lopIds.length) return out
+  const [pc, hs, tkb] = await Promise.all([
+    supabase.from('phan_cong_lop').select('lop_id, vai_tro, la_chinh, nhan_su:nhan_su_id(ho_ten)').in('lop_id', lopIds).limit(LIMIT),
+    supabase.from('hoc_sinh_lop').select('lop_id, muc_nang_luc_id').eq('trang_thai', 'dang_hoc').in('lop_id', lopIds).limit(LIMIT),
+    supabase.from('thoi_khoa_bieu').select('lop_id').is('hieu_luc_den', null).in('lop_id', lopIds).limit(LIMIT),
+  ])
+  for (const r of (hs.data ?? []) as any[]) { const o = out[r.lop_id]; if (o) { o.siSo++; if (r.muc_nang_luc_id) o.bandDu++ } }
+  for (const r of (pc.data ?? []) as any[]) { const o = out[r.lop_id]; if (!o) continue; const nm = r.nhan_su?.ho_ten; if (r.vai_tro === 'tg') o.tg = nm; else if (r.la_chinh) o.gvChinh = nm; else o.gvPhu = nm }
+  for (const r of (tkb.data ?? []) as any[]) { if (out[r.lop_id]) out[r.lop_id].coTkb = true }
+  return out
+}
+
 // ── Phân công GV/TA × lớp ─────────────────────────────────────────
 export async function listPhanCongByLop(lopId: string): Promise<PhanCongLop[]> {
   const { data, error } = await supabase.from('phan_cong_lop').select('*').eq('lop_id', lopId).limit(LIMIT)

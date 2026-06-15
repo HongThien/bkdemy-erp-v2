@@ -5,10 +5,11 @@ import {
   listPhanCongByLop, addPhanCong, removePhanCong,
   listTKB, addTKB, dongTKB,
   listHSCuaLop, ghiDanh, roiLop, setBandGhiDanh, setNgayVao as setNgayVaoApi, listHSChuaCoLopMon, todayVN,
-  listNhanSu, listMucNangLuc,
-  type Lop, type PhanCongLop, type ThoiKhoaBieu, type HSTrongLop, type NhanSu, type HocSinh, type MucNangLuc,
+  listNhanSu, listMucNangLuc, thongKeLop,
+  type Lop, type PhanCongLop, type ThoiKhoaBieu, type HSTrongLop, type NhanSu, type HocSinh, type MucNangLuc, type LopThongKe,
 } from '../../lib/nhansu'
 import { Shell, Field, inp, Seg, Actions, BacChip } from '../kho/ui'
+import SearchSelect from '../../components/SearchSelect'
 
 const BAC_OPTS = ['S', 'A', 'B', 'C'] as const
 
@@ -35,6 +36,39 @@ const BAC_CARD: Record<string, string> = {
 const bacCard = (bac: string | null) => (bac && BAC_CARD[bac]) || 'border-slate-200 bg-white hover:border-indigo-300'
 // Thứ tự trái→phải trong mỗi khu: S → A → B → C (rồi theo số 1,2,3 trong tên lớp)
 const BAC_ORDER: Record<string, number> = { S: 0, A: 1, B: 2, C: 3 }
+
+// Card lớp: sĩ số · GV/TG · badge "đủ thông tin chưa" (GV chính, TG, TKB, band đủ)
+function LopCard({ l, tk, onOpen }: { l: Lop; tk?: LopThongKe; onOpen: () => void }) {
+  const thieu: string[] = []
+  if (tk) {
+    if (!tk.gvChinh) thieu.push('GV chính')
+    if (!tk.tg) thieu.push('TG')
+    if (!tk.coTkb) thieu.push('TKB')
+    if (tk.siSo > 0 && tk.bandDu < tk.siSo) thieu.push(`band ${tk.bandDu}/${tk.siSo}`)
+  }
+  const du = tk && thieu.length === 0
+  return (
+    <button onClick={onOpen} className={`flex flex-col gap-2 rounded-xl border p-4 text-left transition hover:shadow-sm ${bacCard(l.bac)}`}>
+      <div className="flex items-center gap-2.5">
+        {l.bac ? <BacChip bac={l.bac} /> : <div className="h-8 w-8 rounded-lg bg-slate-100" />}
+        <div className="min-w-0 flex-1">
+          <div className="text-[15px] font-semibold text-slate-900">{l.ten_lop}</div>
+          <div className="text-[12px] text-slate-400">khối {l.khoi}{l.co_so ? ` · ${l.co_so}` : ''}{l.bac ? ` · hệ ${l.bac}` : ''}</div>
+        </div>
+        <span className="rounded-lg bg-slate-100 px-2 py-1 text-center text-[12px] font-semibold text-slate-600">{tk?.siSo ?? 0}<span className="ml-0.5 text-[10px] font-normal text-slate-400">HS</span></span>
+      </div>
+      <div className="flex flex-wrap gap-x-3 gap-y-0.5 text-[12px] text-slate-500">
+        <span><span className="text-slate-400">GV:</span> {tk?.gvChinh ?? <em className="text-rose-400">chưa có</em>}{tk?.gvPhu ? `, ${tk.gvPhu}` : ''}</span>
+        <span><span className="text-slate-400">TG:</span> {tk?.tg ?? <em className="text-rose-400">chưa có</em>}</span>
+      </div>
+      <div className="flex items-center gap-1.5">
+        {du ? <span className="rounded bg-emerald-50 px-1.5 py-0.5 text-[11px] font-medium text-emerald-700">✓ Đủ thông tin</span>
+          : <span className="rounded bg-amber-50 px-1.5 py-0.5 text-[11px] font-medium text-amber-700">Thiếu: {thieu.join(' · ')}</span>}
+        {l.trang_thai === 'dong' && <span className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] text-slate-500">đóng</span>}
+      </div>
+    </button>
+  )
+}
 const THU_LABEL: Record<number, string> = { 2: 'T2', 3: 'T3', 4: 'T4', 5: 'T5', 6: 'T6', 7: 'T7', 8: 'CN' }
 const today = () => new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Ho_Chi_Minh' }) // YYYY-MM-DD giờ VN
 
@@ -45,10 +79,12 @@ export default function LopScreen() {
   const [err, setErr] = useState<string | null>(null)
   const [creating, setCreating] = useState(false)
   const [openId, setOpenId] = useState<string | null>(null)
+  const [tk, setTk] = useState<Record<string, LopThongKe>>({})
 
   async function reload() {
     setLoading(true); setErr(null)
-    try { setList(await listLop(khoi)) } catch (e: any) { setErr(e.message ?? String(e)) } finally { setLoading(false) }
+    try { const ls = await listLop(khoi); setList(ls); setTk(await thongKeLop(ls.map((l) => l.id))) }
+    catch (e: any) { setErr(e.message ?? String(e)) } finally { setLoading(false) }
   }
   useEffect(() => { reload() }, [khoi]) // eslint-disable-line
 
@@ -86,16 +122,7 @@ export default function LopScreen() {
                     <div className="grid grid-cols-1 gap-3 md:grid-cols-2 2xl:grid-cols-3">
                       {list.filter((l) => l.mon === mon)
                         .sort((a, b) => (BAC_ORDER[a.bac ?? ''] ?? 9) - (BAC_ORDER[b.bac ?? ''] ?? 9) || a.ten_lop.localeCompare(b.ten_lop, 'vi', { numeric: true }))
-                        .map((l) => (
-                        <button key={l.id} onClick={() => setOpenId(l.id)} className={`flex items-center gap-3 rounded-xl border p-4 text-left transition hover:shadow-sm ${bacCard(l.bac)}`}>
-                          {l.bac ? <BacChip bac={l.bac} /> : <div className="h-8 w-8 rounded-lg bg-slate-100" />}
-                          <div className="min-w-0">
-                            <div className="text-[15px] font-semibold text-slate-900">{l.ten_lop}</div>
-                            <div className="text-[12px] text-slate-400">{l.khoi ? `khối ${l.khoi}` : ''}{l.co_so ? ` · ${l.co_so}` : ''}{l.bac ? ` · hệ ${l.bac}` : ''}</div>
-                          </div>
-                          {l.trang_thai === 'dong' && <span className="ml-auto rounded bg-slate-100 px-1.5 py-0.5 text-[11px] text-slate-500">đóng</span>}
-                        </button>
-                      ))}
+                        .map((l) => <LopCard key={l.id} l={l} tk={tk[l.id]} onOpen={() => setOpenId(l.id)} />)}
                     </div>
                   </section>
                 ))}
@@ -234,10 +261,10 @@ function PhanCongBox({ lopId, pc, dsNhanSu, onChange, nsName }: { lopId: string;
         ))}
       </div>
       <div className="mt-3 flex flex-wrap items-center gap-2">
-        <select value={nsId} onChange={(e) => setNsId(e.target.value)} className="flex-1 rounded border border-slate-300 px-2 py-1.5 text-[13px]">
-          <option value="">— chọn nhân sự —</option>
-          {dsNhanSu.map((n) => <option key={n.id} value={n.id}>{n.ho_ten}</option>)}
-        </select>
+        <div className="min-w-40 flex-1">
+          <SearchSelect value={nsId || null} onChange={(id) => setNsId(id ?? '')} placeholder="Gõ tên nhân sự…"
+            options={dsNhanSu.map((n) => ({ id: n.id, label: n.ho_ten, sub: n.ma_ns ?? undefined }))} />
+        </div>
         <select value={vai} onChange={(e) => setVai(e.target.value as 'gv' | 'tg')} className="rounded border border-slate-300 px-2 py-1.5 text-[13px]">
           <option value="gv">GV</option><option value="tg">TG</option>
         </select>
@@ -296,10 +323,11 @@ function RosterBox({ lopId, roster, dsHocSinh, mnl, onChange }: { lopId: string;
   return (
     <div>
       <div className="mb-3 flex flex-wrap items-center gap-2">
-        <select value={hsId} onChange={(e) => setHsId(e.target.value)} className="min-w-56 flex-1 rounded border border-slate-300 px-2 py-1.5 text-[13px]">
-          <option value="">— ghi danh HS (chưa có lớp môn này) —</option>
-          {conLai.map((h) => <option key={h.id} value={h.id}>{h.ho_ten}{h.ma_hs ? ` (${h.ma_hs})` : ''}</option>)}
-        </select>
+        <div className="min-w-56 flex-1">
+          <SearchSelect value={hsId || null} onChange={(id) => setHsId(id ?? '')}
+            placeholder="Gõ tên/mã HS để ghi danh (chưa có lớp môn này)…"
+            options={conLai.map((h) => ({ id: h.id, label: h.ho_ten, sub: h.ma_hs ?? undefined }))} />
+        </div>
         <label className="flex items-center gap-1 text-[12px] text-slate-500">vào lớp
           <input type="date" value={ngayVao} onChange={(e) => setNgayVao(e.target.value)} className="rounded border border-slate-300 px-1.5 py-1 text-[12px]" />
         </label>

@@ -2,7 +2,41 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-32 bảng · 0 enum · 1 trigger · 5 function
+39 bảng · 0 enum · 1 trigger · 5 function
+
+## buoi_hoc
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| ma_buoi | text | Y |  |  |
+| loai | text |  | 'thuong'::text |  |
+| lop_id | uuid | Y |  | FK→lop.id |
+| ngay | date |  |  |  |
+| thu | smallint | Y |  |  |
+| gio_bat_dau | time without time zone | Y |  |  |
+| gio_ket_thuc | time without time zone | Y |  |  |
+| phong | text | Y |  |  |
+| nguoi_day | uuid | Y |  | FK→nhan_su.id |
+| nguoi_day_tg | uuid | Y |  | FK→nhan_su.id |
+| trang_thai | text |  | 'mo'::text |  |
+| ly_do_huy | text | Y |  |  |
+| ingame_dong_at | timestamp with time zone | Y |  |  |
+| et_dong_at | timestamp with time zone | Y |  |  |
+| created_by | uuid | Y |  |  |
+| created_at | timestamp with time zone |  | now() |  |
+| updated_at | timestamp with time zone |  | now() |  |
+
+## buoi_hoc_hs
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| buoi_hoc_id | uuid |  |  | FK→buoi_hoc.id |
+| hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |
+| diem_danh | text | Y |  |  |
+| bu_cho_buoi_id | uuid | Y |  | FK→buoi_hoc.id |
+| created_at | timestamp with time zone |  | now() |  |
 
 ## dai_ban_do
 
@@ -86,6 +120,70 @@
 |---|---|---|---|---|
 | id | text |  | ('TT'::text \|\| lpad((nextval('dai_tt_seq'::regclass))::text, 4, '0'::text)) | PK |
 | ten | text |  |  |  |
+
+## gami_elo
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |
+| elo | integer |  | 1000 |  |
+| sessions_played | integer |  | 0 |  |
+| updated_at | timestamp with time zone |  | now() |  |
+
+## gami_elo_history
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |
+| buoi_hoc_id | uuid |  |  | FK→buoi_hoc.id |
+| phase | text |  |  |  |
+| elo_before | integer |  |  |  |
+| expected | numeric |  |  |  |
+| actual | numeric |  |  |  |
+| delta | integer |  |  |  |
+| elo_after | integer |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |
+
+## gami_exp_ledger
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |
+| source | text |  |  |  |
+| amount | integer |  |  |  |
+| ref_buoi_hoc_id | uuid | Y |  | FK→buoi_hoc.id |
+| note | text | Y |  |  |
+| created_at | timestamp with time zone |  | now() |  |
+
+## gami_grades
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| buoi_hoc_id | uuid |  |  | FK→buoi_hoc.id |
+| problem_id | uuid |  |  | FK→gami_session_problems.id |
+| hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |
+| result | text |  |  |  |
+| presentation | text |  |  |  |
+| speed | text |  |  |  |
+| points | numeric |  |  |  |
+| graded_by | uuid | Y |  |  |
+| graded_at | timestamp with time zone |  | now() |  |
+
+## gami_session_problems
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| buoi_hoc_id | uuid |  |  | FK→buoi_hoc.id |
+| phase | text |  |  |  |
+| problem_no | integer |  |  |  |
+| opened_at | timestamp with time zone |  | now() |  |
+| deadline_at | timestamp with time zone | Y |  |  |
+| hidden | boolean |  | false |  |
 
 ## hinh_bai
 

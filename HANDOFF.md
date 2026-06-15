@@ -48,8 +48,19 @@
 - **⭐ SCOPE ENGINE `getMyScope` — gốc rễ "ai thấy task nào" (ABAC):** task mang nhãn (loại việc×lớp); khớp **① OWNER** (phan_cong_lop: gv→đánh giá/nội dung·tg→chấm·OPS→điểm danh toàn hệ) + **② GIÁM SÁT** (cây vị trí, **2 tầng span-of-control**: trực tiếp=view mặc định · gián tiếp=passive). **Quyền QL từ GHẾ, KHÔNG từ vai** (GV "đến dạy rồi về" quản lý 0 người). **2 trục tách:** A=task-scope (engine này) · B=data-scope (GV xem dashboard lớp mình — độc lập, dựng cùng dashboard). Panel "Phạm vi việc của tôi" trong HoSoModal.
 - **Màn PHÂN CÔNG (`PhanCongScreen`, leaf `phancong`):** ma trận hàng=lớp, cột=GV chính/phụ·TG·điểm danh. Gán theo VAI (**TG ôm TOÀN BỘ chấm 1 lớp**, ko tách task). Ghi `phan_cong_lop` (cùng seam màn Lớp — 1 sự thật 2 cửa). 1 GV chính+≤1 phụ; thiếu→ô đỏ; ( )=tải.
 
+### Đã build (GAMI GĐ A — buổi học, 06-15)
+- **Mô hình BUỔI (session = lớp ĐỘNG, mảnh khó nhất):** buổi **2 trạng thái** — ẢO (suy từ `TKB × ngày`, ngày≥khai giảng, chưa đẻ dòng) → **THẬT** khi OPS bấm "Mở buổi" (đông cứng snapshot). Mã đọc `8A1.T2.15062026` (`ma_buoi`), khóa thật = uuid. Vòng đời: Ảo→Mở→điểm danh→chấm ingame→đóng→chấm ET→đóng→Hoàn tất. **Hủy buổi** = lật trạng thái (không xóa con) → task tự ngừng (pure-derive). **Dạy thay** = `buoi_hoc.nguoi_day` (GV thực tế).
+- **Taxonomy buổi:** thường · bù (link bù gắn PER-HS trên `buoi_hoc_hs.bu_cho_buoi_id` — 1 buổi bù phục vụ HS nhiều gốc/lớp) · bổ trợ yếu (từ data đo) · bổ trợ đuổi · MT. **Elo chỉ buổi thường/MT** (cả lớp); bù/bổ trợ → KHÔNG Elo, EXP **sàn** (`attend_floor`), vẫn đo mastery.
+- **Engine PURE** `src/gami/*.js` (JS thuần, test `node scripts/verify_gami.mjs` — KHỎI vitest; tsconfig có allowJs): `config/elo/exp`. Fixture Elo khớp tuyệt đối ✓.
+- **Service** `src/lib/gami.ts`: buoiAoCuaNgay·moBuoi·huyBuoi·diemDanh·gradeProblem·**closePhase**(Elo+EXP, idempotent qua `*_dong_at`).
+- **UI** `src/screens/gami/BuoiHocScreen.tsx` (Admin→Vận hành→Buổi học): list buổi ảo→Mở→3 tab (điểm danh/chấm/ET)→ma trận chấm + popup 3 thang→Đóng phase→reveal. **CHƯA test e2e** (cần lớp có TKB+khai giảng≤ngày+HS ghi danh).
+- **Card lớp** giờ hiện sĩ số + GV/TG + badge đủ-thông-tin (`thongKeLop`).
+- **SearchSelect** (`src/components/SearchSelect.tsx`): combobox bỏ-dấu thay MỌI dropdown list dài (quy tắc cố định — xem ② + memory).
+
 ### Chưa làm
 - **⚠ NGAY:** bucket `avatars` **chưa tạo** — paste `supabase/migrations/0020_storage_avatars.sql` vào Dashboard → SQL Editor (claude_build không đụng storage). Chưa chạy thì upload ảnh NS lỗi "bucket not found".
+- **GAMI tiếp:** màn **TIVI** (đường đua Elo + linh vật + realtime — giờ reveal là bảng tĩnh) · **bù/bổ trợ** UI (schema đã sẵn) · MT/Đội/Boss (GĐ B) · xu/Level (GĐ C, chờ data) · EXP nửa-nỗ-lực (BTVN/daily). Test e2e 1 buổi thật.
+- **Data:** khối 6-10 vừa xóa ghi danh (Thùy xếp lại tay) → sĩ số 0, card báo thiếu band tới khi xếp.
 - **Nợ khối nhân sự (trước khi vận hành thật):** trigger ghi-log lịch sử §4 (đổi band/phân công/TKB/membership chưa có vết — timeline tiến bộ HS cần nó) · màn Phụ huynh riêng (list PH + các con) · hiện tên người tạo tài liệu (map `tai_khoan`→`nhan_su`) · import HS/NS từ V1 · siết RLS theo phạm vi (cách A).
 - **Làm tài liệu — còn lại**: header/footer/watermark **chọn nhiều mẫu** (mới 1 dải sóng — muốn thêm: Thùy gửi ảnh mẫu, code thành 1 option; nên tách registry khi có mẫu #2) · reorder câu trong dạng · áp `cau_hinh.mau` cho dải sóng · gu B (học thuật)/C (SaaS) · custom block · BTVN số-câu-theo-loại · nút "✎ Sửa lý thuyết" ngay trong Builder (Thùy chưa chốt).
 - Nhánh **Hình** (tab stub "dựng sau"): cây Mảng→Loại→Dạng-hình + Bài/Ý/mô hình/bổ đề (spec §4).
@@ -72,6 +83,9 @@
 - **Mã vị trí**: Chủ đề `0701` · Chuyên đề `070101` · Dạng `07010103` · Câu `07010103001` (STT 3 số, client max+1, append-only). **Chỉ `ma_dang` là FK-target ổn định** → sửa dạng KHOÁ mã. `ma_chu_de`/`ma_chuyen_de` là denormalize — nhưng `dai_chuyen_de_ly_thuyet` GIỜ khoá theo `ma_chuyen_de` → tránh đổi mã chuyên đề đã có lý thuyết.
 - **Gu UI**: Admin = SaaS/Linear (indigo, segmented, card). Nhân sự = Classroom (chưa làm). Chọn bậc/độ khó = segmented 1-click.
 - **⭐ RBAC (gốc rễ "ai thấy task nào"):** task pure-derive mang nhãn (loại việc × lớp) → lọc qua `getMyScope`. **2 trục TÁCH:** (A) task-scope = ai LÀM (phan_cong_lop) / NẮM (cây vị trí, span-of-control 2 tầng) · (B) data-scope = ai XEM data (GV xem dashboard lớp mình). **Quyền quản lý đến từ GHẾ (vị trí Trưởng/Phó), KHÔNG từ vai** (GV chỉ phối hợp, quản 0 người). Loại việc gắn `phan_cong_lop.vai_tro` (gv→đánh giá/nội dung·tg→chấm·ops→điểm danh toàn hệ). **TG ôm TOÀN BỘ chấm 1 lớp** (ko tách task). Mọi màn LỌC qua engine này, KHÔNG viết lại quyền mỗi nơi.
+- **⭐ Khối là TEXT, vocab chung {4,4T,5,5T,6..12}** — 4T/5T là KHỐI riêng (KHÔNG phải hệ); ≥6 chỉ S/A/B/C. Tên lớp: số+T(chỉ 4/5)=khối, S/A/B/C=hệ, V/E/K=môn.
+- **⭐ CẤM dropdown cho list dài** (người/HS/lớp) → luôn dùng `SearchSelect` (combobox bỏ-dấu). Dropdown chỉ cho enum ngắn cố định (trạng thái/bậc/thứ/vai).
+- **⭐ Buổi học = pure-derive, đẻ dòng khi MỞ** (không cron). Elo cần cùng-lớp-cùng-lúc (thường/ET/MT); bù/bổ trợ → EXP sàn, không Elo. Quản lý đến từ GHẾ không từ vai. EXP chỉ INSERT cộng dồn.
 - **Mọi hành vi HS phải ghi vết:** bảng dính HS thỏa 1 trong 2 — (a) sự-kiện append-only có hoc_sinh_id+thời điểm, HOẶC (b) trạng-thái mutable + TRIGGER log §4 (như `hoc_sinh_lop_log`). Lịch sử học tập HS = UNION các bảng sự kiện theo thời gian (KHÔNG đẻ bảng "lịch sử" riêng).
 - **AI import**: 1 prompt/loại câu format-tolerant (KHÔNG multi-prompt-select). **Gemini input ưu tiên PDF** (đa trang + text layer); ảnh chỉ khi 1 trang & nét ≥300DPI; khó đọc → model Pro.
 

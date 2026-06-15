@@ -11,6 +11,7 @@ import TKBScreen from './nhansu/TKBScreen'
 import PhanCongScreen from './nhansu/PhanCongScreen'
 import LopScreen from './nhansu/LopScreen'
 import HocSinhScreen from './nhansu/HocSinhScreen'
+import BuoiHocScreen from './gami/BuoiHocScreen'
 
 export default function AdminScreen({ user }: { user: User }) {
   const { adminLeaf, setAdminLeaf } = useStore()
@@ -39,6 +40,8 @@ export default function AdminScreen({ user }: { user: User }) {
         <LopScreen />
       ) : adminLeaf === 'hs' ? (
         <HocSinhScreen />
+      ) : adminLeaf === 'buoihoc' ? (
+        <BuoiHocScreen />
       ) : (
       <section className="min-h-0 overflow-auto p-8">
         <h2 className="mb-1 text-sm font-semibold">{leaf?.ten ?? 'Admin'}</h2>
