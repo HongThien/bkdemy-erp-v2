@@ -2,7 +2,28 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-41 bảng · 0 enum · 1 trigger · 6 function
+43 bảng · 0 enum · 1 trigger · 6 function
+
+## buoi_danh_gia
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| buoi_hoc_id | uuid |  |  | PK FK→buoi_hoc.id |
+| hoc_sinh_id | uuid |  |  | PK FK→hoc_sinh.id |
+| nhan_xet | text | Y |  |  |
+| graded_by | uuid | Y |  |  |
+| updated_at | timestamp with time zone |  | now() |  |
+
+## buoi_danh_gia_dang
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| buoi_hoc_id | uuid |  |  | PK FK→buoi_hoc.id |
+| hoc_sinh_id | uuid |  |  | PK FK→hoc_sinh.id |
+| ma_dang | text |  |  | PK |
+| diem | numeric |  |  |  |
+| graded_by | uuid | Y |  |  |
+| updated_at | timestamp with time zone |  | now() |  |
 
 ## buoi_hoc
 
@@ -184,6 +205,7 @@
 | opened_at | timestamp with time zone |  | now() |  |
 | deadline_at | timestamp with time zone | Y |  |  |
 | hidden | boolean |  | false |  |
+| ma_dang | text | Y |  |  |
 
 ## hinh_bai
 

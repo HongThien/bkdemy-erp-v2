@@ -1,6 +1,7 @@
 // Data-layer GAMI (seam) — luồng buổi học chính: mở buổi → điểm danh → chấm → đóng phase.
 // UI chỉ gọi qua đây. Engine thuần ở src/gami/*.js (đã test). Buổi pure-derive: đẻ dòng khi MỞ.
 import { supabase } from './supabase'
+import { getMyProfile } from './nhansu'
 import { computeEloUpdate } from '../gami/elo.js'
 import { problemPoints, expForRank, rankSession } from '../gami/exp.js'
 import { RANK_EXP, ATTEND_FLOOR_EXP } from '../gami/config.js'
@@ -16,7 +17,7 @@ export type BuoiHoc = {
   ingame_dong_at: string | null; et_dong_at: string | null
 }
 export type BuoiHocHS = { id: string; buoi_hoc_id: string; hoc_sinh_id: string; diem_danh: DiemDanh | null; bu_cho_buoi_id: string | null; hoc_sinh?: { ho_ten: string; ma_hs: string | null; anh_url: string | null } }
-export type Problem = { id: string; buoi_hoc_id: string; phase: Phase; problem_no: number; hidden: boolean }
+export type Problem = { id: string; buoi_hoc_id: string; phase: Phase; problem_no: number; hidden: boolean; ma_dang: string | null }
 export type Grade = { id: string; problem_id: string; hoc_sinh_id: string; result: string; presentation: string; speed: string; points: number }
 
 // ── helpers ngày/mã (giờ VN) ──────────────────────────────────────
@@ -67,10 +68,12 @@ export async function moBuoi(lopId: string, ngay: string, slot: { gio_bat_dau?: 
   return buoi as BuoiHoc
 }
 
-export async function getBuoi(id: string): Promise<BuoiHoc & { lop?: { ten_lop: string; mon: string } }> {
-  const { data, error } = await supabase.from('buoi_hoc').select('*, lop:lop_id(ten_lop, mon)').eq('id', id).single()
+export async function getBuoi(id: string): Promise<BuoiHoc & { lop?: { ten_lop: string; mon: string; khoi: string | null }; gv_chinh_id: string | null }> {
+  const { data, error } = await supabase.from('buoi_hoc').select('*, lop:lop_id(ten_lop, mon, khoi)').eq('id', id).single()
   if (error) throw error
-  return data as any
+  // GV chính của lớp (mặc định hiển thị khi nguoi_day trống — dạy thay mới ghi nguoi_day)
+  const { data: pc } = await supabase.from('phan_cong_lop').select('nhan_su_id').eq('lop_id', (data as any).lop_id).eq('vai_tro', 'gv').eq('la_chinh', true).maybeSingle()
+  return { ...(data as any), gv_chinh_id: (pc as any)?.nhan_su_id ?? null }
 }
 export async function setNguoiDay(buoiId: string, nhanSuId: string | null): Promise<void> {
   const { error } = await supabase.from('buoi_hoc').update({ nguoi_day: nhanSuId, updated_at: new Date().toISOString() }).eq('id', buoiId)
@@ -98,12 +101,26 @@ export async function listProblems(buoiId: string, phase: Phase): Promise<Proble
   if (error) throw error
   return (data ?? []) as Problem[]
 }
-export async function addProblem(buoiId: string, phase: Phase): Promise<Problem> {
+export async function addProblem(buoiId: string, phase: Phase, maDang?: string | null): Promise<Problem> {
   const cur = await listProblems(buoiId, phase)
   const no = cur.length ? Math.max(...cur.map((p) => p.problem_no)) + 1 : 1
-  const { data, error } = await supabase.from('gami_session_problems').insert({ buoi_hoc_id: buoiId, phase, problem_no: no }).select().single()
+  const { data, error } = await supabase.from('gami_session_problems').insert({ buoi_hoc_id: buoiId, phase, problem_no: no, ma_dang: maDang ?? null }).select().single()
   if (error) throw error
   return data as Problem
+}
+// Gán/đổi dạng cho 1 bài (chấm bài trên lớp). null = bỏ gán.
+export async function setProblemDang(problemId: string, maDang: string | null): Promise<void> {
+  const { error } = await supabase.from('gami_session_problems').update({ ma_dang: maDang }).eq('id', problemId)
+  if (error) throw error
+}
+// Bảng chấm bài trên lớp hiện sẵn N bài (mặc định 10) khi buổi chưa có bài nào.
+// Bài = SLOT/cấu trúc (không phải phép đo) → tạo sẵn OK; anti-NULL §1.5 áp ở GRADE (chỉ sinh khi chấm thật).
+export async function ensureProblems(buoiId: string, phase: Phase, n: number): Promise<void> {
+  const cur = await listProblems(buoiId, phase)
+  if (cur.length) return
+  const rows = Array.from({ length: n }, (_, i) => ({ buoi_hoc_id: buoiId, phase, problem_no: i + 1 }))
+  const { error } = await supabase.from('gami_session_problems').insert(rows)
+  if (error) throw error
 }
 export async function listGrades(buoiId: string): Promise<Grade[]> {
   const { data, error } = await supabase.from('gami_grades').select('*').eq('buoi_hoc_id', buoiId).limit(LIMIT)
@@ -182,4 +199,84 @@ async function markClosed(buoiId: string, dongCol: string, phase: Phase, loai: s
   const patch: Record<string, unknown> = { [dongCol]: new Date().toISOString(), updated_at: new Date().toISOString() }
   if (phase === 'et' || loai !== 'thuong') patch.trang_thai = 'hoan_tat' // ET xong / buổi mt/bù xong = hoàn tất
   await supabase.from('buoi_hoc').update(patch).eq('id', buoiId)
+}
+
+// ── ĐÁNH GIÁ SAU BUỔI (GV) ────────────────────────────────────────
+// Dạng của buổi = các dạng đã gắn ở "Chấm bài trên lớp" (ingame). GV cho mỗi HS:
+//   verdict per-dạng {0/0.5/1} (= phép đo summative, feed mastery) + nhận xét định tính.
+export type DanhGiaDiem = 0 | 0.5 | 1
+export type DanhGiaHS = { hoc_sinh_id: string; nhan_xet: string | null; diemTheoDang: Record<string, DanhGiaDiem> }
+
+// Dạng buổi này dạy (distinct ma_dang của bài ingame, bỏ null)
+export async function dangCuaBuoi(buoiId: string): Promise<string[]> {
+  const { data, error } = await supabase.from('gami_session_problems').select('ma_dang').eq('buoi_hoc_id', buoiId).eq('phase', 'ingame').limit(LIMIT)
+  if (error) throw error
+  return [...new Set((data ?? []).map((r: any) => r.ma_dang).filter(Boolean))] as string[]
+}
+
+export async function getDanhGia(buoiId: string): Promise<Record<string, DanhGiaHS>> {
+  const [nx, dg] = await Promise.all([
+    supabase.from('buoi_danh_gia').select('hoc_sinh_id, nhan_xet').eq('buoi_hoc_id', buoiId).limit(LIMIT),
+    supabase.from('buoi_danh_gia_dang').select('hoc_sinh_id, ma_dang, diem').eq('buoi_hoc_id', buoiId).limit(LIMIT),
+  ])
+  if (nx.error) throw nx.error
+  if (dg.error) throw dg.error
+  const out: Record<string, DanhGiaHS> = {}
+  const ensure = (id: string) => (out[id] ??= { hoc_sinh_id: id, nhan_xet: null, diemTheoDang: {} })
+  for (const r of (nx.data ?? []) as any[]) ensure(r.hoc_sinh_id).nhan_xet = r.nhan_xet
+  for (const r of (dg.data ?? []) as any[]) ensure(r.hoc_sinh_id).diemTheoDang[r.ma_dang] = Number(r.diem) as DanhGiaDiem
+  return out
+}
+
+// verdict 1 ô (HS × dạng). null = xoá (anti-NULL: chưa đánh giá = không có dòng).
+export async function setDanhGiaDang(buoiId: string, hsId: string, maDang: string, diem: DanhGiaDiem | null): Promise<void> {
+  const { data: { user } } = await supabase.auth.getUser()
+  if (diem === null) {
+    const { error } = await supabase.from('buoi_danh_gia_dang').delete().match({ buoi_hoc_id: buoiId, hoc_sinh_id: hsId, ma_dang: maDang })
+    if (error) throw error; return
+  }
+  const { error } = await supabase.from('buoi_danh_gia_dang').upsert(
+    { buoi_hoc_id: buoiId, hoc_sinh_id: hsId, ma_dang: maDang, diem, graded_by: user?.id ?? null, updated_at: new Date().toISOString() },
+    { onConflict: 'buoi_hoc_id,hoc_sinh_id,ma_dang' })
+  if (error) throw error
+}
+
+// ── VIỆC CỦA TÔI (task-derive cho GV/TG) ──────────────────────────
+// Pure-derive (§4): buổi đang mở của lớp tôi phụ trách → task theo vai (KHÔNG đẻ row task).
+//   GV → đánh giá sau buổi + chấm bài trên lớp · TG → chấm bài trên lớp + chấm ET.
+export type TabKey = 'diemdanh' | 'danhgia' | 'ingame' | 'et'
+export type MyTask = { buoiId: string; lop: string; ngay: string; vai: 'gv' | 'tg'; tab: TabKey; label: string }
+const TASKS_BY_VAI: Record<'gv' | 'tg', { tab: TabKey; label: string }[]> = {
+  gv: [{ tab: 'danhgia', label: 'Đánh giá sau buổi' }, { tab: 'ingame', label: 'Chấm bài trên lớp' }],
+  tg: [{ tab: 'ingame', label: 'Chấm bài trên lớp' }, { tab: 'et', label: 'Chấm ET' }],
+}
+export async function getMyTasks(): Promise<MyTask[]> {
+  const prof = await getMyProfile()
+  if (!prof) return []
+  const byLop = new Map<string, 'gv' | 'tg'>()
+  for (const pc of prof.phanCong) { const v = pc.vai_tro === 'gv' ? 'gv' : 'tg'; if (byLop.get(pc.lop_id) !== 'gv') byLop.set(pc.lop_id, v) }
+  const lopIds = [...byLop.keys()]
+  if (!lopIds.length) return []
+  const { data: buois, error } = await supabase.from('buoi_hoc')
+    .select('id, lop_id, ngay, lop:lop_id(ten_lop)').eq('trang_thai', 'mo').eq('loai', 'thuong').in('lop_id', lopIds).order('ngay').limit(LIMIT)
+  if (error) throw error
+  const out: MyTask[] = []
+  for (const b of (buois ?? []) as any[]) {
+    const vai = byLop.get(b.lop_id)!
+    for (const t of TASKS_BY_VAI[vai]) out.push({ buoiId: b.id, lop: b.lop?.ten_lop ?? '?', ngay: b.ngay, vai, tab: t.tab, label: t.label })
+  }
+  return out
+}
+
+export async function setNhanXet(buoiId: string, hsId: string, nhanXet: string): Promise<void> {
+  const { data: { user } } = await supabase.auth.getUser()
+  const txt = nhanXet.trim()
+  if (!txt) { // rỗng → xoá dòng (không giữ nhận xét trống)
+    const { error } = await supabase.from('buoi_danh_gia').delete().match({ buoi_hoc_id: buoiId, hoc_sinh_id: hsId })
+    if (error) throw error; return
+  }
+  const { error } = await supabase.from('buoi_danh_gia').upsert(
+    { buoi_hoc_id: buoiId, hoc_sinh_id: hsId, nhan_xet: txt, graded_by: user?.id ?? null, updated_at: new Date().toISOString() },
+    { onConflict: 'buoi_hoc_id,hoc_sinh_id' })
+  if (error) throw error
 }

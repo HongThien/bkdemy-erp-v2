@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
-import { getTaiLieuFull, type TaiLieuFull, type PhanResolved } from '../../lib/tailieu'
+import { getTaiLieuFull, DEFAULT_BTVN_LINES, type TaiLieuFull, type PhanResolved } from '../../lib/tailieu'
 import type { CauHinh } from '../../lib/tailieu'
 import { MathText } from '../kho/ui'
 import type { CauHoi } from '../../lib/kho/api'
@@ -67,28 +67,70 @@ export default function PrintView({ id, onClose }: { id: string; onClose: () => 
   )
 }
 
+type Buoi = { id: string; title: string; dangs: PhanResolved[]; btvns: PhanResolved[] }
+function buildBuois(phans: PhanResolved[]): Buoi[] {
+  const out: Buoi[] = []
+  let cur: Buoi | null = null
+  const ensure = () => { if (!cur) { cur = { id: 'implicit', title: '', dangs: [], btvns: [] }; out.push(cur) } return cur }
+  for (const p of phans) {
+    if (p.loai_phan === 'buoi') { cur = { id: p.id, title: p.tieu_de || 'Buổi', dangs: [], btvns: [] }; out.push(cur) }
+    else if (p.loai_phan === 'dang') ensure().dangs.push(p)
+    else if (p.loai_phan === 'btvn') ensure().btvns.push(p)
+  }
+  return out
+}
+
 function Doc({ full, gv }: { full: TaiLieuFull; gv: boolean }) {
-  const { taiLieu, phans } = full
+  const { taiLieu, phans, ltChuyenDe, tenChuyenDe } = full
   const ch = taiLieu.cau_hinh ?? {}
   const accent = ch.mau || '#E91E8C'
-  let dangNo = 0
+  const linesByCau = ch.btvnLinesByCau ?? {}
+  const buois = buildBuois(phans)
+  // Đánh số dạng (trên lớp) LIÊN TỤC toàn giáo trình theo ma_dang (vd buổi1: dạng1,2 · buổi2: dạng3,4).
+  const dangNoByMa: Record<string, number> = {}
+  let n = 0
+  for (const p of phans) if (p.loai_phan === 'dang' && p.ref_ma && !(p.ref_ma in dangNoByMa)) dangNoByMa[p.ref_ma] = ++n
   return (
     // .pv-rh/.pv-rf = running elements → paged.js đặt vào margin box (header/footer) MỌI trang.
     <div className="pv-doc" style={{ '--pv-accent': accent } as CSSProperties}>
       {ch.header !== 'none' && <div className="pv-rh">{taiLieu.ten} · Khối {taiLieu.khoi}</div>}
       {ch.footer !== 'none' && <div className="pv-rf">BK ACADEMY · {taiLieu.ten} · Khối {taiLieu.khoi}</div>}
       <div className="pv-cover">
-        <img src="/Logo.png" alt="BK Academy" />
+        {/* Logo nằm ở header (lặp mọi trang) → KHÔNG đặt thêm logo ở bìa để tránh trùng. */}
         <div className="pv-title">{taiLieu.ten}</div>
         <div className="pv-sub">KHỐI {taiLieu.khoi} · {gv ? 'BẢN GIÁO VIÊN' : 'BẢN HỌC SINH'}</div>
       </div>
-      {phans.map((p) => {
-        if (p.loai_phan === 'lt_chuyen_de') return <LtBlock key={p.id} title={p.tieu_de || 'Lý thuyết chuyên đề'} lt={p.ltChuyenDe} big />
-        if (p.loai_phan === 'dang') { dangNo += 1; return <DangBlock key={p.id} no={dangNo} p={p} gv={gv} /> }
-        if (p.loai_phan === 'btvn') return p.caus.length ? <BtvnBlock key={p.id} title={p.tieu_de || 'Bài tập về nhà'} caus={p.caus} gv={gv} /> : null
-        return p.noi_dung ? <section key={p.id} className="pv-sec"><MathText>{p.noi_dung}</MathText></section> : null
-      })}
+      {buois.map((b) => (
+        <BuoiBlock key={b.id} buoi={b} gv={gv} docTitle={taiLieu.ten} ltCd={ltChuyenDe} tenCd={tenChuyenDe} dangNoByMa={dangNoByMa} linesByCau={linesByCau} />
+      ))}
     </div>
+  )
+}
+
+// 1 BUỔI: tiêu đề buổi → [LT chuyên đề + các dạng] gom theo chuyên đề → phiếu BTVN của buổi.
+function BuoiBlock({ buoi, gv, docTitle, ltCd, tenCd, dangNoByMa, linesByCau }: {
+  buoi: Buoi; gv: boolean; docTitle: string; ltCd: Record<string, { noi_dung: string; file_url: string | null; ten_file: string | null } | null>; tenCd: Record<string, string>; dangNoByMa: Record<string, number>; linesByCau: Record<string, number>
+}) {
+  // Gom dạng liền nhau theo chuyên đề → mỗi nhóm hiện LT chuyên đề 1 lần (buổi tách chuyên đề vẫn có LT).
+  const groups: { cd: string; dangs: PhanResolved[] }[] = []
+  for (const d of buoi.dangs) {
+    const cd = d.dang?.ma_chuyen_de ?? ''
+    const last = groups[groups.length - 1]
+    if (last && last.cd === cd) last.dangs.push(d); else groups.push({ cd, dangs: [d] })
+  }
+  return (
+    <section className="pv-buoi">
+      {buoi.title && <h1 className="pv-h-buoi">{buoi.title}</h1>}
+      {groups.map((g, gi) => (
+        <div key={gi}>
+          <LtBlock title={`Lý thuyết chuyên đề: ${tenCd[g.cd] ?? ''}`} lt={ltCd[g.cd]} big />
+          {g.dangs.map((d) => <DangBlock key={d.id} no={dangNoByMa[d.ref_ma ?? ''] ?? 0} p={d} gv={gv} />)}
+        </div>
+      ))}
+      {buoi.btvns.some((b) => b.caus.length) && (
+        <BtvnSheet btvns={buoi.btvns} gv={gv} docTitle={docTitle} buoiTitle={buoi.title} dangNoByMa={dangNoByMa} linesByCau={linesByCau} />
+      )}
+    </section>
   )
 }
 
@@ -125,11 +167,34 @@ function DangBlock({ no, p, gv }: { no: number; p: PhanResolved; gv: boolean }) 
   )
 }
 
-function BtvnBlock({ title, caus, gv }: { title: string; caus: CauHoi[]; gv: boolean }) {
+// BTVN của 1 BUỔI = phiếu RIÊNG (sang trang mới), nhóm theo DẠNG (mirror trên lớp). HS viết thẳng vào dòng kẻ.
+// Đầu phiếu: tiêu đề = tên tài liệu · trái = Họ tên + Lớp · phải = ô Điểm. Bản GV = đáp án (bỏ ô điền, hiện lời giải).
+function BtvnSheet({ btvns, gv, docTitle, buoiTitle, dangNoByMa, linesByCau }: {
+  btvns: PhanResolved[]; gv: boolean; docTitle: string; buoiTitle: string; dangNoByMa: Record<string, number>; linesByCau: Record<string, number>
+}) {
   return (
-    <section className="pv-sec">
-      <h2 className="pv-h-btvn">{title}</h2>
-      <ol className="pv-caulist">{caus.map((c, i) => <CauItem key={c.ma_cau} no={i + 1} c={c} gv={gv} />)}</ol>
+    <section className="pv-sec pv-btvn">
+      <div className="pv-bt-head">
+        <div className="pv-bt-titlewrap">
+          <div className="pv-bt-eyebrow">Bài tập về nhà{buoiTitle ? ` · ${buoiTitle}` : ''}{gv ? ' · Đáp án' : ''}</div>
+          <div className="pv-bt-title">{docTitle}</div>
+        </div>
+        {!gv && (
+          <div className="pv-bt-row">
+            <div className="pv-bt-info">
+              <div className="pv-bt-field"><span className="pv-bt-lbl">Họ và tên:</span><span className="pv-bt-fill" /></div>
+              <div className="pv-bt-field"><span className="pv-bt-lbl">Lớp:</span><span className="pv-bt-fill" /></div>
+            </div>
+            <div className="pv-bt-score"><div className="pv-bt-score-lbl">ĐIỂM</div><div className="pv-bt-score-box" /></div>
+          </div>
+        )}
+      </div>
+      {btvns.filter((b) => b.caus.length).map((b) => (
+        <div key={b.id} className="pv-sec">
+          <h2 className="pv-h-dang">Dạng {dangNoByMa[b.ref_ma ?? ''] ?? ''}: {b.dang?.ten_dang ?? b.ref_ma}</h2>
+          <ol className="pv-caulist">{b.caus.map((c, i) => <CauItem key={c.ma_cau} no={i + 1} c={c} gv={gv} lines={gv ? 0 : (linesByCau[c.ma_cau] ?? DEFAULT_BTVN_LINES)} />)}</ol>
+        </div>
+      ))}
     </section>
   )
 }
@@ -145,7 +210,7 @@ function optCols(opts: string[]): number {
   const max = Math.max(0, ...opts.map(optVisLen))
   return max <= 6 ? 4 : max <= 16 ? 2 : 1
 }
-function CauItem({ no, c, gv }: { no: number; c: CauHoi; gv: boolean }) {
+function CauItem({ no, c, gv, lines = 0 }: { no: number; c: CauHoi; gv: boolean; lines?: number }) {
   const hasOpts = !!(c.lua_chon && c.lua_chon.length)
   const letter = (i: number) => String.fromCharCode(65 + i)
   const cols = hasOpts ? optCols(c.lua_chon!) : 0
@@ -168,6 +233,7 @@ function CauItem({ no, c, gv }: { no: number; c: CauHoi; gv: boolean }) {
           {c.anh_dap_an && <img src={c.anh_dap_an} alt="" className="pv-img" />}
         </div>
       )}
+      {lines > 0 && !hasOpts && <div className="pv-write">{Array.from({ length: lines }).map((_, i) => <div key={i} className="pv-wline" />)}</div>}
     </li>
   )
 }
@@ -189,17 +255,16 @@ const CHROME_CSS = `
 
 // Style nội dung (pv-*) — dùng chung cho mọi trang paged.js.
 const CONTENT_CSS = `
-.pv-cover{text-align:center;padding-bottom:14px;margin:2mm 0 18px;border-bottom:2px solid var(--pv-accent,#E91E8C)}
-.pv-cover img{height:50px}
-.pv-title{font-size:25px;font-weight:800;margin-top:14px;color:#23272b}
+.pv-cover{text-align:center;padding-bottom:14px;margin:8mm 0 18px;border-bottom:2px solid var(--pv-accent,#E91E8C)}
+.pv-title{font-size:25px;font-weight:800;color:#23272b}
 .pv-sub{color:#8a9097;font-size:12.5px;margin-top:5px;letter-spacing:1px}
 .pv-sec{margin-top:18px}
-.pv-h-lt{color:#2D9CDB;font-size:18px;font-weight:800;border-left:4px solid #2D9CDB;padding-left:8px;margin:0 0 5px}
-.pv-h-dang{color:var(--pv-accent,#E91E8C);font-size:17px;font-weight:800;border-bottom:2px solid #e3e8ee;padding-bottom:3px;margin:0 0 5px}
-.pv-h-btvn{color:#F7941E;font-size:17px;font-weight:800;margin:0 0 5px}
-.pv-h-bt{color:#16a34a;font-weight:700;font-size:14px;margin:9px 0 2px}
+.pv-h-lt{color:#2D9CDB;font-size:21px;font-weight:800;border-left:4px solid #2D9CDB;padding-left:8px;margin:0 0 5px}
+.pv-h-dang{color:var(--pv-accent,#E91E8C);font-size:20px;font-weight:800;border-bottom:2px solid #e3e8ee;padding-bottom:3px;margin:0 0 5px}
+.pv-h-btvn{color:#F7941E;font-size:20px;font-weight:800;margin:0 0 5px}
+.pv-h-bt{color:#16a34a;font-weight:800;font-size:18px;margin:10px 0 3px}
 .pv-box-lt{background:#eff7fd;border:1px solid #cfe6f5;border-radius:9px;padding:11px 13px;margin-top:6px}
-.pv-box-label{font-size:12.5px;font-weight:700;text-transform:uppercase;color:#2D9CDB;letter-spacing:.5px;margin-bottom:4px}
+.pv-box-label{font-size:18px;font-weight:800;text-transform:uppercase;color:#2D9CDB;letter-spacing:.3px;margin-bottom:5px}
 .pv-caulist{list-style:none;margin:4px 0 0;padding:0}
 .pv-cau{margin:12px 0;break-inside:avoid}
 .pv-cau-no{font-weight:700;color:var(--pv-accent,#E91E8C);margin-right:5px}
@@ -208,13 +273,39 @@ const CONTENT_CSS = `
 .pv-opt{display:flex;align-items:flex-start;gap:5px;line-height:2}
 .pv-correct{color:#16a34a;font-weight:700}
 .pv-loigiai{margin-top:7px;padding:9px 11px;background:#f6f7f8;border-left:3px solid #cbd2d8;border-radius:5px;font-size:14px}
+/* Buổi = tầng 1: mỗi buổi sang trang mới, có dải tiêu đề "Buổi N". */
+.pv-buoi{break-before:page}
+.pv-buoi:first-of-type{break-before:auto}
+.pv-h-buoi{background:var(--pv-accent,#E91E8C);color:#fff;font-size:20px;font-weight:800;padding:7px 14px;border-radius:9px;margin:0 0 8px;letter-spacing:.5px;break-after:avoid}
+/* BTVN = phiếu riêng → sang trang mới; mỗi bài có dòng kẻ chấm để HS viết thẳng vào phiếu. */
+.pv-btvn{break-before:page}
+/* Trong BTVN, tiêu đề dạng đi liền ngay câu 1 → bỏ gạch chân (không để như "dòng kẻ lạc" giữa Dạng và Câu 1). */
+.pv-btvn .pv-h-dang{border-bottom:none;padding-bottom:0;margin-bottom:6px}
+.pv-write{margin-top:7px}
+.pv-wline{height:9mm;border-bottom:1px dotted #9aa6b2}
+/* BTVN chảy LIÊN TỤC: câu được phép tách ngang trang (nửa trên / nửa dưới) thay vì nhảy cả câu → bỏ trống cuối trang. */
+.pv-btvn .pv-cau{break-inside:auto}
+.pv-btvn .pv-cau .pv-math:first-child{break-after:avoid}
+/* Khối tiêu đề phiếu BTVN: tiêu đề (tên tài liệu) trên cùng · trái = họ tên + lớp · phải = ô điểm. */
+.pv-bt-head{border:1.5px solid var(--pv-accent,#E91E8C);border-radius:12px;padding:12px 16px 14px;margin-bottom:16px;break-inside:avoid;break-after:avoid}
+.pv-bt-titlewrap{text-align:center;margin-bottom:13px}
+.pv-bt-eyebrow{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:#8a9097}
+.pv-bt-title{font-size:22px;font-weight:800;color:var(--pv-accent,#E91E8C);line-height:1.2;margin-top:2px}
+.pv-bt-row{display:flex;align-items:stretch;gap:16px}
+.pv-bt-info{flex:1;display:flex;flex-direction:column;justify-content:center;gap:11px}
+.pv-bt-field{display:flex;align-items:flex-end;gap:7px;font-size:14.5px}
+.pv-bt-lbl{font-weight:700;color:#23272b;white-space:nowrap}
+.pv-bt-fill{flex:1;border-bottom:1.5px dotted #9aa6b2;height:15px}
+.pv-bt-score{width:36mm;display:flex;flex-direction:column;border:1.5px solid var(--pv-accent,#E91E8C);border-radius:9px;overflow:hidden}
+.pv-bt-score-lbl{background:var(--pv-accent,#E91E8C);color:#fff;font-weight:800;font-size:12.5px;letter-spacing:2px;text-align:center;padding:4px 0}
+.pv-bt-score-box{flex:1;min-height:20mm}
 .pv-filelink{display:inline-block;margin-top:6px;color:#2D9CDB}
 .pv-math .katex-text{display:inline}
 .pv-rh,.pv-rf{display:none}
 /* Ngắt trang: tiêu đề/nhãn KHÔNG mồ côi cuối trang; mỗi khối lý thuyết không bị xé ngang */
 .pv-h-lt,.pv-h-dang,.pv-h-btvn,.pv-h-bt,.pv-box-label{break-after:avoid}
 .pv-sec{break-inside:auto}
-.pv-blk{break-inside:avoid;margin:0 0 5px}
+.pv-blk{break-inside:auto;margin:0 0 5px}
 .pv-blk:last-child{margin-bottom:0}
 .pv-box-lt .mline{break-inside:avoid}
 `
@@ -229,7 +320,8 @@ function waveUri(path: string, c1: string, c2: string, c3: string): string {
 function buildPagedCss(taiLieu: TaiLieuFull['taiLieu'], ch: CauHinh, accent: string): string {
   const head = ch.header !== 'none', foot = ch.footer !== 'none'
   const headUri = waveUri('M0,0 H1200 V68 C940,104 760,44 520,74 C300,106 150,56 0,78 Z', '#E91E8C', '#F7941E', '#2D9CDB')
-  const footUri = waveUri('M0,100 V34 C940,2 760,60 520,28 C300,-4 150,48 0,24 V100 Z', '#2D9CDB', '#F7941E', '#E91E8C')
+  // Dải sóng full-bleed FULL CHIỀU RỘNG (mirror của header) — path cũ chỉ vẽ tới x≈520 nên nửa phải trắng tinh.
+  const footUri = waveUri('M0,100 H1200 V40 C940,4 760,64 520,34 C300,6 150,56 0,42 Z', '#2D9CDB', '#F7941E', '#E91E8C')
   const headTxt = cssStr(`${taiLieu.ten} · Khối ${taiLieu.khoi}`)
   const footTxt = cssStr(`BK ACADEMY · ${taiLieu.ten} · Khối ${taiLieu.khoi}`)
   const logoUrl = location.origin + '/Logo.png' // PHẢI tuyệt đối: paged.js rewrite url() theo base blob → '/x' sẽ throw
@@ -239,11 +331,11 @@ function buildPagedCss(taiLieu: TaiLieuFull['taiLieu'], ch: CauHinh, accent: str
 .katex{font-size:0.95em!important}.pagedjs_page{font-family:'Times New Roman',Tinos,Times,serif;font-size:17px;color:#23272b;line-height:1.55;--pv-accent:${accent}}
 .pagedjs_pagebox{position:relative}
 ${head ? `.pagedjs_pagebox::before{content:${headTxt};position:absolute;top:0;left:0;right:0;height:18mm;padding:0 10mm 0 50mm;box-sizing:border-box;background:url("${logoUrl}") 8mm 3.5mm / auto 5mm no-repeat, url("${chipUri}") 4.5mm 1.5mm / 42mm 9mm no-repeat, url("${headUri}") center/100% 100% no-repeat;display:flex;align-items:center;justify-content:flex-end;color:#fff;font-weight:700;font-size:11px;letter-spacing:.3px;text-shadow:0 1px 2px rgba(0,0,0,.25);z-index:1}` : ''}
-${foot ? `.pagedjs_pagebox::after{content:${footTxt};position:absolute;bottom:0;left:0;right:0;height:13mm;padding:0 16mm;box-sizing:border-box;background:url("${footUri}") center/100% 100% no-repeat;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:10px;letter-spacing:.3px;text-shadow:0 1px 2px rgba(0,0,0,.25);z-index:1}` : ''}
+${foot ? `.pagedjs_pagebox::after{content:${footTxt};position:absolute;bottom:0;left:0;right:0;height:15mm;padding:0 16mm;box-sizing:border-box;background:url("${footUri}") center/100% 100% no-repeat;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:11px;letter-spacing:.3px;text-shadow:0 1px 3px rgba(0,0,0,.35);z-index:1}` : ''}
 @page{
   size:A4;
-  margin:18mm 14mm 17mm;
-  ${foot ? `@bottom-right{content:counter(page) " / " counter(pages);color:#9aa6b2;font-family:'Times New Roman',serif;font-weight:600;font-size:10px;vertical-align:top}` : ''}
+  margin:18mm 14mm 22mm;
+  ${foot ? `@bottom-right{content:counter(page) " / " counter(pages);color:#1f2937;font-family:'Times New Roman',serif;font-weight:800;font-size:12px;vertical-align:top}` : ''}
 }
 `
 }

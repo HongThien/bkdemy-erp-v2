@@ -1,11 +1,15 @@
 import { useEffect, useState } from 'react'
 import {
   buoiAoCuaNgay, moBuoi, getBuoi, huyBuoi, setNguoiDay,
-  getRoster, diemDanh, listProblems, addProblem, listGrades, gradeProblem, closePhase,
-  type BuoiAo, type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type Phase, type DiemDanh, type RevealRow,
+  getRoster, diemDanh, listProblems, addProblem, setProblemDang, ensureProblems, listGrades, gradeProblem, closePhase,
+  getDanhGia, setDanhGiaDang, setNhanXet,
+  type BuoiAo, type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type Phase, type DiemDanh, type RevealRow, type DanhGiaHS, type DanhGiaDiem, type TabKey,
 } from '../../lib/gami'
 import { listNhanSu, type NhanSu } from '../../lib/nhansu'
+import { listDaiDang } from '../../lib/kho/api'
 import SearchSelect from '../../components/SearchSelect'
+
+type DangOpt = { ma_dang: string; ten: string }
 
 const todayVN = () => new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Ho_Chi_Minh' })
 const DD_LABEL: Record<DiemDanh, string> = { co_mat: 'Có mặt', vang: 'Vắng', vang_phep: 'Vắng phép' }
@@ -75,15 +79,21 @@ function BuoiCard({ ba, ngay, onOpened }: { ba: BuoiAo; ngay: string; onOpened: 
   )
 }
 
-function BuoiDetail({ id, onClose }: { id: string; onClose: () => void }) {
-  const [buoi, setBuoi] = useState<(BuoiHoc & { lop?: { ten_lop: string; mon: string } }) | null>(null)
+// tabs: giới hạn tab theo vai (GV/TG mở từ "Việc của tôi"); bỏ trống = đủ 4 (OPS/admin).
+// canManage = đổi GV (dạy thay) + Hủy buổi — chỉ OPS/admin. GV/TA mở từ "Việc của tôi" = false (GV read-only).
+export function BuoiDetail({ id, onClose, tabs, initialTab, canManage = true }: { id: string; onClose: () => void; tabs?: TabKey[]; initialTab?: TabKey; canManage?: boolean }) {
+  const [buoi, setBuoi] = useState<(BuoiHoc & { lop?: { ten_lop: string; mon: string; khoi?: string | null }; gv_chinh_id?: string | null }) | null>(null)
   const [roster, setRoster] = useState<BuoiHocHS[]>([])
   const [dsNS, setDsNS] = useState<NhanSu[]>([])
-  const [tab, setTab] = useState<'diemdanh' | Phase>('diemdanh')
+  const [dangOpts, setDangOpts] = useState<DangOpt[]>([])
+  const [tab, setTab] = useState<TabKey>(initialTab ?? tabs?.[0] ?? 'diemdanh')
 
   async function reload() {
     const [b, r, ns] = await Promise.all([getBuoi(id), getRoster(id), listNhanSu()])
     setBuoi(b); setRoster(r); setDsNS(ns)
+    // dạng theo khối của lớp (cho picker chấm bài + tên dạng ở đánh giá). Hiện chỉ Toán (dai_ban_do).
+    const khoi = (b as any).lop?.khoi
+    if (khoi) { try { setDangOpts((await listDaiDang(khoi)).map((d) => ({ ma_dang: d.ma_dang, ten: `${d.ten_dang} · ${d.ten_chuyen_de}` }))) } catch { /* */ } }
   }
   useEffect(() => { reload() }, [id]) // eslint-disable-line
   if (!buoi) return <div className="p-6 text-sm text-slate-400">Đang tải…</div>
@@ -98,10 +108,15 @@ function BuoiDetail({ id, onClose }: { id: string; onClose: () => void }) {
         <span className="text-sm font-semibold text-slate-900">{buoi.lop?.ten_lop} · {buoi.ngay}</span>
         <span className="font-mono text-[11px] text-slate-400">{buoi.ma_buoi}</span>
         <div className="flex items-center gap-1 text-[12px] text-slate-500">GV:
-          <div className="w-44"><SearchSelect value={buoi.nguoi_day} onChange={async (nid) => { await setNguoiDay(id, nid); reload() }} placeholder="người dạy"
-            options={dsNS.map((n) => ({ id: n.id, label: n.ho_ten, sub: n.ma_ns ?? undefined }))} /></div>
+          {/* mặc định = GV chính của lớp; chỉ ghi nguoi_day khi đổi (dạy thay) */}
+          {(() => { const gvHienThi = buoi.nguoi_day ?? buoi.gv_chinh_id ?? null; return canManage ? (
+            <div className="w-44"><SearchSelect value={gvHienThi} onChange={async (nid) => { await setNguoiDay(id, nid); reload() }} placeholder="người dạy"
+              options={dsNS.map((n) => ({ id: n.id, label: n.ho_ten, sub: n.ma_ns ?? undefined }))} /></div>
+          ) : (
+            <span className="font-medium text-slate-700">{dsNS.find((n) => n.id === gvHienThi)?.ho_ten ?? '(chưa gán GV chính)'}{!buoi.nguoi_day && gvHienThi ? ' (chính)' : ''}</span>
+          ) })()}
         </div>
-        {buoi.trang_thai !== 'huy' && buoi.trang_thai !== 'hoan_tat' && (
+        {canManage && buoi.trang_thai !== 'huy' && buoi.trang_thai !== 'hoan_tat' && (
           <button onClick={async () => { const ly = prompt('Lý do hủy buổi?'); if (ly) { await huyBuoi(id, ly); reload() } }}
             className="ml-auto rounded-md border border-rose-200 px-2.5 py-1 text-[12px] font-medium text-rose-600 hover:bg-rose-50">Hủy buổi</button>
         )}
@@ -112,14 +127,16 @@ function BuoiDetail({ id, onClose }: { id: string; onClose: () => void }) {
       ) : (
         <>
           <div className="flex gap-1 border-b border-slate-200 bg-white px-6">
-            {([['diemdanh', `Điểm danh (${soCoMat}/${roster.length})`], ['ingame', 'Buổi học (chấm)'], ['et', 'ET']] as const).map(([k, lbl]) => (
+            {([['diemdanh', `Điểm danh (${soCoMat}/${roster.length})`], ['danhgia', 'Đánh giá sau buổi'], ['ingame', 'Chấm bài trên lớp'], ['et', 'ET']] as const).filter(([k]) => !tabs || tabs.includes(k)).map(([k, lbl]) => (
               <button key={k} onClick={() => setTab(k as any)} className={`-mb-px border-b-2 px-3 py-2 text-[13px] font-medium ${tab === k ? 'border-indigo-600 text-indigo-700' : 'border-transparent text-slate-500 hover:text-slate-700'}`}>{lbl}</button>
             ))}
           </div>
           <div className="min-h-0 flex-1 overflow-auto p-6">
             {tab === 'diemdanh'
               ? <DiemDanhTab roster={roster} chuaDD={chuaDD} onChange={reload} />
-              : <ChamTab buoiId={id} phase={tab} roster={roster} buoi={buoi} onChange={reload} />}
+              : tab === 'danhgia'
+              ? <DanhGiaTab buoiId={id} roster={roster} dangOpts={dangOpts} />
+              : <ChamTab buoiId={id} phase={tab} roster={roster} buoi={buoi} dangOpts={dangOpts} onChange={reload} />}
           </div>
         </>
       )}
@@ -150,7 +167,7 @@ const KQ = [['correct', 'Đúng'], ['partial', 'Đúng hướng'], ['wrong', 'Sa
 const TB = [['clean', 'Chuẩn'], ['ok', 'Khá'], ['sloppy', 'Ẩu']] as const
 const TD = [['fast', 'Nhanh'], ['normal', 'Vừa'], ['slow', 'Chậm']] as const
 
-function ChamTab({ buoiId, phase, roster, buoi, onChange }: { buoiId: string; phase: Phase; roster: BuoiHocHS[]; buoi: BuoiHoc; onChange: () => void }) {
+function ChamTab({ buoiId, phase, roster, buoi, dangOpts, onChange }: { buoiId: string; phase: Phase; roster: BuoiHocHS[]; buoi: BuoiHoc; dangOpts: DangOpt[]; onChange: () => void }) {
   const [probs, setProbs] = useState<Problem[]>([])
   const [grades, setGrades] = useState<Grade[]>([])
   const [cell, setCell] = useState<{ problemId: string; hocSinhId: string } | null>(null)
@@ -159,7 +176,8 @@ function ChamTab({ buoiId, phase, roster, buoi, onChange }: { buoiId: string; ph
   const dongCol = phase === 'et' ? buoi.et_dong_at : buoi.ingame_dong_at
 
   async function reloadP() { const [p, g] = await Promise.all([listProblems(buoiId, phase), listGrades(buoiId)]); setProbs(p); setGrades(g) }
-  useEffect(() => { reloadP() }, [buoiId, phase]) // eslint-disable-line
+  // Chấm bài trên lớp: hiện sẵn bảng 10 bài (slot). ET KHÔNG seed (câu load từ tài liệu ET — #3).
+  useEffect(() => { (async () => { if (phase === 'ingame') { try { await ensureProblems(buoiId, 'ingame', 10) } catch { /* */ } } reloadP() })() }, [buoiId, phase]) // eslint-disable-line
 
   const gradeOf = (pid: string, hsid: string) => grades.find((g) => g.problem_id === pid && g.hoc_sinh_id === hsid)
   async function save(result: string, presentation: string, speed: string) {
@@ -184,9 +202,19 @@ function ChamTab({ buoiId, phase, roster, buoi, onChange }: { buoiId: string; ph
         <span className="text-[12px] text-slate-400">{probs.length} bài · {coMat.length} HS có mặt</span>
         <button onClick={dong} disabled={!probs.length} className="ml-auto rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-indigo-500 disabled:opacity-40">Đóng {phase === 'et' ? 'ET' : 'buổi học'}</button>
       </div>
-      {probs.length === 0 ? <p className="text-[12px] text-slate-400">Chưa có bài. Bấm “+ Thêm bài”.</p> : (
-        <table className="border-separate border-spacing-1 text-sm">
-          <thead><tr><th className="px-2 text-left text-[11px] uppercase text-slate-400">Học sinh</th>{probs.map((p) => <th key={p.id} className="px-2 text-[11px] text-slate-500">Bài {p.problem_no}</th>)}</tr></thead>
+      {/* Bảng hiện SẴN — ingame seed 10 bài; ET 0 câu thì chỉ có cột HS (để trống tới khi #3 load từ tài liệu) */}
+      <table className="border-separate border-spacing-1 text-sm">
+          <thead><tr><th className="px-2 text-left text-[11px] uppercase text-slate-400 align-bottom">Học sinh</th>{probs.map((p) => (
+            <th key={p.id} className="px-2 align-bottom">
+              <div className="text-[11px] text-slate-500">Bài {p.problem_no}</div>
+              {phase === 'ingame' && (
+                <div className="mt-1 w-40">
+                  <SearchSelect value={p.ma_dang} onChange={async (md) => { await setProblemDang(p.id, md); reloadP() }} placeholder="gắn dạng…"
+                    options={dangOpts.map((d) => ({ id: d.ma_dang, label: d.ten }))} />
+                </div>
+              )}
+            </th>
+          ))}</tr></thead>
           <tbody>
             {coMat.map((r) => (
               <tr key={r.id}>
@@ -200,7 +228,6 @@ function ChamTab({ buoiId, phase, roster, buoi, onChange }: { buoiId: string; ph
             ))}
           </tbody>
         </table>
-      )}
       {cell && <ChamPopup onClose={() => setCell(null)} onSave={save} />}
     </div>
   )
@@ -222,6 +249,89 @@ function ChamPopup({ onClose, onSave }: { onClose: () => void; onSave: (r: strin
           <button onClick={() => onSave(r, p, s)} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white hover:bg-indigo-500">Lưu</button>
         </div>
       </div>
+    </div>
+  )
+}
+
+// ── ĐÁNH GIÁ SAU BUỔI: per-HS nhận xét + verdict per-dạng {0/0.5/1} ──
+const DG_SCORES: { v: DanhGiaDiem; lbl: string; tone: string }[] = [
+  { v: 0, lbl: 'Chưa', tone: 'bg-rose-500 text-white' },
+  { v: 0.5, lbl: 'Một phần', tone: 'bg-amber-500 text-white' },
+  { v: 1, lbl: 'Hiểu', tone: 'bg-emerald-600 text-white' },
+]
+const REF_CHIP: Record<string, string> = { correct: 'bg-emerald-100 text-emerald-700', partial: 'bg-amber-100 text-amber-700', wrong: 'bg-rose-100 text-rose-700' }
+const REF_SYM: Record<string, string> = { correct: '✓', partial: '~', wrong: '✗' }
+function DanhGiaTab({ buoiId, roster, dangOpts }: { buoiId: string; roster: BuoiHocHS[]; dangOpts: DangOpt[] }) {
+  const [probs, setProbs] = useState<Problem[]>([])
+  const [grades, setGrades] = useState<Grade[]>([])
+  const [data, setData] = useState<Record<string, DanhGiaHS>>({})
+  const [loading, setLoading] = useState(true)
+  const coMat = roster.filter((r) => r.diem_danh === 'co_mat')
+  const tenDang = (md: string) => dangOpts.find((d) => d.ma_dang === md)?.ten ?? md
+  // dạng của buổi = ma_dang đã gắn ở "Chấm bài trên lớp" (ingame)
+  const dangs = [...new Set(probs.map((p) => p.ma_dang).filter(Boolean))] as string[]
+
+  async function reload() { setLoading(true); try { const [p, g, d] = await Promise.all([listProblems(buoiId, 'ingame'), listGrades(buoiId), getDanhGia(buoiId)]); setProbs(p); setGrades(g); setData(d) } finally { setLoading(false) } }
+  useEffect(() => { reload() }, [buoiId]) // eslint-disable-line
+
+  async function setDiem(hsId: string, maDang: string, cur: DanhGiaDiem | undefined, val: DanhGiaDiem) {
+    const next: DanhGiaDiem | null = cur === val ? null : val // bấm lại = bỏ chọn (về chưa-đánh-giá)
+    setData((d) => { const hs = d[hsId] ?? { hoc_sinh_id: hsId, nhan_xet: null, diemTheoDang: {} }; const dd = { ...hs.diemTheoDang }; if (next === null) delete dd[maDang]; else dd[maDang] = next; return { ...d, [hsId]: { ...hs, diemTheoDang: dd } } })
+    try { await setDanhGiaDang(buoiId, hsId, maDang, next) } catch (e: any) { alert(e.message ?? String(e)); reload() }
+  }
+  async function saveNX(hsId: string, txt: string) { try { await setNhanXet(buoiId, hsId, txt) } catch (e: any) { alert(e.message ?? String(e)) } }
+
+  if (loading) return <p className="text-[13px] text-slate-400">Đang tải…</p>
+  if (coMat.length === 0) return <p className="text-[12px] text-slate-400">Chưa có HS nào điểm danh “có mặt” — điểm danh trước.</p>
+
+  return (
+    <div>
+      <p className="mb-2 text-[12px] text-slate-400">
+        {dangs.length === 0
+          ? <>Chưa có dạng nào — gắn dạng cho bài ở tab <b>Chấm bài trên lớp</b> sẽ tự hiện cột. Tạm thời chỉ nhập nhận xét.</>
+          : <>Mỗi dạng: chip nhỏ = kết quả từng bài (tham khảo từ chấm bài) · nút màu = mức GV chốt (bấm lại để bỏ).</>}
+      </p>
+      <table className="border-separate border-spacing-0 text-sm">
+        <thead><tr className="text-left text-[11px] uppercase text-slate-400">
+          <th className="sticky left-0 bg-[#fafafb] px-2 py-1.5">Học sinh</th>
+          {dangs.map((md) => <th key={md} className="border-l border-slate-100 px-2 py-1.5 font-medium normal-case text-slate-500"><div className="w-44 truncate" title={tenDang(md)}>{tenDang(md)}</div></th>)}
+          <th className="border-l border-slate-100 px-2 py-1.5">Nhận xét</th>
+        </tr></thead>
+        <tbody>
+          {coMat.map((r) => {
+            const hsId = r.hoc_sinh_id; const hs = data[hsId]
+            return (
+              <tr key={r.id} className="border-t border-slate-100 align-top">
+                <td className="sticky left-0 whitespace-nowrap bg-white px-2 py-2 font-medium text-slate-800">{r.hoc_sinh?.ho_ten ?? '?'}</td>
+                {dangs.map((md) => {
+                  const cur = hs?.diemTheoDang[md]
+                  const baiDang = probs.filter((p) => p.ma_dang === md)
+                  return (
+                    <td key={md} className="border-l border-slate-100 px-2 py-2">
+                      <div className="mb-1 flex flex-wrap gap-0.5">
+                        {baiDang.length === 0 ? <span className="text-[10px] text-slate-300">—</span> : baiDang.map((p) => {
+                          const g = grades.find((x) => x.problem_id === p.id && x.hoc_sinh_id === hsId)
+                          return <span key={p.id} title={`Bài ${p.problem_no}`} className={`inline-flex h-4 min-w-4 items-center justify-center rounded px-1 text-[10px] font-semibold ${g ? REF_CHIP[g.result] : 'bg-slate-100 text-slate-300'}`}>{g ? REF_SYM[g.result] : '·'}</span>
+                        })}
+                      </div>
+                      <div className="flex gap-1">
+                        {DG_SCORES.map((s) => (
+                          <button key={s.v} onClick={() => setDiem(hsId, md, cur, s.v)}
+                            className={`rounded px-1.5 py-0.5 text-[10px] font-medium transition ${cur === s.v ? s.tone : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}>{s.lbl}</button>
+                        ))}
+                      </div>
+                    </td>
+                  )
+                })}
+                <td className="border-l border-slate-100 px-2 py-2">
+                  <textarea defaultValue={hs?.nhan_xet ?? ''} onBlur={(e) => saveNX(hsId, e.target.value)} placeholder="nhận xét…"
+                    className="h-12 w-48 rounded-md border border-slate-200 px-2 py-1 text-[12px]" />
+                </td>
+              </tr>
+            )
+          })}
+        </tbody>
+      </table>
     </div>
   )
 }

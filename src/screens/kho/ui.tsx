@@ -28,11 +28,19 @@ const MATH_RE = /\$\$([\s\S]+?)\$\$|\$([^$]+?)\$/g
 // → KHÔNG bao giờ đụng lệnh LaTeX ("\neq", "\nabla"…) vì chúng nằm TRONG $…$. Hết mơ hồ "\neq" vs "\nVì".
 // Render 1 phần TEXT (ngoài $…$): lệnh CÓ NGOẶC "\dfrac{6}{5}" (AI quên bọc $) → katex; phần còn lại esc.
 // (lệnh KHÔNG ngoặc như "\neq" đã được uni() đổi Unicode trước đó; "\nVì" không có ngoặc nên không đụng.)
+// Tự IN ĐẬM trong phần TEXT (đã esc, NGOÀI $…$ và lệnh latex → không đụng công thức):
+//  ① cụm đặc biệt "Dấu hiệu" / "Dấu hiệu nhận biết"  ② MỌI từ VIẾT HOA (≥2 ký tự, kể cả dấu tiếng Việt).
+// Bọc cụm trước → uppercase pass sau không khớp chữ trong thẻ <b> (toàn lowercase) nên không lồng thừa.
+function boldify(s: string): string {
+  return s
+    .replace(/Dấu hiệu(?: nhận biết)?/gu, '<b>$&</b>')
+    .replace(/\p{Lu}[\p{Lu}\p{Nd}]+/gu, '<b>$&</b>')
+}
 function renderInline(s: string): string {
   const re = /\\[a-zA-Z]+(?:\{[^{}]*\})+/g
   let out = '', last = 0, m: RegExpExecArray | null
-  while ((m = re.exec(s))) { out += esc(s.slice(last, m.index)); out += tex(m[0], false); last = re.lastIndex }
-  return out + esc(s.slice(last))
+  while ((m = re.exec(s))) { out += boldify(esc(s.slice(last, m.index))); out += tex(m[0], false); last = re.lastIndex }
+  return out + boldify(esc(s.slice(last)))
 }
 // **đậm** (markdown) → <b>…</b>; phần còn lại render công thức trần + esc.
 function renderText(s: string): string {

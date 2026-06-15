@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react'
 import type { Session } from '@supabase/supabase-js'
 import { supabase } from './lib/supabase'
-import { useStore, getUser, canAccessAdmin } from './store/useStore'
+import { useStore, getUser } from './store/useStore'
 import TopBar from './components/TopBar'
 import NhanSuHome from './screens/NhanSuHome'
-import AdminScreen from './screens/AdminScreen'
 import Login from './auth/Login'
 
 export default function App() {
@@ -15,9 +14,8 @@ export default function App() {
     return () => sub.subscription.unsubscribe()
   }, [])
 
-  const { currentUserId, screen, quyen, loadQuyen, loadMe, clearQuyen } = useStore()
+  const { currentUserId, quyen, loadQuyen, loadMe, clearQuyen } = useStore()
   const user = getUser(currentUserId)
-  const showAdmin = screen === 'admin' && canAccessAdmin(quyen)
 
   // Danh tính + quyền THẬT theo tài khoản đăng nhập. Reset khi đăng xuất.
   useEffect(() => {
@@ -34,8 +32,8 @@ export default function App() {
     // Chặn 1 lần ở đây; mọi tầng dưới dùng h-full + cuộn nội bộ → không còn body-scroll thừa.
     <div className="flex h-[calc(100vh/1.15)] flex-col overflow-hidden bg-slate-50 text-slate-800">
       <TopBar email={session.user.email ?? ''} />
-      <div className={`min-h-0 flex-1 ${showAdmin ? 'overflow-hidden' : 'overflow-auto'}`}>
-        {showAdmin ? <AdminScreen user={user} /> : <NhanSuHome user={user} />}
+      <div className="min-h-0 flex-1 overflow-hidden">
+        <NhanSuHome user={user} />
       </div>
     </div>
   )

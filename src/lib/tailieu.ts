@@ -4,20 +4,24 @@ import { listCauByDang, type CauHoi } from './kho/api'
 
 const LIMIT = 10000
 
-export type PhanLoai = 'lt_chuyen_de' | 'dang' | 'btvn' | 'custom'
-export type CauHinh = { header?: 'wave' | 'none'; footer?: 'wave' | 'none'; watermark?: 'logo' | 'none'; mau?: string }
+// buoi = mốc tầng-1 (Buổi 1, 2…). Trong 1 buổi: dang (trên lớp) + btvn (per-dạng) của các dạng đã chọn.
+// Lý thuyết chuyên đề KHÔNG lưu phan — DERIVE từ chuyên đề của các dạng trong buổi (lt_chuyen_de chỉ còn cho data cũ).
+export type PhanLoai = 'buoi' | 'lt_chuyen_de' | 'dang' | 'btvn' | 'custom'
+// btvnLinesByCau = số dòng kẻ (chấm chấm) để HS viết, RIÊNG cho TỪNG bài BTVN (key = ma_cau).
+// Không có entry cho câu nào → dùng DEFAULT_BTVN_LINES. (HS làm thẳng vào phiếu, không làm vào vở.)
+export type CauHinh = { header?: 'wave' | 'none'; footer?: 'wave' | 'none'; watermark?: 'logo' | 'none'; mau?: string; btvnLinesByCau?: Record<string, number> }
+export const DEFAULT_BTVN_LINES = 5
 export type TaiLieu = { id: string; loai: string; ten: string; khoi: string; ma_chuyen_de: string | null; theme: string; cau_hinh?: CauHinh; created_at?: string; updated_at?: string; created_by?: string | null }
 export type TaiLieuPhan = { id: string; tai_lieu_id: string; thu_tu: number; loai_phan: PhanLoai; ref_ma: string | null; tieu_de: string | null; noi_dung: string | null }
 type LtRow = { noi_dung: string; file_url: string | null; ten_file: string | null }
-type DangRow = { ma_dang: string; ten_dang: string; muc_do: number | null; bac_toi_thieu: string }
+type DangRow = { ma_dang: string; ten_dang: string; muc_do: number | null; bac_toi_thieu: string; ma_chuyen_de: string; ten_chuyen_de: string }
 export type PhanResolved = TaiLieuPhan & {
-  ltChuyenDe?: LtRow | null   // lt_chuyen_de
-  tenChuyenDe?: string        // tên chuyên đề (lt_chuyen_de)
-  dang?: DangRow | null       // dang
-  lyThuyetDang?: LtRow | null // dang
+  dang?: DangRow | null       // dang | btvn (đều ref_ma = ma_dang)
+  lyThuyetDang?: LtRow | null // dang (lý thuyết · ví dụ của dạng)
   caus: CauHoi[]              // câu luyện (dang) / câu BTVN (btvn)
 }
-export type TaiLieuFull = { taiLieu: TaiLieu; phans: PhanResolved[] }
+// ltChuyenDe / tenChuyenDe: map theo ma_chuyen_de — lý thuyết chuyên đề derive từ chuyên đề của các dạng.
+export type TaiLieuFull = { taiLieu: TaiLieu; phans: PhanResolved[]; ltChuyenDe: Record<string, LtRow | null>; tenChuyenDe: Record<string, string> }
 
 // ── Thư viện (CRUD tài liệu) ──────────────────────────────────────
 export async function listTaiLieu(khoi?: string, loai = 'giao_trinh'): Promise<TaiLieu[]> {
@@ -99,32 +103,87 @@ export async function autoSuggestByLoai(maDang: string, counts: Record<string, n
   }
   return out
 }
-
-// ── Thêm 1 CHUYÊN ĐỀ vào tài liệu: nối [LT chuyên đề → mỗi dạng + câu luyện] vào CUỐI (giữ BTVN cuối cùng) ──
-// Tài liệu = NHIỀU chuyên đề gộp; gọi nhiều lần để thêm nhiều chuyên đề.
-export async function themChuyenDe(taiLieuId: string, khoi: string, maChuyenDe: string): Promise<void> {
-  const phans = await listPhan(taiLieuId)
-  const btvn = phans.find((p) => p.loai_phan === 'btvn')
-  let tt = phans.length ? Math.max(...phans.map((p) => p.thu_tu)) + 1 : 0
-  const { data: dangs, error } = await supabase.from('dai_ban_do').select('ma_dang')
-    .eq('khoi', khoi).eq('ma_chuyen_de', maChuyenDe).order('ma_dang').limit(LIMIT)
-  if (error) throw error
-  await addPhan({ tai_lieu_id: taiLieuId, thu_tu: tt++, loai_phan: 'lt_chuyen_de', ref_ma: maChuyenDe, tieu_de: null, noi_dung: null })
-  for (const d of (dangs ?? []) as { ma_dang: string }[]) {
-    const phan = await addPhan({ tai_lieu_id: taiLieuId, thu_tu: tt++, loai_phan: 'dang', ref_ma: d.ma_dang, tieu_de: null, noi_dung: null })
-    const caus = await autoSuggestByLoai(d.ma_dang, DEFAULT_LUYEN_COUNTS) // lấp ĐÚNG theo số-lượng-mỗi-loại
-    if (caus.length) await setCauOfPhan(phan.id, caus)
+// Số câu BTVN mặc định mỗi dạng (theo loại) — nhẹ hơn Bài luyện một chút.
+export const DEFAULT_BTVN_COUNTS: Record<string, number> = { trac_nghiem: 2, tra_loi_ngan: 1, tu_luan: 1 }
+// Gợi ý câu BTVN trải khắp NHIỀU dạng (mỗi dạng theo counts), ưu tiên câu GỐC,
+// BỎ câu đã dùng ở Bài luyện (`exclude`) → homework dùng câu KHÁC, chống học vẹt.
+export async function autoSuggestBtvn(maDangs: string[], exclude: Set<string>, counts = DEFAULT_BTVN_COUNTS): Promise<string[]> {
+  const out: string[] = []
+  for (const md of maDangs) {
+    const caus = await listCauByDang(md)
+    for (const [loai, n] of Object.entries(counts)) {
+      if (n <= 0) continue
+      const pool = caus.filter((c) => c.loai_cau === loai && !exclude.has(c.ma_cau))
+        .sort((a, b) => (a.nguon === 'le' ? 0 : 1) - (b.nguon === 'le' ? 0 : 1))
+      out.push(...pool.slice(0, n).map((c) => c.ma_cau))
+    }
   }
-  if (btvn) await updatePhan(btvn.id, { thu_tu: tt }) // đẩy BTVN xuống cuối
+  return out
 }
-// BTVN: tài liệu có TỐI ĐA 1 phần BTVN, luôn ở cuối. Trả id (tạo nếu chưa có).
-export async function ensureBtvnPhan(taiLieuId: string): Promise<string> {
+// ── BUỔI = tầng 1 ─────────────────────────────────────────────────
+// Gom 1 buổi (mốc 'buoi' + các phan đến mốc kế / hết): trả thứ tự dạng + map dang/btvn theo ma_dang.
+type BuoiGroup = { order: string[]; dangs: Record<string, string>; btvns: Record<string, string> }
+function groupBuoi(phans: TaiLieuPhan[], buoiId: string): BuoiGroup {
+  const i = phans.findIndex((p) => p.id === buoiId)
+  const g: BuoiGroup = { order: [], dangs: {}, btvns: {} }
+  for (let j = i + 1; j < phans.length && phans[j].loai_phan !== 'buoi'; j++) {
+    const p = phans[j]
+    if (p.loai_phan === 'dang' && p.ref_ma) { if (!(p.ref_ma in g.dangs)) g.order.push(p.ref_ma); g.dangs[p.ref_ma] = p.id }
+    else if (p.loai_phan === 'btvn' && p.ref_ma) g.btvns[p.ref_ma] = p.id
+  }
+  return g
+}
+// Thêm 1 buổi mới (rỗng) vào cuối tài liệu.
+export async function addBuoi(taiLieuId: string): Promise<void> {
   const phans = await listPhan(taiLieuId)
-  const ex = phans.find((p) => p.loai_phan === 'btvn')
-  if (ex) return ex.id
+  const n = phans.filter((p) => p.loai_phan === 'buoi').length + 1
   const tt = phans.length ? Math.max(...phans.map((p) => p.thu_tu)) + 1 : 0
-  const p = await addPhan({ tai_lieu_id: taiLieuId, thu_tu: tt, loai_phan: 'btvn', ref_ma: null, tieu_de: 'Bài tập về nhà', noi_dung: null })
-  return p.id
+  await addPhan({ tai_lieu_id: taiLieuId, thu_tu: tt, loai_phan: 'buoi', ref_ma: null, tieu_de: `Buổi ${n}`, noi_dung: null })
+}
+// Xoá 1 buổi: mốc + toàn bộ phan thuộc buổi đó.
+export async function deleteBuoi(taiLieuId: string, buoiId: string): Promise<void> {
+  const phans = await listPhan(taiLieuId)
+  const i = phans.findIndex((p) => p.id === buoiId)
+  if (i < 0) return
+  await deletePhan(buoiId)
+  for (let j = i + 1; j < phans.length && phans[j].loai_phan !== 'buoi'; j++) await deletePhan(phans[j].id)
+}
+// Đặt TẬP dạng cho 1 buổi: dạng mới → tạo (dang+btvn) auto-suggest; dạng bỏ → xoá; rồi sắp lại thứ tự cả tài liệu.
+// Mỗi buổi xếp: [tất cả 'dang' (trên lớp)] rồi [tất cả 'btvn' (về nhà)] — đúng thứ tự dạng.
+export async function setDangOfBuoi(taiLieuId: string, buoiId: string, maDangs: string[]): Promise<void> {
+  const phans = await listPhan(taiLieuId)
+  const target = groupBuoi(phans, buoiId)
+  const toRemove = target.order.filter((ma) => !maDangs.includes(ma))
+  const toAdd = maDangs.filter((ma) => !(ma in target.dangs))
+  for (const ma of toRemove) {
+    if (target.dangs[ma]) await deletePhan(target.dangs[ma])
+    if (target.btvns[ma]) await deletePhan(target.btvns[ma])
+  }
+  const newDang: Record<string, string> = {}, newBtvn: Record<string, string> = {}
+  for (const ma of toAdd) {
+    const luyen = await autoSuggestByLoai(ma, DEFAULT_LUYEN_COUNTS)
+    const dp = await addPhan({ tai_lieu_id: taiLieuId, thu_tu: 99999, loai_phan: 'dang', ref_ma: ma, tieu_de: null, noi_dung: null })
+    if (luyen.length) await setCauOfPhan(dp.id, luyen)
+    const hw = await autoSuggestBtvn([ma], new Set(luyen))
+    const bp = await addPhan({ tai_lieu_id: taiLieuId, thu_tu: 99999, loai_phan: 'btvn', ref_ma: ma, tieu_de: null, noi_dung: null })
+    if (hw.length) await setCauOfPhan(bp.id, hw)
+    newDang[ma] = dp.id; newBtvn[ma] = bp.id
+  }
+  // Dựng lại thứ tự toàn tài liệu (dùng snapshot `phans` cho các buổi KHÁC — chúng không đổi).
+  const markers = phans.filter((p) => p.loai_phan === 'buoi')
+  const firstMarkerIdx = phans.findIndex((p) => p.loai_phan === 'buoi')
+  const order: string[] = []
+  if (firstMarkerIdx > 0) for (let k = 0; k < firstMarkerIdx; k++) order.push(phans[k].id) // giữ phan rời (data cũ) ở đầu
+  const targetOrder = [...maDangs].sort() // theo ma_dang → dạng cùng chuyên đề liền nhau (LT chuyên đề hiện 1 lần)
+  for (const m of markers) {
+    order.push(m.id)
+    const g = m.id === buoiId
+      ? { order: targetOrder, dangs: { ...target.dangs, ...newDang }, btvns: { ...target.btvns, ...newBtvn } }
+      : groupBuoi(phans, m.id)
+    for (const ma of g.order) if (g.dangs[ma]) order.push(g.dangs[ma])
+    for (const ma of g.order) if (g.btvns[ma]) order.push(g.btvns[ma])
+  }
+  await reorderPhan(order)
 }
 
 // ── Resolver: gom phần + nội dung SỐNG từ kho (cho print-view) ──
@@ -139,27 +198,30 @@ export async function getTaiLieuFull(id: string): Promise<TaiLieuFull> {
   const maCaus = [...new Set(cauRows.map((r) => r.ma_cau))]
   const caus = maCaus.length ? (((await supabase.from('dai_cau_hoi').select('*').in('ma_cau', maCaus).limit(LIMIT)).data ?? []) as CauHoi[]) : []
   const cauMap = new Map(caus.map((c) => [c.ma_cau, c]))
-  const dangMas = phans.filter((p) => p.loai_phan === 'dang' && p.ref_ma).map((p) => p.ref_ma as string)
-  const dangs = dangMas.length ? (((await supabase.from('dai_ban_do').select('ma_dang,ten_dang,muc_do,bac_toi_thieu').in('ma_dang', dangMas).limit(LIMIT)).data ?? []) as DangRow[]) : []
+  // Dạng dùng cho CẢ 'dang' (trên lớp) lẫn 'btvn' (về nhà) — đều ref_ma = ma_dang.
+  const dangMas = [...new Set(phans.filter((p) => (p.loai_phan === 'dang' || p.loai_phan === 'btvn') && p.ref_ma).map((p) => p.ref_ma as string))]
+  const dangs = dangMas.length ? (((await supabase.from('dai_ban_do').select('ma_dang,ten_dang,muc_do,bac_toi_thieu,ma_chuyen_de,ten_chuyen_de').in('ma_dang', dangMas).limit(LIMIT)).data ?? []) as DangRow[]) : []
   const dangMap = new Map(dangs.map((d) => [d.ma_dang, d]))
   const ltDangRows = dangMas.length ? (((await supabase.from('dai_dang_ly_thuyet').select('*').in('ma_dang', dangMas).limit(LIMIT)).data ?? []) as (LtRow & { ma_dang: string })[]) : []
   const ltDangMap = new Map(ltDangRows.map((l) => [l.ma_dang, l]))
-  const cdMas = phans.filter((p) => p.loai_phan === 'lt_chuyen_de' && p.ref_ma).map((p) => p.ref_ma as string)
+  // Lý thuyết chuyên đề DERIVE từ chuyên đề của các dạng TRÊN LỚP (mỗi buổi sẽ tự hiện LT của chuyên đề nó chứa).
+  const cdMas = [...new Set(phans.filter((p) => p.loai_phan === 'dang' && p.ref_ma).map((p) => dangMap.get(p.ref_ma as string)?.ma_chuyen_de).filter(Boolean) as string[])]
   const ltCdRows = cdMas.length ? (((await supabase.from('dai_chuyen_de_ly_thuyet').select('*').in('ma_chuyen_de', cdMas).limit(LIMIT)).data ?? []) as (LtRow & { ma_chuyen_de: string })[]) : []
   const ltCdMap = new Map(ltCdRows.map((l) => [l.ma_chuyen_de, l]))
-  const cdNameRows = cdMas.length ? (((await supabase.from('dai_ban_do').select('ma_chuyen_de,ten_chuyen_de').in('ma_chuyen_de', cdMas).limit(LIMIT)).data ?? []) as { ma_chuyen_de: string; ten_chuyen_de: string }[]) : []
-  const cdNameMap = new Map(cdNameRows.map((r) => [r.ma_chuyen_de, r.ten_chuyen_de]))
+  const ltChuyenDe: Record<string, LtRow | null> = {}
+  const tenChuyenDe: Record<string, string> = {}
+  for (const cm of cdMas) ltChuyenDe[cm] = ltCdMap.get(cm) ?? null
+  for (const d of dangs) tenChuyenDe[d.ma_chuyen_de] = d.ten_chuyen_de
 
   const phansResolved: PhanResolved[] = phans.map((p) => {
     const maList = cauRows.filter((r) => r.phan_id === p.id).sort((a, b) => a.thu_tu - b.thu_tu).map((r) => r.ma_cau)
+    const dangLike = p.loai_phan === 'dang' || p.loai_phan === 'btvn'
     return {
       ...p,
-      ltChuyenDe: p.loai_phan === 'lt_chuyen_de' && p.ref_ma ? ltCdMap.get(p.ref_ma) ?? null : undefined,
-      tenChuyenDe: p.loai_phan === 'lt_chuyen_de' && p.ref_ma ? cdNameMap.get(p.ref_ma) : undefined,
-      dang: p.loai_phan === 'dang' && p.ref_ma ? dangMap.get(p.ref_ma) ?? null : undefined,
+      dang: dangLike && p.ref_ma ? dangMap.get(p.ref_ma) ?? null : undefined,
       lyThuyetDang: p.loai_phan === 'dang' && p.ref_ma ? ltDangMap.get(p.ref_ma) ?? null : undefined,
       caus: maList.map((ma) => cauMap.get(ma)).filter(Boolean) as CauHoi[],
     }
   })
-  return { taiLieu: tl as TaiLieu, phans: phansResolved }
+  return { taiLieu: tl as TaiLieu, phans: phansResolved, ltChuyenDe, tenChuyenDe }
 }
