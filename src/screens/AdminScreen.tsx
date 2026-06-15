@@ -1,5 +1,6 @@
+import { useEffect } from 'react'
 import type { User } from '../types'
-import { useStore, adminNavForUser } from '../store/useStore'
+import { useStore, adminNavFromQuyen, accessibleLeaves } from '../store/useStore'
 import { adminLeaves } from '../mock/fixtures'
 import PersonalCard from '../components/PersonalCard'
 import NavTree from '../components/NavTree'
@@ -12,11 +13,19 @@ import PhanCongScreen from './nhansu/PhanCongScreen'
 import LopScreen from './nhansu/LopScreen'
 import HocSinhScreen from './nhansu/HocSinhScreen'
 import BuoiHocScreen from './gami/BuoiHocScreen'
+import PhanQuyenScreen from './phanquyen/PhanQuyenScreen'
 
 export default function AdminScreen({ user }: { user: User }) {
-  const { adminLeaf, setAdminLeaf } = useStore()
-  const groups = adminNavForUser(user)
+  const { adminLeaf, setAdminLeaf, quyen } = useStore()
+  const groups = adminNavFromQuyen(quyen)
+  const allowed = accessibleLeaves(quyen)
   const leaf = adminLeaves.find((l) => l.id === adminLeaf)
+  const coQuyen = allowed.some((l) => l.id === adminLeaf)
+
+  // Route guard: lá đang chọn không nằm trong quyền → nhảy về lá đầu được phép
+  useEffect(() => {
+    if (allowed.length && !coQuyen) setAdminLeaf(allowed[0].id)
+  }, [adminLeaf, allowed.length, coQuyen]) // eslint-disable-line
 
   return (
     <div className="grid h-full min-h-0 grid-rows-[minmax(0,1fr)] grid-cols-[240px_1fr] overflow-hidden">
@@ -24,7 +33,13 @@ export default function AdminScreen({ user }: { user: User }) {
         <PersonalCard user={user} />
         <NavTree groups={groups} selected={adminLeaf} onSelect={setAdminLeaf} />
       </aside>
-      {adminLeaf === 'bdkt' ? (
+      {!coQuyen ? (
+        <section className="flex min-h-0 items-center justify-center p-8 text-sm text-slate-400">
+          Bạn không có quyền mở chức năng này.
+        </section>
+      ) : adminLeaf === 'phanquyen' ? (
+        <PhanQuyenScreen />
+      ) : adminLeaf === 'bdkt' ? (
         <KhoScreen />
       ) : adminLeaf === 'lamtailieu' ? (
         <TaiLieuScreen />

@@ -2,7 +2,7 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-39 bảng · 0 enum · 1 trigger · 5 function
+41 bảng · 0 enum · 1 trigger · 6 function
 
 ## buoi_hoc
 
@@ -344,6 +344,7 @@
 | updated_at | timestamp with time zone |  | now() |  |
 | ma_ns | text | Y | ('NS'::text \|\| lpad((nextval('ns_seq'::regclass))::text, 3, '0'::text)) |  |
 | anh_url | text | Y |  |  |
+| la_admin_he_thong | boolean |  | false |  |
 
 ## nhan_su_team
 
@@ -444,6 +445,22 @@
 | hieu_luc_den | date | Y |  |  |
 | created_at | timestamp with time zone |  | now() |  |
 
+## vai_tro
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| ten | text |  |  |  |
+| mo_ta | text | Y |  |  |
+| created_at | timestamp with time zone |  | now() |  |
+
+## vai_tro_chuc_nang
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| vai_tro_id | uuid |  |  | PK FK→vai_tro.id |
+| chuc_nang | text |  |  | PK |
+
 ## vi_tri
 
 | cột | kiểu | null | default | khóa |
@@ -455,6 +472,7 @@
 | cha_id | uuid | Y |  | FK→vi_tri.id |
 | nhan_su_id | uuid | Y |  | FK→nhan_su.id |
 | created_at | timestamp with time zone |  | now() |  |
+| vai_tro_id | uuid | Y |  | FK→vai_tro.id |
 
 ## Triggers
 
@@ -468,5 +486,6 @@
 - `jwt_uid()` → uuid
 - `la_thanh_vien()` → boolean
 - `log_hoc_sinh_lop()` → trigger
+- `my_quyen()` → TABLE(la_admin boolean, chuc_nang text[])
 - `self_link_account()` → uuid
 

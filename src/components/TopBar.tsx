@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useStore, getUser, canAdmin, vaisOf } from '../store/useStore'
+import { useStore, canAccessAdmin, vaisOf } from '../store/useStore'
 import { users } from '../mock/fixtures'
 import { supabase } from '../lib/supabase'
 import HoSoModal from '../screens/nhansu/HoSoModal'
@@ -8,9 +8,9 @@ const tab = (active: boolean) =>
   `rounded px-3 py-1 ${active ? 'bg-slate-800 text-white' : 'hover:bg-slate-100'}`
 
 export default function TopBar({ email }: { email: string }) {
-  const { currentUserId, setCurrentUser, screen, setScreen } = useStore()
-  const user = getUser(currentUserId)
-  const admin = canAdmin(user)
+  const { currentUserId, setCurrentUser, screen, setScreen, quyen } = useStore()
+  const admin = canAccessAdmin(quyen)
+  const laFounder = !!quyen?.laAdmin
   const [hoSo, setHoSo] = useState(false)
 
   return (
@@ -29,19 +29,23 @@ export default function TopBar({ email }: { email: string }) {
       </nav>
 
       <div className="ml-auto flex items-center gap-2 text-xs">
-        <span className="rounded bg-amber-100 px-1.5 py-0.5 font-medium text-amber-700">DEV</span>
-        <span className="text-slate-400">xem với vai trò:</span>
-        <select
-          value={currentUserId}
-          onChange={(e) => setCurrentUser(e.target.value)}
-          className="rounded border px-2 py-1"
-        >
-          {users.map((u) => (
-            <option key={u.id} value={u.id}>
-              {u.ten} — {vaisOf(u).join('/')}
-            </option>
-          ))}
-        </select>
+        {laFounder && (
+          <>
+            <span className="rounded bg-amber-100 px-1.5 py-0.5 font-medium text-amber-700">DEV</span>
+            <span className="text-slate-400">xem với vai trò:</span>
+            <select
+              value={currentUserId}
+              onChange={(e) => setCurrentUser(e.target.value)}
+              className="rounded border px-2 py-1"
+            >
+              {users.map((u) => (
+                <option key={u.id} value={u.id}>
+                  {u.ten} — {vaisOf(u).join('/')}
+                </option>
+              ))}
+            </select>
+          </>
+        )}
         <button onClick={() => setHoSo(true)} title="Hồ sơ của tôi" className="ml-2 border-l pl-3 text-slate-500 hover:text-indigo-600">👤 {email}</button>
         <button onClick={() => supabase.auth.signOut()} className="rounded border px-2 py-1 text-slate-500 hover:bg-slate-100 hover:text-rose-600">Đăng xuất</button>
       </div>
