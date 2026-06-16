@@ -279,3 +279,23 @@
 **Quyết định schema (migration 0002, Thùy duyệt):** BỎ tầng Chương (3 tầng). Thêm bậc lớp S>A>B>C (`bac_toi_thieu` FK `lop_bac`, độc lập độ khó `muc_do`). Mã: chủ đề `0701` · chuyên đề `070101` · dạng `07010103`; chỉ `ma_dang` là FK-target ổn định. Migration 0003 grants (ALTER DEFAULT PRIVILEGES claude_build).
 
 **Gotcha:** migration áp RIÊNG từng file (0001 không idempotent). claude_build có DDL (khác claude_ro trong CLAUDE.md §2.1).
+
+---
+
+## 2026-06-16 (phiên 2) — Khép ET, chấm bài/ET, mốc hoàn thành, Elo per-môn + màn Điểm số
+
+**Làm (đã distill lên HANDOFF ①②, đây là log thô):**
+- Khép vòng ET: tab Chấm ET tự load câu từ ET (lớp+ngày) → seed gami_session_problems. ET = form tạo trực tiếp (bỏ list/popup gate), Lưu→Kho→reset; sửa từ Kho tài liệu.
+- Chấm bài trên lớp = 5 mức 1-5 (gradeMuc, points=muc×20, mig 0038). Chấm ET = Đ/C/S + 6 ô lỗi E01-E06 (gradeET, cột loi jsonb mig 0037). Click lại = bỏ chấm (deleteGrade). Đánh giá sau buổi = Đ/C/S + nút Hoàn thành (danh_gia_xong_at mig 0040).
+- Mốc hoàn thành từng task; buổi hoan_tat khi CẢ ingame+et đóng (sửa bug ET-đóng-là-mất-task-GV). Task xong→nhóm "Đã xong" mở lại sửa. reopenPhase rollback.
+- getMyTasks: gom MỌI vai (gv-phụ+tg) — sửa bug rụng task ET. Buổi học: filter Chưa mở/Đã mở/Đã hủy + hủy tách khỏi mở + bấm cả thẻ vào buổi + dongBoSiSo (vá sĩ số ghi-danh-sau).
+- closePhase atomic claim (chống đóng 2 lần → Elo×2; đã dính 9A2). Nút đóng busy.
+- Elo/EXP per-môn (mig 0041 unique hs+mon, backfill Toán). 2 Elo độc lập/buổi tính từ Elo TRƯỚC buổi (pre = elo − Σ delta buổi này), cộng dồn; reopen=trừ delta. Config K_calib 48→32, cap 60→40. EXP hoà = TB bậc nhóm. Replay toàn bộ (_replay_elo.mjs).
+- Màn Điểm số (leaf diemso): Bảng xếp hạng per-môn + Theo ca (2 bảng Elo lớp/ET) + hồ sơ HS (lịch sử Elo bấm→bảng ca). getEloBreakdown hiện E/A/Δ kiểm tra công thức.
+- Sửa/xoá chủ đề-chuyên đề (rename giữ mã, deleteDaiCum cascade câu). Bug tràn bảng (min-w-0). Seed trùng StrictMode (unique 0039 + upsert ignoreDup). HS tab Tất cả + đếm Đang học/Nghỉ. PH mã sửa-được + sửa info. Prompt clone siết + \vdots/\not\vdots + ảnh đề chung.
+
+**Migrations áp: 0037 loi · 0038 muc · 0039 unique problems+dedup · 0040 danh_gia_xong_at · 0041 per-mon.**
+
+**Đang dở/treo:** màn TIVI (chờ Thùy: theo lớp/buổi hay toàn khối). Verify cuối: 9A2 buổi1 ingame Δ=0 đều, EXP hoà 333 — ĐÚNG.
+
+**Gotcha then chốt (chi tiết ở HANDOFF ②):** atomic-claim chống double-close · Elo nhiều phase = snapshot trước-buổi không nối tiếp · EXP hoà = TB nhóm · min-w-0 mọi tầng flex/grid · unique+upsert chống StrictMode seed đôi.
