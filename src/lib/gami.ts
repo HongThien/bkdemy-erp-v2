@@ -2,6 +2,8 @@
 // UI chỉ gọi qua đây. Engine thuần ở src/gami/*.js (đã test). Buổi pure-derive: đẻ dòng khi MỞ.
 import { supabase } from './supabase'
 import { getMyProfile } from './nhansu'
+import { getETByBuoi, getETCaus } from './tailieu'
+import type { CauHoi } from './kho/api'
 import { computeEloUpdate } from '../gami/elo.js'
 import { problemPoints, expForRank, rankSession } from '../gami/exp.js'
 import { RANK_EXP, ATTEND_FLOOR_EXP } from '../gami/config.js'
@@ -18,7 +20,8 @@ export type BuoiHoc = {
 }
 export type BuoiHocHS = { id: string; buoi_hoc_id: string; hoc_sinh_id: string; diem_danh: DiemDanh | null; bu_cho_buoi_id: string | null; hoc_sinh?: { ho_ten: string; ma_hs: string | null; anh_url: string | null } }
 export type Problem = { id: string; buoi_hoc_id: string; phase: Phase; problem_no: number; hidden: boolean; ma_dang: string | null }
-export type Grade = { id: string; problem_id: string; hoc_sinh_id: string; result: string; presentation: string; speed: string; points: number }
+export type Grade = { id: string; problem_id: string; hoc_sinh_id: string; result: string; presentation: string; speed: string; points: number; loi?: string[]; muc?: number | null }
+export type ETResult = 'correct' | 'partial' | 'wrong'
 
 // ── helpers ngày/mã (giờ VN) ──────────────────────────────────────
 function thuOf(ngay: string): number { const d = new Date(ngay + 'T00:00:00').getDay(); return d === 0 ? 8 : d + 1 } // CN=8, T2=2..T7=7
@@ -83,6 +86,22 @@ export async function huyBuoi(buoiId: string, lyDo: string): Promise<void> {
   const { error } = await supabase.from('buoi_hoc').update({ trang_thai: 'huy', ly_do_huy: lyDo, updated_at: new Date().toISOString() }).eq('id', buoiId)
   if (error) throw error
 }
+// Hủy buổi tại danh sách (cả khi CHƯA mở): có dòng → set huy; chưa có → đẻ dòng huy luôn (không seed sĩ số).
+// Hủy trước khi mở = kế hoạch · hủy sau khi mở = sự cố — cùng kết quả: buổi sang "Đã hủy".
+export async function huyBuoiCuaNgay(lopId: string, ngay: string, slot: { gio_bat_dau?: string; gio_ket_thuc?: string; phong?: string | null }, lyDo: string): Promise<void> {
+  const ex = await supabase.from('buoi_hoc').select('id').eq('lop_id', lopId).eq('ngay', ngay).eq('loai', 'thuong').maybeSingle()
+  if (ex.data) { await huyBuoi((ex.data as any).id, lyDo); return }
+  const { data: lop, error: eLop } = await supabase.from('lop').select('ten_lop').eq('id', lopId).single()
+  if (eLop) throw eLop
+  const thu = thuOf(ngay)
+  const { data: { user } } = await supabase.auth.getUser()
+  const { error } = await supabase.from('buoi_hoc').insert({
+    ma_buoi: maBuoi((lop as any).ten_lop, thu, ngay), loai: 'thuong', lop_id: lopId, ngay, thu,
+    gio_bat_dau: slot.gio_bat_dau ?? null, gio_ket_thuc: slot.gio_ket_thuc ?? null, phong: slot.phong ?? null,
+    trang_thai: 'huy', ly_do_huy: lyDo, created_by: user?.id ?? null,
+  })
+  if (error) throw error
+}
 
 // ── Sĩ số + điểm danh (OPS) ───────────────────────────────────────
 export async function getRoster(buoiId: string): Promise<BuoiHocHS[]> {
@@ -93,6 +112,23 @@ export async function getRoster(buoiId: string): Promise<BuoiHocHS[]> {
 export async function diemDanh(buoiHocHsId: string, trangThai: DiemDanh): Promise<void> {
   const { error } = await supabase.from('buoi_hoc_hs').update({ diem_danh: trangThai }).eq('id', buoiHocHsId)
   if (error) throw error
+}
+// Đồng bộ sĩ số buổi ĐANG MỞ: THÊM HS đã ghi danh (dang_hoc, ngay_vao ≤ ngày buổi) còn THIẾU trong roster.
+// Chỉ thêm, KHÔNG xoá (buổi = snapshot; HS rời giữa chừng vẫn giữ). Vá ca: ghi danh SAU khi đã mở buổi.
+export async function dongBoSiSo(buoiId: string): Promise<number> {
+  const { data: b, error } = await supabase.from('buoi_hoc').select('lop_id, ngay, trang_thai').eq('id', buoiId).single()
+  if (error) throw error
+  if ((b as any).trang_thai !== 'mo' || !(b as any).lop_id) return 0
+  const { data: hs } = await supabase.from('hoc_sinh_lop').select('hoc_sinh_id, ngay_vao').eq('lop_id', (b as any).lop_id).eq('trang_thai', 'dang_hoc').limit(LIMIT)
+  const enrolled = (hs ?? []).filter((h: any) => !h.ngay_vao || h.ngay_vao <= (b as any).ngay).map((h: any) => h.hoc_sinh_id)
+  if (!enrolled.length) return 0
+  const { data: cur } = await supabase.from('buoi_hoc_hs').select('hoc_sinh_id').eq('buoi_hoc_id', buoiId).limit(LIMIT)
+  const have = new Set((cur ?? []).map((r: any) => r.hoc_sinh_id))
+  const missing = enrolled.filter((id) => !have.has(id))
+  if (!missing.length) return 0
+  const { error: eIns } = await supabase.from('buoi_hoc_hs').insert(missing.map((hsid) => ({ buoi_hoc_id: buoiId, hoc_sinh_id: hsid })))
+  if (eIns) throw eIns
+  return missing.length
 }
 
 // ── Bài + chấm ────────────────────────────────────────────────────
@@ -119,20 +155,72 @@ export async function ensureProblems(buoiId: string, phase: Phase, n: number): P
   const cur = await listProblems(buoiId, phase)
   if (cur.length) return
   const rows = Array.from({ length: n }, (_, i) => ({ buoi_hoc_id: buoiId, phase, problem_no: i + 1 }))
-  const { error } = await supabase.from('gami_session_problems').insert(rows)
+  // ignoreDuplicates: chống đẻ TRÙNG khi effect chạy 2 lần (StrictMode) — unique (buoi,phase,problem_no).
+  const { error } = await supabase.from('gami_session_problems').upsert(rows, { onConflict: 'buoi_hoc_id,phase,problem_no', ignoreDuplicates: true })
   if (error) throw error
+}
+
+// ── CHẤM ET: nạp câu từ tài liệu ET khớp buổi (lớp + ngày) ─────────
+// ET ↔ buổi qua (lop_id, ngay) — KHÔNG FK (lúc tạo ET buổi còn ẢO). Câu ET → 1 problem/câu, gắn ma_dang của câu.
+// Trả { etId, caus } (caus đúng thứ tự = thứ tự problem_no seed). etId null = chưa có ET cho buổi này.
+export async function loadETForBuoi(buoiId: string): Promise<{ etId: string | null; caus: CauHoi[] }> {
+  const { data: b, error } = await supabase.from('buoi_hoc').select('lop_id, ngay').eq('id', buoiId).single()
+  if (error) throw error
+  const lopId = (b as any).lop_id as string | null
+  if (!lopId) return { etId: null, caus: [] }
+  const et = await getETByBuoi(lopId, (b as any).ngay)
+  if (!et) return { etId: null, caus: [] }
+  return { etId: et.id, caus: await getETCaus(et.id) }
+}
+// Seed problem ET 1-câu-1-bài (idempotent: chỉ seed khi chưa có problem ET nào). ma_dang lấy từ câu.
+export async function ensureETProblems(buoiId: string, caus: CauHoi[]): Promise<void> {
+  const cur = await listProblems(buoiId, 'et')
+  if (cur.length || !caus.length) return
+  const rows = caus.map((c, i) => ({ buoi_hoc_id: buoiId, phase: 'et', problem_no: i + 1, ma_dang: c.dang_chinh ?? null }))
+  const { error } = await supabase.from('gami_session_problems').upsert(rows, { onConflict: 'buoi_hoc_id,phase,problem_no', ignoreDuplicates: true })
+  if (error) throw error
+}
+// Đồng bộ lại khi ET đổi số câu (CHỈ khi chưa chấm): xoá problem ET cũ + seed lại theo câu mới.
+export async function resyncETProblems(buoiId: string, caus: CauHoi[]): Promise<void> {
+  const cur = await listProblems(buoiId, 'et')
+  const ids = cur.map((p) => p.id)
+  if (ids.length) {
+    const { data: g } = await supabase.from('gami_grades').select('id').in('problem_id', ids).limit(1)
+    if (g && g.length) throw new Error('ET đã có bài chấm — không thể đồng bộ lại (xoá điểm trước nếu cần).')
+    const { error } = await supabase.from('gami_session_problems').delete().in('id', ids)
+    if (error) throw error
+  }
+  await ensureETProblems(buoiId, caus)
 }
 export async function listGrades(buoiId: string): Promise<Grade[]> {
   const { data, error } = await supabase.from('gami_grades').select('*').eq('buoi_hoc_id', buoiId).limit(LIMIT)
   if (error) throw error
   return (data ?? []) as Grade[]
 }
-export async function gradeProblem(p: { buoiId: string; problemId: string; hocSinhId: string; result: string; presentation: string; speed: string }): Promise<void> {
-  const points = problemPoints({ result: p.result, presentation: p.presentation, speed: p.speed })
+// Chấm bài trên lớp: 1 mức 1-5 (gộp 3 chiều cũ). points = muc*20 (Elo); result map để code cũ còn hiểu.
+export async function gradeMuc(p: { buoiId: string; problemId: string; hocSinhId: string; muc: number }): Promise<void> {
+  const result = p.muc >= 4 ? 'correct' : p.muc === 3 ? 'partial' : 'wrong'
   const { data: { user } } = await supabase.auth.getUser()
   const { error } = await supabase.from('gami_grades').upsert(
-    { buoi_hoc_id: p.buoiId, problem_id: p.problemId, hoc_sinh_id: p.hocSinhId, result: p.result, presentation: p.presentation, speed: p.speed, points, graded_by: user?.id ?? null },
+    { buoi_hoc_id: p.buoiId, problem_id: p.problemId, hoc_sinh_id: p.hocSinhId, muc: p.muc, points: p.muc * 20, result, presentation: 'clean', speed: 'normal', graded_by: user?.id ?? null },
     { onConflict: 'problem_id,hoc_sinh_id' })
+  if (error) throw error
+}
+
+// Chấm ET (1-click): kết quả 3 mức Đ/C/S (correct/partial/wrong) + mã lỗi (E01..) khi C/S.
+// presentation/speed neutral (ET chỉ đo KẾT QUẢ, không trình bày/tốc độ). points = problemPoints để engine cũ chạy.
+export async function gradeET(p: { buoiId: string; problemId: string; hocSinhId: string; result: ETResult; loi: string[] }): Promise<void> {
+  const points = problemPoints({ result: p.result, presentation: 'clean', speed: 'normal' })
+  const { data: { user } } = await supabase.auth.getUser()
+  const { error } = await supabase.from('gami_grades').upsert(
+    { buoi_hoc_id: p.buoiId, problem_id: p.problemId, hoc_sinh_id: p.hocSinhId, result: p.result, presentation: 'clean', speed: 'normal', points, loi: p.loi, graded_by: user?.id ?? null },
+    { onConflict: 'problem_id,hoc_sinh_id' })
+  if (error) throw error
+}
+
+// Bỏ chấm 1 ô (HS × bài): xoá dòng grade (anti-NULL: chưa đo = không có dòng). Dùng khi click lại mức đang chọn.
+export async function deleteGrade(problemId: string, hocSinhId: string): Promise<void> {
+  const { error } = await supabase.from('gami_grades').delete().match({ problem_id: problemId, hoc_sinh_id: hocSinhId })
   if (error) throw error
 }
 

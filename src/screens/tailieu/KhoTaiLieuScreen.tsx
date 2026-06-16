@@ -5,6 +5,11 @@ import { listAllTaiLieu, deleteTaiLieu, duplicateTaiLieu, type TaiLieu } from '.
 import { listLop, type Lop } from '../../lib/nhansu'
 import PrintView from './PrintView'
 import ETPrintView from './ETPrintView'
+import TaiLieuBuilder from './TaiLieuBuilder'
+import { ETEditor, type ETView } from './ETScreen'
+
+// Loại tài liệu có thể mở builder để sửa từ Kho.
+const EDITABLE = new Set(['et', 'giao_trinh', 'giao_trinh_buoi', 'btvn'])
 
 type Row = TaiLieu & { lop_id?: string | null; ngay?: string | null }
 const LOAI_TEN: Record<string, string> = { giao_trinh: 'Giáo trình', giao_trinh_buoi: 'Giáo trình buổi', btvn: 'BTVN', et: 'ET', de_thi: 'Đề thi', bo_tro: 'Tài liệu bổ trợ', mt: 'MT', chuyen_de: 'Chuyên đề' }
@@ -18,6 +23,8 @@ export default function KhoTaiLieuScreen() {
   const [q, setQ] = useState('')
   const [loai, setLoai] = useState<string>('__all__')
   const [print, setPrint] = useState<{ id: string; loai: string } | null>(null)
+  const [editEt, setEditEt] = useState<ETView | null>(null) // sửa ET tại chỗ (mở ETEditor)
+  const [editGt, setEditGt] = useState<string | null>(null) // sửa giáo trình/BTVN (mở TaiLieuBuilder)
   const lopTen = (id?: string | null) => lops.find((l) => l.id === id)?.ten_lop ?? '?'
 
   async function reload() {
@@ -37,6 +44,14 @@ export default function KhoTaiLieuScreen() {
     await duplicateTaiLieu(r.id, { ten, lop_id: null, ngay: null }) // bản sao KHÔNG gắn buổi → mẫu tái dùng
     reload()
   }
+  function sua(r: Row) {
+    if (r.loai === 'et') setEditEt({ ...(r as any), ten_lop: lopTen(r.lop_id) })
+    else setEditGt(r.id)
+  }
+
+  // Sửa tại chỗ: mở builder full-screen, đóng → tải lại bảng.
+  if (editEt) return <ETEditor et={editEt} onClose={() => { setEditEt(null); reload() }} />
+  if (editGt) return <TaiLieuBuilder id={editGt} onClose={() => { setEditGt(null); reload() }} />
 
   const tab = (on: boolean) => `h-7 rounded-md px-2.5 text-xs font-semibold transition ${on ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`
   return (
@@ -74,6 +89,7 @@ export default function KhoTaiLieuScreen() {
                       <td className="px-3 text-slate-500">{fmt(r.created_at)}</td>
                       <td className="px-3 py-2">
                         <div className="flex justify-end gap-1.5">
+                          {EDITABLE.has(r.loai) && <button onClick={() => sua(r)} className="rounded-md border border-slate-200 px-2.5 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-300">✎ Sửa</button>}
                           <button onClick={() => setPrint({ id: r.id, loai: r.loai })} className="rounded-md bg-indigo-600 px-2.5 py-1 text-[12px] font-medium text-white hover:bg-indigo-500">🖨 In</button>
                           <button onClick={() => nhanBan(r)} className="rounded-md border border-slate-200 px-2.5 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-300">Nhân bản</button>
                           <button onClick={async () => { if (confirm(`Xoá “${r.ten}”?`)) { await deleteTaiLieu(r.id); reload() } }} className="rounded-md border border-slate-200 px-2.5 py-1 text-[12px] text-slate-400 hover:border-rose-300 hover:text-rose-600">Xoá</button>

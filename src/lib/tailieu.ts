@@ -285,6 +285,11 @@ export async function createET(input: { lopId: string; ngay: string; ten: string
   if (error) throw error
   return data as ETDoc
 }
+// Cập nhật ET (tên / gán lại lớp+ngày / cấu hình). lop_id+ngay = đường nối buổi.
+export async function updateET(id: string, patch: { ten?: string; lop_id?: string | null; ngay?: string | null; cau_hinh?: CauHinh }): Promise<void> {
+  const { error } = await supabase.from('tai_lieu').update({ ...patch, updated_at: new Date().toISOString() }).eq('id', id)
+  if (error) throw error
+}
 // ET tìm theo buổi (lớp+ngày) — dùng khi tab Chấm ET load (buổi materialize).
 export async function getETByBuoi(lopId: string, ngay: string): Promise<ETDoc | null> {
   const { data, error } = await supabase.from('tai_lieu').select('*').eq('loai', 'et').eq('lop_id', lopId).eq('ngay', ngay).maybeSingle()

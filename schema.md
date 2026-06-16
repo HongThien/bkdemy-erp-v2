@@ -193,6 +193,8 @@
 | points | numeric |  |  |  |
 | graded_by | uuid | Y |  |  |
 | graded_at | timestamp with time zone |  | now() |  |
+| loi | jsonb |  | '[]'::jsonb |  |
+| muc | smallint | Y |  |  |
 
 ## gami_session_problems
 
