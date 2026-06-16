@@ -13,7 +13,10 @@ export type BranchConfig = {
   create: (row: MapRow) => Promise<void>
   updateLeaf: (leafMa: string, patch: { leafTen: string; bac: string; mucDo: number | null }) => Promise<void>
   deleteLeaf: (leafMa: string) => Promise<void>
-  deleteLeaves: (leafMas: string[]) => Promise<void>   // xoá cả cụm (chủ đề/chuyên đề)
+  deleteLeaves: (leafMas: string[]) => Promise<void>   // xoá cả cụm (chủ đề/chuyên đề) — KHÔNG kèm câu (FK chặn nếu còn câu)
+  deleteCum?: (leafMas: string[]) => Promise<void>     // xoá cả cụm KÈM câu (cascade) — dùng cho nút xoá chủ đề/chuyên đề
+  renameT1?: (khoi: string, ma: string, ten: string) => Promise<void> // đổi tên chủ đề / mảng
+  renameT2?: (ma: string, ten: string) => Promise<void>               // đổi tên chuyên đề / loại
   lyThuyet?: LyThuyetApi      // 1 lý thuyết/DẠNG (Đại); undefined = nhánh chưa có
   lyThuyetT2?: LyThuyetApi    // lý thuyết CHUNG/CHUYÊN ĐỀ (tuỳ chọn), khoá theo ma_chuyen_de
 }
@@ -36,6 +39,9 @@ export const daiBranch: BranchConfig = {
   updateLeaf: api.updateDaiLeaf,
   deleteLeaf: api.deleteDaiLeaf,
   deleteLeaves: api.deleteDaiLeaves,
+  deleteCum: api.deleteDaiCum,
+  renameT1: api.renameDaiChuDe,
+  renameT2: api.renameDaiChuyenDe,
   lyThuyet: {
     list: api.listDaiLyThuyet,
     upsert: api.upsertDaiLyThuyet,

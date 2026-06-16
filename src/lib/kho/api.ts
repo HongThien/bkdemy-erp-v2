@@ -152,6 +152,7 @@ const FMT_RULES = [
   '- ⚠ MỖI công thức/phân số/biểu thức phải bọc RIÊNG trong $...$ — KỂ CẢ khi liệt kê nhiều: viết "$\\\\dfrac{6}{5}$; $\\\\dfrac{4}{3}$" (TUYỆT ĐỐI KHÔNG để "\\\\dfrac{6}{5}" trần ngoài $).',
   '- ⚠ Xuống dòng DÙNG ký tự xuống dòng thật trong chuỗi — TUYỆT ĐỐI KHÔNG dùng thẻ "<br>".',
   '- Phân số DÙNG \\\\dfrac{a}{b} (KHÔNG dùng \\\\frac vì hiển thị bé). KHÔNG viết dạng a/b.',
+  '- ⚠ KÝ HIỆU CHIA HẾT (Gemini RẤT HAY ĐỌC SAI — đọc kỹ ngữ cảnh): "a chia hết cho b" = ba dấu chấm DỌC ⋮ → viết "$a \\\\vdots b$". "a KHÔNG chia hết cho b" = ⋮ có GẠCH CHÉO → viết "$a \\\\not\\\\vdots b$". TUYỆT ĐỐI KHÔNG nhầm ⋮ thành dấu hai chấm ":", ba chấm ngang "...", \\\\div, hay "%". Gặp chữ "chia hết / không chia hết" trong đề/lời giải PHẢI dùng \\\\vdots / \\\\not\\\\vdots.',
   '- Số đơn lẻ KHÔNG cần $: viết "30 quả" không phải "$30$ quả". KHÔNG để tiếng Việt có dấu bên trong $...$.',
   '- Số thập phân dùng dấu chấm: "0.6" (không "0,6").',
   '- Nếu đề có BẢNG BIẾN THIÊN / ĐỒ THỊ / HÌNH VẼ: ghi "[hình]" đúng vị trí trong de_bai + mô tả 1 câu ngắn; KHÔNG cố vẽ lại bằng LaTeX (nhân sự sẽ cắt ảnh đính sau).',
@@ -174,9 +175,15 @@ export function buildClonePrompt(a: { soBienThe: number; ghiChu: string; tenDang
     `Dạng bài: "${a.tenDang}". Loại câu: ${loaiVi(a.loaiCau)}.`,
     '',
     'Làm 2 việc:',
-    `1) Trích bài mẫu thành các trường: ${f.spec}.`,
-    `2) Sinh ĐÚNG ${a.soBienThe} biến thể (KHÔNG nhiều hơn, KHÔNG ít hơn — mảng "variants" có ĐÚNG ${a.soBienThe} phần tử) GIỮ NGUYÊN cấu trúc & phương pháp; đổi số liệu (kết quả hợp lý, "đẹp") / tên người / hoàn cảnh. Lời giải copy đúng format bài mẫu, thay số tương ứng. Mỗi biến thể ĐỦ trường như bài gốc.`,
-    a.ghiChu ? `Ghi chú thêm: ${a.ghiChu}` : '',
+    `1) Trích bài mẫu thành các trường: ${f.spec}. GIỮ NGUYÊN văn đề mẫu, không sửa chữ.`,
+    `2) Sinh ĐÚNG ${a.soBienThe} biến thể (KHÔNG nhiều hơn, KHÔNG ít hơn — mảng "variants" có ĐÚNG ${a.soBienThe} phần tử).`,
+    '',
+    '⚠ RÀNG BUỘC BÁM BÀI GỐC (tuân thủ TUYỆT ĐỐI — đây là yêu cầu quan trọng nhất):',
+    '- BÁM SÁT bài mẫu: GIỮ NGUYÊN cấu trúc câu, phương pháp giải, SỐ BƯỚC và THỨ TỰ bước của lời giải. CHỈ thay con số / tên người / bối cảnh.',
+    '- CẤM: thêm bước, bớt bước, đổi cách giải, thêm dữ kiện/điều kiện/giả thiết KHÔNG có trong bài gốc, hay "diễn giải" dài hơn gốc. Lời giải biến thể phải SONG ÁNH từng bước với gốc, chỉ khác con số.',
+    '- SỐ LIỆU thay phải cho KẾT QUẢ ĐẸP (số nguyên hoặc phân số tối giản đơn giản giống bài gốc), CÙNG độ khó & CÙNG độ lớn. TUYỆT ĐỐI KHÔNG để ra số lẻ/xấu (vd 7.3333, 0.17): nếu một bộ số ra kết quả xấu thì THỬ BỘ SỐ KHÁC cho tới khi đẹp, đừng giữ.',
+    '- Nếu bài gốc không nói rõ một bước, biến thể CŨNG không tự bịa bước đó.',
+    a.ghiChu ? `- ⚠ GHI CHÚ CỦA NGƯỜI RA ĐỀ = RÀNG BUỘC CỨNG, ưu tiên CAO NHẤT, áp cho MỌI biến thể (bám rất sát, không được phớt lờ): ${a.ghiChu}` : '',
     '',
     f.ruleDapAn,
     FMT_RULES,
@@ -463,6 +470,23 @@ export async function deleteDaiLeaves(leafMas: string[]): Promise<void> {
   if (!leafMas.length) return
   const { error } = await supabase.from('dai_ban_do').delete().in('ma_dang', leafMas)
   if (error) throw error
+}
+// Đổi TÊN chủ đề / chuyên đề (denormalize trong dai_ban_do — update mọi dòng cùng mã). KHÔNG đổi MÃ (mã là FK-target).
+export async function renameDaiChuDe(khoi: string, maChuDe: string, ten: string): Promise<void> {
+  const { error } = await supabase.from('dai_ban_do').update({ ten_chu_de: ten }).eq('khoi', khoi).eq('ma_chu_de', maChuDe)
+  if (error) throw error
+}
+export async function renameDaiChuyenDe(maChuyenDe: string, ten: string): Promise<void> {
+  const { error } = await supabase.from('dai_ban_do').update({ ten_chuyen_de: ten }).eq('ma_chuyen_de', maChuyenDe)
+  if (error) throw error
+}
+// Xoá CẢ CỤM (chủ đề/chuyên đề) KÈM câu: xoá dai_cau_hoi trước (cascade tai_lieu_cau/bo_đề/parent), rồi dai_ban_do (cascade lý thuyết).
+export async function deleteDaiCum(leafMas: string[]): Promise<void> {
+  if (!leafMas.length) return
+  const { error: e1 } = await supabase.from('dai_cau_hoi').delete().in('dang_chinh', leafMas)
+  if (e1) throw e1
+  const { error: e2 } = await supabase.from('dai_ban_do').delete().in('ma_dang', leafMas)
+  if (e2) throw e2
 }
 
 // ── LÝ THUYẾT: prompt bóc tài liệu (ảnh/PDF) → 1 khối text LaTeX (KHÔNG clone) ──

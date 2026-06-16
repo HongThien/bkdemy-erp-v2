@@ -3,16 +3,17 @@ import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../lib/kho/api'
 import {
   listHocSinh, createHocSinh, updateHocSinh, deleteHocSinh,
   listLopCuaHS, ghiDanh, roiLop, setBandGhiDanh, setNgayVao, chuyenLop,
-  listLop, listMucNangLuc,
-  listPhuHuynh, createPhuHuynh, listConByPH, suggestMaHS, uploadAvatar,
+  listLop, listMucNangLuc, countLopActiveByHS,
+  listPhuHuynh, createPhuHuynh, updatePhuHuynh, listConByPH, suggestMaHS, suggestMaPH, uploadAvatar,
   type HocSinh, type GhiDanh, type Lop, type MucNangLuc, type PhuHuynh,
 } from '../../lib/nhansu'
 import { Field, inp, Seg } from '../kho/ui'
 
 const TT_LABEL: Record<string, string> = { dang_hoc: 'Đang học', bao_luu: 'Bảo lưu', nghi: 'Nghỉ' }
+const ALL = '__all__' // tab "Tất cả khối"
 
 export default function HocSinhScreen() {
-  const [khoi, setKhoi] = useState(DEFAULT_KHOI)
+  const [khoi, setKhoi] = useState<string>(DEFAULT_KHOI)
   const [list, setList] = useState<HocSinh[]>([])
   const [countLop, setCountLop] = useState<Record<string, number>>({})
   const [loading, setLoading] = useState(true)
@@ -23,26 +24,31 @@ export default function HocSinhScreen() {
   async function reload() {
     setLoading(true); setErr(null)
     try {
-      const hs = await listHocSinh(khoi)
+      const hs = await listHocSinh(khoi === ALL ? undefined : khoi)
       setList(hs)
-      const all = await Promise.all(hs.map((h) => listLopCuaHS(h.id)))
-      const c: Record<string, number> = {}
-      hs.forEach((h, i) => { c[h.id] = all[i].filter((g) => g.trang_thai === 'dang_hoc').length })
-      setCountLop(c)
+      setCountLop(await countLopActiveByHS(hs.map((h) => h.id))) // 1 query thay vì N
     } catch (e: any) { setErr(e.message ?? String(e)) } finally { setLoading(false) }
   }
   useEffect(() => { reload() }, [khoi]) // eslint-disable-line
 
   const shown = list.filter((h) => !q.trim() || h.ho_ten.toLowerCase().includes(q.trim().toLowerCase()) || (h.ma_hs ?? '').toLowerCase().includes(q.trim().toLowerCase()))
+  const cnt = { dang_hoc: 0, bao_luu: 0, nghi: 0 } as Record<string, number>
+  for (const h of shown) cnt[h.trang_thai] = (cnt[h.trang_thai] ?? 0) + 1
 
   return (
     <div className="flex h-full flex-col bg-[#fafafb]">
       <div className="flex items-center gap-4 border-b border-slate-200 bg-white px-6 py-2.5">
         <span className="text-sm font-semibold text-slate-900">Học sinh</span>
-        <span className="rounded bg-indigo-50 px-2 py-0.5 text-[12px] font-medium text-indigo-600">{shown.length}</span>
+        <div className="flex items-center gap-1.5 text-[12px]">
+          <span className="font-semibold text-slate-500">{khoi === ALL ? 'Tổng' : `Khối ${khoi}`}</span>
+          <span className="rounded bg-emerald-50 px-2 py-0.5 font-medium text-emerald-700">Đang học {cnt.dang_hoc}</span>
+          {cnt.bao_luu > 0 && <span className="rounded bg-amber-50 px-2 py-0.5 font-medium text-amber-700">Bảo lưu {cnt.bao_luu}</span>}
+          <span className="rounded bg-slate-100 px-2 py-0.5 font-medium text-slate-500">Nghỉ {cnt.nghi}</span>
+        </div>
         <div className="ml-auto flex items-center gap-1">
           <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm tên/mã…" className="mr-2 h-7 w-40 rounded-md border border-slate-200 px-2.5 text-[13px] outline-none focus:border-indigo-400" />
-          <span className="mr-1 text-[12px] font-semibold uppercase tracking-wider text-slate-600">Khối</span>
+          <button onClick={() => setKhoi(ALL)} className={`h-7 rounded-md px-2.5 text-xs font-semibold transition ${khoi === ALL ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`}>Tất cả</button>
+          <span className="mx-1 text-[12px] font-semibold uppercase tracking-wider text-slate-600">Khối</span>
           {KHOI_OPTIONS.map((k) => (
             <button key={k} onClick={() => setKhoi(k)} className={`h-7 min-w-7 rounded-md px-1.5 text-xs font-semibold transition ${khoi === k ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`}>{k}</button>
           ))}
@@ -53,7 +59,7 @@ export default function HocSinhScreen() {
       <div className="min-h-0 flex-1 overflow-auto p-6">
         {loading ? <p className="text-sm text-slate-400">Đang tải…</p>
           : err ? <p className="text-sm text-rose-600">Lỗi: {err}</p>
-          : shown.length === 0 ? <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">{q ? 'Không khớp.' : <>Chưa có học sinh khối {khoi}. Bấm <b className="text-slate-600">+ Thêm học sinh</b>.</>}</div>
+          : shown.length === 0 ? <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">{q ? 'Không khớp.' : <>Chưa có học sinh{khoi === ALL ? ' nào' : ` khối ${khoi}`}. Bấm <b className="text-slate-600">+ Thêm học sinh</b>.</>}</div>
           : (
             <table className="w-full border-separate border-spacing-y-1.5 text-sm">
               <thead><tr className="text-left text-[12px] uppercase tracking-wider text-slate-400">
@@ -195,7 +201,45 @@ function EditModal({ hocSinh, defaultKhoi, onClose, onSaved }: { hocSinh: HocSin
   )
 }
 
-// Bắt cặp Phụ huynh: chọn PH có sẵn (1 PH nhiều con) hoặc tạo mới. Lưu phu_huynh_id.
+// Form thông tin PH (dùng cho TẠO mới + SỬA). Mã PH: tạo mới → đề xuất sẵn (sửa được); sửa → giữ mã hiện có.
+type PhPatch = { ho_ten: string; ma_ph?: string; so_dien_thoai: string | null; email: string | null; dia_chi: string | null }
+function PhForm({ initial, suggestCode, submitLabel, onCancel, onDone }: { initial?: PhuHuynh; suggestCode?: boolean; submitLabel: string; onCancel: () => void; onDone: (p: PhPatch) => Promise<void> }) {
+  const [maPh, setMaPh] = useState(initial?.ma_ph ?? '')
+  const [ten, setTen] = useState(initial?.ho_ten ?? '')
+  const [sdt, setSdt] = useState(initial?.so_dien_thoai ?? '')
+  const [email, setEmail] = useState(initial?.email ?? '')
+  const [diaChi, setDiaChi] = useState(initial?.dia_chi ?? '')
+  const [busy, setBusy] = useState(false)
+  const [err, setErr] = useState<string | null>(null)
+  useEffect(() => { if (suggestCode && !initial) suggestMaPH().then(setMaPh).catch(() => {}) }, []) // eslint-disable-line
+  async function submit() {
+    if (!ten.trim()) return
+    setBusy(true); setErr(null)
+    const patch: PhPatch = { ho_ten: ten.trim(), so_dien_thoai: sdt.trim() || null, email: email.trim() || null, dia_chi: diaChi.trim() || null }
+    if (maPh.trim()) patch.ma_ph = maPh.trim()
+    try { await onDone(patch) } catch (e: any) { setErr(e.message ?? String(e)); setBusy(false) }
+  }
+  return (
+    <div className="space-y-1.5 rounded-md border border-slate-200 bg-white p-2">
+      <div className="flex gap-1.5">
+        <input value={maPh} onChange={(e) => setMaPh(e.target.value)} placeholder="Mã PH" className="w-24 rounded border border-slate-300 px-2 py-1.5 font-mono text-[12px]" title="Mã đề xuất — sửa được" />
+        <input value={ten} onChange={(e) => setTen(e.target.value)} placeholder="Họ tên PH" className="flex-1 rounded border border-slate-300 px-2 py-1.5 text-[13px]" autoFocus />
+      </div>
+      <div className="flex gap-1.5">
+        <input value={sdt} onChange={(e) => setSdt(e.target.value)} placeholder="SĐT" className="flex-1 rounded border border-slate-300 px-2 py-1.5 text-[13px]" />
+        <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" className="flex-1 rounded border border-slate-300 px-2 py-1.5 text-[13px]" />
+      </div>
+      <input value={diaChi} onChange={(e) => setDiaChi(e.target.value)} placeholder="Địa chỉ" className="w-full rounded border border-slate-300 px-2 py-1.5 text-[13px]" />
+      {err && <p className="text-[11px] text-rose-600">{err}</p>}
+      <div className="flex justify-end gap-1.5">
+        <button onClick={onCancel} className="rounded px-2 py-1 text-[12px] text-slate-500 hover:bg-slate-100">← Quay lại</button>
+        <button onClick={submit} disabled={!ten.trim() || busy} className="rounded bg-indigo-600 px-2.5 py-1 text-[12px] font-medium text-white hover:bg-indigo-500 disabled:opacity-40">{busy ? '…' : submitLabel}</button>
+      </div>
+    </div>
+  )
+}
+
+// Bắt cặp Phụ huynh: chọn PH có sẵn (1 PH nhiều con) / tạo mới (mã đề xuất, sửa được) / SỬA thông tin PH đã chọn.
 function PhuHuynhPicker({ value, onChange }: { value: string | null; onChange: (id: string | null) => void }) {
   const [cur, setCur] = useState<PhuHuynh | null>(null)
   const [conCount, setConCount] = useState(0)
@@ -203,7 +247,7 @@ function PhuHuynhPicker({ value, onChange }: { value: string | null; onChange: (
   const [q, setQ] = useState('')
   const [results, setResults] = useState<PhuHuynh[]>([])
   const [creating, setCreating] = useState(false)
-  const [nTen, setNTen] = useState(''); const [nSdt, setNSdt] = useState(''); const [nEmail, setNEmail] = useState('')
+  const [editing, setEditing] = useState(false)
 
   useEffect(() => {
     if (!value) { setCur(null); setConCount(0); return }
@@ -212,22 +256,22 @@ function PhuHuynhPicker({ value, onChange }: { value: string | null; onChange: (
   }, [value])
   useEffect(() => { if (open) listPhuHuynh(q).then(setResults).catch(() => {}) }, [open, q])
 
-  async function taoMoi() {
-    if (!nTen.trim()) return
-    const ph = await createPhuHuynh({ ho_ten: nTen.trim(), so_dien_thoai: nSdt.trim() || null, email: nEmail.trim() || null })
-    onChange(ph.id); setCreating(false); setOpen(false); setNTen(''); setNSdt(''); setNEmail('')
-  }
-
   return (
     <div className="mb-3">
       <span className="mb-1.5 block text-[12px] font-semibold uppercase tracking-wider text-slate-600">Phụ huynh</span>
-      {cur ? (
+      {editing && cur ? (
+        <PhForm initial={cur} submitLabel="Lưu" onCancel={() => setEditing(false)}
+          onDone={async (p) => { await updatePhuHuynh(cur.id, p); setCur({ ...cur, ...p, ma_ph: p.ma_ph ?? cur.ma_ph }); setEditing(false) }} />
+      ) : cur ? (
         <div className="flex items-center gap-2 rounded-md border border-slate-200 bg-white px-2.5 py-1.5 text-[13px]">
           <span className="rounded bg-indigo-50 px-1.5 py-0.5 font-mono text-[11px] text-indigo-700">{cur.ma_ph}</span>
           <span className="font-medium text-slate-800">{cur.ho_ten}</span>
           {cur.so_dien_thoai && <span className="text-[12px] text-slate-400">{cur.so_dien_thoai}</span>}
           {conCount > 1 && <span className="rounded bg-amber-50 px-1.5 py-0.5 text-[11px] text-amber-700">{conCount} con</span>}
-          <button onClick={() => { onChange(null); setOpen(true) }} className="ml-auto text-[12px] text-slate-400 hover:text-rose-600">đổi</button>
+          <div className="ml-auto flex items-center gap-2">
+            <button onClick={() => setEditing(true)} className="text-[12px] text-indigo-500 hover:text-indigo-700">✎ sửa</button>
+            <button onClick={() => { onChange(null); setOpen(true) }} className="text-[12px] text-slate-400 hover:text-rose-600">đổi</button>
+          </div>
         </div>
       ) : !open ? (
         <button onClick={() => setOpen(true)} className={`${inp} text-left text-slate-400`}>— chọn / tạo phụ huynh —</button>
@@ -249,17 +293,8 @@ function PhuHuynhPicker({ value, onChange }: { value: string | null; onChange: (
               <button onClick={() => setCreating(true)} className="mt-1.5 w-full rounded bg-slate-100 py-1.5 text-[12px] font-medium text-slate-600 hover:bg-slate-200">+ Tạo phụ huynh mới</button>
             </>
           ) : (
-            <div className="space-y-1.5">
-              <input value={nTen} onChange={(e) => setNTen(e.target.value)} placeholder="Họ tên PH" className="w-full rounded border border-slate-300 px-2 py-1.5 text-[13px]" autoFocus />
-              <div className="flex gap-1.5">
-                <input value={nSdt} onChange={(e) => setNSdt(e.target.value)} placeholder="SĐT" className="flex-1 rounded border border-slate-300 px-2 py-1.5 text-[13px]" />
-                <input value={nEmail} onChange={(e) => setNEmail(e.target.value)} placeholder="Email" className="flex-1 rounded border border-slate-300 px-2 py-1.5 text-[13px]" />
-              </div>
-              <div className="flex justify-end gap-1.5">
-                <button onClick={() => setCreating(false)} className="rounded px-2 py-1 text-[12px] text-slate-500 hover:bg-slate-100">← Quay lại</button>
-                <button onClick={taoMoi} disabled={!nTen.trim()} className="rounded bg-indigo-600 px-2.5 py-1 text-[12px] font-medium text-white hover:bg-indigo-500 disabled:opacity-40">Tạo & chọn</button>
-              </div>
-            </div>
+            <PhForm suggestCode submitLabel="Tạo & chọn" onCancel={() => setCreating(false)}
+              onDone={async (p) => { const ph = await createPhuHuynh(p); onChange(ph.id); setCur(ph); setCreating(false); setOpen(false) }} />
           )}
         </div>
       )}

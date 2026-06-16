@@ -83,22 +83,38 @@ export default function BanDo({ config, khoi }: { config: BranchConfig; khoi: st
     try { await config.deleteLeaf(d.leafMa); await reload() }
     catch (e: any) { alert(`Không xoá được: ${e.message ?? e}\n(Có thể còn ${config.countLabel} treo vào ${leafLow}.)`) }
   }
+  const soCauCum = (lvs: { leafMa: string }[]) => lvs.reduce((s, l) => s + cauOf(l.leafMa), 0)
+  const delCum = config.deleteCum ?? config.deleteLeaves // ưu tiên xoá KÈM câu (cascade); nhánh chưa có thì dùng bản thường
   async function onDeleteT2(node: Tier2Node) {
-    if (!confirm(`Xoá ${t2Low} "${node.t2Ten}" và TOÀN BỘ ${node.leaves.length} ${leafLow} bên trong?`)) return
+    const sc = soCauCum(node.leaves)
+    if (!confirm(`Xoá ${t2Low} "${node.t2Ten}" + ${node.leaves.length} ${leafLow}${sc ? ` + ${sc} ${config.countLabel}` : ''}?\nKhông hoàn tác.`)) return
     try {
-      await config.deleteLeaves(node.leaves.map((l) => l.leafMa))
+      await delCum(node.leaves.map((l) => l.leafMa))
       if (selT2 === node.t2Ma) setSelT2(null)
       await reload()
-    } catch (e: any) { alert(`Không xoá được: ${e.message ?? e}\n(Có thể còn ${config.countLabel} treo vào dạng bên trong.)`) }
+    } catch (e: any) { alert(`Không xoá được: ${e.message ?? e}`) }
   }
   async function onDeleteT1(node: Tier1Node) {
     const all = node.tier2s.flatMap((x) => x.leaves)
-    if (!confirm(`Xoá ${L1.toLowerCase()} "${node.t1Ten}" và TOÀN BỘ ${all.length} ${leafLow}?`)) return
+    const sc = soCauCum(all)
+    if (!confirm(`Xoá ${L1.toLowerCase()} "${node.t1Ten}" + ${all.length} ${leafLow}${sc ? ` + ${sc} ${config.countLabel}` : ''}?\nKhông hoàn tác.`)) return
     try {
-      await config.deleteLeaves(all.map((l) => l.leafMa))
+      await delCum(all.map((l) => l.leafMa))
       if (selT1 === node.t1Ma) { setSelT1(null); setSelT2(null) }
       await reload()
-    } catch (e: any) { alert(`Không xoá được: ${e.message ?? e}\n(Có thể còn ${config.countLabel} treo vào dạng bên trong.)`) }
+    } catch (e: any) { alert(`Không xoá được: ${e.message ?? e}`) }
+  }
+  async function onRenameT1(node: Tier1Node) {
+    if (!config.renameT1) return
+    const ten = prompt(`Đổi tên ${L1.toLowerCase()}:`, node.t1Ten)?.trim()
+    if (!ten || ten === node.t1Ten) return
+    try { await config.renameT1(khoi, node.t1Ma, ten); await reload() } catch (e: any) { alert(`Không sửa được: ${e.message ?? e}`) }
+  }
+  async function onRenameT2(node: Tier2Node) {
+    if (!config.renameT2) return
+    const ten = prompt(`Đổi tên ${t2Low}:`, node.t2Ten)?.trim()
+    if (!ten || ten === node.t2Ten) return
+    try { await config.renameT2(node.t2Ma, ten); await reload() } catch (e: any) { alert(`Không sửa được: ${e.message ?? e}`) }
   }
 
   if (loading && !rows.length) return <div className="p-8 text-sm text-slate-400">Đang tải bản đồ khối {khoi}…</div>
@@ -127,7 +143,7 @@ export default function BanDo({ config, khoi }: { config: BranchConfig; khoi: st
                 <li key={node.t1Ma} className="group relative">
                   <button
                     onClick={() => { setSelT1(node.t1Ma); setSelT2(null) }}
-                    className={`flex w-full items-start gap-2.5 rounded-md py-2 pl-2.5 pr-8 text-left transition ${
+                    className={`flex w-full items-start gap-2.5 rounded-md py-2 pl-2.5 pr-14 text-left transition ${
                       active ? 'bg-indigo-50 text-indigo-900' : 'hover:bg-slate-50'
                     }`}>
                     <span className={`mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full ${active ? 'bg-indigo-500' : 'bg-slate-300 group-hover:bg-slate-400'}`} />
@@ -139,6 +155,8 @@ export default function BanDo({ config, khoi }: { config: BranchConfig; khoi: st
                       </span>
                     </span>
                   </button>
+                  {config.renameT1 && <button onClick={() => onRenameT1(node)} title={`Sửa tên ${L1.toLowerCase()}`}
+                    className="absolute right-8 top-1.5 flex h-6 w-6 items-center justify-center rounded-md text-[12px] text-slate-300 opacity-0 transition hover:bg-indigo-50 hover:text-indigo-600 group-hover:opacity-100">✎</button>}
                   <button onClick={() => onDeleteT1(node)} title={`Xoá ${L1.toLowerCase()}`}
                     className="absolute right-1.5 top-1.5 flex h-6 w-6 items-center justify-center rounded-md text-[12px] text-slate-300 opacity-0 transition hover:bg-rose-50 hover:text-rose-600 group-hover:opacity-100">✕</button>
                 </li>
@@ -178,7 +196,9 @@ export default function BanDo({ config, khoi }: { config: BranchConfig; khoi: st
                     className="group relative flex min-h-[210px] cursor-pointer flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 text-left transition hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-[0_14px_36px_-10px_rgba(79,70,229,0.28)]">
                     <span className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-0 transition group-hover:opacity-100" />
                     {config.chuan && <PctRing pct={pctChuyenDe(node)} className="absolute right-3 top-3" />}
-                    <button onClick={(e) => { e.stopPropagation(); onDeleteT2(node) }} title="Xoá chuyên đề"
+                    {config.renameT2 && <button onClick={(e) => { e.stopPropagation(); onRenameT2(node) }} title={`Sửa tên ${t2Low}`}
+                      className="absolute right-[100px] top-[14px] z-10 flex h-7 w-7 items-center justify-center rounded-md text-slate-300 opacity-0 transition hover:bg-indigo-50 hover:text-indigo-600 group-hover:opacity-100">✎</button>}
+                    <button onClick={(e) => { e.stopPropagation(); onDeleteT2(node) }} title={`Xoá ${t2Low}`}
                       className="absolute right-[68px] top-[14px] z-10 flex h-7 w-7 items-center justify-center rounded-md text-slate-300 opacity-0 transition hover:bg-rose-50 hover:text-rose-600 group-hover:opacity-100">✕</button>
                     <div className="flex items-start gap-4">
                       <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-violet-500 text-lg font-bold text-white shadow-sm shadow-indigo-500/30">

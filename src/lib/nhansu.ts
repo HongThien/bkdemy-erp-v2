@@ -51,6 +51,7 @@ async function suggestNextMa(table: string, col: string, prefix: string, pad: nu
 }
 export const suggestMaNS = () => suggestNextMa('nhan_su', 'ma_ns', 'NS', 3)
 export const suggestMaHS = () => suggestNextMa('hoc_sinh', 'ma_hs', 'HS', 4)
+export const suggestMaPH = () => suggestNextMa('phu_huynh', 'ma_ph', 'PH', 4)
 
 // ── Nhân sự ───────────────────────────────────────────────────────
 export async function listNhanSu(): Promise<NhanSu[]> {
@@ -364,6 +365,15 @@ export async function listHocSinh(khoi?: string): Promise<HocSinh[]> {
   const { data, error } = await q
   if (error) throw error
   return (data ?? []) as HocSinh[]
+}
+// Đếm số lớp ĐANG HỌC của nhiều HS bằng 1 query (cho list — tránh N query khi xem "Tất cả khối").
+export async function countLopActiveByHS(hocSinhIds: string[]): Promise<Record<string, number>> {
+  if (!hocSinhIds.length) return {}
+  const { data, error } = await supabase.from('hoc_sinh_lop').select('hoc_sinh_id').eq('trang_thai', 'dang_hoc').in('hoc_sinh_id', hocSinhIds).limit(LIMIT)
+  if (error) throw error
+  const c: Record<string, number> = {}
+  for (const r of (data ?? []) as { hoc_sinh_id: string }[]) c[r.hoc_sinh_id] = (c[r.hoc_sinh_id] ?? 0) + 1
+  return c
 }
 export async function createHocSinh(p: Partial<HocSinh> & { ho_ten: string }): Promise<HocSinh> {
   const { data, error } = await supabase.from('hoc_sinh').insert(p).select().single()

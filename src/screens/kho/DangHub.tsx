@@ -224,6 +224,7 @@ function AiImportModal({ mode, dangChinh, tenDang, onClose, onSaved }: {
   const [model, setModel] = useState('gemini-2.5-flash')
   const [json, setJson] = useState('')
   const [files, setFiles] = useState<UpFile[]>([])
+  const [shareImgDe, setShareImgDe] = useState<string | null>(null) // ảnh đề dùng chung: gắn cho gốc + MỌI biến thể (dán 1 lần)
   const [goc, setGoc] = useState<ReviewItem | null>(null)
   const [items, setItems] = useState<ReviewItem[]>([])
   const [showVariants, setShowVariants] = useState(false)
@@ -251,7 +252,8 @@ function AiImportModal({ mode, dangChinh, tenDang, onClose, onSaved }: {
       if (isClone) {
         const { goc, variants } = parseCloneJson(text)
         const capped = variants.slice(0, soBienThe) // AI hay sinh DƯ → cap cứng theo số đã chọn
-        setGoc(toRI(goc, true)); setItems(capped.map((v) => toRI(v))); setShowVariants(false); setVi(0)
+        const withImg = (ri: ReviewItem) => (shareImgDe && !ri.anhDe ? { ...ri, anhDe: shareImgDe } : ri) // gắn ảnh đề chung
+        setGoc(withImg(toRI(goc, true))); setItems(capped.map((v) => withImg(toRI(v)))); setShowVariants(false); setVi(0)
         if (variants.length > soBienThe) note = `AI sinh ${variants.length} biến thể → đã lấy ${soBienThe} đầu (đúng số bạn chọn).`
       } else {
         setGoc(null); setItems(parseBatchJson(text).map((v) => toRI(v))); setVi(0)
@@ -278,6 +280,13 @@ function AiImportModal({ mode, dangChinh, tenDang, onClose, onSaved }: {
     window.addEventListener('paste', onPaste)
     return () => window.removeEventListener('paste', onPaste)
   }, [method]) // eslint-disable-line
+
+  // Dán ảnh đề chung SAU khi đã sinh → gắn cho gốc + biến thể nào chưa có ảnh.
+  useEffect(() => {
+    if (!shareImgDe) return
+    setGoc((g) => (g && !g.anhDe ? { ...g, anhDe: shareImgDe } : g))
+    setItems((a) => a.map((x) => (x.anhDe ? x : { ...x, anhDe: shareImgDe })))
+  }, [shareImgDe])
 
   async function copyPrompt() { try { await navigator.clipboard.writeText(effPrompt()); setCopied(true); setTimeout(() => setCopied(false), 1500) } catch { /* */ } }
   async function runAuto() {
@@ -370,6 +379,11 @@ function AiImportModal({ mode, dangChinh, tenDang, onClose, onSaved }: {
             {method !== 'text' && (
               <Cell label="Ghi chú cho AI" className="min-w-[150px] flex-1">
                 <input value={ghiChu} onChange={(e) => setGhiChu(e.target.value)} placeholder={isClone ? 'vd: số chia hết cho 5' : 'vd: giữ thứ tự'} className={`${inp} text-[13px]`} />
+              </Cell>
+            )}
+            {isClone && (
+              <Cell label="Ảnh đề (gắn gốc + mọi biến thể)">
+                <ImageSlot url={shareImgDe} label="Dán ảnh đề" onChange={setShareImgDe} />
               </Cell>
             )}
             {method === 'text' && <div className="flex-1" />}

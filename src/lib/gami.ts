@@ -109,6 +109,19 @@ export async function getRoster(buoiId: string): Promise<BuoiHocHS[]> {
   if (error) throw error
   return (data ?? []) as BuoiHocHS[]
 }
+// Tiến độ điểm danh nhiều buổi (1 query): buoiId → { tong, daDanh }. daDanh = số HS đã có trạng thái.
+// "Điểm danh xong" = daDanh >= tong (mọi HS đã đánh dấu). Dùng để OPS task tự rời khỏi "cần làm".
+export async function diemDanhTienDo(buoiIds: string[]): Promise<Record<string, { tong: number; daDanh: number }>> {
+  if (!buoiIds.length) return {}
+  const { data, error } = await supabase.from('buoi_hoc_hs').select('buoi_hoc_id, diem_danh').in('buoi_hoc_id', buoiIds).limit(LIMIT)
+  if (error) throw error
+  const out: Record<string, { tong: number; daDanh: number }> = {}
+  for (const r of (data ?? []) as { buoi_hoc_id: string; diem_danh: string | null }[]) {
+    const o = (out[r.buoi_hoc_id] ??= { tong: 0, daDanh: 0 })
+    o.tong++; if (r.diem_danh) o.daDanh++
+  }
+  return out
+}
 export async function diemDanh(buoiHocHsId: string, trangThai: DiemDanh): Promise<void> {
   const { error } = await supabase.from('buoi_hoc_hs').update({ diem_danh: trangThai }).eq('id', buoiHocHsId)
   if (error) throw error
