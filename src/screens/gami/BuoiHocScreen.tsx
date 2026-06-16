@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react'
 import {
   buoiAoCuaNgay, moBuoi, getBuoi, huyBuoi, huyBuoiCuaNgay, setNguoiDay,
   getRoster, diemDanh, dongBoSiSo, listProblems, addProblem, setProblemDang, ensureProblems, listGrades, gradeMuc, closePhase,
-  loadETForBuoi, ensureETProblems, resyncETProblems, gradeET, deleteGrade,
-  getDanhGia, setDanhGiaDang, setNhanXet,
-  type BuoiAo, type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type Phase, type DiemDanh, type RevealRow, type DanhGiaHS, type DanhGiaDiem, type TabKey, type ETResult,
+  loadETForBuoi, ensureETProblems, resyncETProblems, gradeET, deleteGrade, reopenPhase, getEloBreakdown,
+  getDanhGia, setDanhGiaDang, setNhanXet, dongDanhGia, moLaiDanhGia,
+  type BuoiAo, type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type Phase, type DiemDanh, type RevealRow, type DanhGiaHS, type DanhGiaDiem, type TabKey, type ETResult, type EloBreakdown,
 } from '../../lib/gami'
 import { listNhanSu, type NhanSu } from '../../lib/nhansu'
 import { listDaiDang, type CauHoi } from '../../lib/kho/api'
@@ -45,7 +45,7 @@ export default function BuoiHocScreen() {
   const tab = (on: boolean) => `h-7 rounded-md px-3 text-[13px] font-semibold transition ${on ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`
 
   return (
-    <div className="flex h-full flex-col bg-[#fafafb]">
+    <div className="flex h-full min-w-0 flex-col bg-[#fafafb]">
       <div className="flex items-center gap-3 border-b border-slate-200 bg-white px-6 py-2.5">
         <span className="text-sm font-semibold text-slate-900">Buổi học</span>
         <input type="date" value={ngay} onChange={(e) => setNgay(e.target.value)} className="rounded-md border border-slate-200 px-2 py-1 text-[13px]" />
@@ -146,7 +146,7 @@ export function BuoiDetail({ id, onClose, tabs, initialTab, canManage = true }: 
   const chuaDD = roster.filter((r) => !r.diem_danh).length
 
   return (
-    <div className="flex h-full flex-col bg-[#fafafb]">
+    <div className="flex h-full min-w-0 flex-col bg-[#fafafb]">
       <div className="flex flex-wrap items-center gap-3 border-b border-slate-200 bg-white px-6 py-2.5">
         <button onClick={onClose} className="text-[13px] text-slate-500 hover:text-indigo-600">← Buổi học</button>
         <span className="text-sm font-semibold text-slate-900">{buoi.lop?.ten_lop} · {buoi.ngay}</span>
@@ -178,11 +178,11 @@ export function BuoiDetail({ id, onClose, tabs, initialTab, canManage = true }: 
               <button key={k} onClick={() => setTab(k as any)} className={`-mb-px border-b-2 px-3 py-2 text-[13px] font-medium ${tab === k ? 'border-indigo-600 text-indigo-700' : 'border-transparent text-slate-500 hover:text-slate-700'}`}>{lbl}</button>
             ))}
           </div>
-          <div className="min-h-0 flex-1 overflow-auto p-6">
+          <div className="min-h-0 min-w-0 flex-1 overflow-auto p-6">
             {tab === 'diemdanh'
               ? <DiemDanhTab roster={roster} chuaDD={chuaDD} onChange={reload} />
               : tab === 'danhgia'
-              ? <DanhGiaTab buoiId={id} roster={roster} dangOpts={dangOpts} />
+              ? <DanhGiaTab buoiId={id} roster={roster} dangOpts={dangOpts} buoi={buoi} onChange={reload} />
               : tab === 'et'
               ? <ETChamTab buoiId={id} roster={roster} buoi={buoi} dangOpts={dangOpts} onChange={reload} />
               : <ChamTab buoiId={id} phase="ingame" roster={roster} buoi={buoi} dangOpts={dangOpts} onChange={reload} />}
@@ -228,6 +228,7 @@ function ChamTab({ buoiId, phase, roster, buoi, dangOpts, onChange }: { buoiId: 
   const [grades, setGrades] = useState<Grade[]>([])
   const [reveal, setReveal] = useState<RevealRow[] | null>(null)
   const [dangPick, setDangPick] = useState<string | null>(null) // problemId đang chọn dạng (popup to)
+  const [closing, setClosing] = useState(false)
   const coMat = roster.filter((r) => r.diem_danh === 'co_mat')
   const dongCol = buoi.ingame_dong_at
   const khoi = (buoi as any).lop?.khoi ?? ''
@@ -245,13 +246,15 @@ function ChamTab({ buoiId, phase, roster, buoi, dangOpts, onChange }: { buoiId: 
     } catch (e: any) { alert(e.message ?? String(e)) }
   }
   async function dong() {
+    if (closing) return
     if (!confirm('Đóng buổi học? Sẽ tính Elo + EXP, không sửa được sau.')) return
-    const res = await closePhase(buoiId, phase)
-    if (res.already) alert('Phase này đã đóng.')
-    else { setReveal(res.reveal ?? []); onChange() }
+    setClosing(true)
+    try { const res = await closePhase(buoiId, phase); if (res.already) alert('Phase này đã đóng.'); else { setReveal(res.reveal ?? []); onChange() } }
+    finally { setClosing(false) }
   }
 
-  if (dongCol) return <RevealView buoiId={buoiId} phase={phase} roster={roster} reveal={reveal} />
+  if (dongCol) return <RevealView buoiId={buoiId} phase={phase} roster={roster} reveal={reveal}
+    onReopen={async () => { if (!confirm('Mở lại buổi học để sửa? Elo/EXP đã tính sẽ được hoàn lại; nhớ đóng lại sau khi sửa.')) return; await reopenPhase(buoiId, phase); setReveal(null); onChange() }} />
   if (coMat.length === 0) return <p className="text-[12px] text-slate-400">Chưa có HS nào điểm danh “có mặt” — điểm danh trước khi chấm.</p>
   const tenDang = (md: string | null) => (md ? dangOpts.find((d) => d.ma_dang === md)?.ten ?? md : null)
 
@@ -260,7 +263,7 @@ function ChamTab({ buoiId, phase, roster, buoi, dangOpts, onChange }: { buoiId: 
       <div className="mb-3 flex items-center gap-2">
         <button onClick={async () => { await addProblem(buoiId, phase); reloadP() }} className="rounded-md border border-slate-300 px-2.5 py-1.5 text-[12px] font-medium text-slate-600 hover:border-indigo-400">+ Thêm bài</button>
         <span className="text-[12px] text-slate-400">{probs.length} bài · {coMat.length} HS · 1 click mức <b className="text-rose-600">1</b>→<b className="text-emerald-600">5</b>.</span>
-        <button onClick={dong} disabled={!probs.length} className="ml-auto rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-indigo-500 disabled:opacity-40">Đóng buổi học</button>
+        <button onClick={dong} disabled={!probs.length || closing} className="ml-auto rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-indigo-500 disabled:opacity-40">{closing ? 'Đang đóng…' : 'Đóng buổi học'}</button>
       </div>
       {/* cuộn NGANG khi nhiều bài; cột Học sinh ghim trái */}
       <div className="overflow-x-auto rounded-xl border border-slate-200">
@@ -321,6 +324,7 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
   const [editing, setEditing] = useState<{ problemId: string; hsId: string } | null>(null) // ô đang mở bảng lỗi
   const [preview, setPreview] = useState<CauHoi | null>(null)
   const [loading, setLoading] = useState(true)
+  const [closing, setClosing] = useState(false)
   const coMat = roster.filter((r) => r.diem_danh === 'co_mat')
   const dongCol = buoi.et_dong_at
 
@@ -354,15 +358,17 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
     catch (e: any) { alert(e.message ?? String(e)) }
   }
   async function dong() {
+    if (closing) return
     if (!confirm('Đóng ET? Không sửa được sau.')) return
-    const res = await closePhase(buoiId, 'et')
-    if (res.already) alert('ET đã đóng.')
-    else { setReveal(res.reveal ?? []); onChange() }
+    setClosing(true)
+    try { const res = await closePhase(buoiId, 'et'); if (res.already) alert('ET đã đóng.'); else { setReveal(res.reveal ?? []); onChange() } }
+    finally { setClosing(false) }
   }
   async function dongBoET() { try { await resyncETProblems(buoiId, etCaus ?? []); await reloadP() } catch (e: any) { alert(e.message ?? String(e)) } }
 
   if (loading) return <p className="text-[12px] text-slate-400">Đang tải ET…</p>
-  if (dongCol) return <RevealView buoiId={buoiId} phase="et" roster={roster} reveal={reveal} />
+  if (dongCol) return <RevealView buoiId={buoiId} phase="et" roster={roster} reveal={reveal}
+    onReopen={async () => { if (!confirm('Mở lại ET để sửa điểm? Elo/EXP đã tính sẽ được hoàn lại; nhớ đóng lại sau khi sửa.')) return; await reopenPhase(buoiId, 'et'); setReveal(null); onChange() }} />
   if (etMissing) return <p className="text-[13px] text-slate-400">Chưa có ET cho buổi này (khớp <b className="text-slate-600">lớp + ngày</b>). Vào <b className="text-slate-600">Làm tài liệu → ET</b> tạo ET đúng lớp + ngày của buổi rồi quay lại.</p>
   if (coMat.length === 0) return <p className="text-[12px] text-slate-400">Chưa có HS nào điểm danh “có mặt” — điểm danh trước khi chấm.</p>
 
@@ -375,7 +381,7 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
       <div className="mb-3 flex items-center gap-2">
         <span className="text-[12px] text-slate-400">{probs.length} câu (từ ET) · {coMat.length} HS · 1 click <b className="text-emerald-600">Đ</b>/<b className="text-amber-600">C</b>/<b className="text-rose-600">S</b> — C/S mở ô lỗi.</span>
         {mismatch && <button onClick={dongBoET} title="ET đổi số câu — nạp lại (chỉ khi chưa chấm)" className="rounded-md border border-amber-300 px-2.5 py-1 text-[12px] font-medium text-amber-700 hover:bg-amber-50">↻ Đồng bộ từ ET</button>}
-        <button onClick={dong} disabled={!probs.length} className="ml-auto rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-indigo-500 disabled:opacity-40">Đóng ET</button>
+        <button onClick={dong} disabled={!probs.length || closing} className="ml-auto rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-indigo-500 disabled:opacity-40">{closing ? 'Đang đóng…' : 'Đóng ET'}</button>
       </div>
       <div className="overflow-auto rounded-xl border border-slate-200">
         <table className="w-full border-collapse text-sm">
@@ -457,11 +463,12 @@ const DG_SCORES: { v: DanhGiaDiem; lbl: string; sel: string }[] = [
 // Chip tham khảo từ chấm bài trên lớp = mức 1-5 (màu theo mức).
 const MUC_REF = (muc?: number | null) => muc == null ? 'bg-slate-100 text-slate-300'
   : muc >= 4 ? 'bg-emerald-100 text-emerald-700' : muc === 3 ? 'bg-amber-100 text-amber-700' : 'bg-rose-100 text-rose-700'
-function DanhGiaTab({ buoiId, roster, dangOpts }: { buoiId: string; roster: BuoiHocHS[]; dangOpts: DangOpt[] }) {
+function DanhGiaTab({ buoiId, roster, dangOpts, buoi, onChange }: { buoiId: string; roster: BuoiHocHS[]; dangOpts: DangOpt[]; buoi: BuoiHoc; onChange: () => void }) {
   const [probs, setProbs] = useState<Problem[]>([])
   const [grades, setGrades] = useState<Grade[]>([])
   const [data, setData] = useState<Record<string, DanhGiaHS>>({})
   const [loading, setLoading] = useState(true)
+  const xong = !!buoi.danh_gia_xong_at
   const coMat = roster.filter((r) => r.diem_danh === 'co_mat')
   const tenDang = (md: string) => dangOpts.find((d) => d.ma_dang === md)?.ten ?? md
   // dạng của buổi = ma_dang đã gắn ở "Chấm bài trên lớp" (ingame)
@@ -482,6 +489,12 @@ function DanhGiaTab({ buoiId, roster, dangOpts }: { buoiId: string; roster: Buoi
 
   return (
     <div>
+      <div className="mb-2 flex items-center gap-2">
+        {xong
+          ? <><span className="rounded-md bg-emerald-50 px-2.5 py-1 text-[13px] font-medium text-emerald-700">✓ Đã hoàn thành đánh giá</span>
+              <button onClick={async () => { await moLaiDanhGia(buoiId); onChange() }} className="rounded-md border border-amber-300 px-2.5 py-1 text-[12px] font-medium text-amber-700 hover:bg-amber-50">↩ Mở lại để sửa</button></>
+          : <button onClick={async () => { await dongDanhGia(buoiId); onChange() }} className="rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-indigo-500">✓ Hoàn thành đánh giá</button>}
+      </div>
       <p className="mb-2 text-[12px] text-slate-400">
         {dangs.length === 0
           ? <>Chưa có dạng nào — gắn dạng cho bài ở tab <b>Chấm bài trên lớp</b> sẽ tự hiện cột. Tạm thời chỉ nhập nhận xét.</>
@@ -536,27 +549,57 @@ function DanhGiaTab({ buoiId, roster, dangOpts }: { buoiId: string; roster: Buoi
   )
 }
 
-function RevealView({ phase, roster, reveal }: { buoiId: string; phase: Phase; roster: BuoiHocHS[]; reveal: RevealRow[] | null }) {
-  const nameOf = (hsid: string) => roster.find((r) => r.hoc_sinh_id === hsid)?.hoc_sinh?.ho_ten ?? '?'
-  if (!reveal) return <p className="text-[13px] text-emerald-600">✓ {phase === 'et' ? 'ET' : 'Buổi học'} đã đóng (Elo + EXP đã tính).</p>
-  const rows = [...reveal].sort((a, b) => a.rank - b.rank)
+// Bảng tính Elo CỐ ĐỊNH của 1 phase (đọc từ history) — kiểm tra công thức Δ = K·(A−E), cap ±60.
+function RevealView({ buoiId, phase, onReopen }: { buoiId: string; phase: Phase; roster: BuoiHocHS[]; reveal: RevealRow[] | null; onReopen?: () => void }) {
+  const [rows, setRows] = useState<EloBreakdown[] | null>(null)
+  useEffect(() => { getEloBreakdown(buoiId, phase).then(setRows).catch(() => setRows([])) }, [buoiId, phase])
+  const tenPhase = phase === 'et' ? 'ET' : 'Buổi học'
+  const reopenBtn = onReopen && (
+    <button onClick={onReopen} className="rounded-md border border-amber-300 px-3 py-1.5 text-[12px] font-medium text-amber-700 hover:bg-amber-50" title="Mở lại để sửa điểm — hoàn tác Elo/EXP đã tính, chấm lại rồi đóng lại">↩ Mở lại để sửa</button>
+  )
   return (
     <div>
-      <p className="mb-3 text-[13px] font-semibold text-emerald-600">✓ Đã đóng — kết quả:</p>
-      <table className="text-sm">
-        <thead><tr className="text-left text-[11px] uppercase text-slate-400"><th className="px-3">Hạng</th><th className="px-3">Học sinh</th><th className="px-3">Điểm thô</th><th className="px-3">+EXP</th><th className="px-3">Elo</th></tr></thead>
-        <tbody>
-          {rows.map((r) => (
-            <tr key={r.hoc_sinh_id} className="border-t border-slate-100">
-              <td className="px-3 py-1.5 font-bold text-slate-700">{r.rank || '—'}</td>
-              <td className="px-3 font-medium text-slate-800">{nameOf(r.hoc_sinh_id)}</td>
-              <td className="px-3 text-slate-500">{r.rawPoints}</td>
-              <td className="px-3 font-semibold text-indigo-600">+{r.exp}</td>
-              <td className="px-3 text-slate-500">{r.eloBefore != null ? `${r.eloBefore}→${r.eloAfter} (${r.delta! >= 0 ? '+' : ''}${r.delta})` : '—'}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <div className="mb-2 flex flex-wrap items-center gap-3">
+        <p className="text-[13px] font-semibold text-emerald-600">✓ {tenPhase} đã đóng — bảng tính Elo:</p>
+        {reopenBtn}
+      </div>
+      <p className="mb-3 text-[11px] text-slate-400">Công thức: <b>Kỳ vọng E</b> = Σ 1/(1+10^((Rₒ−Rᵢ)/400)) · <b>Thực tế A</b> = số bạn thắng (+0.5 hoà, theo điểm thô) · <b>Δ</b> = K·(A−E), giới hạn ±40 · K = 32 (≤4 buổi) / 18 (lớp ≤8) / 24.</p>
+      {rows === null ? <p className="text-[12px] text-slate-400">Đang tải…</p>
+        : rows.length === 0 ? <p className="text-[12px] text-slate-400">Không có dữ liệu Elo (buổi bù/bổ trợ chỉ EXP sàn, hoặc chưa chấm).</p>
+        : (
+          <div className="overflow-x-auto rounded-xl border border-slate-200">
+            <table className="w-full border-collapse text-sm">
+              <thead>
+                <tr className="bg-slate-100 text-left text-[12px] font-semibold text-slate-700">
+                  <th className="border border-slate-200 px-3 py-2 text-center">Hạng</th>
+                  <th className="border border-slate-200 px-3 py-2">Học sinh</th>
+                  <th className="border border-slate-200 px-3 py-2 text-right">Điểm thô</th>
+                  <th className="border border-slate-200 px-3 py-2 text-right" title="Kỳ vọng số bạn vượt">Kỳ vọng E</th>
+                  <th className="border border-slate-200 px-3 py-2 text-right" title="Thực tế số bạn vượt">Thực tế A</th>
+                  <th className="border border-slate-200 px-3 py-2 text-right">A − E</th>
+                  <th className="border border-slate-200 px-3 py-2 text-right">Δ Elo</th>
+                  <th className="border border-slate-200 px-3 py-2 text-right">Elo</th>
+                  <th className="border border-slate-200 px-3 py-2 text-right">+EXP</th>
+                </tr>
+              </thead>
+              <tbody>
+                {rows.map((r) => (
+                  <tr key={r.hoc_sinh_id} className="hover:bg-slate-50/60">
+                    <td className="border border-slate-200 px-3 py-1.5 text-center font-bold text-slate-700">{r.rank}</td>
+                    <td className="border border-slate-200 px-3 py-1.5 font-medium text-slate-800">{r.ho_ten}</td>
+                    <td className="border border-slate-200 px-3 py-1.5 text-right text-slate-600">{r.points}</td>
+                    <td className="border border-slate-200 px-3 py-1.5 text-right text-slate-500">{r.coElo ? r.expected.toFixed(2) : '—'}</td>
+                    <td className="border border-slate-200 px-3 py-1.5 text-right text-slate-500">{r.coElo ? r.actual.toFixed(1) : '—'}</td>
+                    <td className="border border-slate-200 px-3 py-1.5 text-right text-slate-500">{r.coElo ? (r.actual - r.expected).toFixed(2) : '—'}</td>
+                    <td className={`border border-slate-200 px-3 py-1.5 text-right font-semibold ${r.delta >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>{r.coElo ? (r.delta >= 0 ? '+' : '') + r.delta : '—'}</td>
+                    <td className="border border-slate-200 px-3 py-1.5 text-right text-slate-600">{r.coElo ? `${r.eloBefore}→${r.eloAfter}` : '—'}</td>
+                    <td className="border border-slate-200 px-3 py-1.5 text-right font-semibold text-violet-600">+{r.exp}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
     </div>
   )
 }

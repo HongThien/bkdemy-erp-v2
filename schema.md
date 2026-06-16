@@ -47,6 +47,7 @@
 | created_by | uuid | Y |  |  |
 | created_at | timestamp with time zone |  | now() |  |
 | updated_at | timestamp with time zone |  | now() |  |
+| danh_gia_xong_at | timestamp with time zone | Y |  |  |
 
 ## buoi_hoc_hs
 
@@ -151,6 +152,7 @@
 | elo | integer |  | 1000 |  |
 | sessions_played | integer |  | 0 |  |
 | updated_at | timestamp with time zone |  | now() |  |
+| mon | text |  |  |  |
 
 ## gami_elo_history
 
@@ -166,6 +168,7 @@
 | delta | integer |  |  |  |
 | elo_after | integer |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |
+| mon | text | Y |  |  |
 
 ## gami_exp_ledger
 
@@ -178,6 +181,7 @@
 | ref_buoi_hoc_id | uuid | Y |  | FK→buoi_hoc.id |
 | note | text | Y |  |  |
 | created_at | timestamp with time zone |  | now() |  |
+| mon | text | Y |  |  |
 
 ## gami_grades
 

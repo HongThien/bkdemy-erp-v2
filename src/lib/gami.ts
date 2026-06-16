@@ -16,7 +16,7 @@ export type BuoiHoc = {
   id: string; ma_buoi: string | null; loai: 'thuong' | 'bu' | 'bo_tro_yeu' | 'bo_tro_duoi' | 'mt'
   lop_id: string | null; ngay: string; thu: number | null; gio_bat_dau: string | null; gio_ket_thuc: string | null; phong: string | null
   nguoi_day: string | null; nguoi_day_tg: string | null; trang_thai: 'mo' | 'hoan_tat' | 'huy'; ly_do_huy: string | null
-  ingame_dong_at: string | null; et_dong_at: string | null
+  ingame_dong_at: string | null; et_dong_at: string | null; danh_gia_xong_at: string | null
 }
 export type BuoiHocHS = { id: string; buoi_hoc_id: string; hoc_sinh_id: string; diem_danh: DiemDanh | null; bu_cho_buoi_id: string | null; hoc_sinh?: { ho_ten: string; ma_hs: string | null; anh_url: string | null } }
 export type Problem = { id: string; buoi_hoc_id: string; phase: Phase; problem_no: number; hidden: boolean; ma_dang: string | null }
@@ -237,6 +237,35 @@ export async function deleteGrade(problemId: string, hocSinhId: string): Promise
   if (error) throw error
 }
 
+// ── BẢNG TÍNH ELO 1 phase (đọc lại từ history — kiểm tra/quản lý sau khi đóng) ──
+// Hiện đủ: điểm thô · kỳ vọng E · thực tế A · Δ=K(A−E) · Elo trước→sau · +EXP. Sắp theo điểm thô (hạng).
+export type EloBreakdown = { hoc_sinh_id: string; ho_ten: string; points: number; expected: number; actual: number; delta: number; eloBefore: number; eloAfter: number; exp: number; rank: number; coElo: boolean }
+export async function getEloBreakdown(buoiId: string, phase: Phase): Promise<EloBreakdown[]> {
+  const [{ data: hist }, { data: expRows }] = await Promise.all([
+    supabase.from('gami_elo_history').select('hoc_sinh_id, expected, actual, delta, elo_before, elo_after').eq('buoi_hoc_id', buoiId).eq('phase', phase).limit(LIMIT),
+    supabase.from('gami_exp_ledger').select('hoc_sinh_id, amount').eq('ref_buoi_hoc_id', buoiId).in('source', ['rank_' + phase, 'attend_floor']).limit(LIMIT),
+  ])
+  const probs = await listProblems(buoiId, phase)
+  const probIds = probs.map((p) => p.id)
+  const grades = probIds.length ? ((await supabase.from('gami_grades').select('hoc_sinh_id, points').in('problem_id', probIds).limit(LIMIT)).data ?? []) : []
+  const ptMap = new Map<string, number>(); for (const g of grades as any[]) ptMap.set(g.hoc_sinh_id, (ptMap.get(g.hoc_sinh_id) ?? 0) + Number(g.points))
+  const expMap = new Map<string, number>(); for (const e of (expRows ?? []) as any[]) expMap.set(e.hoc_sinh_id, (expMap.get(e.hoc_sinh_id) ?? 0) + Number(e.amount))
+  const histMap = new Map((hist ?? []).map((h: any) => [h.hoc_sinh_id, h]))
+  const ids = [...new Set([...(hist ?? []).map((h: any) => h.hoc_sinh_id), ...(expRows ?? []).map((e: any) => e.hoc_sinh_id)])]
+  if (!ids.length) return []
+  const { data: hs } = await supabase.from('hoc_sinh').select('id, ho_ten').in('id', ids).limit(LIMIT)
+  const nameMap = new Map((hs ?? []).map((h: any) => [h.id, h.ho_ten]))
+  const rows: EloBreakdown[] = ids.map((id) => {
+    const h: any = histMap.get(id)
+    return { hoc_sinh_id: id, ho_ten: nameMap.get(id) ?? '?', points: ptMap.get(id) ?? 0,
+      expected: h ? Number(h.expected) : 0, actual: h ? Number(h.actual) : 0, delta: h ? h.delta : 0,
+      eloBefore: h ? h.elo_before : 0, eloAfter: h ? h.elo_after : 0, exp: expMap.get(id) ?? 0, rank: 0, coElo: !!h }
+  })
+  rows.sort((a, b) => b.points - a.points || b.delta - a.delta)
+  rows.forEach((r, i) => { r.rank = i + 1 })
+  return rows
+}
+
 // ── ĐÓNG PHASE: tính Elo (buổi thường/MT) + ghi EXP. Idempotent. ──
 export type RevealRow = { hoc_sinh_id: string; rawPoints: number; rank: number; exp: number; eloBefore?: number; eloAfter?: number; delta?: number }
 export async function closePhase(buoiId: string, phase: Phase): Promise<{ already?: boolean; reveal?: RevealRow[] }> {
@@ -245,12 +274,21 @@ export async function closePhase(buoiId: string, phase: Phase): Promise<{ alread
   const b = buoi as BuoiHoc
   const dongCol = phase === 'et' ? 'et_dong_at' : 'ingame_dong_at'
   if ((b as any)[dongCol]) return { already: true }
+  // CLAIM cờ đóng NGAY + atomic (chỉ set được khi đang null) → chống đóng 2 lần (double-click/race tính Elo×2).
+  const claim = await supabase.from('buoi_hoc').update({ [dongCol]: new Date().toISOString(), updated_at: new Date().toISOString() }).eq('id', buoiId).is(dongCol, null).select('id')
+  if (claim.error) throw claim.error
+  if (!claim.data || !claim.data.length) return { already: true }
   const coElo = b.loai === 'thuong' || b.loai === 'mt'
+  // Phase KIA đã đóng chưa? buổi thường = hoàn tất khi CẢ ingame & et đóng (đóng 1 phase KHÔNG khoá buổi → task phase kia còn).
+  const otherClosed = phase === 'et' ? !!(b as any).ingame_dong_at : !!(b as any).et_dong_at
+  // Elo/EXP TÁCH THEO MÔN của lớp (cùng buổi = cùng lớp = cùng môn).
+  const { data: lopRow } = await supabase.from('lop').select('mon').eq('id', b.lop_id).maybeSingle()
+  const mon = (lopRow as any)?.mon ?? 'Toán'
 
   // HS có mặt (R-ET: chấm = có mặt)
   const { data: rosterRows } = await supabase.from('buoi_hoc_hs').select('hoc_sinh_id, diem_danh').eq('buoi_hoc_id', buoiId).eq('diem_danh', 'co_mat').limit(LIMIT)
   const hsIds = (rosterRows ?? []).map((r: any) => r.hoc_sinh_id)
-  if (!hsIds.length) { await markClosed(buoiId, dongCol, phase, b.loai); return { reveal: [] } }
+  if (!hsIds.length) { await markClosed(buoiId, dongCol, b.loai, otherClosed); return { reveal: [] } }
 
   // điểm thô = Σ điểm bài của phase
   const probs = await listProblems(buoiId, phase)
@@ -263,42 +301,53 @@ export async function closePhase(buoiId: string, phase: Phase): Promise<{ alread
   const reveal: RevealRow[] = []
   if (coElo) {
     // đảm bảo có dòng elo (mặc định 1000)
-    const { data: eloRows } = await supabase.from('gami_elo').select('*').in('hoc_sinh_id', hsIds).limit(LIMIT)
+    const { data: eloRows } = await supabase.from('gami_elo').select('*').eq('mon', mon).in('hoc_sinh_id', hsIds).limit(LIMIT)
     const eloMap = new Map((eloRows ?? []).map((e: any) => [e.hoc_sinh_id, e]))
     const missing = hsIds.filter((id) => !eloMap.has(id))
     if (missing.length) {
-      const { data: created } = await supabase.from('gami_elo').insert(missing.map((id) => ({ hoc_sinh_id: id }))).select()
+      const { data: created } = await supabase.from('gami_elo').insert(missing.map((id) => ({ hoc_sinh_id: id, mon }))).select()
       for (const e of (created ?? []) as any[]) eloMap.set(e.hoc_sinh_id, e)
     }
-    const students = hsIds.map((id) => ({ studentId: id, elo: eloMap.get(id).elo, points: raw[id], sessionsPlayed: eloMap.get(id).sessions_played }))
+    // 2 Elo (lớp + ET) ĐỘC LẬP, CẢ HAI tính theo trạng thái TRƯỚC BUỔI (không nối tiếp).
+    // pre = elo hiện tại TRỪ các delta của CHÍNH buổi này đã áp (phase kia) · preSessions tương tự.
+    const { data: priorHist } = await supabase.from('gami_elo_history').select('hoc_sinh_id, delta, phase').eq('buoi_hoc_id', buoiId).limit(LIMIT)
+    const priorDelta = new Map<string, number>(); const priorSess = new Map<string, number>()
+    for (const h of (priorHist ?? []) as any[]) { priorDelta.set(h.hoc_sinh_id, (priorDelta.get(h.hoc_sinh_id) ?? 0) + h.delta); if (h.phase !== 'et') priorSess.set(h.hoc_sinh_id, (priorSess.get(h.hoc_sinh_id) ?? 0) + 1) }
+    const students = hsIds.map((id) => ({ studentId: id, elo: eloMap.get(id).elo - (priorDelta.get(id) ?? 0), points: raw[id], sessionsPlayed: eloMap.get(id).sessions_played - (priorSess.get(id) ?? 0) }))
     const updates = computeEloUpdate(students, { isMT: phase === 'mt', classSize: hsIds.length } as any)
-    const incSession = phase !== 'et' // ingame/mt mới +1 (calibration)
+    const incSession = phase !== 'et' // ingame/mt mới +1 (calibration); ET không tính buổi
     for (const u of updates) {
-      await supabase.from('gami_elo_history').insert({ hoc_sinh_id: u.studentId, buoi_hoc_id: buoiId, phase, elo_before: u.eloBefore, expected: u.expected, actual: u.actual, delta: u.delta, elo_after: u.eloAfter })
-      await supabase.from('gami_elo').update({ elo: u.eloAfter, sessions_played: eloMap.get(u.studentId).sessions_played + (incSession ? 1 : 0), updated_at: new Date().toISOString() }).eq('hoc_sinh_id', u.studentId)
+      // elo_before/after = mốc TRƯỚC BUỔI → +delta (đóng góp riêng của phase). gami_elo CỘNG DỒN delta (độc lập thứ tự đóng).
+      await supabase.from('gami_elo_history').insert({ hoc_sinh_id: u.studentId, buoi_hoc_id: buoiId, phase, mon, elo_before: u.eloBefore, expected: u.expected, actual: u.actual, delta: u.delta, elo_after: u.eloAfter })
+      await supabase.from('gami_elo').update({ elo: eloMap.get(u.studentId).elo + u.delta, sessions_played: eloMap.get(u.studentId).sessions_played + (incSession ? 1 : 0), updated_at: new Date().toISOString() }).eq('hoc_sinh_id', u.studentId).eq('mon', mon)
     }
-    // xếp hạng (điểm thô; hoà → Δ Elo) → EXP
+    // xếp hạng theo điểm thô → EXP. CÔNG BẰNG khi HOÀ: cùng điểm thô = cùng EXP = TRUNG BÌNH bậc EXP các vị trí nhóm chiếm.
     const ranks = rankSession(updates.map((u: any) => ({ studentId: u.studentId, rawPoints: raw[u.studentId], eloDelta: u.delta })))
     const deltaMap = new Map(updates.map((u: any) => [u.studentId, u]))
+    const grp = new Map<number, number[]>()
+    for (const r of ranks) { const p = raw[r.studentId]; (grp.get(p) ?? grp.set(p, []).get(p))!.push(expForRank(r.rank, hsIds.length, RANK_EXP[phase])) }
+    const expByPoints = new Map<number, number>()
+    for (const [p, arr] of grp) expByPoints.set(p, Math.round(arr.reduce((s, x) => s + x, 0) / arr.length))
     for (const r of ranks) {
-      const exp = expForRank(r.rank, hsIds.length, RANK_EXP[phase])
-      await supabase.from('gami_exp_ledger').insert({ hoc_sinh_id: r.studentId, source: 'rank_' + phase, amount: exp, ref_buoi_hoc_id: buoiId })
+      const exp = expByPoints.get(raw[r.studentId]) ?? 0
+      await supabase.from('gami_exp_ledger').insert({ hoc_sinh_id: r.studentId, source: 'rank_' + phase, amount: exp, ref_buoi_hoc_id: buoiId, mon })
       const u: any = deltaMap.get(r.studentId)
       reveal.push({ hoc_sinh_id: r.studentId, rawPoints: raw[r.studentId], rank: r.rank, exp, eloBefore: u.eloBefore, eloAfter: u.eloAfter, delta: u.delta })
     }
   } else {
     // bù/bổ trợ: không Elo, EXP sàn (đi học là có)
     for (const id of hsIds) {
-      await supabase.from('gami_exp_ledger').insert({ hoc_sinh_id: id, source: 'attend_floor', amount: ATTEND_FLOOR_EXP, ref_buoi_hoc_id: buoiId })
+      await supabase.from('gami_exp_ledger').insert({ hoc_sinh_id: id, source: 'attend_floor', amount: ATTEND_FLOOR_EXP, ref_buoi_hoc_id: buoiId, mon })
       reveal.push({ hoc_sinh_id: id, rawPoints: raw[id], rank: 0, exp: ATTEND_FLOOR_EXP })
     }
   }
-  await markClosed(buoiId, dongCol, phase, b.loai)
+  await markClosed(buoiId, dongCol, b.loai, otherClosed)
   return { reveal }
 }
-async function markClosed(buoiId: string, dongCol: string, phase: Phase, loai: string): Promise<void> {
+async function markClosed(buoiId: string, dongCol: string, loai: string, otherClosed: boolean): Promise<void> {
   const patch: Record<string, unknown> = { [dongCol]: new Date().toISOString(), updated_at: new Date().toISOString() }
-  if (phase === 'et' || loai !== 'thuong') patch.trang_thai = 'hoan_tat' // ET xong / buổi mt/bù xong = hoàn tất
+  // bù/mt = 1 phase → đóng là hoàn tất. buổi thường = hoàn tất khi CẢ ingame & et đã đóng (phase kia đã đóng từ trước).
+  if (loai !== 'thuong' || otherClosed) patch.trang_thai = 'hoan_tat'
   await supabase.from('buoi_hoc').update(patch).eq('id', buoiId)
 }
 
@@ -329,6 +378,16 @@ export async function getDanhGia(buoiId: string): Promise<Record<string, DanhGia
   return out
 }
 
+// Mốc HOÀN THÀNH đánh giá sau buổi (task định tính — không có Elo/đóng phase). Bấm nút → set; mở lại → null.
+export async function dongDanhGia(buoiId: string): Promise<void> {
+  const { error } = await supabase.from('buoi_hoc').update({ danh_gia_xong_at: new Date().toISOString(), updated_at: new Date().toISOString() }).eq('id', buoiId)
+  if (error) throw error
+}
+export async function moLaiDanhGia(buoiId: string): Promise<void> {
+  const { error } = await supabase.from('buoi_hoc').update({ danh_gia_xong_at: null, updated_at: new Date().toISOString() }).eq('id', buoiId)
+  if (error) throw error
+}
+
 // verdict 1 ô (HS × dạng). null = xoá (anti-NULL: chưa đánh giá = không có dòng).
 export async function setDanhGiaDang(buoiId: string, hsId: string, maDang: string, diem: DanhGiaDiem | null): Promise<void> {
   const { data: { user } } = await supabase.auth.getUser()
@@ -346,7 +405,7 @@ export async function setDanhGiaDang(buoiId: string, hsId: string, maDang: strin
 // Pure-derive (§4): buổi đang mở của lớp tôi phụ trách → task theo vai (KHÔNG đẻ row task).
 //   GV → đánh giá sau buổi + chấm bài trên lớp · TG → chấm bài trên lớp + chấm ET.
 export type TabKey = 'diemdanh' | 'danhgia' | 'ingame' | 'et'
-export type MyTask = { buoiId: string; lop: string; ngay: string; vai: 'gv' | 'tg'; tab: TabKey; label: string }
+export type MyTask = { buoiId: string; lop: string; ngay: string; vai: 'gv' | 'tg'; tab: TabKey; label: string; done: boolean }
 const TASKS_BY_VAI: Record<'gv' | 'tg', { tab: TabKey; label: string }[]> = {
   gv: [{ tab: 'danhgia', label: 'Đánh giá sau buổi' }, { tab: 'ingame', label: 'Chấm bài trên lớp' }],
   tg: [{ tab: 'ingame', label: 'Chấm bài trên lớp' }, { tab: 'et', label: 'Chấm ET' }],
@@ -363,11 +422,14 @@ export async function getMyTasks(): Promise<MyTask[]> {
   }
   const lopIds = [...rolesByLop.keys()]
   if (!lopIds.length) return []
+  // mo + hoan_tat (bỏ huy): task XONG vẫn trả về (cờ done) để hiện ở nhóm "Đã xong" — mở lại xem/sửa được.
   const { data: buois, error } = await supabase.from('buoi_hoc')
-    .select('id, lop_id, ngay, lop:lop_id(ten_lop)').eq('trang_thai', 'mo').eq('loai', 'thuong').in('lop_id', lopIds).order('ngay').limit(LIMIT)
+    .select('id, lop_id, ngay, ingame_dong_at, et_dong_at, danh_gia_xong_at, lop:lop_id(ten_lop)').neq('trang_thai', 'huy').eq('loai', 'thuong').in('lop_id', lopIds).order('ngay').limit(LIMIT)
   if (error) throw error
   const out: MyTask[] = []
   for (const b of (buois ?? []) as any[]) {
+    // mỗi task có mốc HOÀN THÀNH riêng: chấm bài (ingame đóng) · đánh giá (bấm "Hoàn thành đánh giá") · ET (et đóng).
+    const doneTab: Record<TabKey, boolean> = { diemdanh: false, ingame: !!b.ingame_dong_at, danhgia: !!b.danh_gia_xong_at, et: !!b.et_dong_at }
     const roles = rolesByLop.get(b.lop_id)!
     const seen = new Set<TabKey>() // dedup tab trùng (chấm bài có ở cả gv lẫn tg)
     for (const vai of ['gv', 'tg'] as const) {
@@ -375,11 +437,76 @@ export async function getMyTasks(): Promise<MyTask[]> {
       for (const t of TASKS_BY_VAI[vai]) {
         if (seen.has(t.tab)) continue
         seen.add(t.tab)
-        out.push({ buoiId: b.id, lop: b.lop?.ten_lop ?? '?', ngay: b.ngay, vai, tab: t.tab, label: t.label })
+        out.push({ buoiId: b.id, lop: b.lop?.ten_lop ?? '?', ngay: b.ngay, vai, tab: t.tab, label: t.label, done: doneTab[t.tab] })
       }
     }
   }
   return out
+}
+
+// MỞ LẠI 1 phase đã đóng để SỬA (vd TA sửa điểm ET): rollback Elo/EXP của phase đó rồi gỡ cờ đóng + về 'mo'.
+// Idempotent với đóng lại: xoá elo_history + exp_ledger của phase, hoàn elo về elo_before, trừ session nếu phase tính session.
+export async function reopenPhase(buoiId: string, phase: Phase): Promise<void> {
+  const dongCol = phase === 'et' ? 'et_dong_at' : 'ingame_dong_at'
+  const { data: hist } = await supabase.from('gami_elo_history').select('*').eq('buoi_hoc_id', buoiId).eq('phase', phase).limit(LIMIT)
+  const incSession = phase !== 'et'
+  for (const h of (hist ?? []) as any[]) {
+    const mon = h.mon ?? 'Toán'
+    // model cộng-dồn: gỡ phase = TRỪ delta khỏi elo hiện tại (KHÔNG revert về elo_before — sẽ xoá delta phase kia).
+    const { data: e } = await supabase.from('gami_elo').select('elo, sessions_played').eq('hoc_sinh_id', h.hoc_sinh_id).eq('mon', mon).maybeSingle()
+    if (!e) continue
+    await supabase.from('gami_elo').update({ elo: (e as any).elo - h.delta, sessions_played: Math.max(0, ((e as any).sessions_played ?? 0) - (incSession ? 1 : 0)), updated_at: new Date().toISOString() }).eq('hoc_sinh_id', h.hoc_sinh_id).eq('mon', mon)
+  }
+  await supabase.from('gami_elo_history').delete().eq('buoi_hoc_id', buoiId).eq('phase', phase)
+  await supabase.from('gami_exp_ledger').delete().eq('ref_buoi_hoc_id', buoiId).in('source', ['rank_' + phase, 'attend_floor'])
+  await supabase.from('buoi_hoc').update({ [dongCol]: null, trang_thai: 'mo', updated_at: new Date().toISOString() }).eq('id', buoiId)
+}
+
+// ── QUẢN LÝ ĐIỂM (Elo/EXP) — bảng tổng + hồ sơ HS ─────────────────
+export type DiemRow = { hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; khoi: string | null; anh_url: string | null; mon: string; elo: number; sessions: number; exp: number }
+// Bảng tổng: mỗi (HS × môn) 1 dòng Elo + tổng EXP của môn đó. Sắp Elo giảm dần (leaderboard). Lọc theo môn.
+export async function listGamiBangTong(mon?: string): Promise<DiemRow[]> {
+  let q = supabase.from('gami_elo').select('hoc_sinh_id, mon, elo, sessions_played, hoc_sinh:hoc_sinh_id(ho_ten, ma_hs, khoi, anh_url)').order('elo', { ascending: false }).limit(LIMIT)
+  if (mon) q = q.eq('mon', mon)
+  const { data: elo, error } = await q
+  if (error) throw error
+  const { data: exp } = await supabase.from('gami_exp_ledger').select('hoc_sinh_id, mon, amount').limit(LIMIT * 5)
+  const expMap = new Map<string, number>()
+  for (const r of (exp ?? []) as any[]) { const k = r.hoc_sinh_id + '|' + (r.mon ?? ''); expMap.set(k, (expMap.get(k) ?? 0) + Number(r.amount)) }
+  return ((elo ?? []) as any[]).map((e) => ({
+    hoc_sinh_id: e.hoc_sinh_id, ho_ten: e.hoc_sinh?.ho_ten ?? '?', ma_hs: e.hoc_sinh?.ma_hs ?? null,
+    khoi: e.hoc_sinh?.khoi ?? null, anh_url: e.hoc_sinh?.anh_url ?? null, mon: e.mon,
+    elo: e.elo, sessions: e.sessions_played, exp: expMap.get(e.hoc_sinh_id + '|' + e.mon) ?? 0,
+  }))
+}
+export async function listGamiMons(): Promise<string[]> {
+  const { data } = await supabase.from('gami_elo').select('mon').limit(LIMIT)
+  return [...new Set((data ?? []).map((r: any) => r.mon).filter(Boolean))].sort()
+}
+export type EloHist = { buoi_hoc_id: string; phase: string; mon: string | null; elo_before: number; delta: number; elo_after: number; created_at: string; ngay?: string | null; lop?: string | null }
+// Danh sách CA HỌC (buổi thường) cho bảng quản trị Elo — mỗi ca: mã + 2 bảng Elo (lớp / ET).
+export type CaHoc = { id: string; ma_buoi: string | null; ten_lop: string; ngay: string; mon: string | null; ingame_dong: boolean; et_dong: boolean; trang_thai: string }
+export async function listCaHoc(): Promise<CaHoc[]> {
+  const { data, error } = await supabase.from('buoi_hoc').select('id, ma_buoi, ngay, trang_thai, ingame_dong_at, et_dong_at, lop:lop_id(ten_lop, mon)').eq('loai', 'thuong').order('ngay', { ascending: false }).limit(LIMIT)
+  if (error) throw error
+  return ((data ?? []) as any[]).map((b) => ({ id: b.id, ma_buoi: b.ma_buoi, ten_lop: b.lop?.ten_lop ?? '?', ngay: b.ngay, mon: b.lop?.mon ?? null, ingame_dong: !!b.ingame_dong_at, et_dong: !!b.et_dong_at, trang_thai: b.trang_thai }))
+}
+export type ExpRow = { source: string; amount: number; mon: string | null; created_at: string; ngay?: string | null; lop?: string | null }
+export type DiemHS = { elo: { mon: string; elo: number; sessions: number; exp: number }[]; hist: EloHist[]; exp: ExpRow[] }
+// Hồ sơ điểm 1 HS: Elo per môn (+EXP môn) · lịch sử Elo (timeline) · dòng EXP.
+export async function getDiemHS(hocSinhId: string): Promise<DiemHS> {
+  const [eloR, histR, expR] = await Promise.all([
+    supabase.from('gami_elo').select('mon, elo, sessions_played').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
+    supabase.from('gami_elo_history').select('buoi_hoc_id, phase, mon, elo_before, delta, elo_after, created_at, buoi:buoi_hoc_id(ngay, lop:lop_id(ten_lop))').eq('hoc_sinh_id', hocSinhId).order('created_at', { ascending: false }).limit(LIMIT),
+    supabase.from('gami_exp_ledger').select('source, amount, mon, created_at, buoi:ref_buoi_hoc_id(ngay, lop:lop_id(ten_lop))').eq('hoc_sinh_id', hocSinhId).order('created_at', { ascending: false }).limit(LIMIT),
+  ])
+  const expByMon = new Map<string, number>()
+  for (const r of (expR.data ?? []) as any[]) expByMon.set(r.mon ?? '', (expByMon.get(r.mon ?? '') ?? 0) + Number(r.amount))
+  return {
+    elo: ((eloR.data ?? []) as any[]).map((e) => ({ mon: e.mon, elo: e.elo, sessions: e.sessions_played, exp: expByMon.get(e.mon) ?? 0 })),
+    hist: ((histR.data ?? []) as any[]).map((h) => ({ buoi_hoc_id: h.buoi_hoc_id, phase: h.phase, mon: h.mon, elo_before: h.elo_before, delta: h.delta, elo_after: h.elo_after, created_at: h.created_at, ngay: h.buoi?.ngay, lop: h.buoi?.lop?.ten_lop })),
+    exp: ((expR.data ?? []) as any[]).map((x) => ({ source: x.source, amount: x.amount, mon: x.mon, created_at: x.created_at, ngay: x.buoi?.ngay, lop: x.buoi?.lop?.ten_lop })),
+  }
 }
 
 export async function setNhanXet(buoiId: string, hsId: string, nhanXet: string): Promise<void> {

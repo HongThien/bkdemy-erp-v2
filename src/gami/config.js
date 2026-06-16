@@ -2,13 +2,13 @@
 export const ELO = {
   BASE_RATING: 1000,
   SCALE: 400,
-  K_CALIBRATION: 48,        // 4 buổi đầu mỗi HS
+  K_CALIBRATION: 32,        // 4 buổi đầu mỗi HS (hạ từ 48 → mượt hơn, đỡ chạm trần)
   CALIBRATION_SESSIONS: 4,
   K_NORMAL: 24,
   K_MT: 60,                 // Grand Slam
   K_SMALL_CLASS: 18,        // lớp ≤ 8
   SMALL_CLASS_SIZE: 8,
-  DELTA_CAP: 60,
+  DELTA_CAP: 40,            // giới hạn Δ mỗi event (hạ từ 60)
 }
 
 export const PROBLEM_SCORE = {

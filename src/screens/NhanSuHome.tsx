@@ -17,6 +17,7 @@ import PhanCongScreen from './nhansu/PhanCongScreen'
 import LopScreen from './nhansu/LopScreen'
 import HocSinhScreen from './nhansu/HocSinhScreen'
 import BuoiHocScreen from './gami/BuoiHocScreen'
+import GamiDiemScreen from './gami/GamiDiemScreen'
 import PhanQuyenScreen from './phanquyen/PhanQuyenScreen'
 
 const ROLE_LBL: Record<string, string> = { gv: 'GV', tg: 'Trợ giảng', ops: 'OPS' }
@@ -49,6 +50,19 @@ function OpsBuoiCard({ ba, ngay, td, done, onOpen }: { ba: BuoiAo; ngay: string;
   )
 }
 
+function TaskCard({ t, done, onOpenBuoi }: { t: MyTask; done?: boolean; onOpenBuoi: (o: OpenBuoi) => void }) {
+  return (
+    <button onClick={() => onOpenBuoi({ id: t.buoiId, tabs: tabsCuaVai(t.vai), initialTab: t.tab, canManage: false })}
+      className={`rounded-xl border p-3 text-left transition ${done ? 'border-emerald-200 bg-emerald-50/50 hover:border-emerald-300' : 'border-slate-200 bg-white hover:border-indigo-300 hover:shadow-sm'}`}>
+      <div className="flex items-center gap-2">
+        <span className={`text-[14px] font-semibold ${done ? 'text-emerald-700' : 'text-slate-900'}`}>{done ? '✓ ' : ''}{t.label}</span>
+        <span className="ml-auto rounded bg-indigo-100 px-1.5 py-0.5 text-[11px] font-medium text-indigo-700">{ROLE_LBL[t.vai]}</span>
+      </div>
+      <div className="mt-1 text-[12px] text-slate-500">Lớp {t.lop} · {t.ngay}{done ? ' · đã xong (mở để xem/sửa)' : ''}</div>
+    </button>
+  )
+}
+
 function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: (o: OpenBuoi) => void }) {
   const [tasks, setTasks] = useState<MyTask[]>([])
   const [buoiAo, setBuoiAo] = useState<BuoiAo[]>([])
@@ -71,6 +85,8 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
   const opsXong = (ba: BuoiAo) => { const b = ba.buoi; if (!b || b.trang_thai === 'huy') return false; const t = tienDo[b.id]; return !!t && t.daDanh >= t.tong }
   const opsActive = buoiAo.filter((ba) => (!ba.buoi || ba.buoi.trang_thai !== 'huy') && !opsXong(ba))
   const opsDone = buoiAo.filter(opsXong)
+  const taskActive = tasks.filter((t) => !t.done)
+  const taskDone = tasks.filter((t) => t.done)
 
   return (
     <div className="mx-auto max-w-[900px]">
@@ -100,25 +116,28 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
         </div>
       )}
 
-      {tasks.length > 0 && (
+      {(taskActive.length > 0 || taskDone.length > 0) && (
         <div className="mb-5">
-          <div className="mb-2 text-[12px] font-semibold uppercase tracking-wider text-slate-400">Việc chấm / đánh giá</div>
-          <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
-            {tasks.map((t) => (
-              <button key={t.buoiId + t.tab} onClick={() => onOpenBuoi({ id: t.buoiId, tabs: tabsCuaVai(t.vai), initialTab: t.tab, canManage: false })}
-                className="rounded-xl border border-slate-200 bg-white p-3 text-left transition hover:border-indigo-300 hover:shadow-sm">
-                <div className="flex items-center gap-2">
-                  <span className="text-[14px] font-semibold text-slate-900">{t.label}</span>
-                  <span className="ml-auto rounded bg-indigo-100 px-1.5 py-0.5 text-[11px] font-medium text-indigo-700">{ROLE_LBL[t.vai]}</span>
-                </div>
-                <div className="mt-1 text-[12px] text-slate-500">Lớp {t.lop} · {t.ngay}</div>
-              </button>
-            ))}
-          </div>
+          <div className="mb-2 text-[12px] font-semibold uppercase tracking-wider text-slate-400">Việc chấm / đánh giá{taskActive.length ? ` (${taskActive.length})` : ''}</div>
+          {taskActive.length === 0 ? (
+            <div className="rounded-lg border border-emerald-200 bg-emerald-50/60 px-4 py-3 text-[13px] font-medium text-emerald-700">✓ Đã hoàn thành mọi việc chấm / đánh giá.</div>
+          ) : (
+            <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
+              {taskActive.map((t) => <TaskCard key={t.buoiId + t.tab} t={t} onOpenBuoi={onOpenBuoi} />)}
+            </div>
+          )}
+          {taskDone.length > 0 && (
+            <details className="mt-2">
+              <summary className="cursor-pointer text-[12px] font-medium text-emerald-700">✓ Đã xong ({taskDone.length}) — bấm xem / sửa</summary>
+              <div className="mt-2 grid grid-cols-1 gap-2 md:grid-cols-2">
+                {taskDone.map((t) => <TaskCard key={t.buoiId + t.tab} t={t} done onOpenBuoi={onOpenBuoi} />)}
+              </div>
+            </details>
+          )}
         </div>
       )}
 
-      {!opsToanHe && tasks.length === 0 && (
+      {!opsToanHe && taskActive.length === 0 && taskDone.length === 0 && (
         <div className="mb-4 rounded-lg border border-dashed border-slate-200 bg-slate-50/60 px-4 py-3 text-[13px] text-slate-500">
           Chưa có việc vận hành nào — chưa có buổi nào đang mở ở lớp bạn phụ trách.
         </div>
@@ -168,7 +187,8 @@ export default function NhanSuHome({ user }: { user: User }) {
         <PersonalCard user={user} />
         <NavTree groups={groups} selected={staffLeaf} onSelect={setStaffLeaf} />
       </aside>
-      {/* Vận hành (Việc của tôi / tra cứu lớp) cuộn trong section; màn phát triển tự quản chiều cao */}
+      {/* Khung phải: min-w-0 để bảng rộng (vd chấm bài nhiều bài) CUỘN trong khung thay vì bung cột → tràn layout. */}
+      <div className="grid min-h-0 min-w-0 grid-rows-[minmax(0,1fr)] overflow-hidden">
       {loading ? (
         <section className="p-8 text-sm text-slate-400">Đang tải…</section>
       ) : staffLeaf === 'viec' ? (
@@ -192,10 +212,12 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'lop' ? <LopScreen />
       : staffLeaf === 'hs' ? <HocSinhScreen />
       : staffLeaf === 'buoihoc' ? <BuoiHocScreen />
+      : staffLeaf === 'diemso' ? <GamiDiemScreen />
       : staffLeaf === 'phanquyen' ? <PhanQuyenScreen />
       : (
         <section className="flex min-h-0 items-center justify-center p-8 text-sm text-slate-400">Chọn một mục bên trái.</section>
       )}
+      </div>
     </div>
   )
 }
