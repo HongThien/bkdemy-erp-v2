@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react'
 import {
   getTaiLieuFull, updateTaiLieu, updatePhan, setCauOfPhan,
-  addBuoi, deleteBuoi, setDangOfBuoi, autoSuggestByLoai, autoSuggestBtvn,
+  addBuoi, deleteBuoi, setDangOfBuoi, autoSuggestByLoai, autoSuggestBtvn, trichXuatBuoi, listTrichXuat,
   DEFAULT_LUYEN_COUNTS, DEFAULT_BTVN_COUNTS, DEFAULT_BTVN_LINES,
-  type TaiLieuFull, type PhanResolved, type CauHinh,
+  type TaiLieuFull, type PhanResolved, type CauHinh, type TrichState,
 } from '../../lib/tailieu'
 import { listCauByDang, listDaiMap, groupMap, LOAI_CAU, type CauHoi, type Tier1Node } from '../../lib/kho/api'
+import { listLop, type Lop } from '../../lib/nhansu'
 import { MathText, inp } from '../kho/ui'
+import SearchSelect from '../../components/SearchSelect'
 import PrintView from './PrintView'
 
 const loaiLabel = (v: string) => LOAI_CAU.find((x) => x.value === v)?.label ?? v
@@ -34,6 +36,7 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
   const [printing, setPrinting] = useState(false)
   const [picker, setPicker] = useState<null | { phanId: string; maDangs: string[]; selected: string[] }>(null)
   const [dangPicker, setDangPicker] = useState<null | { buoiId: string; selected: string[] }>(null)
+  const [trichOpen, setTrichOpen] = useState(false)
 
   async function reload() {
     const f = await getTaiLieuFull(id)
@@ -63,7 +66,8 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
         <button onClick={onClose} className="text-[13px] font-medium text-slate-400 hover:text-indigo-600">← Thư viện</button>
         <input value={ten} onChange={(e) => setTen(e.target.value)} onBlur={saveTen} className={`${inp} h-9 max-w-[420px] flex-1 font-semibold`} placeholder="Tên giáo trình" />
         <span className="text-[12px] text-slate-400">Khối {full.taiLieu.khoi}</span>
-        <button onClick={() => setPrinting(true)} className="ml-auto rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500">🖨 Xem / Xuất PDF</button>
+        <button onClick={() => setTrichOpen(true)} className="ml-auto rounded-md border border-violet-300 px-3 py-1.5 text-sm font-medium text-violet-700 hover:bg-violet-50" title="Gán giáo trình cho 1 lớp → trích từng buổi thành GT buổi + BTVN bám ngày">⬇ Trích xuất / Gán lớp</button>
+        <button onClick={() => setPrinting(true)} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500">🖨 Xem / Xuất PDF</button>
       </div>
 
       {/* Setting chrome */}
@@ -105,6 +109,7 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
 
       {dangPicker && <DangPicker khoi={full.taiLieu.khoi} selected={dangPicker.selected} onClose={() => setDangPicker(null)} onConfirm={async (maDangs) => { const bid = dangPicker.buoiId; setDangPicker(null); await setDangOfBuoi(id, bid, maDangs); await reload() }} />}
       {picker && <KhoPicker {...picker} onClose={() => setPicker(null)} onConfirm={async (m) => { await applyCaus(picker.phanId, m); setPicker(null) }} />}
+      {trichOpen && <TrichPanel masterId={id} khoi={full.taiLieu.khoi} buois={buois} onClose={() => setTrichOpen(false)} />}
       {printing && <PrintView id={id} onClose={() => setPrinting(false)} />}
     </div>
   )
@@ -352,6 +357,80 @@ export function KhoPicker({ maDangs, selected, onClose, onConfirm }: { maDangs: 
           <button onClick={confirm} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500">Dùng {sel.size} câu</button>
         </div>
       </div>
+    </div>
+  )
+}
+
+// TRÍCH XUẤT cấp GIÁO TRÌNH: chọn LỚP → hiện 10 buổi + TRẠNG THÁI đã gán (ngày nào) cho lớp đó → gán buổi chưa gán.
+function TrichPanel({ masterId, khoi, buois, onClose }: { masterId: string; khoi: string; buois: BuoiUI[]; onClose: () => void }) {
+  const [lops, setLops] = useState<Lop[]>([])
+  const [lopId, setLopId] = useState<string | null>(null)
+  const [state, setState] = useState<Record<string, TrichState>>({})
+  const [loading, setLoading] = useState(false)
+  useEffect(() => { listLop().then(setLops).catch(() => { }) }, [])
+  const lop = lops.find((l) => l.id === lopId)
+  async function loadState(id: string) { setLoading(true); try { setState(await listTrichXuat(masterId, id)) } finally { setLoading(false) } }
+  useEffect(() => { if (lopId) loadState(lopId); else setState({}) }, [lopId]) // eslint-disable-line
+
+  async function gan(buoiId: string, tenBuoi: string, ngay: string, gt: boolean, bt: boolean) {
+    if (!lop) return
+    await trichXuatBuoi(masterId, buoiId, { lopId: lop.id, ngay, khoi, tenLop: lop.ten_lop, tenBuoi, giaoTrinh: gt, btvn: bt })
+    await loadState(lop.id)
+  }
+
+  return (
+    <div className="fixed inset-0 z-[70] bg-slate-900/50 backdrop-blur-sm" onClick={onClose}>
+      <div className="absolute inset-x-[12%] inset-y-10 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <div className="flex items-center gap-3 border-b border-slate-200 px-6 py-3">
+          <h3 className="text-base font-semibold text-slate-900">Trích xuất giáo trình → gán cho lớp</h3>
+          <div className="w-56"><SearchSelect value={lopId} onChange={setLopId} placeholder="chọn lớp…"
+            options={lops.filter((l) => !khoi || l.khoi === khoi).map((l) => ({ id: l.id, label: l.ten_lop, sub: `${l.mon}${l.khoi ? ' · K' + l.khoi : ''}` }))} /></div>
+          <button onClick={onClose} className="ml-auto flex h-8 w-8 items-center justify-center rounded-md text-slate-400 hover:bg-slate-100">✕</button>
+        </div>
+        <div className="min-h-0 flex-1 overflow-auto p-5">
+          {!lop ? <p className="text-center text-sm text-slate-400">Chọn lớp để xem trạng thái gán + trích từng buổi.</p>
+            : loading ? <p className="text-sm text-slate-400">Đang tải trạng thái…</p>
+            : (
+              <div className="mx-auto max-w-[760px] space-y-2">
+                <p className="mb-2 text-[12px] text-slate-400">Mỗi buổi của giáo trình → gán cho 1 ngày của lớp <b>{lop.ten_lop}</b> → sinh “Giáo trình buổi” + “BTVN” vào Kho. Buổi đã gán hiện ngày.</p>
+                {buois.map((b, i) => <BuoiTrichRow key={b.marker.id} no={i + 1} buoi={b} st={state[b.marker.id]} onGan={(ngay, gt, bt) => gan(b.marker.id, b.marker.tieu_de || `Buổi ${i + 1}`, ngay, gt, bt)} />)}
+              </div>
+            )}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function BuoiTrichRow({ no, buoi, st, onGan }: { no: number; buoi: BuoiUI; st?: TrichState; onGan: (ngay: string, gt: boolean, bt: boolean) => Promise<void> }) {
+  const [ngay, setNgay] = useState('')
+  const [gt, setGt] = useState(true)
+  const [bt, setBt] = useState(true)
+  const [busy, setBusy] = useState(false)
+  const ganNgay = st?.ngay ? st.ngay.split('-').reverse().join('/') : null
+  async function go() { if (!ngay || (!gt && !bt)) return; setBusy(true); try { await onGan(ngay, gt, bt) } finally { setBusy(false) } }
+  return (
+    <div className="flex flex-wrap items-center gap-2.5 rounded-xl border border-slate-200 bg-white p-2.5">
+      <span className="w-6 shrink-0 text-center text-[13px] font-bold text-indigo-600">{no}</span>
+      <div className="min-w-[120px] flex-1">
+        <div className="text-[13px] font-semibold text-slate-800">{buoi.marker.tieu_de || `Buổi ${no}`}</div>
+        <div className="text-[11px] text-slate-400">{buoi.dangs.length} dạng</div>
+      </div>
+      {ganNgay ? (
+        <div className="flex items-center gap-2">
+          <span className="rounded-full bg-emerald-50 px-2.5 py-1 text-[12px] font-medium text-emerald-700">✓ Đã gán · {ganNgay}</span>
+          <span className="text-[11px] text-slate-400">{st?.hasGT ? 'GT' : ''}{st?.hasGT && st?.hasBTVN ? ' + ' : ''}{st?.hasBTVN ? 'BTVN' : ''}</span>
+          <button onClick={go} disabled={busy || !ngay} title="Gán lại sang ngày khác (tạo bản mới)" className="rounded-md border border-slate-200 px-2 py-1 text-[11px] text-slate-500 hover:border-indigo-300">Gán lại</button>
+          <input type="date" value={ngay} onChange={(e) => setNgay(e.target.value)} className="h-7 rounded border border-slate-300 px-1.5 text-[12px]" />
+        </div>
+      ) : (
+        <div className="flex flex-wrap items-center gap-2">
+          <input type="date" value={ngay} onChange={(e) => setNgay(e.target.value)} className="h-7 rounded border border-slate-300 px-1.5 text-[12px]" />
+          <label className="flex items-center gap-1 text-[12px] text-slate-600"><input type="checkbox" checked={gt} onChange={(e) => setGt(e.target.checked)} />GT</label>
+          <label className="flex items-center gap-1 text-[12px] text-slate-600"><input type="checkbox" checked={bt} onChange={(e) => setBt(e.target.checked)} />BTVN</label>
+          <button onClick={go} disabled={busy || !ngay || (!gt && !bt)} className="rounded-md bg-violet-600 px-3 py-1 text-[12px] font-medium text-white hover:bg-violet-500 disabled:opacity-40">{busy ? '…' : 'Gán'}</button>
+        </div>
+      )}
     </div>
   )
 }

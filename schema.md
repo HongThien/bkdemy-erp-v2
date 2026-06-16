@@ -424,6 +424,8 @@
 | created_by | uuid | Y |  |  |
 | lop_id | uuid | Y |  | FK→lop.id |
 | ngay | date | Y |  |  |
+| nguon_id | uuid | Y |  | FK→tai_lieu.id |
+| nguon_buoi | text | Y |  |  |
 
 ## tai_lieu_cau
 

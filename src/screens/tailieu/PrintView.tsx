@@ -10,12 +10,15 @@ export default function PrintView({ id, onClose }: { id: string; onClose: () => 
   const [full, setFull] = useState<TaiLieuFull | null>(null)
   const [err, setErr] = useState<string | null>(null)
   const [gv, setGv] = useState(false) // false = bản HS · true = bản GV
+  const [scope, setScope] = useState<'all' | 'giaotrinh' | 'btvn'>('all') // tách quyển: giáo trình (LT+luyện) vs BTVN riêng
   const [pages, setPages] = useState(0)
   const [rendering, setRendering] = useState(true)
   const [renderErr, setRenderErr] = useState<string | null>(null)
   const srcRef = useRef<HTMLDivElement>(null)
   const dstRef = useRef<HTMLDivElement>(null)
   useEffect(() => { getTaiLieuFull(id).then(setFull).catch((e) => setErr(e.message ?? String(e))) }, [id])
+  // Doc 'btvn' (trích xuất) → chỉ có phần BTVN → mặc định scope BTVN.
+  useEffect(() => { if (full?.taiLieu.loai === 'btvn') setScope('btvn') }, [full])
 
   // Phân trang THẬT bằng paged.js → preview = bản in (A4, header/footer + số trang mỗi trang).
   useEffect(() => {
@@ -32,7 +35,7 @@ export default function PrintView({ id, onClose }: { id: string; onClose: () => 
       .catch((e: unknown) => { if (!cancelled) { setRenderErr(e instanceof Error ? e.message : String(e)); setRendering(false) } })
       .finally(() => URL.revokeObjectURL(cssUrl))
     return () => { cancelled = true }
-  }, [full, gv])
+  }, [full, gv, scope])
 
   const seg = (on: boolean) => `rounded-md px-3 py-1 text-[13px] font-medium transition ${on ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`
 
@@ -44,7 +47,12 @@ export default function PrintView({ id, onClose }: { id: string; onClose: () => 
           <button onClick={() => setGv(false)} className={seg(!gv)}>Bản học sinh</button>
           <button onClick={() => setGv(true)} className={seg(gv)}>Bản giáo viên</button>
         </div>
-        <span className="text-[12px] text-slate-400">{rendering ? 'đang dựng trang…' : `${pages} trang · ${gv ? 'kèm lời giải' : 'chỉ đề bài'}`}</span>
+        <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5" title="Tách quyển: in giáo trình và BTVN thành 2 file PDF riêng">
+          <button onClick={() => setScope('all')} className={seg(scope === 'all')}>Toàn bộ</button>
+          <button onClick={() => setScope('giaotrinh')} className={seg(scope === 'giaotrinh')}>Chỉ giáo trình</button>
+          <button onClick={() => setScope('btvn')} className={seg(scope === 'btvn')}>Chỉ BTVN</button>
+        </div>
+        <span className="text-[12px] text-slate-400">{rendering ? 'đang dựng trang…' : `${pages} trang`}</span>
         <div className="ml-auto flex gap-2">
           <button onClick={() => window.print()} disabled={rendering} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">🖨 In / Lưu PDF</button>
           <button onClick={onClose} className="rounded-md border border-slate-300 px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-100">Đóng</button>
@@ -60,7 +68,7 @@ export default function PrintView({ id, onClose }: { id: string; onClose: () => 
             </>}
       </div>
       {/* Nguồn ẩn — chỉ để lấy HTML cho paged.js (KaTeX đã render sẵn trong này) */}
-      <div ref={srcRef} className="pv-src" aria-hidden>{full && <Doc full={full} gv={gv} />}</div>
+      <div ref={srcRef} className="pv-src" aria-hidden>{full && <Doc full={full} gv={gv} scope={scope} />}</div>
       <style>{CHROME_CSS}</style>
     </div>,
     document.body,
@@ -80,7 +88,7 @@ function buildBuois(phans: PhanResolved[]): Buoi[] {
   return out
 }
 
-function Doc({ full, gv }: { full: TaiLieuFull; gv: boolean }) {
+function Doc({ full, gv, scope }: { full: TaiLieuFull; gv: boolean; scope: 'all' | 'giaotrinh' | 'btvn' }) {
   const { taiLieu, phans, ltChuyenDe, tenChuyenDe } = full
   const ch = taiLieu.cau_hinh ?? {}
   const accent = ch.mau || '#E91E8C'
@@ -97,19 +105,24 @@ function Doc({ full, gv }: { full: TaiLieuFull; gv: boolean }) {
       {ch.footer !== 'none' && <div className="pv-rf">BK ACADEMY · {taiLieu.ten} · Khối {taiLieu.khoi}</div>}
       <div className="pv-cover">
         {/* Logo nằm ở header (lặp mọi trang) → KHÔNG đặt thêm logo ở bìa để tránh trùng. */}
-        <div className="pv-title">{taiLieu.ten}</div>
-        <div className="pv-sub">KHỐI {taiLieu.khoi} · {gv ? 'BẢN GIÁO VIÊN' : 'BẢN HỌC SINH'}</div>
+        <div className="pv-title">{taiLieu.ten}{scope === 'btvn' ? ' — Bài tập về nhà' : ''}</div>
+        <div className="pv-sub">KHỐI {taiLieu.khoi} · {scope === 'btvn' ? 'QUYỂN BÀI TẬP · ' : scope === 'giaotrinh' ? 'LÝ THUYẾT + LUYỆN · ' : ''}{gv ? 'BẢN GIÁO VIÊN' : 'BẢN HỌC SINH'}</div>
       </div>
-      {buois.map((b) => (
-        <BuoiBlock key={b.id} buoi={b} gv={gv} docTitle={taiLieu.ten} ltCd={ltChuyenDe} tenCd={tenChuyenDe} dangNoByMa={dangNoByMa} linesByCau={linesByCau} />
-      ))}
+      {/* QUYỂN BTVN riêng = chỉ các phiếu BTVN (mỗi buổi). Còn lại = giáo trình (skip BTVN nếu 'giaotrinh'). */}
+      {scope === 'btvn'
+        ? buois.filter((b) => b.btvns.some((x) => x.caus.length)).map((b) => (
+          <BtvnSheet key={b.id} btvns={b.btvns} gv={gv} docTitle={taiLieu.ten} buoiTitle={b.title} dangNoByMa={dangNoByMa} linesByCau={linesByCau} />
+        ))
+        : buois.map((b) => (
+          <BuoiBlock key={b.id} buoi={b} gv={gv} scope={scope} docTitle={taiLieu.ten} ltCd={ltChuyenDe} tenCd={tenChuyenDe} dangNoByMa={dangNoByMa} linesByCau={linesByCau} />
+        ))}
     </div>
   )
 }
 
 // 1 BUỔI: tiêu đề buổi → [LT chuyên đề + các dạng] gom theo chuyên đề → phiếu BTVN của buổi.
-function BuoiBlock({ buoi, gv, docTitle, ltCd, tenCd, dangNoByMa, linesByCau }: {
-  buoi: Buoi; gv: boolean; docTitle: string; ltCd: Record<string, { noi_dung: string; file_url: string | null; ten_file: string | null } | null>; tenCd: Record<string, string>; dangNoByMa: Record<string, number>; linesByCau: Record<string, number>
+function BuoiBlock({ buoi, gv, scope, docTitle, ltCd, tenCd, dangNoByMa, linesByCau }: {
+  buoi: Buoi; gv: boolean; scope: 'all' | 'giaotrinh'; docTitle: string; ltCd: Record<string, { noi_dung: string; file_url: string | null; ten_file: string | null } | null>; tenCd: Record<string, string>; dangNoByMa: Record<string, number>; linesByCau: Record<string, number>
 }) {
   // Gom dạng liền nhau theo chuyên đề → mỗi nhóm hiện LT chuyên đề 1 lần (buổi tách chuyên đề vẫn có LT).
   const groups: { cd: string; dangs: PhanResolved[] }[] = []
@@ -127,7 +140,7 @@ function BuoiBlock({ buoi, gv, docTitle, ltCd, tenCd, dangNoByMa, linesByCau }: 
           {g.dangs.map((d) => <DangBlock key={d.id} no={dangNoByMa[d.ref_ma ?? ''] ?? 0} p={d} gv={gv} />)}
         </div>
       ))}
-      {buoi.btvns.some((b) => b.caus.length) && (
+      {scope === 'all' && buoi.btvns.some((b) => b.caus.length) && (
         <BtvnSheet btvns={buoi.btvns} gv={gv} docTitle={docTitle} buoiTitle={buoi.title} dangNoByMa={dangNoByMa} linesByCau={linesByCau} />
       )}
     </section>
@@ -189,12 +202,13 @@ function BtvnSheet({ btvns, gv, docTitle, buoiTitle, dangNoByMa, linesByCau }: {
           </div>
         )}
       </div>
-      {btvns.filter((b) => b.caus.length).map((b) => (
+      {(() => { let bno = 0; return btvns.filter((b) => b.caus.length).map((b) => (
         <div key={b.id} className="pv-sec">
           <h2 className="pv-h-dang">Dạng {dangNoByMa[b.ref_ma ?? ''] ?? ''}: {b.dang?.ten_dang ?? b.ref_ma}</h2>
-          <ol className="pv-caulist">{b.caus.map((c, i) => <CauItem key={c.ma_cau} no={i + 1} c={c} gv={gv} lines={gv ? 0 : (linesByCau[c.ma_cau] ?? DEFAULT_BTVN_LINES)} />)}</ol>
+          {/* Số câu BTVN đếm LIÊN TỤC xuyên các dạng (dạng 1: 1,2 → dạng 2: 3,4,5…) — KHÔNG reset mỗi dạng. */}
+          <ol className="pv-caulist">{b.caus.map((c) => { bno += 1; return <CauItem key={c.ma_cau} no={bno} c={c} gv={gv} lines={gv ? 0 : (linesByCau[c.ma_cau] ?? DEFAULT_BTVN_LINES)} /> })}</ol>
         </div>
-      ))}
+      )) })()}
     </section>
   )
 }
@@ -210,7 +224,7 @@ function optCols(opts: string[]): number {
   const max = Math.max(0, ...opts.map(optVisLen))
   return max <= 6 ? 4 : max <= 16 ? 2 : 1
 }
-function CauItem({ no, c, gv, lines = 0 }: { no: number; c: CauHoi; gv: boolean; lines?: number }) {
+export function CauItem({ no, c, gv, lines = 0 }: { no: number; c: CauHoi; gv: boolean; lines?: number }) {
   const hasOpts = !!(c.lua_chon && c.lua_chon.length)
   const letter = (i: number) => String.fromCharCode(65 + i)
   const cols = hasOpts ? optCols(c.lua_chon!) : 0
@@ -239,7 +253,7 @@ function CauItem({ no, c, gv, lines = 0 }: { no: number; c: CauHoi; gv: boolean;
 }
 
 // CSS toàn cục (màn hình + cô lập khi in) — KHÔNG đưa vào paged.js.
-const CHROME_CSS = `
+export const CHROME_CSS = `
 .pv-src{position:absolute;left:-99999px;top:0;width:210mm;opacity:0;pointer-events:none}
 .pv-pages{margin:0 auto}
 .pv-pages .pagedjs_page{background:#fff;box-shadow:0 6px 22px rgba(0,0,0,.16);margin:0 auto 16px}
@@ -317,11 +331,11 @@ function waveUri(path: string, c1: string, c2: string, c3: string): string {
 }
 
 // Stylesheet cho paged.js: A4 + lề + dải sóng full-bleed (pseudo của pagebox) + số trang (@page margin box).
-function buildPagedCss(taiLieu: TaiLieuFull['taiLieu'], ch: CauHinh, accent: string): string {
+export function buildPagedCss(taiLieu: TaiLieuFull['taiLieu'], ch: CauHinh, accent: string): string {
   const head = ch.header !== 'none', foot = ch.footer !== 'none'
-  const headUri = waveUri('M0,0 H1200 V68 C940,104 760,44 520,74 C300,106 150,56 0,78 Z', '#E91E8C', '#F7941E', '#2D9CDB')
-  // Dải sóng full-bleed FULL CHIỀU RỘNG (mirror của header) — path cũ chỉ vẽ tới x≈520 nên nửa phải trắng tinh.
-  const footUri = waveUri('M0,100 H1200 V40 C940,4 760,64 520,34 C300,6 150,56 0,42 Z', '#2D9CDB', '#F7941E', '#E91E8C')
+  // Dải MÀU cao hơn (phủ gần hết dải) → text canh giữa nằm TRỌN trên màu, không rơi vào khoảng trắng trên sóng.
+  const headUri = waveUri('M0,0 H1200 V84 C940,100 760,66 520,88 C300,100 150,76 0,92 Z', '#E91E8C', '#F7941E', '#2D9CDB')
+  const footUri = waveUri('M0,100 H1200 V14 C940,0 760,34 520,10 C300,0 150,26 0,16 Z', '#2D9CDB', '#F7941E', '#E91E8C')
   const headTxt = cssStr(`${taiLieu.ten} · Khối ${taiLieu.khoi}`)
   const footTxt = cssStr(`BK ACADEMY · ${taiLieu.ten} · Khối ${taiLieu.khoi}`)
   const logoUrl = location.origin + '/Logo.png' // PHẢI tuyệt đối: paged.js rewrite url() theo base blob → '/x' sẽ throw

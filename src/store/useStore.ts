@@ -52,6 +52,7 @@ export const LAMTAILIEU_CHILDREN: NavLeaf[] = [
   { id: 'lamtailieu:et', ten: 'ET' },
   { id: 'lamtailieu:de_thi', ten: 'Đề thi' },
   { id: 'lamtailieu:bo_tro', ten: 'Tài liệu bổ trợ' },
+  { id: 'lamtailieu:kho', ten: '📦 Kho tài liệu' },
 ]
 export const adminNavFromQuyen = (q: MyQuyen | null): NavGroup[] => {
   const leaves = accessibleLeaves(q)

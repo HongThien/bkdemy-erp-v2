@@ -3,13 +3,14 @@
 // Gắn buổi qua (lớp+ngày); tab Chấm ET (buổi học) load sau qua getETByBuoi.
 import { useEffect, useState } from 'react'
 import {
-  listET, createET, deleteTaiLieu, getETCaus, setETCaus, suggestCauForDang,
-  maET, type ETDoc,
+  listET, createET, deleteTaiLieu, getTaiLieuFull, updateTaiLieu, setETCaus, suggestCauForDang,
+  duplicateTaiLieu, maET, ET_FORMS, etFormOf, type ETDoc, type CauHinh, type ETForm,
 } from '../../lib/tailieu'
 import { listLop, type Lop } from '../../lib/nhansu'
 import { listDaiDang, listCauByDang, listDaiMap, groupMap, LOAI_CAU, type CauHoi, type Tier1Node } from '../../lib/kho/api'
 import { MathText, inp, Shell, Field } from '../kho/ui'
 import { KhoPicker } from './TaiLieuBuilder'
+import ETPrintView from './ETPrintView'
 import SearchSelect from '../../components/SearchSelect'
 
 const loaiLabel = (v: string) => LOAI_CAU.find((x) => x.value === v)?.label ?? v
@@ -22,7 +23,7 @@ export default function ETScreen() {
   const [list, setList] = useState<ETDoc[]>([])
   const [lops, setLops] = useState<Lop[]>([])
   const [loading, setLoading] = useState(true)
-  const [creating, setCreating] = useState(false)
+  const [creating, setCreating] = useState<{ templateId?: string } | null>(null)
   const [openEt, setOpenEt] = useState<ETView | null>(null)
   const lopTen = (id: string | null) => lops.find((l) => l.id === id)?.ten_lop ?? '?'
 
@@ -34,37 +35,65 @@ export default function ETScreen() {
 
   if (openEt) return <ETBuilder et={openEt} onClose={() => { setOpenEt(null); reload() }} />
 
+  const mau = list.filter((t) => !t.lop_id)          // MẪU trong kho (không gắn buổi) — tái sử dụng
+  const buoiList = list.filter((t) => t.lop_id)       // ET đã gắn buổi
+  const open = (t: ETDoc) => setOpenEt({ ...t, ten_lop: lopTen(t.lop_id) })
+  const xoa = async (t: ETDoc) => { if (confirm('Xoá ET này?')) { await deleteTaiLieu(t.id); reload() } }
+
   return (
     <div className="flex h-full flex-col bg-[#fafafb]">
       <div className="flex items-center gap-4 border-b border-slate-200 bg-white px-6 py-2.5">
         <span className="rounded bg-violet-50 px-2 py-0.5 text-[12px] font-medium text-violet-600">ET · gắn buổi (lớp + ngày)</span>
-        <button onClick={() => setCreating(true)} className="ml-auto rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500">+ Tạo ET</button>
+        <button onClick={() => setCreating({})} className="ml-auto rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500">+ Tạo ET</button>
       </div>
       <div className="min-h-0 flex-1 overflow-auto p-6">
         {loading ? <p className="text-sm text-slate-400">Đang tải…</p>
           : list.length === 0 ? <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">Chưa có ET nào. Bấm <b className="text-slate-600">+ Tạo ET</b> — chọn lớp + ngày của buổi cần ra đề.</div>
           : (
-            <div className="grid grid-cols-1 gap-3 lg:grid-cols-2 2xl:grid-cols-3">
-              {list.map((t) => (
-                <div key={t.id} className="flex flex-col rounded-xl border border-slate-200 bg-white p-4">
-                  <div className="text-[15px] font-semibold text-slate-900">{t.ten}</div>
-                  <div className="mt-1 font-mono text-[11px] text-violet-500">{t.lop_id && t.ngay ? maET(lopTen(t.lop_id), t.ngay) : '(chưa gắn buổi)'}</div>
-                  <div className="mt-0.5 text-[12px] text-slate-400">Lớp {lopTen(t.lop_id)} · buổi {fmtNgay(t.ngay)} · khối {t.khoi}</div>
-                  <div className="mt-3 flex gap-2">
-                    <button onClick={() => setOpenEt({ ...t, ten_lop: lopTen(t.lop_id) })} className="rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-indigo-500">Mở / Soạn</button>
-                    <button onClick={async () => { if (confirm('Xoá ET này?')) { await deleteTaiLieu(t.id); reload() } }} className="rounded-md border border-slate-200 px-3 py-1.5 text-[13px] text-slate-500 hover:border-rose-300 hover:text-rose-600">Xoá</button>
+            <>
+              {mau.length > 0 && (
+                <section className="mb-6">
+                  <div className="mb-2 text-[12px] font-semibold uppercase tracking-wider text-slate-400">📦 Kho mẫu (tái sử dụng)</div>
+                  <div className="grid grid-cols-1 gap-3 lg:grid-cols-2 2xl:grid-cols-3">
+                    {mau.map((t) => (
+                      <div key={t.id} className="flex flex-col rounded-xl border border-violet-200 bg-violet-50/30 p-4">
+                        <div className="text-[15px] font-semibold text-slate-900">{t.ten}</div>
+                        <div className="mt-0.5 text-[12px] text-slate-400">Mẫu · khối {t.khoi}</div>
+                        <div className="mt-3 flex flex-wrap gap-2">
+                          <button onClick={() => setCreating({ templateId: t.id })} className="rounded-md bg-violet-600 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-violet-500">Dùng cho buổi</button>
+                          <button onClick={() => open(t)} className="rounded-md border border-slate-200 px-3 py-1.5 text-[13px] text-slate-600 hover:border-indigo-300">Sửa mẫu</button>
+                          <button onClick={() => xoa(t)} className="rounded-md border border-slate-200 px-3 py-1.5 text-[13px] text-slate-500 hover:border-rose-300 hover:text-rose-600">Xoá</button>
+                        </div>
+                      </div>
+                    ))}
                   </div>
+                </section>
+              )}
+              <section>
+                {mau.length > 0 && <div className="mb-2 text-[12px] font-semibold uppercase tracking-wider text-slate-400">ET theo buổi</div>}
+                <div className="grid grid-cols-1 gap-3 lg:grid-cols-2 2xl:grid-cols-3">
+                  {buoiList.map((t) => (
+                    <div key={t.id} className="flex flex-col rounded-xl border border-slate-200 bg-white p-4">
+                      <div className="text-[15px] font-semibold text-slate-900">{t.ten}</div>
+                      <div className="mt-1 font-mono text-[11px] text-violet-500">{t.lop_id && t.ngay ? maET(lopTen(t.lop_id), t.ngay) : '(chưa gắn buổi)'}</div>
+                      <div className="mt-0.5 text-[12px] text-slate-400">Lớp {lopTen(t.lop_id)} · buổi {fmtNgay(t.ngay)} · khối {t.khoi}</div>
+                      <div className="mt-3 flex gap-2">
+                        <button onClick={() => open(t)} className="rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-indigo-500">Mở / Soạn</button>
+                        <button onClick={() => xoa(t)} className="rounded-md border border-slate-200 px-3 py-1.5 text-[13px] text-slate-500 hover:border-rose-300 hover:text-rose-600">Xoá</button>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              </section>
+            </>
           )}
       </div>
-      {creating && <CreateETModal lops={lops} onClose={() => setCreating(false)} onCreated={(v) => { setCreating(false); reload(); setOpenEt(v) }} />}
+      {creating && <CreateETModal lops={lops} templateId={creating.templateId} onClose={() => setCreating(null)} onCreated={(v) => { setCreating(null); reload(); setOpenEt(v) }} />}
     </div>
   )
 }
 
-function CreateETModal({ lops, onClose, onCreated }: { lops: Lop[]; onClose: () => void; onCreated: (v: ETView) => void }) {
+function CreateETModal({ lops, templateId, onClose, onCreated }: { lops: Lop[]; templateId?: string; onClose: () => void; onCreated: (v: ETView) => void }) {
   const [lopId, setLopId] = useState<string | null>(null)
   const [ngay, setNgay] = useState('')
   const [busy, setBusy] = useState(false)
@@ -76,13 +105,16 @@ function CreateETModal({ lops, onClose, onCreated }: { lops: Lop[]; onClose: () 
     setBusy(true); setErr(null)
     try {
       const ten = `ET ${lop.ten_lop} · ${ngay.split('-').reverse().join('/')}`
-      const et = await createET({ lopId: lop.id, ngay, ten, khoi: lop.khoi ?? '' })
-      onCreated({ ...et, ten_lop: lop.ten_lop })
+      // từ MẪU → nhân bản (giữ câu/form); không thì tạo rỗng.
+      const et = templateId
+        ? await duplicateTaiLieu(templateId, { ten, lop_id: lop.id, ngay })
+        : await createET({ lopId: lop.id, ngay, ten, khoi: lop.khoi ?? '' })
+      onCreated({ ...(et as ETDoc), ten_lop: lop.ten_lop })
     } catch (e: any) { setErr(e.message ?? String(e)); setBusy(false) }
   }
 
   return (
-    <Shell title="Tạo ET cho 1 buổi" onClose={onClose}>
+    <Shell title={templateId ? 'Dùng mẫu cho 1 buổi' : 'Tạo ET cho 1 buổi'} onClose={onClose}>
       <Field label="Lớp">
         <SearchSelect value={lopId} onChange={setLopId} placeholder="chọn lớp…"
           options={lops.map((l) => ({ id: l.id, label: l.ten_lop, sub: `${l.mon}${l.khoi ? ' · K' + l.khoi : ''}` }))} />
@@ -106,6 +138,8 @@ function ETBuilder({ et, onClose }: { et: ETView; onClose: () => void }) {
   const [dangOpts, setDangOpts] = useState<{ ma_dang: string; ten_dang: string; ten_chuyen_de: string }[]>([])
   const [picker, setPicker] = useState<{ idx: number; maDang: string } | null>(null)
   const [dangModal, setDangModal] = useState<number | null>(null) // hàng đang chọn dạng (popup to)
+  const [ch, setCh] = useState<CauHinh>({})
+  const [printing, setPrinting] = useState(false)
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
   const tenDang = (md: string | null) => dangOpts.find((d) => d.ma_dang === md)?.ten_dang ?? md ?? ''
@@ -113,13 +147,23 @@ function ETBuilder({ et, onClose }: { et: ETView; onClose: () => void }) {
   async function load() {
     setLoading(true)
     try {
-      const [ds, caus] = await Promise.all([listDaiDang(et.khoi ?? ''), getETCaus(et.id)])
+      const [ds, full] = await Promise.all([listDaiDang(et.khoi ?? ''), getTaiLieuFull(et.id)])
+      const caus = full.phans.find((p) => p.loai_phan === 'custom')?.caus ?? []
       setDangOpts(ds.map((d) => ({ ma_dang: d.ma_dang, ten_dang: d.ten_dang, ten_chuyen_de: d.ten_chuyen_de })))
       setCau(Object.fromEntries(caus.map((c) => [c.ma_cau, c])))
+      setCh(full.taiLieu.cau_hinh ?? {})
       const r: Row[] = caus.map((c) => ({ maDang: c.dang_chinh, maCau: c.ma_cau }))
       while (r.length < DEFAULT_ROWS) r.push({ maDang: null, maCau: null })
       setRows(r)
     } catch (e: any) { setErr(e.message ?? String(e)) } finally { setLoading(false) }
+  }
+  async function setLines(maCau: string, n: number) {
+    const next = { ...ch, btvnLinesByCau: { ...(ch.btvnLinesByCau ?? {}), [maCau]: n } }
+    setCh(next); await updateTaiLieu(et.id, { cau_hinh: next })
+  }
+  async function setForm(maCau: string, f: ETForm) {
+    const next = { ...ch, etFormByCau: { ...(ch.etFormByCau ?? {}), [maCau]: f } }
+    setCh(next); await updateTaiLieu(et.id, { cau_hinh: next })
   }
   useEffect(() => { load() }, [et.id]) // eslint-disable-line
 
@@ -145,6 +189,12 @@ function ETBuilder({ et, onClose }: { et: ETView; onClose: () => void }) {
   }
   const themCau = () => setRows([...rows, { maDang: null, maCau: null }])
   const xoaRow = (idx: number) => persist(rows.filter((_, i) => i !== idx))
+  async function luuMau() {
+    const ten = prompt('Tên mẫu lưu vào kho:', `Mẫu: ${et.ten}`)?.trim()
+    if (!ten) return
+    try { await duplicateTaiLieu(et.id, { ten, lop_id: null, ngay: null }); alert('Đã lưu vào KHO MẪU. Vào danh sách ET → mục “Kho mẫu” → “Dùng cho buổi” để tái sử dụng.') }
+    catch (e: any) { alert(e.message ?? String(e)) }
+  }
 
   if (err) return <div className="p-8 text-sm text-rose-600">Lỗi: {err}</div>
   if (loading) return <div className="p-8 text-sm text-slate-400">Đang tải…</div>
@@ -157,6 +207,8 @@ function ETBuilder({ et, onClose }: { et: ETView; onClose: () => void }) {
         <span className="text-sm font-semibold text-slate-900">{et.ten}</span>
         <span className="font-mono text-[11px] text-violet-500">{et.lop_id && et.ngay ? maET(et.ten_lop, et.ngay) : ''}</span>
         <span className="ml-auto text-[12px] text-slate-400">{soCau} câu</span>
+        <button onClick={luuMau} disabled={!soCau} className="rounded-md border border-violet-300 px-3 py-1.5 text-[13px] font-medium text-violet-700 hover:bg-violet-50 disabled:opacity-40" title="Lưu thành mẫu trong kho để tái sử dụng">💾 Lưu vào kho</button>
+        <button onClick={() => setPrinting(true)} disabled={!soCau} className="rounded-md bg-indigo-600 px-4 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">🖨 Xem / In</button>
       </div>
 
       <div className="min-h-0 flex-1 overflow-auto p-5">
@@ -165,6 +217,8 @@ function ETBuilder({ et, onClose }: { et: ETView; onClose: () => void }) {
           <div className="space-y-2">
             {rows.map((r, i) => {
               const c = r.maCau ? cau[r.maCau] : null
+              const form = c ? etFormOf(c, ch) : null
+              const formOpts = ET_FORMS.filter((f) => f.v !== 'trac_nghiem' || !!(c?.lua_chon && c.lua_chon.length))
               return (
                 <div key={i} className="flex items-start gap-2 rounded-xl border border-slate-200 bg-white p-2.5">
                   <span className="mt-1.5 w-6 shrink-0 text-center text-[13px] font-bold text-violet-600">{i + 1}</span>
@@ -175,8 +229,23 @@ function ETBuilder({ et, onClose }: { et: ETView; onClose: () => void }) {
                     {c ? <div className="truncate text-[13px] text-slate-700"><MathText>{c.noi_dung}</MathText></div>
                       : r.maDang ? <span className="text-[12px] italic text-slate-400">chưa có câu</span>
                       : <span className="text-[12px] italic text-slate-300">chọn dạng để hệ gợi ý câu</span>}
-                    {c && <span className="ml-1 align-middle rounded bg-slate-100 px-1.5 text-[10px] font-medium text-slate-500">{loaiLabel(c.loai_cau)}</span>}
+                    {c && (
+                      <div className="mt-1 flex flex-wrap items-center gap-1.5">
+                        <span className="text-[10px] text-slate-300">kho: {loaiLabel(c.loai_cau)} · in dạng:</span>
+                        <div className="flex gap-0.5">
+                          {formOpts.map((f) => (
+                            <button key={f.v} onClick={() => setForm(c.ma_cau, f.v)} title="Form hiển thị trong đề (khác loại kho)"
+                              className={`rounded px-1.5 py-0.5 text-[10px] font-medium ${form === f.v ? 'bg-violet-600 text-white' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}>{f.lbl}</button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
+                  {c && form === 'tu_luan' && (
+                    <label className="flex shrink-0 items-center gap-1 pt-1.5 text-[11px] text-slate-400" title="Số dòng kẻ cho HS viết (bản in)">dòng
+                      <input type="number" min={0} max={30} value={ch.btvnLinesByCau?.[c.ma_cau] ?? 4} onChange={(e) => setLines(c.ma_cau, Math.max(0, Math.min(30, +e.target.value || 0)))} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
+                    </label>
+                  )}
                   {r.maDang && (
                     <div className="flex shrink-0 gap-1 pt-0.5">
                       <button onClick={() => doiCau(i)} title="Đổi câu khác (ít dùng kế tiếp)" className="rounded-md bg-indigo-50 px-2 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-100">↻ Đổi</button>
@@ -192,6 +261,7 @@ function ETBuilder({ et, onClose }: { et: ETView; onClose: () => void }) {
         </div>
       </div>
 
+      {printing && <ETPrintView id={et.id} onClose={() => setPrinting(false)} />}
       {dangModal !== null && <DangPickerOne khoi={et.khoi ?? ''} onClose={() => setDangModal(null)}
         onPick={(ma) => { const i = dangModal; setDangModal(null); pickDang(i, ma) }} />}
       {picker && <KhoPicker maDangs={[picker.maDang]} selected={rows[picker.idx].maCau ? [rows[picker.idx].maCau!] : []} onClose={() => setPicker(null)}

@@ -9,8 +9,19 @@ const LIMIT = 10000
 export type PhanLoai = 'buoi' | 'lt_chuyen_de' | 'dang' | 'btvn' | 'custom'
 // btvnLinesByCau = số dòng kẻ (chấm chấm) để HS viết, RIÊNG cho TỪNG bài BTVN (key = ma_cau).
 // Không có entry cho câu nào → dùng DEFAULT_BTVN_LINES. (HS làm thẳng vào phiếu, không làm vào vở.)
-export type CauHinh = { header?: 'wave' | 'none'; footer?: 'wave' | 'none'; watermark?: 'logo' | 'none'; mau?: string; btvnLinesByCau?: Record<string, number> }
+// etFormByCau = FORM HIỂN THỊ của câu TRONG ET (khác loai_cau của kho) — vd câu kho "trả lời ngắn"
+// vẫn in dạng "tự luận" (kẻ dòng) nếu GV muốn. Per ma_cau.
+export type CauHinh = { header?: 'wave' | 'none'; footer?: 'wave' | 'none'; watermark?: 'logo' | 'none'; mau?: string; btvnLinesByCau?: Record<string, number>; etFormByCau?: Record<string, string> }
 export const DEFAULT_BTVN_LINES = 5
+// Form hiển thị trong ET (độc lập loai_cau kho).
+export type ETForm = 'trac_nghiem' | 'tra_loi_ngan' | 'tu_luan'
+export const ET_FORMS: { v: ETForm; lbl: string }[] = [{ v: 'trac_nghiem', lbl: 'Trắc nghiệm' }, { v: 'tra_loi_ngan', lbl: 'Trả lời ngắn' }, { v: 'tu_luan', lbl: 'Tự luận' }]
+export function etFormOf(c: { ma_cau: string; loai_cau: string; lua_chon?: string[] | null }, ch: CauHinh): ETForm {
+  const set = ch.etFormByCau?.[c.ma_cau]
+  if (set === 'trac_nghiem' || set === 'tra_loi_ngan' || set === 'tu_luan') return set
+  if (c.lua_chon && c.lua_chon.length) return 'trac_nghiem'      // mặc định: có phương án → trắc nghiệm
+  return c.loai_cau === 'tu_luan' ? 'tu_luan' : 'tra_loi_ngan'   // còn lại theo kho, default trả lời ngắn
+}
 export type TaiLieu = { id: string; loai: string; ten: string; khoi: string; ma_chuyen_de: string | null; theme: string; cau_hinh?: CauHinh; created_at?: string; updated_at?: string; created_by?: string | null }
 export type TaiLieuPhan = { id: string; tai_lieu_id: string; thu_tu: number; loai_phan: PhanLoai; ref_ma: string | null; tieu_de: string | null; noi_dung: string | null }
 type LtRow = { noi_dung: string; file_url: string | null; ten_file: string | null }
@@ -29,6 +40,12 @@ export async function listTaiLieu(khoi?: string, loai = 'giao_trinh'): Promise<T
   let q = supabase.from('tai_lieu').select('*').eq('loai', loai).order('created_at', { ascending: false }).limit(LIMIT)
   if (khoi) q = q.eq('khoi', khoi)
   const { data, error } = await q
+  if (error) throw error
+  return (data ?? []) as TaiLieu[]
+}
+// Kho tài liệu = MỌI loại (giáo trình/ET/…). lop_id/ngay cho ET.
+export async function listAllTaiLieu(): Promise<TaiLieu[]> {
+  const { data, error } = await supabase.from('tai_lieu').select('*').order('created_at', { ascending: false }).limit(LIMIT)
   if (error) throw error
   return (data ?? []) as TaiLieu[]
 }
@@ -274,6 +291,86 @@ export async function getETByBuoi(lopId: string, ngay: string): Promise<ETDoc | 
   if (error) throw error
   return (data as ETDoc) ?? null
 }
+// Nhân bản 1 tài liệu (copy tai_lieu + phans + câu + cau_hinh). Dùng cho: lưu MẪU (lop_id/ngay=null) hoặc tạo từ mẫu.
+export async function duplicateTaiLieu(srcId: string, over: { ten: string; lop_id?: string | null; ngay?: string | null }): Promise<TaiLieu> {
+  const { data: src, error: eS } = await supabase.from('tai_lieu').select('*').eq('id', srcId).single()
+  if (eS) throw eS
+  const s = src as any
+  const { data: { user } } = await supabase.auth.getUser()
+  const { data: nw, error } = await supabase.from('tai_lieu').insert({
+    loai: s.loai, ten: over.ten, khoi: s.khoi, ma_chuyen_de: s.ma_chuyen_de, theme: s.theme, cau_hinh: s.cau_hinh,
+    lop_id: over.lop_id ?? null, ngay: over.ngay ?? null, created_by: user?.id ?? null,
+  }).select().single()
+  if (error) throw error
+  const phans = await listPhan(srcId)
+  for (const p of phans) {
+    const np = await addPhan({ tai_lieu_id: (nw as TaiLieu).id, thu_tu: p.thu_tu, loai_phan: p.loai_phan, ref_ma: p.ref_ma, tieu_de: p.tieu_de, noi_dung: p.noi_dung })
+    const { data: caus } = await supabase.from('tai_lieu_cau').select('ma_cau, thu_tu').eq('phan_id', p.id).order('thu_tu').limit(LIMIT)
+    if (caus?.length) await supabase.from('tai_lieu_cau').insert(caus.map((c: any) => ({ phan_id: np.id, ma_cau: c.ma_cau, thu_tu: c.thu_tu })))
+  }
+  return nw as TaiLieu
+}
+
+// Copy 1 phan (+ câu) sang tài liệu khác.
+async function copyPhanInto(targetId: string, p: TaiLieuPhan, thu_tu: number): Promise<void> {
+  const np = await addPhan({ tai_lieu_id: targetId, thu_tu, loai_phan: p.loai_phan, ref_ma: p.ref_ma, tieu_de: p.tieu_de, noi_dung: p.noi_dung })
+  const { data: caus } = await supabase.from('tai_lieu_cau').select('ma_cau, thu_tu').eq('phan_id', p.id).order('thu_tu').limit(LIMIT)
+  if (caus?.length) await supabase.from('tai_lieu_cau').insert((caus as any[]).map((c) => ({ phan_id: np.id, ma_cau: c.ma_cau, thu_tu: c.thu_tu })))
+}
+// TRÍCH XUẤT 1 buổi của giáo trình master → doc con BÁM (lớp+ngày): "Giáo trình buổi X" (lý thuyết+luyện) và/hoặc "BTVN buổi X".
+// loai con: 'giao_trinh_buoi' (vận hành) · 'btvn' (vận hành). Master (giao_trinh) = phát triển. Cả 3 hiện ở Kho.
+export async function trichXuatBuoi(masterId: string, buoiPhanId: string, opts: { lopId: string; ngay: string; khoi: string; tenLop: string; tenBuoi: string; giaoTrinh: boolean; btvn: boolean }): Promise<TaiLieu[]> {
+  const phans = await listPhan(masterId)
+  const { data: master } = await supabase.from('tai_lieu').select('cau_hinh, theme').eq('id', masterId).single()
+  const i = phans.findIndex((p) => p.id === buoiPhanId)
+  if (i < 0) throw new Error('Không thấy buổi.')
+  const marker = phans[i]
+  const dangPhans: TaiLieuPhan[] = [], btvnPhans: TaiLieuPhan[] = []
+  for (let j = i + 1; j < phans.length && phans[j].loai_phan !== 'buoi'; j++) {
+    if (phans[j].loai_phan === 'dang') dangPhans.push(phans[j])
+    else if (phans[j].loai_phan === 'btvn') btvnPhans.push(phans[j])
+  }
+  const { data: { user } } = await supabase.auth.getUser()
+  const ngayVn = opts.ngay.split('-').reverse().join('/')
+  const mk = async (loai: string, ten: string): Promise<TaiLieu> => {
+    const { data, error } = await supabase.from('tai_lieu').insert({
+      loai, ten, khoi: opts.khoi, theme: (master as any)?.theme ?? 'bkdemy', cau_hinh: (master as any)?.cau_hinh ?? {},
+      lop_id: opts.lopId, ngay: opts.ngay, nguon_id: masterId, nguon_buoi: buoiPhanId, created_by: user?.id ?? null,
+    }).select().single()
+    if (error) throw error
+    return data as TaiLieu
+  }
+  const out: TaiLieu[] = []
+  if (opts.giaoTrinh) {
+    const nw = await mk('giao_trinh_buoi', `GT ${opts.tenLop} ${ngayVn} · ${opts.tenBuoi}`)
+    let t = 0; await copyPhanInto(nw.id, marker, t++); for (const p of dangPhans) await copyPhanInto(nw.id, p, t++)
+    out.push(nw)
+  }
+  if (opts.btvn && btvnPhans.length) {
+    const nw = await mk('btvn', `BTVN ${opts.tenLop} ${ngayVn} · ${opts.tenBuoi}`)
+    let t = 0; await copyPhanInto(nw.id, marker, t++); for (const p of btvnPhans) await copyPhanInto(nw.id, p, t++)
+    out.push(nw)
+  }
+  return out
+}
+
+// Trạng thái đã trích của 1 master cho 1 lớp: gom theo buổi nguồn → ngày + đã có GT buổi / BTVN chưa.
+export type TrichState = { nguon_buoi: string; ngay: string | null; hasGT: boolean; hasBTVN: boolean; ids: string[] }
+export async function listTrichXuat(masterId: string, lopId: string): Promise<Record<string, TrichState>> {
+  const { data, error } = await supabase.from('tai_lieu').select('id, loai, ngay, nguon_buoi')
+    .eq('nguon_id', masterId).eq('lop_id', lopId).limit(LIMIT)
+  if (error) throw error
+  const out: Record<string, TrichState> = {}
+  for (const r of (data ?? []) as any[]) {
+    if (!r.nguon_buoi) continue
+    const s = (out[r.nguon_buoi] ??= { nguon_buoi: r.nguon_buoi, ngay: r.ngay, hasGT: false, hasBTVN: false, ids: [] })
+    s.ngay = r.ngay; s.ids.push(r.id)
+    if (r.loai === 'giao_trinh_buoi') s.hasGT = true
+    if (r.loai === 'btvn') s.hasBTVN = true
+  }
+  return out
+}
+
 // ET câu-centric: 1 phan 'custom' chứa câu THEO THỨ TỰ (mỗi câu 1 "hàng" trong UI; dạng = câu.dang_chinh).
 async function etPhanId(taiLieuId: string): Promise<string> {
   const ex = (await listPhan(taiLieuId)).find((p) => p.loai_phan === 'custom')

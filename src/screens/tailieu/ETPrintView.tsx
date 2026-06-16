@@ -1,0 +1,159 @@
+// In ET cho HS làm — engine paged.js (tái dùng từ PrintView). Phiếu: header Họ-tên/Lớp/Điểm + mã ET.
+// 3 dạng: TRẮC NGHIỆM (CauItem có phương án) · TRẢ LỜI NGẮN (BẢNG: đề trái / ô điền đáp án phải) ·
+// TỰ LUẬN (dòng kẻ để viết, số dòng = cau_hinh.btvnLinesByCau[ma_cau]). Bản GV = kèm đáp án/lời giải.
+import { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
+import { Previewer } from 'pagedjs'
+import { getTaiLieuFull, etFormOf, type TaiLieuFull } from '../../lib/tailieu'
+import { MathText } from '../kho/ui'
+import { CauItem, CHROME_CSS, buildPagedCss } from './PrintView'
+
+const DEFAULT_TL_LINES = 4
+
+export default function ETPrintView({ id, onClose }: { id: string; onClose: () => void }) {
+  const [full, setFull] = useState<TaiLieuFull | null>(null)
+  const [err, setErr] = useState<string | null>(null)
+  const [gv, setGv] = useState(false)
+  const [pages, setPages] = useState(0)
+  const [rendering, setRendering] = useState(true)
+  const srcRef = useRef<HTMLDivElement>(null)
+  const dstRef = useRef<HTMLDivElement>(null)
+  useEffect(() => { getTaiLieuFull(id).then(setFull).catch((e) => setErr(e.message ?? String(e))) }, [id])
+
+  useEffect(() => {
+    if (!full || !srcRef.current || !dstRef.current) return
+    let cancelled = false
+    setRendering(true)
+    const ch = full.taiLieu.cau_hinh ?? {}
+    const css = buildPagedCss(full.taiLieu, ch, ch.mau || '#7c3aed') + ET_CSS
+    const cssUrl = URL.createObjectURL(new Blob([css], { type: 'text/css' }))
+    const html = srcRef.current.innerHTML
+    dstRef.current.innerHTML = ''
+    new Previewer().preview(html, [cssUrl], dstRef.current)
+      .then((flow: { total?: number }) => { if (!cancelled) { setPages(flow?.total ?? 0); setRendering(false) } })
+      .catch(() => { if (!cancelled) setRendering(false) })
+      .finally(() => URL.revokeObjectURL(cssUrl))
+    return () => { cancelled = true }
+  }, [full, gv])
+
+  const seg = (on: boolean) => `rounded-md px-3 py-1 text-[13px] font-medium transition ${on ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`
+  return createPortal(
+    <div className="pv-overlay fixed inset-0 z-[80] flex flex-col bg-slate-300/90">
+      <div className="no-print flex items-center gap-3 border-b border-slate-300 bg-white px-5 py-2.5 shadow-sm">
+        <span className="text-sm font-semibold text-slate-800">Xem &amp; in ET</span>
+        <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5">
+          <button onClick={() => setGv(false)} className={seg(!gv)}>Bản học sinh</button>
+          <button onClick={() => setGv(true)} className={seg(gv)}>Bản giáo viên</button>
+        </div>
+        <span className="text-[12px] text-slate-400">{rendering ? 'đang dựng trang…' : `${pages} trang`}</span>
+        <div className="ml-auto flex gap-2">
+          <button onClick={() => window.print()} disabled={rendering} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">🖨 In / Lưu PDF</button>
+          <button onClick={onClose} className="rounded-md border border-slate-300 px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-100">Đóng</button>
+        </div>
+      </div>
+      <div className="pv-scroll min-h-0 flex-1 overflow-auto py-6">
+        {err ? <p className="text-center text-rose-600">Lỗi: {err}</p>
+          : !full ? <p className="text-center text-slate-400">Đang tải…</p>
+          : <div ref={dstRef} className="pv-pages" />}
+      </div>
+      <div ref={srcRef} className="pv-src" aria-hidden>{full && <ETDoc full={full} gv={gv} />}</div>
+      <style>{CHROME_CSS}</style>
+    </div>,
+    document.body,
+  )
+}
+
+function ETDoc({ full, gv }: { full: TaiLieuFull; gv: boolean }) {
+  const ch = full.taiLieu.cau_hinh ?? {}
+  const lines = ch.btvnLinesByCau ?? {}
+  const caus = full.phans.find((p) => p.loai_phan === 'custom')?.caus ?? []
+  // gom theo FORM HIỂN THỊ đã chọn trong ET (etFormOf), KHÔNG theo loai_cau kho.
+  const tn = caus.filter((c) => etFormOf(c, ch) === 'trac_nghiem')
+  const tln = caus.filter((c) => etFormOf(c, ch) === 'tra_loi_ngan')
+  const tl = caus.filter((c) => etFormOf(c, ch) === 'tu_luan')
+  let no = 0
+  const next = () => ++no
+  const roman = ['I', 'II', 'III', 'IV']
+  let sec = 0
+  const part = () => roman[sec++]
+  return (
+    <div className="pv-et">
+      <div className="pv-bt-head">
+        <div className="pv-bt-titlewrap">
+          <div className="pv-bt-eyebrow">Đề ET{gv ? ' · Đáp án' : ''}</div>
+          <div className="pv-bt-title">{full.taiLieu.ten}</div>
+        </div>
+        {!gv && (
+          <>
+            {/* Họ tên + Lớp CÙNG 1 dòng */}
+            <div className="pv-et-info">
+              <span className="pv-bt-field pv-et-name"><span className="pv-bt-lbl">Họ và tên:</span><span className="pv-bt-fill" /></span>
+              <span className="pv-bt-field pv-et-lop"><span className="pv-bt-lbl">Lớp:</span><span className="pv-bt-fill" /></span>
+            </div>
+            {/* ET chấm THEO CÂU: bảng ngang 2 hàng — trên = Câu i, dưới = ô trống điền Đ/S. Bao nhiêu câu bấy nhiêu cột. */}
+            <table className="pv-et-score"><tbody>
+              <tr>{caus.map((_, i) => <th key={i}>Câu {i + 1}</th>)}</tr>
+              <tr>{caus.map((_, i) => <td key={i} />)}</tr>
+            </tbody></table>
+          </>
+        )}
+      </div>
+
+      {tn.length > 0 && (
+        <section className="pv-sec"><h2 className="pv-h-dang">Phần {part()} · Trắc nghiệm</h2>
+          <ol className="pv-caulist">{tn.map((c) => <CauItem key={c.ma_cau} no={next()} c={c} gv={gv} />)}</ol>
+        </section>
+      )}
+
+      {tln.length > 0 && (
+        <section className="pv-sec"><h2 className="pv-h-dang">Phần {part()} · Trả lời ngắn</h2>
+          <table className="pv-et-tn"><tbody>{tln.map((c) => (
+            <tr key={c.ma_cau}>
+              <td className="q"><span className="pv-cau-no">Câu {next()}.</span> <MathText>{c.noi_dung}</MathText></td>
+              <td className="a">{gv && c.dap_an ? <MathText>{c.dap_an}</MathText> : ''}</td>
+            </tr>
+          ))}</tbody></table>
+        </section>
+      )}
+
+      {tl.length > 0 && (
+        <section className="pv-sec"><h2 className="pv-h-dang">Phần {part()} · Tự luận</h2>
+          {/* Tự luận = đề + dòng kẻ (BỎ phương án dù câu kho có) · bản GV = đáp án/lời giải */}
+          <ol className="pv-caulist">{tl.map((c) => (
+            <li key={c.ma_cau} className="pv-cau">
+              <div className="pv-math"><span className="pv-cau-no">Câu {next()}.</span><MathText>{c.noi_dung}</MathText></div>
+              {c.anh_de && <img src={c.anh_de} alt="" className="pv-img" />}
+              {gv && (c.dap_an || c.loi_giai)
+                ? <div className="pv-loigiai">{c.dap_an && <div><b>Đáp án:</b> <MathText>{c.dap_an}</MathText></div>}{c.loi_giai && <div><b>Lời giải:</b> <MathText>{c.loi_giai}</MathText></div>}</div>
+                : <div className="pv-write">{Array.from({ length: lines[c.ma_cau] ?? DEFAULT_TL_LINES }).map((_, k) => <div key={k} className="pv-wline" />)}</div>}
+            </li>
+          ))}</ol>
+        </section>
+      )}
+
+      {caus.length === 0 && <p className="pv-empty">ET chưa có câu nào.</p>}
+    </div>
+  )
+}
+
+const ET_CSS = `
+/* Họ tên + Lớp cùng 1 dòng (Họ tên co giãn, Lớp cố định). */
+.pv-et-info{display:flex;align-items:flex-end;gap:20px;margin:4px 0 11px}
+.pv-et-name{flex:1}
+.pv-et-lop{width:42mm}
+/* Bảng điểm THEO CÂU: 2 hàng (Câu i / ô trống Đ-S), bao nhiêu câu bấy nhiêu cột.
+   Cap rộng tối đa 60% (ít câu → ô to, nhiều câu → ô bé, nhưng KHÔNG quá rộng) · căn GIỮA. */
+.pv-et-score{width:60%;margin:0 auto;border-collapse:collapse;table-layout:fixed}
+.pv-et-score th{border:1px solid var(--pv-accent,#7c3aed);background:#f5f3ff;color:#6d28d9;font-weight:700;font-size:11.5px;padding:3px 1px;text-align:center}
+.pv-et-score td{border:1px solid #9aa6b2;height:10mm}
+.pv-et-tn{width:100%;border-collapse:collapse;margin-top:6px}
+.pv-et-tn td{border:1px solid #cbd2d8;padding:8px 10px;vertical-align:top;font-size:15px}
+.pv-et-tn td.q{width:66%}
+.pv-et-tn td.a{width:34%;min-height:11mm}
+.pv-empty{color:#8a9097;font-style:italic;margin-top:10px}
+/* Heading "Phần …" KHÔNG gạch chân (gạch trông như dòng kẻ lạc — đã sửa ở BTVN hôm trước). */
+.pv-et .pv-h-dang{border-bottom:none;padding-bottom:0;margin-bottom:6px}
+/* Câu CHẢY liên tục: cho tách ngang trang thay vì nhảy cả câu → KHÔNG bỏ trống cuối trang. */
+.pv-et .pv-cau{break-inside:auto}
+.pv-et .pv-cau .pv-math:first-child{break-after:avoid}
+`
