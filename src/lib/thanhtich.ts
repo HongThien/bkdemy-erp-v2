@@ -17,7 +17,9 @@ export type ThanhTichLoai = { key: string; ten: string; icon: string | null; nho
 export type LuongBac = { min_exp: number; xu: number }
 
 // Điểm Level mỗi lần đo: đạt=hệ số · gần đạt=½ hệ số (hệ2→1, hệ1→0.5) · không đạt=0.
-const verdictPoint = (v: Verdict, heSo: number) => (v === 'dat' ? heSo : v === 'gan_dat' ? heSo / 2 : 0)
+export const verdictDiem = (v: Verdict, heSo: number) => (v === 'dat' ? heSo : v === 'gan_dat' ? heSo / 2 : 0)
+const verdictPoint = verdictDiem
+export const currentMua = () => seasonOf(vnTodayStr())
 
 // ── LEVEL + XU của 1 HS × môn (mùa hiện tại + lương THÁNG hiện tại) ──
 export type LevelXu = { mua: string; level: number; levelMax: number; xu: number; expThang: number; xuKe: number | null; expKeMoc: number | null }
@@ -60,6 +62,13 @@ export async function createKyThi(k: Omit<KyThi, 'id'>): Promise<KyThi> {
 }
 export async function getDiemThi(kyThiId: string): Promise<DiemThi[]> {
   const { data, error } = await supabase.from('diem_thi').select('*').eq('ky_thi_id', kyThiId).limit(LIMIT)
+  if (error) throw error
+  return (data ?? []) as DiemThi[]
+}
+// Điểm thi của NHIỀU kì thi (cho ma trận Level của 1 lớp).
+export async function listDiemThiByKyThi(kyThiIds: string[]): Promise<DiemThi[]> {
+  if (!kyThiIds.length) return []
+  const { data, error } = await supabase.from('diem_thi').select('*').in('ky_thi_id', kyThiIds).limit(LIMIT)
   if (error) throw error
   return (data ?? []) as DiemThi[]
 }

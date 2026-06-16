@@ -89,6 +89,7 @@ export const adminLeaves: AdminLeaf[] = [
   { id: 'buoihoc',     nhom: 'Vận hành',  ten: 'Buổi học',                     founderOnly: false },
   { id: 'diemso',      nhom: 'Vận hành',  ten: 'Điểm số (Elo/EXP)',            founderOnly: false },
   { id: 'thanhtich',   nhom: 'Vận hành',  ten: 'Thành tích',                   founderOnly: false },
+  { id: 'quanlylevel', nhom: 'Vận hành',  ten: 'Quản lý Level',                founderOnly: false },
   { id: 'giaoviec',    nhom: 'Vận hành',  ten: 'Tạo & giao việc phát triển',   founderOnly: false },
   { id: 'phanquyen',   nhom: 'Hệ thống',  ten: 'Phân quyền',                   founderOnly: true },
 ]

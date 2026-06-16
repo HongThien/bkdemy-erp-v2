@@ -37,6 +37,8 @@
 - **`BangThanhTich`**: Level thật nổi bật (Lv badge + "Cấp độ X/21") + thanh **EXP→Xu** (lương tháng) thay placeholder. ✓ tsc+test+build sạch.
 - **CÒN:** tab quản lý Level (staff nhập điểm 13 kì thi) · compute catalog thành tích còn lại (vượt band/điểm 10/chuỗi BTVN…) · gợi ý+ghim · skin game. Số hiện 0 tới khi có diem_thi/exp thật (đúng anti-NULL).
 
+**TAB QUẢN LÝ LEVEL (Thùy: làm luôn):** `QuanLyLevelScreen` (leaf `quanlylevel`, Vận hành, gu SaaS). Chọn LỚP (SearchSelect) → môn+roster (`listHSCuaLop`) + kì thi mùa (`listKyThi`, lọc khối). **Tạo kì thi** (CreateModal: loại→hệ số auto 2/2/1, đợt ghép cặp, ngày). **Nhập điểm** 1 kì thi: bảng HS × [điểm/10 · verdict đạt/gần/không · vượt band] → `upsertDiemThi` (snapshot `band_luc_thi`=muc_nang_luc_id). **Ma trận Level**: HS × kì thi (verdict màu + điểm + ↑vượt) + cột Level=Σ verdictDiem (max = Σ hệ số kì thi đã tạo, đích 21). Helper thanhtich: `currentMua`/`verdictDiem`(export)/`listDiemThiByKyThi`. ✓ tsc+build sạch.
+
 ## 2026-06-16
 
 **IA sửa (Thùy): "Làm tài liệu" = HUB nhiều loại con** (Giáo trình·ET·Đề thi·Bổ trợ), KHÔNG để ET thành leaf riêng. → bỏ leaf `lamet`; thêm `LamTaiLieuHub` (tab con) render TaiLieuScreen/ETScreen; leaf `lamtailieu` → hub. (Đè điểm "leaf mới lamet" ở mục TẠO ET ngay dưới.)

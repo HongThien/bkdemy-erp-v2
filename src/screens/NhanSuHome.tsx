@@ -19,6 +19,7 @@ import HocSinhScreen from './nhansu/HocSinhScreen'
 import BuoiHocScreen from './gami/BuoiHocScreen'
 import GamiDiemScreen from './gami/GamiDiemScreen'
 import ThanhTichScreen from './gami/ThanhTichScreen'
+import QuanLyLevelScreen from './gami/QuanLyLevelScreen'
 import PhanQuyenScreen from './phanquyen/PhanQuyenScreen'
 
 const ROLE_LBL: Record<string, string> = { gv: 'GV', tg: 'Trợ giảng', ops: 'OPS' }
@@ -215,6 +216,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'buoihoc' ? <BuoiHocScreen />
       : staffLeaf === 'diemso' ? <GamiDiemScreen />
       : staffLeaf === 'thanhtich' ? <ThanhTichScreen />
+      : staffLeaf === 'quanlylevel' ? <QuanLyLevelScreen />
       : staffLeaf === 'phanquyen' ? <PhanQuyenScreen />
       : (
         <section className="flex min-h-0 items-center justify-center p-8 text-sm text-slate-400">Chọn một mục bên trái.</section>
