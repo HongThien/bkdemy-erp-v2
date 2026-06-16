@@ -28,4 +28,18 @@ export const RANK_EXP = {
 export const ATTEND_FLOOR_EXP = RANK_EXP.ingame[RANK_EXP.ingame.length - 1] // 250
 
 export const XU = { EXP_PER_XU: null }      // chờ quỹ
-export const LEVEL = { MAX_POINTS: 21, EXP_MAX_MONTH: null } // GĐ C, chờ data
+
+// ── SEASON (niên khóa) — EXP/Level reset mỗi mùa; huy hiệu/thành tựu giữ vĩnh viễn ──
+// Mùa = niên khóa, bắt đầu 1/7 (giờ VN), khớp chu kỳ lên lớp + khai giảng. Mã mùa = 'YYYY-YY'.
+export const SEASON = { START_MONTH: 7, START_DAY: 1 }
+
+// ── LEVEL — hàm thuần của EXP-TÍCH-LUỸ-TRONG-MÙA (per-môn). 21 mốc. ──
+// ⚠ Ngưỡng PROVISIONAL (§1.5: không đánh số bừa) — calibrate sau 1 mùa có data thật.
+// Chi phí lên mỗi level tăng tuyến tính: stepCost(L) = BASE_COST × (1 + (L-1)×GROWTH).
+export const LEVEL = {
+  MAX: 21,
+  BASE_COST: 600,        // EXP để lên từ level 1 → 2
+  GROWTH: 0.15,          // mỗi level kế đắt thêm 15% so với level đầu
+  AVATAR_TIERS: 7,       // 21 level gộp thành 7 bậc tiến hóa avatar (mỗi bậc 3 level)
+  EXP_MAX_MONTH: null,   // (tùy chọn) cap EXP/tháng tính vào level — chờ data, mặc định tắt
+}

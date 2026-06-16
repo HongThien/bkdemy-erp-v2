@@ -8,6 +8,35 @@
 
 ---
 
+## 2026-06-17
+
+**THÀNH TÍCH — Thùy nắn model lần 2 + style (đè giả định cũ):**
+- **EXP = lương THÁNG → xu, reset hằng tháng, KHÔNG phải thành tựu** → BỎ EXP khỏi bảng khoe. **Level = pool "điểm tiến trình" RIÊNG (≠ EXP), define sau** → Level + avatar = PLACEHOLDER ("cấp độ sắp ra mắt"). (`level.js`/`season.js` giữ dormant.)
+- **Rank = THỨ HẠNG leaderboard** (KHÁC tier). "Hạng cao nhất từng đạt" cần snapshot → giờ hiện hạng HIỆN TẠI.
+- **Phần C "Lịch sử thi đấu" (Thùy chốt nội dung):** số lần **Top 1 · Lớp / ET / MT** (tách theo phase) + **chuỗi đi học** (+ chuỗi làm bài: chờ track BTVN) + tổng buổi. Danh hiệu (HS xuất sắc/tiến bộ/chăm chỉ) = zone E placeholder.
+- **STYLE: KHÔNG sci-fi, KHÔNG SaaS — GAME vui nhộn** (như reference Squad Busters Thùy gửi). ĐÃ NHẦM: tự với skill `bkdemy-scifi-ui` làm bản sci-fi → bị bác "t nói bỏ scifi". **Workflow chốt: mockup chỉ để CHỐT LOGIC/bố cục; SKIN đẹp làm SAU bằng claude design.** → giờ build logic/data số-thật, skin để tạm. (Memory: [[thanhtich-style-game-khong-scifi]].)
+
+**BUILD logic/data (skin tạm):**
+- **Mig 0042** `gami_elo_history` +`rank`+`rank_total` (nullable; dòng cũ + bù/bổ trợ = NULL). Áp riêng (`_apply_one.mjs`) + `npm run schema`. `closePhase`: tính `ranks` SỚM rồi LƯU vào history insert (đếm Top-1 + hạng cao nhất sau này).
+- `getThanhTich` refactor: query riêng gami_elo + gami_elo_history(rank/phase/buoi) + buoi_hoc_hs(điểm danh) → per môn {elo, eloPeak, rankNow/Total, top1{lop,et,mt}, tongBuoi, chuoiDiHoc}. `listThanhTich` lean (elo+rankNow theo môn).
+- `BangThanhTich` rebuild 4 zone (skin tạm indigo): A danh tính + B chỉ số (Elo/Hạng/Elo đỉnh + Level placeholder) · C lịch sử thi đấu (Top1 lớp/et/mt + chuỗi + tổng) · E danh hiệu placeholder. `ThanhTichScreen` click HS → FULL-SCREEN (bỏ modal). ✓ tsc+test+build sạch. CHƯA test e2e (cần buổi đóng + sinh rank).
+- **CÒN placeholder chờ Thùy:** nguồn điểm tiến trình→Level · điều kiện danh hiệu + % · track BTVN cho chuỗi làm bài · phiên design "đẹp" (claude design).
+
+**ADR THÀNH TÍCH CHỐT (Thùy duyệt, đẩy Notion):** [ADR — Bảng thành tích HS & 3 hệ điểm](https://app.notion.com/p/381d4530bcdb819fb151c32f81007117) (con của ERP V2). Chốt:
+- **3 tiền tệ tách bạch:** Level (tích luỹ thành tựu, khó nhất, nổi nhất) · Elo+Hạng (phong độ) · **EXP→Xu (LƯƠNG tháng, reset THÁNG)** — EXP KHÔNG nuôi Level, chỉ ra xu (vd 10k EXP=60xu). Thanh exp ở profile = tiến tới mốc XU kế (2 đầu là xu, không phải level).
+- **LEVEL = Σ điểm sát hạch, max 21/mùa/môn** (khớp LEVEL.MAX_POINTS=21). 13 lần: 4 thi trường(×2) + 4 BK sát hạch(×2, = MT nghiêm túc) + 5 khảo sát tháng(×1). Verdict đạt/gần/không → điểm (gần đạt: hệ2=1, hệ1=0.5). Verdict so **band TẠI THỜI ĐIỂM thi** (snapshot `band_luc_thi`; band có `diem_ky_vong`). Suy động. Cần **tab quản lý Level** (staff, bảng HS×13 kì thi).
+- **Entity điểm thi:** `ky_thi`(loai truong/mt_sat_hach/khao_sat_thang · he_so · `dot` ghép cặp trường↔BK · `buoi_hoc_id?` nối MT — KHÔNG tách "ST") + `diem_thi`(verdict + `vuot_band`) + `muc_nang_luc.diem_ky_vong`. 4 kì trường = 4 INSTANCE cùng loai (không tách 4 entity).
+- **MT = 1 sự kiện 3 vai:** Elo (buổi) + Level (sát hạch verdict) + vượt-band.
+- **Thành tích thi đấu** (đổi tên từ lịch sử): catalog canonical `thanh_tich_loai` pure-derive + `hoc_sinh_thanh_tich_ghim` (HS chọn khoe / hệ gợi ý top). Phổ nhóm: giỏi/thi/tiến bộ/chăm/cột mốc → ai cũng có cái khoe.
+- **Schema mới (additive):** ky_thi · diem_thi · muc_nang_luc.diem_ky_vong · thanh_tich_loai · hoc_sinh_thanh_tich_ghim · luong_bac · btvn_ket_qua. Level/Xu/thành tích = suy động.
+- **NEXT:** migration + service khung (chưa làm). Chờ define: số xu/bậc · kì vọng từng band · trọng số "độ hiếm" · điều kiện danh hiệu · luồng nộp BTVN · art nhân vật · skin game (claude design).
+
+**BUILD migration + service khung (Thùy: làm luôn):**
+- **Mig 0043** (áp riêng + `npm run schema`, 43→49 bảng): `ky_thi`(loai·he_so·dot·buoi_hoc_id?·mua) · `diem_thi`(verdict·band_luc_thi·vuot_band; PK ky_thi+hs) · `muc_nang_luc.diem_ky_vong` · `thanh_tich_loai`(catalog, **seed 12 loại**) · `hoc_sinh_thanh_tich_ghim` · `luong_bac`(**seed 7 bậc PROVISIONAL** 0→0…20k→110) · `btvn_ket_qua`. RLS member-gate khai TAY cho cả 6 bảng (`la_thanh_vien()`).
+- **Service `src/lib/thanhtich.ts`** (seam): `getLevelXu(hsId,mon)` = Level (Σ verdict→điểm: đạt=hệ số·gần=½·ko=0, lọc mùa+môn) + Xu (EXP THÁNG này tra `luong_bac`) · `listThanhTichLoai` · khung quản lý điểm thi `listKyThi`/`createKyThi`/`getDiemThi`/`upsertDiemThi`.
+- **`BangThanhTich`**: Level thật nổi bật (Lv badge + "Cấp độ X/21") + thanh **EXP→Xu** (lương tháng) thay placeholder. ✓ tsc+test+build sạch.
+- **CÒN:** tab quản lý Level (staff nhập điểm 13 kì thi) · compute catalog thành tích còn lại (vượt band/điểm 10/chuỗi BTVN…) · gợi ý+ghim · skin game. Số hiện 0 tới khi có diem_thi/exp thật (đúng anti-NULL).
+
 ## 2026-06-16
 
 **IA sửa (Thùy): "Làm tài liệu" = HUB nhiều loại con** (Giáo trình·ET·Đề thi·Bổ trợ), KHÔNG để ET thành leaf riêng. → bỏ leaf `lamet`; thêm `LamTaiLieuHub` (tab con) render TaiLieuScreen/ETScreen; leaf `lamtailieu` → hub. (Đè điểm "leaf mới lamet" ở mục TẠO ET ngay dưới.)
@@ -53,6 +82,20 @@
   - Câu/khối nhảy nguyên sang trang để TRỐNG cuối trang → bỏ `break-inside:avoid` ở `.pv-blk` (lý thuyết) + `.pv-btvn .pv-cau` (BTVN) → CHẢY liên tục; chỉ công thức `.mline` giữ atomic.
   - "Dòng kẻ lạ giữa Dạng N và Câu 1" = **`border-bottom` full-width của `.pv-h-dang`** (KHÔNG phải wline) → bỏ gạch chân tiêu đề dạng trong BTVN.
 - ✓ tsc sạch. Thùy review "trông ổn". CHƯA tự test e2e tạo doc mới trên app (Thùy tự test). Tài liệu CŨ (chưa có buổi) builder mới không hiện nội dung → tạo doc mới.
+
+**Kho tài liệu BỊ NHÂN ĐÔI (Thùy bắt):** nav có 2 "Kho tài liệu" — leaf ngoài `tl` (Danh mục) + leaf con `lamtailieu:kho` ("📦 Kho tài liệu" trong Làm tài liệu). Tệ hơn: `tl` chưa được route ở `NhanSuHome` → bấm ra "Chọn một mục bên trái" (chết); chỉ `lamtailieu:kho` chạy. **Thùy chốt: kho = nơi TRA/TÌM tài liệu, KHÔNG phải nơi làm → đẩy ra ngoài.** Fix: route `tl`→`KhoTaiLieuScreen` (NhanSuHome:206) + bỏ `lamtailieu:kho` khỏi `LAMTAILIEU_CHILDREN` (useStore). `KhoTaiLieuScreen` tự xử lý sửa ET/giáo trình nội bộ (state editEt/editGt) nên bỏ leaf con không vỡ luồng "sửa từ Kho". → còn 1 kho duy nhất ngoài Danh mục. (Đè điểm "leaf con lamtailieu:kho" ở mục KHO TÀI LIỆU phía trên.)
+
+**BẢNG THÀNH TÍCH HS — seasonal (Thùy chốt qua ADR):** "profile HS" = bảng thành tích, thông tin cá nhân là phụ. **Quyết định CEO:** per-môn (KHÔNG tổng hợp) · **Season = 1 NĂM (niên khóa, START 1/7)**, hết mùa **EXP+Level reset** nhưng **huy hiệu/thành tựu giữ** (giống ranked game) · huy hiệu HOÃN · GĐ này: Elo·EXP·Level·Avatar-theo-level · **2 luồng 1 component**: màn Thành tích riêng (mọi HS, showcase) + tab trong Học sinh · màn Thành tích TÁCH khỏi GamiDiemScreen (staff tool), chung query khác trình bày.
+- **CTO chốt 2 điểm:** Elo **KHÔNG reset** (Elo=giỏi tới đâu/dài hạn; Level=cày bao nhiêu/mùa — tách vai) · mốc mùa = **niên khóa** (khớp lên lớp+khai giảng).
+- **Cơ chế đẹp:** "reset EXP mùa" = **WINDOWING theo created_at**, KHÔNG xoá data (`gami_exp_ledger` append-only) → mùa cũ truy lại được; Level=hàm thuần của EXP-mùa → tự reset. **GẦN NHƯ 0 SCHEMA MỚI.**
+- **Build:** engine thuần `src/gami/season.js` (seasonOf/seasonStartUtc/seasonEndUtc, START 1/7 giờ VN qua Date.UTC -7h) + `level.js` (stepCost tuyến tính·cumExpFor·expToLevel·avatarTier·avatarStage emoji PLACEHOLDER 7 bậc; LEVEL.MAX=21, ngưỡng PROVISIONAL chờ calibrate sau mùa 1). Config `SEASON`+`LEVEL` mới. Fixture test thêm vào verify_gami.mjs (✓ pass). Service `gami.ts`: `getThanhTich(hsId)` (per-môn: Elo+EXP-mùa windowed+level+avatar+hist) · `listThanhTich(mon?)` (leaderboard EXP-mùa, windowed ở DB `.gte('created_at',start)`) + helper `vnToday()`. UI: `BangThanhTich` (showcase: HeroCard avatar+level-progress+3 stat, EloHistory, BadgesPlaceholder) dùng chung · `ThanhTichScreen` (grid card mọi HS→modal) leaf `thanhtich` (Vận hành) · tab "Hồ sơ|Thành tích" trong HocSinhScreen EditModal. ✓ tsc + vite build sạch. CHƯA test e2e với data thật (cần buổi đã đóng sinh EXP).
+
+**THÀNH TÍCH — Thùy nắn lại model (QUAN TRỌNG, đè phần trên):** "logic gần chuẩn, UI sửa nhiều".
+- **EXP ≠ nguồn Level** (đè giả định cũ "Level=f(EXP-mùa)"). **EXP = lương THÁNG → xu, reset hằng tháng, KHÔNG phải thành tựu** → BỎ EXP khỏi bảng khoe (EXP/xu thuộc màn lương sau).
+- **Level = pool "điểm tiến trình" RIÊNG (Thùy: define sau)** → Level + avatar dựng PLACEHOLDER ("cấp độ sắp ra mắt"), nối nguồn thật khi define. (level.js/expToLevel giữ DORMANT, chưa wire.)
+- **Bảng khoe gồm:** ① Elo: **Elo cao nhất** (peak từ history) + **Rank** · ② Level (placeholder) · ③ **3 huy hiệu/mùa** chưa đạt = **bóng đen + thanh %** + click→nhiệm vụ (define sau). Avatar theo level. **BỎ lịch sử Elo** (khoe, không phải log). Màn **FULL-SCREEN, không popup**.
+- **Rank = THỨ HẠNG leaderboard (Thùy chọn, KHÁC tier).** "Hạng CAO NHẤT từng đạt" cần snapshot hạng theo thời gian (CHƯA có cơ chế — hạng phụ thuộc Elo người khác, ko suy ngược) → giờ hiện **hạng HIỆN TẠI** (đếm elo cao hơn trong môn). TODO: ghi best_rank mỗi buổi đóng (đề xuất, chờ Thùy).
+- **Refactor:** `getThanhTich` bỏ EXP/level/history → trả {elo, eloPeak, rankNow/rankTotal} per môn. `listThanhTich` lean (elo+rankNow theo môn, bỏ exp/level). `BangThanhTich` rebuild (Hero placeholder + EloPanel 3 ô + Badges 3 bóng đen). `ThanhTichScreen` click HS → board FULL-SCREEN (bỏ modal). ✓ tsc+test+build sạch.
 
 ---
 

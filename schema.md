@@ -2,7 +2,18 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-43 bảng · 0 enum · 1 trigger · 6 function
+49 bảng · 0 enum · 1 trigger · 6 function
+
+## btvn_ket_qua
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| hoc_sinh_id | uuid |  |  | PK FK→hoc_sinh.id |
+| buoi_hoc_id | uuid |  |  | PK FK→buoi_hoc.id |
+| hoan_thanh | boolean |  | false |  |
+| dung_han | boolean | Y |  |  |
+| ti_le_dung | numeric | Y |  |  |
+| updated_at | timestamp with time zone |  | now() |  |
 
 ## buoi_danh_gia
 
@@ -143,6 +154,19 @@
 | id | text |  | ('TT'::text \|\| lpad((nextval('dai_tt_seq'::regclass))::text, 4, '0'::text)) | PK |
 | ten | text |  |  |  |
 
+## diem_thi
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| ky_thi_id | uuid |  |  | PK FK→ky_thi.id |
+| hoc_sinh_id | uuid |  |  | PK FK→hoc_sinh.id |
+| diem | numeric | Y |  |  |
+| band_luc_thi | text | Y |  |  |
+| verdict | text |  |  |  |
+| vuot_band | boolean |  | false |  |
+| graded_by | uuid | Y |  |  |
+| updated_at | timestamp with time zone |  | now() |  |
+
 ## gami_elo
 
 | cột | kiểu | null | default | khóa |
@@ -169,6 +193,8 @@
 | elo_after | integer |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |
 | mon | text | Y |  |  |
+| rank | integer | Y |  |  |
+| rank_total | integer | Y |  |  |
 
 ## gami_exp_ledger
 
@@ -324,6 +350,31 @@
 | actor | uuid | Y |  |  |
 | ts | timestamp with time zone |  | now() |  |
 
+## hoc_sinh_thanh_tich_ghim
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| hoc_sinh_id | uuid |  |  | PK FK→hoc_sinh.id |
+| mon | text |  |  | PK |
+| loai_key | text |  |  | PK FK→thanh_tich_loai.key |
+| thu_tu | integer |  | 0 |  |
+
+## ky_thi
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| ten | text |  |  |  |
+| loai | text |  |  |  |
+| he_so | integer |  |  |  |
+| dot | text | Y |  |  |
+| ngay | date | Y |  |  |
+| mon | text | Y |  |  |
+| khoi | text | Y |  |  |
+| mua | text | Y |  |  |
+| buoi_hoc_id | uuid | Y |  | FK→buoi_hoc.id |
+| created_at | timestamp with time zone |  | now() |  |
+
 ## lop
 
 | cột | kiểu | null | default | khóa |
@@ -347,6 +398,13 @@
 | ten | text |  |  |  |
 | thu_tu | smallint |  |  |  |
 
+## luong_bac
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| min_exp | integer |  |  | PK |
+| xu | integer |  |  |  |
+
 ## muc_nang_luc
 
 | cột | kiểu | null | default | khóa |
@@ -357,6 +415,7 @@
 | muc | smallint |  |  |  |
 | thu_tu | smallint |  |  |  |
 | ten | text | Y |  |  |
+| diem_ky_vong | numeric | Y |  |  |
 
 ## nhan_su
 
@@ -462,6 +521,21 @@
 | ma | text |  |  |  |
 | ten | text |  |  |  |
 | thu_tu | smallint |  | 0 |  |
+
+## thanh_tich_loai
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| key | text |  |  | PK |
+| ten | text |  |  |  |
+| icon | text | Y |  |  |
+| nhom | text | Y |  |  |
+| kieu | text | Y |  |  |
+| nguon | text | Y |  |  |
+| per_mon | boolean |  | true |  |
+| trong_so | integer |  | 0 |  |
+| thu_tu | integer |  | 0 |  |
+| active | boolean |  | true |  |
 
 ## thoi_khoa_bieu
 

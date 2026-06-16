@@ -7,8 +7,15 @@ import type { CauHoi } from './kho/api'
 import { computeEloUpdate } from '../gami/elo.js'
 import { problemPoints, expForRank, rankSession } from '../gami/exp.js'
 import { RANK_EXP, ATTEND_FLOOR_EXP } from '../gami/config.js'
+import { seasonOf, seasonLabel } from '../gami/season.js'
 
 const LIMIT = 10000
+
+// Ngày hôm nay theo giờ VN ('YYYY-MM-DD') — KHÔNG toISOString (§2). Dịch +7h rồi đọc phần UTC.
+function vnToday(): string {
+  const vn = new Date(Date.now() + 7 * 3600 * 1000)
+  return `${vn.getUTCFullYear()}-${String(vn.getUTCMonth() + 1).padStart(2, '0')}-${String(vn.getUTCDate()).padStart(2, '0')}`
+}
 
 export type Phase = 'ingame' | 'et' | 'mt'
 export type DiemDanh = 'co_mat' | 'vang' | 'vang_phep'
@@ -316,13 +323,16 @@ export async function closePhase(buoiId: string, phase: Phase): Promise<{ alread
     const students = hsIds.map((id) => ({ studentId: id, elo: eloMap.get(id).elo - (priorDelta.get(id) ?? 0), points: raw[id], sessionsPlayed: eloMap.get(id).sessions_played - (priorSess.get(id) ?? 0) }))
     const updates = computeEloUpdate(students, { isMT: phase === 'mt', classSize: hsIds.length } as any)
     const incSession = phase !== 'et' // ingame/mt mới +1 (calibration); ET không tính buổi
+    // Hạng buổi (theo điểm thô) — tính SỚM để LƯU vào history (đếm Top-1 / hạng cao nhất sau).
+    const ranks = rankSession(updates.map((u: any) => ({ studentId: u.studentId, rawPoints: raw[u.studentId], eloDelta: u.delta })))
+    const rankMap = new Map(ranks.map((r) => [r.studentId, r.rank]))
+    const rankTotal = hsIds.length
     for (const u of updates) {
       // elo_before/after = mốc TRƯỚC BUỔI → +delta (đóng góp riêng của phase). gami_elo CỘNG DỒN delta (độc lập thứ tự đóng).
-      await supabase.from('gami_elo_history').insert({ hoc_sinh_id: u.studentId, buoi_hoc_id: buoiId, phase, mon, elo_before: u.eloBefore, expected: u.expected, actual: u.actual, delta: u.delta, elo_after: u.eloAfter })
+      await supabase.from('gami_elo_history').insert({ hoc_sinh_id: u.studentId, buoi_hoc_id: buoiId, phase, mon, elo_before: u.eloBefore, expected: u.expected, actual: u.actual, delta: u.delta, elo_after: u.eloAfter, rank: rankMap.get(u.studentId) ?? null, rank_total: rankTotal })
       await supabase.from('gami_elo').update({ elo: eloMap.get(u.studentId).elo + u.delta, sessions_played: eloMap.get(u.studentId).sessions_played + (incSession ? 1 : 0), updated_at: new Date().toISOString() }).eq('hoc_sinh_id', u.studentId).eq('mon', mon)
     }
-    // xếp hạng theo điểm thô → EXP. CÔNG BẰNG khi HOÀ: cùng điểm thô = cùng EXP = TRUNG BÌNH bậc EXP các vị trí nhóm chiếm.
-    const ranks = rankSession(updates.map((u: any) => ({ studentId: u.studentId, rawPoints: raw[u.studentId], eloDelta: u.delta })))
+    // EXP theo hạng. CÔNG BẰNG khi HOÀ: cùng điểm thô = cùng EXP = TRUNG BÌNH bậc EXP các vị trí nhóm chiếm.
     const deltaMap = new Map(updates.map((u: any) => [u.studentId, u]))
     const grp = new Map<number, number[]>()
     for (const r of ranks) { const p = raw[r.studentId]; (grp.get(p) ?? grp.set(p, []).get(p))!.push(expForRank(r.rank, hsIds.length, RANK_EXP[phase])) }
@@ -520,4 +530,78 @@ export async function setNhanXet(buoiId: string, hsId: string, nhanXet: string):
     { buoi_hoc_id: buoiId, hoc_sinh_id: hsId, nhan_xet: txt, graded_by: user?.id ?? null, updated_at: new Date().toISOString() },
     { onConflict: 'buoi_hoc_id,hoc_sinh_id' })
   if (error) throw error
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// BẢNG THÀNH TÍCH (showcase) — KHOE thành tích, per-môn. PURE-DERIVE.
+// Gồm: Elo CAO NHẤT (peak từ history) · HẠNG hiện tại (vị trí leaderboard môn).
+// Level + avatar: nguồn = "điểm tiến trình" RIÊNG (≠ EXP) — CHƯA define → UI để placeholder.
+// EXP KHÔNG ở đây (EXP = lương tháng → xu, màn khác). Huy hiệu = theo mùa (seasonLabel), define sau.
+// ⚠ "Hạng CAO NHẤT từng đạt" cần snapshot hạng theo thời gian (chưa có cơ chế) → giờ là hạng HIỆN TẠI.
+// ══════════════════════════════════════════════════════════════════════════
+export type ThanhTichMon = {
+  mon: string
+  elo: number; sessions: number        // Elo hiện tại
+  eloPeak: number                       // Elo cao nhất từng đạt (từ history)
+  rankNow: number; rankTotal: number    // hạng hiện tại trên leaderboard môn: #rankNow / rankTotal
+  top1: { lop: number; et: number; mt: number } // số lần Top 1 theo loại đấu
+  tongBuoi: number                      // tổng buổi thi đấu (có Elo: ingame/mt)
+  chuoiDiHoc: number                    // chuỗi đi học liên tục (co_mat) gần nhất
+}
+export type ThanhTich = { season: string; seasonLabel: string; mons: ThanhTichMon[] }
+
+// Hồ sơ thành tích 1 HS — dùng chung cho màn Thành tích lẫn tab trong Học sinh.
+export async function getThanhTich(hocSinhId: string): Promise<ThanhTich> {
+  const season = seasonOf(vnToday())
+  const [eloR, histR, attR] = await Promise.all([
+    supabase.from('gami_elo').select('mon, elo, sessions_played').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
+    supabase.from('gami_elo_history').select('mon, phase, rank, elo_before, elo_after, buoi_hoc_id').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
+    supabase.from('buoi_hoc_hs').select('diem_danh, buoi:buoi_hoc_id(ngay, lop:lop_id(mon))').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
+  ])
+  const eloRows = (eloR.data ?? []) as any[]
+  const hist = (histR.data ?? []) as any[]
+  const monSet = [...new Set(eloRows.map((e) => e.mon))]
+  // Leaderboard mỗi môn (để tính hạng hiện tại) — lấy toàn bộ elo cùng môn.
+  const { data: all } = monSet.length
+    ? await supabase.from('gami_elo').select('mon, elo').in('mon', monSet).limit(LIMIT)
+    : { data: [] as { mon: string; elo: number }[] }
+  const lbByMon = new Map<string, number[]>()
+  for (const r of (all ?? []) as any[]) { const a = lbByMon.get(r.mon) ?? []; a.push(Number(r.elo)); lbByMon.set(r.mon, a) }
+  // Chuỗi đi học per môn: buổi của môn đó, sort ngày giảm dần, đếm co_mat liên tục từ gần nhất.
+  const attByMon = new Map<string, { ngay: string; co: boolean }[]>()
+  for (const a of (attR.data ?? []) as any[]) {
+    const m = a.buoi?.lop?.mon; if (!m || !a.buoi?.ngay) continue
+    const arr = attByMon.get(m) ?? []; arr.push({ ngay: a.buoi.ngay, co: a.diem_danh === 'co_mat' }); attByMon.set(m, arr)
+  }
+  const mons: ThanhTichMon[] = eloRows.map((e) => {
+    const hm = hist.filter((h) => (h.mon ?? '') === e.mon)
+    const eloPeak = Math.max(e.elo, ...hm.flatMap((h) => [h.elo_after, h.elo_before]).filter((x) => x != null))
+    const lb = lbByMon.get(e.mon) ?? [e.elo]
+    const top1 = (ph: string) => hm.filter((h) => h.phase === ph && h.rank === 1).length
+    const buoiSet = new Set(hm.filter((h) => h.phase === 'ingame' || h.phase === 'mt').map((h) => h.buoi_hoc_id))
+    const att = (attByMon.get(e.mon) ?? []).sort((a, b) => (a.ngay < b.ngay ? 1 : -1))
+    let streak = 0; for (const a of att) { if (a.co) streak++; else break }
+    return {
+      mon: e.mon, elo: e.elo, sessions: e.sessions_played, eloPeak,
+      rankNow: 1 + lb.filter((x) => x > e.elo).length, rankTotal: lb.length,
+      top1: { lop: top1('ingame'), et: top1('et'), mt: top1('mt') }, tongBuoi: buoiSet.size, chuoiDiHoc: streak,
+    }
+  }).sort((a, b) => b.eloPeak - a.eloPeak)
+  return { season, seasonLabel: seasonLabel(season), mons }
+}
+
+// Danh sách mọi HS (per môn) cho màn Thành tích — sắp Elo giảm dần, hạng = vị trí trong môn.
+export type ThanhTichRow = { hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; khoi: string | null; anh_url: string | null; mon: string; elo: number; rankNow: number }
+export async function listThanhTich(mon?: string): Promise<{ season: string; seasonLabel: string; rows: ThanhTichRow[] }> {
+  const season = seasonOf(vnToday())
+  let q = supabase.from('gami_elo').select('hoc_sinh_id, mon, elo, hoc_sinh:hoc_sinh_id(ho_ten, ma_hs, khoi, anh_url)').order('elo', { ascending: false }).limit(LIMIT)
+  if (mon) q = q.eq('mon', mon)
+  const { data, error } = await q
+  if (error) throw error
+  const seen = new Map<string, number>() // hạng theo môn = thứ tự trong nhóm môn (đã order elo desc)
+  const rows: ThanhTichRow[] = ((data ?? []) as any[]).map((e) => {
+    const r = (seen.get(e.mon) ?? 0) + 1; seen.set(e.mon, r)
+    return { hoc_sinh_id: e.hoc_sinh_id, ho_ten: e.hoc_sinh?.ho_ten ?? '?', ma_hs: e.hoc_sinh?.ma_hs ?? null, khoi: e.hoc_sinh?.khoi ?? null, anh_url: e.hoc_sinh?.anh_url ?? null, mon: e.mon, elo: e.elo, rankNow: r }
+  })
+  return { season, seasonLabel: seasonLabel(season), rows }
 }

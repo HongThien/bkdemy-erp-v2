@@ -48,5 +48,24 @@ for (const phase of ['ingame', 'et', 'mt']) {
 }
 ok(expForRank(5, 5, RANK_EXP.ingame) === 290, 'N=5 hạng 5 = bậc 5 (290), KHÔNG dùng sàn 250')
 
+// ── SEASON (niên khóa, START=1/7) ──
+import { seasonOf, seasonStartUtc, seasonEndUtc } from '../src/gami/season.js'
+ok(seasonOf('2026-06-30') === '2025-26', 'trước 1/7 → mùa trước (2025-26)')
+ok(seasonOf('2026-07-01') === '2026-27', 'đúng 1/7 → mùa mới (2026-27)')
+ok(seasonOf('2027-01-15') === '2026-27', 'giữa năm dương lịch vẫn cùng niên khóa (2026-27)')
+ok(seasonStartUtc('2026-27') === '2026-06-30T17:00:00.000Z', 'đầu mùa 1/7 VN = 30/6 17:00 UTC')
+ok(seasonEndUtc('2026-27') === seasonStartUtc('2027-28'), 'cuối mùa = đầu mùa kế (liền mạch)')
+
+// ── LEVEL ──
+import { expToLevel, cumExpFor, stepCost, avatarTier } from '../src/gami/level.js'
+ok(expToLevel(0).level === 1, 'EXP 0 → level 1')
+ok(expToLevel(stepCost(1) - 1).level === 1, 'thiếu 1 EXP chưa lên level 2')
+ok(expToLevel(stepCost(1)).level === 2, 'đủ stepCost(1) → level 2')
+ok(expToLevel(cumExpFor(21)).level === 21 && expToLevel(cumExpFor(21)).isMax, 'đạt ngưỡng level 21 = MAX')
+ok(expToLevel(cumExpFor(21) + 99999).level === 21, 'vượt MAX vẫn kẹp 21')
+{ let mono = true; for (let L = 1; L < 21; L++) if (stepCost(L + 1) < stepCost(L)) mono = false; ok(mono, 'stepCost tăng dần (level sau đắt hơn)') }
+{ const x = expToLevel(cumExpFor(5) + Math.floor(stepCost(5) / 2)); ok(x.level === 5 && x.pct > 0.4 && x.pct < 0.6, 'pct ~giữa level 5') }
+ok(avatarTier(1) === 1 && avatarTier(21) === 7, 'bậc avatar: level 1→1, level 21→7')
+
 console.log(fail ? `\n❌ ${fail} test FAIL` : '\n✅ TẤT CẢ PASS')
 process.exit(fail ? 1 : 0)

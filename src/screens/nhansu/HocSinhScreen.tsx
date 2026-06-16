@@ -8,6 +8,7 @@ import {
   type HocSinh, type GhiDanh, type Lop, type MucNangLuc, type PhuHuynh,
 } from '../../lib/nhansu'
 import { Field, inp, Seg } from '../kho/ui'
+import BangThanhTich from '../gami/BangThanhTich'
 
 const TT_LABEL: Record<string, string> = { dang_hoc: 'Đang học', bao_luu: 'Bảo lưu', nghi: 'Nghỉ' }
 const ALL = '__all__' // tab "Tất cả khối"
@@ -113,6 +114,7 @@ function EditModal({ hocSinh, defaultKhoi, onClose, onSaved }: { hocSinh: HocSin
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [dirty, setDirty] = useState(false)
+  const [view, setView] = useState<'info' | 'thanhtich'>('info') // tab hồ sơ vs bảng thành tích
 
   async function save() {
     if (!ho_ten.trim()) return
@@ -134,11 +136,23 @@ function EditModal({ hocSinh, defaultKhoi, onClose, onSaved }: { hocSinh: HocSin
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/30 p-4 backdrop-blur-sm" onClick={close}>
       <div className="flex max-h-[92vh] w-[1040px] max-w-[97vw] flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
-        <div className="flex items-center justify-between border-b border-slate-200 px-7 py-4">
-          <h3 className="text-base font-semibold text-slate-900">{isNew ? 'Thêm học sinh' : `Hồ sơ · ${cur!.ho_ten}`}</h3>
-          <button onClick={close} className="text-slate-400 hover:text-slate-700">✕</button>
+        <div className="flex items-center gap-4 border-b border-slate-200 px-7 py-4">
+          <h3 className="text-base font-semibold text-slate-900">{isNew ? 'Thêm học sinh' : `${cur!.ho_ten}`}</h3>
+          {cur && (
+            <div className="flex items-center gap-1 rounded-lg bg-slate-100 p-0.5">
+              {(['info', 'thanhtich'] as const).map((v) => (
+                <button key={v} onClick={() => setView(v)} className={`h-7 rounded-md px-3 text-[13px] font-semibold transition ${view === v ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>
+                  {v === 'info' ? 'Hồ sơ' : '🏆 Thành tích'}
+                </button>
+              ))}
+            </div>
+          )}
+          <button onClick={close} className="ml-auto text-slate-400 hover:text-slate-700">✕</button>
         </div>
 
+        {view === 'thanhtich' && cur ? (
+          <div className="min-h-0 flex-1 overflow-y-auto p-7"><BangThanhTich hocSinhId={cur.id} hoTen={cur.ho_ten} /></div>
+        ) : (
         <div className="grid min-h-0 flex-1 grid-cols-2 gap-7 overflow-y-auto p-7">
           {/* Cột trái — thông tin */}
           <div>
@@ -187,7 +201,9 @@ function EditModal({ hocSinh, defaultKhoi, onClose, onSaved }: { hocSinh: HocSin
                 </div>}
           </div>
         </div>
+        )}
 
+        {view === 'info' && (
         <div className="flex items-center justify-between border-t border-slate-200 px-7 py-3.5">
           {!isNew ? <button onClick={async () => { if (confirm('Xoá học sinh này?')) { await deleteHocSinh(cur!.id); onSaved() } }} className="text-[13px] text-rose-600 hover:underline">Xoá học sinh</button> : <span />}
           <div className="flex items-center gap-3">
@@ -196,6 +212,7 @@ function EditModal({ hocSinh, defaultKhoi, onClose, onSaved }: { hocSinh: HocSin
             <button onClick={save} disabled={!ho_ten.trim() || busy} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm transition hover:bg-indigo-500 disabled:opacity-40">{busy ? 'Đang lưu…' : isNew ? 'Tạo & xếp lớp' : 'Lưu'}</button>
           </div>
         </div>
+        )}
       </div>
     </div>
   )

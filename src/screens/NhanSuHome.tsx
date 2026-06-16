@@ -18,6 +18,7 @@ import LopScreen from './nhansu/LopScreen'
 import HocSinhScreen from './nhansu/HocSinhScreen'
 import BuoiHocScreen from './gami/BuoiHocScreen'
 import GamiDiemScreen from './gami/GamiDiemScreen'
+import ThanhTichScreen from './gami/ThanhTichScreen'
 import PhanQuyenScreen from './phanquyen/PhanQuyenScreen'
 
 const ROLE_LBL: Record<string, string> = { gv: 'GV', tg: 'Trợ giảng', ops: 'OPS' }
@@ -203,7 +204,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       ) : staffLeaf === 'bdkt' ? <KhoScreen />
       : (staffLeaf === 'lamtailieu' || staffLeaf === 'lamtailieu:giao_trinh') ? <TaiLieuScreen />
       : staffLeaf === 'lamtailieu:et' ? <ETScreen />
-      : staffLeaf === 'lamtailieu:kho' ? <KhoTaiLieuScreen />
+      : staffLeaf === 'tl' ? <KhoTaiLieuScreen />
       : (staffLeaf === 'lamtailieu:de_thi' || staffLeaf === 'lamtailieu:bo_tro') ? <section className="flex min-h-0 items-center justify-center p-8 text-sm text-slate-400">Loại tài liệu này dựng sau.</section>
       : staffLeaf === 'ns' ? <NhanSuScreen />
       : staffLeaf === 'phancong' ? <PhanCongScreen />
@@ -213,6 +214,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'hs' ? <HocSinhScreen />
       : staffLeaf === 'buoihoc' ? <BuoiHocScreen />
       : staffLeaf === 'diemso' ? <GamiDiemScreen />
+      : staffLeaf === 'thanhtich' ? <ThanhTichScreen />
       : staffLeaf === 'phanquyen' ? <PhanQuyenScreen />
       : (
         <section className="flex min-h-0 items-center justify-center p-8 text-sm text-slate-400">Chọn một mục bên trái.</section>
