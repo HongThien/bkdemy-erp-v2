@@ -11,7 +11,7 @@ export default function ThanhTichScreen() {
   const [seasonLbl, setSeasonLbl] = useState('')
   const [loading, setLoading] = useState(true)
   const [q, setQ] = useState('')
-  const [open, setOpen] = useState<{ id: string; ten: string } | null>(null)
+  const [open, setOpen] = useState<{ id: string; ten: string; maHs: string | null; khoi: string | null } | null>(null)
 
   useEffect(() => { listGamiMons().then((m) => { setMons(m); if (m.length) setMon(m[0]) }).catch(() => {}) }, [])
   useEffect(() => {
@@ -26,7 +26,7 @@ export default function ThanhTichScreen() {
         <button onClick={() => setOpen(null)} className="rounded-lg px-3 py-1.5 text-[13px] font-medium text-slate-500 hover:bg-slate-100">← Danh sách</button>
         <span className="text-sm font-semibold text-slate-900">{open.ten}</span>
       </div>
-      <div className="min-h-0 flex-1 overflow-auto p-6 sm:p-10"><BangThanhTich hocSinhId={open.id} hoTen={open.ten} /></div>
+      <div className="min-h-0 flex-1 overflow-auto p-6 sm:p-10"><BangThanhTich hocSinhId={open.id} hoTen={open.ten} maHs={open.maHs} khoi={open.khoi} /></div>
     </div>
   )
 
@@ -48,7 +48,7 @@ export default function ThanhTichScreen() {
           : shown.length === 0 ? <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">Chưa có HS nào có thành tích. Điểm sinh khi đóng buổi.</div>
           : (
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {shown.map((r) => <Card key={r.hoc_sinh_id + r.mon} r={r} onOpen={() => setOpen({ id: r.hoc_sinh_id, ten: r.ho_ten })} />)}
+              {shown.map((r) => <Card key={r.hoc_sinh_id + r.mon} r={r} onOpen={() => setOpen({ id: r.hoc_sinh_id, ten: r.ho_ten, maHs: r.ma_hs, khoi: r.khoi })} />)}
             </div>
           )}
       </div>

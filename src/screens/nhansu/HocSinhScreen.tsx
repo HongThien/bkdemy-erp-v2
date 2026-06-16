@@ -151,7 +151,7 @@ function EditModal({ hocSinh, defaultKhoi, onClose, onSaved }: { hocSinh: HocSin
         </div>
 
         {view === 'thanhtich' && cur ? (
-          <div className="min-h-0 flex-1 overflow-y-auto p-7"><BangThanhTich hocSinhId={cur.id} hoTen={cur.ho_ten} /></div>
+          <div className="min-h-0 flex-1 overflow-y-auto bg-slate-900 p-7"><BangThanhTich hocSinhId={cur.id} hoTen={cur.ho_ten} maHs={cur.ma_hs} khoi={cur.khoi} /></div>
         ) : (
         <div className="grid min-h-0 flex-1 grid-cols-2 gap-7 overflow-y-auto p-7">
           {/* Cột trái — thông tin */}

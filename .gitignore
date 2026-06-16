@@ -12,3 +12,7 @@ build/
 
 # LƯU Ý: schema.sql được COMMIT cố ý (là bản schema chuẩn để đọc) — KHÔNG ignore nó.
 d41d8cd9.env
+
+# design downloads (không commit)
+Student badge design.zip
+_design_thanhtich/
