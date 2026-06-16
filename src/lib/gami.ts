@@ -341,17 +341,30 @@ const TASKS_BY_VAI: Record<'gv' | 'tg', { tab: TabKey; label: string }[]> = {
 export async function getMyTasks(): Promise<MyTask[]> {
   const prof = await getMyProfile()
   if (!prof) return []
-  const byLop = new Map<string, 'gv' | 'tg'>()
-  for (const pc of prof.phanCong) { const v = pc.vai_tro === 'gv' ? 'gv' : 'tg'; if (byLop.get(pc.lop_id) !== 'gv') byLop.set(pc.lop_id, v) }
-  const lopIds = [...byLop.keys()]
+  // 1 người có thể giữ NHIỀU vai trên CÙNG lớp (vd gv-phụ + tg) → gom TẤT CẢ vai, đừng gộp về 1.
+  const rolesByLop = new Map<string, Set<'gv' | 'tg'>>()
+  for (const pc of prof.phanCong) {
+    const v = pc.vai_tro === 'gv' ? 'gv' : 'tg'
+    if (!rolesByLop.has(pc.lop_id)) rolesByLop.set(pc.lop_id, new Set())
+    rolesByLop.get(pc.lop_id)!.add(v)
+  }
+  const lopIds = [...rolesByLop.keys()]
   if (!lopIds.length) return []
   const { data: buois, error } = await supabase.from('buoi_hoc')
     .select('id, lop_id, ngay, lop:lop_id(ten_lop)').eq('trang_thai', 'mo').eq('loai', 'thuong').in('lop_id', lopIds).order('ngay').limit(LIMIT)
   if (error) throw error
   const out: MyTask[] = []
   for (const b of (buois ?? []) as any[]) {
-    const vai = byLop.get(b.lop_id)!
-    for (const t of TASKS_BY_VAI[vai]) out.push({ buoiId: b.id, lop: b.lop?.ten_lop ?? '?', ngay: b.ngay, vai, tab: t.tab, label: t.label })
+    const roles = rolesByLop.get(b.lop_id)!
+    const seen = new Set<TabKey>() // dedup tab trùng (chấm bài có ở cả gv lẫn tg)
+    for (const vai of ['gv', 'tg'] as const) {
+      if (!roles.has(vai)) continue
+      for (const t of TASKS_BY_VAI[vai]) {
+        if (seen.has(t.tab)) continue
+        seen.add(t.tab)
+        out.push({ buoiId: b.id, lop: b.lop?.ten_lop ?? '?', ngay: b.ngay, vai, tab: t.tab, label: t.label })
+      }
+    }
   }
   return out
 }
