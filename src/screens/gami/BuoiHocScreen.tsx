@@ -362,32 +362,34 @@ function ChamMobile({ probs, coMat, gradeOf, tenDang, onSetMuc, onAddBai, onPick
   const cur = probs[idx]
   const chamRoi = (pid: string) => coMat.filter((r) => gradeOf(pid, r.hoc_sinh_id)).length
   const done = chamRoi(cur.id)
+  // tên gọn = 2 từ cuối (vd "Nguyễn Thị Hồng Anh" → "Hồng Anh")
+  const tenGon = (s?: string | null) => (s ?? '?').trim().split(/\s+/).slice(-2).join(' ')
 
   return (
-    <div className="-m-2 flex flex-col gap-3">
-      {/* Thanh trên: tiến độ bài hiện tại + Đóng buổi */}
-      <div className="flex items-center gap-2">
-        <span className="text-[13px] text-slate-500">Đã chấm <b className="text-slate-800">{done}/{coMat.length}</b> HS</span>
-        <button onClick={onAddBai} className="ml-auto rounded-md border border-slate-300 px-2.5 py-1.5 text-[12px] font-medium text-slate-600">+ Bài</button>
-        <button onClick={onDong} disabled={closing} className="rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white disabled:opacity-40">{closing ? 'Đang đóng…' : 'Đóng buổi'}</button>
-      </div>
-
-      {/* Chuyển bài: ‹ Bài N/total › + dải pill cuộn ngang */}
-      <div className="rounded-xl border border-slate-200 bg-white p-3">
+    <div className="flex flex-col gap-2">
+      {/* FREEZE: thanh trên + chuyển bài — dính đỉnh khi cuộn (break ra ngoài p-6 của khung) */}
+      <div className="sticky top-0 z-20 -mx-6 -mt-6 flex flex-col gap-2 border-b border-slate-200 bg-[#fafafb] px-6 pb-3 pt-3 shadow-sm">
         <div className="flex items-center gap-2">
-          <button onClick={() => setPi(idx - 1)} disabled={idx === 0} className="h-10 w-10 shrink-0 rounded-lg border border-slate-200 text-lg font-bold text-slate-600 disabled:opacity-30">‹</button>
+          <span className="text-[13px] text-slate-500">Đã chấm <b className="text-slate-800">{done}/{coMat.length}</b> HS</span>
+          <button onClick={onAddBai} className="ml-auto rounded-md border border-slate-300 px-2.5 py-1.5 text-[12px] font-medium text-slate-600">+ Bài</button>
+          <button onClick={onDong} disabled={closing} className="rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white disabled:opacity-40">{closing ? 'Đang đóng…' : 'Đóng buổi'}</button>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <button onClick={() => setPi(idx - 1)} disabled={idx === 0} className="h-10 w-10 shrink-0 rounded-lg border border-slate-200 bg-white text-lg font-bold text-slate-600 disabled:opacity-30">‹</button>
           <div className="min-w-0 flex-1 text-center">
             <div className="text-[15px] font-bold text-slate-800">Bài {cur.problem_no} <span className="text-[12px] font-normal text-slate-400">/ {probs.length}</span></div>
             <button onClick={() => onPickDang(cur.id)} className={`mt-0.5 inline-block max-w-full truncate rounded-md border px-2 py-0.5 text-[12px] font-medium ${cur.ma_dang ? 'border-violet-200 bg-violet-50 text-violet-700' : 'border-dashed border-slate-300 text-slate-400'}`}>{tenDang(cur.ma_dang) ?? '+ chọn dạng'}</button>
           </div>
-          <button onClick={() => setPi(idx + 1)} disabled={idx === probs.length - 1} className="h-10 w-10 shrink-0 rounded-lg border border-slate-200 text-lg font-bold text-slate-600 disabled:opacity-30">›</button>
+          <button onClick={() => setPi(idx + 1)} disabled={idx === probs.length - 1} className="h-10 w-10 shrink-0 rounded-lg border border-slate-200 bg-white text-lg font-bold text-slate-600 disabled:opacity-30">›</button>
         </div>
-        <div className="mt-2 flex gap-1.5 overflow-x-auto pb-1">
+
+        <div className="flex gap-1.5 overflow-x-auto pb-0.5">
           {probs.map((p, i) => {
-            const d = chamRoi(p.id); const full = d === coMat.length
+            const full = chamRoi(p.id) === coMat.length
             return (
               <button key={p.id} onClick={() => setPi(i)}
-                className={`relative h-9 min-w-9 shrink-0 rounded-lg border px-2 text-[13px] font-semibold transition ${i === idx ? 'border-indigo-600 bg-indigo-600 text-white' : full ? 'border-emerald-300 bg-emerald-50 text-emerald-700' : 'border-slate-200 bg-white text-slate-500'}`}>
+                className={`h-9 min-w-9 shrink-0 rounded-lg border px-2 text-[13px] font-semibold transition ${i === idx ? 'border-indigo-600 bg-indigo-600 text-white' : full ? 'border-emerald-300 bg-emerald-50 text-emerald-700' : 'border-slate-200 bg-white text-slate-500'}`}>
                 {p.problem_no}
               </button>
             )
@@ -395,17 +397,17 @@ function ChamMobile({ probs, coMat, gradeOf, tenDang, onSetMuc, onAddBai, onPick
         </div>
       </div>
 
-      {/* Danh sách HS — mỗi HS 1 thẻ: tên + hàng nút mức 1→5 to */}
-      <div className="flex flex-col gap-2">
+      {/* Danh sách HS — mỗi HS 1 hàng: tên (2 từ cuối) + nút mức 1→5 nhỏ, cùng dòng */}
+      <div className="flex flex-col gap-1.5">
         {coMat.map((r) => {
           const g = gradeOf(cur.id, r.hoc_sinh_id)
           return (
-            <div key={r.id} className={`rounded-xl border bg-white p-3 ${g ? 'border-slate-200' : 'border-amber-200'}`}>
-              <div className="mb-2 truncate text-[14px] font-semibold text-slate-800">{r.hoc_sinh?.ho_ten ?? '?'}</div>
-              <div className="grid grid-cols-5 gap-1.5">
+            <div key={r.id} className={`flex items-center gap-2 rounded-xl border bg-white px-3 py-2 ${g ? 'border-slate-200' : 'border-amber-200'}`}>
+              <span className="min-w-0 flex-1 truncate text-[14px] font-medium text-slate-800">{tenGon(r.hoc_sinh?.ho_ten)}</span>
+              <div className="flex shrink-0 gap-1">
                 {MUC.map((m) => (
                   <button key={m.v} onClick={() => onSetMuc(cur.id, r.hoc_sinh_id, m.v)}
-                    className={`h-12 rounded-lg border text-[17px] font-bold transition ${g?.muc === m.v ? m.sel : MUC_IDLE}`}>{m.v}</button>
+                    className={`h-9 w-9 rounded-lg border text-[14px] font-bold transition ${g?.muc === m.v ? m.sel : MUC_IDLE}`}>{m.v}</button>
                 ))}
               </div>
             </div>
