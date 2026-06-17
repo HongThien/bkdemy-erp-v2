@@ -9,3 +9,6 @@
 
 /* Phóng to toàn bộ ~15% (chữ + layout). Chrome/Edge. */
 #root { zoom: 1.15; }
+
+/* Ảnh chèn trong lý thuyết (markdown ![](url) qua MathText) — cắt từ PDF/ảnh */
+.mt-img { display: block; max-width: 100%; max-height: 360px; object-fit: contain; margin: 8px auto; border: 1px solid #e2e8f0; border-radius: 8px; }

@@ -286,6 +286,7 @@ const CONTENT_CSS = `
 .pv-cau{margin:12px 0;break-inside:avoid}
 .pv-cau-no{font-weight:700;color:var(--pv-accent,#E91E8C);margin-right:5px}
 .pv-img{display:block;margin:7px auto;max-height:60mm;max-width:100%}
+.mt-img{display:block;margin:6px auto;max-height:60mm;max-width:100%;break-inside:avoid}
 .pv-opts{display:grid;column-gap:22px;row-gap:11px;margin-top:7px;align-items:start}
 .pv-opt{display:flex;align-items:flex-start;gap:5px;line-height:2}
 .pv-correct{color:#16a34a;font-weight:700}

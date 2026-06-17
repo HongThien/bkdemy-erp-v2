@@ -1,12 +1,13 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import {
-  listLopBac, groupMap, suggestT1Ma, suggestT2Ma, suggestLeafMa, uploadKhoFile,
+  listLopBac, groupMap, suggestT1Ma, suggestT2Ma, suggestLeafMa, uploadKhoFile, uploadKhoImage,
   callGeminiJson, buildLyThuyetPrompt, parseLyThuyetJson,
   type MapRow, type Tier1Node, type Tier2Node, type LopBac, type LyThuyet,
 } from '../../lib/kho/api'
 import type { BranchConfig, LyThuyetApi } from './branches'
 import { BacChip, Code, inp, Shell, Field, Row, Seg, Ghost, Actions, mucDoTone, MathText, readClipboardImageFile } from './ui'
 import DangHub from './DangHub'
+import PdfCropper from '../../components/PdfCropper'
 
 const MUC_DO = [1, 2, 3, 4, 5]
 
@@ -475,9 +476,24 @@ function LyThuyetModal({ ma, ten, current, api, allowKhongCan, onClose, onSaved 
   const [showFile, setShowFile] = useState(!!current?.file_url)
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [crop, setCrop] = useState(false)
   const fileRef = useRef<HTMLInputElement>(null)
   const attachRef = useRef<HTMLInputElement>(null)
+  const taRef = useRef<HTMLTextAreaElement>(null)
   const hasContent = !!noiDung.trim() || !!url.trim()
+
+  // Cắt hình từ PDF/ảnh → upload → chèn markdown ![](url) vào vị trí con trỏ trong code lý thuyết.
+  async function insertImg(file: File) {
+    setUploading(true); setError(null)
+    try {
+      const u = await uploadKhoImage(file)
+      const md = `\n![](${u})\n`
+      const ta = taRef.current
+      const a = ta?.selectionStart ?? noiDung.length, b = ta?.selectionEnd ?? noiDung.length
+      setNoiDung((s) => s.slice(0, a) + md + s.slice(b))
+      setCrop(false)
+    } catch (e: any) { setError('Upload ảnh lỗi: ' + (e?.message ?? e)) } finally { setUploading(false) }
+  }
 
   async function addFiles(list: FileList | File[]) {
     const arr = Array.from(list).filter((f) => f.type.startsWith('image/') || f.type === 'application/pdf')
@@ -537,6 +553,7 @@ function LyThuyetModal({ ma, ten, current, api, allowKhongCan, onClose, onSaved 
               <div className="mt-2.5 flex flex-wrap items-center gap-2">
                 <button onClick={() => fileRef.current?.click()} className="h-[34px] shrink-0 whitespace-nowrap rounded-md border border-slate-300 bg-white px-3 text-[13px] font-medium text-slate-600 hover:border-indigo-400">📎 Chọn ảnh/PDF</button>
                 <button onClick={pasteClip} className="h-[34px] shrink-0 whitespace-nowrap rounded-md border border-slate-300 bg-white px-3 text-[13px] font-medium text-slate-600 hover:border-indigo-400">📋 Dán clipboard</button>
+                <button onClick={() => setCrop(true)} disabled={uploading} title="Cắt hình từ PDF/ảnh (DPI cao) → chèn vào lý thuyết tại vị trí con trỏ" className="h-[34px] shrink-0 whitespace-nowrap rounded-md border border-violet-300 bg-white px-3 text-[13px] font-medium text-violet-700 hover:bg-violet-50 disabled:opacity-50">{uploading ? '⏳ Đang chèn…' : '✂️ Cắt hình chèn'}</button>
                 <input ref={fileRef} type="file" accept="image/*,application/pdf" multiple hidden onChange={(e) => e.target.files && addFiles(e.target.files)} />
                 <select value={model} onChange={(e) => setModel(e.target.value)} className={`${sel} shrink-0`}>{LT_MODELS.map((m) => <option key={m.value} value={m.value}>{m.label}</option>)}</select>
                 <input value={ghiChu} onChange={(e) => setGhiChu(e.target.value)} placeholder="ghi chú AI (tuỳ)" className={`${inp} h-[34px] min-w-[120px] flex-1 text-[13px]`} />
@@ -566,8 +583,8 @@ function LyThuyetModal({ ma, ten, current, api, allowKhongCan, onClose, onSaved 
         <div className="grid min-h-0 flex-1 grid-cols-2">
           <div className="flex min-h-0 flex-col border-r border-slate-200">
             <div className="border-b border-slate-100 px-4 py-1.5 text-[12px] font-bold uppercase tracking-wide text-slate-500">Code (LaTeX) — sửa tự do</div>
-            <textarea value={noiDung} onChange={(e) => setNoiDung(e.target.value)}
-              placeholder={'Lý thuyết · phương pháp · ví dụ…\nCông thức $\\dfrac{-b}{2a}$, $x \\neq 0$'}
+            <textarea ref={taRef} value={noiDung} onChange={(e) => setNoiDung(e.target.value)}
+              placeholder={'Lý thuyết · phương pháp · ví dụ…\nCông thức $\\dfrac{-b}{2a}$, $x \\neq 0$\nChèn hình: ![](url) — dùng nút ✂️ Cắt hình chèn'}
               className="min-h-0 flex-1 resize-none p-4 font-mono text-[13px] leading-relaxed outline-none" />
           </div>
           <div className="flex min-h-0 flex-col">
@@ -598,6 +615,7 @@ function LyThuyetModal({ ma, ten, current, api, allowKhongCan, onClose, onSaved 
           </div>
         </div>
       </div>
+      {crop && <PdfCropper title="Cắt hình chèn vào lý thuyết" onClose={() => setCrop(false)} onCrop={insertImg} />}
     </div>
   )
 }

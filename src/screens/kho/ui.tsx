@@ -43,11 +43,18 @@ function renderInline(s: string): string {
   return out + boldify(esc(s.slice(last)))
 }
 // **đậm** (markdown) → <b>…</b>; phần còn lại render công thức trần + esc.
-function renderText(s: string): string {
+function renderBold(s: string): string {
   const re = /\*\*([^*]+?)\*\*/g
   let out = '', last = 0, m: RegExpExecArray | null
   while ((m = re.exec(s))) { out += renderInline(s.slice(last, m.index)); out += '<b>' + renderInline(m[1]) + '</b>'; last = re.lastIndex }
   return out + renderInline(s.slice(last))
+}
+// Ảnh markdown ![alt](url) → <img> (dùng cho hình cắt từ PDF chèn vào lý thuyết). Phần còn lại → renderBold.
+function renderText(s: string): string {
+  const re = /!\[[^\]]*\]\(([^)\s]+)\)/g
+  let out = '', last = 0, m: RegExpExecArray | null
+  while ((m = re.exec(s))) { out += renderBold(s.slice(last, m.index)); out += `<img src="${esc(m[1])}" alt="" class="mt-img" />`; last = re.lastIndex }
+  return out + renderBold(s.slice(last))
 }
 // Nhãn đầu dòng (Ví dụ, Quy tắc, Lưu ý…) → tự bọc **…** để IN ĐẬM.
 const LABEL_RE = /^(\s*)(Ví dụ|VD|Quy tắc|Lưu ý|Chú ý|Nhận xét|Định nghĩa|Định lí|Định lý|Tính chất|Hệ quả|Ghi nhớ|Phương pháp|Bài toán|Mẹo|Dấu hiệu|Cách giải|Kết luận|Bước \d+)(\s*\d*)(\s*[:.])/u
