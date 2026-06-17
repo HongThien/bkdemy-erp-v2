@@ -41,6 +41,8 @@
 
 **TAB QUẢN LÝ LEVEL (Thùy: làm luôn):** `QuanLyLevelScreen` (leaf `quanlylevel`, Vận hành, gu SaaS). Chọn LỚP (SearchSelect) → môn+roster (`listHSCuaLop`) + kì thi mùa (`listKyThi`, lọc khối). **Tạo kì thi** (CreateModal: loại→hệ số auto 2/2/1, đợt ghép cặp, ngày). **Nhập điểm** 1 kì thi: bảng HS × [điểm/10 · verdict đạt/gần/không · vượt band] → `upsertDiemThi` (snapshot `band_luc_thi`=muc_nang_luc_id). **Ma trận Level**: HS × kì thi (verdict màu + điểm + ↑vượt) + cột Level=Σ verdictDiem (max = Σ hệ số kì thi đã tạo, đích 21). Helper thanhtich: `currentMua`/`verdictDiem`(export)/`listDiemThiByKyThi`. ✓ tsc+build sạch.
 
+**CHẤM BÀI TRÊN LỚP — VIEW MOBILE (Thùy: GV chấm trên điện thoại):** màn hẹp tự hiện view 1-bài-mỗi-màn (desktop giữ bảng cũ). Hook `src/hooks/useIsMobile.ts` (matchMedia `max-width:767`; KHÔNG bị zoom:1.15 ở #root tác động vì đọc viewport). `ChamTab` rẽ nhánh `isMobile` → component **`ChamMobile`** (cùng file): thanh chuyển bài ‹ Bài N/total › + dải pill cuộn ngang (pill xanh=đã chấm đủ cả lớp) + danh sách HS thẻ dọc, mỗi HS hàng 5 nút mức 1→5 to (h-12 grid-cols-5, thumb-friendly). Tái dùng nguyên handler desktop (`setMuc`/`gradeOf`/`addProblem`/`closePhase`/`DangPickerOne`) — chỉ đổi bố cục. Lý do per-bài: HS làm các bài khác nhau, GV đi quanh lớp chọn đúng bài đang xem rồi chấm. CHỈ tab ingame (ET/đánh giá chưa làm mobile). Bỏ "In phiếu" trên mobile (vô dụng). ✓ tsc sạch. CHƯA test e2e trên thiết bị thật.
+
 ## 2026-06-16
 
 **IA sửa (Thùy): "Làm tài liệu" = HUB nhiều loại con** (Giáo trình·ET·Đề thi·Bổ trợ), KHÔNG để ET thành leaf riêng. → bỏ leaf `lamet`; thêm `LamTaiLieuHub` (tab con) render TaiLieuScreen/ETScreen; leaf `lamtailieu` → hub. (Đè điểm "leaf mới lamet" ở mục TẠO ET ngay dưới.)

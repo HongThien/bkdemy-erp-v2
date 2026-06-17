@@ -11,6 +11,7 @@ import { listDaiDang, type CauHoi } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
 import SearchSelect from '../../components/SearchSelect'
 import DangPickerOne from '../../components/DangPickerOne'
+import { useIsMobile } from '../../hooks/useIsMobile'
 
 type DangOpt = { ma_dang: string; ten: string }
 
@@ -229,6 +230,7 @@ function ChamTab({ buoiId, phase, roster, buoi, dangOpts, onChange }: { buoiId: 
   const [reveal, setReveal] = useState<RevealRow[] | null>(null)
   const [dangPick, setDangPick] = useState<string | null>(null) // problemId đang chọn dạng (popup to)
   const [closing, setClosing] = useState(false)
+  const isMobile = useIsMobile()
   const coMat = roster.filter((r) => r.diem_danh === 'co_mat')
   const dongCol = buoi.ingame_dong_at
   const khoi = (buoi as any).lop?.khoi ?? ''
@@ -252,16 +254,50 @@ function ChamTab({ buoiId, phase, roster, buoi, dangOpts, onChange }: { buoiId: 
     try { const res = await closePhase(buoiId, phase); if (res.already) alert('Phase này đã đóng.'); else { setReveal(res.reveal ?? []); onChange() } }
     finally { setClosing(false) }
   }
+  // In PHIẾU CHẤM (lưới HS × bài, ô trống để GV tích tay trong lớp). Khổ A4 ngang, ≤16 HS/trang (tự sang trang nếu hơn).
+  function inPhieu() {
+    const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    const dn = (md: string | null) => (md ? dangOpts.find((d) => d.ma_dang === md)?.ten ?? md : '')
+    const lop = (buoi as any).lop?.ten_lop ?? ''
+    const mon = (buoi as any).lop?.mon ?? ''
+    const head = probs.map((p) => `<th class="b">Bài ${p.problem_no}${p.ma_dang ? `<div class="d">${esc(dn(p.ma_dang))}</div>` : ''}</th>`).join('')
+    const body = coMat.map((r, i) => `<tr><td class="n">${i + 1}</td><td class="t">${esc(r.hoc_sinh?.ho_ten ?? '?')}</td>${probs.map(() => '<td class="c"></td>').join('')}</tr>`).join('')
+    const html = `<!doctype html><html><head><meta charset="utf-8"><title>Phiếu chấm ${esc(lop)}</title><style>
+      @page{size:A4 landscape;margin:10mm}*{font-family:Arial,Helvetica,sans-serif}
+      h1{font-size:15px;margin:0 0 2px}.sub{font-size:11px;color:#444;margin:0 0 8px}
+      table{width:100%;border-collapse:collapse}th,td{border:1px solid #333;padding:3px 4px;font-size:11px}
+      thead th{background:#eee}.b{text-align:center}.d{font-size:9px;color:#555;font-weight:normal;margin-top:1px}
+      .n{width:22px;text-align:center}.t{text-align:left;white-space:nowrap}.c{height:24px}
+      tr{break-inside:avoid}.lg{font-size:10px;color:#555;margin-top:6px}</style></head><body>
+      <h1>PHIẾU CHẤM BÀI TRÊN LỚP</h1>
+      <div class="sub">Lớp <b>${esc(lop)}</b>${mon ? ` · ${esc(mon)}` : ''} · Ngày: ${esc(buoi.ngay)} · GV: ____________ · Sĩ số có mặt: ${coMat.length}</div>
+      <table><thead><tr><th class="n">#</th><th class="t">Họ tên</th>${head}</tr></thead><tbody>${body}</tbody></table>
+      <div class="lg">Thang mức: 1 (yếu) · 2 · 3 · 4 · 5 (xuất sắc) — ghi mức vào ô.</div></body></html>`
+    const w = window.open('', '_blank', 'width=1100,height=800')
+    if (!w) { alert('Trình duyệt chặn cửa sổ in — cho phép pop-up rồi thử lại.'); return }
+    w.document.write(html); w.document.close(); w.focus(); setTimeout(() => w.print(), 350)
+  }
 
   if (dongCol) return <RevealView buoiId={buoiId} phase={phase} roster={roster} reveal={reveal}
     onReopen={async () => { if (!confirm('Mở lại buổi học để sửa? Elo/EXP đã tính sẽ được hoàn lại; nhớ đóng lại sau khi sửa.')) return; await reopenPhase(buoiId, phase); setReveal(null); onChange() }} />
   if (coMat.length === 0) return <p className="text-[12px] text-slate-400">Chưa có HS nào điểm danh “có mặt” — điểm danh trước khi chấm.</p>
   const tenDang = (md: string | null) => (md ? dangOpts.find((d) => d.ma_dang === md)?.ten ?? md : null)
 
+  // ── MOBILE: 1 bài/màn, nút chuyển nhanh, danh sách HS + mức 1→5 (HS làm các bài khác nhau) ──
+  if (isMobile) return (
+    <>
+      <ChamMobile probs={probs} coMat={coMat} gradeOf={gradeOf} tenDang={tenDang}
+        onSetMuc={setMuc} onAddBai={async () => { await addProblem(buoiId, phase); reloadP() }}
+        onPickDang={setDangPick} onDong={dong} closing={closing} />
+      {dangPick && <DangPickerOne khoi={khoi} onClose={() => setDangPick(null)} onPick={async (md) => { const pid = dangPick; setDangPick(null); await setProblemDang(pid, md); reloadP() }} />}
+    </>
+  )
+
   return (
     <div>
       <div className="mb-3 flex items-center gap-2">
         <button onClick={async () => { await addProblem(buoiId, phase); reloadP() }} className="rounded-md border border-slate-300 px-2.5 py-1.5 text-[12px] font-medium text-slate-600 hover:border-indigo-400">+ Thêm bài</button>
+        <button onClick={inPhieu} className="rounded-md border border-slate-300 px-2.5 py-1.5 text-[12px] font-medium text-slate-600 hover:border-indigo-400" title="In phiếu chấm trống để tích tay trong lớp">🖨 In phiếu</button>
         <span className="text-[12px] text-slate-400">{probs.length} bài · {coMat.length} HS · 1 click mức <b className="text-rose-600">1</b>→<b className="text-emerald-600">5</b>.</span>
         <button onClick={dong} disabled={!probs.length || closing} className="ml-auto rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-indigo-500 disabled:opacity-40">{closing ? 'Đang đóng…' : 'Đóng buổi học'}</button>
       </div>
@@ -303,6 +339,79 @@ function ChamTab({ buoiId, phase, roster, buoi, dangOpts, onChange }: { buoiId: 
         </table>
       </div>
       {dangPick && <DangPickerOne khoi={khoi} onClose={() => setDangPick(null)} onPick={async (md) => { const pid = dangPick; setDangPick(null); await setProblemDang(pid, md); reloadP() }} />}
+    </div>
+  )
+}
+
+// ── MOBILE chấm bài trên lớp: 1 bài/màn, chuyển nhanh, danh sách HS + mức 1→5 ──
+// GV đi quanh lớp, HS làm các bài khác nhau → chọn đúng bài đó rồi chấm cả lớp.
+function ChamMobile({ probs, coMat, gradeOf, tenDang, onSetMuc, onAddBai, onPickDang, onDong, closing }: {
+  probs: Problem[]; coMat: BuoiHocHS[]
+  gradeOf: (pid: string, hsid: string) => Grade | undefined
+  tenDang: (md: string | null) => string | null
+  onSetMuc: (pid: string, hsId: string, muc: number) => void
+  onAddBai: () => void; onPickDang: (pid: string) => void
+  onDong: () => void; closing: boolean
+}) {
+  const [pi, setPi] = useState(0)
+  // clamp khi số bài đổi (thêm/bớt bài)
+  useEffect(() => { setPi((i) => Math.max(0, Math.min(i, probs.length - 1))) }, [probs.length])
+
+  if (probs.length === 0) return <p className="text-[13px] text-slate-400">Đang tải bài…</p>
+  const idx = Math.max(0, Math.min(pi, probs.length - 1))
+  const cur = probs[idx]
+  const chamRoi = (pid: string) => coMat.filter((r) => gradeOf(pid, r.hoc_sinh_id)).length
+  const done = chamRoi(cur.id)
+
+  return (
+    <div className="-m-2 flex flex-col gap-3">
+      {/* Thanh trên: tiến độ bài hiện tại + Đóng buổi */}
+      <div className="flex items-center gap-2">
+        <span className="text-[13px] text-slate-500">Đã chấm <b className="text-slate-800">{done}/{coMat.length}</b> HS</span>
+        <button onClick={onAddBai} className="ml-auto rounded-md border border-slate-300 px-2.5 py-1.5 text-[12px] font-medium text-slate-600">+ Bài</button>
+        <button onClick={onDong} disabled={closing} className="rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white disabled:opacity-40">{closing ? 'Đang đóng…' : 'Đóng buổi'}</button>
+      </div>
+
+      {/* Chuyển bài: ‹ Bài N/total › + dải pill cuộn ngang */}
+      <div className="rounded-xl border border-slate-200 bg-white p-3">
+        <div className="flex items-center gap-2">
+          <button onClick={() => setPi(idx - 1)} disabled={idx === 0} className="h-10 w-10 shrink-0 rounded-lg border border-slate-200 text-lg font-bold text-slate-600 disabled:opacity-30">‹</button>
+          <div className="min-w-0 flex-1 text-center">
+            <div className="text-[15px] font-bold text-slate-800">Bài {cur.problem_no} <span className="text-[12px] font-normal text-slate-400">/ {probs.length}</span></div>
+            <button onClick={() => onPickDang(cur.id)} className={`mt-0.5 inline-block max-w-full truncate rounded-md border px-2 py-0.5 text-[12px] font-medium ${cur.ma_dang ? 'border-violet-200 bg-violet-50 text-violet-700' : 'border-dashed border-slate-300 text-slate-400'}`}>{tenDang(cur.ma_dang) ?? '+ chọn dạng'}</button>
+          </div>
+          <button onClick={() => setPi(idx + 1)} disabled={idx === probs.length - 1} className="h-10 w-10 shrink-0 rounded-lg border border-slate-200 text-lg font-bold text-slate-600 disabled:opacity-30">›</button>
+        </div>
+        <div className="mt-2 flex gap-1.5 overflow-x-auto pb-1">
+          {probs.map((p, i) => {
+            const d = chamRoi(p.id); const full = d === coMat.length
+            return (
+              <button key={p.id} onClick={() => setPi(i)}
+                className={`relative h-9 min-w-9 shrink-0 rounded-lg border px-2 text-[13px] font-semibold transition ${i === idx ? 'border-indigo-600 bg-indigo-600 text-white' : full ? 'border-emerald-300 bg-emerald-50 text-emerald-700' : 'border-slate-200 bg-white text-slate-500'}`}>
+                {p.problem_no}
+              </button>
+            )
+          })}
+        </div>
+      </div>
+
+      {/* Danh sách HS — mỗi HS 1 thẻ: tên + hàng nút mức 1→5 to */}
+      <div className="flex flex-col gap-2">
+        {coMat.map((r) => {
+          const g = gradeOf(cur.id, r.hoc_sinh_id)
+          return (
+            <div key={r.id} className={`rounded-xl border bg-white p-3 ${g ? 'border-slate-200' : 'border-amber-200'}`}>
+              <div className="mb-2 truncate text-[14px] font-semibold text-slate-800">{r.hoc_sinh?.ho_ten ?? '?'}</div>
+              <div className="grid grid-cols-5 gap-1.5">
+                {MUC.map((m) => (
+                  <button key={m.v} onClick={() => onSetMuc(cur.id, r.hoc_sinh_id, m.v)}
+                    className={`h-12 rounded-lg border text-[17px] font-bold transition ${g?.muc === m.v ? m.sel : MUC_IDLE}`}>{m.v}</button>
+                ))}
+              </div>
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }
