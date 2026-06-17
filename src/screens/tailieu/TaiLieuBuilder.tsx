@@ -37,6 +37,9 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
   const [picker, setPicker] = useState<null | { phanId: string; maDangs: string[]; selected: string[] }>(null)
   const [dangPicker, setDangPicker] = useState<null | { buoiId: string; selected: string[] }>(null)
   const [trichOpen, setTrichOpen] = useState(false)
+  const [saved, setSaved] = useState(false) // chỉ báo "đã tự động lưu" (builder lưu ngay mỗi thao tác, không có nút Lưu)
+  const markSaved = () => setSaved(true)
+  useEffect(() => { if (!saved) return; const t = setTimeout(() => setSaved(false), 2000); return () => clearTimeout(t) }, [saved])
 
   async function reload() {
     const f = await getTaiLieuFull(id)
@@ -44,9 +47,9 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
   }
   useEffect(() => { reload().catch((e) => setErr(e.message ?? String(e))) }, [id]) // eslint-disable-line
 
-  async function saveTen() { if (full && ten.trim() && ten.trim() !== full.taiLieu.ten) await updateTaiLieu(id, { ten: ten.trim() }) }
-  async function saveCh(patch: Partial<CauHinh>) { const next = { ...ch, ...patch }; setCh(next); await updateTaiLieu(id, { cau_hinh: next }) }
-  async function applyCaus(phanId: string, maCaus: string[]) { await setCauOfPhan(phanId, maCaus); await reload() }
+  async function saveTen() { if (full && ten.trim() && ten.trim() !== full.taiLieu.ten) { await updateTaiLieu(id, { ten: ten.trim() }); markSaved() } }
+  async function saveCh(patch: Partial<CauHinh>) { const next = { ...ch, ...patch }; setCh(next); await updateTaiLieu(id, { cau_hinh: next }); markSaved() }
+  async function applyCaus(phanId: string, maCaus: string[]) { await setCauOfPhan(phanId, maCaus); await reload(); markSaved() }
   const openPicker = (phanId: string, ma: string, selected: string[]) => setPicker({ phanId, maDangs: [ma], selected })
   const onLine = (maCau: string, n: number) => saveCh({ btvnLinesByCau: { ...(ch.btvnLinesByCau ?? {}), [maCau]: n } })
 
@@ -66,6 +69,7 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
         <button onClick={onClose} className="text-[13px] font-medium text-slate-400 hover:text-indigo-600">← Thư viện</button>
         <input value={ten} onChange={(e) => setTen(e.target.value)} onBlur={saveTen} className={`${inp} h-9 max-w-[420px] flex-1 font-semibold`} placeholder="Tên giáo trình" />
         <span className="text-[12px] text-slate-400">Khối {full.taiLieu.khoi}</span>
+        <span className={`rounded-md px-2 py-0.5 text-[11px] font-medium transition ${saved ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-400'}`} title="Mọi thay đổi được lưu tự động — không cần nút Lưu">{saved ? '✓ Đã lưu' : '↻ Tự động lưu'}</span>
         <button onClick={() => setTrichOpen(true)} className="ml-auto rounded-md border border-violet-300 px-3 py-1.5 text-sm font-medium text-violet-700 hover:bg-violet-50" title="Gán giáo trình cho 1 lớp → trích từng buổi thành GT buổi + BTVN bám ngày">⬇ Trích xuất / Gán lớp</button>
         <button onClick={() => setPrinting(true)} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500">🖨 Xem / Xuất PDF</button>
       </div>
@@ -95,19 +99,19 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
               return (
                 <BuoiCard
                   key={b.marker.id} buoi={b} startNo={startNo} linesByCau={linesByCau} onLine={onLine}
-                  onRename={(t) => updatePhan(b.marker.id, { tieu_de: t }).then(reload)}
-                  onDelete={async () => { if (confirm('Xoá cả buổi này (gồm dạng trên lớp + BTVN)?')) { await deleteBuoi(id, b.marker.id); await reload() } }}
+                  onRename={(t) => updatePhan(b.marker.id, { tieu_de: t }).then(reload).then(markSaved)}
+                  onDelete={async () => { if (confirm('Xoá cả buổi này (gồm dạng trên lớp + BTVN)?')) { await deleteBuoi(id, b.marker.id); await reload(); markSaved() } }}
                   onChonDang={() => setDangPicker({ buoiId: b.marker.id, selected: b.dangs.map((d) => d.ref_ma!).filter(Boolean) })}
                   onApply={applyCaus} openPicker={openPicker}
                 />
               )
             })}
-            <button onClick={async () => { await addBuoi(id); await reload() }} className="w-full rounded-xl border-2 border-dashed border-indigo-200 bg-indigo-50/40 py-3 text-[14px] font-medium text-indigo-700 transition hover:bg-indigo-50">+ Thêm buổi</button>
+            <button onClick={async () => { await addBuoi(id); await reload(); markSaved() }} className="w-full rounded-xl border-2 border-dashed border-indigo-200 bg-indigo-50/40 py-3 text-[14px] font-medium text-indigo-700 transition hover:bg-indigo-50">+ Thêm buổi</button>
           </div>
         </div>
       </div>
 
-      {dangPicker && <DangPicker khoi={full.taiLieu.khoi} selected={dangPicker.selected} onClose={() => setDangPicker(null)} onConfirm={async (maDangs) => { const bid = dangPicker.buoiId; setDangPicker(null); await setDangOfBuoi(id, bid, maDangs); await reload() }} />}
+      {dangPicker && <DangPicker khoi={full.taiLieu.khoi} selected={dangPicker.selected} onClose={() => setDangPicker(null)} onConfirm={async (maDangs) => { const bid = dangPicker.buoiId; setDangPicker(null); await setDangOfBuoi(id, bid, maDangs); await reload(); markSaved() }} />}
       {picker && <KhoPicker {...picker} onClose={() => setPicker(null)} onConfirm={async (m) => { await applyCaus(picker.phanId, m); setPicker(null) }} />}
       {trichOpen && <TrichPanel masterId={id} khoi={full.taiLieu.khoi} buois={buois} onClose={() => setTrichOpen(false)} />}
       {printing && <PrintView id={id} onClose={() => setPrinting(false)} />}

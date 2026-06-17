@@ -2,8 +2,8 @@
 // Dùng chung: màn Thành tích (full-screen) + tab Học sinh. Nền tối, Baloo 2; data THẬT pure-derive.
 // Danh hiệu = 3 nguyên tố (thunder/fire/frost) × cấp 1-5 (chim + nền nguyên tố + sao) — PLACEHOLDER
 // cấp/% tới khi define điều kiện. Ảnh chim: public/mythwings/phoenix_{thunder,fire,frost}.png.
-import { useEffect, useState } from 'react'
-import { getThanhTich, type ThanhTich } from '../../lib/gami'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { getThanhTich, getThanhTichGhim, setThanhTichGhim, type ThanhTich, type ThanhTichMon } from '../../lib/gami'
 import { getLevelXu, type LevelXu } from '../../lib/thanhtich'
 import { avatarStage } from '../../gami/level.js'
 
@@ -23,11 +23,32 @@ const DANH_HIEU: { el: El; rarity: string; mean: string }[] = [
   { el: 'frost', rarity: 'Chăm chỉ', mean: 'Giữ chuỗi hoàn thành bài tập' },
 ]
 
-export default function BangThanhTich({ hocSinhId, hoTen, maHs, khoi }: { hocSinhId: string; hoTen?: string; maHs?: string | null; khoi?: string | null }) {
+// Bề rộng thiết kế chuẩn — fit mode giữ layout ở đây rồi scale cho vừa khung (không phóng quá 1).
+// Rộng (landscape) để dùng hết chiều ngang, bớt chiều cao.
+const DESIGN_W = 1160
+
+// Catalog "Thành tích thi đấu" — chỉ 6 loại TÍNH ĐƯỢC từ data hiện có (khớp key thanh_tich_loai).
+// (Còn diem_10/9+/vượt-band/lên-band/chuỗi-BTVN/chuyên-cần: chờ diem_thi/log/btvn → bổ sung sau.)
+const ACH_DEFS: { key: string; icon: string; ten: string; get: (m: ThanhTichMon) => number; always?: boolean }[] = [
+  { key: 'top1_lop', icon: '👑', ten: 'Top 1 Lớp', get: (m) => m.top1.lop },
+  { key: 'top1_et', icon: '🏅', ten: 'Top 1 ET', get: (m) => m.top1.et },
+  { key: 'top1_mt', icon: '🏆', ten: 'Top 1 MT', get: (m) => m.top1.mt },
+  { key: 'elo_dinh', icon: '📈', ten: 'Elo đỉnh', get: (m) => m.eloPeak, always: true },
+  { key: 'chuoi_di_hoc', icon: '🔥', ten: 'Chuỗi đi học', get: (m) => m.chuoiDiHoc },
+  { key: 'tong_buoi', icon: '🎖️', ten: 'Tổng buổi', get: (m) => m.tongBuoi, always: true },
+]
+
+export default function BangThanhTich({ hocSinhId, hoTen, maHs, khoi, fit }: { hocSinhId: string; hoTen?: string; maHs?: string | null; khoi?: string | null; fit?: boolean }) {
   const [tt, setTt] = useState<ThanhTich | null>(null)
   const [loading, setLoading] = useState(true)
   const [mon, setMon] = useState('')
   const [lx, setLx] = useState<LevelXu | null>(null)
+  const boxRef = useRef<HTMLDivElement>(null)
+  const innerRef = useRef<HTMLDivElement>(null)
+  const [scale, setScale] = useState(1)
+  const [ghim, setGhim] = useState<string[]>([])
+  const [editing, setEditing] = useState(false)
+  const [sel, setSel] = useState<string[]>([])
 
   useEffect(() => {
     let live = true
@@ -43,11 +64,48 @@ export default function BangThanhTich({ hocSinhId, hoTen, maHs, khoi }: { hocSin
     return () => { live = false }
   }, [hocSinhId, mon])
 
+  // Ghim thành tích thi đấu (HS chọn khoe). Đổi HS/môn → tải lại, thoát chế độ sửa.
+  useEffect(() => {
+    setEditing(false)
+    if (!mon) { setGhim([]); return }
+    let live = true
+    getThanhTichGhim(hocSinhId, mon).then((g) => { if (live) setGhim(g) }).catch(() => {})
+    return () => { live = false }
+  }, [hocSinhId, mon])
+
   const cur = tt?.mons.find((m) => m.mon === mon) ?? tt?.mons[0] ?? null
   const lv = lx?.level ?? 0
   const xpPct = lx?.expKeMoc ? Math.min(100, Math.round((lx.expThang / lx.expKeMoc) * 100)) : 100
 
-  return (
+  // 4 ô showcase: dùng ghim (lọc theo loại CÓ giá trị); chưa ghim → gợi ý theo thu_tu; bù cho đủ 4.
+  const avail = cur ? ACH_DEFS.map((d) => ({ ...d, val: d.get(cur) })).filter((d) => d.always || d.val > 0) : []
+  const byKey = new Map(avail.map((a) => [a.key, a]))
+  const pickKeys: string[] = (ghim.length ? ghim : avail.map((a) => a.key)).filter((k) => byKey.has(k)).slice(0, 4)
+  for (const a of avail) { if (pickKeys.length >= 4) break; if (!pickKeys.includes(a.key)) pickKeys.push(a.key) }
+  const cards = pickKeys.map((k) => byKey.get(k)!).filter(Boolean)
+  const saveGhim = async () => { try { await setThanhTichGhim(hocSinhId, mon, sel); setGhim(sel); setEditing(false) } catch (e: any) { alert(e.message ?? String(e)) } }
+
+  // FIT: giữ layout ở DESIGN_W rồi thu nhỏ cho vừa khung (cao + rộng), tối đa 1.
+  // transform không đổi offset layout → đo offsetHeight = kích thước thật, không lặp vô hạn.
+  useLayoutEffect(() => {
+    if (!fit) return
+    const recalc = () => {
+      const box = boxRef.current, inner = innerRef.current
+      if (!box || !inner) return
+      const cw = inner.offsetWidth, ch = inner.offsetHeight
+      const bw = box.clientWidth, bh = box.clientHeight
+      if (!cw || !ch || !bw || !bh) return
+      setScale(Math.min(1, bw / cw, bh / ch))
+    }
+    recalc()
+    const ro = new ResizeObserver(recalc)
+    if (boxRef.current) ro.observe(boxRef.current)
+    if (innerRef.current) ro.observe(innerRef.current)
+    window.addEventListener('resize', recalc)
+    return () => { ro.disconnect(); window.removeEventListener('resize', recalc) }
+  }, [fit, loading, tt, mon, lx])
+
+  const inner = (
     <div className="bkprofile">
       <style>{CSS}</style>
       {loading ? (
@@ -80,15 +138,40 @@ export default function BangThanhTich({ hocSinhId, hoTen, maHs, khoi }: { hocSin
               </div>
             </div>
 
-            {/* THÀNH TÍCH THI ĐẤU */}
+            {/* THÀNH TÍCH THI ĐẤU — 4 ô showcase TUỲ CHỌN (ghim / gợi ý), nút ✎ chọn lại */}
             <div className="bp-panel">
-              <div className="bp-bf-title">⚔️ Thành tích thi đấu</div>
-              <div className="bp-bf-row first"><span className="l">🥇 Top 1 · Lớp</span><span className="n">{cur.top1.lop}</span></div>
-              <div className="bp-bf-row"><span className="l">🥇 Top 1 · ET</span><span className="n">{cur.top1.et}</span></div>
-              <div className="bp-bf-row"><span className="l">🥇 Top 1 · MT</span><span className="n">{cur.top1.mt}</span></div>
-              <div className="bp-bf-row"><span className="l">📈 Elo đỉnh</span><span className="n">{cur.eloPeak}</span></div>
-              <div className="bp-bf-row streak"><span className="l">🔥 Chuỗi đi học</span><span className="n">{cur.chuoiDiHoc}</span></div>
-              <div className="bp-bf-row total"><span className="l">Tổng buổi</span><span className="n">{cur.tongBuoi}</span></div>
+              <div className="bp-ach-head">
+                <span className="bp-ach-title">⚔️ Thành tích thi đấu</span>
+                {editing
+                  ? <span className="bp-ach-hint">Chọn tối đa 4 · {sel.length}/4</span>
+                  : <button className="bp-ach-edit-btn" onClick={() => { setSel(pickKeys); setEditing(true) }}>✎ Tuỳ chọn</button>}
+              </div>
+              {editing ? (
+                <>
+                  <div className="bp-ach-chips">
+                    {avail.map((a) => { const on = sel.includes(a.key); return (
+                      <button key={a.key} className={`bp-chip${on ? ' on' : ''}`} disabled={!on && sel.length >= 4}
+                        onClick={() => setSel((s) => s.includes(a.key) ? s.filter((x) => x !== a.key) : s.length >= 4 ? s : [...s, a.key])}>
+                        <span>{a.icon}</span>{a.ten} <b>{a.val}</b>
+                      </button>
+                    ) })}
+                  </div>
+                  <div className="bp-ach-actions">
+                    <button className="bp-btn ghost" onClick={() => setEditing(false)}>Hủy</button>
+                    <button className="bp-btn" onClick={saveGhim}>Lưu</button>
+                  </div>
+                </>
+              ) : (
+                <div className="bp-ach-grid">
+                  {cards.map((a) => (
+                    <div key={a.key} className="bp-ach">
+                      <div className="bp-ach-ic">{a.icon}</div>
+                      <div className="bp-ach-v">{a.val}</div>
+                      <div className="bp-ach-l">{a.ten}</div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
 
@@ -101,6 +184,15 @@ export default function BangThanhTich({ hocSinhId, hoTen, maHs, khoi }: { hocSin
           <div className="bp-seasonchip">🏆 {tt.seasonLabel} · <b>Mythwings</b></div>
         </div>
       )}
+    </div>
+  )
+
+  if (!fit) return inner
+  return (
+    <div ref={boxRef} className="grid h-full w-full place-items-center overflow-hidden">
+      <div ref={innerRef} style={{ width: DESIGN_W, transform: scale !== 1 ? `scale(${scale})` : undefined, transformOrigin: 'center center' }}>
+        {inner}
+      </div>
     </div>
   )
 }
@@ -170,75 +262,86 @@ const CSS = `
   background:radial-gradient(1000px 600px at 50% -8%, #2a2660 0%, transparent 55%), radial-gradient(800px 600px at 88% 108%, #143a52 0%, transparent 50%), linear-gradient(180deg,#151b3a,#0a0f22); }
 .bkprofile *{ box-sizing:border-box; }
 .bkprofile .bp-empty{ padding:48px 24px; text-align:center; color:var(--mut); font-family:'Be Vietnam Pro'; }
-.bkprofile .bp-wrap{ padding:20px; }
-.bkprofile .bp-grid{ display:grid; grid-template-columns:1.35fr 1fr; gap:16px; }
+.bkprofile .bp-wrap{ padding:18px; }
+.bkprofile .bp-grid{ display:grid; grid-template-columns:1.1fr 1fr; gap:14px; align-items:stretch; }
 @media (max-width:720px){ .bkprofile .bp-grid{ grid-template-columns:1fr; } }
-.bkprofile .bp-panel{ background:var(--panel); border:2px solid var(--line2); border-radius:18px; box-shadow:inset 0 2px 0 rgba(255,255,255,.06), 0 6px 0 rgba(0,0,0,.18); padding:18px; }
-.bkprofile .bp-id-row{ display:flex; gap:16px; align-items:flex-start; }
-.bkprofile .bp-avatar{ width:110px; height:110px; flex:0 0 auto; border-radius:18px; padding:4px; background:linear-gradient(150deg,#5fd0ff,#3a7bff); box-shadow:0 6px 0 rgba(0,0,0,.25); }
-.bkprofile .bp-face{ width:100%; height:100%; border-radius:14px; display:grid; place-items:center; background:radial-gradient(circle at 50% 38%, #8be0a0, #3fae74); font-size:56px; }
-.bkprofile .bp-id-fields{ flex:1; min-width:0; display:flex; flex-direction:column; gap:10px; }
-.bkprofile .bp-field{ background:var(--field); border:2px solid var(--line2); border-radius:14px; padding:12px 16px; box-shadow:inset 0 3px 6px rgba(0,0,0,.3); }
-.bkprofile .bp-nm{ font-family:'Baloo 2',cursive; font-weight:800; font-size:24px; }
-.bkprofile .bp-sub{ padding:10px 16px; display:flex; align-items:center; gap:8px; }
-.bkprofile .bp-lab{ color:var(--mut); font-weight:600; font-size:14px; }
-.bkprofile .bp-val{ font-weight:700; font-size:15px; }
-.bkprofile .bp-subjects{ display:flex; gap:8px; flex-wrap:wrap; }
-.bkprofile .bp-subj{ font-family:'Baloo 2'; font-weight:700; font-size:14px; padding:5px 14px; border-radius:30px; background:var(--field); border:2px solid var(--line2); color:var(--mut); cursor:pointer; }
+.bkprofile .bp-panel{ background:var(--panel); border:2px solid var(--line2); border-radius:18px; box-shadow:inset 0 2px 0 rgba(255,255,255,.06), 0 6px 0 rgba(0,0,0,.18); padding:14px; }
+.bkprofile .bp-id-row{ display:flex; gap:14px; align-items:flex-start; }
+.bkprofile .bp-avatar{ width:84px; height:84px; flex:0 0 auto; border-radius:16px; padding:4px; background:linear-gradient(150deg,#5fd0ff,#3a7bff); box-shadow:0 5px 0 rgba(0,0,0,.25); }
+.bkprofile .bp-face{ width:100%; height:100%; border-radius:12px; display:grid; place-items:center; background:radial-gradient(circle at 50% 38%, #8be0a0, #3fae74); font-size:42px; }
+.bkprofile .bp-id-fields{ flex:1; min-width:0; display:flex; flex-direction:column; gap:8px; }
+.bkprofile .bp-field{ background:var(--field); border:2px solid var(--line2); border-radius:12px; padding:8px 12px; box-shadow:inset 0 3px 6px rgba(0,0,0,.3); }
+.bkprofile .bp-nm{ font-family:'Baloo 2',cursive; font-weight:800; font-size:20px; line-height:1.1; }
+.bkprofile .bp-sub{ padding:7px 12px; display:flex; align-items:center; gap:8px; }
+.bkprofile .bp-lab{ color:var(--mut); font-weight:600; font-size:12.5px; }
+.bkprofile .bp-val{ font-weight:700; font-size:13.5px; }
+.bkprofile .bp-subjects{ display:flex; gap:7px; flex-wrap:wrap; }
+.bkprofile .bp-subj{ font-family:'Baloo 2'; font-weight:700; font-size:12.5px; padding:4px 12px; border-radius:30px; background:var(--field); border:2px solid var(--line2); color:var(--mut); cursor:pointer; }
 .bkprofile .bp-subj.on{ background:linear-gradient(180deg,#46c0ff,#2a86f0); color:#06203f; border-color:#7fd6ff; }
-.bkprofile .bp-meters{ display:flex; align-items:center; gap:12px; margin-top:16px; flex-wrap:wrap; }
-.bkprofile .bp-gem{ width:74px; height:74px; flex:0 0 auto; position:relative; display:grid; place-items:center; filter:drop-shadow(0 5px 0 rgba(0,0,0,.28)); }
+.bkprofile .bp-meters{ display:flex; align-items:center; gap:10px; margin-top:12px; flex-wrap:wrap; }
+.bkprofile .bp-gem{ width:58px; height:58px; flex:0 0 auto; position:relative; display:grid; place-items:center; filter:drop-shadow(0 4px 0 rgba(0,0,0,.28)); }
 .bkprofile .bp-gem svg{ position:absolute; inset:0; width:100%; height:100%; }
 .bkprofile .bp-t{ position:relative; text-align:center; line-height:.9; }
-.bkprofile .bp-t small{ display:block; font-family:'Baloo 2'; font-weight:700; font-size:11px; }
-.bkprofile .bp-t b{ font-family:'Baloo 2'; font-weight:800; font-size:24px; }
-.bkprofile .bp-xpwrap{ flex:1; min-width:200px; display:flex; align-items:center; gap:10px; }
-.bkprofile .bp-xphex{ width:54px; height:54px; flex:0 0 auto; position:relative; display:grid; place-items:center; filter:drop-shadow(0 4px 0 rgba(0,0,0,.28)); }
+.bkprofile .bp-t small{ display:block; font-family:'Baloo 2'; font-weight:700; font-size:10px; }
+.bkprofile .bp-t b{ font-family:'Baloo 2'; font-weight:800; font-size:19px; }
+.bkprofile .bp-xpwrap{ flex:1; min-width:150px; display:flex; align-items:center; gap:9px; }
+.bkprofile .bp-xphex{ width:44px; height:44px; flex:0 0 auto; position:relative; display:grid; place-items:center; filter:drop-shadow(0 4px 0 rgba(0,0,0,.28)); }
 .bkprofile .bp-xphex svg{ position:absolute; inset:0; width:100%; height:100%; }
-.bkprofile .bp-xphex b{ position:relative; font-family:'Baloo 2'; font-weight:800; font-size:18px; color:#06203f; }
-.bkprofile .bp-xpbar{ flex:1; height:30px; border-radius:16px; background:#101736; border:2px solid #0b1124; box-shadow:inset 0 3px 6px rgba(0,0,0,.5); position:relative; overflow:hidden; display:flex; align-items:center; }
-.bkprofile .bp-xpbar > i{ position:absolute; left:0; top:0; bottom:0; border-radius:14px; background:linear-gradient(180deg,#7fe0ff,#2e9bff); box-shadow:inset 0 2px 0 rgba(255,255,255,.5); }
-.bkprofile .bp-xpbar span{ position:relative; width:100%; text-align:center; font-family:'Baloo 2'; font-weight:800; font-size:13px; color:#fff; -webkit-text-stroke:2.5px #0b1024; paint-order:stroke fill; }
-.bkprofile .bp-trophy{ display:flex; align-items:center; gap:8px; font-family:'Baloo 2'; font-weight:800; font-size:22px; }
-.bkprofile .bp-trophy .bp-ic{ font-size:28px; filter:drop-shadow(0 3px 0 rgba(0,0,0,.25)); }
-.bkprofile .bp-bf-title{ text-align:center; font-family:'Baloo 2'; font-weight:800; font-size:20px; padding-bottom:6px; }
-.bkprofile .bp-bf-row{ display:flex; align-items:center; justify-content:space-between; padding:10px 4px; border-bottom:2px solid rgba(255,255,255,.07); }
-.bkprofile .bp-bf-row .l{ font-family:'Baloo 2'; font-weight:700; font-size:16px; white-space:nowrap; }
-.bkprofile .bp-bf-row .n{ font-family:'Baloo 2'; font-weight:800; font-size:22px; }
-.bkprofile .bp-bf-row.first .l, .bkprofile .bp-bf-row.first .n{ color:var(--gold); }
-.bkprofile .bp-bf-row.streak .n{ color:var(--orange); }
-.bkprofile .bp-bf-row.total{ border-bottom:0; margin-top:4px; padding-top:12px; }
-.bkprofile .bp-bf-row.total .l{ font-size:21px; } .bkprofile .bp-bf-row.total .n{ font-size:28px; color:#fff; }
-.bkprofile .bp-divider{ background:#0c1126; border-radius:14px; text-align:center; padding:12px; margin:18px 2px 16px; box-shadow:inset 0 3px 8px rgba(0,0,0,.5); }
-.bkprofile .bp-divider h2{ margin:0; font-family:'Baloo 2'; font-weight:800; font-size:22px; letter-spacing:2px; }
-.bkprofile .bp-hcards{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.bkprofile .bp-xphex b{ position:relative; font-family:'Baloo 2'; font-weight:800; font-size:15px; color:#06203f; }
+.bkprofile .bp-xpbar{ flex:1; height:24px; border-radius:14px; background:#101736; border:2px solid #0b1124; box-shadow:inset 0 3px 6px rgba(0,0,0,.5); position:relative; overflow:hidden; display:flex; align-items:center; }
+.bkprofile .bp-xpbar > i{ position:absolute; left:0; top:0; bottom:0; border-radius:12px; background:linear-gradient(180deg,#7fe0ff,#2e9bff); box-shadow:inset 0 2px 0 rgba(255,255,255,.5); }
+.bkprofile .bp-xpbar span{ position:relative; width:100%; text-align:center; font-family:'Baloo 2'; font-weight:800; font-size:12px; color:#fff; -webkit-text-stroke:2.5px #0b1024; paint-order:stroke fill; }
+.bkprofile .bp-trophy{ display:flex; align-items:center; gap:7px; font-family:'Baloo 2'; font-weight:800; font-size:18px; }
+.bkprofile .bp-trophy .bp-ic{ font-size:22px; filter:drop-shadow(0 3px 0 rgba(0,0,0,.25)); }
+/* ── Thành tích thi đấu: 4 ô showcase + picker ── */
+.bkprofile .bp-ach-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; }
+.bkprofile .bp-ach-title{ font-family:'Baloo 2'; font-weight:800; font-size:18px; }
+.bkprofile .bp-ach-edit-btn{ font-family:'Baloo 2'; font-weight:700; font-size:12px; color:var(--mut); background:var(--field); border:2px solid var(--line2); border-radius:20px; padding:4px 12px; cursor:pointer; }
+.bkprofile .bp-ach-edit-btn:hover{ color:#fff; border-color:#7fd6ff; }
+.bkprofile .bp-ach-hint{ font-size:12px; color:var(--mut); font-weight:600; }
+.bkprofile .bp-ach-grid{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.bkprofile .bp-ach{ background:var(--field); border:2px solid var(--line2); border-radius:14px; padding:12px 8px; text-align:center; box-shadow:inset 0 3px 6px rgba(0,0,0,.3); }
+.bkprofile .bp-ach-ic{ font-size:24px; line-height:1; }
+.bkprofile .bp-ach-v{ font-family:'Baloo 2'; font-weight:800; font-size:26px; color:var(--gold); margin-top:2px; line-height:1; }
+.bkprofile .bp-ach-l{ font-family:'Baloo 2'; font-weight:700; font-size:12.5px; color:var(--mut); margin-top:3px; }
+.bkprofile .bp-ach-chips{ display:flex; flex-wrap:wrap; gap:8px; }
+.bkprofile .bp-chip{ display:inline-flex; align-items:center; gap:5px; font-family:'Baloo 2'; font-weight:700; font-size:13px; color:var(--mut); background:var(--field); border:2px solid var(--line2); border-radius:24px; padding:6px 12px; cursor:pointer; }
+.bkprofile .bp-chip.on{ background:linear-gradient(180deg,#46c0ff,#2a86f0); color:#06203f; border-color:#7fd6ff; }
+.bkprofile .bp-chip b{ font-weight:800; }
+.bkprofile .bp-chip:disabled{ opacity:.4; cursor:default; }
+.bkprofile .bp-ach-actions{ display:flex; justify-content:flex-end; gap:8px; margin-top:12px; }
+.bkprofile .bp-btn{ font-family:'Baloo 2'; font-weight:800; font-size:13px; color:#06203f; background:linear-gradient(180deg,#ffe06a,#f3a51c); border:0; border-radius:20px; padding:7px 18px; cursor:pointer; }
+.bkprofile .bp-btn.ghost{ background:var(--field); color:var(--mut); border:2px solid var(--line2); }
+.bkprofile .bp-divider{ background:#0c1126; border-radius:14px; text-align:center; padding:9px; margin:12px 2px 10px; box-shadow:inset 0 3px 8px rgba(0,0,0,.5); }
+.bkprofile .bp-divider h2{ margin:0; font-family:'Baloo 2'; font-weight:800; font-size:18px; letter-spacing:1.5px; }
+.bkprofile .bp-hcards{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
 @media (max-width:720px){ .bkprofile .bp-hcards{ grid-template-columns:1fr; } }
-.bkprofile .bp-hcard{ background:var(--inset); border:2px solid var(--line2); border-radius:18px; padding:14px; box-shadow:inset 0 2px 0 rgba(255,255,255,.05); }
-.bkprofile .bp-htop{ display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; }
-.bkprofile .bp-rarity{ font-family:'Baloo 2'; font-weight:800; font-size:16px; white-space:nowrap; }
+.bkprofile .bp-hcard{ background:var(--inset); border:2px solid var(--line2); border-radius:18px; padding:12px; box-shadow:inset 0 2px 0 rgba(255,255,255,.05); }
+.bkprofile .bp-htop{ display:flex; align-items:center; justify-content:space-between; margin-bottom:7px; }
+.bkprofile .bp-rarity{ font-family:'Baloo 2'; font-weight:800; font-size:14px; white-space:nowrap; }
 .bkprofile .bp-hcard.thunder .bp-rarity{ color:var(--el-thunder); } .bkprofile .bp-hcard.fire .bp-rarity{ color:var(--el-fire); } .bkprofile .bp-hcard.frost .bp-rarity{ color:var(--el-frost); }
-.bkprofile .bp-lvtag{ font-family:'Baloo 2'; font-weight:800; font-size:13px; color:#06203f; padding:3px 12px; border-radius:20px; white-space:nowrap; }
+.bkprofile .bp-lvtag{ font-family:'Baloo 2'; font-weight:800; font-size:12px; color:#06203f; padding:3px 10px; border-radius:20px; white-space:nowrap; }
 .bkprofile .bp-hcard.thunder .bp-lvtag{ background:var(--el-thunder); } .bkprofile .bp-hcard.fire .bp-lvtag{ background:var(--el-fire); color:#fff; } .bkprofile .bp-hcard.frost .bp-lvtag{ background:var(--el-frost); }
-.bkprofile .bp-htile{ border-radius:16px; padding:5px; box-shadow:0 6px 0 rgba(0,0,0,.25); }
+.bkprofile .bp-htile{ border-radius:16px; padding:4px; box-shadow:0 6px 0 rgba(0,0,0,.25); }
 .bkprofile .bp-hcard.thunder .bp-htile{ background:linear-gradient(150deg,#ffe06a,#f3a51c); }
 .bkprofile .bp-hcard.fire .bp-htile{ background:linear-gradient(150deg,#ff8a5a,#e02a1c); }
 .bkprofile .bp-hcard.frost .bp-htile{ background:linear-gradient(150deg,#8fe0ff,#2a86f0); }
 .bkprofile .bp-inner{ position:relative; border-radius:12px; padding:6px; display:grid; place-items:center; background:radial-gradient(circle at 50% 34%, #20294e, #121838); overflow:hidden; }
-.bkprofile .bp-bird{ width:140px; height:140px; display:grid; place-items:center; position:relative; z-index:1; }
+.bkprofile .bp-bird{ width:100px; height:100px; display:grid; place-items:center; position:relative; z-index:1; }
 .bkprofile .bp-bird img{ display:block; width:100%; height:auto; filter:drop-shadow(0 6px 10px rgba(0,0,0,.45)); }
 .bkprofile .bp-deco{ position:absolute; inset:0; pointer-events:none; z-index:0; }
 .bkprofile .bp-deco svg{ width:100%; height:100%; display:block; }
-.bkprofile .bp-hname{ text-align:center; font-family:'Baloo 2'; font-weight:800; font-size:20px; margin:10px 0 2px; }
-.bkprofile .bp-hmean{ text-align:center; color:var(--mut); font-size:12.5px; margin-bottom:9px; }
+.bkprofile .bp-hname{ text-align:center; font-family:'Baloo 2'; font-weight:800; font-size:17px; margin:7px 0 2px; }
+.bkprofile .bp-hmean{ text-align:center; color:var(--mut); font-size:11.5px; margin-bottom:7px; }
 .bkprofile .bp-stars{ display:flex; gap:5px; justify-content:center; }
-.bkprofile .bp-stars i{ width:21px; height:21px; display:inline-block; }
-.bkprofile .bp-prog2{ margin-top:11px; }
-.bkprofile .bp-pb{ height:13px; border-radius:9px; background:#101736; border:2px solid #0b1124; overflow:hidden; box-shadow:inset 0 2px 4px rgba(0,0,0,.5); }
+.bkprofile .bp-stars i{ width:17px; height:17px; display:inline-block; }
+.bkprofile .bp-prog2{ margin-top:8px; }
+.bkprofile .bp-pb{ height:11px; border-radius:9px; background:#101736; border:2px solid #0b1124; overflow:hidden; box-shadow:inset 0 2px 4px rgba(0,0,0,.5); }
 .bkprofile .bp-pb > i{ display:block; height:100%; border-radius:7px; }
 .bkprofile .bp-hcard.thunder .bp-pb > i{ background:linear-gradient(180deg,#ffe06a,#f3a51c); }
 .bkprofile .bp-hcard.fire .bp-pb > i{ background:linear-gradient(180deg,#ff8a5a,#e8401c); }
 .bkprofile .bp-hcard.frost .bp-pb > i{ background:linear-gradient(180deg,#8fe0ff,#2a86f0); }
-.bkprofile .bp-cap{ display:flex; justify-content:space-between; margin-top:6px; font-size:12px; color:var(--mut); font-weight:600; }
-.bkprofile .bp-seasonchip{ display:inline-flex; align-items:center; gap:8px; margin-top:16px; font-family:'Baloo 2'; font-weight:800; font-size:14px; background:linear-gradient(180deg,#3a4474,#2a3360); border:3px solid #525f9c; border-radius:30px; padding:7px 16px; box-shadow:0 4px 0 rgba(0,0,0,.3); }
+.bkprofile .bp-cap{ display:flex; justify-content:space-between; margin-top:5px; font-size:11px; color:var(--mut); font-weight:600; }
+.bkprofile .bp-seasonchip{ display:inline-flex; align-items:center; gap:8px; margin-top:12px; font-family:'Baloo 2'; font-weight:800; font-size:13px; background:linear-gradient(180deg,#3a4474,#2a3360); border:3px solid #525f9c; border-radius:30px; padding:6px 14px; box-shadow:0 4px 0 rgba(0,0,0,.3); }
 .bkprofile .bp-seasonchip b{ color:var(--gold); }
 `

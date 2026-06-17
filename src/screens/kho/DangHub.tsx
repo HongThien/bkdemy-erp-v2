@@ -5,6 +5,7 @@ import {
   buildBatchPrompt, parseBatchJson, parseStructuredText, saveCauBatch, callGeminiJson,
   uploadKhoImage, LOAI_CAU, type CauHoi, type MapRow,
 } from '../../lib/kho/api'
+import PdfCropper from '../../components/PdfCropper'
 
 const SAMPLE_TEXT = `Câu 1.
 Đề bài: Tìm số tự nhiên nhỏ nhất chia hết cho cả 3 và 5.
@@ -674,6 +675,7 @@ function AutoTextarea({ value, onChange, className, maxPx }: { value: string; on
 function ImageSlot({ url, label, onChange }: { url: string | null; label: string; onChange: (v: string | null) => void }) {
   const ref = useRef<HTMLInputElement>(null)
   const [busy, setBusy] = useState(false)
+  const [crop, setCrop] = useState(false)
   const load = async (f: File | null | undefined) => {
     if (!f || !f.type.startsWith('image/')) return
     setBusy(true)
@@ -704,7 +706,10 @@ function ImageSlot({ url, label, onChange }: { url: string | null; label: string
       </button>
       <button type="button" onClick={() => !busy && pasteClip()} disabled={busy} title="Dán ảnh từ clipboard (Ctrl+V)"
         className="inline-flex items-center gap-1 whitespace-nowrap rounded-md border border-dashed border-slate-300 px-2 py-1 text-[12px] font-medium text-slate-400 transition hover:border-indigo-400 hover:text-indigo-500 disabled:opacity-60">📋 Dán</button>
+      <button type="button" onClick={() => !busy && setCrop(true)} disabled={busy} title="Cắt hình từ PDF/ảnh (render DPI cao, kéo khoanh vùng)"
+        className="inline-flex items-center gap-1 whitespace-nowrap rounded-md border border-dashed border-slate-300 px-2 py-1 text-[12px] font-medium text-slate-400 transition hover:border-indigo-400 hover:text-indigo-500 disabled:opacity-60">✂️ Cắt PDF</button>
       <input ref={ref} type="file" accept="image/*" hidden onChange={(e) => { void load(e.target.files?.[0]); e.target.value = '' }} />
+      {crop && <PdfCropper title={`${label} — cắt từ PDF/ảnh`} onClose={() => setCrop(false)} onCrop={async (f) => { await load(f); setCrop(false) }} />}
     </div>
   )
 }

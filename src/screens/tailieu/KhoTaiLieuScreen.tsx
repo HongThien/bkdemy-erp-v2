@@ -1,7 +1,7 @@
 // KHO TÀI LIỆU = bảng tổng MỌI tài liệu đã tạo trong hệ (giáo trình · ET · MT · chuyên đề…).
 // Cột thông tin + nút IN (giáo trình→PrintView, ET→ETPrintView) + Nhân bản (tái sử dụng) + Xoá.
 import { useEffect, useMemo, useState } from 'react'
-import { listAllTaiLieu, deleteTaiLieu, duplicateTaiLieu, type TaiLieu } from '../../lib/tailieu'
+import { listAllTaiLieu, deleteTaiLieu, duplicateTaiLieu, updateTaiLieu, type TaiLieu } from '../../lib/tailieu'
 import { listLop, type Lop } from '../../lib/nhansu'
 import PrintView from './PrintView'
 import ETPrintView from './ETPrintView'
@@ -48,6 +48,13 @@ export default function KhoTaiLieuScreen() {
     if (r.loai === 'et') setEditEt({ ...(r as any), ten_lop: lopTen(r.lop_id) })
     else setEditGt(r.id)
   }
+  // Đổi TÊN FILE ngay tại kho (= tai_lieu.ten, cột hiển thị) — khỏi vào builder (builder có ô tên buổi riêng dễ nhầm).
+  async function doiTen(r: Row) {
+    const ten = prompt('Đổi tên tài liệu (tên hiển thị trong kho):', r.ten)?.trim()
+    if (!ten || ten === r.ten) return
+    await updateTaiLieu(r.id, { ten })
+    reload()
+  }
 
   // Sửa tại chỗ: mở builder full-screen, đóng → tải lại bảng.
   if (editEt) return <ETEditor et={editEt} onClose={() => { setEditEt(null); reload() }} />
@@ -82,7 +89,12 @@ export default function KhoTaiLieuScreen() {
                 <tbody>
                   {shown.map((r) => (
                     <tr key={r.id} className="border-t border-slate-100 hover:bg-slate-50/60">
-                      <td className="px-4 py-2 font-medium text-slate-800">{r.ten}</td>
+                      <td className="px-4 py-2">
+                        <button onClick={() => doiTen(r)} title="Bấm để đổi tên file" className="group/n flex items-center gap-1.5 text-left font-medium text-slate-800 hover:text-indigo-600">
+                          <span>{r.ten}</span>
+                          <span className="text-[11px] text-slate-300 opacity-0 transition group-hover/n:opacity-100">✎</span>
+                        </button>
+                      </td>
                       <td className="px-3"><span className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] font-medium text-slate-600">{loaiTen(r.loai)}</span></td>
                       <td className="px-3 text-slate-500">{r.khoi || '—'}</td>
                       <td className="px-3 text-slate-500">{r.lop_id && r.ngay ? `${lopTen(r.lop_id)} · ${fmt(r.ngay)}` : (r.loai === 'et' ? <span className="text-violet-500">mẫu</span> : '—')}</td>

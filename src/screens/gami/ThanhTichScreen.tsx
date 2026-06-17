@@ -26,7 +26,7 @@ export default function ThanhTichScreen() {
         <button onClick={() => setOpen(null)} className="rounded-lg px-3 py-1.5 text-[13px] font-medium text-slate-500 hover:bg-slate-100">← Danh sách</button>
         <span className="text-sm font-semibold text-slate-900">{open.ten}</span>
       </div>
-      <div className="min-h-0 flex-1 overflow-auto p-6 sm:p-10"><BangThanhTich hocSinhId={open.id} hoTen={open.ten} maHs={open.maHs} khoi={open.khoi} /></div>
+      <div className="min-h-0 flex-1 overflow-hidden p-6 sm:p-10"><BangThanhTich hocSinhId={open.id} hoTen={open.ten} maHs={open.maHs} khoi={open.khoi} fit /></div>
     </div>
   )
 

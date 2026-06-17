@@ -590,6 +590,20 @@ export async function getThanhTich(hocSinhId: string): Promise<ThanhTich> {
   return { season, seasonLabel: seasonLabel(season), mons }
 }
 
+// ── GHIM thành tích thi đấu khoe (ADR §6): HS tự chọn ≤4 loại; chưa ghim → UI dùng gợi ý. ──
+// PK (hoc_sinh_id, mon, loai_key); thu_tu = thứ tự hiển thị.
+export async function getThanhTichGhim(hocSinhId: string, mon: string): Promise<string[]> {
+  const { data } = await supabase.from('hoc_sinh_thanh_tich_ghim')
+    .select('loai_key, thu_tu').eq('hoc_sinh_id', hocSinhId).eq('mon', mon)
+    .order('thu_tu', { ascending: true }).limit(100)
+  return ((data ?? []) as any[]).map((r) => r.loai_key as string)
+}
+export async function setThanhTichGhim(hocSinhId: string, mon: string, keys: string[]): Promise<void> {
+  await supabase.from('hoc_sinh_thanh_tich_ghim').delete().eq('hoc_sinh_id', hocSinhId).eq('mon', mon)
+  const rows = keys.slice(0, 4).map((k, i) => ({ hoc_sinh_id: hocSinhId, mon, loai_key: k, thu_tu: i }))
+  if (rows.length) { const { error } = await supabase.from('hoc_sinh_thanh_tich_ghim').insert(rows); if (error) throw error }
+}
+
 // Danh sách mọi HS (per môn) cho màn Thành tích — sắp Elo giảm dần, hạng = vị trí trong môn.
 export type ThanhTichRow = { hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; khoi: string | null; anh_url: string | null; mon: string; elo: number; rankNow: number }
 export async function listThanhTich(mon?: string): Promise<{ season: string; seasonLabel: string; rows: ThanhTichRow[] }> {

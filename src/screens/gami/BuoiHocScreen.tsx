@@ -131,6 +131,7 @@ export function BuoiDetail({ id, onClose, tabs, initialTab, canManage = true }: 
   const [dsNS, setDsNS] = useState<NhanSu[]>([])
   const [dangOpts, setDangOpts] = useState<DangOpt[]>([])
   const [tab, setTab] = useState<TabKey>(initialTab ?? tabs?.[0] ?? 'diemdanh')
+  const isMobile = useIsMobile()
 
   async function reload() {
     const [b, r, ns] = await Promise.all([getBuoi(id), getRoster(id), listNhanSu()])
@@ -151,8 +152,8 @@ export function BuoiDetail({ id, onClose, tabs, initialTab, canManage = true }: 
       <div className="flex flex-wrap items-center gap-3 border-b border-slate-200 bg-white px-6 py-2.5">
         <button onClick={onClose} className="text-[13px] text-slate-500 hover:text-indigo-600">← Buổi học</button>
         <span className="text-sm font-semibold text-slate-900">{buoi.lop?.ten_lop} · {buoi.ngay}</span>
-        <span className="font-mono text-[11px] text-slate-400">{buoi.ma_buoi}</span>
-        <div className="flex items-center gap-1 text-[12px] text-slate-500">GV:
+        {!isMobile && <span className="font-mono text-[11px] text-slate-400">{buoi.ma_buoi}</span>}
+        {!isMobile && <div className="flex items-center gap-1 text-[12px] text-slate-500">GV:
           {/* mặc định = GV chính của lớp; chỉ ghi nguoi_day khi đổi (dạy thay) */}
           {(() => { const gvHienThi = buoi.nguoi_day ?? buoi.gv_chinh_id ?? null; const gv = dsNS.find((n) => n.id === gvHienThi); return canManage ? (
             <div className="w-52"><SearchSelect value={gvHienThi} onChange={async (nid) => { await setNguoiDay(id, nid); reload() }} placeholder="người dạy" avatars
@@ -163,7 +164,7 @@ export function BuoiDetail({ id, onClose, tabs, initialTab, canManage = true }: 
               {gv?.ho_ten ?? '(chưa gán GV chính)'}{!buoi.nguoi_day && gvHienThi ? ' (chính)' : ''}
             </span>
           ) })()}
-        </div>
+        </div>}
         {canManage && buoi.trang_thai !== 'huy' && buoi.trang_thai !== 'hoan_tat' && (
           <button onClick={async () => { const ly = prompt('Lý do hủy buổi?'); if (ly) { await huyBuoi(id, ly); reload() } }}
             className="ml-auto rounded-md border border-rose-200 px-2.5 py-1 text-[12px] font-medium text-rose-600 hover:bg-rose-50">Hủy buổi</button>
@@ -174,12 +175,12 @@ export function BuoiDetail({ id, onClose, tabs, initialTab, canManage = true }: 
         <div className="p-8 text-center text-sm text-slate-400">Buổi đã hủy — {buoi.ly_do_huy}. Mọi việc chấm/điểm danh đã ngừng.</div>
       ) : (
         <>
-          <div className="flex gap-1 border-b border-slate-200 bg-white px-6">
+          <div className="flex gap-1 overflow-x-auto border-b border-slate-200 bg-white px-6">
             {([['diemdanh', `Điểm danh (${soCoMat}/${roster.length})`], ['danhgia', 'Đánh giá sau buổi'], ['ingame', 'Chấm bài trên lớp'], ['et', 'ET']] as const).filter(([k]) => !tabs || tabs.includes(k)).map(([k, lbl]) => (
-              <button key={k} onClick={() => setTab(k as any)} className={`-mb-px border-b-2 px-3 py-2 text-[13px] font-medium ${tab === k ? 'border-indigo-600 text-indigo-700' : 'border-transparent text-slate-500 hover:text-slate-700'}`}>{lbl}</button>
+              <button key={k} onClick={() => setTab(k as any)} className={`-mb-px shrink-0 whitespace-nowrap border-b-2 px-3 py-2 text-[13px] font-medium ${tab === k ? 'border-indigo-600 text-indigo-700' : 'border-transparent text-slate-500 hover:text-slate-700'}`}>{lbl}</button>
             ))}
           </div>
-          <div className="min-h-0 min-w-0 flex-1 overflow-auto p-6">
+          <div className={`min-h-0 min-w-0 flex-1 overflow-auto ${isMobile ? 'p-3' : 'p-6'}`}>
             {tab === 'diemdanh'
               ? <DiemDanhTab roster={roster} chuaDD={chuaDD} onChange={reload} />
               : tab === 'danhgia'
@@ -367,34 +368,12 @@ function ChamMobile({ probs, coMat, gradeOf, tenDang, onSetMuc, onAddBai, onPick
 
   return (
     <div className="flex flex-col gap-2">
-      {/* FREEZE: thanh trên + chuyển bài — dính đỉnh khi cuộn (break ra ngoài p-6 của khung) */}
-      <div className="sticky top-0 z-20 -mx-6 -mt-6 flex flex-col gap-2 border-b border-slate-200 bg-[#fafafb] px-6 pb-3 pt-3 shadow-sm">
-        <div className="flex items-center gap-2">
-          <span className="text-[13px] text-slate-500">Đã chấm <b className="text-slate-800">{done}/{coMat.length}</b> HS</span>
-          <button onClick={onAddBai} className="ml-auto rounded-md border border-slate-300 px-2.5 py-1.5 text-[12px] font-medium text-slate-600">+ Bài</button>
-          <button onClick={onDong} disabled={closing} className="rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white disabled:opacity-40">{closing ? 'Đang đóng…' : 'Đóng buổi'}</button>
-        </div>
-
-        <div className="flex items-center gap-2">
-          <button onClick={() => setPi(idx - 1)} disabled={idx === 0} className="h-10 w-10 shrink-0 rounded-lg border border-slate-200 bg-white text-lg font-bold text-slate-600 disabled:opacity-30">‹</button>
-          <div className="min-w-0 flex-1 text-center">
-            <div className="text-[15px] font-bold text-slate-800">Bài {cur.problem_no} <span className="text-[12px] font-normal text-slate-400">/ {probs.length}</span></div>
-            <button onClick={() => onPickDang(cur.id)} className={`mt-0.5 inline-block max-w-full truncate rounded-md border px-2 py-0.5 text-[12px] font-medium ${cur.ma_dang ? 'border-violet-200 bg-violet-50 text-violet-700' : 'border-dashed border-slate-300 text-slate-400'}`}>{tenDang(cur.ma_dang) ?? '+ chọn dạng'}</button>
-          </div>
-          <button onClick={() => setPi(idx + 1)} disabled={idx === probs.length - 1} className="h-10 w-10 shrink-0 rounded-lg border border-slate-200 bg-white text-lg font-bold text-slate-600 disabled:opacity-30">›</button>
-        </div>
-
-        <div className="flex gap-1.5 overflow-x-auto pb-0.5">
-          {probs.map((p, i) => {
-            const full = chamRoi(p.id) === coMat.length
-            return (
-              <button key={p.id} onClick={() => setPi(i)}
-                className={`h-9 min-w-9 shrink-0 rounded-lg border px-2 text-[13px] font-semibold transition ${i === idx ? 'border-indigo-600 bg-indigo-600 text-white' : full ? 'border-emerald-300 bg-emerald-50 text-emerald-700' : 'border-slate-200 bg-white text-slate-500'}`}>
-                {p.problem_no}
-              </button>
-            )
-          })}
-        </div>
+      {/* FREEZE: 1 hàng GỌN — ‹ Bài N/total › + đã chấm X/Y. Dính đỉnh khi cuộn. */}
+      <div className="sticky top-0 z-20 -mx-3 -mt-3 flex items-center gap-2 border-b border-slate-200 bg-[#fafafb] px-3 py-2 shadow-sm">
+        <button onClick={() => setPi(idx - 1)} disabled={idx === 0} className="h-9 w-10 shrink-0 rounded-lg border border-slate-200 bg-white text-lg font-bold text-slate-600 disabled:opacity-30">‹</button>
+        <div className="text-[15px] font-bold text-slate-800">Bài {cur.problem_no}<span className="text-[12px] font-normal text-slate-400">/{probs.length}</span></div>
+        <button onClick={() => setPi(idx + 1)} disabled={idx === probs.length - 1} className="h-9 w-10 shrink-0 rounded-lg border border-slate-200 bg-white text-lg font-bold text-slate-600 disabled:opacity-30">›</button>
+        <span className="ml-auto text-[13px] text-slate-500">Đã chấm <b className="text-slate-800">{done}/{coMat.length}</b></span>
       </div>
 
       {/* Danh sách HS — mỗi HS 1 hàng: tên (2 từ cuối) + nút mức 1→5 nhỏ, cùng dòng */}
@@ -413,6 +392,13 @@ function ChamMobile({ probs, coMat, gradeOf, tenDang, onSetMuc, onAddBai, onPick
             </div>
           )
         })}
+      </div>
+
+      {/* Chân: chọn dạng cho bài này + thêm bài + đóng buổi (đẩy khỏi header cho gọn) */}
+      <div className="mt-1 flex items-center gap-2 border-t border-slate-200 pt-3">
+        <button onClick={() => onPickDang(cur.id)} className={`min-w-0 flex-1 truncate rounded-md border px-2 py-1.5 text-[12px] font-medium ${cur.ma_dang ? 'border-violet-200 bg-violet-50 text-violet-700' : 'border-dashed border-slate-300 text-slate-400'}`}>{tenDang(cur.ma_dang) ?? '+ chọn dạng'}</button>
+        <button onClick={onAddBai} className="shrink-0 rounded-md border border-slate-300 px-2.5 py-1.5 text-[12px] font-medium text-slate-600">+ Bài</button>
+        <button onClick={onDong} disabled={closing} className="shrink-0 rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white disabled:opacity-40">{closing ? 'Đang đóng…' : 'Đóng buổi'}</button>
       </div>
     </div>
   )

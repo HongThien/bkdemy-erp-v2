@@ -100,14 +100,17 @@ function Doc({ full, gv, scope }: { full: TaiLieuFull; gv: boolean; scope: 'all'
   for (const p of phans) if (p.loai_phan === 'dang' && p.ref_ma && !(p.ref_ma in dangNoByMa)) dangNoByMa[p.ref_ma] = ++n
   return (
     // .pv-rh/.pv-rf = running elements → paged.js đặt vào margin box (header/footer) MỌI trang.
-    <div className="pv-doc" style={{ '--pv-accent': accent } as CSSProperties}>
+    <div className={`pv-doc${scope === 'btvn' ? ' pv-doc-btvn' : ''}`} style={{ '--pv-accent': accent } as CSSProperties}>
       {ch.header !== 'none' && <div className="pv-rh">{taiLieu.ten} · Khối {taiLieu.khoi}</div>}
       {ch.footer !== 'none' && <div className="pv-rf">BK ACADEMY · {taiLieu.ten} · Khối {taiLieu.khoi}</div>}
-      <div className="pv-cover">
-        {/* Logo nằm ở header (lặp mọi trang) → KHÔNG đặt thêm logo ở bìa để tránh trùng. */}
-        <div className="pv-title">{taiLieu.ten}{scope === 'btvn' ? ' — Bài tập về nhà' : ''}</div>
-        <div className="pv-sub">KHỐI {taiLieu.khoi} · {scope === 'btvn' ? 'QUYỂN BÀI TẬP · ' : scope === 'giaotrinh' ? 'LÝ THUYẾT + LUYỆN · ' : ''}{gv ? 'BẢN GIÁO VIÊN' : 'BẢN HỌC SINH'}</div>
-      </div>
+      {/* QUYỂN BTVN: mỗi phiếu đã có header riêng (tên tài liệu + Họ tên/Lớp/Điểm) → BỎ bìa (khỏi thừa trang đầu). */}
+      {scope !== 'btvn' && (
+        <div className="pv-cover">
+          {/* Logo nằm ở header (lặp mọi trang) → KHÔNG đặt thêm logo ở bìa để tránh trùng. */}
+          <div className="pv-title">{taiLieu.ten}</div>
+          <div className="pv-sub">KHỐI {taiLieu.khoi} · {scope === 'giaotrinh' ? 'LÝ THUYẾT + LUYỆN · ' : ''}{gv ? 'BẢN GIÁO VIÊN' : 'BẢN HỌC SINH'}</div>
+        </div>
+      )}
       {/* QUYỂN BTVN riêng = chỉ các phiếu BTVN (mỗi buổi). Còn lại = giáo trình (skip BTVN nếu 'giaotrinh'). */}
       {scope === 'btvn'
         ? buois.filter((b) => b.btvns.some((x) => x.caus.length)).map((b) => (
@@ -293,6 +296,9 @@ const CONTENT_CSS = `
 .pv-h-buoi{background:var(--pv-accent,#E91E8C);color:#fff;font-size:20px;font-weight:800;padding:7px 14px;border-radius:9px;margin:0 0 8px;letter-spacing:.5px;break-after:avoid}
 /* BTVN = phiếu riêng → sang trang mới; mỗi bài có dòng kẻ chấm để HS viết thẳng vào phiếu. */
 .pv-btvn{break-before:page}
+/* Quyển BTVN riêng (scope btvn, không bìa): phiếu ĐẦU bắt đầu ngay trang 1, không chừa trang trống.
+   Chỉ áp trong quyển BTVN (pv-doc-btvn) — KHÔNG đụng BTVN nhúng trong giáo trình (scope all vẫn sang trang). */
+.pv-doc-btvn > .pv-btvn:first-of-type{break-before:auto}
 /* Trong BTVN, tiêu đề dạng đi liền ngay câu 1 → bỏ gạch chân (không để như "dòng kẻ lạc" giữa Dạng và Câu 1). */
 .pv-btvn .pv-h-dang{border-bottom:none;padding-bottom:0;margin-bottom:6px}
 .pv-write{margin-top:7px}
