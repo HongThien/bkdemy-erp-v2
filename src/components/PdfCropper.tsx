@@ -82,9 +82,13 @@ export default function PdfCropper({ onClose, onCrop, title = 'Cắt hình từ 
 
   async function goPage(n: number) { if (n >= 1 && n <= numPages) { setPage(n); await renderPdfPage(n) } }
 
+  // Map con trỏ → toạ độ canvas NỘI TẠI bằng TỈ LỆ rect thật (chống lệch do zoom:1.15 ở #root:
+  // clientX ở hệ viewport, rect.width đã bị zoom → phải chia rect.width chứ KHÔNG trừ thẳng).
   function pos(e: React.PointerEvent) {
-    const r = dispRef.current!.getBoundingClientRect()
-    return { x: Math.max(0, Math.min(dispW, e.clientX - r.left)), y: Math.max(0, Math.min(dispH, e.clientY - r.top)) }
+    const c = dispRef.current!, r = c.getBoundingClientRect()
+    const x = ((e.clientX - r.left) / r.width) * c.width
+    const y = ((e.clientY - r.top) / r.height) * c.height
+    return { x: Math.max(0, Math.min(dispW, x)), y: Math.max(0, Math.min(dispH, y)) }
   }
   function down(e: React.PointerEvent) { if (!hasSrc) return; const p = pos(e); dragRef.current = { ox: p.x, oy: p.y }; setSel({ x: p.x, y: p.y, w: 0, h: 0 }); (e.target as Element).setPointerCapture(e.pointerId) }
   function move(e: React.PointerEvent) { const d = dragRef.current; if (!d) return; const p = pos(e); setSel({ x: Math.min(d.ox, p.x), y: Math.min(d.oy, p.y), w: Math.abs(p.x - d.ox), h: Math.abs(p.y - d.oy) }) }
