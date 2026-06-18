@@ -6,6 +6,7 @@ import {
   uploadKhoImage, LOAI_CAU, type CauHoi, type MapRow,
 } from '../../lib/kho/api'
 import PdfCropper from '../../components/PdfCropper'
+import IngestSpike from './IngestSpike'
 
 const SAMPLE_TEXT = `Câu 1.
 Đề bài: Tìm số tự nhiên nhỏ nhất chia hết cho cả 3 và 5.
@@ -32,7 +33,7 @@ export default function DangHub({ d, config, chuan, onClose, onEditDang, onDelet
   const [loading, setLoading] = useState(isDai)
   const [err, setErr] = useState<string | null>(null)
   const [cauModal, setCauModal] = useState<null | { editing: CauHoi }>(null)
-  const [importMode, setImportMode] = useState<'clone' | 'batch' | null>(null)
+  const [importMode, setImportMode] = useState<'clone' | 'batch' | 'ingest' | null>(null)
   const tone = mucDoTone(d.mucDo)
 
   async function reload() {
@@ -89,6 +90,7 @@ export default function DangHub({ d, config, chuan, onClose, onEditDang, onDelet
                 <div className="flex gap-2">
                   <button onClick={() => setImportMode('clone')} className="rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500">✨ Clone biến thể</button>
                   <button onClick={() => setImportMode('batch')} className="rounded-md border border-indigo-200 bg-indigo-50 px-3 py-1.5 text-[13px] font-medium text-indigo-700 hover:bg-indigo-100">📥 Nhập chuỗi câu</button>
+                  <button onClick={() => setImportMode('ingest')} className="rounded-md border border-violet-300 bg-violet-50 px-3 py-1.5 text-[13px] font-medium text-violet-700 hover:bg-violet-100" title="Thử: AI tự dò câu + cắt hình cả trang (đo chi phí)">🧪 Nhập tự động (thử)</button>
                 </div>
               </div>
 
@@ -143,9 +145,13 @@ export default function DangHub({ d, config, chuan, onClose, onEditDang, onDelet
       {cauModal && (
         <CauModal editing={cauModal.editing} onClose={() => setCauModal(null)} onSaved={async () => { setCauModal(null); await reload() }} />
       )}
-      {importMode && (
+      {(importMode === 'clone' || importMode === 'batch') && (
         <AiImportModal mode={importMode} dangChinh={d.leafMa} tenDang={d.leafTen}
           onClose={() => setImportMode(null)} onSaved={async () => { setImportMode(null); await reload() }} />
+      )}
+      {importMode === 'ingest' && (
+        <IngestSpike dangChinh={d.leafMa} tenDang={d.leafTen} loaiCau="tu_luan"
+          onClose={() => setImportMode(null)} onSaved={async () => { await reload() }} />
       )}
     </div>
   )

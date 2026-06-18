@@ -330,6 +330,59 @@ export async function callGeminiJson(prompt: string, opts?: { model?: string; fi
   return txt
 }
 
+// ── SPIKE Phase 2 (ingest): gọi Gemini trả KÈM token usage (đo chi phí) + prompt dò câu+bbox hình ──
+export type GeminiUsage = { in: number; out: number; think: number }
+export async function callGeminiRich(prompt: string, opts?: { model?: string; files?: GeminiFile[]; think?: number }): Promise<{ text: string; usage: GeminiUsage }> {
+  const key = import.meta.env.VITE_GEMINI_KEY as string | undefined
+  if (!key) throw new Error('Chưa có VITE_GEMINI_KEY trong .env.local.')
+  const model = opts?.model || 'gemini-2.5-flash'
+  const parts: any[] = [{ text: prompt }]
+  for (const f of opts?.files ?? []) parts.push({ inline_data: { mime_type: f.mimeType, data: f.dataBase64 } })
+  const thinkingBudget = opts?.think ?? (model.includes('pro') ? 128 : 0)
+  const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`, {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ contents: [{ parts }], generationConfig: { responseMimeType: 'application/json', maxOutputTokens: 65536, thinkingConfig: { thinkingBudget } } }),
+  })
+  if (!res.ok) throw new Error(`Gemini API lỗi ${res.status}: ${(await res.text()).slice(0, 300)}`)
+  const data = await res.json()
+  const u = data?.usageMetadata ?? {}
+  const cand = data?.candidates?.[0]
+  const text: string = (cand?.content?.parts ?? []).map((p: any) => p.text ?? '').join('')
+  if (cand?.finishReason === 'MAX_TOKENS') throw new Error('AI bị CẮT (JSON dở) — trang quá dày, thử trang ngắn hơn / ít câu hơn.')
+  if (!text.trim()) throw new Error(`Gemini trả rỗng${cand?.finishReason ? ` (${cand.finishReason})` : ''}.`)
+  return { text, usage: { in: u.promptTokenCount ?? 0, out: u.candidatesTokenCount ?? 0, think: u.thoughtsTokenCount ?? 0 } }
+}
+
+// Câu suy ra từ ingest 1 trang: text fields + cờ có hình + bbox hình (Gemini format [ymin,xmin,ymax,xmax] 0–1000).
+export type IngestCau = { noi_dung: string; dap_an: string | null; loi_giai: string | null; lua_chon: string[] | null; coHinh: boolean; box: [number, number, number, number] | null }
+export function buildIngestPrompt(a: { tenDang?: string; loaiCau?: string }): string {
+  const f = loaiFields(a.loaiCau || 'tu_luan')
+  return [
+    'Đây là ẢNH 1 TRANG tài liệu toán. TÁCH thành từng CÂU HỎI theo thứ tự xuất hiện (mỗi bài = 1 câu, KHÔNG tách ý a/b/c).',
+    a.tenDang ? `Gợi ý: các câu thường cùng dạng "${a.tenDang}".` : '',
+    `Mỗi câu gồm: ${f.spec}.`,
+    '⚠ MỖI câu thêm 2 trường HÌNH: "co_hinh" (true nếu câu có HÌNH VẼ/SƠ ĐỒ/ĐỒ THỊ cần giữ làm ảnh — KHÔNG tính bảng số) và "box_hinh" = [ymin,xmin,ymax,xmax] toạ độ CHUẨN HOÁ 0–1000 của vùng hình (ôm TRỌN hình, chừa lề nhỏ) — CHỈ trả khi co_hinh=true, nếu không thì box_hinh=null.',
+    'BẢNG số liệu → viết bằng LaTeX $\\begin{array}{…}…\\end{array}$ trong de_bai (KHÔNG coi là hình).',
+    f.ruleDapAn,
+    FMT_RULES,
+    'Trả JSON: { "cau": [ { "de_bai":"…", "dap_an":"…", "loi_giai":"…", "lua_chon":["…"], "co_hinh": false, "box_hinh": null } ] }',
+  ].filter(Boolean).join('\n')
+}
+export function parseIngestJson(text: string): IngestCau[] {
+  let t = text.trim(); const fence = t.match(/```(?:json)?\s*([\s\S]*?)```/i); if (fence) t = fence[1].trim()
+  let obj: any; try { obj = JSON.parse(t) } catch (e: any) { throw new Error('JSON không hợp lệ: ' + e.message) }
+  const arr = Array.isArray(obj) ? obj : (obj.cau ?? obj.cau_hoi ?? [])
+  if (!Array.isArray(arr)) throw new Error('Cần JSON dạng { "cau": [ … ] }.')
+  return arr.filter((x: any) => x?.de_bai || x?.noi_dung).map((x: any) => ({
+    noi_dung: String(x.de_bai ?? x.noi_dung ?? '').trim(),
+    dap_an: x.dap_an != null && String(x.dap_an).trim() ? String(x.dap_an).trim() : null,
+    loi_giai: x.loi_giai != null && String(x.loi_giai).trim() ? String(x.loi_giai).trim() : null,
+    lua_chon: Array.isArray(x.lua_chon) && x.lua_chon.length ? x.lua_chon.map(String) : null,
+    coHinh: !!x.co_hinh,
+    box: Array.isArray(x.box_hinh) && x.box_hinh.length === 4 ? (x.box_hinh.map(Number) as [number, number, number, number]) : null,
+  }))
+}
+
 // #câu treo theo dạng (tạm group ở client; TODO: chuyển sang view Postgres khi có data lớn)
 export async function countCauByDang(): Promise<Record<string, number>> {
   const { data, error } = await supabase.from('dai_cau_hoi').select('dang_chinh').limit(LIMIT)
