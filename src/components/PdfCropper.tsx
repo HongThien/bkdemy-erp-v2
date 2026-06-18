@@ -142,17 +142,15 @@ export default function PdfCropper({ onClose, onCrop, title = 'Cắt hình từ 
         </div>
 
         <div className="min-h-0 flex-1 overflow-auto bg-slate-100 p-4">
-          {!hasSrc
-            ? <div className="flex h-64 items-center justify-center text-sm text-slate-400">{hint}</div>
-            : (
-              <div className="relative mx-auto select-none" style={{ width: dispW, height: dispH }}>
-                <canvas ref={dispRef} className="block rounded shadow" onPointerDown={down} onPointerMove={move} onPointerUp={up} style={{ touchAction: 'none', cursor: 'crosshair' }} />
-                {sel && sel.w > 0 && (
-                  <div className="pointer-events-none absolute border-2 border-indigo-500 bg-indigo-500/15"
-                    style={{ left: sel.x, top: sel.y, width: sel.w, height: sel.h }} />
-                )}
-              </div>
+          {/* Canvas LUÔN mount (ẩn khi chưa có ảnh) → paintDisplay không bị hụt ở lần load đầu (khỏi phải chọn 2 lần). */}
+          <div className="relative mx-auto select-none" style={hasSrc ? { width: dispW, height: dispH } : undefined}>
+            <canvas ref={dispRef} className={hasSrc ? 'block rounded shadow' : 'hidden'} onPointerDown={down} onPointerMove={move} onPointerUp={up} style={{ touchAction: 'none', cursor: 'crosshair' }} />
+            {hasSrc && sel && sel.w > 0 && (
+              <div className="pointer-events-none absolute border-2 border-indigo-500 bg-indigo-500/15"
+                style={{ left: sel.x, top: sel.y, width: sel.w, height: sel.h }} />
             )}
+            {!hasSrc && <div className="flex h-64 items-center justify-center text-sm text-slate-400">{hint}</div>}
+          </div>
         </div>
 
         <div className="flex items-center gap-3 border-t border-slate-200 px-5 py-3">
