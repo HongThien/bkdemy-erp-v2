@@ -2,7 +2,7 @@
 // người dùng kéo chuột khoanh vùng → cắt đúng vùng đó ở DPI cao → trả File PNG cho caller.
 // Dùng cho: ảnh đề/đáp án của câu (ImageSlot) + (sau) chèn ảnh vào lý thuyết.
 // KHÔNG tự upload — caller quyết đổ đi đâu (uploadKhoImage → cột anh_de / chèn markdown…).
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import * as pdfjsLib from 'pdfjs-dist'
 import workerSrc from 'pdfjs-dist/build/pdf.worker.min.mjs?url'
 
@@ -11,6 +11,10 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = workerSrc
 const HI_DPI = 300        // DPI render để cắt — in A4 sắc nét; hình vector nét tuyệt đối ở DPI này
 const MAX_SRC = 3200      // chặn canvas nguồn quá to (bộ nhớ)
 const MAX_DISP_W = 860    // bề rộng canvas hiển thị (để kéo box thoải mái)
+
+// NHỚ PDF vừa nạp giữa các lần mở cropper (1 file nhiều hình cho nhiều câu → khỏi upload lại mỗi câu).
+// Sống theo phiên app (reload trang là mất). pdfjs doc proxy không destroy → tái dùng được.
+let cachedPdf: { doc: any; name: string; page: number } | null = null
 
 type Sel = { x: number; y: number; w: number; h: number }
 
@@ -31,9 +35,17 @@ export default function PdfCropper({ onClose, onCrop, title = 'Cắt hình từ 
   const [sel, setSel] = useState<Sel | null>(null)
   const [busy, setBusy] = useState(false)
   const [err, setErr] = useState<string | null>(null)
+  const [srcName, setSrcName] = useState<string | null>(null)
   const [hint, setHint] = useState('Chọn file PDF hoặc ảnh để bắt đầu.')
 
   const getSrc = () => (srcRef.current ??= document.createElement('canvas'))
+
+  // Mở lại cropper → khôi phục PDF đã nạp trước đó (đỡ upload lại cho câu kế tiếp).
+  useEffect(() => {
+    if (!cachedPdf) return
+    pdfRef.current = cachedPdf.doc; setNumPages(cachedPdf.doc.numPages); setPage(cachedPdf.page); setSrcName(cachedPdf.name)
+    renderPdfPage(cachedPdf.page).then(() => setHint('Dùng lại PDF vừa nạp — kéo khoanh vùng, hoặc "Chọn PDF/ảnh" để đổi file.')).catch(() => {})
+  }, []) // eslint-disable-line
 
   function paintDisplay() {
     const src = getSrc(), disp = dispRef.current
@@ -62,11 +74,12 @@ export default function PdfCropper({ onClose, onCrop, title = 'Cắt hình từ 
     try {
       if (f.type === 'application/pdf') {
         const pdf = await pdfjsLib.getDocument({ data: await f.arrayBuffer() }).promise
-        pdfRef.current = pdf; setNumPages(pdf.numPages); setPage(1)
+        pdfRef.current = pdf; setNumPages(pdf.numPages); setPage(1); setSrcName(f.name)
+        cachedPdf = { doc: pdf, name: f.name, page: 1 }  // nhớ để câu kế dùng lại
         await renderPdfPage(1)
         setHint(pdf.numPages > 1 ? `PDF ${pdf.numPages} trang — chuyển trang rồi kéo chuột khoanh vùng hình.` : 'Kéo chuột khoanh vùng hình.')
       } else if (f.type.startsWith('image/')) {
-        pdfRef.current = null; setNumPages(0)
+        pdfRef.current = null; setNumPages(0); setSrcName(f.name)
         const url = URL.createObjectURL(f)
         const img = new Image()
         await new Promise<void>((res, rej) => { img.onload = () => res(); img.onerror = () => rej(new Error('Ảnh lỗi')); img.src = url })
@@ -80,7 +93,7 @@ export default function PdfCropper({ onClose, onCrop, title = 'Cắt hình từ 
     } catch (e: any) { setErr(e?.message ?? String(e)); setHint('Chọn file PDF hoặc ảnh để bắt đầu.') }
   }
 
-  async function goPage(n: number) { if (n >= 1 && n <= numPages) { setPage(n); await renderPdfPage(n) } }
+  async function goPage(n: number) { if (n >= 1 && n <= numPages) { setPage(n); if (cachedPdf && cachedPdf.doc === pdfRef.current) cachedPdf.page = n; await renderPdfPage(n) } }
 
   // Map con trỏ → toạ độ canvas NỘI TẠI bằng TỈ LỆ rect thật (chống lệch do zoom:1.15 ở #root:
   // clientX ở hệ viewport, rect.width đã bị zoom → phải chia rect.width chứ KHÔNG trừ thẳng).
@@ -114,9 +127,10 @@ export default function PdfCropper({ onClose, onCrop, title = 'Cắt hình từ 
         <div className="flex items-center gap-3 border-b border-slate-200 px-5 py-3">
           <span className="text-sm font-semibold text-slate-900">✂️ {title}</span>
           <label className="cursor-pointer rounded-md border border-slate-300 px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-indigo-400">
-            Chọn PDF / ảnh
+            {srcName ? 'Đổi PDF / ảnh' : 'Chọn PDF / ảnh'}
             <input type="file" accept="application/pdf,image/*" hidden onChange={(e) => { void onFile(e.target.files?.[0]); e.target.value = '' }} />
           </label>
+          {srcName && <span className="max-w-[220px] truncate text-[12px] text-slate-500" title={srcName}>📄 {srcName}</span>}
           {numPages > 1 && (
             <div className="flex items-center gap-1.5 text-[13px] text-slate-600">
               <button onClick={() => goPage(page - 1)} disabled={page <= 1} className="h-7 w-7 rounded border border-slate-200 disabled:opacity-30">‹</button>
