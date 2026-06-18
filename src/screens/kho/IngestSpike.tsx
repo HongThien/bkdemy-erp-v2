@@ -5,7 +5,7 @@
 import { useRef, useState } from 'react'
 import * as pdfjsLib from 'pdfjs-dist'
 import workerSrc from 'pdfjs-dist/build/pdf.worker.min.mjs?url'
-import { callGeminiRich, buildIngestPrompt, parseIngestJson, uploadKhoImage, saveCauBatch, type GeminiUsage } from '../../lib/kho/api'
+import { callGeminiRich, buildIngestPrompt, parseIngestJson, INGEST_SCHEMA, uploadKhoImage, saveCauBatch, type GeminiUsage } from '../../lib/kho/api'
 import { MathText } from './ui'
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = workerSrc
@@ -80,7 +80,7 @@ export default function IngestSpike({ dangChinh, tenDang, loaiCau, onClose, onSa
     setBusy(true); setErr(null); setNote('AI đang đọc trang…')
     try {
       const { text, usage } = await callGeminiRich(buildIngestPrompt({ tenDang, loaiCau }), {
-        model, think: think ? 4096 : 0, files: [{ mimeType: 'image/jpeg', dataBase64: gemImage() }],
+        model, think: think ? 4096 : 0, schema: INGEST_SCHEMA, files: [{ mimeType: 'image/jpeg', dataBase64: gemImage() }],
       })
       setUsage(usage)
       const caus = parseIngestJson(text)

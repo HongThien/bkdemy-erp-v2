@@ -339,16 +339,20 @@ export async function callGeminiJson(prompt: string, opts?: { model?: string; fi
 
 // ── SPIKE Phase 2 (ingest): gọi Gemini trả KÈM token usage (đo chi phí) + prompt dò câu+bbox hình ──
 export type GeminiUsage = { in: number; out: number; think: number }
-export async function callGeminiRich(prompt: string, opts?: { model?: string; files?: GeminiFile[]; think?: number }): Promise<{ text: string; usage: GeminiUsage }> {
+// responseSchema = constrained decoding → Gemini BUỘC xuất JSON hợp lệ cấu trúc + tự escape chuỗi
+// (hết lỗi "Bad escaped character" / "Expected , or }" do LaTeX 1-backslash hay " chưa escape).
+export async function callGeminiRich(prompt: string, opts?: { model?: string; files?: GeminiFile[]; think?: number; schema?: any }): Promise<{ text: string; usage: GeminiUsage }> {
   const key = import.meta.env.VITE_GEMINI_KEY as string | undefined
   if (!key) throw new Error('Chưa có VITE_GEMINI_KEY trong .env.local.')
   const model = opts?.model || 'gemini-2.5-flash'
   const parts: any[] = [{ text: prompt }]
   for (const f of opts?.files ?? []) parts.push({ inline_data: { mime_type: f.mimeType, data: f.dataBase64 } })
   const thinkingBudget = opts?.think ?? (model.includes('pro') ? 128 : 0)
+  const genCfg: any = { responseMimeType: 'application/json', maxOutputTokens: 65536, thinkingConfig: { thinkingBudget } }
+  if (opts?.schema) genCfg.responseSchema = opts.schema
   const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`, {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ contents: [{ parts }], generationConfig: { responseMimeType: 'application/json', maxOutputTokens: 65536, thinkingConfig: { thinkingBudget } } }),
+    body: JSON.stringify({ contents: [{ parts }], generationConfig: genCfg }),
   })
   if (!res.ok) throw new Error(`Gemini API lỗi ${res.status}: ${(await res.text()).slice(0, 300)}`)
   const data = await res.json()
@@ -362,6 +366,25 @@ export async function callGeminiRich(prompt: string, opts?: { model?: string; fi
 
 // Câu suy ra từ ingest 1 trang: text fields + cờ có hình + bbox hình (Gemini format [ymin,xmin,ymax,xmax] 0–1000).
 export type IngestCau = { noi_dung: string; dap_an: string | null; loi_giai: string | null; lua_chon: string[] | null; coHinh: boolean; box: [number, number, number, number] | null }
+// Schema ép Gemini xuất JSON đúng cấu trúc (Type enum UPPERCASE theo proto). required tối thiểu = de_bai.
+export const INGEST_SCHEMA = {
+  type: 'OBJECT',
+  properties: {
+    cau: {
+      type: 'ARRAY',
+      items: {
+        type: 'OBJECT',
+        properties: {
+          de_bai: { type: 'STRING' }, dap_an: { type: 'STRING' }, loi_giai: { type: 'STRING' },
+          lua_chon: { type: 'ARRAY', items: { type: 'STRING' } },
+          co_hinh: { type: 'BOOLEAN' }, box_hinh: { type: 'ARRAY', items: { type: 'NUMBER' } },
+        },
+        required: ['de_bai'],
+      },
+    },
+  },
+  required: ['cau'],
+}
 export function buildIngestPrompt(a: { tenDang?: string; loaiCau?: string }): string {
   const f = loaiFields(a.loaiCau || 'tu_luan')
   return [
