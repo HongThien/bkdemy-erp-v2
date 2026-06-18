@@ -193,12 +193,19 @@ export function buildClonePrompt(a: { soBienThe: number; ghiChu: string; tenDang
     `  "variants": [ ${f.obj} ] }`,
   ].filter(Boolean).join('\n')
 }
+// Gemini HAY trả LaTeX 1 backslash trong chuỗi JSON ("\dfrac") → JSON.parse ném "Bad escaped character".
+// Sửa: thử parse thẳng (nhanh), lỗi thì NHÂN ĐÔI mọi backslash KHÔNG thuộc escape hợp lệ
+// (giữ nguyên \" \\ \/ \b \f \n \r \t \uXXXX) rồi parse lại → "\dfrac" thành "\\dfrac" hợp lệ, parse ra "\dfrac".
+function lenientJsonParse(t: string): any {
+  try { return JSON.parse(t) }
+  catch { return JSON.parse(t.replace(/\\(["\\/bfnrtu])|\\/g, (m, g) => (g ? m : '\\\\'))) }
+}
 export function parseCloneJson(text: string): { goc: CauNoiDung; variants: CauNoiDung[] } {
   let t = text.trim()
   const fence = t.match(/```(?:json)?\s*([\s\S]*?)```/i)
   if (fence) t = fence[1].trim()
   let obj: any
-  try { obj = JSON.parse(t) } catch (e: any) { throw new Error('JSON không hợp lệ: ' + e.message) }
+  try { obj = lenientJsonParse(t) } catch (e: any) { throw new Error('JSON không hợp lệ: ' + e.message) }
   const bg = obj.bai_goc ?? obj.baiGoc
   if (!bg || !bg.de_bai) throw new Error('Thiếu "bai_goc.de_bai" trong JSON.')
   const variants = (Array.isArray(obj.variants) ? obj.variants : []).filter((v: any) => v?.de_bai).map(normCau)
@@ -252,7 +259,7 @@ export function parseBatchJson(text: string): CauNoiDung[] {
   let t = text.trim()
   const fence = t.match(/```(?:json)?\s*([\s\S]*?)```/i); if (fence) t = fence[1].trim()
   let obj: any
-  try { obj = JSON.parse(t) } catch (e: any) { throw new Error('JSON không hợp lệ: ' + e.message) }
+  try { obj = lenientJsonParse(t) } catch (e: any) { throw new Error('JSON không hợp lệ: ' + e.message) }
   const arr = Array.isArray(obj) ? obj : (obj.cau_hoi ?? obj.cauHoi ?? obj.variants)
   if (!Array.isArray(arr)) throw new Error('Cần JSON dạng { "cau_hoi": [ … ] } hoặc một mảng câu.')
   return arr.filter((x: any) => x?.de_bai || x?.noi_dung).map(normCau)
@@ -370,7 +377,7 @@ export function buildIngestPrompt(a: { tenDang?: string; loaiCau?: string }): st
 }
 export function parseIngestJson(text: string): IngestCau[] {
   let t = text.trim(); const fence = t.match(/```(?:json)?\s*([\s\S]*?)```/i); if (fence) t = fence[1].trim()
-  let obj: any; try { obj = JSON.parse(t) } catch (e: any) { throw new Error('JSON không hợp lệ: ' + e.message) }
+  let obj: any; try { obj = lenientJsonParse(t) } catch (e: any) { throw new Error('JSON không hợp lệ: ' + e.message) }
   const arr = Array.isArray(obj) ? obj : (obj.cau ?? obj.cau_hoi ?? [])
   if (!Array.isArray(arr)) throw new Error('Cần JSON dạng { "cau": [ … ] }.')
   return arr.filter((x: any) => x?.de_bai || x?.noi_dung).map((x: any) => ({
@@ -564,7 +571,7 @@ export function parseLyThuyetJson(text: string): string {
   let t = text.trim()
   const fence = t.match(/```(?:json)?\s*([\s\S]*?)```/i); if (fence) t = fence[1].trim()
   let obj: any
-  try { obj = JSON.parse(t) } catch (e: any) { throw new Error('JSON không hợp lệ: ' + e.message) }
+  try { obj = lenientJsonParse(t) } catch (e: any) { throw new Error('JSON không hợp lệ: ' + e.message) }
   return String(obj.noi_dung ?? obj.noiDung ?? '').trim()
 }
 
