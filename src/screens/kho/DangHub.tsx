@@ -301,7 +301,8 @@ function AiImportModal({ mode, dangChinh, tenDang, onClose, onSaved }: {
     // ⚠ CAP CỨNG Ở CODE (đừng tin UI): CLONE = đẻ biến thể từ text, KHÔNG bao giờ cần Pro.
     // Pro chỉ hợp lệ ở luồng OCR khó (batch). Vụ cháy 920k là do clone lỡ chạy Pro → ép Flash.
     const safeModel = isClone && model.includes('pro') ? 'gemini-2.5-flash' : model
-    try { applyJson(await callGeminiJson(effPrompt(), { model: safeModel, files: files.map((f) => ({ mimeType: f.mimeType, dataBase64: f.dataBase64 })) })) }
+    // CLONE = generation (cần suy luận để giải đúng + số đẹp) → bật thinking; NHẬP CHUỖI = extraction → 0.
+    try { applyJson(await callGeminiJson(effPrompt(), { model: safeModel, think: isClone ? 8192 : 0, files: files.map((f) => ({ mimeType: f.mimeType, dataBase64: f.dataBase64 })) })) }
     catch (e: any) { setError(e.message ?? String(e)) } finally { setBusy(false) }
   }
   function parseText() {

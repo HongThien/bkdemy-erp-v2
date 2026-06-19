@@ -311,16 +311,16 @@ export async function saveCauBatch(a: { dangChinh: string; loaiCau: string; item
 
 // ── AUTO: gọi Gemini API thẳng từ client (key VITE_GEMINI_KEY — rủi ro lộ, chấp nhận) ──
 export type GeminiFile = { mimeType: string; dataBase64: string }  // ảnh/PDF base64 (bỏ tiền tố data:)
-export async function callGeminiJson(prompt: string, opts?: { model?: string; files?: GeminiFile[] }): Promise<string> {
+export async function callGeminiJson(prompt: string, opts?: { model?: string; files?: GeminiFile[]; think?: number }): Promise<string> {
   const key = import.meta.env.VITE_GEMINI_KEY as string | undefined
   if (!key) throw new Error('Chưa có VITE_GEMINI_KEY trong .env.local → luồng AUTO chưa bật. Dùng MANUAL hoặc thêm key.')
   const model = opts?.model || (import.meta.env.VITE_GEMINI_MODEL as string | undefined) || 'gemini-2.5-flash'
   const parts: any[] = [{ text: prompt }]
   for (const f of opts?.files ?? []) parts.push({ inline_data: { mime_type: f.mimeType, data: f.dataBase64 } })
-  // ⚠ TIỀN: Gemini 2.5 mặc định BẬT thinking — token suy nghĩ TÍNH NHƯ OUTPUT (vô hình trong kết quả
-  // nhưng có trong bill; vụ cháy 1tr3/ngày 06-10). OCR/bóc đề/clone không cần nghĩ sâu →
-  // Flash: TẮT hẳn (budget 0) · Pro: không tắt được, ép min 128.
-  const thinkingBudget = model.includes('pro') ? 128 : 0
+  // ⚠ TIỀN: Gemini 2.5 mặc định BẬT thinking — token suy nghĩ TÍNH NHƯ OUTPUT (vụ cháy 1tr3 06-10).
+  // OCR/bóc đề/nhập-chuỗi = extraction → KHÔNG cần nghĩ (budget 0). CLONE = GENERATION (dựng+giải+số đẹp)
+  // → CẦN suy luận, caller truyền opts.think (vd 8192) nếu không clone toán sẽ sai. Pro ép min 128.
+  const thinkingBudget = opts?.think ?? (model.includes('pro') ? 128 : 0)
   const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`, {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ contents: [{ parts }], generationConfig: { responseMimeType: 'application/json', maxOutputTokens: 65536, thinkingConfig: { thinkingBudget } } }),
