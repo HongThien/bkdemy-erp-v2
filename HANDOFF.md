@@ -108,7 +108,7 @@
 
 ### Chưa làm
 - ✅ **(XONG 06-17)** bucket `avatars` — đã chạy trên Dashboard, verify hoạt động (có ảnh NS/HS thật trong bucket).
-- **⭐ XỬ LÝ TÀI LIỆU:** Phase 0 xong cắt hình (câu + lý thuyết) + fix JSON; CÒN #1 bảng · #2 chia hết · #3 clone (thinking+kiểm+chặn hình). **Phase 1** = AIG/template dạng tính toán (Thùy chọn LLM+tự-kiểm trước). **⭐ Phase 2 SPIKE ĐÃ BUILD — đang CHỜ Thùy chạy 1 tài liệu thật rồi báo 3 số (token/trang · AI dò đúng mấy câu · hình cắt ôm đúng %)** → có số mới quyết build full "document processor" (segment cả tài liệu + auto-crop + UI duyệt). Token đo sơ ~10–13k/trang Flash = ~cent/trang.
+- **⭐ XỬ LÝ TÀI LIỆU — đang BUILD FULL PHASE 2** (Thùy chốt: build full rồi sửa Phase 0 1 thể; ADR: [Bộ xử lý tài liệu](https://app.notion.com/p/384d4530bcdb815093a1d601c29c7bab)). 4 kịch bản: KB1 cắt-1-bài ✅ · **KB2 1-PDF-1-dạng ✅** (IngestSpike nút "📚 Cả tài liệu" loop mọi trang→1 dạng) · **KB3** file nhiều dạng → màn "Nhập tài liệu" cross-dạng + **người điền dạng TAY 100%** (AI xếp dạng = tương lai khi kho chuẩn) + route lưu theo dạng — CHƯA · **KB4** lý thuyết có hình → AI trả text + marker vị trí → chèn `![](url)` đúng chỗ — CHƯA. Token ~10–13k/trang Flash = ~cent/trang (đo thật). Engine: `responseSchema` ép JSON hợp lệ. Sau Phase 2: **Phase 0 còn** #1 bảng `array` · #2 ⋮→`\vdots` · #3 clone thinking+tự-kiểm+chặn-hình. **Phase 1** = AIG/template (Thùy chọn LLM+tự-kiểm).
 - **Mobile:** mới tối ưu tab "Chấm bài trên lớp"; các tab khác (điểm danh/đánh giá/ET) + shell nav chưa làm mobile.
 - **⭐ NGAY — màn TIVI (đường đua Elo realtime + linh vật):** việc tiếp theo đã chốt. ⏳ **Chờ Thùy quyết:** TIVI theo **1 lớp/buổi** (đường đua HS trong lớp) hay **leaderboard toàn khối**? Data đã sẵn (`getEloBreakdown`/`listGamiBangTong`/`gami_elo_history`).
 - **⭐ MASTERY ENGINE (#4 ADR đo lường):** suy động — đơn vị "1 lần đánh giá" = test/ET mỗi BÀI, buổi in-class = 1 verdict GV/dạng (formative→summative). Thang {0/0.5/1} (gami_grades.result=correct/partial/wrong; chỉ KẾT QUẢ, bỏ trình bày/tốc độ — đó cho Elo). Mastery = TB điểm X lần gần nhất trong Y → 3 mức (≥0.8/≥0.5/<0.5; X=5 config). Suy động KHÔNG lưu; độ tin theo cỡ mẫu; trend = view derive. CHƯA dựng.
@@ -180,6 +180,7 @@
 ### Nguồn intent (Notion)
 - Quyết định Kho chốt ở trang **"Kho — Bản đồ kiến thức · Quyết định build (ADR)"** (con của ERP V2). Notion = source of truth cho *intent*.
 - **ADR Bảng thành tích & 3 hệ điểm (Level/Elo/EXP-Xu)** — [trang Notion](https://app.notion.com/p/381d4530bcdb819fb151c32f81007117) (con ERP V2). Chốt mô hình Level 21-điểm sát hạch · EXP→Xu · catalog thành tích.
+- **ADR Bộ xử lý tài liệu (Document Ingest)** — [trang Notion](https://app.notion.com/p/384d4530bcdb815093a1d601c29c7bab) (con ERP V2). 4 KB chứa hình + engine chung + KB3 người-điền-dạng-tay + thứ tự build 2→3→4.
 
 ---
 

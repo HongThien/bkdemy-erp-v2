@@ -33,14 +33,15 @@ export default function IngestSpike({ dangChinh, tenDang, loaiCau, onClose, onSa
   const [note, setNote] = useState('Nạp PDF/ảnh 1 trang → "Phân tích trang".')
   const getSrc = () => (srcRef.current ??= document.createElement('canvas'))
 
-  async function renderPdf(n: number) {
+  // render trang n vào srcCanvas (chỉ vẽ, KHÔNG đụng state — dùng trong vòng lặp đa trang)
+  async function raster(n: number) {
     const pg = await pdfRef.current.getPage(n)
     let vp = pg.getViewport({ scale: HI_DPI / 72 })
     if (vp.width > MAX_SRC) vp = pg.getViewport({ scale: (HI_DPI / 72) * (MAX_SRC / vp.width) })
     const s = getSrc(); s.width = Math.round(vp.width); s.height = Math.round(vp.height)
     await pg.render({ canvasContext: s.getContext('2d')!, viewport: vp }).promise
-    setHasSrc(true); setItems([]); setUsage(null)
   }
+  async function renderPdf(n: number) { await raster(n); setHasSrc(true); setItems([]); setUsage(null) }
   async function onFile(f: File | undefined) {
     if (!f) return; setErr(null); setItems([]); setUsage(null); setNote('Đang nạp…'); setSrcName(f.name)
     try {
@@ -76,19 +77,36 @@ export default function IngestSpike({ dangChinh, tenDang, loaiCau, onClose, onSa
     o.getContext('2d')!.drawImage(s, sx, sy, sw, sh, 0, 0, o.width, o.height)
     return o.toDataURL('image/png')
   }
+  // Đọc 1 trang ĐANG ở srcCanvas → câu + crop hình của trang đó (cộng dồn token bên ngoài).
+  async function readCanvas(): Promise<{ items: Item[]; usage: GeminiUsage }> {
+    const { text, usage } = await callGeminiRich(buildIngestPrompt({ tenDang, loaiCau }), {
+      model, think: think ? 4096 : 0, schema: INGEST_SCHEMA, files: [{ mimeType: 'image/jpeg', dataBase64: gemImage() }],
+    })
+    const items = parseIngestJson(text).map((c) => ({
+      noi_dung: c.noi_dung, dap_an: c.dap_an, loi_giai: c.loi_giai, lua_chon: c.lua_chon,
+      coHinh: c.coHinh, crop: c.coHinh && c.box ? cropBox(c.box) : null, approved: true,
+    }))
+    return { items, usage }
+  }
   async function analyze() {
     setBusy(true); setErr(null); setNote('AI đang đọc trang…')
+    try { const r = await readCanvas(); setItems(r.items); setUsage(r.usage); setNote(`AI dò ${r.items.length} câu (${r.items.filter((i) => i.coHinh).length} có hình). Kiểm rồi lưu.`) }
+    catch (e: any) { setErr(e?.message ?? String(e)) } finally { setBusy(false) }
+  }
+  // KB2: đọc CẢ tài liệu (mọi trang) → gộp câu, cộng dồn token. Mỗi trang 1 call.
+  async function analyzeAll() {
+    setBusy(true); setErr(null); setItems([]); setUsage(null)
     try {
-      const { text, usage } = await callGeminiRich(buildIngestPrompt({ tenDang, loaiCau }), {
-        model, think: think ? 4096 : 0, schema: INGEST_SCHEMA, files: [{ mimeType: 'image/jpeg', dataBase64: gemImage() }],
-      })
-      setUsage(usage)
-      const caus = parseIngestJson(text)
-      setItems(caus.map((c) => ({
-        noi_dung: c.noi_dung, dap_an: c.dap_an, loi_giai: c.loi_giai, lua_chon: c.lua_chon,
-        coHinh: c.coHinh, crop: c.coHinh && c.box ? cropBox(c.box) : null, approved: true,
-      })))
-      setNote(`AI dò ${caus.length} câu (${caus.filter((c) => c.coHinh).length} có hình). Kiểm rồi lưu.`)
+      const pages = pdfRef.current ? numPages : 1
+      let acc: Item[] = [], u: GeminiUsage = { in: 0, out: 0, think: 0 }
+      for (let p = 1; p <= pages; p++) {
+        setNote(`AI đang đọc trang ${p}/${pages}…`)
+        if (pdfRef.current) await raster(p)
+        const r = await readCanvas()
+        acc = acc.concat(r.items); u = { in: u.in + r.usage.in, out: u.out + r.usage.out, think: u.think + r.usage.think }
+        setItems([...acc]); setUsage({ ...u })
+      }
+      setNote(`AI dò ${acc.length} câu / ${pages} trang (${acc.filter((i) => i.coHinh).length} có hình). Kiểm rồi lưu.`)
     } catch (e: any) { setErr(e?.message ?? String(e)) } finally { setBusy(false) }
   }
   async function save() {
@@ -119,7 +137,8 @@ export default function IngestSpike({ dangChinh, tenDang, loaiCau, onClose, onSa
           {numPages > 1 && <span className="flex items-center gap-1 text-[13px] text-slate-600"><button onClick={() => goPage(page - 1)} disabled={page <= 1} className="h-7 w-7 rounded border border-slate-200 disabled:opacity-30">‹</button>Trang {page}/{numPages}<button onClick={() => goPage(page + 1)} disabled={page >= numPages} className="h-7 w-7 rounded border border-slate-200 disabled:opacity-30">›</button></span>}
           <select value={model} onChange={(e) => setModel(e.target.value)} className="h-8 rounded-md border border-slate-300 px-2 text-[12px]">{MODELS.map((m) => <option key={m.v} value={m.v}>{m.l}</option>)}</select>
           <label className="flex items-center gap-1 text-[12px] text-slate-600"><input type="checkbox" checked={think} onChange={(e) => setThink(e.target.checked)} /> suy luận</label>
-          <button onClick={analyze} disabled={!hasSrc || busy} className="rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-indigo-500 disabled:opacity-40">{busy ? 'Đang đọc…' : '🔍 Phân tích trang'}</button>
+          <button onClick={analyze} disabled={!hasSrc || busy} className="rounded-md border border-indigo-300 bg-indigo-50 px-3 py-1.5 text-[13px] font-medium text-indigo-700 hover:bg-indigo-100 disabled:opacity-40">{busy ? 'Đang đọc…' : '🔍 Trang này'}</button>
+          <button onClick={analyzeAll} disabled={!hasSrc || busy} className="rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-indigo-500 disabled:opacity-40" title="Đọc toàn bộ tài liệu (mỗi trang 1 lần gọi AI)">{busy ? 'Đang đọc…' : `📚 Cả tài liệu${numPages > 1 ? ` (${numPages} trang)` : ''}`}</button>
           <button onClick={onClose} className="ml-auto flex h-8 w-8 items-center justify-center rounded-md text-slate-400 hover:bg-slate-100">✕</button>
         </div>
 
