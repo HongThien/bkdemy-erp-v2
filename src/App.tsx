@@ -5,6 +5,7 @@ import { useStore, getUser } from './store/useStore'
 import TopBar from './components/TopBar'
 import NhanSuHome from './screens/NhanSuHome'
 import Login from './auth/Login'
+import GeminiMeterBadge from './components/GeminiMeterBadge'
 
 export default function App() {
   const [session, setSession] = useState<Session | null | undefined>(undefined) // undefined = đang tải
@@ -35,6 +36,7 @@ export default function App() {
       <div className="min-h-0 flex-1 overflow-hidden">
         <NhanSuHome user={user} />
       </div>
+      <GeminiMeterBadge />
     </div>
   )
 }

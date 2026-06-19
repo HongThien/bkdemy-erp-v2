@@ -309,6 +309,32 @@ export async function saveCauBatch(a: { dangChinh: string; loaiCau: string; item
   return rows.length
 }
 
+// ── ĐO TOKEN + QUY RA TIỀN ──────────────────────────────────────────
+// Giá USD / 1 TRIỆU token (thinking tính như OUTPUT). ⚠ PROVISIONAL — cập nhật theo ai.google.dev/pricing.
+export const USD_VND = 25400
+export const GEMINI_GIA: Record<string, { in: number; out: number }> = {
+  'gemini-2.5-flash-lite': { in: 0.10, out: 0.40 },
+  'gemini-2.5-flash': { in: 0.30, out: 2.50 },
+  'gemini-2.5-pro': { in: 1.25, out: 10.0 },
+}
+const giaOf = (m: string) => GEMINI_GIA[m] ?? (m.includes('pro') ? GEMINI_GIA['gemini-2.5-pro'] : m.includes('lite') ? GEMINI_GIA['gemini-2.5-flash-lite'] : GEMINI_GIA['gemini-2.5-flash'])
+export type GeminiUsage = { in: number; out: number; think: number }
+export function geminiCostVND(u: GeminiUsage, model: string): number {
+  const g = giaOf(model)
+  return Math.round(((u.in * g.in + (u.out + u.think) * g.out) / 1e6) * USD_VND)
+}
+// Bộ đếm theo PHIÊN (reset khi F5 / bấm reset). UI subscribe để hiện badge.
+export type GeminiMeter = { in: number; out: number; think: number; calls: number; vnd: number }
+let _meter: GeminiMeter = { in: 0, out: 0, think: 0, calls: 0, vnd: 0 }
+const _meterListeners = new Set<() => void>()
+export function getGeminiMeter(): GeminiMeter { return _meter }
+export function onGeminiMeter(fn: () => void): () => void { _meterListeners.add(fn); return () => { _meterListeners.delete(fn) } }
+export function resetGeminiMeter() { _meter = { in: 0, out: 0, think: 0, calls: 0, vnd: 0 }; _meterListeners.forEach((f) => f()) }
+function recordUsage(u: GeminiUsage, model: string) {
+  _meter = { in: _meter.in + u.in, out: _meter.out + u.out, think: _meter.think + u.think, calls: _meter.calls + 1, vnd: _meter.vnd + geminiCostVND(u, model) }
+  _meterListeners.forEach((f) => f())
+}
+
 // ── AUTO: gọi Gemini API thẳng từ client (key VITE_GEMINI_KEY — rủi ro lộ, chấp nhận) ──
 export type GeminiFile = { mimeType: string; dataBase64: string }  // ảnh/PDF base64 (bỏ tiền tố data:)
 export async function callGeminiJson(prompt: string, opts?: { model?: string; files?: GeminiFile[]; think?: number }): Promise<string> {
@@ -330,6 +356,7 @@ export async function callGeminiJson(prompt: string, opts?: { model?: string; fi
   // Soi chi phí từng call ngay tại console: prompt/output/THINKING token.
   const u = data?.usageMetadata
   if (u) console.info(`[gemini ${model}] tokens — in:${u.promptTokenCount ?? 0} out:${u.candidatesTokenCount ?? 0} think:${u.thoughtsTokenCount ?? 0}`)
+  recordUsage({ in: u?.promptTokenCount ?? 0, out: u?.candidatesTokenCount ?? 0, think: u?.thoughtsTokenCount ?? 0 }, model)
   const cand = data?.candidates?.[0]
   const txt: string = (cand?.content?.parts ?? []).map((p: any) => p.text ?? '').join('')
   if (cand?.finishReason === 'MAX_TOKENS') throw new Error('AI bị CẮT do output quá dài (JSON dở) → giảm "Số biến thể" hoặc cho input ngắn hơn rồi thử lại.')
@@ -338,7 +365,6 @@ export async function callGeminiJson(prompt: string, opts?: { model?: string; fi
 }
 
 // ── SPIKE Phase 2 (ingest): gọi Gemini trả KÈM token usage (đo chi phí) + prompt dò câu+bbox hình ──
-export type GeminiUsage = { in: number; out: number; think: number }
 // responseSchema = constrained decoding → Gemini BUỘC xuất JSON hợp lệ cấu trúc + tự escape chuỗi
 // (hết lỗi "Bad escaped character" / "Expected , or }" do LaTeX 1-backslash hay " chưa escape).
 export async function callGeminiRich(prompt: string, opts?: { model?: string; files?: GeminiFile[]; think?: number; schema?: any }): Promise<{ text: string; usage: GeminiUsage }> {
@@ -361,7 +387,9 @@ export async function callGeminiRich(prompt: string, opts?: { model?: string; fi
   const text: string = (cand?.content?.parts ?? []).map((p: any) => p.text ?? '').join('')
   if (cand?.finishReason === 'MAX_TOKENS') throw new Error('AI bị CẮT (JSON dở) — trang quá dày, thử trang ngắn hơn / ít câu hơn.')
   if (!text.trim()) throw new Error(`Gemini trả rỗng${cand?.finishReason ? ` (${cand.finishReason})` : ''}.`)
-  return { text, usage: { in: u.promptTokenCount ?? 0, out: u.candidatesTokenCount ?? 0, think: u.thoughtsTokenCount ?? 0 } }
+  const usage: GeminiUsage = { in: u.promptTokenCount ?? 0, out: u.candidatesTokenCount ?? 0, think: u.thoughtsTokenCount ?? 0 }
+  recordUsage(usage, model)
+  return { text, usage }
 }
 
 // Câu suy ra từ ingest 1 trang: text fields + cờ có hình + bbox hình (Gemini format [ymin,xmin,ymax,xmax] 0–1000).

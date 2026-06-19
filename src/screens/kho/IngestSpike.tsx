@@ -5,7 +5,7 @@
 import { useRef, useState } from 'react'
 import * as pdfjsLib from 'pdfjs-dist'
 import workerSrc from 'pdfjs-dist/build/pdf.worker.min.mjs?url'
-import { callGeminiRich, buildIngestPrompt, parseIngestJson, INGEST_SCHEMA, uploadKhoImage, saveCauBatch, type GeminiUsage } from '../../lib/kho/api'
+import { callGeminiRich, buildIngestPrompt, parseIngestJson, INGEST_SCHEMA, geminiCostVND, uploadKhoImage, saveCauBatch, type GeminiUsage } from '../../lib/kho/api'
 import { MathText } from './ui'
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = workerSrc
@@ -149,7 +149,8 @@ export default function IngestSpike({ dangChinh, tenDang, loaiCau, onClose, onSa
             <span>output <b>{usage.out.toLocaleString()}</b></span>
             <span>suy luận <b>{usage.think.toLocaleString()}</b></span>
             <span className="text-slate-500">tổng <b>{tok.toLocaleString()}</b></span>
-            <span className="text-slate-400">(× số trang = chi phí cả tài liệu — đối chiếu bảng giá Google của model đang chọn)</span>
+            <span className="font-bold text-emerald-600">≈ {geminiCostVND(usage, model).toLocaleString('vi-VN')}₫</span>
+            <span className="text-slate-400">(ước tính theo GEMINI_GIA — sửa giá ở api.ts khi Google đổi)</span>
           </div>
         )}
 
