@@ -3,7 +3,7 @@ import {
   listCauByDang, updateCau, deleteCau,
   buildClonePrompt, parseCloneJson, saveCloneBatch,
   buildBatchPrompt, parseBatchJson, parseStructuredText, saveCauBatch, callGeminiJson,
-  CLONE_SCHEMA, callGeminiRich, buildIngestPrompt, parseIngestJson, INGEST_SCHEMA,
+  CLONE_SCHEMA, BATCH_SCHEMA, callGeminiRich, buildIngestPrompt, parseIngestJson, INGEST_SCHEMA,
   uploadKhoImage, LOAI_CAU, type CauHoi, type MapRow,
 } from '../../lib/kho/api'
 import { fileToCanvases, canvasToJpegBase64, cropCanvasBox } from '../../lib/pdfRender'
@@ -225,6 +225,7 @@ function AiImportModal({ mode, dangChinh, tenDang, onClose, onSaved }: {
   const [ghiChu, setGhiChu] = useState('')
   const [soBienThe, setSoBienThe] = useState(5)
   const [model, setModel] = useState('gemini-2.5-flash')
+  const [hasHinh, setHasHinh] = useState(true) // batch auto: tài liệu có hình → cắt hình; tắt → tách chữ thuần (rẻ/nhanh)
   const [json, setJson] = useState('')
   const [files, setFiles] = useState<UpFile[]>([])
   const [shareImgDe, setShareImgDe] = useState<string | null>(null) // ảnh đề dùng chung: gắn cho gốc + MỌI biến thể (dán 1 lần)
@@ -296,9 +297,9 @@ function AiImportModal({ mode, dangChinh, tenDang, onClose, onSaved }: {
     setError(null); setBusy(true)
     // ⚠ CAP CỨNG Ở CODE (đừng tin UI): CLONE = đẻ biến thể từ text, KHÔNG bao giờ cần Pro.
     // Pro chỉ hợp lệ ở luồng OCR khó (batch). Vụ cháy 920k là do clone lỡ chạy Pro → ép Flash.
-    const safeModel = model.includes('pro') ? 'gemini-2.5-flash' : model
-    // CLONE = generation (cần suy luận để giải đúng + số đẹp) → bật thinking.
-    try { applyJson(await callGeminiJson(effPrompt(), { model: safeModel, think: 8192, schema: CLONE_SCHEMA, files: files.map((f) => ({ mimeType: f.mimeType, dataBase64: f.dataBase64 })) })) }
+    // CLONE = generation (cần suy luận) → Flash + thinking; NHẬP CHUỖI chữ thuần = extraction → 0, gửi cả file 1 call.
+    const safeModel = isClone && model.includes('pro') ? 'gemini-2.5-flash' : model
+    try { applyJson(await callGeminiJson(effPrompt(), { model: safeModel, think: isClone ? 8192 : 0, schema: isClone ? CLONE_SCHEMA : BATCH_SCHEMA, files: files.map((f) => ({ mimeType: f.mimeType, dataBase64: f.dataBase64 })) })) }
     catch (e: any) { setError(e.message ?? String(e)) } finally { setBusy(false) }
   }
   // NHẬP CHUỖI CÂU từ ảnh/PDF = nhập chuỗi câu + PHÂN TÍCH HÌNH: render trang DPI cao → AI tách câu + bbox hình
@@ -440,7 +441,12 @@ function AiImportModal({ mode, dangChinh, tenDang, onClose, onSaved }: {
                     ))}
                   </div>
                 )}
-                <button onClick={isClone ? runAuto : runAutoIngest} disabled={!files.length || busy} className="h-[34px] rounded-md bg-indigo-600 px-4 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40" title={isClone ? '' : 'Tách câu + tự cắt & gắn hình'}>{busy ? '⏳ Đang gọi…' : isClone ? '🪄 Tạo bảng AI' : '🪄 Tách câu + hình'}</button>
+                {!isClone && (
+                  <label className="flex h-[34px] shrink-0 cursor-pointer items-center gap-1.5 rounded-md border border-slate-200 bg-white px-2.5 text-[13px] font-medium text-slate-600" title="Có hình → render trang & tự cắt hình (mỗi trang 1 lần gọi); Tắt → tách chữ thuần (rẻ/nhanh hơn)">
+                    <input type="checkbox" checked={hasHinh} onChange={(e) => setHasHinh(e.target.checked)} />📐 Có hình
+                  </label>
+                )}
+                <button onClick={isClone ? runAuto : (hasHinh ? runAutoIngest : runAuto)} disabled={!files.length || busy} className="h-[34px] rounded-md bg-indigo-600 px-4 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40" title={isClone ? '' : hasHinh ? 'Tách câu + tự cắt & gắn hình' : 'Tách câu (chữ thuần)'}>{busy ? '⏳ Đang gọi…' : isClone ? '🪄 Tạo bảng AI' : hasHinh ? '🪄 Tách câu + hình' : '🪄 Tách câu'}</button>
               </>
             ) : null}
           </div>
