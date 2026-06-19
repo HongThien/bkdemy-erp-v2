@@ -387,6 +387,16 @@ export async function getETCaus(taiLieuId: string): Promise<CauHoi[]> {
   const full = await getTaiLieuFull(taiLieuId)
   return full.phans.find((p) => p.loai_phan === 'custom')?.caus ?? []
 }
+// BTVN của buổi (lớp+ngày) — doc loai='btvn' (từ trích xuất). Câu gộp mọi phan 'btvn' theo thứ tự (mỗi dạng 1 phan).
+export async function getBTVNByBuoi(lopId: string, ngay: string): Promise<{ id: string } | null> {
+  const { data, error } = await supabase.from('tai_lieu').select('id').eq('loai', 'btvn').eq('lop_id', lopId).eq('ngay', ngay).maybeSingle()
+  if (error) throw error
+  return (data as { id: string }) ?? null
+}
+export async function getBTVNCaus(taiLieuId: string): Promise<CauHoi[]> {
+  const full = await getTaiLieuFull(taiLieuId)
+  return full.phans.filter((p) => p.loai_phan === 'btvn').flatMap((p) => p.caus)
+}
 // Đặt LẠI toàn bộ câu ET theo thứ tự (UI tự dedup trong đề — trong buổi không trùng).
 export async function setETCaus(taiLieuId: string, maCaus: string[]): Promise<void> {
   await setCauOfPhan(await etPhanId(taiLieuId), maCaus)

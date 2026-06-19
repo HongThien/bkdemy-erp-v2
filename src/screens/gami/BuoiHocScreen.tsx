@@ -3,6 +3,8 @@ import {
   buoiAoCuaNgay, moBuoi, getBuoi, huyBuoi, huyBuoiCuaNgay, setNguoiDay,
   getRoster, diemDanh, dongBoSiSo, listProblems, addProblem, setProblemDang, ensureProblems, listGrades, gradeMuc, closePhase,
   loadETForBuoi, ensureETProblems, resyncETProblems, gradeET, deleteGrade, reopenPhase, getEloBreakdown,
+  loadBTVNForBuoi, ensureBTVNProblems, getBtvnKetQua, setBtvnKetQua, listCanhBao, themCanhBao, xoaCanhBao, closeBTVN, reopenBTVN,
+  type BtvnKQ, type CanhBao, type BtvnTrangThai, type BtvnThaiDo,
   getDanhGia, setDanhGiaDang, setNhanXet, dongDanhGia, moLaiDanhGia,
   type BuoiAo, type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type Phase, type DiemDanh, type RevealRow, type DanhGiaHS, type DanhGiaDiem, type TabKey, type ETResult, type EloBreakdown,
 } from '../../lib/gami'
@@ -176,7 +178,7 @@ export function BuoiDetail({ id, onClose, tabs, initialTab, canManage = true }: 
       ) : (
         <>
           <div className="flex gap-1 overflow-x-auto border-b border-slate-200 bg-white px-6">
-            {([['diemdanh', `Điểm danh (${soCoMat}/${roster.length})`], ['danhgia', 'Đánh giá sau buổi'], ['ingame', 'Chấm bài trên lớp'], ['et', 'ET']] as const).filter(([k]) => !tabs || tabs.includes(k)).map(([k, lbl]) => (
+            {([['diemdanh', `Điểm danh (${soCoMat}/${roster.length})`], ['danhgia', 'Đánh giá sau buổi'], ['ingame', 'Chấm bài trên lớp'], ['et', 'ET'], ['btvn', 'BTVN']] as const).filter(([k]) => !tabs || tabs.includes(k)).map(([k, lbl]) => (
               <button key={k} onClick={() => setTab(k as any)} className={`-mb-px shrink-0 whitespace-nowrap border-b-2 px-3 py-2 text-[13px] font-medium ${tab === k ? 'border-indigo-600 text-indigo-700' : 'border-transparent text-slate-500 hover:text-slate-700'}`}>{lbl}</button>
             ))}
           </div>
@@ -187,6 +189,8 @@ export function BuoiDetail({ id, onClose, tabs, initialTab, canManage = true }: 
               ? <DanhGiaTab buoiId={id} roster={roster} dangOpts={dangOpts} buoi={buoi} onChange={reload} />
               : tab === 'et'
               ? <ETChamTab buoiId={id} roster={roster} buoi={buoi} dangOpts={dangOpts} onChange={reload} />
+              : tab === 'btvn'
+              ? <BtvnTab buoiId={id} roster={roster} buoi={buoi} dangOpts={dangOpts} onChange={reload} />
               : <ChamTab buoiId={id} phase="ingame" roster={roster} buoi={buoi} dangOpts={dangOpts} onChange={reload} />}
           </div>
         </>
@@ -546,6 +550,164 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
           </div>
         </div>
       )}
+    </div>
+  )
+}
+
+// ── CHẤM BTVN (buổi sau): câu Đ/C/S như ET (THAM KHẢO, không mastery/Elo) + trạng thái nộp + thái độ + báo động ──
+const NOP_OPTS: { v: BtvnTrangThai; l: string }[] = [
+  { v: 'nop_dung_han', l: 'Nộp đúng hạn' }, { v: 'nop_muon', l: 'Nộp muộn' }, { v: 'xin_phep', l: 'Đã xin phép' }, { v: 'khong_lam', l: 'Không làm bài' },
+]
+const THAIDO_OPTS: { v: BtvnThaiDo; l: string }[] = [
+  { v: 'nghiem_tuc', l: 'Nghiêm túc' }, { v: 'chua_het_suc', l: 'Chưa hết sức' }, { v: 'chua_nghiem_tuc', l: 'Chưa nghiêm túc' }, { v: 'chong_doi', l: 'Chống đối' },
+]
+function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string; roster: BuoiHocHS[]; buoi: BuoiHoc; dangOpts: DangOpt[]; onChange: () => void }) {
+  const [probs, setProbs] = useState<Problem[]>([])
+  const [grades, setGrades] = useState<Grade[]>([])
+  const [missing, setMissing] = useState(false)
+  const [kq, setKq] = useState<Record<string, BtvnKQ>>({})
+  const [cb, setCb] = useState<CanhBao[]>([])
+  const [loading, setLoading] = useState(true)
+  const [closing, setClosing] = useState(false)
+  const [alertFor, setAlertFor] = useState<string | null>(null) // hsId đang mở popup báo động
+  const coMat = roster.filter((r) => r.diem_danh === 'co_mat')
+  const dong = !!buoi.btvn_dong_at
+  const tenDang = (md: string | null) => (md ? dangOpts.find((d) => d.ma_dang === md)?.ten ?? md : '—')
+  const dangBuoi = [...new Set(probs.map((p) => p.ma_dang).filter(Boolean))] as string[] // dạng có trong BTVN (cho báo động)
+
+  async function reloadP() { const [p, g] = await Promise.all([listProblems(buoiId, 'btvn'), listGrades(buoiId)]); setProbs(p); setGrades(g) }
+  async function reloadKq() { setKq(await getBtvnKetQua(buoiId)); setCb(await listCanhBao(buoiId)) }
+  useEffect(() => { (async () => {
+    setLoading(true)
+    try {
+      const { btvnId, caus } = await loadBTVNForBuoi(buoiId)
+      if (!btvnId) setMissing(true)
+      else { setMissing(false); await ensureBTVNProblems(buoiId, caus) }
+      await reloadP(); await reloadKq()
+    } catch { setMissing(true) } finally { setLoading(false) }
+  })() }, [buoiId]) // eslint-disable-line
+
+  const gradeOf = (pid: string, hsid: string) => grades.find((g) => g.problem_id === pid && g.hoc_sinh_id === hsid)
+  async function pickKQ(pid: string, hsId: string, result: ETResult) {
+    const g = gradeOf(pid, hsId)
+    try { if (g?.result === result) await deleteGrade(pid, hsId); else await gradeET({ buoiId, problemId: pid, hocSinhId: hsId, result, loi: [] }); await reloadP() }
+    catch (e: any) { alert(e.message ?? String(e)) }
+  }
+  async function setKQField(hsId: string, patch: Partial<BtvnKQ>) {
+    setKq((m) => { const base = m[hsId] ?? { trang_thai_nop: null, thai_do: null }; return { ...m, [hsId]: { ...base, ...patch } } })
+    try { await setBtvnKetQua(buoiId, hsId, patch) } catch (e: any) { alert(e.message ?? String(e)); reloadKq() }
+  }
+  async function dong_() {
+    if (closing) return
+    if (!confirm('Đóng BTVN? Sẽ thưởng EXP hoàn thành theo trạng thái nộp.')) return
+    setClosing(true)
+    try { const r = await closeBTVN(buoiId); if (r.already) alert('BTVN đã đóng.'); else { alert(`Đã đóng BTVN — thưởng EXP cho ${r.thuong} HS.`); onChange() } }
+    finally { setClosing(false) }
+  }
+
+  if (loading) return <p className="text-[12px] text-slate-400">Đang tải BTVN…</p>
+  if (missing) return <p className="text-[13px] text-slate-400">Chưa có BTVN cho buổi này (khớp <b className="text-slate-600">lớp + ngày</b>). Trích xuất BTVN từ giáo trình hoặc tạo BTVN cho lớp+ngày của buổi rồi quay lại.</p>
+  if (dong) return (
+    <div>
+      <div className="mb-3 flex items-center gap-3">
+        <span className="rounded-md bg-emerald-50 px-2.5 py-1 text-[13px] font-medium text-emerald-700">✓ BTVN đã đóng — đã thưởng EXP hoàn thành.</span>
+        <button onClick={async () => { if (!confirm('Mở lại BTVN để sửa? EXP đã thưởng sẽ hoàn lại.')) return; await reopenBTVN(buoiId); onChange() }} className="rounded-md border border-amber-300 px-2.5 py-1 text-[12px] font-medium text-amber-700 hover:bg-amber-50">↩ Mở lại để sửa</button>
+      </div>
+      {cb.length > 0 && <p className="text-[12px] text-slate-500">Báo động đã gửi: {cb.length} (HS kém dạng).</p>}
+    </div>
+  )
+  if (coMat.length === 0) return <p className="text-[12px] text-slate-400">Chưa có HS nào điểm danh “có mặt”.</p>
+
+  const cbOf = (hsId: string) => cb.filter((x) => x.hoc_sinh_id === hsId)
+  return (
+    <div>
+      <div className="mb-3 flex items-center gap-2">
+        <span className="text-[12px] text-slate-400">{probs.length} câu (từ BTVN) · {coMat.length} HS · chấm <b className="text-emerald-600">Đ</b>/<b className="text-amber-600">C</b>/<b className="text-rose-600">S</b> (tham khảo) · 🚨 báo động kém dạng.</span>
+        <button onClick={dong_} disabled={closing} className="ml-auto rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-indigo-500 disabled:opacity-40">{closing ? 'Đang đóng…' : 'Đóng BTVN'}</button>
+      </div>
+      <div className="overflow-auto rounded-xl border border-slate-200">
+        <table className="border-collapse text-sm">
+          <thead>
+            <tr className="bg-slate-100">
+              <th className="sticky left-0 z-10 min-w-[260px] border border-slate-200 bg-slate-100 px-3 py-2 text-left text-[12px] font-semibold text-slate-700">Học sinh · Trạng thái · Thái độ</th>
+              {probs.map((p) => (
+                <th key={p.id} className="min-w-[120px] border border-slate-200 px-2 py-2 text-center align-top">
+                  <div className="text-[12px] font-bold text-slate-700">Câu {p.problem_no}</div>
+                  <div className="mx-auto max-w-[150px] truncate text-[11px] font-medium normal-case text-violet-600" title={tenDang(p.ma_dang)}>{tenDang(p.ma_dang)}</div>
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {coMat.map((r) => {
+              const v = kq[r.hoc_sinh_id] ?? { trang_thai_nop: null, thai_do: null }
+              return (
+                <tr key={r.id} className="align-top">
+                  <td className="sticky left-0 z-10 border border-slate-200 bg-white px-3 py-2">
+                    <div className="font-medium text-slate-800">{r.hoc_sinh?.ho_ten ?? '?'}</div>
+                    <div className="mt-1.5 flex flex-col gap-1">
+                      <select value={v.trang_thai_nop ?? ''} onChange={(e) => setKQField(r.hoc_sinh_id, { trang_thai_nop: e.target.value || null })} className="h-7 rounded border border-slate-300 px-1 text-[12px]">
+                        <option value="">— trạng thái nộp —</option>{NOP_OPTS.map((o) => <option key={o.v} value={o.v}>{o.l}</option>)}
+                      </select>
+                      <select value={v.thai_do ?? ''} onChange={(e) => setKQField(r.hoc_sinh_id, { thai_do: e.target.value || null })} className="h-7 rounded border border-slate-300 px-1 text-[12px]">
+                        <option value="">— thái độ —</option>{THAIDO_OPTS.map((o) => <option key={o.v} value={o.v}>{o.l}</option>)}
+                      </select>
+                      <div className="flex flex-wrap items-center gap-1">
+                        <button onClick={() => setAlertFor(r.hoc_sinh_id)} disabled={!dangBuoi.length} className="rounded border border-rose-200 px-1.5 py-0.5 text-[11px] font-medium text-rose-600 hover:bg-rose-50 disabled:opacity-40" title="Báo động: HS kém 1 dạng">🚨 Báo động</button>
+                        {cbOf(r.hoc_sinh_id).map((c) => (
+                          <span key={c.id} className="inline-flex items-center gap-1 rounded bg-rose-100 px-1.5 py-0.5 text-[10px] font-semibold text-rose-700" title={c.ghi_chu ?? ''}>{tenDang(c.ma_dang)}<button onClick={async () => { await xoaCanhBao(c.id); reloadKq() }} className="text-rose-400 hover:text-rose-700">✕</button></span>
+                        ))}
+                      </div>
+                    </div>
+                  </td>
+                  {probs.map((p) => {
+                    const g = gradeOf(p.id, r.hoc_sinh_id)
+                    return (
+                      <td key={p.id} className="border border-slate-200 px-2 py-2">
+                        <div className="flex justify-center gap-1.5">
+                          {ET_KQ.map((k) => (
+                            <button key={k.v} onClick={() => pickKQ(p.id, r.hoc_sinh_id, k.v)} className={`h-8 w-9 rounded-lg border text-[13px] font-bold transition ${g?.result === k.v ? k.sel : k.idle}`}>{k.lbl}</button>
+                          ))}
+                        </div>
+                      </td>
+                    )
+                  })}
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </div>
+
+      {alertFor && (
+        <AlertModal buoiId={buoiId} hocSinhId={alertFor} hsTen={coMat.find((r) => r.hoc_sinh_id === alertFor)?.hoc_sinh?.ho_ten ?? '?'}
+          dangBuoi={dangBuoi} tenDang={tenDang} onClose={() => setAlertFor(null)} onSaved={() => { setAlertFor(null); reloadKq() }} />
+      )}
+    </div>
+  )
+}
+// Popup báo động: chọn dạng HS kém + ghi chú → themCanhBao.
+function AlertModal({ buoiId, hocSinhId, hsTen, dangBuoi, tenDang, onClose, onSaved }: {
+  buoiId: string; hocSinhId: string; hsTen: string; dangBuoi: string[]; tenDang: (md: string | null) => string; onClose: () => void; onSaved: () => void
+}) {
+  const [maDang, setMaDang] = useState(dangBuoi[0] ?? '')
+  const [ghiChu, setGhiChu] = useState('')
+  const [busy, setBusy] = useState(false)
+  async function luu() { if (!maDang) return; setBusy(true); try { await themCanhBao({ buoiId, hocSinhId, maDang, ghiChu: ghiChu.trim() || undefined }); onSaved() } catch (e: any) { alert(e.message ?? String(e)); setBusy(false) } }
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-4" onClick={onClose}>
+      <div className="w-[460px] max-w-full rounded-2xl border border-slate-200 bg-white p-5 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <div className="mb-3 text-[14px] font-semibold text-slate-900">🚨 Báo động: <b>{hsTen}</b> đang kém dạng</div>
+        <p className="mb-2 text-[12px] text-slate-400">Tín hiệu này KHÔNG vào điểm — là phán đoán của bạn để hệ thống biết HS cần hỗ trợ.</p>
+        <select value={maDang} onChange={(e) => setMaDang(e.target.value)} className="mb-2 h-9 w-full rounded-md border border-slate-300 px-2 text-[13px]">
+          {dangBuoi.map((md) => <option key={md} value={md}>{tenDang(md)}</option>)}
+        </select>
+        <textarea value={ghiChu} onChange={(e) => setGhiChu(e.target.value)} placeholder="Ghi chú (tuỳ): kém chỗ nào…" className="mb-3 h-20 w-full rounded-md border border-slate-300 px-2 py-1 text-[13px]" />
+        <div className="flex justify-end gap-2">
+          <button onClick={onClose} className="rounded-md px-3 py-1.5 text-[13px] text-slate-500 hover:bg-slate-100">Huỷ</button>
+          <button onClick={luu} disabled={busy || !maDang} className="rounded-md bg-rose-600 px-4 py-1.5 text-[13px] font-medium text-white hover:bg-rose-500 disabled:opacity-40">{busy ? 'Đang gửi…' : 'Gửi báo động'}</button>
+        </div>
+      </div>
     </div>
   )
 }

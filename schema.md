@@ -2,7 +2,7 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-49 bảng · 0 enum · 1 trigger · 6 function
+50 bảng · 0 enum · 1 trigger · 6 function
 
 ## btvn_ket_qua
 
@@ -14,6 +14,8 @@
 | dung_han | boolean | Y |  |  |
 | ti_le_dung | numeric | Y |  |  |
 | updated_at | timestamp with time zone |  | now() |  |
+| trang_thai_nop | text | Y |  |  |
+| thai_do | text | Y |  |  |
 
 ## buoi_danh_gia
 
@@ -59,6 +61,7 @@
 | created_at | timestamp with time zone |  | now() |  |
 | updated_at | timestamp with time zone |  | now() |  |
 | danh_gia_xong_at | timestamp with time zone | Y |  |  |
+| btvn_dong_at | timestamp with time zone | Y |  |  |
 
 ## buoi_hoc_hs
 
@@ -69,6 +72,19 @@
 | hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |
 | diem_danh | text | Y |  |  |
 | bu_cho_buoi_id | uuid | Y |  | FK→buoi_hoc.id |
+| created_at | timestamp with time zone |  | now() |  |
+
+## canh_bao_yeu
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |
+| ma_dang | text |  |  |  |
+| buoi_hoc_id | uuid | Y |  | FK→buoi_hoc.id |
+| nguon | text |  | 'btvn'::text |  |
+| ghi_chu | text | Y |  |  |
+| created_by | uuid | Y |  |  |
 | created_at | timestamp with time zone |  | now() |  |
 
 ## dai_ban_do

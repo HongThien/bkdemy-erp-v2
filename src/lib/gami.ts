@@ -2,7 +2,7 @@
 // UI chỉ gọi qua đây. Engine thuần ở src/gami/*.js (đã test). Buổi pure-derive: đẻ dòng khi MỞ.
 import { supabase } from './supabase'
 import { getMyProfile } from './nhansu'
-import { getETByBuoi, getETCaus } from './tailieu'
+import { getETByBuoi, getETCaus, getBTVNByBuoi, getBTVNCaus } from './tailieu'
 import type { CauHoi } from './kho/api'
 import { computeEloUpdate } from '../gami/elo.js'
 import { problemPoints, expForRank, rankSession } from '../gami/exp.js'
@@ -17,13 +17,13 @@ function vnToday(): string {
   return `${vn.getUTCFullYear()}-${String(vn.getUTCMonth() + 1).padStart(2, '0')}-${String(vn.getUTCDate()).padStart(2, '0')}`
 }
 
-export type Phase = 'ingame' | 'et' | 'mt'
+export type Phase = 'ingame' | 'et' | 'mt' | 'btvn'
 export type DiemDanh = 'co_mat' | 'vang' | 'vang_phep'
 export type BuoiHoc = {
   id: string; ma_buoi: string | null; loai: 'thuong' | 'bu' | 'bo_tro_yeu' | 'bo_tro_duoi' | 'mt'
   lop_id: string | null; ngay: string; thu: number | null; gio_bat_dau: string | null; gio_ket_thuc: string | null; phong: string | null
   nguoi_day: string | null; nguoi_day_tg: string | null; trang_thai: 'mo' | 'hoan_tat' | 'huy'; ly_do_huy: string | null
-  ingame_dong_at: string | null; et_dong_at: string | null; danh_gia_xong_at: string | null
+  ingame_dong_at: string | null; et_dong_at: string | null; danh_gia_xong_at: string | null; btvn_dong_at?: string | null
 }
 export type BuoiHocHS = { id: string; buoi_hoc_id: string; hoc_sinh_id: string; diem_danh: DiemDanh | null; bu_cho_buoi_id: string | null; hoc_sinh?: { ho_ten: string; ma_hs: string | null; anh_url: string | null } }
 export type Problem = { id: string; buoi_hoc_id: string; phase: Phase; problem_no: number; hidden: boolean; ma_dang: string | null }
@@ -244,6 +244,85 @@ export async function deleteGrade(problemId: string, hocSinhId: string): Promise
   if (error) throw error
 }
 
+// ════════════════════ BTVN (chấm buổi sau) ════════════════════
+// Câu BTVN = doc loai='btvn' của buổi (lớp+ngày). Chấm Đ/C/S per-câu NHƯ ET (gradeET, phase='btvn'),
+// NHƯNG dữ liệu BTVN = THAM KHẢO (home/không giám sát) → KHÔNG vào mastery/Elo. Thưởng EXP hoàn thành.
+export async function loadBTVNForBuoi(buoiId: string): Promise<{ btvnId: string | null; caus: CauHoi[] }> {
+  const { data: b, error } = await supabase.from('buoi_hoc').select('lop_id, ngay').eq('id', buoiId).single()
+  if (error) throw error
+  const lopId = (b as any).lop_id as string | null
+  if (!lopId) return { btvnId: null, caus: [] }
+  const doc = await getBTVNByBuoi(lopId, (b as any).ngay)
+  if (!doc) return { btvnId: null, caus: [] }
+  return { btvnId: doc.id, caus: await getBTVNCaus(doc.id) }
+}
+export async function ensureBTVNProblems(buoiId: string, caus: CauHoi[]): Promise<void> {
+  const cur = await listProblems(buoiId, 'btvn')
+  if (cur.length || !caus.length) return
+  const rows = caus.map((c, i) => ({ buoi_hoc_id: buoiId, phase: 'btvn', problem_no: i + 1, ma_dang: c.dang_chinh ?? null }))
+  const { error } = await supabase.from('gami_session_problems').upsert(rows, { onConflict: 'buoi_hoc_id,phase,problem_no', ignoreDuplicates: true })
+  if (error) throw error
+}
+
+// Trạng thái nộp + thái độ (per HS×buổi) — btvn_ket_qua. Upsert idempotent.
+export type BtvnTrangThai = 'nop_dung_han' | 'xin_phep' | 'khong_lam' | 'nop_muon'
+export type BtvnThaiDo = 'nghiem_tuc' | 'chua_het_suc' | 'chua_nghiem_tuc' | 'chong_doi'
+export type BtvnKQ = { trang_thai_nop: string | null; thai_do: string | null }
+export async function getBtvnKetQua(buoiId: string): Promise<Record<string, BtvnKQ>> {
+  const { data, error } = await supabase.from('btvn_ket_qua').select('hoc_sinh_id, trang_thai_nop, thai_do').eq('buoi_hoc_id', buoiId).limit(LIMIT)
+  if (error) throw error
+  const m: Record<string, BtvnKQ> = {}
+  for (const r of (data ?? []) as any[]) m[r.hoc_sinh_id] = { trang_thai_nop: r.trang_thai_nop, thai_do: r.thai_do }
+  return m
+}
+export async function setBtvnKetQua(buoiId: string, hocSinhId: string, patch: Partial<BtvnKQ>): Promise<void> {
+  const { error } = await supabase.from('btvn_ket_qua').upsert(
+    { buoi_hoc_id: buoiId, hoc_sinh_id: hocSinhId, ...patch, updated_at: new Date().toISOString() },
+    { onConflict: 'hoc_sinh_id,buoi_hoc_id' })
+  if (error) throw error
+}
+
+// CẢNH BÁO "HS kém dạng" — tín hiệu NGƯỜI-CONFIRM (tin), nguồn hỗ trợ. Append; gỡ được nếu bấm nhầm.
+export type CanhBao = { id: string; hoc_sinh_id: string; ma_dang: string; ghi_chu: string | null }
+export async function listCanhBao(buoiId: string): Promise<CanhBao[]> {
+  const { data, error } = await supabase.from('canh_bao_yeu').select('id, hoc_sinh_id, ma_dang, ghi_chu').eq('buoi_hoc_id', buoiId).limit(LIMIT)
+  if (error) throw error
+  return (data ?? []) as CanhBao[]
+}
+export async function themCanhBao(p: { buoiId: string; hocSinhId: string; maDang: string; ghiChu?: string }): Promise<void> {
+  const { data: { user } } = await supabase.auth.getUser()
+  const { error } = await supabase.from('canh_bao_yeu').insert({ buoi_hoc_id: p.buoiId, hoc_sinh_id: p.hocSinhId, ma_dang: p.maDang, ghi_chu: p.ghiChu ?? null, nguon: 'btvn', created_by: user?.id ?? null })
+  if (error) throw error
+}
+export async function xoaCanhBao(id: string): Promise<void> {
+  const { error } = await supabase.from('canh_bao_yeu').delete().eq('id', id)
+  if (error) throw error
+}
+
+// Đóng BTVN: thưởng EXP HOÀN THÀNH theo trạng thái nộp (KHÔNG Elo, KHÔNG gate hoàn-tất buổi). Idempotent (claim btvn_dong_at).
+const BTVN_EXP: Record<string, number> = { nop_dung_han: 200, nop_muon: 100, xin_phep: 50, khong_lam: 0 } // PROVISIONAL
+export async function closeBTVN(buoiId: string): Promise<{ already?: boolean; thuong: number }> {
+  const { data: b, error } = await supabase.from('buoi_hoc').select('btvn_dong_at, lop_id').eq('id', buoiId).single()
+  if (error) throw error
+  if ((b as any).btvn_dong_at) return { already: true, thuong: 0 }
+  const claim = await supabase.from('buoi_hoc').update({ btvn_dong_at: new Date().toISOString(), updated_at: new Date().toISOString() }).eq('id', buoiId).is('btvn_dong_at', null).select('id')
+  if (claim.error) throw claim.error
+  if (!claim.data?.length) return { already: true, thuong: 0 }
+  const { data: lopRow } = await supabase.from('lop').select('mon').eq('id', (b as any).lop_id).maybeSingle()
+  const mon = (lopRow as any)?.mon ?? 'Toán'
+  const kq = await getBtvnKetQua(buoiId)
+  let thuong = 0
+  for (const [hsId, v] of Object.entries(kq)) {
+    const exp = BTVN_EXP[v.trang_thai_nop ?? ''] ?? 0
+    if (exp > 0) { await supabase.from('gami_exp_ledger').insert({ hoc_sinh_id: hsId, source: 'btvn', amount: exp, ref_buoi_hoc_id: buoiId, mon }); thuong++ }
+  }
+  return { thuong }
+}
+export async function reopenBTVN(buoiId: string): Promise<void> {
+  await supabase.from('gami_exp_ledger').delete().eq('ref_buoi_hoc_id', buoiId).eq('source', 'btvn')
+  await supabase.from('buoi_hoc').update({ btvn_dong_at: null, updated_at: new Date().toISOString() }).eq('id', buoiId)
+}
+
 // ── BẢNG TÍNH ELO 1 phase (đọc lại từ history — kiểm tra/quản lý sau khi đóng) ──
 // Hiện đủ: điểm thô · kỳ vọng E · thực tế A · Δ=K(A−E) · Elo trước→sau · +EXP. Sắp theo điểm thô (hạng).
 export type EloBreakdown = { hoc_sinh_id: string; ho_ten: string; points: number; expected: number; actual: number; delta: number; eloBefore: number; eloAfter: number; exp: number; rank: number; coElo: boolean }
@@ -335,7 +414,7 @@ export async function closePhase(buoiId: string, phase: Phase): Promise<{ alread
     // EXP theo hạng. CÔNG BẰNG khi HOÀ: cùng điểm thô = cùng EXP = TRUNG BÌNH bậc EXP các vị trí nhóm chiếm.
     const deltaMap = new Map(updates.map((u: any) => [u.studentId, u]))
     const grp = new Map<number, number[]>()
-    for (const r of ranks) { const p = raw[r.studentId]; (grp.get(p) ?? grp.set(p, []).get(p))!.push(expForRank(r.rank, hsIds.length, RANK_EXP[phase])) }
+    for (const r of ranks) { const p = raw[r.studentId]; (grp.get(p) ?? grp.set(p, []).get(p))!.push(expForRank(r.rank, hsIds.length, (RANK_EXP as Record<string, number[]>)[phase])) }
     const expByPoints = new Map<number, number>()
     for (const [p, arr] of grp) expByPoints.set(p, Math.round(arr.reduce((s, x) => s + x, 0) / arr.length))
     for (const r of ranks) {
@@ -414,11 +493,11 @@ export async function setDanhGiaDang(buoiId: string, hsId: string, maDang: strin
 // ── VIỆC CỦA TÔI (task-derive cho GV/TG) ──────────────────────────
 // Pure-derive (§4): buổi đang mở của lớp tôi phụ trách → task theo vai (KHÔNG đẻ row task).
 //   GV → đánh giá sau buổi + chấm bài trên lớp · TG → chấm bài trên lớp + chấm ET.
-export type TabKey = 'diemdanh' | 'danhgia' | 'ingame' | 'et'
+export type TabKey = 'diemdanh' | 'danhgia' | 'ingame' | 'et' | 'btvn'
 export type MyTask = { buoiId: string; lop: string; ngay: string; vai: 'gv' | 'tg'; tab: TabKey; label: string; done: boolean }
 const TASKS_BY_VAI: Record<'gv' | 'tg', { tab: TabKey; label: string }[]> = {
   gv: [{ tab: 'danhgia', label: 'Đánh giá sau buổi' }, { tab: 'ingame', label: 'Chấm bài trên lớp' }],
-  tg: [{ tab: 'ingame', label: 'Chấm bài trên lớp' }, { tab: 'et', label: 'Chấm ET' }],
+  tg: [{ tab: 'ingame', label: 'Chấm bài trên lớp' }, { tab: 'et', label: 'Chấm ET' }, { tab: 'btvn', label: 'Chấm BTVN' }],
 }
 export async function getMyTasks(): Promise<MyTask[]> {
   const prof = await getMyProfile()
@@ -434,12 +513,12 @@ export async function getMyTasks(): Promise<MyTask[]> {
   if (!lopIds.length) return []
   // mo + hoan_tat (bỏ huy): task XONG vẫn trả về (cờ done) để hiện ở nhóm "Đã xong" — mở lại xem/sửa được.
   const { data: buois, error } = await supabase.from('buoi_hoc')
-    .select('id, lop_id, ngay, ingame_dong_at, et_dong_at, danh_gia_xong_at, lop:lop_id(ten_lop)').neq('trang_thai', 'huy').eq('loai', 'thuong').in('lop_id', lopIds).order('ngay').limit(LIMIT)
+    .select('id, lop_id, ngay, ingame_dong_at, et_dong_at, danh_gia_xong_at, btvn_dong_at, lop:lop_id(ten_lop)').neq('trang_thai', 'huy').eq('loai', 'thuong').in('lop_id', lopIds).order('ngay').limit(LIMIT)
   if (error) throw error
   const out: MyTask[] = []
   for (const b of (buois ?? []) as any[]) {
-    // mỗi task có mốc HOÀN THÀNH riêng: chấm bài (ingame đóng) · đánh giá (bấm "Hoàn thành đánh giá") · ET (et đóng).
-    const doneTab: Record<TabKey, boolean> = { diemdanh: false, ingame: !!b.ingame_dong_at, danhgia: !!b.danh_gia_xong_at, et: !!b.et_dong_at }
+    // mỗi task có mốc HOÀN THÀNH riêng: chấm bài (ingame đóng) · đánh giá (bấm "Hoàn thành") · ET (et đóng) · BTVN (btvn đóng).
+    const doneTab: Record<TabKey, boolean> = { diemdanh: false, ingame: !!b.ingame_dong_at, danhgia: !!b.danh_gia_xong_at, et: !!b.et_dong_at, btvn: !!b.btvn_dong_at }
     const roles = rolesByLop.get(b.lop_id)!
     const seen = new Set<TabKey>() // dedup tab trùng (chấm bài có ở cả gv lẫn tg)
     for (const vai of ['gv', 'tg'] as const) {
