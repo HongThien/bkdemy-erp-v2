@@ -116,6 +116,7 @@ export default function DangHub({ d, config, chuan, onClose, onEditDang, onDelet
                             <Code>{c.ma_cau}</Code>
                             <span className="rounded bg-slate-100 px-2 py-0.5 text-[12px] font-medium text-slate-600">{loaiLabel(c.loai_cau)}</span>
                             <span className={`rounded px-2 py-0.5 text-[12px] font-medium ${c.nguon === 'clone' ? 'bg-violet-50 text-violet-600' : 'bg-emerald-50 text-emerald-600'}`}>{c.nguon === 'clone' ? 'clone' : 'gốc'}</span>
+                            {c.nguon_giai === 'ai' && <span className="rounded bg-amber-50 px-2 py-0.5 text-[12px] font-medium text-amber-700" title="Lời giải do AI tạo — cần duyệt">🤖 AI giải</span>}
                           </div>
                           <div className="flex gap-3">
                             <button onClick={() => setCauModal({ editing: c })} className="text-[13px] font-medium text-slate-500 hover:text-indigo-600">Sửa</button>
@@ -196,11 +197,11 @@ function CauModal({ editing, onClose, onSaved }: { editing: CauHoi; onClose: () 
 }
 
 // ── NHẬP KHO (AI) — 1 màn: nhập (manual JSON / auto ảnh) → preview gốc trái → Clone → biến thể phải ──
-type ReviewItem = { noi_dung: string; dap_an: string; loi_giai: string; luaChon: string[] | null; anhDe: string | null; anhDapAn: string | null; approved: boolean; isGoc: boolean }
+type ReviewItem = { noi_dung: string; dap_an: string; loi_giai: string; luaChon: string[] | null; anhDe: string | null; anhDapAn: string | null; nguonGiai: string; approved: boolean; isGoc: boolean }
 type UpFile = { name: string; mimeType: string; dataBase64: string; isImage: boolean }
-const toCND = (r: ReviewItem) => ({ noi_dung: r.noi_dung.trim(), dap_an: r.dap_an.trim() || null, loi_giai: r.loi_giai.trim() || null, lua_chon: r.luaChon && r.luaChon.length ? r.luaChon : null, anh_de: r.anhDe, anh_dap_an: r.anhDapAn })
+const toCND = (r: ReviewItem) => ({ noi_dung: r.noi_dung.trim(), dap_an: r.dap_an.trim() || null, loi_giai: r.loi_giai.trim() || null, lua_chon: r.luaChon && r.luaChon.length ? r.luaChon : null, anh_de: r.anhDe, anh_dap_an: r.anhDapAn, nguon_giai: r.nguonGiai })
 const toRI = (c: { noi_dung: string; dap_an: string | null; loi_giai: string | null; lua_chon?: string[] | null; anh_de?: string | null; anh_dap_an?: string | null }, isGoc = false): ReviewItem =>
-  ({ noi_dung: c.noi_dung, dap_an: c.dap_an ?? '', loi_giai: c.loi_giai ?? '', luaChon: c.lua_chon ?? null, anhDe: c.anh_de ?? null, anhDapAn: c.anh_dap_an ?? null, approved: true, isGoc })
+  ({ noi_dung: c.noi_dung, dap_an: c.dap_an ?? '', loi_giai: c.loi_giai ?? '', luaChon: c.lua_chon ?? null, anhDe: c.anh_de ?? null, anhDapAn: c.anh_dap_an ?? null, nguonGiai: 'nguoi', approved: true, isGoc })
 const MODELS = [
   { value: 'gemini-2.5-flash-lite', label: 'Flash-Lite', sub: 'nhanh nhất' },
   { value: 'gemini-2.5-flash', label: 'Flash', sub: 'cân bằng (đề xuất)' },
@@ -226,6 +227,7 @@ function AiImportModal({ mode, dangChinh, tenDang, onClose, onSaved }: {
   const [soBienThe, setSoBienThe] = useState(5)
   const [model, setModel] = useState('gemini-2.5-flash')
   const [hasHinh, setHasHinh] = useState(true) // batch auto: tài liệu có hình → cắt hình; tắt → tách chữ thuần (rẻ/nhanh)
+  const [giaiAI, setGiaiAI] = useState(false)  // batch auto: false = bóc lời giải có sẵn (người); true = AI tự giải (cần duyệt)
   const [json, setJson] = useState('')
   const [files, setFiles] = useState<UpFile[]>([])
   const [shareImgDe, setShareImgDe] = useState<string | null>(null) // ảnh đề dùng chung: gắn cho gốc + MỌI biến thể (dán 1 lần)
@@ -245,7 +247,7 @@ function AiImportModal({ mode, dangChinh, tenDang, onClose, onSaved }: {
 
   const buildPrompt = () => isClone
     ? buildClonePrompt({ soBienThe, ghiChu: ghiChu.trim(), tenDang, loaiCau: loai })
-    : buildBatchPrompt({ ghiChu: ghiChu.trim(), tenDang, loaiCau: loai })
+    : buildBatchPrompt({ ghiChu: ghiChu.trim(), tenDang, loaiCau: loai, giaiAI })
   const effPrompt = () => (promptTouched ? promptDraft : buildPrompt())
 
   function applyJson(text: string) {
@@ -257,10 +259,10 @@ function AiImportModal({ mode, dangChinh, tenDang, onClose, onSaved }: {
         const { goc, variants } = parseCloneJson(text)
         const capped = variants.slice(0, soBienThe) // AI hay sinh DƯ → cap cứng theo số đã chọn
         const withImg = (ri: ReviewItem) => (shareImgDe && !ri.anhDe ? { ...ri, anhDe: shareImgDe } : ri) // gắn ảnh đề chung
-        setGoc(withImg(toRI(goc, true))); setItems(capped.map((v) => withImg(toRI(v)))); setShowVariants(false); setVi(0)
+        setGoc(withImg(toRI(goc, true))); setItems(capped.map((v) => withImg({ ...toRI(v), nguonGiai: 'ai' }))); setShowVariants(false); setVi(0) // biến thể = AI giải
         if (variants.length > soBienThe) note = `AI sinh ${variants.length} biến thể → đã lấy ${soBienThe} đầu (đúng số bạn chọn).`
       } else {
-        setGoc(null); setItems(parseBatchJson(text).map((v) => toRI(v))); setVi(0)
+        setGoc(null); setItems(parseBatchJson(text).map((v) => ({ ...toRI(v), nguonGiai: giaiAI ? 'ai' : 'nguoi' }))); setVi(0)
       }
       setParseErr(note)
     } catch (e: any) { setGoc(null); setItems([]); setParseErr(e.message ?? String(e)) }
@@ -299,7 +301,8 @@ function AiImportModal({ mode, dangChinh, tenDang, onClose, onSaved }: {
     // Pro chỉ hợp lệ ở luồng OCR khó (batch). Vụ cháy 920k là do clone lỡ chạy Pro → ép Flash.
     // CLONE = generation (cần suy luận) → Flash + thinking; NHẬP CHUỖI chữ thuần = extraction → 0, gửi cả file 1 call.
     const safeModel = isClone && model.includes('pro') ? 'gemini-2.5-flash' : model
-    try { applyJson(await callGeminiJson(effPrompt(), { model: safeModel, think: isClone ? 8192 : 0, schema: isClone ? CLONE_SCHEMA : BATCH_SCHEMA, files: files.map((f) => ({ mimeType: f.mimeType, dataBase64: f.dataBase64 })) })) }
+    // bật suy luận khi GENERATION: clone, hoặc batch "AI tự giải". Bóc-nguyên = extraction → 0.
+    try { applyJson(await callGeminiJson(effPrompt(), { model: safeModel, think: (isClone || giaiAI) ? 8192 : 0, schema: isClone ? CLONE_SCHEMA : BATCH_SCHEMA, files: files.map((f) => ({ mimeType: f.mimeType, dataBase64: f.dataBase64 })) })) }
     catch (e: any) { setError(e.message ?? String(e)) } finally { setBusy(false) }
   }
   // NHẬP CHUỖI CÂU từ ảnh/PDF = nhập chuỗi câu + PHÂN TÍCH HÌNH: render trang DPI cao → AI tách câu + bbox hình
@@ -310,11 +313,11 @@ function AiImportModal({ mode, dangChinh, tenDang, onClose, onSaved }: {
       const acc: ReviewItem[] = []
       for (const f of files) {
         for (const c of await fileToCanvases(f.mimeType, f.dataBase64)) {
-          const { text } = await callGeminiRich(buildIngestPrompt({ tenDang, loaiCau: loai }), { model, schema: INGEST_SCHEMA, think: 0, files: [{ mimeType: 'image/jpeg', dataBase64: canvasToJpegBase64(c) }] })
+          const { text } = await callGeminiRich(buildIngestPrompt({ tenDang, loaiCau: loai, giaiAI }), { model, schema: INGEST_SCHEMA, think: giaiAI ? 8192 : 0, files: [{ mimeType: 'image/jpeg', dataBase64: canvasToJpegBase64(c) }] })
           for (const cau of parseIngestJson(text)) {
             let anhDe: string | null = null
             if (cau.coHinh && cau.box) { const blob = await (await fetch(cropCanvasBox(c, cau.box))).blob(); anhDe = await uploadKhoImage(new File([blob], 'fig.png', { type: 'image/png' })) }
-            acc.push({ noi_dung: cau.noi_dung, dap_an: cau.dap_an ?? '', loi_giai: cau.loi_giai ?? '', luaChon: cau.lua_chon ?? null, anhDe, anhDapAn: null, approved: true, isGoc: false })
+            acc.push({ noi_dung: cau.noi_dung, dap_an: cau.dap_an ?? '', loi_giai: cau.loi_giai ?? '', luaChon: cau.lua_chon ?? null, anhDe, anhDapAn: null, nguonGiai: giaiAI ? 'ai' : 'nguoi', approved: true, isGoc: false })
           }
         }
       }
@@ -347,7 +350,7 @@ function AiImportModal({ mode, dangChinh, tenDang, onClose, onSaved }: {
   }
 
   // Người tự chốt ranh giới câu (sửa khi AI tách lệch)
-  const blank = (): ReviewItem => ({ noi_dung: '', dap_an: '', loi_giai: '', luaChon: null, anhDe: null, anhDapAn: null, approved: true, isGoc: false })
+  const blank = (): ReviewItem => ({ noi_dung: '', dap_an: '', loi_giai: '', luaChon: null, anhDe: null, anhDapAn: null, nguonGiai: 'nguoi', approved: true, isGoc: false })
   const patchItem = (i: number, p: Partial<ReviewItem>) => setItems((a) => a.map((x, idx) => (idx === i ? { ...x, ...p } : x)))
   const removeItem = (i: number) => setItems((a) => a.filter((_, idx) => idx !== i))
   const insertAfter = (i: number) => setItems((a) => [...a.slice(0, i + 1), blank(), ...a.slice(i + 1)])
@@ -440,6 +443,14 @@ function AiImportModal({ mode, dangChinh, tenDang, onClose, onSaved }: {
                       </div>
                     ))}
                   </div>
+                )}
+                {!isClone && (
+                  <Cell label="Lời giải">
+                    <div className="flex h-[34px] gap-0.5 rounded-md bg-slate-100 p-0.5" title="Bóc sẵn = tài liệu CÓ lời giải, chỉ bóc (người giải). AI giải = tài liệu chỉ có đề/đáp án, AI tự giải (cần duyệt).">
+                      <button onClick={() => setGiaiAI(false)} className={`rounded px-2 text-[12px] font-medium ${!giaiAI ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500'}`}>📄 Bóc sẵn</button>
+                      <button onClick={() => setGiaiAI(true)} className={`rounded px-2 text-[12px] font-medium ${giaiAI ? 'bg-white text-violet-700 shadow-sm' : 'text-slate-500'}`}>🤖 AI giải</button>
+                    </div>
+                  </Cell>
                 )}
                 {!isClone && (
                   <label className="flex h-[34px] shrink-0 cursor-pointer items-center gap-1.5 rounded-md border border-slate-200 bg-white px-2.5 text-[13px] font-medium text-slate-600" title="Có hình → render trang & tự cắt hình (mỗi trang 1 lần gọi); Tắt → tách chữ thuần (rẻ/nhanh hơn)">

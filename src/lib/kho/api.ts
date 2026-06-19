@@ -65,6 +65,7 @@ export type CauHoi = {
   anh_de: string | null
   anh_dap_an: string | null
   nguon: string                 // 'le' | 'clone'
+  nguon_giai: string            // 'nguoi' (tin) | 'ai' (AI giải/clone — cần duyệt)
   parent_ma_cau: string | null
   clone_method: string | null
   created_at?: string
@@ -81,7 +82,7 @@ type CauInput = {
   dang_chinh: string; loai_cau: string; noi_dung: string
   dap_an: string | null; loi_giai: string | null; lua_chon?: string[] | null
   anh_de?: string | null; anh_dap_an?: string | null
-  nguon?: string; parent_ma_cau?: string | null; clone_method?: string | null
+  nguon?: string; nguon_giai?: string; parent_ma_cau?: string | null; clone_method?: string | null
 }
 export async function createCau(input: CauInput): Promise<CauHoi> {
   const { data, error } = await supabase.from('dai_cau_hoi').insert(input).select().single()
@@ -130,7 +131,7 @@ async function nextCauSeq(dangChinh: string): Promise<number> {
 }
 
 // ── CLONE: prompt + parse JSON + lưu batch (gốc 'le' + biến thể 'clone') ──
-type CauNoiDung = { noi_dung: string; dap_an: string | null; loi_giai: string | null; lua_chon?: string[] | null; anh_de?: string | null; anh_dap_an?: string | null }
+type CauNoiDung = { noi_dung: string; dap_an: string | null; loi_giai: string | null; lua_chon?: string[] | null; anh_de?: string | null; anh_dap_an?: string | null; nguon_giai?: string }
 const loaiVi = (v: string): string => ({ tra_loi_ngan: 'Trả lời ngắn', tu_luan: 'Tự luận', trac_nghiem: 'Trắc nghiệm 4 phương án', dung_sai: 'Đúng/Sai' } as Record<string, string>)[v] ?? v
 // Trường JSON + quy tắc đáp án theo LOẠI câu
 function loaiFields(loaiCau: string): { spec: string; obj: string; ruleDapAn: string } {
@@ -220,6 +221,7 @@ export async function saveCloneBatch(a: {
     dang_chinh: a.dangChinh, loai_cau: a.loaiCau,
     noi_dung: a.goc.noi_dung, dap_an: a.goc.dap_an, loi_giai: a.goc.loi_giai, lua_chon: a.goc.lua_chon ?? null,
     anh_de: a.goc.anh_de ?? null, anh_dap_an: a.goc.anh_dap_an ?? null, nguon: 'le',
+    nguon_giai: a.goc.nguon_giai ?? 'nguoi', // gốc = người ra đề (tin)
   })
   if (a.variants.length) {
     const rows = a.variants.map((v, i) => ({
@@ -227,7 +229,7 @@ export async function saveCloneBatch(a: {
       dang_chinh: a.dangChinh, loai_cau: a.loaiCau,
       noi_dung: v.noi_dung, dap_an: v.dap_an, loi_giai: v.loi_giai, lua_chon: v.lua_chon ?? null,
       anh_de: v.anh_de ?? null, anh_dap_an: v.anh_dap_an ?? null,
-      nguon: 'clone', parent_ma_cau: g.ma_cau, clone_method: 'manual_gemini',
+      nguon: 'clone', nguon_giai: 'ai', parent_ma_cau: g.ma_cau, clone_method: 'manual_gemini', // biến thể = AI giải
     }))
     const { error } = await supabase.from('dai_cau_hoi').insert(rows)
     if (error) throw error
@@ -236,7 +238,11 @@ export async function saveCloneBatch(a: {
 }
 
 // ── NHẬP CHUỖI CÂU CÓ SẴN (batch): prompt tách + parse + lưu (tất cả 'le') ──
-export function buildBatchPrompt(a: { ghiChu: string; tenDang: string; loaiCau: string }): string {
+// Luật lời giải theo 2 luồng: bóc-nguyên (người, tin) vs AI-tự-giải (cần duyệt).
+const giaiRule = (giaiAI?: boolean) => giaiAI
+  ? '⚠ LỜI GIẢI: tài liệu KHÔNG có lời giải sẵn → HÃY TỰ GIẢI chi tiết, đúng & gọn, BÁM "dap_an" có sẵn nếu có; trình bày từng bước. (Lời giải AI sẽ được người DUYỆT lại.)'
+  : '⚠ LỜI GIẢI: CHỈ bóc lời giải CÓ SẴN trong tài liệu — TUYỆT ĐỐI KHÔNG tự giải/sửa/bịa. Câu nào tài liệu không có lời giải → để "loi_giai" RỖNG (chuỗi rỗng).'
+export function buildBatchPrompt(a: { ghiChu: string; tenDang: string; loaiCau: string; giaiAI?: boolean }): string {
   const f = loaiFields(a.loaiCau)
   return [
     'Bạn là trợ lý số hoá đề toán. Bên dưới tôi paste MỘT DANH SÁCH câu hỏi cùng một dạng.',
@@ -249,6 +255,7 @@ export function buildBatchPrompt(a: { ghiChu: string; tenDang: string; loaiCau: 
     `Mỗi câu gồm các trường: ${f.spec}.`,
     a.ghiChu ? `Ghi chú: ${a.ghiChu}` : '',
     '',
+    giaiRule(a.giaiAI),
     f.ruleDapAn,
     FMT_RULES,
     '',
@@ -302,7 +309,7 @@ export async function saveCauBatch(a: { dangChinh: string; loaiCau: string; item
     ma_cau: maCau(a.dangChinh, start + i),
     dang_chinh: a.dangChinh, loai_cau: a.loaiCau,
     noi_dung: v.noi_dung, dap_an: v.dap_an, loi_giai: v.loi_giai, lua_chon: v.lua_chon ?? null,
-    anh_de: v.anh_de ?? null, anh_dap_an: v.anh_dap_an ?? null, nguon: 'le',
+    anh_de: v.anh_de ?? null, anh_dap_an: v.anh_dap_an ?? null, nguon: 'le', nguon_giai: v.nguon_giai ?? 'nguoi',
   }))
   const { error } = await supabase.from('dai_cau_hoi').insert(rows)
   if (error) throw error
@@ -422,7 +429,7 @@ export const INGEST_SCHEMA = {
   },
   required: ['cau'],
 }
-export function buildIngestPrompt(a: { tenDang?: string; loaiCau?: string }): string {
+export function buildIngestPrompt(a: { tenDang?: string; loaiCau?: string; giaiAI?: boolean }): string {
   const f = loaiFields(a.loaiCau || 'tu_luan')
   return [
     'Đây là ẢNH 1 TRANG tài liệu toán. TÁCH thành từng CÂU HỎI theo thứ tự xuất hiện (mỗi bài = 1 câu, KHÔNG tách ý a/b/c).',
@@ -430,6 +437,7 @@ export function buildIngestPrompt(a: { tenDang?: string; loaiCau?: string }): st
     `Mỗi câu gồm: ${f.spec}.`,
     '⚠ MỖI câu thêm 2 trường HÌNH: "co_hinh" (true nếu câu có HÌNH VẼ/SƠ ĐỒ/ĐỒ THỊ cần giữ làm ảnh — KHÔNG tính bảng số) và "box_hinh" = [ymin,xmin,ymax,xmax] toạ độ CHUẨN HOÁ 0–1000 của vùng hình (ôm TRỌN hình, chừa lề nhỏ) — CHỈ trả khi co_hinh=true, nếu không thì box_hinh=null.',
     'BẢNG số liệu → viết bằng LaTeX $\\begin{array}{…}…\\end{array}$ trong de_bai (KHÔNG coi là hình).',
+    giaiRule(a.giaiAI),
     f.ruleDapAn,
     FMT_RULES,
     'Trả JSON: { "cau": [ { "de_bai":"…", "dap_an":"…", "loi_giai":"…", "lua_chon":["…"], "co_hinh": false, "box_hinh": null } ] }',

@@ -111,6 +111,7 @@
 | nguon | text |  | 'le'::text |  |
 | parent_ma_cau | text | Y |  | FK→dai_cau_hoi.ma_cau |
 | clone_method | text | Y |  |  |
+| nguon_giai | text |  | 'nguoi'::text |  |
 
 ## dai_chuyen_de_ly_thuyet
 
