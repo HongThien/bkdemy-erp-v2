@@ -3,11 +3,11 @@ import {
   listCauByDang, updateCau, deleteCau,
   buildClonePrompt, parseCloneJson, saveCloneBatch,
   buildBatchPrompt, parseBatchJson, parseStructuredText, saveCauBatch, callGeminiJson,
-  CLONE_SCHEMA, BATCH_SCHEMA,
+  CLONE_SCHEMA, callGeminiRich, buildIngestPrompt, parseIngestJson, INGEST_SCHEMA,
   uploadKhoImage, LOAI_CAU, type CauHoi, type MapRow,
 } from '../../lib/kho/api'
+import { fileToCanvases, canvasToJpegBase64, cropCanvasBox } from '../../lib/pdfRender'
 import PdfCropper from '../../components/PdfCropper'
-import IngestSpike from './IngestSpike'
 
 const SAMPLE_TEXT = `Câu 1.
 Đề bài: Tìm số tự nhiên nhỏ nhất chia hết cho cả 3 và 5.
@@ -34,7 +34,7 @@ export default function DangHub({ d, config, chuan, onClose, onEditDang, onDelet
   const [loading, setLoading] = useState(isDai)
   const [err, setErr] = useState<string | null>(null)
   const [cauModal, setCauModal] = useState<null | { editing: CauHoi }>(null)
-  const [importMode, setImportMode] = useState<'clone' | 'batch' | 'ingest' | null>(null)
+  const [importMode, setImportMode] = useState<'clone' | 'batch' | null>(null)
   const tone = mucDoTone(d.mucDo)
 
   async function reload() {
@@ -90,8 +90,7 @@ export default function DangHub({ d, config, chuan, onClose, onEditDang, onDelet
                 </div>
                 <div className="flex gap-2">
                   <button onClick={() => setImportMode('clone')} className="rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500">✨ Clone biến thể</button>
-                  <button onClick={() => setImportMode('batch')} className="rounded-md border border-indigo-200 bg-indigo-50 px-3 py-1.5 text-[13px] font-medium text-indigo-700 hover:bg-indigo-100">📥 Nhập chuỗi câu</button>
-                  <button onClick={() => setImportMode('ingest')} className="rounded-md border border-violet-300 bg-violet-50 px-3 py-1.5 text-[13px] font-medium text-violet-700 hover:bg-violet-100" title="Thử: AI tự dò câu + cắt hình cả trang (đo chi phí)">🧪 Nhập tự động (thử)</button>
+                  <button onClick={() => setImportMode('batch')} className="rounded-md border border-indigo-200 bg-indigo-50 px-3 py-1.5 text-[13px] font-medium text-indigo-700 hover:bg-indigo-100" title="Dán văn bản / JSON, HOẶC ảnh-PDF (tự tách câu + cắt hình)">📥 Nhập chuỗi câu</button>
                 </div>
               </div>
 
@@ -146,13 +145,9 @@ export default function DangHub({ d, config, chuan, onClose, onEditDang, onDelet
       {cauModal && (
         <CauModal editing={cauModal.editing} onClose={() => setCauModal(null)} onSaved={async () => { setCauModal(null); await reload() }} />
       )}
-      {(importMode === 'clone' || importMode === 'batch') && (
+      {importMode && (
         <AiImportModal mode={importMode} dangChinh={d.leafMa} tenDang={d.leafTen}
           onClose={() => setImportMode(null)} onSaved={async () => { setImportMode(null); await reload() }} />
-      )}
-      {importMode === 'ingest' && (
-        <IngestSpike dangChinh={d.leafMa} tenDang={d.leafTen} loaiCau="tu_luan"
-          onClose={() => setImportMode(null)} onSaved={async () => { await reload() }} />
       )}
     </div>
   )
@@ -301,10 +296,30 @@ function AiImportModal({ mode, dangChinh, tenDang, onClose, onSaved }: {
     setError(null); setBusy(true)
     // ⚠ CAP CỨNG Ở CODE (đừng tin UI): CLONE = đẻ biến thể từ text, KHÔNG bao giờ cần Pro.
     // Pro chỉ hợp lệ ở luồng OCR khó (batch). Vụ cháy 920k là do clone lỡ chạy Pro → ép Flash.
-    const safeModel = isClone && model.includes('pro') ? 'gemini-2.5-flash' : model
-    // CLONE = generation (cần suy luận để giải đúng + số đẹp) → bật thinking; NHẬP CHUỖI = extraction → 0.
-    try { applyJson(await callGeminiJson(effPrompt(), { model: safeModel, think: isClone ? 8192 : 0, schema: isClone ? CLONE_SCHEMA : BATCH_SCHEMA, files: files.map((f) => ({ mimeType: f.mimeType, dataBase64: f.dataBase64 })) })) }
+    const safeModel = model.includes('pro') ? 'gemini-2.5-flash' : model
+    // CLONE = generation (cần suy luận để giải đúng + số đẹp) → bật thinking.
+    try { applyJson(await callGeminiJson(effPrompt(), { model: safeModel, think: 8192, schema: CLONE_SCHEMA, files: files.map((f) => ({ mimeType: f.mimeType, dataBase64: f.dataBase64 })) })) }
     catch (e: any) { setError(e.message ?? String(e)) } finally { setBusy(false) }
+  }
+  // NHẬP CHUỖI CÂU từ ảnh/PDF = nhập chuỗi câu + PHÂN TÍCH HÌNH: render trang DPI cao → AI tách câu + bbox hình
+  // → cắt hình gắn anh_de → vào ĐÚNG màn preview từng câu (CauEditor) như nhập chuỗi câu. Đa trang gộp hết.
+  async function runAutoIngest() {
+    setError(null); setParseErr(null); setBusy(true)
+    try {
+      const acc: ReviewItem[] = []
+      for (const f of files) {
+        for (const c of await fileToCanvases(f.mimeType, f.dataBase64)) {
+          const { text } = await callGeminiRich(buildIngestPrompt({ tenDang, loaiCau: loai }), { model, schema: INGEST_SCHEMA, think: 0, files: [{ mimeType: 'image/jpeg', dataBase64: canvasToJpegBase64(c) }] })
+          for (const cau of parseIngestJson(text)) {
+            let anhDe: string | null = null
+            if (cau.coHinh && cau.box) { const blob = await (await fetch(cropCanvasBox(c, cau.box))).blob(); anhDe = await uploadKhoImage(new File([blob], 'fig.png', { type: 'image/png' })) }
+            acc.push({ noi_dung: cau.noi_dung, dap_an: cau.dap_an ?? '', loi_giai: cau.loi_giai ?? '', luaChon: cau.lua_chon ?? null, anhDe, anhDapAn: null, approved: true, isGoc: false })
+          }
+        }
+      }
+      setGoc(null); setItems(acc); setVi(0)
+      if (!acc.length) setParseErr('AI không tách được câu nào — thử ảnh nét hơn / model Pro.')
+    } catch (e: any) { setError(e.message ?? String(e)) } finally { setBusy(false) }
   }
   function parseText() {
     setParseErr(null)
@@ -425,7 +440,7 @@ function AiImportModal({ mode, dangChinh, tenDang, onClose, onSaved }: {
                     ))}
                   </div>
                 )}
-                <button onClick={runAuto} disabled={!files.length || busy} className="h-[34px] rounded-md bg-indigo-600 px-4 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">{busy ? '⏳ Đang gọi…' : '🪄 Tạo bảng AI'}</button>
+                <button onClick={isClone ? runAuto : runAutoIngest} disabled={!files.length || busy} className="h-[34px] rounded-md bg-indigo-600 px-4 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40" title={isClone ? '' : 'Tách câu + tự cắt & gắn hình'}>{busy ? '⏳ Đang gọi…' : isClone ? '🪄 Tạo bảng AI' : '🪄 Tách câu + hình'}</button>
               </>
             ) : null}
           </div>
