@@ -413,6 +413,32 @@ export function parseIngestJson(text: string): IngestCau[] {
   }))
 }
 
+// ── KB4: ingest LÝ THUYẾT có hình — AI trả text + marker [[H1]].. đúng vị trí + bbox hình theo thứ tự ──
+export type TheoryIngest = { noiDung: string; hinh: { box: [number, number, number, number] | null }[] }
+export const THEORY_SCHEMA = {
+  type: 'OBJECT',
+  properties: {
+    noi_dung: { type: 'STRING' },
+    hinh: { type: 'ARRAY', items: { type: 'OBJECT', properties: { box: { type: 'ARRAY', items: { type: 'NUMBER' } } } } },
+  },
+  required: ['noi_dung'],
+}
+export function buildTheoryIngestPrompt(): string {
+  return [
+    'Đây là ẢNH 1 trang LÝ THUYẾT toán. Bóc TOÀN BỘ nội dung (định nghĩa/tính chất/ví dụ…) thành văn bản theo ĐÚNG thứ tự, đầy đủ, KHÔNG bịa thêm.',
+    '⚠ Ở MỖI vị trí xuất hiện HÌNH VẼ/SƠ ĐỒ/ĐỒ THỊ, chèn marker [[H1]], [[H2]]… (đánh số theo thứ tự xuất hiện) ĐÚNG vị trí trong văn bản — KHÔNG mô tả hình bằng chữ, chỉ đặt marker. (Bảng số liệu KHÔNG phải hình → viết bằng LaTeX $\\begin{array}{…}…\\end{array}$.)',
+    'Trường "hinh" = mảng theo ĐÚNG thứ tự H1,H2,…; mỗi phần tử { box:[ymin,xmin,ymax,xmax] } toạ độ CHUẨN HOÁ 0–1000 ôm TRỌN hình (chừa lề nhỏ).',
+    FMT_RULES,
+    'Trả JSON: { "noi_dung": "…văn bản có [[H1]]…", "hinh": [ { "box":[0,0,0,0] } ] }',
+  ].join('\n')
+}
+export function parseTheoryIngest(text: string): TheoryIngest {
+  let t = text.trim(); const fence = t.match(/```(?:json)?\s*([\s\S]*?)```/i); if (fence) t = fence[1].trim()
+  let obj: any; try { obj = lenientJsonParse(t) } catch (e: any) { throw new Error('JSON không hợp lệ: ' + e.message) }
+  const hinh = Array.isArray(obj.hinh) ? obj.hinh.map((h: any) => ({ box: Array.isArray(h?.box) && h.box.length === 4 ? (h.box.map(Number) as [number, number, number, number]) : null })) : []
+  return { noiDung: String(obj.noi_dung ?? obj.noiDung ?? '').trim(), hinh }
+}
+
 // #câu treo theo dạng (tạm group ở client; TODO: chuyển sang view Postgres khi có data lớn)
 export async function countCauByDang(): Promise<Record<string, number>> {
   const { data, error } = await supabase.from('dai_cau_hoi').select('dang_chinh').limit(LIMIT)

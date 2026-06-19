@@ -2,8 +2,10 @@ import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import {
   listLopBac, groupMap, suggestT1Ma, suggestT2Ma, suggestLeafMa, uploadKhoFile, uploadKhoImage,
   callGeminiJson, buildLyThuyetPrompt, parseLyThuyetJson,
+  callGeminiRich, buildTheoryIngestPrompt, parseTheoryIngest, THEORY_SCHEMA,
   type MapRow, type Tier1Node, type Tier2Node, type LopBac, type LyThuyet,
 } from '../../lib/kho/api'
+import { fileToCanvases, canvasToJpegBase64, cropCanvasBox } from '../../lib/pdfRender'
 import type { BranchConfig, LyThuyetApi } from './branches'
 import { BacChip, Code, inp, Shell, Field, Row, Seg, Ghost, Actions, mucDoTone, MathText, readClipboardImageFile } from './ui'
 import DangHub from './DangHub'
@@ -511,6 +513,30 @@ function LyThuyetModal({ ma, ten, current, api, allowKhongCan, onClose, onSaved 
       setNoiDung(parseLyThuyetJson(raw))
     } catch (e: any) { setError(e.message ?? String(e)) } finally { setBusy(false) }
   }
+  // KB4: bóc lý thuyết KÈM HÌNH — AI trả text + marker [[Hn]] đúng vị trí → tự cắt hình DPI cao → chèn ![](url).
+  // Xử lý TỪNG file/trang (bbox không lẫn): mỗi canvas 1 call; marker [[Hn]] map vào hinh[n-1] của canvas đó.
+  async function runAutoHinh() {
+    if (!files.length) { setError('Chọn ảnh/PDF lý thuyết trước.'); return }
+    setError(null); setBusy(true)
+    try {
+      const parts: string[] = []
+      for (const f of files) {
+        for (const c of await fileToCanvases(f.mimeType, f.dataBase64)) {
+          const { text } = await callGeminiRich(buildTheoryIngestPrompt(), { model, schema: THEORY_SCHEMA, files: [{ mimeType: 'image/jpeg', dataBase64: canvasToJpegBase64(c) }] })
+          const { noiDung, hinh } = parseTheoryIngest(text)
+          let nd = noiDung
+          for (let i = 0; i < hinh.length; i++) {
+            const b = hinh[i].box; if (!b) continue
+            const blob = await (await fetch(cropCanvasBox(c, b))).blob()
+            const url = await uploadKhoImage(new File([blob], 'fig.png', { type: 'image/png' }))
+            nd = nd.replace(`[[H${i + 1}]]`, `\n![](${url})\n`)
+          }
+          parts.push(nd.replace(/\[\[H\d+\]\]/g, '').trim()) // bỏ marker thừa (AI đặt mà thiếu box)
+        }
+      }
+      setNoiDung(parts.join('\n\n'))
+    } catch (e: any) { setError(e.message ?? String(e)) } finally { setBusy(false) }
+  }
   async function onAttach(f: File | null | undefined) {
     if (!f) return; setUploading(true); setError(null)
     try { const r = await uploadKhoFile(f); setUrl(r.url); setTenFile(r.name) }
@@ -557,7 +583,8 @@ function LyThuyetModal({ ma, ten, current, api, allowKhongCan, onClose, onSaved 
                 <input ref={fileRef} type="file" accept="image/*,application/pdf" multiple hidden onChange={(e) => e.target.files && addFiles(e.target.files)} />
                 <select value={model} onChange={(e) => setModel(e.target.value)} className={`${sel} shrink-0`}>{LT_MODELS.map((m) => <option key={m.value} value={m.value}>{m.label}</option>)}</select>
                 <input value={ghiChu} onChange={(e) => setGhiChu(e.target.value)} placeholder="ghi chú AI (tuỳ)" className={`${inp} h-[34px] min-w-[120px] flex-1 text-[13px]`} />
-                <button onClick={runAuto} disabled={!files.length || busy} className="h-[34px] shrink-0 whitespace-nowrap rounded-md bg-indigo-600 px-4 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">{busy ? '⏳ Đang bóc…' : '🪄 Tạo bằng AI'}</button>
+                <button onClick={runAuto} disabled={!files.length || busy} className="h-[34px] shrink-0 whitespace-nowrap rounded-md bg-indigo-600 px-4 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40" title="Bóc chữ + công thức (KHÔNG kèm hình)">{busy ? '⏳ Đang bóc…' : '🪄 Bóc chữ'}</button>
+                <button onClick={runAutoHinh} disabled={!files.length || busy} className="h-[34px] shrink-0 whitespace-nowrap rounded-md bg-violet-600 px-4 text-[13px] font-medium text-white shadow-sm hover:bg-violet-500 disabled:opacity-40" title="Bóc chữ + tự CẮT & CHÈN HÌNH đúng vị trí (DPI cao)">{busy ? '⏳ Đang bóc…' : '🖼 Bóc + hình'}</button>
               </div>
               {files.length > 0 && (
                 <div className="mt-2 flex flex-wrap items-center gap-1.5">
