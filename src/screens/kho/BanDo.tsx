@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import {
   listLopBac, groupMap, suggestT1Ma, suggestT2Ma, suggestLeafMa, uploadKhoFile, uploadKhoImage,
-  callGeminiJson, buildLyThuyetPrompt, parseLyThuyetJson,
+  callGeminiJson, buildLyThuyetPrompt, parseLyThuyetJson, LYTHUYET_SCHEMA,
   callGeminiRich, buildTheoryIngestPrompt, parseTheoryIngest, THEORY_SCHEMA,
   type MapRow, type Tier1Node, type Tier2Node, type LopBac, type LyThuyet,
 } from '../../lib/kho/api'
@@ -509,7 +509,7 @@ function LyThuyetModal({ ma, ten, current, api, allowKhongCan, onClose, onSaved 
   async function runAuto() {
     setError(null); setBusy(true)
     try {
-      const raw = await callGeminiJson(buildLyThuyetPrompt({ tenDang: ten, ghiChu }), { model, files: files.map((f) => ({ mimeType: f.mimeType, dataBase64: f.dataBase64 })) })
+      const raw = await callGeminiJson(buildLyThuyetPrompt({ tenDang: ten, ghiChu }), { model, schema: LYTHUYET_SCHEMA, files: files.map((f) => ({ mimeType: f.mimeType, dataBase64: f.dataBase64 })) })
       setNoiDung(parseLyThuyetJson(raw))
     } catch (e: any) { setError(e.message ?? String(e)) } finally { setBusy(false) }
   }

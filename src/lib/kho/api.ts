@@ -337,7 +337,12 @@ function recordUsage(u: GeminiUsage, model: string) {
 
 // ── AUTO: gọi Gemini API thẳng từ client (key VITE_GEMINI_KEY — rủi ro lộ, chấp nhận) ──
 export type GeminiFile = { mimeType: string; dataBase64: string }  // ảnh/PDF base64 (bỏ tiền tố data:)
-export async function callGeminiJson(prompt: string, opts?: { model?: string; files?: GeminiFile[]; think?: number }): Promise<string> {
+// Schema ép JSON hợp lệ (Type enum UPPERCASE). 1 câu = de_bai (bắt buộc) + đáp án/lời giải/lựa chọn (tuỳ).
+const CAU_ITEM_SCHEMA = { type: 'OBJECT', properties: { de_bai: { type: 'STRING' }, dap_an: { type: 'STRING' }, loi_giai: { type: 'STRING' }, lua_chon: { type: 'ARRAY', items: { type: 'STRING' } } }, required: ['de_bai'] }
+export const CLONE_SCHEMA = { type: 'OBJECT', properties: { bai_goc: CAU_ITEM_SCHEMA, variants: { type: 'ARRAY', items: CAU_ITEM_SCHEMA } }, required: ['bai_goc', 'variants'] }
+export const BATCH_SCHEMA = { type: 'OBJECT', properties: { cau_hoi: { type: 'ARRAY', items: CAU_ITEM_SCHEMA } }, required: ['cau_hoi'] }
+export const LYTHUYET_SCHEMA = { type: 'OBJECT', properties: { noi_dung: { type: 'STRING' } }, required: ['noi_dung'] }
+export async function callGeminiJson(prompt: string, opts?: { model?: string; files?: GeminiFile[]; think?: number; schema?: any }): Promise<string> {
   const key = import.meta.env.VITE_GEMINI_KEY as string | undefined
   if (!key) throw new Error('Chưa có VITE_GEMINI_KEY trong .env.local → luồng AUTO chưa bật. Dùng MANUAL hoặc thêm key.')
   const model = opts?.model || (import.meta.env.VITE_GEMINI_MODEL as string | undefined) || 'gemini-2.5-flash'
@@ -347,9 +352,13 @@ export async function callGeminiJson(prompt: string, opts?: { model?: string; fi
   // OCR/bóc đề/nhập-chuỗi = extraction → KHÔNG cần nghĩ (budget 0). CLONE = GENERATION (dựng+giải+số đẹp)
   // → CẦN suy luận, caller truyền opts.think (vd 8192) nếu không clone toán sẽ sai. Pro ép min 128.
   const thinkingBudget = opts?.think ?? (model.includes('pro') ? 128 : 0)
+  // responseSchema (constrained decoding) = ép JSON hợp lệ + tự escape → hết lỗi "Bad escaped"/"Expected , or }"
+  // do LaTeX 1-backslash hay " chưa escape (clone/batch/lý-thuyết hay dính). Caller truyền schema theo shape.
+  const genCfg: any = { responseMimeType: 'application/json', maxOutputTokens: 65536, thinkingConfig: { thinkingBudget } }
+  if (opts?.schema) genCfg.responseSchema = opts.schema
   const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`, {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ contents: [{ parts }], generationConfig: { responseMimeType: 'application/json', maxOutputTokens: 65536, thinkingConfig: { thinkingBudget } } }),
+    body: JSON.stringify({ contents: [{ parts }], generationConfig: genCfg }),
   })
   if (!res.ok) throw new Error(`Gemini API lỗi ${res.status}: ${(await res.text()).slice(0, 300)}`)
   const data = await res.json()

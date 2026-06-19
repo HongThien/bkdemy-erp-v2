@@ -3,6 +3,7 @@ import {
   listCauByDang, updateCau, deleteCau,
   buildClonePrompt, parseCloneJson, saveCloneBatch,
   buildBatchPrompt, parseBatchJson, parseStructuredText, saveCauBatch, callGeminiJson,
+  CLONE_SCHEMA, BATCH_SCHEMA,
   uploadKhoImage, LOAI_CAU, type CauHoi, type MapRow,
 } from '../../lib/kho/api'
 import PdfCropper from '../../components/PdfCropper'
@@ -302,7 +303,7 @@ function AiImportModal({ mode, dangChinh, tenDang, onClose, onSaved }: {
     // Pro chỉ hợp lệ ở luồng OCR khó (batch). Vụ cháy 920k là do clone lỡ chạy Pro → ép Flash.
     const safeModel = isClone && model.includes('pro') ? 'gemini-2.5-flash' : model
     // CLONE = generation (cần suy luận để giải đúng + số đẹp) → bật thinking; NHẬP CHUỖI = extraction → 0.
-    try { applyJson(await callGeminiJson(effPrompt(), { model: safeModel, think: isClone ? 8192 : 0, files: files.map((f) => ({ mimeType: f.mimeType, dataBase64: f.dataBase64 })) })) }
+    try { applyJson(await callGeminiJson(effPrompt(), { model: safeModel, think: isClone ? 8192 : 0, schema: isClone ? CLONE_SCHEMA : BATCH_SCHEMA, files: files.map((f) => ({ mimeType: f.mimeType, dataBase64: f.dataBase64 })) })) }
     catch (e: any) { setError(e.message ?? String(e)) } finally { setBusy(false) }
   }
   function parseText() {
