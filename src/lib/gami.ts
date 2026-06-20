@@ -114,7 +114,12 @@ export async function huyBuoiCuaNgay(lopId: string, ngay: string, slot: { gio_ba
 export async function getRoster(buoiId: string): Promise<BuoiHocHS[]> {
   const { data, error } = await supabase.from('buoi_hoc_hs').select('*, hoc_sinh:hoc_sinh_id(ho_ten, ma_hs, anh_url)').eq('buoi_hoc_id', buoiId).limit(LIMIT)
   if (error) throw error
-  return (data ?? []) as BuoiHocHS[]
+  // Thứ tự ỔN ĐỊNH theo tên HS (tie-break id). PostgREST không order được theo cột bảng nhúng;
+  // không sort thì sau mỗi UPDATE điểm danh, dòng vừa sửa nhảy chỗ (MVCC) → roster loạn thứ tự.
+  const rows = (data ?? []) as BuoiHocHS[]
+  rows.sort((a, b) =>
+    (a.hoc_sinh?.ho_ten ?? '').localeCompare(b.hoc_sinh?.ho_ten ?? '', 'vi') || a.id.localeCompare(b.id))
+  return rows
 }
 // Tiến độ điểm danh nhiều buổi (1 query): buoiId → { tong, daDanh }. daDanh = số HS đã có trạng thái.
 // "Điểm danh xong" = daDanh >= tong (mọi HS đã đánh dấu). Dùng để OPS task tự rời khỏi "cần làm".

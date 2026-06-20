@@ -400,3 +400,13 @@
 **Đang dở/treo:** màn TIVI (chờ Thùy: theo lớp/buổi hay toàn khối). Verify cuối: 9A2 buổi1 ingame Δ=0 đều, EXP hoà 333 — ĐÚNG.
 
 **Gotcha then chốt (chi tiết ở HANDOFF ②):** atomic-claim chống double-close · Elo nhiều phase = snapshot trước-buổi không nối tiếp · EXP hoà = TB nhóm · min-w-0 mọi tầng flex/grid · unique+upsert chống StrictMode seed đôi.
+
+---
+
+## 2026-06-20 — Fix thứ tự điểm danh + xác minh luồng BTVN (KHÔNG soạn riêng)
+
+**Fix điểm danh loạn thứ tự (GIỮ):** `getRoster` (`lib/gami.ts`) query `buoi_hoc_hs` KHÔNG có `.order()` → mỗi lần UPDATE diem_danh, MVCC đẩy dòng vừa sửa xuống cuối heap → reload roster nhảy chỗ. Fix: sort client theo `hoc_sinh.ho_ten` (localeCompare 'vi'), tie-break `id`. PostgREST không order được theo cột bảng nhúng nên sort ở client. Mọi tab khác (Đánh giá/Chấm/ET/BTVN) đều `roster.filter` từ nguồn này → ổn định luôn + xếp ABC.
+
+**BTVN: thử "soạn riêng" → SAI hướng, ĐÃ REVERT toàn bộ.** Thoạt hiểu "BTVN tự load giống ET" = thêm editor BTVN riêng (lá `lamtailieu:btvn`, ETEditor `kind='btvn'`, lib createBTVN/setBTVNCaus). Thùy chỉnh: **BTVN KHÔNG soạn riêng — làm CÙNG giáo trình, vẫn TRÍCH XUẤT từ giáo trình; hệ khớp theo lớp+ngày.** Revert hết (useStore/NhanSuHome/ETScreen/KhoTaiLieuScreen/tailieu.ts) → chỉ còn fix getRoster.
+
+**Xác minh luồng BTVN ĐÃ ĐÚNG & đang chạy (query DB read-only):** BTVN soạn trong master giáo trình (phan `btvn`) → TrichPanel tick BTVN → `trichXuatBuoi` sinh doc `loai='btvn'` gắn `lop_id`+`ngay` → tab BTVN buổi học `loadBTVNForBuoi`→`getBTVNByBuoi(lớp+ngày)`→`getBTVNCaus` (lọc phan `btvn`) → `ensureBTVNProblems`. Data thật: 14 doc btvn đều `tu_trich=true`, đều gắn lớp+ngày, `ngay` kiểu `date` (giống ET, không lệch TZ), khớp buổi (vd 9A2.T7.20062026 → doc 5 câu), KHÔNG trùng (lop_id,ngay). **Không bug — buổi nào báo "Chưa có BTVN" là do buổi đó CHƯA trích xuất BTVN** (vd 12A1 20/06 chưa trích; 9A2/9B1 20/06 đã có).
