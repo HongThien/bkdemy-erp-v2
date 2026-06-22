@@ -410,3 +410,31 @@
 **BTVN: thử "soạn riêng" → SAI hướng, ĐÃ REVERT toàn bộ.** Thoạt hiểu "BTVN tự load giống ET" = thêm editor BTVN riêng (lá `lamtailieu:btvn`, ETEditor `kind='btvn'`, lib createBTVN/setBTVNCaus). Thùy chỉnh: **BTVN KHÔNG soạn riêng — làm CÙNG giáo trình, vẫn TRÍCH XUẤT từ giáo trình; hệ khớp theo lớp+ngày.** Revert hết (useStore/NhanSuHome/ETScreen/KhoTaiLieuScreen/tailieu.ts) → chỉ còn fix getRoster.
 
 **Xác minh luồng BTVN ĐÃ ĐÚNG & đang chạy (query DB read-only):** BTVN soạn trong master giáo trình (phan `btvn`) → TrichPanel tick BTVN → `trichXuatBuoi` sinh doc `loai='btvn'` gắn `lop_id`+`ngay` → tab BTVN buổi học `loadBTVNForBuoi`→`getBTVNByBuoi(lớp+ngày)`→`getBTVNCaus` (lọc phan `btvn`) → `ensureBTVNProblems`. Data thật: 14 doc btvn đều `tu_trich=true`, đều gắn lớp+ngày, `ngay` kiểu `date` (giống ET, không lệch TZ), khớp buổi (vd 9A2.T7.20062026 → doc 5 câu), KHÔNG trùng (lop_id,ngay). **Không bug — buổi nào báo "Chưa có BTVN" là do buổi đó CHƯA trích xuất BTVN** (vd 12A1 20/06 chưa trích; 9A2/9B1 20/06 đã có).
+
+---
+
+## 2026-06-22 — Sửa loạt lỗi release (in/ chấm/ ảnh PH/ clone) + chốt plan AUTO-REPORT
+
+**Xác nhận ET/buổi = GIỮ BẢNG (BuoiHocScreen):** Thùy: "Đóng" thực chất là "Xác nhận", đừng tắt bảng đi (sau chỉnh mất công mở). Đổi cả tab Chấm bài (ingame) + ET: nút "Đóng…" → **"✓ Xác nhận"**; bỏ early-return `<RevealView>` (xoá luôn RevealView + reveal state + import getEloBreakdown/EloBreakdown/RevealRow — Elo breakdown vẫn ở màn Điểm số). Khi đã xác nhận: bảng GIỮ NGUYÊN, nút chấm KHOÁ (read-only, vẫn thấy kết quả, xám non-selected) + nút **"↩ Mở lại để sửa"** (reopenPhase, hoàn Elo). Mobile (ChamMobile) thêm prop locked/onMoLai. ⚠ Chọn read-only-khi-xác-nhận (KHÔNG cho sửa thẳng) để Elo không lệch — sửa thì Mở lại 1 click.
+
+**Ảnh kết quả ET gửi PH (TẠM, dashboard sau) — EtAnhGuiPH (BuoiHocScreen):** nút "📷 Ảnh gửi PH" ở header ET. Thùy chốt: **ẢNH CẢ LỚP** (1 bảng dọc HS×Bài, ô Đ/C/S màu), KHÔNG thẻ riêng từng HS, KHÔNG hiện đề/dạng. **COPY clipboard** (KHÔNG tải file): `html-to-image` `toBlob` → `navigator.clipboard.write(ClipboardItem image/png)` → paste vào Zalo. (cài dep `html-to-image`.) Chú thích 1 dòng: Đ=Đúng · C=Trình bày chưa hoàn thiện · S=Chưa biết làm. Lưu ý: clipboard ảnh cần HTTPS/localhost. Dùng html-to-image (SVG foreignObject) vì giữ layout đúng, khác html2canvas raster hay lệch (V1).
+
+**Chấm BTVN không load — FIX GỐC (mig 0046):** mig 0045 thêm BTVN nhưng QUÊN nới CHECK `gami_session_problems.phase` (vẫn chỉ ingame|et|mt). ensureBTVNProblems insert phase='btvn' bị chặn 400 → BtvnTab catch nuốt lỗi → "Chưa có BTVN" (đánh lừa). Verify: 0 dòng btvn trong bảng. **mig 0046 nới phase thêm 'btvn'** — ĐÃ áp vào DB cloud (claude_build qua _apply_one.mjs). BtvnTab giờ load được. (Bài học: catch nuốt lỗi → ẩn bug; constraint là "hidden code" nghi đầu tiên khi insert 400.)
+
+**Clone mất xuống dòng (api.ts):** commit c7ebf32 áp responseSchema (constrained decoding) cho clone → model gộp chuỗi về 1 dòng (mất bố cục). Fix: thêm `description` cho de_bai/loi_giai trong CAU_ITEM_SCHEMA (ép giữ nhiều dòng — Gemini tôn trọng description per-field) + siết rule prompt FMT_RULES (giữ đúng bố cục nhiều dòng). CHƯA verify thật (hành vi LLM — Thùy clone thử). Fallback nếu vẫn phẳng: bỏ responseSchema riêng cho clone, dựa lenientJsonParse.
+
+**In phiếu BTVN + Giáo trình buổi — bỏ lặp tiêu đề (PrintView):** Thùy: thông tin lớp/ngày/tên buổi in lặp nhiều chỗ.
+- buildPagedCss thêm `opts?: {headerText, footerText}` override (không truyền = giữ cũ; footer dùng white-space:pre khi có override để giữ khoảng cách). 
+- Doc loai='btvn' || 'giao_trinh_buoi' (buoiDoc): Header dải sóng = **Lớp X · ngày** (query tên lớp từ lop_id, taiLieu chỉ có lop_id), Footer = **BK Academy · Tel 0963.209.309 · 17A10 KĐT Geleximco** (3 phần cách nhau). 
+- BtvnSheet isBtvnDoc → tiêu đề = TÊN BUỔI 1 dòng (bỏ eyebrow "Bài tập về nhà" + docTitle). 
+- giao_trinh_buoi: BỎ pv-cover (bìa) — tên buổi đã ở dải hồng. LT heading: buổi 1 chuyên đề → "Lý thuyết" (bỏ lặp tên chuyên đề trùng tên buổi); nhiều chuyên đề → giữ "Lý thuyết chuyên đề: X". (Nhãn BẢN HS/GV mất khỏi giao_trinh_buoi — biết qua nút chọn bản + bản GV có lời giải.)
+
+**⚠ BUG MỞ (CHƯA SỬA):** **Lý thuyết buổi 3 có 4 trang nhưng trích PDF thành 8 trang** (giáo trình buổi — nội dung/ trang bị NHÂN ĐÔI khi in paged.js). Thùy báo rồi chuyển việc, tao CHƯA điều tra. Nghi: lý thuyết render 2 lần, hoặc paged.js nhân trang, hoặc trích xuất copy lý thuyết 2 lần. → việc tồn để soi.
+
+**⭐ CHỐT PLAN HỆ THỐNG AUTO-REPORT (context này sẽ làm — độc lập với các tính năng khác):**
+- **Mục tiêu:** vòng lặp report→AI fix→người duyệt để đẩy nhanh hoàn thiện lúc nhiều lỗi vụn.
+- **Luồng 2 CỔNG NGƯỜI GÁC (Thùy chốt):** ① nhân sự báo lỗi (mô tả kỹ + ảnh + context tự đính) → `mới` · ② **Thùy filter**: duyệt lỗi nào cho auto-fix (loại task to/rủi ro) → `cho-fix`/`từ-chối`/`để-tự-làm` · ③ **AI (luồng riêng)** fix lần lượt report `cho-fix` trên **branch riêng → mở PR** (chờ sẵn) → `đã-fix·chờ-apply` · ④ Thùy online vào list đã-fix, **apply+test từng cái** (merge PR độc lập) → `xong`/`trả-lại`. **KHÔNG auto-merge main.**
+- **Yếu tố sống còn:** chất lượng report (auto-capture route/leaf + vai trò + tài khoản + console errors + ID data + ảnh html-to-image). Report rác = fix rác.
+- **Chỗ chạy "luồng riêng" (bước 3) — 3 lựa chọn:** #1 máy local (phải bật) · **#2 cloud routine Anthropic** (scheduled, máy tắt vẫn chạy; tiện nhưng CHƯA chắc clone repo/push PR/đọc Supabase/build được — phải spike) · **#3 VPS luôn bật** (chắc hơn, full toolchain → **tự build/tsc trước khi mở PR** = PR chất lượng, đỡ tốn giờ duyệt; phải set up + vài $/tháng). Rủi ro chung #1: agent unattended + auto-approve → phải nhốt cứng (chỉ branch, cấm main/migration/xoá/lệnh phá, chỉ mở PR).
+- **Quyết định:** Pha 1 (nút report + bảng `bao_loi` + màn duyệt cổng 2) làm trước (cần bất kể chạy đâu). Rồi **SPIKE #2** (tiêu chí đậu: đọc report Supabase + sửa+build pass + push PR). Đủ 3 → chốt #2; thiếu → rớt **#3**. Tao cá cuối cùng về #3 (vì tự-build-test-trước-PR).
+- **Pha 1 cần build:** `bao_loi`(Supabase, RLS member-gate, immutable+state-log §4: mo_ta·route·actor·context jsonb·anh_url·trang_thai·severity?·fix_note·commit_sha) · nút nổi 🐞 mọi màn (form 1 ô mô tả + tự đính context+ảnh) · màn "Báo lỗi" (queue + nút duyệt Cho-fix/Từ-chối/Để-tự-làm).
