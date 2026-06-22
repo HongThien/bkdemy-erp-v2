@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
 import { getTaiLieuFull, DEFAULT_BTVN_LINES, type TaiLieuFull, type PhanResolved } from '../../lib/tailieu'
 import type { CauHinh } from '../../lib/tailieu'
+import { listLop } from '../../lib/nhansu'
 import { MathText } from '../kho/ui'
 import type { CauHoi } from '../../lib/kho/api'
 
@@ -16,9 +17,16 @@ export default function PrintView({ id, onClose }: { id: string; onClose: () => 
   const [renderErr, setRenderErr] = useState<string | null>(null)
   const srcRef = useRef<HTMLDivElement>(null)
   const dstRef = useRef<HTMLDivElement>(null)
+  const [lopTen, setLopTen] = useState('') // tên lớp cho header phiếu BTVN (taiLieu chỉ có lop_id)
   useEffect(() => { getTaiLieuFull(id).then(setFull).catch((e) => setErr(e.message ?? String(e))) }, [id])
   // Doc 'btvn' (trích xuất) → chỉ có phần BTVN → mặc định scope BTVN.
   useEffect(() => { if (full?.taiLieu.loai === 'btvn') setScope('btvn') }, [full])
+  // Phiếu BTVN / Giáo trình buổi (trích xuất): nạp tên lớp từ lop_id để ghi vào header (Lớp · ngày).
+  useEffect(() => {
+    const lopId = (full?.taiLieu as { lop_id?: string | null } | undefined)?.lop_id
+    if (!full || !['btvn', 'giao_trinh_buoi'].includes(full.taiLieu.loai) || !lopId) { setLopTen(''); return }
+    listLop().then((ls) => setLopTen(ls.find((l) => l.id === lopId)?.ten_lop ?? '')).catch(() => { /* */ })
+  }, [full])
 
   // Phân trang THẬT bằng paged.js → preview = bản in (A4, header/footer + số trang mỗi trang).
   useEffect(() => {
@@ -26,7 +34,16 @@ export default function PrintView({ id, onClose }: { id: string; onClose: () => 
     let cancelled = false
     setRendering(true); setRenderErr(null)
     const ch = full.taiLieu.cau_hinh ?? {}
-    const css = buildPagedCss(full.taiLieu, ch, ch.mau || '#E91E8C')
+    // Phiếu BTVN & Giáo trình buổi (trích xuất): KHÔNG lặp lớp/ngày/tên — tên buổi hiện 1 lần (dải buổi),
+    //   Header = Lớp · ngày · Footer = liên hệ BK Academy (KHÔNG lặp lại tên/khối tài liệu).
+    const buoiDoc = full.taiLieu.loai === 'btvn' || full.taiLieu.loai === 'giao_trinh_buoi'
+    const ngay = (full.taiLieu as { ngay?: string | null }).ngay
+    const ngayVN = ngay ? ngay.split('-').reverse().join('/') : ''
+    const cssOpts = buoiDoc ? {
+      headerText: `${lopTen ? `Lớp ${lopTen} · ` : ''}${ngayVN}`,
+      footerText: 'BK Academy        Tel : 0963.209.309        Địa chỉ : 17A10 KĐT Geleximco',
+    } : undefined
+    const css = buildPagedCss(full.taiLieu, ch, ch.mau || '#E91E8C', cssOpts)
     const cssUrl = URL.createObjectURL(new Blob([css], { type: 'text/css' }))
     const html = srcRef.current.innerHTML
     dstRef.current.innerHTML = ''
@@ -35,7 +52,7 @@ export default function PrintView({ id, onClose }: { id: string; onClose: () => 
       .catch((e: unknown) => { if (!cancelled) { setRenderErr(e instanceof Error ? e.message : String(e)); setRendering(false) } })
       .finally(() => URL.revokeObjectURL(cssUrl))
     return () => { cancelled = true }
-  }, [full, gv, scope])
+  }, [full, gv, scope, lopTen])
 
   const seg = (on: boolean) => `rounded-md px-3 py-1 text-[13px] font-medium transition ${on ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`
 
@@ -103,8 +120,9 @@ function Doc({ full, gv, scope }: { full: TaiLieuFull; gv: boolean; scope: 'all'
     <div className={`pv-doc${scope === 'btvn' ? ' pv-doc-btvn' : ''}`} style={{ '--pv-accent': accent } as CSSProperties}>
       {ch.header !== 'none' && <div className="pv-rh">{taiLieu.ten} · Khối {taiLieu.khoi}</div>}
       {ch.footer !== 'none' && <div className="pv-rf">BK ACADEMY · {taiLieu.ten} · Khối {taiLieu.khoi}</div>}
-      {/* QUYỂN BTVN: mỗi phiếu đã có header riêng (tên tài liệu + Họ tên/Lớp/Điểm) → BỎ bìa (khỏi thừa trang đầu). */}
-      {scope !== 'btvn' && (
+      {/* BỎ BÌA khi: quyển BTVN (mỗi phiếu có header riêng) HOẶC giáo trình buổi trích xuất
+          (tên buổi đã hiện 1 lần ở dải buổi; lớp/ngày ở header) → tránh lặp tiêu đề. */}
+      {scope !== 'btvn' && taiLieu.loai !== 'giao_trinh_buoi' && (
         <div className="pv-cover">
           {/* Logo nằm ở header (lặp mọi trang) → KHÔNG đặt thêm logo ở bìa để tránh trùng. */}
           <div className="pv-title">{taiLieu.ten}</div>
@@ -114,7 +132,7 @@ function Doc({ full, gv, scope }: { full: TaiLieuFull; gv: boolean; scope: 'all'
       {/* QUYỂN BTVN riêng = chỉ các phiếu BTVN (mỗi buổi). Còn lại = giáo trình (skip BTVN nếu 'giaotrinh'). */}
       {scope === 'btvn'
         ? buois.filter((b) => b.btvns.some((x) => x.caus.length)).map((b) => (
-          <BtvnSheet key={b.id} btvns={b.btvns} gv={gv} docTitle={taiLieu.ten} buoiTitle={b.title} dangNoByMa={dangNoByMa} linesByCau={linesByCau} />
+          <BtvnSheet key={b.id} btvns={b.btvns} gv={gv} docTitle={taiLieu.ten} buoiTitle={b.title} dangNoByMa={dangNoByMa} linesByCau={linesByCau} isBtvnDoc={taiLieu.loai === 'btvn'} />
         ))
         : buois.map((b) => (
           <BuoiBlock key={b.id} buoi={b} gv={gv} scope={scope} docTitle={taiLieu.ten} ltCd={ltChuyenDe} tenCd={tenChuyenDe} dangNoByMa={dangNoByMa} linesByCau={linesByCau} />
@@ -139,7 +157,8 @@ function BuoiBlock({ buoi, gv, scope, docTitle, ltCd, tenCd, dangNoByMa, linesBy
       {buoi.title && <h1 className="pv-h-buoi">{buoi.title}</h1>}
       {groups.map((g, gi) => (
         <div key={gi}>
-          <LtBlock title={`Lý thuyết chuyên đề: ${tenCd[g.cd] ?? ''}`} lt={ltCd[g.cd]} big />
+          {/* 1 chuyên đề: chỉ "Lý thuyết" (tên chuyên đề ĐÃ ở dải buổi → khỏi lặp). Nhiều chuyên đề: ghi tên để phân biệt. */}
+          <LtBlock title={groups.length > 1 ? `Lý thuyết chuyên đề: ${tenCd[g.cd] ?? ''}` : 'Lý thuyết'} lt={ltCd[g.cd]} big />
           {g.dangs.map((d) => <DangBlock key={d.id} no={dangNoByMa[d.ref_ma ?? ''] ?? 0} p={d} gv={gv} />)}
         </div>
       ))}
@@ -185,16 +204,24 @@ function DangBlock({ no, p, gv }: { no: number; p: PhanResolved; gv: boolean }) 
 
 // BTVN của 1 BUỔI = phiếu RIÊNG (sang trang mới), nhóm theo DẠNG (mirror trên lớp). HS viết thẳng vào dòng kẻ.
 // Đầu phiếu: tiêu đề = tên tài liệu · trái = Họ tên + Lớp · phải = ô Điểm. Bản GV = đáp án (bỏ ô điền, hiện lời giải).
-function BtvnSheet({ btvns, gv, docTitle, buoiTitle, dangNoByMa, linesByCau }: {
-  btvns: PhanResolved[]; gv: boolean; docTitle: string; buoiTitle: string; dangNoByMa: Record<string, number>; linesByCau: Record<string, number>
+function BtvnSheet({ btvns, gv, docTitle, buoiTitle, dangNoByMa, linesByCau, isBtvnDoc = false }: {
+  btvns: PhanResolved[]; gv: boolean; docTitle: string; buoiTitle: string; dangNoByMa: Record<string, number>; linesByCau: Record<string, number>; isBtvnDoc?: boolean
 }) {
   return (
     <section className="pv-sec pv-btvn">
       <div className="pv-bt-head">
-        <div className="pv-bt-titlewrap">
-          <div className="pv-bt-eyebrow">Bài tập về nhà{buoiTitle ? ` · ${buoiTitle}` : ''}{gv ? ' · Đáp án' : ''}</div>
-          <div className="pv-bt-title">{docTitle}</div>
-        </div>
+        {/* Phiếu BTVN trích xuất (isBtvnDoc): tiêu đề = TÊN BUỔI HỌC, 1 lần (lớp/ngày đã ở header/ô điền).
+            BTVN nhúng giáo trình: giữ eyebrow "Bài tập về nhà" + tên tài liệu để tách khỏi phần lý thuyết. */}
+        {isBtvnDoc ? (
+          <div className="pv-bt-titlewrap">
+            <div className="pv-bt-title">{buoiTitle || docTitle}{gv ? ' · Đáp án' : ''}</div>
+          </div>
+        ) : (
+          <div className="pv-bt-titlewrap">
+            <div className="pv-bt-eyebrow">Bài tập về nhà{buoiTitle ? ` · ${buoiTitle}` : ''}{gv ? ' · Đáp án' : ''}</div>
+            <div className="pv-bt-title">{docTitle}</div>
+          </div>
+        )}
         {!gv && (
           <div className="pv-bt-row">
             <div className="pv-bt-info">
@@ -338,13 +365,15 @@ function waveUri(path: string, c1: string, c2: string, c3: string): string {
 }
 
 // Stylesheet cho paged.js: A4 + lề + dải sóng full-bleed (pseudo của pagebox) + số trang (@page margin box).
-export function buildPagedCss(taiLieu: TaiLieuFull['taiLieu'], ch: CauHinh, accent: string): string {
+export function buildPagedCss(taiLieu: TaiLieuFull['taiLieu'], ch: CauHinh, accent: string, opts?: { headerText?: string; footerText?: string }): string {
   const head = ch.header !== 'none', foot = ch.footer !== 'none'
   // Dải MÀU cao hơn (phủ gần hết dải) → text canh giữa nằm TRỌN trên màu, không rơi vào khoảng trắng trên sóng.
   const headUri = waveUri('M0,0 H1200 V84 C940,100 760,66 520,88 C300,100 150,76 0,92 Z', '#E91E8C', '#F7941E', '#2D9CDB')
   const footUri = waveUri('M0,100 H1200 V14 C940,0 760,34 520,10 C300,0 150,26 0,16 Z', '#2D9CDB', '#F7941E', '#E91E8C')
-  const headTxt = cssStr(`${taiLieu.ten} · Khối ${taiLieu.khoi}`)
-  const footTxt = cssStr(`BK ACADEMY · ${taiLieu.ten} · Khối ${taiLieu.khoi}`)
+  const headTxt = cssStr(opts?.headerText ?? `${taiLieu.ten} · Khối ${taiLieu.khoi}`)
+  const footTxt = cssStr(opts?.footerText ?? `BK ACADEMY · ${taiLieu.ten} · Khối ${taiLieu.khoi}`)
+  // footerText override hay có nhiều khoảng trắng (BK Academy · Tel · Địa chỉ cách nhau) → giữ nguyên bằng white-space:pre.
+  const footWS = opts?.footerText ? 'white-space:pre;' : ''
   const logoUrl = location.origin + '/Logo.png' // PHẢI tuyệt đối: paged.js rewrite url() theo base blob → '/x' sẽ throw
   // Chip trắng bo góc + viền làm nền cho logo (đọc rõ trên dải sóng). viewBox 140:30 = 42:9 mm → không méo.
   const chipUri = 'data:image/svg+xml,' + encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 30'><rect x='1.2' y='1.2' width='137.6' height='27.6' rx='7' fill='#ffffff' stroke='#dfe5ec' stroke-width='1.4'/></svg>`)
@@ -352,7 +381,7 @@ export function buildPagedCss(taiLieu: TaiLieuFull['taiLieu'], ch: CauHinh, acce
 .katex{font-size:0.95em!important}.pagedjs_page{font-family:'Times New Roman',Tinos,Times,serif;font-size:17px;color:#23272b;line-height:1.55;--pv-accent:${accent}}
 .pagedjs_pagebox{position:relative}
 ${head ? `.pagedjs_pagebox::before{content:${headTxt};position:absolute;top:0;left:0;right:0;height:18mm;padding:0 10mm 0 50mm;box-sizing:border-box;background:url("${logoUrl}") 8mm 3.5mm / auto 5mm no-repeat, url("${chipUri}") 4.5mm 1.5mm / 42mm 9mm no-repeat, url("${headUri}") center/100% 100% no-repeat;display:flex;align-items:center;justify-content:flex-end;color:#fff;font-weight:700;font-size:11px;letter-spacing:.3px;text-shadow:0 1px 2px rgba(0,0,0,.25);z-index:1}` : ''}
-${foot ? `.pagedjs_pagebox::after{content:${footTxt};position:absolute;bottom:0;left:0;right:0;height:15mm;padding:0 16mm;box-sizing:border-box;background:url("${footUri}") center/100% 100% no-repeat;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:11px;letter-spacing:.3px;text-shadow:0 1px 3px rgba(0,0,0,.35);z-index:1}` : ''}
+${foot ? `.pagedjs_pagebox::after{content:${footTxt};${footWS}position:absolute;bottom:0;left:0;right:0;height:15mm;padding:0 16mm;box-sizing:border-box;background:url("${footUri}") center/100% 100% no-repeat;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:11px;letter-spacing:.3px;text-shadow:0 1px 3px rgba(0,0,0,.35);z-index:1}` : ''}
 @page{
   size:A4;
   margin:18mm 14mm 22mm;

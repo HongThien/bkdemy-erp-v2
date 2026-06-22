@@ -151,7 +151,7 @@ const FMT_RULES = [
   'QUY TẮC TRÌNH BÀY:',
   '- Công thức toán DÙNG LaTeX trong $...$ (inline) hoặc $$...$$ (block).',
   '- ⚠ MỖI công thức/phân số/biểu thức phải bọc RIÊNG trong $...$ — KỂ CẢ khi liệt kê nhiều: viết "$\\\\dfrac{6}{5}$; $\\\\dfrac{4}{3}$" (TUYỆT ĐỐI KHÔNG để "\\\\dfrac{6}{5}" trần ngoài $).',
-  '- ⚠ Xuống dòng DÙNG ký tự xuống dòng thật trong chuỗi — TUYỆT ĐỐI KHÔNG dùng thẻ "<br>".',
+  '- ⚠ XUỐNG DÒNG: GIỮ ĐÚNG bố cục NHIỀU DÒNG của đề & lời giải gốc — mỗi ý, mỗi câu hỏi, mỗi bước giải đặt trên MỘT DÒNG riêng (ngăn bằng ký tự xuống dòng thật trong chuỗi). Gốc bao nhiêu dòng thì giữ bấy nhiêu. TUYỆT ĐỐI KHÔNG gộp tất cả thành một đoạn liền, KHÔNG dùng thẻ "<br>".',
   '- Phân số DÙNG \\\\dfrac{a}{b} (KHÔNG dùng \\\\frac vì hiển thị bé). KHÔNG viết dạng a/b.',
   '- ⚠ KÝ HIỆU CHIA HẾT (Gemini RẤT HAY ĐỌC SAI — đọc kỹ ngữ cảnh): "a chia hết cho b" = ba dấu chấm DỌC ⋮ → viết "$a \\\\vdots b$". "a KHÔNG chia hết cho b" = ⋮ có GẠCH CHÉO → viết "$a \\\\not\\\\vdots b$". TUYỆT ĐỐI KHÔNG nhầm ⋮ thành dấu hai chấm ":", ba chấm ngang "...", \\\\div, hay "%". Gặp chữ "chia hết / không chia hết" trong đề/lời giải PHẢI dùng \\\\vdots / \\\\not\\\\vdots.',
   '- Số đơn lẻ KHÔNG cần $: viết "30 quả" không phải "$30$ quả". KHÔNG để tiếng Việt có dấu bên trong $...$.',
@@ -345,7 +345,14 @@ function recordUsage(u: GeminiUsage, model: string) {
 // ── AUTO: gọi Gemini API thẳng từ client (key VITE_GEMINI_KEY — rủi ro lộ, chấp nhận) ──
 export type GeminiFile = { mimeType: string; dataBase64: string }  // ảnh/PDF base64 (bỏ tiền tố data:)
 // Schema ép JSON hợp lệ (Type enum UPPERCASE). 1 câu = de_bai (bắt buộc) + đáp án/lời giải/lựa chọn (tuỳ).
-const CAU_ITEM_SCHEMA = { type: 'OBJECT', properties: { de_bai: { type: 'STRING' }, dap_an: { type: 'STRING' }, loi_giai: { type: 'STRING' }, lua_chon: { type: 'ARRAY', items: { type: 'STRING' } } }, required: ['de_bai'] }
+// ⚠ de_bai/loi_giai có description ÉP GIỮ XUỐNG DÒNG: responseSchema (constrained decoding) hay gộp
+//   chuỗi về 1 dòng → mất bố cục. Description per-field là cách Gemini tôn trọng để chèn '\n'.
+const CAU_ITEM_SCHEMA = { type: 'OBJECT', properties: {
+  de_bai: { type: 'STRING', description: 'Đề bài. GIỮ bố cục NHIỀU DÒNG: mỗi ý / mỗi câu hỏi / mỗi dòng của đề đặt trên MỘT dòng riêng, ngăn nhau bằng ký tự xuống dòng. KHÔNG gộp tất cả thành một đoạn liền.' },
+  dap_an: { type: 'STRING' },
+  loi_giai: { type: 'STRING', description: 'Lời giải trình bày TỪNG BƯỚC, mỗi bước trên MỘT dòng riêng, ngăn nhau bằng ký tự xuống dòng. KHÔNG gộp thành một đoạn.' },
+  lua_chon: { type: 'ARRAY', items: { type: 'STRING' } },
+}, required: ['de_bai'] }
 export const CLONE_SCHEMA = { type: 'OBJECT', properties: { bai_goc: CAU_ITEM_SCHEMA, variants: { type: 'ARRAY', items: CAU_ITEM_SCHEMA } }, required: ['bai_goc', 'variants'] }
 export const BATCH_SCHEMA = { type: 'OBJECT', properties: { cau_hoi: { type: 'ARRAY', items: CAU_ITEM_SCHEMA } }, required: ['cau_hoi'] }
 export const LYTHUYET_SCHEMA = { type: 'OBJECT', properties: { noi_dung: { type: 'STRING' } }, required: ['noi_dung'] }
