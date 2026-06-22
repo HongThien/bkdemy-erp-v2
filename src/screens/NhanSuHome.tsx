@@ -21,6 +21,7 @@ import GamiDiemScreen from './gami/GamiDiemScreen'
 import ThanhTichScreen from './gami/ThanhTichScreen'
 import QuanLyLevelScreen from './gami/QuanLyLevelScreen'
 import PhanQuyenScreen from './phanquyen/PhanQuyenScreen'
+import BaoLoiScreen from './baoloi/BaoLoiScreen'
 
 const ROLE_LBL: Record<string, string> = { gv: 'GV', tg: 'Trợ giảng', ops: 'OPS' }
 const tabsCuaVai = (vai: 'gv' | 'tg'): TabKey[] => (vai === 'gv' ? ['danhgia', 'ingame'] : ['ingame', 'et'])
@@ -218,6 +219,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'thanhtich' ? <ThanhTichScreen />
       : staffLeaf === 'quanlylevel' ? <QuanLyLevelScreen />
       : staffLeaf === 'phanquyen' ? <PhanQuyenScreen />
+      : staffLeaf === 'baoloi' ? <BaoLoiScreen />
       : (
         <section className="flex min-h-0 items-center justify-center p-8 text-sm text-slate-400">Chọn một mục bên trái.</section>
       )}

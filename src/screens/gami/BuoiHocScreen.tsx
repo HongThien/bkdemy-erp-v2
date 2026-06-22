@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { toBlob } from 'html-to-image'
+import html2canvas from 'html2canvas'
 import {
   buoiAoCuaNgay, moBuoi, getBuoi, huyBuoi, huyBuoiCuaNgay, setNguoiDay,
   getRoster, diemDanh, dongBoSiSo, listProblems, addProblem, setProblemDang, ensureProblems, listGrades, gradeMuc, closePhase,
@@ -577,10 +577,11 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
 
 // ── Ảnh kết quả ET gửi phụ huynh (TẠM THỜI — dashboard sau): ẢNH CẢ LỚP (bảng dọc HS × Bài) để CHỤP gửi PH.
 // Chỉ hiện Bài 1/2/3… + Đ/C/S (KHÔNG đề/dạng).
-const ET_KQ_PH: Record<string, { l: string; cls: string; mo_ta: string }> = {
-  correct: { l: 'Đ', cls: 'bg-emerald-500', mo_ta: 'Đúng' },
-  partial: { l: 'C', cls: 'bg-amber-500', mo_ta: 'Trình bày chưa hoàn thiện' },
-  wrong: { l: 'S', cls: 'bg-rose-500', mo_ta: 'Chưa biết làm' },
+// hex (sRGB) — KHÔNG dùng class màu Tailwind v4 ở card export vì compute ra oklch() → html-to-image trắng xóa.
+const ET_KQ_PH: Record<string, { l: string; hex: string; mo_ta: string }> = {
+  correct: { l: 'Đ', hex: '#10b981', mo_ta: 'Đúng' },
+  partial: { l: 'C', hex: '#f59e0b', mo_ta: 'Trình bày chưa hoàn thiện' },
+  wrong: { l: 'S', hex: '#f43f5e', mo_ta: 'Chưa biết làm' },
 }
 function EtAnhGuiPH({ coMat, probs, gradeOf, buoi, onClose }: {
   coMat: BuoiHocHS[]; probs: Problem[]; gradeOf: (pid: string, hsid: string) => Grade | undefined; buoi: BuoiHoc; onClose: () => void
@@ -591,17 +592,27 @@ function EtAnhGuiPH({ coMat, probs, gradeOf, buoi, onClose }: {
   if (!coMat.length) return null
   const lop = (buoi as any).lop?.ten_lop ?? ''
   const ngayVN = buoi.ngay ? buoi.ngay.split('-').reverse().join('/') : ''
-  // COPY ảnh vào clipboard (paste thẳng vào Zalo/messenger). DOM→SVG foreignObject→PNG (html-to-image,
-  // giữ đúng layout, không lệch như canvas-raster). pixelRatio 2 cho nét trên điện thoại.
+  // COPY ảnh vào clipboard (paste thẳng vào Zalo/messenger). Dùng html2canvas (đúng cách V1 đã chạy ổn) —
+  // html-to-image (SVG foreignObject) ra TRẮNG ở V2: SVG <img> fail âm thầm khi serialize → canvas trắng.
+  // ⚠ Card phải dùng màu hex/rgb (sRGB), KHÔNG class màu Tailwind v4 (oklch) → html2canvas 1.4.1 throw trên oklch.
   async function copyAnh() {
-    if (!cardRef.current || saving) return
+    const el = cardRef.current
+    if (!el || saving) return
     setSaving(true)
     try {
-      const blob = await toBlob(cardRef.current, { pixelRatio: 2, backgroundColor: '#ffffff', cacheBust: true })
+      const canvas = await html2canvas(el, { backgroundColor: '#ffffff', scale: 2, useCORS: true, logging: false, width: el.scrollWidth, height: el.scrollHeight })
+      const blob = await new Promise<Blob | null>((res) => canvas.toBlob(res, 'image/png'))
       if (!blob) throw new Error('Tạo ảnh rỗng.')
-      await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })])
-      setCopied(true); setTimeout(() => setCopied(false), 2000)
-    } catch (e: any) { alert('Không copy được ảnh (trình duyệt cần hỗ trợ copy ảnh, và trang phải HTTPS/localhost): ' + (e?.message ?? String(e))) }
+      try {
+        await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })])
+        setCopied(true); setTimeout(() => setCopied(false), 2000)
+      } catch {
+        // Clipboard ảnh bị chặn (không HTTPS / trình duyệt không hỗ trợ) → fallback tải file (như V1).
+        const a = document.createElement('a')
+        a.href = canvas.toDataURL('image/png'); a.download = `KetQuaET_${lop || 'lop'}_${ngayVN.replace(/\//g, '-')}.png`; a.click()
+        setCopied(true); setTimeout(() => setCopied(false), 2000)
+      }
+    } catch (e: any) { alert('Không tạo được ảnh: ' + (e?.message ?? String(e))) }
     finally { setSaving(false) }
   }
   return createPortal(
@@ -612,33 +623,41 @@ function EtAnhGuiPH({ coMat, probs, gradeOf, buoi, onClose }: {
         <button onClick={onClose} className="rounded-md border border-slate-500 px-3 py-1 text-sm hover:bg-slate-700">Đóng</button>
       </div>
       <div className="min-h-0 flex-1 overflow-auto p-4" onClick={(e) => e.stopPropagation()}>
-        {/* ẢNH CẢ LỚP — "Copy ảnh" chụp đúng cái này */}
-        <div ref={cardRef} className="mx-auto w-[440px] max-w-full overflow-hidden rounded-2xl bg-white shadow-2xl">
-          <div className="bg-gradient-to-r from-[#E91E8C] via-[#F7941E] to-[#2D9CDB] px-5 py-4 text-white">
-            <div className="text-[11px] font-bold uppercase tracking-[0.2em] opacity-90">BK Academy</div>
-            <div className="text-[20px] font-extrabold leading-tight">Kết quả ET — Lớp {lop || '—'}</div>
-            <div className="text-[12px] opacity-95">Ngày {ngayVN} · {coMat.length} học sinh</div>
+        {/* ẢNH CẢ LỚP — "Copy ảnh" chụp đúng cái này.
+            ⚠ TẤT CẢ màu = inline hex/rgb (sRGB), KHÔNG class màu Tailwind v4 (compute oklch → html-to-image trắng xóa). */}
+        <div
+          ref={cardRef}
+          style={{
+            margin: '0 auto', width: 440, maxWidth: '100%', overflow: 'hidden', borderRadius: 16,
+            background: '#ffffff', color: '#1e293b', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25)',
+            fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif',
+          }}
+        >
+          <div style={{ background: 'linear-gradient(90deg, #E91E8C 0%, #F7941E 50%, #2D9CDB 100%)', padding: '16px 20px', color: '#ffffff' }}>
+            <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.2em', opacity: 0.9 }}>BK Academy</div>
+            <div style={{ fontSize: 20, fontWeight: 800, lineHeight: 1.15 }}>Kết quả ET — Lớp {lop || '—'}</div>
+            <div style={{ fontSize: 12, opacity: 0.95 }}>Ngày {ngayVN} · {coMat.length} học sinh</div>
           </div>
-          <div className="px-4 py-3">
-            <table className="w-full border-collapse text-[13px]">
+          <div style={{ padding: '12px 16px' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
               <thead>
-                <tr className="text-slate-500">
-                  <th className="border-b-2 border-slate-200 px-1 py-1.5 text-left font-semibold">Học sinh</th>
-                  {probs.map((p) => <th key={p.id} className="border-b-2 border-slate-200 px-1 py-1.5 text-center font-semibold">B{p.problem_no}</th>)}
+                <tr style={{ color: '#64748b' }}>
+                  <th style={{ borderBottom: '2px solid #e2e8f0', padding: '6px 4px', textAlign: 'left', fontWeight: 600 }}>Học sinh</th>
+                  {probs.map((p) => <th key={p.id} style={{ borderBottom: '2px solid #e2e8f0', padding: '6px 4px', textAlign: 'center', fontWeight: 600 }}>B{p.problem_no}</th>)}
                 </tr>
               </thead>
               <tbody>
                 {coMat.map((r) => (
-                  <tr key={r.id} className="border-b border-slate-100">
-                    <td className="px-1 py-1.5 font-medium text-slate-800">{r.hoc_sinh?.ho_ten ?? '?'}</td>
+                  <tr key={r.id} style={{ borderBottom: '1px solid #f1f5f9' }}>
+                    <td style={{ padding: '6px 4px', fontWeight: 500, color: '#1e293b' }}>{r.hoc_sinh?.ho_ten ?? '?'}</td>
                     {probs.map((p) => {
                       const kq = gradeOf(p.id, r.hoc_sinh_id)?.result
                       const v = kq ? ET_KQ_PH[kq] : null
                       return (
-                        <td key={p.id} className="px-1 py-1.5 text-center">
+                        <td key={p.id} style={{ padding: '6px 4px', textAlign: 'center' }}>
                           {v
-                            ? <span className={`inline-flex h-6 w-6 items-center justify-center rounded-full text-[12px] font-bold text-white ${v.cls}`}>{v.l}</span>
-                            : <span className="text-slate-300">–</span>}
+                            ? <span style={{ display: 'inline-flex', height: 24, width: 24, alignItems: 'center', justifyContent: 'center', borderRadius: '9999px', fontSize: 12, fontWeight: 700, color: '#ffffff', background: v.hex }}>{v.l}</span>
+                            : <span style={{ color: '#cbd5e1' }}>–</span>}
                         </td>
                       )
                     })}
@@ -646,13 +665,15 @@ function EtAnhGuiPH({ coMat, probs, gradeOf, buoi, onClose }: {
                 ))}
               </tbody>
             </table>
-            <div className="mt-3 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[10.5px] text-slate-500">
-              <span className="inline-flex items-center gap-1"><span className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-emerald-500 text-[10px] font-bold text-white">Đ</span> Đúng</span>
-              <span className="inline-flex items-center gap-1"><span className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-amber-500 text-[10px] font-bold text-white">C</span> Trình bày chưa hoàn thiện</span>
-              <span className="inline-flex items-center gap-1"><span className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-rose-500 text-[10px] font-bold text-white">S</span> Chưa biết làm</span>
+            <div style={{ marginTop: 12, display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '4px 10px', fontSize: 10.5, color: '#64748b' }}>
+              {Object.values(ET_KQ_PH).map((v) => (
+                <span key={v.l} style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                  <span style={{ display: 'inline-flex', height: 16, width: 16, alignItems: 'center', justifyContent: 'center', borderRadius: '9999px', fontSize: 10, fontWeight: 700, color: '#ffffff', background: v.hex }}>{v.l}</span> {v.mo_ta}
+                </span>
+              ))}
             </div>
           </div>
-          <div className="border-t border-slate-100 px-5 py-2.5 text-center text-[11px] text-slate-400">BK Academy · Tel : 0963.209.309 · 17A10 KĐT Geleximco</div>
+          <div style={{ borderTop: '1px solid #f1f5f9', padding: '10px 20px', textAlign: 'center', fontSize: 11, color: '#94a3b8' }}>BK Academy · Tel : 0963.209.309 · 17A10 KĐT Geleximco</div>
         </div>
       </div>
     </div>,

@@ -2,7 +2,37 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-50 bảng · 0 enum · 1 trigger · 6 function
+52 bảng · 0 enum · 2 trigger · 7 function
+
+## bao_loi
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| mo_ta | text |  |  |  |
+| route | text | Y |  |  |
+| context | jsonb | Y |  |  |
+| anh_url | text | Y |  |  |
+| trang_thai | text |  | 'moi'::text |  |
+| ghi_chu_duyet | text | Y |  |  |
+| fix_note | text | Y |  |  |
+| branch | text | Y |  |  |
+| pr_url | text | Y |  |  |
+| commit_sha | text | Y |  |  |
+| created_by | uuid | Y |  |  |
+| created_at | timestamp with time zone |  | now() |  |
+| updated_at | timestamp with time zone |  | now() |  |
+
+## bao_loi_log
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| bao_loi_id | uuid |  |  | FK→bao_loi.id |
+| trang_thai_cu | text | Y |  |  |
+| trang_thai_moi | text | Y |  |  |
+| actor | uuid | Y |  |  |
+| created_at | timestamp with time zone |  | now() |  |
 
 ## btvn_ket_qua
 
@@ -601,6 +631,7 @@
 
 | bảng | trigger | timing | event | function |
 |---|---|---|---|---|
+| bao_loi | trg_log_bao_loi | BEFORE | UPDATE | log_bao_loi |
 | hoc_sinh_lop | trg_log_hoc_sinh_lop | AFTER | INSERT/UPDATE | log_hoc_sinh_lop |
 
 ## Functions
@@ -608,6 +639,7 @@
 - `jwt_email()` → text
 - `jwt_uid()` → uuid
 - `la_thanh_vien()` → boolean
+- `log_bao_loi()` → trigger
 - `log_hoc_sinh_lop()` → trigger
 - `my_quyen()` → TABLE(la_admin boolean, chuc_nang text[])
 - `self_link_account()` → uuid
