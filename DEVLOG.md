@@ -457,3 +457,5 @@
 - tsc + build pass. **CHƯA test UI thật** (Thùy bấm thử 🐞 + vào màn Báo lỗi duyệt).
 
 **CÒN (Pha 2):** luồng fix bước 3 — SPIKE #2 cloud routine (đọc report `cho_fix` từ Supabase + sửa+build + push PR), tiêu chí đậu→chốt #2, thiếu→#3 VPS. Khi nối: agent đọc report `cho_fix` → fix branch → set `da_fix`+branch/pr_url. **Nợ:** bucket riêng `report-anh` (giờ tái dùng kho-anh) · gate nhốt agent (chỉ branch/PR, cấm main/migration/destructive).
+
+**Sửa Pha 1 (ngay sau):** BỎ auto-screenshot khỏi ReportButton. Lý do: app V2 = Tailwind v4 (oklch) → `html-to-image` chụp #root ra ảnh TRẮNG (SVG <img> serialize fail), `html2canvas` 1.4.1 THROW trên oklch. Cả 2 không chụp nổi full app. Giữ text-context (route/vai/console errors/url) + nhắc nhân sự dán ảnh vào mô tả. `uploadReportAnh` giữ lại (Pha 1.5 dùng). (Bài học: EtAnhGuiPH chụp được vì Thùy ép card dùng inline HEX, không oklch — full app không làm vậy được.) Screenshot Pha 1.5 = getDisplayMedia / html2canvas-pro.

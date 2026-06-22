@@ -592,15 +592,39 @@ function EtAnhGuiPH({ coMat, probs, gradeOf, buoi, onClose }: {
   if (!coMat.length) return null
   const lop = (buoi as any).lop?.ten_lop ?? ''
   const ngayVN = buoi.ngay ? buoi.ngay.split('-').reverse().join('/') : ''
-  // COPY ảnh vào clipboard (paste thẳng vào Zalo/messenger). Dùng html2canvas (đúng cách V1 đã chạy ổn) —
-  // html-to-image (SVG foreignObject) ra TRẮNG ở V2: SVG <img> fail âm thầm khi serialize → canvas trắng.
-  // ⚠ Card phải dùng màu hex/rgb (sRGB), KHÔNG class màu Tailwind v4 (oklch) → html2canvas 1.4.1 throw trên oklch.
+  // COPY ảnh vào clipboard (paste thẳng vào Zalo/messenger).
+  // ⚠ BÀI HỌC V1: KHÔNG html2canvas thẳng node live — rất dễ LỆCH/TRẮNG (app CSS, zoom:1.15, scroll, overflow clip).
+  // Cách V1 (exportPhieuViaPopup): XUẤT HTML ra rồi RENDER LẠI trong 1 document SẠCH riêng, rồi mới chụp.
+  // Ở đây: render outerHTML của card (đã toàn inline-hex, tự mô tả) vào IFRAME ẩn sạch (KHÔNG nhúng stylesheet
+  // app → không dính oklch Tailwind v4, không zoom, không clip), html2canvas trong đó, clipboard.write từ tab cha.
   async function copyAnh() {
     const el = cardRef.current
     if (!el || saving) return
     setSaving(true)
+    let iframe: HTMLIFrameElement | null = null
     try {
-      const canvas = await html2canvas(el, { backgroundColor: '#ffffff', scale: 2, useCORS: true, logging: false, width: el.scrollWidth, height: el.scrollHeight })
+      const cardHTML = el.outerHTML
+      iframe = document.createElement('iframe')
+      iframe.setAttribute('aria-hidden', 'true')
+      iframe.style.cssText = 'position:fixed;left:-10000px;top:0;width:520px;height:100px;border:0;background:#fff'
+      document.body.appendChild(iframe)
+      const doc = iframe.contentDocument!
+      doc.open()
+      doc.write(`<!DOCTYPE html><html><head><meta charset="utf-8"><base href="${location.origin}/">`
+        + `<style>*{box-sizing:border-box;margin:0}html,body{background:#fff}</style></head>`
+        + `<body><div id="cap" style="display:inline-block;background:#fff">${cardHTML}</div></body></html>`)
+      doc.close()
+      if ((doc as any).fonts?.ready) { try { await (doc as any).fonts.ready } catch { /* noop */ } }
+      const target = doc.getElementById('cap') as HTMLElement
+      // Nới viewport iframe vừa khít nội dung để html2canvas không cắt.
+      iframe.style.width = `${target.scrollWidth + 40}px`
+      iframe.style.height = `${target.scrollHeight + 40}px`
+      await new Promise<void>((r) => requestAnimationFrame(() => requestAnimationFrame(() => r())))
+      const canvas = await html2canvas(target, {
+        backgroundColor: '#ffffff', scale: 2, useCORS: true, logging: false,
+        width: target.scrollWidth, height: target.scrollHeight,
+        windowWidth: target.scrollWidth, windowHeight: target.scrollHeight,
+      })
       const blob = await new Promise<Blob | null>((res) => canvas.toBlob(res, 'image/png'))
       if (!blob) throw new Error('Tạo ảnh rỗng.')
       try {
@@ -613,7 +637,7 @@ function EtAnhGuiPH({ coMat, probs, gradeOf, buoi, onClose }: {
         setCopied(true); setTimeout(() => setCopied(false), 2000)
       }
     } catch (e: any) { alert('Không tạo được ảnh: ' + (e?.message ?? String(e))) }
-    finally { setSaving(false) }
+    finally { if (iframe) document.body.removeChild(iframe); setSaving(false) }
   }
   return createPortal(
     <div className="fixed inset-0 z-[90] flex flex-col bg-slate-900/70" onClick={onClose}>

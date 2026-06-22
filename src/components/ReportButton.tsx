@@ -1,32 +1,20 @@
-// Nút nổi 🐞 Báo lỗi (auto-report Pha 1) — mọi màn. Bấm → tự CHỤP MÀN + gom context → form mô tả → gửi.
+// Nút nổi 🐞 Báo lỗi (auto-report Pha 1) — mọi màn. Bấm → form mô tả + tự gom context (route/vai/console errors) → gửi.
+// ⚠ KHÔNG auto-chụp màn ở Pha 1: app V2 dùng Tailwind v4 (màu oklch) → html-to-image ra ảnh TRẮNG, html2canvas 1.4.1
+//   THROW trên oklch. Screenshot để Pha 1.5 (getDisplayMedia / html2canvas-pro). Text context đã đủ mạnh để fix.
 import { useState } from 'react'
 import { createPortal } from 'react-dom'
-import { toBlob } from 'html-to-image'
 import { useStore } from '../store/useStore'
 import { supabase } from '../lib/supabase'
-import { createBaoLoi, uploadReportAnh } from '../lib/baoloi'
+import { createBaoLoi } from '../lib/baoloi'
 import { recentErrors } from '../lib/errorBuffer'
 
 export default function ReportButton() {
   const [open, setOpen] = useState(false)
   const [moTa, setMoTa] = useState('')
-  const [anhUrl, setAnhUrl] = useState<string | null>(null) // preview (object URL)
   const [busy, setBusy] = useState(false)
   const [done, setDone] = useState(false)
-  const blobRef = useState<{ b: Blob | null }>(() => ({ b: null }))[0] // giữ blob ảnh để upload khi gửi
 
-  async function moForm() {
-    setMoTa(''); setDone(false); setAnhUrl(null); blobRef.b = null
-    setOpen(true)
-    // Chụp màn HIỆN TẠI (trước khi modal phủ) — best-effort.
-    try {
-      const root = document.getElementById('root')
-      if (root) {
-        const b = await toBlob(root, { pixelRatio: 1, backgroundColor: '#ffffff', cacheBust: true })
-        if (b) { blobRef.b = b; setAnhUrl(URL.createObjectURL(b)) }
-      }
-    } catch { /* ảnh hỏng cũng kệ — report vẫn gửi */ }
-  }
+  function moForm() { setMoTa(''); setDone(false); setOpen(true) }
 
   async function gui() {
     if (busy) return
@@ -35,7 +23,6 @@ export default function ReportButton() {
     try {
       const s = useStore.getState()
       const { data: { user } } = await supabase.auth.getUser()
-      const anh_url = blobRef.b ? await uploadReportAnh(blobRef.b) : null
       const context = {
         leaf: s.staffLeaf,
         nguoi: s.me ? `${s.me.nhanSu.ho_ten}${s.me.nhanSu.ma_ns ? ` (${s.me.nhanSu.ma_ns})` : ''}` : null,
@@ -46,7 +33,7 @@ export default function ReportButton() {
         user_agent: navigator.userAgent,
         loi_gan_day: recentErrors().map((e) => e.msg).slice(-10),
       }
-      await createBaoLoi({ mo_ta: moTa.trim(), route: s.staffLeaf, context, anh_url })
+      await createBaoLoi({ mo_ta: moTa.trim(), route: s.staffLeaf, context })
       setDone(true)
       setTimeout(() => setOpen(false), 1400)
     } catch (e: any) { alert('Gửi lỗi không thành: ' + (e?.message ?? String(e))) }
@@ -72,14 +59,11 @@ export default function ReportButton() {
               <div className="py-6 text-center text-[14px] font-medium text-emerald-600">✓ Đã gửi báo lỗi. Cảm ơn!</div>
             ) : (
               <>
-                <p className="mb-2 text-[12px] text-slate-400">Tả lỗi kỹ: bấm gì → mong đợi gì → thực tế ra gì. (Màn hình + thông tin kỹ thuật đã tự đính kèm.)</p>
-                <textarea value={moTa} onChange={(e) => setMoTa(e.target.value)} autoFocus rows={5}
+                <p className="mb-2 text-[12px] text-slate-400">Tả lỗi kỹ: bấm gì → mong đợi gì → thực tế ra gì. (Màn đang mở + lỗi kỹ thuật đã tự đính kèm. Có ảnh chụp màn thì dán vào mô tả giúp mình.)</p>
+                <textarea value={moTa} onChange={(e) => setMoTa(e.target.value)} autoFocus rows={6}
                   placeholder="Ví dụ: Vào Buổi học → tab ET → bấm Xác nhận, mong đợi chốt điểm nhưng báo lỗi đỏ…"
                   className="w-full rounded-lg border border-slate-300 px-3 py-2 text-[13px] outline-none focus:border-indigo-400" />
-                <div className="mt-2 flex items-center gap-2">
-                  {anhUrl
-                    ? <a href={anhUrl} target="_blank" rel="noreferrer" className="flex items-center gap-1.5 text-[12px] text-slate-500 hover:text-indigo-600"><img src={anhUrl} alt="" className="h-10 w-16 rounded border border-slate-200 object-cover" /> ảnh màn (đã đính)</a>
-                    : <span className="text-[12px] text-slate-300">— không chụp được màn (vẫn gửi được) —</span>}
+                <div className="mt-2 flex items-center">
                   <button onClick={gui} disabled={busy} className="ml-auto rounded-md bg-rose-600 px-4 py-1.5 text-[13px] font-medium text-white hover:bg-rose-500 disabled:opacity-40">{busy ? 'Đang gửi…' : 'Gửi báo lỗi'}</button>
                 </div>
               </>
