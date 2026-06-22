@@ -40,7 +40,7 @@ export default function BaoLoiScreen() {
   return (
     <div className="flex h-full flex-col bg-[#fafafb]">
       <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 bg-white px-6 py-2.5">
-        <span className="mr-2 text-sm font-semibold text-slate-900">Báo lỗi</span>
+        <span className="mr-2 text-sm font-semibold text-slate-900">Quản lý báo lỗi</span>
         {FILTERS.map((f) => <button key={f.v} onClick={() => setFilter(f.v)} className={tab(filter === f.v)}>{f.l}{f.v !== 'all' && dem(f.v as TrangThaiBaoLoi) ? ` (${dem(f.v as TrangThaiBaoLoi)})` : ''}</button>)}
         <button onClick={reload} className="rounded-md border border-slate-300 px-2.5 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-400">↻ Tải lại</button>
         <span className="ml-auto text-[12px] text-slate-400">Tổng {rows.length} · Cổng 2: duyệt report nào cho AI fix tự động.</span>

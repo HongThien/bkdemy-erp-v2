@@ -92,5 +92,5 @@ export const adminLeaves: AdminLeaf[] = [
   { id: 'quanlylevel', nhom: 'Vận hành',  ten: 'Quản lý Level',                founderOnly: false },
   { id: 'giaoviec',    nhom: 'Vận hành',  ten: 'Tạo & giao việc phát triển',   founderOnly: false },
   { id: 'phanquyen',   nhom: 'Hệ thống',  ten: 'Phân quyền',                   founderOnly: true },
-  { id: 'baoloi',      nhom: 'Hệ thống',  ten: 'Báo lỗi',                      founderOnly: true },
+  { id: 'baoloi',      nhom: 'Hệ thống',  ten: 'Quản lý báo lỗi',              founderOnly: true },
 ]
