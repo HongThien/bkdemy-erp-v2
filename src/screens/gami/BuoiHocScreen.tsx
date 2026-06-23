@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import html2canvas from 'html2canvas'
+// (Ảnh gửi PH dùng html2canvas tải từ CDN TRONG popup — đúng pattern V1, không import vào bundle.)
 import {
   buoiAoCuaNgay, moBuoi, getBuoi, huyBuoi, huyBuoiCuaNgay, setNguoiDay,
   getRoster, diemDanh, dongBoSiSo, listProblems, addProblem, setProblemDang, ensureProblems, listGrades, gradeMuc, closePhase,
@@ -583,67 +583,78 @@ const ET_KQ_PH: Record<string, { l: string; hex: string; mo_ta: string }> = {
   partial: { l: 'C', hex: '#f59e0b', mo_ta: 'Trình bày chưa hoàn thiện' },
   wrong: { l: 'S', hex: '#f43f5e', mo_ta: 'Chưa biết làm' },
 }
+// Badge tròn Đ/C/S = SVG (circle + text căn tâm bằng dominant-baseline) → html2canvas render qua engine trình duyệt = pixel-perfect, KHỎI căn tay.
+function Badge({ hex, letter, size }: { hex: string; letter: string; size: number }) {
+  const c = size / 2
+  return (
+    <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+      <circle cx={c} cy={c} r={c} fill={hex} />
+      <text x={c} y={c} textAnchor="middle" dominantBaseline="central" fontSize={size * 0.52} fontWeight={700} fill="#ffffff"
+        fontFamily='system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif'>{letter}</text>
+    </svg>
+  )
+}
 function EtAnhGuiPH({ coMat, probs, gradeOf, buoi, onClose }: {
   coMat: BuoiHocHS[]; probs: Problem[]; gradeOf: (pid: string, hsid: string) => Grade | undefined; buoi: BuoiHoc; onClose: () => void
 }) {
   const cardRef = useRef<HTMLDivElement>(null)
-  const [saving, setSaving] = useState(false)
-  const [copied, setCopied] = useState(false)
   if (!coMat.length) return null
   const lop = (buoi as any).lop?.ten_lop ?? ''
   const ngayVN = buoi.ngay ? buoi.ngay.split('-').reverse().join('/') : ''
-  // COPY ảnh vào clipboard (paste thẳng vào Zalo/messenger).
-  // ⚠ BÀI HỌC V1: KHÔNG html2canvas thẳng node live — rất dễ LỆCH/TRẮNG (app CSS, zoom:1.15, scroll, overflow clip).
-  // Cách V1 (exportPhieuViaPopup): XUẤT HTML ra rồi RENDER LẠI trong 1 document SẠCH riêng, rồi mới chụp.
-  // Ở đây: render outerHTML của card (đã toàn inline-hex, tự mô tả) vào IFRAME ẩn sạch (KHÔNG nhúng stylesheet
-  // app → không dính oklch Tailwind v4, không zoom, không clip), html2canvas trong đó, clipboard.write từ tab cha.
-  async function copyAnh() {
+  // COPY ảnh — ĐÚNG pattern V1 (TabSatHach.handleCopy / openReportPopup, chạy production ổn định):
+  // MỞ POPUP chứa HTML phiếu + nút "Copy ảnh" NGAY TRONG popup. Bấm Copy trong popup = user-gesture trong
+  // context popup → html2canvas (CDN) + clipboard.write chạy ngon (paste Zalo); fallback tải file CHỈ khi clipboard bị chặn.
+  // Card đã inline-hex (tự mô tả) → KHÔNG nhúng stylesheet app (né oklch Tailwind v4). Kèm nút In / Lưu PDF.
+  function handleCopy() {
     const el = cardRef.current
-    if (!el || saving) return
-    setSaving(true)
-    let iframe: HTMLIFrameElement | null = null
-    try {
-      const cardHTML = el.outerHTML
-      iframe = document.createElement('iframe')
-      iframe.setAttribute('aria-hidden', 'true')
-      iframe.style.cssText = 'position:fixed;left:-10000px;top:0;width:520px;height:100px;border:0;background:#fff'
-      document.body.appendChild(iframe)
-      const doc = iframe.contentDocument!
-      doc.open()
-      doc.write(`<!DOCTYPE html><html><head><meta charset="utf-8"><base href="${location.origin}/">`
-        + `<style>*{box-sizing:border-box;margin:0}html,body{background:#fff}</style></head>`
-        + `<body><div id="cap" style="display:inline-block;background:#fff">${cardHTML}</div></body></html>`)
-      doc.close()
-      if ((doc as any).fonts?.ready) { try { await (doc as any).fonts.ready } catch { /* noop */ } }
-      const target = doc.getElementById('cap') as HTMLElement
-      // Nới viewport iframe vừa khít nội dung để html2canvas không cắt.
-      iframe.style.width = `${target.scrollWidth + 40}px`
-      iframe.style.height = `${target.scrollHeight + 40}px`
-      await new Promise<void>((r) => requestAnimationFrame(() => requestAnimationFrame(() => r())))
-      const canvas = await html2canvas(target, {
-        backgroundColor: '#ffffff', scale: 2, useCORS: true, logging: false,
-        width: target.scrollWidth, height: target.scrollHeight,
-        windowWidth: target.scrollWidth, windowHeight: target.scrollHeight,
-      })
-      const blob = await new Promise<Blob | null>((res) => canvas.toBlob(res, 'image/png'))
-      if (!blob) throw new Error('Tạo ảnh rỗng.')
-      try {
-        await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })])
-        setCopied(true); setTimeout(() => setCopied(false), 2000)
-      } catch {
-        // Clipboard ảnh bị chặn (không HTTPS / trình duyệt không hỗ trợ) → fallback tải file (như V1).
-        const a = document.createElement('a')
-        a.href = canvas.toDataURL('image/png'); a.download = `KetQuaET_${lop || 'lop'}_${ngayVN.replace(/\//g, '-')}.png`; a.click()
-        setCopied(true); setTimeout(() => setCopied(false), 2000)
-      }
-    } catch (e: any) { alert('Không tạo được ảnh: ' + (e?.message ?? String(e))) }
-    finally { if (iframe) document.body.removeChild(iframe); setSaving(false) }
+    if (!el) { alert('Chưa render được phiếu'); return }
+    const cardHTML = el.outerHTML
+    const fname = `KetQuaET_${lop || 'lop'}_${ngayVN.replace(/\//g, '-')}.png`
+    const html = `<!DOCTYPE html><html><head><meta charset="utf-8">
+<base href="${location.origin}/">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kết quả ET — Lớp ${lop}</title>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"><\/script>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;background:#f3f4f6;padding:12px;display:flex;flex-direction:column;align-items:center;min-height:100vh}
+  .btn-row{display:flex;gap:8px;margin-bottom:12px;width:100%;max-width:480px}
+  .btn{flex:1;padding:10px 12px;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit}
+  .btn-copy{background:#16a34a;color:#fff}.btn-print{background:#2563eb;color:#fff}.btn:hover{opacity:.85}
+  #msg{font-size:12px;color:#16a34a;margin-top:6px;min-height:18px;text-align:center;width:100%}
+  @media print{.btn-row,#msg{display:none!important}}
+  #report-content{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+</style></head><body>
+<div class="btn-row">
+  <button class="btn btn-copy" onclick="copyImg()">📋 Copy ảnh (paste vào Zalo)</button>
+  <button class="btn btn-print" onclick="window.print()">🖨️ In / Lưu PDF</button>
+</div>
+<div id="report-content">${cardHTML}</div>
+<p id="msg"></p>
+<script>
+async function copyImg(){
+  var msg=document.getElementById('msg');msg.textContent='⏳ Đang xử lý...';
+  try{
+    var node=document.getElementById('report-content');
+    var canvas=await html2canvas(node,{scale:2,backgroundColor:'#ffffff',useCORS:true,logging:false,scrollX:0,scrollY:0,windowWidth:node.scrollWidth,windowHeight:node.scrollHeight,width:node.scrollWidth,height:node.scrollHeight});
+    canvas.toBlob(async function(blob){
+      try{ await navigator.clipboard.write([new ClipboardItem({'image/png':blob})]); msg.textContent='✅ Đã copy! Paste (Ctrl+V) vào Zalo.'; }
+      catch(e){ var url=URL.createObjectURL(blob);var a=document.createElement('a');a.href=url;a.download=${JSON.stringify(fname)};a.click();URL.revokeObjectURL(url); msg.textContent='✅ Đã tải file ảnh!'; }
+    },'image/png');
+  }catch(e){ msg.textContent='Lỗi: '+e.message; }
+}
+<\/script>
+</body></html>`
+    const popup = window.open('', '_blank', 'width=560,height=900,scrollbars=yes')
+    if (!popup) { alert('Trình duyệt chặn popup. Bật "Allow pop-ups" cho site này.'); return }
+    popup.document.write(html)
+    popup.document.close()
   }
   return createPortal(
     <div className="fixed inset-0 z-[90] flex flex-col bg-slate-900/70" onClick={onClose}>
       <div className="flex items-center gap-3 border-b border-slate-700 bg-slate-800 px-4 py-2.5 text-white" onClick={(e) => e.stopPropagation()}>
         <span className="text-sm font-semibold">Ảnh kết quả ET cả lớp — gửi phụ huynh</span>
-        <button onClick={copyAnh} disabled={saving} className="ml-auto rounded-md bg-indigo-600 px-3 py-1 text-sm font-medium hover:bg-indigo-500 disabled:opacity-40">{saving ? 'Đang tạo ảnh…' : copied ? '✓ Đã copy ảnh' : '📋 Copy ảnh'}</button>
+        <button onClick={handleCopy} className="ml-auto rounded-md bg-indigo-600 px-3 py-1 text-sm font-medium hover:bg-indigo-500">📋 Copy ảnh</button>
         <button onClick={onClose} className="rounded-md border border-slate-500 px-3 py-1 text-sm hover:bg-slate-700">Đóng</button>
       </div>
       <div className="min-h-0 flex-1 overflow-auto p-4" onClick={(e) => e.stopPropagation()}>
@@ -680,7 +691,9 @@ function EtAnhGuiPH({ coMat, probs, gradeOf, buoi, onClose }: {
                       return (
                         <td key={p.id} style={{ padding: '6px 4px', textAlign: 'center' }}>
                           {v
-                            ? <span style={{ display: 'inline-flex', height: 24, width: 24, alignItems: 'center', justifyContent: 'center', borderRadius: '9999px', fontSize: 12, fontWeight: 700, color: '#ffffff', background: v.hex }}>{v.l}</span>
+                            // Badge = SVG (circle + text dominant-baseline=central) → html2canvas render qua engine trình duyệt = căn tâm pixel-perfect.
+                            // (line-height/nudge KHÔNG chắc ăn: html2canvas đặt baseline lệch + bỏ qua position:relative inline.)
+                            ? <Badge hex={v.hex} letter={v.l} size={24} />
                             : <span style={{ color: '#cbd5e1' }}>–</span>}
                         </td>
                       )
@@ -689,10 +702,10 @@ function EtAnhGuiPH({ coMat, probs, gradeOf, buoi, onClose }: {
                 ))}
               </tbody>
             </table>
-            <div style={{ marginTop: 12, display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '4px 10px', fontSize: 10.5, color: '#64748b' }}>
+            <div style={{ marginTop: 12, fontSize: 10.5, color: '#64748b' }}>
               {Object.values(ET_KQ_PH).map((v) => (
-                <span key={v.l} style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
-                  <span style={{ display: 'inline-flex', height: 16, width: 16, alignItems: 'center', justifyContent: 'center', borderRadius: '9999px', fontSize: 10, fontWeight: 700, color: '#ffffff', background: v.hex }}>{v.l}</span> {v.mo_ta}
+                <span key={v.l} style={{ display: 'inline-block', marginRight: 12, whiteSpace: 'nowrap', verticalAlign: 'middle' }}>
+                  <Badge hex={v.hex} letter={v.l} size={16} /><span style={{ marginLeft: 4 }}>{v.mo_ta}</span>
                 </span>
               ))}
             </div>
