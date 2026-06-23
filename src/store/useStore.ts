@@ -97,22 +97,10 @@ export const adminNavForUser = (u: User): NavGroup[] => {
   }))
 }
 
-// Cây Nhân sự THẬT (từ getMyScope): Việc của tôi + (Tra cứu & sửa: loại-việc → lớp tôi phụ trách).
-export const staffNavFromScope = (scope: MyScope | null): NavGroup[] => {
-  const groups: NavGroup[] = [{ nhom: null, leaves: [{ id: 'viec', ten: 'Việc của tôi' }] }]
-  if (!scope) return groups
-  const m = new Map<string, { ten: string; lops: Set<string> }>() // wtKey → {ten, ten_lop set}
-  for (const sl of scope.trucTiep)
-    for (const wt of sl.worktypes) {
-      const e = m.get(wt.key) ?? { ten: wt.ten, lops: new Set<string>() }
-      e.lops.add(sl.ten_lop); m.set(wt.key, e)
-    }
-  const nodes: NavLeaf[] = [...m.entries()].map(([key, e]) => ({
-    id: `tc:${key}`, ten: e.ten,
-    children: [...e.lops].map((ten) => ({ id: `tc:${key}:${ten}`, ten })),
-  }))
-  if (nodes.length) groups.push({ nhom: 'Tra cứu & sửa', leaves: nodes })
-  return groups
+// Cây Nhân sự THẬT (từ getMyScope): chỉ "Việc của tôi" (vận hành). Mọi tra-cứu/sửa làm NGAY trong màn Việc-của-tôi
+// (bấm card đã làm để sửa) → đã BỎ nhóm "Tra cứu & sửa" (placeholder, không link đâu). `scope` giữ cho tương lai.
+export const staffNavFromScope = (_scope: MyScope | null): NavGroup[] => {
+  return [{ nhom: null, leaves: [{ id: 'viec', ten: 'Việc của tôi' }] }]
 }
 
 // (cũ — mock) Cây Nhân sự 2 tầng derive theo role mock. Giữ tạm cho tham chiếu.

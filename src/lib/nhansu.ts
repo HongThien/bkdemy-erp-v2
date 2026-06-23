@@ -431,12 +431,26 @@ export async function listHSCuaLop(lopId: string, gomDaRoi = false): Promise<HST
   if (error) throw error
   return (data ?? []) as HSTrongLop[]
 }
+// Khi HS vào lớp: tự thêm vào roster MỌI buổi đã mở của lớp từ ngay_vao trở đi (mo + hoan_tat, bỏ huy) →
+// HS thêm-sau-khi-mở-buổi vẫn vào luồng điểm danh NGAY (không cần mở lại buổi). Idempotent (bỏ buổi đã có HS).
+async function syncHSVaoBuoiTuNgay(hocSinhId: string, lopId: string, tuNgay: string): Promise<void> {
+  const { data: buois } = await supabase.from('buoi_hoc').select('id')
+    .eq('lop_id', lopId).eq('loai', 'thuong').neq('trang_thai', 'huy').gte('ngay', tuNgay).limit(LIMIT)
+  const ids = (buois ?? []).map((b: any) => b.id)
+  if (!ids.length) return
+  const { data: co } = await supabase.from('buoi_hoc_hs').select('buoi_hoc_id').eq('hoc_sinh_id', hocSinhId).in('buoi_hoc_id', ids).limit(LIMIT)
+  const have = new Set((co ?? []).map((r: any) => r.buoi_hoc_id))
+  const rows = ids.filter((id) => !have.has(id)).map((id) => ({ buoi_hoc_id: id, hoc_sinh_id: hocSinhId }))
+  if (rows.length) { const { error } = await supabase.from('buoi_hoc_hs').insert(rows); if (error) throw error }
+}
 export async function ghiDanh(hocSinhId: string, lopId: string, mucNangLucId: string | null = null, ngayVao?: string): Promise<void> {
   // upsert idempotent: ghi danh lại lớp cũ (đã rời) → bật lại 'dang_hoc' với ngày vào MỚI.
   // ngay_vao = cổng thời gian data học tập (BTVN/ET của HS chỉ tính từ ngày này). Trigger DB tự log.
+  const ngay = ngayVao ?? todayVN()
   const { error } = await supabase.from('hoc_sinh_lop')
-    .upsert({ hoc_sinh_id: hocSinhId, lop_id: lopId, muc_nang_luc_id: mucNangLucId, trang_thai: 'dang_hoc', ngay_vao: ngayVao ?? todayVN(), ngay_roi: null }, { onConflict: 'hoc_sinh_id,lop_id' })
+    .upsert({ hoc_sinh_id: hocSinhId, lop_id: lopId, muc_nang_luc_id: mucNangLucId, trang_thai: 'dang_hoc', ngay_vao: ngay, ngay_roi: null }, { onConflict: 'hoc_sinh_id,lop_id' })
   if (error) throw error
+  await syncHSVaoBuoiTuNgay(hocSinhId, lopId, ngay) // HS vào luồng điểm danh ngay, khỏi mở lại buổi
 }
 // Rời lớp = đánh dấu da_roi + ngay_roi (GIỮ dòng — lịch sử), KHÔNG xoá cứng. Trigger DB tự log.
 export async function roiLop(ghiDanhId: string, ngayRoi?: string): Promise<void> {
@@ -444,8 +458,9 @@ export async function roiLop(ghiDanhId: string, ngayRoi?: string): Promise<void>
   if (error) throw error
 }
 export async function setNgayVao(ghiDanhId: string, ngayVao: string): Promise<void> {
-  const { error } = await supabase.from('hoc_sinh_lop').update({ ngay_vao: ngayVao }).eq('id', ghiDanhId)
+  const { data, error } = await supabase.from('hoc_sinh_lop').update({ ngay_vao: ngayVao }).eq('id', ghiDanhId).select('hoc_sinh_id, lop_id, trang_thai').single()
   if (error) throw error
+  if (data && (data as any).trang_thai === 'dang_hoc') await syncHSVaoBuoiTuNgay((data as any).hoc_sinh_id, (data as any).lop_id, ngayVao)
 }
 // CHUYỂN LỚP: rời lớp cũ (ngay_roi) + vào lớp mới (ngay_vao) — 2 sự kiện đều được trigger log.
 export async function chuyenLop(ghiDanhCuId: string, hocSinhId: string, lopMoiId: string, giuBandId: string | null, ngay?: string): Promise<void> {

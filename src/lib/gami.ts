@@ -8,6 +8,7 @@ import { computeEloUpdate } from '../gami/elo.js'
 import { problemPoints, expForRank, rankSession } from '../gami/exp.js'
 import { RANK_EXP, ATTEND_FLOOR_EXP } from '../gami/config.js'
 import { seasonOf, seasonLabel } from '../gami/season.js'
+import { vnInstant, congNgay } from './tuan'
 
 const LIMIT = 10000
 
@@ -143,7 +144,7 @@ export async function diemDanh(buoiHocHsId: string, trangThai: DiemDanh): Promis
 export async function dongBoSiSo(buoiId: string): Promise<number> {
   const { data: b, error } = await supabase.from('buoi_hoc').select('lop_id, ngay, trang_thai').eq('id', buoiId).single()
   if (error) throw error
-  if ((b as any).trang_thai !== 'mo' || !(b as any).lop_id) return 0
+  if ((b as any).trang_thai === 'huy' || !(b as any).lop_id) return 0 // sync cả buổi hoan_tat (HS vào sau), chỉ bỏ huy
   const { data: hs } = await supabase.from('hoc_sinh_lop').select('hoc_sinh_id, ngay_vao').eq('lop_id', (b as any).lop_id).eq('trang_thai', 'dang_hoc').limit(LIMIT)
   const enrolled = (hs ?? []).filter((h: any) => !h.ngay_vao || h.ngay_vao <= (b as any).ngay).map((h: any) => h.hoc_sinh_id)
   if (!enrolled.length) return 0
@@ -499,7 +500,8 @@ export async function setDanhGiaDang(buoiId: string, hsId: string, maDang: strin
 // Pure-derive (§4): buổi đang mở của lớp tôi phụ trách → task theo vai (KHÔNG đẻ row task).
 //   GV → đánh giá sau buổi + chấm bài trên lớp · TG → chấm bài trên lớp + chấm ET.
 export type TabKey = 'diemdanh' | 'danhgia' | 'ingame' | 'et' | 'btvn'
-export type MyTask = { buoiId: string; lop: string; ngay: string; vai: 'gv' | 'tg'; tab: TabKey; label: string; done: boolean }
+// deadline (Thùy chốt): chấm bài + đánh giá = 23h59 ngày buổi · ET = 12h trưa hôm sau · BTVN = 2h TRƯỚC ca học tiếp theo của lớp.
+export type MyTask = { buoiId: string; lopId: string; lop: string; ngay: string; vai: 'gv' | 'tg'; tab: TabKey; label: string; done: boolean; doneAt: string | null; deadline: number | null }
 const TASKS_BY_VAI: Record<'gv' | 'tg', { tab: TabKey; label: string }[]> = {
   gv: [{ tab: 'danhgia', label: 'Đánh giá sau buổi' }, { tab: 'ingame', label: 'Chấm bài trên lớp' }],
   tg: [{ tab: 'ingame', label: 'Chấm bài trên lớp' }, { tab: 'et', label: 'Chấm ET' }, { tab: 'btvn', label: 'Chấm BTVN' }],
@@ -516,14 +518,32 @@ export async function getMyTasks(): Promise<MyTask[]> {
   }
   const lopIds = [...rolesByLop.keys()]
   if (!lopIds.length) return []
-  // mo + hoan_tat (bỏ huy): task XONG vẫn trả về (cờ done) để hiện ở nhóm "Đã xong" — mở lại xem/sửa được.
+  // mo + hoan_tat (bỏ huy): task XONG vẫn trả về (cờ done + doneAt) để hiện ở nhóm "Đã xong" — mở lại xem/sửa được.
   const { data: buois, error } = await supabase.from('buoi_hoc')
     .select('id, lop_id, ngay, ingame_dong_at, et_dong_at, danh_gia_xong_at, btvn_dong_at, lop:lop_id(ten_lop)').neq('trang_thai', 'huy').eq('loai', 'thuong').in('lop_id', lopIds).order('ngay').limit(LIMIT)
   if (error) throw error
+  // TKB cho deadline BTVN (= 2h trước ca học tiếp theo của lớp). Tải 1 lần, suy ca-kế client.
+  const { data: tkb } = await supabase.from('thoi_khoa_bieu')
+    .select('lop_id, thu, gio_bat_dau, hieu_luc_tu, hieu_luc_den, lop:lop_id(ngay_khai_giang)').in('lop_id', lopIds).limit(LIMIT)
+  const tkbByLop = new Map<string, any[]>()
+  for (const s of (tkb ?? []) as any[]) { if (!tkbByLop.has(s.lop_id)) tkbByLop.set(s.lop_id, []); tkbByLop.get(s.lop_id)!.push(s) }
+  const caTiepTheo = (lopId: string, after: string): number | null => {
+    for (let i = 1; i <= 21; i++) {
+      const day = congNgay(after, i); const thu = thuOf(day)
+      const slot = (tkbByLop.get(lopId) ?? []).find((s: any) => s.thu === thu && s.hieu_luc_tu <= day && (!s.hieu_luc_den || s.hieu_luc_den >= day) && (!s.lop?.ngay_khai_giang || s.lop.ngay_khai_giang <= day))
+      if (slot) return vnInstant(day, String(slot.gio_bat_dau).slice(0, 5))
+    }
+    return null
+  }
   const out: MyTask[] = []
   for (const b of (buois ?? []) as any[]) {
-    // mỗi task có mốc HOÀN THÀNH riêng: chấm bài (ingame đóng) · đánh giá (bấm "Hoàn thành") · ET (et đóng) · BTVN (btvn đóng).
-    const doneTab: Record<TabKey, boolean> = { diemdanh: false, ingame: !!b.ingame_dong_at, danhgia: !!b.danh_gia_xong_at, et: !!b.et_dong_at, btvn: !!b.btvn_dong_at }
+    const doneAtTab: Record<TabKey, string | null> = { diemdanh: null, ingame: b.ingame_dong_at, danhgia: b.danh_gia_xong_at, et: b.et_dong_at, btvn: b.btvn_dong_at }
+    const deadlineOf = (tab: TabKey): number | null => {
+      if (tab === 'ingame' || tab === 'danhgia') return vnInstant(b.ngay, '23:59')
+      if (tab === 'et') return vnInstant(congNgay(b.ngay, 1), '12:00')
+      if (tab === 'btvn') { const ca = caTiepTheo(b.lop_id, b.ngay); return ca == null ? null : ca - 2 * 3600000 }
+      return null
+    }
     const roles = rolesByLop.get(b.lop_id)!
     const seen = new Set<TabKey>() // dedup tab trùng (chấm bài có ở cả gv lẫn tg)
     for (const vai of ['gv', 'tg'] as const) {
@@ -531,8 +551,28 @@ export async function getMyTasks(): Promise<MyTask[]> {
       for (const t of TASKS_BY_VAI[vai]) {
         if (seen.has(t.tab)) continue
         seen.add(t.tab)
-        out.push({ buoiId: b.id, lop: b.lop?.ten_lop ?? '?', ngay: b.ngay, vai, tab: t.tab, label: t.label, done: doneTab[t.tab] })
+        out.push({ buoiId: b.id, lopId: b.lop_id, lop: b.lop?.ten_lop ?? '?', ngay: b.ngay, vai, tab: t.tab, label: t.label, done: !!doneAtTab[t.tab], doneAt: doneAtTab[t.tab], deadline: deadlineOf(t.tab) })
       }
+    }
+  }
+  return out
+}
+
+// OPS điểm danh theo TUẦN: buổi ảo (TKB × mỗi ngày trong khoảng) — như buoiAoCuaNgay nhưng cho cả khoảng, kèm `ngay`.
+export async function buoiAoCuaKhoang(tu: string, den: string): Promise<(BuoiAo & { ngay: string })[]> {
+  const { data: slots, error } = await supabase.from('thoi_khoa_bieu')
+    .select('thu, gio_bat_dau, gio_ket_thuc, phong, hieu_luc_tu, hieu_luc_den, lop:lop_id(id, ten_lop, mon, khoi, bac, ngay_khai_giang, trang_thai)')
+    .lte('hieu_luc_tu', den).limit(LIMIT)
+  if (error) throw error
+  const { data: opened } = await supabase.from('buoi_hoc').select('*').gte('ngay', tu).lte('ngay', den).eq('loai', 'thuong').limit(LIMIT)
+  const openMap = new Map((opened ?? []).map((b: any) => [`${b.lop_id}|${b.ngay}`, b]))
+  const out: (BuoiAo & { ngay: string })[] = []
+  for (let day = tu; day <= den; day = congNgay(day, 1)) {
+    const thu = thuOf(day)
+    for (const s of (slots ?? []) as any[]) {
+      if (s.thu !== thu || s.hieu_luc_tu > day || (s.hieu_luc_den && s.hieu_luc_den < day)) continue
+      if (s.lop?.trang_thai !== 'dang_hoc' || !s.lop?.ngay_khai_giang || s.lop.ngay_khai_giang > day) continue
+      out.push({ lop: s.lop, slot: { gio_bat_dau: s.gio_bat_dau, gio_ket_thuc: s.gio_ket_thuc, phong: s.phong }, buoi: (openMap.get(`${s.lop.id}|${day}`) as BuoiHoc) ?? null, ngay: day })
     }
   }
   return out
