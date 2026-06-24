@@ -47,12 +47,12 @@ export default function ReportButton() {
   return (
     <>
       <button onClick={moForm} title="Báo lỗi (gửi cho đội kỹ thuật)"
-        className="no-print fixed bottom-4 left-4 z-[70] flex h-11 items-center gap-2 rounded-full bg-rose-600 px-4 text-[13px] font-semibold text-white shadow-lg hover:bg-rose-500">
+        className="no-print fixed bottom-14 right-3 z-[70] flex h-10 items-center gap-2 rounded-full bg-rose-600 px-4 text-[13px] font-semibold text-white shadow-lg hover:bg-rose-500">
         🐞 Báo lỗi
       </button>
 
       {open && createPortal(
-        <div className="fixed inset-0 z-[95] flex items-end justify-start bg-slate-900/40 p-4 sm:items-center sm:justify-center" onClick={() => !busy && setOpen(false)}>
+        <div className="fixed inset-0 z-[95] flex items-end justify-end bg-slate-900/40 p-4 sm:items-center sm:justify-center" onClick={() => !busy && setOpen(false)}>
           <div className="w-[440px] max-w-full rounded-2xl border border-slate-200 bg-white p-5 shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <div className="mb-1 flex items-center gap-2">
               <span className="text-[15px] font-semibold text-slate-900">🐞 Báo lỗi</span>
