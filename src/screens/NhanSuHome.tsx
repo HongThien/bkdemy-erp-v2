@@ -30,11 +30,11 @@ const ddmm = (s: string) => { const p = s.split('-'); return `${p[2]}/${p[1]}` }
 type OpenBuoi = { id: string; tabs: TabKey[]; initialTab: TabKey; canManage: boolean }
 type TienDo = { tong: number; daDanh: number }
 
-// Badge deadline 3 mức màu (ngưỡng ở lib/tuan.ts NGUONG_DEADLINE — chỉnh được).
+// Badge deadline — dải NÓNG→NGUỘI dạng pill MỀM (hợp tông Apple, không khối đỏ đặc): đỏ→cam→hổ phách→xanh.
 const DEADLINE_TONE: Record<DeadlineMuc, string> = {
-  qua_han: 'border-rose-600 bg-rose-600 text-white',
-  sat: 'border-rose-200 bg-rose-100 text-rose-700',
-  gan: 'border-amber-200 bg-amber-100 text-amber-700',
+  qua_han: 'border-red-200 bg-red-50 text-red-700',
+  sat: 'border-orange-200 bg-orange-50 text-orange-700',
+  gan: 'border-amber-200 bg-amber-50 text-amber-700',
   con_nhieu: 'border-emerald-200 bg-emerald-50 text-emerald-700',
 }
 const DEADLINE_ICON: Record<DeadlineMuc, string> = { qua_han: '⚠', sat: '⏰', gan: '⏳', con_nhieu: '🕒' }
@@ -55,15 +55,25 @@ const TASK_STYLE: Record<TabKey, { icon: string; chip: string; accent: string }>
 const LOAI_TASK: { tab: TabKey; ten: string }[] = [
   { tab: 'diemdanh', ten: 'Điểm danh' }, { tab: 'ingame', ten: 'Chấm bài' }, { tab: 'et', ten: 'Chấm ET' }, { tab: 'btvn', ten: 'Chấm BTVN' }, { tab: 'danhgia', ten: 'Đánh giá' },
 ]
-const chipCls = (on: boolean) => `rounded-full border px-2.5 py-1 text-[12px] font-medium transition ${on ? 'border-indigo-300 bg-indigo-50 text-indigo-700' : 'border-slate-200 bg-white text-slate-500 hover:border-slate-300'}`
+const chipCls = (on: boolean) => `rounded-full border px-3.5 py-1.5 text-[14px] font-medium transition ${on ? 'border-indigo-300 bg-indigo-50 text-indigo-700' : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'}`
 
-// Dải số liệu tổng quan (lấp khoảng trống + liếc là biết tình hình).
-const METRIC_TONE: Record<string, string> = { slate: 'bg-slate-50 text-slate-600', rose: 'bg-rose-50 text-rose-600', amber: 'bg-amber-50 text-amber-600', emerald: 'bg-emerald-50 text-emerald-600' }
+// Dải số liệu — card TRẮNG nổi trên nền xám + số màu theo loại (gu Apple: trắng + bóng mềm, không viền nặng).
+const METRIC_TONE: Record<string, string> = { slate: 'text-slate-700', red: 'text-red-600', orange: 'text-orange-600', emerald: 'text-emerald-600' }
 function Metric({ label, value, tone }: { label: string; value: number; tone: keyof typeof METRIC_TONE }) {
   return (
-    <div className={`rounded-xl px-3.5 py-2.5 ${METRIC_TONE[tone]}`}>
-      <div className="text-[12px] font-medium">{label}</div>
-      <div className="text-[24px] font-semibold leading-tight">{value}</div>
+    <div className="rounded-2xl border border-slate-200/70 bg-white px-4 py-3 shadow-sm">
+      <div className="text-[13px] font-medium text-slate-500">{label}</div>
+      <div className={`text-[26px] font-semibold leading-tight ${METRIC_TONE[tone]}`}>{value}</div>
+    </div>
+  )
+}
+// Tiêu đề khu vực (vận hành / phát triển) — thanh màu + chữ to để nhìn rõ ranh giới.
+function SectionHead({ label, count, color }: { label: string; count?: number; color: string }) {
+  return (
+    <div className="mb-3 flex items-center gap-2">
+      <span className={`h-5 w-1.5 rounded-full ${color}`} />
+      <span className="text-[16px] font-semibold text-slate-800">{label}</span>
+      {count != null && <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[12px] font-semibold text-slate-500">{count}</span>}
     </div>
   )
 }
@@ -79,9 +89,9 @@ function OpsBuoiCard({ ba, ngay, td, done, onOpen }: { ba: BuoiAo; ngay: string;
     } catch (e: any) { alert(e.message ?? String(e)); setBusy(false) }
   }
   const pct = td && td.tong ? Math.round((td.daDanh / td.tong) * 100) : 0
-  const base = done ? 'border-emerald-300 border-l-emerald-500 bg-emerald-50/40' : `border-slate-300 ${TASK_STYLE.diemdanh.accent} bg-white`
+  const base = done ? 'border-l-emerald-500 bg-emerald-50' : `${TASK_STYLE.diemdanh.accent} bg-white`
   return (
-    <button onClick={go} disabled={busy} className={`flex flex-col rounded-xl border-2 border-l-4 p-3.5 text-left transition hover:shadow-md hover:border-indigo-300 disabled:opacity-50 ${base}`}>
+    <button onClick={go} disabled={busy} className={`flex flex-col rounded-2xl border-l-4 p-4 text-left shadow-sm transition hover:shadow-md hover:-translate-y-0.5 disabled:opacity-50 ${base}`}>
       {/* dòng 1: icon + tên (full) */}
       <div className="flex items-center gap-2.5">
         <span className={`inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-[18px] ${done ? 'bg-emerald-100' : TASK_STYLE.diemdanh.chip}`}>{done ? '✓' : '👥'}</span>
@@ -104,10 +114,10 @@ function OpsBuoiCard({ ba, ngay, td, done, onOpen }: { ba: BuoiAo; ngay: string;
 
 function TaskCard({ t, now, done, onOpenBuoi }: { t: MyTask; now: number; done?: boolean; onOpenBuoi: (o: OpenBuoi) => void }) {
   const st = TASK_STYLE[t.tab]
-  const base = done ? 'border-emerald-300 border-l-emerald-500 bg-emerald-50/40' : `border-slate-300 ${st.accent} bg-white`
+  const base = done ? 'border-l-emerald-500 bg-emerald-50' : `${st.accent} bg-white`
   return (
     <button onClick={() => onOpenBuoi({ id: t.buoiId, tabs: tabsCuaVai(t.vai), initialTab: t.tab, canManage: false })}
-      className={`flex flex-col rounded-xl border-2 border-l-4 p-3.5 text-left transition hover:shadow-md hover:border-indigo-300 ${base}`}>
+      className={`flex flex-col rounded-2xl border-l-4 p-4 text-left shadow-sm transition hover:shadow-md hover:-translate-y-0.5 ${base}`}>
       {/* dòng 1: icon + tên task (full) */}
       <div className="flex items-center gap-2.5">
         <span className={`inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-[18px] ${done ? 'bg-emerald-100' : st.chip}`}>{done ? '✓' : st.icon}</span>
@@ -173,13 +183,13 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
   return (
     <div className="mx-auto max-w-[1600px]">
       {/* Header + điều hướng tuần */}
-      <div className="mb-3 flex flex-wrap items-center gap-2">
-        <h2 className="text-sm font-semibold">Việc của tôi</h2>
-        <div className="ml-auto flex items-center gap-1">
-          <button onClick={() => setTuan((t) => t - 1)} className="rounded-md border border-slate-200 px-2 py-1 text-[13px] text-slate-600 hover:border-indigo-300">‹</button>
-          <span className="min-w-[180px] text-center text-[12px] font-medium text-slate-600">{nhanTuan(tuan)}</span>
-          <button onClick={() => setTuan((t) => t + 1)} className="rounded-md border border-slate-200 px-2 py-1 text-[13px] text-slate-600 hover:border-indigo-300">›</button>
-          {tuan !== tuanNay && <button onClick={() => setTuan(tuanNay)} className="ml-1 rounded-md bg-indigo-50 px-2 py-1 text-[12px] font-medium text-indigo-600 hover:bg-indigo-100">Tuần này</button>}
+      <div className="mb-4 flex flex-wrap items-center gap-2">
+        <h2 className="text-[22px] font-semibold text-slate-800">Việc của tôi</h2>
+        <div className="ml-auto flex items-center gap-1.5">
+          <button onClick={() => setTuan((t) => t - 1)} className="rounded-md border border-slate-200 px-2.5 py-1.5 text-[16px] leading-none text-slate-600 hover:border-indigo-300">‹</button>
+          <span className="min-w-[210px] text-center text-[15px] font-semibold text-slate-700">{nhanTuan(tuan)}</span>
+          <button onClick={() => setTuan((t) => t + 1)} className="rounded-md border border-slate-200 px-2.5 py-1.5 text-[16px] leading-none text-slate-600 hover:border-indigo-300">›</button>
+          {tuan !== tuanNay && <button onClick={() => setTuan(tuanNay)} className="ml-1 rounded-md bg-indigo-50 px-2.5 py-1.5 text-[14px] font-medium text-indigo-600 hover:bg-indigo-100">Tuần này</button>}
         </div>
       </div>
       {/* Filter loại việc */}
@@ -191,15 +201,15 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
       {/* Dải số liệu tổng quan */}
       <div className="mb-4 grid grid-cols-2 gap-2.5 sm:grid-cols-4">
         <Metric label="Cần làm" value={canLam} tone="slate" />
-        <Metric label="Quá hạn" value={quaHan} tone="rose" />
-        <Metric label="Sát hạn" value={satHan} tone="amber" />
+        <Metric label="Quá hạn" value={quaHan} tone="red" />
+        <Metric label="Sát hạn" value={satHan} tone="orange" />
         <Metric label="Đã xong tuần" value={daXongTuan} tone="emerald" />
       </div>
 
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-[minmax(0,1fr)_280px]">
         {/* VẬN HÀNH — chiếm hết phần còn lại */}
         <div className="min-w-0">
-          <div className="mb-2 text-[12px] font-semibold uppercase tracking-wider text-slate-400">Vận hành{hasActive ? ` (${opsActive.length + taskActive.length})` : ''}</div>
+          <SectionHead label="Vận hành" count={hasActive ? opsActive.length + taskActive.length : undefined} color="bg-indigo-500" />
           {!hasActive ? (
             <div className="rounded-lg border border-emerald-200 bg-emerald-50/60 px-4 py-3 text-[13px] font-medium text-emerald-700">✓ Không còn việc vận hành cần làm trong {nhanTuan(tuan).toLowerCase()}.</div>
           ) : (
@@ -235,11 +245,11 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
           </details>
         </div>
 
-        {/* PHÁT TRIỂN — rail hẹp */}
-        <div>
-          <div className="mb-2 text-[12px] font-semibold uppercase tracking-wider text-slate-400">Phát triển</div>
-          <div className="rounded-xl border border-dashed border-slate-200 bg-slate-50/60 p-4">
-            <div className="flex items-center gap-2 text-[13px] font-medium text-slate-600">📨 Giao việc — sắp có</div>
+        {/* PHÁT TRIỂN — rail hẹp, ngăn cách bằng đường kẻ dọc */}
+        <div className="lg:border-l-2 lg:border-slate-200 lg:pl-5">
+          <SectionHead label="Phát triển" color="bg-violet-500" />
+          <div className="rounded-2xl border border-dashed border-slate-300 bg-white p-4 shadow-sm">
+            <div className="flex items-center gap-2 text-[14px] font-medium text-slate-700">📨 Giao việc — sắp có</div>
             <p className="mt-1.5 text-[12px] leading-relaxed text-slate-500">Việc phát triển được cấp trên giao (soạn tài liệu, nhập kho…) sẽ hiện ở đây — là task THẬT, không reset theo tuần.</p>
           </div>
         </div>
@@ -276,7 +286,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       {loading ? (
         <section className="p-8 text-sm text-slate-400">Đang tải…</section>
       ) : staffLeaf === 'viec' ? (
-        <section className="min-h-0 overflow-auto p-8"><VietCuaToi scope={scope} onOpenBuoi={setOpenBuoi} /></section>
+        <section className="min-h-0 overflow-auto bg-[#f5f5f7] p-8"><VietCuaToi scope={scope} onOpenBuoi={setOpenBuoi} /></section>
       ) : staffLeaf === 'bdkt' ? <KhoScreen />
       : (staffLeaf === 'lamtailieu' || staffLeaf === 'lamtailieu:giao_trinh') ? <TaiLieuScreen />
       : staffLeaf === 'lamtailieu:et' ? <ETScreen />
