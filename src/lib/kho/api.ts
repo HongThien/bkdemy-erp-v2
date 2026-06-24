@@ -71,8 +71,9 @@ export type CauHoi = {
   created_at?: string
 }
 
-export async function listCauByDang(maDang: string): Promise<CauHoi[]> {
-  const { data, error } = await supabase.from('dai_cau_hoi').select('*')
+// tbl = bảng câu theo MÔN (default Toán 'dai_cau_hoi'; KHTN 'khtn_cau_hoi'). Giữ default → Toán không đổi hành vi.
+export async function listCauByDang(maDang: string, tbl = 'dai_cau_hoi'): Promise<CauHoi[]> {
+  const { data, error } = await supabase.from(tbl).select('*')
     .eq('dang_chinh', maDang).order('created_at').limit(LIMIT)
   if (error) throw error
   return (data ?? []) as CauHoi[]
@@ -84,17 +85,17 @@ type CauInput = {
   anh_de?: string | null; anh_dap_an?: string | null
   nguon?: string; nguon_giai?: string; parent_ma_cau?: string | null; clone_method?: string | null
 }
-export async function createCau(input: CauInput): Promise<CauHoi> {
-  const { data, error } = await supabase.from('dai_cau_hoi').insert(input).select().single()
+export async function createCau(input: CauInput, tbl = 'dai_cau_hoi'): Promise<CauHoi> {
+  const { data, error } = await supabase.from(tbl).insert(input).select().single()
   if (error) throw error
   return data as CauHoi
 }
-export async function updateCau(ma_cau: string, patch: Partial<CauInput>): Promise<void> {
-  const { error } = await supabase.from('dai_cau_hoi').update(patch).eq('ma_cau', ma_cau)
+export async function updateCau(ma_cau: string, patch: Partial<CauInput>, tbl = 'dai_cau_hoi'): Promise<void> {
+  const { error } = await supabase.from(tbl).update(patch).eq('ma_cau', ma_cau)
   if (error) throw error
 }
-export async function deleteCau(ma_cau: string): Promise<void> {
-  const { error } = await supabase.from('dai_cau_hoi').delete().eq('ma_cau', ma_cau)
+export async function deleteCau(ma_cau: string, tbl = 'dai_cau_hoi'): Promise<void> {
+  const { error } = await supabase.from(tbl).delete().eq('ma_cau', ma_cau)
   if (error) throw error
 }
 
@@ -119,8 +120,8 @@ export async function uploadKhoFile(file: File): Promise<{ url: string; name: st
 }
 // Mã câu = mã DẠNG + STT 3 chữ số (vd 07010103 → 07010103001). Lấy max STT hiện có +1 (không tái dùng số đã xoá).
 const maCau = (dangChinh: string, seq: number) => `${dangChinh}${String(seq).padStart(3, '0')}`
-async function nextCauSeq(dangChinh: string): Promise<number> {
-  const { data, error } = await supabase.from('dai_cau_hoi').select('ma_cau').eq('dang_chinh', dangChinh).limit(LIMIT)
+async function nextCauSeq(dangChinh: string, tbl = 'dai_cau_hoi'): Promise<number> {
+  const { data, error } = await supabase.from(tbl).select('ma_cau').eq('dang_chinh', dangChinh).limit(LIMIT)
   if (error) throw error
   let max = 0
   for (const r of data ?? []) {
@@ -214,15 +215,15 @@ export function parseCloneJson(text: string): { goc: CauNoiDung; variants: CauNo
 }
 export async function saveCloneBatch(a: {
   dangChinh: string; loaiCau: string; goc: CauNoiDung; variants: CauNoiDung[]
-}): Promise<{ goc: string; soClone: number }> {
-  const start = await nextCauSeq(a.dangChinh)
+}, tbl = 'dai_cau_hoi'): Promise<{ goc: string; soClone: number }> {
+  const start = await nextCauSeq(a.dangChinh, tbl)
   const g = await createCau({
     ma_cau: maCau(a.dangChinh, start),
     dang_chinh: a.dangChinh, loai_cau: a.loaiCau,
     noi_dung: a.goc.noi_dung, dap_an: a.goc.dap_an, loi_giai: a.goc.loi_giai, lua_chon: a.goc.lua_chon ?? null,
     anh_de: a.goc.anh_de ?? null, anh_dap_an: a.goc.anh_dap_an ?? null, nguon: 'le',
     nguon_giai: a.goc.nguon_giai ?? 'nguoi', // gốc = người ra đề (tin)
-  })
+  }, tbl)
   if (a.variants.length) {
     const rows = a.variants.map((v, i) => ({
       ma_cau: maCau(a.dangChinh, start + 1 + i),
@@ -231,7 +232,7 @@ export async function saveCloneBatch(a: {
       anh_de: v.anh_de ?? null, anh_dap_an: v.anh_dap_an ?? null,
       nguon: 'clone', nguon_giai: 'ai', parent_ma_cau: g.ma_cau, clone_method: 'manual_gemini', // biến thể = AI giải
     }))
-    const { error } = await supabase.from('dai_cau_hoi').insert(rows)
+    const { error } = await supabase.from(tbl).insert(rows)
     if (error) throw error
   }
   return { goc: g.ma_cau, soClone: a.variants.length }
@@ -302,16 +303,16 @@ export function parseStructuredText(text: string): CauNoiDung[] {
   return blocks.map((b) => parseBlock(b.join('\n'))).filter((c) => c.noi_dung.trim())
 }
 
-export async function saveCauBatch(a: { dangChinh: string; loaiCau: string; items: CauNoiDung[] }): Promise<number> {
+export async function saveCauBatch(a: { dangChinh: string; loaiCau: string; items: CauNoiDung[] }, tbl = 'dai_cau_hoi'): Promise<number> {
   if (!a.items.length) return 0
-  const start = await nextCauSeq(a.dangChinh)
+  const start = await nextCauSeq(a.dangChinh, tbl)
   const rows = a.items.map((v, i) => ({
     ma_cau: maCau(a.dangChinh, start + i),
     dang_chinh: a.dangChinh, loai_cau: a.loaiCau,
     noi_dung: v.noi_dung, dap_an: v.dap_an, loi_giai: v.loi_giai, lua_chon: v.lua_chon ?? null,
     anh_de: v.anh_de ?? null, anh_dap_an: v.anh_dap_an ?? null, nguon: 'le', nguon_giai: v.nguon_giai ?? 'nguoi',
   }))
-  const { error } = await supabase.from('dai_cau_hoi').insert(rows)
+  const { error } = await supabase.from(tbl).insert(rows)
   if (error) throw error
   return rows.length
 }
@@ -760,4 +761,67 @@ export async function countYByDangHinh(): Promise<Record<string, number>> {
   const m: Record<string, number> = {}
   for (const r of data ?? []) m[r.dang_hinh] = (m[r.dang_hinh] ?? 0) + 1
   return m
+}
+
+// ── KHTN: bản đồ (clone shape Đại, bảng khtn_*) — 1 cây Chủ-đề→Chuyên-đề→Dạng, KHÔNG nhánh ──
+export async function listKhtnMap(khoi: string): Promise<MapRow[]> {
+  const { data, error } = await supabase.from('khtn_ban_do').select('*')
+    .eq('khoi', khoi).order('ma_chu_de').order('ma_chuyen_de').order('ma_dang').limit(LIMIT)
+  if (error) throw error
+  return (data ?? []).map((r: any) => ({
+    leafMa: r.ma_dang, khoi: r.khoi, t1Ma: r.ma_chu_de, t1Ten: r.ten_chu_de,
+    t2Ma: r.ma_chuyen_de, t2Ten: r.ten_chuyen_de, leafTen: r.ten_dang, bac: r.bac_toi_thieu, mucDo: r.muc_do,
+  }))
+}
+export async function createKhtnMap(row: MapRow): Promise<void> {
+  const { error } = await supabase.from('khtn_ban_do').insert({
+    ma_dang: row.leafMa, khoi: row.khoi, ma_chu_de: row.t1Ma, ten_chu_de: row.t1Ten,
+    ma_chuyen_de: row.t2Ma, ten_chuyen_de: row.t2Ten, ten_dang: row.leafTen, muc_do: row.mucDo ?? 3, bac_toi_thieu: row.bac,
+  })
+  if (error) throw error
+}
+export async function updateKhtnLeaf(leafMa: string, patch: { leafTen: string; bac: string; mucDo: number | null }): Promise<void> {
+  const { error } = await supabase.from('khtn_ban_do').update({ ten_dang: patch.leafTen, bac_toi_thieu: patch.bac, muc_do: patch.mucDo ?? undefined }).eq('ma_dang', leafMa)
+  if (error) throw error
+}
+export const deleteKhtnLeaf = async (leafMa: string) => { const { error } = await supabase.from('khtn_ban_do').delete().eq('ma_dang', leafMa); if (error) throw error }
+export async function deleteKhtnLeaves(leafMas: string[]): Promise<void> {
+  if (!leafMas.length) return
+  const { error } = await supabase.from('khtn_ban_do').delete().in('ma_dang', leafMas); if (error) throw error
+}
+export async function deleteKhtnCum(leafMas: string[]): Promise<void> {
+  if (!leafMas.length) return
+  const { error: e1 } = await supabase.from('khtn_cau_hoi').delete().in('dang_chinh', leafMas); if (e1) throw e1
+  const { error: e2 } = await supabase.from('khtn_ban_do').delete().in('ma_dang', leafMas); if (e2) throw e2
+}
+export async function renameKhtnChuDe(khoi: string, maChuDe: string, ten: string): Promise<void> {
+  const { error } = await supabase.from('khtn_ban_do').update({ ten_chu_de: ten }).eq('khoi', khoi).eq('ma_chu_de', maChuDe); if (error) throw error
+}
+export async function renameKhtnChuyenDe(maChuyenDe: string, ten: string): Promise<void> {
+  const { error } = await supabase.from('khtn_ban_do').update({ ten_chuyen_de: ten }).eq('ma_chuyen_de', maChuyenDe); if (error) throw error
+}
+export async function countCauByDangKhtn(): Promise<Record<string, number>> {
+  const { data, error } = await supabase.from('khtn_cau_hoi').select('dang_chinh').limit(LIMIT)
+  if (error) throw error
+  const m: Record<string, number> = {}; for (const r of data ?? []) m[(r as any).dang_chinh] = (m[(r as any).dang_chinh] ?? 0) + 1; return m
+}
+export async function listKhtnLyThuyet(): Promise<Record<string, LyThuyet>> {
+  const { data, error } = await supabase.from('khtn_dang_ly_thuyet').select('*').limit(LIMIT); if (error) throw error
+  const m: Record<string, LyThuyet> = {}; for (const r of data ?? []) { const x = r as any; m[x.ma_dang] = { noi_dung: x.noi_dung ?? '', file_url: x.file_url, ten_file: x.ten_file, cap_nhat_at: x.cap_nhat_at } } return m
+}
+export async function upsertKhtnLyThuyet(ma_dang: string, noi_dung: string, file_url: string | null, ten_file: string | null): Promise<void> {
+  const { error } = await supabase.from('khtn_dang_ly_thuyet').upsert({ ma_dang, noi_dung, file_url, ten_file }, { onConflict: 'ma_dang' }); if (error) throw error
+}
+export async function deleteKhtnLyThuyet(ma_dang: string): Promise<void> {
+  const { error } = await supabase.from('khtn_dang_ly_thuyet').delete().eq('ma_dang', ma_dang); if (error) throw error
+}
+export async function listKhtnChuyenDeLyThuyet(): Promise<Record<string, LyThuyet>> {
+  const { data, error } = await supabase.from('khtn_chuyen_de_ly_thuyet').select('*').limit(LIMIT); if (error) throw error
+  const m: Record<string, LyThuyet> = {}; for (const r of data ?? []) { const x = r as any; m[x.ma_chuyen_de] = { noi_dung: x.noi_dung ?? '', file_url: x.file_url, ten_file: x.ten_file, khong_can: x.khong_can ?? false, cap_nhat_at: x.cap_nhat_at } } return m
+}
+export async function upsertKhtnChuyenDeLyThuyet(ma_chuyen_de: string, noi_dung: string, file_url: string | null, ten_file: string | null, khong_can = false): Promise<void> {
+  const { error } = await supabase.from('khtn_chuyen_de_ly_thuyet').upsert({ ma_chuyen_de, noi_dung, file_url, ten_file, khong_can }, { onConflict: 'ma_chuyen_de' }); if (error) throw error
+}
+export async function deleteKhtnChuyenDeLyThuyet(ma_chuyen_de: string): Promise<void> {
+  const { error } = await supabase.from('khtn_chuyen_de_ly_thuyet').delete().eq('ma_chuyen_de', ma_chuyen_de); if (error) throw error
 }

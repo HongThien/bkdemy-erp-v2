@@ -2,7 +2,7 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-56 bảng · 0 enum · 3 trigger · 8 function
+60 bảng · 0 enum · 3 trigger · 8 function
 
 ## bang_khong_bu
 
@@ -418,6 +418,62 @@
 | loai_key | text |  |  | PK FK→thanh_tich_loai.key |
 | thu_tu | integer |  | 0 |  |
 
+## khtn_ban_do
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| ma_dang | text |  | ('KG'::text \|\| lpad((nextval('khtn_dang_seq'::regclass))::text, 5, '0'::text)) | PK |
+| khoi | text |  |  |  |
+| ma_chu_de | text |  |  |  |
+| ten_chu_de | text |  |  |  |
+| ma_chuyen_de | text |  |  |  |
+| ten_chuyen_de | text |  |  |  |
+| ten_dang | text |  |  |  |
+| muc_do | smallint |  |  |  |
+| bac_toi_thieu | text |  |  | FK→lop_bac.ma |
+| created_at | timestamp with time zone |  | now() |  |
+
+## khtn_cau_hoi
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| ma_cau | text |  | ('KC'::text \|\| lpad((nextval('khtn_cau_seq'::regclass))::text, 6, '0'::text)) | PK |
+| dang_chinh | text |  |  | FK→khtn_ban_do.ma_dang |
+| loai_cau | text |  |  |  |
+| noi_dung | text |  |  |  |
+| lua_chon | jsonb | Y |  |  |
+| menh_de | jsonb | Y |  |  |
+| dap_an | text | Y |  |  |
+| loi_giai | text | Y |  |  |
+| anh_de | text | Y |  |  |
+| anh_dap_an | text | Y |  |  |
+| nguon | text |  | 'le'::text |  |
+| nguon_giai | text |  | 'nguoi'::text |  |
+| parent_ma_cau | text | Y |  | FK→khtn_cau_hoi.ma_cau |
+| clone_method | text | Y |  |  |
+| created_at | timestamp with time zone |  | now() |  |
+
+## khtn_chuyen_de_ly_thuyet
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| ma_chuyen_de | text |  |  | PK |
+| noi_dung | text |  | ''::text |  |
+| file_url | text | Y |  |  |
+| ten_file | text | Y |  |  |
+| khong_can | boolean |  | false |  |
+| cap_nhat_at | timestamp with time zone |  | now() |  |
+
+## khtn_dang_ly_thuyet
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| ma_dang | text |  |  | PK FK→khtn_ban_do.ma_dang |
+| noi_dung | text |  | ''::text |  |
+| file_url | text | Y |  |  |
+| ten_file | text | Y |  |  |
+| cap_nhat_at | timestamp with time zone |  | now() |  |
+
 ## ky_thi
 
 | cột | kiểu | null | default | khóa |
@@ -550,6 +606,7 @@
 | ngay | date | Y |  |  |
 | nguon_id | uuid | Y |  | FK→tai_lieu.id |
 | nguon_buoi | text | Y |  |  |
+| mon | text |  | 'toan'::text |  |
 
 ## tai_lieu_cau
 
@@ -557,7 +614,7 @@
 |---|---|---|---|---|
 | id | uuid |  | gen_random_uuid() | PK |
 | phan_id | uuid |  |  | FK→tai_lieu_phan.id |
-| ma_cau | text |  |  | FK→dai_cau_hoi.ma_cau |
+| ma_cau | text |  |  |  |
 | thu_tu | integer |  | 0 |  |
 
 ## tai_lieu_phan

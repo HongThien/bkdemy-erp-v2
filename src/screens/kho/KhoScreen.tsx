@@ -1,9 +1,10 @@
 import { Fragment, useEffect, useState } from 'react'
 import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../lib/kho/api'
 import BanDo from './BanDo'
-import { daiBranch, hinhBranch } from './branches'
+import { daiBranch, hinhBranch, khtnBranch } from './branches'
 
 type Tab = 'dai' | 'hinh'
+type Mon = 'toan' | 'khtn'
 
 // Nhớ màn hình gần nhất (preference cá nhân → localStorage, không phải data dùng chung)
 const readKhoi = () => {
@@ -11,12 +12,17 @@ const readKhoi = () => {
   return k && (KHOI_OPTIONS as readonly string[]).includes(k) ? k : DEFAULT_KHOI
 }
 const readTab = () => (localStorage.getItem('kho.tab') === 'hinh' ? 'hinh' : 'dai') as Tab
+const readMon = () => (localStorage.getItem('kho.mon') === 'khtn' ? 'khtn' : 'toan') as Mon
 
 export default function KhoScreen() {
+  const [mon, setMon] = useState<Mon>(readMon)
   const [tab, setTab] = useState<Tab>(readTab)
   const [khoi, setKhoi] = useState<string>(readKhoi)
   useEffect(() => { localStorage.setItem('kho.khoi', khoi) }, [khoi])
   useEffect(() => { localStorage.setItem('kho.tab', tab) }, [tab])
+  useEffect(() => { localStorage.setItem('kho.mon', mon) }, [mon])
+  // môn KHTN = 1 cây (không nhánh Đại/Hình); Toán = nhánh tab → branch.
+  const config = mon === 'khtn' ? khtnBranch : tab === 'dai' ? daiBranch : hinhBranch
 
   return (
     <div className="flex h-full flex-col bg-[#fafafb]">
@@ -25,11 +31,18 @@ export default function KhoScreen() {
         <div className="flex items-baseline gap-2">
           <span className="text-sm font-semibold text-slate-900">Bản đồ kiến thức</span>
         </div>
-        {/* Tab nhánh — segmented */}
+        {/* Bộ chọn MÔN — segmented (sau scope theo nhân sự: 1-môn → khoá) */}
         <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5">
-          <TabBtn active={tab === 'dai'} onClick={() => setTab('dai')}>Đại số</TabBtn>
-          <TabBtn active={tab === 'hinh'} onClick={() => setTab('hinh')}>Hình học</TabBtn>
+          <TabBtn active={mon === 'toan'} onClick={() => setMon('toan')}>Toán</TabBtn>
+          <TabBtn active={mon === 'khtn'} onClick={() => setMon('khtn')}>KHTN</TabBtn>
         </div>
+        {/* Tab nhánh (chỉ Toán) — segmented */}
+        {mon === 'toan' && (
+          <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5">
+            <TabBtn active={tab === 'dai'} onClick={() => setTab('dai')}>Đại số</TabBtn>
+            <TabBtn active={tab === 'hinh'} onClick={() => setTab('hinh')}>Hình học</TabBtn>
+          </div>
+        )}
         {/* Khối */}
         <div className="ml-auto flex items-center gap-1">
           <span className="mr-1 text-[12px] font-semibold uppercase tracking-wider text-slate-600">Khối</span>
@@ -53,7 +66,7 @@ export default function KhoScreen() {
       </div>
 
       <div className="min-h-0 flex-1">
-        <BanDo key={`${tab}-${khoi}`} config={tab === 'dai' ? daiBranch : hinhBranch} khoi={khoi} />
+        <BanDo key={`${config.key}-${khoi}`} config={config} khoi={khoi} />
       </div>
     </div>
   )

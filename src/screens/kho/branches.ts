@@ -3,7 +3,8 @@ import * as api from '../../lib/kho/api'
 import type { MapRow, LyThuyet } from '../../lib/kho/api'
 
 export type BranchConfig = {
-  key: 'dai' | 'hinh'
+  key: 'dai' | 'hinh' | 'khtn'
+  cauTbl?: string                                    // bảng câu theo môn (dai_cau_hoi/khtn_cau_hoi). undefined = nhánh chưa có câu (Hình)
   labels: { t1: string; t2: string; leaf: string }  // tầng1 / tầng2 / lá
   hasMucDo: boolean
   countLabel: string                                 // 'câu' (Đại) | 'ý' (Hình)
@@ -29,6 +30,7 @@ export type LyThuyetApi = {
 
 export const daiBranch: BranchConfig = {
   key: 'dai',
+  cauTbl: 'dai_cau_hoi',
   labels: { t1: 'Chủ đề', t2: 'Chuyên đề', leaf: 'Dạng' },
   hasMucDo: true,
   countLabel: 'câu',
@@ -52,6 +54,27 @@ export const daiBranch: BranchConfig = {
     upsert: api.upsertDaiChuyenDeLyThuyet,
     remove: api.deleteDaiChuyenDeLyThuyet,
   },
+}
+
+// KHTN = clone Đại (Chủ-đề→Chuyên-đề→Dạng + bậc + độ khó), bảng khtn_*, KHÔNG nhánh.
+export const khtnBranch: BranchConfig = {
+  key: 'khtn',
+  cauTbl: 'khtn_cau_hoi',
+  labels: { t1: 'Chủ đề', t2: 'Chuyên đề', leaf: 'Dạng' },
+  hasMucDo: true,
+  countLabel: 'câu',
+  chuan: api.CHUAN_SO_CAU,
+  list: api.listKhtnMap,
+  count: api.countCauByDangKhtn,
+  create: api.createKhtnMap,
+  updateLeaf: api.updateKhtnLeaf,
+  deleteLeaf: api.deleteKhtnLeaf,
+  deleteLeaves: api.deleteKhtnLeaves,
+  deleteCum: api.deleteKhtnCum,
+  renameT1: api.renameKhtnChuDe,
+  renameT2: api.renameKhtnChuyenDe,
+  lyThuyet: { list: api.listKhtnLyThuyet, upsert: api.upsertKhtnLyThuyet, remove: api.deleteKhtnLyThuyet },
+  lyThuyetT2: { list: api.listKhtnChuyenDeLyThuyet, upsert: api.upsertKhtnChuyenDeLyThuyet, remove: api.deleteKhtnChuyenDeLyThuyet },
 }
 
 export const hinhBranch: BranchConfig = {

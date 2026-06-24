@@ -29,18 +29,19 @@ export default function DangHub({ d, config, chuan, onClose, onEditDang, onDelet
   d: MapRow; config: BranchConfig; chuan?: number
   onClose: () => void; onEditDang: () => void; onDeleteDang: () => void; onChanged: () => void
 }) {
-  const isDai = config.key === 'dai'
+  const hasCau = !!config.cauTbl                 // nhánh có quản lý câu (Đại/KHTN); Hình chưa → placeholder
+  const cauTbl = config.cauTbl ?? 'dai_cau_hoi'  // bảng câu theo môn
   const [caus, setCaus] = useState<CauHoi[]>([])
-  const [loading, setLoading] = useState(isDai)
+  const [loading, setLoading] = useState(hasCau)
   const [err, setErr] = useState<string | null>(null)
   const [cauModal, setCauModal] = useState<null | { editing: CauHoi }>(null)
   const [importMode, setImportMode] = useState<'clone' | 'batch' | null>(null)
   const tone = mucDoTone(d.mucDo)
 
   async function reload() {
-    if (!isDai) return
+    if (!hasCau) return
     setLoading(true); setErr(null)
-    try { setCaus(await listCauByDang(d.leafMa)) }
+    try { setCaus(await listCauByDang(d.leafMa, cauTbl)) }
     catch (e: any) { setErr(e.message ?? String(e)) }
     finally { setLoading(false) }
     onChanged()
@@ -49,7 +50,7 @@ export default function DangHub({ d, config, chuan, onClose, onEditDang, onDelet
 
   async function onDelCau(c: CauHoi) {
     if (!confirm('Xoá câu này?')) return
-    try { await deleteCau(c.ma_cau); await reload() } catch (e: any) { alert(e.message ?? e) }
+    try { await deleteCau(c.ma_cau, cauTbl); await reload() } catch (e: any) { alert(e.message ?? e) }
   }
 
   return (
@@ -77,7 +78,7 @@ export default function DangHub({ d, config, chuan, onClose, onEditDang, onDelet
         </div>
 
         <div className="flex-1 overflow-auto p-6">
-          {!isDai ? (
+          {!hasCau ? (
             <div className="flex h-full items-center justify-center text-sm text-slate-400">Bài/Ý của nhánh Hình — dựng sau.</div>
           ) : (
             <>
@@ -144,10 +145,10 @@ export default function DangHub({ d, config, chuan, onClose, onEditDang, onDelet
       </div>
 
       {cauModal && (
-        <CauModal editing={cauModal.editing} onClose={() => setCauModal(null)} onSaved={async () => { setCauModal(null); await reload() }} />
+        <CauModal editing={cauModal.editing} cauTbl={cauTbl} onClose={() => setCauModal(null)} onSaved={async () => { setCauModal(null); await reload() }} />
       )}
       {importMode && (
-        <AiImportModal mode={importMode} dangChinh={d.leafMa} tenDang={d.leafTen}
+        <AiImportModal mode={importMode} dangChinh={d.leafMa} tenDang={d.leafTen} cauTbl={cauTbl}
           onClose={() => setImportMode(null)} onSaved={async () => { setImportMode(null); await reload() }} />
       )}
     </div>
@@ -155,7 +156,7 @@ export default function DangHub({ d, config, chuan, onClose, onEditDang, onDelet
 }
 
 // ── Sửa 1 câu — preview giống lúc duyệt; bấm ✎ Sửa để chỉnh code ──
-function CauModal({ editing, onClose, onSaved }: { editing: CauHoi; onClose: () => void; onSaved: () => void }) {
+function CauModal({ editing, cauTbl, onClose, onSaved }: { editing: CauHoi; cauTbl: string; onClose: () => void; onSaved: () => void }) {
   const [item, setItem] = useState<ReviewItem>(() => toRI(editing))
   const [loai, setLoai] = useState(editing.loai_cau)
   const [saving, setSaving] = useState(false)
@@ -165,7 +166,7 @@ function CauModal({ editing, onClose, onSaved }: { editing: CauHoi; onClose: () 
     setSaving(true); setError(null)
     try {
       const c = toCND(item)
-      await updateCau(editing.ma_cau, { loai_cau: loai, noi_dung: c.noi_dung, dap_an: c.dap_an, loi_giai: c.loi_giai, lua_chon: c.lua_chon, anh_de: c.anh_de, anh_dap_an: c.anh_dap_an })
+      await updateCau(editing.ma_cau, { loai_cau: loai, noi_dung: c.noi_dung, dap_an: c.dap_an, loi_giai: c.loi_giai, lua_chon: c.lua_chon, anh_de: c.anh_de, anh_dap_an: c.anh_dap_an }, cauTbl)
       onSaved()
     } catch (e: any) { setError(e.message ?? String(e)); setSaving(false) }
   }
@@ -216,8 +217,8 @@ function fileToBase64(f: File): Promise<string> {
   })
 }
 
-function AiImportModal({ mode, dangChinh, tenDang, onClose, onSaved }: {
-  mode: 'clone' | 'batch'; dangChinh: string; tenDang: string; onClose: () => void; onSaved: () => void
+function AiImportModal({ mode, dangChinh, tenDang, cauTbl, onClose, onSaved }: {
+  mode: 'clone' | 'batch'; dangChinh: string; tenDang: string; cauTbl: string; onClose: () => void; onSaved: () => void
 }) {
   const isClone = mode === 'clone'
   const [method, setMethod] = useState<'manual' | 'auto' | 'text'>(mode === 'clone' ? 'auto' : 'text')
@@ -339,10 +340,10 @@ function AiImportModal({ mode, dangChinh, tenDang, onClose, onSaved }: {
       if (isClone) {
         if (!goc) throw new Error('Chưa có bài gốc.')
         const variants = items.filter((v) => v.approved && v.noi_dung.trim())
-        const res = await saveCloneBatch({ dangChinh, loaiCau: loai, goc: toCND(goc), variants: variants.map(toCND) })
+        const res = await saveCloneBatch({ dangChinh, loaiCau: loai, goc: toCND(goc), variants: variants.map(toCND) }, cauTbl)
         alert(`Đã lưu: 1 gốc + ${res.soClone} biến thể.`)
       } else {
-        const n = await saveCauBatch({ dangChinh, loaiCau: loai, items: items.filter((v) => v.approved && v.noi_dung.trim()).map(toCND) })
+        const n = await saveCauBatch({ dangChinh, loaiCau: loai, items: items.filter((v) => v.approved && v.noi_dung.trim()).map(toCND) }, cauTbl)
         alert(`Đã lưu ${n} câu.`)
       }
       onSaved()
