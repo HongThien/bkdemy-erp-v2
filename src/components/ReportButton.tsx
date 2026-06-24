@@ -13,6 +13,10 @@ export default function ReportButton() {
   const [moTa, setMoTa] = useState('')
   const [busy, setBusy] = useState(false)
   const [done, setDone] = useState(false)
+  const leaf = useStore((s) => s.staffLeaf)
+
+  // Ở TRONG màn "Quản lý báo lỗi" thì nút 🐞 vừa thừa vừa ĐÈ lên nội dung → ẩn đi.
+  if (leaf === 'baoloi') return null
 
   function moForm() { setMoTa(''); setDone(false); setOpen(true) }
 
