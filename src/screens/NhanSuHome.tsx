@@ -23,6 +23,8 @@ import ThanhTichScreen from './gami/ThanhTichScreen'
 import QuanLyLevelScreen from './gami/QuanLyLevelScreen'
 import PhanQuyenScreen from './phanquyen/PhanQuyenScreen'
 import BaoLoiScreen from './baoloi/BaoLoiScreen'
+import TuyenSinhScreen from './tuyensinh/TuyenSinhScreen'
+import BoTroScreen from './botro/BoTroScreen'
 
 const ROLE_LBL: Record<string, string> = { gv: 'GV', tg: 'Trợ giảng', ops: 'OPS' }
 const tabsCuaVai = (vai: 'gv' | 'tg'): TabKey[] => (vai === 'gv' ? ['danhgia', 'ingame'] : ['ingame', 'et'])
@@ -298,6 +300,8 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'orgchart' ? <OrgChartScreen />
       : staffLeaf === 'lop' ? <LopScreen />
       : staffLeaf === 'hs' ? <HocSinhScreen />
+      : staffLeaf === 'tuyensinh' ? <TuyenSinhScreen />
+      : staffLeaf === 'botro' ? <BoTroScreen />
       : staffLeaf === 'buoihoc' ? <BuoiHocScreen />
       : staffLeaf === 'diemso' ? <GamiDiemScreen />
       : staffLeaf === 'thanhtich' ? <ThanhTichScreen />

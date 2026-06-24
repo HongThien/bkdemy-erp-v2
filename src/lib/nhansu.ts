@@ -41,13 +41,18 @@ export async function listMucNangLuc(): Promise<MucNangLuc[]> {
   return (data ?? []) as MucNangLuc[]
 }
 
-// Đề xuất mã kế tiếp = max hiện có +1 (NS001/HS0001…). Chỉ là GỢI Ý hiện sẵn trong form — user sửa được.
+// Đề xuất mã kế tiếp = max phần SỐ + 1 (NS001/HS0001…). Chỉ là GỢI Ý — user sửa được.
+// Parse phần SỐ của MỌI mã (chịu được format lẫn PH347 vs PH0001) trên TOÀN BỘ dòng (kể cả đã nghỉ)
+// → KHÔNG bao giờ tái dùng số. (Trước đây sort theo CHUỖI → sai max khi mã không cùng độ dài.)
 async function suggestNextMa(table: string, col: string, prefix: string, pad: number): Promise<string> {
-  const { data, error } = await supabase.from(table).select(col).like(col, `${prefix}%`).order(col, { ascending: false }).limit(1)
+  const { data, error } = await supabase.from(table).select(col).not(col, 'is', null).limit(LIMIT)
   if (error) throw error
-  const last = (data?.[0] as unknown as Record<string, string> | undefined)?.[col]
-  const n = last ? parseInt(last.slice(prefix.length), 10) + 1 : 1
-  return prefix + String(isNaN(n) ? 1 : n).padStart(pad, '0')
+  let max = 0
+  for (const r of (data ?? []) as any[]) {
+    const m = String(r[col] ?? '').match(/\d+/)
+    if (m) { const n = parseInt(m[0], 10); if (n > max) max = n }
+  }
+  return prefix + String(max + 1).padStart(pad, '0')
 }
 export const suggestMaNS = () => suggestNextMa('nhan_su', 'ma_ns', 'NS', 3)
 export const suggestMaHS = () => suggestNextMa('hoc_sinh', 'ma_hs', 'HS', 4)

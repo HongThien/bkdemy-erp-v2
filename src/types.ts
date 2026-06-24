@@ -55,7 +55,7 @@ export interface Notice {
 
 export interface AdminLeaf {
   id: string
-  nhom: 'Danh mục' | 'Quan hệ' | 'Dashboard' | 'Vận hành' | 'Hệ thống'
+  nhom: 'Danh mục' | 'Quan hệ' | 'Dashboard' | 'Vận hành' | 'Bổ trợ' | 'Hệ thống'
   ten: string
   founderOnly: boolean
 }

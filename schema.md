@@ -2,7 +2,18 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-52 bảng · 0 enum · 2 trigger · 7 function
+56 bảng · 0 enum · 3 trigger · 8 function
+
+## bang_khong_bu
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| buoi_hoc_hs_id | uuid |  |  | FK→buoi_hoc_hs.id |
+| loai | text |  |  |  |
+| ly_do | text | Y |  |  |
+| actor | uuid | Y |  |  |
+| created_at | timestamp with time zone |  | now() |  |
 
 ## bao_loi
 
@@ -285,6 +296,7 @@
 | deadline_at | timestamp with time zone | Y |  |  |
 | hidden | boolean |  | false |  |
 | ma_dang | text | Y |  |  |
+| hoc_sinh_id | uuid | Y |  | FK→hoc_sinh.id |
 
 ## hinh_bai
 
@@ -598,6 +610,52 @@
 | hieu_luc_den | date | Y |  |  |
 | created_at | timestamp with time zone |  | now() |  |
 
+## ung_vien
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| ma_uv | text | Y |  |  |
+| ho_ten_hs | text |  |  |  |
+| ho_ten_ph | text | Y |  |  |
+| sdt_ph | text | Y |  |  |
+| khoi | text | Y |  |  |
+| mon | text |  | 'Toán'::text |  |
+| nguon | text | Y |  |  |
+| level | text |  | 'L5'::text |  |
+| trang_thai | text |  | 'dang_chay'::text |  |
+| ly_do_loai | text | Y |  |  |
+| diem_test | numeric | Y |  |  |
+| lop_du_kien_id | uuid | Y |  | FK→lop.id |
+| ngay_hoc_thu | date | Y |  |  |
+| ghi_chu | text | Y |  |  |
+| hoc_sinh_id | uuid | Y |  | FK→hoc_sinh.id |
+| created_by | uuid | Y |  |  |
+| created_at | timestamp with time zone |  | now() |  |
+| updated_at | timestamp with time zone |  | now() |  |
+
+## ung_vien_log
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| ung_vien_id | uuid | Y |  |  |
+| hanh_dong | text |  |  |  |
+| truoc | jsonb | Y |  |  |
+| sau | jsonb |  |  |  |
+| actor | uuid | Y |  |  |
+| ts | timestamp with time zone |  | now() |  |
+
+## ung_vien_viec
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| ung_vien_id | uuid |  |  | FK→ung_vien.id |
+| viec_key | text |  |  |  |
+| xong_at | timestamp with time zone |  | now() |  |
+| nguoi_xong | uuid | Y |  |  |
+
 ## vai_tro
 
 | cột | kiểu | null | default | khóa |
@@ -633,6 +691,7 @@
 |---|---|---|---|---|
 | bao_loi | trg_log_bao_loi | BEFORE | UPDATE | log_bao_loi |
 | hoc_sinh_lop | trg_log_hoc_sinh_lop | AFTER | INSERT/UPDATE | log_hoc_sinh_lop |
+| ung_vien | trg_log_ung_vien | AFTER | INSERT/UPDATE | log_ung_vien |
 
 ## Functions
 
@@ -641,6 +700,7 @@
 - `la_thanh_vien()` → boolean
 - `log_bao_loi()` → trigger
 - `log_hoc_sinh_lop()` → trigger
+- `log_ung_vien()` → trigger
 - `my_quyen()` → TABLE(la_admin boolean, chuc_nang text[])
 - `self_link_account()` → uuid
 

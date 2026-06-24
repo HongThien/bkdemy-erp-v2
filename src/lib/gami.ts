@@ -27,7 +27,7 @@ export type BuoiHoc = {
   ingame_dong_at: string | null; et_dong_at: string | null; danh_gia_xong_at: string | null; btvn_dong_at?: string | null
 }
 export type BuoiHocHS = { id: string; buoi_hoc_id: string; hoc_sinh_id: string; diem_danh: DiemDanh | null; bu_cho_buoi_id: string | null; hoc_sinh?: { ho_ten: string; ma_hs: string | null; anh_url: string | null } }
-export type Problem = { id: string; buoi_hoc_id: string; phase: Phase; problem_no: number; hidden: boolean; ma_dang: string | null }
+export type Problem = { id: string; buoi_hoc_id: string; phase: Phase; problem_no: number; hidden: boolean; ma_dang: string | null; hoc_sinh_id?: string | null }
 export type Grade = { id: string; problem_id: string; hoc_sinh_id: string; result: string; presentation: string; speed: string; points: number; loi?: string[]; muc?: number | null }
 export type ETResult = 'correct' | 'partial' | 'wrong'
 
@@ -554,6 +554,15 @@ export async function getMyTasks(): Promise<MyTask[]> {
         out.push({ buoiId: b.id, lopId: b.lop_id, lop: b.lop?.ten_lop ?? '?', ngay: b.ngay, vai, tab: t.tab, label: t.label, done: !!doneAtTab[t.tab], doneAt: doneAtTab[t.tab], deadline: deadlineOf(t.tab) })
       }
     }
+  }
+  // ── BUỔI BÙ (loai='bu'): người phụ trách gắn TRÊN buổi (nguoi_day=GV→đánh giá · nguoi_day_tg=TA→ET). KHÔNG qua phan_cong_lop, KHÔNG Elo. ──
+  const myId = prof.nhanSu.id
+  const { data: bu } = await supabase.from('buoi_hoc')
+    .select('id, ngay, nguoi_day, nguoi_day_tg, et_dong_at, danh_gia_xong_at').eq('loai', 'bu').neq('trang_thai', 'huy')
+    .or(`nguoi_day.eq.${myId},nguoi_day_tg.eq.${myId}`).limit(LIMIT)
+  for (const b of (bu ?? []) as any[]) {
+    if (b.nguoi_day_tg === myId) out.push({ buoiId: b.id, lopId: '', lop: 'Buổi bù', ngay: b.ngay, vai: 'tg', tab: 'et', label: 'Chấm ET (bù)', done: !!b.et_dong_at, doneAt: b.et_dong_at, deadline: vnInstant(congNgay(b.ngay, 1), '12:00') })
+    if (b.nguoi_day === myId) out.push({ buoiId: b.id, lopId: '', lop: 'Buổi bù', ngay: b.ngay, vai: 'gv', tab: 'danhgia', label: 'Đánh giá buổi bù', done: !!b.danh_gia_xong_at, doneAt: b.danh_gia_xong_at, deadline: vnInstant(b.ngay, '23:59') })
   }
   return out
 }
