@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../lib/kho/api'
+import { MON_LIST } from '../../lib/mon'
 import {
   listHocSinh, createHocSinh, updateHocSinh, deleteHocSinh,
   listLopCuaHS, ghiDanh, roiLop, setBandGhiDanh, setNgayVao, chuyenLop,
@@ -335,8 +336,9 @@ function EnrollBox({ hocSinhId }: { hocSinhId: string }) {
 
   const active = rows.filter((r) => r.trang_thai === 'dang_hoc')
   const lopActive = dsLop.filter((l) => l.trang_thai === 'dang_hoc')
-  // môn = hợp của (môn có lớp) ∪ (môn HS đang học) — data-driven, không cứng 4 môn.
-  const mons = [...new Set([...lopActive.map((l) => l.mon), ...active.map((r) => r.lop?.mon).filter(Boolean) as string[]])].sort()
+  // Luôn hiện ĐỦ danh mục môn (kể cả môn chưa có lớp → để xếp sau), + môn lạ HS đang học (nếu có).
+  const monKhac = [...new Set(active.map((r) => r.lop?.mon).filter(Boolean) as string[])].filter((m) => !MON_LIST.includes(m as any)).sort()
+  const mons = [...MON_LIST, ...monKhac]
 
   // Đổi lớp trong 1 môn = CHUYỂN LỚP chính thức: rời cũ (ngay_roi) + vào mới (ngay_vao), trigger DB log cả 2.
   async function chonLop(mon: string, newLopId: string) {

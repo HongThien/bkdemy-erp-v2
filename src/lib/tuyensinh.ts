@@ -3,6 +3,7 @@
 import { supabase } from './supabase'
 import { suggestMaHS, suggestMaPH, createHocSinh, createPhuHuynh, ghiDanh } from './nhansu'
 import { homNayVN } from './tuan'
+import { MON_LIST, type Mon } from './mon'
 
 const LIMIT = 10000
 
@@ -18,8 +19,8 @@ export type UngVien = {
   phu_huynh_id: string | null // link PH cũ (con thứ 2…) — convert dùng thẳng, không tạo trùng
   hoc_sinh_goc_id: string | null // lead = HS CŨ học thêm môn → convert chỉ ghi danh, không tạo HS mới
 }
-export const MON_OPTIONS = ['Toán', 'KHTN', 'Tiếng Anh', 'Văn'] as const
-export type MonTS = typeof MON_OPTIONS[number]
+export const MON_OPTIONS = MON_LIST // danh mục môn dùng chung (src/lib/mon.ts)
+export type MonTS = Mon
 // input tạo/sửa lead — các trường thông tin (KHÔNG gồm id/ma_uv/trang_thai/hoc_sinh_id…)
 export type UngVienInput = Partial<Pick<UngVien, 'ho_ten_hs' | 'ho_ten_ph' | 'sdt_ph' | 'email_ph' | 'phu_huynh_id' | 'hoc_sinh_goc_id' | 'khoi' | 'mon' | 'nguon' | 'ghi_chu' | 'ngay_sinh' | 'gioi_tinh' | 'dia_chi' | 'truong_hoc'>>
 
