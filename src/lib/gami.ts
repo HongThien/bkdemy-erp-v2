@@ -139,6 +139,23 @@ export async function diemDanh(buoiHocHsId: string, trangThai: DiemDanh): Promis
   const { error } = await supabase.from('buoi_hoc_hs').update({ diem_danh: trangThai }).eq('id', buoiHocHsId)
   if (error) throw error
 }
+// Gỡ HS khỏi buổi (data SAI — xếp nhầm lớp). CHỈ xoá dòng RỖNG: chặn cứng nếu đã có đo lường thật
+// (ET/điểm/elo/exp/BTVN/cảnh báo). Pure-derive: gỡ dòng buoi_hoc_hs → sĩ số tự đúng, không cascade.
+export async function xoaHSKhoiBuoi(row: { id: string; buoi_hoc_id: string; hoc_sinh_id: string }): Promise<void> {
+  const cnt = async (tbl: string, col: string) =>
+    (await supabase.from(tbl).select('*', { count: 'exact', head: true }).eq('hoc_sinh_id', row.hoc_sinh_id).eq(col, row.buoi_hoc_id)).count ?? 0
+  const [grades, elo, exp, btvn, canh, prob] = await Promise.all([
+    cnt('gami_grades', 'buoi_hoc_id'), cnt('gami_elo_history', 'buoi_hoc_id'), cnt('gami_exp_ledger', 'ref_buoi_hoc_id'),
+    cnt('btvn_ket_qua', 'buoi_hoc_id'), cnt('canh_bao_yeu', 'buoi_hoc_id'), cnt('gami_session_problems', 'buoi_hoc_id'),
+  ])
+  const chan: string[] = []
+  if (grades) chan.push(`${grades} bài chấm ET`); if (elo) chan.push('lịch sử Elo'); if (exp) chan.push('điểm EXP')
+  if (btvn) chan.push('kết quả BTVN'); if (canh) chan.push('cảnh báo yếu'); if (prob) chan.push('câu hỏi riêng (bù)')
+  if (chan.length) throw new Error(`Không xoá được — HS đã có đo lường thật ở buổi này (${chan.join(', ')}). Sửa điểm danh thay vì xoá, hoặc xử lý dữ liệu đo trước.`)
+  await supabase.from('bang_khong_bu').delete().eq('buoi_hoc_hs_id', row.id) // FK con duy nhất → dọn trước
+  const { error } = await supabase.from('buoi_hoc_hs').delete().eq('id', row.id)
+  if (error) throw error
+}
 // Đồng bộ sĩ số buổi ĐANG MỞ: THÊM HS đã ghi danh (dang_hoc, ngay_vao ≤ ngày buổi) còn THIẾU trong roster.
 // Chỉ thêm, KHÔNG xoá (buổi = snapshot; HS rời giữa chừng vẫn giữ). Vá ca: ghi danh SAU khi đã mở buổi.
 export async function dongBoSiSo(buoiId: string): Promise<number> {

@@ -690,6 +690,13 @@
 | created_by | uuid | Y |  |  |
 | created_at | timestamp with time zone |  | now() |  |
 | updated_at | timestamp with time zone |  | now() |  |
+| ngay_sinh | date | Y |  |  |
+| gioi_tinh | text | Y |  |  |
+| dia_chi | text | Y |  |  |
+| truong_hoc | text | Y |  |  |
+| email_ph | text | Y |  |  |
+| phu_huynh_id | uuid | Y |  | FK→phu_huynh.id |
+| hoc_sinh_goc_id | uuid | Y |  | FK→hoc_sinh.id |
 
 ## ung_vien_log
 

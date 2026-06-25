@@ -13,6 +13,36 @@ export type UngVien = {
   khoi: string | null; mon: string; nguon: string | null; level: UngVienLevel; trang_thai: UngVienTrangThai
   ly_do_loai: string | null; diem_test: number | null; lop_du_kien_id: string | null; ngay_hoc_thu: string | null
   ghi_chu: string | null; hoc_sinh_id: string | null; created_at: string
+  // thông tin HS đầy đủ (nhập từ lead → convert copy thẳng)
+  ngay_sinh: string | null; gioi_tinh: string | null; dia_chi: string | null; truong_hoc: string | null; email_ph: string | null
+  phu_huynh_id: string | null // link PH cũ (con thứ 2…) — convert dùng thẳng, không tạo trùng
+  hoc_sinh_goc_id: string | null // lead = HS CŨ học thêm môn → convert chỉ ghi danh, không tạo HS mới
+}
+export const MON_OPTIONS = ['Toán', 'KHTN', 'Tiếng Anh', 'Văn'] as const
+export type MonTS = typeof MON_OPTIONS[number]
+// input tạo/sửa lead — các trường thông tin (KHÔNG gồm id/ma_uv/trang_thai/hoc_sinh_id…)
+export type UngVienInput = Partial<Pick<UngVien, 'ho_ten_hs' | 'ho_ten_ph' | 'sdt_ph' | 'email_ph' | 'phu_huynh_id' | 'hoc_sinh_goc_id' | 'khoi' | 'mon' | 'nguon' | 'ghi_chu' | 'ngay_sinh' | 'gioi_tinh' | 'dia_chi' | 'truong_hoc'>>
+
+// Tìm HS cũ (cho lead "học thêm môn") — gõ tên/mã.
+export async function timHocSinh(q: string): Promise<{ id: string; ma_hs: string | null; ho_ten: string; khoi: string | null }[]> {
+  if (!q.trim()) return []
+  const { data, error } = await supabase.from('hoc_sinh').select('id, ma_hs, ho_ten, khoi').or(`ho_ten.ilike.%${q.trim()}%,ma_hs.ilike.%${q.trim()}%`).order('ho_ten').limit(8)
+  if (error) throw error
+  return (data ?? []) as any
+}
+// Lấy thông tin HS cũ + PH (để fill form lead). Trả các field khớp UngVienInput.
+export async function chiTietHSChoLead(hsId: string): Promise<UngVienInput & { hoc_sinh_goc_id: string }> {
+  const { data: h, error } = await supabase.from('hoc_sinh').select('ho_ten, ngay_sinh, gioi_tinh, khoi, truong_hoc, dia_chi, phu_huynh_id').eq('id', hsId).single()
+  if (error) throw error
+  const out: UngVienInput & { hoc_sinh_goc_id: string } = {
+    hoc_sinh_goc_id: hsId, ho_ten_hs: (h as any).ho_ten, ngay_sinh: (h as any).ngay_sinh, gioi_tinh: (h as any).gioi_tinh,
+    khoi: (h as any).khoi, truong_hoc: (h as any).truong_hoc, dia_chi: (h as any).dia_chi, phu_huynh_id: (h as any).phu_huynh_id ?? null,
+  }
+  if ((h as any).phu_huynh_id) {
+    const { data: p } = await supabase.from('phu_huynh').select('ho_ten, so_dien_thoai, email').eq('id', (h as any).phu_huynh_id).single()
+    if (p) { out.ho_ten_ph = (p as any).ho_ten; out.sdt_ph = (p as any).so_dien_thoai; out.email_ph = (p as any).email }
+  }
+  return out
 }
 
 // Catalog việc/level (CỨNG). derive=true: sẽ tự suy từ TA chấm test (seam ADR riêng) — TẠM tick tay.
@@ -32,13 +62,17 @@ export async function suggestMaUV(): Promise<string> {
   return 'UV' + String(max + 1).padStart(4, '0')
 }
 
-export async function listUngVien(level: UngVienLevel): Promise<UngVien[]> {
-  const { data, error } = await supabase.from('ung_vien').select('*').eq('trang_thai', 'dang_chay').eq('level', level).order('created_at').limit(LIMIT)
+export async function listUngVien(level: UngVienLevel, mon?: string): Promise<UngVien[]> {
+  let q = supabase.from('ung_vien').select('*').eq('trang_thai', 'dang_chay').eq('level', level)
+  if (mon) q = q.eq('mon', mon)
+  const { data, error } = await q.order('created_at').limit(LIMIT)
   if (error) throw error
   return (data ?? []) as UngVien[]
 }
-export async function listLoai(): Promise<UngVien[]> {
-  const { data, error } = await supabase.from('ung_vien').select('*').eq('trang_thai', 'loai').order('updated_at', { ascending: false }).limit(LIMIT)
+export async function listLoai(mon?: string): Promise<UngVien[]> {
+  let q = supabase.from('ung_vien').select('*').eq('trang_thai', 'loai')
+  if (mon) q = q.eq('mon', mon)
+  const { data, error } = await q.order('updated_at', { ascending: false }).limit(LIMIT)
   if (error) throw error
   return (data ?? []) as UngVien[]
 }
@@ -57,7 +91,8 @@ export async function listNguon(): Promise<string[]> {
   return [...new Set((data ?? []).map((r: any) => String(r.nguon).trim()).filter(Boolean))].sort()
 }
 
-export async function createUngVien(input: { ho_ten_hs: string; ho_ten_ph?: string | null; sdt_ph?: string | null; khoi?: string | null; mon?: string; nguon?: string | null; ma_uv?: string }): Promise<UngVien> {
+export async function createUngVien(input: UngVienInput & { ma_uv?: string }): Promise<UngVien> {
+  if (!input.ho_ten_hs?.trim()) throw new Error('Thiếu tên học sinh')
   const { data: { user } } = await supabase.auth.getUser()
   const ma_uv = input.ma_uv?.trim() || (await suggestMaUV())
   const { data, error } = await supabase.from('ung_vien').insert({ ...input, ma_uv, created_by: user?.id ?? null }).select().single()
@@ -93,17 +128,25 @@ export async function moLaiUngVien(id: string): Promise<void> { await updateUngV
 
 // CONVERT L7→L8: gộp/ tạo PH theo SĐT + tạo HS + (tuỳ) ghi danh lớp. Set hoc_sinh_id + da_convert. Trả hoc_sinh_id.
 export async function convertUngVien(uv: UngVien, opts: { khoi?: string | null; lopId?: string | null; mucNangLucId?: string | null }): Promise<string> {
-  let phId: string | null = null
-  if (uv.sdt_ph?.trim()) {
+  // Lead = HS CŨ học thêm môn → KHÔNG tạo HS/PH mới, chỉ ghi danh vào lớp môn mới.
+  if (uv.hoc_sinh_goc_id) {
+    const hsId = uv.hoc_sinh_goc_id
+    if (opts.lopId) { try { await ghiDanh(hsId, opts.lopId, opts.mucNangLucId ?? null) } catch { /* lỗi lớp không chặn convert */ } }
+    await updateUngVien(uv.id, { trang_thai: 'da_convert', hoc_sinh_id: hsId })
+    return hsId
+  }
+  let phId: string | null = uv.phu_huynh_id ?? null // PH cũ đã chọn → dùng thẳng
+  if (!phId && uv.sdt_ph?.trim()) {
     const { data: ex } = await supabase.from('phu_huynh').select('id').eq('so_dien_thoai', uv.sdt_ph.trim()).limit(1)
     phId = (ex?.[0] as any)?.id ?? null
   }
   if (!phId && (uv.ho_ten_ph?.trim() || uv.sdt_ph?.trim())) {
-    const ph = await createPhuHuynh({ ma_ph: await suggestMaPH(), ho_ten: uv.ho_ten_ph?.trim() || `PH của ${uv.ho_ten_hs}`, so_dien_thoai: uv.sdt_ph?.trim() || null })
+    const ph = await createPhuHuynh({ ma_ph: await suggestMaPH(), ho_ten: uv.ho_ten_ph?.trim() || `PH của ${uv.ho_ten_hs}`, so_dien_thoai: uv.sdt_ph?.trim() || null, email: uv.email_ph?.trim() || null })
     phId = ph.id
   }
   const hs = await createHocSinh({
     ma_hs: await suggestMaHS(), ho_ten: uv.ho_ten_hs, khoi: opts.khoi ?? uv.khoi ?? null,
+    ngay_sinh: uv.ngay_sinh, gioi_tinh: (uv.gioi_tinh ?? null) as any, dia_chi: uv.dia_chi, truong_hoc: uv.truong_hoc,
     phu_huynh_id: phId, diem_test_dau_vao: uv.diem_test ?? null, ngay_nhap_hoc: homNayVN(), trang_thai: 'dang_hoc',
   })
   if (opts.lopId) { try { await ghiDanh(hs.id, opts.lopId, opts.mucNangLucId ?? null) } catch { /* lỗi lớp không chặn convert */ } }
@@ -112,16 +155,26 @@ export async function convertUngVien(uv: UngVien, opts: { khoi?: string | null; 
 }
 
 // đếm cho toggle bar: L5–L7 từ ung_vien dang_chay; L8 = hoc_sinh đang học; loai = đã loại
-export async function demTheoLevel(): Promise<Record<string, number>> {
+export async function demTheoLevel(mon?: string): Promise<Record<string, number>> {
   const out: Record<string, number> = { L5: 0, L6: 0, L7: 0, L8: 0, loai: 0 }
-  const { data } = await supabase.from('ung_vien').select('level, trang_thai').limit(LIMIT)
+  let q = supabase.from('ung_vien').select('level, trang_thai').limit(LIMIT)
+  if (mon) q = q.eq('mon', mon)
+  const { data } = await q
   for (const r of (data ?? []) as any[]) { if (r.trang_thai === 'dang_chay') out[r.level] = (out[r.level] ?? 0) + 1; else if (r.trang_thai === 'loai') out.loai++ }
-  const { count } = await supabase.from('hoc_sinh').select('id', { count: 'exact', head: true }).eq('trang_thai', 'dang_hoc')
-  out.L8 = count ?? 0
+  out.L8 = (await listHSDangHoc(mon)).length
   return out
 }
-// L8 = list hoc_sinh đang học (gọn cho tab L8)
-export async function listHSDangHoc(): Promise<{ id: string; ma_hs: string | null; ho_ten: string; khoi: string | null }[]> {
+// L8 = list HS đang học. Có mon → chỉ HS đang học ở lớp môn đó (distinct).
+export async function listHSDangHoc(mon?: string): Promise<{ id: string; ma_hs: string | null; ho_ten: string; khoi: string | null }[]> {
+  if (mon) {
+    const { data, error } = await supabase.from('hoc_sinh_lop')
+      .select('hoc_sinh:hoc_sinh_id(id, ma_hs, ho_ten, khoi, trang_thai), lop:lop_id!inner(mon)')
+      .eq('trang_thai', 'dang_hoc').eq('lop.mon', mon).limit(LIMIT)
+    if (error) throw error
+    const seen = new Set<string>(); const out: any[] = []
+    for (const r of (data ?? []) as any[]) { const h = r.hoc_sinh; if (h && h.trang_thai === 'dang_hoc' && !seen.has(h.id)) { seen.add(h.id); out.push({ id: h.id, ma_hs: h.ma_hs, ho_ten: h.ho_ten, khoi: h.khoi }) } }
+    return out.sort((a, b) => a.ho_ten.localeCompare(b.ho_ten))
+  }
   const { data, error } = await supabase.from('hoc_sinh').select('id, ma_hs, ho_ten, khoi').eq('trang_thai', 'dang_hoc').order('ho_ten').limit(LIMIT)
   if (error) throw error
   return (data ?? []) as any

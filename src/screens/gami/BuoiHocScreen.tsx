@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom'
 // (Ảnh gửi PH dùng html2canvas tải từ CDN TRONG popup — đúng pattern V1, không import vào bundle.)
 import {
   buoiAoCuaNgay, moBuoi, getBuoi, huyBuoi, huyBuoiCuaNgay, setNguoiDay,
-  getRoster, diemDanh, dongBoSiSo, listProblems, addProblem, setProblemDang, ensureProblems, listGrades, gradeMuc, closePhase,
+  getRoster, diemDanh, xoaHSKhoiBuoi, dongBoSiSo, listProblems, addProblem, setProblemDang, ensureProblems, listGrades, gradeMuc, closePhase,
   loadETForBuoi, ensureETProblems, resyncETProblems, gradeET, deleteGrade, reopenPhase,
   loadBTVNForBuoi, ensureBTVNProblems, getBtvnKetQua, setBtvnKetQua, listCanhBao, themCanhBao, xoaCanhBao, closeBTVN, reopenBTVN,
   type BtvnKQ, type CanhBao, type BtvnTrangThai, type BtvnThaiDo,
@@ -186,7 +186,7 @@ export function BuoiDetail({ id, onClose, tabs, initialTab, canManage = true }: 
           </div>
           <div className={`min-h-0 min-w-0 flex-1 overflow-auto ${isMobile ? 'p-3' : 'p-6'}`}>
             {tab === 'diemdanh'
-              ? <DiemDanhTab roster={roster} chuaDD={chuaDD} onChange={reload} />
+              ? <DiemDanhTab roster={roster} chuaDD={chuaDD} canManage={canManage} onChange={reload} />
               : tab === 'danhgia'
               ? <DanhGiaTab buoiId={id} roster={roster} dangOpts={dangOpts} buoi={buoi} onChange={reload} />
               : tab === 'et'
@@ -201,7 +201,11 @@ export function BuoiDetail({ id, onClose, tabs, initialTab, canManage = true }: 
   )
 }
 
-function DiemDanhTab({ roster, chuaDD, onChange }: { roster: BuoiHocHS[]; chuaDD: number; onChange: () => void }) {
+function DiemDanhTab({ roster, chuaDD, canManage, onChange }: { roster: BuoiHocHS[]; chuaDD: number; canManage: boolean; onChange: () => void }) {
+  async function xoa(r: BuoiHocHS) {
+    if (!confirm(`Gỡ ${r.hoc_sinh?.ho_ten ?? 'HS'} khỏi buổi này?\n\nChỉ dùng khi xếp NHẦM lớp (data sai). Sẽ chặn nếu HS đã có bài chấm / điểm thật.`)) return
+    try { await xoaHSKhoiBuoi(r); onChange() } catch (e: any) { alert(e.message ?? String(e)) }
+  }
   return (
     <div>
       {chuaDD > 0 && <p className="mb-3 text-[12px] text-amber-600">Còn {chuaDD} HS chưa điểm danh.</p>}
@@ -213,6 +217,10 @@ function DiemDanhTab({ roster, chuaDD, onChange }: { roster: BuoiHocHS[]; chuaDD
               <button key={d} onClick={async () => { await diemDanh(r.id, d); onChange() }}
                 className={`rounded px-2 py-1 text-[11px] font-medium transition ${r.diem_danh === d ? DD_TONE[d] : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}>{DD_LABEL[d]}</button>
             ))}
+            {canManage && (
+              <button onClick={() => xoa(r)} title="Gỡ HS khỏi buổi (xếp nhầm lớp / data sai)"
+                className="ml-0.5 rounded px-1.5 py-1 text-[12px] text-slate-300 transition hover:bg-rose-50 hover:text-rose-600">✕</button>
+            )}
           </div>
         ))}
       </div>
