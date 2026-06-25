@@ -531,3 +531,19 @@
 - **`DangHub.tsx`**: `isDai` → **`hasCau = !!config.cauTbl`** (Đại+KHTN có câu, Hình placeholder); mọi câu call truyền `cauTbl` (CauModal + AiImportModal nhận prop `cauTbl`).
 - **`KhoScreen.tsx`**: **bộ chọn MÔN** (Toán | KHTN) segmented; Toán→nhánh tab Đại/Hình, KHTN→1 cây (no nhánh). config = mon==='khtn'?khtnBranch:….
 - ✓ tsc+build. **CÒN (chặng kế): TÀI LIỆU KHTN** — `tailieu.ts` getTaiLieuFull/autoSuggest* + TaiLieuScreen/Builder/ET đang hardcode `dai_cau_hoi`/`dai_ban_do` → cần thêm `mon` + dispatch theo `tai_lieu.mon`. + bộ-chọn-môn scope theo `nhan_su_mon` (RBAC ④) chưa làm. + Anh chờ GV.
+
+## 2026-06-25 — Tuyển sinh nâng cấp (đầy đủ/PH-cũ/HS-cũ/đa-môn) + gỡ HS khỏi buổi + mon.ts + 2 data fix
+- **EtAnhGuiPH / Việc-của-tôi / sĩ số / mã**: đã chốt & push các phiên trước (xem HANDOFF block 06-23/24).
+- **TUYỂN SINH nâng cấp** (mig 0051/0052/0053):
+  - 0051: `ung_vien` + ngay_sinh/gioi_tinh/dia_chi/truong_hoc/email_ph → form nhập ĐỦ như Học sinh, convert copy thẳng (createHocSinh + email PH).
+  - **Sửa lead**: `CreateModal`→`UvFormModal` (uv=null tạo / uv=obj sửa), nút ✎ mỗi dòng L5–L7. Modal nhận `maxW` (rộng 640).
+  - **Cột Lưu ý** (`ghi_chu`, đã có 0048) hiện mọi level (L5–L7 + Đã loại), sửa qua form. Số đếm level: text-15 bold, pill indigo.
+  - **Toggle bar MÔN** riêng (state `mon` localStorage `ts.mon`); listUngVien/listLoai/demTheoLevel/listHSDangHoc nhận `mon`; L8 lọc HS theo lop.mon (join hoc_sinh_lop).
+  - 0052 `phu_huynh_id`: **PH cũ picker** (`PhCuPicker` dùng `listPhuHuynh`), pick→fill+link+banner `listConByPH` (con để xác nhận); convert dùng `uv.phu_huynh_id` trước SĐT-match → ko tạo PH trùng.
+  - 0053 `hoc_sinh_goc_id`: **HS cũ học thêm môn** (`HsCuPicker`/`timHocSinh`+`chiTietHSChoLead`) pick→fill HS + PH tự load; **convert: nếu hoc_sinh_goc_id → chỉ ghiDanh lớp môn mới, KHÔNG tạo HS/PH** (ConvertModal đổi chữ "Ghi danh"). lopOpts lọc `l.mon===uv.mon`.
+- **Thêm môn VĂN**: `MON_OPTIONS = ['Toán','KHTN','Tiếng Anh','Văn']`.
+- **GỠ HS KHỎI BUỔI**: `xoaHSKhoiBuoi(row)` (gami.ts) — count downstream (grades/elo/exp/btvn/canh_bao/problems) >0 → throw chặn; else xoá bang_khong_bu con + buoi_hoc_hs. Nút ✕ trong `DiemDanhTab` (chỉ `canManage`=OPS/admin), confirm.
+- **`src/lib/mon.ts`** = `MON_LIST` 1 nguồn; tuyển-sinh `MON_OPTIONS`=MON_LIST; HocSinhScreen `mons` = MON_LIST ∪ môn-lạ → panel lớp&band luôn đủ 4 môn (sửa lỗi Thùy báo: HS chỉ hiện Toán+KHTN).
+- **DATA FIX** (claude write qua `_diag`/`_del` rồi xoá script): (1) Quỳnh Trang(HS0622) điểm danh sai @9A2 25/06 — chỉ 1 dòng buoi_hoc_hs `vang_phep`, ko downstream, em da_roi 9A2 + dang_hoc 9B1 → xoá 1 dòng. (2) 6A1/6A2 (khai giảng 15/07) — 1 buổi test `6A1.T2.22062026` + 2 sĩ số, ko downstream → xoá buổi+sĩ số, giữ lớp+ghi danh.
+- ✓ tsc sạch mọi bước. Push 3 commit (eafe429 tuyển-sinh+gỡ-HS · 7781955 mon.ts/4-môn).
+- **TREO (việc kế tiếp)**: **sơ đồ tổ chức theo môn** — Thùy chốt cây-độc-lập-mỗi-môn (CTO nghiêng) vs nhãn-lọc, rồi build `vi_tri.mon`+OrgChart+scope④. KÈM tài liệu KHTN + nhan_su_mon.
