@@ -327,7 +327,7 @@ function ChamTab({ buoiId, phase, roster, buoi, dangOpts, onChange }: { buoiId: 
         <table className="border-collapse text-sm">
           <thead>
             <tr className="bg-slate-100">
-              <th className="sticky left-0 z-10 border border-slate-200 bg-slate-100 px-3 py-2 text-center text-[12px] font-semibold text-slate-700">Học sinh</th>
+              <th className="sticky left-0 z-10 border border-slate-200 bg-slate-100 px-3 py-2 text-left text-[12px] font-semibold text-slate-700">Học sinh</th>
               {probs.map((p) => (
                 <th key={p.id} className="min-w-[150px] border border-slate-200 px-2 py-2 text-center align-top">
                   <div className="text-[12px] font-bold text-slate-700">Bài {p.problem_no}</div>
@@ -340,7 +340,7 @@ function ChamTab({ buoiId, phase, roster, buoi, dangOpts, onChange }: { buoiId: 
           <tbody>
             {coMat.map((r) => (
               <tr key={r.id}>
-                <td className="sticky left-0 z-10 whitespace-nowrap border border-slate-200 bg-white px-3 py-2 text-center align-middle font-medium text-slate-800">{r.hoc_sinh?.ho_ten ?? '?'}</td>
+                <td className="sticky left-0 z-10 whitespace-nowrap border border-slate-200 bg-white px-3 py-2 text-left align-middle font-medium text-slate-800">{r.hoc_sinh?.ho_ten ?? '?'}</td>
                 {probs.map((p) => {
                   const g = gradeOf(p.id, r.hoc_sinh_id)
                   return (
@@ -496,7 +496,7 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
   const mismatch = etCaus != null && etCaus.length !== probs.length
 
   return (
-    <div>
+    <div className="flex h-full flex-col">
       <div className="mb-3 flex items-center gap-2">
         <span className="text-[12px] text-slate-400">{probs.length} câu (từ ET) · {coMat.length} HS · 1 click <b className="text-emerald-600">Đ</b>/<b className="text-amber-600">C</b>/<b className="text-rose-600">S</b> — C/S mở ô lỗi.</span>
         {mismatch && !dongCol && <button onClick={dongBoET} title="ET đổi số câu — nạp lại (chỉ khi chưa chấm)" className="rounded-md border border-amber-300 px-2.5 py-1 text-[12px] font-medium text-amber-700 hover:bg-amber-50">↻ Đồng bộ từ ET</button>}
@@ -513,17 +513,17 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
         </div>
       </div>
       {anhPH && <EtAnhGuiPH coMat={coMat} probs={probs} gradeOf={gradeOf} buoi={buoi} onClose={() => setAnhPH(false)} />}
-      <div className="overflow-auto rounded-xl border border-slate-200">
-        <table className="w-full border-collapse text-sm">
+      <div className="min-h-0 flex-1 overflow-auto rounded-xl border border-slate-200">
+        <table className="w-auto border-collapse text-sm">
           <thead>
             <tr className="bg-slate-100">
-              <th className="sticky left-0 z-10 border border-slate-200 bg-slate-100 px-3 py-2 text-center text-[12px] font-semibold text-slate-700">Học sinh</th>
+              <th className="sticky left-0 top-0 z-30 whitespace-nowrap border border-slate-200 bg-slate-100 px-4 py-1.5 text-left text-[12px] font-semibold text-slate-700">Học sinh</th>
               {probs.map((p, idx) => {
                 const c = cauOf(idx)
                 return (
-                  <th key={p.id} className="min-w-[140px] border border-slate-200 px-2 py-2 text-center align-top">
+                  <th key={p.id} className="sticky top-0 z-10 w-[150px] border border-slate-200 bg-slate-100 px-2 py-1.5 text-center align-top">
                     <div className="text-[12px] font-bold text-slate-700">Câu {p.problem_no}</div>
-                    <div className="mx-auto max-w-[180px] truncate text-[11px] font-medium normal-case text-violet-600" title={tenDang(p.ma_dang)}>{tenDang(p.ma_dang)}</div>
+                    <div className="mx-auto max-w-[140px] truncate text-[11px] font-medium normal-case text-violet-600" title={tenDang(p.ma_dang)}>{tenDang(p.ma_dang)}</div>
                     {c && <button onClick={() => setPreview(c)} className="mt-1 rounded border border-slate-200 px-1.5 py-0.5 text-[10px] font-normal normal-case text-slate-400 hover:border-indigo-300 hover:text-indigo-600">ⓘ đề</button>}
                   </th>
                 )
@@ -533,17 +533,17 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
           <tbody>
             {coMat.map((r) => (
               <tr key={r.id}>
-                <td className="sticky left-0 z-10 whitespace-nowrap border border-slate-200 bg-white px-3 py-2 text-center align-middle font-medium text-slate-800">{r.hoc_sinh?.ho_ten ?? '?'}</td>
+                <td className="sticky left-0 z-10 whitespace-nowrap border border-slate-200 bg-white px-3 py-1 text-left align-middle font-medium text-slate-800">{r.hoc_sinh?.ho_ten ?? '?'}</td>
                 {probs.map((p) => {
                   const g = gradeOf(p.id, r.hoc_sinh_id)
                   const isEditing = editing?.problemId === p.id && editing?.hsId === r.hoc_sinh_id
                   const hasProblem = !!g && (g.result === 'partial' || g.result === 'wrong')
                   return (
-                    <td key={p.id} className="border border-slate-200 px-2 py-2 align-top">
-                      <div className="flex justify-center gap-1.5">
+                    <td key={p.id} className="border border-slate-200 px-2 py-1 align-middle">
+                      <div className="flex justify-center gap-1">
                         {ET_KQ.map((k) => (
                           <button key={k.v} onClick={() => pickKQ(p.id, r.hoc_sinh_id, k.v)} disabled={!!dongCol}
-                            className={`h-8 w-9 rounded-lg border text-[13px] font-bold transition disabled:cursor-not-allowed ${g?.result === k.v ? k.sel : k.idle} ${dongCol && g?.result !== k.v ? 'opacity-50' : ''}`}>{k.lbl}</button>
+                            className={`h-7 w-8 rounded-lg border text-[13px] font-bold transition disabled:cursor-not-allowed ${g?.result === k.v ? k.sel : k.idle} ${dongCol && g?.result !== k.v ? 'opacity-50' : ''}`}>{k.lbl}</button>
                         ))}
                       </div>
                       {isEditing ? (
@@ -792,18 +792,18 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
 
   const cbOf = (hsId: string) => cb.filter((x) => x.hoc_sinh_id === hsId)
   return (
-    <div>
+    <div className="flex h-full flex-col">
       <div className="mb-3 flex items-center gap-2">
         <span className="text-[12px] text-slate-400">{probs.length} câu (từ BTVN) · {coMat.length} HS · chấm <b className="text-emerald-600">Đ</b>/<b className="text-amber-600">C</b>/<b className="text-rose-600">S</b> (tham khảo) · 🚨 báo động kém dạng.</span>
         <button onClick={dong_} disabled={closing} className="ml-auto rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-indigo-500 disabled:opacity-40">{closing ? 'Đang đóng…' : 'Đóng BTVN'}</button>
       </div>
-      <div className="overflow-auto rounded-xl border border-slate-200">
+      <div className="min-h-0 flex-1 overflow-auto rounded-xl border border-slate-200">
         <table className="border-collapse text-sm">
           <thead>
             <tr className="bg-slate-100">
-              <th className="sticky left-0 z-10 min-w-[260px] border border-slate-200 bg-slate-100 px-3 py-2 text-left text-[12px] font-semibold text-slate-700">Học sinh · Trạng thái · Thái độ</th>
+              <th className="sticky left-0 top-0 z-30 min-w-[430px] border border-slate-200 bg-slate-100 px-3 py-2 text-left text-[12px] font-semibold text-slate-700">Học sinh · Nộp · Thái độ</th>
               {probs.map((p) => (
-                <th key={p.id} className="min-w-[120px] border border-slate-200 px-2 py-2 text-center align-top">
+                <th key={p.id} className="sticky top-0 z-10 min-w-[120px] border border-slate-200 bg-slate-100 px-2 py-1.5 text-center align-top">
                   <div className="text-[12px] font-bold text-slate-700">Câu {p.problem_no}</div>
                   <div className="mx-auto max-w-[150px] truncate text-[11px] font-medium normal-case text-violet-600" title={tenDang(p.ma_dang)}>{tenDang(p.ma_dang)}</div>
                 </th>
@@ -815,30 +815,32 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
               const v = kq[r.hoc_sinh_id] ?? { trang_thai_nop: null, thai_do: null }
               return (
                 <tr key={r.id} className="align-top">
-                  <td className="sticky left-0 z-10 border border-slate-200 bg-white px-3 py-2">
-                    <div className="font-medium text-slate-800">{r.hoc_sinh?.ho_ten ?? '?'}</div>
-                    <div className="mt-1.5 flex flex-col gap-1">
-                      <select value={v.trang_thai_nop ?? ''} onChange={(e) => setKQField(r.hoc_sinh_id, { trang_thai_nop: e.target.value || null })} className="h-7 rounded border border-slate-300 px-1 text-[12px]">
-                        <option value="">— trạng thái nộp —</option>{NOP_OPTS.map((o) => <option key={o.v} value={o.v}>{o.l}</option>)}
+                  <td className="sticky left-0 z-10 border border-slate-200 bg-white px-3 py-1.5">
+                    <div className="flex items-center gap-1.5">
+                      <span className="min-w-[104px] flex-1 whitespace-nowrap font-medium text-slate-800">{r.hoc_sinh?.ho_ten ?? '?'}</span>
+                      <select value={v.trang_thai_nop ?? ''} onChange={(e) => setKQField(r.hoc_sinh_id, { trang_thai_nop: e.target.value || null })} title="Trạng thái nộp" className={`h-7 w-[116px] shrink-0 rounded border px-1 text-[12px] ${v.trang_thai_nop ? 'border-slate-300 text-slate-700' : 'border-slate-200 text-slate-400'}`}>
+                        <option value="">— Nộp —</option>{NOP_OPTS.map((o) => <option key={o.v} value={o.v}>{o.l}</option>)}
                       </select>
-                      <select value={v.thai_do ?? ''} onChange={(e) => setKQField(r.hoc_sinh_id, { thai_do: e.target.value || null })} className="h-7 rounded border border-slate-300 px-1 text-[12px]">
-                        <option value="">— thái độ —</option>{THAIDO_OPTS.map((o) => <option key={o.v} value={o.v}>{o.l}</option>)}
+                      <select value={v.thai_do ?? ''} onChange={(e) => setKQField(r.hoc_sinh_id, { thai_do: e.target.value || null })} title="Thái độ" className={`h-7 w-[116px] shrink-0 rounded border px-1 text-[12px] ${v.thai_do ? 'border-slate-300 text-slate-700' : 'border-slate-200 text-slate-400'}`}>
+                        <option value="">— Thái độ —</option>{THAIDO_OPTS.map((o) => <option key={o.v} value={o.v}>{o.l}</option>)}
                       </select>
-                      <div className="flex flex-wrap items-center gap-1">
-                        <button onClick={() => setAlertFor(r.hoc_sinh_id)} disabled={!dangBuoi.length} className="rounded border border-rose-200 px-1.5 py-0.5 text-[11px] font-medium text-rose-600 hover:bg-rose-50 disabled:opacity-40" title="Báo động: HS kém 1 dạng">🚨 Báo động</button>
+                      <button onClick={() => setAlertFor(r.hoc_sinh_id)} disabled={!dangBuoi.length} className="shrink-0 rounded border border-rose-200 px-1.5 py-1 text-[12px] text-rose-600 hover:bg-rose-50 disabled:opacity-40" title="Báo động: HS kém 1 dạng">🚨</button>
+                    </div>
+                    {cbOf(r.hoc_sinh_id).length > 0 && (
+                      <div className="mt-1 flex flex-wrap items-center gap-1 pl-[2px]">
                         {cbOf(r.hoc_sinh_id).map((c) => (
                           <span key={c.id} className="inline-flex items-center gap-1 rounded bg-rose-100 px-1.5 py-0.5 text-[10px] font-semibold text-rose-700" title={c.ghi_chu ?? ''}>{tenDang(c.ma_dang)}<button onClick={async () => { await xoaCanhBao(c.id); reloadKq() }} className="text-rose-400 hover:text-rose-700">✕</button></span>
                         ))}
                       </div>
-                    </div>
+                    )}
                   </td>
                   {probs.map((p) => {
                     const g = gradeOf(p.id, r.hoc_sinh_id)
                     return (
-                      <td key={p.id} className="border border-slate-200 px-2 py-2">
-                        <div className="flex justify-center gap-1.5">
+                      <td key={p.id} className="border border-slate-200 px-2 py-1 align-middle">
+                        <div className="flex justify-center gap-1">
                           {ET_KQ.map((k) => (
-                            <button key={k.v} onClick={() => pickKQ(p.id, r.hoc_sinh_id, k.v)} className={`h-8 w-9 rounded-lg border text-[13px] font-bold transition ${g?.result === k.v ? k.sel : k.idle}`}>{k.lbl}</button>
+                            <button key={k.v} onClick={() => pickKQ(p.id, r.hoc_sinh_id, k.v)} className={`h-7 w-8 rounded-lg border text-[13px] font-bold transition ${g?.result === k.v ? k.sel : k.idle}`}>{k.lbl}</button>
                           ))}
                         </div>
                       </td>
@@ -935,7 +937,7 @@ function DanhGiaTab({ buoiId, roster, dangOpts, buoi, onChange }: { buoiId: stri
         <table className="border-collapse text-sm">
           <thead>
             <tr className="bg-slate-100">
-              <th className="sticky left-0 z-10 border border-slate-200 bg-slate-100 px-3 py-2 text-center text-[12px] font-semibold text-slate-700">Học sinh</th>
+              <th className="sticky left-0 z-10 border border-slate-200 bg-slate-100 px-3 py-2 text-left text-[12px] font-semibold text-slate-700">Học sinh</th>
               {dangs.map((md) => <th key={md} className="min-w-[160px] border border-slate-200 px-3 py-2 text-left text-[12px] font-semibold text-slate-700"><div className="max-w-[200px] truncate" title={tenDang(md)}>{tenDang(md)}</div></th>)}
               <th className="border border-slate-200 px-3 py-2 text-left text-[12px] font-semibold text-slate-700">Nhận xét</th>
             </tr>
@@ -945,7 +947,7 @@ function DanhGiaTab({ buoiId, roster, dangOpts, buoi, onChange }: { buoiId: stri
               const hsId = r.hoc_sinh_id; const hs = data[hsId]
               return (
                 <tr key={r.id} className="align-top">
-                  <td className="sticky left-0 z-10 whitespace-nowrap border border-slate-200 bg-white px-3 py-2 text-center align-middle font-medium text-slate-800">{r.hoc_sinh?.ho_ten ?? '?'}</td>
+                  <td className="sticky left-0 z-10 whitespace-nowrap border border-slate-200 bg-white px-3 py-2 text-left align-middle font-medium text-slate-800">{r.hoc_sinh?.ho_ten ?? '?'}</td>
                   {dangs.map((md) => {
                     const cur = hs?.diemTheoDang[md]
                     const baiDang = probs.filter((p) => p.ma_dang === md)
