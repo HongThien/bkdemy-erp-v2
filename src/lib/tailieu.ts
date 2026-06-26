@@ -292,9 +292,10 @@ export async function updateET(id: string, patch: { ten?: string; lop_id?: strin
 }
 // ET tìm theo buổi (lớp+ngày) — dùng khi tab Chấm ET load (buổi materialize).
 export async function getETByBuoi(lopId: string, ngay: string): Promise<ETDoc | null> {
-  const { data, error } = await supabase.from('tai_lieu').select('*').eq('loai', 'et').eq('lop_id', lopId).eq('ngay', ngay).maybeSingle()
+  // order+limit1 (KHÔNG maybeSingle) — cùng lý do getBTVNByBuoi: 1 doc trùng lọt thì lấy mới nhất, đừng throw.
+  const { data, error } = await supabase.from('tai_lieu').select('*').eq('loai', 'et').eq('lop_id', lopId).eq('ngay', ngay).order('created_at', { ascending: false }).limit(1)
   if (error) throw error
-  return (data as ETDoc) ?? null
+  return ((data as ETDoc[])?.[0]) ?? null
 }
 // Nhân bản 1 tài liệu (copy tai_lieu + phans + câu + cau_hinh). Dùng cho: lưu MẪU (lop_id/ngay=null) hoặc tạo từ mẫu.
 export async function duplicateTaiLieu(srcId: string, over: { ten: string; lop_id?: string | null; ngay?: string | null }): Promise<TaiLieu> {
@@ -338,6 +339,8 @@ export async function trichXuatBuoi(masterId: string, buoiPhanId: string, opts: 
   const { data: { user } } = await supabase.auth.getUser()
   const ngayVn = opts.ngay.split('-').reverse().join('/')
   const mk = async (loai: string, ten: string): Promise<TaiLieu> => {
+    // Re-trích = THAY THẾ doc cũ cùng (lớp+ngày+loại) — chống trùng (unique uq_tai_lieu_van_hanh).
+    await supabase.from('tai_lieu').delete().eq('loai', loai).eq('lop_id', opts.lopId).eq('ngay', opts.ngay)
     const { data, error } = await supabase.from('tai_lieu').insert({
       loai, ten, khoi: opts.khoi, theme: (master as any)?.theme ?? 'bkdemy', cau_hinh: (master as any)?.cau_hinh ?? {},
       lop_id: opts.lopId, ngay: opts.ngay, nguon_id: masterId, nguon_buoi: buoiPhanId, created_by: user?.id ?? null,
@@ -389,9 +392,10 @@ export async function getETCaus(taiLieuId: string): Promise<CauHoi[]> {
 }
 // BTVN của buổi (lớp+ngày) — doc loai='btvn' (từ trích xuất). Câu gộp mọi phan 'btvn' theo thứ tự (mỗi dạng 1 phan).
 export async function getBTVNByBuoi(lopId: string, ngay: string): Promise<{ id: string } | null> {
-  const { data, error } = await supabase.from('tai_lieu').select('id').eq('loai', 'btvn').eq('lop_id', lopId).eq('ngay', ngay).maybeSingle()
+  // order+limit1 (KHÔNG maybeSingle): nếu lỡ còn 2 doc trùng (lớp+ngày) thì lấy bản mới nhất, đừng throw cả màn.
+  const { data, error } = await supabase.from('tai_lieu').select('id').eq('loai', 'btvn').eq('lop_id', lopId).eq('ngay', ngay).order('created_at', { ascending: false }).limit(1)
   if (error) throw error
-  return (data as { id: string }) ?? null
+  return ((data as { id: string }[])?.[0]) ?? null
 }
 export async function getBTVNCaus(taiLieuId: string): Promise<CauHoi[]> {
   const full = await getTaiLieuFull(taiLieuId)
