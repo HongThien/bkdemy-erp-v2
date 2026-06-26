@@ -2,7 +2,7 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-60 bảng · 0 enum · 3 trigger · 8 function
+61 bảng · 0 enum · 3 trigger · 8 function
 
 ## bang_khong_bu
 
@@ -44,6 +44,20 @@
 | trang_thai_moi | text | Y |  |  |
 | actor | uuid | Y |  |  |
 | created_at | timestamp with time zone |  | now() |  |
+
+## bo_tro_duoi
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |
+| lop_id | uuid | Y |  | FK→lop.id |
+| nguon | text |  | 'thu_cong'::text |  |
+| ly_do | text | Y |  |  |
+| trang_thai | text |  | 'can_duoi'::text |  |
+| actor | uuid | Y |  |  |
+| created_at | timestamp with time zone |  | now() |  |
+| hoan_thanh_at | timestamp with time zone | Y |  |  |
 
 ## btvn_ket_qua
 
@@ -114,6 +128,7 @@
 | diem_danh | text | Y |  |  |
 | bu_cho_buoi_id | uuid | Y |  | FK→buoi_hoc.id |
 | created_at | timestamp with time zone |  | now() |  |
+| bo_tro_duoi_id | uuid | Y |  | FK→bo_tro_duoi.id |
 
 ## canh_bao_yeu
 
@@ -697,6 +712,7 @@
 | email_ph | text | Y |  |  |
 | phu_huynh_id | uuid | Y |  | FK→phu_huynh.id |
 | hoc_sinh_goc_id | uuid | Y |  | FK→hoc_sinh.id |
+| can_bo_tro_duoi | boolean |  | false |  |
 
 ## ung_vien_log
 

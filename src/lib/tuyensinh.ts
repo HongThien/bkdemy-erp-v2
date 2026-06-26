@@ -18,11 +18,12 @@ export type UngVien = {
   ngay_sinh: string | null; gioi_tinh: string | null; dia_chi: string | null; truong_hoc: string | null; email_ph: string | null
   phu_huynh_id: string | null // link PH cũ (con thứ 2…) — convert dùng thẳng, không tạo trùng
   hoc_sinh_goc_id: string | null // lead = HS CŨ học thêm môn → convert chỉ ghi danh, không tạo HS mới
+  can_bo_tro_duoi: boolean // tích → khi convert tạo case bổ trợ đuổi (HS chậm hơn chương trình lớp)
 }
 export const MON_OPTIONS = MON_LIST // danh mục môn dùng chung (src/lib/mon.ts)
 export type MonTS = Mon
 // input tạo/sửa lead — các trường thông tin (KHÔNG gồm id/ma_uv/trang_thai/hoc_sinh_id…)
-export type UngVienInput = Partial<Pick<UngVien, 'ho_ten_hs' | 'ho_ten_ph' | 'sdt_ph' | 'email_ph' | 'phu_huynh_id' | 'hoc_sinh_goc_id' | 'khoi' | 'mon' | 'nguon' | 'ghi_chu' | 'ngay_sinh' | 'gioi_tinh' | 'dia_chi' | 'truong_hoc'>>
+export type UngVienInput = Partial<Pick<UngVien, 'ho_ten_hs' | 'ho_ten_ph' | 'sdt_ph' | 'email_ph' | 'phu_huynh_id' | 'hoc_sinh_goc_id' | 'can_bo_tro_duoi' | 'khoi' | 'mon' | 'nguon' | 'ghi_chu' | 'ngay_sinh' | 'gioi_tinh' | 'dia_chi' | 'truong_hoc'>>
 
 // Tìm HS cũ (cho lead "học thêm môn") — gõ tên/mã.
 export async function timHocSinh(q: string): Promise<{ id: string; ma_hs: string | null; ho_ten: string; khoi: string | null }[]> {
@@ -129,10 +130,18 @@ export async function moLaiUngVien(id: string): Promise<void> { await updateUngV
 
 // CONVERT L7→L8: gộp/ tạo PH theo SĐT + tạo HS + (tuỳ) ghi danh lớp. Set hoc_sinh_id + da_convert. Trả hoc_sinh_id.
 export async function convertUngVien(uv: UngVien, opts: { khoi?: string | null; lopId?: string | null; mucNangLucId?: string | null }): Promise<string> {
+  // Tích "Cần bổ trợ đuổi" → tạo case (nguon=tuyen_sinh) gắn lớp vừa xếp. Bỏ qua nếu trùng (unique partial).
+  const taoCaseDuoiNeuCan = async (hsId: string) => {
+    if (!uv.can_bo_tro_duoi) return
+    const lopId = opts.lopId ?? uv.lop_du_kien_id ?? null
+    const { data: { user } } = await supabase.auth.getUser()
+    await supabase.from('bo_tro_duoi').insert({ hoc_sinh_id: hsId, lop_id: lopId, nguon: 'tuyen_sinh', actor: user?.id ?? null })
+  }
   // Lead = HS CŨ học thêm môn → KHÔNG tạo HS/PH mới, chỉ ghi danh vào lớp môn mới.
   if (uv.hoc_sinh_goc_id) {
     const hsId = uv.hoc_sinh_goc_id
     if (opts.lopId) { try { await ghiDanh(hsId, opts.lopId, opts.mucNangLucId ?? null) } catch { /* lỗi lớp không chặn convert */ } }
+    await taoCaseDuoiNeuCan(hsId)
     await updateUngVien(uv.id, { trang_thai: 'da_convert', hoc_sinh_id: hsId })
     return hsId
   }
@@ -151,6 +160,7 @@ export async function convertUngVien(uv: UngVien, opts: { khoi?: string | null; 
     phu_huynh_id: phId, diem_test_dau_vao: uv.diem_test ?? null, ngay_nhap_hoc: homNayVN(), trang_thai: 'dang_hoc',
   })
   if (opts.lopId) { try { await ghiDanh(hs.id, opts.lopId, opts.mucNangLucId ?? null) } catch { /* lỗi lớp không chặn convert */ } }
+  await taoCaseDuoiNeuCan(hs.id)
   await updateUngVien(uv.id, { trang_thai: 'da_convert', hoc_sinh_id: hs.id })
   return hs.id
 }

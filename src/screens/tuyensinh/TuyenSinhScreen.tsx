@@ -217,6 +217,7 @@ function UvFormModal({ uv, defaultMon, onClose, onDone }: { uv: UngVien | null; 
     nguon: uv?.nguon ?? '', ghi_chu: uv?.ghi_chu ?? '', ma_uv: uv?.ma_uv ?? '',
   })
   const set = (k: keyof typeof f, v: string) => setF((s) => ({ ...s, [k]: v }))
+  const [canDuoi, setCanDuoi] = useState(uv?.can_bo_tro_duoi ?? false) // tích → convert tạo case bổ trợ đuổi
   const [phId, setPhId] = useState<string | null>(uv?.phu_huynh_id ?? null)
   const [phCon, setPhCon] = useState<string[]>([]) // con đang/đã học của PH đã link (hiển thị xác nhận đúng PH)
   const [hsGoc, setHsGoc] = useState<{ id: string; ho_ten: string; ma_hs: string | null } | null>(
@@ -250,7 +251,7 @@ function UvFormModal({ uv, defaultMon, onClose, onDone }: { uv: UngVien | null; 
       ho_ten_hs: f.ho_ten_hs.trim(), mon: f.mon, khoi: f.khoi, ngay_sinh: f.ngay_sinh || null, gioi_tinh: f.gioi_tinh || null,
       truong_hoc: f.truong_hoc.trim() || null, dia_chi: f.dia_chi.trim() || null,
       ho_ten_ph: f.ho_ten_ph.trim() || null, sdt_ph: f.sdt_ph.trim() || null, email_ph: f.email_ph.trim() || null, phu_huynh_id: phId,
-      hoc_sinh_goc_id: hsGoc?.id ?? null,
+      hoc_sinh_goc_id: hsGoc?.id ?? null, can_bo_tro_duoi: canDuoi,
       nguon: f.nguon.trim() || null, ghi_chu: f.ghi_chu.trim() || null,
     }
     try { if (edit) await updateUngVien(uv!.id, patch); else await createUngVien({ ...patch, ma_uv: f.ma_uv.trim() || undefined }); onDone() }
@@ -303,6 +304,11 @@ function UvFormModal({ uv, defaultMon, onClose, onDone }: { uv: UngVien | null; 
           </div>
           <div><Lbl>Lưu ý</Lbl><input className={inputCls} value={f.ghi_chu} onChange={(e) => set('ghi_chu', e.target.value)} placeholder="vd: referral — chị Lan giới thiệu" /></div>
         </div>
+        <label className="flex cursor-pointer items-center gap-2.5 rounded-xl border border-amber-200 bg-amber-50/60 px-3 py-2.5">
+          <input type="checkbox" checked={canDuoi} onChange={(e) => setCanDuoi(e.target.checked)} className="h-4 w-4 accent-amber-600" />
+          <span className="text-[13px] font-medium text-amber-800">⚠ Cần bổ trợ đuổi</span>
+          <span className="text-[12px] text-amber-600">— HS chậm hơn chương trình lớp; khi vào chính thức sẽ vào luồng Bổ trợ → Đuổi</span>
+        </label>
         <div className="flex justify-end gap-2 pt-1">
           <button onClick={onClose} className="rounded-lg border border-slate-200 px-4 py-2 text-[14px] text-slate-600 hover:bg-slate-50">Huỷ</button>
           <button onClick={save} disabled={busy} className="rounded-lg bg-indigo-600 px-4 py-2 text-[14px] font-medium text-white hover:bg-indigo-500 disabled:opacity-50">{busy ? 'Đang lưu…' : edit ? 'Lưu' : 'Tạo'}</button>

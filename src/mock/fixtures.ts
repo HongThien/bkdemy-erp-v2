@@ -94,6 +94,7 @@ export const adminLeaves: AdminLeaf[] = [
   { id: 'giaoviec',    nhom: 'Vận hành',  ten: 'Tạo & giao việc phát triển',   founderOnly: false },
   // Bổ trợ = nhánh ngang hàng Vận hành (hệ thống support NGOÀI buổi học chính). 5 loại: bù/yếu/đuổi/định-kỳ/ôn-thi.
   { id: 'botro',       nhom: 'Bổ trợ',    ten: 'Bù',                           founderOnly: false },
+  { id: 'botro_duoi',  nhom: 'Bổ trợ',    ten: 'Đuổi',                         founderOnly: false },
   { id: 'phanquyen',   nhom: 'Hệ thống',  ten: 'Phân quyền',                   founderOnly: true },
   { id: 'baoloi',      nhom: 'Hệ thống',  ten: 'Quản lý báo lỗi',              founderOnly: true },
 ]
