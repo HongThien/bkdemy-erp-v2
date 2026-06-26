@@ -10,6 +10,7 @@ import {
 import { listPhuHuynh, listConByPH, type PhuHuynh } from '../../lib/nhansu'
 import { listLop, type Lop } from '../../lib/nhansu'
 import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../lib/kho/api'
+import { homNayVN } from '../../lib/tuan'
 import SearchSelect from '../../components/SearchSelect'
 
 type Tab = UngVienLevel | 'L8' | 'loai'
@@ -277,7 +278,7 @@ function UvFormModal({ uv, defaultMon, onClose, onDone }: { uv: UngVien | null; 
           <div><Lbl>Môn</Lbl><select className={inputCls} value={f.mon} onChange={(e) => set('mon', e.target.value)}>{MON_OPTIONS.map((m) => <option key={m} value={m}>{m}</option>)}</select></div>
           <div><Lbl>Khối</Lbl><select className={inputCls} value={f.khoi} onChange={(e) => set('khoi', e.target.value)}>{KHOI_OPTIONS.map((k) => <option key={k} value={k}>{k}</option>)}</select></div>
           {!edit && <div className="col-span-2"><Lbl>Mã UV</Lbl><input className={inputCls} value={f.ma_uv} onChange={(e) => set('ma_uv', e.target.value)} /></div>}
-          <div><Lbl>Ngày sinh</Lbl><input type="date" className={inputCls} value={f.ngay_sinh} onChange={(e) => set('ngay_sinh', e.target.value)} /></div>
+          <div><Lbl>Ngày sinh <span className="font-normal text-slate-400">(không bắt buộc)</span></Lbl><input type="date" autoComplete="off" max={homNayVN()} className={inputCls} value={f.ngay_sinh} onChange={(e) => set('ngay_sinh', e.target.value)} /></div>
           <div><Lbl>Giới tính</Lbl><select className={inputCls} value={f.gioi_tinh} onChange={(e) => set('gioi_tinh', e.target.value)}><option value="">—</option><option value="nam">Nam</option><option value="nu">Nữ</option></select></div>
           <div><Lbl>Trường học</Lbl><input className={inputCls} value={f.truong_hoc} onChange={(e) => set('truong_hoc', e.target.value)} placeholder="vd: THCS Cầu Giấy" /></div>
           <div><Lbl>Địa chỉ</Lbl><input className={inputCls} value={f.dia_chi} onChange={(e) => set('dia_chi', e.target.value)} /></div>
