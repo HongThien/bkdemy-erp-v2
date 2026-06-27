@@ -5,7 +5,8 @@ import {
   listCanBu, listCaBoTro, listKhongBu, ghiKhongBu, xoaKhongBu, taoBuoiBu, themHSVaoBuoiBu, buoiBuSapToi, goiYBuoiBu,
   ensureBuoiBuETProblems, demTabBoTro, type CanBuItem, type CaBoTro,
 } from '../../lib/botro'
-import { getRoster, diemDanh, listProblems, gradeET, deleteGrade, listGrades, closePhase, getDanhGia, setDanhGiaDang, dongDanhGia, moLaiDanhGia, type BuoiHocHS, type Problem, type Grade, type ETResult } from '../../lib/gami'
+import { getRoster, getBuoi, diemDanh, huyBuoi, xoaHSKhoiBuoi, listProblems, gradeET, deleteGrade, listGrades, closePhase, getDanhGia, setDanhGiaDang, dongDanhGia, moLaiDanhGia, type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type ETResult } from '../../lib/gami'
+import SuaBuoiModal from './SuaBuoiModal'
 import { listNhanSu, type NhanSu } from '../../lib/nhansu'
 import { homNayVN } from '../../lib/tuan'
 import SearchSelect from '../../components/SearchSelect'
@@ -42,7 +43,7 @@ export default function BoTroScreen() {
 
   async function onKhongXep(item: CanBuItem) { try { await ghiKhongBu(item.id, 'khong_xep_duoc'); await refresh() } catch (e: any) { alert(e.message ?? String(e)) } }
 
-  if (detail) return <BuoiBuDetail ca={detail.ca} readOnly={detail.readOnly} onClose={() => { setDetail(null); refresh() }} />
+  if (detail) return <BuoiBuDetail buoiId={detail.ca.id} readOnly={detail.readOnly} onClose={() => { setDetail(null); refresh() }} />
 
   return (
     <div className="h-full overflow-auto bg-[#f5f5f7] p-6">
@@ -261,20 +262,26 @@ function XepModal({ item, onClose, onDone }: { item: CanBuItem; onClose: () => v
 const ET_LBL: Record<ETResult, { l: string; on: string }> = { correct: { l: 'Đ', on: 'bg-emerald-500' }, partial: { l: 'C', on: 'bg-amber-500' }, wrong: { l: 'S', on: 'bg-rose-500' } }
 const DG_LBL: { v: 1 | 0.5 | 0; l: string; on: string }[] = [{ v: 1, l: 'Đ', on: 'bg-emerald-500' }, { v: 0.5, l: 'C', on: 'bg-amber-500' }, { v: 0, l: 'S', on: 'bg-rose-500' }]
 
-function BuoiBuDetail({ ca, readOnly, onClose }: { ca: CaBoTro; readOnly: boolean; onClose: () => void }) {
-  const [sub, setSub] = useState<'diemdanh' | 'et' | 'danhgia'>('diemdanh')
+// Mở từ BoTroScreen (OPS) HOẶC "Việc của tôi" (TA chấm ET / GV đánh giá) → nhận buoiId, tự load + seed ET buổi mẹ.
+export function BuoiBuDetail({ buoiId, readOnly = false, initialSub, onClose }: { buoiId: string; readOnly?: boolean; initialSub?: 'diemdanh' | 'et' | 'danhgia'; onClose: () => void }) {
+  const [sub, setSub] = useState<'diemdanh' | 'et' | 'danhgia'>(initialSub ?? 'diemdanh')
+  const [buoi, setBuoi] = useState<BuoiHoc | null>(null)
   const [roster, setRoster] = useState<BuoiHocHS[]>([])
   const [probs, setProbs] = useState<Problem[]>([])
   const [grades, setGrades] = useState<Grade[]>([])
   const [dg, setDg] = useState<Record<string, { diemTheoDang: Record<string, number> }>>({})
   const [busy, setBusy] = useState(false)
-  const etXong = !!ca.et_dong_at, dgXong = !!ca.danh_gia_xong_at
+  const [sua, setSua] = useState(false)
+  const etXong = !!buoi?.et_dong_at, dgXong = !!buoi?.danh_gia_xong_at
+
+  async function onHuy() { const ly = prompt('Lý do huỷ buổi bù?'); if (!ly) return; try { await huyBuoi(buoiId, ly); onClose() } catch (e: any) { alert(e.message ?? String(e)) } }
+  async function onXoaHS(r: BuoiHocHS) { if (!confirm(`Gỡ ${r.hoc_sinh?.ho_ten ?? 'HS'} khỏi buổi bù?`)) return; try { await xoaHSKhoiBuoi(r); await reload() } catch (e: any) { alert(e.message ?? String(e)) } }
 
   async function reload() {
-    const [r, p, g] = await Promise.all([getRoster(ca.id), listProblems(ca.id, 'et'), listGrades(ca.id)])
-    setRoster(r); setProbs(p); setGrades(g); setDg(await getDanhGia(ca.id) as any)
+    const [b, r, p, g] = await Promise.all([getBuoi(buoiId), getRoster(buoiId), listProblems(buoiId, 'et'), listGrades(buoiId)])
+    setBuoi(b as BuoiHoc); setRoster(r); setProbs(p); setGrades(g); setDg(await getDanhGia(buoiId) as any)
   }
-  useEffect(() => { (async () => { try { await ensureBuoiBuETProblems(ca.id) } catch { /* */ } reload() })() }, []) // eslint-disable-line
+  useEffect(() => { (async () => { try { await ensureBuoiBuETProblems(buoiId) } catch { /* */ } reload() })() }, []) // eslint-disable-line
   const coMat = roster.filter((r) => r.diem_danh === 'co_mat')
   const gradeOf = (pid: string, hsid: string) => grades.find((g) => g.problem_id === pid && g.hoc_sinh_id === hsid)
   const dangCuaHS = (hsid: string) => [...new Set(probs.filter((p) => p.hoc_sinh_id === hsid).map((p) => p.ma_dang).filter(Boolean))] as string[]
@@ -282,24 +289,26 @@ function BuoiBuDetail({ ca, readOnly, onClose }: { ca: CaBoTro; readOnly: boolea
   async function setDD(r: BuoiHocHS, tt: 'co_mat' | 'vang') { try { await diemDanh(r.id, tt); await reload() } catch (e: any) { alert(e.message) } }
   async function setET(pid: string, hsid: string, result: ETResult) {
     const g = gradeOf(pid, hsid)
-    try { if (g?.result === result) await deleteGrade(pid, hsid); else await gradeET({ buoiId: ca.id, problemId: pid, hocSinhId: hsid, result, loi: [] }); await reload() } catch (e: any) { alert(e.message) }
+    try { if (g?.result === result) await deleteGrade(pid, hsid); else await gradeET({ buoiId, problemId: pid, hocSinhId: hsid, result, loi: [] }); await reload() } catch (e: any) { alert(e.message) }
   }
   async function setDG(hsid: string, md: string, v: 1 | 0.5 | 0) {
     const cur = dg[hsid]?.diemTheoDang[md]
-    try { await setDanhGiaDang(ca.id, hsid, md, cur === v ? null : (v as any)); await reload() } catch (e: any) { alert(e.message) }
+    try { await setDanhGiaDang(buoiId, hsid, md, cur === v ? null : (v as any)); await reload() } catch (e: any) { alert(e.message) }
   }
   async function doClose(phase: 'et' | 'danhgia') {
     setBusy(true)
-    try { if (phase === 'et') await closePhase(ca.id, 'et'); else await dongDanhGia(ca.id); onClose() }
+    try { if (phase === 'et') await closePhase(buoiId, 'et'); else await dongDanhGia(buoiId); onClose() }
     catch (e: any) { alert(e.message ?? String(e)); setBusy(false) }
   }
-  async function reopen(phase: 'et' | 'danhgia') { setBusy(true); try { if (phase === 'danhgia') { await moLaiDanhGia(ca.id); onClose() } else { alert('Mở lại ET ở màn Buổi học/Điểm số.'); setBusy(false) } } catch (e: any) { alert(e.message); setBusy(false) } }
+  async function reopen(phase: 'et' | 'danhgia') { setBusy(true); try { if (phase === 'danhgia') { await moLaiDanhGia(buoiId); onClose() } else { alert('Mở lại ET ở màn Buổi học/Điểm số.'); setBusy(false) } } catch (e: any) { alert(e.message); setBusy(false) } }
 
   return (
     <div className="flex h-full flex-col bg-[#f5f5f7]">
       <div className="flex items-center gap-3 border-b border-slate-200 bg-white px-5 py-3">
         <button onClick={onClose} className="text-[14px] text-slate-500 hover:text-slate-800">‹ Bổ trợ</button>
-        <span className="text-[15px] font-semibold text-slate-800">Buổi bù · {ddmm(ca.ngay)} · {ca.gio_bat_dau?.slice(0, 5)}{ca.phong ? ` · ${ca.phong}` : ''}</span>
+        <span className="text-[15px] font-semibold text-slate-800">Buổi bù · {ddmm(buoi?.ngay)} · {buoi?.gio_bat_dau?.slice(0, 5)}{buoi?.phong ? ` · ${buoi.phong}` : ''}</span>
+        {!readOnly && buoi && <button onClick={() => setSua(true)} className="rounded-lg border border-slate-200 px-2.5 py-1 text-[12px] font-medium text-slate-500 hover:border-indigo-300 hover:text-indigo-700">✎ Sửa buổi</button>}
+        {!readOnly && <button onClick={onHuy} className="rounded-lg border border-rose-200 px-2.5 py-1 text-[12px] font-medium text-rose-600 hover:bg-rose-50">Huỷ buổi</button>}
         <div className="ml-auto inline-flex gap-1 rounded-xl border border-slate-200 bg-white p-1">
           {(['diemdanh', 'et', 'danhgia'] as const).map((s) => <button key={s} onClick={() => setSub(s)} className={`rounded-lg px-3 py-1 text-[13px] font-medium ${sub === s ? 'bg-indigo-600 text-white' : 'text-slate-600'}`}>{s === 'diemdanh' ? 'Điểm danh' : s === 'et' ? 'Chấm ET' : 'Đánh giá'}</button>)}
         </div>
@@ -312,9 +321,10 @@ function BuoiBuDetail({ ca, readOnly, onClose }: { ca: CaBoTro; readOnly: boolea
               {roster.map((r) => (
                 <div key={r.id} className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white p-3 shadow-sm">
                   <span className="text-[14px] font-medium text-slate-800">{r.hoc_sinh?.ho_ten}</span>
-                  <div className="ml-auto flex gap-1">
+                  <div className="ml-auto flex items-center gap-1">
                     <button disabled={readOnly} onClick={() => setDD(r, 'co_mat')} className={`rounded-lg px-2.5 py-1 text-[12px] font-medium ${r.diem_danh === 'co_mat' ? 'bg-emerald-500 text-white' : 'border border-slate-200 text-slate-500'}`}>Có mặt</button>
                     <button disabled={readOnly} onClick={() => setDD(r, 'vang')} className={`rounded-lg px-2.5 py-1 text-[12px] font-medium ${r.diem_danh === 'vang' ? 'bg-rose-500 text-white' : 'border border-slate-200 text-slate-500'}`}>Vắng</button>
+                    {!readOnly && <button onClick={() => onXoaHS(r)} title="Gỡ HS khỏi buổi bù" className="rounded px-1.5 py-1 text-[12px] text-slate-300 hover:bg-rose-50 hover:text-rose-600">✕</button>}
                   </div>
                 </div>
               ))}
@@ -382,6 +392,7 @@ function BuoiBuDetail({ ca, readOnly, onClose }: { ca: CaBoTro; readOnly: boolea
           )}
         </div>
       </div>
+      {sua && buoi && <SuaBuoiModal buoi={buoi} onClose={() => setSua(false)} onSaved={() => { setSua(false); reload() }} />}
     </div>
   )
 }

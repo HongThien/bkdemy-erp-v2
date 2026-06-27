@@ -47,7 +47,7 @@ export default function ReportButton() {
   return (
     <>
       <button onClick={moForm} title="Báo lỗi (gửi cho đội kỹ thuật)"
-        className="no-print fixed bottom-14 right-3 z-[70] flex h-10 items-center gap-2 rounded-full bg-rose-600 px-4 text-[13px] font-semibold text-white shadow-lg hover:bg-rose-500">
+        className="no-print rounded border border-rose-200 px-2 py-1 text-xs font-medium text-rose-600 hover:bg-rose-50">
         🐞 Báo lỗi
       </button>
 

@@ -6,7 +6,6 @@ import TopBar from './components/TopBar'
 import NhanSuHome from './screens/NhanSuHome'
 import Login from './auth/Login'
 import GeminiMeterBadge from './components/GeminiMeterBadge'
-import ReportButton from './components/ReportButton'
 
 export default function App() {
   const [session, setSession] = useState<Session | null | undefined>(undefined) // undefined = đang tải
@@ -38,7 +37,6 @@ export default function App() {
         <NhanSuHome user={user} />
       </div>
       <GeminiMeterBadge />
-      <ReportButton />
     </div>
   )
 }

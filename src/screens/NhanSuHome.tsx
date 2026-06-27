@@ -5,6 +5,7 @@ import { getMyScope, type MyScope } from '../lib/nhansu'
 import { getMyTasks, buoiAoCuaKhoang, moBuoi, diemDanhTienDo, type MyTask, type BuoiAo, type TabKey } from '../lib/gami'
 import { homNayVN, tuanCuaNgay, khoangTuan, nhanTuan, mucDeadline, nhanConLai, type DeadlineMuc } from '../lib/tuan'
 import { BuoiDetail } from './gami/BuoiHocScreen'
+import { BuoiBuDetail } from './botro/BoTroScreen'
 import PersonalCard from '../components/PersonalCard'
 import NavTree from '../components/NavTree'
 import KhoScreen from './kho/KhoScreen'
@@ -30,7 +31,7 @@ import BoTroDuoiScreen from './botro/BoTroDuoiScreen'
 const ROLE_LBL: Record<string, string> = { gv: 'GV', tg: 'Trợ giảng', ops: 'OPS' }
 const tabsCuaVai = (vai: 'gv' | 'tg'): TabKey[] => (vai === 'gv' ? ['danhgia', 'ingame'] : ['ingame', 'et'])
 const ddmm = (s: string) => { const p = s.split('-'); return `${p[2]}/${p[1]}` }
-type OpenBuoi = { id: string; tabs: TabKey[]; initialTab: TabKey; canManage: boolean }
+type OpenBuoi = { id: string; tabs: TabKey[]; initialTab: TabKey; canManage: boolean; loai?: 'bu' }
 type TienDo = { tong: number; daDanh: number }
 
 // Badge deadline — dải NÓNG→NGUỘI dạng pill MỀM (hợp tông Apple, không khối đỏ đặc): đỏ→cam→hổ phách→xanh.
@@ -119,7 +120,7 @@ function TaskCard({ t, now, done, onOpenBuoi }: { t: MyTask; now: number; done?:
   const st = TASK_STYLE[t.tab]
   const base = done ? 'border-l-emerald-500 bg-emerald-50' : `${st.accent} bg-white`
   return (
-    <button onClick={() => onOpenBuoi({ id: t.buoiId, tabs: tabsCuaVai(t.vai), initialTab: t.tab, canManage: false })}
+    <button onClick={() => onOpenBuoi({ id: t.buoiId, tabs: tabsCuaVai(t.vai), initialTab: t.tab, canManage: false, loai: t.loai })}
       className={`flex flex-col rounded-2xl border-l-4 p-4 text-left shadow-sm transition hover:shadow-md hover:-translate-y-0.5 ${base}`}>
       {/* dòng 1: icon + tên task (full) */}
       <div className="flex items-center gap-2.5">
@@ -271,9 +272,9 @@ export default function NhanSuHome({ user }: { user: User }) {
 
   useEffect(() => { getMyScope().then(setScope).finally(() => setLoading(false)) }, [])
 
-  if (openBuoi) return (
-    <BuoiDetail id={openBuoi.id} initialTab={openBuoi.initialTab} tabs={openBuoi.tabs} canManage={openBuoi.canManage} onClose={() => setOpenBuoi(null)} />
-  )
+  if (openBuoi) return openBuoi.loai === 'bu'
+    ? <BuoiBuDetail buoiId={openBuoi.id} initialSub={openBuoi.initialTab as 'diemdanh' | 'et' | 'danhgia'} onClose={() => setOpenBuoi(null)} />
+    : <BuoiDetail id={openBuoi.id} initialTab={openBuoi.initialTab} tabs={openBuoi.tabs} canManage={openBuoi.canManage} onClose={() => setOpenBuoi(null)} />
 
   // nav hợp nhất: Việc của tôi (vận hành) ++ leaf màn role cấp (phát triển)
   const groups = [...staffNavFromScope(scope), ...adminNavFromQuyen(quyen)]

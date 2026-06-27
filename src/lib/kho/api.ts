@@ -54,6 +54,8 @@ export const LOAI_CAU: { value: LoaiCau; label: string }[] = [
   { value: 'trac_nghiem', label: 'Trắc nghiệm' },
   { value: 'dung_sai', label: 'Đúng/Sai' },
 ]
+// Câu Đúng/Sai (Phần 2 đề 2025): 1 đề chung + 4 mệnh đề, MỖI mệnh đề có dạng RIÊNG (có thể khác chuyên đề).
+export type MenhDe = { noi_dung: string; dap_an: 'D' | 'S'; ma_dang: string; loi_giai?: string | null }
 export type CauHoi = {
   ma_cau: string
   dang_chinh: string
@@ -62,6 +64,7 @@ export type CauHoi = {
   dap_an: string | null
   loi_giai: string | null
   lua_chon: string[] | null     // trắc nghiệm: 4 phương án; dap_an = chữ cái đúng
+  menh_de: MenhDe[] | null       // đúng/sai: 4 mệnh đề, mỗi cái 1 dạng
   anh_de: string | null
   anh_dap_an: string | null
   nguon: string                 // 'le' | 'clone'
@@ -81,7 +84,7 @@ export async function listCauByDang(maDang: string, tbl = 'dai_cau_hoi'): Promis
 type CauInput = {
   ma_cau?: string
   dang_chinh: string; loai_cau: string; noi_dung: string
-  dap_an: string | null; loi_giai: string | null; lua_chon?: string[] | null
+  dap_an: string | null; loi_giai: string | null; lua_chon?: string[] | null; menh_de?: MenhDe[] | null
   anh_de?: string | null; anh_dap_an?: string | null
   nguon?: string; nguon_giai?: string; parent_ma_cau?: string | null; clone_method?: string | null
 }
@@ -97,6 +100,74 @@ export async function updateCau(ma_cau: string, patch: Partial<CauInput>, tbl = 
 export async function deleteCau(ma_cau: string, tbl = 'dai_cau_hoi'): Promise<void> {
   const { error } = await supabase.from(tbl).delete().eq('ma_cau', ma_cau)
   if (error) throw error
+}
+
+// ── BANK ĐÚNG/SAI: con của CHUYÊN ĐỀ (như lý thuyết). câu loai_cau='dung_sai' có dang_chinh ∈ dạng của chuyên đề đó. ──
+export async function listDungSaiByDang(dangMas: string[], tbl = 'dai_cau_hoi'): Promise<CauHoi[]> {
+  if (!dangMas.length) return []
+  const { data, error } = await supabase.from(tbl).select('*').eq('loai_cau', 'dung_sai').in('dang_chinh', dangMas).order('created_at').limit(LIMIT)
+  if (error) throw error
+  return (data ?? []) as CauHoi[]
+}
+// AI bóc câu đúng/sai từ tài liệu (PDF/ảnh): đề chung + 4 mệnh đề + Đ/S + lời giải. Người chỉ sửa đáp án + gán dạng.
+export type IngestDungSai = { de_chung: string; loi_giai: string | null; menh_de: { noi_dung: string; dap_an: 'D' | 'S'; loi_giai: string | null }[] }
+export const DUNGSAI_SCHEMA = {
+  type: 'ARRAY',
+  items: {
+    type: 'OBJECT',
+    properties: {
+      de_chung: { type: 'STRING', description: 'Phần dẫn/đề chung của câu. Giữ nguyên xuống dòng bằng \\n.' },
+      loi_giai: { type: 'STRING', description: 'Lời giải chi tiết chung của câu (nếu tài liệu có). Giữ xuống dòng.' },
+      menh_de: {
+        type: 'ARRAY',
+        items: {
+          type: 'OBJECT',
+          properties: {
+            noi_dung: { type: 'STRING', description: 'Nội dung 1 mệnh đề (a/b/c/d).' },
+            dap_an: { type: 'STRING', description: "'D' nếu mệnh đề ĐÚNG, 'S' nếu SAI." },
+            loi_giai: { type: 'STRING', description: 'Giải thích riêng cho mệnh đề (nếu có).' },
+          },
+          required: ['noi_dung', 'dap_an'],
+        },
+      },
+    },
+    required: ['de_chung', 'menh_de'],
+  },
+}
+export function buildDungSaiIngestPrompt(): string {
+  return [
+    'Đây là tài liệu (ảnh/PDF) chứa các CÂU TRẮC NGHIỆM ĐÚNG/SAI (Phần 2 đề thi).',
+    'Mỗi câu gồm: 1 ĐỀ CHUNG (phần dẫn) + 4 MỆNH ĐỀ a) b) c) d). Với mỗi mệnh đề học sinh xác định ĐÚNG hay SAI.',
+    'TÁCH từng câu theo thứ tự xuất hiện. Với MỖI câu trả: de_chung, loi_giai (lời giải chi tiết nếu tài liệu CÓ — nếu không có thì để trống), và menh_de = MẢNG đúng 4 phần tử theo thứ tự a,b,c,d.',
+    "Mỗi mệnh đề: noi_dung; dap_an = 'D' nếu mệnh đề ĐÚNG / 'S' nếu SAI (đọc đáp án trong tài liệu; nếu tài liệu không ghi, suy luận chính xác nhất); loi_giai (giải thích riêng nếu có).",
+    'Công thức toán viết LaTeX trong $…$. Bảng số liệu dùng $\\begin{array}{…}…\\end{array}$ (KHÔNG coi là hình). Giữ nguyên xuống dòng bằng \\n. TUYỆT ĐỐI không bịa thêm câu/mệnh đề không có trong tài liệu.',
+    'Trả JSON: MẢNG các câu [ { "de_chung":"…", "loi_giai":"…", "menh_de":[ {"noi_dung":"…","dap_an":"D","loi_giai":"…"}, …đúng 4 phần tử ] } ].',
+  ].join('\n')
+}
+export function parseDungSaiJson(text: string): IngestDungSai[] {
+  let arr: any
+  try { arr = JSON.parse(text) } catch { return [] }
+  if (!Array.isArray(arr)) arr = arr?.cau ?? arr?.cau_hoi ?? arr?.items ?? []
+  return (arr as any[]).map((c) => ({
+    de_chung: String(c.de_chung ?? c.de ?? '').trim(),
+    loi_giai: String(c.loi_giai ?? '').trim() || null,
+    menh_de: (Array.isArray(c.menh_de) ? c.menh_de : []).slice(0, 4).map((m: any) => ({
+      noi_dung: String(m.noi_dung ?? '').trim(),
+      dap_an: (String(m.dap_an ?? 'D').trim().toUpperCase().startsWith('S') ? 'S' : 'D') as 'D' | 'S',
+      loi_giai: String(m.loi_giai ?? '').trim() || null,
+    })),
+  })).filter((c) => c.de_chung && c.menh_de.length)
+}
+// Tạo câu đúng/sai: dang_chinh = dạng đại diện của chuyên đề nhà (cho ma_cau + browse). menh_de = 4 mệnh đề (mỗi cái dạng riêng).
+export async function createCauDungSai(input: { dang_chinh: string; noi_dung: string; loi_giai?: string | null; menh_de: MenhDe[]; anh_de?: string | null }, tbl = 'dai_cau_hoi'): Promise<CauHoi> {
+  const ma_cau = maCau(input.dang_chinh, await nextCauSeq(input.dang_chinh, tbl))
+  const { data, error } = await supabase.from(tbl).insert({
+    ma_cau, dang_chinh: input.dang_chinh, loai_cau: 'dung_sai', noi_dung: input.noi_dung,
+    loi_giai: input.loi_giai ?? null, menh_de: input.menh_de, anh_de: input.anh_de ?? null,
+    dap_an: null, lua_chon: null, nguon: 'le', nguon_giai: 'nguoi',
+  }).select().single()
+  if (error) throw error
+  return data as CauHoi
 }
 
 // ── Ảnh: upload lên Supabase Storage (bucket public 'kho-anh'), DB chỉ lưu URL ngắn (không base64) ──

@@ -9,6 +9,7 @@ import { fileToCanvases, canvasToJpegBase64, cropCanvasBox } from '../../lib/pdf
 import type { BranchConfig, LyThuyetApi } from './branches'
 import { BacChip, Code, inp, Shell, Field, Row, Seg, Ghost, Actions, mucDoTone, MathText, readClipboardImageFile } from './ui'
 import DangHub from './DangHub'
+import DungSaiPanel from './DungSaiBank'
 import PdfCropper from '../../components/PdfCropper'
 
 const MUC_DO = [1, 2, 3, 4, 5]
@@ -31,6 +32,7 @@ export default function BanDo({ config, khoi }: { config: BranchConfig; khoi: st
   const [ltModal, setLtModal] = useState<null | { d: MapRow }>(null)
   const [ltT2Modal, setLtT2Modal] = useState<null | { ma: string; ten: string }>(null)
   const [hub, setHub] = useState<MapRow | null>(null)
+  const [dungSaiT2, setDungSaiT2] = useState<null | { t2Ma: string; t2Ten: string }>(null)
   const [fMuc, setFMuc] = useState<Set<number>>(new Set())
   const [fBac, setFBac] = useState<Set<string>>(new Set())
 
@@ -208,7 +210,7 @@ export default function BanDo({ config, khoi }: { config: BranchConfig; khoi: st
                         {node.t2Ma.slice(4)}
                       </div>
                       <div className="min-w-0 flex-1 pt-0.5">
-                        <div className="text-[17px] font-semibold leading-snug text-slate-800">{node.t2Ten}</div>
+                        <div className="text-[17px] font-semibold leading-snug text-slate-800 pr-12">{node.t2Ten}</div>
                         <div className="mt-1.5"><Code>{node.t2Ma}</Code></div>
                       </div>
                     </div>
@@ -271,6 +273,10 @@ export default function BanDo({ config, khoi }: { config: BranchConfig; khoi: st
                       className={`rounded-md border px-3 py-1.5 text-xs font-medium transition ${tone}`}>{label}</button>
                   )
                 })()}
+                {config.cauTbl && (
+                  <button onClick={() => setDungSaiT2({ t2Ma: t2.t2Ma, t2Ten: t2.t2Ten })} title="Kho câu Đúng/Sai (mỗi mệnh đề 1 dạng riêng) của chuyên đề"
+                    className="rounded-md border border-indigo-200 bg-indigo-50 px-3 py-1.5 text-xs font-medium text-indigo-700 transition hover:bg-indigo-100">📋 Đúng/Sai</button>
+                )}
                 <button
                   onClick={() => setModal({ editing: null, prefill: { t1Ma: t1.t1Ma, t1Ten: t1.t1Ten, t2Ma: t2.t2Ma, t2Ten: t2.t2Ten } })}
                   className="rounded-md bg-indigo-600 px-3 py-1.5 text-xs font-medium text-white shadow-sm transition hover:bg-indigo-500">
@@ -334,6 +340,10 @@ export default function BanDo({ config, khoi }: { config: BranchConfig; khoi: st
           onEditDang={() => { const h = hub; setHub(null); setModal({ editing: h }) }}
           onDeleteDang={() => { const h = hub; setHub(null); onDelete(h) }}
           onChanged={reload} />
+      )}
+      {dungSaiT2 && config.cauTbl && (
+        <DungSaiPanel t2Ma={dungSaiT2.t2Ma} t2Ten={dungSaiT2.t2Ten} tbl={config.cauTbl} allDang={rows}
+          onClose={() => setDungSaiT2(null)} />
       )}
     </div>
   )

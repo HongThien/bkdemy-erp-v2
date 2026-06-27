@@ -6,7 +6,8 @@ import {
   listCanDuoi, listCaDuoi, taoBuoiDuoi, themHSVaoBuoiDuoi, buoiDuoiSapToi, goiYBuoiDuoi, themCaseDuoi,
   hoanThanhKhoaDuoi, xoaCaseDuoi, timHocSinhDuoi, lopCuaHS, demTabDuoi, type CanDuoiItem, type CaDuoi,
 } from '../../lib/botro_duoi'
-import { getRoster, diemDanh, getDanhGia, setNhanXet, dongDanhGia, moLaiDanhGia, type BuoiHocHS } from '../../lib/gami'
+import { getRoster, getBuoi, huyBuoi, xoaHSKhoiBuoi, diemDanh, getDanhGia, setNhanXet, dongDanhGia, moLaiDanhGia, type BuoiHocHS } from '../../lib/gami'
+import SuaBuoiModal from './SuaBuoiModal'
 import { listNhanSu, type NhanSu } from '../../lib/nhansu'
 import { homNayVN } from '../../lib/tuan'
 import SearchSelect from '../../components/SearchSelect'
@@ -267,11 +268,14 @@ function BuoiDuoiDetail({ ca, readOnly, onClose, onHoanThanhKhoa }: { ca: CaDuoi
   const [roster, setRoster] = useState<BuoiHocHS[]>([])
   const [nx, setNx] = useState<Record<string, string>>({})
   const [busy, setBusy] = useState(false)
+  const [sua, setSua] = useState(false)
+  const [meta, setMeta] = useState({ ngay: ca.ngay, gio_bat_dau: ca.gio_bat_dau, phong: ca.phong, nguoi_day: ca.nguoi_day, nguoi_day_tg: ca.nguoi_day_tg })
   const dgXong = !!ca.danh_gia_xong_at
   const lopDuoiCua = (hsId: string) => ca.hs.find((h) => h.hoc_sinh_id === hsId)?.lop ?? ''
 
   async function reload() {
-    const [r, dg] = await Promise.all([getRoster(ca.id), getDanhGia(ca.id)])
+    const [b, r, dg] = await Promise.all([getBuoi(ca.id), getRoster(ca.id), getDanhGia(ca.id)])
+    if (b) setMeta({ ngay: (b as any).ngay, gio_bat_dau: (b as any).gio_bat_dau, phong: (b as any).phong, nguoi_day: (b as any).nguoi_day, nguoi_day_tg: (b as any).nguoi_day_tg })
     setRoster(r)
     const m: Record<string, string> = {}
     for (const [hsId, v] of Object.entries(dg)) m[hsId] = (v as any).nhan_xet ?? ''
@@ -280,6 +284,8 @@ function BuoiDuoiDetail({ ca, readOnly, onClose, onHoanThanhKhoa }: { ca: CaDuoi
   useEffect(() => { reload() }, []) // eslint-disable-line
 
   async function setDD(r: BuoiHocHS, tt: 'co_mat' | 'vang') { try { await diemDanh(r.id, tt); await reload() } catch (e: any) { alert(e.message) } }
+  async function onHuy() { const ly = prompt('Lý do huỷ buổi đuổi?'); if (!ly) return; try { await huyBuoi(ca.id, ly); onClose() } catch (e: any) { alert(e.message ?? String(e)) } }
+  async function onXoaHS(r: BuoiHocHS) { if (!confirm(`Gỡ ${r.hoc_sinh?.ho_ten ?? 'HS'} khỏi buổi đuổi?`)) return; try { await xoaHSKhoiBuoi(r); await reload() } catch (e: any) { alert(e.message ?? String(e)) } }
   async function luuNhanXet(hsId: string) { try { await setNhanXet(ca.id, hsId, nx[hsId] ?? '') } catch (e: any) { alert(e.message) } }
   async function toggleDong() {
     setBusy(true)
@@ -291,8 +297,10 @@ function BuoiDuoiDetail({ ca, readOnly, onClose, onHoanThanhKhoa }: { ca: CaDuoi
     <div className="flex h-full flex-col bg-[#f5f5f7]">
       <div className="flex items-center gap-3 border-b border-slate-200 bg-white px-5 py-3">
         <button onClick={onClose} className="text-[14px] text-slate-500 hover:text-slate-800">‹ Bổ trợ đuổi</button>
-        <span className="text-[15px] font-semibold text-slate-800">Buổi đuổi · {ddmm(ca.ngay)} · {ca.gio_bat_dau?.slice(0, 5)}{ca.phong ? ` · ${ca.phong}` : ''}</span>
+        <span className="text-[15px] font-semibold text-slate-800">Buổi đuổi · {ddmm(meta.ngay)} · {meta.gio_bat_dau?.slice(0, 5)}{meta.phong ? ` · ${meta.phong}` : ''}</span>
         <span className="rounded-full bg-orange-100 px-2 py-0.5 text-[11px] font-medium text-orange-700">{ca.hs.length} HS</span>
+        {!readOnly && <button onClick={() => setSua(true)} className="rounded-lg border border-slate-200 px-2.5 py-1 text-[12px] font-medium text-slate-500 hover:border-indigo-300 hover:text-indigo-700">✎ Sửa buổi</button>}
+        {!readOnly && <button onClick={onHuy} className="rounded-lg border border-rose-200 px-2.5 py-1 text-[12px] font-medium text-rose-600 hover:bg-rose-50">Huỷ buổi</button>}
         {!readOnly && (
           <button onClick={toggleDong} disabled={busy} className={`ml-auto rounded-lg px-4 py-2 text-[14px] font-medium disabled:opacity-50 ${dgXong ? 'border border-amber-300 text-amber-700 hover:bg-amber-50' : 'bg-emerald-600 text-white hover:bg-emerald-500'}`}>{dgXong ? '↩ Mở lại buổi' : '✓ Hoàn thành buổi'}</button>
         )}
@@ -312,6 +320,7 @@ function BuoiDuoiDetail({ ca, readOnly, onClose, onHoanThanhKhoa }: { ca: CaDuoi
                   {r.bo_tro_duoi_id && !readOnly && (
                     <button onClick={() => onHoanThanhKhoa(r.bo_tro_duoi_id!, r.hoc_sinh?.ho_ten ?? 'HS')} title="HS đã bắt kịp → kết thúc khóa đuổi" className="rounded-lg border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-[12px] font-medium text-emerald-700 hover:border-emerald-300">✓ Hoàn thành khóa</button>
                   )}
+                  {!readOnly && <button onClick={() => onXoaHS(r)} title="Gỡ HS khỏi buổi đuổi" className="rounded px-1.5 py-1 text-[12px] text-slate-300 hover:bg-rose-50 hover:text-rose-600">✕</button>}
                 </div>
               </div>
               <textarea value={nx[r.hoc_sinh_id] ?? ''} disabled={readOnly} onChange={(e) => setNx((m) => ({ ...m, [r.hoc_sinh_id]: e.target.value }))} onBlur={() => luuNhanXet(r.hoc_sinh_id)}
@@ -320,6 +329,7 @@ function BuoiDuoiDetail({ ca, readOnly, onClose, onHoanThanhKhoa }: { ca: CaDuoi
           ))}
         </div>
       </div>
+      {sua && <SuaBuoiModal buoi={{ id: ca.id, ...meta }} onClose={() => setSua(false)} onSaved={() => { setSua(false); reload() }} />}
     </div>
   )
 }
