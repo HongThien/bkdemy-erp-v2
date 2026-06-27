@@ -5,7 +5,7 @@ import {
   listCanBu, listCaBoTro, listKhongBu, ghiKhongBu, xoaKhongBu, taoBuoiBu, themHSVaoBuoiBu, buoiBuSapToi, goiYBuoiBu,
   ensureBuoiBuETProblems, demTabBoTro, type CanBuItem, type CaBoTro,
 } from '../../lib/botro'
-import { getRoster, getBuoi, diemDanh, huyBuoi, xoaHSKhoiBuoi, listProblems, gradeET, deleteGrade, listGrades, closePhase, getDanhGia, setDanhGiaDang, dongDanhGia, moLaiDanhGia, type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type ETResult } from '../../lib/gami'
+import { getRoster, getBuoi, diemDanh, huyBuoi, xoaHSKhoiBuoi, listProblems, gradeET, deleteGrade, listGrades, closePhase, getDanhGia, setDanhGiaDang, setNhanXet, getDangTen, dongDanhGia, moLaiDanhGia, type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type ETResult } from '../../lib/gami'
 import SuaBuoiModal from './SuaBuoiModal'
 import { listNhanSu, type NhanSu } from '../../lib/nhansu'
 import { homNayVN } from '../../lib/tuan'
@@ -26,6 +26,7 @@ export default function BoTroScreen() {
   const [xepItem, setXepItem] = useState<CanBuItem | null>(null)
   const [khongModal, setKhongModal] = useState<{ item: CanBuItem } | null>(null)
   const [detail, setDetail] = useState<{ ca: CaBoTro; readOnly: boolean } | null>(null)
+  const [suaBuoi, setSuaBuoi] = useState<CaBoTro | null>(null)
 
   async function reloadCounts() { try { setCounts(await demTabBoTro()) } catch { /* */ } }
   async function reload() {
@@ -116,10 +117,11 @@ export default function BoTroScreen() {
             cas.length === 0 ? <Empty t={tab === 'daxep' ? 'Chưa có ca bổ trợ nào đang chờ.' : 'Chưa có ca bổ trợ nào hoàn thành.'} /> : (
               <div className="grid gap-3 [grid-template-columns:repeat(auto-fill,minmax(320px,1fr))]">
                 {cas.map((ca) => (
-                  <button key={ca.id} onClick={() => setDetail({ ca, readOnly: tab === 'xong' })} className="rounded-2xl border-l-4 border-l-violet-400 bg-white p-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+                  <div key={ca.id} role="button" onClick={() => setDetail({ ca, readOnly: tab === 'xong' })} className="cursor-pointer rounded-2xl border-l-4 border-l-violet-400 bg-white p-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
                     <div className="flex items-center gap-2">
                       <span className="text-[15px] font-semibold text-slate-800">Buổi bù · {ddmm(ca.ngay)}</span>
                       <span className="ml-auto rounded-full bg-violet-100 px-2 py-0.5 text-[11px] font-medium text-violet-700">{ca.hs.length} HS</span>
+                      {tab !== 'xong' && <button onClick={(e) => { e.stopPropagation(); setSuaBuoi(ca) }} title="Sửa buổi (ngày/giờ/phòng/GV/TA)" className="rounded border border-slate-200 px-1.5 py-0.5 text-[12px] text-slate-400 hover:border-indigo-300 hover:text-indigo-700">✎</button>}
                     </div>
                     <div className="mt-1 text-[12px] text-slate-500">{ca.gio_bat_dau?.slice(0, 5) || '—'}{ca.phong ? ` · ${ca.phong}` : ''}</div>
                     <div className="mt-2 flex flex-wrap gap-1">{ca.hs.slice(0, 6).map((h) => <span key={h.hoc_sinh_id} className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] text-slate-600">{h.ho_ten}</span>)}{ca.hs.length > 6 && <span className="text-[11px] text-slate-400">+{ca.hs.length - 6}</span>}</div>
@@ -127,13 +129,14 @@ export default function BoTroScreen() {
                       <span className={`rounded px-1.5 py-0.5 font-medium ${ca.et_dong_at ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-500'}`}>ET {ca.et_dong_at ? '✓' : '…'}</span>
                       <span className={`rounded px-1.5 py-0.5 font-medium ${ca.danh_gia_xong_at ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-500'}`}>Đánh giá {ca.danh_gia_xong_at ? '✓' : '…'}</span>
                     </div>
-                  </button>
+                  </div>
                 ))}
               </div>
             )
           )}
       </div>
 
+      {suaBuoi && <SuaBuoiModal buoi={suaBuoi} onClose={() => setSuaBuoi(null)} onSaved={async () => { setSuaBuoi(null); await refresh() }} />}
       {xepItem && <XepModal item={xepItem} onClose={() => setXepItem(null)} onDone={async () => { setXepItem(null); await refresh() }} />}
       {khongModal && <KhongBuModal item={khongModal.item} onClose={() => setKhongModal(null)} onDone={async () => { setKhongModal(null); await refresh() }} />}
     </div>
@@ -263,13 +266,14 @@ const ET_LBL: Record<ETResult, { l: string; on: string }> = { correct: { l: 'Đ'
 const DG_LBL: { v: 1 | 0.5 | 0; l: string; on: string }[] = [{ v: 1, l: 'Đ', on: 'bg-emerald-500' }, { v: 0.5, l: 'C', on: 'bg-amber-500' }, { v: 0, l: 'S', on: 'bg-rose-500' }]
 
 // Mở từ BoTroScreen (OPS) HOẶC "Việc của tôi" (TA chấm ET / GV đánh giá) → nhận buoiId, tự load + seed ET buổi mẹ.
-export function BuoiBuDetail({ buoiId, readOnly = false, initialSub, onClose }: { buoiId: string; readOnly?: boolean; initialSub?: 'diemdanh' | 'et' | 'danhgia'; onClose: () => void }) {
-  const [sub, setSub] = useState<'diemdanh' | 'et' | 'danhgia'>(initialSub ?? 'diemdanh')
+export function BuoiBuDetail({ buoiId, readOnly = false, onClose }: { buoiId: string; readOnly?: boolean; onClose: () => void }) {
   const [buoi, setBuoi] = useState<BuoiHoc | null>(null)
   const [roster, setRoster] = useState<BuoiHocHS[]>([])
   const [probs, setProbs] = useState<Problem[]>([])
   const [grades, setGrades] = useState<Grade[]>([])
   const [dg, setDg] = useState<Record<string, { diemTheoDang: Record<string, number> }>>({})
+  const [nx, setNx] = useState<Record<string, string>>({})
+  const [dangTen, setDangTen] = useState<Record<string, string>>({})
   const [busy, setBusy] = useState(false)
   const [sua, setSua] = useState(false)
   const etXong = !!buoi?.et_dong_at, dgXong = !!buoi?.danh_gia_xong_at
@@ -278,9 +282,14 @@ export function BuoiBuDetail({ buoiId, readOnly = false, initialSub, onClose }: 
   async function onXoaHS(r: BuoiHocHS) { if (!confirm(`Gỡ ${r.hoc_sinh?.ho_ten ?? 'HS'} khỏi buổi bù?`)) return; try { await xoaHSKhoiBuoi(r); await reload() } catch (e: any) { alert(e.message ?? String(e)) } }
 
   async function reload() {
-    const [b, r, p, g] = await Promise.all([getBuoi(buoiId), getRoster(buoiId), listProblems(buoiId, 'et'), listGrades(buoiId)])
-    setBuoi(b as BuoiHoc); setRoster(r); setProbs(p); setGrades(g); setDg(await getDanhGia(buoiId) as any)
+    const [b, r, p, g, dgData] = await Promise.all([getBuoi(buoiId), getRoster(buoiId), listProblems(buoiId, 'et'), listGrades(buoiId), getDanhGia(buoiId)])
+    setBuoi(b as BuoiHoc); setRoster(r); setProbs(p); setGrades(g); setDg(dgData as any)
+    const m: Record<string, string> = {}
+    for (const [hsId, v] of Object.entries(dgData)) m[hsId] = (v as any).nhan_xet ?? ''
+    setNx(m)
+    try { setDangTen(await getDangTen(p.map((x) => x.ma_dang).filter(Boolean) as string[])) } catch { /* */ }
   }
+  const tenDang = (md: string) => dangTen[md] ?? md
   useEffect(() => { (async () => { try { await ensureBuoiBuETProblems(buoiId) } catch { /* */ } reload() })() }, []) // eslint-disable-line
   const coMat = roster.filter((r) => r.diem_danh === 'co_mat')
   const gradeOf = (pid: string, hsid: string) => grades.find((g) => g.problem_id === pid && g.hoc_sinh_id === hsid)
@@ -295,12 +304,13 @@ export function BuoiBuDetail({ buoiId, readOnly = false, initialSub, onClose }: 
     const cur = dg[hsid]?.diemTheoDang[md]
     try { await setDanhGiaDang(buoiId, hsid, md, cur === v ? null : (v as any)); await reload() } catch (e: any) { alert(e.message) }
   }
+  async function luuNhanXet(hsid: string) { try { await setNhanXet(buoiId, hsid, nx[hsid] ?? '') } catch (e: any) { alert(e.message) } }
   async function doClose(phase: 'et' | 'danhgia') {
     setBusy(true)
-    try { if (phase === 'et') await closePhase(buoiId, 'et'); else await dongDanhGia(buoiId); onClose() }
-    catch (e: any) { alert(e.message ?? String(e)); setBusy(false) }
+    try { if (phase === 'et') await closePhase(buoiId, 'et'); else await dongDanhGia(buoiId); await reload() }
+    catch (e: any) { alert(e.message ?? String(e)) } finally { setBusy(false) }
   }
-  async function reopen(phase: 'et' | 'danhgia') { setBusy(true); try { if (phase === 'danhgia') { await moLaiDanhGia(buoiId); onClose() } else { alert('Mở lại ET ở màn Buổi học/Điểm số.'); setBusy(false) } } catch (e: any) { alert(e.message); setBusy(false) } }
+  async function reopen(phase: 'et' | 'danhgia') { setBusy(true); try { if (phase === 'danhgia') { await moLaiDanhGia(buoiId); await reload() } else alert('Mở lại ET ở màn Buổi học/Điểm số.') } catch (e: any) { alert(e.message) } finally { setBusy(false) } }
 
   return (
     <div className="flex h-full flex-col bg-[#f5f5f7]">
@@ -309,89 +319,80 @@ export function BuoiBuDetail({ buoiId, readOnly = false, initialSub, onClose }: 
         <span className="text-[15px] font-semibold text-slate-800">Buổi bù · {ddmm(buoi?.ngay)} · {buoi?.gio_bat_dau?.slice(0, 5)}{buoi?.phong ? ` · ${buoi.phong}` : ''}</span>
         {!readOnly && buoi && <button onClick={() => setSua(true)} className="rounded-lg border border-slate-200 px-2.5 py-1 text-[12px] font-medium text-slate-500 hover:border-indigo-300 hover:text-indigo-700">✎ Sửa buổi</button>}
         {!readOnly && <button onClick={onHuy} className="rounded-lg border border-rose-200 px-2.5 py-1 text-[12px] font-medium text-rose-600 hover:bg-rose-50">Huỷ buổi</button>}
-        <div className="ml-auto inline-flex gap-1 rounded-xl border border-slate-200 bg-white p-1">
-          {(['diemdanh', 'et', 'danhgia'] as const).map((s) => <button key={s} onClick={() => setSub(s)} className={`rounded-lg px-3 py-1 text-[13px] font-medium ${sub === s ? 'bg-indigo-600 text-white' : 'text-slate-600'}`}>{s === 'diemdanh' ? 'Điểm danh' : s === 'et' ? 'Chấm ET' : 'Đánh giá'}</button>)}
-        </div>
       </div>
 
       <div className="min-h-0 flex-1 overflow-auto p-5">
-        <div className="mx-auto max-w-[1100px]">
-          {sub === 'diemdanh' && (
-            <div className="grid gap-2 [grid-template-columns:repeat(auto-fill,minmax(260px,1fr))]">
-              {roster.map((r) => (
-                <div key={r.id} className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white p-3 shadow-sm">
-                  <span className="text-[14px] font-medium text-slate-800">{r.hoc_sinh?.ho_ten}</span>
+        <div className="mx-auto max-w-[900px] space-y-3">
+          {roster.length === 0 ? <Empty t="Buổi chưa có HS." /> : roster.map((r) => {
+            const ps = probs.filter((p) => p.hoc_sinh_id === r.hoc_sinh_id)
+            const dangs = dangCuaHS(r.hoc_sinh_id)
+            return (
+              <div key={r.id} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+                <div className="flex items-center gap-2">
+                  <span className="text-[15px] font-semibold text-slate-800">{r.hoc_sinh?.ho_ten}</span>
                   <div className="ml-auto flex items-center gap-1">
                     <button disabled={readOnly} onClick={() => setDD(r, 'co_mat')} className={`rounded-lg px-2.5 py-1 text-[12px] font-medium ${r.diem_danh === 'co_mat' ? 'bg-emerald-500 text-white' : 'border border-slate-200 text-slate-500'}`}>Có mặt</button>
                     <button disabled={readOnly} onClick={() => setDD(r, 'vang')} className={`rounded-lg px-2.5 py-1 text-[12px] font-medium ${r.diem_danh === 'vang' ? 'bg-rose-500 text-white' : 'border border-slate-200 text-slate-500'}`}>Vắng</button>
                     {!readOnly && <button onClick={() => onXoaHS(r)} title="Gỡ HS khỏi buổi bù" className="rounded px-1.5 py-1 text-[12px] text-slate-300 hover:bg-rose-50 hover:text-rose-600">✕</button>}
                   </div>
                 </div>
-              ))}
-            </div>
-          )}
-
-          {sub === 'et' && (
-            <div className="space-y-4">
-              {coMat.length === 0 ? <Empty t="Chưa có HS có mặt (điểm danh trước)." /> : coMat.map((r) => {
-                const ps = probs.filter((p) => p.hoc_sinh_id === r.hoc_sinh_id)
-                return (
-                  <div key={r.id} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-                    <div className="mb-2 text-[14px] font-semibold text-slate-800">{r.hoc_sinh?.ho_ten} <span className="text-[12px] font-normal text-slate-400">— ET từ buổi mẹ</span></div>
-                    {ps.length === 0 ? <p className="text-[13px] text-slate-400">Buổi mẹ chưa có ET.</p> : (
-                      <div className="flex flex-wrap gap-2">{ps.map((p, i) => {
-                        const kq = gradeOf(p.id, r.hoc_sinh_id)?.result as ETResult | undefined
-                        return (
-                          <div key={p.id} className="flex items-center gap-1 rounded-lg border border-slate-200 px-2 py-1">
-                            <span className="text-[12px] text-slate-400">B{i + 1}</span>
-                            {(['correct', 'partial', 'wrong'] as ETResult[]).map((res) => <button key={res} disabled={readOnly || etXong} onClick={() => setET(p.id, r.hoc_sinh_id, res)} className={`h-6 w-6 rounded text-[12px] font-bold ${kq === res ? `${ET_LBL[res].on} text-white` : 'bg-slate-100 text-slate-400'}`}>{ET_LBL[res].l}</button>)}
-                          </div>
-                        )
-                      })}</div>
-                    )}
+                {r.diem_danh === 'co_mat' && (
+                  <div className="mt-3 space-y-3 border-t border-slate-100 pt-3">
+                    <div className="grid gap-4 md:grid-cols-2">
+                    <div>
+                      <div className="mb-1.5 text-[12px] font-semibold uppercase tracking-wide text-slate-400">Chấm ET <span className="font-normal normal-case text-slate-300">— từ buổi mẹ</span></div>
+                      {ps.length === 0 ? <p className="text-[13px] text-slate-400">Buổi mẹ chưa có ET.</p> : (
+                        <div className="flex flex-wrap gap-2">{ps.map((p, i) => {
+                          const kq = gradeOf(p.id, r.hoc_sinh_id)?.result as ETResult | undefined
+                          return (
+                            <div key={p.id} className="flex items-center gap-1 rounded-lg border border-slate-200 px-2 py-1">
+                              <span className="text-[12px] text-slate-400">B{i + 1}</span>
+                              {(['correct', 'partial', 'wrong'] as ETResult[]).map((res) => <button key={res} disabled={readOnly || etXong} onClick={() => setET(p.id, r.hoc_sinh_id, res)} className={`h-6 w-6 rounded text-[12px] font-bold ${kq === res ? `${ET_LBL[res].on} text-white` : 'bg-slate-100 text-slate-400'}`}>{ET_LBL[res].l}</button>)}
+                            </div>
+                          )
+                        })}</div>
+                      )}
+                    </div>
+                    <div>
+                      <div className="mb-1.5 text-[12px] font-semibold uppercase tracking-wide text-slate-400">Đánh giá theo dạng</div>
+                      {dangs.length === 0 ? <p className="text-[13px] text-slate-400">Không có dạng (ET buổi mẹ trống).</p> : (
+                        <div className="space-y-1.5">{dangs.map((md) => {
+                          const cur = dg[r.hoc_sinh_id]?.diemTheoDang[md]
+                          return (
+                            <div key={md} className="flex items-center gap-3">
+                              <div className="w-[200px] shrink-0">
+                                <div className="truncate text-[13px] text-slate-700" title={tenDang(md)}>{tenDang(md)}</div>
+                                <div className="font-mono text-[10px] text-slate-400">{md}</div>
+                              </div>
+                              <div className="flex gap-1">{DG_LBL.map((d) => <button key={d.v} disabled={readOnly || dgXong} onClick={() => setDG(r.hoc_sinh_id, md, d.v)} className={`h-7 w-7 rounded text-[12px] font-bold ${cur === d.v ? `${d.on} text-white` : 'bg-slate-100 text-slate-400'}`}>{d.l}</button>)}</div>
+                            </div>
+                          )
+                        })}</div>
+                      )}
+                    </div>
+                    </div>
+                    <div>
+                      <div className="mb-1 text-[12px] font-semibold uppercase tracking-wide text-slate-400">Nhận xét của GV</div>
+                      <textarea value={nx[r.hoc_sinh_id] ?? ''} disabled={readOnly} onChange={(e) => setNx((m) => ({ ...m, [r.hoc_sinh_id]: e.target.value }))} onBlur={() => luuNhanXet(r.hoc_sinh_id)}
+                        placeholder="Nhận xét HS sau buổi bù (tiến độ, điểm lưu ý…)" className="h-20 w-full rounded-lg border border-slate-200 px-3 py-2 text-[13px] outline-none focus:border-indigo-400 disabled:bg-slate-50" />
+                    </div>
                   </div>
-                )
-              })}
-              {!readOnly && coMat.length > 0 && (
-                <div className="flex justify-end">
-                  {etXong ? <span className="rounded-lg bg-emerald-100 px-4 py-2 text-[13px] font-medium text-emerald-700">✓ ET đã xác nhận</span>
-                    : <button onClick={() => doClose('et')} disabled={busy} className="rounded-lg bg-emerald-600 px-4 py-2 text-[14px] font-medium text-white hover:bg-emerald-500 disabled:opacity-50">Xác nhận ET</button>}
-                </div>
-              )}
-            </div>
-          )}
-
-          {sub === 'danhgia' && (
-            <div className="space-y-4">
-              {coMat.length === 0 ? <Empty t="Chưa có HS có mặt." /> : coMat.map((r) => {
-                const dangs = dangCuaHS(r.hoc_sinh_id)
-                return (
-                  <div key={r.id} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-                    <div className="mb-2 text-[14px] font-semibold text-slate-800">{r.hoc_sinh?.ho_ten}</div>
-                    {dangs.length === 0 ? <p className="text-[13px] text-slate-400">Không có dạng (ET buổi mẹ trống).</p> : (
-                      <div className="space-y-1.5">{dangs.map((md) => {
-                        const cur = dg[r.hoc_sinh_id]?.diemTheoDang[md]
-                        return (
-                          <div key={md} className="flex items-center gap-2">
-                            <span className="w-40 truncate text-[13px] text-slate-600" title={md}>{md}</span>
-                            <div className="flex gap-1">{DG_LBL.map((d) => <button key={d.v} disabled={readOnly || dgXong} onClick={() => setDG(r.hoc_sinh_id, md, d.v)} className={`h-7 w-7 rounded text-[12px] font-bold ${cur === d.v ? `${d.on} text-white` : 'bg-slate-100 text-slate-400'}`}>{d.l}</button>)}</div>
-                          </div>
-                        )
-                      })}</div>
-                    )}
-                  </div>
-                )
-              })}
-              {!readOnly && coMat.length > 0 && (
-                <div className="flex justify-end gap-2">
-                  {dgXong ? <><span className="rounded-lg bg-emerald-100 px-4 py-2 text-[13px] font-medium text-emerald-700">✓ Đã hoàn thành</span><button onClick={() => reopen('danhgia')} disabled={busy} className="rounded-lg border border-slate-200 px-4 py-2 text-[13px] text-slate-600">↩ Mở lại</button></>
-                    : <button onClick={() => doClose('danhgia')} disabled={busy} className="rounded-lg bg-emerald-600 px-4 py-2 text-[14px] font-medium text-white hover:bg-emerald-500 disabled:opacity-50">Hoàn thành đánh giá</button>}
-                </div>
-              )}
-            </div>
-          )}
+                )}
+                {r.diem_danh === 'vang' && <div className="mt-2 text-[12px] text-rose-400">Vắng — không chấm.</div>}
+              </div>
+            )
+          })}
         </div>
       </div>
+
+      {!readOnly && coMat.length > 0 && (
+        <div className="flex items-center justify-end gap-2 border-t border-slate-200 bg-white px-5 py-3">
+          {etXong ? <span className="rounded-lg bg-emerald-100 px-4 py-2 text-[13px] font-medium text-emerald-700">✓ ET đã xác nhận</span>
+            : <button onClick={() => doClose('et')} disabled={busy} className="rounded-lg bg-emerald-600 px-4 py-2 text-[14px] font-medium text-white hover:bg-emerald-500 disabled:opacity-50">Xác nhận ET</button>}
+          {dgXong ? <><span className="rounded-lg bg-emerald-100 px-4 py-2 text-[13px] font-medium text-emerald-700">✓ Đánh giá xong</span><button onClick={() => reopen('danhgia')} disabled={busy} className="rounded-lg border border-slate-200 px-4 py-2 text-[13px] text-slate-600">↩ Mở lại</button></>
+            : <button onClick={() => doClose('danhgia')} disabled={busy} className="rounded-lg bg-indigo-600 px-4 py-2 text-[14px] font-medium text-white hover:bg-indigo-500 disabled:opacity-50">Hoàn thành đánh giá</button>}
+        </div>
+      )}
       {sua && buoi && <SuaBuoiModal buoi={buoi} onClose={() => setSua(false)} onSaved={() => { setSua(false); reload() }} />}
     </div>
   )

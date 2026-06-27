@@ -273,7 +273,7 @@ export default function NhanSuHome({ user }: { user: User }) {
   useEffect(() => { getMyScope().then(setScope).finally(() => setLoading(false)) }, [])
 
   if (openBuoi) return openBuoi.loai === 'bu'
-    ? <BuoiBuDetail buoiId={openBuoi.id} initialSub={openBuoi.initialTab as 'diemdanh' | 'et' | 'danhgia'} onClose={() => setOpenBuoi(null)} />
+    ? <BuoiBuDetail buoiId={openBuoi.id} onClose={() => setOpenBuoi(null)} />
     : <BuoiDetail id={openBuoi.id} initialTab={openBuoi.initialTab} tabs={openBuoi.tabs} canManage={openBuoi.canManage} onClose={() => setOpenBuoi(null)} />
 
   // nav hợp nhất: Việc của tôi (vận hành) ++ leaf màn role cấp (phát triển)

@@ -26,6 +26,7 @@ export default function BoTroDuoiScreen() {
   const [xepItem, setXepItem] = useState<CanDuoiItem | null>(null)
   const [them, setThem] = useState(false)
   const [detail, setDetail] = useState<{ ca: CaDuoi; readOnly: boolean } | null>(null)
+  const [suaBuoi, setSuaBuoi] = useState<CaDuoi | null>(null)
 
   async function reloadCounts() { try { setCounts(await demTabDuoi()) } catch { /* */ } }
   async function reload() {
@@ -103,21 +104,23 @@ export default function BoTroDuoiScreen() {
             cas.length === 0 ? <Empty t={tab === 'daxep' ? 'Chưa có buổi đuổi nào đang chờ.' : 'Chưa có buổi đuổi nào hoàn thành.'} /> : (
               <div className="grid gap-3 [grid-template-columns:repeat(auto-fill,minmax(320px,1fr))]">
                 {cas.map((ca) => (
-                  <button key={ca.id} onClick={() => setDetail({ ca, readOnly: tab === 'xong' })} className="rounded-2xl border-l-4 border-l-orange-400 bg-white p-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+                  <div key={ca.id} role="button" onClick={() => setDetail({ ca, readOnly: tab === 'xong' })} className="cursor-pointer rounded-2xl border-l-4 border-l-orange-400 bg-white p-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
                     <div className="flex items-center gap-2">
                       <span className="text-[15px] font-semibold text-slate-800">Buổi đuổi · {ddmm(ca.ngay)}</span>
                       <span className="ml-auto rounded-full bg-orange-100 px-2 py-0.5 text-[11px] font-medium text-orange-700">{ca.hs.length} HS</span>
+                      {tab !== 'xong' && <button onClick={(e) => { e.stopPropagation(); setSuaBuoi(ca) }} title="Sửa buổi (ngày/giờ/phòng/GV/TA)" className="rounded border border-slate-200 px-1.5 py-0.5 text-[12px] text-slate-400 hover:border-indigo-300 hover:text-indigo-700">✎</button>}
                     </div>
                     <div className="mt-1 text-[12px] text-slate-500">{ca.gio_bat_dau?.slice(0, 5) || '—'}{ca.phong ? ` · ${ca.phong}` : ''}</div>
                     <div className="mt-2 flex flex-wrap gap-1">{ca.hs.slice(0, 6).map((h) => <span key={h.hoc_sinh_id} className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] text-slate-600">{h.ho_ten}{h.lop ? ` · ${h.lop}` : ''}</span>)}{ca.hs.length > 6 && <span className="text-[11px] text-slate-400">+{ca.hs.length - 6}</span>}</div>
                     <div className="mt-2"><span className={`rounded px-1.5 py-0.5 text-[11px] font-medium ${ca.danh_gia_xong_at ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-500'}`}>Nhận xét {ca.danh_gia_xong_at ? '✓ xong' : '…'}</span></div>
-                  </button>
+                  </div>
                 ))}
               </div>
             )
           )}
       </div>
 
+      {suaBuoi && <SuaBuoiModal buoi={suaBuoi} onClose={() => setSuaBuoi(null)} onSaved={async () => { setSuaBuoi(null); await refresh() }} />}
       {xepItem && <XepDuoiModal item={xepItem} onClose={() => setXepItem(null)} onDone={async () => { setXepItem(null); await refresh() }} />}
       {them && <ThemHSModal onClose={() => setThem(false)} onDone={async () => { setThem(false); await refresh() }} />}
     </div>

@@ -90,6 +90,17 @@ export async function setNguoiDay(buoiId: string, nhanSuId: string | null): Prom
   const { error } = await supabase.from('buoi_hoc').update({ nguoi_day: nhanSuId, updated_at: new Date().toISOString() }).eq('id', buoiId)
   if (error) throw error
 }
+// Tên dạng theo ma_dang (tra cả dai_ban_do + khtn_ban_do). Cho chỗ hiển thị dạng KHÔNG có khối context (vd buổi bù).
+export async function getDangTen(maDangs: string[]): Promise<Record<string, string>> {
+  const uniq = [...new Set(maDangs.filter(Boolean))]
+  if (!uniq.length) return {}
+  const out: Record<string, string> = {}
+  for (const tbl of ['dai_ban_do', 'khtn_ban_do']) {
+    const { data } = await supabase.from(tbl).select('ma_dang, ten_dang').in('ma_dang', uniq).limit(LIMIT)
+    for (const r of (data ?? []) as any[]) out[r.ma_dang] = r.ten_dang
+  }
+  return out
+}
 // Sửa thông tin buổi (bù/đuổi): ngày/giờ/phòng/GV/TA trong 1 lượt. Generic cho buoi_hoc.
 export async function updateBuoiMeta(buoiId: string, patch: { ngay?: string; gio_bat_dau?: string | null; gio_ket_thuc?: string | null; phong?: string | null; nguoi_day?: string | null; nguoi_day_tg?: string | null }): Promise<void> {
   const { error } = await supabase.from('buoi_hoc').update({ ...patch, updated_at: new Date().toISOString() }).eq('id', buoiId)
