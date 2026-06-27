@@ -129,10 +129,10 @@ export async function loaiUngVien(id: string, lyDo: string): Promise<void> { awa
 export async function moLaiUngVien(id: string): Promise<void> { await updateUngVien(id, { trang_thai: 'dang_chay', ly_do_loai: null }) }
 
 // CONVERT L7→L8: gộp/ tạo PH theo SĐT + tạo HS + (tuỳ) ghi danh lớp. Set hoc_sinh_id + da_convert. Trả hoc_sinh_id.
-export async function convertUngVien(uv: UngVien, opts: { khoi?: string | null; lopId?: string | null; mucNangLucId?: string | null }): Promise<string> {
-  // Tích "Cần bổ trợ đuổi" → tạo case (nguon=tuyen_sinh) gắn lớp vừa xếp. Bỏ qua nếu trùng (unique partial).
+export async function convertUngVien(uv: UngVien, opts: { khoi?: string | null; lopId?: string | null; mucNangLucId?: string | null; duoi?: boolean }): Promise<string> {
+  // duoi=true (nút "Bổ trợ đuổi" ở L6/L7) → tạo case (nguon=tuyen_sinh) gắn lớp vừa xếp. Bỏ qua nếu trùng.
   const taoCaseDuoiNeuCan = async (hsId: string) => {
-    if (!uv.can_bo_tro_duoi) return
+    if (!opts.duoi) return
     const lopId = opts.lopId ?? uv.lop_du_kien_id ?? null
     const { data: { user } } = await supabase.auth.getUser()
     await supabase.from('bo_tro_duoi').insert({ hoc_sinh_id: hsId, lop_id: lopId, nguon: 'tuyen_sinh', actor: user?.id ?? null })

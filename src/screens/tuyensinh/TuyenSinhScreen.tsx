@@ -28,7 +28,7 @@ export default function TuyenSinhScreen() {
   const [hs, setHs] = useState<{ id: string; ma_hs: string | null; ho_ten: string; khoi: string | null }[]>([])
   const [loading, setLoading] = useState(true)
   const [form, setForm] = useState<UngVien | 'new' | null>(null) // 'new' = tạo · UngVien = sửa · null = đóng
-  const [convertUv, setConvertUv] = useState<UngVien | null>(null)
+  const [convertUv, setConvertUv] = useState<{ uv: UngVien; duoi: boolean } | null>(null) // duoi=true: chốt chính thức + bổ trợ đuổi
   const [loaiUv, setLoaiUv] = useState<UngVien | null>(null)
 
   async function reloadCounts() { try { setCounts(await demTheoLevel(mon)) } catch { /* */ } }
@@ -52,12 +52,13 @@ export default function TuyenSinhScreen() {
     } catch (e: any) { alert(e.message ?? String(e)) }
   }
   async function onHoanThanh(uv: UngVien) {
-    if (uv.level === 'L7') { setConvertUv(uv); return }
+    if (uv.level === 'L7') { setConvertUv({ uv, duoi: false }); return }
     try { await hoanThanhLevel(uv); await refresh() } catch (e: any) { alert(e.message ?? String(e)) }
   }
 
   const isFunnel = tab === 'L5' || tab === 'L6' || tab === 'L7'
   const viecCols = isFunnel ? VIEC_BY_LEVEL[tab] : []
+  const showDuoi = tab === 'L6' || tab === 'L7' // cột Bổ trợ đuổi (chốt chính thức sớm + xếp đuổi)
 
   return (
     <div className="h-full overflow-auto bg-[#f5f5f7] p-6">
@@ -108,12 +109,13 @@ export default function TuyenSinhScreen() {
                     <th className="px-3 py-3 font-medium">Nguồn</th>
                     <th className="px-3 py-3 font-medium">Lưu ý</th>
                     {viecCols.map((v) => <th key={v.key} className="px-3 py-3 text-center font-medium">{v.ten}{v.derive && <span className="ml-1 rounded bg-violet-100 px-1 text-[10px] font-medium text-violet-600" title="Sẽ tự động khi nối chấm bài test">auto</span>}</th>)}
+                    {showDuoi && <th className="px-3 py-3 text-center font-medium">Bổ trợ đuổi</th>}
                     <th className="px-4 py-3 text-right font-medium">Hành động</th>
                   </tr>
                 </thead>
                 <tbody>
                   {rows.length === 0 ? (
-                    <tr><td colSpan={6 + viecCols.length} className="px-4 py-10 text-center text-[14px] text-slate-400">Chưa có ứng viên ở {tab}.</td></tr>
+                    <tr><td colSpan={6 + viecCols.length + (showDuoi ? 1 : 0)} className="px-4 py-10 text-center text-[14px] text-slate-400">Chưa có ứng viên ở {tab}.</td></tr>
                   ) : rows.map((uv) => {
                     const d = done[uv.id]
                     const ready = duViec(tab as UngVienLevel, d)
@@ -133,9 +135,16 @@ export default function TuyenSinhScreen() {
                             </td>
                           )
                         })}
+                        {showDuoi && (
+                          <td className="px-3 py-3 text-center">
+                            <button onClick={() => setConvertUv({ uv, duoi: true })} title="PH chốt học chính thức + cần học đuổi → lên L8 ngay + xếp đuổi"
+                              className="rounded-lg border border-amber-300 bg-amber-50 px-3 py-1.5 text-[13px] font-medium text-amber-700 hover:border-amber-400">⚠ Bổ trợ đuổi</button>
+                          </td>
+                        )}
                         <td className="px-4 py-3">
                           <div className="flex items-center justify-end gap-2">
                             <button onClick={() => setForm(uv)} title="Sửa thông tin" className="rounded-lg border border-slate-200 px-2.5 py-1.5 text-[13px] text-slate-500 hover:border-indigo-300 hover:text-indigo-700">✎ Sửa</button>
+                            {uv.level === 'L6' && <button onClick={() => setConvertUv({ uv, duoi: false })} title="PH chốt học luôn → bỏ qua học thử, lên chính thức" className="rounded-lg border border-indigo-200 px-2.5 py-1.5 text-[13px] font-medium text-indigo-600 hover:border-indigo-300">→ Chính thức</button>}
                             <button onClick={() => onHoanThanh(uv)} disabled={!ready}
                               className={`rounded-lg px-3 py-1.5 text-[13px] font-medium transition ${ready ? 'bg-emerald-600 text-white shadow-sm hover:bg-emerald-500' : 'cursor-not-allowed bg-slate-100 text-slate-400'}`}>
                               {uv.level === 'L7' ? 'Hoàn thành → Nhập HS' : 'Hoàn thành'}
@@ -153,7 +162,7 @@ export default function TuyenSinhScreen() {
       </div>
 
       {form && <UvFormModal uv={form === 'new' ? null : form} defaultMon={mon} onClose={() => setForm(null)} onDone={async () => { setForm(null); await refresh() }} />}
-      {convertUv && <ConvertModal uv={convertUv} onClose={() => setConvertUv(null)} onDone={async () => { setConvertUv(null); await refresh() }} />}
+      {convertUv && <ConvertModal uv={convertUv.uv} duoi={convertUv.duoi} onClose={() => setConvertUv(null)} onDone={async () => { setConvertUv(null); await refresh() }} />}
       {loaiUv && <LoaiModal uv={loaiUv} onClose={() => setLoaiUv(null)} onDone={async () => { setLoaiUv(null); await refresh() }} />}
     </div>
   )
@@ -217,7 +226,6 @@ function UvFormModal({ uv, defaultMon, onClose, onDone }: { uv: UngVien | null; 
     nguon: uv?.nguon ?? '', ghi_chu: uv?.ghi_chu ?? '', ma_uv: uv?.ma_uv ?? '',
   })
   const set = (k: keyof typeof f, v: string) => setF((s) => ({ ...s, [k]: v }))
-  const [canDuoi, setCanDuoi] = useState(uv?.can_bo_tro_duoi ?? false) // tích → convert tạo case bổ trợ đuổi
   const [phId, setPhId] = useState<string | null>(uv?.phu_huynh_id ?? null)
   const [phCon, setPhCon] = useState<string[]>([]) // con đang/đã học của PH đã link (hiển thị xác nhận đúng PH)
   const [hsGoc, setHsGoc] = useState<{ id: string; ho_ten: string; ma_hs: string | null } | null>(
@@ -251,7 +259,7 @@ function UvFormModal({ uv, defaultMon, onClose, onDone }: { uv: UngVien | null; 
       ho_ten_hs: f.ho_ten_hs.trim(), mon: f.mon, khoi: f.khoi, ngay_sinh: f.ngay_sinh || null, gioi_tinh: f.gioi_tinh || null,
       truong_hoc: f.truong_hoc.trim() || null, dia_chi: f.dia_chi.trim() || null,
       ho_ten_ph: f.ho_ten_ph.trim() || null, sdt_ph: f.sdt_ph.trim() || null, email_ph: f.email_ph.trim() || null, phu_huynh_id: phId,
-      hoc_sinh_goc_id: hsGoc?.id ?? null, can_bo_tro_duoi: canDuoi,
+      hoc_sinh_goc_id: hsGoc?.id ?? null,
       nguon: f.nguon.trim() || null, ghi_chu: f.ghi_chu.trim() || null,
     }
     try { if (edit) await updateUngVien(uv!.id, patch); else await createUngVien({ ...patch, ma_uv: f.ma_uv.trim() || undefined }); onDone() }
@@ -304,11 +312,6 @@ function UvFormModal({ uv, defaultMon, onClose, onDone }: { uv: UngVien | null; 
           </div>
           <div><Lbl>Lưu ý</Lbl><input className={inputCls} value={f.ghi_chu} onChange={(e) => set('ghi_chu', e.target.value)} placeholder="vd: referral — chị Lan giới thiệu" /></div>
         </div>
-        <label className="flex cursor-pointer items-center gap-2.5 rounded-xl border border-amber-200 bg-amber-50/60 px-3 py-2.5">
-          <input type="checkbox" checked={canDuoi} onChange={(e) => setCanDuoi(e.target.checked)} className="h-4 w-4 accent-amber-600" />
-          <span className="text-[13px] font-medium text-amber-800">⚠ Cần bổ trợ đuổi</span>
-          <span className="text-[12px] text-amber-600">— HS chậm hơn chương trình lớp; khi vào chính thức sẽ vào luồng Bổ trợ → Đuổi</span>
-        </label>
         <div className="flex justify-end gap-2 pt-1">
           <button onClick={onClose} className="rounded-lg border border-slate-200 px-4 py-2 text-[14px] text-slate-600 hover:bg-slate-50">Huỷ</button>
           <button onClick={save} disabled={busy} className="rounded-lg bg-indigo-600 px-4 py-2 text-[14px] font-medium text-white hover:bg-indigo-500 disabled:opacity-50">{busy ? 'Đang lưu…' : edit ? 'Lưu' : 'Tạo'}</button>
@@ -397,7 +400,7 @@ function LoaiModal({ uv, onClose, onDone }: { uv: UngVien; onClose: () => void; 
   )
 }
 
-function ConvertModal({ uv, onClose, onDone }: { uv: UngVien; onClose: () => void; onDone: () => void }) {
+function ConvertModal({ uv, duoi, onClose, onDone }: { uv: UngVien; duoi: boolean; onClose: () => void; onDone: () => void }) {
   const [khoi, setKhoi] = useState<string>(uv.khoi || DEFAULT_KHOI)
   const [lopId, setLopId] = useState<string | null>(uv.lop_du_kien_id)
   const [lops, setLops] = useState<Lop[]>([])
@@ -406,11 +409,13 @@ function ConvertModal({ uv, onClose, onDone }: { uv: UngVien; onClose: () => voi
   const lopOpts = useMemo(() => lops.filter((l) => l.mon === uv.mon).map((l) => ({ id: l.id, label: l.ten_lop, sub: `${l.mon}${l.khoi ? ' · ' + l.khoi : ''}` })), [lops, uv.mon])
   async function go() {
     setBusy(true)
-    try { await convertUngVien(uv, { khoi, lopId }); onDone() } catch (e: any) { alert(e.message ?? String(e)); setBusy(false) }
+    try { await convertUngVien(uv, { khoi, lopId, duoi }); onDone() } catch (e: any) { alert(e.message ?? String(e)); setBusy(false) }
   }
   const hsCu = !!uv.hoc_sinh_goc_id
+  const early = uv.level !== 'L7' // chốt sớm (skip học thử)
   return (
-    <Modal title={hsCu ? 'Ghi danh HS cũ vào môn mới (L7 → L8)' : 'Nhập học sinh chính thức (L7 → L8)'} onClose={onClose}>
+    <Modal title={duoi ? 'Chốt chính thức + Bổ trợ đuổi' : hsCu ? 'Ghi danh HS cũ vào môn mới' : early ? 'Chốt chính thức luôn (bỏ qua học thử)' : 'Nhập học sinh chính thức (L7 → L8)'} onClose={onClose}>
+      {duoi && <div className="mb-3 rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-[13px] text-amber-800">PH đã chốt học chính thức + cần học đuổi → lên L8 ngay + tạo case bổ trợ đuổi (hiện ở <b>Bổ trợ → Cần đuổi</b>).</div>}
       <div className="mb-3 rounded-xl bg-slate-50 p-3 text-[13px] text-slate-600">
         <div className="font-medium text-slate-800">{uv.ho_ten_hs}{hsCu && <span className="ml-2 rounded-full bg-indigo-100 px-2 py-0.5 text-[11px] font-medium text-indigo-700">HS cũ · {uv.mon}</span>}</div>
         <div className="text-[12px] text-slate-500">PH: {uv.ho_ten_ph || '—'} · {uv.sdt_ph || '—'}{hsCu ? ' (giữ nguyên — không tạo HS/PH mới)' : uv.sdt_ph ? ' (gộp PH cũ nếu SĐT đã có)' : ''}</div>
@@ -421,7 +426,7 @@ function ConvertModal({ uv, onClose, onDone }: { uv: UngVien; onClose: () => voi
       </div>
       <div className="mt-4 flex justify-end gap-2">
         <button onClick={onClose} className="rounded-lg border border-slate-200 px-4 py-2 text-[14px] text-slate-600 hover:bg-slate-50">Huỷ</button>
-        <button onClick={go} disabled={busy} className="rounded-lg bg-emerald-600 px-4 py-2 text-[14px] font-medium text-white hover:bg-emerald-500 disabled:opacity-50">{busy ? (hsCu ? 'Đang ghi danh…' : 'Đang tạo HS…') : hsCu ? 'Ghi danh' : 'Tạo học sinh'}</button>
+        <button onClick={go} disabled={busy} className="rounded-lg bg-emerald-600 px-4 py-2 text-[14px] font-medium text-white hover:bg-emerald-500 disabled:opacity-50">{busy ? 'Đang xử lý…' : duoi ? 'Chốt + xếp đuổi' : hsCu ? 'Ghi danh' : 'Tạo học sinh'}</button>
       </div>
     </Modal>
   )
