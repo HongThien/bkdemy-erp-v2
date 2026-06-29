@@ -771,6 +771,7 @@
 | nhan_su_id | uuid | Y |  | FK→nhan_su.id |
 | created_at | timestamp with time zone |  | now() |  |
 | vai_tro_id | uuid | Y |  | FK→vai_tro.id |
+| mon | text | Y |  |  |
 
 ## Triggers
 

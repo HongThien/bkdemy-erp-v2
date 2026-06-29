@@ -18,7 +18,7 @@ export async function uploadAvatar(file: File): Promise<string> {
 }
 export type Team = { id: string; ma: string; ten: string; thu_tu: number }
 // GHẾ (vị trí) — xương sống tổ chức. Cây = cha_id giữa GHẾ; người chỉ là kẻ ngồi (nhan_su_id null = ghế trống).
-export type ViTri = { id: string; team_id: string; ten: string | null; cap: 'truong' | 'pho' | 'thanh_vien'; cha_id: string | null; nhan_su_id: string | null; vai_tro_id?: string | null }
+export type ViTri = { id: string; team_id: string; ten: string | null; cap: 'truong' | 'pho' | 'thanh_vien'; cha_id: string | null; nhan_su_id: string | null; vai_tro_id?: string | null; mon?: string | null }
 export type MucNangLuc = { id: string; ma: string; bac: string; muc: number; thu_tu: number; ten: string | null }
 export type Lop = { id: string; ten_lop: string; mon: string; khoi: string | null; bac: string | null; co_so: string | null; ngay_khai_giang: string | null; trang_thai: 'dang_hoc' | 'dong'; created_at?: string }
 export type PhanCongLop = { id: string; nhan_su_id: string; lop_id: string; vai_tro: 'gv' | 'tg'; la_chinh: boolean }
@@ -301,7 +301,7 @@ export async function createViTri(p: Partial<ViTri> & { team_id: string }): Prom
   if (error) throw error
   return data as ViTri
 }
-export async function updateViTri(id: string, patch: Partial<Pick<ViTri, 'ten' | 'cap' | 'cha_id' | 'nhan_su_id'>>): Promise<void> {
+export async function updateViTri(id: string, patch: Partial<Pick<ViTri, 'ten' | 'cap' | 'cha_id' | 'nhan_su_id' | 'mon'>>): Promise<void> {
   const { error } = await supabase.from('vi_tri').update(patch).eq('id', id)
   if (error) throw error
 }

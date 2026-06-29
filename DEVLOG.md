@@ -581,3 +581,10 @@
   - **CÒN (chiều môn — việc lớn riêng):** gate "Làm tài liệu" theo môn (tailieu.ts đang hardcode dai_) · **org-chart-theo-môn** (vi_tri.mon — giờ có nền nhan_su_mon) · Anh/Văn chưa có kho.
 - **Data: backfill nhan_su_mon='Toán' cho MỌI nhân sự hiện tại** (Thùy: mặc định Toán) — script throwaway idempotent (on conflict do nothing): 22 NS, +21 (1 đã có), giờ cả 22 = Toán. KHTN/môn khác admin sửa lại sau ở màn Nhân sự. (Script đã xoá.)
 - **Reorder dạng trong buổi (giáo trình) — COMMIT work cũ chưa commit:** `reorderDangInBuoi` (tailieu.ts) + nút ▲▼ mỗi DangCard (BuoiCard.move hoán vị → reorderDangInBuoi → reload) đã có trong working tree từ trước nhưng CHƯA commit (nên bản deploy origin/main không có → Thùy không thấy). Thùy xác nhận chạy ngon. Commit để deploy.
+- **⭐ SƠ ĐỒ TỔ CHỨC THEO MÔN — mỗi môn 1 CÂY ĐỘC LẬP (Thùy chốt fork):** mắt xích để gán role per-môn → đăng nhập thấy đúng. Cơ chế: role bám GHẾ (vi_tri.vai_tro_id) quyết định "mở màn nào" (lớp①); giờ ghế thuộc đúng môn → tạo ghế KHTN + gán role + đặt người → họ thấy phần KHTN. Role vẫn là bó-màn dùng chung (không đẻ role mỗi môn).
+  - **mig 0057** (ĐÃ áp + schema): `vi_tri.mon` (nullable; null = ghế LIÊN-MÔN ops/media/marketing).
+  - **nhansu.ts**: `ViTri.mon`, `updateViTri` Pick += 'mon'.
+  - **OrgChartScreen**: `CHUYEN_MON_TEAMS=['gv','ta','hoc_thuat']`. Team chuyên môn → hiện **bộ chọn MÔN** (MON_LIST, pill tím) + lọc `gheView = ghe.filter(mon===sel)` (mỗi môn 1 cây) → roots/childrenOf/descendants/cha-options đều theo gheView. "+ Vị trí gốc" gắn mon=selMon (liên-môn→null). themGheCon kế thừa mon cha. EditGhe hiện chip Môn / "Liên môn". Team liên-môn giữ hành vi cũ (mon null, ko bộ chọn).
+  - **Backfill**: 31 ghế chuyên môn cũ (mon=null) → 'Toán' (org trước chỉ Toán), để ko biến mất khỏi tab môn. (Script throwaway đã xoá.)
+  - ✓ tsc + build (3.7s).
+  - **CÒN:** (tuỳ) hiện badge môn ở Phân quyền tab "gán role cho vị trí" · nhắc nhất quán ghế-môn ↔ nhan_su_mon của người ngồi (2 nguồn: org-structure vs content-scope) · Làm tài liệu theo môn.

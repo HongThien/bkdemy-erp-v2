@@ -1,8 +1,11 @@
 import { useEffect, useMemo, useState } from 'react'
 import { listTeam, listNhanSu, listViTri, createViTri, updateViTri, deleteViTri, listNhanSuTeamMap, type Team, type NhanSu, type ViTri } from '../../lib/nhansu'
+import { MON_LIST } from '../../lib/mon'
 import { Shell, Field, inp } from '../kho/ui'
 import SearchSelect from '../../components/SearchSelect'
 
+// Team CHUYÊN MÔN → mỗi môn 1 cây độc lập (ghế gắn mon). Còn lại (ops/media/marketing) = LIÊN-MÔN (mon=null).
+const CHUYEN_MON_TEAMS = ['gv', 'ta', 'hoc_thuat']
 const CAP_LABEL: Record<string, string> = { truong: 'Trưởng', pho: 'Phó', thanh_vien: 'Thành viên' }
 const CAP_TONE: Record<string, string> = { truong: 'bg-indigo-600 text-white', pho: 'bg-indigo-100 text-indigo-700', thanh_vien: 'bg-slate-100 text-slate-500' }
 
@@ -29,6 +32,7 @@ export default function OrgChartScreen() {
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
   const [sel, setSel] = useState<ViTri | null>(null)
+  const [mon, setMon] = useState<string>(MON_LIST[0]) // môn đang xem (chỉ cho team chuyên môn)
 
   useEffect(() => {
     Promise.all([listTeam(), listNhanSu(), listNhanSuTeamMap()])
@@ -43,10 +47,14 @@ export default function OrgChartScreen() {
   useEffect(() => { if (teamId) reloadGhe(teamId) }, [teamId])
 
   const nsById = useMemo(() => new Map(dsNhanSu.map((n) => [n.id, n])), [dsNhanSu])
-  const gheIds = useMemo(() => new Set(ghe.map((g) => g.id)), [ghe])
-  const roots = ghe.filter((g) => !g.cha_id || !gheIds.has(g.cha_id))
+  const team = teams.find((t) => t.id === teamId)
+  const isChuyenMon = !!team && CHUYEN_MON_TEAMS.includes(team.ma)
+  // Team chuyên môn → mỗi môn 1 cây độc lập: chỉ hiện ghế của môn đang chọn. Liên-môn → hiện tất (mon null).
+  const gheView = isChuyenMon ? ghe.filter((g) => g.mon === mon) : ghe
+  const gheIds = useMemo(() => new Set(gheView.map((g) => g.id)), [gheView])
+  const roots = gheView.filter((g) => !g.cha_id || !gheIds.has(g.cha_id))
     .sort((a, b) => (a.cap === 'truong' ? 0 : a.cap === 'pho' ? 1 : 2) - (b.cap === 'truong' ? 0 : b.cap === 'pho' ? 1 : 2))
-  const childrenOf = (gheId: string) => ghe.filter((g) => g.cha_id === gheId)
+  const childrenOf = (gheId: string) => gheView.filter((g) => g.cha_id === gheId)
   function descendants(gheId: string, acc = new Set<string>()): Set<string> {
     for (const c of childrenOf(gheId)) if (!acc.has(c.id)) { acc.add(c.id); descendants(c.id, acc) }
     return acc
@@ -54,7 +62,7 @@ export default function OrgChartScreen() {
 
   async function themGheGoc() {
     if (!teamId) return
-    await createViTri({ team_id: teamId, ten: null, cap: 'truong', cha_id: null, nhan_su_id: null })
+    await createViTri({ team_id: teamId, ten: null, cap: 'truong', cha_id: null, nhan_su_id: null, mon: isChuyenMon ? mon : null })
     reloadGhe(teamId)
   }
 
@@ -109,15 +117,29 @@ export default function OrgChartScreen() {
             {t.ten}
           </button>
         ))}
-        <button onClick={themGheGoc} className="ml-auto rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500">+ Vị trí gốc</button>
+        {/* Bộ chọn MÔN — chỉ team chuyên môn (mỗi môn 1 cây độc lập) */}
+        {isChuyenMon && (
+          <>
+            <span className="mx-1 h-5 w-px self-center bg-slate-200" />
+            <div className="flex gap-0.5 rounded-lg bg-violet-50 p-0.5">
+              {MON_LIST.map((m) => (
+                <button key={m} onClick={() => setMon(m)}
+                  className={`h-6 rounded-md px-2.5 text-xs font-semibold transition ${mon === m ? 'bg-violet-600 text-white shadow-sm' : 'text-violet-600 hover:bg-violet-100'}`}>
+                  {m}
+                </button>
+              ))}
+            </div>
+          </>
+        )}
+        <button onClick={themGheGoc} className="ml-auto rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500">+ Vị trí gốc {isChuyenMon ? `(${mon})` : ''}</button>
       </div>
 
       <div className="min-h-0 flex-1 overflow-auto p-8">
         {err ? <p className="text-sm text-rose-600">Lỗi: {err}</p>
           : loading ? <p className="text-sm text-slate-400">Đang tải…</p>
-          : ghe.length === 0 ? (
+          : gheView.length === 0 ? (
             <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">
-              Team chưa có vị trí. Bấm <b className="text-slate-600">+ Vị trí gốc</b> để dựng cây (vị trí sinh vị trí), rồi đặt người vào.
+              {isChuyenMon ? <>Môn <b className="text-violet-600">{mon}</b> chưa có vị trí.</> : 'Team chưa có vị trí.'} Bấm <b className="text-slate-600">+ Vị trí gốc</b> để dựng cây (vị trí sinh vị trí), rồi đặt người vào.
             </div>
           ) : (
             <div className="flex min-w-max justify-center gap-12">
@@ -127,7 +149,7 @@ export default function OrgChartScreen() {
       </div>
 
       {sel && (
-        <EditGhe g={sel} nsById={nsById} dsNhanSu={dsNhanSu} bienChe={bienChe} ghe={ghe} cam={descendants(sel.id)}
+        <EditGhe g={sel} isChuyenMon={isChuyenMon} nsById={nsById} dsNhanSu={dsNhanSu} bienChe={bienChe} ghe={gheView} cam={descendants(sel.id)}
           onClose={() => setSel(null)}
           onSaved={() => { setSel(null); if (teamId) reloadGhe(teamId) }} />
       )}
@@ -135,8 +157,8 @@ export default function OrgChartScreen() {
   )
 }
 
-function EditGhe({ g, nsById, dsNhanSu, bienChe, ghe, cam, onClose, onSaved }: {
-  g: ViTri; nsById: Map<string, NhanSu>; dsNhanSu: NhanSu[]; bienChe: Record<string, string[]>; ghe: ViTri[]; cam: Set<string>
+function EditGhe({ g, isChuyenMon, nsById, dsNhanSu, bienChe, ghe, cam, onClose, onSaved }: {
+  g: ViTri; isChuyenMon: boolean; nsById: Map<string, NhanSu>; dsNhanSu: NhanSu[]; bienChe: Record<string, string[]>; ghe: ViTri[]; cam: Set<string>
   onClose: () => void; onSaved: () => void
 }) {
   const [ten, setTen] = useState(g.ten ?? '')
@@ -158,7 +180,7 @@ function EditGhe({ g, nsById, dsNhanSu, bienChe, ghe, cam, onClose, onSaved }: {
   }
   async function themGheCon() {
     setBusy(true)
-    try { await createViTri({ team_id: g.team_id, ten: null, cap: 'thanh_vien', cha_id: g.id, nhan_su_id: null }); onSaved() }
+    try { await createViTri({ team_id: g.team_id, ten: null, cap: 'thanh_vien', cha_id: g.id, nhan_su_id: null, mon: g.mon ?? null }); onSaved() }
     catch (e: any) { alert(e.message ?? String(e)); setBusy(false) }
   }
   async function xoaGhe() {
@@ -170,6 +192,11 @@ function EditGhe({ g, nsById, dsNhanSu, bienChe, ghe, cam, onClose, onSaved }: {
 
   return (
     <Shell title={`Vị trí · ${g.ten || 'chưa đặt tên'}`} onClose={onClose}>
+      <div className="mb-3">
+        {isChuyenMon
+          ? <span className="rounded-md bg-violet-50 px-2 py-1 text-[12px] font-semibold text-violet-700">Môn: {g.mon ?? '— (ghế cũ chưa gán môn)'}</span>
+          : <span className="rounded-md bg-slate-100 px-2 py-1 text-[12px] font-medium text-slate-500">Liên môn (Ops/Media/Marketing)</span>}
+      </div>
       <Field label="Tên vị trí / chức vụ (scope phụ trách)">
         <input value={ten} onChange={(e) => setTen(e.target.value)} placeholder="vd: Trưởng khối THCS / GV Toán 9" className={inp} autoFocus />
       </Field>
