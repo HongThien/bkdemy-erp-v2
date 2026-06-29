@@ -118,6 +118,7 @@ export type MyProfile = {
   teams: Team[]                                   // biên chế (chỉ xem)
   viTris: (ViTri & { team_ten: string })[]        // vị trí đang giữ (chỉ xem)
   phanCong: (PhanCongLop & { lop?: Lop })[]       // phân công lớp (chỉ xem)
+  mons: string[]                                  // môn được phân (scope④ — gate kho/tài liệu theo môn)
 }
 export async function getMyProfile(): Promise<MyProfile | null> {
   const { data: au } = await supabase.auth.getUser()
@@ -138,11 +139,12 @@ export async function getMyProfile(): Promise<MyProfile | null> {
     }
   }
   if (!nsId) return null
-  const [nsRes, teamAll, teamMap, vtRes, pcRes] = await Promise.all([
+  const [nsRes, teamAll, teamMap, vtRes, pcRes, monRows] = await Promise.all([
     supabase.from('nhan_su').select('*').eq('id', nsId).single(),
     listTeam(), listNhanSuTeamMap(),
     supabase.from('vi_tri').select('*').eq('nhan_su_id', nsId).limit(LIMIT),
     supabase.from('phan_cong_lop').select('*, lop(*)').eq('nhan_su_id', nsId).limit(LIMIT),
+    listMonOfNhanSu(nsId),
   ])
   if (nsRes.error) throw nsRes.error
   const tmById = new Map(teamAll.map((t) => [t.id, t]))
@@ -151,6 +153,7 @@ export async function getMyProfile(): Promise<MyProfile | null> {
     teams: (teamMap[nsId] ?? []).map((tid) => tmById.get(tid)).filter(Boolean) as Team[],
     viTris: ((vtRes.data ?? []) as ViTri[]).map((v) => ({ ...v, team_ten: tmById.get(v.team_id)?.ten ?? '?' })),
     phanCong: (pcRes.data ?? []) as (PhanCongLop & { lop?: Lop })[],
+    mons: monRows,
   }
 }
 // ── SCOPE ENGINE — "ai thấy task nào" (Thùy chốt 12/06) ──────────
@@ -259,6 +262,29 @@ export async function setTeamsOfNhanSu(nhanSuId: string, teamIds: string[]): Pro
   if (e1) throw e1
   if (!teamIds.length) return
   const { error } = await supabase.from('nhan_su_team').insert(teamIds.map((t) => ({ nhan_su_id: nhanSuId, team_id: t })))
+  if (error) throw error
+}
+
+// ── Chiều MÔN ở nhân sự (scope④ — mig 0056) ───────────────────────
+// Môn vào NGƯỜI (n-n). STRICT: chưa gán → không thấy môn nào (admin la_admin bypass ở client).
+export async function listNhanSuMonMap(): Promise<Record<string, string[]>> {
+  const { data, error } = await supabase.from('nhan_su_mon').select('*').limit(LIMIT)
+  if (error) throw error
+  const map: Record<string, string[]> = {}
+  for (const r of (data ?? []) as { nhan_su_id: string; mon: string }[]) (map[r.nhan_su_id] ??= []).push(r.mon)
+  return map
+}
+export async function listMonOfNhanSu(nhanSuId: string): Promise<string[]> {
+  const { data, error } = await supabase.from('nhan_su_mon').select('mon').eq('nhan_su_id', nhanSuId).limit(LIMIT)
+  if (error) throw error
+  return (data ?? []).map((r: any) => r.mon as string)
+}
+// Set trọn bộ môn của 1 NS (delete + insert — bảng nối nhỏ).
+export async function setMonOfNhanSu(nhanSuId: string, mons: string[]): Promise<void> {
+  const { error: e1 } = await supabase.from('nhan_su_mon').delete().eq('nhan_su_id', nhanSuId)
+  if (e1) throw e1
+  if (!mons.length) return
+  const { error } = await supabase.from('nhan_su_mon').insert(mons.map((m) => ({ nhan_su_id: nhanSuId, mon: m })))
   if (error) throw error
 }
 

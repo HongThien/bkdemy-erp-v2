@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
-import { listNhanSu, createNhanSu, updateNhanSu, deleteNhanSu, listTeam, listViTri, listNhanSuTeamMap, setTeamsOfNhanSu, listTaiKhoanMap, capTaiKhoan, goTaiKhoan, suggestMaNS, uploadAvatar, type NhanSu, type Team } from '../../lib/nhansu'
+import { listNhanSu, createNhanSu, updateNhanSu, deleteNhanSu, listTeam, listViTri, listNhanSuTeamMap, setTeamsOfNhanSu, listNhanSuMonMap, setMonOfNhanSu, listTaiKhoanMap, capTaiKhoan, goTaiKhoan, suggestMaNS, uploadAvatar, type NhanSu, type Team } from '../../lib/nhansu'
+import { MON_LIST } from '../../lib/mon'
 import { Shell, Field, inp, Seg, Actions } from '../kho/ui'
 
 const TT_LABEL: Record<string, string> = { dang_lam: 'Đang làm', nghi: 'Nghỉ' }
@@ -9,6 +10,7 @@ export default function NhanSuScreen() {
   const [teams, setTeams] = useState<Team[]>([])
   const [teamOf, setTeamOf] = useState<Record<string, string[]>>({}) // nhan_su_id → [team ma] (suy từ GHẾ đang ngồi)
   const [bienChe, setBienChe] = useState<Record<string, string[]>>({}) // nhan_su_id → [team_id] BIÊN CHẾ (n-n)
+  const [monOf, setMonOf] = useState<Record<string, string[]>>({}) // nhan_su_id → [mon] (scope④)
   const [tkMap, setTkMap] = useState<Record<string, string>>({}) // nhan_su_id → email tài khoản
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
@@ -18,8 +20,8 @@ export default function NhanSuScreen() {
   async function reload() {
     setLoading(true); setErr(null)
     try {
-      const [ns, tm, ghe, bc, tk] = await Promise.all([listNhanSu(), listTeam(), listViTri(), listNhanSuTeamMap(), listTaiKhoanMap()])
-      setList(ns); setTeams(tm); setBienChe(bc); setTkMap(tk)
+      const [ns, tm, ghe, bc, mn, tk] = await Promise.all([listNhanSu(), listTeam(), listViTri(), listNhanSuTeamMap(), listNhanSuMonMap(), listTaiKhoanMap()])
+      setList(ns); setTeams(tm); setBienChe(bc); setMonOf(mn); setTkMap(tk)
       const tmById = new Map(tm.map((t) => [t.id, t.ma]))
       const map: Record<string, string[]> = {}
       for (const g of ghe) {
@@ -48,7 +50,7 @@ export default function NhanSuScreen() {
           : (
             <table className="w-full border-separate border-spacing-y-1.5 text-sm">
               <thead><tr className="text-left text-[12px] uppercase tracking-wider text-slate-400">
-                <th className="px-3">Mã</th><th className="px-3">Họ tên</th><th className="px-3">SĐT</th><th className="px-3">Email</th><th className="px-3">Team</th><th className="px-3">Tài khoản</th><th className="px-3">Trạng thái</th><th></th>
+                <th className="px-3">Mã</th><th className="px-3">Họ tên</th><th className="px-3">SĐT</th><th className="px-3">Email</th><th className="px-3">Team</th><th className="px-3">Môn</th><th className="px-3">Tài khoản</th><th className="px-3">Trạng thái</th><th></th>
               </tr></thead>
               <tbody>
                 {list.map((n) => (
@@ -75,6 +77,12 @@ export default function NhanSuScreen() {
                       </div>
                     </td>
                     <td className="px-3">
+                      <div className="flex flex-wrap items-center gap-1">
+                        {(monOf[n.id] ?? []).map((m) => <span key={m} className="rounded bg-violet-50 px-1.5 py-0.5 text-[11px] font-medium text-violet-700">{m}</span>)}
+                        {(monOf[n.id] ?? []).length === 0 && <span className="text-[12px] text-slate-300" title="Chưa phân môn → không thấy kho/tài liệu môn nào (trừ admin)">—</span>}
+                      </div>
+                    </td>
+                    <td className="px-3">
                       {tkMap[n.id] !== undefined
                         ? <button title={`${tkMap[n.id]} — click để GỠ link (khi đã xóa user bên Auth Dashboard)`}
                             onClick={async () => { if (confirm(`Gỡ link tài khoản ${tkMap[n.id]} khỏi ${n.ho_ten}? (chỉ gỡ liên kết trong app — xóa account thật thì vào Auth Dashboard)`)) { await goTaiKhoan(n.id); reload() } }}
@@ -92,7 +100,7 @@ export default function NhanSuScreen() {
           )}
       </div>
 
-      {edit && <EditModal nhanSu={edit === 'new' ? null : edit} teams={teams} teamIds={edit === 'new' ? [] : bienChe[edit.id] ?? []} onClose={() => setEdit(null)} onSaved={() => { setEdit(null); reload() }} />}
+      {edit && <EditModal nhanSu={edit === 'new' ? null : edit} teams={teams} teamIds={edit === 'new' ? [] : bienChe[edit.id] ?? []} monIds={edit === 'new' ? [] : monOf[edit.id] ?? []} onClose={() => setEdit(null)} onSaved={() => { setEdit(null); reload() }} />}
       {capTk && <CapTkModal nhanSu={capTk} onClose={() => setCapTk(null)} onDone={() => { setCapTk(null); reload() }} />}
     </div>
   )
@@ -152,7 +160,7 @@ function CapTkModal({ nhanSu, onClose, onDone }: { nhanSu: NhanSu; onClose: () =
 
 // Form = thông tin người + TEAM BIÊN CHẾ n-n (Thùy chốt: 1 NS thuộc NHIỀU team; làm filter cho Sơ đồ).
 // VỊ TRÍ vẫn gán bên Sơ đồ tổ chức (vị trí sinh vị trí → đặt người vào).
-function EditModal({ nhanSu, teams, teamIds, onClose, onSaved }: { nhanSu: NhanSu | null; teams: Team[]; teamIds: string[]; onClose: () => void; onSaved: () => void }) {
+function EditModal({ nhanSu, teams, teamIds, monIds, onClose, onSaved }: { nhanSu: NhanSu | null; teams: Team[]; teamIds: string[]; monIds: string[]; onClose: () => void; onSaved: () => void }) {
   const isNew = !nhanSu
   const [ho_ten, setHoTen] = useState(nhanSu?.ho_ten ?? '')
   const [ma_ns, setMaNs] = useState(nhanSu?.ma_ns ?? '')
@@ -161,6 +169,8 @@ function EditModal({ nhanSu, teams, teamIds, onClose, onSaved }: { nhanSu: NhanS
   const [email, setEmail] = useState(nhanSu?.email ?? '')
   const [selTeams, setSelTeams] = useState<Set<string>>(new Set(teamIds))
   const toggleTeam = (id: string) => setSelTeams((s) => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n })
+  const [selMons, setSelMons] = useState<Set<string>>(new Set(monIds))
+  const toggleMon = (m: string) => setSelMons((s) => { const n = new Set(s); n.has(m) ? n.delete(m) : n.add(m); return n })
   const [trang_thai, setTrangThai] = useState<NhanSu['trang_thai']>(nhanSu?.trang_thai ?? 'dang_lam')
   const [anh_url, setAnhUrl] = useState(nhanSu?.anh_url ?? '')
   const [uploading, setUploading] = useState(false)
@@ -176,6 +186,7 @@ function EditModal({ nhanSu, teams, teamIds, onClose, onSaved }: { nhanSu: NhanS
       const id = isNew ? (await createNhanSu(patch)).id : nhanSu!.id
       if (!isNew) await updateNhanSu(id, patch)
       await setTeamsOfNhanSu(id, [...selTeams])
+      await setMonOfNhanSu(id, [...selMons])
       onSaved()
     } catch (e: any) { setError(e.message ?? String(e)); setBusy(false) }
   }
@@ -216,6 +227,18 @@ function EditModal({ nhanSu, teams, teamIds, onClose, onSaved }: { nhanSu: NhanS
             </button>
           ))}
         </div>
+      </div>
+      <div className="mb-3">
+        <span className="mb-1.5 block text-[12px] font-semibold uppercase tracking-wider text-slate-600">Môn phụ trách (scope kho / tài liệu)</span>
+        <div className="flex flex-wrap gap-1.5">
+          {MON_LIST.map((m) => (
+            <button key={m} onClick={() => toggleMon(m)}
+              className={`h-8 rounded-lg border px-2.5 text-[13px] font-semibold transition ${selMons.has(m) ? 'border-violet-600 bg-violet-600 text-white' : 'border-slate-200 text-slate-600 hover:border-violet-300'}`}>
+              {selMons.has(m) ? '✓ ' : ''}{m}
+            </button>
+          ))}
+        </div>
+        <p className="mt-1 text-[11px] text-slate-400">Để TRỐNG = không thấy kho/tài liệu môn nào (Ops/back-office; admin hệ thống vẫn thấy tất). Gán môn = chỉ thấy đúng môn đó.</p>
       </div>
       <Field label="Trạng thái"><Seg options={['dang_lam', 'nghi'] as const} value={trang_thai} onChange={setTrangThai} render={(o) => TT_LABEL[o]} /></Field>
       <p className="mb-2 text-[11px] text-slate-400">VỊ TRÍ gán bên <b>Sơ đồ tổ chức</b> (tạo vị trí → đặt người vào) — team ở đây là biên chế, dùng lọc sẵn danh sách bên đó.{!isNew && <> · Xoá nhân sự: <button onClick={async () => { if (confirm('Xoá nhân sự này? (vị trí đang đảm nhiệm sẽ thành vị trí trống)')) { await deleteNhanSu(nhanSu!.id); onSaved() } }} className="text-rose-600 hover:underline">tại đây</button></>}</p>

@@ -2,7 +2,7 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-61 bảng · 0 enum · 3 trigger · 8 function
+62 bảng · 0 enum · 3 trigger · 8 function
 
 ## bang_khong_bu
 
@@ -562,6 +562,13 @@
 | ma_ns | text | Y | ('NS'::text \|\| lpad((nextval('ns_seq'::regclass))::text, 3, '0'::text)) |  |
 | anh_url | text | Y |  |  |
 | la_admin_he_thong | boolean |  | false |  |
+
+## nhan_su_mon
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| nhan_su_id | uuid |  |  | PK FK→nhan_su.id |
+| mon | text |  |  | PK |
 
 ## nhan_su_team
 

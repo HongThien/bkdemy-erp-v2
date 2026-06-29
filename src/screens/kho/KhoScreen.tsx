@@ -1,11 +1,14 @@
 import { Fragment, useEffect, useState } from 'react'
 import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../lib/kho/api'
+import { useStore } from '../../store/useStore'
 import BanDo from './BanDo'
 import SearchCau from './SearchCau'
 import { daiBranch, hinhBranch, khtnBranch } from './branches'
 
 type Tab = 'dai' | 'hinh'
 type Mon = 'toan' | 'khtn'
+// Map môn-kho ↔ nhãn MON_LIST (nhan_su_mon lưu nhãn 'Toán'/'KHTN'). Kho mới hỗ trợ 2 môn này.
+const MON_TABS: { key: Mon; label: string }[] = [{ key: 'toan', label: 'Toán' }, { key: 'khtn', label: 'KHTN' }]
 
 // Nhớ màn hình gần nhất (preference cá nhân → localStorage, không phải data dùng chung)
 const readKhoi = () => {
@@ -26,6 +29,14 @@ export default function KhoScreen() {
   const config = mon === 'khtn' ? khtnBranch : tab === 'dai' ? daiBranch : hinhBranch
   const [timCau, setTimCau] = useState(false)
 
+  // Scope④ THEO MÔN: admin hệ thống thấy tất; người khác chỉ thấy môn được phân (nhan_su_mon). Chưa gán → không thấy môn nào.
+  const me = useStore((s) => s.me)
+  const laAdmin = !!useStore((s) => s.quyen)?.laAdmin
+  const allowed = laAdmin ? MON_TABS.map((t) => t.key) : MON_TABS.filter((t) => (me?.mons ?? []).includes(t.label)).map((t) => t.key)
+  // Nếu môn đang chọn không được phép → nhảy về môn đầu tiên được phép.
+  useEffect(() => { if (allowed.length && !allowed.includes(mon)) setMon(allowed[0]) }, [allowed.join(','), mon])
+  const profileLoading = !laAdmin && me === null  // chưa load hồ sơ → chưa biết môn
+
   return (
     <div className="flex h-full flex-col bg-[#fafafb]">
       {/* Thanh đầu */}
@@ -33,18 +44,22 @@ export default function KhoScreen() {
         <div className="flex items-baseline gap-2">
           <span className="text-sm font-semibold text-slate-900">Bản đồ kiến thức</span>
         </div>
-        {/* Bộ chọn MÔN — segmented (sau scope theo nhân sự: 1-môn → khoá) */}
-        <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5">
-          <TabBtn active={mon === 'toan'} onClick={() => setMon('toan')}>Toán</TabBtn>
-          <TabBtn active={mon === 'khtn'} onClick={() => setMon('khtn')}>KHTN</TabBtn>
-        </div>
+        {/* Bộ chọn MÔN — chỉ hiện môn được phân (admin thấy tất). 1 môn → vẫn hiện để rõ ngữ cảnh */}
+        {allowed.length > 0 && (
+          <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5">
+            {MON_TABS.filter((t) => allowed.includes(t.key)).map((t) => (
+              <TabBtn key={t.key} active={mon === t.key} onClick={() => setMon(t.key)}>{t.label}</TabBtn>
+            ))}
+          </div>
+        )}
         {/* Tab nhánh (chỉ Toán) — segmented */}
-        {mon === 'toan' && (
+        {mon === 'toan' && allowed.includes('toan') && (
           <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5">
             <TabBtn active={tab === 'dai'} onClick={() => setTab('dai')}>Đại số</TabBtn>
             <TabBtn active={tab === 'hinh'} onClick={() => setTab('hinh')}>Hình học</TabBtn>
           </div>
         )}
+        {allowed.length > 0 && !profileLoading && <>
         {/* Tìm câu (chỉ nhánh có câu: Đại/KHTN) */}
         {config.cauTbl && (
           <button onClick={() => setTimCau(true)}
@@ -72,13 +87,23 @@ export default function KhoScreen() {
             )
           })}
         </div>
+        </>}
       </div>
 
       <div className="min-h-0 flex-1">
-        <BanDo key={`${config.key}-${khoi}`} config={config} khoi={khoi} />
+        {profileLoading ? <div className="flex h-full items-center justify-center text-sm text-slate-400">Đang tải hồ sơ…</div>
+          : allowed.length === 0 ? (
+            <div className="flex h-full items-center justify-center p-8 text-center">
+              <div className="max-w-md rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
+                <div className="mb-2 text-3xl">📚</div>
+                <div className="text-[15px] font-semibold text-slate-800">Bạn chưa được phân môn</div>
+                <p className="mt-1.5 text-[13px] text-slate-500">Tài khoản chưa gắn môn nào nên không xem được kho. Liên hệ quản trị để được phân môn (màn <b>Nhân sự</b> → sửa → Môn phụ trách).</p>
+              </div>
+            </div>
+          ) : <BanDo key={`${config.key}-${khoi}`} config={config} khoi={khoi} />}
       </div>
 
-      {timCau && config.cauTbl && <SearchCau cauTbl={config.cauTbl} onClose={() => setTimCau(false)} />}
+      {timCau && config.cauTbl && allowed.length > 0 && <SearchCau cauTbl={config.cauTbl} onClose={() => setTimCau(false)} />}
     </div>
   )
 }

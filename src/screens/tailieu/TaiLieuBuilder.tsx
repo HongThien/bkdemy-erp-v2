@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import {
   getTaiLieuFull, updateTaiLieu, updatePhan, setCauOfPhan,
-  addBuoi, deleteBuoi, setDangOfBuoi, autoSuggestByLoai, autoSuggestBtvn, trichXuatBuoi, listTrichXuat,
+  addBuoi, deleteBuoi, setDangOfBuoi, reorderDangInBuoi, autoSuggestByLoai, autoSuggestBtvn, trichXuatBuoi, listTrichXuat,
   DEFAULT_LUYEN_COUNTS, DEFAULT_BTVN_COUNTS, DEFAULT_BTVN_LINES,
   type TaiLieuFull, type PhanResolved, type CauHinh, type TrichState,
 } from '../../lib/tailieu'
@@ -102,6 +102,7 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
                   onRename={(t) => updatePhan(b.marker.id, { tieu_de: t }).then(reload).then(markSaved)}
                   onDelete={async () => { if (confirm('Xoá cả buổi này (gồm dạng trên lớp + BTVN)?')) { await deleteBuoi(id, b.marker.id); await reload(); markSaved() } }}
                   onChonDang={() => setDangPicker({ buoiId: b.marker.id, selected: b.dangs.map((d) => d.ref_ma!).filter(Boolean) })}
+                  onReorderDang={async (order) => { await reorderDangInBuoi(id, b.marker.id, order); await reload(); markSaved() }}
                   onApply={applyCaus} openPicker={openPicker}
                 />
               )
@@ -120,11 +121,18 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
 }
 
 // ── 1 BUỔI: tiêu đề (sửa được) + nút Chọn dạng + danh sách dạng (mỗi dạng có Bài luyện + BTVN) ──
-function BuoiCard({ buoi, startNo, linesByCau, onLine, onRename, onDelete, onChonDang, onApply, openPicker }: {
+function BuoiCard({ buoi, startNo, linesByCau, onLine, onRename, onDelete, onChonDang, onReorderDang, onApply, openPicker }: {
   buoi: BuoiUI; startNo: number; linesByCau: Record<string, number>; onLine: (maCau: string, n: number) => void
-  onRename: (t: string) => void; onDelete: () => void; onChonDang: () => void
+  onRename: (t: string) => void; onDelete: () => void; onChonDang: () => void; onReorderDang: (order: string[]) => void
   onApply: (phanId: string, maCaus: string[]) => void; openPicker: (phanId: string, ma: string, selected: string[]) => void
 }) {
+  const order = buoi.dangs.map((d) => d.ref_ma!).filter(Boolean)
+  const move = (i: number, dir: -1 | 1) => {
+    const j = i + dir
+    if (j < 0 || j >= order.length) return
+    const next = [...order]; [next[i], next[j]] = [next[j], next[i]]
+    onReorderDang(next)
+  }
   return (
     <div className="rounded-xl border border-slate-200 bg-white">
       <div id={`p-${buoi.marker.id}`} className="scroll-mt-3 flex items-center gap-2 rounded-t-xl border-b border-slate-100 bg-indigo-50/50 px-4 py-2.5">
@@ -140,7 +148,8 @@ function BuoiCard({ buoi, startNo, linesByCau, onLine, onRename, onDelete, onCho
           ? <div className="text-[12px] italic text-slate-400">Chưa có dạng — bấm “+ Chọn dạng” để chọn các dạng cho buổi (mọi chuyên đề).</div>
           : buoi.dangs.map((d, i) => (
             <DangCard key={d.id} no={startNo + i + 1} dang={d} btvn={d.ref_ma ? buoi.btvnByMa[d.ref_ma] : undefined}
-              linesByCau={linesByCau} onLine={onLine} onApply={onApply} openPicker={openPicker} />
+              linesByCau={linesByCau} onLine={onLine} onApply={onApply} openPicker={openPicker}
+              canUp={i > 0} canDown={i < buoi.dangs.length - 1} onUp={() => move(i, -1)} onDown={() => move(i, 1)} />
           ))}
       </div>
     </div>
@@ -148,9 +157,10 @@ function BuoiCard({ buoi, startNo, linesByCau, onLine, onRename, onDelete, onCho
 }
 
 // ── 1 DẠNG trong buổi: 2 khối cấu hình — Bài luyện (trên lớp) + BTVN (về nhà), đều theo số câu mỗi loại ──
-function DangCard({ no, dang, btvn, linesByCau, onLine, onApply, openPicker }: {
+function DangCard({ no, dang, btvn, linesByCau, onLine, onApply, openPicker, canUp, canDown, onUp, onDown }: {
   no: number; dang: PhanResolved; btvn?: PhanResolved; linesByCau: Record<string, number>
   onLine: (maCau: string, n: number) => void; onApply: (phanId: string, maCaus: string[]) => void; openPicker: (phanId: string, ma: string, selected: string[]) => void
+  canUp: boolean; canDown: boolean; onUp: () => void; onDown: () => void
 }) {
   const ma = dang.ref_ma!
   const [luyenCnt, setLuyenCnt] = useState<Record<string, number>>({ ...DEFAULT_LUYEN_COUNTS })
@@ -170,6 +180,10 @@ function DangCard({ no, dang, btvn, linesByCau, onLine, onApply, openPicker }: {
   return (
     <div id={`p-${dang.id}`} className="scroll-mt-3 overflow-hidden rounded-lg border border-slate-200">
       <div className="flex items-center gap-2 border-b border-slate-100 px-3 py-2">
+        <span className="flex shrink-0 flex-col leading-none" title="Đổi thứ tự dạng trong buổi">
+          <button onClick={onUp} disabled={!canUp} className="text-[10px] text-slate-400 hover:text-indigo-600 disabled:opacity-25">▲</button>
+          <button onClick={onDown} disabled={!canDown} className="text-[10px] text-slate-400 hover:text-indigo-600 disabled:opacity-25">▼</button>
+        </span>
         <span className="text-[14px] font-semibold text-pink-600">Dạng {no}: {dang.dang?.ten_dang ?? ma}</span>
         <span className="truncate text-[11px] text-slate-400">· {dang.dang?.ten_chuyen_de ?? ''}</span>
         <span className={`ml-auto rounded-full px-2 py-0.5 text-[11px] font-medium ${dang.lyThuyetDang?.noi_dung?.trim() ? 'bg-emerald-50 text-emerald-600' : 'bg-amber-50 text-amber-700'}`}>{dang.lyThuyetDang?.noi_dung?.trim() ? 'có lý thuyết' : 'chưa có lý thuyết'}</span>

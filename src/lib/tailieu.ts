@@ -212,7 +212,14 @@ export async function setDangOfBuoi(taiLieuId: string, buoiId: string, maDangs: 
   const firstMarkerIdx = phans.findIndex((p) => p.loai_phan === 'buoi')
   const order: string[] = []
   if (firstMarkerIdx > 0) for (let k = 0; k < firstMarkerIdx; k++) order.push(phans[k].id) // giữ phan rời (data cũ) ở đầu
-  const targetOrder = [...maDangs].sort() // theo ma_dang → dạng cùng chuyên đề liền nhau (LT chuyên đề hiện 1 lần)
+  // GIỮ thứ tự dạng hiện có (reorder tay không bị xoá); dạng MỚI chèn cạnh chuyên đề cùng họ (LT chuyên đề vẫn 1 lần), không có thì append cuối.
+  const cdOf = (ma: string) => ma.slice(0, 6) // 6 ký tự đầu ma_dang = ma_chuyen_de
+  const targetOrder = target.order.filter((ma) => maDangs.includes(ma))
+  for (const ma of maDangs.filter((m) => !target.order.includes(m))) {
+    let idx = -1
+    for (let i = targetOrder.length - 1; i >= 0; i--) if (cdOf(targetOrder[i]) === cdOf(ma)) { idx = i; break }
+    if (idx >= 0) targetOrder.splice(idx + 1, 0, ma); else targetOrder.push(ma)
+  }
   for (const m of markers) {
     order.push(m.id)
     const g = m.id === buoiId
@@ -220,6 +227,23 @@ export async function setDangOfBuoi(taiLieuId: string, buoiId: string, maDangs: 
       : groupBuoi(phans, m.id)
     for (const ma of g.order) if (g.dangs[ma]) order.push(g.dangs[ma])
     for (const ma of g.order) if (g.btvns[ma]) order.push(g.btvns[ma])
+  }
+  await reorderPhan(order)
+}
+
+// Đổi thứ tự DẠNG trong 1 buổi (giữ nguyên dạng/btvn, chỉ sắp lại thu_tu). orderedMaDangs = thứ tự MỚI người chọn.
+export async function reorderDangInBuoi(taiLieuId: string, buoiId: string, orderedMaDangs: string[]): Promise<void> {
+  const phans = await listPhan(taiLieuId)
+  const markers = phans.filter((p) => p.loai_phan === 'buoi')
+  const firstMarkerIdx = phans.findIndex((p) => p.loai_phan === 'buoi')
+  const order: string[] = []
+  if (firstMarkerIdx > 0) for (let k = 0; k < firstMarkerIdx; k++) order.push(phans[k].id) // giữ phan rời (data cũ) ở đầu
+  for (const m of markers) {
+    order.push(m.id)
+    const g = groupBuoi(phans, m.id)
+    const ord = m.id === buoiId ? orderedMaDangs.filter((ma) => ma in g.dangs) : g.order
+    for (const ma of ord) if (g.dangs[ma]) order.push(g.dangs[ma])
+    for (const ma of ord) if (g.btvns[ma]) order.push(g.btvns[ma])
   }
   await reorderPhan(order)
 }
