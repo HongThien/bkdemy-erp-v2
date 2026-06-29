@@ -200,6 +200,7 @@ function DangCard({ no, dang, btvn, linesByCau, onLine, onApply, openPicker }: {
           ? <ol className="mt-2 space-y-1">{btvn.caus.map((c, i) => (
             <li key={c.ma_cau} className="flex items-center gap-2 rounded-md border border-slate-100 bg-white/70 px-2.5 py-1.5">
               <span className="text-[12px] font-bold text-slate-400">{i + 1}.</span>
+              <MaCau ma={c.ma_cau} />
               <span className="min-w-0 flex-1 truncate text-[13px] text-slate-700"><MathText>{c.noi_dung}</MathText></span>
               <span className="shrink-0 rounded bg-slate-100 px-1.5 text-[10px] font-medium text-slate-500">{loaiLabel(c.loai_cau)}</span>
               <label className="flex shrink-0 items-center gap-1 text-[11px] text-slate-400" title="Số dòng kẻ để HS viết bài này">dòng
@@ -214,10 +215,16 @@ function DangCard({ no, dang, btvn, linesByCau, onLine, onApply, openPicker }: {
   )
 }
 
+// Badge mã câu — chỉ hiện khi SOẠN (đối chiếu với Tìm câu), KHÔNG lên bản in HS.
+function MaCau({ ma }: { ma: string }) {
+  return <span className="shrink-0 rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[10px] text-slate-500" title="Mã câu">{ma}</span>
+}
+
 function CauRow({ no, c, onRemove }: { no: number; c: CauHoi; onRemove: () => void }) {
   return (
     <li className="flex items-start gap-2 rounded-md border border-slate-100 bg-slate-50/50 px-2.5 py-1.5">
       <span className="text-[12px] font-bold text-slate-400">{no}.</span>
+      <MaCau ma={c.ma_cau} />
       <span className="min-w-0 flex-1 truncate text-[13px] text-slate-700"><MathText>{c.noi_dung}</MathText></span>
       <span className="shrink-0 rounded bg-slate-100 px-1.5 text-[10px] font-medium text-slate-500">{loaiLabel(c.loai_cau)}</span>
       <button onClick={onRemove} className="shrink-0 text-[12px] text-slate-400 hover:text-rose-600">✕</button>
@@ -346,6 +353,7 @@ export function KhoPicker({ maDangs, selected, onClose, onConfirm }: { maDangs: 
                     {caus.map((c) => (
                       <label key={c.ma_cau} className={`flex cursor-pointer items-start gap-2 rounded-md border px-2.5 py-1.5 ${sel.has(c.ma_cau) ? 'border-indigo-300 bg-indigo-50/40' : 'border-slate-100 hover:bg-slate-50'}`}>
                         <input type="checkbox" checked={sel.has(c.ma_cau)} onChange={() => toggle(c.ma_cau)} className="mt-1" />
+                        <MaCau ma={c.ma_cau} />
                         <span className="min-w-0 flex-1 text-[14px] text-slate-700"><MathText>{c.noi_dung}</MathText></span>
                         <span className="shrink-0 rounded bg-slate-100 px-1.5 text-[10px] font-medium text-slate-500">{loaiLabel(c.loai_cau)}</span>
                       </label>

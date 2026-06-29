@@ -13,6 +13,7 @@ import BangThanhTich from '../gami/BangThanhTich'
 
 const TT_LABEL: Record<string, string> = { dang_hoc: 'Đang học', bao_luu: 'Bảo lưu', nghi: 'Nghỉ' }
 const ALL = '__all__' // tab "Tất cả khối"
+type SortKey = 'ho_ten' | 'ma_hs' | 'khoi' | 'soLop' | 'trang_thai'
 
 export default function HocSinhScreen() {
   const [khoi, setKhoi] = useState<string>(DEFAULT_KHOI)
@@ -22,6 +23,8 @@ export default function HocSinhScreen() {
   const [err, setErr] = useState<string | null>(null)
   const [q, setQ] = useState('')
   const [edit, setEdit] = useState<HocSinh | null | 'new'>(null)
+  const [tt, setTt] = useState<string>('dang_hoc') // toggle trạng thái — quản lý riêng Đang học / Nghỉ
+  const [sort, setSort] = useState<{ key: SortKey; dir: 'asc' | 'desc' }>({ key: 'ho_ten', dir: 'asc' })
 
   async function reload() {
     setLoading(true); setErr(null)
@@ -33,19 +36,39 @@ export default function HocSinhScreen() {
   }
   useEffect(() => { reload() }, [khoi]) // eslint-disable-line
 
-  const shown = list.filter((h) => !q.trim() || h.ho_ten.toLowerCase().includes(q.trim().toLowerCase()) || (h.ma_hs ?? '').toLowerCase().includes(q.trim().toLowerCase()))
+  // 1) lọc theo search (khối đã lọc ở query) → đếm theo trạng thái cho toggle
+  const afterSearch = list.filter((h) => !q.trim() || h.ho_ten.toLowerCase().includes(q.trim().toLowerCase()) || (h.ma_hs ?? '').toLowerCase().includes(q.trim().toLowerCase()))
   const cnt = { dang_hoc: 0, bao_luu: 0, nghi: 0 } as Record<string, number>
-  for (const h of shown) cnt[h.trang_thai] = (cnt[h.trang_thai] ?? 0) + 1
+  for (const h of afterSearch) cnt[h.trang_thai] = (cnt[h.trang_thai] ?? 0) + 1
+  // Toggle: luôn có Đang học + Nghỉ; Bảo lưu chỉ khi có HS (không giấu HS bảo lưu)
+  const ttSegs = (['dang_hoc', 'bao_luu', 'nghi'] as const).filter((s) => s !== 'bao_luu' || cnt.bao_luu > 0 || tt === 'bao_luu')
+  // 2) lọc theo trạng thái đang chọn + sort theo cột
+  const sortVal = (h: HocSinh): string | number =>
+    sort.key === 'soLop' ? (countLop[h.id] ?? 0)
+    : sort.key === 'ho_ten' ? h.ho_ten ?? ''
+    : sort.key === 'ma_hs' ? h.ma_hs ?? ''
+    : sort.key === 'khoi' ? h.khoi ?? ''
+    : TT_LABEL[h.trang_thai] ?? ''
+  const shown = afterSearch.filter((h) => h.trang_thai === tt).sort((a, b) => {
+    const av = sortVal(a), bv = sortVal(b)
+    const r = typeof av === 'number' && typeof bv === 'number' ? av - bv : String(av).localeCompare(String(bv), 'vi', { numeric: true })
+    return sort.dir === 'asc' ? r : -r
+  })
+  const toggleSort = (key: SortKey) => setSort((s) => ({ key, dir: s.key === key && s.dir === 'asc' ? 'desc' : 'asc' }))
 
   return (
     <div className="flex h-full flex-col bg-[#fafafb]">
       <div className="flex items-center gap-4 border-b border-slate-200 bg-white px-6 py-2.5">
         <span className="text-sm font-semibold text-slate-900">Học sinh</span>
-        <div className="flex items-center gap-1.5 text-[12px]">
-          <span className="font-semibold text-slate-500">{khoi === ALL ? 'Tổng' : `Khối ${khoi}`}</span>
-          <span className="rounded bg-emerald-50 px-2 py-0.5 font-medium text-emerald-700">Đang học {cnt.dang_hoc}</span>
-          {cnt.bao_luu > 0 && <span className="rounded bg-amber-50 px-2 py-0.5 font-medium text-amber-700">Bảo lưu {cnt.bao_luu}</span>}
-          <span className="rounded bg-slate-100 px-2 py-0.5 font-medium text-slate-500">Nghỉ {cnt.nghi}</span>
+        <span className="text-[12px] font-semibold text-slate-400">{khoi === ALL ? 'Tổng' : `Khối ${khoi}`}</span>
+        {/* Toggle trạng thái — quản lý riêng Đang học / Nghỉ (Bảo lưu hiện khi có) */}
+        <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5">
+          {ttSegs.map((s) => (
+            <button key={s} onClick={() => setTt(s)}
+              className={`rounded-md px-3 py-1 text-[13px] font-medium transition ${tt === s ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>
+              {TT_LABEL[s]} <span className={tt === s ? 'text-indigo-600' : 'text-slate-400'}>{cnt[s]}</span>
+            </button>
+          ))}
         </div>
         <div className="ml-auto flex items-center gap-1">
           <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm tên/mã…" className="mr-2 h-7 w-40 rounded-md border border-slate-200 px-2.5 text-[13px] outline-none focus:border-indigo-400" />
@@ -61,11 +84,15 @@ export default function HocSinhScreen() {
       <div className="min-h-0 flex-1 overflow-auto p-6">
         {loading ? <p className="text-sm text-slate-400">Đang tải…</p>
           : err ? <p className="text-sm text-rose-600">Lỗi: {err}</p>
-          : shown.length === 0 ? <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">{q ? 'Không khớp.' : <>Chưa có học sinh{khoi === ALL ? ' nào' : ` khối ${khoi}`}. Bấm <b className="text-slate-600">+ Thêm học sinh</b>.</>}</div>
+          : shown.length === 0 ? <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">{q ? 'Không khớp.' : <>Không có học sinh <b className="text-slate-600">{TT_LABEL[tt]}</b>{khoi === ALL ? '' : ` khối ${khoi}`}.</>}</div>
           : (
             <table className="w-full border-separate border-spacing-y-1.5 text-sm">
               <thead><tr className="text-left text-[12px] uppercase tracking-wider text-slate-400">
-                <th className="px-3">Họ tên</th><th className="px-3">Mã</th><th className="px-3">Khối</th><th className="px-3">Số lớp</th><th className="px-3">Trạng thái</th><th></th>
+                <Th k="ho_ten" sort={sort} onSort={toggleSort}>Họ tên</Th>
+                <Th k="ma_hs" sort={sort} onSort={toggleSort}>Mã</Th>
+                <Th k="khoi" sort={sort} onSort={toggleSort}>Khối</Th>
+                <Th k="soLop" sort={sort} onSort={toggleSort}>Số lớp</Th>
+                <th className="px-3">Trạng thái</th><th></th>
               </tr></thead>
               <tbody>
                 {shown.map((h) => (
@@ -92,6 +119,16 @@ export default function HocSinhScreen() {
 
       {edit && <EditModal hocSinh={edit === 'new' ? null : edit} defaultKhoi={khoi} onClose={() => setEdit(null)} onSaved={() => { setEdit(null); reload() }} />}
     </div>
+  )
+}
+
+// Header bảng — bấm để sort, mũi tên chỉ chiều
+function Th({ k, sort, onSort, children }: { k: SortKey; sort: { key: SortKey; dir: 'asc' | 'desc' }; onSort: (k: SortKey) => void; children: React.ReactNode }) {
+  const active = sort.key === k
+  return (
+    <th className="cursor-pointer select-none px-3 hover:text-slate-600" onClick={() => onSort(k)}>
+      <span className="inline-flex items-center gap-1">{children}<span className={active ? 'text-indigo-500' : 'text-slate-300'}>{active ? (sort.dir === 'asc' ? '▲' : '▼') : '↕'}</span></span>
+    </th>
   )
 }
 

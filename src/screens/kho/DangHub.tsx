@@ -155,8 +155,8 @@ export default function DangHub({ d, config, chuan, onClose, onEditDang, onDelet
   )
 }
 
-// ── Sửa 1 câu — preview giống lúc duyệt; bấm ✎ Sửa để chỉnh code ──
-function CauModal({ editing, cauTbl, onClose, onSaved }: { editing: CauHoi; cauTbl: string; onClose: () => void; onSaved: () => void }) {
+// ── Sửa 1 câu — preview giống lúc duyệt; bấm ✎ Sửa để chỉnh code ── (export: tái dùng ở Tìm câu)
+export function CauModal({ editing, cauTbl, onClose, onSaved }: { editing: CauHoi; cauTbl: string; onClose: () => void; onSaved: () => void }) {
   const [item, setItem] = useState<ReviewItem>(() => toRI(editing))
   const [loai, setLoai] = useState(editing.loai_cau)
   const [saving, setSaving] = useState(false)

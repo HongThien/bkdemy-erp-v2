@@ -210,7 +210,7 @@ function DungSaiImportModal({ dangChinh, tbl, dangOpts, onClose, onSaved }: {
   )
 }
 
-function DungSaiModal({ cau, dangChinhMoi, tbl, dangOpts, onClose, onSaved }: {
+export function DungSaiModal({ cau, dangChinhMoi, tbl, dangOpts, onClose, onSaved }: {
   cau: CauHoi | null; dangChinhMoi: string | null; tbl: string
   dangOpts: { id: string; label: string; sub: string }[]; onClose: () => void; onSaved: () => void
 }) {

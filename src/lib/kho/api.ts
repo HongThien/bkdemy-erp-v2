@@ -102,6 +102,35 @@ export async function deleteCau(ma_cau: string, tbl = 'dai_cau_hoi'): Promise<vo
   if (error) throw error
 }
 
+// ── TÌM CÂU (để sửa câu sai nhanh) — THEO KHO ĐANG XEM (per cauTbl), KHÔNG xuyên môn ──
+const BAN_DO_OF: Record<string, string> = { dai_cau_hoi: 'dai_ban_do', khtn_cau_hoi: 'khtn_ban_do' }
+export type CauTimThay = CauHoi & { dangTen: string }
+// q khớp MÃ (prefix) HOẶC NỘI DUNG (chứa). Sanitize ,() vì là ký tự phân tách của PostgREST .or().
+export async function searchCau(q: string, tbl = 'dai_cau_hoi'): Promise<CauTimThay[]> {
+  const safe = q.trim().replace(/[,()]/g, ' ').trim()
+  if (!safe) return []
+  const { data, error } = await supabase.from(tbl).select('*')
+    .or(`ma_cau.ilike.${safe}%,noi_dung.ilike.%${safe}%`)
+    .order('ma_cau').limit(200)
+  if (error) throw error
+  const caus = (data ?? []) as CauHoi[]
+  const dangMas = [...new Set(caus.map((c) => c.dang_chinh).filter(Boolean))]
+  const ten: Record<string, string> = {}
+  if (dangMas.length) {
+    const { data: d2 } = await supabase.from(BAN_DO_OF[tbl] ?? 'dai_ban_do').select('ma_dang, ten_dang').in('ma_dang', dangMas).limit(LIMIT)
+    for (const r of (d2 ?? []) as any[]) ten[r.ma_dang] = r.ten_dang
+  }
+  return caus.map((c) => ({ ...c, dangTen: ten[c.dang_chinh] ?? c.dang_chinh }))
+}
+// Tuỳ chọn dạng cho editor Đúng/Sai (mệnh đề gán dạng bất kỳ trong MÔN). Lấy cả môn từ ban_do.
+export async function listDangOptions(tbl = 'dai_cau_hoi'): Promise<{ id: string; label: string; sub: string }[]> {
+  const banDo = BAN_DO_OF[tbl] ?? 'dai_ban_do'
+  const { data, error } = await supabase.from(banDo)
+    .select('ma_dang, ten_dang, ten_chu_de, ten_chuyen_de, khoi').order('ma_dang').limit(LIMIT)
+  if (error) throw error
+  return (data ?? []).map((r: any) => ({ id: r.ma_dang, label: r.ten_dang, sub: `K${r.khoi} · ${r.ten_chu_de} › ${r.ten_chuyen_de}` }))
+}
+
 // ── BANK ĐÚNG/SAI: con của CHUYÊN ĐỀ (như lý thuyết). câu loai_cau='dung_sai' có dang_chinh ∈ dạng của chuyên đề đó. ──
 export async function listDungSaiByDang(dangMas: string[], tbl = 'dai_cau_hoi'): Promise<CauHoi[]> {
   if (!dangMas.length) return []

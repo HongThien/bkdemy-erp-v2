@@ -162,6 +162,7 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
                       : <span className="text-[12px] italic text-slate-300">chọn dạng để hệ gợi ý câu</span>}
                     {c && (
                       <div className="mt-1 flex flex-wrap items-center gap-1.5">
+                        <span className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[10px] text-slate-500" title="Mã câu">{c.ma_cau}</span>
                         <span className="text-[10px] text-slate-300">kho: {loaiLabel(c.loai_cau)} · in dạng:</span>
                         <div className="flex gap-0.5">
                           {formOpts.map((f) => (

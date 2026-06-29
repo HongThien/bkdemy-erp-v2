@@ -1,6 +1,7 @@
 import { Fragment, useEffect, useState } from 'react'
 import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../lib/kho/api'
 import BanDo from './BanDo'
+import SearchCau from './SearchCau'
 import { daiBranch, hinhBranch, khtnBranch } from './branches'
 
 type Tab = 'dai' | 'hinh'
@@ -23,6 +24,7 @@ export default function KhoScreen() {
   useEffect(() => { localStorage.setItem('kho.mon', mon) }, [mon])
   // môn KHTN = 1 cây (không nhánh Đại/Hình); Toán = nhánh tab → branch.
   const config = mon === 'khtn' ? khtnBranch : tab === 'dai' ? daiBranch : hinhBranch
+  const [timCau, setTimCau] = useState(false)
 
   return (
     <div className="flex h-full flex-col bg-[#fafafb]">
@@ -43,8 +45,15 @@ export default function KhoScreen() {
             <TabBtn active={tab === 'hinh'} onClick={() => setTab('hinh')}>Hình học</TabBtn>
           </div>
         )}
+        {/* Tìm câu (chỉ nhánh có câu: Đại/KHTN) */}
+        {config.cauTbl && (
+          <button onClick={() => setTimCau(true)}
+            className="ml-auto flex items-center gap-1.5 rounded-md border border-slate-200 bg-white px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-indigo-300 hover:text-indigo-700">
+            🔍 Tìm câu
+          </button>
+        )}
         {/* Khối */}
-        <div className="ml-auto flex items-center gap-1">
+        <div className={`${config.cauTbl ? '' : 'ml-auto '}flex items-center gap-1`}>
           <span className="mr-1 text-[12px] font-semibold uppercase tracking-wider text-slate-600">Khối</span>
           {KHOI_OPTIONS.map((k) => {
             const tc = k.endsWith('T') // Tăng cường (CLC)
@@ -68,6 +77,8 @@ export default function KhoScreen() {
       <div className="min-h-0 flex-1">
         <BanDo key={`${config.key}-${khoi}`} config={config} khoi={khoi} />
       </div>
+
+      {timCau && config.cauTbl && <SearchCau cauTbl={config.cauTbl} onClose={() => setTimCau(false)} />}
     </div>
   )
 }

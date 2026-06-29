@@ -147,13 +147,11 @@
 - **Fix ET buổi bù cho TA**: route task `loai='bu'` từ "Việc của tôi" sang `BuoiBuDetail` (export, nhận `buoiId`, tự seed ET buổi mẹ) thay BuoiDetail thường (lop_id=null nên ET ko load).
 - **Nút 🐞 Báo lỗi** dời lên TopBar (inline cạnh tên đăng nhập). Fix tên chuyên đề đè vòng % (pr-12).
 
-### 🔜 SEARCH CÂU TRONG KHO — MAI LÀM TIẾP (đang dở, mới đọc CauModal)
-- **Mục đích:** tìm-để-SỬA câu sai nhanh. Thiết kế đã chốt với Thùy:
-  - Search **THEO KHO ĐANG XEM** (per `config.cauTbl` — Toán dai_cau_hoi / KHTN khtn_cau_hoi), **KHÔNG xuyên môn** (nhân-sự-môn chỉ thấy môn đó).
-  - Tìm theo **MÃ** (`ma_cau` prefix) **HOẶC NỘI DUNG** (`noi_dung` ilike) — `.or()` 1 query (nhớ sanitize dấu `,()`).
-  - Kết quả: nội dung + **mã** + **dạng** (tên qua `getDangTen`/map) → nút **Sửa** mở editor.
-- **Build:** api `searchCau(q, tbl)` · panel search trong KhoScreen (top bar) hoặc BanDo · "Sửa" tái dùng **`CauModal`** (DangHub — `{editing:CauHoi, cauTbl, onClose, onSaved}`, **CHƯA export** → export nó) cho câu thường; câu `dung_sai` → editor Đúng/Sai (DungSaiModal trong DungSaiBank, cần export + dangOpts) hoặc tạm CauModal (sửa đề chung).
-- **Ý 2 (sau):** badge `ma_cau` ở khu chọn câu khi soạn tài liệu (builder/ET) — KHÔNG lên bản in HS.
+### Đã build (06-29 — Tìm câu trong kho · mã câu khi soạn · Học sinh toggle+sort)
+- **⭐ TÌM CÂU TRONG KHO** (tìm-để-SỬA câu sai nhanh): nút "🔍 Tìm câu" top bar `KhoScreen` (chỉ nhánh có câu — Đại/KHTN, ẩn Hình). `SearchCau.tsx` overlay: input autofocus + debounce 300ms + chống race (reqId). `searchCau(q, tbl)` (api.ts) = `.or(ma_cau.ilike.${q}%, noi_dung.ilike.%${q}%)` 1 query, **sanitize `,()`** (ký tự phân tách PostgREST .or()), limit 200; resolve tên dạng từ ban_do của môn (`BAN_DO_OF`: dai→dai_ban_do · khtn→khtn_ban_do). **Search THEO KHO ĐANG XEM** (per `config.cauTbl`), **KHÔNG xuyên môn**. Kết quả: mã + loại + tên dạng + 🤖AI + nội dung → nút **Sửa**: câu thường mở **`CauModal`** (export từ DangHub) · câu `dung_sai` mở **`DungSaiModal`** (export từ DungSaiBank; dangOpts nạp 1 lần qua `listDangOptions(tbl)` toàn môn). onSaved → reload search tại chỗ.
+- **⭐ MÃ CÂU khi SOẠN (Ý 2)** — đối chiếu với Tìm câu (Thùy: "cấu trúc tài liệu chưa hiện mã thì tìm kiểu gì"): badge mã (mono, slate, `shrink-0`) ở `TaiLieuBuilder` (`MaCau` component — câu luyện CauRow + câu BTVN + **KhoPicker** lúc chọn) + `ETScreen` (dòng meta mỗi câu). **KHÔNG đụng `CauItem`/PrintView** → mã KHÔNG lên bản in HS.
+- **⭐ HỌC SINH — toggle trạng thái + sort cột** (`HocSinhScreen`): **Toggle bar** Đang học / Nghỉ (segmented + số đếm, mặc định Đang học) quản lý RIÊNG; **Bảo lưu** chỉ hiện segment khi có HS bảo lưu (data 3 trạng thái — không giấu). Bỏ dải đếm cũ. **Sort click-header** (`Th` component ▲▼/↕): Họ tên · Mã · Khối · Số lớp — `localeCompare('vi',{numeric:true})` (Khối 4T/5T + mã HS#### đúng), Số lớp so number; mặc định Họ tên ↑. Thứ tự: search → đếm trạng thái → lọc trạng thái → sort.
+- **CÒN (Ý 2 mở rộng, để sau nếu cần):** badge mã ở các khu soạn khác (nếu phát sinh) — hiện đủ builder luyện/BTVN/KhoPicker/ET.
 
 ### 🔜 SƠ ĐỒ TỔ CHỨC THEO MÔN — CHỜ THÙY QUYẾT
 - **Vấn đề:** GV KHTN chưa xếp được vào cây (org hiện per-TEAM: gv/ta/ops/hoc_thuat/media/marketing, **môn-agnostic**) → ko ngồi ghế nào → ko có quyền/scope.
