@@ -43,7 +43,7 @@ function RankView({ onOpenHS }: { onOpenHS: (r: DiemRow) => void }) {
   const [rows, setRows] = useState<DiemRow[]>([])
   const [loading, setLoading] = useState(true)
   const [q, setQ] = useState('')
-  useEffect(() => { listGamiMons().then((m) => { setMons(m); if (m.length) setMon(m[0]) }).catch(() => {}) }, [])
+  useEffect(() => { listGamiMons().then((m) => { setMons(m); if (m.length) setMon(m.includes('Toán') ? 'Toán' : m[0]) }).catch(() => {}) }, [])
   useEffect(() => { setLoading(true); listGamiBangTong(mon || undefined).then(setRows).finally(() => setLoading(false)) }, [mon])
   const shown = rows.filter((r) => !q.trim() || r.ho_ten.toLowerCase().includes(q.trim().toLowerCase()) || (r.ma_hs ?? '').toLowerCase().includes(q.trim().toLowerCase()))
   const tab = (on: boolean) => `h-7 rounded-md px-3 text-[13px] font-semibold transition ${on ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`

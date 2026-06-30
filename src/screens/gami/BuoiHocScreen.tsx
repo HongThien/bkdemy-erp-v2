@@ -16,6 +16,7 @@ import { MathText } from '../kho/ui'
 import SearchSelect from '../../components/SearchSelect'
 import DangPickerOne from '../../components/DangPickerOne'
 import { useIsMobile } from '../../hooks/useIsMobile'
+import { useStore } from '../../store/useStore'
 
 type DangOpt = { ma_dang: string; ten: string }
 
@@ -35,6 +36,9 @@ export default function BuoiHocScreen() {
   const [err, setErr] = useState<string | null>(null)
   const [openId, setOpenId] = useState<string | null>(null)
   const [filter, setFilter] = useState<BuoiStatus>('chua')
+  const me = useStore((s) => s.me)
+  const laAdmin = !!useStore((s) => s.quyen)?.laAdmin
+  const myMons = me?.mons ?? []
 
   async function reload() {
     setLoading(true); setErr(null)
@@ -44,9 +48,11 @@ export default function BuoiHocScreen() {
 
   if (openId) return <BuoiDetail id={openId} onClose={() => { setOpenId(null); reload() }} />
 
+  // Scope MÔN: GV/TA có môn → chỉ buổi môn mình; Ops/admin (không gán môn) → thấy TẤT (điểm danh liên-môn).
+  const view = (laAdmin || myMons.length === 0) ? list : list.filter((ba) => myMons.includes(ba.lop.mon))
   const cnt: Record<BuoiStatus, number> = { chua: 0, mo: 0, huy: 0 }
-  for (const ba of list) cnt[statusOf(ba.buoi)]++
-  const shown = list.filter((ba) => statusOf(ba.buoi) === filter)
+  for (const ba of view) cnt[statusOf(ba.buoi)]++
+  const shown = view.filter((ba) => statusOf(ba.buoi) === filter)
   const tab = (on: boolean) => `h-7 rounded-md px-3 text-[13px] font-semibold transition ${on ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`
 
   return (
@@ -62,7 +68,7 @@ export default function BuoiHocScreen() {
       <div className="min-h-0 flex-1 overflow-auto p-6">
         {loading ? <p className="text-sm text-slate-400">Đang tải…</p>
           : err ? <p className="text-sm text-rose-600">Lỗi: {err}</p>
-          : list.length === 0 ? <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">Không có buổi nào theo TKB ngày này (kiểm tra TKB + ngày khai giảng).</div>
+          : view.length === 0 ? <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">{list.length > 0 && myMons.length > 0 ? `Không có buổi môn ${myMons.join('/')} ngày này.` : 'Không có buổi nào theo TKB ngày này (kiểm tra TKB + ngày khai giảng).'}</div>
           : shown.length === 0 ? <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">Không có buổi “{FILTERS.find((f) => f.v === filter)?.lbl}” ngày này.</div>
           : (
             <div className="grid grid-cols-1 gap-3 md:grid-cols-2 2xl:grid-cols-3">

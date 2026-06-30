@@ -655,8 +655,9 @@ export async function listGamiBangTong(mon?: string): Promise<DiemRow[]> {
     elo: e.elo, sessions: e.sessions_played, exp: expMap.get(e.hoc_sinh_id + '|' + e.mon) ?? 0,
   }))
 }
+// Môn cho bảng xếp hạng = MÔN CÓ LỚP (danh mục), KHÔNG suy từ Elo-đang-có (KHTN chưa có buổi đóng vẫn phải hiện bảng riêng).
 export async function listGamiMons(): Promise<string[]> {
-  const { data } = await supabase.from('gami_elo').select('mon').limit(LIMIT)
+  const { data } = await supabase.from('lop').select('mon').limit(LIMIT)
   return [...new Set((data ?? []).map((r: any) => r.mon).filter(Boolean))].sort()
 }
 export type EloHist = { buoi_hoc_id: string; phase: string; mon: string | null; elo_before: number; delta: number; elo_after: number; created_at: string; ngay?: string | null; lop?: string | null }
