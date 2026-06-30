@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { listAllTKB, listLop, addTKB, dongTKB, suaHieuLucTKB, type TKBSlot, type Lop } from '../../lib/nhansu'
 import SearchSelect from '../../components/SearchSelect'
 import { Shell, Field, inp } from '../kho/ui'
@@ -36,6 +36,8 @@ export default function TKBScreen() {
   const [err, setErr] = useState<string | null>(null)
   const [sel, setSel] = useState<TKBSlot | null>(null)
   const [adding, setAdding] = useState<{ thu: number; tu: string; den: string } | null>(null)
+  const [mon, setMon] = useState<string>('all') // toggle môn: 'all' | tên môn
+  const [anh, setAnh] = useState(false)          // mở modal chụp ảnh
 
   async function reload() {
     setLoading(true); setErr(null)
@@ -47,15 +49,24 @@ export default function TKBScreen() {
   // KHUNG LỚN CANONICAL (Thùy chốt): ngày chia ~7 khung cố định; ca xếp vào khung theo GIỜ BẮT ĐẦU
   // (bỏ qua giờ kết thúc — biên khung trùng giờ vào ca nên không có ca vắt khung).
   // Khung 12–14 gần như không dùng → tự ẩn khi rỗng (có ca thì tự hiện lại).
+  // Lọc theo môn (toggle). monsCo = các môn có ca thật → dựng toggle bar.
+  const monsCo = [...new Set(slots.map((s) => s.lop?.mon).filter(Boolean) as string[])].sort()
+  const view = mon === 'all' ? slots : slots.filter((s) => s.lop?.mon === mon)
   const slotsInBand = (band: Band, thu: number) =>
-    slots.filter((s) => s.thu === thu && toMin(s.gio_bat_dau) >= band.lo && toMin(s.gio_bat_dau) < band.hi)
+    view.filter((s) => s.thu === thu && toMin(s.gio_bat_dau) >= band.lo && toMin(s.gio_bat_dau) < band.hi)
   const bands = BANDS.filter((b) => !b.an || THU_COLS.some((t) => slotsInBand(b, t).length > 0))
 
   return (
     <div className="flex h-full flex-col bg-[#fafafb]">
       <div className="flex items-center gap-3 border-b border-slate-200 bg-white px-6 py-2">
         <span className="text-sm font-semibold text-slate-900">Thời khóa biểu</span>
-        <span className="rounded bg-indigo-50 px-2 py-0.5 text-[12px] font-medium text-indigo-600">{slots.length} ca / tuần</span>
+        <span className="rounded bg-indigo-50 px-2 py-0.5 text-[12px] font-medium text-indigo-600">{view.length} ca{mon !== 'all' ? ` · ${mon}` : ' / tuần'}</span>
+        {/* Toggle môn — Tất cả + từng môn có ca */}
+        <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5">
+          <MonBtn active={mon === 'all'} onClick={() => setMon('all')}>Tất cả</MonBtn>
+          {monsCo.map((m) => <MonBtn key={m} active={mon === m} onClick={() => setMon(m)}>{m}</MonBtn>)}
+        </div>
+        <button onClick={() => setAnh(true)} className="rounded-md border border-slate-200 bg-white px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-indigo-300 hover:text-indigo-700">📷 Chụp ảnh</button>
         <span className="ml-auto text-[12px] text-slate-400">Click card để sửa · ô trống click để xếp ca</span>
       </div>
 
@@ -116,6 +127,98 @@ export default function TKBScreen() {
 
       {sel && <SlotModal s={sel} onClose={() => setSel(null)} onChanged={() => { setSel(null); reload() }} />}
       {adding && <AddModal thu={adding.thu} tu={adding.tu} den={adding.den} dsLop={dsLop} onClose={() => setAdding(null)} onAdded={() => { setAdding(null); reload() }} />}
+      {anh && <TkbAnh view={view} mon={mon} onClose={() => setAnh(false)} />}
+    </div>
+  )
+}
+
+function MonBtn({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
+  return (
+    <button onClick={onClick}
+      className={`rounded-md px-3 py-1 text-[13px] font-medium transition ${active ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>{children}</button>
+  )
+}
+
+// Màu môn = INLINE HEX (sRGB) cho ảnh chụp — KHÔNG dùng class Tailwind v4 (oklch → html2canvas trắng). Bài học chụp DOM.
+const MON_HEX: Record<string, { bd: string; bg: string; fg: string }> = {
+  'Toán': { bd: '#818cf8', bg: '#eef2ff', fg: '#312e81' },
+  'Văn': { bd: '#fb7185', bg: '#fff1f2', fg: '#881337' },
+  'Anh': { bd: '#34d399', bg: '#ecfdf5', fg: '#064e3b' },
+  'KHTN': { bd: '#fbbf24', bg: '#fffbeb', fg: '#78350f' },
+}
+const monHex = (m?: string) => (m && MON_HEX[m]) || { bd: '#cbd5e1', bg: '#f8fafc', fg: '#334155' }
+
+// Chụp ảnh TKB = bảng INLINE-HEX trong popup sạch → html2canvas (CDN) → clipboard (paste Zalo). Đúng pattern V1.
+function TkbAnh({ view, mon, onClose }: { view: TKBSlot[]; mon: string; onClose: () => void }) {
+  const cardRef = useRef<HTMLDivElement>(null)
+  const inBand = (b: Band, thu: number) => view.filter((s) => s.thu === thu && toMin(s.gio_bat_dau) >= b.lo && toMin(s.gio_bat_dau) < b.hi).sort((a, b2) => toMin(a.gio_bat_dau) - toMin(b2.gio_bat_dau))
+  const bands = BANDS.filter((b) => !b.an || THU_COLS.some((t) => inBand(b, t).length > 0))
+  const tieu_de = `Thời khóa biểu${mon !== 'all' ? ` · ${mon}` : ''}`
+
+  function handleCopy() {
+    const el = cardRef.current
+    if (!el) return
+    const fname = `TKB_${mon === 'all' ? 'tatca' : mon}.png`
+    const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><base href="${location.origin}/">
+<title>${tieu_de}</title>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"><\/script>
+<style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;background:#f3f4f6;padding:12px;display:flex;flex-direction:column;align-items:center}
+.btn-row{display:flex;gap:8px;margin-bottom:12px}.btn{padding:10px 14px;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit}.btn-copy{background:#16a34a;color:#fff}.btn-print{background:#2563eb;color:#fff}.btn:hover{opacity:.85}
+#msg{font-size:12px;color:#16a34a;margin-top:6px;min-height:18px}@media print{.btn-row,#msg{display:none!important}}</style></head><body>
+<div class="btn-row"><button class="btn btn-copy" onclick="copyImg()">📋 Copy ảnh (paste vào Zalo)</button><button class="btn btn-print" onclick="window.print()">🖨️ In / Lưu PDF</button></div>
+<div id="cap">${el.outerHTML}</div><p id="msg"></p>
+<script>async function copyImg(){var msg=document.getElementById('msg');msg.textContent='⏳ Đang xử lý...';try{var node=document.getElementById('cap');var canvas=await html2canvas(node,{scale:2,backgroundColor:'#ffffff',useCORS:true,logging:false,windowWidth:node.scrollWidth,windowHeight:node.scrollHeight,width:node.scrollWidth,height:node.scrollHeight});canvas.toBlob(async function(blob){try{await navigator.clipboard.write([new ClipboardItem({'image/png':blob})]);msg.textContent='✅ Đã copy! Paste (Ctrl+V) vào Zalo.';}catch(e){var url=URL.createObjectURL(blob);var a=document.createElement('a');a.href=url;a.download=${JSON.stringify(fname)};a.click();URL.revokeObjectURL(url);msg.textContent='✅ Đã tải file ảnh!';}},'image/png');}catch(e){msg.textContent='Lỗi: '+e.message;}}<\/script>
+</body></html>`
+    const popup = window.open('', '_blank', 'width=1200,height=860,scrollbars=yes')
+    if (!popup) { alert('Trình duyệt chặn popup. Bật "Allow pop-ups" cho site này.'); return }
+    popup.document.write(html); popup.document.close()
+  }
+
+  return (
+    <div className="fixed inset-0 z-[90] flex flex-col bg-slate-900/70" onClick={onClose}>
+      <div className="flex items-center gap-3 border-b border-slate-700 bg-slate-800 px-4 py-2.5 text-white" onClick={(e) => e.stopPropagation()}>
+        <span className="text-sm font-semibold">Chụp ảnh thời khóa biểu</span>
+        <button onClick={handleCopy} className="ml-auto rounded-md bg-indigo-600 px-3 py-1 text-sm font-medium hover:bg-indigo-500">📋 Copy ảnh</button>
+        <button onClick={onClose} className="rounded-md border border-slate-500 px-3 py-1 text-sm hover:bg-slate-700">Đóng</button>
+      </div>
+      <div className="min-h-0 flex-1 overflow-auto p-4" onClick={(e) => e.stopPropagation()}>
+        {/* Bảng INLINE-HEX (không class màu Tailwind) — đúng cái html2canvas chụp */}
+        <div ref={cardRef} style={{ margin: '0 auto', width: 'fit-content', background: '#ffffff', borderRadius: 14, padding: 16, boxShadow: '0 2px 8px rgba(0,0,0,.1)' }}>
+          <div style={{ fontSize: 18, fontWeight: 800, color: '#1e293b', marginBottom: 12, textAlign: 'center' }}>{tieu_de}</div>
+          <table style={{ borderCollapse: 'separate', borderSpacing: 4 }}>
+            <thead><tr>
+              <th style={{ width: 56 }}></th>
+              {THU_COLS.map((t) => <th key={t} style={{ background: '#1e293b', color: '#fff', fontSize: 12, fontWeight: 700, padding: '4px 8px', borderRadius: 6 }}>{THU_LABEL[t]}</th>)}
+            </tr></thead>
+            <tbody>
+              {bands.map((b) => (
+                <tr key={b.ten}>
+                  <td style={{ background: '#f1f5f9', borderRadius: 6, padding: 4, textAlign: 'center', verticalAlign: 'middle' }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: '#334155' }}>{b.ten.split('\n')[0]}</div>
+                    <div style={{ fontSize: 9, color: '#94a3b8' }}>{b.ten.split('\n')[1]}</div>
+                  </td>
+                  {THU_COLS.map((thu) => {
+                    const cell = inBand(b, thu)
+                    return (
+                      <td key={thu} style={{ minWidth: 96, background: '#f8fafc', borderRadius: 6, padding: 3, verticalAlign: 'top' }}>
+                        {cell.map((s) => {
+                          const c = monHex(s.lop?.mon)
+                          return (
+                            <div key={s.id} style={{ border: `1.5px solid ${c.bd}`, background: c.bg, color: c.fg, borderRadius: 6, padding: '3px 5px', marginBottom: 3, textAlign: 'center' }}>
+                              <div style={{ fontSize: 12, fontWeight: 700, lineHeight: 1.2 }}>{s.lop?.ten_lop ?? '?'}</div>
+                              <div style={{ fontSize: 9, opacity: .8 }}>{hhmm(s.gio_bat_dau)}–{hhmm(s.gio_ket_thuc)} · {s.phong ?? '—'}</div>
+                            </div>
+                          )
+                        })}
+                      </td>
+                    )
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   )
 }
