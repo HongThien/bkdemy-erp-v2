@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { listTeam, listNhanSu, listViTri, createViTri, updateViTri, deleteViTri, listNhanSuTeamMap, listNhanSuMonMap, type Team, type NhanSu, type ViTri } from '../../lib/nhansu'
 import { MON_LIST } from '../../lib/mon'
+import { listRoles, setViTriRole, type VaiTroFull } from '../../lib/quyen'
 import { Shell, Field, inp } from '../kho/ui'
 import SearchSelect from '../../components/SearchSelect'
 
@@ -29,6 +30,7 @@ export default function OrgChartScreen() {
   const [dsNhanSu, setDsNhanSu] = useState<NhanSu[]>([])
   const [bienChe, setBienChe] = useState<Record<string, string[]>>({}) // nhan_su_id → [team_id] biên chế
   const [monOf, setMonOf] = useState<Record<string, string[]>>({}) // nhan_su_id → [mon] (lọc ứng viên theo môn)
+  const [roles, setRoles] = useState<VaiTroFull[]>([]) // vai trò (gán cho ghế → quyền lúc login)
   const [ghe, setGhe] = useState<ViTri[]>([])
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
@@ -36,8 +38,8 @@ export default function OrgChartScreen() {
   const [mon, setMon] = useState<string>(MON_LIST[0]) // môn đang xem (chỉ cho team chuyên môn)
 
   useEffect(() => {
-    Promise.all([listTeam(), listNhanSu(), listNhanSuTeamMap(), listNhanSuMonMap()])
-      .then(([t, ns, bc, mn]) => { setTeams(t); setDsNhanSu(ns); setBienChe(bc); setMonOf(mn); setTeamId((cur) => cur ?? t[0]?.id ?? null) })
+    Promise.all([listTeam(), listNhanSu(), listNhanSuTeamMap(), listNhanSuMonMap(), listRoles()])
+      .then(([t, ns, bc, mn, rl]) => { setTeams(t); setDsNhanSu(ns); setBienChe(bc); setMonOf(mn); setRoles(rl); setTeamId((cur) => cur ?? t[0]?.id ?? null) })
       .catch((e) => setErr(e.message ?? String(e)))
   }, [])
 
@@ -48,6 +50,7 @@ export default function OrgChartScreen() {
   useEffect(() => { if (teamId) reloadGhe(teamId) }, [teamId])
 
   const nsById = useMemo(() => new Map(dsNhanSu.map((n) => [n.id, n])), [dsNhanSu])
+  const roleById = useMemo(() => new Map(roles.map((r) => [r.id, r])), [roles])
   const team = teams.find((t) => t.id === teamId)
   const isChuyenMon = !!team && CHUYEN_MON_TEAMS.includes(team.ma)
   // Team chuyên môn → mỗi môn 1 cây độc lập: chỉ hiện ghế của môn đang chọn. Liên-môn → hiện tất (mon null).
@@ -70,10 +73,15 @@ export default function OrgChartScreen() {
   function Card({ g }: { g: ViTri }) {
     const ns = g.nhan_su_id ? nsById.get(g.nhan_su_id) : null
     const trong = !ns
+    const role = g.vai_tro_id ? roleById.get(g.vai_tro_id) : null
     return (
       <button onClick={() => setSel(g)}
-        className={`w-32 overflow-hidden rounded-xl border text-center shadow-sm transition hover:-translate-y-0.5 hover:shadow-md ${
+        className={`relative w-32 overflow-hidden rounded-xl border text-center shadow-sm transition hover:-translate-y-0.5 hover:shadow-md ${
           trong ? 'border-dashed border-slate-300 bg-slate-50/60 hover:border-indigo-400' : 'border-slate-200 bg-white hover:border-indigo-300'}`}>
+        {/* Quyền: ghế chưa gán role → người ngồi đăng nhập KHÔNG thấy màn nào */}
+        {g.vai_tro_id
+          ? <span title={`Quyền: ${role?.ten ?? '?'}`} className="absolute left-1 top-1 z-10 max-w-[7rem] truncate rounded bg-indigo-600/90 px-1.5 py-0.5 text-[9px] font-semibold text-white">{role?.ten ?? 'role'}</span>
+          : <span title="Chưa gán quyền (role) — người ngồi ghế này đăng nhập sẽ không thấy màn nào. Bấm để gán." className="absolute left-1 top-1 z-10 rounded bg-amber-500 px-1.5 py-0.5 text-[9px] font-semibold text-white">⚠ chưa quyền</span>}
         {ns?.anh_url
           ? <img src={ns.anh_url} alt="" className="h-28 w-full object-cover" />
           : ns
@@ -150,7 +158,7 @@ export default function OrgChartScreen() {
       </div>
 
       {sel && (
-        <EditGhe g={sel} isChuyenMon={isChuyenMon} nsById={nsById} dsNhanSu={dsNhanSu} bienChe={bienChe} monOf={monOf} ghe={gheView} cam={descendants(sel.id)}
+        <EditGhe g={sel} isChuyenMon={isChuyenMon} roles={roles} nsById={nsById} dsNhanSu={dsNhanSu} bienChe={bienChe} monOf={monOf} ghe={gheView} cam={descendants(sel.id)}
           onClose={() => setSel(null)}
           onSaved={() => { setSel(null); if (teamId) reloadGhe(teamId) }} />
       )}
@@ -158,14 +166,15 @@ export default function OrgChartScreen() {
   )
 }
 
-function EditGhe({ g, isChuyenMon, nsById, dsNhanSu, bienChe, monOf, ghe, cam, onClose, onSaved }: {
-  g: ViTri; isChuyenMon: boolean; nsById: Map<string, NhanSu>; dsNhanSu: NhanSu[]; bienChe: Record<string, string[]>; monOf: Record<string, string[]>; ghe: ViTri[]; cam: Set<string>
+function EditGhe({ g, isChuyenMon, roles, nsById, dsNhanSu, bienChe, monOf, ghe, cam, onClose, onSaved }: {
+  g: ViTri; isChuyenMon: boolean; roles: VaiTroFull[]; nsById: Map<string, NhanSu>; dsNhanSu: NhanSu[]; bienChe: Record<string, string[]>; monOf: Record<string, string[]>; ghe: ViTri[]; cam: Set<string>
   onClose: () => void; onSaved: () => void
 }) {
   const [ten, setTen] = useState(g.ten ?? '')
   const [cap, setCap] = useState(g.cap)
   const [chaId, setChaId] = useState(g.cha_id ?? '')
   const [nsId, setNsId] = useState(g.nhan_su_id ?? '')
+  const [roleId, setRoleId] = useState(g.vai_tro_id ?? '')
   const [moRong, setMoRong] = useState(false) // mở rộng: bỏ lọc (hiện hết NS đang làm)
   const [busy, setBusy] = useState(false)
   const gheLabel = (x: ViTri) => `${x.ten || 'Vị trí chưa tên'}${x.nhan_su_id ? ` · ${nsById.get(x.nhan_su_id)?.ho_ten ?? ''}` : ' · trống'}`
@@ -178,8 +187,11 @@ function EditGhe({ g, isChuyenMon, nsById, dsNhanSu, bienChe, monOf, ghe, cam, o
 
   async function save() {
     setBusy(true)
-    try { await updateViTri(g.id, { ten: ten.trim() || null, cap, cha_id: chaId || null, nhan_su_id: nsId || null }); onSaved() }
-    catch (e: any) { alert(e.message ?? String(e)); setBusy(false) }
+    try {
+      await updateViTri(g.id, { ten: ten.trim() || null, cap, cha_id: chaId || null, nhan_su_id: nsId || null })
+      if ((roleId || null) !== (g.vai_tro_id ?? null)) await setViTriRole(g.id, roleId || null) // gán/đổi quyền (lớp ①)
+      onSaved()
+    } catch (e: any) { alert(e.message ?? String(e)); setBusy(false) }
   }
   async function themGheCon() {
     setBusy(true)
@@ -226,6 +238,13 @@ function EditGhe({ g, isChuyenMon, nsById, dsNhanSu, bienChe, monOf, ghe, cam, o
           {isChuyenMon ? <>Hiện cả nhân sự ngoài môn {g.mon}</> : 'Hiện cả nhân sự ngoài team'} ({dsNhanSu.filter((n) => n.trang_thai === 'dang_lam').length} người)
         </label>
         {isChuyenMon && !g.mon && <p className="mt-1 text-[11px] text-amber-600">Ghế này chưa gán môn — đang hiện toàn bộ. Tạo ghế trong tab môn để gắn đúng môn.</p>}
+      </Field>
+      <Field label="Vai trò (quyền — quyết định người ngồi đăng nhập THẤY màn nào)">
+        <select value={roleId} onChange={(e) => setRoleId(e.target.value)} className={inp}>
+          <option value="">— chưa gán quyền (đăng nhập không thấy màn nào) —</option>
+          {roles.map((r) => <option key={r.id} value={r.id}>{r.ten} ({r.chuc_nang.length} màn)</option>)}
+        </select>
+        {!roleId && <p className="mt-1 text-[11px] text-amber-600">⚠ Chưa gán quyền → người ngồi ghế này đăng nhập sẽ trống nav. Gán role rồi họ <b>đăng nhập lại</b> mới thấy.</p>}
       </Field>
       <div className="mt-4 flex items-center justify-between">
         <div className="flex gap-2">

@@ -143,7 +143,7 @@ function GanTab() {
 
   if (loading) return <p className="p-6 text-sm text-slate-400">Đang tải…</p>
   return (
-    <div className="min-h-0 overflow-auto p-6">
+    <div className="h-full min-h-0 overflow-auto p-6">
       {roles.length === 0 && <p className="mb-3 text-[13px] text-amber-600">Chưa có vai trò nào — tạo ở tab “Vai trò & chức năng” trước.</p>}
       <table className="w-full max-w-3xl text-sm">
         <thead><tr className="text-left text-[11px] uppercase text-slate-400">
