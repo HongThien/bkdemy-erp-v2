@@ -57,6 +57,20 @@
 
 ---
 
+## 1.6 LUẬT DỮ LIỆU — chiều MÔN (mọi dữ liệu HỌC TẬP có nhãn môn)
+
+- **⭐ Mỗi MÔN = 1 TRUNG TÂM riêng (bounded context).** 4 môn (Toán/Văn/Anh/KHTN) **đối xứng — bản chất như nhau**;
+  chỉ **chung HS + một phần quy trình vận hành**, **KHÔNG chung content**. (ADR: `ADR-mon.md` / Notion.)
+- **⭐ MỌI dữ liệu HỌC TẬP PHẢI mang nhãn `mon`.** Việc học gắn với từng môn — **không có "điểm/đo/Elo chung chung", chỉ có "của môn X"**.
+  Áp cho: kho (dạng/câu/lý thuyết) · đo lường/mastery · Elo/EXP · buổi/điểm danh/chấm/đánh giá/ET/BTVN · tài liệu · sát hạch/Level…
+  → Thêm cột/bảng dính việc học mà **quên `mon` = SAI**. Query/tính toán học tập luôn scope theo `mon`.
+- **Chỉ dữ liệu KHÔNG-học-tập mới CHUNG** (không nhãn môn): thông tin cá nhân HS, phụ huynh, **ví xu (wallet tổng)**, tài khoản…
+- **Tầng trên = (môn → nhánh)** đối xứng (Toán{Đại,Hình}·KHTN{Lý,Hóa,Sinh}…). **Tầng dưới = mỗi nhánh tự cấu trúc, BẢNG RIÊNG — KHÔNG gộp**
+  (gộp = ghép cứng domain độc lập, lợi hiệu suất ~0). Dispatch môn→bảng qua **1 registry**, KHÔNG rải rác.
+- **Symmetry test (tiêu chí đúng):** thao tác trên Toán phải chạy **y hệt** mọi môn. Thấy `if (mon === 'Toán')` đặc biệt trong code dùng chung = **sai**.
+
+---
+
 ## 2. Nguyên tắc engineering bất biến (mang từ v1 — độc lập kiến trúc)
 
 - **DB là source of truth runtime, tính ở Postgres.** Client chỉ query + hiển thị.
