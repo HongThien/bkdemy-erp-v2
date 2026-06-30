@@ -1,7 +1,6 @@
 // Render PDF/ảnh → canvas DPI cao + cắt vùng (bbox Gemini 0–1000). Dùng cho ingest (câu/lý thuyết).
 import * as pdfjsLib from 'pdfjs-dist'
-import workerSrc from 'pdfjs-dist/build/pdf.worker.min.mjs?url'
-pdfjsLib.GlobalWorkerOptions.workerSrc = workerSrc
+import './pdfWorker' // worker INLINE (hết lỗi fetch .mjs trên host/máy nhân sự)
 
 const HI = 300 / 72   // 300 DPI (hình vector nét; in A4 sắc)
 const GEM_W = 1300    // bề rộng ảnh gửi Gemini (giảm token; bbox chuẩn hoá nên không phụ thuộc cỡ)
@@ -38,10 +37,15 @@ export function canvasToJpegBase64(c: HTMLCanvasElement, maxW = GEM_W): string {
   return t.toDataURL('image/jpeg', 0.85).split(',')[1]
 }
 // box Gemini [ymin,xmin,ymax,xmax] 0–1000 → dataURL PNG cắt từ canvas DPI cao.
-export function cropCanvasBox(c: HTMLCanvasElement, box: [number, number, number, number]): string {
+// PAD: nới bbox 1 lề nhỏ (bbox AI hay ôm sát → cụt nhãn trục/mũi tên/số). Kẹp trong khung canvas.
+export function cropCanvasBox(c: HTMLCanvasElement, box: [number, number, number, number], pad = 0.04): string {
   const [y0, x0, y1, x1] = box
-  const sx = Math.round(Math.min(x0, x1) / 1000 * c.width), sy = Math.round(Math.min(y0, y1) / 1000 * c.height)
-  const sw = Math.round(Math.abs(x1 - x0) / 1000 * c.width), sh = Math.round(Math.abs(y1 - y0) / 1000 * c.height)
+  const bx0 = Math.min(x0, x1), bx1 = Math.max(x0, x1), by0 = Math.min(y0, y1), by1 = Math.max(y0, y1)
+  const padX = (bx1 - bx0) * pad, padY = (by1 - by0) * pad
+  const px0 = Math.max(0, bx0 - padX), px1 = Math.min(1000, bx1 + padX)
+  const py0 = Math.max(0, by0 - padY), py1 = Math.min(1000, by1 + padY)
+  const sx = Math.round(px0 / 1000 * c.width), sy = Math.round(py0 / 1000 * c.height)
+  const sw = Math.round((px1 - px0) / 1000 * c.width), sh = Math.round((py1 - py0) / 1000 * c.height)
   const o = document.createElement('canvas'); o.width = Math.max(1, sw); o.height = Math.max(1, sh)
   o.getContext('2d')!.drawImage(c, sx, sy, sw, sh, 0, 0, o.width, o.height)
   return o.toDataURL('image/png')

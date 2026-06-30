@@ -4,9 +4,7 @@
 // KHÔNG tự upload — caller quyết đổ đi đâu (uploadKhoImage → cột anh_de / chèn markdown…).
 import { useEffect, useRef, useState } from 'react'
 import * as pdfjsLib from 'pdfjs-dist'
-import workerSrc from 'pdfjs-dist/build/pdf.worker.min.mjs?url'
-
-pdfjsLib.GlobalWorkerOptions.workerSrc = workerSrc
+import '../lib/pdfWorker' // worker INLINE (hết lỗi fetch .mjs trên host/máy nhân sự)
 
 const HI_DPI = 300        // DPI render để cắt — in A4 sắc nét; hình vector nét tuyệt đối ở DPI này
 const MAX_SRC = 3200      // chặn canvas nguồn quá to (bộ nhớ)
