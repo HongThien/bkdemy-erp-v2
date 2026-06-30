@@ -588,3 +588,4 @@
   - **Backfill**: 31 ghế chuyên môn cũ (mon=null) → 'Toán' (org trước chỉ Toán), để ko biến mất khỏi tab môn. (Script throwaway đã xoá.)
   - ✓ tsc + build (3.7s).
   - **CÒN:** (tuỳ) hiện badge môn ở Phân quyền tab "gán role cho vị trí" · nhắc nhất quán ghế-môn ↔ nhan_su_mon của người ngồi (2 nguồn: org-structure vs content-scope) · Làm tài liệu theo môn.
+- **Fix OrgChart: ứng viên ghế CHUYÊN MÔN lọc theo MÔN, không theo team** (Thùy: "chọn sơ đồ KHTN thì chỉ hiện người bộ môn KHTN"): nạp `listNhanSuMonMap` vào OrgChartScreen → EditGhe. `phuHop` = ghế chuyên môn → `thuocMon` (nhan_su_mon chứa g.mon) · ghế liên-môn → `thuocTeam` (như cũ). Checkbox "mở rộng" bỏ lọc; sub "ngoài môn/ngoài team"; ghế chuyên-môn-chưa-gán-môn → hiện toàn bộ + cảnh báo. ⚠ Hệ quả: NS phải có KHTN trong nhan_su_mon mới hiện ở ghế KHTN — giờ mọi NS mới chỉ Toán → ghế KHTN rỗng tới khi gán KHTN ở màn Nhân sự (đúng strict). ✓ tsc+build.

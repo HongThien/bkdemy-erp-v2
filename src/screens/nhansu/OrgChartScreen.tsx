@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { listTeam, listNhanSu, listViTri, createViTri, updateViTri, deleteViTri, listNhanSuTeamMap, type Team, type NhanSu, type ViTri } from '../../lib/nhansu'
+import { listTeam, listNhanSu, listViTri, createViTri, updateViTri, deleteViTri, listNhanSuTeamMap, listNhanSuMonMap, type Team, type NhanSu, type ViTri } from '../../lib/nhansu'
 import { MON_LIST } from '../../lib/mon'
 import { Shell, Field, inp } from '../kho/ui'
 import SearchSelect from '../../components/SearchSelect'
@@ -28,6 +28,7 @@ export default function OrgChartScreen() {
   const [teamId, setTeamId] = useState<string | null>(null)
   const [dsNhanSu, setDsNhanSu] = useState<NhanSu[]>([])
   const [bienChe, setBienChe] = useState<Record<string, string[]>>({}) // nhan_su_id → [team_id] biên chế
+  const [monOf, setMonOf] = useState<Record<string, string[]>>({}) // nhan_su_id → [mon] (lọc ứng viên theo môn)
   const [ghe, setGhe] = useState<ViTri[]>([])
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
@@ -35,8 +36,8 @@ export default function OrgChartScreen() {
   const [mon, setMon] = useState<string>(MON_LIST[0]) // môn đang xem (chỉ cho team chuyên môn)
 
   useEffect(() => {
-    Promise.all([listTeam(), listNhanSu(), listNhanSuTeamMap()])
-      .then(([t, ns, bc]) => { setTeams(t); setDsNhanSu(ns); setBienChe(bc); setTeamId((cur) => cur ?? t[0]?.id ?? null) })
+    Promise.all([listTeam(), listNhanSu(), listNhanSuTeamMap(), listNhanSuMonMap()])
+      .then(([t, ns, bc, mn]) => { setTeams(t); setDsNhanSu(ns); setBienChe(bc); setMonOf(mn); setTeamId((cur) => cur ?? t[0]?.id ?? null) })
       .catch((e) => setErr(e.message ?? String(e)))
   }, [])
 
@@ -149,7 +150,7 @@ export default function OrgChartScreen() {
       </div>
 
       {sel && (
-        <EditGhe g={sel} isChuyenMon={isChuyenMon} nsById={nsById} dsNhanSu={dsNhanSu} bienChe={bienChe} ghe={gheView} cam={descendants(sel.id)}
+        <EditGhe g={sel} isChuyenMon={isChuyenMon} nsById={nsById} dsNhanSu={dsNhanSu} bienChe={bienChe} monOf={monOf} ghe={gheView} cam={descendants(sel.id)}
           onClose={() => setSel(null)}
           onSaved={() => { setSel(null); if (teamId) reloadGhe(teamId) }} />
       )}
@@ -157,21 +158,23 @@ export default function OrgChartScreen() {
   )
 }
 
-function EditGhe({ g, isChuyenMon, nsById, dsNhanSu, bienChe, ghe, cam, onClose, onSaved }: {
-  g: ViTri; isChuyenMon: boolean; nsById: Map<string, NhanSu>; dsNhanSu: NhanSu[]; bienChe: Record<string, string[]>; ghe: ViTri[]; cam: Set<string>
+function EditGhe({ g, isChuyenMon, nsById, dsNhanSu, bienChe, monOf, ghe, cam, onClose, onSaved }: {
+  g: ViTri; isChuyenMon: boolean; nsById: Map<string, NhanSu>; dsNhanSu: NhanSu[]; bienChe: Record<string, string[]>; monOf: Record<string, string[]>; ghe: ViTri[]; cam: Set<string>
   onClose: () => void; onSaved: () => void
 }) {
   const [ten, setTen] = useState(g.ten ?? '')
   const [cap, setCap] = useState(g.cap)
   const [chaId, setChaId] = useState(g.cha_id ?? '')
   const [nsId, setNsId] = useState(g.nhan_su_id ?? '')
-  const [ngoaiTeam, setNgoaiTeam] = useState(false) // mặc định LỌC theo team biên chế của vị trí
+  const [moRong, setMoRong] = useState(false) // mở rộng: bỏ lọc (hiện hết NS đang làm)
   const [busy, setBusy] = useState(false)
   const gheLabel = (x: ViTri) => `${x.ten || 'Vị trí chưa tên'}${x.nhan_su_id ? ` · ${nsById.get(x.nhan_su_id)?.ho_ten ?? ''}` : ' · trống'}`
-  // Ứng viên: NS đang làm, BIÊN CHẾ (n-n) có team của vị trí (filter sẵn — 40 NS đủ team dồn 1 list thì rối).
-  // "ngoài team" mở hết; người ĐANG ngồi luôn giữ trong list (kể cả lệch team) để không mất lựa chọn hiện tại.
+  // Ứng viên — ghế CHUYÊN MÔN lọc theo MÔN của người (nhan_su_mon chứa g.mon); ghế LIÊN-MÔN lọc theo team biên chế.
+  // "mở rộng" bỏ lọc; người ĐANG ngồi luôn giữ trong list (kể cả lệch) để không mất lựa chọn hiện tại.
+  const thuocMon = (n: NhanSu) => !!g.mon && (monOf[n.id] ?? []).includes(g.mon)
   const thuocTeam = (n: NhanSu) => (bienChe[n.id] ?? []).includes(g.team_id)
-  const ungVien = dsNhanSu.filter((n) => n.trang_thai === 'dang_lam' && (ngoaiTeam || thuocTeam(n) || n.id === g.nhan_su_id))
+  const phuHop = (n: NhanSu) => isChuyenMon ? (g.mon ? thuocMon(n) : true) : thuocTeam(n)
+  const ungVien = dsNhanSu.filter((n) => n.trang_thai === 'dang_lam' && (moRong || phuHop(n) || n.id === g.nhan_su_id))
 
   async function save() {
     setBusy(true)
@@ -217,11 +220,12 @@ function EditGhe({ g, isChuyenMon, nsById, dsNhanSu, bienChe, ghe, cam, onClose,
       </Field>
       <Field label="Người đảm nhiệm">
         <SearchSelect value={nsId || null} onChange={(id) => setNsId(id ?? '')} placeholder="— vị trí trống —"
-          options={ungVien.map((n) => ({ id: n.id, label: n.ho_ten, sub: `${n.ma_ns ?? ''}${!thuocTeam(n) ? ' · ngoài team' : ''}`.trim() || undefined }))} />
+          options={ungVien.map((n) => ({ id: n.id, label: n.ho_ten, sub: `${n.ma_ns ?? ''}${!phuHop(n) ? (isChuyenMon ? ' · ngoài môn' : ' · ngoài team') : ''}`.trim() || undefined }))} />
         <label className="mt-1.5 flex cursor-pointer items-center gap-1.5 text-[12px] text-slate-500">
-          <input type="checkbox" checked={ngoaiTeam} onChange={(e) => setNgoaiTeam(e.target.checked)} />
-          Hiện cả nhân sự ngoài team ({dsNhanSu.filter((n) => n.trang_thai === 'dang_lam').length} người)
+          <input type="checkbox" checked={moRong} onChange={(e) => setMoRong(e.target.checked)} />
+          {isChuyenMon ? <>Hiện cả nhân sự ngoài môn {g.mon}</> : 'Hiện cả nhân sự ngoài team'} ({dsNhanSu.filter((n) => n.trang_thai === 'dang_lam').length} người)
         </label>
+        {isChuyenMon && !g.mon && <p className="mt-1 text-[11px] text-amber-600">Ghế này chưa gán môn — đang hiện toàn bộ. Tạo ghế trong tab môn để gắn đúng môn.</p>}
       </Field>
       <div className="mt-4 flex items-center justify-between">
         <div className="flex gap-2">
