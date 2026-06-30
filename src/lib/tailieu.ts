@@ -1,8 +1,15 @@
 // Data-layer "Làm tài liệu" (giáo trình…). Tài liệu = THAM CHIẾU vào kho; resolver kéo nội dung sống khi render.
 import { supabase } from './supabase'
-import { listCauByDang, type CauHoi } from './kho/api'
+import { listCauByDang, listDaiMap, listKhtnMap, type CauHoi, type MapRow } from './kho/api'
 
 const LIMIT = 10000
+
+// ── DISPATCH KHO theo MÔN của tài liệu (Toán→dai_, KHTN→khtn_). Mặc định Toán → mã cũ KHÔNG đổi. ──
+export function khoCuaMon(mon?: string | null): { cauTbl: string; banDoTbl: string; ltDangTbl: string; ltCdTbl: string; listMap: (khoi: string) => Promise<MapRow[]> } {
+  return mon === 'KHTN'
+    ? { cauTbl: 'khtn_cau_hoi', banDoTbl: 'khtn_ban_do', ltDangTbl: 'khtn_dang_ly_thuyet', ltCdTbl: 'khtn_chuyen_de_ly_thuyet', listMap: listKhtnMap }
+    : { cauTbl: 'dai_cau_hoi', banDoTbl: 'dai_ban_do', ltDangTbl: 'dai_dang_ly_thuyet', ltCdTbl: 'dai_chuyen_de_ly_thuyet', listMap: listDaiMap }
+}
 
 // buoi = mốc tầng-1 (Buổi 1, 2…). Trong 1 buổi: dang (trên lớp) + btvn (per-dạng) của các dạng đã chọn.
 // Lý thuyết chuyên đề KHÔNG lưu phan — DERIVE từ chuyên đề của các dạng trong buổi (lt_chuyen_de chỉ còn cho data cũ).
@@ -22,7 +29,7 @@ export function etFormOf(c: { ma_cau: string; loai_cau: string; lua_chon?: strin
   if (c.lua_chon && c.lua_chon.length) return 'trac_nghiem'      // mặc định: có phương án → trắc nghiệm
   return c.loai_cau === 'tu_luan' ? 'tu_luan' : 'tra_loi_ngan'   // còn lại theo kho, default trả lời ngắn
 }
-export type TaiLieu = { id: string; loai: string; ten: string; khoi: string; ma_chuyen_de: string | null; theme: string; cau_hinh?: CauHinh; created_at?: string; updated_at?: string; created_by?: string | null }
+export type TaiLieu = { id: string; loai: string; ten: string; khoi: string; mon: string; ma_chuyen_de: string | null; theme: string; cau_hinh?: CauHinh; created_at?: string; updated_at?: string; created_by?: string | null }
 export type TaiLieuPhan = { id: string; tai_lieu_id: string; thu_tu: number; loai_phan: PhanLoai; ref_ma: string | null; tieu_de: string | null; noi_dung: string | null }
 type LtRow = { noi_dung: string; file_url: string | null; ten_file: string | null }
 type DangRow = { ma_dang: string; ten_dang: string; muc_do: number | null; bac_toi_thieu: string; ma_chuyen_de: string; ten_chuyen_de: string }
@@ -35,24 +42,28 @@ export type PhanResolved = TaiLieuPhan & {
 export type TaiLieuFull = { taiLieu: TaiLieu; phans: PhanResolved[]; ltChuyenDe: Record<string, LtRow | null>; tenChuyenDe: Record<string, string> }
 
 // ── Thư viện (CRUD tài liệu) ──────────────────────────────────────
-export async function listTaiLieu(khoi?: string, loai = 'giao_trinh'): Promise<TaiLieu[]> {
-  // khoi = undefined → tất cả khối.
+export async function listTaiLieu(khoi?: string, loai = 'giao_trinh', mon?: string): Promise<TaiLieu[]> {
+  // khoi = undefined → tất cả khối. mon = undefined → mọi môn.
   let q = supabase.from('tai_lieu').select('*').eq('loai', loai).order('created_at', { ascending: false }).limit(LIMIT)
   if (khoi) q = q.eq('khoi', khoi)
+  if (mon) q = q.eq('mon', mon)
   const { data, error } = await q
   if (error) throw error
   return (data ?? []) as TaiLieu[]
 }
-// Kho tài liệu = MỌI loại (giáo trình/ET/…). lop_id/ngay cho ET.
-export async function listAllTaiLieu(): Promise<TaiLieu[]> {
-  const { data, error } = await supabase.from('tai_lieu').select('*').order('created_at', { ascending: false }).limit(LIMIT)
+// Kho tài liệu = MỌI loại (giáo trình/ET/…). lop_id/ngay cho ET. mon = undefined → mọi môn (admin); set → lọc môn.
+export async function listAllTaiLieu(mon?: string | string[]): Promise<TaiLieu[]> {
+  let q = supabase.from('tai_lieu').select('*').order('created_at', { ascending: false }).limit(LIMIT)
+  if (Array.isArray(mon)) { if (mon.length) q = q.in('mon', mon) }
+  else if (mon) q = q.eq('mon', mon)
+  const { data, error } = await q
   if (error) throw error
   return (data ?? []) as TaiLieu[]
 }
-export async function createTaiLieu(input: { loai?: string; ten: string; khoi: string; ma_chuyen_de?: string | null; theme?: string }): Promise<TaiLieu> {
+export async function createTaiLieu(input: { loai?: string; ten: string; khoi: string; mon?: string; ma_chuyen_de?: string | null; theme?: string }): Promise<TaiLieu> {
   const { data: { user } } = await supabase.auth.getUser() // người tạo = session hiện tại
   const { data, error } = await supabase.from('tai_lieu')
-    .insert({ loai: input.loai ?? 'giao_trinh', ten: input.ten, khoi: input.khoi, ma_chuyen_de: input.ma_chuyen_de ?? null, theme: input.theme ?? 'bkdemy', created_by: user?.id ?? null })
+    .insert({ loai: input.loai ?? 'giao_trinh', ten: input.ten, khoi: input.khoi, mon: input.mon ?? 'Toán', ma_chuyen_de: input.ma_chuyen_de ?? null, theme: input.theme ?? 'bkdemy', created_by: user?.id ?? null })
     .select().single()
   if (error) throw error
   return data as TaiLieu
@@ -115,14 +126,14 @@ const cmpUsageLe = (u: Map<string, number>) => (a: CauHoi, b: CauHoi) =>
   (u.get(a.ma_cau) ?? 0) - (u.get(b.ma_cau) ?? 0) || (a.nguon === 'le' ? 0 : 1) - (b.nguon === 'le' ? 0 : 1)
 
 // ── Rule auto gợi ý câu luyện: ít-dùng-nhất + ưu tiên GỐC, lấy N câu đầu ──
-export async function autoSuggestCau(maDang: string, n = 6): Promise<string[]> {
-  const caus = await listCauByDang(maDang)
+export async function autoSuggestCau(maDang: string, n = 6, cauTbl = 'dai_cau_hoi'): Promise<string[]> {
+  const caus = await listCauByDang(maDang, cauTbl)
   const u = await cauUsage(caus.map((c) => c.ma_cau))
   return [...caus].sort(cmpUsageLe(u)).slice(0, n).map((c) => c.ma_cau)
 }
 // 1 câu gợi ý cho 1 dạng (cho ET): loại trừ câu đã dùng trong buổi/đề (`exclude`), lấy câu ÍT DÙNG nhất.
-export async function suggestCauForDang(maDang: string, exclude: Set<string>): Promise<string | null> {
-  const caus = (await listCauByDang(maDang)).filter((c) => !exclude.has(c.ma_cau))
+export async function suggestCauForDang(maDang: string, exclude: Set<string>, cauTbl = 'dai_cau_hoi'): Promise<string | null> {
+  const caus = (await listCauByDang(maDang, cauTbl)).filter((c) => !exclude.has(c.ma_cau))
   if (!caus.length) return null
   const u = await cauUsage(caus.map((c) => c.ma_cau))
   return [...caus].sort(cmpUsageLe(u))[0].ma_cau
@@ -130,8 +141,8 @@ export async function suggestCauForDang(maDang: string, exclude: Set<string>): P
 // Số câu luyện mặc định mỗi dạng (theo loại) — dùng khi thêm chuyên đề + làm default cho ô nhập.
 export const DEFAULT_LUYEN_COUNTS: Record<string, number> = { trac_nghiem: 3, tra_loi_ngan: 2, tu_luan: 1 }
 // Gợi ý câu theo SỐ LƯỢNG mỗi loại: { trac_nghiem: 3, tra_loi_ngan: 2, tu_luan: 1 } → ưu tiên gốc.
-export async function autoSuggestByLoai(maDang: string, counts: Record<string, number>): Promise<string[]> {
-  const caus = await listCauByDang(maDang)
+export async function autoSuggestByLoai(maDang: string, counts: Record<string, number>, cauTbl = 'dai_cau_hoi'): Promise<string[]> {
+  const caus = await listCauByDang(maDang, cauTbl)
   const out: string[] = []
   const u = await cauUsage(caus.map((c) => c.ma_cau))
   for (const [loai, n] of Object.entries(counts)) {
@@ -145,10 +156,10 @@ export async function autoSuggestByLoai(maDang: string, counts: Record<string, n
 export const DEFAULT_BTVN_COUNTS: Record<string, number> = { trac_nghiem: 2, tra_loi_ngan: 1, tu_luan: 1 }
 // Gợi ý câu BTVN trải khắp NHIỀU dạng (mỗi dạng theo counts), ưu tiên câu GỐC,
 // BỎ câu đã dùng ở Bài luyện (`exclude`) → homework dùng câu KHÁC, chống học vẹt.
-export async function autoSuggestBtvn(maDangs: string[], exclude: Set<string>, counts = DEFAULT_BTVN_COUNTS): Promise<string[]> {
+export async function autoSuggestBtvn(maDangs: string[], exclude: Set<string>, counts = DEFAULT_BTVN_COUNTS, cauTbl = 'dai_cau_hoi'): Promise<string[]> {
   const out: string[] = []
   for (const md of maDangs) {
-    const caus = await listCauByDang(md)
+    const caus = await listCauByDang(md, cauTbl)
     const u = await cauUsage(caus.map((c) => c.ma_cau))
     for (const [loai, n] of Object.entries(counts)) {
       if (n <= 0) continue
@@ -188,7 +199,7 @@ export async function deleteBuoi(taiLieuId: string, buoiId: string): Promise<voi
 }
 // Đặt TẬP dạng cho 1 buổi: dạng mới → tạo (dang+btvn) auto-suggest; dạng bỏ → xoá; rồi sắp lại thứ tự cả tài liệu.
 // Mỗi buổi xếp: [tất cả 'dang' (trên lớp)] rồi [tất cả 'btvn' (về nhà)] — đúng thứ tự dạng.
-export async function setDangOfBuoi(taiLieuId: string, buoiId: string, maDangs: string[]): Promise<void> {
+export async function setDangOfBuoi(taiLieuId: string, buoiId: string, maDangs: string[], cauTbl = 'dai_cau_hoi'): Promise<void> {
   const phans = await listPhan(taiLieuId)
   const target = groupBuoi(phans, buoiId)
   const toRemove = target.order.filter((ma) => !maDangs.includes(ma))
@@ -199,10 +210,10 @@ export async function setDangOfBuoi(taiLieuId: string, buoiId: string, maDangs: 
   }
   const newDang: Record<string, string> = {}, newBtvn: Record<string, string> = {}
   for (const ma of toAdd) {
-    const luyen = await autoSuggestByLoai(ma, DEFAULT_LUYEN_COUNTS)
+    const luyen = await autoSuggestByLoai(ma, DEFAULT_LUYEN_COUNTS, cauTbl)
     const dp = await addPhan({ tai_lieu_id: taiLieuId, thu_tu: 99999, loai_phan: 'dang', ref_ma: ma, tieu_de: null, noi_dung: null })
     if (luyen.length) await setCauOfPhan(dp.id, luyen)
-    const hw = await autoSuggestBtvn([ma], new Set(luyen))
+    const hw = await autoSuggestBtvn([ma], new Set(luyen), DEFAULT_BTVN_COUNTS, cauTbl)
     const bp = await addPhan({ tai_lieu_id: taiLieuId, thu_tu: 99999, loai_phan: 'btvn', ref_ma: ma, tieu_de: null, noi_dung: null })
     if (hw.length) await setCauOfPhan(bp.id, hw)
     newDang[ma] = dp.id; newBtvn[ma] = bp.id
@@ -257,18 +268,19 @@ export async function getTaiLieuFull(id: string): Promise<TaiLieuFull> {
   const cauRows = phanIds.length
     ? (((await supabase.from('tai_lieu_cau').select('*').in('phan_id', phanIds).order('thu_tu').limit(LIMIT)).data ?? []) as { phan_id: string; ma_cau: string; thu_tu: number }[])
     : []
+  const K = khoCuaMon((tl as any).mon) // dispatch kho theo MÔN của tài liệu
   const maCaus = [...new Set(cauRows.map((r) => r.ma_cau))]
-  const caus = maCaus.length ? (((await supabase.from('dai_cau_hoi').select('*').in('ma_cau', maCaus).limit(LIMIT)).data ?? []) as CauHoi[]) : []
+  const caus = maCaus.length ? (((await supabase.from(K.cauTbl).select('*').in('ma_cau', maCaus).limit(LIMIT)).data ?? []) as CauHoi[]) : []
   const cauMap = new Map(caus.map((c) => [c.ma_cau, c]))
   // Dạng dùng cho CẢ 'dang' (trên lớp) lẫn 'btvn' (về nhà) — đều ref_ma = ma_dang.
   const dangMas = [...new Set(phans.filter((p) => (p.loai_phan === 'dang' || p.loai_phan === 'btvn') && p.ref_ma).map((p) => p.ref_ma as string))]
-  const dangs = dangMas.length ? (((await supabase.from('dai_ban_do').select('ma_dang,ten_dang,muc_do,bac_toi_thieu,ma_chuyen_de,ten_chuyen_de').in('ma_dang', dangMas).limit(LIMIT)).data ?? []) as DangRow[]) : []
+  const dangs = dangMas.length ? (((await supabase.from(K.banDoTbl).select('ma_dang,ten_dang,muc_do,bac_toi_thieu,ma_chuyen_de,ten_chuyen_de').in('ma_dang', dangMas).limit(LIMIT)).data ?? []) as DangRow[]) : []
   const dangMap = new Map(dangs.map((d) => [d.ma_dang, d]))
-  const ltDangRows = dangMas.length ? (((await supabase.from('dai_dang_ly_thuyet').select('*').in('ma_dang', dangMas).limit(LIMIT)).data ?? []) as (LtRow & { ma_dang: string })[]) : []
+  const ltDangRows = dangMas.length ? (((await supabase.from(K.ltDangTbl).select('*').in('ma_dang', dangMas).limit(LIMIT)).data ?? []) as (LtRow & { ma_dang: string })[]) : []
   const ltDangMap = new Map(ltDangRows.map((l) => [l.ma_dang, l]))
   // Lý thuyết chuyên đề DERIVE từ chuyên đề của các dạng TRÊN LỚP (mỗi buổi sẽ tự hiện LT của chuyên đề nó chứa).
   const cdMas = [...new Set(phans.filter((p) => p.loai_phan === 'dang' && p.ref_ma).map((p) => dangMap.get(p.ref_ma as string)?.ma_chuyen_de).filter(Boolean) as string[])]
-  const ltCdRows = cdMas.length ? (((await supabase.from('dai_chuyen_de_ly_thuyet').select('*').in('ma_chuyen_de', cdMas).limit(LIMIT)).data ?? []) as (LtRow & { ma_chuyen_de: string })[]) : []
+  const ltCdRows = cdMas.length ? (((await supabase.from(K.ltCdTbl).select('*').in('ma_chuyen_de', cdMas).limit(LIMIT)).data ?? []) as (LtRow & { ma_chuyen_de: string })[]) : []
   const ltCdMap = new Map(ltCdRows.map((l) => [l.ma_chuyen_de, l]))
   const ltChuyenDe: Record<string, LtRow | null> = {}
   const tenChuyenDe: Record<string, string> = {}
@@ -301,10 +313,10 @@ export async function listET(lopId?: string): Promise<ETDoc[]> {
   if (error) throw error
   return (data ?? []) as ETDoc[]
 }
-export async function createET(input: { lopId: string; ngay: string; ten: string; khoi: string }): Promise<ETDoc> {
+export async function createET(input: { lopId: string; ngay: string; ten: string; khoi: string; mon?: string }): Promise<ETDoc> {
   const { data: { user } } = await supabase.auth.getUser()
   const { data, error } = await supabase.from('tai_lieu')
-    .insert({ loai: 'et', ten: input.ten, khoi: input.khoi, lop_id: input.lopId, ngay: input.ngay, created_by: user?.id ?? null })
+    .insert({ loai: 'et', ten: input.ten, khoi: input.khoi, mon: input.mon ?? 'Toán', lop_id: input.lopId, ngay: input.ngay, created_by: user?.id ?? null })
     .select().single()
   if (error) throw error
   return data as ETDoc
@@ -328,7 +340,7 @@ export async function duplicateTaiLieu(srcId: string, over: { ten: string; lop_i
   const s = src as any
   const { data: { user } } = await supabase.auth.getUser()
   const { data: nw, error } = await supabase.from('tai_lieu').insert({
-    loai: s.loai, ten: over.ten, khoi: s.khoi, ma_chuyen_de: s.ma_chuyen_de, theme: s.theme, cau_hinh: s.cau_hinh,
+    loai: s.loai, ten: over.ten, khoi: s.khoi, mon: s.mon ?? 'Toán', ma_chuyen_de: s.ma_chuyen_de, theme: s.theme, cau_hinh: s.cau_hinh,
     lop_id: over.lop_id ?? null, ngay: over.ngay ?? null, created_by: user?.id ?? null,
   }).select().single()
   if (error) throw error
@@ -351,7 +363,7 @@ async function copyPhanInto(targetId: string, p: TaiLieuPhan, thu_tu: number): P
 // loai con: 'giao_trinh_buoi' (vận hành) · 'btvn' (vận hành). Master (giao_trinh) = phát triển. Cả 3 hiện ở Kho.
 export async function trichXuatBuoi(masterId: string, buoiPhanId: string, opts: { lopId: string; ngay: string; khoi: string; tenLop: string; tenBuoi: string; giaoTrinh: boolean; btvn: boolean }): Promise<TaiLieu[]> {
   const phans = await listPhan(masterId)
-  const { data: master } = await supabase.from('tai_lieu').select('cau_hinh, theme').eq('id', masterId).single()
+  const { data: master } = await supabase.from('tai_lieu').select('cau_hinh, theme, mon').eq('id', masterId).single()
   const i = phans.findIndex((p) => p.id === buoiPhanId)
   if (i < 0) throw new Error('Không thấy buổi.')
   const marker = phans[i]
@@ -366,7 +378,7 @@ export async function trichXuatBuoi(masterId: string, buoiPhanId: string, opts: 
     // Re-trích = THAY THẾ doc cũ cùng (lớp+ngày+loại) — chống trùng (unique uq_tai_lieu_van_hanh).
     await supabase.from('tai_lieu').delete().eq('loai', loai).eq('lop_id', opts.lopId).eq('ngay', opts.ngay)
     const { data, error } = await supabase.from('tai_lieu').insert({
-      loai, ten, khoi: opts.khoi, theme: (master as any)?.theme ?? 'bkdemy', cau_hinh: (master as any)?.cau_hinh ?? {},
+      loai, ten, khoi: opts.khoi, mon: (master as any)?.mon ?? 'Toán', theme: (master as any)?.theme ?? 'bkdemy', cau_hinh: (master as any)?.cau_hinh ?? {},
       lop_id: opts.lopId, ngay: opts.ngay, nguon_id: masterId, nguon_buoi: buoiPhanId, created_by: user?.id ?? null,
     }).select().single()
     if (error) throw error

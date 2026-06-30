@@ -1,8 +1,12 @@
 import { useEffect, useState } from 'react'
 import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../lib/kho/api'
 import { listTaiLieu, createTaiLieu, deleteTaiLieu, type TaiLieu } from '../../lib/tailieu'
+import { useStore } from '../../store/useStore'
 import { Shell, Field, inp } from '../kho/ui'
 import TaiLieuBuilder from './TaiLieuBuilder'
+
+// Môn CÓ KHO (soạn tài liệu được). Anh/Văn chưa có kho.
+const KHO_MON = ['Toán', 'KHTN']
 
 // Ngày giờ VN (CLAUDE.md §2: không toISOString) — hiển thị "dd/mm/yyyy".
 function fmtNgay(iso?: string): string {
@@ -21,12 +25,20 @@ export default function TaiLieuScreen() {
   const [openId, setOpenId] = useState<string | null>(null)
   const [q, setQ] = useState('')
   const [sort, setSort] = useState<'moi' | 'ten'>('moi')
+  // Scope MÔN: admin = mọi môn có kho; staff = môn được phân (∩ môn-có-kho).
+  const me = useStore((s) => s.me)
+  const laAdmin = !!useStore((s) => s.quyen)?.laAdmin
+  const allowedMons = laAdmin ? KHO_MON : (me?.mons ?? []).filter((m) => KHO_MON.includes(m))
+  const [mon, setMon] = useState<string>('')
+  useEffect(() => { if (allowedMons.length && !allowedMons.includes(mon)) setMon(allowedMons[0]) }, [allowedMons.join(','), mon])
+  const profileLoading = !laAdmin && me === null
 
   async function reload() {
+    if (!mon) { setList([]); setLoading(false); return }
     setLoading(true); setErr(null)
-    try { setList(await listTaiLieu(khoi === ALL ? undefined : khoi)) } catch (e: any) { setErr(e.message ?? String(e)) } finally { setLoading(false) }
+    try { setList(await listTaiLieu(khoi === ALL ? undefined : khoi, 'giao_trinh', mon)) } catch (e: any) { setErr(e.message ?? String(e)) } finally { setLoading(false) }
   }
-  useEffect(() => { reload() }, [khoi]) // eslint-disable-line
+  useEffect(() => { reload() }, [khoi, mon]) // eslint-disable-line
 
   // search + sort ở client (list 1 khối/ tất cả đều nhỏ)
   const shown = list
@@ -39,6 +51,13 @@ export default function TaiLieuScreen() {
     <div className="flex h-full flex-col bg-[#fafafb]">
       <div className="flex items-center gap-4 border-b border-slate-200 bg-white px-6 py-2.5">
         <span className="rounded bg-indigo-50 px-2 py-0.5 text-[12px] font-medium text-indigo-600">Giáo trình</span>
+        {allowedMons.length > 0 && (
+          <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5">
+            {allowedMons.map((m) => (
+              <button key={m} onClick={() => setMon(m)} className={`rounded-md px-3 py-1 text-[13px] font-medium transition ${mon === m ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>{m}</button>
+            ))}
+          </div>
+        )}
         <div className="ml-auto flex items-center gap-1">
           <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm theo tên…" className="mr-2 h-7 w-44 rounded-md border border-slate-200 px-2.5 text-[13px] outline-none focus:border-indigo-400" />
           <button onClick={() => setSort(sort === 'moi' ? 'ten' : 'moi')} className="mr-2 h-7 rounded-md border border-slate-200 px-2.5 text-[12px] font-medium text-slate-500 hover:bg-slate-100">{sort === 'moi' ? '↓ Mới nhất' : 'A→Z Tên'}</button>
@@ -52,7 +71,9 @@ export default function TaiLieuScreen() {
       </div>
 
       <div className="min-h-0 flex-1 overflow-auto p-6">
-        {loading ? <p className="text-sm text-slate-400">Đang tải…</p>
+        {profileLoading ? <p className="text-sm text-slate-400">Đang tải hồ sơ…</p>
+          : allowedMons.length === 0 ? <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">Bạn chưa được phân môn (có kho) — liên hệ quản trị để soạn tài liệu.</div>
+          : loading ? <p className="text-sm text-slate-400">Đang tải…</p>
           : err ? <p className="text-sm text-rose-600">Lỗi: {err}</p>
           : shown.length === 0 ? (
             <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">
@@ -78,12 +99,12 @@ export default function TaiLieuScreen() {
           )}
       </div>
 
-      {creating && <CreateModal khoi={khoi === ALL ? DEFAULT_KHOI : khoi} onClose={() => setCreating(false)} onCreated={(id) => { setCreating(false); reload(); setOpenId(id) }} />}
+      {creating && <CreateModal khoi={khoi === ALL ? DEFAULT_KHOI : khoi} mon={mon} onClose={() => setCreating(false)} onCreated={(id) => { setCreating(false); reload(); setOpenId(id) }} />}
     </div>
   )
 }
 
-function CreateModal({ khoi, onClose, onCreated }: { khoi: string; onClose: () => void; onCreated: (id: string) => void }) {
+function CreateModal({ khoi, mon, onClose, onCreated }: { khoi: string; mon: string; onClose: () => void; onCreated: (id: string) => void }) {
   const [ten, setTen] = useState('')
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -91,12 +112,12 @@ function CreateModal({ khoi, onClose, onCreated }: { khoi: string; onClose: () =
   async function create() {
     if (!ten.trim()) return
     setBusy(true); setError(null)
-    try { const tl = await createTaiLieu({ ten: ten.trim(), khoi }); onCreated(tl.id) }
+    try { const tl = await createTaiLieu({ ten: ten.trim(), khoi, mon }); onCreated(tl.id) }
     catch (e: any) { setError(e.message ?? String(e)); setBusy(false) }
   }
 
   return (
-    <Shell title={`Tạo giáo trình · Khối ${khoi}`} onClose={onClose}>
+    <Shell title={`Tạo giáo trình · ${mon} · Khối ${khoi}`} onClose={onClose}>
       <Field label="Tên giáo trình"><input value={ten} onChange={(e) => setTen(e.target.value)} className={inp} placeholder="vd: Ôn tập Phân số" autoFocus /></Field>
       <div className="mb-3 text-[11px] text-slate-400">Tạo xong vào Builder → bấm <b>+ Thêm chuyên đề</b> (thêm nhiều chuyên đề để gộp thành 1 tài liệu lớn).</div>
       {error && <p className="mb-2 text-xs text-rose-600">{error}</p>}

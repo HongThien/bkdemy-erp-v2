@@ -628,7 +628,7 @@
 | ngay | date | Y |  |  |
 | nguon_id | uuid | Y |  | FK→tai_lieu.id |
 | nguon_buoi | text | Y |  |  |
-| mon | text |  | 'toan'::text |  |
+| mon | text |  | 'Toán'::text |  |
 
 ## tai_lieu_cau
 

@@ -5,11 +5,11 @@
 // ET nối buổi qua (lớp+ngày); tab Chấm ET (buổi học) tự load câu qua getETByBuoi.
 import { useEffect, useState } from 'react'
 import {
-  createET, updateET, getTaiLieuFull, setETCaus, suggestCauForDang,
+  createET, updateET, getTaiLieuFull, setETCaus, suggestCauForDang, khoCuaMon,
   maET, ET_FORMS, etFormOf, type ETDoc, type CauHinh, type ETForm as ETFormKind,
 } from '../../lib/tailieu'
 import { listLop, type Lop } from '../../lib/nhansu'
-import { listDaiDang, listCauByDang, LOAI_CAU, type CauHoi } from '../../lib/kho/api'
+import { listCauByDang, LOAI_CAU, type CauHoi } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
 import { KhoPicker } from './TaiLieuBuilder'
 import ETPrintView from './ETPrintView'
@@ -47,6 +47,8 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
 
   const lop = lops.find((l) => l.id === lopId)
   const khoi = lop?.khoi ?? et?.khoi ?? ''
+  const mon = lop?.mon ?? et?.mon ?? 'Toán'      // ET theo môn của lớp → chọn kho
+  const cauTbl = khoCuaMon(mon).cauTbl
   const tenDang = (md: string | null) => dangOpts.find((d) => d.ma_dang === md)?.ten_dang ?? md ?? ''
 
   async function loadBase() {
@@ -68,25 +70,25 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
   // dạng theo khối (đổi khi chọn lớp khác khối)
   useEffect(() => {
     if (!khoi) { setDangOpts([]); return }
-    listDaiDang(khoi).then((ds) => setDangOpts(ds.map((d) => ({ ma_dang: d.ma_dang, ten_dang: d.ten_dang, ten_chuyen_de: d.ten_chuyen_de })))).catch(() => { /* */ })
-  }, [khoi])
+    khoCuaMon(mon).listMap(khoi).then((ds) => setDangOpts(ds.map((d) => ({ ma_dang: d.leafMa, ten_dang: d.leafTen, ten_chuyen_de: d.t2Ten })))).catch(() => { /* */ })
+  }, [khoi, mon])
   useEffect(() => { if (!flash) return; const t = setTimeout(() => setFlash(null), 2500); return () => clearTimeout(t) }, [flash])
 
   const usedExcept = (idx: number) => new Set(rows.filter((_, i) => i !== idx).map((r) => r.maCau).filter(Boolean) as string[])
   async function ensureCache(maDang: string) {
     if (Object.values(cau).some((c) => c.dang_chinh === maDang)) return
-    const list = await listCauByDang(maDang)
+    const list = await listCauByDang(maDang, cauTbl)
     setCau((p) => ({ ...p, ...Object.fromEntries(list.map((c) => [c.ma_cau, c])) }))
   }
   async function pickDang(idx: number, maDang: string) {
     await ensureCache(maDang)
-    const sug = await suggestCauForDang(maDang, usedExcept(idx))
-    if (sug && !cau[sug]) { const list = await listCauByDang(maDang); setCau((p) => ({ ...p, ...Object.fromEntries(list.map((c) => [c.ma_cau, c])) })) }
+    const sug = await suggestCauForDang(maDang, usedExcept(idx), cauTbl)
+    if (sug && !cau[sug]) { const list = await listCauByDang(maDang, cauTbl); setCau((p) => ({ ...p, ...Object.fromEntries(list.map((c) => [c.ma_cau, c])) })) }
     setRows((rs) => rs.map((r, i) => (i === idx ? { maDang, maCau: sug } : r)))
   }
   async function doiCau(idx: number) {
     const r = rows[idx]; if (!r.maDang) return
-    const sug = await suggestCauForDang(r.maDang, new Set([...usedExcept(idx), r.maCau].filter(Boolean) as string[]))
+    const sug = await suggestCauForDang(r.maDang, new Set([...usedExcept(idx), r.maCau].filter(Boolean) as string[]), cauTbl)
     if (!sug) { alert('Hết câu khác cho dạng này (đã dùng hết trong đề).'); return }
     setRows((rs) => rs.map((x, i) => (i === idx ? { ...x, maCau: sug } : x)))
   }
@@ -110,7 +112,7 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
         onClose?.()
         return
       }
-      const created = await createET({ lopId: lop.id, ngay, ten, khoi: lop.khoi ?? '' })
+      const created = await createET({ lopId: lop.id, ngay, ten, khoi: lop.khoi ?? '', mon: lop.mon })
       await setETCaus(created.id, maCaus)
       if (Object.keys(ch).length) await updateET(created.id, { cau_hinh: ch })
       resetForm()
@@ -194,9 +196,9 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
       </div>
 
       {printing && et && <ETPrintView id={et.id} onClose={() => setPrinting(false)} />}
-      {dangModal !== null && <DangPickerOne khoi={khoi} onClose={() => setDangModal(null)}
+      {dangModal !== null && <DangPickerOne khoi={khoi} mon={mon} onClose={() => setDangModal(null)}
         onPick={(ma) => { const i = dangModal; setDangModal(null); pickDang(i, ma) }} />}
-      {picker && <KhoPicker maDangs={[picker.maDang]} selected={rows[picker.idx].maCau ? [rows[picker.idx].maCau!] : []} onClose={() => setPicker(null)}
+      {picker && <KhoPicker maDangs={[picker.maDang]} cauTbl={cauTbl} selected={rows[picker.idx].maCau ? [rows[picker.idx].maCau!] : []} onClose={() => setPicker(null)}
         onConfirm={async (m) => {
           const used = usedExcept(picker.idx)
           const pick = m.find((x) => !used.has(x)) ?? m[0] ?? null

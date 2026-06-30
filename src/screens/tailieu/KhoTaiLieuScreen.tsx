@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { listAllTaiLieu, deleteTaiLieu, duplicateTaiLieu, updateTaiLieu, type TaiLieu } from '../../lib/tailieu'
 import { listLop, type Lop } from '../../lib/nhansu'
+import { useStore } from '../../store/useStore'
 import PrintView from './PrintView'
 import ETPrintView from './ETPrintView'
 import TaiLieuBuilder from './TaiLieuBuilder'
@@ -22,6 +23,10 @@ export default function KhoTaiLieuScreen() {
   const [loading, setLoading] = useState(true)
   const [q, setQ] = useState('')
   const [loai, setLoai] = useState<string>('__all__')
+  const [monF, setMonF] = useState<string>('__all__')
+  const me = useStore((s) => s.me)
+  const laAdmin = !!useStore((s) => s.quyen)?.laAdmin
+  const myMons = me?.mons ?? []
   const [print, setPrint] = useState<{ id: string; loai: string } | null>(null)
   const [editEt, setEditEt] = useState<ETView | null>(null) // sửa ET tại chỗ (mở ETEditor)
   const [editGt, setEditGt] = useState<string | null>(null) // sửa giáo trình/BTVN (mở TaiLieuBuilder)
@@ -33,8 +38,12 @@ export default function KhoTaiLieuScreen() {
   }
   useEffect(() => { reload() }, []) // eslint-disable-line
 
-  const loais = useMemo(() => [...new Set(rows.map((r) => r.loai))], [rows])
-  const shown = rows
+  // Scope MÔN: GV/Học-thuật có môn → chỉ tài liệu môn mình; admin / không-gán-môn (Media/Marketing) → thấy tất.
+  const visibleRows = useMemo(() => (laAdmin || myMons.length === 0) ? rows : rows.filter((r) => myMons.includes(r.mon)), [rows, laAdmin, myMons])
+  const monsCo = useMemo(() => [...new Set(visibleRows.map((r) => r.mon).filter(Boolean))].sort(), [visibleRows])
+  const loais = useMemo(() => [...new Set(visibleRows.map((r) => r.loai))], [visibleRows])
+  const shown = visibleRows
+    .filter((r) => monF === '__all__' || r.mon === monF)
     .filter((r) => loai === '__all__' || r.loai === loai)
     .filter((r) => !q.trim() || r.ten.toLowerCase().includes(q.trim().toLowerCase()))
 
@@ -65,6 +74,12 @@ export default function KhoTaiLieuScreen() {
     <div className="flex h-full flex-col bg-[#fafafb]">
       <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 bg-white px-6 py-2.5">
         <span className="mr-2 text-sm font-semibold text-slate-900">Kho tài liệu</span>
+        {monsCo.length > 1 && (
+          <div className="mr-1 flex gap-0.5 rounded-lg bg-violet-50 p-0.5">
+            <button onClick={() => setMonF('__all__')} className={`h-6 rounded-md px-2.5 text-xs font-semibold transition ${monF === '__all__' ? 'bg-violet-600 text-white shadow-sm' : 'text-violet-600 hover:bg-violet-100'}`}>Mọi môn</button>
+            {monsCo.map((m) => <button key={m} onClick={() => setMonF(m)} className={`h-6 rounded-md px-2.5 text-xs font-semibold transition ${monF === m ? 'bg-violet-600 text-white shadow-sm' : 'text-violet-600 hover:bg-violet-100'}`}>{m}</button>)}
+          </div>
+        )}
         <button onClick={() => setLoai('__all__')} className={tab(loai === '__all__')}>Tất cả</button>
         {loais.map((l) => <button key={l} onClick={() => setLoai(l)} className={tab(loai === l)}>{loaiTen(l)}</button>)}
         <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm theo tên…" className="ml-auto h-7 w-52 rounded-md border border-slate-200 px-2.5 text-[13px] outline-none focus:border-indigo-400" />
