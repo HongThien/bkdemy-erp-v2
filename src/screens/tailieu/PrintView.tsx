@@ -285,26 +285,33 @@ function splitUnlabeled(s: string): { stem: string; parts: { lbl: string; body: 
   if (rest.some((l) => optVisLen(l) > 30)) return null
   return { stem, parts: rest.map((body) => ({ lbl: '', body })) }
 }
+// Tách đề + lưới ý con — DÙNG CHUNG (PrintView giáo trình + ET). Ưu tiên: đáp án A/B/C/D nhúng → ý con a/b/c → ý con KHÔNG nhãn (đã strip).
+export function splitStem(c: CauHoi): { stem: string; grid: { lbl: string; body: string }[] | null; emb: boolean } {
+  const hasOpts = !!(c.lua_chon && c.lua_chon.length)
+  const emb = hasOpts ? null : splitLabeled(c.noi_dung, 'ABCDEFGH')
+  const yc = hasOpts || emb ? null : splitLabeled(c.noi_dung, 'abcdefghijkl')
+  const un = hasOpts || emb || yc ? null : splitUnlabeled(c.noi_dung)
+  return { stem: emb?.stem ?? yc?.stem ?? un?.stem ?? c.noi_dung, grid: emb?.parts ?? yc?.parts ?? un?.parts ?? null, emb: !!emb }
+}
+// Lưới ý con (đáp án nhúng / ý con có/không nhãn). Không nhãn → chỉ hiện nội dung, không dấu ).
+export function OptGrid({ grid, emb }: { grid: { lbl: string; body: string }[]; emb: boolean }) {
+  return (
+    <div className="pv-opts" style={{ gridTemplateColumns: `repeat(${optCols(grid.map((p) => p.body))}, minmax(0,1fr))` }}>
+      {grid.map((p, i) => <div key={i} className="pv-opt">{p.lbl ? <><b>{p.lbl}{emb ? '.' : ')'}</b> </> : null}<span className="pv-math"><MathText>{p.body}</MathText></span></div>)}
+    </div>
+  )
+}
 export function CauItem({ no, c, gv, lines = 0 }: { no: number; c: CauHoi; gv: boolean; lines?: number }) {
   const hasOpts = !!(c.lua_chon && c.lua_chon.length)
   const letter = (i: number) => String.fromCharCode(65 + i)
   const cols = hasOpts ? optCols(c.lua_chon!) : 0
-  // Câu lua_chon=null: đáp án A/B/C/D nhúng trong đề (ưu tiên) HOẶC ý con a)b)c)… → tách ra lưới cột.
-  const embOpts = hasOpts ? null : splitLabeled(c.noi_dung, 'ABCDEFGH')
-  const ycon = hasOpts || embOpts ? null : splitLabeled(c.noi_dung, 'abcdefghijkl')
-  const uncon = hasOpts || embOpts || ycon ? null : splitUnlabeled(c.noi_dung) // ý con KHÔNG nhãn (đã bị strip a/b/c)
-  const stem = embOpts?.stem ?? ycon?.stem ?? uncon?.stem ?? c.noi_dung
-  const grid = embOpts?.parts ?? ycon?.parts ?? uncon?.parts ?? null // lưới cột (đáp án nhúng / ý con), cùng render
+  const { stem, grid, emb } = splitStem(c)
   return (
     <li className="pv-cau">
       {/* THỨ TỰ: đề → HÌNH → đáp án (Thùy chốt) */}
       <div className="pv-math"><span className="pv-cau-no">Câu {no}.</span><MathText>{stem}</MathText></div>
       {c.anh_de && <img src={c.anh_de} alt="" className="pv-img" />}
-      {grid && (
-        <div className="pv-opts" style={{ gridTemplateColumns: `repeat(${optCols(grid.map((p) => p.body))}, minmax(0,1fr))` }}>
-          {grid.map((p, i) => <div key={i} className="pv-opt">{p.lbl ? <><b>{p.lbl}{embOpts ? '.' : ')'}</b> </> : null}<span className="pv-math"><MathText>{p.body}</MathText></span></div>)}
-        </div>
-      )}
+      {grid && <OptGrid grid={grid} emb={emb} />}
       {hasOpts && (
         <div className="pv-opts" style={{ gridTemplateColumns: `repeat(${cols}, minmax(0,1fr))` }}>
           {c.lua_chon!.map((o, i) => {

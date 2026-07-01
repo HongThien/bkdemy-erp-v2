@@ -6,7 +6,7 @@ import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
 import { getTaiLieuFull, etFormOf, type TaiLieuFull } from '../../lib/tailieu'
 import { MathText } from '../kho/ui'
-import { CauItem, CHROME_CSS, buildPagedCss } from './PrintView'
+import { CauItem, OptGrid, splitStem, CHROME_CSS, buildPagedCss } from './PrintView'
 
 const DEFAULT_TL_LINES = 4
 
@@ -107,27 +107,34 @@ function ETDoc({ full, gv }: { full: TaiLieuFull; gv: boolean }) {
 
       {tln.length > 0 && (
         <section className="pv-sec"><h2 className="pv-h-dang">Phần {part()} · Trả lời ngắn</h2>
-          <table className="pv-et-tn"><tbody>{tln.map((c) => (
-            <tr key={c.ma_cau}>
-              <td className="q"><span className="pv-cau-no">Câu {next()}.</span> <MathText>{c.noi_dung}</MathText></td>
-              <td className="a">{gv && c.dap_an ? <MathText>{c.dap_an}</MathText> : ''}</td>
-            </tr>
-          ))}</tbody></table>
+          <table className="pv-et-tn"><tbody>{tln.map((c) => {
+            const { stem, grid, emb } = splitStem(c) // ý con nhiều dòng → lưới cột (như trắc nghiệm), không đổ 6 dòng
+            return (
+              <tr key={c.ma_cau}>
+                <td className="q"><div className="pv-math"><span className="pv-cau-no">Câu {next()}.</span><MathText>{stem}</MathText></div>{grid && <OptGrid grid={grid} emb={emb} />}</td>
+                <td className="a">{gv && c.dap_an ? <MathText>{c.dap_an}</MathText> : ''}</td>
+              </tr>
+            )
+          })}</tbody></table>
         </section>
       )}
 
       {tl.length > 0 && (
         <section className="pv-sec"><h2 className="pv-h-dang">Phần {part()} · Tự luận</h2>
           {/* Tự luận = đề + dòng kẻ (BỎ phương án dù câu kho có) · bản GV = đáp án/lời giải */}
-          <ol className="pv-caulist">{tl.map((c) => (
-            <li key={c.ma_cau} className="pv-cau">
-              <div className="pv-math"><span className="pv-cau-no">Câu {next()}.</span><MathText>{c.noi_dung}</MathText></div>
-              {c.anh_de && <img src={c.anh_de} alt="" className="pv-img" />}
-              {gv && (c.dap_an || c.loi_giai)
-                ? <div className="pv-loigiai">{c.dap_an && <div><b>Đáp án:</b> <MathText>{c.dap_an}</MathText></div>}{c.loi_giai && <div><b>Lời giải:</b> <MathText>{c.loi_giai}</MathText></div>}</div>
-                : <div className="pv-write">{Array.from({ length: lines[c.ma_cau] ?? DEFAULT_TL_LINES }).map((_, k) => <div key={k} className="pv-wline" />)}</div>}
-            </li>
-          ))}</ol>
+          <ol className="pv-caulist">{tl.map((c) => {
+            const { stem, grid, emb } = splitStem(c)
+            return (
+              <li key={c.ma_cau} className="pv-cau">
+                <div className="pv-math"><span className="pv-cau-no">Câu {next()}.</span><MathText>{stem}</MathText></div>
+                {grid && <OptGrid grid={grid} emb={emb} />}
+                {c.anh_de && <img src={c.anh_de} alt="" className="pv-img" />}
+                {gv && (c.dap_an || c.loi_giai)
+                  ? <div className="pv-loigiai">{c.dap_an && <div><b>Đáp án:</b> <MathText>{c.dap_an}</MathText></div>}{c.loi_giai && <div><b>Lời giải:</b> <MathText>{c.loi_giai}</MathText></div>}</div>
+                  : grid ? null : <div className="pv-write">{Array.from({ length: lines[c.ma_cau] ?? DEFAULT_TL_LINES }).map((_, k) => <div key={k} className="pv-wline" />)}</div>}
+              </li>
+            )
+          })}</ol>
         </section>
       )}
 
