@@ -250,6 +250,7 @@ function loaiFields(loaiCau: string): { spec: string; obj: string; ruleDapAn: st
 // Quy tắc trình bày + JSON (bê từ prompt v1 đã thực chiến)
 const FMT_RULES = [
   'QUY TẮC TRÌNH BÀY:',
+  '- ⚠ KHÔNG chép nhãn "Câu N" / "Bài N" vào đầu de_bai — de_bai bắt đầu THẲNG từ nội dung đề (hệ thống TỰ đánh số câu). Bản gốc có "Câu 3." → BỎ nhãn đó, chỉ lấy phần đề.',
   '- Công thức toán DÙNG LaTeX trong $...$ (inline) hoặc $$...$$ (block).',
   '- ⚠ MỖI công thức/phân số/biểu thức phải bọc RIÊNG trong $...$ — KỂ CẢ khi liệt kê nhiều: viết "$\\\\dfrac{6}{5}$; $\\\\dfrac{4}{3}$" (TUYỆT ĐỐI KHÔNG để "\\\\dfrac{6}{5}" trần ngoài $).',
   '- ⚠ XUỐNG DÒNG: GIỮ ĐÚNG bố cục NHIỀU DÒNG của đề & lời giải gốc — mỗi ý, mỗi câu hỏi, mỗi bước giải đặt trên MỘT DÒNG riêng (ngăn bằng ký tự xuống dòng thật trong chuỗi). Gốc bao nhiêu dòng thì giữ bấy nhiêu. TUYỆT ĐỐI KHÔNG gộp tất cả thành một đoạn liền, KHÔNG dùng thẻ "<br>".',
@@ -264,8 +265,14 @@ const FMT_RULES = [
   '- Mọi lệnh LaTeX PHẢI DOUBLE backslash trong JSON: "\\\\dfrac", "\\\\times", "\\\\neq".',
   '- CHỈ trả JSON, KHÔNG bọc ```json```, KHÔNG thêm chữ nào ngoài JSON.',
 ].join('\n')
+// Bỏ nhãn "Câu N" / "Bài N" ở ĐẦU đề (hệ thống tự đánh số → nhãn này dư, gây số trùng/lệch).
+// Chỉ strip khi CÒN nội dung sau đó (không để rỗng). Cap CỨNG ở code — không tin mỗi prompt.
+export const stripCauLabel = (s: string): string => {
+  const t = s.replace(/^[\s*]*(?:câu|bài)\s*\d+\s*[.:)\-]?\s*/i, '')
+  return t.trim() ? t : s
+}
 const normCau = (x: any): CauNoiDung => ({
-  noi_dung: String(x.de_bai ?? x.noi_dung ?? '').trim(),
+  noi_dung: stripCauLabel(String(x.de_bai ?? x.noi_dung ?? '').trim()),
   dap_an: x.dap_an != null && String(x.dap_an).trim() ? String(x.dap_an).trim() : null,
   loi_giai: x.loi_giai != null && String(x.loi_giai).trim() ? String(x.loi_giai).trim() : null,
   lua_chon: Array.isArray(x.lua_chon) && x.lua_chon.length ? x.lua_chon.map((o: any) => String(o)) : null,
