@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom'
 // (Ảnh gửi PH dùng html2canvas tải từ CDN TRONG popup — đúng pattern V1, không import vào bundle.)
 import {
   buoiAoCuaNgay, moBuoi, getBuoi, huyBuoi, huyBuoiCuaNgay, setNguoiDay,
-  getRoster, diemDanh, xoaHSKhoiBuoi, dongBoSiSo, listProblems, addProblem, setProblemDang, ensureProblems, listGrades, gradeMuc, closePhase,
+  getRoster, diemDanh, markBaoDen, xoaHSKhoiBuoi, dongBoSiSo, listProblems, addProblem, setProblemDang, ensureProblems, listGrades, gradeMuc, closePhase,
   loadETForBuoi, ensureETProblems, resyncETProblems, gradeET, deleteGrade, reopenPhase,
   loadBTVNForBuoi, ensureBTVNProblems, getBtvnKetQua, setBtvnKetQua, listCanhBao, themCanhBao, xoaCanhBao, closeBTVN, reopenBTVN,
   type BtvnKQ, type CanhBao, type BtvnTrangThai, type BtvnThaiDo,
@@ -208,13 +208,21 @@ export function BuoiDetail({ id, onClose, tabs, initialTab, canManage = true }: 
 }
 
 function DiemDanhTab({ roster, chuaDD, canManage, onChange }: { roster: BuoiHocHS[]; chuaDD: number; canManage: boolean; onChange: () => void }) {
+  const [baoDen, setBaoDen] = useState(false)
+  const chuaBao = roster.filter((r) => r.diem_danh === 'co_mat' && !r.bao_den_at) // co_mat & chưa báo PH
   async function xoa(r: BuoiHocHS) {
     if (!confirm(`Gỡ ${r.hoc_sinh?.ho_ten ?? 'HS'} khỏi buổi này?\n\nChỉ dùng khi xếp NHẦM lớp (data sai). Sẽ chặn nếu HS đã có bài chấm / điểm thật.`)) return
     try { await xoaHSKhoiBuoi(r); onChange() } catch (e: any) { alert(e.message ?? String(e)) }
   }
   return (
     <div>
-      {chuaDD > 0 && <p className="mb-3 text-[12px] text-amber-600">Còn {chuaDD} HS chưa điểm danh.</p>}
+      <div className="mb-3 flex items-center gap-3">
+        <button onClick={() => { onChange(); setBaoDen(true) }}
+          className="rounded-md bg-emerald-600 px-3 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-emerald-500"
+          title="Sinh tin nhắn “… đã đến” cho HS mới điểm danh có mặt (không lặp người đã báo)">📩 Báo đến PH{chuaBao.length ? ` (${chuaBao.length})` : ''}</button>
+        {chuaDD > 0 && <span className="text-[12px] text-amber-600">Còn {chuaDD} HS chưa điểm danh.</span>}
+      </div>
+      {baoDen && <BaoDenModal roster={roster} onClose={() => setBaoDen(false)} onDone={onChange} />}
       <div className="grid grid-cols-1 gap-1.5 md:grid-cols-2 2xl:grid-cols-3">
         {roster.map((r) => (
           <div key={r.id} className="flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2">
@@ -232,6 +240,63 @@ function DiemDanhTab({ roster, chuaDD, canManage, onChange }: { roster: BuoiHocH
       </div>
     </div>
   )
+}
+
+// Tin báo PH "… đã đến": chỉ gồm HS có mặt CHƯA báo (bao_den_at NULL). Copy xong → đánh dấu đã báo
+// (markBaoDen set khi còn NULL) → lần bấm sau chỉ còn HS mới đến. State ở DB nên reload/đổi máy vẫn nhớ.
+function BaoDenModal({ roster, onClose, onDone }: { roster: BuoiHocHS[]; onClose: () => void; onDone: () => void }) {
+  const [busy, setBusy] = useState(false)
+  const [copied, setCopied] = useState(false)
+  const chuaBao = roster.filter((r) => r.diem_danh === 'co_mat' && !r.bao_den_at)
+  const daBao = roster.filter((r) => r.diem_danh === 'co_mat' && r.bao_den_at)
+  // Tên = 2 từ CUỐI (vd "Nguyễn Thị Hồng Anh" → "Hồng Anh").
+  const ten = (r: BuoiHocHS) => (r.hoc_sinh?.ho_ten ?? '?').trim().split(/\s+/).slice(-2).join(' ')
+  const dsTen = chuaBao.map(ten).join(', ')
+  // Tin ĐẦU (chưa ai được báo) = câu xác nhận đầy đủ; các tin SAU = câu ngắn.
+  const msg = !chuaBao.length ? '' : daBao.length ? `${dsTen} đã đến lớp.` : `Trung tâm xác nhận buổi học hôm nay đã có ${dsTen} đã đến lớp.`
+
+  async function copyAndMark() {
+    if (!chuaBao.length || busy) return
+    setBusy(true)
+    try {
+      try { await navigator.clipboard.writeText(msg) } catch { /* clipboard bị chặn → OPS copy tay từ ô */ }
+      await markBaoDen(chuaBao.map((r) => r.id))
+      setCopied(true); onDone()
+      setTimeout(onClose, 700)
+    } catch (e: any) { alert(e.message ?? String(e)) } finally { setBusy(false) }
+  }
+
+  return createPortal(
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/30 p-4 backdrop-blur-sm" onClick={onClose}>
+      <div className="w-[440px] max-w-full rounded-2xl border border-slate-200 bg-white p-5 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <div className="mb-3 flex items-center gap-2">
+          <span className="text-[15px] font-semibold text-slate-900">📩 Tin báo phụ huynh</span>
+          <button onClick={onClose} className="ml-auto text-slate-400 hover:text-slate-600">✕</button>
+        </div>
+        {chuaBao.length === 0 ? (
+          <div className="rounded-lg bg-slate-50 px-3 py-6 text-center text-[13px] text-slate-400">
+            {daBao.length ? 'Tất cả HS có mặt đều đã được báo đến. Chưa có HS mới.' : 'Chưa có HS nào điểm danh “có mặt”.'}
+          </div>
+        ) : (
+          <>
+            <p className="mb-2 text-[12px] text-slate-500">{chuaBao.length} HS mới đến{daBao.length ? ` · ${daBao.length} đã báo trước đó` : ''}:</p>
+            <textarea readOnly value={msg} rows={3} onFocus={(e) => e.currentTarget.select()}
+              className="w-full resize-none rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-[14px] leading-relaxed text-slate-800" />
+            <div className="mt-3 flex items-center justify-end gap-2">
+              <button onClick={onClose} className="rounded-md px-3 py-1.5 text-[13px] text-slate-500 hover:bg-slate-100">Đóng</button>
+              <button onClick={copyAndMark} disabled={busy}
+                className="rounded-md bg-indigo-600 px-3.5 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">{copied ? '✓ Đã copy & đánh dấu' : busy ? '…' : 'Copy & đánh dấu đã gửi'}</button>
+            </div>
+          </>
+        )}
+        {daBao.length > 0 && (
+          <details className="mt-3 text-[12px] text-slate-400">
+            <summary className="cursor-pointer select-none hover:text-slate-600">Đã báo đến trước đó ({daBao.length})</summary>
+            <div className="mt-1 leading-relaxed">{daBao.map(ten).join(', ')}</div>
+          </details>
+        )}
+      </div>
+    </div>, document.body)
 }
 
 // Chấm bài trên lớp: 1 mức 1-5 (gộp 3 chiều). 1=yếu → 5=xuất sắc. 1 click.

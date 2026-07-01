@@ -272,6 +272,10 @@ export const stripCauLabel = (s: string): string => {
   const t = s.replace(/^[\s*]*(?:câu|bài)\s*\d+\s*[.:)\-]?\s*/i, '')
   return t.trim() ? t : s
 }
+// Bỏ tiền tố ý con "a)" "b." "c)" … ở đầu MỖI dòng (đề nhiều ý → clone hay chèn nhãn a/b/c; người muốn bỏ hết).
+// Chỉ cắt nhãn 1 chữ cái a–h + ')' hoặc '.' + khoảng trắng → không đụng nội dung/công thức toán.
+export const stripYCon = (s: string): string =>
+  s.split('\n').map((ln) => ln.replace(/^(\s*)[a-h][.)]\s+/, '$1')).join('\n')
 // Bỏ khối đáp án "A. … B. … C. … D. …" ở CUỐI đề (khi câu ĐÃ có lua_chon riêng) → chống hiện 2 lần
 // (1 lần trong đề + 1 lần ở lưới đáp án). Cắt từ dòng bắt đầu "A." tới hết. Chỉ khi còn nội dung sau cắt.
 const stripEmbeddedOpts = (s: string): string => {
@@ -280,12 +284,13 @@ const stripEmbeddedOpts = (s: string): string => {
 }
 const normCau = (x: any): CauNoiDung => {
   const lua_chon = Array.isArray(x.lua_chon) && x.lua_chon.length ? x.lua_chon.map((o: any) => String(o)) : null
-  let noi_dung = stripCauLabel(String(x.de_bai ?? x.noi_dung ?? '').trim())
+  let noi_dung = stripYCon(stripCauLabel(String(x.de_bai ?? x.noi_dung ?? '').trim()))
   if (lua_chon) noi_dung = stripEmbeddedOpts(noi_dung) // câu trắc nghiệm: đề KHÔNG chứa 4 đáp án
+  const loi_giai = x.loi_giai != null && String(x.loi_giai).trim() ? stripYCon(String(x.loi_giai).trim()) : null
   return {
     noi_dung,
     dap_an: x.dap_an != null && String(x.dap_an).trim() ? String(x.dap_an).trim() : null,
-    loi_giai: x.loi_giai != null && String(x.loi_giai).trim() ? String(x.loi_giai).trim() : null,
+    loi_giai,
     lua_chon,
   }
 }
@@ -304,6 +309,7 @@ export function buildClonePrompt(a: { soBienThe: number; ghiChu: string; tenDang
     '- CẤM: thêm bước, bớt bước, đổi cách giải, thêm dữ kiện/điều kiện/giả thiết KHÔNG có trong bài gốc, hay "diễn giải" dài hơn gốc. Lời giải biến thể phải SONG ÁNH từng bước với gốc, chỉ khác con số.',
     '- SỐ LIỆU thay phải cho KẾT QUẢ ĐẸP (số nguyên hoặc phân số tối giản đơn giản giống bài gốc), CÙNG độ khó & CÙNG độ lớn. TUYỆT ĐỐI KHÔNG để ra số lẻ/xấu (vd 7.3333, 0.17): nếu một bộ số ra kết quả xấu thì THỬ BỘ SỐ KHÁC cho tới khi đẹp, đừng giữ.',
     '- Nếu bài gốc không nói rõ một bước, biến thể CŨNG không tự bịa bước đó.',
+    '- ⚠ KHÔNG thêm nhãn ý con "a)", "b)", "c)"… vào đầu dòng trong de_bai / loi_giai — viết THẲNG nội dung từng ý trên dòng riêng, KHÔNG kèm chữ cái đánh mục.',
     a.ghiChu ? `- ⚠ GHI CHÚ CỦA NGƯỜI RA ĐỀ = RÀNG BUỘC CỨNG, ưu tiên CAO NHẤT, áp cho MỌI biến thể (bám rất sát, không được phớt lờ): ${a.ghiChu}` : '',
     '',
     f.ruleDapAn,

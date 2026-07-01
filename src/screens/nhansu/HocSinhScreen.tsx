@@ -15,6 +15,22 @@ const TT_LABEL: Record<string, string> = { dang_hoc: 'Đang học', bao_luu: 'B�
 const ALL = '__all__' // tab "Tất cả khối"
 type SortKey = 'ho_ten' | 'ma_hs' | 'khoi' | 'soLop' | 'trang_thai'
 
+// "Đủ thông tin" = đã điền các trường hồ sơ cơ bản (không tính ảnh/điểm test — tuỳ chọn).
+const HS_REQUIRED: { key: keyof HocSinh; label: string }[] = [
+  { key: 'ngay_sinh', label: 'Ngày sinh' }, { key: 'gioi_tinh', label: 'Giới tính' },
+  { key: 'truong_hoc', label: 'Trường học' }, { key: 'dia_chi', label: 'Địa chỉ' },
+  { key: 'ngay_nhap_hoc', label: 'Ngày nhập học' }, { key: 'phu_huynh_id', label: 'Phụ huynh' },
+]
+const thieuThongTin = (h: HocSinh) => HS_REQUIRED.filter((f) => !h[f.key]).map((f) => f.label)
+
+// Chấm trạng thái hồ sơ cạnh tên: đủ → tích xanh; thiếu → chấm đỏ nhỏ (hover xem thiếu gì).
+function HoSoStatus({ h }: { h: HocSinh }) {
+  const thieu = thieuThongTin(h)
+  return thieu.length === 0
+    ? <span title="Đủ thông tin" className="inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-[10px] font-bold text-emerald-600">✓</span>
+    : <span title={`Thiếu: ${thieu.join(', ')}`} className="inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-rose-100 text-[10px] font-bold text-rose-600">!</span>
+}
+
 export default function HocSinhScreen() {
   const [khoi, setKhoi] = useState<string>(DEFAULT_KHOI)
   const [list, setList] = useState<HocSinh[]>([])
@@ -103,6 +119,7 @@ export default function HocSinhScreen() {
                           ? <img src={h.anh_url} alt="" className="h-7 w-7 rounded-lg object-cover" />
                           : <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-sky-400 to-indigo-500 text-[12px] font-bold text-white">{h.ho_ten.trim().split(/\s+/).pop()?.[0]?.toUpperCase()}</span>}
                         {h.ho_ten}
+                        <HoSoStatus h={h} />
                       </span>
                     </td>
                     <td className="px-3 text-slate-500">{h.ma_hs ?? '—'}</td>

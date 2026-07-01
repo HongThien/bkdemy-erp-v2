@@ -1,0 +1,877 @@
+[
+  {
+    "tbl": "dai_cau_hoi",
+    "rows": [
+      {
+        "ma_cau": "07010201013",
+        "noi_dung": "c) $\\dfrac{-2}{3} - \\dfrac{-6}{5}$",
+        "loi_giai": "$= \\dfrac{-2}{3} + \\dfrac{6}{5}$\n$= \\dfrac{-10}{15} + \\dfrac{18}{15}$\n$= \\dfrac{8}{15}$"
+      },
+      {
+        "ma_cau": "07010201019",
+        "noi_dung": "d) $(-3) - (-\\dfrac{5}{6})$",
+        "loi_giai": "$= -3 + \\dfrac{5}{6}$\n$= -\\dfrac{18}{6} + \\dfrac{5}{6}$\n$= -\\dfrac{13}{6}$"
+      },
+      {
+        "ma_cau": "07010201002",
+        "noi_dung": "a) $\\dfrac{5}{-15} + \\dfrac{-1}{3}$",
+        "loi_giai": "$= \\dfrac{-5}{15} + \\dfrac{-1}{3}$\n$= \\dfrac{-1}{3} + \\dfrac{-1}{3}$\n$= \\dfrac{-2}{3}$"
+      },
+      {
+        "ma_cau": "07010201003",
+        "noi_dung": "a) $\\dfrac{4}{12} + \\dfrac{5}{-6}$",
+        "loi_giai": "$= \\dfrac{4}{12} + \\dfrac{-5}{6}$\n$= \\dfrac{1}{3} + \\dfrac{-5}{6}$\n$= \\dfrac{2}{6} + \\dfrac{-5}{6}$\n$= \\dfrac{-3}{6}$\n$= \\dfrac{-1}{2}$"
+      },
+      {
+        "ma_cau": "07010201004",
+        "noi_dung": "a) $\\dfrac{2}{10} - \\dfrac{-3}{5}$",
+        "loi_giai": "$= \\dfrac{2}{10} + \\dfrac{3}{5}$\n$= \\dfrac{1}{5} + \\dfrac{3}{5}$\n$= \\dfrac{4}{5}$"
+      },
+      {
+        "ma_cau": "07010201005",
+        "noi_dung": "a) $\\dfrac{-8}{24} + \\dfrac{1}{6}$",
+        "loi_giai": "$= \\dfrac{-1}{3} + \\dfrac{1}{6}$\n$= \\dfrac{-2}{6} + \\dfrac{1}{6}$\n$= \\dfrac{-1}{6}$"
+      },
+      {
+        "ma_cau": "07010201006",
+        "noi_dung": "a) $\\dfrac{6}{18} + \\dfrac{2}{-9}$",
+        "loi_giai": "$= \\dfrac{6}{18} + \\dfrac{-2}{9}$\n$= \\dfrac{1}{3} + \\dfrac{-2}{9}$\n$= \\dfrac{3}{9} + \\dfrac{-2}{9}$\n$= \\dfrac{1}{9}$"
+      },
+      {
+        "ma_cau": "07010202001",
+        "noi_dung": "a) $-2,5 \\cdot \\left( -\\dfrac{3}{25} \\right)$",
+        "loi_giai": "$= -\\dfrac{25}{10} \\cdot \\left( -\\dfrac{3}{25} \\right)$\n$= \\dfrac{3}{10}$"
+      },
+      {
+        "ma_cau": "07010202007",
+        "noi_dung": "b) $2\\dfrac{3}{4} \\cdot \\dfrac{-4}{9}$",
+        "loi_giai": "$= \\dfrac{11}{4} \\cdot \\dfrac{-4}{9}$\n$= -\\dfrac{11}{9}$"
+      },
+      {
+        "ma_cau": "07010202008",
+        "noi_dung": "b) $3\\dfrac{1}{2} \\cdot \\dfrac{-2}{7}$",
+        "loi_giai": "$= \\dfrac{7}{2} \\cdot \\dfrac{-2}{7}$\n$= -1$"
+      },
+      {
+        "ma_cau": "07010202009",
+        "noi_dung": "b) $1\\dfrac{2}{5} \\cdot \\dfrac{-10}{3}$",
+        "loi_giai": "$= \\dfrac{7}{5} \\cdot \\dfrac{-10}{3}$\n$= \\dfrac{-14}{3}$"
+      },
+      {
+        "ma_cau": "07010202010",
+        "noi_dung": "b) $4\\dfrac{1}{3} \\cdot \\dfrac{6}{13}$",
+        "loi_giai": "$= \\dfrac{13}{3} \\cdot \\dfrac{6}{13}$\n$= 2$"
+      },
+      {
+        "ma_cau": "07010202011",
+        "noi_dung": "b) $-2\\dfrac{1}{5} \\cdot \\dfrac{10}{11}$",
+        "loi_giai": "$= \\dfrac{-11}{5} \\cdot \\dfrac{10}{11}$\n$= -2$"
+      },
+      {
+        "ma_cau": "07010202012",
+        "noi_dung": "b) $-1\\dfrac{1}{6} \\cdot \\dfrac{-18}{7}$",
+        "loi_giai": "$= \\dfrac{-7}{6} \\cdot \\dfrac{-18}{7}$\n$= 3$"
+      },
+      {
+        "ma_cau": "07010202013",
+        "noi_dung": "c) $\\dfrac{-6}{13} : \\dfrac{9}{-26}$",
+        "loi_giai": "$= \\dfrac{-6}{13} \\cdot \\dfrac{-26}{9}$\n$= \\dfrac{4}{3}$"
+      },
+      {
+        "ma_cau": "07010202014",
+        "noi_dung": "c) $\\dfrac{15}{7} : \\dfrac{10}{-21}$",
+        "loi_giai": "$= \\dfrac{15}{7} \\cdot \\dfrac{-21}{10}$\n$= \\dfrac{-9}{2}$"
+      },
+      {
+        "ma_cau": "07010202015",
+        "noi_dung": "c) $\\dfrac{-8}{5} : \\dfrac{12}{-15}$",
+        "loi_giai": "$= \\dfrac{-8}{5} \\cdot \\dfrac{-15}{12}$\n$= 2$"
+      },
+      {
+        "ma_cau": "07010202016",
+        "noi_dung": "c) $\\dfrac{14}{9} : \\dfrac{-7}{18}$",
+        "loi_giai": "$= \\dfrac{14}{9} \\cdot \\dfrac{18}{-7}$\n$= -4$"
+      },
+      {
+        "ma_cau": "07010202017",
+        "noi_dung": "c) $\\dfrac{-25}{6} : \\dfrac{15}{-18}$",
+        "loi_giai": "$= \\dfrac{-25}{6} \\cdot \\dfrac{-18}{15}$\n$= 5$"
+      },
+      {
+        "ma_cau": "07010202018",
+        "noi_dung": "c) $\\dfrac{20}{-11} : \\dfrac{4}{33}$",
+        "loi_giai": "$= \\dfrac{20}{-11} \\cdot \\dfrac{33}{4}$\n$= -15$"
+      },
+      {
+        "ma_cau": "07010202019",
+        "noi_dung": "d) $ (-1\\dfrac{5}{7}) : (-2\\dfrac{3}{14}) $",
+        "loi_giai": "$ = (-\\dfrac{12}{7}) : (-\\dfrac{31}{14}) $\n$ = \\dfrac{24}{31} $"
+      },
+      {
+        "ma_cau": "07010403001",
+        "noi_dung": "a) $\\dfrac{3}{5} - (x + 0,4) = 2,1$",
+        "loi_giai": "$x + 0,4 = \\dfrac{3}{5} - 2,1$\n$x + 0,4 = 0,6 - 2,1$\n$x + 0,4 = -1,5$\n$x = -1,5 - 0,4$\n$x = -1,9$"
+      },
+      {
+        "ma_cau": "07010206035",
+        "noi_dung": "e) $1\\dfrac{3}{5} - 3.64 + 9\\dfrac{2}{5} - 2.36$",
+        "loi_giai": "$= 1.6 - 3.64 + 9.4 - 2.36$\\n$= (1.6 + 9.4) - (3.64 + 2.36)$\\n$= 11 - 6$\\n$= 5$"
+      },
+      {
+        "ma_cau": "07010403013",
+        "noi_dung": "f) $x - (1,5 - 2\\dfrac{3}{5}) = \\dfrac{9}{10}$",
+        "loi_giai": "$x - (1,5 - 2,6) = 0,9$\n$x - (-1,1) = 0,9$\n$x + 1,1 = 0,9$\n$x = 0,9 - 1,1$\n$x = -0,2$"
+      },
+      {
+        "ma_cau": "07010404001",
+        "noi_dung": "c) $2x^2 - \\dfrac{25}{2} = 0$",
+        "loi_giai": "$2x^2 = \\dfrac{25}{2}$\n$x^2 = \\dfrac{25}{4}$\n$x = \\pm\\dfrac{5}{2}$"
+      },
+      {
+        "ma_cau": "07010101005",
+        "noi_dung": "Các số sau đây có phải là số hữu tỉ không? Vì sao?\na) 15\nb) -2.4\nc) 0\nd) -3\\dfrac{2}{5}\ne) \\dfrac{-8}{0}",
+        "loi_giai": "a) Có. Vì $15 = \\dfrac{15}{1}$.\nb) Có. Vì $-2.4 = \\dfrac{-24}{10} = \\dfrac{-12}{5}$.\nc) Có. Vì $0 = \\dfrac{0}{1}$.\nd) Có. Vì $-3\\dfrac{2}{5} = \\dfrac{-17}{5}$.\ne) Không phải số hữu tỉ. Vì mẫu số bằng $0$ (vi phạm điều kiện $b \\neq 0$ trong định nghĩa)."
+      },
+      {
+        "ma_cau": "07010101006",
+        "noi_dung": "Các số sau đây có phải là số hữu tỉ không? Vì sao?\na) 3\nb) -0.6\nc) 0\nd) 4\\dfrac{1}{2}\ne) \\dfrac{1}{0}",
+        "loi_giai": "a) Có. Vì $3 = \\dfrac{3}{1}$.\nb) Có. Vì $-0.6 = \\dfrac{-6}{10} = \\dfrac{-3}{5}$.\nc) Có. Vì $0 = \\dfrac{0}{1}$.\nd) Có. Vì $4\\dfrac{1}{2} = \\dfrac{9}{2}$.\ne) Không phải số hữu tỉ. Vì mẫu số bằng $0$ (vi phạm điều kiện $b \\neq 0$ trong định nghĩa)."
+      },
+      {
+        "ma_cau": "07010101004",
+        "noi_dung": "Điền kí hiệu $\\in$, $\\notin$, $\\subset$ thích hợp vào chỗ chấm:\na) $100 \\dots \\mathbb{Q}$\nb) $-0.3 \\dots \\mathbb{Z}$\nc) $-20 \\dots \\mathbb{Q}$\nd) $\\dfrac{9}{7} \\dots \\mathbb{Z}$\ne) $\\mathbb{N} \\dots \\mathbb{Q}$\nf) $1\\dfrac{5}{6} \\dots \\mathbb{Q}$",
+        "loi_giai": "a) $100 \\in \\mathbb{Q}$ (Vì $100$ biểu diễn được thành phân số $\\dfrac{100}{1}$).\nb) $-0.3 \\notin \\mathbb{Z}$ (Số thập phân không thuộc tập số nguyên).\nc) $-20 \\in \\mathbb{Q}$ (Vì $-20$ biểu diễn được thành phân số $-\\dfrac{20}{1}$).\nd) $\\dfrac{9}{7} \\notin \\mathbb{Z}$ (Phân số không thuộc tập số nguyên).\ne) $\\mathbb{N} \\subset \\mathbb{Q}$ (Tập số tự nhiên là tập con của tập số hữu tỉ).\nf) $1\\dfrac{5}{6} \\in \\mathbb{Q}$ (Hỗn số đổi được thành phân số $\\dfrac{11}{6}$)."
+      },
+      {
+        "ma_cau": "07010101002",
+        "noi_dung": "Điền kí hiệu $\\in$, $\\notin$, $\\subset$ thích hợp vào chỗ chấm:\na) $12 \\dots \\mathbb{Q}$\nb) $0.8 \\dots \\mathbb{Z}$\nc) $-5 \\dots \\mathbb{Q}$\nd) $\\dfrac{7}{2} \\dots \\mathbb{Z}$\ne) $\\mathbb{N} \\dots \\mathbb{Q}$\nf) $3\\dfrac{1}{2} \\dots \\mathbb{Q}$",
+        "loi_giai": "a) $12 \\in \\mathbb{Q}$ (Vì $12$ biểu diễn được thành phân số $\\dfrac{12}{1}$).\nb) $0.8 \\notin \\mathbb{Z}$ (Số thập phân không thuộc tập số nguyên).\nc) $-5 \\in \\mathbb{Q}$ (Vì $-5$ biểu diễn được thành phân số $-\\dfrac{5}{1}$).\nd) $\\dfrac{7}{2} \\notin \\mathbb{Z}$ (Phân số không thuộc tập số nguyên).\ne) $\\mathbb{N} \\subset \\mathbb{Q}$ (Tập số tự nhiên là tập con của tập số hữu tỉ).\nf) $3\\dfrac{1}{2} \\in \\mathbb{Q}$ (Hỗn số đổi được thành phân số $\\dfrac{7}{2}$)."
+      },
+      {
+        "ma_cau": "07010101003",
+        "noi_dung": "Điền kí hiệu $\\in$, $\\notin$, $\\subset$ thích hợp vào chỗ chấm:\na) $0 \\dots \\mathbb{Q}$\nb) $1.25 \\dots \\mathbb{Z}$\nc) $15 \\dots \\mathbb{Q}$\nd) $-\\dfrac{1}{4} \\dots \\mathbb{Z}$\ne) $\\mathbb{N} \\dots \\mathbb{Q}$\nf) $5\\dfrac{3}{5} \\dots \\mathbb{Q}$",
+        "loi_giai": "a) $0 \\in \\mathbb{Q}$ (Vì $0$ biểu diễn được thành phân số $\\dfrac{0}{1}$).\nb) $1.25 \\notin \\mathbb{Z}$ (Số thập phân không thuộc tập số nguyên).\nc) $15 \\in \\mathbb{Q}$ (Vì $15$ biểu diễn được thành phân số $\\dfrac{15}{1}$).\nd) $-\\dfrac{1}{4} \\notin \\mathbb{Z}$ (Phân số không thuộc tập số nguyên).\ne) $\\mathbb{N} \\subset \\mathbb{Q}$ (Tập số tự nhiên là tập con của tập số hữu tỉ).\nf) $5\\dfrac{3}{5} \\in \\mathbb{Q}$ (Hỗn số đổi được thành phân số $\\dfrac{28}{5}$)."
+      },
+      {
+        "ma_cau": "07010201007",
+        "noi_dung": "b) $\\dfrac{13}{-15} + \\dfrac{-5}{18}$",
+        "loi_giai": "$= \\dfrac{-13}{15} + \\dfrac{-5}{18}$\\n$= \\dfrac{-78}{90} + \\dfrac{-25}{90}$\\n$= \\dfrac{-103}{90}$"
+      },
+      {
+        "ma_cau": "07010201014",
+        "noi_dung": "a) $\\dfrac{-1}{2} - \\dfrac{-3}{4}$",
+        "loi_giai": "$= \\dfrac{-1}{2} + \\dfrac{3}{4}$\n$= \\dfrac{-2}{4} + \\dfrac{3}{4}$\n$= \\dfrac{1}{4}$"
+      },
+      {
+        "ma_cau": "07010201008",
+        "noi_dung": "a) $\\dfrac{7}{-12} + \\dfrac{-3}{8}$",
+        "loi_giai": "$= \\dfrac{-7}{12} + \\dfrac{-3}{8}$\\n$= \\dfrac{-14}{24} + \\dfrac{-9}{24}$\\n$= \\dfrac{-23}{24}$"
+      },
+      {
+        "ma_cau": "07010201009",
+        "noi_dung": "c) $\\dfrac{-2}{9} + \\dfrac{-7}{15}$",
+        "loi_giai": "$= \\dfrac{-10}{45} + \\dfrac{-21}{45}$\\n$= \\dfrac{-31}{45}$"
+      },
+      {
+        "ma_cau": "07010201010",
+        "noi_dung": "d) $\\dfrac{11}{-14} + \\dfrac{4}{21}$",
+        "loi_giai": "$= \\dfrac{-11}{14} + \\dfrac{4}{21}$\\n$= \\dfrac{-33}{42} + \\dfrac{8}{42}$\\n$= \\dfrac{-25}{42}$"
+      },
+      {
+        "ma_cau": "07010201011",
+        "noi_dung": "e) $\\dfrac{-7}{10} + \\dfrac{3}{-25}$",
+        "loi_giai": "$= \\dfrac{-7}{10} + \\dfrac{-3}{25}$\\n$= \\dfrac{-35}{50} + \\dfrac{-6}{50}$\\n$= \\dfrac{-41}{50}$"
+      },
+      {
+        "ma_cau": "07010201012",
+        "noi_dung": "f) $\\dfrac{5}{-24} + \\dfrac{-7}{16}$",
+        "loi_giai": "$= \\dfrac{-5}{24} + \\dfrac{-7}{16}$\\n$= \\dfrac{-10}{48} + \\dfrac{-21}{48}$\\n$= \\dfrac{-31}{48}$"
+      },
+      {
+        "ma_cau": "07010201015",
+        "noi_dung": "b) $\\dfrac{1}{4} - \\dfrac{-2}{3}$",
+        "loi_giai": "$= \\dfrac{1}{4} + \\dfrac{2}{3}$\n$= \\dfrac{3}{12} + \\dfrac{8}{12}$\n$= \\dfrac{11}{12}$"
+      },
+      {
+        "ma_cau": "07010201016",
+        "noi_dung": "c) $\\dfrac{-3}{7} - \\dfrac{-1}{2}$",
+        "loi_giai": "$= \\dfrac{-3}{7} + \\dfrac{1}{2}$\n$= \\dfrac{-6}{14} + \\dfrac{7}{14}$\n$= \\dfrac{1}{14}$"
+      },
+      {
+        "ma_cau": "07010201017",
+        "noi_dung": "d) $\\dfrac{4}{9} - \\dfrac{-1}{3}$",
+        "loi_giai": "$= \\dfrac{4}{9} + \\dfrac{1}{3}$\n$= \\dfrac{4}{9} + \\dfrac{3}{9}$\n$= \\dfrac{7}{9}$"
+      },
+      {
+        "ma_cau": "07010201018",
+        "noi_dung": "e) $\\dfrac{-5}{6} - \\dfrac{-1}{4}$",
+        "loi_giai": "$= \\dfrac{-5}{6} + \\dfrac{1}{4}$\n$= \\dfrac{-10}{12} + \\dfrac{3}{12}$\n$= \\dfrac{-7}{12}$"
+      },
+      {
+        "ma_cau": "07010201020",
+        "noi_dung": "d) $(-2) - (-\\dfrac{3}{4})$",
+        "loi_giai": "$= -2 + \\dfrac{3}{4}$\n$= -\\dfrac{8}{4} + \\dfrac{3}{4}$\n$= -\\dfrac{5}{4}$"
+      },
+      {
+        "ma_cau": "07010201021",
+        "noi_dung": "d) $5 - (-\\dfrac{2}{3})$",
+        "loi_giai": "$= 5 + \\dfrac{2}{3}$\n$= \\dfrac{15}{3} + \\dfrac{2}{3}$\n$= \\dfrac{17}{3}$"
+      },
+      {
+        "ma_cau": "07010201022",
+        "noi_dung": "d) $(-4) - (-\\dfrac{1}{2})$",
+        "loi_giai": "$= -4 + \\dfrac{1}{2}$\n$= -\\dfrac{8}{2} + \\dfrac{1}{2}$\n$= -\\dfrac{7}{2}$"
+      },
+      {
+        "ma_cau": "07010201023",
+        "noi_dung": "d) $1 - (-\\dfrac{7}{5})$",
+        "loi_giai": "$= 1 + \\dfrac{7}{5}$\n$= \\dfrac{5}{5} + \\dfrac{7}{5}$\n$= \\dfrac{12}{5}$"
+      },
+      {
+        "ma_cau": "07010201024",
+        "noi_dung": "d) $(-6) - (-\\dfrac{1}{3})$",
+        "loi_giai": "$= -6 + \\dfrac{1}{3}$\n$= -\\dfrac{18}{3} + \\dfrac{1}{3}$\n$= -\\dfrac{17}{3}$"
+      },
+      {
+        "ma_cau": "07010206001",
+        "noi_dung": "a) $(-\\dfrac{27}{13}) + (-\\dfrac{23}{15}) + \\dfrac{1}{13} + (\\dfrac{7}{-15})$",
+        "loi_giai": "= $(-\\dfrac{27}{13} + \\dfrac{1}{13}) + (-\\dfrac{23}{15} - \\dfrac{7}{15})$\n= $(-\\dfrac{26}{13}) + (-\\dfrac{30}{15})$\n= $(-2) + (-2)$\n= $-4$"
+      },
+      {
+        "ma_cau": "07010206002",
+        "noi_dung": "a) $(-\\dfrac{23}{7}) + (-\\dfrac{30}{11}) + \\dfrac{2}{7} + (\\dfrac{14}{-11})$",
+        "loi_giai": "= $(-\\dfrac{23}{7} + \\dfrac{2}{7}) + (-\\dfrac{30}{11} - \\dfrac{14}{11})$\n= $(-\\dfrac{21}{7}) + (-\\dfrac{44}{11})$\n= $(-3) + (-4)$\n= $-7$"
+      },
+      {
+        "ma_cau": "07010206003",
+        "noi_dung": "a) $(-\\dfrac{28}{5}) + (-\\dfrac{19}{8}) + \\dfrac{3}{5} + (\\dfrac{5}{-8})$",
+        "loi_giai": "= $(-\\dfrac{28}{5} + \\dfrac{3}{5}) + (-\\dfrac{19}{8} - \\dfrac{5}{8})$\n= $(-\\dfrac{25}{5}) + (-\\dfrac{24}{8})$\n= $(-5) + (-3)$\n= $-8$"
+      },
+      {
+        "ma_cau": "07010206004",
+        "noi_dung": "a) $(-\\dfrac{20}{9}) + (-\\dfrac{10}{4}) + \\dfrac{2}{9} + (\\dfrac{14}{-4})$",
+        "loi_giai": "= $(-\\dfrac{20}{9} + \\dfrac{2}{9}) + (-\\dfrac{10}{4} - \\dfrac{14}{4})$\n= $(-\\dfrac{18}{9}) + (-\\dfrac{24}{4})$\n= $(-2) + (-6)$\n= $-8$"
+      },
+      {
+        "ma_cau": "07010206005",
+        "noi_dung": "a) $(-\\dfrac{20}{6}) + (-\\dfrac{30}{10}) + \\dfrac{2}{6} + (\\dfrac{20}{-10})$",
+        "loi_giai": "= $(-\\dfrac{20}{6} + \\dfrac{2}{6}) + (-\\dfrac{30}{10} - \\dfrac{20}{10})$\n= $(-\\dfrac{18}{6}) + (-\\dfrac{50}{10})$\n= $(-3) + (-5)$\n= $-8$"
+      },
+      {
+        "ma_cau": "07010206006",
+        "noi_dung": "a) $(-\\dfrac{15}{12}) + (-\\dfrac{30}{14}) + \\dfrac{3}{12} + (\\dfrac{26}{-14})$",
+        "loi_giai": "= $(-\\dfrac{15}{12} + \\dfrac{3}{12}) + (-\\dfrac{30}{14} - \\dfrac{26}{14})$\n= $(-\\dfrac{12}{12}) + (-\\dfrac{56}{14})$\n= $(-1) + (-4)$\n= $-5$"
+      },
+      {
+        "ma_cau": "07010206007",
+        "noi_dung": "b) $\\dfrac{1}{3} - [[(-\\dfrac{5}{4}) - (-\\dfrac{1}{4} + \\dfrac{8}{3})]]$",
+        "loi_giai": "$= \\dfrac{1}{3} - [-\\dfrac{5}{4} + \\dfrac{1}{4} - \\dfrac{8}{3}]$\n$= \\dfrac{1}{3} - [-\\dfrac{4}{4} - \\dfrac{8}{3}]$\n$= \\dfrac{1}{3} - [-1 - \\dfrac{8}{3}]$\n$= \\dfrac{1}{3} - [-\\dfrac{3}{3} - \\dfrac{8}{3}]$\n$= \\dfrac{1}{3} - [-\\dfrac{11}{3}]$\n$= \\dfrac{1}{3} + \\dfrac{11}{3}$\n$= \\dfrac{12}{3}$\n$= 4$"
+      },
+      {
+        "ma_cau": "07010103001",
+        "noi_dung": "a) So sánh $\\dfrac{-3}{4}$ và $\\dfrac{-2}{3}$",
+        "loi_giai": "Ta có: $\\dfrac{-3}{4} = \\dfrac{-9}{12}$ và $\\dfrac{-2}{3} = \\dfrac{-8}{12}$.\nVì $\\dfrac{-9}{12} < \\dfrac{-8}{12}$ nên $\\dfrac{-3}{4} < \\dfrac{-2}{3}$."
+      },
+      {
+        "ma_cau": "07010201001",
+        "noi_dung": "a) $\\dfrac{3}{-21} + \\dfrac{-2}{7}$",
+        "loi_giai": "$= \\dfrac{-3}{21} + \\dfrac{-2}{7}$\n$= \\dfrac{-1}{7} + \\dfrac{-2}{7}$\n$= \\dfrac{-3}{7}$"
+      },
+      {
+        "ma_cau": "07010206008",
+        "noi_dung": "b) $\\dfrac{1}{2} - [[(-\\dfrac{3}{5}) - (-\\dfrac{1}{5} + \\dfrac{7}{2})]]$",
+        "loi_giai": "$= \\dfrac{1}{2} - [-\\dfrac{3}{5} + \\dfrac{1}{5} - \\dfrac{7}{2}]$\n$= \\dfrac{1}{2} - [-\\dfrac{2}{5} - \\dfrac{7}{2}]$\n$= \\dfrac{1}{2} - [-\\dfrac{4}{10} - \\dfrac{35}{10}]$\n$= \\dfrac{1}{2} - [-\\dfrac{39}{10}]$\n$= \\dfrac{1}{2} + \\dfrac{39}{10}$\n$= \\dfrac{5}{10} + \\dfrac{39}{10}$\n$= \\dfrac{44}{10}$\n$= \\dfrac{22}{5}$"
+      },
+      {
+        "ma_cau": "07010206009",
+        "noi_dung": "b) $\\dfrac{1}{2} - [[(-\\dfrac{7}{6}) - (-\\dfrac{1}{6} + \\dfrac{2}{3})]]$",
+        "loi_giai": "$= \\dfrac{1}{2} - [-\\dfrac{7}{6} + \\dfrac{1}{6} - \\dfrac{2}{3}]$\n$= \\dfrac{1}{2} - [-\\dfrac{6}{6} - \\dfrac{2}{3}]$\n$= \\dfrac{1}{2} - [-1 - \\dfrac{2}{3}]$\n$= \\dfrac{1}{2} - [-\\dfrac{3}{3} - \\dfrac{2}{3}]$\n$= \\dfrac{1}{2} - [-\\dfrac{5}{3}]$\n$= \\dfrac{1}{2} + \\dfrac{5}{3}$\n$= \\dfrac{3}{6} + \\dfrac{10}{6}$\n$= \\dfrac{13}{6}$"
+      },
+      {
+        "ma_cau": "07010206010",
+        "noi_dung": "b) $\\dfrac{2}{5} - [[(-\\dfrac{9}{7}) - (-\\dfrac{2}{7} + \\dfrac{10}{5})]]$",
+        "loi_giai": "$= \\dfrac{2}{5} - [-\\dfrac{9}{7} + \\dfrac{2}{7} - \\dfrac{10}{5}]$\n$= \\dfrac{2}{5} - [-\\dfrac{7}{7} - 2]$\n$= \\dfrac{2}{5} - [-1 - 2]$\n$= \\dfrac{2}{5} - [-3]$\n$= \\dfrac{2}{5} + 3$\n$= \\dfrac{2}{5} + \\dfrac{15}{5}$\n$= \\dfrac{17}{5}$"
+      },
+      {
+        "ma_cau": "07010206011",
+        "noi_dung": "b) $\\dfrac{3}{4} - [[(-\\dfrac{7}{8}) - (-\\dfrac{3}{8} + \\dfrac{5}{2})]]$",
+        "loi_giai": "$= \\dfrac{3}{4} - [-\\dfrac{7}{8} + \\dfrac{3}{8} - \\dfrac{5}{2}]$\n$= \\dfrac{3}{4} - [-\\dfrac{4}{8} - \\dfrac{5}{2}]$\n$= \\dfrac{3}{4} - [-\\dfrac{1}{2} - \\dfrac{5}{2}]$\n$= \\dfrac{3}{4} - [-\\dfrac{6}{2}]$\n$= \\dfrac{3}{4} - [-3]$\n$= \\dfrac{3}{4} + 3$\n$= \\dfrac{3}{4} + \\dfrac{12}{4}$\n$= \\dfrac{15}{4}$"
+      },
+      {
+        "ma_cau": "07010206012",
+        "noi_dung": "b) $\\dfrac{1}{6} - [[(-\\dfrac{10}{9}) - (-\\dfrac{1}{9} + \\dfrac{4}{3})]]$",
+        "loi_giai": "$= \\dfrac{1}{6} - [-\\dfrac{10}{9} + \\dfrac{1}{9} - \\dfrac{4}{3}]$\n$= \\dfrac{1}{6} - [-\\dfrac{9}{9} - \\dfrac{4}{3}]$\n$= \\dfrac{1}{6} - [-1 - \\dfrac{4}{3}]$\n$= \\dfrac{1}{6} - [-\\dfrac{3}{3} - \\dfrac{4}{3}]$\n$= \\dfrac{1}{6} - [-\\dfrac{7}{3}]$\n$= \\dfrac{1}{6} + \\dfrac{7}{3}$\n$= \\dfrac{1}{6} + \\dfrac{14}{6}$\n$= \\dfrac{15}{6}$\n$= \\dfrac{5}{2}$"
+      },
+      {
+        "ma_cau": "07010202002",
+        "noi_dung": "a) $1,5 \\cdot \\left( -\\dfrac{2}{9} \\right)$",
+        "loi_giai": "$= \\dfrac{15}{10} \\cdot \\left( -\\dfrac{2}{9} \\right)$\n$= -\\dfrac{1}{3}$"
+      },
+      {
+        "ma_cau": "07010202003",
+        "noi_dung": "a) $-0,8 \\cdot \\dfrac{5}{12}$",
+        "loi_giai": "$= -\\dfrac{8}{10} \\cdot \\dfrac{5}{12}$\n$= -\\dfrac{1}{3}$"
+      },
+      {
+        "ma_cau": "07010202004",
+        "noi_dung": "a) $0,4 \\cdot \\dfrac{15}{2}$",
+        "loi_giai": "$= \\dfrac{4}{10} \\cdot \\dfrac{15}{2}$\n$= 3$"
+      },
+      {
+        "ma_cau": "07010202005",
+        "noi_dung": "a) $-1,25 \\cdot \\left( -\\dfrac{4}{5} \\right)$",
+        "loi_giai": "$= -\\dfrac{125}{100} \\cdot \\left( -\\dfrac{4}{5} \\right)$\n$= 1$"
+      },
+      {
+        "ma_cau": "07010202006",
+        "noi_dung": "a) $0,6 \\cdot \\left( -\\dfrac{5}{18} \\right)$",
+        "loi_giai": "$= \\dfrac{6}{10} \\cdot \\left( -\\dfrac{5}{18} \\right)$\n$= -\\dfrac{1}{6}$"
+      },
+      {
+        "ma_cau": "07010202020",
+        "noi_dung": "a) $ (-1\\dfrac{1}{3}) : (-2\\dfrac{1}{6}) $",
+        "loi_giai": "$ = (-\\dfrac{4}{3}) : (-\\dfrac{13}{6}) $\n$ = \\dfrac{8}{13} $"
+      },
+      {
+        "ma_cau": "07010202021",
+        "noi_dung": "b) $ (-2\\dfrac{1}{5}) : (-3\\dfrac{1}{10}) $",
+        "loi_giai": "$ = (-\\dfrac{11}{5}) : (-\\dfrac{31}{10}) $\n$ = \\dfrac{22}{31} $"
+      },
+      {
+        "ma_cau": "07010202022",
+        "noi_dung": "c) $ (-1\\dfrac{1}{2}) : (-2\\dfrac{1}{4}) $",
+        "loi_giai": "$ = (-\\dfrac{3}{2}) : (-\\dfrac{9}{4}) $\n$ = \\dfrac{2}{3} $"
+      },
+      {
+        "ma_cau": "07010202023",
+        "noi_dung": "e) $ (-3\\dfrac{1}{4}) : (-1\\dfrac{5}{8}) $",
+        "loi_giai": "$ = (-\\dfrac{13}{4}) : (-\\dfrac{13}{8}) $\n$ = 2 $"
+      },
+      {
+        "ma_cau": "07010202024",
+        "noi_dung": "f) $ (-1\\dfrac{1}{6}) : (-2\\dfrac{1}{3}) $",
+        "loi_giai": "$ = (-\\dfrac{7}{6}) : (-\\dfrac{7}{3}) $\n$ = \\dfrac{1}{2} $"
+      },
+      {
+        "ma_cau": "07010202025",
+        "noi_dung": "a) $\\dfrac{-2}{5} + \\dfrac{-3}{5} : \\dfrac{12}{7}$",
+        "loi_giai": "$\\dfrac{-2}{5} + \\dfrac{-3}{5} : \\dfrac{12}{7}$\n$= \\dfrac{-2}{5} + \\dfrac{-3}{5} \\cdot \\dfrac{7}{12}$\n$= \\dfrac{-2}{5} + \\dfrac{-1}{5} \\cdot \\dfrac{7}{4}$\n$= \\dfrac{-2}{5} + \\dfrac{-7}{20}$\n$= \\dfrac{-8}{20} + \\dfrac{-7}{20}$\n$= \\dfrac{-15}{20}$\n$= \\dfrac{-3}{4}$"
+      },
+      {
+        "ma_cau": "07010202026",
+        "noi_dung": "a) $\\dfrac{1}{2} + \\dfrac{-5}{6} : \\dfrac{10}{3}$",
+        "loi_giai": "$\\dfrac{1}{2} + \\dfrac{-5}{6} : \\dfrac{10}{3}$\n$= \\dfrac{1}{2} + \\dfrac{-5}{6} \\cdot \\dfrac{3}{10}$\n$= \\dfrac{1}{2} + \\dfrac{-1}{2} \\cdot \\dfrac{1}{2}$\n$= \\dfrac{1}{2} + \\dfrac{-1}{4}$\n$= \\dfrac{2}{4} + \\dfrac{-1}{4}$\n$= \\dfrac{1}{4}$\n$= \\dfrac{1}{4}$"
+      },
+      {
+        "ma_cau": "07010202027",
+        "noi_dung": "a) $\\dfrac{-1}{3} + \\dfrac{4}{7} : \\dfrac{8}{21}$",
+        "loi_giai": "$\\dfrac{-1}{3} + \\dfrac{4}{7} : \\dfrac{8}{21}$\n$= \\dfrac{-1}{3} + \\dfrac{4}{7} \\cdot \\dfrac{21}{8}$\n$= \\dfrac{-1}{3} + \\dfrac{1}{1} \\cdot \\dfrac{3}{2}$\n$= \\dfrac{-1}{3} + \\dfrac{3}{2}$\n$= \\dfrac{-2}{6} + \\dfrac{9}{6}$\n$= \\dfrac{7}{6}$\n$= \\dfrac{7}{6}$"
+      },
+      {
+        "ma_cau": "07010202028",
+        "noi_dung": "a) $\\dfrac{-3}{4} + \\dfrac{2}{9} : \\dfrac{-4}{3}$",
+        "loi_giai": "$\\dfrac{-3}{4} + \\dfrac{2}{9} : \\dfrac{-4}{3}$\n$= \\dfrac{-3}{4} + \\dfrac{2}{9} \\cdot \\dfrac{3}{-4}$\n$= \\dfrac{-3}{4} + \\dfrac{1}{3} \\cdot \\dfrac{1}{-2}$\n$= \\dfrac{-3}{4} + \\dfrac{-1}{6}$\n$= \\dfrac{-9}{12} + \\dfrac{-2}{12}$\n$= \\dfrac{-11}{12}$\n$= \\dfrac{-11}{12}$"
+      },
+      {
+        "ma_cau": "07010202029",
+        "noi_dung": "a) $\\dfrac{1}{6} + \\dfrac{5}{4} : \\dfrac{15}{2}$",
+        "loi_giai": "$\\dfrac{1}{6} + \\dfrac{5}{4} : \\dfrac{15}{2}$\n$= \\dfrac{1}{6} + \\dfrac{5}{4} \\cdot \\dfrac{2}{15}$\n$= \\dfrac{1}{6} + \\dfrac{1}{2} \\cdot \\dfrac{1}{3}$\n$= \\dfrac{1}{6} + \\dfrac{1}{6}$\n$= \\dfrac{1}{6} + \\dfrac{1}{6}$\n$= \\dfrac{2}{6}$\n$= \\dfrac{1}{3}$"
+      },
+      {
+        "ma_cau": "07010202030",
+        "noi_dung": "a) $\\dfrac{2}{3} + \\dfrac{-9}{10} : \\dfrac{3}{5}$",
+        "loi_giai": "$\\dfrac{2}{3} + \\dfrac{-9}{10} : \\dfrac{3}{5}$\n$= \\dfrac{2}{3} + \\dfrac{-9}{10} \\cdot \\dfrac{5}{3}$\n$= \\dfrac{2}{3} + \\dfrac{-3}{2} \\cdot \\dfrac{1}{1}$\n$= \\dfrac{2}{3} + \\dfrac{-3}{2}$\n$= \\dfrac{4}{6} + \\dfrac{-9}{6}$\n$= \\dfrac{-5}{6}$\n$= \\dfrac{-5}{6}$"
+      },
+      {
+        "ma_cau": "07010202031",
+        "noi_dung": "a) $\\dfrac{-5}{2} + \\dfrac{6}{7} : \\dfrac{3}{14}$",
+        "loi_giai": "$= \\dfrac{-5}{2} + \\dfrac{6}{7} \\cdot \\dfrac{14}{3}$\n$= \\dfrac{-5}{2} + \\dfrac{2}{1} \\cdot \\dfrac{2}{1}$\n$= \\dfrac{-5}{2} + 4$\n$= \\dfrac{-5}{2} + \\dfrac{8}{2}$\n$= \\dfrac{3}{2}$"
+      },
+      {
+        "ma_cau": "07010202032",
+        "noi_dung": "a) $\\dfrac{-3}{4} + \\dfrac{5}{6} : \\dfrac{10}{9}$",
+        "loi_giai": "$= \\dfrac{-3}{4} + \\dfrac{5}{6} \\cdot \\dfrac{9}{10}$\n$= \\dfrac{-3}{4} + \\dfrac{1}{2} \\cdot \\dfrac{3}{2}$\n$= \\dfrac{-3}{4} + \\dfrac{3}{4}$\n$= \\dfrac{-3}{4} + \\dfrac{3}{4}$\n$= 0$"
+      },
+      {
+        "ma_cau": "07010202033",
+        "noi_dung": "a) $\\dfrac{-1}{3} + \\dfrac{8}{9} : \\dfrac{4}{15}$",
+        "loi_giai": "$= \\dfrac{-1}{3} + \\dfrac{8}{9} \\cdot \\dfrac{15}{4}$\n$= \\dfrac{-1}{3} + \\dfrac{2}{3} \\cdot \\dfrac{5}{1}$\n$= \\dfrac{-1}{3} + \\dfrac{10}{3}$\n$= \\dfrac{-1}{3} + \\dfrac{10}{3}$\n$= \\dfrac{9}{3} = 3$"
+      },
+      {
+        "ma_cau": "07010202034",
+        "noi_dung": "a) $\\dfrac{-2}{5} + \\dfrac{9}{10} : \\dfrac{3}{20}$",
+        "loi_giai": "$= \\dfrac{-2}{5} + \\dfrac{9}{10} \\cdot \\dfrac{20}{3}$\n$= \\dfrac{-2}{5} + \\dfrac{3}{1} \\cdot \\dfrac{2}{1}$\n$= \\dfrac{-2}{5} + 6$\n$= \\dfrac{-2}{5} + \\dfrac{30}{5}$\n$= \\dfrac{28}{5}$"
+      },
+      {
+        "ma_cau": "07010202035",
+        "noi_dung": "a) $\\dfrac{-7}{6} + \\dfrac{15}{8} : \\dfrac{5}{12}$",
+        "loi_giai": "$= \\dfrac{-7}{6} + \\dfrac{15}{8} \\cdot \\dfrac{12}{5}$\n$= \\dfrac{-7}{6} + \\dfrac{3}{2} \\cdot \\dfrac{3}{1}$\n$= \\dfrac{-7}{6} + \\dfrac{9}{2}$\n$= \\dfrac{-7}{6} + \\dfrac{27}{6}$\n$= \\dfrac{20}{6} = \\dfrac{10}{3}$"
+      },
+      {
+        "ma_cau": "07010202036",
+        "noi_dung": "a) $\\dfrac{-11}{12} + \\dfrac{7}{10} : \\dfrac{14}{15}$",
+        "loi_giai": "$= \\dfrac{-11}{12} + \\dfrac{7}{10} \\cdot \\dfrac{15}{14}$\n$= \\dfrac{-11}{12} + \\dfrac{1}{2} \\cdot \\dfrac{3}{2}$\n$= \\dfrac{-11}{12} + \\dfrac{3}{4}$\n$= \\dfrac{-11}{12} + \\dfrac{9}{12}$\n$= \\dfrac{-2}{12} = \\dfrac{-1}{6}$"
+      },
+      {
+        "ma_cau": "07010202037",
+        "noi_dung": "a) $\\dfrac{1}{9} : \\dfrac{-2}{27} - \\dfrac{1}{4} \\cdot 6$",
+        "loi_giai": "$= \\dfrac{1}{9} \\cdot \\dfrac{-27}{2} - \\dfrac{6}{4}$\n$= \\dfrac{1}{1} \\cdot \\dfrac{-3}{2} - \\dfrac{3}{2}$\n$= \\dfrac{-3}{2} - \\dfrac{3}{2}$\n$= \\dfrac{-6}{2}$\n$= -3$"
+      },
+      {
+        "ma_cau": "07010206025",
+        "noi_dung": "c) $\\dfrac{3}{4} - 1,29 + \\dfrac{9}{4} + 2,29 - \\dfrac{1}{3}$",
+        "loi_giai": "$= (\\dfrac{3}{4} + \\dfrac{9}{4}) + (2,29 - 1,29) - \\dfrac{1}{3}$\n$= \\dfrac{12}{4} + 1 - \\dfrac{1}{3}$\n$= 3 + 1 - \\dfrac{1}{3} = 4 - \\dfrac{1}{3}$\n$= \\dfrac{12}{3} - \\dfrac{1}{3} = \\dfrac{11}{3}$"
+      },
+      {
+        "ma_cau": "07010206026",
+        "noi_dung": "c) $\\dfrac{2}{5} - 3,50 + \\dfrac{8}{5} + 4,50 - \\dfrac{1}{2}$",
+        "loi_giai": "$= (\\dfrac{2}{5} + \\dfrac{8}{5}) + (4,50 - 3,50) - \\dfrac{1}{2}$\n$= \\dfrac{10}{5} + 1 - \\dfrac{1}{2}$\n$= 2 + 1 - \\dfrac{1}{2} = 3 - \\dfrac{1}{2}$\n$= \\dfrac{6}{2} - \\dfrac{1}{2} = \\dfrac{5}{2}$"
+      },
+      {
+        "ma_cau": "07010206027",
+        "noi_dung": "c) $\\dfrac{5}{7} - 2,75 + \\dfrac{9}{7} + 3,75 - \\dfrac{1}{4}$",
+        "loi_giai": "$= (\\dfrac{5}{7} + \\dfrac{9}{7}) + (3,75 - 2,75) - \\dfrac{1}{4}$\n$= \\dfrac{14}{7} + 1 - \\dfrac{1}{4}$\n$= 2 + 1 - \\dfrac{1}{4} = 3 - \\dfrac{1}{4}$\n$= \\dfrac{12}{4} - \\dfrac{1}{4} = \\dfrac{11}{4}$"
+      },
+      {
+        "ma_cau": "07010206028",
+        "noi_dung": "c) $\\dfrac{1}{6} - 0,25 + \\dfrac{11}{6} + 1,25 - \\dfrac{2}{5}$",
+        "loi_giai": "$= (\\dfrac{1}{6} + \\dfrac{11}{6}) + (1,25 - 0,25) - \\dfrac{2}{5}$\n$= \\dfrac{12}{6} + 1 - \\dfrac{2}{5}$\n$= 2 + 1 - \\dfrac{2}{5} = 3 - \\dfrac{2}{5}$\n$= \\dfrac{15}{5} - \\dfrac{2}{5} = \\dfrac{13}{5}$"
+      },
+      {
+        "ma_cau": "07010206029",
+        "noi_dung": "c) $\\dfrac{3}{8} - 5,10 + \\dfrac{13}{8} + 6,10 - \\dfrac{2}{3}$",
+        "loi_giai": "$= (\\dfrac{3}{8} + \\dfrac{13}{8}) + (6,10 - 5,10) - \\dfrac{2}{3}$\n$= \\dfrac{16}{8} + 1 - \\dfrac{2}{3}$\n$= 2 + 1 - \\dfrac{2}{3} = 3 - \\dfrac{2}{3}$\n$= \\dfrac{9}{3} - \\dfrac{2}{3} = \\dfrac{7}{3}$"
+      },
+      {
+        "ma_cau": "07010206030",
+        "noi_dung": "c) $\\dfrac{7}{10} - 1,60 + \\dfrac{13}{10} + 2,60 - \\dfrac{3}{7}$",
+        "loi_giai": "$= (\\dfrac{7}{10} + \\dfrac{13}{10}) + (2,60 - 1,60) - \\dfrac{3}{7}$\n$= \\dfrac{20}{10} + 1 - \\dfrac{3}{7}$\n$= 2 + 1 - \\dfrac{3}{7} = 3 - \\dfrac{3}{7}$\n$= \\dfrac{21}{7} - \\dfrac{3}{7} = \\dfrac{18}{7}$"
+      },
+      {
+        "ma_cau": "07010206036",
+        "noi_dung": "e) $2\\dfrac{1}{2} - 5.28 + 7\\dfrac{1}{2} - 4.72$",
+        "loi_giai": "$= 2.5 - 5.28 + 7.5 - 4.72$\\n$= (2.5 + 7.5) - (5.28 + 4.72)$\\n$= 10 - 10$\\n$= 0$"
+      },
+      {
+        "ma_cau": "07010206037",
+        "noi_dung": "e) $3\\dfrac{1}{4} - 6.15 + 1\\dfrac{3}{4} - 2.85$",
+        "loi_giai": "$= 3.25 - 6.15 + 1.75 - 2.85$\\n$= (3.25 + 1.75) - (6.15 + 2.85)$\\n$= 5 - 9$\\n$= -4$"
+      },
+      {
+        "ma_cau": "07010206038",
+        "noi_dung": "e) $4\\dfrac{1}{10} - 1.37 + 5\\dfrac{9}{10} - 0.63$",
+        "loi_giai": "$= 4.1 - 1.37 + 5.9 - 0.63$\\n$= (4.1 + 5.9) - (1.37 + 0.63)$\\n$= 10 - 2$\\n$= 8$"
+      },
+      {
+        "ma_cau": "07010206039",
+        "noi_dung": "f) $5,68 + \\dfrac{17}{12} + 4,32 - \\dfrac{5}{12}$",
+        "loi_giai": "$= (5,68 + 4,32) + (\\dfrac{17}{12} - \\dfrac{5}{12})$\n$= 10 + \\dfrac{12}{12}$\n$= 10 + 1$\n$= 11$"
+      },
+      {
+        "ma_cau": "07010205001",
+        "noi_dung": "Một cửa hàng trà sữa có chương trình khuyến mãi sau: Thứ 4 hàng tuần, khách hàng sẽ được giảm giá 20% tất cả các loại sản phẩm. Thứ 4 tuần trước, bạn Minh Anh mua 2 hộp trà sữa đường đen và một hộp trà đào. Giá của một hộp trà sữa đường đen là 45.000đ, giá một hộp trà đào là 35.000đ.\na) Bạn Minh Anh phải trả bao nhiêu tiền khi mua 3 hộp trà đó?\nb) Bạn đưa cho cô thu ngân 200.000 đồng. Hỏi bạn Minh Anh được trả lại bao nhiêu tiền?",
+        "loi_giai": "a) Giá tiền ban đầu của 3 hộp trà là:\n$2 \\times 45.000 + 35.000 = 125.000$ (đồng)\nSố tiền bạn Minh Anh phải trả sau khi được giảm giá $20\\%$ là:\n$125.000 \\times (100\\% - 20\\%) = 125.000 \\times 0,8 = 100.000$ (đồng)\nb) Số tiền bạn Minh Anh được trả lại là:\n$200.000 - 100.000 = 100.000$ (đồng)"
+      },
+      {
+        "ma_cau": "07010205010",
+        "noi_dung": "Chú Ba gửi vào ngân hàng 300 triệu đồng với kì hạn 1 năm, lãi suất 5%/năm.\na) Tính số tiền cả gốc và lãi của chú Ba rút ra sau khi hết kì hạn 1 năm.\nb) Sau kì hạn 1 năm, chú Ba lấy ra $\\dfrac{1}{4}$ số tiền (cả gốc và lãi) để mua một chiếc xe máy điện. Tính giá của chiếc xe máy điện mà chú Ba đã mua.",
+        "loi_giai": "a) Số tiền lãi chú Ba nhận được sau 1 năm là:\n$300.000.000 \\times 5\\% = 15.000.000$ (đồng)\nSố tiền cả gốc và lãi chú Ba rút ra sau 1 năm là:\n$300.000.000 + 15.000.000 = 315.000.000$ (đồng)\nb) Giá của chiếc xe máy điện mà chú Ba đã mua là:\n$315.000.000 \\times \\dfrac{1}{4} = 78.750.000$ (đồng)"
+      },
+      {
+        "ma_cau": "07010205002",
+        "noi_dung": "Một cửa hàng bánh ngọt có chương trình khuyến mãi sau: Thứ 3 hàng tuần, khách hàng sẽ được giảm giá 15% tất cả các loại sản phẩm. Thứ 3 tuần trước, bạn Mai mua 2 hộp bánh kem và một hộp bánh tiramisu. Giá của một hộp bánh kem là 50.000đ, giá một hộp bánh tiramisu là 30.000đ.\na) Bạn Mai phải trả bao nhiêu tiền khi mua 3 hộp bánh đó?\nb) Bạn đưa cho cô thu ngân 200.000 đồng. Hỏi bạn Mai được trả lại bao nhiêu tiền?",
+        "loi_giai": "a) Giá tiền ban đầu của 3 hộp bánh là:\n$2 \\times 50.000 + 30.000 = 130.000$ (đồng)\nSố tiền bạn Mai phải trả sau khi được giảm giá $15\\%$ là:\n$130.000 \\times (100\\% - 15\\%) = 130.000 \\times 0,85 = 110.500$ (đồng)\nb) Số tiền bạn Mai được trả lại là:\n$200.000 - 110.500 = 89.500$ (đồng)"
+      },
+      {
+        "ma_cau": "07010205003",
+        "noi_dung": "Một cửa hàng văn phòng phẩm có chương trình khuyến mãi sau: Thứ 5 hàng tuần, khách hàng sẽ được giảm giá 10% tất cả các loại sản phẩm. Thứ 5 tuần trước, bạn Lan mua 1 quyển vở và 2 chiếc bút bi. Giá của một quyển vở là 25.000đ, giá một chiếc bút bi là 15.000đ.\na) Bạn Lan phải trả bao nhiêu tiền khi mua 3 món đồ đó?\nb) Bạn đưa cho cô thu ngân 100.000 đồng. Hỏi bạn Lan được trả lại bao nhiêu tiền?",
+        "loi_giai": "a) Giá tiền ban đầu của 3 món đồ là:\n$1 \\times 25.000 + 2 \\times 15.000 = 25.000 + 30.000 = 55.000$ (đồng)\nSố tiền bạn Lan phải trả sau khi được giảm giá $10\\%$ là:\n$55.000 \\times (100\\% - 10\\%) = 55.000 \\times 0,9 = 49.500$ (đồng)\nb) Số tiền bạn Lan được trả lại là:\n$100.000 - 49.500 = 50.500$ (đồng)"
+      },
+      {
+        "ma_cau": "07010205004",
+        "noi_dung": "Một cửa hàng sách có chương trình khuyến mãi sau: Thứ 6 hàng tuần, khách hàng sẽ được giảm giá 25% tất cả các loại sản phẩm. Thứ 6 tuần trước, bạn An mua 2 cuốn truyện tranh và một cuốn sách khoa học. Giá của một cuốn truyện tranh là 40.000đ, giá một cuốn sách khoa học là 60.000đ.\na) Bạn An phải trả bao nhiêu tiền khi mua 3 cuốn sách đó?\nb) Bạn đưa cho cô thu ngân 200.000 đồng. Hỏi bạn An được trả lại bao nhiêu tiền?",
+        "loi_giai": "a) Giá tiền ban đầu của 3 cuốn sách là:\n$2 \\times 40.000 + 60.000 = 80.000 + 60.000 = 140.000$ (đồng)\nSố tiền bạn An phải trả sau khi được giảm giá $25\\%$ là:\n$140.000 \\times (100\\% - 25\\%) = 140.000 \\times 0,75 = 105.000$ (đồng)\nb) Số tiền bạn An được trả lại là:\n$200.000 - 105.000 = 95.000$ (đồng)"
+      },
+      {
+        "ma_cau": "07010205005",
+        "noi_dung": "Để chuẩn bị năm học mới, bạn An dự định mua 10 quyển vở, giá 12.000 đồng/quyển và 6 cây bút bi, giá 5.000 đồng/cây. Tuy nhiên, khi An đến cửa hàng, toàn bộ sản phẩm đang được giảm giá 20%.\na) Tính số tiền bạn An được giảm?\nb) Giả sử bạn An mang theo 160.000 đồng. Hỏi cửa hàng phải trả lại An bao nhiêu tiền?",
+        "loi_giai": "Giá tiền dự định của 10 quyển vở và 6 cây bút bi là:\n$10 \\times 12.000 + 6 \\times 5.000 = 120.000 + 30.000 = 150.000$ (đồng)\na) Số tiền bạn An được giảm là:\n$150.000 \\times 20\\% = 30.000$ (đồng)\nb) Số tiền thực tế bạn An phải trả là:\n$150.000 - 30.000 = 120.000$ (đồng)\nSố tiền cửa hàng phải trả lại cho An là:\n$160.000 - 120.000 = 40.000$ (đồng)"
+      },
+      {
+        "ma_cau": "07010205006",
+        "noi_dung": "Để chuẩn bị năm học mới, bạn Minh dự định mua 15 quyển tập, giá 8.000 đồng/quyển và 5 cây bút chì, giá 4.000 đồng/cây. Tuy nhiên, khi Minh đến cửa hàng, toàn bộ sản phẩm đang được giảm giá 15%.\na) Tính số tiền bạn Minh được giảm?\nb) Giả sử bạn Minh mang theo 200.000 đồng. Hỏi cửa hàng phải trả lại Minh bao nhiêu tiền?",
+        "loi_giai": "Giá tiền dự định của 15 quyển tập và 5 cây bút chì là:\n$15 \\times 8.000 + 5 \\times 4.000 = 120.000 + 20.000 = 140.000$ (đồng)\na) Số tiền bạn Minh được giảm là:\n$140.000 \\times 15\\% = 21.000$ (đồng)\nb) Số tiền thực tế bạn Minh phải trả là:\n$140.000 - 21.000 = 119.000$ (đồng)\nSố tiền cửa hàng phải trả lại cho Minh là:\n$200.000 - 119.000 = 81.000$ (đồng)"
+      },
+      {
+        "ma_cau": "07010205007",
+        "noi_dung": "Để chuẩn bị năm học mới, bạn Hoa dự định mua 8 hộp bút màu, giá 25.000 đồng/hộp và 10 chiếc tẩy, giá 3.000 đồng/chiếc. Tuy nhiên, khi Hoa đến cửa hàng, toàn bộ sản phẩm đang được giảm giá 10%.\na) Tính số tiền bạn Hoa được giảm?\nb) Giả sử bạn Hoa mang theo 250.000 đồng. Hỏi cửa hàng phải trả lại Hoa bao nhiêu tiền?",
+        "loi_giai": "Giá tiền dự định của 8 hộp bút màu và 10 chiếc tẩy là:\n$8 \\times 25.000 + 10 \\times 3.000 = 200.000 + 30.000 = 230.000$ (đồng)\na) Số tiền bạn Hoa được giảm là:\n$230.000 \\times 10\\% = 23.000$ (đồng)\nb) Số tiền thực tế bạn Hoa phải trả là:\n$230.000 - 23.000 = 207.000$ (đồng)\nSố tiền cửa hàng phải trả lại cho Hoa là:\n$250.000 - 207.000 = 43.000$ (đồng)"
+      },
+      {
+        "ma_cau": "07010205008",
+        "noi_dung": "Để chuẩn bị năm học mới, bạn Nam dự định mua 12 chiếc thước kẻ, giá 7.000 đồng/chiếc và 4 chiếc kéo, giá 15.000 đồng/chiếc. Tuy nhiên, khi Nam đến cửa hàng, toàn bộ sản phẩm đang được giảm giá 25%.\na) Tính số tiền bạn Nam được giảm?\nb) Giả sử bạn Nam mang theo 180.000 đồng. Hỏi cửa hàng phải trả lại Nam bao nhiêu tiền?",
+        "loi_giai": "Giá tiền dự định của 12 chiếc thước kẻ và 4 chiếc kéo là:\n$12 \\times 7.000 + 4 \\times 15.000 = 84.000 + 60.000 = 144.000$ (đồng)\na) Số tiền bạn Nam được giảm là:\n$144.000 \\times 25\\% = 36.000$ (đồng)\nb) Số tiền thực tế bạn Nam phải trả là:\n$144.000 - 36.000 = 108.000$ (đồng)\nSố tiền cửa hàng phải trả lại cho Nam là:\n$180.000 - 108.000 = 72.000$ (đồng)"
+      },
+      {
+        "ma_cau": "07010205009",
+        "noi_dung": "Cô Hoa gửi vào ngân hàng 200 triệu đồng với kì hạn 1 năm, lãi suất 6%/năm.\na) Tính số tiền cả gốc và lãi của cô Hoa rút ra sau khi hết kì hạn 1 năm.\nb) Sau kì hạn 1 năm, cô Hoa lấy ra $\\dfrac{1}{5}$ số tiền (cả gốc và lãi) để mua một chiếc tivi 85 Inch QLED Q60D 4K Smart TV. Tính giá của chiếc tivi 85 Inch QLED Q60D 4K Smart TV mà cô Hoa đã mua.",
+        "loi_giai": "a) Số tiền lãi cô Hoa nhận được sau 1 năm là:\n$200.000.000 \\times 6\\% = 12.000.000$ (đồng)\nSố tiền cả gốc và lãi cô Hoa rút ra sau 1 năm là:\n$200.000.000 + 12.000.000 = 212.000.000$ (đồng)\nb) Giá của chiếc tivi mà cô Hoa đã mua là:\n$212.000.000 \\times \\dfrac{1}{5} = 42.400.000$ (đồng)"
+      },
+      {
+        "ma_cau": "07010301001",
+        "noi_dung": "a) $(\\dfrac{2}{9} + \\dfrac{2}{3})^2$",
+        "loi_giai": "$ = (\\dfrac{2}{9} + \\dfrac{6}{9})^2$\n$ = (\\dfrac{8}{9})^2$\n$ = \\dfrac{64}{81}$"
+      },
+      {
+        "ma_cau": "07010205011",
+        "noi_dung": "Bà Lan gửi vào ngân hàng 400 triệu đồng với kì hạn 1 năm, lãi suất 4%/năm.\na) Tính số tiền cả gốc và lãi của bà Lan rút ra sau khi hết kì hạn 1 năm.\nb) Sau kì hạn 1 năm, bà Lan lấy ra $\\dfrac{1}{8}$ số tiền (cả gốc và lãi) để mua một chiếc tủ lạnh side by side. Tính giá của chiếc tủ lạnh side by side mà bà Lan đã mua.",
+        "loi_giai": "a) Số tiền lãi bà Lan nhận được sau 1 năm là:\n$400.000.000 \\times 4\\% = 16.000.000$ (đồng)\nSố tiền cả gốc và lãi bà Lan rút ra sau 1 năm là:\n$400.000.000 + 16.000.000 = 416.000.000$ (đồng)\nb) Giá của chiếc tủ lạnh side by side mà bà Lan đã mua là:\n$416.000.000 \\times \\dfrac{1}{8} = 52.000.000$ (đồng)"
+      },
+      {
+        "ma_cau": "07010205012",
+        "noi_dung": "Anh Nam gửi vào ngân hàng 250 triệu đồng với kì hạn 1 năm, lãi suất 8%/năm.\na) Tính số tiền cả gốc và lãi của anh Nam rút ra sau khi hết kì hạn 1 năm.\nb) Sau kì hạn 1 năm, anh Nam lấy ra $\\dfrac{1}{10}$ số tiền (cả gốc và lãi) để mua một chiếc điện thoại thông minh cao cấp. Tính giá của chiếc điện thoại thông minh cao cấp mà anh Nam đã mua.",
+        "loi_giai": "a) Số tiền lãi anh Nam nhận được sau 1 năm là:\n$250.000.000 \\times 8\\% = 20.000.000$ (đồng)\nSố tiền cả gốc và lãi anh Nam rút ra sau 1 năm là:\n$250.000.000 + 20.000.000 = 270.000.000$ (đồng)\nb) Giá của chiếc điện thoại thông minh cao cấp mà anh Nam đã mua là:\n$270.000.000 \\times \\dfrac{1}{10} = 27.000.000$ (đồng)"
+      },
+      {
+        "ma_cau": "07010205014",
+        "noi_dung": "Bác An gửi vào ngân hàng 120 triệu đồng với kì hạn 1 năm, lãi suất 5 %/năm.\\na) Tính số tiền bác thu được (kể cả gốc và lãi) sau kì hạn 1 năm.\\nb) Sau kì hạn 1 năm, bác rút ra \\dfrac{2}{3} số tiền (kể cả gốc và lãi). Biết số tiền bác rút ra vừa đủ để mua 160 suất quà cho các trẻ em có hoàn cảnh khó khăn. Tính giá trị của mỗi suất quà bác đã mua.",
+        "loi_giai": "a) Số tiền lãi bác An nhận được sau 1 năm là:\\n$120 \\times 5\\% = 6$ (triệu đồng)\\nTổng số tiền bác An thu được (kể cả gốc và lãi) sau 1 năm là:\\n$120 + 6 = 126$ (triệu đồng)\\nb) Số tiền bác An rút ra để mua quà là:\\n$126 \\times \\dfrac{2}{3} = 84$ (triệu đồng)\\nĐổi $84$ triệu đồng thành đồng:\\n$84 \\times 1\\ 000\\ 000 = 84\\ 000\\ 000$ (đồng)\\nGiá trị của mỗi suất quà bác đã mua là:\\n$84\\ 000\\ 000 \\div 160 = 525\\ 000$ (đồng)"
+      },
+      {
+        "ma_cau": "07010205015",
+        "noi_dung": "Cô Lan gửi vào ngân hàng 150 triệu đồng với kì hạn 1 năm, lãi suất 4 %/năm.\\na) Tính số tiền cô thu được (kể cả gốc và lãi) sau kì hạn 1 năm.\\nb) Sau kì hạn 1 năm, cô rút ra \\dfrac{3}{5} số tiền (kể cả gốc và lãi). Biết số tiền cô rút ra vừa đủ để mua 120 suất quà cho các trẻ em có hoàn cảnh khó khăn. Tính giá trị của mỗi suất quà cô đã mua.",
+        "loi_giai": "a) Số tiền lãi cô Lan nhận được sau 1 năm là:\\n$150 \\times 4\\% = 6$ (triệu đồng)\\nTổng số tiền cô Lan thu được (kể cả gốc và lãi) sau 1 năm là:\\n$150 + 6 = 156$ (triệu đồng)\\nb) Số tiền cô Lan rút ra để mua quà là:\\n$156 \\times \\dfrac{3}{5} = 93,6$ (triệu đồng)\\nĐổi $93,6$ triệu đồng thành đồng:\\n$93,6 \\times 1\\ 000\\ 000 = 93\\ 600\\ 000$ (đồng)\\nGiá trị của mỗi suất quà cô Lan đã mua là:\\n$93\\ 600\\ 000 \\div 120 = 780\\ 000$ (đồng)"
+      },
+      {
+        "ma_cau": "07010205016",
+        "noi_dung": "Chú Nam gửi vào ngân hàng 200 triệu đồng với kì hạn 1 năm, lãi suất 3,5 %/năm.\\na) Tính số tiền chú thu được (kể cả gốc và lãi) sau kì hạn 1 năm.\\nb) Sau kì hạn 1 năm, chú rút ra \\dfrac{4}{5} số tiền (kể cả gốc và lãi). Biết số tiền chú rút ra vừa đủ để mua 200 suất quà cho các trẻ em có hoàn cảnh khó khăn. Tính giá trị của mỗi suất quà chú đã mua.",
+        "loi_giai": "a) Số tiền lãi chú Nam nhận được sau 1 năm là:\\n$200 \\times 3,5\\% = 7$ (triệu đồng)\\nTổng số tiền chú Nam thu được (kể cả gốc và lãi) sau 1 năm là:\\n$200 + 7 = 207$ (triệu đồng)\\nb) Số tiền chú Nam rút ra để mua quà là:\\n$207 \\times \\dfrac{4}{5} = 165,6$ (triệu đồng)\\nĐổi $165,6$ triệu đồng thành đồng:\\n$165,6 \\times 1\\ 000\\ 000 = 165\\ 600\\ 000$ (đồng)\\nGiá trị của mỗi suất quà chú Nam đã mua là:\\n$165\\ 600\\ 000 \\div 200 = 828\\ 000$ (đồng)"
+      },
+      {
+        "ma_cau": "07010205017",
+        "noi_dung": "Giá niêm yết của một quyển 'Lịch sử Việt Nam hiện đại' là 160 000 đồng, giá niêm yết của một quyển 'Văn học Việt Nam trung đại' là 125 000 đồng. Nhà sách đang có chương trình khuyến mãi giảm giá 10% cho sách 'Lịch sử Việt Nam hiện đại', 20% cho sách 'Văn học Việt Nam trung đại' và 15% cho bút bi.\na) Bạn Minh mua mỗi loại một quyển sách, hỏi bạn phải trả bao nhiêu tiền?\nb) Khi đến quầy thu ngân, Minh mua thêm 2 cây bút bi, tổng số tiền Minh phải trả là 254.200 đồng. Hỏi giá niêm yết của một chiếc bút bi là bao nhiêu?",
+        "loi_giai": "a) Giá quyển 'Lịch sử Việt Nam hiện đại' sau khi giảm giá là:\n$160000 - 160000 \\times 10\\% = 144000$ (đồng)\nGiá quyển 'Văn học Việt Nam trung đại' sau khi giảm giá là:\n$125000 - 125000 \\times 20\\% = 100000$ (đồng)\nSố tiền bạn Minh phải trả khi mua hai quyển sách là:\n$144000 + 100000 = 244000$ (đồng)\nb) Số tiền bạn Minh phải trả cho 2 cây bút bi là:\n$254200 - 244000 = 10200$ (đồng)\nGiá của một cây bút bi sau khi giảm giá là:\n$10200 \\div 2 = 5100$ (đồng)\nGiá niêm yết của một chiếc bút bi là:\n$5100 \\div (1 - 15\\%) = 6000$ (đồng)\nĐáp số: a) 244000 đồng; b) 6000 đồng"
+      },
+      {
+        "ma_cau": "07010401028",
+        "noi_dung": "a) $(3 - \\dfrac{1}{2})^2 : \\dfrac{25}{4}$",
+        "loi_giai": "$ = (\\dfrac{6}{2} - \\dfrac{1}{2})^2 : \\dfrac{25}{4}$\n$ = (\\dfrac{5}{2})^2 : \\dfrac{25}{4}$\n$ = \\dfrac{25}{4} : \\dfrac{25}{4}$\n$ = \\dfrac{25}{4} \\times \\dfrac{4}{25}$\n$ = 1$"
+      },
+      {
+        "ma_cau": "07010205018",
+        "noi_dung": "Giá niêm yết của một quyển 'Địa lí tự nhiên' là 180 000 đồng, giá niêm yết của một quyển 'Toán học nâng cao' là 140 000 đồng. Cửa hàng đang có chương trình khuyến mãi giảm giá 10% cho sách 'Địa lí tự nhiên', 25% cho sách 'Toán học nâng cao' và 10% cho thước kẻ.\na) Bạn An mua mỗi loại một quyển sách, hỏi bạn phải trả bao nhiêu tiền?\nb) Khi đến quầy thu ngân, An mua thêm 3 cây thước kẻ, tổng số tiền An phải trả là 280.500 đồng. Hỏi giá niêm yết của một chiếc thước kẻ là bao nhiêu?",
+        "loi_giai": "a) Giá quyển 'Địa lí tự nhiên' sau khi giảm giá là:\n$180000 - 180000 \\times 10\\% = 162000$ (đồng)\nGiá quyển 'Toán học nâng cao' sau khi giảm giá là:\n$140000 - 140000 \\times 25\\% = 105000$ (đồng)\nSố tiền bạn An phải trả khi mua hai quyển sách là:\n$162000 + 105000 = 267000$ (đồng)\nb) Số tiền bạn An phải trả cho 3 cây thước kẻ là:\n$280500 - 267000 = 13500$ (đồng)\nGiá của một cây thước kẻ sau khi giảm giá là:\n$13500 \\div 3 = 4500$ (đồng)\nGiá niêm yết của một chiếc thước kẻ là:\n$4500 \\div (1 - 10\\%) = 5000$ (đồng)\nĐáp số: a) 267000 đồng; b) 5000 đồng"
+      },
+      {
+        "ma_cau": "07010205019",
+        "noi_dung": "Giá niêm yết của một quyển 'Vật lí cơ bản' là 150 000 đồng, giá niêm yết của một quyển 'Hóa học hữu cơ' là 100 000 đồng. Siêu thị đang có chương trình khuyến mãi giảm giá 20% cho sách 'Vật lí cơ bản', 15% cho sách 'Hóa học hữu cơ' và 20% cho compa.\na) Bạn Bình mua mỗi loại một quyển sách, hỏi bạn phải trả bao nhiêu tiền?\nb) Khi đến quầy thu ngân, Bình mua thêm 4 chiếc compa, tổng số tiền Bình phải trả là 217.800 đồng. Hỏi giá niêm yết của một chiếc compa là bao nhiêu?",
+        "loi_giai": "a) Giá quyển 'Vật lí cơ bản' sau khi giảm giá là:\n$150000 - 150000 \\times 20\\% = 120000$ (đồng)\nGiá quyển 'Hóa học hữu cơ' sau khi giảm giá là:\n$100000 - 100000 \\times 15\\% = 85000$ (đồng)\nSố tiền bạn Bình phải trả khi mua hai quyển sách là:\n$120000 + 85000 = 205000$ (đồng)\nb) Số tiền bạn Bình phải trả cho 4 chiếc compa là:\n$217800 - 205000 = 12800$ (đồng)\nGiá của một chiếc compa sau khi giảm giá là:\n$12800 \\div 4 = 3200$ (đồng)\nGiá niêm yết của một chiếc compa là:\n$3200 \\div (1 - 20\\%) = 4000$ (đồng)\nĐáp số: a) 205000 đồng; b) 4000 đồng"
+      },
+      {
+        "ma_cau": "07010205020",
+        "noi_dung": "Giá niêm yết của một quyển 'Sinh học đại cương' là 200 000 đồng, giá niêm yết của một quyển 'Nghệ thuật' là 160 000 đồng. Cửa hàng đang có chương trình khuyến mãi giảm giá 15% cho sách 'Sinh học đại cương', 10% cho sách 'Nghệ thuật' và 25% cho tẩy.\na) Bạn Cường mua mỗi loại một quyển sách, hỏi bạn phải trả bao nhiêu tiền?\nb) Khi đến quầy thu ngân, Cường mua thêm 5 cục tẩy, tổng số tiền Cường phải trả là 321.500 đồng. Hỏi giá niêm yết của một cục tẩy là bao nhiêu?",
+        "loi_giai": "a) Giá quyển 'Sinh học đại cương' sau khi giảm giá là:\n$200000 - 200000 \\times 15\\% = 170000$ (đồng)\nGiá quyển 'Nghệ thuật' sau khi giảm giá là:\n$160000 - 160000 \\times 10\\% = 144000$ (đồng)\nSố tiền bạn Cường phải trả khi mua hai quyển sách là:\n$170000 + 144000 = 314000$ (đồng)\nb) Số tiền bạn Cường phải trả cho 5 cục tẩy là:\n$321500 - 314000 = 7500$ (đồng)\nGiá của một cục tẩy sau khi giảm giá là:\n$7500 \\div 5 = 1500$ (đồng)\nGiá niêm yết của một cục tẩy là:\n$1500 \\div (1 - 25\\%) = 2000$ (đồng)\nĐáp số: a) 314000 đồng; b) 2000 đồng"
+      },
+      {
+        "ma_cau": "07010205021",
+        "noi_dung": "Hai cửa hàng cùng bán một loại máy điều hòa với giá niêm yết là 20 triệu đồng. Thành phố X đang có chương trình khuyến mãi đặc biệt.\nCửa hàng 1: Giảm giá 20% so với giá niêm yết\nCửa hàng 2: Giảm giá 10% so với giá niêm yết và giảm thêm 10% của giá sản phẩm sau lần giảm thứ nhất đối với khách hàng có thẻ thành viên .\na) Tính số tiền phải trả khi mua điều hoà ở cửa hàng thứ nhất?\nb) Nếu khách hàng có thẻ thành viên thì mua ở cửa hàng nào giá rẻ hơn? Vì sao?",
+        "loi_giai": "a) Số tiền phải trả khi mua điều hoà ở cửa hàng thứ nhất là:\n$20 \\times (100\\% - 20\\%) = 20 \\times 80\\% = 20 \\times 0.8 = 16$ (triệu đồng)\nb) Số tiền phải trả khi mua điều hoà ở cửa hàng thứ hai lần thứ nhất là:\n$20 \\times (100\\% - 10\\%) = 20 \\times 90\\% = 20 \\times 0.9 = 18$ (triệu đồng)\nSố tiền phải trả khi mua điều hoà ở cửa hàng thứ hai sau khi giảm thêm là:\n$18 \\times (100\\% - 10\\%) = 18 \\times 90\\% = 18 \\times 0.9 = 16.2$ (triệu đồng)\nVì $16$ triệu đồng $< 16.2$ triệu đồng nên khách hàng có thẻ thành viên nên mua điều hoà ở cửa hàng thứ nhất sẽ rẻ hơn."
+      },
+      {
+        "ma_cau": "07010205022",
+        "noi_dung": "Hai cửa hàng cùng bán một loại máy giặt với giá niêm yết là 20 triệu đồng. Thành phố Y đang có chương trình khuyến mãi đặc biệt.\nCửa hàng A: Giảm giá 15% so với giá niêm yết\nCửa hàng B: Giảm giá 10% so với giá niêm yết và giảm thêm 10% của giá sản phẩm sau lần giảm thứ nhất đối với khách hàng có thẻ thành viên .\na) Tính số tiền phải trả khi mua máy giặt ở cửa hàng A?\nb) Nếu khách hàng có thẻ thành viên thì mua ở cửa hàng nào giá rẻ hơn? Vì sao?",
+        "loi_giai": "a) Số tiền phải trả khi mua máy giặt ở cửa hàng A là:\n$20 \\times (100\\% - 15\\%) = 20 \\times 85\\% = 20 \\times 0.85 = 17$ (triệu đồng)\nb) Số tiền phải trả khi mua máy giặt ở cửa hàng B lần thứ nhất là:\n$20 \\times (100\\% - 10\\%) = 20 \\times 90\\% = 20 \\times 0.9 = 18$ (triệu đồng)\nSố tiền phải trả khi mua máy giặt ở cửa hàng B sau khi giảm thêm là:\n$18 \\times (100\\% - 10\\%) = 18 \\times 90\\% = 18 \\times 0.9 = 16.2$ (triệu đồng)\nVì $17$ triệu đồng $> 16.2$ triệu đồng nên khách hàng có thẻ thành viên nên mua máy giặt ở cửa hàng B sẽ rẻ hơn."
+      },
+      {
+        "ma_cau": "07010205023",
+        "noi_dung": "Hai cửa hàng cùng bán một loại tủ lạnh với giá niêm yết là 30 triệu đồng. Thành phố Z đang có chương trình khuyến mãi đặc biệt.\nCửa hàng X: Giảm giá 20% so với giá niêm yết\nCửa hàng Y: Giảm giá 15% so với giá niêm yết và giảm thêm 10% của giá sản phẩm sau lần giảm thứ nhất đối với khách hàng có thẻ thành viên .\na) Tính số tiền phải trả khi mua tủ lạnh ở cửa hàng X?\nb) Nếu khách hàng có thẻ thành viên thì mua ở cửa hàng nào giá rẻ hơn? Vì sao?",
+        "loi_giai": "a) Số tiền phải trả khi mua tủ lạnh ở cửa hàng X là:\n$30 \\times (100\\% - 20\\%) = 30 \\times 80\\% = 30 \\times 0.8 = 24$ (triệu đồng)\nb) Số tiền phải trả khi mua tủ lạnh ở cửa hàng Y lần thứ nhất là:\n$30 \\times (100\\% - 15\\%) = 30 \\times 85\\% = 30 \\times 0.85 = 25.5$ (triệu đồng)\nSố tiền phải trả khi mua tủ lạnh ở cửa hàng Y sau khi giảm thêm là:\n$25.5 \\times (100\\% - 10\\%) = 25.5 \\times 90\\% = 25.5 \\times 0.9 = 22.95$ (triệu đồng)\nVì $24$ triệu đồng $> 22.95$ triệu đồng nên khách hàng có thẻ thành viên nên mua tủ lạnh ở cửa hàng Y sẽ rẻ hơn."
+      },
+      {
+        "ma_cau": "07010205024",
+        "noi_dung": "Hai cửa hàng cùng bán một loại máy tính xách tay với giá niêm yết là 25 triệu đồng. Thành phố W đang có chương trình khuyến mãi đặc biệt.\nCửa hàng C: Giảm giá 24% so với giá niêm yết\nCửa hàng D: Giảm giá 20% so với giá niêm yết và giảm thêm 5% của giá sản phẩm sau lần giảm thứ nhất đối với khách hàng có thẻ thành viên .\na) Tính số tiền phải trả khi mua máy tính xách tay ở cửa hàng C?\nb) Nếu khách hàng có thẻ thành viên thì mua ở cửa hàng nào giá rẻ hơn? Vì sao?",
+        "loi_giai": "a) Số tiền phải trả khi mua máy tính xách tay ở cửa hàng C là:\n$25 \\times (100\\% - 24\\%) = 25 \\times 76\\% = 25 \\times 0.76 = 19$ (triệu đồng)\nb) Số tiền phải trả khi mua máy tính xách tay ở cửa hàng D lần thứ nhất là:\n$25 \\times (100\\% - 20\\%) = 25 \\times 80\\% = 25 \\times 0.8 = 20$ (triệu đồng)\nSố tiền phải trả khi mua máy tính xách tay ở cửa hàng D sau khi giảm thêm là:\n$20 \\times (100\\% - 5\\%) = 20 \\times 95\\% = 20 \\times 0.95 = 19$ (triệu đồng)\nVì $19$ triệu đồng $= 19$ triệu đồng nên khách hàng có thẻ thành viên mua máy tính xách tay ở cả hai cửa hàng C và D có giá như nhau."
+      },
+      {
+        "ma_cau": "07010301002",
+        "noi_dung": "a) $(\\dfrac{1}{12} + \\dfrac{1}{4})^2$",
+        "loi_giai": "$ = (\\dfrac{1}{12} + \\dfrac{3}{12})^2$\n$ = (\\dfrac{4}{12})^2$\n$ = (\\dfrac{1}{3})^2$\n$ = \\dfrac{1}{9}$"
+      },
+      {
+        "ma_cau": "07010301003",
+        "noi_dung": "a) $(\\dfrac{3}{10} + \\dfrac{1}{2})^2$",
+        "loi_giai": "$ = (\\dfrac{3}{10} + \\dfrac{5}{10})^2$\n$ = (\\dfrac{8}{10})^2$\n$ = (\\dfrac{4}{5})^2$\n$ = \\dfrac{16}{25}$"
+      },
+      {
+        "ma_cau": "07010301004",
+        "noi_dung": "a) $(\\dfrac{1}{8} + \\dfrac{3}{4})^2$",
+        "loi_giai": "$ = (\\dfrac{1}{8} + \\dfrac{6}{8})^2$\n$ = (\\dfrac{7}{8})^2$\n$ = \\dfrac{49}{64}$"
+      },
+      {
+        "ma_cau": "07010301005",
+        "noi_dung": "a) $(\\dfrac{1}{15} + \\dfrac{2}{5})^2$",
+        "loi_giai": "$ = (\\dfrac{1}{15} + \\dfrac{6}{15})^2$\n$ = (\\dfrac{7}{15})^2$\n$ = \\dfrac{49}{225}$"
+      },
+      {
+        "ma_cau": "07010301006",
+        "noi_dung": "a) $(\\dfrac{3}{14} + \\dfrac{2}{7})^2$",
+        "loi_giai": "$ = (\\dfrac{3}{14} + \\dfrac{4}{14})^2$\n$ = (\\dfrac{7}{14})^2$\n$ = (\\dfrac{1}{2})^2$\n$ = \\dfrac{1}{4}$"
+      },
+      {
+        "ma_cau": "07010301007",
+        "noi_dung": "c) $\\left(-\\dfrac{20}{27}\\right)^0 - 12 + \\left(\\dfrac{1}{2}\\right)^2 : \\dfrac{1}{8}$",
+        "loi_giai": "$= 1 - 12 + \\dfrac{1}{4} : \\dfrac{1}{8}$\n$= 1 - 12 + \\dfrac{1}{4} \\cdot 8$\n$= 1 - 12 + 2$\n$= -11 + 2$\n$= -9$"
+      },
+      {
+        "ma_cau": "07010301013",
+        "noi_dung": "c) $3^2 + 4 \\cdot (\\dfrac{7}{9})^0 + [((-5)^2) : \\dfrac{1}{5}] : 25$",
+        "loi_giai": "$= 9 + 4 \\cdot 1 + [25 : \\dfrac{1}{5}] : 25$\n$= 9 + 4 + [25 \\cdot 5] : 25$\n$= 13 + 125 : 25$\n$= 13 + 5$\n$= 18$"
+      },
+      {
+        "ma_cau": "07010301014",
+        "noi_dung": "c) $2^3 + 4 \\cdot (\\dfrac{2}{3})^0 + [((-3)^2) : \\dfrac{1}{2}] : 9$",
+        "loi_giai": "$= 8 + 4 \\cdot 1 + [9 : \\dfrac{1}{2}] : 9$\n$= 8 + 4 + [9 \\cdot 2] : 9$\n$= 12 + 18 : 9$\n$= 12 + 2$\n$= 14$"
+      },
+      {
+        "ma_cau": "07010301015",
+        "noi_dung": "c) $4^2 + 5 \\cdot (\\dfrac{1}{2})^0 + [((-6)^2) : \\dfrac{1}{3}] : 12$",
+        "loi_giai": "$= 16 + 5 \\cdot 1 + [36 : \\dfrac{1}{3}] : 12$\n$= 16 + 5 + [36 \\cdot 3] : 12$\n$= 21 + 108 : 12$\n$= 21 + 9$\n$= 30$"
+      },
+      {
+        "ma_cau": "07010301016",
+        "noi_dung": "c) $5^2 + 3 \\cdot (-\\dfrac{4}{7})^0 + [((-4)^2) : \\dfrac{1}{6}] : 8$",
+        "loi_giai": "$= 25 + 3 \\cdot 1 + [16 : \\dfrac{1}{6}] : 8$\n$= 25 + 3 + [16 \\cdot 6] : 8$\n$= 28 + 96 : 8$\n$= 28 + 12$\n$= 40$"
+      },
+      {
+        "ma_cau": "07010401027",
+        "noi_dung": "c) $(2 - \\dfrac{3}{4})^2 : \\dfrac{11}{16}$",
+        "loi_giai": "$ = (\\dfrac{8}{4} - \\dfrac{3}{4})^2 : \\dfrac{11}{16}$\n$ = (\\dfrac{5}{4})^2 : \\dfrac{11}{16}$\n$ = \\dfrac{25}{16} : \\dfrac{11}{16}$\n$ = \\dfrac{25}{16} \\times \\dfrac{16}{11}$\n$ = \\dfrac{25}{11}$"
+      },
+      {
+        "ma_cau": "07010301025",
+        "noi_dung": "c) $0.25 - \\left(-\\dfrac{1}{4}\\right)^2 + \\dfrac{2}{4} : 4$",
+        "loi_giai": "= $\\dfrac{1}{4} - \\dfrac{1}{16} + \\dfrac{1}{2} : 4$\n= $\\dfrac{4}{16} - \\dfrac{1}{16} + \\dfrac{1}{2} \\cdot \\dfrac{1}{4}$\n= $\\dfrac{3}{16} + \\dfrac{1}{8}$\n= $\\dfrac{3}{16} + \\dfrac{2}{16} = \\dfrac{5}{16}$"
+      },
+      {
+        "ma_cau": "07010301026",
+        "noi_dung": "a) $0.5 - \\left(-\\dfrac{1}{3}\\right)^2 + \\dfrac{3}{6} : 3$",
+        "loi_giai": "= $\\dfrac{1}{2} - \\dfrac{1}{9} + \\dfrac{1}{2} : 3$\n= $\\dfrac{9}{18} - \\dfrac{2}{18} + \\dfrac{1}{2} \\cdot \\dfrac{1}{3}$\n= $\\dfrac{7}{18} + \\dfrac{1}{6}$\n= $\\dfrac{7}{18} + \\dfrac{3}{18} = \\dfrac{10}{18} = \\dfrac{5}{9}$"
+      },
+      {
+        "ma_cau": "07010301027",
+        "noi_dung": "b) $0.2 - \\left(-\\dfrac{1}{5}\right)^2 + \\dfrac{4}{10} : 2$",
+        "loi_giai": "= $\\dfrac{1}{5} - \\dfrac{1}{25} + \\dfrac{2}{5} : 2$\n= $\\dfrac{5}{25} - \\dfrac{1}{25} + \\dfrac{2}{5} \\cdot \\dfrac{1}{2}$\n= $\\dfrac{4}{25} + \\dfrac{1}{5}$\n= $\\dfrac{4}{25} + \\dfrac{5}{25} = \\dfrac{9}{25}$"
+      },
+      {
+        "ma_cau": "07010301028",
+        "noi_dung": "d) $0.75 - \\left(-\\dfrac{1}{2}\\right)^2 + \\dfrac{6}{8} : 3$",
+        "loi_giai": "= $\\dfrac{3}{4} - \\dfrac{1}{4} + \\dfrac{3}{4} : 3$\n= $\\dfrac{3}{4} - \\dfrac{1}{4} + \\dfrac{3}{4} \\cdot \\dfrac{1}{3}$\n= $\\dfrac{2}{4} + \\dfrac{1}{4}$\n= $\\dfrac{2}{4} + \\dfrac{1}{4} = \\dfrac{3}{4}$"
+      },
+      {
+        "ma_cau": "07010301029",
+        "noi_dung": "d) $3 - \\left(\\dfrac{1}{3}\\right)^3 + \\dfrac{1}{27} + \\left(\\dfrac{-2025}{2026}\\right)^0$",
+        "loi_giai": "$= 3 - \\dfrac{1}{27} + \\dfrac{1}{27} + 1$\n$= 3 + 1 + \\left(-\\dfrac{1}{27} + \\dfrac{1}{27}\\right)$\n$= 4 + 0 = 4$"
+      },
+      {
+        "ma_cau": "07010401019",
+        "noi_dung": "a) $(\\dfrac{2}{3})^3 - (\\dfrac{3}{4})^2 \\cdot (-1)^5$",
+        "loi_giai": "$= \\dfrac{8}{27} - \\dfrac{9}{16} \\cdot (-1)$\n$= \\dfrac{8}{27} + \\dfrac{9}{16}$\n$= \\dfrac{128}{432} + \\dfrac{243}{432}$\n$= \\dfrac{371}{432}$"
+      },
+      {
+        "ma_cau": "07010401020",
+        "noi_dung": "a) $(\\dfrac{1}{2})^3 - (\\dfrac{1}{3})^2 \\cdot (-1)^7$",
+        "loi_giai": "$= \\dfrac{1}{8} - \\dfrac{1}{9} \\cdot (-1)$\n$= \\dfrac{1}{8} + \\dfrac{1}{9}$\n$= \\dfrac{9}{72} + \\dfrac{8}{72}$\n$= \\dfrac{17}{72}$"
+      },
+      {
+        "ma_cau": "07010401021",
+        "noi_dung": "a) $(\\dfrac{3}{2})^3 - (\\dfrac{2}{5})^2 \\cdot (-1)^3$",
+        "loi_giai": "$= \\dfrac{27}{8} - \\dfrac{4}{25} \\cdot (-1)$\n$= \\dfrac{27}{8} + \\dfrac{4}{25}$\n$= \\dfrac{675}{200} + \\dfrac{32}{200}$\n$= \\dfrac{707}{200}$"
+      },
+      {
+        "ma_cau": "07010401022",
+        "noi_dung": "a) $(\\dfrac{1}{4})^3 - (\\dfrac{1}{2})^2 \\cdot (-1)^9$",
+        "loi_giai": "$= \\dfrac{1}{64} - \\dfrac{1}{4} \\cdot (-1)$\n$= \\dfrac{1}{64} + \\dfrac{1}{4}$\n$= \\dfrac{1}{64} + \\dfrac{16}{64}$\n$= \\dfrac{17}{64}$"
+      },
+      {
+        "ma_cau": "07010401023",
+        "noi_dung": "b) $4 \\cdot \\left(-\\dfrac{1}{2}\\right)^3 + \\dfrac{1}{2}$",
+        "loi_giai": "$= 4 \\cdot \\left(-\\dfrac{1}{8}\\right) + \\dfrac{1}{2}$\n$= -\\dfrac{4}{8} + \\dfrac{1}{2}$\n$= -\\dfrac{1}{2} + \\dfrac{1}{2}$\n$= 0$"
+      },
+      {
+        "ma_cau": "07010401029",
+        "noi_dung": "b) $(1 - \\dfrac{1}{3})^2 : \\dfrac{4}{9}$",
+        "loi_giai": "$ = (\\dfrac{3}{3} - \\dfrac{1}{3})^2 : \\dfrac{4}{9}$\n$ = (\\dfrac{2}{3})^2 : \\dfrac{4}{9}$\n$ = \\dfrac{4}{9} : \\dfrac{4}{9}$\n$ = \\dfrac{4}{9} \\times \\dfrac{9}{4}$\n$ = 1$"
+      },
+      {
+        "ma_cau": "07010401030",
+        "noi_dung": "c) $(5 - \\dfrac{2}{3})^2 : \\dfrac{13}{9}$",
+        "loi_giai": "$ = (\\dfrac{15}{3} - \\dfrac{2}{3})^2 : \\dfrac{13}{9}$\n$ = (\\dfrac{13}{3})^2 : \\dfrac{13}{9}$\n$ = \\dfrac{169}{9} : \\dfrac{13}{9}$\n$ = \\dfrac{169}{9} \\times \\dfrac{9}{13}$\n$ = 13$"
+      },
+      {
+        "ma_cau": "07010403002",
+        "noi_dung": "a) $\\dfrac{1}{2} - (x + 0,3) = 1,5$",
+        "loi_giai": "$x + 0,3 = \\dfrac{1}{2} - 1,5$\n$x + 0,3 = 0,5 - 1,5$\n$x + 0,3 = -1,0$\n$x = -1,0 - 0,3$\n$x = -1,3$"
+      },
+      {
+        "ma_cau": "07010403003",
+        "noi_dung": "a) $\\dfrac{7}{10} - (x + 0,8) = -0,5$",
+        "loi_giai": "$x + 0,8 = \\dfrac{7}{10} - (-0,5)$\n$x + 0,8 = 0,7 + 0,5$\n$x + 0,8 = 1,2$\n$x = 1,2 - 0,8$\n$x = 0,4$"
+      },
+      {
+        "ma_cau": "07010403004",
+        "noi_dung": "a) $\\dfrac{4}{5} - (x + 1,2) = 0,3$",
+        "loi_giai": "$x + 1,2 = \\dfrac{4}{5} - 0,3$\n$x + 1,2 = 0,8 - 0,3$\n$x + 1,2 = 0,5$\n$x = 0,5 - 1,2$\n$x = -0,7$"
+      },
+      {
+        "ma_cau": "07010403005",
+        "noi_dung": "a) $\\dfrac{1}{4} - (x + 0,1) = 0,75$",
+        "loi_giai": "$x + 0,1 = \\dfrac{1}{4} - 0,75$\n$x + 0,1 = 0,25 - 0,75$\n$x + 0,1 = -0,5$\n$x = -0,5 - 0,1$\n$x = -0,6$"
+      },
+      {
+        "ma_cau": "07010403006",
+        "noi_dung": "a) $\\dfrac{2}{5} - (x + 1,1) = -0,2$",
+        "loi_giai": "$x + 1,1 = \\dfrac{2}{5} - (-0,2)$\n$x + 1,1 = 0,4 + 0,2$\n$x + 1,1 = 0,6$\n$x = 0,6 - 1,1$\n$x = -0,5$"
+      },
+      {
+        "ma_cau": "07010403007",
+        "noi_dung": "b) $(x - \\dfrac{3}{5}) : \\dfrac{-1}{3} = 0,4$",
+        "loi_giai": "$x - \\dfrac{3}{5} = 0,4 \\cdot (\\dfrac{-1}{3})$\n$x - \\dfrac{3}{5} = \\dfrac{2}{5} \\cdot (\\dfrac{-1}{3})$\n$x - \\dfrac{3}{5} = \\dfrac{-2}{15}$\n$x = \\dfrac{-2}{15} + \\dfrac{9}{15}$\n$x = \\dfrac{7}{15}$"
+      },
+      {
+        "ma_cau": "07010403008",
+        "noi_dung": "a) $(x - \\dfrac{1}{2}) : \\dfrac{-1}{4} = 0,8$",
+        "loi_giai": "$x - \\dfrac{1}{2} = 0,8 \\cdot (\\dfrac{-1}{4})$\n$x - \\dfrac{1}{2} = \\dfrac{4}{5} \\cdot (\\dfrac{-1}{4})$\n$x - \\dfrac{1}{2} = \\dfrac{-1}{5}$\n$x = \\dfrac{-1}{5} + \\dfrac{1}{2}$\n$x = \\dfrac{-2}{10} + \\dfrac{5}{10}$\n$x = \\dfrac{3}{10}$"
+      },
+      {
+        "ma_cau": "07010403009",
+        "noi_dung": "b) $(x - \\dfrac{2}{3}) : \\dfrac{-2}{5} = 0,5$",
+        "loi_giai": "$x - \\dfrac{2}{3} = 0,5 \\cdot (\\dfrac{-2}{5})$\n$x - \\dfrac{2}{3} = \\dfrac{1}{2} \\cdot (\\dfrac{-2}{5})$\n$x - \\dfrac{2}{3} = \\dfrac{-1}{5}$\n$x = \\dfrac{-1}{5} + \\dfrac{2}{3}$\n$x = \\dfrac{-3}{15} + \\dfrac{10}{15}$\n$x = \\dfrac{7}{15}$"
+      },
+      {
+        "ma_cau": "07010403010",
+        "noi_dung": "c) $(x - \\dfrac{1}{4}) : \\dfrac{-2}{3} = 0,75$",
+        "loi_giai": "$x - \\dfrac{1}{4} = 0,75 \\cdot (\\dfrac{-2}{3})$\n$x - \\dfrac{1}{4} = \\dfrac{3}{4} \\cdot (\\dfrac{-2}{3})$\n$x - \\dfrac{1}{4} = \\dfrac{-1}{2}$\n$x = \\dfrac{-1}{2} + \\dfrac{1}{4}$\n$x = \\dfrac{-2}{4} + \\dfrac{1}{4}$\n$x = \\dfrac{-1}{4}$"
+      },
+      {
+        "ma_cau": "07010403011",
+        "noi_dung": "d) $(x - \\dfrac{3}{4}) : \\dfrac{1}{5} = -0,2$",
+        "loi_giai": "$x - \\dfrac{3}{4} = -0,2 \\cdot \\dfrac{1}{5}$\n$x - \\dfrac{3}{4} = \\dfrac{-1}{5} \\cdot \\dfrac{1}{5}$\n$x - \\dfrac{3}{4} = \\dfrac{-1}{25}$\n$x = \\dfrac{-1}{25} + \\dfrac{3}{4}$\n$x = \\dfrac{-4}{100} + \\dfrac{75}{100}$\n$x = \\dfrac{71}{100}$"
+      },
+      {
+        "ma_cau": "07010403012",
+        "noi_dung": "e) $(x - \\dfrac{1}{6}) : \\dfrac{-3}{4} = 0,5$",
+        "loi_giai": "$x - \\dfrac{1}{6} = 0,5 \\cdot (\\dfrac{-3}{4})$\n$x - \\dfrac{1}{6} = \\dfrac{1}{2} \\cdot (\\dfrac{-3}{4})$\n$x - \\dfrac{1}{6} = \\dfrac{-3}{8}$\n$x = \\dfrac{-3}{8} + \\dfrac{1}{6}$\n$x = \\dfrac{-9}{24} + \\dfrac{4}{24}$\n$x = \\dfrac{-5}{24}$"
+      },
+      {
+        "ma_cau": "07010403019",
+        "noi_dung": "h) $\\dfrac{2}{5} - 3 : x = 2 \\cdot (\\dfrac{1}{5})^2$",
+        "loi_giai": "$0.4 - 3 : x = 2 \\cdot 0.04$\\n$0.4 - 3 : x = 0.08$\\n$3 : x = 0.4 - 0.08$\\n$3 : x = 0.32$\\n$x = 3 : 0.32$\\n$x = 9.375$"
+      },
+      {
+        "ma_cau": "07010403025",
+        "noi_dung": "c) $\\dfrac{1}{3}(x - 3) = (-4) \\cdot \\dfrac{7}{8}$",
+        "loi_giai": "$\\dfrac{1}{3}(x - 3) = -\\dfrac{28}{8}$\n$\\dfrac{1}{3}(x - 3) = -\\dfrac{7}{2}$\n$x - 3 = -\\dfrac{7}{2} \\cdot 3$\n$x - 3 = -\\dfrac{21}{2}$\n$x = -\\dfrac{21}{2} + \\dfrac{6}{2}$\n$x = -\\dfrac{15}{2} = -7,5$"
+      },
+      {
+        "ma_cau": "07010403026",
+        "noi_dung": "c) $\\dfrac{1}{2}(x - 5) = (-6) \\cdot \\dfrac{5}{12}$",
+        "loi_giai": "$\\dfrac{1}{2}(x - 5) = -\\dfrac{30}{12}$\n$\\dfrac{1}{2}(x - 5) = -\\dfrac{5}{2}$\n$x - 5 = -\\dfrac{5}{2} \\cdot 2$\n$x - 5 = -5$\n$x = -5 + 5$\n$x = 0$"
+      },
+      {
+        "ma_cau": "07010403027",
+        "noi_dung": "c) $\\dfrac{1}{4}(x - 2) = 9 \\cdot \\dfrac{2}{3}$",
+        "loi_giai": "$\\dfrac{1}{4}(x - 2) = \\dfrac{18}{3}$\n$\\dfrac{1}{4}(x - 2) = 6$\n$x - 2 = 6 \\cdot 4$\n$x - 2 = 24$\n$x = 24 + 2$\n$x = 26$"
+      },
+      {
+        "ma_cau": "07010403028",
+        "noi_dung": "c) $\\dfrac{1}{5}(x + 1) = (-10) \\cdot \\dfrac{3}{20}$",
+        "loi_giai": "$\\dfrac{1}{5}(x + 1) = -\\dfrac{30}{20}$\n$\\dfrac{1}{5}(x + 1) = -\\dfrac{3}{2}$\n$x + 1 = -\\dfrac{3}{2} \\cdot 5$\n$x + 1 = -\\dfrac{15}{2}$\n$x = -\\dfrac{15}{2} - \\dfrac{2}{2}$\n$x = -\\dfrac{17}{2} = -8,5$"
+      },
+      {
+        "ma_cau": "07010403029",
+        "noi_dung": "c) $\\dfrac{2}{3}(x - 1) = (-7) \\cdot \\dfrac{3}{14}$",
+        "loi_giai": "$\\dfrac{2}{3}(x - 1) = -\\dfrac{21}{14}$\n$\\dfrac{2}{3}(x - 1) = -\\dfrac{3}{2}$\n$x - 1 = -\\dfrac{3}{2} : \\dfrac{2}{3}$\n$x - 1 = -\\dfrac{3}{2} \\cdot \\dfrac{3}{2}$\n$x - 1 = -\\dfrac{9}{4}$\n$x = -\\dfrac{9}{4} + \\dfrac{4}{4}$\n$x = -\\dfrac{5}{4} = -1,25$"
+      },
+      {
+        "ma_cau": "07010403030",
+        "noi_dung": "c) $\\dfrac{1}{6}(x + 2) = 8 \\cdot \\dfrac{5}{4}$",
+        "loi_giai": "$\\dfrac{1}{6}(x + 2) = \\dfrac{40}{4}$\n$\\dfrac{1}{6}(x + 2) = 10$\n$x + 2 = 10 \\cdot 6$\n$x + 2 = 60$\n$x = 60 - 2$\n$x = 58$"
+      },
+      {
+        "ma_cau": "07010404002",
+        "noi_dung": "a) $3x^2 - \\dfrac{27}{16} = 0$",
+        "loi_giai": "$3x^2 = \\dfrac{27}{16}$\n$x^2 = \\dfrac{27}{16} \\div 3$\n$x^2 = \\dfrac{9}{16}$\n$x = \\pm\\dfrac{3}{4}$"
+      },
+      {
+        "ma_cau": "07010404003",
+        "noi_dung": "b) $4x^2 - 144 = 0$",
+        "loi_giai": "$4x^2 = 144$\n$x^2 = \\dfrac{144}{4}$\n$x^2 = 36$\n$x = \\pm 6$"
+      },
+      {
+        "ma_cau": "07010404004",
+        "noi_dung": "d) $5x^2 - \\dfrac{5}{9} = 0$",
+        "loi_giai": "$5x^2 = \\dfrac{5}{9}$\n$x^2 = \\dfrac{5}{9} \\div 5$\n$x^2 = \\dfrac{1}{9}$\n$x = \\pm\\dfrac{1}{3}$"
+      },
+      {
+        "ma_cau": "07010404005",
+        "noi_dung": "e) $7x^2 - \\dfrac{343}{25} = 0$",
+        "loi_giai": "$7x^2 = \\dfrac{343}{25}$\n$x^2 = \\dfrac{343}{25} \\div 7$\n$x^2 = \\dfrac{49}{25}$\n$x = \\pm\\dfrac{7}{5}$"
+      },
+      {
+        "ma_cau": "07010404006",
+        "noi_dung": "f) $2x^2 - \\dfrac{32}{9} = 0$",
+        "loi_giai": "$2x^2 = \\dfrac{32}{9}$\n$x^2 = \\dfrac{32}{9} \\div 2$\n$x^2 = \\dfrac{16}{9}$\n$x = \\pm\\dfrac{4}{3}$"
+      },
+      {
+        "ma_cau": "07010404013",
+        "noi_dung": "e) $(x - \\dfrac{1}{2})^2 - \\dfrac{9}{25} = 0$",
+        "loi_giai": "$(x - \\dfrac{1}{2})^2 = \\dfrac{9}{25}$\n$x - \\dfrac{1}{2} = \\pm \\dfrac{3}{5}$\n$x = \\dfrac{11}{10}$ hoặc $x = -\\dfrac{1}{10}$"
+      },
+      {
+        "ma_cau": "07010404017",
+        "noi_dung": "f) $(2x + 2)^2 = \\dfrac{4}{25}$",
+        "loi_giai": "$2x + 2 = \\pm\\dfrac{2}{5}$\n$2x = -\\dfrac{8}{5}$ hoặc $2x = -\\dfrac{12}{5}$\n$x = -\\dfrac{4}{5}$ hoặc $x = -\\dfrac{6}{5}$"
+      },
+      {
+        "ma_cau": "07010404018",
+        "noi_dung": "f) $(3x + 1)^2 = \\dfrac{9}{16}$",
+        "loi_giai": "$3x + 1 = \\pm\\dfrac{3}{4}$\n$3x = -\\dfrac{1}{4}$ hoặc $3x = -\\dfrac{7}{4}$\n$x = -\\dfrac{1}{12}$ hoặc $x = -\\dfrac{7}{12}$"
+      },
+      {
+        "ma_cau": "07010404019",
+        "noi_dung": "f) $(4x + 3)^2 = \\dfrac{1}{36}$",
+        "loi_giai": "$4x + 3 = \\pm\\dfrac{1}{6}$\n$4x = -\\dfrac{17}{6}$ hoặc $4x = -\\dfrac{19}{6}$\n$x = -\\dfrac{17}{24}$ hoặc $x = -\\dfrac{19}{24}$"
+      },
+      {
+        "ma_cau": "07010404020",
+        "noi_dung": "f) $(5x + 4)^2 = \\dfrac{16}{81}$",
+        "loi_giai": "$5x + 4 = \\pm\\dfrac{4}{9}$\n$5x = -\\dfrac{32}{9}$ hoặc $5x = -\\dfrac{40}{9}$\n$x = -\\dfrac{32}{45}$ hoặc $x = -\\dfrac{8}{9}$"
+      },
+      {
+        "ma_cau": "07010404021",
+        "noi_dung": "h) $(x - \\dfrac{1}{3})^2 + 1 = \\dfrac{61}{25}$",
+        "loi_giai": "$(x - \\dfrac{1}{3})^2 = \\dfrac{36}{25}$\n$x - \\dfrac{1}{3} = \\pm\\dfrac{6}{5}$\n$x = \\dfrac{23}{15}$ hoặc $x = -\\dfrac{13}{15}$"
+      },
+      {
+        "ma_cau": "07010404023",
+        "noi_dung": "h) $(x - \\dfrac{1}{4})^2 + 1 = \\dfrac{41}{25}$",
+        "loi_giai": "$(x - \\dfrac{1}{4})^2 = \\dfrac{41}{25} - 1$\n$(x - \\dfrac{1}{4})^2 = \\dfrac{16}{25}$\n$x - \\dfrac{1}{4} = \\pm\\dfrac{4}{5}$\n$x = \\dfrac{21}{20}$ hoặc $x = -\\dfrac{11}{20}$"
+      },
+      {
+        "ma_cau": "07010101001",
+        "noi_dung": "Điền kí hiệu $\\in$, $\\notin$, $\\subset$ thích hợp vào chỗ chấm:\na) $-7 \\dots \\mathbb{Q}$\nb) $3.5 \\dots \\mathbb{Z}$\nc) $0 \\dots \\mathbb{Q}$\nd) $-\\dfrac{3}{5} \\dots \\mathbb{Z}$\ne) $\\mathbb{N} \\dots \\mathbb{Q}$\nf) $2\\dfrac{1}{4} \\dots \\mathbb{Q}$",
+        "loi_giai": "a) $-7 \\in \\mathbb{Q}$ (Vì $-7$ biểu diễn được thành phân số $-\\dfrac{7}{1}$).\nb) $3.5 \\notin \\mathbb{Z}$ (Số thập phân không thuộc tập số nguyên).\nc) $0 \\in \\mathbb{Q}$ (Vì $0$ biểu diễn được thành phân số $\\dfrac{0}{1}$).\nd) $-\\dfrac{3}{5} \\notin \\mathbb{Z}$ (Phân số không thuộc tập số nguyên).\ne) $\\mathbb{N} \\subset \\mathbb{Q}$ (Tập số tự nhiên là tập con của tập số hữu tỉ).\nf) $2\\dfrac{1}{4} \\in \\mathbb{Q}$ (Hỗn số đổi được thành phân số $\\dfrac{9}{4}$)."
+      },
+      {
+        "ma_cau": "07010101007",
+        "noi_dung": "Các số sau đây có phải là số hữu tỉ không? Vì sao?\na) -11\nb) 1.25\nc) 0\nd) -2\\dfrac{2}{3}\ne) \\dfrac{12}{0}",
+        "loi_giai": "a) Có. Vì $-11 = \\dfrac{-11}{1}$.\nb) Có. Vì $1.25 = \\dfrac{125}{100} = \\dfrac{5}{4}$.\nc) Có. Vì $0 = \\dfrac{0}{1}$.\nd) Có. Vì $-2\\dfrac{2}{3} = \\dfrac{-8}{3}$.\ne) Không phải số hữu tỉ. Vì mẫu số bằng $0$ (vi phạm điều kiện $b \\neq 0$ trong định nghĩa)."
+      },
+      {
+        "ma_cau": "07010205013",
+        "noi_dung": "(1,5 điểm) Bác Hiệp gửi vào ngân hàng 80 triệu đồng với kì hạn 1 năm, lãi suất 4,5 %/năm.\\na) Tính số tiền bác thu được (kể cả gốc và lãi) sau kì hạn 1 năm.\\nb) Sau kì hạn 1 năm, bác rút ra \\dfrac{3}{4} số tiền (kể cả gốc và lãi). Biết số tiền bác rút ra vừa đủ để mua 150 suất quà cho các trẻ em có hoàn cảnh khó khăn. Tính giá trị của mỗi suất quà bác đã mua.",
+        "loi_giai": "a) Số tiền lãi bác Hiệp nhận được sau 1 năm là:\\n$80 \\times 4,5\\% = 3,6$ (triệu đồng)\\nTổng số tiền bác Hiệp thu được (kể cả gốc và lãi) sau 1 năm là:\\n$80 + 3,6 = 83,6$ (triệu đồng)\\nb) Số tiền bác Hiệp rút ra để mua quà là:\\n$83,6 \\times \\dfrac{3}{4} = 62,7$ (triệu đồng)\\nĐổi $62,7$ triệu đồng thành đồng:\\n$62,7 \\times 1\\ 000\\ 000 = 62\\ 700\\ 000$ (đồng)\\nGiá trị của mỗi suất quà bác đã mua là:\\n$62\\ 700\\ 000 \\div 150 = 418\\ 000$ (đồng)"
+      }
+    ]
+  }
+]

@@ -274,6 +274,15 @@ function splitLabeled(s: string, seq: string): { stem: string; parts: { lbl: str
   const parts = marks.map((mk, i) => ({ lbl: mk.lbl, body: s.slice(mk.start, i + 1 < marks.length ? marks[i + 1].idx : undefined).trim() }))
   return { stem, parts }
 }
+// KHÔNG nhãn: đề (dòng đầu) + ≥3 ý NGẮN song song, mỗi ý 1 dòng → cho lên lưới cột (như trắc nghiệm).
+// Chỉ kích hoạt khi MỌI dòng ý đều ngắn (≤30) → không phá đề nhiều dòng/lời văn dài. Ngưỡng cột dùng optCols.
+function splitUnlabeled(s: string): { stem: string; parts: { lbl: string; body: string }[] } | null {
+  const lines = s.split('\n').map((l) => l.trim()).filter(Boolean)
+  if (lines.length < 4) return null // đề + ≥3 ý
+  const [stem, ...rest] = lines
+  if (rest.some((l) => optVisLen(l) > 30)) return null
+  return { stem, parts: rest.map((body) => ({ lbl: '', body })) }
+}
 export function CauItem({ no, c, gv, lines = 0 }: { no: number; c: CauHoi; gv: boolean; lines?: number }) {
   const hasOpts = !!(c.lua_chon && c.lua_chon.length)
   const letter = (i: number) => String.fromCharCode(65 + i)
@@ -281,8 +290,9 @@ export function CauItem({ no, c, gv, lines = 0 }: { no: number; c: CauHoi; gv: b
   // Câu lua_chon=null: đáp án A/B/C/D nhúng trong đề (ưu tiên) HOẶC ý con a)b)c)… → tách ra lưới cột.
   const embOpts = hasOpts ? null : splitLabeled(c.noi_dung, 'ABCDEFGH')
   const ycon = hasOpts || embOpts ? null : splitLabeled(c.noi_dung, 'abcdefghijkl')
-  const stem = embOpts?.stem ?? ycon?.stem ?? c.noi_dung
-  const grid = embOpts?.parts ?? ycon?.parts ?? null // lưới cột (đáp án nhúng / ý con), cùng render
+  const uncon = hasOpts || embOpts || ycon ? null : splitUnlabeled(c.noi_dung) // ý con KHÔNG nhãn (đã bị strip a/b/c)
+  const stem = embOpts?.stem ?? ycon?.stem ?? uncon?.stem ?? c.noi_dung
+  const grid = embOpts?.parts ?? ycon?.parts ?? uncon?.parts ?? null // lưới cột (đáp án nhúng / ý con), cùng render
   return (
     <li className="pv-cau">
       {/* THỨ TỰ: đề → HÌNH → đáp án (Thùy chốt) */}
@@ -290,7 +300,7 @@ export function CauItem({ no, c, gv, lines = 0 }: { no: number; c: CauHoi; gv: b
       {c.anh_de && <img src={c.anh_de} alt="" className="pv-img" />}
       {grid && (
         <div className="pv-opts" style={{ gridTemplateColumns: `repeat(${optCols(grid.map((p) => p.body))}, minmax(0,1fr))` }}>
-          {grid.map((p, i) => <div key={i} className="pv-opt"><b>{p.lbl}{embOpts ? '.' : ')'}</b> <span className="pv-math"><MathText>{p.body}</MathText></span></div>)}
+          {grid.map((p, i) => <div key={i} className="pv-opt">{p.lbl ? <><b>{p.lbl}{embOpts ? '.' : ')'}</b> </> : null}<span className="pv-math"><MathText>{p.body}</MathText></span></div>)}
         </div>
       )}
       {hasOpts && (
