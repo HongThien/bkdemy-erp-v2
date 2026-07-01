@@ -12,6 +12,7 @@ export default function PrintView({ id, onClose }: { id: string; onClose: () => 
   const [err, setErr] = useState<string | null>(null)
   const [gv, setGv] = useState(false) // false = bản HS · true = bản GV
   const [scope, setScope] = useState<'all' | 'giaotrinh' | 'btvn'>('all') // tách quyển: giáo trình (LT+luyện) vs BTVN riêng
+  const [lt, setLt] = useState(true) // kèm LÝ THUYẾT khi in (ôn tập → tắt để chỉ in bài)
   const [pages, setPages] = useState(0)
   const [rendering, setRendering] = useState(true)
   const [renderErr, setRenderErr] = useState<string | null>(null)
@@ -52,7 +53,7 @@ export default function PrintView({ id, onClose }: { id: string; onClose: () => 
       .catch((e: unknown) => { if (!cancelled) { setRenderErr(e instanceof Error ? e.message : String(e)); setRendering(false) } })
       .finally(() => URL.revokeObjectURL(cssUrl))
     return () => { cancelled = true }
-  }, [full, gv, scope, lopTen])
+  }, [full, gv, scope, lopTen, lt])
 
   const seg = (on: boolean) => `rounded-md px-3 py-1 text-[13px] font-medium transition ${on ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`
 
@@ -69,6 +70,12 @@ export default function PrintView({ id, onClose }: { id: string; onClose: () => 
           <button onClick={() => setScope('giaotrinh')} className={seg(scope === 'giaotrinh')}>Chỉ giáo trình</button>
           <button onClick={() => setScope('btvn')} className={seg(scope === 'btvn')}>Chỉ BTVN</button>
         </div>
+        {scope !== 'btvn' && (
+          <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5" title="Tắt lý thuyết khi in ôn tập (chỉ in bài)">
+            <button onClick={() => setLt(true)} className={seg(lt)}>Kèm lý thuyết</button>
+            <button onClick={() => setLt(false)} className={seg(!lt)}>Không LT</button>
+          </div>
+        )}
         <span className="text-[12px] text-slate-400">{rendering ? 'đang dựng trang…' : `${pages} trang`}</span>
         <div className="ml-auto flex gap-2">
           <button onClick={() => window.print()} disabled={rendering} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">🖨 In / Lưu PDF</button>
@@ -85,7 +92,7 @@ export default function PrintView({ id, onClose }: { id: string; onClose: () => 
             </>}
       </div>
       {/* Nguồn ẩn — chỉ để lấy HTML cho paged.js (KaTeX đã render sẵn trong này) */}
-      <div ref={srcRef} className="pv-src" aria-hidden>{full && <Doc full={full} gv={gv} scope={scope} />}</div>
+      <div ref={srcRef} className="pv-src" aria-hidden>{full && <Doc full={full} gv={gv} scope={scope} lt={lt} />}</div>
       <style>{CHROME_CSS}</style>
     </div>,
     document.body,
@@ -105,7 +112,7 @@ function buildBuois(phans: PhanResolved[]): Buoi[] {
   return out
 }
 
-function Doc({ full, gv, scope }: { full: TaiLieuFull; gv: boolean; scope: 'all' | 'giaotrinh' | 'btvn' }) {
+function Doc({ full, gv, scope, lt = true }: { full: TaiLieuFull; gv: boolean; scope: 'all' | 'giaotrinh' | 'btvn'; lt?: boolean }) {
   const { taiLieu, phans, ltChuyenDe, tenChuyenDe } = full
   const ch = taiLieu.cau_hinh ?? {}
   const accent = ch.mau || '#E91E8C'
@@ -126,7 +133,7 @@ function Doc({ full, gv, scope }: { full: TaiLieuFull; gv: boolean; scope: 'all'
         <div className="pv-cover">
           {/* Logo nằm ở header (lặp mọi trang) → KHÔNG đặt thêm logo ở bìa để tránh trùng. */}
           <div className="pv-title">{taiLieu.ten}</div>
-          <div className="pv-sub">KHỐI {taiLieu.khoi} · {scope === 'giaotrinh' ? 'LÝ THUYẾT + LUYỆN · ' : ''}{gv ? 'BẢN GIÁO VIÊN' : 'BẢN HỌC SINH'}</div>
+          <div className="pv-sub">KHỐI {taiLieu.khoi} · {scope === 'giaotrinh' ? (lt ? 'LÝ THUYẾT + LUYỆN · ' : 'LUYỆN TẬP · ') : ''}{gv ? 'BẢN GIÁO VIÊN' : 'BẢN HỌC SINH'}</div>
         </div>
       )}
       {/* QUYỂN BTVN riêng = chỉ các phiếu BTVN (mỗi buổi). Còn lại = giáo trình (skip BTVN nếu 'giaotrinh'). */}
@@ -135,15 +142,15 @@ function Doc({ full, gv, scope }: { full: TaiLieuFull; gv: boolean; scope: 'all'
           <BtvnSheet key={b.id} btvns={b.btvns} gv={gv} docTitle={taiLieu.ten} buoiTitle={b.title} dangNoByMa={dangNoByMa} linesByCau={linesByCau} isBtvnDoc={taiLieu.loai === 'btvn'} />
         ))
         : buois.map((b) => (
-          <BuoiBlock key={b.id} buoi={b} gv={gv} scope={scope} docTitle={taiLieu.ten} ltCd={ltChuyenDe} tenCd={tenChuyenDe} dangNoByMa={dangNoByMa} linesByCau={linesByCau} />
+          <BuoiBlock key={b.id} buoi={b} gv={gv} scope={scope} lt={lt} docTitle={taiLieu.ten} ltCd={ltChuyenDe} tenCd={tenChuyenDe} dangNoByMa={dangNoByMa} linesByCau={linesByCau} />
         ))}
     </div>
   )
 }
 
 // 1 BUỔI: tiêu đề buổi → [LT chuyên đề + các dạng] gom theo chuyên đề → phiếu BTVN của buổi.
-function BuoiBlock({ buoi, gv, scope, docTitle, ltCd, tenCd, dangNoByMa, linesByCau }: {
-  buoi: Buoi; gv: boolean; scope: 'all' | 'giaotrinh'; docTitle: string; ltCd: Record<string, { noi_dung: string; file_url: string | null; ten_file: string | null } | null>; tenCd: Record<string, string>; dangNoByMa: Record<string, number>; linesByCau: Record<string, number>
+function BuoiBlock({ buoi, gv, scope, lt = true, docTitle, ltCd, tenCd, dangNoByMa, linesByCau }: {
+  buoi: Buoi; gv: boolean; scope: 'all' | 'giaotrinh'; lt?: boolean; docTitle: string; ltCd: Record<string, { noi_dung: string; file_url: string | null; ten_file: string | null } | null>; tenCd: Record<string, string>; dangNoByMa: Record<string, number>; linesByCau: Record<string, number>
 }) {
   // Gom dạng liền nhau theo chuyên đề → mỗi nhóm hiện LT chuyên đề 1 lần (buổi tách chuyên đề vẫn có LT).
   const groups: { cd: string; dangs: PhanResolved[] }[] = []
@@ -158,8 +165,8 @@ function BuoiBlock({ buoi, gv, scope, docTitle, ltCd, tenCd, dangNoByMa, linesBy
       {groups.map((g, gi) => (
         <div key={gi}>
           {/* 1 chuyên đề: chỉ "Lý thuyết" (tên chuyên đề ĐÃ ở dải buổi → khỏi lặp). Nhiều chuyên đề: ghi tên để phân biệt. */}
-          <LtBlock title={groups.length > 1 ? `Lý thuyết chuyên đề: ${tenCd[g.cd] ?? ''}` : 'Lý thuyết'} lt={ltCd[g.cd]} big />
-          {g.dangs.map((d) => <DangBlock key={d.id} no={dangNoByMa[d.ref_ma ?? ''] ?? 0} p={d} gv={gv} />)}
+          {lt && <LtBlock title={groups.length > 1 ? `Lý thuyết chuyên đề: ${tenCd[g.cd] ?? ''}` : 'Lý thuyết'} lt={ltCd[g.cd]} big />}
+          {g.dangs.map((d) => <DangBlock key={d.id} no={dangNoByMa[d.ref_ma ?? ''] ?? 0} p={d} gv={gv} lt={lt} />)}
         </div>
       ))}
       {scope === 'all' && buoi.btvns.some((b) => b.caus.length) && (
@@ -193,11 +200,11 @@ function CauList({ kieu, children }: { kieu?: string; children: React.ReactNode 
   return <ol className={`pv-caulist${cols > 1 ? ' pv-multicol' : ''}`} style={cols > 1 ? { columnCount: cols } : undefined}>{children}</ol>
 }
 
-function DangBlock({ no, p, gv }: { no: number; p: PhanResolved; gv: boolean }) {
+function DangBlock({ no, p, gv, lt = true }: { no: number; p: PhanResolved; gv: boolean; lt?: boolean }) {
   return (
     <section className="pv-sec">
       <h2 className="pv-h-dang">Dạng {no}: {p.dang?.ten_dang ?? p.ref_ma}</h2>
-      {p.lyThuyetDang?.noi_dung?.trim() && (
+      {lt && p.lyThuyetDang?.noi_dung?.trim() && (
         <div className="pv-box-lt"><div className="pv-box-label">Lý thuyết · Ví dụ</div><LyThuyetBody text={p.lyThuyetDang.noi_dung} /></div>
       )}
       {p.caus.length > 0 && (<>

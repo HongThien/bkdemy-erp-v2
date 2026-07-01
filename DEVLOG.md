@@ -613,3 +613,4 @@
   - **Builder**: `KieuPicker` (Thường/2/3/4 cột) trên header **Bài luyện** + **BTVN** → setPhanKieu(phanId) + reload. Mặc định Thường (giữ hành vi cũ).
   - **PrintView**: `CauList` render `<ol>` với `column-count` theo kieu (multicol → `.pv-cau break-inside:avoid`, gap 9mm). Câu ngắn 2/3/4 cột = tiết kiệm giấy.
   - **Model đã sẵn NHIỀU BLOCK/dạng** (nhiều phan cùng ref_ma) — Phase 2 (UI "+ block" + gom blocks dưới 1 header dạng) chưa build. ⚠ layout in = paged.js → **cần Thùy soi PDF thật** để chỉnh ngưỡng/gap.
+- **In: toggle "Kèm lý thuyết / Không LT" (Thùy — ôn tập không cần LT):** thêm state `lt` (PrintView, mặc định có) + segmented ở toolbar in (ẩn khi scope=btvn). Truyền Doc→BuoiBlock→DangBlock → gate CẢ LT chuyên đề (LtBlock) LẪN LT dạng (pv-box-lt). Deps paged.js += lt (re-render khi đổi). Phụ đề bìa "LUYỆN TẬP" khi tắt LT. Print-time (không lưu) → 1 giáo trình in kèm/không-kèm LT tuỳ lúc. ✓ tsc+build.
