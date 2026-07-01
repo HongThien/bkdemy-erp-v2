@@ -251,6 +251,7 @@ function loaiFields(loaiCau: string): { spec: string; obj: string; ruleDapAn: st
 const FMT_RULES = [
   'QUY TẮC TRÌNH BÀY:',
   '- ⚠ KHÔNG chép nhãn "Câu N" / "Bài N" vào đầu de_bai — de_bai bắt đầu THẲNG từ nội dung đề (hệ thống TỰ đánh số câu). Bản gốc có "Câu 3." → BỎ nhãn đó, chỉ lấy phần đề.',
+  '- ⚠ Câu TRẮC NGHIỆM: de_bai CHỈ chứa đề dẫn (câu hỏi), TUYỆT ĐỐI KHÔNG chép 4 phương án "A. … B. … C. … D. …" vào de_bai — phương án CHỈ đặt ở lua_chon (hệ thống tự render lưới đáp án).',
   '- Công thức toán DÙNG LaTeX trong $...$ (inline) hoặc $$...$$ (block).',
   '- ⚠ MỖI công thức/phân số/biểu thức phải bọc RIÊNG trong $...$ — KỂ CẢ khi liệt kê nhiều: viết "$\\\\dfrac{6}{5}$; $\\\\dfrac{4}{3}$" (TUYỆT ĐỐI KHÔNG để "\\\\dfrac{6}{5}" trần ngoài $).',
   '- ⚠ XUỐNG DÒNG: GIỮ ĐÚNG bố cục NHIỀU DÒNG của đề & lời giải gốc — mỗi ý, mỗi câu hỏi, mỗi bước giải đặt trên MỘT DÒNG riêng (ngăn bằng ký tự xuống dòng thật trong chuỗi). Gốc bao nhiêu dòng thì giữ bấy nhiêu. TUYỆT ĐỐI KHÔNG gộp tất cả thành một đoạn liền, KHÔNG dùng thẻ "<br>".',
@@ -271,12 +272,23 @@ export const stripCauLabel = (s: string): string => {
   const t = s.replace(/^[\s*]*(?:câu|bài)\s*\d+\s*[.:)\-]?\s*/i, '')
   return t.trim() ? t : s
 }
-const normCau = (x: any): CauNoiDung => ({
-  noi_dung: stripCauLabel(String(x.de_bai ?? x.noi_dung ?? '').trim()),
-  dap_an: x.dap_an != null && String(x.dap_an).trim() ? String(x.dap_an).trim() : null,
-  loi_giai: x.loi_giai != null && String(x.loi_giai).trim() ? String(x.loi_giai).trim() : null,
-  lua_chon: Array.isArray(x.lua_chon) && x.lua_chon.length ? x.lua_chon.map((o: any) => String(o)) : null,
-})
+// Bỏ khối đáp án "A. … B. … C. … D. …" ở CUỐI đề (khi câu ĐÃ có lua_chon riêng) → chống hiện 2 lần
+// (1 lần trong đề + 1 lần ở lưới đáp án). Cắt từ dòng bắt đầu "A." tới hết. Chỉ khi còn nội dung sau cắt.
+const stripEmbeddedOpts = (s: string): string => {
+  const t = s.replace(/\n\s*A\s*[.):][\s\S]*$/, '').trimEnd()
+  return t.trim() ? t : s
+}
+const normCau = (x: any): CauNoiDung => {
+  const lua_chon = Array.isArray(x.lua_chon) && x.lua_chon.length ? x.lua_chon.map((o: any) => String(o)) : null
+  let noi_dung = stripCauLabel(String(x.de_bai ?? x.noi_dung ?? '').trim())
+  if (lua_chon) noi_dung = stripEmbeddedOpts(noi_dung) // câu trắc nghiệm: đề KHÔNG chứa 4 đáp án
+  return {
+    noi_dung,
+    dap_an: x.dap_an != null && String(x.dap_an).trim() ? String(x.dap_an).trim() : null,
+    loi_giai: x.loi_giai != null && String(x.loi_giai).trim() ? String(x.loi_giai).trim() : null,
+    lua_chon,
+  }
+}
 export function buildClonePrompt(a: { soBienThe: number; ghiChu: string; tenDang: string; loaiCau: string }): string {
   const f = loaiFields(a.loaiCau)
   return [
