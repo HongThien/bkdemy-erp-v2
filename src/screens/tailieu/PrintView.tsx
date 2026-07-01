@@ -249,19 +249,39 @@ function optVisLen(s: string): number {
     .replace(/\\d?frac\{([^{}]*)\}\{([^{}]*)\}/g, (_m, a: string, b: string) => '0'.repeat(Math.max(a.length, b.length)))
     .replace(/\\[a-zA-Z]+/g, 'x').replace(/[{}^_\\]/g, '').length
 }
-// Ngắn → 4 cột (1 dòng) · vừa → 2 cột (2×2) · dài → 1 cột (4 dòng).
+// Ngắn → 4 cột (1 dòng) · vừa → 2 cột (2×2) · dài → 1 cột (mỗi ý 1 dòng). Ngưỡng 14/30 (Thùy chốt).
 function optCols(opts: string[]): number {
   const max = Math.max(0, ...opts.map(optVisLen))
-  return max <= 6 ? 4 : max <= 16 ? 2 : 1
+  return max <= 14 ? 4 : max <= 30 ? 2 : 1
+}
+// Tách "ý con" a) b) c)… trong đề (câu KHÔNG phải trắc nghiệm nhưng có nhiều ý ngắn) → cho lên lưới cột như đáp án.
+// Yêu cầu ≥2 ý VÀ nhãn LIÊN TỤC a,b,c,… (chống bắt nhầm "a)" lẻ trong văn). Trả null nếu không phải.
+const SEQ = 'abcdefghijkl'
+function splitYCon(s: string): { stem: string; parts: { lbl: string; body: string }[] } | null {
+  const re = /(?:^|\n)[ \t]*([a-l])[ \t]*[).][ \t]+/g
+  const marks: { idx: number; lbl: string; start: number }[] = []
+  let m: RegExpExecArray | null
+  while ((m = re.exec(s))) marks.push({ idx: m.index, lbl: m[1].toLowerCase(), start: re.lastIndex })
+  if (marks.length < 2) return null
+  for (let i = 0; i < marks.length; i++) if (marks[i].lbl !== SEQ[i]) return null // phải a,b,c,… liên tục
+  const stem = s.slice(0, marks[0].idx).trim()
+  const parts = marks.map((mk, i) => ({ lbl: mk.lbl, body: s.slice(mk.start, i + 1 < marks.length ? marks[i + 1].idx : undefined).trim() }))
+  return { stem, parts }
 }
 export function CauItem({ no, c, gv, lines = 0 }: { no: number; c: CauHoi; gv: boolean; lines?: number }) {
   const hasOpts = !!(c.lua_chon && c.lua_chon.length)
   const letter = (i: number) => String.fromCharCode(65 + i)
   const cols = hasOpts ? optCols(c.lua_chon!) : 0
+  const ycon = hasOpts ? null : splitYCon(c.noi_dung) // câu ý-con a)b)c)… → lưới cột thay vì dọc
   return (
     <li className="pv-cau">
-      <div className="pv-math"><span className="pv-cau-no">Câu {no}.</span><MathText>{c.noi_dung}</MathText></div>
+      <div className="pv-math"><span className="pv-cau-no">Câu {no}.</span><MathText>{ycon ? ycon.stem : c.noi_dung}</MathText></div>
       {c.anh_de && <img src={c.anh_de} alt="" className="pv-img" />}
+      {ycon && (
+        <div className="pv-opts" style={{ gridTemplateColumns: `repeat(${optCols(ycon.parts.map((p) => p.body))}, minmax(0,1fr))` }}>
+          {ycon.parts.map((p, i) => <div key={i} className="pv-opt"><b>{p.lbl})</b> <span className="pv-math"><MathText>{p.body}</MathText></span></div>)}
+        </div>
+      )}
       {hasOpts && (
         <div className="pv-opts" style={{ gridTemplateColumns: `repeat(${cols}, minmax(0,1fr))` }}>
           {c.lua_chon!.map((o, i) => {
