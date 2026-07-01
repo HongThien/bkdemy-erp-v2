@@ -616,3 +616,35 @@
 - **In: toggle "Kèm lý thuyết / Không LT" (Thùy — ôn tập không cần LT):** thêm state `lt` (PrintView, mặc định có) + segmented ở toolbar in (ẩn khi scope=btvn). Truyền Doc→BuoiBlock→DangBlock → gate CẢ LT chuyên đề (LtBlock) LẪN LT dạng (pv-box-lt). Deps paged.js += lt (re-render khi đổi). Phụ đề bìa "LUYỆN TẬP" khi tắt LT. Print-time (không lưu) → 1 giáo trình in kèm/không-kèm LT tuỳ lúc. ✓ tsc+build.
 - **Sửa: toggle Lý thuyết CHUYỂN từ toolbar-in → SETTING builder (Thùy: trích buổi gán lớp, ko xuất cả file):** `cau_hinh.inLyThuyet` (default có). Builder chrome "Trình bày" thêm select **Lý thuyết: Có kèm / Không (ôn tập)** → saveCh. PrintView đọc `cau_hinh.inLyThuyet` (bỏ state/toggle print-time; toolbar chỉ hiện badge "Không kèm lý thuyết" khi tắt). **trichXuatBuoi copy cau_hinh** → doc buổi trích KẾ THỪA cài này (mỗi doc sửa riêng được ở builder). ✓ tsc+build.
 - **Refactor lưới ý-con DÙNG CHUNG + áp cho ET (phiên song song):** tách `splitStem(c)` + `OptGrid` export từ PrintView (ưu tiên: đáp án A/B/C/D nhúng → ý con a/b/c → ý con KHÔNG nhãn `splitUnlabeled`). ETPrintView (trắc-nghiệm + tự-luận) dùng `splitStem`/`OptGrid` → ý con nhiều dòng lên lưới cột thay vì đổ dòng kẻ. Dòng-viết ẩn khi có lưới. (Kèm commit `985d263` thêm splitUnlabeled.) ✓ build.
+
+---
+
+## 2026-07-01 — Fix nhân đôi trang lý thuyết (PrintView) + Bước-0 verify DASHBOARD MASTERY
+
+**BUG FIX — giáo trình buổi trích PDF nhân đôi trang (lý thuyết buổi 3: 4→8):**
+- **Nguồn thật = race paged.js (KHÔNG chỉ StrictMode)**: effect preview deps `[full,gv,scope,lopTen]`. Doc `giao_trinh_buoi`/`btvn` fetch `lopTen` ASYNC sau khi `full` load → effect chạy 2 lần (lopTen '' rồi 'Lớp X'). Cleanup cũ chỉ `cancelled=true`, KHÔNG chặn Previewer A đang flow → A tiếp tục append trang SAU khi B đã `innerHTML=''` → trang A+B chồng = gấp đôi. Master `giao_trinh` (lop_id null) early-return lopTen → 1 lần → ko dính. Buổi nhỏ A xong trước B clear → ko lộ; buổi 4 trang A còn flow → 4→8. Khớp chính xác.
+- **Fix (PrintView.tsx + ETPrintView.tsx)**: mỗi run render vào CONTAINER RIÊNG (`document.createElement('div')` append live để paged.js đo layout); run stale (`cancelled`) tự `container.remove()` khi resolve; run mới xoá container run trước → luôn CHỈ 1 bản. ✓ tsc+build. CHƯA soi PDF thật (Thùy sẽ test / hoặc chưa cần vì đã pivot việc).
+
+**PIVOT (Thùy): làm DASHBOARD KẾT QUẢ HỌC TẬP HS trước (test-online để sau nếu quá to). "Quan trọng nhất."**
+- Chốt với Thùy: đối tượng = **CẢ HAI** (staff + HS/PH) · trọng tâm = **MASTERY per-dạng (chẩn đoán)**. Phân biệt với `ThanhTich` (game: Level/Elo/EXP) — cái này = chẩn đoán "dạy gì tiếp".
+- **Sequencing (CTO quyết):** (1) mastery engine PURE (suy động, chung) → (2) dashboard STAFF trước (Apple-clean, dùng getMyScope, KHÔNG cần login HS) → (3) mặt HS/PH sau (cần login HS + RLS = net-new, gộp với test-online `my_hoc_sinh_id()`).
+
+**BƯỚC-0 VERIFY (claude_ro/SELECT, script `_diag_mastery*.mjs` đã xoá):**
+- **Linkage (KHÁC spec đoán):** grade→dạng qua `gami_grades.problem_id → gami_session_problems.id → .ma_dang`+`.phase` (gami_grades KHÔNG có cột phase). grade→HS = `gami_grades.hoc_sinh_id`. `buoi_danh_gia_dang(buoi_hoc_id,hoc_sinh_id,ma_dang,diem numeric)` = đánh giá GV per-dạng. mon suy qua `buoi_hoc.lop_id→lop.mon` (buoi_hoc KHÔNG có cột mon).
+- **Thang:** result {correct/partial/wrong}={1/.5/0}; đánh giá diem {0/.5/1}. ingame có `muc`(1-5), et `muc`=null. **BTVN (phase='btvn') LOẠI khỏi mastery.**
+- **Volume (đủ để có nghĩa, hiện CHỈ Toán K9):** grades trừ btvn ~1571 (et 997+ingame 574) + 179 đánh giá. **677 cặp (HS×dạng)** · 79 HS · 20 dạng · tất cả in `dai_ban_do`, 0 khtn, **0 orphan**.
+- **Độ tin phân tán (đúng §5):** 1 lần=264 cặp (39%) · 2=149 · 3-4=176 · 5+=88 → **phải hiện độ tin, ko chỉ mức**.
+- **Login HS = NET-NEW (xác nhận spec §2.1):** `my_hoc_sinh_id` KHÔNG có; `tai_khoan`=(id,nhan_su_id,email) chỉ trỏ nhân sự. → mặt HS/PH bị chặn; mặt staff KHÔNG.
+- **Engine (HANDOFF #4 + §5, sẽ dựng):** per (HS×dạng) gộp đo từ grades(et+ingame, result→{1/.5/0}) + đánh giá({1/.5/0}), lấy **X=5 lần gần nhất** theo thời gian → TB → 3 mức **≥0.8 đạt / 0.5–0.8 cần luyện / <0.5 yếu** + **chưa-đo** (ko data) + **độ tin theo cỡ mẫu** (n<3 = tin thấp). Suy động KHÔNG lưu. (Knob mở: có nên trọng số summative ET/đánh-giá > formative ingame — v1 để BẰNG NHAU, recency window.)
+
+**MASTERY — engine + service BUILT & verified (view #1 màn thật CHƯA build):**
+- **Engine `src/gami/mastery.js` (PURE, 19 test pass — `node scripts/verify_mastery.mjs`):** `masteryOfDang(measures)` = TB WINDOW=5 lần đo GẦN NHẤT → mức. **Công thức Thùy chốt:** mỗi lần Đ=1·C(chưa đạt)=0.5·S=0; tổng 5 lần ≥4→Đ(đạt) · 2.5–3.5→C(cần luyện) · <2.5→S(yếu) = ngưỡng mean **0.8/0.5** (dùng mean để <5 lần vẫn xếp mức). **chưa-đo = null (KHÔNG =0)**; **độ tin theo cỡ mẫu** (n≥5 cao/3-4 tb/≤2 thấp). + `masteryOfHS`/`summarizeDang`. `RESULT_VALUE{correct:1,partial:.5,wrong:0}`.
+- **Service `src/lib/mastery.ts` (`getMasteryHS(hsId, mon, {includeBTVN,days})`, tsc sạch):** gộp grades(ingame+et via `problem_id→session_problems.phase/ma_dang`) + `buoi_danh_gia_dang`(đánh giá GV, diem) → engine. **2 query rời join JS** (né filter lồng PostgREST). **Toggle BTVN** (mặc định TẮT — Thùy muốn tự soi BTVN có đáng tin ko). Lọc 30/60/90 ngày (boundary instant). Resolve tên dạng theo MÔN (khoCuaMon.banDoTbl) → scope đúng môn. Sort YẾU trước + mới lên đầu (như V1).
+- **VERIFIED data thật** (HS "Nguyễn Lại Bảo Ngọc"): yếu "giải hệ đưa về cơ bản" 0.30 (n=8, tin cao) · cần luyện "cơ bản" 0.60 · "đặt ẩn phụ" 0.70 (=3.5/5=C ✓) · đạt toàn "toán lập hệ". Insight thật: vững word-problem, yếu kỹ năng GIẢI hệ. Công thức khớp.
+
+**QUYẾT ĐỊNH (Thùy) cho dashboard mastery:**
+- **3 TẦNG VIEW riêng** (KHÔNG phải 1 heatmap gộp — mockup heatmap đầu bị bác): **#1 từng HS** (QUAN TRỌNG NHẤT — port tab "Dạng bài" V1 `StudentAcademicView.jsx`: mỗi dạng + timeline lần đánh giá gần nhất ✓/◐/✗ + nguồn IG/ET/ĐG + ngày + tỉ lệ 5/10 lần) · **#2 lớp/hệ/khối** (rollup TỔNG QUÁT: bao nhiêu dạng xanh/vàng/đỏ %, ko chi tiết) · **#3 chiều dạng/chuyên đề** (dạng nào tỉ lệ sai cao nhất / nhiều HS sai nhất).
+- **V1 = ví dụ CÁCH HIỂN THỊ, KHÔNG phải cách đo** (V1 binary Đ/S; V2 = 3 mức D/C/S per câu & per dạng). Ngưỡng = **0.8/0.5** (V2), KHÔNG phải 0.7 (mình hỏi nhầm khung "V1", Thùy chỉnh lại).
+- **Đặt ở CHỈ LEAF RIÊNG** "Kết quả học tập" (3 view qua tab), KHÔNG nhúng Học sinh. **Build #1 trước.**
+- **Sequencing (CTO):** engine✓→service✓→**màn staff view#1** (next)→#2→#3→mặt HS/PH (cần **login HS = NET-NEW**: `my_hoc_sinh_id` chưa có, `tai_khoan` chỉ trỏ nhan_su — cùng chặn test-online).
+- **SPEC test-online** (Thùy đưa, đã lưu `spec-test-online.md`): PAUSE, làm mastery trước. Bước-0 verify test-online mới xong 1 phần (login HS net-new xác nhận).

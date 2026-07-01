@@ -47,10 +47,20 @@ export default function PrintView({ id, onClose }: { id: string; onClose: () => 
     const css = buildPagedCss(full.taiLieu, ch, ch.mau || '#E91E8C', cssOpts)
     const cssUrl = URL.createObjectURL(new Blob([css], { type: 'text/css' }))
     const html = srcRef.current.innerHTML
-    dstRef.current.innerHTML = ''
-    new Previewer().preview(html, [cssUrl], dstRef.current)
-      .then((flow: { total?: number }) => { if (!cancelled) { setPages(flow?.total ?? 0); setRendering(false) } })
-      .catch((e: unknown) => { if (!cancelled) { setRenderErr(e instanceof Error ? e.message : String(e)); setRendering(false) } })
+    // Race-safe: mỗi lần render vào CONTAINER RIÊNG (append live để paged.js đo layout).
+    // Deps đổi nhanh (vd giao_trinh_buoi: lopTen resolve SAU full → effect chạy 2 lần) làm 2 Previewer
+    //   chạy chồng lên cùng node → trang NHÂN ĐÔI (4→8). Fix: run cũ (cancelled) tự xoá container của nó
+    //   khi resolve; run mới xoá mọi container stale còn sót → luôn CHỈ 1 bản.
+    const dst = dstRef.current
+    const container = document.createElement('div')
+    dst.appendChild(container)
+    new Previewer().preview(html, [cssUrl], container)
+      .then((flow: { total?: number }) => {
+        if (cancelled) { container.remove(); return } // stale (deps đã đổi) → vứt, không đụng state
+        Array.from(dst.children).forEach((c) => { if (c !== container) c.remove() }) // dọn container run trước
+        setPages(flow?.total ?? 0); setRendering(false)
+      })
+      .catch((e: unknown) => { container.remove(); if (!cancelled) { setRenderErr(e instanceof Error ? e.message : String(e)); setRendering(false) } })
       .finally(() => URL.revokeObjectURL(cssUrl))
     return () => { cancelled = true }
   }, [full, gv, scope, lopTen])

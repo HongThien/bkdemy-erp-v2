@@ -28,10 +28,17 @@ export default function ETPrintView({ id, onClose }: { id: string; onClose: () =
     const css = buildPagedCss(full.taiLieu, ch, ch.mau || '#7c3aed') + ET_CSS
     const cssUrl = URL.createObjectURL(new Blob([css], { type: 'text/css' }))
     const html = srcRef.current.innerHTML
-    dstRef.current.innerHTML = ''
-    new Previewer().preview(html, [cssUrl], dstRef.current)
-      .then((flow: { total?: number }) => { if (!cancelled) { setPages(flow?.total ?? 0); setRendering(false) } })
-      .catch(() => { if (!cancelled) setRendering(false) })
+    // Race-safe (như PrintView): render vào container riêng, run stale tự xoá → chống paged.js nhân đôi trang.
+    const dst = dstRef.current
+    const container = document.createElement('div')
+    dst.appendChild(container)
+    new Previewer().preview(html, [cssUrl], container)
+      .then((flow: { total?: number }) => {
+        if (cancelled) { container.remove(); return }
+        Array.from(dst.children).forEach((c) => { if (c !== container) c.remove() })
+        setPages(flow?.total ?? 0); setRendering(false)
+      })
+      .catch(() => { container.remove(); if (!cancelled) setRendering(false) })
       .finally(() => URL.revokeObjectURL(cssUrl))
     return () => { cancelled = true }
   }, [full, gv])
