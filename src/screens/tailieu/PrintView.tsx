@@ -254,16 +254,16 @@ function optCols(opts: string[]): number {
   const max = Math.max(0, ...opts.map(optVisLen))
   return max <= 14 ? 4 : max <= 30 ? 2 : 1
 }
-// Tách "ý con" a) b) c)… trong đề (câu KHÔNG phải trắc nghiệm nhưng có nhiều ý ngắn) → cho lên lưới cột như đáp án.
-// Yêu cầu ≥2 ý VÀ nhãn LIÊN TỤC a,b,c,… (chống bắt nhầm "a)" lẻ trong văn). Trả null nếu không phải.
-const SEQ = 'abcdefghijkl'
-function splitYCon(s: string): { stem: string; parts: { lbl: string; body: string }[] } | null {
-  const re = /(?:^|\n)[ \t]*([a-l])[ \t]*[).][ \t]+/g
+// Tách nhãn a)b)c)… (ý con) HOẶC A)B)C)D. (đáp án nhúng trong đề — câu lua_chon=null) → cho lên lưới cột.
+// Yêu cầu ≥2 nhãn LIÊN TỤC theo `seq` (chống bắt nhầm "a)"/"A." lẻ trong văn). Trả null nếu không phải.
+function splitLabeled(s: string, seq: string): { stem: string; parts: { lbl: string; body: string }[] } | null {
+  const cls = seq[0] === 'A' ? 'A-Z' : 'a-l' // uppercase (đáp án) vs lowercase (ý con)
+  const re = new RegExp(`(?:^|\\n)[ \\t]*([${cls}])[ \\t]*[).][ \\t]+`, 'g')
   const marks: { idx: number; lbl: string; start: number }[] = []
   let m: RegExpExecArray | null
-  while ((m = re.exec(s))) marks.push({ idx: m.index, lbl: m[1].toLowerCase(), start: re.lastIndex })
+  while ((m = re.exec(s))) marks.push({ idx: m.index, lbl: m[1], start: re.lastIndex })
   if (marks.length < 2) return null
-  for (let i = 0; i < marks.length; i++) if (marks[i].lbl !== SEQ[i]) return null // phải a,b,c,… liên tục
+  for (let i = 0; i < marks.length; i++) if (marks[i].lbl !== seq[i]) return null
   const stem = s.slice(0, marks[0].idx).trim()
   const parts = marks.map((mk, i) => ({ lbl: mk.lbl, body: s.slice(mk.start, i + 1 < marks.length ? marks[i + 1].idx : undefined).trim() }))
   return { stem, parts }
@@ -272,14 +272,19 @@ export function CauItem({ no, c, gv, lines = 0 }: { no: number; c: CauHoi; gv: b
   const hasOpts = !!(c.lua_chon && c.lua_chon.length)
   const letter = (i: number) => String.fromCharCode(65 + i)
   const cols = hasOpts ? optCols(c.lua_chon!) : 0
-  const ycon = hasOpts ? null : splitYCon(c.noi_dung) // câu ý-con a)b)c)… → lưới cột thay vì dọc
+  // Câu lua_chon=null: đáp án A/B/C/D nhúng trong đề (ưu tiên) HOẶC ý con a)b)c)… → tách ra lưới cột.
+  const embOpts = hasOpts ? null : splitLabeled(c.noi_dung, 'ABCDEFGH')
+  const ycon = hasOpts || embOpts ? null : splitLabeled(c.noi_dung, 'abcdefghijkl')
+  const stem = embOpts?.stem ?? ycon?.stem ?? c.noi_dung
+  const grid = embOpts?.parts ?? ycon?.parts ?? null // lưới cột (đáp án nhúng / ý con), cùng render
   return (
     <li className="pv-cau">
-      <div className="pv-math"><span className="pv-cau-no">Câu {no}.</span><MathText>{ycon ? ycon.stem : c.noi_dung}</MathText></div>
+      {/* THỨ TỰ: đề → HÌNH → đáp án (Thùy chốt) */}
+      <div className="pv-math"><span className="pv-cau-no">Câu {no}.</span><MathText>{stem}</MathText></div>
       {c.anh_de && <img src={c.anh_de} alt="" className="pv-img" />}
-      {ycon && (
-        <div className="pv-opts" style={{ gridTemplateColumns: `repeat(${optCols(ycon.parts.map((p) => p.body))}, minmax(0,1fr))` }}>
-          {ycon.parts.map((p, i) => <div key={i} className="pv-opt"><b>{p.lbl})</b> <span className="pv-math"><MathText>{p.body}</MathText></span></div>)}
+      {grid && (
+        <div className="pv-opts" style={{ gridTemplateColumns: `repeat(${optCols(grid.map((p) => p.body))}, minmax(0,1fr))` }}>
+          {grid.map((p, i) => <div key={i} className="pv-opt"><b>{p.lbl}{embOpts ? '.' : ')'}</b> <span className="pv-math"><MathText>{p.body}</MathText></span></div>)}
         </div>
       )}
       {hasOpts && (
@@ -297,7 +302,7 @@ export function CauItem({ no, c, gv, lines = 0 }: { no: number; c: CauHoi; gv: b
           {c.anh_dap_an && <img src={c.anh_dap_an} alt="" className="pv-img" />}
         </div>
       )}
-      {lines > 0 && !hasOpts && <div className="pv-write">{Array.from({ length: lines }).map((_, i) => <div key={i} className="pv-wline" />)}</div>}
+      {lines > 0 && !hasOpts && !grid && <div className="pv-write">{Array.from({ length: lines }).map((_, i) => <div key={i} className="pv-wline" />)}</div>}
     </li>
   )
 }
