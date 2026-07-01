@@ -82,6 +82,7 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
         <span className="text-[12px] font-semibold uppercase tracking-wide text-slate-500">Trình bày</span>
         <label className="flex items-center gap-1.5">Header <select value={ch.header ?? 'wave'} onChange={(e) => saveCh({ header: e.target.value as any })} className={sel}><option value="wave">Dải sóng</option><option value="none">Không</option></select></label>
         <label className="flex items-center gap-1.5">Footer <select value={ch.footer ?? 'wave'} onChange={(e) => saveCh({ footer: e.target.value as any })} className={sel}><option value="wave">Dải sóng</option><option value="none">Không</option></select></label>
+        <label className="flex items-center gap-1.5" title="Ôn tập → chọn Không để in chỉ bài (không kèm lý thuyết). Trích xuất buổi kế thừa cài này.">Lý thuyết <select value={ch.inLyThuyet === false ? 'khong' : 'co'} onChange={(e) => saveCh({ inLyThuyet: e.target.value === 'co' })} className={sel}><option value="co">Có kèm</option><option value="khong">Không (ôn tập)</option></select></label>
         <label className="flex items-center gap-1.5">Màu
           <span className="flex gap-1">{MAU_PRESET.map(([c, n]) => (
             <button key={c} title={n} onClick={() => saveCh({ mau: c })} className={`h-6 w-6 rounded-full border-2 ${(ch.mau ?? '#E91E8C') === c ? 'border-slate-800' : 'border-white shadow'}`} style={{ background: c }} />

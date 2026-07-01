@@ -12,7 +12,7 @@ export default function PrintView({ id, onClose }: { id: string; onClose: () => 
   const [err, setErr] = useState<string | null>(null)
   const [gv, setGv] = useState(false) // false = bản HS · true = bản GV
   const [scope, setScope] = useState<'all' | 'giaotrinh' | 'btvn'>('all') // tách quyển: giáo trình (LT+luyện) vs BTVN riêng
-  const [lt, setLt] = useState(true) // kèm LÝ THUYẾT khi in (ôn tập → tắt để chỉ in bài)
+  const lt = full?.taiLieu.cau_hinh?.inLyThuyet !== false // kèm LÝ THUYẾT = SETTING của giáo trình (default có); trích xuất kế thừa
   const [pages, setPages] = useState(0)
   const [rendering, setRendering] = useState(true)
   const [renderErr, setRenderErr] = useState<string | null>(null)
@@ -53,7 +53,7 @@ export default function PrintView({ id, onClose }: { id: string; onClose: () => 
       .catch((e: unknown) => { if (!cancelled) { setRenderErr(e instanceof Error ? e.message : String(e)); setRendering(false) } })
       .finally(() => URL.revokeObjectURL(cssUrl))
     return () => { cancelled = true }
-  }, [full, gv, scope, lopTen, lt])
+  }, [full, gv, scope, lopTen])
 
   const seg = (on: boolean) => `rounded-md px-3 py-1 text-[13px] font-medium transition ${on ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`
 
@@ -70,12 +70,7 @@ export default function PrintView({ id, onClose }: { id: string; onClose: () => 
           <button onClick={() => setScope('giaotrinh')} className={seg(scope === 'giaotrinh')}>Chỉ giáo trình</button>
           <button onClick={() => setScope('btvn')} className={seg(scope === 'btvn')}>Chỉ BTVN</button>
         </div>
-        {scope !== 'btvn' && (
-          <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5" title="Tắt lý thuyết khi in ôn tập (chỉ in bài)">
-            <button onClick={() => setLt(true)} className={seg(lt)}>Kèm lý thuyết</button>
-            <button onClick={() => setLt(false)} className={seg(!lt)}>Không LT</button>
-          </div>
-        )}
+        {scope !== 'btvn' && !lt && <span className="rounded bg-amber-50 px-2 py-0.5 text-[12px] font-medium text-amber-700" title="Đổi ở Builder → Trình bày → Lý thuyết">Không kèm lý thuyết</span>}
         <span className="text-[12px] text-slate-400">{rendering ? 'đang dựng trang…' : `${pages} trang`}</span>
         <div className="ml-auto flex gap-2">
           <button onClick={() => window.print()} disabled={rendering} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">🖨 In / Lưu PDF</button>
