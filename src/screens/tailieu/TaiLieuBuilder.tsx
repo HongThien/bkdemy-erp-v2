@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import {
   getTaiLieuFull, updateTaiLieu, updatePhan, setCauOfPhan,
-  addBuoi, deleteBuoi, setDangOfBuoi, reorderDangInBuoi, autoSuggestByLoai, autoSuggestBtvn, trichXuatBuoi, listTrichXuat, khoCuaMon,
+  addBuoi, deleteBuoi, setDangOfBuoi, reorderDangInBuoi, autoSuggestByLoai, autoSuggestBtvn, trichXuatBuoi, listTrichXuat, khoCuaMon, setPhanKieu, BLOCK_KIEU,
   DEFAULT_LUYEN_COUNTS, DEFAULT_BTVN_COUNTS, DEFAULT_BTVN_LINES,
   type TaiLieuFull, type PhanResolved, type CauHinh, type TrichState,
 } from '../../lib/tailieu'
@@ -50,6 +50,7 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
   async function saveTen() { if (full && ten.trim() && ten.trim() !== full.taiLieu.ten) { await updateTaiLieu(id, { ten: ten.trim() }); markSaved() } }
   async function saveCh(patch: Partial<CauHinh>) { const next = { ...ch, ...patch }; setCh(next); await updateTaiLieu(id, { cau_hinh: next }); markSaved() }
   async function applyCaus(phanId: string, maCaus: string[]) { await setCauOfPhan(phanId, maCaus); await reload(); markSaved() }
+  async function onSetKieu(phanId: string, kieu: string) { await setPhanKieu(phanId, kieu); await reload(); markSaved() }
   const openPicker = (phanId: string, ma: string, selected: string[]) => setPicker({ phanId, maDangs: [ma], selected })
   const onLine = (maCau: string, n: number) => saveCh({ btvnLinesByCau: { ...(ch.btvnLinesByCau ?? {}), [maCau]: n } })
 
@@ -105,7 +106,7 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
                   onDelete={async () => { if (confirm('Xoá cả buổi này (gồm dạng trên lớp + BTVN)?')) { await deleteBuoi(id, b.marker.id); await reload(); markSaved() } }}
                   onChonDang={() => setDangPicker({ buoiId: b.marker.id, selected: b.dangs.map((d) => d.ref_ma!).filter(Boolean) })}
                   onReorderDang={async (order) => { await reorderDangInBuoi(id, b.marker.id, order); await reload(); markSaved() }}
-                  onApply={applyCaus} openPicker={openPicker} cauTbl={cauTbl}
+                  onApply={applyCaus} openPicker={openPicker} cauTbl={cauTbl} onSetKieu={onSetKieu}
                 />
               )
             })}
@@ -123,10 +124,10 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
 }
 
 // ── 1 BUỔI: tiêu đề (sửa được) + nút Chọn dạng + danh sách dạng (mỗi dạng có Bài luyện + BTVN) ──
-function BuoiCard({ buoi, startNo, linesByCau, onLine, onRename, onDelete, onChonDang, onReorderDang, onApply, openPicker, cauTbl }: {
+function BuoiCard({ buoi, startNo, linesByCau, onLine, onRename, onDelete, onChonDang, onReorderDang, onApply, openPicker, cauTbl, onSetKieu }: {
   buoi: BuoiUI; startNo: number; linesByCau: Record<string, number>; onLine: (maCau: string, n: number) => void
   onRename: (t: string) => void; onDelete: () => void; onChonDang: () => void; onReorderDang: (order: string[]) => void
-  onApply: (phanId: string, maCaus: string[]) => void; openPicker: (phanId: string, ma: string, selected: string[]) => void; cauTbl: string
+  onApply: (phanId: string, maCaus: string[]) => void; openPicker: (phanId: string, ma: string, selected: string[]) => void; cauTbl: string; onSetKieu: (phanId: string, kieu: string) => void
 }) {
   const order = buoi.dangs.map((d) => d.ref_ma!).filter(Boolean)
   const move = (i: number, dir: -1 | 1) => {
@@ -150,7 +151,7 @@ function BuoiCard({ buoi, startNo, linesByCau, onLine, onRename, onDelete, onCho
           ? <div className="text-[12px] italic text-slate-400">Chưa có dạng — bấm “+ Chọn dạng” để chọn các dạng cho buổi (mọi chuyên đề).</div>
           : buoi.dangs.map((d, i) => (
             <DangCard key={d.id} no={startNo + i + 1} dang={d} btvn={d.ref_ma ? buoi.btvnByMa[d.ref_ma] : undefined}
-              linesByCau={linesByCau} onLine={onLine} onApply={onApply} openPicker={openPicker} cauTbl={cauTbl}
+              linesByCau={linesByCau} onLine={onLine} onApply={onApply} openPicker={openPicker} cauTbl={cauTbl} onSetKieu={onSetKieu}
               canUp={i > 0} canDown={i < buoi.dangs.length - 1} onUp={() => move(i, -1)} onDown={() => move(i, 1)} />
           ))}
       </div>
@@ -159,9 +160,9 @@ function BuoiCard({ buoi, startNo, linesByCau, onLine, onRename, onDelete, onCho
 }
 
 // ── 1 DẠNG trong buổi: 2 khối cấu hình — Bài luyện (trên lớp) + BTVN (về nhà), đều theo số câu mỗi loại ──
-function DangCard({ no, dang, btvn, linesByCau, onLine, onApply, openPicker, cauTbl, canUp, canDown, onUp, onDown }: {
+function DangCard({ no, dang, btvn, linesByCau, onLine, onApply, openPicker, cauTbl, onSetKieu, canUp, canDown, onUp, onDown }: {
   no: number; dang: PhanResolved; btvn?: PhanResolved; linesByCau: Record<string, number>
-  onLine: (maCau: string, n: number) => void; onApply: (phanId: string, maCaus: string[]) => void; openPicker: (phanId: string, ma: string, selected: string[]) => void; cauTbl: string
+  onLine: (maCau: string, n: number) => void; onApply: (phanId: string, maCaus: string[]) => void; openPicker: (phanId: string, ma: string, selected: string[]) => void; cauTbl: string; onSetKieu: (phanId: string, kieu: string) => void
   canUp: boolean; canDown: boolean; onUp: () => void; onDown: () => void
 }) {
   const ma = dang.ref_ma!
@@ -198,6 +199,7 @@ function DangCard({ no, dang, btvn, linesByCau, onLine, onApply, openPicker, cau
           {counts(luyenCnt, setLuyenCnt)}
           <button onClick={goiYLuyen} className="rounded-md bg-indigo-50 px-2.5 py-1 font-medium text-indigo-700 hover:bg-indigo-100">↻ Gợi ý</button>
           <button onClick={() => openPicker(dang.id, ma, dang.caus.map((c) => c.ma_cau))} className="rounded-md border border-slate-300 px-2.5 py-1 font-medium text-slate-600 hover:border-indigo-400">✎ Chọn câu</button>
+          <KieuPicker value={dang.kieu} onChange={(k) => onSetKieu(dang.id, k)} />
         </div>
         {dang.caus.length > 0
           ? <ol className="mt-2 space-y-1">{dang.caus.map((c, i) => <CauRow key={c.ma_cau} no={i + 1} c={c} onRemove={() => onApply(dang.id, dang.caus.filter((x) => x.ma_cau !== c.ma_cau).map((x) => x.ma_cau))} />)}</ol>
@@ -211,6 +213,7 @@ function DangCard({ no, dang, btvn, linesByCau, onLine, onApply, openPicker, cau
           {btvn ? counts(btvnCnt, setBtvnCnt) : <span className="italic text-slate-400">—</span>}
           {btvn && <button onClick={goiYBtvn} className="rounded-md bg-indigo-50 px-2.5 py-1 font-medium text-indigo-700 hover:bg-indigo-100">↻ Gợi ý</button>}
           {btvn && <button onClick={() => openPicker(btvn.id, ma, btvn.caus.map((c) => c.ma_cau))} className="rounded-md border border-slate-300 px-2.5 py-1 font-medium text-slate-600 hover:border-indigo-400">✎ Chọn câu</button>}
+          {btvn && <KieuPicker value={btvn.kieu} onChange={(k) => onSetKieu(btvn.id, k)} />}
         </div>
         {btvn && (btvn.caus.length > 0
           ? <ol className="mt-2 space-y-1">{btvn.caus.map((c, i) => (
@@ -228,6 +231,21 @@ function DangCard({ no, dang, btvn, linesByCau, onLine, onApply, openPicker, cau
           : <div className="mt-2 text-[12px] italic text-slate-400">Chưa có câu BTVN — bấm “Gợi ý” hoặc “Chọn câu”.</div>)}
       </div>
     </div>
+  )
+}
+
+// Kiểu hiển thị block (Thường/2/3/4 cột) — câu ngắn xếp nhiều cột cho gọn/tiết kiệm giấy khi in.
+function KieuPicker({ value, onChange }: { value?: string; onChange: (k: string) => void }) {
+  return (
+    <span className="ml-auto flex items-center gap-1" title="Kiểu hiển thị block khi in (câu ngắn → nhiều cột)">
+      <span className="text-[11px] text-slate-400">Kiểu</span>
+      <span className="flex gap-0.5 rounded-md bg-slate-100 p-0.5">
+        {BLOCK_KIEU.map((k) => (
+          <button key={k.v} onClick={() => onChange(k.v)}
+            className={`rounded px-1.5 py-0.5 text-[11px] font-medium transition ${(value ?? 'thuong') === k.v ? 'bg-white text-slate-800 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>{k.lbl}</button>
+        ))}
+      </span>
+    </span>
   )
 }
 

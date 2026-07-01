@@ -129,6 +129,7 @@
 | bu_cho_buoi_id | uuid | Y |  | FK→buoi_hoc.id |
 | created_at | timestamp with time zone |  | now() |  |
 | bo_tro_duoi_id | uuid | Y |  | FK→bo_tro_duoi.id |
+| bao_den_at | timestamp with time zone | Y |  |  |
 
 ## canh_bao_yeu
 
@@ -650,6 +651,7 @@
 | ref_ma | text | Y |  |  |
 | tieu_de | text | Y |  |  |
 | noi_dung | text | Y |  |  |
+| kieu | text |  | 'thuong'::text |  |
 
 ## team
 

@@ -30,7 +30,13 @@ export function etFormOf(c: { ma_cau: string; loai_cau: string; lua_chon?: strin
   return c.loai_cau === 'tu_luan' ? 'tu_luan' : 'tra_loi_ngan'   // còn lại theo kho, default trả lời ngắn
 }
 export type TaiLieu = { id: string; loai: string; ten: string; khoi: string; mon: string; ma_chuyen_de: string | null; theme: string; cau_hinh?: CauHinh; created_at?: string; updated_at?: string; created_by?: string | null }
-export type TaiLieuPhan = { id: string; tai_lieu_id: string; thu_tu: number; loai_phan: PhanLoai; ref_ma: string | null; tieu_de: string | null; noi_dung: string | null }
+// kieu = KIỂU HIỂN THỊ của block (phan): 'thuong'(1 cột) | '2cot' | '3cot' | '4cot' | … (registry mở rộng). Câu giữ ma_dang.
+export type BlockKieu = 'thuong' | '2cot' | '3cot' | '4cot'
+export const BLOCK_KIEU: { v: BlockKieu; lbl: string; cols: number }[] = [
+  { v: 'thuong', lbl: 'Thường', cols: 1 }, { v: '2cot', lbl: '2 cột', cols: 2 }, { v: '3cot', lbl: '3 cột', cols: 3 }, { v: '4cot', lbl: '4 cột', cols: 4 },
+]
+export const kieuCols = (k?: string): number => BLOCK_KIEU.find((x) => x.v === k)?.cols ?? 1
+export type TaiLieuPhan = { id: string; tai_lieu_id: string; thu_tu: number; loai_phan: PhanLoai; ref_ma: string | null; tieu_de: string | null; noi_dung: string | null; kieu?: string }
 type LtRow = { noi_dung: string; file_url: string | null; ten_file: string | null }
 type DangRow = { ma_dang: string; ten_dang: string; muc_do: number | null; bac_toi_thieu: string; ma_chuyen_de: string; ten_chuyen_de: string }
 export type PhanResolved = TaiLieuPhan & {
@@ -90,6 +96,11 @@ export async function addPhan(p: Omit<TaiLieuPhan, 'id'>): Promise<TaiLieuPhan> 
 }
 export async function updatePhan(id: string, patch: Partial<Pick<TaiLieuPhan, 'tieu_de' | 'noi_dung' | 'thu_tu'>>): Promise<void> {
   const { error } = await supabase.from('tai_lieu_phan').update(patch).eq('id', id)
+  if (error) throw error
+}
+// Đặt KIỂU HIỂN THỊ cho 1 block (phan).
+export async function setPhanKieu(id: string, kieu: string): Promise<void> {
+  const { error } = await supabase.from('tai_lieu_phan').update({ kieu }).eq('id', id)
   if (error) throw error
 }
 export async function deletePhan(id: string): Promise<void> {
