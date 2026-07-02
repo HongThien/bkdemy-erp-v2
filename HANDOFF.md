@@ -179,8 +179,22 @@
 - **⭐ MẶT HS/PH cần LOGIN HS = NET-NEW** (verify DB): `my_hoc_sinh_id` chưa có; `tai_khoan`=(id,nhan_su_id,email) chỉ trỏ nhân sự. → mặt HS/PH bị chặn (cùng chặn test-online); mặt STAFF ko chặn (dùng getMyScope).
 - **⭐ SPEC TEST ONLINE (`spec-test-online.md`)** — Thùy đưa, ĐÃ lưu repo, **PAUSE** làm mastery trước. ET+BTVN trắc nghiệm, HS điền mobile→auto-chấm→ET vào mastery/BTVN tham khảo. Snapshot đề+key (ko liveref). Bước-0 verify mới xong 1 phần (login HS net-new xác nhận). Thứ tự build (spec §11): BTVN online → migration+RLS HS+`my_hoc_sinh_id()` → phát hành+chấm → dung_sai → ET online.
 
+### Đã build (07-01/02 — MÀN KẾT QUẢ HỌC TẬP đầy đủ: 4 view + Tổng quan + fix khoá-UI)
+- **Leaf "Kết quả học tập"** (`src/screens/ketqua/KetQuaScreen.tsx`, leaf `ketqua` nhóm Vận hành; service `src/lib/mastery.ts`). 4 top-tab, **GIỮ state khi đổi tab** (lazy-mount + `hidden`, KHÔNG unmount → không mất lựa chọn).
+- **① Từng học sinh** — chọn HS (ô tìm / **cột lớp trái** click chuyển HS; tìm HS tự suy lớp `listLopCuaHS`) → **3 sub-tab**:
+  - **Tổng quan** (`getTongQuanHS`): *tổng kết* = **% hoàn thành bản đồ** (dạng ĐẠT/ĐÃ-ĐO) · **Điểm năng lực** (PLACEHOLDER — chờ cấu trúc đề + nhãn cơ-bản/nâng-cao + Hình) · **Điểm thi** (Trường/Sát hạch từ `diem_thi`, wire sẵn, DB trống → "—"). *raw* = **%ET/%BTVN** = (Đ+½C)/số câu. **Trend ↑/↓** (30-ngày-gần vs trước, ẩn khi <2 kỳ).
+  - **Dạng bài** = bảng mastery per-dạng (mức/điểm/độ-tin/timeline nguồn+ngày); cửa sổ **Tất-cả (mặc định)** /30/60/90 + toggle BTVN. (Mặc định Tất-cả để KHỚP % ở Tổng quan = all-time.)
+  - **Lịch sử hoạt động** = thẻ hoạt động của HS (`ActivityHistory` scope hocSinhId).
+- **② Theo buổi (raw)** — thẻ mỗi HOẠT ĐỘNG (ET/BTVN/Chấm bài/Đánh giá TÁCH riêng, chỉ phase đã ĐÓNG), toggle loại, xếp thời gian, click → popup `BuoiDetail` **read-only CHỈ tab đó** (`tabs=[t]`, portal `document.body` thoát `#root{zoom:1.15}`). Lọc theo LỚP (lọc HS đã chuyển vào view#1 › Lịch sử).
+- **③ Lớp / Khối / Hệ** — mỗi HS 1 **thanh 100% "bộ nhớ iPhone"** (xanh đạt·vàng cần·đỏ yếu, `%(n)` trong màu, tổng "N dạng" cạnh); scope **lớp / khối / hệ(band S/A/B/C)**; sort theo **%** (không tuyệt đối).
+- **④ Theo dạng / Chuyên đề** — pivot: mỗi dạng (hoặc gộp **chuyên đề**) 1 thanh phân bố HS đạt/cần/yếu; sort %.
+- **Công thức (Thùy chốt):** Đ=1·C=0.5·S=0; mastery = TB **5 lần gần nhất** → **≥0.8 đạt / 0.5–0.8 cần luyện / <0.5 yếu**; % hoàn thành = ĐẠT/ĐÃ-ĐO. "chưa-đo" = việc GIÁO TRÌNH cover, KHÔNG phải lỗ hệ thống (bỏ khỏi UI).
+- **Service (`mastery.ts`)**: `getMasteryHS` (**embed `problem_id`** — FK đơn sạch, bỏ IN-list tránh URL dài) · `getTongQuanHS` · **`loadMasteryCells`** (SHARED, type `RollupScope` scope lớp/khối/hệ, ~4 query bulk cho cả lớp) → `getMasteryRollup`/`getMasteryByDang`/`getMasteryByChuyenDe` · `listBuoiHoatDong`.
+- **FIX khoá-UI khi đóng phase (luật Thùy 06-20 áp NỐT):** `BtvnTab` bỏ `if(dong)return` tắt bảng; BtvnTab+DanhGiaTab **GIỮ bảng read-only** khi đóng (disable nút), chỉ "↩ Mở lại" mới sửa. `BuoiDetail` thêm prop **`onlyHsId`** (lọc roster còn 1 HS — cho view#1 lọc theo HS).
+- **CÒN cho Kết quả học tập:** **điểm năng lực** (cần bảng cấu trúc đề per-khối + nhãn cơ-bản/nâng-cao cho dạng + kho Hình — verify DB: `ky_thi`/`diem_thi`=0, `diem_ky_vong`=0/12, dạng chỉ có `muc_do`1-5+`bac_toi_thieu`A/B/C/S) · **mặt HS/PH** (login HS = NET-NEW) · trend hiện khi tích luỹ ≥2 kỳ.
+
 ### Chưa làm
-- **⭐ NEXT — MÀN Mastery view#1 (từng HS):** leaf riêng "Kết quả học tập"; HS picker (SearchSelect) + môn + filter 30/60/90 ngày + **toggle BTVN**; mỗi dạng = mức(đạt/cần luyện/yếu)+điểm+độ tin + tỉ lệ 5/10 + timeline ✓/◐/✗ nguồn+ngày; sort yếu+mới. Apple-clean (mockup `mastery_view1_per_hoc_sinh` đã duyệt hướng — dark V1→light). Engine+service SẴN. Sau: #2 rollup lớp/hệ/khối (summarizeDang) · #3 chiều dạng (pivot, dạng sai nhiều nhất) · mặt HS/PH (cần login HS).
+- ✅ **(XONG 07-02)** Màn Kết quả học tập — 4 view đầy đủ (xem section trên). Chỉ còn điểm-năng-lực + mặt-HS/PH.
 - ✅ **(XONG 06-17)** bucket `avatars` — đã chạy trên Dashboard, verify hoạt động (có ảnh NS/HS thật trong bucket).
 - **⭐ XỬ LÝ TÀI LIỆU — đang BUILD FULL PHASE 2** (Thùy chốt: build full rồi sửa Phase 0 1 thể; ADR: [Bộ xử lý tài liệu](https://app.notion.com/p/384d4530bcdb815093a1d601c29c7bab)). 4 kịch bản — **thứ tự ưu tiên (Thùy): 2 → 4 → 3.** KB1 cắt-1-bài ✅ · **KB2 1-PDF-1-dạng ✅** (= batch 'auto' đã gộp, xem block 06-18) · **KB4 lý thuyết có hình ✅** (editor lý thuyết "🖼 Bóc + hình": `buildTheoryIngestPrompt`+`THEORY_SCHEMA` trả text+[[Hn]]+bbox → cắt+chèn `![](url)` đúng vị trí) · **KB3 (TIẾP THEO)** file nhiều dạng → màn "Nhập tài liệu" cross-dạng + **người điền dạng TAY 100%** (AI xếp dạng = tương lai khi kho chuẩn) + route lưu theo dạng — CHƯA. **Phase 0 còn**: #2 chuẩn hoá ⋮→`\vdots` (ở code, đừng vá prompt) · #1 verify bảng `array` render · #3 (tuỳ) thêm call tự-kiểm clone. (#3 thinking ĐÃ bật.) **Phase 1** = AIG/template (Thùy chọn LLM+tự-kiểm).
 - **Mobile:** mới tối ưu tab "Chấm bài trên lớp"; các tab khác (điểm danh/đánh giá/ET) + shell nav chưa làm mobile.
@@ -277,7 +291,10 @@
 
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
 
-- **`zoom:1.15` (#root) + `100vh`**: mọi `100vh`/`min-h-screen` painted ×1.15 → body scrollbar thừa. Chặn chiều cao 1 lần ở App = `h-[calc(100vh/1.15)]`, dưới dùng `h-full`.
+- **`zoom:1.15` (#root) + `100vh`**: mọi `100vh`/`min-h-screen` painted ×1.15 → body scrollbar thừa. Chặn chiều cao 1 lần ở App = `h-[calc(100vh/1.15)]`, dưới dùng `h-full`. **MODAL (`fixed inset-0`+`vh`/`vw`) trong #root cũng bị phóng 1.15× → tràn màn hình → `createPortal(modal, document.body)` để THOÁT zoom.**
+- **PostgREST embed: FK ĐƠN mới embed thẳng được; nhiều FK cùng đích → NHẬP NHẰNG (query lỗi âm thầm → rỗng).** `gami_grades.problem_id→gami_session_problems` = FK đơn → `select('...,prob:problem_id(...)')` (bỏ luôn IN-list, tránh URL dài). Còn `buoi_hoc_hs` có **2 FK** về `buoi_hoc` (`buoi_hoc_id`+`bu_cho_buoi_id`) → KHÔNG embed, phải **tách 2 bước** (lấy id rồi `.in()`).
+- **"Đóng phase = XÁC NHẬN, GIỮ bảng read-only, chỉ Mở-lại mới sửa" (Thùy):** cấm early-return tắt UI khi đóng. Đóng → header banner "✓ đã đóng + ↩ Mở lại" + `disabled` mọi nút, bảng vẫn hiện. (Áp mọi tab chấm: Chấm bài/ET/BTVN/Đánh giá.)
+- **Đổi tab mà KHÔNG mất state:** lazy-mount + `hidden` (mount 1 lần, ẩn khi off) thay vì conditional-render (unmount = mất chọn).
 - **`grid h-full` KHÔNG đủ cuộn**: hàng grid mặc định `auto` → ô con tràn bị `overflow-hidden` cắt. Phải `grid-rows-[minmax(0,1fr)]` thì inner `overflow-auto` mới ăn. `min-h-0` một mình không cứu grid.
 - **MathText `\n` vs lệnh LaTeX (`\neq`/`\nVì`)** — đã SAI 2 lần: cùng dạng `\n`+chữ, regex không phân biệt nổi. **Fix gốc: tách `$…$` TRƯỚC**, chỉ xử lý xuống dòng ở text NGOÀI `$`; trong text đổi ký hiệu Unicode trước rồi cắt dòng. **Bài học to: 2 thứ cùng pattern → TÁCH NGỮ CẢNH, đừng vá lookahead.** KaTeX dùng `\dfrac` (không `\frac`).
 - **Mã/STT per-nhóm KHÔNG dùng trigger BEFORE INSERT**: multi-row insert 1 statement không thấy nhau → trùng. Tính **client-side max+1**.

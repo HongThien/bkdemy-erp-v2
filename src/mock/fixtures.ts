@@ -90,6 +90,8 @@ export const adminLeaves: AdminLeaf[] = [
   { id: 'buoihoc',     nhom: 'Vận hành',  ten: 'Buổi học',                     founderOnly: false },
   { id: 'diemso',      nhom: 'Vận hành',  ten: 'Điểm số (Elo/EXP)',            founderOnly: false },
   { id: 'thanhtich',   nhom: 'Vận hành',  ten: 'Thành tích',                   founderOnly: false },
+  { id: 'ketqua',      nhom: 'Vận hành',  ten: 'Kết quả học tập',              founderOnly: false }, // mastery (HS × dạng) suy động
+
   { id: 'quanlylevel', nhom: 'Vận hành',  ten: 'Quản lý Level',                founderOnly: false },
   { id: 'giaoviec',    nhom: 'Vận hành',  ten: 'Tạo & giao việc phát triển',   founderOnly: false },
   // Bổ trợ = nhánh ngang hàng Vận hành (hệ thống support NGOÀI buổi học chính). 5 loại: bù/yếu/đuổi/định-kỳ/ôn-thi.

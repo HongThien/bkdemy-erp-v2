@@ -135,7 +135,8 @@ function BuoiCard({ ba, ngay, onOpened, onChanged }: { ba: BuoiAo; ngay: string;
 
 // tabs: giới hạn tab theo vai (GV/TG mở từ "Việc của tôi"); bỏ trống = đủ 4 (OPS/admin).
 // canManage = đổi GV (dạy thay) + Hủy buổi — chỉ OPS/admin. GV/TA mở từ "Việc của tôi" = false (GV read-only).
-export function BuoiDetail({ id, onClose, tabs, initialTab, canManage = true }: { id: string; onClose: () => void; tabs?: TabKey[]; initialTab?: TabKey; canManage?: boolean }) {
+// onlyHsId: chỉ hiện 1 HS (từ màn "Kết quả học tập" khi lọc theo học sinh) → lọc roster còn đúng em đó.
+export function BuoiDetail({ id, onClose, tabs, initialTab, canManage = true, onlyHsId }: { id: string; onClose: () => void; tabs?: TabKey[]; initialTab?: TabKey; canManage?: boolean; onlyHsId?: string | null }) {
   const [buoi, setBuoi] = useState<(BuoiHoc & { lop?: { ten_lop: string; mon: string; khoi?: string | null }; gv_chinh_id?: string | null }) | null>(null)
   const [roster, setRoster] = useState<BuoiHocHS[]>([])
   const [dsNS, setDsNS] = useState<NhanSu[]>([])
@@ -145,7 +146,7 @@ export function BuoiDetail({ id, onClose, tabs, initialTab, canManage = true }: 
 
   async function reload() {
     const [b, r, ns] = await Promise.all([getBuoi(id), getRoster(id), listNhanSu()])
-    setBuoi(b); setRoster(r); setDsNS(ns)
+    setBuoi(b); setRoster(onlyHsId ? r.filter((x) => x.hoc_sinh_id === onlyHsId) : r); setDsNS(ns)
     // dạng theo khối của lớp (cho picker chấm bài + tên dạng ở đánh giá). Hiện chỉ Toán (dai_ban_do).
     const khoi = (b as any).lop?.khoi
     if (khoi) { try { setDangOpts((await listDaiDang(khoi)).map((d) => ({ ma_dang: d.ma_dang, ten: d.ten_dang }))) } catch { /* */ } }
@@ -850,15 +851,6 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
 
   if (loading) return <p className="text-[12px] text-slate-400">Đang tải BTVN…</p>
   if (missing) return <p className="text-[13px] text-slate-400">Chưa có BTVN cho buổi này (khớp <b className="text-slate-600">lớp + ngày</b>). Trích xuất BTVN từ giáo trình hoặc tạo BTVN cho lớp+ngày của buổi rồi quay lại.</p>
-  if (dong) return (
-    <div>
-      <div className="mb-3 flex items-center gap-3">
-        <span className="rounded-md bg-emerald-50 px-2.5 py-1 text-[13px] font-medium text-emerald-700">✓ BTVN đã đóng — đã thưởng EXP hoàn thành.</span>
-        <button onClick={async () => { if (!confirm('Mở lại BTVN để sửa? EXP đã thưởng sẽ hoàn lại.')) return; await reopenBTVN(buoiId); onChange() }} className="rounded-md border border-amber-300 px-2.5 py-1 text-[12px] font-medium text-amber-700 hover:bg-amber-50">↩ Mở lại để sửa</button>
-      </div>
-      {cb.length > 0 && <p className="text-[12px] text-slate-500">Báo động đã gửi: {cb.length} (HS kém dạng).</p>}
-    </div>
-  )
   if (coMat.length === 0) return <p className="text-[12px] text-slate-400">Chưa có HS nào điểm danh “có mặt”.</p>
 
   const cbOf = (hsId: string) => cb.filter((x) => x.hoc_sinh_id === hsId)
@@ -866,7 +858,14 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
     <div className="flex h-full flex-col">
       <div className="mb-3 flex items-center gap-2">
         <span className="text-[12px] text-slate-400">{probs.length} câu (từ BTVN) · {coMat.length} HS · chấm <b className="text-emerald-600">Đ</b>/<b className="text-amber-600">C</b>/<b className="text-rose-600">S</b> (tham khảo) · 🚨 báo động kém dạng.</span>
-        <button onClick={dong_} disabled={closing} className="ml-auto rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-indigo-500 disabled:opacity-40">{closing ? 'Đang đóng…' : 'Đóng BTVN'}</button>
+        {dong ? (
+          <div className="ml-auto flex items-center gap-2">
+            <span className="rounded-md bg-emerald-50 px-2.5 py-1 text-[13px] font-medium text-emerald-700">✓ BTVN đã đóng — đã thưởng EXP hoàn thành.</span>
+            <button onClick={async () => { if (!confirm('Mở lại BTVN để sửa? EXP đã thưởng sẽ hoàn lại.')) return; await reopenBTVN(buoiId); onChange() }} className="rounded-md border border-amber-300 px-2.5 py-1 text-[12px] font-medium text-amber-700 hover:bg-amber-50">↩ Mở lại để sửa</button>
+          </div>
+        ) : (
+          <button onClick={dong_} disabled={closing} className="ml-auto rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-indigo-500 disabled:opacity-40">{closing ? 'Đang đóng…' : 'Đóng BTVN'}</button>
+        )}
       </div>
       <div className="min-h-0 flex-1 overflow-auto rounded-xl border border-slate-200">
         <table className="border-collapse text-sm">
@@ -889,18 +888,18 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
                   <td className="sticky left-0 z-10 border border-slate-200 bg-white px-3 py-1.5">
                     <div className="flex items-center gap-1.5">
                       <span className="min-w-[104px] flex-1 whitespace-nowrap font-medium text-slate-800">{r.hoc_sinh?.ho_ten ?? '?'}</span>
-                      <select value={v.trang_thai_nop ?? ''} onChange={(e) => setKQField(r.hoc_sinh_id, { trang_thai_nop: e.target.value || null })} title="Trạng thái nộp" className={`h-7 w-[116px] shrink-0 rounded border px-1 text-[12px] ${v.trang_thai_nop ? 'border-slate-300 text-slate-700' : 'border-slate-200 text-slate-400'}`}>
+                      <select value={v.trang_thai_nop ?? ''} disabled={dong} onChange={(e) => setKQField(r.hoc_sinh_id, { trang_thai_nop: e.target.value || null })} title="Trạng thái nộp" className={`h-7 w-[116px] shrink-0 rounded border px-1 text-[12px] disabled:opacity-60 ${v.trang_thai_nop ? 'border-slate-300 text-slate-700' : 'border-slate-200 text-slate-400'}`}>
                         <option value="">— Nộp —</option>{NOP_OPTS.map((o) => <option key={o.v} value={o.v}>{o.l}</option>)}
                       </select>
-                      <select value={v.thai_do ?? ''} onChange={(e) => setKQField(r.hoc_sinh_id, { thai_do: e.target.value || null })} title="Thái độ" className={`h-7 w-[116px] shrink-0 rounded border px-1 text-[12px] ${v.thai_do ? 'border-slate-300 text-slate-700' : 'border-slate-200 text-slate-400'}`}>
+                      <select value={v.thai_do ?? ''} disabled={dong} onChange={(e) => setKQField(r.hoc_sinh_id, { thai_do: e.target.value || null })} title="Thái độ" className={`h-7 w-[116px] shrink-0 rounded border px-1 text-[12px] disabled:opacity-60 ${v.thai_do ? 'border-slate-300 text-slate-700' : 'border-slate-200 text-slate-400'}`}>
                         <option value="">— Thái độ —</option>{THAIDO_OPTS.map((o) => <option key={o.v} value={o.v}>{o.l}</option>)}
                       </select>
-                      <button onClick={() => setAlertFor(r.hoc_sinh_id)} disabled={!dangBuoi.length} className="shrink-0 rounded border border-rose-200 px-1.5 py-1 text-[12px] text-rose-600 hover:bg-rose-50 disabled:opacity-40" title="Báo động: HS kém 1 dạng">🚨</button>
+                      <button onClick={() => setAlertFor(r.hoc_sinh_id)} disabled={!dangBuoi.length || dong} className="shrink-0 rounded border border-rose-200 px-1.5 py-1 text-[12px] text-rose-600 hover:bg-rose-50 disabled:opacity-40" title="Báo động: HS kém 1 dạng">🚨</button>
                     </div>
                     {cbOf(r.hoc_sinh_id).length > 0 && (
                       <div className="mt-1 flex flex-wrap items-center gap-1 pl-[2px]">
                         {cbOf(r.hoc_sinh_id).map((c) => (
-                          <span key={c.id} className="inline-flex items-center gap-1 rounded bg-rose-100 px-1.5 py-0.5 text-[10px] font-semibold text-rose-700" title={c.ghi_chu ?? ''}>{tenDang(c.ma_dang)}<button onClick={async () => { await xoaCanhBao(c.id); reloadKq() }} className="text-rose-400 hover:text-rose-700">✕</button></span>
+                          <span key={c.id} className="inline-flex items-center gap-1 rounded bg-rose-100 px-1.5 py-0.5 text-[10px] font-semibold text-rose-700" title={c.ghi_chu ?? ''}>{tenDang(c.ma_dang)}{!dong && <button onClick={async () => { await xoaCanhBao(c.id); reloadKq() }} className="text-rose-400 hover:text-rose-700">✕</button>}</span>
                         ))}
                       </div>
                     )}
@@ -911,7 +910,7 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
                       <td key={p.id} className="border border-slate-200 px-2 py-1 align-middle">
                         <div className="flex justify-center gap-1">
                           {ET_KQ.map((k) => (
-                            <button key={k.v} onClick={() => pickKQ(p.id, r.hoc_sinh_id, k.v)} className={`h-7 w-8 rounded-lg border text-[13px] font-bold transition ${g?.result === k.v ? k.sel : k.idle}`}>{k.lbl}</button>
+                            <button key={k.v} onClick={() => pickKQ(p.id, r.hoc_sinh_id, k.v)} disabled={dong} className={`h-7 w-8 rounded-lg border text-[13px] font-bold transition disabled:cursor-not-allowed ${g?.result === k.v ? k.sel : k.idle} ${dong && g?.result !== k.v ? 'opacity-50' : ''}`}>{k.lbl}</button>
                           ))}
                         </div>
                       </td>
@@ -1032,16 +1031,16 @@ function DanhGiaTab({ buoiId, roster, dangOpts, buoi, onChange }: { buoiId: stri
                         </div>
                         <div className="flex gap-1">
                           {DG_SCORES.map((s) => (
-                            <button key={s.v} onClick={() => setDiem(hsId, md, cur, s.v)} title={s.v === 1 ? 'Đúng (hiểu)' : s.v === 0.5 ? 'Chưa đạt (một phần)' : 'Sai (chưa hiểu)'}
-                              className={`h-8 w-9 rounded-lg border text-[13px] font-bold transition ${cur === s.v ? s.sel : 'border-slate-200 text-slate-300 hover:bg-slate-100 hover:text-slate-500'}`}>{s.lbl}</button>
+                            <button key={s.v} onClick={() => setDiem(hsId, md, cur, s.v)} disabled={xong} title={s.v === 1 ? 'Đúng (hiểu)' : s.v === 0.5 ? 'Chưa đạt (một phần)' : 'Sai (chưa hiểu)'}
+                              className={`h-8 w-9 rounded-lg border text-[13px] font-bold transition disabled:cursor-not-allowed ${cur === s.v ? s.sel : 'border-slate-200 text-slate-300 hover:bg-slate-100 hover:text-slate-500'} ${xong && cur !== s.v ? 'opacity-50' : ''}`}>{s.lbl}</button>
                           ))}
                         </div>
                       </td>
                     )
                   })}
                   <td className="border border-slate-200 px-3 py-2">
-                    <textarea defaultValue={hs?.nhan_xet ?? ''} onBlur={(e) => saveNX(hsId, e.target.value)} placeholder="nhận xét…"
-                      className="h-12 w-96 rounded-md border border-slate-200 px-2 py-1 text-[12px]" />
+                    <textarea defaultValue={hs?.nhan_xet ?? ''} onBlur={(e) => saveNX(hsId, e.target.value)} readOnly={xong} placeholder="nhận xét…"
+                      className="h-12 w-96 rounded-md border border-slate-200 px-2 py-1 text-[12px] read-only:bg-slate-50 read-only:text-slate-500" />
                   </td>
                 </tr>
               )
