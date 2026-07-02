@@ -171,7 +171,14 @@ function TongQuanTab({ hsId, mon }: { hsId: string; mon: string }) {
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
           <StatCard label="% hoàn thành bản đồ kiến thức">
             <div className="flex items-baseline gap-2"><span className="text-3xl font-bold text-indigo-700">{d.hoanThanh.total ? `${d.hoanThanh.pct}%` : '—'}</span><TrendBadge delta={d.trend.hoanThanh} /></div>
-            <div className="mt-0.5 text-[11px] text-slate-500">{d.hoanThanh.dat}/{d.hoanThanh.total} dạng đạt · học có hiệu quả không</div>
+            {d.hoanThanh.total ? (
+              <div className="mt-1 flex flex-wrap items-center gap-1.5 text-[11px]" title="Số tổng ước tính: đạt×1 + cần luyện×0.5 + yếu×0, chia số dạng đã đo">
+                <span className="rounded bg-emerald-50 px-1.5 py-0.5 font-semibold text-emerald-700">{d.hoanThanh.dat} đạt</span>
+                <span className="rounded bg-amber-50 px-1.5 py-0.5 font-semibold text-amber-700">{d.hoanThanh.can_luyen} cần luyện</span>
+                <span className="rounded bg-rose-50 px-1.5 py-0.5 font-semibold text-rose-700">{d.hoanThanh.yeu} yếu</span>
+                <span className="text-slate-400">/ {d.hoanThanh.total} dạng đã đo</span>
+              </div>
+            ) : <div className="mt-0.5 text-[11px] text-slate-400">chưa có dạng nào được đo</div>}
           </StatCard>
           <StatCard label="Điểm năng lực (kỳ vọng)" muted>
             <div className="text-3xl font-bold text-slate-300">—</div>

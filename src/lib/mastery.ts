@@ -91,13 +91,13 @@ export async function getMasteryHS(
 }
 
 // ── TỔNG QUAN 1 HS — chỉ số raw (%ET/%BTVN) + tổng kết (% hoàn thành bản đồ · điểm thi) ──
-// %ET/%BTVN = (Đ + ½C)/số câu (mình chấm Đ/C/S, KHÔNG có thang điểm). % hoàn thành = dạng ĐẠT / dạng ĐÃ ĐO.
+// %ET/%BTVN = (Đ + ½C)/số câu (mình chấm Đ/C/S, KHÔNG có thang điểm). % hoàn thành = tiến độ ước tính (đạt=1·cần=0.5·yếu=0)/ĐÃ-ĐO + 3 số detail đạt/cần/yếu.
 // Điểm thi: Trường (loai='truong') vs Sát hạch (còn lại) — HIỆN TRỐNG (chưa nhập kỳ thi), tự lên khi có data.
 // Điểm năng lực: CHƯA (cần cấu trúc đề + phân loại cơ-bản/nâng-cao + Hình) → UI để placeholder.
 export type TongQuanHS = {
   pctET: number | null; nET: number
   pctBTVN: number | null; nBTVN: number
-  hoanThanh: { dat: number; total: number; pct: number }
+  hoanThanh: { dat: number; can_luyen: number; yeu: number; total: number; pct: number }
   diemThi: { satHach: number | null; truong: number | null; nSatHach: number; nTruong: number }
   // TREND = chênh (điểm %) 30 ngày GẦN so với 30 ngày TRƯỚC đó; null = chưa đủ data 1 trong 2 kỳ.
   trend: { et: number | null; btvn: number | null; hoanThanh: number | null }
@@ -129,17 +129,18 @@ export async function getTongQuanHS(hocSinhId: string, mon: string): Promise<Ton
   const maList = Object.keys(byDang)
   let valid = new Set<string>()
   if (maList.length) valid = new Set((((await supabase.from(K.banDoTbl).select('ma_dang').in('ma_dang', maList).limit(LIMIT)).data ?? []) as any[]).map((x) => x.ma_dang))
-  // % hoàn thành = ĐẠT / ĐÃ-ĐO (scope môn); pred = lọc theo cửa sổ thời gian (cho trend).
-  const compPct = (pred?: (t: number) => boolean): { dat: number; total: number; pct: number | null } => {
-    let d = 0, t = 0
+  // % tiến độ hoàn thành (số CẢM NHẬN tầng trên): đạt=1 · cần luyện=0.5 · yếu=0 → Σ/ĐÃ-ĐO.
+  // Trọng số theo BUCKET (khớp 3 số detail đạt/cần/yếu ngay dưới), scope môn; pred = cửa sổ thời gian (cho trend).
+  const compPct = (pred?: (t: number) => boolean): { dat: number; can_luyen: number; yeu: number; total: number; pct: number | null } => {
+    let d = 0, c = 0, y = 0, t = 0
     for (const ma of maList) {
       if (!valid.has(ma)) continue
       const evs = pred ? byDang[ma].filter((e) => pred(Date.parse(e.t))) : byDang[ma]
       if (!evs.length) continue
       const r = masteryOfDang(evs, MASTERY_CONFIG); if (!r) continue
-      t++; if (r.muc === 'dat') d++
+      t++; if (r.muc === 'dat') d++; else if (r.muc === 'can_luyen') c++; else y++
     }
-    return { dat: d, total: t, pct: t ? Math.round((d / t) * 100) : null }
+    return { dat: d, can_luyen: c, yeu: y, total: t, pct: t ? Math.round(((d + c * 0.5) / t) * 100) : null }
   }
   const all = compPct(), hR = compPct(inRecent), hP = compPct(inPrior)
 
@@ -155,7 +156,7 @@ export async function getTongQuanHS(hocSinhId: string, mon: string): Promise<Ton
   return {
     pctET: pct(etSum, etN), nET: etN,
     pctBTVN: pct(btSum, btN), nBTVN: btN,
-    hoanThanh: { dat: all.dat, total: all.total, pct: all.pct ?? 0 },
+    hoanThanh: { dat: all.dat, can_luyen: all.can_luyen, yeu: all.yeu, total: all.total, pct: all.pct ?? 0 },
     diemThi: { satHach: shN ? +(shSum / shN).toFixed(1) : null, truong: trN ? +(trSum / trN).toFixed(1) : null, nSatHach: shN, nTruong: trN },
     trend: { et: delta(pct(etR, etRN), pct(etP, etPN)), btvn: delta(pct(btR, btRN), pct(btP, btPN)), hoanThanh: delta(hR.pct, hP.pct) },
   }

@@ -724,3 +724,9 @@
 - **Nguyên nhân:** `CauItem`/ET render `<span class="pv-cau-no">Câu N.</span>` đứng TRƯỚC `<MathText>{stem}</MathText>`. `MathText` trả `<span>` inline khi đề 1 dòng (→ cùng dòng) nhưng trả `<div>` block khi đề NHIỀU dòng (text + công thức) → block xuống dòng, "Câu N." trơ 1 mình dòng trên. Câu 1 dòng ≠ câu nhiều dòng → không nhất quán.
 - **Fix:** `MathText` (kho/ui.tsx) thêm prop `prefix?` (HTML) nhét vào ĐẦU dòng 1 (single-line: `head+line0`; multi-line: chèn vào `.mline` đầu). `CauItem` (PrintView) + ET (ETPrintView 2 chỗ: trả-lời-ngắn + tự-luận) đổi `<span pv-cau-no>` rời → `<MathText prefix='<span class="pv-cau-no">Câu N.</span> '>`. Nhãn giờ luôn nằm trong dòng đầu của đề. Màn UI (ChamETSheet/BuoiHoc/DangHub/DungSai) giữ nguyên (nhãn cột riêng, cố ý).
 - tsc sạch + build pass. ⏳ Thùy soi lại bản in giáo trình + ET.
+
+**4. "% hoàn thành bản đồ" (Tổng quan) → số CẢM NHẬN weighted + 3 số detail (Thùy chốt):**
+- Cũ: pct = ĐẠT/ĐÃ-ĐO (cần luyện & yếu = 0 công) → Thùy thấy khắt khe, "hơi sai".
+- Tao phản biện cách weighted (mất chẩn đoán, che dạng yếu, nhầm tên "hoàn thành"). Thùy giữ quan điểm: số này ở TẦNG TRÊN chỉ để **cảm nhận** "hoàn thành ~bao nhiêu % toàn bộ dạng"; 3 trường hợp tao nêu tuy khác nhau nhưng ở tầng cảm nhận đều "có vấn đề" nên gộp OK; **chốt: để CẢ 2** — số tổng weighted + 3 số detail ngay dưới. Thanh 3-màu chi tiết đã có ở tab "Dạng bài".
+- **Impl:** `getTongQuanHS.compPct` (mastery.ts) đổi `pct = (đạt×1 + cần×0.5 + yếu×0)/ĐÃ-ĐO` (**weighting theo BUCKET** để khớp 3 số detail, KHÔNG dùng mastery gốc) + trả thêm `can_luyen`,`yeu`. `TongQuanHS.hoanThanh` += can_luyen/yeu. Trend `hoanThanh` giờ theo pct weighted (recent vs prior). UI `TongQuanTab` (KetQuaScreen): số % to (indigo) + 3 chip **đạt(xanh)/cần luyện(hổ phách)/yếu(đỏ)** + "/N dạng đã đo". tooltip ghi công thức.
+- tsc sạch + build pass. ⏳ Thùy soi Tổng quan 1 HS.
