@@ -9,6 +9,7 @@ import { BuoiBuDetail } from './botro/BoTroScreen'
 import PersonalCard from '../components/PersonalCard'
 import NavTree from '../components/NavTree'
 import KhoScreen from './kho/KhoScreen'
+import NhapKhoScreen from './nhapkho/NhapKhoScreen'
 import TaiLieuScreen from './tailieu/TaiLieuScreen'
 import ETScreen from './tailieu/ETScreen'
 import KhoTaiLieuScreen from './tailieu/KhoTaiLieuScreen'
@@ -293,6 +294,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       ) : staffLeaf === 'viec' ? (
         <section className="min-h-0 overflow-auto bg-[#f5f5f7] p-8"><VietCuaToi scope={scope} onOpenBuoi={setOpenBuoi} /></section>
       ) : staffLeaf === 'bdkt' ? <KhoScreen />
+      : staffLeaf === 'nhapkho' ? <NhapKhoScreen />
       : (staffLeaf === 'lamtailieu' || staffLeaf === 'lamtailieu:giao_trinh') ? <TaiLieuScreen />
       : staffLeaf === 'lamtailieu:et' ? <ETScreen />
       : staffLeaf === 'tl' ? <KhoTaiLieuScreen />

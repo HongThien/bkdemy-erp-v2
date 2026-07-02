@@ -591,6 +591,210 @@ export function parseIngestJson(text: string): IngestCau[] {
   }))
 }
 
+// ════════════════════════════════════════════════════════════════
+// LUỒNG NHẬP KHO (ingest-first, scope = CHỦ ĐỀ): 1 file → bóc MỌI loại → gán dạng → verify → đẩy kho.
+// Bóc/crop hình chạy ở SCREEN (DOM); ở đây = prompt + parse + phân loại grounded + verify + AI-giải + save + log.
+// ════════════════════════════════════════════════════════════════
+export type KhoMon = 'toan' | 'khtn'
+export function khoTbls(mon: KhoMon): { cauTbl: string; banDoTbl: string; lyThuyetTbl: string } {
+  return mon === 'khtn'
+    ? { cauTbl: 'khtn_cau_hoi', banDoTbl: 'khtn_ban_do', lyThuyetTbl: 'khtn_dang_ly_thuyet' }
+    : { cauTbl: 'dai_cau_hoi', banDoTbl: 'dai_ban_do', lyThuyetTbl: 'dai_dang_ly_thuyet' }
+}
+
+// Chủ đề trong 1 khối — chọn ở ĐẦU luồng (tài liệu chung 1 chủ đề, người biết sẵn).
+export type ChuDeOption = { ma_chu_de: string; ten_chu_de: string; soDang: number }
+export async function listChuDeOptions(mon: KhoMon, khoi: string): Promise<ChuDeOption[]> {
+  const { banDoTbl } = khoTbls(mon)
+  const { data, error } = await supabase.from(banDoTbl).select('ma_chu_de, ten_chu_de').eq('khoi', khoi).limit(LIMIT)
+  if (error) throw error
+  const m = new Map<string, ChuDeOption>()
+  for (const r of (data ?? []) as any[]) {
+    const c = m.get(r.ma_chu_de) ?? { ma_chu_de: r.ma_chu_de, ten_chu_de: r.ten_chu_de, soDang: 0 }
+    c.soDang++; m.set(r.ma_chu_de, c)
+  }
+  return [...m.values()].sort((a, b) => a.ma_chu_de.localeCompare(b.ma_chu_de))
+}
+
+// Dạng ứng viên TRONG 1 chủ đề (candidate cho classify + chip). Kèm mo_ta_ngan (grounded, ~0 token biên).
+export type DangCandidate = { ma_dang: string; ten_dang: string; ma_chuyen_de: string; ten_chuyen_de: string; mo_ta_ngan: string | null }
+export async function listDangByChuDe(mon: KhoMon, khoi: string, maChuDe: string): Promise<DangCandidate[]> {
+  const { banDoTbl } = khoTbls(mon)
+  const { data, error } = await supabase.from(banDoTbl)
+    .select('ma_dang, ten_dang, ma_chuyen_de, ten_chuyen_de, mo_ta_ngan')
+    .eq('khoi', khoi).eq('ma_chu_de', maChuDe).order('ma_dang').limit(LIMIT)
+  if (error) throw error
+  return (data ?? []).map((r: any) => ({ ma_dang: r.ma_dang, ten_dang: r.ten_dang, ma_chuyen_de: r.ma_chuyen_de, ten_chuyen_de: r.ten_chuyen_de, mo_ta_ngan: r.mo_ta_ngan ?? null }))
+}
+
+// Lý thuyết 1 dạng (RAG cho verify + AI-giải). '' nếu chưa có.
+export async function getDangLyThuyet(mon: KhoMon, maDang: string): Promise<string> {
+  const { lyThuyetTbl } = khoTbls(mon)
+  const { data, error } = await supabase.from(lyThuyetTbl).select('noi_dung').eq('ma_dang', maDang).limit(1)
+  if (error) throw error
+  return String((data?.[0] as any)?.noi_dung ?? '').trim()
+}
+
+// ── Bóc 1 pass (schema HỢP NHẤT): loai_cau + de_bai + dap_an? + lua_chon? + menh_de? + hình ──
+const KHO_MENHDE_SCHEMA = { type: 'OBJECT', properties: {
+  noi_dung: { type: 'STRING' }, dap_an: { type: 'STRING', description: "'D' nếu mệnh đề ĐÚNG, 'S' nếu SAI." }, loi_giai: { type: 'STRING' },
+}, required: ['noi_dung', 'dap_an'] }
+export const INGEST_KHO_SCHEMA = { type: 'OBJECT', properties: { cau: { type: 'ARRAY', items: {
+  type: 'OBJECT', properties: {
+    loai_cau: { type: 'STRING', description: "'trac_nghiem' | 'dung_sai' | 'tra_loi_ngan' | 'tu_luan'" },
+    de_bai: { type: 'STRING', description: 'Đề bài (đúng/sai: đề CHUNG). GIỮ bố cục nhiều dòng bằng ký tự xuống dòng.' },
+    dap_an: { type: 'STRING' },
+    lua_chon: { type: 'ARRAY', items: { type: 'STRING' } },
+    menh_de: { type: 'ARRAY', items: KHO_MENHDE_SCHEMA },
+    loi_giai: { type: 'STRING', description: 'Lời giải chi tiết, mỗi bước 1 dòng.' },
+    co_hinh: { type: 'BOOLEAN' }, box_hinh: { type: 'ARRAY', items: { type: 'NUMBER' } },
+  }, required: ['loai_cau', 'de_bai'],
+} } }, required: ['cau'] }
+export function buildKhoIngestPrompt(a: { tenChuDe?: string; giaiAI?: boolean }): string {
+  return [
+    'Đây là ẢNH 1 TRANG tài liệu toán. TÁCH thành từng CÂU theo thứ tự xuất hiện (mỗi bài = 1 câu, KHÔNG tách ý a/b/c thành nhiều câu).',
+    a.tenChuDe ? `Bối cảnh: tài liệu thuộc chủ đề "${a.tenChuDe}".` : '',
+    'MỖI câu tự nhận diện "loai_cau" ∈ { trac_nghiem, dung_sai, tra_loi_ngan, tu_luan } và bóc đúng cấu trúc:',
+    '- trac_nghiem (4 phương án A/B/C/D): "de_bai" = đề dẫn (KHÔNG kèm A./B./C./D.); "lua_chon" = mảng 4 nội dung phương án; "dap_an" = CHỮ CÁI đúng.',
+    '- dung_sai (Phần 2: 1 đề chung + 4 mệnh đề a/b/c/d): "de_bai" = đề CHUNG; "menh_de" = mảng ĐÚNG 4 phần tử { noi_dung, dap_an ("D"|"S"), loi_giai }; để "lua_chon" trống.',
+    '- tra_loi_ngan / tu_luan: "de_bai" = toàn bộ đề; "dap_an" = kết quả (nếu có); để "lua_chon"/"menh_de" trống.',
+    '⚠ MỖI câu thêm "co_hinh" (true nếu có HÌNH VẼ/SƠ ĐỒ/ĐỒ THỊ/BẢNG BIẾN THIÊN/BẢNG XÉT DẤU cần giữ làm ảnh) và "box_hinh" = [ymin,xmin,ymax,xmax] toạ độ CHUẨN HOÁ 0–1000 ôm trọn hình (chỉ khi co_hinh=true, không thì null).',
+    '⚠ BẢNG BIẾN THIÊN / BẢNG XÉT DẤU (có mũi tên ↗↘, dòng x · y′ · y, dấu ∞) = KHÔNG viết LaTeX cho đúng được → BẮT BUỘC coi là HÌNH: đặt co_hinh=true + box_hinh ôm trọn bảng, trong de_bai chỉ ghi "[bảng biến thiên]" đúng vị trí (KHÔNG cố dựng bằng \\begin{array}).',
+    'CHỈ bảng SỐ LIỆU thuần (không mũi tên, không biến thiên) mới viết LaTeX $\\begin{array}{…}…\\end{array}$ trong de_bai (không coi là hình).',
+    giaiRule(a.giaiAI),
+    FMT_RULES,
+    'Trả JSON: { "cau": [ { "loai_cau":"…", "de_bai":"…", "dap_an":"…", "lua_chon":[…], "menh_de":[…], "loi_giai":"…", "co_hinh":false, "box_hinh":null } ] }',
+  ].filter(Boolean).join('\n')
+}
+export type KhoIngestMenhDe = { noi_dung: string; dap_an: 'D' | 'S'; loi_giai: string | null }
+export type KhoIngestCau = { loai_cau: LoaiCau; noi_dung: string; dap_an: string | null; loi_giai: string | null; lua_chon: string[] | null; menh_de: KhoIngestMenhDe[] | null; coHinh: boolean; box: [number, number, number, number] | null }
+const LOAI_HOP_LE = new Set<LoaiCau>(['trac_nghiem', 'dung_sai', 'tra_loi_ngan', 'tu_luan'])
+export function parseKhoIngestJson(text: string): KhoIngestCau[] {
+  let t = text.trim(); const fence = t.match(/```(?:json)?\s*([\s\S]*?)```/i); if (fence) t = fence[1].trim()
+  let obj: any; try { obj = lenientJsonParse(t) } catch (e: any) { throw new Error('JSON không hợp lệ: ' + e.message) }
+  const arr = Array.isArray(obj) ? obj : (obj.cau ?? obj.cau_hoi ?? [])
+  if (!Array.isArray(arr)) throw new Error('Cần JSON dạng { "cau": [ … ] }.')
+  return arr.filter((x: any) => x?.de_bai || x?.noi_dung).map((x: any): KhoIngestCau => {
+    let loai = String(x.loai_cau ?? 'tu_luan').trim() as LoaiCau
+    if (!LOAI_HOP_LE.has(loai)) loai = Array.isArray(x.menh_de) && x.menh_de.length ? 'dung_sai' : Array.isArray(x.lua_chon) && x.lua_chon.length ? 'trac_nghiem' : 'tu_luan'
+    const lua_chon = Array.isArray(x.lua_chon) && x.lua_chon.length ? x.lua_chon.map(String) : null
+    let noi_dung = stripYCon(stripCauLabel(String(x.de_bai ?? x.noi_dung ?? '').trim()))
+    if (loai === 'trac_nghiem' && lua_chon) noi_dung = stripEmbeddedOpts(noi_dung)
+    const menh_de = loai === 'dung_sai' && Array.isArray(x.menh_de)
+      ? x.menh_de.slice(0, 4).map((m: any): KhoIngestMenhDe => ({ noi_dung: String(m.noi_dung ?? '').trim(), dap_an: String(m.dap_an ?? 'D').trim().toUpperCase().startsWith('S') ? 'S' : 'D', loi_giai: String(m.loi_giai ?? '').trim() || null })).filter((m: KhoIngestMenhDe) => m.noi_dung)
+      : null
+    return {
+      loai_cau: loai, noi_dung,
+      dap_an: x.dap_an != null && String(x.dap_an).trim() ? String(x.dap_an).trim() : null,
+      loi_giai: x.loi_giai != null && String(x.loi_giai).trim() ? stripYCon(String(x.loi_giai).trim()) : null,
+      lua_chon: loai === 'dung_sai' ? null : lua_chon,
+      menh_de,
+      coHinh: !!x.co_hinh,
+      box: Array.isArray(x.box_hinh) && x.box_hinh.length === 4 ? (x.box_hinh.map(Number) as [number, number, number, number]) : null,
+    }
+  })
+}
+
+// ── PHÂN LOẠI DẠNG (grounded theo chủ đề, 1 call/lô) → { ma_dang, confidence, ma_dang_2 } ──
+export type ClassifyResult = { ma_dang: string | null; confidence: number; ma_dang_2: string | null }
+const CLASSIFY_SCHEMA = { type: 'OBJECT', properties: { ket_qua: { type: 'ARRAY', items: {
+  type: 'OBJECT', properties: { index: { type: 'NUMBER' }, ma_dang: { type: 'STRING' }, confidence: { type: 'NUMBER' }, ma_dang_2: { type: 'STRING' } }, required: ['index', 'ma_dang', 'confidence'],
+} } }, required: ['ket_qua'] }
+export function buildClassifyPrompt(caus: string[], cands: DangCandidate[]): string {
+  const ds = cands.map((d) => `${d.ma_dang} | ${d.ten_dang} | Chuyên đề: ${d.ten_chuyen_de}${d.mo_ta_ngan ? ` | ${d.mo_ta_ngan}` : ''}`).join('\n')
+  const qs = caus.map((c, i) => `[${i}] ${c.slice(0, 400)}`).join('\n')
+  return [
+    'Bạn là chuyên gia phân loại câu hỏi Toán theo BẢN ĐỒ KIẾN THỨC. Với MỖI câu, chọn MÃ DẠNG phù hợp nhất trong danh sách (chỉ trong danh sách này).',
+    'DANH SÁCH DẠNG (ma_dang | tên | chuyên đề | định nghĩa):', ds,
+    'CÁC CÂU:', qs,
+    'Với mỗi câu trả: index, ma_dang (phù hợp nhất), confidence (0.0–1.0, độ chắc chắn), ma_dang_2 (ứng viên hợp lý thứ nhì — để trống nếu không có).',
+    'Trả JSON: { "ket_qua": [ { "index":0, "ma_dang":"…", "confidence":0.0, "ma_dang_2":"…" } ] }',
+  ].join('\n')
+}
+export async function classifyDang(caus: string[], cands: DangCandidate[], model?: string): Promise<ClassifyResult[]> {
+  const out: ClassifyResult[] = caus.map(() => ({ ma_dang: null, confidence: 0, ma_dang_2: null }))
+  if (!caus.length || !cands.length) return out
+  const text = await callGeminiJson(buildClassifyPrompt(caus, cands), { model, think: 0, schema: CLASSIFY_SCHEMA })
+  let obj: any; try { obj = lenientJsonParse(text.replace(/```(?:json)?|```/g, '').trim()) } catch { return out }
+  const valid = new Set(cands.map((c) => c.ma_dang))
+  for (const r of (obj?.ket_qua ?? []) as any[]) {
+    const i = Number(r.index)
+    if (!Number.isInteger(i) || i < 0 || i >= out.length) continue
+    const ma = valid.has(String(r.ma_dang)) ? String(r.ma_dang) : null
+    const ma2 = valid.has(String(r.ma_dang_2)) ? String(r.ma_dang_2) : null
+    out[i] = { ma_dang: ma, confidence: Math.max(0, Math.min(1, Number(r.confidence) || 0)), ma_dang_2: ma2 }
+  }
+  return out
+}
+
+// ── VERIFY 1 câu (CHỈ chạy cho confidence thấp) bằng LÝ THUYẾT dạng → { khop, ma_dang_dung } ──
+export type VerifyResult = { khop: boolean; ma_dang_dung: string | null; ghi_chu: string | null }
+const VERIFY_SCHEMA = { type: 'OBJECT', properties: { khop: { type: 'BOOLEAN' }, ma_dang_dung: { type: 'STRING' }, ghi_chu: { type: 'STRING' } }, required: ['khop'] }
+export async function verifyDangByLyThuyet(deBai: string, dangHienTai: DangCandidate, lyThuyet: string, cands: DangCandidate[], model?: string): Promise<VerifyResult> {
+  if (!lyThuyet.trim()) return { khop: true, ma_dang_dung: null, ghi_chu: 'chưa có lý thuyết' } // không có lý thuyết → không chặn
+  const ds = cands.map((d) => `${d.ma_dang} | ${d.ten_dang}`).join('\n')
+  const prompt = [
+    `Kiểm tra: câu hỏi dưới có ĐÚNG thuộc dạng "${dangHienTai.ten_dang}" (mã ${dangHienTai.ma_dang}) không, dựa trên ĐỊNH NGHĨA/LÝ THUYẾT của dạng đó.`,
+    'LÝ THUYẾT DẠNG:', lyThuyet.slice(0, 4000),
+    'CÂU HỎI:', deBai.slice(0, 800),
+    'Nếu khớp → khop=true. Nếu KHÔNG khớp → khop=false, chọn ma_dang_dung phù hợp hơn trong danh sách:', ds,
+    'Trả JSON: { "khop": true, "ma_dang_dung": "…", "ghi_chu": "…" }',
+  ].join('\n')
+  const text = await callGeminiJson(prompt, { model, think: 1024, schema: VERIFY_SCHEMA })
+  let obj: any; try { obj = lenientJsonParse(text.replace(/```(?:json)?|```/g, '').trim()) } catch { return { khop: true, ma_dang_dung: null, ghi_chu: null } }
+  const valid = new Set(cands.map((c) => c.ma_dang))
+  const dung = valid.has(String(obj?.ma_dang_dung)) ? String(obj.ma_dang_dung) : null
+  return { khop: !!obj?.khop, ma_dang_dung: dung, ghi_chu: String(obj?.ghi_chu ?? '').trim() || null }
+}
+
+// ── AI GIẢI 1 câu — ĐỌC lý thuyết dạng TRƯỚC (RAG), lời giải = nguon_giai 'ai' (cần duyệt) ──
+const GIAI_SCHEMA = { type: 'OBJECT', properties: { loi_giai: { type: 'STRING' } }, required: ['loi_giai'] }
+export async function aiGiaiCau(item: { noi_dung: string; loai_cau: string; dap_an: string | null; lua_chon: string[] | null }, lyThuyet: string, model?: string): Promise<string> {
+  const prompt = [
+    'Bạn là giáo viên Toán. HÃY GIẢI câu dưới, BÁM theo LÝ THUYẾT/PHƯƠNG PHÁP của dạng (nếu có) — trình bày từng bước, đúng & gọn.',
+    lyThuyet.trim() ? '⚠ Đọc kỹ LÝ THUYẾT DẠNG rồi mới giải, dùng đúng phương pháp/ký hiệu của dạng:\n' + lyThuyet.slice(0, 4000) : '(Dạng chưa có lý thuyết — giải theo kiến thức chuẩn.)',
+    'CÂU HỎI:', item.noi_dung,
+    item.lua_chon?.length ? 'Phương án: ' + item.lua_chon.map((o, k) => `${'ABCD'[k]}. ${o}`).join(' | ') : '',
+    item.dap_an ? `Đáp án đúng: ${item.dap_an} → giải thích để RA đúng đáp án này.` : '',
+    FMT_RULES,
+    'Trả JSON: { "loi_giai": "…" }',
+  ].filter(Boolean).join('\n')
+  const text = await callGeminiJson(prompt, { model, think: 8192, schema: GIAI_SCHEMA })
+  let obj: any; try { obj = lenientJsonParse(text.replace(/```(?:json)?|```/g, '').trim()) } catch { return '' }
+  return stripYCon(String(obj?.loi_giai ?? '').trim())
+}
+
+// ── LƯU 1 câu vào ĐÚNG dạng của nó (mỗi câu 1 dạng riêng) → trả ma_cau ──
+export async function saveCauToDang(a: { dangChinh: string; loaiCau: string; noi_dung: string; dap_an: string | null; loi_giai: string | null; lua_chon: string[] | null; anh_de: string | null; anh_dap_an: string | null; nguon_giai: string }, tbl: string): Promise<string> {
+  const seq = await nextCauSeq(a.dangChinh, tbl)
+  const c = await createCau({
+    ma_cau: maCau(a.dangChinh, seq), dang_chinh: a.dangChinh, loai_cau: a.loaiCau,
+    noi_dung: a.noi_dung, dap_an: a.dap_an, loi_giai: a.loi_giai, lua_chon: a.lua_chon ?? null,
+    anh_de: a.anh_de ?? null, anh_dap_an: a.anh_dap_an ?? null, nguon: 'le', nguon_giai: a.nguon_giai,
+  }, tbl)
+  return c.ma_cau
+}
+
+// ── LOG gán dạng (precision@1 + nguồn vòng-học) — ghi lúc đẩy kho ──
+export type TagLogRow = { mon: KhoMon; ma_cau: string | null; loai_field?: string; ai_value: string | null; final_value: string | null; ai_confidence?: number | null; da_verify?: boolean }
+export async function logKhoTag(rows: TagLogRow[]): Promise<void> {
+  if (!rows.length) return
+  const { error } = await supabase.from('kho_tag_log').insert(rows.map((r) => ({
+    mon: r.mon, ma_cau: r.ma_cau, loai_field: r.loai_field ?? 'dang',
+    ai_value: r.ai_value, final_value: r.final_value, ai_confidence: r.ai_confidence ?? null, da_verify: r.da_verify ?? false,
+  })))
+  if (error) throw error
+}
+// precision@1 = (final = ai) / (tổng câu AI có đề xuất), field 'dang'.
+export async function khoTagPrecision(mon: KhoMon): Promise<{ dung: number; tong: number; pct: number }> {
+  const { data, error } = await supabase.from('kho_tag_log').select('ai_value, final_value').eq('mon', mon).eq('loai_field', 'dang').not('ai_value', 'is', null).limit(LIMIT)
+  if (error) throw error
+  const rows = (data ?? []) as { ai_value: string; final_value: string }[]
+  const tong = rows.length
+  const dung = rows.filter((r) => r.ai_value === r.final_value).length
+  return { dung, tong, pct: tong ? Math.round((dung / tong) * 100) : 0 }
+}
+
 // ── KB4: ingest LÝ THUYẾT có hình — AI trả text + marker [[H1]].. đúng vị trí + bbox hình theo thứ tự ──
 export type TheoryIngest = { noiDung: string; hinh: { box: [number, number, number, number] | null }[] }
 export const THEORY_SCHEMA = {

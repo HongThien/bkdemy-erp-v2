@@ -2,7 +2,7 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-62 bảng · 0 enum · 3 trigger · 8 function
+63 bảng · 0 enum · 3 trigger · 8 function
 
 ## bang_khong_bu
 
@@ -158,6 +158,7 @@
 | muc_do | smallint |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |
 | bac_toi_thieu | text |  |  | FK→lop_bac.ma |
+| mo_ta_ngan | text | Y |  |  |
 
 ## dai_cau_bo_de
 
@@ -434,6 +435,21 @@
 | loai_key | text |  |  | PK FK→thanh_tich_loai.key |
 | thu_tu | integer |  | 0 |  |
 
+## kho_tag_log
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| mon | text |  |  |  |
+| ma_cau | text | Y |  |  |
+| loai_field | text |  | 'dang'::text |  |
+| ai_value | text | Y |  |  |
+| final_value | text | Y |  |  |
+| ai_confidence | real | Y |  |  |
+| da_verify | boolean |  | false |  |
+| nguoi_id | uuid | Y |  |  |
+| created_at | timestamp with time zone |  | now() |  |
+
 ## khtn_ban_do
 
 | cột | kiểu | null | default | khóa |
@@ -448,6 +464,7 @@
 | muc_do | smallint |  |  |  |
 | bac_toi_thieu | text |  |  | FK→lop_bac.ma |
 | created_at | timestamp with time zone |  | now() |  |
+| mo_ta_ngan | text | Y |  |  |
 
 ## khtn_cau_hoi
 

@@ -2,9 +2,9 @@
 import * as pdfjsLib from 'pdfjs-dist'
 import './pdfWorker' // worker INLINE (hết lỗi fetch .mjs trên host/máy nhân sự)
 
-const HI = 300 / 72   // 300 DPI (hình vector nét; in A4 sắc)
-const GEM_W = 1300    // bề rộng ảnh gửi Gemini (giảm token; bbox chuẩn hoá nên không phụ thuộc cỡ)
-const MAX_SRC = 3200  // chặn canvas nguồn quá to
+const HI = 400 / 72   // 400 DPI (crop hình vector NÉT — mặc định nét hơn/bằng gốc, không để mờ; PNG lossless)
+const GEM_W = 1300    // bề rộng ảnh GỬI Gemini (giảm token; bbox chuẩn hoá → độc lập cỡ. DPI cao ở trên KHÔNG tăng token)
+const MAX_SRC = 4200  // trần canvas nguồn (A4@400dpi≈3308 < 4200 → không bị downscale, giữ đủ nét)
 
 // File (mimeType+base64) → canvas[] ở DPI cao. PDF = mỗi trang 1 canvas; ảnh = 1 canvas.
 export async function fileToCanvases(mimeType: string, dataBase64: string): Promise<HTMLCanvasElement[]> {

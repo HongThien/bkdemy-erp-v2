@@ -730,3 +730,32 @@
 - Tao phản biện cách weighted (mất chẩn đoán, che dạng yếu, nhầm tên "hoàn thành"). Thùy giữ quan điểm: số này ở TẦNG TRÊN chỉ để **cảm nhận** "hoàn thành ~bao nhiêu % toàn bộ dạng"; 3 trường hợp tao nêu tuy khác nhau nhưng ở tầng cảm nhận đều "có vấn đề" nên gộp OK; **chốt: để CẢ 2** — số tổng weighted + 3 số detail ngay dưới. Thanh 3-màu chi tiết đã có ở tab "Dạng bài".
 - **Impl:** `getTongQuanHS.compPct` (mastery.ts) đổi `pct = (đạt×1 + cần×0.5 + yếu×0)/ĐÃ-ĐO` (**weighting theo BUCKET** để khớp 3 số detail, KHÔNG dùng mastery gốc) + trả thêm `can_luyen`,`yeu`. `TongQuanHS.hoanThanh` += can_luyen/yeu. Trend `hoanThanh` giờ theo pct weighted (recent vs prior). UI `TongQuanTab` (KetQuaScreen): số % to (indigo) + 3 chip **đạt(xanh)/cần luyện(hổ phách)/yếu(đỏ)** + "/N dạng đã đo". tooltip ghi công thức.
 - tsc sạch + build pass. ⏳ Thùy soi Tổng quan 1 HS.
+
+---
+
+## 2026-07-03 — LUỒNG NHẬP KHO (ingest-first) — build slice 1
+
+**Bối cảnh:** Thùy chốt luồng mới thay "sắp xếp tay vào Word rồi nhập chuỗi câu": 1 file PDF → hệ bóc từng câu (đề/đáp án/lời giải/loại) → người gán dạng → duyệt → đẩy kho. Đọc lại V1 `QuestionsPage.jsx` (TabRaDe/TabDuyetDapAn) — V1 gần hoàn thiện: rã đề cả PDF + auto-tag dạng (confidence + vòng-học label_rules) + auto-group bài nhiều ý + review 35/65 per-loại. RAG lý thuyết khi giải = nâng cấp so V1 (V1 giải chay).
+
+**Quyết định (Thùy):**
+- Đúng/sai theo model v2 (cả câu neo chuyên đề, mỗi mệnh đề 1 dạng) — V1 hồi đó chưa có logic chuyên đề.
+- Tự luận ≈ trả lời ngắn → gộp 1 card, chỉ khác toggle "hình thức HS làm".
+- Duyệt **1 câu chiếm màn**, next từng câu (bỏ list). Có thanh tiến độ + nhảy tới câu ⚠ độ-tin-thấp.
+- Scope = **CHỦ ĐỀ** (nhiều chuyên đề), KHÔNG ép chuẩn hóa xuống chuyên đề (bất đối xứng: chuyên-đề-scope mua chút precision bằng công tách file vô hạn → không đáng; V1 tag ở scope khối vẫn ổn).
+- **1 người full luồng 1 phiên** → KHÔNG draft table, client-state. Draft để dành đề-thi sau.
+- Verify ≤ 2 vòng, người vòng cuối: cao-confidence 0 verify · thấp 1 verify (đọc lý thuyết dạng) → pass HOẶC đổi ma_dang_2, KHÔNG lặp lần 3.
+- **precision@1** = (final = ai)/(tổng AI đề xuất) — Thùy yêu cầu đo. Log per-câu (`kho_tag_log`), 1 bảng phục vụ cả metric + nguồn vòng-học (cặp nhầm). Distiller/rule loop để pha sau khi có volume (cold-start 0 correction = loop trơ).
+
+**Đã build:**
+- **mig 0061** (áp DB): `kho_tag_log` (mon·ma_cau·loai_field·ai_value·final_value·ai_confidence·da_verify, RLS member-gate) + cột `mo_ta_ngan` trên `dai_ban_do`/`khtn_ban_do` (grounded classify — CHƯA có UI sinh, classify hiện dùng ten_dang+chuyên đề).
+- **api.ts** (mục mới): `khoTbls` dispatch môn · `listChuDeOptions`/`listDangByChuDe`/`getDangLyThuyet` · **INGEST_KHO_SCHEMA hợp nhất** (loai_cau + de_bai + dap_an + lua_chon + menh_de + co_hinh/box_hinh) + `buildKhoIngestPrompt`/`parseKhoIngestJson` (1 pass, tự nhận loại) · `classifyDang` (grounded, 1 call/lô, trả ma_dang+confidence+ma_dang_2) · `verifyDangByLyThuyet` (chỉ low-conf) · `aiGiaiCau` (RAG đọc lý thuyết) · `saveCauToDang` (mỗi câu 1 dạng) · `logKhoTag`/`khoTagPrecision`.
+- **NhapKhoScreen** (`src/screens/nhapkho/`, leaf `nhapkho` nhóm Danh mục): setup (môn/khối/chủ đề/file/có-hình/AI-giải) → bóc (render trang → Gemini/trang → parse → crop hình `anh_de` → classify flat theo đề + đúng/sai theo TỪNG mệnh đề → verify low-conf) → review 1-câu (FlatEditor/DungSaiEditor, DangPicker chip xuyên chuyên đề + combobox tìm, AI-giải, verify banner ⚠, thanh tiến độ) → Duyệt = save (saveCauToDang / createCauDungSai) + logKhoTag → next.
+- Wire nav: fixtures adminLeaves + NhanSuHome route + import.
+- tsc sạch + build pass. Migration áp + `npm run schema` (63 bảng).
+
+**CÒN / next:** (1) sinh `mo_ta_ngan` (nút ở editor lý thuyết) để grounded classify mạnh hơn. (2) distiller `kho_tag_rule` khi đủ volume. (3) verify gom-theo-dạng (giờ per-câu low-conf, đã rẻ). (4) cấp quyền leaf `nhapkho` cho Học thuật/OPS (giờ chỉ laAdmin thấy). (5) ⏳ TEST THẬT bằng PDF + Gemini key (chưa chạy e2e — auth+key+file gate).
+
+**Fix sau test thật (07-03, cùng ngày):**
+1. **Bảng biến thiên bóc thành `\begin{array}` vỡ** → prompt `buildKhoIngestPrompt`: BBT/bảng-xét-dấu (mũi tên ↗↘, dòng x·y′·y) = HÌNH (co_hinh=true, crop anh_de); chỉ bảng số liệu thuần mới array. (Câu đã lưu trước = phải nhập lại.)
+2. **"Nét hơn/bằng gốc, đừng mờ"** (Thùy): `pdfRender.ts` HI 300→**400 DPI** + MAX_SRC 3200→4200 (A4@400≈3308<4200 → không downscale). Crop PNG lossless, không tốn thêm token (GEM_W cap ảnh gửi Gemini). AI-redraw KHÔNG dùng (bịa hình toán — giữ ADR "hình=ảnh gốc cắt").
+3. **Preview-first** (Thùy: "hiện preview đã gen công thức, bấm sửa mới ra code"): NhapKhoScreen mọi field render MathText mặc định, nút **✎ Sửa nội dung** toggle → textarea LaTeX. Card max-w-4xl→**6xl**. DangPicker thêm hàng **"Gần đây" ≤5 dạng** (pushRecent lúc pick/duyệt). tsc+build pass.
