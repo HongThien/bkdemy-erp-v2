@@ -706,3 +706,21 @@
   - **Trend ↑/↓** (Tổng quan): `getTongQuanHS` trả `trend{et,btvn,hoanThanh}` = chênh điểm% **30 ngày gần vs 30 ngày trước** (null nếu 1 kỳ thiếu data). `TrendBadge` cạnh %. Data hiện dồn ~2 tuần → prior rỗng → badge ẩn (đúng, chưa đủ 2 kỳ); tự hiện khi tích luỹ.
   - tsc sạch (bỏ import thừa DangRollup/ChuyenDeRollup ở UI). screenshot OK.
 - **Kết quả học tập giờ ĐỦ khung đã bàn:** Từng HS (Tổng quan/Dạng bài/Lịch sử) · Theo buổi(lớp) · Lớp/Khối/Hệ · Theo dạng/Chuyên đề · trend. CÒN: điểm năng lực (chờ cấu trúc đề+Hình) · mặt HS/PH (login HS net-new).
+
+## 2026-07-02 — Fix vụn: mã HS trong thông tin lớp · chống trùng câu khi làm giáo trình
+
+**Thùy báo 2 lỗi cần fix trước:**
+
+**1. Thông tin lớp — hiện MÃ HS cạnh tên:** `RosterBox` (`LopScreen.tsx`) cột "Học sinh" trước chỉ `ho_ten`. Thêm badge `ma_hs` (mono, slate, cạnh tên). `listHSCuaLop` đã `select('*, hoc_sinh(*)')` nên `ma_hs` có sẵn — chỉ hiện ra.
+
+**2. Chống dùng lại câu trong giáo trình (buổi này + buổi trước) — cả AUTO lẫn THỦ CÔNG:**
+- **Model:** "buổi này + buổi trước" = MỌI câu đã dùng trong CÙNG tài liệu (master giáo trình = chuỗi buổi trong 1 doc). Hard-block phạm vi doc; khác với "usage count" = số lượt dùng xuyên MỌI tài liệu ở Kho (chỉ báo mềm).
+- **lib `tailieu.ts`:** (a) export `cauUsage` (đếm lượt dùng trong `tai_lieu_cau`, sẵn có) để picker hiện chỉ số. (b) `usedCausOfDoc(taiLieuId, exceptPhanId?)` MỚI — set câu đã dùng ở phần khác cùng doc (query `tai_lieu_cau` theo phan_id của doc, trừ 1 phan). (c) `autoSuggestByLoai` thêm param `exclude` (lọc pool). (d) `setDangOfBuoi` tính `usedInDoc = usedCausOfDoc(...)` (SAU khi đã xoá dạng bỏ) rồi tích luỹ qua từng dạng mới: luyện né usedInDoc → thêm vào set → BTVN né usedInDoc (gồm cả luyện vừa thêm). → thêm dạng mới không đụng câu buổi trước.
+- **UI `TaiLieuBuilder.tsx`:** (a) helper `usedExcept(phanId)` = union câu mọi phan KHÁC (từ `full.phans[*].caus`). (b) `openPicker` truyền `disabled=[...usedExcept(phanId)]`. (c) nút "↻ Gợi ý" luyện/BTVN (DangCard) truyền `usedExcept(dang.id)`/`usedExcept(btvn.id)` vào autoSuggest → gợi ý-tay cũng né. (d) `KhoPicker` thêm prop `disabled?` + state `usage` (nạp `cauUsage` sau khi load câu): câu trong `blocked` (=disabled trừ selected của chính phan) → checkbox disabled + mờ + badge đỏ "đã dùng"; câu khác → badge "chưa dùng"(xanh)/"dùng N×"(hổ phách). `toggle` chặn câu blocked.
+- **ETScreen** dùng `KhoPicker` không truyền `disabled` → không khoá (đúng: ET pick 1 câu/hàng, dedup khác), nhưng ĂN THEO badge số-lượt-dùng (bonus).
+- tsc sạch + build pass. ⏳ CHƯA test UI thật (Thùy verify: mở giáo trình → thêm 2 buổi cùng dạng → buổi 2 auto né câu buổi 1; mở "✎ Chọn câu" thấy câu buổi 1 xám "đã dùng" + câu khác có số lượt).
+
+**3. "Câu N." luôn CÙNG DÒNG với đề (bản in) — fix không nhất quán:**
+- **Nguyên nhân:** `CauItem`/ET render `<span class="pv-cau-no">Câu N.</span>` đứng TRƯỚC `<MathText>{stem}</MathText>`. `MathText` trả `<span>` inline khi đề 1 dòng (→ cùng dòng) nhưng trả `<div>` block khi đề NHIỀU dòng (text + công thức) → block xuống dòng, "Câu N." trơ 1 mình dòng trên. Câu 1 dòng ≠ câu nhiều dòng → không nhất quán.
+- **Fix:** `MathText` (kho/ui.tsx) thêm prop `prefix?` (HTML) nhét vào ĐẦU dòng 1 (single-line: `head+line0`; multi-line: chèn vào `.mline` đầu). `CauItem` (PrintView) + ET (ETPrintView 2 chỗ: trả-lời-ngắn + tự-luận) đổi `<span pv-cau-no>` rời → `<MathText prefix='<span class="pv-cau-no">Câu N.</span> '>`. Nhãn giờ luôn nằm trong dòng đầu của đề. Màn UI (ChamETSheet/BuoiHoc/DangHub/DungSai) giữ nguyên (nhãn cột riêng, cố ý).
+- tsc sạch + build pass. ⏳ Thùy soi lại bản in giáo trình + ET.

@@ -339,7 +339,10 @@ function RosterBox({ lopId, roster, dsHocSinh, mnl, onChange }: { lopId: string;
           <tbody>
             {roster.map((r) => (
               <tr key={r.id} className="border-t border-slate-100">
-                <td className="py-1.5 font-medium text-slate-800">{r.hoc_sinh?.ho_ten ?? '?'}</td>
+                <td className="py-1.5">
+                  <span className="font-medium text-slate-800">{r.hoc_sinh?.ho_ten ?? '?'}</span>
+                  {r.hoc_sinh?.ma_hs && <span className="ml-2 rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[11px] text-slate-500">{r.hoc_sinh.ma_hs}</span>}
+                </td>
                 <td>
                   <select value={r.muc_nang_luc_id ?? ''} onChange={async (e) => { await setBandGhiDanh(r.id, e.target.value || null); onChange() }} className="rounded border border-slate-300 px-1.5 py-1 text-[12px]">
                     <option value="">— chưa xếp —</option>

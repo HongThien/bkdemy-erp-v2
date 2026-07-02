@@ -286,9 +286,12 @@ function splitLabeled(s: string, seq: string): { stem: string; parts: { lbl: str
   const parts = marks.map((mk, i) => ({ lbl: mk.lbl, body: s.slice(mk.start, i + 1 < marks.length ? marks[i + 1].idx : undefined).trim() }))
   return { stem, parts }
 }
+// Công thức trải NHIỀU dòng: $…$ / $$…$$ có \n bên trong (vd \begin{cases}…\\…\end{cases}) = KHỐI toán liền.
+const MATH_SPAN = /\$\$[\s\S]+?\$\$|\$[^$]+?\$/g
 // KHÔNG nhãn: đề (dòng đầu) + ≥3 ý NGẮN song song, mỗi ý 1 dòng → cho lên lưới cột (như trắc nghiệm).
 // Chỉ kích hoạt khi MỌI dòng ý đều ngắn (≤30) → không phá đề nhiều dòng/lời văn dài. Ngưỡng cột dùng optCols.
 function splitUnlabeled(s: string): { stem: string; parts: { lbl: string; body: string }[] } | null {
+  if ((s.match(MATH_SPAN) ?? []).some((seg) => seg.includes('\n'))) return null // ĐỪNG xé khối toán nhiều dòng (cases…)
   const lines = s.split('\n').map((l) => l.trim()).filter(Boolean)
   if (lines.length < 4) return null // đề + ≥3 ý
   const [stem, ...rest] = lines
@@ -319,7 +322,7 @@ export function CauItem({ no, c, gv, lines = 0 }: { no: number; c: CauHoi; gv: b
   return (
     <li className="pv-cau">
       {/* THỨ TỰ: đề → HÌNH → đáp án (Thùy chốt) */}
-      <div className="pv-math"><span className="pv-cau-no">Câu {no}.</span><MathText>{stem}</MathText></div>
+      <div className="pv-math"><MathText prefix={`<span class="pv-cau-no">Câu ${no}.</span> `}>{stem}</MathText></div>
       {c.anh_de && <img src={c.anh_de} alt="" className="pv-img" />}
       {grid && <OptGrid grid={grid} emb={emb} />}
       {hasOpts && (

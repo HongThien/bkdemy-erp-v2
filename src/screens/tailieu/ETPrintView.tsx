@@ -118,7 +118,7 @@ function ETDoc({ full, gv }: { full: TaiLieuFull; gv: boolean }) {
             const { stem, grid, emb } = splitStem(c) // ý con nhiều dòng → lưới cột (như trắc nghiệm), không đổ 6 dòng
             return (
               <tr key={c.ma_cau}>
-                <td className="q"><div className="pv-math"><span className="pv-cau-no">Câu {next()}.</span><MathText>{stem}</MathText></div>{grid && <OptGrid grid={grid} emb={emb} />}</td>
+                <td className="q"><div className="pv-math"><MathText prefix={`<span class="pv-cau-no">Câu ${next()}.</span> `}>{stem}</MathText></div>{grid && <OptGrid grid={grid} emb={emb} />}</td>
                 <td className="a">{gv && c.dap_an ? <MathText>{c.dap_an}</MathText> : ''}</td>
               </tr>
             )
@@ -133,7 +133,7 @@ function ETDoc({ full, gv }: { full: TaiLieuFull; gv: boolean }) {
             const { stem, grid, emb } = splitStem(c)
             return (
               <li key={c.ma_cau} className="pv-cau">
-                <div className="pv-math"><span className="pv-cau-no">Câu {next()}.</span><MathText>{stem}</MathText></div>
+                <div className="pv-math"><MathText prefix={`<span class="pv-cau-no">Câu ${next()}.</span> `}>{stem}</MathText></div>
                 {grid && <OptGrid grid={grid} emb={emb} />}
                 {c.anh_de && <img src={c.anh_de} alt="" className="pv-img" />}
                 {gv && (c.dap_an || c.loi_giai)

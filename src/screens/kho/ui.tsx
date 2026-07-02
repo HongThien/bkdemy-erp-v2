@@ -78,11 +78,13 @@ function buildLines(raw: string): string[] {
   if (last < raw.length) pushText(raw.slice(last))
   return lines
 }
-export function MathText({ children, className }: { children: string | null | undefined; className?: string }) {
+// `prefix` = HTML nhét vào ĐẦU dòng 1 (vd nhãn "Câu N.") → luôn cùng dòng với đề, kể cả đề nhiều dòng.
+export function MathText({ children, className, prefix }: { children: string | null | undefined; className?: string; prefix?: string }) {
   const lines = buildLines(children ?? '')
-  // 1 dòng → inline (căn baseline đẹp); nhiều dòng → block từng dòng (phân số không đè).
-  if (lines.length <= 1) return <span className={`katex-text ${className ?? ''}`} dangerouslySetInnerHTML={{ __html: lines[0] || '' }} />
-  return <div className={`katex-text ${className ?? ''}`} dangerouslySetInnerHTML={{ __html: lines.map((l) => `<div class="mline">${l || '&nbsp;'}</div>`).join('') }} />
+  const head = prefix ?? ''
+  // 1 dòng → inline (căn baseline đẹp); nhiều dòng → block từng dòng (phân số không đè), nhãn ghép vào dòng đầu.
+  if (lines.length <= 1) return <span className={`katex-text ${className ?? ''}`} dangerouslySetInnerHTML={{ __html: head + (lines[0] || '') }} />
+  return <div className={`katex-text ${className ?? ''}`} dangerouslySetInnerHTML={{ __html: lines.map((l, i) => `<div class="mline">${(i === 0 ? head : '') + (l || '&nbsp;')}</div>`).join('') }} />
 }
 
 export const inp = 'w-full rounded-md border border-slate-300 px-2.5 py-1.5 text-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20'

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import {
   getTaiLieuFull, updateTaiLieu, updatePhan, setCauOfPhan,
-  addBuoi, deleteBuoi, setDangOfBuoi, reorderDangInBuoi, autoSuggestByLoai, autoSuggestBtvn, trichXuatBuoi, listTrichXuat, khoCuaMon, setPhanKieu, BLOCK_KIEU,
+  addBuoi, deleteBuoi, setDangOfBuoi, reorderDangInBuoi, autoSuggestByLoai, autoSuggestBtvn, cauUsage, trichXuatBuoi, listTrichXuat, khoCuaMon, setPhanKieu, BLOCK_KIEU,
   DEFAULT_LUYEN_COUNTS, DEFAULT_BTVN_COUNTS, DEFAULT_BTVN_LINES,
   type TaiLieuFull, type PhanResolved, type CauHinh, type TrichState,
 } from '../../lib/tailieu'
@@ -34,7 +34,7 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
   const [ch, setCh] = useState<CauHinh>({})
   const [err, setErr] = useState<string | null>(null)
   const [printing, setPrinting] = useState(false)
-  const [picker, setPicker] = useState<null | { phanId: string; maDangs: string[]; selected: string[] }>(null)
+  const [picker, setPicker] = useState<null | { phanId: string; maDangs: string[]; selected: string[]; disabled: string[] }>(null)
   const [dangPicker, setDangPicker] = useState<null | { buoiId: string; selected: string[] }>(null)
   const [trichOpen, setTrichOpen] = useState(false)
   const [saved, setSaved] = useState(false) // chỉ báo "đã tự động lưu" (builder lưu ngay mỗi thao tác, không có nút Lưu)
@@ -51,7 +51,13 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
   async function saveCh(patch: Partial<CauHinh>) { const next = { ...ch, ...patch }; setCh(next); await updateTaiLieu(id, { cau_hinh: next }); markSaved() }
   async function applyCaus(phanId: string, maCaus: string[]) { await setCauOfPhan(phanId, maCaus); await reload(); markSaved() }
   async function onSetKieu(phanId: string, kieu: string) { await setPhanKieu(phanId, kieu); await reload(); markSaved() }
-  const openPicker = (phanId: string, ma: string, selected: string[]) => setPicker({ phanId, maDangs: [ma], selected })
+  // Câu đã dùng ở MỌI phần khác của tài liệu (buổi này + buổi trước) → cấm chọn lại (auto & thủ công).
+  const usedExcept = (phanId: string): Set<string> => {
+    const s = new Set<string>()
+    for (const p of (full?.phans ?? [])) if (p.id !== phanId) for (const c of p.caus) s.add(c.ma_cau)
+    return s
+  }
+  const openPicker = (phanId: string, ma: string, selected: string[]) => setPicker({ phanId, maDangs: [ma], selected, disabled: [...usedExcept(phanId)] })
   const onLine = (maCau: string, n: number) => saveCh({ btvnLinesByCau: { ...(ch.btvnLinesByCau ?? {}), [maCau]: n } })
 
   const jump = (pid: string) => document.getElementById('p-' + pid)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -107,7 +113,7 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
                   onDelete={async () => { if (confirm('Xoá cả buổi này (gồm dạng trên lớp + BTVN)?')) { await deleteBuoi(id, b.marker.id); await reload(); markSaved() } }}
                   onChonDang={() => setDangPicker({ buoiId: b.marker.id, selected: b.dangs.map((d) => d.ref_ma!).filter(Boolean) })}
                   onReorderDang={async (order) => { await reorderDangInBuoi(id, b.marker.id, order); await reload(); markSaved() }}
-                  onApply={applyCaus} openPicker={openPicker} cauTbl={cauTbl} onSetKieu={onSetKieu}
+                  onApply={applyCaus} openPicker={openPicker} cauTbl={cauTbl} onSetKieu={onSetKieu} usedExcept={usedExcept}
                 />
               )
             })}
@@ -125,10 +131,11 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
 }
 
 // ── 1 BUỔI: tiêu đề (sửa được) + nút Chọn dạng + danh sách dạng (mỗi dạng có Bài luyện + BTVN) ──
-function BuoiCard({ buoi, startNo, linesByCau, onLine, onRename, onDelete, onChonDang, onReorderDang, onApply, openPicker, cauTbl, onSetKieu }: {
+function BuoiCard({ buoi, startNo, linesByCau, onLine, onRename, onDelete, onChonDang, onReorderDang, onApply, openPicker, cauTbl, onSetKieu, usedExcept }: {
   buoi: BuoiUI; startNo: number; linesByCau: Record<string, number>; onLine: (maCau: string, n: number) => void
   onRename: (t: string) => void; onDelete: () => void; onChonDang: () => void; onReorderDang: (order: string[]) => void
   onApply: (phanId: string, maCaus: string[]) => void; openPicker: (phanId: string, ma: string, selected: string[]) => void; cauTbl: string; onSetKieu: (phanId: string, kieu: string) => void
+  usedExcept: (phanId: string) => Set<string>
 }) {
   const order = buoi.dangs.map((d) => d.ref_ma!).filter(Boolean)
   const move = (i: number, dir: -1 | 1) => {
@@ -152,7 +159,7 @@ function BuoiCard({ buoi, startNo, linesByCau, onLine, onRename, onDelete, onCho
           ? <div className="text-[12px] italic text-slate-400">Chưa có dạng — bấm “+ Chọn dạng” để chọn các dạng cho buổi (mọi chuyên đề).</div>
           : buoi.dangs.map((d, i) => (
             <DangCard key={d.id} no={startNo + i + 1} dang={d} btvn={d.ref_ma ? buoi.btvnByMa[d.ref_ma] : undefined}
-              linesByCau={linesByCau} onLine={onLine} onApply={onApply} openPicker={openPicker} cauTbl={cauTbl} onSetKieu={onSetKieu}
+              linesByCau={linesByCau} onLine={onLine} onApply={onApply} openPicker={openPicker} cauTbl={cauTbl} onSetKieu={onSetKieu} usedExcept={usedExcept}
               canUp={i > 0} canDown={i < buoi.dangs.length - 1} onUp={() => move(i, -1)} onDown={() => move(i, 1)} />
           ))}
       </div>
@@ -161,17 +168,19 @@ function BuoiCard({ buoi, startNo, linesByCau, onLine, onRename, onDelete, onCho
 }
 
 // ── 1 DẠNG trong buổi: 2 khối cấu hình — Bài luyện (trên lớp) + BTVN (về nhà), đều theo số câu mỗi loại ──
-function DangCard({ no, dang, btvn, linesByCau, onLine, onApply, openPicker, cauTbl, onSetKieu, canUp, canDown, onUp, onDown }: {
+function DangCard({ no, dang, btvn, linesByCau, onLine, onApply, openPicker, cauTbl, onSetKieu, usedExcept, canUp, canDown, onUp, onDown }: {
   no: number; dang: PhanResolved; btvn?: PhanResolved; linesByCau: Record<string, number>
   onLine: (maCau: string, n: number) => void; onApply: (phanId: string, maCaus: string[]) => void; openPicker: (phanId: string, ma: string, selected: string[]) => void; cauTbl: string; onSetKieu: (phanId: string, kieu: string) => void
+  usedExcept: (phanId: string) => Set<string>
   canUp: boolean; canDown: boolean; onUp: () => void; onDown: () => void
 }) {
   const ma = dang.ref_ma!
   const [luyenCnt, setLuyenCnt] = useState<Record<string, number>>({ ...DEFAULT_LUYEN_COUNTS })
   const [btvnCnt, setBtvnCnt] = useState<Record<string, number>>({ ...DEFAULT_BTVN_COUNTS })
   const numIn = 'h-7 w-11 rounded border border-slate-300 px-1 text-center text-[12px]'
-  async function goiYLuyen() { onApply(dang.id, await autoSuggestByLoai(ma, luyenCnt, cauTbl)) }
-  async function goiYBtvn() { if (btvn) onApply(btvn.id, await autoSuggestBtvn([ma], new Set(dang.caus.map((c) => c.ma_cau)), btvnCnt, cauTbl)) }
+  // Gợi ý né câu đã dùng ở buổi/dạng khác (usedExcept) — luyện né phần khác; BTVN né cả câu luyện cùng dạng (khác phan).
+  async function goiYLuyen() { onApply(dang.id, await autoSuggestByLoai(ma, luyenCnt, cauTbl, usedExcept(dang.id))) }
+  async function goiYBtvn() { if (btvn) onApply(btvn.id, await autoSuggestBtvn([ma], usedExcept(btvn.id), btvnCnt, cauTbl)) }
 
   const counts = (cnt: Record<string, number>, set: (f: (s: Record<string, number>) => Record<string, number>) => void) => (
     LOAI_CAU.map((l) => (
@@ -346,15 +355,21 @@ function StructureTree({ buois, ten, onJump }: { buois: BuoiUI[]; ten: string; o
   )
 }
 
-export function KhoPicker({ maDangs, selected, cauTbl = 'dai_cau_hoi', onClose, onConfirm }: { maDangs: string[]; selected: string[]; cauTbl?: string; onClose: () => void; onConfirm: (m: string[]) => void }) {
+export function KhoPicker({ maDangs, selected, disabled = [], cauTbl = 'dai_cau_hoi', onClose, onConfirm }: { maDangs: string[]; selected: string[]; disabled?: string[]; cauTbl?: string; onClose: () => void; onConfirm: (m: string[]) => void }) {
   const [groups, setGroups] = useState<{ maDang: string; caus: CauHoi[] }[]>([])
   const [sel, setSel] = useState<Set<string>>(new Set(selected))
   const [fLoai, setFLoai] = useState<Set<string>>(new Set())
+  const [usage, setUsage] = useState<Map<string, number>>(new Map()) // số lượt câu đã dùng trong MỌI tài liệu (chỉ báo)
   const [loading, setLoading] = useState(true)
+  // Câu đã dùng ở buổi này/buổi trước (cùng giáo trình) → KHOÁ; trừ câu đang chọn ở chính phần này.
+  const blocked = new Set(disabled.filter((m) => !selected.includes(m)))
   useEffect(() => {
-    Promise.all(maDangs.map(async (md) => ({ maDang: md, caus: await listCauByDang(md, cauTbl) }))).then((g) => { setGroups(g); setLoading(false) }).catch(() => setLoading(false))
+    Promise.all(maDangs.map(async (md) => ({ maDang: md, caus: await listCauByDang(md, cauTbl) }))).then(async (g) => {
+      setGroups(g); setLoading(false)
+      setUsage(await cauUsage(g.flatMap((x) => x.caus.map((c) => c.ma_cau))))
+    }).catch(() => setLoading(false))
   }, []) // eslint-disable-line
-  const toggle = (ma: string) => setSel((s) => { const n = new Set(s); n.has(ma) ? n.delete(ma) : n.add(ma); return n })
+  const toggle = (ma: string) => { if (blocked.has(ma)) return; setSel((s) => { const n = new Set(s); n.has(ma) ? n.delete(ma) : n.add(ma); return n }) }
   const toggleLoai = (v: string) => setFLoai((s) => { const n = new Set(s); n.has(v) ? n.delete(v) : n.add(v); return n })
   function confirm() {
     const all = groups.flatMap((g) => g.caus.map((c) => c.ma_cau))
@@ -385,14 +400,21 @@ export function KhoPicker({ maDangs, selected, cauTbl = 'dai_cau_hoi', onClose, 
                 <div key={g.maDang} className="mb-4">
                   {maDangs.length > 1 && <div className="mb-1 text-[12px] font-bold uppercase tracking-wide text-slate-500">Dạng {g.maDang}</div>}
                   <div className="space-y-1">
-                    {caus.map((c) => (
-                      <label key={c.ma_cau} className={`flex cursor-pointer items-start gap-2 rounded-md border px-2.5 py-1.5 ${sel.has(c.ma_cau) ? 'border-indigo-300 bg-indigo-50/40' : 'border-slate-100 hover:bg-slate-50'}`}>
-                        <input type="checkbox" checked={sel.has(c.ma_cau)} onChange={() => toggle(c.ma_cau)} className="mt-1" />
+                    {caus.map((c) => {
+                      const isBlocked = blocked.has(c.ma_cau)
+                      const n = usage.get(c.ma_cau) ?? 0
+                      return (
+                      <label key={c.ma_cau} title={isBlocked ? 'Câu này đã dùng trong buổi này / buổi trước — không chọn lại' : undefined}
+                        className={`flex items-start gap-2 rounded-md border px-2.5 py-1.5 ${isBlocked ? 'cursor-not-allowed border-slate-100 bg-slate-50 opacity-55' : sel.has(c.ma_cau) ? 'cursor-pointer border-indigo-300 bg-indigo-50/40' : 'cursor-pointer border-slate-100 hover:bg-slate-50'}`}>
+                        <input type="checkbox" checked={sel.has(c.ma_cau)} disabled={isBlocked} onChange={() => toggle(c.ma_cau)} className="mt-1" />
                         <MaCau ma={c.ma_cau} />
                         <span className="min-w-0 flex-1 text-[14px] text-slate-700"><MathText>{c.noi_dung}</MathText></span>
+                        {isBlocked
+                          ? <span className="shrink-0 rounded bg-rose-100 px-1.5 text-[10px] font-semibold text-rose-600">đã dùng</span>
+                          : <span className={`shrink-0 rounded px-1.5 text-[10px] font-medium ${n > 0 ? 'bg-amber-50 text-amber-600' : 'bg-emerald-50 text-emerald-600'}`} title="Số lượt câu này đã dùng trong các tài liệu ở Kho">{n > 0 ? `dùng ${n}×` : 'chưa dùng'}</span>}
                         <span className="shrink-0 rounded bg-slate-100 px-1.5 text-[10px] font-medium text-slate-500">{loaiLabel(c.loai_cau)}</span>
                       </label>
-                    ))}
+                    )})}
                     {caus.length === 0 && <div className="px-1 py-1 text-[12px] italic text-slate-400">— không có câu khớp lọc —</div>}
                   </div>
                 </div>
