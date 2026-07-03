@@ -7,7 +7,60 @@ import { listLop } from '../../lib/nhansu'
 import { MathText } from '../kho/ui'
 import type { CauHoi } from '../../lib/kho/api'
 
-export default function PrintView({ id, onClose }: { id: string; onClose: () => void }) {
+// Tên file an toàn Windows (bỏ \ / : * ? " < > | và khoảng trắng thừa).
+export function safeFileName(s: string): string {
+  return (s || 'tai-lieu').replace(/[\\/:*?"<>|]/g, '').replace(/\s+/g, ' ').trim().slice(0, 120) || 'tai-lieu'
+}
+const escHtml = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+// Chèn header/footer bằng PHẦN TỬ THẬT vào bản clone của html2canvas (tắt ::before/::after gốc).
+// LÝ DO: html2canvas KHÔNG rasterize nổi background NHIỀU LỚP trên pseudo-element (logo+chip+wave) → header trắng,
+// chữ trắng thành mờ (§367). Phần tử thật + <img> logo + 1 wave đơn thì html2canvas chụp chuẩn.
+function injectChrome(doc: Document, cr: PageChrome) {
+  const st = doc.createElement('style')
+  st.textContent = '.pagedjs_pagebox::before,.pagedjs_pagebox::after{content:none!important;background:none!important}'
+  doc.head.appendChild(st)
+  doc.querySelectorAll('.pagedjs_pagebox').forEach((pb) => {
+    const box = pb as HTMLElement
+    if (cr.head) {
+      const h = doc.createElement('div')
+      h.style.cssText = `position:absolute;top:0;left:0;right:0;height:18mm;background:url("${cr.headUri}") center/100% 100% no-repeat;display:flex;align-items:center;justify-content:flex-end;padding:0 10mm;box-sizing:border-box;color:#fff;font:700 11px/1 'Times New Roman',serif;text-shadow:0 1px 2px rgba(0,0,0,.25);z-index:1`
+      h.innerHTML = `<img src="${cr.chipUri}" style="position:absolute;left:4.5mm;top:1.5mm;width:42mm;height:9mm"/><img src="${cr.logoUrl}" crossorigin="anonymous" style="position:absolute;left:8mm;top:3.5mm;height:5mm"/><span>${escHtml(cr.headText)}</span>`
+      box.insertBefore(h, box.firstChild) // trước margin-box số trang → số trang vẫn nổi trên
+    }
+    if (cr.foot) {
+      const f = doc.createElement('div')
+      f.style.cssText = `position:absolute;bottom:0;left:0;right:0;height:15mm;background:url("${cr.footUri}") center/100% 100% no-repeat;display:flex;align-items:center;justify-content:center;box-sizing:border-box;color:#fff;font:700 11px 'Times New Roman',serif;text-shadow:0 1px 3px rgba(0,0,0,.35);z-index:1${cr.footPre ? ';white-space:pre' : ''}`
+      f.textContent = cr.footText
+      box.insertBefore(f, box.firstChild)
+    }
+  })
+}
+// Tải các TRANG paged.js (đã render trong `dst`) thành 1 file PDF A4 tải thẳng về máy (không qua hộp thoại in).
+// Rasterize từng trang bằng html2canvas-pro (bản CHỊU oklch của Tailwind v4 — bản gốc ném lỗi, §367) → jsPDF.
+// Lazy-import để KHÔNG phình bundle chính (chỉ nạp khi bấm tải).
+export async function downloadPagesPdf(dst: HTMLElement, filename: string, chrome?: PageChrome): Promise<void> {
+  const [h2cMod, jspdfMod] = await Promise.all([import('html2canvas-pro'), import('jspdf')])
+  const html2canvas = h2cMod.default
+  const pages = Array.from(dst.querySelectorAll('.pagedjs_page')) as HTMLElement[]
+  if (!pages.length) throw new Error('Chưa có trang nào để tải — đợi dựng trang xong.')
+  // Chờ FONT (KaTeX + Times) sẵn sàng → tránh chụp ra trang trắng chữ.
+  try { await (document as Document & { fonts?: { ready?: Promise<unknown> } }).fonts?.ready } catch { /* */ }
+  // Nạp sẵn logo để html2canvas có ảnh (né lỗi ảnh chưa tải).
+  if (chrome?.logoUrl) await new Promise<void>((res) => { const im = new Image(); im.crossOrigin = 'anonymous'; im.onload = () => res(); im.onerror = () => res(); im.src = chrome.logoUrl })
+  const pdf = new jspdfMod.jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' })
+  for (let i = 0; i < pages.length; i++) {
+    const canvas = await html2canvas(pages[i], {
+      scale: 2, useCORS: true, backgroundColor: '#ffffff', logging: false, imageTimeout: 15000,
+      onclone: chrome ? (doc: Document) => injectChrome(doc, chrome) : undefined,
+    })
+    if (i > 0) pdf.addPage()
+    pdf.addImage(canvas.toDataURL('image/jpeg', 0.9), 'JPEG', 0, 0, 210, 297)
+  }
+  pdf.save(safeFileName(filename) + '.pdf')
+}
+
+// headless = KHÔNG hiện preview, tự dựng trang ẩn → tải PDF → đóng (nút "⬇ Tải" ngay ở hàng Kho tài liệu).
+export default function PrintView({ id, onClose, headless }: { id: string; onClose: () => void; headless?: boolean }) {
   const [full, setFull] = useState<TaiLieuFull | null>(null)
   const [err, setErr] = useState<string | null>(null)
   const [gv, setGv] = useState(false) // false = bản HS · true = bản GV
@@ -16,6 +69,7 @@ export default function PrintView({ id, onClose }: { id: string; onClose: () => 
   const [pages, setPages] = useState(0)
   const [rendering, setRendering] = useState(true)
   const [renderErr, setRenderErr] = useState<string | null>(null)
+  const [dl, setDl] = useState(false)
   const srcRef = useRef<HTMLDivElement>(null)
   const dstRef = useRef<HTMLDivElement>(null)
   const [lopTen, setLopTen] = useState('') // tên lớp cho header phiếu BTVN (taiLieu chỉ có lop_id)
@@ -67,6 +121,49 @@ export default function PrintView({ id, onClose }: { id: string; onClose: () => 
 
   const seg = (on: boolean) => `rounded-md px-3 py-1 text-[13px] font-medium transition ${on ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`
 
+  // Tải thẳng file PDF về máy (không qua hộp thoại in) từ các trang đã dựng.
+  async function taiPdf() {
+    if (!dstRef.current || !full) return
+    setDl(true); setRenderErr(null)
+    const scopeSuffix = scope === 'btvn' ? ' - BTVN' : scope === 'giaotrinh' ? ' - Giáo trình' : ''
+    // chrome header/footer y HỆT bản render (BTVN/giáo-trình-buổi = Lớp · ngày · footer liên hệ).
+    const ch = full.taiLieu.cau_hinh ?? {}
+    const buoiDoc = full.taiLieu.loai === 'btvn' || full.taiLieu.loai === 'giao_trinh_buoi'
+    const ngay = (full.taiLieu as { ngay?: string | null }).ngay
+    const ngayVN = ngay ? ngay.split('-').reverse().join('/') : ''
+    const cssOpts = buoiDoc ? {
+      headerText: `${lopTen ? `Lớp ${lopTen} · ` : ''}${ngayVN}`,
+      footerText: 'BK Academy        Tel : 0963.209.309        Địa chỉ : 17A10 KĐT Geleximco',
+    } : undefined
+    try { await downloadPagesPdf(dstRef.current, `${full.taiLieu.ten}${scopeSuffix}${gv ? ' - Bản GV' : ''}`, pageChrome(full.taiLieu, ch, cssOpts)) }
+    catch (e) { setRenderErr('Tải PDF lỗi: ' + (e instanceof Error ? e.message : String(e))) }
+    finally { setDl(false) }
+  }
+
+  // headless: khi trang đã dựng xong (ổn định — chờ 350ms phòng render 2-pass của BTVN/giáo-trình-buổi) → tự tải rồi đóng.
+  const didAutoDl = useRef(false)
+  useEffect(() => {
+    if (!headless || didAutoDl.current || rendering || renderErr || !full || !dstRef.current) return
+    const t = setTimeout(() => { if (!didAutoDl.current) { didAutoDl.current = true; taiPdf().finally(onClose) } }, 350)
+    return () => clearTimeout(t)
+  }, [headless, rendering, renderErr, full, lopTen]) // eslint-disable-line
+
+  if (headless) return createPortal(
+    <>
+      {/* Trang dựng để chụp: on-screen top-left (html2canvas chụp ổn định hơn ngoài -99999px), NHƯNG nằm SAU lớp phủ đục. */}
+      <div style={{ position: 'fixed', top: 0, left: 0, zIndex: 88, width: '210mm', background: '#fff' }}><div ref={dstRef} className="pv-pages" /></div>
+      <div ref={srcRef} className="pv-src" aria-hidden>{full && <Doc full={full} gv={gv} scope={scope} lt={lt} />}</div>
+      <div className="fixed inset-0 z-[95] flex items-center justify-center bg-white">
+        <div className="rounded-xl border border-slate-200 bg-white px-6 py-4 text-sm font-medium text-slate-700 shadow-xl">
+          {renderErr ? <span className="text-rose-600">Tải PDF lỗi: {renderErr}</span> : <>⏳ Đang tạo file PDF{pages ? ` (${pages} trang)` : ''}…</>}
+          {renderErr && <button onClick={onClose} className="ml-3 rounded border border-slate-300 px-2.5 py-1 text-xs text-slate-600">Đóng</button>}
+        </div>
+      </div>
+      <style>{CHROME_CSS}</style>
+    </>,
+    document.body,
+  )
+
   return createPortal(
     <div className="pv-overlay fixed inset-0 z-[80] flex flex-col bg-slate-300/90">
       <div className="no-print flex items-center gap-3 border-b border-slate-300 bg-white px-5 py-2.5 shadow-sm">
@@ -83,7 +180,8 @@ export default function PrintView({ id, onClose }: { id: string; onClose: () => 
         {scope !== 'btvn' && !lt && <span className="rounded bg-amber-50 px-2 py-0.5 text-[12px] font-medium text-amber-700" title="Đổi ở Builder → Trình bày → Lý thuyết">Không kèm lý thuyết</span>}
         <span className="text-[12px] text-slate-400">{rendering ? 'đang dựng trang…' : `${pages} trang`}</span>
         <div className="ml-auto flex gap-2">
-          <button onClick={() => window.print()} disabled={rendering} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">🖨 In / Lưu PDF</button>
+          <button onClick={taiPdf} disabled={rendering || dl} className="rounded-md border border-indigo-300 bg-white px-3 py-1.5 text-sm font-medium text-indigo-700 shadow-sm hover:bg-indigo-50 disabled:opacity-40">{dl ? '⏳ Đang tạo…' : '⬇ Tải PDF'}</button>
+          <button onClick={() => window.print()} disabled={rendering} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">🖨 In</button>
           <button onClick={onClose} className="rounded-md border border-slate-300 px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-100">Đóng</button>
         </div>
       </div>
@@ -314,7 +412,26 @@ export function OptGrid({ grid, emb }: { grid: { lbl: string; body: string }[]; 
     </div>
   )
 }
+// Bản GV: khối đáp án CHI TIẾT cho MỌI loại câu (trắc nghiệm / đúng-sai / trả lời ngắn / tự luận).
+//  · trắc nghiệm: nêu rõ chữ cái đáp án (kèm ✓ ở lưới) · đúng/sai: gom lời giải từng mệnh đề (Đ/S đã hiện ở danh sách)
+//  · trả lời ngắn / tự luận: đáp án + lời giải. Luôn kèm ảnh đáp án nếu có.
+export function GvAnswer({ c }: { c: CauHoi }) {
+  const md = c.menh_de && c.menh_de.length ? c.menh_de : null
+  const mdGiai = md ? md.filter((m) => m.loi_giai?.trim()) : []
+  const hasContent = (!md && (c.dap_an || c.loi_giai)) || (md && (mdGiai.length || c.loi_giai)) || c.anh_dap_an
+  if (!hasContent) return null
+  return (
+    <div className="pv-loigiai">
+      {c.dap_an && !md && <div><b>Đáp án:</b> <MathText>{c.dap_an}</MathText></div>}
+      {md && mdGiai.length > 0 && md.map((m, i) => m.loi_giai?.trim()
+        ? <div key={i}><b>{String.fromCharCode(97 + i)})</b> <MathText>{m.loi_giai}</MathText></div> : null)}
+      {c.loi_giai && <div><b>Lời giải:</b> <MathText>{c.loi_giai}</MathText></div>}
+      {c.anh_dap_an && <img src={c.anh_dap_an} alt="" className="pv-img" />}
+    </div>
+  )
+}
 export function CauItem({ no, c, gv, lines = 0 }: { no: number; c: CauHoi; gv: boolean; lines?: number }) {
+  const md = c.menh_de && c.menh_de.length ? c.menh_de : null // câu Đúng/Sai: 4 mệnh đề, mỗi cái Đ/S riêng
   const hasOpts = !!(c.lua_chon && c.lua_chon.length)
   const letter = (i: number) => String.fromCharCode(65 + i)
   const cols = hasOpts ? optCols(c.lua_chon!) : 0
@@ -322,25 +439,32 @@ export function CauItem({ no, c, gv, lines = 0 }: { no: number; c: CauHoi; gv: b
   return (
     <li className="pv-cau">
       {/* THỨ TỰ: đề → HÌNH → đáp án (Thùy chốt) */}
-      <div className="pv-math"><MathText prefix={`<span class="pv-cau-no">Câu ${no}.</span> `}>{stem}</MathText></div>
+      <div className="pv-math"><MathText prefix={`<span class="pv-cau-no">Câu ${no}.</span> `}>{md ? c.noi_dung : stem}</MathText></div>
       {c.anh_de && <img src={c.anh_de} alt="" className="pv-img" />}
-      {grid && <OptGrid grid={grid} emb={emb} />}
-      {hasOpts && (
-        <div className="pv-opts" style={{ gridTemplateColumns: `repeat(${cols}, minmax(0,1fr))` }}>
-          {c.lua_chon!.map((o, i) => {
-            const correct = gv && (c.dap_an ?? '').trim().toUpperCase() === letter(i)
-            return <div key={i} className={`pv-opt ${correct ? 'pv-correct' : ''}`}><b>{letter(i)}.</b> <span className="pv-math"><MathText>{o}</MathText></span>{correct ? ' ✓' : ''}</div>
-          })}
-        </div>
-      )}
-      {gv && (c.loi_giai || c.dap_an) && (
-        <div className="pv-loigiai">
-          {!hasOpts && c.dap_an && <div><b>Đáp án:</b> <MathText>{c.dap_an}</MathText></div>}
-          {c.loi_giai && <div><b>Lời giải:</b> <MathText>{c.loi_giai}</MathText></div>}
-          {c.anh_dap_an && <img src={c.anh_dap_an} alt="" className="pv-img" />}
-        </div>
-      )}
-      {lines > 0 && !hasOpts && !grid && <div className="pv-write">{Array.from({ length: lines }).map((_, i) => <div key={i} className="pv-wline" />)}</div>}
+      {md ? (
+        // ĐÚNG/SAI: đề chung → 4 mệnh đề a·b·c·d (HS tự ghi Đ/S; bản GV hiện sẵn Đúng/Sai).
+        <ol className="pv-ds">
+          {md.map((m, i) => (
+            <li key={i} className="pv-ds-item">
+              <span className="pv-ds-lbl">{String.fromCharCode(97 + i)})</span>
+              <span className="pv-math"><MathText>{m.noi_dung}</MathText></span>
+              {gv && <span className={`pv-ds-kq ${m.dap_an === 'D' ? 'pv-correct' : 'pv-wrong'}`}>{m.dap_an === 'D' ? 'Đúng' : 'Sai'}</span>}
+            </li>
+          ))}
+        </ol>
+      ) : (<>
+        {grid && <OptGrid grid={grid} emb={emb} />}
+        {hasOpts && (
+          <div className="pv-opts" style={{ gridTemplateColumns: `repeat(${cols}, minmax(0,1fr))` }}>
+            {c.lua_chon!.map((o, i) => {
+              const correct = gv && (c.dap_an ?? '').trim().toUpperCase() === letter(i)
+              return <div key={i} className={`pv-opt ${correct ? 'pv-correct' : ''}`}><b>{letter(i)}.</b> <span className="pv-math"><MathText>{o}</MathText></span>{correct ? ' ✓' : ''}</div>
+            })}
+          </div>
+        )}
+      </>)}
+      {gv && <GvAnswer c={c} />}
+      {lines > 0 && !hasOpts && !grid && !md && <div className="pv-write">{Array.from({ length: lines }).map((_, i) => <div key={i} className="pv-wline" />)}</div>}
     </li>
   )
 }
@@ -383,6 +507,12 @@ const CONTENT_CSS = `
 .pv-opts{display:grid;column-gap:22px;row-gap:11px;margin-top:7px;align-items:start}
 .pv-opt{display:flex;align-items:flex-start;gap:5px;line-height:2}
 .pv-correct{color:#16a34a;font-weight:700}
+.pv-wrong{color:#dc2626;font-weight:700}
+/* ĐÚNG/SAI: danh sách 4 mệnh đề a·b·c·d (bản GV có nhãn Đúng/Sai đẩy về phải). */
+.pv-ds{list-style:none;margin:5px 0 0;padding:0}
+.pv-ds-item{display:flex;align-items:flex-start;gap:6px;line-height:1.9;margin:2px 0;break-inside:avoid}
+.pv-ds-lbl{font-weight:700;color:var(--pv-accent,#E91E8C);flex-shrink:0}
+.pv-ds-kq{margin-left:auto;white-space:nowrap;padding-left:12px}
 .pv-loigiai{margin-top:7px;padding:9px 11px;background:#f6f7f8;border-left:3px solid #cbd2d8;border-radius:5px;font-size:14px}
 /* Buổi = tầng 1: mỗi buổi sang trang mới, có dải tiêu đề "Buổi N". */
 .pv-buoi{break-before:page}
@@ -430,19 +560,29 @@ function waveUri(path: string, c1: string, c2: string, c3: string): string {
   return 'data:image/svg+xml,' + encodeURIComponent(svg)
 }
 
+// Chrome trang (dải sóng header/footer + logo + text) — DÙNG CHUNG cho paged.js CSS (pseudo) và onclone của html2canvas (phần tử thật).
+export type PageChrome = { head: boolean; foot: boolean; headUri: string; footUri: string; headText: string; footText: string; footPre: boolean; logoUrl: string; chipUri: string }
+export function pageChrome(taiLieu: TaiLieuFull['taiLieu'], ch: CauHinh, opts?: { headerText?: string; footerText?: string }): PageChrome {
+  return {
+    head: ch.header !== 'none', foot: ch.footer !== 'none',
+    // Dải MÀU cao hơn (phủ gần hết dải) → text canh giữa nằm TRỌN trên màu.
+    headUri: waveUri('M0,0 H1200 V84 C940,100 760,66 520,88 C300,100 150,76 0,92 Z', '#E91E8C', '#F7941E', '#2D9CDB'),
+    footUri: waveUri('M0,100 H1200 V14 C940,0 760,34 520,10 C300,0 150,26 0,16 Z', '#2D9CDB', '#F7941E', '#E91E8C'),
+    headText: opts?.headerText ?? `${taiLieu.ten} · Khối ${taiLieu.khoi}`,
+    footText: opts?.footerText ?? `BK ACADEMY · ${taiLieu.ten} · Khối ${taiLieu.khoi}`,
+    footPre: !!opts?.footerText, // footer override nhiều khoảng trắng → white-space:pre
+    logoUrl: location.origin + '/Logo.png', // tuyệt đối: paged.js rewrite url() theo base blob → '/x' throw
+    // Chip trắng bo góc làm nền cho logo (đọc rõ trên dải sóng). viewBox 140:30 = 42:9 mm.
+    chipUri: 'data:image/svg+xml,' + encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 30'><rect x='1.2' y='1.2' width='137.6' height='27.6' rx='7' fill='#ffffff' stroke='#dfe5ec' stroke-width='1.4'/></svg>`),
+  }
+}
 // Stylesheet cho paged.js: A4 + lề + dải sóng full-bleed (pseudo của pagebox) + số trang (@page margin box).
 export function buildPagedCss(taiLieu: TaiLieuFull['taiLieu'], ch: CauHinh, accent: string, opts?: { headerText?: string; footerText?: string }): string {
-  const head = ch.header !== 'none', foot = ch.footer !== 'none'
-  // Dải MÀU cao hơn (phủ gần hết dải) → text canh giữa nằm TRỌN trên màu, không rơi vào khoảng trắng trên sóng.
-  const headUri = waveUri('M0,0 H1200 V84 C940,100 760,66 520,88 C300,100 150,76 0,92 Z', '#E91E8C', '#F7941E', '#2D9CDB')
-  const footUri = waveUri('M0,100 H1200 V14 C940,0 760,34 520,10 C300,0 150,26 0,16 Z', '#2D9CDB', '#F7941E', '#E91E8C')
-  const headTxt = cssStr(opts?.headerText ?? `${taiLieu.ten} · Khối ${taiLieu.khoi}`)
-  const footTxt = cssStr(opts?.footerText ?? `BK ACADEMY · ${taiLieu.ten} · Khối ${taiLieu.khoi}`)
-  // footerText override hay có nhiều khoảng trắng (BK Academy · Tel · Địa chỉ cách nhau) → giữ nguyên bằng white-space:pre.
-  const footWS = opts?.footerText ? 'white-space:pre;' : ''
-  const logoUrl = location.origin + '/Logo.png' // PHẢI tuyệt đối: paged.js rewrite url() theo base blob → '/x' sẽ throw
-  // Chip trắng bo góc + viền làm nền cho logo (đọc rõ trên dải sóng). viewBox 140:30 = 42:9 mm → không méo.
-  const chipUri = 'data:image/svg+xml,' + encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 30'><rect x='1.2' y='1.2' width='137.6' height='27.6' rx='7' fill='#ffffff' stroke='#dfe5ec' stroke-width='1.4'/></svg>`)
+  const cr = pageChrome(taiLieu, ch, opts)
+  const { head, foot, headUri, footUri, logoUrl, chipUri } = cr
+  const headTxt = cssStr(cr.headText)
+  const footTxt = cssStr(cr.footText)
+  const footWS = cr.footPre ? 'white-space:pre;' : ''
   return CONTENT_CSS + `
 .katex{font-size:0.95em!important}.pagedjs_page{font-family:'Times New Roman',Tinos,Times,serif;font-size:17px;color:#23272b;line-height:1.55;--pv-accent:${accent}}
 .pagedjs_pagebox{position:relative}

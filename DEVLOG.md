@@ -759,3 +759,93 @@
 1. **Bảng biến thiên bóc thành `\begin{array}` vỡ** → prompt `buildKhoIngestPrompt`: BBT/bảng-xét-dấu (mũi tên ↗↘, dòng x·y′·y) = HÌNH (co_hinh=true, crop anh_de); chỉ bảng số liệu thuần mới array. (Câu đã lưu trước = phải nhập lại.)
 2. **"Nét hơn/bằng gốc, đừng mờ"** (Thùy): `pdfRender.ts` HI 300→**400 DPI** + MAX_SRC 3200→4200 (A4@400≈3308<4200 → không downscale). Crop PNG lossless, không tốn thêm token (GEM_W cap ảnh gửi Gemini). AI-redraw KHÔNG dùng (bịa hình toán — giữ ADR "hình=ảnh gốc cắt").
 3. **Preview-first** (Thùy: "hiện preview đã gen công thức, bấm sửa mới ra code"): NhapKhoScreen mọi field render MathText mặc định, nút **✎ Sửa nội dung** toggle → textarea LaTeX. Card max-w-4xl→**6xl**. DangPicker thêm hàng **"Gần đây" ≤5 dạng** (pushRecent lúc pick/duyệt). tsc+build pass.
+
+---
+
+## 07-03 (phiên 2) — Bản GV hiện đáp án MỌI loại câu · fix clone thiếu `$` đóng cuối
+
+**Việc 1 — bản giáo viên (in tài liệu) phải hiện đáp án CHI TIẾT dù loại câu nào:**
+Rà 2 print view, thấy các lỗ:
+- `PrintView.CauItem`: câu **Đúng/Sai** (`menh_de`) KHÔNG render gì (cả 4 mệnh đề lẫn đáp án) — HS lẫn GV đều mất.
+- `PrintView` trắc nghiệm: bản GV chỉ tô xanh ✓, thiếu dòng "Đáp án" tường minh.
+- `ETPrintView` trả-lời-ngắn (bảng): bản GV chỉ hiện đáp án ngắn, **thiếu lời giải**.
+- `ETPrintView` tự-luận: thiếu `anh_dap_an`.
+
+Sửa (`PrintView.tsx` + `ETPrintView.tsx`):
+- Thêm `GvAnswer({c})` (export) = khối đáp án chi tiết dùng chung MỌI loại: TN→"Đáp án: chữ cái" · Đ/S→gom lời giải từng mệnh đề · TLN/TL→đáp án+lời giải; luôn kèm `anh_dap_an`.
+- `CauItem` rẽ nhánh `menh_de`: render đề chung → 4 mệnh đề a·b·c·d (HS ghi Đ/S; GV hiện sẵn Đúng/Sai màu). Bỏ dòng kẻ viết khi là Đ/S. TN vẫn tô ✓ + thêm GvAnswer.
+- ET: câu có `menh_de` route vào nhánh CauItem (bảng TLN không hiển thị nổi). TLN bản GV thêm lời giải+ảnh. Tự luận dùng `GvAnswer`.
+- CSS mới: `.pv-ds*` (danh sách mệnh đề), `.pv-wrong` (đỏ), `.pv-et-ans/.pv-et-giai`.
+
+**Việc 2 — clone thiếu `$` đóng ở cuối dòng cuối → công thức cuối vỡ:**
+Nguồn: `MathText` (`kho/ui.tsx`) chỉ match `$…$` cân bằng; `$` mở lẻ ở cuối bị bỏ → phần đuôi render như text.
+Fix GỐC ở renderer (đúng luật §325 "renderer chịu output AI ẩu" → vá 1 chỗ, lợi mọi print/màn + data CŨ): `balanceDollars` trong `buildLines` — đếm `$` đơn không-escape, LẺ → thêm 1 `$` đóng ở cuối. KHÔNG dùng lookbehind (Safari <16.4 ném SyntaxError), đếm thủ công `s[i-1] !== '\'`.
+
+tsc sạch + build pass. ⏳ chưa soi PDF bằng mắt (bản in paged.js).
+
+## 07-03 (phiên 3) — FIX bug §234: KHO hiện "0/50" + 0% dù đã có mấy chục câu (mig 0062)
+
+**Triệu chứng:** chuyên đề "Bất đẳng thức một biến" (090801, K9) — mọi dạng GTLN-GTNN hiện **0/50 + 0%** dù kho có mấy chục câu.
+
+**Điều tra (soi data thật, §234/§371 — soi TRƯỚC khi sửa):**
+- Data ĐÚNG: `09080101`=44 câu, `09080102`=33, `09080105`=28; `dang_chinh` khớp `ma_dang`, không orphan. Tổng kho ~2900 câu.
+- RLS `dai_cau_hoi_member_all` = `la_thanh_vien()` **STABLE + no-arg → eval 1 LẦN/query** (không per-row) → KHÔNG timeout, KHÔNG throw.
+- Thẻ dạng vẫn render (list dai_ban_do OK) ⇒ `countCauByDang` chạy XONG mà thiếu key ⇒ không phải lỗi throw/RLS.
+- **Kết luận:** `countCauByDang` cũ = `select dang_chinh from dai_cau_hoi limit 10000` rồi group ở CLIENT. PostgREST **cap max-rows (~1000)** → `.limit(10000)` bị clamp → chỉ thấy ~1000 câu đầu heap; câu GTLN mới thêm (cuối heap) RỚT → đếm 0. Handoff §234 đoán đúng hướng ("đếm cụt") nhưng ngưỡng KHÔNG phải 10000 mà là cap SERVER < tổng câu.
+
+**Fix (mig 0062 + api.ts):** đếm Ở POSTGRES.
+- RPC `count_cau_by_dang(p_tbl)` `returns jsonb` (1 DÒNG `{ma_dang:n}` — miễn nhiễm cap dòng dù bao nhiêu dạng), `stable security definer`, guard `la_thanh_vien()` + whitelist bảng (`dai_cau_hoi`/`khtn_cau_hoi`), grant authenticated.
+- `countCauByDang`/`countCauByDangKhtn` (api.ts) gọi RPC thay vì fetch-all-group-client. % (PctRing/PctBadge) tự đúng theo (cùng nguồn `counts`).
+- Verify GROUP BY: 109 dạng, `09080101`=44 ✓. Guard chặn non-member ✓. tsc+build+schema pass. ĐÃ áp DB cloud.
+
+**Bài học:** đếm/tổng hợp toàn bảng KHÔNG được fetch-all rồi group client (PostgREST cap max-rows cắt âm thầm → sai KHÔNG lỗi). Dùng aggregate Postgres trả **jsonb 1 dòng** (không chỉ GROUP BY nhiều dòng — kết quả nhiều dòng cũng dính cap). Cùng pattern cho mọi chỗ "đếm theo nhóm toàn bảng".
+
+## 07-03 (phiên 4) — "Việc của tôi": gom việc THEO NGÀY (mỗi ngày 1 hàng)
+
+**Vấn đề (Thùy):** phần Vận hành đổ MỌI việc vào 1 lưới `auto-fill minmax(230px)` → ô vuông tràn ngang, khó nắm việc nào của ngày nào.
+
+**Fix (NhanSuHome.tsx + tuan.ts):**
+- `tuan.ts`: thêm `thuCuaNgay(ngay)` (Thứ 2…CN, dùng ymdToUTC+getUTCDay → không lệch tz) + export `ddmmVN`.
+- `NhanSuHome`: component `DayRow` = đầu hàng thanh-màu-kẻ-dọc (design §259) `Thứ X · dd/mm` + badge "Hôm nay" (hôm nay tô indigo) + đếm việc; body = lưới card của ngày đó. Gom `opsActive`+`taskActive` vào `dayMap` theo `ngay`, sort ngày tăng dần. Thay lưới phẳng bằng `flex-col` các DayRow. Ngày rỗng tự ẩn.
+- Card việc + OpsBuoiCard GIỮ NGUYÊN (chỉ đổi cách xếp). Mục "Đã xong" (details, thu sẵn) giữ lưới cũ.
+- tsc + build pass. Mockup visualize duyệt hướng trước (đúng quy ước §368).
+
+## 07-03 (phiên 5) — Kho tài liệu: nút "⬇ Tải PDF" (tải thẳng file, không qua hộp thoại in)
+
+**Yêu cầu (Thùy):** ngoài "in PDF" (window.print → hộp thoại), muốn nút bấm là tải file PDF về máy luôn.
+
+**Bối cảnh:** window.print KHÔNG tự tải file được (trình duyệt bắt buộc qua hộp thoại in). Muốn file .pdf tải thẳng → phải DỰNG PDF từ các trang paged.js đã render.
+
+**Fix (PrintView.tsx + ETPrintView.tsx):**
+- Thêm dep `jspdf` + `html2canvas-pro` (bản CHỊU oklch Tailwind v4 — html2canvas gốc ném lỗi, §367). **Lazy-import** trong hàm tải → không phình bundle chính (thành chunk riêng).
+- `downloadPagesPdf(dst, filename)` (export ở PrintView, ET tái dùng): duyệt `.pagedjs_page` trong container preview → html2canvas-pro scale 2 mỗi trang → jsPDF addImage A4 (210×297) → `.save()`. `safeFileName` bỏ ký tự cấm Windows.
+- Nút "⬇ Tải PDF" cạnh "🖨 In" trong toolbar cả 2 preview. Tên file = tên tài liệu + " - Bản GV"/scope. Có trạng thái "⏳ Đang tạo…" + báo lỗi.
+- Luồng: Kho tài liệu → 🖨 In (mở preview) → ⬇ Tải PDF (tải thẳng).
+- tsc + build pass. ⚠ CHƯA test tải thật bằng mắt (fidelity wave header/KaTeX khi rasterize — cần soi file PDF ra).
+
+**Lưu ý:** PDF này = RASTER (ảnh mỗi trang, chữ không select được) — đổi lại tải 1 bấm không hộp thoại. Bản in vector chuẩn vẫn ở nút 🖨 In. Nếu muốn tải THẲNG từ HÀNG bảng (không mở preview) = làm sau (cần render paged.js ẩn).
+
+## 07-03 (phiên 6) — Kho tài liệu: nút "⬇ Tải PDF" NGAY Ở HÀNG (headless, không mở preview)
+
+**Yêu cầu (Thùy):** nút tải cạnh nút In ngay trong bảng Kho tài liệu — bấm 1 phát tải luôn, không cần mở preview.
+
+**Fix (PrintView/ETPrintView + KhoTaiLieuScreen):**
+- PrintView & ETPrintView: thêm prop `headless`. Khi bật → KHÔNG render preview, chỉ 1 overlay "⏳ Đang tạo file PDF" + dựng trang paged.js NGOÀI màn hình (`position:absolute;left:-99999px` nhưng vẫn có layout để paged.js đo + html2canvas chụp). Effect tự tải: khi `rendering=false` ổn định (chờ 350ms phòng render 2-pass của BTVN/giáo-trình-buổi khi lopTen load muộn) → `taiPdf()` → `onClose()`. Ref `didAutoDl` chặn tải 2 lần. TÁI DÙNG toàn bộ pipeline render sẵn (scope/gv/ET_CSS/header lớp-ngày) → không lệch bản In.
+- KhoTaiLieuScreen: nút "⬇ Tải PDF" cạnh "🖨 In" mỗi hàng → set `dlDoc` → mount PrintView/ETPrintView `headless`. Tải xong tự đóng.
+- Bản HS mặc định (như nút In). Muốn Bản GV → vẫn mở In → ⬇ Tải PDF trong preview.
+- jspdf/html2canvas-pro = chunk LAZY riêng (391/246KB, chỉ nạp khi tải) — bundle chính không đổi. tsc+build pass.
+- ⚠ CHƯA soi file PDF thật (rasterize wave header/KaTeX) — cần tải thử xác nhận.
+
+## 07-03 (phiên 7) — FIX PDF gen lỗi header (wave/logo) + trang trắng (Thùy báo có ảnh)
+
+**Triệu chứng (ảnh Thùy):** file PDF tải ra — header dải sóng + logo lỗi (chữ Lớp·ngày mờ = nền wave không ra), trang đầu trắng, header MẤT ở mọi trang sau.
+
+**Chẩn:** đúng điểm yếu html2canvas (§367): **background NHIỀU LỚP trên `::before/::after`** (logo+chip+wave data-URI) rasterize không nổi → header trắng → chữ trắng thành mờ. Trang trắng nghi font chưa sẵn khi chụp + render ngoài `-99999px`.
+
+**Fix (PrintView.tsx + ETPrintView.tsx):**
+- Tách `pageChrome(taiLieu, ch, opts)` (export) = nguồn header/footer (headUri/footUri/logoUrl/chipUri/text) DÙNG CHUNG; `buildPagedCss` dùng lại (paged pseudo-element giữ nguyên cho bản In vector).
+- `downloadPagesPdf(dst, filename, chrome?)`: html2canvas `onclone` → (a) tắt `::before/::after` (`content:none`), (b) chèn header/footer bằng PHẦN TỬ THẬT: `<img>` logo + `<img>` chip + 1 background wave ĐƠN + `<span>` text. Phần tử thật/ảnh thật → html2canvas chụp chuẩn. insertBefore(firstChild) để số trang (@bottom-right) vẫn nổi trên.
+- Chờ `document.fonts.ready` + preload logo TRƯỚC khi chụp (chống trang trắng chữ).
+- Headless render: đưa trang dựng ON-SCREEN (fixed top-left) SAU lớp phủ ĐỤC trắng (thay vì left:-99999px) → html2canvas ổn định hơn.
+- `taiPdf` (cả 2) build chrome khớp header render (BTVN/GT-buổi = Lớp·ngày·footer liên hệ).
+- tsc+build pass. ⏳ CHƯA verify mắt — Thùy tải thử lại (giáo trình + BTVN + ET).

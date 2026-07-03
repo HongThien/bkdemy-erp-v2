@@ -821,13 +821,12 @@ export function parseTheoryIngest(text: string): TheoryIngest {
   return { noiDung: String(obj.noi_dung ?? obj.noiDung ?? '').trim(), hinh }
 }
 
-// #câu treo theo dạng (tạm group ở client; TODO: chuyển sang view Postgres khi có data lớn)
+// #câu theo dạng — ĐẾM Ở POSTGRES (RPC count_cau_by_dang, mig 0062, trả 1 dòng jsonb).
+// KHÔNG group ở client nữa: fetch mọi câu bị PostgREST cap max-rows (~1000) → kho >1000 câu đếm CỤT → thẻ "0/50".
 export async function countCauByDang(): Promise<Record<string, number>> {
-  const { data, error } = await supabase.from('dai_cau_hoi').select('dang_chinh').limit(LIMIT)
+  const { data, error } = await supabase.rpc('count_cau_by_dang', { p_tbl: 'dai_cau_hoi' })
   if (error) throw error
-  const m: Record<string, number> = {}
-  for (const r of data ?? []) m[r.dang_chinh] = (m[r.dang_chinh] ?? 0) + 1
-  return m
+  return (data ?? {}) as Record<string, number>
 }
 
 // ── CRUD dạng ────────────────────────────────────────────────────
@@ -1130,9 +1129,9 @@ export async function renameKhtnChuyenDe(maChuyenDe: string, ten: string): Promi
   const { error } = await supabase.from('khtn_ban_do').update({ ten_chuyen_de: ten }).eq('ma_chuyen_de', maChuyenDe); if (error) throw error
 }
 export async function countCauByDangKhtn(): Promise<Record<string, number>> {
-  const { data, error } = await supabase.from('khtn_cau_hoi').select('dang_chinh').limit(LIMIT)
+  const { data, error } = await supabase.rpc('count_cau_by_dang', { p_tbl: 'khtn_cau_hoi' })
   if (error) throw error
-  const m: Record<string, number> = {}; for (const r of data ?? []) m[(r as any).dang_chinh] = (m[(r as any).dang_chinh] ?? 0) + 1; return m
+  return (data ?? {}) as Record<string, number>
 }
 export async function listKhtnLyThuyet(): Promise<Record<string, LyThuyet>> {
   const { data, error } = await supabase.from('khtn_dang_ly_thuyet').select('*').limit(LIMIT); if (error) throw error

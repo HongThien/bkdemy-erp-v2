@@ -59,7 +59,16 @@ function renderText(s: string): string {
 // Nhãn đầu dòng (Ví dụ, Quy tắc, Lưu ý…) → tự bọc **…** để IN ĐẬM.
 const LABEL_RE = /^(\s*)(Ví dụ|VD|Quy tắc|Lưu ý|Chú ý|Nhận xét|Định nghĩa|Định lí|Định lý|Tính chất|Hệ quả|Ghi nhớ|Phương pháp|Bài toán|Mẹo|Dấu hiệu|Cách giải|Kết luận|Bước \d+)(\s*\d*)(\s*[:.])/u
 const autoBold = (line: string) => line.replace(LABEL_RE, (_m, sp: string, kw: string, num: string, p: string) => `${sp}**${kw}${num}${p}**`)
-function buildLines(raw: string): string[] {
+// Lưới an toàn: AI (nhất là CLONE) hay QUÊN dấu $ đóng ở cuối dòng cuối → $ mở lẻ làm công thức cuối VỠ.
+// Đếm $ đơn KHÔNG escape (bỏ qua "\$"): nếu LẺ → thêm 1 $ đóng ở cuối để cặp lại. ($$…$$ luôn chẵn nên vô hại.)
+// (Không dùng lookbehind regex vì Safari cũ <16.4 ném SyntaxError lúc parse module.)
+function balanceDollars(s: string): string {
+  let n = 0
+  for (let i = 0; i < s.length; i++) if (s[i] === '$' && s[i - 1] !== '\\') n++
+  return n % 2 ? s + '$' : s
+}
+function buildLines(rawIn: string): string[] {
+  const raw = balanceDollars(rawIn)
   const lines: string[] = ['']
   const pushText = (txt: string) => {
     const t = uni(txt.replace(/<br\s*\/?>/gi, '\n'))        // <br> → xuống dòng; ký hiệu trần → Unicode

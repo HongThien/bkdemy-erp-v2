@@ -2,7 +2,7 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-63 bảng · 0 enum · 3 trigger · 8 function
+63 bảng · 0 enum · 3 trigger · 9 function
 
 ## bang_khong_bu
 
@@ -802,6 +802,7 @@
 
 ## Functions
 
+- `count_cau_by_dang(p_tbl text)` → jsonb
 - `jwt_email()` → text
 - `jwt_uid()` → uuid
 - `la_thanh_vien()` → boolean

@@ -5,17 +5,21 @@ import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
 import { getTaiLieuFull, etFormOf, type TaiLieuFull } from '../../lib/tailieu'
+import type { CauHoi } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
-import { CauItem, OptGrid, splitStem, CHROME_CSS, buildPagedCss } from './PrintView'
+import { CauItem, OptGrid, GvAnswer, splitStem, CHROME_CSS, buildPagedCss, downloadPagesPdf, pageChrome } from './PrintView'
 
 const DEFAULT_TL_LINES = 4
 
-export default function ETPrintView({ id, onClose }: { id: string; onClose: () => void }) {
+// headless = tự dựng ẩn → tải PDF → đóng (nút "⬇ Tải" ngay ở hàng Kho tài liệu, không mở preview).
+export default function ETPrintView({ id, onClose, headless }: { id: string; onClose: () => void; headless?: boolean }) {
   const [full, setFull] = useState<TaiLieuFull | null>(null)
   const [err, setErr] = useState<string | null>(null)
   const [gv, setGv] = useState(false)
   const [pages, setPages] = useState(0)
   const [rendering, setRendering] = useState(true)
+  const [dl, setDl] = useState(false)
+  const [dlErr, setDlErr] = useState<string | null>(null)
   const srcRef = useRef<HTMLDivElement>(null)
   const dstRef = useRef<HTMLDivElement>(null)
   useEffect(() => { getTaiLieuFull(id).then(setFull).catch((e) => setErr(e.message ?? String(e))) }, [id])
@@ -44,6 +48,35 @@ export default function ETPrintView({ id, onClose }: { id: string; onClose: () =
   }, [full, gv])
 
   const seg = (on: boolean) => `rounded-md px-3 py-1 text-[13px] font-medium transition ${on ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`
+  async function taiPdf() {
+    if (!dstRef.current || !full) return
+    setDl(true); setDlErr(null)
+    try { await downloadPagesPdf(dstRef.current, `${full.taiLieu.ten}${gv ? ' - Bản GV' : ''}`, pageChrome(full.taiLieu, full.taiLieu.cau_hinh ?? {})) }
+    catch (e) { setDlErr('Tải PDF lỗi: ' + (e instanceof Error ? e.message : String(e))) }
+    finally { setDl(false) }
+  }
+
+  const didAutoDl = useRef(false)
+  useEffect(() => {
+    if (!headless || didAutoDl.current || rendering || !full || !dstRef.current) return
+    const t = setTimeout(() => { if (!didAutoDl.current) { didAutoDl.current = true; taiPdf().finally(onClose) } }, 350)
+    return () => clearTimeout(t)
+  }, [headless, rendering, full]) // eslint-disable-line
+
+  if (headless) return createPortal(
+    <>
+      <div style={{ position: 'fixed', top: 0, left: 0, zIndex: 88, width: '210mm', background: '#fff' }}><div ref={dstRef} className="pv-pages" /></div>
+      <div ref={srcRef} className="pv-src" aria-hidden>{full && <ETDoc full={full} gv={gv} />}</div>
+      <div className="fixed inset-0 z-[95] flex items-center justify-center bg-white">
+        <div className="rounded-xl border border-slate-200 bg-white px-6 py-4 text-sm font-medium text-slate-700 shadow-xl">
+          {dlErr ? <span className="text-rose-600">{dlErr}</span> : <>⏳ Đang tạo file PDF{pages ? ` (${pages} trang)` : ''}…</>}
+          {dlErr && <button onClick={onClose} className="ml-3 rounded border border-slate-300 px-2.5 py-1 text-xs text-slate-600">Đóng</button>}
+        </div>
+      </div>
+      <style>{CHROME_CSS}</style>
+    </>,
+    document.body,
+  )
   return createPortal(
     <div className="pv-overlay fixed inset-0 z-[80] flex flex-col bg-slate-300/90">
       <div className="no-print flex items-center gap-3 border-b border-slate-300 bg-white px-5 py-2.5 shadow-sm">
@@ -53,8 +86,10 @@ export default function ETPrintView({ id, onClose }: { id: string; onClose: () =
           <button onClick={() => setGv(true)} className={seg(gv)}>Bản giáo viên</button>
         </div>
         <span className="text-[12px] text-slate-400">{rendering ? 'đang dựng trang…' : `${pages} trang`}</span>
+        {dlErr && <span className="text-[12px] text-rose-600">{dlErr}</span>}
         <div className="ml-auto flex gap-2">
-          <button onClick={() => window.print()} disabled={rendering} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">🖨 In / Lưu PDF</button>
+          <button onClick={taiPdf} disabled={rendering || dl} className="rounded-md border border-indigo-300 bg-white px-3 py-1.5 text-sm font-medium text-indigo-700 shadow-sm hover:bg-indigo-50 disabled:opacity-40">{dl ? '⏳ Đang tạo…' : '⬇ Tải PDF'}</button>
+          <button onClick={() => window.print()} disabled={rendering} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">🖨 In</button>
           <button onClick={onClose} className="rounded-md border border-slate-300 px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-100">Đóng</button>
         </div>
       </div>
@@ -75,9 +110,11 @@ function ETDoc({ full, gv }: { full: TaiLieuFull; gv: boolean }) {
   const lines = ch.btvnLinesByCau ?? {}
   const caus = full.phans.find((p) => p.loai_phan === 'custom')?.caus ?? []
   // gom theo FORM HIỂN THỊ đã chọn trong ET (etFormOf), KHÔNG theo loai_cau kho.
-  const tn = caus.filter((c) => etFormOf(c, ch) === 'trac_nghiem')
-  const tln = caus.filter((c) => etFormOf(c, ch) === 'tra_loi_ngan')
-  const tl = caus.filter((c) => etFormOf(c, ch) === 'tu_luan')
+  // Câu Đúng/Sai (menh_de) → luôn đi nhánh CauItem (render đề chung + 4 mệnh đề); bảng trả-lời-ngắn không hiển thị nổi.
+  const isDS = (c: CauHoi) => !!(c.menh_de && c.menh_de.length)
+  const tn = caus.filter((c) => isDS(c) || etFormOf(c, ch) === 'trac_nghiem')
+  const tln = caus.filter((c) => !isDS(c) && etFormOf(c, ch) === 'tra_loi_ngan')
+  const tl = caus.filter((c) => !isDS(c) && etFormOf(c, ch) === 'tu_luan')
   let no = 0
   const next = () => ++no
   const roman = ['I', 'II', 'III', 'IV']
@@ -119,7 +156,14 @@ function ETDoc({ full, gv }: { full: TaiLieuFull; gv: boolean }) {
             return (
               <tr key={c.ma_cau}>
                 <td className="q"><div className="pv-math"><MathText prefix={`<span class="pv-cau-no">Câu ${next()}.</span> `}>{stem}</MathText></div>{grid && <OptGrid grid={grid} emb={emb} />}</td>
-                <td className="a">{gv && c.dap_an ? <MathText>{c.dap_an}</MathText> : ''}</td>
+                {/* Bản GV = đáp án + LỜI GIẢI chi tiết (không chỉ đáp án ngắn) */}
+                <td className="a">{gv && (c.dap_an || c.loi_giai || c.anh_dap_an) ? (
+                  <div className="pv-et-ans">
+                    {c.dap_an && <div><b>Đáp án:</b> <MathText>{c.dap_an}</MathText></div>}
+                    {c.loi_giai && <div className="pv-et-giai"><b>Lời giải:</b> <MathText>{c.loi_giai}</MathText></div>}
+                    {c.anh_dap_an && <img src={c.anh_dap_an} alt="" className="pv-img" />}
+                  </div>
+                ) : ''}</td>
               </tr>
             )
           })}</tbody></table>
@@ -136,8 +180,8 @@ function ETDoc({ full, gv }: { full: TaiLieuFull; gv: boolean }) {
                 <div className="pv-math"><MathText prefix={`<span class="pv-cau-no">Câu ${next()}.</span> `}>{stem}</MathText></div>
                 {grid && <OptGrid grid={grid} emb={emb} />}
                 {c.anh_de && <img src={c.anh_de} alt="" className="pv-img" />}
-                {gv && (c.dap_an || c.loi_giai)
-                  ? <div className="pv-loigiai">{c.dap_an && <div><b>Đáp án:</b> <MathText>{c.dap_an}</MathText></div>}{c.loi_giai && <div><b>Lời giải:</b> <MathText>{c.loi_giai}</MathText></div>}</div>
+                {gv
+                  ? <GvAnswer c={c} />
                   : grid ? null : <div className="pv-write">{Array.from({ length: lines[c.ma_cau] ?? DEFAULT_TL_LINES }).map((_, k) => <div key={k} className="pv-wline" />)}</div>}
               </li>
             )
@@ -164,6 +208,9 @@ const ET_CSS = `
 .pv-et-tn td{border:1px solid #cbd2d8;padding:8px 10px;vertical-align:top;font-size:15px}
 .pv-et-tn td.q{width:66%}
 .pv-et-tn td.a{width:34%;min-height:11mm}
+/* Bản GV: ô đáp án chứa đáp án + lời giải chi tiết (font hơi nhỏ để gọn trong cột 34%). */
+.pv-et-ans{font-size:13.5px;line-height:1.5}
+.pv-et-giai{margin-top:3px;color:#334155}
 .pv-empty{color:#8a9097;font-style:italic;margin-top:10px}
 /* Heading "Phần …" KHÔNG gạch chân (gạch trông như dòng kẻ lạc — đã sửa ở BTVN hôm trước). */
 .pv-et .pv-h-dang{border-bottom:none;padding-bottom:0;margin-bottom:6px}

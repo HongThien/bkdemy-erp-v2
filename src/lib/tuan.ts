@@ -17,6 +17,10 @@ export function khoangTuan(tuan: number): { tu: string; den: string } {
   return { tu: utcToYmd(start), den: utcToYmd(start + 6 * DAY) }
 }
 const ddmm = (s: string) => { const [, m, d] = s.split('-'); return `${d}/${m}` }
+export const ddmmVN = ddmm
+// Thứ trong tuần của 'YYYY-MM-DD' (getUTCDay: 0=CN … 6=T7) — dùng ymdToUTC nên KHÔNG lệch tz.
+const THU = ['Chủ nhật', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7']
+export function thuCuaNgay(ngay: string): string { return THU[new Date(ymdToUTC(ngay)).getUTCDay()] }
 export function nhanTuan(tuan: number): string {
   const { tu, den } = khoangTuan(tuan)
   return `${tuan <= 0 ? 'Tuần khởi động' : `Tuần ${tuan}`} (${ddmm(tu)}–${ddmm(den)})`

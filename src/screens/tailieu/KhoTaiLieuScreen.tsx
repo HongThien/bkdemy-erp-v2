@@ -28,6 +28,7 @@ export default function KhoTaiLieuScreen() {
   const laAdmin = !!useStore((s) => s.quyen)?.laAdmin
   const myMons = me?.mons ?? []
   const [print, setPrint] = useState<{ id: string; loai: string } | null>(null)
+  const [dlDoc, setDlDoc] = useState<{ id: string; loai: string } | null>(null)
   const [editEt, setEditEt] = useState<ETView | null>(null) // sửa ET tại chỗ (mở ETEditor)
   const [editGt, setEditGt] = useState<string | null>(null) // sửa giáo trình/BTVN (mở TaiLieuBuilder)
   const lopTen = (id?: string | null) => lops.find((l) => l.id === id)?.ten_lop ?? '?'
@@ -118,6 +119,7 @@ export default function KhoTaiLieuScreen() {
                         <div className="flex justify-end gap-1.5">
                           {EDITABLE.has(r.loai) && <button onClick={() => sua(r)} className="rounded-md border border-slate-200 px-2.5 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-300">✎ Sửa</button>}
                           <button onClick={() => setPrint({ id: r.id, loai: r.loai })} className="rounded-md bg-indigo-600 px-2.5 py-1 text-[12px] font-medium text-white hover:bg-indigo-500">🖨 In</button>
+                          <button onClick={() => setDlDoc({ id: r.id, loai: r.loai })} className="rounded-md border border-indigo-300 px-2.5 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-50">⬇ Tải PDF</button>
                           <button onClick={() => nhanBan(r)} className="rounded-md border border-slate-200 px-2.5 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-300">Nhân bản</button>
                           <button onClick={async () => { if (confirm(`Xoá “${r.ten}”?`)) { await deleteTaiLieu(r.id); reload() } }} className="rounded-md border border-slate-200 px-2.5 py-1 text-[12px] text-slate-400 hover:border-rose-300 hover:text-rose-600">Xoá</button>
                         </div>
@@ -133,6 +135,11 @@ export default function KhoTaiLieuScreen() {
       {print && (print.loai === 'et'
         ? <ETPrintView id={print.id} onClose={() => setPrint(null)} />
         : <PrintView id={print.id} onClose={() => setPrint(null)} />)}
+
+      {/* Tải PDF THẲNG từ hàng (headless: dựng ẩn → tải → tự đóng), không mở preview. */}
+      {dlDoc && (dlDoc.loai === 'et'
+        ? <ETPrintView id={dlDoc.id} headless onClose={() => setDlDoc(null)} />
+        : <PrintView id={dlDoc.id} headless onClose={() => setDlDoc(null)} />)}
     </div>
   )
 }

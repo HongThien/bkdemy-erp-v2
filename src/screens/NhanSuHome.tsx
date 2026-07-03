@@ -3,7 +3,7 @@ import type { User } from '../types'
 import { useStore, staffNavFromScope, adminNavFromQuyen } from '../store/useStore'
 import { getMyScope, type MyScope } from '../lib/nhansu'
 import { getMyTasks, buoiAoCuaKhoang, moBuoi, diemDanhTienDo, type MyTask, type BuoiAo, type TabKey } from '../lib/gami'
-import { homNayVN, tuanCuaNgay, khoangTuan, nhanTuan, mucDeadline, nhanConLai, type DeadlineMuc } from '../lib/tuan'
+import { homNayVN, tuanCuaNgay, khoangTuan, nhanTuan, mucDeadline, nhanConLai, thuCuaNgay, ddmmVN, type DeadlineMuc } from '../lib/tuan'
 import { BuoiDetail } from './gami/BuoiHocScreen'
 import { BuoiBuDetail } from './botro/BoTroScreen'
 import PersonalCard from '../components/PersonalCard'
@@ -118,6 +118,20 @@ function OpsBuoiCard({ ba, ngay, td, done, onOpen }: { ba: BuoiAo; ngay: string;
   )
 }
 
+// 1 HÀNG = việc của 1 NGÀY (Thùy: dễ nhìn hơn lưới ô vuông tràn ngang). Đầu hàng = thanh màu + kẻ dọc (design §259).
+function DayRow({ ngay, today, count, children }: { ngay: string; today: boolean; count: number; children: React.ReactNode }) {
+  return (
+    <div>
+      <div className={`mb-2 flex items-center gap-2 border-l-4 pl-2.5 ${today ? 'border-indigo-500' : 'border-slate-300'}`}>
+        <span className="text-[15px] font-semibold text-slate-800">{thuCuaNgay(ngay)}</span>
+        <span className="text-[13px] text-slate-500">{ddmmVN(ngay)}</span>
+        {today && <span className="rounded-full bg-indigo-50 px-2 py-0.5 text-[11px] font-medium text-indigo-600">Hôm nay</span>}
+        <span className="ml-auto text-[12px] font-medium text-slate-400">{count} việc</span>
+      </div>
+      <div className="grid gap-2.5 [grid-template-columns:repeat(auto-fill,minmax(230px,1fr))]">{children}</div>
+    </div>
+  )
+}
 function TaskCard({ t, now, done, onOpenBuoi }: { t: MyTask; now: number; done?: boolean; onOpenBuoi: (o: OpenBuoi) => void }) {
   const st = TASK_STYLE[t.tab]
   const base = done ? 'border-l-emerald-500 bg-emerald-50' : `${st.accent} bg-white`
@@ -186,6 +200,13 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
   const satHan = taskActive.filter((t) => mucDeadline(t.deadline, now) === 'sat').length
   const daXongTuan = opsDone.length + weekTasks.filter((t) => t.done).length
 
+  // Gom việc ĐANG cần làm theo NGÀY → mỗi ngày 1 hàng (dễ nhìn hơn lưới tràn ngang). Sắp ngày tăng dần.
+  const homNay = homNayVN()
+  const dayMap = new Map<string, { ops: typeof opsActive; tasks: typeof taskActive }>()
+  for (const ba of opsActive) { const g = dayMap.get(ba.ngay) ?? { ops: [], tasks: [] }; g.ops.push(ba); dayMap.set(ba.ngay, g) }
+  for (const t of taskActive) { const g = dayMap.get(t.ngay) ?? { ops: [], tasks: [] }; g.tasks.push(t); dayMap.set(t.ngay, g) }
+  const dayGroups = [...dayMap.entries()].sort((a, b) => a[0].localeCompare(b[0]))
+
   return (
     <div className="mx-auto max-w-[1600px]">
       {/* Header + điều hướng tuần */}
@@ -219,9 +240,13 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
           {!hasActive ? (
             <div className="rounded-lg border border-emerald-200 bg-emerald-50/60 px-4 py-3 text-[13px] font-medium text-emerald-700">✓ Không còn việc vận hành cần làm trong {nhanTuan(tuan).toLowerCase()}.</div>
           ) : (
-            <div className="grid gap-2.5 [grid-template-columns:repeat(auto-fill,minmax(230px,1fr))]">
-              {opsActive.map((ba) => <OpsBuoiCard key={ba.lop.id + ba.ngay} ba={ba} ngay={ba.ngay} td={ba.buoi ? tienDo[ba.buoi.id] : undefined} onOpen={onOpenBuoi} />)}
-              {taskActive.map((t) => <TaskCard key={t.buoiId + t.tab} t={t} now={now} onOpenBuoi={onOpenBuoi} />)}
+            <div className="flex flex-col gap-4">
+              {dayGroups.map(([ngay, g]) => (
+                <DayRow key={ngay} ngay={ngay} today={ngay === homNay} count={g.ops.length + g.tasks.length}>
+                  {g.ops.map((ba) => <OpsBuoiCard key={ba.lop.id + ba.ngay} ba={ba} ngay={ba.ngay} td={ba.buoi ? tienDo[ba.buoi.id] : undefined} onOpen={onOpenBuoi} />)}
+                  {g.tasks.map((t) => <TaskCard key={t.buoiId + t.tab} t={t} now={now} onOpenBuoi={onOpenBuoi} />)}
+                </DayRow>
+              ))}
             </div>
           )}
 
