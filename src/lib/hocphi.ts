@@ -340,3 +340,28 @@ export async function listHoaDonByKy(ky: string): Promise<{ phu_huynh_id: string
   if (error) throw error
   return (data ?? []) as any[]
 }
+
+// ── DANH SÁCH TỔNG (bulk, cho màn quản lý + xuất ảnh/PDF thông báo PH) ──────
+// Nhẹ: dùng hoa_don đã chốt cho tiền (không tính lại phiếu ảo cho CẢ danh sách — tốn N+1 nếu 300 PH).
+// PH chưa chốt hiện "chưa chốt" — muốn xem/tải phiếu of PH đó thì bấm vào (tính ảo on-demand qua getPhieuAo).
+export type DongSoHang = { phu_huynh_id: string; ho_ten: string; ma_ph: string; soCon: number; daChot: boolean; tongTien: number | null; trangThai: string | null }
+export async function listPhieuTheoKy(ky: string): Promise<DongSoHang[]> {
+  const [phs, hds] = await Promise.all([listPhuHuynhCoConDangHoc(), listHoaDonByKy(ky)])
+  const hdMap = new Map(hds.map((h) => [h.phu_huynh_id, h]))
+  return phs.map((p) => {
+    const hd = hdMap.get(p.id)
+    return { phu_huynh_id: p.id, ho_ten: p.ho_ten, ma_ph: p.ma_ph, soCon: p.soCon, daChot: !!hd, tongTien: hd ? Number(hd.tong_tien) : null, trangThai: hd?.trang_thai ?? null }
+  })
+}
+
+// Dữ liệu ĐỦ cho 1 phiếu thông báo (ảnh/PDF gửi PH) — dùng chốt nếu có, ảo nếu chưa (xem trước).
+export type PhieuThongBao = { phTen: string; maPh: string; ky: string; dong: DongPhieu[]; tongTien: number; daChot: boolean }
+export async function getPhieuThongBao(phuHuynhId: string, phTen: string, maPh: string, ky: string): Promise<PhieuThongBao> {
+  const hd = await getHoaDonByKy(phuHuynhId, ky)
+  if (hd) {
+    const dong = await getHoaDonDong(hd.id)
+    return { phTen, maPh, ky, dong, tongTien: Number(hd.tong_tien), daChot: true }
+  }
+  const ao = await getPhieuAo(phuHuynhId, ky)
+  return { phTen, maPh, ky, dong: ao.dong, tongTien: ao.tongTien, daChot: false }
+}

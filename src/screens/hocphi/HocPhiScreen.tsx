@@ -1,24 +1,25 @@
 // Học phí (staff, Apple-clean §189 — KHÔNG sci-fi). Spec: spec-hocphi.md.
-// 4 tab: Phiếu (chọn PH+kỳ → phiếu ảo/thật, chốt kỳ, thu tiền) · Xét duyệt (người-trong-vòng-lặp,
-// KHÔNG auto-giảm) · Mức học phí · Mức học liệu (config sửa 1 chỗ, đổi hàng loạt lớp).
+// 5 tab: Danh sách (tổng quan mọi PH/kỳ → ảnh/PDF thông báo) · Phiếu (chọn PH+kỳ → phiếu ảo/thật,
+// chốt kỳ, thu tiền) · Xét duyệt (người-trong-vòng-lặp, KHÔNG auto-giảm) · Mức học phí · Mức học liệu.
 import { useEffect, useState } from 'react'
 import {
   listMucHocPhi, createMucHocPhi, deleteMucHocPhi,
   listMucHocLieu, createMucHocLieu, deleteMucHocLieu,
-  listPhuHuynhCoConDangHoc, getPhieuAo, getHoaDonByKy, getHoaDonDong, chotKy, ghiThanhToan, listThanhToan, tinhSoDuNo,
+  listPhuHuynhCoConDangHoc, listPhieuTheoKy, getPhieuAo, getHoaDonByKy, getHoaDonDong, chotKy, ghiThanhToan, listThanhToan, tinhSoDuNo,
   listXetDuyetChoDuyet, duyetXetDuyet, kyHienTai,
-  type MucHocPhi, type MucHocLieu, type PHOpt, type PhieuAo, type XetDuyet, type ThanhToan, type DongPhieu,
+  type MucHocPhi, type MucHocLieu, type PHOpt, type PhieuAo, type XetDuyet, type ThanhToan, type DongPhieu, type DongSoHang,
 } from '../../lib/hocphi'
+import { AnhGuiPHModal, taiPdfPhieu } from './PhieuThongBao'
 import SearchSelect from '../../components/SearchSelect'
 import { inp } from '../kho/ui'
 
 const tienVN = (n: number) => Math.round(n).toLocaleString('vi-VN') + 'đ'
 const LOAI_LABEL: Record<string, string> = { hoc_phi: 'Học phí', hoc_duoi: 'Học đuổi', hoc_lieu: 'Học liệu', phat_sinh: 'Phát sinh', no_ky_truoc: 'Nợ kỳ trước' }
-const TAB = [['phieu', 'Phiếu'], ['xetduyet', 'Xét duyệt'], ['muchocphi', 'Mức học phí'], ['muchoclieu', 'Mức học liệu']] as const
+const TAB = [['danhsach', 'Danh sách'], ['phieu', 'Phiếu'], ['xetduyet', 'Xét duyệt'], ['muchocphi', 'Mức học phí'], ['muchoclieu', 'Mức học liệu']] as const
 type Tab = (typeof TAB)[number][0]
 
 export default function HocPhiScreen() {
-  const [tab, setTab] = useState<Tab>('phieu')
+  const [tab, setTab] = useState<Tab>('danhsach')
   const [soChoDuyet, setSoChoDuyet] = useState(0)
   useEffect(() => { listXetDuyetChoDuyet().then((r) => setSoChoDuyet(r.length)) }, [tab])
   return (
@@ -32,11 +33,85 @@ export default function HocPhiScreen() {
         ))}
       </div>
       <div className="min-h-0 flex-1 overflow-auto p-6">
+        {tab === 'danhsach' && <DanhSachTab />}
         {tab === 'phieu' && <PhieuTab />}
         {tab === 'xetduyet' && <XetDuyetTab onChanged={() => listXetDuyetChoDuyet().then((r) => setSoChoDuyet(r.length))} />}
         {tab === 'muchocphi' && <MucHocPhiTab />}
         {tab === 'muchoclieu' && <MucHocLieuTab />}
       </div>
+    </div>
+  )
+}
+
+// ── TAB DANH SÁCH — tổng quan mọi PH trong kỳ → xuất ảnh/PDF thông báo (per-PH, KHÔNG gộp) ──
+function DanhSachTab() {
+  const [ky, setKy] = useState(kyHienTai())
+  const [rows, setRows] = useState<DongSoHang[]>([])
+  const [loading, setLoading] = useState(true)
+  const [anh, setAnh] = useState<{ id: string; ten: string; ma: string } | null>(null)
+  const [dlId, setDlId] = useState<string | null>(null)
+  const [bulkDl, setBulkDl] = useState<{ done: number; total: number } | null>(null)
+
+  async function reload() { setLoading(true); try { setRows(await listPhieuTheoKy(ky)) } finally { setLoading(false) } }
+  useEffect(() => { reload() }, [ky]) // eslint-disable-line
+
+  async function taiMot(r: DongSoHang) {
+    setDlId(r.phu_huynh_id)
+    try { await taiPdfPhieu(r.phu_huynh_id, r.ho_ten, r.ma_ph, ky) } finally { setDlId(null) }
+  }
+  async function taiTatCa() {
+    if (!confirm(`Tải PDF riêng cho ${rows.length} phụ huynh? (mỗi PH 1 file, không gộp)`)) return
+    setBulkDl({ done: 0, total: rows.length })
+    for (let i = 0; i < rows.length; i++) {
+      await taiPdfPhieu(rows[i].phu_huynh_id, rows[i].ho_ten, rows[i].ma_ph, ky)
+      setBulkDl({ done: i + 1, total: rows.length })
+    }
+    setBulkDl(null)
+  }
+  const soDaChot = rows.filter((r) => r.daChot).length
+  const tongDaChot = rows.filter((r) => r.daChot).reduce((s, r) => s + (r.tongTien ?? 0), 0)
+
+  return (
+    <div className="mx-auto max-w-[900px]">
+      <div className="mb-3 flex flex-wrap items-center gap-3 rounded-xl border border-slate-200 bg-white p-4">
+        <input type="month" value={ky.slice(0, 7)} onChange={(e) => setKy(e.target.value + '-01')} className={`${inp} w-40`} />
+        <span className="text-[12px] text-slate-400">{rows.length} PH · {soDaChot} đã chốt · tổng đã chốt {tienVN(tongDaChot)}</span>
+        <button onClick={taiTatCa} disabled={!rows.length || !!bulkDl} className="ml-auto rounded-lg border border-indigo-300 bg-indigo-50 px-3 py-1.5 text-[12px] font-medium text-indigo-700 hover:bg-indigo-100 disabled:opacity-40">
+          {bulkDl ? `⏳ Đang tải ${bulkDl.done}/${bulkDl.total}…` : '⬇ Tải PDF tất cả (mỗi PH 1 file)'}
+        </button>
+      </div>
+      {loading ? <p className="py-8 text-center text-sm text-slate-400">Đang tải…</p>
+        : !rows.length ? <div className="rounded-xl border border-dashed border-slate-300 bg-white py-14 text-center text-sm text-slate-400">Chưa có phụ huynh nào có con đang học.</div>
+        : (
+          <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
+            <table className="w-full text-[13px]">
+              <thead className="bg-slate-50 text-left text-[11px] uppercase tracking-wide text-slate-400">
+                <tr><th className="px-4 py-2">Phụ huynh</th><th>Số con</th><th>Trạng thái</th><th className="text-right">Tổng tiền</th><th className="text-right px-4">Thao tác</th></tr>
+              </thead>
+              <tbody>
+                {rows.map((r) => (
+                  <tr key={r.phu_huynh_id} className="border-t border-slate-100">
+                    <td className="px-4 py-2 font-medium text-slate-800">{r.ho_ten} <span className="font-mono text-[11px] text-slate-400">{r.ma_ph}</span></td>
+                    <td className="text-slate-500">{r.soCon}</td>
+                    <td>
+                      {r.daChot
+                        ? <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${r.trangThai === 'da_thu' ? 'bg-emerald-50 text-emerald-700' : r.trangThai === 'thu_mot_phan' ? 'bg-amber-50 text-amber-700' : 'bg-slate-100 text-slate-600'}`}>{{ chua_thu: 'Chưa thu', da_thu: 'Đã thu', thu_mot_phan: 'Thu 1 phần', qua_han: 'Quá hạn', xet_duyet: 'Chờ xét duyệt', mien: 'Miễn' }[r.trangThai ?? ''] ?? r.trangThai}</span>
+                        : <span className="rounded-full bg-indigo-50 px-2 py-0.5 text-[11px] font-medium text-indigo-700">Chưa chốt (tạm tính)</span>}
+                    </td>
+                    <td className="text-right font-medium text-slate-800">{r.tongTien != null ? tienVN(r.tongTien) : '—'}</td>
+                    <td className="px-4 py-2">
+                      <div className="flex justify-end gap-1.5">
+                        <button onClick={() => setAnh({ id: r.phu_huynh_id, ten: r.ho_ten, ma: r.ma_ph })} className="rounded-md border border-slate-200 px-2 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-300">📷 Ảnh</button>
+                        <button disabled={dlId === r.phu_huynh_id} onClick={() => taiMot(r)} className="rounded-md border border-indigo-200 bg-indigo-50 px-2 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-100 disabled:opacity-40">{dlId === r.phu_huynh_id ? '…' : '⬇ PDF'}</button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      {anh && <AnhGuiPHModal phuHuynhId={anh.id} phTen={anh.ten} maPh={anh.ma} ky={ky} onClose={() => setAnh(null)} />}
     </div>
   )
 }
