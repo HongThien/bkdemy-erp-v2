@@ -222,6 +222,8 @@ export async function nopBai(baiLamId: string): Promise<boolean> {
 
 // Nhãn chữ cái A/B/C/D cho vị trí lựa chọn (UI + kho mất nhãn "A." ở phần tử [0]).
 export function chuCaiChon(i: number): string { return LETTERS[i] ?? String(i + 1) }
+// Chiều ngược: chữ cái đáp án đúng (dap_an_key) → chỉ số GỐC trong lua_chon (để so với orig sau khi xáo hiển thị).
+export function chiSoCuaChu(letter: unknown): number { return LETTERS.indexOf(String(letter ?? '').trim().toUpperCase()) }
 
 // ══ REVIEW TRẢ LỜI NGẮN (staff) — spec §7: hệ chấm sai → người duyệt → đúng thì ══
 // ══ thêm vào question_accepted_answers + BACKFILL mọi bài làm cùng câu+đáp án.  ══

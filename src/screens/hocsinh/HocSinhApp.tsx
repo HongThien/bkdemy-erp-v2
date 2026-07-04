@@ -4,14 +4,15 @@
 //   → hiện đáp án + lời giải chi tiết của câu → "Câu tiếp". BTVN reveal ngay, làm lại tới hạn.
 // Skin = plain-clean; game (Fredoka/mascot/gradient) làm phiên design sau.
 // ============================================================================
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { supabase } from '../../lib/supabase'
 import { MathText } from '../kho/ui'
 import {
-  listBaiTestCuaHS, getBaiTestFull, moBaiLam, traLoiCau, baoSai, nopBai, chuCaiChon,
+  listBaiTestCuaHS, getBaiTestFull, moBaiLam, traLoiCau, baoSai, nopBai, chuCaiChon, chiSoCuaChu,
   getETDe, luuDapAnET, nopET, getETDapAnDaLuu,
   type BaiTestCuaHS, type BaiTestFull, type BaiLamCau, type ETCauDe, type ETReveal,
 } from '../../lib/testonline'
+import { seededPerm, seededShuffleWithOrig } from '../../lib/shuffle'
 
 type Chon = number | string | (string | null)[] | null // TN=index · TLN=chuỗi · ĐS=mảng 'D'/'S'
 type CauState = { chon: Chon; kq: { verdict: string; key: unknown; baiLamCauId: string } | null; baoRoi?: boolean }
@@ -127,8 +128,11 @@ function LamBai({ baiTestId, hocSinhId, onXong }: { baiTestId: string; hocSinhId
     if (full.caus.length > 0 && full.caus.every((c) => st[c.id]?.kq)) { setNopped(true); nopBai(baiLamId).catch(() => {}) }
   }, [st, full, baiLamId, nopped])
 
+  // Xáo THỨ TỰ CÂU theo (HS×bài) — ổn định (mở lại vẫn thấy đúng thứ tự cũ), khác nhau giữa các HS
+  // (chống liếc bài). Chấm/khôi phục vẫn khớp `cau.id`, không phụ thuộc vị trí → an toàn tuyệt đối.
+  const caus = useMemo(() => (full ? seededPerm(full.caus.length, `${hocSinhId}:${baiTestId}:q`).map((i) => full.caus[i]) : []), [full, hocSinhId, baiTestId])
+
   if (!full) return <div className="flex min-h-screen items-center justify-center text-sm text-slate-400">Đang tải bài…</div>
-  const caus = full.caus
   const total = caus.length
   const daXongHet = caus.every((c) => st[c.id]?.kq)
   const cau = caus[idx]
@@ -139,6 +143,11 @@ function LamBai({ baiTestId, hocSinhId, onXong }: { baiTestId: string; hocSinhId
   const menhDe: MenhDeSnap[] = laDS ? ((cau!.menh_de as MenhDeSnap[]) ?? []) : []
   const keyDS: string[] = laDS ? ((cau!.dap_an_key as string[]) ?? []) : []
   const chonArr: (string | null)[] = laDS ? ((cs?.chon as (string | null)[]) ?? menhDe.map(() => null)) : []
+  // Xáo THỨ TỰ ĐÁP ÁN hiển thị (TN 4 phương án · ĐS 4 mệnh đề) theo (HS×bài×câu) — orig = chỉ số GỐC
+  // dùng để ghi state/so đáp án đúng; dispI = vị trí hiển thị (chỉ để đặt nhãn A/B/C/D · a/b/c/d).
+  const optsShown = laTN && cau ? seededShuffleWithOrig(cau.lua_chon ?? [], `${hocSinhId}:${baiTestId}:${cau.id}:opt`) : []
+  const correctOrigTN = laTN && daCham && cau ? chiSoCuaChu(cau.dap_an_key) : -1
+  const menhOrder = laDS && cau ? seededShuffleWithOrig(menhDe, `${hocSinhId}:${baiTestId}:${cau.id}:ds`) : []
   // Đã chọn đủ để Xác nhận? TN=đã chọn 1 · TLN=nhập khác rỗng · ĐS=đủ 4 ý.
   const daDu = laTN ? typeof cs?.chon === 'number'
     : laDS ? (chonArr.length === menhDe.length && menhDe.length > 0 && chonArr.every((x) => x != null))
@@ -218,16 +227,16 @@ function LamBai({ baiTestId, hocSinhId, onXong }: { baiTestId: string; hocSinhId
 
           {laTN ? (
             <div className="flex flex-col gap-2.5">
-              {(cau.lua_chon ?? []).map((opt, i) => {
-                const chon = cs?.chon === i
-                const laDapAn = daCham && chuCaiChon(i) === String(cau.dap_an_key)
+              {optsShown.map(({ item: opt, orig }, dispI) => {
+                const chon = cs?.chon === orig
+                const laDapAn = daCham && orig === correctOrigTN
                 const chonSai = daCham && chon && !laDapAn
                 return (
-                  <button key={i} onClick={() => setChon(i)} disabled={daCham}
+                  <button key={orig} onClick={() => setChon(orig)} disabled={daCham}
                     className={`flex items-start gap-3 rounded-xl border p-3 text-left text-[15px] transition ${
                       laDapAn ? 'border-emerald-400 bg-emerald-50' : chonSai ? 'border-rose-400 bg-rose-50' : chon ? 'border-indigo-500 bg-indigo-50' : 'border-slate-200 bg-white'}`}>
                     <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[13px] font-semibold ${
-                      laDapAn ? 'bg-emerald-500 text-white' : chonSai ? 'bg-rose-500 text-white' : chon ? 'bg-indigo-500 text-white' : 'bg-slate-100 text-slate-600'}`}>{chuCaiChon(i)}</span>
+                      laDapAn ? 'bg-emerald-500 text-white' : chonSai ? 'bg-rose-500 text-white' : chon ? 'bg-indigo-500 text-white' : 'bg-slate-100 text-slate-600'}`}>{chuCaiChon(dispI)}</span>
                     <span className="flex-1 pt-0.5"><MathText>{stripLabel(opt)}</MathText></span>
                   </button>
                 )
@@ -235,13 +244,13 @@ function LamBai({ baiTestId, hocSinhId, onXong }: { baiTestId: string; hocSinhId
             </div>
           ) : laDS ? (
             <div className="flex flex-col gap-2.5">
-              {menhDe.map((m, i) => {
-                const key = String(keyDS[i] ?? '').toUpperCase()
-                const pick = chonArr[i] ? String(chonArr[i]).toUpperCase() : null
+              {menhOrder.map(({ item: m, orig }, dispI) => {
+                const key = String(keyDS[orig] ?? '').toUpperCase()
+                const pick = chonArr[orig] ? String(chonArr[orig]).toUpperCase() : null
                 return (
-                  <div key={i} className="rounded-xl border border-slate-200 p-3">
+                  <div key={orig} className="rounded-xl border border-slate-200 p-3">
                     <div className="mb-2 flex gap-2 text-[15px] text-slate-800">
-                      <span className="font-semibold text-slate-400">{'abcd'[i] ?? i + 1})</span>
+                      <span className="font-semibold text-slate-400">{'abcd'[dispI] ?? dispI + 1})</span>
                       <span className="flex-1"><MathText>{m.noi_dung}</MathText></span>
                     </div>
                     <div className="flex gap-2">
@@ -250,7 +259,7 @@ function LamBai({ baiTestId, hocSinhId, onXong }: { baiTestId: string; hocSinhId
                         const dungChoi = daCham && v === key       // đáp án đúng của ý
                         const saiChoi = daCham && on && v !== key   // HS chọn sai
                         return (
-                          <button key={v} onClick={() => setDS(i, v)} disabled={daCham}
+                          <button key={v} onClick={() => setDS(orig, v)} disabled={daCham}
                             className={`flex-1 rounded-lg border py-1.5 text-[13px] font-medium transition ${
                               dungChoi ? 'border-emerald-400 bg-emerald-50 text-emerald-700' : saiChoi ? 'border-rose-400 bg-rose-50 text-rose-700' : on ? 'border-indigo-500 bg-indigo-50 text-indigo-700' : 'border-slate-200 text-slate-500'}`}>
                             {v === 'D' ? 'Đúng' : 'Sai'}
@@ -331,11 +340,13 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
     })().catch(console.error)
   }, [test.id, hocSinhId])
   useEffect(() => { setGoiY(false) }, [idx])
+  // Xáo THỨ TỰ CÂU theo (HS×bài) — cùng cơ chế LamBai (xem ghi chú ở đó).
+  const caus = useMemo(() => (de ? seededPerm(de.length, `${hocSinhId}:${test.id}:q`).map((i) => de[i]) : []), [de, hocSinhId, test.id])
 
   if (!de) return <div className="flex min-h-screen items-center justify-center text-sm text-slate-400">Đang tải đề…</div>
-  const total = de.length
+  const total = caus.length
   const daNop = !!reveal
-  const daTraLoi = de.filter((c) => ans[c.id] != null && ans[c.id] !== '' && !(Array.isArray(ans[c.id]) && (ans[c.id] as unknown[]).some((x) => x == null))).length
+  const daTraLoi = caus.filter((c) => ans[c.id] != null && ans[c.id] !== '' && !(Array.isArray(ans[c.id]) && (ans[c.id] as unknown[]).some((x) => x == null))).length
 
   async function luu(cauId: string, v: Chon) {
     if (daNop || !baiLamId) return
@@ -349,7 +360,7 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
     finally { setBusy(false) }
   }
 
-  const cau = de[idx]
+  const cau = caus[idx]
   const rv = daNop && cau ? reveal![cau.id] : undefined
   const laTN = cau?.loai_cau === 'trac_nghiem'
   const laDS = cau?.loai_cau === 'dung_sai'
@@ -357,6 +368,10 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
   const menhDeReveal = (rv?.menh_de as { loi_giai?: string | null }[] | undefined) ?? []
   const chonArr = laDS ? ((ans[cau.id] as (string | null)[]) ?? (cau.menh_de ?? []).map(() => null)) : []
   const vd = rv?.verdict ?? ''
+  // Xáo THỨ TỰ ĐÁP ÁN hiển thị (cùng cơ chế LamBai) — orig ghi state/so đúng, dispI chỉ để đặt nhãn.
+  const optsShown = laTN && cau ? seededShuffleWithOrig(cau.lua_chon ?? [], `${hocSinhId}:${test.id}:${cau.id}:opt`) : []
+  const correctOrigTN = laTN && daNop ? chiSoCuaChu(rv?.dap_an_key) : -1
+  const menhOrder = laDS && cau ? seededShuffleWithOrig(cau.menh_de ?? [], `${hocSinhId}:${test.id}:${cau.id}:ds`) : []
 
   return (
     <div className="mx-auto flex h-screen max-w-md flex-col bg-slate-50">
@@ -380,14 +395,14 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
 
           {laTN ? (
             <div className="flex flex-col gap-2.5">
-              {(cau.lua_chon ?? []).map((opt, i) => {
-                const chon = ans[cau.id] === i
-                const laDapAn = daNop && chuCaiChon(i) === String(rv?.dap_an_key)
+              {optsShown.map(({ item: opt, orig }, dispI) => {
+                const chon = ans[cau.id] === orig
+                const laDapAn = daNop && orig === correctOrigTN
                 const chonSai = daNop && chon && !laDapAn
                 return (
-                  <button key={i} onClick={() => luu(cau.id, i)} disabled={daNop}
+                  <button key={orig} onClick={() => luu(cau.id, orig)} disabled={daNop}
                     className={`flex items-start gap-3 rounded-xl border p-3 text-left text-[15px] ${laDapAn ? 'border-emerald-400 bg-emerald-50' : chonSai ? 'border-rose-400 bg-rose-50' : chon ? 'border-violet-500 bg-violet-50' : 'border-slate-200'}`}>
-                    <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[13px] font-semibold ${laDapAn ? 'bg-emerald-500 text-white' : chonSai ? 'bg-rose-500 text-white' : chon ? 'bg-violet-500 text-white' : 'bg-slate-100 text-slate-600'}`}>{chuCaiChon(i)}</span>
+                    <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[13px] font-semibold ${laDapAn ? 'bg-emerald-500 text-white' : chonSai ? 'bg-rose-500 text-white' : chon ? 'bg-violet-500 text-white' : 'bg-slate-100 text-slate-600'}`}>{chuCaiChon(dispI)}</span>
                     <span className="flex-1 pt-0.5"><MathText>{stripLabel(opt)}</MathText></span>
                   </button>
                 )
@@ -395,22 +410,22 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
             </div>
           ) : laDS ? (
             <div className="flex flex-col gap-2.5">
-              {(cau.menh_de ?? []).map((m, i) => {
-                const pick = chonArr[i] ? String(chonArr[i]).toUpperCase() : null
-                const key = daNop ? String(keyDS[i] ?? '').toUpperCase() : null
+              {menhOrder.map(({ item: m, orig }, dispI) => {
+                const pick = chonArr[orig] ? String(chonArr[orig]).toUpperCase() : null
+                const key = daNop ? String(keyDS[orig] ?? '').toUpperCase() : null
                 return (
-                  <div key={i} className="rounded-xl border border-slate-200 p-3">
-                    <div className="mb-2 flex gap-2 text-[15px] text-slate-800"><span className="font-semibold text-slate-400">{'abcd'[i] ?? i + 1})</span><span className="flex-1"><MathText>{m.noi_dung}</MathText></span></div>
+                  <div key={orig} className="rounded-xl border border-slate-200 p-3">
+                    <div className="mb-2 flex gap-2 text-[15px] text-slate-800"><span className="font-semibold text-slate-400">{'abcd'[dispI] ?? dispI + 1})</span><span className="flex-1"><MathText>{m.noi_dung}</MathText></span></div>
                     <div className="flex gap-2">
                       {(['D', 'S'] as const).map((v) => {
                         const on = pick === v
                         const dung = daNop && v === key
                         const sai = daNop && on && v !== key
-                        return <button key={v} onClick={() => { const cur = (ans[cau.id] as (string | null)[]) ?? (cau.menh_de ?? []).map(() => null); const next = [...cur]; next[i] = v; luu(cau.id, next) }} disabled={daNop}
+                        return <button key={v} onClick={() => { const cur = (ans[cau.id] as (string | null)[]) ?? (cau.menh_de ?? []).map(() => null); const next = [...cur]; next[orig] = v; luu(cau.id, next) }} disabled={daNop}
                           className={`flex-1 rounded-lg border py-1.5 text-[13px] font-medium ${dung ? 'border-emerald-400 bg-emerald-50 text-emerald-700' : sai ? 'border-rose-400 bg-rose-50 text-rose-700' : on ? 'border-violet-500 bg-violet-50 text-violet-700' : 'border-slate-200 text-slate-500'}`}>{v === 'D' ? 'Đúng' : 'Sai'}</button>
                       })}
                     </div>
-                    {daNop && menhDeReveal[i]?.loi_giai && <div className="mt-2 border-t border-black/5 pt-1.5 text-[13px] text-slate-600"><MathText>{menhDeReveal[i].loi_giai as string}</MathText></div>}
+                    {daNop && menhDeReveal[orig]?.loi_giai && <div className="mt-2 border-t border-black/5 pt-1.5 text-[13px] text-slate-600"><MathText>{menhDeReveal[orig].loi_giai as string}</MathText></div>}
                   </div>
                 )
               })}
