@@ -10,6 +10,7 @@ import SuaBuoiModal from './SuaBuoiModal'
 import { listNhanSu, type NhanSu } from '../../lib/nhansu'
 import { homNayVN } from '../../lib/tuan'
 import SearchSelect from '../../components/SearchSelect'
+import { tenNganHS } from '../../lib/hoten'
 
 type Tab = 'canbu' | 'daxep' | 'xong' | 'khongbu'
 const TABS: { k: Tab; ten: string }[] = [{ k: 'canbu', ten: 'Cần bù' }, { k: 'daxep', ten: 'Đã xếp' }, { k: 'xong', ten: 'Hoàn thành' }, { k: 'khongbu', ten: 'Không bù' }]
@@ -75,7 +76,7 @@ export default function BoTroScreen() {
                       {/* 3 block: tên · lớp · ngày */}
                       <div className="min-w-[180px] flex-1">
                         <div className="text-[12px] font-medium uppercase tracking-wide text-slate-400">Học sinh</div>
-                        <div className="text-[16px] font-semibold text-slate-800">{c.ho_ten}</div>
+                        <div className="text-[16px] font-semibold text-slate-800">{tenNganHS(c.ho_ten)}</div>
                         <div className="text-[12px] text-slate-400">{c.ma_hs}</div>
                       </div>
                       <div className="min-w-[120px] rounded-xl bg-slate-50 px-3 py-2">
@@ -104,7 +105,7 @@ export default function BoTroScreen() {
                   <thead><tr className="border-b border-slate-200 text-left text-[13px] text-slate-500"><th className="px-4 py-3 font-medium">Học sinh</th><th className="px-4 py-3 font-medium">Loại</th><th className="px-4 py-3 font-medium">Lý do</th><th className="px-4 py-3 text-right font-medium"></th></tr></thead>
                   <tbody>{khongbu.map((k) => (
                     <tr key={k.id} className="border-b border-slate-100 last:border-0">
-                      <td className="px-4 py-3"><div className="font-medium text-slate-800">{k.ho_ten}</div><div className="text-[12px] text-slate-400">{k.info}</div></td>
+                      <td className="px-4 py-3"><div className="font-medium text-slate-800">{tenNganHS(k.ho_ten)}</div><div className="text-[12px] text-slate-400">{k.info}</div></td>
                       <td className="px-4 py-3"><span className={`rounded-full px-2 py-0.5 text-[12px] font-medium ${k.loai === 'khong_can_bu' ? 'bg-slate-100 text-slate-600' : 'bg-amber-100 text-amber-700'}`}>{k.loai === 'khong_can_bu' ? 'Không cần bù' : 'Không xếp được'}</span></td>
                       <td className="px-4 py-3 text-slate-600">{k.ly_do || '—'}</td>
                       <td className="px-4 py-3 text-right"><button onClick={async () => { await xoaKhongBu(k.absId); refresh() }} className="rounded-lg border border-slate-200 px-3 py-1.5 text-[13px] text-indigo-600 hover:border-indigo-300">↩ Đưa lại Cần bù</button></td>
@@ -124,7 +125,7 @@ export default function BoTroScreen() {
                       {tab !== 'xong' && <button onClick={(e) => { e.stopPropagation(); setSuaBuoi(ca) }} title="Sửa buổi (ngày/giờ/phòng/GV/TA)" className="rounded border border-slate-200 px-1.5 py-0.5 text-[12px] text-slate-400 hover:border-indigo-300 hover:text-indigo-700">✎</button>}
                     </div>
                     <div className="mt-1 text-[12px] text-slate-500">{ca.gio_bat_dau?.slice(0, 5) || '—'}{ca.phong ? ` · ${ca.phong}` : ''}</div>
-                    <div className="mt-2 flex flex-wrap gap-1">{ca.hs.slice(0, 6).map((h) => <span key={h.hoc_sinh_id} className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] text-slate-600">{h.ho_ten}</span>)}{ca.hs.length > 6 && <span className="text-[11px] text-slate-400">+{ca.hs.length - 6}</span>}</div>
+                    <div className="mt-2 flex flex-wrap gap-1">{ca.hs.slice(0, 6).map((h) => <span key={h.hoc_sinh_id} className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] text-slate-600">{tenNganHS(h.ho_ten)}</span>)}{ca.hs.length > 6 && <span className="text-[11px] text-slate-400">+{ca.hs.length - 6}</span>}</div>
                     <div className="mt-2 flex gap-1.5 text-[11px]">
                       <span className={`rounded px-1.5 py-0.5 font-medium ${ca.et_dong_at ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-500'}`}>ET {ca.et_dong_at ? '✓' : '…'}</span>
                       <span className={`rounded px-1.5 py-0.5 font-medium ${ca.danh_gia_xong_at ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-500'}`}>Đánh giá {ca.danh_gia_xong_at ? '✓' : '…'}</span>
@@ -161,7 +162,7 @@ function HsBlocks({ item }: { item: CanBuItem }) {
     <div className="flex flex-wrap gap-2.5">
       <div className="min-w-[160px] flex-1 rounded-xl bg-slate-50 px-3.5 py-2.5">
         <div className="text-[12px] font-medium uppercase tracking-wide text-slate-400">Học sinh</div>
-        <div className="text-[16px] font-semibold text-slate-800">{item.ho_ten}</div>
+        <div className="text-[16px] font-semibold text-slate-800">{tenNganHS(item.ho_ten)}</div>
       </div>
       <div className="min-w-[110px] rounded-xl bg-slate-50 px-3.5 py-2.5">
         <div className="text-[12px] font-medium uppercase tracking-wide text-slate-400">Lớp</div>
@@ -329,7 +330,7 @@ export function BuoiBuDetail({ buoiId, readOnly = false, onClose }: { buoiId: st
             return (
               <div key={r.id} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
                 <div className="flex items-center gap-2">
-                  <span className="text-[15px] font-semibold text-slate-800">{r.hoc_sinh?.ho_ten}</span>
+                  <span className="text-[15px] font-semibold text-slate-800">{tenNganHS(r.hoc_sinh?.ho_ten)}</span>
                   <div className="ml-auto flex items-center gap-1">
                     <button disabled={readOnly} onClick={() => setDD(r, 'co_mat')} className={`rounded-lg px-2.5 py-1 text-[12px] font-medium ${r.diem_danh === 'co_mat' ? 'bg-emerald-500 text-white' : 'border border-slate-200 text-slate-500'}`}>Có mặt</button>
                     <button disabled={readOnly} onClick={() => setDD(r, 'vang')} className={`rounded-lg px-2.5 py-1 text-[12px] font-medium ${r.diem_danh === 'vang' ? 'bg-rose-500 text-white' : 'border border-slate-200 text-slate-500'}`}>Vắng</button>

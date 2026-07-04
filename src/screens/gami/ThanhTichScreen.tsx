@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { listThanhTich, listGamiMons, type ThanhTichRow } from '../../lib/gami'
 import BangThanhTich from './BangThanhTich'
+import { tenNganHS } from '../../lib/hoten'
 
 export default function ThanhTichScreen() {
   const [mons, setMons] = useState<string[]>([])
@@ -66,7 +67,7 @@ function Card({ r, onOpen }: { r: ThanhTichRow; onOpen: () => void }) {
         : <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-sky-400 to-indigo-500 text-base font-bold text-white">{r.ho_ten.trim().split(/\s+/).pop()?.[0]?.toUpperCase() ?? '?'}</span>}
       <div className="min-w-0 flex-1">
         <div className="flex items-center gap-1 truncate text-[14px] font-semibold text-slate-800">
-          {medal && <span>{medal}</span>}<span className="truncate">{r.ho_ten}</span>
+          {medal && <span>{medal}</span>}<span className="truncate">{tenNganHS(r.ho_ten)}</span>
         </div>
         <div className="text-[11px] text-slate-400">{r.ma_hs ?? '—'} · {r.khoi ? `Khối ${r.khoi}` : r.mon}</div>
         <div className="mt-1 flex items-center gap-1.5 text-[12px]">

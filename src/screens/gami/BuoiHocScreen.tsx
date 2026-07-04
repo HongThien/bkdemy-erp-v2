@@ -16,6 +16,7 @@ import { MathText } from '../kho/ui'
 import SearchSelect from '../../components/SearchSelect'
 import DangPickerOne from '../../components/DangPickerOne'
 import { useIsMobile } from '../../hooks/useIsMobile'
+import { tenNganHS } from '../../lib/hoten'
 import { useStore } from '../../store/useStore'
 
 type DangOpt = { ma_dang: string; ten: string }
@@ -227,7 +228,7 @@ function DiemDanhTab({ roster, chuaDD, canManage, onChange }: { roster: BuoiHocH
       <div className="grid grid-cols-1 gap-1.5 md:grid-cols-2 2xl:grid-cols-3">
         {roster.map((r) => (
           <div key={r.id} className="flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2">
-            <span className="min-w-0 flex-1 truncate text-[13px] font-medium text-slate-800">{r.hoc_sinh?.ho_ten ?? '?'}</span>
+            <span className="min-w-0 flex-1 truncate text-[13px] font-medium text-slate-800">{tenNganHS(r.hoc_sinh?.ho_ten)}</span>
             {(['co_mat', 'vang', 'vang_phep'] as DiemDanh[]).map((d) => (
               <button key={d} onClick={async () => { await diemDanh(r.id, d); onChange() }}
                 className={`rounded px-2 py-1 text-[11px] font-medium transition ${r.diem_danh === d ? DD_TONE[d] : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}>{DD_LABEL[d]}</button>
@@ -412,7 +413,7 @@ function ChamTab({ buoiId, phase, roster, buoi, dangOpts, onChange }: { buoiId: 
           <tbody>
             {coMat.map((r) => (
               <tr key={r.id}>
-                <td className="sticky left-0 z-10 whitespace-nowrap border border-slate-200 bg-white px-3 py-2 text-left align-middle font-medium text-slate-800">{r.hoc_sinh?.ho_ten ?? '?'}</td>
+                <td className="sticky left-0 z-10 whitespace-nowrap border border-slate-200 bg-white px-3 py-2 text-left align-middle font-medium text-slate-800">{tenNganHS(r.hoc_sinh?.ho_ten)}</td>
                 {probs.map((p) => {
                   const g = gradeOf(p.id, r.hoc_sinh_id)
                   return (
@@ -605,7 +606,7 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
           <tbody>
             {coMat.map((r) => (
               <tr key={r.id}>
-                <td className="sticky left-0 z-10 whitespace-nowrap border border-slate-200 bg-white px-3 py-1 text-left align-middle font-medium text-slate-800">{r.hoc_sinh?.ho_ten ?? '?'}</td>
+                <td className="sticky left-0 z-10 whitespace-nowrap border border-slate-200 bg-white px-3 py-1 text-left align-middle font-medium text-slate-800">{tenNganHS(r.hoc_sinh?.ho_ten)}</td>
                 {probs.map((p) => {
                   const g = gradeOf(p.id, r.hoc_sinh_id)
                   const isEditing = editing?.problemId === p.id && editing?.hsId === r.hoc_sinh_id
@@ -681,6 +682,9 @@ function EtAnhGuiPH({ coMat, probs, gradeOf, buoi, onClose }: {
   if (!coMat.length) return null
   const lop = (buoi as any).lop?.ten_lop ?? ''
   const ngayVN = buoi.ngay ? buoi.ngay.split('-').reverse().join('/') : ''
+  // Card giãn theo số câu để KHÔNG cắt cột: cột tên ~96px + mỗi câu ~30px + padding.
+  const COL_W = 30, NAME_W = 100
+  const cardW = Math.max(440, NAME_W + probs.length * COL_W + 32)
   // COPY ảnh — ĐÚNG pattern V1 (TabSatHach.handleCopy / openReportPopup, chạy production ổn định):
   // MỞ POPUP chứa HTML phiếu + nút "Copy ảnh" NGAY TRONG popup. Bấm Copy trong popup = user-gesture trong
   // context popup → html2canvas (CDN) + clipboard.write chạy ngon (paste Zalo); fallback tải file CHỈ khi clipboard bị chặn.
@@ -743,7 +747,7 @@ async function copyImg(){
         <div
           ref={cardRef}
           style={{
-            margin: '0 auto', width: 440, maxWidth: '100%', overflow: 'hidden', borderRadius: 16,
+            margin: '0 auto', width: cardW, overflow: 'hidden', borderRadius: 16,
             background: '#ffffff', color: '#1e293b', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25)',
             fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif',
           }}
@@ -764,7 +768,7 @@ async function copyImg(){
               <tbody>
                 {coMat.map((r) => (
                   <tr key={r.id} style={{ borderBottom: '1px solid #f1f5f9' }}>
-                    <td style={{ padding: '6px 4px', fontWeight: 500, color: '#1e293b' }}>{r.hoc_sinh?.ho_ten ?? '?'}</td>
+                    <td style={{ padding: '6px 4px', fontWeight: 500, color: '#1e293b', whiteSpace: 'nowrap' }}>{tenNganHS(r.hoc_sinh?.ho_ten)}</td>
                     {probs.map((p) => {
                       const kq = gradeOf(p.id, r.hoc_sinh_id)?.result
                       const v = kq ? ET_KQ_PH[kq] : null
@@ -887,7 +891,7 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
                 <tr key={r.id} className="align-top">
                   <td className="sticky left-0 z-10 border border-slate-200 bg-white px-3 py-1.5">
                     <div className="flex items-center gap-1.5">
-                      <span className="min-w-[104px] flex-1 whitespace-nowrap font-medium text-slate-800">{r.hoc_sinh?.ho_ten ?? '?'}</span>
+                      <span className="min-w-[104px] flex-1 whitespace-nowrap font-medium text-slate-800">{tenNganHS(r.hoc_sinh?.ho_ten)}</span>
                       <select value={v.trang_thai_nop ?? ''} disabled={dong} onChange={(e) => setKQField(r.hoc_sinh_id, { trang_thai_nop: e.target.value || null })} title="Trạng thái nộp" className={`h-7 w-[116px] shrink-0 rounded border px-1 text-[12px] disabled:opacity-60 ${v.trang_thai_nop ? 'border-slate-300 text-slate-700' : 'border-slate-200 text-slate-400'}`}>
                         <option value="">— Nộp —</option>{NOP_OPTS.map((o) => <option key={o.v} value={o.v}>{o.l}</option>)}
                       </select>
@@ -1017,7 +1021,7 @@ function DanhGiaTab({ buoiId, roster, dangOpts, buoi, onChange }: { buoiId: stri
               const hsId = r.hoc_sinh_id; const hs = data[hsId]
               return (
                 <tr key={r.id} className="align-top">
-                  <td className="sticky left-0 z-10 whitespace-nowrap border border-slate-200 bg-white px-3 py-2 text-left align-middle font-medium text-slate-800">{r.hoc_sinh?.ho_ten ?? '?'}</td>
+                  <td className="sticky left-0 z-10 whitespace-nowrap border border-slate-200 bg-white px-3 py-2 text-left align-middle font-medium text-slate-800">{tenNganHS(r.hoc_sinh?.ho_ten)}</td>
                   {dangs.map((md) => {
                     const cur = hs?.diemTheoDang[md]
                     const baiDang = probs.filter((p) => p.ma_dang === md)

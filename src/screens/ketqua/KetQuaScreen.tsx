@@ -9,6 +9,7 @@ import { listLop, listHSCuaLop, listLopCuaHS } from '../../lib/nhansu'
 import { getMasteryHS, listBuoiHoatDong, getMasteryRollup, getMasteryByDang, getMasteryByChuyenDe, getTongQuanHS, SRC_LABEL, type DangMastery, type DangEval, type BuoiActivity, type HSRollup, type TongQuanHS } from '../../lib/mastery'
 import { BuoiDetail } from '../gami/BuoiHocScreen'
 import type { TabKey } from '../../lib/gami'
+import { tenNganHS } from '../../lib/hoten'
 
 // Chỉ môn CÓ KHO mới suy được mastery (khoCuaMon dispatch dai_/khtn_). Anh/Văn chưa có kho.
 const MON_CO_KHO = ['Toán', 'KHTN']
@@ -105,7 +106,7 @@ function PerHocSinh() {
               <div className="max-h-[62vh] overflow-auto">
                 {roster.map((r) => (
                   <button key={r.id} onClick={() => setHsId(r.id)} title={r.ho_ten}
-                    className={`block w-full truncate px-3 py-1.5 text-left text-[13px] ${r.id === hsId ? 'bg-indigo-50 font-semibold text-indigo-700' : 'text-slate-700 hover:bg-slate-50'}`}>{r.ho_ten}</button>
+                    className={`block w-full truncate px-3 py-1.5 text-left text-[13px] ${r.id === hsId ? 'bg-indigo-50 font-semibold text-indigo-700' : 'text-slate-700 hover:bg-slate-50'}`}>{tenNganHS(r.ho_ten)}</button>
                 ))}
                 {roster.length === 0 && <p className="px-3 py-2 text-[12px] text-slate-500">Lớp trống.</p>}
               </div>
@@ -567,7 +568,7 @@ function RollupRow({ h, showLop }: { h: HSRollup; showLop: boolean }) {
   return (
     <div className="flex items-center gap-3 rounded-lg px-2 py-1.5 hover:bg-slate-50">
       <div className="w-52 shrink-0 truncate">
-        <span className="text-[13px] font-medium text-slate-800">{h.ho_ten}</span>
+        <span className="text-[13px] font-medium text-slate-800">{tenNganHS(h.ho_ten)}</span>
         {showLop && h.lop && <span className="ml-1.5 text-[11px] text-slate-500">{h.lop}</span>}
       </div>
       {/* thanh dày ~nửa màn, số % (n) HIỆN TRONG từng màu */}

@@ -7,6 +7,7 @@ import {
   type KyThi, type DiemThi, type Verdict,
 } from '../../lib/thanhtich'
 import SearchSelect from '../../components/SearchSelect'
+import { tenNganHS } from '../../lib/hoten'
 
 const LOAI: Record<string, string> = { truong: 'Thi trường', mt_sat_hach: 'BK sát hạch (MT)', khao_sat_thang: 'Khảo sát tháng' }
 const HE_SO: Record<string, number> = { truong: 2, mt_sat_hach: 2, khao_sat_thang: 1 }
@@ -15,7 +16,7 @@ const VERDICTS: Verdict[] = ['dat', 'gan_dat', 'khong_dat']
 const V_LABEL: Record<Verdict, string> = { dat: 'Đạt', gan_dat: 'Gần', khong_dat: 'Không' }
 const V_CLS: Record<Verdict, string> = { dat: 'bg-emerald-500 text-white', gan_dat: 'bg-amber-500 text-white', khong_dat: 'bg-rose-500 text-white' }
 const V_DOT: Record<Verdict, string> = { dat: 'bg-emerald-100 text-emerald-700', gan_dat: 'bg-amber-100 text-amber-700', khong_dat: 'bg-rose-100 text-rose-600' }
-const hsName = (h: HSTrongLop) => h.hoc_sinh?.ho_ten ?? '?'
+const hsName = (h: HSTrongLop) => tenNganHS(h.hoc_sinh?.ho_ten)
 
 export default function QuanLyLevelScreen() {
   const mua = currentMua()
@@ -140,7 +141,7 @@ function RowEntry({ hs, init, onSave }: { hs: HSTrongLop; init: DiemThi | null; 
   const pick = (v: Verdict) => { setVerdict(v); onSave(v, d(), vuot) }
   return (
     <tr className="border-t border-slate-100">
-      <td className="py-1.5 font-medium text-slate-700">{hs.hoc_sinh?.ho_ten ?? '?'}</td>
+      <td className="py-1.5 font-medium text-slate-700">{hsName(hs)}</td>
       <td><input value={diem} onChange={(e) => setDiem(e.target.value)} onBlur={() => verdict && onSave(verdict, d(), vuot)} inputMode="decimal" className="h-7 w-16 rounded border border-slate-300 px-2 text-[13px]" /></td>
       <td>
         <div className="flex gap-1">

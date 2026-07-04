@@ -2,6 +2,7 @@
 // Hồ sơ 1 HS: Elo per môn · lịch sử Elo (bấm 1 dòng → mở bảng Elo của ca đó) · dòng EXP.
 import { useEffect, useState } from 'react'
 import { listGamiBangTong, listGamiMons, getDiemHS, listCaHoc, getEloBreakdown, type DiemRow, type DiemHS, type CaHoc, type EloBreakdown } from '../../lib/gami'
+import { tenNganHS } from '../../lib/hoten'
 
 type Phase = 'ingame' | 'et'
 const EXP_SRC: Record<string, string> = { rank_ingame: 'Hạng chấm bài', rank_et: 'Hạng ET', rank_mt: 'Hạng MT', attend_floor: 'Đi học (sàn)' }
@@ -67,7 +68,7 @@ function RankView({ onOpenHS }: { onOpenHS: (r: DiemRow) => void }) {
                 {shown.map((r, i) => (
                   <tr key={r.hoc_sinh_id + r.mon} className="cursor-pointer border-t border-slate-100 hover:bg-indigo-50/40" onClick={() => onOpenHS(r)}>
                     <td className="px-4 py-2 text-center text-[13px] font-bold text-slate-400">{i + 1}</td>
-                    <td className="px-3 py-2"><span className="flex items-center gap-2.5"><Ava url={r.anh_url} ten={r.ho_ten} /><span><span className="font-medium text-slate-800">{r.ho_ten}</span>{r.ma_hs && <span className="ml-1.5 font-mono text-[11px] text-slate-400">{r.ma_hs}</span>}</span></span></td>
+                    <td className="px-3 py-2"><span className="flex items-center gap-2.5"><Ava url={r.anh_url} ten={r.ho_ten} /><span><span className="font-medium text-slate-800">{tenNganHS(r.ho_ten)}</span>{r.ma_hs && <span className="ml-1.5 font-mono text-[11px] text-slate-400">{r.ma_hs}</span>}</span></span></td>
                     <td className="px-3 text-slate-500">{r.khoi ?? '—'}</td>
                     <td className="px-3 text-right font-semibold text-indigo-700">{r.elo}</td>
                     <td className="px-3 text-right font-medium text-violet-600">{r.exp.toLocaleString('vi-VN')}</td>
@@ -157,7 +158,7 @@ function EloBangModal({ bang, onClose }: { bang: BangRef; onClose: () => void })
                     {rows.map((r) => (
                       <tr key={r.hoc_sinh_id} className="hover:bg-slate-50/60">
                         <td className="border border-slate-200 px-3 py-1.5 text-center font-bold text-slate-700">{r.rank}</td>
-                        <td className="border border-slate-200 px-3 py-1.5 font-medium text-slate-800">{r.ho_ten}</td>
+                        <td className="border border-slate-200 px-3 py-1.5 font-medium text-slate-800">{tenNganHS(r.ho_ten)}</td>
                         <td className="border border-slate-200 px-3 py-1.5 text-right text-slate-600">{r.points}</td>
                         <td className="border border-slate-200 px-3 py-1.5 text-right text-slate-500">{r.coElo ? r.expected.toFixed(2) : '—'}</td>
                         <td className="border border-slate-200 px-3 py-1.5 text-right text-slate-500">{r.coElo ? r.actual.toFixed(1) : '—'}</td>
