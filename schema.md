@@ -2,7 +2,7 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-69 bảng · 0 enum · 3 trigger · 16 function
+69 bảng · 0 enum · 4 trigger · 17 function
 
 ## bai_lam
 
@@ -886,6 +886,7 @@
 | bảng | trigger | timing | event | function |
 |---|---|---|---|---|
 | bao_loi | trg_log_bao_loi | BEFORE | UPDATE | log_bao_loi |
+| hoc_sinh | trg_hs_nghi_tu_roi_lop | AFTER | UPDATE | hs_nghi_tu_roi_lop |
 | hoc_sinh_lop | trg_log_hoc_sinh_lop | AFTER | INSERT/UPDATE | log_hoc_sinh_lop |
 | ung_vien | trg_log_ung_vien | AFTER | INSERT/UPDATE | log_ung_vien |
 
@@ -894,6 +895,7 @@
 - `count_cau_by_dang(p_tbl text)` → jsonb
 - `et_de(p_bai_test uuid)` → jsonb
 - `et_nop(p_bai_lam uuid)` → jsonb
+- `hs_nghi_tu_roi_lop()` → trigger
 - `hs_o_lop(p_lop uuid)` → boolean
 - `increment_qaa_hit(p_id uuid)` → void
 - `jwt_email()` → text
