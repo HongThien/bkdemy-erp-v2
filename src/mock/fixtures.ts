@@ -72,33 +72,45 @@ export const notices: Notice[] = [
 ]
 
 // ── Cây Admin (derive theo role) ─────────────────────────────────
+// Nhóm tầng 1 = THEO TEAM (Thùy chốt 07-05): mai sau role cũng chia theo đây (role Học thuật → thấy
+// nhóm Học thuật...). Đổi nhóm ở đây CHỈ là IA hiển thị — quyền THẬT vẫn cấp per-leaf ở Phân quyền.
 export const adminLeaves: AdminLeaf[] = [
-  { id: 'hs',          nhom: 'Danh mục',  ten: 'Học sinh',                     founderOnly: false },
-  { id: 'lop',         nhom: 'Danh mục',  ten: 'Lớp',                          founderOnly: false },
-  { id: 'ns',          nhom: 'Danh mục',  ten: 'Nhân sự',                      founderOnly: false },
-  { id: 'tl',          nhom: 'Danh mục',  ten: 'Kho tài liệu',                 founderOnly: false },
-  { id: 'bdkt',        nhom: 'Danh mục',  ten: 'Bản đồ kiến thức (Kho)',       founderOnly: false }, // ← kho ở đây
-  { id: 'nhapkho',     nhom: 'Danh mục',  ten: 'Nhập kho (từ tài liệu)',       founderOnly: false }, // ingest-first: bóc PDF → gán dạng → đẩy kho
-  { id: 'lamtailieu',  nhom: 'Danh mục',  ten: 'Làm tài liệu',                 founderOnly: false }, // hub: giáo trình·ET·đề thi·bổ trợ
-  { id: 'orgchart',    nhom: 'Quan hệ',   ten: 'Sơ đồ tổ chức',                founderOnly: true },
-  { id: 'phancong',    nhom: 'Quan hệ',   ten: 'Phân công',                    founderOnly: false },
-  { id: 'tkb',         nhom: 'Quan hệ',   ten: 'Thời khóa biểu',               founderOnly: false },
-  { id: 'db_tongquan', nhom: 'Dashboard', ten: 'Tổng quan',                    founderOnly: false },
-  { id: 'db_taichinh', nhom: 'Dashboard', ten: 'Tài chính',                    founderOnly: true },
-  { id: 'db_chatluong',nhom: 'Dashboard', ten: 'Chất lượng',                   founderOnly: false },
-  { id: 'db_tuyendung',nhom: 'Dashboard', ten: 'Tuyển dụng',                   founderOnly: true },
+  // ── VẬN HÀNH: việc ops hàng ngày (điểm danh/HS/lớp/tuyển sinh/bổ trợ) ──
+  { id: 'buoihoc',     nhom: 'Vận hành',  ten: 'Buổi học',                     founderOnly: false }, // điểm danh
+  { id: 'hs',          nhom: 'Vận hành',  ten: 'Học sinh',                     founderOnly: false },
+  { id: 'lop',         nhom: 'Vận hành',  ten: 'Lớp',                          founderOnly: false },
   { id: 'tuyensinh',   nhom: 'Vận hành',  ten: 'Tuyển sinh',                   founderOnly: false },
-  { id: 'buoihoc',     nhom: 'Vận hành',  ten: 'Buổi học',                     founderOnly: false },
-  { id: 'diemso',      nhom: 'Vận hành',  ten: 'Điểm số (Elo/EXP)',            founderOnly: false },
-  { id: 'thanhtich',   nhom: 'Vận hành',  ten: 'Thành tích',                   founderOnly: false },
-  { id: 'ketqua',      nhom: 'Vận hành',  ten: 'Kết quả học tập',              founderOnly: false }, // mastery (HS × dạng) suy động
-  { id: 'duyetcham',   nhom: 'Vận hành',  ten: 'Duyệt chấm online',            founderOnly: false }, // review trả-lời-ngắn: chấp nhận đáp án + backfill
+  // Bổ trợ = 5 loại bù/yếu/đuổi/định-kỳ/ôn-thi (giờ có Bù + Đuổi).
+  { id: 'botro',       nhom: 'Vận hành',  ten: 'Bù',                           founderOnly: false },
+  { id: 'botro_duoi',  nhom: 'Vận hành',  ten: 'Đuổi',                         founderOnly: false },
 
-  { id: 'quanlylevel', nhom: 'Vận hành',  ten: 'Quản lý Level',                founderOnly: false },
-  { id: 'giaoviec',    nhom: 'Vận hành',  ten: 'Tạo & giao việc phát triển',   founderOnly: false },
-  // Bổ trợ = nhánh ngang hàng Vận hành (hệ thống support NGOÀI buổi học chính). 5 loại: bù/yếu/đuổi/định-kỳ/ôn-thi.
-  { id: 'botro',       nhom: 'Bổ trợ',    ten: 'Bù',                           founderOnly: false },
-  { id: 'botro_duoi',  nhom: 'Bổ trợ',    ten: 'Đuổi',                         founderOnly: false },
-  { id: 'phanquyen',   nhom: 'Hệ thống',  ten: 'Phân quyền',                   founderOnly: true },
-  { id: 'baoloi',      nhom: 'Hệ thống',  ten: 'Quản lý báo lỗi',              founderOnly: true },
+  // ── GAMIFICATION: Elo/EXP, thành tích, level ──
+  { id: 'diemso',      nhom: 'Gamification', ten: 'Điểm số (Elo/EXP)',        founderOnly: false },
+  { id: 'thanhtich',   nhom: 'Gamification', ten: 'Thành tích',               founderOnly: false },
+  { id: 'quanlylevel', nhom: 'Gamification', ten: 'Quản lý Level',            founderOnly: false },
+
+  // ── HỌC THUẬT: kho + soạn tài liệu ──
+  { id: 'bdkt',        nhom: 'Học thuật', ten: 'Bản đồ kiến thức (Kho)',      founderOnly: false },
+  { id: 'tl',          nhom: 'Học thuật', ten: 'Kho tài liệu',                founderOnly: false },
+  { id: 'nhapkho',     nhom: 'Học thuật', ten: 'Nhập kho (từ tài liệu)',      founderOnly: false }, // ingest-first: bóc PDF → gán dạng → đẩy kho
+  { id: 'lamtailieu',  nhom: 'Học thuật', ten: 'Làm tài liệu',                founderOnly: false }, // hub: giáo trình·ET·đề thi·bổ trợ
+
+  // ── QUẢN LÝ CHẤT LƯỢNG: đo lường kết quả học tập (sẽ break ra nhiều nhánh ở đây) ──
+  { id: 'ketqua',      nhom: 'Quản lý chất lượng', ten: 'Kết quả học tập',    founderOnly: false }, // mastery (HS × dạng) suy động
+  { id: 'duyetcham',   nhom: 'Quản lý chất lượng', ten: 'Duyệt chấm online',  founderOnly: false }, // review trả-lời-ngắn: chấp nhận đáp án + backfill
+
+  // ── CORE TEAM: nhân sự/tổ chức/vận hành nội bộ ──
+  { id: 'ns',          nhom: 'Core team', ten: 'Nhân sự',                     founderOnly: false },
+  { id: 'orgchart',    nhom: 'Core team', ten: 'Sơ đồ tổ chức',               founderOnly: true },
+  { id: 'phancong',    nhom: 'Core team', ten: 'Phân công',                   founderOnly: false },
+  { id: 'tkb',         nhom: 'Core team', ten: 'Thời khóa biểu',              founderOnly: false },
+  { id: 'phanquyen',   nhom: 'Core team', ten: 'Phân quyền',                  founderOnly: true },
+  { id: 'baoloi',      nhom: 'Core team', ten: 'Quản lý báo lỗi',             founderOnly: true },
+  { id: 'db_tuyendung',nhom: 'Core team', ten: 'Tuyển dụng',                  founderOnly: true },
+  { id: 'giaoviec',    nhom: 'Core team', ten: 'Tạo & giao việc phát triển',  founderOnly: false },
+
+  // ── DASHBOARD: chỉ phục vụ CEO ra quyết định (analytics, không phải màn thao tác) ──
+  { id: 'db_tongquan', nhom: 'Dashboard', ten: 'Tổng quan',                   founderOnly: false },
+  { id: 'db_taichinh', nhom: 'Dashboard', ten: 'Tài chính',                   founderOnly: true },
+  { id: 'db_chatluong',nhom: 'Dashboard', ten: 'Chất lượng vận hành',         founderOnly: true },
 ]
