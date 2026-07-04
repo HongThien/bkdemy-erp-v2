@@ -2,7 +2,7 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-69 bảng · 0 enum · 3 trigger · 14 function
+69 bảng · 0 enum · 3 trigger · 16 function
 
 ## bai_lam
 
@@ -905,4 +905,6 @@
 - `my_hoc_sinh_id()` → uuid
 - `my_quyen()` → TABLE(la_admin boolean, chuc_nang text[])
 - `self_link_account()` → uuid
+- `tln_cache_check(p_ma_cau text, p_norm text)` → boolean
+- `tln_norm(t text)` → text
 

@@ -92,6 +92,7 @@ export const adminLeaves: AdminLeaf[] = [
   { id: 'diemso',      nhom: 'Vận hành',  ten: 'Điểm số (Elo/EXP)',            founderOnly: false },
   { id: 'thanhtich',   nhom: 'Vận hành',  ten: 'Thành tích',                   founderOnly: false },
   { id: 'ketqua',      nhom: 'Vận hành',  ten: 'Kết quả học tập',              founderOnly: false }, // mastery (HS × dạng) suy động
+  { id: 'duyetcham',   nhom: 'Vận hành',  ten: 'Duyệt chấm online',            founderOnly: false }, // review trả-lời-ngắn: chấp nhận đáp án + backfill
 
   { id: 'quanlylevel', nhom: 'Vận hành',  ten: 'Quản lý Level',                founderOnly: false },
   { id: 'giaoviec',    nhom: 'Vận hành',  ten: 'Tạo & giao việc phát triển',   founderOnly: false },

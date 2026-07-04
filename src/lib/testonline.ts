@@ -6,7 +6,7 @@
 import { supabase } from './supabase'
 import { getBTVNCaus, getETCaus, getGiaoTrinhBuoiCaus, khoCuaMon } from './tailieu'
 import type { CauHoi } from './kho/api'
-import { extractKey, gradeTracNghiem, gradeTraLoiNgan, gradeDungSai, LETTERS } from '../gami/testgrade'
+import { extractKey, gradeTracNghiem, gradeTraLoiNgan, gradeDungSai, smartNormalize, LETTERS } from '../gami/testgrade'
 
 const LIMIT = 1000
 const SUPPORTED = new Set(['trac_nghiem', 'dung_sai', 'tra_loi_ngan']) // auto-chấm được
@@ -152,12 +152,17 @@ export async function moBaiLam(baiTestId: string, hocSinhId: string): Promise<Ba
 export type ChamKetQua = { verdict: string; cham_boi: string; key: unknown; baiLamCauId: string }
 
 // HS xác nhận 1 câu → auto-chấm exact + lưu (upsert). BTVN reveal ngay → trả cả key + id (để báo sai).
+// TLN sai theo key → tầng CACHE (đáp án người-đã-duyệt, rpc — HS không SELECT được bảng cache).
 export async function traLoiCau(baiLamId: string, cau: BaiTestCau, dapAnHs: unknown): Promise<ChamKetQua> {
-  const g = cau.loai_cau === 'trac_nghiem'
+  let g: { verdict: string; cham_boi: string } = cau.loai_cau === 'trac_nghiem'
     ? gradeTracNghiem(dapAnHs as number, cau.dap_an_key as string)
     : cau.loai_cau === 'dung_sai'
       ? gradeDungSai(dapAnHs as string[], cau.dap_an_key as string[])
       : gradeTraLoiNgan(dapAnHs as string, cau.dap_an_key as string)
+  if (cau.loai_cau === 'tra_loi_ngan' && g.verdict === 'wrong' && cau.ma_cau) {
+    const { data: hit } = await supabase.rpc('tln_cache_check', { p_ma_cau: cau.ma_cau, p_norm: smartNormalize(dapAnHs as string) })
+    if (hit === true) g = { verdict: 'correct', cham_boi: 'cache' }
+  }
   // dung_sai: lưu điểm thô THPT (0/0.1/0.25/0.5/1); loại khác: theo verdict × trọng số câu.
   const diem = 'diemTho' in g ? (g as any).diemTho * cau.diem
     : g.verdict === 'correct' ? cau.diem : g.verdict === 'partial' ? cau.diem * 0.5 : 0
@@ -217,3 +222,99 @@ export async function nopBai(baiLamId: string): Promise<boolean> {
 
 // Nhãn chữ cái A/B/C/D cho vị trí lựa chọn (UI + kho mất nhãn "A." ở phần tử [0]).
 export function chuCaiChon(i: number): string { return LETTERS[i] ?? String(i + 1) }
+
+// ══ REVIEW TRẢ LỜI NGẮN (staff) — spec §7: hệ chấm sai → người duyệt → đúng thì ══
+// ══ thêm vào question_accepted_answers + BACKFILL mọi bài làm cùng câu+đáp án.  ══
+export type TLNSaiRow = {
+  blcId: string; dapAnHs: string; chamAt: string
+  hocSinh: { id: string; ho_ten: string; ma_hs: string | null }
+  test: { loai: string; ngay: string; lopTen: string }
+  cau: { id: string; ma_cau: string | null; noi_dung: string | null; dapAnKey: string; loi_giai: string | null }
+  reports: { id: string; y_kien: string | null; trang_thai: string }[]
+}
+
+// Mọi câu TLN đang verdict='wrong' (mọi test) + report của chúng (join client — bảng report nhỏ).
+export async function listTLNSai(): Promise<TLNSaiRow[]> {
+  const { data, error } = await supabase.from('bai_lam_cau')
+    .select('id, dap_an_hs, cham_at, cau:bai_test_cau_id!inner(id, ma_cau, noi_dung, dap_an_key, loi_giai, loai_cau, test:bai_test_id(loai, ngay, lop:lop_id(ten_lop))), lam:bai_lam_id(hoc_sinh:hoc_sinh_id(id, ho_ten, ma_hs))')
+    .eq('verdict', 'wrong').eq('cau.loai_cau', 'tra_loi_ngan')
+    .order('cham_at', { ascending: false }).limit(LIMIT)
+  if (error) throw error
+  const rows = (data ?? []) as any[]
+  const { data: reps } = await supabase.from('bai_test_report').select('id, bai_lam_cau_id, y_kien, trang_thai').limit(LIMIT)
+  const repMap = new Map<string, { id: string; y_kien: string | null; trang_thai: string }[]>()
+  for (const r of (reps ?? []) as any[]) {
+    const arr = repMap.get(r.bai_lam_cau_id) ?? []
+    arr.push({ id: r.id, y_kien: r.y_kien, trang_thai: r.trang_thai })
+    repMap.set(r.bai_lam_cau_id, arr)
+  }
+  return rows.map((r) => ({
+    blcId: r.id, dapAnHs: String(r.dap_an_hs ?? ''), chamAt: r.cham_at,
+    hocSinh: { id: r.lam?.hoc_sinh?.id, ho_ten: r.lam?.hoc_sinh?.ho_ten ?? '?', ma_hs: r.lam?.hoc_sinh?.ma_hs ?? null },
+    test: { loai: r.cau?.test?.loai ?? '?', ngay: r.cau?.test?.ngay ?? '', lopTen: r.cau?.test?.lop?.ten_lop ?? '?' },
+    cau: { id: r.cau?.id, ma_cau: r.cau?.ma_cau ?? null, noi_dung: r.cau?.noi_dung ?? null, dapAnKey: String(r.cau?.dap_an_key ?? ''), loi_giai: r.cau?.loi_giai ?? null },
+    reports: repMap.get(r.id) ?? [],
+  }))
+}
+
+// Đáp án đã được duyệt chấp nhận của 1 loạt câu (hiện chip trên màn review).
+export async function listAcceptedAnswers(maCaus: string[]): Promise<Map<string, string[]>> {
+  const out = new Map<string, string[]>()
+  if (!maCaus.length) return out
+  const { data } = await supabase.from('question_accepted_answers').select('ma_cau, answer_raw, answer_normalized').in('ma_cau', maCaus).limit(LIMIT)
+  for (const r of (data ?? []) as any[]) {
+    const arr = out.get(r.ma_cau) ?? []
+    arr.push(r.answer_raw || r.answer_normalized)
+    out.set(r.ma_cau, arr)
+  }
+  return out
+}
+
+// TA duyệt "HS đúng": ① đáp án vào cache (lần sau auto đúng) ② BACKFILL mọi bai_lam_cau
+// cùng ma_cau + cùng đáp-án-chuẩn-hoá đang wrong → correct (cham_boi='manual', diem theo câu)
+// ③ resolve report 'moi' của các dòng đó → 'dung'. Trả số bài đã sửa.
+// Mastery đọc bai_lam_cau LIVE (suy động) → tự đúng theo, không phải sync gì thêm.
+export async function chapNhanDapAn(maCau: string, dapAnRaw: string): Promise<{ backfilled: number }> {
+  const norm = smartNormalize(dapAnRaw)
+  if (!norm) throw new Error('Đáp án rỗng sau chuẩn hoá — không chấp nhận được.')
+  // ① cache (idempotent — unique ma_cau+answer_normalized)
+  const { error: e1 } = await supabase.from('question_accepted_answers')
+    .upsert({ ma_cau: maCau, answer_normalized: norm, answer_raw: dapAnRaw, source: 'manual' },
+      { onConflict: 'ma_cau,answer_normalized', ignoreDuplicates: true })
+  if (e1) throw e1
+  // ② backfill: mọi dòng wrong cùng câu → lọc client theo normalize (smartNormalize là JS, DB không có)
+  const { data: wrongs, error: e2 } = await supabase.from('bai_lam_cau')
+    .select('id, dap_an_hs, cau:bai_test_cau_id!inner(ma_cau, diem)')
+    .eq('verdict', 'wrong').eq('cau.ma_cau', maCau).limit(LIMIT)
+  if (e2) throw e2
+  const targets = ((wrongs ?? []) as any[]).filter((r) => smartNormalize(String(r.dap_an_hs ?? '')) === norm)
+  if (!targets.length) return { backfilled: 0 }
+  // update theo nhóm diem (thường đồng nhất =1) — verdict correct, đường 'manual' (người duyệt)
+  const byDiem = new Map<number, string[]>()
+  for (const t of targets) {
+    const d = Number(t.cau?.diem ?? 1)
+    const arr = byDiem.get(d) ?? []; arr.push(t.id); byDiem.set(d, arr)
+  }
+  for (const [d, ids] of byDiem) {
+    const { error } = await supabase.from('bai_lam_cau')
+      .update({ verdict: 'correct', diem: d, cham_boi: 'manual', cham_at: new Date().toISOString() })
+      .in('id', ids)
+    if (error) throw error
+  }
+  // ③ resolve report của các dòng vừa sửa
+  const uid = (await supabase.auth.getUser()).data.user?.id ?? null
+  await supabase.from('bai_test_report')
+    .update({ trang_thai: 'dung', duyet_boi: uid, duyet_at: new Date().toISOString() })
+    .in('bai_lam_cau_id', targets.map((t) => t.id)).eq('trang_thai', 'moi')
+  return { backfilled: targets.length }
+}
+
+// TA giữ nguyên "HS sai" cho các report của 1 đáp án (đóng 🚩, verdict giữ wrong).
+export async function tuChoiReports(reportIds: string[]): Promise<void> {
+  if (!reportIds.length) return
+  const uid = (await supabase.auth.getUser()).data.user?.id ?? null
+  const { error } = await supabase.from('bai_test_report')
+    .update({ trang_thai: 'sai', duyet_boi: uid, duyet_at: new Date().toISOString() })
+    .in('id', reportIds)
+  if (error) throw error
+}

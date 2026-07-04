@@ -23,6 +23,7 @@ import BuoiHocScreen from './gami/BuoiHocScreen'
 import GamiDiemScreen from './gami/GamiDiemScreen'
 import ThanhTichScreen from './gami/ThanhTichScreen'
 import KetQuaScreen from './ketqua/KetQuaScreen'
+import DuyetChamScreen from './duyetcham/DuyetChamScreen'
 import QuanLyLevelScreen from './gami/QuanLyLevelScreen'
 import PhanQuyenScreen from './phanquyen/PhanQuyenScreen'
 import BaoLoiScreen from './baoloi/BaoLoiScreen'
@@ -337,6 +338,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'diemso' ? <GamiDiemScreen />
       : staffLeaf === 'thanhtich' ? <ThanhTichScreen />
       : staffLeaf === 'ketqua' ? <KetQuaScreen />
+      : staffLeaf === 'duyetcham' ? <DuyetChamScreen />
       : staffLeaf === 'quanlylevel' ? <QuanLyLevelScreen />
       : staffLeaf === 'phanquyen' ? <PhanQuyenScreen />
       : staffLeaf === 'baoloi' ? <BaoLoiScreen />
