@@ -47,10 +47,11 @@ export const accessibleLeaves = (q: MyQuyen | null): AdminLeaf[] => {
 }
 export const canAccessAdmin = (q: MyQuyen | null): boolean => accessibleLeaves(q).length > 0
 // "Làm tài liệu" = node CHA, con hiện thẳng trong tree (1 click tới loại tài liệu cần).
+// Đề thi KHÔNG ở đây — đó là luồng NHẬP KHO (đề thật → bóc → đổ vào kho), ngược chiều với
+// giáo trình/ET (kho có sẵn → ghép ra tài liệu). Xem leaf `nhapkho` (tab "Nhập đề thi").
 export const LAMTAILIEU_CHILDREN: NavLeaf[] = [
   { id: 'lamtailieu:giao_trinh', ten: 'Giáo trình' },
   { id: 'lamtailieu:et', ten: 'ET' },
-  { id: 'lamtailieu:de_thi', ten: 'Đề thi' },
   { id: 'lamtailieu:bo_tro', ten: 'Tài liệu bổ trợ' },
 ]
 export const adminNavFromQuyen = (q: MyQuyen | null): NavGroup[] => {
