@@ -7,11 +7,13 @@ import { listLop, type Lop } from '../../lib/nhansu'
 import { useStore } from '../../store/useStore'
 import PrintView from './PrintView'
 import ETPrintView from './ETPrintView'
+import DeThiPrintView from './DeThiPrintView'
 import TaiLieuBuilder from './TaiLieuBuilder'
 import { ETEditor, type ETView } from './ETScreen'
+import { DeThiEditor } from './DeThiScreen'
 
 // Loại tài liệu có thể mở builder để sửa từ Kho.
-const EDITABLE = new Set(['et', 'giao_trinh', 'giao_trinh_buoi', 'btvn'])
+const EDITABLE = new Set(['et', 'giao_trinh', 'giao_trinh_buoi', 'btvn', 'de_thi'])
 
 type Row = TaiLieu & { lop_id?: string | null; ngay?: string | null }
 const LOAI_TEN: Record<string, string> = { giao_trinh: 'Giáo trình', giao_trinh_buoi: 'Giáo trình buổi', btvn: 'BTVN', et: 'ET', de_thi: 'Đề thi', bo_tro: 'Tài liệu bổ trợ', mt: 'MT', chuyen_de: 'Chuyên đề' }
@@ -32,6 +34,7 @@ export default function KhoTaiLieuScreen() {
   const [dlDoc, setDlDoc] = useState<{ id: string; loai: string } | null>(null)
   const [editEt, setEditEt] = useState<ETView | null>(null) // sửa ET tại chỗ (mở ETEditor)
   const [editGt, setEditGt] = useState<string | null>(null) // sửa giáo trình/BTVN (mở TaiLieuBuilder)
+  const [editDeThi, setEditDeThi] = useState<string | null>(null) // sửa đề thi (mở DeThiEditor)
   const [phBusy, setPhBusy] = useState<string | null>(null) // id doc đang phát hành
   const [phRes, setPhRes] = useState<{ ok: boolean; msg: string; skipped?: { ma_cau: string; warn: string }[] } | null>(null)
   const lopTen = (id?: string | null) => lops.find((l) => l.id === id)?.ten_lop ?? '?'
@@ -69,6 +72,7 @@ export default function KhoTaiLieuScreen() {
   }
   function sua(r: Row) {
     if (r.loai === 'et') setEditEt({ ...(r as any), ten_lop: lopTen(r.lop_id) })
+    else if (r.loai === 'de_thi') setEditDeThi(r.id)
     else setEditGt(r.id)
   }
   // Đổi TÊN FILE ngay tại kho (= tai_lieu.ten, cột hiển thị) — khỏi vào builder (builder có ô tên buổi riêng dễ nhầm).
@@ -82,6 +86,7 @@ export default function KhoTaiLieuScreen() {
   // Sửa tại chỗ: mở builder full-screen, đóng → tải lại bảng.
   if (editEt) return <ETEditor et={editEt} onClose={() => { setEditEt(null); reload() }} />
   if (editGt) return <TaiLieuBuilder id={editGt} onClose={() => { setEditGt(null); reload() }} />
+  if (editDeThi) return <DeThiEditor id={editDeThi} onClose={() => { setEditDeThi(null); reload() }} />
 
   const tab = (on: boolean) => `h-7 rounded-md px-2.5 text-xs font-semibold transition ${on ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`
   return (
@@ -153,11 +158,15 @@ export default function KhoTaiLieuScreen() {
 
       {print && (print.loai === 'et'
         ? <ETPrintView id={print.id} onClose={() => setPrint(null)} />
+        : print.loai === 'de_thi'
+        ? <DeThiPrintView id={print.id} onClose={() => setPrint(null)} />
         : <PrintView id={print.id} onClose={() => setPrint(null)} />)}
 
       {/* Tải PDF THẲNG từ hàng (headless: dựng ẩn → tải → tự đóng), không mở preview. */}
       {dlDoc && (dlDoc.loai === 'et'
         ? <ETPrintView id={dlDoc.id} headless onClose={() => setDlDoc(null)} />
+        : dlDoc.loai === 'de_thi'
+        ? <DeThiPrintView id={dlDoc.id} headless onClose={() => setDlDoc(null)} />
         : <PrintView id={dlDoc.id} headless onClose={() => setDlDoc(null)} />)}
 
       {phRes && (

@@ -5,13 +5,14 @@
 // ============================================================================
 import { supabase } from './supabase'
 import { getBTVNCaus, getETCaus, getGiaoTrinhBuoiCaus, khoCuaMon } from './tailieu'
+import { getDeThiCaus } from './dethi'
 import type { CauHoi } from './kho/api'
 import { extractKey, gradeTracNghiem, gradeTraLoiNgan, gradeDungSai, smartNormalize, LETTERS } from '../gami/testgrade'
 
 const LIMIT = 1000
 const SUPPORTED = new Set(['trac_nghiem', 'dung_sai', 'tra_loi_ngan']) // auto-chấm được
 
-export type TestLoai = 'et' | 'btvn' | 'giao_trinh'
+export type TestLoai = 'et' | 'btvn' | 'giao_trinh' | 'de_thi'
 export type BaiTest = {
   id: string; nguon_tai_lieu_id: string | null; lop_id: string; ngay: string
   loai: TestLoai; mon: string; trang_thai: 'mo' | 'dong'; so_cau: number
@@ -36,25 +37,30 @@ export async function getBaiTestByDoc(nguonTaiLieuId: string, lopId: string, nga
 
 export type PhatHanhKetQua = { baiTest: BaiTest; added: number; skipped: { ma_cau: string; warn: string }[] }
 
-// Doc loai → (câu resolver · loai bai_test · nhãn). ET=THI (giấu key); BTVN/giáo trình=tham khảo reveal-ngay.
-const DOC_MAP: Record<string, { getCaus: (id: string) => Promise<CauHoi[]>; testLoai: 'et' | 'btvn' | 'giao_trinh'; ten: string }> = {
+// Doc loai → (câu resolver · loai bai_test · nhãn). ET/đề-thi=THI (giấu key); BTVN/giáo trình=tham khảo reveal-ngay.
+const DOC_MAP: Record<string, { getCaus: (id: string) => Promise<CauHoi[]>; testLoai: TestLoai; ten: string }> = {
   btvn: { getCaus: getBTVNCaus, testLoai: 'btvn', ten: 'BTVN' },
   et: { getCaus: getETCaus, testLoai: 'et', ten: 'ET' },
   giao_trinh_buoi: { getCaus: getGiaoTrinhBuoiCaus, testLoai: 'giao_trinh', ten: 'giáo trình (bài tập)' },
+  de_thi: { getCaus: getDeThiCaus, testLoai: 'de_thi', ten: 'Đề thi' },
 }
 export const PHAT_HANH_DUOC = new Set(Object.keys(DOC_MAP))
 
-// Phát hành 1 doc (BTVN / ET / giáo trình buổi) đã bám (lớp+ngày) thành test online.
-export async function phatHanhTest(taiLieuId: string): Promise<PhatHanhKetQua> {
+// Phát hành 1 doc (BTVN / ET / giáo trình buổi / đề thi) thành test online.
+// Đề thi KHÔNG tự bám lớp+ngày (đề dùng lại cho nhiều lớp/lần) → `override` bắt buộc cho loại này;
+// các loại còn lại lấy lop_id/ngay sẵn có trên doc (như trước, override optional).
+export async function phatHanhTest(taiLieuId: string, override?: { lopId: string; ngay: string }): Promise<PhatHanhKetQua> {
   const { data: tl, error: e0 } = await supabase.from('tai_lieu').select('id, lop_id, ngay, mon, loai').eq('id', taiLieuId).single()
   if (e0) throw e0
   const doc = tl as { id: string; lop_id: string | null; ngay: string | null; mon: string; loai: string }
   const map = DOC_MAP[doc.loai]
-  if (!map) throw new Error('Chỉ phát hành online được BTVN, ET hoặc giáo trình buổi.')
-  if (!doc.lop_id || !doc.ngay) throw new Error('Doc chưa bám lớp+ngày — không phát hành được.')
+  if (!map) throw new Error('Chỉ phát hành online được BTVN, ET, giáo trình buổi hoặc đề thi.')
+  const lopId = override?.lopId ?? doc.lop_id
+  const ngay = override?.ngay ?? doc.ngay
+  if (!lopId || !ngay) throw new Error('Chưa có lớp+ngày — không phát hành được.')
 
-  const existed = await getBaiTestByDoc(doc.id, doc.lop_id, doc.ngay, map.testLoai)
-  if (existed) throw new Error('Doc này đã phát hành rồi (1 doc×lớp×ngày = 1 test). Xoá test cũ nếu muốn phát lại.')
+  const existed = await getBaiTestByDoc(doc.id, lopId, ngay, map.testLoai)
+  if (existed) throw new Error('Doc này đã phát hành rồi cho lớp+ngày này (1 doc×lớp×ngày = 1 test). Xoá test cũ nếu muốn phát lại.')
 
   const caus = await map.getCaus(taiLieuId)
   // Snapshot LÝ THUYẾT dạng (HS ko đọc kho) — batch theo môn của doc.
@@ -69,11 +75,14 @@ export async function phatHanhTest(taiLieuId: string): Promise<PhatHanhKetQua> {
   const rows: Omit<BaiTestCau, 'id'>[] = []
   let thu_tu = 0
   for (const c of caus) {
-    if (!SUPPORTED.has(c.loai_cau)) { skipped.push({ ma_cau: c.ma_cau, warn: `loại "${c.loai_cau}" chưa hỗ trợ online` }); continue }
-    const k = extractKey(c)
+    // Tự luận CÓ đáp án ngắn (dap_an) → rút gọn thành trả-lời-ngắn CHỈ ở snapshot online (kho/in giấy giữ nguyên
+    // tự luận đủ lời giải) — spec đề thi §8.1: v1 chỉ chấm đáp án CUỐI, không chấm bước.
+    const effLoai = c.loai_cau === 'tu_luan' && c.dap_an?.trim() ? 'tra_loi_ngan' : c.loai_cau
+    if (!SUPPORTED.has(effLoai)) { skipped.push({ ma_cau: c.ma_cau, warn: `loại "${c.loai_cau}" chưa hỗ trợ online` }); continue }
+    const k = extractKey({ ...c, loai_cau: effLoai })
     if (!k.ok) { skipped.push({ ma_cau: c.ma_cau, warn: k.warn! }); continue }
     rows.push({
-      bai_test_id: '', thu_tu: ++thu_tu, ma_cau: c.ma_cau, loai_cau: c.loai_cau,
+      bai_test_id: '', thu_tu: ++thu_tu, ma_cau: c.ma_cau, loai_cau: effLoai,
       noi_dung: c.noi_dung ?? null, lua_chon: (c.lua_chon as string[] | null) ?? null,
       menh_de: c.menh_de ?? null, dap_an_key: k.key,
       loi_giai: c.loi_giai ?? null, anh_dap_an: c.anh_dap_an ?? null,
@@ -83,7 +92,7 @@ export async function phatHanhTest(taiLieuId: string): Promise<PhatHanhKetQua> {
   if (!rows.length) throw new Error(`Không có câu hợp lệ để phát hành${skipped.length ? ` (${skipped.length} câu bị bỏ qua)` : ''}.`)
 
   const { data: bt, error: e1 } = await supabase.from('bai_test').insert({
-    nguon_tai_lieu_id: doc.id, lop_id: doc.lop_id, ngay: doc.ngay, loai: map.testLoai, mon: doc.mon, so_cau: rows.length,
+    nguon_tai_lieu_id: doc.id, lop_id: lopId, ngay, loai: map.testLoai, mon: doc.mon, so_cau: rows.length,
   }).select().single()
   if (e1) throw e1
   const baiTest = bt as BaiTest

@@ -24,6 +24,7 @@ import GamiDiemScreen from './gami/GamiDiemScreen'
 import ThanhTichScreen from './gami/ThanhTichScreen'
 import KetQuaScreen from './ketqua/KetQuaScreen'
 import DuyetChamScreen from './duyetcham/DuyetChamScreen'
+import DeThiScreen from './tailieu/DeThiScreen'
 import QuanLyLevelScreen from './gami/QuanLyLevelScreen'
 import PhanQuyenScreen from './phanquyen/PhanQuyenScreen'
 import BaoLoiScreen from './baoloi/BaoLoiScreen'
@@ -323,8 +324,9 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'nhapkho' ? <NhapKhoScreen />
       : (staffLeaf === 'lamtailieu' || staffLeaf === 'lamtailieu:giao_trinh') ? <TaiLieuScreen />
       : staffLeaf === 'lamtailieu:et' ? <ETScreen />
+      : staffLeaf === 'lamtailieu:de_thi' ? <DeThiScreen />
       : staffLeaf === 'tl' ? <KhoTaiLieuScreen />
-      : (staffLeaf === 'lamtailieu:de_thi' || staffLeaf === 'lamtailieu:bo_tro') ? <section className="flex min-h-0 items-center justify-center p-8 text-sm text-slate-400">Loại tài liệu này dựng sau.</section>
+      : staffLeaf === 'lamtailieu:bo_tro' ? <section className="flex min-h-0 items-center justify-center p-8 text-sm text-slate-400">Loại tài liệu này dựng sau.</section>
       : staffLeaf === 'ns' ? <NhanSuScreen />
       : staffLeaf === 'phancong' ? <PhanCongScreen />
       : staffLeaf === 'tkb' ? <TKBScreen />

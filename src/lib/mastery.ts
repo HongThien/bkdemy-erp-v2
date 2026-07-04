@@ -22,9 +22,10 @@ export type DangMastery = {
 export const SRC_LABEL: Record<EvalSrc, string> = { ingame: 'IG', et: 'ET', dg: 'ĐG', btvn: 'BT' }
 
 // ── NGUỒN ĐO ONLINE (test online 07-04): bai_lam_cau (verdict ≠ null) = phép đo ──
-// ET online → src 'et' (thi có giám sát, VÀO mastery). BTVN + giáo-trình online → src 'btvn'
-// (tham khảo — chỉ vào khi bật toggle, đúng chính sách BTVN). Duyệt lại (manual/cache) sửa
-// verdict tại chỗ → mastery tự đúng theo (suy động, không sync).
+// ET + ĐỀ THI online → src 'et' (thi có giám sát, VÀO mastery — cùng chế độ THI, xem THI_LOAI HocSinhApp).
+// BTVN + giáo-trình online → src 'btvn' (tham khảo — chỉ vào khi bật toggle, đúng chính sách BTVN).
+// Duyệt lại (manual/cache) sửa verdict tại chỗ → mastery tự đúng theo (suy động, không sync).
+const THI_LOAI = new Set(['et', 'de_thi'])
 type OnlineEvalRow = { hoc_sinh_id: string; ma_dang: string | null; value: number; t: string; src: EvalSrc; mon: string }
 async function fetchOnlineEvals(hs: string | string[], sinceIso?: string | null): Promise<OnlineEvalRow[]> {
   // Embed 2 tầng FK ĐƠN (bai_lam_id → bai_test_id) + filter trên bảng nhúng qua !inner (pattern loadMasteryCells).
@@ -40,11 +41,12 @@ async function fetchOnlineEvals(hs: string | string[], sinceIso?: string | null)
     const val = RESULT_VALUE[r.verdict as keyof typeof RESULT_VALUE]
     if (val === undefined || !r.lam) continue
     const loai = r.lam.test?.loai
-    // ET chỉ tính khi ĐÃ NỘP (verdict chỉ sinh lúc et_nop, nhưng belt-and-suspenders với backfill duyệt).
-    if (loai === 'et' && r.lam.trang_thai !== 'da_nop') continue
+    const laThi = THI_LOAI.has(loai)
+    // Chế độ THI chỉ tính khi ĐÃ NỘP (verdict chỉ sinh lúc et_nop, nhưng belt-and-suspenders với backfill duyệt).
+    if (laThi && r.lam.trang_thai !== 'da_nop') continue
     out.push({
       hoc_sinh_id: r.lam.hoc_sinh_id, ma_dang: r.cau?.ma_dang ?? null,
-      value: val, t: r.cham_at, src: loai === 'et' ? 'et' : 'btvn', mon: r.lam.test?.mon ?? '',
+      value: val, t: r.cham_at, src: laThi ? 'et' : 'btvn', mon: r.lam.test?.mon ?? '',
     })
   }
   return out

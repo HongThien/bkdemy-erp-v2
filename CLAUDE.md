@@ -163,3 +163,10 @@
 ### Spec build (trong repo — nguồn cho đợt code hiện tại)
 - `spec-kho-v2.md` — Kho Canonical Knowledge (Đại + Hình). Schema đã build vào DB v2.
 - `erp-v2-ui-spec.md` — Shell UI/UX **view-first**: React + Vite + Zustand + Tailwind, **mock data, CHƯA đụng Supabase**. Đơn vị = ROLE; derive nav/queue theo role; 2 loại việc (vận hành derive / phát triển giao tay) tách hẳn. Kho = 1 lá "Bản đồ kiến thức" trong cây Admin.
+## Luật xoá (bắt buộc)
+Trước khi XOÁ bất cứ gì — xoá file, drop/alter/delete bảng/cột/dòng DB,
+hay lệnh git phá lịch sử (reset --hard, push -f, branch -D, clean) — DỪNG lại:
+(1) liệt kê CHÍNH XÁC cái gì sẽ mất,
+(2) nói VÌ SAO cần xoá,
+(3) chờ tao gật rõ ràng rồi mới làm.
+Không gộp xoá vào bước lớn hơn. Không xoá "cho gọn". Chưa chắc thì hỏi, đừng xoá.

@@ -18,7 +18,9 @@ type Chon = number | string | (string | null)[] | null // TN=index · TLN=chuỗ
 type CauState = { chon: Chon; kq: { verdict: string; key: unknown; baiLamCauId: string } | null; baoRoi?: boolean }
 type MenhDeSnap = { noi_dung: string; loi_giai?: string | null }
 
-const LOAI_TEN: Record<string, string> = { btvn: 'BTVN', et: 'ET', giao_trinh: 'Bài tập' }
+const LOAI_TEN: Record<string, string> = { btvn: 'BTVN', et: 'ET', giao_trinh: 'Bài tập', de_thi: 'Đề thi' }
+// Chế độ THI (giấu đáp án tới khi nộp, chấm server, chỉ tính lần nộp đầu) — ET và đề thi trường/sở đều vậy.
+const THI_LOAI = new Set(['et', 'de_thi'])
 
 export default function HocSinhApp({ hocSinhId, hoTen }: { hocSinhId: string; hoTen: string }) {
   const [tests, setTests] = useState<BaiTestCuaHS[] | null>(null)
@@ -29,7 +31,7 @@ export default function HocSinhApp({ hocSinhId, hoTen }: { hocSinhId: string; ho
 
   if (active) {
     const back = () => { setActive(null); listBaiTestCuaHS().then(setTests) }
-    return active.loai === 'et'
+    return THI_LOAI.has(active.loai)
       ? <LamET test={active} hocSinhId={hocSinhId} onXong={back} />
       : <LamBai baiTestId={active.id} hocSinhId={hocSinhId} onXong={back} />
   }
@@ -72,20 +74,20 @@ export default function HocSinhApp({ hocSinhId, hoTen }: { hocSinhId: string; ho
         {shown.map((t) => {
           const lam = t.bai_lam
           const daNop = xongCua(t)
-          const laET = t.loai === 'et'
+          const laThi = THI_LOAI.has(t.loai)
           return (
             <button key={t.id} onClick={() => setActive(t)}
-              className={`rounded-2xl border bg-white p-4 text-left transition active:scale-[0.99] ${laET ? 'border-violet-200' : 'border-slate-200'}`}>
+              className={`rounded-2xl border bg-white p-4 text-left transition active:scale-[0.99] ${laThi ? 'border-violet-200' : 'border-slate-200'}`}>
               <div className="flex items-center justify-between">
                 <span className="text-[15px] font-semibold text-slate-900">
-                  {laET && <span className="mr-1.5 rounded bg-violet-100 px-1.5 py-0.5 text-[11px] font-semibold text-violet-700">THI</span>}
+                  {laThi && <span className="mr-1.5 rounded bg-violet-100 px-1.5 py-0.5 text-[11px] font-semibold text-violet-700">THI</span>}
                   {LOAI_TEN[t.loai] ?? 'Bài'} {t.mon} · {t.lop_ten}
                 </span>
                 <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${daNop ? 'bg-emerald-50 text-emerald-700' : lam ? 'bg-amber-50 text-amber-700' : 'bg-indigo-50 text-indigo-700'}`}>
                   {daNop ? '✓ hoàn thành' : lam ? 'đang làm' : 'mới'}
                 </span>
               </div>
-              <p className="mt-1 text-[13px] text-slate-500">Buổi {fmtNgay(t.ngay)} · {t.so_cau} câu{laET ? ' · nộp 1 lần' : ''}</p>
+              <p className="mt-1 text-[13px] text-slate-500">Buổi {fmtNgay(t.ngay)} · {t.so_cau} câu{laThi ? ' · nộp 1 lần' : ''}</p>
               <p className="mt-2 text-[13px] font-medium text-indigo-600">{daNop ? 'Xem lại' : lam ? 'Tiếp tục' : 'Bắt đầu'} →</p>
             </button>
           )
