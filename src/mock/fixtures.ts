@@ -100,6 +100,7 @@ export const adminLeaves: AdminLeaf[] = [
   { id: 'duyetcham',   nhom: 'Quản lý chất lượng', ten: 'Duyệt chấm online',  founderOnly: false }, // review trả-lời-ngắn: chấp nhận đáp án + backfill
 
   // ── CORE TEAM: nhân sự/tổ chức/vận hành nội bộ ──
+  { id: 'hocphi',      nhom: 'Core team', ten: 'Học phí',                     founderOnly: false },
   { id: 'ns',          nhom: 'Core team', ten: 'Nhân sự',                     founderOnly: false },
   { id: 'orgchart',    nhom: 'Core team', ten: 'Sơ đồ tổ chức',               founderOnly: true },
   { id: 'phancong',    nhom: 'Core team', ten: 'Phân công',                   founderOnly: false },

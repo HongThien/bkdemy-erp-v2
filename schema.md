@@ -2,7 +2,7 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-69 bảng · 0 enum · 4 trigger · 17 function
+76 bảng · 0 enum · 6 trigger · 19 function
 
 ## bai_lam
 
@@ -455,6 +455,67 @@
 | ma_y | text |  |  | PK FK→hinh_y.ma_y |
 | id_bo_de | text |  |  | PK FK→hinh_danh_muc_bo_de.id |
 
+## hoa_don
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| phu_huynh_id | uuid |  |  | FK→phu_huynh.id |
+| ky | date |  |  |  |
+| trang_thai | text |  | 'chua_thu'::text |  |
+| tong_tien | numeric |  | 0 |  |
+| dong_at | timestamp with time zone | Y |  |  |
+| created_by | uuid | Y |  |  |
+| created_at | timestamp with time zone |  | now() |  |
+
+## hoa_don_dong
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| hoa_don_id | uuid |  |  | FK→hoa_don.id |
+| loai | text |  |  |  |
+| hoc_sinh_id | uuid | Y |  | FK→hoc_sinh.id |
+| lop_id | uuid | Y |  | FK→lop.id |
+| mo_ta | text | Y |  |  |
+| so_luong | numeric | Y |  |  |
+| don_gia | numeric | Y |  |  |
+| he_so | numeric | Y |  |  |
+| thanh_tien | numeric |  |  |  |
+| snapshot | jsonb | Y |  |  |
+| created_at | timestamp with time zone |  | now() |  |
+
+## hoa_don_log
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| hoa_don_id | uuid |  |  | FK→hoa_don.id |
+| hanh_dong | text |  |  |  |
+| truoc | jsonb | Y |  |  |
+| sau | jsonb |  |  |  |
+| actor | uuid | Y |  |  |
+| ts | timestamp with time zone |  | now() |  |
+
+## hoc_phi_xet_duyet
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |
+| lop_id | uuid |  |  | FK→lop.id |
+| ky | date |  |  |  |
+| ly_do | text |  |  |  |
+| so_buoi_lop | integer | Y |  |  |
+| so_buoi_window | integer | Y |  |  |
+| so_buoi_nghi | integer | Y |  |  |
+| trang_thai | text |  | 'cho_duyet'::text |  |
+| so_buoi_chot | integer | Y |  |  |
+| quyet_dinh | text | Y |  |  |
+| nguoi_duyet | uuid | Y |  |  |
+| duyet_at | timestamp with time zone | Y |  |  |
+| created_at | timestamp with time zone |  | now() |  |
+
 ## hoc_sinh
 
 | cột | kiểu | null | default | khóa |
@@ -474,6 +535,8 @@
 | truong_hoc | text | Y |  |  |
 | phu_huynh_id | uuid | Y |  | FK→phu_huynh.id |
 | anh_url | text | Y |  |  |
+| he_so_hoc_phi | numeric |  | 1 |  |
+| he_so_nguon | text |  | 'auto'::text |  |
 
 ## hoc_sinh_lop
 
@@ -612,6 +675,8 @@
 | created_at | timestamp with time zone |  | now() |  |
 | updated_at | timestamp with time zone |  | now() |  |
 | ngay_khai_giang | date | Y |  |  |
+| muc_hoc_phi_id | uuid | Y |  | FK→muc_hoc_phi.id |
+| muc_hoc_lieu_id | uuid | Y |  | FK→muc_hoc_lieu.id |
 
 ## lop_bac
 
@@ -627,6 +692,25 @@
 |---|---|---|---|---|
 | min_exp | integer |  |  | PK |
 | xu | integer |  |  |  |
+
+## muc_hoc_lieu
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| ten | text |  |  |  |
+| gia | numeric |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |
+
+## muc_hoc_phi
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| ten | text |  |  |  |
+| don_gia_buoi | numeric |  |  |  |
+| gia_duoi | numeric |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |
 
 ## muc_nang_luc
 
@@ -783,6 +867,19 @@
 | thu_tu | integer |  | 0 |  |
 | active | boolean |  | true |  |
 
+## thanh_toan
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| hoa_don_id | uuid |  |  | FK→hoa_don.id |
+| so_tien | numeric |  |  |  |
+| ngay | date |  | CURRENT_DATE |  |
+| phuong_thuc | text | Y |  |  |
+| nguoi_thu | uuid | Y |  |  |
+| ghi_chu | text | Y |  |  |
+| created_at | timestamp with time zone |  | now() |  |
+
 ## thoi_khoa_bieu
 
 | cột | kiểu | null | default | khóa |
@@ -886,7 +983,9 @@
 | bảng | trigger | timing | event | function |
 |---|---|---|---|---|
 | bao_loi | trg_log_bao_loi | BEFORE | UPDATE | log_bao_loi |
+| hoa_don | trg_log_hoa_don | AFTER | INSERT/UPDATE | log_hoa_don |
 | hoc_sinh | trg_hs_nghi_tu_roi_lop | AFTER | UPDATE | hs_nghi_tu_roi_lop |
+| hoc_sinh | trg_log_he_so_hoc_phi | AFTER | UPDATE | log_he_so_hoc_phi |
 | hoc_sinh_lop | trg_log_hoc_sinh_lop | AFTER | INSERT/UPDATE | log_hoc_sinh_lop |
 | ung_vien | trg_log_ung_vien | AFTER | INSERT/UPDATE | log_ung_vien |
 
@@ -902,6 +1001,8 @@
 - `jwt_uid()` → uuid
 - `la_thanh_vien()` → boolean
 - `log_bao_loi()` → trigger
+- `log_he_so_hoc_phi()` → trigger
+- `log_hoa_don()` → trigger
 - `log_hoc_sinh_lop()` → trigger
 - `log_ung_vien()` → trigger
 - `my_hoc_sinh_id()` → uuid

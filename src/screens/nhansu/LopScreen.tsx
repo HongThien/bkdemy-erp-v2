@@ -10,6 +10,7 @@ import {
 } from '../../lib/nhansu'
 import { Shell, Field, inp, Seg, Actions, BacChip } from '../kho/ui'
 import SearchSelect from '../../components/SearchSelect'
+import { listMucHocPhi, listMucHocLieu, type MucHocPhi, type MucHocLieu } from '../../lib/hocphi'
 
 const BAC_OPTS = ['S', 'A', 'B', 'C'] as const
 
@@ -371,10 +372,19 @@ function EditLopModal({ lop, onClose, onSaved, onDeleted }: { lop: Lop; onClose:
   const [coSo, setCoSo] = useState(lop.co_so ?? '')
   const [khaiGiang, setKhaiGiang] = useState(lop.ngay_khai_giang ?? '')
   const [tt, setTt] = useState<Lop['trang_thai']>(lop.trang_thai)
+  const [mucHocPhi, setMucHocPhi] = useState<MucHocPhi[]>([])
+  const [mucHocLieu, setMucHocLieu] = useState<MucHocLieu[]>([])
+  const [mucPhiId, setMucPhiId] = useState<string | null>(lop.muc_hoc_phi_id ?? null)
+  const [mucLieuId, setMucLieuId] = useState<string | null>(lop.muc_hoc_lieu_id ?? null)
   const [busy, setBusy] = useState(false)
+  useEffect(() => { listMucHocPhi().then(setMucHocPhi); listMucHocLieu().then(setMucHocLieu) }, [])
+  const tienVN = (n: number) => n.toLocaleString('vi-VN') + 'đ'
   async function save() {
     setBusy(true)
-    try { await updateLop(lop.id, { ten_lop: ten.trim(), mon: mon.trim(), bac, co_so: coSo.trim() || null, ngay_khai_giang: khaiGiang || null, trang_thai: tt }); onSaved() }
+    try {
+      await updateLop(lop.id, { ten_lop: ten.trim(), mon: mon.trim(), bac, co_so: coSo.trim() || null, ngay_khai_giang: khaiGiang || null, trang_thai: tt, muc_hoc_phi_id: mucPhiId, muc_hoc_lieu_id: mucLieuId })
+      onSaved()
+    }
     catch (e: any) { alert(e.message ?? String(e)); setBusy(false) }
   }
   return (
@@ -391,6 +401,16 @@ function EditLopModal({ lop, onClose, onSaved, onDeleted }: { lop: Lop; onClose:
       <Field label="Ngày khai giảng (trước ngày này lớp không sinh buổi/data)">
         <input type="date" value={khaiGiang} onChange={(e) => setKhaiGiang(e.target.value)} className={inp} />
       </Field>
+      <div className="grid grid-cols-2 gap-x-4">
+        <Field label="Mức học phí (đơn giá/buổi + giá đuổi)">
+          <SearchSelect value={mucPhiId} onChange={setMucPhiId} placeholder="Chưa gán mức…"
+            options={mucHocPhi.map((m) => ({ id: m.id, label: m.ten, sub: `${tienVN(m.don_gia_buoi)}/buổi · đuổi ${tienVN(m.gia_duoi)}` }))} />
+        </Field>
+        <Field label="Mức học liệu">
+          <SearchSelect value={mucLieuId} onChange={setMucLieuId} placeholder="Chưa gán mức…"
+            options={mucHocLieu.map((m) => ({ id: m.id, label: m.ten, sub: tienVN(m.gia) }))} />
+        </Field>
+      </div>
       <div className="mt-2 flex items-center justify-between">
         <button onClick={async () => { if (confirm('Xoá lớp này? (xoá luôn phân công/TKB/ghi danh của lớp)')) { await deleteLop(lop.id); onDeleted() } }} className="text-[13px] text-rose-600 hover:underline">Xoá lớp</button>
         <Actions onClose={onClose} onSave={save} disabled={busy || !ten.trim()} saving={busy} label="Lưu" />
