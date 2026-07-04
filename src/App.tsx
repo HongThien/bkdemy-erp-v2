@@ -6,9 +6,12 @@ import TopBar from './components/TopBar'
 import NhanSuHome from './screens/NhanSuHome'
 import Login from './auth/Login'
 import GeminiMeterBadge from './components/GeminiMeterBadge'
+import HocSinhApp from './screens/hocsinh/HocSinhApp'
+import { getMyHocSinhId } from './lib/testonline'
 
 export default function App() {
   const [session, setSession] = useState<Session | null | undefined>(undefined) // undefined = đang tải
+  const [hsId, setHsId] = useState<string | null | undefined>(undefined) // undefined = chưa biết · null = KHÔNG phải HS (staff)
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => setSession(data.session))
     const { data: sub } = supabase.auth.onAuthStateChange((_e, s) => setSession(s))
@@ -18,14 +21,23 @@ export default function App() {
   const { currentUserId, quyen, loadQuyen, loadMe, clearQuyen } = useStore()
   const user = getUser(currentUserId)
 
-  // Danh tính + quyền THẬT theo tài khoản đăng nhập. Reset khi đăng xuất.
+  // Người đăng nhập là HỌC SINH hay NHÂN SỰ? Resolve trước, quyết cả cây render.
   useEffect(() => {
-    if (session) { loadQuyen(); loadMe() }
-    else clearQuyen()
+    if (!session) { setHsId(undefined); return }
+    setHsId(undefined)
+    getMyHocSinhId().then((id) => setHsId(id)).catch(() => setHsId(null))
   }, [session?.user?.id]) // eslint-disable-line
+
+  // Danh tính + quyền STAFF — chỉ khi KHÔNG phải HS. Reset khi đăng xuất.
+  useEffect(() => {
+    if (session && hsId === null) { loadQuyen(); loadMe() }
+    else if (!session) clearQuyen()
+  }, [session?.user?.id, hsId]) // eslint-disable-line
 
   if (session === undefined) return <div className="flex min-h-screen items-center justify-center text-sm text-slate-400">Đang tải…</div>
   if (!session) return <Login />
+  if (hsId === undefined) return <div className="flex min-h-screen items-center justify-center text-sm text-slate-400">Đang tải…</div>
+  if (hsId) return <HocSinhApp hocSinhId={hsId} hoTen={(session.user.user_metadata?.ho_ten as string) || 'bạn'} />
   if (quyen === null) return <div className="flex min-h-screen items-center justify-center text-sm text-slate-400">Đang tải quyền…</div>
 
   return (

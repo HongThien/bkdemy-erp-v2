@@ -869,3 +869,48 @@ tsc sạch + build pass. ⏳ chưa soi PDF bằng mắt (bản in paged.js).
 - **Paste clipboard:** setup có 📎 Chọn file (PDF nhiều trang) + 📋 Dán ảnh (Ctrl+V, `readClipboardImageFile`) + window paste listener (chụp screenshot dán thẳng).
 - **Full-width:** bỏ `max-w-6xl` bé → card `max-w-[1800px]` chiếm hết cao (flex-col), CauEditor fill 2 cột căng ngang; thanh dạng+AI-giải 1 hàng trên, nav dính đáy.
 - tsc pass. ⏳ e2e bóc câu vẫn cần key Gemini (local đang suspend); phần UI xem qua HMR.
+
+## 07-04 (phiên 2) — TEST ONLINE: Bước 0 verify (spec §2) trước khi build
+
+**Chạy `_diag_testonline.mjs` (SELECT, claude_build) xác nhận 6 điểm:**
+
+1. **loai_cau THẬT ≠ spec.** DB dùng `trac_nghiem` / `tra_loi_ngan` / `tu_luan` / `dung_sai` — KHÔNG có `4_dap_an` như spec §1 viết. → code test-online phải map "trắc nghiệm 4 đáp án" = `trac_nghiem`. `loai_cau` là **text thuần, KHÔNG có CHECK** (schema.md 176) → thêm/dùng `dung_sai` khỏi nới constraint.
+2. **`trac_nghiem` lua_chon = jsonb array string, BẨN:** phần tử [0] MẤT nhãn "A." (chỉ nội dung), [1..3] = "B. …"/"C. …"/"D. …"; `dap_an` = chữ cái 'B'/'D'. Có câu `dap_an=null,lua_chon=null` (vd 12040201005) → **snapshot phải VALIDATE, cảnh báo câu thiếu key**. Chấm = map vị trí HS chọn (A/B/C/D theo index) == dap_an chữ cái → deterministic 100%.
+3. **`dung_sai` mới có 2 câu (dai) + 1 (khtn), MENH_DE = NULL** (câu cũ chưa cấu trúc). Kho đúng/sai structured (`createCauDungSai`, menh_de=[{noi_dung,dap_an D/S,ma_dang,loi_giai}]) chưa có data thật. **Thang partial (Bước 0.2) VẪN CHƯA CHỐT** → defer dung_sai (spec §11 bước 5).
+4. **`tra_loi_ngan` BẨN NẶNG cho auto-chấm:** 1332 câu (dai) → 252 chứa `$` (biểu thức LaTeX), 459 chứa chữ cái, **chỉ 766 (~57%) là số-thuần/list-số** máy so được. Vd đáp án `$3x+1$ dư $2x+3$`, `$x+4$ dư $-3$` → `smartNormalize` KHÔNG xử nổi → rơi `wrong`→report. **~43% tra_loi_ngan không auto-chấm exact.** Cấp 3 khối 12: 141 tra_loi_ngan (nhiều biểu thức hơn).
+5. **Cấp 3 = chủ yếu `trac_nghiem`:** K11 = 377 TN / 51 TLN / 1 ĐS; K12 = 460 TN / 141 TLN / 1 ĐS. → **build `trac_nghiem` trước ăn ~80% giá trị**, auto-chấm 100% khỏi report.
+6. **RLS = ENABLED toàn bộ** (dai_cau_hoi/hoc_sinh/gami_grades/tai_khoan… đều rowsecurity=true, member-gate) — note spec §2.5 "data tables DISABLE RLS" ĐÃ CŨ. Bảng HS-facing cần policy HS-scoped (`my_hoc_sinh_id()`), khác member-gate.
+
+**Login HS = NET-NEW xác nhận CỨNG:** `tai_khoan`=(id,nhan_su_id,email) chỉ trỏ nhân sự; `hoc_sinh` không kênh auth; không có `my_hoc_sinh_id()`. `auth` schema claude_build KHÔNG truy cập được (permission denied) → tạo auth user HS + link phải qua **Dashboard/admin API**, KHÔNG migration thường (bài học ② auth/storage). **Đây là blocker lớn nhất, cần Thùy quyết cơ chế đăng nhập HS.**
+
+**accepted_answers CHƯA port:** V1 = `question_accepted_answers`(ma_cau,answer_normalized,answer_raw,source,ai_reason,hit_count) + RPC `increment_qaa_hit`; `smartNormalize`/`smartCheckTLN` (TabDailyPractice.jsx) = pure-fn port thẳng.
+
+**Thùy chốt:** login HS = "test nhanh mã+PIN, lâu dài tài khoản Supabase thật" → CTO gộp: HS nhập **mã HS + PIN**, dưới nền Supabase Auth THẬT email `<ma_hs>@hs.bkdemy.local` pass=PIN → auth.uid thật → RLS chạy + đúng "tài khoản Supabase" lâu dài. Slice 1 = **BTVN + chỉ trắc nghiệm** (spec §11.2).
+
+### 07-04 (phiên 2, tiếp) — BUILD nền test online
+
+- **mig 0063 (áp DB, schema 69 bảng/12 func):** `tai_khoan.hoc_sinh_id` (song song nhan_su_id) + `my_hoc_sinh_id()`/`hs_o_lop(uuid)` (security-definer, đọc jwt_uid KHÔNG auth.uid) + bảng `bai_test`/`bai_test_cau`/`bai_lam`/`bai_lam_cau`/`bai_test_report`/`question_accepted_answers`(+`increment_qaa_hit`). RLS: staff=`la_thanh_vien()` toàn quyền · HS=policy HS-scoped (`bai_test`/`cau` đọc theo `hs_o_lop`, `bai_lam`/`cau`/`report` theo `my_hoc_sinh_id`). HS KHÔNG phải la_thanh_vien → tách sạch. Bảng mới KHÔNG được 0026 blanket phủ → khai policy TAY.
+- **Engine `src/gami/testgrade.js`** (PURE, 23 test `node scripts/verify_testgrade.mjs`): `smartNormalize`/`smartCheckTLN` (port V1) + `gradeTracNghiem`(index→chữ cái) + `gradeTraLoiNgan` + `extractKey`(validate snapshot). **Bug tách đáp án:** V1 `split(/[;,]/)` cắt nhầm thập phân VN "0,5"→["0","5"] → đổi **tách chỉ theo `;`** (kho dùng '3; 4'), giữ `,` cho thập phân.
+- **Service `src/lib/testonline.ts`** (seam): `phatHanhBTVN` (snapshot đề+key, chỉ trac_nghiem/tra_loi_ngan, validate câu thiếu key→skip+warn, idempotent qua unique index) · `getBaiTestByDoc`/`xoaBaiTest` · `getMyHocSinhId`(rpc) · `listBaiTestCuaHS`(RLS tự lọc lớp) · `getBaiTestFull` · `moBaiLam`(upsert slot idempotent) · `traLoiCau`(auto-chấm exact + upsert, BTVN reveal ngay trả key) · `nopBai`(claim atomic). tsc pass.
+- **Script `scripts/provision_hs_auth.mjs`** (SẴN, chờ key): tạo auth.users HS (email tổng hợp+PIN=mã HS+email_confirm) + insert tai_khoan.hoc_sinh_id. Cần `SUPABASE_SERVICE_ROLE` trong .env.local. Chạy `node scripts/provision_hs_auth.mjs HS0001 HS0002` provision vài HS test.
+- **CÒN:** cổng login HS (App.tsx gate) · nút "Phát hành test online" (staff, ở Kho tài liệu) · UI HS-facing mobile làm BTVN (mockup game duyệt trước) · sync btvn_ket_qua · provision (chờ service_role key từ Thùy).
+
+### 07-04 (phiên 2, tiếp 2) — provision HS · login gate · UI HS · nút phát hành · VERIFY RLS
+
+- **Provision:** Thùy đưa service_role → `provision_hs_auth.mjs` tạo 3 HS test (HS0004/11B1, HS0009/8B1, HS0010/8S1); email `<ma_hs>@hs.bkdemy.local`, PIN=mã HS, `tai_khoan.hoc_sinh_id` link OK.
+- **Mockup luồng** (visualize) Thùy duyệt: **1 câu/màn** + **nút "Xác nhận" per-câu** (tránh ấn nhầm=chọn bừa) → chấm → **hiện đáp án + lời giải chi tiết câu đó** → "Câu tiếp". Skin game để phiên design sau.
+- **mig 0064:** `bai_test_cau` thêm `loi_giai`+`anh_dap_an` (reveal lời giải). **mig 0065:** policy `lop_hs_read` (HS đọc tên lớp mình — lop có member-gate chặn HS).
+- **Login (`auth/Login.tsx`):** toggle Nhân sự/Học sinh; HS nhập **mã HS + PIN** → `signInWithPassword(<ma_hs>@hs.bkdemy.local, PIN)`.
+- **Gate (`App.tsx`):** sau session resolve `getMyHocSinhId()` → HS render `HocSinhApp`, KHÔNG load quyền staff; staff giữ nguyên.
+- **UI HS (`src/screens/hocsinh/HocSinhApp.tsx`):** list BTVN (RLS tự lọc lớp) → làm bài 1 câu/màn: chọn (trắc nghiệm nút A-D / trả lời ngắn ô nhập) → **Xác nhận** (`traLoiCau` chấm exact) → reveal đúng/sai + đáp án + **lời giải (MathText)** + ảnh giải; sai→"🚩 Em nghĩ mình đúng" (`baoSai`) → câu tiếp → màn kết quả X/Y. Khôi phục câu đã làm khi mở lại. `traLoiCau` trả `baiLamCauId` cho báo sai.
+- **Nút phát hành (staff, `KhoTaiLieuScreen`):** doc BTVN bám lớp+ngày có nút **"📱 Phát hành online"** → `phatHanhBTVN` → modal kết quả (added + câu bỏ qua kèm lý do). KHÔNG alert (đúng §6).
+- **✅ VERIFY RLS thật (`_diag_rls_hs.mjs`, anon client + auth):** seed bai_test 8B1 → **HS0009 (8B1) thấy 1 test + đọc câu · HS0010 (8S1) thấy 0** (cách ly lớp đúng) · `my_hoc_sinh_id` OK cả 2. Tầng rủi ro nhất (login+RLS) chạy đúng. tsc + build pass.
+- **Data test sẵn:** doc BTVN 8B1 (26 câu TLN) + 8S1 (42 câu TLN) — khối 8 đáp án SỐ → auto-chấm sạch. 11B1 (HS0004) chưa có doc BTVN.
+- **CÒN:** sync `btvn_ket_qua` (BTVN tham khảo — chưa nối) · trac_nghiem chưa test thật (data BTVN toàn TLN; muốn test TN cần soạn doc BTVN có câu trắc nghiệm) · skin game HS-facing · e2e trong app (Thùy) · ET online (slice sau: chấm qua RPC ẩn key, nộp-1-lần, xóa task TG).
+
+### 07-04 (phiên 2, tiếp 3) — ĐỔI logic chống trùng câu: doc → BUỔI (Thùy)
+
+- **Thùy chốt:** chống trùng câu **chỉ trong CÙNG 1 buổi** (không trùng); **KHÁC buổi ĐƯỢC dùng lại** câu đã dùng. (Trước: khoá cứng toàn doc — HANDOFF §198.)
+- **`tailieu.ts`:** `usedCausOfDoc` → **`usedCausOfBuoi(taiLieuId, buoiId, exceptPhanId?)`** (chỉ quét phan dạng+BTVN của buổi đó qua `groupBuoi`). `setDangOfBuoi` dùng `usedInBuoi` thay `usedInDoc` cho auto-suggest luyện+BTVN.
+- **`TaiLieuBuilder.tsx`:** `usedExcept(phanId)` scope theo buổi CHỨA phanId (tìm qua `groupBuois`) — KhoPicker disabled + "↻ Gợi ý" chỉ né câu cùng buổi. (Badge `cauUsage` "dùng N×" = cross-doc mềm, GIỮ nguyên.)
+- tsc + build pass. (⚠ HANDOFF §198/§382/schema-note nhắc "khoá phạm vi doc" giờ STALE → distill cuối ngày sửa.)

@@ -2,6 +2,7 @@
 // Cột thông tin + nút IN (giáo trình→PrintView, ET→ETPrintView) + Nhân bản (tái sử dụng) + Xoá.
 import { useEffect, useMemo, useState } from 'react'
 import { listAllTaiLieu, deleteTaiLieu, duplicateTaiLieu, updateTaiLieu, type TaiLieu } from '../../lib/tailieu'
+import { phatHanhBTVN } from '../../lib/testonline'
 import { listLop, type Lop } from '../../lib/nhansu'
 import { useStore } from '../../store/useStore'
 import PrintView from './PrintView'
@@ -31,7 +32,19 @@ export default function KhoTaiLieuScreen() {
   const [dlDoc, setDlDoc] = useState<{ id: string; loai: string } | null>(null)
   const [editEt, setEditEt] = useState<ETView | null>(null) // sửa ET tại chỗ (mở ETEditor)
   const [editGt, setEditGt] = useState<string | null>(null) // sửa giáo trình/BTVN (mở TaiLieuBuilder)
+  const [phBusy, setPhBusy] = useState<string | null>(null) // id doc đang phát hành
+  const [phRes, setPhRes] = useState<{ ok: boolean; msg: string; skipped?: { ma_cau: string; warn: string }[] } | null>(null)
   const lopTen = (id?: string | null) => lops.find((l) => l.id === id)?.ten_lop ?? '?'
+
+  async function phatHanh(r: Row) {
+    setPhBusy(r.id)
+    try {
+      const kq = await phatHanhBTVN(r.id)
+      setPhRes({ ok: true, msg: `Đã phát hành ${kq.added} câu cho học sinh làm online.`, skipped: kq.skipped })
+    } catch (e: any) {
+      setPhRes({ ok: false, msg: e?.message ?? String(e) })
+    } finally { setPhBusy(null) }
+  }
 
   async function reload() {
     setLoading(true)
@@ -118,6 +131,12 @@ export default function KhoTaiLieuScreen() {
                       <td className="px-3 py-2">
                         <div className="flex justify-end gap-1.5">
                           {EDITABLE.has(r.loai) && <button onClick={() => sua(r)} className="rounded-md border border-slate-200 px-2.5 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-300">✎ Sửa</button>}
+                          {r.loai === 'btvn' && r.lop_id && r.ngay && (
+                            <button onClick={() => phatHanh(r)} disabled={phBusy === r.id}
+                              className="rounded-md border border-emerald-300 bg-emerald-50 px-2.5 py-1 text-[12px] font-medium text-emerald-700 hover:bg-emerald-100 disabled:opacity-40">
+                              {phBusy === r.id ? '…' : '📱 Phát hành online'}
+                            </button>
+                          )}
                           <button onClick={() => setPrint({ id: r.id, loai: r.loai })} className="rounded-md bg-indigo-600 px-2.5 py-1 text-[12px] font-medium text-white hover:bg-indigo-500">🖨 In</button>
                           <button onClick={() => setDlDoc({ id: r.id, loai: r.loai })} className="rounded-md border border-indigo-300 px-2.5 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-50">⬇ Tải PDF</button>
                           <button onClick={() => nhanBan(r)} className="rounded-md border border-slate-200 px-2.5 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-300">Nhân bản</button>
@@ -140,6 +159,26 @@ export default function KhoTaiLieuScreen() {
       {dlDoc && (dlDoc.loai === 'et'
         ? <ETPrintView id={dlDoc.id} headless onClose={() => setDlDoc(null)} />
         : <PrintView id={dlDoc.id} headless onClose={() => setDlDoc(null)} />)}
+
+      {phRes && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 px-4" onClick={() => setPhRes(null)}>
+          <div className="w-[420px] max-w-full rounded-2xl bg-white p-5 shadow-xl" onClick={(e) => e.stopPropagation()}>
+            <p className={`text-[15px] font-semibold ${phRes.ok ? 'text-emerald-700' : 'text-rose-600'}`}>{phRes.ok ? '✓ Phát hành thành công' : 'Không phát hành được'}</p>
+            <p className="mt-1 text-sm text-slate-600">{phRes.msg}</p>
+            {phRes.skipped && phRes.skipped.length > 0 && (
+              <div className="mt-3 rounded-lg bg-amber-50 p-3">
+                <p className="text-[12px] font-semibold text-amber-700">{phRes.skipped.length} câu bị bỏ qua (không lên online):</p>
+                <ul className="mt-1 max-h-40 overflow-auto text-[12px] text-amber-800">
+                  {phRes.skipped.map((s, i) => <li key={i}>• {s.ma_cau}: {s.warn}</li>)}
+                </ul>
+              </div>
+            )}
+            <div className="mt-4 text-right">
+              <button onClick={() => setPhRes(null)} className="rounded-lg bg-slate-800 px-4 py-2 text-sm font-medium text-white">Đóng</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

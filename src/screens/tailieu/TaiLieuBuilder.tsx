@@ -51,10 +51,13 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
   async function saveCh(patch: Partial<CauHinh>) { const next = { ...ch, ...patch }; setCh(next); await updateTaiLieu(id, { cau_hinh: next }); markSaved() }
   async function applyCaus(phanId: string, maCaus: string[]) { await setCauOfPhan(phanId, maCaus); await reload(); markSaved() }
   async function onSetKieu(phanId: string, kieu: string) { await setPhanKieu(phanId, kieu); await reload(); markSaved() }
-  // Câu đã dùng ở MỌI phần khác của tài liệu (buổi này + buổi trước) → cấm chọn lại (auto & thủ công).
+  // Câu đã dùng ở phần khác CÙNG BUỔI → cấm chọn lại (auto & thủ công). Khác buổi ĐƯỢC dùng lại (Thùy 07-04).
   const usedExcept = (phanId: string): Set<string> => {
     const s = new Set<string>()
-    for (const p of (full?.phans ?? [])) if (p.id !== phanId) for (const c of p.caus) s.add(c.ma_cau)
+    const buois = groupBuois(full?.phans ?? [])
+    const b = buois.find((bu) => bu.dangs.some((d) => d.id === phanId) || Object.values(bu.btvnByMa).some((p) => p.id === phanId))
+    if (!b) return s
+    for (const p of [...b.dangs, ...Object.values(b.btvnByMa)]) if (p.id !== phanId) for (const c of p.caus) s.add(c.ma_cau)
     return s
   }
   const openPicker = (phanId: string, ma: string, selected: string[]) => setPicker({ phanId, maDangs: [ma], selected, disabled: [...usedExcept(phanId)] })

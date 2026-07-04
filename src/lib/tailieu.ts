@@ -182,9 +182,12 @@ export async function autoSuggestBtvn(maDangs: string[], exclude: Set<string>, c
 }
 // Câu ĐÃ DÙNG ở nơi khác trong CÙNG tài liệu (mọi buổi/dạng/BTVN), trừ 1 phần nếu truyền `exceptPhanId`.
 // → CẤM chọn lại câu đã dùng trong buổi này / buổi trước (áp cho cả auto lẫn thủ công).
-export async function usedCausOfDoc(taiLieuId: string, exceptPhanId?: string): Promise<Set<string>> {
+// Câu đã dùng TRONG CÙNG 1 BUỔI (Thùy 07-04: cùng buổi KHÔNG trùng; KHÁC buổi ĐƯỢC dùng lại).
+// Chỉ quét phan (dạng + BTVN) thuộc buổi đó, KHÔNG toàn doc.
+export async function usedCausOfBuoi(taiLieuId: string, buoiId: string, exceptPhanId?: string): Promise<Set<string>> {
   const phans = await listPhan(taiLieuId)
-  const ids = phans.filter((p) => p.id !== exceptPhanId).map((p) => p.id)
+  const g = groupBuoi(phans, buoiId)
+  const ids = [...Object.values(g.dangs), ...Object.values(g.btvns)].filter((id) => id !== exceptPhanId)
   if (!ids.length) return new Set()
   const { data } = await supabase.from('tai_lieu_cau').select('ma_cau').in('phan_id', ids).limit(LIMIT * 50)
   return new Set((data ?? []).map((r: { ma_cau: string }) => r.ma_cau))
@@ -229,18 +232,18 @@ export async function setDangOfBuoi(taiLieuId: string, buoiId: string, maDangs: 
     if (target.dangs[ma]) await deletePhan(target.dangs[ma])
     if (target.btvns[ma]) await deletePhan(target.btvns[ma])
   }
-  // Câu đã dùng ở buổi/dạng KHÁC trong tài liệu (đã trừ các phan vừa xoá ở trên) → auto-suggest né hết, tích luỹ qua từng dạng mới.
-  const usedInDoc = await usedCausOfDoc(taiLieuId)
+  // Câu đã dùng trong CÙNG BUỔI này (đã trừ phan vừa xoá) → auto-suggest né, tích luỹ qua từng dạng mới. Khác buổi KHÔNG né.
+  const usedInBuoi = await usedCausOfBuoi(taiLieuId, buoiId)
   const newDang: Record<string, string> = {}, newBtvn: Record<string, string> = {}
   for (const ma of toAdd) {
-    const luyen = await autoSuggestByLoai(ma, DEFAULT_LUYEN_COUNTS, cauTbl, usedInDoc)
+    const luyen = await autoSuggestByLoai(ma, DEFAULT_LUYEN_COUNTS, cauTbl, usedInBuoi)
     const dp = await addPhan({ tai_lieu_id: taiLieuId, thu_tu: 99999, loai_phan: 'dang', ref_ma: ma, tieu_de: null, noi_dung: null })
     if (luyen.length) await setCauOfPhan(dp.id, luyen)
-    luyen.forEach((m) => usedInDoc.add(m))
-    const hw = await autoSuggestBtvn([ma], usedInDoc, DEFAULT_BTVN_COUNTS, cauTbl) // exclude gồm cả câu luyện vừa thêm
+    luyen.forEach((m) => usedInBuoi.add(m))
+    const hw = await autoSuggestBtvn([ma], usedInBuoi, DEFAULT_BTVN_COUNTS, cauTbl) // exclude gồm cả câu luyện vừa thêm (cùng buổi)
     const bp = await addPhan({ tai_lieu_id: taiLieuId, thu_tu: 99999, loai_phan: 'btvn', ref_ma: ma, tieu_de: null, noi_dung: null })
     if (hw.length) await setCauOfPhan(bp.id, hw)
-    hw.forEach((m) => usedInDoc.add(m))
+    hw.forEach((m) => usedInBuoi.add(m))
     newDang[ma] = dp.id; newBtvn[ma] = bp.id
   }
   // Dựng lại thứ tự toàn tài liệu (dùng snapshot `phans` cho các buổi KHÁC — chúng không đổi).

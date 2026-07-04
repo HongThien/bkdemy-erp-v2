@@ -2,7 +2,79 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-63 bảng · 0 enum · 3 trigger · 9 function
+69 bảng · 0 enum · 3 trigger · 12 function
+
+## bai_lam
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| bai_test_id | uuid |  |  | FK→bai_test.id |
+| hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |
+| trang_thai | text |  | 'dang_lam'::text |  |
+| bat_dau_at | timestamp with time zone |  | now() |  |
+| nop_at | timestamp with time zone | Y |  |  |
+
+## bai_lam_cau
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| bai_lam_id | uuid |  |  | FK→bai_lam.id |
+| bai_test_cau_id | uuid |  |  | FK→bai_test_cau.id |
+| dap_an_hs | jsonb | Y |  |  |
+| verdict | text | Y |  |  |
+| diem | numeric | Y |  |  |
+| cham_boi | text | Y |  |  |
+| cham_at | timestamp with time zone |  | now() |  |
+
+## bai_test
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| nguon_tai_lieu_id | uuid | Y |  | FK→tai_lieu.id |
+| lop_id | uuid |  |  | FK→lop.id |
+| ngay | date |  |  |  |
+| loai | text |  |  |  |
+| mon | text |  | 'Toán'::text |  |
+| trang_thai | text |  | 'mo'::text |  |
+| mo_at | timestamp with time zone |  | now() |  |
+| dong_at | timestamp with time zone | Y |  |  |
+| deadline | timestamp with time zone | Y |  |  |
+| khoa_reveal | boolean |  | false |  |
+| created_by | uuid | Y |  |  |
+| created_at | timestamp with time zone |  | now() |  |
+
+## bai_test_cau
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| bai_test_id | uuid |  |  | FK→bai_test.id |
+| thu_tu | integer |  |  |  |
+| ma_cau | text | Y |  |  |
+| loai_cau | text |  |  |  |
+| noi_dung | text | Y |  |  |
+| lua_chon | jsonb | Y |  |  |
+| menh_de | jsonb | Y |  |  |
+| dap_an_key | jsonb | Y |  |  |
+| diem | numeric |  | 1 |  |
+| loi_giai | text | Y |  |  |
+| anh_dap_an | text | Y |  |  |
+
+## bai_test_report
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| bai_lam_cau_id | uuid |  |  | FK→bai_lam_cau.id |
+| hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |
+| y_kien | text | Y |  |  |
+| trang_thai | text |  | 'moi'::text |  |
+| duyet_boi | uuid | Y |  |  |
+| duyet_at | timestamp with time zone | Y |  |  |
+| created_at | timestamp with time zone |  | now() |  |
 
 ## bang_khong_bu
 
@@ -619,6 +691,19 @@
 | created_at | timestamp with time zone |  | now() |  |
 | updated_at | timestamp with time zone |  | now() |  |
 
+## question_accepted_answers
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| ma_cau | text |  |  |  |
+| answer_normalized | text |  |  |  |
+| answer_raw | text | Y |  |  |
+| source | text |  | 'manual'::text |  |
+| ai_reason | text | Y |  |  |
+| hit_count | integer |  | 1 |  |
+| created_at | timestamp with time zone |  | now() |  |
+
 ## tai_khoan
 
 | cột | kiểu | null | default | khóa |
@@ -627,6 +712,7 @@
 | nhan_su_id | uuid | Y |  | FK→nhan_su.id |
 | email | text | Y |  |  |
 | created_at | timestamp with time zone |  | now() |  |
+| hoc_sinh_id | uuid | Y |  | FK→hoc_sinh.id |
 
 ## tai_lieu
 
@@ -803,12 +889,15 @@
 ## Functions
 
 - `count_cau_by_dang(p_tbl text)` → jsonb
+- `hs_o_lop(p_lop uuid)` → boolean
+- `increment_qaa_hit(p_id uuid)` → void
 - `jwt_email()` → text
 - `jwt_uid()` → uuid
 - `la_thanh_vien()` → boolean
 - `log_bao_loi()` → trigger
 - `log_hoc_sinh_lop()` → trigger
 - `log_ung_vien()` → trigger
+- `my_hoc_sinh_id()` → uuid
 - `my_quyen()` → TABLE(la_admin boolean, chuc_nang text[])
 - `self_link_account()` → uuid
 
