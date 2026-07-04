@@ -219,6 +219,17 @@
   - **⭐ Header/footer khi RASTERIZE = PHẦN TỬ THẬT (onclone):** html2canvas KHÔNG vẽ nổi background NHIỀU LỚP trên `::before/::after` (logo+chip+wave) → header trắng/chữ mờ/trang lỗi. Fix: `pageChrome()` (export, nguồn chung header/footer) + `downloadPagesPdf` onclone **tắt pseudo** (`content:none`) rồi **chèn `<img>` logo + `<img>` chip + 1 wave nền đơn + `<span>` text**. Chờ `document.fonts.ready` + preload logo (chống trang trắng chữ). `buildPagedCss` (bản IN vector) vẫn dùng pseudo — KHÔNG đổi.
   - ⚠ **PDF tải = RASTER** (ảnh mỗi trang, chữ không select) — đổi lại 1 bấm không hộp thoại; bản vector vẫn ở 🖨 In. **CHƯA verify mắt** (Thùy tải thử giáo trình/BTVN/ET xác nhận header+trang). Nếu wave vẫn lỗi → phương án B: thay dải sóng bằng thanh gradient PHẲNG + logo (html2canvas vẽ gradient phẳng chuẩn).
 
+### Đã build (07-04 — fix dep · ảnh ET giãn · tên HS 2 từ cuối · Nhập kho dùng lại CauEditor + paste + full-width)
+- **⚠ Dep thiếu sau `git pull`:** máy chưa `npm install` → Vite `Failed to resolve import "html2canvas-pro"` (dep tải-PDF 07-03). Fix = `npm install`. **Bài học: pull về có dep mới thì install; lỗi resolve import = node_modules lệch package.json, KHÔNG phải code.**
+- **⭐ Ảnh ET gửi PH giãn theo số câu** (`EtAnhGuiPH`, BuoiHocScreen): trước `width:440` cố định → nhiều bài cắt cột phải. Nay `cardW = max(440, 100 + số_câu×30 + 32)` + BỎ `maxWidth:100%` (container overlay tự cuộn ngang, không co làm cắt). Tên HS trong ảnh rút 2 từ cuối.
+- **⭐ Tên HS = 2 TỪ CUỐI ở màn VẬN HÀNH** — helper CHUNG `src/lib/hoten.ts` `tenNganHS()` ("Nguyễn Thị Hồng Anh"→"Hồng Anh"). Áp: BuoiHoc (điểm danh/chấm/ET/BTVN/đánh giá/ảnh PH) · KetQua (cột lớp + rollup) · Điểm số (BXH + theo ca) · Bổ trợ Bù/Đuổi · Thành tích (lưới) · Quản lý Level. **GIỮ đầy đủ:** quản lý HS · form · SearchSelect · ghép PH · tiêu đề hồ sơ điểm/thành tích (1 chỗ nổi) · dialog xác nhận/cảnh báo · PHIẾU IN. Quy tắc: **list/table/grid/chip = ngắn · profile-title/form/search/print = đầy đủ** (nhận diện). [[no-dropdown-dung-search-select]]
+- **⭐ NHẬP KHO (nhapkho) sửa theo Thùy: "giống nhập chuỗi câu, đừng đẻ UI mới, paste clipboard, popup to gần full màn":**
+  - **Tái dùng `CauEditor`** (export `CauEditor`+`ReviewItem` từ DangHub): câu PHẲNG render bằng chính CauEditor (đề/đáp án/lời giải/ảnh + ✎ Sửa, y hệt nhập chuỗi câu). XOÁ `FlatEditor` tự viết. Chỉ giữ **thanh gán dạng** `DangPicker` phía trên (bắt buộc vì scope=CHỦ ĐỀ, nhiều dạng). Đúng/Sai giữ `DungSaiEditor` (CauEditor không xử 4 mệnh đề). Map RItem↔ReviewItem (`flatRI`/`onFlat`; sửa lời giải → `nguonGiai='nguoi'`). Thêm lưu **ảnh giải** `anh_dap_an`. Bỏ field dead `hinhThuc`.
+  - **Paste clipboard:** setup 📎 Chọn file (PDF) + 📋 Dán ảnh (Ctrl+V, `readClipboardImageFile`) + window paste listener.
+  - **Full-width:** bỏ `max-w-6xl` bé → card `max-w-[1800px]` chiếm hết cao, CauEditor fill 2 cột căng ngang; thanh dạng+AI-giải 1 hàng trên, nav dính đáy.
+  - tsc pass. ⏳ e2e bóc câu vẫn cần key Gemini (local suspend).
+- **Quy ước UI (đừng đạp lại):** popup/màn làm-việc-liên-tục để **TO gần full ngang** (Thùy nhắc: "luồng làm việc liên tục cần màn to nhất có thể", đừng để card bé mx-auto max-w hẹp). Editor câu = **dùng lại `CauEditor` dùng chung**, đừng viết editor kho mới.
+
 ### Chưa làm
 - ✅ **(XONG 07-03)** KB3 nhập-kho ingest-first — màn `nhapkho` (xem section trên). AI auto-tag dạng ĐÃ làm (không còn "điền tay 100%"). Còn: mo_ta_ngan + distiller.
 - ✅ **(XONG 07-02)** Màn Kết quả học tập — 4 view đầy đủ (xem section trên). Chỉ còn điểm-năng-lực + mặt-HS/PH.

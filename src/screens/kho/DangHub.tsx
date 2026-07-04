@@ -198,7 +198,7 @@ export function CauModal({ editing, cauTbl, onClose, onSaved }: { editing: CauHo
 }
 
 // ── NHẬP KHO (AI) — 1 màn: nhập (manual JSON / auto ảnh) → preview gốc trái → Clone → biến thể phải ──
-type ReviewItem = { noi_dung: string; dap_an: string; loi_giai: string; luaChon: string[] | null; anhDe: string | null; anhDapAn: string | null; nguonGiai: string; approved: boolean; isGoc: boolean }
+export type ReviewItem = { noi_dung: string; dap_an: string; loi_giai: string; luaChon: string[] | null; anhDe: string | null; anhDapAn: string | null; nguonGiai: string; approved: boolean; isGoc: boolean }
 type UpFile = { name: string; mimeType: string; dataBase64: string; isImage: boolean }
 const toCND = (r: ReviewItem) => ({ noi_dung: r.noi_dung.trim(), dap_an: r.dap_an.trim() || null, loi_giai: r.loi_giai.trim() || null, lua_chon: r.luaChon && r.luaChon.length ? r.luaChon : null, anh_de: r.anhDe, anh_dap_an: r.anhDapAn, nguon_giai: r.nguonGiai })
 const toRI = (c: { noi_dung: string; dap_an: string | null; loi_giai: string | null; lua_chon?: string[] | null; anh_de?: string | null; anh_dap_an?: string | null }, isGoc = false): ReviewItem =>
@@ -565,7 +565,7 @@ function AiImportModal({ mode, dangChinh, tenDang, cauTbl, onClose, onSaved }: {
 }
 
 // Card preview + sửa trực tiếp 1 câu (đề · đáp án · đáp án chi tiết)
-function CauEditor({ item, label, onChange, onToggle, fill }: {
+export function CauEditor({ item, label, onChange, onToggle, fill }: {
   item: ReviewItem; label?: string; onChange: (p: Partial<ReviewItem>) => void; onToggle?: (v: boolean) => void; fill?: boolean
 }) {
   const [edit, setEdit] = useState(false)

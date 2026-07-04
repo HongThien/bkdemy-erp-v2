@@ -1,10 +1,11 @@
 // Nhập kho (ingest-first, scope = CHỦ ĐỀ): 1 file → bóc mọi loại → gán dạng → verify → đẩy kho.
 // 1 người làm full luồng 1 phiên → giữ ở client-state (KHÔNG draft table). Duyệt TỪNG câu chiếm màn.
 // Hiển thị PREVIEW-FIRST (render công thức); bấm ✎ Sửa mới ra code LaTeX.
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useStore } from '../../store/useStore'
 import { fileToCanvases, canvasToJpegBase64, cropCanvasBox } from '../../lib/pdfRender'
-import { MathText, inp } from '../kho/ui'
+import { MathText, inp, readClipboardImageFile } from '../kho/ui'
+import { CauEditor, type ReviewItem } from '../kho/DangHub'
 import {
   KHOI_OPTIONS, DEFAULT_KHOI,
   khoTbls, listChuDeOptions, listDangByChuDe, getDangLyThuyet,
@@ -26,8 +27,7 @@ type RItem = {
   loai_cau: LoaiCau
   noi_dung: string; dap_an: string | null; loi_giai: string | null; lua_chon: string[] | null
   menhDe: MD[] | null
-  anhDe: string | null
-  hinhThuc: 'ngan' | 'tuluan'
+  anhDe: string | null; anhDapAn: string | null
   aiMaDang: string | null; conf: number; maDang2: string | null; maDang: string | null   // flat
   chuyenDeRep: string | null                                                              // đúng/sai: dạng đại diện (neo chuyên đề)
   verify: { from: string; to: string } | null
@@ -60,6 +60,22 @@ export default function NhapKhoScreen() {
   const [prec, setPrec] = useState<{ dung: number; tong: number; pct: number } | null>(null)
   useEffect(() => { setEdit(false) }, [idx])
   const pushRecent = (ma: string | null) => { if (ma) setRecent((a) => [ma, ...a.filter((x) => x !== ma)].slice(0, 5)) }
+
+  const fileRef = useRef<HTMLInputElement>(null)
+  async function pasteFile() {
+    try { const f = await readClipboardImageFile(); if (f) { setFile(f); setErr(null) } else setErr('Clipboard không có ảnh — copy ảnh (Ctrl+C) trước.') }
+    catch (e: any) { setErr(e?.message ?? String(e)) }
+  }
+  // Dán ảnh bằng Ctrl+V ngay trên màn setup (chưa bóc).
+  useEffect(() => {
+    if (items.length) return
+    const onPaste = (e: ClipboardEvent) => {
+      const f = Array.from(e.clipboardData?.files ?? []).find((x) => x.type.startsWith('image/'))
+      if (f) { e.preventDefault(); setFile(f); setErr(null) }
+    }
+    window.addEventListener('paste', onPaste)
+    return () => window.removeEventListener('paste', onPaste)
+  }, [items.length])
 
   const candMap = useMemo(() => { const m = new Map<string, DangCandidate>(); cands.forEach((c) => m.set(c.ma_dang, c)); return m }, [cands])
   const dangTen = (ma: string | null) => (ma && candMap.get(ma)?.ten_dang) || ma || '—'
@@ -97,7 +113,7 @@ export default function NhapKhoScreen() {
           raw.push({
             loai_cau: cau.loai_cau, noi_dung: cau.noi_dung, dap_an: cau.dap_an, loi_giai: cau.loi_giai, lua_chon: cau.lua_chon,
             menhDe: cau.menh_de ? cau.menh_de.map((m) => ({ ...m, maDang: null, aiMaDang: null, conf: 0 })) : null,
-            anhDe, hinhThuc: cau.loai_cau === 'tra_loi_ngan' ? 'ngan' : 'tuluan',
+            anhDe, anhDapAn: null,
             aiMaDang: null, conf: 0, maDang2: null, maDang: null, chuyenDeRep: null,
             verify: null, nguonGiai: cau.loi_giai ? (giaiAI ? 'ai' : 'nguoi') : 'nguoi', saved: false, savedMaCau: null,
           })
@@ -166,7 +182,7 @@ export default function NhapKhoScreen() {
         r.menhDe.forEach((m) => pushRecent(m.maDang))
       } else {
         if (!r.maDang) throw new Error('Chọn dạng trước khi lưu.')
-        maCau = await saveCauToDang({ dangChinh: r.maDang, loaiCau: r.loai_cau, noi_dung: r.noi_dung, dap_an: r.dap_an, loi_giai: r.loi_giai, lua_chon: r.lua_chon, anh_de: r.anhDe, anh_dap_an: null, nguon_giai: r.nguonGiai }, cauTbl)
+        maCau = await saveCauToDang({ dangChinh: r.maDang, loaiCau: r.loai_cau, noi_dung: r.noi_dung, dap_an: r.dap_an, loi_giai: r.loi_giai, lua_chon: r.lua_chon, anh_de: r.anhDe, anh_dap_an: r.anhDapAn, nguon_giai: r.nguonGiai }, cauTbl)
         await logKhoTag([{ mon, ma_cau: maCau, ai_value: r.aiMaDang, final_value: r.maDang, ai_confidence: r.conf, da_verify: !!r.verify }])
         pushRecent(r.maDang)
       }
@@ -202,7 +218,13 @@ export default function NhapKhoScreen() {
               {!!cands.length && <p className="mt-1 text-[12px] text-slate-400">{cands.length} dạng trong chủ đề — AI gán dạng trong phạm vi này.</p>}
             </Field>
             <Field label="Tài liệu (PDF / ảnh)">
-              <input type="file" accept="application/pdf,image/*" onChange={(e) => setFile(e.target.files?.[0] ?? null)} className="text-[13px]" />
+              <div className="flex flex-wrap items-center gap-2">
+                <button onClick={() => fileRef.current?.click()} className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-indigo-400">📎 Chọn file</button>
+                <button onClick={pasteFile} className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-indigo-400">📋 Dán ảnh (Ctrl+V)</button>
+                <input ref={fileRef} type="file" accept="application/pdf,image/*" hidden onChange={(e) => { setFile(e.target.files?.[0] ?? null); e.target.value = '' }} />
+                {file && <span className="inline-flex items-center gap-1.5 rounded-lg bg-slate-100 px-2.5 py-1 text-[12px] text-slate-600">📄 {file.name || 'ảnh đã dán'}<button onClick={() => setFile(null)} className="text-rose-500">✕</button></span>}
+              </div>
+              <p className="mt-1 text-[12px] text-slate-400">PDF nhiều trang → “Chọn file”. Ảnh chụp/screenshot → Ctrl+V dán thẳng.</p>
             </Field>
             <div className="flex flex-wrap items-center gap-4 pt-1">
               <label className="flex items-center gap-2 text-[13px] text-slate-600"><input type="checkbox" checked={coHinh} onChange={(e) => setCoHinh(e.target.checked)} />📐 Có hình (cắt ảnh đề)</label>
@@ -219,12 +241,25 @@ export default function NhapKhoScreen() {
     )
   }
 
-  // ═══════════ REVIEW (1 câu / màn) ═══════════
+  // ═══════════ REVIEW (1 câu / màn — FULL-WIDTH, dùng CHUNG CauEditor với "nhập chuỗi câu") ═══════════
   const r = items[idx]
   const soXong = items.filter((x) => x.saved).length
   const coWarn = items.some((x) => !x.saved && ((x.conf && x.conf < CONF_NGUONG) || x.verify))
+  const isDS = r.loai_cau === 'dung_sai'
+  // Map RItem (câu phẳng) ↔ ReviewItem để render bằng CauEditor y hệt màn nhập chuỗi câu.
+  const flatRI: ReviewItem = { noi_dung: r.noi_dung, dap_an: r.dap_an ?? '', loi_giai: r.loi_giai ?? '', luaChon: r.lua_chon, anhDe: r.anhDe, anhDapAn: r.anhDapAn, nguonGiai: r.nguonGiai, approved: true, isGoc: false }
+  const onFlat = (p: Partial<ReviewItem>) => {
+    const q: Partial<RItem> = {}
+    if (p.noi_dung !== undefined) q.noi_dung = p.noi_dung
+    if (p.dap_an !== undefined) q.dap_an = p.dap_an
+    if (p.loi_giai !== undefined) { q.loi_giai = p.loi_giai; q.nguonGiai = 'nguoi' } // người sửa lời giải → tin
+    if (p.luaChon !== undefined) q.lua_chon = p.luaChon
+    if (p.anhDe !== undefined) q.anhDe = p.anhDe
+    if (p.anhDapAn !== undefined) q.anhDapAn = p.anhDapAn
+    patch(q)
+  }
   return (
-    <section className="flex min-h-0 flex-col overflow-hidden bg-[#f5f5f7]">
+    <section className="flex h-full min-h-0 flex-col overflow-hidden bg-[#f5f5f7]">
       <div className="flex flex-none items-center justify-between gap-3 border-b border-slate-200 bg-white px-6 py-3">
         <div className="flex items-center gap-2 text-[13px]">
           <span className="rounded-full bg-indigo-50 px-2.5 py-1 font-medium text-indigo-700">{chuDes.find((c) => c.ma_chu_de === maChuDe)?.ten_chu_de} · K{khoi}</span>
@@ -242,47 +277,43 @@ export default function NhapKhoScreen() {
         <div className="flex flex-1 gap-1">{items.map((x, i) => <div key={i} className={`h-[5px] flex-1 rounded-full ${x.saved ? 'bg-indigo-500' : i === idx ? 'bg-slate-400' : 'bg-slate-200'}`} />)}</div>
       </div>
 
-      <div className="min-h-0 flex-1 overflow-auto px-6 pb-6">
-        <div className="mx-auto max-w-6xl rounded-2xl bg-white p-6 shadow-sm">
-          <div className="mb-3 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <span className="rounded-full bg-slate-100 px-2.5 py-1 text-[12px] font-medium text-slate-600">{LOAI_LABEL[r.loai_cau]}</span>
-              {r.saved && <span className="text-[12px] text-emerald-600">✓ đã lưu ({r.savedMaCau})</span>}
-            </div>
-            {!r.saved && <button onClick={() => setEdit((e) => !e)} className={`rounded-lg px-3 py-1 text-[12px] font-medium ${edit ? 'bg-indigo-600 text-white' : 'border border-slate-300 text-slate-600 hover:bg-slate-50'}`}>{edit ? '✓ Xong sửa' : '✎ Sửa nội dung'}</button>}
+      <div className="flex min-h-0 flex-1 flex-col px-4 pb-4">
+        <div className="mx-auto flex min-h-0 w-full max-w-[1800px] flex-1 flex-col gap-3 rounded-2xl bg-white p-5 shadow-sm">
+          {/* Thanh trên: loại · gán dạng (bắt buộc vì scope = chủ đề) · AI giải · trạng thái */}
+          <div className="flex flex-none flex-wrap items-center gap-3 border-b border-slate-100 pb-3">
+            <span className="shrink-0 rounded-full bg-slate-100 px-2.5 py-1 text-[12px] font-medium text-slate-600">{LOAI_LABEL[r.loai_cau]}</span>
+            {r.saved && <span className="shrink-0 text-[12px] text-emerald-600">✓ đã lưu ({r.savedMaCau})</span>}
+            {isDS ? (
+              <>
+                <div className="flex-1" />
+                {!r.saved && <button onClick={() => setEdit((e) => !e)} className={`shrink-0 rounded-lg px-3 py-1 text-[12px] font-medium ${edit ? 'bg-indigo-600 text-white' : 'border border-slate-300 text-slate-600 hover:bg-slate-50'}`}>{edit ? '✓ Xong sửa' : '✎ Sửa nội dung'}</button>}
+              </>
+            ) : (
+              <>
+                <div className="min-w-[280px] flex-1"><DangPicker value={r.maDang} aiMaDang={r.aiMaDang} conf={r.conf} maDang2={r.maDang2} cands={cands} candMap={candMap} recent={recent} onPick={(ma) => { patch({ maDang: ma }); pushRecent(ma) }} disabled={r.saved} /></div>
+                <span className={`shrink-0 rounded-full px-2 py-0.5 text-[11px] ${r.nguonGiai === 'ai' ? 'bg-amber-50 text-amber-700' : 'bg-emerald-50 text-emerald-700'}`}>{r.nguonGiai === 'ai' ? '🤖 AI giải · cần duyệt' : '📄 từ tài liệu'}</span>
+                {!r.saved && <button disabled={busy} onClick={aiGiai} className="shrink-0 rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-[13px] text-slate-700 disabled:opacity-40">🤖 AI giải</button>}
+              </>
+            )}
           </div>
           {r.verify && (
-            <div className="mb-3 rounded-lg bg-amber-50 px-3 py-2 text-[12px] leading-relaxed text-amber-800">
+            <div className="flex-none rounded-lg bg-amber-50 px-3 py-2 text-[12px] leading-relaxed text-amber-800">
               ⚠ Độ tin thấp — sau khi đọc lý thuyết, AI đổi dạng <b>«{r.verify.from}»</b> → <b>«{r.verify.to}»</b>. Kiểm tra lại.
             </div>
           )}
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-            <div className="lg:border-r lg:border-slate-100 lg:pr-6">
-              {r.loai_cau === 'dung_sai'
-                ? <DungSaiEditor r={r} cands={cands} candMap={candMap} recent={recent} edit={edit && !r.saved} onPatch={patch} onPick={pushRecent} />
-                : <FlatEditor r={r} cands={cands} candMap={candMap} recent={recent} edit={edit && !r.saved} onPatch={patch} onPick={pushRecent} />}
-            </div>
-            <div>
-              <div className="mb-2 flex items-center justify-between">
-                <span className="text-[12px] text-slate-400">💡 Lời giải chi tiết</span>
-                <span className={`rounded-full px-2 py-0.5 text-[11px] ${r.nguonGiai === 'ai' ? 'bg-amber-50 text-amber-700' : 'bg-emerald-50 text-emerald-700'}`}>{r.nguonGiai === 'ai' ? '🤖 AI giải · cần duyệt' : '📄 từ tài liệu'}</span>
-              </div>
-              {edit && !r.saved
-                ? <textarea value={r.loi_giai ?? ''} onChange={(e) => patch({ loi_giai: e.target.value, nguonGiai: 'nguoi' })} placeholder="Lời giải (LaTeX trong $…$)" className={`${code} min-h-[140px]`} />
-                : <div className={`${preBox} min-h-[60px]`}>{r.loi_giai ? <MathText>{r.loi_giai}</MathText> : <span className="text-slate-400">— chưa có lời giải —</span>}</div>}
-              {!r.saved && <button disabled={busy} onClick={aiGiai} className="mt-2 rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-[13px] text-slate-700 disabled:opacity-40">🤖 AI giải · đọc lý thuyết dạng</button>}
-            </div>
-          </div>
+          {isDS
+            ? <div className="min-h-0 flex-1 overflow-auto"><DungSaiEditor r={r} cands={cands} candMap={candMap} recent={recent} edit={edit && !r.saved} onPatch={patch} onPick={pushRecent} /></div>
+            : <div className="min-h-0 flex-1"><CauEditor item={flatRI} fill onChange={onFlat} /></div>}
 
-          <div className="mt-6 flex items-center justify-between border-t border-slate-100 pt-4">
+          <div className="flex flex-none items-center justify-between border-t border-slate-100 pt-3">
             <button disabled={idx === 0} onClick={() => setIdx(idx - 1)} className="rounded-lg border border-slate-300 px-3 py-1.5 text-[13px] text-slate-500 disabled:opacity-40">← Trước</button>
             {err && <span className="px-2 text-[12px] text-red-600">{err}</span>}
-            <div className="flex gap-2">
+            <div className="flex items-center gap-2">
+              {busy && msg && <span className="text-[12px] text-slate-400">{msg}</span>}
               <button disabled={idx >= items.length - 1} onClick={() => setIdx(idx + 1)} className="rounded-lg border border-slate-300 px-3 py-1.5 text-[13px] text-slate-500 disabled:opacity-40">Bỏ qua</button>
               {!r.saved && <button disabled={busy} onClick={duyet} className="rounded-lg bg-indigo-600 px-4 py-1.5 text-[13px] font-medium text-white disabled:opacity-40">✓ Duyệt · lưu → câu tiếp</button>}
             </div>
           </div>
-          {busy && msg && <p className="mt-2 text-[12px] text-slate-400">{msg}</p>}
         </div>
       </div>
     </section>
@@ -339,57 +370,6 @@ function DangPicker({ value, aiMaDang, conf, maDang2, cands, candMap, recent, on
           )}
         </div>
       )}
-    </div>
-  )
-}
-
-function FlatEditor({ r, cands, candMap, recent, edit, onPatch, onPick }: { r: RItem; cands: DangCandidate[]; candMap: Map<string, DangCandidate>; recent: string[]; edit: boolean; onPatch: (p: Partial<RItem>) => void; onPick: (ma: string | null) => void }) {
-  const pick = (ma: string) => { onPatch({ maDang: ma }); onPick(ma) }
-  return (
-    <div>
-      <div className="mb-1 text-[12px] text-slate-400">Đề bài</div>
-      {edit
-        ? <textarea value={r.noi_dung} onChange={(e) => onPatch({ noi_dung: e.target.value })} className={`${code} min-h-[80px]`} />
-        : <div className={preBox}><MathText>{r.noi_dung}</MathText></div>}
-      {r.anhDe && <img src={r.anhDe} alt="hình đề" className="mt-2 max-h-64 rounded-lg border border-slate-200" />}
-      {r.loai_cau === 'trac_nghiem' && (
-        edit ? (
-          <div className="mt-3 space-y-1.5">
-            {[0, 1, 2, 3].map((k) => {
-              const on = String(r.dap_an ?? '').toUpperCase() === 'ABCD'[k]
-              return (
-                <div key={k} className="flex items-center gap-2">
-                  <button onClick={() => onPatch({ dap_an: 'ABCD'[k] })} className={`h-6 w-6 flex-none rounded-full text-[11px] font-medium ${on ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-500'}`}>{'ABCD'[k]}</button>
-                  <input value={r.lua_chon?.[k] ?? ''} onChange={(e) => { const l = [...(r.lua_chon ?? ['', '', '', ''])]; l[k] = e.target.value; onPatch({ lua_chon: l }) }} className={`${inp} text-[13px]`} />
-                </div>
-              )
-            })}
-          </div>
-        ) : (
-          <div className="mt-3 space-y-1">
-            {(r.lua_chon ?? []).map((o, k) => {
-              const on = String(r.dap_an ?? '').toUpperCase() === 'ABCD'[k]
-              return <div key={k} className={`flex items-start gap-2 text-[14px] ${on ? 'font-medium text-emerald-700' : 'text-slate-700'}`}><b>{'ABCD'[k]}.</b> <span className="min-w-0"><MathText>{o}</MathText></span>{on ? ' ✓' : ''}</div>
-            })}
-          </div>
-        )
-      )}
-      {r.loai_cau !== 'trac_nghiem' && (
-        <div className="mt-3">
-          <div className="mb-1 flex items-center justify-between">
-            <span className="text-[12px] text-slate-400">Đáp án</span>
-            {edit && <div className="flex gap-1">{(['ngan', 'tuluan'] as const).map((h) => (
-              <button key={h} onClick={() => onPatch({ hinhThuc: h })} className={`rounded px-2 py-0.5 text-[11px] ${r.hinhThuc === h ? 'bg-emerald-600 text-white' : 'bg-slate-100 text-slate-500'}`}>{h === 'ngan' ? 'Trả lời ngắn' : 'Tự luận'}</button>
-            ))}</div>}
-          </div>
-          {edit
-            ? <input value={r.dap_an ?? ''} onChange={(e) => onPatch({ dap_an: e.target.value })} placeholder="kết quả (nếu có)" className={`${inp} text-[13px]`} />
-            : <div className={preBox}>{r.dap_an ? <MathText>{r.dap_an}</MathText> : <span className="text-slate-400">—</span>}</div>}
-        </div>
-      )}
-      <div className="mt-3 border-t border-slate-100 pt-3">
-        <DangPicker value={r.maDang} aiMaDang={r.aiMaDang} conf={r.conf} maDang2={r.maDang2} cands={cands} candMap={candMap} recent={recent} onPick={pick} disabled={r.saved} />
-      </div>
     </div>
   )
 }

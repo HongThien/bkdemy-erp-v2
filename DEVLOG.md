@@ -849,3 +849,23 @@ tsc sạch + build pass. ⏳ chưa soi PDF bằng mắt (bản in paged.js).
 - Headless render: đưa trang dựng ON-SCREEN (fixed top-left) SAU lớp phủ ĐỤC trắng (thay vì left:-99999px) → html2canvas ổn định hơn.
 - `taiPdf` (cả 2) build chrome khớp header render (BTVN/GT-buổi = Lớp·ngày·footer liên hệ).
 - tsc+build pass. ⏳ CHƯA verify mắt — Thùy tải thử lại (giáo trình + BTVN + ET).
+
+## 07-04 — fix dep thiếu · ảnh ET giãn theo số câu · rút tên HS 2 từ cuối · Nhập kho dùng lại CauEditor + paste + full-width
+
+**Bối cảnh:** máy này `git pull` xong CHƯA `npm install` → Vite báo `Failed to resolve import "html2canvas-pro"` (dep tải-PDF thêm ở 07-03, có trong package.json nhưng thiếu node_modules) → Thùy "ko bật được local".
+- **Fix:** `npm install` (added 18 packages: html2canvas-pro, jspdf…). Bài học: pull về có dep mới thì phải install; lỗi resolve import = node_modules lệch package.json, KHÔNG phải code.
+
+**1. Ảnh ET gửi PH bị CẮT cột khi nhiều câu (Thùy: B1..B11 tràn):** card `EtAnhGuiPH` (BuoiHocScreen) trước cố định `width:440` → nhiều bài thì cắt phải.
+- Fix: `cardW = max(440, 100 + số_câu×30 + 32)` (giãn theo số câu) + BỎ `maxWidth:100%` (để container overlay tự cuộn ngang, không co làm cắt cột). html2canvas chụp full scrollWidth → ảnh copy đủ cột. Tên HS trong ảnh cũng rút 2 từ cuối.
+
+**2. Tên HS chỉ hiện 2 TỪ CUỐI ở màn VẬN HÀNH (Thùy: "mọi nơi hiển thị tên HS"):**
+- Helper CHUNG `src/lib/hoten.ts` `tenNganHS(hoTen)` = 2 từ cuối ("Nguyễn Thị Hồng Anh"→"Hồng Anh").
+- Áp: BuoiHocScreen (điểm danh/chấm bài/ET/BTVN/đánh giá + ảnh PH), KetQuaScreen (cột lớp trái + rollup), GamiDiemScreen (BXH + theo ca), BoTroScreen + BoTroDuoiScreen (card/chip/detail), ThanhTichScreen (lưới HS), QuanLyLevelScreen (ma trận).
+- GIỮ tên đầy đủ: quản lý Học sinh, form, ô tìm kiếm (SearchSelect), ghép PH, TIÊU ĐỀ hồ sơ điểm/thành tích (1 chỗ nổi bật = full), dialog xác nhận/cảnh báo, PHIẾU IN giấy (document cần nhận diện). Quy tắc: list/table/grid/chip = ngắn · profile-title/form/search/print = đầy đủ. (Thùy chưa trả lời câu hỏi phạm vi → chọn mặc định hợp lý này, báo có thể mở rộng.)
+
+**3. Màn NHẬP KHO (nhapkho) — Thùy: "để giao diện GIỐNG nhập chuỗi câu, đừng đẻ UI mới; upload → paste clipboard; popup to gần full màn":**
+- **Tái dùng CauEditor** (export `CauEditor`+`ReviewItem` từ DangHub): phần duyệt câu PHẲNG render bằng chính CauEditor (đề/đáp án/lời giải/ảnh + ✎ Sửa, y hệt nhập chuỗi câu). XOÁ `FlatEditor` tự viết. Chỉ giữ **thanh gán dạng** (`DangPicker`) phía trên — bắt buộc vì nhập kho scope=CHỦ ĐỀ (nhiều dạng). Đúng/Sai giữ `DungSaiEditor` (CauEditor không xử 4 mệnh đề).
+- Map RItem↔ReviewItem qua `flatRI`/`onFlat` (người sửa lời giải → `nguonGiai='nguoi'`). Thêm cột **ảnh giải** `anh_dap_an` vào lưu kho (trước bỏ trống). Bỏ field `hinhThuc` (dead — không lưu).
+- **Paste clipboard:** setup có 📎 Chọn file (PDF nhiều trang) + 📋 Dán ảnh (Ctrl+V, `readClipboardImageFile`) + window paste listener (chụp screenshot dán thẳng).
+- **Full-width:** bỏ `max-w-6xl` bé → card `max-w-[1800px]` chiếm hết cao (flex-col), CauEditor fill 2 cột căng ngang; thanh dạng+AI-giải 1 hàng trên, nav dính đáy.
+- tsc pass. ⏳ e2e bóc câu vẫn cần key Gemini (local đang suspend); phần UI xem qua HMR.
