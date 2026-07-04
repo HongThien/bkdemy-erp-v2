@@ -465,6 +465,11 @@ export async function getBTVNCaus(taiLieuId: string): Promise<CauHoi[]> {
   const full = await getTaiLieuFull(taiLieuId)
   return full.phans.filter((p) => p.loai_phan === 'btvn').flatMap((p) => p.caus)
 }
+// Câu BÀI LUYỆN của giáo trình buổi (loai_phan='dang') — online chỉ giao BT, KHÔNG lý thuyết.
+export async function getGiaoTrinhBuoiCaus(taiLieuId: string): Promise<CauHoi[]> {
+  const full = await getTaiLieuFull(taiLieuId)
+  return full.phans.filter((p) => p.loai_phan === 'dang').flatMap((p) => p.caus)
+}
 // Đặt LẠI toàn bộ câu ET theo thứ tự (UI tự dedup trong đề — trong buổi không trùng).
 export async function setETCaus(taiLieuId: string, maCaus: string[]): Promise<void> {
   await setCauOfPhan(await etPhanId(taiLieuId), maCaus)

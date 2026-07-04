@@ -2,7 +2,7 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-69 bảng · 0 enum · 3 trigger · 12 function
+69 bảng · 0 enum · 3 trigger · 14 function
 
 ## bai_lam
 
@@ -45,6 +45,7 @@
 | khoa_reveal | boolean |  | false |  |
 | created_by | uuid | Y |  |  |
 | created_at | timestamp with time zone |  | now() |  |
+| so_cau | integer |  | 0 |  |
 
 ## bai_test_cau
 
@@ -62,6 +63,8 @@
 | diem | numeric |  | 1 |  |
 | loi_giai | text | Y |  |  |
 | anh_dap_an | text | Y |  |  |
+| ma_dang | text | Y |  |  |
+| ly_thuyet | text | Y |  |  |
 
 ## bai_test_report
 
@@ -889,6 +892,8 @@
 ## Functions
 
 - `count_cau_by_dang(p_tbl text)` → jsonb
+- `et_de(p_bai_test uuid)` → jsonb
+- `et_nop(p_bai_lam uuid)` → jsonb
 - `hs_o_lop(p_lop uuid)` → boolean
 - `increment_qaa_hit(p_id uuid)` → void
 - `jwt_email()` → text

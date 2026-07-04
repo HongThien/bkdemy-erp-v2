@@ -2,7 +2,7 @@
 // Cột thông tin + nút IN (giáo trình→PrintView, ET→ETPrintView) + Nhân bản (tái sử dụng) + Xoá.
 import { useEffect, useMemo, useState } from 'react'
 import { listAllTaiLieu, deleteTaiLieu, duplicateTaiLieu, updateTaiLieu, type TaiLieu } from '../../lib/tailieu'
-import { phatHanhBTVN } from '../../lib/testonline'
+import { phatHanhTest, PHAT_HANH_DUOC } from '../../lib/testonline'
 import { listLop, type Lop } from '../../lib/nhansu'
 import { useStore } from '../../store/useStore'
 import PrintView from './PrintView'
@@ -39,7 +39,7 @@ export default function KhoTaiLieuScreen() {
   async function phatHanh(r: Row) {
     setPhBusy(r.id)
     try {
-      const kq = await phatHanhBTVN(r.id)
+      const kq = await phatHanhTest(r.id)
       setPhRes({ ok: true, msg: `Đã phát hành ${kq.added} câu cho học sinh làm online.`, skipped: kq.skipped })
     } catch (e: any) {
       setPhRes({ ok: false, msg: e?.message ?? String(e) })
@@ -131,7 +131,7 @@ export default function KhoTaiLieuScreen() {
                       <td className="px-3 py-2">
                         <div className="flex justify-end gap-1.5">
                           {EDITABLE.has(r.loai) && <button onClick={() => sua(r)} className="rounded-md border border-slate-200 px-2.5 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-300">✎ Sửa</button>}
-                          {r.loai === 'btvn' && r.lop_id && r.ngay && (
+                          {PHAT_HANH_DUOC.has(r.loai) && r.lop_id && r.ngay && (
                             <button onClick={() => phatHanh(r)} disabled={phBusy === r.id}
                               className="rounded-md border border-emerald-300 bg-emerald-50 px-2.5 py-1 text-[12px] font-medium text-emerald-700 hover:bg-emerald-100 disabled:opacity-40">
                               {phBusy === r.id ? '…' : '📱 Phát hành online'}

@@ -4,27 +4,29 @@
 // 3 tầng: KHO → bai_test (snapshot đề+key) → bai_lam (HS-facing) → đo lường.
 // ============================================================================
 import { supabase } from './supabase'
-import { getBTVNCaus } from './tailieu'
-import { extractKey, gradeTracNghiem, gradeTraLoiNgan, LETTERS } from '../gami/testgrade'
+import { getBTVNCaus, getETCaus, getGiaoTrinhBuoiCaus, khoCuaMon } from './tailieu'
+import type { CauHoi } from './kho/api'
+import { extractKey, gradeTracNghiem, gradeTraLoiNgan, gradeDungSai, LETTERS } from '../gami/testgrade'
 
 const LIMIT = 1000
-const SUPPORTED = new Set(['trac_nghiem', 'tra_loi_ngan']) // slice 1
+const SUPPORTED = new Set(['trac_nghiem', 'dung_sai', 'tra_loi_ngan']) // auto-chấm được
 
+export type TestLoai = 'et' | 'btvn' | 'giao_trinh'
 export type BaiTest = {
   id: string; nguon_tai_lieu_id: string | null; lop_id: string; ngay: string
-  loai: 'et' | 'btvn'; mon: string; trang_thai: 'mo' | 'dong'
+  loai: TestLoai; mon: string; trang_thai: 'mo' | 'dong'; so_cau: number
   deadline: string | null; khoa_reveal: boolean; created_at: string
 }
 export type BaiTestCau = {
   id: string; bai_test_id: string; thu_tu: number; ma_cau: string | null; loai_cau: string
   noi_dung: string | null; lua_chon: string[] | null; menh_de: unknown; dap_an_key: unknown
-  loi_giai: string | null; anh_dap_an: string | null; diem: number
+  loi_giai: string | null; anh_dap_an: string | null; ma_dang: string | null; ly_thuyet: string | null; diem: number
 }
 export type BaiLam = { id: string; bai_test_id: string; hoc_sinh_id: string; trang_thai: 'dang_lam' | 'da_nop'; nop_at: string | null }
 export type BaiLamCau = { id: string; bai_lam_id: string; bai_test_cau_id: string; dap_an_hs: unknown; verdict: string | null; diem: number | null; cham_boi: string | null }
 
 // ── PHÁT HÀNH (staff) — snapshot đề + key 1 lần, idempotent (spec §5.1) ──────
-export async function getBaiTestByDoc(nguonTaiLieuId: string, lopId: string, ngay: string, loai: 'et' | 'btvn'): Promise<BaiTest | null> {
+export async function getBaiTestByDoc(nguonTaiLieuId: string, lopId: string, ngay: string, loai: TestLoai): Promise<BaiTest | null> {
   const { data, error } = await supabase.from('bai_test').select('*')
     .eq('nguon_tai_lieu_id', nguonTaiLieuId).eq('lop_id', lopId).eq('ngay', ngay).eq('loai', loai)
     .order('created_at', { ascending: false }).limit(1)
@@ -34,18 +36,35 @@ export async function getBaiTestByDoc(nguonTaiLieuId: string, lopId: string, nga
 
 export type PhatHanhKetQua = { baiTest: BaiTest; added: number; skipped: { ma_cau: string; warn: string }[] }
 
-// Phát hành 1 doc BTVN đã bám (lớp+ngày) thành test online. Chỉ snapshot câu trắc-nghiệm/trả-lời-ngắn.
-export async function phatHanhBTVN(taiLieuId: string): Promise<PhatHanhKetQua> {
+// Doc loai → (câu resolver · loai bai_test · nhãn). ET=THI (giấu key); BTVN/giáo trình=tham khảo reveal-ngay.
+const DOC_MAP: Record<string, { getCaus: (id: string) => Promise<CauHoi[]>; testLoai: 'et' | 'btvn' | 'giao_trinh'; ten: string }> = {
+  btvn: { getCaus: getBTVNCaus, testLoai: 'btvn', ten: 'BTVN' },
+  et: { getCaus: getETCaus, testLoai: 'et', ten: 'ET' },
+  giao_trinh_buoi: { getCaus: getGiaoTrinhBuoiCaus, testLoai: 'giao_trinh', ten: 'giáo trình (bài tập)' },
+}
+export const PHAT_HANH_DUOC = new Set(Object.keys(DOC_MAP))
+
+// Phát hành 1 doc (BTVN / ET / giáo trình buổi) đã bám (lớp+ngày) thành test online.
+export async function phatHanhTest(taiLieuId: string): Promise<PhatHanhKetQua> {
   const { data: tl, error: e0 } = await supabase.from('tai_lieu').select('id, lop_id, ngay, mon, loai').eq('id', taiLieuId).single()
   if (e0) throw e0
   const doc = tl as { id: string; lop_id: string | null; ngay: string | null; mon: string; loai: string }
-  if (doc.loai !== 'btvn') throw new Error('Chỉ phát hành được doc BTVN ở slice này.')
-  if (!doc.lop_id || !doc.ngay) throw new Error('Doc BTVN chưa bám lớp+ngày — không phát hành được.')
+  const map = DOC_MAP[doc.loai]
+  if (!map) throw new Error('Chỉ phát hành online được BTVN, ET hoặc giáo trình buổi.')
+  if (!doc.lop_id || !doc.ngay) throw new Error('Doc chưa bám lớp+ngày — không phát hành được.')
 
-  const existed = await getBaiTestByDoc(doc.id, doc.lop_id, doc.ngay, 'btvn')
+  const existed = await getBaiTestByDoc(doc.id, doc.lop_id, doc.ngay, map.testLoai)
   if (existed) throw new Error('Doc này đã phát hành rồi (1 doc×lớp×ngày = 1 test). Xoá test cũ nếu muốn phát lại.')
 
-  const caus = await getBTVNCaus(taiLieuId)
+  const caus = await map.getCaus(taiLieuId)
+  // Snapshot LÝ THUYẾT dạng (HS ko đọc kho) — batch theo môn của doc.
+  const dangs = [...new Set(caus.map((c) => c.dang_chinh).filter(Boolean))]
+  const ltMap = new Map<string, string>()
+  if (dangs.length) {
+    const ltTbl = khoCuaMon(doc.mon).ltDangTbl
+    const { data: lt } = await supabase.from(ltTbl).select('ma_dang, noi_dung').in('ma_dang', dangs).limit(LIMIT)
+    for (const r of (lt ?? []) as { ma_dang: string; noi_dung: string | null }[]) if (r.noi_dung) ltMap.set(r.ma_dang, r.noi_dung)
+  }
   const skipped: { ma_cau: string; warn: string }[] = []
   const rows: Omit<BaiTestCau, 'id'>[] = []
   let thu_tu = 0
@@ -57,13 +76,14 @@ export async function phatHanhBTVN(taiLieuId: string): Promise<PhatHanhKetQua> {
       bai_test_id: '', thu_tu: ++thu_tu, ma_cau: c.ma_cau, loai_cau: c.loai_cau,
       noi_dung: c.noi_dung ?? null, lua_chon: (c.lua_chon as string[] | null) ?? null,
       menh_de: c.menh_de ?? null, dap_an_key: k.key,
-      loi_giai: c.loi_giai ?? null, anh_dap_an: c.anh_dap_an ?? null, diem: 1,
+      loi_giai: c.loi_giai ?? null, anh_dap_an: c.anh_dap_an ?? null,
+      ma_dang: c.dang_chinh ?? null, ly_thuyet: ltMap.get(c.dang_chinh) ?? null, diem: 1,
     })
   }
-  if (!rows.length) throw new Error('Không có câu trắc nghiệm / trả lời ngắn hợp lệ để phát hành.' + (skipped.length ? ` (${skipped.length} câu bị bỏ qua)` : ''))
+  if (!rows.length) throw new Error(`Không có câu hợp lệ để phát hành${skipped.length ? ` (${skipped.length} câu bị bỏ qua)` : ''}.`)
 
   const { data: bt, error: e1 } = await supabase.from('bai_test').insert({
-    nguon_tai_lieu_id: doc.id, lop_id: doc.lop_id, ngay: doc.ngay, loai: 'btvn', mon: doc.mon,
+    nguon_tai_lieu_id: doc.id, lop_id: doc.lop_id, ngay: doc.ngay, loai: map.testLoai, mon: doc.mon, so_cau: rows.length,
   }).select().single()
   if (e1) throw e1
   const baiTest = bt as BaiTest
@@ -71,6 +91,8 @@ export async function phatHanhBTVN(taiLieuId: string): Promise<PhatHanhKetQua> {
   if (e2) throw e2
   return { baiTest, added: rows.length, skipped }
 }
+/** @deprecated dùng phatHanhTest */
+export const phatHanhBTVN = phatHanhTest
 
 export async function xoaBaiTest(id: string): Promise<void> {
   const { error } = await supabase.from('bai_test').delete().eq('id', id) // cascade cau/lam
@@ -95,14 +117,10 @@ export async function listBaiTestCuaHS(): Promise<BaiTestCuaHS[]> {
   const tests = (data ?? []) as (BaiTest & { lop: { ten_lop: string } | null })[]
   if (!tests.length) return []
   const ids = tests.map((t) => t.id)
-  const [{ data: lams }, { data: counts }] = await Promise.all([
-    supabase.from('bai_lam').select('*').in('bai_test_id', ids).limit(LIMIT),
-    supabase.from('bai_test_cau').select('bai_test_id').in('bai_test_id', ids).limit(LIMIT * 10),
-  ])
+  const { data: lams } = await supabase.from('bai_lam').select('*').in('bai_test_id', ids).limit(LIMIT)
   const lamMap = new Map((lams ?? []).map((l: any) => [l.bai_test_id, l as BaiLam]))
-  const cntMap = new Map<string, number>()
-  for (const c of (counts ?? []) as any[]) cntMap.set(c.bai_test_id, (cntMap.get(c.bai_test_id) ?? 0) + 1)
-  return tests.map((t) => ({ ...t, lop_ten: t.lop?.ten_lop ?? '?', bai_lam: lamMap.get(t.id) ?? null, so_cau: cntMap.get(t.id) ?? 0 }))
+  // so_cau denormalize trên bai_test (HS ko đếm được bai_test_cau của ET do RLS).
+  return tests.map((t) => ({ ...t, lop_ten: t.lop?.ten_lop ?? '?', bai_lam: lamMap.get(t.id) ?? null }))
 }
 
 export type BaiTestFull = { baiTest: BaiTest; caus: BaiTestCau[]; baiLam: BaiLam | null; daLam: Record<string, BaiLamCau> }
@@ -137,14 +155,49 @@ export type ChamKetQua = { verdict: string; cham_boi: string; key: unknown; baiL
 export async function traLoiCau(baiLamId: string, cau: BaiTestCau, dapAnHs: unknown): Promise<ChamKetQua> {
   const g = cau.loai_cau === 'trac_nghiem'
     ? gradeTracNghiem(dapAnHs as number, cau.dap_an_key as string)
-    : gradeTraLoiNgan(dapAnHs as string, cau.dap_an_key as string)
-  const diem = g.verdict === 'correct' ? cau.diem : g.verdict === 'partial' ? cau.diem * 0.5 : 0
+    : cau.loai_cau === 'dung_sai'
+      ? gradeDungSai(dapAnHs as string[], cau.dap_an_key as string[])
+      : gradeTraLoiNgan(dapAnHs as string, cau.dap_an_key as string)
+  // dung_sai: lưu điểm thô THPT (0/0.1/0.25/0.5/1); loại khác: theo verdict × trọng số câu.
+  const diem = 'diemTho' in g ? (g as any).diemTho * cau.diem
+    : g.verdict === 'correct' ? cau.diem : g.verdict === 'partial' ? cau.diem * 0.5 : 0
   const { data, error } = await supabase.from('bai_lam_cau').upsert({
     bai_lam_id: baiLamId, bai_test_cau_id: cau.id, dap_an_hs: dapAnHs as any,
     verdict: g.verdict, diem, cham_boi: g.cham_boi, cham_at: new Date().toISOString(),
   }, { onConflict: 'bai_lam_id,bai_test_cau_id' }).select('id').single()
   if (error) throw error
   return { verdict: g.verdict, cham_boi: g.cham_boi, key: cau.dap_an_key, baiLamCauId: (data as { id: string }).id }
+}
+
+// ── ET chế độ THI (giấu key) ─────────────────────────────────────────────────
+// Đề ET đã LỌC key (rpc security-definer). Câu: id/thu_tu/loai_cau/noi_dung/lua_chon/menh_de(chỉ noi_dung)/ma_dang/ly_thuyet/diem.
+export type ETCauDe = { id: string; thu_tu: number; loai_cau: string; noi_dung: string | null; lua_chon: string[] | null; menh_de: { noi_dung: string }[] | null; ma_dang: string | null; ly_thuyet: string | null; diem: number }
+export async function getETDe(baiTestId: string): Promise<ETCauDe[]> {
+  const { data, error } = await supabase.rpc('et_de', { p_bai_test: baiTestId })
+  if (error) throw error
+  return (data as ETCauDe[]) ?? []
+}
+// HS lưu đáp án ET (KHÔNG chấm — verdict để server làm lúc nộp). Sửa được tới khi nộp.
+export async function luuDapAnET(baiLamId: string, baiTestCauId: string, dapAnHs: unknown): Promise<void> {
+  const { error } = await supabase.from('bai_lam_cau').upsert(
+    { bai_lam_id: baiLamId, bai_test_cau_id: baiTestCauId, dap_an_hs: dapAnHs as any, cham_at: new Date().toISOString() },
+    { onConflict: 'bai_lam_id,bai_test_cau_id' })
+  if (error) throw error
+}
+// Đáp án ET HS đã lưu (khôi phục khi mở lại bài đang làm).
+export async function getETDapAnDaLuu(baiLamId: string): Promise<Record<string, unknown>> {
+  const { data, error } = await supabase.from('bai_lam_cau').select('bai_test_cau_id, dap_an_hs').eq('bai_lam_id', baiLamId).limit(LIMIT)
+  if (error) throw error
+  const m: Record<string, unknown> = {}
+  for (const r of (data ?? []) as { bai_test_cau_id: string; dap_an_hs: unknown }[]) m[r.bai_test_cau_id] = r.dap_an_hs
+  return m
+}
+export type ETReveal = { bai_test_cau_id: string; verdict: string | null; dap_an_key: unknown; loi_giai: string | null; anh_dap_an: string | null; menh_de: unknown }
+// Nộp ET → server chấm (đọc key) + đông cứng + trả reveal (key/lời giải/verdict). Idempotent claim.
+export async function nopET(baiLamId: string): Promise<ETReveal[]> {
+  const { data, error } = await supabase.rpc('et_nop', { p_bai_lam: baiLamId })
+  if (error) throw error
+  return (data as ETReveal[]) ?? []
 }
 
 // HS báo sai (chủ yếu tra_loi_ngan wrong mà HS tin mình đúng) — spec §7.

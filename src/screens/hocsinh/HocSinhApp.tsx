@@ -8,19 +8,35 @@ import { useEffect, useState } from 'react'
 import { supabase } from '../../lib/supabase'
 import { MathText } from '../kho/ui'
 import {
-  listBaiTestCuaHS, getBaiTestFull, moBaiLam, traLoiCau, baoSai, chuCaiChon,
-  type BaiTestCuaHS, type BaiTestFull, type BaiLamCau,
+  listBaiTestCuaHS, getBaiTestFull, moBaiLam, traLoiCau, baoSai, nopBai, chuCaiChon,
+  getETDe, luuDapAnET, nopET, getETDapAnDaLuu,
+  type BaiTestCuaHS, type BaiTestFull, type BaiLamCau, type ETCauDe, type ETReveal,
 } from '../../lib/testonline'
 
-type CauState = { chon: number | string | null; kq: { verdict: string; key: unknown; baiLamCauId: string } | null; baoRoi?: boolean }
+type Chon = number | string | (string | null)[] | null // TN=index · TLN=chuỗi · ĐS=mảng 'D'/'S'
+type CauState = { chon: Chon; kq: { verdict: string; key: unknown; baiLamCauId: string } | null; baoRoi?: boolean }
+type MenhDeSnap = { noi_dung: string; loi_giai?: string | null }
+
+const LOAI_TEN: Record<string, string> = { btvn: 'BTVN', et: 'ET', giao_trinh: 'Bài tập' }
 
 export default function HocSinhApp({ hocSinhId, hoTen }: { hocSinhId: string; hoTen: string }) {
   const [tests, setTests] = useState<BaiTestCuaHS[] | null>(null)
-  const [activeId, setActiveId] = useState<string | null>(null)
+  const [active, setActive] = useState<BaiTestCuaHS | null>(null)
+  const [tab, setTab] = useState<'chua' | 'xong'>('chua')
 
   useEffect(() => { listBaiTestCuaHS().then(setTests).catch(() => setTests([])) }, [])
 
-  if (activeId) return <LamBai baiTestId={activeId} hocSinhId={hocSinhId} onXong={() => { setActiveId(null); listBaiTestCuaHS().then(setTests) }} />
+  if (active) {
+    const back = () => { setActive(null); listBaiTestCuaHS().then(setTests) }
+    return active.loai === 'et'
+      ? <LamET test={active} hocSinhId={hocSinhId} onXong={back} />
+      : <LamBai baiTestId={active.id} hocSinhId={hocSinhId} onXong={back} />
+  }
+
+  const xongCua = (t: BaiTestCuaHS) => t.bai_lam?.trang_thai === 'da_nop'
+  const nChua = tests?.filter((t) => !xongCua(t)).length ?? 0
+  const nXong = tests?.filter(xongCua).length ?? 0
+  const shown = (tests ?? []).filter((t) => (tab === 'xong' ? xongCua(t) : !xongCua(t)))
 
   return (
     <div className="mx-auto min-h-screen max-w-md bg-slate-50 px-4 pb-10">
@@ -32,30 +48,44 @@ export default function HocSinhApp({ hocSinhId, hoTen }: { hocSinhId: string; ho
         <button onClick={() => supabase.auth.signOut()} className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-[13px] text-slate-500">Thoát</button>
       </div>
 
-      <h2 className="mb-2 mt-2 text-[13px] font-semibold uppercase tracking-wide text-slate-400">Bài tập về nhà</h2>
+      <h2 className="mb-3 text-[13px] font-semibold uppercase tracking-wide text-slate-400">Bài tập về nhà</h2>
+
+      <div className="mb-4 grid grid-cols-2 gap-1 rounded-xl bg-slate-200/70 p-1">
+        {([['chua', 'Chưa làm', nChua], ['xong', 'Hoàn thành', nXong]] as const).map(([k, label, n]) => (
+          <button key={k} onClick={() => setTab(k)}
+            className={`rounded-lg py-2 text-[14px] font-medium transition ${tab === k ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500'}`}>
+            {label} {n > 0 && <span className="text-[12px] text-slate-400">({n})</span>}
+          </button>
+        ))}
+      </div>
+
       {tests === null && <p className="py-10 text-center text-sm text-slate-400">Đang tải…</p>}
-      {tests?.length === 0 && (
+      {tests && shown.length === 0 && (
         <div className="rounded-2xl border border-slate-200 bg-white p-8 text-center">
-          <p className="text-3xl">🎉</p>
-          <p className="mt-2 text-sm font-medium text-slate-700">Chưa có bài tập nào</p>
-          <p className="mt-1 text-[13px] text-slate-400">Khi thầy cô giao BTVN, bài sẽ hiện ở đây.</p>
+          <p className="text-3xl">{tab === 'xong' ? '📭' : '🎉'}</p>
+          <p className="mt-2 text-sm font-medium text-slate-700">{tab === 'xong' ? 'Chưa hoàn thành bài nào' : 'Không có bài nào cần làm'}</p>
+          <p className="mt-1 text-[13px] text-slate-400">{tab === 'xong' ? 'Làm xong bài sẽ chuyển sang đây.' : 'Khi thầy cô giao BTVN, bài sẽ hiện ở đây.'}</p>
         </div>
       )}
       <div className="flex flex-col gap-3">
-        {tests?.map((t) => {
+        {shown.map((t) => {
           const lam = t.bai_lam
-          const daNop = lam?.trang_thai === 'da_nop'
+          const daNop = xongCua(t)
+          const laET = t.loai === 'et'
           return (
-            <button key={t.id} onClick={() => setActiveId(t.id)}
-              className="rounded-2xl border border-slate-200 bg-white p-4 text-left transition active:scale-[0.99]">
+            <button key={t.id} onClick={() => setActive(t)}
+              className={`rounded-2xl border bg-white p-4 text-left transition active:scale-[0.99] ${laET ? 'border-violet-200' : 'border-slate-200'}`}>
               <div className="flex items-center justify-between">
-                <span className="text-[15px] font-semibold text-slate-900">BTVN {t.mon} · {t.lop_ten}</span>
+                <span className="text-[15px] font-semibold text-slate-900">
+                  {laET && <span className="mr-1.5 rounded bg-violet-100 px-1.5 py-0.5 text-[11px] font-semibold text-violet-700">THI</span>}
+                  {LOAI_TEN[t.loai] ?? 'Bài'} {t.mon} · {t.lop_ten}
+                </span>
                 <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${daNop ? 'bg-emerald-50 text-emerald-700' : lam ? 'bg-amber-50 text-amber-700' : 'bg-indigo-50 text-indigo-700'}`}>
-                  {daNop ? 'đã làm' : lam ? 'đang làm' : 'mới'}
+                  {daNop ? '✓ hoàn thành' : lam ? 'đang làm' : 'mới'}
                 </span>
               </div>
-              <p className="mt-1 text-[13px] text-slate-500">Buổi {fmtNgay(t.ngay)} · {t.so_cau} câu</p>
-              <p className="mt-2 text-[13px] font-medium text-indigo-600">{lam ? 'Tiếp tục' : 'Bắt đầu'} →</p>
+              <p className="mt-1 text-[13px] text-slate-500">Buổi {fmtNgay(t.ngay)} · {t.so_cau} câu{laET ? ' · nộp 1 lần' : ''}</p>
+              <p className="mt-2 text-[13px] font-medium text-indigo-600">{daNop ? 'Xem lại' : lam ? 'Tiếp tục' : 'Bắt đầu'} →</p>
             </button>
           )
         })}
@@ -70,6 +100,8 @@ function LamBai({ baiTestId, hocSinhId, onXong }: { baiTestId: string; hocSinhId
   const [idx, setIdx] = useState(0)
   const [st, setSt] = useState<Record<string, CauState>>({})
   const [busy, setBusy] = useState(false)
+  const [nopped, setNopped] = useState(false)
+  const [goiY, setGoiY] = useState(false)
 
   useEffect(() => {
     (async () => {
@@ -87,6 +119,14 @@ function LamBai({ baiTestId, hocSinhId, onXong }: { baiTestId: string; hocSinhId
     })().catch(console.error)
   }, [baiTestId, hocSinhId])
 
+  useEffect(() => { setGoiY(false) }, [idx]) // đổi câu → ẩn gợi ý
+
+  // Làm xong HẾT câu → đánh dấu HOÀN THÀNH (bai_lam da_nop). Idempotent (claim atomic).
+  useEffect(() => {
+    if (!full || !baiLamId || nopped) return
+    if (full.caus.length > 0 && full.caus.every((c) => st[c.id]?.kq)) { setNopped(true); nopBai(baiLamId).catch(() => {}) }
+  }, [st, full, baiLamId, nopped])
+
   if (!full) return <div className="flex min-h-screen items-center justify-center text-sm text-slate-400">Đang tải bài…</div>
   const caus = full.caus
   const total = caus.length
@@ -94,14 +134,29 @@ function LamBai({ baiTestId, hocSinhId, onXong }: { baiTestId: string; hocSinhId
   const cau = caus[idx]
   const cs = cau ? st[cau.id] : undefined
   const daCham = !!cs?.kq
+  const laTN = cau?.loai_cau === 'trac_nghiem'
+  const laDS = cau?.loai_cau === 'dung_sai'
+  const menhDe: MenhDeSnap[] = laDS ? ((cau!.menh_de as MenhDeSnap[]) ?? []) : []
+  const keyDS: string[] = laDS ? ((cau!.dap_an_key as string[]) ?? []) : []
+  const chonArr: (string | null)[] = laDS ? ((cs?.chon as (string | null)[]) ?? menhDe.map(() => null)) : []
+  // Đã chọn đủ để Xác nhận? TN=đã chọn 1 · TLN=nhập khác rỗng · ĐS=đủ 4 ý.
+  const daDu = laTN ? typeof cs?.chon === 'number'
+    : laDS ? (chonArr.length === menhDe.length && menhDe.length > 0 && chonArr.every((x) => x != null))
+    : (typeof cs?.chon === 'string' && cs.chon.trim() !== '')
 
-  function setChon(v: number | string) {
+  function setChon(v: Chon) {
     if (!cau || daCham) return
     setSt((s) => ({ ...s, [cau.id]: { chon: v, kq: null } }))
   }
+  function setDS(i: number, v: 'D' | 'S') {
+    if (!cau || daCham) return
+    const cur = (st[cau.id]?.chon as (string | null)[]) ?? menhDe.map(() => null)
+    const next = [...cur]; next[i] = v
+    setSt((s) => ({ ...s, [cau.id]: { chon: next, kq: null } }))
+  }
 
   async function xacNhan() {
-    if (!cau || !baiLamId || cs?.chon == null || cs?.chon === '') return
+    if (!cau || !baiLamId || !cs || !daDu) return
     setBusy(true)
     try {
       const kq = await traLoiCau(baiLamId, cau, cs.chon)
@@ -128,9 +183,12 @@ function LamBai({ baiTestId, hocSinhId, onXong }: { baiTestId: string; hocSinhId
     )
   }
 
-  const chuAn = cau.loai_cau === 'trac_nghiem'
+  const vd = daCham ? cs!.kq!.verdict : ''
+  const boxCls = vd === 'correct' ? 'bg-emerald-50' : vd === 'partial' ? 'bg-amber-50' : 'bg-rose-50'
+  const txtCls = vd === 'correct' ? 'text-emerald-700' : vd === 'partial' ? 'text-amber-700' : 'text-rose-700'
+  const dsDung = laDS && daCham ? chonArr.filter((x, i) => x != null && String(x).toUpperCase() === String(keyDS[i]).toUpperCase()).length : 0
   return (
-    <div className="mx-auto flex min-h-screen max-w-md flex-col bg-slate-50">
+    <div className="mx-auto flex h-screen max-w-md flex-col bg-slate-50">
       <div className="flex items-center gap-3 px-4 py-3">
         <button onClick={onXong} className="text-slate-400">✕</button>
         <div className="h-2 flex-1 overflow-hidden rounded-full bg-slate-200">
@@ -141,10 +199,24 @@ function LamBai({ baiTestId, hocSinhId, onXong }: { baiTestId: string; hocSinhId
 
       <div className="flex-1 overflow-y-auto px-4 pb-4">
         <div className="rounded-2xl border border-slate-200 bg-white p-4">
-          <p className="mb-2 text-[13px] font-semibold text-slate-400">Câu {idx + 1}</p>
+          <div className="mb-2 flex items-center justify-between">
+            <p className="text-[13px] font-semibold text-slate-400">Câu {idx + 1}</p>
+            {cau.ly_thuyet && (
+              <button onClick={() => setGoiY((v) => !v)}
+                className={`rounded-full border px-3 py-1 text-[12px] font-medium transition ${goiY ? 'border-amber-300 bg-amber-100 text-amber-800' : 'border-amber-200 bg-amber-50 text-amber-700'}`}>
+                💡 Gợi ý
+              </button>
+            )}
+          </div>
+          {goiY && cau.ly_thuyet && (
+            <div className="mb-3 rounded-xl border border-amber-200 bg-amber-50/60 p-3">
+              <p className="mb-1 text-[12px] font-semibold uppercase tracking-wide text-amber-700">Lý thuyết dạng bài</p>
+              <div className="text-[14px] leading-relaxed text-slate-700"><MathText>{cau.ly_thuyet}</MathText></div>
+            </div>
+          )}
           {cau.noi_dung && <div className="mb-3 text-[15px] leading-relaxed text-slate-800"><MathText>{cau.noi_dung}</MathText></div>}
 
-          {chuAn ? (
+          {laTN ? (
             <div className="flex flex-col gap-2.5">
               {(cau.lua_chon ?? []).map((opt, i) => {
                 const chon = cs?.chon === i
@@ -161,6 +233,36 @@ function LamBai({ baiTestId, hocSinhId, onXong }: { baiTestId: string; hocSinhId
                 )
               })}
             </div>
+          ) : laDS ? (
+            <div className="flex flex-col gap-2.5">
+              {menhDe.map((m, i) => {
+                const key = String(keyDS[i] ?? '').toUpperCase()
+                const pick = chonArr[i] ? String(chonArr[i]).toUpperCase() : null
+                return (
+                  <div key={i} className="rounded-xl border border-slate-200 p-3">
+                    <div className="mb-2 flex gap-2 text-[15px] text-slate-800">
+                      <span className="font-semibold text-slate-400">{'abcd'[i] ?? i + 1})</span>
+                      <span className="flex-1"><MathText>{m.noi_dung}</MathText></span>
+                    </div>
+                    <div className="flex gap-2">
+                      {(['D', 'S'] as const).map((v) => {
+                        const on = pick === v
+                        const dungChoi = daCham && v === key       // đáp án đúng của ý
+                        const saiChoi = daCham && on && v !== key   // HS chọn sai
+                        return (
+                          <button key={v} onClick={() => setDS(i, v)} disabled={daCham}
+                            className={`flex-1 rounded-lg border py-1.5 text-[13px] font-medium transition ${
+                              dungChoi ? 'border-emerald-400 bg-emerald-50 text-emerald-700' : saiChoi ? 'border-rose-400 bg-rose-50 text-rose-700' : on ? 'border-indigo-500 bg-indigo-50 text-indigo-700' : 'border-slate-200 text-slate-500'}`}>
+                            {v === 'D' ? 'Đúng' : 'Sai'}
+                          </button>
+                        )
+                      })}
+                    </div>
+                    {daCham && m.loi_giai && <div className="mt-2 border-t border-black/5 pt-1.5 text-[13px] text-slate-600"><MathText>{m.loi_giai}</MathText></div>}
+                  </div>
+                )
+              })}
+            </div>
           ) : (
             <input value={(cs?.chon as string) ?? ''} onChange={(e) => setChon(e.target.value)} disabled={daCham}
               placeholder="Nhập đáp án…" inputMode="text"
@@ -168,11 +270,12 @@ function LamBai({ baiTestId, hocSinhId, onXong }: { baiTestId: string; hocSinhId
           )}
 
           {daCham && (
-            <div className={`mt-4 rounded-xl p-3 ${cs!.kq!.verdict === 'correct' ? 'bg-emerald-50' : 'bg-rose-50'}`}>
-              <p className={`text-[15px] font-semibold ${cs!.kq!.verdict === 'correct' ? 'text-emerald-700' : 'text-rose-700'}`}>
-                {cs!.kq!.verdict === 'correct' ? '🎉 Đúng rồi!' : '😔 Chưa đúng'}
+            <div className={`mt-4 rounded-xl p-3 ${boxCls}`}>
+              <p className={`text-[15px] font-semibold ${txtCls}`}>
+                {vd === 'correct' ? '🎉 Đúng hết!' : vd === 'partial' ? '👍 Đúng một phần' : '😔 Chưa đúng'}
+                {laDS && <span className="ml-1 text-[13px] font-normal">· {dsDung}/{menhDe.length} ý đúng</span>}
               </p>
-              {!chuAn && cs!.kq!.verdict !== 'correct' && <p className="mt-1 text-[13px] text-slate-600">Đáp án đúng: <b className="text-emerald-700">{String(cau.dap_an_key)}</b></p>}
+              {cau.loai_cau === 'tra_loi_ngan' && vd !== 'correct' && <p className="mt-1 text-[13px] text-slate-600">Đáp án đúng: <b className="text-emerald-700">{String(cau.dap_an_key)}</b></p>}
               {cau.loi_giai && (
                 <div className="mt-2 border-t border-black/5 pt-2 text-[14px] leading-relaxed text-slate-700">
                   <p className="mb-1 text-[12px] font-semibold uppercase text-slate-400">Lời giải</p>
@@ -180,7 +283,7 @@ function LamBai({ baiTestId, hocSinhId, onXong }: { baiTestId: string; hocSinhId
                 </div>
               )}
               {cau.anh_dap_an && <img src={cau.anh_dap_an} alt="lời giải" className="mt-2 max-h-72 rounded-lg border border-slate-200" />}
-              {cs!.kq!.verdict !== 'correct' && (
+              {cau.loai_cau === 'tra_loi_ngan' && vd !== 'correct' && (
                 cs!.baoRoi
                   ? <p className="mt-2 text-[12px] text-slate-400">✓ Đã gửi ý kiến cho thầy cô.</p>
                   : <button onClick={guiBaoSai} className="mt-2 rounded-lg border border-slate-300 px-3 py-1.5 text-[12px] text-slate-600">🚩 Em nghĩ mình đúng</button>
@@ -193,7 +296,7 @@ function LamBai({ baiTestId, hocSinhId, onXong }: { baiTestId: string; hocSinhId
       <div className="flex items-center gap-2 border-t border-slate-200 bg-white p-3">
         {idx > 0 && <button onClick={() => setIdx((i) => i - 1)} className="rounded-xl border border-slate-200 px-4 py-3 text-sm text-slate-500">‹</button>}
         {!daCham ? (
-          <button onClick={xacNhan} disabled={busy || cs?.chon == null || cs?.chon === ''}
+          <button onClick={xacNhan} disabled={busy || !daDu}
             className="flex-1 rounded-xl bg-indigo-600 py-3 text-sm font-medium text-white disabled:opacity-40">
             {busy ? 'Đang chấm…' : 'Xác nhận'}
           </button>
@@ -204,6 +307,151 @@ function LamBai({ baiTestId, hocSinhId, onXong }: { baiTestId: string; hocSinhId
           </button>
         )}
       </div>
+    </div>
+  )
+}
+
+// ── ET chế độ THI: làm không lộ đáp án → Nộp 1 lần → reveal cả bài ──────────
+function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: string; onXong: () => void }) {
+  const [de, setDe] = useState<ETCauDe[] | null>(null)
+  const [baiLamId, setBaiLamId] = useState<string | null>(null)
+  const [idx, setIdx] = useState(0)
+  const [ans, setAns] = useState<Record<string, Chon>>({})
+  const [reveal, setReveal] = useState<Record<string, ETReveal> | null>(null)
+  const [goiY, setGoiY] = useState(false)
+  const [confNop, setConfNop] = useState(false)
+  const [busy, setBusy] = useState(false)
+
+  useEffect(() => {
+    (async () => {
+      const [d, bl] = [await getETDe(test.id), await moBaiLam(test.id, hocSinhId)]
+      setDe(d); setBaiLamId(bl.id)
+      setAns(await getETDapAnDaLuu(bl.id) as Record<string, Chon>)
+      if (bl.trang_thai === 'da_nop') { const rev = await nopET(bl.id); setReveal(Object.fromEntries(rev.map((r) => [r.bai_test_cau_id, r]))) }
+    })().catch(console.error)
+  }, [test.id, hocSinhId])
+  useEffect(() => { setGoiY(false) }, [idx])
+
+  if (!de) return <div className="flex min-h-screen items-center justify-center text-sm text-slate-400">Đang tải đề…</div>
+  const total = de.length
+  const daNop = !!reveal
+  const daTraLoi = de.filter((c) => ans[c.id] != null && ans[c.id] !== '' && !(Array.isArray(ans[c.id]) && (ans[c.id] as unknown[]).some((x) => x == null))).length
+
+  async function luu(cauId: string, v: Chon) {
+    if (daNop || !baiLamId) return
+    setAns((s) => ({ ...s, [cauId]: v }))
+    try { await luuDapAnET(baiLamId, cauId, v) } catch (e) { console.error(e) }
+  }
+  async function doNop() {
+    if (!baiLamId) return
+    setBusy(true)
+    try { const rev = await nopET(baiLamId); setReveal(Object.fromEntries(rev.map((r) => [r.bai_test_cau_id, r]))); setIdx(0); setConfNop(false) }
+    finally { setBusy(false) }
+  }
+
+  const cau = de[idx]
+  const rv = daNop && cau ? reveal![cau.id] : undefined
+  const laTN = cau?.loai_cau === 'trac_nghiem'
+  const laDS = cau?.loai_cau === 'dung_sai'
+  const keyDS = (rv?.dap_an_key as string[] | undefined) ?? []
+  const menhDeReveal = (rv?.menh_de as { loi_giai?: string | null }[] | undefined) ?? []
+  const chonArr = laDS ? ((ans[cau.id] as (string | null)[]) ?? (cau.menh_de ?? []).map(() => null)) : []
+  const vd = rv?.verdict ?? ''
+
+  return (
+    <div className="mx-auto flex h-screen max-w-md flex-col bg-slate-50">
+      <div className="flex items-center gap-3 px-4 py-3">
+        <button onClick={onXong} className="text-slate-400">✕</button>
+        <div className="h-2 flex-1 overflow-hidden rounded-full bg-violet-200">
+          <div className="h-full bg-violet-500 transition-all" style={{ width: `${((idx + 1) / total) * 100}%` }} />
+        </div>
+        <span className="text-[12px] text-slate-500">{idx + 1}/{total}</span>
+      </div>
+      {!daNop && <p className="px-4 pb-1 text-center text-[12px] text-violet-600">📝 Bài THI · nộp xong mới hiện đáp án · đã trả lời {daTraLoi}/{total}</p>}
+
+      <div className="flex-1 overflow-y-auto px-4 pb-4">
+        <div className="rounded-2xl border border-slate-200 bg-white p-4">
+          <div className="mb-2 flex items-center justify-between">
+            <p className="text-[13px] font-semibold text-slate-400">Câu {idx + 1}</p>
+            {cau.ly_thuyet && <button onClick={() => setGoiY((v) => !v)} className={`rounded-full border px-3 py-1 text-[12px] font-medium ${goiY ? 'border-amber-300 bg-amber-100 text-amber-800' : 'border-amber-200 bg-amber-50 text-amber-700'}`}>💡 Gợi ý</button>}
+          </div>
+          {goiY && cau.ly_thuyet && <div className="mb-3 rounded-xl border border-amber-200 bg-amber-50/60 p-3 text-[14px] leading-relaxed text-slate-700"><MathText>{cau.ly_thuyet}</MathText></div>}
+          {cau.noi_dung && <div className="mb-3 text-[15px] leading-relaxed text-slate-800"><MathText>{cau.noi_dung}</MathText></div>}
+
+          {laTN ? (
+            <div className="flex flex-col gap-2.5">
+              {(cau.lua_chon ?? []).map((opt, i) => {
+                const chon = ans[cau.id] === i
+                const laDapAn = daNop && chuCaiChon(i) === String(rv?.dap_an_key)
+                const chonSai = daNop && chon && !laDapAn
+                return (
+                  <button key={i} onClick={() => luu(cau.id, i)} disabled={daNop}
+                    className={`flex items-start gap-3 rounded-xl border p-3 text-left text-[15px] ${laDapAn ? 'border-emerald-400 bg-emerald-50' : chonSai ? 'border-rose-400 bg-rose-50' : chon ? 'border-violet-500 bg-violet-50' : 'border-slate-200'}`}>
+                    <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[13px] font-semibold ${laDapAn ? 'bg-emerald-500 text-white' : chonSai ? 'bg-rose-500 text-white' : chon ? 'bg-violet-500 text-white' : 'bg-slate-100 text-slate-600'}`}>{chuCaiChon(i)}</span>
+                    <span className="flex-1 pt-0.5"><MathText>{stripLabel(opt)}</MathText></span>
+                  </button>
+                )
+              })}
+            </div>
+          ) : laDS ? (
+            <div className="flex flex-col gap-2.5">
+              {(cau.menh_de ?? []).map((m, i) => {
+                const pick = chonArr[i] ? String(chonArr[i]).toUpperCase() : null
+                const key = daNop ? String(keyDS[i] ?? '').toUpperCase() : null
+                return (
+                  <div key={i} className="rounded-xl border border-slate-200 p-3">
+                    <div className="mb-2 flex gap-2 text-[15px] text-slate-800"><span className="font-semibold text-slate-400">{'abcd'[i] ?? i + 1})</span><span className="flex-1"><MathText>{m.noi_dung}</MathText></span></div>
+                    <div className="flex gap-2">
+                      {(['D', 'S'] as const).map((v) => {
+                        const on = pick === v
+                        const dung = daNop && v === key
+                        const sai = daNop && on && v !== key
+                        return <button key={v} onClick={() => { const cur = (ans[cau.id] as (string | null)[]) ?? (cau.menh_de ?? []).map(() => null); const next = [...cur]; next[i] = v; luu(cau.id, next) }} disabled={daNop}
+                          className={`flex-1 rounded-lg border py-1.5 text-[13px] font-medium ${dung ? 'border-emerald-400 bg-emerald-50 text-emerald-700' : sai ? 'border-rose-400 bg-rose-50 text-rose-700' : on ? 'border-violet-500 bg-violet-50 text-violet-700' : 'border-slate-200 text-slate-500'}`}>{v === 'D' ? 'Đúng' : 'Sai'}</button>
+                      })}
+                    </div>
+                    {daNop && menhDeReveal[i]?.loi_giai && <div className="mt-2 border-t border-black/5 pt-1.5 text-[13px] text-slate-600"><MathText>{menhDeReveal[i].loi_giai as string}</MathText></div>}
+                  </div>
+                )
+              })}
+            </div>
+          ) : (
+            <input value={(ans[cau.id] as string) ?? ''} onChange={(e) => setAns((s) => ({ ...s, [cau.id]: e.target.value }))} onBlur={(e) => luu(cau.id, e.target.value)} disabled={daNop}
+              placeholder="Nhập đáp án…" className="w-full rounded-xl border border-slate-300 px-4 py-3 text-[15px] outline-none focus:border-violet-500 disabled:bg-slate-50" />
+          )}
+
+          {daNop && (
+            <div className={`mt-4 rounded-xl p-3 ${vd === 'correct' ? 'bg-emerald-50' : vd === 'partial' ? 'bg-amber-50' : 'bg-rose-50'}`}>
+              <p className={`text-[15px] font-semibold ${vd === 'correct' ? 'text-emerald-700' : vd === 'partial' ? 'text-amber-700' : 'text-rose-700'}`}>{vd === 'correct' ? '🎉 Đúng' : vd === 'partial' ? '👍 Đúng một phần' : '😔 Chưa đúng'}</p>
+              {cau.loai_cau === 'tra_loi_ngan' && vd !== 'correct' && <p className="mt-1 text-[13px] text-slate-600">Đáp án đúng: <b className="text-emerald-700">{String(rv?.dap_an_key)}</b></p>}
+              {rv?.loi_giai && <div className="mt-2 border-t border-black/5 pt-2 text-[14px] leading-relaxed text-slate-700"><p className="mb-1 text-[12px] font-semibold uppercase text-slate-400">Lời giải</p><MathText>{rv.loi_giai}</MathText></div>}
+              {rv?.anh_dap_an && <img src={rv.anh_dap_an} alt="lời giải" className="mt-2 max-h-72 rounded-lg border border-slate-200" />}
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div className="flex items-center gap-2 border-t border-slate-200 bg-white p-3">
+        {idx > 0 && <button onClick={() => setIdx((i) => i - 1)} className="rounded-xl border border-slate-200 px-4 py-3 text-sm text-slate-500">‹</button>}
+        {idx + 1 < total
+          ? <button onClick={() => setIdx((i) => i + 1)} className="flex-1 rounded-xl bg-violet-600 py-3 text-sm font-medium text-white">Câu tiếp →</button>
+          : daNop
+            ? <button onClick={onXong} className="flex-1 rounded-xl bg-slate-800 py-3 text-sm font-medium text-white">Xong</button>
+            : <button onClick={() => setConfNop(true)} className="flex-1 rounded-xl bg-emerald-600 py-3 text-sm font-medium text-white">Nộp bài</button>}
+      </div>
+
+      {confNop && (
+        <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 px-4 pb-6" onClick={() => setConfNop(false)}>
+          <div className="w-full max-w-md rounded-2xl bg-white p-5" onClick={(e) => e.stopPropagation()}>
+            <p className="text-[15px] font-semibold text-slate-900">Nộp bài thi?</p>
+            <p className="mt-1 text-[13px] text-slate-500">Đã trả lời {daTraLoi}/{total} câu. Nộp xong sẽ chấm và <b>không sửa được</b> nữa.</p>
+            <div className="mt-4 flex gap-2">
+              <button onClick={() => setConfNop(false)} className="flex-1 rounded-xl border border-slate-200 py-3 text-sm text-slate-600">Để xem lại</button>
+              <button onClick={doNop} disabled={busy} className="flex-1 rounded-xl bg-emerald-600 py-3 text-sm font-medium text-white disabled:opacity-40">{busy ? 'Đang nộp…' : 'Nộp bài'}</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

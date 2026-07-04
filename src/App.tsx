@@ -37,7 +37,12 @@ export default function App() {
   if (session === undefined) return <div className="flex min-h-screen items-center justify-center text-sm text-slate-400">Đang tải…</div>
   if (!session) return <Login />
   if (hsId === undefined) return <div className="flex min-h-screen items-center justify-center text-sm text-slate-400">Đang tải…</div>
-  if (hsId) return <HocSinhApp hocSinhId={hsId} hoTen={(session.user.user_metadata?.ho_ten as string) || 'bạn'} />
+  // App HS = trải nghiệm ĐIỆN THOẠI riêng → huỷ zoom 1.15 của #root (mật độ desktop staff) về net 1.0.
+  if (hsId) return (
+    <div style={{ zoom: 1 / 1.15 }}>
+      <HocSinhApp hocSinhId={hsId} hoTen={(session.user.user_metadata?.ho_ten as string) || 'bạn'} />
+    </div>
+  )
   if (quyen === null) return <div className="flex min-h-screen items-center justify-center text-sm text-slate-400">Đang tải quyền…</div>
 
   return (

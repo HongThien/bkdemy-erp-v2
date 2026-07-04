@@ -914,3 +914,39 @@ tsc sạch + build pass. ⏳ chưa soi PDF bằng mắt (bản in paged.js).
 - **`tailieu.ts`:** `usedCausOfDoc` → **`usedCausOfBuoi(taiLieuId, buoiId, exceptPhanId?)`** (chỉ quét phan dạng+BTVN của buổi đó qua `groupBuoi`). `setDangOfBuoi` dùng `usedInBuoi` thay `usedInDoc` cho auto-suggest luyện+BTVN.
 - **`TaiLieuBuilder.tsx`:** `usedExcept(phanId)` scope theo buổi CHỨA phanId (tìm qua `groupBuois`) — KhoPicker disabled + "↻ Gợi ý" chỉ né câu cùng buổi. (Badge `cauUsage` "dùng N×" = cross-doc mềm, GIỮ nguyên.)
 - tsc + build pass. (⚠ HANDOFF §198/§382/schema-note nhắc "khoá phạm vi doc" giờ STALE → distill cuối ngày sửa.)
+
+### 07-04 (phiên 2, tiếp 4) — TEST ONLINE loại ĐÚNG/SAI (Thùy: ĐS trước, TLN sau)
+
+- **Thùy chốt tư duy:** ET/BTVN/GT bản chất NHƯ NHAU = "nối 1 bài làm HS vào kho", chỉ khác kết quả chảy về đâu. Thứ tự loại câu: **trắc nghiệm (xong) + đúng/sai TRƯỚC** (đều chấm khớp tuyệt đối 100%, ko cần report) · **trả lời ngắn SAU** (loại bẩn 43% cần report/cache).
+- **Thang điểm đúng/sai = CHUẨN THPT 2025** (số ý đúng 0..4 → 0/0.1/0.25/0.5/1.0). Verdict: 4/4→correct · 1-3→partial · 0→wrong. `DUNGSAI_DIEM_4Y` trong engine.
+- **Engine `testgrade.js`:** `gradeDungSai(hs, key)` (đếm ý đúng → điểm thô + verdict) + `extractKey` xử dung_sai (key = mảng D/S từ menh_de[].dap_an; validate mệnh đề thiếu Đ/S). 30 test pass (thêm 6 ĐS).
+- **Service `testonline.ts`:** SUPPORTED += 'dung_sai'; `traLoiCau` route dung_sai → gradeDungSai, lưu `diem = diemTho × trọng số`. Snapshot `menh_de` (gồm loi_giai) đã có sẵn.
+- **UI `HocSinhApp`:** 3 nhánh render — TN (nút A-D) · **ĐS (mỗi mệnh đề 2 nút Đúng/Sai)** · TLN (ô nhập). `chon` mở rộng thành mảng cho ĐS; `daDu`=đủ điều kiện Xác nhận (ĐS phải đủ 4 ý). Reveal ĐS: mỗi ý xanh/đỏ + "X/4 ý đúng" + lời giải per-mệnh-đề + box amber cho partial. **Báo sai CHỈ cho tra_loi_ngan** (TN/ĐS tuyệt đối, ko tranh cãi).
+- **⭐ FIX SCHEMA (mig 0066):** `bai_lam_cau.bai_test_cau_id` RESTRICT → **ON DELETE CASCADE**. Bug: `xoaBaiTest` xoá test đã có HS làm sẽ FAIL (bai_test_cau bị chặn bởi bai_lam_cau). Xoá test = huỷ instance → bỏ luôn bài làm.
+- **✅ VERIFY thật (`_diag_dungsai.mjs`):** seed câu ĐS → temp bai_test → **HS0009 GHI bai_lam_cau qua RLS OK** (đường WRITE của HS — lần đầu test) → verdict=partial, diem=0.5 (3/4) đúng → cleanup cascade sạch. (Trước chỉ test READ.)
+- **Demo test (`seed_demo_test_online.mjs`):** doc BTVN "DEMO Test online — 11B1" (2 trắc nghiệm + 1 đúng/sai + 1 trả lời ngắn, khối 11), bám 11B1 · 10/07. 4 câu snapshot sạch (extractKey OK hết). → Thùy phát hành + login HS0004 test cả 3 loại. (`--xoa` để dọn.)
+- tsc + build pass.
+
+### 07-04 (phiên 2, tiếp 5) — HS test online: 3 lưu ý Thùy (mobile · toggle hoàn thành · gợi ý lý thuyết)
+
+1. **TỐI ƯU ĐIỆN THOẠI:** `#root{zoom:1.15}` (mật độ desktop staff) phóng app HS → tràn màn hình dt. Fix: App bọc `<HocSinhApp>` trong `<div style={{zoom:1/1.15}}>` → net 1.0. LamBai `min-h-screen`→`h-screen` (footer nút ghim đáy, giữa cuộn). Viewport meta đã có sẵn.
+2. **TRẠNG THÁI HOÀN THÀNH + toggle:** list HS có **toggle "Chưa làm / Hoàn thành"** (segmented + đếm). "Hoàn thành" = `bai_lam.trang_thai='da_nop'` — tự đánh dấu khi HS trả lời HẾT câu (effect watch `st`, `nopBai` claim atomic). Badge "✓ hoàn thành", nút "Xem lại". Reopen sửa vẫn giữ hoàn thành.
+3. **NÚT GỢI Ý lý thuyết dạng:** HS ko đọc kho (member-gate) → snapshot LT vào `bai_test_cau` (mig 0067 `ma_dang`+`ly_thuyet`; `phatHanhBTVN` batch fetch `khoCuaMon(mon).ltDangTbl` theo dang_chinh). UI: nút "💡 Gợi ý" (chỉ hiện khi cau.ly_thuyet có) → bung panel lý thuyết (MathText), reset khi đổi câu.
+- Demo: dạng đúng/sai chọn dạng khối 11 ĐÃ CÓ lý thuyết → 3/4 câu demo hiện Gợi ý. **⚠ Nếu đã phát hành demo TRƯỚC đổi này → xoá bai_test cũ + phát hành lại** (snapshot cũ thiếu ma_dang/ly_thuyet).
+- tsc + build pass.
+
+### 07-04 (phiên 2, tiếp 6) — Lập tài khoản cho TOÀN BỘ học sinh
+
+- **Thùy chốt:** lập TK cho tất cả HS. Username = mã HS · **pass mặc định = mã HS** (mỗi em pass riêng, khỏi thông báo, đổi sau). Lý do: "đằng nào HS cũng sẽ có tài khoản riêng".
+- Chạy `provision_hs_auth.mjs` (no-arg = tất cả HS đang học, skip đã có) → **318 tạo + 3 test = 321/321**, 0 lỗi. Email tổng hợp `<ma_hs>@hs.bkdemy.local`, email_confirm, tai_khoan.hoc_sinh_id link. Verify: 321 tai_khoan HS = 321 HS đang học; login thử HS0036 OK, my_hoc_sinh_id resolve ✓.
+- **CÒN (Thùy "sau này có thể thay đổi"):** chưa có màn HS **đổi mật khẩu** (supabase.auth.updateUser) — dựng khi cần. HS mới nhập học sau này: provision lại (script idempotent, skip đã có) hoặc nút "Cấp tài khoản" ở màn Học sinh.
+
+### 07-04 (phiên 2, tiếp 7) — ET (chế độ THI) + Giáo trình làm online
+
+- **Thùy chốt:** ET/BTVN/GT bản chất như nhau (nối bài làm vào kho). Giáo trình online = **chỉ bài luyện** (loai_phan='dang'), bỏ lý thuyết (vẫn ở nút Gợi ý). **ET = chế độ THI** (nộp 1 lần mới hiện đáp án, giấu key chống gian lận, chấm server, vào điểm).
+- **mig 0068:** bai_test.loai += 'giao_trinh' · `so_cau` denormalize (list HS ko đếm được bai_test_cau ET do RLS) · **RLS bai_test_cau_hs_read loại ET** (HS ko đọc câu ET) · **RPC `et_de`** (đề ET đã LỌC key/lời giải, menh_de chỉ noi_dung) · **RPC `et_nop`** (chấm server-side TN/ĐS/TLN + đông cứng + reveal). **mig 0069:** et_nop **chỉ chấm lần nộp ĐẦU** (get diagnostics row_count) — chống sửa đáp án qua API rồi nộp lại.
+- **Service:** `phatHanhTest` tổng quát (DOC_MAP dispatch câu theo loai doc; ET→khoa THI) thay `phatHanhBTVN` (giữ alias) · `getGiaoTrinhBuoiCaus` (câu dạng) · ET HS: `getETDe`/`luuDapAnET`(lưu ko chấm)/`nopET`/`getETDapAnDaLuu`. list dùng `so_cau` denorm.
+- **UI:** staff nút phát hành hiện cho btvn/et/giao_trinh_buoi (PHAT_HANH_DUOC). HS list: nhãn loại + badge tím **THI** cho ET. **`LamET`** (component riêng): làm 1 câu/màn KHÔNG lộ đáp án (auto-lưu mỗi chọn) → "Nộp bài" (confirm) → `et_nop` reveal cả bài; mở lại bài đã nộp = nopET idempotent hiện reveal. Giáo trình dùng LamBai (reveal-ngay) như BTVN.
+- **✅ VERIFY (`_diag_et.mjs`):** et_de **giấu key sạch** + đọc thẳng bai_test_cau ET **bị RLS chặn** + et_nop **chấm server đúng** (TN correct · ĐS partial 0.5 · TLN correct) + da_nop. freeze re-test pass.
+- **Demo:** seed thêm doc ET "DEMO ET (thi) — 11B1" (cùng 4 câu) cạnh BTVN demo. Thùy phát hành cả 2 → HS0004 test.
+- **⏳ CÒN "vào điểm" (mastery):** ET results ĐÃ lưu per-câu (bai_lam_cau: ma_dang + verdict + da_nop) = phép đo có thật, NHƯNG chưa nối vào mastery engine (getMasteryHS đọc gami_grades+buoi_danh_gia_dang, chưa đọc bai_lam_cau ET) / màn Điểm số. Bước sau: bổ sung nguồn ET-online vào mastery.ts (suy động, đúng §1). tsc+build pass.

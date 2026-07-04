@@ -1,4 +1,4 @@
-import { smartNormalize as N, smartCheckTLN as T, gradeTracNghiem as TN, gradeTraLoiNgan as TLN, extractKey as EK } from '../src/gami/testgrade.js'
+import { smartNormalize as N, smartCheckTLN as T, gradeTracNghiem as TN, gradeTraLoiNgan as TLN, gradeDungSai as DS, extractKey as EK } from '../src/gami/testgrade.js'
 let pass = 0, fail = 0
 const eq = (a, b, msg) => { const ok = JSON.stringify(a) === JSON.stringify(b); if (ok) pass++; else { fail++; console.log('❌', msg, '→ got', JSON.stringify(a), 'want', JSON.stringify(b)) } }
 
@@ -28,7 +28,16 @@ eq(TN(null, 'A'), { verdict: 'wrong', cham_boi: 'exact' }, 'TN bỏ trống')
 eq(TLN('60;30', '30;60'), { verdict: 'correct', cham_boi: 'exact' }, 'TLN hoán vị đúng')
 eq(TLN('7', '6'), { verdict: 'wrong', cham_boi: 'exact' }, 'TLN sai')
 
+// gradeDungSai (thang THPT 2025)
+eq(DS(['D', 'S', 'D', 'S'], ['D', 'S', 'D', 'S']), { verdict: 'correct', cham_boi: 'exact', dung: 4, tong: 4, diemTho: 1.0 }, 'ĐS 4/4')
+eq(DS(['D', 'S', 'D', 'D'], ['D', 'S', 'D', 'S']).diemTho, 0.5, 'ĐS 3/4 = 0.5')
+eq(DS(['D', 'D', 'D', 'D'], ['D', 'S', 'S', 'S']).diemTho, 0.1, 'ĐS 1/4 = 0.1')
+eq(DS(['S', 'D', 'S', 'D'], ['D', 'S', 'D', 'S']), { verdict: 'wrong', cham_boi: 'exact', dung: 0, tong: 4, diemTho: 0 }, 'ĐS 0/4')
+eq(DS(['D', null, 'D', 'S'], ['D', 'S', 'D', 'S']).verdict, 'partial', 'ĐS bỏ trống 1 ý = partial')
+
 // extractKey
+eq(EK({ loai_cau: 'dung_sai', menh_de: [{ dap_an: 'D' }, { dap_an: 'S' }, { dap_an: 'D' }, { dap_an: 'S' }] }), { ok: true, key: ['D', 'S', 'D', 'S'] }, 'EK ĐS ok')
+eq(EK({ loai_cau: 'dung_sai', menh_de: null }).ok, false, 'EK ĐS chưa cấu trúc')
 eq(EK({ loai_cau: 'trac_nghiem', lua_chon: ['a', 'b', 'c', 'd'], dap_an: 'B' }), { ok: true, key: 'B' }, 'EK TN ok')
 eq(EK({ loai_cau: 'trac_nghiem', lua_chon: null, dap_an: 'B' }).ok, false, 'EK TN thiếu lựa chọn')
 eq(EK({ loai_cau: 'trac_nghiem', lua_chon: ['a', 'b'], dap_an: '' }).ok, false, 'EK TN thiếu đáp án')

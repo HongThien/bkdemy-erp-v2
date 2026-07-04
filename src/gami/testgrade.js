@@ -61,6 +61,20 @@ export function gradeTraLoiNgan(hsText, keyText) {
     : { verdict: 'wrong', cham_boi: 'exact' }  // wrong → HS được REPORT (spec §5,§7)
 }
 
+// Câu ĐÚNG/SAI: 4 mệnh đề, mỗi ý Đ/S. Thang điểm CHUẨN THPT 2025 (số ý đúng 0..4).
+export const DUNGSAI_DIEM_4Y = [0, 0.1, 0.25, 0.5, 1.0]
+const normDS = (v) => (String(v ?? '').trim().toUpperCase().startsWith('S') ? 'S' : 'D')
+// hs, key = mảng 'D'/'S' cùng độ dài (thường 4). HS chưa chọn ý nào (null) = coi như sai ý đó.
+export function gradeDungSai(hs, key) {
+  const n = (key || []).length
+  const arr = Array.isArray(hs) ? hs : []
+  let dung = 0
+  for (let i = 0; i < n; i++) if (arr[i] != null && normDS(arr[i]) === normDS(key[i])) dung++
+  const diemTho = n === 4 ? DUNGSAI_DIEM_4Y[dung] : (n ? dung / n : 0)
+  const verdict = dung === n ? 'correct' : dung > 0 ? 'partial' : 'wrong'
+  return { verdict, cham_boi: 'exact', dung, tong: n, diemTho }
+}
+
 // Snapshot đề khi phát hành: rút KEY + validate. Trả {ok, key, warn}.
 // - trac_nghiem: key = chữ cái (dap_an). Thiếu dap_an / lua_chon không phải mảng → warn.
 // - tra_loi_ngan: key = dap_an (chuỗi). Thiếu → warn.
@@ -78,6 +92,12 @@ export function extractKey(cau) {
     if (!key) return { ok: false, warn: 'thiếu đáp án' }
     return { ok: true, key }
   }
-  // dung_sai / tu_luan: slice 1 chưa hỗ trợ auto → báo caller bỏ qua
+  if (loai === 'dung_sai') {
+    const md = Array.isArray(cau.menh_de) ? cau.menh_de : null
+    if (!md || md.length < 2) return { ok: false, warn: 'thiếu mệnh đề (chưa cấu trúc)' }
+    if (md.some((m) => !/^[DS]/i.test(String(m?.dap_an ?? '').trim()))) return { ok: false, warn: 'mệnh đề thiếu đáp án Đ/S' }
+    return { ok: true, key: md.map((m) => (String(m.dap_an).trim().toUpperCase().startsWith('S') ? 'S' : 'D')) }
+  }
+  // tu_luan: không auto-chấm được → báo caller bỏ qua
   return { ok: false, warn: `loại "${loai}" chưa hỗ trợ` }
 }
