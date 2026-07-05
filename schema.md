@@ -2,7 +2,7 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-78 bảng · 0 enum · 6 trigger · 19 function
+83 bảng · 0 enum · 7 trigger · 20 function
 
 ## bai_lam
 
@@ -677,6 +677,18 @@
 | buoi_hoc_id | uuid | Y |  | FK→buoi_hoc.id |
 | created_at | timestamp with time zone |  | now() |  |
 
+## loai_viec
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| ten | text |  |  |  |
+| phuong_thuc_cham | text |  |  |  |
+| task_nho | boolean |  | false |  |
+| thang_kl | jsonb |  | '[]'::jsonb |  |
+| active | boolean |  | true |  |
+| created_at | timestamp with time zone |  | now() |  |
+
 ## lop
 
 | cột | kiểu | null | default | khóa |
@@ -1002,6 +1014,64 @@
 | vai_tro_id | uuid | Y |  | FK→vai_tro.id |
 | mon | text | Y |  |  |
 
+## viec
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| loai_viec_id | uuid |  |  | FK→loai_viec.id |
+| tieu_de | text |  |  |  |
+| mo_ta | text | Y |  |  |
+| nguoi_giao | uuid |  |  | FK→nhan_su.id |
+| khoi_luong | numeric |  |  |  |
+| trang_thai | text |  | 'giao'::text |  |
+| tien_do | numeric | Y |  |  |
+| chat_luong | numeric | Y |  |  |
+| phan_tram | numeric | Y |  |  |
+| bang_chung | text | Y |  |  |
+| ky_tinh | text | Y |  |  |
+| han_nghiem_thu | date | Y |  |  |
+| created_at | timestamp with time zone |  | now() |  |
+| hoan_thanh_at | timestamp with time zone | Y |  |  |
+| nghiem_thu_at | timestamp with time zone | Y |  |  |
+| ghi_chu_nghiem_thu | text | Y |  |  |
+
+## viec_log
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| viec_id | uuid |  |  | FK→viec.id |
+| hanh_dong | text |  |  |  |
+| truoc | jsonb | Y |  |  |
+| sau | jsonb |  |  |  |
+| actor | uuid | Y |  |  |
+| ts | timestamp with time zone |  | now() |  |
+
+## viec_nguoi_lam
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| viec_id | uuid |  |  | PK FK→viec.id |
+| nhan_su_id | uuid |  |  | PK FK→nhan_su.id |
+
+## viec_van_hanh_duyet
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| buoi_hoc_id | uuid |  |  | FK→buoi_hoc.id |
+| tab | text |  |  |  |
+| nhan_su_id | uuid |  |  | FK→nhan_su.id |
+| chat_luong | numeric |  | 100 |  |
+| nguoi_duyet | uuid |  |  | FK→nhan_su.id |
+| ghi_chu | text | Y |  |  |
+| duyet_at | timestamp with time zone |  | now() |  |
+| tien_do | numeric |  | 100 |  |
+| tien_do_de_xuat | numeric |  | 100 |  |
+| tien_do_ly_do | text | Y |  |  |
+| hieu_suat | numeric | Y |  |  |
+
 ## Triggers
 
 | bảng | trigger | timing | event | function |
@@ -1012,6 +1082,7 @@
 | hoc_sinh | trg_log_he_so_hoc_phi | AFTER | UPDATE | log_he_so_hoc_phi |
 | hoc_sinh_lop | trg_log_hoc_sinh_lop | AFTER | INSERT/UPDATE | log_hoc_sinh_lop |
 | ung_vien | trg_log_ung_vien | AFTER | INSERT/UPDATE | log_ung_vien |
+| viec | trg_log_viec | AFTER | INSERT/UPDATE | log_viec |
 
 ## Functions
 
@@ -1029,6 +1100,7 @@
 - `log_hoa_don()` → trigger
 - `log_hoc_sinh_lop()` → trigger
 - `log_ung_vien()` → trigger
+- `log_viec()` → trigger
 - `my_hoc_sinh_id()` → uuid
 - `my_quyen()` → TABLE(la_admin boolean, chuc_nang text[])
 - `self_link_account()` → uuid

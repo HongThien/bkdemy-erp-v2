@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties } from 'react'
+import { Children, useEffect, useRef, useState, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
 import { getTaiLieuFull, DEFAULT_BTVN_LINES, kieuCols, type TaiLieuFull, type PhanResolved } from '../../lib/tailieu'
@@ -297,10 +297,21 @@ function LtBlock({ title, lt, big }: { title: string; lt?: { noi_dung: string; f
   )
 }
 
-// Danh sách câu của 1 BLOCK — layout theo KIỂU (thuong=1 cột · 2cot/3cot/4cot = multi-column). Câu ngắn → tiết kiệm giấy.
-function CauList({ kieu, children }: { kieu?: string; children: React.ReactNode }) {
+// Danh sách câu của 1 BLOCK — layout theo KIỂU (thuong=1 cột · 2cot/3cot/4cot = nhiều cột). Câu ngắn → tiết kiệm giấy.
+// Nhiều cột = ghép câu THEO HÀNG (inline-block, xem CSS .pv-row) — KHÔNG dùng column-count/grid/table (paged.js
+// treo/vỡ layout với 3 cái đó, xem DEVLOG 07-05). Hàng xếp chồng bình thường → cột chạy xuyên trang được,
+// không cần tránh-mồ-côi heading (không có "cả khối" cần giữ nguyên như column-count).
+export function CauList({ kieu, children }: { kieu?: string; children: React.ReactNode }) {
   const cols = kieuCols(kieu)
-  return <ol className={`pv-caulist${cols > 1 ? ' pv-multicol' : ''}`} style={cols > 1 ? { columnCount: cols } : undefined}>{children}</ol>
+  if (cols <= 1) return <div className="pv-caulist">{children}</div>
+  const items = Children.toArray(children)
+  const rows: React.ReactNode[][] = []
+  for (let i = 0; i < items.length; i += cols) rows.push(items.slice(i, i + cols))
+  return (
+    <div className="pv-caulist">
+      {rows.map((row, i) => <div key={i} className="pv-row" style={{ '--cols': cols } as CSSProperties}>{row}</div>)}
+    </div>
+  )
 }
 
 function DangBlock({ no, p, gv, lt = true }: { no: number; p: PhanResolved; gv: boolean; lt?: boolean }) {
@@ -437,7 +448,7 @@ export function CauItem({ no, c, gv, lines = 0 }: { no: number; c: CauHoi; gv: b
   const cols = hasOpts ? optCols(c.lua_chon!) : 0
   const { stem, grid, emb } = splitStem(c)
   return (
-    <li className="pv-cau">
+    <div className="pv-cau">
       {/* THỨ TỰ: đề → HÌNH → đáp án (Thùy chốt) */}
       <div className="pv-math"><MathText prefix={`<span class="pv-cau-no">Câu ${no}.</span> `}>{md ? c.noi_dung : stem}</MathText></div>
       {c.anh_de && <img src={c.anh_de} alt="" className="pv-img" />}
@@ -465,7 +476,7 @@ export function CauItem({ no, c, gv, lines = 0 }: { no: number; c: CauHoi; gv: b
       </>)}
       {gv && <GvAnswer c={c} />}
       {lines > 0 && !hasOpts && !grid && !md && <div className="pv-write">{Array.from({ length: lines }).map((_, i) => <div key={i} className="pv-wline" />)}</div>}
-    </li>
+    </div>
   )
 }
 
@@ -496,10 +507,15 @@ const CONTENT_CSS = `
 .pv-h-bt{color:#16a34a;font-weight:800;font-size:18px;margin:10px 0 3px}
 .pv-box-lt{background:#eff7fd;border:1px solid #cfe6f5;border-radius:9px;padding:11px 13px;margin-top:6px}
 .pv-box-label{font-size:18px;font-weight:800;text-transform:uppercase;color:#2D9CDB;letter-spacing:.3px;margin-bottom:5px}
-.pv-caulist{list-style:none;margin:4px 0 0;padding:0}
-/* BLOCK nhiều cột (kieu 2cot/3cot/4cot): câu chảy vào cột; mỗi câu GIỮ NGUYÊN 1 khối (không tách ngang cột). */
-.pv-caulist.pv-multicol{column-gap:9mm}
-.pv-caulist.pv-multicol > .pv-cau{break-inside:avoid}
+.pv-caulist{margin:4px 0 0}
+/* BLOCK nhiều cột (kieu 2cot/3cot/4cot): GHÉP THEO HÀNG bằng inline-block (KHÔNG dùng column-count/grid/table —
+   paged.js treo cứng với display:grid và <table>, và column-count không tôn trọng break-after:avoid của heading
+   theo sau → khoảng trắng xấu, xem DEVLOG 07-05). Mỗi .pv-row là 1 hàng ngang N câu, câu trong hàng canh TOP
+   giống nhau; hàng xếp chồng bình thường (flow khối chuẩn) → paged.js ngắt trang giữa các hàng tự nhiên, cột
+   được phép chạy xuyên trang, không cần break-inside:avoid cho cả khối lớn (chỉ avoid ở TỪNG hàng nhỏ, an toàn). */
+.pv-row{break-inside:avoid;font-size:0}
+.pv-row > .pv-cau{display:inline-block;vertical-align:top;font-size:17px;box-sizing:border-box;width:calc((100% - (var(--cols) - 1)*9mm)/var(--cols))}
+.pv-row > .pv-cau:not(:first-child){margin-left:9mm}
 .pv-cau{margin:12px 0;break-inside:avoid}
 .pv-cau-no{font-weight:700;color:var(--pv-accent,#E91E8C);margin-right:5px}
 .pv-img{display:block;margin:7px auto;max-height:60mm;max-width:100%}

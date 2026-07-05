@@ -26,6 +26,15 @@ interface UiState {
   setHocPhiTab: (t: string) => void
   setHocPhiKy: (k: string) => void
   setHocPhiPhId: (id: string | null) => void
+  // ── Bộ lọc màn Chất lượng vận hành — giữ NGUYÊN khi rời/quay lại màn ──────
+  dbVanHanhKy: string          // 'YYYY-MM', rỗng = tháng hiện tại
+  dbVanHanhView: 'theonguoi' | 'theomuc' | 'chitiet' | 'duyet'   // 4 TẦNG TRÊN (Thùy chốt 07-05 lần 4: +Duyệt chất lượng)
+  dbVanHanhMuc: 'tatca' | 'ops' | 'ta' | 'gv'          // dùng trong tab Theo mục + filter Chi tiết
+  dbVanHanhNsId: string | null                          // dùng trong tab Theo người + filter Chi tiết
+  setDbVanHanhKy: (k: string) => void
+  setDbVanHanhView: (v: 'theonguoi' | 'theomuc' | 'chitiet' | 'duyet') => void
+  setDbVanHanhMuc: (m: 'tatca' | 'ops' | 'ta' | 'gv') => void
+  setDbVanHanhNsId: (id: string | null) => void
 }
 
 export const useStore = create<UiState>((set) => ({
@@ -48,6 +57,14 @@ export const useStore = create<UiState>((set) => ({
   setHocPhiTab: (t) => set({ hocPhiTab: t }),
   setHocPhiKy: (k) => set({ hocPhiKy: k }),
   setHocPhiPhId: (id) => set({ hocPhiPhId: id }),
+  dbVanHanhKy: '',
+  dbVanHanhView: 'theonguoi',
+  dbVanHanhMuc: 'tatca',
+  dbVanHanhNsId: null,
+  setDbVanHanhKy: (k) => set({ dbVanHanhKy: k }),
+  setDbVanHanhView: (v) => set({ dbVanHanhView: v }),
+  setDbVanHanhMuc: (m) => set({ dbVanHanhMuc: m }),
+  setDbVanHanhNsId: (id) => set({ dbVanHanhNsId: id }),
 }))
 
 // ── Gate feature-access THẬT (lớp ①) — KHÔNG dùng cờ founderOnly mock nữa ─────────

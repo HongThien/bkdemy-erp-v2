@@ -25,12 +25,15 @@ import ThanhTichScreen from './gami/ThanhTichScreen'
 import KetQuaScreen from './ketqua/KetQuaScreen'
 import DuyetChamScreen from './duyetcham/DuyetChamScreen'
 import HocPhiScreen from './hocphi/HocPhiScreen'
+import GiaoViecScreen from './giaoviec/GiaoViecScreen'
+import { listViecCuaToi, type ViecFull } from '../lib/giaoviec'
 import QuanLyLevelScreen from './gami/QuanLyLevelScreen'
 import PhanQuyenScreen from './phanquyen/PhanQuyenScreen'
 import BaoLoiScreen from './baoloi/BaoLoiScreen'
 import TuyenSinhScreen from './tuyensinh/TuyenSinhScreen'
 import BoTroScreen from './botro/BoTroScreen'
 import BoTroDuoiScreen from './botro/BoTroDuoiScreen'
+import ChatLuongVanHanhScreen from './dashboard/ChatLuongVanHanhScreen'
 
 const ROLE_LBL: Record<string, string> = { gv: 'GV', tg: 'Trợ giảng', ops: 'OPS' }
 const tabsCuaVai = (vai: 'gv' | 'tg'): TabKey[] => (vai === 'gv' ? ['danhgia', 'ingame'] : ['ingame', 'et'])
@@ -167,8 +170,11 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
   const [loai, setLoai] = useState<Set<TabKey>>(new Set())
   const [doneShown, setDoneShown] = useState(20)
   const [now, setNow] = useState(() => Date.now())
+  const [viecPT, setViecPT] = useState<ViecFull[]>([])
+  const setStaffLeaf = useStore((s) => s.setStaffLeaf)
 
   useEffect(() => { getMyTasks().then(setTasks).catch(() => setTasks([])) }, [])
+  useEffect(() => { if (scope?.nhanSu.id) listViecCuaToi(scope.nhanSu.id).then(setViecPT).catch(() => setViecPT([])) }, [scope?.nhanSu.id])
   useEffect(() => { const id = setInterval(() => setNow(Date.now()), 60000); return () => clearInterval(id) }, [])
   useEffect(() => {
     if (!scope?.opsToanHe) { setOpsWeek([]); return }
@@ -278,13 +284,25 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
           </details>
         </div>
 
-        {/* PHÁT TRIỂN — rail hẹp, ngăn cách bằng đường kẻ dọc */}
+        {/* PHÁT TRIỂN — rail hẹp, ngăn cách bằng đường kẻ dọc. Task THẬT (viec/viec_nguoi_lam), không reset theo tuần. */}
         <div className="lg:border-l-2 lg:border-slate-200 lg:pl-5">
           <SectionHead label="Phát triển" color="bg-violet-500" />
-          <div className="rounded-2xl border border-dashed border-slate-300 bg-white p-4 shadow-sm">
-            <div className="flex items-center gap-2 text-[14px] font-medium text-slate-700">📨 Giao việc — sắp có</div>
-            <p className="mt-1.5 text-[12px] leading-relaxed text-slate-500">Việc phát triển được cấp trên giao (soạn tài liệu, nhập kho…) sẽ hiện ở đây — là task THẬT, không reset theo tuần.</p>
-          </div>
+          {viecPT.filter((v) => v.trang_thai !== 'dat').length === 0 ? (
+            <div className="rounded-2xl border border-dashed border-slate-300 bg-white p-4 shadow-sm">
+              <div className="flex items-center gap-2 text-[14px] font-medium text-slate-700">📨 Chưa có việc phát triển nào</div>
+              <p className="mt-1.5 text-[12px] leading-relaxed text-slate-500">Việc phát triển được cấp trên giao (soạn tài liệu, nhập kho…) sẽ hiện ở đây khi có.</p>
+            </div>
+          ) : (
+            <div className="space-y-2">
+              {viecPT.filter((v) => v.trang_thai !== 'dat').map((v) => (
+                <button key={v.id} onClick={() => setStaffLeaf('giaoviec')} className="block w-full rounded-2xl bg-white p-3.5 text-left shadow-sm hover:shadow-md">
+                  <div className="text-[13px] font-semibold text-slate-800">{v.tieu_de}</div>
+                  <div className="mt-1 text-[11px] text-slate-500">{v.loai_viec?.ten} · {v.nguoi_giao_ten} giao{v.han_nghiem_thu ? ` · hạn ${new Date(v.han_nghiem_thu).toLocaleDateString('vi-VN')}` : ''}</div>
+                </button>
+              ))}
+            </div>
+          )}
+          <button onClick={() => setStaffLeaf('giaoviec')} className="mt-2 text-[12px] font-medium text-indigo-600 hover:underline">Mở màn Giao việc →</button>
         </div>
       </div>
     </div>
@@ -327,6 +345,8 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'tl' ? <KhoTaiLieuScreen />
       : staffLeaf === 'lamtailieu:bo_tro' ? <section className="flex min-h-0 items-center justify-center p-8 text-sm text-slate-400">Loại tài liệu này dựng sau.</section>
       : staffLeaf === 'hocphi' ? <HocPhiScreen />
+      : staffLeaf === 'giaoviec' ? <GiaoViecScreen />
+      : staffLeaf === 'db_chatluong' ? <ChatLuongVanHanhScreen />
       : staffLeaf === 'ns' ? <NhanSuScreen />
       : staffLeaf === 'phancong' ? <PhanCongScreen />
       : staffLeaf === 'tkb' ? <TKBScreen />

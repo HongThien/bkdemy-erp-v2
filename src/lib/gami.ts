@@ -607,6 +607,85 @@ export async function getMyTasks(): Promise<MyTask[]> {
   return out
 }
 
+// ── DASHBOARD VẬN HÀNH (đo hoạt động MỌI nhân sự, không riêng "tôi") ────────
+// Tái dùng ĐÚNG invariant của getMyTasks (đánh giá/chấm bài/ET/BTVN) — chỉ BATCH
+// cho NHIỀU người 1 lần (tránh N+1 gọi getMyTasks lặp lại per-person).
+// KHÔNG gồm OPS điểm danh: buoi_hoc_hs không có cột "ai điểm danh" → team-wide,
+// chưa attribute được theo TỪNG NGƯỜI (xem listOpsDiemDanhTeam bên dưới, đo theo TEAM).
+export type StaffTaskRow = MyTask & { nhan_su_id: string; lop: string }
+export async function listAllStaffTasks(tu: string, den: string): Promise<StaffTaskRow[]> {
+  const { data: pcAll, error: e1 } = await supabase.from('phan_cong_lop').select('nhan_su_id, lop_id, vai_tro').limit(LIMIT)
+  if (e1) throw e1
+  const rolesByLop = new Map<string, Map<string, Set<'gv' | 'tg'>>>() // lop_id -> nhan_su_id -> roles
+  const lopIdsSet = new Set<string>()
+  for (const pc of (pcAll ?? []) as any[]) {
+    lopIdsSet.add(pc.lop_id)
+    const v: 'gv' | 'tg' = pc.vai_tro === 'gv' ? 'gv' : 'tg'
+    if (!rolesByLop.has(pc.lop_id)) rolesByLop.set(pc.lop_id, new Map())
+    const byNs = rolesByLop.get(pc.lop_id)!
+    if (!byNs.has(pc.nhan_su_id)) byNs.set(pc.nhan_su_id, new Set())
+    byNs.get(pc.nhan_su_id)!.add(v)
+  }
+  const lopIds = [...lopIdsSet]
+  if (!lopIds.length) return []
+  const { data: buois, error } = await supabase.from('buoi_hoc')
+    .select('id, lop_id, ngay, ingame_dong_at, et_dong_at, danh_gia_xong_at, btvn_dong_at, lop:lop_id(ten_lop)')
+    .neq('trang_thai', 'huy').eq('loai', 'thuong').in('lop_id', lopIds).gte('ngay', tu).lte('ngay', den).order('ngay').limit(LIMIT)
+  if (error) throw error
+  const { data: tkb } = await supabase.from('thoi_khoa_bieu')
+    .select('lop_id, thu, gio_bat_dau, hieu_luc_tu, hieu_luc_den, lop:lop_id(ngay_khai_giang)').in('lop_id', lopIds).limit(LIMIT)
+  const tkbByLop = new Map<string, any[]>()
+  for (const s of (tkb ?? []) as any[]) { if (!tkbByLop.has(s.lop_id)) tkbByLop.set(s.lop_id, []); tkbByLop.get(s.lop_id)!.push(s) }
+  const caTiepTheo = (lopId: string, after: string): number | null => {
+    for (let i = 1; i <= 21; i++) {
+      const day = congNgay(after, i); const thu = thuOf(day)
+      const slot = (tkbByLop.get(lopId) ?? []).find((s: any) => s.thu === thu && s.hieu_luc_tu <= day && (!s.hieu_luc_den || s.hieu_luc_den >= day) && (!s.lop?.ngay_khai_giang || s.lop.ngay_khai_giang <= day))
+      if (slot) return vnInstant(day, String(slot.gio_bat_dau).slice(0, 5))
+    }
+    return null
+  }
+  const out: StaffTaskRow[] = []
+  for (const b of (buois ?? []) as any[]) {
+    const doneAtTab: Record<TabKey, string | null> = { diemdanh: null, ingame: b.ingame_dong_at, danhgia: b.danh_gia_xong_at, et: b.et_dong_at, btvn: b.btvn_dong_at }
+    const deadlineOf = (tab: TabKey): number | null => {
+      if (tab === 'ingame' || tab === 'danhgia') return vnInstant(b.ngay, '23:59')
+      if (tab === 'et') return vnInstant(congNgay(b.ngay, 1), '12:00')
+      if (tab === 'btvn') { const ca = caTiepTheo(b.lop_id, b.ngay); return ca == null ? null : ca - 2 * 3600000 }
+      return null
+    }
+    const byNs = rolesByLop.get(b.lop_id)
+    if (!byNs) continue
+    for (const [nsId, roles] of byNs) {
+      const seen = new Set<TabKey>()
+      for (const vai of ['gv', 'tg'] as const) {
+        if (!roles.has(vai)) continue
+        for (const t of TASKS_BY_VAI[vai]) {
+          if (seen.has(t.tab)) continue
+          seen.add(t.tab)
+          out.push({
+            nhan_su_id: nsId, buoiId: b.id, lopId: b.lop_id, lop: b.lop?.ten_lop ?? '?', ngay: b.ngay, vai, tab: t.tab,
+            label: t.label, done: !!doneAtTab[t.tab], doneAt: doneAtTab[t.tab], deadline: deadlineOf(t.tab),
+          })
+        }
+      }
+    }
+  }
+  return out
+}
+
+// OPS điểm danh — team-wide (KHÔNG per-person, xem comment listAllStaffTasks): tỉ lệ HS đã điểm danh /
+// tổng HS mọi buổi mở trong khoảng, cho biết CẢ TEAM OPS đang theo kịp không.
+export async function listOpsDiemDanhTeam(tu: string, den: string): Promise<{ tongBuoi: number; tongHs: number; daDiemDanh: number }> {
+  const { data: buois, error } = await supabase.from('buoi_hoc').select('id').eq('loai', 'thuong').neq('trang_thai', 'huy').gte('ngay', tu).lte('ngay', den).limit(LIMIT)
+  if (error) throw error
+  const ids = (buois ?? []).map((b: any) => b.id)
+  if (!ids.length) return { tongBuoi: 0, tongHs: 0, daDiemDanh: 0 }
+  const { data: rows, error: e2 } = await supabase.from('buoi_hoc_hs').select('diem_danh').in('buoi_hoc_id', ids).limit(LIMIT * 10)
+  if (e2) throw e2
+  const all = (rows ?? []) as any[]
+  return { tongBuoi: ids.length, tongHs: all.length, daDiemDanh: all.filter((r) => r.diem_danh != null).length }
+}
+
 // OPS điểm danh theo TUẦN: buổi ảo (TKB × mỗi ngày trong khoảng) — như buoiAoCuaNgay nhưng cho cả khoảng, kèm `ngay`.
 export async function buoiAoCuaKhoang(tu: string, den: string): Promise<(BuoiAo & { ngay: string })[]> {
   const { data: slots, error } = await supabase.from('thoi_khoa_bieu')

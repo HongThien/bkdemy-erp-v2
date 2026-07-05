@@ -4,9 +4,9 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
-import { getTaiLieuFull, kieuCols, type TaiLieuFull } from '../../lib/tailieu'
+import { getTaiLieuFull, type TaiLieuFull } from '../../lib/tailieu'
 import { deThiMeta as getMeta } from '../../lib/dethi'
-import { CauItem, CHROME_CSS, buildPagedCss, downloadPagesPdf, pageChrome } from './PrintView'
+import { CauItem, CauList, CHROME_CSS, buildPagedCss, downloadPagesPdf, pageChrome } from './PrintView'
 
 const DEFAULT_TL_LINES = 4
 const CAP_LABEL: Record<string, string> = { vao_10: 'Tuyển sinh vào 10', thpt_qg: 'THPT Quốc gia', hsg: 'Học sinh giỏi' }
@@ -133,21 +133,18 @@ function DeThiDoc({ full, gv }: { full: TaiLieuFull; gv: boolean }) {
         )}
       </div>
 
-      {phans.map((p) => {
-        const cols = kieuCols(p.kieu)
-        return (
-          <section key={p.id} className="pv-sec">
-            <h2 className="pv-h-dang">{p.tieu_de}</h2>
-            {p.caus.length === 0 ? <p className="pv-empty">Phần này chưa có câu.</p> : (
-              <ol className={`pv-caulist${cols > 1 ? ' pv-multicol' : ''}`} style={cols > 1 ? { columnCount: cols } : undefined}>
-                {p.caus.map((c) => (
-                  <CauItem key={c.ma_cau} no={next()} c={c} gv={gv} lines={!gv && c.loai_cau === 'tu_luan' ? (lines[c.ma_cau] ?? DEFAULT_TL_LINES) : 0} />
-                ))}
-              </ol>
-            )}
-          </section>
-        )
-      })}
+      {phans.map((p) => (
+        <section key={p.id} className="pv-sec">
+          <h2 className="pv-h-dang">{p.tieu_de}</h2>
+          {p.caus.length === 0 ? <p className="pv-empty">Phần này chưa có câu.</p> : (
+            <CauList kieu={p.kieu}>
+              {p.caus.map((c) => (
+                <CauItem key={c.ma_cau} no={next()} c={c} gv={gv} lines={!gv && c.loai_cau === 'tu_luan' ? (lines[c.ma_cau] ?? DEFAULT_TL_LINES) : 0} />
+              ))}
+            </CauList>
+          )}
+        </section>
+      ))}
       {phans.length === 0 && <p className="pv-empty">Đề thi chưa có phần nào.</p>}
     </div>
   )
