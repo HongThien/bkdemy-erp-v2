@@ -2,7 +2,7 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-76 bảng · 0 enum · 6 trigger · 19 function
+78 bảng · 0 enum · 6 trigger · 19 function
 
 ## bai_lam
 
@@ -192,6 +192,7 @@
 | updated_at | timestamp with time zone |  | now() |  |
 | danh_gia_xong_at | timestamp with time zone | Y |  |  |
 | btvn_dong_at | timestamp with time zone | Y |  |  |
+| muc_hoc_duoi_id | uuid | Y |  | FK→muc_hoc_duoi.id |
 
 ## buoi_hoc_hs
 
@@ -467,6 +468,7 @@
 | dong_at | timestamp with time zone | Y |  |  |
 | created_by | uuid | Y |  |  |
 | created_at | timestamp with time zone |  | now() |  |
+| trang_thai_tb | text |  | 'thong_bao_1'::text |  |
 
 ## hoa_don_dong
 
@@ -496,6 +498,20 @@
 | sau | jsonb |  |  |  |
 | actor | uuid | Y |  |  |
 | ts | timestamp with time zone |  | now() |  |
+
+## hoc_phi_phat_sinh
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| ky | date |  |  |  |
+| loai | text |  |  |  |
+| lop_id | uuid | Y |  | FK→lop.id |
+| hoc_sinh_id | uuid | Y |  | FK→hoc_sinh.id |
+| mo_ta | text |  |  |  |
+| so_tien | numeric |  |  |  |
+| created_by | uuid | Y |  |  |
+| created_at | timestamp with time zone |  | now() |  |
 
 ## hoc_phi_xet_duyet
 
@@ -693,6 +709,15 @@
 | min_exp | integer |  |  | PK |
 | xu | integer |  |  |  |
 
+## muc_hoc_duoi
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| ten | text |  |  |  |
+| gia | numeric |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |
+
 ## muc_hoc_lieu
 
 | cột | kiểu | null | default | khóa |
@@ -709,7 +734,6 @@
 | id | uuid |  | gen_random_uuid() | PK |
 | ten | text |  |  |  |
 | don_gia_buoi | numeric |  |  |  |
-| gia_duoi | numeric |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |
 
 ## muc_nang_luc

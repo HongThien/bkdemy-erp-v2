@@ -4,27 +4,35 @@
 import { useEffect, useState } from 'react'
 import {
   listMucHocPhi, createMucHocPhi, deleteMucHocPhi,
+  listMucHocDuoi, createMucHocDuoi, deleteMucHocDuoi,
   listMucHocLieu, createMucHocLieu, deleteMucHocLieu,
-  listPhuHuynhCoConDangHoc, listPhieuTheoKy, getPhieuAo, getHoaDonByKy, getHoaDonDong, chotKy, ghiThanhToan, listThanhToan, tinhSoDuNo,
-  listXetDuyetChoDuyet, duyetXetDuyet, kyHienTai,
-  type MucHocPhi, type MucHocLieu, type PHOpt, type PhieuAo, type XetDuyet, type ThanhToan, type DongPhieu, type DongSoHang,
+  listPhuHuynhCoConDangHoc, listPhieuTheoKy, listDuoiTheoKy, getPhieuAo, getHoaDonByKy, getHoaDonDong, chotKy, ghiThanhToan, listThanhToan, tinhSoDuNo,
+  listXetDuyetChoDuyet, duyetXetDuyet, kyHienTai, listHocPhiTheoHocSinhVaMon,
+  listHeSoHocSinh, xacNhanHeSo, setHeSoThuCong, boManualHeSo,
+  listPhatSinhTheoKy, themPhatSinhLop, themPhatSinhCaNhan, xoaPhatSinh,
+  layTenConDangHoc, soanThongBao, capNhatTrangThaiTB, trangThaiTBKeTiep, TRANG_THAI_TB_LABEL,
+  type MucHocPhi, type MucHocDuoi, type MucHocLieu, type PHOpt, type PhieuAo, type XetDuyet, type ThanhToan, type DongPhieu, type DongSoHang, type DongDuoiSoHang, type HocSinhHeSo, type DongHocSinhTheoMon, type PhatSinhEntry, type TrangThaiTB,
 } from '../../lib/hocphi'
+import { listLop, listHocSinh, updateLop, type Lop, type HocSinh } from '../../lib/nhansu'
 import { AnhGuiPHModal, taiPdfPhieu } from './PhieuThongBao'
 import SearchSelect from '../../components/SearchSelect'
 import { inp } from '../kho/ui'
+import { useStore } from '../../store/useStore'
 
 const tienVN = (n: number) => Math.round(n).toLocaleString('vi-VN') + 'đ'
 const LOAI_LABEL: Record<string, string> = { hoc_phi: 'Học phí', hoc_duoi: 'Học đuổi', hoc_lieu: 'Học liệu', phat_sinh: 'Phát sinh', no_ky_truoc: 'Nợ kỳ trước' }
-const TAB = [['danhsach', 'Danh sách'], ['phieu', 'Phiếu'], ['xetduyet', 'Xét duyệt'], ['muchocphi', 'Mức học phí'], ['muchoclieu', 'Mức học liệu']] as const
+const TAB = [['theomon', 'HS theo môn'], ['danhsach', 'Học phí học chính'], ['hocduoi', 'Học phí bổ trợ đuổi'], ['phieu', 'Phiếu'], ['xetduyet', 'Xét duyệt'], ['heso', 'Hệ số'], ['muc', 'Mức & Lớp'], ['phatsinh', 'Phát sinh']] as const
 type Tab = (typeof TAB)[number][0]
 
 export default function HocPhiScreen() {
-  const [tab, setTab] = useState<Tab>('danhsach')
+  // Tab + bộ lọc giữ ở zustand (module-scope, KHÔNG mất khi tab con unmount/remount — Thùy 07-05: "đừng reset").
+  const tab = useStore((s) => s.hocPhiTab) as Tab
+  const setTab = useStore((s) => s.setHocPhiTab)
   const [soChoDuyet, setSoChoDuyet] = useState(0)
   useEffect(() => { listXetDuyetChoDuyet().then((r) => setSoChoDuyet(r.length)) }, [tab])
   return (
     <div className="flex h-full flex-col bg-[#f5f5f7]">
-      <div className="flex flex-none items-center gap-1.5 border-b border-slate-200 bg-white px-6 py-2.5">
+      <div className="flex flex-none flex-wrap items-center gap-1.5 border-b border-slate-200 bg-white px-6 py-2.5">
         <span className="mr-2 text-sm font-semibold text-slate-900">Học phí</span>
         {TAB.map(([v, l]) => (
           <button key={v} onClick={() => setTab(v)} className={`rounded-lg px-3 py-1.5 text-[13px] font-medium transition ${tab === v ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`}>
@@ -33,19 +41,84 @@ export default function HocPhiScreen() {
         ))}
       </div>
       <div className="min-h-0 flex-1 overflow-auto p-6">
+        {tab === 'theomon' && <TheoMonTab />}
         {tab === 'danhsach' && <DanhSachTab />}
+        {tab === 'hocduoi' && <DuoiTab />}
         {tab === 'phieu' && <PhieuTab />}
         {tab === 'xetduyet' && <XetDuyetTab onChanged={() => listXetDuyetChoDuyet().then((r) => setSoChoDuyet(r.length))} />}
-        {tab === 'muchocphi' && <MucHocPhiTab />}
-        {tab === 'muchoclieu' && <MucHocLieuTab />}
+        {tab === 'heso' && <HeSoTab />}
+        {tab === 'muc' && <MucTab />}
+        {tab === 'phatsinh' && <PhatSinhTab />}
       </div>
     </div>
   )
 }
 
-// ── TAB DANH SÁCH — tổng quan mọi PH trong kỳ → xuất ảnh/PDF thông báo (per-PH, KHÔNG gộp) ──
+// ── TAB HS THEO MÔN — audit nền: mỗi dòng = 1 HS × 1 môn/lớp, số buổi RAW trong kỳ (KHÔNG qua
+// xét duyệt) — check trước khi tin bảng "Danh sách"/"Phiếu" theo PH (Thùy 07-05: "có bảng đó rồi
+// mới check được bảng phụ huynh"). Số buổi ở đây có thể khác Phiếu nếu HS đang chờ xét duyệt.
+function TheoMonTab() {
+  const ky = useStore((s) => s.hocPhiKy) || kyHienTai()
+  const setKy = useStore((s) => s.setHocPhiKy)
+  const [rows, setRows] = useState<DongHocSinhTheoMon[]>([])
+  const [loading, setLoading] = useState(true)
+  const [q, setQ] = useState('')
+
+  async function reload() { setLoading(true); try { setRows(await listHocPhiTheoHocSinhVaMon(ky)) } finally { setLoading(false) } }
+  useEffect(() => { reload() }, [ky]) // eslint-disable-line
+
+  const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
+  const filtered = q.trim() ? rows.filter((r) => norm(r.hoc_sinh_ten + ' ' + (r.ma_hs ?? '') + ' ' + (r.phu_huynh_ten ?? '') + ' ' + r.mon + ' ' + r.lop_ten).includes(norm(q))) : rows
+  const tongTien = filtered.reduce((s, r) => s + r.thanh_tien, 0)
+
+  return (
+    <div className="mx-auto max-w-[1150px]">
+      <p className="mb-3 text-[12px] text-slate-400">Bảng nền để đối chiếu: mỗi dòng = 1 học sinh × 1 môn/lớp, số buổi RAW trong kỳ theo cửa sổ ghi danh (KHÔNG áp xét duyệt nghỉ ≥30%/lệch window) — dùng để check trước khi tin số ở tab "Danh sách"/"Phiếu" theo phụ huynh.</p>
+      <div className="mb-3 flex flex-wrap items-center gap-3 rounded-xl border border-slate-200 bg-white p-4">
+        <input type="month" value={ky.slice(0, 7)} onChange={(e) => setKy(e.target.value + '-01')} className={`${inp} w-40`} />
+        <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm học sinh / phụ huynh / môn / lớp…" className={`${inp} w-72`} />
+        <span className="text-[12px] text-slate-400">{filtered.length} dòng · tổng {tienVN(tongTien)}</span>
+      </div>
+      {loading ? <p className="py-10 text-center text-sm text-slate-400">Đang tải…</p>
+        : !filtered.length ? <div className="rounded-xl border border-dashed border-slate-300 bg-white py-14 text-center text-sm text-slate-400">Không có khoản học phí nào trong kỳ.</div>
+        : (
+          <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
+            <table className="w-full min-w-[1080px] table-fixed text-[13px]">
+              <colgroup>
+                <col className="w-[150px]" /><col className="w-[90px]" /><col className="w-[220px]" /><col className="w-[100px]" /><col className="w-[100px]" />
+                <col className="w-[80px]" /><col className="w-[100px]" /><col className="w-[70px]" /><col className="w-[130px]" />
+              </colgroup>
+              <thead className="bg-slate-50 text-left text-[11px] uppercase tracking-wide text-slate-400">
+                <tr><th className="px-4 py-2">Học sinh</th><th className="px-2 py-2">Mã HS</th><th className="px-2 py-2">Phụ huynh</th><th className="px-2 py-2">Môn</th><th className="px-2 py-2">Lớp</th><th className="px-2 py-2 text-right">Số buổi</th><th className="px-2 py-2 text-right">Đơn giá</th><th className="px-2 py-2 text-right">Hệ số</th><th className="px-4 py-2 text-right">Thành tiền</th></tr>
+              </thead>
+              <tbody>
+                {filtered.map((r, i) => (
+                  <tr key={i} className="border-t border-slate-100">
+                    <td className="px-4 py-2 font-medium text-slate-800">{r.hoc_sinh_ten}</td>
+                    <td className="px-2 py-2 font-mono text-[12px] text-slate-400">{r.ma_hs ?? '—'}</td>
+                    <td className="truncate px-2 py-2 text-slate-500" title={r.phu_huynh_ten ?? undefined}>{r.phu_huynh_ten ?? '—'}</td>
+                    <td className="px-2 py-2 text-slate-500">{r.mon}</td>
+                    <td className="px-2 py-2 text-slate-500">{r.lop_ten}</td>
+                    <td className="px-2 py-2 text-right text-slate-600">{r.so_buoi}</td>
+                    <td className="px-2 py-2 text-right text-slate-600">{tienVN(r.don_gia)}</td>
+                    <td className="px-2 py-2 text-right text-slate-600">{r.he_so}</td>
+                    <td className="px-4 py-2 text-right font-medium text-slate-800">{tienVN(r.thanh_tien)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+    </div>
+  )
+}
+
+// ── TAB HỌC PHÍ HỌC CHÍNH — tổng quan mọi PH trong kỳ → xuất ảnh/PDF + toggle trạng thái thông báo
+// thu tiền (Thùy 07-05, giống toggle tuyển sinh): Đã thông báo lần 1 → Chưa nộp-đang xử lý → Đã hoàn
+// thành. Mỗi bước có sẵn nội dung — Nhân sự chỉ Copy → dán gửi PH, không phải nghĩ chữ.
 function DanhSachTab() {
-  const [ky, setKy] = useState(kyHienTai())
+  const ky = useStore((s) => s.hocPhiKy) || kyHienTai()
+  const setKy = useStore((s) => s.setHocPhiKy)
   const [rows, setRows] = useState<DongSoHang[]>([])
   const [loading, setLoading] = useState(true)
   const [anh, setAnh] = useState<{ id: string; ten: string; ma: string } | null>(null)
@@ -72,7 +145,7 @@ function DanhSachTab() {
   const tongDaChot = rows.filter((r) => r.daChot).reduce((s, r) => s + (r.tongTien ?? 0), 0)
 
   return (
-    <div className="mx-auto max-w-[900px]">
+    <div className="mx-auto max-w-[1150px]">
       <div className="mb-3 flex flex-wrap items-center gap-3 rounded-xl border border-slate-200 bg-white p-4">
         <input type="month" value={ky.slice(0, 7)} onChange={(e) => setKy(e.target.value + '-01')} className={`${inp} w-40`} />
         <span className="text-[12px] text-slate-400">{rows.length} PH · {soDaChot} đã chốt · tổng đã chốt {tienVN(tongDaChot)}</span>
@@ -86,11 +159,11 @@ function DanhSachTab() {
           <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
             <table className="w-full text-[13px]">
               <thead className="bg-slate-50 text-left text-[11px] uppercase tracking-wide text-slate-400">
-                <tr><th className="px-4 py-2">Phụ huynh</th><th>Số con</th><th>Trạng thái</th><th className="text-right">Tổng tiền</th><th className="text-right px-4">Thao tác</th></tr>
+                <tr><th className="px-4 py-2">Phụ huynh</th><th>Số con</th><th>Trạng thái thu</th><th className="text-right">Tổng tiền</th><th>Trạng thái thông báo</th><th className="text-right px-4">Thao tác</th></tr>
               </thead>
               <tbody>
                 {rows.map((r) => (
-                  <tr key={r.phu_huynh_id} className="border-t border-slate-100">
+                  <tr key={r.phu_huynh_id} className="border-t border-slate-100 align-top">
                     <td className="px-4 py-2 font-medium text-slate-800">{r.ho_ten} <span className="font-mono text-[11px] text-slate-400">{r.ma_ph}</span></td>
                     <td className="text-slate-500">{r.soCon}</td>
                     <td>
@@ -99,6 +172,11 @@ function DanhSachTab() {
                         : <span className="rounded-full bg-indigo-50 px-2 py-0.5 text-[11px] font-medium text-indigo-700">Chưa chốt (tạm tính)</span>}
                     </td>
                     <td className="text-right font-medium text-slate-800">{r.tongTien != null ? tienVN(r.tongTien) : '—'}</td>
+                    <td className="py-2">
+                      {r.daChot && r.hoaDonId && r.trangThaiTB
+                        ? <TrangThaiTBCell hoaDonId={r.hoaDonId} phuHuynhId={r.phu_huynh_id} ky={ky} tongTien={r.tongTien ?? 0} trangThai={r.trangThaiTB} onChanged={reload} />
+                        : <span className="text-[11px] text-slate-300">Cần chốt trước</span>}
+                    </td>
                     <td className="px-4 py-2">
                       <div className="flex justify-end gap-1.5">
                         <button onClick={() => setAnh({ id: r.phu_huynh_id, ten: r.ho_ten, ma: r.ma_ph })} className="rounded-md border border-slate-200 px-2 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-300">📷 Ảnh</button>
@@ -116,11 +194,87 @@ function DanhSachTab() {
   )
 }
 
+// Ô trạng thái thông báo — badge trạng thái hiện tại + nút "Copy nội dung" (soạn sẵn, dán gửi PH
+// ngay) + nút "Xong bước này →" (tự nhảy bước kế). KHÔNG cần Nhân sự nghĩ chữ (Thùy 07-05).
+function TrangThaiTBCell({ hoaDonId, phuHuynhId, ky, tongTien, trangThai, onChanged }: {
+  hoaDonId: string; phuHuynhId: string; ky: string; tongTien: number; trangThai: TrangThaiTB; onChanged: () => void
+}) {
+  const [busy, setBusy] = useState(false)
+  const [copied, setCopied] = useState(false)
+  const keTiep = trangThaiTBKeTiep(trangThai)
+  async function copyNoiDung() {
+    const tenCon = await layTenConDangHoc(phuHuynhId)
+    const noiDung = soanThongBao(trangThai, tenCon, ky, tongTien)
+    await navigator.clipboard.writeText(noiDung)
+    setCopied(true); setTimeout(() => setCopied(false), 1500)
+  }
+  async function xongBuoc() {
+    if (!keTiep) return
+    setBusy(true)
+    try { await capNhatTrangThaiTB(hoaDonId, keTiep); onChanged() } finally { setBusy(false) }
+  }
+  const mau = trangThai === 'hoan_thanh' ? 'bg-emerald-50 text-emerald-700' : trangThai === 'cho_xu_ly' ? 'bg-amber-50 text-amber-700' : 'bg-indigo-50 text-indigo-700'
+  return (
+    <div className="flex flex-wrap items-center gap-1.5">
+      <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${mau}`}>{TRANG_THAI_TB_LABEL[trangThai]}</span>
+      {trangThai !== 'hoan_thanh' && (
+        <>
+          <button onClick={copyNoiDung} className="rounded-md border border-slate-200 px-2 py-1 text-[11px] font-medium text-slate-600 hover:border-indigo-300">{copied ? '✓ Đã copy' : '📋 Copy nội dung'}</button>
+          <button disabled={busy} onClick={xongBuoc} className="rounded-md border border-indigo-200 bg-indigo-50 px-2 py-1 text-[11px] font-medium text-indigo-700 hover:bg-indigo-100 disabled:opacity-40">Xong bước này →</button>
+        </>
+      )}
+    </div>
+  )
+}
+
+// ── TAB HỌC PHÍ BỔ TRỢ ĐUỔI — luồng billing RIÊNG với học chính (Thùy 07-05: không xét duyệt,
+// không chốt kỳ riêng — chỉ để xem/đối chiếu PH nào có con học đuổi trong kỳ và tổng bao nhiêu).
+function DuoiTab() {
+  const ky = useStore((s) => s.hocPhiKy) || kyHienTai()
+  const setKy = useStore((s) => s.setHocPhiKy)
+  const [rows, setRows] = useState<DongDuoiSoHang[]>([])
+  const [loading, setLoading] = useState(true)
+  async function reload() { setLoading(true); try { setRows(await listDuoiTheoKy(ky)) } finally { setLoading(false) } }
+  useEffect(() => { reload() }, [ky]) // eslint-disable-line
+  const tongCong = rows.reduce((s, r) => s + r.tongTienDuoi, 0)
+
+  return (
+    <div className="mx-auto max-w-[700px]">
+      <p className="mb-3 text-[12px] text-slate-400">Học phí bổ trợ đuổi ĐỘC LẬP với học phí học chính (không xét duyệt nghỉ ≥30%, giá theo mức của từng ca — xem tab "Đuổi" để gán). Vẫn cộng chung vào 1 hoá đơn khi chốt kỳ ở tab "Phiếu".</p>
+      <div className="mb-3 flex flex-wrap items-center gap-3 rounded-xl border border-slate-200 bg-white p-4">
+        <input type="month" value={ky.slice(0, 7)} onChange={(e) => setKy(e.target.value + '-01')} className={`${inp} w-40`} />
+        <span className="text-[12px] text-slate-400">{rows.length} PH có con học đuổi · tổng {tienVN(tongCong)}</span>
+      </div>
+      {loading ? <p className="py-8 text-center text-sm text-slate-400">Đang tải…</p>
+        : !rows.length ? <div className="rounded-xl border border-dashed border-slate-300 bg-white py-14 text-center text-sm text-slate-400">Không có PH nào phát sinh học phí đuổi trong kỳ này.</div>
+        : (
+          <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
+            <table className="w-full text-[13px]">
+              <thead className="bg-slate-50 text-left text-[11px] uppercase tracking-wide text-slate-400">
+                <tr><th className="px-4 py-2">Phụ huynh</th><th className="text-right px-4">Tiền học đuổi</th></tr>
+              </thead>
+              <tbody>
+                {rows.map((r) => (
+                  <tr key={r.phu_huynh_id} className="border-t border-slate-100">
+                    <td className="px-4 py-2 font-medium text-slate-800">{r.ho_ten} <span className="font-mono text-[11px] text-slate-400">{r.ma_ph}</span></td>
+                    <td className="px-4 py-2 text-right font-semibold text-slate-800">{tienVN(r.tongTienDuoi)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+    </div>
+  )
+}
+
 // ── TAB PHIẾU — chọn PH + kỳ → phiếu ảo/thật, chốt, thu tiền ────────────────
 function PhieuTab() {
   const [phs, setPhs] = useState<PHOpt[]>([])
-  const [phId, setPhId] = useState<string | null>(null)
-  const [ky, setKy] = useState(kyHienTai())
+  const phId = useStore((s) => s.hocPhiPhId)
+  const setPhId = useStore((s) => s.setHocPhiPhId)
+  const ky = useStore((s) => s.hocPhiKy) || kyHienTai()
+  const setKy = useStore((s) => s.setHocPhiKy)
   const [ao, setAo] = useState<PhieuAo | null>(null)
   const [dongChot, setDongChot] = useState<DongPhieu[]>([]) // dòng ĐÃ CHỐT (snapshot, đọc lại — khác ao.dong tính realtime)
   const [hd, setHd] = useState<{ id: string; trang_thai: string; tong_tien: number } | null>(null)
@@ -280,6 +434,9 @@ function XetDuyetTab({ onChanged }: { onChanged: () => void }) {
         : rows.map((r) => (
           <div key={r.id} className="rounded-xl border border-slate-200 bg-white p-4">
             <div className="mb-2 flex items-center gap-2">
+              <span className="text-[15px] font-semibold text-slate-900">{r.hoc_sinh_ten ?? '(HS không rõ)'}</span>
+              {r.ma_hs && <span className="font-mono text-[11px] text-slate-400">{r.ma_hs}</span>}
+              {r.lop_ten && <span className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] font-medium text-slate-600">{r.lop_ten}</span>}
               <span className={`rounded-full px-2.5 py-1 text-[12px] font-semibold ${r.ly_do === 'nghi_30' ? 'bg-rose-50 text-rose-700' : 'bg-amber-50 text-amber-700'}`}>{r.ly_do === 'nghi_30' ? '🚩 Nghỉ ≥30%' : '↔ Lệch window'}</span>
               <span className="text-[12px] text-slate-400">Kỳ {r.ky.slice(5, 7)}/{r.ky.slice(0, 4)}</span>
             </div>
@@ -300,66 +457,285 @@ function XetDuyetTab({ onChanged }: { onChanged: () => void }) {
   )
 }
 
-// ── TAB MỨC HỌC PHÍ / MỨC HỌC LIỆU (config CRUD) ────────────────────────────
-function MucHocPhiTab() {
-  const [rows, setRows] = useState<MucHocPhi[]>([])
-  const [ten, setTen] = useState(''); const [donGia, setDonGia] = useState(''); const [giaDuoi, setGiaDuoi] = useState('')
-  async function reload() { setRows(await listMucHocPhi()) }
+// ── TAB HỆ SỐ — thông tin CỦA HỌC SINH (Thùy chốt 07-05). Bảng TO hiện MỌI HS đang học ở BK.
+// Hệ thống GỢI Ý (học ≥2 môn -5% · có anh chị em cùng học chung môn -5%, gộp -10%) — Nhân sự XÁC NHẬN mới ghi.
+// Sửa tay (học bổng, ngoại lệ…) khoá gợi ý cho tới khi bấm "Bỏ tay".
+function HeSoTab() {
+  const [rows, setRows] = useState<HocSinhHeSo[]>([])
+  const [loading, setLoading] = useState(true)
+  const [busyId, setBusyId] = useState<string | null>(null)
+  const [suaId, setSuaId] = useState<string | null>(null)
+  const [suaVal, setSuaVal] = useState('')
+  const [q, setQ] = useState('')
+
+  async function reload() { setLoading(true); try { setRows(await listHeSoHocSinh()) } finally { setLoading(false) } }
   useEffect(() => { reload() }, [])
+
+  async function xacNhan(hocSinhId: string, heSo: number) {
+    setBusyId(hocSinhId)
+    try { await xacNhanHeSo(hocSinhId, heSo); await reload() } finally { setBusyId(null) }
+  }
+  async function luuTay(hocSinhId: string) {
+    const v = Number(suaVal); if (!v || v <= 0) return
+    setBusyId(hocSinhId)
+    try { await setHeSoThuCong(hocSinhId, v); setSuaId(null); await reload() } finally { setBusyId(null) }
+  }
+  async function boTay(hocSinhId: string) {
+    setBusyId(hocSinhId)
+    try { await boManualHeSo(hocSinhId); await reload() } finally { setBusyId(null) }
+  }
+
+  const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
+  const filtered = q.trim() ? rows.filter((r) => norm(r.ho_ten + ' ' + (r.phu_huynh_ten ?? '')).includes(norm(q))) : rows
+  const soLechGoiY = rows.filter((r) => r.he_so_nguon !== 'manual' && r.heSoGoiY !== r.he_so_hoc_phi).length
+
+  return (
+    <div className="mx-auto max-w-[1200px]">
+      <p className="mb-3 text-[12px] text-slate-400">Hệ số là thông tin CỦA HỌC SINH. Hệ thống gợi ý: học ≥2 môn giảm 5% · có anh chị em cùng học chung ít nhất 1 môn giảm thêm 5% (gộp cả 2 = giảm 10%). Nhân sự bấm "Xác nhận" mới ghi vào phiếu; sửa tay (học bổng…) sẽ khoá gợi ý cho tới khi bấm "Bỏ tay".</p>
+      <div className="mb-3 flex items-center gap-3 rounded-xl border border-slate-200 bg-white p-4">
+        <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm học sinh / phụ huynh…" className={`${inp} w-72`} />
+        <span className="text-[12px] text-slate-400">{rows.length} học sinh đang học{soLechGoiY > 0 ? ` · ${soLechGoiY} lệch gợi ý` : ''}</span>
+      </div>
+      {loading ? <p className="py-10 text-center text-sm text-slate-400">Đang tải…</p>
+        : !filtered.length ? <div className="rounded-xl border border-dashed border-slate-300 bg-white py-14 text-center text-sm text-slate-400">Không có học sinh nào.</div>
+        : (
+          <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
+            <table className="w-full min-w-[1150px] table-fixed text-[13px]">
+              <colgroup>
+                <col className="w-[130px]" /><col className="w-[150px]" /><col className="w-[150px]" /><col className="w-[110px]" />
+                <col className="w-[130px]" /><col className="w-[80px]" /><col className="w-[230px]" />
+                <col className="w-[170px]" />
+              </colgroup>
+              <thead className="bg-slate-50 text-left text-[11px] uppercase tracking-wide text-slate-400">
+                <tr><th className="px-4 py-2">Học sinh</th><th className="px-2 py-2">Phụ huynh</th><th className="px-2 py-2">Lớp</th><th className="px-2 py-2">Môn đang học</th><th className="px-2 py-2">Hệ số hiện tại</th><th className="px-2 py-2">Gợi ý</th><th className="px-2 py-2">Lý do</th><th className="px-4 py-2 text-right">Thao tác</th></tr>
+              </thead>
+              <tbody>
+                {filtered.map((r) => (
+                  <tr key={r.id} className="border-t border-slate-100 align-top">
+                    <td className="px-4 py-2 font-medium text-slate-800">{r.ho_ten}</td>
+                    <td className="px-2 py-2 text-slate-500">{r.phu_huynh_ten ?? '—'}</td>
+                    <td className="px-2 py-2 text-slate-500">{r.lops.join(', ') || '—'}</td>
+                    <td className="px-2 py-2 text-slate-500">{r.mons.join(', ') || '—'}</td>
+                    <td className="px-2 py-2">
+                      {suaId === r.id ? (
+                        <div className="flex items-center gap-1.5">
+                          <input value={suaVal} onChange={(e) => setSuaVal(e.target.value)} placeholder="VD 0.9" className={`${inp} w-20`} />
+                          <button disabled={busyId === r.id} onClick={() => luuTay(r.id)} className="rounded-md bg-indigo-600 px-2 py-1 text-[12px] font-medium text-white disabled:opacity-40">Lưu</button>
+                          <button onClick={() => setSuaId(null)} className="text-slate-400 hover:text-slate-600">Huỷ</button>
+                        </div>
+                      ) : (
+                        <div className="flex items-center gap-1.5">
+                          <span className="font-semibold text-slate-800">× {r.he_so_hoc_phi}</span>
+                          <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${r.he_so_nguon === 'manual' ? 'bg-amber-50 text-amber-700' : 'bg-slate-100 text-slate-500'}`}>{r.he_so_nguon === 'manual' ? 'Sửa tay' : 'Auto'}</span>
+                        </div>
+                      )}
+                    </td>
+                    <td className="px-2 py-2">
+                      {r.he_so_nguon !== 'manual' && r.heSoGoiY !== r.he_so_hoc_phi
+                        ? <span className="font-semibold text-amber-700">× {r.heSoGoiY}</span>
+                        : <span className="text-slate-300">—</span>}
+                    </td>
+                    <td className="px-2 py-2 text-[12px] text-slate-500">{r.lyDoGoiY || '—'}</td>
+                    <td className="px-4 py-2">
+                      <div className="flex flex-wrap justify-end gap-1.5">
+                        {r.he_so_nguon !== 'manual' && r.heSoGoiY !== r.he_so_hoc_phi && (
+                          <button disabled={busyId === r.id} onClick={() => xacNhan(r.id, r.heSoGoiY)} className="rounded-md border border-indigo-200 bg-indigo-50 px-2 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-100 disabled:opacity-40">✓ Xác nhận</button>
+                        )}
+                        {suaId !== r.id && <button onClick={() => { setSuaId(r.id); setSuaVal(String(r.he_so_hoc_phi)) }} className="rounded-md border border-slate-200 px-2 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-300">Sửa tay</button>}
+                        {r.he_so_nguon === 'manual' && <button disabled={busyId === r.id} onClick={() => boTay(r.id)} className="text-[12px] font-medium text-slate-400 hover:text-rose-600">Bỏ tay</button>}
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+    </div>
+  )
+}
+
+// ── TAB MỨC & LỚP — 3 bảng mức con con (học phí/đuổi/học liệu, ĐỘC LẬP nhau) TRONG 1 tab,
+// + bảng gán mức cho từng lớp ngay bên dưới (Thùy: "3 cái mức để cùng 1 tab" + "bảng lớp cũng nhập ở đây luôn").
+// Tên mức tự đặt theo giá (KHÔNG bắt gõ tay — "tên"/"giá" trùng nhau).
+function MucTab() {
+  const [mucPhi, setMucPhi] = useState<MucHocPhi[]>([])
+  const [mucDuoi, setMucDuoi] = useState<MucHocDuoi[]>([])
+  const [mucLieu, setMucLieu] = useState<MucHocLieu[]>([])
+  async function reloadMuc() {
+    const [a, b, c] = await Promise.all([listMucHocPhi(), listMucHocDuoi(), listMucHocLieu()])
+    setMucPhi(a); setMucDuoi(b); setMucLieu(c)
+  }
+  useEffect(() => { reloadMuc() }, [])
+
+  return (
+    <div className="mx-auto max-w-[1100px] space-y-5">
+      <div className="grid grid-cols-3 gap-4">
+        <MucSoBang title="Mức học phí" defaultValue="150000" suffix="/buổi"
+          rows={mucPhi.map((m) => ({ id: m.id, ten: m.ten, gia: m.don_gia_buoi }))}
+          onThem={async (v) => { await createMucHocPhi(v); await reloadMuc() }}
+          onXoa={async (id) => { await deleteMucHocPhi(id); await reloadMuc() }} />
+        <MucSoBang title="Mức học đuổi" defaultValue="150000" suffix="/buổi"
+          rows={mucDuoi.map((m) => ({ id: m.id, ten: m.ten, gia: m.gia }))}
+          onThem={async (v) => { await createMucHocDuoi(v); await reloadMuc() }}
+          onXoa={async (id) => { await deleteMucHocDuoi(id); await reloadMuc() }} />
+        <MucSoBang title="Mức học liệu" defaultValue="30000" suffix="/tháng"
+          rows={mucLieu.map((m) => ({ id: m.id, ten: m.ten, gia: m.gia }))}
+          onThem={async (v) => { await createMucHocLieu(v); await reloadMuc() }}
+          onXoa={async (id) => { await deleteMucHocLieu(id); await reloadMuc() }} />
+      </div>
+      <LopMucBang mucPhi={mucPhi} mucLieu={mucLieu} />
+    </div>
+  )
+}
+function MucSoBang({ title, defaultValue, suffix, rows, onThem, onXoa }: {
+  title: string; defaultValue: string; suffix: string; rows: { id: string; ten: string; gia: number }[]
+  onThem: (gia: number) => Promise<void>; onXoa: (id: string) => Promise<void>
+}) {
+  // Đề xuất sẵn giá trị phổ biến nhất (Thùy: 150k học phí/đuổi · 30k học liệu) — người dùng vẫn tự sửa được.
+  const [gia, setGia] = useState(defaultValue)
+  const [busy, setBusy] = useState(false)
   async function them() {
-    if (!ten.trim() || !donGia || !giaDuoi) return
-    await createMucHocPhi({ ten: ten.trim(), don_gia_buoi: Number(donGia), gia_duoi: Number(giaDuoi) })
-    setTen(''); setDonGia(''); setGiaDuoi(''); reload()
+    if (!gia) return
+    setBusy(true)
+    try { await onThem(Number(gia)); setGia(defaultValue) } finally { setBusy(false) }
   }
   return (
-    <div className="mx-auto max-w-[700px]">
-      <div className="mb-3 flex items-end gap-2 rounded-xl border border-slate-200 bg-white p-4">
-        <Field2 label="Tên mức"><input value={ten} onChange={(e) => setTen(e.target.value)} placeholder="Mức 250k" className={inp} /></Field2>
-        <Field2 label="Đơn giá/buổi"><input value={donGia} onChange={(e) => setDonGia(e.target.value)} placeholder="250000" className={inp} /></Field2>
-        <Field2 label="Giá đuổi"><input value={giaDuoi} onChange={(e) => setGiaDuoi(e.target.value)} placeholder="250000" className={inp} /></Field2>
-        <button onClick={them} className="h-8 rounded-lg bg-indigo-600 px-3 text-[13px] font-medium text-white">+ Thêm</button>
+    <div className="rounded-xl border border-slate-200 bg-white p-3.5">
+      <h3 className="mb-2 text-[13px] font-semibold text-slate-800">{title}</h3>
+      <div className="mb-2 flex items-center gap-1.5">
+        <input value={gia} onChange={(e) => setGia(e.target.value)} className={`${inp} flex-1`} />
+        <button disabled={busy || !gia} onClick={them} className="h-8 rounded-lg bg-indigo-600 px-2.5 text-[12px] font-medium text-white disabled:opacity-40">+ Thêm</button>
       </div>
-      <div className="space-y-1.5">
+      <div className="space-y-1">
         {rows.map((m) => (
-          <div key={m.id} className="flex items-center gap-3 rounded-lg border border-slate-200 bg-white px-3 py-2 text-[13px]">
-            <span className="flex-1 font-medium text-slate-800">{m.ten}</span>
-            <span className="text-slate-500">{tienVN(m.don_gia_buoi)}/buổi</span>
-            <span className="text-slate-500">đuổi {tienVN(m.gia_duoi)}</span>
-            <button onClick={async () => { if (confirm(`Xoá "${m.ten}"? (lớp đang gán mức này sẽ mất mức)`)) { await deleteMucHocPhi(m.id); reload() } }} className="text-slate-300 hover:text-rose-600">Xoá</button>
+          <div key={m.id} className="flex items-center gap-2 rounded-lg border border-slate-100 bg-slate-50 px-2.5 py-1.5 text-[12px]">
+            <span className="flex-1 font-medium text-slate-700">{tienVN(m.gia)}{suffix}</span>
+            <button onClick={async () => { if (confirm(`Xoá "${m.ten}"? (lớp đang gán mức này sẽ mất mức)`)) await onXoa(m.id) }} className="text-slate-300 hover:text-rose-600">Xoá</button>
           </div>
         ))}
-        {!rows.length && <p className="py-8 text-center text-[13px] text-slate-400">Chưa có mức nào.</p>}
+        {!rows.length && <p className="py-4 text-center text-[12px] text-slate-400">Chưa có mức nào.</p>}
       </div>
     </div>
   )
 }
-function MucHocLieuTab() {
-  const [rows, setRows] = useState<MucHocLieu[]>([])
-  const [ten, setTen] = useState(''); const [gia, setGia] = useState('')
-  async function reload() { setRows(await listMucHocLieu()) }
+// Bảng gán mức cho TỪNG LỚP — bulk, thay cho việc phải mở từng lớp một ở màn "Lớp".
+// Học phí + học liệu là thuộc tính CỦA LỚP. Học đuổi KHÔNG theo lớp — thay đổi theo CA Bổ trợ đuổi
+// (gán ở màn "Bổ trợ · Đuổi chương trình", Thùy 07-05), nên KHÔNG có cột ở đây.
+function LopMucBang({ mucPhi, mucLieu }: { mucPhi: MucHocPhi[]; mucLieu: MucHocLieu[] }) {
+  const [rows, setRows] = useState<Lop[]>([])
+  const [loading, setLoading] = useState(true)
+  const [busyId, setBusyId] = useState<string | null>(null)
+  async function reload() { setLoading(true); try { setRows((await listLop()).filter((l) => l.trang_thai === 'dang_hoc')) } finally { setLoading(false) } }
   useEffect(() => { reload() }, [])
-  async function them() {
-    if (!ten.trim() || !gia) return
-    await createMucHocLieu({ ten: ten.trim(), gia: Number(gia) })
-    setTen(''); setGia(''); reload()
+
+  async function set(lopId: string, patch: Partial<Lop>) {
+    setBusyId(lopId)
+    try { await updateLop(lopId, patch); await reload() } finally { setBusyId(null) }
   }
+
   return (
-    <div className="mx-auto max-w-[600px]">
-      <div className="mb-3 flex items-end gap-2 rounded-xl border border-slate-200 bg-white p-4">
-        <Field2 label="Tên mức"><input value={ten} onChange={(e) => setTen(e.target.value)} placeholder="Mức 30k" className={inp} /></Field2>
-        <Field2 label="Giá / tháng"><input value={gia} onChange={(e) => setGia(e.target.value)} placeholder="30000" className={inp} /></Field2>
-        <button onClick={them} className="h-8 rounded-lg bg-indigo-600 px-3 text-[13px] font-medium text-white">+ Thêm</button>
-      </div>
-      <div className="space-y-1.5">
-        {rows.map((m) => (
-          <div key={m.id} className="flex items-center gap-3 rounded-lg border border-slate-200 bg-white px-3 py-2 text-[13px]">
-            <span className="flex-1 font-medium text-slate-800">{m.ten}</span>
-            <span className="text-slate-500">{tienVN(m.gia)}/tháng</span>
-            <button onClick={async () => { if (confirm(`Xoá "${m.ten}"?`)) { await deleteMucHocLieu(m.id); reload() } }} className="text-slate-300 hover:text-rose-600">Xoá</button>
+    <div className="rounded-xl border border-slate-200 bg-white p-4">
+      <h3 className="mb-3 text-[13px] font-semibold text-slate-800">Gán mức cho từng lớp</h3>
+      {loading ? <p className="py-6 text-center text-[13px] text-slate-400">Đang tải…</p>
+        : !rows.length ? <p className="py-6 text-center text-[13px] text-slate-400">Chưa có lớp đang học.</p>
+        : (
+          <div className="overflow-hidden rounded-lg border border-slate-200">
+            <table className="w-full text-[13px]">
+              <thead className="bg-slate-50 text-left text-[11px] uppercase tracking-wide text-slate-400">
+                <tr><th className="px-3 py-2">Lớp</th><th className="w-52">Mức học phí</th><th className="w-52">Mức học liệu</th></tr>
+              </thead>
+              <tbody>
+                {rows.map((l) => (
+                  <tr key={l.id} className={`border-t border-slate-100 ${busyId === l.id ? 'opacity-50' : ''}`}>
+                    <td className="px-3 py-1.5 font-medium text-slate-800">{l.ten_lop} <span className="text-[11px] text-slate-400">· {l.mon}</span></td>
+                    <td className="px-1 py-1">
+                      <SearchSelect value={l.muc_hoc_phi_id ?? null} onChange={(id) => set(l.id, { muc_hoc_phi_id: id })} placeholder="Chưa gán…"
+                        options={mucPhi.map((m) => ({ id: m.id, label: m.ten }))} />
+                    </td>
+                    <td className="px-1 py-1">
+                      <SearchSelect value={l.muc_hoc_lieu_id ?? null} onChange={(id) => set(l.id, { muc_hoc_lieu_id: id })} placeholder="Chưa gán…"
+                        options={mucLieu.map((m) => ({ id: m.id, label: m.ten }))} />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-        ))}
-        {!rows.length && <p className="py-8 text-center text-[13px] text-slate-400">Chưa có mức nào.</p>}
+        )}
+    </div>
+  )
+}
+
+// ── TAB PHÁT SINH — 1 chỗ nhập chi phí phát sinh, 2 loại: THEO LỚP (áp mọi HS đang học lớp đó)
+// và CÁ NHÂN (áp riêng 1 HS) — Thùy 07-05. Tự cộng vào phiếu ảo + khi chốt, KHÔNG cần nhập lại per-PH.
+function PhatSinhTab() {
+  const ky = useStore((s) => s.hocPhiKy) || kyHienTai()
+  const setKy = useStore((s) => s.setHocPhiKy)
+  const [rows, setRows] = useState<PhatSinhEntry[]>([])
+  const [loading, setLoading] = useState(true)
+  const [loai, setLoai] = useState<'lop' | 'ca_nhan'>('lop')
+  const [lops, setLops] = useState<Lop[]>([])
+  const [hocSinhs, setHocSinhs] = useState<HocSinh[]>([])
+  const [targetId, setTargetId] = useState<string | null>(null)
+  const [moTa, setMoTa] = useState('')
+  const [soTien, setSoTien] = useState('')
+  const [busy, setBusy] = useState(false)
+
+  async function reload() { setLoading(true); try { setRows(await listPhatSinhTheoKy(ky)) } finally { setLoading(false) } }
+  useEffect(() => { reload() }, [ky]) // eslint-disable-line
+  useEffect(() => { listLop().then((l) => setLops(l.filter((x) => x.trang_thai === 'dang_hoc'))); listHocSinh().then((h) => setHocSinhs(h.filter((x) => x.trang_thai === 'dang_hoc'))) }, [])
+
+  async function them() {
+    if (!targetId || !moTa.trim() || !soTien) return
+    setBusy(true)
+    try {
+      if (loai === 'lop') await themPhatSinhLop(ky, targetId, moTa.trim(), Number(soTien))
+      else await themPhatSinhCaNhan(ky, targetId, moTa.trim(), Number(soTien))
+      setTargetId(null); setMoTa(''); setSoTien(''); await reload()
+    } catch (e: any) { alert(e.message ?? String(e)) } finally { setBusy(false) }
+  }
+  async function xoa(id: string) {
+    if (!confirm('Xoá khoản phát sinh này? (đã tính vào phiếu ảo/đã chốt sẽ mất theo)')) return
+    try { await xoaPhatSinh(id); await reload() } catch (e: any) { alert(e.message ?? String(e)) }
+  }
+
+  return (
+    <div className="mx-auto max-w-[900px]">
+      <p className="mb-3 text-[12px] text-slate-400">Chi phí phát sinh theo LỚP (áp mọi HS đang học lớp đó) hoặc CÁ NHÂN (áp riêng 1 HS) — nhập 1 lần ở đây, tự cộng vào phiếu ảo/đã chốt của kỳ, khỏi phải gõ tay từng PH.</p>
+      <div className="mb-3 flex flex-wrap items-end gap-2 rounded-xl border border-slate-200 bg-white p-4">
+        <Field2 label="Kỳ"><input type="month" value={ky.slice(0, 7)} onChange={(e) => setKy(e.target.value + '-01')} className={`${inp} w-36`} /></Field2>
+        <Field2 label="Loại">
+          <div className="flex overflow-hidden rounded-lg border border-slate-300">
+            <button onClick={() => { setLoai('lop'); setTargetId(null) }} className={`px-3 py-1.5 text-[13px] font-medium ${loai === 'lop' ? 'bg-indigo-600 text-white' : 'bg-white text-slate-600'}`}>Theo lớp</button>
+            <button onClick={() => { setLoai('ca_nhan'); setTargetId(null) }} className={`px-3 py-1.5 text-[13px] font-medium ${loai === 'ca_nhan' ? 'bg-indigo-600 text-white' : 'bg-white text-slate-600'}`}>Cá nhân</button>
+          </div>
+        </Field2>
+        <div className="w-56">
+          <label className="mb-1 block text-[11px] font-medium uppercase tracking-wide text-slate-500">{loai === 'lop' ? 'Lớp' : 'Học sinh'}</label>
+          {loai === 'lop'
+            ? <SearchSelect value={targetId} onChange={setTargetId} placeholder="Chọn lớp…" options={lops.map((l) => ({ id: l.id, label: l.ten_lop, sub: l.mon }))} />
+            : <SearchSelect value={targetId} onChange={setTargetId} placeholder="Chọn học sinh…" options={hocSinhs.map((h) => ({ id: h.id, label: h.ho_ten, sub: h.ma_hs ?? undefined }))} />}
+        </div>
+        <Field2 label="Mô tả"><input value={moTa} onChange={(e) => setMoTa(e.target.value)} placeholder="vd: Phí dã ngoại" className={`${inp} w-44`} /></Field2>
+        <Field2 label="Số tiền"><input value={soTien} onChange={(e) => setSoTien(e.target.value)} placeholder="200000" className={`${inp} w-32`} /></Field2>
+        <button disabled={busy || !targetId || !moTa.trim() || !soTien} onClick={them} className="h-8 rounded-lg bg-indigo-600 px-3 text-[13px] font-medium text-white disabled:opacity-40">+ Thêm</button>
       </div>
+      {loading ? <p className="py-8 text-center text-[13px] text-slate-400">Đang tải…</p>
+        : !rows.length ? <div className="rounded-xl border border-dashed border-slate-300 bg-white py-14 text-center text-sm text-slate-400">Chưa có khoản phát sinh nào trong kỳ này.</div>
+        : (
+          <div className="space-y-1.5">
+            {rows.map((r) => (
+              <div key={r.id} className="flex items-center gap-3 rounded-lg border border-slate-200 bg-white px-3 py-2 text-[13px]">
+                <span className={`rounded px-1.5 py-0.5 text-[11px] font-medium ${r.loai === 'lop' ? 'bg-indigo-50 text-indigo-700' : 'bg-teal-50 text-teal-700'}`}>{r.loai === 'lop' ? 'Theo lớp' : 'Cá nhân'}</span>
+                <span className="font-medium text-slate-800">{r.loai === 'lop' ? r.lop_ten : r.hoc_sinh_ten}</span>
+                <span className="flex-1 text-slate-500">{r.mo_ta}</span>
+                <span className="font-semibold text-slate-800">{tienVN(r.so_tien)}</span>
+                <button onClick={() => xoa(r.id)} className="text-slate-300 hover:text-rose-600">Xoá</button>
+              </div>
+            ))}
+          </div>
+        )}
     </div>
   )
 }

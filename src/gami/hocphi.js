@@ -1,15 +1,19 @@
 // ============================================================================
 // hocphi.js — ENGINE HỌC PHÍ (PURE, không I/O). Test: node scripts/verify_hocphi.mjs
-// Spec: spec-hocphi.md. Hệ số = tài sản GIA ĐÌNH (tính theo n_con/n_con_3mon,
-// đóng dấu y nhau lên MỌI con của PH đó — recompute ở lib/hocphi.ts khi đổi ghi danh).
+// Spec: spec-hocphi.md. Hệ số = thông tin CỦA HỌC SINH (Thùy chốt 07-05, KHÔNG phải
+// tài sản gia đình dùng chung) — hệ thống GỢI Ý (pure-derive, tính lúc đọc), Nhân sự
+// XÁC NHẬN mới ghi vào hoc_sinh.he_so_hoc_phi (người-trong-vòng-lặp, không auto-ghi).
 // ============================================================================
 
-// Hệ số học phí gia đình (Thùy chốt §4):
-//  < 2 con: 1.00 · ≥2 con & ≥2 con học ≥3 môn: 0.90 · ≥2 con (còn lại): 0.95.
-export function tinhHeSoGiaDinh(nCon, nCon3Mon) {
-  if (nCon < 2) return 1.0
-  if (nCon3Mon >= 2) return 0.9
-  return 0.95
+// Hệ số gợi ý cho 1 học sinh (Thùy chốt 07-05):
+//  - Học sinh học ≥2 môn: giảm 5%.
+//  - PH có ≥2 con CÙNG học chung ít nhất 1 môn: giảm thêm 5% (áp cho các con liên quan).
+//  → gộp cả 2: 1 PH có 2 con, mỗi con học 2 môn (trùng nhau) → mỗi con giảm 10%.
+export function tinhHeSoHocSinh(soMon, coAnhChiEmCungMon) {
+  let heSo = 1.0
+  if (soMon >= 2) heSo -= 0.05
+  if (coAnhChiEmCungMon) heSo -= 0.05
+  return Math.round(heSo * 100) / 100
 }
 
 // Làm tròn 1.000đ (§2 công thức).

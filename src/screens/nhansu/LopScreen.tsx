@@ -136,6 +136,9 @@ export default function LopScreen() {
   )
 }
 
+// Mức mặc định khi tạo lớp mới — 2 số phổ biến nhất (Thùy 07-05), vẫn sửa được sau ở "Sửa thông tin".
+const MUC_HOC_PHI_MAC_DINH = 150000
+const MUC_HOC_LIEU_MAC_DINH = 30000
 function CreateLopModal({ khoi, onClose, onCreated }: { khoi: string; onClose: () => void; onCreated: (id: string) => void }) {
   const [ten, setTen] = useState('')
   const [mon, setMon] = useState('Toán')
@@ -147,7 +150,13 @@ function CreateLopModal({ khoi, onClose, onCreated }: { khoi: string; onClose: (
   async function create() {
     if (!ten.trim() || !mon.trim()) return
     setBusy(true); setError(null)
-    try { const l = await createLop({ ten_lop: ten.trim(), mon: mon.trim(), khoi, bac, co_so: coSo.trim() || null, ngay_khai_giang: khaiGiang || null }); onCreated(l.id) }
+    try {
+      const [mucPhi, mucLieu] = await Promise.all([listMucHocPhi(), listMucHocLieu()])
+      const mucPhiId = mucPhi.find((m) => m.don_gia_buoi === MUC_HOC_PHI_MAC_DINH)?.id ?? null
+      const mucLieuId = mucLieu.find((m) => m.gia === MUC_HOC_LIEU_MAC_DINH)?.id ?? null
+      const l = await createLop({ ten_lop: ten.trim(), mon: mon.trim(), khoi, bac, co_so: coSo.trim() || null, ngay_khai_giang: khaiGiang || null, muc_hoc_phi_id: mucPhiId, muc_hoc_lieu_id: mucLieuId })
+      onCreated(l.id)
+    }
     catch (e: any) { setError(e.message ?? String(e)); setBusy(false) }
   }
   return (
@@ -402,9 +411,9 @@ function EditLopModal({ lop, onClose, onSaved, onDeleted }: { lop: Lop; onClose:
         <input type="date" value={khaiGiang} onChange={(e) => setKhaiGiang(e.target.value)} className={inp} />
       </Field>
       <div className="grid grid-cols-2 gap-x-4">
-        <Field label="Mức học phí (đơn giá/buổi + giá đuổi)">
+        <Field label="Mức học phí (đơn giá/buổi)">
           <SearchSelect value={mucPhiId} onChange={setMucPhiId} placeholder="Chưa gán mức…"
-            options={mucHocPhi.map((m) => ({ id: m.id, label: m.ten, sub: `${tienVN(m.don_gia_buoi)}/buổi · đuổi ${tienVN(m.gia_duoi)}` }))} />
+            options={mucHocPhi.map((m) => ({ id: m.id, label: m.ten, sub: `${tienVN(m.don_gia_buoi)}/buổi` }))} />
         </Field>
         <Field label="Mức học liệu">
           <SearchSelect value={mucLieuId} onChange={setMucLieuId} placeholder="Chưa gán mức…"

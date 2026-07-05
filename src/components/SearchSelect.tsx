@@ -25,6 +25,7 @@ export default function SearchSelect({ value, onChange, options, placeholder = '
   avatars?: boolean   // true → hiện avatar (ảnh/chữ cái) trước tên (cho list người)
 }) {
   const [open, setOpen] = useState(false)
+  const [dropUp, setDropUp] = useState(false)
   const [q, setQ] = useState('')
   const boxRef = useRef<HTMLDivElement>(null)
   const selected = options.find((o) => o.id === value) ?? null
@@ -34,6 +35,14 @@ export default function SearchSelect({ value, onChange, options, placeholder = '
     const h = (e: MouseEvent) => { if (boxRef.current && !boxRef.current.contains(e.target as Node)) setOpen(false) }
     document.addEventListener('mousedown', h); return () => document.removeEventListener('mousedown', h)
   }, [])
+
+  // Mở dropdown gần cuối màn hình → bung LÊN thay vì xuống (kẻo khuất, không bấm chọn được).
+  function openDropdown() {
+    const rect = boxRef.current?.getBoundingClientRect()
+    const DROPDOWN_H = 260
+    setDropUp(!!rect && window.innerHeight - rect.bottom < DROPDOWN_H && rect.top > DROPDOWN_H)
+    setOpen(true); setQ('')
+  }
 
   const matches = useMemo(() => {
     const nq = norm(q.trim())
@@ -49,7 +58,7 @@ export default function SearchSelect({ value, onChange, options, placeholder = '
           className="w-full rounded-md border border-indigo-400 px-2.5 py-1.5 text-[13px] outline-none ring-2 ring-indigo-500/20"
         />
       ) : (
-        <button type="button" autoFocus={autoFocus} onClick={() => { setOpen(true); setQ('') }}
+        <button type="button" autoFocus={autoFocus} onClick={openDropdown}
           className={`flex w-full items-center justify-between rounded-md border px-2.5 py-1.5 text-left text-[13px] hover:border-indigo-400 ${invalid && !selected ? 'border-rose-300 bg-rose-50' : 'border-slate-300'}`}>
           <span className={`flex min-w-0 items-center gap-1.5 ${selected ? 'text-slate-800' : 'text-slate-400'}`}>
             {avatars && selected && <Ava img={selected.img} label={selected.label} />}
@@ -62,7 +71,7 @@ export default function SearchSelect({ value, onChange, options, placeholder = '
         </button>
       )}
       {open && (
-        <div className="absolute z-30 mt-1 max-h-60 w-full overflow-auto rounded-lg border border-slate-200 bg-white py-1 shadow-lg">
+        <div className={`absolute z-30 max-h-60 w-full overflow-auto rounded-lg border border-slate-200 bg-white py-1 shadow-lg ${dropUp ? 'bottom-full mb-1' : 'top-full mt-1'}`}>
           {allowClear && (
             <button type="button" onClick={() => { onChange(null); setOpen(false) }} className="block w-full px-2.5 py-1 text-left text-[12px] text-slate-400 hover:bg-slate-50">— (bỏ chọn) —</button>
           )}

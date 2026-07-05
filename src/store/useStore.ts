@@ -19,6 +19,13 @@ interface UiState {
   loadQuyen: () => Promise<void>
   loadMe: () => Promise<void>
   clearQuyen: () => void
+  // ── Bộ lọc màn Học phí — giữ NGUYÊN khi rời/quay lại màn (component unmount không mất chọn) ──
+  hocPhiTab: string
+  hocPhiKy: string
+  hocPhiPhId: string | null
+  setHocPhiTab: (t: string) => void
+  setHocPhiKy: (k: string) => void
+  setHocPhiPhId: (id: string | null) => void
 }
 
 export const useStore = create<UiState>((set) => ({
@@ -35,6 +42,12 @@ export const useStore = create<UiState>((set) => ({
   loadQuyen: async () => { try { set({ quyen: await myQuyen() }) } catch { set({ quyen: { laAdmin: false, chucNang: [] } }) } },
   loadMe: async () => { try { set({ me: await getMyProfile() }) } catch { set({ me: null }) } },
   clearQuyen: () => set({ quyen: null, me: null }),
+  hocPhiTab: 'theomon',
+  hocPhiKy: '',
+  hocPhiPhId: null,
+  setHocPhiTab: (t) => set({ hocPhiTab: t }),
+  setHocPhiKy: (k) => set({ hocPhiKy: k }),
+  setHocPhiPhId: (id) => set({ hocPhiPhId: id }),
 }))
 
 // ── Gate feature-access THẬT (lớp ①) — KHÔNG dùng cờ founderOnly mock nữa ─────────

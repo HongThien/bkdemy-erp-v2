@@ -482,6 +482,8 @@ export async function ghiDanh(hocSinhId: string, lopId: string, mucNangLucId: st
     .upsert({ hoc_sinh_id: hocSinhId, lop_id: lopId, muc_nang_luc_id: mucNangLucId, trang_thai: 'dang_hoc', ngay_vao: ngay, ngay_roi: null }, { onConflict: 'hoc_sinh_id,lop_id' })
   if (error) throw error
   await syncHSVaoBuoiTuNgay(hocSinhId, lopId, ngay) // HS vào luồng điểm danh ngay, khỏi mở lại buổi
+  // Hệ số học phí: KHÔNG auto-ghi ở đây — gợi ý tính pure-derive lúc đọc bảng "Hệ số",
+  // Nhân sự xác nhận mới ghi (§hocphi.ts, Thùy chốt 07-05).
 }
 // Rời lớp = đánh dấu da_roi + ngay_roi (GIỮ dòng — lịch sử), KHÔNG xoá cứng. Trigger DB tự log.
 export async function roiLop(ghiDanhId: string, ngayRoi?: string): Promise<void> {

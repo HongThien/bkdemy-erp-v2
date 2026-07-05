@@ -7,7 +7,7 @@ const LIMIT = 10000
 
 export type CanDuoiItem = { caseId: string; hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; lop_id: string | null; lop: string; mon: string; nguon: string; ly_do: string | null }
 export type CaDuoiHS = { hoc_sinh_id: string; ho_ten: string; diem_danh: string | null; caseId: string | null; lop: string }
-export type CaDuoi = { id: string; ngay: string; gio_bat_dau: string | null; phong: string | null; trang_thai: string; danh_gia_xong_at: string | null; nguoi_day: string | null; nguoi_day_tg: string | null; hs: CaDuoiHS[] }
+export type CaDuoi = { id: string; ngay: string; gio_bat_dau: string | null; phong: string | null; trang_thai: string; danh_gia_xong_at: string | null; nguoi_day: string | null; nguoi_day_tg: string | null; muc_hoc_duoi_id: string | null; hs: CaDuoiHS[] }
 
 // Cần đuổi: case 'can_duoi' KHÔNG nằm trong buổi đuổi đang mở (chưa đóng đánh giá).
 export async function listCanDuoi(): Promise<CanDuoiItem[]> {
@@ -32,7 +32,7 @@ export async function listCanDuoi(): Promise<CanDuoiItem[]> {
 // Đã xếp (done=false) / Hoàn thành (done=true): buổi đuổi + HS. "xong buổi" = danh_gia_xong_at có.
 export async function listCaDuoi(done: boolean): Promise<CaDuoi[]> {
   const { data: buois } = await supabase.from('buoi_hoc')
-    .select('id, ngay, gio_bat_dau, phong, trang_thai, danh_gia_xong_at, nguoi_day, nguoi_day_tg')
+    .select('id, ngay, gio_bat_dau, phong, trang_thai, danh_gia_xong_at, nguoi_day, nguoi_day_tg, muc_hoc_duoi_id')
     .eq('loai', 'bo_tro_duoi').neq('trang_thai', 'huy').order('ngay', { ascending: false }).limit(LIMIT)
   const filt = (buois ?? []).filter((b: any) => (done ? !!b.danh_gia_xong_at : !b.danh_gia_xong_at))
   if (!filt.length) return []
@@ -48,15 +48,22 @@ export async function listCaDuoi(done: boolean): Promise<CaDuoi[]> {
 }
 export const buoiDuoiSapToi = () => listCaDuoi(false)
 
-// Tạo buổi đuổi mới (loai='bo_tro_duoi', không lop_id; ngày/giờ/phòng/GV/TA).
-export async function taoBuoiDuoi(input: { ngay: string; gio_bat_dau?: string | null; phong?: string | null; nguoi_day?: string | null; nguoi_day_tg?: string | null }): Promise<string> {
+// Tạo buổi đuổi mới (loai='bo_tro_duoi', không lop_id; ngày/giờ/phòng/GV/TA/mức học đuổi).
+// Mức học đuổi gắn theo CA (KHÔNG theo lớp gốc) — mỗi ca có thể khác giá (Thùy 07-05).
+export async function taoBuoiDuoi(input: { ngay: string; gio_bat_dau?: string | null; phong?: string | null; nguoi_day?: string | null; nguoi_day_tg?: string | null; muc_hoc_duoi_id?: string | null }): Promise<string> {
   const { data: { user } } = await supabase.auth.getUser()
   const { data, error } = await supabase.from('buoi_hoc').insert({
     loai: 'bo_tro_duoi', lop_id: null, ngay: input.ngay, gio_bat_dau: input.gio_bat_dau ?? null,
-    phong: input.phong ?? null, nguoi_day: input.nguoi_day ?? null, nguoi_day_tg: input.nguoi_day_tg ?? null, trang_thai: 'mo', created_by: user?.id ?? null,
+    phong: input.phong ?? null, nguoi_day: input.nguoi_day ?? null, nguoi_day_tg: input.nguoi_day_tg ?? null,
+    muc_hoc_duoi_id: input.muc_hoc_duoi_id ?? null, trang_thai: 'mo', created_by: user?.id ?? null,
   }).select('id').single()
   if (error) throw error
   return (data as any).id
+}
+// Gán/đổi mức học đuổi cho CA đã tạo (vd tạo buổi trước, gán giá sau).
+export async function setMucHocDuoi(buoiId: string, mucId: string | null): Promise<void> {
+  const { error } = await supabase.from('buoi_hoc').update({ muc_hoc_duoi_id: mucId }).eq('id', buoiId)
+  if (error) throw error
 }
 // Thêm case vào buổi đuổi (link bo_tro_duoi_id). Idempotent: bỏ qua nếu HS đã trong buổi.
 export async function themHSVaoBuoiDuoi(buoiId: string, items: { hoc_sinh_id: string; caseId: string }[]): Promise<void> {

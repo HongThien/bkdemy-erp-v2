@@ -4,11 +4,12 @@
 import { useEffect, useMemo, useState } from 'react'
 import {
   listCanDuoi, listCaDuoi, taoBuoiDuoi, themHSVaoBuoiDuoi, buoiDuoiSapToi, goiYBuoiDuoi, themCaseDuoi,
-  hoanThanhKhoaDuoi, xoaCaseDuoi, timHocSinhDuoi, lopCuaHS, demTabDuoi, type CanDuoiItem, type CaDuoi,
+  hoanThanhKhoaDuoi, xoaCaseDuoi, timHocSinhDuoi, lopCuaHS, demTabDuoi, setMucHocDuoi, type CanDuoiItem, type CaDuoi,
 } from '../../lib/botro_duoi'
 import { getRoster, getBuoi, huyBuoi, xoaHSKhoiBuoi, diemDanh, getDanhGia, setNhanXet, dongDanhGia, moLaiDanhGia, type BuoiHocHS } from '../../lib/gami'
 import SuaBuoiModal from './SuaBuoiModal'
 import { listNhanSu, type NhanSu } from '../../lib/nhansu'
+import { listMucHocDuoi, type MucHocDuoi } from '../../lib/hocphi'
 import { homNayVN } from '../../lib/tuan'
 import SearchSelect from '../../components/SearchSelect'
 import { tenNganHS } from '../../lib/hoten'
@@ -113,7 +114,10 @@ export default function BoTroDuoiScreen() {
                     </div>
                     <div className="mt-1 text-[12px] text-slate-500">{ca.gio_bat_dau?.slice(0, 5) || '—'}{ca.phong ? ` · ${ca.phong}` : ''}</div>
                     <div className="mt-2 flex flex-wrap gap-1">{ca.hs.slice(0, 6).map((h) => <span key={h.hoc_sinh_id} className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] text-slate-600">{tenNganHS(h.ho_ten)}{h.lop ? ` · ${h.lop}` : ''}</span>)}{ca.hs.length > 6 && <span className="text-[11px] text-slate-400">+{ca.hs.length - 6}</span>}</div>
-                    <div className="mt-2"><span className={`rounded px-1.5 py-0.5 text-[11px] font-medium ${ca.danh_gia_xong_at ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-500'}`}>Nhận xét {ca.danh_gia_xong_at ? '✓ xong' : '…'}</span></div>
+                    <div className="mt-2 flex flex-wrap gap-1.5">
+                      <span className={`rounded px-1.5 py-0.5 text-[11px] font-medium ${ca.danh_gia_xong_at ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-500'}`}>Nhận xét {ca.danh_gia_xong_at ? '✓ xong' : '…'}</span>
+                      {!ca.muc_hoc_duoi_id && <span className="rounded px-1.5 py-0.5 text-[11px] font-medium bg-amber-100 text-amber-700">⚠ Chưa gán giá</span>}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -209,10 +213,13 @@ function XepDuoiModal({ item, onClose, onDone }: { item: CanDuoiItem; onClose: (
   const [ta, setTa] = useState<string | null>(null)
   const [pickId, setPickId] = useState<string | null>(null)
   const [nss, setNss] = useState<NhanSu[]>([])
+  const [mucDuoi, setMucDuoi2] = useState<MucHocDuoi[]>([])
+  const [mucId, setMucId] = useState<string | null>(null)
   const [sapToi, setSapToi] = useState<CaDuoi[]>([])
   const [busy, setBusy] = useState(false)
   useEffect(() => {
     listNhanSu().then(setNss).catch(() => {}); buoiDuoiSapToi().then(setSapToi).catch(() => {})
+    listMucHocDuoi().then(setMucDuoi2).catch(() => {})
     goiYBuoiDuoi(item.lop_id).then((g) => { setGv(g.gv_id); setTa(g.ta_id) }).catch(() => {})
   }, [item.lop_id]) // eslint-disable-line
   const nsOpts = useMemo(() => nss.map((n) => ({ id: n.id, label: n.ho_ten, sub: n.ma_ns })), [nss])
@@ -222,7 +229,7 @@ function XepDuoiModal({ item, onClose, onDone }: { item: CanDuoiItem; onClose: (
       let buoiId = pickId
       if (mode === 'moi') {
         if (!ngay) { alert('Chọn ngày'); setBusy(false); return }
-        buoiId = await taoBuoiDuoi({ ngay, gio_bat_dau: gio || null, phong: phong || null, nguoi_day: gv, nguoi_day_tg: ta })
+        buoiId = await taoBuoiDuoi({ ngay, gio_bat_dau: gio || null, phong: phong || null, nguoi_day: gv, nguoi_day_tg: ta, muc_hoc_duoi_id: mucId })
       } else if (!buoiId) { alert('Chọn buổi đuổi có sẵn'); setBusy(false); return }
       await themHSVaoBuoiDuoi(buoiId!, [{ hoc_sinh_id: item.hoc_sinh_id, caseId: item.caseId }])
       onDone()
@@ -249,6 +256,10 @@ function XepDuoiModal({ item, onClose, onDone }: { item: CanDuoiItem; onClose: (
             <div><label className="mb-1 block text-[13px] font-medium text-slate-600">GV (nhận xét)</label><SearchSelect value={gv} onChange={setGv} options={nsOpts} placeholder="Chọn GV…" /></div>
             <div><label className="mb-1 block text-[13px] font-medium text-slate-600">TA</label><SearchSelect value={ta} onChange={setTa} options={nsOpts} placeholder="Chọn TA…" /></div>
           </div>
+          <div>
+            <label className="mb-1 block text-[13px] font-medium text-slate-600">Mức học đuổi (giá của CA này — độc lập lớp)</label>
+            <SearchSelect value={mucId} onChange={setMucId} options={mucDuoi.map((m) => ({ id: m.id, label: m.ten }))} placeholder="Chưa gán giá…" />
+          </div>
         </div>
       ) : (
         <div className="max-h-64 space-y-2 overflow-auto">
@@ -274,19 +285,22 @@ function BuoiDuoiDetail({ ca, readOnly, onClose, onHoanThanhKhoa }: { ca: CaDuoi
   const [busy, setBusy] = useState(false)
   const [sua, setSua] = useState(false)
   const [meta, setMeta] = useState({ ngay: ca.ngay, gio_bat_dau: ca.gio_bat_dau, phong: ca.phong, nguoi_day: ca.nguoi_day, nguoi_day_tg: ca.nguoi_day_tg })
+  const [mucDuoi, setMucDuoi2] = useState<MucHocDuoi[]>([])
+  const [mucId, setMucId] = useState<string | null>(ca.muc_hoc_duoi_id)
   const dgXong = !!ca.danh_gia_xong_at
   const lopDuoiCua = (hsId: string) => ca.hs.find((h) => h.hoc_sinh_id === hsId)?.lop ?? ''
 
   async function reload() {
     const [b, r, dg] = await Promise.all([getBuoi(ca.id), getRoster(ca.id), getDanhGia(ca.id)])
-    if (b) setMeta({ ngay: (b as any).ngay, gio_bat_dau: (b as any).gio_bat_dau, phong: (b as any).phong, nguoi_day: (b as any).nguoi_day, nguoi_day_tg: (b as any).nguoi_day_tg })
+    if (b) { setMeta({ ngay: (b as any).ngay, gio_bat_dau: (b as any).gio_bat_dau, phong: (b as any).phong, nguoi_day: (b as any).nguoi_day, nguoi_day_tg: (b as any).nguoi_day_tg }); setMucId((b as any).muc_hoc_duoi_id ?? null) }
     setRoster(r)
     const m: Record<string, string> = {}
     for (const [hsId, v] of Object.entries(dg)) m[hsId] = (v as any).nhan_xet ?? ''
     setNx(m)
   }
-  useEffect(() => { reload() }, []) // eslint-disable-line
+  useEffect(() => { reload(); listMucHocDuoi().then(setMucDuoi2).catch(() => {}) }, [] ) // eslint-disable-line
 
+  async function onDoiMuc(id: string | null) { setMucId(id); try { await setMucHocDuoi(ca.id, id) } catch (e: any) { alert(e.message ?? String(e)) } }
   async function setDD(r: BuoiHocHS, tt: 'co_mat' | 'vang') { try { await diemDanh(r.id, tt); await reload() } catch (e: any) { alert(e.message) } }
   async function onHuy() { const ly = prompt('Lý do huỷ buổi đuổi?'); if (!ly) return; try { await huyBuoi(ca.id, ly); onClose() } catch (e: any) { alert(e.message ?? String(e)) } }
   async function onXoaHS(r: BuoiHocHS) { if (!confirm(`Gỡ ${r.hoc_sinh?.ho_ten ?? 'HS'} khỏi buổi đuổi?`)) return; try { await xoaHSKhoiBuoi(r); await reload() } catch (e: any) { alert(e.message ?? String(e)) } }
@@ -309,6 +323,15 @@ function BuoiDuoiDetail({ ca, readOnly, onClose, onHoanThanhKhoa }: { ca: CaDuoi
           <button onClick={toggleDong} disabled={busy} className={`ml-auto rounded-lg px-4 py-2 text-[14px] font-medium disabled:opacity-50 ${dgXong ? 'border border-amber-300 text-amber-700 hover:bg-amber-50' : 'bg-emerald-600 text-white hover:bg-emerald-500'}`}>{dgXong ? '↩ Mở lại buổi' : '✓ Hoàn thành buổi'}</button>
         )}
         {readOnly && <span className="ml-auto rounded-lg bg-emerald-100 px-3 py-1.5 text-[13px] font-medium text-emerald-700">✓ Buổi đã hoàn thành</span>}
+      </div>
+      <div className="flex items-center gap-2 border-b border-slate-200 bg-white px-5 py-2.5">
+        <span className="text-[12px] font-medium text-slate-500">Mức học đuổi (giá của ca này):</span>
+        <div className="w-56">
+          {readOnly
+            ? <span className="text-[13px] font-medium text-slate-700">{mucDuoi.find((m) => m.id === mucId)?.ten ?? 'Chưa gán giá'}</span>
+            : <SearchSelect value={mucId} onChange={onDoiMuc} options={mucDuoi.map((m) => ({ id: m.id, label: m.ten }))} placeholder="Chưa gán giá…" />}
+        </div>
+        {!mucId && <span className="rounded px-1.5 py-0.5 text-[11px] font-medium bg-amber-100 text-amber-700">⚠ Chưa tính được học phí đuổi cho ca này</span>}
       </div>
 
       <div className="min-h-0 flex-1 overflow-auto p-5">

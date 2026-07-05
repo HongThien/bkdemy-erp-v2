@@ -131,23 +131,32 @@ async function copyImg(){
 }
 
 // ── Tải PDF RIÊNG 1 file/PH (headless, KHÔNG popup) — bulk gọi lặp nhiều PH, mỗi lần 1 file ──
+// ⚠ Lần đầu dùng toạ độ âm cực xa (left:-99999px) để "ẩn" → html2canvas tính SAI viewport/kích thước,
+// ảnh bị crop lệch (Thùy chụp thấy cột "Tiền" mất hẳn). Đúng cách (giống PrintView headless): render
+// BÌNH THƯỜNG trên màn hình (top:0,left:0, không toạ độ âm) rồi PHỦ 1 lớp trắng đục z-index cao hơn đè lên
+// che mắt người dùng — html2canvas chụp đúng vì phần tử ở vị trí "thật", không bị lệch tính toán.
 export async function taiPdfPhieu(phuHuynhId: string, phTen: string, maPh: string, ky: string): Promise<void> {
   const data = await getPhieuThongBao(phuHuynhId, phTen, maPh, ky)
   const host = document.createElement('div')
-  host.style.cssText = 'position:fixed;top:0;left:0;z-index:-1;opacity:0;pointer-events:none'
+  host.style.cssText = 'position:fixed;top:0;left:0;z-index:9998;pointer-events:none'
   document.body.appendChild(host)
+  const overlay = document.createElement('div')
+  overlay.style.cssText = 'position:fixed;inset:0;z-index:9999;background:#ffffff'
+  document.body.appendChild(overlay)
   const { createRoot } = await import('react-dom/client')
   const root = createRoot(host)
   root.render(<InvoiceCard phTen={phTen} maPh={maPh} ky={ky} dong={data.dong} tongTien={data.tongTien} daChot={data.daChot} />)
-  await new Promise((r) => setTimeout(r, 120)) // chờ 1 nhịp render
+  await new Promise((r) => setTimeout(r, 150)) // chờ 1 nhịp render (font/layout ổn định)
   try {
     const [h2cMod, jspdfMod] = await Promise.all([import('html2canvas-pro'), import('jspdf')])
-    const canvas = await h2cMod.default(host.firstChild as HTMLElement, { scale: 2, backgroundColor: '#ffffff', useCORS: true, logging: false })
+    const target = host.firstChild as HTMLElement
+    const canvas = await h2cMod.default(target, { scale: 2, backgroundColor: '#ffffff', useCORS: true, logging: false, width: target.scrollWidth, height: target.scrollHeight, windowWidth: target.scrollWidth, windowHeight: target.scrollHeight })
     const wMM = 100, hMM = (canvas.height / canvas.width) * wMM
     const pdf = new jspdfMod.jsPDF({ unit: 'mm', format: [wMM + 20, hMM + 20], orientation: 'portrait' })
     pdf.addImage(canvas.toDataURL('image/jpeg', 0.92), 'JPEG', 10, 10, wMM, hMM)
     pdf.save(`HocPhi_${safeFileName(phTen)}_${ky.slice(0, 7)}.pdf`)
   } finally {
+    overlay.remove()
     root.unmount(); host.remove()
   }
 }
