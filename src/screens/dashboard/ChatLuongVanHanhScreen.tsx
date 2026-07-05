@@ -10,10 +10,11 @@
 //     "Chấm bài trên lớp" của TA thì GV của lớp đó duyệt) — mặc định 100%, duyệt batch/daily.
 // Kỳ chọn = toggle 3 tháng gần nhất + ‹ › lùi/tiến, LƯU qua useStore (không mất khi đổi màn).
 import { useEffect, useMemo, useState } from 'react'
+import { createPortal } from 'react-dom'
 import SearchSelect, { type Opt } from '../../components/SearchSelect'
 import { useStore } from '../../store/useStore'
 import { listAllStaffTasks, listOpsDiemDanhTeam, type StaffTaskRow, type TabKey } from '../../lib/gami'
-import { listNhanSuTeams, layChiTietTasks, layDanhSachChoDuyet, duyetMot, duyetHangLoat, deXuatTienDo, PCT_QUICK_PICKS, TIEN_DO_TIERS, TASK_TAB_LABEL, TEAM_LABEL, type TeamKey, type TaskDetail, type DuyetRow } from '../../lib/vanhanh'
+import { listNhanSuTeams, layChiTietTasks, layDanhSachChoDuyet, duyetMot, duyetHangLoat, deXuatTienDo, getNsProfileMini, hieuSuatOf, tinhHieuSuat, PCT_QUICK_PICKS, TIEN_DO_TIERS, TASK_TAB_LABEL, TEAM_LABEL, type TeamKey, type TaskDetail, type NsProfileMini, type DuyetRow } from '../../lib/vanhanh'
 
 // ── Kỳ (tháng) — toggle 3 gần nhất + lùi/tiến ────────────────────────────────
 const ymNow = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}` }
@@ -184,7 +185,7 @@ function DuyetRowCard({ r, hoTen, busy, onDuyet }: { r: DuyetRow; hoTen: string;
   const [lyDo, setLyDo] = useState('')
   const tienDo = TIEN_DO_TIERS[tienDoIdx].diem
   const doiKhacDeXuat = tienDoIdx !== deXuatIdx
-  const hieuSuat = Math.round((tienDo + chatLuong) / 2)
+  const hieuSuat = tinhHieuSuat(tienDo, chatLuong)
   const canDuyet = !doiKhacDeXuat || lyDo.trim().length > 0
 
   return (
@@ -222,11 +223,13 @@ function MucSelector({ muc, setMuc }: { muc: Muc; setMuc: (m: Muc) => void }) {
   )
 }
 
-// ── THEO NGƯỜI: chọn 1 người → TẤT CẢ nghiệp vụ của họ (mọi team họ thuộc) ──
+// ── THEO NGƯỜI: sidebar chọn 1 người → header profile + card/nghiệp-vụ (số to = hiệu suất TB,
+// số nhỏ = chi tiết) → click card mở POPUP chi tiết TỪNG task (tái dùng TaskCard của tab Chi tiết,
+// KHÔNG dựng 1 mục "danh sách chi tiết" riêng — xem lý do ở HANDOFF/DEVLOG 07-06). ──
 function TheoNguoi({ rows, teams, nsNames }: { rows: StaffTaskRow[]; teams: Map<string, TeamKey[]>; nsNames: Map<string, string> }) {
   const nsId = useStore((s) => s.dbVanHanhNsId)
   const setNsId = useStore((s) => s.setDbVanHanhNsId)
-  const nsOpts: Opt[] = [...teams.entries()].map(([id, tms]) => ({ id, label: `${nsNames.get(id) ?? '?'} (${tms.map((t) => TEAM_LABEL[t]).join(', ')})` }))
+  const nsList = useMemo(() => [...teams.keys()].map((id) => ({ id, ho_ten: nsNames.get(id) ?? '?' })).sort((a, b) => a.ho_ten.localeCompare(b.ho_ten, 'vi')), [teams, nsNames])
   const rowsOfNs = useMemo(() => rows.filter((r) => r.nhan_su_id === nsId), [rows, nsId])
   const tabsOfNs = useMemo(() => {
     const tms = teams.get(nsId ?? '') ?? []
@@ -234,42 +237,122 @@ function TheoNguoi({ rows, teams, nsNames }: { rows: StaffTaskRow[]; teams: Map<
     for (const t of tms) for (const tab of TEAM_TABS_OF[t]) set.add(tab)
     return [...set]
   }, [teams, nsId])
-  const perTab = useMemo(() => tabsOfNs.map((tab) => {
-    const sub = rowsOfNs.filter((r) => r.tab === tab)
-    let dat = 0, cham = 0, chuaXong = 0
-    for (const t of sub) { const s = statusOf(t); s === 'dat' ? dat++ : s === 'cham' ? cham++ : chuaXong++ }
-    const tong = dat + cham + chuaXong
-    return { tab, tong, dat, cham, chuaXong, pctDat: tong ? Math.round((dat / tong) * 100) : 0, pctCham: tong ? Math.round((cham / tong) * 100) : 0, pctChuaXong: tong ? Math.round((chuaXong / tong) * 100) : 0 }
-  }).sort((a, b) => b.pctDat - a.pctDat), [rowsOfNs, tabsOfNs])
+
+  const [details, setDetails] = useState<TaskDetail[]>([])
+  const [loadingDetail, setLoadingDetail] = useState(false)
+  useEffect(() => {
+    if (!rowsOfNs.length) { setDetails([]); return }
+    setLoadingDetail(true)
+    layChiTietTasks(rowsOfNs).then(setDetails).finally(() => setLoadingDetail(false))
+  }, [rowsOfNs])
+
+  const [profile, setProfile] = useState<NsProfileMini | null>(null)
+  useEffect(() => { if (!nsId) { setProfile(null); return } getNsProfileMini(nsId).then(setProfile) }, [nsId])
+
+  const [popupTab, setPopupTab] = useState<TabKey | null>(null)
 
   return (
-    <div className="mx-auto max-w-[900px] space-y-4">
-      <SearchSelect value={nsId} onChange={setNsId} options={nsOpts} placeholder="Chọn nhân sự…" className="w-80" />
-      {!nsId ? (
-        <div className="rounded-xl border border-dashed border-slate-300 bg-white py-10 text-center text-[13px] text-slate-400">Chọn 1 nhân sự để xem toàn bộ nghiệp vụ của họ.</div>
-      ) : !perTab.length ? (
-        <div className="rounded-xl border border-dashed border-slate-300 bg-white py-10 text-center text-[13px] text-slate-400">Người này chưa gán vào team nào có nghiệp vụ đo được (OPS chỉ đo team-wide).</div>
-      ) : (
-        <div className="overflow-hidden rounded-2xl bg-white shadow-sm">
-          <table className="w-full text-[13px]">
-            <thead><tr className="border-b border-slate-100 text-left text-[11px] text-slate-400">
-              <th className="px-4 py-2 font-medium">Nghiệp vụ</th><th className="px-4 py-2 font-medium">Tổng task</th>
-              <th className="px-4 py-2 font-medium">Đạt</th><th className="px-4 py-2 font-medium">Chậm</th><th className="px-4 py-2 font-medium">Chưa xong</th>
-            </tr></thead>
-            <tbody>
-              {perTab.map((r) => (
-                <tr key={r.tab} className="border-b border-slate-50 last:border-0">
-                  <td className="px-4 py-2.5 font-medium text-slate-800">{TASK_TAB_LABEL[r.tab]}</td>
-                  <td className="px-4 py-2.5 text-slate-500">{r.tong}</td>
-                  <td className="px-4 py-2.5"><PctBar pct={r.pctDat} n={r.dat} cls="bg-emerald-500" /></td>
-                  <td className="px-4 py-2.5"><PctBar pct={r.pctCham} n={r.cham} cls="bg-amber-500" /></td>
-                  <td className="px-4 py-2.5"><PctBar pct={r.pctChuaXong} n={r.chuaXong} cls="bg-rose-500" /></td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+    <div className="mx-auto flex max-w-[1180px] items-start gap-4">
+      <NsSidebar list={nsList} nsId={nsId} setNsId={setNsId} />
+      <div className="min-w-0 flex-1 space-y-4">
+        {!nsId ? (
+          <div className="rounded-xl border border-dashed border-slate-300 bg-white py-10 text-center text-[13px] text-slate-400">Chọn 1 nhân sự bên trái để xem hồ sơ hiệu suất.</div>
+        ) : (
+          <>
+            {profile && <ProfileHeaderCard profile={profile} teams={teams.get(nsId) ?? []} />}
+            {!tabsOfNs.length ? (
+              <div className="rounded-xl border border-dashed border-slate-300 bg-white py-10 text-center text-[13px] text-slate-400">Người này chưa gán vào team nào có nghiệp vụ đo được (OPS chỉ đo team-wide).</div>
+            ) : loadingDetail ? <p className="text-sm text-slate-400">Đang tải…</p> : (
+              <div className="grid gap-3.5 sm:grid-cols-2 xl:grid-cols-3">
+                {tabsOfNs.map((tab) => (
+                  <NghiepVuCard key={tab} tab={tab} details={details.filter((d) => d.tab === tab)} onClick={() => setPopupTab(tab)} />
+                ))}
+              </div>
+            )}
+          </>
+        )}
+      </div>
+      {popupTab && nsId && createPortal(
+        <PopupChiTietTask tab={popupTab} hoTen={nsNames.get(nsId) ?? '?'} details={details.filter((d) => d.tab === popupTab)} onClose={() => setPopupTab(null)} />,
+        document.body,
       )}
+    </div>
+  )
+}
+// Sidebar danh sách TẤT CẢ nhân sự — click đổi (thay dropdown, dễ lướt/so sánh nhanh nhiều người).
+function NsSidebar({ list, nsId, setNsId }: { list: { id: string; ho_ten: string }[]; nsId: string | null; setNsId: (id: string) => void }) {
+  const [q, setQ] = useState('')
+  const filtered = list.filter((n) => !q.trim() || n.ho_ten.toLowerCase().includes(q.trim().toLowerCase()))
+  return (
+    <div className="w-60 shrink-0 rounded-2xl bg-white p-2 shadow-sm">
+      <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm nhân sự…" className="mb-1.5 w-full rounded-lg border border-slate-200 px-2.5 py-1.5 text-[12.5px] outline-none focus:border-indigo-400" />
+      <div className="max-h-[65vh] space-y-0.5 overflow-y-auto">
+        {filtered.map((n) => (
+          <button key={n.id} onClick={() => setNsId(n.id)} className={`block w-full truncate rounded-lg px-2.5 py-1.5 text-left text-[13px] transition ${n.id === nsId ? 'bg-indigo-600 font-semibold text-white' : 'text-slate-600 hover:bg-slate-50'}`}>
+            {n.ho_ten}
+          </button>
+        ))}
+        {!filtered.length && <div className="px-2.5 py-4 text-center text-[12px] text-slate-400">Không tìm thấy.</div>}
+      </div>
+    </div>
+  )
+}
+function ProfileHeaderCard({ profile, teams }: { profile: NsProfileMini; teams: TeamKey[] }) {
+  return (
+    <div className="flex items-center gap-3.5 rounded-2xl bg-white p-4 shadow-sm">
+      {profile.anh_url ? <img src={profile.anh_url} className="h-14 w-14 shrink-0 rounded-full object-cover ring-2 ring-slate-100" /> : (
+        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-slate-100 text-[18px] font-semibold text-slate-400">{profile.ho_ten.charAt(0)}</div>
+      )}
+      <div className="min-w-0">
+        <div className="truncate text-[15px] font-semibold text-slate-900">{profile.ho_ten}{profile.ma_ns ? <span className="ml-1.5 font-normal text-slate-400">· {profile.ma_ns}</span> : null}</div>
+        <div className="mt-1 flex flex-wrap gap-1.5">
+          {teams.map((t) => <span key={t} className="rounded-full bg-indigo-50 px-2 py-0.5 text-[11px] font-medium text-indigo-600">{TEAM_LABEL[t]}</span>)}
+        </div>
+      </div>
+    </div>
+  )
+}
+// Card 1 nghiệp vụ — SỐ TO NHẤT = hiệu suất trung bình (tổng quan, xem trước), số nhỏ bên dưới
+// = chi tiết (Đạt/Chậm/Chưa xong) — chỉ cần soi số nhỏ khi số to có vấn đề.
+function NghiepVuCard({ tab, details, onClick }: { tab: TabKey; details: TaskDetail[]; onClick: () => void }) {
+  const hsVals = details.map(hieuSuatOf).filter((v): v is number => v != null)
+  const avg = hsVals.length ? Math.round(hsVals.reduce((s, v) => s + v, 0) / hsVals.length) : null
+  const soDuyet = details.filter((t) => t.daDuyet).length
+  let dat = 0, cham = 0, chuaXong = 0
+  for (const t of details) { const s = statusOf(t); s === 'dat' ? dat++ : s === 'cham' ? cham++ : chuaXong++ }
+  const color = avg == null ? 'text-slate-300' : avg >= 70 ? 'text-emerald-600' : avg >= 40 ? 'text-amber-600' : 'text-rose-600'
+  return (
+    <button onClick={onClick} className="rounded-2xl bg-white p-4 text-left shadow-sm ring-1 ring-transparent transition hover:shadow-md hover:ring-indigo-200">
+      <div className="text-[13px] font-semibold text-slate-700">{TASK_TAB_LABEL[tab]}</div>
+      <div className={`mt-1 text-[34px] font-bold leading-tight tabular-nums ${color}`}>{avg == null ? '—' : `${avg}%`}</div>
+      <div className="text-[11px] text-slate-400">
+        Hiệu suất trung bình · {details.length} task{soDuyet < details.length ? <span className="text-amber-500"> · {details.length - soDuyet} chưa duyệt (dự kiến)</span> : null}
+      </div>
+      <div className="mt-3 flex items-center gap-2.5 border-t border-slate-100 pt-2.5 text-[12px]">
+        <span className="text-emerald-600">Đạt <b>{dat}</b></span>
+        <span className="text-amber-600">Chậm <b>{cham}</b></span>
+        <span className="text-rose-600">Chưa xong <b>{chuaXong}</b></span>
+      </div>
+    </button>
+  )
+}
+// Popup chi tiết task — mở TỪ card nghiệp vụ, tái dùng TaskCard (đồng nhất với tab Chi tiết,
+// không đẻ thêm 1 mục "danh sách chi tiết" riêng).
+function PopupChiTietTask({ tab, hoTen, details, onClose }: { tab: TabKey; hoTen: string; details: TaskDetail[]; onClose: () => void }) {
+  const withStatus = details.map((r) => ({ ...r, status: statusOf(r) })).sort((a, b) => b.ngay.localeCompare(a.ngay))
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/30 p-4 backdrop-blur-sm" onClick={onClose}>
+      <div className="max-h-[85vh] w-[880px] max-w-full overflow-auto rounded-2xl bg-white p-5 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <div className="mb-3 flex items-center gap-2">
+          <span className="text-[14px] font-semibold text-slate-900">{TASK_TAB_LABEL[tab]} · {hoTen}</span>
+          <span className="text-[12px] text-slate-400">({withStatus.length} task)</span>
+          <button onClick={onClose} className="ml-auto text-slate-400 hover:text-slate-600">✕</button>
+        </div>
+        <div className="grid gap-2.5 [grid-template-columns:repeat(auto-fill,minmax(260px,1fr))]">
+          {withStatus.map((t, i) => <TaskCard key={t.buoiId + t.tab + i} t={t} />)}
+          {!withStatus.length && <div className="col-span-full rounded-xl border border-dashed border-slate-300 py-8 text-center text-[13px] text-slate-400">Không có task nào.</div>}
+        </div>
+      </div>
     </div>
   )
 }
@@ -397,10 +480,7 @@ function ChiTiet({ rows, teams, nsNames }: { rows: StaffTaskRow[]; teams: Map<st
   )
 }
 function TaskCard({ t }: { t: TaskDetail & { status: Status; ho_ten?: string } }) {
-  // ĐÃ DUYỆT → hiệu suất = số CHÍNH THỨC snapshot lúc duyệt (t.hieuSuatPct). CHƯA DUYỆT → chỉ tạm
-  // trộn 2 số thô làm gợi ý xem trước (không suy diễn nếu thiếu cả 2 — anti-NULL).
-  const parts = [t.tienDoPct, t.chatLuongPct].filter((v): v is number => v != null)
-  const hieuSuat = t.daDuyet ? t.hieuSuatPct : (parts.length ? Math.round(parts.reduce((s, v) => s + v, 0) / parts.length) : null)
+  const hieuSuat = hieuSuatOf(t)
   return (
     <div className="rounded-2xl bg-white p-4 shadow-sm">
       <div className="flex items-start justify-between gap-2">
@@ -411,12 +491,12 @@ function TaskCard({ t }: { t: TaskDetail & { status: Status; ho_ten?: string } }
         <span className={`shrink-0 rounded-full px-2 py-0.5 text-[11px] font-semibold ring-1 ${STATUS_UI[t.status].cls}`}>{STATUS_UI[t.status].ten}</span>
       </div>
       <div className="mt-3 space-y-1.5 text-[12px]">
-        <MetricRow label="Tiến độ" pct={t.tienDoPct} />
-        <MetricRow label={t.chatLuongLabel ?? 'Chất lượng'} pct={t.chatLuongPct} />
-        <MetricRow label="Hiệu suất" pct={hieuSuat} bold />
+        <MetricRow label={t.daDuyet ? 'Tiến độ' : t.done ? 'Tiến độ (đề xuất)' : 'Tiến độ (nếu xong ngay)'} pct={t.tienDoPct} />
+        <MetricRow label={t.daDuyet ? (t.chatLuongLabel ?? 'Chất lượng') : 'Chất lượng (mặc định)'} pct={t.chatLuongPct} />
+        <MetricRow label={t.daDuyet ? 'Hiệu suất' : t.done ? 'Hiệu suất (dự kiến)' : 'Hiệu suất (sống)'} pct={hieuSuat} bold />
       </div>
       <div className="mt-2 text-[10px] font-medium">
-        {t.daDuyet ? <span className="text-emerald-600">✓ Đã duyệt chính thức</span> : <span className="text-slate-400">Số tự động — chưa duyệt</span>}
+        {t.daDuyet ? <span className="text-emerald-600">✓ Đã duyệt chính thức</span> : !t.done ? <span className="text-rose-400">Chưa hoàn thành — số trên là ước tính SỐNG (tụt dần nếu để càng lâu)</span> : <span className="text-slate-400">Chưa duyệt — số trên là DỰ KIẾN, đổi khi leader chốt</span>}
       </div>
     </div>
   )

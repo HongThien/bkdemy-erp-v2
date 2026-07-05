@@ -34,86 +34,65 @@ export async function listNhanSuTeams(): Promise<NsTeamInfo[]> {
     .filter((n) => n.teams.length > 0)
 }
 
-// ── ĐÀO SÂU 1 TASK (chi tiết): tiến độ% (đã chấm/tổng HS có mặt) + chất lượng% (theo loại).
-// Chất lượng: ĐÃ DUYỆT (viec_van_hanh_duyet) → dùng số CHÍNH THỨC đó · CHƯA DUYỆT → fallback
-// số TỰ ĐỘNG suy từ data thô (Thùy chốt 07-05: "cái gì duyệt rồi thì hiện số duyệt, chưa duyệt
-// thì để số tự động"). ──
+// ── ĐÀO SÂU 1 TASK (chi tiết) — ĐÚNG 3 quy tắc chốt (BKDEMY_GIAOVIEC_HIEUSUAT_SPEC.md):
+// **Tiến độ** = hệ thống ĐỀ XUẤT theo độ trễ (deXuatTienDo, giờ) — máy lo tiến độ.
+// **Chất lượng** = CHỈ người (leader) duyệt tay mới CHÍNH THỨC — trước khi duyệt, DỰ KIẾN mặc
+// định 100% (đúng rule "leader duyệt mặc định 100%", KHÔNG suy từ tỉ lệ đúng-sai HS/mức chấm —
+// đó là kết quả HỌC TẬP, không phải chất lượng LÀM VIỆC).
+// **Hiệu suất** = avg(tiến độ, chất lượng); CHÍNH THỨC sau khi duyệt, DỰ KIẾN (preview) khi chưa.
+// `daDuyet` là cờ DUY NHẤT phân biệt 2 trạng thái này — UI PHẢI luôn gắn nhãn (đề xuất)/(dự kiến)
+// cho case chưa duyệt, đừng hiện trần con số dễ tưởng là số chốt. ──
 export type TaskDetail = StaffTaskRow & {
   tienDoPct: number | null; chatLuongPct: number | null; chatLuongLabel: string | null; hieuSuatPct: number | null
   daDuyet: boolean; nguoiDuyetId?: string; duyetAt?: string
 }
+const CHAT_LUONG_MAC_DINH = 100
 export async function layChiTietTasks(rows: StaffTaskRow[]): Promise<TaskDetail[]> {
   const buoiIds = [...new Set(rows.map((r) => r.buoiId))].filter(Boolean)
   if (!buoiIds.length) return []
-  const [{ data: roster }, { data: grades }, { data: btvn }, { data: danhgia }, { data: daDuyetRows }] = await Promise.all([
-    supabase.from('buoi_hoc_hs').select('buoi_hoc_id, hoc_sinh_id, diem_danh').in('buoi_hoc_id', buoiIds).limit(LIMIT * 5),
-    supabase.from('gami_grades').select('buoi_hoc_id, hoc_sinh_id, muc, result, problem:problem_id(phase)').in('buoi_hoc_id', buoiIds).limit(LIMIT * 5),
-    supabase.from('btvn_ket_qua').select('buoi_hoc_id, hoc_sinh_id, trang_thai_nop').in('buoi_hoc_id', buoiIds).limit(LIMIT * 5),
-    supabase.from('buoi_danh_gia_dang').select('buoi_hoc_id, hoc_sinh_id, diem').in('buoi_hoc_id', buoiIds).limit(LIMIT * 5),
-    supabase.from('viec_van_hanh_duyet').select('buoi_hoc_id, tab, nhan_su_id, tien_do, chat_luong, hieu_suat, nguoi_duyet, duyet_at').in('buoi_hoc_id', buoiIds).limit(LIMIT * 5),
-  ])
+  const { data: daDuyetRows } = await supabase.from('viec_van_hanh_duyet')
+    .select('buoi_hoc_id, tab, nhan_su_id, tien_do, chat_luong, hieu_suat, nguoi_duyet, duyet_at').in('buoi_hoc_id', buoiIds).limit(LIMIT * 5)
   const daDuyetMap = new Map<string, { tien_do: number; chat_luong: number; hieu_suat: number | null; nguoi_duyet: string; duyet_at: string }>()
   for (const d of (daDuyetRows ?? []) as any[]) daDuyetMap.set(DA_DUYET_KEY(d.buoi_hoc_id, d.tab, d.nhan_su_id), d)
-  const rosterCoMat = new Map<string, Set<string>>() // buoiId -> hs có mặt
-  for (const r of (roster ?? []) as any[]) {
-    if (r.diem_danh !== 'co_mat') continue
-    if (!rosterCoMat.has(r.buoi_hoc_id)) rosterCoMat.set(r.buoi_hoc_id, new Set())
-    rosterCoMat.get(r.buoi_hoc_id)!.add(r.hoc_sinh_id)
-  }
-  // gami_grades tách theo phase (ingame/et) — group riêng.
-  const gradesByBuoi: Record<'ingame' | 'et', Map<string, any[]>> = { ingame: new Map(), et: new Map() }
-  for (const g of (grades ?? []) as any[]) {
-    const phase = g.problem?.phase === 'et' ? 'et' : 'ingame'
-    if (!gradesByBuoi[phase].has(g.buoi_hoc_id)) gradesByBuoi[phase].set(g.buoi_hoc_id, [])
-    gradesByBuoi[phase].get(g.buoi_hoc_id)!.push(g)
-  }
-  const btvnByBuoi = new Map<string, any[]>()
-  for (const b of (btvn ?? []) as any[]) { if (!btvnByBuoi.has(b.buoi_hoc_id)) btvnByBuoi.set(b.buoi_hoc_id, []); btvnByBuoi.get(b.buoi_hoc_id)!.push(b) }
-  const dgByBuoi = new Map<string, any[]>()
-  for (const d of (danhgia ?? []) as any[]) { if (!dgByBuoi.has(d.buoi_hoc_id)) dgByBuoi.set(d.buoi_hoc_id, []); dgByBuoi.get(d.buoi_hoc_id)!.push(d) }
-
-  const mucToPct = (muc: number) => ((muc - 1) / 4) * 100
-  const etResultToPct = (r: string) => r === 'correct' ? 100 : r === 'partial' ? 50 : 0
 
   return rows.map((r): TaskDetail => {
-    const roster = rosterCoMat.get(r.buoiId)?.size ?? 0
-    let tienDoPct: number | null = null, chatLuongPct: number | null = null, chatLuongLabel: string | null = null
-    if (r.tab === 'ingame' || r.tab === 'et') {
-      const list = gradesByBuoi[r.tab].get(r.buoiId) ?? []
-      const distinctHs = new Set(list.map((g) => g.hoc_sinh_id)).size
-      tienDoPct = roster > 0 ? Math.round((distinctHs / roster) * 100) : null
-      if (list.length) {
-        chatLuongPct = r.tab === 'ingame'
-          ? Math.round(list.filter((g) => g.muc != null).reduce((s, g) => s + mucToPct(g.muc), 0) / (list.filter((g) => g.muc != null).length || 1))
-          : Math.round(list.reduce((s, g) => s + etResultToPct(g.result), 0) / list.length)
-      }
-      chatLuongLabel = r.tab === 'ingame' ? 'TB mức chấm' : '% câu đúng'
-    } else if (r.tab === 'btvn') {
-      const list = btvnByBuoi.get(r.buoiId) ?? []
-      const distinctHs = new Set(list.map((b) => b.hoc_sinh_id)).size
-      tienDoPct = roster > 0 ? Math.round((distinctHs / roster) * 100) : null
-      const dungHan = list.filter((b) => b.trang_thai_nop === 'nop_dung_han').length
-      chatLuongPct = list.length ? Math.round((dungHan / list.length) * 100) : null
-      chatLuongLabel = '% HS nộp đúng hạn'
-    } else if (r.tab === 'danhgia') {
-      const list = dgByBuoi.get(r.buoiId) ?? []
-      const distinctHs = new Set(list.map((d) => d.hoc_sinh_id)).size
-      tienDoPct = roster > 0 ? Math.round((distinctHs / roster) * 100) : null
-      chatLuongPct = list.length ? Math.round((list.reduce((s, d) => s + Number(d.diem) * 100, 0) / list.length)) : null
-      chatLuongLabel = '% điểm đánh giá TB'
-    }
-    // ĐÃ DUYỆT → ghi đè CẢ tiến độ lẫn chất lượng bằng số CHÍNH THỨC người đã chốt (Thùy 07-05 lần 2:
-    // tiến độ giờ cũng là đề-xuất-máy + người chốt, không còn thuần tự động sau khi duyệt).
-    // hiệu suất = snapshot đã tính lúc duyệt (auto, không phải người điền) — CHƯA duyệt thì để trống
-    // (không tự suy hiệu suất "nháp" từ số thô, tránh nhầm với số chính thức).
     const duyet = daDuyetMap.get(DA_DUYET_KEY(r.buoiId, r.tab, r.nhan_su_id))
-    if (duyet) return { ...r, tienDoPct: duyet.tien_do, chatLuongPct: duyet.chat_luong, chatLuongLabel: chatLuongLabel ?? 'Chất lượng', hieuSuatPct: duyet.hieu_suat, daDuyet: true, nguoiDuyetId: duyet.nguoi_duyet, duyetAt: duyet.duyet_at }
-    return { ...r, tienDoPct, chatLuongPct, chatLuongLabel, hieuSuatPct: null, daDuyet: false }
+    if (duyet) return { ...r, tienDoPct: duyet.tien_do, chatLuongPct: duyet.chat_luong, chatLuongLabel: 'Chất lượng', hieuSuatPct: duyet.hieu_suat, daDuyet: true, nguoiDuyetId: duyet.nguoi_duyet, duyetAt: duyet.duyet_at }
+    // CHƯA XONG (r.done=false): CẢ 3 số đều là ước tính SỐNG — Tiến độ "nếu xong ngay bây giờ" (so
+    // hiện tại với deadline, tụt dần nếu để càng lâu, giống badge Quá hạn/Sát hạn ở "Việc của tôi")
+    // + Chất lượng mặc định 100% (cùng rule "leader duyệt mặc định 100%") → Hiệu suất SỐNG = avg 2
+    // số này, tính lại ở `hieuSuatOf`. Khác task đã xong ở chỗ Tiến độ còn TỤT DẦN theo thời gian.
+    if (!r.done) return { ...r, tienDoPct: tienDoNeuXongBayGio(r), chatLuongPct: CHAT_LUONG_MAC_DINH, chatLuongLabel: 'Chất lượng', hieuSuatPct: null, daDuyet: false }
+    return { ...r, tienDoPct: deXuatTienDo(r).diem, chatLuongPct: CHAT_LUONG_MAC_DINH, chatLuongLabel: 'Chất lượng', hieuSuatPct: null, daDuyet: false }
   })
 }
 
 export const TASK_TABS: TabKey[] = ['danhgia', 'ingame', 'et', 'btvn']
 export const TASK_TAB_LABEL: Record<TabKey, string> = { diemdanh: 'Điểm danh', danhgia: 'Đánh giá sau buổi', ingame: 'Chấm bài trên lớp', et: 'Chấm ET', btvn: 'Chấm BTVN' }
+
+// Hiệu suất KHÔNG PHẢI trung bình cộng — Tiến độ là LÕI PHẠT: Đúng hạn=0 phạt, Chậm 1/2/3 = trừ
+// 10/20/30% (đúng khớp 100−tienDo vì TIEN_DO_TIERS đã là 100/90/80/70). Hiệu suất = Chất lượng −
+// phạt tiến độ (Thùy chốt): vd Chậm 3 (tienDo=70, phạt 30) + Chất lượng 90 → 90−30 = 60%.
+export function tinhHieuSuat(tienDoPct: number, chatLuongPct: number): number {
+  const phat = 100 - tienDoPct
+  return Math.max(0, Math.round(chatLuongPct - phat))
+}
+// Hiệu suất: CHÍNH THỨC (đã duyệt) → số snapshot lúc chốt. DỰ KIẾN (chưa duyệt) → tính theo công
+// thức trên với tiến độ đề xuất + chất lượng mặc định 100% — CHỈ để xem-trước, đổi ngay khi leader
+// duyệt (kể cả giữ 100% thì cũng chuyển thành "chính thức", KHÁC "dự kiến" tuy trùng số). Gọi kèm
+// `t.daDuyet` khi hiển thị để phân biệt 2 trạng thái — đừng in trần con số.
+export function hieuSuatOf(t: TaskDetail): number | null {
+  if (t.daDuyet) return t.hieuSuatPct
+  return t.tienDoPct != null && t.chatLuongPct != null ? tinhHieuSuat(t.tienDoPct, t.chatLuongPct) : null
+}
+
+// ── Profile gọn cho header "Theo người" (khác getMyProfile — cho phép xem của NGƯỜI KHÁC, không chỉ mình).
+export type NsProfileMini = { id: string; ho_ten: string; ma_ns: string | null; anh_url: string | null }
+export async function getNsProfileMini(nsId: string): Promise<NsProfileMini | null> {
+  const { data, error } = await supabase.from('nhan_su').select('id, ho_ten, ma_ns, anh_url').eq('id', nsId).single()
+  if (error) return null
+  return data as NsProfileMini
+}
 
 // ============================================================================
 // DUYỆT CHẤT LƯỢNG (mig 0081) — mỗi task XONG cần 1 lượt duyệt mới coi CHÍNH THỨC.
@@ -138,6 +117,15 @@ export function deXuatTienDo(r: StaffTaskRow): { key: string; label: string; die
   const treGio = (new Date(r.doneAt).getTime() - r.deadline) / 3600000
   if (treGio <= 0) return TIEN_DO_TIERS[0]
   return treGio <= CHAM_NGUONG_GIO.cap1 ? TIEN_DO_TIERS[1] : treGio <= CHAM_NGUONG_GIO.cap2 ? TIEN_DO_TIERS[2] : TIEN_DO_TIERS[3]
+}
+// Tiến độ SỐNG cho task CHƯA XONG — giả định "nếu hoàn thành NGAY BÂY GIỜ" thì rơi vào tier nào,
+// so hiện tại với deadline (cùng ngưỡng CHAM_NGUONG_GIO). Số này TỤT DẦN theo thời gian trôi qua
+// nếu vẫn chưa làm — khác "đề xuất" tĩnh của deXuatTienDo (đã có doneAt cố định).
+export function tienDoNeuXongBayGio(r: StaffTaskRow): number {
+  if (r.deadline == null) return TIEN_DO_TIERS[0].diem
+  const treGio = (Date.now() - r.deadline) / 3600000
+  if (treGio <= 0) return TIEN_DO_TIERS[0].diem
+  return treGio <= CHAM_NGUONG_GIO.cap1 ? TIEN_DO_TIERS[1].diem : treGio <= CHAM_NGUONG_GIO.cap2 ? TIEN_DO_TIERS[2].diem : TIEN_DO_TIERS[3].diem
 }
 // Quick-pick chung cho ô nhập % (tiến độ khi đổi khác đề xuất + chất lượng) — 1 click, đỡ gõ tay.
 export const PCT_QUICK_PICKS = [100, 95, 90, 85, 80]
@@ -171,7 +159,7 @@ export async function duyetMot(r: StaffTaskRow, p: { tienDo: number; chatLuong: 
   if (!prof) throw new Error('Không xác định được người duyệt')
   const deXuat = deXuatTienDo(r).diem
   if (p.tienDo !== deXuat && !p.tienDoLyDo?.trim()) throw new Error('Đổi tiến độ khác đề xuất của hệ thống — cần ghi lý do.')
-  const hieuSuat = Math.round((p.tienDo + p.chatLuong) / 2)
+  const hieuSuat = tinhHieuSuat(p.tienDo, p.chatLuong)
   const { error } = await supabase.from('viec_van_hanh_duyet').upsert(
     {
       buoi_hoc_id: r.buoiId, tab: r.tab, nhan_su_id: r.nhan_su_id,
@@ -192,7 +180,7 @@ export async function duyetHangLoat(rows: StaffTaskRow[], chatLuong = 100): Prom
     const diem = deXuatTienDo(r).diem
     return {
       buoi_hoc_id: r.buoiId, tab: r.tab, nhan_su_id: r.nhan_su_id,
-      tien_do: diem, tien_do_de_xuat: diem, chat_luong: chatLuong, hieu_suat: Math.round((diem + chatLuong) / 2),
+      tien_do: diem, tien_do_de_xuat: diem, chat_luong: chatLuong, hieu_suat: tinhHieuSuat(diem, chatLuong),
       nguoi_duyet: prof.nhanSu.id, duyet_at: new Date().toISOString(),
     }
   })
