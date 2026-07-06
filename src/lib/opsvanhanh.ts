@@ -128,7 +128,11 @@ export async function getMyOpsTasks(tu: string, den: string): Promise<OpsTask[]>
   const { data: tkb } = await supabase.from('thoi_khoa_bieu')
     .select('id, thu, gio_bat_dau, gio_ket_thuc, phong, hieu_luc_tu, hieu_luc_den, lop:lop_id(ten_lop, ngay_khai_giang)').in('id', tkbIds).limit(LIMIT)
   const tkbById = new Map((tkb ?? []).map((s: any) => [s.id, s]))
-  const { data: doneRows } = await supabase.from('vh_ops_task').select('*').in('tkb_id', tkbIds).gte('ngay', tu).lte('ngay', den).limit(LIMIT)
+  // ⚠ Fix 07-06 (Thùy báo lại): bản trước lọc `ngayReport >= tu` — SAI, chặn mất đúng ca "hôm nay = Thứ
+  // 2 đầu tuần" (report của ca đó đến hạn TỐI QUA = Chủ nhật, thuộc TUẦN TRƯỚC nếu tính lịch, nhưng
+  // vẫn phải hiện HÔM NAY vì còn nợ). Mở rộng khoảng đọc `vh_ops_task` thêm 1 ngày TRƯỚC `tu` để khớp.
+  const rangeStart = congNgay(tu, -1)
+  const { data: doneRows } = await supabase.from('vh_ops_task').select('*').in('tkb_id', tkbIds).gte('ngay', rangeStart).lte('ngay', den).limit(LIMIT)
   const doneMap = new Map<string, any>()
   for (const r of (doneRows ?? []) as any[]) doneMap.set(`${r.tkb_id}|${r.ngay}|${r.tab}`, r)
 
@@ -146,9 +150,10 @@ export async function getMyOpsTasks(tu: string, den: string): Promise<OpsTask[]>
       if (!(s.hieu_luc_tu <= d && (!s.hieu_luc_den || s.hieu_luc_den >= d))) continue
       if (s.lop?.ngay_khai_giang && s.lop.ngay_khai_giang > d) continue
       const base = { tkbId: s.id, lopTen: s.lop?.ten_lop ?? '?', thu, gioBatDau: s.gio_bat_dau, gioKetThuc: s.gio_ket_thuc, phong: s.phong }
-      // Report: ngay = hôm trước ca học — chỉ đẩy nếu rơi trong [tu,den] (tránh trùng qua tuần trước).
+      // Report: ngay = hôm trước ca học — CHỈ chặn trên (không hiện report của ca CÒN XA hơn tuần đang
+      // xem), KHÔNG chặn dưới (report của ca "hôm nay=đầu tuần" đến hạn từ HÔM QUA vẫn phải hiện).
       const ngayReport = congNgay(d, -1)
-      if (ngayReport >= tu && ngayReport <= den) {
+      if (ngayReport <= den) {
         const rp = doneMap.get(`${s.id}|${ngayReport}|report`)
         out.push({ ...base, ngay: ngayReport, tab: 'report', done: !!rp?.dong_at, doneAt: rp?.dong_at ?? null, anhUrl: rp?.anh_url ?? null, deadline: vnInstantLocal(ngayReport, REPORT_GIO_CO_DINH) })
       }

@@ -67,9 +67,17 @@ const TASK_STYLE: Record<TabKey, { icon: string; chip: string; accent: string }>
   btvn: { icon: '📒', chip: 'bg-amber-100', accent: 'border-l-amber-400' },
   danhgia: { icon: '⭐', chip: 'bg-rose-100', accent: 'border-l-rose-400' },
 }
-// Loại việc cho filter chip (tab → nhãn ngắn).
-const LOAI_TASK: { tab: TabKey; ten: string }[] = [
-  { tab: 'diemdanh', ten: 'Điểm danh' }, { tab: 'ingame', ten: 'Chấm bài' }, { tab: 'et', ten: 'Chấm ET' }, { tab: 'btvn', ten: 'Chấm BTVN' }, { tab: 'danhgia', ten: 'Đánh giá' },
+// Loại việc cho filter chip — THEO VAI (Thùy 07-06: "Ops không có chấm bài như TA, phải hiện đúng
+// việc của ops"): Ops thấy Điểm danh/Report/Báo tan/Chuẩn bị phòng · GV/TA thấy Chấm bài/ET/BTVN/Đánh
+// giá. 'diemdanh' CHỈ thuộc nhóm Ops (GV/TA không có item diemdanh nào — xem TASKS_BY_VAI ở gami.ts).
+type ChipDef = { key: string; ten: string; icon: string }
+const OPS_CHIPS: ChipDef[] = [
+  { key: 'diemdanh', ten: 'Điểm danh', icon: '👥' }, { key: 'report', ten: 'Report', icon: '📣' },
+  { key: 'tan', ten: 'Báo tan', icon: '🔔' }, { key: 'prep', ten: 'Chuẩn bị phòng', icon: '🧹' },
+]
+const GVTA_CHIPS: ChipDef[] = [
+  { key: 'ingame', ten: 'Chấm bài', icon: '✏️' }, { key: 'et', ten: 'Chấm ET', icon: '📝' },
+  { key: 'btvn', ten: 'Chấm BTVN', icon: '📒' }, { key: 'danhgia', ten: 'Đánh giá', icon: '⭐' },
 ]
 const chipCls = (on: boolean) => `rounded-full border px-3.5 py-1.5 text-[14px] font-medium transition ${on ? 'border-indigo-300 bg-indigo-50 text-indigo-700' : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'}`
 
@@ -211,7 +219,7 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
   const [opsWeek, setOpsWeek] = useState<(BuoiAo & { ngay: string })[]>([])
   const [tienDo, setTienDo] = useState<Record<string, TienDo>>({})
   const [tuan, setTuan] = useState(tuanNay)
-  const [loai, setLoai] = useState<Set<TabKey>>(new Set())
+  const [loai, setLoai] = useState<Set<string>>(new Set())
   const [doneShown, setDoneShown] = useState(20)
   const [now, setNow] = useState(() => Date.now())
   const [viecPT, setViecPT] = useState<ViecFull[]>([])
@@ -242,8 +250,13 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
 
   if (!scope) return <div className="text-sm text-slate-400">Tài khoản chưa gắn nhân sự — chưa có phạm vi việc.</div>
 
-  const matchLoai = (tab: TabKey) => loai.size === 0 || loai.has(tab)
-  const toggleLoai = (tab: TabKey) => setLoai((s) => { const n = new Set(s); n.has(tab) ? n.delete(tab) : n.add(tab); return n })
+  const matchLoai = (tab: string) => loai.size === 0 || loai.has(tab)
+  const toggleLoai = (tab: string) => setLoai((s) => { const n = new Set(s); n.has(tab) ? n.delete(tab) : n.add(tab); return n })
+  // Vai trò quyết định BỘ CHIP nào hiện — Ops KHÔNG có chấm-bài-như-TA (Thùy 07-06), GV/TA không có
+  // điểm danh/report/tan/prep. `trucTiep` = có ghế gv/tg lớp nào không (MyScope, nhansu.ts).
+  const isOps = !!scope.opsToanHe
+  const isGvTa = scope.trucTiep.length > 0
+  const chipDefs: ChipDef[] = [...(isOps ? OPS_CHIPS : []), ...(isGvTa ? GVTA_CHIPS : [])]
 
   // OPS điểm danh (trong tuần đang chọn): XONG = buổi mở & mọi HS đã đánh dấu.
   const opsXong = (ba: BuoiAo) => { const b = ba.buoi; if (!b || b.trang_thai === 'huy') return false; const t = tienDo[b.id]; return !!t && t.daDanh >= t.tong }
@@ -256,12 +269,14 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
   const taskActive = weekTasks.filter((t) => !t.done)
   // Lịch sử "đã xong" — TẤT CẢ thời gian, gần→xa theo doneAt (20/lần). Độc lập filter tuần.
   const doneHistory = tasks.filter((t) => t.done && matchLoai(t.tab)).sort((a, b) => (b.doneAt ?? '').localeCompare(a.doneAt ?? ''))
-  // Report/Báo tan + Chuẩn bị phòng — đã fetch SẴN theo đúng tuần đang chọn (opsExtra/prepTasks),
-  // KHÔNG qua bộ lọc loại việc (LOAI_TASK chỉ áp TabKey của GV/TA, khác hệ report/tan/prep).
-  const opsExtraActive = opsExtra.filter((t) => !t.done)
-  const opsExtraDone = opsExtra.filter((t) => t.done)
-  const prepActive = prepTasks.filter((t) => !t.done)
-  const prepDone = prepTasks.filter((t) => t.done)
+  // Report/Báo tan + Chuẩn bị phòng — đã fetch SẴN theo đúng tuần đang chọn (opsExtra/prepTasks), qua
+  // CÙNG bộ lọc loại việc (report/tan/prep giờ có chip riêng trong OPS_CHIPS).
+  const opsExtraFiltered = opsExtra.filter((t) => matchLoai(t.tab))
+  const opsExtraActive = opsExtraFiltered.filter((t) => !t.done)
+  const opsExtraDone = opsExtraFiltered.filter((t) => t.done)
+  const prepFiltered = matchLoai('prep') ? prepTasks : []
+  const prepActive = prepFiltered.filter((t) => !t.done)
+  const prepDone = prepFiltered.filter((t) => t.done)
   const hasActive = opsActive.length + taskActive.length + opsExtraActive.length + prepActive.length > 0
   const canLam = opsActive.length + taskActive.length + opsExtraActive.length + prepActive.length
   const quaHan = taskActive.filter((t) => mucDeadline(t.deadline, now) === 'qua_han').length
@@ -294,9 +309,9 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
           {tuan !== tuanNay && <button onClick={() => setTuan(tuanNay)} className="ml-1 rounded-md bg-indigo-50 px-2.5 py-1.5 text-[14px] font-medium text-indigo-600 hover:bg-indigo-100">Tuần này</button>}
         </div>
       </div>
-      {/* Filter loại việc */}
+      {/* Filter loại việc — chip THEO VAI (Ops/GV/TA khác bộ, xem chipDefs) */}
       <div className="mb-4 flex flex-wrap items-center gap-1.5">
-        {LOAI_TASK.map((x) => <button key={x.tab} onClick={() => toggleLoai(x.tab)} className={chipCls(loai.has(x.tab))}>{TASK_STYLE[x.tab].icon} {x.ten}</button>)}
+        {chipDefs.map((x) => <button key={x.key} onClick={() => toggleLoai(x.key)} className={chipCls(loai.has(x.key))}>{x.icon} {x.ten}</button>)}
         {loai.size > 0 && <button onClick={() => setLoai(new Set())} className="px-2 py-1 text-[12px] text-slate-400 hover:text-slate-600">× Xoá lọc</button>}
       </div>
 
