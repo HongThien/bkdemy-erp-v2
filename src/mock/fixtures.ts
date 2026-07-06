@@ -83,6 +83,11 @@ export const adminLeaves: AdminLeaf[] = [
   // Bổ trợ = 5 loại bù/yếu/đuổi/định-kỳ/ôn-thi (giờ có Bù + Đuổi).
   { id: 'botro',       nhom: 'Vận hành',  ten: 'Bù',                           founderOnly: false },
   { id: 'botro_duoi',  nhom: 'Vận hành',  ten: 'Đuổi',                         founderOnly: false },
+  // Vận hành Ops (BKDEMY_OPS_SPEC_DETAIL.md, 07-06): Report/Báo tan (Story 1+2) + Prep phòng (Story 3)
+  // + Phân công ca trực (spine). ET (Story 4) GÁC LẠI, không có leaf ở đây.
+  { id: 'ops_report',  nhom: 'Vận hành',  ten: 'Report & Báo tan',             founderOnly: false },
+  { id: 'prep',        nhom: 'Vận hành',  ten: 'Chuẩn bị phòng',               founderOnly: false },
+  { id: 'phancong_ops',nhom: 'Vận hành',  ten: 'Phân công Ops',               founderOnly: false },
 
   // ── GAMIFICATION: Elo/EXP, thành tích, level ──
   { id: 'diemso',      nhom: 'Gamification', ten: 'Điểm số (Elo/EXP)',        founderOnly: false },

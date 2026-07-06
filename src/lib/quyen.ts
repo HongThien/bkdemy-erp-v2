@@ -5,16 +5,23 @@ import { supabase } from './supabase'
 
 const LIMIT = 1000
 
-export type MyQuyen = { laAdmin: boolean; chucNang: string[] }
+// chiXem = leaf mà NGƯỜI này chỉ được xem (chuc_nang có mặt nhưng KHÔNG được sửa) —
+// UNION nhiều ghế: chỉ vào chiXem khi MỌI ghế giữ leaf đó đều là chỉ-xem (được-sửa thắng).
+export type MyQuyen = { laAdmin: boolean; chucNang: string[]; chiXem: string[] }
 export type VaiTro = { id: string; ten: string; mo_ta: string | null }
-export type VaiTroFull = VaiTro & { chuc_nang: string[]; so_ghe: number }
+// chuc_nang = MỌI leaf role này có quyền (xem hoặc sửa) · chi_xem = tập con chỉ-xem (còn lại = được sửa).
+export type VaiTroFull = VaiTro & { chuc_nang: string[]; chi_xem: string[]; so_ghe: number }
 
 // ── Quyền của NGƯỜI ĐANG ĐĂNG NHẬP (1 rpc) ────────────────────────
 export async function myQuyen(): Promise<MyQuyen> {
   const { data, error } = await supabase.rpc('my_quyen')
   if (error) throw error
   const row = Array.isArray(data) ? data[0] : data
-  return { laAdmin: !!row?.la_admin, chucNang: (row?.chuc_nang ?? []) as string[] }
+  return {
+    laAdmin: !!row?.la_admin,
+    chucNang: (row?.chuc_nang ?? []) as string[],
+    chiXem: (row?.chi_xem ?? []) as string[],
+  }
 }
 
 // ── Quản lý role (màn Phân quyền — Founder) ───────────────────────
@@ -23,16 +30,22 @@ export async function listRoles(): Promise<VaiTroFull[]> {
   if (error) throw error
   const ids = (roles ?? []).map((r: any) => r.id)
   const { data: cn } = ids.length
-    ? await supabase.from('vai_tro_chuc_nang').select('vai_tro_id, chuc_nang').in('vai_tro_id', ids).limit(LIMIT * 50)
+    ? await supabase.from('vai_tro_chuc_nang').select('vai_tro_id, chuc_nang, chi_xem').in('vai_tro_id', ids).limit(LIMIT * 50)
     : { data: [] as any[] }
   const { data: ghe } = ids.length
     ? await supabase.from('vi_tri').select('vai_tro_id').in('vai_tro_id', ids).limit(LIMIT)
     : { data: [] as any[] }
   const cnMap = new Map<string, string[]>()
-  for (const r of (cn ?? []) as any[]) { const a = cnMap.get(r.vai_tro_id) ?? []; a.push(r.chuc_nang); cnMap.set(r.vai_tro_id, a) }
+  const xemMap = new Map<string, string[]>()
+  for (const r of (cn ?? []) as any[]) {
+    const a = cnMap.get(r.vai_tro_id) ?? []; a.push(r.chuc_nang); cnMap.set(r.vai_tro_id, a)
+    if (r.chi_xem) { const x = xemMap.get(r.vai_tro_id) ?? []; x.push(r.chuc_nang); xemMap.set(r.vai_tro_id, x) }
+  }
   const gheCount = new Map<string, number>()
   for (const g of (ghe ?? []) as any[]) gheCount.set(g.vai_tro_id, (gheCount.get(g.vai_tro_id) ?? 0) + 1)
-  return (roles ?? []).map((r: any) => ({ ...r, chuc_nang: cnMap.get(r.id) ?? [], so_ghe: gheCount.get(r.id) ?? 0 }))
+  return (roles ?? []).map((r: any) => ({
+    ...r, chuc_nang: cnMap.get(r.id) ?? [], chi_xem: xemMap.get(r.id) ?? [], so_ghe: gheCount.get(r.id) ?? 0,
+  }))
 }
 
 export async function createRole(ten: string, moTa?: string): Promise<VaiTro> {
@@ -50,19 +63,22 @@ export async function deleteRole(id: string): Promise<void> {
   if (error) throw error
 }
 
-// Đặt LẠI toàn bộ chức năng của 1 role (diff: thêm dòng mới, xóa dòng thừa — anti-NULL, không lưu false)
-export async function setRoleChucNang(roleId: string, chucNang: string[]): Promise<void> {
-  const { data: cur } = await supabase.from('vai_tro_chuc_nang').select('chuc_nang').eq('vai_tro_id', roleId).limit(LIMIT * 50)
-  const have = new Set((cur ?? []).map((r: any) => r.chuc_nang))
-  const want = new Set(chucNang)
-  const them = chucNang.filter((c) => !have.has(c))
-  const bo = [...have].filter((c) => !want.has(c as string)) as string[]
-  if (them.length) {
-    const { error } = await supabase.from('vai_tro_chuc_nang').insert(them.map((c) => ({ vai_tro_id: roleId, chuc_nang: c })))
-    if (error) throw error
-  }
+// Đặt LẠI toàn bộ chức năng của 1 role: mỗi mục {chuc_nang, chi_xem} — chi_xem=true là CHỈ XEM,
+// false = ĐƯỢC SỬA. Diff: thêm dòng mới / xoá dòng thừa / cập nhật dòng đổi mức (anti-NULL, không rải false rác).
+export type RoleFn = { chuc_nang: string; chi_xem: boolean }
+export async function setRoleChucNang(roleId: string, fns: RoleFn[]): Promise<void> {
+  const { data: cur } = await supabase.from('vai_tro_chuc_nang').select('chuc_nang, chi_xem').eq('vai_tro_id', roleId).limit(LIMIT * 50)
+  const curMap = new Map((cur ?? []).map((r: any) => [r.chuc_nang as string, !!r.chi_xem]))
+  const wantIds = new Set(fns.map((f) => f.chuc_nang))
+  const bo = [...curMap.keys()].filter((c) => !wantIds.has(c))
+  const upsert = fns.filter((f) => curMap.get(f.chuc_nang) !== f.chi_xem) // mới hoặc đổi mức xem/sửa
   if (bo.length) {
     const { error } = await supabase.from('vai_tro_chuc_nang').delete().eq('vai_tro_id', roleId).in('chuc_nang', bo)
+    if (error) throw error
+  }
+  if (upsert.length) {
+    const { error } = await supabase.from('vai_tro_chuc_nang')
+      .upsert(upsert.map((f) => ({ vai_tro_id: roleId, chuc_nang: f.chuc_nang, chi_xem: f.chi_xem })), { onConflict: 'vai_tro_id,chuc_nang' })
     if (error) throw error
   }
 }

@@ -8,10 +8,12 @@ import Login from './auth/Login'
 import GeminiMeterBadge from './components/GeminiMeterBadge'
 import HocSinhApp from './screens/hocsinh/HocSinhApp'
 import { getMyHocSinhId } from './lib/testonline'
+import { useIsMobile } from './hooks/useIsMobile'
 
 export default function App() {
   const [session, setSession] = useState<Session | null | undefined>(undefined) // undefined = đang tải
   const [hsId, setHsId] = useState<string | null | undefined>(undefined) // undefined = chưa biết · null = KHÔNG phải HS (staff)
+  const isMobile = useIsMobile()
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => setSession(data.session))
     const { data: sub } = supabase.auth.onAuthStateChange((_e, s) => setSession(s))
@@ -45,10 +47,8 @@ export default function App() {
   )
   if (quyen === null) return <div className="flex min-h-screen items-center justify-center text-sm text-slate-400">Đang tải quyền…</div>
 
-  return (
-    // Chiều cao khung = đúng viewport. #root có zoom:1.15 (index.css) nên chia 1.15 để không tràn.
-    // Chặn 1 lần ở đây; mọi tầng dưới dùng h-full + cuộn nội bộ → không còn body-scroll thừa.
-    <div className="flex h-[calc(100vh/1.15)] flex-col overflow-hidden bg-slate-50 text-slate-800">
+  const shell = (
+    <div className={isMobile ? 'flex h-screen flex-col overflow-hidden bg-slate-50 text-slate-800' : 'flex h-[calc(100vh/1.15)] flex-col overflow-hidden bg-slate-50 text-slate-800'}>
       <TopBar email={session.user.email ?? ''} />
       <div className="min-h-0 flex-1 overflow-hidden">
         <NhanSuHome user={user} />
@@ -56,4 +56,8 @@ export default function App() {
       <GeminiMeterBadge />
     </div>
   )
+  // Mobile: huỷ zoom:1.15 (#root, mật độ desktop) về net 1.0 — CÙNG trick với HocSinhApp ở trên (bọc
+  // 1/1.15 để h-screen bên trong tính lại đúng 100vh THẬT, tránh chữ/nút quá to trên màn hình nhỏ).
+  // Desktop: giữ NGUYÊN — Chiều cao khung = đúng viewport, #root zoom:1.15 nên chia 1.15 để không tràn.
+  return isMobile ? <div style={{ zoom: 1 / 1.15 }}>{shell}</div> : shell
 }

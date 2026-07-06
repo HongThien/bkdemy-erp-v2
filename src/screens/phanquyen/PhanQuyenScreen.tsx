@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { adminLeaves } from '../../mock/fixtures'
 import {
   listRoles, createRole, updateRole, deleteRole, setRoleChucNang,
-  listViTriGan, setViTriRole, type VaiTroFull, type ViTriGan,
+  listViTriGan, setViTriRole, type VaiTroFull, type ViTriGan, type RoleFn,
 } from '../../lib/quyen'
 
 const CAP_LBL: Record<string, string> = { truong: 'Trưởng', pho: 'Phó', thanh_vien: 'Thành viên' }
@@ -49,15 +49,27 @@ function MaTranTab() {
     if (!confirm(`Xóa vai trò "${r.ten}"? ${r.so_ghe} ghế đang gán sẽ bị gỡ role (không mất vị trí).`)) return
     await deleteRole(r.id); reload()
   }
-  // tick / bỏ tick 1 ô → cập nhật lạc quan + lưu diff
-  async function toggle(r: VaiTroFull, leafId: string) {
-    const has = r.chuc_nang.includes(leafId)
-    const next = has ? r.chuc_nang.filter((c) => c !== leafId) : [...r.chuc_nang, leafId]
-    setRoles((rs) => rs.map((x) => (x.id === r.id ? { ...x, chuc_nang: next } : x)))
-    const key = r.id + ':' + leafId; setSaving(key)
-    try { await setRoleChucNang(r.id, next) }
+  // Lưu 1 role: build lại toàn bộ fns từ (chuc_nang, chi_xem) hiện tại rồi gọi API (diff tự lo ở seam).
+  async function luu(r: VaiTroFull, key: string, chucNang: string[], chiXem: string[]) {
+    const fns: RoleFn[] = chucNang.map((c) => ({ chuc_nang: c, chi_xem: chiXem.includes(c) }))
+    setRoles((rs) => rs.map((x) => (x.id === r.id ? { ...x, chuc_nang: chucNang, chi_xem: chiXem } : x)))
+    setSaving(key)
+    try { await setRoleChucNang(r.id, fns) }
     catch (e: any) { alert(e.message ?? String(e)); reload() }
     finally { setSaving((s) => (s === key ? null : s)) }
+  }
+  // Tick/bỏ "Xem" = cấp/gỡ quyền vào màn. Cấp mới mặc định CHỈ XEM (an toàn — phải tick thêm "Sửa" mới full quyền).
+  async function toggleXem(r: VaiTroFull, leafId: string) {
+    const has = r.chuc_nang.includes(leafId)
+    const chucNang = has ? r.chuc_nang.filter((c) => c !== leafId) : [...r.chuc_nang, leafId]
+    const chiXem = has ? r.chi_xem.filter((c) => c !== leafId) : [...r.chi_xem, leafId]
+    await luu(r, r.id + ':' + leafId + ':xem', chucNang, chiXem)
+  }
+  // Tick "Sửa" = gỡ khỏi chi_xem (được sửa) · bỏ tick = trả lại chi_xem (hạ xuống chỉ-xem, KHÔNG gỡ quyền vào màn).
+  async function toggleSua(r: VaiTroFull, leafId: string) {
+    const dangSua = !r.chi_xem.includes(leafId)
+    const chiXem = dangSua ? [...r.chi_xem, leafId] : r.chi_xem.filter((c) => c !== leafId)
+    await luu(r, r.id + ':' + leafId + ':sua', r.chuc_nang, chiXem)
   }
 
   if (loading) return <p className="p-6 text-sm text-slate-400">Đang tải…</p>
@@ -66,7 +78,7 @@ function MaTranTab() {
     <div className="flex h-full min-h-0 flex-col">
       <div className="flex items-center gap-3 px-6 pt-4">
         <button onClick={them} className="rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-indigo-500">+ Tạo vai trò</button>
-        <span className="text-[12px] text-slate-400">Tick ô = cấp màn cho vai trò (lưu ngay). Founder luôn thấy mọi màn (bypass).</span>
+        <span className="text-[12px] text-slate-400">Ô trên (✓) = cấp XEM màn; ô dưới (✎) = cho SỬA (lưu ngay). Founder luôn thấy và sửa mọi màn (bypass).</span>
       </div>
       <div className="min-h-0 flex-1 overflow-auto p-6">
         {roles.length === 0 ? <p className="text-[13px] text-slate-400">Chưa có vai trò nào — bấm “+ Tạo vai trò”.</p> : (
@@ -84,7 +96,7 @@ function MaTranTab() {
                 <th className="sticky left-0 z-20 bg-[#fafafb] px-3 pb-2 text-left text-[11px] uppercase text-slate-400">Vai trò</th>
                 {adminLeaves.map((l) => (
                   <th key={l.id} className="h-28 border-l border-slate-100 align-bottom">
-                    <div className="mx-auto flex w-7 items-center justify-center">
+                    <div className="mx-auto flex w-9 items-center justify-center">
                       <span className="whitespace-nowrap text-[11px] text-slate-500 [writing-mode:vertical-rl] [transform:rotate(180deg)]">
                         {l.ten}{l.founderOnly ? ' ⚠' : ''}
                       </span>
@@ -105,14 +117,23 @@ function MaTranTab() {
                     </div>
                   </th>
                   {adminLeaves.map((l) => {
-                    const on = r.chuc_nang.includes(l.id)
-                    const key = r.id + ':' + l.id
+                    const xem = r.chuc_nang.includes(l.id)
+                    const sua = xem && !r.chi_xem.includes(l.id)
+                    const keyXem = r.id + ':' + l.id + ':xem', keySua = r.id + ':' + l.id + ':sua'
                     return (
                       <td key={l.id} className="border-l border-t border-slate-100 text-center">
-                        <button onClick={() => toggle(r, l.id)} disabled={saving === key}
-                          className={`m-0.5 inline-flex h-6 w-6 items-center justify-center rounded ${on ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-transparent hover:bg-slate-200'}`}>
-                          {on ? '✓' : '·'}
-                        </button>
+                        <div className="mx-auto flex w-9 flex-col items-center gap-0.5 py-0.5">
+                          <button onClick={() => toggleXem(r, l.id)} disabled={saving === keyXem} title="Xem"
+                            className={`inline-flex h-5 w-5 items-center justify-center rounded text-[11px] ${xem ? 'bg-indigo-100 text-indigo-700' : 'bg-slate-100 text-transparent hover:bg-slate-200'}`}>
+                            {xem ? '✓' : '·'}
+                          </button>
+                          {xem && (
+                            <button onClick={() => toggleSua(r, l.id)} disabled={saving === keySua} title="Sửa"
+                              className={`inline-flex h-5 w-5 items-center justify-center rounded text-[11px] ${sua ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-400 hover:bg-slate-200'}`}>
+                              ✎
+                            </button>
+                          )}
+                        </div>
                       </td>
                     )
                   })}

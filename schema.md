@@ -2,7 +2,7 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-83 bảng · 0 enum · 7 trigger · 20 function
+86 bảng · 0 enum · 7 trigger · 20 function
 
 ## bai_lam
 
@@ -801,6 +801,17 @@
 | la_chinh | boolean |  | false |  |
 | created_at | timestamp with time zone |  | now() |  |
 
+## phan_cong_ops
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| tkb_id | uuid |  |  | FK→thoi_khoa_bieu.id |
+| nhan_su_id | uuid |  |  | FK→nhan_su.id |
+| hieu_luc_tu | date |  |  |  |
+| hieu_luc_den | date | Y |  |  |
+| created_at | timestamp with time zone |  | now() |  |
+
 ## phu_huynh
 
 | cột | kiểu | null | default | khóa |
@@ -813,6 +824,25 @@
 | dia_chi | text | Y |  |  |
 | created_at | timestamp with time zone |  | now() |  |
 | updated_at | timestamp with time zone |  | now() |  |
+
+## prep_phong
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| phong | text |  |  |  |
+| ngay | date |  |  |  |
+| luot | text |  |  |  |
+| nhan_su_id | uuid | Y |  | FK→nhan_su.id |
+| don_phong | boolean |  | false |  |
+| chuan_bi_kit | boolean |  | false |  |
+| anh_url | text | Y |  |  |
+| dong_at | timestamp with time zone | Y |  |  |
+| gv_diem_nen | numeric |  | 100 |  |
+| gv_ghi_chu | text | Y |  |  |
+| gv_cham_at | timestamp with time zone | Y |  |  |
+| leader_chot_at | timestamp with time zone | Y |  |  |
+| created_at | timestamp with time zone |  | now() |  |
 
 ## question_accepted_answers
 
@@ -999,6 +1029,23 @@
 |---|---|---|---|---|
 | vai_tro_id | uuid |  |  | PK FK→vai_tro.id |
 | chuc_nang | text |  |  | PK |
+| chi_xem | boolean |  | false |  |
+
+## vh_ops_task
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| tkb_id | uuid |  |  | FK→thoi_khoa_bieu.id |
+| ngay | date |  |  |  |
+| tab | text |  |  |  |
+| nhan_su_id | uuid |  |  | FK→nhan_su.id |
+| anh_url | text | Y |  |  |
+| dong_at | timestamp with time zone | Y |  |  |
+| chat_luong | numeric |  | 100 |  |
+| nguoi_duyet | uuid | Y |  | FK→nhan_su.id |
+| duyet_at | timestamp with time zone | Y |  |  |
+| created_at | timestamp with time zone |  | now() |  |
 
 ## vi_tri
 
@@ -1102,7 +1149,7 @@
 - `log_ung_vien()` → trigger
 - `log_viec()` → trigger
 - `my_hoc_sinh_id()` → uuid
-- `my_quyen()` → TABLE(la_admin boolean, chuc_nang text[])
+- `my_quyen()` → TABLE(la_admin boolean, chuc_nang text[], chi_xem text[])
 - `self_link_account()` → uuid
 - `tln_cache_check(p_ma_cau text, p_norm text)` → boolean
 - `tln_norm(t text)` → text

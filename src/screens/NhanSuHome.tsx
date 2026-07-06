@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
-import type { User } from '../types'
+import type { User, NavGroup } from '../types'
 import { useStore, staffNavFromScope, adminNavFromQuyen } from '../store/useStore'
 import { getMyScope, type MyScope } from '../lib/nhansu'
+import { useIsMobile } from '../hooks/useIsMobile'
 import { getMyTasks, buoiAoCuaKhoang, moBuoi, diemDanhTienDo, type MyTask, type BuoiAo, type TabKey } from '../lib/gami'
 import { homNayVN, tuanCuaNgay, khoangTuan, nhanTuan, mucDeadline, nhanConLai, thuCuaNgay, ddmmVN, type DeadlineMuc } from '../lib/tuan'
 import { BuoiDetail } from './gami/BuoiHocScreen'
@@ -30,6 +31,9 @@ import { listViecCuaToi, type ViecFull } from '../lib/giaoviec'
 import QuanLyLevelScreen from './gami/QuanLyLevelScreen'
 import PhanQuyenScreen from './phanquyen/PhanQuyenScreen'
 import BaoLoiScreen from './baoloi/BaoLoiScreen'
+import OpsReportScreen from './vanhanhops/OpsReportScreen'
+import PrepScreen from './vanhanhops/PrepScreen'
+import PhanCongOpsScreen from './vanhanhops/PhanCongOpsScreen'
 import TuyenSinhScreen from './tuyensinh/TuyenSinhScreen'
 import BoTroScreen from './botro/BoTroScreen'
 import BoTroDuoiScreen from './botro/BoTroDuoiScreen'
@@ -309,6 +313,16 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
   )
 }
 
+// Tìm nhãn hiển thị của leaf đang chọn (kể cả con lamtailieu:*) — dùng cho tiêu đề top bar mobile.
+function tenLeafDangChon(groups: NavGroup[], selected: string): string {
+  for (const g of groups) for (const l of g.leaves) {
+    if (l.id === selected) return l.ten
+    const c = l.children?.find((x) => x.id === selected)
+    if (c) return c.ten
+  }
+  return 'BKdemy ERP'
+}
+
 // MÀN DUY NHẤT (theo spec): 1 cây nav = Việc của tôi (vận hành) + các màn role cấp (phát triển).
 // KHÔNG còn 2 tab Nhân sự/Admin.
 export default function NhanSuHome({ user }: { user: User }) {
@@ -316,6 +330,8 @@ export default function NhanSuHome({ user }: { user: User }) {
   const [scope, setScope] = useState<MyScope | null>(null)
   const [loading, setLoading] = useState(true)
   const [openBuoi, setOpenBuoi] = useState<OpenBuoi | null>(null)
+  const isMobile = useIsMobile()
+  const [navOpen, setNavOpen] = useState(false)
 
   useEffect(() => { getMyScope().then(setScope).finally(() => setLoading(false)) }, [])
 
@@ -325,15 +341,43 @@ export default function NhanSuHome({ user }: { user: User }) {
 
   // nav hợp nhất: Việc của tôi (vận hành) ++ leaf màn role cấp (phát triển)
   const groups = [...staffNavFromScope(scope), ...adminNavFromQuyen(quyen)]
+  // "Chỉ xem" (RBAC ①, xem lib/supabase.ts): banner cảnh báo — chặn THẬT nằm ở seam, đây chỉ để người dùng hiểu vì sao lưu/sửa báo lỗi.
+  const chiXemManHinh = quyen && !quyen.laAdmin && quyen.chiXem.includes(staffLeaf.split(':')[0])
+  const chonLeaf = (id: string) => { setStaffLeaf(id); setNavOpen(false) } // mobile: chọn xong tự đóng drawer
 
   return (
-    <div className="grid h-full min-h-0 grid-cols-[240px_1fr] grid-rows-[minmax(0,1fr)] overflow-hidden">
-      <aside className="min-h-0 overflow-auto border-r bg-white/60 p-3">
-        <PersonalCard user={user} />
-        <NavTree groups={groups} selected={staffLeaf} onSelect={setStaffLeaf} />
-      </aside>
+    <div className={isMobile ? 'flex h-full min-h-0 flex-col overflow-hidden' : 'grid h-full min-h-0 grid-cols-[240px_1fr] grid-rows-[minmax(0,1fr)] overflow-hidden'}>
+      {isMobile ? (
+        <>
+          {/* Top bar mobile: ☰ mở drawer nav thay sidebar cố định (240px không đủ chỗ trên điện thoại). */}
+          <div className="flex shrink-0 items-center gap-2 border-b border-slate-200 bg-white px-3 py-2">
+            <button onClick={() => setNavOpen(true)} className="rounded-md border border-slate-200 px-3 py-2 text-[15px] text-slate-600 active:bg-slate-100">☰</button>
+            <span className="truncate text-[14px] font-semibold text-slate-800">{tenLeafDangChon(groups, staffLeaf)}</span>
+          </div>
+          {navOpen && (
+            <div className="fixed inset-0 z-50 flex">
+              <div className="h-full w-[82vw] max-w-[300px] overflow-auto bg-white p-3 shadow-2xl">
+                <PersonalCard user={user} />
+                <NavTree groups={groups} selected={staffLeaf} onSelect={chonLeaf} />
+              </div>
+              <div className="flex-1 bg-slate-900/40" onClick={() => setNavOpen(false)} />
+            </div>
+          )}
+        </>
+      ) : (
+        <aside className="min-h-0 overflow-auto border-r bg-white/60 p-3">
+          <PersonalCard user={user} />
+          <NavTree groups={groups} selected={staffLeaf} onSelect={setStaffLeaf} />
+        </aside>
+      )}
       {/* Khung phải: min-w-0 để bảng rộng (vd chấm bài nhiều bài) CUỘN trong khung thay vì bung cột → tràn layout. */}
-      <div className="grid min-h-0 min-w-0 grid-rows-[minmax(0,1fr)] overflow-hidden">
+      <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
+      {chiXemManHinh && (
+        <div className="shrink-0 flex items-center gap-1.5 border-b border-amber-200 bg-amber-50 px-4 py-1.5 text-[12px] font-medium text-amber-700">
+          🔒 Bạn chỉ có quyền XEM ở màn này — thao tác lưu/sửa/xoá sẽ bị chặn.
+        </div>
+      )}
+      <div className="grid min-h-0 min-w-0 flex-1 grid-rows-[minmax(0,1fr)] overflow-hidden">
       {loading ? (
         <section className="p-8 text-sm text-slate-400">Đang tải…</section>
       ) : staffLeaf === 'viec' ? (
@@ -364,9 +408,13 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'quanlylevel' ? <QuanLyLevelScreen />
       : staffLeaf === 'phanquyen' ? <PhanQuyenScreen />
       : staffLeaf === 'baoloi' ? <BaoLoiScreen />
+      : staffLeaf === 'ops_report' ? <OpsReportScreen />
+      : staffLeaf === 'prep' ? <PrepScreen />
+      : staffLeaf === 'phancong_ops' ? <PhanCongOpsScreen />
       : (
         <section className="flex min-h-0 items-center justify-center p-8 text-sm text-slate-400">Chọn một mục bên trái.</section>
       )}
+      </div>
       </div>
     </div>
   )

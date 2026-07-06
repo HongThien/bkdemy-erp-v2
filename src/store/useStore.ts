@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 import { users, opTasks, devTasks, adminLeaves, classesOfCoSo, worktypesByVai } from '../mock/fixtures'
 import { myQuyen, type MyQuyen } from '../lib/quyen'
+import { setReadOnlyLeafGetter } from '../lib/supabase'
 import { getMyProfile, type MyProfile, type MyScope } from '../lib/nhansu'
 import type { User, Vai, NavGroup, NavLeaf, AdminLeaf } from '../types'
 
@@ -48,7 +49,7 @@ export const useStore = create<UiState>((set) => ({
   setScreen: (s) => set({ screen: s }),
   setStaffLeaf: (id) => set({ staffLeaf: id }),
   setAdminLeaf: (id) => set({ adminLeaf: id }),
-  loadQuyen: async () => { try { set({ quyen: await myQuyen() }) } catch { set({ quyen: { laAdmin: false, chucNang: [] } }) } },
+  loadQuyen: async () => { try { set({ quyen: await myQuyen() }) } catch { set({ quyen: { laAdmin: false, chucNang: [], chiXem: [] } }) } },
   loadMe: async () => { try { set({ me: await getMyProfile() }) } catch { set({ me: null }) } },
   clearQuyen: () => set({ quyen: null, me: null }),
   hocPhiTab: 'theomon',
@@ -66,6 +67,15 @@ export const useStore = create<UiState>((set) => ({
   setDbVanHanhMuc: (m) => set({ dbVanHanhMuc: m }),
   setDbVanHanhNsId: (id) => set({ dbVanHanhNsId: id }),
 }))
+
+// Nối gate "Chỉ xem" (RBAC ①) vào seam Supabase — xem lib/supabase.ts. Leaf con dạng
+// "lamtailieu:et" dùng chung quyền với leaf cha "lamtailieu" (chỉ cha có trong chuc_nang/chi_xem).
+setReadOnlyLeafGetter(() => {
+  const { quyen, staffLeaf } = useStore.getState()
+  if (!quyen || quyen.laAdmin) return null
+  const leaf = staffLeaf.split(':')[0]
+  return quyen.chiXem.includes(leaf) ? leaf : null
+})
 
 // ── Gate feature-access THẬT (lớp ①) — KHÔNG dùng cờ founderOnly mock nữa ─────────
 // Founder (la_admin) thấy tất; người khác chỉ thấy leaf có trong chuc_nang được cấp.

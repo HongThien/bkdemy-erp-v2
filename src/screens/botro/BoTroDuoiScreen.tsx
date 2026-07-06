@@ -95,7 +95,7 @@ export default function BoTroDuoiScreen() {
                       {c.ly_do && <div className="min-w-[140px] max-w-[260px] rounded-xl bg-slate-50 px-3 py-2"><div className="text-[12px] font-medium uppercase tracking-wide text-slate-400">Lý do</div><div className="text-[13px] text-slate-600">{c.ly_do}</div></div>}
                       <div className="ml-auto flex shrink-0 flex-wrap gap-2">
                         <button onClick={() => setXepItem(c)} className="rounded-lg bg-indigo-600 px-3.5 py-2 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500">Xếp buổi đuổi</button>
-                        <button onClick={() => onHoanThanhKhoa(c.caseId, c.ho_ten)} className="rounded-lg border border-emerald-200 bg-emerald-50 px-3.5 py-2 text-[13px] font-medium text-emerald-700 hover:border-emerald-300">✓ Hoàn thành khóa</button>
+                        <button onClick={() => onHoanThanhKhoa(c.caseId, c.ho_ten)} className="rounded-lg bg-emerald-600 px-3.5 py-2 text-[13px] font-semibold text-white shadow-sm hover:bg-emerald-500">✓ Hoàn thành khóa</button>
                         <button onClick={() => onBoCo(c)} className="rounded-lg border border-slate-200 px-3 py-2 text-[13px] text-slate-500 hover:border-rose-300 hover:text-rose-600">Bỏ cờ</button>
                       </div>
                     </div>
@@ -322,7 +322,12 @@ function BuoiDuoiDetail({ ca, readOnly, onClose, onHoanThanhKhoa }: { ca: CaDuoi
         {!readOnly && (
           <button onClick={toggleDong} disabled={busy} className={`ml-auto rounded-lg px-4 py-2 text-[14px] font-medium disabled:opacity-50 ${dgXong ? 'border border-amber-300 text-amber-700 hover:bg-amber-50' : 'bg-emerald-600 text-white hover:bg-emerald-500'}`}>{dgXong ? '↩ Mở lại buổi' : '✓ Hoàn thành buổi'}</button>
         )}
-        {readOnly && <span className="ml-auto rounded-lg bg-emerald-100 px-3 py-1.5 text-[13px] font-medium text-emerald-700">✓ Buổi đã hoàn thành</span>}
+        {readOnly && (
+          <div className="ml-auto flex items-center gap-2">
+            <span className="rounded-lg bg-emerald-100 px-3 py-1.5 text-[13px] font-medium text-emerald-700">✓ Buổi đã hoàn thành</span>
+            <span className="text-[12px] text-slate-400">HS chưa bấm "Hoàn thành khóa" đã tự quay lại Cần đuổi để xếp buổi tiếp theo.</span>
+          </div>
+        )}
       </div>
       <div className="flex items-center gap-2 border-b border-slate-200 bg-white px-5 py-2.5">
         <span className="text-[12px] font-medium text-slate-500">Mức học đuổi (giá của ca này):</span>
@@ -344,8 +349,10 @@ function BuoiDuoiDetail({ ca, readOnly, onClose, onHoanThanhKhoa }: { ca: CaDuoi
                 <div className="ml-auto flex gap-1.5">
                   <button disabled={readOnly} onClick={() => setDD(r, 'co_mat')} className={`rounded-lg px-2.5 py-1 text-[12px] font-medium ${r.diem_danh === 'co_mat' ? 'bg-emerald-500 text-white' : 'border border-slate-200 text-slate-500'}`}>Có mặt</button>
                   <button disabled={readOnly} onClick={() => setDD(r, 'vang')} className={`rounded-lg px-2.5 py-1 text-[12px] font-medium ${r.diem_danh === 'vang' ? 'bg-rose-500 text-white' : 'border border-slate-200 text-slate-500'}`}>Vắng</button>
-                  {r.bo_tro_duoi_id && !readOnly && (
-                    <button onClick={() => onHoanThanhKhoa(r.bo_tro_duoi_id!, r.hoc_sinh?.ho_ten ?? 'HS')} title="HS đã bắt kịp → kết thúc khóa đuổi" className="rounded-lg border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-[12px] font-medium text-emerald-700 hover:border-emerald-300">✓ Hoàn thành khóa</button>
+                  {/* Hoàn thành khóa = hành động trên CASE (bo_tro_duoi), KHÁC hoàn thành buổi (đóng đánh giá) — vẫn bấm được
+                      dù buổi đã đóng/readOnly, vì quyết định "HS bắt kịp" thường ra NGAY sau khi xem xong nhận xét buổi cuối. */}
+                  {r.bo_tro_duoi_id && (
+                    <button onClick={() => onHoanThanhKhoa(r.bo_tro_duoi_id!, r.hoc_sinh?.ho_ten ?? 'HS')} title="HS đã bắt kịp → kết thúc khóa đuổi" className="rounded-lg bg-emerald-600 px-3 py-1.5 text-[12px] font-semibold text-white shadow-sm hover:bg-emerald-500">✓ Hoàn thành khóa</button>
                   )}
                   {!readOnly && <button onClick={() => onXoaHS(r)} title="Gỡ HS khỏi buổi đuổi" className="rounded px-1.5 py-1 text-[12px] text-slate-300 hover:bg-rose-50 hover:text-rose-600">✕</button>}
                 </div>
