@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { listThanhTich, listGamiMons, type ThanhTichRow } from '../../lib/gami'
 import BangThanhTich from './BangThanhTich'
-import { tenNganHS } from '../../lib/hoten'
+import { tenHienThiDs } from '../../lib/hoten'
 
 export default function ThanhTichScreen() {
   const [mons, setMons] = useState<string[]>([])
@@ -49,7 +49,7 @@ export default function ThanhTichScreen() {
           : shown.length === 0 ? <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">Chưa có HS nào có thành tích. Điểm sinh khi đóng buổi.</div>
           : (
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {shown.map((r) => <Card key={r.hoc_sinh_id + r.mon} r={r} onOpen={() => setOpen({ id: r.hoc_sinh_id, ten: r.ho_ten, maHs: r.ma_hs, khoi: r.khoi })} />)}
+              {tenHienThiDs(shown.map((r) => r.ho_ten)).map((tenHT, i) => { const r = shown[i]; return <Card key={r.hoc_sinh_id + r.mon} r={r} ten={tenHT} onOpen={() => setOpen({ id: r.hoc_sinh_id, ten: r.ho_ten, maHs: r.ma_hs, khoi: r.khoi })} /> })}
             </div>
           )}
       </div>
@@ -58,7 +58,7 @@ export default function ThanhTichScreen() {
 }
 
 // Thẻ HS: ảnh + tên + huy chương top-3 + Elo + hạng.
-function Card({ r, onOpen }: { r: ThanhTichRow; onOpen: () => void }) {
+function Card({ r, ten, onOpen }: { r: ThanhTichRow; ten: string; onOpen: () => void }) {
   const medal = r.rankNow === 1 ? '🥇' : r.rankNow === 2 ? '🥈' : r.rankNow === 3 ? '🥉' : null
   return (
     <button onClick={onOpen} className="group flex items-center gap-3 rounded-xl border border-slate-200 bg-white p-3 text-left transition hover:border-indigo-300 hover:shadow-sm">
@@ -67,7 +67,7 @@ function Card({ r, onOpen }: { r: ThanhTichRow; onOpen: () => void }) {
         : <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-sky-400 to-indigo-500 text-base font-bold text-white">{r.ho_ten.trim().split(/\s+/).pop()?.[0]?.toUpperCase() ?? '?'}</span>}
       <div className="min-w-0 flex-1">
         <div className="flex items-center gap-1 truncate text-[14px] font-semibold text-slate-800">
-          {medal && <span>{medal}</span>}<span className="truncate">{tenNganHS(r.ho_ten)}</span>
+          {medal && <span>{medal}</span>}<span className="truncate">{ten}</span>
         </div>
         <div className="text-[11px] text-slate-400">{r.ma_hs ?? '—'} · {r.khoi ? `Khối ${r.khoi}` : r.mon}</div>
         <div className="mt-1 flex items-center gap-1.5 text-[12px]">

@@ -9,7 +9,7 @@ import { listLop, listHSCuaLop, listLopCuaHS } from '../../lib/nhansu'
 import { getMasteryHS, listBuoiHoatDong, getMasteryRollup, getMasteryByDang, getMasteryByChuyenDe, getTongQuanHS, SRC_LABEL, type DangMastery, type DangEval, type BuoiActivity, type HSRollup, type TongQuanHS } from '../../lib/mastery'
 import { BuoiDetail } from '../gami/BuoiHocScreen'
 import type { TabKey } from '../../lib/gami'
-import { tenNganHS } from '../../lib/hoten'
+import { tenHienThiDs } from '../../lib/hoten'
 
 // Chỉ môn CÓ KHO mới suy được mastery (khoCuaMon dispatch dai_/khtn_). Anh/Văn chưa có kho.
 const MON_CO_KHO = ['Toán', 'KHTN']
@@ -104,10 +104,10 @@ function PerHocSinh() {
             <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
               <div className="border-b border-slate-200 bg-slate-50 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wide text-slate-500">{roster.length} học sinh</div>
               <div className="max-h-[62vh] overflow-auto">
-                {roster.map((r) => (
+                {(() => { const tenHT = tenHienThiDs(roster.map((r) => r.ho_ten)); return roster.map((r, i) => (
                   <button key={r.id} onClick={() => setHsId(r.id)} title={r.ho_ten}
-                    className={`block w-full truncate px-3 py-1.5 text-left text-[13px] ${r.id === hsId ? 'bg-indigo-50 font-semibold text-indigo-700' : 'text-slate-700 hover:bg-slate-50'}`}>{tenNganHS(r.ho_ten)}</button>
-                ))}
+                    className={`block w-full truncate px-3 py-1.5 text-left text-[13px] ${r.id === hsId ? 'bg-indigo-50 font-semibold text-indigo-700' : 'text-slate-700 hover:bg-slate-50'}`}>{tenHT[i]}</button>
+                )) })()}
                 {roster.length === 0 && <p className="px-3 py-2 text-[12px] text-slate-500">Lớp trống.</p>}
               </div>
             </div>
@@ -545,7 +545,7 @@ function LopKhoiRollup() {
             </span>
           </div>
           <div className="flex flex-col gap-1.5">
-            {shown.map((h) => <RollupRow key={h.hoc_sinh_id} h={h} showLop={showLop} />)}
+            {(() => { const tenHT = tenHienThiDs(shown.map((h) => h.ho_ten)); return shown.map((h, i) => <RollupRow key={h.hoc_sinh_id} h={h} ten={tenHT[i]} showLop={showLop} />) })()}
           </div>
         </>
       )}
@@ -564,11 +564,11 @@ function RollupSeg({ n, total, cls, label }: { n: number; total: number; cls: st
     </div>
   )
 }
-function RollupRow({ h, showLop }: { h: HSRollup; showLop: boolean }) {
+function RollupRow({ h, ten, showLop }: { h: HSRollup; ten: string; showLop: boolean }) {
   return (
     <div className="flex items-center gap-3 rounded-lg px-2 py-1.5 hover:bg-slate-50">
       <div className="w-52 shrink-0 truncate">
-        <span className="text-[13px] font-medium text-slate-800">{tenNganHS(h.ho_ten)}</span>
+        <span className="text-[13px] font-medium text-slate-800">{ten}</span>
         {showLop && h.lop && <span className="ml-1.5 text-[11px] text-slate-500">{h.lop}</span>}
       </div>
       {/* thanh dày ~nửa màn, số % (n) HIỆN TRONG từng màu */}

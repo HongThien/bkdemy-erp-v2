@@ -16,7 +16,7 @@ import { MathText } from '../kho/ui'
 import SearchSelect from '../../components/SearchSelect'
 import DangPickerOne from '../../components/DangPickerOne'
 import { useIsMobile } from '../../hooks/useIsMobile'
-import { tenNganHS } from '../../lib/hoten'
+import { tenHienThiDs } from '../../lib/hoten'
 import { useStore } from '../../store/useStore'
 
 type DangOpt = { ma_dang: string; ten: string }
@@ -218,6 +218,8 @@ export function BuoiDetail({ id, onClose, tabs, initialTab, canManage = true, on
 function DiemDanhTab({ roster, chuaDD, canManage, onChange }: { roster: BuoiHocHS[]; chuaDD: number; canManage: boolean; onChange: () => void }) {
   const [baoDen, setBaoDen] = useState(false)
   const chuaBao = roster.filter((r) => r.diem_danh === 'co_mat' && !r.bao_den_at) // co_mat & chưa báo PH
+  // 2 HS trùng tên rút gọn (2 từ cuối) trong CÙNG roster → bung đủ họ tên cả 2 (Thùy 07-06).
+  const tenHT = tenHienThiDs(roster.map((r) => r.hoc_sinh?.ho_ten))
   async function xoa(r: BuoiHocHS) {
     if (!confirm(`Gỡ ${r.hoc_sinh?.ho_ten ?? 'HS'} khỏi buổi này?\n\nChỉ dùng khi xếp NHẦM lớp (data sai). Sẽ chặn nếu HS đã có bài chấm / điểm thật.`)) return
     try { await xoaHSKhoiBuoi(r); onChange() } catch (e: any) { alert(e.message ?? String(e)) }
@@ -232,9 +234,9 @@ function DiemDanhTab({ roster, chuaDD, canManage, onChange }: { roster: BuoiHocH
       </div>
       {baoDen && <BaoDenModal roster={roster} onClose={() => setBaoDen(false)} onDone={onChange} />}
       <div className="grid grid-cols-1 gap-1.5 md:grid-cols-2 2xl:grid-cols-3">
-        {roster.map((r) => (
+        {roster.map((r, i) => (
           <div key={r.id} className="flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2">
-            <span className="min-w-0 flex-1 truncate text-[13px] font-medium text-slate-800">{tenNganHS(r.hoc_sinh?.ho_ten)}</span>
+            <span className="min-w-0 flex-1 truncate text-[13px] font-medium text-slate-800">{tenHT[i]}</span>
             {(['co_mat', 'vang', 'vang_phep'] as DiemDanh[]).map((d) => (
               <button key={d} onClick={async () => { await diemDanh(r.id, d); onChange() }}
                 className={`rounded px-2 py-1 text-[11px] font-medium transition ${r.diem_danh === d ? DD_TONE[d] : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}>{DD_LABEL[d]}</button>
@@ -325,6 +327,7 @@ function ChamTab({ buoiId, phase, roster, buoi, dangOpts, onChange }: { buoiId: 
   const [closing, setClosing] = useState(false)
   const isMobile = useIsMobile()
   const coMat = roster.filter((r) => r.diem_danh === 'co_mat')
+  const tenHT = tenHienThiDs(coMat.map((r) => r.hoc_sinh?.ho_ten)) // 2 HS trùng tên rút gọn → bung đủ (Thùy 07-06)
   const dongCol = buoi.ingame_dong_at
   const khoi = (buoi as any).lop?.khoi ?? ''
 
@@ -417,9 +420,9 @@ function ChamTab({ buoiId, phase, roster, buoi, dangOpts, onChange }: { buoiId: 
             </tr>
           </thead>
           <tbody>
-            {coMat.map((r) => (
+            {coMat.map((r, i) => (
               <tr key={r.id}>
-                <td className="sticky left-0 z-10 whitespace-nowrap border border-slate-200 bg-white px-3 py-2 text-left align-middle font-medium text-slate-800">{tenNganHS(r.hoc_sinh?.ho_ten)}</td>
+                <td className="sticky left-0 z-10 whitespace-nowrap border border-slate-200 bg-white px-3 py-2 text-left align-middle font-medium text-slate-800">{tenHT[i]}</td>
                 {probs.map((p) => {
                   const g = gradeOf(p.id, r.hoc_sinh_id)
                   return (
@@ -462,8 +465,8 @@ function ChamMobile({ probs, coMat, gradeOf, tenDang, onSetMuc, onAddBai, onPick
   const cur = probs[idx]
   const chamRoi = (pid: string) => coMat.filter((r) => gradeOf(pid, r.hoc_sinh_id)).length
   const done = chamRoi(cur.id)
-  // tên gọn = 2 từ cuối (vd "Nguyễn Thị Hồng Anh" → "Hồng Anh")
-  const tenGon = (s?: string | null) => (s ?? '?').trim().split(/\s+/).slice(-2).join(' ')
+  // Tên gọn = 2 từ cuối; 2 HS trùng tên rút gọn trong CÙNG coMat → bung đủ cả 2 (Thùy 07-06).
+  const tenHT = tenHienThiDs(coMat.map((r) => r.hoc_sinh?.ho_ten))
 
   return (
     <div className="flex flex-col gap-2">
@@ -477,11 +480,11 @@ function ChamMobile({ probs, coMat, gradeOf, tenDang, onSetMuc, onAddBai, onPick
 
       {/* Danh sách HS — mỗi HS 1 hàng: tên (2 từ cuối) + nút mức 1→5 nhỏ, cùng dòng */}
       <div className="flex flex-col gap-1.5">
-        {coMat.map((r) => {
+        {coMat.map((r, i) => {
           const g = gradeOf(cur.id, r.hoc_sinh_id)
           return (
             <div key={r.id} className={`flex items-center gap-2 rounded-xl border bg-white px-3 py-2 ${g ? 'border-slate-200' : 'border-amber-200'}`}>
-              <span className="min-w-0 flex-1 truncate text-[14px] font-medium text-slate-800">{tenGon(r.hoc_sinh?.ho_ten)}</span>
+              <span className="min-w-0 flex-1 truncate text-[14px] font-medium text-slate-800">{tenHT[i]}</span>
               <div className="flex shrink-0 gap-1">
                 {MUC.map((m) => (
                   <button key={m.v} onClick={() => onSetMuc(cur.id, r.hoc_sinh_id, m.v)} disabled={locked}
@@ -524,6 +527,7 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
   const [closing, setClosing] = useState(false)
   const [anhPH, setAnhPH] = useState(false) // overlay ảnh kết quả ET gửi phụ huynh
   const coMat = roster.filter((r) => r.diem_danh === 'co_mat')
+  const tenHT = tenHienThiDs(coMat.map((r) => r.hoc_sinh?.ho_ten)) // 2 HS trùng tên rút gọn → bung đủ (Thùy 07-06)
   const dongCol = buoi.et_dong_at
 
   async function reloadP() { const [p, g] = await Promise.all([listProblems(buoiId, 'et'), listGrades(buoiId)]); setProbs(p); setGrades(g) }
@@ -610,9 +614,9 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
             </tr>
           </thead>
           <tbody>
-            {coMat.map((r) => (
+            {coMat.map((r, i) => (
               <tr key={r.id}>
-                <td className="sticky left-0 z-10 whitespace-nowrap border border-slate-200 bg-white px-3 py-1 text-left align-middle font-medium text-slate-800">{tenNganHS(r.hoc_sinh?.ho_ten)}</td>
+                <td className="sticky left-0 z-10 whitespace-nowrap border border-slate-200 bg-white px-3 py-1 text-left align-middle font-medium text-slate-800">{tenHT[i]}</td>
                 {probs.map((p) => {
                   const g = gradeOf(p.id, r.hoc_sinh_id)
                   const isEditing = editing?.problemId === p.id && editing?.hsId === r.hoc_sinh_id
@@ -688,6 +692,7 @@ function EtAnhGuiPH({ coMat, probs, gradeOf, buoi, onClose }: {
   if (!coMat.length) return null
   const lop = (buoi as any).lop?.ten_lop ?? ''
   const ngayVN = buoi.ngay ? buoi.ngay.split('-').reverse().join('/') : ''
+  const tenHT = tenHienThiDs(coMat.map((r) => r.hoc_sinh?.ho_ten)) // 2 HS trùng tên rút gọn → bung đủ (Thùy 07-06)
   // Card giãn theo số câu để KHÔNG cắt cột: cột tên ~96px + mỗi câu ~30px + padding.
   const COL_W = 30, NAME_W = 100
   const cardW = Math.max(440, NAME_W + probs.length * COL_W + 32)
@@ -772,9 +777,9 @@ async function copyImg(){
                 </tr>
               </thead>
               <tbody>
-                {coMat.map((r) => (
+                {coMat.map((r, i) => (
                   <tr key={r.id} style={{ borderBottom: '1px solid #f1f5f9' }}>
-                    <td style={{ padding: '6px 4px', fontWeight: 500, color: '#1e293b', whiteSpace: 'nowrap' }}>{tenNganHS(r.hoc_sinh?.ho_ten)}</td>
+                    <td style={{ padding: '6px 4px', fontWeight: 500, color: '#1e293b', whiteSpace: 'nowrap' }}>{tenHT[i]}</td>
                     {probs.map((p) => {
                       const kq = gradeOf(p.id, r.hoc_sinh_id)?.result
                       const v = kq ? ET_KQ_PH[kq] : null
@@ -825,6 +830,7 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
   const [closing, setClosing] = useState(false)
   const [alertFor, setAlertFor] = useState<string | null>(null) // hsId đang mở popup báo động
   const coMat = roster.filter((r) => r.diem_danh === 'co_mat')
+  const tenHT = tenHienThiDs(coMat.map((r) => r.hoc_sinh?.ho_ten)) // 2 HS trùng tên rút gọn → bung đủ (Thùy 07-06)
   const dong = !!buoi.btvn_dong_at
   const tenDang = (md: string | null) => (md ? dangOpts.find((d) => d.ma_dang === md)?.ten ?? md : '—')
   const dangBuoi = [...new Set(probs.map((p) => p.ma_dang).filter(Boolean))] as string[] // dạng có trong BTVN (cho báo động)
@@ -891,13 +897,13 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
             </tr>
           </thead>
           <tbody>
-            {coMat.map((r) => {
+            {coMat.map((r, i) => {
               const v = kq[r.hoc_sinh_id] ?? { trang_thai_nop: null, thai_do: null }
               return (
                 <tr key={r.id} className="align-top">
                   <td className="sticky left-0 z-10 border border-slate-200 bg-white px-3 py-1.5">
                     <div className="flex items-center gap-1.5">
-                      <span className="min-w-[104px] flex-1 whitespace-nowrap font-medium text-slate-800">{tenNganHS(r.hoc_sinh?.ho_ten)}</span>
+                      <span className="min-w-[104px] flex-1 whitespace-nowrap font-medium text-slate-800">{tenHT[i]}</span>
                       <select value={v.trang_thai_nop ?? ''} disabled={dong} onChange={(e) => setKQField(r.hoc_sinh_id, { trang_thai_nop: e.target.value || null })} title="Trạng thái nộp" className={`h-7 w-[116px] shrink-0 rounded border px-1 text-[12px] disabled:opacity-60 ${v.trang_thai_nop ? 'border-slate-300 text-slate-700' : 'border-slate-200 text-slate-400'}`}>
                         <option value="">— Nộp —</option>{NOP_OPTS.map((o) => <option key={o.v} value={o.v}>{o.l}</option>)}
                       </select>
@@ -983,6 +989,7 @@ function DanhGiaTab({ buoiId, roster, dangOpts, buoi, onChange }: { buoiId: stri
   const [loading, setLoading] = useState(true)
   const xong = !!buoi.danh_gia_xong_at
   const coMat = roster.filter((r) => r.diem_danh === 'co_mat')
+  const tenHT = tenHienThiDs(coMat.map((r) => r.hoc_sinh?.ho_ten)) // 2 HS trùng tên rút gọn → bung đủ (Thùy 07-06)
   const tenDang = (md: string) => dangOpts.find((d) => d.ma_dang === md)?.ten ?? md
   // dạng của buổi = ma_dang đã gắn ở "Chấm bài trên lớp" (ingame)
   const dangs = [...new Set(probs.map((p) => p.ma_dang).filter(Boolean))] as string[]
@@ -1023,11 +1030,11 @@ function DanhGiaTab({ buoiId, roster, dangOpts, buoi, onChange }: { buoiId: stri
             </tr>
           </thead>
           <tbody>
-            {coMat.map((r) => {
+            {coMat.map((r, i) => {
               const hsId = r.hoc_sinh_id; const hs = data[hsId]
               return (
                 <tr key={r.id} className="align-top">
-                  <td className="sticky left-0 z-10 whitespace-nowrap border border-slate-200 bg-white px-3 py-2 text-left align-middle font-medium text-slate-800">{tenNganHS(r.hoc_sinh?.ho_ten)}</td>
+                  <td className="sticky left-0 z-10 whitespace-nowrap border border-slate-200 bg-white px-3 py-2 text-left align-middle font-medium text-slate-800">{tenHT[i]}</td>
                   {dangs.map((md) => {
                     const cur = hs?.diemTheoDang[md]
                     const baiDang = probs.filter((p) => p.ma_dang === md)

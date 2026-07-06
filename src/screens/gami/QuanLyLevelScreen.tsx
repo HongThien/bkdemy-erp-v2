@@ -7,7 +7,7 @@ import {
   type KyThi, type DiemThi, type Verdict,
 } from '../../lib/thanhtich'
 import SearchSelect from '../../components/SearchSelect'
-import { tenNganHS } from '../../lib/hoten'
+import { tenHienThiDs } from '../../lib/hoten'
 
 const LOAI: Record<string, string> = { truong: 'Thi trường', mt_sat_hach: 'BK sát hạch (MT)', khao_sat_thang: 'Khảo sát tháng' }
 const HE_SO: Record<string, number> = { truong: 2, mt_sat_hach: 2, khao_sat_thang: 1 }
@@ -16,7 +16,6 @@ const VERDICTS: Verdict[] = ['dat', 'gan_dat', 'khong_dat']
 const V_LABEL: Record<Verdict, string> = { dat: 'Đạt', gan_dat: 'Gần', khong_dat: 'Không' }
 const V_CLS: Record<Verdict, string> = { dat: 'bg-emerald-500 text-white', gan_dat: 'bg-amber-500 text-white', khong_dat: 'bg-rose-500 text-white' }
 const V_DOT: Record<Verdict, string> = { dat: 'bg-emerald-100 text-emerald-700', gan_dat: 'bg-amber-100 text-amber-700', khong_dat: 'bg-rose-100 text-rose-600' }
-const hsName = (h: HSTrongLop) => tenNganHS(h.hoc_sinh?.ho_ten)
 
 export default function QuanLyLevelScreen() {
   const mua = currentMua()
@@ -55,6 +54,7 @@ export default function QuanLyLevelScreen() {
   }
 
   const selKy = kyThis.find((k) => k.id === sel) ?? null
+  const tenHT = tenHienThiDs(roster.map((hs) => hs.hoc_sinh?.ho_ten)) // trùng tên trong lớp → bung đủ (Thùy 07-06)
 
   return (
     <div className="flex h-full min-w-0 flex-col bg-[#fafafb]">
@@ -93,7 +93,7 @@ export default function QuanLyLevelScreen() {
               <table className="w-full text-[13px]">
                 <thead><tr className="text-left text-[11px] uppercase tracking-wide text-slate-400"><th className="py-1.5">Học sinh</th><th className="w-24">Điểm /10</th><th className="w-56">Verdict</th><th className="w-24">Vượt band</th></tr></thead>
                 <tbody>
-                  {roster.map((hs) => <RowEntry key={hs.hoc_sinh_id} hs={hs} init={diemOf(selKy.id, hs.hoc_sinh_id)} onSave={(v, d, vu) => save(selKy.id, hs, v, d, vu)} />)}
+                  {roster.map((hs, i) => <RowEntry key={hs.hoc_sinh_id} ten={tenHT[i]} init={diemOf(selKy.id, hs.hoc_sinh_id)} onSave={(v, d, vu) => save(selKy.id, hs, v, d, vu)} />)}
                 </tbody>
               </table>
             </div>
@@ -110,9 +110,9 @@ export default function QuanLyLevelScreen() {
                 </tr>
               </thead>
               <tbody>
-                {roster.map((hs) => (
+                {roster.map((hs, i) => (
                   <tr key={hs.hoc_sinh_id} className="border-t border-slate-100">
-                    <td className="px-3 py-1.5 font-medium text-slate-700">{hsName(hs)}</td>
+                    <td className="px-3 py-1.5 font-medium text-slate-700">{tenHT[i]}</td>
                     {kyThis.map((k) => {
                       const d = diemOf(k.id, hs.hoc_sinh_id)
                       return <td key={k.id} className="px-2 py-1.5 text-center">
@@ -133,7 +133,7 @@ export default function QuanLyLevelScreen() {
   )
 }
 
-function RowEntry({ hs, init, onSave }: { hs: HSTrongLop; init: DiemThi | null; onSave: (v: Verdict, d: number | null, vu: boolean) => void }) {
+function RowEntry({ ten, init, onSave }: { ten: string; init: DiemThi | null; onSave: (v: Verdict, d: number | null, vu: boolean) => void }) {
   const [diem, setDiem] = useState(init?.diem != null ? String(init.diem) : '')
   const [verdict, setVerdict] = useState<Verdict | null>(init?.verdict ?? null)
   const [vuot, setVuot] = useState(init?.vuot_band ?? false)
@@ -141,7 +141,7 @@ function RowEntry({ hs, init, onSave }: { hs: HSTrongLop; init: DiemThi | null; 
   const pick = (v: Verdict) => { setVerdict(v); onSave(v, d(), vuot) }
   return (
     <tr className="border-t border-slate-100">
-      <td className="py-1.5 font-medium text-slate-700">{hsName(hs)}</td>
+      <td className="py-1.5 font-medium text-slate-700">{ten}</td>
       <td><input value={diem} onChange={(e) => setDiem(e.target.value)} onBlur={() => verdict && onSave(verdict, d(), vuot)} inputMode="decimal" className="h-7 w-16 rounded border border-slate-300 px-2 text-[13px]" /></td>
       <td>
         <div className="flex gap-1">

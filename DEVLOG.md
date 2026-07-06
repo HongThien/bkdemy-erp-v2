@@ -1268,4 +1268,19 @@ tsc sạch + build pass. ⏳ chưa soi PDF bằng mắt (bản in paged.js).
 - **⭐ BUG THẬT — Prep: đóng task xong card vẫn hiện y như chưa đóng.** `LuotCard` (PrepScreen.tsx) giữ state `row` RIÊNG (tự fetch qua `getPrepRow`, tách khỏi list `luots` ở màn cha). Hàm `tick`/`cham`/`chot` đều tự `setRow(await getPrepRow(...))` sau khi ghi — NHƯNG hàm `dong()` (đóng task) chỉ gọi `onChanged()` (reload danh sách ở CHA), QUÊN tự cập nhật `row` cục bộ. Vì `<LuotCard key={phong+luot}>` giữ NGUYÊN key nên React không remount — `row` cũ (`dongAt=null`) còn nguyên trong state → card tiếp tục hiện checklist+nút Đóng như chưa từng đóng, dù DB đã ghi đúng.
 - **Fix:** thêm `setRow(await getPrepRow(...))` NGAY trong `dong()`, cùng pattern với 3 hàm kia — không chỉ trông chờ reload từ cha.
 - **Bài học:** khi 1 component tự fetch state RIÊNG (tách khỏi list cha) — MỌI hàm ghi rồi cần phản ánh lại UI đều phải tự refetch local state, không được có 1 hàm "quên" trong khi 3 hàm khác làm đúng (dễ sót khi copy-paste pattern không đủ cẩn thận).
+
+### 07-06 (tiếp 12) — Trùng tên HS trong danh sách lớp → bung đầy đủ họ tên
+
+- **Thùy chỉnh:** "Với các lớp, khi tên 2 học sinh giống nhau thì phải 2 học sinh đó phải ghi đầy đủ họ tên ra nhé (ở mọi chỗ xuất hiện danh sách lớp)" — `tenNganHS()` (2 từ cuối) khiến 2 HS khác nhau nhưng trùng 2-từ-cuối (vd cùng "Hồng Anh") hiện y hệt nhau trong MỌI danh sách lớp/buổi/bảng xếp hạng, không phân biệt được ai với ai.
+- **Fix — hàm mới `tenHienThiDs()` (`src/lib/hoten.ts`):** nhận 1 mảng họ-tên của 1 DANH SÁCH, trả về mảng SONG SONG cùng index — người KHÔNG trùng vẫn rút gọn như cũ (2 từ cuối), chỉ người TRÙNG (≥2 người ra cùng 1 tên rút gọn, trong CÙNG danh sách đang hiện) mới bung đủ họ tên, CẢ HAI/MỌI bên trùng (không chỉ người tới sau).
+- **Áp dụng vào MỌI nơi có danh sách HS** (roster lớp, bảng chấm điểm, bảng xếp hạng Elo/Level/Thành tích, preview tên trong card buổi bù/buổi đuổi, gợi ý đáp án trùng ở Duyệt chấm):
+  - `BuoiHocScreen.tsx` — 6 chỗ (Điểm danh/Chấm/ET/BTVN/Đánh giá + card mobile).
+  - `BoTroScreen.tsx`, `BoTroDuoiScreen.tsx` — list Cần bù/Cần đuổi/Không bù, preview 6 HS mỗi card buổi bù/đuổi (tính riêng theo TỪNG card, không lẫn giữa các buổi khác nhau), roster trong buổi bù/đuổi chi tiết.
+  - `KetQuaScreen.tsx` — picker HS theo lớp (cột trái) + bảng rollup mastery theo lớp/khối/hệ.
+  - `GamiDiemScreen.tsx` — bảng điểm Elo/EXP toàn lớp + bảng chi tiết Elo 1 buổi.
+  - `QuanLyLevelScreen.tsx` — bảng nhập điểm kì thi + ma trận Level (tính 1 lần theo `roster`, truyền `ten` xuống `RowEntry` qua prop thay vì tự gọi `tenNganHS` bên trong).
+  - `ThanhTichScreen.tsx` — lưới thẻ leaderboard toàn trường (đang lọc theo môn/tìm kiếm).
+  - `DuyetChamScreen.tsx` — preview "6 HS trả lời giống nhau" ở mỗi đáp án (không hẳn "lớp" nhưng cùng rủi ro nhầm người, áp luôn cho nhất quán).
+  - **CHỦ ĐỘNG BỎ QUA** (không đổi): `HsBlocks`-kiểu component xem chi tiết 1 HS ĐƠN (không có ai để so trùng ngay tại chỗ) ở `BoTroScreen.tsx`/`BoTroDuoiScreen.tsx`, và `PhieuThongBao.tsx` (điền tên vào 1 câu thông báo, không phải danh sách).
+- **✅ VERIFY:** tsc + build pass toàn repo, preview sạch console. Chưa test bằng data có 2 HS trùng tên thật (không có sẵn trong DB test) — Thùy tự kiểm khi gặp ca thật, hoặc báo nếu muốn tôi tạo data giả lập để xác nhận trực quan.
 - **✅ VERIFY:** tsc + build pass, preview sạch console (chưa login test thật — Thùy tự test lại nút Đóng Prep).

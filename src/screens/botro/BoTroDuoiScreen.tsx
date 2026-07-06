@@ -12,7 +12,7 @@ import { listNhanSu, type NhanSu } from '../../lib/nhansu'
 import { listMucHocDuoi, type MucHocDuoi } from '../../lib/hocphi'
 import { homNayVN } from '../../lib/tuan'
 import SearchSelect from '../../components/SearchSelect'
-import { tenNganHS } from '../../lib/hoten'
+import { tenNganHS, tenHienThiDs } from '../../lib/hoten'
 
 type Tab = 'canduoi' | 'daxep' | 'xong'
 const TABS: { k: Tab; ten: string }[] = [{ k: 'canduoi', ten: 'Cần đuổi' }, { k: 'daxep', ten: 'Đã xếp' }, { k: 'xong', ten: 'Hoàn thành' }]
@@ -80,11 +80,11 @@ export default function BoTroDuoiScreen() {
             canduoi.length === 0 ? <Empty t="Không có HS nào cần bổ trợ đuổi." />
               : (
                 <div className="space-y-2.5">
-                  {canduoi.map((c) => (
+                  {(() => { const tenHT = tenHienThiDs(canduoi.map((c) => c.ho_ten)); return canduoi.map((c, i) => (
                     <div key={c.caseId} className="flex flex-wrap items-center gap-3 rounded-2xl border border-slate-200 bg-white p-3.5 shadow-sm">
                       <div className="min-w-[180px] flex-1">
                         <div className="text-[12px] font-medium uppercase tracking-wide text-slate-400">Học sinh</div>
-                        <div className="text-[16px] font-semibold text-slate-800">{tenNganHS(c.ho_ten)}</div>
+                        <div className="text-[16px] font-semibold text-slate-800">{tenHT[i]}</div>
                         <div className="text-[12px] text-slate-400">{c.ma_hs}{c.nguon === 'tuyen_sinh' ? ' · từ tuyển sinh' : ''}</div>
                       </div>
                       <div className="min-w-[120px] rounded-xl bg-slate-50 px-3 py-2">
@@ -99,13 +99,16 @@ export default function BoTroDuoiScreen() {
                         <button onClick={() => onBoCo(c)} className="rounded-lg border border-slate-200 px-3 py-2 text-[13px] text-slate-500 hover:border-rose-300 hover:text-rose-600">Bỏ cờ</button>
                       </div>
                     </div>
-                  ))}
+                  )) })()}
                 </div>
               )
           ) : (
             cas.length === 0 ? <Empty t={tab === 'daxep' ? 'Chưa có buổi đuổi nào đang chờ.' : 'Chưa có buổi đuổi nào hoàn thành.'} /> : (
               <div className="grid gap-3 [grid-template-columns:repeat(auto-fill,minmax(320px,1fr))]">
-                {cas.map((ca) => (
+                {cas.map((ca) => {
+                  const hsShown = ca.hs.slice(0, 6)
+                  const tenHsShown = tenHienThiDs(hsShown.map((h) => h.ho_ten))
+                  return (
                   <div key={ca.id} role="button" onClick={() => setDetail({ ca, readOnly: tab === 'xong' })} className="cursor-pointer rounded-2xl border-l-4 border-l-orange-400 bg-white p-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
                     <div className="flex items-center gap-2">
                       <span className="text-[15px] font-semibold text-slate-800">Buổi đuổi · {ddmm(ca.ngay)}</span>
@@ -113,13 +116,14 @@ export default function BoTroDuoiScreen() {
                       {tab !== 'xong' && <button onClick={(e) => { e.stopPropagation(); setSuaBuoi(ca) }} title="Sửa buổi (ngày/giờ/phòng/GV/TA)" className="rounded border border-slate-200 px-1.5 py-0.5 text-[12px] text-slate-400 hover:border-indigo-300 hover:text-indigo-700">✎</button>}
                     </div>
                     <div className="mt-1 text-[12px] text-slate-500">{ca.gio_bat_dau?.slice(0, 5) || '—'}{ca.phong ? ` · ${ca.phong}` : ''}</div>
-                    <div className="mt-2 flex flex-wrap gap-1">{ca.hs.slice(0, 6).map((h) => <span key={h.hoc_sinh_id} className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] text-slate-600">{tenNganHS(h.ho_ten)}{h.lop ? ` · ${h.lop}` : ''}</span>)}{ca.hs.length > 6 && <span className="text-[11px] text-slate-400">+{ca.hs.length - 6}</span>}</div>
+                    <div className="mt-2 flex flex-wrap gap-1">{hsShown.map((h, i) => <span key={h.hoc_sinh_id} className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] text-slate-600">{tenHsShown[i]}{h.lop ? ` · ${h.lop}` : ''}</span>)}{ca.hs.length > 6 && <span className="text-[11px] text-slate-400">+{ca.hs.length - 6}</span>}</div>
                     <div className="mt-2 flex flex-wrap gap-1.5">
                       <span className={`rounded px-1.5 py-0.5 text-[11px] font-medium ${ca.danh_gia_xong_at ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-500'}`}>Nhận xét {ca.danh_gia_xong_at ? '✓ xong' : '…'}</span>
                       {!ca.muc_hoc_duoi_id && <span className="rounded px-1.5 py-0.5 text-[11px] font-medium bg-amber-100 text-amber-700">⚠ Chưa gán giá</span>}
                     </div>
                   </div>
-                ))}
+                  )
+                })}
               </div>
             )
           )}
@@ -341,10 +345,10 @@ function BuoiDuoiDetail({ ca, readOnly, onClose, onHoanThanhKhoa }: { ca: CaDuoi
 
       <div className="min-h-0 flex-1 overflow-auto p-5">
         <div className="mx-auto max-w-[900px] space-y-3">
-          {roster.length === 0 ? <Empty t="Buổi chưa có HS." /> : roster.map((r) => (
+          {roster.length === 0 ? <Empty t="Buổi chưa có HS." /> : (() => { const tenHT = tenHienThiDs(roster.map((r) => r.hoc_sinh?.ho_ten)); return roster.map((r, i) => (
             <div key={r.id} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="text-[15px] font-semibold text-slate-800">{tenNganHS(r.hoc_sinh?.ho_ten)}</span>
+                <span className="text-[15px] font-semibold text-slate-800">{tenHT[i]}</span>
                 {lopDuoiCua(r.hoc_sinh_id) && <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] text-slate-500">đuổi lớp {lopDuoiCua(r.hoc_sinh_id)}</span>}
                 <div className="ml-auto flex gap-1.5">
                   <button disabled={readOnly} onClick={() => setDD(r, 'co_mat')} className={`rounded-lg px-2.5 py-1 text-[12px] font-medium ${r.diem_danh === 'co_mat' ? 'bg-emerald-500 text-white' : 'border border-slate-200 text-slate-500'}`}>Có mặt</button>
@@ -360,7 +364,7 @@ function BuoiDuoiDetail({ ca, readOnly, onClose, onHoanThanhKhoa }: { ca: CaDuoi
               <textarea value={nx[r.hoc_sinh_id] ?? ''} disabled={readOnly} onChange={(e) => setNx((m) => ({ ...m, [r.hoc_sinh_id]: e.target.value }))} onBlur={() => luuNhanXet(r.hoc_sinh_id)}
                 placeholder="Nhận xét sau buổi (tiến độ bắt kịp, điểm cần lưu ý…)" className="mt-2.5 h-20 w-full rounded-lg border border-slate-200 px-3 py-2 text-[13px] outline-none focus:border-indigo-400 disabled:bg-slate-50" />
             </div>
-          ))}
+          )) })()}
         </div>
       </div>
       {sua && <SuaBuoiModal buoi={{ id: ca.id, ...meta }} onClose={() => setSua(false)} onSaved={() => { setSua(false); reload() }} />}

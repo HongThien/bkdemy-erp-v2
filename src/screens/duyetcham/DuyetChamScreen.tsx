@@ -7,7 +7,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { listTLNSai, listAcceptedAnswers, chapNhanDapAn, tuChoiReports, type TLNSaiRow } from '../../lib/testonline'
 import { smartNormalize } from '../../gami/testgrade'
 import { MathText } from '../kho/ui'
-import { tenNganHS } from '../../lib/hoten'
+import { tenHienThiDs } from '../../lib/hoten'
 
 type AnsGroup = { norm: string; raw: string; rows: TLNSaiRow[]; repsMoi: { id: string }[] }
 type CauGroup = { key: string; maCau: string | null; noiDung: string | null; dapAnKey: string; loiGiai: string | null; answers: AnsGroup[]; repsMoi: number }
@@ -120,7 +120,7 @@ export default function DuyetChamScreen() {
                         <div key={a.norm} className="flex flex-wrap items-center gap-3 px-5 py-2.5">
                           <span className="rounded-lg bg-slate-100 px-2.5 py-1 font-mono text-[14px] font-semibold text-slate-800">{a.raw}</span>
                           <span className="text-[12px] text-slate-500">
-                            {a.rows.length} HS: {a.rows.slice(0, 6).map((r) => tenNganHS(r.hocSinh.ho_ten)).join(', ')}{a.rows.length > 6 ? '…' : ''}
+                            {a.rows.length} HS: {tenHienThiDs(a.rows.slice(0, 6).map((r) => r.hocSinh.ho_ten)).join(', ')}{a.rows.length > 6 ? '…' : ''}
                             {' · '}{[...new Set(a.rows.map((r) => `${r.test.lopTen} ${LOAI_LABEL[r.test.loai] ?? r.test.loai} ${fmtNgay(r.test.ngay)}`))].slice(0, 3).join(' · ')}
                           </span>
                           {a.repsMoi.length > 0 && <span className="rounded-full bg-rose-50 px-2 py-0.5 text-[11px] font-semibold text-rose-600">🚩 {yKiens[0] ?? 'Em nghĩ mình đúng'}</span>}
