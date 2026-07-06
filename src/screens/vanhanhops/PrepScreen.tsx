@@ -106,7 +106,15 @@ function LuotCard({ l, onChanged }: { l: PrepLuot; onChanged: () => void }) {
   async function dong() {
     if (!row?.anhUrl) { setErr('Cần ảnh chụp tại thời điểm đóng.'); return }
     setBusy(true); setErr(null)
-    try { await dongPrep(l.phong, l.ngay, l.luot, l.gioCaDau, row.anhUrl); onChanged() }
+    try {
+      await dongPrep(l.phong, l.ngay, l.luot, l.gioCaDau, row.anhUrl)
+      // ⚠ Bug Thùy báo (07-06): chỉ gọi onChanged() (reload DANH SÁCH lượt ở màn cha) — key của
+      // <LuotCard> không đổi (vẫn cùng phong+ngay+luot) nên React KHÔNG remount, `row` cục bộ ở ĐÂY
+      // vẫn giữ dong_at=null cũ → card hiện y như CHƯA đóng. Phải tự refetch row NGAY tại đây (giống
+      // tick/cham/chot đã làm đúng), không chỉ trông chờ reload từ cha.
+      setRow(await getPrepRow(l.phong, l.ngay, l.luot))
+      onChanged()
+    }
     catch (e: any) { setErr(e.message ?? String(e)) } finally { setBusy(false) }
   }
   async function cham(diem: number) {

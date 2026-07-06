@@ -1260,3 +1260,12 @@ tsc sạch + build pass. ⏳ chưa soi PDF bằng mắt (bản in paged.js).
   4. **Không nút back** → top bar mobile thêm nút **"‹ Việc của tôi"** (chỉ hiện khi KHÔNG đang ở đó) cạnh ☰, về thẳng "nhà" không cần mở lại drawer.
 - **Tất cả 4 fix chỉ áp `compact` khi `isMobile` (hook có sẵn) — desktop giữ nguyên y hệt trước.**
 - **✅ VERIFY:** tsc + build pass, preview resize 375×812 sạch console (chưa login test thật — Thùy tự test).
+
+### 07-06 (tiếp 11) — Thùy hỏi có clear data test không (KHÔNG xoá gì) + fix bug Prep "đóng vẫn còn hiện"
+
+- **Hỏi có clear task trước 07-06 không:** verify DB — `vh_ops_task`/`prep_phong`/`phan_cong_ops` (bảng Ops mới) đều SẠCH, không có data cũ. Có 76 buổi cũ (17/06-05/07) chưa đóng hết phase nhưng KHÔNG liên quan Ops, KHÔNG lộ vào "Việc của tôi" (query theo tuần đang chọn). Thùy sau đó bảo **KHÔNG xoá gì** — đã tuân thủ, chưa đụng dữ liệu.
+- **Hỏi "hôm nay phải có report cho ca ngày mai" mà chưa thấy** — verify DB: KHÔNG phải bug — có 8 ca TKB Thứ 3 (ngày mai) đang hoạt động nhưng **0 ca nào được gán người trực** (`phan_cong_ops` mới chỉ có 10 dòng, TOÀN BỘ là Thứ 2). Task pure-derive từ phân công → chưa gán thì chưa có task, đúng logic. Cần vào "Phân công Ops" gán thêm người cho Thứ 3 trở đi.
+- **⭐ BUG THẬT — Prep: đóng task xong card vẫn hiện y như chưa đóng.** `LuotCard` (PrepScreen.tsx) giữ state `row` RIÊNG (tự fetch qua `getPrepRow`, tách khỏi list `luots` ở màn cha). Hàm `tick`/`cham`/`chot` đều tự `setRow(await getPrepRow(...))` sau khi ghi — NHƯNG hàm `dong()` (đóng task) chỉ gọi `onChanged()` (reload danh sách ở CHA), QUÊN tự cập nhật `row` cục bộ. Vì `<LuotCard key={phong+luot}>` giữ NGUYÊN key nên React không remount — `row` cũ (`dongAt=null`) còn nguyên trong state → card tiếp tục hiện checklist+nút Đóng như chưa từng đóng, dù DB đã ghi đúng.
+- **Fix:** thêm `setRow(await getPrepRow(...))` NGAY trong `dong()`, cùng pattern với 3 hàm kia — không chỉ trông chờ reload từ cha.
+- **Bài học:** khi 1 component tự fetch state RIÊNG (tách khỏi list cha) — MỌI hàm ghi rồi cần phản ánh lại UI đều phải tự refetch local state, không được có 1 hàm "quên" trong khi 3 hàm khác làm đúng (dễ sót khi copy-paste pattern không đủ cẩn thận).
+- **✅ VERIFY:** tsc + build pass, preview sạch console (chưa login test thật — Thùy tự test lại nút Đóng Prep).
