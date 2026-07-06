@@ -35,11 +35,14 @@ export default function BuoiHocScreen() {
   const [list, setList] = useState<BuoiAo[]>([])
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
-  const [openId, setOpenId] = useState<string | null>(null)
+  const [open, setOpen] = useState<{ id: string; lopId: string } | null>(null)
   const [filter, setFilter] = useState<BuoiStatus>('chua')
   const me = useStore((s) => s.me)
   const laAdmin = !!useStore((s) => s.quyen)?.laAdmin
   const myMons = me?.mons ?? []
+  // OPS/người ngoài lớp không có việc "chấm bài như TA" — chỉ GV/TG của CHÍNH lớp đó (hoặc admin) mới
+  // thấy đủ 4 tab; còn lại (OPS quản lý buổi qua leaf "Buổi học") chỉ thấy Điểm danh (đúng việc của họ).
+  const myLopIds = new Set((me?.phanCong ?? []).map((pc) => pc.lop_id))
 
   async function reload() {
     setLoading(true); setErr(null)
@@ -47,7 +50,10 @@ export default function BuoiHocScreen() {
   }
   useEffect(() => { reload() }, [ngay]) // eslint-disable-line
 
-  if (openId) return <BuoiDetail id={openId} onClose={() => { setOpenId(null); reload() }} />
+  if (open) {
+    const tabs = laAdmin || myLopIds.has(open.lopId) ? undefined : (['diemdanh'] as TabKey[])
+    return <BuoiDetail id={open.id} tabs={tabs} onClose={() => { setOpen(null); reload() }} />
+  }
 
   // Scope MÔN: GV/TA có môn → chỉ buổi môn mình; Ops/admin (không gán môn) → thấy TẤT (điểm danh liên-môn).
   const view = (laAdmin || myMons.length === 0) ? list : list.filter((ba) => myMons.includes(ba.lop.mon))
@@ -73,7 +79,7 @@ export default function BuoiHocScreen() {
           : shown.length === 0 ? <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">Không có buổi “{FILTERS.find((f) => f.v === filter)?.lbl}” ngày này.</div>
           : (
             <div className="grid grid-cols-1 gap-3 md:grid-cols-2 2xl:grid-cols-3">
-              {shown.map((b) => <BuoiCard key={b.lop.id} ba={b} ngay={ngay} onOpened={(id) => setOpenId(id)} onChanged={reload} />)}
+              {shown.map((b) => <BuoiCard key={b.lop.id} ba={b} ngay={ngay} onOpened={(id, lopId) => setOpen({ id, lopId })} onChanged={reload} />)}
             </div>
           )}
       </div>
@@ -81,14 +87,14 @@ export default function BuoiHocScreen() {
   )
 }
 
-function BuoiCard({ ba, ngay, onOpened, onChanged }: { ba: BuoiAo; ngay: string; onOpened: (id: string) => void; onChanged: () => void }) {
+function BuoiCard({ ba, ngay, onOpened, onChanged }: { ba: BuoiAo; ngay: string; onOpened: (id: string, lopId: string) => void; onChanged: () => void }) {
   const [busy, setBusy] = useState(false)
   const b = ba.buoi
   const st = statusOf(b)
   const gio = `${ba.slot.gio_bat_dau?.slice(0, 5)}–${ba.slot.gio_ket_thuc?.slice(0, 5)}${ba.slot.phong ? ` · ${ba.slot.phong}` : ''}`
   async function open() {
     setBusy(true)
-    try { const buoi = await moBuoi(ba.lop.id, ngay, ba.slot); onOpened(buoi.id) }
+    try { const buoi = await moBuoi(ba.lop.id, ngay, ba.slot); onOpened(buoi.id, ba.lop.id) }
     catch (e: any) { alert(e.message ?? String(e)); setBusy(false) }
   }
   async function huy() {
@@ -111,7 +117,7 @@ function BuoiCard({ ba, ngay, onOpened, onChanged }: { ba: BuoiAo; ngay: string;
 
   // Đã mở → cả CARD bấm vào để vào buổi (không cần nút riêng).
   if (st === 'mo') return (
-    <button onClick={() => onOpened(b!.id)} className="rounded-xl border border-indigo-300 bg-indigo-50/40 p-4 text-left transition hover:border-indigo-400 hover:bg-indigo-50">
+    <button onClick={() => onOpened(b!.id, ba.lop.id)} className="rounded-xl border border-indigo-300 bg-indigo-50/40 p-4 text-left transition hover:border-indigo-400 hover:bg-indigo-50">
       {head}
       <div className="mt-3 text-[12px] font-medium text-indigo-600">Vào chấm / điểm danh →</div>
     </button>

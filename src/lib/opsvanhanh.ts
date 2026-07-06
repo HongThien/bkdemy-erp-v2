@@ -23,6 +23,19 @@ export async function uploadOpsAnh(blob: Blob): Promise<string> {
   return supabase.storage.from('kho-anh').getPublicUrl(path).data.publicUrl
 }
 
+// Nhân sự TEAM OPS (biên chế `nhan_su_team`, team.ma='ops') — dùng cho picker "người trực" (KHÔNG
+// phải toàn bộ nhân sự công ty; cùng cách xác định team ops đã dùng ở vanhanh.ts `listNhanSuTeams`).
+export async function listOpsStaff(): Promise<{ id: string; ho_ten: string }[]> {
+  const { data: team } = await supabase.from('team').select('id').eq('ma', 'ops').maybeSingle()
+  if (!team) return []
+  const { data: links } = await supabase.from('nhan_su_team').select('nhan_su_id').eq('team_id', (team as any).id).limit(LIMIT)
+  const ids = (links ?? []).map((l: any) => l.nhan_su_id)
+  if (!ids.length) return []
+  const { data: ns, error } = await supabase.from('nhan_su').select('id, ho_ten').in('id', ids).eq('trang_thai', 'dang_lam').order('ho_ten').limit(LIMIT)
+  if (error) throw error
+  return (ns ?? []) as any
+}
+
 // ============================================================================
 // A — PHÂN CÔNG CA TRỰC OPS (spine, PLAN.md §A). Pure-derive, effective-dated
 // Y HỆT TKB (Thùy chốt 07-06: KHÔNG đóng băng tuần, KHÔNG bảng ngoại lệ).
@@ -119,8 +132,12 @@ export async function getMyOpsTasks(tu: string, den: string): Promise<OpsTask[]>
   const doneMap = new Map<string, any>()
   for (const r of (doneRows ?? []) as any[]) doneMap.set(`${r.tkb_id}|${r.ngay}|${r.tab}`, r)
 
+  // Report hiển thị/đến hạn vào TỐI HÔM TRƯỚC ca học (KHÁC ngày diễn ra ca) → quét thêm 1 ngày SAU `den`
+  // để không bỏ sót report của ca xảy ra NGAY SAU tuần đang xem (vd hôm nay = CN cuối tuần, ca Thứ 2
+  // tuần sau vẫn phải hiện report TỐI NAY — bug Thùy báo 07-06: report cũ bị gắn nhầm vào ngày CA HỌC).
+  const denExt = congNgay(den, 1)
   const out: OpsTask[] = []
-  for (let d = tu; d <= den; d = congNgay(d, 1)) {
+  for (let d = tu; d <= denExt; d = congNgay(d, 1)) {
     const thu = thuOf(d)
     for (const pc of (pcAll ?? []) as any[]) {
       if (!(pc.hieu_luc_tu <= d && (!pc.hieu_luc_den || pc.hieu_luc_den >= d))) continue
@@ -128,11 +145,18 @@ export async function getMyOpsTasks(tu: string, den: string): Promise<OpsTask[]>
       if (s.thu !== thu) continue
       if (!(s.hieu_luc_tu <= d && (!s.hieu_luc_den || s.hieu_luc_den >= d))) continue
       if (s.lop?.ngay_khai_giang && s.lop.ngay_khai_giang > d) continue
-      const base = { tkbId: s.id, ngay: d, lopTen: s.lop?.ten_lop ?? '?', thu, gioBatDau: s.gio_bat_dau, gioKetThuc: s.gio_ket_thuc, phong: s.phong }
-      const rp = doneMap.get(`${s.id}|${d}|report`)
-      out.push({ ...base, tab: 'report', done: !!rp?.dong_at, doneAt: rp?.dong_at ?? null, anhUrl: rp?.anh_url ?? null, deadline: vnInstantLocal(congNgay(d, -1), REPORT_GIO_CO_DINH) })
-      const tn = doneMap.get(`${s.id}|${d}|tan`)
-      out.push({ ...base, tab: 'tan', done: !!tn?.dong_at, doneAt: tn?.dong_at ?? null, anhUrl: tn?.anh_url ?? null, deadline: vnInstantLocal(d, hhmm(s.gio_ket_thuc)) + TAN_BIEN_PHUT * 60000 })
+      const base = { tkbId: s.id, lopTen: s.lop?.ten_lop ?? '?', thu, gioBatDau: s.gio_bat_dau, gioKetThuc: s.gio_ket_thuc, phong: s.phong }
+      // Report: ngay = hôm trước ca học — chỉ đẩy nếu rơi trong [tu,den] (tránh trùng qua tuần trước).
+      const ngayReport = congNgay(d, -1)
+      if (ngayReport >= tu && ngayReport <= den) {
+        const rp = doneMap.get(`${s.id}|${ngayReport}|report`)
+        out.push({ ...base, ngay: ngayReport, tab: 'report', done: !!rp?.dong_at, doneAt: rp?.dong_at ?? null, anhUrl: rp?.anh_url ?? null, deadline: vnInstantLocal(ngayReport, REPORT_GIO_CO_DINH) })
+      }
+      // Tan: ngay = chính ngày học — chỉ đẩy khi d trong tuần đang xem (bỏ ngày mở rộng denExt).
+      if (d <= den) {
+        const tn = doneMap.get(`${s.id}|${d}|tan`)
+        out.push({ ...base, ngay: d, tab: 'tan', done: !!tn?.dong_at, doneAt: tn?.dong_at ?? null, anhUrl: tn?.anh_url ?? null, deadline: vnInstantLocal(d, hhmm(s.gio_ket_thuc)) + TAN_BIEN_PHUT * 60000 })
+      }
     }
   }
   return out.sort((a, b) => a.ngay.localeCompare(b.ngay) || a.gioBatDau.localeCompare(b.gioBatDau))
@@ -284,4 +308,23 @@ export async function chamPrepGV(phong: string, ngay: string, luot: PrepLuotKey,
 export async function chotPrepLeader(phong: string, ngay: string, luot: PrepLuotKey): Promise<void> {
   const { error } = await supabase.from('prep_phong').update({ leader_chot_at: new Date().toISOString() }).eq('phong', phong).eq('ngay', ngay).eq('luot', luot)
   if (error) throw error
+}
+
+// Lượt Prep CỦA TÔI trong khoảng ngày (lọc theo người trực ca đầu) + trạng thái đã đóng chưa —
+// dùng cho "Việc của tôi" (bulk, KHÔNG N+1 gọi getPrepRow từng lượt).
+export type MyPrepTask = { phong: string; ngay: string; luot: PrepLuotKey; gioCaDau: string; done: boolean; dongAt: string | null; deadline: number }
+export async function getMyPrepTasks(tu: string, den: string): Promise<MyPrepTask[]> {
+  const prof = await getMyProfile()
+  if (!prof) return []
+  const all = await luotPrepCuaKhoang(tu, den)
+  const mine = all.filter((l) => l.nhanSuId === prof.nhanSu.id)
+  if (!mine.length) return []
+  const phongs = [...new Set(mine.map((m) => m.phong))]
+  const { data } = await supabase.from('prep_phong').select('phong, ngay, luot, dong_at').in('phong', phongs).gte('ngay', tu).lte('ngay', den).limit(LIMIT)
+  const doneMap = new Map<string, string | null>()
+  for (const r of (data ?? []) as any[]) doneMap.set(`${r.phong}|${r.ngay}|${r.luot}`, r.dong_at)
+  return mine.map((l): MyPrepTask => {
+    const dongAt = doneMap.get(`${l.phong}|${l.ngay}|${l.luot}`) ?? null
+    return { phong: l.phong, ngay: l.ngay, luot: l.luot, gioCaDau: l.gioCaDau, done: !!dongAt, dongAt, deadline: prepCuaThoiGian(l.ngay, l.luot, l.gioCaDau).dongLucMuon }
+  })
 }

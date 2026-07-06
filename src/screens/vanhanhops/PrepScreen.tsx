@@ -15,6 +15,8 @@ export default function PrepScreen() {
   const [tuan, setTuan] = useState(tuanCuaNgay(homNayVN()))
   const [luots, setLuots] = useState<PrepLuot[]>([])
   const [loading, setLoading] = useState(true)
+  // Ngày TƯƠNG LAI người dùng chủ động bấm mở xem trước — hôm nay + ngày đã qua (còn nợ) LUÔN mở sẵn.
+  const [xemThem, setXemThem] = useState<Set<string>>(new Set())
 
   async function reload() {
     setLoading(true)
@@ -25,6 +27,8 @@ export default function PrepScreen() {
   const dayMap = new Map<string, PrepLuot[]>()
   for (const l of luots) { const a = dayMap.get(l.ngay) ?? []; a.push(l); dayMap.set(l.ngay, a) }
   const dayGroups = [...dayMap.entries()].sort((a, b) => a[0].localeCompare(b[0]))
+  const homNay = homNayVN()
+  const toggleXem = (ngay: string) => setXemThem((s) => { const n = new Set(s); n.has(ngay) ? n.delete(ngay) : n.add(ngay); return n })
 
   const isMobile = useIsMobile()
   return (
@@ -43,16 +47,27 @@ export default function PrepScreen() {
         <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">Không có lượt prep nào tuần này.</div>
       ) : (
         <div className="flex flex-col gap-4">
-          {dayGroups.map(([ngay, list]) => (
-            <div key={ngay} className="rounded-2xl bg-white p-3 shadow-sm">
-              <div className="mb-2 border-l-4 border-indigo-400 pl-2 text-[13px] font-semibold text-slate-600">{thuCuaNgay(ngay)} · {ddmmVN(ngay)}</div>
-              <div className="grid gap-2 sm:grid-cols-2">
-                {list.sort((a, b) => a.phong.localeCompare(b.phong) || a.gioCaDau.localeCompare(b.gioCaDau)).map((l) => (
-                  <LuotCard key={l.phong + l.luot} l={l} onChanged={reload} />
-                ))}
+          {dayGroups.map(([ngay, list]) => {
+            // Chỉ hôm nay + ngày ĐÃ QUA (còn nợ) mở sẵn — ngày tương lai gấp lại, bấm mới xem (đỡ rối mắt).
+            const isFuture = ngay > homNay
+            const expanded = !isFuture || xemThem.has(ngay)
+            return (
+              <div key={ngay} className="rounded-2xl bg-white p-3 shadow-sm">
+                <button onClick={() => isFuture && toggleXem(ngay)} className={`mb-2 flex w-full items-center gap-2 border-l-4 border-indigo-400 pl-2 text-left text-[13px] font-semibold text-slate-600 ${isFuture ? 'cursor-pointer' : ''}`}>
+                  <span>{thuCuaNgay(ngay)} · {ddmmVN(ngay)}</span>
+                  <span className="font-normal text-slate-400">· {list.length} lượt</span>
+                  {isFuture && <span className="ml-auto text-[11px] font-normal text-indigo-500">{expanded ? '▾ Ẩn bớt' : '▸ Xem'}</span>}
+                </button>
+                {expanded && (
+                  <div className="grid gap-2 sm:grid-cols-2">
+                    {list.sort((a, b) => a.phong.localeCompare(b.phong) || a.gioCaDau.localeCompare(b.gioCaDau)).map((l) => (
+                      <LuotCard key={l.phong + l.luot} l={l} onChanged={reload} />
+                    ))}
+                  </div>
+                )}
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       )}
     </div>

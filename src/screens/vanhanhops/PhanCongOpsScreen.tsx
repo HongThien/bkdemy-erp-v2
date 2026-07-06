@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { listTkbVoiNguoiTruc, ganNguoiTruc, goNguoiTruc, type TkbOpsRow } from '../../lib/opsvanhanh'
-import { listNhanSu, todayVN, type NhanSu } from '../../lib/nhansu'
+import { listTkbVoiNguoiTruc, ganNguoiTruc, goNguoiTruc, listOpsStaff, type TkbOpsRow } from '../../lib/opsvanhanh'
+import { todayVN } from '../../lib/nhansu'
 import SearchSelect from '../../components/SearchSelect'
 
 // Phân công CA TRỰC OPS — KHÁC hẳn "Phân công" (lớp × vai GV/TA): đơn vị ở đây = 1 SLOT TKB (ca ×
@@ -12,18 +12,20 @@ const hhmm = (t: string) => t.slice(0, 5)
 
 export default function PhanCongOpsScreen() {
   const [rows, setRows] = useState<TkbOpsRow[]>([])
-  const [ds, setDs] = useState<NhanSu[]>([])
+  const [ds, setDs] = useState<{ id: string; ho_ten: string }[]>([])
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState<string | null>(null)
 
   async function reload() {
     setLoading(true)
     try {
-      const [r, n] = await Promise.all([listTkbVoiNguoiTruc(), listNhanSu()])
-      setRows(r); setDs(n.filter((x) => x.trang_thai === 'dang_lam'))
+      const [r, n] = await Promise.all([listTkbVoiNguoiTruc(), listOpsStaff()])
+      setRows(r); setDs(n)
     } finally { setLoading(false) }
   }
   useEffect(() => { reload() }, [])
+  // Luôn chừa chỗ cho người ĐANG được gán dù họ đã rời team Ops (tránh SearchSelect hiện trống dù DB có gán).
+  const optsFor = (r: TkbOpsRow) => (r.nhanSuId && !ds.some((n) => n.id === r.nhanSuId) ? [...ds, { id: r.nhanSuId, ho_ten: r.nhanSuTen ?? '?' }] : ds)
 
   async function chon(tkbId: string, nhanSuId: string | null) {
     setSaving(tkbId)
@@ -64,7 +66,7 @@ export default function PhanCongOpsScreen() {
                         <div className="mt-0.5 text-[12px] text-slate-500">{hhmm(r.gioBatDau)}–{hhmm(r.gioKetThuc)}{r.phong ? ` · ${r.phong}` : ''}</div>
                         <div className="mt-1.5">
                           <SearchSelect value={r.nhanSuId} onChange={(id) => chon(r.tkbId, id)} invalid={!r.nhanSuId} placeholder="⚠ chưa gán"
-                            options={ds.map((n) => ({ id: n.id, label: n.ho_ten }))} />
+                            options={optsFor(r).map((n) => ({ id: n.id, label: n.ho_ten }))} />
                           {saving === r.tkbId && <span className="text-[11px] text-slate-400">đang lưu…</span>}
                         </div>
                       </div>

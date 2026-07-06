@@ -4,6 +4,7 @@ import { useStore, staffNavFromScope, adminNavFromQuyen } from '../store/useStor
 import { getMyScope, type MyScope } from '../lib/nhansu'
 import { useIsMobile } from '../hooks/useIsMobile'
 import { getMyTasks, buoiAoCuaKhoang, moBuoi, diemDanhTienDo, type MyTask, type BuoiAo, type TabKey } from '../lib/gami'
+import { getMyOpsTasks, getMyPrepTasks, OPS_TASK_LABEL, type OpsTask, type MyPrepTask } from '../lib/opsvanhanh'
 import { homNayVN, tuanCuaNgay, khoangTuan, nhanTuan, mucDeadline, nhanConLai, thuCuaNgay, ddmmVN, type DeadlineMuc } from '../lib/tuan'
 import { BuoiDetail } from './gami/BuoiHocScreen'
 import { BuoiBuDetail } from './botro/BoTroScreen'
@@ -163,6 +164,45 @@ function TaskCard({ t, now, done, onOpenBuoi }: { t: MyTask; now: number; done?:
     </button>
   )
 }
+// Report/Báo tan (Ops, xem opsvanhanh.ts) — card TÓM TẮT, bấm → sang màn "Report & Báo tan" (làm việc
+// thật ở đó: copy tin nhắn + chụp ảnh + đóng — không nhồi hết luồng vào đây).
+const OPS_TASK_ICON: Record<OpsTask['tab'], string> = { report: '📣', tan: '🔔' }
+function OpsExtraCard({ t, now, done, onGoLeaf }: { t: OpsTask; now: number; done?: boolean; onGoLeaf: (leaf: string) => void }) {
+  const base = done ? 'border-l-emerald-500 bg-emerald-50' : 'border-l-sky-400 bg-white'
+  return (
+    <button onClick={() => onGoLeaf('ops_report')} className={`flex flex-col rounded-2xl border-l-4 p-4 text-left shadow-sm transition hover:shadow-md hover:-translate-y-0.5 ${base}`}>
+      <div className="flex items-center gap-2.5">
+        <span className={`inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-[18px] ${done ? 'bg-emerald-100' : 'bg-sky-100'}`}>{done ? '✓' : OPS_TASK_ICON[t.tab]}</span>
+        <div className={`flex-1 text-[15px] font-semibold leading-snug ${done ? 'text-emerald-700' : 'text-slate-900'}`}>{OPS_TASK_LABEL[t.tab]}</div>
+      </div>
+      <div className="mt-2 text-[12px] text-slate-500">Lớp {t.lopTen} · {ddmm(t.ngay)} · OPS</div>
+      {done ? (
+        <div className="mt-2 text-[11px] font-medium text-emerald-600">✓ Đã xong · bấm để xem</div>
+      ) : (
+        <div className="mt-2.5"><DeadlineBadge deadline={t.deadline} now={now} /></div>
+      )}
+    </button>
+  )
+}
+// Chuẩn bị phòng (Ops, xem opsvanhanh.ts) — card TÓM TẮT, bấm → sang màn "Chuẩn bị phòng".
+const PREP_LUOT_LABEL: Record<string, string> = { ngay: 'Cả buổi tối', sang: 'Sáng', chieu: 'Chiều' }
+function PrepTaskCard({ t, now, done, onGoLeaf }: { t: MyPrepTask; now: number; done?: boolean; onGoLeaf: (leaf: string) => void }) {
+  const base = done ? 'border-l-emerald-500 bg-emerald-50' : 'border-l-amber-400 bg-white'
+  return (
+    <button onClick={() => onGoLeaf('prep')} className={`flex flex-col rounded-2xl border-l-4 p-4 text-left shadow-sm transition hover:shadow-md hover:-translate-y-0.5 ${base}`}>
+      <div className="flex items-center gap-2.5">
+        <span className={`inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-[18px] ${done ? 'bg-emerald-100' : 'bg-amber-100'}`}>{done ? '✓' : '🧹'}</span>
+        <div className={`flex-1 text-[15px] font-semibold leading-snug ${done ? 'text-emerald-700' : 'text-slate-900'}`}>Chuẩn bị phòng {t.phong}</div>
+      </div>
+      <div className="mt-2 text-[12px] text-slate-500">{PREP_LUOT_LABEL[t.luot] ?? t.luot} · {ddmm(t.ngay)} · ca đầu {t.gioCaDau.slice(0, 5)}</div>
+      {done ? (
+        <div className="mt-2 text-[11px] font-medium text-emerald-600">✓ Đã xong · bấm để xem</div>
+      ) : (
+        <div className="mt-2.5"><DeadlineBadge deadline={t.deadline} now={now} /></div>
+      )}
+    </button>
+  )
+}
 
 // VIỆC CỦA TÔI: VẬN HÀNH (cột trái, 2 cột) lọc theo TUẦN + deadline · PHÁT TRIỂN (cột phải, 1 cột) = placeholder giao việc.
 function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: (o: OpenBuoi) => void }) {
@@ -175,6 +215,11 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
   const [doneShown, setDoneShown] = useState(20)
   const [now, setNow] = useState(() => Date.now())
   const [viecPT, setViecPT] = useState<ViecFull[]>([])
+  // Report/Báo tan + Chuẩn bị phòng (Ops, xem opsvanhanh.ts) — Thùy 07-06: "các loại việc chính của
+  // ops chưa được đưa vào Việc của tôi". Nguồn = phan_cong_ops/prep_phong (KHÁC phan_cong_lop/MyTask),
+  // fetch riêng theo TỪNG NGƯỜI (không gate theo opsToanHe — assignment là per-person).
+  const [opsExtra, setOpsExtra] = useState<OpsTask[]>([])
+  const [prepTasks, setPrepTasks] = useState<MyPrepTask[]>([])
   const setStaffLeaf = useStore((s) => s.setStaffLeaf)
 
   useEffect(() => { getMyTasks().then(setTasks).catch(() => setTasks([])) }, [])
@@ -189,6 +234,11 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
       try { setTienDo(ids.length ? await diemDanhTienDo(ids) : {}) } catch { setTienDo({}) }
     }).catch(() => setOpsWeek([]))
   }, [scope?.opsToanHe, tuan]) // eslint-disable-line
+  useEffect(() => {
+    const { tu, den } = khoangTuan(tuan)
+    getMyOpsTasks(tu, den).then(setOpsExtra).catch(() => setOpsExtra([]))
+    getMyPrepTasks(tu, den).then(setPrepTasks).catch(() => setPrepTasks([]))
+  }, [tuan])
 
   if (!scope) return <div className="text-sm text-slate-400">Tài khoản chưa gắn nhân sự — chưa có phạm vi việc.</div>
 
@@ -206,17 +256,30 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
   const taskActive = weekTasks.filter((t) => !t.done)
   // Lịch sử "đã xong" — TẤT CẢ thời gian, gần→xa theo doneAt (20/lần). Độc lập filter tuần.
   const doneHistory = tasks.filter((t) => t.done && matchLoai(t.tab)).sort((a, b) => (b.doneAt ?? '').localeCompare(a.doneAt ?? ''))
-  const hasActive = opsActive.length + taskActive.length > 0
-  const canLam = opsActive.length + taskActive.length
+  // Report/Báo tan + Chuẩn bị phòng — đã fetch SẴN theo đúng tuần đang chọn (opsExtra/prepTasks),
+  // KHÔNG qua bộ lọc loại việc (LOAI_TASK chỉ áp TabKey của GV/TA, khác hệ report/tan/prep).
+  const opsExtraActive = opsExtra.filter((t) => !t.done)
+  const opsExtraDone = opsExtra.filter((t) => t.done)
+  const prepActive = prepTasks.filter((t) => !t.done)
+  const prepDone = prepTasks.filter((t) => t.done)
+  const hasActive = opsActive.length + taskActive.length + opsExtraActive.length + prepActive.length > 0
+  const canLam = opsActive.length + taskActive.length + opsExtraActive.length + prepActive.length
   const quaHan = taskActive.filter((t) => mucDeadline(t.deadline, now) === 'qua_han').length
+    + opsExtraActive.filter((t) => mucDeadline(t.deadline, now) === 'qua_han').length
+    + prepActive.filter((t) => mucDeadline(t.deadline, now) === 'qua_han').length
   const satHan = taskActive.filter((t) => mucDeadline(t.deadline, now) === 'sat').length
-  const daXongTuan = opsDone.length + weekTasks.filter((t) => t.done).length
+    + opsExtraActive.filter((t) => mucDeadline(t.deadline, now) === 'sat').length
+    + prepActive.filter((t) => mucDeadline(t.deadline, now) === 'sat').length
+  const daXongTuan = opsDone.length + weekTasks.filter((t) => t.done).length + opsExtraDone.length + prepDone.length
 
   // Gom việc ĐANG cần làm theo NGÀY → mỗi ngày 1 hàng (dễ nhìn hơn lưới tràn ngang). Sắp ngày tăng dần.
   const homNay = homNayVN()
-  const dayMap = new Map<string, { ops: typeof opsActive; tasks: typeof taskActive }>()
-  for (const ba of opsActive) { const g = dayMap.get(ba.ngay) ?? { ops: [], tasks: [] }; g.ops.push(ba); dayMap.set(ba.ngay, g) }
-  for (const t of taskActive) { const g = dayMap.get(t.ngay) ?? { ops: [], tasks: [] }; g.tasks.push(t); dayMap.set(t.ngay, g) }
+  const dayMap = new Map<string, { ops: typeof opsActive; tasks: typeof taskActive; opsExtra: typeof opsExtraActive; prep: typeof prepActive }>()
+  const bucket = (ngay: string) => dayMap.get(ngay) ?? { ops: [], tasks: [], opsExtra: [], prep: [] }
+  for (const ba of opsActive) { const g = bucket(ba.ngay); g.ops.push(ba); dayMap.set(ba.ngay, g) }
+  for (const t of taskActive) { const g = bucket(t.ngay); g.tasks.push(t); dayMap.set(t.ngay, g) }
+  for (const t of opsExtraActive) { const g = bucket(t.ngay); g.opsExtra.push(t); dayMap.set(t.ngay, g) }
+  for (const t of prepActive) { const g = bucket(t.ngay); g.prep.push(t); dayMap.set(t.ngay, g) }
   const dayGroups = [...dayMap.entries()].sort((a, b) => a[0].localeCompare(b[0]))
 
   return (
@@ -248,18 +311,30 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-[minmax(0,1fr)_280px]">
         {/* VẬN HÀNH — chiếm hết phần còn lại */}
         <div className="min-w-0">
-          <SectionHead label="Vận hành" count={hasActive ? opsActive.length + taskActive.length : undefined} color="bg-indigo-500" />
+          <SectionHead label="Vận hành" count={hasActive ? opsActive.length + taskActive.length + opsExtraActive.length + prepActive.length : undefined} color="bg-indigo-500" />
           {!hasActive ? (
             <div className="rounded-lg border border-emerald-200 bg-emerald-50/60 px-4 py-3 text-[13px] font-medium text-emerald-700">✓ Không còn việc vận hành cần làm trong {nhanTuan(tuan).toLowerCase()}.</div>
           ) : (
             <div className="flex flex-col gap-4">
               {dayGroups.map(([ngay, g]) => (
-                <DayRow key={ngay} ngay={ngay} today={ngay === homNay} count={g.ops.length + g.tasks.length}>
+                <DayRow key={ngay} ngay={ngay} today={ngay === homNay} count={g.ops.length + g.tasks.length + g.opsExtra.length + g.prep.length}>
                   {g.ops.map((ba) => <OpsBuoiCard key={ba.lop.id + ba.ngay} ba={ba} ngay={ba.ngay} td={ba.buoi ? tienDo[ba.buoi.id] : undefined} onOpen={onOpenBuoi} />)}
                   {g.tasks.map((t) => <TaskCard key={t.buoiId + t.tab} t={t} now={now} onOpenBuoi={onOpenBuoi} />)}
+                  {g.opsExtra.map((t) => <OpsExtraCard key={t.tkbId + t.tab} t={t} now={now} onGoLeaf={setStaffLeaf} />)}
+                  {g.prep.map((t) => <PrepTaskCard key={t.phong + t.luot + t.ngay} t={t} now={now} onGoLeaf={setStaffLeaf} />)}
                 </DayRow>
               ))}
             </div>
+          )}
+
+          {(opsExtraDone.length > 0 || prepDone.length > 0) && (
+            <details className="mt-3">
+              <summary className="cursor-pointer text-[12px] font-medium text-emerald-700">✓ Đã xong report/tan/prep tuần này ({opsExtraDone.length + prepDone.length})</summary>
+              <div className="mt-2 grid gap-2.5 [grid-template-columns:repeat(auto-fill,minmax(230px,1fr))]">
+                {opsExtraDone.map((t) => <OpsExtraCard key={t.tkbId + t.tab} t={t} now={now} done onGoLeaf={setStaffLeaf} />)}
+                {prepDone.map((t) => <PrepTaskCard key={t.phong + t.luot + t.ngay} t={t} now={now} done onGoLeaf={setStaffLeaf} />)}
+              </div>
+            </details>
           )}
 
           {opsDone.length > 0 && (
