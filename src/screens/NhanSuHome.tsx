@@ -82,8 +82,15 @@ const GVTA_CHIPS: ChipDef[] = [
 const chipCls = (on: boolean) => `rounded-full border px-3.5 py-1.5 text-[14px] font-medium transition ${on ? 'border-indigo-300 bg-indigo-50 text-indigo-700' : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'}`
 
 // Dải số liệu — card TRẮNG nổi trên nền xám + số màu theo loại (gu Apple: trắng + bóng mềm, không viền nặng).
+// `compact` (mobile, Thùy 07-06: "4 cái thẻ đếm quá to") = 1 hàng label+số gọn, KHÔNG xếp dọc to như desktop.
 const METRIC_TONE: Record<string, string> = { slate: 'text-slate-700', red: 'text-red-600', orange: 'text-orange-600', emerald: 'text-emerald-600' }
-function Metric({ label, value, tone }: { label: string; value: number; tone: keyof typeof METRIC_TONE }) {
+function Metric({ label, value, tone, compact }: { label: string; value: number; tone: keyof typeof METRIC_TONE; compact?: boolean }) {
+  if (compact) return (
+    <div className="flex items-center justify-between rounded-lg border border-slate-200/70 bg-white px-2.5 py-1.5 shadow-sm">
+      <span className="text-[11px] font-medium text-slate-500">{label}</span>
+      <span className={`text-[15px] font-semibold ${METRIC_TONE[tone]}`}>{value}</span>
+    </div>
+  )
   return (
     <div className="rounded-2xl border border-slate-200/70 bg-white px-4 py-3 shadow-sm">
       <div className="text-[13px] font-medium text-slate-500">{label}</div>
@@ -102,7 +109,7 @@ function SectionHead({ label, count, color }: { label: string; count?: number; c
   )
 }
 
-function OpsBuoiCard({ ba, ngay, td, done, onOpen }: { ba: BuoiAo; ngay: string; td?: TienDo; done?: boolean; onOpen: (o: OpenBuoi) => void }) {
+function OpsBuoiCard({ ba, ngay, td, done, onOpen, compact }: { ba: BuoiAo; ngay: string; td?: TienDo; done?: boolean; onOpen: (o: OpenBuoi) => void; compact?: boolean }) {
   const [busy, setBusy] = useState(false)
   const b = ba.buoi
   async function go() {
@@ -114,6 +121,14 @@ function OpsBuoiCard({ ba, ngay, td, done, onOpen }: { ba: BuoiAo; ngay: string;
   }
   const pct = td && td.tong ? Math.round((td.daDanh / td.tong) * 100) : 0
   const base = done ? 'border-l-emerald-500 bg-emerald-50' : `${TASK_STYLE.diemdanh.accent} bg-white`
+  // Mobile (Thùy 07-06: "card chỉ cần 2 thông tin chính — loại việc + lớp"): gọn 1 hàng, bỏ tiến độ/mở-buổi.
+  if (compact) return (
+    <button onClick={go} disabled={busy} className={`flex items-center gap-2 rounded-lg border-l-4 px-2.5 py-2 text-left shadow-sm transition disabled:opacity-50 ${base}`}>
+      <span className="shrink-0 text-[15px]">{done ? '✓' : '👥'}</span>
+      <span className={`min-w-0 flex-1 truncate text-[13px] font-medium ${done ? 'text-emerald-700' : 'text-slate-800'}`}>Điểm danh · {ba.lop.ten_lop}</span>
+      {td && <span className="shrink-0 text-[11px] font-medium text-slate-400">{td.daDanh}/{td.tong}</span>}
+    </button>
+  )
   return (
     <button onClick={go} disabled={busy} className={`flex flex-col rounded-2xl border-l-4 p-4 text-left shadow-sm transition hover:shadow-md hover:-translate-y-0.5 disabled:opacity-50 ${base}`}>
       {/* dòng 1: icon + tên (full) */}
@@ -137,7 +152,7 @@ function OpsBuoiCard({ ba, ngay, td, done, onOpen }: { ba: BuoiAo; ngay: string;
 }
 
 // 1 HÀNG = việc của 1 NGÀY (Thùy: dễ nhìn hơn lưới ô vuông tràn ngang). Đầu hàng = thanh màu + kẻ dọc (design §259).
-function DayRow({ ngay, today, count, children }: { ngay: string; today: boolean; count: number; children: React.ReactNode }) {
+function DayRow({ ngay, today, count, compact, children }: { ngay: string; today: boolean; count: number; compact?: boolean; children: React.ReactNode }) {
   return (
     <div>
       <div className={`mb-2 flex items-center gap-2 border-l-4 pl-2.5 ${today ? 'border-indigo-500' : 'border-slate-300'}`}>
@@ -146,15 +161,24 @@ function DayRow({ ngay, today, count, children }: { ngay: string; today: boolean
         {today && <span className="rounded-full bg-indigo-50 px-2 py-0.5 text-[11px] font-medium text-indigo-600">Hôm nay</span>}
         <span className="ml-auto text-[12px] font-medium text-slate-400">{count} việc</span>
       </div>
-      <div className="grid gap-2.5 [grid-template-columns:repeat(auto-fill,minmax(230px,1fr))]">{children}</div>
+      <div className={compact ? 'flex flex-col gap-1.5' : 'grid gap-2.5 [grid-template-columns:repeat(auto-fill,minmax(230px,1fr))]'}>{children}</div>
     </div>
   )
 }
-function TaskCard({ t, now, done, onOpenBuoi }: { t: MyTask; now: number; done?: boolean; onOpenBuoi: (o: OpenBuoi) => void }) {
+function TaskCard({ t, now, done, onOpenBuoi, compact }: { t: MyTask; now: number; done?: boolean; onOpenBuoi: (o: OpenBuoi) => void; compact?: boolean }) {
   const st = TASK_STYLE[t.tab]
   const base = done ? 'border-l-emerald-500 bg-emerald-50' : `${st.accent} bg-white`
+  const onClick = () => onOpenBuoi({ id: t.buoiId, tabs: tabsCuaVai(t.vai), initialTab: t.tab, canManage: false, loai: t.loai })
+  // Mobile (Thùy 07-06): gọn 1 hàng — chỉ 2 thông tin chính (loại việc + lớp) + deadline nhỏ cuối hàng.
+  if (compact) return (
+    <button onClick={onClick} className={`flex items-center gap-2 rounded-lg border-l-4 px-2.5 py-2 text-left shadow-sm transition ${base}`}>
+      <span className="shrink-0 text-[15px]">{done ? '✓' : st.icon}</span>
+      <span className={`min-w-0 flex-1 truncate text-[13px] font-medium ${done ? 'text-emerald-700' : 'text-slate-800'}`}>{t.label} · {t.lop}</span>
+      {!done && t.deadline != null && <DeadlineBadge deadline={t.deadline} now={now} />}
+    </button>
+  )
   return (
-    <button onClick={() => onOpenBuoi({ id: t.buoiId, tabs: tabsCuaVai(t.vai), initialTab: t.tab, canManage: false, loai: t.loai })}
+    <button onClick={onClick}
       className={`flex flex-col rounded-2xl border-l-4 p-4 text-left shadow-sm transition hover:shadow-md hover:-translate-y-0.5 ${base}`}>
       {/* dòng 1: icon + tên task (full) */}
       <div className="flex items-center gap-2.5">
@@ -175,8 +199,15 @@ function TaskCard({ t, now, done, onOpenBuoi }: { t: MyTask; now: number; done?:
 // Report/Báo tan (Ops, xem opsvanhanh.ts) — card TÓM TẮT, bấm → sang màn "Report & Báo tan" (làm việc
 // thật ở đó: copy tin nhắn + chụp ảnh + đóng — không nhồi hết luồng vào đây).
 const OPS_TASK_ICON: Record<OpsTask['tab'], string> = { report: '📣', tan: '🔔' }
-function OpsExtraCard({ t, now, done, onGoLeaf }: { t: OpsTask; now: number; done?: boolean; onGoLeaf: (leaf: string) => void }) {
+function OpsExtraCard({ t, now, done, onGoLeaf, compact }: { t: OpsTask; now: number; done?: boolean; onGoLeaf: (leaf: string) => void; compact?: boolean }) {
   const base = done ? 'border-l-emerald-500 bg-emerald-50' : 'border-l-sky-400 bg-white'
+  if (compact) return (
+    <button onClick={() => onGoLeaf('ops_report')} className={`flex items-center gap-2 rounded-lg border-l-4 px-2.5 py-2 text-left shadow-sm transition ${base}`}>
+      <span className="shrink-0 text-[15px]">{done ? '✓' : OPS_TASK_ICON[t.tab]}</span>
+      <span className={`min-w-0 flex-1 truncate text-[13px] font-medium ${done ? 'text-emerald-700' : 'text-slate-800'}`}>{OPS_TASK_LABEL[t.tab]} · {t.lopTen}</span>
+      {!done && <DeadlineBadge deadline={t.deadline} now={now} />}
+    </button>
+  )
   return (
     <button onClick={() => onGoLeaf('ops_report')} className={`flex flex-col rounded-2xl border-l-4 p-4 text-left shadow-sm transition hover:shadow-md hover:-translate-y-0.5 ${base}`}>
       <div className="flex items-center gap-2.5">
@@ -194,8 +225,15 @@ function OpsExtraCard({ t, now, done, onGoLeaf }: { t: OpsTask; now: number; don
 }
 // Chuẩn bị phòng (Ops, xem opsvanhanh.ts) — card TÓM TẮT, bấm → sang màn "Chuẩn bị phòng".
 const PREP_LUOT_LABEL: Record<string, string> = { ngay: 'Cả buổi tối', sang: 'Sáng', chieu: 'Chiều' }
-function PrepTaskCard({ t, now, done, onGoLeaf }: { t: MyPrepTask; now: number; done?: boolean; onGoLeaf: (leaf: string) => void }) {
+function PrepTaskCard({ t, now, done, onGoLeaf, compact }: { t: MyPrepTask; now: number; done?: boolean; onGoLeaf: (leaf: string) => void; compact?: boolean }) {
   const base = done ? 'border-l-emerald-500 bg-emerald-50' : 'border-l-amber-400 bg-white'
+  if (compact) return (
+    <button onClick={() => onGoLeaf('prep')} className={`flex items-center gap-2 rounded-lg border-l-4 px-2.5 py-2 text-left shadow-sm transition ${base}`}>
+      <span className="shrink-0 text-[15px]">{done ? '✓' : '🧹'}</span>
+      <span className={`min-w-0 flex-1 truncate text-[13px] font-medium ${done ? 'text-emerald-700' : 'text-slate-800'}`}>Chuẩn bị {t.phong} · {PREP_LUOT_LABEL[t.luot] ?? t.luot}</span>
+      {!done && <DeadlineBadge deadline={t.deadline} now={now} />}
+    </button>
+  )
   return (
     <button onClick={() => onGoLeaf('prep')} className={`flex flex-col rounded-2xl border-l-4 p-4 text-left shadow-sm transition hover:shadow-md hover:-translate-y-0.5 ${base}`}>
       <div className="flex items-center gap-2.5">
@@ -229,6 +267,10 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
   const [opsExtra, setOpsExtra] = useState<OpsTask[]>([])
   const [prepTasks, setPrepTasks] = useState<MyPrepTask[]>([])
   const setStaffLeaf = useStore((s) => s.setStaffLeaf)
+  const isMobile = useIsMobile()
+  // Ngày TƯƠNG LAI chủ động bấm mở xem trước — hôm nay + ngày ĐÃ QUA (còn nợ) LUÔN mở sẵn (Thùy 07-06:
+  // "mục tiêu 1 màn nhìn thấy gần hết việc cần làm" — cùng pattern đã áp OpsReportScreen/PrepScreen).
+  const [xemThem, setXemThem] = useState<Set<string>>(new Set())
 
   useEffect(() => { getMyTasks().then(setTasks).catch(() => setTasks([])) }, [])
   useEffect(() => { if (scope?.nhanSu.id) listViecCuaToi(scope.nhanSu.id).then(setViecPT).catch(() => setViecPT([])) }, [scope?.nhanSu.id])
@@ -296,6 +338,7 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
   for (const t of opsExtraActive) { const g = bucket(t.ngay); g.opsExtra.push(t); dayMap.set(t.ngay, g) }
   for (const t of prepActive) { const g = bucket(t.ngay); g.prep.push(t); dayMap.set(t.ngay, g) }
   const dayGroups = [...dayMap.entries()].sort((a, b) => a[0].localeCompare(b[0]))
+  const toggleXem = (ngay: string) => setXemThem((s) => { const n = new Set(s); n.has(ngay) ? n.delete(ngay) : n.add(ngay); return n })
 
   return (
     <div className="mx-auto max-w-[1600px]">
@@ -315,12 +358,12 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
         {loai.size > 0 && <button onClick={() => setLoai(new Set())} className="px-2 py-1 text-[12px] text-slate-400 hover:text-slate-600">× Xoá lọc</button>}
       </div>
 
-      {/* Dải số liệu tổng quan */}
-      <div className="mb-4 grid grid-cols-2 gap-2.5 sm:grid-cols-4">
-        <Metric label="Cần làm" value={canLam} tone="slate" />
-        <Metric label="Quá hạn" value={quaHan} tone="red" />
-        <Metric label="Sát hạn" value={satHan} tone="orange" />
-        <Metric label="Đã xong tuần" value={daXongTuan} tone="emerald" />
+      {/* Dải số liệu tổng quan — compact (mobile, Thùy 07-06: "4 cái thẻ đếm quá to") */}
+      <div className={isMobile ? 'mb-4 grid grid-cols-4 gap-1.5' : 'mb-4 grid grid-cols-2 gap-2.5 sm:grid-cols-4'}>
+        <Metric label="Cần làm" value={canLam} tone="slate" compact={isMobile} />
+        <Metric label="Quá hạn" value={quaHan} tone="red" compact={isMobile} />
+        <Metric label="Sát hạn" value={satHan} tone="orange" compact={isMobile} />
+        <Metric label="Đã xong tuần" value={daXongTuan} tone="emerald" compact={isMobile} />
       </div>
 
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-[minmax(0,1fr)_280px]">
@@ -331,23 +374,43 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
             <div className="rounded-lg border border-emerald-200 bg-emerald-50/60 px-4 py-3 text-[13px] font-medium text-emerald-700">✓ Không còn việc vận hành cần làm trong {nhanTuan(tuan).toLowerCase()}.</div>
           ) : (
             <div className="flex flex-col gap-4">
-              {dayGroups.map(([ngay, g]) => (
-                <DayRow key={ngay} ngay={ngay} today={ngay === homNay} count={g.ops.length + g.tasks.length + g.opsExtra.length + g.prep.length}>
-                  {g.ops.map((ba) => <OpsBuoiCard key={ba.lop.id + ba.ngay} ba={ba} ngay={ba.ngay} td={ba.buoi ? tienDo[ba.buoi.id] : undefined} onOpen={onOpenBuoi} />)}
-                  {g.tasks.map((t) => <TaskCard key={t.buoiId + t.tab} t={t} now={now} onOpenBuoi={onOpenBuoi} />)}
-                  {g.opsExtra.map((t) => <OpsExtraCard key={t.tkbId + t.tab} t={t} now={now} onGoLeaf={setStaffLeaf} />)}
-                  {g.prep.map((t) => <PrepTaskCard key={t.phong + t.luot + t.ngay} t={t} now={now} onGoLeaf={setStaffLeaf} />)}
-                </DayRow>
-              ))}
+              {dayGroups.map(([ngay, g]) => {
+                // Chỉ hôm nay + ngày ĐÃ QUA (còn nợ) mở sẵn — ngày tương lai gấp lại, bấm mới xem
+                // (Thùy 07-06: "chưa ẩn việc của các ngày sau" + mục tiêu "1 màn nhìn gần hết việc cần làm").
+                const isFuture = ngay > homNay
+                const expanded = !isFuture || xemThem.has(ngay)
+                const count = g.ops.length + g.tasks.length + g.opsExtra.length + g.prep.length
+                if (!expanded) return (
+                  <button key={ngay} onClick={() => toggleXem(ngay)} className="flex items-center gap-2 rounded-lg border-l-4 border-slate-300 bg-white px-2.5 py-2 text-left shadow-sm">
+                    <span className="text-[13px] font-semibold text-slate-700">{thuCuaNgay(ngay)}</span>
+                    <span className="text-[12px] text-slate-500">{ddmmVN(ngay)}</span>
+                    <span className="text-[12px] text-slate-400">· {count} việc</span>
+                    <span className="ml-auto text-[11px] font-medium text-indigo-500">▸ Xem</span>
+                  </button>
+                )
+                return (
+                  <div key={ngay}>
+                    {isFuture && (
+                      <button onClick={() => toggleXem(ngay)} className="mb-1 text-[11px] font-medium text-indigo-500">▾ Ẩn bớt {thuCuaNgay(ngay)} {ddmmVN(ngay)}</button>
+                    )}
+                    <DayRow ngay={ngay} today={ngay === homNay} count={count} compact={isMobile}>
+                      {g.ops.map((ba) => <OpsBuoiCard key={ba.lop.id + ba.ngay} ba={ba} ngay={ba.ngay} td={ba.buoi ? tienDo[ba.buoi.id] : undefined} onOpen={onOpenBuoi} compact={isMobile} />)}
+                      {g.tasks.map((t) => <TaskCard key={t.buoiId + t.tab} t={t} now={now} onOpenBuoi={onOpenBuoi} compact={isMobile} />)}
+                      {g.opsExtra.map((t) => <OpsExtraCard key={t.tkbId + t.tab} t={t} now={now} onGoLeaf={setStaffLeaf} compact={isMobile} />)}
+                      {g.prep.map((t) => <PrepTaskCard key={t.phong + t.luot + t.ngay} t={t} now={now} onGoLeaf={setStaffLeaf} compact={isMobile} />)}
+                    </DayRow>
+                  </div>
+                )
+              })}
             </div>
           )}
 
           {(opsExtraDone.length > 0 || prepDone.length > 0) && (
             <details className="mt-3">
               <summary className="cursor-pointer text-[12px] font-medium text-emerald-700">✓ Đã xong report/tan/prep tuần này ({opsExtraDone.length + prepDone.length})</summary>
-              <div className="mt-2 grid gap-2.5 [grid-template-columns:repeat(auto-fill,minmax(230px,1fr))]">
-                {opsExtraDone.map((t) => <OpsExtraCard key={t.tkbId + t.tab} t={t} now={now} done onGoLeaf={setStaffLeaf} />)}
-                {prepDone.map((t) => <PrepTaskCard key={t.phong + t.luot + t.ngay} t={t} now={now} done onGoLeaf={setStaffLeaf} />)}
+              <div className={isMobile ? 'mt-2 flex flex-col gap-1.5' : 'mt-2 grid gap-2.5 [grid-template-columns:repeat(auto-fill,minmax(230px,1fr))]'}>
+                {opsExtraDone.map((t) => <OpsExtraCard key={t.tkbId + t.tab} t={t} now={now} done onGoLeaf={setStaffLeaf} compact={isMobile} />)}
+                {prepDone.map((t) => <PrepTaskCard key={t.phong + t.luot + t.ngay} t={t} now={now} done onGoLeaf={setStaffLeaf} compact={isMobile} />)}
               </div>
             </details>
           )}
@@ -355,8 +418,8 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
           {opsDone.length > 0 && (
             <details className="mt-3">
               <summary className="cursor-pointer text-[12px] font-medium text-emerald-700">✓ Đã điểm danh xong tuần này ({opsDone.length})</summary>
-              <div className="mt-2 grid gap-2.5 [grid-template-columns:repeat(auto-fill,minmax(230px,1fr))]">
-                {opsDone.map((ba) => <OpsBuoiCard key={ba.lop.id + ba.ngay} ba={ba} ngay={ba.ngay} td={ba.buoi ? tienDo[ba.buoi.id] : undefined} done onOpen={onOpenBuoi} />)}
+              <div className={isMobile ? 'mt-2 flex flex-col gap-1.5' : 'mt-2 grid gap-2.5 [grid-template-columns:repeat(auto-fill,minmax(230px,1fr))]'}>
+                {opsDone.map((ba) => <OpsBuoiCard key={ba.lop.id + ba.ngay} ba={ba} ngay={ba.ngay} td={ba.buoi ? tienDo[ba.buoi.id] : undefined} done onOpen={onOpenBuoi} compact={isMobile} />)}
               </div>
             </details>
           )}
@@ -367,8 +430,8 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
               <p className="mt-2 text-[12px] text-slate-400">Chưa có việc nào hoàn thành.</p>
             ) : (
               <>
-                <div className="mt-2 grid gap-2.5 [grid-template-columns:repeat(auto-fill,minmax(230px,1fr))]">
-                  {doneHistory.slice(0, doneShown).map((t) => <TaskCard key={t.buoiId + t.tab} t={t} now={now} done onOpenBuoi={onOpenBuoi} />)}
+                <div className={isMobile ? 'mt-2 flex flex-col gap-1.5' : 'mt-2 grid gap-2.5 [grid-template-columns:repeat(auto-fill,minmax(230px,1fr))]'}>
+                  {doneHistory.slice(0, doneShown).map((t) => <TaskCard key={t.buoiId + t.tab} t={t} now={now} done onOpenBuoi={onOpenBuoi} compact={isMobile} />)}
                 </div>
                 {doneHistory.length > doneShown && (
                   <button onClick={() => setDoneShown((n) => n + 20)} className="mt-2 rounded-md border border-slate-200 px-3 py-1.5 text-[12px] font-medium text-slate-600 hover:border-indigo-300">Mở thêm ({doneHistory.length - doneShown})</button>
@@ -439,8 +502,13 @@ export default function NhanSuHome({ user }: { user: User }) {
     <div className={isMobile ? 'flex h-full min-h-0 flex-col overflow-hidden' : 'grid h-full min-h-0 grid-cols-[240px_1fr] grid-rows-[minmax(0,1fr)] overflow-hidden'}>
       {isMobile ? (
         <>
-          {/* Top bar mobile: ☰ mở drawer nav thay sidebar cố định (240px không đủ chỗ trên điện thoại). */}
+          {/* Top bar mobile: ☰ mở drawer nav thay sidebar cố định (240px không đủ chỗ trên điện thoại).
+              "‹ Việc của tôi" — Thùy 07-06: "không có nút back khiến dùng mobile khá khó chịu" — luôn
+              có đường về "nhà" (Việc của tôi) mà không cần mở lại drawer, trừ khi đã đang ở đó. */}
           <div className="flex shrink-0 items-center gap-2 border-b border-slate-200 bg-white px-3 py-2">
+            {staffLeaf !== 'viec' && (
+              <button onClick={() => setStaffLeaf('viec')} className="rounded-md border border-slate-200 px-2.5 py-2 text-[14px] font-medium text-indigo-600 active:bg-indigo-50">‹ Việc của tôi</button>
+            )}
             <button onClick={() => setNavOpen(true)} className="rounded-md border border-slate-200 px-3 py-2 text-[15px] text-slate-600 active:bg-slate-100">☰</button>
             <span className="truncate text-[14px] font-semibold text-slate-800">{tenLeafDangChon(groups, staffLeaf)}</span>
           </div>

@@ -1250,3 +1250,13 @@ tsc sạch + build pass. ⏳ chưa soi PDF bằng mắt (bản in paged.js).
 - **✅ VERIFY MẠNH:** viết script replay THẲNG logic `getMyOpsTasks` bằng dữ liệu thật (không phải đoán) — hôm nay 2026-07-06 (Thứ 2): sinh đúng **10 report hiện vào 2026-07-05** (hôm qua, còn nợ) + **10 báo-tan hiện vào 2026-07-06** (hôm nay) + **10 report của Thứ-2-tuần-sau hiện vào 2026-07-12** (Chủ nhật cuối tuần này) = 30 task, đúng cả 2 chiều biên. Tự tin fix đúng dù chưa click UI thật.
 - **② Thùy chỉ thêm:** "chip filter Điểm danh/Chấm bài/Chấm ET/Chấm BTVN/Đánh giá — đây là UI của TA/GV — Ops phải thấy Điểm danh/Report/Báo tan/Chuẩn bị phòng chứ?" — ĐÚNG, đây là lỗ hổng y hệt bug BuoiHocScreen hôm trước (dùng chung UI không phân vai). **Fix (`NhanSuHome.tsx`):** chip filter giờ CHIA THEO VAI — `OPS_CHIPS` (Điểm danh/Report/Báo tan/Chuẩn bị phòng, hiện khi `scope.opsToanHe`) và `GVTA_CHIPS` (Chấm bài/Chấm ET/Chấm BTVN/Đánh giá, hiện khi `scope.trucTiep.length>0` — có ghế gv/tg lớp nào). Người giữ CẢ 2 vai (hiếm) thấy gộp cả 2 bộ. `loai` (Set filter) đổi từ `Set<TabKey>` → `Set<string>` để chứa được thêm 'report'/'tan'/'prep' (không thuộc TabKey gốc của GV/TA).
 - **✅ VERIFY:** tsc + build pass. Chưa click-through UI thật (vẫn chưa login được từ phiên Claude Code — Thùy tự test tiếp).
+
+### 07-06 (tiếp 10) — Mobile "Việc của tôi": nén thẻ đếm + card, gấp ngày sau, thêm nút back
+
+- **Thùy chỉnh 4 ý (đều ở `NhanSuHome.tsx` — mục tiêu: "1 màn nhìn thấy gần hết việc cần làm"):**
+  1. **4 thẻ đếm quá to** → `Metric` thêm prop `compact` (mobile): 1 hàng label+số gọn (`px-2.5 py-1.5`) thay khối 2 dòng to (`px-4 py-3` + số 26px).
+  2. **Card chỉ cần 2 thông tin chính (loại việc + lớp)** → cả 4 loại card (`OpsBuoiCard`/`TaskCard`/`OpsExtraCard`/`PrepTaskCard`) thêm nhánh `compact`: từ khối 3 dòng (icon-lớn+tên / lớp+ngày+vai / deadline riêng dòng) → **1 hàng** (icon nhỏ + "loại · lớp" rút gọn + deadline badge cuối hàng). Giữ NGUYÊN bản desktop (không đổi khi `!compact`).
+  3. **Chưa ẩn ngày sau** — VietCuaToi trước giờ CHƯA áp pattern gấp-ngày-tương-lai đã làm ở OpsReportScreen/PrepScreen. Nay áp CÙNG luật (hôm nay + quá khứ còn nợ = mở sẵn, tương lai = gấp thành 1 dòng bấm mới xem) — áp cho **cả desktop lẫn mobile** (đây là nguyên tắc thông tin, không chỉ màn hình bé).
+  4. **Không nút back** → top bar mobile thêm nút **"‹ Việc của tôi"** (chỉ hiện khi KHÔNG đang ở đó) cạnh ☰, về thẳng "nhà" không cần mở lại drawer.
+- **Tất cả 4 fix chỉ áp `compact` khi `isMobile` (hook có sẵn) — desktop giữ nguyên y hệt trước.**
+- **✅ VERIFY:** tsc + build pass, preview resize 375×812 sạch console (chưa login test thật — Thùy tự test).
