@@ -92,6 +92,7 @@ export const canAccessAdmin = (q: MyQuyen | null): boolean => accessibleLeaves(q
 export const LAMTAILIEU_CHILDREN: NavLeaf[] = [
   { id: 'lamtailieu:giao_trinh', ten: 'Giáo trình' },
   { id: 'lamtailieu:et', ten: 'ET' },
+  { id: 'lamtailieu:mt', ten: 'MT' },
   { id: 'lamtailieu:bo_tro', ten: 'Tài liệu bổ trợ' },
 ]
 export const adminNavFromQuyen = (q: MyQuyen | null): NavGroup[] => {

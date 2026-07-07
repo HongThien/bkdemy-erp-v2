@@ -51,6 +51,17 @@ export async function listCaDuoi(done: boolean): Promise<CaDuoi[]> {
 }
 export const buoiDuoiSapToi = () => listCaDuoi(false)
 
+// Thông tin per-HS (lớp đuổi + môn) của 1 buổi đuổi CỤ THỂ — dùng khi mở buổi đuổi CHỈ có buoiId
+// (mở từ "Việc của tôi", không có sẵn CaDuoi đầy đủ như màn Bổ trợ Đuổi).
+export async function getBuoiDuoiHsInfo(buoiId: string): Promise<Record<string, { lop: string; mon: string }>> {
+  const { data } = await supabase.from('buoi_hoc_hs')
+    .select('hoc_sinh_id, duoi:bo_tro_duoi_id(lop:lop_id(ten_lop, mon))')
+    .eq('buoi_hoc_id', buoiId).limit(LIMIT)
+  const out: Record<string, { lop: string; mon: string }> = {}
+  for (const r of (data ?? []) as any[]) out[r.hoc_sinh_id] = { lop: r.duoi?.lop?.ten_lop ?? '', mon: r.duoi?.lop?.mon ?? '' }
+  return out
+}
+
 // Tạo buổi đuổi mới (loai='bo_tro_duoi', không lop_id; ngày/giờ/phòng/GV/TA/mức học đuổi).
 // Mức học đuổi gắn theo CA (KHÔNG theo lớp gốc) — mỗi ca có thể khác giá (Thùy 07-05).
 export async function taoBuoiDuoi(input: { ngay: string; gio_bat_dau?: string | null; phong?: string | null; nguoi_day?: string | null; nguoi_day_tg?: string | null; muc_hoc_duoi_id?: string | null }): Promise<string> {

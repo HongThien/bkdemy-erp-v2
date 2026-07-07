@@ -4,7 +4,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import {
   listCanDuoi, listCaDuoi, taoBuoiDuoi, themHSVaoBuoiDuoi, buoiDuoiSapToi, goiYBuoiDuoi, themCaseDuoi,
-  hoanThanhKhoaDuoi, xoaCaseDuoi, timHocSinhDuoi, lopCuaHS, demTabDuoi, setMucHocDuoi, type CanDuoiItem, type CaDuoi,
+  hoanThanhKhoaDuoi, xoaCaseDuoi, timHocSinhDuoi, lopCuaHS, demTabDuoi, setMucHocDuoi, getBuoiDuoiHsInfo, type CanDuoiItem, type CaDuoi,
 } from '../../lib/botro_duoi'
 import { getRoster, getBuoi, huyBuoi, xoaHSKhoiBuoi, diemDanh, getDanhGia, setNhanXet, dongDanhGia, moLaiDanhGia, type BuoiHocHS } from '../../lib/gami'
 import SuaBuoiModal from './SuaBuoiModal'
@@ -42,6 +42,8 @@ export default function BoTroDuoiScreen() {
   useEffect(() => { reloadCounts() }, [])
   const refresh = async () => { await reload(); await reloadCounts() }
 
+  // Dùng ở tab "Cần đuổi" (L1, list cấp màn) — BuoiDuoiDetail tự có bản riêng (đóng+reload cục bộ,
+  // không phụ thuộc list cha vì có thể mở từ "Việc của tôi" không qua màn này).
   async function onHoanThanhKhoa(caseId: string, ten: string) {
     if (!confirm(`Hoàn thành cả KHÓA bổ trợ đuổi của ${ten}? HS sẽ rời khỏi luồng (không hiện ở Cần đuổi nữa).`)) return
     try { await hoanThanhKhoaDuoi(caseId); await refresh() } catch (e: any) { alert(e.message ?? String(e)) }
@@ -51,7 +53,7 @@ export default function BoTroDuoiScreen() {
     try { await xoaCaseDuoi(c.caseId); await refresh() } catch (e: any) { alert(e.message ?? String(e)) }
   }
 
-  if (detail) return <BuoiDuoiDetail ca={detail.ca} readOnly={detail.readOnly} onClose={() => { setDetail(null); refresh() }} onHoanThanhKhoa={onHoanThanhKhoa} />
+  if (detail) return <BuoiDuoiDetail buoiId={detail.ca.id} readOnly={detail.readOnly} onClose={() => { setDetail(null); refresh() }} />
 
   return (
     <div className="h-full overflow-auto bg-[#f5f5f7] p-6">
@@ -300,37 +302,48 @@ function XepDuoiModal({ item, onClose, onDone }: { item: CanDuoiItem; onClose: (
 }
 
 // ── Detail buổi đuổi: điểm danh + nhận xét per-HS (KHÔNG ET). Hoàn thành buổi · per-HS Hoàn thành KHÓA. ──
-function BuoiDuoiDetail({ ca, readOnly, onClose, onHoanThanhKhoa }: { ca: CaDuoi; readOnly: boolean; onClose: () => void; onHoanThanhKhoa: (caseId: string, ten: string) => void }) {
+// Nhận buoiId (KHÔNG phải CaDuoi đầy đủ) — tự load hết, vì mở từ "Việc của tôi" (GV) chỉ có buoiId,
+// giống pattern BuoiBuDetail (bug 07-07: GV KHTN xếp đuổi xong không thấy task "Đánh giá" đâu cả —
+// getMyTasks() từ trước tới giờ CHỈ route loai='thuong'/'bu', THIẾU HẲN loai='bo_tro_duoi').
+export function BuoiDuoiDetail({ buoiId, readOnly = false, onClose }: { buoiId: string; readOnly?: boolean; onClose: () => void }) {
   const [roster, setRoster] = useState<BuoiHocHS[]>([])
   const [nx, setNx] = useState<Record<string, string>>({})
   const [busy, setBusy] = useState(false)
   const [sua, setSua] = useState(false)
-  const [meta, setMeta] = useState({ ngay: ca.ngay, gio_bat_dau: ca.gio_bat_dau, phong: ca.phong, nguoi_day: ca.nguoi_day, nguoi_day_tg: ca.nguoi_day_tg })
+  const [meta, setMeta] = useState<{ ngay: string; gio_bat_dau: string | null; phong: string | null; nguoi_day: string | null; nguoi_day_tg: string | null }>({ ngay: '', gio_bat_dau: null, phong: null, nguoi_day: null, nguoi_day_tg: null })
+  const [dgXong, setDgXong] = useState(false)
   const [mucDuoi, setMucDuoi2] = useState<MucHocDuoi[]>([])
-  const [mucId, setMucId] = useState<string | null>(ca.muc_hoc_duoi_id)
-  const dgXong = !!ca.danh_gia_xong_at
-  const lopDuoiCua = (hsId: string) => ca.hs.find((h) => h.hoc_sinh_id === hsId)?.lop ?? ''
-  const monDuoiCua = (hsId: string) => ca.hs.find((h) => h.hoc_sinh_id === hsId)?.mon ?? ''
+  const [mucId, setMucId] = useState<string | null>(null)
+  const [hsInfo, setHsInfo] = useState<Record<string, { lop: string; mon: string }>>({})
+  const lopDuoiCua = (hsId: string) => hsInfo[hsId]?.lop ?? ''
+  const monDuoiCua = (hsId: string) => hsInfo[hsId]?.mon ?? ''
 
   async function reload() {
-    const [b, r, dg] = await Promise.all([getBuoi(ca.id), getRoster(ca.id), getDanhGia(ca.id)])
-    if (b) { setMeta({ ngay: (b as any).ngay, gio_bat_dau: (b as any).gio_bat_dau, phong: (b as any).phong, nguoi_day: (b as any).nguoi_day, nguoi_day_tg: (b as any).nguoi_day_tg }); setMucId((b as any).muc_hoc_duoi_id ?? null) }
-    setRoster(r)
+    const [b, r, dg, hi] = await Promise.all([getBuoi(buoiId), getRoster(buoiId), getDanhGia(buoiId), getBuoiDuoiHsInfo(buoiId)])
+    if (b) {
+      setMeta({ ngay: (b as any).ngay, gio_bat_dau: (b as any).gio_bat_dau, phong: (b as any).phong, nguoi_day: (b as any).nguoi_day, nguoi_day_tg: (b as any).nguoi_day_tg })
+      setMucId((b as any).muc_hoc_duoi_id ?? null); setDgXong(!!(b as any).danh_gia_xong_at)
+    }
+    setRoster(r); setHsInfo(hi)
     const m: Record<string, string> = {}
     for (const [hsId, v] of Object.entries(dg)) m[hsId] = (v as any).nhan_xet ?? ''
     setNx(m)
   }
-  useEffect(() => { reload(); listMucHocDuoi().then(setMucDuoi2).catch(() => {}) }, [] ) // eslint-disable-line
+  useEffect(() => { reload(); listMucHocDuoi().then(setMucDuoi2).catch(() => {}) }, [buoiId]) // eslint-disable-line
 
-  async function onDoiMuc(id: string | null) { setMucId(id); try { await setMucHocDuoi(ca.id, id) } catch (e: any) { alert(e.message ?? String(e)) } }
+  async function onDoiMuc(id: string | null) { setMucId(id); try { await setMucHocDuoi(buoiId, id) } catch (e: any) { alert(e.message ?? String(e)) } }
   async function setDD(r: BuoiHocHS, tt: 'co_mat' | 'vang') { try { await diemDanh(r.id, tt); await reload() } catch (e: any) { alert(e.message) } }
-  async function onHuy() { const ly = prompt('Lý do huỷ buổi đuổi?'); if (!ly) return; try { await huyBuoi(ca.id, ly); onClose() } catch (e: any) { alert(e.message ?? String(e)) } }
+  async function onHuy() { const ly = prompt('Lý do huỷ buổi đuổi?'); if (!ly) return; try { await huyBuoi(buoiId, ly); onClose() } catch (e: any) { alert(e.message ?? String(e)) } }
   async function onXoaHS(r: BuoiHocHS) { if (!confirm(`Gỡ ${r.hoc_sinh?.ho_ten ?? 'HS'} khỏi buổi đuổi?`)) return; try { await xoaHSKhoiBuoi(r); await reload() } catch (e: any) { alert(e.message ?? String(e)) } }
-  async function luuNhanXet(hsId: string) { try { await setNhanXet(ca.id, hsId, nx[hsId] ?? '') } catch (e: any) { alert(e.message) } }
+  async function luuNhanXet(hsId: string) { try { await setNhanXet(buoiId, hsId, nx[hsId] ?? '') } catch (e: any) { alert(e.message) } }
   async function toggleDong() {
     setBusy(true)
-    try { if (dgXong) await moLaiDanhGia(ca.id); else await dongDanhGia(ca.id); onClose() }
+    try { if (dgXong) await moLaiDanhGia(buoiId); else await dongDanhGia(buoiId); onClose() }
     catch (e: any) { alert(e.message ?? String(e)); setBusy(false) }
+  }
+  async function onHoanThanhKhoa(caseId: string, ten: string) {
+    if (!confirm(`Hoàn thành cả KHÓA bổ trợ đuổi của ${ten}? HS sẽ rời khỏi luồng (không hiện ở Cần đuổi nữa).`)) return
+    try { await hoanThanhKhoaDuoi(caseId); await reload() } catch (e: any) { alert(e.message ?? String(e)) }
   }
 
   return (
@@ -338,7 +351,7 @@ function BuoiDuoiDetail({ ca, readOnly, onClose, onHoanThanhKhoa }: { ca: CaDuoi
       <div className="flex items-center gap-3 border-b border-slate-200 bg-white px-5 py-3">
         <button onClick={onClose} className="text-[14px] text-slate-500 hover:text-slate-800">‹ Bổ trợ đuổi</button>
         <span className="text-[15px] font-semibold text-slate-800">Buổi đuổi · {ddmm(meta.ngay)} · {meta.gio_bat_dau?.slice(0, 5)}{meta.phong ? ` · ${meta.phong}` : ''}</span>
-        <span className="rounded-full bg-orange-100 px-2 py-0.5 text-[11px] font-medium text-orange-700">{ca.hs.length} HS</span>
+        <span className="rounded-full bg-orange-100 px-2 py-0.5 text-[11px] font-medium text-orange-700">{roster.length} HS</span>
         {!readOnly && <button onClick={() => setSua(true)} className="rounded-lg border border-slate-200 px-2.5 py-1 text-[12px] font-medium text-slate-500 hover:border-indigo-300 hover:text-indigo-700">✎ Sửa buổi</button>}
         {!readOnly && <button onClick={onHuy} className="rounded-lg border border-rose-200 px-2.5 py-1 text-[12px] font-medium text-rose-600 hover:bg-rose-50">Huỷ buổi</button>}
         {!readOnly && (
@@ -386,7 +399,7 @@ function BuoiDuoiDetail({ ca, readOnly, onClose, onHoanThanhKhoa }: { ca: CaDuoi
           )) })()}
         </div>
       </div>
-      {sua && <SuaBuoiModal buoi={{ id: ca.id, ...meta }} onClose={() => setSua(false)} onSaved={() => { setSua(false); reload() }} />}
+      {sua && <SuaBuoiModal buoi={{ id: buoiId, ...meta }} onClose={() => setSua(false)} onSaved={() => { setSua(false); reload() }} />}
     </div>
   )
 }

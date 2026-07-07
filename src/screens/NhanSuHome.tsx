@@ -8,12 +8,14 @@ import { getMyOpsTasks, getMyPrepTasks, OPS_TASK_LABEL, type OpsTask, type MyPre
 import { homNayVN, tuanCuaNgay, khoangTuan, nhanTuan, mucDeadline, nhanConLai, thuCuaNgay, ddmmVN, type DeadlineMuc } from '../lib/tuan'
 import { BuoiDetail } from './gami/BuoiHocScreen'
 import { BuoiBuDetail } from './botro/BoTroScreen'
+import { BuoiDuoiDetail } from './botro/BoTroDuoiScreen'
 import PersonalCard from '../components/PersonalCard'
 import NavTree from '../components/NavTree'
 import KhoScreen from './kho/KhoScreen'
 import NhapKhoScreen from './nhapkho/NhapKhoScreen'
 import TaiLieuScreen from './tailieu/TaiLieuScreen'
 import ETScreen from './tailieu/ETScreen'
+import MTScreen from './tailieu/MTScreen'
 import KhoTaiLieuScreen from './tailieu/KhoTaiLieuScreen'
 import NhanSuScreen from './nhansu/NhanSuScreen'
 import OrgChartScreen from './nhansu/OrgChartScreen'
@@ -44,7 +46,7 @@ import ChatLuongVanHanhScreen from './dashboard/ChatLuongVanHanhScreen'
 const ROLE_LBL: Record<string, string> = { gv: 'GV', tg: 'Trợ giảng', ops: 'OPS' }
 const tabsCuaVai = (vai: 'gv' | 'tg'): TabKey[] => (vai === 'gv' ? ['danhgia', 'ingame'] : ['ingame', 'et'])
 const ddmm = (s: string) => { const p = s.split('-'); return `${p[2]}/${p[1]}` }
-type OpenBuoi = { id: string; tabs: TabKey[]; initialTab: TabKey; canManage: boolean; loai?: 'bu' }
+type OpenBuoi = { id: string; tabs: TabKey[]; initialTab: TabKey; canManage: boolean; loai?: 'bu' | 'bo_tro_duoi' }
 type TienDo = { tong: number; daDanh: number }
 
 // Badge deadline — dải NÓNG→NGUỘI dạng pill MỀM (hợp tông Apple, không khối đỏ đặc): đỏ→cam→hổ phách→xanh.
@@ -491,6 +493,8 @@ export default function NhanSuHome({ user }: { user: User }) {
 
   if (openBuoi) return openBuoi.loai === 'bu'
     ? <BuoiBuDetail buoiId={openBuoi.id} onClose={() => setOpenBuoi(null)} />
+    : openBuoi.loai === 'bo_tro_duoi'
+    ? <BuoiDuoiDetail buoiId={openBuoi.id} onClose={() => setOpenBuoi(null)} />
     : <BuoiDetail id={openBuoi.id} initialTab={openBuoi.initialTab} tabs={openBuoi.tabs} canManage={openBuoi.canManage} onClose={() => setOpenBuoi(null)} />
 
   // nav hợp nhất: Việc của tôi (vận hành) ++ leaf màn role cấp (phát triển)
@@ -545,6 +549,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'nhapkho' ? <NhapKhoScreen />
       : (staffLeaf === 'lamtailieu' || staffLeaf === 'lamtailieu:giao_trinh') ? <TaiLieuScreen />
       : staffLeaf === 'lamtailieu:et' ? <ETScreen />
+      : staffLeaf === 'lamtailieu:mt' ? <MTScreen />
       : staffLeaf === 'tl' ? <KhoTaiLieuScreen />
       : staffLeaf === 'lamtailieu:bo_tro' ? <section className="flex min-h-0 items-center justify-center p-8 text-sm text-slate-400">Loại tài liệu này dựng sau.</section>
       : staffLeaf === 'hocphi' ? <HocPhiScreen />

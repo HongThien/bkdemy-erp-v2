@@ -1331,3 +1331,119 @@ tsc sạch + build pass. ⏳ chưa soi PDF bằng mắt (bản in paged.js).
 - **Fix tên (`hoten.ts`):** ĐỔI THÂN HÀM `tenNganHS`/`tenHienThiDs` về trả full name (giữ nguyên chữ ký — 8+ call site khắp app tự động hiện đầy đủ, không phải sửa từng nơi gọi). Cách này cũng làm revert-lần-2 (nếu cần) rẻ — chỉ sửa 1 file.
 - **⭐ Vòng 2 (Thùy gửi ảnh chụp màn hình):** modal "Xếp bổ trợ → Chọn buổi có sẵn" (cả Bù lẫn Đuổi) chỉ hiện `Buổi bù · ngày giờ phòng · N HS` — không thấy ĐANG CÓ AI, lớp gì, môn gì trong ca đó → chọn mù. Data `sapToi[].hs[]` (đã đủ ma_hs/lop/mon từ fix trên) SẴN CÓ, chỉ thiếu render. Thêm dòng chip mỗi HS `{tên} · {lớp} ({môn})` dưới mỗi lựa chọn buổi.
 - **✅ VERIFY:** `tsc --noEmit` sạch · `npm run build` pass (2 lần, sau mỗi vòng sửa) · reload dev server, console sạch không lỗi runtime. **⏳ CHƯA click-through thật** — vẫn thiếu tài khoản dev quick-login (đã báo Thùy, chưa cấp).
+
+### 07-07 (tiếp) — Tính năng MỚI: "Tạo MT" (kỳ thi lớn, "Grand Slam") — soạn độc lập + gán buổi
+
+- **Story:** MT đã có nền từ mig 0031 ngày đầu (`buoi_hoc.loai` cho phép `'mt'`, Elo K=60 riêng) và
+  `KhoTaiLieuScreen.LOAI_TEN` đã có nhãn `mt: 'MT'` sẵn — nhưng CHƯA BAO GIỜ có UI tạo. Thùy yêu cầu
+  build luồng "Tạo MT" — về cơ bản giống "Tạo ET" (chọn dạng → hệ gợi ý câu ít-dùng-nhất) nhưng khác
+  ở logic sư phạm + quy mô nội dung.
+- **3 câu hỏi làm rõ trước khi code (Sparring→Planning, dùng EnterPlanMode):**
+  1. Quy mô: **rộng, tổng hợp nhiều chuyên đề** (giống cấu trúc Đề thi — nhiều phần), KHÔNG phải 1
+     list câu phẳng nhỏ như ET.
+  2. Gắn buổi hay tái dùng: **MT được TẠO ĐỘC LẬP (không thuộc buổi nào), rồi GÁN riêng vào buổi**
+     — khác hẳn ET (tạo là chọn lớp+ngày ngay). 1 MT gán được cho NHIỀU lớp ở NHIỀU thời điểm khác
+     nhau (đúng mô hình Đề thi: soạn 1 lần dùng nhiều lần).
+  3. Luật sư phạm (tỉ lệ câu/độ khó, bắt buộc phủ N chuyên đề…): **CHƯA có — làm khung trước**, Thùy
+     bổ sung luật sau khi khung chạy ổn.
+  4. Phạm vi lần này (hỏi riêng, xin bằng AskUserQuestion trong Plan mode): **CHỈ Tạo MT + Gán vào
+     buổi** — màn CHẤM MT trong buổi (Đ/C/S, đóng phase, Elo K=60) để lượt sau.
+- **⭐ Kiến trúc — KHÔNG copy UI "Đề thi" (đó là luồng NGƯỢC: đề thật→bóc câu→đổ kho, xem comment
+  `useStore.ts`), MT là luồng THUẬN như ET (kho có sẵn→ghép ra tài liệu):** chỉ mượn của Đề thi đúng
+  **1 thứ — mô hình "soạn độc lập rồi gán sau" + cấu trúc nhiều-phần**; cơ chế CHỌN CÂU vẫn y hệt ET
+  (`suggestCauForDang`+`DangPickerOne`+`KhoPicker`, KHÔNG bóc-ảnh).
+- **Model 2 TẦNG — 2 `loai` KHÁC NHAU** (đúng pattern `giao_trinh`↔`giao_trinh_buoi`, KHÔNG dùng
+  chung 1 `loai='mt'` cho cả master lẫn instance — tránh KhoTaiLieuScreen trộn lẫn 2 thứ trong 1 tab
+  lọc): **MT MASTER** (`loai='mt'`, lop_id/ngay=null, nhiều `tai_lieu_phan(loai_phan='custom')`) ↔
+  **MT INSTANCE** (`loai='mt_buoi'`, lop_id=X/ngay=Y, `nguon_id=masterId`) sinh ra lúc "Gán vào buổi"
+  — copy phans+câu từ master (`copyPhanInto`, giờ **export** ra khỏi `tailieu.ts` để tái dùng, đã
+  mang `kieu` từ bugfix trước) + tạo/tìm `buoi_hoc(loai='mt', lop_id, ngay)` cho đúng session đó
+  (MT = session RIÊNG, không đè buổi 'thuong' có sẵn). Re-gán cùng (lớp,ngày) = THAY THẾ (xoá-rồi-tạo,
+  cùng nguyên tắc `trichXuatBuoi`'s `mk()`). **KHÔNG migration** — `tai_lieu.loai` là cột text tự do
+  từ mig 0012 (comment gốc đã liệt kê `mt` từ ngày đầu).
+- **File:** `src/lib/mt.ts` (mới — `createMT`/`listMT`/`addPhanMT`/`ganMTVaoBuoi`/`listGanMT`) ·
+  `src/screens/tailieu/MTScreen.tsx` (mới — `MTScreen` list+tạo, `MTEditor` nhiều-phần-mỗi-phần-1-ET,
+  `GanBuoiModal` chọn lớp(cùng môn)+ngày+giờ/phòng/GV tuỳ chọn) · wire nav
+  (`useStore.LAMTAILIEU_CHILDREN` + `NhanSuHome.tsx`) · `KhoTaiLieuScreen.tsx` (thêm `mt`/`mt_buoi`
+  vào nhãn+EDITABLE+dispatch sửa, **ẩn nút In/Tải PDF cho mt/mt_buoi** — chưa có PrintView, ngoài
+  phạm vi lần này, tránh nút vỡ).
+- **usedGlobal xuyên MỌI PHẦN:** khác ET (1 "phần" duy nhất nên chống-trùng tự nhiên gói trong rows),
+  MT nhiều phần nên `usedGlobal(exceptPhan,exceptIdx)` phải gom ma_cau từ TẤT CẢ phần khi gợi ý/đổi
+  câu, không chỉ phần đang sửa — tránh 2 phần khác nhau vô tình chọn trùng 1 câu.
+- **Autosave per-phần** (không có nút "Lưu MT" + reset như ET — MT là tài liệu mở, sửa lúc nào cũng
+  được, giống Đề thi/TaiLieuBuilder): mỗi lần đổi/chọn câu → `setCauOfPhan` ngay, không đợi.
+- **✅ VERIFY:** `tsc --noEmit` sạch · `npm run build` pass · reload dev server, console + server log
+  đều sạch. **⏳ CHƯA test qua UI thật / chưa verify DB thật với data thật** (vẫn thiếu tài khoản dev
+  quick-login — Thùy tự test tạo 1 MT mẫu + gán vào 1-2 lớp khi rảnh, báo nếu có gì lệch).
+- **CÒN (ngoài phạm vi, ghi rõ để không quên):** màn/tab CHẤM MT trong buổi (Đ/C/S, đóng phase, Elo
+  K=60 — engine `Phase='mt'` đã sẵn, chỉ thiếu UI) · luật sư phạm (tỉ lệ câu/độ khó, phủ chuyên đề)
+  · MTPrintView · nối `ky_thi.loai='mt_sat_hach'`/Level/vượt-band (thuộc giai đoạn chấm).
+
+### 07-07 (tiếp) — 3 bugfix rời (in 2-cột mất khi trích/nhân bản · tên dạng sai môn buổi bù · thiếu task đánh giá buổi đuổi)
+
+- **⭐ Fix "giáo trình 7B đặt 2 cột, gán vào 7B1 xong bản in về 1 cột":** root cause — `copyPhanInto`
+  (dùng bởi `trichXuatBuoi` VÀ `duplicateTaiLieu`) copy phan sang doc mới nhưng QUÊN mang theo cột
+  `kieu` (2cot/3cot/4cot) → phan mới rơi về default `'thuong'`. Fix: cả 2 hàm thêm `kieu: p.kieu` vào
+  `addPhan(...)`. `copyPhanInto` đổi thành `export` (trước là hàm nội bộ) — dọn đường để `mt.ts` tái
+  dùng y hệt (xem block MT trên). Fix ở NGUỒN copy nên áp cho MỌI đường sinh doc-con (trích xuất +
+  nhân bản + MT gán buổi), không cần sửa riêng lẻ. **Cách khắc phục data ĐÃ lỡ tạo sai (không cần
+  sửa DB tay): re-trích/nhân bản lại — hệ tự nạp đúng `kieu` từ bản gốc** (trích xuất vốn đã
+  "xoá-rồi-tạo" idempotent).
+- **⭐ Fix "Anh Khoa xếp bù 9C1 (Toán) nhưng nội dung đánh giá hiện ra môn KHTN":** root cause SÂU hơn
+  tưởng — verify DB phát hiện **17 mã `ma_dang` TRÙNG SỐ giữa `dai_ban_do` (Toán, 389 dòng) và
+  `khtn_ban_do` (KHTN, 38 dòng)** (vd `09010301` vừa là "Bài toán Lãi suất" Toán vừa là "Các dạng bài
+  tập cơ bản về cơ năng" KHTN) — do KHTN kho KHÔNG được seed với dãy mã riêng (KG/KC) như ý định gốc
+  ghi trong HANDOFF, mà dùng chung format số như Toán → đụng độ. `getDangTen()` (gami.ts) tra tên
+  dạng bằng cách GỘP CẢ 2 bảng rồi merge → bảng tra SAU (`khtn_ban_do`) ĐÈ tên bảng trước cho mã
+  trùng → buổi bù Toán hiện sai tên dạng KHTN dù `ma_dang`/điểm số vẫn đúng (chỉ TÊN hiển thị sai).
+  **Fix (không cần migration/không đụng data):** `getDangTen(maDangs, mon?)` — có `mon` → CHỈ tra
+  đúng 1 bảng (`khoCuaMon(mon).banDoTbl`), không merge. `BuoiBuDetail` (BoTroScreen.tsx) tra tên dạng
+  **THEO MÔN CỦA TỪNG HS** (từ `hsInfo` đã có sẵn từ lượt sửa trước — 1 buổi bù gom nhiều môn khác
+  nhau), key cache `${mon}|${ma_dang}` để 2 môn cùng mã số không đè nhau. **CHƯA dọn gốc rễ** (17 mã
+  KHTN trùng số vẫn còn) — đã hỏi Thùy 2 hướng (để vậy vì đã né được, hay đánh số lại 17 mã KHTN cho
+  khác Toán) — CHƯA CHỐT, chờ trả lời.
+- **⭐ Fix "HS học đuổi KHTN xong không hiện task Đánh giá ở Việc-của-tôi của GV":** root cause — đây
+  KHÔNG phải bug riêng KHTN, mà **tính năng THIẾU HOÀN TOÀN từ trước tới giờ**: `getMyTasks()`
+  (gami.ts) chỉ route task cho buổi `loai='thuong'` và `loai='bu'` — **THIẾU HẲN nhánh
+  `loai='bo_tro_duoi'`**. Verify DB: 5-6 buổi đuổi thật đang mở, có GV gán rõ, chưa đóng đánh giá —
+  xác nhận đúng hiện tượng. Thêm nữa: `BuoiDuoiDetail` (BoTroDuoiScreen.tsx) chưa từng được `export`
+  (chỉ dùng nội bộ qua state `detail`, nhận `ca: CaDuoi` đầy đủ) — dù có route task cũng không mở
+  được từ "Việc của tôi" (chỉ có `buoiId`). **Fix:** `getMyTasks()` thêm nhánh buổi đuổi (chỉ GV
+  `nguoi_day`, không TA — đuổi không có ET/phase riêng cho TA) · `getBuoiDuoiHsInfo(buoiId)`
+  (botro_duoi.ts, mirror `getBuoiBuHsInfo`) để tự tải lớp+môn per-HS · `BuoiDuoiDetail` refactor nhận
+  `buoiId` thay vì `ca` đầy đủ, tự load hết (giống `BuoiBuDetail`) + `export` ra · wire route
+  `NhanSuHome.tsx` (`openBuoi.loai==='bo_tro_duoi'` → `BuoiDuoiDetail`). MyTask.loai mở rộng
+  `'bu'|'bo_tro_duoi'`.
+- **✅ VERIFY (cả 3):** `tsc --noEmit` sạch · `npm run build` pass · reload dev server, console/server
+  log sạch. **⏳ CHƯA test UI thật** (vẫn thiếu tài khoản dev quick-login).
+
+### 07-07 (tiếp) — Module MỚI "Test đầu vào — Chấm & Trả kết quả": PHA 0 khảo sát + PLAN, TẠM DỪNG trước khi code
+
+- Nhận spec `BKDEMY_TESTDAUVAO_SPEC_DETAIL.md` (đã lưu vào repo root, cùng chỗ các spec khác) — spec
+  tự yêu cầu PHA 0 (khảo sát + viết PLAN + dừng chờ duyệt) trước khi code, đã làm ĐÚNG quy trình đó:
+  3 Explore agent song song (task-derive/`ca_test`/`ung_vien` hiện có · đề-thi-kho-v2/biểu-đồ-chuyên-
+  đề · V1 ref `PhieuTestDauVao`/thư-viện-câu-mẫu-nhận-xét/màn-chấm-3-cột) → 2 câu hỏi chặn đường
+  (AskUserQuestion) → viết PLAN → `ExitPlanMode` xin duyệt → **ĐÃ DUYỆT**.
+- **Quyết định kiến trúc đã chốt (xem PLAN đầy đủ ở `C:\Users\WBPC\.claude\plans\distributed-yawning-honey.md`
+  — LƯU Ý: file plan này KHÔNG nằm trong repo, chỉ ở máy Claude Code, nếu đổi máy/mất phiên phải viết
+  lại từ đầu hoặc hỏi lại tôi tóm tắt):**
+  1. **`ca_test` (đã build hôm nay) CHÍNH LÀ "buổi test"** mà spec nhắc — không thêm tầng nhóm-nhiều-
+     thí-sinh. Mỗi card điểm danh = 1 ca_test = 1 thí sinh.
+  2. **Đa môn → N phiếu riêng** (không ghép).
+  3. **KHÔNG tái dùng `tai_lieu(loai='de_thi')`** làm đề test — cần entity MỚI riêng, nhẹ, TỰ CHỨA
+     (không FK vào kho câu — câu test đầu vào "chấm xong quên", không neo dạng lâu dài).
+  4. Phiếu kết quả: dùng lại PATTERN xuất-ảnh v2 đã có (`EtAnhGuiPH` — popup+html2canvas+inline-hex+
+     SVG badge), KHÔNG port cách cũ V1 (jQuery/CDN).
+  5. Schema đề xuất: `de_test`+`de_test_cau` (đề, chuẩn bị trước) · mở rộng `ca_test` thêm
+     `de_test_id`/`cham_xong_at`/`danh_gia_xong_at`/`tra_bai_xong_at`/nhận-xét/`lop_de_xuat` ·
+     `ca_test_cau`+`ca_test_cau_kq` (snapshot câu + kết quả chấm, anti-NULL — dòng kq CHỈ tồn tại khi
+     đã chấm thật) · `nhan_xet_mau` (thư viện câu mẫu, mirror V1 `sat_hach_nhan_xet_templates`).
+  6. Build **TỪNG STORY MỘT** (đúng "VÒNG LÀM" spec tự quy định) — **CHỈ làm Story 1** (đề test CRUD
+     + gán đề + snapshot + derive task Chấm cho team Học thuật) trước, 3 story sau (Chấm/Nhận xét/Trả
+     bài) để lượt tiếp theo.
+- **⚠ TIẾN ĐỘ THỰC TẾ khi dừng:** mới xong PHA 0 (khảo sát+PLAN đã duyệt) + bắt đầu verify schema cho
+  Story 1 (đọc `tuyensinh.ts` toàn bộ, xác nhận cấu trúc `ca_test`/`ung_vien`, `team`/`nhan_su_team`
+  cho join `hoc_thuat`, cột `dai_ban_do`/`khtn_ban_do`). **CHƯA viết migration, CHƯA viết
+  `detest.ts`/`DeTestScreen.tsx`, CHƯA sửa `tuyensinh.ts`/`DiemDanhTestScreen.tsx`.** Task list (8
+  việc) đã tạo trong phiên, việc #1 đang dở — phiên sau tiếp tục từ đây (đọc lại PLAN.md ở đường dẫn
+  trên hoặc hỏi lại tôi tóm tắt nếu file plan không còn).

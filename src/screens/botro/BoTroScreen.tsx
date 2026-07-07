@@ -315,9 +315,26 @@ export function BuoiBuDetail({ buoiId, readOnly = false, onClose }: { buoiId: st
     const m: Record<string, string> = {}
     for (const [hsId, v] of Object.entries(dgData)) m[hsId] = (v as any).nhan_xet ?? ''
     setNx(m)
-    try { setDangTen(await getDangTen(p.map((x) => x.ma_dang).filter(Boolean) as string[])) } catch { /* */ }
+    // ⭐ Tra tên dạng THEO MÔN của TỪNG HS (buổi bù gom nhiều lớp/môn khác nhau) — KHÔNG gộp chung
+    // 1 bảng tra cả buổi. Lý do: ma_dang KHÔNG unique xuyên môn (Toán/KHTN có mã trùng số), tra gộp
+    // dai_ban_do+khtn_ban_do rồi merge sẽ bị bảng sau đè tên sai môn (bug 07-07: bù 9C1/Toán hiện tên
+    // dạng KHTN). Key map = `${mon}|${ma_dang}` để 2 môn cùng mã số vẫn tách bạch.
+    try {
+      const byMon: Record<string, Set<string>> = {}
+      for (const prob of p) {
+        if (!prob.ma_dang || !prob.hoc_sinh_id) continue
+        const mon = hi[prob.hoc_sinh_id]?.mon || 'Toán'
+        ;(byMon[mon] ??= new Set()).add(prob.ma_dang)
+      }
+      const dt: Record<string, string> = {}
+      for (const [mon, set] of Object.entries(byMon)) {
+        const tm = await getDangTen([...set], mon)
+        for (const [md, ten] of Object.entries(tm)) dt[`${mon}|${md}`] = ten
+      }
+      setDangTen(dt)
+    } catch { /* */ }
   }
-  const tenDang = (md: string) => dangTen[md] ?? md
+  const tenDang = (md: string, hocSinhId: string) => { const mon = hsInfo[hocSinhId]?.mon || 'Toán'; return dangTen[`${mon}|${md}`] ?? md }
   useEffect(() => { (async () => { try { await ensureBuoiBuETProblems(buoiId) } catch { /* */ } reload() })() }, []) // eslint-disable-line
   const coMat = roster.filter((r) => r.diem_danh === 'co_mat')
   const tenHT = tenHienThiDs(roster.map((r) => r.hoc_sinh?.ho_ten)) // 2 HS trùng tên rút gọn → bung đủ (Thùy 07-06)
@@ -394,7 +411,7 @@ export function BuoiBuDetail({ buoiId, readOnly = false, onClose }: { buoiId: st
                           return (
                             <div key={md} className="flex items-center gap-3">
                               <div className="w-[200px] shrink-0">
-                                <div className="truncate text-[13px] text-slate-700" title={tenDang(md)}>{tenDang(md)}</div>
+                                <div className="truncate text-[13px] text-slate-700" title={tenDang(md, r.hoc_sinh_id)}>{tenDang(md, r.hoc_sinh_id)}</div>
                                 <div className="font-mono text-[10px] text-slate-400">{md}</div>
                               </div>
                               <div className="flex gap-1">{DG_LBL.map((d) => <button key={d.v} disabled={readOnly || dgXong} onClick={() => setDG(r.hoc_sinh_id, md, d.v)} className={`h-7 w-7 rounded text-[12px] font-bold ${cur === d.v ? `${d.on} text-white` : 'bg-slate-100 text-slate-400'}`}>{d.l}</button>)}</div>

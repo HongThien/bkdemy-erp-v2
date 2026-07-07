@@ -2,7 +2,7 @@
 // UI chỉ gọi qua đây. Engine thuần ở src/gami/*.js (đã test). Buổi pure-derive: đẻ dòng khi MỞ.
 import { supabase } from './supabase'
 import { getMyProfile } from './nhansu'
-import { getETByBuoi, getETCaus, getBTVNByBuoi, getBTVNCaus, getGiaoTrinhBuoiDoc } from './tailieu'
+import { getETByBuoi, getETCaus, getBTVNByBuoi, getBTVNCaus, getGiaoTrinhBuoiDoc, khoCuaMon } from './tailieu'
 import { getBaiTestByDoc, getBaiTestCaus, type BaiTest, type BaiTestCau } from './testonline'
 import type { CauHoi } from './kho/api'
 import { computeEloUpdate } from '../gami/elo.js'
@@ -91,12 +91,20 @@ export async function setNguoiDay(buoiId: string, nhanSuId: string | null): Prom
   const { error } = await supabase.from('buoi_hoc').update({ nguoi_day: nhanSuId, updated_at: new Date().toISOString() }).eq('id', buoiId)
   if (error) throw error
 }
-// Tên dạng theo ma_dang (tra cả dai_ban_do + khtn_ban_do). Cho chỗ hiển thị dạng KHÔNG có khối context (vd buổi bù).
-export async function getDangTen(maDangs: string[]): Promise<Record<string, string>> {
+// Tên dạng theo ma_dang. Cho chỗ hiển thị dạng KHÔNG có khối context (vd buổi bù).
+// ⭐ 07-07 bug thật: `ma_dang` KHÔNG unique xuyên môn (Toán/KHTN tự đánh số riêng, 17 mã hiện TRÙNG
+// SỐ — vd '09010301' vừa là 1 dạng Toán vừa là 1 dạng KHTN) và `gami_session_problems` KHÔNG có cột
+// `mon` (đúng gap đã biết trước, CLAUDE.md §1.6). Buổi bù 9C1 (Toán) hiện tên dạng KHTN vì tra CẢ 2
+// bảng rồi gộp — bảng sau (khtn_ban_do) ĐÈ tên bảng trước cho mã trùng.
+// → BẮT BUỘC truyền `mon` khi biết (context có mon, vd buổi bù suy mon từ buổi MẸ của từng HS) để
+// CHỈ tra ĐÚNG 1 bảng, tránh đụng độ. Không có mon (call site cũ/chưa sửa) → fallback tra cả 2 (giữ
+// hành vi cũ, vẫn có rủi ro đụng độ y hệt trước — nên truyền mon bất cứ khi nào có thể).
+export async function getDangTen(maDangs: string[], mon?: string): Promise<Record<string, string>> {
   const uniq = [...new Set(maDangs.filter(Boolean))]
   if (!uniq.length) return {}
   const out: Record<string, string> = {}
-  for (const tbl of ['dai_ban_do', 'khtn_ban_do']) {
+  const tbls = mon ? [khoCuaMon(mon).banDoTbl] : ['dai_ban_do', 'khtn_ban_do']
+  for (const tbl of tbls) {
     const { data } = await supabase.from(tbl).select('ma_dang, ten_dang').in('ma_dang', uniq).limit(LIMIT)
     for (const r of (data ?? []) as any[]) out[r.ma_dang] = r.ten_dang
   }
@@ -557,7 +565,7 @@ export async function setDanhGiaDang(buoiId: string, hsId: string, maDang: strin
 //   GV → đánh giá sau buổi + chấm bài trên lớp · TG → chấm bài trên lớp + chấm ET.
 export type TabKey = 'diemdanh' | 'danhgia' | 'ingame' | 'et' | 'btvn'
 // deadline (Thùy chốt): chấm bài + đánh giá = 23h59 ngày buổi · ET = 12h trưa hôm sau · BTVN = 2h TRƯỚC ca học tiếp theo của lớp.
-export type MyTask = { buoiId: string; lopId: string; lop: string; ngay: string; vai: 'gv' | 'tg'; tab: TabKey; label: string; done: boolean; doneAt: string | null; deadline: number | null; loai?: 'bu' }
+export type MyTask = { buoiId: string; lopId: string; lop: string; ngay: string; vai: 'gv' | 'tg'; tab: TabKey; label: string; done: boolean; doneAt: string | null; deadline: number | null; loai?: 'bu' | 'bo_tro_duoi' }
 const TASKS_BY_VAI: Record<'gv' | 'tg', { tab: TabKey; label: string }[]> = {
   gv: [{ tab: 'danhgia', label: 'Đánh giá sau buổi' }, { tab: 'ingame', label: 'Chấm bài trên lớp' }],
   tg: [{ tab: 'ingame', label: 'Chấm bài trên lớp' }, { tab: 'et', label: 'Chấm ET' }, { tab: 'btvn', label: 'Chấm BTVN' }],
@@ -619,6 +627,15 @@ export async function getMyTasks(): Promise<MyTask[]> {
   for (const b of (bu ?? []) as any[]) {
     if (b.nguoi_day_tg === myId) out.push({ buoiId: b.id, lopId: '', lop: 'Buổi bù', ngay: b.ngay, vai: 'tg', tab: 'et', label: 'Chấm ET (bù)', done: !!b.et_dong_at, doneAt: b.et_dong_at, deadline: vnInstant(congNgay(b.ngay, 1), '12:00'), loai: 'bu' })
     if (b.nguoi_day === myId) out.push({ buoiId: b.id, lopId: '', lop: 'Buổi bù', ngay: b.ngay, vai: 'gv', tab: 'danhgia', label: 'Đánh giá buổi bù', done: !!b.danh_gia_xong_at, doneAt: b.danh_gia_xong_at, deadline: vnInstant(b.ngay, '23:59'), loai: 'bu' })
+  }
+  // ── BUỔI ĐUỔI (loai='bo_tro_duoi'): GV nhận xét (nguoi_day) — bug 07-07: THIẾU HẲN nhánh này từ
+  // trước tới giờ, GV xếp đuổi xong KHÔNG BAO GIỜ thấy task "Đánh giá" ở "Việc của tôi". Đuổi KHÔNG
+  // có ET nên KHÔNG route cho TA (nguoi_day_tg không có phase riêng để đóng ở màn này).
+  const { data: duoi } = await supabase.from('buoi_hoc')
+    .select('id, ngay, nguoi_day, danh_gia_xong_at').eq('loai', 'bo_tro_duoi').neq('trang_thai', 'huy')
+    .eq('nguoi_day', myId).limit(LIMIT)
+  for (const b of (duoi ?? []) as any[]) {
+    out.push({ buoiId: b.id, lopId: '', lop: 'Buổi đuổi', ngay: b.ngay, vai: 'gv', tab: 'danhgia', label: 'Đánh giá buổi đuổi', done: !!b.danh_gia_xong_at, doneAt: b.danh_gia_xong_at, deadline: vnInstant(b.ngay, '23:59'), loai: 'bo_tro_duoi' })
   }
   return out
 }

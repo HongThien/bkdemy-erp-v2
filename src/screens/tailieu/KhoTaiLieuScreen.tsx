@@ -11,12 +11,17 @@ import DeThiPrintView from './DeThiPrintView'
 import TaiLieuBuilder from './TaiLieuBuilder'
 import { ETEditor, type ETView } from './ETScreen'
 import { DeThiEditor } from './DeThiScreen'
+import { MTEditor } from './MTScreen'
 
-// Loại tài liệu có thể mở builder để sửa từ Kho.
-const EDITABLE = new Set(['et', 'giao_trinh', 'giao_trinh_buoi', 'btvn', 'de_thi'])
+// Loại tài liệu có thể mở builder để sửa từ Kho. (mt_buoi = INSTANCE đã gán buổi — sửa nội dung
+// phải qua master rồi gán lại, không sửa trực tiếp instance để tránh lệch với các lớp khác đã gán.)
+const EDITABLE = new Set(['et', 'giao_trinh', 'giao_trinh_buoi', 'btvn', 'de_thi', 'mt'])
+// MT chưa có PrintView riêng (ngoài phạm vi lần build này) — ẩn In/Tải PDF cho loai mt/mt_buoi thay
+// vì rơi mặc định vào PrintView (giáo trình) và render sai/lỗi.
+const PRINTABLE = (loai: string) => loai !== 'mt' && loai !== 'mt_buoi'
 
 type Row = TaiLieu & { lop_id?: string | null; ngay?: string | null }
-const LOAI_TEN: Record<string, string> = { giao_trinh: 'Giáo trình', giao_trinh_buoi: 'Giáo trình buổi', btvn: 'BTVN', et: 'ET', de_thi: 'Đề thi', bo_tro: 'Tài liệu bổ trợ', mt: 'MT', chuyen_de: 'Chuyên đề' }
+const LOAI_TEN: Record<string, string> = { giao_trinh: 'Giáo trình', giao_trinh_buoi: 'Giáo trình buổi', btvn: 'BTVN', et: 'ET', de_thi: 'Đề thi', bo_tro: 'Tài liệu bổ trợ', mt: 'MT', mt_buoi: 'MT buổi', chuyen_de: 'Chuyên đề' }
 const loaiTen = (l: string) => LOAI_TEN[l] ?? l
 const fmt = (iso?: string | null) => (iso ? new Date(iso).toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' }) : '—')
 
@@ -35,6 +40,7 @@ export default function KhoTaiLieuScreen() {
   const [editEt, setEditEt] = useState<ETView | null>(null) // sửa ET tại chỗ (mở ETEditor)
   const [editGt, setEditGt] = useState<string | null>(null) // sửa giáo trình/BTVN (mở TaiLieuBuilder)
   const [editDeThi, setEditDeThi] = useState<string | null>(null) // sửa đề thi (mở DeThiEditor)
+  const [editMT, setEditMT] = useState<string | null>(null) // sửa MT master (mở MTEditor)
   const [phBusy, setPhBusy] = useState<string | null>(null) // id doc đang phát hành
   const [phRes, setPhRes] = useState<{ ok: boolean; msg: string; skipped?: { ma_cau: string; warn: string }[] } | null>(null)
   const lopTen = (id?: string | null) => lops.find((l) => l.id === id)?.ten_lop ?? '?'
@@ -73,6 +79,7 @@ export default function KhoTaiLieuScreen() {
   function sua(r: Row) {
     if (r.loai === 'et') setEditEt({ ...(r as any), ten_lop: lopTen(r.lop_id) })
     else if (r.loai === 'de_thi') setEditDeThi(r.id)
+    else if (r.loai === 'mt') setEditMT(r.id)
     else setEditGt(r.id)
   }
   // Đổi TÊN FILE ngay tại kho (= tai_lieu.ten, cột hiển thị) — khỏi vào builder (builder có ô tên buổi riêng dễ nhầm).
@@ -87,6 +94,7 @@ export default function KhoTaiLieuScreen() {
   if (editEt) return <ETEditor et={editEt} onClose={() => { setEditEt(null); reload() }} />
   if (editGt) return <TaiLieuBuilder id={editGt} onClose={() => { setEditGt(null); reload() }} />
   if (editDeThi) return <DeThiEditor id={editDeThi} onClose={() => { setEditDeThi(null); reload() }} />
+  if (editMT) return <MTEditor id={editMT} onClose={() => { setEditMT(null); reload() }} />
 
   const tab = (on: boolean) => `h-7 rounded-md px-2.5 text-xs font-semibold transition ${on ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`
   return (
@@ -131,7 +139,7 @@ export default function KhoTaiLieuScreen() {
                       </td>
                       <td className="px-3"><span className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] font-medium text-slate-600">{loaiTen(r.loai)}</span></td>
                       <td className="px-3 text-slate-500">{r.khoi || '—'}</td>
-                      <td className="px-3 text-slate-500">{r.lop_id && r.ngay ? `${lopTen(r.lop_id)} · ${fmt(r.ngay)}` : (r.loai === 'et' ? <span className="text-violet-500">mẫu</span> : '—')}</td>
+                      <td className="px-3 text-slate-500">{r.lop_id && r.ngay ? `${lopTen(r.lop_id)} · ${fmt(r.ngay)}` : (r.loai === 'et' || r.loai === 'mt' ? <span className="text-violet-500">mẫu</span> : '—')}</td>
                       <td className="px-3 text-slate-500">{fmt(r.created_at)}</td>
                       <td className="px-3 py-2">
                         <div className="flex justify-end gap-1.5">
@@ -142,8 +150,8 @@ export default function KhoTaiLieuScreen() {
                               {phBusy === r.id ? '…' : '📱 Phát hành online'}
                             </button>
                           )}
-                          <button onClick={() => setPrint({ id: r.id, loai: r.loai })} className="rounded-md bg-indigo-600 px-2.5 py-1 text-[12px] font-medium text-white hover:bg-indigo-500">🖨 In</button>
-                          <button onClick={() => setDlDoc({ id: r.id, loai: r.loai })} className="rounded-md border border-indigo-300 px-2.5 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-50">⬇ Tải PDF</button>
+                          {PRINTABLE(r.loai) && <button onClick={() => setPrint({ id: r.id, loai: r.loai })} className="rounded-md bg-indigo-600 px-2.5 py-1 text-[12px] font-medium text-white hover:bg-indigo-500">🖨 In</button>}
+                          {PRINTABLE(r.loai) && <button onClick={() => setDlDoc({ id: r.id, loai: r.loai })} className="rounded-md border border-indigo-300 px-2.5 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-50">⬇ Tải PDF</button>}
                           <button onClick={() => nhanBan(r)} className="rounded-md border border-slate-200 px-2.5 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-300">Nhân bản</button>
                           <button onClick={async () => { if (confirm(`Xoá “${r.ten}”?`)) { await deleteTaiLieu(r.id); reload() } }} className="rounded-md border border-slate-200 px-2.5 py-1 text-[12px] text-slate-400 hover:border-rose-300 hover:text-rose-600">Xoá</button>
                         </div>

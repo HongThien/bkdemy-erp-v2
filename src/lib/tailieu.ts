@@ -374,16 +374,19 @@ export async function duplicateTaiLieu(srcId: string, over: { ten: string; lop_i
   if (error) throw error
   const phans = await listPhan(srcId)
   for (const p of phans) {
-    const np = await addPhan({ tai_lieu_id: (nw as TaiLieu).id, thu_tu: p.thu_tu, loai_phan: p.loai_phan, ref_ma: p.ref_ma, tieu_de: p.tieu_de, noi_dung: p.noi_dung })
+    // kieu (2cot/3cot/4cot…) PHẢI đi theo phan khi nhân bản — thiếu thì phan mới rơi về default 'thuong'
+    // (bug 07-07: giáo trình 7B đặt 2 cột, trích xuất/gán vào 7B1 xong bản in tự về 1 cột).
+    const np = await addPhan({ tai_lieu_id: (nw as TaiLieu).id, thu_tu: p.thu_tu, loai_phan: p.loai_phan, ref_ma: p.ref_ma, tieu_de: p.tieu_de, noi_dung: p.noi_dung, kieu: p.kieu })
     const { data: caus } = await supabase.from('tai_lieu_cau').select('ma_cau, thu_tu').eq('phan_id', p.id).order('thu_tu').limit(LIMIT)
     if (caus?.length) await supabase.from('tai_lieu_cau').insert(caus.map((c: any) => ({ phan_id: np.id, ma_cau: c.ma_cau, thu_tu: c.thu_tu })))
   }
   return nw as TaiLieu
 }
 
-// Copy 1 phan (+ câu) sang tài liệu khác.
-async function copyPhanInto(targetId: string, p: TaiLieuPhan, thu_tu: number): Promise<void> {
-  const np = await addPhan({ tai_lieu_id: targetId, thu_tu, loai_phan: p.loai_phan, ref_ma: p.ref_ma, tieu_de: p.tieu_de, noi_dung: p.noi_dung })
+// Copy 1 phan (+ câu) sang tài liệu khác. GIỮ `kieu` (kiểu cột) — xem ghi chú ở duplicateTaiLieu.
+// Export (không chỉ dùng nội bộ trichXuatBuoi) — MT dùng lại y hệt cho "gán vào buổi" (mt.ts).
+export async function copyPhanInto(targetId: string, p: TaiLieuPhan, thu_tu: number): Promise<void> {
+  const np = await addPhan({ tai_lieu_id: targetId, thu_tu, loai_phan: p.loai_phan, ref_ma: p.ref_ma, tieu_de: p.tieu_de, noi_dung: p.noi_dung, kieu: p.kieu })
   const { data: caus } = await supabase.from('tai_lieu_cau').select('ma_cau, thu_tu').eq('phan_id', p.id).order('thu_tu').limit(LIMIT)
   if (caus?.length) await supabase.from('tai_lieu_cau').insert((caus as any[]).map((c) => ({ phan_id: np.id, ma_cau: c.ma_cau, thu_tu: c.thu_tu })))
 }
