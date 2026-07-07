@@ -2,8 +2,9 @@
 // Lead = `ung_vien` RIÊNG; convert L7→L8 tạo hoc_sinh. UI chỉ gọi qua đây.
 import { supabase } from './supabase'
 import { suggestMaHS, suggestMaPH, createHocSinh, createPhuHuynh, ghiDanh } from './nhansu'
-import { homNayVN } from './tuan'
+import { homNayVN, vnInstant } from './tuan'
 import { MON_LIST, type Mon } from './mon'
+import { uploadKhoFile } from './kho/api'
 
 const LIMIT = 10000
 
@@ -189,4 +190,101 @@ export async function listHSDangHoc(mon?: string): Promise<{ id: string; ma_hs: 
   const { data, error } = await supabase.from('hoc_sinh').select('id, ma_hs, ho_ten, khoi').eq('trang_thai', 'dang_hoc').order('ho_ten').limit(LIMIT)
   if (error) throw error
   return (data ?? []) as any
+}
+
+// ============================================================================
+// CA TEST ĐẦU VÀO (điểm danh test) — OPS tạo lúc HS THẬT SỰ tới test (đặt lịch
+// trước hoặc walk-in, chưa có web PH tự đăng ký). Ghi nhận bằng chứng thật "đã
+// đến test" cho ops-lead tuyển sinh audit L5→L6 (KHÁC checklist tick tay
+// `ung_vien_viec`, vẫn giữ nguyên ở bước này). Chọn ứng viên L5 có sẵn → app tự
+// nhảy level='L6' (đã có mặt = bằng chứng đủ). Walk-in mới → tạo thẳng L6.
+// ============================================================================
+export const THOI_LUONG_OPTIONS = [45, 60, 75, 90, 120] as const
+export type CaTestTrangThai = 'dang_test' | 'hoan_thanh'
+export type CaTest = {
+  id: string; ungVienId: string; mon: string; ngay: string; gioBatDau: string
+  thoiLuongPhut: number; trangThai: CaTestTrangThai; baiUrl: string | null; hoanThanhAt: string | null
+  createdAt: string
+  ungVien: { hoTenHs: string; maUv: string | null; khoi: string | null; hoTenPh: string | null; sdtPh: string | null }
+}
+const CA_TEST_SELECT = '*, ung_vien:ung_vien_id(ho_ten_hs, ma_uv, khoi, ho_ten_ph, sdt_ph)'
+function mapCaTest(r: any): CaTest {
+  return {
+    id: r.id, ungVienId: r.ung_vien_id, mon: r.mon, ngay: r.ngay, gioBatDau: r.gio_bat_dau,
+    thoiLuongPhut: r.thoi_luong_phut, trangThai: r.trang_thai, baiUrl: r.bai_url, hoanThanhAt: r.hoan_thanh_at,
+    createdAt: r.created_at,
+    ungVien: { hoTenHs: r.ung_vien?.ho_ten_hs ?? '?', maUv: r.ung_vien?.ma_uv ?? null, khoi: r.ung_vien?.khoi ?? null, hoTenPh: r.ung_vien?.ho_ten_ph ?? null, sdtPh: r.ung_vien?.sdt_ph ?? null },
+  }
+}
+// Deadline (epoch ms) hiển thị đếm ngược — tái dùng vnInstant/mucDeadline/nhanConLai (tuan.ts).
+export function gioKetThucCaTest(t: Pick<CaTest, 'ngay' | 'gioBatDau' | 'thoiLuongPhut'>): number {
+  return vnInstant(t.ngay, t.gioBatDau.slice(0, 5)) + t.thoiLuongPhut * 60000
+}
+
+// Ca đang chạy (mọi HS, mọi OPS — hàng đợi chung, không phải "của riêng tôi").
+export async function listCaTestDangChay(): Promise<CaTest[]> {
+  const { data, error } = await supabase.from('ca_test').select(CA_TEST_SELECT).eq('trang_thai', 'dang_test').order('created_at').limit(LIMIT)
+  if (error) throw error
+  return (data ?? []).map(mapCaTest)
+}
+export async function listCaTestHoanThanh(ngay: string): Promise<CaTest[]> {
+  const { data, error } = await supabase.from('ca_test').select(CA_TEST_SELECT).eq('trang_thai', 'hoan_thanh').eq('ngay', ngay).order('hoan_thanh_at', { ascending: false }).limit(LIMIT)
+  if (error) throw error
+  return (data ?? []).map(mapCaTest)
+}
+// Tìm ứng viên L5 (đang chạy) theo tên/mã — cho SearchSelect ở popup tạo ca test.
+export async function listUngVienL5(): Promise<{ id: string; ho_ten_hs: string; ma_uv: string | null; khoi: string | null; mon: string }[]> {
+  const { data, error } = await supabase.from('ung_vien').select('id, ho_ten_hs, ma_uv, khoi, mon').eq('level', 'L5').eq('trang_thai', 'dang_chay').order('ho_ten_hs').limit(LIMIT)
+  if (error) throw error
+  return (data ?? []) as any
+}
+export async function getUngVien(id: string): Promise<UngVien> {
+  const { data, error } = await supabase.from('ung_vien').select('*').eq('id', id).single()
+  if (error) throw error
+  return data as UngVien
+}
+
+export type TaoCaTestInput = {
+  ungVienId?: string // đã có ở L5 → dùng thẳng
+  ungVienMoi?: { hoTenHs: string; mon: string; khoi?: string | null; ngaySinh?: string | null; hoTenPh?: string | null; sdtPh?: string | null; truongHoc?: string | null } // walk-in
+  ngay: string; gioBatDau: string; thoiLuongPhut: number
+}
+export async function taoCaTest(input: TaoCaTestInput): Promise<CaTest> {
+  const { data: { user } } = await supabase.auth.getUser()
+  let ungVienId = input.ungVienId ?? null
+  let mon: string
+  if (ungVienId) {
+    const { data: uv, error } = await supabase.from('ung_vien').select('mon, level').eq('id', ungVienId).single()
+    if (error) throw error
+    mon = (uv as any).mon
+    if ((uv as any).level === 'L5') await updateUngVien(ungVienId, { level: 'L6' }) // đã có mặt tại trung tâm = bằng chứng "đến test" đủ
+  } else {
+    if (!input.ungVienMoi?.hoTenHs.trim()) throw new Error('Thiếu tên học sinh')
+    const created = await createUngVien({
+      ho_ten_hs: input.ungVienMoi.hoTenHs.trim(), mon: input.ungVienMoi.mon, khoi: input.ungVienMoi.khoi ?? null,
+      ngay_sinh: input.ungVienMoi.ngaySinh || null, ho_ten_ph: input.ungVienMoi.hoTenPh?.trim() || null,
+      sdt_ph: input.ungVienMoi.sdtPh?.trim() || null, truong_hoc: input.ungVienMoi.truongHoc?.trim() || null,
+    })
+    ungVienId = created.id
+    mon = created.mon
+    await updateUngVien(ungVienId, { level: 'L6' }) // walk-in: đăng ký + đến diễn ra cùng lúc, bỏ qua L5
+  }
+  const { data, error } = await supabase.from('ca_test')
+    .insert({ ung_vien_id: ungVienId, mon, ngay: input.ngay, gio_bat_dau: input.gioBatDau, thoi_luong_phut: input.thoiLuongPhut, created_by: user?.id ?? null })
+    .select(CA_TEST_SELECT).single()
+  if (error) throw error
+  return mapCaTest(data)
+}
+
+// Upload bài test scan (PDF/ảnh, 1 file — giống hướng "scan cả lớp thành 1 PDF" của Story-4 OPS spec).
+export async function uploadCaTestBai(file: File): Promise<string> { return (await uploadKhoFile(file)).url }
+export async function ganBaiCaTest(id: string, baiUrl: string): Promise<void> {
+  const { error } = await supabase.from('ca_test').update({ bai_url: baiUrl }).eq('id', id)
+  if (error) throw error
+}
+// Đóng ca — BẮT BUỘC đã có bài scan mới đóng được (cùng luật evidence-trước-khi-đóng của OPS spec).
+export async function hoanThanhCaTest(id: string, baiUrl: string | null): Promise<void> {
+  if (!baiUrl) throw new Error('Cần upload bài test mới hoàn tất được.')
+  const { error } = await supabase.from('ca_test').update({ trang_thai: 'hoan_thanh', hoan_thanh_at: new Date().toISOString() }).eq('id', id)
+  if (error) throw error
 }

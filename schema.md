@@ -2,7 +2,7 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-86 bảng · 0 enum · 7 trigger · 20 function
+88 bảng · 0 enum · 8 trigger · 21 function
 
 ## bai_lam
 
@@ -206,6 +206,34 @@
 | created_at | timestamp with time zone |  | now() |  |
 | bo_tro_duoi_id | uuid | Y |  | FK→bo_tro_duoi.id |
 | bao_den_at | timestamp with time zone | Y |  |  |
+
+## ca_test
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| ung_vien_id | uuid |  |  | FK→ung_vien.id |
+| mon | text |  |  |  |
+| ngay | date |  |  |  |
+| gio_bat_dau | time without time zone |  |  |  |
+| thoi_luong_phut | integer |  |  |  |
+| trang_thai | text |  | 'dang_test'::text |  |
+| bai_url | text | Y |  |  |
+| hoan_thanh_at | timestamp with time zone | Y |  |  |
+| created_by | uuid | Y |  |  |
+| created_at | timestamp with time zone |  | now() |  |
+
+## ca_test_log
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| ca_test_id | uuid |  |  | FK→ca_test.id |
+| hanh_dong | text |  |  |  |
+| truoc | jsonb | Y |  |  |
+| sau | jsonb |  |  |  |
+| actor | uuid | Y |  |  |
+| ts | timestamp with time zone |  | now() |  |
 
 ## canh_bao_yeu
 
@@ -1124,6 +1152,7 @@
 | bảng | trigger | timing | event | function |
 |---|---|---|---|---|
 | bao_loi | trg_log_bao_loi | BEFORE | UPDATE | log_bao_loi |
+| ca_test | trg_log_ca_test | AFTER | INSERT/UPDATE | log_ca_test |
 | hoa_don | trg_log_hoa_don | AFTER | INSERT/UPDATE | log_hoa_don |
 | hoc_sinh | trg_hs_nghi_tu_roi_lop | AFTER | UPDATE | hs_nghi_tu_roi_lop |
 | hoc_sinh | trg_log_he_so_hoc_phi | AFTER | UPDATE | log_he_so_hoc_phi |
@@ -1143,6 +1172,7 @@
 - `jwt_uid()` → uuid
 - `la_thanh_vien()` → boolean
 - `log_bao_loi()` → trigger
+- `log_ca_test()` → trigger
 - `log_he_so_hoc_phi()` → trigger
 - `log_hoa_don()` → trigger
 - `log_hoc_sinh_lop()` → trigger

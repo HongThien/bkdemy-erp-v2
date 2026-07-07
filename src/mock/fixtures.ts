@@ -88,6 +88,9 @@ export const adminLeaves: AdminLeaf[] = [
   { id: 'ops_report',  nhom: 'Vận hành',  ten: 'Report & Báo tan',             founderOnly: false },
   { id: 'prep',        nhom: 'Vận hành',  ten: 'Chuẩn bị phòng',               founderOnly: false },
   { id: 'phancong_ops',nhom: 'Vận hành',  ten: 'Phân công Ops',               founderOnly: false },
+  // Điểm danh test đầu vào (07-07) — leaf RIÊNG, tách khỏi `tuyensinh` (OPS chỉ cần đúng việc
+  // này, không cần thấy/sửa cả phễu L5-L8).
+  { id: 'diem_danh_test', nhom: 'Vận hành', ten: 'Điểm danh test',            founderOnly: false },
 
   // ── GAMIFICATION: Elo/EXP, thành tích, level ──
   { id: 'diemso',      nhom: 'Gamification', ten: 'Điểm số (Elo/EXP)',        founderOnly: false },

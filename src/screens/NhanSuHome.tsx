@@ -35,6 +35,7 @@ import BaoLoiScreen from './baoloi/BaoLoiScreen'
 import OpsReportScreen from './vanhanhops/OpsReportScreen'
 import PrepScreen from './vanhanhops/PrepScreen'
 import PhanCongOpsScreen from './vanhanhops/PhanCongOpsScreen'
+import DiemDanhTestScreen from './vanhanhops/DiemDanhTestScreen'
 import TuyenSinhScreen from './tuyensinh/TuyenSinhScreen'
 import BoTroScreen from './botro/BoTroScreen'
 import BoTroDuoiScreen from './botro/BoTroDuoiScreen'
@@ -569,6 +570,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'ops_report' ? <OpsReportScreen />
       : staffLeaf === 'prep' ? <PrepScreen />
       : staffLeaf === 'phancong_ops' ? <PhanCongOpsScreen />
+      : staffLeaf === 'diem_danh_test' ? <DiemDanhTestScreen />
       : (
         <section className="flex min-h-0 items-center justify-center p-8 text-sm text-slate-400">Chọn một mục bên trái.</section>
       )}
