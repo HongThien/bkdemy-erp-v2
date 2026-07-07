@@ -26,6 +26,13 @@ export type BaiTestCau = {
 export type BaiLam = { id: string; bai_test_id: string; hoc_sinh_id: string; trang_thai: 'dang_lam' | 'da_nop'; nop_at: string | null }
 export type BaiLamCau = { id: string; bai_lam_id: string; bai_test_cau_id: string; dap_an_hs: unknown; verdict: string | null; diem: number | null; cham_boi: string | null }
 
+// HS bấm "💡 Gợi ý" → ghi vết (idempotent — chỉ cần biết ĐÃ xem, không đếm số lần). GV dùng ở màn Xem live.
+export async function xemGoiY(baiLamId: string, baiTestCauId: string): Promise<void> {
+  const { error } = await supabase.from('bai_lam_goi_y')
+    .upsert({ bai_lam_id: baiLamId, bai_test_cau_id: baiTestCauId }, { onConflict: 'bai_lam_id,bai_test_cau_id', ignoreDuplicates: true })
+  if (error) throw error
+}
+
 // ── PHÁT HÀNH (staff) — snapshot đề + key 1 lần, idempotent (spec §5.1) ──────
 export async function getBaiTestByDoc(nguonTaiLieuId: string, lopId: string, ngay: string, loai: TestLoai): Promise<BaiTest | null> {
   const { data, error } = await supabase.from('bai_test').select('*')
@@ -146,6 +153,40 @@ export async function getBaiTestFull(baiTestId: string): Promise<BaiTestFull> {
     for (const r of (blc ?? []) as BaiLamCau[]) daLam[r.bai_test_cau_id] = r
   }
   return { baiTest: bt as BaiTest, caus: (caus ?? []) as BaiTestCau[], baiLam, daLam }
+}
+
+export async function getBaiTestCaus(baiTestId: string): Promise<BaiTestCau[]> {
+  const { data, error } = await supabase.from('bai_test_cau').select('*').eq('bai_test_id', baiTestId).order('thu_tu').limit(LIMIT)
+  if (error) throw error
+  return (data ?? []) as BaiTestCau[]
+}
+
+// ── XEM LIVE (staff, buổi học) — giáo trình online CHỈ (reveal-ngay nên verdict có NGAY lúc HS trả
+// lời, không cần chấm-ngầm như ET). Poll định kỳ 5-10s đủ dùng (Thùy 07-07: "dùng được ngay trên lớp
+// thôi", không cần realtime). ────────────────────────────────────────────────────────────────────
+export type LiveAnswer = { hocSinhId: string; baiTestCauId: string; verdict: string | null; xemGoiY: boolean }
+export type LiveSnapshot = { baiLam: Record<string, BaiLam>; answers: LiveAnswer[] } // baiLam keyed theo hoc_sinh_id
+
+export async function getLiveSnapshot(baiTestId: string): Promise<LiveSnapshot> {
+  const { data: lams, error } = await supabase.from('bai_lam').select('*').eq('bai_test_id', baiTestId).limit(LIMIT)
+  if (error) throw error
+  const baiLam: Record<string, BaiLam> = {}
+  for (const l of (lams ?? []) as BaiLam[]) baiLam[l.hoc_sinh_id] = l
+  const lamIds = (lams ?? []).map((l: any) => l.id)
+  if (!lamIds.length) return { baiLam, answers: [] }
+  const lamToHs = new Map((lams ?? []).map((l: any) => [l.id, l.hoc_sinh_id as string]))
+  const [{ data: caus, error: e2 }, { data: goiY, error: e3 }] = await Promise.all([
+    supabase.from('bai_lam_cau').select('bai_lam_id, bai_test_cau_id, verdict').in('bai_lam_id', lamIds).limit(LIMIT),
+    supabase.from('bai_lam_goi_y').select('bai_lam_id, bai_test_cau_id').in('bai_lam_id', lamIds).limit(LIMIT),
+  ])
+  if (e2) throw e2
+  if (e3) throw e3
+  const goiYSet = new Set(((goiY ?? []) as any[]).map((g) => `${g.bai_lam_id}:${g.bai_test_cau_id}`))
+  const answers: LiveAnswer[] = ((caus ?? []) as any[]).map((c) => ({
+    hocSinhId: lamToHs.get(c.bai_lam_id)!, baiTestCauId: c.bai_test_cau_id, verdict: c.verdict,
+    xemGoiY: goiYSet.has(`${c.bai_lam_id}:${c.bai_test_cau_id}`),
+  }))
+  return { baiLam, answers }
 }
 
 // HS mở bài → tạo SLOT bai_lam (idempotent — StrictMode/đua). Cần hoc_sinh_id (RLS chặn HS khác).

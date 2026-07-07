@@ -2,7 +2,8 @@
 // UI chỉ gọi qua đây. Engine thuần ở src/gami/*.js (đã test). Buổi pure-derive: đẻ dòng khi MỞ.
 import { supabase } from './supabase'
 import { getMyProfile } from './nhansu'
-import { getETByBuoi, getETCaus, getBTVNByBuoi, getBTVNCaus } from './tailieu'
+import { getETByBuoi, getETCaus, getBTVNByBuoi, getBTVNCaus, getGiaoTrinhBuoiDoc } from './tailieu'
+import { getBaiTestByDoc, getBaiTestCaus, type BaiTest, type BaiTestCau } from './testonline'
 import type { CauHoi } from './kho/api'
 import { computeEloUpdate } from '../gami/elo.js'
 import { problemPoints, expForRank, rankSession } from '../gami/exp.js'
@@ -237,6 +238,21 @@ export async function loadETForBuoi(buoiId: string): Promise<{ etId: string | nu
   const et = await getETByBuoi(lopId, (b as any).ngay)
   if (!et) return { etId: null, caus: [] }
   return { etId: et.id, caus: await getETCaus(et.id) }
+}
+// Xem live giáo trình ONLINE của buổi (lớp+ngày) — null nếu buổi này CHƯA phát hành online (đúng
+// khớp qua tai_lieu loai='giao_trinh_buoi' rồi bai_test loai='giao_trinh', KHÔNG FK buoi_hoc, cùng
+// nguyên lý ET/BTVN). Chỉ giáo trình cần xem live (reveal-ngay → verdict có ngay); ET/BTVN không cần.
+export async function loadLiveTestForBuoi(buoiId: string): Promise<{ baiTest: BaiTest; caus: BaiTestCau[] } | null> {
+  const { data: b, error } = await supabase.from('buoi_hoc').select('lop_id, ngay').eq('id', buoiId).single()
+  if (error) throw error
+  const lopId = (b as any).lop_id as string | null
+  const ngay = (b as any).ngay as string
+  if (!lopId) return null
+  const doc = await getGiaoTrinhBuoiDoc(lopId, ngay)
+  if (!doc) return null
+  const baiTest = await getBaiTestByDoc(doc.id, lopId, ngay, 'giao_trinh')
+  if (!baiTest) return null
+  return { baiTest, caus: await getBaiTestCaus(baiTest.id) }
 }
 // Seed problem ET 1-câu-1-bài (idempotent: chỉ seed khi chưa có problem ET nào). ma_dang lấy từ câu.
 export async function ensureETProblems(buoiId: string, caus: CauHoi[]): Promise<void> {

@@ -8,8 +8,10 @@ import {
   loadBTVNForBuoi, ensureBTVNProblems, getBtvnKetQua, setBtvnKetQua, listCanhBao, themCanhBao, xoaCanhBao, closeBTVN, reopenBTVN,
   type BtvnKQ, type CanhBao, type BtvnTrangThai, type BtvnThaiDo,
   getDanhGia, setDanhGiaDang, setNhanXet, dongDanhGia, moLaiDanhGia,
+  loadLiveTestForBuoi,
   type BuoiAo, type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type Phase, type DiemDanh, type DanhGiaHS, type DanhGiaDiem, type TabKey, type ETResult,
 } from '../../lib/gami'
+import { getLiveSnapshot, type BaiTest, type BaiTestCau, type BaiLam, type LiveAnswer } from '../../lib/testonline'
 import { listNhanSu, type NhanSu } from '../../lib/nhansu'
 import { listDaiDang, type CauHoi } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
@@ -148,7 +150,9 @@ export function BuoiDetail({ id, onClose, tabs, initialTab, canManage = true, on
   const [roster, setRoster] = useState<BuoiHocHS[]>([])
   const [dsNS, setDsNS] = useState<NhanSu[]>([])
   const [dangOpts, setDangOpts] = useState<DangOpt[]>([])
-  const [tab, setTab] = useState<TabKey>(initialTab ?? tabs?.[0] ?? 'diemdanh')
+  // 'live' KHÔNG phải TabKey (đó là task-scope engine getMyTasks/dashboard — xem live không phải "task"
+  // có deadline/nghiệm thu) → chỉ mở rộng union CỤC BỘ ở đây, không đụng TabKey dùng chung.
+  const [tab, setTab] = useState<TabKey | 'live'>(initialTab ?? tabs?.[0] ?? 'diemdanh')
   const isMobile = useIsMobile()
 
   async function reload() {
@@ -197,6 +201,11 @@ export function BuoiDetail({ id, onClose, tabs, initialTab, canManage = true, on
             {([['diemdanh', `Điểm danh (${soCoMat}/${roster.length})`], ['danhgia', 'Đánh giá sau buổi'], ['ingame', 'Chấm bài trên lớp'], ['et', 'ET'], ['btvn', 'BTVN']] as const).filter(([k]) => !tabs || tabs.includes(k)).map(([k, lbl]) => (
               <button key={k} onClick={() => setTab(k as any)} className={`-mb-px shrink-0 whitespace-nowrap border-b-2 px-3 py-2 text-[13px] font-medium ${tab === k ? 'border-indigo-600 text-indigo-700' : 'border-transparent text-slate-500 hover:text-slate-700'}`}>{lbl}</button>
             ))}
+            {/* "Xem live" không phải task-scope tab (không có deadline/nghiệm thu) → chỉ hiện ở view ĐỦ (tabs=undefined,
+                giống Ops/admin/GV-lớp-mình mở từ "Buổi học"), KHÔNG hiện khi mở từ task 1-tab của "Việc của tôi". */}
+            {!tabs && (
+              <button onClick={() => setTab('live')} className={`-mb-px shrink-0 whitespace-nowrap border-b-2 px-3 py-2 text-[13px] font-medium ${tab === 'live' ? 'border-indigo-600 text-indigo-700' : 'border-transparent text-slate-500 hover:text-slate-700'}`}>👁 Xem live</button>
+            )}
           </div>
           <div className={`min-h-0 min-w-0 flex-1 overflow-auto ${isMobile ? 'p-3' : 'p-6'}`}>
             {tab === 'diemdanh'
@@ -207,6 +216,8 @@ export function BuoiDetail({ id, onClose, tabs, initialTab, canManage = true, on
               ? <ETChamTab buoiId={id} roster={roster} buoi={buoi} dangOpts={dangOpts} onChange={reload} />
               : tab === 'btvn'
               ? <BtvnTab buoiId={id} roster={roster} buoi={buoi} dangOpts={dangOpts} onChange={reload} />
+              : tab === 'live'
+              ? <LiveTab buoiId={id} roster={roster} />
               : <ChamTab buoiId={id} phase="ingame" roster={roster} buoi={buoi} dangOpts={dangOpts} onChange={reload} />}
           </div>
         </>
@@ -810,6 +821,86 @@ async function copyImg(){
       </div>
     </div>,
     document.body,
+  )
+}
+
+// ── XEM LIVE (giáo trình online, buổi đang học): lưới HS × Câu, verdict có NGAY lúc HS xác nhận đáp
+// án (reveal-ngay) — KHÔNG cần chấm-ngầm như ET. Poll 7s (Thùy 07-07: 5-10s đủ dùng, không cần realtime).
+const LIVE_TONE: Record<string, string> = { correct: 'bg-emerald-500 text-white', partial: 'bg-amber-400 text-white', wrong: 'bg-rose-500 text-white' }
+const LIVE_LETTER: Record<string, string> = { correct: 'Đ', partial: 'C', wrong: 'S' }
+function LiveTab({ buoiId, roster }: { buoiId: string; roster: BuoiHocHS[] }) {
+  const [loading, setLoading] = useState(true)
+  const [baiTest, setBaiTest] = useState<BaiTest | null>(null)
+  const [caus, setCaus] = useState<BaiTestCau[]>([])
+  const [baiLam, setBaiLam] = useState<Record<string, BaiLam>>({})
+  const [answers, setAnswers] = useState<LiveAnswer[]>([])
+  const coMat = roster.filter((r) => r.diem_danh === 'co_mat')
+  const tenHT = tenHienThiDs(coMat.map((r) => r.hoc_sinh?.ho_ten)) // 2 HS trùng tên rút gọn → bung đủ (Thùy 07-06)
+
+  useEffect(() => {
+    let stop = false
+    let found: { baiTest: BaiTest; caus: BaiTestCau[] } | null = null
+    async function tick() {
+      try {
+        if (!found) found = await loadLiveTestForBuoi(buoiId)
+        if (!found) { if (!stop) setLoading(false); return }
+        const snap = await getLiveSnapshot(found.baiTest.id)
+        if (stop) return
+        setBaiTest(found.baiTest); setCaus(found.caus); setBaiLam(snap.baiLam); setAnswers(snap.answers); setLoading(false)
+      } catch { if (!stop) setLoading(false) }
+    }
+    tick()
+    const t = setInterval(tick, 7000)
+    return () => { stop = true; clearInterval(t) }
+  }, [buoiId])
+
+  if (loading) return <p className="text-[12px] text-slate-400">Đang tải…</p>
+  if (!baiTest) return <p className="text-[13px] text-slate-400">Chưa phát hành online cho buổi này (khớp <b className="text-slate-600">lớp + ngày</b>). Vào <b className="text-slate-600">Kho tài liệu</b> → 📱 Phát hành online giáo trình buổi này rồi quay lại.</p>
+  if (coMat.length === 0) return <p className="text-[12px] text-slate-400">Chưa có HS nào điểm danh "có mặt".</p>
+
+  const cellOf = (hsId: string, cauId: string) => answers.find((a) => a.hocSinhId === hsId && a.baiTestCauId === cauId)
+
+  return (
+    <div className="flex h-full flex-col">
+      <div className="mb-3 text-[12px] text-slate-400">{caus.length} câu (giáo trình online) · {coMat.length} HS · tự làm mới ~7s.</div>
+      <div className="min-h-0 flex-1 overflow-auto rounded-xl border border-slate-200">
+        <table className="w-auto border-collapse text-sm">
+          <thead>
+            <tr className="bg-slate-100">
+              <th className="sticky left-0 top-0 z-30 whitespace-nowrap border border-slate-200 bg-slate-100 px-4 py-1.5 text-left text-[12px] font-semibold text-slate-700">Học sinh</th>
+              {caus.map((c) => (
+                <th key={c.id} className="sticky top-0 z-10 w-[64px] border border-slate-200 bg-slate-100 px-2 py-1.5 text-center text-[12px] font-bold text-slate-700">Câu {c.thu_tu}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {coMat.map((r, i) => {
+              const lam = baiLam[r.hoc_sinh_id]
+              return (
+                <tr key={r.id}>
+                  <td className="sticky left-0 z-10 whitespace-nowrap border border-slate-200 bg-white px-3 py-1 text-left align-middle font-medium text-slate-800">
+                    {tenHT[i]}{!lam && <span className="ml-1.5 text-[11px] font-normal text-slate-300">(chưa mở bài)</span>}
+                  </td>
+                  {caus.map((c) => {
+                    const cell = cellOf(r.hoc_sinh_id, c.id)
+                    return (
+                      <td key={c.id} className="border border-slate-200 px-2 py-1.5 text-center align-middle">
+                        {lam && (
+                          <span className={`relative inline-flex h-6 w-6 items-center justify-center rounded-full text-[11px] font-bold ${cell?.verdict ? LIVE_TONE[cell.verdict] : 'bg-slate-100 text-slate-300'}`}>
+                            {cell?.verdict ? LIVE_LETTER[cell.verdict] : '·'}
+                            {cell?.xemGoiY && <span className="absolute -right-1.5 -top-1.5 text-[10px]" title="Đã xem gợi ý câu này">💡</span>}
+                          </span>
+                        )}
+                      </td>
+                    )
+                  })}
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
   )
 }
 

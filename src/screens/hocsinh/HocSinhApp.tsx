@@ -9,7 +9,7 @@ import { supabase } from '../../lib/supabase'
 import { MathText } from '../kho/ui'
 import {
   listBaiTestCuaHS, getBaiTestFull, moBaiLam, traLoiCau, baoSai, nopBai, chuCaiChon, chiSoCuaChu,
-  getETDe, luuDapAnET, nopET, getETDapAnDaLuu,
+  getETDe, luuDapAnET, nopET, getETDapAnDaLuu, xemGoiY,
   type BaiTestCuaHS, type BaiTestFull, type BaiLamCau, type ETCauDe, type ETReveal,
 } from '../../lib/testonline'
 import { seededPerm, seededShuffleWithOrig } from '../../lib/shuffle'
@@ -213,7 +213,12 @@ function LamBai({ baiTestId, hocSinhId, onXong }: { baiTestId: string; hocSinhId
           <div className="mb-2 flex items-center justify-between">
             <p className="text-[13px] font-semibold text-slate-400">Câu {idx + 1}</p>
             {cau.ly_thuyet && (
-              <button onClick={() => setGoiY((v) => !v)}
+              <button onClick={() => setGoiY((v) => {
+                const nv = !v
+                // Ghi vết lúc MỞ (không cần lúc đóng) — GV xem live biết ai đang cần gợi ý. Fire-and-forget.
+                if (nv && baiLamId) xemGoiY(baiLamId, cau.id).catch(() => {})
+                return nv
+              })}
                 className={`rounded-full border px-3 py-1 text-[12px] font-medium transition ${goiY ? 'border-amber-300 bg-amber-100 text-amber-800' : 'border-amber-200 bg-amber-50 text-amber-700'}`}>
                 💡 Gợi ý
               </button>

@@ -465,6 +465,12 @@ export async function getBTVNCaus(taiLieuId: string): Promise<CauHoi[]> {
   const full = await getTaiLieuFull(taiLieuId)
   return full.phans.filter((p) => p.loai_phan === 'btvn').flatMap((p) => p.caus)
 }
+// Giáo trình buổi (lớp+ngày) — doc loai='giao_trinh_buoi' (từ trích xuất). Dùng để khớp buổi ↔ test online.
+export async function getGiaoTrinhBuoiDoc(lopId: string, ngay: string): Promise<{ id: string } | null> {
+  const { data, error } = await supabase.from('tai_lieu').select('id').eq('loai', 'giao_trinh_buoi').eq('lop_id', lopId).eq('ngay', ngay).order('created_at', { ascending: false }).limit(1)
+  if (error) throw error
+  return ((data as { id: string }[])?.[0]) ?? null
+}
 // Câu BÀI LUYỆN của giáo trình buổi (loai_phan='dang') — online chỉ giao BT, KHÔNG lý thuyết.
 export async function getGiaoTrinhBuoiCaus(taiLieuId: string): Promise<CauHoi[]> {
   const full = await getTaiLieuFull(taiLieuId)
