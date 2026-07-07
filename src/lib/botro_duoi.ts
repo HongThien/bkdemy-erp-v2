@@ -6,7 +6,7 @@ import { supabase } from './supabase'
 const LIMIT = 10000
 
 export type CanDuoiItem = { caseId: string; hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; lop_id: string | null; lop: string; mon: string; nguon: string; ly_do: string | null }
-export type CaDuoiHS = { hoc_sinh_id: string; ho_ten: string; diem_danh: string | null; caseId: string | null; lop: string }
+export type CaDuoiHS = { hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; diem_danh: string | null; caseId: string | null; lop: string; mon: string }
 export type CaDuoi = { id: string; ngay: string; gio_bat_dau: string | null; phong: string | null; trang_thai: string; danh_gia_xong_at: string | null; nguoi_day: string | null; nguoi_day_tg: string | null; muc_hoc_duoi_id: string | null; hs: CaDuoiHS[] }
 
 // Cần đuổi: case 'can_duoi' KHÔNG nằm trong buổi đuổi đang mở (chưa đóng đánh giá).
@@ -38,12 +38,15 @@ export async function listCaDuoi(done: boolean): Promise<CaDuoi[]> {
   if (!filt.length) return []
   const ids = filt.map((b: any) => b.id)
   const { data: hs } = await supabase.from('buoi_hoc_hs')
-    .select('buoi_hoc_id, hoc_sinh_id, diem_danh, bo_tro_duoi_id, hoc_sinh:hoc_sinh_id(ho_ten), duoi:bo_tro_duoi_id(lop:lop_id(ten_lop))')
+    .select('buoi_hoc_id, hoc_sinh_id, diem_danh, bo_tro_duoi_id, hoc_sinh:hoc_sinh_id(ho_ten, ma_hs), duoi:bo_tro_duoi_id(lop:lop_id(ten_lop, mon))')
     .in('buoi_hoc_id', ids).limit(LIMIT)
   const by: Record<string, any[]> = {}
   for (const r of hs ?? []) (by[(r as any).buoi_hoc_id] ??= []).push(r)
   return filt.map((b: any) => ({
-    ...b, hs: (by[b.id] ?? []).map((r: any) => ({ hoc_sinh_id: r.hoc_sinh_id, ho_ten: r.hoc_sinh?.ho_ten ?? '?', diem_danh: r.diem_danh, caseId: r.bo_tro_duoi_id, lop: r.duoi?.lop?.ten_lop ?? '' })),
+    ...b, hs: (by[b.id] ?? []).map((r: any) => ({
+      hoc_sinh_id: r.hoc_sinh_id, ho_ten: r.hoc_sinh?.ho_ten ?? '?', ma_hs: r.hoc_sinh?.ma_hs ?? null,
+      diem_danh: r.diem_danh, caseId: r.bo_tro_duoi_id, lop: r.duoi?.lop?.ten_lop ?? '', mon: r.duoi?.lop?.mon ?? '',
+    })),
   }))
 }
 export const buoiDuoiSapToi = () => listCaDuoi(false)

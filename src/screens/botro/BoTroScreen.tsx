@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import {
   listCanBu, listCaBoTro, listKhongBu, ghiKhongBu, xoaKhongBu, taoBuoiBu, themHSVaoBuoiBu, buoiBuSapToi, goiYBuoiBu,
-  ensureBuoiBuETProblems, demTabBoTro, type CanBuItem, type CaBoTro,
+  ensureBuoiBuETProblems, demTabBoTro, getBuoiBuHsInfo, type CanBuItem, type CaBoTro,
 } from '../../lib/botro'
 import { getRoster, getBuoi, diemDanh, huyBuoi, xoaHSKhoiBuoi, listProblems, gradeET, deleteGrade, listGrades, closePhase, getDanhGia, setDanhGiaDang, setNhanXet, getDangTen, dongDanhGia, moLaiDanhGia, type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type ETResult } from '../../lib/gami'
 import SuaBuoiModal from './SuaBuoiModal'
@@ -108,7 +108,7 @@ export default function BoTroScreen() {
                   <thead><tr className="border-b border-slate-200 text-left text-[13px] text-slate-500"><th className="px-4 py-3 font-medium">Học sinh</th><th className="px-4 py-3 font-medium">Loại</th><th className="px-4 py-3 font-medium">Lý do</th><th className="px-4 py-3 text-right font-medium"></th></tr></thead>
                   <tbody>{khongbu.map((k, i) => (
                     <tr key={k.id} className="border-b border-slate-100 last:border-0">
-                      <td className="px-4 py-3"><div className="font-medium text-slate-800">{tenKhongBu[i]}</div><div className="text-[12px] text-slate-400">{k.info}</div></td>
+                      <td className="px-4 py-3"><div className="font-medium text-slate-800">{tenKhongBu[i]}{k.ma_hs ? <span className="ml-1.5 font-mono text-[11px] font-normal text-slate-400">{k.ma_hs}</span> : null}</div><div className="text-[12px] text-slate-400">{k.info}</div></td>
                       <td className="px-4 py-3"><span className={`rounded-full px-2 py-0.5 text-[12px] font-medium ${k.loai === 'khong_can_bu' ? 'bg-slate-100 text-slate-600' : 'bg-amber-100 text-amber-700'}`}>{k.loai === 'khong_can_bu' ? 'Không cần bù' : 'Không xếp được'}</span></td>
                       <td className="px-4 py-3 text-slate-600">{k.ly_do || '—'}</td>
                       <td className="px-4 py-3 text-right"><button onClick={async () => { await xoaKhongBu(k.absId); refresh() }} className="rounded-lg border border-slate-200 px-3 py-1.5 text-[13px] text-indigo-600 hover:border-indigo-300">↩ Đưa lại Cần bù</button></td>
@@ -131,7 +131,11 @@ export default function BoTroScreen() {
                       {tab !== 'xong' && <button onClick={(e) => { e.stopPropagation(); setSuaBuoi(ca) }} title="Sửa buổi (ngày/giờ/phòng/GV/TA)" className="rounded border border-slate-200 px-1.5 py-0.5 text-[12px] text-slate-400 hover:border-indigo-300 hover:text-indigo-700">✎</button>}
                     </div>
                     <div className="mt-1 text-[12px] text-slate-500">{ca.gio_bat_dau?.slice(0, 5) || '—'}{ca.phong ? ` · ${ca.phong}` : ''}</div>
-                    <div className="mt-2 flex flex-wrap gap-1">{hsShown.map((h, i) => <span key={h.hoc_sinh_id} className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] text-slate-600">{tenHsShown[i]}</span>)}{ca.hs.length > 6 && <span className="text-[11px] text-slate-400">+{ca.hs.length - 6}</span>}</div>
+                    <div className="mt-2 flex flex-wrap gap-1">{hsShown.map((h, i) => (
+                      <span key={h.hoc_sinh_id} className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] text-slate-600">
+                        {tenHsShown[i]}{h.ma_hs ? <span className="ml-1 font-mono text-slate-400">{h.ma_hs}</span> : null}{h.lop_bu ? ` · ${h.lop_bu}${h.mon ? ` (${h.mon})` : ''}` : ''}
+                      </span>
+                    ))}{ca.hs.length > 6 && <span className="text-[11px] text-slate-400">+{ca.hs.length - 6}</span>}</div>
                     <div className="mt-2 flex gap-1.5 text-[11px]">
                       <span className={`rounded px-1.5 py-0.5 font-medium ${ca.et_dong_at ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-500'}`}>ET {ca.et_dong_at ? '✓' : '…'}</span>
                       <span className={`rounded px-1.5 py-0.5 font-medium ${ca.danh_gia_xong_at ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-500'}`}>Đánh giá {ca.danh_gia_xong_at ? '✓' : '…'}</span>
@@ -170,10 +174,12 @@ function HsBlocks({ item }: { item: CanBuItem }) {
       <div className="min-w-[160px] flex-1 rounded-xl bg-slate-50 px-3.5 py-2.5">
         <div className="text-[12px] font-medium uppercase tracking-wide text-slate-400">Học sinh</div>
         <div className="text-[16px] font-semibold text-slate-800">{tenNganHS(item.ho_ten)}</div>
+        {item.ma_hs && <div className="font-mono text-[12px] text-slate-400">{item.ma_hs}</div>}
       </div>
       <div className="min-w-[110px] rounded-xl bg-slate-50 px-3.5 py-2.5">
-        <div className="text-[12px] font-medium uppercase tracking-wide text-slate-400">Lớp</div>
+        <div className="text-[12px] font-medium uppercase tracking-wide text-slate-400">Lớp · Môn</div>
         <div className="text-[16px] font-semibold text-slate-700">{item.lop}</div>
+        <div className="text-[12px] text-slate-400">{item.mon}</div>
       </div>
       <div className="min-w-[110px] rounded-xl bg-slate-50 px-3.5 py-2.5">
         <div className="text-[12px] font-medium uppercase tracking-wide text-slate-400">Ngày nghỉ</div>
@@ -253,10 +259,23 @@ function XepModal({ item, onClose, onDone }: { item: CanBuItem; onClose: () => v
           </div>
         </div>
       ) : (
-        <div className="max-h-64 space-y-2 overflow-auto">
+        <div className="max-h-72 space-y-2 overflow-auto">
           {sapToi.length === 0 ? <p className="text-[13px] text-slate-400">Chưa có buổi bù nào đang chờ.</p> : sapToi.map((c) => (
             <button key={c.id} onClick={() => setPickId(c.id)} className={`block w-full rounded-lg border p-3 text-left text-[13px] ${pickId === c.id ? 'border-indigo-400 bg-indigo-50' : 'border-slate-200 hover:border-slate-300'}`}>
-              <b>Buổi bù · {ddmm(c.ngay)}</b> {c.gio_bat_dau?.slice(0, 5)} {c.phong} · {c.hs.length} HS
+              <div className="flex flex-wrap items-center gap-x-2">
+                <b>Buổi bù · {ddmm(c.ngay)}</b>
+                <span className="text-slate-500">{c.gio_bat_dau?.slice(0, 5)}{c.phong ? ` · ${c.phong}` : ''}</span>
+                <span className="ml-auto rounded-full bg-violet-100 px-2 py-0.5 text-[11px] font-medium text-violet-700">{c.hs.length} HS</span>
+              </div>
+              {c.hs.length > 0 && (
+                <div className="mt-1.5 flex flex-wrap gap-1">
+                  {c.hs.map((h) => (
+                    <span key={h.hoc_sinh_id} className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] font-normal text-slate-600">
+                      {h.ho_ten}{h.lop_bu ? ` · ${h.lop_bu}${h.mon ? ` (${h.mon})` : ''}` : ''}
+                    </span>
+                  ))}
+                </div>
+              )}
             </button>
           ))}
         </div>
@@ -282,6 +301,7 @@ export function BuoiBuDetail({ buoiId, readOnly = false, onClose }: { buoiId: st
   const [dg, setDg] = useState<Record<string, { diemTheoDang: Record<string, number> }>>({})
   const [nx, setNx] = useState<Record<string, string>>({})
   const [dangTen, setDangTen] = useState<Record<string, string>>({})
+  const [hsInfo, setHsInfo] = useState<Record<string, { ma_hs: string | null; lop_bu: string; mon: string; bu_cho: string }>>({})
   const [busy, setBusy] = useState(false)
   const [sua, setSua] = useState(false)
   const etXong = !!buoi?.et_dong_at, dgXong = !!buoi?.danh_gia_xong_at
@@ -290,8 +310,8 @@ export function BuoiBuDetail({ buoiId, readOnly = false, onClose }: { buoiId: st
   async function onXoaHS(r: BuoiHocHS) { if (!confirm(`Gỡ ${r.hoc_sinh?.ho_ten ?? 'HS'} khỏi buổi bù?`)) return; try { await xoaHSKhoiBuoi(r); await reload() } catch (e: any) { alert(e.message ?? String(e)) } }
 
   async function reload() {
-    const [b, r, p, g, dgData] = await Promise.all([getBuoi(buoiId), getRoster(buoiId), listProblems(buoiId, 'et'), listGrades(buoiId), getDanhGia(buoiId)])
-    setBuoi(b as BuoiHoc); setRoster(r); setProbs(p); setGrades(g); setDg(dgData as any)
+    const [b, r, p, g, dgData, hi] = await Promise.all([getBuoi(buoiId), getRoster(buoiId), listProblems(buoiId, 'et'), listGrades(buoiId), getDanhGia(buoiId), getBuoiBuHsInfo(buoiId)])
+    setBuoi(b as BuoiHoc); setRoster(r); setProbs(p); setGrades(g); setDg(dgData as any); setHsInfo(hi)
     const m: Record<string, string> = {}
     for (const [hsId, v] of Object.entries(dgData)) m[hsId] = (v as any).nhan_xet ?? ''
     setNx(m)
@@ -335,10 +355,14 @@ export function BuoiBuDetail({ buoiId, readOnly = false, onClose }: { buoiId: st
           {roster.length === 0 ? <Empty t="Buổi chưa có HS." /> : roster.map((r, i) => {
             const ps = probs.filter((p) => p.hoc_sinh_id === r.hoc_sinh_id)
             const dangs = dangCuaHS(r.hoc_sinh_id)
+            const info = hsInfo[r.hoc_sinh_id]
             return (
               <div key={r.id} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                   <span className="text-[15px] font-semibold text-slate-800">{tenHT[i]}</span>
+                  {(r.hoc_sinh?.ma_hs || info?.ma_hs) && <span className="font-mono text-[11px] text-slate-400">{r.hoc_sinh?.ma_hs ?? info?.ma_hs}</span>}
+                  {info?.lop_bu && <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] text-slate-500">{info.lop_bu}{info.mon ? ` (${info.mon})` : ''}</span>}
+                  {info?.bu_cho && <span className="rounded-full bg-violet-50 px-2 py-0.5 text-[11px] text-violet-600" title="Buổi HS đang bù cho">Bù cho: {info.bu_cho}</span>}
                   <div className="ml-auto flex items-center gap-1">
                     <button disabled={readOnly} onClick={() => setDD(r, 'co_mat')} className={`rounded-lg px-2.5 py-1 text-[12px] font-medium ${r.diem_danh === 'co_mat' ? 'bg-emerald-500 text-white' : 'border border-slate-200 text-slate-500'}`}>Có mặt</button>
                     <button disabled={readOnly} onClick={() => setDD(r, 'vang')} className={`rounded-lg px-2.5 py-1 text-[12px] font-medium ${r.diem_danh === 'vang' ? 'bg-rose-500 text-white' : 'border border-slate-200 text-slate-500'}`}>Vắng</button>

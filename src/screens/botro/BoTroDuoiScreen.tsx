@@ -116,7 +116,11 @@ export default function BoTroDuoiScreen() {
                       {tab !== 'xong' && <button onClick={(e) => { e.stopPropagation(); setSuaBuoi(ca) }} title="Sửa buổi (ngày/giờ/phòng/GV/TA)" className="rounded border border-slate-200 px-1.5 py-0.5 text-[12px] text-slate-400 hover:border-indigo-300 hover:text-indigo-700">✎</button>}
                     </div>
                     <div className="mt-1 text-[12px] text-slate-500">{ca.gio_bat_dau?.slice(0, 5) || '—'}{ca.phong ? ` · ${ca.phong}` : ''}</div>
-                    <div className="mt-2 flex flex-wrap gap-1">{hsShown.map((h, i) => <span key={h.hoc_sinh_id} className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] text-slate-600">{tenHsShown[i]}{h.lop ? ` · ${h.lop}` : ''}</span>)}{ca.hs.length > 6 && <span className="text-[11px] text-slate-400">+{ca.hs.length - 6}</span>}</div>
+                    <div className="mt-2 flex flex-wrap gap-1">{hsShown.map((h, i) => (
+                      <span key={h.hoc_sinh_id} className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] text-slate-600">
+                        {tenHsShown[i]}{h.ma_hs ? <span className="ml-1 font-mono text-slate-400">{h.ma_hs}</span> : null}{h.lop ? ` · ${h.lop}${h.mon ? ` (${h.mon})` : ''}` : ''}
+                      </span>
+                    ))}{ca.hs.length > 6 && <span className="text-[11px] text-slate-400">+{ca.hs.length - 6}</span>}</div>
                     <div className="mt-2 flex flex-wrap gap-1.5">
                       <span className={`rounded px-1.5 py-0.5 text-[11px] font-medium ${ca.danh_gia_xong_at ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-500'}`}>Nhận xét {ca.danh_gia_xong_at ? '✓ xong' : '…'}</span>
                       {!ca.muc_hoc_duoi_id && <span className="rounded px-1.5 py-0.5 text-[11px] font-medium bg-amber-100 text-amber-700">⚠ Chưa gán giá</span>}
@@ -242,8 +246,8 @@ function XepDuoiModal({ item, onClose, onDone }: { item: CanDuoiItem; onClose: (
   return (
     <Modal title="Xếp buổi đuổi" onClose={onClose} maxW="max-w-[760px]">
       <div className="mb-4 flex flex-wrap gap-2.5">
-        <div className="min-w-[160px] flex-1 rounded-xl bg-slate-50 px-3.5 py-2.5"><div className="text-[12px] font-medium uppercase tracking-wide text-slate-400">Học sinh</div><div className="text-[16px] font-semibold text-slate-800">{tenNganHS(item.ho_ten)}</div></div>
-        <div className="min-w-[120px] rounded-xl bg-slate-50 px-3.5 py-2.5"><div className="text-[12px] font-medium uppercase tracking-wide text-slate-400">Lớp đuổi</div><div className="text-[16px] font-semibold text-slate-700">{item.lop}</div></div>
+        <div className="min-w-[160px] flex-1 rounded-xl bg-slate-50 px-3.5 py-2.5"><div className="text-[12px] font-medium uppercase tracking-wide text-slate-400">Học sinh</div><div className="text-[16px] font-semibold text-slate-800">{tenNganHS(item.ho_ten)}</div>{item.ma_hs && <div className="font-mono text-[12px] text-slate-400">{item.ma_hs}</div>}</div>
+        <div className="min-w-[120px] rounded-xl bg-slate-50 px-3.5 py-2.5"><div className="text-[12px] font-medium uppercase tracking-wide text-slate-400">Lớp đuổi · Môn</div><div className="text-[16px] font-semibold text-slate-700">{item.lop}</div><div className="text-[12px] text-slate-400">{item.mon}</div></div>
       </div>
       <div className="mb-3 inline-flex rounded-lg border border-slate-200 p-0.5 text-[13px]">
         <button onClick={() => setMode('moi')} className={`rounded-md px-3 py-1 font-medium ${mode === 'moi' ? 'bg-indigo-600 text-white' : 'text-slate-600'}`}>Tạo buổi mới</button>
@@ -266,10 +270,23 @@ function XepDuoiModal({ item, onClose, onDone }: { item: CanDuoiItem; onClose: (
           </div>
         </div>
       ) : (
-        <div className="max-h-64 space-y-2 overflow-auto">
+        <div className="max-h-72 space-y-2 overflow-auto">
           {sapToi.length === 0 ? <p className="text-[13px] text-slate-400">Chưa có buổi đuổi nào đang chờ.</p> : sapToi.map((c) => (
             <button key={c.id} onClick={() => setPickId(c.id)} className={`block w-full rounded-lg border p-3 text-left text-[13px] ${pickId === c.id ? 'border-indigo-400 bg-indigo-50' : 'border-slate-200 hover:border-slate-300'}`}>
-              <b>Buổi đuổi · {ddmm(c.ngay)}</b> {c.gio_bat_dau?.slice(0, 5)} {c.phong} · {c.hs.length} HS
+              <div className="flex flex-wrap items-center gap-x-2">
+                <b>Buổi đuổi · {ddmm(c.ngay)}</b>
+                <span className="text-slate-500">{c.gio_bat_dau?.slice(0, 5)}{c.phong ? ` · ${c.phong}` : ''}</span>
+                <span className="ml-auto rounded-full bg-orange-100 px-2 py-0.5 text-[11px] font-medium text-orange-700">{c.hs.length} HS</span>
+              </div>
+              {c.hs.length > 0 && (
+                <div className="mt-1.5 flex flex-wrap gap-1">
+                  {c.hs.map((h) => (
+                    <span key={h.hoc_sinh_id} className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] font-normal text-slate-600">
+                      {h.ho_ten}{h.lop ? ` · ${h.lop}${h.mon ? ` (${h.mon})` : ''}` : ''}
+                    </span>
+                  ))}
+                </div>
+              )}
             </button>
           ))}
         </div>
@@ -293,6 +310,7 @@ function BuoiDuoiDetail({ ca, readOnly, onClose, onHoanThanhKhoa }: { ca: CaDuoi
   const [mucId, setMucId] = useState<string | null>(ca.muc_hoc_duoi_id)
   const dgXong = !!ca.danh_gia_xong_at
   const lopDuoiCua = (hsId: string) => ca.hs.find((h) => h.hoc_sinh_id === hsId)?.lop ?? ''
+  const monDuoiCua = (hsId: string) => ca.hs.find((h) => h.hoc_sinh_id === hsId)?.mon ?? ''
 
   async function reload() {
     const [b, r, dg] = await Promise.all([getBuoi(ca.id), getRoster(ca.id), getDanhGia(ca.id)])
@@ -349,7 +367,8 @@ function BuoiDuoiDetail({ ca, readOnly, onClose, onHoanThanhKhoa }: { ca: CaDuoi
             <div key={r.id} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
               <div className="flex flex-wrap items-center gap-2">
                 <span className="text-[15px] font-semibold text-slate-800">{tenHT[i]}</span>
-                {lopDuoiCua(r.hoc_sinh_id) && <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] text-slate-500">đuổi lớp {lopDuoiCua(r.hoc_sinh_id)}</span>}
+                {r.hoc_sinh?.ma_hs && <span className="font-mono text-[11px] text-slate-400">{r.hoc_sinh.ma_hs}</span>}
+                {lopDuoiCua(r.hoc_sinh_id) && <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] text-slate-500">đuổi lớp {lopDuoiCua(r.hoc_sinh_id)}{monDuoiCua(r.hoc_sinh_id) ? ` (${monDuoiCua(r.hoc_sinh_id)})` : ''}</span>}
                 <div className="ml-auto flex gap-1.5">
                   <button disabled={readOnly} onClick={() => setDD(r, 'co_mat')} className={`rounded-lg px-2.5 py-1 text-[12px] font-medium ${r.diem_danh === 'co_mat' ? 'bg-emerald-500 text-white' : 'border border-slate-200 text-slate-500'}`}>Có mặt</button>
                   <button disabled={readOnly} onClick={() => setDD(r, 'vang')} className={`rounded-lg px-2.5 py-1 text-[12px] font-medium ${r.diem_danh === 'vang' ? 'bg-rose-500 text-white' : 'border border-slate-200 text-slate-500'}`}>Vắng</button>

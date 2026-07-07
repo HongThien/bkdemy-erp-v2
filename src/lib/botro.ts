@@ -7,7 +7,10 @@ const LIMIT = 10000
 
 // L1 — 1 lần-nghỉ = (HS × buổi-mẹ). id = buoi_hoc_hs.id ở buổi mẹ.
 export type CanBuItem = { id: string; hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; buoi_me_id: string; ngay: string; lop: string; mon: string }
-export type CaBoTroHS = { hoc_sinh_id: string; ho_ten: string; diem_danh: string | null; bu_cho: string }
+// mon/lop_bu = LỚP GỐC (mẹ) của HS đang bù (buổi bù bản thân không có lớp — gom HS TỪ NHIỀU lớp/môn khác
+// nhau, 07-07 phát hiện thiếu nhãn môn gây nhầm lẫn khi nhiều môn cùng chạy). bu_cho = "buổi gốc · ngày"
+// (nội dung buổi học HS đang bù cho) — Thùy 07-07: PHẢI hiện, trước đây có data nhưng chưa render ra UI.
+export type CaBoTroHS = { hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; diem_danh: string | null; lop_bu: string; mon: string; bu_cho: string }
 export type CaBoTro = { id: string; ngay: string; gio_bat_dau: string | null; phong: string | null; trang_thai: string; et_dong_at: string | null; danh_gia_xong_at: string | null; nguoi_day: string | null; nguoi_day_tg: string | null; hs: CaBoTroHS[] }
 
 // L1: vắng ở buổi thường, CHƯA xếp bù & CHƯA ghi không-bù.
@@ -33,20 +36,28 @@ export async function listCaBoTro(done: boolean): Promise<CaBoTro[]> {
   if (!filt.length) return []
   const ids = filt.map((b: any) => b.id)
   const { data: hs } = await supabase.from('buoi_hoc_hs')
-    .select('buoi_hoc_id, hoc_sinh_id, diem_danh, hoc_sinh:hoc_sinh_id(ho_ten), bu_cho:bu_cho_buoi_id(ngay, lop:lop_id(ten_lop))')
+    .select('buoi_hoc_id, hoc_sinh_id, diem_danh, hoc_sinh:hoc_sinh_id(ho_ten, ma_hs), bu_cho:bu_cho_buoi_id(ngay, lop:lop_id(ten_lop, mon))')
     .in('buoi_hoc_id', ids).limit(LIMIT)
   const by: Record<string, any[]> = {}
   for (const r of hs ?? []) (by[(r as any).buoi_hoc_id] ??= []).push(r)
   return filt.map((b: any) => ({
-    ...b, hs: (by[b.id] ?? []).map((r: any) => ({ hoc_sinh_id: r.hoc_sinh_id, ho_ten: r.hoc_sinh?.ho_ten ?? '?', diem_danh: r.diem_danh, bu_cho: r.bu_cho ? `${r.bu_cho.lop?.ten_lop ?? ''} · ${r.bu_cho.ngay}` : '' })),
+    ...b, hs: (by[b.id] ?? []).map((r: any) => ({
+      hoc_sinh_id: r.hoc_sinh_id, ho_ten: r.hoc_sinh?.ho_ten ?? '?', ma_hs: r.hoc_sinh?.ma_hs ?? null,
+      diem_danh: r.diem_danh, lop_bu: r.bu_cho?.lop?.ten_lop ?? '', mon: r.bu_cho?.lop?.mon ?? '',
+      bu_cho: r.bu_cho ? `${r.bu_cho.lop?.ten_lop ?? ''} · ${r.bu_cho.ngay}` : '',
+    })),
   }))
 }
 
-export async function listKhongBu(): Promise<{ id: string; absId: string; loai: string; ly_do: string | null; ho_ten: string; info: string }[]> {
+export async function listKhongBu(): Promise<{ id: string; absId: string; loai: string; ly_do: string | null; ho_ten: string; ma_hs: string | null; info: string }[]> {
   const { data } = await supabase.from('bang_khong_bu')
-    .select('id, buoi_hoc_hs_id, loai, ly_do, abs:buoi_hoc_hs_id(hoc_sinh:hoc_sinh_id(ho_ten), buoi:buoi_hoc_id(ngay, lop:lop_id(ten_lop)))')
+    .select('id, buoi_hoc_hs_id, loai, ly_do, abs:buoi_hoc_hs_id(hoc_sinh:hoc_sinh_id(ho_ten, ma_hs), buoi:buoi_hoc_id(ngay, lop:lop_id(ten_lop, mon)))')
     .order('created_at', { ascending: false }).limit(LIMIT)
-  return (data ?? []).map((r: any) => ({ id: r.id, absId: r.buoi_hoc_hs_id, loai: r.loai, ly_do: r.ly_do, ho_ten: r.abs?.hoc_sinh?.ho_ten ?? '?', info: r.abs?.buoi ? `${r.abs.buoi.lop?.ten_lop ?? ''} · ${r.abs.buoi.ngay}` : '' }))
+  return (data ?? []).map((r: any) => ({
+    id: r.id, absId: r.buoi_hoc_hs_id, loai: r.loai, ly_do: r.ly_do,
+    ho_ten: r.abs?.hoc_sinh?.ho_ten ?? '?', ma_hs: r.abs?.hoc_sinh?.ma_hs ?? null,
+    info: r.abs?.buoi ? `${r.abs.buoi.lop?.ten_lop ?? ''} (${r.abs.buoi.lop?.mon ?? ''}) · ${r.abs.buoi.ngay}` : '',
+  }))
 }
 
 export async function ghiKhongBu(absenceId: string, loai: 'khong_can_bu' | 'khong_xep_duoc', lyDo?: string): Promise<void> {
@@ -76,6 +87,22 @@ export async function themHSVaoBuoiBu(makeupId: string, items: { hoc_sinh_id: st
   if (error) throw error
 }
 export const buoiBuSapToi = () => listCaBoTro(false) // cho "chọn buổi bù có sẵn"
+
+// Thông tin per-HS (mã HS · lớp gốc+môn · nội dung buổi đang bù cho) của 1 buổi bù CỤ THỂ — dùng ở
+// BuoiBuDetail (mở từ "Việc của tôi" chỉ có buoiId, KHÔNG có sẵn CaBoTro đầy đủ như màn Bổ trợ Bù).
+export async function getBuoiBuHsInfo(buoiId: string): Promise<Record<string, { ma_hs: string | null; lop_bu: string; mon: string; bu_cho: string }>> {
+  const { data } = await supabase.from('buoi_hoc_hs')
+    .select('hoc_sinh_id, hoc_sinh:hoc_sinh_id(ma_hs), bu_cho:bu_cho_buoi_id(ngay, lop:lop_id(ten_lop, mon))')
+    .eq('buoi_hoc_id', buoiId).limit(LIMIT)
+  const out: Record<string, { ma_hs: string | null; lop_bu: string; mon: string; bu_cho: string }> = {}
+  for (const r of (data ?? []) as any[]) {
+    out[r.hoc_sinh_id] = {
+      ma_hs: r.hoc_sinh?.ma_hs ?? null, lop_bu: r.bu_cho?.lop?.ten_lop ?? '', mon: r.bu_cho?.lop?.mon ?? '',
+      bu_cho: r.bu_cho ? `${r.bu_cho.lop?.ten_lop ?? ''} · ${r.bu_cho.ngay}` : '',
+    }
+  }
+  return out
+}
 
 // Gợi ý mặc định cho buổi bù từ LỚP MẸ của HS nghỉ: TA (người bổ trợ mặc định) + GV + giờ + phòng.
 export async function goiYBuoiBu(buoiMeId: string): Promise<{ gv_id: string | null; ta_id: string | null; gio: string | null; phong: string | null }> {
