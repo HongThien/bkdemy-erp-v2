@@ -8,6 +8,7 @@ import { useStore } from '../../store/useStore'
 import PrintView from './PrintView'
 import ETPrintView from './ETPrintView'
 import DeThiPrintView from './DeThiPrintView'
+import MTPrintView from './MTPrintView'
 import TaiLieuBuilder from './TaiLieuBuilder'
 import { ETEditor, type ETView } from './ETScreen'
 import { DeThiEditor } from './DeThiScreen'
@@ -16,9 +17,6 @@ import { MTEditor } from './MTScreen'
 // Loại tài liệu có thể mở builder để sửa từ Kho. (mt_buoi = INSTANCE đã gán buổi — sửa nội dung
 // phải qua master rồi gán lại, không sửa trực tiếp instance để tránh lệch với các lớp khác đã gán.)
 const EDITABLE = new Set(['et', 'giao_trinh', 'giao_trinh_buoi', 'btvn', 'de_thi', 'mt'])
-// MT chưa có PrintView riêng (ngoài phạm vi lần build này) — ẩn In/Tải PDF cho loai mt/mt_buoi thay
-// vì rơi mặc định vào PrintView (giáo trình) và render sai/lỗi.
-const PRINTABLE = (loai: string) => loai !== 'mt' && loai !== 'mt_buoi'
 
 type Row = TaiLieu & { lop_id?: string | null; ngay?: string | null }
 const LOAI_TEN: Record<string, string> = { giao_trinh: 'Giáo trình', giao_trinh_buoi: 'Giáo trình buổi', btvn: 'BTVN', et: 'ET', de_thi: 'Đề thi', bo_tro: 'Tài liệu bổ trợ', mt: 'MT', mt_buoi: 'MT buổi', chuyen_de: 'Chuyên đề' }
@@ -150,8 +148,8 @@ export default function KhoTaiLieuScreen() {
                               {phBusy === r.id ? '…' : '📱 Phát hành online'}
                             </button>
                           )}
-                          {PRINTABLE(r.loai) && <button onClick={() => setPrint({ id: r.id, loai: r.loai })} className="rounded-md bg-indigo-600 px-2.5 py-1 text-[12px] font-medium text-white hover:bg-indigo-500">🖨 In</button>}
-                          {PRINTABLE(r.loai) && <button onClick={() => setDlDoc({ id: r.id, loai: r.loai })} className="rounded-md border border-indigo-300 px-2.5 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-50">⬇ Tải PDF</button>}
+                          <button onClick={() => setPrint({ id: r.id, loai: r.loai })} className="rounded-md bg-indigo-600 px-2.5 py-1 text-[12px] font-medium text-white hover:bg-indigo-500">🖨 In</button>
+                          <button onClick={() => setDlDoc({ id: r.id, loai: r.loai })} className="rounded-md border border-indigo-300 px-2.5 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-50">⬇ Tải PDF</button>
                           <button onClick={() => nhanBan(r)} className="rounded-md border border-slate-200 px-2.5 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-300">Nhân bản</button>
                           <button onClick={async () => { if (confirm(`Xoá “${r.ten}”?`)) { await deleteTaiLieu(r.id); reload() } }} className="rounded-md border border-slate-200 px-2.5 py-1 text-[12px] text-slate-400 hover:border-rose-300 hover:text-rose-600">Xoá</button>
                         </div>
@@ -168,6 +166,8 @@ export default function KhoTaiLieuScreen() {
         ? <ETPrintView id={print.id} onClose={() => setPrint(null)} />
         : print.loai === 'de_thi'
         ? <DeThiPrintView id={print.id} onClose={() => setPrint(null)} />
+        : print.loai === 'mt' || print.loai === 'mt_buoi'
+        ? <MTPrintView id={print.id} onClose={() => setPrint(null)} />
         : <PrintView id={print.id} onClose={() => setPrint(null)} />)}
 
       {/* Tải PDF THẲNG từ hàng (headless: dựng ẩn → tải → tự đóng), không mở preview. */}
@@ -175,6 +175,8 @@ export default function KhoTaiLieuScreen() {
         ? <ETPrintView id={dlDoc.id} headless onClose={() => setDlDoc(null)} />
         : dlDoc.loai === 'de_thi'
         ? <DeThiPrintView id={dlDoc.id} headless onClose={() => setDlDoc(null)} />
+        : dlDoc.loai === 'mt' || dlDoc.loai === 'mt_buoi'
+        ? <MTPrintView id={dlDoc.id} headless onClose={() => setDlDoc(null)} />
         : <PrintView id={dlDoc.id} headless onClose={() => setDlDoc(null)} />)}
 
       {phRes && (

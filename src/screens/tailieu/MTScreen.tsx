@@ -14,11 +14,12 @@ import {
   ET_FORMS, etFormOf, type PhanResolved, type CauHinh, type ETForm as ETFormKind,
 } from '../../lib/tailieu'
 import { listLop, type Lop } from '../../lib/nhansu'
-import { listCauByDang, LOAI_CAU, KHOI_OPTIONS, DEFAULT_KHOI, type CauHoi } from '../../lib/kho/api'
+import { listCauByDang, listLopBac, LOAI_CAU, KHOI_OPTIONS, DEFAULT_KHOI, type CauHoi, type LopBac } from '../../lib/kho/api'
 import { MathText, inp } from '../kho/ui'
 import { KhoPicker } from './TaiLieuBuilder'
 import DangPickerOne from '../../components/DangPickerOne'
 import SearchSelect from '../../components/SearchSelect'
+import MTPrintView from './MTPrintView'
 
 const MONS = ['Toán', 'KHTN']
 const DEFAULT_ROWS_PER_PHAN = 3
@@ -105,13 +106,15 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
   const [phans, setPhans] = useState<PhanResolved[]>([])
   const [rowsByPhan, setRowsByPhan] = useState<Record<string, Row[]>>({})
   const [cau, setCau] = useState<Record<string, CauHoi>>({}) // cache để preview
-  const [dangOpts, setDangOpts] = useState<{ ma_dang: string; ten_dang: string; ten_chuyen_de: string }[]>([])
+  const [dangOpts, setDangOpts] = useState<{ ma_dang: string; ten_dang: string; ten_chuyen_de: string; bac: string }[]>([])
+  const [lopBacs, setLopBacs] = useState<LopBac[]>([]) // S>A>B>C (thu_tu desc) — suy hệ nào thấy được 1 phần, xem ganMTVaoBuoi
   const [ch, setCh] = useState<CauHinh>({}) // cấu hình chỉnh dòng (etFormByCau/btvnLinesByCau) — giống ET
   const [ten, setTen] = useState('')
   const [saved, setSaved] = useState(false)
   const [loading, setLoading] = useState(true)
   const [ganModal, setGanModal] = useState(false)
   const [ganList, setGanList] = useState<MTGanRow[]>([])
+  const [printing, setPrinting] = useState(false)
   const [picker, setPicker] = useState<{ phanId: string; idx: number; maDang: string } | null>(null)
   const [dangModal, setDangModal] = useState<{ phanId: string; idx: number } | null>(null)
   const cauTbl = d ? khoCuaMon(d.mon).cauTbl : 'dai_cau_hoi'
@@ -135,12 +138,32 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
     } finally { setLoading(false) }
   }
   useEffect(() => { reload() }, [id]) // eslint-disable-line
+  useEffect(() => { listLopBac().then(setLopBacs) }, [])
   useEffect(() => {
     if (!d?.khoi) { setDangOpts([]); return }
-    khoCuaMon(d.mon).listMap(d.khoi).then((ds) => setDangOpts(ds.map((x) => ({ ma_dang: x.leafMa, ten_dang: x.leafTen, ten_chuyen_de: x.t2Ten })))).catch(() => { /* */ })
+    khoCuaMon(d.mon).listMap(d.khoi).then((ds) => setDangOpts(ds.map((x) => ({ ma_dang: x.leafMa, ten_dang: x.leafTen, ten_chuyen_de: x.t2Ten, bac: x.bac })))).catch(() => { /* */ })
   }, [d?.khoi, d?.mon])
 
   const tenDang = (md: string | null) => dangOpts.find((x) => x.ma_dang === md)?.ten_dang ?? md ?? ''
+  // ⭐ Hệ nào thấy được 1 phần — MẶC ĐỊNH suy từ bac_toi_thieu của dạng các câu trong phần (bản đồ
+  // kiến thức đã gán sẵn, khắt khe nhất thắng); GV ÉP TAY được (dropdown cạnh badge, `ch.phanBac[phanId]`)
+  // khi muốn khác — ép tay LUÔN THẮNG, "gán vào buổi" (mt.ts) đọc y hệt ưu tiên này.
+  const thuTuBac = (ma: string) => lopBacs.find((b) => b.ma === ma)?.thu_tu ?? 0
+  function bacTuDongCuaPhan(phanId: string): string {
+    const bacs = (rowsByPhan[phanId] ?? []).map((r) => r.maDang ? dangOpts.find((x) => x.ma_dang === r.maDang)?.bac : null).filter(Boolean) as string[]
+    return bacs.reduce((worst, b) => (thuTuBac(b) > thuTuBac(worst) ? b : worst), 'C')
+  }
+  const bacEpCuaPhan = (phanId: string): string | null => ch.phanBac?.[phanId] ?? null
+  const bacHieuLucCuaPhan = (phanId: string): string => bacEpCuaPhan(phanId) ?? bacTuDongCuaPhan(phanId)
+  async function setPhanBac(phanId: string, bac: string | null) {
+    const next: CauHinh = { ...ch, phanBac: { ...(ch.phanBac ?? {}) } }
+    if (bac) next.phanBac![phanId] = bac; else delete next.phanBac![phanId]
+    setCh(next); await updateTaiLieu(id, { cau_hinh: next }); markSaved()
+  }
+  function nhanHe(bacMa: string): string {
+    const qualifying = lopBacs.filter((b) => b.thu_tu >= thuTuBac(bacMa)).map((b) => b.ma)
+    return qualifying.length >= lopBacs.length ? 'Mọi hệ' : `Hệ ${qualifying.join(', ')}`
+  }
   async function saveTen() { if (d && ten.trim() && ten.trim() !== d.ten) { await renameMT(id, ten.trim()); markSaved() } }
 
   // Câu ĐANG DÙNG xuyên MỌI PHẦN (không riêng phần đang sửa) — chống trùng câu trong 1 MT.
@@ -211,7 +234,8 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
         <span className="rounded bg-violet-50 px-2 py-0.5 text-[11px] font-medium text-violet-600">{d.mon} · Khối {d.khoi} · mẫu độc lập</span>
         {saved && <span className="text-[12px] text-emerald-600">✓ Đã lưu</span>}
         <span className="text-[12px] text-slate-400">{soCau} câu · {phans.length} phần{ganList.length ? ` · đã gán ${ganList.length} lớp` : ''}</span>
-        <button onClick={() => setGanModal(true)} disabled={!soCau} className="ml-auto rounded-md border border-emerald-300 bg-emerald-50 px-3 py-1.5 text-[13px] font-medium text-emerald-700 hover:bg-emerald-100 disabled:opacity-40">🎯 Gán vào buổi</button>
+        <button onClick={() => setPrinting(true)} disabled={!soCau} className="ml-auto rounded-md border border-slate-300 px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-indigo-400 disabled:opacity-40">🖨 Xem / In</button>
+        <button onClick={() => setGanModal(true)} disabled={!soCau} className="rounded-md border border-emerald-300 bg-emerald-50 px-3 py-1.5 text-[13px] font-medium text-emerald-700 hover:bg-emerald-100 disabled:opacity-40">🎯 Gán vào buổi</button>
       </div>
 
       <div className="min-h-0 flex-1 overflow-auto p-5">
@@ -233,6 +257,13 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
                   <div className="mb-2 flex items-center gap-2">
                     <span className="font-semibold text-slate-800">{p.tieu_de}</span>
                     <span className="text-[12px] text-slate-400">{rows.filter((r) => r.maCau).length} câu</span>
+                    <span className="rounded bg-violet-50 px-1.5 py-0.5 text-[11px] font-medium text-violet-600" title="Hệ đang thấy được phần này (gán vào buổi tự lọc/loại nếu lớp không đủ tư cách)">{nhanHe(bacHieuLucCuaPhan(p.id))}</span>
+                    <select value={bacEpCuaPhan(p.id) ?? ''} onChange={(e) => setPhanBac(p.id, e.target.value || null)}
+                      title="Ép tay hệ tối thiểu cho CẢ PHẦN (đè lên tự tính theo dạng) — để trống = tự động"
+                      className="rounded border border-slate-200 bg-white px-1.5 py-0.5 text-[11px] font-medium text-slate-500 hover:border-violet-300">
+                      <option value="">Tự động</option>
+                      {[...lopBacs].sort((a, b) => a.thu_tu - b.thu_tu).map((b) => <option key={b.ma} value={b.ma}>Ép: từ {b.ma} trở lên</option>)}
+                    </select>
                     <button onClick={() => xoaPhan(p)} className="ml-auto text-[12px] text-slate-300 hover:text-rose-600">Xoá phần</button>
                   </div>
                   <div className="space-y-2">
@@ -304,6 +335,7 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
           }} />
       )}
       {ganModal && d && <GanBuoiModal mtId={id} mon={d.mon} onClose={() => setGanModal(false)} onDone={async () => { setGanModal(false); await reload() }} />}
+      {printing && <MTPrintView id={id} onClose={() => setPrinting(false)} />}
     </div>
   )
 }
@@ -323,7 +355,8 @@ function GanBuoiModal({ mtId, mon, onClose, onDone }: { mtId: string; mon: strin
     setBusy(true)
     try {
       const kq = await ganMTVaoBuoi(mtId, { lopId, ngay })
-      setRes({ ok: true, msg: kq.buoiMoi ? 'Đã tạo buổi mới + gán nội dung MT. Chấm ở tab "🏆 MT" trong buổi (Buổi học/Việc của tôi).' : 'Đã gán nội dung MT vào buổi có sẵn (lớp+ngày này đã có buổi). Chấm ở tab "🏆 MT" trong buổi đó.' })
+      const loaiMsg = kq.soCauLoai > 0 ? ` (đã tự loại ${kq.soCauLoai} câu nâng cao — lớp này không đủ tư cách theo bậc dạng ở bản đồ kiến thức)` : ''
+      setRes({ ok: true, msg: (kq.buoiMoi ? 'Đã tạo buổi mới + gán nội dung MT.' : 'Đã gán nội dung MT vào buổi có sẵn (lớp+ngày này đã có buổi).') + loaiMsg + ' Chấm ở tab "🏆 MT" trong buổi (Buổi học/Việc của tôi).' })
     } catch (e: any) { setRes({ ok: false, msg: e.message ?? String(e) }) } finally { setBusy(false) }
   }
   return (

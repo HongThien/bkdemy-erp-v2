@@ -18,7 +18,9 @@ export type PhanLoai = 'buoi' | 'lt_chuyen_de' | 'dang' | 'btvn' | 'custom'
 // Không có entry cho câu nào → dùng DEFAULT_BTVN_LINES. (HS làm thẳng vào phiếu, không làm vào vở.)
 // etFormByCau = FORM HIỂN THỊ của câu TRONG ET (khác loai_cau của kho) — vd câu kho "trả lời ngắn"
 // vẫn in dạng "tự luận" (kẻ dòng) nếu GV muốn. Per ma_cau.
-export type CauHinh = { header?: 'wave' | 'none'; footer?: 'wave' | 'none'; watermark?: 'logo' | 'none'; mau?: string; inLyThuyet?: boolean; btvnLinesByCau?: Record<string, number>; etFormByCau?: Record<string, string> }
+// phanBac (MT — nâng cao theo hệ, per phan.id) = ÉP TAY hệ tối thiểu thấy được cả PHẦN, đè lên
+// suy-tự-động-từ-bac_toi_thieu-của-dạng (mt.ts). Không set (thiếu key) = tự tính theo dạng bên trong.
+export type CauHinh = { header?: 'wave' | 'none'; footer?: 'wave' | 'none'; watermark?: 'logo' | 'none'; mau?: string; inLyThuyet?: boolean; btvnLinesByCau?: Record<string, number>; etFormByCau?: Record<string, string>; phanBac?: Record<string, string> }
 export const DEFAULT_BTVN_LINES = 5
 // Form hiển thị trong ET (độc lập loai_cau kho).
 export type ETForm = 'trac_nghiem' | 'tra_loi_ngan' | 'tu_luan'

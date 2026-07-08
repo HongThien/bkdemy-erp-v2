@@ -9,9 +9,9 @@
 // đóng LUÔN đánh giá+ET của buổi đó (N/A — Thùy: "buổi MT chỉ có 1 hoạt động = kiểm tra").
 // ============================================================================
 import { supabase } from './supabase'
-import { listPhan, addPhan, getTaiLieuFull, createTaiLieu, updateTaiLieu, deleteTaiLieu, copyPhanInto, type TaiLieu, type TaiLieuPhan } from './tailieu'
+import { listPhan, addPhan, setCauOfPhan, getTaiLieuFull, createTaiLieu, updateTaiLieu, deleteTaiLieu, khoCuaMon, type TaiLieu, type TaiLieuPhan } from './tailieu'
 import { moBuoi } from './gami'
-import type { CauHoi } from './kho/api'
+import { listLopBac, type CauHoi } from './kho/api'
 
 const LIMIT = 10000
 
@@ -61,8 +61,19 @@ async function tkbSlotCuaLop(lopId: string, ngay: string): Promise<{ gio_bat_dau
   return slot ? { gio_bat_dau: slot.gio_bat_dau, gio_ket_thuc: slot.gio_ket_thuc, phong: slot.phong } : {}
 }
 
+// ── NÂNG CAO theo HỆ LỚP (Thùy 07-08): dạng đã sẵn `bac_toi_thieu` trong bản đồ kiến thức (S>A>B>C,
+// "bậc THẤP NHẤT còn học dạng") — TÁI DÙNG y hệt, KHÔNG đẻ cờ "chung/riêng" thủ công mới. Gán MT vào
+// lớp hệ thấp hơn yêu cầu của 1 câu → câu đó tự loại (giống HS lớp đó vốn không học dạng ấy). Phần rỗng
+// sau khi lọc (toàn câu nâng cao) → bỏ hẳn phần đó khỏi doc con.
+async function bacOfDangs(mon: string, maDangs: string[]): Promise<Record<string, string>> {
+  if (!maDangs.length) return {}
+  const { data, error } = await supabase.from(khoCuaMon(mon).banDoTbl).select('ma_dang, bac_toi_thieu').in('ma_dang', maDangs).limit(10000)
+  if (error) throw error
+  return Object.fromEntries((data as { ma_dang: string; bac_toi_thieu: string }[]).map((r) => [r.ma_dang, r.bac_toi_thieu]))
+}
+
 // ── GÁN VÀO BUỔI (lớp+ngày cụ thể) ───────────────────────────────────────
-export type GanMTKetQua = { buoiId: string; taiLieuId: string; buoiMoi: boolean }
+export type GanMTKetQua = { buoiId: string; taiLieuId: string; buoiMoi: boolean; soCauLoai: number }
 // Tìm/tạo buổi_hoc(loai='thuong', lop_id, ngay) — QUA `moBuoi` (giống hệt OPS "Mở buổi" thường, kể cả
 // seed sĩ số) — rồi tạo doc con bám (lớp+ngày) copy từ master (xoá-rồi-tạo nếu re-gán, cùng nguyên tắc
 // "doc vận hành 1-1 (lớp+ngày+loại)" như trichXuatBuoi).
@@ -85,6 +96,16 @@ export async function ganMTVaoBuoi(masterId: string, opts: { lopId: string; ngay
 
   // 2) Doc con bám (lớp+ngày) — re-gán = THAY THẾ (xoá cũ rồi tạo mới), copy phans từ master.
   const master = await getTaiLieuFull(masterId)
+  const customPhans = master.phans.filter((p) => p.loai_phan === 'custom')
+
+  // Lọc câu NÂNG CAO lớp không đủ tư cách (bac_toi_thieu của dạng > bậc của lớp) — xem ghi chú trên.
+  const lopBacs = await listLopBac() // desc thu_tu: S,A,B,C
+  const { data: lopRow } = await supabase.from('lop').select('bac').eq('id', opts.lopId).single()
+  const thuTuCua = (ma: string | null | undefined) => lopBacs.find((b) => b.ma === ma)?.thu_tu ?? 0
+  const lopThuTu = thuTuCua((lopRow as { bac?: string } | null)?.bac)
+  const allMaDang = [...new Set(customPhans.flatMap((p) => p.caus.map((c) => c.dang_chinh).filter(Boolean)))]
+  const bacMap = await bacOfDangs(master.taiLieu.mon, allMaDang)
+
   await supabase.from('tai_lieu').delete().eq('loai', 'mt_buoi').eq('lop_id', opts.lopId).eq('ngay', opts.ngay)
   const { data: nw, error: eNw } = await supabase.from('tai_lieu').insert({
     loai: 'mt_buoi', ten: master.taiLieu.ten, khoi: master.taiLieu.khoi, mon: master.taiLieu.mon, theme: master.taiLieu.theme,
@@ -92,10 +113,23 @@ export async function ganMTVaoBuoi(masterId: string, opts: { lopId: string; ngay
   }).select().single()
   if (eNw) throw eNw
   const docCon = nw as TaiLieu
+  const phanBacEp = master.taiLieu.cau_hinh?.phanBac ?? {} // ép tay (GV chọn ở MTEditor) — đè lên suy tự động
   let t = 0
-  for (const p of master.phans.filter((p) => p.loai_phan === 'custom')) await copyPhanInto(docCon.id, p, t++)
+  let soCauLoai = 0
+  for (const p of customPhans) {
+    const ep = phanBacEp[p.id]
+    // Có ép tay → cả PHẦN theo 1 quyết định (đủ tư cách thì giữ NGUYÊN mọi câu, không thì loại HẾT).
+    // Không ép → suy TỪNG CÂU theo bậc dạng của chính câu đó (mặc định).
+    const caus = ep
+      ? (thuTuCua(ep) <= lopThuTu ? p.caus : [])
+      : p.caus.filter((c) => thuTuCua(bacMap[c.dang_chinh] ?? 'C') <= lopThuTu)
+    soCauLoai += p.caus.length - caus.length
+    if (!caus.length) continue // toàn câu nâng cao lớp này không học được → bỏ hẳn phần
+    const np = await addPhan({ tai_lieu_id: docCon.id, thu_tu: t++, loai_phan: 'custom', ref_ma: null, tieu_de: p.tieu_de, noi_dung: p.noi_dung, kieu: p.kieu })
+    await setCauOfPhan(np.id, caus.map((c) => c.ma_cau))
+  }
 
-  return { buoiId: buoiId!, taiLieuId: docCon.id, buoiMoi }
+  return { buoiId: buoiId!, taiLieuId: docCon.id, buoiMoi, soCauLoai }
 }
 
 // Các lượt đã gán của 1 MT master (hiện trong editor: "Đã gán cho: 9A1 · 12/07…"). buoiId = buổi
