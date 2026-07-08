@@ -79,7 +79,7 @@ export const adminLeaves: AdminLeaf[] = [
   { id: 'buoihoc',     nhom: 'Vận hành',  ten: 'Buổi học',                     founderOnly: false }, // điểm danh
   { id: 'hs',          nhom: 'Vận hành',  ten: 'Học sinh',                     founderOnly: false },
   { id: 'lop',         nhom: 'Vận hành',  ten: 'Lớp',                          founderOnly: false },
-  { id: 'tuyensinh',   nhom: 'Vận hành',  ten: 'Tuyển sinh',                   founderOnly: false },
+  { id: 'tuyensinh',   nhom: 'Vận hành',  ten: 'Tuyển sinh',                   founderOnly: false }, // quản lý LEVEL học sinh L5-L8, KHÔNG chứa hoạt động test
   // Bổ trợ = 5 loại bù/yếu/đuổi/định-kỳ/ôn-thi (giờ có Bù + Đuổi).
   { id: 'botro',       nhom: 'Vận hành',  ten: 'Bù',                           founderOnly: false },
   { id: 'botro_duoi',  nhom: 'Vận hành',  ten: 'Đuổi',                         founderOnly: false },
@@ -88,9 +88,10 @@ export const adminLeaves: AdminLeaf[] = [
   { id: 'ops_report',  nhom: 'Vận hành',  ten: 'Report & Báo tan',             founderOnly: false },
   { id: 'prep',        nhom: 'Vận hành',  ten: 'Chuẩn bị phòng',               founderOnly: false },
   { id: 'phancong_ops',nhom: 'Vận hành',  ten: 'Phân công Ops',               founderOnly: false },
-  // Điểm danh test đầu vào (07-07) — leaf RIÊNG, tách khỏi `tuyensinh` (OPS chỉ cần đúng việc
-  // này, không cần thấy/sửa cả phễu L5-L8).
-  { id: 'diem_danh_test', nhom: 'Vận hành', ten: 'Điểm danh test',            founderOnly: false },
+  // Test đầu vào (BKDEMY_TESTDAUVAO_SPEC_DETAIL.md, 07-07/08) — module RIÊNG, TÁCH khỏi `tuyensinh`
+  // (Thùy 07-08: Tuyển sinh = quản lý level HS; test đầu vào = 4 story vận hành điểm danh→chấm→nhận
+  // xét→trả bài). 1 leaf, 4 tab bên trong (Điểm danh/Đề/Chấm/Nhận xét) — TestDauVaoScreen.tsx.
+  { id: 'test_dau_vao',nhom: 'Vận hành',  ten: 'Test đầu vào',                 founderOnly: false },
 
   // ── GAMIFICATION: Elo/EXP, thành tích, level ──
   { id: 'diemso',      nhom: 'Gamification', ten: 'Điểm số (Elo/EXP)',        founderOnly: false },

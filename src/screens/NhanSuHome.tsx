@@ -37,14 +37,15 @@ import BaoLoiScreen from './baoloi/BaoLoiScreen'
 import OpsReportScreen from './vanhanhops/OpsReportScreen'
 import PrepScreen from './vanhanhops/PrepScreen'
 import PhanCongOpsScreen from './vanhanhops/PhanCongOpsScreen'
-import DiemDanhTestScreen from './vanhanhops/DiemDanhTestScreen'
 import TuyenSinhScreen from './tuyensinh/TuyenSinhScreen'
+import TestDauVaoScreen from './tuyensinh/TestDauVaoScreen'
 import BoTroScreen from './botro/BoTroScreen'
 import BoTroDuoiScreen from './botro/BoTroDuoiScreen'
 import ChatLuongVanHanhScreen from './dashboard/ChatLuongVanHanhScreen'
 
 const ROLE_LBL: Record<string, string> = { gv: 'GV', tg: 'Trợ giảng', ops: 'OPS' }
-const tabsCuaVai = (vai: 'gv' | 'tg'): TabKey[] => (vai === 'gv' ? ['danhgia', 'ingame'] : ['ingame', 'et'])
+// tg thấy thêm tab 'mt' (chấm MT nếu buổi có gán — tự ẩn/hiện rỗng như ET nếu chưa có).
+const tabsCuaVai = (vai: 'gv' | 'tg'): TabKey[] => (vai === 'gv' ? ['danhgia', 'ingame'] : ['ingame', 'et', 'mt'])
 const ddmm = (s: string) => { const p = s.split('-'); return `${p[2]}/${p[1]}` }
 type OpenBuoi = { id: string; tabs: TabKey[]; initialTab: TabKey; canManage: boolean; loai?: 'bu' | 'bo_tro_duoi' }
 type TienDo = { tong: number; daDanh: number }
@@ -69,6 +70,7 @@ const TASK_STYLE: Record<TabKey, { icon: string; chip: string; accent: string }>
   et: { icon: '📝', chip: 'bg-teal-100', accent: 'border-l-teal-400' },
   btvn: { icon: '📒', chip: 'bg-amber-100', accent: 'border-l-amber-400' },
   danhgia: { icon: '⭐', chip: 'bg-rose-100', accent: 'border-l-rose-400' },
+  mt: { icon: '🏆', chip: 'bg-fuchsia-100', accent: 'border-l-fuchsia-400' },
 }
 // Loại việc cho filter chip — THEO VAI (Thùy 07-06: "Ops không có chấm bài như TA, phải hiện đúng
 // việc của ops"): Ops thấy Điểm danh/Report/Báo tan/Chuẩn bị phòng · GV/TA thấy Chấm bài/ET/BTVN/Đánh
@@ -81,6 +83,7 @@ const OPS_CHIPS: ChipDef[] = [
 const GVTA_CHIPS: ChipDef[] = [
   { key: 'ingame', ten: 'Chấm bài', icon: '✏️' }, { key: 'et', ten: 'Chấm ET', icon: '📝' },
   { key: 'btvn', ten: 'Chấm BTVN', icon: '📒' }, { key: 'danhgia', ten: 'Đánh giá', icon: '⭐' },
+  { key: 'mt', ten: 'Chấm MT', icon: '🏆' },
 ]
 const chipCls = (on: boolean) => `rounded-full border px-3.5 py-1.5 text-[14px] font-medium transition ${on ? 'border-indigo-300 bg-indigo-50 text-indigo-700' : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'}`
 
@@ -562,6 +565,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'lop' ? <LopScreen />
       : staffLeaf === 'hs' ? <HocSinhScreen />
       : staffLeaf === 'tuyensinh' ? <TuyenSinhScreen />
+      : staffLeaf === 'test_dau_vao' ? <TestDauVaoScreen />
       : staffLeaf === 'botro' ? <BoTroScreen />
       : staffLeaf === 'botro_duoi' ? <BoTroDuoiScreen />
       : staffLeaf === 'buoihoc' ? <BuoiHocScreen />
@@ -575,7 +579,6 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'ops_report' ? <OpsReportScreen />
       : staffLeaf === 'prep' ? <PrepScreen />
       : staffLeaf === 'phancong_ops' ? <PhanCongOpsScreen />
-      : staffLeaf === 'diem_danh_test' ? <DiemDanhTestScreen />
       : (
         <section className="flex min-h-0 items-center justify-center p-8 text-sm text-slate-400">Chọn một mục bên trái.</section>
       )}

@@ -2,7 +2,7 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-89 bảng · 0 enum · 8 trigger · 21 function
+94 bảng · 0 enum · 8 trigger · 21 function
 
 ## bai_lam
 
@@ -202,6 +202,7 @@
 | danh_gia_xong_at | timestamp with time zone | Y |  |  |
 | btvn_dong_at | timestamp with time zone | Y |  |  |
 | muc_hoc_duoi_id | uuid | Y |  | FK→muc_hoc_duoi.id |
+| mt_dong_at | timestamp with time zone | Y |  |  |
 
 ## buoi_hoc_hs
 
@@ -231,6 +232,36 @@
 | hoan_thanh_at | timestamp with time zone | Y |  |  |
 | created_by | uuid | Y |  |  |
 | created_at | timestamp with time zone |  | now() |  |
+| de_test_id | uuid | Y |  | FK→de_test.id |
+| cham_xong_at | timestamp with time zone | Y |  |  |
+| danh_gia_xong_at | timestamp with time zone | Y |  |  |
+| tra_bai_xong_at | timestamp with time zone | Y |  |  |
+| nhan_xet | jsonb | Y |  |  |
+
+## ca_test_cau
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| ca_test_id | uuid |  |  | FK→ca_test.id |
+| de_test_cau_id | uuid | Y |  | FK→de_test_cau.id |
+| thu_tu | integer |  |  |  |
+| nhan | text |  |  |  |
+| diem_toi_da | numeric |  | 1 |  |
+| dap_an | text | Y |  |  |
+| ma_dang | text | Y |  |  |
+| created_at | timestamp with time zone |  | now() |  |
+
+## ca_test_cau_kq
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| ca_test_cau_id | uuid |  |  | FK→ca_test_cau.id |
+| ket_qua | text |  |  |  |
+| diem | numeric |  |  |  |
+| cham_boi | uuid | Y |  |  |
+| cham_at | timestamp with time zone |  | now() |  |
 
 ## ca_test_log
 
@@ -341,6 +372,31 @@
 |---|---|---|---|---|
 | id | text |  | ('TT'::text \|\| lpad((nextval('dai_tt_seq'::regclass))::text, 4, '0'::text)) | PK |
 | ten | text |  |  |  |
+
+## de_test
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| khoi | text |  |  |  |
+| mon | text |  |  |  |
+| ten | text |  |  |  |
+| active | boolean |  | true |  |
+| created_by | uuid | Y |  |  |
+| created_at | timestamp with time zone |  | now() |  |
+
+## de_test_cau
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| de_test_id | uuid |  |  | FK→de_test.id |
+| thu_tu | integer |  |  |  |
+| nhan | text |  |  |  |
+| diem_toi_da | numeric |  | 1 |  |
+| dap_an | text | Y |  |  |
+| ma_dang | text | Y |  |  |
+| created_at | timestamp with time zone |  | now() |  |
 
 ## diem_thi
 
@@ -826,6 +882,17 @@
 |---|---|---|---|---|
 | nhan_su_id | uuid |  |  | PK FK→nhan_su.id |
 | team_id | uuid |  |  | PK FK→team.id |
+
+## nhan_xet_mau
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| mon | text |  |  |  |
+| nhom | text |  |  |  |
+| noi_dung | text |  |  |  |
+| created_by | uuid | Y |  |  |
+| created_at | timestamp with time zone |  | now() |  |
 
 ## phan_cong_lop
 

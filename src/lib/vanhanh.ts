@@ -68,7 +68,7 @@ export async function layChiTietTasks(rows: StaffTaskRow[]): Promise<TaskDetail[
 }
 
 export const TASK_TABS: TabKey[] = ['danhgia', 'ingame', 'et', 'btvn']
-export const TASK_TAB_LABEL: Record<TabKey, string> = { diemdanh: 'Điểm danh', danhgia: 'Đánh giá sau buổi', ingame: 'Chấm bài trên lớp', et: 'Chấm ET', btvn: 'Chấm BTVN' }
+export const TASK_TAB_LABEL: Record<TabKey, string> = { diemdanh: 'Điểm danh', danhgia: 'Đánh giá sau buổi', ingame: 'Chấm bài trên lớp', et: 'Chấm ET', btvn: 'Chấm BTVN', mt: 'Chấm MT' }
 
 // Hiệu suất KHÔNG PHẢI trung bình cộng — Tiến độ là LÕI PHẠT: Đúng hạn=0 phạt, Chậm 1/2/3 = trừ
 // 10/20/30% (đúng khớp 100−tienDo vì TIEN_DO_TIERS đã là 100/90/80/70). Hiệu suất = Chất lượng −

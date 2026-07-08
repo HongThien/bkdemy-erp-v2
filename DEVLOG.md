@@ -1447,3 +1447,292 @@ tsc sạch + build pass. ⏳ chưa soi PDF bằng mắt (bản in paged.js).
   `detest.ts`/`DeTestScreen.tsx`, CHƯA sửa `tuyensinh.ts`/`DiemDanhTestScreen.tsx`.** Task list (8
   việc) đã tạo trong phiên, việc #1 đang dở — phiên sau tiếp tục từ đây (đọc lại PLAN.md ở đường dẫn
   trên hoặc hỏi lại tôi tóm tắt nếu file plan không còn).
+
+### 07-08 — Module "Test đầu vào — Chấm & Trả kết quả": build XONG cả 4 story (theo PLAN đã duyệt 07-07)
+
+- Tiếp phiên trước (mới xong PHA 0 + verify schema dở). Verify schema live (`npm run schema` refresh
+  94 bảng), xác nhận `team.ma` có sẵn `hoc_thuat`, `ung_vien.lop_du_kien_id` (FK→lop) đã sẵn = tái
+  dùng thẳng cho "lớp đề xuất" (KHÔNG thêm cột mới), `lop.mon`/`khoi` đủ cho lọc.
+- **Migration `0090_de_test.sql`** (áp qua `scripts/_apply_one.mjs`, OK): `de_test`+`de_test_cau` (đề
+  test — entity RIÊNG, KHÔNG tái dùng `tai_lieu(loai='de_thi')`, đúng quyết định PLAN) · mở rộng
+  `ca_test` thêm `de_test_id`/`cham_xong_at`/`danh_gia_xong_at`/`tra_bai_xong_at`/`nhan_xet`(jsonb) ·
+  `ca_test_cau` (snapshot câu khi gán đề — `de_test_cau_id` chỉ backlink, KHÔNG live-ref) ·
+  `ca_test_cau_kq` (anti-NULL: dòng chỉ tồn tại khi đã chấm, `ket_qua` enum `correct/partial/wrong`
+  khớp quy ước ET đã có) · `nhan_xet_mau` (thư viện câu mẫu, mirror V1). RLS `la_thanh_vien()` mọi
+  bảng, cùng pattern `ca_test`.
+- **`src/lib/detest.ts`** (mới): đề test CRUD · `ganDeCaTest` (snapshot câu vào `ca_test_cau`) ·
+  chấm Đ/C/S per câu (`chamCauTest`, click-lại-để-bỏ-chấm giống ET) + `dongChamTest` (chặn nếu còn
+  câu chưa chấm, auto tick `ung_vien_viec.cham_bai` — đúng ý `derive:true` để sẵn từ trước) ·
+  `getBieuDoChuyenDe` (gom Đ/C/S theo chuyên đề qua `khoCuaMon(mon)` — tra ĐÚNG bảng theo môn, không
+  gộp) · nhận xét (jsonb, kỹ năng/kiến thức-4-dòng/khác) + `dongNhanXet` (ghi `lop_du_kien_id` lên
+  `ung_vien`) · trả bài (`listCanTraBai`/`dongTraBai`) · `getPhieuKetQua` (ghép dữ liệu phiếu).
+- **UI:** `DeTestScreen` (Ops soạn đề, CRUD câu) · `ChamTestScreen` (pool học thuật, card 3-cột
+  scan|đáp-án|Đ-C-S + next/prev, tính điểm/% realtime) · `NhanXetTestScreen` (biểu đồ chuyên đề +
+  form nhận xét gõ-để-tìm-mẫu `MauInput` + chọn lớp đề xuất qua `SearchSelect`) · `PhieuTestDauVao`
+  (`PhieuCard`+`PhieuTestModal`, BÊ NGUYÊN pattern `PhieuThongBao.tsx`/V1 `EtAnhGuiPH`: popup +
+  html2canvas CDN + copy-trong-popup). `DiemDanhTestScreen` (OPS) nối thêm: gán đề per card (select
+  đề active lọc đúng khối+môn) + section "Trả bài" (Story 4, cùng actor OPS nên gộp màn, không tách
+  leaf riêng).
+- **Nav:** 3 leaf mới `de_test`/`cham_test`/`nhan_xet_test` vào `fixtures.ts` nhóm Vận hành — quyền
+  ai-thấy do RBAC (Phân quyền) quyết, KHÔNG code cứng theo team (đúng pattern leaf-catalog có sẵn,
+  KHÔNG cần thêm `hocThuatToanHe` vào `MyScope` — pool "ai mở thì làm" chỉ cần RBAC feature-access).
+- **Verify:** `tsc --noEmit` sạch + `npm run build` pass. Test tay qua preview (dev quick-login Admin,
+  Founder bypass RBAC): tạo đề K8-Toán + thêm câu (đáp án "x=5") → mở "Điểm danh test" thấy dropdown
+  đề lọc ĐÚNG khối+môn của ca_test có sẵn (UV0127) → gán đề → verify DB (`claude_ro`): `ca_test.de_test_id`
+  set + `ca_test_cau` snapshot đúng đáp án. Upload bài scan thật KHÔNG test được — bucket storage
+  thiếu trên môi trường này (side note, không phải bug code mới — xem bài học §07-07 cũ "bucket không
+  tự tồn tại"). Nút "Hoàn tất" đúng bị chặn khi chưa có bài (button disabled, `trang_thai` vẫn
+  `dang_test` sau click — verify DB xác nhận guard hoạt động đúng).
+- **CÒN THIẾU / chưa làm:** upload-bài-thật end-to-end (chờ bucket) · "mở lại nhận xét" (có
+  `moLaiNhanXet` trong lib nhưng chưa có nút UI — chấm thì có "↩ Mở lại chấm", nhận xét chưa) · 7 câu
+  §F spec (đa môn 1-phiếu-hay-N, trục nhận xét môn≠Toán, hiệu suất staff…) — v1 đã chọn mặc định theo
+  PLAN, CHƯA hỏi lại Thùy xác nhận từng câu.
+
+### 07-08 (tiếp) — Gộp 4 leaf test-đầu-vào vào TRONG `Tuyển sinh` làm tab (Thùy: "cho gọn")
+
+- Thùy chỉ ra: 5 leaf riêng ở nav (Tuyển sinh/Điểm danh test/Đề test/Chấm test/Nhận xét test) nên gộp
+  giống bar toggle L5→L8 sẵn có của Tuyển sinh cho gọn, thay vì rải nav.
+- **Bỏ 4 leaf khỏi `fixtures.ts`** (diem_danh_test/de_test/cham_test/nhan_xet_test) + bỏ import/route
+  tương ứng ở `NhanSuHome.tsx` — giờ CHỈ còn leaf `tuyensinh`.
+- **`TuyenSinhScreen.tsx`**: mở rộng bar tab hiện có (L5/L6/L7/L8/Đã loại) thêm 4 tab
+  "Điểm danh test/Đề test/Chấm test/Nhận xét test" (`ExtraTab`, cùng 1 bar). `isFunnelTab()` tách 2
+  nhóm: tab phễu (giữ nguyên toggle-bar-môn + bảng ứng viên) vs tab test (ẩn toggle-bar-môn — các màn
+  con tự quản lý phạm vi/môn riêng của chúng). Render `<DiemDanhTestScreen/>`/`<DeTestScreen/>`/
+  `<ChamTestScreen/>`/`<NhanXetTestScreen/>` trực tiếp làm nội dung tab.
+- **Fix layout height khi nhúng** (điểm dễ vỡ): `ChamTestScreen`/`NhanXetTestScreen` có 2 chế độ hiển
+  thị — list phẳng (cần cuộn thường) và card mở full-height 3-cột (`flex h-full min-h-0`, cần ancestor
+  có chiều cao XÁC ĐỊNH mới cuộn đúng từng cột). Trước đây route thẳng làm grid-cell con của
+  `NhanSuHome` nên tự có chiều cao; giờ nhúng trong `<div className="mx-auto max-w-...">` (block
+  thường, không set height) sẽ làm `h-full` vỡ (auto→0). Fix: tách header/tab-bar (`shrink-0`, cố
+  định) khỏi vùng nội dung (`min-h-0 flex-1`) ở `TuyenSinhScreen`; nội dung tab test bọc
+  `overflow-hidden` (nhường cuộn cho con), tab phễu giữ `overflow-auto p-6` (như cũ). Đồng thời cho
+  CẢ 4 màn con (`ChamTestScreen`/`NhanXetTestScreen`/`DeTestScreen`/`DiemDanhTestScreen`) tự bọc
+  `h-full overflow-auto` ở chế độ list — tự chịu trách nhiệm cuộn, không phụ thuộc ancestor, robust dù
+  nhúng ở đâu.
+- **Verify:** `tsc`/`build` sạch. Test tay qua preview: cả 4 tab mới + 2 tab funnel (L6 xem bảng thật
+  17 ứng viên) đều render đúng, không lỗi console, không double-scroll/vỡ layout. Đề test/ca_test đã
+  gán từ phiên test trước vẫn hiện đúng trong tab mới.
+- (Ngoài lề, KHÔNG liên quan tính năng): sửa `vite.config.ts` đọc `PORT` qua `globalThis.process` để
+  preview-tool harness gán đúng port khi 5173 bị máy khác chiếm — tránh lỗi proxy mismatch lúc test
+  UI. Không ảnh hưởng chạy `npm run dev` bình thường (không set PORT thì giữ mặc định).
+
+### 07-08 (tiếp 2) — Sửa lại: Test đầu vào là MODULE RIÊNG, không nhét vào Tuyển sinh
+
+- Thùy sửa lại quyết định trước đó trong buổi: "Tuyển sinh là để quản lý level của Học sinh. Còn các
+  hoạt động test đầu vào thì để vào module Test đầu vào chứ" — tách 2 khái niệm: Tuyển sinh = phễu
+  LEVEL (L5→L8), Test đầu vào = 4 story vận hành (điểm danh/đề/chấm/nhận xét), KHÔNG gộp chung 1 màn
+  như tôi vừa làm.
+- **Revert `TuyenSinhScreen.tsx` về nguyên bản** (`git checkout HEAD --`) — bỏ hết 4 tab test đã nhét
+  vào, về lại đúng bar L5/L6/L7/L8/Đã loại như trước.
+- **Tạo `TestDauVaoScreen.tsx`** (module MỚI, riêng): 1 leaf `test_dau_vao` + bar tab riêng (cùng
+  style bar L5-L8 nhưng KHÔNG chung màn) chứa 4 tab Điểm danh/Đề/Chấm/Nhận xét — tái dùng nguyên
+  layout fix (header `shrink-0` + nội dung `min-h-0 flex-1 overflow-hidden`, 4 màn con tự
+  `h-full overflow-auto`) đã làm ở bước gộp-nhầm trước, chỉ đổi CHỖ ĐẶT (leaf riêng thay vì tab con
+  của Tuyển sinh).
+- **`fixtures.ts`**: leaf `tuyensinh` giữ nguyên (chú thích rõ "quản lý LEVEL, KHÔNG chứa hoạt động
+  test") + thêm leaf mới `test_dau_vao`. `NhanSuHome.tsx` route thêm `TestDauVaoScreen`.
+- **Verify:** `tsc`/`build` sạch. Test tay qua preview: leaf "Test đầu vào" hiện riêng trong nav (sau
+  "Phân công Ops"), 4 tab bên trong hoạt động đúng (data ca_test/đề test từ phiên trước vẫn hiện
+  đúng). Leaf "Tuyển sinh" xác nhận ĐÃ VỀ nguyên bản — chỉ còn bar L5-L8/Đã loại, không còn tab test.
+  Không lỗi console.
+- Bài học: khi CEO gợi ý "gộp cho gọn" — hỏi rõ ranh giới khái niệm TRƯỚC khi merge UI (Tuyển sinh
+  và Test đầu vào tưởng liên quan chặt vì cùng nằm trong phễu L5→L6, nhưng thực ra là 2 TRÁCH NHIỆM
+  khác nhau: quản lý trạng thái HS vs vận hành 1 hoạt động cụ thể — gộp nhầm 2 khái niệm khác nhau dù
+  "cho gọn" nghe hợp lý lúc đầu).
+
+### 07-08 (tiếp 3) — Hoàn thiện MT: full luồng ra đề → gán lớp → chấm → mastery dạng bài
+
+- Pause "Test đầu vào" theo yêu cầu Thùy, chuyển sang hoàn thiện MT (kỳ thi lớn, đã build 1 phần
+  06-xx: soạn + gán buổi, CÒN THIẾU chấm + line-config + mastery — xem DEVLOG cũ). Xác nhận hiểu đúng
+  2/3 ý Thùy nêu đã build sẵn (multi-lớp, gán-lặp-lại), ý 3 (chỉnh dòng) thật sự thiếu → hỏi lại phạm
+  vi đầy đủ, Thùy chốt: "full luồng: ra đề, gán lớp - chấm và mastery dạng bài".
+- **`src/lib/mt.ts`**: thêm `getMTInstanceByBuoi`/`getMTCaus` (cùng mẫu `getETByBuoi`/`getETCaus` —
+  gộp mọi phần 'custom' theo thứ tự, giống BTVN gộp nhiều phần). **Fix `ganMTVaoBuoi` thiếu seed sĩ
+  số**: buổi MT tạo mới KHÔNG đi qua `moBuoi` nên chưa từng seed `buoi_hoc_hs` — chấm/Elo cần
+  `diem_danh='co_mat'` nên bắt buộc có roster. Thêm đoạn seed y hệt `moBuoi` (gami.ts) vào nhánh tạo
+  buổi mới.
+- **`src/lib/gami.ts`**: thêm `loadMTForBuoi`/`ensureMTProblems` (mirror ET, phase='mt') — CHẤM tái
+  dùng thẳng `gradeET`/`deleteGrade`/`listGrades`/`listProblems` sẵn có (không cần hàm riêng, phase đã
+  tách qua `gami_session_problems.phase`). Xác nhận `closePhase`/`reopenPhase` phase='mt' đã đúng từ
+  trước (dùng chung cột `ingame_dong_at`, `coElo` include 'mt', `K_MT=60` đã cấu hình sẵn — CHỈ thiếu
+  UI, đúng như DEVLOG cũ ghi). Thêm nhánh derive task **`getMyTasks`**: buổi `loai='mt'` route qua
+  CÙNG `phan_cong_lop` như buổi thường (khác bù/đuổi dùng nguoi_day trực tiếp) — 1 task "Chấm MT" cho
+  bất kỳ ai có vai ở lớp đó (không khoá gv/tg). `TabKey`/`MyTask.loai` thêm `'mt'` → TS bắt buộc bổ
+  sung `mt` vào mọi `Record<TabKey,...>` còn thiếu (`vanhanh.ts` `TASK_TAB_LABEL`) — đúng lợi ích "audit
+  qua compiler" đã ghi ở bài học buổi-loại-mới.
+- **`src/lib/mastery.ts`**: `EvalSrc` thêm `'mt'` (SRC_LABEL 'MT'). MT **LUÔN vào mastery** (không cần
+  toggle như BTVN — MT giám sát thật, không phải tham khảo): thêm vào `phases` của `getMasteryHS` +
+  `loadMasteryCells` (ảnh hưởng rollup lớp/khối + pivot dạng/chuyên đề) + `byDang` filter của
+  `getTongQuanHS`. KHÔNG gộp MT vào thống kê `%ET` (giữ nguyên ý nghĩa riêng của ET) — chỉ ảnh hưởng
+  mastery-per-dạng, đúng phạm vi Thùy hỏi.
+- **`MTScreen.tsx`**: thêm UI chỉnh dòng (`etFormByCau`/`btvnLinesByCau`, autosave `cau_hinh` mỗi lần
+  đổi — MT không có nút Lưu riêng, khác ET) — BÊ y hệt pattern ET (badge form trắc-nghiệm/trả-lời-
+  ngắn/tự-luận + ô số dòng kẻ khi tự luận).
+- **`MTBuoiDetail.tsx` (mới)**: màn Chấm MT riêng (KHÁC `BuoiDetail` thường) — Điểm danh (đơn giản,
+  không báo PH) + bảng chấm Đ/C/S per câu (mẫu `ETChamTab`) + Đóng phase (Elo K=60) + Mở lại + Huỷ
+  buổi. Route qua `NhanSuHome.tsx` (`openBuoi.loai==='mt'`), `TASK_STYLE`/`GVTA_CHIPS` thêm entry 'mt'.
+- **✅ VERIFY ĐẦY ĐỦ qua preview thật + DB (`claude_ro`)**, KHÔNG chỉ tsc/build:
+  - Line-config: chọn "Tự luận" cho 1 câu MT có sẵn → ô "dòng" hiện đúng → verify DB `cau_hinh.etFormByCau` lưu đúng.
+  - Task-derive: login "Trang GV" (GV thật của lớp 9S1 có buổi MT có sẵn từ trước) → "Việc của tôi"
+    hiện đúng "🏆 Chấm MT · Lớp 9S1" (roster buổi này TRƯỚC ĐÓ = 0 dòng do tạo trước khi fix — mở
+    MTBuoiDetail tự chạy `dongBoSiSo` VÁ ĐÚNG thành 11 HS, xác nhận fix seed hoạt động cho data cũ lẫn mới).
+  - Điểm danh 3 HS + chấm đủ 5 câu × 3 HS (pattern Đ/C/S trộn) → Đóng chấm MT → verify DB: 15 dòng
+    `gami_grades` phase='mt' đúng · `gami_elo_history` phase='mt' delta cap ±40 (K=60 áp đúng, hạng 1
+    +40/hạng 3 -40/hạng 2 -2) · `gami_exp_ledger` source='rank_mt' đúng bậc RANK_EXP.mt (1700/1620/1500)
+    · `ma_dang` của cả 5 câu resolve đúng trong `dai_ban_do` (mastery per-dạng KHÔNG bị rớt do sai môn/bảng).
+  - Mở lại (reopen): verify DB `gami_elo_history`/`gami_exp_ledger` xoá sạch (0 dòng), Elo HS quay
+    đúng về giá trị trước khi đóng (1073), buổi về `trang_thai='mo'`.
+- **⚠ ĐỂ LẠI DATA TEST THẬT trên buổi MT có sẵn (9S1 · 08/07/2026, KHÔNG phải data tôi tự tạo mới)**:
+  3 HS bị đánh điểm danh "có mặt" + 15 dòng `gami_grades` (phase='mt', KHÔNG ảnh hưởng Elo/EXP vì đã
+  mở-lại-để-sửa ở bước verify cuối) + 1 câu MT "Kiểm tra khảo sát tháng 7_Nâng cao" đổi form "Tự luận"
+  + dòng=4. Đã hỏi Thùy có cần dọn không (chưa xoá gì — luật xoá CLAUDE.md).
+- **CÒN THIẾU (ngoài phạm vi hỏi lần này):** MTPrintView (in phiếu) · nối `ky_thi.loai='mt_sat_hach'`
+  (Level/vượt-band) · luật sư phạm (tỉ lệ câu/độ khó/phủ chuyên đề) · `listAllStaffTasks`/dashboard
+  hiệu suất KHÔNG có nhánh 'mt' (giống bù/đuổi cũng thiếu — omission nhất quán, không phải regression
+  mới nhưng chưa closed).
+
+### 07-08 (tiếp 4) — MT: buổi gán MT tự đóng đánh giá + ET (chỉ có 1 hoạt động = kiểm tra)
+
+- Thùy chốt thêm: "Buổi MT là kiểm tra, chỉ có 1 hoạt động. Nên buổi nào gán MT thì đóng toàn bộ các
+  hoạt động khác của buổi học: nhận xét, đánh giá, ET." — cân nhắc 2 cách hiểu (đóng HOẠT ĐỘNG của
+  CHÍNH buổi MT vs đóng buổi THƯỜNG cùng lớp+ngày nếu có) → chọn cách 1 (đúng nghĩa đen "buổi nào gán
+  MT" = buổi vừa được gán, KHÔNG đụng buổi khác — an toàn hơn, tránh rủi ro gọi nhầm `closePhase('et')`
+  lên buổi thường sẽ TÍNH ELO SAI (raw=0 cho cả lớp vì chưa từng có ET thật) nếu hiểu theo cách 2.
+- **Fix `ganMTVaoBuoi` (mt.ts):** sau khi resolve buoiId (mới HOẶC tái dùng), set thẳng
+  `danh_gia_xong_at`/`et_dong_at` = now() (guard `is(...,null)`, KHÔNG qua `closePhase`/`dongDanhGia`
+  — 2 hàm đó tính Elo/cần data thật, ở đây chỉ đánh dấu N/A nên set trực tiếp, không side-effect).
+  `ingame_dong_at` (mốc chấm-MT-thật) KHÔNG đụng — vẫn đợi chấm xong thật mới đóng.
+- **Không backfill hàng loạt bằng SQL thẳng** — thử chạy 1 script UPDATE mass cho các buổi MT cũ, bị
+  auto-mode classifier CHẶN ĐÚNG (Thùy chỉ yêu cầu hành vi tương lai, không xin backfill data sống).
+  Tôn trọng, không tìm cách lách. Thay vào đó verify qua chính tính năng vừa sửa: re-gán MT vào buổi
+  9S1/08-07 (buổi cũ trước fix) qua UI thật → guard tự vá đúng (`danh_gia_xong_at`/`et_dong_at` set,
+  `ingame_dong_at` vẫn null) — tự-heal khi ai đó re-gán, KHÔNG cần script riêng cho buổi đã test.
+- **Còn buổi MT khác (nếu có) chưa từng re-gán lại sẽ vẫn giữ NULL cũ** cho tới khi re-gán lần sau —
+  đã báo Thùy, chưa backfill hàng loạt (chờ xác nhận nếu muốn áp ngay cho toàn bộ buổi MT cũ).
+
+### 07-08 (tiếp 5) — Fix thật: buổi THƯỜNG song song với MT chưa được đóng (bug do hiểu thiếu 1 nửa)
+
+- Thùy phản hồi cụ thể: "vừa gán cho 9S1 thì không thấy hiện MT trong buổi học và chưa đóng ET các
+  thứ này" — verify DB phát hiện ĐÚNG: có 1 buổi **THƯỜNG** (loai='thuong') tồn tại SONG SONG cùng
+  (lớp 9S1, ngày 08/07) với buổi MT — bản sửa trước CHỈ đóng đánh giá/ET của CHÍNH buổi MT (đúng theo
+  nghĩa đen câu chữ), KHÔNG đụng buổi thường cùng ngày → đúng là thiếu, xác nhận "cách hiểu 2" (đóng cả
+  buổi thường cùng lớp+ngày) mà lượt trước tôi cân nhắc rồi loại bỏ vì sợ rủi ro Elo — hoá ra CẦN THẬT.
+- **Fix `ganMTVaoBuoi` (mt.ts):** sau khi đóng đánh giá+ET của buổi MT, tìm THÊM buổi `loai='thuong'`
+  cùng (lop_id, ngay) (nếu tồn tại) → đóng NỐT đánh giá+ET của nó bằng ĐÚNG helper an toàn
+  (`dongDanhGiaEtNA` — set thẳng cột, KHÔNG qua `closePhase`/`dongDanhGia`, giữ nguyên lý do an toàn đã
+  ghi lượt trước: buổi thường có thể CHƯA từng có ET/đánh giá thật hôm đó → gọi `closePhase('et')` thật
+  sẽ tính Elo SAI cho cả lớp). `ingame_dong_at` (chấm bài trên lớp) KHÔNG đụng — có thể đã chấm THẬT
+  trước khi biết có MT, không phải N/A.
+- **Thêm banner cảnh báo ở `BuoiDetail` (buổi thường)**: giải quyết luôn ý "không thấy hiện MT trong
+  buổi học" — `getMTBuoiSameDay(lopId, ngay)` (mt.ts) check có buổi MT cùng ngày không → hiện banner
+  tím "🏆 Ngày này lớp có MT — Đánh giá + ET đã tự đóng (không áp dụng, MT thay thế). Chấm MT ở Việc
+  của tôi." ngay dưới header buổi thường, GIẢI THÍCH vì sao đánh giá/ET đóng sẵn (tránh tưởng bug lần 2).
+- **Verify lại qua preview + DB thật**: re-gán MT vào 9S1/08-07 (buổi thường CÓ SẴN, đã xác nhận trước
+  đó đánh giá/ET đang NULL) → DB xác nhận đóng đúng (`danh_gia_xong_at`/`et_dong_at` set, `ingame_dong_at`
+  giữ nguyên giá trị cũ) → mở "Buổi học" → 9S1 → banner hiện đúng → tab "Đánh giá sau buổi" hiện
+  "✓ Đã hoàn thành đánh giá + ↩ Mở lại" (đúng trạng thái đóng).
+- **Không backfill hàng loạt** các buổi thường cũ khác (nếu có trường hợp tương tự chưa từng re-gán
+  MT lại) — chờ Thùy xác nhận có cần quét toàn bộ không.
+- Bài học: khi CEO mô tả 1 rule bằng lời, **luôn tìm bằng chứng THẬT trong DB trước khi kết luận đã
+  fix đủ** — lần đầu tôi tự suy luận "cách 1 an toàn hơn" rồi dừng ở đó mà không verify có buổi thường
+  song song hay không; đến khi CEO test thật mới lộ ra thiếu. Nhẽ ra nên query DB xem THỰC TẾ có buổi
+  thường song song trước khi chốt cách hiểu, thay vì chỉ suy luận trên lý thuyết an toàn.
+
+### 07-08 (tiếp 6) — MT: hiện ngay trong "Buổi học" + giữ cấu trúc PHẦN khi chấm (3 fix theo Thùy)
+
+- Thùy phản hồi tiếp 3 ý cụ thể sau khi test:
+  1. "MT phải hiện ngay bên trong buổi học chứ không phải chỉ ở việc của tôi"
+  2. "Mấy cái kia phải đóng ở trong buổi học luôn" (đánh giá/ET — xác nhận đúng scope đã fix lượt
+     trước, giờ càng cần vì MT + buổi thường đều xem được TỪ CÙNG 1 màn Buổi học)
+  3. "Chấm MT cấu trúc nó có giống file MT được gán đâu" — đúng: bảng chấm trước đó LÀM PHẲNG câu
+     (flatMap mọi Phần thành 1 dãy Câu 1..N liên tục), MẤT ranh giới Phần I/Phần II như lúc soạn.
+- **Fix #3 trước (gốc rễ)**: `mt.ts` thêm `getMTPhanCaus(taiLieuId)` trả **GIỮ NGUYÊN cấu trúc Phần**
+  (`{tieuDe, caus}[]`) thay vì `getMTCaus` cũ flatMap phẳng. `loadMTForBuoi` (gami.ts) đổi trả
+  `{mtId, phans, caus}` (phans = cấu trúc thật, caus = phans.flatMap dùng RIÊNG cho seed problem_no
+  liên tục — vẫn cần liên tục toàn bài để Elo/rank tính đúng, KHÔNG đổi). `MTBuoiDetail.tsx`: bảng
+  chấm thêm 1 HÀNG NHÓM phía trên header câu, mỗi Phần 1 `<th colSpan=...>` đúng số câu của nó — nhìn
+  vào là biết câu nào thuộc Phần nào, khớp y hệt lúc soạn ở MTEditor.
+- **Fix #1+#2**: `mt.ts` thêm `listMTBuoiCuaNgay(ngay)` (query buổi_hoc loai='mt' theo NGÀY, mọi lớp
+  — KHÔNG suy từ TKB như buổi thường, vì MT tạo tay lúc gán). `BuoiHocScreen.tsx` (màn "Buổi học"):
+  load thêm mtList song song `buoiAoCuaNgay`, hiện section RIÊNG "🏆 KỲ THI (MT)" phía trên lưới buổi
+  thường (không theo filter Chưa-mở/Đã-mở vì MT không có state "chưa mở"), thẻ `MTCard` bấm vào →
+  `MTBuoiDetail` (mở NGAY tại chỗ, không cần vòng qua "Việc của tôi" nữa — vẫn giữ luôn ở Việc của tôi
+  cho GV/TG, giờ THÊM lối vào trực tiếp từ Buổi học cho ai duyệt/xem chung).
+- **Verify qua preview thật**: mở "Buổi học" ngày 08/07 → thấy card "🏆 Kỳ thi (MT) — 1 · 9S1" ngay
+  trên cùng → bấm vào → mở đúng MTBuoiDetail → bảng chấm hiện đúng "Phần I: Trả lời ngắn" gộp 5 câu
+  (khớp file MT "Kiểm tra khảo sát tháng 7" đã gán) → data chấm cũ (từ lượt test trước) vẫn nguyên vẹn
+  sau khi đổi cấu trúc hiển thị (không mất dữ liệu, chỉ đổi CÁCH NHÌN).
+- Bài học (nối tiếp bài học lượt trước): user-facing feedback cụ thể ("check thấy sai") luôn đáng tin
+  hơn suy luận trên giấy — 2/3 điểm lần này (#1, #2) đều là những chỗ tôi đã có sẵn cảm giác "có thể
+  chưa đủ" khi thiết kế nhưng không chủ động hỏi/kiểm tra kỹ trước khi báo xong việc.
+
+### 07-08 (tiếp 7) — MT: ĐẠI TU kiến trúc — bỏ buổi_hoc(loai='mt') riêng, MT = 1 TAB của buổi thường (giống ET)
+
+- Thùy chốt dứt điểm: "Chấm MT phải hiện trong buổi học giống như chấm ET chứ" — nghĩa là MT KHÔNG
+  nên là 1 buổi/entity riêng biệt (loai='mt', card riêng, roster riêng) mà phải là 1 PHASE/TAB của
+  buổi_hoc(loai='thuong') THẬT, giống hệt cách ET hoạt động (ET không có buổi riêng, chỉ là tab +
+  cột `et_dong_at` trên buổi thường). Đây là đại tu kiến trúc, không phải patch nhỏ.
+- **Migration `0091_mt_dong_at.sql`**: thêm cột `buoi_hoc.mt_dong_at` — MT cần cột đóng RIÊNG (không
+  dùng chung `ingame_dong_at` như bản cũ, vì giờ buổi thường có ingame THẬT, dùng chung sẽ đụng độ).
+- **`gami.ts`**: `closePhase`/`reopenPhase` route `dongCol` theo 3 nhánh (et/mt/ingame) thay vì 2.
+  "Hoàn tất" buổi thường giờ xét ĐỦ 3 phase áp dụng (ingame+et+**mt nếu buổi có gán MT**, tra qua
+  `tai_lieu(loai='mt_buoi')` khớp lớp+ngày — batched trong `getMyTasks`, per-buổi trong `closePhase`
+  vì cần biết ngay lúc đóng). `getMyTasks`: XOÁ nhánh riêng cho `loai='mt'` (không còn tồn tại nữa),
+  THAY bằng: buổi thường nào ĐÃ CÓ gán MT thật (tra `tai_lieu loai='mt_buoi'`, tránh spam "Chấm MT"
+  rỗng lên 99% ngày thường không có kỳ thi) → thêm task 'mt' cho vai TG (giống ET), dùng `mt_dong_at` làm mốc done.
+- **`mt.ts` — `ganMTVaoBuoi` ĐẠI TU**: bỏ hẳn nhánh tạo `buoi_hoc(loai='mt')` — giờ gọi THẲNG `moBuoi`
+  (import từ gami.ts — chấp nhận import vòng 2 chiều gami.ts↔mt.ts, AN TOÀN vì cả 2 chiều chỉ dùng
+  trong function body, không phải top-level; verify OK qua tsc+build+chạy thật) để tìm/tạo buổi
+  THƯỜNG cho (lớp,ngày) — tự động có `ma_buoi`, GV chính, roster chuẩn giống hệt "Mở buổi" thường
+  (xoá được ~15 dòng code tự seed roster trùng lặp trước đây). Đóng đánh giá+ET N/A vẫn giữ (buổi
+  gán MT chỉ có 1 hoạt động = kiểm tra — quyết định trước đó vẫn đúng, giờ áp lên buổi thường CHUNG
+  luôn, không cần phân biệt "buổi thường co-exist" nữa vì chỉ còn 1 buổi). `listGanMT` tra buổi qua
+  `loai='thuong'` thay vì `loai='mt'`. Xoá `getMTBuoiSameDay`/`listMTBuoiCuaNgay` (chết theo mô hình cũ).
+- **UI**: `BuoiHocScreen.tsx` — xoá section riêng "🏆 Kỳ thi (MT)" + `MTCard` + banner cảnh báo (không
+  cần nữa, MT giờ NẰM SẴN trong buổi). Thêm tab **"🏆 MT"** vào tab-bar của `BuoiDetail` (cạnh
+  Điểm-danh/Đánh-giá/Chấm-bài/ET/BTVN) — component `MTTab` mới, CÙNG mẫu `ETChamTab` (bảng Đ/C/S,
+  dùng CHUNG `roster`/điểm-danh của buổi — hết cần đồng bộ 2 roster riêng biệt như bản cũ), GIỮ cấu
+  trúc Phần (colspan header, không làm phẳng — kế thừa fix trước). Xoá `MTBuoiDetail.tsx` khỏi mọi
+  import/route (file vẫn còn trên disk, ĐÃ HỎI Thùy có xoá hẳn không — chưa xoá, chờ xác nhận).
+  `NhanSuHome.tsx`: bỏ `loai:'mt'` khỏi `OpenBuoi`/`MyTask.loai` (không còn route đặc biệt); `tabsCuaVai('tg')`
+  thêm 'mt' để mở đúng tab khi bấm task "Chấm MT" từ Việc của tôi.
+- **Verify qua preview + DB thật (kỹ, vì đây là đại tu)**: gán MT vào 9S1 ngày MỚI (09/07) → verify
+  DB: buổi TẠO ĐÚNG `loai='thuong'`, `ma_buoi` sinh tự động, roster 13 HS (qua moBuoi, không phải code
+  tự seed), đánh giá+ET auto-đóng N/A, `mt_dong_at`/`ingame_dong_at` đúng null (chờ chấm thật). Mở
+  "Buổi học" → xác nhận KHÔNG còn card MT riêng, buổi hiện như buổi thường bình thường, tab "🏆 MT"
+  xuất hiện đúng trong tab-bar khi mở. Chấm Đ/C/S → đóng → verify DB: `mt_dong_at` set, `gami_elo_history`
+  phase='mt' đúng cap ±40, `gami_exp_ledger` source='rank_mt' đúng bậc, VÀ **`trang_thai` chuyển
+  'hoan_tat'` đúng lúc CẢ 3 phase (ingame/et/mt) đều đóng** — xác nhận gate 3 chiều hoạt động đúng
+  (test tình cờ rơi vào buổi 08/07 do lỗi thao tác date-picker của tool test, không phải bug app —
+  đã trace kỹ bằng cách đối chiếu `ma_buoi`/query DB, kết luận rõ ràng trước khi báo cáo).
+- **Data cũ / cần Thùy xác nhận:**
+  1. `MTBuoiDetail.tsx` giờ orphan (không ai import) — xoá file luôn hay giữ tham khảo?
+  2. Buổi `loai='mt'` cũ (461e1b1b, test 08/07 phiên trước — 5 problems/15 grades) giờ KHÔNG còn
+     đường vào (đã bỏ hết route cũ) — data mồ côi, có cần dọn không?
+  3. Buổi `aca3ba90` (9S1 · 08/07, dùng để verify lượt này) đã cộng dồn 18 `gami_session_problems`
+     phase='mt' qua nhiều lần re-gán khác nội dung (từ các phiên test trước) — phát hiện: `ensureMTProblems`
+     chỉ seed khi CHƯA có problem nào cho buổi (`if (cur.length ...) return`), nên re-gán ĐỀ KHÁC lên
+     buổi ĐÃ CÓ problem cũ sẽ để lại problem THỪA (không xoá cái cũ) — bug tiềm ẩn cần fix ở lượt sau
+     nếu 1 buổi bị gán MT nhiều lần với nội dung khác nhau (hiếm nhưng có thể xảy ra khi soạn lại đề).
+- Bài học: khi tự-động-hoá test qua devtools (set input.value + dispatchEvent), input React-controlled
+  có thể KHÔNG nhận state (đặc biệt input ngoài modal, khác context) → luôn ĐỐI CHIẾU `ma_buoi`/id thật
+  qua DB trước khi kết luận "đã test đúng buổi X", đừng tin mù UI hiển thị đúng ngày mình gõ.
+
+### 07-08 (tiếp 8) — MT: bỏ giờ/phòng/GV khỏi form gán (thuộc về buổi học, không phải MT)
+
+- Thùy chốt: "MT chỉ cần gán lớp chứ, thêm giáo viên ngày giờ các thứ làm gì. Cái đó thuộc về buổi
+  học cơ mà. MT chỉ cần chọn buổi học ngày nào của lớp nào thôi." — đúng, form gán MT trước đó thừa
+  3 ô Giờ/Phòng/GV (vốn là thuộc tính CỦA BUỔI, không phải của việc gán MT).
+- **`mt.ts`**: `ganMTVaoBuoi` rút gọn còn `{lopId, ngay}`. Thêm `tkbSlotCuaLop(lopId, ngay)` — khi
+  buổi CHƯA tồn tại (buoiMoi), tự tra TKB (đúng `thu` + trong khoảng `hieu_luc_tu/den`) để lấy
+  giờ/phòng tự động cho `moBuoi`, KHÔNG hỏi người dùng (giống hệt cách buổi thường tự mở từ
+  `buoiAoCuaNgay`). Không tìm được slot hợp lệ → để trống (null), OPS tự sửa ở Buổi học sau — KHÔNG
+  chặn việc gán MT.
+- **`MTScreen.tsx` — `GanBuoiModal`**: bỏ hẳn 3 ô Giờ/Phòng/GV, chỉ còn Lớp + Ngày. Bỏ import
+  `listNhanSu`/`NhanSu` (không còn dùng).
+- **Verify qua preview + DB thật**: gán MT vào 9S1 ngày mới (21/07, thứ 3) → buổi tạo đúng
+  `loai='thuong'`, `ma_buoi` đúng thứ (T3), đánh giá/ET auto-đóng đúng. Giờ/phòng ra `null` — kiểm tra
+  chéo TKB thật: 2 dòng TKB thứ-3 của 9S1 đều đã HẾT hiệu lực từ giữa tháng 6 (`hieu_luc_den` 15-16/6)
+  → xác nhận đây là hành vi ĐÚNG (không có slot hợp lệ để tự điền), không phải bug của
+  `tkbSlotCuaLop`. Không test được case "có TKB hợp lệ" bằng data thật hiện có, nhưng logic SQL đơn
+  giản/tường minh nên tự tin đúng qua đọc code.

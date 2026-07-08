@@ -204,6 +204,7 @@ export type CaTestTrangThai = 'dang_test' | 'hoan_thanh'
 export type CaTest = {
   id: string; ungVienId: string; mon: string; ngay: string; gioBatDau: string
   thoiLuongPhut: number; trangThai: CaTestTrangThai; baiUrl: string | null; hoanThanhAt: string | null
+  deTestId: string | null
   createdAt: string
   ungVien: { hoTenHs: string; maUv: string | null; khoi: string | null; hoTenPh: string | null; sdtPh: string | null }
 }
@@ -212,6 +213,7 @@ function mapCaTest(r: any): CaTest {
   return {
     id: r.id, ungVienId: r.ung_vien_id, mon: r.mon, ngay: r.ngay, gioBatDau: r.gio_bat_dau,
     thoiLuongPhut: r.thoi_luong_phut, trangThai: r.trang_thai, baiUrl: r.bai_url, hoanThanhAt: r.hoan_thanh_at,
+    deTestId: r.de_test_id ?? null,
     createdAt: r.created_at,
     ungVien: { hoTenHs: r.ung_vien?.ho_ten_hs ?? '?', maUv: r.ung_vien?.ma_uv ?? null, khoi: r.ung_vien?.khoi ?? null, hoTenPh: r.ung_vien?.ho_ten_ph ?? null, sdtPh: r.ung_vien?.sdt_ph ?? null },
   }

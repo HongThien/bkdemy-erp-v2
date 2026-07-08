@@ -7,7 +7,7 @@ import { khoCuaMon } from './tailieu'
 
 const LIMIT = 10000
 
-export type EvalSrc = 'ingame' | 'et' | 'dg' | 'btvn'
+export type EvalSrc = 'ingame' | 'et' | 'mt' | 'dg' | 'btvn'
 export type DangEval = { value: number; t: string; src: EvalSrc } // value 0|0.5|1 · t = ISO · src = nguồn
 export type Mastery = { score: number; n: number; muc: 'dat' | 'can_luyen' | 'yeu'; tin: 'cao' | 'tb' | 'thap' }
 export type DangMastery = {
@@ -18,8 +18,9 @@ export type DangMastery = {
   evals: DangEval[] // MỚI → CŨ
 }
 
-// Nhãn nguồn cho UI.
-export const SRC_LABEL: Record<EvalSrc, string> = { ingame: 'IG', et: 'ET', dg: 'ĐG', btvn: 'BT' }
+// Nhãn nguồn cho UI. MT = kỳ thi lớn, chấm Đ/C/S per câu GIỐNG ET (giám sát, KHÔNG tham khảo như BTVN)
+// → LUÔN vào mastery (không cần toggle như includeBTVN).
+export const SRC_LABEL: Record<EvalSrc, string> = { ingame: 'IG', et: 'ET', mt: 'MT', dg: 'ĐG', btvn: 'BT' }
 
 // ── NGUỒN ĐO ONLINE (test online 07-04): bai_lam_cau (verdict ≠ null) = phép đo ──
 // ET + ĐỀ THI online → src 'et' (thi có giám sát, VÀO mastery — cùng chế độ THI, xem THI_LOAI HocSinhApp).
@@ -61,7 +62,7 @@ export async function getMasteryHS(
   opts?: { includeBTVN?: boolean; days?: number },
 ): Promise<DangMastery[]> {
   const K = khoCuaMon(mon) // banDoTbl theo môn → scope dạng đúng môn (bỏ dạng môn khác)
-  const phases: EvalSrc[] = opts?.includeBTVN ? ['ingame', 'et', 'btvn'] : ['ingame', 'et']
+  const phases: EvalSrc[] = opts?.includeBTVN ? ['ingame', 'et', 'mt', 'btvn'] : ['ingame', 'et', 'mt']
   const sinceIso = opts?.days ? new Date(Date.now() - opts.days * 86400_000).toISOString() : null // boundary INSTANT (được phép, §windowing)
 
   // grades của HS, EMBED thẳng problem (phase, ma_dang) — FK problem_id→gami_session_problems ĐƠN, sạch
@@ -156,7 +157,7 @@ export async function getTongQuanHS(hocSinhId: string, mon: string): Promise<Ton
     const tm = Date.parse(g.graded_at)
     if (p.phase === 'et') { etSum += v; etN++; if (inRecent(tm)) { etR += v; etRN++ } else if (inPrior(tm)) { etP += v; etPN++ } }
     else if (p.phase === 'btvn') { btSum += v; btN++; if (inRecent(tm)) { btR += v; btRN++ } else if (inPrior(tm)) { btP += v; btPN++ } }
-    if ((p.phase === 'ingame' || p.phase === 'et') && p.ma_dang) (byDang[p.ma_dang] ??= []).push({ value: v, t: g.graded_at, src: p.phase as EvalSrc })
+    if ((p.phase === 'ingame' || p.phase === 'et' || p.phase === 'mt') && p.ma_dang) (byDang[p.ma_dang] ??= []).push({ value: v, t: g.graded_at, src: p.phase as EvalSrc })
   }
   for (const d of (dgs ?? []) as any[]) if (d.ma_dang) (byDang[d.ma_dang] ??= []).push({ value: Number(d.diem), t: d.updated_at, src: 'dg' })
   // Online: scope theo môn của TEST (có sẵn nhãn mon — §1.6); ET vào cả %ET lẫn byDang, btvn/gt chỉ %BTVN.
@@ -227,7 +228,7 @@ export type RollupScope = { mon: string; lopId?: string | null; khoi?: string | 
 async function loadMasteryCells(opts: RollupScope): Promise<CellBundle> {
   const empty: CellBundle = { hsMap: new Map(), hsIds: [], byHS: new Map(), dangInfo: new Map() }
   const K = khoCuaMon(opts.mon)
-  const phases: EvalSrc[] = opts.includeBTVN ? ['ingame', 'et', 'btvn'] : ['ingame', 'et']
+  const phases: EvalSrc[] = opts.includeBTVN ? ['ingame', 'et', 'mt', 'btvn'] : ['ingame', 'et', 'mt']
 
   // 1) HS trong phạm vi (lớp / khối / HỆ-band × môn), đang học.
   let sq

@@ -9,9 +9,12 @@ import {
   listMT, createMT, renameMT, addPhanMT, ganMTVaoBuoi, listGanMT,
   type MTGanRow,
 } from '../../lib/mt'
-import { getTaiLieuFull, deletePhan, setCauOfPhan, suggestCauForDang, khoCuaMon, type PhanResolved } from '../../lib/tailieu'
-import { listLop, listNhanSu, type Lop, type NhanSu } from '../../lib/nhansu'
-import { listCauByDang, KHOI_OPTIONS, DEFAULT_KHOI, type CauHoi } from '../../lib/kho/api'
+import {
+  getTaiLieuFull, deletePhan, setCauOfPhan, suggestCauForDang, khoCuaMon, updateTaiLieu,
+  ET_FORMS, etFormOf, type PhanResolved, type CauHinh, type ETForm as ETFormKind,
+} from '../../lib/tailieu'
+import { listLop, type Lop } from '../../lib/nhansu'
+import { listCauByDang, LOAI_CAU, KHOI_OPTIONS, DEFAULT_KHOI, type CauHoi } from '../../lib/kho/api'
 import { MathText, inp } from '../kho/ui'
 import { KhoPicker } from './TaiLieuBuilder'
 import DangPickerOne from '../../components/DangPickerOne'
@@ -20,6 +23,7 @@ import SearchSelect from '../../components/SearchSelect'
 const MONS = ['Toán', 'KHTN']
 const DEFAULT_ROWS_PER_PHAN = 3
 type Row = { maDang: string | null; maCau: string | null }
+const loaiLabel = (v: string) => LOAI_CAU.find((x) => x.value === v)?.label ?? v
 
 // ═══════════ LIST (leaf lamtailieu:mt) — chọn MT để sửa / tạo mới ═══════════
 export default function MTScreen() {
@@ -102,6 +106,7 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
   const [rowsByPhan, setRowsByPhan] = useState<Record<string, Row[]>>({})
   const [cau, setCau] = useState<Record<string, CauHoi>>({}) // cache để preview
   const [dangOpts, setDangOpts] = useState<{ ma_dang: string; ten_dang: string; ten_chuyen_de: string }[]>([])
+  const [ch, setCh] = useState<CauHinh>({}) // cấu hình chỉnh dòng (etFormByCau/btvnLinesByCau) — giống ET
   const [ten, setTen] = useState('')
   const [saved, setSaved] = useState(false)
   const [loading, setLoading] = useState(true)
@@ -116,7 +121,7 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
     setLoading(true)
     try {
       const full = await getTaiLieuFull(id)
-      setD(full.taiLieu as any); setTen(full.taiLieu.ten)
+      setD(full.taiLieu as any); setTen(full.taiLieu.ten); setCh(full.taiLieu.cau_hinh ?? {})
       const ps = full.phans.filter((p) => p.loai_phan === 'custom')
       setPhans(ps)
       const rb: Record<string, Row[]> = {}
@@ -185,6 +190,15 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
     if (!confirm(`Xoá phần "${p.tieu_de}"? (câu vẫn còn trong kho, chỉ bỏ khỏi MT này)`)) return
     await deletePhan(p.id); await reload(); markSaved()
   }
+  // Cấu hình chỉnh dòng (số dòng kẻ tự luận + đổi form hiển thị) — GIỐNG ET, autosave ngay (MT không có nút Lưu riêng).
+  async function setLines(maCau: string, n: number) {
+    const next: CauHinh = { ...ch, btvnLinesByCau: { ...(ch.btvnLinesByCau ?? {}), [maCau]: n } }
+    setCh(next); await updateTaiLieu(id, { cau_hinh: next }); markSaved()
+  }
+  async function setForm(maCau: string, f: ETFormKind) {
+    const next: CauHinh = { ...ch, etFormByCau: { ...(ch.etFormByCau ?? {}), [maCau]: f } }
+    setCh(next); await updateTaiLieu(id, { cau_hinh: next }); markSaved()
+  }
 
   if (loading || !d) return <div className="p-8 text-sm text-slate-400">Đang tải…</div>
   const soCau = Object.values(rowsByPhan).reduce((s, rows) => s + rows.filter((r) => r.maCau).length, 0)
@@ -224,6 +238,8 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
                   <div className="space-y-2">
                     {rows.map((r, i) => {
                       const c = r.maCau ? cau[r.maCau] : null
+                      const form = c ? etFormOf(c, ch) : null
+                      const formOpts = ET_FORMS.filter((f) => f.v !== 'trac_nghiem' || !!(c?.lua_chon && c.lua_chon.length))
                       return (
                         <div key={i} className="flex items-start gap-2 rounded-xl border border-slate-200 bg-slate-50/60 p-2.5">
                           <span className="mt-1.5 w-6 shrink-0 text-center text-[13px] font-bold text-violet-600">{i + 1}</span>
@@ -234,8 +250,24 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
                             {c ? <div className="truncate text-[13px] text-slate-700"><MathText>{c.noi_dung}</MathText></div>
                               : r.maDang ? <span className="text-[12px] italic text-slate-400">chưa có câu</span>
                               : <span className="text-[12px] italic text-slate-300">chọn dạng để hệ gợi ý câu</span>}
-                            {c && <span className="mt-1 inline-block rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[10px] text-slate-500">{c.ma_cau}</span>}
+                            {c && (
+                              <div className="mt-1 flex flex-wrap items-center gap-1.5">
+                                <span className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[10px] text-slate-500" title="Mã câu">{c.ma_cau}</span>
+                                <span className="text-[10px] text-slate-300">kho: {loaiLabel(c.loai_cau)} · in dạng:</span>
+                                <div className="flex gap-0.5">
+                                  {formOpts.map((f) => (
+                                    <button key={f.v} onClick={() => setForm(c.ma_cau, f.v)} title="Form hiển thị trong đề (khác loại kho)"
+                                      className={`rounded px-1.5 py-0.5 text-[10px] font-medium ${form === f.v ? 'bg-violet-600 text-white' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}>{f.lbl}</button>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
                           </div>
+                          {c && form === 'tu_luan' && (
+                            <label className="flex shrink-0 items-center gap-1 pt-1.5 text-[11px] text-slate-400" title="Số dòng kẻ cho HS viết (bản in)">dòng
+                              <input type="number" min={0} max={30} value={ch.btvnLinesByCau?.[c.ma_cau] ?? 4} onChange={(e) => setLines(c.ma_cau, Math.max(0, Math.min(30, +e.target.value || 0)))} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
+                            </label>
+                          )}
                           {r.maDang && (
                             <div className="flex shrink-0 gap-1 pt-0.5">
                               <button onClick={() => doiCau(p.id, i)} title="Đổi câu khác (ít dùng kế tiếp)" className="rounded-md bg-indigo-50 px-2 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-100">↻ Đổi</button>
@@ -276,25 +308,22 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
   )
 }
 
-// ── GÁN VÀO BUỔI: chọn lớp (cùng môn với MT) + ngày + giờ/phòng/GV tuỳ chọn ──
+// ── GÁN VÀO BUỔI: CHỈ chọn lớp (cùng môn với MT) + ngày (Thùy 07-08: "giờ/GV/phòng thuộc về buổi
+// học, MT không cần hỏi lại" — buổi mới (nếu chưa có) tự suy giờ/phòng từ TKB, xem tkbSlotCuaLop mt.ts) ──
 function GanBuoiModal({ mtId, mon, onClose, onDone }: { mtId: string; mon: string; onClose: () => void; onDone: () => void }) {
   const [lops, setLops] = useState<Lop[]>([])
-  const [nss, setNss] = useState<NhanSu[]>([])
   const [lopId, setLopId] = useState<string | null>(null)
   const [ngay, setNgay] = useState('')
-  const [gio, setGio] = useState('')
-  const [phong, setPhong] = useState('')
-  const [gv, setGv] = useState<string | null>(null)
   const [busy, setBusy] = useState(false)
   const [res, setRes] = useState<{ ok: boolean; msg: string } | null>(null)
-  useEffect(() => { listLop().then((ls) => setLops(ls.filter((l) => l.mon === mon))); listNhanSu().then(setNss).catch(() => {}) }, [mon])
+  useEffect(() => { listLop().then((ls) => setLops(ls.filter((l) => l.mon === mon))) }, [mon])
 
   async function xacNhan() {
     if (!lopId || !ngay) return
     setBusy(true)
     try {
-      const kq = await ganMTVaoBuoi(mtId, { lopId, ngay, gioBatDau: gio || null, phong: phong || null, nguoiDay: gv })
-      setRes({ ok: true, msg: kq.buoiMoi ? 'Đã tạo buổi MT mới + gán nội dung.' : 'Đã gán nội dung vào buổi MT có sẵn (lớp+ngày này đã có buổi).' })
+      const kq = await ganMTVaoBuoi(mtId, { lopId, ngay })
+      setRes({ ok: true, msg: kq.buoiMoi ? 'Đã tạo buổi mới + gán nội dung MT. Chấm ở tab "🏆 MT" trong buổi (Buổi học/Việc của tôi).' : 'Đã gán nội dung MT vào buổi có sẵn (lớp+ngày này đã có buổi). Chấm ở tab "🏆 MT" trong buổi đó.' })
     } catch (e: any) { setRes({ ok: false, msg: e.message ?? String(e) }) } finally { setBusy(false) }
   }
   return (
@@ -311,16 +340,11 @@ function GanBuoiModal({ mtId, mon, onClose, onDone }: { mtId: string; mon: strin
           </>
         ) : (
           <>
-            <p className="mt-1 text-[12px] text-slate-500">Tạo (hoặc dùng lại) 1 buổi MT riêng cho đúng lớp+ngày này, copy toàn bộ nội dung MT vào đó.</p>
+            <p className="mt-1 text-[12px] text-slate-500">Chọn buổi học (lớp + ngày) để gán nội dung MT vào — MT là 1 tab của buổi đó (giống ET), không tách buổi riêng. Giờ/phòng/GV thuộc về buổi học, sửa ở đó nếu cần.</p>
             <label className="mt-3 block text-[12px] font-medium text-slate-600">Lớp ({mon})</label>
             <div className="mt-1"><SearchSelect value={lopId} onChange={setLopId} placeholder="Chọn lớp…" options={lops.map((l) => ({ id: l.id, label: l.ten_lop, sub: l.khoi ? `Khối ${l.khoi}` : '' }))} /></div>
-            <div className="mt-3 grid grid-cols-3 gap-2">
-              <div><label className="mb-1 block text-[12px] font-medium text-slate-600">Ngày *</label><input type="date" value={ngay} onChange={(e) => setNgay(e.target.value)} className={`${inp} w-full`} /></div>
-              <div><label className="mb-1 block text-[12px] font-medium text-slate-600">Giờ</label><input type="time" value={gio} onChange={(e) => setGio(e.target.value)} className={`${inp} w-full`} /></div>
-              <div><label className="mb-1 block text-[12px] font-medium text-slate-600">Phòng</label><input value={phong} onChange={(e) => setPhong(e.target.value)} className={`${inp} w-full`} /></div>
-            </div>
-            <label className="mt-3 block text-[12px] font-medium text-slate-600">GV (tuỳ chọn)</label>
-            <div className="mt-1"><SearchSelect value={gv} onChange={setGv} placeholder="Chọn GV…" options={nss.map((n) => ({ id: n.id, label: n.ho_ten, sub: n.ma_ns }))} /></div>
+            <label className="mt-3 block text-[12px] font-medium text-slate-600">Ngày *</label>
+            <input type="date" value={ngay} onChange={(e) => setNgay(e.target.value)} className={`${inp} mt-1 w-full`} />
             <div className="mt-4 flex justify-end gap-2">
               <button onClick={onClose} className="rounded-lg border border-slate-300 px-3 py-1.5 text-[13px] text-slate-600">Huỷ</button>
               <button disabled={!lopId || !ngay || busy} onClick={xacNhan} className="rounded-lg bg-emerald-600 px-4 py-1.5 text-[13px] font-medium text-white disabled:opacity-40">{busy ? 'Đang gán…' : 'Gán'}</button>

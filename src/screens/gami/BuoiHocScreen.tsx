@@ -8,10 +8,11 @@ import {
   loadBTVNForBuoi, ensureBTVNProblems, getBtvnKetQua, setBtvnKetQua, listCanhBao, themCanhBao, xoaCanhBao, closeBTVN, reopenBTVN,
   type BtvnKQ, type CanhBao, type BtvnTrangThai, type BtvnThaiDo,
   getDanhGia, setDanhGiaDang, setNhanXet, dongDanhGia, moLaiDanhGia,
-  loadLiveTestForBuoi,
+  loadLiveTestForBuoi, getDangTen, loadMTForBuoi, ensureMTProblems,
   type BuoiAo, type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type Phase, type DiemDanh, type DanhGiaHS, type DanhGiaDiem, type TabKey, type ETResult,
 } from '../../lib/gami'
 import { getLiveSnapshot, type BaiTest, type BaiTestCau, type BaiLam, type LiveAnswer } from '../../lib/testonline'
+import type { MTPhanCaus } from '../../lib/mt'
 import { listNhanSu, type NhanSu } from '../../lib/nhansu'
 import { listDaiDang, type CauHoi } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
@@ -198,7 +199,7 @@ export function BuoiDetail({ id, onClose, tabs, initialTab, canManage = true, on
       ) : (
         <>
           <div className="flex gap-1 overflow-x-auto border-b border-slate-200 bg-white px-6">
-            {([['diemdanh', `Điểm danh (${soCoMat}/${roster.length})`], ['danhgia', 'Đánh giá sau buổi'], ['ingame', 'Chấm bài trên lớp'], ['et', 'ET'], ['btvn', 'BTVN']] as const).filter(([k]) => !tabs || tabs.includes(k)).map(([k, lbl]) => (
+            {([['diemdanh', `Điểm danh (${soCoMat}/${roster.length})`], ['danhgia', 'Đánh giá sau buổi'], ['ingame', 'Chấm bài trên lớp'], ['et', 'ET'], ['btvn', 'BTVN'], ['mt', '🏆 MT']] as const).filter(([k]) => !tabs || tabs.includes(k)).map(([k, lbl]) => (
               <button key={k} onClick={() => setTab(k as any)} className={`-mb-px shrink-0 whitespace-nowrap border-b-2 px-3 py-2 text-[13px] font-medium ${tab === k ? 'border-indigo-600 text-indigo-700' : 'border-transparent text-slate-500 hover:text-slate-700'}`}>{lbl}</button>
             ))}
             {/* "Xem live" không phải task-scope tab (không có deadline/nghiệm thu) → chỉ hiện ở view ĐỦ (tabs=undefined,
@@ -216,6 +217,8 @@ export function BuoiDetail({ id, onClose, tabs, initialTab, canManage = true, on
               ? <ETChamTab buoiId={id} roster={roster} buoi={buoi} dangOpts={dangOpts} onChange={reload} />
               : tab === 'btvn'
               ? <BtvnTab buoiId={id} roster={roster} buoi={buoi} dangOpts={dangOpts} onChange={reload} />
+              : tab === 'mt'
+              ? <MTTab buoiId={id} roster={roster} buoi={buoi} onChange={reload} />
               : tab === 'live'
               ? <LiveTab buoiId={id} roster={roster} />
               : <ChamTab buoiId={id} phase="ingame" roster={roster} buoi={buoi} dangOpts={dangOpts} onChange={reload} />}
@@ -900,6 +903,134 @@ function LiveTab({ buoiId, roster }: { buoiId: string; roster: BuoiHocHS[] }) {
           </tbody>
         </table>
       </div>
+    </div>
+  )
+}
+
+// ── CHẤM MT (kỳ thi lớn) — CÙNG buổi, CÙNG roster/điểm danh với các tab khác (Thùy 07-08: "phải
+// hiện trong buổi học giống như chấm ET"). GIỮ cấu trúc PHẦN (Phần I/II…) đúng file MT đã gán —
+// KHÔNG làm phẳng câu. Đóng phase = Elo K=60 (cột riêng `mt_dong_at`, KHÔNG đụng ingame_dong_at).
+function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: BuoiHocHS[]; buoi: BuoiHoc & { lop?: { mon: string } }; onChange: () => void }) {
+  const [probs, setProbs] = useState<Problem[]>([])
+  const [grades, setGrades] = useState<Grade[]>([])
+  const [phans, setPhans] = useState<MTPhanCaus[]>([])
+  const [mtMissing, setMtMissing] = useState(false)
+  const [dangTenMT, setDangTenMT] = useState<Record<string, string>>({})
+  const [preview, setPreview] = useState<CauHoi | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [closing, setClosing] = useState(false)
+  const coMat = roster.filter((r) => r.diem_danh === 'co_mat')
+  const tenHT = tenHienThiDs(coMat.map((r) => r.hoc_sinh?.ho_ten))
+  const dongCol = buoi.mt_dong_at
+  const caus = phans.flatMap((p) => p.caus)
+
+  async function reloadP() {
+    const [p, g] = await Promise.all([listProblems(buoiId, 'mt'), listGrades(buoiId)])
+    setProbs(p); setGrades(g)
+    const mds = [...new Set(p.map((x) => x.ma_dang).filter(Boolean))] as string[]
+    if (mds.length) setDangTenMT(await getDangTen(mds, buoi.lop?.mon))
+  }
+  useEffect(() => { (async () => {
+    setLoading(true)
+    try {
+      const { mtId, phans: ps, caus: c } = await loadMTForBuoi(buoiId)
+      if (!mtId) { setMtMissing(true); setPhans([]) } else { setMtMissing(false); await ensureMTProblems(buoiId, c); setPhans(ps) }
+      await reloadP()
+    } catch { setMtMissing(true); setPhans([]) } finally { setLoading(false) }
+  })() }, [buoiId]) // eslint-disable-line
+
+  const gradeOf = (pid: string, hsid: string) => grades.find((g) => g.problem_id === pid && g.hoc_sinh_id === hsid)
+  async function pickKQ(pid: string, hsId: string, result: ETResult) {
+    const g = gradeOf(pid, hsId)
+    try { if (g?.result === result) await deleteGrade(pid, hsId); else await gradeET({ buoiId, problemId: pid, hocSinhId: hsId, result, loi: [] }); await reloadP() }
+    catch (e: any) { alert(e.message ?? String(e)) }
+  }
+  async function dong() {
+    if (closing) return
+    if (!confirm('Đóng chấm MT? Sẽ tính Elo (K=60) + EXP. Mở lại được nếu cần sửa.')) return
+    setClosing(true)
+    try { const res = await closePhase(buoiId, 'mt'); if (res.already) alert('Đã đóng rồi.'); else onChange() }
+    finally { setClosing(false) }
+  }
+  async function moLai() { await reopenPhase(buoiId, 'mt'); onChange() }
+
+  if (loading) return <p className="text-[12px] text-slate-400">Đang tải MT…</p>
+  if (mtMissing) return <p className="text-[13px] text-slate-400">Chưa có MT gán cho buổi này (khớp <b className="text-slate-600">lớp + ngày</b>). Vào <b className="text-slate-600">Làm tài liệu → MT</b> gán vào buổi này.</p>
+  if (coMat.length === 0) return <p className="text-[12px] text-slate-400">Chưa có HS nào điểm danh "có mặt" — điểm danh trước khi chấm.</p>
+
+  const tenDangOf = (md: string | null) => (md ? dangTenMT[md] ?? md : '—')
+  const cauOf = (idx: number) => caus[idx] ?? null
+
+  return (
+    <div className="flex h-full flex-col">
+      <div className="mb-3 flex items-center gap-2">
+        <span className="text-[12px] text-slate-400">{probs.length} câu ({phans.length} phần) · {coMat.length} HS · 1 click <b className="text-emerald-600">Đ</b>/<b className="text-amber-600">C</b>/<b className="text-rose-600">S</b>.</span>
+        <div className="ml-auto flex items-center gap-2">
+          {dongCol ? (
+            <>
+              <span className="rounded-md bg-emerald-50 px-2.5 py-1 text-[13px] font-medium text-emerald-700">✓ Đã đóng MT (Elo K=60)</span>
+              <button onClick={moLai} className="rounded-md border border-amber-300 px-2.5 py-1 text-[12px] font-medium text-amber-700 hover:bg-amber-50">↩ Mở lại để sửa</button>
+            </>
+          ) : (
+            <button onClick={dong} disabled={!probs.length || closing} className="rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-indigo-500 disabled:opacity-40">{closing ? 'Đang lưu…' : '✓ Đóng chấm MT'}</button>
+          )}
+        </div>
+      </div>
+      <div className="min-h-0 flex-1 overflow-auto rounded-xl border border-slate-200">
+        <table className="w-auto border-collapse text-sm">
+          <thead>
+            {/* Hàng nhóm PHẦN — đúng cấu trúc file MT đã gán (Phần I/II…), KHÔNG làm phẳng câu. */}
+            <tr className="bg-violet-50">
+              <th className="sticky left-0 top-0 z-30 border border-slate-200 bg-violet-50" />
+              {phans.map((ph, pi) => (
+                <th key={pi} colSpan={ph.caus.length} className="sticky top-0 z-10 border border-slate-200 bg-violet-50 px-2 py-1 text-center text-[12px] font-bold text-violet-700">{ph.tieuDe}</th>
+              ))}
+            </tr>
+            <tr className="bg-slate-100">
+              <th className="sticky left-0 top-0 z-30 whitespace-nowrap border border-slate-200 bg-slate-100 px-4 py-1.5 text-left text-[12px] font-semibold text-slate-700">Học sinh</th>
+              {probs.map((p, idx) => {
+                const c = cauOf(idx)
+                return (
+                  <th key={p.id} className="sticky top-0 z-10 w-[130px] border border-slate-200 bg-slate-100 px-2 py-1.5 text-center align-top">
+                    <div className="text-[12px] font-bold text-slate-700">Câu {p.problem_no}</div>
+                    <div className="mx-auto max-w-[120px] truncate text-[11px] font-medium normal-case text-violet-600" title={tenDangOf(p.ma_dang)}>{tenDangOf(p.ma_dang)}</div>
+                    {c && <button onClick={() => setPreview(c)} className="mt-1 rounded border border-slate-200 px-1.5 py-0.5 text-[10px] font-normal normal-case text-slate-400 hover:border-indigo-300 hover:text-indigo-600">ⓘ đề</button>}
+                  </th>
+                )
+              })}
+            </tr>
+          </thead>
+          <tbody>
+            {coMat.map((r, i) => (
+              <tr key={r.id}>
+                <td className="sticky left-0 z-10 whitespace-nowrap border border-slate-200 bg-white px-3 py-1 text-left align-middle font-medium text-slate-800">{tenHT[i]}</td>
+                {probs.map((p) => {
+                  const g = gradeOf(p.id, r.hoc_sinh_id)
+                  return (
+                    <td key={p.id} className="border border-slate-200 px-2 py-1 align-middle">
+                      <div className="flex justify-center gap-1">
+                        {ET_KQ.map((k) => (
+                          <button key={k.v} onClick={() => pickKQ(p.id, r.hoc_sinh_id, k.v)} disabled={!!dongCol}
+                            className={`h-7 w-8 rounded-lg border text-[13px] font-bold transition disabled:cursor-not-allowed ${g?.result === k.v ? k.sel : k.idle} ${dongCol && g?.result !== k.v ? 'opacity-50' : ''}`}>{k.lbl}</button>
+                        ))}
+                      </div>
+                    </td>
+                  )
+                })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      {preview && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-4" onClick={() => setPreview(null)}>
+          <div className="max-h-[80vh] w-[640px] max-w-full overflow-auto rounded-2xl border border-slate-200 bg-white p-5 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+            <div className="mb-2 flex items-center gap-2"><span className="text-[12px] font-semibold uppercase tracking-wide text-violet-600">Đề câu</span><button onClick={() => setPreview(null)} className="ml-auto text-slate-400 hover:text-slate-600">✕</button></div>
+            <div className="text-[14px] leading-relaxed text-slate-800"><MathText>{preview.noi_dung}</MathText></div>
+            {preview.lua_chon?.length ? <div className="mt-3 space-y-1 text-[13px] text-slate-600">{preview.lua_chon.map((lc, i) => <div key={i}><b>{String.fromCharCode(65 + i)}.</b> <MathText>{lc}</MathText></div>)}</div> : null}
+          </div>
+        </div>
+      )}
     </div>
   )
 }
