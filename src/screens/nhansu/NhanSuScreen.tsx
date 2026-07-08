@@ -50,7 +50,7 @@ export default function NhanSuScreen() {
           : (
             <table className="w-full border-separate border-spacing-y-1.5 text-sm">
               <thead><tr className="text-left text-[12px] uppercase tracking-wider text-slate-400">
-                <th className="px-3">Mã</th><th className="px-3">Họ tên</th><th className="px-3">SĐT</th><th className="px-3">Email</th><th className="px-3">Team</th><th className="px-3">Môn</th><th className="px-3">Tài khoản</th><th className="px-3">Trạng thái</th><th></th>
+                <th className="sticky top-0 z-10 bg-[#fafafb] px-3 pb-1.5">Mã</th><th className="sticky top-0 z-10 bg-[#fafafb] px-3 pb-1.5">Họ tên</th><th className="sticky top-0 z-10 bg-[#fafafb] px-3 pb-1.5">SĐT</th><th className="sticky top-0 z-10 bg-[#fafafb] px-3 pb-1.5">Email</th><th className="sticky top-0 z-10 bg-[#fafafb] px-3 pb-1.5">Team</th><th className="sticky top-0 z-10 bg-[#fafafb] px-3 pb-1.5">Môn</th><th className="sticky top-0 z-10 bg-[#fafafb] px-3 pb-1.5">Tài khoản</th><th className="sticky top-0 z-10 bg-[#fafafb] px-3 pb-1.5">Trạng thái</th><th className="sticky top-0 z-10 bg-[#fafafb] pb-1.5"></th>
               </tr></thead>
               <tbody>
                 {list.map((n) => (

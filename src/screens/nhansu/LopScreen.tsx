@@ -345,7 +345,7 @@ function RosterBox({ lopId, roster, dsHocSinh, mnl, onChange }: { lopId: string;
       </div>
       {roster.length === 0 ? <p className="text-[12px] text-slate-400">Lớp chưa có học sinh.</p> : (
         <table className="w-full text-[13px]">
-          <thead><tr className="text-left text-[11px] uppercase tracking-wider text-slate-400"><th className="py-1">Học sinh</th><th>Band (môn này)</th><th>Vào lớp</th><th></th></tr></thead>
+          <thead><tr className="text-left text-[11px] uppercase tracking-wider text-slate-400"><th className="sticky top-0 z-10 bg-white py-1">Học sinh</th><th className="sticky top-0 z-10 bg-white">Band (môn này)</th><th className="sticky top-0 z-10 bg-white">Vào lớp</th><th className="sticky top-0 z-10 bg-white"></th></tr></thead>
           <tbody>
             {roster.map((r) => (
               <tr key={r.id} className="border-t border-slate-100">

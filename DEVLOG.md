@@ -1736,3 +1736,77 @@ tsc sạch + build pass. ⏳ chưa soi PDF bằng mắt (bản in paged.js).
   → xác nhận đây là hành vi ĐÚNG (không có slot hợp lệ để tự điền), không phải bug của
   `tkbSlotCuaLop`. Không test được case "có TKB hợp lệ" bằng data thật hiện có, nhưng logic SQL đơn
   giản/tường minh nên tự tin đúng qua đọc code.
+
+### 07-08 (tiếp 9) — MT Print (bản HS/GV) + nâng cao theo hệ + fix UX scroll-reset/sticky header toàn app
+
+- **⭐ MTPrintView (in MT — bản HS/GV như giáo trình):** file mới `src/screens/tailieu/MTPrintView.tsx`,
+  bám sát mẫu `DeThiPrintView.tsx` (giữ nguyên cấu trúc PHẦN + thứ tự gốc, KHÔNG gom theo loại câu —
+  đúng yêu cầu "cấu trúc in phải giống file MT được gán"). Khác DeThiPrintView ở chỗ MT dùng CHUNG cơ
+  chế "chỉnh dòng" với ET (`etFormByCau`/`etFormOf`) — 1 câu kho có `lua_chon` (TN) nhưng bị ép hiển thị
+  "tự luận"/"trả lời ngắn" thì KHÔNG được lộ phương án ra bản in. `CauItem` gốc (PrintView.tsx) LUÔN
+  hiện `lua_chon` nếu câu có, bất kể form override → không dùng thẳng được cho 2 form đó, phải viết
+  `MtCau` tách riêng: Đúng/Sai (`menh_de`) và form='trac_nghiem' → qua `CauItem` bình thường; còn lại
+  tách stem thủ công (`splitStem`) bỏ qua `lua_chon`, thêm dòng kẻ (tự luận, theo `btvnLinesByCau`) hoặc
+  1 dòng "Đáp án: ___" ngắn (trả lời ngắn — CSS mới `.pv-tln-ans`). Header phiếu kiểu ET (Họ tên/Lớp
+  blank + ô ĐIỂM, không SBD như đề thi vì MT là kiểm tra nội bộ). Wire nút "🖨 In"/"⬇ Tải PDF" cho CẢ
+  `mt` (master) lẫn `mt_buoi` (instance) trong `KhoTaiLieuScreen` (xoá cờ `PRINTABLE` cũ đang CHẶN MT —
+  trước đây MT rơi vào `PrintView` mặc định gây lỗi render nên bị disable tạm) + nút "🖨 Xem / In" ngay
+  trong `MTEditor` (giống ET/Đề thi). Verify preview thật: in cả MT master ("Kiểm tra khảo sát
+  tháng 7_Nâng cao" — có câu form tự luận VÀ trả lời ngắn, KaTeX render đúng) lẫn MT buổi (mt_buoi gán
+  9S1), bản GV hiện `GvAnswer` đúng (đáp án+lời giải), Tải PDF chạy không lỗi.
+- **⭐⭐ MT — câu NÂNG CAO tự lọc theo HỆ LỚP khi gán vào buổi (Thùy chốt, KHÔNG đẻ cờ thủ công mới):**
+  bài toán: đề hệ A/S có thêm phần nâng cao, đề hệ B/C không có — 2 hướng đưa ra (tách 2 đề / 1 đề tự
+  lọc) → Thùy chọn hướng 2 nhưng lưu ý "phần nâng cao thường là CẢ 1 phần nhiều câu, không phải 1 câu
+  lẻ". Phát hiện mấu chốt: dạng ĐÃ SẴN `bac_toi_thieu` trong bản đồ kiến thức (S>A>B>C, "bậc THẤP NHẤT
+  còn học dạng") — TÁI DÙNG y hệt info này thay vì đẻ tag "chung/riêng" mới. `mt.ts` `ganMTVaoBuoi`:
+  trước khi copy phans từ master → mt_buoi, với MỖI câu tra `bac_toi_thieu` của dạng nó (`dang_chinh`,
+  bulk query 1 lần qua `khoCuaMon(mon).banDoTbl`), so `thu_tu` với bậc của lớp (`lop.bac` × `lop_bac`
+  thu_tu S=4…C=1) — câu nào lớp không đủ tư cách thì TỰ LOẠI; phần nào rụng hết câu (toàn nâng cao) →
+  bỏ hẳn phần đó khỏi doc con (không để tiêu đề phần mồ côi 0 câu). Trả thêm `soCauLoai` để báo GV biết
+  đã loại bao nhiêu câu lúc gán. **MTEditor**: mỗi Phần hiện badge tự tính "Hệ X, Y" (khắt khe nhất
+  trong phần thắng, suy từ `dangOpts[].bac` — trước bị bỏ sót khi map từ `listMap`, đã bổ sung) — GV
+  nhìn thấy NGAY lúc soạn để tự sửa nếu gán nhầm dạng vào phần sai chỗ (đúng tinh thần "hệ thống tự
+  điền ma trận, GV chỉ duyệt lại"). Thêm dropdown ÉP TAY cạnh badge (`cau_hinh.phanBac[phanId]`, mặc
+  định "Tự động") cho case GV muốn khác với suy tự động — ép tay THẮNG tuyệt đối, cả phần theo 1 quyết
+  định (đủ tư cách giữ nguyên/không đủ loại hết), `ganMTVaoBuoi` đọc đúng ưu tiên này trước khi fallback
+  về suy-per-câu. Verify preview thật + DB: gán MT "toàn nâng cao Hệ S,A" (5/5 câu) vào lớp 9B1 (hệ B)
+  → báo đúng "đã tự loại 5 câu nâng cao", doc con tạo ra 0 phần (đúng, không phần nào đủ điều kiện);
+  test dropdown ép tay (chọn "từ B trở lên") → badge đổi đúng "Hệ S,A,B", lưu DB đúng `cau_hinh.phanBac`
+  — đã trả về "Tự động" sau test (tài liệu THẬT, không phải data test). Dọn buổi/roster/doc test rác
+  tạo ra lúc verify (9B1 · 15/07, roster 11 HS 0-grade) — user xác nhận trước khi xoá (auto-classifier
+  chặn xoá `buoi_hoc` không có bằng chứng rõ nó là test — đúng, phải hỏi).
+- **🐞 Fix UX "sửa xong danh sách tự nhảy về đầu trang" (Học sinh, và cùng pattern ở MỌI màn list khác):**
+  nguyên nhân gốc: `reload()` sau khi lưu modal LUÔN `setLoading(true)` trước → bảng bị thay tạm bằng
+  `<p>Đang tải…</p>` rất ngắn → khung cuộn co chiều cao về gần 0 → trình duyệt TỰ ĐỘNG clamp `scrollTop`
+  về 0 (hành vi mặc định khi nội dung co lại, KHÔNG cách nào chặn ở tầng CSS) → dù bảng đầy lại ngay
+  sau đó, `scrollTop` đã bị clamp từ trước, không tự phục hồi. Fix `HocSinhScreen.tsx`: chỉ
+  `setLoading(true)` khi `list.length === 0` (lần tải ĐẦU, chưa có gì để mất) — các lần reload sau (sau
+  khi sửa/lưu) GIỮ NGUYÊN bảng cũ trên màn cho tới khi data mới về, DOM/scroll không bị phá giữa chừng.
+  Verify preview thật: cuộn 3000px → sửa 1 HS ("Gia Bảo") → Lưu → danh sách giữ NGUYÊN vị trí cuộn
+  (không nhảy về đầu). **Đây là pattern lặp ở screens khác** (mọi `reload()` viết theo công thức
+  `setLoading(true)` y hệt) — CHƯA sweep hết, chỉ mới fix Học sinh (theo đúng cái Thùy chỉ ra cụ thể).
+- **⭐⭐ Sticky header cho MỌI bảng danh sách (Thùy: "mọi chỗ đều phải freezing header chứ"):** sweep 14
+  file có `<thead>` (BoTro/ChatLuongVanHanh/BuoiHoc(2 tab còn thiếu)/GamiDiem(3 bảng)/QuanLyLevel(2
+  bảng)/HocPhi(5 bảng)/HocSinh/Lop(roster)/NhanSu/PhanCong/KhoTaiLieu/TuyenSinh(2 bảng)/PhanQuyen(tab2))
+  — thêm `sticky top-0 z-10` (+ `left-0` ở cột đã ghim trái sẵn) cho MỌI `<th>` bảng dữ liệu chính. Bỏ
+  qua có chủ đích: bảng dạng "thẻ chụp ảnh" (`InvoiceCard`/chụp-TKB — style inline-hex cho html2canvas,
+  KHÔNG phải bảng cuộn), lưới TKB tuần (7 khung cố định, không dài), dropdown/popup ngắn, ma trận
+  Phân quyền tab1 (2-hàng-header lồng nhau + sticky-left sẵn — offset top 2 tầng phức tạp, để sau nếu
+  Thùy cần, screen founder-only ít dùng).
+  **🐞 Bug ẩn phát hiện thêm khi verify (quan trọng, áp dụng MỌI nơi dùng sticky sau này):** nhiều bảng
+  bọc trong `<div className="overflow-hidden rounded-xl ...">` hoặc `overflow-x-auto` CHỈ để bo góc /
+  cho phép cuộn ngang khi bảng rộng — nhưng theo CSS spec, BẤT KỲ `overflow` khác `visible` trên MỘT
+  ancestor (kể cả chỉ set 1 trục) đều biến nó thành "scroll container", và sticky con bên trong sẽ BÁM
+  vào ancestor GẦN NHẤT có overflow non-visible, KHÔNG PHẢI ancestor thật sự đang cuộn (trang ngoài).
+  Vì div bọc đó cao = nội dung (không có `max-height` riêng, tự nó KHÔNG BAO GIỜ cuộn độc lập) →
+  sticky "bám" vào 1 khung không hề cuộn → nhìn như sticky vô hiệu (header cứ trôi theo trang bình
+  thường). Fix: gỡ `overflow-hidden`/`overflow-x-auto` khỏi các div bọc thuần-cosmetic này, để khung
+  cuộn NGOÀI CÙNG (`min-h-0 flex-1 overflow-auto p-6` cấp trang) làm chuẩn duy nhất — cuộn ngang (khi
+  bảng có `min-w-[...]` rộng, vd HocPhi/TuyenSinh/QuanLyLevel) chuyển từ "cuộn riêng khung bảng" sang
+  "cuộn cả trang", chấp nhận đánh đổi nhỏ đó để đổi lấy sticky hoạt động đúng — verify preview thật xác
+  nhận cuộn ngang bảng Tuyển sinh (L6, nhiều cột) vẫn dùng được bình thường sau khi gỡ. **Quy tắc rút
+  ra: muốn 1 bảng vừa sticky-top vừa tự cuộn-ngang-riêng (không kéo cả trang), div bọc đó phải TỰ LÀ
+  khung cuộn dọc luôn (có `max-height`/`flex-1 min-h-0 overflow-auto` của CHÍNH nó, như `ETChamTab`/
+  `MTTab`/`BtvnTab` trong BuoiHocScreen — bounded-height "nested scrollbox" độc lập) — KHÔNG THỂ vừa để
+  trang ngoài cuộn dọc vừa có 1 div-con overflow-x-auto lo cuộn ngang MÀ sticky vẫn xuyên qua được, đây
+  là giới hạn cứng của CSS (không có workaround ở tầng class/thuộc tính).**

@@ -168,7 +168,7 @@ function GanTab() {
       {roles.length === 0 && <p className="mb-3 text-[13px] text-amber-600">Chưa có vai trò nào — tạo ở tab “Vai trò & chức năng” trước.</p>}
       <table className="w-full max-w-3xl text-sm">
         <thead><tr className="text-left text-[11px] uppercase text-slate-400">
-          <th className="px-3 py-1.5">Vị trí</th><th className="px-3">Team</th><th className="px-3">Người đảm nhiệm</th><th className="px-3">Vai trò (quyền)</th>
+          <th className="sticky top-0 z-10 bg-[#fafafb] px-3 py-1.5">Vị trí</th><th className="sticky top-0 z-10 bg-[#fafafb] px-3">Team</th><th className="sticky top-0 z-10 bg-[#fafafb] px-3">Người đảm nhiệm</th><th className="sticky top-0 z-10 bg-[#fafafb] px-3">Vai trò (quyền)</th>
         </tr></thead>
         <tbody>
           {rows.map((v) => (

@@ -58,11 +58,11 @@ function RankView({ onOpenHS }: { onOpenHS: (r: DiemRow) => void }) {
       {loading ? <p className="text-sm text-slate-400">Đang tải…</p>
         : shown.length === 0 ? <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">Chưa có HS nào có điểm. Điểm sinh khi đóng buổi.</div>
         : (
-          <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
+          <div className="rounded-xl border border-slate-200 bg-white">
             <table className="w-full text-sm">
-              <thead className="bg-slate-100 text-left text-[12px] font-semibold text-slate-700"><tr>
-                <th className="w-12 px-4 py-2.5 text-center">#</th><th className="px-3 py-2.5">Học sinh</th><th className="px-3">Khối</th>
-                <th className="px-3 text-right">Elo</th><th className="px-3 text-right">EXP</th><th className="px-3 text-right">Số buổi</th><th className="px-3"></th>
+              <thead className="text-left text-[12px] font-semibold text-slate-700"><tr>
+                <th className="sticky top-0 z-10 w-12 bg-slate-100 px-4 py-2.5 text-center">#</th><th className="sticky top-0 z-10 bg-slate-100 px-3 py-2.5">Học sinh</th><th className="sticky top-0 z-10 bg-slate-100 px-3">Khối</th>
+                <th className="sticky top-0 z-10 bg-slate-100 px-3 text-right">Elo</th><th className="sticky top-0 z-10 bg-slate-100 px-3 text-right">EXP</th><th className="sticky top-0 z-10 bg-slate-100 px-3 text-right">Số buổi</th><th className="sticky top-0 z-10 bg-slate-100 px-3"></th>
               </tr></thead>
               <tbody>
                 {tenHienThiDs(shown.map((r) => r.ho_ten)).map((tenHT, i) => { const r = shown[i]; return (
@@ -103,10 +103,10 @@ function CaView({ onOpenBang }: { onOpenBang: (b: BangRef) => void }) {
       {loading ? <p className="text-sm text-slate-400">Đang tải…</p>
         : shown.length === 0 ? <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">Chưa có ca học nào.</div>
         : (
-          <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
+          <div className="rounded-xl border border-slate-200 bg-white">
             <table className="w-full text-sm">
-              <thead className="bg-slate-100 text-left text-[12px] font-semibold text-slate-700"><tr>
-                <th className="px-4 py-2.5">Mã ca</th><th className="px-3">Lớp</th><th className="px-3">Môn</th><th className="px-3">Ngày</th><th className="px-3">Trạng thái</th><th className="px-3 text-right">Bảng Elo</th>
+              <thead className="text-left text-[12px] font-semibold text-slate-700"><tr>
+                <th className="sticky top-0 z-10 bg-slate-100 px-4 py-2.5">Mã ca</th><th className="sticky top-0 z-10 bg-slate-100 px-3">Lớp</th><th className="sticky top-0 z-10 bg-slate-100 px-3">Môn</th><th className="sticky top-0 z-10 bg-slate-100 px-3">Ngày</th><th className="sticky top-0 z-10 bg-slate-100 px-3">Trạng thái</th><th className="sticky top-0 z-10 bg-slate-100 px-3 text-right">Bảng Elo</th>
               </tr></thead>
               <tbody>
                 {shown.map((c) => (
@@ -146,13 +146,13 @@ function EloBangModal({ bang, onClose }: { bang: BangRef; onClose: () => void })
           {rows === null ? <p className="text-[12px] text-slate-400">Đang tải…</p>
             : rows.length === 0 ? <p className="text-[12px] text-slate-400">Chưa có dữ liệu Elo cho ca này.</p>
             : (
-              <div className="overflow-x-auto rounded-xl border border-slate-200">
+              <div className="rounded-xl border border-slate-200">
                 <table className="w-full border-collapse text-sm">
-                  <thead><tr className="bg-slate-100 text-left text-[12px] font-semibold text-slate-700">
-                    <th className="border border-slate-200 px-3 py-2 text-center">Hạng</th><th className="border border-slate-200 px-3 py-2">Học sinh</th>
-                    <th className="border border-slate-200 px-3 py-2 text-right">Điểm thô</th><th className="border border-slate-200 px-3 py-2 text-right">Kỳ vọng E</th>
-                    <th className="border border-slate-200 px-3 py-2 text-right">Thực tế A</th><th className="border border-slate-200 px-3 py-2 text-right">A−E</th>
-                    <th className="border border-slate-200 px-3 py-2 text-right">Δ Elo</th><th className="border border-slate-200 px-3 py-2 text-right">Elo</th><th className="border border-slate-200 px-3 py-2 text-right">+EXP</th>
+                  <thead><tr className="text-left text-[12px] font-semibold text-slate-700">
+                    <th className="sticky top-0 z-10 border border-slate-200 bg-slate-100 px-3 py-2 text-center">Hạng</th><th className="sticky top-0 z-10 border border-slate-200 bg-slate-100 px-3 py-2">Học sinh</th>
+                    <th className="sticky top-0 z-10 border border-slate-200 bg-slate-100 px-3 py-2 text-right">Điểm thô</th><th className="sticky top-0 z-10 border border-slate-200 bg-slate-100 px-3 py-2 text-right">Kỳ vọng E</th>
+                    <th className="sticky top-0 z-10 border border-slate-200 bg-slate-100 px-3 py-2 text-right">Thực tế A</th><th className="sticky top-0 z-10 border border-slate-200 bg-slate-100 px-3 py-2 text-right">A−E</th>
+                    <th className="sticky top-0 z-10 border border-slate-200 bg-slate-100 px-3 py-2 text-right">Δ Elo</th><th className="sticky top-0 z-10 border border-slate-200 bg-slate-100 px-3 py-2 text-right">Elo</th><th className="sticky top-0 z-10 border border-slate-200 bg-slate-100 px-3 py-2 text-right">+EXP</th>
                   </tr></thead>
                   <tbody>
                     {tenHienThiDs(rows.map((r) => r.ho_ten)).map((tenHT, i) => { const r = rows[i]; return (

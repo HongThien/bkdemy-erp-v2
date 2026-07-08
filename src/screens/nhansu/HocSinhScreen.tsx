@@ -113,7 +113,7 @@ export default function HocSinhScreen() {
                 <Th k="ma_hs" sort={sort} onSort={toggleSort}>Mã</Th>
                 <Th k="khoi" sort={sort} onSort={toggleSort}>Khối</Th>
                 <Th k="soLop" sort={sort} onSort={toggleSort}>Số lớp</Th>
-                <th className="px-3">Trạng thái</th><th></th>
+                <th className="sticky top-0 z-10 bg-[#fafafb] px-3 pb-1.5">Trạng thái</th><th className="sticky top-0 z-10 bg-[#fafafb] pb-1.5"></th>
               </tr></thead>
               <tbody>
                 {shown.map((h) => (
@@ -148,7 +148,7 @@ export default function HocSinhScreen() {
 function Th({ k, sort, onSort, children }: { k: SortKey; sort: { key: SortKey; dir: 'asc' | 'desc' }; onSort: (k: SortKey) => void; children: React.ReactNode }) {
   const active = sort.key === k
   return (
-    <th className="cursor-pointer select-none px-3 hover:text-slate-600" onClick={() => onSort(k)}>
+    <th className="sticky top-0 z-10 cursor-pointer select-none bg-[#fafafb] px-3 pb-1.5 hover:text-slate-600" onClick={() => onSort(k)}>
       <span className="inline-flex items-center gap-1">{children}<span className={active ? 'text-indigo-500' : 'text-slate-300'}>{active ? (sort.dir === 'asc' ? '▲' : '▼') : '↕'}</span></span>
     </th>
   )

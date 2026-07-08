@@ -83,11 +83,11 @@ export default function PhanCongScreen() {
             <table className="w-full border-separate border-spacing-y-1 text-sm">
               <thead>
                 <tr className="text-left text-[11px] uppercase tracking-wider text-slate-400">
-                  <th className="px-2 py-1">Lớp</th>
-                  <th className="px-2">GV chính <span className="font-normal normal-case text-slate-300">· đánh giá + nội dung</span></th>
-                  <th className="px-2">GV phụ</th>
-                  <th className="px-2">Trợ giảng <span className="font-normal normal-case text-slate-300">· chấm ET + BTVN</span></th>
-                  <th className="px-2">Điểm danh</th>
+                  <th className="sticky top-0 z-10 bg-[#fafafb] px-2 py-1">Lớp</th>
+                  <th className="sticky top-0 z-10 bg-[#fafafb] px-2">GV chính <span className="font-normal normal-case text-slate-300">· đánh giá + nội dung</span></th>
+                  <th className="sticky top-0 z-10 bg-[#fafafb] px-2">GV phụ</th>
+                  <th className="sticky top-0 z-10 bg-[#fafafb] px-2">Trợ giảng <span className="font-normal normal-case text-slate-300">· chấm ET + BTVN</span></th>
+                  <th className="sticky top-0 z-10 bg-[#fafafb] px-2">Điểm danh</th>
                 </tr>
               </thead>
               <tbody>

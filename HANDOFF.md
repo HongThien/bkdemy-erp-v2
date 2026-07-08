@@ -409,13 +409,26 @@
   tra `tai_lieu loai='mt_buoi'`). Task "Chấm MT" (Việc của tôi) CHỈ hiện cho buổi THẬT SỰ có gán MT
   (không spam task rỗng mọi ngày). **Mastery:** MT LUÔN feed vào mastery-per-dạng (`mastery.ts`
   `EvalSrc` thêm 'mt', không cần toggle như BTVN vì MT giám sát thật). **✅ VERIFY ĐẦY ĐỦ qua preview
-  thật + DB (`claude_ro`)** nhiều vòng — xem DEVLOG 07-08 (tiếp 3→8) cho chi tiết. **CÒN THIẾU:**
-  MTPrintView · nối `ky_thi.loai='mt_sat_hach'` (Level/vượt-band) · luật sư phạm (tỉ lệ câu/độ
+  thật + DB (`claude_ro`)** nhiều vòng — xem DEVLOG 07-08 (tiếp 3→8) cho chi tiết. **CÒN THIẾU** (Print
+  + nâng-cao-theo-hệ ĐÃ XONG, xem 2 mục ngay dưới):
+  nối `ky_thi.loai='mt_sat_hach'` (Level/vượt-band) · luật sư phạm (tỉ lệ câu/độ
   khó/phủ chuyên đề) · `listAllStaffTasks`/dashboard hiệu suất chưa có nhánh 'mt' (giống bù/đuổi cũng
   thiếu — omission nhất quán, không phải regression mới) · bug nhỏ: re-gán MT khác nội dung lên
   CÙNG buổi không xoá problem cũ (chỉ seed khi buổi chưa có problem nào) → câu thừa nếu soạn lại đề
-  nhiều lần trên cùng buổi (hiếm, chưa fix). `MTBuoiDetail.tsx` (file cũ, kiến trúc trước đại tu) giờ
-  MỒ CÔI không ai import — hỏi Thùy có xoá hẳn không, chưa xoá.
+  nhiều lần trên cùng buổi (hiếm, chưa fix). (`MTBuoiDetail.tsx` nhắc ở đây trước — ĐÃ KIỂM: file
+  KHÔNG tồn tại trên disk/git history, chưa từng commit → không có gì để xoá, hết orphan.)
+- **⭐ MTPrintView — In MT bản HS/GV (XONG, xem DEVLOG 07-08 tiếp 9):** `MTPrintView.tsx` mới, bám
+  `DeThiPrintView` (giữ nguyên cấu trúc Phần + thứ tự gốc) nhưng tôn trọng form-override như ET
+  (`etFormByCau`) — câu TN bị ép hiển thị tự luận/trả lời ngắn thì KHÔNG lộ `lua_chon` (viết `MtCau`
+  tách riêng, không dùng thẳng `CauItem`). Wire "🖨 In"/"⬇ Tải PDF" cho cả `mt` lẫn `mt_buoi` ở Kho tài
+  liệu (bỏ cờ `PRINTABLE` cũ đang chặn MT) + nút trong `MTEditor`. Verify preview thật cả 2 loại câu +
+  bản GV.
+- **⭐⭐ MT — câu nâng cao TỰ LỌC theo hệ lớp khi gán buổi (Thùy chốt, XONG):** tái dùng `bac_toi_thieu`
+  có sẵn của dạng (bản đồ kiến thức, KHÔNG đẻ cờ mới) — `ganMTVaoBuoi` so bậc lớp vs bậc dạng mỗi câu,
+  câu không đủ tư cách tự loại, phần rụng hết câu thì bỏ hẳn phần (không mồ côi tiêu đề). MTEditor hiện
+  badge "Hệ X, Y" tự tính per-Phần (khắt khe nhất thắng) + dropdown ÉP TAY (`cau_hinh.phanBac[phanId]`,
+  đè cả-phần-1-quyết-định lên suy-per-câu). Verify preview+DB: gán MT toàn-nâng-cao vào lớp hệ thấp →
+  loại đúng hết + báo số câu loại; ép tay đổi badge đúng, lưu DB đúng.
 - **⏸ Module "Test đầu vào — Chấm & Trả kết quả"** (spec `BKDEMY_TESTDAUVAO_SPEC_DETAIL.md`, ở repo
   root) — **Story 1-4 ĐÃ BUILD XONG 07-08** (đề test CRUD · gán đề snapshot (§A.2 anti-live-ref) ·
   chấm 3-cột Đ/C/S realtime · nhận xét + biểu đồ chuyên đề + lớp-đề-xuất (REUSE `ung_vien.lop_du_kien_id`,
@@ -429,6 +442,31 @@
   `ca_test` phía trên) · nút "mở lại nhận xét" (hàm `moLaiNhanXet` có sẵn, UI tab NhanXetTestScreen
   chưa gắn nút) · 7 câu §F spec (đa môn 1-phiếu-hay-N/trục nhận xét môn≠Toán/hiệu suất staff…) CHƯA
   hỏi lại Thùy xác nhận từng câu — **ĐỌC LẠI §F trong spec TRƯỚC khi tiếp tục module này.**
+
+### Đã build (07-08 tiếp 9 — UX: fix scroll-reset + sticky header toàn app)
+- **🐞 Fix "sửa xong danh sách tự nhảy về đầu trang" — CHỈ MỚI Học sinh:** nguyên nhân
+  `reload()` luôn `setLoading(true)` → bảng co về placeholder ngắn → trình duyệt tự clamp `scrollTop`
+  về 0. Fix `HocSinhScreen.tsx`: chỉ hiện loading khi `list.length===0` (lần tải đầu), reload sau giữ
+  bảng cũ trên màn tới khi data mới về. **Pattern này lặp ở HẦU HẾT màn list khác** (cùng công thức
+  `setLoading(true)` vô điều kiện trong `reload()`) — CHƯA sweep, chỉ đúng đúng cái Thùy chỉ ra.
+- **⭐⭐ Sticky header cho MỌI bảng danh sách (Thùy: "mọi chỗ đều phải freezing header chứ") — 14 file:**
+  BoTro · ChatLuongVanHanh(dashboard) · BuoiHoc(2 tab còn thiếu: Chấm-bài-trên-lớp + Đánh-giá) ·
+  GamiDiem(3 bảng) · QuanLyLevel(2 bảng) · HocPhi(5 bảng) · HocSinh · Lop(roster) · NhanSu · PhanCong ·
+  KhoTaiLieu · TuyenSinh(2 bảng) · PhanQuyen(tab2 "gán role→vị trí"). Bỏ qua có chủ đích: thẻ
+  chụp-ảnh/html2canvas (inline-hex, không cuộn) · lưới TKB tuần (7 khung cố định) · dropdown ngắn ·
+  ma trận Phân quyền tab1 (2-hàng-header lồng — offset phức tạp, founder-only ít dùng, để sau).
+  **🐞 Bug CSS ẩn phát hiện thêm (xem ②, áp dụng MỌI sticky sau này):** nhiều bảng bọc trong
+  `<div overflow-hidden>`/`overflow-x-auto` (chỉ để bo góc / cuộn ngang) — chính div đó vô tình thành
+  scroll-container riêng (không hề tự cuộn) làm sticky "bám nhầm chỗ", nhìn như vô hiệu. Fix: gỡ
+  overflow khỏi các div bọc thuần-cosmetic, để khung cuộn NGOÀI CÙNG cấp trang làm chuẩn — cuộn ngang
+  bảng rộng (HocPhi/TuyenSinh/QuanLyLevel) chuyển từ cuộn-riêng-bảng sang cuộn-cả-trang (đánh đổi chấp
+  nhận được). Verify preview thật ở Nhân sự/Kho tài liệu/Điểm số/Tuyển sinh.
+- **CÒN (theo yêu cầu Thùy, hoãn lại có chủ đích):** mã dạng (`ma_dang`) cần tiền tố/gắn mã môn — 20
+  mã trùng số giữa `dai_ban_do`/`khtn_ban_do` (Toán vs KHTN đánh số độc lập cùng công thức
+  khối-chuyên_đề-dạng). **Hướng đã chốt (chưa làm):** giữ nguyên mã Toán hiện có (đổi sau), KHTN thêm
+  tiền tố `K`, Tiếng Anh thêm `E`, Văn thêm `V` khi có kho. ⚠ mã dạng là FK-target khoá cứng — mã CÂU =
+  mã dạng + STT, đổi format mã dạng kéo theo đổi mã TOÀN BỘ câu con → cần soát kỹ phạm vi trước khi làm
+  (rename cũ hay chỉ áp cho mã MỚI từ nay).
 
 ---
 
@@ -540,6 +578,8 @@
 - **⭐ Buổi "hoàn tất" khi thêm 1 phase MỚI (không phải-mọi-buổi-đều-có, như MT) vào buổi thường có sẵn (ingame+et) → gate PHẢI hỏi thêm "phase này có ÁP DỤNG cho buổi này không" trước khi đòi nó đóng:** gate cũ (ternary 2 chiều `phase==='et' ? ingame_dong_at : et_dong_at`) không đủ khi thêm chiều thứ 3 — nếu bắt buộc `mt_dong_at` luôn phải có mới hoàn tất thì buổi KHÔNG gán MT (đa số buổi) sẽ KHÔNG BAO GIỜ hoàn tất được. Fix: query nhẹ ngay trong hàm đóng phase xem phase đó CÓ tồn tại thật cho buổi này không (`gami_session_problems` count theo phase, hoặc `tai_lieu` instance exists) rồi mới đưa vào điều kiện gate — áp dụng cho MỌI lần thêm phase tuỳ-chọn (không phải mọi buổi đều có) vào 1 luồng "hoàn tất" đã có sẵn N phase cố định.
 - **⭐⭐ Khi CEO mô tả rule nghiệp vụ bằng lời có ≥2 cách hiểu (hẹp/rộng) — QUERY DB xem THỰC TẾ dữ liệu ủng hộ cách nào, đừng chỉ suy luận trên giấy "cách nào an toàn hơn":** "gán MT thì đóng hoạt động khác của buổi" — tự chọn cách hiểu HẸP ("chỉ đóng của chính buổi MT vừa tạo") vì nghĩ an toàn hơn (ít side-effect), KHÔNG chủ động kiểm xem có buổi_hoc(loai='thuong') SONG SONG cùng (lớp,ngày) hay không — thực tế CÓ (9S1 hôm đó đã có buổi thường), CEO test thật mới lộ thiếu. Bài học: gặp câu lệnh nghiệp vụ mơ hồ, việc ĐẦU TIÊN là tra DB xem tình huống thực tế nó áp dụng lên state nào, không phải chọn phương án nghe "conservative" hơn trên lý thuyết.
 - **⭐ Hành-động GẮN 1 nội dung (MT/ET/tài liệu…) vào buổi đã có/sẽ có KHÔNG được hỏi lại thuộc tính CỦA BUỔI (giờ/phòng/GV) — buổi tự suy từ TKB hoặc đã tồn tại sẵn, hỏi lại là sai lớp trách nhiệm:** form "Gán MT vào buổi" bản đầu có 3 ô Giờ/Phòng/GV thừa (CEO: "cái đó thuộc về buổi học"). Quy tắc chung khi thiết kế form "gắn X vào entity Y có sẵn": chỉ hỏi cái form đó THỰC SỰ sở hữu (ở đây: định danh buổi = lớp+ngày); mọi thuộc tính khác của Y phải suy/tái dùng từ nguồn đã có (TKB) hoặc để entity Y tự quản, không hỏi lại người dùng dù "tiện có sẵn ô nhập".
+- **⭐⭐ `overflow-hidden`/`overflow-x-auto` trên 1 div CHỈ để bo-góc/cuộn-ngang sẽ NUỐT sticky của con nếu div đó không tự cuộn dọc:** theo CSS spec, bất kỳ `overflow` khác `visible` trên 1 ancestor (kể cả chỉ set 1 trục) đều biến nó thành "scroll container" — `position:sticky` của con bám vào ancestor GẦN NHẤT có overflow non-visible, KHÔNG PHẢI ancestor thật đang cuộn (trang ngoài). Div bọc chỉ để bo-góc/cho-cuộn-ngang thường KHÔNG có `max-height` riêng (cao = nội dung, tự nó không bao giờ cuộn dọc độc lập) → sticky "bám" vào 1 khung chẳng hề cuộn → nhìn như vô hiệu, không báo lỗi gì. Vá: gỡ overflow khỏi div bọc cosmetic đó, để khung cuộn NGOÀI CÙNG (cấp trang) làm chuẩn duy nhất. Muốn 1 bảng vừa sticky-top vừa tự cuộn-ngang-riêng (không kéo cả trang) thì div bọc đó phải TỰ LÀ khung cuộn dọc luôn (`flex-1 min-h-0 overflow-auto` có chiều cao bound, kiểu `ETChamTab`/`MTTab` trong BuoiHocScreen) — không có cách nào vừa để trang ngoài cuộn dọc vừa có 1 div-con lo cuộn-ngang MÀ sticky vẫn xuyên qua, đây là giới hạn cứng của CSS, không phải thiếu class.
+- **⭐ Loading placeholder ngắn thay-thế-toàn-bộ nội dung mỗi lần `reload()` sẽ TỰ RESET vị trí cuộn của khung `overflow-auto` chứa nó:** `<p>Đang tải…</p>` chỉ vài chục px thay chỗ 1 bảng cao hàng nghìn px → khung cuộn co chiều cao lại → trình duyệt TỰ ĐỘNG clamp `scrollTop` về 0 (hành vi mặc định, không chặn được ở tầng CSS) → bảng đầy lại ngay sau đó nhưng `scrollTop` đã mất, không tự phục hồi → cảm giác "làm gì xong cũng nhảy về đầu trang". Vá: chỉ hiện loading khi CHƯA có data (`list.length===0`, lần tải đầu) — các lần `reload()` sau (sau khi sửa/lưu) giữ nguyên nội dung cũ trên màn tới khi data mới về, DOM không bị phá giữa chừng nên scroll tự nhiên giữ nguyên. Áp cho MỌI `reload()` viết theo công thức `setLoading(true)` vô điều kiện — pattern lặp lại ở gần hết các màn danh sách trong app.
 
 ---
 

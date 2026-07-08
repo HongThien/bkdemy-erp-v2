@@ -419,13 +419,13 @@ function ChamTab({ buoiId, phase, roster, buoi, dangOpts, onChange }: { buoiId: 
         )}
       </div>
       {/* cuộn NGANG khi nhiều bài; cột Học sinh ghim trái */}
-      <div className="overflow-x-auto rounded-xl border border-slate-200">
+      <div className="rounded-xl border border-slate-200">
         <table className="border-collapse text-sm">
           <thead>
             <tr className="bg-slate-100">
-              <th className="sticky left-0 z-10 border border-slate-200 bg-slate-100 px-3 py-2 text-left text-[12px] font-semibold text-slate-700">Học sinh</th>
+              <th className="sticky left-0 top-0 z-30 border border-slate-200 bg-slate-100 px-3 py-2 text-left text-[12px] font-semibold text-slate-700">Học sinh</th>
               {probs.map((p) => (
-                <th key={p.id} className="min-w-[150px] border border-slate-200 px-2 py-2 text-center align-top">
+                <th key={p.id} className="sticky top-0 z-10 min-w-[150px] border border-slate-200 bg-slate-100 px-2 py-2 text-center align-top">
                   <div className="text-[12px] font-bold text-slate-700">Bài {p.problem_no}</div>
                   <button onClick={() => setDangPick(p.id)} title="Chọn dạng cho bài này"
                     className={`mx-auto mt-1 block max-w-[140px] truncate rounded border px-2 py-0.5 text-[11px] font-medium ${p.ma_dang ? 'border-violet-200 bg-violet-50 text-violet-700' : 'border-dashed border-slate-300 text-slate-400 hover:border-indigo-400'}`}>{tenDang(p.ma_dang) ?? '+ chọn dạng'}</button>
@@ -1242,13 +1242,13 @@ function DanhGiaTab({ buoiId, roster, dangOpts, buoi, onChange }: { buoiId: stri
           ? <>Chưa có dạng nào — gắn dạng cho bài ở tab <b>Chấm bài trên lớp</b> sẽ tự hiện cột. Tạm thời chỉ nhập nhận xét.</>
           : <>Mỗi dạng: chip nhỏ = mức từng bài (tham khảo từ chấm bài) · nút màu = mức GV chốt (bấm lại để bỏ).</>}
       </p>
-      <div className="overflow-x-auto rounded-xl border border-slate-200">
+      <div className="rounded-xl border border-slate-200">
         <table className="border-collapse text-sm">
           <thead>
             <tr className="bg-slate-100">
-              <th className="sticky left-0 z-10 border border-slate-200 bg-slate-100 px-3 py-2 text-left text-[12px] font-semibold text-slate-700">Học sinh</th>
-              {dangs.map((md) => <th key={md} className="min-w-[160px] border border-slate-200 px-3 py-2 text-left text-[12px] font-semibold text-slate-700"><div className="max-w-[200px] truncate" title={tenDang(md)}>{tenDang(md)}</div></th>)}
-              <th className="border border-slate-200 px-3 py-2 text-left text-[12px] font-semibold text-slate-700">Nhận xét</th>
+              <th className="sticky left-0 top-0 z-30 border border-slate-200 bg-slate-100 px-3 py-2 text-left text-[12px] font-semibold text-slate-700">Học sinh</th>
+              {dangs.map((md) => <th key={md} className="sticky top-0 z-10 min-w-[160px] border border-slate-200 bg-slate-100 px-3 py-2 text-left text-[12px] font-semibold text-slate-700"><div className="max-w-[200px] truncate" title={tenDang(md)}>{tenDang(md)}</div></th>)}
+              <th className="sticky top-0 z-10 border border-slate-200 bg-slate-100 px-3 py-2 text-left text-[12px] font-semibold text-slate-700">Nhận xét</th>
             </tr>
           </thead>
           <tbody>

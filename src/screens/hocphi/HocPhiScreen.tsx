@@ -82,13 +82,13 @@ function TheoMonTab() {
       {loading ? <p className="py-10 text-center text-sm text-slate-400">Đang tải…</p>
         : !filtered.length ? <div className="rounded-xl border border-dashed border-slate-300 bg-white py-14 text-center text-sm text-slate-400">Không có khoản học phí nào trong kỳ.</div>
         : (
-          <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
+          <div className="rounded-xl border border-slate-200 bg-white">
             <table className="w-full min-w-[1080px] table-fixed text-[13px]">
               <colgroup>
                 <col className="w-[150px]" /><col className="w-[90px]" /><col className="w-[220px]" /><col className="w-[100px]" /><col className="w-[100px]" />
                 <col className="w-[80px]" /><col className="w-[100px]" /><col className="w-[70px]" /><col className="w-[130px]" />
               </colgroup>
-              <thead className="bg-slate-50 text-left text-[11px] uppercase tracking-wide text-slate-400">
+              <thead className="sticky top-0 z-10 bg-slate-50 text-left text-[11px] uppercase tracking-wide text-slate-400">
                 <tr><th className="px-4 py-2">Học sinh</th><th className="px-2 py-2">Mã HS</th><th className="px-2 py-2">Phụ huynh</th><th className="px-2 py-2">Môn</th><th className="px-2 py-2">Lớp</th><th className="px-2 py-2 text-right">Số buổi</th><th className="px-2 py-2 text-right">Đơn giá</th><th className="px-2 py-2 text-right">Hệ số</th><th className="px-4 py-2 text-right">Thành tiền</th></tr>
               </thead>
               <tbody>
@@ -156,9 +156,9 @@ function DanhSachTab() {
       {loading ? <p className="py-8 text-center text-sm text-slate-400">Đang tải…</p>
         : !rows.length ? <div className="rounded-xl border border-dashed border-slate-300 bg-white py-14 text-center text-sm text-slate-400">Chưa có phụ huynh nào có con đang học.</div>
         : (
-          <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
+          <div className="rounded-xl border border-slate-200 bg-white">
             <table className="w-full text-[13px]">
-              <thead className="bg-slate-50 text-left text-[11px] uppercase tracking-wide text-slate-400">
+              <thead className="sticky top-0 z-10 bg-slate-50 text-left text-[11px] uppercase tracking-wide text-slate-400">
                 <tr><th className="px-4 py-2">Phụ huynh</th><th>Số con</th><th>Trạng thái thu</th><th className="text-right">Tổng tiền</th><th>Trạng thái thông báo</th><th className="text-right px-4">Thao tác</th></tr>
               </thead>
               <tbody>
@@ -248,9 +248,9 @@ function DuoiTab() {
       {loading ? <p className="py-8 text-center text-sm text-slate-400">Đang tải…</p>
         : !rows.length ? <div className="rounded-xl border border-dashed border-slate-300 bg-white py-14 text-center text-sm text-slate-400">Không có PH nào phát sinh học phí đuổi trong kỳ này.</div>
         : (
-          <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
+          <div className="rounded-xl border border-slate-200 bg-white">
             <table className="w-full text-[13px]">
-              <thead className="bg-slate-50 text-left text-[11px] uppercase tracking-wide text-slate-400">
+              <thead className="sticky top-0 z-10 bg-slate-50 text-left text-[11px] uppercase tracking-wide text-slate-400">
                 <tr><th className="px-4 py-2">Phụ huynh</th><th className="text-right px-4">Tiền học đuổi</th></tr>
               </thead>
               <tbody>
@@ -352,7 +352,7 @@ function PhieuTab() {
           ) : null}
 
           <table className="w-full text-[13px]">
-            <thead className="border-b border-slate-100 text-left text-[11px] uppercase tracking-wide text-slate-400">
+            <thead className="sticky top-0 z-10 border-b border-slate-100 bg-white text-left text-[11px] uppercase tracking-wide text-slate-400">
               <tr><th className="py-1.5">Loại</th><th>Con / Lớp</th><th>Chi tiết</th><th className="text-right">Thành tiền</th></tr>
             </thead>
             <tbody>
@@ -499,14 +499,14 @@ function HeSoTab() {
       {loading ? <p className="py-10 text-center text-sm text-slate-400">Đang tải…</p>
         : !filtered.length ? <div className="rounded-xl border border-dashed border-slate-300 bg-white py-14 text-center text-sm text-slate-400">Không có học sinh nào.</div>
         : (
-          <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
+          <div className="rounded-xl border border-slate-200 bg-white">
             <table className="w-full min-w-[1150px] table-fixed text-[13px]">
               <colgroup>
                 <col className="w-[130px]" /><col className="w-[150px]" /><col className="w-[150px]" /><col className="w-[110px]" />
                 <col className="w-[130px]" /><col className="w-[80px]" /><col className="w-[230px]" />
                 <col className="w-[170px]" />
               </colgroup>
-              <thead className="bg-slate-50 text-left text-[11px] uppercase tracking-wide text-slate-400">
+              <thead className="sticky top-0 z-10 bg-slate-50 text-left text-[11px] uppercase tracking-wide text-slate-400">
                 <tr><th className="px-4 py-2">Học sinh</th><th className="px-2 py-2">Phụ huynh</th><th className="px-2 py-2">Lớp</th><th className="px-2 py-2">Môn đang học</th><th className="px-2 py-2">Hệ số hiện tại</th><th className="px-2 py-2">Gợi ý</th><th className="px-2 py-2">Lý do</th><th className="px-4 py-2 text-right">Thao tác</th></tr>
               </thead>
               <tbody>
@@ -640,9 +640,9 @@ function LopMucBang({ mucPhi, mucLieu }: { mucPhi: MucHocPhi[]; mucLieu: MucHocL
       {loading ? <p className="py-6 text-center text-[13px] text-slate-400">Đang tải…</p>
         : !rows.length ? <p className="py-6 text-center text-[13px] text-slate-400">Chưa có lớp đang học.</p>
         : (
-          <div className="overflow-hidden rounded-lg border border-slate-200">
+          <div className="rounded-lg border border-slate-200">
             <table className="w-full text-[13px]">
-              <thead className="bg-slate-50 text-left text-[11px] uppercase tracking-wide text-slate-400">
+              <thead className="sticky top-0 z-10 bg-slate-50 text-left text-[11px] uppercase tracking-wide text-slate-400">
                 <tr><th className="px-3 py-2">Lớp</th><th className="w-52">Mức học phí</th><th className="w-52">Mức học liệu</th></tr>
               </thead>
               <tbody>

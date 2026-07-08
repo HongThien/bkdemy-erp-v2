@@ -114,16 +114,16 @@ export default function KhoTaiLieuScreen() {
         {loading ? <p className="text-sm text-slate-400">Đang tải…</p>
           : shown.length === 0 ? <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">Chưa có tài liệu nào{loai !== '__all__' ? ` loại “${loaiTen(loai)}”` : ''}.</div>
           : (
-            <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
+            <div className="rounded-xl border border-slate-200 bg-white">
               <table className="w-full text-[13px]">
-                <thead className="bg-slate-50 text-left text-[11px] uppercase tracking-wide text-slate-400">
+                <thead className="text-left text-[11px] uppercase tracking-wide text-slate-400">
                   <tr>
-                    <th className="px-4 py-2.5">Tên tài liệu</th>
-                    <th className="px-3">Loại</th>
-                    <th className="px-3">Khối</th>
-                    <th className="px-3">Gắn buổi</th>
-                    <th className="px-3">Ngày tạo</th>
-                    <th className="px-3 text-right">Thao tác</th>
+                    <th className="sticky top-0 z-10 bg-slate-50 px-4 py-2.5">Tên tài liệu</th>
+                    <th className="sticky top-0 z-10 bg-slate-50 px-3">Loại</th>
+                    <th className="sticky top-0 z-10 bg-slate-50 px-3">Khối</th>
+                    <th className="sticky top-0 z-10 bg-slate-50 px-3">Gắn buổi</th>
+                    <th className="sticky top-0 z-10 bg-slate-50 px-3">Ngày tạo</th>
+                    <th className="sticky top-0 z-10 bg-slate-50 px-3 text-right">Thao tác</th>
                   </tr>
                 </thead>
                 <tbody>

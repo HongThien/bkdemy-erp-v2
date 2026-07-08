@@ -402,11 +402,11 @@ function aggByNs(rows: StaffTaskRow[], nsNames: Map<string, string>) {
 }
 function BangTongQuan({ perNs, compact }: { perNs: ReturnType<typeof aggByNs>; compact?: boolean }) {
   return (
-    <div className={`overflow-hidden rounded-2xl bg-white shadow-sm ${compact ? '' : 'mx-auto max-w-[1000px]'}`}>
+    <div className={`rounded-2xl bg-white shadow-sm ${compact ? '' : 'mx-auto max-w-[1000px]'}`}>
       <table className="w-full text-[13px]">
-        <thead><tr className="border-b border-slate-100 text-left text-[11px] text-slate-400">
-          <th className="px-4 py-2 font-medium">Nhân sự</th><th className="px-4 py-2 font-medium">Tổng task</th>
-          <th className="px-4 py-2 font-medium">Đạt</th><th className="px-4 py-2 font-medium">Chậm</th><th className="px-4 py-2 font-medium">Chưa xong</th>
+        <thead><tr className="text-left text-[11px] text-slate-400">
+          <th className="sticky top-0 z-10 border-b border-slate-100 bg-white px-4 py-2 font-medium">Nhân sự</th><th className="sticky top-0 z-10 border-b border-slate-100 bg-white px-4 py-2 font-medium">Tổng task</th>
+          <th className="sticky top-0 z-10 border-b border-slate-100 bg-white px-4 py-2 font-medium">Đạt</th><th className="sticky top-0 z-10 border-b border-slate-100 bg-white px-4 py-2 font-medium">Chậm</th><th className="sticky top-0 z-10 border-b border-slate-100 bg-white px-4 py-2 font-medium">Chưa xong</th>
         </tr></thead>
         <tbody>
           {perNs.map((r) => (

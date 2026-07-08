@@ -91,7 +91,7 @@ export default function QuanLyLevelScreen() {
             <div className="rounded-xl border border-slate-200 bg-white p-4">
               <div className="mb-2 text-[13px] font-semibold text-slate-800">Nhập điểm · {selKy.ten} <span className="text-slate-400">({LOAI[selKy.loai]}, hệ số {selKy.he_so})</span></div>
               <table className="w-full text-[13px]">
-                <thead><tr className="text-left text-[11px] uppercase tracking-wide text-slate-400"><th className="py-1.5">Học sinh</th><th className="w-24">Điểm /10</th><th className="w-56">Verdict</th><th className="w-24">Vượt band</th></tr></thead>
+                <thead><tr className="text-left text-[11px] uppercase tracking-wide text-slate-400"><th className="sticky top-0 z-10 bg-white py-1.5">Học sinh</th><th className="sticky top-0 z-10 w-24 bg-white">Điểm /10</th><th className="sticky top-0 z-10 w-56 bg-white">Verdict</th><th className="sticky top-0 z-10 w-24 bg-white">Vượt band</th></tr></thead>
                 <tbody>
                   {roster.map((hs, i) => <RowEntry key={hs.hoc_sinh_id} ten={tenHT[i]} init={diemOf(selKy.id, hs.hoc_sinh_id)} onSave={(v, d, vu) => save(selKy.id, hs, v, d, vu)} />)}
                 </tbody>
@@ -100,13 +100,13 @@ export default function QuanLyLevelScreen() {
           )}
 
           {/* Ma trận Level */}
-          <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
+          <div className="rounded-xl border border-slate-200 bg-white">
             <table className="w-full text-[12px]">
-              <thead className="bg-slate-50 text-[11px] uppercase tracking-wide text-slate-400">
+              <thead className="text-[11px] uppercase tracking-wide text-slate-400">
                 <tr>
-                  <th className="px-3 py-2 text-left">Học sinh</th>
-                  {kyThis.map((k) => <th key={k.id} className="px-2 py-2 text-center" title={`${LOAI[k.loai]} ·×${k.he_so}`}>{k.ten}</th>)}
-                  <th className="px-3 py-2 text-center">Level</th>
+                  <th className="sticky top-0 z-10 bg-slate-50 px-3 py-2 text-left">Học sinh</th>
+                  {kyThis.map((k) => <th key={k.id} className="sticky top-0 z-10 bg-slate-50 px-2 py-2 text-center" title={`${LOAI[k.loai]} ·×${k.he_so}`}>{k.ten}</th>)}
+                  <th className="sticky top-0 z-10 bg-slate-50 px-3 py-2 text-center">Level</th>
                 </tr>
               </thead>
               <tbody>

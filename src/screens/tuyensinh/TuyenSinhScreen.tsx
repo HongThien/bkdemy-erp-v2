@@ -99,18 +99,18 @@ export default function TuyenSinhScreen() {
           : tab === 'L8' ? <L8List hs={hs} />
           : tab === 'loai' ? <LoaiList rows={rows} onMoLai={async (id) => { await moLaiUngVien(id); await refresh() }} />
           : (
-            <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-sm">
+            <div className="rounded-2xl border border-slate-200 bg-white shadow-sm">
               <table className="w-full min-w-[760px] border-collapse text-[14px]">
                 <thead>
                   <tr className="border-b border-slate-200 text-left text-[13px] text-slate-500">
-                    <th className="px-4 py-3 font-medium">Ứng viên</th>
-                    <th className="px-4 py-3 font-medium">Phụ huynh</th>
-                    <th className="px-3 py-3 font-medium">Khối</th>
-                    <th className="px-3 py-3 font-medium">Nguồn</th>
-                    <th className="px-3 py-3 font-medium">Lưu ý</th>
-                    {viecCols.map((v) => <th key={v.key} className="px-3 py-3 text-center font-medium">{v.ten}{v.derive && <span className="ml-1 rounded bg-violet-100 px-1 text-[10px] font-medium text-violet-600" title="Sẽ tự động khi nối chấm bài test">auto</span>}</th>)}
-                    {showDuoi && <th className="px-3 py-3 text-center font-medium">Bổ trợ đuổi</th>}
-                    <th className="px-4 py-3 text-right font-medium">Hành động</th>
+                    <th className="sticky top-0 z-10 bg-white px-4 py-3 font-medium">Ứng viên</th>
+                    <th className="sticky top-0 z-10 bg-white px-4 py-3 font-medium">Phụ huynh</th>
+                    <th className="sticky top-0 z-10 bg-white px-3 py-3 font-medium">Khối</th>
+                    <th className="sticky top-0 z-10 bg-white px-3 py-3 font-medium">Nguồn</th>
+                    <th className="sticky top-0 z-10 bg-white px-3 py-3 font-medium">Lưu ý</th>
+                    {viecCols.map((v) => <th key={v.key} className="sticky top-0 z-10 bg-white px-3 py-3 text-center font-medium">{v.ten}{v.derive && <span className="ml-1 rounded bg-violet-100 px-1 text-[10px] font-medium text-violet-600" title="Sẽ tự động khi nối chấm bài test">auto</span>}</th>)}
+                    {showDuoi && <th className="sticky top-0 z-10 bg-white px-3 py-3 text-center font-medium">Bổ trợ đuổi</th>}
+                    <th className="sticky top-0 z-10 bg-white px-4 py-3 text-right font-medium">Hành động</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -184,9 +184,11 @@ function L8List({ hs }: { hs: { id: string; ma_hs: string | null; ho_ten: string
 function LoaiList({ rows, onMoLai }: { rows: UngVien[]; onMoLai: (id: string) => void }) {
   if (!rows.length) return <div className="rounded-2xl border border-slate-200 bg-white p-8 text-center text-[14px] text-slate-400 shadow-sm">Chưa có ứng viên bị loại.</div>
   return (
-    <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-sm">
+    <div className="rounded-2xl border border-slate-200 bg-white shadow-sm">
       <table className="w-full min-w-[640px] text-[14px]">
-        <thead><tr className="border-b border-slate-200 text-left text-[13px] text-slate-500"><th className="px-4 py-3 font-medium">Ứng viên</th><th className="px-4 py-3 font-medium">Phụ huynh</th><th className="px-4 py-3 font-medium">Lý do loại</th><th className="px-4 py-3 font-medium">Lưu ý</th><th className="px-4 py-3 text-right font-medium">Hành động</th></tr></thead>
+        <thead><tr className="border-b border-slate-200 text-left text-[13px] text-slate-500">
+          <th className="sticky top-0 z-10 bg-white px-4 py-3 font-medium">Ứng viên</th><th className="sticky top-0 z-10 bg-white px-4 py-3 font-medium">Phụ huynh</th><th className="sticky top-0 z-10 bg-white px-4 py-3 font-medium">Lý do loại</th><th className="sticky top-0 z-10 bg-white px-4 py-3 font-medium">Lưu ý</th><th className="sticky top-0 z-10 bg-white px-4 py-3 text-right font-medium">Hành động</th>
+        </tr></thead>
         <tbody>
           {rows.map((uv) => (
             <tr key={uv.id} className="border-b border-slate-100 last:border-0">

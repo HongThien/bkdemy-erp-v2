@@ -103,9 +103,14 @@ export default function BoTroScreen() {
               )
           ) : tab === 'khongbu' ? (
             khongbu.length === 0 ? <Empty t="Chưa có HS nào ghi không-bù." /> : (
-              <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-sm">
+              <div className="rounded-2xl border border-slate-200 bg-white shadow-sm">
                 <table className="w-full min-w-[560px] text-[14px]">
-                  <thead><tr className="border-b border-slate-200 text-left text-[13px] text-slate-500"><th className="px-4 py-3 font-medium">Học sinh</th><th className="px-4 py-3 font-medium">Loại</th><th className="px-4 py-3 font-medium">Lý do</th><th className="px-4 py-3 text-right font-medium"></th></tr></thead>
+                  <thead><tr className="text-left text-[13px] text-slate-500">
+                    <th className="sticky top-0 z-10 border-b border-slate-200 bg-white px-4 py-3 font-medium">Học sinh</th>
+                    <th className="sticky top-0 z-10 border-b border-slate-200 bg-white px-4 py-3 font-medium">Loại</th>
+                    <th className="sticky top-0 z-10 border-b border-slate-200 bg-white px-4 py-3 font-medium">Lý do</th>
+                    <th className="sticky top-0 z-10 border-b border-slate-200 bg-white px-4 py-3 text-right font-medium"></th>
+                  </tr></thead>
                   <tbody>{khongbu.map((k, i) => (
                     <tr key={k.id} className="border-b border-slate-100 last:border-0">
                       <td className="px-4 py-3"><div className="font-medium text-slate-800">{tenKhongBu[i]}{k.ma_hs ? <span className="ml-1.5 font-mono text-[11px] font-normal text-slate-400">{k.ma_hs}</span> : null}</div><div className="text-[12px] text-slate-400">{k.info}</div></td>
