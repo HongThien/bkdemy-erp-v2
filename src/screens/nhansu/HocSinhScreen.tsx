@@ -42,8 +42,13 @@ export default function HocSinhScreen() {
   const [tt, setTt] = useState<string>('dang_hoc') // toggle trạng thái — quản lý riêng Đang học / Nghỉ
   const [sort, setSort] = useState<{ key: SortKey; dir: 'asc' | 'desc' }>({ key: 'ho_ten', dir: 'asc' })
 
+  // loading=true CHE bảng bằng placeholder "Đang tải…" → co chiều cao khung cuộn về gần 0 → trình
+  // duyệt tự CLAMP scrollTop về 0 (không tự phục hồi khi bảng đầy lại) → cảm giác "reset về đầu trang"
+  // mỗi lần Sửa xong quay lại. Chỉ hiện placeholder ở LẦN TẢI ĐẦU (chưa có data) — reload sau (đổi khối
+  // vẫn tự làm mới) giữ bảng CŨ trên màn cho tới khi data mới về, DOM/scroll không bị phá giữa chừng.
   async function reload() {
-    setLoading(true); setErr(null)
+    if (list.length === 0) setLoading(true)
+    setErr(null)
     try {
       const hs = await listHocSinh(khoi === ALL ? undefined : khoi)
       setList(hs)
