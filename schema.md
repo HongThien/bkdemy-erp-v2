@@ -2,7 +2,7 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-94 bảng · 0 enum · 8 trigger · 21 function
+93 bảng · 0 enum · 8 trigger · 21 function
 
 ## bai_lam
 
@@ -244,13 +244,19 @@
 |---|---|---|---|---|
 | id | uuid |  | gen_random_uuid() | PK |
 | ca_test_id | uuid |  |  | FK→ca_test.id |
-| de_test_cau_id | uuid | Y |  | FK→de_test_cau.id |
 | thu_tu | integer |  |  |  |
-| nhan | text |  |  |  |
 | diem_toi_da | numeric |  | 1 |  |
 | dap_an | text | Y |  |  |
 | ma_dang | text | Y |  |  |
 | created_at | timestamp with time zone |  | now() |  |
+| ma_cau | text | Y |  |  |
+| loai_cau | text | Y |  |  |
+| noi_dung | text | Y |  |  |
+| lua_chon | jsonb | Y |  |  |
+| menh_de | jsonb | Y |  |  |
+| loi_giai | text | Y |  |  |
+| anh_de | text | Y |  |  |
+| anh_dap_an | text | Y |  |  |
 
 ## ca_test_cau_kq
 
@@ -384,19 +390,7 @@
 | active | boolean |  | true |  |
 | created_by | uuid | Y |  |  |
 | created_at | timestamp with time zone |  | now() |  |
-
-## de_test_cau
-
-| cột | kiểu | null | default | khóa |
-|---|---|---|---|---|
-| id | uuid |  | gen_random_uuid() | PK |
-| de_test_id | uuid |  |  | FK→de_test.id |
-| thu_tu | integer |  |  |  |
-| nhan | text |  |  |  |
-| diem_toi_da | numeric |  | 1 |  |
-| dap_an | text | Y |  |  |
-| ma_dang | text | Y |  |  |
-| created_at | timestamp with time zone |  | now() |  |
+| tai_lieu_id | uuid |  |  | FK→tai_lieu.id |
 
 ## diem_thi
 

@@ -37,6 +37,7 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
   const [picker, setPicker] = useState<null | { phanId: string; maDangs: string[]; selected: string[]; disabled: string[] }>(null)
   const [dangPicker, setDangPicker] = useState<null | { buoiId: string; selected: string[] }>(null)
   const [trichOpen, setTrichOpen] = useState(false)
+  const [previewBuoiId, setPreviewBuoiId] = useState<string | null>(null) // "👁 Xem buổi" — review nhanh 1 buổi, khác nút "Xem/Xuất PDF" (cả giáo trình)
   const [saved, setSaved] = useState(false) // chỉ báo "đã tự động lưu" (builder lưu ngay mỗi thao tác, không có nút Lưu)
   const markSaved = () => setSaved(true)
   useEffect(() => { if (!saved) return; const t = setTimeout(() => setSaved(false), 2000); return () => clearTimeout(t) }, [saved])
@@ -117,6 +118,7 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
                   onChonDang={() => setDangPicker({ buoiId: b.marker.id, selected: b.dangs.map((d) => d.ref_ma!).filter(Boolean) })}
                   onReorderDang={async (order) => { await reorderDangInBuoi(id, b.marker.id, order); await reload(); markSaved() }}
                   onApply={applyCaus} openPicker={openPicker} cauTbl={cauTbl} onSetKieu={onSetKieu} usedExcept={usedExcept}
+                  onPreview={() => setPreviewBuoiId(b.marker.id)}
                 />
               )
             })}
@@ -129,16 +131,17 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
       {picker && <KhoPicker {...picker} cauTbl={cauTbl} onClose={() => setPicker(null)} onConfirm={async (m) => { await applyCaus(picker.phanId, m); setPicker(null) }} />}
       {trichOpen && <TrichPanel masterId={id} khoi={full.taiLieu.khoi} buois={buois} onClose={() => setTrichOpen(false)} />}
       {printing && <PrintView id={id} onClose={() => setPrinting(false)} />}
+      {previewBuoiId && <PrintView id={id} onlyBuoiId={previewBuoiId} onClose={() => setPreviewBuoiId(null)} />}
     </div>
   )
 }
 
 // ── 1 BUỔI: tiêu đề (sửa được) + nút Chọn dạng + danh sách dạng (mỗi dạng có Bài luyện + BTVN) ──
-function BuoiCard({ buoi, startNo, linesByCau, onLine, onRename, onDelete, onChonDang, onReorderDang, onApply, openPicker, cauTbl, onSetKieu, usedExcept }: {
+function BuoiCard({ buoi, startNo, linesByCau, onLine, onRename, onDelete, onChonDang, onReorderDang, onApply, openPicker, cauTbl, onSetKieu, usedExcept, onPreview }: {
   buoi: BuoiUI; startNo: number; linesByCau: Record<string, number>; onLine: (maCau: string, n: number) => void
   onRename: (t: string) => void; onDelete: () => void; onChonDang: () => void; onReorderDang: (order: string[]) => void
   onApply: (phanId: string, maCaus: string[]) => void; openPicker: (phanId: string, ma: string, selected: string[]) => void; cauTbl: string; onSetKieu: (phanId: string, kieu: string) => void
-  usedExcept: (phanId: string) => Set<string>
+  usedExcept: (phanId: string) => Set<string>; onPreview: () => void
 }) {
   const order = buoi.dangs.map((d) => d.ref_ma!).filter(Boolean)
   const move = (i: number, dir: -1 | 1) => {
@@ -154,7 +157,8 @@ function BuoiCard({ buoi, startNo, linesByCau, onLine, onRename, onDelete, onCho
         <input defaultValue={buoi.marker.tieu_de ?? ''} onBlur={(e) => { const v = e.target.value.trim(); if (v && v !== buoi.marker.tieu_de) onRename(v) }}
           className="w-[200px] rounded-md border border-transparent bg-transparent px-1.5 py-1 text-[15px] font-bold text-indigo-800 outline-none hover:border-slate-200 focus:border-indigo-400 focus:bg-white" />
         <span className="text-[12px] text-slate-400">{buoi.dangs.length} dạng</span>
-        <button onClick={onChonDang} className="ml-auto rounded-md bg-indigo-600 px-2.5 py-1 text-[12px] font-medium text-white hover:bg-indigo-500">+ Chọn dạng</button>
+        <button onClick={onPreview} title="Xem nhanh bản in CHỈ buổi này (khỏi cuộn cả giáo trình)" className="ml-auto rounded-md border border-indigo-200 bg-white px-2.5 py-1 text-[12px] font-medium text-indigo-600 hover:bg-indigo-50">👁 Xem buổi</button>
+        <button onClick={onChonDang} className="rounded-md bg-indigo-600 px-2.5 py-1 text-[12px] font-medium text-white hover:bg-indigo-500">+ Chọn dạng</button>
         <button onClick={onDelete} title="Xoá buổi" className="rounded border border-slate-200 px-1.5 py-1 text-[12px] text-slate-400 hover:border-rose-300 hover:text-rose-600">✕</button>
       </div>
       <div className="space-y-3 p-4">

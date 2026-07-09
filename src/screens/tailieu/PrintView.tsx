@@ -60,12 +60,14 @@ export async function downloadPagesPdf(dst: HTMLElement, filename: string, chrom
 }
 
 // headless = KHÔNG hiện preview, tự dựng trang ẩn → tải PDF → đóng (nút "⬇ Tải" ngay ở hàng Kho tài liệu).
-export default function PrintView({ id, onClose, headless }: { id: string; onClose: () => void; headless?: boolean }) {
+// onlyBuoiId = chỉ render 1 BUỔI (nút "👁 Xem buổi" ở Builder) — kiểm tra nhanh, khỏi cuộn cả giáo trình.
+export default function PrintView({ id, onClose, headless, onlyBuoiId }: { id: string; onClose: () => void; headless?: boolean; onlyBuoiId?: string }) {
   const [full, setFull] = useState<TaiLieuFull | null>(null)
   const [err, setErr] = useState<string | null>(null)
   const [gv, setGv] = useState(false) // false = bản HS · true = bản GV
   const [scope, setScope] = useState<'all' | 'giaotrinh' | 'btvn'>('all') // tách quyển: giáo trình (LT+luyện) vs BTVN riêng
   const lt = full?.taiLieu.cau_hinh?.inLyThuyet !== false // kèm LÝ THUYẾT = SETTING của giáo trình (default có); trích xuất kế thừa
+  const buoiTitle = onlyBuoiId ? full?.phans.find((p) => p.id === onlyBuoiId)?.tieu_de : undefined
   const [pages, setPages] = useState(0)
   const [rendering, setRendering] = useState(true)
   const [renderErr, setRenderErr] = useState<string | null>(null)
@@ -117,7 +119,7 @@ export default function PrintView({ id, onClose, headless }: { id: string; onClo
       .catch((e: unknown) => { container.remove(); if (!cancelled) { setRenderErr(e instanceof Error ? e.message : String(e)); setRendering(false) } })
       .finally(() => URL.revokeObjectURL(cssUrl))
     return () => { cancelled = true }
-  }, [full, gv, scope, lopTen])
+  }, [full, gv, scope, lopTen, onlyBuoiId])
 
   const seg = (on: boolean) => `rounded-md px-3 py-1 text-[13px] font-medium transition ${on ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`
 
@@ -126,6 +128,7 @@ export default function PrintView({ id, onClose, headless }: { id: string; onClo
     if (!dstRef.current || !full) return
     setDl(true); setRenderErr(null)
     const scopeSuffix = scope === 'btvn' ? ' - BTVN' : scope === 'giaotrinh' ? ' - Giáo trình' : ''
+    const buoiSuffix = onlyBuoiId && buoiTitle ? ` - ${buoiTitle}` : ''
     // chrome header/footer y HỆT bản render (BTVN/giáo-trình-buổi = Lớp · ngày · footer liên hệ).
     const ch = full.taiLieu.cau_hinh ?? {}
     const buoiDoc = full.taiLieu.loai === 'btvn' || full.taiLieu.loai === 'giao_trinh_buoi'
@@ -135,7 +138,7 @@ export default function PrintView({ id, onClose, headless }: { id: string; onClo
       headerText: `${lopTen ? `Lớp ${lopTen} · ` : ''}${ngayVN}`,
       footerText: 'BK Academy        Tel : 0963.209.309        Địa chỉ : 17A10 KĐT Geleximco',
     } : undefined
-    try { await downloadPagesPdf(dstRef.current, `${full.taiLieu.ten}${scopeSuffix}${gv ? ' - Bản GV' : ''}`, pageChrome(full.taiLieu, ch, cssOpts)) }
+    try { await downloadPagesPdf(dstRef.current, `${full.taiLieu.ten}${buoiSuffix}${scopeSuffix}${gv ? ' - Bản GV' : ''}`, pageChrome(full.taiLieu, ch, cssOpts)) }
     catch (e) { setRenderErr('Tải PDF lỗi: ' + (e instanceof Error ? e.message : String(e))) }
     finally { setDl(false) }
   }
@@ -167,7 +170,8 @@ export default function PrintView({ id, onClose, headless }: { id: string; onClo
   return createPortal(
     <div className="pv-overlay fixed inset-0 z-[80] flex flex-col bg-slate-300/90">
       <div className="no-print flex items-center gap-3 border-b border-slate-300 bg-white px-5 py-2.5 shadow-sm">
-        <span className="text-sm font-semibold text-slate-800">Xem thử &amp; xuất giáo trình</span>
+        <span className="text-sm font-semibold text-slate-800">{onlyBuoiId ? 'Xem thử buổi' : 'Xem thử & xuất giáo trình'}</span>
+        {onlyBuoiId && <span className="rounded-full bg-indigo-50 px-2.5 py-1 text-[12px] font-medium text-indigo-700" title="Chỉ xem buổi này — nút '🖨 Xem / Xuất PDF' ở thanh trên xem cả giáo trình">🗓️ {buoiTitle || 'Buổi'}</span>}
         <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5">
           <button onClick={() => setGv(false)} className={seg(!gv)}>Bản học sinh</button>
           <button onClick={() => setGv(true)} className={seg(gv)}>Bản giáo viên</button>
@@ -195,7 +199,7 @@ export default function PrintView({ id, onClose, headless }: { id: string; onClo
             </>}
       </div>
       {/* Nguồn ẩn — chỉ để lấy HTML cho paged.js (KaTeX đã render sẵn trong này) */}
-      <div ref={srcRef} className="pv-src" aria-hidden>{full && <Doc full={full} gv={gv} scope={scope} lt={lt} />}</div>
+      <div ref={srcRef} className="pv-src" aria-hidden>{full && <Doc full={full} gv={gv} scope={scope} lt={lt} onlyBuoiId={onlyBuoiId} />}</div>
       <style>{CHROME_CSS}</style>
     </div>,
     document.body,
@@ -215,13 +219,15 @@ function buildBuois(phans: PhanResolved[]): Buoi[] {
   return out
 }
 
-function Doc({ full, gv, scope, lt = true }: { full: TaiLieuFull; gv: boolean; scope: 'all' | 'giaotrinh' | 'btvn'; lt?: boolean }) {
+function Doc({ full, gv, scope, lt = true, onlyBuoiId }: { full: TaiLieuFull; gv: boolean; scope: 'all' | 'giaotrinh' | 'btvn'; lt?: boolean; onlyBuoiId?: string }) {
   const { taiLieu, phans, ltChuyenDe, tenChuyenDe } = full
   const ch = taiLieu.cau_hinh ?? {}
   const accent = ch.mau || '#E91E8C'
   const linesByCau = ch.btvnLinesByCau ?? {}
-  const buois = buildBuois(phans)
+  let buois = buildBuois(phans)
+  if (onlyBuoiId) buois = buois.filter((b) => b.id === onlyBuoiId)
   // Đánh số dạng (trên lớp) LIÊN TỤC toàn giáo trình theo ma_dang (vd buổi1: dạng1,2 · buổi2: dạng3,4).
+  // Tính trên `phans` GỐC (không lọc) kể cả khi onlyBuoiId → số dạng khớp với bản in cả giáo trình.
   const dangNoByMa: Record<string, number> = {}
   let n = 0
   for (const p of phans) if (p.loai_phan === 'dang' && p.ref_ma && !(p.ref_ma in dangNoByMa)) dangNoByMa[p.ref_ma] = ++n
@@ -231,8 +237,9 @@ function Doc({ full, gv, scope, lt = true }: { full: TaiLieuFull; gv: boolean; s
       {ch.header !== 'none' && <div className="pv-rh">{taiLieu.ten} · Khối {taiLieu.khoi}</div>}
       {ch.footer !== 'none' && <div className="pv-rf">BK ACADEMY · {taiLieu.ten} · Khối {taiLieu.khoi}</div>}
       {/* BỎ BÌA khi: quyển BTVN (mỗi phiếu có header riêng) HOẶC giáo trình buổi trích xuất
-          (tên buổi đã hiện 1 lần ở dải buổi; lớp/ngày ở header) → tránh lặp tiêu đề. */}
-      {scope !== 'btvn' && taiLieu.loai !== 'giao_trinh_buoi' && (
+          (tên buổi đã hiện 1 lần ở dải buổi; lớp/ngày ở header) HOẶC xem-nhanh-1-buổi (bìa cả giáo
+          trình thừa khi chỉ soi 1 buổi) → tránh lặp tiêu đề. */}
+      {!onlyBuoiId && scope !== 'btvn' && taiLieu.loai !== 'giao_trinh_buoi' && (
         <div className="pv-cover">
           {/* Logo nằm ở header (lặp mọi trang) → KHÔNG đặt thêm logo ở bìa để tránh trùng. */}
           <div className="pv-title">{taiLieu.ten}</div>

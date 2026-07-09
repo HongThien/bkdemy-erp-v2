@@ -330,6 +330,18 @@ export async function getTaiLieuFull(id: string): Promise<TaiLieuFull> {
   return { taiLieu: tl as TaiLieu, phans: phansResolved, ltChuyenDe, tenChuyenDe }
 }
 
+// Gom mọi câu của 1 TÀI LIỆU BẤT KỲ theo THỨ TỰ ĐỌC — tự nhận diện hình dạng phan, không cần biết
+// trước `loai` tài liệu (dùng cho luồng "trỏ vào 1 tài liệu có sẵn", vd Test đầu vào chọn từ Kho):
+// có phan 'custom' (ET/MT/MT-buổi/Đề thi) → dùng đúng các phan đó, theo thu_tu phần rồi thu_tu câu;
+// không có (giáo trình/BTVN) → gom 'dang'+'btvn' theo thu_tu. Đây là điểm DUY NHẤT xử lý ngoại lệ
+// loại tài liệu — chỗ khác chỉ cần gọi hàm này, không cần if theo `loai`.
+export async function layCauTheoThuTu(taiLieuId: string): Promise<CauHoi[]> {
+  const full = await getTaiLieuFull(taiLieuId)
+  const custom = full.phans.filter((p) => p.loai_phan === 'custom')
+  const source = custom.length ? custom : full.phans.filter((p) => p.loai_phan === 'dang' || p.loai_phan === 'btvn')
+  return source.flatMap((p) => p.caus)
+}
+
 // ── ET (loai='et') — gắn buổi qua (lop_id, ngay); nội dung = phẳng các 'dang' (KHÔNG buổi/BTVN) ──
 export type ETDoc = TaiLieu & { lop_id: string | null; ngay: string | null }
 const thuLabelET = (ngay: string) => { const d = new Date(ngay + 'T00:00:00').getDay(); const t = d === 0 ? 8 : d + 1; return t === 8 ? 'CN' : 'T' + t }
