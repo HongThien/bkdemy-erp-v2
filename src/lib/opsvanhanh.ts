@@ -4,7 +4,7 @@
 // ET (Story 4) GÁC LẠI — không có gì ở đây.
 import { supabase } from './supabase'
 import { getMyProfile } from './nhansu'
-import { congNgay } from './tuan'
+import { congNgay, homNayVN } from './tuan'
 import { tinhHieuSuat, TIEN_DO_TIERS } from './vanhanh'
 
 const LIMIT = 2000
@@ -46,11 +46,16 @@ export type TkbOpsRow = {
   phanCongId: string | null; nhanSuId: string | null; nhanSuTen: string | null
 }
 // TOÀN BỘ slot TKB còn hiệu lực + người ĐANG trực (nếu có) — nguồn màn Phân công Ops.
+// ⚠ Fix (Thùy báo lỗi 07-10): trước KHÔNG lọc `ngay_khai_giang` → lớp CHƯA khai giảng vẫn đòi gán
+// người trực (trong khi buổi/report/tan/prep của lớp đó chưa hề sinh — đúng luật "lớp chưa khai
+// giảng → session pure-derive tự KHÔNG sinh"). Lọc bỏ lớp có `ngay_khai_giang > hôm nay`.
 export async function listTkbVoiNguoiTruc(): Promise<TkbOpsRow[]> {
-  const { data: tkb, error } = await supabase.from('thoi_khoa_bieu')
-    .select('id, lop_id, thu, gio_bat_dau, gio_ket_thuc, phong, lop:lop_id(ten_lop, mon)')
+  const { data: tkbAll, error } = await supabase.from('thoi_khoa_bieu')
+    .select('id, lop_id, thu, gio_bat_dau, gio_ket_thuc, phong, lop:lop_id(ten_lop, mon, ngay_khai_giang)')
     .is('hieu_luc_den', null).order('thu').limit(LIMIT)
   if (error) throw error
+  const homNay = homNayVN()
+  const tkb = (tkbAll ?? []).filter((s: any) => !s.lop?.ngay_khai_giang || s.lop.ngay_khai_giang <= homNay)
   const tkbIds = (tkb ?? []).map((s: any) => s.id)
   const { data: pc } = tkbIds.length
     ? await supabase.from('phan_cong_ops').select('id, tkb_id, nhan_su_id, nhan_su:nhan_su_id(ho_ten)').is('hieu_luc_den', null).in('tkb_id', tkbIds).limit(LIMIT)

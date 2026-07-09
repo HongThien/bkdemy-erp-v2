@@ -6,6 +6,8 @@ import {
 import { readClipboardImageFile } from '../kho/ui'
 import { tuanCuaNgay, khoangTuan, homNayVN, nhanTuan, thuCuaNgay, ddmmVN } from '../../lib/tuan'
 import { useIsMobile } from '../../hooks/useIsMobile'
+import { getMyScope } from '../../lib/nhansu'
+import { useStore } from '../../store/useStore'
 
 const hhmm = (t: string) => t.slice(0, 5)
 const LUOT_LABEL: Record<PrepLuotKey, string> = { ngay: 'Cả buổi tối', sang: 'Sáng', chieu: 'Chiều' }
@@ -18,8 +20,19 @@ export default function PrepScreen() {
   // Ngày TƯƠNG LAI người dùng chủ động bấm mở xem trước — hôm nay + ngày đã qua (còn nợ) LUÔN mở sẵn.
   const [xemThem, setXemThem] = useState<Set<string>>(new Set())
 
+  // ⚠ Fix (Thùy báo lỗi 07-10): "chấm điểm nền" (GV) + "chốt" (leader) TRƯỚC hiện cho MỌI người xem
+  // màn này, kể cả OPS (người chỉ nên tick checklist + đóng) — OPS tự chấm/tự chốt được luôn, sai vai.
+  // Gate lại: chỉ GV/TG (có lớp trực tiếp) hoặc quản lý (có cấp dưới)/admin mới thấy 2 cụm control đó;
+  // OPS thuần chỉ thấy checklist + đóng (đúng việc của OPS).
+  const quyen = useStore((s) => s.quyen)
+  const [canChamVaChot, setCanChamVaChot] = useState(false)
+  useEffect(() => { getMyScope().then((s) => setCanChamVaChot(!!quyen?.laAdmin || !!s?.trucTiep.length || !!s?.laQuanLy)).catch(() => setCanChamVaChot(false)) }, [quyen])
+
+  // ⚠ Fix (Thùy báo lỗi 07-10, cùng gốc PhanCongOpsScreen): reload() vô điều kiện `setLoading(true)` →
+  // sau mỗi lần đóng 1 lượt, lưới co về "Đang tải…" rồi build lại → mất vị trí cuộn đang xem. Chỉ hiện
+  // loading ở LẦN TẢI ĐẦU (luots rỗng); các lần sau giữ lưới cũ trên màn tới khi data mới về.
   async function reload() {
-    setLoading(true)
+    if (!luots.length) setLoading(true)
     try { const { tu, den } = khoangTuan(tuan); setLuots(await luotPrepCuaKhoang(tu, den)) } finally { setLoading(false) }
   }
   useEffect(() => { reload() }, [tuan]) // eslint-disable-line
@@ -31,50 +44,60 @@ export default function PrepScreen() {
   const toggleXem = (ngay: string) => setXemThem((s) => { const n = new Set(s); n.has(ngay) ? n.delete(ngay) : n.add(ngay); return n })
 
   const isMobile = useIsMobile()
+  // ⚠ Fix (Thùy báo lỗi 07-10): root TRƯỚC là 1 block div thường, KHÔNG có khung cuộn riêng — khung
+  // NGOÀI (NhanSuHome, cấp staffLeaf) là `overflow-hidden`, nên nội dung tràn khỏi viewport bị CẮT
+  // MẤT thẳng, không kéo xuống xem được (không phải thiếu data). Giờ tự làm "nested scrollbox": header
+  // đứng yên + khung dưới `flex-1 overflow-auto` tự cuộn — cùng pattern các màn khác (ETChamTab/MTTab…).
   return (
-    <div className={isMobile ? 'mx-auto max-w-[1100px] p-3' : 'mx-auto max-w-[1100px] p-6'}>
-      <div className="mb-4 flex flex-wrap items-center gap-2">
-        <h2 className="text-[20px] font-semibold text-slate-800">Chuẩn bị phòng (Prep)</h2>
-        <span className="text-[12px] text-slate-400">Dọn phòng + KIT · 1 lượt/ngày thường · 2 lượt (sáng/chiều) T7-CN</span>
-        <div className="ml-auto flex items-center gap-1.5">
-          <button onClick={() => setTuan((t) => t - 1)} className="rounded-md border border-slate-200 px-2.5 py-1.5 text-[16px] leading-none text-slate-600 hover:border-indigo-300">‹</button>
-          <span className="min-w-[210px] text-center text-[15px] font-semibold text-slate-700">{nhanTuan(tuan)}</span>
-          <button onClick={() => setTuan((t) => t + 1)} className="rounded-md border border-slate-200 px-2.5 py-1.5 text-[16px] leading-none text-slate-600 hover:border-indigo-300">›</button>
+    <div className="flex h-full min-h-0 flex-col">
+      <div className={isMobile ? 'mx-auto w-full max-w-[1100px] px-3 pt-3' : 'mx-auto w-full max-w-[1100px] px-6 pt-6'}>
+        <div className="mb-4 flex flex-wrap items-center gap-2">
+          <h2 className="text-[20px] font-semibold text-slate-800">Chuẩn bị phòng (Prep)</h2>
+          <span className="text-[12px] text-slate-400">Dọn phòng + KIT · 1 lượt/ngày thường · 2 lượt (sáng/chiều) T7-CN</span>
+          <div className="ml-auto flex items-center gap-1.5">
+            <button onClick={() => setTuan((t) => t - 1)} className="rounded-md border border-slate-200 px-2.5 py-1.5 text-[16px] leading-none text-slate-600 hover:border-indigo-300">‹</button>
+            <span className="min-w-[210px] text-center text-[15px] font-semibold text-slate-700">{nhanTuan(tuan)}</span>
+            <button onClick={() => setTuan((t) => t + 1)} className="rounded-md border border-slate-200 px-2.5 py-1.5 text-[16px] leading-none text-slate-600 hover:border-indigo-300">›</button>
+          </div>
         </div>
       </div>
 
-      {loading ? <p className="text-sm text-slate-400">Đang tải…</p> : luots.length === 0 ? (
-        <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">Không có lượt prep nào tuần này.</div>
-      ) : (
-        <div className="flex flex-col gap-4">
-          {dayGroups.map(([ngay, list]) => {
-            // Chỉ hôm nay + ngày ĐÃ QUA (còn nợ) mở sẵn — ngày tương lai gấp lại, bấm mới xem (đỡ rối mắt).
-            const isFuture = ngay > homNay
-            const expanded = !isFuture || xemThem.has(ngay)
-            return (
-              <div key={ngay} className="rounded-2xl bg-white p-3 shadow-sm">
-                <button onClick={() => isFuture && toggleXem(ngay)} className={`mb-2 flex w-full items-center gap-2 border-l-4 border-indigo-400 pl-2 text-left text-[13px] font-semibold text-slate-600 ${isFuture ? 'cursor-pointer' : ''}`}>
-                  <span>{thuCuaNgay(ngay)} · {ddmmVN(ngay)}</span>
-                  <span className="font-normal text-slate-400">· {list.length} lượt</span>
-                  {isFuture && <span className="ml-auto text-[11px] font-normal text-indigo-500">{expanded ? '▾ Ẩn bớt' : '▸ Xem'}</span>}
-                </button>
-                {expanded && (
-                  <div className="grid gap-2 sm:grid-cols-2">
-                    {list.sort((a, b) => a.phong.localeCompare(b.phong) || a.gioCaDau.localeCompare(b.gioCaDau)).map((l) => (
-                      <LuotCard key={l.phong + l.luot} l={l} onChanged={reload} />
-                    ))}
+      <div className={`min-h-0 flex-1 overflow-auto ${isMobile ? 'px-3 pb-3' : 'px-6 pb-6'}`}>
+        <div className="mx-auto max-w-[1100px]">
+          {loading ? <p className="text-sm text-slate-400">Đang tải…</p> : luots.length === 0 ? (
+            <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">Không có lượt prep nào tuần này.</div>
+          ) : (
+            <div className="flex flex-col gap-4">
+              {dayGroups.map(([ngay, list]) => {
+                // Chỉ hôm nay + ngày ĐÃ QUA (còn nợ) mở sẵn — ngày tương lai gấp lại, bấm mới xem (đỡ rối mắt).
+                const isFuture = ngay > homNay
+                const expanded = !isFuture || xemThem.has(ngay)
+                return (
+                  <div key={ngay} className="rounded-2xl bg-white p-3 shadow-sm">
+                    <button onClick={() => isFuture && toggleXem(ngay)} className={`mb-2 flex w-full items-center gap-2 border-l-4 border-indigo-400 pl-2 text-left text-[13px] font-semibold text-slate-600 ${isFuture ? 'cursor-pointer' : ''}`}>
+                      <span>{thuCuaNgay(ngay)} · {ddmmVN(ngay)}</span>
+                      <span className="font-normal text-slate-400">· {list.length} lượt</span>
+                      {isFuture && <span className="ml-auto text-[11px] font-normal text-indigo-500">{expanded ? '▾ Ẩn bớt' : '▸ Xem'}</span>}
+                    </button>
+                    {expanded && (
+                      <div className="grid gap-2 sm:grid-cols-2">
+                        {list.sort((a, b) => a.phong.localeCompare(b.phong) || a.gioCaDau.localeCompare(b.gioCaDau)).map((l) => (
+                          <LuotCard key={l.phong + l.luot} l={l} onChanged={reload} canChamVaChot={canChamVaChot} />
+                        ))}
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
-            )
-          })}
+                )
+              })}
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </div>
   )
 }
 
-function LuotCard({ l, onChanged }: { l: PrepLuot; onChanged: () => void }) {
+function LuotCard({ l, onChanged, canChamVaChot }: { l: PrepLuot; onChanged: () => void; canChamVaChot: boolean }) {
   const [row, setRow] = useState<PrepRow | null>(null)
   const [loaded, setLoaded] = useState(false)
   const [busy, setBusy] = useState(false)
@@ -161,13 +184,15 @@ function LuotCard({ l, onChanged }: { l: PrepLuot; onChanged: () => void }) {
         <div className="mt-1.5 flex flex-wrap items-center gap-2 border-t border-slate-200 pt-1.5 text-[12px]">
           {row?.anhUrl && <img src={row.anhUrl} className="h-7 w-7 rounded object-cover ring-1 ring-slate-200" />}
           <span className="text-slate-500">GV chấm: <b className="text-slate-700">{row?.gvDiemNen}%</b>{row?.gvChamAt ? '' : ' (mặc định)'}</span>
-          {!row?.leaderChotAt && (
+          {/* Chấm điểm nền (GV) + chốt (leader) — CHỈ GV/TG/quản lý/admin, KHÔNG phải OPS (Thùy báo lỗi 07-10). */}
+          {!row?.leaderChotAt && canChamVaChot && (
             <>
               {QUICK_PICKS.map((d) => <button key={d} onClick={() => cham(d)} disabled={busy} className="rounded border border-slate-200 px-1.5 py-0.5 text-[11px] hover:border-indigo-300">{d}</button>)}
               <input value={ghiChu} onChange={(e) => setGhiChu(e.target.value)} placeholder="ghi chú lỗi…" className="w-28 rounded border border-slate-200 px-1.5 py-0.5 text-[11px]" />
               <button onClick={chot} disabled={busy} className="ml-auto rounded-md bg-emerald-600 px-2.5 py-1 text-[11px] font-semibold text-white hover:bg-emerald-500">✓ Leader chốt</button>
             </>
           )}
+          {!row?.leaderChotAt && !canChamVaChot && <span className="ml-auto text-[11px] text-slate-400">Chờ GV chấm + leader chốt</span>}
         </div>
       )}
       {err && <p className="mt-1 text-[11px] text-rose-600">{err}</p>}
