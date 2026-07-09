@@ -86,13 +86,18 @@ export async function ganMTVaoBuoi(masterId: string, opts: { lopId: string; ngay
   const slot = buoiMoi ? await tkbSlotCuaLop(opts.lopId, opts.ngay) : {}
   const buoi = await moBuoi(opts.lopId, opts.ngay, slot)
   const buoiId = buoi.id
-  // Buổi có MT CHỈ có 1 hoạt động = kiểm tra (Thùy 07-08) → đóng LUÔN đánh giá + ET của buổi này (KHÔNG
-  // áp dụng cho MT, không phải "chưa làm"). Set thẳng cột, KHÔNG qua closePhase/dongDanhGia — 2 hàm đó
-  // tính Elo/EXP hoặc cần data đánh giá thật; ở đây chỉ đánh dấu "N/A" nên set trực tiếp, TRÁNH side-effect.
+  // Buổi có MT CHỈ có 1 hoạt động = kiểm tra (Thùy 07-08) → đóng LUÔN cả 4 phase-khác của buổi này
+  // (đánh giá/chấm-bài-trên-lớp/ET/BTVN, KHÔNG áp dụng cho MT, không phải "chưa làm"). Set thẳng cột,
+  // KHÔNG qua closePhase/dongDanhGia — các hàm đó tính Elo/EXP hoặc cần data đánh giá thật; ở đây chỉ
+  // đánh dấu "N/A" nên set trực tiếp, TRÁNH side-effect. ⚠ Fix 07-10 (Thùy báo lỗi): TRƯỚC chỉ đóng
+  // đánh-giá+ET, QUÊN ingame+btvn → 2 task "Chấm bài trên lớp"/"Chấm BTVN" kẹt mãi ở Việc-của-tôi + buổi
+  // gần như KHÔNG BAO GIỜ lên `hoan_tat` (điều kiện hoàn tất của phase='mt' đòi CẢ ingame_dong_at đã set).
   // Guard `is(...,null)` → không đè timestamp nếu lỡ đã đóng (chấm/đánh giá thật trước khi biết có MT).
   const nowIso = new Date().toISOString()
   await supabase.from('buoi_hoc').update({ danh_gia_xong_at: nowIso }).eq('id', buoiId).is('danh_gia_xong_at', null)
+  await supabase.from('buoi_hoc').update({ ingame_dong_at: nowIso }).eq('id', buoiId).is('ingame_dong_at', null)
   await supabase.from('buoi_hoc').update({ et_dong_at: nowIso }).eq('id', buoiId).is('et_dong_at', null)
+  await supabase.from('buoi_hoc').update({ btvn_dong_at: nowIso }).eq('id', buoiId).is('btvn_dong_at', null)
 
   // 2) Doc con bám (lớp+ngày) — re-gán = THAY THẾ (xoá cũ rồi tạo mới), copy phans từ master.
   const master = await getTaiLieuFull(masterId)

@@ -4,11 +4,13 @@ import { useEffect, useState } from 'react'
 import { listGamiBangTong, listGamiMons, getDiemHS, listCaHoc, getEloBreakdown, type DiemRow, type DiemHS, type CaHoc, type EloBreakdown } from '../../lib/gami'
 import { tenHienThiDs } from '../../lib/hoten'
 
-type Phase = 'ingame' | 'et'
+type Phase = 'ingame' | 'et' | 'mt'
 const EXP_SRC: Record<string, string> = { rank_ingame: 'Hạng chấm bài', rank_et: 'Hạng ET', rank_mt: 'Hạng MT', attend_floor: 'Đi học (sàn)' }
 const srcLbl = (s: string) => EXP_SRC[s] ?? s
 const fmtNgay = (iso?: string | null) => (iso ? new Date(iso + 'T00:00:00').toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' }) : '—')
-const phaseLbl = (p: Phase) => (p === 'et' ? 'Elo ET' : 'Elo lớp')
+const phaseLbl = (p: Phase) => (p === 'et' ? 'Elo ET' : p === 'mt' ? 'Elo MT' : 'Elo lớp')
+const phaseOf = (p: string): Phase => (p === 'et' ? 'et' : p === 'mt' ? 'mt' : 'ingame')
+const phaseBadge = (p: string) => (p === 'et' ? 'ET' : p === 'mt' ? 'MT' : 'Lớp')
 const Ava = ({ url, ten }: { url: string | null; ten: string }) => url
   ? <img src={url} alt="" className="h-8 w-8 rounded-lg object-cover" />
   : <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-sky-400 to-indigo-500 text-[12px] font-bold text-white">{ten.trim().split(/\s+/).pop()?.[0]?.toUpperCase() ?? '?'}</span>
@@ -119,6 +121,8 @@ function CaView({ onOpenBang }: { onOpenBang: (b: BangRef) => void }) {
                     <td className="px-3 py-2"><div className="flex justify-end gap-1.5">
                       {btn(c.ingame_dong, 'Elo lớp', () => onOpenBang({ buoiId: c.id, phase: 'ingame', title: `${c.ten_lop} · ${fmtNgay(c.ngay)} · Elo lớp` }))}
                       {btn(c.et_dong, 'Elo ET', () => onOpenBang({ buoiId: c.id, phase: 'et', title: `${c.ten_lop} · ${fmtNgay(c.ngay)} · Elo ET` }))}
+                      {/* Elo MT — CHỈ hiện khi ca này thật sự có gán MT (không spam "chưa đóng" cho 99% ca thường) */}
+                      {c.hasMT && btn(c.mt_dong, 'Elo MT', () => onOpenBang({ buoiId: c.id, phase: 'mt', title: `${c.ten_lop} · ${fmtNgay(c.ngay)} · Elo MT` }))}
                     </div></td>
                   </tr>
                 ))}
@@ -208,11 +212,11 @@ function HoSoDiem({ row, onClose, onOpenBang }: { row: DiemRow; onClose: () => v
               {d.hist.length === 0 ? <p className="text-[12px] text-slate-400">—</p> : (
                 <div className="space-y-1">
                   {d.hist.map((h, i) => (
-                    <button key={i} onClick={() => onOpenBang({ buoiId: h.buoi_hoc_id, phase: (h.phase === 'et' ? 'et' : 'ingame'), title: `${h.lop ?? '?'} · ${fmtNgay(h.ngay)} · ${phaseLbl(h.phase === 'et' ? 'et' : 'ingame')}` })}
+                    <button key={i} onClick={() => onOpenBang({ buoiId: h.buoi_hoc_id, phase: phaseOf(h.phase), title: `${h.lop ?? '?'} · ${fmtNgay(h.ngay)} · ${phaseLbl(phaseOf(h.phase))}` })}
                       className="flex w-full items-center gap-2 rounded-md border border-slate-100 px-2.5 py-1.5 text-left text-[12px] hover:border-indigo-300 hover:bg-indigo-50/40">
                       <span className="text-slate-400">{fmtNgay(h.ngay)}</span>
                       <span className="text-slate-600">{h.lop ?? '?'}</span>
-                      <span className="rounded bg-slate-100 px-1 text-[10px] text-slate-500">{h.phase === 'et' ? 'ET' : 'Lớp'}</span>
+                      <span className="rounded bg-slate-100 px-1 text-[10px] text-slate-500">{phaseBadge(h.phase)}</span>
                       <span className="ml-auto text-slate-500">{h.elo_before}→<b className="text-slate-700">{h.elo_after}</b></span>
                       <span className={`w-10 text-right font-semibold ${h.delta >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>{h.delta >= 0 ? '+' : ''}{h.delta}</span>
                     </button>

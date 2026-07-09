@@ -195,10 +195,14 @@ function TongQuanTab({ hsId, mon }: { hsId: string; mon: string }) {
       </div>
       <div>
         <h3 className="mb-2 text-[12px] font-semibold uppercase tracking-wider text-slate-500">Chỉ số hoạt động (raw)</h3>
-        <div className="grid max-w-md grid-cols-2 gap-3">
+        <div className="grid max-w-2xl grid-cols-3 gap-3">
           <StatCard label="% đúng ET trung bình">
             <div className="flex items-baseline gap-2"><span className="text-2xl font-bold text-emerald-600">{d.pctET != null ? `${d.pctET}%` : '—'}</span><TrendBadge delta={d.trend.et} /></div>
             <div className="mt-0.5 text-[11px] text-slate-500">{d.nET} câu · (Đ + ½C)/số câu</div>
+          </StatCard>
+          <StatCard label="% đúng MT trung bình">
+            <div className="flex items-baseline gap-2"><span className="text-2xl font-bold text-rose-600">{d.pctMT != null ? `${d.pctMT}%` : '—'}</span><TrendBadge delta={d.trend.mt} /></div>
+            <div className="mt-0.5 text-[11px] text-slate-500">{d.nMT} câu · giám sát, giống ET</div>
           </StatCard>
           <StatCard label="% đúng BTVN">
             <div className="flex items-baseline gap-2"><span className="text-2xl font-bold text-amber-600">{d.pctBTVN != null ? `${d.pctBTVN}%` : '—'}</span><TrendBadge delta={d.trend.btvn} /></div>
@@ -321,26 +325,27 @@ function Legend() {
       <span className="flex items-center gap-1"><span className="text-amber-600">◐</span> chưa đạt (½)</span>
       <span className="flex items-center gap-1"><span className="text-rose-600">✗</span> sai (0)</span>
       <span className="text-slate-400">|</span>
-      <span>Nguồn: IG = chấm bài trên lớp · ET = kiểm tra cuối giờ · ĐG = đánh giá GV · BT = BTVN</span>
+      <span>Nguồn: IG = chấm bài trên lớp · ET = kiểm tra cuối giờ · MT = kiểm tra tháng · ĐG = đánh giá GV · BT = BTVN</span>
     </div>
   )
 }
 
 // ── RAW · THEO HOẠT ĐỘNG: mỗi buổi TÁCH thành nhiều thẻ (ET/BTVN/Chấm bài/Đánh giá riêng biệt) ──
 // Thùy: "ET 22/06 là 1 card, BTVN 22/06 card khác. Click card nào chỉ hiện đúng hoạt động đó" → đỡ click.
-type ActKey = 'ingame' | 'et' | 'danhgia' | 'btvn'
-const ACTS: { key: ActKey; flag: 'chamBai' | 'et' | 'danhGia' | 'btvn'; tab: TabKey; label: string; pill: string; ring: string }[] = [
+type ActKey = 'ingame' | 'et' | 'danhgia' | 'btvn' | 'mt'
+const ACTS: { key: ActKey; flag: 'chamBai' | 'et' | 'danhGia' | 'btvn' | 'mt'; tab: TabKey; label: string; pill: string; ring: string }[] = [
   { key: 'ingame', flag: 'chamBai', tab: 'ingame', label: 'Chấm bài', pill: 'bg-sky-100 text-sky-700', ring: 'border-sky-200' },
   { key: 'et', flag: 'et', tab: 'et', label: 'ET', pill: 'bg-indigo-100 text-indigo-700', ring: 'border-indigo-200' },
   { key: 'danhgia', flag: 'danhGia', tab: 'danhgia', label: 'Đánh giá', pill: 'bg-violet-100 text-violet-700', ring: 'border-violet-200' },
   { key: 'btvn', flag: 'btvn', tab: 'btvn', label: 'BTVN', pill: 'bg-amber-100 text-amber-700', ring: 'border-amber-200' },
+  { key: 'mt', flag: 'mt', tab: 'mt', label: 'MT', pill: 'bg-rose-100 text-rose-700', ring: 'border-rose-200' },
 ]
-type RawLoai = 'all' | ActKey | 'mt'
+type RawLoai = 'all' | ActKey
 const LOAI_TAB: { key: RawLoai; label: string }[] = [
   { key: 'all', label: 'Toàn bộ' }, { key: 'ingame', label: 'Chấm bài' }, { key: 'et', label: 'ET' },
   { key: 'danhgia', label: 'Đánh giá' }, { key: 'btvn', label: 'BTVN' }, { key: 'mt', label: 'MT' },
 ]
-const BUOI_LOAI_LABEL: Record<string, string> = { thuong: 'Buổi thường', bu: 'Buổi bù', bo_tro_yeu: 'Bổ trợ yếu', bo_tro_duoi: 'Bổ trợ đuổi', mt: 'Kiểm tra tháng' }
+const BUOI_LOAI_LABEL: Record<string, string> = { thuong: 'Buổi thường', bu: 'Buổi bù', bo_tro_yeu: 'Bổ trợ yếu', bo_tro_duoi: 'Bổ trợ đuổi' }
 // Ngày tách 2 phần để làm NỔI BẬT ở cuối card (ngày to · thứ nhỏ).
 const fmtNgayParts = (iso: string) => {
   const d = new Date(iso + 'T00:00:00')
@@ -370,8 +375,7 @@ function ActivityHistory({ mon, lopId, hocSinhId }: { mon: string; lopId?: strin
     for (const b of rows ?? []) {
       for (const a of ACTS) {
         if (!b[a.flag]) continue
-        if (loai === 'mt') { if (b.loai !== 'mt') continue }
-        else if (loai !== 'all' && a.key !== loai) continue
+        if (loai !== 'all' && a.key !== loai) continue
         out.push({ key: b.id + ':' + a.key, b, act: a })
       }
     }
@@ -440,7 +444,6 @@ function RawBuoi() {
 function ActivityCard({ c, onOpen }: { c: ActCard; onOpen: () => void }) {
   const { b, act } = c
   const done = b.trang_thai === 'hoan_tat'
-  const isMt = b.loai === 'mt'
   const { thu, date } = fmtNgayParts(b.ngay)
   return (
     <button onClick={onOpen} className="flex w-full items-center gap-3 rounded-xl border border-slate-200 bg-white py-3 pl-3 pr-4 text-left shadow-sm transition hover:border-indigo-300 hover:shadow-md">
@@ -450,8 +453,7 @@ function ActivityCard({ c, onOpen }: { c: ActCard; onOpen: () => void }) {
       <div className="min-w-0 flex-1">
         <div className="flex flex-wrap items-center gap-2">
           <span className="text-[14px] font-semibold text-slate-800">{b.ten_lop ?? (BUOI_LOAI_LABEL[b.loai] ?? b.loai)}</span>
-          {isMt && <span className="rounded bg-rose-100 px-1.5 py-0.5 text-[10px] font-semibold text-rose-600">Kiểm tra tháng</span>}
-          {b.loai !== 'thuong' && !isMt && <span className="rounded bg-slate-100 px-1.5 py-0.5 text-[10px] font-medium text-slate-500">{BUOI_LOAI_LABEL[b.loai] ?? b.loai}</span>}
+          {b.loai !== 'thuong' && <span className="rounded bg-slate-100 px-1.5 py-0.5 text-[10px] font-medium text-slate-500">{BUOI_LOAI_LABEL[b.loai] ?? b.loai}</span>}
         </div>
         {b.ma_buoi && <div className="mt-0.5 font-mono text-[10px] text-slate-500">{b.ma_buoi}</div>}
       </div>

@@ -703,9 +703,16 @@ export async function listAllStaffTasks(tu: string, den: string): Promise<StaffT
   const lopIds = [...lopIdsSet]
   if (!lopIds.length) return []
   const { data: buois, error } = await supabase.from('buoi_hoc')
-    .select('id, lop_id, ngay, ingame_dong_at, et_dong_at, danh_gia_xong_at, btvn_dong_at, lop:lop_id(ten_lop)')
+    .select('id, lop_id, ngay, ingame_dong_at, et_dong_at, danh_gia_xong_at, btvn_dong_at, mt_dong_at, lop:lop_id(ten_lop)')
     .neq('trang_thai', 'huy').eq('loai', 'thuong').in('lop_id', lopIds).gte('ngay', tu).lte('ngay', den).order('ngay').limit(LIMIT)
   if (error) throw error
+  // MT KHÔNG tự có trên mọi buổi (khác ingame/et/btvn) → hỏi thật buổi nào đã gán MT (tai_lieu loai='mt_buoi'
+  // khớp lớp+ngày), CÙNG logic getMyTasks — trước đây bị bỏ sót ở đây (comment cũ "buổi thường không có phase mt").
+  const mtKeys = new Set<string>()
+  if ((buois ?? []).length) {
+    const { data: mtDocs } = await supabase.from('tai_lieu').select('lop_id, ngay').eq('loai', 'mt_buoi').in('lop_id', lopIds).limit(LIMIT)
+    for (const d of (mtDocs ?? []) as any[]) mtKeys.add(`${d.lop_id}|${d.ngay}`)
+  }
   const { data: tkb } = await supabase.from('thoi_khoa_bieu')
     .select('lop_id, thu, gio_bat_dau, hieu_luc_tu, hieu_luc_den, lop:lop_id(ngay_khai_giang)').in('lop_id', lopIds).limit(LIMIT)
   const tkbByLop = new Map<string, any[]>()
@@ -720,9 +727,9 @@ export async function listAllStaffTasks(tu: string, den: string): Promise<StaffT
   }
   const out: StaffTaskRow[] = []
   for (const b of (buois ?? []) as any[]) {
-    const doneAtTab: Record<TabKey, string | null> = { diemdanh: null, ingame: b.ingame_dong_at, danhgia: b.danh_gia_xong_at, et: b.et_dong_at, btvn: b.btvn_dong_at, mt: null } // buổi thường không có phase mt
+    const doneAtTab: Record<TabKey, string | null> = { diemdanh: null, ingame: b.ingame_dong_at, danhgia: b.danh_gia_xong_at, et: b.et_dong_at, btvn: b.btvn_dong_at, mt: b.mt_dong_at }
     const deadlineOf = (tab: TabKey): number | null => {
-      if (tab === 'ingame' || tab === 'danhgia') return vnInstant(b.ngay, '23:59')
+      if (tab === 'ingame' || tab === 'danhgia' || tab === 'mt') return vnInstant(b.ngay, '23:59')
       if (tab === 'et') return vnInstant(congNgay(b.ngay, 1), '12:00')
       if (tab === 'btvn') { const ca = caTiepTheo(b.lop_id, b.ngay); return ca == null ? null : ca - 2 * 3600000 }
       return null
@@ -739,6 +746,14 @@ export async function listAllStaffTasks(tu: string, den: string): Promise<StaffT
           out.push({
             nhan_su_id: nsId, buoiId: b.id, lopId: b.lop_id, lop: b.lop?.ten_lop ?? '?', ngay: b.ngay, vai, tab: t.tab,
             label: t.label, done: !!doneAtTab[t.tab], doneAt: doneAtTab[t.tab], deadline: deadlineOf(t.tab),
+          })
+        }
+        // MT — CHỈ khi buổi này thật sự có gán MT (mtKeys), CHỈ TG chấm (giống getMyTasks/ET).
+        if (vai === 'tg' && mtKeys.has(`${b.lop_id}|${b.ngay}`) && !seen.has('mt')) {
+          seen.add('mt')
+          out.push({
+            nhan_su_id: nsId, buoiId: b.id, lopId: b.lop_id, lop: b.lop?.ten_lop ?? '?', ngay: b.ngay, vai: 'tg', tab: 'mt',
+            label: 'Chấm MT', done: !!b.mt_dong_at, doneAt: b.mt_dong_at, deadline: deadlineOf('mt'),
           })
         }
       }
@@ -822,11 +837,19 @@ export async function listGamiMons(): Promise<string[]> {
 }
 export type EloHist = { buoi_hoc_id: string; phase: string; mon: string | null; elo_before: number; delta: number; elo_after: number; created_at: string; ngay?: string | null; lop?: string | null }
 // Danh sách CA HỌC (buổi thường) cho bảng quản trị Elo — mỗi ca: mã + 2 bảng Elo (lớp / ET).
-export type CaHoc = { id: string; ma_buoi: string | null; ten_lop: string; ngay: string; mon: string | null; ingame_dong: boolean; et_dong: boolean; trang_thai: string }
+export type CaHoc = { id: string; ma_buoi: string | null; ten_lop: string; ngay: string; mon: string | null; ingame_dong: boolean; et_dong: boolean; hasMT: boolean; mt_dong: boolean; trang_thai: string }
 export async function listCaHoc(): Promise<CaHoc[]> {
-  const { data, error } = await supabase.from('buoi_hoc').select('id, ma_buoi, ngay, trang_thai, ingame_dong_at, et_dong_at, lop:lop_id(ten_lop, mon)').eq('loai', 'thuong').order('ngay', { ascending: false }).limit(LIMIT)
+  const { data, error } = await supabase.from('buoi_hoc').select('id, ma_buoi, ngay, trang_thai, ingame_dong_at, et_dong_at, mt_dong_at, lop:lop_id(ten_lop, mon)').eq('loai', 'thuong').order('ngay', { ascending: false }).limit(LIMIT)
   if (error) throw error
-  return ((data ?? []) as any[]).map((b) => ({ id: b.id, ma_buoi: b.ma_buoi, ten_lop: b.lop?.ten_lop ?? '?', ngay: b.ngay, mon: b.lop?.mon ?? null, ingame_dong: !!b.ingame_dong_at, et_dong: !!b.et_dong_at, trang_thai: b.trang_thai }))
+  const rows = (data ?? []) as any[]
+  // hasMT (buổi có gán MT không) — CHỈ hỏi khi có buổi (né query rỗng); giống mtKeys ở getMyTasks/listAllStaffTasks
+  // nhưng ở đây cần biết ĐÚNG buổi nào (không chỉ lớp+ngày) → hỏi thẳng gami_session_problems.phase='mt'.
+  const mtBuoiIds = new Set<string>()
+  if (rows.length) {
+    const { data: mp } = await supabase.from('gami_session_problems').select('buoi_hoc_id').eq('phase', 'mt').in('buoi_hoc_id', rows.map((b) => b.id)).limit(LIMIT)
+    for (const r of (mp ?? []) as any[]) mtBuoiIds.add(r.buoi_hoc_id)
+  }
+  return rows.map((b) => ({ id: b.id, ma_buoi: b.ma_buoi, ten_lop: b.lop?.ten_lop ?? '?', ngay: b.ngay, mon: b.lop?.mon ?? null, ingame_dong: !!b.ingame_dong_at, et_dong: !!b.et_dong_at, hasMT: mtBuoiIds.has(b.id), mt_dong: !!b.mt_dong_at, trang_thai: b.trang_thai }))
 }
 export type ExpRow = { source: string; amount: number; mon: string | null; created_at: string; ngay?: string | null; lop?: string | null }
 export type DiemHS = { elo: { mon: string; elo: number; sessions: number; exp: number }[]; hist: EloHist[]; exp: ExpRow[] }

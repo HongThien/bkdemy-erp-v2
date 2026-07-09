@@ -81,14 +81,13 @@ export async function goNguoiTruc(tkbId: string, tuNgay: string): Promise<void> 
   const { error } = await supabase.from('phan_cong_ops').update({ hieu_luc_den: congNgay(tuNgay, -1) }).eq('id', cur.id)
   if (error) throw error
 }
-// Người trực của MỘT SỐ tkb_id tại 1 ngày cụ thể — fetch hết rồi lọc CLIENT (PostgREST không lồng
-// AND/OR phức tạp gọn — cùng cách gami.ts caTiepTheo làm, tránh câu OR dài).
-async function mapNguoiTrucTheoTkb(tkbIds: string[], ngay: string): Promise<Map<string, string>> {
-  if (!tkbIds.length) return new Map()
+// Toàn bộ dòng phân công trực của MỘT SỐ tkb_id (KHÔNG lọc theo 1 ngày cố định — trả nguyên các
+// khoảng hiệu lực, resolve đúng người trực THEO NGÀY CỦA TỪNG LƯỢT ở nơi gọi). fetch hết rồi lọc
+// CLIENT (PostgREST không lồng AND/OR phức tạp gọn — cùng cách gami.ts caTiepTheo làm).
+async function listPhanCongTheoTkb(tkbIds: string[]): Promise<{ tkb_id: string; nhan_su_id: string; hieu_luc_tu: string; hieu_luc_den: string | null }[]> {
+  if (!tkbIds.length) return []
   const { data } = await supabase.from('phan_cong_ops').select('tkb_id, nhan_su_id, hieu_luc_tu, hieu_luc_den').in('tkb_id', tkbIds).limit(LIMIT)
-  const m = new Map<string, string>()
-  for (const r of (data ?? []) as any[]) if (r.hieu_luc_tu <= ngay && (!r.hieu_luc_den || r.hieu_luc_den >= ngay)) m.set(r.tkb_id, r.nhan_su_id)
-  return m
+  return (data ?? []) as any[]
 }
 
 // ============================================================================
@@ -255,12 +254,19 @@ export async function luotPrepCuaKhoang(tu: string, den: string): Promise<PrepLu
     }
   }
   const tkbIds = [...new Set(out.map((o) => o.caDau.id as string))]
-  const nguoiTrucMap = await mapNguoiTrucTheoTkb(tkbIds, tu) // xấp xỉ: dùng ngày đầu khoảng để tra 1 lần (đủ dùng cho hiển thị tuần)
-  const nsIds = [...new Set([...nguoiTrucMap.values()])]
+  // ⚠ Fix (Thùy báo lỗi 07-10): TRƯỚC tra người trực 1 LẦN tại `tu` (đại diện cả tuần) → nhân sự vừa
+  // được phân công trực GIỮA TUẦN (hieu_luc_tu rơi sau `tu`) bị bỏ sót TOÀN BỘ lượt của họ, dù ngày
+  // lượt đó đã trong hiệu lực thật. Giờ tra ĐÚNG THEO NGÀY CỦA TỪNG LƯỢT.
+  const pcoRows = await listPhanCongTheoTkb(tkbIds)
+  const nguoiTrucOf = (tkbId: string, ngay: string): string | null => {
+    const r = pcoRows.find((x) => x.tkb_id === tkbId && x.hieu_luc_tu <= ngay && (!x.hieu_luc_den || x.hieu_luc_den >= ngay))
+    return r?.nhan_su_id ?? null
+  }
+  const nsIds = [...new Set(pcoRows.map((r) => r.nhan_su_id))]
   const { data: nsAll } = nsIds.length ? await supabase.from('nhan_su').select('id, ho_ten').in('id', nsIds).limit(LIMIT) : { data: [] as any[] }
   const nsTenMap = new Map(((nsAll ?? []) as any[]).map((n) => [n.id, n.ho_ten]))
   return out.map((o): PrepLuot => {
-    const nsId = nguoiTrucMap.get(o.caDau.id) ?? null
+    const nsId = nguoiTrucOf(o.caDau.id, o.ngay)
     return { phong: o.phong, ngay: o.ngay, luot: o.luot, gioCaDau: o.caDau.gio_bat_dau, tkbCaDauId: o.caDau.id, nhanSuId: nsId, nhanSuTen: nsId ? nsTenMap.get(nsId) ?? null : null }
   })
 }

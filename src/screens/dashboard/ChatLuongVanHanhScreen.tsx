@@ -48,7 +48,7 @@ const STATUS_UI: Record<Status, { ten: string; cls: string }> = {
   cham: { ten: 'Chậm', cls: 'bg-amber-50 text-amber-700 ring-amber-200' },
   chua_xong: { ten: 'Chưa xong', cls: 'bg-rose-50 text-rose-700 ring-rose-200' },
 }
-const TEAM_TABS_OF: Record<TeamKey, TabKey[]> = { gv: ['danhgia', 'ingame'], ta: ['ingame', 'et', 'btvn'], ops: [] }
+const TEAM_TABS_OF: Record<TeamKey, TabKey[]> = { gv: ['danhgia', 'ingame'], ta: ['ingame', 'et', 'btvn', 'mt'], ops: [] }
 type Muc = 'tatca' | TeamKey
 
 export default function ChatLuongVanHanhScreen() {
