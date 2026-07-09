@@ -130,11 +130,12 @@ export async function getMasteryHS(
 // Điểm năng lực: CHƯA (cần cấu trúc đề + phân loại cơ-bản/nâng-cao + Hình) → UI để placeholder.
 export type TongQuanHS = {
   pctET: number | null; nET: number
+  pctMT: number | null; nMT: number
   pctBTVN: number | null; nBTVN: number
   hoanThanh: { dat: number; can_luyen: number; yeu: number; total: number; pct: number }
   diemThi: { satHach: number | null; truong: number | null; nSatHach: number; nTruong: number }
   // TREND = chênh (điểm %) 30 ngày GẦN so với 30 ngày TRƯỚC đó; null = chưa đủ data 1 trong 2 kỳ.
-  trend: { et: number | null; btvn: number | null; hoanThanh: number | null }
+  trend: { et: number | null; mt: number | null; btvn: number | null; hoanThanh: number | null }
 }
 export async function getTongQuanHS(hocSinhId: string, mon: string): Promise<TongQuanHS> {
   const K = khoCuaMon(mon)
@@ -148,14 +149,15 @@ export async function getTongQuanHS(hocSinhId: string, mon: string): Promise<Ton
   const inRecent = (t: number) => t >= cut1
   const inPrior = (t: number) => t >= cut2 && t < cut1
 
-  let etSum = 0, etN = 0, btSum = 0, btN = 0
-  let etR = 0, etRN = 0, etP = 0, etPN = 0, btR = 0, btRN = 0, btP = 0, btPN = 0 // windowed ET/BTVN
+  let etSum = 0, etN = 0, mtSum = 0, mtN = 0, btSum = 0, btN = 0
+  let etR = 0, etRN = 0, etP = 0, etPN = 0, mtR = 0, mtRN = 0, mtP = 0, mtPN = 0, btR = 0, btRN = 0, btP = 0, btPN = 0 // windowed ET/MT/BTVN
   const byDang: Record<string, DangEval[]> = {}
   for (const g of (grades ?? []) as any[]) {
     const p = g.prob; if (!p) continue
     const v = RESULT_VALUE[g.result as keyof typeof RESULT_VALUE]; if (v === undefined) continue
     const tm = Date.parse(g.graded_at)
     if (p.phase === 'et') { etSum += v; etN++; if (inRecent(tm)) { etR += v; etRN++ } else if (inPrior(tm)) { etP += v; etPN++ } }
+    else if (p.phase === 'mt') { mtSum += v; mtN++; if (inRecent(tm)) { mtR += v; mtRN++ } else if (inPrior(tm)) { mtP += v; mtPN++ } }
     else if (p.phase === 'btvn') { btSum += v; btN++; if (inRecent(tm)) { btR += v; btRN++ } else if (inPrior(tm)) { btP += v; btPN++ } }
     if ((p.phase === 'ingame' || p.phase === 'et' || p.phase === 'mt') && p.ma_dang) (byDang[p.ma_dang] ??= []).push({ value: v, t: g.graded_at, src: p.phase as EvalSrc })
   }
@@ -203,10 +205,11 @@ export async function getTongQuanHS(hocSinhId: string, mon: string): Promise<Ton
   const delta = (r: number | null, p: number | null) => (r != null && p != null ? r - p : null)
   return {
     pctET: pct(etSum, etN), nET: etN,
+    pctMT: pct(mtSum, mtN), nMT: mtN,
     pctBTVN: pct(btSum, btN), nBTVN: btN,
     hoanThanh: { dat: all.dat, can_luyen: all.can_luyen, yeu: all.yeu, total: all.total, pct: all.pct ?? 0 },
     diemThi: { satHach: shN ? +(shSum / shN).toFixed(1) : null, truong: trN ? +(trSum / trN).toFixed(1) : null, nSatHach: shN, nTruong: trN },
-    trend: { et: delta(pct(etR, etRN), pct(etP, etPN)), btvn: delta(pct(btR, btRN), pct(btP, btPN)), hoanThanh: delta(hR.pct, hP.pct) },
+    trend: { et: delta(pct(etR, etRN), pct(etP, etPN)), mt: delta(pct(mtR, mtRN), pct(mtP, mtPN)), btvn: delta(pct(btR, btRN), pct(btP, btPN)), hoanThanh: delta(hR.pct, hP.pct) },
   }
 }
 
@@ -336,10 +339,10 @@ export async function getMasteryByChuyenDe(opts: RollupScope): Promise<ChuyenDeR
 export type BuoiActivity = {
   id: string; ma_buoi: string | null; ngay: string; ten_lop: string | null; mon: string | null
   loai: string; trang_thai: string
-  chamBai: boolean; et: boolean; danhGia: boolean; btvn: boolean
+  chamBai: boolean; et: boolean; danhGia: boolean; btvn: boolean; mt: boolean
 }
 export async function listBuoiHoatDong(opts: { mon?: string; lopId?: string | null; hocSinhId?: string | null }): Promise<BuoiActivity[]> {
-  const sel = 'id, ma_buoi, ngay, loai, trang_thai, ingame_dong_at, et_dong_at, danh_gia_xong_at, btvn_dong_at, lop:lop_id(ten_lop, mon)'
+  const sel = 'id, ma_buoi, ngay, loai, trang_thai, ingame_dong_at, et_dong_at, danh_gia_xong_at, btvn_dong_at, mt_dong_at, lop:lop_id(ten_lop, mon)'
   // HS scope: KHÔNG embed buoi_hoc_hs!inner — bảng có 2 FK về buoi_hoc (buoi_hoc_id + bu_cho_buoi_id)
   // → embed nhập nhằng → query lỗi. Tách 2 bước: lấy buoi_hoc_id của HS rồi query buổi theo IN.
   let buoiIds: string[] | null = null
@@ -359,6 +362,6 @@ export async function listBuoiHoatDong(opts: { mon?: string; lopId?: string | nu
   return rows.map((b) => ({
     id: b.id, ma_buoi: b.ma_buoi, ngay: b.ngay, ten_lop: b.lop?.ten_lop ?? null, mon: b.lop?.mon ?? null,
     loai: b.loai, trang_thai: b.trang_thai,
-    chamBai: !!b.ingame_dong_at, et: !!b.et_dong_at, danhGia: !!b.danh_gia_xong_at, btvn: !!b.btvn_dong_at,
+    chamBai: !!b.ingame_dong_at, et: !!b.et_dong_at, danhGia: !!b.danh_gia_xong_at, btvn: !!b.btvn_dong_at, mt: !!b.mt_dong_at,
   }))
 }
