@@ -16,8 +16,12 @@ export default function PhanCongOpsScreen() {
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState<string | null>(null)
 
+  // ⚠ Fix (Thùy báo lỗi 07-10): `setLoading(true)` vô điều kiện → lưới card co về "Đang tải…" mỗi lần
+  // gán 1 người trực → trình duyệt tự kéo scroll về 0 → phải lướt lại từ đầu để gán ca tiếp theo (cùng
+  // bug class đã fix ở HocSinhScreen 07-08). Chỉ hiện loading ở LẦN TẢI ĐẦU (rows rỗng); các lần sau
+  // (sau khi gán) giữ nguyên lưới cũ trên màn tới khi data mới về, KHÔNG unmount.
   async function reload() {
-    setLoading(true)
+    if (!rows.length) setLoading(true)
     try {
       const [r, n] = await Promise.all([listTkbVoiNguoiTruc(), listOpsStaff()])
       setRows(r); setDs(n)
