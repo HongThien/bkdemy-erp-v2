@@ -15,6 +15,7 @@ import { KhoPicker } from './TaiLieuBuilder'
 import ETPrintView from './ETPrintView'
 import SearchSelect from '../../components/SearchSelect'
 import DangPickerOne from '../../components/DangPickerOne'
+import BuoiNgaySelect from '../../components/BuoiNgaySelect'
 
 const loaiLabel = (v: string) => LOAI_CAU.find((x) => x.value === v)?.label ?? v
 const DEFAULT_ROWS = 5
@@ -134,7 +135,7 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
             options={lops.map((l) => ({ id: l.id, label: l.ten_lop, sub: `${l.mon}${l.khoi ? ' · K' + l.khoi : ''}` }))} /></div>
         </div>
         <div className="flex items-center gap-1.5 text-[12px] text-slate-500">Ngày
-          <input type="date" value={ngay} onChange={(e) => setNgay(e.target.value)} className="h-8 rounded-md border border-slate-300 px-2 text-[13px]" />
+          <BuoiNgaySelect lopId={lopId} value={ngay} onChange={setNgay} />
         </div>
         {lop && ngay && <span className="font-mono text-[11px] text-violet-500">{maET(lop.ten_lop, ngay)}</span>}
         <span className="ml-auto text-[12px] text-slate-400">{soCau} câu</span>

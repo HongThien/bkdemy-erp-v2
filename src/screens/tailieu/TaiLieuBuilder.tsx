@@ -9,6 +9,7 @@ import { listCauByDang, groupMap, LOAI_CAU, type CauHoi, type Tier1Node } from '
 import { listLop, type Lop } from '../../lib/nhansu'
 import { MathText, inp } from '../kho/ui'
 import SearchSelect from '../../components/SearchSelect'
+import BuoiNgaySelect from '../../components/BuoiNgaySelect'
 import PrintView from './PrintView'
 
 const loaiLabel = (v: string) => LOAI_CAU.find((x) => x.value === v)?.label ?? v
@@ -469,7 +470,7 @@ function TrichPanel({ masterId, khoi, buois, onClose }: { masterId: string; khoi
             : (
               <div className="mx-auto max-w-[760px] space-y-2">
                 <p className="mb-2 text-[12px] text-slate-400">Mỗi buổi của giáo trình → gán cho 1 ngày của lớp <b>{lop.ten_lop}</b> → sinh “Giáo trình buổi” + “BTVN” vào Kho. Buổi đã gán hiện ngày.</p>
-                {buois.map((b, i) => <BuoiTrichRow key={b.marker.id} no={i + 1} buoi={b} st={state[b.marker.id]} onGan={(ngay, gt, bt) => gan(b.marker.id, b.marker.tieu_de || `Buổi ${i + 1}`, ngay, gt, bt)} />)}
+                {buois.map((b, i) => <BuoiTrichRow key={b.marker.id} no={i + 1} lopId={lopId} buoi={b} st={state[b.marker.id]} onGan={(ngay, gt, bt) => gan(b.marker.id, b.marker.tieu_de || `Buổi ${i + 1}`, ngay, gt, bt)} />)}
               </div>
             )}
         </div>
@@ -478,7 +479,7 @@ function TrichPanel({ masterId, khoi, buois, onClose }: { masterId: string; khoi
   )
 }
 
-function BuoiTrichRow({ no, buoi, st, onGan }: { no: number; buoi: BuoiUI; st?: TrichState; onGan: (ngay: string, gt: boolean, bt: boolean) => Promise<void> }) {
+function BuoiTrichRow({ no, lopId, buoi, st, onGan }: { no: number; lopId: string | null; buoi: BuoiUI; st?: TrichState; onGan: (ngay: string, gt: boolean, bt: boolean) => Promise<void> }) {
   const [ngay, setNgay] = useState('')
   const [gt, setGt] = useState(true)
   const [bt, setBt] = useState(true)
@@ -497,11 +498,11 @@ function BuoiTrichRow({ no, buoi, st, onGan }: { no: number; buoi: BuoiUI; st?: 
           <span className="rounded-full bg-emerald-50 px-2.5 py-1 text-[12px] font-medium text-emerald-700">✓ Đã gán · {ganNgay}</span>
           <span className="text-[11px] text-slate-400">{st?.hasGT ? 'GT' : ''}{st?.hasGT && st?.hasBTVN ? ' + ' : ''}{st?.hasBTVN ? 'BTVN' : ''}</span>
           <button onClick={go} disabled={busy || !ngay} title="Gán lại sang ngày khác (tạo bản mới)" className="rounded-md border border-slate-200 px-2 py-1 text-[11px] text-slate-500 hover:border-indigo-300">Gán lại</button>
-          <input type="date" value={ngay} onChange={(e) => setNgay(e.target.value)} className="h-7 rounded border border-slate-300 px-1.5 text-[12px]" />
+          <BuoiNgaySelect lopId={lopId} value={ngay} onChange={setNgay} className="h-7 rounded border border-slate-300 px-1.5 text-[12px]" />
         </div>
       ) : (
         <div className="flex flex-wrap items-center gap-2">
-          <input type="date" value={ngay} onChange={(e) => setNgay(e.target.value)} className="h-7 rounded border border-slate-300 px-1.5 text-[12px]" />
+          <BuoiNgaySelect lopId={lopId} value={ngay} onChange={setNgay} className="h-7 rounded border border-slate-300 px-1.5 text-[12px]" />
           <label className="flex items-center gap-1 text-[12px] text-slate-600"><input type="checkbox" checked={gt} onChange={(e) => setGt(e.target.checked)} />GT</label>
           <label className="flex items-center gap-1 text-[12px] text-slate-600"><input type="checkbox" checked={bt} onChange={(e) => setBt(e.target.checked)} />BTVN</label>
           <button onClick={go} disabled={busy || !ngay || (!gt && !bt)} className="rounded-md bg-violet-600 px-3 py-1 text-[12px] font-medium text-white hover:bg-violet-500 disabled:opacity-40">{busy ? '…' : 'Gán'}</button>
