@@ -99,7 +99,9 @@ export async function ganMTVaoBuoi(masterId: string, opts: { lopId: string; ngay
   await supabase.from('buoi_hoc').update({ et_dong_at: nowIso }).eq('id', buoiId).is('et_dong_at', null)
   await supabase.from('buoi_hoc').update({ btvn_dong_at: nowIso }).eq('id', buoiId).is('btvn_dong_at', null)
 
-  // 2) Doc con bám (lớp+ngày) — re-gán = THAY THẾ (xoá cũ rồi tạo mới), copy phans từ master.
+  // 2) Doc con bám (lớp+ngày) — re-gán CÙNG MASTER cho lớp này = THAY THẾ (xoá MỌI bản cũ của lớp
+  // này từ đúng master này, KỂ CẢ ngày khác — 1 lớp chỉ có 1 lượt gán đang hiệu lực / MT, xem cảnh
+  // báo "đè" ở GanBuoiModal), rồi tạo mới, copy phans từ master.
   const master = await getTaiLieuFull(masterId)
   const customPhans = master.phans.filter((p) => p.loai_phan === 'custom')
 
@@ -111,7 +113,7 @@ export async function ganMTVaoBuoi(masterId: string, opts: { lopId: string; ngay
   const allMaDang = [...new Set(customPhans.flatMap((p) => p.caus.map((c) => c.dang_chinh).filter(Boolean)))]
   const bacMap = await bacOfDangs(master.taiLieu.mon, allMaDang)
 
-  await supabase.from('tai_lieu').delete().eq('loai', 'mt_buoi').eq('lop_id', opts.lopId).eq('ngay', opts.ngay)
+  await supabase.from('tai_lieu').delete().eq('loai', 'mt_buoi').eq('nguon_id', masterId).eq('lop_id', opts.lopId)
   const { data: nw, error: eNw } = await supabase.from('tai_lieu').insert({
     loai: 'mt_buoi', ten: master.taiLieu.ten, khoi: master.taiLieu.khoi, mon: master.taiLieu.mon, theme: master.taiLieu.theme,
     lop_id: opts.lopId, ngay: opts.ngay, nguon_id: masterId, created_by: user?.id ?? null,

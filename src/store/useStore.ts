@@ -95,14 +95,32 @@ export const LAMTAILIEU_CHILDREN: NavLeaf[] = [
   { id: 'lamtailieu:mt', ten: 'MT' },
   { id: 'lamtailieu:bo_tro', ten: 'Tài liệu bổ trợ' },
 ]
+// Gộp NHIỀU leaf con thành 1 leaf CHA (folder tầng 2, ẨN mặc định — bấm mới xoè tầng 3, giống
+// "Làm tài liệu"). Cha chỉ xuất hiện khi CÒN ≥1 con sau lọc quyền (mỗi con vẫn 1 permission-id
+// RIÊNG ở Phân quyền — khác `lamtailieu` dùng chung 1 quyền cho cả cha lẫn con); vị trí cha = vị
+// trí của con ĐẦU TIÊN còn quyền trong mảng gốc (giữ chỗ tự nhiên, khỏi hard-code thứ tự cả nhóm).
+function collapseGroup(leaves: NavLeaf[], parentId: string, parentTen: string, childIds: string[]): NavLeaf[] {
+  const idx = leaves.findIndex((l) => childIds.includes(l.id))
+  if (idx === -1) return leaves
+  const kids = childIds.map((id) => leaves.find((l) => l.id === id)).filter((l): l is NavLeaf => !!l)
+  const rest = leaves.filter((l) => !childIds.includes(l.id))
+  rest.splice(idx, 0, { id: parentId, ten: parentTen, children: kids })
+  return rest
+}
 export const adminNavFromQuyen = (q: MyQuyen | null): NavGroup[] => {
   const leaves = accessibleLeaves(q)
   const nhoms = [...new Set(leaves.map((l) => l.nhom))]
-  return nhoms.map((n) => ({
-    nhom: n,
-    leaves: leaves.filter((l) => l.nhom === n).map((l): NavLeaf =>
-      l.id === 'lamtailieu' ? { id: l.id, ten: l.ten, children: LAMTAILIEU_CHILDREN } : { id: l.id, ten: l.ten }),
-  }))
+  return nhoms.map((n) => {
+    let navLeaves: NavLeaf[] = leaves.filter((l) => l.nhom === n).map((l): NavLeaf =>
+      l.id === 'lamtailieu' ? { id: l.id, ten: l.ten, children: LAMTAILIEU_CHILDREN } : { id: l.id, ten: l.ten })
+    if (n === 'Vận hành') {
+      // Việc "làm-xong-là-mất" trong ngày (điểm danh/report/tan/prep) → gọn vào 1 folder, đỡ rối cây.
+      navLeaves = collapseGroup(navLeaves, 'vanhanh_lophoc', 'Vận hành lớp học', ['buoihoc', 'ops_report', 'prep', 'phancong_ops'])
+      // Tuyển sinh (quản lý level HS) + Test đầu vào (vận hành điểm danh→chấm→trả bài) cùng 1 phễu.
+      navLeaves = collapseGroup(navLeaves, 'tuyensinh_hub', 'Tuyển sinh', ['tuyensinh', 'test_dau_vao'])
+    }
+    return { nhom: n, leaves: navLeaves }
+  })
 }
 
 // ── Selectors (mock derive theo role) ────────────────────────────

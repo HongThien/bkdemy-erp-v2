@@ -58,6 +58,22 @@ export async function buoiAoCuaNgay(ngay: string): Promise<BuoiAo[]> {
   return hieuLuc.map((s: any) => ({ lop: s.lop, slot: { gio_bat_dau: s.gio_bat_dau, gio_ket_thuc: s.gio_ket_thuc, phong: s.phong }, buoi: (openMap.get(s.lop.id) as BuoiHoc) ?? null }))
 }
 
+// ── NGÀY HỢP LỆ CỦA 1 LỚP: suy từ TKB trong [tuNgay, denNgay] — chặn chọn ngày ngoài lịch khi gán tài liệu ──
+export async function ngayBuoiHopLeCuaLop(lopId: string, tuNgay: string, denNgay: string): Promise<{ ngay: string; thu: number }[]> {
+  const { data: lop } = await supabase.from('lop').select('ngay_khai_giang').eq('id', lopId).maybeSingle()
+  const { data: slots } = await supabase.from('thoi_khoa_bieu').select('thu, hieu_luc_tu, hieu_luc_den').eq('lop_id', lopId).limit(LIMIT)
+  if (!slots?.length) return []
+  const khaiGiang = (lop as any)?.ngay_khai_giang as string | undefined
+  let d = khaiGiang && khaiGiang > tuNgay ? khaiGiang : tuNgay
+  const out: { ngay: string; thu: number }[] = []
+  while (d <= denNgay) {
+    const thu = thuOf(d)
+    if (slots.some((s: any) => s.thu === thu && s.hieu_luc_tu <= d && (!s.hieu_luc_den || s.hieu_luc_den >= d))) out.push({ ngay: d, thu })
+    d = congNgay(d, 1)
+  }
+  return out
+}
+
 // ── MỞ BUỔI: đẻ dòng snapshot + seed sĩ số từ ghi danh (idempotent) ──
 export async function moBuoi(lopId: string, ngay: string, slot: { gio_bat_dau?: string; gio_ket_thuc?: string; phong?: string | null }): Promise<BuoiHoc> {
   const ex = await supabase.from('buoi_hoc').select('*').eq('lop_id', lopId).eq('ngay', ngay).eq('loai', 'thuong').maybeSingle()
