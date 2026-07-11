@@ -1,13 +1,15 @@
 // Data-layer MASTERY (seam) — suy động (HS × dạng) từ các lần đo, gộp qua engine PURE src/gami/mastery.js.
 // KHÔNG lưu — mọi lần gọi tính lại từ measurements. UI chỉ gọi qua đây.
-// Nguồn đo: gami_grades (phase ingame/et) + buoi_danh_gia_dang (đánh giá GV) [+ btvn nếu bật toggle].
+// Nguồn đo: gami_grades (phase ingame/et/mt) + buoi_danh_gia_dang (đánh giá GV) + bt_grades (chấm BT)
+// [+ btvn nếu bật toggle]. Mỗi nguồn có TRỌNG SỐ tin cậy khác nhau khi tính điểm — xem MASTERY_CONFIG.WEIGHT
+// (gami/mastery.js): mt=3 (chuẩn nhất) · ingame/et/dg=2 (trực tiếp tại trung tâm) · btvn/bt=1 (tự luyện).
 import { supabase } from './supabase'
 import { masteryOfDang, RESULT_VALUE, MASTERY_CONFIG } from '../gami/mastery.js'
 import { khoCuaMon } from './tailieu'
 
 const LIMIT = 10000
 
-export type EvalSrc = 'ingame' | 'et' | 'mt' | 'dg' | 'btvn'
+export type EvalSrc = 'ingame' | 'et' | 'mt' | 'dg' | 'btvn' | 'bt'
 export type DangEval = { value: number; t: string; src: EvalSrc } // value 0|0.5|1 · t = ISO · src = nguồn
 export type Mastery = { score: number; n: number; muc: 'dat' | 'can_luyen' | 'yeu'; tin: 'cao' | 'tb' | 'thap' }
 export type DangMastery = {
@@ -19,8 +21,9 @@ export type DangMastery = {
 }
 
 // Nhãn nguồn cho UI. MT = kỳ thi lớn, chấm Đ/C/S per câu GIỐNG ET (giám sát, KHÔNG tham khảo như BTVN)
-// → LUÔN vào mastery (không cần toggle như includeBTVN).
-export const SRC_LABEL: Record<EvalSrc, string> = { ingame: 'IG', et: 'ET', mt: 'MT', dg: 'ĐG', btvn: 'BT' }
+// → LUÔN vào mastery (không cần toggle như includeBTVN). BT (bổ trợ tự luyện, mig 0094 bt_grades) cũng
+// LUÔN vào mastery (không toggle) dù trọng số thấp (=1, giống btvn) — khác BTVN vẫn qua toggle như cũ.
+export const SRC_LABEL: Record<EvalSrc, string> = { ingame: 'IG', et: 'ET', mt: 'MT', dg: 'ĐG', btvn: 'BTVN', bt: 'BT' }
 
 // ── NGUỒN ĐO ONLINE (test online 07-04): bai_lam_cau (verdict ≠ null) = phép đo ──
 // ET + ĐỀ THI online → src 'et' (thi có giám sát, VÀO mastery — cùng chế độ THI, xem THI_LOAI HocSinhApp).
@@ -53,8 +56,27 @@ async function fetchOnlineEvals(hs: string | string[], sinceIso?: string | null)
   return out
 }
 
+// ── NGUỒN BT (bổ trợ tự luyện, mig 0094 bt_grades) — 1 HS × N câu, KHÔNG có buổi/session nên không
+// nằm trong gami_grades. LUÔN vào mastery (không toggle) dù trọng số thấp (=1, xem MASTERY_CONFIG.WEIGHT).
+type BTEvalRow = { hoc_sinh_id: string; ma_dang: string; value: number; t: string; mon: string }
+async function fetchBTEvals(hs: string | string[], sinceIso?: string | null): Promise<BTEvalRow[]> {
+  let q = supabase.from('bt_grades').select('result, graded_at, ma_dang, tl:tai_lieu_id!inner(hoc_sinh_id, mon)').limit(LIMIT)
+  q = Array.isArray(hs) ? q.in('tl.hoc_sinh_id', hs) : q.eq('tl.hoc_sinh_id', hs)
+  if (sinceIso) q = q.gte('graded_at', sinceIso)
+  const { data, error } = await q
+  if (error) throw error
+  const out: BTEvalRow[] = []
+  for (const r of (data ?? []) as any[]) {
+    const val = RESULT_VALUE[r.result as keyof typeof RESULT_VALUE]
+    if (val === undefined || !r.tl) continue
+    out.push({ hoc_sinh_id: r.tl.hoc_sinh_id, ma_dang: r.ma_dang, value: val, t: r.graded_at, mon: r.tl.mon })
+  }
+  return out
+}
+
 // Gom các lần đo của 1 HS (trong 1 MÔN) theo dạng → mastery + timeline.
 // opts.includeBTVN: gộp cả phase='btvn' (mặc định KHÔNG — BTVN tham khảo, không vào mastery; toggle để Thùy soi).
+// 'bt' (chấm BT) LUÔN gộp, không qua toggle — khác BTVN dù cùng trọng số 1 (xem SRC_LABEL comment).
 // opts.days: chỉ lấy đo trong N ngày gần nhất (30/60/90). Bỏ trống = tất cả.
 export async function getMasteryHS(
   hocSinhId: string,
@@ -62,14 +84,14 @@ export async function getMasteryHS(
   opts?: { includeBTVN?: boolean; days?: number },
 ): Promise<DangMastery[]> {
   const K = khoCuaMon(mon) // banDoTbl theo môn → scope dạng đúng môn (bỏ dạng môn khác)
-  const phases: EvalSrc[] = opts?.includeBTVN ? ['ingame', 'et', 'mt', 'btvn'] : ['ingame', 'et', 'mt']
+  const phases: EvalSrc[] = opts?.includeBTVN ? ['ingame', 'et', 'mt', 'bt', 'btvn'] : ['ingame', 'et', 'mt', 'bt']
   const sinceIso = opts?.days ? new Date(Date.now() - opts.days * 86400_000).toISOString() : null // boundary INSTANT (được phép, §windowing)
 
   // grades của HS, EMBED thẳng problem (phase, ma_dang) — FK problem_id→gami_session_problems ĐƠN, sạch
   // (khác buoi_hoc_hs 2-FK). 1 query thay 2 + bỏ IN(probIds) tránh URL dài. Song song với đánh giá GV.
   let gq = supabase.from('gami_grades').select('result, graded_at, prob:problem_id(phase, ma_dang)').eq('hoc_sinh_id', hocSinhId).limit(LIMIT)
   if (sinceIso) gq = gq.gte('graded_at', sinceIso)
-  const [{ data: grades }, { data: dgs }, online] = await Promise.all([
+  const [{ data: grades }, { data: dgs }, online, bt] = await Promise.all([
     gq,
     (() => {
       let dq = supabase.from('buoi_danh_gia_dang').select('ma_dang, diem, updated_at').eq('hoc_sinh_id', hocSinhId).limit(LIMIT)
@@ -77,6 +99,7 @@ export async function getMasteryHS(
       return dq
     })(),
     fetchOnlineEvals(hocSinhId, sinceIso),
+    fetchBTEvals(hocSinhId, sinceIso),
   ])
 
   // Gom measures theo ma_dang.
@@ -92,6 +115,7 @@ export async function getMasteryHS(
   }
   for (const d of (dgs ?? []) as any[]) push(d.ma_dang, { value: Number(d.diem), t: d.updated_at, src: 'dg' })
   for (const o of online) if (phases.includes(o.src)) push(o.ma_dang, { value: o.value, t: o.t, src: o.src })
+  for (const b of bt) push(b.ma_dang, { value: b.value, t: b.t, src: 'bt' }) // LUÔN vào, không qua phases.includes (không toggle)
 
   const maList = Object.keys(byDang)
   if (maList.length === 0) return []
@@ -139,11 +163,12 @@ export type TongQuanHS = {
 }
 export async function getTongQuanHS(hocSinhId: string, mon: string): Promise<TongQuanHS> {
   const K = khoCuaMon(mon)
-  const [{ data: grades }, { data: dgs }, { data: dt }, online] = await Promise.all([
+  const [{ data: grades }, { data: dgs }, { data: dt }, online, btGradeEvals] = await Promise.all([
     supabase.from('gami_grades').select('result, graded_at, prob:problem_id(phase, ma_dang)').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
     supabase.from('buoi_danh_gia_dang').select('ma_dang, diem, updated_at').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
     supabase.from('diem_thi').select('diem, ky_thi:ky_thi_id(loai, mon)').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
     fetchOnlineEvals(hocSinhId),
+    fetchBTEvals(hocSinhId),
   ])
   const now = Date.now(), D30 = 30 * 86400_000, cut1 = now - D30, cut2 = now - 2 * D30
   const inRecent = (t: number) => t >= cut1
@@ -175,6 +200,8 @@ export async function getTongQuanHS(hocSinhId: string, mon: string): Promise<Ton
       if (inRecent(tm)) { btR += o.value; btRN++ } else if (inPrior(tm)) { btP += o.value; btPN++ }
     }
   }
+  // Chấm BT (bt_grades) — LUÔN vào byDang (không toggle, không cộng vào %BTVN/pctBTVN — đó là nguồn khác).
+  for (const b of btGradeEvals) { if (b.mon && b.mon !== mon) continue; if (b.ma_dang) (byDang[b.ma_dang] ??= []).push({ value: b.value, t: b.t, src: 'bt' }) }
 
   const maList = Object.keys(byDang)
   let valid = new Set<string>()
@@ -231,7 +258,7 @@ export type RollupScope = { mon: string; lopId?: string | null; khoi?: string | 
 async function loadMasteryCells(opts: RollupScope): Promise<CellBundle> {
   const empty: CellBundle = { hsMap: new Map(), hsIds: [], byHS: new Map(), dangInfo: new Map() }
   const K = khoCuaMon(opts.mon)
-  const phases: EvalSrc[] = opts.includeBTVN ? ['ingame', 'et', 'mt', 'btvn'] : ['ingame', 'et', 'mt']
+  const phases: EvalSrc[] = opts.includeBTVN ? ['ingame', 'et', 'mt', 'bt', 'btvn'] : ['ingame', 'et', 'mt', 'bt']
 
   // 1) HS trong phạm vi (lớp / khối / HỆ-band × môn), đang học.
   let sq
@@ -247,10 +274,11 @@ async function loadMasteryCells(opts: RollupScope): Promise<CellBundle> {
   if (hsIds.length === 0) return { ...empty, hsMap }
 
   // 2) measures BULK.
-  const [{ data: grades }, { data: dgs }, online] = await Promise.all([
+  const [{ data: grades }, { data: dgs }, online, bt] = await Promise.all([
     supabase.from('gami_grades').select('hoc_sinh_id, result, graded_at, prob:problem_id(phase, ma_dang)').in('hoc_sinh_id', hsIds).limit(LIMIT),
     supabase.from('buoi_danh_gia_dang').select('hoc_sinh_id, ma_dang, diem, updated_at').in('hoc_sinh_id', hsIds).limit(LIMIT),
     fetchOnlineEvals(hsIds),
+    fetchBTEvals(hsIds),
   ])
   const evByHS = new Map<string, Map<string, DangEval[]>>()
   const allMa = new Set<string>()
@@ -267,6 +295,7 @@ async function loadMasteryCells(opts: RollupScope): Promise<CellBundle> {
   }
   for (const d of (dgs ?? []) as any[]) add(d.hoc_sinh_id, d.ma_dang, { value: Number(d.diem), t: d.updated_at, src: 'dg' })
   for (const o of online) if (phases.includes(o.src)) add(o.hoc_sinh_id, o.ma_dang, { value: o.value, t: o.t, src: o.src })
+  for (const b of bt) add(b.hoc_sinh_id, b.ma_dang, { value: b.value, t: b.t, src: 'bt' }) // LUÔN vào, không toggle
 
   // 3) tên dạng + scope MÔN (banDo của môn → chỉ giữ dạng hợp lệ).
   const dangInfo = new Map<string, { ten_dang: string; ten_chuyen_de: string }>()

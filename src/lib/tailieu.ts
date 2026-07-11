@@ -137,6 +137,24 @@ export async function cauUsage(maCaus: string[]): Promise<Map<string, number>> {
 // So sánh ưu tiên: ÍT DÙNG nhất trước, rồi câu GỐC ('le') trước clone.
 const cmpUsageLe = (u: Map<string, number>) => (a: CauHoi, b: CauHoi) =>
   (u.get(a.ma_cau) ?? 0) - (u.get(b.ma_cau) ?? 0) || (a.nguon === 'le' ? 0 : 1) - (b.nguon === 'le' ? 0 : 1)
+// "Nguồn bài" của 1 câu = câu GỐC nó bám vào (chính nó nếu là gốc 'le', hoặc parent_ma_cau nếu là clone AI).
+// 1 dạng có thể có NHIỀU nguồn (nhiều đề gốc khác nhau, mỗi gốc sinh ra N clone) — gộp phẳng theo loại_cau
+// rồi lấy N câu đầu (như cũ) sẽ dồn hết vào 1-2 nguồn có nhiều clone nhất. Round-robin qua nguồn thay vào đó
+// (Thùy chốt 07-11): mỗi nguồn góp 1 câu xoay vòng cho đến đủ N — không nguồn nào bị bỏ quên.
+const nguonCuaCau = (c: CauHoi): string => c.parent_ma_cau ?? c.ma_cau
+function pickRoundRobinByNguon(pool: CauHoi[], n: number, u: Map<string, number>): CauHoi[] {
+  const byNguon = new Map<string, CauHoi[]>()
+  for (const c of pool) { const k = nguonCuaCau(c); (byNguon.get(k) ?? byNguon.set(k, []).get(k)!).push(c) }
+  // Mỗi nguồn tự sắp ÍT DÙNG NHẤT trước bên trong nó; các nguồn xếp theo câu-ít-dùng-nhất-của-nguồn đó trước.
+  const groups = [...byNguon.values()].map((g) => [...g].sort(cmpUsageLe(u)))
+  groups.sort((a, b) => (u.get(a[0].ma_cau) ?? 0) - (u.get(b[0].ma_cau) ?? 0))
+  const out: CauHoi[] = []
+  for (let i = 0; out.length < n && groups.some((g) => g.length); i++) {
+    const g = groups[i % groups.length]
+    if (g.length) out.push(g.shift()!)
+  }
+  return out
+}
 
 // ── Rule auto gợi ý câu luyện: ít-dùng-nhất + ưu tiên GỐC, lấy N câu đầu ──
 export async function autoSuggestCau(maDang: string, n = 6, cauTbl = 'dai_cau_hoi'): Promise<string[]> {
@@ -160,8 +178,8 @@ export async function autoSuggestByLoai(maDang: string, counts: Record<string, n
   const u = await cauUsage(caus.map((c) => c.ma_cau))
   for (const [loai, n] of Object.entries(counts)) {
     if (n <= 0) continue
-    const pool = caus.filter((c) => c.loai_cau === loai).sort(cmpUsageLe(u))
-    out.push(...pool.slice(0, n).map((c) => c.ma_cau))
+    const pool = caus.filter((c) => c.loai_cau === loai)
+    out.push(...pickRoundRobinByNguon(pool, n, u).map((c) => c.ma_cau))
   }
   return out
 }
@@ -176,8 +194,8 @@ export async function autoSuggestBtvn(maDangs: string[], exclude: Set<string>, c
     const u = await cauUsage(caus.map((c) => c.ma_cau))
     for (const [loai, n] of Object.entries(counts)) {
       if (n <= 0) continue
-      const pool = caus.filter((c) => c.loai_cau === loai && !exclude.has(c.ma_cau)).sort(cmpUsageLe(u))
-      out.push(...pool.slice(0, n).map((c) => c.ma_cau))
+      const pool = caus.filter((c) => c.loai_cau === loai && !exclude.has(c.ma_cau))
+      out.push(...pickRoundRobinByNguon(pool, n, u).map((c) => c.ma_cau))
     }
   }
   return out

@@ -9,6 +9,8 @@ function ymdToUTC(ngay: string): number { const [y, m, d] = ngay.split('-').map(
 function utcToYmd(ms: number): string { const t = new Date(ms); return `${t.getUTCFullYear()}-${String(t.getUTCMonth() + 1).padStart(2, '0')}-${String(t.getUTCDate()).padStart(2, '0')}` }
 
 export function homNayVN(): string { const vn = new Date(Date.now() + 7 * 3600000); return utcToYmd(Date.UTC(vn.getUTCFullYear(), vn.getUTCMonth(), vn.getUTCDate())) }
+// 'YYYY-MM-DD' (giờ VN) của 1 epoch ms — dùng để gom việc theo NGÀY DEADLINE (không phải ngày tạo/ngày buổi).
+export function ngayCuaTs(ms: number): string { const vn = new Date(ms + 7 * 3600000); return utcToYmd(Date.UTC(vn.getUTCFullYear(), vn.getUTCMonth(), vn.getUTCDate())) }
 export function congNgay(ngay: string, n: number): string { return utcToYmd(ymdToUTC(ngay) + n * DAY) }
 
 export function tuanCuaNgay(ngay: string): number { return Math.floor((ymdToUTC(ngay) - WEEK1_MONDAY_UTC) / (7 * DAY)) + 1 }

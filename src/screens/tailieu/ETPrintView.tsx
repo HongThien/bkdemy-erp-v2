@@ -1,15 +1,17 @@
 // In ET cho HS làm — engine paged.js (tái dùng từ PrintView). Phiếu: header Họ-tên/Lớp/Điểm + mã ET.
-// 3 dạng: TRẮC NGHIỆM (CauItem có phương án) · TRẢ LỜI NGẮN (BẢNG: đề trái / ô điền đáp án phải) ·
-// TỰ LUẬN (dòng kẻ để viết, số dòng = cau_hinh.btvnLinesByCau[ma_cau]). Bản GV = kèm đáp án/lời giải.
+// 3 dạng, CÙNG 1 định dạng mặc định (đề + dòng kẻ, KHÔNG bảng — Thùy chốt 07-11): TRẮC NGHIỆM (CauItem
+// có phương án) · TRẢ LỜI NGẮN (dòng kẻ ngắn) · TỰ LUẬN (dòng kẻ dài hơn, số dòng = cau_hinh.btvnLinesByCau).
+// Bản GV = kèm đáp án/lời giải mặc định (đề rồi lời giải bên dưới), không tách bảng riêng.
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
 import { getTaiLieuFull, etFormOf, type TaiLieuFull } from '../../lib/tailieu'
 import type { CauHoi } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
-import { CauItem, OptGrid, GvAnswer, splitStem, CHROME_CSS, buildPagedCss, downloadPagesPdf, pageChrome } from './PrintView'
+import { CauItem, OptGrid, GvAnswer, WriteLines, splitStem, CHROME_CSS, buildPagedCss, downloadPagesPdf, pageChrome } from './PrintView'
 
 const DEFAULT_TL_LINES = 4
+const DEFAULT_TLN_LINES = 2
 
 // headless = tự dựng ẩn → tải PDF → đóng (nút "⬇ Tải" ngay ở hàng Kho tài liệu, không mở preview).
 export default function ETPrintView({ id, onClose, headless }: { id: string; onClose: () => void; headless?: boolean }) {
@@ -151,22 +153,20 @@ function ETDoc({ full, gv }: { full: TaiLieuFull; gv: boolean }) {
 
       {tln.length > 0 && (
         <section className="pv-sec"><h2 className="pv-h-dang">Phần {part()} · Trả lời ngắn</h2>
-          <table className="pv-et-tn"><tbody>{tln.map((c) => {
-            const { stem, grid, emb } = splitStem(c) // ý con nhiều dòng → lưới cột (như trắc nghiệm), không đổ 6 dòng
+          {/* Đề + dòng kẻ NGẮN (đáp án ngắn, không cần nhiều dòng như tự luận) · bản GV = đáp án/lời giải mặc định. */}
+          <ol className="pv-caulist">{tln.map((c) => {
+            const { stem, grid, emb } = splitStem(c)
             return (
-              <tr key={c.ma_cau}>
-                <td className="q"><div className="pv-math"><MathText prefix={`<span class="pv-cau-no">Câu ${next()}.</span> `}>{stem}</MathText></div>{grid && <OptGrid grid={grid} emb={emb} />}</td>
-                {/* Bản GV = đáp án + LỜI GIẢI chi tiết (không chỉ đáp án ngắn) */}
-                <td className="a">{gv && (c.dap_an || c.loi_giai || c.anh_dap_an) ? (
-                  <div className="pv-et-ans">
-                    {c.dap_an && <div><b>Đáp án:</b> <MathText>{c.dap_an}</MathText></div>}
-                    {c.loi_giai && <div className="pv-et-giai"><b>Lời giải:</b> <MathText>{c.loi_giai}</MathText></div>}
-                    {c.anh_dap_an && <img src={c.anh_dap_an} alt="" className="pv-img" />}
-                  </div>
-                ) : ''}</td>
-              </tr>
+              <li key={c.ma_cau} className="pv-cau">
+                <div className="pv-math"><MathText prefix={`<span class="pv-cau-no">Câu ${next()}.</span> `}>{stem}</MathText></div>
+                {grid && <OptGrid grid={grid} emb={emb} />}
+                {c.anh_de && <img src={c.anh_de} alt="" className="pv-img" />}
+                {gv
+                  ? <GvAnswer c={c} />
+                  : grid ? null : <WriteLines n={lines[c.ma_cau] ?? DEFAULT_TLN_LINES} />}
+              </li>
             )
-          })}</tbody></table>
+          })}</ol>
         </section>
       )}
 
@@ -182,7 +182,7 @@ function ETDoc({ full, gv }: { full: TaiLieuFull; gv: boolean }) {
                 {c.anh_de && <img src={c.anh_de} alt="" className="pv-img" />}
                 {gv
                   ? <GvAnswer c={c} />
-                  : grid ? null : <div className="pv-write">{Array.from({ length: lines[c.ma_cau] ?? DEFAULT_TL_LINES }).map((_, k) => <div key={k} className="pv-wline" />)}</div>}
+                  : grid ? null : <WriteLines n={lines[c.ma_cau] ?? DEFAULT_TL_LINES} />}
               </li>
             )
           })}</ol>
@@ -204,13 +204,6 @@ const ET_CSS = `
 .pv-et-score{width:60%;margin:0 auto;border-collapse:collapse;table-layout:fixed}
 .pv-et-score th{border:1px solid var(--pv-accent,#7c3aed);background:#f5f3ff;color:#6d28d9;font-weight:700;font-size:11.5px;padding:3px 1px;text-align:center}
 .pv-et-score td{border:1px solid #9aa6b2;height:10mm}
-.pv-et-tn{width:100%;border-collapse:collapse;margin-top:6px}
-.pv-et-tn td{border:1px solid #cbd2d8;padding:8px 10px;vertical-align:top;font-size:15px}
-.pv-et-tn td.q{width:66%}
-.pv-et-tn td.a{width:34%;min-height:11mm}
-/* Bản GV: ô đáp án chứa đáp án + lời giải chi tiết (font hơi nhỏ để gọn trong cột 34%). */
-.pv-et-ans{font-size:13.5px;line-height:1.5}
-.pv-et-giai{margin-top:3px;color:#334155}
 .pv-empty{color:#8a9097;font-style:italic;margin-top:10px}
 /* Heading "Phần …" KHÔNG gạch chân (gạch trông như dòng kẻ lạc — đã sửa ở BTVN hôm trước). */
 .pv-et .pv-h-dang{border-bottom:none;padding-bottom:0;margin-bottom:6px}

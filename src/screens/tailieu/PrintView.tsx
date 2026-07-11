@@ -448,6 +448,26 @@ export function GvAnswer({ c }: { c: CauHoi }) {
     </div>
   )
 }
+// Khối dòng-kẻ-để-viết — GỘP TỪNG CẶP (lẻ dư nằm ở ĐẦU, không phải cuối) + mỗi cặp break-inside:avoid.
+// BTVN cho câu tách ngang trang để đỡ tốn giấy (`.pv-btvn .pv-cau{break-inside:auto}`) — nhưng KHÔNG
+// được để 1 dòng kẻ mồ côi tách khỏi cặp của nó, rơi sang đầu trang sau dính sát câu kế tiếp (Thùy báo
+// ảnh 07-11). Gộp cặp từ ĐẦU → phần CUỐI (dễ bị đẩy sang trang mới nhất khi tràn) luôn còn nguyên cặp.
+// Xem DEVLOG 07-11 — ĐỪNG đổi `.pv-write` thành break-inside:avoid nguyên khối (đã thử, gây nhảy cả
+// khối 5 dòng sang trang mới → bỏ trống cuối trang, đúng lỗi mà break-inside:auto sinh ra để tránh).
+export function WriteLines({ n }: { n: number }) {
+  if (n <= 0) return null
+  const groups: number[] = []
+  let i = n % 2 === 1 ? 1 : 0
+  if (i) groups.push(1)
+  for (; i < n; i += 2) groups.push(2)
+  return (
+    <div className="pv-write">
+      {groups.map((cnt, gi) => (
+        <div key={gi} className="pv-wpair">{Array.from({ length: cnt }).map((_, j) => <div key={j} className="pv-wline" />)}</div>
+      ))}
+    </div>
+  )
+}
 export function CauItem({ no, c, gv, lines = 0 }: { no: number; c: CauHoi; gv: boolean; lines?: number }) {
   const md = c.menh_de && c.menh_de.length ? c.menh_de : null // câu Đúng/Sai: 4 mệnh đề, mỗi cái Đ/S riêng
   const hasOpts = !!(c.lua_chon && c.lua_chon.length)
@@ -482,7 +502,7 @@ export function CauItem({ no, c, gv, lines = 0 }: { no: number; c: CauHoi; gv: b
         )}
       </>)}
       {gv && <GvAnswer c={c} />}
-      {lines > 0 && !hasOpts && !grid && !md && <div className="pv-write">{Array.from({ length: lines }).map((_, i) => <div key={i} className="pv-wline" />)}</div>}
+      {lines > 0 && !hasOpts && !grid && !md && <WriteLines n={lines} />}
     </div>
   )
 }
@@ -548,7 +568,11 @@ const CONTENT_CSS = `
 .pv-doc-btvn > .pv-btvn:first-of-type{break-before:auto}
 /* Trong BTVN, tiêu đề dạng đi liền ngay câu 1 → bỏ gạch chân (không để như "dòng kẻ lạc" giữa Dạng và Câu 1). */
 .pv-btvn .pv-h-dang{border-bottom:none;padding-bottom:0;margin-bottom:6px}
+/* Dòng kẻ để viết — GỘP CẶP qua .pv-wpair (xem WriteLines, PrintView.tsx) để tránh mồ côi khi tách
+   trang, KHÔNG break-inside:avoid nguyên .pv-write (từng gây nhảy cả khối sang trang mới, bỏ trống
+   cuối trang — đúng lỗi mà .pv-btvn .pv-cau{break-inside:auto} sinh ra để tránh). Xem DEVLOG 07-11. */
 .pv-write{margin-top:7px}
+.pv-wpair{break-inside:avoid}
 .pv-wline{height:9mm;border-bottom:1px dotted #9aa6b2}
 /* BTVN chảy LIÊN TỤC: câu được phép tách ngang trang (nửa trên / nửa dưới) thay vì nhảy cả câu → bỏ trống cuối trang. */
 .pv-btvn .pv-cau{break-inside:auto}

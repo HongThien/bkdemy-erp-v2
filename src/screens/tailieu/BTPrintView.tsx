@@ -1,21 +1,17 @@
-// In MT (kỳ thi lớn) — tái dùng engine PrintView (paged.js), mẫu bám sát DeThiPrintView/ETPrintView.
-// GIỮ NGUYÊN cấu trúc PHẦN + THỨ TỰ GỐC (không gom lại theo loại câu) — đúng yêu cầu Thùy 07-08 "cấu
-// trúc chấm/in MT phải giống file MT được gán, không làm phẳng". Mỗi câu tôn trọng FORM HIỂN THỊ
-// (`etFormByCau`/`etFormOf`, GIỐNG ET — MT dùng chung cơ chế "chỉnh dòng" với ET): câu kho có phương án
-// nhưng bị ép hiển thị "tự luận"/"trả lời ngắn" thì KHÔNG hiện phương án (CauItem tự động hiện phương án
-// nếu có lua_chon nên không dùng thẳng được cho 2 form này — phải tách stem thủ công như ET đã làm).
+// In BT (tài liệu bổ trợ) — tái dùng engine PrintView (paged.js), mẫu bám sát MTPrintView. Khác ET/MT:
+// tiêu đề có TÊN RIÊNG học sinh (Thùy 07-10: "tiêu đề có tên riêng của học sinh và tên tài liệu bổ
+// trợ") — không phải phiếu chung của lớp nên KHÔNG có dòng "Họ và tên: ___" bỏ trống, điền sẵn luôn.
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
-import { getTaiLieuFull, etFormOf, type TaiLieuFull, type CauHinh } from '../../lib/tailieu'
+import { getTaiLieuFull, etFormOf, DEFAULT_BTVN_LINES, type TaiLieuFull, type PhanResolved, type CauHinh } from '../../lib/tailieu'
+import { getBT, type BT } from '../../lib/bt'
 import type { CauHoi } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
 import { CauItem, CauList, OptGrid, GvAnswer, WriteLines, splitStem, CHROME_CSS, buildPagedCss, downloadPagesPdf, pageChrome } from './PrintView'
 
-const DEFAULT_TL_LINES = 4
-
-// headless = tự dựng ẩn → tải PDF → đóng (nút "⬇ Tải" ngay ở hàng Kho tài liệu, không mở preview).
-export default function MTPrintView({ id, onClose, headless }: { id: string; onClose: () => void; headless?: boolean }) {
+export default function BTPrintView({ id, onClose }: { id: string; onClose: () => void }) {
+  const [bt, setBt] = useState<BT | null>(null)
   const [full, setFull] = useState<TaiLieuFull | null>(null)
   const [err, setErr] = useState<string | null>(null)
   const [gv, setGv] = useState(false)
@@ -25,17 +21,18 @@ export default function MTPrintView({ id, onClose, headless }: { id: string; onC
   const [dlErr, setDlErr] = useState<string | null>(null)
   const srcRef = useRef<HTMLDivElement>(null)
   const dstRef = useRef<HTMLDivElement>(null)
-  useEffect(() => { getTaiLieuFull(id).then(setFull).catch((e) => setErr(e.message ?? String(e))) }, [id])
+  useEffect(() => {
+    Promise.all([getBT(id), getTaiLieuFull(id)]).then(([b, f]) => { setBt(b); setFull(f) }).catch((e) => setErr(e.message ?? String(e)))
+  }, [id])
 
   useEffect(() => {
     if (!full || !srcRef.current || !dstRef.current) return
     let cancelled = false
     setRendering(true)
     const ch = full.taiLieu.cau_hinh ?? {}
-    const css = buildPagedCss(full.taiLieu, ch, ch.mau || '#7c3aed') + MT_CSS
+    const css = buildPagedCss(full.taiLieu, ch, ch.mau || '#7c3aed') + BT_CSS
     const cssUrl = URL.createObjectURL(new Blob([css], { type: 'text/css' }))
     const html = srcRef.current.innerHTML
-    // Race-safe (như PrintView/ETPrintView/DeThiPrintView): container riêng mỗi run, run stale tự xoá.
     const dst = dstRef.current
     const container = document.createElement('div')
     dst.appendChild(container)
@@ -52,38 +49,17 @@ export default function MTPrintView({ id, onClose, headless }: { id: string; onC
 
   const seg = (on: boolean) => `rounded-md px-3 py-1 text-[13px] font-medium transition ${on ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`
   async function taiPdf() {
-    if (!dstRef.current || !full) return
+    if (!dstRef.current || !full || !bt) return
     setDl(true); setDlErr(null)
-    try { await downloadPagesPdf(dstRef.current, `${full.taiLieu.ten}${gv ? ' - Bản GV' : ''}`, pageChrome(full.taiLieu, full.taiLieu.cau_hinh ?? {})) }
+    try { await downloadPagesPdf(dstRef.current, `${bt.hoc_sinh?.ho_ten ?? ''} - ${full.taiLieu.ten}${gv ? ' - Bản GV' : ''}`, pageChrome(full.taiLieu, full.taiLieu.cau_hinh ?? {})) }
     catch (e) { setDlErr('Tải PDF lỗi: ' + (e instanceof Error ? e.message : String(e))) }
     finally { setDl(false) }
   }
 
-  const didAutoDl = useRef(false)
-  useEffect(() => {
-    if (!headless || didAutoDl.current || rendering || !full || !dstRef.current) return
-    const t = setTimeout(() => { if (!didAutoDl.current) { didAutoDl.current = true; taiPdf().finally(onClose) } }, 350)
-    return () => clearTimeout(t)
-  }, [headless, rendering, full]) // eslint-disable-line
-
-  if (headless) return createPortal(
-    <>
-      <div style={{ position: 'fixed', top: 0, left: 0, zIndex: 88, width: '210mm', background: '#fff' }}><div ref={dstRef} className="pv-pages" /></div>
-      <div ref={srcRef} className="pv-src" aria-hidden>{full && <MTDoc full={full} gv={gv} />}</div>
-      <div className="fixed inset-0 z-[95] flex items-center justify-center bg-white">
-        <div className="rounded-xl border border-slate-200 bg-white px-6 py-4 text-sm font-medium text-slate-700 shadow-xl">
-          {dlErr ? <span className="text-rose-600">{dlErr}</span> : <>⏳ Đang tạo file PDF{pages ? ` (${pages} trang)` : ''}…</>}
-          {dlErr && <button onClick={onClose} className="ml-3 rounded border border-slate-300 px-2.5 py-1 text-xs text-slate-600">Đóng</button>}
-        </div>
-      </div>
-      <style>{CHROME_CSS}</style>
-    </>,
-    document.body,
-  )
   return createPortal(
     <div className="pv-overlay fixed inset-0 z-[80] flex flex-col bg-slate-300/90">
       <div className="no-print flex items-center gap-3 border-b border-slate-300 bg-white px-5 py-2.5 shadow-sm">
-        <span className="text-sm font-semibold text-slate-800">Xem &amp; in MT</span>
+        <span className="text-sm font-semibold text-slate-800">Xem &amp; in BT</span>
         <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5">
           <button onClick={() => setGv(false)} className={seg(!gv)}>Bản học sinh</button>
           <button onClick={() => setGv(true)} className={seg(gv)}>Bản giáo viên</button>
@@ -98,26 +74,25 @@ export default function MTPrintView({ id, onClose, headless }: { id: string; onC
       </div>
       <div className="pv-scroll min-h-0 flex-1 overflow-auto py-6">
         {err ? <p className="text-center text-rose-600">Lỗi: {err}</p>
-          : !full ? <p className="text-center text-slate-400">Đang tải…</p>
+          : !full || !bt ? <p className="text-center text-slate-400">Đang tải…</p>
           : <div ref={dstRef} className="pv-pages" />}
       </div>
-      <div ref={srcRef} className="pv-src" aria-hidden>{full && <MTDoc full={full} gv={gv} />}</div>
+      <div ref={srcRef} className="pv-src" aria-hidden>{full && bt && <BTDoc full={full} bt={bt} gv={gv} />}</div>
       <style>{CHROME_CSS}</style>
     </div>,
     document.body,
   )
 }
 
-// 1 câu trong MT — tôn trọng FORM HIỂN THỊ (etFormOf), KHÁC CauItem thô (CauItem luôn hiện lua_chon
-// nếu câu kho có, bất kể form override). Đúng/Sai (menh_de) luôn qua CauItem (form không áp dụng).
-function MtCau({ no, c, gv, ch }: { no: number; c: CauHoi; gv: boolean; ch: CauHinh }) {
+// 1 câu — tôn trọng FORM ĐÃ CHỌN (etFormOf/etFormByCau), KHÔNG chỉ loai_cau gốc trong kho (Thùy 07-10:
+// "chưa cho chọn tự luận để thêm dòng" — GV ép 1 câu hiển thị Tự luận thì phải in ra dòng kẻ tương ứng).
+function BtCau({ no, c, gv, ch }: { no: number; c: CauHoi; gv: boolean; ch: CauHinh }) {
   const isDS = !!(c.menh_de && c.menh_de.length)
   if (isDS) return <CauItem no={no} c={c} gv={gv} />
   const form = etFormOf(c, ch)
   if (form === 'trac_nghiem') return <CauItem no={no} c={c} gv={gv} />
-  // tự luận / trả lời ngắn ÉP hiển thị: bỏ qua lua_chon dù câu kho có (tách stem thủ công, giống ET).
   const { stem, grid, emb } = splitStem(c)
-  const lines = ch.btvnLinesByCau?.[c.ma_cau] ?? DEFAULT_TL_LINES
+  const lines = ch.btvnLinesByCau?.[c.ma_cau] ?? DEFAULT_BTVN_LINES
   return (
     <div className="pv-cau">
       <div className="pv-math"><MathText prefix={`<span class="pv-cau-no">Câu ${no}.</span> `}>{stem}</MathText></div>
@@ -130,48 +105,49 @@ function MtCau({ no, c, gv, ch }: { no: number; c: CauHoi; gv: boolean; ch: CauH
   )
 }
 
-function MTDoc({ full, gv }: { full: TaiLieuFull; gv: boolean }) {
-  const ch = full.taiLieu.cau_hinh ?? {}
-  const phans = full.phans.filter((p) => p.loai_phan === 'custom')
-  let no = 0
-  const next = () => ++no
+// 1 khối DẠNG — mirror DangBlock (PrintView.tsx, giáo trình): tiêu đề "Dạng: tên" + câu theo FORM đã chọn.
+function DangBlockBT({ no, p, gv, ch }: { no: number; p: PhanResolved; gv: boolean; ch: CauHinh }) {
   return (
-    <div className="pv-mt" style={{ '--pv-accent': ch.mau || '#7c3aed' } as CSSProperties}>
+    <section className="pv-sec">
+      <h2 className="pv-h-dang">Dạng {no}: {p.dang?.ten_dang ?? p.ref_ma}</h2>
+      {p.caus.length > 0 && (
+        <CauList kieu={p.kieu}>{p.caus.map((c, i) => <BtCau key={c.ma_cau} no={i + 1} c={c} gv={gv} ch={ch} />)}</CauList>
+      )}
+    </section>
+  )
+}
+
+function BTDoc({ full, bt, gv }: { full: TaiLieuFull; bt: BT; gv: boolean }) {
+  const ch = full.taiLieu.cau_hinh ?? {}
+  const dangs = full.phans.filter((p) => p.loai_phan === 'dang')
+  return (
+    <div className="pv-mt" style={{ '--pv-accent': ch.mau || '#16a34a' } as CSSProperties}>
       <div className="pv-bt-head">
         <div className="pv-bt-titlewrap">
-          <div className="pv-bt-eyebrow">Kỳ thi lớn (MT){gv ? ' · Đáp án' : ''}</div>
-          <div className="pv-bt-title">{full.taiLieu.ten}</div>
+          <div className="pv-bt-eyebrow">Tài liệu bổ trợ (BT){gv ? ' · Đáp án' : ''}</div>
+          <div className="pv-bt-title">{bt.hoc_sinh?.ho_ten} — {full.taiLieu.ten}</div>
         </div>
         {!gv && (
           <div className="pv-bt-row">
             <div className="pv-bt-info">
-              <div className="pv-bt-field"><span className="pv-bt-lbl">Họ và tên:</span><span className="pv-bt-fill" /></div>
-              <div className="pv-bt-field"><span className="pv-bt-lbl">Lớp:</span><span className="pv-bt-fill" /></div>
+              <div className="pv-bt-field"><span className="pv-bt-lbl">Học sinh:</span><span className="pv-bt-filled">{bt.hoc_sinh?.ho_ten}{bt.hoc_sinh?.ma_hs ? ` (${bt.hoc_sinh.ma_hs})` : ''}</span></div>
+              <div className="pv-bt-field"><span className="pv-bt-lbl">Khối:</span><span className="pv-bt-filled">{full.taiLieu.khoi}</span></div>
             </div>
-            <div className="pv-bt-score"><div className="pv-bt-score-lbl">ĐIỂM</div><div className="pv-bt-score-box" /></div>
           </div>
         )}
       </div>
 
-      {phans.map((p) => (
-        <section key={p.id} className="pv-sec">
-          <h2 className="pv-h-dang">{p.tieu_de}</h2>
-          {p.caus.length === 0 ? <p className="pv-empty">Phần này chưa có câu.</p> : (
-            <CauList kieu={p.kieu}>
-              {p.caus.map((c) => <MtCau key={c.ma_cau} no={next()} c={c} gv={gv} ch={ch} />)}
-            </CauList>
-          )}
-        </section>
-      ))}
-      {phans.length === 0 && <p className="pv-empty">MT chưa có phần nào.</p>}
+      {dangs.length === 0 ? <p className="pv-empty">BT chưa có dạng nào.</p> : (
+        dangs.map((p, i) => <DangBlockBT key={p.id} no={i + 1} p={p} gv={gv} ch={ch} />)
+      )}
     </div>
   )
 }
 
-const MT_CSS = `
+const BT_CSS = `
 .pv-mt .pv-h-dang{border-bottom:none;padding-bottom:0}
 .pv-empty{color:#8a9097;font-style:italic;margin-top:10px}
-/* Trả lời ngắn (form ép, không phải tự luận): 1 dòng đáp án ngắn thay vì nhiều dòng kẻ. */
+.pv-bt-filled{font-weight:600;color:#1e293b}
 .pv-tln-ans{margin-top:6px;display:flex;align-items:center;gap:8px;font-size:14px}
 .pv-tln-lbl{font-weight:700;color:#475569;white-space:nowrap}
 .pv-tln-fill{flex:1;max-width:70mm;border-bottom:1.5px dotted #9aa6b2;height:14px}
