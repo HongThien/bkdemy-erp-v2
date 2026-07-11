@@ -2,6 +2,7 @@
 // UI KHÔNG gọi supabase trực tiếp — chỉ qua file này (seam, giống lib/kho/api.ts).
 import { createClient } from '@supabase/supabase-js'
 import { supabase } from './supabase'
+import { reopenPhase, moLaiDanhGia } from './gami'
 
 const LIMIT = 10000
 
@@ -464,15 +465,25 @@ export async function listHSCuaLop(lopId: string, gomDaRoi = false): Promise<HST
 }
 // Khi HS vào lớp: tự thêm vào roster MỌI buổi đã mở của lớp từ ngay_vao trở đi (mo + hoan_tat, bỏ huy) →
 // HS thêm-sau-khi-mở-buổi vẫn vào luồng điểm danh NGAY (không cần mở lại buổi). Idempotent (bỏ buổi đã có HS).
+// ⭐ 07-10 (Thùy): buổi đã ĐÓNG chấm/đánh giá mà giờ có HS mới → TỰ MỞ LẠI (ingame/mt/đánh giá) — xem
+// ghi chú đầy đủ ở dongBoSiSo (gami.ts), 2 hàm này cùng chung 1 lỗ hổng (khoá theo phase, không phải roster).
 async function syncHSVaoBuoiTuNgay(hocSinhId: string, lopId: string, tuNgay: string): Promise<void> {
-  const { data: buois } = await supabase.from('buoi_hoc').select('id')
+  const { data: buois } = await supabase.from('buoi_hoc').select('id, ingame_dong_at, mt_dong_at, danh_gia_xong_at')
     .eq('lop_id', lopId).eq('loai', 'thuong').neq('trang_thai', 'huy').gte('ngay', tuNgay).limit(LIMIT)
-  const ids = (buois ?? []).map((b: any) => b.id)
+  const all = (buois ?? []) as { id: string; ingame_dong_at: string | null; mt_dong_at: string | null; danh_gia_xong_at: string | null }[]
+  const ids = all.map((b) => b.id)
   if (!ids.length) return
   const { data: co } = await supabase.from('buoi_hoc_hs').select('buoi_hoc_id').eq('hoc_sinh_id', hocSinhId).in('buoi_hoc_id', ids).limit(LIMIT)
   const have = new Set((co ?? []).map((r: any) => r.buoi_hoc_id))
-  const rows = ids.filter((id) => !have.has(id)).map((id) => ({ buoi_hoc_id: id, hoc_sinh_id: hocSinhId }))
-  if (rows.length) { const { error } = await supabase.from('buoi_hoc_hs').insert(rows); if (error) throw error }
+  const moi = all.filter((b) => !have.has(b.id))
+  if (!moi.length) return
+  const { error } = await supabase.from('buoi_hoc_hs').insert(moi.map((b) => ({ buoi_hoc_id: b.id, hoc_sinh_id: hocSinhId })))
+  if (error) throw error
+  for (const b of moi) {
+    if (b.ingame_dong_at) await reopenPhase(b.id, 'ingame')
+    if (b.mt_dong_at) await reopenPhase(b.id, 'mt')
+    if (b.danh_gia_xong_at) await moLaiDanhGia(b.id)
+  }
 }
 export async function ghiDanh(hocSinhId: string, lopId: string, mucNangLucId: string | null = null, ngayVao?: string): Promise<void> {
   // upsert idempotent: ghi danh lại lớp cũ (đã rời) → bật lại 'dang_hoc' với ngày vào MỚI.

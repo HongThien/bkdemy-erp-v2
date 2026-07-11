@@ -5,7 +5,7 @@ import { getMyScope, type MyScope } from '../lib/nhansu'
 import { useIsMobile } from '../hooks/useIsMobile'
 import { getMyTasks, buoiAoCuaKhoang, moBuoi, diemDanhTienDo, type MyTask, type BuoiAo, type TabKey } from '../lib/gami'
 import { getMyOpsTasks, getMyPrepTasks, OPS_TASK_LABEL, type OpsTask, type MyPrepTask } from '../lib/opsvanhanh'
-import { homNayVN, tuanCuaNgay, khoangTuan, nhanTuan, mucDeadline, nhanConLai, thuCuaNgay, ddmmVN, type DeadlineMuc } from '../lib/tuan'
+import { homNayVN, tuanCuaNgay, khoangTuan, nhanTuan, mucDeadline, nhanConLai, thuCuaNgay, ddmmVN, ngayCuaTs, type DeadlineMuc } from '../lib/tuan'
 import { BuoiDetail } from './gami/BuoiHocScreen'
 import { BuoiBuDetail } from './botro/BoTroScreen'
 import { BuoiDuoiDetail } from './botro/BoTroDuoiScreen'
@@ -16,6 +16,7 @@ import NhapKhoScreen from './nhapkho/NhapKhoScreen'
 import TaiLieuScreen from './tailieu/TaiLieuScreen'
 import ETScreen from './tailieu/ETScreen'
 import MTScreen from './tailieu/MTScreen'
+import BTScreen from './tailieu/BTScreen'
 import KhoTaiLieuScreen from './tailieu/KhoTaiLieuScreen'
 import NhanSuScreen from './nhansu/NhanSuScreen'
 import OrgChartScreen from './nhansu/OrgChartScreen'
@@ -43,10 +44,8 @@ import BoTroScreen from './botro/BoTroScreen'
 import BoTroDuoiScreen from './botro/BoTroDuoiScreen'
 import ChatLuongVanHanhScreen from './dashboard/ChatLuongVanHanhScreen'
 
-const ROLE_LBL: Record<string, string> = { gv: 'GV', tg: 'Trợ giảng', ops: 'OPS' }
 // tg thấy thêm tab 'mt' (chấm MT nếu buổi có gán — tự ẩn/hiện rỗng như ET nếu chưa có).
 const tabsCuaVai = (vai: 'gv' | 'tg'): TabKey[] => (vai === 'gv' ? ['danhgia', 'ingame'] : ['ingame', 'et', 'mt'])
-const ddmm = (s: string) => { const p = s.split('-'); return `${p[2]}/${p[1]}` }
 type OpenBuoi = { id: string; tabs: TabKey[]; initialTab: TabKey; canManage: boolean; loai?: 'bu' | 'bo_tro_duoi' }
 type TienDo = { tong: number; daDanh: number }
 
@@ -64,13 +63,13 @@ function DeadlineBadge({ deadline, now }: { deadline: number | null; now: number
   return <span className={`shrink-0 rounded-full border px-2 py-0.5 text-[11px] font-medium ${DEADLINE_TONE[muc]}`}>{DEADLINE_ICON[muc]} {nhanConLai(deadline, now)}</span>
 }
 // Style theo LOẠI việc (icon + màu chip + accent trái) — card sống động, phân biệt loại nhanh.
-const TASK_STYLE: Record<TabKey, { icon: string; chip: string; accent: string }> = {
-  diemdanh: { icon: '👥', chip: 'bg-blue-100', accent: 'border-l-blue-400' },
-  ingame: { icon: '✏️', chip: 'bg-violet-100', accent: 'border-l-violet-400' },
-  et: { icon: '📝', chip: 'bg-teal-100', accent: 'border-l-teal-400' },
-  btvn: { icon: '📒', chip: 'bg-amber-100', accent: 'border-l-amber-400' },
-  danhgia: { icon: '⭐', chip: 'bg-rose-100', accent: 'border-l-rose-400' },
-  mt: { icon: '🏆', chip: 'bg-fuchsia-100', accent: 'border-l-fuchsia-400' },
+const TASK_STYLE: Record<TabKey, { icon: string; accent: string }> = {
+  diemdanh: { icon: '👥', accent: 'border-l-blue-400' },
+  ingame: { icon: '✏️', accent: 'border-l-violet-400' },
+  et: { icon: '📝', accent: 'border-l-teal-400' },
+  btvn: { icon: '📒', accent: 'border-l-amber-400' },
+  danhgia: { icon: '⭐', accent: 'border-l-rose-400' },
+  mt: { icon: '🏆', accent: 'border-l-fuchsia-400' },
 }
 // Loại việc cho filter chip — THEO VAI (Thùy 07-06: "Ops không có chấm bài như TA, phải hiện đúng
 // việc của ops"): Ops thấy Điểm danh/Report/Báo tan/Chuẩn bị phòng · GV/TA thấy Chấm bài/ET/BTVN/Đánh
@@ -115,7 +114,12 @@ function SectionHead({ label, count, color }: { label: string; count?: number; c
   )
 }
 
-function OpsBuoiCard({ ba, ngay, td, done, onOpen, compact }: { ba: BuoiAo; ngay: string; td?: TienDo; done?: boolean; onOpen: (o: OpenBuoi) => void; compact?: boolean }) {
+// Card việc — Thùy 07-11 (2 vòng góp ý): card gọn cho MỌI viewport (không còn biến thể cao 3 dòng cũ) +
+// LUÔN ĐÚNG 2 DÒNG (vòng 1 "1 dòng" bị vỡ thành 3 dòng khi tên dài — flex ngang ép label+deadline chung
+// 1 hàng, label dài tự xuống dòng mà deadline vẫn đứng cạnh → cao lệch). Fix: bỏ hẳn flex-ngang-1-hàng,
+// chuyển hẳn sang flex-col 2 DÒNG CỐ ĐỊNH — dòng 1 = icon+tên việc (full, không truncate), dòng 2 =
+// deadline nhỏ hơn, thụt vào ngang icon dòng trên.
+function OpsBuoiCard({ ba, ngay, td, done, onOpen }: { ba: BuoiAo; ngay: string; td?: TienDo; done?: boolean; onOpen: (o: OpenBuoi) => void }) {
   const [busy, setBusy] = useState(false)
   const b = ba.buoi
   async function go() {
@@ -125,134 +129,76 @@ function OpsBuoiCard({ ba, ngay, td, done, onOpen, compact }: { ba: BuoiAo; ngay
       onOpen({ id, tabs: ['diemdanh'], initialTab: 'diemdanh', canManage: true })
     } catch (e: any) { alert(e.message ?? String(e)); setBusy(false) }
   }
-  const pct = td && td.tong ? Math.round((td.daDanh / td.tong) * 100) : 0
   const base = done ? 'border-l-emerald-500 bg-emerald-50' : `${TASK_STYLE.diemdanh.accent} bg-white`
-  // Mobile (Thùy 07-06: "card chỉ cần 2 thông tin chính — loại việc + lớp"): gọn 1 hàng, bỏ tiến độ/mở-buổi.
-  if (compact) return (
-    <button onClick={go} disabled={busy} className={`flex items-center gap-2 rounded-lg border-l-4 px-2.5 py-2 text-left shadow-sm transition disabled:opacity-50 ${base}`}>
-      <span className="shrink-0 text-[15px]">{done ? '✓' : '👥'}</span>
-      <span className={`min-w-0 flex-1 truncate text-[13px] font-medium ${done ? 'text-emerald-700' : 'text-slate-800'}`}>Điểm danh · {ba.lop.ten_lop}</span>
-      {td && <span className="shrink-0 text-[11px] font-medium text-slate-400">{td.daDanh}/{td.tong}</span>}
-    </button>
-  )
   return (
-    <button onClick={go} disabled={busy} className={`flex flex-col rounded-2xl border-l-4 p-4 text-left shadow-sm transition hover:shadow-md hover:-translate-y-0.5 disabled:opacity-50 ${base}`}>
-      {/* dòng 1: icon + tên (full) */}
-      <div className="flex items-center gap-2.5">
-        <span className={`inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-[18px] ${done ? 'bg-emerald-100' : TASK_STYLE.diemdanh.chip}`}>{done ? '✓' : '👥'}</span>
-        <div className={`flex-1 text-[15px] font-semibold leading-snug ${done ? 'text-emerald-700' : 'text-slate-900'}`}>Điểm danh</div>
+    <button onClick={go} disabled={busy} className={`flex flex-col gap-0.5 rounded-lg border-l-4 px-2.5 py-2 text-left shadow-sm transition disabled:opacity-50 ${base}`}>
+      <div className="flex items-center gap-1.5">
+        <span className="shrink-0 text-[15px]">{done ? '✓' : '👥'}</span>
+        <span className={`min-w-0 flex-1 text-[13px] font-medium ${done ? 'text-emerald-700' : 'text-slate-800'}`}>Điểm danh · {ba.lop.ten_lop}</span>
       </div>
-      {/* dòng 2: thông tin đầy đủ */}
-      <div className="mt-2 text-[12px] text-slate-500">OPS · Lớp {ba.lop.ten_lop} · {ddmm(ngay)} · {ba.slot.gio_bat_dau?.slice(0, 5)}{ba.slot.phong ? ` · ${ba.slot.phong}` : ''}</div>
-      {/* dòng cuối: tiến độ / mở buổi */}
-      {b ? (
-        <div className="mt-2.5 flex items-center gap-2">
-          <div className="h-2 flex-1 overflow-hidden rounded-full bg-slate-100"><div className={`h-full rounded-full ${done ? 'bg-emerald-500' : 'bg-blue-500'}`} style={{ width: `${pct}%` }} /></div>
-          {td && <span className="shrink-0 text-[11px] font-medium text-slate-500">{td.daDanh}/{td.tong}</span>}
-        </div>
-      ) : (
-        <div className="mt-2.5 text-[12px] font-medium text-indigo-600">Bấm để mở buổi →</div>
-      )}
+      {td && <span className="pl-[21px] text-[11px] font-medium text-slate-400">{td.daDanh}/{td.tong}</span>}
     </button>
   )
 }
 
-// 1 HÀNG = việc của 1 NGÀY (Thùy: dễ nhìn hơn lưới ô vuông tràn ngang). Đầu hàng = thanh màu + kẻ dọc (design §259).
-function DayRow({ ngay, today, count, compact, children }: { ngay: string; today: boolean; count: number; compact?: boolean; children: React.ReactNode }) {
-  return (
-    <div>
-      <div className={`mb-2 flex items-center gap-2 border-l-4 pl-2.5 ${today ? 'border-indigo-500' : 'border-slate-300'}`}>
-        <span className="text-[15px] font-semibold text-slate-800">{thuCuaNgay(ngay)}</span>
-        <span className="text-[13px] text-slate-500">{ddmmVN(ngay)}</span>
-        {today && <span className="rounded-full bg-indigo-50 px-2 py-0.5 text-[11px] font-medium text-indigo-600">Hôm nay</span>}
-        <span className="ml-auto text-[12px] font-medium text-slate-400">{count} việc</span>
-      </div>
-      <div className={compact ? 'flex flex-col gap-1.5' : 'grid gap-2.5 [grid-template-columns:repeat(auto-fill,minmax(230px,1fr))]'}>{children}</div>
-    </div>
-  )
-}
-function TaskCard({ t, now, done, onOpenBuoi, compact }: { t: MyTask; now: number; done?: boolean; onOpenBuoi: (o: OpenBuoi) => void; compact?: boolean }) {
+function TaskCard({ t, now, done, onOpenBuoi }: { t: MyTask; now: number; done?: boolean; onOpenBuoi: (o: OpenBuoi) => void }) {
   const st = TASK_STYLE[t.tab]
   const base = done ? 'border-l-emerald-500 bg-emerald-50' : `${st.accent} bg-white`
   const onClick = () => onOpenBuoi({ id: t.buoiId, tabs: tabsCuaVai(t.vai), initialTab: t.tab, canManage: false, loai: t.loai })
-  // Mobile (Thùy 07-06): gọn 1 hàng — chỉ 2 thông tin chính (loại việc + lớp) + deadline nhỏ cuối hàng.
-  if (compact) return (
-    <button onClick={onClick} className={`flex items-center gap-2 rounded-lg border-l-4 px-2.5 py-2 text-left shadow-sm transition ${base}`}>
-      <span className="shrink-0 text-[15px]">{done ? '✓' : st.icon}</span>
-      <span className={`min-w-0 flex-1 truncate text-[13px] font-medium ${done ? 'text-emerald-700' : 'text-slate-800'}`}>{t.label} · {t.lop}</span>
-      {!done && t.deadline != null && <DeadlineBadge deadline={t.deadline} now={now} />}
-    </button>
-  )
   return (
-    <button onClick={onClick}
-      className={`flex flex-col rounded-2xl border-l-4 p-4 text-left shadow-sm transition hover:shadow-md hover:-translate-y-0.5 ${base}`}>
-      {/* dòng 1: icon + tên task (full) */}
-      <div className="flex items-center gap-2.5">
-        <span className={`inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-[18px] ${done ? 'bg-emerald-100' : st.chip}`}>{done ? '✓' : st.icon}</span>
-        <div className={`flex-1 text-[15px] font-semibold leading-snug ${done ? 'text-emerald-700' : 'text-slate-900'}`}>{t.label}</div>
+    <button onClick={onClick} className={`flex flex-col gap-0.5 rounded-lg border-l-4 px-2.5 py-2 text-left shadow-sm transition ${base}`}>
+      <div className="flex items-center gap-1.5">
+        <span className="shrink-0 text-[15px]">{done ? '✓' : st.icon}</span>
+        <span className={`min-w-0 flex-1 text-[13px] font-medium ${done ? 'text-emerald-700' : 'text-slate-800'}`}>{t.label} · {t.lop}</span>
       </div>
-      {/* dòng 2: thông tin đầy đủ */}
-      <div className="mt-2 text-[12px] text-slate-500">Lớp {t.lop} · {ddmm(t.ngay)} · {ROLE_LBL[t.vai]}</div>
-      {/* dòng cuối: deadline (1 dòng riêng) / trạng thái xong */}
-      {done ? (
-        <div className="mt-2 text-[11px] font-medium text-emerald-600">✓ Đã xong · bấm để xem / sửa</div>
-      ) : t.deadline != null ? (
-        <div className="mt-2.5"><DeadlineBadge deadline={t.deadline} now={now} /></div>
-      ) : null}
+      {!done && t.deadline != null && <div className="pl-[21px]"><DeadlineBadge deadline={t.deadline} now={now} /></div>}
     </button>
   )
 }
 // Report/Báo tan (Ops, xem opsvanhanh.ts) — card TÓM TẮT, bấm → sang màn "Report & Báo tan" (làm việc
 // thật ở đó: copy tin nhắn + chụp ảnh + đóng — không nhồi hết luồng vào đây).
 const OPS_TASK_ICON: Record<OpsTask['tab'], string> = { report: '📣', tan: '🔔' }
-function OpsExtraCard({ t, now, done, onGoLeaf, compact }: { t: OpsTask; now: number; done?: boolean; onGoLeaf: (leaf: string) => void; compact?: boolean }) {
+function OpsExtraCard({ t, now, done, onGoLeaf }: { t: OpsTask; now: number; done?: boolean; onGoLeaf: (leaf: string) => void }) {
   const base = done ? 'border-l-emerald-500 bg-emerald-50' : 'border-l-sky-400 bg-white'
-  if (compact) return (
-    <button onClick={() => onGoLeaf('ops_report')} className={`flex items-center gap-2 rounded-lg border-l-4 px-2.5 py-2 text-left shadow-sm transition ${base}`}>
-      <span className="shrink-0 text-[15px]">{done ? '✓' : OPS_TASK_ICON[t.tab]}</span>
-      <span className={`min-w-0 flex-1 truncate text-[13px] font-medium ${done ? 'text-emerald-700' : 'text-slate-800'}`}>{OPS_TASK_LABEL[t.tab]} · {t.lopTen}</span>
-      {!done && <DeadlineBadge deadline={t.deadline} now={now} />}
-    </button>
-  )
   return (
-    <button onClick={() => onGoLeaf('ops_report')} className={`flex flex-col rounded-2xl border-l-4 p-4 text-left shadow-sm transition hover:shadow-md hover:-translate-y-0.5 ${base}`}>
-      <div className="flex items-center gap-2.5">
-        <span className={`inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-[18px] ${done ? 'bg-emerald-100' : 'bg-sky-100'}`}>{done ? '✓' : OPS_TASK_ICON[t.tab]}</span>
-        <div className={`flex-1 text-[15px] font-semibold leading-snug ${done ? 'text-emerald-700' : 'text-slate-900'}`}>{OPS_TASK_LABEL[t.tab]}</div>
+    <button onClick={() => onGoLeaf('ops_report')} className={`flex flex-col gap-0.5 rounded-lg border-l-4 px-2.5 py-2 text-left shadow-sm transition ${base}`}>
+      <div className="flex items-center gap-1.5">
+        <span className="shrink-0 text-[15px]">{done ? '✓' : OPS_TASK_ICON[t.tab]}</span>
+        <span className={`min-w-0 flex-1 text-[13px] font-medium ${done ? 'text-emerald-700' : 'text-slate-800'}`}>{OPS_TASK_LABEL[t.tab]} · {t.lopTen}</span>
       </div>
-      <div className="mt-2 text-[12px] text-slate-500">Lớp {t.lopTen} · {ddmm(t.ngay)} · OPS</div>
-      {done ? (
-        <div className="mt-2 text-[11px] font-medium text-emerald-600">✓ Đã xong · bấm để xem</div>
-      ) : (
-        <div className="mt-2.5"><DeadlineBadge deadline={t.deadline} now={now} /></div>
-      )}
+      {!done && <div className="pl-[21px]"><DeadlineBadge deadline={t.deadline} now={now} /></div>}
     </button>
   )
 }
 // Chuẩn bị phòng (Ops, xem opsvanhanh.ts) — card TÓM TẮT, bấm → sang màn "Chuẩn bị phòng".
 const PREP_LUOT_LABEL: Record<string, string> = { ngay: 'Cả buổi tối', sang: 'Sáng', chieu: 'Chiều' }
-function PrepTaskCard({ t, now, done, onGoLeaf, compact }: { t: MyPrepTask; now: number; done?: boolean; onGoLeaf: (leaf: string) => void; compact?: boolean }) {
+function PrepTaskCard({ t, now, done, onGoLeaf }: { t: MyPrepTask; now: number; done?: boolean; onGoLeaf: (leaf: string) => void }) {
   const base = done ? 'border-l-emerald-500 bg-emerald-50' : 'border-l-amber-400 bg-white'
-  if (compact) return (
-    <button onClick={() => onGoLeaf('prep')} className={`flex items-center gap-2 rounded-lg border-l-4 px-2.5 py-2 text-left shadow-sm transition ${base}`}>
-      <span className="shrink-0 text-[15px]">{done ? '✓' : '🧹'}</span>
-      <span className={`min-w-0 flex-1 truncate text-[13px] font-medium ${done ? 'text-emerald-700' : 'text-slate-800'}`}>Chuẩn bị {t.phong} · {PREP_LUOT_LABEL[t.luot] ?? t.luot}</span>
-      {!done && <DeadlineBadge deadline={t.deadline} now={now} />}
+  return (
+    <button onClick={() => onGoLeaf('prep')} className={`flex flex-col gap-0.5 rounded-lg border-l-4 px-2.5 py-2 text-left shadow-sm transition ${base}`}>
+      <div className="flex items-center gap-1.5">
+        <span className="shrink-0 text-[15px]">{done ? '✓' : '🧹'}</span>
+        <span className={`min-w-0 flex-1 text-[13px] font-medium ${done ? 'text-emerald-700' : 'text-slate-800'}`}>Chuẩn bị {t.phong} · {PREP_LUOT_LABEL[t.luot] ?? t.luot}</span>
+      </div>
+      {!done && <div className="pl-[21px]"><DeadlineBadge deadline={t.deadline} now={now} /></div>}
     </button>
   )
+}
+
+// 1 NGÀY = 1 hàng: cột Ngày (Thứ + dd/mm) BÊN TRÁI + lưới card NHIỀU CỘT bên phải (Thùy 07-11: "card
+// phải như cũ chứ ko phải mỗi card biến thành 1 dòng" — card giữ đúng dạng gọn cũ, chỉ đổi vị trí nhãn
+// ngày từ THANH NGANG phía trên → CỘT dọc bên trái, đứng ngang hàng với card luôn).
+function DayRow({ ngay, today, isFuture, onToggle, children }: { ngay: string; today: boolean; isFuture: boolean; onToggle: () => void; children: React.ReactNode }) {
   return (
-    <button onClick={() => onGoLeaf('prep')} className={`flex flex-col rounded-2xl border-l-4 p-4 text-left shadow-sm transition hover:shadow-md hover:-translate-y-0.5 ${base}`}>
-      <div className="flex items-center gap-2.5">
-        <span className={`inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-[18px] ${done ? 'bg-emerald-100' : 'bg-amber-100'}`}>{done ? '✓' : '🧹'}</span>
-        <div className={`flex-1 text-[15px] font-semibold leading-snug ${done ? 'text-emerald-700' : 'text-slate-900'}`}>Chuẩn bị phòng {t.phong}</div>
+    <div className="flex gap-2.5">
+      <div className={`flex w-[62px] shrink-0 flex-col rounded-lg border-l-4 px-2 py-1.5 ${today ? 'border-indigo-500 bg-indigo-50/50' : 'border-slate-300 bg-slate-50'}`}>
+        <span className="text-[13px] font-semibold text-slate-800">{thuCuaNgay(ngay)}</span>
+        <span className="text-[11px] text-slate-500">{ddmmVN(ngay)}</span>
+        {today && <span className="mt-1 w-fit rounded-full bg-indigo-100 px-1.5 py-0.5 text-[10px] font-medium text-indigo-600">Hôm nay</span>}
+        {isFuture && <button onClick={onToggle} className="mt-1 text-left text-[10px] font-medium text-indigo-500">▾ ẩn</button>}
       </div>
-      <div className="mt-2 text-[12px] text-slate-500">{PREP_LUOT_LABEL[t.luot] ?? t.luot} · {ddmm(t.ngay)} · ca đầu {t.gioCaDau.slice(0, 5)}</div>
-      {done ? (
-        <div className="mt-2 text-[11px] font-medium text-emerald-600">✓ Đã xong · bấm để xem</div>
-      ) : (
-        <div className="mt-2.5"><DeadlineBadge deadline={t.deadline} now={now} /></div>
-      )}
-    </button>
+      <div className="grid flex-1 content-start gap-1.5 [grid-template-columns:repeat(auto-fill,minmax(220px,1fr))]">{children}</div>
+    </div>
   )
 }
 
@@ -312,8 +258,12 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
   const opsActive = opsList.filter((ba) => !opsXong(ba))
   const opsDone = opsList.filter(opsXong)
 
-  // GV/TG: việc trong TUẦN (theo ngày buổi) + filter loại.
-  const weekTasks = tasks.filter((t) => tuanCuaNgay(t.ngay) === tuan && matchLoai(t.tab))
+  // GV/TG: việc trong TUẦN + filter loại. Gom/lọc theo NGÀY DEADLINE (không phải ngày buổi/ngày tạo) —
+  // Thùy 07-11: "việc xuất hiện ở ngày 2, hạn ngày 4 thì phải hiện ở hàng ngày 4" (rõ nhất với BTVN: hạn
+  // = 2h trước ca học TIẾP THEO, có thể cách xa ngày buổi). ET/chấm bài/đánh giá/MT hạn cùng ngày/hôm sau
+  // nên không đổi hành vi; chỉ BTVN thực sự dịch ngày.
+  const ngayViec = (t: MyTask) => (t.deadline != null ? ngayCuaTs(t.deadline) : t.ngay)
+  const weekTasks = tasks.filter((t) => tuanCuaNgay(ngayViec(t)) === tuan && matchLoai(t.tab))
   const taskActive = weekTasks.filter((t) => !t.done)
   // Lịch sử "đã xong" — TẤT CẢ thời gian, gần→xa theo doneAt (20/lần). Độc lập filter tuần.
   const doneHistory = tasks.filter((t) => t.done && matchLoai(t.tab)).sort((a, b) => (b.doneAt ?? '').localeCompare(a.doneAt ?? ''))
@@ -335,14 +285,22 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
     + prepActive.filter((t) => mucDeadline(t.deadline, now) === 'sat').length
   const daXongTuan = opsDone.length + weekTasks.filter((t) => t.done).length + opsExtraDone.length + prepDone.length
 
-  // Gom việc ĐANG cần làm theo NGÀY → mỗi ngày 1 hàng (dễ nhìn hơn lưới tràn ngang). Sắp ngày tăng dần.
+  // Gom việc ĐANG cần làm theo NGÀY DEADLINE (KHÔNG phải ngày buổi/ngày tạo) → mỗi ngày 1 hàng. Sắp ngày
+  // tăng dần. opsActive (điểm danh) không có deadline riêng — hạn = chính ngày buổi nên vẫn gom theo ngay.
   const homNay = homNayVN()
   const dayMap = new Map<string, { ops: typeof opsActive; tasks: typeof taskActive; opsExtra: typeof opsExtraActive; prep: typeof prepActive }>()
   const bucket = (ngay: string) => dayMap.get(ngay) ?? { ops: [], tasks: [], opsExtra: [], prep: [] }
   for (const ba of opsActive) { const g = bucket(ba.ngay); g.ops.push(ba); dayMap.set(ba.ngay, g) }
-  for (const t of taskActive) { const g = bucket(t.ngay); g.tasks.push(t); dayMap.set(t.ngay, g) }
-  for (const t of opsExtraActive) { const g = bucket(t.ngay); g.opsExtra.push(t); dayMap.set(t.ngay, g) }
-  for (const t of prepActive) { const g = bucket(t.ngay); g.prep.push(t); dayMap.set(t.ngay, g) }
+  for (const t of taskActive) { const k = ngayViec(t); const g = bucket(k); g.tasks.push(t); dayMap.set(k, g) }
+  for (const t of opsExtraActive) { const k = ngayCuaTs(t.deadline); const g = bucket(k); g.opsExtra.push(t); dayMap.set(k, g) }
+  for (const t of prepActive) { const k = ngayCuaTs(t.deadline); const g = bucket(k); g.prep.push(t); dayMap.set(k, g) }
+  // Trong CÙNG 1 ngày, sắp thêm theo GIỜ deadline chính xác tăng dần (gần hạn nhất lên đầu) — không chỉ
+  // gom theo ngày mà bằng nhau thứ tự tuỳ ý (Thùy 07-11: "việc gần đến deadline phải ở trên").
+  for (const g of dayMap.values()) {
+    g.tasks.sort((a, b) => (a.deadline ?? Infinity) - (b.deadline ?? Infinity))
+    g.opsExtra.sort((a, b) => a.deadline - b.deadline)
+    g.prep.sort((a, b) => a.deadline - b.deadline)
+  }
   const dayGroups = [...dayMap.entries()].sort((a, b) => a[0].localeCompare(b[0]))
   const toggleXem = (ngay: string) => setXemThem((s) => { const n = new Set(s); n.has(ngay) ? n.delete(ngay) : n.add(ngay); return n })
 
@@ -379,7 +337,7 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
           {!hasActive ? (
             <div className="rounded-lg border border-emerald-200 bg-emerald-50/60 px-4 py-3 text-[13px] font-medium text-emerald-700">✓ Không còn việc vận hành cần làm trong {nhanTuan(tuan).toLowerCase()}.</div>
           ) : (
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-2.5">
               {dayGroups.map(([ngay, g]) => {
                 // Chỉ hôm nay + ngày ĐÃ QUA (còn nợ) mở sẵn — ngày tương lai gấp lại, bấm mới xem
                 // (Thùy 07-06: "chưa ẩn việc của các ngày sau" + mục tiêu "1 màn nhìn gần hết việc cần làm").
@@ -395,17 +353,12 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
                   </button>
                 )
                 return (
-                  <div key={ngay}>
-                    {isFuture && (
-                      <button onClick={() => toggleXem(ngay)} className="mb-1 text-[11px] font-medium text-indigo-500">▾ Ẩn bớt {thuCuaNgay(ngay)} {ddmmVN(ngay)}</button>
-                    )}
-                    <DayRow ngay={ngay} today={ngay === homNay} count={count} compact={isMobile}>
-                      {g.ops.map((ba) => <OpsBuoiCard key={ba.lop.id + ba.ngay} ba={ba} ngay={ba.ngay} td={ba.buoi ? tienDo[ba.buoi.id] : undefined} onOpen={onOpenBuoi} compact={isMobile} />)}
-                      {g.tasks.map((t) => <TaskCard key={t.buoiId + t.tab} t={t} now={now} onOpenBuoi={onOpenBuoi} compact={isMobile} />)}
-                      {g.opsExtra.map((t) => <OpsExtraCard key={t.tkbId + t.tab} t={t} now={now} onGoLeaf={setStaffLeaf} compact={isMobile} />)}
-                      {g.prep.map((t) => <PrepTaskCard key={t.phong + t.luot + t.ngay} t={t} now={now} onGoLeaf={setStaffLeaf} compact={isMobile} />)}
-                    </DayRow>
-                  </div>
+                  <DayRow key={ngay} ngay={ngay} today={ngay === homNay} isFuture={isFuture} onToggle={() => toggleXem(ngay)}>
+                    {g.ops.map((ba) => <OpsBuoiCard key={ba.lop.id + ba.ngay} ba={ba} ngay={ba.ngay} td={ba.buoi ? tienDo[ba.buoi.id] : undefined} onOpen={onOpenBuoi} />)}
+                    {g.tasks.map((t) => <TaskCard key={t.buoiId + t.tab} t={t} now={now} onOpenBuoi={onOpenBuoi} />)}
+                    {g.opsExtra.map((t) => <OpsExtraCard key={t.tkbId + t.tab} t={t} now={now} onGoLeaf={setStaffLeaf} />)}
+                    {g.prep.map((t) => <PrepTaskCard key={t.phong + t.luot + t.ngay} t={t} now={now} onGoLeaf={setStaffLeaf} />)}
+                  </DayRow>
                 )
               })}
             </div>
@@ -414,9 +367,9 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
           {(opsExtraDone.length > 0 || prepDone.length > 0) && (
             <details className="mt-3">
               <summary className="cursor-pointer text-[12px] font-medium text-emerald-700">✓ Đã xong report/tan/prep tuần này ({opsExtraDone.length + prepDone.length})</summary>
-              <div className={isMobile ? 'mt-2 flex flex-col gap-1.5' : 'mt-2 grid gap-2.5 [grid-template-columns:repeat(auto-fill,minmax(230px,1fr))]'}>
-                {opsExtraDone.map((t) => <OpsExtraCard key={t.tkbId + t.tab} t={t} now={now} done onGoLeaf={setStaffLeaf} compact={isMobile} />)}
-                {prepDone.map((t) => <PrepTaskCard key={t.phong + t.luot + t.ngay} t={t} now={now} done onGoLeaf={setStaffLeaf} compact={isMobile} />)}
+              <div className="mt-2 grid gap-1.5 [grid-template-columns:repeat(auto-fill,minmax(220px,1fr))]">
+                {opsExtraDone.map((t) => <OpsExtraCard key={t.tkbId + t.tab} t={t} now={now} done onGoLeaf={setStaffLeaf} />)}
+                {prepDone.map((t) => <PrepTaskCard key={t.phong + t.luot + t.ngay} t={t} now={now} done onGoLeaf={setStaffLeaf} />)}
               </div>
             </details>
           )}
@@ -424,8 +377,8 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
           {opsDone.length > 0 && (
             <details className="mt-3">
               <summary className="cursor-pointer text-[12px] font-medium text-emerald-700">✓ Đã điểm danh xong tuần này ({opsDone.length})</summary>
-              <div className={isMobile ? 'mt-2 flex flex-col gap-1.5' : 'mt-2 grid gap-2.5 [grid-template-columns:repeat(auto-fill,minmax(230px,1fr))]'}>
-                {opsDone.map((ba) => <OpsBuoiCard key={ba.lop.id + ba.ngay} ba={ba} ngay={ba.ngay} td={ba.buoi ? tienDo[ba.buoi.id] : undefined} done onOpen={onOpenBuoi} compact={isMobile} />)}
+              <div className="mt-2 grid gap-1.5 [grid-template-columns:repeat(auto-fill,minmax(220px,1fr))]">
+                {opsDone.map((ba) => <OpsBuoiCard key={ba.lop.id + ba.ngay} ba={ba} ngay={ba.ngay} td={ba.buoi ? tienDo[ba.buoi.id] : undefined} done onOpen={onOpenBuoi} />)}
               </div>
             </details>
           )}
@@ -436,8 +389,8 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
               <p className="mt-2 text-[12px] text-slate-400">Chưa có việc nào hoàn thành.</p>
             ) : (
               <>
-                <div className={isMobile ? 'mt-2 flex flex-col gap-1.5' : 'mt-2 grid gap-2.5 [grid-template-columns:repeat(auto-fill,minmax(230px,1fr))]'}>
-                  {doneHistory.slice(0, doneShown).map((t) => <TaskCard key={t.buoiId + t.tab} t={t} now={now} done onOpenBuoi={onOpenBuoi} compact={isMobile} />)}
+                <div className="mt-2 grid gap-1.5 [grid-template-columns:repeat(auto-fill,minmax(220px,1fr))]">
+                  {doneHistory.slice(0, doneShown).map((t) => <TaskCard key={t.buoiId + t.tab} t={t} now={now} done onOpenBuoi={onOpenBuoi} />)}
                 </div>
                 {doneHistory.length > doneShown && (
                   <button onClick={() => setDoneShown((n) => n + 20)} className="mt-2 rounded-md border border-slate-200 px-3 py-1.5 text-[12px] font-medium text-slate-600 hover:border-indigo-300">Mở thêm ({doneHistory.length - doneShown})</button>
@@ -554,7 +507,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'lamtailieu:et' ? <ETScreen />
       : staffLeaf === 'lamtailieu:mt' ? <MTScreen />
       : staffLeaf === 'tl' ? <KhoTaiLieuScreen />
-      : staffLeaf === 'lamtailieu:bo_tro' ? <section className="flex min-h-0 items-center justify-center p-8 text-sm text-slate-400">Loại tài liệu này dựng sau.</section>
+      : staffLeaf === 'lamtailieu:bo_tro' ? <BTScreen />
       : staffLeaf === 'hocphi' ? <HocPhiScreen />
       : staffLeaf === 'giaoviec' ? <GiaoViecScreen />
       : staffLeaf === 'db_chatluong' ? <ChatLuongVanHanhScreen />

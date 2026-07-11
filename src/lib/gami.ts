@@ -207,8 +207,12 @@ export async function xoaHSKhoiBuoi(row: { id: string; buoi_hoc_id: string; hoc_
 }
 // Đồng bộ sĩ số buổi ĐANG MỞ: THÊM HS đã ghi danh (dang_hoc, ngay_vao ≤ ngày buổi) còn THIẾU trong roster.
 // Chỉ thêm, KHÔNG xoá (buổi = snapshot; HS rời giữa chừng vẫn giữ). Vá ca: ghi danh SAU khi đã mở buổi.
+// ⭐ 07-10 (Thùy): buổi đã ĐÓNG chấm/đánh giá mà giờ có HS mới → TỰ MỞ LẠI (ingame/mt/đánh giá), y hệt
+// bấm "Mở lại" thủ công (rollback sạch Elo/EXP qua reopenPhase, không nhân đôi khi chấm lại). Trước đây
+// chỉ ET "trông như" tự đồng bộ vì hạn chót dài hơn (trưa hôm sau, so với 23:59 cùng ngày của 2 cái kia)
+// — KHÔNG phải do cơ chế khác, roster đã luôn đúng cho mọi tab; lỗ hổng là Ở CHỖ khoá theo phase.
 export async function dongBoSiSo(buoiId: string): Promise<number> {
-  const { data: b, error } = await supabase.from('buoi_hoc').select('lop_id, ngay, trang_thai').eq('id', buoiId).single()
+  const { data: b, error } = await supabase.from('buoi_hoc').select('lop_id, ngay, trang_thai, ingame_dong_at, mt_dong_at, danh_gia_xong_at').eq('id', buoiId).single()
   if (error) throw error
   if ((b as any).trang_thai === 'huy' || !(b as any).lop_id) return 0 // sync cả buổi hoan_tat (HS vào sau), chỉ bỏ huy
   const { data: hs } = await supabase.from('hoc_sinh_lop').select('hoc_sinh_id, ngay_vao').eq('lop_id', (b as any).lop_id).eq('trang_thai', 'dang_hoc').limit(LIMIT)
@@ -220,6 +224,9 @@ export async function dongBoSiSo(buoiId: string): Promise<number> {
   if (!missing.length) return 0
   const { error: eIns } = await supabase.from('buoi_hoc_hs').insert(missing.map((hsid) => ({ buoi_hoc_id: buoiId, hoc_sinh_id: hsid })))
   if (eIns) throw eIns
+  if ((b as any).ingame_dong_at) await reopenPhase(buoiId, 'ingame')
+  if ((b as any).mt_dong_at) await reopenPhase(buoiId, 'mt')
+  if ((b as any).danh_gia_xong_at) await moLaiDanhGia(buoiId)
   return missing.length
 }
 

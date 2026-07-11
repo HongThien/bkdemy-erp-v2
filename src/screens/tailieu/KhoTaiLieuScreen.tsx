@@ -35,12 +35,20 @@ export default function KhoTaiLieuScreen() {
   const myMons = me?.mons ?? []
   const [print, setPrint] = useState<{ id: string; loai: string } | null>(null)
   const [dlDoc, setDlDoc] = useState<{ id: string; loai: string } | null>(null)
+  const [linkDoc, setLinkDoc] = useState<{ id: string; loai: string; autoCopy: boolean } | null>(null) // "🔗 Lấy link" — render ẩn, CHỈ upload+link, không tải file cục bộ
+  const [linkQueue, setLinkQueue] = useState<{ id: string; loai: string }[]>([]) // hàng đợi lấy-link NỀN (backfill + làm mới sau sửa)
   const [editEt, setEditEt] = useState<ETView | null>(null) // sửa ET tại chỗ (mở ETEditor)
   const [editGt, setEditGt] = useState<string | null>(null) // sửa giáo trình/BTVN (mở TaiLieuBuilder)
   const [editDeThi, setEditDeThi] = useState<string | null>(null) // sửa đề thi (mở DeThiEditor)
   const [editMT, setEditMT] = useState<string | null>(null) // sửa MT master (mở MTEditor)
   const [phBusy, setPhBusy] = useState<string | null>(null) // id doc đang phát hành
   const [phRes, setPhRes] = useState<{ ok: boolean; msg: string; skipped?: { ma_cau: string; warn: string }[] } | null>(null)
+  const [copiedId, setCopiedId] = useState<string | null>(null) // feedback "✓ Đã copy" thoáng qua, không alert()
+  async function copyLink(url: string, id: string) {
+    await navigator.clipboard.writeText(url)
+    setCopiedId(id)
+    setTimeout(() => setCopiedId((cur) => (cur === id ? null : cur)), 2000)
+  }
   const lopTen = (id?: string | null) => lops.find((l) => l.id === id)?.ten_lop ?? '?'
 
   async function phatHanh(r: Row) {
@@ -55,9 +63,62 @@ export default function KhoTaiLieuScreen() {
 
   async function reload() {
     setLoading(true)
-    try { const [d, l] = await Promise.all([listAllTaiLieu(), listLop()]); setRows(d as Row[]); setLops(l) } finally { setLoading(false) }
+    try {
+      const [d, l] = await Promise.all([listAllTaiLieu(), listLop()])
+      setRows(d as Row[]); setLops(l)
+      return d as Row[]
+    } finally { setLoading(false) }
   }
   useEffect(() => { reload() }, []) // eslint-disable-line
+
+  // "🔗 Lấy link" — có link rồi thì copy luôn; chưa có thì dựng ẩn (headless+linkOnly) để upload+ghi
+  // file_url, xong tự copy link mới. Thùy 07-11: "link phải có TRƯỚC khi bấm tải", nên tách hẳn khỏi
+  // "⬇ Tải PDF" — bấm "Lấy link" không tạo ra file .pdf nào rơi vào Downloads.
+  function layLink(r: Row) {
+    if (r.file_url) { copyLink(r.file_url, r.id); return }
+    setLinkDoc({ id: r.id, loai: r.loai, autoCopy: true })
+  }
+  // "↻" làm mới link ĐÃ CÓ (vd sau khi sửa nội dung nơi khác, hoặc file cũ bị lỗi render) — bấm thẳng,
+  // không qua nhánh "đã có thì copy" của layLink().
+  function lamMoiLink(r: Row) {
+    setLinkDoc({ id: r.id, loai: r.loai, autoCopy: true })
+  }
+  // Hàng đợi NỀN — Thùy 07-11 (tiếp 8): "t cần lưu mọi file pdf mà", không muốn bấm từng dòng. Enqueue
+  // CHỈ 1 job/tài liệu tại 1 thời điểm (lọc trùng theo id); xử lý TUẦN TỰ (1 headless PrintView tại 1
+  // thời điểm — effect dưới) để không hâm nóng máy dựng hàng chục trang cùng lúc. KHÔNG tự copy (autoCopy
+  // false) — nền thì không được lặng lẽ ghi đè clipboard của Thùy.
+  function enqueueLink(id: string, loai: string) {
+    setLinkQueue((q) => (q.some((x) => x.id === id) || linkDoc?.id === id) ? q : [...q, { id, loai }])
+  }
+  useEffect(() => {
+    if (linkDoc || linkQueue.length === 0) return
+    const [next, ...rest] = linkQueue
+    setLinkQueue(rest)
+    setLinkDoc({ ...next, autoCopy: false })
+  }, [linkDoc, linkQueue])
+  // Watchdog CHỈ cho job NỀN (autoCopy false) — paged.js từng TREO vĩnh viễn không resolve/không lỗi
+  // (tái hiện nhiều lần trong sandbox phiên 07-11, xem DEVLOG). Job NỀN không ai đứng canh như bấm tay,
+  // nên nếu treo quá 45s thì bỏ job đó, nhường chỗ cho hàng đợi đi tiếp — không để 1 tài liệu lỗi chặn
+  // đứng backfill của TẤT CẢ tài liệu còn lại. Job bấm tay (autoCopy true) KHÔNG bị huỷ tự động — Thùy
+  // tự thấy "⏳ Đang lấy…" không xong thì tự đóng.
+  useEffect(() => {
+    if (!linkDoc || linkDoc.autoCopy) return
+    const cur = linkDoc
+    const t = setTimeout(() => setLinkDoc((now) => (now === cur ? null : now)), 45000)
+    return () => clearTimeout(t)
+  }, [linkDoc])
+  // Backfill: mọi tài liệu CHƯA có link (kể cả tài liệu mới vừa tạo) tự động được xếp hàng lấy link —
+  // không cần Thùy bấm tay từng dòng. Idempotent: doc đã có file_url thì không lọt qua filter, tự dừng.
+  useEffect(() => {
+    rows.filter((r) => !r.file_url).forEach((r) => enqueueLink(r.id, r.loai))
+  }, [rows]) // eslint-disable-line
+  async function xongLayLink() {
+    if (!linkDoc) return
+    const { id, autoCopy } = linkDoc
+    setLinkDoc(null)
+    const fresh = await reload()
+    if (autoCopy) { const row = fresh.find((x) => x.id === id); if (row?.file_url) copyLink(row.file_url, id) }
+  }
 
   // Scope MÔN: GV/Học-thuật có môn → chỉ tài liệu môn mình; admin / không-gán-môn (Media/Marketing) → thấy tất.
   const visibleRows = useMemo(() => (laAdmin || myMons.length === 0) ? rows : rows.filter((r) => myMons.includes(r.mon)), [rows, laAdmin, myMons])
@@ -81,18 +142,21 @@ export default function KhoTaiLieuScreen() {
     else setEditGt(r.id)
   }
   // Đổi TÊN FILE ngay tại kho (= tai_lieu.ten, cột hiển thị) — khỏi vào builder (builder có ô tên buổi riêng dễ nhầm).
+  // Tên cũng in RA TRÊN trang (tiêu đề + header/footer) → đổi tên = đổi nội dung PDF → phải làm mới link.
   async function doiTen(r: Row) {
     const ten = prompt('Đổi tên tài liệu (tên hiển thị trong kho):', r.ten)?.trim()
     if (!ten || ten === r.ten) return
     await updateTaiLieu(r.id, { ten })
     reload()
+    enqueueLink(r.id, r.loai)
   }
 
-  // Sửa tại chỗ: mở builder full-screen, đóng → tải lại bảng.
-  if (editEt) return <ETEditor et={editEt} onClose={() => { setEditEt(null); reload() }} />
-  if (editGt) return <TaiLieuBuilder id={editGt} onClose={() => { setEditGt(null); reload() }} />
-  if (editDeThi) return <DeThiEditor id={editDeThi} onClose={() => { setEditDeThi(null); reload() }} />
-  if (editMT) return <MTEditor id={editMT} onClose={() => { setEditMT(null); reload() }} />
+  // Sửa tại chỗ: mở builder full-screen, đóng → tải lại bảng + LÀM MỚI link nền (nội dung vừa đổi, link
+  // cũ giờ lỗi thời — Thùy 07-11 tiếp 8: "t cần lưu mọi file pdf", tự làm mới chứ không đợi bấm lại).
+  if (editEt) return <ETEditor et={editEt} onClose={() => { const id = editEt.id; setEditEt(null); reload(); enqueueLink(id, 'et') }} />
+  if (editGt) return <TaiLieuBuilder id={editGt} onClose={() => { const id = editGt; setEditGt(null); reload(); enqueueLink(id, 'giao_trinh') }} />
+  if (editDeThi) return <DeThiEditor id={editDeThi} onClose={() => { const id = editDeThi; setEditDeThi(null); reload(); enqueueLink(id, 'de_thi') }} />
+  if (editMT) return <MTEditor id={editMT} onClose={() => { const id = editMT; setEditMT(null); reload(); enqueueLink(id, 'mt') }} />
 
   const tab = (on: boolean) => `h-7 rounded-md px-2.5 text-xs font-semibold transition ${on ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`
   return (
@@ -149,7 +213,17 @@ export default function KhoTaiLieuScreen() {
                             </button>
                           )}
                           <button onClick={() => setPrint({ id: r.id, loai: r.loai })} className="rounded-md bg-indigo-600 px-2.5 py-1 text-[12px] font-medium text-white hover:bg-indigo-500">🖨 In</button>
-                          <button onClick={() => setDlDoc({ id: r.id, loai: r.loai })} className="rounded-md border border-indigo-300 px-2.5 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-50">⬇ Tải PDF</button>
+                          {/* Bỏ qua bước xem thử, mở thẳng hộp thoại in (bản Học sinh mặc định) — Thùy
+                              07-11: đổi hẳn từ html2canvas tự vẽ lại (hay lỗi) sang NATIVE print. */}
+                          <button onClick={() => setDlDoc({ id: r.id, loai: r.loai })} className="rounded-md border border-indigo-300 px-2.5 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-50">🖨 In nhanh</button>
+                          <button onClick={() => layLink(r)} disabled={linkDoc?.id === r.id} title={r.file_url ?? 'Đang tự tạo link ở nền…'}
+                            className="rounded-md border border-sky-300 px-2.5 py-1 text-[12px] font-medium text-sky-700 hover:bg-sky-50 disabled:opacity-40">
+                            {linkDoc?.id === r.id ? '⏳ Đang lấy…' : copiedId === r.id ? '✓ Đã copy' : r.file_url ? '🔗 Copy link' : (linkQueue.some((x) => x.id === r.id) ? '⏳ Chờ xếp hàng…' : '🔗 Lấy link')}
+                          </button>
+                          {r.file_url && (
+                            <button onClick={() => lamMoiLink(r)} disabled={linkDoc?.id === r.id} title="Tạo lại link (dùng khi nội dung vừa đổi ở nơi khác hoặc file cũ bị lỗi)"
+                              className="rounded-md border border-slate-200 px-2 py-1 text-[12px] text-slate-400 hover:border-sky-300 hover:text-sky-600 disabled:opacity-40">↻</button>
+                          )}
                           <button onClick={() => nhanBan(r)} className="rounded-md border border-slate-200 px-2.5 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-300">Nhân bản</button>
                           <button onClick={async () => { if (confirm(`Xoá “${r.ten}”?`)) { await deleteTaiLieu(r.id); reload() } }} className="rounded-md border border-slate-200 px-2.5 py-1 text-[12px] text-slate-400 hover:border-rose-300 hover:text-rose-600">Xoá</button>
                         </div>
@@ -163,21 +237,33 @@ export default function KhoTaiLieuScreen() {
       </div>
 
       {print && (print.loai === 'et'
-        ? <ETPrintView id={print.id} onClose={() => setPrint(null)} />
+        ? <ETPrintView id={print.id} onClose={() => { setPrint(null); reload() }} />
         : print.loai === 'de_thi'
-        ? <DeThiPrintView id={print.id} onClose={() => setPrint(null)} />
+        ? <DeThiPrintView id={print.id} onClose={() => { setPrint(null); reload() }} />
         : print.loai === 'mt' || print.loai === 'mt_buoi'
-        ? <MTPrintView id={print.id} onClose={() => setPrint(null)} />
-        : <PrintView id={print.id} onClose={() => setPrint(null)} />)}
+        ? <MTPrintView id={print.id} onClose={() => { setPrint(null); reload() }} />
+        : <PrintView id={print.id} onClose={() => { setPrint(null); reload() }} />)}
 
-      {/* Tải PDF THẲNG từ hàng (headless: dựng ẩn → tải → tự đóng), không mở preview. */}
+      {/* "🖨 In nhanh" từ hàng (headless: dựng ẩn → mở hộp thoại in NATIVE → đóng khi hộp thoại đóng),
+          không mở preview. KHÔNG còn ghi file_url (đó là việc riêng của "🔗 Lấy link" — xem dưới). */}
       {dlDoc && (dlDoc.loai === 'et'
-        ? <ETPrintView id={dlDoc.id} headless onClose={() => setDlDoc(null)} />
+        ? <ETPrintView id={dlDoc.id} headless onClose={() => { setDlDoc(null); reload() }} />
         : dlDoc.loai === 'de_thi'
-        ? <DeThiPrintView id={dlDoc.id} headless onClose={() => setDlDoc(null)} />
+        ? <DeThiPrintView id={dlDoc.id} headless onClose={() => { setDlDoc(null); reload() }} />
         : dlDoc.loai === 'mt' || dlDoc.loai === 'mt_buoi'
-        ? <MTPrintView id={dlDoc.id} headless onClose={() => setDlDoc(null)} />
-        : <PrintView id={dlDoc.id} headless onClose={() => setDlDoc(null)} />)}
+        ? <MTPrintView id={dlDoc.id} headless onClose={() => { setDlDoc(null); reload() }} />
+        : <PrintView id={dlDoc.id} headless onClose={() => { setDlDoc(null); reload() }} />)}
+
+      {/* "🔗 Lấy link" — dựng ẩn CHỈ để upload+ghi file_url (linkOnly: KHÔNG pdf.save(), không rơi file
+          vào Downloads). autoCopy=true (bấm tay) mới copy vào clipboard; autoCopy=false (hàng đợi nền —
+          backfill/làm mới sau sửa) chỉ âm thầm cập nhật file_url, KHÔNG đụng clipboard của Thùy. */}
+      {linkDoc && (linkDoc.loai === 'et'
+        ? <ETPrintView id={linkDoc.id} headless linkOnly onClose={xongLayLink} />
+        : linkDoc.loai === 'de_thi'
+        ? <DeThiPrintView id={linkDoc.id} headless linkOnly onClose={xongLayLink} />
+        : linkDoc.loai === 'mt' || linkDoc.loai === 'mt_buoi'
+        ? <MTPrintView id={linkDoc.id} headless linkOnly onClose={xongLayLink} />
+        : <PrintView id={linkDoc.id} headless linkOnly onClose={xongLayLink} />)}
 
       {phRes && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 px-4" onClick={() => setPhRes(null)}>

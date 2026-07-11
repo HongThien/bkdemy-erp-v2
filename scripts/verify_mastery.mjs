@@ -4,7 +4,7 @@ import { masteryOfDang, masteryOfHS, summarizeDang, RESULT_VALUE } from '../src/
 let fail = 0
 const ok = (cond, msg) => { if (!cond) { console.error('✗', msg); fail++ } else console.log('✓', msg) }
 const near = (a, b, t = 1e-9) => Math.abs(a - b) <= t
-const M = (value, t) => ({ value, t }) // t = ngày ISO cho dễ đọc
+const M = (value, t, src) => ({ value, t, src }) // t = ngày ISO cho dễ đọc
 
 // ── chưa-đo ──
 ok(masteryOfDang([]) === null, 'rỗng → null (chưa-đo, KHÔNG phải 0)')
@@ -30,6 +30,13 @@ const recency = masteryOfDang([
 ])
 ok(near(recency.score, 1) && recency.muc === 'dat', 'recency: 5 mới đúng đè 3 cũ sai → đạt')
 ok(recency.n === 8, 'độ tin = TỔNG lần đo (8), không phải window (5)')
+
+// ── trọng số theo nguồn đo (Thùy chốt: btvn/bt=1 · ingame/et/dg=2 · mt=3) ──
+const w = masteryOfDang([M(0.5, 'a', 'btvn'), M(1, 'b', 'mt')])
+ok(near(w.score, 0.875) && w.muc === 'dat', 'weighted: btvn(w1)+mt(w3) → 0.875 đạt (≠ flat mean 0.75 cần luyện)')
+const w2 = masteryOfDang([M(1, 'a', 'ingame'), M(0, 'b', 'et'), M(1, 'c', 'dg')])
+ok(near(w2.score, 2 / 3), 'ingame/et/dg cùng weight=2 → như flat mean giữa chúng')
+ok(near(masteryOfDang([M(1, 'a')]).score, 1), 'không có src → fallback weight=1 (tương thích test cũ)')
 
 // ── độ tin theo cỡ mẫu ──
 ok(masteryOfDang([M(1, 'a')]).tin === 'thap', 'n=1 → tin thấp')

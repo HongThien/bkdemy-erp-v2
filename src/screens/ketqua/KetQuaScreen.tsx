@@ -310,7 +310,7 @@ function Slot({ e }: { e: DangEval }) {
   const icon = e.value >= 1 ? '✓' : e.value > 0 ? '◐' : '✗'
   const cls = e.value >= 1 ? 'bg-emerald-500/15 text-emerald-600' : e.value > 0 ? 'bg-amber-500/15 text-amber-600' : 'bg-rose-500/15 text-rose-600'
   return (
-    <div className="flex w-8 shrink-0 flex-col items-center gap-0.5" title={`${SRC_LABEL[e.src]} · ${fmtShort(e.t)} · ${e.value}`}>
+    <div className="flex w-10 shrink-0 flex-col items-center gap-0.5" title={`${SRC_LABEL[e.src]} · ${fmtShort(e.t)} · ${e.value}`}>
       <span className={`flex h-6 w-6 items-center justify-center rounded-full text-[12px] font-bold ${cls}`}>{icon}</span>
       <span className="text-[10px] font-bold leading-none text-slate-700">{SRC_LABEL[e.src]}</span>
       <span className="text-[9px] font-medium leading-none text-slate-500">{fmtShort(e.t)}</span>
@@ -325,7 +325,7 @@ function Legend() {
       <span className="flex items-center gap-1"><span className="text-amber-600">◐</span> chưa đạt (½)</span>
       <span className="flex items-center gap-1"><span className="text-rose-600">✗</span> sai (0)</span>
       <span className="text-slate-400">|</span>
-      <span>Nguồn: IG = chấm bài trên lớp · ET = kiểm tra cuối giờ · MT = kiểm tra tháng · ĐG = đánh giá GV · BT = BTVN</span>
+      <span>Nguồn: IG = chấm bài trên lớp · ET = kiểm tra cuối giờ · MT = kiểm tra tháng · ĐG = đánh giá GV · BT = bổ trợ tự luyện · BTVN = bài tập về nhà (tham khảo)</span>
     </div>
   )
 }
