@@ -31,7 +31,8 @@ export function etFormOf(c: { ma_cau: string; loai_cau: string; lua_chon?: strin
   if (c.lua_chon && c.lua_chon.length) return 'trac_nghiem'      // mặc định: có phương án → trắc nghiệm
   return c.loai_cau === 'tu_luan' ? 'tu_luan' : 'tra_loi_ngan'   // còn lại theo kho, default trả lời ngắn
 }
-export type TaiLieu = { id: string; loai: string; ten: string; khoi: string; mon: string; ma_chuyen_de: string | null; theme: string; cau_hinh?: CauHinh; created_at?: string; updated_at?: string; created_by?: string | null }
+// file_url = link PDF public (bucket 'kho-tailieu') của bản export GẦN NHẤT — ghi đè mỗi lần "🔗 Lấy link" (uploadPagesAsLink, PrintView.tsx). "🖨 In / Xuất PDF" giờ dùng native window.print(), không upload.
+export type TaiLieu = { id: string; loai: string; ten: string; khoi: string; mon: string; ma_chuyen_de: string | null; theme: string; cau_hinh?: CauHinh; created_at?: string; updated_at?: string; created_by?: string | null; file_url?: string | null }
 // kieu = KIỂU HIỂN THỊ của block (phan): 'thuong'(1 cột) | '2cot' | '3cot' | '4cot' | … (registry mở rộng). Câu giữ ma_dang.
 export type BlockKieu = 'thuong' | '2cot' | '3cot' | '4cot'
 export const BLOCK_KIEU: { v: BlockKieu; lbl: string; cols: number }[] = [
@@ -82,6 +83,12 @@ export async function updateTaiLieu(id: string, patch: Partial<Pick<TaiLieu, 'te
 }
 export async function deleteTaiLieu(id: string): Promise<void> {
   const { error } = await supabase.from('tai_lieu').delete().eq('id', id) // cascade phan + cau
+  if (error) throw error
+}
+// Ghi link PDF public sau khi "🔗 Lấy link" upload lên Storage xong (uploadPagesAsLink, PrintView.tsx).
+// KHÔNG đụng updated_at — đây là tác dụng phụ của xuất-file, không phải người dùng sửa nội dung tài liệu.
+export async function setTaiLieuFileUrl(id: string, fileUrl: string): Promise<void> {
+  const { error } = await supabase.from('tai_lieu').update({ file_url: fileUrl }).eq('id', id)
   if (error) throw error
 }
 

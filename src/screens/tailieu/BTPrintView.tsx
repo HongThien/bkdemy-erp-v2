@@ -8,7 +8,7 @@ import { getTaiLieuFull, etFormOf, DEFAULT_BTVN_LINES, type TaiLieuFull, type Ph
 import { getBT, type BT } from '../../lib/bt'
 import type { CauHoi } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
-import { CauItem, CauList, OptGrid, GvAnswer, WriteLines, splitStem, CHROME_CSS, buildPagedCss, downloadPagesPdf, pageChrome } from './PrintView'
+import { CauItem, CauList, OptGrid, GvAnswer, WriteLines, splitStem, CHROME_CSS, buildPagedCss, printWithFilename } from './PrintView'
 
 export default function BTPrintView({ id, onClose }: { id: string; onClose: () => void }) {
   const [bt, setBt] = useState<BT | null>(null)
@@ -17,8 +17,6 @@ export default function BTPrintView({ id, onClose }: { id: string; onClose: () =
   const [gv, setGv] = useState(false)
   const [pages, setPages] = useState(0)
   const [rendering, setRendering] = useState(true)
-  const [dl, setDl] = useState(false)
-  const [dlErr, setDlErr] = useState<string | null>(null)
   const srcRef = useRef<HTMLDivElement>(null)
   const dstRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
@@ -33,28 +31,24 @@ export default function BTPrintView({ id, onClose }: { id: string; onClose: () =
     const css = buildPagedCss(full.taiLieu, ch, ch.mau || '#7c3aed') + BT_CSS
     const cssUrl = URL.createObjectURL(new Blob([css], { type: 'text/css' }))
     const html = srcRef.current.innerHTML
+    // Race-safe: KHÔNG xoá DOM của container cũ (rút DOM giữa lúc paged.js còn đo layout dở → sinh trang
+    // CHẠY LOẠN — xem DEVLOG 07-11). Run mới có container RIÊNG; resolve xong mới ẨN container khác (để
+    // xem thử/in native không dính trang cũ chồng lên).
     const dst = dstRef.current
     const container = document.createElement('div')
     dst.appendChild(container)
     new Previewer().preview(html, [cssUrl], container)
       .then((flow: { total?: number }) => {
-        if (cancelled) { container.remove(); return }
-        Array.from(dst.children).forEach((c) => { if (c !== container) c.remove() })
+        if (cancelled) { container.style.display = 'none'; return }
+        Array.from(dst.children).forEach((c) => { if (c !== container) (c as HTMLElement).style.display = 'none' })
         setPages(flow?.total ?? 0); setRendering(false)
       })
-      .catch(() => { container.remove(); if (!cancelled) setRendering(false) })
+      .catch(() => { container.style.display = 'none'; if (!cancelled) setRendering(false) })
       .finally(() => URL.revokeObjectURL(cssUrl))
     return () => { cancelled = true }
   }, [full, gv])
 
   const seg = (on: boolean) => `rounded-md px-3 py-1 text-[13px] font-medium transition ${on ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`
-  async function taiPdf() {
-    if (!dstRef.current || !full || !bt) return
-    setDl(true); setDlErr(null)
-    try { await downloadPagesPdf(dstRef.current, `${bt.hoc_sinh?.ho_ten ?? ''} - ${full.taiLieu.ten}${gv ? ' - Bản GV' : ''}`, pageChrome(full.taiLieu, full.taiLieu.cau_hinh ?? {})) }
-    catch (e) { setDlErr('Tải PDF lỗi: ' + (e instanceof Error ? e.message : String(e))) }
-    finally { setDl(false) }
-  }
 
   return createPortal(
     <div className="pv-overlay fixed inset-0 z-[80] flex flex-col bg-slate-300/90">
@@ -65,10 +59,9 @@ export default function BTPrintView({ id, onClose }: { id: string; onClose: () =
           <button onClick={() => setGv(true)} className={seg(gv)}>Bản giáo viên</button>
         </div>
         <span className="text-[12px] text-slate-400">{rendering ? 'đang dựng trang…' : `${pages} trang`}</span>
-        {dlErr && <span className="text-[12px] text-rose-600">{dlErr}</span>}
         <div className="ml-auto flex gap-2">
-          <button onClick={taiPdf} disabled={rendering || dl} className="rounded-md border border-indigo-300 bg-white px-3 py-1.5 text-sm font-medium text-indigo-700 shadow-sm hover:bg-indigo-50 disabled:opacity-40">{dl ? '⏳ Đang tạo…' : '⬇ Tải PDF'}</button>
-          <button onClick={() => window.print()} disabled={rendering} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">🖨 In</button>
+          {/* "⬇ Tải PDF" cũ (html2canvas) đã BỎ — Thùy 07-11: dùng NATIVE print, đúng engine trình duyệt. */}
+          <button onClick={() => printWithFilename(`${bt?.hoc_sinh?.ho_ten ?? ''} - ${full?.taiLieu.ten ?? ''}${gv ? ' - Bản GV' : ''}`)} disabled={rendering} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">🖨 In / Xuất PDF</button>
           <button onClick={onClose} className="rounded-md border border-slate-300 px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-100">Đóng</button>
         </div>
       </div>

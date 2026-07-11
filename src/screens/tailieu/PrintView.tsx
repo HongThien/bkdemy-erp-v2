@@ -1,20 +1,42 @@
 import { Children, useEffect, useRef, useState, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
-import { getTaiLieuFull, DEFAULT_BTVN_LINES, kieuCols, type TaiLieuFull, type PhanResolved } from '../../lib/tailieu'
+import { getTaiLieuFull, setTaiLieuFileUrl, DEFAULT_BTVN_LINES, kieuCols, type TaiLieuFull, type PhanResolved } from '../../lib/tailieu'
 import type { CauHinh } from '../../lib/tailieu'
 import { listLop } from '../../lib/nhansu'
 import { MathText } from '../kho/ui'
+import { uploadKhoFile } from '../../lib/kho/api'
 import type { CauHoi } from '../../lib/kho/api'
 
 // Tên file an toàn Windows (bỏ \ / : * ? " < > | và khoảng trắng thừa).
 export function safeFileName(s: string): string {
   return (s || 'tai-lieu').replace(/[\\/:*?"<>|]/g, '').replace(/\s+/g, ' ').trim().slice(0, 120) || 'tai-lieu'
 }
+// Thùy 07-11: native print "không khác gì bấm in thủ công" nếu vẫn phải tự gõ tên file trong hộp thoại.
+// Chromium (kể cả Microsoft Print to PDF) lấy document.title làm tên file GỢI Ý mặc định trong hộp thoại
+// lưu — đổi title ngay trước khi print(), khôi phục lại sau khi hộp thoại đóng (`afterprint`, bắn dù bấm
+// lưu hay huỷ) để không lộ tên file ra tiêu đề tab thật.
+export function printWithFilename(filename: string) {
+  const prev = document.title
+  document.title = safeFileName(filename)
+  const restore = () => { document.title = prev; window.removeEventListener('afterprint', restore) }
+  window.addEventListener('afterprint', restore)
+  window.print()
+}
 const escHtml = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 // Chèn header/footer bằng PHẦN TỬ THẬT vào bản clone của html2canvas (tắt ::before/::after gốc).
 // LÝ DO: html2canvas KHÔNG rasterize nổi background NHIỀU LỚP trên pseudo-element (logo+chip+wave) → header trắng,
 // chữ trắng thành mờ (§367). Phần tử thật + <img> logo + 1 wave đơn thì html2canvas chụp chuẩn.
+// ⭐ 07-11 (tiếp 8, Thùy báo lại kèm file PDF thật): dải SÓNG vẫn lỗi dù đã đổi logo/chip sang <img> —
+// dải màu chỉ hiện ở phần trên cùng (~1/3 chiều cao) rồi TRẮNG hẳn, chữ (canh giữa theo CHIỀU CAO ĐẦY ĐỦ
+// của khối) rơi vào vùng trắng đó → chỉ còn thấy bóng đổ (text-shadow) mờ mờ, KHÔNG thấy chữ trắng thật.
+// ROOT CAUSE: dải sóng vẫn đặt qua CSS `background:url(...) center/100% 100%` — html2canvas rasterize
+// data-URI SVG làm CSS background KHÔNG tôn trọng `100% 100%` (bỏ qua backgroundSize, dùng kích thước
+// "tự nhiên" của SVG theo tỉ lệ viewBox 1200:100 thay vì kéo giãn theo khối chứa) → dải sóng bị nén dẹt
+// lại rất thấp so với khối 18mm/15mm. ĐÚNG bài học đã ghi ở comment trên (background nhiều lớp lỗi) —
+// chỉ mới sửa được logo/chip (đã là <img>), CHƯA sửa chính dải sóng (vẫn còn background). Fix: dải sóng
+// cũng chuyển hẳn sang <img> (position:absolute;inset:0;width/height:100%) — html2canvas render <img>
+// đáng tin cậy hơn hẳn CSS background theo mọi bằng chứng đã thấy trong phiên này.
 function injectChrome(doc: Document, cr: PageChrome) {
   const st = doc.createElement('style')
   st.textContent = '.pagedjs_pagebox::before,.pagedjs_pagebox::after{content:none!important;background:none!important}'
@@ -23,22 +45,32 @@ function injectChrome(doc: Document, cr: PageChrome) {
     const box = pb as HTMLElement
     if (cr.head) {
       const h = doc.createElement('div')
-      h.style.cssText = `position:absolute;top:0;left:0;right:0;height:18mm;background:url("${cr.headUri}") center/100% 100% no-repeat;display:flex;align-items:center;justify-content:flex-end;padding:0 10mm;box-sizing:border-box;color:#fff;font:700 11px/1 'Times New Roman',serif;text-shadow:0 1px 2px rgba(0,0,0,.25);z-index:1`
-      h.innerHTML = `<img src="${cr.chipUri}" style="position:absolute;left:4.5mm;top:1.5mm;width:42mm;height:9mm"/><img src="${cr.logoUrl}" crossorigin="anonymous" style="position:absolute;left:8mm;top:3.5mm;height:5mm"/><span>${escHtml(cr.headText)}</span>`
+      h.style.cssText = `position:absolute;top:0;left:0;right:0;height:18mm;overflow:hidden;z-index:1`
+      h.innerHTML = `<img src="${cr.headUri}" style="position:absolute;inset:0;width:100%;height:100%;display:block"/><img src="${cr.chipUri}" style="position:absolute;left:4.5mm;top:1.5mm;width:42mm;height:9mm"/><img src="${cr.logoUrl}" crossorigin="anonymous" style="position:absolute;left:8mm;top:3.5mm;height:5mm"/><span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:flex-end;padding:0 10mm;box-sizing:border-box;color:#fff;font:700 11px/1 'Times New Roman',serif;text-shadow:0 1px 2px rgba(0,0,0,.25)">${escHtml(cr.headText)}</span>`
       box.insertBefore(h, box.firstChild) // trước margin-box số trang → số trang vẫn nổi trên
     }
     if (cr.foot) {
       const f = doc.createElement('div')
-      f.style.cssText = `position:absolute;bottom:0;left:0;right:0;height:15mm;background:url("${cr.footUri}") center/100% 100% no-repeat;display:flex;align-items:center;justify-content:center;box-sizing:border-box;color:#fff;font:700 11px 'Times New Roman',serif;text-shadow:0 1px 3px rgba(0,0,0,.35);z-index:1${cr.footPre ? ';white-space:pre' : ''}`
-      f.textContent = cr.footText
+      f.style.cssText = `position:absolute;bottom:0;left:0;right:0;height:15mm;overflow:hidden;z-index:1`
+      f.innerHTML = `<img src="${cr.footUri}" style="position:absolute;inset:0;width:100%;height:100%;display:block"/><span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:0 16mm;box-sizing:border-box;color:#fff;font:700 11px 'Times New Roman',serif;text-shadow:0 1px 3px rgba(0,0,0,.35)${cr.footPre ? ';white-space:pre' : ''}">${escHtml(cr.footText)}</span>`
       box.insertBefore(f, box.firstChild)
     }
   })
 }
-// Tải các TRANG paged.js (đã render trong `dst`) thành 1 file PDF A4 tải thẳng về máy (không qua hộp thoại in).
-// Rasterize từng trang bằng html2canvas-pro (bản CHỊU oklch của Tailwind v4 — bản gốc ném lỗi, §367) → jsPDF.
-// Lazy-import để KHÔNG phình bundle chính (chỉ nạp khi bấm tải).
-export async function downloadPagesPdf(dst: HTMLElement, filename: string, chrome?: PageChrome): Promise<void> {
+// ⭐ 07-11 — QUYẾT ĐỊNH KIẾN TRÚC (Thùy chốt sau nhiều lần lỗi rám chữ/nhân bản trang): "⬇ Tải PDF"
+// (tải file cục bộ) KHÔNG còn tự dựng file qua html2canvas nữa — đổi thẳng sang `window.print()`
+// (NATIVE, xem hàm `inNative` + headless effect) = ĐÚNG engine trình duyệt (giống hệt "Microsoft Print
+// to PDF" Thùy đã xác nhận đẹp), không còn 1 dòng JS nào tự vẽ lại trang. Lý do html2canvas hay lỗi:
+// nó là 1 thư viện JS RE-IMPLEMENT việc chụp màn hình (không phải engine in thật của trình duyệt) —
+// chạy SONG SONG/đua với paged.js (thư viện phân trang, cũng chỉ là JS polyfill) → 2 thứ JS độc lập dễ
+// lệch nhau (đúng nguồn gốc bug rám chữ + nhân bản trang). `window.print()` thì lấy THẲNG state DOM đã
+// ổn định, do chính trình duyệt render — không có khâu "vẽ lại" nào để lệch. Đánh đổi DUY NHẤT: cần 1
+// bước chọn đích trong hộp thoại in (không còn "1-click, không hộp thoại") — chấp nhận được, đổi lấy
+// ĐỘ TIN CẬY thay vì tự vẽ lại và có thể sai.
+// Hàm dưới đây (uploadPagesAsLink) GIỜ CHỈ CÒN 1 NHIỆM VỤ: dựng PDF qua html2canvas để có 1 FILE BLOB
+// upload lên Storage cho action "🔗 Lấy link" — bắt buộc phải tự dựng (không dùng native print được) vì
+// link cần tạo ẨN, không hộp thoại, không phụ thuộc Thùy có ở máy lúc đó hay không.
+export async function uploadPagesAsLink(dst: HTMLElement, filename: string, chrome: PageChrome | undefined, taiLieuId: string): Promise<string> {
   const [h2cMod, jspdfMod] = await Promise.all([import('html2canvas-pro'), import('jspdf')])
   const html2canvas = h2cMod.default
   const pages = Array.from(dst.querySelectorAll('.pagedjs_page')) as HTMLElement[]
@@ -54,14 +86,19 @@ export async function downloadPagesPdf(dst: HTMLElement, filename: string, chrom
       onclone: chrome ? (doc: Document) => injectChrome(doc, chrome) : undefined,
     })
     if (i > 0) pdf.addPage()
-    pdf.addImage(canvas.toDataURL('image/jpeg', 0.9), 'JPEG', 0, 0, 210, 297)
+    // PNG (KHÔNG JPEG) — JPEG nén mất-dữ-liệu làm rám/vỡ viền chữ nhỏ trên nền nhiều màu (header/footer).
+    pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 210, 297)
   }
-  pdf.save(safeFileName(filename) + '.pdf')
+  const outName = safeFileName(filename) + '.pdf'
+  const blob = pdf.output('blob') as Blob
+  const { url } = await uploadKhoFile(new File([blob], outName, { type: 'application/pdf' }))
+  await setTaiLieuFileUrl(taiLieuId, url)
+  return url
 }
 
 // headless = KHÔNG hiện preview, tự dựng trang ẩn → tải PDF → đóng (nút "⬇ Tải" ngay ở hàng Kho tài liệu).
 // onlyBuoiId = chỉ render 1 BUỔI (nút "👁 Xem buổi" ở Builder) — kiểm tra nhanh, khỏi cuộn cả giáo trình.
-export default function PrintView({ id, onClose, headless, onlyBuoiId }: { id: string; onClose: () => void; headless?: boolean; onlyBuoiId?: string }) {
+export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly }: { id: string; onClose: () => void; headless?: boolean; onlyBuoiId?: string; linkOnly?: boolean }) {
   const [full, setFull] = useState<TaiLieuFull | null>(null)
   const [err, setErr] = useState<string | null>(null)
   const [gv, setGv] = useState(false) // false = bản HS · true = bản GV
@@ -71,9 +108,10 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId }: { id: s
   const [pages, setPages] = useState(0)
   const [rendering, setRendering] = useState(true)
   const [renderErr, setRenderErr] = useState<string | null>(null)
-  const [dl, setDl] = useState(false)
+  const [, setDl] = useState(false) // "đang lấy link" — chỉ đọc trong headless linkOnly, nút "⬇ Tải PDF" đã bỏ
   const srcRef = useRef<HTMLDivElement>(null)
   const dstRef = useRef<HTMLDivElement>(null)
+  const activeContainerRef = useRef<HTMLElement | null>(null)
   const [lopTen, setLopTen] = useState('') // tên lớp cho header phiếu BTVN (taiLieu chỉ có lop_id)
   useEffect(() => { getTaiLieuFull(id).then(setFull).catch((e) => setErr(e.message ?? String(e))) }, [id])
   // Doc 'btvn' (trích xuất) → chỉ có phần BTVN → mặc định scope BTVN.
@@ -103,33 +141,41 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId }: { id: s
     const css = buildPagedCss(full.taiLieu, ch, ch.mau || '#E91E8C', cssOpts)
     const cssUrl = URL.createObjectURL(new Blob([css], { type: 'text/css' }))
     const html = srcRef.current.innerHTML
-    // Race-safe: mỗi lần render vào CONTAINER RIÊNG (append live để paged.js đo layout).
-    // Deps đổi nhanh (vd giao_trinh_buoi: lopTen resolve SAU full → effect chạy 2 lần) làm 2 Previewer
-    //   chạy chồng lên cùng node → trang NHÂN ĐÔI (4→8). Fix: run cũ (cancelled) tự xoá container của nó
-    //   khi resolve; run mới xoá mọi container stale còn sót → luôn CHỈ 1 bản.
+    // Race-safe: mỗi lần render vào CONTAINER RIÊNG (append live để paged.js đo layout). KHÔNG xoá DOM
+    // container cũ khi bắt đầu run mới (đã thử — rút DOM giữa lúc paged.js Previewer còn đo layout dở
+    // của run TRƯỚC khiến nó sinh trang CHẠY LOẠN, case thật: tài liệu vài trang tải ra 200-400 trang/
+    // 20-40MB, xem DEVLOG 07-11). Thay vào đó: resolve xong mới ẨN (display:none, KHÔNG remove) container
+    // khác + trỏ activeContainerRef — tải/in luôn theo activeContainerRef, không quét cả dstRef.
     const dst = dstRef.current
     const container = document.createElement('div')
     dst.appendChild(container)
     new Previewer().preview(html, [cssUrl], container)
       .then((flow: { total?: number }) => {
-        if (cancelled) { container.remove(); return } // stale (deps đã đổi) → vứt, không đụng state
-        Array.from(dst.children).forEach((c) => { if (c !== container) c.remove() }) // dọn container run trước
+        if (cancelled) { container.style.display = 'none'; return } // stale (deps đã đổi) → ẩn, không đụng state
+        Array.from(dst.children).forEach((c) => { if (c !== container) (c as HTMLElement).style.display = 'none' })
+        activeContainerRef.current = container
         setPages(flow?.total ?? 0); setRendering(false)
       })
-      .catch((e: unknown) => { container.remove(); if (!cancelled) { setRenderErr(e instanceof Error ? e.message : String(e)); setRendering(false) } })
+      .catch((e: unknown) => { container.style.display = 'none'; if (!cancelled) { setRenderErr(e instanceof Error ? e.message : String(e)); setRendering(false) } })
       .finally(() => URL.revokeObjectURL(cssUrl))
     return () => { cancelled = true }
   }, [full, gv, scope, lopTen, onlyBuoiId])
 
   const seg = (on: boolean) => `rounded-md px-3 py-1 text-[13px] font-medium transition ${on ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`
 
-  // Tải thẳng file PDF về máy (không qua hộp thoại in) từ các trang đã dựng.
-  async function taiPdf() {
-    if (!dstRef.current || !full) return
-    setDl(true); setRenderErr(null)
+  // Tên file DÙNG CHUNG cho "🖨 In / Xuất PDF" (title gợi ý hộp thoại) và "🔗 Lấy link" (tên file Storage)
+  // — 2 đường xuất khác engine nhưng phải ra CÙNG 1 TÊN, không lệch nhau.
+  function printFileName() {
     const scopeSuffix = scope === 'btvn' ? ' - BTVN' : scope === 'giaotrinh' ? ' - Giáo trình' : ''
     const buoiSuffix = onlyBuoiId && buoiTitle ? ` - ${buoiTitle}` : ''
-    // chrome header/footer y HỆT bản render (BTVN/giáo-trình-buổi = Lớp · ngày · footer liên hệ).
+    return `${full?.taiLieu.ten ?? ''}${buoiSuffix}${scopeSuffix}${gv ? ' - Bản GV' : ''}`
+  }
+
+  // "🔗 Lấy link" — CHỈ dùng cho linkOnly (headless), không dùng cho "⬇ Tải PDF" (giờ = native print, xem
+  // dưới). Vẫn phải tự dựng qua html2canvas vì cần 1 FILE BLOB để upload ẨN, không hộp thoại.
+  async function layLink() {
+    if (!activeContainerRef.current || !full) return
+    setDl(true); setRenderErr(null)
     const ch = full.taiLieu.cau_hinh ?? {}
     const buoiDoc = full.taiLieu.loai === 'btvn' || full.taiLieu.loai === 'giao_trinh_buoi'
     const ngay = (full.taiLieu as { ngay?: string | null }).ngay
@@ -138,27 +184,39 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId }: { id: s
       headerText: `${lopTen ? `Lớp ${lopTen} · ` : ''}${ngayVN}`,
       footerText: 'BK Academy        Tel : 0963.209.309        Địa chỉ : 17A10 KĐT Geleximco',
     } : undefined
-    try { await downloadPagesPdf(dstRef.current, `${full.taiLieu.ten}${buoiSuffix}${scopeSuffix}${gv ? ' - Bản GV' : ''}`, pageChrome(full.taiLieu, ch, cssOpts)) }
-    catch (e) { setRenderErr('Tải PDF lỗi: ' + (e instanceof Error ? e.message : String(e))) }
+    try { await uploadPagesAsLink(activeContainerRef.current, printFileName(), pageChrome(full.taiLieu, ch, cssOpts), full.taiLieu.id) }
+    catch (e) { setRenderErr('Lấy link lỗi: ' + (e instanceof Error ? e.message : String(e))) }
     finally { setDl(false) }
   }
 
-  // headless: khi trang đã dựng xong (ổn định — chờ 350ms phòng render 2-pass của BTVN/giáo-trình-buổi) → tự tải rồi đóng.
+  // headless KHÔNG linkOnly = "⬇ Tải PDF" từ hàng Kho tài liệu → NATIVE PRINT (window.print(), xem quyết
+  // định kiến trúc ở uploadPagesAsLink phía trên) — chờ trang dựng xong (350ms đệm phòng render 2-pass
+  // của BTVN/giáo-trình-buổi) rồi mở hộp thoại in; đóng khi hộp thoại đóng (`afterprint`), KHÔNG tự đoán
+  // thời điểm xong như trước (html2canvas là async, native print thì trình duyệt tự báo xong qua event).
   const didAutoDl = useRef(false)
   useEffect(() => {
     if (!headless || didAutoDl.current || rendering || renderErr || !full || !dstRef.current) return
-    const t = setTimeout(() => { if (!didAutoDl.current) { didAutoDl.current = true; taiPdf().finally(onClose) } }, 350)
+    didAutoDl.current = true
+    const t = setTimeout(() => { linkOnly ? layLink().finally(onClose) : printWithFilename(printFileName()) }, 350)
     return () => clearTimeout(t)
   }, [headless, rendering, renderErr, full, lopTen]) // eslint-disable-line
+  useEffect(() => {
+    if (!headless || linkOnly) return
+    const onAfter = () => onClose()
+    window.addEventListener('afterprint', onAfter)
+    return () => window.removeEventListener('afterprint', onAfter)
+  }, [headless, linkOnly]) // eslint-disable-line
 
   if (headless) return createPortal(
     <>
       {/* Trang dựng để chụp: on-screen top-left (html2canvas chụp ổn định hơn ngoài -99999px), NHƯNG nằm SAU lớp phủ đục. */}
       <div style={{ position: 'fixed', top: 0, left: 0, zIndex: 88, width: '210mm', background: '#fff' }}><div ref={dstRef} className="pv-pages" /></div>
       <div ref={srcRef} className="pv-src" aria-hidden>{full && <Doc full={full} gv={gv} scope={scope} lt={lt} />}</div>
-      <div className="fixed inset-0 z-[95] flex items-center justify-center bg-white">
+      {/* no-print: lớp phủ "đang xử lý" CHỈ hiện trên màn hình, KHÔNG bao giờ lọt vào bản in/PDF thật (dù
+          window.print() có được gọi ngay khi lớp phủ còn đang hiện, @media print tự ẩn nó). */}
+      <div className="no-print fixed inset-0 z-[95] flex items-center justify-center bg-white">
         <div className="rounded-xl border border-slate-200 bg-white px-6 py-4 text-sm font-medium text-slate-700 shadow-xl">
-          {renderErr ? <span className="text-rose-600">Tải PDF lỗi: {renderErr}</span> : <>⏳ Đang tạo file PDF{pages ? ` (${pages} trang)` : ''}…</>}
+          {renderErr ? <span className="text-rose-600">{renderErr}</span> : linkOnly ? <>⏳ Đang lấy link…</> : <>⏳ Đang chuẩn bị in{pages ? ` (${pages} trang)` : ''}…</>}
           {renderErr && <button onClick={onClose} className="ml-3 rounded border border-slate-300 px-2.5 py-1 text-xs text-slate-600">Đóng</button>}
         </div>
       </div>
@@ -184,8 +242,10 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId }: { id: s
         {scope !== 'btvn' && !lt && <span className="rounded bg-amber-50 px-2 py-0.5 text-[12px] font-medium text-amber-700" title="Đổi ở Builder → Trình bày → Lý thuyết">Không kèm lý thuyết</span>}
         <span className="text-[12px] text-slate-400">{rendering ? 'đang dựng trang…' : `${pages} trang`}</span>
         <div className="ml-auto flex gap-2">
-          <button onClick={taiPdf} disabled={rendering || dl} className="rounded-md border border-indigo-300 bg-white px-3 py-1.5 text-sm font-medium text-indigo-700 shadow-sm hover:bg-indigo-50 disabled:opacity-40">{dl ? '⏳ Đang tạo…' : '⬇ Tải PDF'}</button>
-          <button onClick={() => window.print()} disabled={rendering} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">🖨 In</button>
+          {/* Nút "⬇ Tải PDF" cũ đã BỎ (Thùy 07-11: html2canvas tự vẽ lại hay lệch — dùng NATIVE print
+              luôn, đúng engine trình duyệt). "🖨 In" chọn "Lưu thành PDF"/"Microsoft Print to PDF" trong
+              hộp thoại là ra file PDF y hệt bản đẹp Thùy đã xác nhận. */}
+          <button onClick={() => printWithFilename(printFileName())} disabled={rendering} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">🖨 In / Xuất PDF</button>
           <button onClick={onClose} className="rounded-md border border-slate-300 px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-100">Đóng</button>
         </div>
       </div>

@@ -997,6 +997,7 @@
 | nguon_buoi | text | Y |  |  |
 | mon | text |  | 'Toán'::text |  |
 | hoc_sinh_id | uuid | Y |  | FK→hoc_sinh.id |
+| file_url | text | Y |  |  |
 
 ## tai_lieu_cau
 

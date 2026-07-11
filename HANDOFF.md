@@ -517,6 +517,33 @@
   (winget) + auth xong (device-code flow, tài khoản `HongThien`) → từ giờ tạo/merge PR được qua CLI
   (`gh pr create`/`gh pr merge --squash --delete-branch`), không cần mở link tay nữa.
 
+### Đã build (07-11 — Việc của tôi: deadline/round-robin · XUẤT PDF kiến trúc mới (native print) · Kho tài liệu auto-link)
+- **Đáp án in (ET/Giáo trình/BTVN) — revert về MẶC ĐỊNH** (đề + lời giải bên dưới, KHÔNG bảng) cho MỌI
+  loại câu kể cả TN/TLN — Thùy chốt sau khi từng hiểu nhầm 1 câu phản hồi đọc được 2 chiều (mô tả bug vs
+  yêu cầu đích, xem ②).
+- **"Việc của tôi" sort theo NGÀY DEADLINE thật** (`ngayCuaTs`, `tuan.ts`, đảo `vnInstant`) thay vì ngày
+  buổi/ngày tạo — BTVN/ET deadline lệch ngày buổi vài hôm nên sort cũ sai hàng ngày.
+- **Gợi ý câu round-robin theo NGUỒN** (`pickRoundRobinByNguon`, `tailieu.ts`, nhóm theo
+  `parent_ma_cau ?? ma_cau` xoay vòng) thay flat ít-dùng-nhất — tránh dồn hết vào 1-2 nguồn nhiều clone
+  AI nhất.
+- **⭐⭐ XUẤT PDF — PIVOT KIẾN TRÚC (thay hẳn cách cũ sau nhiều vòng vá html2canvas không dứt điểm):**
+  "⬇ Tải PDF" (tải cục bộ) KHÔNG còn tự dựng qua html2canvas — đổi hẳn sang **NATIVE `window.print()`**
+  (gộp nút, còn "🖨 In / Xuất PDF") cho cả 5 loại tài liệu (giáo trình/ET/MT/Đề thi/BT).
+  `printWithFilename()` (PrintView.tsx) tự set `document.title` = tên tài liệu NGAY TRƯỚC `print()` —
+  Chromium lấy làm tên file gợi ý trong hộp thoại lưu, khôi phục lại sau `afterprint`.
+  **"🔗 Lấy link"** (upload Storage lấy URL share, `uploadPagesAsLink`) là ĐƯỜNG DUY NHẤT còn dùng
+  html2canvas — bất khả kháng, browser cấm JS lấy Blob im lặng từ hộp thoại in native.
+  Header/footer (`injectChrome`, PrintView.tsx) dải sóng chuyển hẳn từ CSS `background` sang `<img>`
+  thật (xem bài học ② — html2canvas không tôn trọng `background-size:100% 100%` trên data-URI SVG).
+- **Kho tài liệu — TỰ ĐỘNG lấy link cho MỌI tài liệu** (`KhoTaiLieuScreen.tsx`): hàng đợi nền
+  (`linkQueue`) tự backfill link cho tài liệu chưa có (kể cả tài liệu mới tạo) + tự làm mới sau khi sửa
+  qua 1 trong 4 Editor dispatch từ Kho (chưa bắt được sửa từ nơi khác — nút "↻" làm mới thủ công bù).
+  Watchdog 45s cho job nền (paged.js từng TREO vĩnh viễn, không chặn đứng cả hàng đợi vì 1 tài liệu lỗi).
+- **Card "Việc của tôi" đổi từ 1-hàng-ngang sang CỐ ĐỊNH 2 dòng** (`flex flex-col`,
+  `OpsBuoiCard`/`TaskCard`/`OpsExtraCard`/`PrepTaskCard` trong `NhanSuHome.tsx`) — tên việc dài không
+  còn làm vỡ layout thành 3 dòng lệch (dòng 1 = icon+tên đầy đủ, dòng 2 = deadline/số liệu nhỏ hơn).
+- ⚠ Migration mới: `0095_tai_lieu_file_url.sql` (`tai_lieu.file_url text`).
+
 ---
 
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
@@ -631,6 +658,10 @@
 - **⭐ Loading placeholder ngắn thay-thế-toàn-bộ nội dung mỗi lần `reload()` sẽ TỰ RESET vị trí cuộn của khung `overflow-auto` chứa nó:** `<p>Đang tải…</p>` chỉ vài chục px thay chỗ 1 bảng cao hàng nghìn px → khung cuộn co chiều cao lại → trình duyệt TỰ ĐỘNG clamp `scrollTop` về 0 (hành vi mặc định, không chặn được ở tầng CSS) → bảng đầy lại ngay sau đó nhưng `scrollTop` đã mất, không tự phục hồi → cảm giác "làm gì xong cũng nhảy về đầu trang". Vá: chỉ hiện loading khi CHƯA có data (`list.length===0`, lần tải đầu) — các lần `reload()` sau (sau khi sửa/lưu) giữ nguyên nội dung cũ trên màn tới khi data mới về, DOM không bị phá giữa chừng nên scroll tự nhiên giữ nguyên. Áp cho MỌI `reload()` viết theo công thức `setLoading(true)` vô điều kiện — pattern lặp lại ở gần hết các màn danh sách trong app.
 - **⭐ Màn KHÔNG có khung cuộn riêng = nội dung tràn bị CẮT THẲNG bởi `overflow-hidden` của khung ngoài, KHÔNG PHẢI thiếu data:** `NhanSuHome` bọc mọi `staffLeaf` trong 1 khung `overflow-hidden` (chủ đích — mỗi leaf tự quản cuộn riêng, tránh 2 tầng cuộn lồng nhau phá sticky, xem bài học ngay trên). Leaf nào build vội quên bọc `flex-1 overflow-auto` cho chính nó (chỉ 1 block div thường) thì phần tràn khỏi viewport MẤT HẲN, không kéo xuống xem được — TRÔNG như thiếu data nhưng thật ra data đủ, chỉ là không render ra được. Checklist cho leaf mới: root PHẢI có dạng `flex h-full min-h-0 flex-col` (header đứng yên) + con `min-h-0 flex-1 overflow-auto` (nội dung cuộn) — soi nhanh bằng `el.scrollHeight > el.clientHeight` ở khung nghi ngờ.
 - **⭐ Dữ liệu effective-dated PER-SLOT (như TKB/`phan_cong_ops`) — tra "trạng thái tại 1 ngày" cho NHIỀU ngày trong 1 khoảng PHẢI resolve theo ĐÚNG ngày của từng bản ghi kết quả, KHÔNG được snapshot 1 ngày đại diện (kể cả ngày đầu khoảng) rồi dùng chung:** snapshot chỉ đúng cho bản ghi mà hiệu lực đã bắt đầu TRƯỚC mốc snapshot đó; bản ghi bắt đầu SAU mốc (hiệu lực rơi giữa khoảng — vd nhân sự vừa được phân công trực giữa tuần) sẽ bị tra hụt TOÀN BỘ, không phải 1 phần. Triệu chứng: "mới gán/đổi xong mà vẫn không thấy hiệu lực" dù data DB đã đúng — bug nằm ở TẦNG ĐỌC (thời điểm tra), không phải tầng ghi.
+- **⭐⭐ Có 2 con đường ra cùng 1 kết quả (native engine vs tự-viết-lại-bằng-JS) → ưu tiên NATIVE cho nhu cầu CHÍNH, chỉ giữ tự-viết-lại cho phần native KHÔNG LÀM ĐƯỢC (07-11, sau nhiều vòng vá html2canvas không dứt điểm):** `window.print()` (native, browser tự render DOM đã ổn định) và `html2canvas` (JS tự re-implement chụp màn hình, chạy như tiến trình bất đồng bộ ĐỘC LẬP, có thể đua với thư viện JS khác đang thao tác cùng DOM — ở đây là paged.js) cho ra "PDF" bề ngoài giống nhau, nhưng độ tin cậy khác hẳn. MỌI bug rasterize đã chase trong session 07-11 (JPEG rám chữ, nhân bản 419→210 trang, dòng-kẻ-mồ-côi, header/footer lệch) đều là biến thể của đúng 1 lớp vấn đề gốc: race giữa 2 xử lý JS độc lập. Native không có lớp "vẽ lại bằng JS" nên miễn nhiễm cả lớp bug đó. Quy tắc: khi nhu cầu CHÍNH (ở đây: "lấy 1 file PDF cục bộ") có đường NATIVE khả thi, dùng nó — chỉ giữ pipeline tự-vẽ-lại cho nhu cầu native KHÔNG THỂ đáp ứng (ở đây: upload Blob im lặng — browser chặn lấy Blob từ hộp thoại in, rào bảo mật cố ý, không sửa được). Đừng tiếp tục vá triệu chứng (đổi định dạng ảnh, đổi thời điểm cleanup DOM…) khi gốc rễ là chọn SAI công cụ cho nhu cầu chính.
+- **⭐ html2canvas rasterize CSS `background:url(data-URI-SVG) center/100% 100%` KHÔNG tôn trọng `backgroundSize` — dùng kích thước "tự nhiên" theo tỉ lệ viewBox gốc thay vì kéo giãn theo khối chứa** (07-11 tiếp 8, nối dài bài học §597 — hồi đó chỉ phát hiện/sửa được logo+chip, CHƯA phát hiện chính dải sóng nền vẫn còn dính): hậu quả là dải màu bị nén dẹt xuống rất thấp so với khối chứa thật, phần còn lại trắng trơn; chữ `align-items:center` theo chiều cao ĐẦY ĐỦ của khối rơi vào vùng trắng đó → chỉ còn thấy bóng đổ (`text-shadow`) mờ mờ, KHÔNG thấy chữ trắng thật (nhìn giống "chữ biến mất" chứ không giống lỗi background rõ ràng). Chẩn ra được nhờ TỰ TẢI + TỰ RENDER file PDF thật ở độ phân giải cao rồi crop đúng vùng header/footer soi — không đoán được từ đọc code suông. Fix chuẩn (khớp hẳn với cách đã chứng minh đúng cho logo/chip): mọi ảnh cần html2canvas chụp ĐÚNG TỈ LỆ phải là `<img>` thật (`position:absolute;inset:0;width/height:100%`), KHÔNG dùng CSS `background`.
+- **⭐ `document.title` = tên file MUỐN GỢI Ý, set NGAY TRƯỚC `window.print()`:** Chromium (kể cả driver "Microsoft Print to PDF") lấy `document.title` hiện tại làm tên file mặc định trong hộp thoại "Lưu dưới dạng PDF" — không có cơ chế API nào khác để gợi ý tên file cho native print. Đổi title ngay trước `print()`, khôi phục lại sau `afterprint` (bắn dù bấm lưu hay huỷ) để không lộ tên "giả" ra tiêu đề tab thật lúc bình thường.
+- **⭐ Job NỀN (tự động, không ai đứng canh) chạy qua 1 pipeline có TIỀN SỬ TREO VĨNH VIỄN (paged.js, xem bài học trên) BẮT BUỘC có watchdog timeout — job THỦ CÔNG (người bấm, tự thấy nếu treo) thì không cần:** hàng đợi tự động (backfill link mọi tài liệu, 07-11 tiếp 8) mà không có giới hạn thời gian → 1 tài liệu hiếm gặp bị treo sẽ chặn đứng TOÀN BỘ hàng đợi phía sau vĩnh viễn, không ai biết để can thiệp (khác job bấm tay — người bấm tự thấy "sao mãi không xong"). Watchdog chỉ áp lớp NỀN, không áp lớp thủ công (tránh cắt ngang việc người dùng đang cố ý chờ).
 
 ---
 

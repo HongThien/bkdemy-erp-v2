@@ -114,9 +114,11 @@ function SectionHead({ label, count, color }: { label: string; count?: number; c
   )
 }
 
-// Card việc — Thùy 07-11: "card to quá ko nhìn được toàn cảnh", nhân sự phản hồi. Đổi hẳn sang 1 KIỂU
-// GỌN duy nhất cho MỌI viewport (trước đây chỉ gọn ở mobile, desktop dùng card 3 dòng cao gấp ~3 lần) —
-// bỏ hẳn biến thể cao, không còn `compact` prop phân nhánh nữa.
+// Card việc — Thùy 07-11 (2 vòng góp ý): card gọn cho MỌI viewport (không còn biến thể cao 3 dòng cũ) +
+// LUÔN ĐÚNG 2 DÒNG (vòng 1 "1 dòng" bị vỡ thành 3 dòng khi tên dài — flex ngang ép label+deadline chung
+// 1 hàng, label dài tự xuống dòng mà deadline vẫn đứng cạnh → cao lệch). Fix: bỏ hẳn flex-ngang-1-hàng,
+// chuyển hẳn sang flex-col 2 DÒNG CỐ ĐỊNH — dòng 1 = icon+tên việc (full, không truncate), dòng 2 =
+// deadline nhỏ hơn, thụt vào ngang icon dòng trên.
 function OpsBuoiCard({ ba, ngay, td, done, onOpen }: { ba: BuoiAo; ngay: string; td?: TienDo; done?: boolean; onOpen: (o: OpenBuoi) => void }) {
   const [busy, setBusy] = useState(false)
   const b = ba.buoi
@@ -129,38 +131,27 @@ function OpsBuoiCard({ ba, ngay, td, done, onOpen }: { ba: BuoiAo; ngay: string;
   }
   const base = done ? 'border-l-emerald-500 bg-emerald-50' : `${TASK_STYLE.diemdanh.accent} bg-white`
   return (
-    <button onClick={go} disabled={busy} className={`flex items-center gap-2 rounded-lg border-l-4 px-2.5 py-2 text-left shadow-sm transition disabled:opacity-50 ${base}`}>
-      <span className="shrink-0 text-[15px]">{done ? '✓' : '👥'}</span>
-      <span className={`min-w-0 flex-1 truncate text-[13px] font-medium ${done ? 'text-emerald-700' : 'text-slate-800'}`}>Điểm danh · {ba.lop.ten_lop}</span>
-      {td && <span className="shrink-0 text-[11px] font-medium text-slate-400">{td.daDanh}/{td.tong}</span>}
+    <button onClick={go} disabled={busy} className={`flex flex-col gap-0.5 rounded-lg border-l-4 px-2.5 py-2 text-left shadow-sm transition disabled:opacity-50 ${base}`}>
+      <div className="flex items-center gap-1.5">
+        <span className="shrink-0 text-[15px]">{done ? '✓' : '👥'}</span>
+        <span className={`min-w-0 flex-1 text-[13px] font-medium ${done ? 'text-emerald-700' : 'text-slate-800'}`}>Điểm danh · {ba.lop.ten_lop}</span>
+      </div>
+      {td && <span className="pl-[21px] text-[11px] font-medium text-slate-400">{td.daDanh}/{td.tong}</span>}
     </button>
   )
 }
 
-// 1 HÀNG = việc của 1 NGÀY (Thùy: dễ nhìn hơn lưới ô vuông tràn ngang). Đầu hàng = thanh màu + kẻ dọc (design §259).
-// Lưới LUÔN nhiều cột (auto-fill) — card gọn 1 dòng nên vẫn nhìn được toàn cảnh dù màn hẹp/rộng.
-function DayRow({ ngay, today, count, children }: { ngay: string; today: boolean; count: number; children: React.ReactNode }) {
-  return (
-    <div>
-      <div className={`mb-2 flex items-center gap-2 border-l-4 pl-2.5 ${today ? 'border-indigo-500' : 'border-slate-300'}`}>
-        <span className="text-[15px] font-semibold text-slate-800">{thuCuaNgay(ngay)}</span>
-        <span className="text-[13px] text-slate-500">{ddmmVN(ngay)}</span>
-        {today && <span className="rounded-full bg-indigo-50 px-2 py-0.5 text-[11px] font-medium text-indigo-600">Hôm nay</span>}
-        <span className="ml-auto text-[12px] font-medium text-slate-400">{count} việc</span>
-      </div>
-      <div className="grid gap-1.5 [grid-template-columns:repeat(auto-fill,minmax(220px,1fr))]">{children}</div>
-    </div>
-  )
-}
 function TaskCard({ t, now, done, onOpenBuoi }: { t: MyTask; now: number; done?: boolean; onOpenBuoi: (o: OpenBuoi) => void }) {
   const st = TASK_STYLE[t.tab]
   const base = done ? 'border-l-emerald-500 bg-emerald-50' : `${st.accent} bg-white`
   const onClick = () => onOpenBuoi({ id: t.buoiId, tabs: tabsCuaVai(t.vai), initialTab: t.tab, canManage: false, loai: t.loai })
   return (
-    <button onClick={onClick} className={`flex items-center gap-2 rounded-lg border-l-4 px-2.5 py-2 text-left shadow-sm transition ${base}`}>
-      <span className="shrink-0 text-[15px]">{done ? '✓' : st.icon}</span>
-      <span className={`min-w-0 flex-1 truncate text-[13px] font-medium ${done ? 'text-emerald-700' : 'text-slate-800'}`}>{t.label} · {t.lop}</span>
-      {!done && t.deadline != null && <DeadlineBadge deadline={t.deadline} now={now} />}
+    <button onClick={onClick} className={`flex flex-col gap-0.5 rounded-lg border-l-4 px-2.5 py-2 text-left shadow-sm transition ${base}`}>
+      <div className="flex items-center gap-1.5">
+        <span className="shrink-0 text-[15px]">{done ? '✓' : st.icon}</span>
+        <span className={`min-w-0 flex-1 text-[13px] font-medium ${done ? 'text-emerald-700' : 'text-slate-800'}`}>{t.label} · {t.lop}</span>
+      </div>
+      {!done && t.deadline != null && <div className="pl-[21px]"><DeadlineBadge deadline={t.deadline} now={now} /></div>}
     </button>
   )
 }
@@ -170,10 +161,12 @@ const OPS_TASK_ICON: Record<OpsTask['tab'], string> = { report: '📣', tan: '�
 function OpsExtraCard({ t, now, done, onGoLeaf }: { t: OpsTask; now: number; done?: boolean; onGoLeaf: (leaf: string) => void }) {
   const base = done ? 'border-l-emerald-500 bg-emerald-50' : 'border-l-sky-400 bg-white'
   return (
-    <button onClick={() => onGoLeaf('ops_report')} className={`flex items-center gap-2 rounded-lg border-l-4 px-2.5 py-2 text-left shadow-sm transition ${base}`}>
-      <span className="shrink-0 text-[15px]">{done ? '✓' : OPS_TASK_ICON[t.tab]}</span>
-      <span className={`min-w-0 flex-1 truncate text-[13px] font-medium ${done ? 'text-emerald-700' : 'text-slate-800'}`}>{OPS_TASK_LABEL[t.tab]} · {t.lopTen}</span>
-      {!done && <DeadlineBadge deadline={t.deadline} now={now} />}
+    <button onClick={() => onGoLeaf('ops_report')} className={`flex flex-col gap-0.5 rounded-lg border-l-4 px-2.5 py-2 text-left shadow-sm transition ${base}`}>
+      <div className="flex items-center gap-1.5">
+        <span className="shrink-0 text-[15px]">{done ? '✓' : OPS_TASK_ICON[t.tab]}</span>
+        <span className={`min-w-0 flex-1 text-[13px] font-medium ${done ? 'text-emerald-700' : 'text-slate-800'}`}>{OPS_TASK_LABEL[t.tab]} · {t.lopTen}</span>
+      </div>
+      {!done && <div className="pl-[21px]"><DeadlineBadge deadline={t.deadline} now={now} /></div>}
     </button>
   )
 }
@@ -182,11 +175,30 @@ const PREP_LUOT_LABEL: Record<string, string> = { ngay: 'Cả buổi tối', san
 function PrepTaskCard({ t, now, done, onGoLeaf }: { t: MyPrepTask; now: number; done?: boolean; onGoLeaf: (leaf: string) => void }) {
   const base = done ? 'border-l-emerald-500 bg-emerald-50' : 'border-l-amber-400 bg-white'
   return (
-    <button onClick={() => onGoLeaf('prep')} className={`flex items-center gap-2 rounded-lg border-l-4 px-2.5 py-2 text-left shadow-sm transition ${base}`}>
-      <span className="shrink-0 text-[15px]">{done ? '✓' : '🧹'}</span>
-      <span className={`min-w-0 flex-1 truncate text-[13px] font-medium ${done ? 'text-emerald-700' : 'text-slate-800'}`}>Chuẩn bị {t.phong} · {PREP_LUOT_LABEL[t.luot] ?? t.luot}</span>
-      {!done && <DeadlineBadge deadline={t.deadline} now={now} />}
+    <button onClick={() => onGoLeaf('prep')} className={`flex flex-col gap-0.5 rounded-lg border-l-4 px-2.5 py-2 text-left shadow-sm transition ${base}`}>
+      <div className="flex items-center gap-1.5">
+        <span className="shrink-0 text-[15px]">{done ? '✓' : '🧹'}</span>
+        <span className={`min-w-0 flex-1 text-[13px] font-medium ${done ? 'text-emerald-700' : 'text-slate-800'}`}>Chuẩn bị {t.phong} · {PREP_LUOT_LABEL[t.luot] ?? t.luot}</span>
+      </div>
+      {!done && <div className="pl-[21px]"><DeadlineBadge deadline={t.deadline} now={now} /></div>}
     </button>
+  )
+}
+
+// 1 NGÀY = 1 hàng: cột Ngày (Thứ + dd/mm) BÊN TRÁI + lưới card NHIỀU CỘT bên phải (Thùy 07-11: "card
+// phải như cũ chứ ko phải mỗi card biến thành 1 dòng" — card giữ đúng dạng gọn cũ, chỉ đổi vị trí nhãn
+// ngày từ THANH NGANG phía trên → CỘT dọc bên trái, đứng ngang hàng với card luôn).
+function DayRow({ ngay, today, isFuture, onToggle, children }: { ngay: string; today: boolean; isFuture: boolean; onToggle: () => void; children: React.ReactNode }) {
+  return (
+    <div className="flex gap-2.5">
+      <div className={`flex w-[62px] shrink-0 flex-col rounded-lg border-l-4 px-2 py-1.5 ${today ? 'border-indigo-500 bg-indigo-50/50' : 'border-slate-300 bg-slate-50'}`}>
+        <span className="text-[13px] font-semibold text-slate-800">{thuCuaNgay(ngay)}</span>
+        <span className="text-[11px] text-slate-500">{ddmmVN(ngay)}</span>
+        {today && <span className="mt-1 w-fit rounded-full bg-indigo-100 px-1.5 py-0.5 text-[10px] font-medium text-indigo-600">Hôm nay</span>}
+        {isFuture && <button onClick={onToggle} className="mt-1 text-left text-[10px] font-medium text-indigo-500">▾ ẩn</button>}
+      </div>
+      <div className="grid flex-1 content-start gap-1.5 [grid-template-columns:repeat(auto-fill,minmax(220px,1fr))]">{children}</div>
+    </div>
   )
 }
 
@@ -325,7 +337,7 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
           {!hasActive ? (
             <div className="rounded-lg border border-emerald-200 bg-emerald-50/60 px-4 py-3 text-[13px] font-medium text-emerald-700">✓ Không còn việc vận hành cần làm trong {nhanTuan(tuan).toLowerCase()}.</div>
           ) : (
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-2.5">
               {dayGroups.map(([ngay, g]) => {
                 // Chỉ hôm nay + ngày ĐÃ QUA (còn nợ) mở sẵn — ngày tương lai gấp lại, bấm mới xem
                 // (Thùy 07-06: "chưa ẩn việc của các ngày sau" + mục tiêu "1 màn nhìn gần hết việc cần làm").
@@ -341,17 +353,12 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
                   </button>
                 )
                 return (
-                  <div key={ngay}>
-                    {isFuture && (
-                      <button onClick={() => toggleXem(ngay)} className="mb-1 text-[11px] font-medium text-indigo-500">▾ Ẩn bớt {thuCuaNgay(ngay)} {ddmmVN(ngay)}</button>
-                    )}
-                    <DayRow ngay={ngay} today={ngay === homNay} count={count}>
-                      {g.ops.map((ba) => <OpsBuoiCard key={ba.lop.id + ba.ngay} ba={ba} ngay={ba.ngay} td={ba.buoi ? tienDo[ba.buoi.id] : undefined} onOpen={onOpenBuoi} />)}
-                      {g.tasks.map((t) => <TaskCard key={t.buoiId + t.tab} t={t} now={now} onOpenBuoi={onOpenBuoi} />)}
-                      {g.opsExtra.map((t) => <OpsExtraCard key={t.tkbId + t.tab} t={t} now={now} onGoLeaf={setStaffLeaf} />)}
-                      {g.prep.map((t) => <PrepTaskCard key={t.phong + t.luot + t.ngay} t={t} now={now} onGoLeaf={setStaffLeaf} />)}
-                    </DayRow>
-                  </div>
+                  <DayRow key={ngay} ngay={ngay} today={ngay === homNay} isFuture={isFuture} onToggle={() => toggleXem(ngay)}>
+                    {g.ops.map((ba) => <OpsBuoiCard key={ba.lop.id + ba.ngay} ba={ba} ngay={ba.ngay} td={ba.buoi ? tienDo[ba.buoi.id] : undefined} onOpen={onOpenBuoi} />)}
+                    {g.tasks.map((t) => <TaskCard key={t.buoiId + t.tab} t={t} now={now} onOpenBuoi={onOpenBuoi} />)}
+                    {g.opsExtra.map((t) => <OpsExtraCard key={t.tkbId + t.tab} t={t} now={now} onGoLeaf={setStaffLeaf} />)}
+                    {g.prep.map((t) => <PrepTaskCard key={t.phong + t.luot + t.ngay} t={t} now={now} onGoLeaf={setStaffLeaf} />)}
+                  </DayRow>
                 )
               })}
             </div>
