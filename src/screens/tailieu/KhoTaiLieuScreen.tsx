@@ -13,6 +13,8 @@ import TaiLieuBuilder from './TaiLieuBuilder'
 import { ETEditor, type ETView } from './ETScreen'
 import { DeThiEditor } from './DeThiScreen'
 import { MTEditor } from './MTScreen'
+import SearchSelect from '../../components/SearchSelect'
+import BuoiNgaySelect from '../../components/BuoiNgaySelect'
 
 // Loại tài liệu có thể mở builder để sửa từ Kho. (mt_buoi = INSTANCE đã gán buổi — sửa nội dung
 // phải qua master rồi gán lại, không sửa trực tiếp instance để tránh lệch với các lớp khác đã gán.)
@@ -36,8 +38,8 @@ export default function KhoTaiLieuScreen() {
   const [print, setPrint] = useState<{ id: string; loai: string } | null>(null)
   const [dlDoc, setDlDoc] = useState<{ id: string; loai: string } | null>(null)
   const [linkDoc, setLinkDoc] = useState<{ id: string; loai: string; autoCopy: boolean } | null>(null) // "🔗 Lấy link" — render ẩn, CHỈ upload+link, không tải file cục bộ
-  const [linkQueue, setLinkQueue] = useState<{ id: string; loai: string }[]>([]) // hàng đợi lấy-link NỀN (làm mới sau sửa + bulk Thùy tự bấm)
-  const [bulkRunning, setBulkRunning] = useState(false) // đang chạy hàng loạt (Thùy chủ động bấm) — khác nền-1-job-sau-khi-sửa
+  const [linkQueue, setLinkQueue] = useState<{ id: string; loai: string }[]>([]) // hàng đợi lấy-link NỀN (auto-backfill + làm mới sau sửa)
+  const [linkPaused, setLinkPaused] = useState(false) // Thùy tự tạm dừng hàng đợi nền nếu muốn (không bắt buộc bấm để BẮT ĐẦU, chỉ để DỪNG khi cần)
   const [linkErrId, setLinkErrId] = useState<string | null>(null) // id vừa timeout — báo lỗi thoáng qua trên đúng dòng
   const [editEt, setEditEt] = useState<ETView | null>(null) // sửa ET tại chỗ (mở ETEditor)
   const [editGt, setEditGt] = useState<string | null>(null) // sửa giáo trình/BTVN (mở TaiLieuBuilder)
@@ -88,30 +90,25 @@ export default function KhoTaiLieuScreen() {
   // Hàng đợi NỀN — xử lý TUẦN TỰ (1 headless PrintView tại 1 thời điểm — effect dưới) để không hâm nóng
   // máy dựng hàng chục trang cùng lúc. KHÔNG tự copy (autoCopy false) — nền thì không được lặng lẽ ghi
   // đè clipboard của Thùy.
-  // ⚠ 07-11 tiếp 9 (Thùy báo "vào Kho là load mãi Đang lấy link"): BỎ HẲN auto-backfill-mọi-tài-liệu-
-  // lúc-mở-màn — 337/343 tài liệu cũ chưa có link, tự xếp hàng cả cục MỖI LẦN MỞ MÀN, và chỉ cần 1 tài
-  // liệu bị treo (paged.js từng treo vĩnh viễn, xem DEVLOG) là cả hàng đợi kẹt cứng, Thùy thấy y hệt
-  // "cứ load mãi". Giờ CHỈ enqueue khi: (a) Thùy chủ động bấm "Tạo link hàng loạt", (b) auto làm mới 1
-  // doc vừa sửa (bounded, 1 job).
   function enqueueLink(id: string, loai: string) {
     setLinkQueue((q) => (q.some((x) => x.id === id) || linkDoc?.id === id) ? q : [...q, { id, loai }])
   }
-  const missingCount = useMemo(() => rows.filter((r) => !r.file_url).length, [rows])
-  function batDauLayLinkHangLoat() {
-    const missing = rows.filter((r) => !r.file_url)
-    if (missing.length === 0) return
-    if (!confirm(`Tạo link cho ${missing.length} tài liệu còn thiếu? Chạy TUẦN TỰ ở nền, có thể mất khá lâu — bấm "⏹ Dừng" bất cứ lúc nào để huỷ phần chưa chạy (phần đã làm vẫn giữ).`)) return
-    setLinkQueue((q) => { const have = new Set(q.map((x) => x.id)); return [...q, ...missing.filter((r) => !have.has(r.id)).map((r) => ({ id: r.id, loai: r.loai }))] })
-    setBulkRunning(true)
-  }
-  function dungLayLinkHangLoat() { setLinkQueue([]); setBulkRunning(false) }
+  // Tự động lấy link cho MỌI tài liệu chưa có — Thùy 07-12: bắt bấm tay mới chạy là "khó chịu", muốn TỰ
+  // ĐỘNG như ý ban đầu. Trước đó (07-11 tiếp 9) đã bỏ auto-backfill vì 1 doc treo (paged.js) là kẹt cứng
+  // CẢ hàng đợi — nhưng gốc rễ ĐÃ SỬA (watchdog 30s ngay trong effect dựng paged.js, PrintView/ET/MT/
+  // DeThi) nên giờ an toàn bật lại tự động: 1 doc treo tự bỏ qua sau ≤40s, hàng đợi luôn đi tiếp, không
+  // còn kẹt vĩnh viễn nữa. `linkPaused` chỉ để Thùy CHỦ ĐỘNG dừng khi cần (vd máy đang chậm), KHÔNG cần
+  // bấm gì để BẮT ĐẦU.
   useEffect(() => {
-    if (linkDoc || linkQueue.length === 0) return
+    if (linkPaused) return
+    rows.filter((r) => !r.file_url).forEach((r) => enqueueLink(r.id, r.loai))
+  }, [rows, linkPaused]) // eslint-disable-line
+  useEffect(() => {
+    if (linkPaused || linkDoc || linkQueue.length === 0) return
     const [next, ...rest] = linkQueue
     setLinkQueue(rest)
     setLinkDoc({ ...next, autoCopy: false })
-  }, [linkDoc, linkQueue])
-  useEffect(() => { if (bulkRunning && !linkDoc && linkQueue.length === 0) setBulkRunning(false) }, [bulkRunning, linkDoc, linkQueue])
+  }, [linkDoc, linkQueue, linkPaused])
   // Watchdog cho MỌI job (kể cả bấm tay — trước chỉ áp job nền, nhưng Thùy đã gặp "Đang lấy link" treo
   // mãi cả khi bấm tay). paged.js từng TREO VĨNH VIỄN không resolve/không lỗi (xem DEVLOG) → quá 40s thì
   // bỏ, báo lỗi thoáng qua trên đúng dòng, KHÔNG tự thử lại (tránh vòng lặp vô hạn trên 1 doc luôn treo).
@@ -142,11 +139,37 @@ export default function KhoTaiLieuScreen() {
     .filter((r) => loai === '__all__' || r.loai === loai)
     .filter((r) => !q.trim() || r.ten.toLowerCase().includes(q.trim().toLowerCase()))
 
-  async function nhanBan(r: Row) {
-    const ten = prompt('Tên bản sao (lưu vào kho để tái sử dụng):', `${r.ten} (sao)`)?.trim()
-    if (!ten) return
-    await duplicateTaiLieu(r.id, { ten, lop_id: null, ngay: null }) // bản sao KHÔNG gắn buổi → mẫu tái dùng
-    reload()
+  // Nhân bản = MỘT LƯỢT GÁN (Thùy 07-12: "phải được coi như 1 lần gán... như gán ET bình thường, khác
+  // cái là có nội dung sẵn") — KHÔNG còn prompt() tên tự do + lop_id/ngay null. Mở modal bắt buộc chọn
+  // Lớp + Ngày buổi học (đúng component BuoiNgaySelect/SearchSelect ETEditor dùng), tên tự sinh theo
+  // lớp+ngày (giống ET/BTVN), không cho gõ tay tránh lệch quy ước đặt tên giữa các loại tài liệu.
+  const [dup, setDup] = useState<Row | null>(null)
+  const [dupLop, setDupLop] = useState<string | null>(null)
+  const [dupNgay, setDupNgay] = useState('')
+  const [dupErr, setDupErr] = useState<string | null>(null)
+  const [dupBusy, setDupBusy] = useState(false)
+  function nhanBan(r: Row) { setDup(r); setDupLop(r.lop_id ?? null); setDupNgay(''); setDupErr(null) }
+  async function xacNhanNhanBan() {
+    if (!dup) return
+    const l = lops.find((x) => x.id === dupLop)
+    if (!l) { setDupErr('Chọn lớp.'); return }
+    if (!dupNgay) { setDupErr('Chọn ngày buổi học.'); return }
+    setDupBusy(true); setDupErr(null)
+    try {
+      // Tên gốc CÓ THỂ đã sẵn gắn lớp+ngày cũ trong chuỗi (vd "ET 5T1 · 12/07/2026", do ETEditor/TrichPanel
+      // tự đặt) — nếu nối thêm mù quáng sẽ ra tên lặp ("...5T1 · 12/07/2026 · 5T1 · 19/07/2026"). Thay THẾ
+      // đúng lớp/ngày CŨ bằng MỚI nếu tìm thấy trong tên; chỉ nối thêm khi tên gốc là MẪU (chưa gắn buổi).
+      const ngayVN = dupNgay.split('-').reverse().join('/')
+      const oldLop = dup.lop_id ? lopTen(dup.lop_id) : null
+      const oldNgayVN = dup.ngay ? dup.ngay.split('-').reverse().join('/') : null
+      let ten = dup.ten
+      if (oldLop) ten = ten.split(oldLop).join(l.ten_lop)
+      if (oldNgayVN) ten = ten.split(oldNgayVN).join(ngayVN)
+      if (!oldLop || !oldNgayVN) ten = `${ten} · ${l.ten_lop} · ${ngayVN}`
+      await duplicateTaiLieu(dup.id, { ten, lop_id: l.id, ngay: dupNgay })
+      setDup(null)
+      reload()
+    } catch (e: any) { setDupErr(e.message ?? String(e)) } finally { setDupBusy(false) }
   }
   function sua(r: Row) {
     if (r.loai === 'et') setEditEt({ ...(r as any), ten_lop: lopTen(r.lop_id) })
@@ -185,13 +208,13 @@ export default function KhoTaiLieuScreen() {
         <button onClick={() => setLoai('__all__')} className={tab(loai === '__all__')}>Tất cả</button>
         {loais.map((l) => <button key={l} onClick={() => setLoai(l)} className={tab(loai === l)}>{loaiTen(l)}</button>)}
         <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm theo tên…" className="ml-auto h-7 w-52 rounded-md border border-slate-200 px-2.5 text-[13px] outline-none focus:border-indigo-400" />
-        {bulkRunning ? (
+        {linkPaused ? (
+          <button onClick={() => setLinkPaused(false)} className="rounded-md border border-amber-300 bg-amber-50 px-2.5 py-1 text-[12px] font-medium text-amber-700 hover:bg-amber-100">⏸ Đã tạm dừng tự động lấy link — bấm để tiếp tục</button>
+        ) : (linkQueue.length > 0 || (linkDoc && !linkDoc.autoCopy)) && (
           <div className="flex items-center gap-2 rounded-md bg-sky-50 px-2.5 py-1 text-[12px] font-medium text-sky-700">
-            <span>⏳ Đang lấy link hàng loạt… còn {linkQueue.length + (linkDoc && !linkDoc.autoCopy ? 1 : 0)}</span>
-            <button onClick={dungLayLinkHangLoat} className="rounded border border-sky-300 px-1.5 py-0.5 text-[11px] hover:bg-sky-100">⏹ Dừng</button>
+            <span>⏳ Tự động lấy link ở nền… còn {linkQueue.length + (linkDoc && !linkDoc.autoCopy ? 1 : 0)}</span>
+            <button onClick={() => setLinkPaused(true)} title="Tạm dừng — chỗ chưa lấy vẫn giữ nguyên, mở lại màn sẽ tự tiếp tục" className="rounded border border-sky-300 px-1.5 py-0.5 text-[11px] hover:bg-sky-100">⏸ Dừng</button>
           </div>
-        ) : missingCount > 0 && (
-          <button onClick={batDauLayLinkHangLoat} title="Tự dựng + upload link cho mọi tài liệu chưa có, chạy tuần tự ở nền" className="rounded-md border border-sky-300 px-2.5 py-1 text-[12px] font-medium text-sky-700 hover:bg-sky-50">🔗 Tạo link hàng loạt ({missingCount} còn thiếu)</button>
         )}
       </div>
 
@@ -224,29 +247,29 @@ export default function KhoTaiLieuScreen() {
                       <td className="px-3 text-slate-500">{r.khoi || '—'}</td>
                       <td className="px-3 text-slate-500">{r.lop_id && r.ngay ? `${lopTen(r.lop_id)} · ${fmt(r.ngay)}` : (r.loai === 'et' || r.loai === 'mt' ? <span className="text-violet-500">mẫu</span> : '—')}</td>
                       <td className="px-3 text-slate-500">{fmt(r.created_at)}</td>
-                      <td className="px-3 py-2">
+                      <td className="whitespace-nowrap px-3 py-2">
                         <div className="flex justify-end gap-1.5">
-                          {EDITABLE.has(r.loai) && <button onClick={() => sua(r)} className="rounded-md border border-slate-200 px-2.5 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-300">✎ Sửa</button>}
+                          {EDITABLE.has(r.loai) && <button onClick={() => sua(r)} className="shrink-0 rounded-md border border-slate-200 px-2.5 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-300">✎ Sửa</button>}
                           {PHAT_HANH_DUOC.has(r.loai) && r.lop_id && r.ngay && (
-                            <button onClick={() => phatHanh(r)} disabled={phBusy === r.id}
-                              className="rounded-md border border-emerald-300 bg-emerald-50 px-2.5 py-1 text-[12px] font-medium text-emerald-700 hover:bg-emerald-100 disabled:opacity-40">
-                              {phBusy === r.id ? '…' : '📱 Phát hành online'}
+                            <button onClick={() => phatHanh(r)} disabled={phBusy === r.id} title="Phát hành online"
+                              className="shrink-0 rounded-md border border-emerald-300 bg-emerald-50 px-2 py-1 text-[12px] font-medium text-emerald-700 hover:bg-emerald-100 disabled:opacity-40">
+                              {phBusy === r.id ? '…' : '📱'}
                             </button>
                           )}
-                          <button onClick={() => setPrint({ id: r.id, loai: r.loai })} className="rounded-md bg-indigo-600 px-2.5 py-1 text-[12px] font-medium text-white hover:bg-indigo-500">🖨 In</button>
+                          <button onClick={() => setPrint({ id: r.id, loai: r.loai })} className="shrink-0 rounded-md bg-indigo-600 px-2.5 py-1 text-[12px] font-medium text-white hover:bg-indigo-500">🖨 In</button>
                           {/* Bỏ qua bước xem thử, mở thẳng hộp thoại in (bản Học sinh mặc định) — Thùy
                               07-11: đổi hẳn từ html2canvas tự vẽ lại (hay lỗi) sang NATIVE print. */}
-                          <button onClick={() => setDlDoc({ id: r.id, loai: r.loai })} className="rounded-md border border-indigo-300 px-2.5 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-50">🖨 In nhanh</button>
+                          <button onClick={() => setDlDoc({ id: r.id, loai: r.loai })} className="shrink-0 rounded-md border border-indigo-300 px-2.5 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-50">🖨 In nhanh</button>
                           <button onClick={() => layLink(r)} disabled={linkDoc?.id === r.id} title={linkErrId === r.id ? 'Dựng trang quá lâu (>40s), thử lại' : r.file_url ?? 'Bấm để tạo link chia sẻ'}
-                            className={`rounded-md border px-2.5 py-1 text-[12px] font-medium disabled:opacity-40 ${linkErrId === r.id ? 'border-rose-300 text-rose-600 hover:bg-rose-50' : 'border-sky-300 text-sky-700 hover:bg-sky-50'}`}>
+                            className={`shrink-0 rounded-md border px-2.5 py-1 text-[12px] font-medium disabled:opacity-40 ${linkErrId === r.id ? 'border-rose-300 text-rose-600 hover:bg-rose-50' : 'border-sky-300 text-sky-700 hover:bg-sky-50'}`}>
                             {linkDoc?.id === r.id ? '⏳ Đang lấy…' : copiedId === r.id ? '✓ Đã copy' : linkErrId === r.id ? '❌ Lỗi, bấm lại' : r.file_url ? '🔗 Copy link' : (linkQueue.some((x) => x.id === r.id) ? '⏳ Chờ xếp hàng…' : '🔗 Lấy link')}
                           </button>
                           {r.file_url && (
                             <button onClick={() => lamMoiLink(r)} disabled={linkDoc?.id === r.id} title="Tạo lại link (dùng khi nội dung vừa đổi ở nơi khác hoặc file cũ bị lỗi)"
-                              className="rounded-md border border-slate-200 px-2 py-1 text-[12px] text-slate-400 hover:border-sky-300 hover:text-sky-600 disabled:opacity-40">↻</button>
+                              className="shrink-0 rounded-md border border-slate-200 px-2 py-1 text-[12px] text-slate-400 hover:border-sky-300 hover:text-sky-600 disabled:opacity-40">↻</button>
                           )}
-                          <button onClick={() => nhanBan(r)} className="rounded-md border border-slate-200 px-2.5 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-300">Nhân bản</button>
-                          <button onClick={async () => { if (confirm(`Xoá “${r.ten}”?`)) { await deleteTaiLieu(r.id); reload() } }} className="rounded-md border border-slate-200 px-2.5 py-1 text-[12px] text-slate-400 hover:border-rose-300 hover:text-rose-600">Xoá</button>
+                          <button onClick={() => nhanBan(r)} className="shrink-0 rounded-md border border-slate-200 px-2.5 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-300">Nhân bản</button>
+                          <button onClick={async () => { if (confirm(`Xoá “${r.ten}”?`)) { await deleteTaiLieu(r.id); reload() } }} className="shrink-0 rounded-md border border-slate-200 px-2.5 py-1 text-[12px] text-slate-400 hover:border-rose-300 hover:text-rose-600">Xoá</button>
                         </div>
                       </td>
                     </tr>
@@ -285,6 +308,31 @@ export default function KhoTaiLieuScreen() {
         : linkDoc.loai === 'mt' || linkDoc.loai === 'mt_buoi'
         ? <MTPrintView id={linkDoc.id} headless linkOnly onClose={xongLayLink} />
         : <PrintView id={linkDoc.id} headless linkOnly onClose={xongLayLink} />)}
+
+      {dup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 px-4" onClick={() => !dupBusy && setDup(null)}>
+          <div className="w-[420px] max-w-full rounded-2xl bg-white p-5 shadow-xl" onClick={(e) => e.stopPropagation()}>
+            <p className="text-[15px] font-semibold text-slate-900">Nhân bản · gán vào buổi</p>
+            <p className="mt-1 text-[12px] text-slate-500">Sao chép nội dung "{dup.ten}" cho 1 lớp + ngày cụ thể — giống gán ET, chỉ khác là câu đã có sẵn.</p>
+            <div className="mt-4 space-y-3">
+              <div>
+                <label className="mb-1 block text-[12px] font-medium text-slate-600">Lớp</label>
+                <SearchSelect value={dupLop} onChange={(v) => { setDupLop(v); setDupNgay('') }} placeholder="chọn lớp…"
+                  options={lops.map((l) => ({ id: l.id, label: l.ten_lop, sub: `${l.mon}${l.khoi ? ' · K' + l.khoi : ''}` }))} />
+              </div>
+              <div>
+                <label className="mb-1 block text-[12px] font-medium text-slate-600">Ngày buổi học</label>
+                <BuoiNgaySelect lopId={dupLop} value={dupNgay} onChange={setDupNgay} className="h-9 w-full rounded-md border border-slate-300 px-2 text-[13px] disabled:bg-slate-50 disabled:text-slate-300" />
+              </div>
+            </div>
+            {dupErr && <p className="mt-3 text-[12px] text-rose-600">{dupErr}</p>}
+            <div className="mt-4 flex justify-end gap-2">
+              <button onClick={() => setDup(null)} disabled={dupBusy} className="rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-600 disabled:opacity-40">Huỷ</button>
+              <button onClick={xacNhanNhanBan} disabled={dupBusy || !dupLop || !dupNgay} className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">{dupBusy ? 'Đang tạo…' : 'Tạo bản sao'}</button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {phRes && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 px-4" onClick={() => setPhRes(null)}>
