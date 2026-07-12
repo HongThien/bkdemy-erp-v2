@@ -37,12 +37,30 @@ const escHtml = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').re
 // chỉ mới sửa được logo/chip (đã là <img>), CHƯA sửa chính dải sóng (vẫn còn background). Fix: dải sóng
 // cũng chuyển hẳn sang <img> (position:absolute;inset:0;width/height:100%) — html2canvas render <img>
 // đáng tin cậy hơn hẳn CSS background theo mọi bằng chứng đã thấy trong phiên này.
-function injectChrome(doc: Document, cr: PageChrome) {
-  // ⭐ 07-12: `content:none!important` (dòng CSS override cũ) KHÔNG đủ — html2canvas hỗ trợ pseudo-
-  // element KHÔNG CHUẨN, "cố" vẽ text của `content:` rule GỐC dù đã override, chồng lên đúng <span>
-  // thật vừa chèn bên dưới → chữ header/footer bị NHÂN ĐÔI, lệch nhẹ (2 nguồn dùng padding khác nhau:
-  // pseudo `padding:0 10mm 0 50mm` vs span thật `padding:0 10mm`). Override-bằng-specificity không
-  // đáng tin với html2canvas — XOÁ THẲNG rule khỏi CSSOM (không còn gì để nó "cố" render nữa).
+// Chờ MỌI <link rel=stylesheet> trong doc (bản clone của html2canvas) load xong — 07-12 tiếp 4: fix
+// "xoá rule khỏi CSSOM" (dưới) đã KHÔNG ăn dù review đúng hướng, verify lại bằng file thật vẫn y hệt
+// lỗi cũ. Nghi vấn: `injectChrome` chạy ĐỒNG BỘ trong onclone, nhưng stylesheet nạp qua blob URL —
+// khi html2canvas clone `<link>` sang document/iframe MỚI, trình duyệt phải nạp+parse LẠI (dù cache
+// nhanh, vẫn KHÔNG đồng bộ) → lúc code xoá rule chạy tới, CSSOM CÓ THỂ CHƯA populate (`cssRules` rỗng,
+// không lỗi, chỉ đơn giản chưa có gì để xoá) → vòng lặp "thành công" nhưng không xoá được gì thật.
+async function waitStylesheets(doc: Document, timeoutMs = 3000): Promise<void> {
+  const links = Array.from(doc.querySelectorAll('link[rel="stylesheet"]')) as HTMLLinkElement[]
+  await Promise.race([
+    Promise.all(links.map((l) => l.sheet ? Promise.resolve() : new Promise<void>((res) => {
+      l.addEventListener('load', () => res(), { once: true })
+      l.addEventListener('error', () => res(), { once: true })
+    }))),
+    new Promise<void>((res) => setTimeout(res, timeoutMs)), // lưới an toàn — đừng treo cả upload nếu 1 link kẹt
+  ])
+}
+async function injectChrome(doc: Document, cr: PageChrome): Promise<void> {
+  await waitStylesheets(doc)
+  // `content:none!important` (dòng CSS override cũ) KHÔNG đủ — html2canvas hỗ trợ pseudo-element
+  // KHÔNG CHUẨN, "cố" vẽ text của `content:` rule GỐC dù đã override, chồng lên đúng <span> thật vừa
+  // chèn bên dưới → chữ header/footer bị NHÂN ĐÔI, lệch nhẹ (2 nguồn dùng padding khác nhau: pseudo
+  // `padding:0 10mm 0 50mm` vs span thật `padding:0 10mm`). Override-bằng-specificity không đáng tin
+  // với html2canvas — XOÁ THẲNG rule khỏi CSSOM (không còn gì để nó "cố" render nữa) — GIỜ CHẮC CHẮN
+  // stylesheet đã load nên `cssRules` có nội dung thật để soi/xoá.
   for (const sheet of Array.from(doc.styleSheets)) {
     try {
       const rules = sheet.cssRules
