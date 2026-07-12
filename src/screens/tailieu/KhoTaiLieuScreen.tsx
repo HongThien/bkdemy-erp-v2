@@ -1,6 +1,6 @@
 // KHO TÀI LIỆU = bảng tổng MỌI tài liệu đã tạo trong hệ (giáo trình · ET · MT · chuyên đề…).
 // Cột thông tin + nút IN (giáo trình→PrintView, ET→ETPrintView) + Nhân bản (tái sử dụng) + Xoá.
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { listAllTaiLieu, deleteTaiLieu, duplicateTaiLieu, updateTaiLieu, type TaiLieu } from '../../lib/tailieu'
 import { phatHanhTest, PHAT_HANH_DUOC } from '../../lib/testonline'
 import { listLop, type Lop } from '../../lib/nhansu'
@@ -37,6 +37,7 @@ export default function KhoTaiLieuScreen() {
   const myMons = me?.mons ?? []
   const linkGenActive = useStore((s) => s.linkGenActive) // job link-gen ĐANG chạy (toàn cục, xem LinkGenWorker) — hiện "⏳ đang tạo…" đúng dòng
   const linkGenQueue = useStore((s) => s.linkGenQueue)
+  const linkGenFailed = useStore((s) => s.linkGenFailed) // đã tự thử 3 lần vẫn không xong — khác "chưa từng thử", phải hiện rõ
   const [print, setPrint] = useState<{ id: string; loai: string } | null>(null)
   const [dlDoc, setDlDoc] = useState<{ id: string; loai: string } | null>(null)
   const [editEt, setEditEt] = useState<ETView | null>(null) // sửa ET tại chỗ (mở ETEditor)
@@ -72,6 +73,18 @@ export default function KhoTaiLieuScreen() {
     } finally { setLoading(false) }
   }
   useEffect(() => { reload() }, []) // eslint-disable-line
+
+  // Job link-gen chạy NỀN qua LinkGenWorker (App.tsx) — nó chỉ biết clear `linkGenActive`, KHÔNG biết
+  // gì về bảng ở màn này để tự refresh. Thiếu đoạn này thì dù upload/ghi file_url THÀNH CÔNG thật ở DB,
+  // dòng vẫn hiện "chưa có link" mãi vì `rows` cũ không đổi — bấm "↻" bao nhiêu lần cũng như không.
+  // Bắt đúng lúc job CHUYỂN từ "đang chạy" → null (vừa xong, dù thành công hay lỗi) rồi tải lại NGẦM
+  // (không setLoading — job xong lặng lẽ giữa lúc Thùy đang lướt bảng, không được xoá bảng ra "Đang tải…").
+  const prevLinkGenActiveRef = useRef<{ id: string } | null>(null)
+  useEffect(() => {
+    const was = prevLinkGenActiveRef.current
+    prevLinkGenActiveRef.current = linkGenActive
+    if (was && !linkGenActive) listAllTaiLieu().then((d) => setRows(d as Row[])).catch(() => {})
+  }, [linkGenActive])
 
   // ⭐ 07-12 — link PDF giờ gen TỰ ĐỘNG ngay lúc tài liệu tạo/sửa xong (`enqueueLinkGen`, hàng đợi TOÀN
   // CỤC xử lý bởi `LinkGenWorker` mount ở App.tsx — xem store `linkGenQueue`). Màn này KHÔNG còn tự
@@ -223,6 +236,8 @@ export default function KhoTaiLieuScreen() {
                             </button>
                           ) : linkGenActive?.id === r.id || linkGenQueue.some((x) => x.id === r.id) ? (
                             <span className="shrink-0 px-1 text-[12px] text-sky-500">⏳ đang tạo…</span>
+                          ) : linkGenFailed.includes(r.id) ? (
+                            <span className="shrink-0 px-1 text-[12px] text-rose-500" title="Đã tự thử tạo link 3 lần nhưng không xong (thường do trang dựng quá lâu) — bấm ↻ để thử lại">⚠ lỗi, bấm ↻</span>
                           ) : (
                             <span className="shrink-0 px-1 text-[12px] text-slate-300" title="Tài liệu cũ từ trước tính năng tự-tạo-link — bấm ↻ để tạo">— chưa có link</span>
                           )}

@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import { persist, createJSONStorage } from 'zustand/middleware'
 import { users, opTasks, devTasks, adminLeaves, classesOfCoSo, worktypesByVai } from '../mock/fixtures'
 import { myQuyen, type MyQuyen } from '../lib/quyen'
 import { setReadOnlyLeafGetter } from '../lib/supabase'
@@ -53,13 +54,17 @@ interface UiState {
   // Thùy để ý/bấm gì.
   linkGenQueue: LinkGenJob[]
   linkGenActive: LinkGenJob | null
+  // Id đã hết MAX_LINKGEN_ATTEMPTS lần thử mà vẫn không xong — KHÔNG được để row lặng lẽ quay về y hệt
+  // "chưa từng thử" (Thùy cần THẤY hệ thống đã cố mà thất bại, không phải đoán tiếp — cùng tinh thần
+  // "phải thấy được hệ thống đang làm" ở trên).
+  linkGenFailed: string[]
   enqueueLinkGen: (id: string, loai: string) => void
   shiftLinkGen: () => LinkGenJob | undefined
   setLinkGenActive: (job: LinkGenJob | null) => void
   timeoutLinkGenActive: (id: string) => void
 }
 
-export const useStore = create<UiState>((set, get) => ({
+export const useStore = create<UiState>()(persist((set, get) => ({
   currentUserId: users[0].id,
   screen: 'nhansu',
   staffLeaf: 'viec',
@@ -89,7 +94,8 @@ export const useStore = create<UiState>((set, get) => ({
   setDbVanHanhNsId: (id) => set({ dbVanHanhNsId: id }),
   linkGenQueue: [],
   linkGenActive: null,
-  enqueueLinkGen: (id, loai) => set((s) => (s.linkGenQueue.some((x) => x.id === id) || s.linkGenActive?.id === id) ? s : { linkGenQueue: [...s.linkGenQueue, { id, loai, attempt: 0 }] }),
+  linkGenFailed: [],
+  enqueueLinkGen: (id, loai) => set((s) => (s.linkGenQueue.some((x) => x.id === id) || s.linkGenActive?.id === id) ? s : { linkGenQueue: [...s.linkGenQueue, { id, loai, attempt: 0 }], linkGenFailed: s.linkGenFailed.filter((x) => x !== id) }),
   shiftLinkGen: () => {
     const q = get().linkGenQueue
     if (q.length === 0) return undefined
@@ -105,8 +111,30 @@ export const useStore = create<UiState>((set, get) => ({
     if (!s.linkGenActive || s.linkGenActive.id !== id) return s // đã tự đóng bình thường trước đó, watchdog bắn trễ → bỏ qua
     const job = s.linkGenActive
     const retry = job.attempt + 1 < MAX_LINKGEN_ATTEMPTS
-    return { linkGenActive: null, linkGenQueue: retry ? [...s.linkGenQueue, { ...job, attempt: job.attempt + 1 }] : s.linkGenQueue }
+    return {
+      linkGenActive: null,
+      linkGenQueue: retry ? [...s.linkGenQueue, { ...job, attempt: job.attempt + 1 }] : s.linkGenQueue,
+      linkGenFailed: retry ? s.linkGenFailed : [...s.linkGenFailed.filter((x) => x !== id), id],
+    }
   }),
+}), {
+  // Hàng đợi link-gen sống trong RAM (Zustand thuần) → F5/refresh/HMR full-reload XOÁ SẠCH job đang chờ,
+  // KHÔNG CÓ DẤU VẾT (07-12: sau nhiều lần đổi code tối nay phải reload để nhận bản mới, rất nhiều lần
+  // reload xảy ra trong lúc job còn dở/đang chờ trong hàng đợi) — đây gần như chắc là nguyên nhân thật
+  // của "bấm nút, ko thấy hiện link" dù DB cho thấy KHÔNG có file_url mới được ghi suốt nhiều giờ liền.
+  // Lưu vào localStorage để refresh không mất job đang chờ. CHỈ persist linkGenQueue/linkGenActive —
+  // không đụng phần state khác của UiState (session/filter UI không cần sống qua reload).
+  name: 'bkdemy-linkgen-queue',
+  storage: createJSONStorage(() => localStorage),
+  partialize: (s) => ({ linkGenQueue: s.linkGenQueue, linkGenActive: s.linkGenActive, linkGenFailed: s.linkGenFailed }),
+  // job đang "active" lúc reload KHÔNG còn ai chạy nữa (JS process mới tinh) → dồn về ĐẦU hàng đợi để
+  // LinkGenWorker nhặt lại từ đầu, không được coi là "vẫn đang chạy" (sẽ treo store mãi vì không có timer
+  // watchdog nào được set lại cho nó).
+  merge: (persisted, current) => {
+    const p = (persisted ?? {}) as Partial<Pick<UiState, 'linkGenQueue' | 'linkGenActive' | 'linkGenFailed'>>
+    const requeued = p.linkGenActive ? [p.linkGenActive] : []
+    return { ...current, linkGenQueue: [...requeued, ...(p.linkGenQueue ?? [])], linkGenActive: null, linkGenFailed: p.linkGenFailed ?? [] }
+  },
 }))
 
 // Nối gate "Chỉ xem" (RBAC ①) vào seam Supabase — xem lib/supabase.ts. Leaf con dạng
