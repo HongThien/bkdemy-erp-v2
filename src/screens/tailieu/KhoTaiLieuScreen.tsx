@@ -35,6 +35,8 @@ export default function KhoTaiLieuScreen() {
   const me = useStore((s) => s.me)
   const laAdmin = !!useStore((s) => s.quyen)?.laAdmin
   const myMons = me?.mons ?? []
+  const linkGenActive = useStore((s) => s.linkGenActive) // job link-gen ĐANG chạy (toàn cục, xem LinkGenWorker) — hiện "⏳ đang tạo…" đúng dòng
+  const linkGenQueue = useStore((s) => s.linkGenQueue)
   const [print, setPrint] = useState<{ id: string; loai: string } | null>(null)
   const [dlDoc, setDlDoc] = useState<{ id: string; loai: string } | null>(null)
   const [editEt, setEditEt] = useState<ETView | null>(null) // sửa ET tại chỗ (mở ETEditor)
@@ -219,8 +221,10 @@ export default function KhoTaiLieuScreen() {
                             <button onClick={() => layLink(r)} title={r.file_url} className="shrink-0 rounded-md border border-sky-300 px-2.5 py-1 text-[12px] font-medium text-sky-700 hover:bg-sky-50">
                               {copiedId === r.id ? '✓ Đã copy' : '🔗 Copy link'}
                             </button>
+                          ) : linkGenActive?.id === r.id || linkGenQueue.some((x) => x.id === r.id) ? (
+                            <span className="shrink-0 px-1 text-[12px] text-sky-500">⏳ đang tạo…</span>
                           ) : (
-                            <span className="shrink-0 px-1 text-[12px] text-slate-300" title="Link PDF tự tạo trong ít phút — tài liệu vừa tạo/sửa hoặc tài liệu cũ từ trước tính năng này">— chưa có link</span>
+                            <span className="shrink-0 px-1 text-[12px] text-slate-300" title="Tài liệu cũ từ trước tính năng tự-tạo-link — bấm ↻ để tạo">— chưa có link</span>
                           )}
                           {/* "↻" — lối thoát khi job nền lỗi/treo (paged.js đôi khi treo, xem DEVLOG) và
                               tài liệu mãi không có link. KHÔNG hiện trạng thái chờ — bấm xong là quên, có

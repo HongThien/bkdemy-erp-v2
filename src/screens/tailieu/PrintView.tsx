@@ -38,6 +38,20 @@ const escHtml = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').re
 // cũng chuyển hẳn sang <img> (position:absolute;inset:0;width/height:100%) — html2canvas render <img>
 // đáng tin cậy hơn hẳn CSS background theo mọi bằng chứng đã thấy trong phiên này.
 function injectChrome(doc: Document, cr: PageChrome) {
+  // ⭐ 07-12: `content:none!important` (dòng CSS override cũ) KHÔNG đủ — html2canvas hỗ trợ pseudo-
+  // element KHÔNG CHUẨN, "cố" vẽ text của `content:` rule GỐC dù đã override, chồng lên đúng <span>
+  // thật vừa chèn bên dưới → chữ header/footer bị NHÂN ĐÔI, lệch nhẹ (2 nguồn dùng padding khác nhau:
+  // pseudo `padding:0 10mm 0 50mm` vs span thật `padding:0 10mm`). Override-bằng-specificity không
+  // đáng tin với html2canvas — XOÁ THẲNG rule khỏi CSSOM (không còn gì để nó "cố" render nữa).
+  for (const sheet of Array.from(doc.styleSheets)) {
+    try {
+      const rules = sheet.cssRules
+      for (let i = rules.length - 1; i >= 0; i--) {
+        const sel = (rules[i] as CSSStyleRule).selectorText
+        if (sel && (sel.includes('.pagedjs_pagebox::before') || sel.includes('.pagedjs_pagebox::after'))) sheet.deleteRule(i)
+      }
+    } catch { /* stylesheet cross-origin (hiếm, blob cùng origin) — bỏ qua, override CSS dưới vẫn còn làm lưới */ }
+  }
   const st = doc.createElement('style')
   st.textContent = '.pagedjs_pagebox::before,.pagedjs_pagebox::after{content:none!important;background:none!important}'
   doc.head.appendChild(st)

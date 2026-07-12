@@ -5,6 +5,9 @@ import { setReadOnlyLeafGetter } from '../lib/supabase'
 import { getMyProfile, type MyProfile, type MyScope } from '../lib/nhansu'
 import type { User, Vai, NavGroup, NavLeaf, AdminLeaf } from '../types'
 
+export type LinkGenJob = { id: string; loai: string; attempt: number }
+export const MAX_LINKGEN_ATTEMPTS = 3
+
 interface UiState {
   currentUserId: string
   screen: 'nhansu' | 'admin'
@@ -36,15 +39,24 @@ interface UiState {
   setDbVanHanhView: (v: 'theonguoi' | 'theomuc' | 'chitiet' | 'duyet') => void
   setDbVanHanhMuc: (m: 'tatca' | 'ops' | 'ta' | 'gv') => void
   setDbVanHanhNsId: (id: string | null) => void
-  // ── Hàng đợi lấy-link PDF (07-12) — Thùy: "gen sẵn NGAY KHI tài liệu được tạo ra, người dùng chỉ
-  // click để COPY, KHÔNG chờ đợi gì cả". Toàn cục (không riêng KhoTaiLieuScreen) vì tài liệu được
-  // tạo/sửa xong từ NHIỀU màn khác nhau (ETScreen, TaiLieuBuilder, DeThiScreen, MTScreen, BTScreen…),
-  // không chỉ từ Kho tài liệu — `LinkGenWorker` (mount 1 lần ở App.tsx) xử lý TUẦN TỰ, 1 job/lúc, để
-  // không hâm nóng máy dựng nhiều trang cùng lúc (bài học 07-12: rasterize hàng trăm doc cùng lúc làm
-  // đơ tab — CHỈ enqueue đúng lúc 1 tài liệu vừa tạo/sửa xong, KHÔNG BAO GIỜ backfill hàng loạt).
-  linkGenQueue: { id: string; loai: string }[]
+  // ── Hàng đợi lấy-link PDF (07-12) — Thùy: "gen sẵn NGAY KHI tài liệu được tạo ra, KHÔNG được có thao
+  // tác của người". Toàn cục (không riêng KhoTaiLieuScreen) vì tài liệu tạo/sửa xong từ NHIỀU màn khác
+  // nhau (ETScreen, TaiLieuBuilder, DeThiScreen, MTScreen, BTScreen…) — `LinkGenWorker` (mount 1 lần ở
+  // App.tsx) xử lý TUẦN TỰ, 1 job/lúc (không hâm nóng máy dựng nhiều trang cùng lúc, bài học 07-11:
+  // rasterize hàng trăm doc cùng lúc làm đơ tab — CHỈ enqueue đúng lúc 1 tài liệu vừa tạo/sửa xong,
+  // KHÔNG BAO GIỜ backfill hàng loạt tự động).
+  // `linkGenActive` = job ĐANG xử lý (nằm ở store, không phải state cục bộ của LinkGenWorker, để
+  // KhoTaiLieuScreen đọc được và hiện "⏳ đang tạo…" — Thùy cần THẤY nó đang chạy, không phải đoán).
+  // `attempt` — paged.js đôi khi TREO không rõ nguyên nhân (xem DEVLOG) → KHÔNG được để 1 lần treo là
+  // tài liệu vĩnh viễn không có link (Thùy 07-12: "tại sao lại phải có thao tác của người để tạo link
+  // vậy?") — watchdog hết giờ TỰ ĐỘNG xếp lại hàng đợi, tối đa `MAX_LINKGEN_ATTEMPTS` lần, không cần
+  // Thùy để ý/bấm gì.
+  linkGenQueue: LinkGenJob[]
+  linkGenActive: LinkGenJob | null
   enqueueLinkGen: (id: string, loai: string) => void
-  shiftLinkGen: () => { id: string; loai: string } | undefined
+  shiftLinkGen: () => LinkGenJob | undefined
+  setLinkGenActive: (job: LinkGenJob | null) => void
+  timeoutLinkGenActive: (id: string) => void
 }
 
 export const useStore = create<UiState>((set, get) => ({
@@ -76,7 +88,8 @@ export const useStore = create<UiState>((set, get) => ({
   setDbVanHanhMuc: (m) => set({ dbVanHanhMuc: m }),
   setDbVanHanhNsId: (id) => set({ dbVanHanhNsId: id }),
   linkGenQueue: [],
-  enqueueLinkGen: (id, loai) => set((s) => s.linkGenQueue.some((x) => x.id === id) ? s : { linkGenQueue: [...s.linkGenQueue, { id, loai }] }),
+  linkGenActive: null,
+  enqueueLinkGen: (id, loai) => set((s) => (s.linkGenQueue.some((x) => x.id === id) || s.linkGenActive?.id === id) ? s : { linkGenQueue: [...s.linkGenQueue, { id, loai, attempt: 0 }] }),
   shiftLinkGen: () => {
     const q = get().linkGenQueue
     if (q.length === 0) return undefined
@@ -84,6 +97,16 @@ export const useStore = create<UiState>((set, get) => ({
     set({ linkGenQueue: rest })
     return next
   },
+  setLinkGenActive: (job) => set({ linkGenActive: job }),
+  // Watchdog (LinkGenWorker) gọi khi 1 job "active" quá lâu không tự đóng — paged.js đôi khi TREO không
+  // rõ nguyên nhân (xem DEVLOG). KHÔNG bỏ luôn — xếp lại CUỐI hàng đợi, tăng `attempt`, tối đa
+  // MAX_LINKGEN_ATTEMPTS lần rồi mới chịu bỏ (Thùy vẫn có "↻" tự bấm cho ca hiếm-gặp còn lại).
+  timeoutLinkGenActive: (id) => set((s) => {
+    if (!s.linkGenActive || s.linkGenActive.id !== id) return s // đã tự đóng bình thường trước đó, watchdog bắn trễ → bỏ qua
+    const job = s.linkGenActive
+    const retry = job.attempt + 1 < MAX_LINKGEN_ATTEMPTS
+    return { linkGenActive: null, linkGenQueue: retry ? [...s.linkGenQueue, { ...job, attempt: job.attempt + 1 }] : s.linkGenQueue }
+  }),
 }))
 
 // Nối gate "Chỉ xem" (RBAC ①) vào seam Supabase — xem lib/supabase.ts. Leaf con dạng
