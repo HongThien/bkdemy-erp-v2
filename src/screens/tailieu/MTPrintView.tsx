@@ -15,7 +15,7 @@ import { CauItem, CauList, OptGrid, GvAnswer, WriteLines, splitStem, CHROME_CSS,
 const DEFAULT_TL_LINES = 4
 
 // headless = tự dựng ẩn → tải PDF → đóng (nút "⬇ Tải" ngay ở hàng Kho tài liệu, không mở preview).
-export default function MTPrintView({ id, onClose, headless, linkOnly }: { id: string; onClose: () => void; headless?: boolean; linkOnly?: boolean }) {
+export default function MTPrintView({ id, onClose, headless, linkOnly, onFail }: { id: string; onClose: () => void; headless?: boolean; linkOnly?: boolean; onFail?: () => void }) {
   const [full, setFull] = useState<TaiLieuFull | null>(null)
   const [err, setErr] = useState<string | null>(null)
   const [gv, setGv] = useState(false)
@@ -73,11 +73,11 @@ export default function MTPrintView({ id, onClose, headless, linkOnly }: { id: s
   const printFileName = () => `${full?.taiLieu.ten ?? ''}${gv ? ' - Bản GV' : ''}`
   // "🔗 Lấy link" — CHỈ dùng cho linkOnly (headless). "⬇ Tải PDF" cũ đã BỎ, giờ dùng NATIVE print
   // (window.print(), xem uploadPagesAsLink trong PrintView.tsx — quyết định kiến trúc 07-11).
-  async function layLink() {
-    if (!activeContainerRef.current || !full) return
+  async function layLink(): Promise<boolean> {
+    if (!activeContainerRef.current || !full) return false
     setDl(true); setDlErr(null)
-    try { await uploadPagesAsLink(activeContainerRef.current, printFileName(), pageChrome(full.taiLieu, full.taiLieu.cau_hinh ?? {}), full.taiLieu.id) }
-    catch (e) { setDlErr('Lấy link lỗi: ' + (e instanceof Error ? e.message : String(e))) }
+    try { await uploadPagesAsLink(activeContainerRef.current, printFileName(), pageChrome(full.taiLieu, full.taiLieu.cau_hinh ?? {}), full.taiLieu.id); return true }
+    catch (e) { setDlErr('Lấy link lỗi: ' + (e instanceof Error ? e.message : String(e))); return false }
     finally { setDl(false) }
   }
 
@@ -85,7 +85,7 @@ export default function MTPrintView({ id, onClose, headless, linkOnly }: { id: s
   useEffect(() => {
     if (!headless || didAutoDl.current || rendering || dlErr || !full || !dstRef.current) return
     didAutoDl.current = true
-    const t = setTimeout(() => { linkOnly ? layLink().finally(onClose) : printWithFilename(printFileName()) }, 350)
+    const t = setTimeout(() => { linkOnly ? layLink().then((ok) => (ok ? onClose() : (onFail ?? onClose)())) : printWithFilename(printFileName()) }, 350)
     return () => clearTimeout(t)
   }, [headless, rendering, dlErr, full]) // eslint-disable-line
   useEffect(() => {

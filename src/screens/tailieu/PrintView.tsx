@@ -125,7 +125,7 @@ export async function uploadPagesAsLink(dst: HTMLElement, filename: string, chro
 
 // headless = KHÔNG hiện preview, tự dựng trang ẩn → tải PDF → đóng (nút "⬇ Tải" ngay ở hàng Kho tài liệu).
 // onlyBuoiId = chỉ render 1 BUỔI (nút "👁 Xem buổi" ở Builder) — kiểm tra nhanh, khỏi cuộn cả giáo trình.
-export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly }: { id: string; onClose: () => void; headless?: boolean; onlyBuoiId?: string; linkOnly?: boolean }) {
+export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly, onFail }: { id: string; onClose: () => void; headless?: boolean; onlyBuoiId?: string; linkOnly?: boolean; onFail?: () => void }) {
   const [full, setFull] = useState<TaiLieuFull | null>(null)
   const [err, setErr] = useState<string | null>(null)
   const [gv, setGv] = useState(false) // false = bản HS · true = bản GV
@@ -217,8 +217,11 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly 
 
   // "🔗 Lấy link" — CHỈ dùng cho linkOnly (headless), không dùng cho "⬇ Tải PDF" (giờ = native print, xem
   // dưới). Vẫn phải tự dựng qua html2canvas vì cần 1 FILE BLOB để upload ẨN, không hộp thoại.
-  async function layLink() {
-    if (!activeContainerRef.current || !full) return
+  // Trả boolean (KHÔNG throw) — caller (didAutoDl, LinkGenWorker qua onClose/onFail) cần biết ĐÚNG kết
+  // quả để báo lỗi ngay (linkGenFailed) thay vì đợi hết watchdog 45s mới coi là lỗi (chỉ watchdog mới
+  // đúng cho ca TREO, còn lỗi tường minh — vd upload 400 — biết ngay không cần chờ).
+  async function layLink(): Promise<boolean> {
+    if (!activeContainerRef.current || !full) return false
     setDl(true); setRenderErr(null)
     const ch = full.taiLieu.cau_hinh ?? {}
     const buoiDoc = full.taiLieu.loai === 'btvn' || full.taiLieu.loai === 'giao_trinh_buoi'
@@ -228,8 +231,8 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly 
       headerText: `${lopTen ? `Lớp ${lopTen} · ` : ''}${ngayVN}`,
       footerText: 'BK Academy        Tel : 0963.209.309        Địa chỉ : 17A10 KĐT Geleximco',
     } : undefined
-    try { await uploadPagesAsLink(activeContainerRef.current, printFileName(), pageChrome(full.taiLieu, ch, cssOpts), full.taiLieu.id) }
-    catch (e) { setRenderErr('Lấy link lỗi: ' + (e instanceof Error ? e.message : String(e))) }
+    try { await uploadPagesAsLink(activeContainerRef.current, printFileName(), pageChrome(full.taiLieu, ch, cssOpts), full.taiLieu.id); return true }
+    catch (e) { setRenderErr('Lấy link lỗi: ' + (e instanceof Error ? e.message : String(e))); return false }
     finally { setDl(false) }
   }
 
@@ -241,7 +244,7 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly 
   useEffect(() => {
     if (!headless || didAutoDl.current || rendering || renderErr || !full || !dstRef.current) return
     didAutoDl.current = true
-    const t = setTimeout(() => { linkOnly ? layLink().finally(onClose) : printWithFilename(printFileName()) }, 350)
+    const t = setTimeout(() => { linkOnly ? layLink().then((ok) => (ok ? onClose() : (onFail ?? onClose)())) : printWithFilename(printFileName()) }, 350)
     return () => clearTimeout(t)
   }, [headless, rendering, renderErr, full, lopTen]) // eslint-disable-line
   useEffect(() => {

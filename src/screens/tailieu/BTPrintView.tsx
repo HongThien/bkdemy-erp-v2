@@ -12,7 +12,7 @@ import { CauItem, CauList, OptGrid, GvAnswer, WriteLines, splitStem, CHROME_CSS,
 
 // headless+linkOnly (07-12) — dựng ẩn CHỈ để upload+ghi file_url, dùng bởi LinkGenWorker (hàng đợi
 // toàn cục, xem component đó) khi 1 BT vừa tạo/sửa xong. Mirror ĐÚNG pattern DeThiPrintView/MTPrintView.
-export default function BTPrintView({ id, onClose, headless, linkOnly }: { id: string; onClose: () => void; headless?: boolean; linkOnly?: boolean }) {
+export default function BTPrintView({ id, onClose, headless, linkOnly, onFail }: { id: string; onClose: () => void; headless?: boolean; linkOnly?: boolean; onFail?: () => void }) {
   const [bt, setBt] = useState<BT | null>(null)
   const [full, setFull] = useState<TaiLieuFull | null>(null)
   const [err, setErr] = useState<string | null>(null)
@@ -70,11 +70,11 @@ export default function BTPrintView({ id, onClose, headless, linkOnly }: { id: s
 
   const seg = (on: boolean) => `rounded-md px-3 py-1 text-[13px] font-medium transition ${on ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`
   const printFileName = () => `${bt?.hoc_sinh?.ho_ten ?? ''} - ${full?.taiLieu.ten ?? ''}${gv ? ' - Bản GV' : ''}`
-  async function layLink() {
-    if (!activeContainerRef.current || !full) return
+  async function layLink(): Promise<boolean> {
+    if (!activeContainerRef.current || !full) return false
     setDl(true); setDlErr(null)
-    try { await uploadPagesAsLink(activeContainerRef.current, printFileName(), pageChrome(full.taiLieu, full.taiLieu.cau_hinh ?? {}), full.taiLieu.id) }
-    catch (e) { setDlErr('Lấy link lỗi: ' + (e instanceof Error ? e.message : String(e))) }
+    try { await uploadPagesAsLink(activeContainerRef.current, printFileName(), pageChrome(full.taiLieu, full.taiLieu.cau_hinh ?? {}), full.taiLieu.id); return true }
+    catch (e) { setDlErr('Lấy link lỗi: ' + (e instanceof Error ? e.message : String(e))); return false }
     finally { setDl(false) }
   }
 
@@ -82,7 +82,7 @@ export default function BTPrintView({ id, onClose, headless, linkOnly }: { id: s
   useEffect(() => {
     if (!headless || didAutoDl.current || rendering || dlErr || !full || !dstRef.current) return
     didAutoDl.current = true
-    const t = setTimeout(() => { linkOnly ? layLink().finally(onClose) : printWithFilename(printFileName()) }, 350)
+    const t = setTimeout(() => { linkOnly ? layLink().then((ok) => (ok ? onClose() : (onFail ?? onClose)())) : printWithFilename(printFileName()) }, 350)
     return () => clearTimeout(t)
   }, [headless, rendering, dlErr, full]) // eslint-disable-line
   useEffect(() => {

@@ -43,7 +43,11 @@ export default function LinkGenWorker() {
 
   if (!active) return null
   const onClose = () => setLinkGenActive(null)
-  const props = { id: active.id, headless: true as const, linkOnly: true as const, onClose }
+  // Lỗi TƯỜNG MINH (vd upload trả 400) không cần đợi hết watchdog 45s mới coi là thất bại — báo ngay
+  // qua CÙNG hàm `timeoutLinkGenActive` (đã có sẵn logic thử lại tối đa MAX_LINKGEN_ATTEMPTS lần rồi
+  // mới đánh dấu `linkGenFailed`), chỉ khác là gọi NGAY thay vì đợi hết giờ.
+  const onFail = () => timeoutLinkGenActive(active.id)
+  const props = { id: active.id, headless: true as const, linkOnly: true as const, onClose, onFail }
   if (active.loai === 'et') return <ETPrintView {...props} />
   if (active.loai === 'de_thi') return <DeThiPrintView {...props} />
   if (active.loai === 'mt' || active.loai === 'mt_buoi') return <MTPrintView {...props} />
