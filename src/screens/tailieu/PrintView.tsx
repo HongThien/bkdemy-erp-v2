@@ -55,12 +55,16 @@ async function waitStylesheets(doc: Document, timeoutMs = 3000): Promise<void> {
 }
 async function injectChrome(doc: Document, cr: PageChrome): Promise<void> {
   await waitStylesheets(doc)
-  // `content:none!important` (dòng CSS override cũ) KHÔNG đủ — html2canvas hỗ trợ pseudo-element
-  // KHÔNG CHUẨN, "cố" vẽ text của `content:` rule GỐC dù đã override, chồng lên đúng <span> thật vừa
-  // chèn bên dưới → chữ header/footer bị NHÂN ĐÔI, lệch nhẹ (2 nguồn dùng padding khác nhau: pseudo
-  // `padding:0 10mm 0 50mm` vs span thật `padding:0 10mm`). Override-bằng-specificity không đáng tin
-  // với html2canvas — XOÁ THẲNG rule khỏi CSSOM (không còn gì để nó "cố" render nữa) — GIỜ CHẮC CHẮN
-  // stylesheet đã load nên `cssRules` có nội dung thật để soi/xoá.
+  // ⭐ 07-12 tiếp 5 — CẢ 2 fix trước (`content:none!important` override, rồi xoá thẳng rule khỏi CSSOM)
+  // ĐỀU KHÔNG ĂN, verify lại nhiều lần bằng file THẬT Thùy tự tạo trên máy (không phải sandbox): chữ
+  // header/footer vẫn nhân đôi y hệt. Kết luận: html2canvas KHÔNG đáng tin để "tắt" 1 pseudo-element
+  // bằng BẤT KỲ CÁCH nào liên quan tới `content`/tồn-tại-của-rule (dù override specificity hay xoá tận
+  // gốc CSSOM) — đây là hạn chế đã biết của html2canvas với pseudo-element (không phải lỗi code của
+  // chúng ta lặp lại 2 lần, mà là GIỚI HẠN THẬT của thư viện). Đổi hẳn chiến lược: dùng `opacity:0` —
+  // thuộc tính COMPOSITING chuẩn, được html2canvas (và mọi renderer) hỗ trợ đáng tin cậy hơn HẲN so với
+  // "có tồn tại content hay không" — dù pseudo-element còn "cố" vẽ chữ, opacity:0 làm nó VÔ HÌNH thật sự
+  // (không chỉ ẩn khỏi CSSOM mà ẩn ở TẦNG COMPOSITE cuối cùng, khó bị bỏ qua hơn). Giữ nguyên xoá-CSSOM +
+  // waitStylesheets làm lưới phụ (vô hại nếu ăn, không hại nếu không ăn).
   for (const sheet of Array.from(doc.styleSheets)) {
     try {
       const rules = sheet.cssRules
@@ -68,10 +72,10 @@ async function injectChrome(doc: Document, cr: PageChrome): Promise<void> {
         const sel = (rules[i] as CSSStyleRule).selectorText
         if (sel && (sel.includes('.pagedjs_pagebox::before') || sel.includes('.pagedjs_pagebox::after'))) sheet.deleteRule(i)
       }
-    } catch { /* stylesheet cross-origin (hiếm, blob cùng origin) — bỏ qua, override CSS dưới vẫn còn làm lưới */ }
+    } catch { /* stylesheet cross-origin (hiếm, blob cùng origin) — bỏ qua */ }
   }
   const st = doc.createElement('style')
-  st.textContent = '.pagedjs_pagebox::before,.pagedjs_pagebox::after{content:none!important;background:none!important}'
+  st.textContent = '.pagedjs_pagebox::before,.pagedjs_pagebox::after{opacity:0!important;content:none!important;background:none!important}'
   doc.head.appendChild(st)
   doc.querySelectorAll('.pagedjs_pagebox').forEach((pb) => {
     const box = pb as HTMLElement
@@ -111,21 +115,32 @@ export async function uploadPagesAsLink(dst: HTMLElement, filename: string, chro
   try { await (document as Document & { fonts?: { ready?: Promise<unknown> } }).fonts?.ready } catch { /* */ }
   // Nạp sẵn logo để html2canvas có ảnh (né lỗi ảnh chưa tải).
   if (chrome?.logoUrl) await new Promise<void>((res) => { const im = new Image(); im.crossOrigin = 'anonymous'; im.onload = () => res(); im.onerror = () => res(); im.src = chrome.logoUrl })
-  const pdf = new jspdfMod.jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' })
-  for (let i = 0; i < pages.length; i++) {
-    const canvas = await html2canvas(pages[i], {
-      scale: 2, useCORS: true, backgroundColor: '#ffffff', logging: false, imageTimeout: 15000,
-      onclone: chrome ? (doc: Document) => injectChrome(doc, chrome) : undefined,
-    })
-    if (i > 0) pdf.addPage()
-    // PNG (KHÔNG JPEG) — JPEG nén mất-dữ-liệu làm rám/vỡ viền chữ nhỏ trên nền nhiều màu (header/footer).
-    pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 210, 297)
+  // ⭐ 07-12 tiếp 5: gắn `pv-no-chrome` lên `.pagedjs_pagebox` TRÊN DOM SỐNG (không phải bản clone của
+  // html2canvas) TRƯỚC khi chụp — rule pseudo (`buildPagedCss`) đã gate `:not(.pv-no-chrome)`, nên gắn
+  // class này làm SELECTOR đơn giản KHÔNG CÒN KHỚP, không cần html2canvas "tôn trọng" override gì nữa
+  // (2 lần trước dựa vào việc đó và đều thất bại — xem comment ở injectChrome). Gỡ lại trong `finally`
+  // để preview/native-print tiếp tục đúng như cũ nếu Thùy xem lại sau khi lấy link.
+  const pageboxes = Array.from(dst.querySelectorAll('.pagedjs_pagebox')) as HTMLElement[]
+  pageboxes.forEach((pb) => pb.classList.add('pv-no-chrome'))
+  try {
+    const pdf = new jspdfMod.jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' })
+    for (let i = 0; i < pages.length; i++) {
+      const canvas = await html2canvas(pages[i], {
+        scale: 2, useCORS: true, backgroundColor: '#ffffff', logging: false, imageTimeout: 15000,
+        onclone: chrome ? (doc: Document) => injectChrome(doc, chrome) : undefined,
+      })
+      if (i > 0) pdf.addPage()
+      // PNG (KHÔNG JPEG) — JPEG nén mất-dữ-liệu làm rám/vỡ viền chữ nhỏ trên nền nhiều màu (header/footer).
+      pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 210, 297)
+    }
+    const outName = safeFileName(filename) + '.pdf'
+    const blob = pdf.output('blob') as Blob
+    const { url } = await uploadKhoFile(new File([blob], outName, { type: 'application/pdf' }))
+    await setTaiLieuFileUrl(taiLieuId, url)
+    return url
+  } finally {
+    pageboxes.forEach((pb) => pb.classList.remove('pv-no-chrome'))
   }
-  const outName = safeFileName(filename) + '.pdf'
-  const blob = pdf.output('blob') as Blob
-  const { url } = await uploadKhoFile(new File([blob], outName, { type: 'application/pdf' }))
-  await setTaiLieuFileUrl(taiLieuId, url)
-  return url
 }
 
 // headless = KHÔNG hiện preview, tự dựng trang ẩn → tải PDF → đóng (nút "⬇ Tải" ngay ở hàng Kho tài liệu).
@@ -742,8 +757,15 @@ export function buildPagedCss(taiLieu: TaiLieuFull['taiLieu'], ch: CauHinh, acce
   return CONTENT_CSS + `
 .katex{font-size:0.95em!important}.pagedjs_page{font-family:'Times New Roman',Tinos,Times,serif;font-size:17px;color:#23272b;line-height:1.55;--pv-accent:${accent}}
 .pagedjs_pagebox{position:relative}
-${head ? `.pagedjs_pagebox::before{content:${headTxt};position:absolute;top:0;left:0;right:0;height:18mm;padding:0 10mm 0 50mm;box-sizing:border-box;background:url("${logoUrl}") 8mm 3.5mm / auto 5mm no-repeat, url("${chipUri}") 4.5mm 1.5mm / 42mm 9mm no-repeat, url("${headUri}") center/100% 100% no-repeat;display:flex;align-items:center;justify-content:flex-end;color:#fff;font-weight:700;font-size:11px;letter-spacing:.3px;text-shadow:0 1px 2px rgba(0,0,0,.25);z-index:1}` : ''}
-${foot ? `.pagedjs_pagebox::after{content:${footTxt};${footWS}position:absolute;bottom:0;left:0;right:0;height:15mm;padding:0 16mm;box-sizing:border-box;background:url("${footUri}") center/100% 100% no-repeat;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:11px;letter-spacing:.3px;text-shadow:0 1px 3px rgba(0,0,0,.35);z-index:1}` : ''}
+${/* ⭐ 07-12 tiếp 5: `:not(.pv-no-chrome)` — gate SELECTOR (không phải property override) cho đường
+    html2canvas. 2 lần trước cố "tắt" pseudo BẰNG property (content:none/xoá rule CSSOM) đều KHÔNG ăn —
+    verify nhiều lần bằng file thật vẫn còn chữ nhân đôi. html2canvas được cho là hỗ trợ pseudo-element
+    KHÔNG ĐÁNG TIN CẬY cho việc "ẩn nó đi", nhưng SELECTOR MATCHING (rule có áp dụng cho phần tử hay
+    không) là hành vi CSS cơ bản, đáng tin hơn hẳn 1 property riêng lẻ. `uploadPagesAsLink` gắn class
+    `pv-no-chrome` lên `.pagedjs_pagebox` TRÊN DOM SỐNG (không phải bản clone) NGAY TRƯỚC khi gọi
+    html2canvas → rule đơn giản KHÔNG CÒN KHỚP nữa, không cần html2canvas "tôn trọng" gì thêm. */ ''}
+${head ? `.pagedjs_pagebox:not(.pv-no-chrome)::before{content:${headTxt};position:absolute;top:0;left:0;right:0;height:18mm;padding:0 10mm 0 50mm;box-sizing:border-box;background:url("${logoUrl}") 8mm 3.5mm / auto 5mm no-repeat, url("${chipUri}") 4.5mm 1.5mm / 42mm 9mm no-repeat, url("${headUri}") center/100% 100% no-repeat;display:flex;align-items:center;justify-content:flex-end;color:#fff;font-weight:700;font-size:11px;letter-spacing:.3px;text-shadow:0 1px 2px rgba(0,0,0,.25);z-index:1}` : ''}
+${foot ? `.pagedjs_pagebox:not(.pv-no-chrome)::after{content:${footTxt};${footWS}position:absolute;bottom:0;left:0;right:0;height:15mm;padding:0 16mm;box-sizing:border-box;background:url("${footUri}") center/100% 100% no-repeat;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:11px;letter-spacing:.3px;text-shadow:0 1px 3px rgba(0,0,0,.35);z-index:1}` : ''}
 @page{
   size:A4;
   margin:18mm 14mm 22mm;
