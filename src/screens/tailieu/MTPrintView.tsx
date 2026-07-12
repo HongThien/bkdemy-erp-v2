@@ -42,16 +42,31 @@ export default function MTPrintView({ id, onClose, headless, linkOnly }: { id: s
     const dst = dstRef.current
     const container = document.createElement('div')
     dst.appendChild(container)
+    // Watchdog: paged.js từng TREO VĨNH VIỄN không resolve (xem DEVLOG 07-11) — headless (in nhanh/lấy
+    // link) mắc kẹt "⏳" mãi mãi KHÔNG CÓ NÚT ĐÓNG nếu không set dlErr. Quá 30s coi như treo.
+    let settled = false
+    const watchdog = setTimeout(() => {
+      if (settled || cancelled) return
+      settled = true
+      container.style.display = 'none'
+      setDlErr('Dựng trang quá lâu (>30s) — đóng rồi thử lại.'); setRendering(false)
+    }, 30000)
     new Previewer().preview(html, [cssUrl], container)
       .then((flow: { total?: number }) => {
+        if (settled) return
+        settled = true; clearTimeout(watchdog)
         if (cancelled) { container.style.display = 'none'; return }
         Array.from(dst.children).forEach((c) => { if (c !== container) (c as HTMLElement).style.display = 'none' })
         activeContainerRef.current = container
         setPages(flow?.total ?? 0); setRendering(false)
       })
-      .catch(() => { container.style.display = 'none'; if (!cancelled) setRendering(false) })
+      .catch((e: unknown) => {
+        if (settled) return
+        settled = true; clearTimeout(watchdog)
+        container.style.display = 'none'; if (!cancelled) { setDlErr('Dựng trang lỗi: ' + (e instanceof Error ? e.message : String(e))); setRendering(false) }
+      })
       .finally(() => URL.revokeObjectURL(cssUrl))
-    return () => { cancelled = true }
+    return () => { cancelled = true; clearTimeout(watchdog) }
   }, [full, gv])
 
   const seg = (on: boolean) => `rounded-md px-3 py-1 text-[13px] font-medium transition ${on ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`
@@ -68,11 +83,11 @@ export default function MTPrintView({ id, onClose, headless, linkOnly }: { id: s
 
   const didAutoDl = useRef(false)
   useEffect(() => {
-    if (!headless || didAutoDl.current || rendering || !full || !dstRef.current) return
+    if (!headless || didAutoDl.current || rendering || dlErr || !full || !dstRef.current) return
     didAutoDl.current = true
     const t = setTimeout(() => { linkOnly ? layLink().finally(onClose) : printWithFilename(printFileName()) }, 350)
     return () => clearTimeout(t)
-  }, [headless, rendering, full]) // eslint-disable-line
+  }, [headless, rendering, dlErr, full]) // eslint-disable-line
   useEffect(() => {
     if (!headless || linkOnly) return
     const onAfter = () => onClose()

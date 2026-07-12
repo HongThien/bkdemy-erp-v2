@@ -36,7 +36,9 @@ export default function KhoTaiLieuScreen() {
   const [print, setPrint] = useState<{ id: string; loai: string } | null>(null)
   const [dlDoc, setDlDoc] = useState<{ id: string; loai: string } | null>(null)
   const [linkDoc, setLinkDoc] = useState<{ id: string; loai: string; autoCopy: boolean } | null>(null) // "🔗 Lấy link" — render ẩn, CHỈ upload+link, không tải file cục bộ
-  const [linkQueue, setLinkQueue] = useState<{ id: string; loai: string }[]>([]) // hàng đợi lấy-link NỀN (backfill + làm mới sau sửa)
+  const [linkQueue, setLinkQueue] = useState<{ id: string; loai: string }[]>([]) // hàng đợi lấy-link NỀN (làm mới sau sửa + bulk Thùy tự bấm)
+  const [bulkRunning, setBulkRunning] = useState(false) // đang chạy hàng loạt (Thùy chủ động bấm) — khác nền-1-job-sau-khi-sửa
+  const [linkErrId, setLinkErrId] = useState<string | null>(null) // id vừa timeout — báo lỗi thoáng qua trên đúng dòng
   const [editEt, setEditEt] = useState<ETView | null>(null) // sửa ET tại chỗ (mở ETEditor)
   const [editGt, setEditGt] = useState<string | null>(null) // sửa giáo trình/BTVN (mở TaiLieuBuilder)
   const [editDeThi, setEditDeThi] = useState<string | null>(null) // sửa đề thi (mở DeThiEditor)
@@ -83,35 +85,46 @@ export default function KhoTaiLieuScreen() {
   function lamMoiLink(r: Row) {
     setLinkDoc({ id: r.id, loai: r.loai, autoCopy: true })
   }
-  // Hàng đợi NỀN — Thùy 07-11 (tiếp 8): "t cần lưu mọi file pdf mà", không muốn bấm từng dòng. Enqueue
-  // CHỈ 1 job/tài liệu tại 1 thời điểm (lọc trùng theo id); xử lý TUẦN TỰ (1 headless PrintView tại 1
-  // thời điểm — effect dưới) để không hâm nóng máy dựng hàng chục trang cùng lúc. KHÔNG tự copy (autoCopy
-  // false) — nền thì không được lặng lẽ ghi đè clipboard của Thùy.
+  // Hàng đợi NỀN — xử lý TUẦN TỰ (1 headless PrintView tại 1 thời điểm — effect dưới) để không hâm nóng
+  // máy dựng hàng chục trang cùng lúc. KHÔNG tự copy (autoCopy false) — nền thì không được lặng lẽ ghi
+  // đè clipboard của Thùy.
+  // ⚠ 07-11 tiếp 9 (Thùy báo "vào Kho là load mãi Đang lấy link"): BỎ HẲN auto-backfill-mọi-tài-liệu-
+  // lúc-mở-màn — 337/343 tài liệu cũ chưa có link, tự xếp hàng cả cục MỖI LẦN MỞ MÀN, và chỉ cần 1 tài
+  // liệu bị treo (paged.js từng treo vĩnh viễn, xem DEVLOG) là cả hàng đợi kẹt cứng, Thùy thấy y hệt
+  // "cứ load mãi". Giờ CHỈ enqueue khi: (a) Thùy chủ động bấm "Tạo link hàng loạt", (b) auto làm mới 1
+  // doc vừa sửa (bounded, 1 job).
   function enqueueLink(id: string, loai: string) {
     setLinkQueue((q) => (q.some((x) => x.id === id) || linkDoc?.id === id) ? q : [...q, { id, loai }])
   }
+  const missingCount = useMemo(() => rows.filter((r) => !r.file_url).length, [rows])
+  function batDauLayLinkHangLoat() {
+    const missing = rows.filter((r) => !r.file_url)
+    if (missing.length === 0) return
+    if (!confirm(`Tạo link cho ${missing.length} tài liệu còn thiếu? Chạy TUẦN TỰ ở nền, có thể mất khá lâu — bấm "⏹ Dừng" bất cứ lúc nào để huỷ phần chưa chạy (phần đã làm vẫn giữ).`)) return
+    setLinkQueue((q) => { const have = new Set(q.map((x) => x.id)); return [...q, ...missing.filter((r) => !have.has(r.id)).map((r) => ({ id: r.id, loai: r.loai }))] })
+    setBulkRunning(true)
+  }
+  function dungLayLinkHangLoat() { setLinkQueue([]); setBulkRunning(false) }
   useEffect(() => {
     if (linkDoc || linkQueue.length === 0) return
     const [next, ...rest] = linkQueue
     setLinkQueue(rest)
     setLinkDoc({ ...next, autoCopy: false })
   }, [linkDoc, linkQueue])
-  // Watchdog CHỈ cho job NỀN (autoCopy false) — paged.js từng TREO vĩnh viễn không resolve/không lỗi
-  // (tái hiện nhiều lần trong sandbox phiên 07-11, xem DEVLOG). Job NỀN không ai đứng canh như bấm tay,
-  // nên nếu treo quá 45s thì bỏ job đó, nhường chỗ cho hàng đợi đi tiếp — không để 1 tài liệu lỗi chặn
-  // đứng backfill của TẤT CẢ tài liệu còn lại. Job bấm tay (autoCopy true) KHÔNG bị huỷ tự động — Thùy
-  // tự thấy "⏳ Đang lấy…" không xong thì tự đóng.
+  useEffect(() => { if (bulkRunning && !linkDoc && linkQueue.length === 0) setBulkRunning(false) }, [bulkRunning, linkDoc, linkQueue])
+  // Watchdog cho MỌI job (kể cả bấm tay — trước chỉ áp job nền, nhưng Thùy đã gặp "Đang lấy link" treo
+  // mãi cả khi bấm tay). paged.js từng TREO VĨNH VIỄN không resolve/không lỗi (xem DEVLOG) → quá 40s thì
+  // bỏ, báo lỗi thoáng qua trên đúng dòng, KHÔNG tự thử lại (tránh vòng lặp vô hạn trên 1 doc luôn treo).
   useEffect(() => {
-    if (!linkDoc || linkDoc.autoCopy) return
+    if (!linkDoc) return
     const cur = linkDoc
-    const t = setTimeout(() => setLinkDoc((now) => (now === cur ? null : now)), 45000)
+    const t = setTimeout(() => {
+      setLinkDoc((now) => (now === cur ? null : now))
+      setLinkErrId(cur.id)
+      setTimeout(() => setLinkErrId((id) => (id === cur.id ? null : id)), 4000)
+    }, 40000)
     return () => clearTimeout(t)
   }, [linkDoc])
-  // Backfill: mọi tài liệu CHƯA có link (kể cả tài liệu mới vừa tạo) tự động được xếp hàng lấy link —
-  // không cần Thùy bấm tay từng dòng. Idempotent: doc đã có file_url thì không lọt qua filter, tự dừng.
-  useEffect(() => {
-    rows.filter((r) => !r.file_url).forEach((r) => enqueueLink(r.id, r.loai))
-  }, [rows]) // eslint-disable-line
   async function xongLayLink() {
     if (!linkDoc) return
     const { id, autoCopy } = linkDoc
@@ -172,6 +185,14 @@ export default function KhoTaiLieuScreen() {
         <button onClick={() => setLoai('__all__')} className={tab(loai === '__all__')}>Tất cả</button>
         {loais.map((l) => <button key={l} onClick={() => setLoai(l)} className={tab(loai === l)}>{loaiTen(l)}</button>)}
         <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm theo tên…" className="ml-auto h-7 w-52 rounded-md border border-slate-200 px-2.5 text-[13px] outline-none focus:border-indigo-400" />
+        {bulkRunning ? (
+          <div className="flex items-center gap-2 rounded-md bg-sky-50 px-2.5 py-1 text-[12px] font-medium text-sky-700">
+            <span>⏳ Đang lấy link hàng loạt… còn {linkQueue.length + (linkDoc && !linkDoc.autoCopy ? 1 : 0)}</span>
+            <button onClick={dungLayLinkHangLoat} className="rounded border border-sky-300 px-1.5 py-0.5 text-[11px] hover:bg-sky-100">⏹ Dừng</button>
+          </div>
+        ) : missingCount > 0 && (
+          <button onClick={batDauLayLinkHangLoat} title="Tự dựng + upload link cho mọi tài liệu chưa có, chạy tuần tự ở nền" className="rounded-md border border-sky-300 px-2.5 py-1 text-[12px] font-medium text-sky-700 hover:bg-sky-50">🔗 Tạo link hàng loạt ({missingCount} còn thiếu)</button>
+        )}
       </div>
 
       <div className="min-h-0 flex-1 overflow-auto p-6">
@@ -216,9 +237,9 @@ export default function KhoTaiLieuScreen() {
                           {/* Bỏ qua bước xem thử, mở thẳng hộp thoại in (bản Học sinh mặc định) — Thùy
                               07-11: đổi hẳn từ html2canvas tự vẽ lại (hay lỗi) sang NATIVE print. */}
                           <button onClick={() => setDlDoc({ id: r.id, loai: r.loai })} className="rounded-md border border-indigo-300 px-2.5 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-50">🖨 In nhanh</button>
-                          <button onClick={() => layLink(r)} disabled={linkDoc?.id === r.id} title={r.file_url ?? 'Đang tự tạo link ở nền…'}
-                            className="rounded-md border border-sky-300 px-2.5 py-1 text-[12px] font-medium text-sky-700 hover:bg-sky-50 disabled:opacity-40">
-                            {linkDoc?.id === r.id ? '⏳ Đang lấy…' : copiedId === r.id ? '✓ Đã copy' : r.file_url ? '🔗 Copy link' : (linkQueue.some((x) => x.id === r.id) ? '⏳ Chờ xếp hàng…' : '🔗 Lấy link')}
+                          <button onClick={() => layLink(r)} disabled={linkDoc?.id === r.id} title={linkErrId === r.id ? 'Dựng trang quá lâu (>40s), thử lại' : r.file_url ?? 'Bấm để tạo link chia sẻ'}
+                            className={`rounded-md border px-2.5 py-1 text-[12px] font-medium disabled:opacity-40 ${linkErrId === r.id ? 'border-rose-300 text-rose-600 hover:bg-rose-50' : 'border-sky-300 text-sky-700 hover:bg-sky-50'}`}>
+                            {linkDoc?.id === r.id ? '⏳ Đang lấy…' : copiedId === r.id ? '✓ Đã copy' : linkErrId === r.id ? '❌ Lỗi, bấm lại' : r.file_url ? '🔗 Copy link' : (linkQueue.some((x) => x.id === r.id) ? '⏳ Chờ xếp hàng…' : '🔗 Lấy link')}
                           </button>
                           {r.file_url && (
                             <button onClick={() => lamMoiLink(r)} disabled={linkDoc?.id === r.id} title="Tạo lại link (dùng khi nội dung vừa đổi ở nơi khác hoặc file cũ bị lỗi)"
