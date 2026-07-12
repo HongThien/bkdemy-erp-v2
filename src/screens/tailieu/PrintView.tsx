@@ -149,16 +149,33 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly 
     const dst = dstRef.current
     const container = document.createElement('div')
     dst.appendChild(container)
+    // Watchdog: paged.js Previewer.preview() từng TREO VĨNH VIỄN không resolve/không lỗi (xem DEVLOG
+    // 07-11) — không có nó, headless (in nhanh/lấy link) mắc kẹt "⏳" mãi mãi KHÔNG CÓ NÚT ĐÓNG (nút chỉ
+    // hiện khi renderErr có giá trị). Quá 30s coi như treo → set renderErr (tự hiện nút Đóng + ngăn
+    // auto-trigger in/lấy-link chạy tiếp trên trang dựng dở).
+    let settled = false
+    const watchdog = setTimeout(() => {
+      if (settled || cancelled) return
+      settled = true
+      container.style.display = 'none'
+      setRenderErr('Dựng trang quá lâu (>30s) — đóng rồi thử lại.'); setRendering(false)
+    }, 30000)
     new Previewer().preview(html, [cssUrl], container)
       .then((flow: { total?: number }) => {
+        if (settled) return
+        settled = true; clearTimeout(watchdog)
         if (cancelled) { container.style.display = 'none'; return } // stale (deps đã đổi) → ẩn, không đụng state
         Array.from(dst.children).forEach((c) => { if (c !== container) (c as HTMLElement).style.display = 'none' })
         activeContainerRef.current = container
         setPages(flow?.total ?? 0); setRendering(false)
       })
-      .catch((e: unknown) => { container.style.display = 'none'; if (!cancelled) { setRenderErr(e instanceof Error ? e.message : String(e)); setRendering(false) } })
+      .catch((e: unknown) => {
+        if (settled) return
+        settled = true; clearTimeout(watchdog)
+        container.style.display = 'none'; if (!cancelled) { setRenderErr(e instanceof Error ? e.message : String(e)); setRendering(false) }
+      })
       .finally(() => URL.revokeObjectURL(cssUrl))
-    return () => { cancelled = true }
+    return () => { cancelled = true; clearTimeout(watchdog) }
   }, [full, gv, scope, lopTen, onlyBuoiId])
 
   const seg = (on: boolean) => `rounded-md px-3 py-1 text-[13px] font-medium transition ${on ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`
