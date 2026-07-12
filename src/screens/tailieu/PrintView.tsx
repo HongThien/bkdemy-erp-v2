@@ -23,75 +23,52 @@ export function printWithFilename(filename: string) {
   window.addEventListener('afterprint', restore)
   window.print()
 }
-const escHtml = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-// Chèn header/footer bằng PHẦN TỬ THẬT vào bản clone của html2canvas (tắt ::before/::after gốc).
-// LÝ DO: html2canvas KHÔNG rasterize nổi background NHIỀU LỚP trên pseudo-element (logo+chip+wave) → header trắng,
-// chữ trắng thành mờ (§367). Phần tử thật + <img> logo + 1 wave đơn thì html2canvas chụp chuẩn.
-// ⭐ 07-11 (tiếp 8, Thùy báo lại kèm file PDF thật): dải SÓNG vẫn lỗi dù đã đổi logo/chip sang <img> —
-// dải màu chỉ hiện ở phần trên cùng (~1/3 chiều cao) rồi TRẮNG hẳn, chữ (canh giữa theo CHIỀU CAO ĐẦY ĐỦ
-// của khối) rơi vào vùng trắng đó → chỉ còn thấy bóng đổ (text-shadow) mờ mờ, KHÔNG thấy chữ trắng thật.
-// ROOT CAUSE: dải sóng vẫn đặt qua CSS `background:url(...) center/100% 100%` — html2canvas rasterize
-// data-URI SVG làm CSS background KHÔNG tôn trọng `100% 100%` (bỏ qua backgroundSize, dùng kích thước
-// "tự nhiên" của SVG theo tỉ lệ viewBox 1200:100 thay vì kéo giãn theo khối chứa) → dải sóng bị nén dẹt
-// lại rất thấp so với khối 18mm/15mm. ĐÚNG bài học đã ghi ở comment trên (background nhiều lớp lỗi) —
-// chỉ mới sửa được logo/chip (đã là <img>), CHƯA sửa chính dải sóng (vẫn còn background). Fix: dải sóng
-// cũng chuyển hẳn sang <img> (position:absolute;inset:0;width/height:100%) — html2canvas render <img>
-// đáng tin cậy hơn hẳn CSS background theo mọi bằng chứng đã thấy trong phiên này.
-// Chờ MỌI <link rel=stylesheet> trong doc (bản clone của html2canvas) load xong — 07-12 tiếp 4: fix
-// "xoá rule khỏi CSSOM" (dưới) đã KHÔNG ăn dù review đúng hướng, verify lại bằng file thật vẫn y hệt
-// lỗi cũ. Nghi vấn: `injectChrome` chạy ĐỒNG BỘ trong onclone, nhưng stylesheet nạp qua blob URL —
-// khi html2canvas clone `<link>` sang document/iframe MỚI, trình duyệt phải nạp+parse LẠI (dù cache
-// nhanh, vẫn KHÔNG đồng bộ) → lúc code xoá rule chạy tới, CSSOM CÓ THỂ CHƯA populate (`cssRules` rỗng,
-// không lỗi, chỉ đơn giản chưa có gì để xoá) → vòng lặp "thành công" nhưng không xoá được gì thật.
-async function waitStylesheets(doc: Document, timeoutMs = 3000): Promise<void> {
-  const links = Array.from(doc.querySelectorAll('link[rel="stylesheet"]')) as HTMLLinkElement[]
-  await Promise.race([
-    Promise.all(links.map((l) => l.sheet ? Promise.resolve() : new Promise<void>((res) => {
-      l.addEventListener('load', () => res(), { once: true })
-      l.addEventListener('error', () => res(), { once: true })
-    }))),
-    new Promise<void>((res) => setTimeout(res, timeoutMs)), // lưới an toàn — đừng treo cả upload nếu 1 link kẹt
-  ])
+// ⭐ 07-12 tiếp 6 — QUYẾT ĐỊNH KIẾN TRÚC: sau 3 LẦN sửa header/footer bằng html2canvas (override CSS
+// `!important`, xoá rule CSSOM có chờ load, opacity:0 + gate selector `:not(.pv-no-chrome)`) ĐỀU
+// THẤT BẠI qua verify THẬT trên máy Thùy (không phải giả lập) — chữ vẫn nhân đôi y hệt mỗi lần. Thùy:
+// "cái lỗi canvas m đã gặp rất nhiều lần rồi đấy" — đúng, đây là bug thứ 4-5 CÙNG NGUỒN html2canvas
+// trong session (JPEG rám, nền sóng lệch, giờ chữ đôi). KẾT LUẬN: html2canvas không đáng tin cho khối
+// header/footer (dải màu+logo+chữ) DÙ CÁCH NÀO — nhưng THÂN BÀI (câu/lý thuyết/ảnh/KaTeX) qua
+// html2canvas vẫn ổn định suốt session, không đáng để bỏ luôn html2canvas cho cả file.
+// FIX TẬN GỐC: header/footer KHÔNG còn qua html2canvas nữa — vẽ TRỰC TIẾP bằng jsPDF (dải gradient mô
+// phỏng bằng nhiều dải màu mảnh, logo qua `addImage`, chữ qua `pdf.text`) NGAY SAU KHI dán ảnh thân bài
+// vào từng trang — vẽ ĐÈ LÊN nên dù html2canvas có chụp sót gì ở đúng vùng đó cũng bị che kín hoàn
+// toàn, không còn phụ thuộc html2canvas "làm đúng" bất kỳ điều gì cho khối chrome nữa.
+function hexRgb(hex: string): [number, number, number] {
+  return [parseInt(hex.slice(1, 3), 16), parseInt(hex.slice(3, 5), 16), parseInt(hex.slice(5, 7), 16)]
 }
-async function injectChrome(doc: Document, cr: PageChrome): Promise<void> {
-  await waitStylesheets(doc)
-  // ⭐ 07-12 tiếp 5 — CẢ 2 fix trước (`content:none!important` override, rồi xoá thẳng rule khỏi CSSOM)
-  // ĐỀU KHÔNG ĂN, verify lại nhiều lần bằng file THẬT Thùy tự tạo trên máy (không phải sandbox): chữ
-  // header/footer vẫn nhân đôi y hệt. Kết luận: html2canvas KHÔNG đáng tin để "tắt" 1 pseudo-element
-  // bằng BẤT KỲ CÁCH nào liên quan tới `content`/tồn-tại-của-rule (dù override specificity hay xoá tận
-  // gốc CSSOM) — đây là hạn chế đã biết của html2canvas với pseudo-element (không phải lỗi code của
-  // chúng ta lặp lại 2 lần, mà là GIỚI HẠN THẬT của thư viện). Đổi hẳn chiến lược: dùng `opacity:0` —
-  // thuộc tính COMPOSITING chuẩn, được html2canvas (và mọi renderer) hỗ trợ đáng tin cậy hơn HẲN so với
-  // "có tồn tại content hay không" — dù pseudo-element còn "cố" vẽ chữ, opacity:0 làm nó VÔ HÌNH thật sự
-  // (không chỉ ẩn khỏi CSSOM mà ẩn ở TẦNG COMPOSITE cuối cùng, khó bị bỏ qua hơn). Giữ nguyên xoá-CSSOM +
-  // waitStylesheets làm lưới phụ (vô hại nếu ăn, không hại nếu không ăn).
-  for (const sheet of Array.from(doc.styleSheets)) {
-    try {
-      const rules = sheet.cssRules
-      for (let i = rules.length - 1; i >= 0; i--) {
-        const sel = (rules[i] as CSSStyleRule).selectorText
-        if (sel && (sel.includes('.pagedjs_pagebox::before') || sel.includes('.pagedjs_pagebox::after'))) sheet.deleteRule(i)
-      }
-    } catch { /* stylesheet cross-origin (hiếm, blob cùng origin) — bỏ qua */ }
+function drawGradientBar(pdf: InstanceType<typeof import('jspdf').jsPDF>, x: number, y: number, w: number, h: number, colors: string[]) {
+  const steps = 48
+  const stepW = w / steps
+  const stops = colors.map(hexRgb)
+  for (let i = 0; i < steps; i++) {
+    const t = (i / (steps - 1)) * (stops.length - 1)
+    const idx = Math.min(Math.floor(t), stops.length - 2)
+    const frac = t - idx
+    const [r1, g1, b1] = stops[idx]; const [r2, g2, b2] = stops[idx + 1]
+    pdf.setFillColor(Math.round(r1 + (r2 - r1) * frac), Math.round(g1 + (g2 - g1) * frac), Math.round(b1 + (b2 - b1) * frac))
+    pdf.rect(x + i * stepW, y, stepW + 0.4, h, 'F') // +0.4mm chồng nhẹ, tránh khe hở trắng mảnh giữa các dải
   }
-  const st = doc.createElement('style')
-  st.textContent = '.pagedjs_pagebox::before,.pagedjs_pagebox::after{opacity:0!important;content:none!important;background:none!important}'
-  doc.head.appendChild(st)
-  doc.querySelectorAll('.pagedjs_pagebox').forEach((pb) => {
-    const box = pb as HTMLElement
-    if (cr.head) {
-      const h = doc.createElement('div')
-      h.style.cssText = `position:absolute;top:0;left:0;right:0;height:18mm;overflow:hidden;z-index:1`
-      h.innerHTML = `<img src="${cr.headUri}" style="position:absolute;inset:0;width:100%;height:100%;display:block"/><img src="${cr.chipUri}" style="position:absolute;left:4.5mm;top:1.5mm;width:42mm;height:9mm"/><img src="${cr.logoUrl}" crossorigin="anonymous" style="position:absolute;left:8mm;top:3.5mm;height:5mm"/><span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:flex-end;padding:0 10mm;box-sizing:border-box;color:#fff;font:700 11px/1 'Times New Roman',serif;text-shadow:0 1px 2px rgba(0,0,0,.25)">${escHtml(cr.headText)}</span>`
-      box.insertBefore(h, box.firstChild) // trước margin-box số trang → số trang vẫn nổi trên
+}
+function drawChrome(pdf: InstanceType<typeof import('jspdf').jsPDF>, cr: PageChrome, logoImg: HTMLImageElement | null): void {
+  if (cr.head) {
+    drawGradientBar(pdf, 0, 0, 210, 18, ['#E91E8C', '#F7941E', '#2D9CDB'])
+    pdf.setFillColor(255, 255, 255); pdf.setDrawColor(223, 229, 236)
+    try { pdf.roundedRect(4.5, 1.5, 42, 9, 2, 2, 'FD') } catch { pdf.rect(4.5, 1.5, 42, 9, 'F') }
+    if (logoImg) {
+      try { const w = 5 * (logoImg.naturalWidth / logoImg.naturalHeight || 3); pdf.addImage(logoImg, 'PNG', 8, 3.5, w, 5) } catch { /* logo lỗi không chặn cả PDF */ }
     }
-    if (cr.foot) {
-      const f = doc.createElement('div')
-      f.style.cssText = `position:absolute;bottom:0;left:0;right:0;height:15mm;overflow:hidden;z-index:1`
-      f.innerHTML = `<img src="${cr.footUri}" style="position:absolute;inset:0;width:100%;height:100%;display:block"/><span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:0 16mm;box-sizing:border-box;color:#fff;font:700 11px 'Times New Roman',serif;text-shadow:0 1px 3px rgba(0,0,0,.35)${cr.footPre ? ';white-space:pre' : ''}">${escHtml(cr.footText)}</span>`
-      box.insertBefore(f, box.firstChild)
-    }
-  })
+    pdf.setTextColor(255, 255, 255); pdf.setFont('times', 'bold'); pdf.setFontSize(11)
+    pdf.text(cr.headText, 200, 10.5, { align: 'right', baseline: 'middle' })
+  }
+  if (cr.foot) {
+    drawGradientBar(pdf, 0, 297 - 15, 210, 15, ['#2D9CDB', '#F7941E', '#E91E8C'])
+    pdf.setTextColor(255, 255, 255); pdf.setFont('times', 'bold'); pdf.setFontSize(11)
+    const lines = cr.footPre ? cr.footText.split('\n') : [cr.footText]
+    const baseY = 297 - 15 / 2
+    if (lines.length <= 1) pdf.text(cr.footText, 105, baseY, { align: 'center', baseline: 'middle' })
+    else lines.forEach((ln, idx) => pdf.text(ln, 105, baseY - (lines.length - 1) * 2 + idx * 4, { align: 'center', baseline: 'middle' }))
+  }
 }
 // ⭐ 07-11 — QUYẾT ĐỊNH KIẾN TRÚC (Thùy chốt sau nhiều lần lỗi rám chữ/nhân bản trang): "⬇ Tải PDF"
 // (tải file cục bộ) KHÔNG còn tự dựng file qua html2canvas nữa — đổi thẳng sang `window.print()`
@@ -111,27 +88,30 @@ export async function uploadPagesAsLink(dst: HTMLElement, filename: string, chro
   const html2canvas = h2cMod.default
   const pages = Array.from(dst.querySelectorAll('.pagedjs_page')) as HTMLElement[]
   if (!pages.length) throw new Error('Chưa có trang nào để tải — đợi dựng trang xong.')
-  // Chờ FONT (KaTeX + Times) sẵn sàng → tránh chụp ra trang trắng chữ.
+  // Chờ FONT (KaTeX + Times) sẵn sàng → tránh chụp ra trang trắng chữ (vẫn cần cho THÂN BÀI qua html2canvas).
   try { await (document as Document & { fonts?: { ready?: Promise<unknown> } }).fonts?.ready } catch { /* */ }
-  // Nạp sẵn logo để html2canvas có ảnh (né lỗi ảnh chưa tải).
-  if (chrome?.logoUrl) await new Promise<void>((res) => { const im = new Image(); im.crossOrigin = 'anonymous'; im.onload = () => res(); im.onerror = () => res(); im.src = chrome.logoUrl })
-  // ⭐ 07-12 tiếp 5: gắn `pv-no-chrome` lên `.pagedjs_pagebox` TRÊN DOM SỐNG (không phải bản clone của
-  // html2canvas) TRƯỚC khi chụp — rule pseudo (`buildPagedCss`) đã gate `:not(.pv-no-chrome)`, nên gắn
-  // class này làm SELECTOR đơn giản KHÔNG CÒN KHỚP, không cần html2canvas "tôn trọng" override gì nữa
-  // (2 lần trước dựa vào việc đó và đều thất bại — xem comment ở injectChrome). Gỡ lại trong `finally`
-  // để preview/native-print tiếp tục đúng như cũ nếu Thùy xem lại sau khi lấy link.
+  // Nạp logo để jsPDF vẽ trực tiếp (KHÔNG còn qua html2canvas nữa — xem drawChrome phía trên).
+  let logoImg: HTMLImageElement | null = null
+  if (chrome?.logoUrl) {
+    logoImg = await new Promise<HTMLImageElement | null>((res) => {
+      const im = new Image(); im.crossOrigin = 'anonymous'
+      im.onload = () => res(im); im.onerror = () => res(null)
+      im.src = chrome.logoUrl
+    })
+  }
+  // `pv-no-chrome` (gate selector, mục tiếp 5) GIỮ LẠI — html2canvas khỏi phí công chụp pseudo-element
+  // header/footer nữa (giờ vẽ đè bằng jsPDF rồi, chụp hay không cũng bị che, nhưng bỏ chụp cho NHẸ).
   const pageboxes = Array.from(dst.querySelectorAll('.pagedjs_pagebox')) as HTMLElement[]
   pageboxes.forEach((pb) => pb.classList.add('pv-no-chrome'))
   try {
     const pdf = new jspdfMod.jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' })
     for (let i = 0; i < pages.length; i++) {
-      const canvas = await html2canvas(pages[i], {
-        scale: 2, useCORS: true, backgroundColor: '#ffffff', logging: false, imageTimeout: 15000,
-        onclone: chrome ? (doc: Document) => injectChrome(doc, chrome) : undefined,
-      })
+      const canvas = await html2canvas(pages[i], { scale: 2, useCORS: true, backgroundColor: '#ffffff', logging: false, imageTimeout: 15000 })
       if (i > 0) pdf.addPage()
-      // PNG (KHÔNG JPEG) — JPEG nén mất-dữ-liệu làm rám/vỡ viền chữ nhỏ trên nền nhiều màu (header/footer).
+      // PNG (KHÔNG JPEG) — JPEG nén mất-dữ-liệu làm rám/vỡ viền chữ nhỏ trên nền nhiều màu.
       pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 210, 297)
+      // Vẽ header/footer BẰNG jsPDF, ĐÈ LÊN sau ảnh thân bài — xem comment kiến trúc ở drawChrome phía trên.
+      if (chrome) drawChrome(pdf, chrome, logoImg)
     }
     const outName = safeFileName(filename) + '.pdf'
     const blob = pdf.output('blob') as Blob
