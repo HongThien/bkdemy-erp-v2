@@ -16,6 +16,7 @@ import ETPrintView from './ETPrintView'
 import SearchSelect from '../../components/SearchSelect'
 import DangPickerOne from '../../components/DangPickerOne'
 import BuoiNgaySelect from '../../components/BuoiNgaySelect'
+import { useStore } from '../../store/useStore'
 
 const loaiLabel = (v: string) => LOAI_CAU.find((x) => x.value === v)?.label ?? v
 const DEFAULT_ROWS = 5
@@ -110,12 +111,16 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
       if (editing) {
         await updateET(et!.id, { ten, lop_id: lop.id, ngay, cau_hinh: ch })
         await setETCaus(et!.id, maCaus)
+        // ⭐ 07-12: link PDF phải CÓ SẴN ngay khi lưu xong, Thùy chỉ click để copy — không phải bấm
+        // "Lấy link" rồi chờ. Enqueue vào hàng đợi TOÀN CỤC (LinkGenWorker, mount ở App.tsx).
+        useStore.getState().enqueueLinkGen(et!.id, 'et')
         onClose?.()
         return
       }
       const created = await createET({ lopId: lop.id, ngay, ten, khoi: lop.khoi ?? '', mon: lop.mon })
       await setETCaus(created.id, maCaus)
       if (Object.keys(ch).length) await updateET(created.id, { cau_hinh: ch })
+      useStore.getState().enqueueLinkGen(created.id, 'et')
       resetForm()
       setFlash('Đã lưu ET vào Kho tài liệu. Form đã reset để tạo ET mới.')
     } catch (e: any) { setErr(e.message ?? String(e)) } finally { setBusy(false) }

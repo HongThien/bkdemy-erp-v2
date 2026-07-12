@@ -37,9 +37,6 @@ export default function KhoTaiLieuScreen() {
   const myMons = me?.mons ?? []
   const [print, setPrint] = useState<{ id: string; loai: string } | null>(null)
   const [dlDoc, setDlDoc] = useState<{ id: string; loai: string } | null>(null)
-  const [linkDoc, setLinkDoc] = useState<{ id: string; loai: string; autoCopy: boolean } | null>(null) // "🔗 Lấy link" — render ẩn, CHỈ upload+link, không tải file cục bộ
-  const [linkQueue, setLinkQueue] = useState<{ id: string; loai: string }[]>([]) // hàng đợi CHỈ 1 job (làm mới đúng 1 doc vừa sửa) — KHÔNG backfill hàng loạt, xem comment ở enqueueLink
-  const [linkErrId, setLinkErrId] = useState<string | null>(null) // id vừa timeout — báo lỗi thoáng qua trên đúng dòng
   const [editEt, setEditEt] = useState<ETView | null>(null) // sửa ET tại chỗ (mở ETEditor)
   const [editGt, setEditGt] = useState<string | null>(null) // sửa giáo trình/BTVN (mở TaiLieuBuilder)
   const [editDeThi, setEditDeThi] = useState<string | null>(null) // sửa đề thi (mở DeThiEditor)
@@ -74,56 +71,12 @@ export default function KhoTaiLieuScreen() {
   }
   useEffect(() => { reload() }, []) // eslint-disable-line
 
-  // "🔗 Lấy link" — có link rồi thì copy luôn; chưa có thì dựng ẩn (headless+linkOnly) để upload+ghi
-  // file_url, xong tự copy link mới. Thùy 07-11: "link phải có TRƯỚC khi bấm tải", nên tách hẳn khỏi
-  // "⬇ Tải PDF" — bấm "Lấy link" không tạo ra file .pdf nào rơi vào Downloads.
+  // ⭐ 07-12 — link PDF giờ gen TỰ ĐỘNG ngay lúc tài liệu tạo/sửa xong (`enqueueLinkGen`, hàng đợi TOÀN
+  // CỤC xử lý bởi `LinkGenWorker` mount ở App.tsx — xem store `linkGenQueue`). Màn này KHÔNG còn tự
+  // dựng/upload gì nữa — nút chỉ COPY link đã có sẵn, không click-để-chờ trong bất kỳ trường hợp nào
+  // (Thùy 07-12: "T ko muốn hiện lấy link... người dùng chỉ click vào link để copy thôi, KO chờ đợi").
   function layLink(r: Row) {
-    if (r.file_url) { copyLink(r.file_url, r.id); return }
-    setLinkDoc({ id: r.id, loai: r.loai, autoCopy: true })
-  }
-  // "↻" làm mới link ĐÃ CÓ (vd sau khi sửa nội dung nơi khác, hoặc file cũ bị lỗi render) — bấm thẳng,
-  // không qua nhánh "đã có thì copy" của layLink().
-  function lamMoiLink(r: Row) {
-    setLinkDoc({ id: r.id, loai: r.loai, autoCopy: true })
-  }
-  // ⭐ 07-12 (tiếp) — Thùy báo "vào Kho là đơ luôn" + hỏi thẳng "đang lấy link là như nào": ĐÃ SAI Ở CHỖ
-  // hiểu "tự động" = "chạy NGAY cho TOÀN BỘ 329 tài liệu cùng lúc lúc mở màn". "Lấy link" = tự CHỤP ẢNH
-  // từng trang (html2canvas) rồi ghép PDF, upload — việc NẶNG CPU thật sự (paged.js dựng + rasterize mỗi
-  // trang), 1 tài liệu thì vài giây, nhưng dồn 329 tài liệu chạy liên tục làm nghẽn main thread của tab
-  // TRONG THỜI GIAN DÀI (hàng chục phút) — watchdog chỉ chặn được "treo vô thời hạn", KHÔNG chặn được
-  // "chậm/đơ kéo dài vì CPU bận liên tục", đó là 2 vấn đề khác nhau. BỎ HẲN backfill-tất-cả — Thùy chỉ
-  // cần link cho ĐÚNG tài liệu đang muốn gửi PH lúc đó, không phải cả kho cùng lúc. Hàng đợi giờ CHỈ nhận
-  // đúng 1 job/lần từ 2 nguồn bounded: (a) bấm tay "🔗 Lấy link"/"↻" (layLink/lamMoiLink, autoCopy=true,
-  // set thẳng linkDoc không qua queue), (b) auto làm mới ĐÚNG 1 doc vừa sửa qua Editor (enqueueLink, vẫn
-  // giữ — đây không phải nguồn gây đơ vì chỉ 1 job, không phải 329).
-  function enqueueLink(id: string, loai: string) {
-    setLinkQueue((q) => (q.some((x) => x.id === id) || linkDoc?.id === id) ? q : [...q, { id, loai }])
-  }
-  useEffect(() => {
-    if (linkDoc || linkQueue.length === 0) return
-    const [next, ...rest] = linkQueue
-    setLinkQueue(rest)
-    setLinkDoc({ ...next, autoCopy: false })
-  }, [linkDoc, linkQueue])
-  // Watchdog cho MỌI job (kể cả bấm tay — trước chỉ áp job nền, nhưng Thùy đã gặp "Đang lấy link" treo
-  // mãi cả khi bấm tay). paged.js từng TREO VĨNH VIỄN không resolve/không lỗi (xem DEVLOG) → quá 40s thì
-  // bỏ, báo lỗi thoáng qua trên đúng dòng, KHÔNG tự thử lại (tránh vòng lặp vô hạn trên 1 doc luôn treo).
-  useEffect(() => {
-    if (!linkDoc) return
-    const cur = linkDoc
-    const t = setTimeout(() => {
-      setLinkDoc((now) => (now === cur ? null : now))
-      setLinkErrId(cur.id)
-      setTimeout(() => setLinkErrId((id) => (id === cur.id ? null : id)), 4000)
-    }, 40000)
-    return () => clearTimeout(t)
-  }, [linkDoc])
-  async function xongLayLink() {
-    if (!linkDoc) return
-    const { id, autoCopy } = linkDoc
-    setLinkDoc(null)
-    const fresh = await reload()
-    if (autoCopy) { const row = fresh.find((x) => x.id === id); if (row?.file_url) copyLink(row.file_url, id) }
+    if (r.file_url) copyLink(r.file_url, r.id)
   }
 
   // Scope MÔN: GV/Học-thuật có môn → chỉ tài liệu môn mình; admin / không-gán-môn (Media/Marketing) → thấy tất.
@@ -162,7 +115,9 @@ export default function KhoTaiLieuScreen() {
       if (oldLop) ten = ten.split(oldLop).join(l.ten_lop)
       if (oldNgayVN) ten = ten.split(oldNgayVN).join(ngayVN)
       if (!oldLop || !oldNgayVN) ten = `${ten} · ${l.ten_lop} · ${ngayVN}`
-      await duplicateTaiLieu(dup.id, { ten, lop_id: l.id, ngay: dupNgay })
+      const created = await duplicateTaiLieu(dup.id, { ten, lop_id: l.id, ngay: dupNgay })
+      // ⭐ 07-12: bản sao ĐỦ NỘI DUNG ngay (copy từ nguồn) — enqueue link luôn, không đợi bấm.
+      useStore.getState().enqueueLinkGen(created.id, created.loai)
       setDup(null)
       reload()
     } catch (e: any) { setDupErr(e.message ?? String(e)) } finally { setDupBusy(false) }
@@ -180,15 +135,17 @@ export default function KhoTaiLieuScreen() {
     if (!ten || ten === r.ten) return
     await updateTaiLieu(r.id, { ten })
     reload()
-    enqueueLink(r.id, r.loai)
+    // Tên in RA TRÊN trang (tiêu đề + header/footer) → đổi tên = đổi nội dung PDF → link cũ lỗi thời.
+    useStore.getState().enqueueLinkGen(r.id, r.loai)
   }
 
-  // Sửa tại chỗ: mở builder full-screen, đóng → tải lại bảng + LÀM MỚI link nền (nội dung vừa đổi, link
-  // cũ giờ lỗi thời — Thùy 07-11 tiếp 8: "t cần lưu mọi file pdf", tự làm mới chứ không đợi bấm lại).
-  if (editEt) return <ETEditor et={editEt} onClose={() => { const id = editEt.id; setEditEt(null); reload(); enqueueLink(id, 'et') }} />
-  if (editGt) return <TaiLieuBuilder id={editGt} onClose={() => { const id = editGt; setEditGt(null); reload(); enqueueLink(id, 'giao_trinh') }} />
-  if (editDeThi) return <DeThiEditor id={editDeThi} onClose={() => { const id = editDeThi; setEditDeThi(null); reload(); enqueueLink(id, 'de_thi') }} />
-  if (editMT) return <MTEditor id={editMT} onClose={() => { const id = editMT; setEditMT(null); reload(); enqueueLink(id, 'mt') }} />
+  // Sửa tại chỗ: mở builder full-screen. Link PDF tự làm mới NGAY TRONG chính editor lúc đóng (nút
+  // "← ..."/"← Kho tài liệu" của mỗi editor tự enqueueLinkGen trước khi gọi onClose) — không cần lặp
+  // lại ở đây nữa (07-12, dọn theo pivot gen-tại-lúc-sửa).
+  if (editEt) return <ETEditor et={editEt} onClose={() => { setEditEt(null); reload() }} />
+  if (editGt) return <TaiLieuBuilder id={editGt} onClose={() => { setEditGt(null); reload() }} />
+  if (editDeThi) return <DeThiEditor id={editDeThi} onClose={() => { setEditDeThi(null); reload() }} />
+  if (editMT) return <MTEditor id={editMT} onClose={() => { setEditMT(null); reload() }} />
 
   const tab = (on: boolean) => `h-7 rounded-md px-2.5 text-xs font-semibold transition ${on ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`
   return (
@@ -226,15 +183,21 @@ export default function KhoTaiLieuScreen() {
                   {shown.map((r) => (
                     <tr key={r.id} className="border-t border-slate-100 hover:bg-slate-50/60">
                       <td className="px-4 py-2">
-                        <button onClick={() => doiTen(r)} title="Bấm để đổi tên file" className="group/n flex items-center gap-1.5 text-left font-medium text-slate-800 hover:text-indigo-600">
-                          <span>{r.ten}</span>
-                          <span className="text-[11px] text-slate-300 opacity-0 transition group-hover/n:opacity-100">✎</span>
+                        {/* Tên dài (vd "BTVN 8A2 · Buổi 4: Bình phương của tổng hoặc hiệu") từng xuống dòng
+                            làm CHIỀU CAO HÀNG ĐÓ lệch hẳn so với hàng khác → bảng "xiêu vẹo" — Thùy 07-12
+                            báo lần 2, lần trước chỉ sửa cột Thao tác, BỎ SÓT chính cột Tên (đo bằng
+                            getBoundingClientRect xác nhận: hàng tên dài cao 109px, hàng tên ngắn 51px).
+                            Cắt gọn 1 dòng (`truncate`, cần `min-w-0` trên span vì mặc định flex item
+                            min-width:auto sẽ chặn truncate), xem tên đầy đủ qua `title` khi hover. */}
+                        <button onClick={() => doiTen(r)} title={r.ten} className="group/n flex max-w-[280px] items-center gap-1.5 text-left font-medium text-slate-800 hover:text-indigo-600">
+                          <span className="min-w-0 truncate">{r.ten}</span>
+                          <span className="shrink-0 text-[11px] text-slate-300 opacity-0 transition group-hover/n:opacity-100">✎</span>
                         </button>
                       </td>
-                      <td className="px-3"><span className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] font-medium text-slate-600">{loaiTen(r.loai)}</span></td>
-                      <td className="px-3 text-slate-500">{r.khoi || '—'}</td>
-                      <td className="px-3 text-slate-500">{r.lop_id && r.ngay ? `${lopTen(r.lop_id)} · ${fmt(r.ngay)}` : (r.loai === 'et' || r.loai === 'mt' ? <span className="text-violet-500">mẫu</span> : '—')}</td>
-                      <td className="px-3 text-slate-500">{fmt(r.created_at)}</td>
+                      <td className="whitespace-nowrap px-3"><span className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] font-medium text-slate-600">{loaiTen(r.loai)}</span></td>
+                      <td className="whitespace-nowrap px-3 text-slate-500">{r.khoi || '—'}</td>
+                      <td className="whitespace-nowrap px-3 text-slate-500">{r.lop_id && r.ngay ? `${lopTen(r.lop_id)} · ${fmt(r.ngay)}` : (r.loai === 'et' || r.loai === 'mt' ? <span className="text-violet-500">mẫu</span> : '—')}</td>
+                      <td className="whitespace-nowrap px-3 text-slate-500">{fmt(r.created_at)}</td>
                       <td className="whitespace-nowrap px-3 py-2">
                         <div className="flex justify-end gap-1.5">
                           {EDITABLE.has(r.loai) && <button onClick={() => sua(r)} className="shrink-0 rounded-md border border-slate-200 px-2.5 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-300">✎ Sửa</button>}
@@ -248,14 +211,22 @@ export default function KhoTaiLieuScreen() {
                           {/* Bỏ qua bước xem thử, mở thẳng hộp thoại in (bản Học sinh mặc định) — Thùy
                               07-11: đổi hẳn từ html2canvas tự vẽ lại (hay lỗi) sang NATIVE print. */}
                           <button onClick={() => setDlDoc({ id: r.id, loai: r.loai })} className="shrink-0 rounded-md border border-indigo-300 px-2.5 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-50">🖨 In nhanh</button>
-                          <button onClick={() => layLink(r)} disabled={linkDoc?.id === r.id} title={linkErrId === r.id ? 'Dựng trang quá lâu (>40s), thử lại' : r.file_url ?? 'Bấm để tạo link chia sẻ'}
-                            className={`shrink-0 rounded-md border px-2.5 py-1 text-[12px] font-medium disabled:opacity-40 ${linkErrId === r.id ? 'border-rose-300 text-rose-600 hover:bg-rose-50' : 'border-sky-300 text-sky-700 hover:bg-sky-50'}`}>
-                            {linkDoc?.id === r.id ? '⏳ Đang lấy…' : copiedId === r.id ? '✓ Đã copy' : linkErrId === r.id ? '❌ Lỗi, bấm lại' : r.file_url ? '🔗 Copy link' : (linkQueue.some((x) => x.id === r.id) ? '⏳ Chờ xếp hàng…' : '🔗 Lấy link')}
-                          </button>
-                          {r.file_url && (
-                            <button onClick={() => lamMoiLink(r)} disabled={linkDoc?.id === r.id} title="Tạo lại link (dùng khi nội dung vừa đổi ở nơi khác hoặc file cũ bị lỗi)"
-                              className="shrink-0 rounded-md border border-slate-200 px-2 py-1 text-[12px] text-slate-400 hover:border-sky-300 hover:text-sky-600 disabled:opacity-40">↻</button>
+                          {/* ⭐ 07-12: link gen TỰ ĐỘNG ngay lúc tạo/sửa xong (LinkGenWorker toàn cục) —
+                              nút này CHỈ COPY, không còn click-để-chờ trong bất kỳ trường hợp nào. Chưa
+                              có link (vừa tạo, đang gen ở nền, hoặc tài liệu cũ từ trước tính năng này)
+                              → nhãn thụ động, không phải nút chờ. */}
+                          {r.file_url ? (
+                            <button onClick={() => layLink(r)} title={r.file_url} className="shrink-0 rounded-md border border-sky-300 px-2.5 py-1 text-[12px] font-medium text-sky-700 hover:bg-sky-50">
+                              {copiedId === r.id ? '✓ Đã copy' : '🔗 Copy link'}
+                            </button>
+                          ) : (
+                            <span className="shrink-0 px-1 text-[12px] text-slate-300" title="Link PDF tự tạo trong ít phút — tài liệu vừa tạo/sửa hoặc tài liệu cũ từ trước tính năng này">— chưa có link</span>
                           )}
+                          {/* "↻" — lối thoát khi job nền lỗi/treo (paged.js đôi khi treo, xem DEVLOG) và
+                              tài liệu mãi không có link. KHÔNG hiện trạng thái chờ — bấm xong là quên, có
+                              thì hiện ở lượt xem sau, ĐÚNG tinh thần "không chờ đợi gì cả" của Thùy. */}
+                          <button onClick={() => useStore.getState().enqueueLinkGen(r.id, r.loai)} title="Tạo lại link (dùng khi mãi không thấy link, hoặc nội dung vừa đổi ở nơi khác)"
+                            className="shrink-0 rounded-md border border-slate-200 px-2 py-1 text-[12px] text-slate-400 hover:border-sky-300 hover:text-sky-600">↻</button>
                           <button onClick={() => nhanBan(r)} className="shrink-0 rounded-md border border-slate-200 px-2.5 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-300">Nhân bản</button>
                           <button onClick={async () => { if (confirm(`Xoá “${r.ten}”?`)) { await deleteTaiLieu(r.id); reload() } }} className="shrink-0 rounded-md border border-slate-200 px-2.5 py-1 text-[12px] text-slate-400 hover:border-rose-300 hover:text-rose-600">Xoá</button>
                         </div>
@@ -285,17 +256,6 @@ export default function KhoTaiLieuScreen() {
         : dlDoc.loai === 'mt' || dlDoc.loai === 'mt_buoi'
         ? <MTPrintView id={dlDoc.id} headless onClose={() => { setDlDoc(null); reload() }} />
         : <PrintView id={dlDoc.id} headless onClose={() => { setDlDoc(null); reload() }} />)}
-
-      {/* "🔗 Lấy link" — dựng ẩn CHỈ để upload+ghi file_url (linkOnly: KHÔNG pdf.save(), không rơi file
-          vào Downloads). autoCopy=true (bấm tay) mới copy vào clipboard; autoCopy=false (hàng đợi nền —
-          backfill/làm mới sau sửa) chỉ âm thầm cập nhật file_url, KHÔNG đụng clipboard của Thùy. */}
-      {linkDoc && (linkDoc.loai === 'et'
-        ? <ETPrintView id={linkDoc.id} headless linkOnly onClose={xongLayLink} />
-        : linkDoc.loai === 'de_thi'
-        ? <DeThiPrintView id={linkDoc.id} headless linkOnly onClose={xongLayLink} />
-        : linkDoc.loai === 'mt' || linkDoc.loai === 'mt_buoi'
-        ? <MTPrintView id={linkDoc.id} headless linkOnly onClose={xongLayLink} />
-        : <PrintView id={linkDoc.id} headless linkOnly onClose={xongLayLink} />)}
 
       {dup && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 px-4" onClick={() => !dupBusy && setDup(null)}>

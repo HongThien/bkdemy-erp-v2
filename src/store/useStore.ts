@@ -36,9 +36,18 @@ interface UiState {
   setDbVanHanhView: (v: 'theonguoi' | 'theomuc' | 'chitiet' | 'duyet') => void
   setDbVanHanhMuc: (m: 'tatca' | 'ops' | 'ta' | 'gv') => void
   setDbVanHanhNsId: (id: string | null) => void
+  // ── Hàng đợi lấy-link PDF (07-12) — Thùy: "gen sẵn NGAY KHI tài liệu được tạo ra, người dùng chỉ
+  // click để COPY, KHÔNG chờ đợi gì cả". Toàn cục (không riêng KhoTaiLieuScreen) vì tài liệu được
+  // tạo/sửa xong từ NHIỀU màn khác nhau (ETScreen, TaiLieuBuilder, DeThiScreen, MTScreen, BTScreen…),
+  // không chỉ từ Kho tài liệu — `LinkGenWorker` (mount 1 lần ở App.tsx) xử lý TUẦN TỰ, 1 job/lúc, để
+  // không hâm nóng máy dựng nhiều trang cùng lúc (bài học 07-12: rasterize hàng trăm doc cùng lúc làm
+  // đơ tab — CHỈ enqueue đúng lúc 1 tài liệu vừa tạo/sửa xong, KHÔNG BAO GIỜ backfill hàng loạt).
+  linkGenQueue: { id: string; loai: string }[]
+  enqueueLinkGen: (id: string, loai: string) => void
+  shiftLinkGen: () => { id: string; loai: string } | undefined
 }
 
-export const useStore = create<UiState>((set) => ({
+export const useStore = create<UiState>((set, get) => ({
   currentUserId: users[0].id,
   screen: 'nhansu',
   staffLeaf: 'viec',
@@ -66,6 +75,15 @@ export const useStore = create<UiState>((set) => ({
   setDbVanHanhView: (v) => set({ dbVanHanhView: v }),
   setDbVanHanhMuc: (m) => set({ dbVanHanhMuc: m }),
   setDbVanHanhNsId: (id) => set({ dbVanHanhNsId: id }),
+  linkGenQueue: [],
+  enqueueLinkGen: (id, loai) => set((s) => s.linkGenQueue.some((x) => x.id === id) ? s : { linkGenQueue: [...s.linkGenQueue, { id, loai }] }),
+  shiftLinkGen: () => {
+    const q = get().linkGenQueue
+    if (q.length === 0) return undefined
+    const [next, ...rest] = q
+    set({ linkGenQueue: rest })
+    return next
+  },
 }))
 
 // Nối gate "Chỉ xem" (RBAC ①) vào seam Supabase — xem lib/supabase.ts. Leaf con dạng

@@ -246,7 +246,9 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
   return (
     <div className="flex h-full flex-col bg-[#fafafb]">
       <div className="flex flex-wrap items-center gap-3 border-b border-slate-200 bg-white px-5 py-2.5">
-        <button onClick={onClose} className="text-[13px] font-medium text-slate-400 hover:text-indigo-600">← Kho tài liệu</button>
+        {/* ⭐ 07-12: MT master cũng autosave (không nút Lưu) — enqueue link ở lúc ĐÓNG. Bản thân master
+            hiếm khi tự gửi PH (thường gửi bản mt_buoi đã gán lớp), nhưng vẫn có link sẵn nếu cần. */}
+        <button onClick={() => { useStore.getState().enqueueLinkGen(id, 'mt'); onClose() }} className="text-[13px] font-medium text-slate-400 hover:text-indigo-600">← Kho tài liệu</button>
         <input value={ten} onChange={(e) => setTen(e.target.value)} onBlur={saveTen} className="min-w-[260px] flex-1 rounded-md border border-transparent px-2 py-1 text-[15px] font-semibold text-slate-900 hover:border-slate-200 focus:border-indigo-400 focus:outline-none" />
         <span className="rounded bg-violet-50 px-2 py-0.5 text-[11px] font-medium text-violet-600">{d.mon} · Khối {d.khoi} · mẫu độc lập</span>
         {saved && <span className="text-[12px] text-emerald-600">✓ Đã lưu</span>}
@@ -380,6 +382,8 @@ function GanBuoiModal({ mtId, mon, ganList, onClose, onDone }: { mtId: string; m
     setBusy(true)
     try {
       const kq = await ganMTVaoBuoi(mtId, { lopId, ngay })
+      // ⭐ 07-12: doc mt_buoi vừa gán ĐỦ NỘI DUNG ngay (copy từ master) — enqueue link luôn.
+      useStore.getState().enqueueLinkGen(kq.taiLieuId, 'mt_buoi')
       const loaiMsg = kq.soCauLoai > 0 ? ` (đã tự loại ${kq.soCauLoai} câu nâng cao — lớp này không đủ tư cách theo bậc dạng ở bản đồ kiến thức)` : ''
       setRes({ ok: true, msg: (kq.buoiMoi ? 'Đã tạo buổi mới + gán nội dung MT.' : 'Đã gán nội dung MT vào buổi có sẵn (lớp+ngày này đã có buổi).') + loaiMsg + ' Chấm ở tab "🏆 MT" trong buổi (Buổi học/Việc của tôi).' })
     } catch (e: any) { setRes({ ok: false, msg: e.message ?? String(e) }) } finally { setBusy(false) }
