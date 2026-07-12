@@ -103,18 +103,30 @@ export async function uploadPagesAsLink(dst: HTMLElement, filename: string, chro
   // header/footer nữa (giờ vẽ đè bằng jsPDF rồi, chụp hay không cũng bị che, nhưng bỏ chụp cho NHẸ).
   const pageboxes = Array.from(dst.querySelectorAll('.pagedjs_pagebox')) as HTMLElement[]
   pageboxes.forEach((pb) => pb.classList.add('pv-no-chrome'))
-  try {
+  // Supabase storage (bucket 'kho-tailieu') có TRẦN dung lượng THẬT — đo trực tiếp 07-12: upload 40MB
+  // qua được, 60MB bị chặn với lỗi 400 "The object exceeded the maximum allowed size" — ĐÚNG lỗi Thùy
+  // gặp khi tài liệu dài (nhiều trang PNG scale:2 cộng dồn vượt trần). Build ở scale CAO nhất trước (giữ
+  // nguyên chất lượng mặc định — đa số tài liệu KHÔNG vượt trần); CHỈ khi blob thật sự vượt ngưỡng an
+  // toàn mới build LẠI ở scale thấp hơn. Giảm ĐỘ PHÂN GIẢI, KHÔNG đổi sang JPEG — JPEG đã bị loại bỏ
+  // trước đó vì nén mất-dữ-liệu làm rám/vỡ viền chữ nhỏ (xem comment trong build()), đổi lại sẽ tái phạm.
+  const SAFE_BYTES = 45 * 1024 * 1024
+  async function build(scale: number): Promise<Blob> {
     const pdf = new jspdfMod.jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' })
     for (let i = 0; i < pages.length; i++) {
-      const canvas = await html2canvas(pages[i], { scale: 2, useCORS: true, backgroundColor: '#ffffff', logging: false, imageTimeout: 15000 })
+      const canvas = await html2canvas(pages[i], { scale, useCORS: true, backgroundColor: '#ffffff', logging: false, imageTimeout: 15000 })
       if (i > 0) pdf.addPage()
       // PNG (KHÔNG JPEG) — JPEG nén mất-dữ-liệu làm rám/vỡ viền chữ nhỏ trên nền nhiều màu.
       pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 210, 297)
       // Vẽ header/footer BẰNG jsPDF, ĐÈ LÊN sau ảnh thân bài — xem comment kiến trúc ở drawChrome phía trên.
       if (chrome) drawChrome(pdf, chrome, logoImg)
     }
+    return pdf.output('blob') as Blob
+  }
+  try {
+    let blob = await build(2)
+    if (blob.size > SAFE_BYTES) blob = await build(1.3)
+    if (blob.size > SAFE_BYTES) throw new Error(`File PDF quá lớn (${(blob.size / 1024 / 1024).toFixed(1)}MB, giới hạn ~50MB) dù đã giảm độ phân giải — tài liệu quá dài, cần rút gọn nội dung.`)
     const outName = safeFileName(filename) + '.pdf'
-    const blob = pdf.output('blob') as Blob
     const { url } = await uploadKhoFile(new File([blob], outName, { type: 'application/pdf' }))
     await setTaiLieuFileUrl(taiLieuId, url)
     return url
