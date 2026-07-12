@@ -38,8 +38,7 @@ export default function KhoTaiLieuScreen() {
   const [print, setPrint] = useState<{ id: string; loai: string } | null>(null)
   const [dlDoc, setDlDoc] = useState<{ id: string; loai: string } | null>(null)
   const [linkDoc, setLinkDoc] = useState<{ id: string; loai: string; autoCopy: boolean } | null>(null) // "🔗 Lấy link" — render ẩn, CHỈ upload+link, không tải file cục bộ
-  const [linkQueue, setLinkQueue] = useState<{ id: string; loai: string }[]>([]) // hàng đợi lấy-link NỀN (auto-backfill + làm mới sau sửa)
-  const [linkPaused, setLinkPaused] = useState(false) // Thùy tự tạm dừng hàng đợi nền nếu muốn (không bắt buộc bấm để BẮT ĐẦU, chỉ để DỪNG khi cần)
+  const [linkQueue, setLinkQueue] = useState<{ id: string; loai: string }[]>([]) // hàng đợi CHỈ 1 job (làm mới đúng 1 doc vừa sửa) — KHÔNG backfill hàng loạt, xem comment ở enqueueLink
   const [linkErrId, setLinkErrId] = useState<string | null>(null) // id vừa timeout — báo lỗi thoáng qua trên đúng dòng
   const [editEt, setEditEt] = useState<ETView | null>(null) // sửa ET tại chỗ (mở ETEditor)
   const [editGt, setEditGt] = useState<string | null>(null) // sửa giáo trình/BTVN (mở TaiLieuBuilder)
@@ -87,28 +86,25 @@ export default function KhoTaiLieuScreen() {
   function lamMoiLink(r: Row) {
     setLinkDoc({ id: r.id, loai: r.loai, autoCopy: true })
   }
-  // Hàng đợi NỀN — xử lý TUẦN TỰ (1 headless PrintView tại 1 thời điểm — effect dưới) để không hâm nóng
-  // máy dựng hàng chục trang cùng lúc. KHÔNG tự copy (autoCopy false) — nền thì không được lặng lẽ ghi
-  // đè clipboard của Thùy.
+  // ⭐ 07-12 (tiếp) — Thùy báo "vào Kho là đơ luôn" + hỏi thẳng "đang lấy link là như nào": ĐÃ SAI Ở CHỖ
+  // hiểu "tự động" = "chạy NGAY cho TOÀN BỘ 329 tài liệu cùng lúc lúc mở màn". "Lấy link" = tự CHỤP ẢNH
+  // từng trang (html2canvas) rồi ghép PDF, upload — việc NẶNG CPU thật sự (paged.js dựng + rasterize mỗi
+  // trang), 1 tài liệu thì vài giây, nhưng dồn 329 tài liệu chạy liên tục làm nghẽn main thread của tab
+  // TRONG THỜI GIAN DÀI (hàng chục phút) — watchdog chỉ chặn được "treo vô thời hạn", KHÔNG chặn được
+  // "chậm/đơ kéo dài vì CPU bận liên tục", đó là 2 vấn đề khác nhau. BỎ HẲN backfill-tất-cả — Thùy chỉ
+  // cần link cho ĐÚNG tài liệu đang muốn gửi PH lúc đó, không phải cả kho cùng lúc. Hàng đợi giờ CHỈ nhận
+  // đúng 1 job/lần từ 2 nguồn bounded: (a) bấm tay "🔗 Lấy link"/"↻" (layLink/lamMoiLink, autoCopy=true,
+  // set thẳng linkDoc không qua queue), (b) auto làm mới ĐÚNG 1 doc vừa sửa qua Editor (enqueueLink, vẫn
+  // giữ — đây không phải nguồn gây đơ vì chỉ 1 job, không phải 329).
   function enqueueLink(id: string, loai: string) {
     setLinkQueue((q) => (q.some((x) => x.id === id) || linkDoc?.id === id) ? q : [...q, { id, loai }])
   }
-  // Tự động lấy link cho MỌI tài liệu chưa có — Thùy 07-12: bắt bấm tay mới chạy là "khó chịu", muốn TỰ
-  // ĐỘNG như ý ban đầu. Trước đó (07-11 tiếp 9) đã bỏ auto-backfill vì 1 doc treo (paged.js) là kẹt cứng
-  // CẢ hàng đợi — nhưng gốc rễ ĐÃ SỬA (watchdog 30s ngay trong effect dựng paged.js, PrintView/ET/MT/
-  // DeThi) nên giờ an toàn bật lại tự động: 1 doc treo tự bỏ qua sau ≤40s, hàng đợi luôn đi tiếp, không
-  // còn kẹt vĩnh viễn nữa. `linkPaused` chỉ để Thùy CHỦ ĐỘNG dừng khi cần (vd máy đang chậm), KHÔNG cần
-  // bấm gì để BẮT ĐẦU.
   useEffect(() => {
-    if (linkPaused) return
-    rows.filter((r) => !r.file_url).forEach((r) => enqueueLink(r.id, r.loai))
-  }, [rows, linkPaused]) // eslint-disable-line
-  useEffect(() => {
-    if (linkPaused || linkDoc || linkQueue.length === 0) return
+    if (linkDoc || linkQueue.length === 0) return
     const [next, ...rest] = linkQueue
     setLinkQueue(rest)
     setLinkDoc({ ...next, autoCopy: false })
-  }, [linkDoc, linkQueue, linkPaused])
+  }, [linkDoc, linkQueue])
   // Watchdog cho MỌI job (kể cả bấm tay — trước chỉ áp job nền, nhưng Thùy đã gặp "Đang lấy link" treo
   // mãi cả khi bấm tay). paged.js từng TREO VĨNH VIỄN không resolve/không lỗi (xem DEVLOG) → quá 40s thì
   // bỏ, báo lỗi thoáng qua trên đúng dòng, KHÔNG tự thử lại (tránh vòng lặp vô hạn trên 1 doc luôn treo).
@@ -208,14 +204,6 @@ export default function KhoTaiLieuScreen() {
         <button onClick={() => setLoai('__all__')} className={tab(loai === '__all__')}>Tất cả</button>
         {loais.map((l) => <button key={l} onClick={() => setLoai(l)} className={tab(loai === l)}>{loaiTen(l)}</button>)}
         <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm theo tên…" className="ml-auto h-7 w-52 rounded-md border border-slate-200 px-2.5 text-[13px] outline-none focus:border-indigo-400" />
-        {linkPaused ? (
-          <button onClick={() => setLinkPaused(false)} className="rounded-md border border-amber-300 bg-amber-50 px-2.5 py-1 text-[12px] font-medium text-amber-700 hover:bg-amber-100">⏸ Đã tạm dừng tự động lấy link — bấm để tiếp tục</button>
-        ) : (linkQueue.length > 0 || (linkDoc && !linkDoc.autoCopy)) && (
-          <div className="flex items-center gap-2 rounded-md bg-sky-50 px-2.5 py-1 text-[12px] font-medium text-sky-700">
-            <span>⏳ Tự động lấy link ở nền… còn {linkQueue.length + (linkDoc && !linkDoc.autoCopy ? 1 : 0)}</span>
-            <button onClick={() => setLinkPaused(true)} title="Tạm dừng — chỗ chưa lấy vẫn giữ nguyên, mở lại màn sẽ tự tiếp tục" className="rounded border border-sky-300 px-1.5 py-0.5 text-[11px] hover:bg-sky-100">⏸ Dừng</button>
-          </div>
-        )}
       </div>
 
       <div className="min-h-0 flex-1 overflow-auto p-6">
