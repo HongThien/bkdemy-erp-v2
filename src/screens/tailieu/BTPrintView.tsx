@@ -12,7 +12,7 @@ import { CauItem, CauList, OptGrid, GvAnswer, WriteLines, splitStem, CHROME_CSS,
 
 // headless+linkOnly (07-12) — dựng ẩn CHỈ để upload+ghi file_url, dùng bởi LinkGenWorker (hàng đợi
 // toàn cục, xem component đó) khi 1 BT vừa tạo/sửa xong. Mirror ĐÚNG pattern DeThiPrintView/MTPrintView.
-export default function BTPrintView({ id, onClose, headless, linkOnly, onFail }: { id: string; onClose: () => void; headless?: boolean; linkOnly?: boolean; onFail?: () => void }) {
+export default function BTPrintView({ id, onClose, headless, linkOnly, onFail, onReady, onRenderErr }: { id: string; onClose: () => void; headless?: boolean; linkOnly?: boolean; onFail?: () => void; onReady?: () => void; onRenderErr?: (msg: string) => void }) {
   const [bt, setBt] = useState<BT | null>(null)
   const [full, setFull] = useState<TaiLieuFull | null>(null)
   const [err, setErr] = useState<string | null>(null)
@@ -49,6 +49,7 @@ export default function BTPrintView({ id, onClose, headless, linkOnly, onFail }:
       settled = true
       container.style.display = 'none'
       setDlErr('Dựng trang quá lâu (>30s) — đóng rồi thử lại.'); setRendering(false)
+      onRenderErr?.('Dựng trang quá lâu (>30s)')
     }, 30000)
     new Previewer().preview(html, [cssUrl], container)
       .then((flow: { total?: number }) => {
@@ -58,11 +59,13 @@ export default function BTPrintView({ id, onClose, headless, linkOnly, onFail }:
         Array.from(dst.children).forEach((c) => { if (c !== container) (c as HTMLElement).style.display = 'none' })
         activeContainerRef.current = container
         setPages(flow?.total ?? 0); setRendering(false)
+        onReady?.()
       })
       .catch((e: unknown) => {
         if (settled) return
         settled = true; clearTimeout(watchdog)
-        container.style.display = 'none'; if (!cancelled) { setDlErr('Dựng trang lỗi: ' + (e instanceof Error ? e.message : String(e))); setRendering(false) }
+        container.style.display = 'none'
+        if (!cancelled) { setDlErr('Dựng trang lỗi: ' + (e instanceof Error ? e.message : String(e))); setRendering(false); onRenderErr?.(e instanceof Error ? e.message : String(e)) }
       })
       .finally(() => URL.revokeObjectURL(cssUrl))
     return () => { cancelled = true; clearTimeout(watchdog) }

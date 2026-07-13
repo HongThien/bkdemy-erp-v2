@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { listAllTaiLieu, deleteTaiLieu, duplicateTaiLieu, updateTaiLieu, type TaiLieu } from '../../lib/tailieu'
 import { phatHanhTest, PHAT_HANH_DUOC } from '../../lib/testonline'
+import { listLinkGenJobs, type LinkGenJobRow } from '../../lib/linkgen'
 import { listLop, type Lop } from '../../lib/nhansu'
 import { useStore } from '../../store/useStore'
 import PrintView from './PrintView'
@@ -35,9 +36,9 @@ export default function KhoTaiLieuScreen() {
   const me = useStore((s) => s.me)
   const laAdmin = !!useStore((s) => s.quyen)?.laAdmin
   const myMons = me?.mons ?? []
-  const linkGenActive = useStore((s) => s.linkGenActive) // job link-gen ĐANG chạy (toàn cục, xem LinkGenWorker) — hiện "⏳ đang tạo…" đúng dòng
-  const linkGenQueue = useStore((s) => s.linkGenQueue)
-  const linkGenFailed = useStore((s) => s.linkGenFailed) // đã tự thử 3 lần vẫn không xong — khác "chưa từng thử", phải hiện rõ
+  // Trạng thái gen-link ĐỜI 2: đọc từ bảng `linkgen_jobs` (worker server xử lý — xem lib/linkgen.ts),
+  // KHÔNG còn từ store client. Poll nhẹ khi đang mở màn để nhãn "⏳ đang tạo…" tự đổi thành link.
+  const [linkJobs, setLinkJobs] = useState<LinkGenJobRow[]>([])
   const [print, setPrint] = useState<{ id: string; loai: string } | null>(null)
   const [dlDoc, setDlDoc] = useState<{ id: string; loai: string } | null>(null)
   const [editEt, setEditEt] = useState<ETView | null>(null) // sửa ET tại chỗ (mở ETEditor)
@@ -74,17 +75,27 @@ export default function KhoTaiLieuScreen() {
   }
   useEffect(() => { reload() }, []) // eslint-disable-line
 
-  // Job link-gen chạy NỀN qua LinkGenWorker (App.tsx) — nó chỉ biết clear `linkGenActive`, KHÔNG biết
-  // gì về bảng ở màn này để tự refresh. Thiếu đoạn này thì dù upload/ghi file_url THÀNH CÔNG thật ở DB,
-  // dòng vẫn hiện "chưa có link" mãi vì `rows` cũ không đổi — bấm "↻" bao nhiêu lần cũng như không.
-  // Bắt đúng lúc job CHUYỂN từ "đang chạy" → null (vừa xong, dù thành công hay lỗi) rồi tải lại NGẦM
-  // (không setLoading — job xong lặng lẽ giữa lúc Thùy đang lướt bảng, không được xoá bảng ra "Đang tải…").
-  const prevLinkGenActiveRef = useRef<{ id: string } | null>(null)
+  // Poll bảng jobs mỗi 8s khi màn đang mở — job chạy ở SERVER, màn này không có cách nào khác biết nó
+  // xong lúc nào. Khi số job đang-chờ GIẢM (có job vừa xong) → tải lại danh sách NGẦM (không setLoading,
+  // job xong lặng lẽ giữa lúc Thùy đang lướt bảng, không được xoá bảng ra "Đang tải…") để dòng đó hiện
+  // "🔗 Copy link" ngay, không cần F5.
+  const prevPendingRef = useRef(0)
   useEffect(() => {
-    const was = prevLinkGenActiveRef.current
-    prevLinkGenActiveRef.current = linkGenActive
-    if (was && !linkGenActive) listAllTaiLieu().then((d) => setRows(d as Row[])).catch(() => {})
-  }, [linkGenActive])
+    let stop = false
+    const tick = async () => {
+      try {
+        const jobs = await listLinkGenJobs()
+        if (stop) return
+        setLinkJobs(jobs)
+        const pending = jobs.filter((j) => j.status === 'pending' || j.status === 'processing').length
+        if (pending < prevPendingRef.current) listAllTaiLieu().then((d) => { if (!stop) setRows(d as Row[]) }).catch(() => {})
+        prevPendingRef.current = pending
+      } catch { /* mạng chớp — lượt poll sau tự bù */ }
+    }
+    tick()
+    const t = setInterval(tick, 8000)
+    return () => { stop = true; clearInterval(t) }
+  }, [])
 
   // ⭐ 07-12 — link PDF giờ gen TỰ ĐỘNG ngay lúc tài liệu tạo/sửa xong (`enqueueLinkGen`, hàng đợi TOÀN
   // CỤC xử lý bởi `LinkGenWorker` mount ở App.tsx — xem store `linkGenQueue`). Màn này KHÔNG còn tự
@@ -234,10 +245,10 @@ export default function KhoTaiLieuScreen() {
                             <button onClick={() => layLink(r)} title={r.file_url} className="shrink-0 rounded-md border border-sky-300 px-2.5 py-1 text-[12px] font-medium text-sky-700 hover:bg-sky-50">
                               {copiedId === r.id ? '✓ Đã copy' : '🔗 Copy link'}
                             </button>
-                          ) : linkGenActive?.id === r.id || linkGenQueue.some((x) => x.id === r.id) ? (
+                          ) : linkJobs.some((j) => j.tai_lieu_id === r.id && (j.status === 'pending' || j.status === 'processing')) ? (
                             <span className="shrink-0 px-1 text-[12px] text-sky-500">⏳ đang tạo…</span>
-                          ) : linkGenFailed.includes(r.id) ? (
-                            <span className="shrink-0 px-1 text-[12px] text-rose-500" title="Đã tự thử tạo link 3 lần nhưng không xong (thường do trang dựng quá lâu) — bấm ↻ để thử lại">⚠ lỗi, bấm ↻</span>
+                          ) : linkJobs.some((j) => j.tai_lieu_id === r.id && j.status === 'failed') ? (
+                            <span className="shrink-0 px-1 text-[12px] text-rose-500" title={'Server đã thử tạo link 3 lần nhưng không xong — bấm ↻ để thử lại. Lỗi: ' + (linkJobs.find((j) => j.tai_lieu_id === r.id)?.error ?? '?')}>⚠ lỗi, bấm ↻</span>
                           ) : (
                             <span className="shrink-0 px-1 text-[12px] text-slate-300" title="Tài liệu cũ từ trước tính năng tự-tạo-link — bấm ↻ để tạo">— chưa có link</span>
                           )}

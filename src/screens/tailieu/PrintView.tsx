@@ -137,7 +137,10 @@ export async function uploadPagesAsLink(dst: HTMLElement, filename: string, chro
 
 // headless = KHÔNG hiện preview, tự dựng trang ẩn → tải PDF → đóng (nút "⬇ Tải" ngay ở hàng Kho tài liệu).
 // onlyBuoiId = chỉ render 1 BUỔI (nút "👁 Xem buổi" ở Builder) — kiểm tra nhanh, khỏi cuộn cả giáo trình.
-export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly, onFail }: { id: string; onClose: () => void; headless?: boolean; onlyBuoiId?: string; linkOnly?: boolean; onFail?: () => void }) {
+// onReady/onRenderErr (07-12, đời 2 server-gen): tín hiệu cho PrintJobPage (trang worker Puppeteer) —
+// LƯU Ý loại btvn/giao_trinh_buoi render LẠI khi scope tự chuyển + lopTen nạp xong → onReady có thể
+// bắn NHIỀU LẦN; PrintJobPage tự debounce lấy lần cuối, ở đây chỉ bắn mộc mạc mỗi lần dựng xong.
+export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly, onFail, onReady, onRenderErr }: { id: string; onClose: () => void; headless?: boolean; onlyBuoiId?: string; linkOnly?: boolean; onFail?: () => void; onReady?: () => void; onRenderErr?: (msg: string) => void }) {
   const [full, setFull] = useState<TaiLieuFull | null>(null)
   const [err, setErr] = useState<string | null>(null)
   const [gv, setGv] = useState(false) // false = bản HS · true = bản GV
@@ -198,6 +201,7 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly,
       settled = true
       container.style.display = 'none'
       setRenderErr('Dựng trang quá lâu (>30s) — đóng rồi thử lại.'); setRendering(false)
+      onRenderErr?.('Dựng trang quá lâu (>30s)')
     }, 30000)
     new Previewer().preview(html, [cssUrl], container)
       .then((flow: { total?: number }) => {
@@ -207,11 +211,13 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly,
         Array.from(dst.children).forEach((c) => { if (c !== container) (c as HTMLElement).style.display = 'none' })
         activeContainerRef.current = container
         setPages(flow?.total ?? 0); setRendering(false)
+        onReady?.()
       })
       .catch((e: unknown) => {
         if (settled) return
         settled = true; clearTimeout(watchdog)
-        container.style.display = 'none'; if (!cancelled) { setRenderErr(e instanceof Error ? e.message : String(e)); setRendering(false) }
+        container.style.display = 'none'
+        if (!cancelled) { setRenderErr(e instanceof Error ? e.message : String(e)); setRendering(false); onRenderErr?.(e instanceof Error ? e.message : String(e)) }
       })
       .finally(() => URL.revokeObjectURL(cssUrl))
     return () => { cancelled = true; clearTimeout(watchdog) }

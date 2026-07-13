@@ -6,7 +6,6 @@ import TopBar from './components/TopBar'
 import NhanSuHome from './screens/NhanSuHome'
 import Login from './auth/Login'
 import GeminiMeterBadge from './components/GeminiMeterBadge'
-import LinkGenWorker from './components/LinkGenWorker'
 import HocSinhApp from './screens/hocsinh/HocSinhApp'
 import { getMyHocSinhId } from './lib/testonline'
 import { useIsMobile } from './hooks/useIsMobile'
@@ -55,9 +54,10 @@ export default function App() {
         <NhanSuHome user={user} />
       </div>
       <GeminiMeterBadge />
-      {/* Hàng đợi lấy-link toàn cục (07-12) — mount 1 lần ở đây, KHÔNG riêng KhoTaiLieuScreen, vì
-          tài liệu được tạo/sửa xong từ nhiều màn khác nhau (ETScreen, TaiLieuBuilder, DeThiScreen…). */}
-      <LinkGenWorker />
+      {/* LinkGenWorker (đời 1 — render link-PDF trên máy người dùng) ĐÃ NGỪNG MOUNT (07-12): nó chiếm
+          màn hình bằng overlay "⏳ Đang lấy link…" tới 2 phút giữa lúc đang làm việc (Thùy: "t ko muốn
+          phải chờ bất kì chỗ nào"). Đời 2: enqueueLinkGen chỉ ghi dòng vào bảng `linkgen_jobs`, worker
+          SERVER (worker/index.mjs) tự gen PDF chữ thật — máy người dùng không render gì nữa. */}
     </div>
   )
   // Mobile: huỷ zoom:1.15 (#root, mật độ desktop) về net 1.0 — CÙNG trick với HocSinhApp ở trên (bọc

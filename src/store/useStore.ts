@@ -4,6 +4,7 @@ import { users, opTasks, devTasks, adminLeaves, classesOfCoSo, worktypesByVai } 
 import { myQuyen, type MyQuyen } from '../lib/quyen'
 import { setReadOnlyLeafGetter } from '../lib/supabase'
 import { getMyProfile, type MyProfile, type MyScope } from '../lib/nhansu'
+import { enqueueLinkGenJob } from '../lib/linkgen'
 import type { User, Vai, NavGroup, NavLeaf, AdminLeaf } from '../types'
 
 export type LinkGenJob = { id: string; loai: string; attempt: number }
@@ -40,18 +41,12 @@ interface UiState {
   setDbVanHanhView: (v: 'theonguoi' | 'theomuc' | 'chitiet' | 'duyet') => void
   setDbVanHanhMuc: (m: 'tatca' | 'ops' | 'ta' | 'gv') => void
   setDbVanHanhNsId: (id: string | null) => void
-  // ── Hàng đợi lấy-link PDF (07-12) — Thùy: "gen sẵn NGAY KHI tài liệu được tạo ra, KHÔNG được có thao
-  // tác của người". Toàn cục (không riêng KhoTaiLieuScreen) vì tài liệu tạo/sửa xong từ NHIỀU màn khác
-  // nhau (ETScreen, TaiLieuBuilder, DeThiScreen, MTScreen, BTScreen…) — `LinkGenWorker` (mount 1 lần ở
-  // App.tsx) xử lý TUẦN TỰ, 1 job/lúc (không hâm nóng máy dựng nhiều trang cùng lúc, bài học 07-11:
-  // rasterize hàng trăm doc cùng lúc làm đơ tab — CHỈ enqueue đúng lúc 1 tài liệu vừa tạo/sửa xong,
-  // KHÔNG BAO GIỜ backfill hàng loạt tự động).
-  // `linkGenActive` = job ĐANG xử lý (nằm ở store, không phải state cục bộ của LinkGenWorker, để
-  // KhoTaiLieuScreen đọc được và hiện "⏳ đang tạo…" — Thùy cần THẤY nó đang chạy, không phải đoán).
-  // `attempt` — paged.js đôi khi TREO không rõ nguyên nhân (xem DEVLOG) → KHÔNG được để 1 lần treo là
-  // tài liệu vĩnh viễn không có link (Thùy 07-12: "tại sao lại phải có thao tác của người để tạo link
-  // vậy?") — watchdog hết giờ TỰ ĐỘNG xếp lại hàng đợi, tối đa `MAX_LINKGEN_ATTEMPTS` lần, không cần
-  // Thùy để ý/bấm gì.
+  // ── Hàng đợi lấy-link PDF (07-12, ĐỜI 2 — chuyển sang SERVER) — Thùy: "t ko muốn phải chờ bất kì
+  // chỗ nào... hệ thống phải tự chạy ẩn". `enqueueLinkGen` giờ CHỈ ghi 1 dòng 'pending' vào bảng
+  // `linkgen_jobs` (xem lib/linkgen.ts) — máy người dùng KHÔNG render/upload gì nữa, worker server
+  // (worker/index.mjs, Chrome thật, PDF chữ) tự xử. Các field queue/active/failed dưới đây là ĐỜI 1
+  // (client-side render, đã ngừng dùng — LinkGenWorker không còn mount ở App.tsx), giữ tạm chờ Thùy
+  // gật mới dọn (Luật xoá).
   linkGenQueue: LinkGenJob[]
   linkGenActive: LinkGenJob | null
   // Id đã hết MAX_LINKGEN_ATTEMPTS lần thử mà vẫn không xong — KHÔNG được để row lặng lẽ quay về y hệt
@@ -95,7 +90,8 @@ export const useStore = create<UiState>()(persist((set, get) => ({
   linkGenQueue: [],
   linkGenActive: null,
   linkGenFailed: [],
-  enqueueLinkGen: (id, loai) => set((s) => (s.linkGenQueue.some((x) => x.id === id) || s.linkGenActive?.id === id) ? s : { linkGenQueue: [...s.linkGenQueue, { id, loai, attempt: 0 }], linkGenFailed: s.linkGenFailed.filter((x) => x !== id) }),
+  // ĐỜI 2: chỉ ghi job vào DB (fire-and-forget) — 9 call site (các editor/Kho) giữ nguyên không sửa.
+  enqueueLinkGen: (id, loai) => { enqueueLinkGenJob(id, loai) },
   shiftLinkGen: () => {
     const q = get().linkGenQueue
     if (q.length === 0) return undefined
