@@ -37,3 +37,17 @@ export function canXetDuyetNghi30(soBuoiNghi, soBuoiLop) {
   if (soBuoiLop <= 0) return false
   return soBuoiNghi / soBuoiLop >= 0.3
 }
+
+// ── 2 CÔNG THỨC HỌC PHÍ CHÍNH (Thùy chốt 07-13) ─────────────────────────────
+// CT1 (nghỉ ÍT, dưới 30% số buổi):  Học phí = Số buổi học CỦA LỚP × đơn giá × hệ số
+//   (nghỉ ít vẫn đóng đủ theo lớp — công bằng vận hành, đỡ li ti từng buổi lẻ).
+// CT2 (nghỉ NHIỀU, từ 30% trở lên): Học phí = (Số buổi HS học THỰC TẾ + Số buổi BÙ) × đơn giá × hệ số.
+// Hệ thống ĐỀ XUẤT theo ngưỡng 30% (cùng ngưỡng canXetDuyetNghi30) — NGƯỜI DÙNG chọn lại được
+// theo tình hình thực tế (người-trong-vòng-lặp chỗ tiền nhạy cảm, không auto).
+export function deXuatCongThuc(soBuoiNghi, soBuoiLop) {
+  return canXetDuyetNghi30(soBuoiNghi, soBuoiLop) ? 'ct2' : 'ct1'
+}
+export function thanhTienHocChinh(congThuc, { soBuoiLop, soBuoiDiHoc, soBuoiBu }, donGiaBuoi, heSo) {
+  const soBuoi = congThuc === 'ct2' ? soBuoiDiHoc + soBuoiBu : soBuoiLop
+  return lamTron1000(donGiaBuoi * soBuoi * heSo)
+}
