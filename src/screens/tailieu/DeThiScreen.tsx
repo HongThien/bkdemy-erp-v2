@@ -156,7 +156,9 @@ export function DeThiEditor({ id, onClose }: { id: string; onClose: () => void }
   return (
     <div className="flex h-full flex-col bg-[#fafafb]">
       <div className="flex flex-wrap items-center gap-3 border-b border-slate-200 bg-white px-5 py-2.5">
-        <button onClick={onClose} className="text-[13px] font-medium text-slate-400 hover:text-indigo-600">← Kho tài liệu</button>
+        {/* ⭐ 07-12: đề thi cũng autosave từng thao tác (không nút Lưu) — enqueue link ở lúc ĐÓNG, giống
+            TaiLieuBuilder (đóng = kết thúc 1 lượt sửa). */}
+        <button onClick={() => { useStore.getState().enqueueLinkGen(id, 'de_thi'); onClose() }} className="text-[13px] font-medium text-slate-400 hover:text-indigo-600">← Kho tài liệu</button>
         <input value={ten} onChange={(e) => setTen(e.target.value)} onBlur={saveTen} className="min-w-[280px] flex-1 rounded-md border border-transparent px-2 py-1 text-[15px] font-semibold text-slate-900 hover:border-slate-200 focus:border-indigo-400 focus:outline-none" />
         <span className="rounded bg-violet-50 px-2 py-0.5 text-[11px] font-medium text-violet-600">{d.mon} · Khối {d.khoi}</span>
         {saved && <span className="text-[12px] text-emerald-600">✓ Đã lưu</span>}

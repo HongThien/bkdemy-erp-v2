@@ -2,7 +2,7 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-94 bảng · 0 enum · 8 trigger · 21 function
+95 bảng · 0 enum · 8 trigger · 21 function
 
 ## bai_lam
 
@@ -775,6 +775,18 @@
 | mua | text | Y |  |  |
 | buoi_hoc_id | uuid | Y |  | FK→buoi_hoc.id |
 | created_at | timestamp with time zone |  | now() |  |
+
+## linkgen_jobs
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| tai_lieu_id | uuid |  |  | PK FK→tai_lieu.id |
+| loai | text |  |  |  |
+| status | text |  | 'pending'::text |  |
+| attempt | integer |  | 0 |  |
+| error | text | Y |  |  |
+| created_at | timestamp with time zone |  | now() |  |
+| updated_at | timestamp with time zone |  | now() |  |
 
 ## loai_viec
 

@@ -11,6 +11,7 @@ import { MathText, inp } from '../kho/ui'
 import SearchSelect from '../../components/SearchSelect'
 import BuoiNgaySelect from '../../components/BuoiNgaySelect'
 import PrintView from './PrintView'
+import { useStore } from '../../store/useStore'
 
 const loaiLabel = (v: string) => LOAI_CAU.find((x) => x.value === v)?.label ?? v
 const MAU_PRESET = [['#E91E8C', 'Hồng'], ['#F7941E', 'Cam'], ['#2D9CDB', 'Xanh dương'], ['#16a34a', 'Xanh lá'], ['#7c3aed', 'Tím']]
@@ -80,7 +81,10 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
     <div className="flex h-full flex-col bg-[#fafafb]">
       {/* Thanh trên */}
       <div className="flex items-center gap-3 border-b border-slate-200 bg-white px-5 py-2.5">
-        <button onClick={onClose} className="text-[13px] font-medium text-slate-400 hover:text-indigo-600">← Thư viện</button>
+        {/* ⭐ 07-12: builder tự lưu liên tục (không nút Lưu) — điểm "xong 1 lượt sửa" DUY NHẤT là lúc
+            đóng builder, nên enqueue link ở ĐÂY (không phải mỗi lần autosave — sẽ hâm nóng máy liên tục
+            trong lúc đang gõ). Link PDF phải sẵn sàng khi Thùy quay lại Kho tài liệu, không cần bấm gì. */}
+        <button onClick={() => { useStore.getState().enqueueLinkGen(id, 'giao_trinh'); onClose() }} className="text-[13px] font-medium text-slate-400 hover:text-indigo-600">← Thư viện</button>
         <input value={ten} onChange={(e) => setTen(e.target.value)} onBlur={saveTen} className={`${inp} h-9 max-w-[420px] flex-1 font-semibold`} placeholder="Tên giáo trình" />
         <span className="text-[12px] text-slate-400">Khối {full.taiLieu.khoi}</span>
         <span className={`rounded-md px-2 py-0.5 text-[11px] font-medium transition ${saved ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-400'}`} title="Mọi thay đổi được lưu tự động — không cần nút Lưu">{saved ? '✓ Đã lưu' : '↻ Tự động lưu'}</span>
@@ -451,7 +455,10 @@ function TrichPanel({ masterId, khoi, buois, onClose }: { masterId: string; khoi
 
   async function gan(buoiId: string, tenBuoi: string, ngay: string, gt: boolean, bt: boolean) {
     if (!lop) return
-    await trichXuatBuoi(masterId, buoiId, { lopId: lop.id, ngay, khoi, tenLop: lop.ten_lop, tenBuoi, giaoTrinh: gt, btvn: bt })
+    const created = await trichXuatBuoi(masterId, buoiId, { lopId: lop.id, ngay, khoi, tenLop: lop.ten_lop, tenBuoi, giaoTrinh: gt, btvn: bt })
+    // ⭐ 07-12: doc VẬN HÀNH (giao_trinh_buoi/btvn) trích xong là ĐỦ NỘI DUNG ngay — enqueue link luôn,
+    // không đợi Thùy quay lại Kho tài liệu bấm.
+    created.forEach((d) => useStore.getState().enqueueLinkGen(d.id, d.loai))
     await loadState(lop.id)
   }
 

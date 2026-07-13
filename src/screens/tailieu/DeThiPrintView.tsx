@@ -11,7 +11,7 @@ import { CauItem, CauList, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChr
 const DEFAULT_TL_LINES = 4
 const CAP_LABEL: Record<string, string> = { vao_10: 'Tuyển sinh vào 10', thpt_qg: 'THPT Quốc gia', hsg: 'Học sinh giỏi' }
 
-export default function DeThiPrintView({ id, onClose, headless, linkOnly }: { id: string; onClose: () => void; headless?: boolean; linkOnly?: boolean }) {
+export default function DeThiPrintView({ id, onClose, headless, linkOnly, onFail, onReady, onRenderErr }: { id: string; onClose: () => void; headless?: boolean; linkOnly?: boolean; onFail?: () => void; onReady?: () => void; onRenderErr?: (msg: string) => void }) {
   const [full, setFull] = useState<TaiLieuFull | null>(null)
   const [err, setErr] = useState<string | null>(null)
   const [gv, setGv] = useState(false)
@@ -46,6 +46,7 @@ export default function DeThiPrintView({ id, onClose, headless, linkOnly }: { id
       settled = true
       container.style.display = 'none'
       setDlErr('Dựng trang quá lâu (>30s) — đóng rồi thử lại.'); setRendering(false)
+      onRenderErr?.('Dựng trang quá lâu (>30s)')
     }, 30000)
     new Previewer().preview(html, [cssUrl], container)
       .then((flow: { total?: number }) => {
@@ -55,11 +56,13 @@ export default function DeThiPrintView({ id, onClose, headless, linkOnly }: { id
         Array.from(dst.children).forEach((c) => { if (c !== container) (c as HTMLElement).style.display = 'none' })
         activeContainerRef.current = container
         setPages(flow?.total ?? 0); setRendering(false)
+        onReady?.()
       })
       .catch((e: unknown) => {
         if (settled) return
         settled = true; clearTimeout(watchdog)
-        container.style.display = 'none'; if (!cancelled) { setDlErr('Dựng trang lỗi: ' + (e instanceof Error ? e.message : String(e))); setRendering(false) }
+        container.style.display = 'none'
+        if (!cancelled) { setDlErr('Dựng trang lỗi: ' + (e instanceof Error ? e.message : String(e))); setRendering(false); onRenderErr?.(e instanceof Error ? e.message : String(e)) }
       })
       .finally(() => URL.revokeObjectURL(cssUrl))
     return () => { cancelled = true; clearTimeout(watchdog) }
@@ -69,11 +72,11 @@ export default function DeThiPrintView({ id, onClose, headless, linkOnly }: { id
   // "🔗 Lấy link" — CHỈ dùng cho linkOnly (headless). "⬇ Tải PDF" cũ đã BỎ, giờ dùng NATIVE print
   // (window.print(), xem uploadPagesAsLink trong PrintView.tsx — quyết định kiến trúc 07-11).
   const printFileName = () => `${full?.taiLieu.ten ?? ''}${gv ? ' - Bản GV' : ''}`
-  async function layLink() {
-    if (!activeContainerRef.current || !full) return
+  async function layLink(): Promise<boolean> {
+    if (!activeContainerRef.current || !full) return false
     setDl(true); setDlErr(null)
-    try { await uploadPagesAsLink(activeContainerRef.current, printFileName(), pageChrome(full.taiLieu, full.taiLieu.cau_hinh ?? {}), full.taiLieu.id) }
-    catch (e) { setDlErr('Lấy link lỗi: ' + (e instanceof Error ? e.message : String(e))) }
+    try { await uploadPagesAsLink(activeContainerRef.current, printFileName(), pageChrome(full.taiLieu, full.taiLieu.cau_hinh ?? {}), full.taiLieu.id); return true }
+    catch (e) { setDlErr('Lấy link lỗi: ' + (e instanceof Error ? e.message : String(e))); return false }
     finally { setDl(false) }
   }
 
@@ -81,7 +84,7 @@ export default function DeThiPrintView({ id, onClose, headless, linkOnly }: { id
   useEffect(() => {
     if (!headless || didAutoDl.current || rendering || dlErr || !full || !dstRef.current) return
     didAutoDl.current = true
-    const t = setTimeout(() => { linkOnly ? layLink().finally(onClose) : printWithFilename(printFileName()) }, 350)
+    const t = setTimeout(() => { linkOnly ? layLink().then((ok) => (ok ? onClose() : (onFail ?? onClose)())) : printWithFilename(printFileName()) }, 350)
     return () => clearTimeout(t)
   }, [headless, rendering, dlErr, full]) // eslint-disable-line
   useEffect(() => {

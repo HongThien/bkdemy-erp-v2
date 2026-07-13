@@ -16,7 +16,10 @@ const DEFAULT_TLN_LINES = 2
 // headless = tự dựng ẩn → tải PDF → đóng (nút "⬇ Tải" ngay ở hàng Kho tài liệu, không mở preview).
 // linkOnly (đi kèm headless) = CHỈ lấy link chia sẻ (upload + ghi file_url), KHÔNG tải file cục bộ —
 // nút "🔗 Lấy link" riêng (KhoTaiLieuScreen), Thùy 07-11: "link phải có TRƯỚC khi bấm tải".
-export default function ETPrintView({ id, onClose, headless, linkOnly }: { id: string; onClose: () => void; headless?: boolean; linkOnly?: boolean }) {
+// onReady/onRenderErr (07-12, đời 2 server-gen): PrintJobPage (trang worker mở qua Puppeteer) cần biết
+// paged.js dựng XONG hay LỖI để bấm nút "in ra PDF" đúng lúc — component tự bắn tín hiệu, worker không
+// phải đoán mò qua DOM.
+export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, onReady, onRenderErr }: { id: string; onClose: () => void; headless?: boolean; linkOnly?: boolean; onFail?: () => void; onReady?: () => void; onRenderErr?: (msg: string) => void }) {
   const [full, setFull] = useState<TaiLieuFull | null>(null)
   const [err, setErr] = useState<string | null>(null)
   const [gv, setGv] = useState(false)
@@ -56,6 +59,7 @@ export default function ETPrintView({ id, onClose, headless, linkOnly }: { id: s
       settled = true
       container.style.display = 'none'
       setDlErr('Dựng trang quá lâu (>30s) — đóng rồi thử lại.'); setRendering(false)
+      onRenderErr?.('Dựng trang quá lâu (>30s)')
     }, 30000)
     new Previewer().preview(html, [cssUrl], container)
       .then((flow: { total?: number }) => {
@@ -65,11 +69,13 @@ export default function ETPrintView({ id, onClose, headless, linkOnly }: { id: s
         Array.from(dst.children).forEach((c) => { if (c !== container) (c as HTMLElement).style.display = 'none' })
         activeContainerRef.current = container
         setPages(flow?.total ?? 0); setRendering(false)
+        onReady?.()
       })
       .catch((e: unknown) => {
         if (settled) return
         settled = true; clearTimeout(watchdog)
-        container.style.display = 'none'; if (!cancelled) { setDlErr('Dựng trang lỗi: ' + (e instanceof Error ? e.message : String(e))); setRendering(false) }
+        container.style.display = 'none'
+        if (!cancelled) { setDlErr('Dựng trang lỗi: ' + (e instanceof Error ? e.message : String(e))); setRendering(false); onRenderErr?.(e instanceof Error ? e.message : String(e)) }
       })
       .finally(() => URL.revokeObjectURL(cssUrl))
     return () => { cancelled = true; clearTimeout(watchdog) }
@@ -79,11 +85,11 @@ export default function ETPrintView({ id, onClose, headless, linkOnly }: { id: s
   const printFileName = () => `${full?.taiLieu.ten ?? ''}${gv ? ' - Bản GV' : ''}`
   // "🔗 Lấy link" — CHỈ dùng cho linkOnly (headless). "⬇ Tải PDF" cũ đã BỎ, giờ dùng NATIVE print
   // (window.print(), xem uploadPagesAsLink trong PrintView.tsx — quyết định kiến trúc 07-11).
-  async function layLink() {
-    if (!activeContainerRef.current || !full) return
+  async function layLink(): Promise<boolean> {
+    if (!activeContainerRef.current || !full) return false
     setDl(true); setDlErr(null)
-    try { await uploadPagesAsLink(activeContainerRef.current, printFileName(), pageChrome(full.taiLieu, full.taiLieu.cau_hinh ?? {}), full.taiLieu.id) }
-    catch (e) { setDlErr('Lấy link lỗi: ' + (e instanceof Error ? e.message : String(e))) }
+    try { await uploadPagesAsLink(activeContainerRef.current, printFileName(), pageChrome(full.taiLieu, full.taiLieu.cau_hinh ?? {}), full.taiLieu.id); return true }
+    catch (e) { setDlErr('Lấy link lỗi: ' + (e instanceof Error ? e.message : String(e))); return false }
     finally { setDl(false) }
   }
 
@@ -91,7 +97,7 @@ export default function ETPrintView({ id, onClose, headless, linkOnly }: { id: s
   useEffect(() => {
     if (!headless || didAutoDl.current || rendering || dlErr || !full || !dstRef.current) return
     didAutoDl.current = true
-    const t = setTimeout(() => { linkOnly ? layLink().finally(onClose) : printWithFilename(printFileName()) }, 350)
+    const t = setTimeout(() => { linkOnly ? layLink().then((ok) => (ok ? onClose() : (onFail ?? onClose)())) : printWithFilename(printFileName()) }, 350)
     return () => clearTimeout(t)
   }, [headless, rendering, dlErr, full]) // eslint-disable-line
   useEffect(() => {

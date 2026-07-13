@@ -17,6 +17,7 @@ import { LOAI_CAU, KHOI_OPTIONS } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
 import { KhoPicker } from './TaiLieuBuilder'
 import BTPrintView from './BTPrintView'
+import { useStore } from '../../store/useStore'
 import DangPickerOne from '../../components/DangPickerOne'
 
 const inp = 'h-9 rounded-lg border border-slate-300 px-2.5 text-[13px] outline-none focus:border-indigo-400'
@@ -245,7 +246,8 @@ export function BTEditor({ id, onClose }: { id: string; onClose: () => void }) {
   return (
     <div className="flex h-full flex-col bg-[#fafafb]">
       <div className="flex flex-wrap items-center gap-3 border-b border-slate-200 bg-white px-5 py-2.5">
-        <button onClick={onClose} className="text-[13px] font-medium text-slate-400 hover:text-indigo-600">← Kho BT</button>
+        {/* ⭐ 07-12: BT autosave từng thao tác — enqueue link ở lúc ĐÓNG (không phải mỗi lần autosave). */}
+        <button onClick={() => { useStore.getState().enqueueLinkGen(id, 'bo_tro'); onClose() }} className="text-[13px] font-medium text-slate-400 hover:text-indigo-600">← Kho BT</button>
         <input value={ten} onChange={(e) => setTen(e.target.value)} onBlur={saveTen} className="min-w-[220px] flex-1 rounded-md border border-transparent px-2 py-1 text-[15px] font-semibold text-slate-900 hover:border-slate-200 focus:border-indigo-400 focus:outline-none" />
         <span className="rounded bg-emerald-50 px-2 py-0.5 text-[11px] font-medium text-emerald-700">{bt.hoc_sinh?.ho_ten}{bt.hoc_sinh?.ma_hs ? ` · ${bt.hoc_sinh.ma_hs}` : ''} · Khối {bt.khoi} · {bt.mon}</span>
         {saved && <span className="text-[12px] text-emerald-600">✓ Đã lưu</span>}

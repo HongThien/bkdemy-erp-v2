@@ -23,39 +23,52 @@ export function printWithFilename(filename: string) {
   window.addEventListener('afterprint', restore)
   window.print()
 }
-const escHtml = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-// Chèn header/footer bằng PHẦN TỬ THẬT vào bản clone của html2canvas (tắt ::before/::after gốc).
-// LÝ DO: html2canvas KHÔNG rasterize nổi background NHIỀU LỚP trên pseudo-element (logo+chip+wave) → header trắng,
-// chữ trắng thành mờ (§367). Phần tử thật + <img> logo + 1 wave đơn thì html2canvas chụp chuẩn.
-// ⭐ 07-11 (tiếp 8, Thùy báo lại kèm file PDF thật): dải SÓNG vẫn lỗi dù đã đổi logo/chip sang <img> —
-// dải màu chỉ hiện ở phần trên cùng (~1/3 chiều cao) rồi TRẮNG hẳn, chữ (canh giữa theo CHIỀU CAO ĐẦY ĐỦ
-// của khối) rơi vào vùng trắng đó → chỉ còn thấy bóng đổ (text-shadow) mờ mờ, KHÔNG thấy chữ trắng thật.
-// ROOT CAUSE: dải sóng vẫn đặt qua CSS `background:url(...) center/100% 100%` — html2canvas rasterize
-// data-URI SVG làm CSS background KHÔNG tôn trọng `100% 100%` (bỏ qua backgroundSize, dùng kích thước
-// "tự nhiên" của SVG theo tỉ lệ viewBox 1200:100 thay vì kéo giãn theo khối chứa) → dải sóng bị nén dẹt
-// lại rất thấp so với khối 18mm/15mm. ĐÚNG bài học đã ghi ở comment trên (background nhiều lớp lỗi) —
-// chỉ mới sửa được logo/chip (đã là <img>), CHƯA sửa chính dải sóng (vẫn còn background). Fix: dải sóng
-// cũng chuyển hẳn sang <img> (position:absolute;inset:0;width/height:100%) — html2canvas render <img>
-// đáng tin cậy hơn hẳn CSS background theo mọi bằng chứng đã thấy trong phiên này.
-function injectChrome(doc: Document, cr: PageChrome) {
-  const st = doc.createElement('style')
-  st.textContent = '.pagedjs_pagebox::before,.pagedjs_pagebox::after{content:none!important;background:none!important}'
-  doc.head.appendChild(st)
-  doc.querySelectorAll('.pagedjs_pagebox').forEach((pb) => {
-    const box = pb as HTMLElement
-    if (cr.head) {
-      const h = doc.createElement('div')
-      h.style.cssText = `position:absolute;top:0;left:0;right:0;height:18mm;overflow:hidden;z-index:1`
-      h.innerHTML = `<img src="${cr.headUri}" style="position:absolute;inset:0;width:100%;height:100%;display:block"/><img src="${cr.chipUri}" style="position:absolute;left:4.5mm;top:1.5mm;width:42mm;height:9mm"/><img src="${cr.logoUrl}" crossorigin="anonymous" style="position:absolute;left:8mm;top:3.5mm;height:5mm"/><span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:flex-end;padding:0 10mm;box-sizing:border-box;color:#fff;font:700 11px/1 'Times New Roman',serif;text-shadow:0 1px 2px rgba(0,0,0,.25)">${escHtml(cr.headText)}</span>`
-      box.insertBefore(h, box.firstChild) // trước margin-box số trang → số trang vẫn nổi trên
+// ⭐ 07-12 tiếp 6 — QUYẾT ĐỊNH KIẾN TRÚC: sau 3 LẦN sửa header/footer bằng html2canvas (override CSS
+// `!important`, xoá rule CSSOM có chờ load, opacity:0 + gate selector `:not(.pv-no-chrome)`) ĐỀU
+// THẤT BẠI qua verify THẬT trên máy Thùy (không phải giả lập) — chữ vẫn nhân đôi y hệt mỗi lần. Thùy:
+// "cái lỗi canvas m đã gặp rất nhiều lần rồi đấy" — đúng, đây là bug thứ 4-5 CÙNG NGUỒN html2canvas
+// trong session (JPEG rám, nền sóng lệch, giờ chữ đôi). KẾT LUẬN: html2canvas không đáng tin cho khối
+// header/footer (dải màu+logo+chữ) DÙ CÁCH NÀO — nhưng THÂN BÀI (câu/lý thuyết/ảnh/KaTeX) qua
+// html2canvas vẫn ổn định suốt session, không đáng để bỏ luôn html2canvas cho cả file.
+// FIX TẬN GỐC: header/footer KHÔNG còn qua html2canvas nữa — vẽ TRỰC TIẾP bằng jsPDF (dải gradient mô
+// phỏng bằng nhiều dải màu mảnh, logo qua `addImage`, chữ qua `pdf.text`) NGAY SAU KHI dán ảnh thân bài
+// vào từng trang — vẽ ĐÈ LÊN nên dù html2canvas có chụp sót gì ở đúng vùng đó cũng bị che kín hoàn
+// toàn, không còn phụ thuộc html2canvas "làm đúng" bất kỳ điều gì cho khối chrome nữa.
+function hexRgb(hex: string): [number, number, number] {
+  return [parseInt(hex.slice(1, 3), 16), parseInt(hex.slice(3, 5), 16), parseInt(hex.slice(5, 7), 16)]
+}
+function drawGradientBar(pdf: InstanceType<typeof import('jspdf').jsPDF>, x: number, y: number, w: number, h: number, colors: string[]) {
+  const steps = 48
+  const stepW = w / steps
+  const stops = colors.map(hexRgb)
+  for (let i = 0; i < steps; i++) {
+    const t = (i / (steps - 1)) * (stops.length - 1)
+    const idx = Math.min(Math.floor(t), stops.length - 2)
+    const frac = t - idx
+    const [r1, g1, b1] = stops[idx]; const [r2, g2, b2] = stops[idx + 1]
+    pdf.setFillColor(Math.round(r1 + (r2 - r1) * frac), Math.round(g1 + (g2 - g1) * frac), Math.round(b1 + (b2 - b1) * frac))
+    pdf.rect(x + i * stepW, y, stepW + 0.4, h, 'F') // +0.4mm chồng nhẹ, tránh khe hở trắng mảnh giữa các dải
+  }
+}
+function drawChrome(pdf: InstanceType<typeof import('jspdf').jsPDF>, cr: PageChrome, logoImg: HTMLImageElement | null): void {
+  if (cr.head) {
+    drawGradientBar(pdf, 0, 0, 210, 18, ['#E91E8C', '#F7941E', '#2D9CDB'])
+    pdf.setFillColor(255, 255, 255); pdf.setDrawColor(223, 229, 236)
+    try { pdf.roundedRect(4.5, 1.5, 42, 9, 2, 2, 'FD') } catch { pdf.rect(4.5, 1.5, 42, 9, 'F') }
+    if (logoImg) {
+      try { const w = 5 * (logoImg.naturalWidth / logoImg.naturalHeight || 3); pdf.addImage(logoImg, 'PNG', 8, 3.5, w, 5) } catch { /* logo lỗi không chặn cả PDF */ }
     }
-    if (cr.foot) {
-      const f = doc.createElement('div')
-      f.style.cssText = `position:absolute;bottom:0;left:0;right:0;height:15mm;overflow:hidden;z-index:1`
-      f.innerHTML = `<img src="${cr.footUri}" style="position:absolute;inset:0;width:100%;height:100%;display:block"/><span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:0 16mm;box-sizing:border-box;color:#fff;font:700 11px 'Times New Roman',serif;text-shadow:0 1px 3px rgba(0,0,0,.35)${cr.footPre ? ';white-space:pre' : ''}">${escHtml(cr.footText)}</span>`
-      box.insertBefore(f, box.firstChild)
-    }
-  })
+    pdf.setTextColor(255, 255, 255); pdf.setFont('times', 'bold'); pdf.setFontSize(11)
+    pdf.text(cr.headText, 200, 10.5, { align: 'right', baseline: 'middle' })
+  }
+  if (cr.foot) {
+    drawGradientBar(pdf, 0, 297 - 15, 210, 15, ['#2D9CDB', '#F7941E', '#E91E8C'])
+    pdf.setTextColor(255, 255, 255); pdf.setFont('times', 'bold'); pdf.setFontSize(11)
+    const lines = cr.footPre ? cr.footText.split('\n') : [cr.footText]
+    const baseY = 297 - 15 / 2
+    if (lines.length <= 1) pdf.text(cr.footText, 105, baseY, { align: 'center', baseline: 'middle' })
+    else lines.forEach((ln, idx) => pdf.text(ln, 105, baseY - (lines.length - 1) * 2 + idx * 4, { align: 'center', baseline: 'middle' }))
+  }
 }
 // ⭐ 07-11 — QUYẾT ĐỊNH KIẾN TRÚC (Thùy chốt sau nhiều lần lỗi rám chữ/nhân bản trang): "⬇ Tải PDF"
 // (tải file cục bộ) KHÔNG còn tự dựng file qua html2canvas nữa — đổi thẳng sang `window.print()`
@@ -75,30 +88,59 @@ export async function uploadPagesAsLink(dst: HTMLElement, filename: string, chro
   const html2canvas = h2cMod.default
   const pages = Array.from(dst.querySelectorAll('.pagedjs_page')) as HTMLElement[]
   if (!pages.length) throw new Error('Chưa có trang nào để tải — đợi dựng trang xong.')
-  // Chờ FONT (KaTeX + Times) sẵn sàng → tránh chụp ra trang trắng chữ.
+  // Chờ FONT (KaTeX + Times) sẵn sàng → tránh chụp ra trang trắng chữ (vẫn cần cho THÂN BÀI qua html2canvas).
   try { await (document as Document & { fonts?: { ready?: Promise<unknown> } }).fonts?.ready } catch { /* */ }
-  // Nạp sẵn logo để html2canvas có ảnh (né lỗi ảnh chưa tải).
-  if (chrome?.logoUrl) await new Promise<void>((res) => { const im = new Image(); im.crossOrigin = 'anonymous'; im.onload = () => res(); im.onerror = () => res(); im.src = chrome.logoUrl })
-  const pdf = new jspdfMod.jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' })
-  for (let i = 0; i < pages.length; i++) {
-    const canvas = await html2canvas(pages[i], {
-      scale: 2, useCORS: true, backgroundColor: '#ffffff', logging: false, imageTimeout: 15000,
-      onclone: chrome ? (doc: Document) => injectChrome(doc, chrome) : undefined,
+  // Nạp logo để jsPDF vẽ trực tiếp (KHÔNG còn qua html2canvas nữa — xem drawChrome phía trên).
+  let logoImg: HTMLImageElement | null = null
+  if (chrome?.logoUrl) {
+    logoImg = await new Promise<HTMLImageElement | null>((res) => {
+      const im = new Image(); im.crossOrigin = 'anonymous'
+      im.onload = () => res(im); im.onerror = () => res(null)
+      im.src = chrome.logoUrl
     })
-    if (i > 0) pdf.addPage()
-    // PNG (KHÔNG JPEG) — JPEG nén mất-dữ-liệu làm rám/vỡ viền chữ nhỏ trên nền nhiều màu (header/footer).
-    pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 210, 297)
   }
-  const outName = safeFileName(filename) + '.pdf'
-  const blob = pdf.output('blob') as Blob
-  const { url } = await uploadKhoFile(new File([blob], outName, { type: 'application/pdf' }))
-  await setTaiLieuFileUrl(taiLieuId, url)
-  return url
+  // `pv-no-chrome` (gate selector, mục tiếp 5) GIỮ LẠI — html2canvas khỏi phí công chụp pseudo-element
+  // header/footer nữa (giờ vẽ đè bằng jsPDF rồi, chụp hay không cũng bị che, nhưng bỏ chụp cho NHẸ).
+  const pageboxes = Array.from(dst.querySelectorAll('.pagedjs_pagebox')) as HTMLElement[]
+  pageboxes.forEach((pb) => pb.classList.add('pv-no-chrome'))
+  // Supabase storage (bucket 'kho-tailieu') có TRẦN dung lượng THẬT — đo trực tiếp 07-12: upload 40MB
+  // qua được, 60MB bị chặn với lỗi 400 "The object exceeded the maximum allowed size" — ĐÚNG lỗi Thùy
+  // gặp khi tài liệu dài (nhiều trang PNG scale:2 cộng dồn vượt trần). Build ở scale CAO nhất trước (giữ
+  // nguyên chất lượng mặc định — đa số tài liệu KHÔNG vượt trần); CHỈ khi blob thật sự vượt ngưỡng an
+  // toàn mới build LẠI ở scale thấp hơn. Giảm ĐỘ PHÂN GIẢI, KHÔNG đổi sang JPEG — JPEG đã bị loại bỏ
+  // trước đó vì nén mất-dữ-liệu làm rám/vỡ viền chữ nhỏ (xem comment trong build()), đổi lại sẽ tái phạm.
+  const SAFE_BYTES = 45 * 1024 * 1024
+  async function build(scale: number): Promise<Blob> {
+    const pdf = new jspdfMod.jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' })
+    for (let i = 0; i < pages.length; i++) {
+      const canvas = await html2canvas(pages[i], { scale, useCORS: true, backgroundColor: '#ffffff', logging: false, imageTimeout: 15000 })
+      if (i > 0) pdf.addPage()
+      // PNG (KHÔNG JPEG) — JPEG nén mất-dữ-liệu làm rám/vỡ viền chữ nhỏ trên nền nhiều màu.
+      pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 210, 297)
+      // Vẽ header/footer BẰNG jsPDF, ĐÈ LÊN sau ảnh thân bài — xem comment kiến trúc ở drawChrome phía trên.
+      if (chrome) drawChrome(pdf, chrome, logoImg)
+    }
+    return pdf.output('blob') as Blob
+  }
+  try {
+    let blob = await build(2)
+    if (blob.size > SAFE_BYTES) blob = await build(1.3)
+    if (blob.size > SAFE_BYTES) throw new Error(`File PDF quá lớn (${(blob.size / 1024 / 1024).toFixed(1)}MB, giới hạn ~50MB) dù đã giảm độ phân giải — tài liệu quá dài, cần rút gọn nội dung.`)
+    const outName = safeFileName(filename) + '.pdf'
+    const { url } = await uploadKhoFile(new File([blob], outName, { type: 'application/pdf' }))
+    await setTaiLieuFileUrl(taiLieuId, url)
+    return url
+  } finally {
+    pageboxes.forEach((pb) => pb.classList.remove('pv-no-chrome'))
+  }
 }
 
 // headless = KHÔNG hiện preview, tự dựng trang ẩn → tải PDF → đóng (nút "⬇ Tải" ngay ở hàng Kho tài liệu).
 // onlyBuoiId = chỉ render 1 BUỔI (nút "👁 Xem buổi" ở Builder) — kiểm tra nhanh, khỏi cuộn cả giáo trình.
-export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly }: { id: string; onClose: () => void; headless?: boolean; onlyBuoiId?: string; linkOnly?: boolean }) {
+// onReady/onRenderErr (07-12, đời 2 server-gen): tín hiệu cho PrintJobPage (trang worker Puppeteer) —
+// LƯU Ý loại btvn/giao_trinh_buoi render LẠI khi scope tự chuyển + lopTen nạp xong → onReady có thể
+// bắn NHIỀU LẦN; PrintJobPage tự debounce lấy lần cuối, ở đây chỉ bắn mộc mạc mỗi lần dựng xong.
+export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly, onFail, onReady, onRenderErr }: { id: string; onClose: () => void; headless?: boolean; onlyBuoiId?: string; linkOnly?: boolean; onFail?: () => void; onReady?: () => void; onRenderErr?: (msg: string) => void }) {
   const [full, setFull] = useState<TaiLieuFull | null>(null)
   const [err, setErr] = useState<string | null>(null)
   const [gv, setGv] = useState(false) // false = bản HS · true = bản GV
@@ -159,6 +201,7 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly 
       settled = true
       container.style.display = 'none'
       setRenderErr('Dựng trang quá lâu (>30s) — đóng rồi thử lại.'); setRendering(false)
+      onRenderErr?.('Dựng trang quá lâu (>30s)')
     }, 30000)
     new Previewer().preview(html, [cssUrl], container)
       .then((flow: { total?: number }) => {
@@ -168,11 +211,13 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly 
         Array.from(dst.children).forEach((c) => { if (c !== container) (c as HTMLElement).style.display = 'none' })
         activeContainerRef.current = container
         setPages(flow?.total ?? 0); setRendering(false)
+        onReady?.()
       })
       .catch((e: unknown) => {
         if (settled) return
         settled = true; clearTimeout(watchdog)
-        container.style.display = 'none'; if (!cancelled) { setRenderErr(e instanceof Error ? e.message : String(e)); setRendering(false) }
+        container.style.display = 'none'
+        if (!cancelled) { setRenderErr(e instanceof Error ? e.message : String(e)); setRendering(false); onRenderErr?.(e instanceof Error ? e.message : String(e)) }
       })
       .finally(() => URL.revokeObjectURL(cssUrl))
     return () => { cancelled = true; clearTimeout(watchdog) }
@@ -190,8 +235,11 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly 
 
   // "🔗 Lấy link" — CHỈ dùng cho linkOnly (headless), không dùng cho "⬇ Tải PDF" (giờ = native print, xem
   // dưới). Vẫn phải tự dựng qua html2canvas vì cần 1 FILE BLOB để upload ẨN, không hộp thoại.
-  async function layLink() {
-    if (!activeContainerRef.current || !full) return
+  // Trả boolean (KHÔNG throw) — caller (didAutoDl, LinkGenWorker qua onClose/onFail) cần biết ĐÚNG kết
+  // quả để báo lỗi ngay (linkGenFailed) thay vì đợi hết watchdog 45s mới coi là lỗi (chỉ watchdog mới
+  // đúng cho ca TREO, còn lỗi tường minh — vd upload 400 — biết ngay không cần chờ).
+  async function layLink(): Promise<boolean> {
+    if (!activeContainerRef.current || !full) return false
     setDl(true); setRenderErr(null)
     const ch = full.taiLieu.cau_hinh ?? {}
     const buoiDoc = full.taiLieu.loai === 'btvn' || full.taiLieu.loai === 'giao_trinh_buoi'
@@ -201,8 +249,8 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly 
       headerText: `${lopTen ? `Lớp ${lopTen} · ` : ''}${ngayVN}`,
       footerText: 'BK Academy        Tel : 0963.209.309        Địa chỉ : 17A10 KĐT Geleximco',
     } : undefined
-    try { await uploadPagesAsLink(activeContainerRef.current, printFileName(), pageChrome(full.taiLieu, ch, cssOpts), full.taiLieu.id) }
-    catch (e) { setRenderErr('Lấy link lỗi: ' + (e instanceof Error ? e.message : String(e))) }
+    try { await uploadPagesAsLink(activeContainerRef.current, printFileName(), pageChrome(full.taiLieu, ch, cssOpts), full.taiLieu.id); return true }
+    catch (e) { setRenderErr('Lấy link lỗi: ' + (e instanceof Error ? e.message : String(e))); return false }
     finally { setDl(false) }
   }
 
@@ -214,7 +262,7 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly 
   useEffect(() => {
     if (!headless || didAutoDl.current || rendering || renderErr || !full || !dstRef.current) return
     didAutoDl.current = true
-    const t = setTimeout(() => { linkOnly ? layLink().finally(onClose) : printWithFilename(printFileName()) }, 350)
+    const t = setTimeout(() => { linkOnly ? layLink().then((ok) => (ok ? onClose() : (onFail ?? onClose)())) : printWithFilename(printFileName()) }, 350)
     return () => clearTimeout(t)
   }, [headless, rendering, renderErr, full, lopTen]) // eslint-disable-line
   useEffect(() => {
@@ -710,8 +758,15 @@ export function buildPagedCss(taiLieu: TaiLieuFull['taiLieu'], ch: CauHinh, acce
   return CONTENT_CSS + `
 .katex{font-size:0.95em!important}.pagedjs_page{font-family:'Times New Roman',Tinos,Times,serif;font-size:17px;color:#23272b;line-height:1.55;--pv-accent:${accent}}
 .pagedjs_pagebox{position:relative}
-${head ? `.pagedjs_pagebox::before{content:${headTxt};position:absolute;top:0;left:0;right:0;height:18mm;padding:0 10mm 0 50mm;box-sizing:border-box;background:url("${logoUrl}") 8mm 3.5mm / auto 5mm no-repeat, url("${chipUri}") 4.5mm 1.5mm / 42mm 9mm no-repeat, url("${headUri}") center/100% 100% no-repeat;display:flex;align-items:center;justify-content:flex-end;color:#fff;font-weight:700;font-size:11px;letter-spacing:.3px;text-shadow:0 1px 2px rgba(0,0,0,.25);z-index:1}` : ''}
-${foot ? `.pagedjs_pagebox::after{content:${footTxt};${footWS}position:absolute;bottom:0;left:0;right:0;height:15mm;padding:0 16mm;box-sizing:border-box;background:url("${footUri}") center/100% 100% no-repeat;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:11px;letter-spacing:.3px;text-shadow:0 1px 3px rgba(0,0,0,.35);z-index:1}` : ''}
+${/* ⭐ 07-12 tiếp 5: `:not(.pv-no-chrome)` — gate SELECTOR (không phải property override) cho đường
+    html2canvas. 2 lần trước cố "tắt" pseudo BẰNG property (content:none/xoá rule CSSOM) đều KHÔNG ăn —
+    verify nhiều lần bằng file thật vẫn còn chữ nhân đôi. html2canvas được cho là hỗ trợ pseudo-element
+    KHÔNG ĐÁNG TIN CẬY cho việc "ẩn nó đi", nhưng SELECTOR MATCHING (rule có áp dụng cho phần tử hay
+    không) là hành vi CSS cơ bản, đáng tin hơn hẳn 1 property riêng lẻ. `uploadPagesAsLink` gắn class
+    `pv-no-chrome` lên `.pagedjs_pagebox` TRÊN DOM SỐNG (không phải bản clone) NGAY TRƯỚC khi gọi
+    html2canvas → rule đơn giản KHÔNG CÒN KHỚP nữa, không cần html2canvas "tôn trọng" gì thêm. */ ''}
+${head ? `.pagedjs_pagebox:not(.pv-no-chrome)::before{content:${headTxt};position:absolute;top:0;left:0;right:0;height:18mm;padding:0 10mm 0 50mm;box-sizing:border-box;background:url("${logoUrl}") 8mm 3.5mm / auto 5mm no-repeat, url("${chipUri}") 4.5mm 1.5mm / 42mm 9mm no-repeat, url("${headUri}") center/100% 100% no-repeat;display:flex;align-items:center;justify-content:flex-end;color:#fff;font-weight:700;font-size:11px;letter-spacing:.3px;text-shadow:0 1px 2px rgba(0,0,0,.25);z-index:1}` : ''}
+${foot ? `.pagedjs_pagebox:not(.pv-no-chrome)::after{content:${footTxt};${footWS}position:absolute;bottom:0;left:0;right:0;height:15mm;padding:0 16mm;box-sizing:border-box;background:url("${footUri}") center/100% 100% no-repeat;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:11px;letter-spacing:.3px;text-shadow:0 1px 3px rgba(0,0,0,.35);z-index:1}` : ''}
 @page{
   size:A4;
   margin:18mm 14mm 22mm;
