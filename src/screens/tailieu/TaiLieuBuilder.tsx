@@ -503,15 +503,24 @@ function BuoiTrichRow({ no, lopId, buoi, st, masterId, khoi, mon, onGan }: { no:
   const [onTap, setOnTap] = useState<OnTapConfig | null>(null)   // config GV đang chỉnh (RAM — lưu lúc Gán)
   const [cfgCu, setCfgCu] = useState<OnTapConfig | null>(null)   // config đã lưu trước đó (re-gán hiện lại)
   const [cfgLoaded, setCfgLoaded] = useState(false)
+  // OnTapEditor còn đang tải gợi ý (~vài giây, nhiều round-trip) — PHẢI khoá Gán trong lúc này, không
+  // thì bấm quá nhanh gửi `onTap=null` lên và saveOnTapConfig bị bỏ qua LẶNG LẼ (bug thật 07-13: gán
+  // 4 lần thật ngoài đời, btvn_ontap_config vẫn 0 dòng — đúng race này).
+  const [onTapLoading, setOnTapLoading] = useState(false)
   const ganNgay = st?.ngay ? st.ngay.split('-').reverse().join('/') : null
   // khối ôn tập chỉ hiện khi CÓ NGÀY (gợi ý theo cửa sổ tính từ ngày gán) + có BTVN
   useEffect(() => {
-    if (!ngay || !bt || !lopId) { setCfgLoaded(false); return }
+    if (!ngay || !bt || !lopId) { setCfgLoaded(false); setOnTapLoading(false); return }
     let live = true
-    getOnTapConfig(masterId, buoi.marker.id, lopId).then((c) => { if (live) { setCfgCu(c); setCfgLoaded(true) } }).catch(() => { if (live) { setCfgCu(null); setCfgLoaded(true) } })
+    setOnTap(null) // đổi ngày/lớp → config cũ (nếu đang chọn dở) không còn hợp lệ, chờ OnTapEditor nạp lại
+    // set onTapLoading=true CÙNG LÚC với cfgLoaded=true — đóng khe hở giữa "OnTapEditor sắp mount" và
+    // "OnTapEditor tự báo loading" (nếu không, có 1 nhịp render ganBiKhoa=false trước khi con kịp khoá lại).
+    getOnTapConfig(masterId, buoi.marker.id, lopId).then((c) => { if (live) { setCfgCu(c); setOnTapLoading(true); setCfgLoaded(true) } }).catch(() => { if (live) { setCfgCu(null); setOnTapLoading(true); setCfgLoaded(true) } })
     return () => { live = false }
   }, [ngay, bt, lopId]) // eslint-disable-line
-  async function go() { if (!ngay || (!gt && !bt)) return; setBusy(true); try { await onGan(ngay, gt, bt, onTap) } finally { setBusy(false) } }
+  // Có BTVN mà gợi ý ôn tập CHƯA tải xong → khoá Gán (xem comment onTapLoading trên).
+  const ganBiKhoa = bt && (!cfgLoaded || onTapLoading)
+  async function go() { if (!ngay || (!gt && !bt) || ganBiKhoa) return; setBusy(true); try { await onGan(ngay, gt, bt, onTap) } finally { setBusy(false) } }
   return (
     <div className="rounded-xl border border-slate-200 bg-white p-2.5">
     <div className="flex flex-wrap items-center gap-2.5">
@@ -524,7 +533,7 @@ function BuoiTrichRow({ no, lopId, buoi, st, masterId, khoi, mon, onGan }: { no:
         <div className="flex items-center gap-2">
           <span className="rounded-full bg-emerald-50 px-2.5 py-1 text-[12px] font-medium text-emerald-700">✓ Đã gán · {ganNgay}</span>
           <span className="text-[11px] text-slate-400">{st?.hasGT ? 'GT' : ''}{st?.hasGT && st?.hasBTVN ? ' + ' : ''}{st?.hasBTVN ? 'BTVN' : ''}</span>
-          <button onClick={go} disabled={busy || !ngay} title="Gán lại sang ngày khác (tạo bản mới)" className="rounded-md border border-slate-200 px-2 py-1 text-[11px] text-slate-500 hover:border-indigo-300">Gán lại</button>
+          <button onClick={go} disabled={busy || !ngay || ganBiKhoa} title={ganBiKhoa ? 'Đang tải gợi ý ôn tập — đợi tí rồi bấm' : 'Gán lại sang ngày khác (tạo bản mới)'} className="rounded-md border border-slate-200 px-2 py-1 text-[11px] text-slate-500 hover:border-indigo-300 disabled:opacity-50">{ganBiKhoa ? '⏳' : 'Gán lại'}</button>
           <BuoiNgaySelect lopId={lopId} value={ngay} onChange={setNgay} className="h-7 rounded border border-slate-300 px-1.5 text-[12px]" />
         </div>
       ) : (
@@ -532,13 +541,13 @@ function BuoiTrichRow({ no, lopId, buoi, st, masterId, khoi, mon, onGan }: { no:
           <BuoiNgaySelect lopId={lopId} value={ngay} onChange={setNgay} className="h-7 rounded border border-slate-300 px-1.5 text-[12px]" />
           <label className="flex items-center gap-1 text-[12px] text-slate-600"><input type="checkbox" checked={gt} onChange={(e) => setGt(e.target.checked)} />GT</label>
           <label className="flex items-center gap-1 text-[12px] text-slate-600"><input type="checkbox" checked={bt} onChange={(e) => setBt(e.target.checked)} />BTVN</label>
-          <button onClick={go} disabled={busy || !ngay || (!gt && !bt)} className="rounded-md bg-violet-600 px-3 py-1 text-[12px] font-medium text-white hover:bg-violet-500 disabled:opacity-40">{busy ? '…' : 'Gán'}</button>
+          <button onClick={go} disabled={busy || !ngay || (!gt && !bt) || ganBiKhoa} title={ganBiKhoa ? 'Đang tải gợi ý ôn tập — đợi tí rồi bấm' : undefined} className="rounded-md bg-violet-600 px-3 py-1 text-[12px] font-medium text-white hover:bg-violet-500 disabled:opacity-40">{busy ? '…' : ganBiKhoa ? '⏳ đang tải…' : 'Gán'}</button>
         </div>
       )}
     </div>
     {ngay && bt && lopId && cfgLoaded && (
       <div className="mt-2">
-        <OnTapEditor nguonId={masterId} nguonBuoi={buoi.marker.id} lopId={lopId} mon={mon} khoi={khoi} ngay={ngay} value={cfgCu} onChange={setOnTap} />
+        <OnTapEditor nguonId={masterId} nguonBuoi={buoi.marker.id} lopId={lopId} mon={mon} khoi={khoi} ngay={ngay} value={cfgCu} onChange={setOnTap} onLoadingChange={setOnTapLoading} />
       </div>
     )}
     </div>

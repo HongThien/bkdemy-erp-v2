@@ -11,10 +11,14 @@ import { DangPicker, KhoPicker } from './TaiLieuBuilder'
 
 const DEFAULT_ONTAP_LINES = 10 // Thùy chốt 07-13 — GV vẫn đổi được từng câu
 
-export default function OnTapEditor({ nguonId, nguonBuoi, lopId, mon, khoi, ngay, value, onChange }: {
+export default function OnTapEditor({ nguonId, nguonBuoi, lopId, mon, khoi, ngay, value, onChange, onLoadingChange }: {
   nguonId: string; nguonBuoi: string; lopId: string; mon: string; khoi: string; ngay: string
   value: OnTapConfig | null // config hiện có (đã lưu trước đó) — null = chưa từng cấu hình
   onChange: (cfg: OnTapConfig) => void
+  // Báo cha đang tải gợi ý (~vài giây, goiYOnTap nhiều round-trip) — cha PHẢI khoá nút Gán/Lưu trong
+  // lúc này, không thì bấm quá nhanh sẽ gửi `onTap=null` lên và saveOnTapConfig bị bỏ qua LẶNG LẼ
+  // (bug thật 07-13: gán 4 lần thật, btvn_ontap_config vẫn 0 dòng — race y hệt cảnh báo này).
+  onLoadingChange?: (loading: boolean) => void
 }) {
   const [cfg, setCfg] = useState<OnTapConfig>(value ?? { dangs: [] })
   const [goiY, setGoiY] = useState<GoiYOnTap[] | null>(null) // null = đang tải
@@ -37,6 +41,7 @@ export default function OnTapEditor({ nguonId, nguonBuoi, lopId, mon, khoi, ngay
   async function taiGoiY(apDung: boolean) {
     const id = ++reqId.current
     setGoiY(null)
+    onLoadingChange?.(true)
     try {
       const gs = await goiYOnTap(nguonId, nguonBuoi, lopId, mon, ngay)
       if (id !== reqId.current) return
@@ -47,9 +52,10 @@ export default function OnTapEditor({ nguonId, nguonBuoi, lopId, mon, khoi, ngay
         skipped: false,
       })
     } catch { if (id === reqId.current) setGoiY([]) }
+    finally { if (id === reqId.current) onLoadingChange?.(false) }
   }
   useEffect(() => {
-    if (value) { setCfg(value); setGoiY([]) } // có config sẵn → hiện config, không auto gợi ý đè
+    if (value) { setCfg(value); setGoiY([]); onLoadingChange?.(false) } // có config sẵn → hiện config, không auto gợi ý đè
     else taiGoiY(true)
   }, [nguonId, nguonBuoi, lopId, ngay]) // eslint-disable-line
 
