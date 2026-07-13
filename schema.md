@@ -2,7 +2,7 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-97 bảng · 0 enum · 8 trigger · 26 function
+98 bảng · 0 enum · 8 trigger · 26 function
 
 ## bai_lam
 
@@ -179,6 +179,18 @@
 | updated_at | timestamp with time zone |  | now() |  |
 | trang_thai_nop | text | Y |  |  |
 | thai_do | text | Y |  |  |
+
+## btvn_ontap_config
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |
+| nguon_id | uuid |  |  | FK→tai_lieu.id |
+| nguon_buoi | text |  |  |  |
+| lop_id | uuid |  |  | FK→lop.id |
+| config | jsonb |  | '{}'::jsonb |  |
+| updated_by | uuid | Y |  |  |
+| updated_at | timestamp with time zone |  | now() |  |
 
 ## buoi_danh_gia
 

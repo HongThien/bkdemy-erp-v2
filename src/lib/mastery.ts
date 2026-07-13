@@ -248,14 +248,14 @@ export type HSRollup = {
 }
 // SHARED: nạp measures 1 phạm vi (lớp/khối) → mastery cell (HS × dạng). Dùng CHUNG cho rollup HS (view#2) + pivot dạng (view#3).
 // ~4 query: HS-list → grades(embed)+đánh-giá IN(hsIds) → banDo (tên + scope môn) → engine masteryOfDang mỗi ô.
-type CellBundle = {
+export type CellBundle = {
   hsMap: Map<string, { ho_ten: string; ma_hs: string | null; lop: string | null }>
   hsIds: string[]
   byHS: Map<string, Map<string, Mastery>> // mastery ĐÃ tính (non-null), CHỈ dạng thuộc môn
   dangInfo: Map<string, { ten_dang: string; ten_chuyen_de: string }>
 }
 export type RollupScope = { mon: string; lopId?: string | null; khoi?: string | null; he?: string | null; includeBTVN?: boolean }
-async function loadMasteryCells(opts: RollupScope): Promise<CellBundle> {
+export async function loadMasteryCells(opts: RollupScope): Promise<CellBundle> {
   const empty: CellBundle = { hsMap: new Map(), hsIds: [], byHS: new Map(), dangInfo: new Map() }
   const K = khoCuaMon(opts.mon)
   const phases: EvalSrc[] = opts.includeBTVN ? ['ingame', 'et', 'mt', 'bt', 'btvn'] : ['ingame', 'et', 'mt', 'bt']
