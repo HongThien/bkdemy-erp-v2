@@ -66,6 +66,7 @@ export default function HocPhiScreen() {
 const MON_TOGGLE: { label: string; value: string }[] = [
   { label: 'Toán', value: 'Toán' }, { label: 'Văn', value: 'Văn' }, { label: 'Anh', value: 'Tiếng Anh' }, { label: 'KHTN', value: 'KHTN' },
 ]
+type SortKey = 'ten' | 'ma' | 'lop' | 'buoi' | 'bu' | 'duoi' | 'ct' | 'tien'
 function TheoMonTab() {
   const ky = useStore((s) => s.hocPhiKy) || kyHienTai()
   const setKy = useStore((s) => s.setHocPhiKy)
@@ -73,6 +74,8 @@ function TheoMonTab() {
   const [loading, setLoading] = useState(true)
   const [q, setQ] = useState('')
   const [mon, setMon] = useState<string>('Toán')
+  const [ctFilter, setCtFilter] = useState<'all' | CongThuc>('all') // toggle lọc CT1/CT2 trên header (Thùy 07-13)
+  const [sort, setSort] = useState<{ key: SortKey; dir: 1 | -1 }>({ key: 'ten', dir: 1 })
   const [detail, setDetail] = useState<DongTheoMonV2 | null>(null)
   const [busyKey, setBusyKey] = useState<string | null>(null)
 
@@ -82,19 +85,43 @@ function TheoMonTab() {
   }
   useEffect(() => { reload() }, [ky]) // eslint-disable-line
 
-  async function doiCongThuc(r: DongTheoMonV2, ct: CongThuc) {
+  // Click nhãn CT trên dòng = ĐẢO sang công thức kia (Thùy 07-13: ô chỉ hiện CT1/CT2 thôi, không toggle
+  // 2 nút). Đảo về TRÙNG đề xuất → xoá dòng chọn tay (quay về theo hệ), không giữ dòng thừa.
+  async function daoCongThuc(r: DongTheoMonV2) {
     if (!r.lop_id) return
     const key = `${r.hoc_sinh_id}|${r.lop_id}`
+    const hienTai = r.congThucChon ?? r.congThucDeXuat
+    const moi: CongThuc = hienTai === 'ct1' ? 'ct2' : 'ct1'
     setBusyKey(key)
-    // chọn TRÙNG đề xuất → xoá dòng chọn tay (quay về theo hệ) — không giữ dòng thừa
-    try { await setCongThucHocPhi(r.hoc_sinh_id, r.lop_id, ky, ct === r.congThucDeXuat ? null : ct); await reload(true) }
+    try { await setCongThucHocPhi(r.hoc_sinh_id, r.lop_id, ky, moi === r.congThucDeXuat ? null : moi); await reload(true) }
     catch (e: any) { alert(e.message ?? String(e)) } finally { setBusyKey(null) }
   }
 
   const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
+  const ctCua = (r: DongTheoMonV2) => r.congThucChon ?? r.congThucDeXuat
   const theoMon = rows.filter((r) => r.mon === mon || (mon === 'Toán' && r.mon === 'Học đuổi')) // dòng chỉ-đuổi không môn: kẹp vào tab đầu
-  const filtered = q.trim() ? theoMon.filter((r) => norm(r.hoc_sinh_ten + ' ' + (r.ma_hs ?? '') + ' ' + r.lop_ten).includes(norm(q))) : theoMon
-  const tongTien = filtered.reduce((s, r) => s + r.thanhTien, 0)
+  const filtered = theoMon
+    .filter((r) => ctFilter === 'all' || (r.soBuoiLop > 0 && ctCua(r) === ctFilter))
+    .filter((r) => !q.trim() || norm(r.hoc_sinh_ten + ' ' + (r.ma_hs ?? '') + ' ' + r.lop_ten).includes(norm(q)))
+  const SORT_VAL: Record<SortKey, (r: DongTheoMonV2) => string | number> = {
+    ten: (r) => r.hoc_sinh_ten, ma: (r) => r.ma_hs ?? '', lop: (r) => r.lop_ten,
+    buoi: (r) => r.soBuoiNghi, bu: (r) => r.soBuoiBu, duoi: (r) => r.soBuoiDuoi,
+    ct: (r) => (r.soBuoiLop > 0 ? ctCua(r) : ''), tien: (r) => r.thanhTien,
+  }
+  const sorted = [...filtered].sort((a, b) => {
+    const va = SORT_VAL[sort.key](a); const vb = SORT_VAL[sort.key](b)
+    const c = typeof va === 'number' && typeof vb === 'number' ? va - vb : String(va).localeCompare(String(vb), 'vi')
+    return c !== 0 ? c * sort.dir : a.hoc_sinh_ten.localeCompare(b.hoc_sinh_ten, 'vi')
+  })
+  const tongTien = sorted.reduce((s, r) => s + r.thanhTien, 0)
+  const clickSort = (key: SortKey) => setSort((s) => (s.key === key ? { key, dir: s.dir === 1 ? -1 : 1 } : { key, dir: 1 }))
+  // hàm render thường (KHÔNG phải component định nghĩa trong component — identity đổi mỗi render làm
+  // React remount cả header, DOM không ổn định)
+  const th = (k: SortKey, label: string, className = '') => (
+    <th className={`cursor-pointer select-none px-2 py-2 hover:text-slate-600 ${className}`} onClick={() => clickSort(k)}>
+      {label}{sort.key === k ? <span className="ml-0.5 text-indigo-500">{sort.dir === 1 ? '▲' : '▼'}</span> : null}
+    </th>
+  )
 
   return (
     <div className="mx-auto max-w-[1250px]">
@@ -106,8 +133,14 @@ function TheoMonTab() {
             <button key={m.value} onClick={() => setMon(m.value)} className={`px-3.5 py-1.5 text-[13px] font-medium ${mon === m.value ? 'bg-indigo-600 text-white' : 'bg-white text-slate-600 hover:bg-slate-50'}`}>{m.label}</button>
           ))}
         </div>
+        {/* Lọc theo CÔNG THỨC (Thùy 07-13: toggle bar CT1-CT2 trên header để lọc khi cần) */}
+        <div className="flex overflow-hidden rounded-lg border border-slate-300">
+          {([['all', 'Tất cả'], ['ct1', 'CT1'], ['ct2', 'CT2']] as const).map(([v, l]) => (
+            <button key={v} onClick={() => setCtFilter(v)} className={`px-3 py-1.5 text-[13px] font-medium ${ctFilter === v ? 'bg-slate-700 text-white' : 'bg-white text-slate-600 hover:bg-slate-50'}`}>{l}</button>
+          ))}
+        </div>
         <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm học sinh / lớp…" className={`${inp} w-64`} />
-        <span className="text-[12px] text-slate-400">{filtered.length} dòng · tổng {tienVN(tongTien)}</span>
+        <span className="text-[12px] text-slate-400">{sorted.length} dòng · tổng {tienVN(tongTien)}</span>
       </div>
       {loading ? <p className="py-10 text-center text-sm text-slate-400">Đang tải…</p>
         : !filtered.length ? <div className="rounded-xl border border-dashed border-slate-300 bg-white py-14 text-center text-sm text-slate-400">Không có học sinh nào học {mon} trong kỳ.</div>
@@ -121,15 +154,16 @@ function TheoMonTab() {
               </colgroup>
               <thead className="sticky top-0 z-10 bg-slate-50 text-left text-[11px] uppercase tracking-wide text-slate-400">
                 <tr>
-                  <th className="px-4 py-2">Học sinh</th><th className="px-2 py-2">Mã HS</th><th className="px-2 py-2">Lớp</th>
-                  <th className="px-2 py-2">Buổi (lớp / nghỉ)</th><th className="px-2 py-2 text-center">Bù</th><th className="px-2 py-2 text-center">Đuổi</th>
-                  <th className="px-2 py-2">Công thức</th><th className="px-2 py-2 text-right">Thành tiền</th><th className="px-2 py-2 text-center">Chi tiết</th>
+                  {th('ten', 'Học sinh', '!px-4')}{th('ma', 'Mã HS')}{th('lop', 'Lớp')}
+                  {th('buoi', 'Buổi (lớp / nghỉ)')}{th('bu', 'Bù', 'text-center')}{th('duoi', 'Đuổi', 'text-center')}
+                  {th('ct', 'Công thức')}{th('tien', 'Thành tiền', 'text-right')}<th className="px-2 py-2 text-center">Chi tiết</th>
                 </tr>
               </thead>
               <tbody>
-                {filtered.map((r) => {
+                {sorted.map((r) => {
                   const key = `${r.hoc_sinh_id}|${r.lop_id}`
                   const ct = r.congThucChon ?? r.congThucDeXuat
+                  const tay = !!r.congThucChon && r.congThucChon !== r.congThucDeXuat
                   return (
                     <tr key={key + r.mon} className="border-t border-slate-100">
                       <td className="truncate px-4 py-2 font-medium text-slate-800" title={r.hoc_sinh_ten}>{r.hoc_sinh_ten}</td>
@@ -142,21 +176,13 @@ function TheoMonTab() {
                       <td className="px-2 py-2 text-center">{r.soBuoiBu > 0 ? <b className="text-sky-700">{r.soBuoiBu}</b> : <span className="text-slate-300">—</span>}</td>
                       <td className="px-2 py-2 text-center">{r.soBuoiDuoi > 0 ? <b className="text-orange-600">{r.soBuoiDuoi}</b> : <span className="text-slate-300">—</span>}</td>
                       <td className="px-2 py-2">
+                        {/* Chỉ hiện CT đang áp (Thùy 07-13) — click = đảo sang công thức kia; vàng = đang chọn tay khác đề xuất */}
                         {r.lop_id && r.soBuoiLop > 0 ? (
-                          <div className="flex items-center gap-1.5">
-                            <div className={`flex overflow-hidden rounded-md border border-slate-200 ${busyKey === key ? 'opacity-50' : ''}`}>
-                              {(['ct1', 'ct2'] as CongThuc[]).map((c) => (
-                                <button key={c} disabled={busyKey === key} onClick={() => doiCongThuc(r, c)}
-                                  title={c === 'ct1' ? 'CT1: số buổi LỚP × đơn giá × hệ số (nghỉ ít)' : 'CT2: (buổi học thực tế + bù) × đơn giá × hệ số (nghỉ nhiều)'}
-                                  className={`px-2 py-0.5 text-[11px] font-semibold ${ct === c ? 'bg-indigo-600 text-white' : 'bg-white text-slate-500 hover:bg-slate-50'}`}>
-                                  {c.toUpperCase()}
-                                </button>
-                              ))}
-                            </div>
-                            {r.congThucChon && r.congThucChon !== r.congThucDeXuat
-                              ? <span className="rounded bg-amber-50 px-1.5 py-0.5 text-[10px] font-medium text-amber-700" title={`Hệ đề xuất ${r.congThucDeXuat.toUpperCase()} (nghỉ ${r.soBuoiNghi}/${r.soBuoiLop}) — đang chọn tay`}>tay</span>
-                              : <span className="rounded bg-slate-100 px-1.5 py-0.5 text-[10px] font-medium text-slate-400" title={`Theo đề xuất của hệ (nghỉ ${r.soBuoiNghi}/${r.soBuoiLop} buổi)`}>đề xuất</span>}
-                          </div>
+                          <button disabled={busyKey === key} onClick={() => daoCongThuc(r)}
+                            title={`${ct === 'ct1' ? 'CT1: số buổi LỚP × đơn giá × hệ số' : 'CT2: (buổi học thực tế + bù) × đơn giá × hệ số'}${tay ? ` — đang chọn TAY (hệ đề xuất ${r.congThucDeXuat.toUpperCase()}, nghỉ ${r.soBuoiNghi}/${r.soBuoiLop})` : ` — theo đề xuất (nghỉ ${r.soBuoiNghi}/${r.soBuoiLop})`}. Click để đổi.`}
+                            className={`rounded-md px-2.5 py-0.5 text-[12px] font-bold ${busyKey === key ? 'opacity-50' : ''} ${tay ? 'bg-amber-100 text-amber-800 hover:bg-amber-200' : ct === 'ct2' ? 'bg-violet-100 text-violet-700 hover:bg-violet-200' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}>
+                            {ct.toUpperCase()}
+                          </button>
                         ) : <span className="text-slate-300">—</span>}
                       </td>
                       <td className="px-2 py-2 text-right font-semibold text-slate-800">{tienVN(r.thanhTien)}</td>
