@@ -12,6 +12,8 @@ import SearchSelect from '../../components/SearchSelect'
 import BuoiNgaySelect from '../../components/BuoiNgaySelect'
 import PrintView from './PrintView'
 import { useStore } from '../../store/useStore'
+import OnTapEditor from './OnTapEditor'
+import { saveOnTapConfig, appendOnTapVaoBTVN, getOnTapConfig, type OnTapConfig } from '../../lib/ontap'
 
 const loaiLabel = (v: string) => LOAI_CAU.find((x) => x.value === v)?.label ?? v
 const MAU_PRESET = [['#E91E8C', 'Hồng'], ['#F7941E', 'Cam'], ['#2D9CDB', 'Xanh dương'], ['#16a34a', 'Xanh lá'], ['#7c3aed', 'Tím']]
@@ -453,11 +455,18 @@ function TrichPanel({ masterId, khoi, buois, onClose }: { masterId: string; khoi
   async function loadState(id: string) { setLoading(true); try { setState(await listTrichXuat(masterId, id)) } finally { setLoading(false) } }
   useEffect(() => { if (lopId) loadState(lopId); else setState({}) }, [lopId]) // eslint-disable-line
 
-  async function gan(buoiId: string, tenBuoi: string, ngay: string, gt: boolean, bt: boolean) {
+  async function gan(buoiId: string, tenBuoi: string, ngay: string, gt: boolean, bt: boolean, onTap: OnTapConfig | null) {
     if (!lop) return
+    // Ôn tập (spec-btvn-ontap 07-13): LƯU CONFIG TRƯỚC khi trích (trích đọc config dựng khối ôn tập).
+    if (onTap) await saveOnTapConfig(masterId, buoiId, lop.id, onTap)
     const created = await trichXuatBuoi(masterId, buoiId, { lopId: lop.id, ngay, khoi, tenLop: lop.ten_lop, tenBuoi, giaoTrinh: gt, btvn: bt })
-    // ⭐ 07-12: doc VẬN HÀNH (giao_trinh_buoi/btvn) trích xong là ĐỦ NỘI DUNG ngay — enqueue link luôn,
-    // không đợi Thùy quay lại Kho tài liệu bấm.
+    const btvnDoc = created.find((d) => d.loai === 'btvn')
+    if (btvnDoc) {
+      const { missing } = await appendOnTapVaoBTVN(btvnDoc.id)
+      if (missing.length) alert(`${missing.length} câu ôn tập không còn trong kho (đã bỏ): ${missing.join(', ')} — mở ✎ câu để thay.`)
+    }
+    // ⭐ 07-12: doc VẬN HÀNH (giao_trinh_buoi/btvn) trích xong là ĐỦ NỘI DUNG ngay — enqueue link luôn
+    // (SAU append ôn tập để PDF có đủ khối), không đợi Thùy quay lại Kho tài liệu bấm.
     created.forEach((d) => useStore.getState().enqueueLinkGen(d.id, d.loai))
     await loadState(lop.id)
   }
@@ -477,7 +486,7 @@ function TrichPanel({ masterId, khoi, buois, onClose }: { masterId: string; khoi
             : (
               <div className="mx-auto max-w-[760px] space-y-2">
                 <p className="mb-2 text-[12px] text-slate-400">Mỗi buổi của giáo trình → gán cho 1 ngày của lớp <b>{lop.ten_lop}</b> → sinh “Giáo trình buổi” + “BTVN” vào Kho. Buổi đã gán hiện ngày.</p>
-                {buois.map((b, i) => <BuoiTrichRow key={b.marker.id} no={i + 1} lopId={lopId} buoi={b} st={state[b.marker.id]} onGan={(ngay, gt, bt) => gan(b.marker.id, b.marker.tieu_de || `Buổi ${i + 1}`, ngay, gt, bt)} />)}
+                {buois.map((b, i) => <BuoiTrichRow key={b.marker.id} no={i + 1} lopId={lopId} buoi={b} st={state[b.marker.id]} masterId={masterId} khoi={khoi} mon={lop.mon} onGan={(ngay, gt, bt, onTap) => gan(b.marker.id, b.marker.tieu_de || `Buổi ${i + 1}`, ngay, gt, bt, onTap)} />)}
               </div>
             )}
         </div>
@@ -486,15 +495,26 @@ function TrichPanel({ masterId, khoi, buois, onClose }: { masterId: string; khoi
   )
 }
 
-function BuoiTrichRow({ no, lopId, buoi, st, onGan }: { no: number; lopId: string | null; buoi: BuoiUI; st?: TrichState; onGan: (ngay: string, gt: boolean, bt: boolean) => Promise<void> }) {
+function BuoiTrichRow({ no, lopId, buoi, st, masterId, khoi, mon, onGan }: { no: number; lopId: string | null; buoi: BuoiUI; st?: TrichState; masterId: string; khoi: string; mon: string; onGan: (ngay: string, gt: boolean, bt: boolean, onTap: OnTapConfig | null) => Promise<void> }) {
   const [ngay, setNgay] = useState('')
   const [gt, setGt] = useState(true)
   const [bt, setBt] = useState(true)
   const [busy, setBusy] = useState(false)
+  const [onTap, setOnTap] = useState<OnTapConfig | null>(null)   // config GV đang chỉnh (RAM — lưu lúc Gán)
+  const [cfgCu, setCfgCu] = useState<OnTapConfig | null>(null)   // config đã lưu trước đó (re-gán hiện lại)
+  const [cfgLoaded, setCfgLoaded] = useState(false)
   const ganNgay = st?.ngay ? st.ngay.split('-').reverse().join('/') : null
-  async function go() { if (!ngay || (!gt && !bt)) return; setBusy(true); try { await onGan(ngay, gt, bt) } finally { setBusy(false) } }
+  // khối ôn tập chỉ hiện khi CÓ NGÀY (gợi ý theo cửa sổ tính từ ngày gán) + có BTVN
+  useEffect(() => {
+    if (!ngay || !bt || !lopId) { setCfgLoaded(false); return }
+    let live = true
+    getOnTapConfig(masterId, buoi.marker.id, lopId).then((c) => { if (live) { setCfgCu(c); setCfgLoaded(true) } }).catch(() => { if (live) { setCfgCu(null); setCfgLoaded(true) } })
+    return () => { live = false }
+  }, [ngay, bt, lopId]) // eslint-disable-line
+  async function go() { if (!ngay || (!gt && !bt)) return; setBusy(true); try { await onGan(ngay, gt, bt, onTap) } finally { setBusy(false) } }
   return (
-    <div className="flex flex-wrap items-center gap-2.5 rounded-xl border border-slate-200 bg-white p-2.5">
+    <div className="rounded-xl border border-slate-200 bg-white p-2.5">
+    <div className="flex flex-wrap items-center gap-2.5">
       <span className="w-6 shrink-0 text-center text-[13px] font-bold text-indigo-600">{no}</span>
       <div className="min-w-[120px] flex-1">
         <div className="text-[13px] font-semibold text-slate-800">{buoi.marker.tieu_de || `Buổi ${no}`}</div>
@@ -515,6 +535,12 @@ function BuoiTrichRow({ no, lopId, buoi, st, onGan }: { no: number; lopId: strin
           <button onClick={go} disabled={busy || !ngay || (!gt && !bt)} className="rounded-md bg-violet-600 px-3 py-1 text-[12px] font-medium text-white hover:bg-violet-500 disabled:opacity-40">{busy ? '…' : 'Gán'}</button>
         </div>
       )}
+    </div>
+    {ngay && bt && lopId && cfgLoaded && (
+      <div className="mt-2">
+        <OnTapEditor nguonId={masterId} nguonBuoi={buoi.marker.id} lopId={lopId} mon={mon} khoi={khoi} ngay={ngay} value={cfgCu} onChange={setOnTap} />
+      </div>
+    )}
     </div>
   )
 }
