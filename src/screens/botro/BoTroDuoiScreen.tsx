@@ -7,7 +7,8 @@ import { useEffect, useMemo, useState } from 'react'
 import {
   listDotDuoi, listCaDuoi, taoBuoiDuoi, themHSVaoBuoiDuoi, buoiDuoiSapToi, goiYBuoiDuoi, themCaseDuoi,
   hoanThanhKhoaDuoi, xoaCaseDuoi, timHocSinhDuoi, lopCuaHS, demTabDuoi, setMucHocDuoi, getBuoiDuoiHsInfo, chotKeHoachDuoi,
-  type CaDuoi, type DotDuoi,
+  getDangCuaBuoiDuoi, setDangDay,
+  type CaDuoi, type DotDuoi, type DangDuoi,
 } from '../../lib/botro_duoi'
 import { getRoster, getBuoi, huyBuoi, xoaHSKhoiBuoi, diemDanh, getDanhGia, setNhanXet, dongDanhGia, moLaiDanhGia, type BuoiHocHS } from '../../lib/gami'
 import SuaBuoiModal from './SuaBuoiModal'
@@ -57,7 +58,7 @@ export default function BoTroDuoiScreen() {
   }
   async function onGiaHan(d: DotDuoi) {
     if (d.so_buoi_du_kien == null) return
-    try { await chotKeHoachDuoi(d.caseId, d.so_buoi_du_kien + 1, d.dangs); await refresh() } catch (e: any) { alert(e.message ?? String(e)) }
+    try { await chotKeHoachDuoi(d.caseId, d.so_buoi_du_kien + 1, d.dangs.map((x) => x.ma_dang)); await refresh() } catch (e: any) { alert(e.message ?? String(e)) }
   }
   async function onBoCo(d: DotDuoi) {
     if (d.daHoc > 0 || d.daXep > 0) { alert('Đợt đã có buổi xếp/học — không bỏ cờ được. Dùng "✓ Hoàn thành đợt" để kết thúc.'); return }
@@ -124,7 +125,14 @@ export default function BoTroDuoiScreen() {
                               <span className="mx-1.5 text-slate-300">·</span>
                               <span className={duN ? 'text-emerald-600' : 'text-slate-700'}>Học {d.daHoc}/{N}</span>
                             </div>
-                            {d.dangs.length > 0 && <div className="mt-0.5 max-w-[300px] truncate text-[11px] text-slate-400" title={d.dangs.join(', ')}>{d.dangs.length} dạng: {d.dangs.join(', ')}</div>}
+                            {d.dangs.length > 0 && (() => { const daDay = d.dangs.filter((x) => x.day_at).length; return (
+                              <div className="mt-0.5 flex max-w-[320px] flex-wrap items-center gap-1" title={d.dangs.map((x) => `${x.ma_dang}${x.day_at ? ' ✓đã dạy' : ' — chưa dạy'}`).join('\n')}>
+                                <span className={`text-[11px] font-semibold ${daDay >= d.dangs.length ? 'text-emerald-600' : 'text-slate-500'}`}>Dạng {daDay}/{d.dangs.length}</span>
+                                {d.dangs.map((x) => (
+                                  <span key={x.id} className={`rounded px-1 py-px font-mono text-[10px] ${x.day_at ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-400'}`}>{x.day_at ? '✓' : ''}{x.ma_dang}</span>
+                                ))}
+                              </div>
+                            ) })()}
                           </div>
                         )}
                         {d.ly_do && <div className="min-w-[130px] max-w-[240px] rounded-xl bg-slate-50 px-3 py-2"><div className="text-[12px] font-medium uppercase tracking-wide text-slate-400">Lý do</div><div className="text-[13px] text-slate-600">{d.ly_do}</div></div>}
@@ -144,13 +152,26 @@ export default function BoTroDuoiScreen() {
                               : <button onClick={() => onHoanThanhDot(d)} title="Kết thúc sớm (HS đã bắt kịp)" className="rounded-lg border border-emerald-200 px-3 py-2 text-[13px] text-emerald-700 hover:bg-emerald-50">✓ Hoàn thành</button>}
                         </div>
                       </div>
-                      {/* ĐỀ XUẤT ĐÓNG (Thùy 07-13: không đóng câm) — đủ N buổi có mặt thì hệ nhắc, GV quyết */}
-                      {duN && (
-                        <div className="mt-2.5 flex flex-wrap items-center gap-2 rounded-xl bg-emerald-50 px-3 py-2 text-[13px] text-emerald-800">
-                          <span>Đã học đủ <b>{d.daHoc}/{N}</b> buổi — hoàn thành đợt, hay em cần thêm buổi?</span>
-                          <button onClick={() => onGiaHan(d)} className="ml-auto rounded-lg border border-emerald-300 px-2.5 py-1 text-[12px] font-medium text-emerald-700 hover:bg-emerald-100">+1 buổi</button>
-                        </div>
-                      )}
+                      {/* ĐỀ XUẤT ĐÓNG (Thùy 07-13: không đóng câm) — đủ N buổi có mặt thì hệ nhắc, GV quyết.
+                          Kèm ĐỘ PHỦ DẠNG: đủ buổi mà chưa dạy hết dạng → cảnh báo (cân nhắc gia hạn);
+                          ngược lại dạy hết dạng SỚM → gợi ý kết thúc sớm (thu ngắn đợt). */}
+                      {(() => {
+                        const daDay = d.dangs.filter((x) => x.day_at).length
+                        const phuHet = d.dangs.length > 0 && daDay >= d.dangs.length
+                        if (duN) return (
+                          <div className="mt-2.5 flex flex-wrap items-center gap-2 rounded-xl bg-emerald-50 px-3 py-2 text-[13px] text-emerald-800">
+                            <span>Đã học đủ <b>{d.daHoc}/{N}</b> buổi{d.dangs.length > 0 ? <> · đã dạy <b>{daDay}/{d.dangs.length}</b> dạng</> : null} — hoàn thành đợt, hay em cần thêm buổi?</span>
+                            {d.dangs.length > 0 && !phuHet && <span className="rounded bg-amber-100 px-1.5 py-0.5 text-[11px] font-semibold text-amber-800">⚠ còn {d.dangs.length - daDay} dạng chưa dạy</span>}
+                            <button onClick={() => onGiaHan(d)} className="ml-auto rounded-lg border border-emerald-300 px-2.5 py-1 text-[12px] font-medium text-emerald-700 hover:bg-emerald-100">+1 buổi</button>
+                          </div>
+                        )
+                        if (phuHet && N != null) return (
+                          <div className="mt-2.5 rounded-xl bg-sky-50 px-3 py-2 text-[13px] text-sky-800">
+                            Đã dạy đủ <b>{daDay}/{d.dangs.length}</b> dạng dù mới học {d.daHoc}/{N} buổi — cân nhắc kết thúc sớm (nút "✓ Hoàn thành") để thu ngắn đợt.
+                          </div>
+                        )
+                        return null
+                      })()}
                     </div>
                     )
                   }) })()}
@@ -167,7 +188,7 @@ export default function BoTroDuoiScreen() {
                       <span className="ml-auto rounded-full bg-emerald-100 px-2 py-0.5 text-[11px] font-medium text-emerald-700">Đã học {d.daHoc}{d.so_buoi_du_kien != null ? `/${d.so_buoi_du_kien}` : ''}</span>
                     </div>
                     <div className="mt-1 text-[12px] text-slate-500">{d.lop}{d.mon ? ` · ${d.mon}` : ''}{d.hoan_thanh_at ? ` · xong ${ddmm(d.hoan_thanh_at.slice(0, 10))}` : ''}</div>
-                    {d.dangs.length > 0 && <div className="mt-1.5 truncate text-[11px] text-slate-400" title={d.dangs.join(', ')}>{d.dangs.length} dạng: {d.dangs.join(', ')}</div>}
+                    {d.dangs.length > 0 && <div className="mt-1.5 truncate text-[11px] text-slate-400">Dạng đã dạy {d.dangs.filter((x) => x.day_at).length}/{d.dangs.length}: {d.dangs.map((x) => x.ma_dang).join(', ')}</div>}
                     <div className="mt-1.5 text-[11px] text-slate-400">Click xem chi tiết {d.buois.length} buổi</div>
                   </div>
                 )) })()}
@@ -217,7 +238,7 @@ export default function BoTroDuoiScreen() {
 // phải cover hết dạng; không khớp thì quay lại đây sửa). Chặn sửa số buổi < đã học (đã học là sự thật).
 function KeHoachModal({ dot, onClose, onDone }: { dot: DotDuoi; onClose: () => void; onDone: () => void }) {
   const [soBuoi, setSoBuoi] = useState(dot.so_buoi_du_kien ?? Math.max(1, dot.daHoc))
-  const [dangs, setDangs] = useState<string[]>(dot.dangs)
+  const [dangs, setDangs] = useState<string[]>(dot.dangs.map((x) => x.ma_dang))
   const [pick, setPick] = useState(false)
   const [busy, setBusy] = useState(false)
   async function go() {
@@ -269,8 +290,10 @@ function DotDetailModal({ dot, onClose, onOpenBuoi }: { dot: DotDuoi; onClose: (
       </div>
       {dot.dangs.length > 0 && (
         <div className="mb-3">
-          <div className="mb-1 text-[12px] font-medium uppercase tracking-wide text-slate-400">Dạng đã đuổi</div>
-          <div className="flex flex-wrap gap-1.5">{dot.dangs.map((m) => <span key={m} className="rounded-lg bg-slate-100 px-2 py-0.5 font-mono text-[12px] text-slate-600">{m}</span>)}</div>
+          <div className="mb-1 text-[12px] font-medium uppercase tracking-wide text-slate-400">Dạng ({dot.dangs.filter((x) => x.day_at).length}/{dot.dangs.length} đã dạy)</div>
+          <div className="flex flex-wrap gap-1.5">{dot.dangs.map((x) => (
+            <span key={x.id} className={`rounded-lg px-2 py-0.5 font-mono text-[12px] ${x.day_at ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-500'}`}>{x.day_at ? '✓ ' : ''}{x.ma_dang}</span>
+          ))}</div>
         </div>
       )}
       <div className="space-y-2">
@@ -479,11 +502,14 @@ export function BuoiDuoiDetail({ buoiId, readOnly = false, onClose }: { buoiId: 
   const [mucDuoi, setMucDuoi2] = useState<MucHocDuoi[]>([])
   const [mucId, setMucId] = useState<string | null>(null)
   const [hsInfo, setHsInfo] = useState<Record<string, { lop: string; mon: string }>>({})
+  const [dangByCase, setDangByCase] = useState<Record<string, DangDuoi[]>>({}) // scope dạng + đã dạy per case (0099)
+  const [busyDang, setBusyDang] = useState<string | null>(null)
   const lopDuoiCua = (hsId: string) => hsInfo[hsId]?.lop ?? ''
   const monDuoiCua = (hsId: string) => hsInfo[hsId]?.mon ?? ''
 
   async function reload() {
-    const [b, r, dg, hi] = await Promise.all([getBuoi(buoiId), getRoster(buoiId), getDanhGia(buoiId), getBuoiDuoiHsInfo(buoiId)])
+    const [b, r, dg, hi, dc] = await Promise.all([getBuoi(buoiId), getRoster(buoiId), getDanhGia(buoiId), getBuoiDuoiHsInfo(buoiId), getDangCuaBuoiDuoi(buoiId)])
+    setDangByCase(dc)
     if (b) {
       setMeta({ ngay: (b as any).ngay, gio_bat_dau: (b as any).gio_bat_dau, phong: (b as any).phong, nguoi_day: (b as any).nguoi_day, nguoi_day_tg: (b as any).nguoi_day_tg })
       setMucId((b as any).muc_hoc_duoi_id ?? null); setDgXong(!!(b as any).danh_gia_xong_at)
@@ -500,6 +526,14 @@ export function BuoiDuoiDetail({ buoiId, readOnly = false, onClose }: { buoiId: 
   async function onHuy() { const ly = prompt('Lý do huỷ buổi đuổi?'); if (!ly) return; try { await huyBuoi(buoiId, ly); onClose() } catch (e: any) { alert(e.message ?? String(e)) } }
   async function onXoaHS(r: BuoiHocHS) { if (!confirm(`Gỡ ${r.hoc_sinh?.ho_ten ?? 'HS'} khỏi buổi đuổi?`)) return; try { await xoaHSKhoiBuoi(r); await reload() } catch (e: any) { alert(e.message ?? String(e)) } }
   async function luuNhanXet(hsId: string) { try { await setNhanXet(buoiId, hsId, nx[hsId] ?? '') } catch (e: any) { alert(e.message) } }
+  // Tick "đã dạy dạng này" (Thùy 07-13 — người dạy xác nhận, từ đó biết lúc nào kết thúc được đợt).
+  // Dạng đã dạy ở BUỔI KHÁC: vẫn bỏ tick được nhưng hỏi lại (tránh lỡ tay xoá dấu của buổi trước).
+  async function toggleDangDay(d: DangDuoi) {
+    if (d.day_at && d.day_buoi_id !== buoiId && !confirm(`Dạng ${d.ma_dang} đã đánh dấu dạy ở buổi khác — bỏ dấu "đã dạy"?`)) return
+    setBusyDang(d.id)
+    try { await setDangDay(d.id, d.day_at ? null : buoiId); await reload() }
+    catch (e: any) { alert(e.message ?? String(e)) } finally { setBusyDang(null) }
+  }
   async function toggleDong() {
     setBusy(true)
     try { if (dgXong) await moLaiDanhGia(buoiId); else await dongDanhGia(buoiId); onClose() }
@@ -557,6 +591,23 @@ export function BuoiDuoiDetail({ buoiId, readOnly = false, onClose }: { buoiId: 
                   {!readOnly && <button onClick={() => onXoaHS(r)} title="Gỡ HS khỏi buổi đuổi" className="rounded px-1.5 py-1 text-[12px] text-slate-300 hover:bg-rose-50 hover:text-rose-600">✕</button>}
                 </div>
               </div>
+              {/* Xác nhận DẠNG ĐÃ DẠY (0099) — GV tick dạng vừa dạy buổi này; ✓ xanh đậm = dạy buổi
+                  NÀY (click bỏ), ✓ nhạt = đã dạy buổi khác (click bỏ có hỏi lại), trắng = chưa dạy. */}
+              {r.bo_tro_duoi_id && (dangByCase[r.bo_tro_duoi_id]?.length ?? 0) > 0 && (
+                <div className="mt-2.5 flex flex-wrap items-center gap-1.5">
+                  <span className="text-[11px] font-medium uppercase tracking-wide text-slate-400">
+                    Dạng đã dạy {dangByCase[r.bo_tro_duoi_id]!.filter((d) => d.day_at).length}/{dangByCase[r.bo_tro_duoi_id]!.length}:
+                  </span>
+                  {dangByCase[r.bo_tro_duoi_id]!.map((d) => (
+                    <button key={d.id} disabled={busyDang === d.id} onClick={() => toggleDangDay(d)}
+                      title={d.day_at ? (d.day_buoi_id === buoiId ? 'Đã dạy BUỔI NÀY — click để bỏ' : 'Đã dạy ở buổi trước — click để bỏ dấu') : 'Chưa dạy — click nếu buổi này đã dạy dạng này'}
+                      className={`rounded-lg border px-2 py-0.5 font-mono text-[12px] font-medium ${busyDang === d.id ? 'opacity-50' : ''} ${
+                        d.day_at ? (d.day_buoi_id === buoiId ? 'border-emerald-400 bg-emerald-500 text-white' : 'border-emerald-200 bg-emerald-50 text-emerald-600') : 'border-slate-200 bg-white text-slate-500 hover:border-emerald-300'}`}>
+                      {d.day_at ? '✓ ' : ''}{d.ma_dang}
+                    </button>
+                  ))}
+                </div>
+              )}
               <textarea value={nx[r.hoc_sinh_id] ?? ''} disabled={readOnly} onChange={(e) => setNx((m) => ({ ...m, [r.hoc_sinh_id]: e.target.value }))} onBlur={() => luuNhanXet(r.hoc_sinh_id)}
                 placeholder="Nhận xét sau buổi (tiến độ bắt kịp, điểm cần lưu ý…)" className="mt-2.5 h-20 w-full rounded-lg border border-slate-200 px-3 py-2 text-[13px] outline-none focus:border-indigo-400 disabled:bg-slate-50" />
             </div>
