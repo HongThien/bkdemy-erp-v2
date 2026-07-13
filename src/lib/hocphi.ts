@@ -5,7 +5,7 @@
 // đông cứng + snapshot. Người-trong-vòng-lặp ở chỗ tiền nhạy cảm — KHÔNG auto-giảm.
 // ============================================================================
 import { supabase } from './supabase'
-import { tinhHeSoHocSinh, thanhTienHocPhi, thanhTienHocDuoi, canXetDuyetNghi30 } from '../gami/hocphi.js'
+import { tinhHeSoHocSinh, thanhTienHocPhi, thanhTienHocDuoi, canXetDuyetNghi30, deXuatCongThuc, thanhTienHocChinh } from '../gami/hocphi.js'
 
 const LIMIT = 2000
 
@@ -716,6 +716,211 @@ export async function listDuoiTheoKy(ky: string): Promise<DongDuoiSoHang[]> {
     .map((p) => ({ phu_huynh_id: p.id, ho_ten: p.ho_ten, ma_ph: p.ma_ph, tongTienDuoi: tamTinh.duoi.get(p.id) ?? 0 }))
     .filter((r) => r.tongTienDuoi > 0)
     .sort((a, b) => b.tongTienDuoi - a.tongTienDuoi)
+}
+
+// ── MA TRẬN ĐIỂM DANH THEO LỚP (tab "Điểm danh" — Thùy 07-13: OPS view nhanh cả lớp) ─────────
+// Cột = buổi (ngày) của lớp trong kỳ · hàng = HS · ô = co_mat/vang/(chưa điểm danh).
+export type DiemDanhLop = {
+  buois: { id: string; ngay: string }[]
+  hs: { hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; dd: Record<string, string | null> }[] // dd[buoiId]
+}
+export async function getDiemDanhTheoLop(lopId: string, ky: string): Promise<DiemDanhLop> {
+  const { kyStart, kyEnd } = kyRange(ky)
+  const [{ data: buois, error: e1 }, { data: roster, error: e2 }] = await Promise.all([
+    supabase.from('buoi_hoc').select('id, ngay').eq('lop_id', lopId).neq('loai', 'bu').in('trang_thai', ['mo', 'hoan_tat']).gte('ngay', kyStart).lt('ngay', kyEnd).order('ngay').limit(LIMIT),
+    supabase.from('hoc_sinh_lop').select('hoc_sinh_id, ngay_vao, ngay_roi, hoc_sinh:hoc_sinh_id(ho_ten, ma_hs)').eq('lop_id', lopId).limit(LIMIT),
+  ])
+  if (e1) throw e1
+  if (e2) throw e2
+  const buoiIds = (buois ?? []).map((b: any) => b.id)
+  const ddByHS = new Map<string, Record<string, string | null>>()
+  if (buoiIds.length) {
+    const { data: bhh, error: e3 } = await supabase.from('buoi_hoc_hs').select('hoc_sinh_id, buoi_hoc_id, diem_danh').in('buoi_hoc_id', buoiIds).limit(LIMIT)
+    if (e3) throw e3
+    for (const r of (bhh ?? []) as any[]) {
+      const m = ddByHS.get(r.hoc_sinh_id) ?? {}
+      m[r.buoi_hoc_id] = r.diem_danh; ddByHS.set(r.hoc_sinh_id, m)
+    }
+  }
+  // HS từng ghi danh lớp — window giao với kỳ (HS rời trước kỳ không hiện; đang học/rời trong kỳ hiện).
+  const hs = ((roster ?? []) as any[])
+    .filter((r) => (!r.ngay_vao || r.ngay_vao < kyEnd) && (!r.ngay_roi || r.ngay_roi >= kyStart))
+    .map((r) => ({ hoc_sinh_id: r.hoc_sinh_id, ho_ten: r.hoc_sinh?.ho_ten ?? '?', ma_hs: r.hoc_sinh?.ma_hs ?? null, dd: ddByHS.get(r.hoc_sinh_id) ?? {} }))
+    .sort((a, b) => a.ho_ten.localeCompare(b.ho_ten, 'vi'))
+  return { buois: (buois ?? []) as any[], hs }
+}
+
+// ── BẢNG HS × MÔN ĐỜI 2 (Thùy 07-13) — mỗi dòng 1 HS × lớp với ĐỦ vận hành + công thức ────────
+// Thùy: "cột PH/Đơn giá/Hệ số không quan trọng — cái cần là: lớp học mấy buổi / nghỉ mấy / bù mấy /
+// học đuổi / thành tiền + cột CÔNG THỨC (hệ đề xuất, người dùng chọn lại) + Detail popup".
+// Công thức tổng quát: Học phí = Học phí CHÍNH (ct1/ct2) + Học phí BỔ TRỢ ĐUỔI + Phí TÀI LIỆU.
+export type CongThuc = 'ct1' | 'ct2'
+export type DongTheoMonV2 = {
+  hoc_sinh_id: string; hoc_sinh_ten: string; ma_hs: string | null
+  lop_id: string; lop_ten: string; mon: string
+  soBuoiLop: number; soBuoiNghi: number; soBuoiDiHoc: number; soBuoiBu: number; soBuoiDuoi: number
+  donGia: number; heSo: number
+  congThucDeXuat: CongThuc; congThucChon: CongThuc | null // null = theo đề xuất (không có dòng trong hoc_phi_cong_thuc)
+  tienHocChinh: number; tienDuoi: number; tienHocLieu: number; thanhTien: number
+  hocLieuTen: string | null
+  ngayDiHoc: string[]; ngayNghi: string[]; ngayBu: string[]; ngayDuoi: string[]
+}
+export async function listHocPhiTheoMonV2(ky: string): Promise<DongTheoMonV2[]> {
+  const { kyStart, kyEnd } = kyRange(ky)
+  const { data: hsRows, error: e0 } = await supabase.from('hoc_sinh')
+    .select('id, ho_ten, ma_hs, he_so_hoc_phi').eq('trang_thai', 'dang_hoc').order('ho_ten').limit(LIMIT)
+  if (e0) throw e0
+  const hsIds = (hsRows ?? []).map((r: any) => r.id as string)
+  if (!hsIds.length) return []
+  const hsById = new Map((hsRows ?? []).map((r: any) => [r.id, r]))
+
+  const [{ data: hsl, error: e1 }, { data: ctRows, error: eCt }] = await Promise.all([
+    supabase.from('hoc_sinh_lop').select('hoc_sinh_id, lop_id, ngay_vao, ngay_roi, lop:lop_id(ten_lop, mon, muc_hoc_phi_id, muc_hoc_lieu_id)').in('hoc_sinh_id', hsIds).limit(LIMIT),
+    supabase.from('hoc_phi_cong_thuc').select('hoc_sinh_id, lop_id, cong_thuc').eq('ky', ky).limit(LIMIT),
+  ])
+  if (e1) throw e1
+  if (eCt) throw eCt
+  const ctChonMap = new Map(((ctRows ?? []) as any[]).map((r) => [`${r.hoc_sinh_id}|${r.lop_id}`, r.cong_thuc as CongThuc]))
+
+  const lopIds = [...new Set((hsl ?? []).map((r: any) => r.lop_id).filter(Boolean))]
+  const { data: buoiRows, error: e2 } = lopIds.length
+    ? await supabase.from('buoi_hoc').select('id, lop_id, ngay').in('lop_id', lopIds).neq('loai', 'bu').in('trang_thai', ['mo', 'hoan_tat']).gte('ngay', kyStart).lt('ngay', kyEnd).limit(LIMIT)
+    : { data: [] as any[], error: null }
+  if (e2) throw e2
+  const buoiByLop = new Map<string, { id: string; ngay: string }[]>()
+  const lopOfBuoi = new Map<string, string>()
+  for (const b of (buoiRows ?? []) as any[]) {
+    const a = buoiByLop.get(b.lop_id) ?? []; a.push(b); buoiByLop.set(b.lop_id, a)
+    lopOfBuoi.set(b.id, b.lop_id)
+  }
+  // điểm danh của MỌI buổi lớp trong kỳ (1 query)
+  const allBuoiIds = (buoiRows ?? []).map((b: any) => b.id)
+  const ddMap = new Map<string, string | null>() // `${hs}|${buoi}` -> diem_danh
+  if (allBuoiIds.length) {
+    const { data: bhh, error: e3 } = await supabase.from('buoi_hoc_hs').select('hoc_sinh_id, buoi_hoc_id, diem_danh').in('buoi_hoc_id', allBuoiIds).in('hoc_sinh_id', hsIds).limit(LIMIT)
+    if (e3) throw e3
+    for (const r of (bhh ?? []) as any[]) ddMap.set(`${r.hoc_sinh_id}|${r.buoi_hoc_id}`, r.diem_danh)
+  }
+  // BÙ: link có bu_cho_buoi_id (buổi gốc → lớp nào), HS có mặt, buổi bù diễn ra trong kỳ.
+  // buoi_hoc_hs có 2 FK về buoi_hoc → KHÔNG embed, tách bước (bài học §552).
+  const { data: buLinks, error: e4 } = await supabase.from('buoi_hoc_hs')
+    .select('hoc_sinh_id, buoi_hoc_id, bu_cho_buoi_id, diem_danh').in('hoc_sinh_id', hsIds).not('bu_cho_buoi_id', 'is', null).limit(LIMIT)
+  if (e4) throw e4
+  const buBuoiIds = [...new Set(((buLinks ?? []) as any[]).flatMap((l) => [l.buoi_hoc_id, l.bu_cho_buoi_id]))]
+  const buoiInfo = new Map<string, { ngay: string; lop_id: string | null; trang_thai: string }>()
+  if (buBuoiIds.length) {
+    const { data: bs } = await supabase.from('buoi_hoc').select('id, ngay, lop_id, trang_thai').in('id', buBuoiIds).limit(LIMIT)
+    for (const b of (bs ?? []) as any[]) buoiInfo.set(b.id, b)
+  }
+  const buByHSLop = new Map<string, string[]>() // `${hs}|${lopGốc}` -> ngày bù[]
+  for (const l of (buLinks ?? []) as any[]) {
+    if (l.diem_danh !== 'co_mat') continue
+    const buBuoi = buoiInfo.get(l.buoi_hoc_id); const goc = buoiInfo.get(l.bu_cho_buoi_id)
+    if (!buBuoi || buBuoi.trang_thai === 'huy' || !goc?.lop_id) continue
+    if (buBuoi.ngay < kyStart || buBuoi.ngay >= kyEnd) continue
+    const key = `${l.hoc_sinh_id}|${goc.lop_id}`
+    const a = buByHSLop.get(key) ?? []; a.push(buBuoi.ngay); buByHSLop.set(key, a)
+  }
+  // ĐUỔI: buổi loai='bo_tro_duoi' HS có mặt trong kỳ — gắn về LỚP của case (bo_tro_duoi.lop_id).
+  const { data: bhhDuoi, error: e5 } = await supabase.from('buoi_hoc_hs')
+    .select('hoc_sinh_id, bo_tro_duoi_id, buoi:buoi_hoc_id!inner(ngay, loai, muc_hoc_duoi_id)')
+    .in('hoc_sinh_id', hsIds).eq('diem_danh', 'co_mat').eq('buoi.loai', 'bo_tro_duoi').gte('buoi.ngay', kyStart).lt('buoi.ngay', kyEnd).limit(LIMIT)
+  if (e5) throw e5
+  const duoiCaseIds = [...new Set(((bhhDuoi ?? []) as any[]).map((r) => r.bo_tro_duoi_id).filter(Boolean))]
+  const lopOfCase = new Map<string, string | null>()
+  if (duoiCaseIds.length) {
+    const { data: cases } = await supabase.from('bo_tro_duoi').select('id, lop_id').in('id', duoiCaseIds).limit(LIMIT)
+    for (const c of (cases ?? []) as any[]) lopOfCase.set(c.id, c.lop_id)
+  }
+  const mucDuoiIds = [...new Set(((bhhDuoi ?? []) as any[]).map((r) => r.buoi?.muc_hoc_duoi_id).filter(Boolean))]
+  const { data: mucDuoiRows } = mucDuoiIds.length ? await supabase.from('muc_hoc_duoi').select('*').in('id', mucDuoiIds).limit(LIMIT) : { data: [] as MucHocDuoi[] }
+  const giaDuoiById = new Map(((mucDuoiRows ?? []) as MucHocDuoi[]).map((m) => [m.id, m.gia]))
+  const duoiByHSLop = new Map<string, { ngay: string; gia: number }[]>() // `${hs}|${lop}` (lop có thể '' nếu case không gắn lớp)
+  for (const r of (bhhDuoi ?? []) as any[]) {
+    const lopId = (r.bo_tro_duoi_id ? lopOfCase.get(r.bo_tro_duoi_id) : null) ?? ''
+    const key = `${r.hoc_sinh_id}|${lopId}`
+    const a = duoiByHSLop.get(key) ?? []
+    a.push({ ngay: r.buoi.ngay, gia: r.buoi.muc_hoc_duoi_id ? (giaDuoiById.get(r.buoi.muc_hoc_duoi_id) ?? 0) : 0 })
+    duoiByHSLop.set(key, a)
+  }
+
+  const mucPhiIds = [...new Set((hsl ?? []).map((r: any) => r.lop?.muc_hoc_phi_id).filter(Boolean))]
+  const mucLieuIds2 = [...new Set((hsl ?? []).map((r: any) => r.lop?.muc_hoc_lieu_id).filter(Boolean))]
+  const [{ data: mucPhiRows2 }, { data: mucLieuRows2 }] = await Promise.all([
+    mucPhiIds.length ? supabase.from('muc_hoc_phi').select('*').in('id', mucPhiIds).limit(LIMIT) : Promise.resolve({ data: [] as MucHocPhi[] }),
+    mucLieuIds2.length ? supabase.from('muc_hoc_lieu').select('*').in('id', mucLieuIds2).limit(LIMIT) : Promise.resolve({ data: [] as MucHocLieu[] }),
+  ])
+  const mucPhiById2 = new Map(((mucPhiRows2 ?? []) as MucHocPhi[]).map((m) => [m.id, m]))
+  const mucLieuById2 = new Map(((mucLieuRows2 ?? []) as MucHocLieu[]).map((m) => [m.id, m]))
+
+  const out: DongTheoMonV2[] = []
+  const dungLopKeys = new Set<string>()
+  for (const enroll of (hsl ?? []) as any[]) {
+    if (enroll.ngay_vao && enroll.ngay_vao >= kyEnd) continue
+    if (enroll.ngay_roi && enroll.ngay_roi < kyStart) continue
+    const hs = hsById.get(enroll.hoc_sinh_id); if (!hs) continue
+    const muc = enroll.lop?.muc_hoc_phi_id ? mucPhiById2.get(enroll.lop.muc_hoc_phi_id) : null
+    const inWindow = (ngay: string) => (!enroll.ngay_vao || ngay >= enroll.ngay_vao) && (!enroll.ngay_roi || ngay <= enroll.ngay_roi)
+    const buois = (buoiByLop.get(enroll.lop_id) ?? []).filter((b) => inWindow(b.ngay)).sort((a, b) => a.ngay.localeCompare(b.ngay))
+    const key = `${enroll.hoc_sinh_id}|${enroll.lop_id}`
+    dungLopKeys.add(key)
+    const ngayDiHoc: string[] = []; const ngayNghi: string[] = []
+    for (const b of buois) {
+      const dd = ddMap.get(`${enroll.hoc_sinh_id}|${b.id}`)
+      if (dd === 'co_mat') ngayDiHoc.push(b.ngay)
+      else if (dd === 'vang' || dd === 'vang_phep') ngayNghi.push(b.ngay)
+    }
+    const ngayBu = (buByHSLop.get(key) ?? []).sort()
+    const duoi = (duoiByHSLop.get(key) ?? []).sort((a, b) => a.ngay.localeCompare(b.ngay))
+    const soBuoiLop = buois.length
+    if (soBuoiLop <= 0 && !duoi.length) continue // kỳ này không có gì với lớp này
+    const heSo = Number(hs.he_so_hoc_phi) || 1
+    const donGia = muc?.don_gia_buoi ?? 0
+    const congThucDeXuat = deXuatCongThuc(ngayNghi.length, soBuoiLop) as CongThuc
+    const congThucChon = ctChonMap.get(key) ?? null
+    const ct = congThucChon ?? congThucDeXuat
+    const tienHocChinh = donGia > 0 && soBuoiLop > 0 ? thanhTienHocChinh(ct, { soBuoiLop, soBuoiDiHoc: ngayDiHoc.length, soBuoiBu: ngayBu.length }, donGia, heSo) : 0
+    const tienDuoi = duoi.reduce((s, d) => s + d.gia, 0)
+    const mucLieu = tienHocChinh > 0 && enroll.lop?.muc_hoc_lieu_id ? mucLieuById2.get(enroll.lop.muc_hoc_lieu_id) : null
+    const tienHocLieu = mucLieu?.gia ?? 0
+    out.push({
+      hoc_sinh_id: enroll.hoc_sinh_id, hoc_sinh_ten: hs.ho_ten, ma_hs: hs.ma_hs ?? null,
+      lop_id: enroll.lop_id, lop_ten: enroll.lop?.ten_lop ?? '', mon: enroll.lop?.mon ?? '',
+      soBuoiLop, soBuoiNghi: ngayNghi.length, soBuoiDiHoc: ngayDiHoc.length, soBuoiBu: ngayBu.length, soBuoiDuoi: duoi.length,
+      donGia, heSo, congThucDeXuat, congThucChon,
+      tienHocChinh, tienDuoi, tienHocLieu, thanhTien: tienHocChinh + tienDuoi + tienHocLieu,
+      hocLieuTen: mucLieu?.ten ?? null,
+      ngayDiHoc, ngayNghi, ngayBu, ngayDuoi: duoi.map((d) => d.ngay),
+    })
+  }
+  // Đuổi có case KHÔNG khớp dòng lớp nào (case không gắn lớp / HS đã rời lớp) → dòng riêng chỉ-đuổi.
+  for (const [key, duoi] of duoiByHSLop) {
+    if (dungLopKeys.has(key)) continue
+    const [hocSinhId] = key.split('|')
+    const hs = hsById.get(hocSinhId); if (!hs) continue
+    const tienDuoi = duoi.reduce((s, d) => s + d.gia, 0)
+    out.push({
+      hoc_sinh_id: hocSinhId, hoc_sinh_ten: hs.ho_ten, ma_hs: hs.ma_hs ?? null,
+      lop_id: '', lop_ten: '—', mon: 'Học đuổi',
+      soBuoiLop: 0, soBuoiNghi: 0, soBuoiDiHoc: 0, soBuoiBu: 0, soBuoiDuoi: duoi.length,
+      donGia: 0, heSo: 1, congThucDeXuat: 'ct1', congThucChon: null,
+      tienHocChinh: 0, tienDuoi, tienHocLieu: 0, thanhTien: tienDuoi,
+      hocLieuTen: null, ngayDiHoc: [], ngayNghi: [], ngayBu: [], ngayDuoi: duoi.map((d) => d.ngay),
+    })
+  }
+  return out.sort((a, b) => a.hoc_sinh_ten.localeCompare(b.hoc_sinh_ten, 'vi') || a.mon.localeCompare(b.mon, 'vi'))
+}
+// Chọn công thức TAY cho 1 HS×lớp×kỳ (ct=null → xoá dòng = quay về theo đề xuất của hệ).
+export async function setCongThucHocPhi(hocSinhId: string, lopId: string, ky: string, ct: CongThuc | null): Promise<void> {
+  if (ct === null) {
+    const { error } = await supabase.from('hoc_phi_cong_thuc').delete().match({ hoc_sinh_id: hocSinhId, lop_id: lopId, ky })
+    if (error) throw error
+    return
+  }
+  const { data: { user } } = await supabase.auth.getUser()
+  const { error } = await supabase.from('hoc_phi_cong_thuc')
+    .upsert({ hoc_sinh_id: hocSinhId, lop_id: lopId, ky, cong_thuc: ct, actor: user?.id ?? null, updated_at: new Date().toISOString() }, { onConflict: 'hoc_sinh_id,lop_id,ky' })
+  if (error) throw error
 }
 
 // Dữ liệu ĐỦ cho 1 phiếu thông báo (ảnh/PDF gửi PH) — dùng chốt nếu có, ảo nếu chưa (xem trước).

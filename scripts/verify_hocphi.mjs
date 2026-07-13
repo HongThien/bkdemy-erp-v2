@@ -1,5 +1,5 @@
 // Test thuần engine hocphi.js (node, không cần DB). Chạy: node scripts/verify_hocphi.mjs
-import { tinhHeSoHocSinh, lamTron1000, thanhTienHocPhi, thanhTienHocDuoi, canXetDuyetNghi30 } from '../src/gami/hocphi.js'
+import { tinhHeSoHocSinh, lamTron1000, thanhTienHocPhi, thanhTienHocDuoi, canXetDuyetNghi30, deXuatCongThuc, thanhTienHocChinh } from '../src/gami/hocphi.js'
 
 let ok = 0, fail = 0
 function eq(label, got, want) {

@@ -2,7 +2,7 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-96 bảng · 0 enum · 8 trigger · 21 function
+97 bảng · 0 enum · 8 trigger · 26 function
 
 ## bai_lam
 
@@ -152,6 +152,8 @@
 | bo_tro_duoi_id | uuid |  |  | FK→bo_tro_duoi.id |
 | ma_dang | text |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |
+| day_buoi_id | uuid | Y |  | FK→buoi_hoc.id |
+| day_at | timestamp with time zone | Y |  |  |
 
 ## bt_grades
 
@@ -607,6 +609,17 @@
 | sau | jsonb |  |  |  |
 | actor | uuid | Y |  |  |
 | ts | timestamp with time zone |  | now() |  |
+
+## hoc_phi_cong_thuc
+
+| cột | kiểu | null | default | khóa |
+|---|---|---|---|---|
+| hoc_sinh_id | uuid |  |  | PK FK→hoc_sinh.id |
+| lop_id | uuid |  |  | PK FK→lop.id |
+| ky | date |  |  | PK |
+| cong_thuc | text |  |  |  |
+| actor | uuid | Y |  |  |
+| updated_at | timestamp with time zone |  | now() |  |
 
 ## hoc_phi_phat_sinh
 
@@ -1286,6 +1299,11 @@
 - `log_viec()` → trigger
 - `my_hoc_sinh_id()` → uuid
 - `my_quyen()` → TABLE(la_admin boolean, chuc_nang text[], chi_xem text[])
+- `postgres_fdw_disconnect(text)` → boolean
+- `postgres_fdw_disconnect_all()` → boolean
+- `postgres_fdw_get_connections(OUT server_name text, OUT valid boolean)` → SETOF record
+- `postgres_fdw_handler()` → fdw_handler
+- `postgres_fdw_validator(text[], oid)` → void
 - `self_link_account()` → uuid
 - `tln_cache_check(p_ma_cau text, p_norm text)` → boolean
 - `tln_norm(t text)` → text
