@@ -331,15 +331,16 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly,
   )
 }
 
-type Buoi = { id: string; title: string; dangs: PhanResolved[]; btvns: PhanResolved[] }
+type Buoi = { id: string; title: string; dangs: PhanResolved[]; btvns: PhanResolved[]; ontaps: PhanResolved[] }
 function buildBuois(phans: PhanResolved[]): Buoi[] {
   const out: Buoi[] = []
   let cur: Buoi | null = null
-  const ensure = () => { if (!cur) { cur = { id: 'implicit', title: '', dangs: [], btvns: [] }; out.push(cur) } return cur }
+  const ensure = () => { if (!cur) { cur = { id: 'implicit', title: '', dangs: [], btvns: [], ontaps: [] }; out.push(cur) } return cur }
   for (const p of phans) {
-    if (p.loai_phan === 'buoi') { cur = { id: p.id, title: p.tieu_de || 'Buổi', dangs: [], btvns: [] }; out.push(cur) }
+    if (p.loai_phan === 'buoi') { cur = { id: p.id, title: p.tieu_de || 'Buổi', dangs: [], btvns: [], ontaps: [] }; out.push(cur) }
     else if (p.loai_phan === 'dang') ensure().dangs.push(p)
     else if (p.loai_phan === 'btvn') ensure().btvns.push(p)
+    else if (p.loai_phan === 'ontap') ensure().ontaps.push(p) // khối ôn tập cuối phiếu BTVN (spec-btvn-ontap)
   }
   return out
 }
@@ -373,8 +374,8 @@ function Doc({ full, gv, scope, lt = true, onlyBuoiId }: { full: TaiLieuFull; gv
       )}
       {/* QUYỂN BTVN riêng = chỉ các phiếu BTVN (mỗi buổi). Còn lại = giáo trình (skip BTVN nếu 'giaotrinh'). */}
       {scope === 'btvn'
-        ? buois.filter((b) => b.btvns.some((x) => x.caus.length)).map((b) => (
-          <BtvnSheet key={b.id} btvns={b.btvns} gv={gv} docTitle={taiLieu.ten} buoiTitle={b.title} dangNoByMa={dangNoByMa} linesByCau={linesByCau} isBtvnDoc={taiLieu.loai === 'btvn'} />
+        ? buois.filter((b) => b.btvns.some((x) => x.caus.length) || b.ontaps.some((x) => x.caus.length)).map((b) => (
+          <BtvnSheet key={b.id} btvns={b.btvns} ontaps={b.ontaps} gv={gv} docTitle={taiLieu.ten} buoiTitle={b.title} dangNoByMa={dangNoByMa} linesByCau={linesByCau} isBtvnDoc={taiLieu.loai === 'btvn'} />
         ))
         : buois.map((b) => (
           <BuoiBlock key={b.id} buoi={b} gv={gv} scope={scope} lt={lt} docTitle={taiLieu.ten} ltCd={ltChuyenDe} tenCd={tenChuyenDe} dangNoByMa={dangNoByMa} linesByCau={linesByCau} />
@@ -404,8 +405,8 @@ function BuoiBlock({ buoi, gv, scope, lt = true, docTitle, ltCd, tenCd, dangNoBy
           {g.dangs.map((d) => <DangBlock key={d.id} no={dangNoByMa[d.ref_ma ?? ''] ?? 0} p={d} gv={gv} lt={lt} />)}
         </div>
       ))}
-      {scope === 'all' && buoi.btvns.some((b) => b.caus.length) && (
-        <BtvnSheet btvns={buoi.btvns} gv={gv} docTitle={docTitle} buoiTitle={buoi.title} dangNoByMa={dangNoByMa} linesByCau={linesByCau} />
+      {scope === 'all' && (buoi.btvns.some((b) => b.caus.length) || buoi.ontaps.some((b) => b.caus.length)) && (
+        <BtvnSheet btvns={buoi.btvns} ontaps={buoi.ontaps} gv={gv} docTitle={docTitle} buoiTitle={buoi.title} dangNoByMa={dangNoByMa} linesByCau={linesByCau} />
       )}
     </section>
   )
@@ -463,8 +464,8 @@ function DangBlock({ no, p, gv, lt = true }: { no: number; p: PhanResolved; gv: 
 
 // BTVN của 1 BUỔI = phiếu RIÊNG (sang trang mới), nhóm theo DẠNG (mirror trên lớp). HS viết thẳng vào dòng kẻ.
 // Đầu phiếu: tiêu đề = tên tài liệu · trái = Họ tên + Lớp · phải = ô Điểm. Bản GV = đáp án (bỏ ô điền, hiện lời giải).
-function BtvnSheet({ btvns, gv, docTitle, buoiTitle, dangNoByMa, linesByCau, isBtvnDoc = false }: {
-  btvns: PhanResolved[]; gv: boolean; docTitle: string; buoiTitle: string; dangNoByMa: Record<string, number>; linesByCau: Record<string, number>; isBtvnDoc?: boolean
+function BtvnSheet({ btvns, ontaps = [], gv, docTitle, buoiTitle, dangNoByMa, linesByCau, isBtvnDoc = false }: {
+  btvns: PhanResolved[]; ontaps?: PhanResolved[]; gv: boolean; docTitle: string; buoiTitle: string; dangNoByMa: Record<string, number>; linesByCau: Record<string, number>; isBtvnDoc?: boolean
 }) {
   return (
     <section className="pv-sec pv-btvn">
@@ -491,13 +492,24 @@ function BtvnSheet({ btvns, gv, docTitle, buoiTitle, dangNoByMa, linesByCau, isB
           </div>
         )}
       </div>
-      {(() => { let bno = 0; return btvns.filter((b) => b.caus.length).map((b) => (
-        <div key={b.id} className="pv-sec">
-          <h2 className="pv-h-dang">Dạng {dangNoByMa[b.ref_ma ?? ''] ?? ''}: {b.dang?.ten_dang ?? b.ref_ma}</h2>
-          {/* Số câu BTVN đếm LIÊN TỤC xuyên các dạng (dạng 1: 1,2 → dạng 2: 3,4,5…) — KHÔNG reset mỗi dạng. */}
-          <CauList kieu={b.kieu}>{b.caus.map((c) => { bno += 1; return <CauItem key={c.ma_cau} no={bno} c={c} gv={gv} lines={gv ? 0 : (linesByCau[c.ma_cau] ?? DEFAULT_BTVN_LINES)} /> })}</CauList>
-        </div>
-      )) })()}
+      {(() => { let bno = 0; return (<>
+        {btvns.filter((b) => b.caus.length).map((b) => (
+          <div key={b.id} className="pv-sec">
+            <h2 className="pv-h-dang">Dạng {dangNoByMa[b.ref_ma ?? ''] ?? ''}: {b.dang?.ten_dang ?? b.ref_ma}</h2>
+            {/* Số câu BTVN đếm LIÊN TỤC xuyên các dạng (dạng 1: 1,2 → dạng 2: 3,4,5…) — KHÔNG reset mỗi dạng. */}
+            <CauList kieu={b.kieu}>{b.caus.map((c) => { bno += 1; return <CauItem key={c.ma_cau} no={bno} c={c} gv={gv} lines={gv ? 0 : (linesByCau[c.ma_cau] ?? DEFAULT_BTVN_LINES)} /> })}</CauList>
+          </div>
+        ))}
+        {/* PHẦN ÔN TẬP (spec-btvn-ontap, 07-13) — cuối phiếu, sau toàn bộ khối btvn; số câu NỐI TIẾP
+            phần chính; dạng ôn không có số thứ tự trong doc này → tiêu đề "Ôn tập: tên dạng". */}
+        {ontaps.some((b) => b.caus.length) && <div className="pv-h-ontap">PHẦN ÔN TẬP</div>}
+        {ontaps.filter((b) => b.caus.length).map((b) => (
+          <div key={b.id} className="pv-sec">
+            <h2 className="pv-h-dang">Ôn tập: {b.tieu_de ?? b.dang?.ten_dang ?? b.ref_ma}</h2>
+            <CauList kieu={b.kieu}>{b.caus.map((c) => { bno += 1; return <CauItem key={c.ma_cau} no={bno} c={c} gv={gv} lines={gv ? 0 : (linesByCau[c.ma_cau] ?? DEFAULT_BTVN_LINES)} /> })}</CauList>
+          </div>
+        ))}
+      </>) })()}
     </section>
   )
 }
@@ -706,6 +718,7 @@ const CONTENT_CSS = `
 .pv-bt-head{border:1.5px solid var(--pv-accent,#E91E8C);border-radius:12px;padding:12px 16px 14px;margin-bottom:16px;break-inside:avoid;break-after:avoid}
 .pv-bt-titlewrap{text-align:center;margin-bottom:13px}
 .pv-bt-eyebrow{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:#8a9097}
+.pv-h-ontap{margin:14px 0 8px;padding:4px 10px;border-left:4px solid var(--pv-accent,#E91E8C);background:#f5f6f8;font-size:13px;font-weight:800;letter-spacing:2px;color:#57606a}
 .pv-bt-title{font-size:22px;font-weight:800;color:var(--pv-accent,#E91E8C);line-height:1.2;margin-top:2px}
 .pv-bt-row{display:flex;align-items:stretch;gap:16px}
 .pv-bt-info{flex:1;display:flex;flex-direction:column;justify-content:center;gap:11px}

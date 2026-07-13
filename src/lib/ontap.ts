@@ -29,6 +29,60 @@ export async function saveOnTapConfig(nguonId: string, nguonBuoi: string, lopId:
   if (error) throw error
 }
 
+// ── Dựng khối ôn tập vào doc BTVN (gọi SAU trichXuatBuoi ở TrichPanel, và ở modal ✎ rebuild) ──
+// Đặt ở đây (không nhét vào trichXuatBuoi) vì tailieu.ts ← ontap.ts đã import 1 chiều — nhét vào
+// tailieu.ts sẽ tạo vòng import. Mọi đường sinh/sửa doc BTVN đều đi qua TrichPanel/modal nên tương đương.
+// Idempotent: XOÁ phan 'ontap' cũ của doc rồi dựng lại từ config (config là nguồn sự thật).
+// Trả về mã câu CHẾT (đã bị xoá khỏi kho) để UI toast — câu chết bị bỏ, không chặn cả khối.
+export async function appendOnTapVaoBTVN(docId: string): Promise<{ added: number; missing: string[] }> {
+  const { data: doc, error: eDoc } = await supabase.from('tai_lieu').select('mon, nguon_id, nguon_buoi, lop_id, cau_hinh').eq('id', docId).single()
+  if (eDoc) throw eDoc
+  const d = doc as any
+  if (!d.nguon_id || !d.nguon_buoi || !d.lop_id) return { added: 0, missing: [] }
+  const config = await getOnTapConfig(d.nguon_id, d.nguon_buoi, d.lop_id)
+  // dọn phan ontap cũ (rebuild) — tai_lieu_cau cascade theo phan
+  const { data: oldPhans } = await supabase.from('tai_lieu_phan').select('id').eq('tai_lieu_id', docId).eq('loai_phan', 'ontap').limit(LIMIT)
+  const oldIds = ((oldPhans ?? []) as any[]).map((p) => p.id)
+  if (oldIds.length) await supabase.from('tai_lieu_phan').delete().in('id', oldIds)
+  if (!config || config.skipped || !config.dangs?.length) return { added: 0, missing: [] }
+
+  const K = khoCuaMon(d.mon)
+  const allIds = config.dangs.flatMap((x) => x.cau_ids)
+  if (!allIds.length) return { added: 0, missing: [] }
+  // revalidate: câu còn tồn tại trong kho không (câu bị xoá/đổi mã sau khi GV cấu hình)
+  const { data: song } = await supabase.from(K.cauTbl).select('ma_cau').in('ma_cau', allIds).limit(LIMIT)
+  const songSet = new Set(((song ?? []) as any[]).map((r) => r.ma_cau))
+  const missing = allIds.filter((id) => !songSet.has(id))
+  // tên dạng cho tiêu đề phan (PrintView hiện tên dạng của khối)
+  const maDangs = config.dangs.map((x) => x.ma_dang)
+  const { data: bd } = await supabase.from(K.banDoTbl).select('ma_dang, ten_dang').in('ma_dang', maDangs).limit(LIMIT)
+  const tenDang = new Map(((bd ?? []) as any[]).map((r) => [r.ma_dang, r.ten_dang]))
+
+  const { data: maxRow } = await supabase.from('tai_lieu_phan').select('thu_tu').eq('tai_lieu_id', docId).order('thu_tu', { ascending: false }).limit(1)
+  let thuTu = (((maxRow ?? []) as any[])[0]?.thu_tu ?? -1) + 1
+  let added = 0
+  const linesMerge: Record<string, number> = {}
+  for (const dang of config.dangs) {
+    const causSong = dang.cau_ids.filter((id) => songSet.has(id))
+    if (!causSong.length) continue
+    const { data: phan, error: ePhan } = await supabase.from('tai_lieu_phan')
+      .insert({ tai_lieu_id: docId, thu_tu: thuTu++, loai_phan: 'ontap', ref_ma: dang.ma_dang, tieu_de: tenDang.get(dang.ma_dang) ?? dang.ma_dang, noi_dung: null })
+      .select('id').single()
+    if (ePhan) throw ePhan
+    const rows = causSong.map((ma_cau, i) => ({ phan_id: (phan as any).id, ma_cau, thu_tu: i }))
+    const { error: eCau } = await supabase.from('tai_lieu_cau').insert(rows)
+    if (eCau) throw eCau
+    added += rows.length
+    for (const [ma, n] of Object.entries(dang.linesByCau ?? {})) if (songSet.has(ma)) linesMerge[ma] = n
+  }
+  if (Object.keys(linesMerge).length) {
+    const ch = (d.cau_hinh ?? {}) as Record<string, unknown>
+    const cur = (ch.btvnLinesByCau ?? {}) as Record<string, number>
+    await supabase.from('tai_lieu').update({ cau_hinh: { ...ch, btvnLinesByCau: { ...cur, ...linesMerge } } }).eq('id', docId)
+  }
+  return { added, missing }
+}
+
 // ── Engine gợi ý ─────────────────────────────────────────────────────────────
 export type GoiYOnTap = {
   ma_dang: string; ten_dang: string

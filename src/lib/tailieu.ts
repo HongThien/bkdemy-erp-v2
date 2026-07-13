@@ -13,7 +13,7 @@ export function khoCuaMon(mon?: string | null): { cauTbl: string; banDoTbl: stri
 
 // buoi = mốc tầng-1 (Buổi 1, 2…). Trong 1 buổi: dang (trên lớp) + btvn (per-dạng) của các dạng đã chọn.
 // Lý thuyết chuyên đề KHÔNG lưu phan — DERIVE từ chuyên đề của các dạng trong buổi (lt_chuyen_de chỉ còn cho data cũ).
-export type PhanLoai = 'buoi' | 'lt_chuyen_de' | 'dang' | 'btvn' | 'custom'
+export type PhanLoai = 'buoi' | 'lt_chuyen_de' | 'dang' | 'btvn' | 'custom' | 'ontap'
 // btvnLinesByCau = số dòng kẻ (chấm chấm) để HS viết, RIÊNG cho TỪNG bài BTVN (key = ma_cau).
 // Không có entry cho câu nào → dùng DEFAULT_BTVN_LINES. (HS làm thẳng vào phiếu, không làm vào vở.)
 // etFormByCau = FORM HIỂN THỊ của câu TRONG ET (khác loai_cau của kho) — vd câu kho "trả lời ngắn"
@@ -505,7 +505,9 @@ export async function getBTVNByBuoi(lopId: string, ngay: string): Promise<{ id: 
 }
 export async function getBTVNCaus(taiLieuId: string): Promise<CauHoi[]> {
   const full = await getTaiLieuFull(taiLieuId)
-  return full.phans.filter((p) => p.loai_phan === 'btvn').flatMap((p) => p.caus)
+  // 'ontap' = khối ôn tập cuối phiếu (spec-btvn-ontap, 07-13) — chấm + phát hành online CÙNG đi qua
+  // hàm này nên nới 1 chỗ là câu ôn tập tự chảy vào cả 2 luồng, phase='btvn' như câu thường.
+  return full.phans.filter((p) => p.loai_phan === 'btvn' || p.loai_phan === 'ontap').flatMap((p) => p.caus)
 }
 // Giáo trình buổi (lớp+ngày) — doc loai='giao_trinh_buoi' (từ trích xuất). Dùng để khớp buổi ↔ test online.
 export async function getGiaoTrinhBuoiDoc(lopId: string, ngay: string): Promise<{ id: string } | null> {
