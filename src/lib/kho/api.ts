@@ -742,6 +742,8 @@ export function buildDeThiIngestPrompt(a: { trangDau: boolean; nhieuAnh?: boolea
     '- tra_loi_ngan / tu_luan: "de_bai" = toàn bộ đề (đúng ranh giới câu nói ở trên); "dap_an" = kết quả (nếu có); để "lua_chon"/"menh_de" trống.',
     '⚠ MỖI câu thêm "co_hinh" (true nếu có HÌNH VẼ/SƠ ĐỒ/ĐỒ THỊ/BẢNG BIẾN THIÊN/BẢNG XÉT DẤU cần giữ làm ảnh) và "box_hinh" = [ymin,xmin,ymax,xmax] toạ độ CHUẨN HOÁ 0–1000 ôm trọn hình (chỉ khi co_hinh=true, không thì null).',
     'BẢNG BIẾN THIÊN / BẢNG XÉT DẤU (mũi tên ↗↘, dòng x·y′·y, dấu ∞) = BẮT BUỘC coi là HÌNH (co_hinh=true), trong de_bai chỉ ghi "[bảng biến thiên]" đúng vị trí.',
+    '⚠⚠ BẢNG BIẾN THIÊN/BẢNG XÉT DẤU THƯỜNG KHÔNG CÓ KHUNG/VIỀN BAO QUANH (chỉ là các đường kẻ ngang dọc + số + mũi tên nổi trên nền trắng, KHÔNG có hình chữ nhật bao ngoài như hình vẽ thường có) — đừng đi tìm khung có sẵn để crop, mà tự ƯỚC LƯỢNG box_hinh ôm sát theo RÌA NGOÀI CÙNG của các đường kẻ/số/mũi tên (kể cả không có viền, vẫn phải trả box_hinh hợp lý, KHÔNG bỏ qua/không để co_hinh=false chỉ vì thiếu khung).',
+    '⚠⚠ SAU KHI CHÈN "[bảng biến thiên]", BẮT BUỘC tiếp tục đọc và giữ NGUYÊN VẸN toàn bộ câu hỏi/yêu cầu xuất hiện NGAY SAU bảng biến thiên trong CÙNG de_bai (vd "Tính giá trị lớn nhất của...") — đây vẫn là 1 phần của câu đang bóc, KHÔNG được bỏ sót, KHÔNG được coi nhầm là đã hết câu, KHÔNG được gộp lẫn vào box_hinh.',
     'CHỈ bảng SỐ LIỆU thuần mới viết LaTeX $\\begin{array}{…}…\\end{array}$ trong de_bai (không coi là hình).',
     giaiRule(a.giaiAI),
     FMT_RULES,
