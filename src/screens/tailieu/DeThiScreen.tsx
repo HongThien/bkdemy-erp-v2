@@ -3,9 +3,11 @@
 // Gán DẠNG do NGƯỜI chọn (DangPickerOne, browse cả khối) — KHÔNG auto-classify AI dạng (spec §9 OUT).
 // Đúng/Sai: chỉ chọn 1 CHUYÊN ĐỀ cho cả câu (ChuyenDePickerOne), KHÔNG gán dạng riêng từng mệnh đề.
 // Luồng ingest chính = "+ Nhập đề thi từ PDF" (NhapDeThiWizard): 1 lượt upload → tự bóc + đề xuất
-// trường/sở/năm (trang đầu) + gom theo Phần (AI đoán) → review 1 màn, danh sách sửa tại chỗ → xác
-// nhận 1 lần → tạo đề + đẩy câu ĐỦ dạng vào kho (câu thiếu dạng BỎ QUA, không chặn cả lượt). Lối tạo
-// đề TAY ("+ Tạo đề thi mới" → "+Thêm phần" → BocCauModal) vẫn giữ, dùng để bổ sung câu sau này.
+// trường/sở/năm (trang đầu) + gom theo Phần (AI đoán, hoặc GHI ĐÈ theo vị trí nếu chọn "đề chuẩn" 12
+// TN + 4 Đúng/Sai + 6 TLN — xem CHUAN_PHAN) → review TỪNG CÂU 1 lúc (V1-style, mirror BocCauModal —
+// Thùy 07-14: bulk-list khó preview) → xác nhận 1 lần → tạo đề + đẩy câu ĐỦ dạng vào kho (câu thiếu
+// dạng BỎ QUA, không chặn cả lượt). Lối tạo đề TAY ("+ Tạo đề thi mới" → "+Thêm phần" → BocCauModal)
+// vẫn giữ, dùng để bổ sung câu sau này.
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useStore } from '../../store/useStore'
 import {
@@ -291,7 +293,8 @@ type BItem = {
   maDang: string | null              // TN/TLN — dạng cụ thể
   chuyenDeRep: string | null         // Đúng/Sai — ma_dang đại diện của chuyên đề đã chọn (ẩn, dùng để lưu)
   chuyenDeTen: string | null         // Đúng/Sai — tên chuyên đề hiển thị
-  phanGoiY: string | null            // gợi ý tên Phần (AI đoán) — dùng để gom nhóm ở wizard
+  phanGoiY: string | null            // tên Phần — AI đoán, hoặc GHI ĐÈ theo vị trí khi "đề chuẩn" (xem bocDeTuFile)
+  sttGoc: number | null              // số thứ tự "Câu N." gốc (AI đọc) — dùng sort đúng thứ tự xuyên trang
   nguonGiai: 'nguoi' | 'ai'
   linkExisting: string | null // đã chọn câu CÓ SẴN trong kho (chống trùng) — bỏ qua tạo mới, chỉ liên kết
   saved: boolean
@@ -310,8 +313,20 @@ function reviewItemPatch(p: Partial<ReviewItem>): Partial<BItem> {
   if (p.anhDapAn !== undefined) q.anhDapAn = p.anhDapAn
   return q
 }
-// Bóc TOÀN BỘ file (PDF nhiều trang / 1 ảnh) → { meta (chỉ từ trang đầu), items } — dùng chung 2 nơi.
-async function bocDeTuFile(file: File, coHinh: boolean, onProgress?: (msg: string) => void): Promise<{ meta: Partial<DeThiIngestMeta>; items: BItem[] }> {
+// Cấu trúc "đề chuẩn" cố định (Thùy chốt 07-14): 12 câu đầu Trắc nghiệm, 4 câu tiếp Đúng/Sai, 6 câu
+// cuối Trả lời ngắn (22 câu). Dùng để override PHẦN theo VỊ TRÍ (sau khi sort theo sttGoc) — CHỈ đè
+// tên phần/nhóm hiển thị, KHÔNG đè loai_cau/hình dạng nội dung đã bóc (tránh ép nhãn sai hình dạng).
+const CHUAN_PHAN = [
+  { den: 12, ten: 'Phần I. Trắc nghiệm' },
+  { den: 16, ten: 'Phần II. Đúng/Sai' },
+  { den: 22, ten: 'Phần III. Trả lời ngắn' },
+]
+const CHUAN_TONG = 22
+// Bóc TOÀN BỘ file (PDF nhiều trang / 1 ảnh) → { meta (chỉ từ trang đầu), items, canhBao } — dùng chung.
+// chuan=true: prompt được cho biết trước cấu trúc 12+4+6 (bóc đúng NGAY TỪ ĐẦU thay vì đoán mù từng
+// trang) + sort câu theo sttGoc (an toàn hơn tin thứ tự trang xử lý) + ghi đè tên PHẦN theo vị trí nếu
+// tổng ĐÚNG 22 câu; sai số → giữ nguyên AI tự đoán + trả canhBao để review hiện cảnh báo.
+async function bocDeTuFile(file: File, coHinh: boolean, chuan: boolean, onProgress?: (msg: string) => void): Promise<{ meta: Partial<DeThiIngestMeta>; items: BItem[]; canhBao: string | null }> {
   const b64 = await readB64(file)
   const canvases = await fileToCanvases(file.type, b64)
   const items: BItem[] = []
@@ -320,7 +335,7 @@ async function bocDeTuFile(file: File, coHinh: boolean, onProgress?: (msg: strin
     onProgress?.(`Đang bóc trang ${p + 1}/${canvases.length}…`)
     const c = canvases[p]
     const files = coHinh ? [{ mimeType: 'image/jpeg', dataBase64: canvasToJpegBase64(c) }] : [{ mimeType: file.type, dataBase64: b64 }]
-    const { text } = await callGeminiRich(buildDeThiIngestPrompt({ trangDau: p === 0 }), { schema: DETHI_INGEST_SCHEMA, files })
+    const { text } = await callGeminiRich(buildDeThiIngestPrompt({ trangDau: p === 0, chuan }), { schema: DETHI_INGEST_SCHEMA, files })
     const parsed = parseDeThiIngestJson(text)
     if (p === 0) meta = parsed.meta
     for (const cau of parsed.caus) {
@@ -331,13 +346,22 @@ async function bocDeTuFile(file: File, coHinh: boolean, onProgress?: (msg: strin
       items.push({
         loai_cau: cau.loai_cau, noi_dung: cau.noi_dung, dap_an: cau.dap_an, loi_giai: cau.loi_giai, lua_chon: cau.lua_chon,
         menhDe: cau.menh_de ? cau.menh_de.map((m) => ({ noi_dung: m.noi_dung, dap_an: m.dap_an, loi_giai: m.loi_giai })) : null,
-        anhDe, anhDapAn: null, maDang: null, chuyenDeRep: null, chuyenDeTen: null, phanGoiY: cau.phanGoiY,
+        anhDe, anhDapAn: null, maDang: null, chuyenDeRep: null, chuyenDeTen: null, phanGoiY: cau.phanGoiY, sttGoc: cau.sttGoc,
         nguonGiai: cau.loi_giai ? 'nguoi' : 'nguoi', linkExisting: null, saved: false,
       })
     }
     if (!coHinh) break
   }
-  return { meta, items }
+  let canhBao: string | null = null
+  if (chuan) {
+    items.sort((a, b) => (a.sttGoc ?? 999) - (b.sttGoc ?? 999))
+    if (items.length === CHUAN_TONG) {
+      items.forEach((it, i) => { it.phanGoiY = CHUAN_PHAN.find((p) => i < p.den)!.ten })
+    } else {
+      canhBao = `⚠ Bóc được ${items.length} câu, khác ${CHUAN_TONG} câu chuẩn (12 Trắc nghiệm + 4 Đúng/Sai + 6 Trả lời ngắn) — kiểm tra kỹ số câu/thứ tự trước khi gán dạng.`
+    }
+  }
+  return { meta, items, canhBao }
 }
 // Lưu 1 câu ĐỦ dạng vào kho → trả ma_cau. throw nếu thiếu (gọi từ BocCauModal — có chặn từng câu).
 async function luuCauVaoKho(r: BItem, cauTbl: string): Promise<string> {
@@ -385,7 +409,7 @@ function BocCauModal({ phanId, khoi, mon, cauTbl, onClose, onDone }: { phanId: s
     if (!file) return
     setBusy(true); setErr(null); setItems([]); setIdx(0)
     try {
-      const { items: raw } = await bocDeTuFile(file, coHinh, setMsg)
+      const { items: raw } = await bocDeTuFile(file, coHinh, false, setMsg)
       if (!raw.length) throw new Error('AI không tách được câu nào — thử bật “Có hình” / ảnh nét hơn.')
       setItems(raw); setIdx(0)
     } catch (e: any) { setErr(e.message ?? String(e)) } finally { setBusy(false); setMsg('') }
@@ -557,7 +581,7 @@ function DungSaiBoc({ r, edit, onPatch, onOpenChuyenDe }: {
   )
 }
 
-// ═══════════ NHẬP ĐỀ THI TỪ PDF — 1 lượt: upload → tự bóc meta+câu → review 1 màn → xác nhận ═══════════
+// ═══════════ NHẬP ĐỀ THI TỪ PDF — 1 lượt: upload → tự bóc meta+câu → review TỪNG CÂU (V1-style) → xác nhận ═══════════
 type WizStep = 'setup' | 'review' | 'done'
 type PickerFor = { idx: number; kind: 'dang' | 'chuyenDe' } | null
 function NhapDeThiWizard({ defaultMon, allowedMons, onClose, onCreated }: {
@@ -566,35 +590,43 @@ function NhapDeThiWizard({ defaultMon, allowedMons, onClose, onCreated }: {
   const [step, setStep] = useState<WizStep>('setup')
   const [mon, setMon] = useState(defaultMon)
   const [khoi, setKhoi] = useState(DEFAULT_KHOI)
+  const [chuan, setChuan] = useState(true) // "đề chuẩn" 12 TN + 4 ĐS + 6 TLN (Thùy: "đề chuẩn là luôn thế")
   const [file, setFile] = useState<File | null>(null)
   const [coHinh, setCoHinh] = useState(true)
   const [busy, setBusy] = useState(false)
   const [msg, setMsg] = useState('')
   const [err, setErr] = useState<string | null>(null)
+  const [canhBao, setCanhBao] = useState<string | null>(null)
   const fileRef = useRef<HTMLInputElement>(null)
 
   const [ten, setTen] = useState('')
   const [meta, setMeta] = useState<DeThiMeta>({ nguon: '', cap: '', nam: null, thoiGianPhut: null, thangDiem: 10, pdfGocUrl: null })
+  const [metaOpen, setMetaOpen] = useState(false)
   const [items, setItems] = useState<BItem[]>([])
+  const [idx, setIdx] = useState(0)
+  const [edit, setEdit] = useState(false)
+  const [tim, setTim] = useState(false)
   const [pickerFor, setPickerFor] = useState<PickerFor>(null)
   const [xong, setXong] = useState<{ deId: string; saved: number; skipped: number } | null>(null)
 
   const cauTbl = khoCuaMon(mon).cauTbl
   const groups = useMemo(() => groupByPhan(items), [items])
   const soDu = items.filter(itemReady).length
+  useEffect(() => { setEdit(false); setTim(false) }, [idx])
 
   async function pasteFile() { try { const f = await readClipboardImageFile(); if (f) setFile(f) } catch { /* */ } }
   const patchAt = (idx: number, p: Partial<BItem>) => setItems((a) => a.map((x, i) => (i === idx ? { ...x, ...p } : x)))
+  const patch = (p: Partial<BItem>) => patchAt(idx, p)
 
   async function boc() {
     if (!file) return
     setBusy(true); setErr(null)
     try {
-      const { meta: m, items: raw } = await bocDeTuFile(file, coHinh, setMsg)
+      const { meta: m, items: raw, canhBao: cb } = await bocDeTuFile(file, coHinh, chuan, setMsg)
       if (!raw.length) throw new Error('AI không tách được câu nào — thử bật “Có hình” / ảnh nét hơn.')
       setMeta({ nguon: m.nguon ?? '', cap: m.cap ?? '', nam: m.nam ?? null, thoiGianPhut: m.thoiGianPhut ?? null, thangDiem: m.thangDiem ?? 10, pdfGocUrl: null })
       setTen([m.nguon, m.nam].filter(Boolean).join(' ') || 'Đề thi mới')
-      setItems(raw)
+      setItems(raw); setIdx(0); setCanhBao(cb)
       setStep('review')
     } catch (e: any) { setErr(e.message ?? String(e)) } finally { setBusy(false); setMsg('') }
   }
@@ -644,6 +676,12 @@ function NhapDeThiWizard({ defaultMon, allowedMons, onClose, onCreated }: {
           )}
           <label className="mt-3 block text-[12px] font-medium text-slate-600">Khối</label>
           <div className="mt-1 flex flex-wrap gap-1.5">{KHOI_OPTIONS.map((k) => <button key={k} onClick={() => setKhoi(k)} className={`rounded-lg px-2.5 py-1 text-[13px] font-medium ${khoi === k ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-600'}`}>{k}</button>)}</div>
+          <label className="mt-3 block text-[12px] font-medium text-slate-600">Cấu trúc đề</label>
+          <div className="mt-1 flex flex-wrap gap-1.5">
+            <button onClick={() => setChuan(true)} className={`rounded-lg px-2.5 py-1 text-[13px] font-medium ${chuan ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-600'}`}>Đề chuẩn (12 TN + 4 Đúng/Sai + 6 TLN)</button>
+            <button onClick={() => setChuan(false)} className={`rounded-lg px-2.5 py-1 text-[13px] font-medium ${!chuan ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-600'}`}>Đề khác cấu trúc</button>
+          </div>
+          {chuan && <p className="mt-1 text-[11px] text-slate-400">Hệ sẽ báo trước cấu trúc 12+4+6 cho AI bóc chính xác hơn, và tự gom đúng 3 phần theo số thứ tự câu.</p>}
           <div className="mt-3 flex flex-wrap items-center gap-2">
             <button onClick={() => fileRef.current?.click()} className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-indigo-400">📎 Chọn file PDF/ảnh</button>
             <button onClick={pasteFile} className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-indigo-400">📋 Dán ảnh (Ctrl+V)</button>
@@ -661,54 +699,71 @@ function NhapDeThiWizard({ defaultMon, allowedMons, onClose, onCreated }: {
     )
   }
 
-  // step === 'review'
+  // step === 'review' — TỪNG CÂU 1 LÚC (V1-style, mirror BocCauModal) thay vì danh sách cuộn.
+  const r = items[idx]
+  const isDS = r.loai_cau === 'dung_sai'
   return (
     <div className="fixed inset-0 z-[70] bg-slate-900/50 backdrop-blur-sm" onClick={onClose}>
-      <div className="absolute inset-x-[5%] inset-y-6 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-[#f5f5f7] shadow-2xl" onClick={(e) => e.stopPropagation()}>
+      <div className="absolute inset-x-[6%] inset-y-6 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-[#f5f5f7] shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <div className="flex flex-none items-center justify-between gap-3 border-b border-slate-200 bg-white px-6 py-3">
-          <span className="text-[14px] font-semibold text-slate-900">Xem lại đề đã bóc · {items.length} câu</span>
-          <button onClick={onClose} className="text-[12px] text-slate-400 hover:text-slate-600">✕ Huỷ</button>
-        </div>
-        <div className="min-h-0 flex-1 overflow-auto p-5">
-          <div className="mx-auto max-w-[980px] space-y-4">
-            {/* Metadata đề xuất — sửa được */}
-            <div className="rounded-xl border border-slate-200 bg-white p-4">
-              <label className="mb-1 block text-[11px] font-medium uppercase tracking-wide text-slate-500">Tên đề</label>
-              <input value={ten} onChange={(e) => setTen(e.target.value)} className={`${inp} mb-3 w-full`} />
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-                <MetaField label="Nguồn (trường/sở)"><input value={meta.nguon} onChange={(e) => setMeta({ ...meta, nguon: e.target.value })} className={inp} /></MetaField>
-                <MetaField label="Cấp"><input value={meta.cap} onChange={(e) => setMeta({ ...meta, cap: e.target.value })} placeholder="vào_10 / thpt_qg…" className={inp} /></MetaField>
-                <MetaField label="Năm"><input type="number" value={meta.nam ?? ''} onChange={(e) => setMeta({ ...meta, nam: e.target.value ? +e.target.value : null })} className={inp} /></MetaField>
-                <MetaField label="Thời gian (phút)"><input type="number" value={meta.thoiGianPhut ?? ''} onChange={(e) => setMeta({ ...meta, thoiGianPhut: e.target.value ? +e.target.value : null })} className={inp} /></MetaField>
-                <MetaField label="Thang điểm"><input type="number" value={meta.thangDiem} onChange={(e) => setMeta({ ...meta, thangDiem: +e.target.value || 10 })} className={inp} /></MetaField>
-              </div>
-            </div>
-
-            {/* Danh sách câu theo Phần */}
-            {groups.map((g) => (
-              <div key={g.ten} className="rounded-xl border border-slate-200 bg-white p-4">
-                <div className="mb-2 flex items-center gap-2">
-                  <span className="font-semibold text-slate-800">{g.ten}</span>
-                  <span className="text-[12px] text-slate-400">{g.items.length} câu</span>
-                </div>
-                <div className="space-y-2">
-                  {g.items.map((it) => {
-                    const idx = items.indexOf(it)
-                    return (
-                      <ReviewRow key={idx} it={it} idx={idx} cauTbl={cauTbl}
-                        onPatch={(p) => patchAt(idx, p)}
-                        onOpenDang={() => setPickerFor({ idx, kind: 'dang' })}
-                        onOpenChuyenDe={() => setPickerFor({ idx, kind: 'chuyenDe' })} />
-                    )
-                  })}
-                </div>
-              </div>
-            ))}
+          <span className="text-[14px] font-semibold text-slate-900">Xem lại đề đã bóc · Câu {idx + 1}/{items.length} · {soDu} sẵn sàng</span>
+          <div className="flex items-center gap-2">
+            <button onClick={() => setMetaOpen((v) => !v)} className="rounded-full bg-slate-100 px-3 py-1 text-[12px] font-medium text-slate-600 hover:bg-slate-200">{metaOpen ? '✕ Đóng thông tin đề' : '✎ Thông tin đề'}</button>
+            <button onClick={() => setTim((v) => !v)} className="rounded-full bg-sky-50 px-3 py-1 text-[12px] font-medium text-sky-700 hover:bg-sky-100">🔍 Câu có sẵn (chống trùng)</button>
+            <button onClick={onClose} className="text-[12px] text-slate-400 hover:text-slate-600">✕ Huỷ</button>
           </div>
         </div>
+        {metaOpen && (
+          <div className="flex-none border-b border-slate-200 bg-white px-6 py-3">
+            <label className="mb-1 block text-[11px] font-medium uppercase tracking-wide text-slate-500">Tên đề</label>
+            <input value={ten} onChange={(e) => setTen(e.target.value)} className={`${inp} mb-3 w-full`} />
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+              <MetaField label="Nguồn (trường/sở)"><input value={meta.nguon} onChange={(e) => setMeta({ ...meta, nguon: e.target.value })} className={inp} /></MetaField>
+              <MetaField label="Cấp"><input value={meta.cap} onChange={(e) => setMeta({ ...meta, cap: e.target.value })} placeholder="vào_10 / thpt_qg…" className={inp} /></MetaField>
+              <MetaField label="Năm"><input type="number" value={meta.nam ?? ''} onChange={(e) => setMeta({ ...meta, nam: e.target.value ? +e.target.value : null })} className={inp} /></MetaField>
+              <MetaField label="Thời gian (phút)"><input type="number" value={meta.thoiGianPhut ?? ''} onChange={(e) => setMeta({ ...meta, thoiGianPhut: e.target.value ? +e.target.value : null })} className={inp} /></MetaField>
+              <MetaField label="Thang điểm"><input type="number" value={meta.thangDiem} onChange={(e) => setMeta({ ...meta, thangDiem: +e.target.value || 10 })} className={inp} /></MetaField>
+            </div>
+          </div>
+        )}
+        {canhBao && <div className="flex-none border-b border-amber-200 bg-amber-50 px-6 py-2 text-[12px] text-amber-700">{canhBao}</div>}
+        <div className="flex flex-none items-center gap-3 px-6 py-2">
+          <div className="flex flex-1 gap-1">{items.map((x, i) => <button key={i} onClick={() => setIdx(i)} className={`h-[6px] flex-1 rounded-full ${itemReady(x) ? 'bg-indigo-500' : i === idx ? 'bg-slate-400' : 'bg-slate-200'}`} />)}</div>
+        </div>
+        {tim && <CauCoSanBox cauTbl={cauTbl} onPick={(ma) => { patch({ linkExisting: ma }); setTim(false) }} />}
+
+        <div className="flex min-h-0 flex-1 flex-col px-4 pb-4">
+          <div className="mx-auto flex min-h-0 w-full max-w-[1400px] flex-1 flex-col gap-3 rounded-2xl bg-white p-5 shadow-sm">
+            <div className="flex flex-none flex-wrap items-center gap-3 border-b border-slate-100 pb-3">
+              <span className="rounded-full bg-slate-100 px-2.5 py-1 text-[12px] font-medium text-slate-600">{LOAI_LABEL[r.loai_cau]}</span>
+              {r.phanGoiY && <span className="text-[12px] text-slate-400">{r.phanGoiY}</span>}
+              {r.linkExisting && <span className="rounded-full bg-sky-50 px-2.5 py-1 text-[12px] font-medium text-sky-700">🔗 dùng câu có sẵn: {r.linkExisting}</span>}
+              {!isDS && !r.linkExisting && (
+                <div className="min-w-[280px] flex-1">
+                  <button onClick={() => setPickerFor({ idx, kind: 'dang' })} className="w-full rounded-md border border-slate-300 bg-white px-3 py-1.5 text-left text-[13px] hover:border-indigo-400">
+                    {r.maDang ? <span className="font-medium text-indigo-700">Dạng: {r.maDang}</span> : <span className="text-indigo-500">+ Chọn dạng…</span>}
+                  </button>
+                </div>
+              )}
+            </div>
+            {isDS && !r.linkExisting
+              ? <div className="min-h-0 flex-1 overflow-auto"><DungSaiBoc r={r} edit={edit} onPatch={patch} onOpenChuyenDe={() => setPickerFor({ idx, kind: 'chuyenDe' })} /></div>
+              : !r.linkExisting ? <div className="min-h-0 flex-1"><CauEditor item={toReviewItem(r)} fill onChange={(p) => patch(reviewItemPatch(p))} /></div>
+              : <div className="min-h-0 flex-1 overflow-auto rounded-lg bg-slate-50 p-4 text-[14px] text-slate-700"><MathText>{r.noi_dung}</MathText></div>}
+
+            <div className="flex flex-none items-center justify-between border-t border-slate-100 pt-3">
+              <button disabled={idx === 0} onClick={() => setIdx(idx - 1)} className="rounded-lg border border-slate-300 px-3 py-1.5 text-[13px] text-slate-500 disabled:opacity-40">← Trước</button>
+              {err && <span className="px-2 text-[12px] text-red-600">{err}</span>}
+              <div className="flex items-center gap-2">
+                {!itemReady(r) && <span className="text-[12px] text-amber-600">⚠ chưa gán</span>}
+                <button disabled={idx >= items.length - 1} onClick={() => setIdx(idx + 1)} className="rounded-lg border border-slate-300 px-3 py-1.5 text-[13px] text-slate-500 disabled:opacity-40">Tiếp →</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="flex flex-none items-center justify-between gap-3 border-t border-slate-200 bg-white px-6 py-3">
           <span className="text-[13px] text-slate-500">{soDu}/{items.length} câu sẵn sàng {soDu < items.length && <span className="text-amber-600">(thiếu {items.length - soDu} câu sẽ bị bỏ qua)</span>}</span>
-          {err && <span className="text-[12px] text-red-600">{err}</span>}
           <button disabled={busy || !soDu} onClick={xacNhan} className="rounded-lg bg-indigo-600 px-5 py-2 text-[13px] font-semibold text-white shadow-sm disabled:opacity-40">{busy ? 'Đang lưu…' : '✓ Xác nhận & Lưu vào kho'}</button>
         </div>
       </div>
@@ -718,51 +773,6 @@ function NhapDeThiWizard({ defaultMon, allowedMons, onClose, onCreated }: {
       )}
       {pickerFor?.kind === 'chuyenDe' && (
         <ChuyenDePickerOne khoi={khoi} mon={mon} onClose={() => setPickerFor(null)} onPick={({ ten: t, anchorMaDang }) => { patchAt(pickerFor.idx, { chuyenDeRep: anchorMaDang, chuyenDeTen: t }); setPickerFor(null) }} />
-      )}
-    </div>
-  )
-}
-
-// 1 dòng câu trong màn review — thu gọn mặc định, "✎ Sửa" mở rộng để sửa nội dung/đáp án tại chỗ.
-function ReviewRow({ it, idx, cauTbl, onPatch, onOpenDang, onOpenChuyenDe }: {
-  it: BItem; idx: number; cauTbl: string
-  onPatch: (p: Partial<BItem>) => void; onOpenDang: () => void; onOpenChuyenDe: () => void
-}) {
-  const [expand, setExpand] = useState(false)
-  const [tim, setTim] = useState(false)
-  const isDS = it.loai_cau === 'dung_sai'
-  const ready = itemReady(it)
-  return (
-    <div className={`rounded-lg border p-3 ${ready ? 'border-slate-200 bg-white' : 'border-amber-200 bg-amber-50/40'}`}>
-      <div className="flex items-start gap-2">
-        <span className="mt-0.5 w-6 shrink-0 text-center text-[12px] font-bold text-slate-400">{idx + 1}</span>
-        <span className="shrink-0 rounded bg-slate-100 px-1.5 py-0.5 text-[11px] font-medium text-slate-500">{LOAI_LABEL[it.loai_cau]}</span>
-        <span className="min-w-0 flex-1 truncate text-[13px] text-slate-700"><MathText>{it.noi_dung}</MathText></span>
-        {!ready && <span className="shrink-0 text-[12px] text-amber-600">⚠ chưa gán</span>}
-        {it.linkExisting && <span className="shrink-0 rounded bg-sky-50 px-2 py-0.5 text-[11px] text-sky-700">🔗 {it.linkExisting}</span>}
-        <button onClick={() => setExpand((v) => !v)} className="shrink-0 text-[12px] text-indigo-600 hover:underline">{expand ? 'Thu gọn' : '✎ Sửa'}</button>
-      </div>
-      {!it.linkExisting && (
-        <div className="mt-2 pl-8">
-          {!isDS ? (
-            <button onClick={onOpenDang} className="rounded-md border border-slate-300 bg-white px-2.5 py-1 text-[12px] hover:border-indigo-400">
-              {it.maDang ? <span className="font-medium text-indigo-700">Dạng: {it.maDang}</span> : <span className="text-indigo-500">+ Chọn dạng…</span>}
-            </button>
-          ) : (
-            <button onClick={onOpenChuyenDe} className="rounded-md border border-slate-300 bg-white px-2.5 py-1 text-[12px] hover:border-indigo-400">
-              {it.chuyenDeTen ? <span className="font-medium text-indigo-700">Chuyên đề: {it.chuyenDeTen}</span> : <span className="text-indigo-500">+ Chọn chuyên đề…</span>}
-            </button>
-          )}
-        </div>
-      )}
-      {expand && (
-        <div className="mt-3 border-t border-slate-100 pt-3">
-          <button onClick={() => setTim((v) => !v)} className="mb-2 rounded-full bg-sky-50 px-3 py-1 text-[12px] font-medium text-sky-700 hover:bg-sky-100">🔍 Câu có sẵn (chống trùng)</button>
-          {tim && <CauCoSanBox cauTbl={cauTbl} onPick={(ma) => { onPatch({ linkExisting: ma }); setTim(false) }} />}
-          {!it.linkExisting && (isDS
-            ? <DungSaiBoc r={it} edit onPatch={onPatch} onOpenChuyenDe={onOpenChuyenDe} />
-            : <CauEditor item={toReviewItem(it)} fill onChange={(p) => onPatch(reviewItemPatch(p))} />)}
-        </div>
       )}
     </div>
   )
