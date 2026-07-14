@@ -5,7 +5,7 @@ import { useEffect, useMemo, useState } from 'react'
 import {
   LEVELS, LEVEL_TEN, VIEC_BY_LEVEL, duViec, listUngVien, listLoai, getViecXong, toggleViec, hoanThanhLevel,
   loaiUngVien, moLaiUngVien, createUngVien, updateUngVien, convertUngVien, demTheoLevel, listNguon, listHSDangHoc, suggestMaUV,
-  timHocSinh, chiTietHSChoLead, MON_OPTIONS, type UngVien, type UngVienLevel, type MonTS,
+  timHocSinh, chiTietHSChoLead, MON_OPTIONS, KHOANG_NGAY_MOI, type UngVien, type UngVienLevel, type MonTS,
 } from '../../lib/tuyensinh'
 import { listPhuHuynh, listConByPH, type PhuHuynh } from '../../lib/nhansu'
 import { listLop, type Lop } from '../../lib/nhansu'
@@ -18,10 +18,12 @@ const TABS: Tab[] = [...LEVELS, 'L8', 'loai']
 const inputCls = 'w-full rounded-lg border border-slate-300 px-3 py-2 text-[14px] outline-none focus:border-indigo-400'
 
 const readMon = () => { const m = localStorage.getItem('ts.mon'); return (MON_OPTIONS as readonly string[]).includes(m ?? '') ? (m as MonTS) : 'Toán' }
+const readSoNgayMoi = () => { const n = Number(localStorage.getItem('ts.songaymoi')); return (KHOANG_NGAY_MOI as readonly number[]).includes(n) ? n : 14 }
 
 export default function TuyenSinhScreen() {
   const [mon, setMon] = useState<MonTS>(readMon)
   const [tab, setTab] = useState<Tab>('L5')
+  const [soNgayMoi, setSoNgayMoi] = useState<number>(readSoNgayMoi)
   const [counts, setCounts] = useState<Record<string, number>>({})
   const [rows, setRows] = useState<UngVien[]>([])
   const [done, setDone] = useState<Record<string, Set<string>>>({})
@@ -31,18 +33,19 @@ export default function TuyenSinhScreen() {
   const [convertUv, setConvertUv] = useState<{ uv: UngVien; duoi: boolean } | null>(null) // duoi=true: chốt chính thức + bổ trợ đuổi
   const [loaiUv, setLoaiUv] = useState<UngVien | null>(null)
 
-  async function reloadCounts() { try { setCounts(await demTheoLevel(mon)) } catch { /* */ } }
+  async function reloadCounts() { try { setCounts(await demTheoLevel(mon, soNgayMoi)) } catch { /* */ } }
   async function reload() {
     setLoading(true)
     try {
-      if (tab === 'L8') { setHs(await listHSDangHoc(mon)); setRows([]) }
+      if (tab === 'L8') { setHs(await listHSDangHoc(mon, soNgayMoi)); setRows([]) }
       else if (tab === 'loai') { setRows(await listLoai(mon)); setDone({}) }
       else { const r = await listUngVien(tab, mon); setRows(r); setDone(await getViecXong(r.map((x) => x.id))) }
     } catch { setRows([]) } finally { setLoading(false) }
   }
   useEffect(() => { localStorage.setItem('ts.mon', mon) }, [mon])
-  useEffect(() => { reload() }, [tab, mon]) // eslint-disable-line
-  useEffect(() => { reloadCounts() }, [mon]) // eslint-disable-line
+  useEffect(() => { localStorage.setItem('ts.songaymoi', String(soNgayMoi)) }, [soNgayMoi])
+  useEffect(() => { reload() }, [tab, mon, soNgayMoi]) // eslint-disable-line
+  useEffect(() => { reloadCounts() }, [mon, soNgayMoi]) // eslint-disable-line
   const refresh = async () => { await reload(); await reloadCounts() }
 
   async function onToggle(uv: UngVien, key: string, on: boolean) {
@@ -94,9 +97,20 @@ export default function TuyenSinhScreen() {
           })}
         </div>
 
+        {/* Toggle bar khoảng ngày — chỉ hiện ở tab L8, quan sát xu hướng HS mới */}
+        {tab === 'L8' && (
+          <div className="mb-4 flex w-fit flex-wrap items-center gap-1.5 rounded-2xl border border-slate-200 bg-white p-1.5 shadow-sm">
+            <span className="pl-1.5 text-[13px] text-slate-400">HS mới trong</span>
+            {KHOANG_NGAY_MOI.map((n) => (
+              <button key={n} onClick={() => setSoNgayMoi(n)}
+                className={`rounded-xl px-3.5 py-1.5 text-[14px] font-medium transition ${soNgayMoi === n ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}>{n} ngày</button>
+            ))}
+          </div>
+        )}
+
         {/* Nội dung */}
         {loading ? <div className="p-8 text-[14px] text-slate-400">Đang tải…</div>
-          : tab === 'L8' ? <L8List hs={hs} />
+          : tab === 'L8' ? <L8List hs={hs} soNgay={soNgayMoi} />
           : tab === 'loai' ? <LoaiList rows={rows} onMoLai={async (id) => { await moLaiUngVien(id); await refresh() }} />
           : (
             <div className="rounded-2xl border border-slate-200 bg-white shadow-sm">
@@ -168,10 +182,10 @@ export default function TuyenSinhScreen() {
   )
 }
 
-function L8List({ hs }: { hs: { id: string; ma_hs: string | null; ho_ten: string; khoi: string | null }[] }) {
+function L8List({ hs, soNgay }: { hs: { id: string; ma_hs: string | null; ho_ten: string; khoi: string | null }[]; soNgay: number }) {
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-      <p className="mb-3 text-[13px] text-slate-500">Học sinh chính thức (đang học) — {hs.length} HS. Quản lý chi tiết ở màn <b>Học sinh</b>.</p>
+      <p className="mb-3 text-[13px] text-slate-500">Học sinh mới ({soNgay} ngày gần nhất) — {hs.length} HS. Toàn bộ HS đang học xem ở màn <b>Học sinh</b>.</p>
       <div className="grid gap-1.5 [grid-template-columns:repeat(auto-fill,minmax(220px,1fr))]">
         {hs.map((h) => (
           <div key={h.id} className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-[14px]"><span className="font-medium text-slate-800">{h.ho_ten}</span><div className="text-[12px] text-slate-400">{h.ma_hs} · Khối {h.khoi || '—'}</div></div>
