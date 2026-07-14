@@ -321,37 +321,52 @@ function reviewItemPatch(p: Partial<ReviewItem>): Partial<BItem> {
 // câu liền trước" làm TÍN HIỆU sang phần mới (đúng cách V1 đã làm, theo Thùy "tương đối ổn").
 const CHUAN_PHAN = ['Phần I. Trắc nghiệm', 'Phần II. Đúng/Sai', 'Phần III. Trả lời ngắn']
 const CHUAN_SO_CAU = [12, 4, 6]
+// Bóc theo LƯỢT tối đa BATCH_TRANG trang/lệnh Gemini (Thùy 07-14: "file PDF quá dài" → 1 lệnh ôm hết
+// dễ vượt maxOutputTokens → Gemini CẮT giữa chừng, JSON hỏng — "AI bị CẮT (JSON dở)"). LUÔN gửi ẢNH
+// TỪNG TRANG đã render (không còn nhánh gửi NGUYÊN FILE GỐC khi tắt "Có hình" — đó chính là nguồn bug
+// cũ: 1 lệnh ôm NGUYÊN file nhiều trang). `coHinh` giờ CHỈ còn ý nghĩa "có cắt hình minh hoạ hay không".
+const BATCH_TRANG = 6
 // Bóc TOÀN BỘ file (PDF nhiều trang / 1 ảnh) → { meta (chỉ từ trang đầu), items, canhBao } — dùng chung.
 // chuan=true: prompt được cho biết trước cấu trúc 3 phần cố định (bóc đúng NGAY TỪ ĐẦU thay vì đoán mù
 // từng trang) + gán PHẦN theo tín hiệu "reset số thứ tự" (không sort, giữ đúng thứ tự bóc) — CHỈ đè
 // tên phần/nhóm hiển thị, KHÔNG đè loai_cau/hình dạng nội dung đã bóc (tránh ép nhãn sai hình dạng).
 // Số câu mỗi phần lệch khỏi 12/4/6 → vẫn giữ kết quả gán được, chỉ trả canhBao để review tự kiểm lại.
+// Mỗi LƯỢT (≤BATCH_TRANG trang) bọc try/catch RIÊNG — 1 lượt lỗi KHÔNG làm mất kết quả các lượt khác
+// đã bóc được (Thùy: "cần 1 cơ chế đệm để phân ra... rồi ghép lại sau" — tự động trong CÙNG 1 lần
+// upload, không cần tự cắt file/upload lại) → lượt lỗi được liệt kê trong canhBao để tự bổ sung sau.
 async function bocDeTuFile(file: File, coHinh: boolean, chuan: boolean, onProgress?: (msg: string) => void): Promise<{ meta: Partial<DeThiIngestMeta>; items: BItem[]; canhBao: string | null }> {
   const b64 = await readB64(file)
   const canvases = await fileToCanvases(file.type, b64)
   const items: BItem[] = []
   let meta: Partial<DeThiIngestMeta> = {}
-  for (let p = 0; p < canvases.length; p++) {
-    onProgress?.(`Đang bóc trang ${p + 1}/${canvases.length}…`)
-    const c = canvases[p]
-    const files = coHinh ? [{ mimeType: 'image/jpeg', dataBase64: canvasToJpegBase64(c) }] : [{ mimeType: file.type, dataBase64: b64 }]
-    const { text } = await callGeminiRich(buildDeThiIngestPrompt({ trangDau: p === 0, chuan }), { schema: DETHI_INGEST_SCHEMA, files })
-    const parsed = parseDeThiIngestJson(text)
-    if (p === 0) meta = parsed.meta
-    for (const cau of parsed.caus) {
-      let anhDe: string | null = null
-      if (coHinh && cau.coHinh && cau.box) {
-        try { const blob = await (await fetch(cropCanvasBox(c, cau.box))).blob(); anhDe = await uploadKhoImage(new File([blob], 'fig.png', { type: 'image/png' })) } catch { /* bỏ hình lỗi */ }
+  const loiLuot: string[] = []
+  for (let start = 0; start < canvases.length; start += BATCH_TRANG) {
+    const end = Math.min(start + BATCH_TRANG, canvases.length)
+    onProgress?.(`Đang bóc trang ${start + 1}–${end}/${canvases.length}…`)
+    const nhieuAnh = end - start > 1
+    try {
+      const files = canvases.slice(start, end).map((c) => ({ mimeType: 'image/jpeg', dataBase64: canvasToJpegBase64(c) }))
+      const { text } = await callGeminiRich(buildDeThiIngestPrompt({ trangDau: start === 0, nhieuAnh, chuan }), { schema: DETHI_INGEST_SCHEMA, files })
+      const parsed = parseDeThiIngestJson(text)
+      if (start === 0) meta = parsed.meta
+      for (const cau of parsed.caus) {
+        let anhDe: string | null = null
+        if (coHinh && cau.coHinh && cau.box) {
+          const c = canvases[start + Math.min(Math.max(cau.anhIdx ?? 0, 0), end - start - 1)]
+          try { const blob = await (await fetch(cropCanvasBox(c, cau.box))).blob(); anhDe = await uploadKhoImage(new File([blob], 'fig.png', { type: 'image/png' })) } catch { /* bỏ hình lỗi */ }
+        }
+        items.push({
+          loai_cau: cau.loai_cau, noi_dung: cau.noi_dung, dap_an: cau.dap_an, loi_giai: cau.loi_giai, lua_chon: cau.lua_chon,
+          menhDe: cau.menh_de ? cau.menh_de.map((m) => ({ noi_dung: m.noi_dung, dap_an: m.dap_an, loi_giai: m.loi_giai })) : null,
+          anhDe, anhDapAn: null, maDang: null, chuyenDeRep: null, chuyenDeTen: null, phanGoiY: cau.phanGoiY, sttGoc: cau.sttGoc,
+          nguonGiai: cau.loi_giai ? 'nguoi' : 'nguoi', linkExisting: null, saved: false,
+        })
       }
-      items.push({
-        loai_cau: cau.loai_cau, noi_dung: cau.noi_dung, dap_an: cau.dap_an, loi_giai: cau.loi_giai, lua_chon: cau.lua_chon,
-        menhDe: cau.menh_de ? cau.menh_de.map((m) => ({ noi_dung: m.noi_dung, dap_an: m.dap_an, loi_giai: m.loi_giai })) : null,
-        anhDe, anhDapAn: null, maDang: null, chuyenDeRep: null, chuyenDeTen: null, phanGoiY: cau.phanGoiY, sttGoc: cau.sttGoc,
-        nguonGiai: cau.loi_giai ? 'nguoi' : 'nguoi', linkExisting: null, saved: false,
-      })
+    } catch (e: any) {
+      loiLuot.push(`trang ${start + 1}${end - start > 1 ? `-${end}` : ''}: ${e.message ?? String(e)}`)
     }
-    if (!coHinh) break
   }
+  if (!items.length && loiLuot.length) throw new Error(loiLuot.join(' · '))
   let canhBao: string | null = null
   if (chuan) {
     let phanIdx = 0, prevStt: number | null = null
@@ -365,6 +380,10 @@ async function bocDeTuFile(file: File, coHinh: boolean, chuan: boolean, onProgre
     if (phanIdx < CHUAN_PHAN.length - 1 || dem.some((n, i) => n !== CHUAN_SO_CAU[i])) {
       canhBao = `⚠ Bóc được ${dem.join('/')} câu (Trắc nghiệm/Đúng-Sai/Trả lời ngắn), khác chuẩn 12/4/6 — kiểm tra kỹ số câu/ranh giới phần trước khi gán dạng.`
     }
+  }
+  if (loiLuot.length) {
+    const lb = `⚠ Lỗi bóc ${loiLuot.join(' · ')}. Câu ở các trang này CHƯA có — dùng "+ Bóc câu vào phần này" ở đề sau khi tạo để bổ sung.`
+    canhBao = canhBao ? `${canhBao}\n${lb}` : lb
   }
   return { meta, items, canhBao }
 }
@@ -731,7 +750,7 @@ function NhapDeThiWizard({ defaultMon, allowedMons, onClose, onCreated }: {
             </div>
           </div>
         )}
-        {canhBao && <div className="flex-none border-b border-amber-200 bg-amber-50 px-6 py-2 text-[12px] text-amber-700">{canhBao}</div>}
+        {canhBao && <div className="flex-none whitespace-pre-line border-b border-amber-200 bg-amber-50 px-6 py-2 text-[12px] text-amber-700">{canhBao}</div>}
         <div className="flex flex-none items-center gap-3 px-6 py-2">
           <div className="flex flex-1 gap-1">{items.map((x, i) => <button key={i} onClick={() => setIdx(i)} className={`h-[6px] flex-1 rounded-full ${itemReady(x) ? 'bg-indigo-500' : i === idx ? 'bg-slate-400' : 'bg-slate-200'}`} />)}</div>
         </div>

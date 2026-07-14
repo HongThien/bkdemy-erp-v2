@@ -717,15 +717,19 @@ export const DETHI_INGEST_SCHEMA = { type: 'OBJECT', properties: {
       menh_de: { type: 'ARRAY', items: KHO_MENHDE_SCHEMA },
       loi_giai: { type: 'STRING', description: 'Lời giải chi tiết, mỗi bước 1 dòng.' },
       co_hinh: { type: 'BOOLEAN' }, box_hinh: { type: 'ARRAY', items: { type: 'NUMBER' } },
+      anh_idx: { type: 'NUMBER', description: 'Số thứ tự ẢNH (0-based) TRONG LƯỢT NÀY mà câu này xuất hiện — chỉ cần khi lượt có NHIỀU HƠN 1 ảnh (nhiều trang gộp lại); để trống nếu chỉ có 1 ảnh.' },
     }, required: ['loai_cau', 'de_bai'],
   } },
 }, required: ['cau'] }
-export function buildDeThiIngestPrompt(a: { trangDau: boolean; chuan?: boolean; giaiAI?: boolean }): string {
+export function buildDeThiIngestPrompt(a: { trangDau: boolean; nhieuAnh?: boolean; chuan?: boolean; giaiAI?: boolean }): string {
   return [
-    'Đây là ẢNH 1 TRANG đề thi. TÁCH thành từng CÂU theo thứ tự xuất hiện (mỗi bài = 1 câu, KHÔNG tách ý a/b/c thành nhiều câu).',
+    a.nhieuAnh
+      ? 'Đây là NHIỀU ẢNH — các TRANG LIÊN TIẾP của 1 đề thi, theo ĐÚNG thứ tự đưa vào (ảnh 0 = trang đầu lượt, ảnh 1 = trang kế tiếp…). Đọc LẦN LƯỢT từng ảnh theo thứ tự, TÁCH thành từng CÂU theo thứ tự xuất hiện xuyên suốt các ảnh (mỗi bài = 1 câu, KHÔNG tách ý a/b/c thành nhiều câu, KHÔNG trộn lẫn nội dung 2 ảnh liền kề vào 1 câu).'
+      : 'Đây là ẢNH 1 TRANG đề thi. TÁCH thành từng CÂU theo thứ tự xuất hiện (mỗi bài = 1 câu, KHÔNG tách ý a/b/c thành nhiều câu).',
     a.trangDau
       ? '⚠ ĐÂY LÀ TRANG ĐẦU đề thi — đọc PHẦN HEADER (tên trường/sở ra đề, năm học/năm thi, cấp/kỳ thi, thời gian làm bài (phút), thang điểm) → điền vào "de_meta". Để trống field nào không thấy, KHÔNG bịa.'
       : '(Không phải trang đầu — để "de_meta" trống/bỏ qua.)',
+    a.nhieuAnh ? 'MỖI câu thêm "anh_idx" = số thứ tự ẢNH (0-based, xem thứ tự ở trên) mà câu này xuất hiện — dùng để xác định đúng trang khi cắt hình minh hoạ.' : '',
     a.chuan
       ? '⚠⚠ ĐỀ NÀY CÓ CẤU TRÚC CHUẨN CỐ ĐỊNH, ĐÚNG 3 PHẦN THEO THỨ TỰ: Phần I = TRẮC NGHIỆM (12 câu, 4 phương án A/B/C/D), Phần II = ĐÚNG/SAI (4 câu, mỗi câu 1 đề chung + 4 mệnh đề a/b/c/d), Phần III = TRẢ LỜI NGẮN (6 câu). ⚠ MỖI PHẦN TỰ ĐÁNH SỐ CÂU RIÊNG, BẮT ĐẦU LẠI TỪ "Câu 1" khi sang phần mới (vd hết "Câu 12" của Trắc nghiệm thì Đúng/Sai bắt đầu lại từ "Câu 1", KHÔNG PHẢI "Câu 13") — đọc ĐÚNG số in trên trang, ĐỪNG tự cộng dồn số qua các phần. Dùng đúng cấu trúc này để xác định câu đang bóc thuộc loại nào — ĐỪNG tự đoán khác đi trừ khi nội dung rõ ràng không khớp.'
       : '',
@@ -740,10 +744,10 @@ export function buildDeThiIngestPrompt(a: { trangDau: boolean; chuan?: boolean; 
     'CHỈ bảng SỐ LIỆU thuần mới viết LaTeX $\\begin{array}{…}…\\end{array}$ trong de_bai (không coi là hình).',
     giaiRule(a.giaiAI),
     FMT_RULES,
-    'Trả JSON: { "de_meta": { "nguon":"…", "nam":0, "cap":"…", "thoi_gian_phut":0, "thang_diem":0 }, "cau": [ { "loai_cau":"…", "stt_goc":0, "phan_goi_y":"…", "de_bai":"…", "dap_an":"…", "lua_chon":[…], "menh_de":[…], "loi_giai":"…", "co_hinh":false, "box_hinh":null } ] }',
+    'Trả JSON: { "de_meta": { "nguon":"…", "nam":0, "cap":"…", "thoi_gian_phut":0, "thang_diem":0 }, "cau": [ { "loai_cau":"…", "stt_goc":0, "phan_goi_y":"…", "de_bai":"…", "dap_an":"…", "lua_chon":[…], "menh_de":[…], "loi_giai":"…", "co_hinh":false, "box_hinh":null, "anh_idx":0 } ] }',
   ].filter(Boolean).join('\n')
 }
-export type DeThiIngestCau = KhoIngestCau & { phanGoiY: string | null; sttGoc: number | null }
+export type DeThiIngestCau = KhoIngestCau & { phanGoiY: string | null; sttGoc: number | null; anhIdx: number | null }
 export function parseDeThiIngestJson(text: string): { meta: Partial<DeThiIngestMeta>; caus: DeThiIngestCau[] } {
   let t = text.trim(); const fence = t.match(/```(?:json)?\s*([\s\S]*?)```/i); if (fence) t = fence[1].trim()
   let obj: any; try { obj = lenientJsonParse(t) } catch (e: any) { throw new Error('JSON không hợp lệ: ' + e.message) }
@@ -769,6 +773,7 @@ export function parseDeThiIngestJson(text: string): { meta: Partial<DeThiIngestM
     return {
       loai_cau: loai, noi_dung, phanGoiY: x.phan_goi_y != null && String(x.phan_goi_y).trim() ? String(x.phan_goi_y).trim() : null,
       sttGoc: Number.isFinite(Number(x.stt_goc)) && Number(x.stt_goc) > 0 ? Number(x.stt_goc) : null,
+      anhIdx: Number.isFinite(Number(x.anh_idx)) && Number(x.anh_idx) >= 0 ? Number(x.anh_idx) : null,
       dap_an: x.dap_an != null && String(x.dap_an).trim() ? String(x.dap_an).trim() : null,
       loi_giai: x.loi_giai != null && String(x.loi_giai).trim() ? stripYCon(String(x.loi_giai).trim()) : null,
       lua_chon: loai === 'dung_sai' ? null : lua_chon,
