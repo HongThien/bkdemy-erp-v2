@@ -695,6 +695,85 @@ export function parseKhoIngestJson(text: string): KhoIngestCau[] {
   })
 }
 
+// ── BÓC ĐỀ THI (DeThiScreen — thêm de_meta trang đầu + phan_goi_y mỗi câu so với INGEST_KHO_SCHEMA ở
+// trên; KHÔNG đụng INGEST_KHO_SCHEMA/buildKhoIngestPrompt/parseKhoIngestJson đang dùng ở NhapKhoScreen,
+// đúng convention đã có sẵn kiểu buildDungSaiIngestPrompt/DUNGSAI_SCHEMA riêng cho DungSaiBank). ──
+export type DeThiIngestMeta = { nguon: string | null; nam: number | null; cap: string | null; thoiGianPhut: number | null; thangDiem: number | null }
+const DETHI_META_SCHEMA = { type: 'OBJECT', properties: {
+  nguon: { type: 'STRING', description: 'Tên trường/sở ra đề' }, nam: { type: 'NUMBER', description: 'Năm học/năm thi' },
+  cap: { type: 'STRING', description: "vd 'vào 10', 'thi thử', 'học kỳ 1'" },
+  thoi_gian_phut: { type: 'NUMBER' }, thang_diem: { type: 'NUMBER' },
+} }
+export const DETHI_INGEST_SCHEMA = { type: 'OBJECT', properties: {
+  de_meta: DETHI_META_SCHEMA,
+  cau: { type: 'ARRAY', items: {
+    type: 'OBJECT', properties: {
+      loai_cau: { type: 'STRING', description: "'trac_nghiem' | 'dung_sai' | 'tra_loi_ngan' | 'tu_luan'" },
+      phan_goi_y: { type: 'STRING', description: 'Tiêu đề PHẦN đang thấy ngay TRÊN câu này trong đề (vd "Phần I. Trắc nghiệm") — để trống nếu đề không chia phần rõ.' },
+      de_bai: { type: 'STRING', description: 'Đề bài (đúng/sai: đề CHUNG). GIỮ bố cục nhiều dòng bằng ký tự xuống dòng.' },
+      dap_an: { type: 'STRING' },
+      lua_chon: { type: 'ARRAY', items: { type: 'STRING' } },
+      menh_de: { type: 'ARRAY', items: KHO_MENHDE_SCHEMA },
+      loi_giai: { type: 'STRING', description: 'Lời giải chi tiết, mỗi bước 1 dòng.' },
+      co_hinh: { type: 'BOOLEAN' }, box_hinh: { type: 'ARRAY', items: { type: 'NUMBER' } },
+    }, required: ['loai_cau', 'de_bai'],
+  } },
+}, required: ['cau'] }
+export function buildDeThiIngestPrompt(a: { trangDau: boolean; giaiAI?: boolean }): string {
+  return [
+    'Đây là ẢNH 1 TRANG đề thi. TÁCH thành từng CÂU theo thứ tự xuất hiện (mỗi bài = 1 câu, KHÔNG tách ý a/b/c thành nhiều câu).',
+    a.trangDau
+      ? '⚠ ĐÂY LÀ TRANG ĐẦU đề thi — đọc PHẦN HEADER (tên trường/sở ra đề, năm học/năm thi, cấp/kỳ thi, thời gian làm bài (phút), thang điểm) → điền vào "de_meta". Để trống field nào không thấy, KHÔNG bịa.'
+      : '(Không phải trang đầu — để "de_meta" trống/bỏ qua.)',
+    'MỖI câu thêm "phan_goi_y" = tiêu đề PHẦN đang thấy NGAY TRÊN câu này trong đề (vd "Phần I. Trắc nghiệm", "PHẦN II. TỰ LUẬN") — giữ NGUYÊN VĂN tiêu đề đề gốc; để trống nếu đề không chia phần / không thấy tiêu đề nào mới kể từ câu trước.',
+    'MỖI câu tự nhận diện "loai_cau" ∈ { trac_nghiem, dung_sai, tra_loi_ngan, tu_luan } và bóc đúng cấu trúc:',
+    '- trac_nghiem (4 phương án A/B/C/D): "de_bai" = đề dẫn (KHÔNG kèm A./B./C./D.); "lua_chon" = mảng 4 nội dung phương án; "dap_an" = CHỮ CÁI đúng.',
+    '- dung_sai (đề chung + 4 mệnh đề a/b/c/d): "de_bai" = đề CHUNG; "menh_de" = mảng ĐÚNG 4 phần tử { noi_dung, dap_an ("D"|"S"), loi_giai }; để "lua_chon" trống.',
+    '- tra_loi_ngan / tu_luan: "de_bai" = toàn bộ đề; "dap_an" = kết quả (nếu có); để "lua_chon"/"menh_de" trống.',
+    '⚠ MỖI câu thêm "co_hinh" (true nếu có HÌNH VẼ/SƠ ĐỒ/ĐỒ THỊ/BẢNG BIẾN THIÊN/BẢNG XÉT DẤU cần giữ làm ảnh) và "box_hinh" = [ymin,xmin,ymax,xmax] toạ độ CHUẨN HOÁ 0–1000 ôm trọn hình (chỉ khi co_hinh=true, không thì null).',
+    'BẢNG BIẾN THIÊN / BẢNG XÉT DẤU (mũi tên ↗↘, dòng x·y′·y, dấu ∞) = BẮT BUỘC coi là HÌNH (co_hinh=true), trong de_bai chỉ ghi "[bảng biến thiên]" đúng vị trí.',
+    'CHỈ bảng SỐ LIỆU thuần mới viết LaTeX $\\begin{array}{…}…\\end{array}$ trong de_bai (không coi là hình).',
+    giaiRule(a.giaiAI),
+    FMT_RULES,
+    'Trả JSON: { "de_meta": { "nguon":"…", "nam":0, "cap":"…", "thoi_gian_phut":0, "thang_diem":0 }, "cau": [ { "loai_cau":"…", "phan_goi_y":"…", "de_bai":"…", "dap_an":"…", "lua_chon":[…], "menh_de":[…], "loi_giai":"…", "co_hinh":false, "box_hinh":null } ] }',
+  ].filter(Boolean).join('\n')
+}
+export type DeThiIngestCau = KhoIngestCau & { phanGoiY: string | null }
+export function parseDeThiIngestJson(text: string): { meta: Partial<DeThiIngestMeta>; caus: DeThiIngestCau[] } {
+  let t = text.trim(); const fence = t.match(/```(?:json)?\s*([\s\S]*?)```/i); if (fence) t = fence[1].trim()
+  let obj: any; try { obj = lenientJsonParse(t) } catch (e: any) { throw new Error('JSON không hợp lệ: ' + e.message) }
+  const arr = Array.isArray(obj) ? obj : (obj.cau ?? obj.cau_hoi ?? [])
+  if (!Array.isArray(arr)) throw new Error('Cần JSON dạng { "cau": [ … ] }.')
+  const dm = obj.de_meta ?? {}
+  const meta: Partial<DeThiIngestMeta> = {
+    nguon: dm.nguon != null && String(dm.nguon).trim() ? String(dm.nguon).trim() : null,
+    nam: Number.isFinite(Number(dm.nam)) && Number(dm.nam) > 0 ? Number(dm.nam) : null,
+    cap: dm.cap != null && String(dm.cap).trim() ? String(dm.cap).trim() : null,
+    thoiGianPhut: Number.isFinite(Number(dm.thoi_gian_phut)) && Number(dm.thoi_gian_phut) > 0 ? Number(dm.thoi_gian_phut) : null,
+    thangDiem: Number.isFinite(Number(dm.thang_diem)) && Number(dm.thang_diem) > 0 ? Number(dm.thang_diem) : null,
+  }
+  const caus: DeThiIngestCau[] = arr.filter((x: any) => x?.de_bai || x?.noi_dung).map((x: any): DeThiIngestCau => {
+    let loai = String(x.loai_cau ?? 'tu_luan').trim() as LoaiCau
+    if (!LOAI_HOP_LE.has(loai)) loai = Array.isArray(x.menh_de) && x.menh_de.length ? 'dung_sai' : Array.isArray(x.lua_chon) && x.lua_chon.length ? 'trac_nghiem' : 'tu_luan'
+    const lua_chon = Array.isArray(x.lua_chon) && x.lua_chon.length ? x.lua_chon.map(String) : null
+    let noi_dung = stripYCon(stripCauLabel(String(x.de_bai ?? x.noi_dung ?? '').trim()))
+    if (loai === 'trac_nghiem' && lua_chon) noi_dung = stripEmbeddedOpts(noi_dung)
+    const menh_de = loai === 'dung_sai' && Array.isArray(x.menh_de)
+      ? x.menh_de.slice(0, 4).map((m: any): KhoIngestMenhDe => ({ noi_dung: String(m.noi_dung ?? '').trim(), dap_an: String(m.dap_an ?? 'D').trim().toUpperCase().startsWith('S') ? 'S' : 'D', loi_giai: String(m.loi_giai ?? '').trim() || null })).filter((m: KhoIngestMenhDe) => m.noi_dung)
+      : null
+    return {
+      loai_cau: loai, noi_dung, phanGoiY: x.phan_goi_y != null && String(x.phan_goi_y).trim() ? String(x.phan_goi_y).trim() : null,
+      dap_an: x.dap_an != null && String(x.dap_an).trim() ? String(x.dap_an).trim() : null,
+      loi_giai: x.loi_giai != null && String(x.loi_giai).trim() ? stripYCon(String(x.loi_giai).trim()) : null,
+      lua_chon: loai === 'dung_sai' ? null : lua_chon,
+      menh_de,
+      coHinh: !!x.co_hinh,
+      box: Array.isArray(x.box_hinh) && x.box_hinh.length === 4 ? (x.box_hinh.map(Number) as [number, number, number, number]) : null,
+    }
+  })
+  return { meta, caus }
+}
+
 // ── PHÂN LOẠI DẠNG (grounded theo chủ đề, 1 call/lô) → { ma_dang, confidence, ma_dang_2 } ──
 export type ClassifyResult = { ma_dang: string | null; confidence: number; ma_dang_2: string | null }
 const CLASSIFY_SCHEMA = { type: 'OBJECT', properties: { ket_qua: { type: 'ARRAY', items: {
