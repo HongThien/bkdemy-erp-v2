@@ -735,10 +735,11 @@ export function buildDeThiIngestPrompt(a: { trangDau: boolean; nhieuAnh?: boolea
       : '',
     'MỖI câu thêm "stt_goc" = số thứ tự "Câu N." IN TRÊN TRANG, THEO ĐÚNG CÁCH ĐỀ GỐC ĐÁNH SỐ (có thể lặp lại/reset về nhỏ giữa các phần — đọc đúng số thật, KHÔNG tự cộng dồn/đánh số lại); để trống nếu đề không đánh số câu.',
     'MỖI câu thêm "phan_goi_y" = tiêu đề PHẦN đang thấy NGAY TRÊN câu này trong đề (vd "Phần I. Trắc nghiệm", "PHẦN II. TỰ LUẬN") — giữ NGUYÊN VĂN tiêu đề đề gốc; để trống nếu đề không chia phần / không thấy tiêu đề nào mới kể từ câu trước.',
+    '⚠⚠ RANH GIỚI CÂU (áp dụng cho MỌI loại câu, quan trọng nhất với tự luận/trả lời ngắn vì không có A/B/C/D hay mệnh đề a/b/c/d để dựa vào): 1 CÂU MỚI CHỈ bắt đầu khi thấy ĐÚNG dạng "Câu N:" hoặc "Câu N :" (N là số) NẰM Ở ĐẦU DÒNG riêng — đây là tín hiệu DUY NHẤT đáng tin để tách câu. TUYỆT ĐỐI KHÔNG tách câu mới chỉ vì thấy xuống dòng, chấm hết câu, hay chữ "câu" xuất hiện giữa dòng/giữa câu (vd "xem lại câu 3", "ở câu trên"). Nếu KHÔNG thấy "Câu N:" ở đầu dòng thì nội dung đó vẫn thuộc CÂU ĐANG BÓC (nối tiếp, không tách rời) — kể cả khi xuống dòng, kể cả lời giải dài nhiều bước.',
     'MỖI câu tự nhận diện "loai_cau" ∈ { trac_nghiem, dung_sai, tra_loi_ngan, tu_luan } và bóc đúng cấu trúc:',
-    '- trac_nghiem (4 phương án A/B/C/D): "de_bai" = đề dẫn (KHÔNG kèm A./B./C./D.); "lua_chon" = mảng 4 nội dung phương án; "dap_an" = CHỮ CÁI đúng.',
+    '- trac_nghiem: "lua_chon" PHẢI ĐÚNG 4 PHẦN TỬ — CHỈ 4 phương án gắn nhãn A./B./C./D. (hoặc A)/B)/C)/D)) NGAY SAU đề dẫn. "de_bai" = đề dẫn (KHÔNG kèm A./B./C./D.); "dap_an" = CHỮ CÁI đúng. ⚠⚠ TUYỆT ĐỐI KHÔNG lấy bất kỳ dòng nào từ LỜI GIẢI/GIẢI THÍCH (phần đứng SAU 4 phương án, thường bắt đầu bằng "Lời giải"/"Giải"/"Hướng dẫn"/dấu hiệu trình bày cách giải) làm phương án thứ 5 — lời giải luôn để riêng ở field "loi_giai", KHÔNG được lẫn vào "lua_chon" dù nó có vẻ giống 1 dòng liệt kê.',
     '- dung_sai (đề chung + 4 mệnh đề a/b/c/d): "de_bai" = đề CHUNG; "menh_de" = mảng ĐÚNG 4 phần tử { noi_dung, dap_an ("D"|"S"), loi_giai }; để "lua_chon" trống.',
-    '- tra_loi_ngan / tu_luan: "de_bai" = toàn bộ đề; "dap_an" = kết quả (nếu có); để "lua_chon"/"menh_de" trống.',
+    '- tra_loi_ngan / tu_luan: "de_bai" = toàn bộ đề (đúng ranh giới câu nói ở trên); "dap_an" = kết quả (nếu có); để "lua_chon"/"menh_de" trống.',
     '⚠ MỖI câu thêm "co_hinh" (true nếu có HÌNH VẼ/SƠ ĐỒ/ĐỒ THỊ/BẢNG BIẾN THIÊN/BẢNG XÉT DẤU cần giữ làm ảnh) và "box_hinh" = [ymin,xmin,ymax,xmax] toạ độ CHUẨN HOÁ 0–1000 ôm trọn hình (chỉ khi co_hinh=true, không thì null).',
     'BẢNG BIẾN THIÊN / BẢNG XÉT DẤU (mũi tên ↗↘, dòng x·y′·y, dấu ∞) = BẮT BUỘC coi là HÌNH (co_hinh=true), trong de_bai chỉ ghi "[bảng biến thiên]" đúng vị trí.',
     'CHỈ bảng SỐ LIỆU thuần mới viết LaTeX $\\begin{array}{…}…\\end{array}$ trong de_bai (không coi là hình).',
@@ -764,7 +765,10 @@ export function parseDeThiIngestJson(text: string): { meta: Partial<DeThiIngestM
   const caus: DeThiIngestCau[] = arr.filter((x: any) => x?.de_bai || x?.noi_dung).map((x: any): DeThiIngestCau => {
     let loai = String(x.loai_cau ?? 'tu_luan').trim() as LoaiCau
     if (!LOAI_HOP_LE.has(loai)) loai = Array.isArray(x.menh_de) && x.menh_de.length ? 'dung_sai' : Array.isArray(x.lua_chon) && x.lua_chon.length ? 'trac_nghiem' : 'tu_luan'
-    const lua_chon = Array.isArray(x.lua_chon) && x.lua_chon.length ? x.lua_chon.map(String) : null
+    // ⚠ CHỈ ĐÚNG 4 phương án — cắt cứng ở code (không tin riêng prompt): AI thỉnh thoảng lẫn 1 dòng
+    // lời giải vào cuối mảng lua_chon (thành "phương án thứ 5") — .slice(0,4) chặn tận gốc, giống cách
+    // menh_de đúng/sai đã cắt cứng ở đây từ trước.
+    const lua_chon = Array.isArray(x.lua_chon) && x.lua_chon.length ? x.lua_chon.slice(0, 4).map(String) : null
     let noi_dung = stripYCon(stripCauLabel(String(x.de_bai ?? x.noi_dung ?? '').trim()))
     if (loai === 'trac_nghiem' && lua_chon) noi_dung = stripEmbeddedOpts(noi_dung)
     const menh_de = loai === 'dung_sai' && Array.isArray(x.menh_de)
