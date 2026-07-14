@@ -727,9 +727,9 @@ export function buildDeThiIngestPrompt(a: { trangDau: boolean; chuan?: boolean; 
       ? '⚠ ĐÂY LÀ TRANG ĐẦU đề thi — đọc PHẦN HEADER (tên trường/sở ra đề, năm học/năm thi, cấp/kỳ thi, thời gian làm bài (phút), thang điểm) → điền vào "de_meta". Để trống field nào không thấy, KHÔNG bịa.'
       : '(Không phải trang đầu — để "de_meta" trống/bỏ qua.)',
     a.chuan
-      ? '⚠⚠ ĐỀ NÀY CÓ CẤU TRÚC CHUẨN CỐ ĐỊNH, ĐÚNG 22 CÂU: Câu 1–12 = TRẮC NGHIỆM (Phần I), Câu 13–16 = ĐÚNG/SAI (Phần II, mỗi câu 1 đề chung + 4 mệnh đề a/b/c/d), Câu 17–22 = TRẢ LỜI NGẮN (Phần III). Dùng ĐÚNG số thứ tự "Câu N." in trên trang để xác định câu đó thuộc loại nào theo cấu trúc này — ĐỪNG tự đoán loại câu khác đi trừ khi số thứ tự không khớp mốc nào ở trên.'
+      ? '⚠⚠ ĐỀ NÀY CÓ CẤU TRÚC CHUẨN CỐ ĐỊNH, ĐÚNG 3 PHẦN THEO THỨ TỰ: Phần I = TRẮC NGHIỆM (12 câu, 4 phương án A/B/C/D), Phần II = ĐÚNG/SAI (4 câu, mỗi câu 1 đề chung + 4 mệnh đề a/b/c/d), Phần III = TRẢ LỜI NGẮN (6 câu). ⚠ MỖI PHẦN TỰ ĐÁNH SỐ CÂU RIÊNG, BẮT ĐẦU LẠI TỪ "Câu 1" khi sang phần mới (vd hết "Câu 12" của Trắc nghiệm thì Đúng/Sai bắt đầu lại từ "Câu 1", KHÔNG PHẢI "Câu 13") — đọc ĐÚNG số in trên trang, ĐỪNG tự cộng dồn số qua các phần. Dùng đúng cấu trúc này để xác định câu đang bóc thuộc loại nào — ĐỪNG tự đoán khác đi trừ khi nội dung rõ ràng không khớp.'
       : '',
-    'MỖI câu thêm "stt_goc" = số thứ tự "Câu N." IN TRÊN TRANG (đọc đúng số gốc — KHÔNG tự đánh số lại); để trống nếu đề không đánh số câu.',
+    'MỖI câu thêm "stt_goc" = số thứ tự "Câu N." IN TRÊN TRANG, THEO ĐÚNG CÁCH ĐỀ GỐC ĐÁNH SỐ (có thể lặp lại/reset về nhỏ giữa các phần — đọc đúng số thật, KHÔNG tự cộng dồn/đánh số lại); để trống nếu đề không đánh số câu.',
     'MỖI câu thêm "phan_goi_y" = tiêu đề PHẦN đang thấy NGAY TRÊN câu này trong đề (vd "Phần I. Trắc nghiệm", "PHẦN II. TỰ LUẬN") — giữ NGUYÊN VĂN tiêu đề đề gốc; để trống nếu đề không chia phần / không thấy tiêu đề nào mới kể từ câu trước.',
     'MỖI câu tự nhận diện "loai_cau" ∈ { trac_nghiem, dung_sai, tra_loi_ngan, tu_luan } và bóc đúng cấu trúc:',
     '- trac_nghiem (4 phương án A/B/C/D): "de_bai" = đề dẫn (KHÔNG kèm A./B./C./D.); "lua_chon" = mảng 4 nội dung phương án; "dap_an" = CHỮ CÁI đúng.',

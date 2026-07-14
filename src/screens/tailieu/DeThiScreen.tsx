@@ -313,19 +313,19 @@ function reviewItemPatch(p: Partial<ReviewItem>): Partial<BItem> {
   if (p.anhDapAn !== undefined) q.anhDapAn = p.anhDapAn
   return q
 }
-// Cấu trúc "đề chuẩn" cố định (Thùy chốt 07-14): 12 câu đầu Trắc nghiệm, 4 câu tiếp Đúng/Sai, 6 câu
-// cuối Trả lời ngắn (22 câu). Dùng để override PHẦN theo VỊ TRÍ (sau khi sort theo sttGoc) — CHỈ đè
-// tên phần/nhóm hiển thị, KHÔNG đè loai_cau/hình dạng nội dung đã bóc (tránh ép nhãn sai hình dạng).
-const CHUAN_PHAN = [
-  { den: 12, ten: 'Phần I. Trắc nghiệm' },
-  { den: 16, ten: 'Phần II. Đúng/Sai' },
-  { den: 22, ten: 'Phần III. Trả lời ngắn' },
-]
-const CHUAN_TONG = 22
+// Cấu trúc "đề chuẩn" cố định (Thùy chốt 07-14): 3 phần THEO THỨ TỰ Trắc nghiệm (12 câu) → Đúng/Sai
+// (4 câu) → Trả lời ngắn (6 câu). ⚠ Thùy 07-14 (tiếp): MỖI PHẦN đánh số câu RIÊNG, reset về "Câu 1" khi
+// sang phần mới (hết Câu 12 phần Trắc nghiệm → phần Đúng/Sai bắt đầu lại Câu 1, KHÔNG phải Câu 13) —
+// vì vậy KHÔNG sort theo stt_goc TOÀN ĐỀ (số sẽ lặp lại, sort sẽ xáo trộn sai thứ tự). Thay vào đó: GIỮ
+// NGUYÊN thứ tự bóc (đã đúng thứ tự trang/xuất hiện) + dùng chính sự kiện "số thứ tự QUAY VỀ NHỎ HƠN
+// câu liền trước" làm TÍN HIỆU sang phần mới (đúng cách V1 đã làm, theo Thùy "tương đối ổn").
+const CHUAN_PHAN = ['Phần I. Trắc nghiệm', 'Phần II. Đúng/Sai', 'Phần III. Trả lời ngắn']
+const CHUAN_SO_CAU = [12, 4, 6]
 // Bóc TOÀN BỘ file (PDF nhiều trang / 1 ảnh) → { meta (chỉ từ trang đầu), items, canhBao } — dùng chung.
-// chuan=true: prompt được cho biết trước cấu trúc 12+4+6 (bóc đúng NGAY TỪ ĐẦU thay vì đoán mù từng
-// trang) + sort câu theo sttGoc (an toàn hơn tin thứ tự trang xử lý) + ghi đè tên PHẦN theo vị trí nếu
-// tổng ĐÚNG 22 câu; sai số → giữ nguyên AI tự đoán + trả canhBao để review hiện cảnh báo.
+// chuan=true: prompt được cho biết trước cấu trúc 3 phần cố định (bóc đúng NGAY TỪ ĐẦU thay vì đoán mù
+// từng trang) + gán PHẦN theo tín hiệu "reset số thứ tự" (không sort, giữ đúng thứ tự bóc) — CHỈ đè
+// tên phần/nhóm hiển thị, KHÔNG đè loai_cau/hình dạng nội dung đã bóc (tránh ép nhãn sai hình dạng).
+// Số câu mỗi phần lệch khỏi 12/4/6 → vẫn giữ kết quả gán được, chỉ trả canhBao để review tự kiểm lại.
 async function bocDeTuFile(file: File, coHinh: boolean, chuan: boolean, onProgress?: (msg: string) => void): Promise<{ meta: Partial<DeThiIngestMeta>; items: BItem[]; canhBao: string | null }> {
   const b64 = await readB64(file)
   const canvases = await fileToCanvases(file.type, b64)
@@ -354,11 +354,16 @@ async function bocDeTuFile(file: File, coHinh: boolean, chuan: boolean, onProgre
   }
   let canhBao: string | null = null
   if (chuan) {
-    items.sort((a, b) => (a.sttGoc ?? 999) - (b.sttGoc ?? 999))
-    if (items.length === CHUAN_TONG) {
-      items.forEach((it, i) => { it.phanGoiY = CHUAN_PHAN.find((p) => i < p.den)!.ten })
-    } else {
-      canhBao = `⚠ Bóc được ${items.length} câu, khác ${CHUAN_TONG} câu chuẩn (12 Trắc nghiệm + 4 Đúng/Sai + 6 Trả lời ngắn) — kiểm tra kỹ số câu/thứ tự trước khi gán dạng.`
+    let phanIdx = 0, prevStt: number | null = null
+    const dem = [0, 0, 0]
+    for (const it of items) {
+      if (prevStt != null && it.sttGoc != null && it.sttGoc <= prevStt) phanIdx = Math.min(phanIdx + 1, CHUAN_PHAN.length - 1) // số reset/giảm → sang phần mới
+      it.phanGoiY = CHUAN_PHAN[phanIdx]
+      dem[phanIdx]++
+      if (it.sttGoc != null) prevStt = it.sttGoc
+    }
+    if (phanIdx < CHUAN_PHAN.length - 1 || dem.some((n, i) => n !== CHUAN_SO_CAU[i])) {
+      canhBao = `⚠ Bóc được ${dem.join('/')} câu (Trắc nghiệm/Đúng-Sai/Trả lời ngắn), khác chuẩn 12/4/6 — kiểm tra kỹ số câu/ranh giới phần trước khi gán dạng.`
     }
   }
   return { meta, items, canhBao }
