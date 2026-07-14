@@ -722,29 +722,30 @@ export const DETHI_INGEST_SCHEMA = { type: 'OBJECT', properties: {
   } },
 }, required: ['cau'] }
 export function buildDeThiIngestPrompt(a: { trangDau: boolean; nhieuAnh?: boolean; chuan?: boolean; giaiAI?: boolean }): string {
+  // ⚠ Prompt đợt trước dồn quá nhiều rule "⚠⚠" chồng nhau (cấu trúc chuẩn, ranh giới câu, TN 4 đáp
+  // án, bảng biến thiên...) → Thùy báo AI bị NHIỄU, quay lại nhận diện SAI cả 12 câu trắc nghiệm vốn
+  // đã đúng trước đó (prompt càng dài/nhấn mạnh dồn dập càng dễ loãng, các mô hình AI đều có giới hạn
+  // này). Viết GỌN LẠI: mỗi ý 1 câu, bỏ lặp, KHÔNG lạm dụng ⚠⚠ (chỉ giữ cho đúng 1 rule quan trọng
+  // nhất — ranh giới câu), rule TN/bảng biến thiên gộp về 1 chỗ mỗi loại thay vì rải 2-3 dòng riêng.
+  const doanBangBienThien = 'Hình vẽ/sơ đồ/đồ thị/bảng biến thiên/bảng xét dấu → "co_hinh"=true, "box_hinh"=[ymin,xmin,ymax,xmax] (0–1000) ôm trọn vùng đó, "de_bai" chỉ ghi "[bảng biến thiên]" đúng vị trí. Bảng biến thiên/xét dấu thường KHÔNG có khung viền (chỉ là đường kẻ + số + mũi tên nổi trên nền trắng) — vẫn ước lượng box_hinh theo rìa ngoài của đường kẻ/số/mũi tên, đừng bỏ qua chỉ vì không có khung. Sau "[bảng biến thiên]", tiếp tục đọc và giữ nguyên phần câu hỏi đứng NGAY SAU trong cùng "de_bai" (vd "Tính giá trị lớn nhất..."), đừng để mất.'
   return [
     a.nhieuAnh
-      ? 'Đây là NHIỀU ẢNH — các TRANG LIÊN TIẾP của 1 đề thi, theo ĐÚNG thứ tự đưa vào (ảnh 0 = trang đầu lượt, ảnh 1 = trang kế tiếp…). Đọc LẦN LƯỢT từng ảnh theo thứ tự, TÁCH thành từng CÂU theo thứ tự xuất hiện xuyên suốt các ảnh (mỗi bài = 1 câu, KHÔNG tách ý a/b/c thành nhiều câu, KHÔNG trộn lẫn nội dung 2 ảnh liền kề vào 1 câu).'
-      : 'Đây là ẢNH 1 TRANG đề thi. TÁCH thành từng CÂU theo thứ tự xuất hiện (mỗi bài = 1 câu, KHÔNG tách ý a/b/c thành nhiều câu).',
+      ? 'Đây là NHIỀU ẢNH — các trang liên tiếp của 1 đề thi theo đúng thứ tự đưa vào. Đọc lần lượt từng ảnh, tách thành từng câu theo thứ tự xuất hiện xuyên suốt các ảnh, không trộn nội dung 2 ảnh liền kề vào 1 câu.'
+      : 'Đây là ảnh 1 trang đề thi.',
     a.trangDau
-      ? '⚠ ĐÂY LÀ TRANG ĐẦU đề thi — đọc PHẦN HEADER (tên trường/sở ra đề, năm học/năm thi, cấp/kỳ thi, thời gian làm bài (phút), thang điểm) → điền vào "de_meta". Để trống field nào không thấy, KHÔNG bịa.'
-      : '(Không phải trang đầu — để "de_meta" trống/bỏ qua.)',
-    a.nhieuAnh ? 'MỖI câu thêm "anh_idx" = số thứ tự ẢNH (0-based, xem thứ tự ở trên) mà câu này xuất hiện — dùng để xác định đúng trang khi cắt hình minh hoạ.' : '',
+      ? 'Đây là trang đầu — đọc phần header (trường/sở, năm học, cấp/kỳ thi, thời gian làm bài, thang điểm) vào "de_meta", để trống field không thấy.'
+      : '(Không phải trang đầu — để "de_meta" trống.)',
     a.chuan
-      ? '⚠⚠ ĐỀ NÀY CÓ CẤU TRÚC CHUẨN CỐ ĐỊNH, ĐÚNG 3 PHẦN THEO THỨ TỰ: Phần I = TRẮC NGHIỆM (12 câu, 4 phương án A/B/C/D), Phần II = ĐÚNG/SAI (4 câu, mỗi câu 1 đề chung + 4 mệnh đề a/b/c/d), Phần III = TRẢ LỜI NGẮN (6 câu). ⚠ MỖI PHẦN TỰ ĐÁNH SỐ CÂU RIÊNG, BẮT ĐẦU LẠI TỪ "Câu 1" khi sang phần mới (vd hết "Câu 12" của Trắc nghiệm thì Đúng/Sai bắt đầu lại từ "Câu 1", KHÔNG PHẢI "Câu 13") — đọc ĐÚNG số in trên trang, ĐỪNG tự cộng dồn số qua các phần. Dùng đúng cấu trúc này để xác định câu đang bóc thuộc loại nào — ĐỪNG tự đoán khác đi trừ khi nội dung rõ ràng không khớp.'
+      ? 'Đề có cấu trúc cố định, 3 phần theo thứ tự: Phần I Trắc nghiệm (12 câu) → Phần II Đúng/Sai (4 câu) → Phần III Trả lời ngắn (6 câu). Mỗi phần tự đánh số câu riêng, Phần II/III bắt đầu lại từ "Câu 1" (không cộng dồn từ phần trước) — đọc đúng số in trên trang.'
       : '',
-    'MỖI câu thêm "stt_goc" = số thứ tự "Câu N." IN TRÊN TRANG, THEO ĐÚNG CÁCH ĐỀ GỐC ĐÁNH SỐ (có thể lặp lại/reset về nhỏ giữa các phần — đọc đúng số thật, KHÔNG tự cộng dồn/đánh số lại); để trống nếu đề không đánh số câu.',
-    'MỖI câu thêm "phan_goi_y" = tiêu đề PHẦN đang thấy NGAY TRÊN câu này trong đề (vd "Phần I. Trắc nghiệm", "PHẦN II. TỰ LUẬN") — giữ NGUYÊN VĂN tiêu đề đề gốc; để trống nếu đề không chia phần / không thấy tiêu đề nào mới kể từ câu trước.',
-    '⚠⚠ RANH GIỚI CÂU (áp dụng cho MỌI loại câu, quan trọng nhất với tự luận/trả lời ngắn vì không có A/B/C/D hay mệnh đề a/b/c/d để dựa vào): 1 CÂU MỚI CHỈ bắt đầu khi thấy ĐÚNG dạng "Câu N:" hoặc "Câu N :" (N là số) NẰM Ở ĐẦU DÒNG riêng — đây là tín hiệu DUY NHẤT đáng tin để tách câu. TUYỆT ĐỐI KHÔNG tách câu mới chỉ vì thấy xuống dòng, chấm hết câu, hay chữ "câu" xuất hiện giữa dòng/giữa câu (vd "xem lại câu 3", "ở câu trên"). Nếu KHÔNG thấy "Câu N:" ở đầu dòng thì nội dung đó vẫn thuộc CÂU ĐANG BÓC (nối tiếp, không tách rời) — kể cả khi xuống dòng, kể cả lời giải dài nhiều bước.',
-    'MỖI câu tự nhận diện "loai_cau" ∈ { trac_nghiem, dung_sai, tra_loi_ngan, tu_luan } và bóc đúng cấu trúc:',
-    '- trac_nghiem: "lua_chon" PHẢI ĐÚNG 4 PHẦN TỬ — CHỈ 4 phương án gắn nhãn A./B./C./D. (hoặc A)/B)/C)/D)) NGAY SAU đề dẫn. "de_bai" = đề dẫn (KHÔNG kèm A./B./C./D.); "dap_an" = CHỮ CÁI đúng. ⚠⚠ TUYỆT ĐỐI KHÔNG lấy bất kỳ dòng nào từ LỜI GIẢI/GIẢI THÍCH (phần đứng SAU 4 phương án, thường bắt đầu bằng "Lời giải"/"Giải"/"Hướng dẫn"/dấu hiệu trình bày cách giải) làm phương án thứ 5 — lời giải luôn để riêng ở field "loi_giai", KHÔNG được lẫn vào "lua_chon" dù nó có vẻ giống 1 dòng liệt kê.',
-    '- dung_sai (đề chung + 4 mệnh đề a/b/c/d): "de_bai" = đề CHUNG; "menh_de" = mảng ĐÚNG 4 phần tử { noi_dung, dap_an ("D"|"S"), loi_giai }; để "lua_chon" trống.',
-    '- tra_loi_ngan / tu_luan: "de_bai" = toàn bộ đề (đúng ranh giới câu nói ở trên); "dap_an" = kết quả (nếu có); để "lua_chon"/"menh_de" trống.',
-    '⚠ MỖI câu thêm "co_hinh" (true nếu có HÌNH VẼ/SƠ ĐỒ/ĐỒ THỊ/BẢNG BIẾN THIÊN/BẢNG XÉT DẤU cần giữ làm ảnh) và "box_hinh" = [ymin,xmin,ymax,xmax] toạ độ CHUẨN HOÁ 0–1000 ôm trọn hình (chỉ khi co_hinh=true, không thì null).',
-    'BẢNG BIẾN THIÊN / BẢNG XÉT DẤU (mũi tên ↗↘, dòng x·y′·y, dấu ∞) = BẮT BUỘC coi là HÌNH (co_hinh=true), trong de_bai chỉ ghi "[bảng biến thiên]" đúng vị trí.',
-    '⚠⚠ BẢNG BIẾN THIÊN/BẢNG XÉT DẤU THƯỜNG KHÔNG CÓ KHUNG/VIỀN BAO QUANH (chỉ là các đường kẻ ngang dọc + số + mũi tên nổi trên nền trắng, KHÔNG có hình chữ nhật bao ngoài như hình vẽ thường có) — đừng đi tìm khung có sẵn để crop, mà tự ƯỚC LƯỢNG box_hinh ôm sát theo RÌA NGOÀI CÙNG của các đường kẻ/số/mũi tên (kể cả không có viền, vẫn phải trả box_hinh hợp lý, KHÔNG bỏ qua/không để co_hinh=false chỉ vì thiếu khung).',
-    '⚠⚠ SAU KHI CHÈN "[bảng biến thiên]", BẮT BUỘC tiếp tục đọc và giữ NGUYÊN VẸN toàn bộ câu hỏi/yêu cầu xuất hiện NGAY SAU bảng biến thiên trong CÙNG de_bai (vd "Tính giá trị lớn nhất của...") — đây vẫn là 1 phần của câu đang bóc, KHÔNG được bỏ sót, KHÔNG được coi nhầm là đã hết câu, KHÔNG được gộp lẫn vào box_hinh.',
-    'CHỈ bảng SỐ LIỆU thuần mới viết LaTeX $\\begin{array}{…}…\\end{array}$ trong de_bai (không coi là hình).',
+    '⚠ Tách đề thành từng câu theo thứ tự xuất hiện, mỗi bài = 1 câu (không tách ý a/b/c thành nhiều câu). RANH GIỚI CÂU: 1 câu mới CHỈ bắt đầu khi thấy "Câu N:" ở ĐẦU DÒNG riêng — không tách chỉ vì xuống dòng hay chữ "câu" xuất hiện giữa câu (vd "xem lại câu 3"); nếu không thấy "Câu N:" đầu dòng thì nội dung vẫn thuộc câu đang bóc.',
+    `Mỗi câu ghi "stt_goc" = số N đọc được ở trên (có thể reset về nhỏ giữa các phần, để trống nếu không đánh số) và "phan_goi_y" = tiêu đề phần đang thấy (giữ nguyên văn, để trống nếu không rõ)${a.nhieuAnh ? '; thêm "anh_idx" = số thứ tự ảnh (0-based) chứa câu này (chỉ cần khi lượt có nhiều ảnh)' : ''}.`,
+    'Xác định "loai_cau" ∈ { trac_nghiem, dung_sai, tra_loi_ngan, tu_luan } và bóc theo đúng cấu trúc:',
+    '- trac_nghiem: "de_bai" = đề dẫn (không kèm A/B/C/D); "lua_chon" = ĐÚNG 4 phương án A/B/C/D ngay sau đề dẫn; "dap_an" = chữ cái đúng. Lời giải/giải thích đứng sau 4 phương án luôn để riêng ở "loi_giai" — KHÔNG lấy 1 dòng trong đó làm phương án thứ 5.',
+    '- dung_sai: "de_bai" = đề chung; "menh_de" = ĐÚNG 4 phần tử { noi_dung, dap_an ("D"|"S"), loi_giai }; để "lua_chon" trống.',
+    '- tra_loi_ngan / tu_luan: "de_bai" = toàn bộ đề; "dap_an" = kết quả (nếu có); để "lua_chon"/"menh_de" trống.',
+    doanBangBienThien,
+    'Bảng SỐ LIỆU thuần (không mũi tên/biến thiên) viết LaTeX $\\begin{array}{…}…\\end{array}$ trong de_bai, không coi là hình.',
     giaiRule(a.giaiAI),
     FMT_RULES,
     'Trả JSON: { "de_meta": { "nguon":"…", "nam":0, "cap":"…", "thoi_gian_phut":0, "thang_diem":0 }, "cau": [ { "loai_cau":"…", "stt_goc":0, "phan_goi_y":"…", "de_bai":"…", "dap_an":"…", "lua_chon":[…], "menh_de":[…], "loi_giai":"…", "co_hinh":false, "box_hinh":null, "anh_idx":0 } ] }',
