@@ -332,28 +332,28 @@ function Legend() {
 
 // ── RAW · THEO HOẠT ĐỘNG: mỗi buổi TÁCH thành nhiều thẻ (ET/BTVN/Chấm bài/Đánh giá riêng biệt) ──
 // Thùy: "ET 22/06 là 1 card, BTVN 22/06 card khác. Click card nào chỉ hiện đúng hoạt động đó" → đỡ click.
-type ActKey = 'ingame' | 'et' | 'danhgia' | 'btvn' | 'mt'
-const ACTS: { key: ActKey; flag: 'chamBai' | 'et' | 'danhGia' | 'btvn' | 'mt'; tab: TabKey; label: string; pill: string; ring: string }[] = [
+export type ActKey = 'ingame' | 'et' | 'danhgia' | 'btvn' | 'mt'
+export const ACTS: { key: ActKey; flag: 'chamBai' | 'et' | 'danhGia' | 'btvn' | 'mt'; tab: TabKey; label: string; pill: string; ring: string }[] = [
   { key: 'ingame', flag: 'chamBai', tab: 'ingame', label: 'Chấm bài', pill: 'bg-sky-100 text-sky-700', ring: 'border-sky-200' },
   { key: 'et', flag: 'et', tab: 'et', label: 'ET', pill: 'bg-indigo-100 text-indigo-700', ring: 'border-indigo-200' },
   { key: 'danhgia', flag: 'danhGia', tab: 'danhgia', label: 'Đánh giá', pill: 'bg-violet-100 text-violet-700', ring: 'border-violet-200' },
   { key: 'btvn', flag: 'btvn', tab: 'btvn', label: 'BTVN', pill: 'bg-amber-100 text-amber-700', ring: 'border-amber-200' },
   { key: 'mt', flag: 'mt', tab: 'mt', label: 'MT', pill: 'bg-rose-100 text-rose-700', ring: 'border-rose-200' },
 ]
-type RawLoai = 'all' | ActKey
-const LOAI_TAB: { key: RawLoai; label: string }[] = [
+export type RawLoai = 'all' | ActKey
+export const LOAI_TAB: { key: RawLoai; label: string }[] = [
   { key: 'all', label: 'Toàn bộ' }, { key: 'ingame', label: 'Chấm bài' }, { key: 'et', label: 'ET' },
   { key: 'danhgia', label: 'Đánh giá' }, { key: 'btvn', label: 'BTVN' }, { key: 'mt', label: 'MT' },
 ]
-const BUOI_LOAI_LABEL: Record<string, string> = { thuong: 'Buổi thường', bu: 'Buổi bù', bo_tro_yeu: 'Bổ trợ yếu', bo_tro_duoi: 'Bổ trợ đuổi' }
+export const BUOI_LOAI_LABEL: Record<string, string> = { thuong: 'Buổi thường', bu: 'Buổi bù', bo_tro_yeu: 'Bổ trợ yếu', bo_tro_duoi: 'Bổ trợ đuổi' }
 // Ngày tách 2 phần để làm NỔI BẬT ở cuối card (ngày to · thứ nhỏ).
-const fmtNgayParts = (iso: string) => {
+export const fmtNgayParts = (iso: string) => {
   const d = new Date(iso + 'T00:00:00')
   if (isNaN(+d)) return { thu: '', date: iso }
   return { thu: d.toLocaleDateString('vi-VN', { weekday: 'long' }), date: d.toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' }) }
 }
 
-type ActCard = { key: string; b: BuoiActivity; act: typeof ACTS[number] }
+export type ActCard = { key: string; b: BuoiActivity; act: typeof ACTS[number] }
 
 // LÕI lịch sử hoạt động: nạp buổi theo scope → tách thẻ/hoạt động + toggle loại + popup read-only.
 // Dùng CHUNG: tab "Theo buổi" (scope LỚP) và sub-tab "Lịch sử hoạt động" của 1 HS (scope hocSinhId).

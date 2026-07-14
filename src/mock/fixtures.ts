@@ -106,6 +106,7 @@ export const adminLeaves: AdminLeaf[] = [
 
   // ── QUẢN LÝ CHẤT LƯỢNG: đo lường kết quả học tập (sẽ break ra nhiều nhánh ở đây) ──
   { id: 'ketqua',      nhom: 'Quản lý chất lượng', ten: 'Kết quả học tập',    founderOnly: false }, // mastery (HS × dạng) suy động
+  { id: 'hoctap',      nhom: 'Quản lý chất lượng', ten: 'Quản lý học tập',    founderOnly: false }, // truy cập ET/MT/BTVN/Đánh giá/Chấm bài riêng, tách khỏi luồng buổi học
   { id: 'duyetcham',   nhom: 'Quản lý chất lượng', ten: 'Duyệt chấm online',  founderOnly: false }, // review trả-lời-ngắn: chấp nhận đáp án + backfill
 
   // ── CORE TEAM: nhân sự/tổ chức/vận hành nội bộ ──
