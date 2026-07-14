@@ -325,23 +325,33 @@ const CHUAN_SO_CAU = [12, 4, 6]
 // dễ vượt maxOutputTokens → Gemini CẮT giữa chừng, JSON hỏng — "AI bị CẮT (JSON dở)"). LUÔN gửi ẢNH
 // TỪNG TRANG đã render (không còn nhánh gửi NGUYÊN FILE GỐC khi tắt "Có hình" — đó chính là nguồn bug
 // cũ: 1 lệnh ôm NGUYÊN file nhiều trang). `coHinh` giờ CHỈ còn ý nghĩa "có cắt hình minh hoạ hay không".
+// ⚠ Thùy 07-14 vòng sau báo lại: "Bóc ảnh khá tệ — không đúng phạm vi, sai câu, không nhận đáp án",
+// tệ hơn hẳn NhapKhoScreen (cũng bóc-ảnh-từ-PDF nhưng LUÔN 1 trang/1 ảnh/1 lệnh Gemini, không bao giờ
+// gộp nhiều ảnh 1 lệnh). Gộp NHIỀU ảnh vào 1 lệnh (nhieuAnh=true) buộc Gemini vừa định vị bounding-box
+// vừa gán đúng câu/ảnh (anh_idx) CÙNG LÚC trên nhiều ảnh — khó hơn hẳn 1-ảnh-1-lệnh, và rõ ràng kéo
+// theo cả chất lượng dap_an/loai_cau xuống (không chỉ riêng phần cắt hình). Batch nhiều trang CHỈ có
+// lợi cho câu hỏi thuần text (giảm số lệnh gọi, tránh MAX_TOKENS) — khi cần cắt hình chính xác, batch
+// gây hại nhiều hơn lợi. Sửa: coHinh=true → BẮT BUỘC 1 trang/lượt (giống hệt NhapKhoScreen, đã chứng
+// minh ổn định); coHinh=false (đề thuần text) → vẫn giữ batch ≤BATCH_TRANG trang để tránh MAX_TOKENS.
 const BATCH_TRANG = 6
 // Bóc TOÀN BỘ file (PDF nhiều trang / 1 ảnh) → { meta (chỉ từ trang đầu), items, canhBao } — dùng chung.
 // chuan=true: prompt được cho biết trước cấu trúc 3 phần cố định (bóc đúng NGAY TỪ ĐẦU thay vì đoán mù
 // từng trang) + gán PHẦN theo tín hiệu "reset số thứ tự" (không sort, giữ đúng thứ tự bóc) — CHỈ đè
 // tên phần/nhóm hiển thị, KHÔNG đè loai_cau/hình dạng nội dung đã bóc (tránh ép nhãn sai hình dạng).
 // Số câu mỗi phần lệch khỏi 12/4/6 → vẫn giữ kết quả gán được, chỉ trả canhBao để review tự kiểm lại.
-// Mỗi LƯỢT (≤BATCH_TRANG trang) bọc try/catch RIÊNG — 1 lượt lỗi KHÔNG làm mất kết quả các lượt khác
-// đã bóc được (Thùy: "cần 1 cơ chế đệm để phân ra... rồi ghép lại sau" — tự động trong CÙNG 1 lần
-// upload, không cần tự cắt file/upload lại) → lượt lỗi được liệt kê trong canhBao để tự bổ sung sau.
+// Mỗi LƯỢT (≤BATCH_TRANG trang, hoặc đúng 1 trang khi coHinh — xem ghi chú BATCH_TRANG ở trên) bọc
+// try/catch RIÊNG — 1 lượt lỗi KHÔNG làm mất kết quả các lượt khác đã bóc được (Thùy: "cần 1 cơ chế
+// đệm để phân ra... rồi ghép lại sau" — tự động trong CÙNG 1 lần upload, không cần tự cắt file/upload
+// lại) → lượt lỗi được liệt kê trong canhBao để tự bổ sung sau.
 async function bocDeTuFile(file: File, coHinh: boolean, chuan: boolean, onProgress?: (msg: string) => void): Promise<{ meta: Partial<DeThiIngestMeta>; items: BItem[]; canhBao: string | null }> {
   const b64 = await readB64(file)
   const canvases = await fileToCanvases(file.type, b64)
   const items: BItem[] = []
   let meta: Partial<DeThiIngestMeta> = {}
   const loiLuot: string[] = []
-  for (let start = 0; start < canvases.length; start += BATCH_TRANG) {
-    const end = Math.min(start + BATCH_TRANG, canvases.length)
+  const batchSize = coHinh ? 1 : BATCH_TRANG
+  for (let start = 0; start < canvases.length; start += batchSize) {
+    const end = Math.min(start + batchSize, canvases.length)
     onProgress?.(`Đang bóc trang ${start + 1}–${end}/${canvases.length}…`)
     const nhieuAnh = end - start > 1
     try {
@@ -369,16 +379,21 @@ async function bocDeTuFile(file: File, coHinh: boolean, chuan: boolean, onProgre
   if (!items.length && loiLuot.length) throw new Error(loiLuot.join(' · '))
   let canhBao: string | null = null
   if (chuan) {
+    // ⚠ 07-14 test thật (script self-test, xem scripts/test-dethi-ingest.ts) phát hiện: 1 file PDF thật
+    // Thùy dùng KHÔNG PHẢI 1 đề — là NHIỀU đề mini nối tiếp (mỗi đề tự có đủ 12 TN+4 ĐS+6 TLN), stt_goc
+    // reset LẶP LẠI nhiều lần xuyên suốt file. Bản cũ dùng Math.min(...) NEO CỨNG ở "Phần III" mãi mãi
+    // sau lần reset đầu tiên → toàn bộ câu của các đề mini sau bị gán sai nhãn phần. Sửa: mỗi lần reset
+    // XOAY VÒNG về phần kế tiếp (cả khi đã ở "Phần III" thì quay lại "Phần I" — đúng ý mở đề mini MỚI).
     let phanIdx = 0, prevStt: number | null = null
     const dem = [0, 0, 0]
     for (const it of items) {
-      if (prevStt != null && it.sttGoc != null && it.sttGoc <= prevStt) phanIdx = Math.min(phanIdx + 1, CHUAN_PHAN.length - 1) // số reset/giảm → sang phần mới
+      if (prevStt != null && it.sttGoc != null && it.sttGoc <= prevStt) phanIdx = (phanIdx + 1) % CHUAN_PHAN.length // số reset/giảm → sang phần kế (xoay vòng)
       it.phanGoiY = CHUAN_PHAN[phanIdx]
       dem[phanIdx]++
       if (it.sttGoc != null) prevStt = it.sttGoc
     }
-    if (phanIdx < CHUAN_PHAN.length - 1 || dem.some((n, i) => n !== CHUAN_SO_CAU[i])) {
-      canhBao = `⚠ Bóc được ${dem.join('/')} câu (Trắc nghiệm/Đúng-Sai/Trả lời ngắn), khác chuẩn 12/4/6 — kiểm tra kỹ số câu/ranh giới phần trước khi gán dạng.`
+    if (dem.some((n, i) => n !== CHUAN_SO_CAU[i])) {
+      canhBao = `⚠ Bóc được ${dem.join('/')} câu (Trắc nghiệm/Đúng-Sai/Trả lời ngắn), khác chuẩn 12/4/6 — kiểm tra kỹ số câu/ranh giới phần trước khi gán dạng (file có thể gồm NHIỀU đề mini nối tiếp).`
     }
   }
   if (loiLuot.length) {
