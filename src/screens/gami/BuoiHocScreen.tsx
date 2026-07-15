@@ -43,6 +43,11 @@ export default function BuoiHocScreen() {
   const me = useStore((s) => s.me)
   const laAdmin = !!useStore((s) => s.quyen)?.laAdmin
   const myMons = me?.mons ?? []
+  // Team ops điểm danh LIÊN MÔN (spine vận hành) — KHÔNG được quyết bởi `nhan_su_mon` (đó là chiều
+  // scope④ gate KHO/tài liệu cho GV/TA, khác hẳn). Ops được backfill `nhan_su_mon='Toán'` mặc định
+  // (06-29, cho MỌI nhân sự) vẫn phải thấy hết — suy trực tiếp từ biên chế team, giống `opsToanHe`
+  // ở nhansu.ts `getMyScope()` (Thùy báo lỗi 07-15: lớp KHTN biến mất khỏi Buổi học của ops).
+  const laOps = (me?.teams ?? []).some((t) => t.ma === 'ops')
   // OPS/người ngoài lớp không có việc "chấm bài như TA" — chỉ GV/TG của CHÍNH lớp đó (hoặc admin) mới
   // thấy đủ 4 tab; còn lại (OPS quản lý buổi qua leaf "Buổi học") chỉ thấy Điểm danh (đúng việc của họ).
   const myLopIds = new Set((me?.phanCong ?? []).map((pc) => pc.lop_id))
@@ -58,8 +63,8 @@ export default function BuoiHocScreen() {
     return <BuoiDetail id={open.id} tabs={tabs} onClose={() => { setOpen(null); reload() }} />
   }
 
-  // Scope MÔN: GV/TA có môn → chỉ buổi môn mình; Ops/admin (không gán môn) → thấy TẤT (điểm danh liên-môn).
-  const view = (laAdmin || myMons.length === 0) ? list : list.filter((ba) => myMons.includes(ba.lop.mon))
+  // Scope MÔN: GV/TA có môn → chỉ buổi môn mình; Ops/admin/chưa-gán-môn → thấy TẤT (điểm danh liên-môn).
+  const view = (laAdmin || laOps || myMons.length === 0) ? list : list.filter((ba) => myMons.includes(ba.lop.mon))
   const cnt: Record<BuoiStatus, number> = { chua: 0, mo: 0, huy: 0 }
   for (const ba of view) cnt[statusOf(ba.buoi)]++
   const shown = view.filter((ba) => statusOf(ba.buoi) === filter)
