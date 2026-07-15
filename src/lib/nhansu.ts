@@ -120,6 +120,7 @@ export type MyProfile = {
   viTris: (ViTri & { team_ten: string })[]        // vị trí đang giữ (chỉ xem)
   phanCong: (PhanCongLop & { lop?: Lop })[]       // phân công lớp (chỉ xem)
   mons: string[]                                  // môn được phân (scope④ — gate kho/tài liệu theo môn)
+  hocThuatMons: string[]                          // môn NS là team học thuật (ghế hoc_thuat) — quyền chốt/duyệt kế hoạch (vd duyệt dạng đuổi)
 }
 export async function getMyProfile(): Promise<MyProfile | null> {
   const { data: au } = await supabase.auth.getUser()
@@ -140,12 +141,13 @@ export async function getMyProfile(): Promise<MyProfile | null> {
     }
   }
   if (!nsId) return null
-  const [nsRes, teamAll, teamMap, vtRes, pcRes, monRows] = await Promise.all([
+  const [nsRes, teamAll, teamMap, vtRes, pcRes, monRows, htMonRows] = await Promise.all([
     supabase.from('nhan_su').select('*').eq('id', nsId).single(),
     listTeam(), listNhanSuTeamMap(),
     supabase.from('vi_tri').select('*').eq('nhan_su_id', nsId).limit(LIMIT),
     supabase.from('phan_cong_lop').select('*, lop(*)').eq('nhan_su_id', nsId).limit(LIMIT),
     listMonOfNhanSu(nsId),
+    listMonHocThuatCuaToi(nsId),
   ])
   if (nsRes.error) throw nsRes.error
   const tmById = new Map(teamAll.map((t) => [t.id, t]))
@@ -155,6 +157,7 @@ export async function getMyProfile(): Promise<MyProfile | null> {
     viTris: ((vtRes.data ?? []) as ViTri[]).map((v) => ({ ...v, team_ten: tmById.get(v.team_id)?.ten ?? '?' })),
     phanCong: (pcRes.data ?? []) as (PhanCongLop & { lop?: Lop })[],
     mons: monRows,
+    hocThuatMons: htMonRows,
   }
 }
 // ── SCOPE ENGINE — "ai thấy task nào" (Thùy chốt 12/06) ──────────
@@ -279,6 +282,16 @@ export async function listMonOfNhanSu(nhanSuId: string): Promise<string[]> {
   const { data, error } = await supabase.from('nhan_su_mon').select('mon').eq('nhan_su_id', nhanSuId).limit(LIMIT)
   if (error) throw error
   return (data ?? []).map((r: any) => r.mon as string)
+}
+// Môn mà NS là TEAM HỌC THUẬT (ngồi ghế team `hoc_thuat` của môn đó — vi_tri.mon). KHÁC `nhan_su_mon`
+// (scope④ content gate kho): đây là "quyền CHỐT/DUYỆT kế hoạch học thuật" (vd duyệt dạng bổ trợ đuổi).
+// Ghế học thuật liên-môn (mon=null) KHÔNG tính (duyệt phải theo môn cụ thể). Xem ADR chiều môn.
+export async function listMonHocThuatCuaToi(nhanSuId: string): Promise<string[]> {
+  const { data: team } = await supabase.from('team').select('id').eq('ma', 'hoc_thuat').maybeSingle()
+  if (!team) return []
+  const { data, error } = await supabase.from('vi_tri').select('mon').eq('team_id', (team as any).id).eq('nhan_su_id', nhanSuId).not('mon', 'is', null).limit(LIMIT)
+  if (error) throw error
+  return [...new Set((data ?? []).map((r: any) => r.mon as string))]
 }
 // Set trọn bộ môn của 1 NS (delete + insert — bảng nối nhỏ).
 export async function setMonOfNhanSu(nhanSuId: string, mons: string[]): Promise<void> {

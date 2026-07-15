@@ -32,6 +32,7 @@ import DuyetChamScreen from './duyetcham/DuyetChamScreen'
 import HocPhiScreen from './hocphi/HocPhiScreen'
 import GiaoViecScreen from './giaoviec/GiaoViecScreen'
 import { listViecCuaToi, type ViecFull } from '../lib/giaoviec'
+import { listDotChoDuyetDuoi } from '../lib/botro_duoi'
 import QuanLyLevelScreen from './gami/QuanLyLevelScreen'
 import PhanQuyenScreen from './phanquyen/PhanQuyenScreen'
 import BaoLoiScreen from './baoloi/BaoLoiScreen'
@@ -218,6 +219,9 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
   // fetch riêng theo TỪNG NGƯỜI (không gate theo opsToanHe — assignment là per-person).
   const [opsExtra, setOpsExtra] = useState<OpsTask[]>([])
   const [prepTasks, setPrepTasks] = useState<MyPrepTask[]>([])
+  // Team học thuật (0100): đợt bổ trợ đuổi CHỜ chốt/duyệt dạng — derive theo môn học thuật của tôi (hocThuatMons).
+  const [choDuyetDuoi, setChoDuyetDuoi] = useState(0)
+  const me = useStore((s) => s.me)
   const setStaffLeaf = useStore((s) => s.setStaffLeaf)
   const isMobile = useIsMobile()
   // Ngày TƯƠNG LAI chủ động bấm mở xem trước — hôm nay + ngày ĐÃ QUA (còn nợ) LUÔN mở sẵn (Thùy 07-06:
@@ -226,6 +230,11 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
 
   useEffect(() => { getMyTasks().then(setTasks).catch(() => setTasks([])) }, [])
   useEffect(() => { if (scope?.nhanSu.id) listViecCuaToi(scope.nhanSu.id).then(setViecPT).catch(() => setViecPT([])) }, [scope?.nhanSu.id])
+  useEffect(() => {
+    const htMons = me?.hocThuatMons ?? []
+    if (!htMons.length) { setChoDuyetDuoi(0); return }
+    listDotChoDuyetDuoi(htMons).then((r) => setChoDuyetDuoi(r.length)).catch(() => setChoDuyetDuoi(0))
+  }, [me?.hocThuatMons])
   useEffect(() => { const id = setInterval(() => setNow(Date.now()), 60000); return () => clearInterval(id) }, [])
   useEffect(() => {
     if (!scope?.opsToanHe) { setOpsWeek([]); return }
@@ -403,6 +412,13 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
         {/* PHÁT TRIỂN — rail hẹp, ngăn cách bằng đường kẻ dọc. Task THẬT (viec/viec_nguoi_lam), không reset theo tuần. */}
         <div className="lg:border-l-2 lg:border-slate-200 lg:pl-5">
           <SectionHead label="Phát triển" color="bg-violet-500" />
+          {/* Team học thuật: đợt bổ trợ đuổi chờ chốt dạng (derive theo hocThuatMons) — Thùy 07-15 */}
+          {choDuyetDuoi > 0 && (
+            <button onClick={() => setStaffLeaf('botro_duoi')} className="mb-2 block w-full rounded-2xl border border-amber-200 bg-amber-50 p-3.5 text-left shadow-sm hover:shadow-md">
+              <div className="flex items-center gap-2 text-[14px] font-semibold text-amber-800">📚 {choDuyetDuoi} đợt bổ trợ đuổi chờ chốt dạng</div>
+              <p className="mt-1 text-[12px] leading-relaxed text-amber-700">Ops đã tạo card đuổi — bạn (team học thuật) chốt dạng cần đuổi + số buổi để GV dạy bám theo.</p>
+            </button>
+          )}
           {viecPT.filter((v) => v.trang_thai !== 'dat').length === 0 ? (
             <div className="rounded-2xl border border-dashed border-slate-300 bg-white p-4 shadow-sm">
               <div className="flex items-center gap-2 text-[14px] font-medium text-slate-700">📨 Chưa có việc phát triển nào</div>

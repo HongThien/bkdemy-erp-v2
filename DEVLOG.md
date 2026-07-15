@@ -2087,3 +2087,23 @@ tsc sạch + build pass. ⏳ chưa soi PDF bằng mắt (bản in paged.js).
   - **Bắt đầu sửa nhưng CHƯA XONG (đã revert, không push code dở):** hướng đi đúng = truyền "câu cuối cùng đã bóc được (stt + phần)" từ lượt trước sang prompt của lượt sau, dạy AI: "nếu trang này KHÔNG thấy 'Câu N:' mới ở đầu dòng → toàn bộ chỉ là lời giải tiếp diễn của câu {X} đã bóc rồi, trả `cau: []`, ĐỪNG bịa câu mới". Đã thêm tham số `cauCuoi` vào chữ ký `buildDeThiIngestPrompt` (kho/api.ts) nhưng CHƯA viết dòng prompt + CHƯA nối state xuyên vòng lặp `bocDeTuFile` (DeThiScreen.tsx) — REVERT lại nguyên trạng cuối phiên vì hết giờ, tránh push nửa vời. **VIỆC TIẾP THEO ưu tiên #1.**
 - **Trạng thái cuối phiên:** đã commit+push `419f3a4` lên `nhap-de-thi-v2` (PR #11) — gồm fix #1 (batching) + fix #2 (xoay vòng phần) + tool tự test. PR #11 **VẪN CHƯA MERGE** (chờ Thùy gõ rõ chữ "merge" theo lệ). Bug #3 (câu ảo do lời giải tràn trang) **CHƯA FIX** — đây là nguyên nhân CHÍNH gây "12/1/137" Thùy phàn nàn, quan trọng hơn cả fix #1/#2 đã làm.
 - tsc + build sạch (sau khi revert phần dở).
+
+---
+
+## 2026-07-15 — Fix ops-KHTN + Bổ trợ ĐUỔI: bước DUYỆT DẠNG của team học thuật
+
+**Fix 1 (đã commit `102b9fc`, đã lên main): ops không thấy lớp KHTN ở màn Buổi học.**
+- Root cause: backfill `nhan_su_mon='Toán'` (06-29, cho MỌI nhân sự) vô tình khoá 4/5 người team ops vào 1 môn. `BuoiHocScreen` lọc `view = (laAdmin || myMons.length===0) ? tất : lọc theo myMons` — ops giờ có `mons=['Toán']` nên `myMons.length===0` sai → KHTN/Anh/Văn biến mất.
+- Fix: thêm `laOps = me.teams.some(t=>t.ma==='ops')`, gộp vào điều kiện "thấy tất" (`laAdmin || laOps || myMons.length===0`). Đúng bản chất: ops điểm danh liên-môn, KHÔNG bị `nhan_su_mon` (đó là scope④ gate kho cho GV/TA) chi phối — giống `opsToanHe` ở nhansu.ts.
+- Verify DB (read-only): 13 vắng KHTN = 8 xếp bù + 1 không-bù + 4 treo, khớp tuyệt đối, 0 mồ côi → "lỗi 2" (data bù KHTN không nhất quán) là cảm nhận từ lỗi 1, không phải lỗi sổ sách.
+
+**Fix 2 (CHƯA commit lúc viết log này — chờ verify): Bổ trợ đuổi — handoff DUYỆT DẠNG cho team học thuật.**
+- Thùy chốt 3 fork: (a) người duyệt = **ghế team `hoc_thuat` của MÔN** (`vi_tri.mon`); (b) team học thuật chốt **cả dạng + số buổi** (1 gói); (c) gate **MỀM** (Ops xếp lịch được ngay khi chưa duyệt, card cờ ⚠, GV dạy chưa có dạng để tick tới khi duyệt). Tạm để CẢ team học thuật chốt được (chưa đẻ team riêng — YAGNI; đổi sau = 1 dòng ở `listMonHocThuatCuaToi`).
+- **Nửa đã có sẵn, KHÔNG làm lại:** GV dạy tick "đã dạy dạng" mỗi buổi = `bo_tro_duoi_dang.day_buoi_id/day_at` (0099). Việc MỚI chỉ là bước duyệt.
+- **mig 0100** (áp DB claude_build, đã `npm run schema`): `bo_tro_duoi` + `dang_duyet_at` (NULL=chưa duyệt, derive task) + `dang_duyet_boi` (FK→nhan_su). Grandfather: đợt đã có `so_buoi_du_kien` → `dang_duyet_at=created_at` (7 đợt đang chạy khỏi bị bắt duyệt lại; 2 đợt chưa kế hoạch = chờ duyệt).
+- **nhansu.ts:** `listMonHocThuatCuaToi(nsId)` (ghế `hoc_thuat` + `vi_tri.mon`, bỏ liên-môn) → `MyProfile.hocThuatMons`. KHÁC `mons` (nhan_su_mon).
+- **botro_duoi.ts:** `DotDuoi` +`dangDuyetAt`/`duyetBoiTen`; `BuoiCuaDot` +`nhanXet` (buoi_danh_gia) +`dangDay[]` (dạng dạy buổi đó, theo day_buoi_id). `duyetKeHoachDuoi()` = chotKeHoach + đóng dấu duyệt. `listDotChoDuyetDuoi(mons)` = đợt chưa duyệt ∈ môn (derive, không bảng tasks).
+- **BoTroDuoiScreen.tsx:** card "Đang đuổi" giờ **click ra popup**; gộp `KeHoachModal`+`DotDetailModal` → 1 `DotDetailModal` dùng chung 2 tab (bảng từng buổi: trạng thái/ngày/phòng/dạng dạy/nhận xét + sửa dạng+số buổi TRONG popup, chỉ học thuật). Cờ ⚠ chưa-duyệt; nút "Chốt & duyệt" chỉ cho `coQuyenDuyet(mon)`; Ops thấy "⏳ Chờ học thuật" nhưng "+ Xếp lịch" vẫn bật (gate mềm).
+- **NhanSuHome (Việc-của-tôi):** card "📚 N đợt bổ trợ đuổi chờ chốt dạng" cho team học thuật (derive theo `hocThuatMons`) → click sang màn.
+- **Verify (read-only DB, KHÔNG click UI được vì auth gate — không đăng nhập):** FK `dang_duyet_boi→nhan_su` OK (embed resolve được); grandfather 7 duyệt/2 chưa đúng; `listDotChoDuyetDuoi('KHTN')`→Lê Thành An (về Phạm Anh Ngọc), `('Toán')`→Đặng Linh Trang; query detail per-buổi (nhận xét+dạng) hợp lệ. tsc+build sạch.
+- **Rủi ro nhỏ đã biết:** embed `duyet_boi:dang_duyet_boi(ho_ten)` cần PostgREST reload schema cache sau thêm FK — Supabase auto-reload trên DDL nên gần chắc ổn; nếu 400 "could not find relationship" thì `NOTIFY pgrst, 'reload schema'`.
