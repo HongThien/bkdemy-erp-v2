@@ -706,6 +706,7 @@ const DETHI_META_SCHEMA = { type: 'OBJECT', properties: {
 } }
 export const DETHI_INGEST_SCHEMA = { type: 'OBJECT', properties: {
   de_meta: DETHI_META_SCHEMA,
+  tiep_noi: { type: 'STRING', description: 'CHỈ điền khi TOÀN BỘ trang này KHÔNG có "Câu N:" mới nào ở đầu dòng — nghĩa là cả trang chỉ là LỜI GIẢI TIẾP NỐI của câu cuối lượt trước (bị cắt ngang trang). Ghi nguyên văn phần lời giải tiếp nối thấy được vào đây, để "cau" RỖNG. Có câu mới trên trang → để trống field này.' },
   cau: { type: 'ARRAY', items: {
     type: 'OBJECT', properties: {
       loai_cau: { type: 'STRING', description: "'trac_nghiem' | 'dung_sai' | 'tra_loi_ngan' | 'tu_luan'" },
@@ -721,7 +722,7 @@ export const DETHI_INGEST_SCHEMA = { type: 'OBJECT', properties: {
     }, required: ['loai_cau', 'de_bai'],
   } },
 }, required: ['cau'] }
-export function buildDeThiIngestPrompt(a: { trangDau: boolean; nhieuAnh?: boolean; chuan?: boolean; giaiAI?: boolean }): string {
+export function buildDeThiIngestPrompt(a: { trangDau: boolean; nhieuAnh?: boolean; chuan?: boolean; giaiAI?: boolean; cauCuoi?: { stt: number | null; phan: string | null } | null }): string {
   // ⚠ Prompt đợt trước dồn quá nhiều rule "⚠⚠" chồng nhau (cấu trúc chuẩn, ranh giới câu, TN 4 đáp
   // án, bảng biến thiên...) → Thùy báo AI bị NHIỄU, quay lại nhận diện SAI cả 12 câu trắc nghiệm vốn
   // đã đúng trước đó (prompt càng dài/nhấn mạnh dồn dập càng dễ loãng, các mô hình AI đều có giới hạn
@@ -740,6 +741,9 @@ export function buildDeThiIngestPrompt(a: { trangDau: boolean; nhieuAnh?: boolea
       : '',
     '⚠ Tách đề thành từng câu theo thứ tự xuất hiện, mỗi bài = 1 câu (không tách ý a/b/c thành nhiều câu). RANH GIỚI CÂU: 1 câu mới CHỈ bắt đầu khi thấy "Câu N:" ở ĐẦU DÒNG riêng — không tách chỉ vì xuống dòng hay chữ "câu" xuất hiện giữa câu (vd "xem lại câu 3"); nếu không thấy "Câu N:" đầu dòng thì nội dung vẫn thuộc câu đang bóc.',
     `Mỗi câu ghi "stt_goc" = số N đọc được ở trên (có thể reset về nhỏ giữa các phần, để trống nếu không đánh số) và "phan_goi_y" = tiêu đề phần đang thấy (giữ nguyên văn, để trống nếu không rõ)${a.nhieuAnh ? '; thêm "anh_idx" = số thứ tự ảnh (0-based) chứa câu này (chỉ cần khi lượt có nhiều ảnh)' : ''}.`,
+    a.cauCuoi
+      ? `Lượt TRƯỚC đã bóc xong đến "Câu ${a.cauCuoi.stt ?? '?'}"${a.cauCuoi.phan ? ` (${a.cauCuoi.phan})` : ''} — lời giải câu đó có thể DÀI, bị cắt ngang khi hết trang. Nếu trang NÀY không có bất kỳ "Câu N:" nào mới ở đầu dòng, TOÀN BỘ nội dung trang chỉ là lời giải TIẾP NỐI của câu trên — ghi vào "tiep_noi" (nguyên văn), để "cau" RỖNG ([]). TUYỆT ĐỐI đừng bịa câu mới từ nội dung lời giải đang dở.`
+      : '',
     'Xác định "loai_cau" ∈ { trac_nghiem, dung_sai, tra_loi_ngan, tu_luan } và bóc theo đúng cấu trúc:',
     '- trac_nghiem: "de_bai" = đề dẫn (không kèm A/B/C/D); "lua_chon" = ĐÚNG 4 phương án A/B/C/D ngay sau đề dẫn; "dap_an" = chữ cái đúng. Lời giải/giải thích đứng sau 4 phương án luôn để riêng ở "loi_giai" — KHÔNG lấy 1 dòng trong đó làm phương án thứ 5.',
     '- dung_sai: "de_bai" = đề chung; "menh_de" = ĐÚNG 4 phần tử { noi_dung, dap_an ("D"|"S"), loi_giai }; để "lua_chon" trống.',
@@ -748,11 +752,11 @@ export function buildDeThiIngestPrompt(a: { trangDau: boolean; nhieuAnh?: boolea
     'Bảng SỐ LIỆU thuần (không mũi tên/biến thiên) viết LaTeX $\\begin{array}{…}…\\end{array}$ trong de_bai, không coi là hình.',
     giaiRule(a.giaiAI),
     FMT_RULES,
-    'Trả JSON: { "de_meta": { "nguon":"…", "nam":0, "cap":"…", "thoi_gian_phut":0, "thang_diem":0 }, "cau": [ { "loai_cau":"…", "stt_goc":0, "phan_goi_y":"…", "de_bai":"…", "dap_an":"…", "lua_chon":[…], "menh_de":[…], "loi_giai":"…", "co_hinh":false, "box_hinh":null, "anh_idx":0 } ] }',
+    'Trả JSON: { "de_meta": { "nguon":"…", "nam":0, "cap":"…", "thoi_gian_phut":0, "thang_diem":0 }, "tiep_noi":null, "cau": [ { "loai_cau":"…", "stt_goc":0, "phan_goi_y":"…", "de_bai":"…", "dap_an":"…", "lua_chon":[…], "menh_de":[…], "loi_giai":"…", "co_hinh":false, "box_hinh":null, "anh_idx":0 } ] }',
   ].filter(Boolean).join('\n')
 }
 export type DeThiIngestCau = KhoIngestCau & { phanGoiY: string | null; sttGoc: number | null; anhIdx: number | null }
-export function parseDeThiIngestJson(text: string): { meta: Partial<DeThiIngestMeta>; caus: DeThiIngestCau[] } {
+export function parseDeThiIngestJson(text: string): { meta: Partial<DeThiIngestMeta>; caus: DeThiIngestCau[]; tiepNoi: string | null } {
   let t = text.trim(); const fence = t.match(/```(?:json)?\s*([\s\S]*?)```/i); if (fence) t = fence[1].trim()
   let obj: any; try { obj = lenientJsonParse(t) } catch (e: any) { throw new Error('JSON không hợp lệ: ' + e.message) }
   const arr = Array.isArray(obj) ? obj : (obj.cau ?? obj.cau_hoi ?? [])
@@ -789,7 +793,8 @@ export function parseDeThiIngestJson(text: string): { meta: Partial<DeThiIngestM
       box: Array.isArray(x.box_hinh) && x.box_hinh.length === 4 ? (x.box_hinh.map(Number) as [number, number, number, number]) : null,
     }
   })
-  return { meta, caus }
+  const tiepNoi = obj.tiep_noi != null && String(obj.tiep_noi).trim() ? stripYCon(String(obj.tiep_noi).trim()) : null
+  return { meta, caus, tiepNoi }
 }
 
 // ── PHÂN LOẠI DẠNG (grounded theo chủ đề, 1 call/lô) → { ma_dang, confidence, ma_dang_2 } ──

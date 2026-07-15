@@ -356,9 +356,17 @@ async function bocDeTuFile(file: File, coHinh: boolean, chuan: boolean, onProgre
     const nhieuAnh = end - start > 1
     try {
       const files = canvases.slice(start, end).map((c) => ({ mimeType: 'image/jpeg', dataBase64: canvasToJpegBase64(c) }))
-      const { text } = await callGeminiRich(buildDeThiIngestPrompt({ trangDau: start === 0, nhieuAnh, chuan }), { schema: DETHI_INGEST_SCHEMA, files })
+      // ⚠ 07-14: câu chuẩn/lời giải dài có thể TRÀN qua nhiều trang — mỗi lượt chỉ thấy 1 trang (coHinh=true)
+      // nên trang thuần-tiếp-nối (không có "Câu N:" mới) từng bị AI hiểu lầm/bịa thành câu mới (22 câu
+      // thật → 137+ câu ảo, xem DEVLOG). Sửa: báo cho AI biết "câu cuối lượt trước là gì" (cauCuoi) — AI
+      // trả "tiep_noi" thay vì bịa câu khi trang không có nhãn câu mới; GHÉP tiep_noi vào loi_giai câu
+      // cuối cùng đã lưu (không mất đoạn lời giải bị cắt ngang trang).
+      const cuoi = items[items.length - 1]
+      const cauCuoi = cuoi ? { stt: cuoi.sttGoc, phan: cuoi.phanGoiY } : null
+      const { text } = await callGeminiRich(buildDeThiIngestPrompt({ trangDau: start === 0, nhieuAnh, chuan, cauCuoi }), { schema: DETHI_INGEST_SCHEMA, files })
       const parsed = parseDeThiIngestJson(text)
       if (start === 0) meta = parsed.meta
+      if (parsed.tiepNoi && cuoi) cuoi.loi_giai = cuoi.loi_giai ? `${cuoi.loi_giai}\n${parsed.tiepNoi}` : parsed.tiepNoi
       for (const cau of parsed.caus) {
         let anhDe: string | null = null
         if (coHinh && cau.coHinh && cau.box) {

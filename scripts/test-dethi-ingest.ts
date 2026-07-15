@@ -20,7 +20,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { createCanvas, Image, type Canvas } from '@napi-rs/canvas'
+import { createCanvas, type Canvas } from '@napi-rs/canvas'
 import * as pdfjsLib from 'pdfjs-dist/legacy/build/pdf.mjs'
 import {
   buildDeThiIngestPrompt, DETHI_INGEST_SCHEMA, parseDeThiIngestJson, callGeminiRich,
@@ -61,8 +61,10 @@ async function fileToCanvasesNode(pdfBytes: Uint8Array): Promise<Canvas[]> {
 function canvasToJpegBase64Node(c: Canvas, maxW = GEM_W): string {
   const k = Math.min(1, maxW / c.width)
   const t = createCanvas(Math.round(c.width * k), Math.round(c.height * k))
-  const img = new Image(); img.src = c.toBuffer('image/png')
-  t.getContext('2d').drawImage(img as any, 0, 0, t.width, t.height)
+  // ⚠ 07-14: new Image()+PNG-roundtrip ra ẢNH ĐEN TUYỀN ở canvas lớn (silent fail, không throw) — Gemini
+  // nhận ảnh đen suốt cả phiên test trước, KẾT QUẢ TỰ TEST TRƯỚC ĐÓ KHÔNG ĐÁNG TIN (AI bịa từ ảnh đen).
+  // drawImage THẲNG từ canvas nguồn (không qua Image()) mới ra đúng ảnh.
+  t.getContext('2d').drawImage(c as any, 0, 0, t.width, t.height)
   return t.toBuffer('image/jpeg', 0.85).toString('base64')
 }
 function cropCanvasBoxNode(c: Canvas, box: [number, number, number, number], pad = 0.04): Buffer {
