@@ -11,7 +11,7 @@ function Ava({ img, label }: { img?: string | null; label: string }) {
     : <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-[10px] font-semibold text-indigo-600">{label.trim().charAt(0).toUpperCase()}</span>
 }
 
-const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/gi, 'd').toLowerCase() // bỏ dấu tiếng Việt
+export const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/gi, 'd').toLowerCase() // bỏ dấu tiếng Việt
 
 export default function SearchSelect({ value, onChange, options, placeholder = 'Tìm…', allowClear = true, autoFocus, className, invalid, avatars }: {
   value: string | null

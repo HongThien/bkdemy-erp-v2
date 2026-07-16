@@ -16,11 +16,12 @@ import { DangPicker } from '../tailieu/TaiLieuBuilder'
 import { listNhanSu, type NhanSu } from '../../lib/nhansu'
 import { listMucHocDuoi, type MucHocDuoi } from '../../lib/hocphi'
 import { homNayVN } from '../../lib/tuan'
-import SearchSelect from '../../components/SearchSelect'
+import SearchSelect, { norm } from '../../components/SearchSelect'
 import { tenNganHS, tenHienThiDs } from '../../lib/hoten'
 import { useStore } from '../../store/useStore'
 
 type Tab = 'canduoi' | 'daxep' | 'xong'
+const khoiSort = (a: string, b: string) => a.localeCompare(b, 'vi', { numeric: true })
 const TABS: { k: Tab; ten: string }[] = [{ k: 'canduoi', ten: 'Đang đuổi' }, { k: 'daxep', ten: 'Đã xếp' }, { k: 'xong', ten: 'Hoàn thành' }]
 const inputCls = 'w-full rounded-lg border border-slate-300 px-3 py-2 text-[14px] outline-none focus:border-indigo-400'
 const ddmm = (s?: string | null) => (s ? s.split('-').reverse().slice(0, 2).join('/') : '')
@@ -36,11 +37,25 @@ export default function BoTroDuoiScreen() {
   const [them, setThem] = useState(false)
   const [detail, setDetail] = useState<{ buoiId: string; readOnly: boolean } | null>(null)
   const [suaBuoi, setSuaBuoi] = useState<CaDuoi | null>(null)
+  // Filter khối + tìm tên (Thùy 07-16) — dùng CHUNG cả 3 tab (canduoi/daxep/xong).
+  const [khoiFilter, setKhoiFilter] = useState<string | null>(null)
+  const [q, setQ] = useState('')
   // Quyền DUYỆT kế hoạch (chốt dạng + số buổi) = team học thuật của MÔN đó (ghế hoc_thuat, mig 0100) hoặc admin.
   const me = useStore((s) => s.me)
   const laAdmin = !!useStore((s) => s.quyen)?.laAdmin
   const myHocThuatMons = me?.hocThuatMons ?? []
   const coQuyenDuyet = (mon: string) => laAdmin || myHocThuatMons.includes(mon)
+
+  // canduoi/xong = card 1 HS/đợt (lọc trực tiếp trên đợt). daxep = card 1 BUỔI (nhiều HS/ca) → giữ ca
+  // nếu CÓ ÍT NHẤT 1 HS khớp cả 2 filter (tìm học sinh trong ca gộp nhiều em).
+  const khoiOpts = useMemo(() => {
+    const set = tab === 'daxep' ? new Set(cas.flatMap((c) => c.hs.map((h) => h.khoi).filter(Boolean) as string[]))
+      : new Set(dots.map((d) => d.khoi).filter(Boolean) as string[])
+    return [...set].sort(khoiSort)
+  }, [tab, dots, cas])
+  const khopQ = (hoTen: string, maHs: string | null) => !q.trim() || norm(hoTen).includes(norm(q)) || (!!maHs && norm(maHs).includes(norm(q)))
+  const dotsShown = useMemo(() => dots.filter((d) => (!khoiFilter || d.khoi === khoiFilter) && khopQ(d.ho_ten, d.ma_hs)), [dots, khoiFilter, q])
+  const casShown = useMemo(() => cas.filter((c) => c.hs.some((h) => (!khoiFilter || h.khoi === khoiFilter) && khopQ(h.ho_ten, h.ma_hs))), [cas, khoiFilter, q])
 
   async function reloadCounts() { try { setCounts(await demTabDuoi()) } catch { /* */ } }
   async function reload() {
@@ -95,12 +110,28 @@ export default function BoTroDuoiScreen() {
           })}
         </div>
 
+        {/* Filter khối + tìm tên (Thùy 07-16) — áp dụng chung cả 3 tab */}
+        <div className="mb-4 flex flex-wrap items-center gap-2">
+          <span className="text-[12px] font-semibold uppercase tracking-wide text-slate-500">Khối</span>
+          <span className="inline-flex flex-wrap gap-1 rounded-xl border border-slate-200 bg-white p-1 shadow-sm">
+            <button onClick={() => setKhoiFilter(null)} className={`rounded-lg px-2.5 py-1 text-[13px] font-medium transition ${khoiFilter === null ? 'bg-indigo-600 text-white' : 'text-slate-600 hover:bg-slate-100'}`}>Tất cả</button>
+            {khoiOpts.map((k) => (
+              <button key={k} onClick={() => setKhoiFilter(k)} className={`rounded-lg px-2.5 py-1 text-[13px] font-medium transition ${khoiFilter === k ? 'bg-indigo-600 text-white' : 'text-slate-600 hover:bg-slate-100'}`}>{k}</button>
+            ))}
+          </span>
+          <div className="relative ml-2 w-64">
+            <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="🔎 Tìm tên / mã HS…" className="h-9 w-full rounded-xl border border-slate-300 px-3 text-[13px] outline-none focus:border-indigo-400" />
+            {q && <button onClick={() => setQ('')} className="absolute right-2 top-1/2 -translate-y-1/2 text-[13px] text-slate-400 hover:text-slate-600">✕</button>}
+          </div>
+        </div>
+
         {loading ? <div className="p-8 text-[14px] text-slate-400">Đang tải…</div>
           : tab === 'canduoi' ? (
             dots.length === 0 ? <Empty t="Không có HS nào đang bổ trợ đuổi." />
+              : dotsShown.length === 0 ? <Empty t="Không có HS nào khớp bộ lọc." />
               : (
                 <div className="space-y-2.5">
-                  {(() => { const tenHT = tenHienThiDs(dots.map((c) => c.ho_ten)); return dots.map((d, i) => {
+                  {(() => { const tenHT = tenHienThiDs(dotsShown.map((c) => c.ho_ten)); return dotsShown.map((d, i) => {
                     const N = d.so_buoi_du_kien
                     const chuaDuyet = d.dangDuyetAt == null   // 0100: học thuật chưa chốt/duyệt dạng
                     const duyetOk = coQuyenDuyet(d.mon)       // người xem có quyền duyệt môn này?
@@ -185,9 +216,10 @@ export default function BoTroDuoiScreen() {
                 </div>
               )
           ) : tab === 'xong' ? (
-            dots.length === 0 ? <Empty t="Chưa có đợt bổ trợ đuổi nào hoàn thành." /> : (
+            dots.length === 0 ? <Empty t="Chưa có đợt bổ trợ đuổi nào hoàn thành." />
+              : dotsShown.length === 0 ? <Empty t="Không có đợt nào khớp bộ lọc." /> : (
               <div className="grid gap-3 [grid-template-columns:repeat(auto-fill,minmax(300px,1fr))]">
-                {(() => { const tenHT = tenHienThiDs(dots.map((c) => c.ho_ten)); return dots.map((d, i) => (
+                {(() => { const tenHT = tenHienThiDs(dotsShown.map((c) => c.ho_ten)); return dotsShown.map((d, i) => (
                   <div key={d.caseId} role="button" onClick={() => setDotDetail(d)} className="cursor-pointer rounded-2xl border-l-4 border-l-emerald-400 bg-white p-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
                     <div className="flex items-center gap-2">
                       <span className="text-[15px] font-semibold text-slate-800">{tenHT[i]}</span>
@@ -202,9 +234,10 @@ export default function BoTroDuoiScreen() {
               </div>
             )
           ) : (
-            cas.length === 0 ? <Empty t="Chưa có buổi đuổi nào đang chờ." /> : (
+            cas.length === 0 ? <Empty t="Chưa có buổi đuổi nào đang chờ." />
+              : casShown.length === 0 ? <Empty t="Không có buổi nào khớp bộ lọc." /> : (
               <div className="grid gap-3 [grid-template-columns:repeat(auto-fill,minmax(320px,1fr))]">
-                {cas.map((ca) => {
+                {casShown.map((ca) => {
                   const hsShown = ca.hs.slice(0, 6)
                   const tenHsShown = tenHienThiDs(hsShown.map((h) => h.ho_ten))
                   return (
