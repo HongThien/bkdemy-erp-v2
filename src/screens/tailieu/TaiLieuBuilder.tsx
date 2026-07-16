@@ -65,6 +65,13 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
   }
   const openPicker = (phanId: string, ma: string, selected: string[]) => setPicker({ phanId, maDangs: [ma], selected, disabled: [...usedExcept(phanId)] })
   const onLine = (maCau: string, n: number) => saveCh({ btvnLinesByCau: { ...(ch.btvnLinesByCau ?? {}), [maCau]: n } })
+  // Áp dụng 1 số dòng cho CẢ dạng (Thùy 07-16: khỏi click từng câu khi soạn số lượng lớn) — vẫn sửa
+  // riêng từng câu được SAU KHI áp dụng (áp dụng cả dạng chỉ ghi đè 1 lần, không khoá per-câu).
+  const onLineAll = (maCaus: string[], n: number) => {
+    const next = { ...(ch.btvnLinesByCau ?? {}) }
+    for (const ma of maCaus) next[ma] = n
+    saveCh({ btvnLinesByCau: next })
+  }
 
   const jump = (pid: string) => document.getElementById('p-' + pid)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   const sel = 'h-8 rounded-md border border-slate-300 bg-white px-2 text-[13px] outline-none focus:border-indigo-500'
@@ -117,7 +124,7 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
               const startNo = dangNo; dangNo += b.dangs.length
               return (
                 <BuoiCard
-                  key={b.marker.id} buoi={b} startNo={startNo} linesByCau={linesByCau} onLine={onLine}
+                  key={b.marker.id} buoi={b} startNo={startNo} linesByCau={linesByCau} onLine={onLine} onLineAll={onLineAll}
                   onRename={(t) => updatePhan(b.marker.id, { tieu_de: t }).then(reload).then(markSaved)}
                   onDelete={async () => { if (confirm('Xoá cả buổi này (gồm dạng trên lớp + BTVN)?')) { await deleteBuoi(id, b.marker.id); await reload(); markSaved() } }}
                   onChonDang={() => setDangPicker({ buoiId: b.marker.id, selected: b.dangs.map((d) => d.ref_ma!).filter(Boolean) })}
@@ -142,8 +149,8 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
 }
 
 // ── 1 BUỔI: tiêu đề (sửa được) + nút Chọn dạng + danh sách dạng (mỗi dạng có Bài luyện + BTVN) ──
-function BuoiCard({ buoi, startNo, linesByCau, onLine, onRename, onDelete, onChonDang, onReorderDang, onApply, openPicker, cauTbl, onSetKieu, usedExcept, onPreview }: {
-  buoi: BuoiUI; startNo: number; linesByCau: Record<string, number>; onLine: (maCau: string, n: number) => void
+function BuoiCard({ buoi, startNo, linesByCau, onLine, onLineAll, onRename, onDelete, onChonDang, onReorderDang, onApply, openPicker, cauTbl, onSetKieu, usedExcept, onPreview }: {
+  buoi: BuoiUI; startNo: number; linesByCau: Record<string, number>; onLine: (maCau: string, n: number) => void; onLineAll: (maCaus: string[], n: number) => void
   onRename: (t: string) => void; onDelete: () => void; onChonDang: () => void; onReorderDang: (order: string[]) => void
   onApply: (phanId: string, maCaus: string[]) => void; openPicker: (phanId: string, ma: string, selected: string[]) => void; cauTbl: string; onSetKieu: (phanId: string, kieu: string) => void
   usedExcept: (phanId: string) => Set<string>; onPreview: () => void
@@ -171,7 +178,7 @@ function BuoiCard({ buoi, startNo, linesByCau, onLine, onRename, onDelete, onCho
           ? <div className="text-[12px] italic text-slate-400">Chưa có dạng — bấm “+ Chọn dạng” để chọn các dạng cho buổi (mọi chuyên đề).</div>
           : buoi.dangs.map((d, i) => (
             <DangCard key={d.id} no={startNo + i + 1} dang={d} btvn={d.ref_ma ? buoi.btvnByMa[d.ref_ma] : undefined}
-              linesByCau={linesByCau} onLine={onLine} onApply={onApply} openPicker={openPicker} cauTbl={cauTbl} onSetKieu={onSetKieu} usedExcept={usedExcept}
+              linesByCau={linesByCau} onLine={onLine} onLineAll={onLineAll} onApply={onApply} openPicker={openPicker} cauTbl={cauTbl} onSetKieu={onSetKieu} usedExcept={usedExcept}
               canUp={i > 0} canDown={i < buoi.dangs.length - 1} onUp={() => move(i, -1)} onDown={() => move(i, 1)} />
           ))}
       </div>
@@ -180,9 +187,9 @@ function BuoiCard({ buoi, startNo, linesByCau, onLine, onRename, onDelete, onCho
 }
 
 // ── 1 DẠNG trong buổi: 2 khối cấu hình — Bài luyện (trên lớp) + BTVN (về nhà), đều theo số câu mỗi loại ──
-function DangCard({ no, dang, btvn, linesByCau, onLine, onApply, openPicker, cauTbl, onSetKieu, usedExcept, canUp, canDown, onUp, onDown }: {
+function DangCard({ no, dang, btvn, linesByCau, onLine, onLineAll, onApply, openPicker, cauTbl, onSetKieu, usedExcept, canUp, canDown, onUp, onDown }: {
   no: number; dang: PhanResolved; btvn?: PhanResolved; linesByCau: Record<string, number>
-  onLine: (maCau: string, n: number) => void; onApply: (phanId: string, maCaus: string[]) => void; openPicker: (phanId: string, ma: string, selected: string[]) => void; cauTbl: string; onSetKieu: (phanId: string, kieu: string) => void
+  onLine: (maCau: string, n: number) => void; onLineAll: (maCaus: string[], n: number) => void; onApply: (phanId: string, maCaus: string[]) => void; openPicker: (phanId: string, ma: string, selected: string[]) => void; cauTbl: string; onSetKieu: (phanId: string, kieu: string) => void
   usedExcept: (phanId: string) => Set<string>
   canUp: boolean; canDown: boolean; onUp: () => void; onDown: () => void
 }) {
@@ -235,6 +242,7 @@ function DangCard({ no, dang, btvn, linesByCau, onLine, onApply, openPicker, cau
           {btvn ? counts(btvnCnt, setBtvnCnt) : <span className="italic text-slate-400">—</span>}
           {btvn && <button onClick={goiYBtvn} className="rounded-md bg-indigo-50 px-2.5 py-1 font-medium text-indigo-700 hover:bg-indigo-100">↻ Gợi ý</button>}
           {btvn && <button onClick={() => openPicker(btvn.id, ma, btvn.caus.map((c) => c.ma_cau))} className="rounded-md border border-slate-300 px-2.5 py-1 font-medium text-slate-600 hover:border-indigo-400">✎ Chọn câu</button>}
+          {btvn && btvn.caus.length > 0 && <ApplyLinesAll maCaus={btvn.caus.map((c) => c.ma_cau)} onApply={(n) => onLineAll(btvn.caus.map((c) => c.ma_cau), n)} />}
           {btvn && <KieuPicker value={btvn.kieu} onChange={(k) => onSetKieu(btvn.id, k)} />}
         </div>
         {btvn && (btvn.caus.length > 0
@@ -253,6 +261,21 @@ function DangCard({ no, dang, btvn, linesByCau, onLine, onApply, openPicker, cau
           : <div className="mt-2 text-[12px] italic text-slate-400">Chưa có câu BTVN — bấm “Gợi ý” hoặc “Chọn câu”.</div>)}
       </div>
     </div>
+  )
+}
+
+// Áp số dòng cho CẢ dạng cùng lúc (Thùy 07-16) — gõ số rồi Enter/blur mới ghi (tránh ghi đè N câu mỗi
+// keystroke). Ghi xong vẫn sửa riêng từng câu bình thường (áp cả dạng chỉ là 1 lần ghi đè, không khoá).
+function ApplyLinesAll({ maCaus, onApply }: { maCaus: string[]; onApply: (n: number) => void }) {
+  const [val, setVal] = useState('')
+  const commit = () => { if (val.trim() === '') return; onApply(Math.max(0, Math.min(30, +val || 0))); setVal('') }
+  return (
+    <label className="flex shrink-0 items-center gap-1 text-[11px] text-slate-400" title={`Áp số dòng này cho cả ${maCaus.length} câu BTVN của dạng — vẫn sửa riêng từng câu được sau đó`}>
+      dòng cả dạng
+      <input type="number" min={0} max={30} value={val} placeholder="—"
+        onChange={(e) => setVal(e.target.value)} onBlur={commit} onKeyDown={(e) => e.key === 'Enter' && commit()}
+        className="h-7 w-12 rounded border border-violet-300 px-1 text-center text-[12px]" />
+    </label>
   )
 }
 
