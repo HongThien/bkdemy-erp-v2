@@ -13,6 +13,7 @@ import {
 } from '../../lib/gami'
 import { getLiveSnapshot, type BaiTest, type BaiTestCau, type BaiLam, type LiveAnswer } from '../../lib/testonline'
 import type { MTPhanCaus } from '../../lib/mt'
+import { getOrCreateKyThiMTChoBuoi, listDiemThiByKyThi, upsertDiemThi, currentMua, type KyThi, type DiemThi, type Verdict } from '../../lib/thanhtich'
 import { listNhanSu, type NhanSu } from '../../lib/nhansu'
 import { listDaiDang, type CauHoi } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
@@ -915,7 +916,7 @@ function LiveTab({ buoiId, roster }: { buoiId: string; roster: BuoiHocHS[] }) {
 // ── CHẤM MT (kỳ thi lớn) — CÙNG buổi, CÙNG roster/điểm danh với các tab khác (Thùy 07-08: "phải
 // hiện trong buổi học giống như chấm ET"). GIỮ cấu trúc PHẦN (Phần I/II…) đúng file MT đã gán —
 // KHÔNG làm phẳng câu. Đóng phase = Elo K=60 (cột riêng `mt_dong_at`, KHÔNG đụng ingame_dong_at).
-function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: BuoiHocHS[]; buoi: BuoiHoc & { lop?: { mon: string } }; onChange: () => void }) {
+function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: BuoiHocHS[]; buoi: BuoiHoc & { lop?: { mon: string; ten_lop?: string; khoi?: string | null } }; onChange: () => void }) {
   const [probs, setProbs] = useState<Problem[]>([])
   const [grades, setGrades] = useState<Grade[]>([])
   const [phans, setPhans] = useState<MTPhanCaus[]>([])
@@ -924,6 +925,7 @@ function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: Buo
   const [preview, setPreview] = useState<CauHoi | null>(null)
   const [loading, setLoading] = useState(true)
   const [closing, setClosing] = useState(false)
+  const [diemMTOpen, setDiemMTOpen] = useState(false)
   const coMat = roster.filter((r) => r.diem_danh === 'co_mat')
   const tenHT = tenHienThiDs(coMat.map((r) => r.hoc_sinh?.ho_ten))
   const dongCol = buoi.mt_dong_at
@@ -971,6 +973,7 @@ function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: Buo
       <div className="mb-3 flex items-center gap-2">
         <span className="text-[12px] text-slate-400">{probs.length} câu ({phans.length} phần) · {coMat.length} HS · 1 click <b className="text-emerald-600">Đ</b>/<b className="text-amber-600">C</b>/<b className="text-rose-600">S</b>.</span>
         <div className="ml-auto flex items-center gap-2">
+          <button onClick={() => setDiemMTOpen((v) => !v)} className={`rounded-md border px-3 py-1.5 text-[13px] font-medium ${diemMTOpen ? 'border-violet-400 bg-violet-100 text-violet-800' : 'border-violet-300 bg-violet-50 text-violet-700 hover:bg-violet-100'}`}>🔢 Điểm MT</button>
           {dongCol ? (
             <>
               <span className="rounded-md bg-emerald-50 px-2.5 py-1 text-[13px] font-medium text-emerald-700">✓ Đã đóng MT (Elo K=60)</span>
@@ -981,6 +984,7 @@ function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: Buo
           )}
         </div>
       </div>
+      {diemMTOpen && <DiemMTPanel buoiId={buoiId} buoi={buoi} coMat={coMat} tenHT={tenHT} />}
       <div className="min-h-0 flex-1 overflow-auto rounded-xl border border-slate-200">
         <table className="w-auto border-collapse text-sm">
           <thead>
@@ -1037,6 +1041,72 @@ function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: Buo
         </div>
       )}
     </div>
+  )
+}
+
+// ── ĐIỂM MT (Thùy 07-14) — tách RIÊNG khỏi chấm Đ/C/S từng câu ở trên: 1 điểm số/HS/buổi, TÁI DÙNG hạ
+// tầng ky_thi/diem_thi (loai='mt_sat_hach', buoi_hoc_id=buổi này — tìm-hoặc-tạo LẦN ĐẦU mở panel, các lần
+// sau tái dùng). Cùng bảng với "Nhập điểm" ở Kết quả học tập › Điểm thi — nhập ở đây hiện luôn ở đó, KHÔNG
+// tách data riêng. verdict vẫn bắt buộc (cột NOT NULL) nhưng bỏ "vượt band" (khái niệm sát hạch xếp lớp,
+// không áp dụng cho điểm MT buổi học) — luôn ghi false.
+function DiemMTPanel({ buoiId, buoi, coMat, tenHT }: { buoiId: string; buoi: BuoiHoc & { lop?: { mon: string; ten_lop?: string; khoi?: string | null } }; coMat: BuoiHocHS[]; tenHT: string[] }) {
+  const [ky, setKy] = useState<KyThi | null>(null)
+  const [diems, setDiems] = useState<DiemThi[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    setLoading(true)
+    getOrCreateKyThiMTChoBuoi(buoiId, `MT ${buoi.lop?.ten_lop ?? ''} ${buoi.ngay}`.trim(), buoi.lop?.mon ?? '', buoi.lop?.khoi ?? null, currentMua())
+      .then(async (k) => { setKy(k); setDiems(await listDiemThiByKyThi([k.id])) })
+      .finally(() => setLoading(false))
+  }, [buoiId]) // eslint-disable-line
+
+  const diemOf = (hsId: string) => diems.find((d) => d.hoc_sinh_id === hsId) ?? null
+  async function save(hsId: string, verdict: Verdict, diem: number | null) {
+    if (!ky) return
+    await upsertDiemThi({ kyThiId: ky.id, hocSinhId: hsId, diem, bandLucThi: null, verdict, vuotBand: false })
+    setDiems((prev) => [...prev.filter((d) => d.hoc_sinh_id !== hsId), { ky_thi_id: ky.id, hoc_sinh_id: hsId, diem, band_luc_thi: null, verdict, vuot_band: false }])
+  }
+
+  return (
+    <div className="mb-3 rounded-xl border border-violet-200 bg-violet-50/40 p-3">
+      <div className="mb-2 flex items-center gap-2">
+        <span className="text-[13px] font-semibold text-violet-800">Điểm MT</span>
+        <span className="text-[11px] text-slate-500">độc lập với chấm Đ/C/S từng câu · hiện ở Kết quả học tập › Điểm MT</span>
+      </div>
+      {loading || !ky ? <p className="text-[12px] text-slate-400">Đang tải…</p> : (
+        <table className="w-full max-w-xl text-[13px]">
+          <thead><tr className="text-left text-[11px] uppercase tracking-wide text-slate-400">
+            <th className="py-1">Học sinh</th><th className="w-20">Điểm /10</th><th className="w-52">Verdict</th>
+          </tr></thead>
+          <tbody>
+            {coMat.map((r, i) => <DiemMTRow key={r.hoc_sinh_id} ten={tenHT[i]} init={diemOf(r.hoc_sinh_id)} onSave={(v, d) => save(r.hoc_sinh_id, v, d)} />)}
+          </tbody>
+        </table>
+      )}
+    </div>
+  )
+}
+
+const V_LABEL_MT: Record<Verdict, string> = { dat: 'Đạt', gan_dat: 'Gần', khong_dat: 'Không' }
+const V_CLS_MT: Record<Verdict, string> = { dat: 'bg-emerald-500 text-white', gan_dat: 'bg-amber-500 text-white', khong_dat: 'bg-rose-500 text-white' }
+function DiemMTRow({ ten, init, onSave }: { ten: string; init: DiemThi | null; onSave: (v: Verdict, d: number | null) => void }) {
+  const [diem, setDiem] = useState(init?.diem != null ? String(init.diem) : '')
+  const [verdict, setVerdict] = useState<Verdict | null>(init?.verdict ?? null)
+  const d = () => (diem.trim() === '' ? null : Number(diem))
+  const pick = (v: Verdict) => { setVerdict(v); onSave(v, d()) }
+  return (
+    <tr className="border-t border-violet-100">
+      <td className="py-1 font-medium text-slate-700">{ten}</td>
+      <td><input value={diem} onChange={(e) => setDiem(e.target.value)} onBlur={() => verdict && onSave(verdict, d())} inputMode="decimal" className="h-7 w-16 rounded border border-slate-300 px-2 text-[13px]" /></td>
+      <td>
+        <div className="flex gap-1">
+          {(['dat', 'gan_dat', 'khong_dat'] as Verdict[]).map((v) => (
+            <button key={v} onClick={() => pick(v)} className={`h-7 rounded px-2 text-[12px] font-medium ${verdict === v ? V_CLS_MT[v] : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}>{V_LABEL_MT[v]}</button>
+          ))}
+        </div>
+      </td>
+    </tr>
   )
 }
 
