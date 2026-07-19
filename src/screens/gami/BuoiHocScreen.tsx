@@ -20,7 +20,7 @@ import { MathText } from '../kho/ui'
 import SearchSelect from '../../components/SearchSelect'
 import DangPickerOne from '../../components/DangPickerOne'
 import { useIsMobile } from '../../hooks/useIsMobile'
-import { tenHienThiDs } from '../../lib/hoten'
+import { tenHienThiDs, tenNganHS } from '../../lib/hoten'
 import { useStore } from '../../store/useStore'
 
 type DangOpt = { ma_dang: string; ten: string }
@@ -689,18 +689,28 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
 // ── Ảnh kết quả ET gửi phụ huynh (TẠM THỜI — dashboard sau): ẢNH CẢ LỚP (bảng dọc HS × Bài) để CHỤP gửi PH.
 // Chỉ hiện Bài 1/2/3… + Đ/C/S (KHÔNG đề/dạng).
 // hex (sRGB) — KHÔNG dùng class màu Tailwind v4 ở card export vì compute ra oklch() → html-to-image trắng xóa.
+// Màu (Thùy 07-19 lần 2: bản dịu trước "u ám" quá — tươi lên 1 nấc, vẫn giữ đúng hue-mapping xanh=Đ/cam=C/đỏ=S,
+// không quay lại mức chói neon #10b981/#f59e0b/#f43f5e của bản gốc).
 const ET_KQ_PH: Record<string, { l: string; hex: string; mo_ta: string }> = {
-  correct: { l: 'Đ', hex: '#10b981', mo_ta: 'Đúng' },
-  partial: { l: 'C', hex: '#f59e0b', mo_ta: 'Trình bày chưa hoàn thiện' },
-  wrong: { l: 'S', hex: '#f43f5e', mo_ta: 'Chưa biết làm' },
+  correct: { l: 'Đ', hex: '#3fa172', mo_ta: 'Đúng' },
+  partial: { l: 'C', hex: '#e2984a', mo_ta: 'Trình bày chưa hoàn thiện' },
+  wrong: { l: 'S', hex: '#d6604a', mo_ta: 'Chưa biết làm' },
 }
 // Badge tròn Đ/C/S = SVG (circle + text căn tâm bằng dominant-baseline) → html2canvas render qua engine trình duyệt = pixel-perfect, KHỎI căn tay.
+// Rút "2 chữ cuối" CHỈ cho câu kết luận cuối ảnh gửi PH (Thùy 07-19: "Đào Minh Quân" → "Minh Quân") — KHÁC
+// tenHienThiDs (lib/hoten.ts, đã đảo về full-name 07-07 vì trùng tên gây nhầm khi DÙNG ĐỂ ĐỊNH DANH). Ở đây
+// chỉ là câu văn ngắn gọn cho gọn ảnh, không phải định danh — chấp nhận trùng-tên-ngắn giữa 2 HS khác nhau.
+function ten2TuCuoi(hoTen: string): string {
+  const w = hoTen.trim().split(/\s+/)
+  return w.slice(-2).join(' ')
+}
 function Badge({ hex, letter, size }: { hex: string; letter: string; size: number }) {
   const c = size / 2
   return (
     <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} style={{ display: 'inline-block', verticalAlign: 'middle' }}>
       <circle cx={c} cy={c} r={c} fill={hex} />
-      <text x={c} y={c} textAnchor="middle" dominantBaseline="central" fontSize={size * 0.52} fontWeight={700} fill="#ffffff"
+      {/* Chữ to hơn, vòng tròn giữ nguyên (Thùy 07-19): 0.52 → 0.64 tỉ lệ so với size. */}
+      <text x={c} y={c} textAnchor="middle" dominantBaseline="central" fontSize={size * 0.64} fontWeight={700} fill="#ffffff"
         fontFamily='system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif'>{letter}</text>
     </svg>
   )
@@ -716,12 +726,33 @@ function EtAnhGuiPH({ buoiId, coMat, probs, gradeOf, buoi, onClose }: {
   if (!coMat.length) return null
   const lop = (buoi as any).lop?.ten_lop ?? ''
   const ngayVN = buoi.ngay ? buoi.ngay.split('-').reverse().join('/') : ''
-  const tenHT = tenHienThiDs(coMat.map((r) => r.hoc_sinh?.ho_ten)) // 2 HS trùng tên rút gọn → bung đủ (Thùy 07-06)
+  // Tên trên ảnh (Thùy 07-19 lần 6): CHỈ 2 chữ cuối (vd "Chu Bảo Ngọc" → "Bảo Ngọc") — KHÁC tenHienThiDs
+  // (lib/hoten.ts, cố tình full-name để tránh nhầm KHI ĐỊNH DANH trong hệ thống). Ảnh gửi PH không phải chỗ
+  // định danh nên rút gọn OK, NHƯNG nếu 2 HS trùng "2 chữ cuối" (vd Chu Bảo Ngọc + Hồ Bảo Ngọc) → phải phân
+  // biệt: hiện phần còn lại (họ/tên đệm) ở DÒNG DƯỚI, trong ngoặc, cỡ chữ nhỏ hơn.
+  const tenNgan = coMat.map((r) => ten2TuCuoi(tenNganHS(r.hoc_sinh?.ho_ten)))
+  const demTenNgan = new Map<string, number>()
+  for (const t of tenNgan) demTenNgan.set(t, (demTenNgan.get(t) ?? 0) + 1)
+  const tenHT = coMat.map((r, i) => {
+    const full = tenNganHS(r.hoc_sinh?.ho_ten)
+    const short = tenNgan[i]
+    const trung = (demTenNgan.get(short) ?? 0) > 1
+    const conLai = full.trim().split(/\s+/).slice(0, -2).join(' ')
+    return { short, phanBiet: trung && conLai ? conLai : null }
+  })
   const coNhanXet = coMat.some((r) => !!dg[r.hoc_sinh_id]?.nhan_xet?.trim())
   const coHoanThanh = coMat.some((r) => dg[r.hoc_sinh_id]?.hoanThanhPct != null)
-  // Card giãn theo số câu để KHÔNG cắt cột: cột tên ~96px + mỗi câu ~30px + cột hoàn thành (nếu có) + padding.
-  const COL_W = 30, NAME_W = 100, HT_W = 64
-  const cardW = Math.max(440, NAME_W + probs.length * COL_W + (coHoanThanh ? HT_W : 0) + 32)
+  // Câu kết luận (Thùy 07-19): HS có ≥1 câu C/S (chưa đạt) → nêu tên (2 chữ cuối) nhắc làm lại/chép lại đáp
+  // án. "có thì hiện không thì thôi" — buổi cả lớp toàn Đ thì khỏi câu này.
+  const canLamLai = coMat
+    .filter((r) => probs.some((p) => { const kq = gradeOf(p.id, r.hoc_sinh_id)?.result; return kq === 'partial' || kq === 'wrong' }))
+    .map((r) => ten2TuCuoi(tenNganHS(r.hoc_sinh?.ho_ten)))
+  // "Test Cuối giờ" LUÔN 1 DÒNG (Thùy 07-19 lần 6: bỏ chia 2 dòng của bản trước) — 1 cột, số cột = đúng số câu.
+  // Nhận xét rộng hơn (đủ ~2 dòng) thay vì ép hẹp.
+  const ITEM_W = 26, NAME_W = 100, NX_W = 230, HT_W = 68
+  const KQ_COLS = Math.max(probs.length, 1)
+  const KQ_W = ITEM_W * KQ_COLS
+  const cardW = Math.max(420, NAME_W + KQ_W + (coNhanXet ? NX_W : 0) + (coHoanThanh ? HT_W : 0) + 32)
   // COPY ảnh — ĐÚNG pattern V1 (TabSatHach.handleCopy / openReportPopup, chạy production ổn định):
   // MỞ POPUP chứa HTML phiếu + nút "Copy ảnh" NGAY TRONG popup. Bấm Copy trong popup = user-gesture trong
   // context popup → html2canvas (CDN) + clipboard.write chạy ngon (paste Zalo); fallback tải file CHỈ khi clipboard bị chặn.
@@ -734,7 +765,7 @@ function EtAnhGuiPH({ buoiId, coMat, probs, gradeOf, buoi, onClose }: {
     const html = `<!DOCTYPE html><html><head><meta charset="utf-8">
 <base href="${location.origin}/">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kết quả ET — Lớp ${lop}</title>
+<title>Báo cáo tình hình buổi học - Lớp ${lop}</title>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"><\/script>
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
@@ -781,81 +812,98 @@ async function copyImg(){
       <div className="min-h-0 flex-1 overflow-auto p-4" onClick={(e) => e.stopPropagation()}>
         {/* ẢNH CẢ LỚP — "Copy ảnh" chụp đúng cái này.
             ⚠ TẤT CẢ màu = inline hex/rgb (sRGB), KHÔNG class màu Tailwind v4 (compute oklch → html-to-image trắng xóa).
-            Tông màu (Thùy 07-16): navy/gold/paper — GIỐNG bkdemy-web (xem bkdemy-web/app/globals.css) thay vì
-            gradient hồng/cam/xanh cũ của riêng ERP. Badge Đ/C/S GIỮ NGUYÊN xanh-lá/vàng/đỏ (màu chức năng, không phải brand). */}
+            Tông màu (Thùy 07-19 lần 2): bản trước "u ám" quá — nền card vẫn TRẮNG là chính nhưng header đổi
+            gradient navy SÁNG hơn (bớt gần-đen) + viền/badge lên tông ấm-tươi hơn cho có sức sống, không
+            còn dịu-tới-mức-xỉn như bản cũ. */}
         <div
           ref={cardRef}
           style={{
             margin: '0 auto', width: cardW, overflow: 'hidden', borderRadius: 16,
-            background: '#faf7f1', color: '#2b3947', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25)',
+            background: '#ffffff', color: '#2b3947', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25)',
             fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif',
           }}
         >
-          <div style={{ background: 'linear-gradient(120deg, #1e3a5f 0%, #142a45 100%)', borderBottom: '3px solid #8f6a24', padding: '16px 20px', color: '#ffffff' }}>
-            <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.2em', color: '#d9ac5c' }}>BK Academy</div>
-            <div style={{ fontSize: 20, fontWeight: 800, lineHeight: 1.15 }}>Kết quả ET — Lớp {lop || '—'}</div>
+          <div style={{ background: 'linear-gradient(120deg, #2c5891 0%, #1e3a5f 100%)', borderBottom: '3px solid #d1963c', padding: '16px 20px', color: '#ffffff' }}>
+            <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.2em', color: '#e8c27e' }}>BK Academy</div>
+            <div style={{ fontSize: 20, fontWeight: 800, lineHeight: 1.15 }}>Báo cáo tình hình buổi học - Lớp {lop || '—'}</div>
             <div style={{ fontSize: 12, opacity: 0.9 }}>Ngày {ngayVN} · {coMat.length} học sinh</div>
           </div>
           <div style={{ padding: '12px 16px' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
               <thead>
+                {/* 1 hàng header duy nhất (Thùy 07-19: bỏ B1..B6 — "6 cột là hiểu 6 bài", 2 tầng nhìn rối).
+                    Tất cả <th> cùng padding/verticalAlign → cao bằng nhau, chữ căn giữa từng cột. */}
                 <tr style={{ color: '#5b6b78' }}>
-                  <th style={{ borderBottom: '2px solid #8f6a24', padding: '6px 4px', textAlign: 'left', fontWeight: 600 }}>Học sinh</th>
-                  {probs.map((p) => <th key={p.id} style={{ borderBottom: '2px solid #8f6a24', padding: '6px 4px', textAlign: 'center', fontWeight: 600 }}>B{p.problem_no}</th>)}
-                  {coHoanThanh && <th style={{ borderBottom: '2px solid #8f6a24', padding: '6px 4px', textAlign: 'center', fontWeight: 600 }}>Hoàn thành</th>}
+                  <th style={{ borderBottom: '2px solid #d1963c', padding: '6px 4px', textAlign: 'center', fontWeight: 600, verticalAlign: 'middle' }}>Học sinh</th>
+                  <th style={{ borderBottom: '2px solid #d1963c', padding: '6px 4px', textAlign: 'center', fontWeight: 600, verticalAlign: 'middle', width: KQ_W }}>Test Cuối giờ</th>
+                  {coNhanXet && <th style={{ borderBottom: '2px solid #d1963c', padding: '6px 4px', textAlign: 'center', fontWeight: 600, verticalAlign: 'middle', width: NX_W }}>Nhận xét</th>}
+                  {coHoanThanh && <th style={{ borderBottom: '2px solid #d1963c', padding: '6px 4px', textAlign: 'center', fontWeight: 600, verticalAlign: 'middle' }}>Mức độ hoàn thành</th>}
                 </tr>
               </thead>
               <tbody>
-                {coMat.map((r, i) => (
-                  <tr key={r.id} style={{ borderBottom: '1px solid #e7ddc9' }}>
-                    <td style={{ padding: '6px 4px', fontWeight: 500, color: '#2b3947', whiteSpace: 'nowrap' }}>{tenHT[i]}</td>
-                    {probs.map((p) => {
-                      const kq = gradeOf(p.id, r.hoc_sinh_id)?.result
-                      const v = kq ? ET_KQ_PH[kq] : null
-                      return (
-                        <td key={p.id} style={{ padding: '6px 4px', textAlign: 'center' }}>
-                          {v
-                            // Badge = SVG (circle + text dominant-baseline=central) → html2canvas render qua engine trình duyệt = căn tâm pixel-perfect.
-                            // (line-height/nudge KHÔNG chắc ăn: html2canvas đặt baseline lệch + bỏ qua position:relative inline.)
-                            ? <Badge hex={v.hex} letter={v.l} size={24} />
-                            : <span style={{ color: '#c9bfa6' }}>–</span>}
-                        </td>
-                      )
-                    })}
-                    {coHoanThanh && (
-                      <td style={{ padding: '6px 4px', textAlign: 'center', fontWeight: 700, color: '#8f6a24' }}>
-                        {dg[r.hoc_sinh_id]?.hoanThanhPct != null ? `${dg[r.hoc_sinh_id].hoanThanhPct}%` : <span style={{ color: '#c9bfa6', fontWeight: 400 }}>–</span>}
-                      </td>
-                    )}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            <div style={{ marginTop: 12, fontSize: 10.5, color: '#5b6b78' }}>
-              {Object.values(ET_KQ_PH).map((v) => (
-                <span key={v.l} style={{ display: 'inline-block', marginRight: 12, whiteSpace: 'nowrap', verticalAlign: 'middle' }}>
-                  <Badge hex={v.hex} letter={v.l} size={16} /><span style={{ marginLeft: 4 }}>{v.mo_ta}</span>
-                </span>
-              ))}
-              {coHoanThanh && <span style={{ display: 'inline-block', whiteSpace: 'nowrap', verticalAlign: 'middle' }}>· <b style={{ color: '#8f6a24' }}>%</b> = mức hoàn thành buổi học (GV ước lượng)</span>}
-            </div>
-            {/* Nhận xét sau buổi — CHỈ hiện khối này nếu có ≥1 HS được viết nhận xét (Thùy 07-16). */}
-            {coNhanXet && (
-              <div style={{ marginTop: 14, borderRadius: 10, background: '#f3efe6', padding: '10px 12px' }}>
-                <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#8f6a24', marginBottom: 6 }}>Nhận xét sau buổi</div>
                 {coMat.map((r, i) => {
                   const nx = dg[r.hoc_sinh_id]?.nhan_xet?.trim()
-                  if (!nx) return null
+                  const pct = dg[r.hoc_sinh_id]?.hoanThanhPct
                   return (
-                    <div key={r.id} style={{ fontSize: 12.5, color: '#2b3947', padding: '3px 0' }}>
-                      <b>{tenHT[i]}:</b> <span style={{ color: '#5b6b78' }}>{nx}</span>
-                    </div>
+                    <tr key={r.id} style={{ borderBottom: '1px solid #e7ddc9' }}>
+                      {/* Tên HS: 2 chữ cuối, 1 dòng; nếu trùng "2 chữ cuối" với HS khác trong lớp → thêm dòng
+                          dưới (ngoặc, nhỏ hơn) ghi phần còn lại để phân biệt. Căn giữa THEO CHIỀU HÀNG. */}
+                      <td style={{ padding: '6px 4px', fontWeight: 500, color: '#2b3947', whiteSpace: 'nowrap', verticalAlign: 'middle', textAlign: 'center' }}>
+                        <div>{tenHT[i].short}</div>
+                        {tenHT[i].phanBiet && <div style={{ fontSize: 10.5, fontWeight: 400, color: '#8a94a3' }}>({tenHT[i].phanBiet})</div>}
+                      </td>
+                      {/* Test Cuối giờ = grid LUÔN 1 DÒNG (Thùy 07-19 lần 6), số cột = đúng số câu. */}
+                      <td style={{ padding: '6px 4px', verticalAlign: 'top' }}>
+                        <div style={{ display: 'grid', gridTemplateColumns: `repeat(${KQ_COLS}, ${ITEM_W}px)`, rowGap: 4 }}>
+                          {probs.map((p) => {
+                            const kq = gradeOf(p.id, r.hoc_sinh_id)?.result
+                            const v = kq ? ET_KQ_PH[kq] : null
+                            return (
+                              <div key={p.id} style={{ display: 'flex', justifyContent: 'center' }}>
+                                {v
+                                  // Badge = SVG (circle + text dominant-baseline=central) → html2canvas render qua engine trình duyệt = căn tâm pixel-perfect.
+                                  // (line-height/nudge KHÔNG chắc ăn: html2canvas đặt baseline lệch + bỏ qua position:relative inline.)
+                                  // Thu nhỏ 24→18 (Thùy 07-19: "giảm diện tích cho đỡ chật").
+                                  ? <Badge hex={v.hex} letter={v.l} size={18} />
+                                  : <span style={{ color: '#c9bfa6' }}>–</span>}
+                              </div>
+                            )
+                          })}
+                        </div>
+                      </td>
+                      {coNhanXet && (
+                        <td style={{ padding: '6px 4px', textAlign: 'left', verticalAlign: 'top', color: '#5b6b78', fontSize: 12, whiteSpace: 'normal', wordBreak: 'break-word' }}>
+                          {nx || <span style={{ color: '#c9bfa6' }}>–</span>}
+                        </td>
+                      )}
+                      {/* % tách cột riêng ở CUỐI bảng (Thùy 07-19 lần 3). */}
+                      {coHoanThanh && (
+                        <td style={{ padding: '6px 4px', textAlign: 'center', fontWeight: 700, color: '#c8792a', verticalAlign: 'top' }}>
+                          {pct != null ? `${pct}%` : <span style={{ color: '#c9bfa6', fontWeight: 400 }}>–</span>}
+                        </td>
+                      )}
+                    </tr>
                   )
                 })}
+              </tbody>
+            </table>
+            <div style={{ marginTop: 12, fontSize: 12.5, color: '#5b6b78' }}>
+              {Object.values(ET_KQ_PH).map((v) => (
+                <span key={v.l} style={{ display: 'inline-block', marginRight: 14, whiteSpace: 'nowrap', verticalAlign: 'middle' }}>
+                  <Badge hex={v.hex} letter={v.l} size={14} /><span style={{ marginLeft: 5 }}>{v.mo_ta}</span>
+                </span>
+              ))}
+              {/* Chú thích % hoàn thành (Thùy 07-19 lần 2: đổi câu mẫu số cụ thể "80%..." cho dễ hiểu hơn câu định nghĩa chung chung) — chỉ hiện khi có ít nhất 1 HS có %. */}
+              {coHoanThanh && <div style={{ marginTop: 4 }}>80% thể hiện rằng con đáp ứng được 80% mục tiêu của buổi học.</div>}
+            </div>
+            {/* Câu kết luận nhắc làm lại/chép lại đáp án (Thùy 07-19) — CHỈ hiện nếu có ≥1 HS có câu C/S. */}
+            {canLamLai.length > 0 && (
+              <div style={{ marginTop: 10, fontSize: 12.5, color: '#2b3947', fontStyle: 'italic' }}>
+                <b>{canLamLai.join(', ')}</b> cần làm lại/chép lại đáp án các bài chưa đạt.
               </div>
             )}
           </div>
-          <div style={{ borderTop: '1px solid #e7ddc9', background: '#f3efe6', padding: '10px 20px', textAlign: 'center', fontSize: 11, color: '#5b6b78' }}>BK Academy · Tel : 0963.209.309 · 17A10 KĐT Geleximco</div>
+          <div style={{ borderTop: '2px solid #d1963c', background: '#ffffff', padding: '10px 20px', textAlign: 'center', fontSize: 11, color: '#5b6b78' }}>BK Academy · Tel : 0963.209.309 · 17A10 KĐT Geleximco</div>
         </div>
       </div>
     </div>,

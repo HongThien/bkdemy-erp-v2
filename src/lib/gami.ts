@@ -653,9 +653,17 @@ export async function getMyTasks(): Promise<MyTask[]> {
     .select('lop_id, thu, gio_bat_dau, hieu_luc_tu, hieu_luc_den, lop:lop_id(ngay_khai_giang)').in('lop_id', lopIds).limit(LIMIT)
   const tkbByLop = new Map<string, any[]>()
   for (const s of (tkb ?? []) as any[]) { if (!tkbByLop.has(s.lop_id)) tkbByLop.set(s.lop_id, []); tkbByLop.get(s.lop_id)!.push(s) }
+  // ⭐ Fix 07-19 (Thùy: "kiểm tra lại deadline BTVN, phải trước buổi tiếp theo"): TKB chỉ là LỊCH LẶP —
+  // ngày TKB dự đoán "buổi tiếp theo" có thể đã bị HUỶ ad-hoc (huyBuoi/huyBuoiCuaNgay, vd "GV bận") mà TKB
+  // không biết. Trước đây caTiepTheo bỏ qua việc này → tính deadline theo 1 buổi ĐÃ HUỶ, cắt ngắn hạn nộp
+  // BTVN vô lý (buổi thật kế tiếp có thể xa hơn nhiều). Nạp danh sách buổi 'thuong' đã huỷ để SKIP qua.
+  const { data: huyRows } = await supabase.from('buoi_hoc')
+    .select('lop_id, ngay').eq('loai', 'thuong').eq('trang_thai', 'huy').in('lop_id', lopIds).limit(LIMIT)
+  const huyKeys = new Set((huyRows ?? []).map((r: any) => `${r.lop_id}|${r.ngay}`))
   const caTiepTheo = (lopId: string, after: string): number | null => {
     for (let i = 1; i <= 21; i++) {
       const day = congNgay(after, i); const thu = thuOf(day)
+      if (huyKeys.has(`${lopId}|${day}`)) continue // buổi ngày này đã huỷ → không phải "buổi tiếp theo" thật
       const slot = (tkbByLop.get(lopId) ?? []).find((s: any) => s.thu === thu && s.hieu_luc_tu <= day && (!s.hieu_luc_den || s.hieu_luc_den >= day) && (!s.lop?.ngay_khai_giang || s.lop.ngay_khai_giang <= day))
       if (slot) return vnInstant(day, String(slot.gio_bat_dau).slice(0, 5))
     }
@@ -755,9 +763,14 @@ export async function listAllStaffTasks(tu: string, den: string): Promise<StaffT
     .select('lop_id, thu, gio_bat_dau, hieu_luc_tu, hieu_luc_den, lop:lop_id(ngay_khai_giang)').in('lop_id', lopIds).limit(LIMIT)
   const tkbByLop = new Map<string, any[]>()
   for (const s of (tkb ?? []) as any[]) { if (!tkbByLop.has(s.lop_id)) tkbByLop.set(s.lop_id, []); tkbByLop.get(s.lop_id)!.push(s) }
+  // ⭐ Fix 07-19 — cùng bug với getMyTasks (xem comment ở đó): TKB không biết buổi bị huỷ ad-hoc.
+  const { data: huyRows } = await supabase.from('buoi_hoc')
+    .select('lop_id, ngay').eq('loai', 'thuong').eq('trang_thai', 'huy').in('lop_id', lopIds).limit(LIMIT)
+  const huyKeys = new Set((huyRows ?? []).map((r: any) => `${r.lop_id}|${r.ngay}`))
   const caTiepTheo = (lopId: string, after: string): number | null => {
     for (let i = 1; i <= 21; i++) {
       const day = congNgay(after, i); const thu = thuOf(day)
+      if (huyKeys.has(`${lopId}|${day}`)) continue
       const slot = (tkbByLop.get(lopId) ?? []).find((s: any) => s.thu === thu && s.hieu_luc_tu <= day && (!s.hieu_luc_den || s.hieu_luc_den >= day) && (!s.lop?.ngay_khai_giang || s.lop.ngay_khai_giang <= day))
       if (slot) return vnInstant(day, String(slot.gio_bat_dau).slice(0, 5))
     }
