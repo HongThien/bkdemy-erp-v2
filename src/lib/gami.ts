@@ -27,6 +27,7 @@ export type BuoiHoc = {
   lop_id: string | null; ngay: string; thu: number | null; gio_bat_dau: string | null; gio_ket_thuc: string | null; phong: string | null
   nguoi_day: string | null; nguoi_day_tg: string | null; trang_thai: 'mo' | 'hoan_tat' | 'huy'; ly_do_huy: string | null
   ingame_dong_at: string | null; et_dong_at: string | null; danh_gia_xong_at: string | null; btvn_dong_at?: string | null; mt_dong_at?: string | null
+  noi_dung_buoi?: string | null; mo_ta?: string | null
 }
 export type BuoiHocHS = { id: string; buoi_hoc_id: string; hoc_sinh_id: string; diem_danh: DiemDanh | null; bao_den_at: string | null; bu_cho_buoi_id: string | null; bo_tro_duoi_id?: string | null; hoc_sinh?: { ho_ten: string; ma_hs: string | null; anh_url: string | null } }
 export type Problem = { id: string; buoi_hoc_id: string; phase: Phase; problem_no: number; hidden: boolean; ma_dang: string | null; hoc_sinh_id?: string | null }
@@ -129,6 +130,11 @@ export async function getDangTen(maDangs: string[], mon?: string): Promise<Recor
 }
 // Sửa thông tin buổi (bù/đuổi): ngày/giờ/phòng/GV/TA trong 1 lượt. Generic cho buoi_hoc.
 export async function updateBuoiMeta(buoiId: string, patch: { ngay?: string; gio_bat_dau?: string | null; gio_ket_thuc?: string | null; phong?: string | null; nguoi_day?: string | null; nguoi_day_tg?: string | null }): Promise<void> {
+  const { error } = await supabase.from('buoi_hoc').update({ ...patch, updated_at: new Date().toISOString() }).eq('id', buoiId)
+  if (error) throw error
+}
+// Nội dung buổi học (hiện trên ảnh gửi PH) + Mô tả (nội bộ) — cấp BUỔI, nhập ở tab Đánh giá sau buổi.
+export async function setNoiDungBuoi(buoiId: string, patch: { noi_dung_buoi?: string | null; mo_ta?: string | null }): Promise<void> {
   const { error } = await supabase.from('buoi_hoc').update({ ...patch, updated_at: new Date().toISOString() }).eq('id', buoiId)
   if (error) throw error
 }

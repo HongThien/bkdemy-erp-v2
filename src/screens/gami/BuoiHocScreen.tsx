@@ -7,7 +7,7 @@ import {
   loadETForBuoi, ensureETProblems, resyncETProblems, gradeET, deleteGrade, reopenPhase,
   loadBTVNForBuoi, ensureBTVNProblems, getBtvnKetQua, setBtvnKetQua, listCanhBao, themCanhBao, xoaCanhBao, closeBTVN, reopenBTVN,
   type BtvnKQ, type CanhBao, type BtvnTrangThai, type BtvnThaiDo,
-  getDanhGia, setDanhGiaDang, setNhanXet, setHoanThanhPct, HOAN_THANH_PCT_OPTS, dongDanhGia, moLaiDanhGia,
+  getDanhGia, setDanhGiaDang, setNhanXet, setHoanThanhPct, HOAN_THANH_PCT_OPTS, dongDanhGia, moLaiDanhGia, setNoiDungBuoi,
   loadLiveTestForBuoi, getDangTen, loadMTForBuoi, ensureMTProblems,
   type BuoiAo, type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type Phase, type DiemDanh, type DanhGiaHS, type DanhGiaDiem, type TabKey, type ETResult,
 } from '../../lib/gami'
@@ -726,6 +726,7 @@ function EtAnhGuiPH({ buoiId, coMat, probs, gradeOf, buoi, onClose }: {
   if (!coMat.length) return null
   const lop = (buoi as any).lop?.ten_lop ?? ''
   const ngayVN = buoi.ngay ? buoi.ngay.split('-').reverse().join('/') : ''
+  const ngayVNNgan = ngayVN.split('/').slice(0, 2).join('/') // dd/mm, không năm — cho dòng góc "Báo cáo buổi học 16/07 - 6S2"
   // Tên trên ảnh (Thùy 07-19 lần 6): CHỈ 2 chữ cuối (vd "Chu Bảo Ngọc" → "Bảo Ngọc") — KHÁC tenHienThiDs
   // (lib/hoten.ts, cố tình full-name để tránh nhầm KHI ĐỊNH DANH trong hệ thống). Ảnh gửi PH không phải chỗ
   // định danh nên rút gọn OK, NHƯNG nếu 2 HS trùng "2 chữ cuối" (vd Chu Bảo Ngọc + Hồ Bảo Ngọc) → phải phân
@@ -752,7 +753,11 @@ function EtAnhGuiPH({ buoiId, coMat, probs, gradeOf, buoi, onClose }: {
   // ngắn/khỏi wrap chữ "Kết quả Test cuối giờ" → "Test Cuối giờ" — lưới badge vẫn phải chia 2 dòng khi ≥6 câu.
   const ITEM_W = 26, NAME_W = 100, NX_W = 230, HT_W = 68
   const KQ_COLS = probs.length <= 5 ? Math.max(probs.length, 1) : Math.ceil(probs.length / 2)
-  const KQ_W = ITEM_W * KQ_COLS
+  // Cột hẹp (lớp ít câu, vd 1-2 câu) vẫn phải đủ rộng để header "Test Cuối giờ" KHÔNG xuống dòng (Thùy
+  // 07-19) — đặt sàn KQ_MIN_W, tính vào cardW luôn (không chỉ set width cho <th>, kẻo bị cắt bởi
+  // overflow:hidden của card khi bảng auto-layout tự giãn rộng hơn cardW).
+  const KQ_MIN_W = 120
+  const KQ_W = Math.max(ITEM_W * KQ_COLS, KQ_MIN_W)
   const cardW = Math.max(420, NAME_W + KQ_W + (coNhanXet ? NX_W : 0) + (coHoanThanh ? HT_W : 0) + 32)
   // COPY ảnh — ĐÚNG pattern V1 (TabSatHach.handleCopy / openReportPopup, chạy production ổn định):
   // MỞ POPUP chứa HTML phiếu + nút "Copy ảnh" NGAY TRONG popup. Bấm Copy trong popup = user-gesture trong
@@ -824,11 +829,33 @@ async function copyImg(){
             fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif',
           }}
         >
-          <div style={{ background: 'linear-gradient(120deg, #2c5891 0%, #1e3a5f 100%)', borderBottom: '3px solid #d1963c', padding: '16px 20px', color: '#ffffff' }}>
-            <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.2em', color: '#e8c27e' }}>BK Academy</div>
-            <div style={{ fontSize: 20, fontWeight: 800, lineHeight: 1.15 }}>Báo cáo tình hình buổi học - Lớp {lop || '—'}</div>
-            <div style={{ fontSize: 12, opacity: 0.9 }}>Ngày {ngayVN} · {coMat.length} học sinh</div>
+          {/* Header redesign (Thùy 07-19 lần 8): bỏ dòng "Ngày · N học sinh"; tiêu đề cũ "Báo cáo tình hình
+              buổi học - Lớp X" THU NHỎ dồn lên góc phải làm nhãn phụ; NỘI DUNG BUỔI HỌC lên làm chữ TO NHẤT,
+              căn giữa — vì đây mới là thứ PH cần đọc trước tiên. Mô tả (nếu có) ra khỏi banner, nằm dưới. */}
+          <div style={{ background: 'linear-gradient(120deg, #2c5891 0%, #1e3a5f 100%)', borderBottom: '3px solid #d1963c', padding: '12px 20px 18px', color: '#ffffff' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 8 }}>
+              {/* Logo thay chữ "BK Academy" (Thùy 07-19) — logo chữ xám đậm, KHÔNG đọc được trên nền navy →
+                  bọc pill nền trắng cho đủ tương phản. Src TUYỆT ĐỐI (location.origin) — popup Copy ảnh mở
+                  bằng window.open('','_blank') rồi document.write, KHÔNG có origin thật (about:blank) nên
+                  path tương đối/root-relative sẽ vỡ (giống bài học PrintView.tsx logoUrl). */}
+              <div style={{ background: '#ffffff', borderRadius: 6, padding: '3px 8px', display: 'inline-flex', alignItems: 'center', lineHeight: 0 }}>
+                <img src={`${location.origin}/Logo.png`} alt="BK Academy" style={{ height: 16, display: 'block' }} />
+              </div>
+              <div style={{ fontSize: 11, opacity: 0.85, textAlign: 'right', whiteSpace: 'nowrap' }}>Báo cáo buổi học {ngayVNNgan} - {lop || '—'}</div>
+            </div>
+            <div style={{ marginTop: 10, textAlign: 'center' }}>
+              {buoi.noi_dung_buoi?.trim() ? (
+                <>
+                  <div style={{ fontSize: 11, fontWeight: 600, opacity: 0.85, letterSpacing: '0.03em' }}>Nội dung buổi học</div>
+                  <div style={{ marginTop: 2, fontSize: 23, fontWeight: 800, lineHeight: 1.2 }}>{buoi.noi_dung_buoi}</div>
+                </>
+              ) : (
+                <div style={{ fontSize: 23, fontWeight: 800, lineHeight: 1.2 }}>{`Lớp ${lop || '—'}`}</div>
+              )}
+            </div>
           </div>
+          {/* Mô tả — nội bộ (GV/TA), nằm NGOÀI banner, chữ nhỏ. Chỉ hiện nếu có nhập. */}
+          {!!buoi.mo_ta?.trim() && <div style={{ padding: '8px 20px', fontSize: 11.5, color: '#5b6b78', background: '#f7f4ee', borderBottom: '1px solid #e7ddc9' }}>{buoi.mo_ta}</div>}
           <div style={{ padding: '12px 16px' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
               <thead>
@@ -836,7 +863,7 @@ async function copyImg(){
                     Tất cả <th> cùng padding/verticalAlign → cao bằng nhau, chữ căn giữa từng cột. */}
                 <tr style={{ color: '#5b6b78' }}>
                   <th style={{ borderBottom: '2px solid #d1963c', padding: '6px 4px', textAlign: 'center', fontWeight: 600, verticalAlign: 'middle' }}>Học sinh</th>
-                  <th style={{ borderBottom: '2px solid #d1963c', padding: '6px 4px', textAlign: 'center', fontWeight: 600, verticalAlign: 'middle', width: KQ_W }}>Test Cuối giờ</th>
+                  <th style={{ borderBottom: '2px solid #d1963c', padding: '6px 4px', textAlign: 'center', fontWeight: 600, verticalAlign: 'middle', width: KQ_W, whiteSpace: 'nowrap' }}>Test Cuối giờ</th>
                   {/* Nhận xét + % vẫn 2 CỘT DỮ LIỆU riêng (Thùy 07-19: tách để dễ đọc), nhưng chỉ 1 HEADER GỘP
                       "Đánh giá của giáo viên" (colSpan) — khỏi phải viết riêng "Mức độ hoàn thành". */}
                   {(coNhanXet || coHoanThanh) && (
@@ -1396,6 +1423,9 @@ function DanhGiaTab({ buoiId, roster, dangOpts, buoi, onChange }: { buoiId: stri
     setData((d) => { const hs = d[hsId] ?? { hoc_sinh_id: hsId, nhan_xet: null, hoanThanhPct: null, diemTheoDang: {} }; return { ...d, [hsId]: { ...hs, hoanThanhPct: pct } } })
     try { await setHoanThanhPct(buoiId, hsId, pct) } catch (e: any) { alert(e.message ?? String(e)); reload() }
   }
+  // Nội dung buổi học (hiện trên ảnh gửi PH) + Mô tả (nội bộ) — CẤP BUỔI, không riêng từng HS. Chuỗi rỗng → null (anti-NULL: "chưa nhập").
+  async function saveND(txt: string) { try { await setNoiDungBuoi(buoiId, { noi_dung_buoi: txt.trim() || null }); onChange() } catch (e: any) { alert(e.message ?? String(e)) } }
+  async function saveMT(txt: string) { try { await setNoiDungBuoi(buoiId, { mo_ta: txt.trim() || null }); onChange() } catch (e: any) { alert(e.message ?? String(e)) } }
 
   if (loading) return <p className="text-[13px] text-slate-400">Đang tải…</p>
   if (coMat.length === 0) return <p className="text-[12px] text-slate-400">Chưa có HS nào điểm danh “có mặt” — điểm danh trước.</p>
@@ -1407,6 +1437,19 @@ function DanhGiaTab({ buoiId, roster, dangOpts, buoi, onChange }: { buoiId: stri
           ? <><span className="rounded-md bg-emerald-50 px-2.5 py-1 text-[13px] font-medium text-emerald-700">✓ Đã hoàn thành đánh giá</span>
               <button onClick={async () => { await moLaiDanhGia(buoiId); onChange() }} className="rounded-md border border-amber-300 px-2.5 py-1 text-[12px] font-medium text-amber-700 hover:bg-amber-50">↩ Mở lại để sửa</button></>
           : <button onClick={async () => { await dongDanhGia(buoiId); onChange() }} className="rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-indigo-500">✓ Hoàn thành đánh giá</button>}
+      </div>
+      {/* Nội dung buổi học + Mô tả — CẤP BUỔI (chung cả lớp, không riêng từng HS), Thùy 07-19. */}
+      <div className="mb-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <div>
+          <label className="mb-1 block text-[12px] font-semibold text-slate-600">Nội dung buổi học <span className="font-normal text-slate-400">(hiện trên ảnh gửi PH)</span></label>
+          <input defaultValue={buoi.noi_dung_buoi ?? ''} onBlur={(e) => saveND(e.target.value)} disabled={xong} placeholder="vd: Số chẵn - Số lẻ"
+            className="h-9 w-full rounded-md border border-slate-200 px-2.5 text-[13px] disabled:bg-slate-50 disabled:text-slate-500" />
+        </div>
+        <div>
+          <label className="mb-1 block text-[12px] font-semibold text-slate-600">Mô tả <span className="font-normal text-slate-400">(nội bộ, không hiện trên ảnh)</span></label>
+          <textarea defaultValue={buoi.mo_ta ?? ''} onBlur={(e) => saveMT(e.target.value)} disabled={xong} placeholder="vd: đây là nội dung nâng cao thuộc phần 10 điểm trong đề thi…"
+            className="h-9 w-full resize-none rounded-md border border-slate-200 px-2.5 py-1.5 text-[13px] disabled:bg-slate-50 disabled:text-slate-500" />
+        </div>
       </div>
       <p className="mb-2 text-[12px] text-slate-400">
         {dangs.length === 0
