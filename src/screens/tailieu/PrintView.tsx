@@ -138,8 +138,9 @@ export async function uploadPagesAsLink(dst: HTMLElement, filename: string, chro
 // headless = KHÔNG hiện preview, tự dựng trang ẩn → tải PDF → đóng (nút "⬇ Tải" ngay ở hàng Kho tài liệu).
 // onlyBuoiId = chỉ render 1 BUỔI (nút "👁 Xem buổi" ở Builder) — kiểm tra nhanh, khỏi cuộn cả giáo trình.
 // onReady/onRenderErr (07-12, đời 2 server-gen): tín hiệu cho PrintJobPage (trang worker Puppeteer) —
-// LƯU Ý loại btvn/giao_trinh_buoi render LẠI khi scope tự chuyển + lopTen nạp xong → onReady có thể
-// bắn NHIỀU LẦN; PrintJobPage tự debounce lấy lần cuối, ở đây chỉ bắn mộc mạc mỗi lần dựng xong.
+// loại btvn/giao_trinh_buoi vẫn có thể render lại khi SCOPE tự chuyển (btvn → mặc định scope BTVN),
+// nhưng KHÔNG còn render 2 lần vì lopTen nữa (fix 07-16 — dựng trang đợi lopTen nạp xong hẳn mới chạy,
+// xem comment ở khai báo lopTen). PrintJobPage vẫn giữ debounce làm lớp an toàn phụ, không dựa vào nó.
 export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly, onFail, onReady, onRenderErr }: { id: string; onClose: () => void; headless?: boolean; onlyBuoiId?: string; linkOnly?: boolean; onFail?: () => void; onReady?: () => void; onRenderErr?: (msg: string) => void }) {
   const [full, setFull] = useState<TaiLieuFull | null>(null)
   const [err, setErr] = useState<string | null>(null)
@@ -154,20 +155,34 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly,
   const srcRef = useRef<HTMLDivElement>(null)
   const dstRef = useRef<HTMLDivElement>(null)
   const activeContainerRef = useRef<HTMLElement | null>(null)
-  const [lopTen, setLopTen] = useState('') // tên lớp cho header phiếu BTVN (taiLieu chỉ có lop_id)
-  useEffect(() => { getTaiLieuFull(id).then(setFull).catch((e) => setErr(e.message ?? String(e))) }, [id])
+  // ⭐ Fix 07-16 (Thùy: in giáo trình buổi 9S1 ra lại hiện tên "7S2"): lopTen null = CHƯA nạp xong (khác
+  // '' = có nạp nhưng không có lớp) — TRƯỚC đây fetch full và fetch lopTen là 2 effect TÁCH RỜI, không
+  // reset lopTen khi id đổi và không có cờ "cancelled" → nếu PrintView bị TÁI SỬ DỤNG cho tài liệu khác
+  // (id đổi mà component không unmount hẳn), lopTen của tài liệu CŨ có thể lộ ra hoặc trả lời SAU tài
+  // liệu MỚI (race), in nhầm tên lớp. Gộp lại 1 effect DUY NHẤT, reset NGAY trước query (CLAUDE.md §2),
+  // có "cancelled" guard — và bên dưới đợi lopTen nạp xong mới dựng trang (bỏ hẳn kiểu "render 2 lần rồi
+  // debounce lấy lần cuối" cũ, vốn là chỗ hở cho race).
+  const [lopTen, setLopTen] = useState<string | null>(null) // null = chưa nạp xong (buoiDoc), '' = không có lớp
+  useEffect(() => {
+    let cancelled = false
+    setFull(null); setLopTen(null)
+    getTaiLieuFull(id).then((f) => {
+      if (cancelled) return
+      setFull(f)
+      const lopId = (f.taiLieu as { lop_id?: string | null }).lop_id
+      if (!['btvn', 'giao_trinh_buoi'].includes(f.taiLieu.loai) || !lopId) { setLopTen(''); return }
+      listLop().then((ls) => { if (!cancelled) setLopTen(ls.find((l) => l.id === lopId)?.ten_lop ?? '') })
+        .catch(() => { if (!cancelled) setLopTen('') })
+    }).catch((e) => { if (!cancelled) setErr(e.message ?? String(e)) })
+    return () => { cancelled = true }
+  }, [id])
   // Doc 'btvn' (trích xuất) → chỉ có phần BTVN → mặc định scope BTVN.
   useEffect(() => { if (full?.taiLieu.loai === 'btvn') setScope('btvn') }, [full])
-  // Phiếu BTVN / Giáo trình buổi (trích xuất): nạp tên lớp từ lop_id để ghi vào header (Lớp · ngày).
-  useEffect(() => {
-    const lopId = (full?.taiLieu as { lop_id?: string | null } | undefined)?.lop_id
-    if (!full || !['btvn', 'giao_trinh_buoi'].includes(full.taiLieu.loai) || !lopId) { setLopTen(''); return }
-    listLop().then((ls) => setLopTen(ls.find((l) => l.id === lopId)?.ten_lop ?? '')).catch(() => { /* */ })
-  }, [full])
 
   // Phân trang THẬT bằng paged.js → preview = bản in (A4, header/footer + số trang mỗi trang).
   useEffect(() => {
     if (!full || !srcRef.current || !dstRef.current) return
+    if (lopTen === null) return // buoiDoc: đợi lopTen nạp xong hẳn — KHÔNG dựng trang 2 lần nữa (fix 07-16, xem comment lopTen)
     let cancelled = false
     setRendering(true); setRenderErr(null)
     const ch = full.taiLieu.cau_hinh ?? {}

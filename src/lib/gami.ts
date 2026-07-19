@@ -563,9 +563,12 @@ async function markClosed(buoiId: string, dongCol: string, loai: string, otherCl
 
 // ── ĐÁNH GIÁ SAU BUỔI (GV) ────────────────────────────────────────
 // Dạng của buổi = các dạng đã gắn ở "Chấm bài trên lớp" (ingame). GV cho mỗi HS:
-//   verdict per-dạng {0/0.5/1} (= phép đo summative, feed mastery) + nhận xét định tính.
+//   verdict per-dạng {0/0.5/1} (= phép đo summative, feed mastery) + nhận xét định tính + % hoàn thành
+//   buổi (mig 0101, Thùy 07-16 — ước lượng thô để PH/GV định lượng nhanh, KHÔNG phải phép đo mastery).
 export type DanhGiaDiem = 0 | 0.5 | 1
-export type DanhGiaHS = { hoc_sinh_id: string; nhan_xet: string | null; diemTheoDang: Record<string, DanhGiaDiem> }
+export type DanhGiaHS = { hoc_sinh_id: string; nhan_xet: string | null; hoanThanhPct: number | null; diemTheoDang: Record<string, DanhGiaDiem> }
+// Mốc % hợp lệ cho "Mức độ hoàn thành buổi học" — cách nhau 5%, KHÔNG có 0 tận cùng lẻ (khớp CHECK constraint DB).
+export const HOAN_THANH_PCT_OPTS = Array.from({ length: 21 }, (_, i) => 100 - i * 5)
 
 // Dạng buổi này dạy (distinct ma_dang của bài ingame, bỏ null)
 export async function dangCuaBuoi(buoiId: string): Promise<string[]> {
@@ -576,14 +579,14 @@ export async function dangCuaBuoi(buoiId: string): Promise<string[]> {
 
 export async function getDanhGia(buoiId: string): Promise<Record<string, DanhGiaHS>> {
   const [nx, dg] = await Promise.all([
-    supabase.from('buoi_danh_gia').select('hoc_sinh_id, nhan_xet').eq('buoi_hoc_id', buoiId).limit(LIMIT),
+    supabase.from('buoi_danh_gia').select('hoc_sinh_id, nhan_xet, hoan_thanh_pct').eq('buoi_hoc_id', buoiId).limit(LIMIT),
     supabase.from('buoi_danh_gia_dang').select('hoc_sinh_id, ma_dang, diem').eq('buoi_hoc_id', buoiId).limit(LIMIT),
   ])
   if (nx.error) throw nx.error
   if (dg.error) throw dg.error
   const out: Record<string, DanhGiaHS> = {}
-  const ensure = (id: string) => (out[id] ??= { hoc_sinh_id: id, nhan_xet: null, diemTheoDang: {} })
-  for (const r of (nx.data ?? []) as any[]) ensure(r.hoc_sinh_id).nhan_xet = r.nhan_xet
+  const ensure = (id: string) => (out[id] ??= { hoc_sinh_id: id, nhan_xet: null, hoanThanhPct: null, diemTheoDang: {} })
+  for (const r of (nx.data ?? []) as any[]) { const e = ensure(r.hoc_sinh_id); e.nhan_xet = r.nhan_xet; e.hoanThanhPct = r.hoan_thanh_pct ?? null }
   for (const r of (dg.data ?? []) as any[]) ensure(r.hoc_sinh_id).diemTheoDang[r.ma_dang] = Number(r.diem) as DanhGiaDiem
   return out
 }
@@ -683,12 +686,24 @@ export async function getMyTasks(): Promise<MyTask[]> {
       }
     }
   }
-  // ── BUỔI BÙ (loai='bu'): người phụ trách gắn TRÊN buổi (nguoi_day=GV→đánh giá · nguoi_day_tg=TA→ET). KHÔNG qua phan_cong_lop, KHÔNG Elo. ──
+  // ── BUỔI BÙ (loai='bu'): người phụ trách gắn TRÊN buổi (nguoi_day=GV→đánh giá · nguoi_day_tg=TA→ET). KHÔNG qua phan_cong_lop, KHÔNG Elo.
+  // ⭐ Fix 07-16 (Thùy: "HS báo vắng nhưng Task ET không tự mất"): R-ET/R-DG pure-derive đúng nghĩa phải
+  // là "CÓ HS co_mat" — trước đây chỉ dựa vào cờ et_dong_at/danh_gia_xong_at, mà nút "Xác nhận ET"/"Hoàn
+  // thành đánh giá" ở BuoiBuDetail (BoTroScreen.tsx) chỉ hiện khi coMat.length>0 → buổi bù toàn vắng
+  // (HS báo bù rồi lại không đến) thì KHÔNG CÁCH NÀO set được cờ, task kẹt vĩnh viễn. Sửa tận gốc: buổi
+  // 0 HS có mặt = không có gì để chấm/đánh giá → KHÔNG sinh task luôn (N/A, không phải "chưa xong"). ──
   const myId = prof.nhanSu.id
   const { data: bu } = await supabase.from('buoi_hoc')
     .select('id, ngay, nguoi_day, nguoi_day_tg, et_dong_at, danh_gia_xong_at').eq('loai', 'bu').neq('trang_thai', 'huy')
     .or(`nguoi_day.eq.${myId},nguoi_day_tg.eq.${myId}`).limit(LIMIT)
+  const buIds = ((bu ?? []) as any[]).map((b) => b.id)
+  const coMatCountBu = new Map<string, number>()
+  if (buIds.length) {
+    const { data: buRoster } = await supabase.from('buoi_hoc_hs').select('buoi_hoc_id, diem_danh').in('buoi_hoc_id', buIds).limit(LIMIT)
+    for (const r of (buRoster ?? []) as any[]) if (r.diem_danh === 'co_mat') coMatCountBu.set(r.buoi_hoc_id, (coMatCountBu.get(r.buoi_hoc_id) ?? 0) + 1)
+  }
   for (const b of (bu ?? []) as any[]) {
+    if ((coMatCountBu.get(b.id) ?? 0) === 0) continue // 0 HS có mặt → không có gì để chấm/đánh giá, bỏ qua buổi này
     if (b.nguoi_day_tg === myId) out.push({ buoiId: b.id, lopId: '', lop: 'Buổi bù', ngay: b.ngay, vai: 'tg', tab: 'et', label: 'Chấm ET (bù)', done: !!b.et_dong_at, doneAt: b.et_dong_at, deadline: vnInstant(congNgay(b.ngay, 1), '12:00'), loai: 'bu' })
     if (b.nguoi_day === myId) out.push({ buoiId: b.id, lopId: '', lop: 'Buổi bù', ngay: b.ngay, vai: 'gv', tab: 'danhgia', label: 'Đánh giá buổi bù', done: !!b.danh_gia_xong_at, doneAt: b.danh_gia_xong_at, deadline: vnInstant(b.ngay, '23:59'), loai: 'bu' })
   }
@@ -892,15 +907,37 @@ export async function getDiemHS(hocSinhId: string): Promise<DiemHS> {
   }
 }
 
+// 1 dòng buoi_danh_gia mang 2 trường ĐỘC LẬP (nhan_xet + hoan_thanh_pct, mig 0101) — trước khi xoá dòng
+// vì 1 trường rỗng, phải tra trường KIA còn dữ liệu không (xoá nhầm mất field còn lại — anti-NULL: chỉ
+// xoá dòng khi CẢ 2 đều rỗng).
+async function getDanhGiaRow(buoiId: string, hsId: string): Promise<{ nhan_xet: string | null; hoan_thanh_pct: number | null } | null> {
+  const { data, error } = await supabase.from('buoi_danh_gia').select('nhan_xet, hoan_thanh_pct').match({ buoi_hoc_id: buoiId, hoc_sinh_id: hsId }).maybeSingle()
+  if (error) throw error
+  return data as any
+}
 export async function setNhanXet(buoiId: string, hsId: string, nhanXet: string): Promise<void> {
   const { data: { user } } = await supabase.auth.getUser()
   const txt = nhanXet.trim()
-  if (!txt) { // rỗng → xoá dòng (không giữ nhận xét trống)
+  const cur = await getDanhGiaRow(buoiId, hsId)
+  if (!txt && cur?.hoan_thanh_pct == null) { // cả 2 đều rỗng → xoá dòng (không giữ dòng trống)
     const { error } = await supabase.from('buoi_danh_gia').delete().match({ buoi_hoc_id: buoiId, hoc_sinh_id: hsId })
     if (error) throw error; return
   }
   const { error } = await supabase.from('buoi_danh_gia').upsert(
-    { buoi_hoc_id: buoiId, hoc_sinh_id: hsId, nhan_xet: txt, graded_by: user?.id ?? null, updated_at: new Date().toISOString() },
+    { buoi_hoc_id: buoiId, hoc_sinh_id: hsId, nhan_xet: txt || null, graded_by: user?.id ?? null, updated_at: new Date().toISOString() },
+    { onConflict: 'buoi_hoc_id,hoc_sinh_id' })
+  if (error) throw error
+}
+// Mức độ hoàn thành buổi học (0-100, mốc 5%) — null = xoá lựa chọn (chưa ước lượng, không phải 0%).
+export async function setHoanThanhPct(buoiId: string, hsId: string, pct: number | null): Promise<void> {
+  const { data: { user } } = await supabase.auth.getUser()
+  const cur = await getDanhGiaRow(buoiId, hsId)
+  if (pct == null && !cur?.nhan_xet?.trim()) { // cả 2 đều rỗng → xoá dòng
+    const { error } = await supabase.from('buoi_danh_gia').delete().match({ buoi_hoc_id: buoiId, hoc_sinh_id: hsId })
+    if (error) throw error; return
+  }
+  const { error } = await supabase.from('buoi_danh_gia').upsert(
+    { buoi_hoc_id: buoiId, hoc_sinh_id: hsId, hoan_thanh_pct: pct, graded_by: user?.id ?? null, updated_at: new Date().toISOString() },
     { onConflict: 'buoi_hoc_id,hoc_sinh_id' })
   if (error) throw error
 }
