@@ -747,10 +747,11 @@ function EtAnhGuiPH({ buoiId, coMat, probs, gradeOf, buoi, onClose }: {
   const canLamLai = coMat
     .filter((r) => probs.some((p) => { const kq = gradeOf(p.id, r.hoc_sinh_id)?.result; return kq === 'partial' || kq === 'wrong' }))
     .map((r) => ten2TuCuoi(tenNganHS(r.hoc_sinh?.ho_ten)))
-  // "Test Cuối giờ" LUÔN 1 DÒNG (Thùy 07-19 lần 6: bỏ chia 2 dòng của bản trước) — 1 cột, số cột = đúng số câu.
-  // Nhận xét rộng hơn (đủ ~2 dòng) thay vì ép hẹp.
+  // Test Cuối giờ: ≤5 câu = 1 dòng; ≥6 câu = CHIA ĐÔI ĐỀU 2 dòng (6→3-3, 7→4-3, 8→4-4...) — Thùy 07-19 lần 7:
+  // lần trước hiểu nhầm "cho thành 1 dòng thôi" là bỏ luôn chia-2-dòng, thực ra ý là CHỈ đổi tên header cho
+  // ngắn/khỏi wrap chữ "Kết quả Test cuối giờ" → "Test Cuối giờ" — lưới badge vẫn phải chia 2 dòng khi ≥6 câu.
   const ITEM_W = 26, NAME_W = 100, NX_W = 230, HT_W = 68
-  const KQ_COLS = Math.max(probs.length, 1)
+  const KQ_COLS = probs.length <= 5 ? Math.max(probs.length, 1) : Math.ceil(probs.length / 2)
   const KQ_W = ITEM_W * KQ_COLS
   const cardW = Math.max(420, NAME_W + KQ_W + (coNhanXet ? NX_W : 0) + (coHoanThanh ? HT_W : 0) + 32)
   // COPY ảnh — ĐÚNG pattern V1 (TabSatHach.handleCopy / openReportPopup, chạy production ổn định):
@@ -836,8 +837,11 @@ async function copyImg(){
                 <tr style={{ color: '#5b6b78' }}>
                   <th style={{ borderBottom: '2px solid #d1963c', padding: '6px 4px', textAlign: 'center', fontWeight: 600, verticalAlign: 'middle' }}>Học sinh</th>
                   <th style={{ borderBottom: '2px solid #d1963c', padding: '6px 4px', textAlign: 'center', fontWeight: 600, verticalAlign: 'middle', width: KQ_W }}>Test Cuối giờ</th>
-                  {coNhanXet && <th style={{ borderBottom: '2px solid #d1963c', padding: '6px 4px', textAlign: 'center', fontWeight: 600, verticalAlign: 'middle', width: NX_W }}>Nhận xét</th>}
-                  {coHoanThanh && <th style={{ borderBottom: '2px solid #d1963c', padding: '6px 4px', textAlign: 'center', fontWeight: 600, verticalAlign: 'middle' }}>Mức độ hoàn thành</th>}
+                  {/* Nhận xét + % vẫn 2 CỘT DỮ LIỆU riêng (Thùy 07-19: tách để dễ đọc), nhưng chỉ 1 HEADER GỘP
+                      "Đánh giá của giáo viên" (colSpan) — khỏi phải viết riêng "Mức độ hoàn thành". */}
+                  {(coNhanXet || coHoanThanh) && (
+                    <th colSpan={(coNhanXet ? 1 : 0) + (coHoanThanh ? 1 : 0)} style={{ borderBottom: '2px solid #d1963c', padding: '6px 4px', textAlign: 'center', fontWeight: 600, verticalAlign: 'middle' }}>Đánh giá của giáo viên</th>
+                  )}
                 </tr>
               </thead>
               <tbody>
@@ -847,12 +851,12 @@ async function copyImg(){
                   return (
                     <tr key={r.id} style={{ borderBottom: '1px solid #e7ddc9' }}>
                       {/* Tên HS: 2 chữ cuối, 1 dòng; nếu trùng "2 chữ cuối" với HS khác trong lớp → thêm dòng
-                          dưới (ngoặc, nhỏ hơn) ghi phần còn lại để phân biệt. Căn giữa THEO CHIỀU HÀNG. */}
-                      <td style={{ padding: '6px 4px', fontWeight: 500, color: '#2b3947', whiteSpace: 'nowrap', verticalAlign: 'middle', textAlign: 'center' }}>
+                          dưới (ngoặc, nhỏ hơn) ghi phần còn lại để phân biệt. Căn TRÁI (Thùy 07-19), giữa THEO CHIỀU HÀNG. */}
+                      <td style={{ padding: '6px 4px', fontWeight: 500, color: '#2b3947', whiteSpace: 'nowrap', verticalAlign: 'middle', textAlign: 'left' }}>
                         <div>{tenHT[i].short}</div>
                         {tenHT[i].phanBiet && <div style={{ fontSize: 10.5, fontWeight: 400, color: '#8a94a3' }}>({tenHT[i].phanBiet})</div>}
                       </td>
-                      {/* Test Cuối giờ = grid LUÔN 1 DÒNG (Thùy 07-19 lần 6), số cột = đúng số câu. */}
+                      {/* Test Cuối giờ = grid, số cột = KQ_COLS (≤5 câu 1 dòng, ≥6 câu chia đôi 2 dòng). */}
                       <td style={{ padding: '6px 4px', verticalAlign: 'top' }}>
                         <div style={{ display: 'grid', gridTemplateColumns: `repeat(${KQ_COLS}, ${ITEM_W}px)`, rowGap: 4 }}>
                           {probs.map((p) => {
@@ -872,7 +876,7 @@ async function copyImg(){
                         </div>
                       </td>
                       {coNhanXet && (
-                        <td style={{ padding: '6px 4px', textAlign: 'left', verticalAlign: 'top', color: '#5b6b78', fontSize: 12, whiteSpace: 'normal', wordBreak: 'break-word' }}>
+                        <td style={{ padding: '6px 4px', textAlign: 'left', verticalAlign: 'top', color: '#5b6b78', fontSize: 12, whiteSpace: 'normal', wordBreak: 'break-word', width: NX_W }}>
                           {nx || <span style={{ color: '#c9bfa6' }}>–</span>}
                         </td>
                       )}
