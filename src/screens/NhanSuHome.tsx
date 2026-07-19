@@ -3,8 +3,8 @@ import type { User, NavGroup } from '../types'
 import { useStore, staffNavFromScope, adminNavFromQuyen } from '../store/useStore'
 import { getMyScope, type MyScope } from '../lib/nhansu'
 import { useIsMobile } from '../hooks/useIsMobile'
-import { getMyTasks, buoiAoCuaKhoang, moBuoi, diemDanhTienDo, type MyTask, type BuoiAo, type TabKey } from '../lib/gami'
-import { getMyOpsTasks, getMyPrepTasks, OPS_TASK_LABEL, type OpsTask, type MyPrepTask } from '../lib/opsvanhanh'
+import { getMyTasks, moBuoi, diemDanhTienDo, type MyTask, type BuoiAo, type TabKey } from '../lib/gami'
+import { getMyOpsTasks, getMyPrepTasks, myBuoiAoCuaKhoang, OPS_TASK_LABEL, type OpsTask, type MyPrepTask } from '../lib/opsvanhanh'
 import { homNayVN, tuanCuaNgay, khoangTuan, nhanTuan, mucDeadline, nhanConLai, thuCuaNgay, ddmmVN, ngayCuaTs, type DeadlineMuc } from '../lib/tuan'
 import { BuoiDetail } from './gami/BuoiHocScreen'
 import { BuoiBuDetail } from './botro/BoTroScreen'
@@ -172,7 +172,7 @@ function OpsExtraCard({ t, now, done, onGoLeaf }: { t: OpsTask; now: number; don
   )
 }
 // Chuẩn bị phòng (Ops, xem opsvanhanh.ts) — card TÓM TẮT, bấm → sang màn "Chuẩn bị phòng".
-const PREP_LUOT_LABEL: Record<string, string> = { ngay: 'Cả buổi tối', sang: 'Sáng', chieu: 'Chiều' }
+const PREP_LUOT_LABEL: Record<string, string> = { sang: 'Sáng', chieu: 'Chiều', toi: 'Tối' }
 function PrepTaskCard({ t, now, done, onGoLeaf }: { t: MyPrepTask; now: number; done?: boolean; onGoLeaf: (leaf: string) => void }) {
   const base = done ? 'border-l-emerald-500 bg-emerald-50' : 'border-l-amber-400 bg-white'
   return (
@@ -215,7 +215,7 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
   const [now, setNow] = useState(() => Date.now())
   const [viecPT, setViecPT] = useState<ViecFull[]>([])
   // Report/Báo tan + Chuẩn bị phòng (Ops, xem opsvanhanh.ts) — Thùy 07-06: "các loại việc chính của
-  // ops chưa được đưa vào Việc của tôi". Nguồn = phan_cong_ops/prep_phong (KHÁC phan_cong_lop/MyTask),
+  // ops chưa được đưa vào Việc của tôi". Nguồn = phan_cong_ca/prep_phong (KHÁC phan_cong_lop/MyTask),
   // fetch riêng theo TỪNG NGƯỜI (không gate theo opsToanHe — assignment là per-person).
   const [opsExtra, setOpsExtra] = useState<OpsTask[]>([])
   const [prepTasks, setPrepTasks] = useState<MyPrepTask[]>([])
@@ -239,7 +239,10 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
   useEffect(() => {
     if (!scope?.opsToanHe) { setOpsWeek([]); return }
     const { tu, den } = khoangTuan(tuan)
-    buoiAoCuaKhoang(tu, den).then(async (list) => {
+    // ⭐ Fix 07-19 (Thùy: "việc phân công cho ops nào chỉ hiện cho ops đấy, đang hiện chung cho tất cả
+    // ops") — buoiAoCuaKhoang trả TOÀN TRƯỜNG (mọi lớp), KHÔNG lọc theo người. Đổi sang myBuoiAoCuaKhoang
+    // (opsvanhanh.ts) — lọc đúng theo ca đang trực của TÔI, cùng cơ chế getMyOpsTasks/getMyPrepTasks.
+    myBuoiAoCuaKhoang(tu, den).then(async (list) => {
       setOpsWeek(list)
       const ids = list.filter((ba) => ba.buoi && ba.buoi.trang_thai !== 'huy').map((ba) => ba.buoi!.id)
       try { setTienDo(ids.length ? await diemDanhTienDo(ids) : {}) } catch { setTienDo({}) }

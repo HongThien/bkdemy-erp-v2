@@ -7,6 +7,7 @@ import {
 import { readClipboardImageFile } from '../kho/ui'
 import { tuanCuaNgay, khoangTuan, homNayVN, nhanTuan, mucDeadline, thuCuaNgay, ddmmVN } from '../../lib/tuan'
 import { useIsMobile } from '../../hooks/useIsMobile'
+import ImgZoom from '../../components/ImgZoom'
 
 const hhmm = (t: string) => t.slice(0, 5)
 const DEADLINE_TONE: Record<string, string> = { qua_han: 'text-rose-600', sat: 'text-orange-600', gan: 'text-amber-600', con_nhieu: 'text-slate-400' }
@@ -155,7 +156,7 @@ function TaskRow({ t, now, open, onToggle, onDone }: { t: OpsTask; now: number; 
                 {isMobile ? '📸 Chụp ảnh' : '📎 Chọn ảnh'}
                 <input type="file" accept="image/*" capture="environment" className="hidden" onChange={chonFile} />
               </label>
-              {anhUrl && <img src={anhUrl} className={isMobile ? 'h-12 w-12 shrink-0 rounded object-cover ring-1 ring-slate-200' : 'h-9 w-9 rounded object-cover ring-1 ring-slate-200'} />}
+              {anhUrl && <ImgZoom src={anhUrl} className={isMobile ? 'h-12 w-12 shrink-0 rounded object-cover ring-1 ring-slate-200' : 'h-9 w-9 rounded object-cover ring-1 ring-slate-200'} />}
             </div>
             <button onClick={dong} disabled={busy || !anhUrl} className={isMobile ? 'rounded-lg bg-indigo-600 px-3 py-3 text-[14px] font-semibold text-white disabled:opacity-40' : 'ml-auto rounded-md bg-indigo-600 px-3 py-1.5 text-[12px] font-semibold text-white hover:bg-indigo-500 disabled:opacity-40'}>Đóng task</button>
           </div>
@@ -208,7 +209,7 @@ function DuyetTab() {
                   <span className="text-slate-400">{thuCuaNgay(r.ngay)} {ddmmVN(r.ngay)}</span>
                   <span className="text-slate-500">{r.nhanSuTen}</span>
                   <span className="ml-auto text-[12px] font-medium text-slate-600">{tienDo.label} · Hiệu suất dự kiến {hieuSuatOpsOf(r, 100)}%</span>
-                  {r.anhUrl && <img src={r.anhUrl} className="h-7 w-7 rounded object-cover ring-1 ring-slate-200" />}
+                  {r.anhUrl && <ImgZoom src={r.anhUrl} className="h-10 w-10 rounded object-cover ring-1 ring-slate-200" />}
                 </div>
               )
             })}

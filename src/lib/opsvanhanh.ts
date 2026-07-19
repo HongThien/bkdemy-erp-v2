@@ -6,14 +6,32 @@ import { supabase } from './supabase'
 import { getMyProfile } from './nhansu'
 import { congNgay, homNayVN } from './tuan'
 import { tinhHieuSuat, TIEN_DO_TIERS } from './vanhanh'
+import { buoiAoCuaKhoang, type BuoiAo } from './gami'
 
 const LIMIT = 2000
 
 // ── Ngày → thu (CN=8, T2=2..T7=7) — cùng quy ước TKB/gami.ts (bản sao nhỏ, KHÔNG export ở gami.ts). ──
 function thuOf(ngay: string): number { const d = new Date(ngay + 'T00:00:00').getDay(); return d === 0 ? 8 : d + 1 }
-const isCuoiTuan = (thu: number) => thu === 7 || thu === 8
 const toMin = (t: string) => Number(t.slice(0, 2)) * 60 + Number(t.slice(3, 5))
 const hhmm = (t: string) => t.slice(0, 5)
+
+// ── CA TRỰC (Thùy chốt 07-19) — 3 ca CỐ ĐỊNH/ngày, MỌI ngày trong tuần (khác hẳn "isCuoiTuan" cũ chỉ áp
+// T7/CN). Nguồn CHUẨN duy nhất cho khung giờ ca — đổi giờ ca thì sửa DUY NHẤT ở đây. "Lớp nào thuộc ca
+// nào" = suy từ gio_bat_dau (KHÔNG lưu tĩnh) → thêm/sửa TKB tự vào đúng ca ngay, không cần re-fill.
+export type CaTruc = 'sang' | 'chieu' | 'toi'
+export const CA_TRUC_DEF: Record<CaTruc, { label: string; from: string; to: string }> = {
+  sang: { label: 'Sáng', from: '09:00', to: '12:00' },
+  chieu: { label: 'Chiều', from: '14:00', to: '18:00' },
+  toi: { label: 'Tối', from: '18:00', to: '21:30' },
+}
+export const CA_TRUC_LIST: CaTruc[] = ['sang', 'chieu', 'toi']
+// Slot ngoài cả 3 khung giờ (vd lớp học lệch múi trưa/quá khuya) → null, KHÔNG gán ca nào — nơi gọi phải
+// tự hiện cảnh báo "X lớp ngoài khung 3 ca" (triangulation, đừng nuốt lặng).
+export function caOfGio(gioBatDau: string): CaTruc | null {
+  const m = toMin(gioBatDau)
+  for (const ca of CA_TRUC_LIST) { const d = CA_TRUC_DEF[ca]; if (m >= toMin(d.from) && m < toMin(d.to)) return ca }
+  return null
+}
 
 // ── Upload ảnh evidence — cùng pattern uploadReportAnh (baoloi.ts), bucket kho-anh prefix ops/ ──
 export async function uploadOpsAnh(blob: Blob): Promise<string> {
@@ -37,62 +55,94 @@ export async function listOpsStaff(): Promise<{ id: string; ho_ten: string }[]> 
 }
 
 // ============================================================================
-// A — PHÂN CÔNG CA TRỰC OPS (spine, PLAN.md §A). Pure-derive, effective-dated
-// Y HỆT TKB (Thùy chốt 07-06: KHÔNG đóng băng tuần, KHÔNG bảng ngoại lệ).
+// A — PHÂN CÔNG CA TRỰC OPS (Thùy chốt 07-19: theo CA — Sáng/Chiều/Tối — KHÔNG
+// theo từng lớp trong TKB nữa). Pure-derive, effective-dated Y HỆT TKB (Thùy chốt
+// 07-06: KHÔNG đóng băng tuần, KHÔNG bảng ngoại lệ). "Lớp nào thuộc ca nào" suy
+// từ gio_bat_dau (caOfGio) — KHÔNG lưu quan hệ ca↔lớp tĩnh, thêm/sửa TKB tự vào
+// đúng ca. Bảng phan_cong_ops CŨ (1 slot TKB = 1 người) đã NGỪNG DÙNG — xem
+// migration 0103 (chưa xoá, chờ Thùy xác nhận).
 // ============================================================================
-export type TkbOpsRow = {
-  tkbId: string; lopId: string; lopTen: string; mon: string; thu: number
-  gioBatDau: string; gioKetThuc: string; phong: string | null
-  phanCongId: string | null; nhanSuId: string | null; nhanSuTen: string | null
+export type CaAssignRow = {
+  thu: number; ca: CaTruc
+  nhanSuId: string | null; nhanSuTen: string | null
+  lops: { lopTen: string; gioBatDau: string; gioKetThuc: string; phong: string | null }[]
 }
-// TOÀN BỘ slot TKB còn hiệu lực + người ĐANG trực (nếu có) — nguồn màn Phân công Ops.
-// ⚠ Fix (Thùy báo lỗi 07-10): trước KHÔNG lọc `ngay_khai_giang` → lớp CHƯA khai giảng vẫn đòi gán
-// người trực (trong khi buổi/report/tan/prep của lớp đó chưa hề sinh — đúng luật "lớp chưa khai
-// giảng → session pure-derive tự KHÔNG sinh"). Lọc bỏ lớp có `ngay_khai_giang > hôm nay`.
-export async function listTkbVoiNguoiTruc(): Promise<TkbOpsRow[]> {
+// Slot TKB KHÔNG rơi vào ca nào trong 3 ca cố định — cảnh báo data-quality (triangulation), không nuốt lặng.
+export type TkbNgoaiCa = { lopTen: string; thu: number; gioBatDau: string; gioKetThuc: string }
+
+// TOÀN BỘ TKB còn hiệu lực, GOM theo (thu, ca) + người ĐANG trực ca đó (nếu có) — nguồn màn Phân công Ops.
+// ⚠ Fix (Thùy báo lỗi 07-10, giữ nguyên khi đổi sang ca): lớp CHƯA khai giảng không đòi gán (đúng luật
+// "lớp chưa khai giảng → session pure-derive tự KHÔNG sinh").
+export async function listCaVoiNguoiTruc(): Promise<{ rows: CaAssignRow[]; ngoaiCa: TkbNgoaiCa[] }> {
   const { data: tkbAll, error } = await supabase.from('thoi_khoa_bieu')
     .select('id, lop_id, thu, gio_bat_dau, gio_ket_thuc, phong, lop:lop_id(ten_lop, mon, ngay_khai_giang)')
     .is('hieu_luc_den', null).order('thu').limit(LIMIT)
   if (error) throw error
   const homNay = homNayVN()
   const tkb = (tkbAll ?? []).filter((s: any) => !s.lop?.ngay_khai_giang || s.lop.ngay_khai_giang <= homNay)
-  const tkbIds = (tkb ?? []).map((s: any) => s.id)
-  const { data: pc } = tkbIds.length
-    ? await supabase.from('phan_cong_ops').select('id, tkb_id, nhan_su_id, nhan_su:nhan_su_id(ho_ten)').is('hieu_luc_den', null).in('tkb_id', tkbIds).limit(LIMIT)
-    : { data: [] as any[] }
-  const pcByTkb = new Map<string, any>()
-  for (const p of (pc ?? []) as any[]) pcByTkb.set(p.tkb_id, p)
-  return (tkb ?? []).map((s: any): TkbOpsRow => {
-    const p = pcByTkb.get(s.id)
-    return {
-      tkbId: s.id, lopId: s.lop_id, lopTen: s.lop?.ten_lop ?? '?', mon: s.lop?.mon ?? '', thu: s.thu,
-      gioBatDau: s.gio_bat_dau, gioKetThuc: s.gio_ket_thuc, phong: s.phong,
-      phanCongId: p?.id ?? null, nhanSuId: p?.nhan_su_id ?? null, nhanSuTen: p?.nhan_su?.ho_ten ?? null,
+
+  const { data: pcAll } = await supabase.from('phan_cong_ca').select('thu, ca, nhan_su_id, nhan_su:nhan_su_id(ho_ten)').is('hieu_luc_den', null).limit(LIMIT)
+  const pcMap = new Map<string, any>()
+  for (const p of (pcAll ?? []) as any[]) pcMap.set(`${p.thu}|${p.ca}`, p)
+
+  const byKey = new Map<string, CaAssignRow>()
+  const ngoaiCa: TkbNgoaiCa[] = []
+  for (const s of tkb as any[]) {
+    const ca = caOfGio(s.gio_bat_dau)
+    if (!ca) { ngoaiCa.push({ lopTen: s.lop?.ten_lop ?? '?', thu: s.thu, gioBatDau: s.gio_bat_dau, gioKetThuc: s.gio_ket_thuc }); continue }
+    const key = `${s.thu}|${ca}`
+    if (!byKey.has(key)) {
+      const p = pcMap.get(key)
+      byKey.set(key, { thu: s.thu, ca, nhanSuId: p?.nhan_su_id ?? null, nhanSuTen: p?.nhan_su?.ho_ten ?? null, lops: [] })
     }
-  })
+    byKey.get(key)!.lops.push({ lopTen: s.lop?.ten_lop ?? '?', gioBatDau: s.gio_bat_dau, gioKetThuc: s.gio_ket_thuc, phong: s.phong })
+  }
+  const rows = [...byKey.values()].sort((a, b) => a.thu - b.thu || CA_TRUC_LIST.indexOf(a.ca) - CA_TRUC_LIST.indexOf(b.ca))
+  for (const r of rows) r.lops.sort((a, b) => a.gioBatDau.localeCompare(b.gioBatDau))
+  return { rows, ngoaiCa }
 }
-// Gán/đổi người trực 1 slot TKB — đóng dòng cũ (nếu có) + mở dòng mới TỪ `tuNgay` (KHÔNG đè).
-// Đổi vĩnh viễn = xong ngay. Swap 1 buổi thì tự gán lại người cũ sau đó (Thùy chốt — chấp nhận tự
-// "reset" tay 1 lần, đổi lấy KHỎI cần dựng bảng tuần/ngoại lệ riêng).
-export async function ganNguoiTruc(tkbId: string, nhanSuId: string, tuNgay: string): Promise<void> {
-  const { data: cur } = await supabase.from('phan_cong_ops').select('id').eq('tkb_id', tkbId).is('hieu_luc_den', null).maybeSingle()
-  if (cur) await supabase.from('phan_cong_ops').update({ hieu_luc_den: congNgay(tuNgay, -1) }).eq('id', cur.id)
-  const { error } = await supabase.from('phan_cong_ops').insert({ tkb_id: tkbId, nhan_su_id: nhanSuId, hieu_luc_tu: tuNgay, hieu_luc_den: null })
+// Gán/đổi người trực 1 ca (thu × ca) — đóng dòng cũ (nếu có) + mở dòng mới TỪ `tuNgay` (KHÔNG đè).
+export async function assignCa(thu: number, ca: CaTruc, nhanSuId: string, tuNgay: string): Promise<void> {
+  const { data: cur } = await supabase.from('phan_cong_ca').select('id').eq('thu', thu).eq('ca', ca).is('hieu_luc_den', null).maybeSingle()
+  if (cur) await supabase.from('phan_cong_ca').update({ hieu_luc_den: congNgay(tuNgay, -1) }).eq('id', cur.id)
+  const { error } = await supabase.from('phan_cong_ca').insert({ thu, ca, nhan_su_id: nhanSuId, hieu_luc_tu: tuNgay, hieu_luc_den: null })
   if (error) throw error
 }
-export async function goNguoiTruc(tkbId: string, tuNgay: string): Promise<void> {
-  const { data: cur } = await supabase.from('phan_cong_ops').select('id').eq('tkb_id', tkbId).is('hieu_luc_den', null).maybeSingle()
+export async function unassignCa(thu: number, ca: CaTruc, tuNgay: string): Promise<void> {
+  const { data: cur } = await supabase.from('phan_cong_ca').select('id').eq('thu', thu).eq('ca', ca).is('hieu_luc_den', null).maybeSingle()
   if (!cur) return
-  const { error } = await supabase.from('phan_cong_ops').update({ hieu_luc_den: congNgay(tuNgay, -1) }).eq('id', cur.id)
+  const { error } = await supabase.from('phan_cong_ca').update({ hieu_luc_den: congNgay(tuNgay, -1) }).eq('id', cur.id)
   if (error) throw error
 }
-// Toàn bộ dòng phân công trực của MỘT SỐ tkb_id (KHÔNG lọc theo 1 ngày cố định — trả nguyên các
-// khoảng hiệu lực, resolve đúng người trực THEO NGÀY CỦA TỪNG LƯỢT ở nơi gọi). fetch hết rồi lọc
-// CLIENT (PostgREST không lồng AND/OR phức tạp gọn — cùng cách gami.ts caTiepTheo làm).
-async function listPhanCongTheoTkb(tkbIds: string[]): Promise<{ tkb_id: string; nhan_su_id: string; hieu_luc_tu: string; hieu_luc_den: string | null }[]> {
-  if (!tkbIds.length) return []
-  const { data } = await supabase.from('phan_cong_ops').select('tkb_id, nhan_su_id, hieu_luc_tu, hieu_luc_den').in('tkb_id', tkbIds).limit(LIMIT)
+// Toàn bộ dòng phân công ca (KHÔNG lọc theo 1 ngày cố định — trả nguyên khoảng hiệu lực, resolve đúng
+// người trực THEO NGÀY ở nơi gọi). `nhanSuId` lọc trước ở server khi chỉ cần của 1 người (getMyOpsTasks).
+type PhanCongCaRaw = { thu: number; ca: CaTruc; nhan_su_id: string; hieu_luc_tu: string; hieu_luc_den: string | null }
+async function listPhanCongCa(nhanSuId?: string): Promise<PhanCongCaRaw[]> {
+  let q = supabase.from('phan_cong_ca').select('thu, ca, nhan_su_id, hieu_luc_tu, hieu_luc_den').limit(LIMIT)
+  if (nhanSuId) q = q.eq('nhan_su_id', nhanSuId)
+  const { data } = await q
   return (data ?? []) as any[]
+}
+// Người trực ca (thu, ca) vào 1 NGÀY cụ thể (resolve effective-date) — dùng cho prep/điểm danh.
+function nguoiTrucCuaCa(rows: PhanCongCaRaw[], thu: number, ca: CaTruc, ngay: string): string | null {
+  const r = rows.find((x) => x.thu === thu && x.ca === ca && x.hieu_luc_tu <= ngay && (!x.hieu_luc_den || x.hieu_luc_den >= ngay))
+  return r?.nhan_su_id ?? null
+}
+// Điểm danh của TÔI trong khoảng ngày — LỌC theo ca đang trực (Thùy 07-19: "việc được phân công cho ops
+// nào chỉ hiện cho ops đấy, hiện đang hiện chung cho tất cả ops" — bug nằm ở NhanSuHome.tsx gọi thẳng
+// buoiAoCuaKhoang không lọc theo người). buoiAoCuaKhoang (gami.ts) trả TOÀN TRƯỜNG — lọc lại đúng
+// membership ca, CÙNG logic getMyOpsTasks.
+export async function myBuoiAoCuaKhoang(tu: string, den: string): Promise<(BuoiAo & { ngay: string })[]> {
+  const prof = await getMyProfile()
+  if (!prof) return []
+  const myId = prof.nhanSu.id
+  const myCa = await listPhanCongCa(myId)
+  if (!myCa.length) return []
+  const all = await buoiAoCuaKhoang(tu, den)
+  return all.filter((ba) => {
+    const ca = caOfGio(ba.slot.gio_bat_dau)
+    return !!ca && nguoiTrucCuaCa(myCa, thuOf(ba.ngay), ca, ba.ngay) === myId
+  })
 }
 
 // ============================================================================
@@ -120,23 +170,25 @@ export function buildReportMessage(lopTen: string, thu: number, ngay: string, gi
 }
 export const TAN_MESSAGE = 'Lớp đã tan ạ.'
 
-// Task report/tan của TÔI trong khoảng ngày [tu, den] — pure-derive từ phan_cong_ops × TKB, tra vh_ops_task xem đã đóng chưa.
+// Task report/tan của TÔI trong khoảng ngày [tu, den] — pure-derive từ phan_cong_ca × TKB (thành viên
+// suy theo NGÀY × CA của từng slot, KHÔNG map tĩnh tkb_id→người nữa), tra vh_ops_task xem đã đóng chưa.
 export async function getMyOpsTasks(tu: string, den: string): Promise<OpsTask[]> {
   const prof = await getMyProfile()
   if (!prof) return []
   const myId = prof.nhanSu.id
-  const { data: pcAll, error } = await supabase.from('phan_cong_ops').select('tkb_id, nhan_su_id, hieu_luc_tu, hieu_luc_den').eq('nhan_su_id', myId).limit(LIMIT)
+  const myCa = await listPhanCongCa(myId)
+  if (!myCa.length) return []
+  const { data: tkb, error } = await supabase.from('thoi_khoa_bieu')
+    .select('id, thu, gio_bat_dau, gio_ket_thuc, phong, hieu_luc_tu, hieu_luc_den, lop:lop_id(ten_lop, ngay_khai_giang)').limit(LIMIT)
   if (error) throw error
-  const tkbIds = [...new Set((pcAll ?? []).map((r: any) => r.tkb_id))]
-  if (!tkbIds.length) return []
-  const { data: tkb } = await supabase.from('thoi_khoa_bieu')
-    .select('id, thu, gio_bat_dau, gio_ket_thuc, phong, hieu_luc_tu, hieu_luc_den, lop:lop_id(ten_lop, ngay_khai_giang)').in('id', tkbIds).limit(LIMIT)
-  const tkbById = new Map((tkb ?? []).map((s: any) => [s.id, s]))
   // ⚠ Fix 07-06 (Thùy báo lại): bản trước lọc `ngayReport >= tu` — SAI, chặn mất đúng ca "hôm nay = Thứ
   // 2 đầu tuần" (report của ca đó đến hạn TỐI QUA = Chủ nhật, thuộc TUẦN TRƯỚC nếu tính lịch, nhưng
   // vẫn phải hiện HÔM NAY vì còn nợ). Mở rộng khoảng đọc `vh_ops_task` thêm 1 ngày TRƯỚC `tu` để khớp.
+  const tkbIds = (tkb ?? []).map((s: any) => s.id)
   const rangeStart = congNgay(tu, -1)
-  const { data: doneRows } = await supabase.from('vh_ops_task').select('*').in('tkb_id', tkbIds).gte('ngay', rangeStart).lte('ngay', den).limit(LIMIT)
+  const { data: doneRows } = tkbIds.length
+    ? await supabase.from('vh_ops_task').select('*').in('tkb_id', tkbIds).gte('ngay', rangeStart).lte('ngay', den).limit(LIMIT)
+    : { data: [] as any[] }
   const doneMap = new Map<string, any>()
   for (const r of (doneRows ?? []) as any[]) doneMap.set(`${r.tkb_id}|${r.ngay}|${r.tab}`, r)
 
@@ -147,12 +199,13 @@ export async function getMyOpsTasks(tu: string, den: string): Promise<OpsTask[]>
   const out: OpsTask[] = []
   for (let d = tu; d <= denExt; d = congNgay(d, 1)) {
     const thu = thuOf(d)
-    for (const pc of (pcAll ?? []) as any[]) {
-      if (!(pc.hieu_luc_tu <= d && (!pc.hieu_luc_den || pc.hieu_luc_den >= d))) continue
-      const s = tkbById.get(pc.tkb_id); if (!s) continue
+    for (const s of (tkb ?? []) as any[]) {
       if (s.thu !== thu) continue
       if (!(s.hieu_luc_tu <= d && (!s.hieu_luc_den || s.hieu_luc_den >= d))) continue
       if (s.lop?.ngay_khai_giang && s.lop.ngay_khai_giang > d) continue
+      const ca = caOfGio(s.gio_bat_dau)
+      if (!ca) continue // slot ngoài 3 ca cố định → không thuộc ai ở đây (cảnh báo riêng ở màn Phân công Ops)
+      if (nguoiTrucCuaCa(myCa, thu, ca, d) !== myId) continue
       const base = { tkbId: s.id, lopTen: s.lop?.ten_lop ?? '?', thu, gioBatDau: s.gio_bat_dau, gioKetThuc: s.gio_ket_thuc, phong: s.phong }
       // Report: ngay = hôm trước ca học — CHỈ chặn trên (không hiện report của ca CÒN XA hơn tuần đang
       // xem), KHÔNG chặn dưới (report của ca "hôm nay=đầu tuần" đến hạn từ HÔM QUA vẫn phải hiện).
@@ -224,11 +277,12 @@ export function hieuSuatOpsOf(r: OpsChoDuyet, chatLuong: number): number {
 }
 
 // ============================================================================
-// C — PREP PHÒNG (Story 3). "Lượt" = phòng × cửa sổ giờ (Thùy chốt 07-06, ĐƠN
-// GIẢN HOÁ — KHÔNG thuật toán gộp-theo-khoảng-cách-phút): T2-T6 = 1 lượt/ngày
-// (dù tối có mấy ca) · T7/CN = 2 lượt (sáng/chiều, ranh giới = mốc 12:00 TKB).
+// C — PREP PHÒNG / VỆ SINH LỚP (Story 3). "Lượt" = phòng × CA TRỰC (Thùy chốt
+// 07-19: "vệ sinh lớp học theo ca, không theo ngày, trước MỖI CA 1 lần" — ĐỔI
+// từ "T2-T6 1 lượt/ngày · T7-CN 2 lượt sáng/chiều" cũ sang ĐỒNG NHẤT 1 lượt/CA,
+// MỌI ngày trong tuần. Dùng CHUNG CA_TRUC_DEF/caOfGio với phân công ops (§A).
 // ============================================================================
-export type PrepLuotKey = 'ngay' | 'sang' | 'chieu'
+export type PrepLuotKey = CaTruc
 export type PrepLuot = {
   phong: string; ngay: string; luot: PrepLuotKey; gioCaDau: string; tkbCaDauId: string
   nhanSuId: string | null; nhanSuTen: string | null
@@ -248,42 +302,33 @@ export async function luotPrepCuaKhoang(tu: string, den: string): Promise<PrepLu
     for (const s of homNay) { const k = s.phong as string; if (!byPhong.has(k)) byPhong.set(k, []); byPhong.get(k)!.push(s) }
     for (const [phong, slots] of byPhong) {
       const earliest = (arr: any[]) => arr.reduce((a, b) => (toMin(a.gio_bat_dau) <= toMin(b.gio_bat_dau) ? a : b))
-      if (isCuoiTuan(thu)) {
-        const sang = slots.filter((s) => toMin(s.gio_bat_dau) < 720)
-        const chieu = slots.filter((s) => toMin(s.gio_bat_dau) >= 720)
-        if (sang.length) out.push({ phong, ngay: d, luot: 'sang', caDau: earliest(sang) })
-        if (chieu.length) out.push({ phong, ngay: d, luot: 'chieu', caDau: earliest(chieu) })
-      } else if (slots.length) {
-        out.push({ phong, ngay: d, luot: 'ngay', caDau: earliest(slots) })
-      }
+      const byCa = new Map<CaTruc, any[]>()
+      for (const s of slots) { const ca = caOfGio(s.gio_bat_dau); if (!ca) continue; if (!byCa.has(ca)) byCa.set(ca, []); byCa.get(ca)!.push(s) }
+      for (const ca of CA_TRUC_LIST) { const arr = byCa.get(ca); if (arr?.length) out.push({ phong, ngay: d, luot: ca, caDau: earliest(arr) }) }
     }
   }
-  const tkbIds = [...new Set(out.map((o) => o.caDau.id as string))]
-  // ⚠ Fix (Thùy báo lỗi 07-10): TRƯỚC tra người trực 1 LẦN tại `tu` (đại diện cả tuần) → nhân sự vừa
-  // được phân công trực GIỮA TUẦN (hieu_luc_tu rơi sau `tu`) bị bỏ sót TOÀN BỘ lượt của họ, dù ngày
-  // lượt đó đã trong hiệu lực thật. Giờ tra ĐÚNG THEO NGÀY CỦA TỪNG LƯỢT.
-  const pcoRows = await listPhanCongTheoTkb(tkbIds)
-  const nguoiTrucOf = (tkbId: string, ngay: string): string | null => {
-    const r = pcoRows.find((x) => x.tkb_id === tkbId && x.hieu_luc_tu <= ngay && (!x.hieu_luc_den || x.hieu_luc_den >= ngay))
-    return r?.nhan_su_id ?? null
-  }
-  const nsIds = [...new Set(pcoRows.map((r) => r.nhan_su_id))]
+  // ⚠ Fix (Thùy báo lỗi 07-10, giữ nguyên khi đổi sang ca): tra người trực ĐÚNG THEO NGÀY CỦA TỪNG LƯỢT
+  // (không đại diện cả tuần bằng 1 mốc) — nhân sự vừa được phân công GIỮA TUẦN vẫn khớp đúng.
+  const pcRows = await listPhanCongCa()
+  const nsIds = [...new Set(pcRows.map((r) => r.nhan_su_id))]
   const { data: nsAll } = nsIds.length ? await supabase.from('nhan_su').select('id, ho_ten').in('id', nsIds).limit(LIMIT) : { data: [] as any[] }
   const nsTenMap = new Map(((nsAll ?? []) as any[]).map((n) => [n.id, n.ho_ten]))
   return out.map((o): PrepLuot => {
-    const nsId = nguoiTrucOf(o.caDau.id, o.ngay)
+    const nsId = nguoiTrucCuaCa(pcRows, thuOf(o.ngay), o.luot, o.ngay)
     return { phong: o.phong, ngay: o.ngay, luot: o.luot, gioCaDau: o.caDau.gio_bat_dau, tkbCaDauId: o.caDau.id, nhanSuId: nsId, nhanSuTen: nsId ? nsTenMap.get(nsId) ?? null : null }
   })
 }
 
 // Cửa thời gian đóng task — CHỈNH ĐƯỢC ở đây (cùng quy ước NGUONG_DEADLINE của tuan.ts).
-export const NGUONG_PREP_CUA = { thuongTruocMax: 60, thuongTruocMin: 30, cuoiTuanBien: 15 } // phút
+// Sáng/Chiều: cửa BÌNH THƯỜNG (đủ khoảng trống trước đó để dọn). Tối: cửa HẸP (Thùy 07-19 — Chiều
+// 14h-18h kết thúc ĐÚNG lúc Tối 18h-21h30 bắt đầu, KHÔNG có khoảng trống giữa 2 ca → phải chuẩn bị gọn
+// trong lúc ca Chiều còn diễn ra, giống quy tắc "cuối tuần liền kề" cũ, giờ áp riêng cho Tối).
+export const NGUONG_PREP_CUA = { thuongTruocMax: 60, thuongTruocMin: 30, toiBien: 15 } // phút
 
 export function prepCuaThoiGian(ngay: string, luot: PrepLuotKey, gioCaDau: string): { moTuLuc: number; dongLucMuon: number } {
   const caDauMs = vnInstantLocal(ngay, hhmm(gioCaDau))
-  if (luot === 'ngay') return { moTuLuc: caDauMs - NGUONG_PREP_CUA.thuongTruocMax * 60000, dongLucMuon: caDauMs - NGUONG_PREP_CUA.thuongTruocMin * 60000 }
-  // T7/CN: turnaround ngắn hơn (đặc biệt lượt chiều bám ngay sau lượt sáng) → cửa hẹp lại còn 1 biên trước ca đầu.
-  return { moTuLuc: caDauMs - NGUONG_PREP_CUA.cuoiTuanBien * 60000, dongLucMuon: caDauMs }
+  if (luot === 'toi') return { moTuLuc: caDauMs - NGUONG_PREP_CUA.toiBien * 60000, dongLucMuon: caDauMs }
+  return { moTuLuc: caDauMs - NGUONG_PREP_CUA.thuongTruocMax * 60000, dongLucMuon: caDauMs - NGUONG_PREP_CUA.thuongTruocMin * 60000 }
 }
 
 export type PrepRow = {

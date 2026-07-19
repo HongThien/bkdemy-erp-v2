@@ -8,9 +8,10 @@ import { tuanCuaNgay, khoangTuan, homNayVN, nhanTuan, thuCuaNgay, ddmmVN } from 
 import { useIsMobile } from '../../hooks/useIsMobile'
 import { getMyScope } from '../../lib/nhansu'
 import { useStore } from '../../store/useStore'
+import ImgZoom from '../../components/ImgZoom'
 
 const hhmm = (t: string) => t.slice(0, 5)
-const LUOT_LABEL: Record<PrepLuotKey, string> = { ngay: 'Cả buổi tối', sang: 'Sáng', chieu: 'Chiều' }
+const LUOT_LABEL: Record<PrepLuotKey, string> = { sang: 'Sáng', chieu: 'Chiều', toi: 'Tối' }
 const QUICK_PICKS = [100, 90, 80, 70]
 
 export default function PrepScreen() {
@@ -53,7 +54,7 @@ export default function PrepScreen() {
       <div className={isMobile ? 'mx-auto w-full max-w-[1100px] px-3 pt-3' : 'mx-auto w-full max-w-[1100px] px-6 pt-6'}>
         <div className="mb-4 flex flex-wrap items-center gap-2">
           <h2 className="text-[20px] font-semibold text-slate-800">Chuẩn bị phòng (Prep)</h2>
-          <span className="text-[12px] text-slate-400">Dọn phòng + KIT · 1 lượt/ngày thường · 2 lượt (sáng/chiều) T7-CN</span>
+          <span className="text-[12px] text-slate-400">Dọn phòng + KIT · 1 lượt/ca (Sáng/Chiều/Tối) · mọi ngày trong tuần</span>
           <div className="ml-auto flex items-center gap-1.5">
             <button onClick={() => setTuan((t) => t - 1)} className="rounded-md border border-slate-200 px-2.5 py-1.5 text-[16px] leading-none text-slate-600 hover:border-indigo-300">‹</button>
             <span className="min-w-[210px] text-center text-[15px] font-semibold text-slate-700">{nhanTuan(tuan)}</span>
@@ -175,14 +176,14 @@ function LuotCard({ l, onChanged, canChamVaChot }: { l: PrepLuot; onChanged: () 
               {isMobile ? '📸 Chụp ảnh' : '📎 Chọn ảnh'}
               <input type="file" accept="image/*" capture="environment" className="hidden" onChange={chonFile} />
             </label>
-            {row?.anhUrl && <img src={row.anhUrl} className={isMobile ? 'h-11 w-11 shrink-0 rounded object-cover ring-1 ring-slate-200' : 'h-7 w-7 rounded object-cover ring-1 ring-slate-200'} />}
+            {row?.anhUrl && <ImgZoom src={row.anhUrl} className={isMobile ? 'h-11 w-11 shrink-0 rounded object-cover ring-1 ring-slate-200' : 'h-7 w-7 rounded object-cover ring-1 ring-slate-200'} />}
           </div>
           <button onClick={dong} disabled={busy || !row?.donPhong || !row?.chuanBiKit || !row?.anhUrl} className={isMobile ? 'rounded-lg bg-indigo-600 px-3 py-2.5 text-[13px] font-semibold text-white disabled:opacity-40' : 'ml-auto rounded-md bg-indigo-600 px-2.5 py-1 text-[11px] font-semibold text-white hover:bg-indigo-500 disabled:opacity-40'}>Đóng</button>
         </div>
       )}
       {dong_at && (
         <div className="mt-1.5 flex flex-wrap items-center gap-2 border-t border-slate-200 pt-1.5 text-[12px]">
-          {row?.anhUrl && <img src={row.anhUrl} className="h-7 w-7 rounded object-cover ring-1 ring-slate-200" />}
+          {row?.anhUrl && <ImgZoom src={row.anhUrl} className="h-10 w-10 rounded object-cover ring-1 ring-slate-200" />}
           <span className="text-slate-500">GV chấm: <b className="text-slate-700">{row?.gvDiemNen}%</b>{row?.gvChamAt ? '' : ' (mặc định)'}</span>
           {/* Chấm điểm nền (GV) + chốt (leader) — CHỈ GV/TG/quản lý/admin, KHÔNG phải OPS (Thùy báo lỗi 07-10). */}
           {!row?.leaderChotAt && canChamVaChot && (
