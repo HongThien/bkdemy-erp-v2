@@ -20,7 +20,7 @@ const hhmm = (t: string) => t.slice(0, 5)
 // nào" = suy từ gio_bat_dau (KHÔNG lưu tĩnh) → thêm/sửa TKB tự vào đúng ca ngay, không cần re-fill.
 export type CaTruc = 'sang' | 'chieu' | 'toi'
 export const CA_TRUC_DEF: Record<CaTruc, { label: string; from: string; to: string }> = {
-  sang: { label: 'Sáng', from: '09:00', to: '12:00' },
+  sang: { label: 'Sáng', from: '08:00', to: '12:00' }, // Thùy 07-19: "tính từ 8h cho chắc" (có lớp CN học 08:00-08:30, trước 09:00 cũ)
   chieu: { label: 'Chiều', from: '14:00', to: '18:00' },
   toi: { label: 'Tối', from: '18:00', to: '21:30' },
 }

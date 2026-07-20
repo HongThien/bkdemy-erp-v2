@@ -1,7 +1,7 @@
 -- 0103 — Phân công OPS theo CA TRỰC (Sáng/Chiều/Tối), THAY THẾ mô hình cũ "1 slot TKB = 1 người trực"
 -- (bảng phan_cong_ops) — Thùy 07-19: "Phân công ops phải theo ca trực, không phải theo từng lớp trong
 -- TKB. Trong ca trực sẽ bao gồm các lớp nằm trong thời gian của ca, hệ thống tự fill." Ca CỐ ĐỊNH: Sáng
--- 09:00-12:00 · Chiều 14:00-18:00 · Tối 18:00-21:30 (xem CA_TRUC_DEF trong opsvanhanh.ts — nguồn chuẩn).
+-- 08:00-12:00 · Chiều 14:00-18:00 · Tối 18:00-21:30 (xem CA_TRUC_DEF trong opsvanhanh.ts — nguồn chuẩn).
 --
 -- Pure-derive: KHÔNG lưu quan hệ ca↔lớp tĩnh. Hệ thống tự suy "lớp nào thuộc ca nào" từ gio_bat_dau của
 -- thoi_khoa_bieu tại thời điểm truy vấn — đổi TKB (thêm/sửa lớp) tự động vào đúng ca, KHÔNG cần re-fill.
