@@ -318,21 +318,28 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
 
   return (
     <div className="mx-auto max-w-[1600px]">
-      {/* Header + điều hướng tuần */}
-      <div className="mb-4 flex flex-wrap items-center gap-2">
-        <h2 className="text-[22px] font-semibold text-slate-800">Việc của tôi</h2>
-        <div className="ml-auto flex items-center gap-1.5">
-          <button onClick={() => setTuan((t) => t - 1)} className="rounded-md border border-slate-200 px-2.5 py-1.5 text-[16px] leading-none text-slate-600 hover:border-indigo-300">‹</button>
-          <span className="min-w-[210px] text-center text-[15px] font-semibold text-slate-700">{nhanTuan(tuan)}</span>
-          <button onClick={() => setTuan((t) => t + 1)} className="rounded-md border border-slate-200 px-2.5 py-1.5 text-[16px] leading-none text-slate-600 hover:border-indigo-300">›</button>
-          {tuan !== tuanNay && <button onClick={() => setTuan(tuanNay)} className="ml-1 rounded-md bg-indigo-50 px-2.5 py-1.5 text-[14px] font-medium text-indigo-600 hover:bg-indigo-100">Tuần này</button>}
+      {/* Header + điều hướng tuần — Thùy 07-19 (mobile): "lởm quá, quá nhiều thông tin thừa" — bỏ h2
+          "Việc của tôi" trùng lặp (top bar mobile đã hiện rồi, xem NhanSuHome ~dòng 493), tuần dồn gọn
+          góc phải, MÀN HÌNH CHỈ CÒN CARD VIỆC LÀ CHÍNH. */}
+      <div className={isMobile ? 'mb-2 flex items-center justify-end gap-1' : 'mb-4 flex flex-wrap items-center gap-2'}>
+        {!isMobile && <h2 className="text-[22px] font-semibold text-slate-800">Việc của tôi</h2>}
+        <div className={isMobile ? 'flex items-center gap-1' : 'ml-auto flex items-center gap-1.5'}>
+          <button onClick={() => setTuan((t) => t - 1)} className={isMobile ? 'rounded-md border border-slate-200 px-2 py-1 text-[14px] leading-none text-slate-600' : 'rounded-md border border-slate-200 px-2.5 py-1.5 text-[16px] leading-none text-slate-600 hover:border-indigo-300'}>‹</button>
+          <span className={isMobile ? 'text-center text-[12.5px] font-semibold text-slate-700' : 'min-w-[210px] text-center text-[15px] font-semibold text-slate-700'}>
+            {isMobile ? `${ddmmVN(khoangTuan(tuan).tu)}–${ddmmVN(khoangTuan(tuan).den)}` : nhanTuan(tuan)}
+          </span>
+          <button onClick={() => setTuan((t) => t + 1)} className={isMobile ? 'rounded-md border border-slate-200 px-2 py-1 text-[14px] leading-none text-slate-600' : 'rounded-md border border-slate-200 px-2.5 py-1.5 text-[16px] leading-none text-slate-600 hover:border-indigo-300'}>›</button>
+          {tuan !== tuanNay && <button onClick={() => setTuan(tuanNay)} className={isMobile ? 'ml-1 rounded-md bg-indigo-50 px-2 py-1 text-[12px] font-medium text-indigo-600' : 'ml-1 rounded-md bg-indigo-50 px-2.5 py-1.5 text-[14px] font-medium text-indigo-600 hover:bg-indigo-100'}>Tuần này</button>}
         </div>
       </div>
-      {/* Filter loại việc — chip THEO VAI (Ops/GV/TA khác bộ, xem chipDefs) */}
-      <div className="mb-4 flex flex-wrap items-center gap-1.5">
-        {chipDefs.map((x) => <button key={x.key} onClick={() => toggleLoai(x.key)} className={chipCls(loai.has(x.key))}>{x.icon} {x.ten}</button>)}
-        {loai.size > 0 && <button onClick={() => setLoai(new Set())} className="px-2 py-1 text-[12px] text-slate-400 hover:text-slate-600">× Xoá lọc</button>}
-      </div>
+      {/* Filter loại việc — chip THEO VAI (Ops/GV/TA khác bộ, xem chipDefs). Thùy 07-19: "Ops làm việc
+          qua Việc của tôi mà" — ẨN trên mobile (thông tin thừa, chật màn hình), giữ nguyên trên desktop. */}
+      {!isMobile && (
+        <div className="mb-4 flex flex-wrap items-center gap-1.5">
+          {chipDefs.map((x) => <button key={x.key} onClick={() => toggleLoai(x.key)} className={chipCls(loai.has(x.key))}>{x.icon} {x.ten}</button>)}
+          {loai.size > 0 && <button onClick={() => setLoai(new Set())} className="px-2 py-1 text-[12px] text-slate-400 hover:text-slate-600">× Xoá lọc</button>}
+        </div>
+      )}
 
       {/* Dải số liệu tổng quan — compact (mobile, Thùy 07-06: "4 cái thẻ đếm quá to") */}
       <div className={isMobile ? 'mb-4 grid grid-cols-4 gap-1.5' : 'mb-4 grid grid-cols-2 gap-2.5 sm:grid-cols-4'}>
