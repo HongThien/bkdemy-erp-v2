@@ -48,7 +48,13 @@ export default function App() {
   if (quyen === null) return <div className="flex min-h-screen items-center justify-center text-sm text-slate-400">Đang tải quyền…</div>
 
   const shell = (
-    <div className={isMobile ? 'flex h-screen flex-col overflow-hidden bg-slate-50 text-slate-800' : 'flex h-[calc(100vh/1.15)] flex-col overflow-hidden bg-slate-50 text-slate-800'}>
+    // ⭐ Fix 07-19 (Thùy: "phải freeze header, kéo xuống mới back lại được") — mobile Safari tính 100vh
+    // (h-screen) theo viewport LỚN NHẤT có thể (như khi thanh địa chỉ đã thu gọn), CAO HƠN vùng thật đang
+    // hiện. Khung ngoài overflow-hidden vì vậy CAO HƠN màn hình thật → chính TRANG (không phải khung con
+    // overflow-auto bên trong) bị cuộn, kéo luôn header/nút back ra khỏi màn hình theo. 100dvh (h-dvh) đo
+    // ĐÚNG viewport đang hiện (dynamic viewport height) → khung ngoài khớp màn hình thật, hết cuộn trang,
+    // header/back luôn đứng yên như thiết kế ban đầu (chỉ nội dung bên trong tự cuộn).
+    <div className={isMobile ? 'flex h-dvh flex-col overflow-hidden bg-slate-50 text-slate-800' : 'flex h-[calc(100vh/1.15)] flex-col overflow-hidden bg-slate-50 text-slate-800'}>
       <TopBar email={session.user.email ?? ''} />
       <div className="min-h-0 flex-1 overflow-hidden">
         <NhanSuHome user={user} />
