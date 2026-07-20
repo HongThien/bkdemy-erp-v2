@@ -28,15 +28,16 @@ export default function PrepScreen() {
   const quyen = useStore((s) => s.quyen)
   const [canChamVaChot, setCanChamVaChot] = useState(false)
   const [myId, setMyId] = useState<string | null>(null)
+  const [scopeLoaded, setScopeLoaded] = useState(false)
   useEffect(() => {
     getMyScope().then((s) => { setCanChamVaChot(!!quyen?.laAdmin || !!s?.trucTiep.length || !!s?.laQuanLy); setMyId(s?.nhanSu.id ?? null) })
-      .catch(() => { setCanChamVaChot(false); setMyId(null) })
+      .catch(() => { setCanChamVaChot(false); setMyId(null) }).finally(() => setScopeLoaded(true))
   }, [quyen])
-  // ⭐ Fix 07-19 (Thùy: "click card dọn phòng ở Việc của tôi lại hiện HẾT task của mọi ops") — màn này
-  // dùng chung cho 2 vai: OPS (chỉ cần thấy phòng CỦA MÌNH) và GV/leader (cần thấy HẾT để chấm/chốt).
-  // Mặc định OPS thuần → "Của tôi", GV/leader → "Tất cả" (vẫn bấm đổi được cả 2 chiều).
-  const [chiCuaToi, setChiCuaToi] = useState<boolean | null>(null) // null = chưa tự set theo role lần đầu
-  useEffect(() => { if (chiCuaToi === null && myId !== null) setChiCuaToi(!canChamVaChot) }, [canChamVaChot, myId]) // eslint-disable-line
+  // ⭐ Fix 07-19 (Thùy báo LẦN 2 "vẫn hiện task của nhân sự khác"): bản trước mặc định theo VAI (OPS →
+  // của tôi, GV/leader → tất cả) — nhưng người bấm vào từ card "Việc của tôi" LUÔN đang muốn xem VIỆC
+  // CỦA HỌ trước tiên, bất kể vai gì khác họ đang kiêm. Đổi mặc định thành LUÔN "của tôi", không suy theo
+  // vai nữa — GV/leader cần xem hết để chấm/chốt thì tự bấm "Tất cả" (đổi được cả 2 chiều).
+  const [chiCuaToi, setChiCuaToi] = useState(true)
 
   // ⚠ Fix (Thùy báo lỗi 07-10, cùng gốc PhanCongOpsScreen): reload() vô điều kiện `setLoading(true)` →
   // sau mỗi lần đóng 1 lượt, lưới co về "Đang tải…" rồi build lại → mất vị trí cuộn đang xem. Chỉ hiện
@@ -65,8 +66,7 @@ export default function PrepScreen() {
         <div className="mb-4 flex flex-wrap items-center gap-2">
           <h2 className="text-[20px] font-semibold text-slate-800">Chuẩn bị phòng (Prep)</h2>
           <span className="text-[12px] text-slate-400">Dọn phòng + KIT · 1 lượt/ca (Sáng/Chiều/Tối) · mọi ngày trong tuần</span>
-          {/* Của tôi / Tất cả (Thùy 07-19: "click card dọn phòng lại hiện hết task của mọi ops") — mặc định
-              OPS thuần thấy "Của tôi", GV/leader thấy "Tất cả" (cần đủ để chấm/chốt), bấm đổi được cả 2 chiều. */}
+          {/* Của tôi / Tất cả (Thùy 07-19, báo 2 lần) — LUÔN mặc định "Của tôi" bất kể vai, bấm đổi được cả 2 chiều. */}
           {myId && (
             <div className="flex items-center gap-1 rounded-md border border-slate-200 p-0.5 text-[12px]">
               <button onClick={() => setChiCuaToi(true)} className={`rounded px-2 py-1 font-medium ${chiCuaToi ? 'bg-indigo-600 text-white' : 'text-slate-500 hover:bg-slate-100'}`}>Của tôi</button>
@@ -83,7 +83,7 @@ export default function PrepScreen() {
 
       <div className={`min-h-0 flex-1 overflow-auto ${isMobile ? 'px-3 pb-3' : 'px-6 pb-6'}`}>
         <div className="mx-auto max-w-[1100px]">
-          {loading ? <p className="text-sm text-slate-400">Đang tải…</p> : shown.length === 0 ? (
+          {loading || !scopeLoaded ? <p className="text-sm text-slate-400">Đang tải…</p> : shown.length === 0 ? (
             <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">{chiCuaToi ? 'Bạn không có lượt prep nào tuần này.' : 'Không có lượt prep nào tuần này.'}</div>
           ) : (
             <div className="flex flex-col gap-4">
