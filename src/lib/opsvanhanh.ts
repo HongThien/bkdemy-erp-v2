@@ -203,21 +203,25 @@ export async function getMyOpsTasks(tu: string, den: string): Promise<OpsTask[]>
       if (s.thu !== thu) continue
       if (!(s.hieu_luc_tu <= d && (!s.hieu_luc_den || s.hieu_luc_den >= d))) continue
       if (s.lop?.ngay_khai_giang && s.lop.ngay_khai_giang > d) continue
-      const ca = caOfGio(s.gio_bat_dau)
-      if (!ca) continue // slot ngoài 3 ca cố định → không thuộc ai ở đây (cảnh báo riêng ở màn Phân công Ops)
-      if (nguoiTrucCuaCa(myCa, thu, ca, d) !== myId) continue
       const base = { tkbId: s.id, lopTen: s.lop?.ten_lop ?? '?', thu, gioBatDau: s.gio_bat_dau, gioKetThuc: s.gio_ket_thuc, phong: s.phong }
-      // Report: ngay = hôm trước ca học — CHỈ chặn trên (không hiện report của ca CÒN XA hơn tuần đang
-      // xem), KHÔNG chặn dưới (report của ca "hôm nay=đầu tuần" đến hạn từ HÔM QUA vẫn phải hiện).
+      // ⭐ Fix 07-19 (Thùy: "report trước buổi chỉ thực hiện vào ca tối, nhân sự trực ca tối report hết
+      // toàn bộ") — sở hữu report giờ theo NGƯỜI TRỰC CA TỐI của TỐI HÔM TRƯỚC (ngayReport), KHÔNG theo
+      // ca của chính lớp đó nữa (1 người tối gom report MỌI lớp hôm sau, bất kể lớp đó ca nào).
       const ngayReport = congNgay(d, -1)
       if (ngayReport <= den) {
-        const rp = doneMap.get(`${s.id}|${ngayReport}|report`)
-        out.push({ ...base, ngay: ngayReport, tab: 'report', done: !!rp?.dong_at, doneAt: rp?.dong_at ?? null, anhUrl: rp?.anh_url ?? null, deadline: vnInstantLocal(ngayReport, REPORT_GIO_CO_DINH) })
+        const thuReport = thuOf(ngayReport)
+        if (nguoiTrucCuaCa(myCa, thuReport, 'toi', ngayReport) === myId) {
+          const rp = doneMap.get(`${s.id}|${ngayReport}|report`)
+          out.push({ ...base, ngay: ngayReport, tab: 'report', done: !!rp?.dong_at, doneAt: rp?.dong_at ?? null, anhUrl: rp?.anh_url ?? null, deadline: vnInstantLocal(ngayReport, REPORT_GIO_CO_DINH) })
+        }
       }
-      // Tan: ngay = chính ngày học — chỉ đẩy khi d trong tuần đang xem (bỏ ngày mở rộng denExt).
+      // Tan: sở hữu theo người trực CA CỦA CHÍNH LỚP trên NGÀY HỌC (giữ nguyên, khác report).
       if (d <= den) {
-        const tn = doneMap.get(`${s.id}|${d}|tan`)
-        out.push({ ...base, ngay: d, tab: 'tan', done: !!tn?.dong_at, doneAt: tn?.dong_at ?? null, anhUrl: tn?.anh_url ?? null, deadline: vnInstantLocal(d, hhmm(s.gio_ket_thuc)) + TAN_BIEN_PHUT * 60000 })
+        const ca = caOfGio(s.gio_bat_dau)
+        if (ca && nguoiTrucCuaCa(myCa, thu, ca, d) === myId) {
+          const tn = doneMap.get(`${s.id}|${d}|tan`)
+          out.push({ ...base, ngay: d, tab: 'tan', done: !!tn?.dong_at, doneAt: tn?.dong_at ?? null, anhUrl: tn?.anh_url ?? null, deadline: vnInstantLocal(d, hhmm(s.gio_ket_thuc)) + TAN_BIEN_PHUT * 60000 })
+        }
       }
     }
   }

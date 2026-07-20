@@ -82,7 +82,8 @@ export default function PrepScreen() {
                     </button>
                     {expanded && (
                       <div className="grid gap-2 sm:grid-cols-2">
-                        {list.sort((a, b) => a.phong.localeCompare(b.phong) || a.gioCaDau.localeCompare(b.gioCaDau)).map((l) => (
+                        {/* Sắp theo CA (Sáng→Chiều→Tối) TRƯỚC, phòng sau (Thùy 07-19: "rõ ràng cho dễ nhìn") — gioCaDau = giờ bắt đầu cố định của ca nên sort tăng dần đúng thứ tự Sáng/Chiều/Tối. */}
+                        {list.sort((a, b) => a.gioCaDau.localeCompare(b.gioCaDau) || a.phong.localeCompare(b.phong)).map((l) => (
                           <LuotCard key={l.phong + l.luot} l={l} onChanged={reload} canChamVaChot={canChamVaChot} />
                         ))}
                       </div>
