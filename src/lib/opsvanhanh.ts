@@ -281,30 +281,24 @@ export function hieuSuatOpsOf(r: OpsChoDuyet, chatLuong: number): number {
 // 07-19: "vệ sinh lớp học theo ca, không theo ngày, trước MỖI CA 1 lần" — ĐỔI
 // từ "T2-T6 1 lượt/ngày · T7-CN 2 lượt sáng/chiều" cũ sang ĐỒNG NHẤT 1 lượt/CA,
 // MỌI ngày trong tuần. Dùng CHUNG CA_TRUC_DEF/caOfGio với phân công ops (§A).
+// ⭐ Fix 07-19 lần 2 (Thùy: "mỗi ca dọn dẹp đều phải dọn 7 phòng chứ không phụ
+// thuộc vào TKB") — TRƯỚC suy phòng-cần-dọn từ TKB (phòng nào có lớp mới có
+// lượt) → phòng KHÔNG có lớp trong ca đó bị bỏ sót, trong khi phòng vẫn phải
+// sẵn sàng bất kể có lớp hay không. Giờ DANH_SACH_PHONG CỐ ĐỊNH — mỗi (ngày,
+// ca) LUÔN sinh đủ 7 lượt, không quét TKB nữa.
 // ============================================================================
+export const DANH_SACH_PHONG = ['101', '102', '201', '202', '301', '302', '303']
 export type PrepLuotKey = CaTruc
 export type PrepLuot = {
-  phong: string; ngay: string; luot: PrepLuotKey; gioCaDau: string; tkbCaDauId: string
+  phong: string; ngay: string; luot: PrepLuotKey; gioCaDau: string
   nhanSuId: string | null; nhanSuTen: string | null
 }
-// Suy TOÀN BỘ lượt-cần-prep trong 1 khoảng ngày — quét TKB active MỌI phòng/lớp (cross-lớp, khác truy vấn theo lop_id thường thấy).
+// Suy TOÀN BỘ lượt-cần-prep trong 1 khoảng ngày — CỐ ĐỊNH 7 phòng × 3 ca × mỗi ngày, KHÔNG phụ thuộc TKB.
 export async function luotPrepCuaKhoang(tu: string, den: string): Promise<PrepLuot[]> {
-  const { data: tkb, error } = await supabase.from('thoi_khoa_bieu')
-    .select('id, thu, gio_bat_dau, gio_ket_thuc, phong, hieu_luc_tu, hieu_luc_den, lop:lop_id(ngay_khai_giang)')
-    .not('phong', 'is', null).limit(LIMIT)
-  if (error) throw error
-  const all = (tkb ?? []) as any[]
-  const out: { phong: string; ngay: string; luot: PrepLuotKey; caDau: any }[] = []
+  const out: { phong: string; ngay: string; luot: PrepLuotKey }[] = []
   for (let d = tu; d <= den; d = congNgay(d, 1)) {
-    const thu = thuOf(d)
-    const homNay = all.filter((s) => s.thu === thu && s.hieu_luc_tu <= d && (!s.hieu_luc_den || s.hieu_luc_den >= d) && (!s.lop?.ngay_khai_giang || s.lop.ngay_khai_giang <= d))
-    const byPhong = new Map<string, any[]>()
-    for (const s of homNay) { const k = s.phong as string; if (!byPhong.has(k)) byPhong.set(k, []); byPhong.get(k)!.push(s) }
-    for (const [phong, slots] of byPhong) {
-      const earliest = (arr: any[]) => arr.reduce((a, b) => (toMin(a.gio_bat_dau) <= toMin(b.gio_bat_dau) ? a : b))
-      const byCa = new Map<CaTruc, any[]>()
-      for (const s of slots) { const ca = caOfGio(s.gio_bat_dau); if (!ca) continue; if (!byCa.has(ca)) byCa.set(ca, []); byCa.get(ca)!.push(s) }
-      for (const ca of CA_TRUC_LIST) { const arr = byCa.get(ca); if (arr?.length) out.push({ phong, ngay: d, luot: ca, caDau: earliest(arr) }) }
+    for (const ca of CA_TRUC_LIST) {
+      for (const phong of DANH_SACH_PHONG) out.push({ phong, ngay: d, luot: ca })
     }
   }
   // ⚠ Fix (Thùy báo lỗi 07-10, giữ nguyên khi đổi sang ca): tra người trực ĐÚNG THEO NGÀY CỦA TỪNG LƯỢT
@@ -315,7 +309,7 @@ export async function luotPrepCuaKhoang(tu: string, den: string): Promise<PrepLu
   const nsTenMap = new Map(((nsAll ?? []) as any[]).map((n) => [n.id, n.ho_ten]))
   return out.map((o): PrepLuot => {
     const nsId = nguoiTrucCuaCa(pcRows, thuOf(o.ngay), o.luot, o.ngay)
-    return { phong: o.phong, ngay: o.ngay, luot: o.luot, gioCaDau: o.caDau.gio_bat_dau, tkbCaDauId: o.caDau.id, nhanSuId: nsId, nhanSuTen: nsId ? nsTenMap.get(nsId) ?? null : null }
+    return { phong: o.phong, ngay: o.ngay, luot: o.luot, gioCaDau: CA_TRUC_DEF[o.luot].from, nhanSuId: nsId, nhanSuTen: nsId ? nsTenMap.get(nsId) ?? null : null }
   })
 }
 
