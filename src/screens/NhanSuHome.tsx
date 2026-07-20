@@ -510,6 +510,13 @@ export default function NhanSuHome({ user }: { user: User }) {
       )}
       {/* Khung phải: min-w-0 để bảng rộng (vd chấm bài nhiều bài) CUỘN trong khung thay vì bung cột → tràn layout. */}
       <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
+      {/* Back desktop (Thùy 07-19: "có nút back về màn hình trước") — mobile đã có "‹ Việc của tôi" ở top
+          bar riêng (dòng ~490); desktop trước đó KHÔNG có đường quay lại nào ngoài bấm lại sidebar. */}
+      {!isMobile && staffLeaf !== 'viec' && (
+        <div className="shrink-0 border-b border-slate-200 bg-white px-4 py-1.5">
+          <button onClick={() => setStaffLeaf('viec')} className="rounded-md px-1.5 py-1 text-[13px] font-medium text-indigo-600 hover:bg-indigo-50">‹ Việc của tôi</button>
+        </div>
+      )}
       {chiXemManHinh && (
         <div className="shrink-0 flex items-center gap-1.5 border-b border-amber-200 bg-amber-50 px-4 py-1.5 text-[12px] font-medium text-amber-700">
           🔒 Bạn chỉ có quyền XEM ở màn này — thao tác lưu/sửa/xoá sẽ bị chặn.

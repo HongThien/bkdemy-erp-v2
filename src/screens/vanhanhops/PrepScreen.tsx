@@ -27,7 +27,16 @@ export default function PrepScreen() {
   // OPS thuần chỉ thấy checklist + đóng (đúng việc của OPS).
   const quyen = useStore((s) => s.quyen)
   const [canChamVaChot, setCanChamVaChot] = useState(false)
-  useEffect(() => { getMyScope().then((s) => setCanChamVaChot(!!quyen?.laAdmin || !!s?.trucTiep.length || !!s?.laQuanLy)).catch(() => setCanChamVaChot(false)) }, [quyen])
+  const [myId, setMyId] = useState<string | null>(null)
+  useEffect(() => {
+    getMyScope().then((s) => { setCanChamVaChot(!!quyen?.laAdmin || !!s?.trucTiep.length || !!s?.laQuanLy); setMyId(s?.nhanSu.id ?? null) })
+      .catch(() => { setCanChamVaChot(false); setMyId(null) })
+  }, [quyen])
+  // ⭐ Fix 07-19 (Thùy: "click card dọn phòng ở Việc của tôi lại hiện HẾT task của mọi ops") — màn này
+  // dùng chung cho 2 vai: OPS (chỉ cần thấy phòng CỦA MÌNH) và GV/leader (cần thấy HẾT để chấm/chốt).
+  // Mặc định OPS thuần → "Của tôi", GV/leader → "Tất cả" (vẫn bấm đổi được cả 2 chiều).
+  const [chiCuaToi, setChiCuaToi] = useState<boolean | null>(null) // null = chưa tự set theo role lần đầu
+  useEffect(() => { if (chiCuaToi === null && myId !== null) setChiCuaToi(!canChamVaChot) }, [canChamVaChot, myId]) // eslint-disable-line
 
   // ⚠ Fix (Thùy báo lỗi 07-10, cùng gốc PhanCongOpsScreen): reload() vô điều kiện `setLoading(true)` →
   // sau mỗi lần đóng 1 lượt, lưới co về "Đang tải…" rồi build lại → mất vị trí cuộn đang xem. Chỉ hiện
@@ -38,8 +47,9 @@ export default function PrepScreen() {
   }
   useEffect(() => { reload() }, [tuan]) // eslint-disable-line
 
+  const shown = chiCuaToi && myId ? luots.filter((l) => l.nhanSuId === myId) : luots
   const dayMap = new Map<string, PrepLuot[]>()
-  for (const l of luots) { const a = dayMap.get(l.ngay) ?? []; a.push(l); dayMap.set(l.ngay, a) }
+  for (const l of shown) { const a = dayMap.get(l.ngay) ?? []; a.push(l); dayMap.set(l.ngay, a) }
   const dayGroups = [...dayMap.entries()].sort((a, b) => a[0].localeCompare(b[0]))
   const homNay = homNayVN()
   const toggleXem = (ngay: string) => setXemThem((s) => { const n = new Set(s); n.has(ngay) ? n.delete(ngay) : n.add(ngay); return n })
@@ -55,6 +65,14 @@ export default function PrepScreen() {
         <div className="mb-4 flex flex-wrap items-center gap-2">
           <h2 className="text-[20px] font-semibold text-slate-800">Chuẩn bị phòng (Prep)</h2>
           <span className="text-[12px] text-slate-400">Dọn phòng + KIT · 1 lượt/ca (Sáng/Chiều/Tối) · mọi ngày trong tuần</span>
+          {/* Của tôi / Tất cả (Thùy 07-19: "click card dọn phòng lại hiện hết task của mọi ops") — mặc định
+              OPS thuần thấy "Của tôi", GV/leader thấy "Tất cả" (cần đủ để chấm/chốt), bấm đổi được cả 2 chiều. */}
+          {myId && (
+            <div className="flex items-center gap-1 rounded-md border border-slate-200 p-0.5 text-[12px]">
+              <button onClick={() => setChiCuaToi(true)} className={`rounded px-2 py-1 font-medium ${chiCuaToi ? 'bg-indigo-600 text-white' : 'text-slate-500 hover:bg-slate-100'}`}>Của tôi</button>
+              <button onClick={() => setChiCuaToi(false)} className={`rounded px-2 py-1 font-medium ${!chiCuaToi ? 'bg-indigo-600 text-white' : 'text-slate-500 hover:bg-slate-100'}`}>Tất cả</button>
+            </div>
+          )}
           <div className="ml-auto flex items-center gap-1.5">
             <button onClick={() => setTuan((t) => t - 1)} className="rounded-md border border-slate-200 px-2.5 py-1.5 text-[16px] leading-none text-slate-600 hover:border-indigo-300">‹</button>
             <span className="min-w-[210px] text-center text-[15px] font-semibold text-slate-700">{nhanTuan(tuan)}</span>
@@ -65,8 +83,8 @@ export default function PrepScreen() {
 
       <div className={`min-h-0 flex-1 overflow-auto ${isMobile ? 'px-3 pb-3' : 'px-6 pb-6'}`}>
         <div className="mx-auto max-w-[1100px]">
-          {loading ? <p className="text-sm text-slate-400">Đang tải…</p> : luots.length === 0 ? (
-            <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">Không có lượt prep nào tuần này.</div>
+          {loading ? <p className="text-sm text-slate-400">Đang tải…</p> : shown.length === 0 ? (
+            <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">{chiCuaToi ? 'Bạn không có lượt prep nào tuần này.' : 'Không có lượt prep nào tuần này.'}</div>
           ) : (
             <div className="flex flex-col gap-4">
               {dayGroups.map(([ngay, list]) => {
