@@ -2287,3 +2287,8 @@ Verify chống trùng: kiểm **từng dòng** trong 149 dòng xem mã mới có
 
 **Va số migration — LẦN THỨ HAI trong ngày.** Sáng: em đánh `0109` trùng `0109_go_nhan_ma_cau_mau_thuan`. Chiều: cả `0110`/`0111`/`0112` của em trùng `0110_5a2_2007_gan_dung_cau` / `0111_kho_rac_cau_hoi` / `0112_thay_cau_chet`. Đã dời thành `0113`/`0114`/`0115` (giữ thứ tự phụ thuộc: nới CHECK `0113` phải chạy TRƯỚC siết CHECK `0115`).
 → Số thứ tự hiện được cấp bằng cách "nhìn file cuối rồi +1" — hai luồng làm song song trong ngày là đụng nhau chắc chắn. `migrate.mjs` sort theo tên nên trùng số vẫn chạy được, **nhưng thứ tự giữa 2 file cùng số do chữ cái quyết định** — với cặp nới/siết CHECK thì đảo thứ tự là fail. Cần đổi cách cấp số (timestamp `YYYYMMDDHHMM_` như Supabase CLI chuẩn, hoặc reserve trước khi code). **Chưa làm — cần Thùy quyết.**
+
+**Thùy chốt cuối 07-21 (đóng 2 tồn đọng):**
+- `DC000012` — bỏ qua, 1 câu không ảnh hưởng. Không vá nữa.
+- **396 cặp câu trùng trong cùng tài liệu = KHÔNG phải lỗi.** Thùy: *"do kho chưa đủ đa dạng, không phải vấn đề lỗi đâu."* → dạng ít câu thì gợi ý buộc dùng lại. Hết trùng đến từ **làm dày kho**, không từ sửa code. Đừng mở lại như bug.
+  *(CTO ghi chú, chưa kiểm chứng: kho mỏng giải thích được trùng giữa phan `dang`↔`btvn`, nhưng vài cặp trùng nằm 2 lần trong CÙNG một phan — cái đó kho mỏng không giải thích hết. Để đó; nếu sau này kho dày mà vẫn còn thì soi `autoSuggestByLoai`/`setDangOfBuoi`.)*

@@ -575,8 +575,9 @@
 - **`0112` thay 149/150 câu chết** — suy dạng từ mã câu (8 ký tự đầu; đúng 8667/8675 = 99,9%), chọn câu cùng dạng · chưa có trong chính tài liệu đó · ít-dùng-nhất-trước. Migration ghi **cặp thay thế tường minh** (soát được, chạy lại = no-op); bảng đối chiếu `docs/2026-07-21-thay-cau-chet.md`. Giáo trình MẪU 11A/7S/9A: **0 câu chết còn lại**. Còn 1 (`DC000012`, mã đời đầu không suy được dạng — Thùy chốt bỏ).
 - `setETCaus` giờ bump `tai_lieu.updated_at` (trước đó sửa CÂU không để lại dấu thời gian nào).
 
-### 🐞 Tồn đọng mới phát hiện 07-21 (chưa đụng — cần Thùy quyết)
-- **396 cặp câu TRÙNG trong CÙNG 1 tài liệu** (có sẵn từ trước, KHÔNG phải do `0112` — đã kiểm từng dòng trong 149 dòng ghi mới: 0 gây trùng). Cùng mã câu 2–3 lần/giáo trình, có cặp ở cả phan `dang` lẫn `btvn`, có cặp **2 lần trong CÙNG một phan**. Vd `Giáo trình 9A` · `09080106018` × 3. Chưa rõ cố ý (ôn lại) hay lỗi `setDangOfBuoi`/nhân bản.
+### Tồn đọng 07-21
+- **396 cặp câu trùng trong cùng 1 tài liệu — Thùy CHỐT: KHÔNG phải lỗi.** Nguyên nhân là **kho chưa đủ đa dạng** (dạng ít câu → gợi ý buộc phải dùng lại). ĐỪNG mở lại việc này như bug; hết trùng là hệ quả của việc **làm dày kho**, không phải của việc sửa code. *(Chưa kiểm chứng: vài cặp trùng nằm **2 lần trong CÙNG một phan** — kho mỏng giải thích được trùng giữa luyện↔BTVN, chưa chắc giải thích được trùng trong cùng một phan. Nếu sau này kho dày mà vẫn còn, soi `autoSuggestByLoai`/`setDangOfBuoi`.)*
+- **`DC000012`** (1 tham chiếu chết không suy được dạng) — Thùy chốt **bỏ qua**, 1 câu không ảnh hưởng.
 - **24 buổi** (btvn 20 · et 2 · mt 2) lưới chưa gắn được `ma_cau` (số ô ≠ số câu). KHÔNG hỏng thêm — tự hiện banner đỏ khi mở tab, xử dần khi gặp.
 - 50 ca TKB chưa gán phòng · 6 lớp Anh/Văn (7E1/8E1/9E1/7V1/8V1/9V1) chưa có ca TKB nào.
 
