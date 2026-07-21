@@ -116,6 +116,11 @@
 - **Trước khi code module đụng bảng nào:** đọc `schema.md`. Cần chắc 1 cột/trigger/function có thật
   → `npm run schema` refresh, hoặc query thẳng `information_schema` / `pg_catalog` từ DB live. **KHÔNG đoán từ doc cũ.**
 - **Sau mỗi migration:** `npm run schema`, commit `schema.md` cùng migration (git diff thấy schema đổi gì).
+- **Đặt tên migration = TIMESTAMP, không phải số tăng dần:** `npm run new-migration ten_viec_snake_case`
+  → `YYYYMMDDHHMM_ten_viec.sql` (giờ VN). Số tăng dần cấp bằng "nhìn file cuối +1" nên hai luồng làm
+  song song là va nhau (07-21 va 2 lần, 4 file). `migrate.mjs` sort theo TÊN → hai file trùng số vẫn chạy
+  nhưng **thứ tự do chữ cái quyết định**; gặp cặp *nới CHECK → siết CHECK* mà đảo thứ tự là fail.
+  File cũ `0001..0115` **giữ nguyên** — `'0' < '2'` nên luôn sort trước timestamp mới.
 
 ---
 

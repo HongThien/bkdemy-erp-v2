@@ -8,6 +8,7 @@
     "preview": "vite preview",
     "schema": "node scripts/introspect.mjs",
     "migrate": "node scripts/migrate.mjs",
+    "new-migration": "node scripts/new-migration.mjs",
     "worker": "node worker/index.mjs",
     "test:dethi": "vite-node scripts/test-dethi-ingest.ts"
   },
