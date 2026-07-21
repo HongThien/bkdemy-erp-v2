@@ -2,10 +2,12 @@
 // 3 dạng, CÙNG 1 định dạng mặc định (đề + dòng kẻ, KHÔNG bảng — Thùy chốt 07-11): TRẮC NGHIỆM (CauItem
 // có phương án) · TRẢ LỜI NGẮN (dòng kẻ ngắn) · TỰ LUẬN (dòng kẻ dài hơn, số dòng = cau_hinh.btvnLinesByCau).
 // Bản GV = kèm đáp án/lời giải mặc định (đề rồi lời giải bên dưới), không tách bảng riêng.
+// THỨ TỰ CÂU: đọc thẳng `thu_tu` của DB, KHÔNG sắp xếp lại ở đây — việc gom theo nhóm in đã làm
+// từ lúc LƯU (sortETCaus, xem lib/tailieu.ts). Đừng thêm sort vào file này: giấy sẽ lệch với hệ.
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
-import { getTaiLieuFull, etFormOf, type TaiLieuFull } from '../../lib/tailieu'
+import { getTaiLieuFull, etGroupOf, type ETGroup, type TaiLieuFull } from '../../lib/tailieu'
 import type { CauHoi } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
 import { CauItem, OptGrid, GvAnswer, WriteLines, splitStem, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChrome, printWithFilename } from './PrintView'
@@ -152,17 +154,24 @@ function ETDoc({ full, gv }: { full: TaiLieuFull; gv: boolean }) {
   const ch = full.taiLieu.cau_hinh ?? {}
   const lines = ch.btvnLinesByCau ?? {}
   const caus = full.phans.find((p) => p.loai_phan === 'custom')?.caus ?? []
-  // gom theo FORM HIỂN THỊ đã chọn trong ET (etFormOf), KHÔNG theo loai_cau kho.
-  // Câu Đúng/Sai (menh_de) → luôn đi nhánh CauItem (render đề chung + 4 mệnh đề); bảng trả-lời-ngắn không hiển thị nổi.
-  const isDS = (c: CauHoi) => !!(c.menh_de && c.menh_de.length)
-  const tn = caus.filter((c) => isDS(c) || etFormOf(c, ch) === 'trac_nghiem')
-  const tln = caus.filter((c) => !isDS(c) && etFormOf(c, ch) === 'tra_loi_ngan')
-  const tl = caus.filter((c) => !isDS(c) && etFormOf(c, ch) === 'tu_luan')
+  // ⭐ 07-20: KHÔNG gom lại theo loại ở đây nữa. Thứ tự in = ĐÚNG `thu_tu` của DB (đã gom theo nhóm
+  // từ lúc LƯU — sortETCaus trong ETScreen.luu). Trước đây gom ở render nên "Câu 3" trên giấy khác
+  // "Câu 3" ở bảng phiếu chấm / màn Chấm ET / ET online → chấm nhầm câu → sai ma_dang → bẩn mastery.
+  // Heading "Phần …" giờ cắt theo KHÚC LIÊN TIẾP cùng nhóm: ET lưu từ nay ra đúng 3 phần; ET CŨ
+  // (thu_tu chưa gom) vẫn in ĐÚNG THỨ TỰ — chỉ có thể nhiều khúc hơn, mở ra lưu lại 1 lần là gọn.
+  const runs: { g: ETGroup; items: CauHoi[] }[] = []
+  for (const c of caus) {
+    const g = etGroupOf(c, ch)
+    const last = runs[runs.length - 1]
+    if (last && last.g === g) last.items.push(c)
+    else runs.push({ g, items: [c] })
+  }
   let no = 0
   const next = () => ++no
-  const roman = ['I', 'II', 'III', 'IV']
+  const roman = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X']
   let sec = 0
-  const part = () => roman[sec++]
+  const part = () => { const i = sec++; return roman[i] ?? String(i + 1) }
+  const GLBL = ['Trắc nghiệm', 'Trả lời ngắn', 'Tự luận']
   return (
     <div className="pv-et">
       <div className="pv-bt-head">
@@ -186,16 +195,13 @@ function ETDoc({ full, gv }: { full: TaiLieuFull; gv: boolean }) {
         )}
       </div>
 
-      {tn.length > 0 && (
-        <section className="pv-sec"><h2 className="pv-h-dang">Phần {part()} · Trắc nghiệm</h2>
-          <ol className="pv-caulist">{tn.map((c) => <CauItem key={c.ma_cau} no={next()} c={c} gv={gv} />)}</ol>
-        </section>
-      )}
-
-      {tln.length > 0 && (
-        <section className="pv-sec"><h2 className="pv-h-dang">Phần {part()} · Trả lời ngắn</h2>
-          {/* Đề + dòng kẻ NGẮN (đáp án ngắn, không cần nhiều dòng như tự luận) · bản GV = đáp án/lời giải mặc định. */}
-          <ol className="pv-caulist">{tln.map((c) => {
+      {runs.map((run, ri) => (
+        <section key={ri} className="pv-sec"><h2 className="pv-h-dang">Phần {part()} · {GLBL[run.g]}</h2>
+          {/* g=0 trắc nghiệm → CauItem (đề + phương án, hoặc 4 mệnh đề Đ-S).
+              g=1 trả lời ngắn → đề + dòng kẻ NGẮN · g=2 tự luận → đề + dòng kẻ DÀI hơn (BỎ phương án
+              dù câu kho có). Bản GV: cả 3 nhóm kèm đáp án/lời giải thay cho dòng kẻ. */}
+          <ol className="pv-caulist">{run.items.map((c) => {
+            if (run.g === 0) return <CauItem key={c.ma_cau} no={next()} c={c} gv={gv} />
             const { stem, grid, emb } = splitStem(c)
             return (
               <li key={c.ma_cau} className="pv-cau">
@@ -204,31 +210,12 @@ function ETDoc({ full, gv }: { full: TaiLieuFull; gv: boolean }) {
                 {c.anh_de && <img src={c.anh_de} alt="" className="pv-img" />}
                 {gv
                   ? <GvAnswer c={c} />
-                  : grid ? null : <WriteLines n={lines[c.ma_cau] ?? DEFAULT_TLN_LINES} />}
+                  : grid ? null : <WriteLines n={lines[c.ma_cau] ?? (run.g === 1 ? DEFAULT_TLN_LINES : DEFAULT_TL_LINES)} />}
               </li>
             )
           })}</ol>
         </section>
-      )}
-
-      {tl.length > 0 && (
-        <section className="pv-sec"><h2 className="pv-h-dang">Phần {part()} · Tự luận</h2>
-          {/* Tự luận = đề + dòng kẻ (BỎ phương án dù câu kho có) · bản GV = đáp án/lời giải */}
-          <ol className="pv-caulist">{tl.map((c) => {
-            const { stem, grid, emb } = splitStem(c)
-            return (
-              <li key={c.ma_cau} className="pv-cau">
-                <div className="pv-math"><MathText prefix={`<span class="pv-cau-no">Câu ${next()}.</span> `}>{stem}</MathText></div>
-                {grid && <OptGrid grid={grid} emb={emb} />}
-                {c.anh_de && <img src={c.anh_de} alt="" className="pv-img" />}
-                {gv
-                  ? <GvAnswer c={c} />
-                  : grid ? null : <WriteLines n={lines[c.ma_cau] ?? DEFAULT_TL_LINES} />}
-              </li>
-            )
-          })}</ol>
-        </section>
-      )}
+      ))}
 
       {caus.length === 0 && <p className="pv-empty">ET chưa có câu nào.</p>}
     </div>

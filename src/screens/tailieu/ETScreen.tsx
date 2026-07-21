@@ -6,7 +6,7 @@
 import { useEffect, useState } from 'react'
 import {
   createET, updateET, getTaiLieuFull, setETCaus, suggestCauForDang, khoCuaMon,
-  maET, ET_FORMS, etFormOf, type ETDoc, type CauHinh, type ETForm as ETFormKind,
+  maET, ET_FORMS, etFormOf, sortETCaus, type ETDoc, type CauHinh, type ETForm as ETFormKind,
 } from '../../lib/tailieu'
 import { listLop, type Lop } from '../../lib/nhansu'
 import { listCauByDang, LOAI_CAU, type CauHoi } from '../../lib/kho/api'
@@ -103,10 +103,28 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
   async function luu() {
     if (!lop) { setErr('Chọn lớp.'); return }
     if (!ngay) { setErr('Chọn ngày buổi học.'); return }
-    const maCaus = rows.map((r) => r.maCau).filter(Boolean) as string[]
-    if (!maCaus.length) { setErr('ET cần ít nhất 1 câu.'); return }
+    const chon = rows.filter((r) => r.maCau) as { maDang: string | null; maCau: string }[]
+    if (!chon.length) { setErr('ET cần ít nhất 1 câu.'); return }
     setBusy(true); setErr(null)
     try {
+      // ⭐ 07-20: GOM THEO NHÓM IN NGAY LÚC LƯU → `thu_tu` trong DB = đúng thứ tự sẽ in ra giấy.
+      // Mọi nơi đọc ET (đề in, bảng phiếu chấm, Chấm ET, ET online) đều theo `thu_tu` → khớp nhau.
+      // Cache `cau` CÓ THỂ THIẾU câu: ensureCache early-return khi dạng đó đã có câu khác trong cache
+      // (mở ET cũ để sửa rồi ✎ Chọn câu khác cùng dạng). Thiếu cache = không biết nhóm → phải nạp bù,
+      // TUYỆT ĐỐI không được lặng lẽ bỏ câu đó ra khỏi đề.
+      let bank = cau
+      const thieu = chon.filter((r) => !bank[r.maCau])
+      if (thieu.length) {
+        const them: Record<string, CauHoi> = {}
+        for (const md of new Set(thieu.map((r) => r.maDang).filter(Boolean) as string[])) {
+          for (const c of await listCauByDang(md, cauTbl)) them[c.ma_cau] = c
+        }
+        bank = { ...bank, ...them }
+        setCau(bank)
+      }
+      const conThieu = chon.filter((r) => !bank[r.maCau]).map((r) => r.maCau)
+      if (conThieu.length) { setErr(`Không nạp được nội dung câu: ${conThieu.join(', ')} — chưa lưu. Thử lại.`); return }
+      const maCaus = sortETCaus(chon.map((r) => bank[r.maCau]), ch).map((c) => c.ma_cau)
       const ten = `ET ${lop.ten_lop} · ${ngay.split('-').reverse().join('/')}`
       if (editing) {
         await updateET(et!.id, { ten, lop_id: lop.id, ngay, cau_hinh: ch })

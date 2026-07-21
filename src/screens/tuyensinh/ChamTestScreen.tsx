@@ -1,5 +1,7 @@
 // Chấm test đầu vào (Story 2) — pool team học thuật, ai mở thì làm (KHÔNG owner cứng).
-// Card 3 cột: scan (kéo dọc riêng) | đáp án từng câu | Đ/C/S per câu, tính điểm+% realtime.
+// Card 2 cột: đáp án từng câu | Đ/C/S per câu, tính điểm+% realtime. Thùy chốt 07-19 (đảo luồng): BỎ
+// cột scan — người chấm khoanh Đ/C/S trên GIẤY NGOÀI hệ thống trước, màn này chỉ là nhập liệu thuần
+// (kết quả đã khoanh tay → gõ lại). Scan bài đã khoanh là task riêng (xem ScanDaChamScreen).
 // KHÔNG chấm-vẽ-trên-PDF (OUT v1) — chỉ chọn mức trên màn. KHÔNG feed mastery.
 import { useEffect, useMemo, useState } from 'react'
 import {
@@ -13,7 +15,6 @@ const KQ_LABEL: Record<'correct' | 'partial' | 'wrong', string> = { correct: 'Đ
 const KQ_TONE: Record<'correct' | 'partial' | 'wrong', string> = {
   correct: 'bg-emerald-600 text-white', partial: 'bg-amber-500 text-white', wrong: 'bg-rose-600 text-white',
 }
-const isPdf = (url: string) => /\.pdf(\?|$)/i.test(url)
 
 export default function ChamTestScreen() {
   const [queue, setQueue] = useState<CaTestChoCham[]>([]);
@@ -95,7 +96,7 @@ function ChamCard({ item, onClose, onDone }: { item: CaTestChoCham; onClose: () 
   }
   async function moLai() { setBusy(true); try { await moLaiChamTest(item.id); await reload() } finally { setBusy(false) } }
 
-  if (!item.deTestId) return (
+  if (!item.taiLieuId) return (
     <div className="mx-auto max-w-[600px] p-8 text-center text-sm text-slate-400">
       Chưa gán đề cho ca test này — vào "Điểm danh test" để gán đề trước.
       <div className="mt-3"><button onClick={onClose} className="rounded-lg border border-slate-200 px-4 py-2 text-[13px]">← Quay lại</button></div>
@@ -111,15 +112,8 @@ function ChamCard({ item, onClose, onDone }: { item: CaTestChoCham; onClose: () 
         <span className="ml-auto text-[15px] font-bold text-indigo-600">{diem}/{toiDa} · {pct}%</span>
       </div>
       {loading ? <p className="p-6 text-sm text-slate-400">Đang tải…</p> : (
-        <div className="grid min-h-0 flex-1 grid-cols-[1fr_260px_300px] gap-0 overflow-hidden">
-          {/* Trái: scan bài làm — kéo dọc độc lập */}
-          <div className="min-h-0 overflow-auto border-r border-slate-200 bg-slate-50 p-2">
-            {item.baiUrl ? (
-              isPdf(item.baiUrl) ? <iframe src={item.baiUrl} title="scan" className="h-[1400px] w-full rounded border border-slate-200 bg-white" />
-                : <img src={item.baiUrl} alt="scan" className="w-full rounded border border-slate-200" />
-            ) : <p className="p-4 text-sm text-slate-400">Chưa có bài scan.</p>}
-          </div>
-          {/* Giữa: nội dung + đáp án từng câu */}
+        <div className="grid min-h-0 flex-1 grid-cols-[1fr_320px] gap-0 overflow-hidden">
+          {/* Trái: nội dung + đáp án từng câu (chấm từ giấy ngoài — KHÔNG còn cột scan, Thùy 07-19) */}
           <div className="min-h-0 overflow-auto border-r border-slate-200 p-3">
             <div className="mb-2 text-[12px] font-semibold uppercase tracking-wide text-slate-400">Câu</div>
             <div className="space-y-2">

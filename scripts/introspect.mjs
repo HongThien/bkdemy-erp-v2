@@ -48,6 +48,26 @@ const Q = {
   functions: `select p.proname, pg_get_function_arguments(p.oid) as args, pg_get_function_result(p.oid) as result
               from pg_proc p join pg_namespace n on n.oid=p.pronamespace
               where n.nspname='public' order by p.proname`,
+  // CHECK constraint — cột `text` KHÔNG nói lên tập giá trị hợp lệ. Thiếu cái này thì code
+  // mở rộng union type mà constraint đứng yên = drift ngầm, chỉ lộ khi user bấm nút và ăn
+  // "violates check constraint" (đã dính 2 lần: prep_phong.luot, viec_van_hanh_duyet.tab).
+  checks: `select c.relname as table_name, con.conname, pg_get_constraintdef(con.oid) as def
+           from pg_constraint con
+           join pg_class c on c.oid=con.conrelid
+           join pg_namespace n on n.oid=c.relnamespace
+           where n.nspname='public' and con.contype='c'
+           order by c.relname, con.conname`,
+}
+
+// Tách "x = ANY (ARRAY['a','b'])" -> { col: 'x', vals: ['a','b'] }. Check phức tạp hơn (so sánh
+// số, biểu thức nhiều cột...) trả null -> rơi xuống mục "Checks khác" in nguyên văn, không đoán bừa.
+function parseEnumCheck(def) {
+  if (!/ = ANY \(\(?ARRAY\[/.test(def)) return null
+  // Cột text -> `col = ANY`; cột varchar -> `(col)::text = ANY`. Cast là TÙY CHỌN, đừng bắt buộc.
+  const col = def.match(/\(\(?([a-z_][a-z0-9_]*)\)?(?:::text)? = ANY/)?.[1]
+  if (!col) return null
+  const vals = [...def.matchAll(/'((?:[^']|'')*)'::(?:text|character varying)/g)].map(m => m[1].replace(/''/g, "'"))
+  return vals.length ? { col, vals } : null
 }
 
 const url = loadUrl()
@@ -61,10 +81,19 @@ try {
   const enums = (await client.query(Q.enums)).rows
   const trigs = (await client.query(Q.triggers)).rows
   const funcs = (await client.query(Q.functions)).rows
+  const checks = (await client.query(Q.checks)).rows
 
   const pkSet = new Set(pks.map(r => `${r.table_name}.${r.column_name}`))
   const fkMap = new Map()
   for (const f of fks) fkMap.set(`${f.table_name}.${f.column_name}`, `${f.ref_table}.${f.ref_column}`)
+  // Check dạng enum -> gắn thẳng vào dòng cột (nhìn phát thấy ngay). Còn lại -> bảng riêng cuối file.
+  const chkMap = new Map()
+  const chkKhac = []
+  for (const k of checks) {
+    const p = parseEnumCheck(k.def)
+    if (p) chkMap.set(`${k.table_name}.${p.col}`, p.vals)
+    else chkKhac.push(k)
+  }
 
   const tables = [...new Set(cols.map(c => c.table_name))]
   let md = `# Schema (public) — auto-generated, KHÔNG sửa tay\n\n`
@@ -72,12 +101,13 @@ try {
   md += `${tables.length} bảng · ${enums.length ? new Set(enums.map(e=>e.typname)).size : 0} enum · ${trigs.length} trigger · ${funcs.length} function\n\n`
 
   for (const t of tables) {
-    md += `## ${t}\n\n| cột | kiểu | null | default | khóa |\n|---|---|---|---|---|\n`
+    md += `## ${t}\n\n| cột | kiểu | null | default | khóa | giá trị hợp lệ |\n|---|---|---|---|---|---|\n`
     for (const c of cols.filter(c => c.table_name === t)) {
       const key = `${t}.${c.column_name}`
       const type = c.data_type === 'USER-DEFINED' ? c.udt_name : (c.data_type === 'ARRAY' ? c.udt_name : c.data_type)
       const tag = [pkSet.has(key) ? 'PK' : '', fkMap.has(key) ? `FK→${fkMap.get(key)}` : ''].filter(Boolean).join(' ')
-      md += `| ${c.column_name} | ${type} | ${c.is_nullable === 'YES' ? 'Y' : ''} | ${(c.column_default || '').replace(/\|/g, '\\|')} | ${tag} |\n`
+      const chk = chkMap.has(key) ? chkMap.get(key).map(v => `\`${v}\``).join(' · ') : ''
+      md += `| ${c.column_name} | ${type} | ${c.is_nullable === 'YES' ? 'Y' : ''} | ${(c.column_default || '').replace(/\|/g, '\\|')} | ${tag} | ${chk} |\n`
     }
     md += `\n`
   }
@@ -105,8 +135,14 @@ try {
     md += `\n`
   }
 
+  if (chkKhac.length) {
+    md += `## Checks khác (không phải dạng enum)\n\n| bảng | constraint | định nghĩa |\n|---|---|---|\n`
+    for (const k of chkKhac) md += `| ${k.table_name} | ${k.conname} | \`${k.def.replace(/\|/g, '\\|')}\` |\n`
+    md += `\n`
+  }
+
   writeFileSync(join(root, 'schema.md'), md, 'utf8')
-  console.log(`OK -> schema.md  (${tables.length} bảng, ${trigs.length} trigger, ${funcs.length} function)`)
+  console.log(`OK -> schema.md  (${tables.length} bảng, ${trigs.length} trigger, ${funcs.length} function, ${checks.length} check: ${chkMap.size} enum + ${chkKhac.length} khác)`)
 } catch (e) {
   console.error('❌ Lỗi:', e.message)
   process.exit(1)

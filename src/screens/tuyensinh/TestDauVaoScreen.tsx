@@ -1,16 +1,19 @@
-// Module "Test đầu vào" (BKDEMY_TESTDAUVAO_SPEC_DETAIL.md) — TÁCH RIÊNG khỏi `Tuyển sinh`
-// (Thùy 07-08: Tuyển sinh = quản lý LEVEL học sinh L5-L8; test đầu vào = 4 story vận hành
-// điểm danh→chấm→nhận xét→trả bài, module riêng). Bar tab cùng style bar L5-L8 cho gọn.
+// Module "Test đầu vào" (BKDEMY_TESTDAUVAO_SPEC_ADDENDUM.md — đảo luồng 07-19) — TÁCH RIÊNG khỏi
+// `Tuyển sinh` (Thùy 07-08: Tuyển sinh = quản lý LEVEL học sinh L5-L8; test đầu vào = vận hành
+// điểm danh→{chấm ∥ scan-đã-chấm}→trả bài, module riêng). Bar tab cùng style bar L5-L8 cho gọn.
+// ⭐ Đảo 07-19: bỏ tab "Đề test" (đề chọn thẳng từ Kho MT ngay ở Điểm danh, không còn CRUD riêng) + bỏ
+// tab "Nhận xét test" (gộp vào Trả bài). ⭐ 07-19 lần 2 (Thùy: "Trả bài đáng lẽ tab riêng tương đương
+// Chấm test; Scan bài không cần tab riêng, chỉ cần derive task cho Ops"): tách Trả bài thành TAB RIÊNG
+// (KHÔNG còn lồng trong Điểm danh) — "Scan bài đã chấm" bỏ hẳn khỏi bar tab, giờ chỉ hiện dạng task
+// derive ở "Việc của tôi" (xem NhanSuHome.tsx).
 import { useState } from 'react'
 import DiemDanhTestScreen from '../vanhanhops/DiemDanhTestScreen'
-import DeTestScreen from './DeTestScreen'
 import ChamTestScreen from './ChamTestScreen'
-import NhanXetTestScreen from './NhanXetTestScreen'
+import TraBaiTestScreen from './TraBaiTestScreen'
 
-type Tab = 'diem_danh' | 'de' | 'cham' | 'nhan_xet'
+type Tab = 'diem_danh' | 'cham' | 'tra_bai'
 const TABS: { v: Tab; lbl: string }[] = [
-  { v: 'diem_danh', lbl: 'Điểm danh test' }, { v: 'de', lbl: 'Đề test' },
-  { v: 'cham', lbl: 'Chấm test' }, { v: 'nhan_xet', lbl: 'Nhận xét test' },
+  { v: 'diem_danh', lbl: 'Điểm danh test' }, { v: 'cham', lbl: 'Chấm test' }, { v: 'tra_bai', lbl: 'Trả bài' },
 ]
 
 export default function TestDauVaoScreen() {
@@ -21,7 +24,7 @@ export default function TestDauVaoScreen() {
         <div className="mx-auto max-w-[1500px]">
           <div className="mb-4">
             <h2 className="text-[22px] font-semibold text-slate-800">Test đầu vào</h2>
-            <p className="text-[13px] text-slate-500">Điểm danh + scan → Chấm Đ/C/S → Nhận xét + lớp đề xuất → Trả bài (gộp trong Điểm danh test)</p>
+            <p className="text-[13px] text-slate-500">Điểm danh (chọn đề từ Kho MT) → Chấm Đ/C/S ∥ Scan bài đã chấm (Ops, việc riêng ở "Việc của tôi") → Trả bài (nhận xét + lớp đề xuất + phiếu)</p>
           </div>
 
           <div className="mb-4 flex w-fit flex-wrap gap-1.5 rounded-2xl border border-slate-200 bg-white p-1.5 shadow-sm">
@@ -37,9 +40,8 @@ export default function TestDauVaoScreen() {
 
       <div className="min-h-0 flex-1 overflow-hidden">
         {tab === 'diem_danh' ? <DiemDanhTestScreen />
-          : tab === 'de' ? <DeTestScreen />
           : tab === 'cham' ? <ChamTestScreen />
-          : <NhanXetTestScreen />}
+          : <TraBaiTestScreen />}
       </div>
     </div>
   )

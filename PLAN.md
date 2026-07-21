@@ -1,209 +1,116 @@
-# PLAN — Hệ Vận hành Ops (theo `BKDEMY_OPS_SPEC_DETAIL.md`)
+# PLAN — Ôn tập trong BTVN (spaced repetition tầng LỚP), theo `spec-btvn-ontap.md`
 
-> PHA 0 (khảo sát) đã xong — verify DB thật (`schema.md` + query trực tiếp) + đọc code thật, KHÔNG đoán tên cột.
-> Bản này để Thùy duyệt trước khi code (theo đúng kỷ luật cuối spec). Chưa đụng dòng code/migration nào cho 4 story.
+> PHA 0 xong — đọc spec, verify DB thật (`information_schema.columns`, `pg_tables.rowsecurity`, `pg_constraint`,
+> `pg_policies`), đọc thật `tailieu.ts`/`TaiLieuBuilder.tsx`/`mastery.ts`/`PrintView.tsx`/`KetQuaScreen.tsx`.
+> §10 (5 câu hỏi mở): 4 câu đã hỏi Thùy — trả lời ở mục 2. Câu #5 (số dòng kẻ mặc định) tự quyết theo R2:
+> `DEFAULT_BTVN_LINES` (tailieu.ts:24) sẵn là **5** — dùng luôn, không cần default riêng.
+> Bản này để Thùy duyệt trước khi code + chạy migration (Claude chỉ có `claude_ro`, không tự chạy được).
 
 ---
 
-## 0. Reuse map (đã verify)
+## 1. Reuse map (đã verify code + DB thật)
 
 | Thành phần | Trạng thái | Ghi chú |
 |---|---|---|
-| TKB (`thoi_khoa_bieu`) | ✅ có sẵn | cột thật: `lop_id, thu, gio_bat_dau, gio_ket_thuc, phong, hieu_luc_tu, hieu_luc_den`. **`gio_ket_thuc` = giờ tan gốc** (không có cột "giờ tan" riêng, đúng nó). `phong` nullable, gắn **SLOT TKB**, không gắn `lop` (lớp không có cột phòng — đúng, vì 1 lớp có thể đổi phòng theo buổi). |
-| Buổi/điểm danh (`buoi_hoc`, `buoi_hoc_hs`) | ✅ có sẵn | `buoi_hoc` có `gio_bat_dau/gio_ket_thuc/phong` (snapshot từ TKB lúc mở) + các cột `*_dong_at` (ingame/et/danh_gia/btvn). `buoiAoCuaNgay()` cho buổi **ẢO** (chưa mở) — dùng được cho task Report (phải tồn tại TRƯỚC khi ai "mở buổi"). |
-| Task engine (`gami.ts`) | ✅ có, MỞ RỘNG ĐƯỢC | `TabKey`/`MyTask`/`StaffTaskRow`/`getMyTasks`/`listAllStaffTasks` — hiện chỉ có vai `gv|tg`, nguồn = `phan_cong_lop`. Cần thêm vai `ops` + nguồn mới (xem mục A). |
-| Duyệt chất lượng (`viec_van_hanh_duyet`) | ✅ có, cần NỚI CHECK | Khoá `(buoi_hoc_id, tab, nhan_su_id)` — khớp thẳng "1 người × 1 ca × 1 loại việc". Cột `tab` có **CHECK constraint** `in ('danhgia','ingame','et','btvn')` (migration 0081) → **PHẢI nới** khi thêm tab mới, cùng 1 migration (bài học HANDOFF §②, đừng quên như vụ 0045). Công thức `tinhHieuSuat`/`deXuatTienDo`/`duyetHangLoat` (`src/lib/vanhanh.ts`) DÙNG THẲNG được, không sửa. |
-| ETPrintView | ⚠ có layout, THIẾU QR/markers/lưới-OMR | `src/screens/tailieu/ETPrintView.tsx` — bảng chấm hiện tại chỉ có ô trắng để GV khoanh tay (`pv-et-score`), KHÔNG QR, KHÔNG fiducial marker, KHÔNG lưới Đ/C/S 3-ô. Phải thêm mới hoàn toàn. |
-| Mastery feed | ✅ có, đúng model spec cần | `src/lib/mastery.ts` đọc `gami_grades`(ingame/et)+`buoi_danh_gia_dang`+`bai_lam_cau` → feed **CHỈ khi ET đóng** (khớp "feed mastery CHỈ khi TA đóng ET" của spec — không cần sửa gì, chỉ cần Story 4 ghi đúng vào `gami_grades` giống luồng chấm tay hiện tại). |
-| Storage | ✅ có 3 bucket, pattern rõ | `avatars` · `kho-anh` (ảnh, có prefix `report/` cho bao lỗi — `uploadReportAnh()` ở `baoloi.ts`) · `kho-tailieu` (file PDF/Word). **Đủ dùng** cho evidence Story 1-3 (ảnh) và PDF scan Story 4 (dùng `kho-tailieu` hoặc bucket mới `et-scan` — xem câu hỏi). |
-| Engine hiệu suất | ✅ có, dùng thẳng | `tinhHieuSuat = chất_lượng − (100 − tiến_độ)`, 4 mức trễ giờ (`TIEN_DO_TIERS`), `duyetHangLoat`/`duyetMot`. Không cần code lại. |
-| Phân công CA Ops | ❌ CHƯA CÓ | `phan_cong_lop` chỉ gán GV/TA dài hạn theo LỚP (`vai_tro: 'gv'|'tg'`) — không có "ai trực ca này". Grep `ca_truc|truc_ops|phan_cong_ca` → 0 kết quả. **Đây là spine phải dựng trước** (xem mục A). |
-| Leaf/nav Ops | ❌ CHƯA CÓ | `adminLeaves` (fixtures.ts) chưa có `report`/`prep`/`scan_et`. Cần thêm leaf mới nhóm "Vận hành". |
-| Server compute | ❌ KHÔNG TỒN TẠI trong dự án | Không có `supabase/functions` (Edge Function), không cron worker — **100% chạy client-side** (kể cả gọi Gemini hiện tại cũng chạy từ browser). Việc này va chạm trực tiếp với yêu cầu Story 4 "luồng hệ tự động, chạy được trong đêm" — xem câu hỏi §Q6, đây là quyết định kiến trúc lớn nhất của cả spec. |
-| Dep image/QR | ❌ CHƯA CÓ | package.json chỉ có `pdfjs-dist` (đang dùng cho PdfCropper). Chưa có lib sinh QR (`qrcode`), đọc QR (`jsqr`), hay xử lý ảnh (opencv/jimp). Cần thêm dep mới cho Story 4. |
+| `tai_lieu_phan.loai_phan` CHECK | ✅ Không cần migration | `pg_constraint` xác nhận **KHÔNG có CHECK constraint thật** trên cột này (chỉ là comment/TS union trong code). Thêm `'ontap'` chỉ cần sửa `PhanLoai` type (tailieu.ts:16). |
+| `groupBuois`/`BuoiUI` | ⚠ Private, cần export | Đang nằm riêng trong `TaiLieuBuilder.tsx:19-31`, khác `groupBuoi` (số ít, private trong `tailieu.ts:246`, dùng cho `usedCausOfBuoi`/`setDangOfBuoi`). Bước 1 của engine cần duyệt các buổi TRƯỚC buổi đang gán — dùng `listPhan(masterId)` + logic tương tự `groupBuoi` lặp qua nhiều mốc, KHÔNG cần export `groupBuois` của Builder (viết 1 hàm nhỏ riêng trong `ontap.ts`, tránh đụng Builder — đúng "không sửa builder master"). |
+| `getMasteryByDang(scope, mucDo)` | ✅ Dùng thẳng | `mastery.ts` — `RollupScope = {mon, lopId?, khoi?, he?, includeBTVN?}`. Pivot view ④ (`KetQuaScreen.tsx:724`) gọi **KHÔNG set `includeBTVN`** (mặc định falsy → chỉ ET+MT). Engine ôn tập sẽ gọi **giống hệt** (không set `includeBTVN`) — đúng yêu cầu spec "tái dùng logic pivot view ④", và tránh vòng lặp phản hồi (ôn tập tự đo bằng BTVN rồi lại dùng BTVN để chọn ôn tập tiếp theo). |
+| `usedCausOfBuoi(taiLieuId, buoiId)` | ✅ Dùng thẳng | Gọi với `(nguonId, buoiId)` — quét trên **master**, vì doc BTVN đích chưa tồn tại lúc gợi ý. |
+| `suggestCauForDang(maDang, exclude, cauTbl)` | ✅ Dùng thẳng trong loop | Đã "ít-dùng-nhất trước", đúng nhu cầu Bước 4. Gọi 2 lần/dạng (loop, exclude tích luỹ dần) thay vì viết lại `cmpUsageLe`/`pickRoundRobinByNguon`. |
+| `cauUsage`, `listCauByDang`, `khoCuaMon(mon)` | ✅ Dùng thẳng | Dispatch kho theo môn — engine nhận `mon` làm tham số, không tự đoán. |
+| `DEFAULT_BTVN_LINES = 5` | ✅ Dùng thẳng | Trả lời câu hỏi mở #5 — không cần hằng số riêng cho ôn tập. |
+| `trichXuatBuoi` — điểm chèn | ✅ Xác định rõ | Sau khối `if (opts.btvn && btvnPhans.length) { ...; out.push(nw) }` (tailieu.ts:483-487) — dùng `nw.id`, `t` tiếp tục đếm từ sau btvnPhans. |
+| `getTaiLieuFull` — dạng resolve | ⚠ Cần sửa 2 chỗ | `dangMas` (dòng 351) và `dangLike` (dòng 367) đang lọc `loai_phan === 'dang' \|\| 'btvn'` — PHẢI thêm `'ontap'`, nếu không phan ôn tập sẽ không có `p.dang` (tên dạng, chuyên đề…) khi resolve → PrintView vỡ. |
+| `getBTVNCaus` | ⚠ Cần sửa 1 dòng | Filter `loai_phan === 'btvn'` → thêm `\|\| 'ontap'`. Dùng bởi chấm (BtvnTab) + `phatHanhTest` (test online) — spec §7.2/§7.3 xác nhận cả 2 đều chỉ cần qua hàm này, không code riêng. |
+| `PrintView.tsx` — `buildBuois`/`BtvnSheet` | ⚠ Cần thêm nhánh `ontap` | `buildBuois` (dòng 350-360) hiện gom `dang`/`btvn` — thêm mảng `ontaps: PhanResolved[]`, push khi `loai_phan==='ontap'`. `BtvnSheet` (dòng 481+) nhận thêm prop `ontaps`, render SAU khối btvn, header riêng "PHẦN ÔN TẬP", `bno` (số câu) tiếp tục đếm liên tục — không tạo counter mới. |
+| RLS `tai_lieu`/`tai_lieu_phan`/`tai_lieu_cau` | ⚠ **Spec đoán SAI** — xem Phản biện A | Query `pg_tables.rowsecurity` + `pg_policies` thật: cả 3 bảng đều **RLS ENABLED**, policy `{table}_member_all` (`ALL`, qual/with_check = `la_thanh_vien()`). Spec §3.1 viết "RLS: theo convention data table (disable)" — **sai với DB thật**. Bảng mới `btvn_ontap_config` phải ENABLE RLS + policy giống hệt, không disable. |
+| `nguon_buoi` kiểu dữ liệu | ⚠ Spec để "..." — đã xác định | `tai_lieu.nguon_buoi` là **`text`** (không phải `uuid`, dù giá trị nó lưu là 1 uuid string của `tai_lieu_phan.id` — xem `trichXuatBuoi` dòng 472: `nguon_buoi: buoiPhanId`). `btvn_ontap_config.nguon_buoi` phải cùng kiểu `text` để join/query nhất quán. |
+| Bảng "tiên quyết" (tie-break Bước 3.1) | ❌ Chưa tồn tại | `grep` toàn repo không thấy `tien_quyet`/`spec-link-tienquyet`. Theo đúng chỉ dẫn của spec: bỏ tie-break này, để `// TODO(tienquyet)`, không chặn feature. |
+| `SearchCau.tsx` reqId pattern | ✅ Tái dùng | Cho race-guard khi load gợi ý trong `TrichPanel` (đổi buổi/lớp nhanh). |
+| `KhoPicker` (exported, `TaiLieuBuilder.tsx:393`), `DangPickerOne` | ✅ Tái dùng nguyên | Cho "✎ đổi câu" / "+ Dạng" trong `OnTapEditor`. |
 
 ---
 
-## A. SPINE — Phân công CA trực Ops (§B spec) — ✅ CHỐT (Thùy 07-06)
+## 2. Trả lời 4/5 câu hỏi mở §10 (Thùy đã chọn qua AskUserQuestion)
 
-**Quyết định:** pure-derive THUẦN, KHÔNG đóng băng tuần, KHÔNG bảng ngoại lệ riêng. 1 bảng DUY NHẤT, effective-dated y hệt TKB — sửa trực tiếp khi cần swap (đổi ca 1 lần thì tự đóng dòng cũ/mở dòng mới sớm rồi mở lại dòng gốc sau — Thùy chấp nhận phải tự "reset" lại 1 lần khi hết đợt swap, đổi lấy việc KHÔNG cần dựng thêm bảng tuần/ngoại lệ).
-
-**Schema:**
-```
-phan_cong_ops        -- pure-derive, effective-dated y hệt TKB
-  id            uuid PK
-  tkb_id        uuid FK→thoi_khoa_bieu.id
-  nhan_su_id    uuid FK→nhan_su.id
-  hieu_luc_tu   date
-  hieu_luc_den  date NULL
-```
-- Sửa = đóng dòng cũ (set `hieu_luc_den`) + mở dòng mới — KHÔNG đè (giống sửa TKB).
-- Ca trực của 1 (tkb_id, ngày) = dòng có `hieu_luc_tu <= ngày AND (hieu_luc_den is null OR hieu_luc_den >= ngày)`.
-- Ca trống = TKB slot không có dòng hiệu lực tại ngày đó → derive được, không cần cột cờ.
+1. **Ngưỡng tin `đã_đo ≥ max(3, ⌈sĩ_số/3⌉)`** → **Giữ nguyên**.
+2. **Cửa sổ né-câu-lớp-đã-làm** → **Rút ngắn còn 30 ngày** (spec đề xuất 60).
+3. **Cân loại câu (ép ≥1 câu tự luận/TLN)** → **KHÔNG ép, để engine tự do theo pool** (least-used quyết định).
+4. **Sửa ôn tập sau khi doc đã có phép đo** → **Chỉ cảnh báo (toast/confirm), KHÔNG chặn cứng**.
+5. **Số dòng kẻ mặc định** → tự quyết theo R2: dùng `DEFAULT_BTVN_LINES` (=5) sẵn có, không định nghĩa số riêng.
 
 ---
 
-## A.1 ⚠ Sửa lại thiết kế evidence Report/Tan (phát hiện lúc code, KHÁC bản PLAN gốc)
+## PHẢN BIỆN (đọc trước khi duyệt)
 
-Bản PLAN gốc định thêm cột `report_dong_at/report_anh_url/tan_dong_at/tan_anh_url` thẳng vào `buoi_hoc` — **SAI**, vì Report phải tồn tại & đóng được **TRƯỚC KHI buổi "mở"** (report gửi tối hôm trước; buổi chỉ mở lúc vào học/điểm danh) → lúc đó **CHƯA CÓ dòng `buoi_hoc`** để gắn cột vào (chỉ có buổi ẢO từ `buoiAoCuaNgay`). Ép mở buổi sớm để có chỗ lưu sẽ đẻ tác dụng phụ (roster/GV snapshot sớm, buổi hiện "đang mở" trước khi thực sự diễn ra).
+### A. ⭐ Spec đoán sai RLS — bảng mới phải ENABLE, không disable
 
-**Sửa: 1 bảng tự-chứa riêng, khoá theo (tkb_id, ngày, loại việc) — KHÔNG phụ thuộc buoi_hoc tồn tại:**
-```
-vh_ops_task
-  id          uuid PK
-  tkb_id      uuid FK→thoi_khoa_bieu.id
-  ngay        date
-  tab         text check (tab in ('report','tan'))
-  nhan_su_id  uuid FK→nhan_su.id      -- người đóng (snapshot — dù phân công gốc đổi sau vẫn giữ đúng ai đã làm)
-  anh_url     text
-  dong_at     timestamptz
-  chat_luong  numeric default 100     -- tự-chứa duyệt (KHÔNG reuse viec_van_hanh_duyet — bảng đó bắt buộc buoi_hoc_id not null)
-  nguoi_duyet uuid FK→nhan_su.id
-  duyet_at    timestamptz
-  created_at  timestamptz default now()
-  unique (tkb_id, ngay, tab)
-```
-Công thức `tinhHieuSuat`/`deXuatTienDo` (`vanhanh.ts`) vẫn TÁI DÙNG nguyên (chỉ là hàm thuần nhận số, không đụng bảng) — chỉ khác NƠI LƯU kết quả duyệt.
+Spec §3.1 viết thẳng "RLS: theo convention data table (disable)" và tự đóng khung đó là "convention". Nhưng
+`pg_tables.rowsecurity` + `pg_policies` query trực tiếp DB cho thấy **`tai_lieu`, `tai_lieu_phan`, `tai_lieu_cau`
+— 3 bảng anh em ruột của bảng mới — đều RLS ENABLED**, policy `la_thanh_vien()` áp cho mọi thao tác. Không có
+bảng "data" nào trong nhóm `tai_lieu*` bị disable. Nếu làm theo đúng chữ spec, `btvn_ontap_config` sẽ là bảng
+DUY NHẤT trong nhóm này hở RLS — lỗ hổng thật (ai đăng nhập cũng query/sửa config ôn tập lớp khác được qua
+API trực tiếp, dù UI có chặn). **Đề xuất: ENABLE RLS + policy giống 3 bảng kia**, xem migration §3.
 
----
+### B. Điểm chèn `trichXuatBuoi` phụ thuộc thứ tự — phải TEST re-trích nhiều lần
 
-## B. Story 1 (Report) + Story 2 (Báo tan) — ✅ CHỐT
+`mk()` xoá-rồi-tạo doc BTVN mỗi lần gán/re-gán (unique `loai+lop_id+ngay`). Vì `saveOnTapConfig` chạy TRƯỚC
+`trichXuatBuoi` (đúng thứ tự spec §5 yêu cầu) và `trichXuatBuoi` tự đọc lại config mỗi lần — logic tự nhiên
+idempotent, nhưng cần test tay: gán → sửa ôn tập qua modal (rebuild-tại-chỗ §8) → gán lại buổi đó lần nữa
+(TrichPanel) → confirm config từ modal KHÔNG bị ghi đè bởi 1 lần "Gợi ý lại" cũ nào còn cache trong state UI.
+Đây là chỗ dễ vỡ nhất theo kiểu "im lặng mất lựa chọn của GV" — sẽ verify tay ở bước E2E (§9.8).
 
-Dùng bảng `vh_ops_task` (mục A.1) — KHÔNG đụng `buoi_hoc`, KHÔNG reuse `viec_van_hanh_duyet` (tự chứa duyệt trong chính bảng).
+### C. `getTaiLieuFull` sửa 2 chỗ, ảnh hưởng MỌI nơi gọi hàm này (không riêng ôn tập)
 
-**Deadline (Thùy chốt 07-06):**
-- Report = **mốc giờ cố định 20:00 ngày hôm trước** (bất kể ca học mấy giờ — KHÔNG trừ ngược N-tiếng-trước-giờ-học).
-- Tan = `gio_ket_thuc` (của TKB slot) `+ 15'`.
-
-**Code:**
-- File mới `src/lib/opsvanhanh.ts` (KHÔNG nhét vào `gami.ts` — nguồn dữ liệu khác hẳn `phan_cong_lop`, tách file cho rõ ranh giới, giống cách `botro.ts`/`tuyensinh.ts` tách riêng).
-- `getMyOpsTasks()` — đọc `phan_cong_ops` (ai trực TKB slot nào) × `buoiAoCuaKhoang`/derive theo ngày → sinh 2 task report/tan mỗi (tkb_id, ngày), tra `vh_ops_task` xem đã đóng chưa.
-- `buildReportMessage(slot, ngay)` — hàm thuần, render câu nhắc từ TKB (lớp, thứ, ngày, giờ) — ví dụ y hệt spec.
-- `dongOpsTask(tkbId, ngay, tab, anhUrl)` — ghi `vh_ops_task` (upsert, chặn nếu thiếu `anh_url`).
-- `duyetOpsTask`/`duyetOpsHangLoat` — copy công thức từ `vanhanh.ts` (`tinhHieuSuat`/`deXuatTienDo`) nhưng ghi vào `vh_ops_task` thay vì `viec_van_hanh_duyet`.
-
-**Màn hình:** 1 leaf mới `ops_report` (Vận hành) — list task report/tan theo tuần (Ops) + tab Leader duyệt. **KHÔNG nhét vào "Việc của tôi"/`TaskCard` hiện tại ở bước này** (`TaskCard`/`MyTask` gắn chặt với `buoi_hoc`/vai gv-tg — nhét ép sẽ đụng nhiều chỗ). Có thể fast-follow sau khi 3 story chạy ổn.
+`dangMas`/`dangLike` là logic DÙNG CHUNG cho toàn bộ resolver (`layCauTheoThuTu`, mọi PrintView, BtvnTab…).
+Thêm `'ontap'` vào 2 điều kiện lọc này là đổi 1 hàm lõi — rủi ro thấp (chỉ MỞ RỘNG tập hợp, phan `ontap` trước
+đây không tồn tại nên không có doc nào bị ảnh hưởng ngược), nhưng cần chạy thử 1 doc BTVN cũ (chưa có ôn tập)
+để confirm byte-level không đổi — đúng acceptance criteria "buổi không cấu hình → doc y hệt hiện tại".
 
 ---
 
-## C. Story 3 (Prep) — ✅ CHỐT (đơn giản hoá theo Thùy 07-06)
+## 3. Migration (chạy tay qua Supabase SQL Editor)
 
-**Không cần thuật toán gộp-theo-khoảng-cách-phút.** Chốt: dọn phòng chỉ **1 lần/ngày thường** (bao nhiêu ca trong buổi tối cũng chỉ 1 lượt) · **2 lần T7/CN** (1 lượt sáng + 1 lượt chiều, ranh giới = mốc 12:00 của TKB — sáng là các band kết thúc ≤12:00, chiều là band bắt đầu ≥12:00).
+```sql
+-- 01xx_btvn_ontap_config.sql
+create table btvn_ontap_config (
+  id           uuid primary key default gen_random_uuid(),
+  nguon_id     uuid not null references tai_lieu(id) on delete cascade,
+  nguon_buoi   text not null,
+  lop_id       uuid not null references lop(id) on delete cascade,
+  config       jsonb not null,
+  updated_at   timestamptz not null default now(),
+  updated_by   uuid,
+  unique (nguon_id, nguon_buoi, lop_id)
+);
 
-**Schema:**
+alter table btvn_ontap_config enable row level security;
+
+create policy btvn_ontap_config_member_all on btvn_ontap_config
+  for all using (la_thanh_vien()) with check (la_thanh_vien());
 ```
-prep_phong
-  id              uuid PK
-  phong           text            -- 1 trong 6 phòng cố định (P101…P302, đã có ở TKBScreen)
-  ngay            date
-  luot            text            -- 'ngay' (thứ 2-6, 1 lượt/ngày) | 'sang' | 'chieu' (T7/CN)
-  nhan_su_id      uuid  NULL FK→nhan_su.id   -- ai trực dọn (từ phan_cong_ops, slot đầu lượt)
-  don_phong       boolean not null default false
-  chuan_bi_kit    boolean not null default false
-  anh_url         text
-  dong_at         timestamptz
-  gv_diem_nen     numeric default 100        -- GV dùng phòng chấm (điểm nền − lỗi)
-  gv_ghi_chu      text
-  gv_cham_at      timestamptz
-  leader_chot_at  timestamptz                -- leader chốt cuối (giữ GV bận quên vẫn chốt được)
-  created_at      timestamptz not null default now()
-  unique (phong, ngay, luot)
-```
-**Suy "lượt":** hàm thuần `luotPrepCuaNgay(phong, ngay)` — quét TKB slot hiệu lực tại `ngay` có `phong` này; T2-T6 → 1 lượt `'ngay'` (ca sớm nhất = mốc cửa); T7/CN → tách 2 nhóm theo mốc 12:00 (band kết thúc ≤12:00 = `'sang'`, band bắt đầu ≥12:00 = `'chieu'`), mỗi nhóm có ca sớm nhất riêng.
 
-**Cửa thời gian:** `[giờ_ca_đầu − 60', giờ_ca_đầu − 30']` (thường), T7/CN biên 15'. Validate ở tầng service (constant chỉnh được như `NGUONG_DEADLINE`), CHẶN cứng nếu đóng sớm hơn cửa dưới.
-
-**Màn hình:** 1 leaf mới `prep` (Vận hành) — task card (checklist 2 ô + upload + nút đóng có kiểm cửa giờ), tab GV chấm phòng (nhận xét/điểm khi đến lớp), leader chốt cuối.
+> Đã verify thật: `lop` là tên bảng đúng (`tai_lieu.lop_id` FK → `lop(id)`), policy 3 bảng anh em đều
+> `{table}_member_all` / `la_thanh_vien()` — copy đúng convention. `updated_by` KHÔNG có FK (giống
+> `tai_lieu.created_by`: cột `uuid` trần, không ràng buộc bảng nhân sự nào — theo đúng convention hiện tại).
+> `nguon_id`/`lop_id` ở đây dùng `ON DELETE CASCADE` (khác `tai_lieu` dùng `SET NULL`) vì cột NOT NULL —
+> config vô nghĩa khi mất master/lớp nên xoá theo, còn `tai_lieu` cố tình cho phép nullable để giữ lại doc.
 
 ---
 
-## D. Story 4 (Scan ET) — ⏸ GÁC LẠI (Thùy 07-06: làm story khác trước; "ET chỉ thay TA 1 bước nhập liệu" → khi quay lại làm GỌN, đừng over-engineer dashboard accuracy/confidence-tier ngay từ đầu). Giữ nguyên phần khảo sát dưới đây để tham khảo khi quay lại, KHÔNG code phần này bây giờ.
+## 4. Thứ tự build (giữ nguyên §9 spec)
 
-### D.1 In ấn (ETPrintView)
-Thêm vào `src/screens/tailieu/ETPrintView.tsx`:
-- **QR** mã hoá `{buoi_hoc_id, hoc_sinh_id, ma_de}` — render ảnh QR bằng lib mới (`qrcode`, SVG data-URI — theo đúng pattern data-URI đã dùng cho wave-header trong `buildPagedCss`, an toàn với paged.js rewrite `url()`).
-- **Fiducial markers** 4 góc tờ (ô vuông/tròn đen cố định vị trí — dùng để nắn ảnh sau scan).
-- **Lưới OMR thật** thay bảng ô-trắng hiện tại: mỗi câu 3 ô tròn Đ/C/S kích thước+khoảng-cách CỐ ĐỊNH (bắt buộc để đo toạ độ ổn định). Tự bẻ hàng ≤6 câu/hàng · >6 → 2 hàng (theo đúng số spec).
+1. ✅ Migration trên (Thùy chạy tay).
+2. `src/lib/ontap.ts` — `goiYOnTap` (4 bước) + `getOnTapConfig`/`saveOnTapConfig`.
+3. `trichXuatBuoi` (tailieu.ts) — append phan `ontap` sau btvn, revalidate câu còn tồn tại trong kho.
+4. `getTaiLieuFull` — mở `dangMas`/`dangLike` cho `'ontap'`. `getBTVNCaus` — thêm `'ontap'` vào filter.
+5. `PrintView.tsx` — `buildBuois` + `BtvnSheet` thêm khối "PHẦN ÔN TẬP", số câu liên tục — soi PDF bằng mắt.
+6. `OnTapEditor` (component chung, file mới) — dùng trong `TrichPanel` (`BuoiTrichRow`, ngay dưới chọn ngày).
+7. Modal "✎ Ôn tập" ở `KhoTaiLieuScreen` — bọc `OnTapEditor`, lưu = rebuild-tại-chỗ phan `ontap`.
+8. E2E tay: gán có ôn tập → in → chấm → re-trích cùng buổi (config sống sót) → phát hành online → đủ câu.
 
-### D.2 Luồng Ops (upload)
-- Ops scan cả lớp → 1 PDF → upload thẳng ERP (bucket `kho-tailieu` hoặc bucket mới `et-scan` — câu hỏi Q7).
-- File hợp lệ = evidence (không cần ảnh riêng).
-
-### D.3 Pipeline đọc (⚠ QUYẾT ĐỊNH KIẾN TRÚC LỚN NHẤT — xem câu hỏi Q6)
-Cần: tách PDF→trang (pdfjs-dist, đã có) → đọc QR (`jsqr`, dep mới) → nắn theo fiducial marker (tự viết phép biến đổi phối cảnh 4-điểm, chưa có lib nào trong dự án làm việc này) → đo mật độ mực 3 ô/câu (canvas, không cần lib) → confidence gate → AI vision cho ô lưỡng lự (tái dùng `callGeminiRich` pattern có sẵn).
-
-**Vấn đề:** dự án hiện **100% client-side** (không Edge Function, không cron/worker nào tồn tại) — mọi xử lý AI/ảnh hiện tại (PdfCropper, ingest kho) chạy ngay trong tab trình duyệt của người dùng lúc đó. Spec Story 4 lại viết rõ: *"Luồng hệ (tự động, chạy được trong đêm — gỡ nút 'TA về muộn')"* — nghĩa là xử lý phải chạy **độc lập với việc ai đó có mở trình duyệt hay không**. 2 việc này MÂU THUẪN nếu làm client-side thuần. Cần Thùy quyết hướng (câu hỏi Q6) — đây là điểm tôi KHÔNG tự chọn vì đổi cả kiến trúc hạ tầng (thêm Edge Function/worker lần đầu tiên trong dự án).
-
-### D.4 Schema đề xuất (accuracy + log sửa)
-```
-et_scan
-  id                uuid PK
-  buoi_hoc_id       uuid FK→buoi_hoc.id
-  file_url          text
-  uploaded_by       uuid FK→nhan_su.id
-  uploaded_at       timestamptz
-  so_trang          int
-  trang_thai        text  -- 'dang_xu_ly' | 'da_doc' | 'loi'
-
-et_scan_trang       -- 1 dòng / 1 trang giấy
-  id            uuid PK
-  et_scan_id    uuid FK→et_scan.id
-  trang_so      int
-  hoc_sinh_id   uuid NULL FK→hoc_sinh.id   -- null nếu QR không đọc được → flag nhập tay
-  qr_doc_duoc   boolean
-
-et_scan_o           -- 1 dòng / 1 Ô (câu × HS) — hạt nhân đo accuracy
-  id             uuid PK
-  et_scan_trang_id uuid FK→et_scan_trang.id
-  ma_cau         text
-  gia_tri_may    text  -- 'dung'|'chinh'|'sai'|null (kết quả OMR/AI trước khi người sửa)
-  nguon          text  -- 'omr'|'ai'|'nguoi'
-  confidence     numeric
-  gia_tri_cuoi   text  -- sau khi TA duyệt (null nếu TA chưa mở ET)
-  da_sua         boolean not null default false   -- TA có sửa so với gia_tri_may không (= mẫu số accuracy)
-  sua_boi        uuid NULL FK→nhan_su.id
-  sua_luc        timestamptz
-```
-`accuracy = (số ô da_sua=false) / (tổng số ô)`, TÁCH riêng theo `confidence` cao/thấp (đúng công thức spec §Đo-accuracy). Feed `gami_grades` thật (Đ/C/S→1/0.5/0) **CHỈ** khi TA bấm "Đóng ET" — dùng `gia_tri_cuoi`, không phải `gia_tri_may`.
-
-### D.5 Kỷ luật đầu vào
-"Sửa sạch không phạt / dập xoá bẩn bị phạt" — chấm ở tầng viec_van_hanh_duyet (TA chấm ET giấy là 1 task nghiệp vụ RIÊNG với report/tan/prep — có `nguoi_cham_giay` + `gv_diem_nen − loi`), câu hỏi Q8 (ai chấm việc TA chấm giấy, theo cây tổ chức hay theo lớp?).
+Không đụng `TaiLieuBuilder.tsx` (master) — đúng non-goal.
 
 ---
 
-## E. File dự kiến tạo/sửa (CHỈ phạm vi build đợt này — spine + Story 1/2/3; Story 4 gác lại)
-
-**Migration mới:**
-- `0084_phan_cong_ops.sql` — bảng `phan_cong_ops` (mục A).
-- `0085_vh_ops_task.sql` — bảng `vh_ops_task` (mục A.1, Story 1+2).
-- `0086_prep_phong.sql` — bảng `prep_phong` (mục C, Story 3).
-
-**Lib mới/sửa:**
-- `src/lib/opsvanhanh.ts` (mới) — phân công ca (CRUD `phan_cong_ops`), message report động, `getMyOpsTasks`/`dongOpsTask`/duyệt (Story 1+2), luồng prep (`luotPrepCuaNgay`/CRUD `prep_phong`, Story 3). 1 file cho cả 3 story (cùng domain "Ops vận hành", tách khỏi `gami.ts` vì nguồn dữ liệu khác `phan_cong_lop`).
-- KHÔNG đụng `gami.ts`/`TabKey`/`MyTask` (quyết định B — không nhét vai `ops` vào engine gv/tg hiện tại ở bước này).
-
-**Screen mới (nhóm nav "Vận hành"):**
-- `src/screens/vanhanhops/OpsReportScreen.tsx` (leaf `ops_report`) — Story 1+2: list report/tan theo tuần + tab Leader duyệt.
-- `src/screens/vanhanhops/PrepScreen.tsx` (leaf `prep`) — Story 3: checklist+ảnh+đóng, tab GV chấm phòng, leader chốt.
-- `src/screens/vanhanhops/PhanCongOpsScreen.tsx` (leaf `phancong_ops`) — quản `phan_cong_ops` (gán người trực từng slot TKB). **Tách màn riêng** (không nhét vào `PhanCongScreen.tsx` có sẵn — mô hình khác hẳn: ca×người vs lớp×vai_trò, nhét chung dễ rối 2 mental model).
-
-**fixtures.ts:** thêm 3 leaf `ops_report`, `prep`, `phancong_ops` vào nhóm "Vận hành".
-
-**RLS:** theo đúng default dự án + note spec — `staffs ENABLE` (member-gate `la_thanh_vien()`, cùng pattern mọi bảng mới gần đây), không ngoại lệ.
-
----
-
-## F. Còn mở (không chặn code, quyết khi đụng tới)
-
-- Story 4 (Scan ET): toàn bộ câu hỏi kiến trúc (bucket riêng, pipeline QR/OMR chạy đâu, TA-chấm-giấy có phải task riêng không) — **để khi quay lại Story 4**, không cần trả lời bây giờ.
-- Tích hợp report/tan/prep vào "Việc của tôi" (`TaskCard` hiện tại) — fast-follow sau khi 3 leaf mới chạy ổn, nếu Thùy muốn gộp 1 chỗ thay vì 3 leaf riêng.
-
----
-
-## G. Thứ tự build (ĐANG LÀM)
-
-1. **A — Phân công Ops** (bảng + lib CRUD + màn `PhanCongOpsScreen`) — spine.
-2. **Story 1+2 (Report/Tan)** — bảng `vh_ops_task` + lib + màn `OpsReportScreen`.
-3. **Story 3 (Prep)** — bảng `prep_phong` + lib + màn `PrepScreen`.
-
-Mỗi bước: implement → `tsc` sạch → tự review đối chiếu spec → commit → append `DEVLOG.md` → sang bước tiếp (đúng "VÒNG LÀM" cuối spec). Story 4 KHÔNG nằm trong đợt build này.
+## Open — chờ Thùy duyệt bản này (đặc biệt Phản biện A) rồi mới chạy migration + code.

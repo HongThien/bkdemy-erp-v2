@@ -5,6 +5,7 @@ import { getMyScope, type MyScope } from '../lib/nhansu'
 import { useIsMobile } from '../hooks/useIsMobile'
 import { getMyTasks, moBuoi, diemDanhTienDo, type MyTask, type BuoiAo, type TabKey } from '../lib/gami'
 import { getMyOpsTasks, getMyPrepTasks, myBuoiAoCuaKhoang, OPS_TASK_LABEL, type OpsTask, type MyPrepTask } from '../lib/opsvanhanh'
+import { listCanScanDaCham, type CaTestChoScanDaCham } from '../lib/detest'
 import { homNayVN, tuanCuaNgay, khoangTuan, nhanTuan, mucDeadline, nhanConLai, thuCuaNgay, ddmmVN, ngayCuaTs, type DeadlineMuc } from '../lib/tuan'
 import { BuoiDetail } from './gami/BuoiHocScreen'
 import { BuoiBuDetail } from './botro/BoTroScreen'
@@ -39,6 +40,7 @@ import BaoLoiScreen from './baoloi/BaoLoiScreen'
 import OpsReportScreen from './vanhanhops/OpsReportScreen'
 import PrepScreen from './vanhanhops/PrepScreen'
 import PhanCongOpsScreen from './vanhanhops/PhanCongOpsScreen'
+import ScanDaChamScreen from './vanhanhops/ScanDaChamScreen'
 import TuyenSinhScreen from './tuyensinh/TuyenSinhScreen'
 import TestDauVaoScreen from './tuyensinh/TestDauVaoScreen'
 import BoTroScreen from './botro/BoTroScreen'
@@ -221,6 +223,9 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
   const [prepTasks, setPrepTasks] = useState<MyPrepTask[]>([])
   // Team học thuật (0100): đợt bổ trợ đuổi CHỜ chốt/duyệt dạng — derive theo môn học thuật của tôi (hocThuatMons).
   const [choDuyetDuoi, setChoDuyetDuoi] = useState(0)
+  // Test đầu vào — Scan bài đã chấm (Ops) — Thùy 07-19 lần 2: "không cần tab riêng, chỉ cần derive task
+  // cho Ops". Pool chung (như Chấm test), KHÔNG lọc theo người — ai mở thì làm.
+  const [scanTest, setScanTest] = useState<CaTestChoScanDaCham[]>([])
   const me = useStore((s) => s.me)
   const setStaffLeaf = useStore((s) => s.setStaffLeaf)
   const isMobile = useIsMobile()
@@ -235,6 +240,10 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
     if (!htMons.length) { setChoDuyetDuoi(0); return }
     listDotChoDuyetDuoi(htMons).then((r) => setChoDuyetDuoi(r.length)).catch(() => setChoDuyetDuoi(0))
   }, [me?.hocThuatMons])
+  useEffect(() => {
+    if (!scope?.opsToanHe) { setScanTest([]); return }
+    listCanScanDaCham().then(setScanTest).catch(() => setScanTest([]))
+  }, [scope?.opsToanHe])
   useEffect(() => { const id = setInterval(() => setNow(Date.now()), 60000); return () => clearInterval(id) }, [])
   useEffect(() => {
     if (!scope?.opsToanHe) { setOpsWeek([]); return }
@@ -287,8 +296,8 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
   const prepFiltered = matchLoai('prep') ? prepTasks : []
   const prepActive = prepFiltered.filter((t) => !t.done)
   const prepDone = prepFiltered.filter((t) => t.done)
-  const hasActive = opsActive.length + taskActive.length + opsExtraActive.length + prepActive.length > 0
-  const canLam = opsActive.length + taskActive.length + opsExtraActive.length + prepActive.length
+  const hasActive = opsActive.length + taskActive.length + opsExtraActive.length + prepActive.length + scanTest.length > 0
+  const canLam = opsActive.length + taskActive.length + opsExtraActive.length + prepActive.length + scanTest.length
   const quaHan = taskActive.filter((t) => mucDeadline(t.deadline, now) === 'qua_han').length
     + opsExtraActive.filter((t) => mucDeadline(t.deadline, now) === 'qua_han').length
     + prepActive.filter((t) => mucDeadline(t.deadline, now) === 'qua_han').length
@@ -352,7 +361,7 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-[minmax(0,1fr)_280px]">
         {/* VẬN HÀNH — chiếm hết phần còn lại */}
         <div className="min-w-0">
-          <SectionHead label="Vận hành" count={hasActive ? opsActive.length + taskActive.length + opsExtraActive.length + prepActive.length : undefined} color="bg-indigo-500" />
+          <SectionHead label="Vận hành" count={hasActive ? canLam : undefined} color="bg-indigo-500" />
           {!hasActive ? (
             <div className="rounded-lg border border-emerald-200 bg-emerald-50/60 px-4 py-3 text-[13px] font-medium text-emerald-700">✓ Không còn việc vận hành cần làm trong {nhanTuan(tuan).toLowerCase()}.</div>
           ) : (
@@ -380,6 +389,24 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
                   </DayRow>
                 )
               })}
+            </div>
+          )}
+
+          {/* Test đầu vào — Scan bài đã chấm (Ops, pool chung — không lọc theo người, cùng cơ chế Chấm
+              test). Không có deadline/ngày riêng để gom theo NgàyRow nên để RIÊNG 1 khối flat. */}
+          {scanTest.length > 0 && (
+            <div className="mt-3">
+              <div className="mb-1.5 text-[12px] font-semibold text-slate-500">📷 Test đầu vào — cần scan bài đã chấm ({scanTest.length})</div>
+              <div className="grid gap-1.5 [grid-template-columns:repeat(auto-fill,minmax(220px,1fr))]">
+                {scanTest.map((c) => (
+                  <button key={c.id} onClick={() => setStaffLeaf('test_dau_vao_scan')} className="flex flex-col gap-0.5 rounded-lg border-l-4 border-l-fuchsia-400 bg-white px-2.5 py-2 text-left shadow-sm hover:shadow-md">
+                    <div className="flex items-center gap-1.5">
+                      <span className="shrink-0 text-[15px]">📷</span>
+                      <span className="min-w-0 flex-1 text-[13px] font-medium text-slate-800">{c.hoTenHs} · {c.mon}</span>
+                    </div>
+                  </button>
+                ))}
+              </div>
             </div>
           )}
 
@@ -565,6 +592,9 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'ops_report' ? <OpsReportScreen />
       : staffLeaf === 'prep' ? <PrepScreen />
       : staffLeaf === 'phancong_ops' ? <PhanCongOpsScreen />
+      // "Scan bài đã chấm" (test đầu vào) — Thùy 07-19 lần 2: "không cần tab riêng, chỉ cần derive task
+      // cho Ops" → KHÔNG nằm trong bar tab TestDauVaoScreen/sidebar, chỉ vào được qua card derive dưới đây.
+      : staffLeaf === 'test_dau_vao_scan' ? <ScanDaChamScreen />
       : (
         <section className="flex min-h-0 items-center justify-center p-8 text-sm text-slate-400">Chọn một mục bên trái.</section>
       )}
