@@ -116,15 +116,19 @@ function TaskRow({ t, now, open, onToggle, onDone }: { t: OpsTask; now: number; 
   const muc = mucDeadline(t.deadline, now)
   const msg = t.tab === 'report' ? buildReportMessage(t.lopTen, t.thu, t.ngay, t.gioBatDau, t.gioKetThuc) : TAN_MESSAGE
 
+  // 1 task = 1 slot ảnh (trùng đúng khoá unique tkb_id+ngay+tab của vh_ops_task) → dán lại thì ĐÈ.
+  // Màn này rò rỉ nặng hơn Prep: ảnh upload lúc DÁN nhưng dòng chỉ ghi lúc bấm ĐÓNG, nên dán xong bỏ
+  // ngang là file nằm lại vĩnh viễn không ai trỏ tới. Slot cố định làm mọi lần dán chỉ tốn 1 file.
+  const slotAnh = `task-${t.tkbId}-${t.ngay}-${t.tab}`
   async function dan() {
     setErr(null)
-    try { const f = await readClipboardImageFile(); if (!f) { setErr('Clipboard không có ảnh.'); return }; setBusy(true); setAnhUrl(await uploadOpsAnh(f)) }
+    try { const f = await readClipboardImageFile(); if (!f) { setErr('Clipboard không có ảnh.'); return }; setBusy(true); setAnhUrl(await uploadOpsAnh(f, slotAnh)) }
     catch (e: any) { setErr(e.message ?? String(e)) } finally { setBusy(false) }
   }
   async function chonFile(e: React.ChangeEvent<HTMLInputElement>) {
     const f = e.target.files?.[0]; if (!f) return
     setBusy(true); setErr(null)
-    try { setAnhUrl(await uploadOpsAnh(f)) } catch (ex: any) { setErr(ex.message ?? String(ex)) } finally { setBusy(false) }
+    try { setAnhUrl(await uploadOpsAnh(f, slotAnh)) } catch (ex: any) { setErr(ex.message ?? String(ex)) } finally { setBusy(false) }
   }
   async function dong() {
     if (!anhUrl) { setErr('Cần ảnh evidence trước.'); return }

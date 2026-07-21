@@ -132,19 +132,22 @@ function LuotCard({ l, onChanged, canChamVaChot }: { l: PrepLuot; onChanged: () 
     try { await tickPrepChecklist(l.phong, l.ngay, l.luot, { [field]: !(row?.[field] ?? false) }); setRow(await getPrepRow(l.phong, l.ngay, l.luot)) }
     catch (e: any) { setErr(e.message ?? String(e)) } finally { setBusy(false) }
   }
+  // 1 lượt prep = 1 slot ảnh (trùng đúng khoá unique phong+ngay+luot của prep_phong) → dán lại thì ĐÈ,
+  // không đẻ file mới. Xem uploadOpsAnh (opsvanhanh.ts) để biết vì sao.
+  const slotAnh = `prep-${l.phong}-${l.ngay}-${l.luot}`
   async function ganAnh(url: string) {
     await tickPrepChecklist(l.phong, l.ngay, l.luot, { anhUrl: url })
     setRow(await getPrepRow(l.phong, l.ngay, l.luot))
   }
   async function dan() {
     setErr(null)
-    try { const f = await readClipboardImageFile(); if (!f) { setErr('Clipboard không có ảnh.'); return }; setBusy(true); await ganAnh(await uploadOpsAnh(f)) }
+    try { const f = await readClipboardImageFile(); if (!f) { setErr('Clipboard không có ảnh.'); return }; setBusy(true); await ganAnh(await uploadOpsAnh(f, slotAnh)) }
     catch (e: any) { setErr(e.message ?? String(e)) } finally { setBusy(false) }
   }
   async function chonFile(e: React.ChangeEvent<HTMLInputElement>) {
     const f = e.target.files?.[0]; if (!f) return
     setBusy(true); setErr(null)
-    try { await ganAnh(await uploadOpsAnh(f)) } catch (ex: any) { setErr(ex.message ?? String(ex)) } finally { setBusy(false) }
+    try { await ganAnh(await uploadOpsAnh(f, slotAnh)) } catch (ex: any) { setErr(ex.message ?? String(ex)) } finally { setBusy(false) }
   }
   async function dong() {
     if (!row?.anhUrl) { setErr('Cần ảnh chụp tại thời điểm đóng.'); return }

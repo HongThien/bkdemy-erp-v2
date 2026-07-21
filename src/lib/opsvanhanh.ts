@@ -33,12 +33,22 @@ export function caOfGio(gioBatDau: string): CaTruc | null {
   return null
 }
 
-// ── Upload ảnh evidence — cùng pattern uploadReportAnh (baoloi.ts), bucket kho-anh prefix ops/ ──
-export async function uploadOpsAnh(blob: Blob): Promise<string> {
-  const path = `ops/${Date.now()}-${Math.round(performance.now())}.png`
-  const { error } = await supabase.storage.from('kho-anh').upload(path, blob, { contentType: blob.type || 'image/png', upsert: false })
+// ── Upload ảnh evidence — bucket kho-anh, prefix ops/ (baoloi.ts dùng prefix report/, đừng lẫn) ──
+// ⚠ ĐƯỜNG DẪN = HÀM CỦA DANH TÍNH DÒNG, KHÔNG phải `Date.now()`. Bản cũ đặt tên theo thời điểm nên
+// MỖI lần dán ảnh đẻ 1 file mới: dán đè ảnh khác → file cũ mồ côi vĩnh viễn; dán rồi bỏ ngang (màn
+// Report chỉ ghi dòng lúc BẤM ĐÓNG) → mồ côi luôn. 07-21 quét ra 43 file mồ côi trong `ops/`, chỉ 19
+// do xoá `prep_phong`, 24 còn lại là rò rỉ này. Trỏ cùng `slot` về cùng path + `upsert: true` ⇒ dán
+// lại bao nhiêu lần cũng chỉ 1 file, rò rỉ tắt hẳn. (Policy `kho_anh_update` đã có sẵn từ 0007.)
+// Đuôi luôn `.png` kể cả ảnh jpeg: `contentType` gửi tường minh nên hiển thị vẫn đúng, còn đuôi CỐ ĐỊNH
+// mới giữ được "1 slot = 1 path" (đổi đuôi theo mime thì dán png rồi dán jpg lại đẻ 2 file).
+const slugOps = (s: string) => s.replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-+|-+$/g, '')
+export async function uploadOpsAnh(blob: Blob, slot: string): Promise<string> {
+  const path = `ops/${slugOps(slot)}.png`
+  const { error } = await supabase.storage.from('kho-anh').upload(path, blob, { contentType: blob.type || 'image/png', upsert: true })
   if (error) throw error
-  return supabase.storage.from('kho-anh').getPublicUrl(path).data.publicUrl
+  // Đè lên cùng path ⇒ URL không đổi ⇒ trình duyệt/CDN vẫn trả ảnh CŨ. `?v=` ép tải lại bản vừa dán.
+  // ⚠ Truy mồ côi sau này phải cắt query trước khi so tên: split_part(split_part(url,'/kho-anh/',2),'?',1).
+  return `${supabase.storage.from('kho-anh').getPublicUrl(path).data.publicUrl}?v=${Date.now()}`
 }
 
 // Nhân sự TEAM OPS (biên chế `nhan_su_team`, team.ma='ops') — dùng cho picker "người trực" (KHÔNG
