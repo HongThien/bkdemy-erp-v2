@@ -555,7 +555,9 @@ export async function getEloBreakdown(buoiId: string, phase: Phase): Promise<Elo
 
 // ── ĐÓNG PHASE: tính Elo (buổi thường/MT) + ghi EXP. Idempotent. ──
 export type RevealRow = { hoc_sinh_id: string; rawPoints: number; rank: number; exp: number; eloBefore?: number; eloAfter?: number; delta?: number }
-export async function closePhase(buoiId: string, phase: Phase): Promise<{ already?: boolean; reveal?: RevealRow[] }> {
+// khongCoDuLieu = đã ĐÓNG phase nhưng KHÔNG tính Elo/EXP vì không có dòng chấm nào. UI PHẢI nói ra —
+// im lặng bỏ qua chính là cách bug 07-21 sống sót cả tháng.
+export async function closePhase(buoiId: string, phase: Phase): Promise<{ already?: boolean; khongCoDuLieu?: boolean; reveal?: RevealRow[] }> {
   const { data: buoi, error: eB } = await supabase.from('buoi_hoc').select('*').eq('id', buoiId).single()
   if (eB) throw eB
   const b = buoi as BuoiHoc
@@ -590,6 +592,16 @@ export async function closePhase(buoiId: string, phase: Phase): Promise<{ alread
   const raw: Record<string, number> = {}
   for (const id of hsIds) raw[id] = 0
   for (const g of grades as any[]) if (g.hoc_sinh_id in raw) raw[g.hoc_sinh_id] += Number(g.points)
+
+  // ⭐ BUG THẬT 07-21 (Thùy): KHÔNG CÓ DÒNG CHẤM NÀO ⇒ HUỶ LUÔN PHIÊN ELO, đừng tính.
+  // Đời cũ khởi tạo raw[id]=0 cho mọi HS rồi cứ thế chạy → 0 dữ liệu bị hiểu thành "CẢ LỚP HOÀ".
+  // Hoà thì actual đều nhau nhưng expected phụ thuộc Elo ⇒ HS Elo CAO mất điểm, HS Elo THẤP được
+  // điểm: một buổi không ai chấm âm thầm kéo cả lớp về trung bình. Thực đo: 81/329 phiên trống,
+  // 8955 điểm Elo biến động vô nghĩa, HS lệch tới ±245.
+  // Đây đúng §1.5: "thiếu data = KHÔNG có dòng", KHÔNG phải "mọi người 0 điểm". Cùng khuôn với
+  // nhánh !hsIds.length ở trên — vẫn ĐÓNG phase (vận hành xong), chỉ không sinh phép đo.
+  // Áp cho MỌI phase có Elo (ingame/et/mt): cùng một bản chất, đừng để lệch nhau (§1.6 symmetry).
+  if (coElo && grades.length === 0) { await markClosed(buoiId, dongCol, b.loai, otherClosed); return { reveal: [], khongCoDuLieu: true } }
 
   const reveal: RevealRow[] = []
   if (coElo) {

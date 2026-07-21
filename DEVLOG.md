@@ -2299,3 +2299,28 @@ Query mồ côi ra **43 file**, không phải 19 như em đoán. Đúng cái gua
 **Fix:** `uploadOpsAnh(blob, slot)`, path = **hàm của danh tính dòng** (`prep-{phong}-{ngay}-{luot}` · `task-{tkbId}-{ngay}-{tab}` — trùng đúng khoá unique 2 bảng) + `upsert: true` (policy `kho_anh_update` có sẵn từ `0007`). Dán lại bao nhiêu lần cũng 1 file. Đuôi giữ `.png` kể cả jpeg: contentType gửi tường minh nên hiển thị đúng, còn **đổi đuôi theo mime thì dán png rồi dán jpg lại đẻ 2 file** — mất tính "1 slot = 1 path". URL kèm `?v=` vì đè cùng path ⇒ URL không đổi ⇒ CDN/trình duyệt trả ảnh CŨ. Kéo theo: **truy mồ côi sau này phải cắt query trước khi so tên**.
 **Đã verify:** `tsc` sạch; 4 chỗ gọi đều truyền `slot` (tham số bắt buộc nên tsc tự bắt nếu sót). **CHƯA verify end-to-end trên app** — cần login Ops + dán ảnh thật, chưa chạy.
 **Bài học:** con số không khớp dự đoán (43 vs 19) là **tín hiệu mô hình sai**, không phải chi tiết vụn để làm tròn. Truy tiếp thì lộ ra bug thật; xoá cho xong thì mất luôn manh mối và tháng sau lại 24 file nữa.
+
+## 2026-07-21 (tiếp) — Elo: buổi KHÔNG CHẤM vẫn cộng/trừ Elo → huỷ phiên + replay toàn bộ
+
+**Thùy báo:** *"chấm bài trên lớp: nếu không có dữ liệu nào thì hệ thống vẫn tính là kết quả bằng nhau và cộng trừ elo. Tôi muốn nếu không có dữ liệu thì huỷ phiên tính elo đó đi. Và recalculate lại toàn bộ Elo sau khi huỷ các buổi trống."*
+
+**Lỗi:** `closePhase` khởi tạo `raw[id] = 0` cho MỌI HS có mặt rồi chạy tiếp bất kể có `gami_grades` hay không → **0 dòng chấm bị hiểu thành "cả lớp HOÀ"**. Hoà thì `actual` đều nhau nhưng `expected` phụ thuộc Elo ⇒ **HS Elo CAO mất điểm, HS Elo THẤP được điểm**: buổi không ai chấm âm thầm kéo cả lớp về trung bình. Vi phạm thẳng §1.5 — "thiếu data = KHÔNG có dòng", KHÔNG phải "mọi người 0 điểm".
+
+**Quy mô đo được:** 81/329 phiên Elo là TRỐNG (79 ingame + 2 et) · 720 dòng `gami_elo_history` · **8955 điểm Elo biến động vô nghĩa** · HS lệch tới **±245 Elo** (Nguyễn Ngọc Trí Anh +245, Vũ Lê Bình −211).
+
+**Fix code (`gami.ts`):** `if (coElo && grades.length === 0)` → `markClosed` rồi return, KHÔNG tính Elo/EXP. Cùng khuôn với nhánh `!hsIds.length` vốn có. Áp cho CẢ `ingame`/`et`/`mt` (§1.6 symmetry). Thêm cờ trả về `khongCoDuLieu` và **3 nút Xác nhận đều alert** *"Đã đóng, nhưng KHÔNG tính Elo/EXP — chưa chấm ô nào"* — bỏ qua ÂM THẦM chính là lý do bug sống được cả tháng.
+
+**Replay (`scripts/replay_elo_bo_phien_rong.mjs`):** phải replay chứ không trừ ngược được — Elo là chuỗi phụ thuộc (delta buổi sau tính từ Elo sau buổi trước qua `expected`), xoá 1 phiên ở giữa làm mọi delta phía sau sai theo. Script MỚI, khác `_replay_elo.mjs` đời cũ 3 điểm: (1) bỏ phase không có dòng chấm · (2) **có phase `mt`** (K=60 — script cũ chỉ ingame+et nên chạy nó sẽ NUỐT sạch Elo của MT) · (3) `sessions_played` chỉ +1 khi phiên ingame THẬT SỰ tính (buổi trống không phải "đã chơi", nó ảnh hưởng hệ số K). Mặc định chạy THỬ, `--ghi` mới ghi, toàn bộ trong 1 transaction.
+
+**Thùy chốt 2 câu hỏi:** ① EXP phiên trống → **bỏ luôn** (nhất quán với Elo) · ② `sessions_played` → **đếm lại theo buổi có chấm**. Sau đó xác nhận thêm: *"hệ thống này chưa chạy real với học sinh nên cứ recalculate lại"*.
+
+**Đã chạy** (backup trước ra `scripts/_backup_elo_2026-07-21.json`, 1,6 MB):
+- `gami_elo_history` 2665 → **1946** · `gami_exp_ledger` rank_* 2656 → **1946** · EXP rank_* 667.579 → **433.210** (−234.369)
+- 248/301 (HS×môn) đổi Elo. Lệch lớn nhất: Gia Bảo 1038→892 (−146, buổi 13→4) · Ngọc Mai 956→1072 (+116)
+- Elo TB toàn hệ **1008 → 1008** (Elo zero-sum trong mỗi phiên nên TB phải giữ nguyên — dùng làm chốt sanity)
+
+**Kiểm chứng độc lập sau replay (4/4 xanh):** phiên Elo trống còn lại **0** · dòng `gami_elo` lệch với Σdelta history **0** · dòng `sessions_played` lệch **0** · TB Elo giữ nguyên.
+
+**Verify ĐƯỜNG CODE (không chỉ dữ liệu)** — replay chỉ chứng minh data, chưa chứng minh `closePhase`. Test thật trên buổi 9C1 · 20/07 (6 HS có mặt, 0 ô chấm), chặn `alert`/`confirm` để đọc thông báo:
+- bấm Xác nhận → alert đúng câu mới; DB: `ingame_dong_at` ĐƯỢC set, nhưng **0 dòng history, 0 EXP, Elo tổng 309393 không đổi** ✅
+- bấm "↩ Mở lại" → buổi về nguyên trạng (`ingame_dong_at` null, `trang_thai` `mo`), Elo tổng vẫn 309393 ✅ (`reopenPhase` gỡ sạch nên test có đường lùi)

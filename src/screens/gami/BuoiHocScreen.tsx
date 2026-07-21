@@ -368,7 +368,7 @@ function ChamTab({ buoiId, phase, roster, buoi, dangOpts, onChange }: { buoiId: 
     if (closing) return
     if (!confirm('Xác nhận chấm bài trên lớp? Sẽ tính Elo + EXP. Mở lại được nếu cần sửa.')) return
     setClosing(true)
-    try { const res = await closePhase(buoiId, phase); if (res.already) alert('Đã xác nhận rồi.'); else onChange() }
+    try { const res = await closePhase(buoiId, phase); if (res.already) alert('Đã xác nhận rồi.'); else { if (res.khongCoDuLieu) alert('Đã đóng, nhưng KHÔNG tính Elo/EXP — chưa chấm ô nào. Muốn tính thì Mở lại, chấm rồi xác nhận lại.'); onChange() } }
     finally { setClosing(false) }
   }
   async function moLai() { await reopenPhase(buoiId, phase); onChange() } // mở lại để sửa → hoàn Elo/EXP, xác nhận lại sau
@@ -594,7 +594,7 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
     if (closing) return
     if (!confirm('Xác nhận ET? Sẽ tính Elo + EXP. Mở lại được nếu cần sửa.')) return
     setClosing(true)
-    try { const res = await closePhase(buoiId, 'et'); if (res.already) alert('Đã xác nhận rồi.'); else onChange() }
+    try { const res = await closePhase(buoiId, 'et'); if (res.already) alert('Đã xác nhận rồi.'); else { if (res.khongCoDuLieu) alert('Đã đóng, nhưng KHÔNG tính Elo/EXP — chưa chấm ô nào. Muốn tính thì Mở lại, chấm rồi xác nhận lại.'); onChange() } }
     finally { setClosing(false) }
   }
   async function moLai() { await reopenPhase(buoiId, 'et'); onChange() }
@@ -1114,7 +1114,7 @@ function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: Buo
     if (closing) return
     if (!confirm('Đóng chấm MT? Sẽ tính Elo (K=60) + EXP. Mở lại được nếu cần sửa.')) return
     setClosing(true)
-    try { const res = await closePhase(buoiId, 'mt'); if (res.already) alert('Đã đóng rồi.'); else onChange() }
+    try { const res = await closePhase(buoiId, 'mt'); if (res.already) alert('Đã đóng rồi.'); else { if (res.khongCoDuLieu) alert('Đã đóng, nhưng KHÔNG tính Elo/EXP — chưa chấm ô nào. Muốn tính thì Mở lại, chấm rồi xác nhận lại.'); onChange() } }
     finally { setClosing(false) }
   }
   async function moLai() { await reopenPhase(buoiId, 'mt'); onChange() }
