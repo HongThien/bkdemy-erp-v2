@@ -963,7 +963,10 @@ export async function reopenPhase(buoiId: string, phase: Phase): Promise<void> {
 }
 
 // ── QUẢN LÝ ĐIỂM (Elo/EXP) — bảng tổng + hồ sơ HS ─────────────────
-export type DiemRow = { hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; khoi: string | null; anh_url: string | null; mon: string; elo: number; sessions: number; exp: number }
+// `he` = bậc lớp (S/A/B/C) và `ten_lop` lấy THEO ĐÚNG MÔN của dòng Elo (§1.6: dữ liệu học tập scope
+// theo môn) — 1 HS học Toán lớp S mà KHTN lớp B là chuyện thường, không có "hệ chung chung".
+// null = HS không còn lớp đang-học của môn đó (đã rời lớp nhưng Elo cũ vẫn còn) → lọc "Chưa xếp lớp".
+export type DiemRow = { hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; khoi: string | null; anh_url: string | null; mon: string; elo: number; sessions: number; exp: number; he: string | null; ten_lop: string | null }
 // Bảng tổng: mỗi (HS × môn) 1 dòng Elo + tổng EXP của môn đó. Sắp Elo giảm dần (leaderboard). Lọc theo môn.
 export async function listGamiBangTong(mon?: string): Promise<DiemRow[]> {
   let q = supabase.from('gami_elo').select('hoc_sinh_id, mon, elo, sessions_played, hoc_sinh:hoc_sinh_id(ho_ten, ma_hs, khoi, anh_url)').order('elo', { ascending: false }).limit(LIMIT)
@@ -973,11 +976,20 @@ export async function listGamiBangTong(mon?: string): Promise<DiemRow[]> {
   const { data: exp } = await supabase.from('gami_exp_ledger').select('hoc_sinh_id, mon, amount').limit(LIMIT * 5)
   const expMap = new Map<string, number>()
   for (const r of (exp ?? []) as any[]) { const k = r.hoc_sinh_id + '|' + (r.mon ?? ''); expMap.set(k, (expMap.get(k) ?? 0) + Number(r.amount)) }
-  return ((elo ?? []) as any[]).map((e) => ({
-    hoc_sinh_id: e.hoc_sinh_id, ho_ten: e.hoc_sinh?.ho_ten ?? '?', ma_hs: e.hoc_sinh?.ma_hs ?? null,
-    khoi: e.hoc_sinh?.khoi ?? null, anh_url: e.hoc_sinh?.anh_url ?? null, mon: e.mon,
-    elo: e.elo, sessions: e.sessions_played, exp: expMap.get(e.hoc_sinh_id + '|' + e.mon) ?? 0,
-  }))
+  // Ghi danh ĐANG HỌC → (HS × môn) ⇒ hệ + tên lớp. Lấy TOÀN BỘ rồi lọc ở client, KHÔNG `.in(hsIds)`:
+  // 300+ uuid nhét vào URL là đường dẫn tới lỗi "URL quá dài" (CLAUDE.md §2), mà bảng này vốn nhỏ.
+  const { data: gd } = await supabase.from('hoc_sinh_lop').select('hoc_sinh_id, lop:lop_id(mon, bac, ten_lop)').eq('trang_thai', 'dang_hoc').limit(LIMIT)
+  const lopMap = new Map<string, { bac: string | null; ten_lop: string | null }>()
+  for (const r of (gd ?? []) as any[]) if (r.lop?.mon) lopMap.set(r.hoc_sinh_id + '|' + r.lop.mon, { bac: r.lop.bac ?? null, ten_lop: r.lop.ten_lop ?? null })
+  return ((elo ?? []) as any[]).map((e) => {
+    const l = lopMap.get(e.hoc_sinh_id + '|' + e.mon)
+    return {
+      hoc_sinh_id: e.hoc_sinh_id, ho_ten: e.hoc_sinh?.ho_ten ?? '?', ma_hs: e.hoc_sinh?.ma_hs ?? null,
+      khoi: e.hoc_sinh?.khoi ?? null, anh_url: e.hoc_sinh?.anh_url ?? null, mon: e.mon,
+      elo: e.elo, sessions: e.sessions_played, exp: expMap.get(e.hoc_sinh_id + '|' + e.mon) ?? 0,
+      he: l?.bac ?? null, ten_lop: l?.ten_lop ?? null,
+    }
+  })
 }
 // Môn cho bảng xếp hạng = MÔN CÓ LỚP (danh mục), KHÔNG suy từ Elo-đang-có (KHTN chưa có buổi đóng vẫn phải hiện bảng riêng).
 export async function listGamiMons(): Promise<string[]> {

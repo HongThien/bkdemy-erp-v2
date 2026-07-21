@@ -1,10 +1,15 @@
 // QUẢN LÝ ĐIỂM Elo/EXP. 2 view: BẢNG XẾP HẠNG (leaderboard per môn) · THEO CA HỌC (mỗi ca 1 mã, 2 bảng Elo lớp/ET).
 // Hồ sơ 1 HS: Elo per môn · lịch sử Elo (bấm 1 dòng → mở bảng Elo của ca đó) · dòng EXP.
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { listGamiBangTong, listGamiMons, getDiemHS, listCaHoc, getEloBreakdown, type DiemRow, type DiemHS, type CaHoc, type EloBreakdown } from '../../lib/gami'
 import { tenHienThiDs } from '../../lib/hoten'
+import { KHOI_OPTIONS } from '../../lib/kho/api'
 
 type Phase = 'ingame' | 'et' | 'mt'
+// Thứ tự hệ khớp lop_bac.thu_tu (S=4 > A=3 > B=2 > C=1). Hằng ở đây thay vì query — 4 giá trị cố
+// định, và bảng này chỉ cần SẮP XẾP; nếu sau có bậc mới thì nó vẫn hiện, chỉ rơi xuống cuối.
+const HE_THU_TU: Record<string, number> = { S: 4, A: 3, B: 2, C: 1 }
+const HE_TONE: Record<string, string> = { S: 'bg-amber-100 text-amber-800', A: 'bg-indigo-100 text-indigo-800', B: 'bg-sky-100 text-sky-800', C: 'bg-slate-100 text-slate-600' }
 const EXP_SRC: Record<string, string> = { rank_ingame: 'Hạng chấm bài', rank_et: 'Hạng ET', rank_mt: 'Hạng MT', attend_floor: 'Đi học (sàn)' }
 const srcLbl = (s: string) => EXP_SRC[s] ?? s
 const fmtNgay = (iso?: string | null) => (iso ? new Date(iso + 'T00:00:00').toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' }) : '—')
@@ -46,24 +51,69 @@ function RankView({ onOpenHS }: { onOpenHS: (r: DiemRow) => void }) {
   const [rows, setRows] = useState<DiemRow[]>([])
   const [loading, setLoading] = useState(true)
   const [q, setQ] = useState('')
+  const [khoi, setKhoi] = useState('all')
+  const [he, setHe] = useState('all')
   useEffect(() => { listGamiMons().then((m) => { setMons(m); if (m.length) setMon(m.includes('Toán') ? 'Toán' : m[0]) }).catch(() => {}) }, [])
-  useEffect(() => { setLoading(true); listGamiBangTong(mon || undefined).then(setRows).finally(() => setLoading(false)) }, [mon])
-  const shown = rows.filter((r) => !q.trim() || r.ho_ten.toLowerCase().includes(q.trim().toLowerCase()) || (r.ma_hs ?? '').toLowerCase().includes(q.trim().toLowerCase()))
+  // ⚠ BUG CÓ SẴN, phát hiện 07-21 khi thêm cột Lớp/Hệ: bảng ghi "Toán" nhưng hiện CẢ 307 dòng mọi môn.
+  // Effect này chạy lần đầu lúc `mon` còn '' → gọi listGamiBangTong(undefined) = LẤY HẾT MỌI MÔN; ngay
+  // sau đó listGamiMons trả về → setMon('Toán') → gọi lần 2. Lần 1 nặng hơn nên về SAU, ghi đè kết quả
+  // lần 2 ⇒ leaderboard "Toán" trộn cả Elo KHTN (vi phạm §1.6 — không có điểm chung chung, chỉ có của môn X).
+  // Fix 2 lớp: (a) CHƯA biết môn thì KHÔNG query · (b) reqId chống race (mẫu sẵn có ở SearchCau).
+  const reqId = useRef(0)
+  useEffect(() => {
+    if (!mon) return
+    const my = ++reqId.current
+    setLoading(true); setRows([])
+    listGamiBangTong(mon)
+      .then((r) => { if (my === reqId.current) setRows(r) })
+      .finally(() => { if (my === reqId.current) setLoading(false) })
+  }, [mon])
+  // Khối/hệ dựng TỪ DATA ĐANG CÓ, không hardcode: đổi môn thì tập khối/hệ đổi theo, và không bao giờ
+  // hiện lựa chọn ra 0 kết quả. Khối sort theo KHOI_OPTIONS (4 < 4T < 5 < 5T…), hệ theo lop_bac (S>A>B>C).
+  const khoiCo = [...new Set(rows.map((r) => r.khoi).filter(Boolean) as string[])]
+    .sort((a, b) => KHOI_OPTIONS.indexOf(a as any) - KHOI_OPTIONS.indexOf(b as any))
+  const heCo = [...new Set(rows.map((r) => r.he).filter(Boolean) as string[])].sort((a, b) => (HE_THU_TU[b] ?? 0) - (HE_THU_TU[a] ?? 0))
+  const chuaXepLop = rows.some((r) => !r.he)
+  const shown = rows.filter((r) =>
+    (khoi === 'all' || r.khoi === khoi) &&
+    (he === 'all' || (he === 'none' ? !r.he : r.he === he)) &&
+    (!q.trim() || r.ho_ten.toLowerCase().includes(q.trim().toLowerCase()) || (r.ma_hs ?? '').toLowerCase().includes(q.trim().toLowerCase())))
   const tab = (on: boolean) => `h-7 rounded-md px-3 text-[13px] font-semibold transition ${on ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`
+  const loc = 'h-7 rounded-md border border-slate-200 bg-white px-2 text-[13px] text-slate-700 outline-none focus:border-indigo-400'
+  const daLoc = khoi !== 'all' || he !== 'all'
   return (
     <>
       <div className="mb-3 flex flex-wrap items-center gap-2">
         {mons.length > 1 && <><span className="text-[12px] font-semibold uppercase tracking-wider text-slate-500">Môn</span>{mons.map((m) => <button key={m} onClick={() => setMon(m)} className={tab(mon === m)}>{m}</button>)}</>}
-        <span className="rounded bg-indigo-50 px-2 py-0.5 text-[12px] font-medium text-indigo-600">{shown.length} HS</span>
+        <select value={khoi} onChange={(e) => setKhoi(e.target.value)} className={loc} title="Lọc theo khối">
+          <option value="all">Mọi khối</option>
+          {khoiCo.map((k) => <option key={k} value={k}>Khối {k}</option>)}
+        </select>
+        <select value={he} onChange={(e) => setHe(e.target.value)} className={loc} title="Hệ = bậc lớp của HS trong MÔN đang xem">
+          <option value="all">Mọi hệ</option>
+          {heCo.map((h) => <option key={h} value={h}>Hệ {h}</option>)}
+          {chuaXepLop && <option value="none">Chưa xếp lớp</option>}
+        </select>
+        {daLoc && <button onClick={() => { setKhoi('all'); setHe('all') }} className="h-7 rounded-md px-2 text-[12px] font-medium text-slate-500 hover:bg-slate-100">✕ Bỏ lọc</button>}
+        <span className="rounded bg-indigo-50 px-2 py-0.5 text-[12px] font-medium text-indigo-600">{shown.length} HS{daLoc && rows.length !== shown.length ? ` / ${rows.length}` : ''}</span>
         <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm tên / mã…" className="ml-auto h-7 w-44 rounded-md border border-slate-200 px-2.5 text-[13px] outline-none focus:border-indigo-400" />
       </div>
       {loading ? <p className="text-sm text-slate-400">Đang tải…</p>
-        : shown.length === 0 ? <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">Chưa có HS nào có điểm. Điểm sinh khi đóng buổi.</div>
+        : shown.length === 0 ? (
+          // Phân biệt "chưa có data" với "lọc ra rỗng" — cùng bảng trống nhưng hai nguyên nhân khác
+          // hẳn, gộp thông điệp là bắt người dùng tự đoán.
+          <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">
+            {rows.length === 0
+              ? 'Chưa có HS nào có điểm. Điểm sinh khi đóng buổi.'
+              : <>Không HS nào khớp bộ lọc ({rows.length} HS bị lọc bỏ).{' '}
+                  <button onClick={() => { setKhoi('all'); setHe('all'); setQ('') }} className="font-medium text-indigo-600 hover:underline">Bỏ lọc</button></>}
+          </div>
+        )
         : (
           <div className="rounded-xl border border-slate-200 bg-white">
             <table className="w-full text-sm">
               <thead className="text-left text-[12px] font-semibold text-slate-700"><tr>
-                <th className="sticky top-0 z-10 w-12 bg-slate-100 px-4 py-2.5 text-center">#</th><th className="sticky top-0 z-10 bg-slate-100 px-3 py-2.5">Học sinh</th><th className="sticky top-0 z-10 bg-slate-100 px-3">Khối</th>
+                <th className="sticky top-0 z-10 w-12 bg-slate-100 px-4 py-2.5 text-center">#</th><th className="sticky top-0 z-10 bg-slate-100 px-3 py-2.5">Học sinh</th><th className="sticky top-0 z-10 bg-slate-100 px-3">Khối</th><th className="sticky top-0 z-10 bg-slate-100 px-3">Lớp</th><th className="sticky top-0 z-10 bg-slate-100 px-3">Hệ</th>
                 <th className="sticky top-0 z-10 bg-slate-100 px-3 text-right">Elo</th><th className="sticky top-0 z-10 bg-slate-100 px-3 text-right">EXP</th><th className="sticky top-0 z-10 bg-slate-100 px-3 text-right">Số buổi</th><th className="sticky top-0 z-10 bg-slate-100 px-3"></th>
               </tr></thead>
               <tbody>
@@ -72,6 +122,8 @@ function RankView({ onOpenHS }: { onOpenHS: (r: DiemRow) => void }) {
                     <td className="px-4 py-2 text-center text-[13px] font-bold text-slate-400">{i + 1}</td>
                     <td className="px-3 py-2"><span className="flex items-center gap-2.5"><Ava url={r.anh_url} ten={r.ho_ten} /><span><span className="font-medium text-slate-800">{tenHT}</span>{r.ma_hs && <span className="ml-1.5 font-mono text-[11px] text-slate-400">{r.ma_hs}</span>}</span></span></td>
                     <td className="px-3 text-slate-500">{r.khoi ?? '—'}</td>
+                    <td className="px-3 text-slate-600">{r.ten_lop ?? <span className="text-slate-300">—</span>}</td>
+                    <td className="px-3">{r.he ? <span className={`rounded px-1.5 py-0.5 text-[12px] font-bold ${HE_TONE[r.he] ?? 'bg-slate-100 text-slate-600'}`}>{r.he}</span> : <span className="text-slate-300">—</span>}</td>
                     <td className="px-3 text-right font-semibold text-indigo-700">{r.elo}</td>
                     <td className="px-3 text-right font-medium text-violet-600">{r.exp.toLocaleString('vi-VN')}</td>
                     <td className="px-3 text-right text-slate-500">{r.sessions}</td>

@@ -2324,3 +2324,18 @@ Query mồ côi ra **43 file**, không phải 19 như em đoán. Đúng cái gua
 **Verify ĐƯỜNG CODE (không chỉ dữ liệu)** — replay chỉ chứng minh data, chưa chứng minh `closePhase`. Test thật trên buổi 9C1 · 20/07 (6 HS có mặt, 0 ô chấm), chặn `alert`/`confirm` để đọc thông báo:
 - bấm Xác nhận → alert đúng câu mới; DB: `ingame_dong_at` ĐƯỢC set, nhưng **0 dòng history, 0 EXP, Elo tổng 309393 không đổi** ✅
 - bấm "↩ Mở lại" → buổi về nguyên trạng (`ingame_dong_at` null, `trang_thai` `mo`), Elo tổng vẫn 309393 ✅ (`reopenPhase` gỡ sạch nên test có đường lùi)
+
+## 2026-07-21 (tiếp) — Filter khối/hệ cho bảng Elo, + bug CÓ SẴN: leaderboard trộn môn
+
+**Thùy:** *"Thêm chức năng filter cho Elo nữa. Theo khối và theo hệ."*
+
+**Làm:**
+- `DiemRow` thêm `he` (bậc lớp S/A/B/C) + `ten_lop`, lấy **theo đúng MÔN của dòng Elo** (§1.6 — 1 HS học Toán lớp S mà KHTN lớp B là bình thường, không có "hệ chung chung"). Nguồn: `hoc_sinh_lop` (`dang_hoc`) → `lop` khớp `mon`. `null` = HS không còn lớp đang-học của môn đó (đã rời nhưng Elo cũ vẫn còn) → lọc riêng "Chưa xếp lớp".
+- Lấy TOÀN BỘ ghi danh rồi map ở client, KHÔNG `.in(hsIds)` với 300+ uuid (URL quá dài — §2).
+- UI: 2 select **dựng TỪ DATA đang có**, không hardcode → đổi môn thì tập khối/hệ đổi theo, không bao giờ hiện lựa chọn ra 0 kết quả. Khối sort theo `KHOI_OPTIONS` (4 < 4T < 5 < 5T…), hệ theo `lop_bac` (S>A>B>C). Thêm cột **Lớp** + **Hệ** (badge màu), nút "✕ Bỏ lọc", badge đếm `N HS / tổng`.
+- Trạng thái rỗng tách 2 nguyên nhân: *chưa có data* vs *lọc ra rỗng* (kèm nút bỏ lọc) — trước gộp 1 câu, bắt người dùng tự đoán.
+
+**⚠ BUG CÓ SẴN phát hiện nhờ thêm cột (không phải do đợt này gây ra):** bảng ghi "Toán" nhưng hiện **CẢ 307 dòng của MỌI MÔN**. Effect fetch chạy lần đầu lúc `mon` còn `''` → `listGamiBangTong(undefined)` = lấy hết mọi môn; ngay sau đó `listGamiMons` trả về → `setMon('Toán')` → gọi lần 2. Lần 1 nặng hơn nên **về SAU, ghi đè kết quả lần 2** ⇒ leaderboard "Toán" trộn cả Elo KHTN. Vi phạm §1.6. Không ai thấy vì trước đây bảng không hiện Lớp/Hệ nên trộn môn nhìn không ra.
+**Fix 2 lớp:** (a) chưa biết môn thì KHÔNG query · (b) `reqId` chống race (tái dùng mẫu sẵn có ở `SearchCau`).
+
+**Verify** — đối chiếu UI vs SQL, khớp **5/5 tổ hợp**: Toán 258 · Toán+khối 9 = 72 · Toán+khối 9+hệ S = 13 · Toán+hệ S mọi khối = 64 · Toán+chưa xếp lớp = 5. Đổi sang KHTN → 49 dòng và dropdown hệ **tự rút còn "Hệ A + Chưa xếp lớp"** (KHTN chỉ có lớp bậc A) — đúng hành vi "dựng options từ data". Quay lại Toán → 258. tsc exit 0.
