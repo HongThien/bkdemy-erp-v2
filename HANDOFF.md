@@ -564,7 +564,26 @@
 
 ---
 
+### Đã build (07-21 — ⭐ ET/lưới chấm BÁM ĐỀ · KHO RÁC câu hỏi · fix TKB thiếu lớp)
+
+**Điểm vào:** Thùy báo *"ET 5A2 hôm qua in ra 5 câu nhưng trong nhóm lớp lại 6 câu"* và *"TKB không hiển thị hết tất cả các lớp"*.
+
+- **TKB thiếu lớp (`TKBScreen.tsx`)** — mỗi ô (khung × thứ) vẽ lưới 6 phòng cố định, mỗi vị trí lấy ca bằng `cell.find(phòng khớp)`. `find()` trả 1 ca ⇒ 2 ca cùng phòng, hoặc nhiều ca `phong = NULL` (thực tế **50/76 ca chưa gán phòng**), thì ca thứ 2 trở đi **biến mất im lặng** — mất **23/76 ca**. Fix: `xepCa()` — ca có phòng về đúng vị trí, ca còn lại lấp các ô trống theo thứ tự giờ, dư thì vẽ hàng phụ. Không đường nào nuốt ca. *(Còn tồn: 50 ca chưa gán phòng · 6 lớp Anh/Văn chưa có ca TKB nào.)*
+- **⭐ Lưới chấm BÁM ĐỀ (`gami.ts` + `BuoiHocScreen.tsx`, mig `0106`–`0110`)** — bản in đọc `tai_lieu_cau`, còn **ảnh gửi PH + lưới chấm đọc `gami_session_problems`**; lưới seed **đúng 1 lần** rồi không theo đề nữa, và danh tính ô = **vị trí** (`problem_no` ↔ index). Sửa đề = ô lệch câu. Gộp `ensureET/MT/BTVNProblems` + `resyncETProblems` thành **1 hàm `syncDocProblems`**, khớp ô↔câu qua **`ma_cau`** (cột mới): câu còn → giữ ô + điểm; câu mới → thêm ô; ô mất câu 0 điểm → xoá; **ô mất câu CÒN ĐIỂM → giữ + báo UI**, không tự xoá điểm. Phase **đã đóng → chỉ báo, không sửa cấu trúc**. Header cột đánh số theo **vị trí trong ĐỀ** (`problem_no` giờ chỉ là slot nội bộ, được phép thủng số). 3 banner cảnh báo thay cờ boolean cũ.
+- **Vá dữ liệu:** `0107` xoá 1 ô rỗng (5A2 ô6) · `0108` xoá doc ET mồ côi 7S2 · `0109` gỡ 5 nhãn `ma_cau` mâu thuẫn · `0110` gắn ô 3,4,5 của 5A2 về đúng câu + sửa `ma_dang` (Thùy xác nhận *"5 câu"*) → **24 ô điểm của 8 HS hết cộng nhầm dạng**. `gami_grades` không mất dòng nào ở bất kỳ bước nào.
+- **⭐ KHO RÁC câu hỏi (`0111` + `kho/api.ts` + `KhoRac.tsx`)** — xoá câu = `xoa_at`, không xoá cứng. Chỗ **CHỌN** câu lọc `xoa_at is null` · chỗ **RESOLVE** câu (`getTaiLieuFull`/in/chấm) **không lọc** → tài liệu cũ vẫn đủ câu. Vết do **trigger `log_kho_cau` → `kho_cau_log`** (không phải app ghi). Màn 🗑 Kho rác trong Bản đồ kiến thức: xem/khôi phục/xoá hẳn; **`xoaVinhVienCau` CHẶN ở API** khi còn `tai_lieu_cau` trỏ tới.
+- **`0112` thay 149/150 câu chết** — suy dạng từ mã câu (8 ký tự đầu; đúng 8667/8675 = 99,9%), chọn câu cùng dạng · chưa có trong chính tài liệu đó · ít-dùng-nhất-trước. Migration ghi **cặp thay thế tường minh** (soát được, chạy lại = no-op); bảng đối chiếu `docs/2026-07-21-thay-cau-chet.md`. Giáo trình MẪU 11A/7S/9A: **0 câu chết còn lại**. Còn 1 (`DC000012`, mã đời đầu không suy được dạng — Thùy chốt bỏ).
+- `setETCaus` giờ bump `tai_lieu.updated_at` (trước đó sửa CÂU không để lại dấu thời gian nào).
+
+### 🐞 Tồn đọng mới phát hiện 07-21 (chưa đụng — cần Thùy quyết)
+- **396 cặp câu TRÙNG trong CÙNG 1 tài liệu** (có sẵn từ trước, KHÔNG phải do `0112` — đã kiểm từng dòng trong 149 dòng ghi mới: 0 gây trùng). Cùng mã câu 2–3 lần/giáo trình, có cặp ở cả phan `dang` lẫn `btvn`, có cặp **2 lần trong CÙNG một phan**. Vd `Giáo trình 9A` · `09080106018` × 3. Chưa rõ cố ý (ôn lại) hay lỗi `setDangOfBuoi`/nhân bản.
+- **24 buổi** (btvn 20 · et 2 · mt 2) lưới chưa gắn được `ma_cau` (số ô ≠ số câu). KHÔNG hỏng thêm — tự hiện banner đỏ khi mở tab, xử dần khi gặp.
+- 50 ca TKB chưa gán phòng · 6 lớp Anh/Văn (7E1/8E1/9E1/7V1/8V1/9V1) chưa có ca TKB nào.
+
+---
+
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
+
 
 - **`zoom:1.15` (#root) + `100vh`**: mọi `100vh`/`min-h-screen` painted ×1.15 → body scrollbar thừa. Chặn chiều cao 1 lần ở App = `h-[calc(100vh/1.15)]`, dưới dùng `h-full`. **MODAL (`fixed inset-0`+`vh`/`vw`) trong #root cũng bị phóng 1.15× → tràn màn hình → `createPortal(modal, document.body)` để THOÁT zoom.**
 - **PostgREST embed: FK ĐƠN mới embed thẳng được; nhiều FK cùng đích → NHẬP NHẰNG (query lỗi âm thầm → rỗng).** `gami_grades.problem_id→gami_session_problems` = FK đơn → `select('...,prob:problem_id(...)')` (bỏ luôn IN-list, tránh URL dài). Còn `buoi_hoc_hs` có **2 FK** về `buoi_hoc` (`buoi_hoc_id`+`bu_cho_buoi_id`) → KHÔNG embed, phải **tách 2 bước** (lấy id rồi `.in()`).
@@ -694,3 +713,15 @@
 
 ## ③ Nhật ký
 → Chuyển sang **`DEVLOG.md`** (log thô append-only, theo ngày, KHÔNG load khi làm). Là nguồn bất biến để truy lại / tổng hợp lại HANDOFF nếu bản này sai logic.
+
+- **⭐⭐ DANH TÍNH bám KHOÁ TỰ NHIÊN, KHÔNG bám VỊ TRÍ** (bug ET 07-21, nguồn gốc sâu nhất): nối 2 tập bằng "phần tử thứ i ↔ phần tử thứ i" **sai ngay khi một bên thêm/bớt ở GIỮA**, và hỏng **âm thầm** — không lỗi, chỉ gắn nhầm. Lưu thẳng khoá bên kia (`ma_cau`), vị trí chỉ để hiển thị. Áp cho mọi lưới sinh-từ-doc: ET/MT/BTVN.
+- **⭐⭐ Cảnh báo lệch phải so NỘI DUNG, không so SỐ LƯỢNG:** `a.length !== b.length` **mù hoàn toàn** với "đổi phần tử mà giữ nguyên số lượng" — đúng ca nguy hiểm nhất. Nút "↻ Đồng bộ" đời cũ còn tệ hơn: nó **từ chối chạy khi đã có điểm**, tức vô dụng đúng lúc cần nhất.
+- **⭐⭐ Map lại quan hệ đã mất: "số lượng khớp" KHÔNG phải bằng chứng.** Phản ví dụ thật: 5A2 bỏ 1 câu ở GIỮA rồi dọn ô rỗng cuối → 5 ô/5 câu, số khớp, nhưng ô 3,4,5 vẫn giữ câu CŨ. Phải có **nhân chứng thứ hai độc lập** (ở đây: `ma_dang` seed từ lúc chấm) mới dám ghi; lệch dù 1 phần tử ⇒ **bỏ cả lượt, để trống, hỏi người** (§1.5).
+- **⭐ Tham chiếu bằng TEXT (không FK) thì CẤM xoá cứng bên được trỏ:** không FK ⇒ DB không chặn ⇒ chỗ resolve `.filter(Boolean)` cho nó **rụng im lặng** (150 dòng chết, Giáo trình 11A thiếu 24 câu, không ai biết). Dùng **kho rác**: cột `xoa_at` **NGAY TRONG bảng gốc** — tách bảng rác riêng thì (a) mọi chỗ resolve phải join 2 nơi, sót 1 chỗ là tái hiện đúng bug, (b) `nextCauSeq` cấp lại mã đã xoá cho câu mới ⇒ tham chiếu cũ trỏ nhầm sang câu khác hẳn.
+- **⭐ So TRÙNG phải so trong đúng PHẠM VI, không so theo giá trị toàn cục:** kiểm `0112` bằng "mã câu này có xuất hiện >1 lần ở đâu đó không" → báo động giả (dòng trùng nằm ở TÀI LIỆU KHÁC). Đúng: với từng dòng vừa ghi, đếm trong CHÍNH tài liệu của nó.
+- **⭐ Lưới "vị trí cố định" + `find()` một-lần-mỗi-ô = NUỐT phần tử dư** (bug TKB 07-21): 6 ô phòng, mỗi ô `cell.find(p => p.phong===phong)` → ca thứ 2 cùng phòng / ca `phong=NULL` biến mất, mất 23/76 ca. Render kiểu "gán chỗ" phải là **thuật toán xếp CÓ PHẦN DƯ** (xếp hết, dư thì tràn xuống), không phải N lần tra cứu độc lập.
+- **Đổi NỘI DUNG con phải bump `updated_at` của cha:** `setETCaus` sửa `tai_lieu_cau` mà không đụng `tai_lieu` ⇒ mất dấu thời gian ⇒ chẩn đoán về sau đọc nhầm "đề này chưa ai sửa".
+- **⭐ Vá dữ liệu: thứ tự migration là một phần của tính đúng.** `0106` backfill CHẠY TRƯỚC `0107` xoá ô thừa ⇒ đúng buổi cần vá lại bị điều kiện an toàn loại ra. Migration vá dữ liệu phải tự hỏi "bước trước có làm thay đổi điều kiện của bước này không".
+- **⭐ Migration vá dữ liệu nên ghi CẶP TƯỜNG MINH, đừng để SQL tự suy lúc chạy:** `0112` liệt kê 149 lệnh `update … where id=… and ma_cau=…` → soát được từng dòng, chạy lại = no-op, và nếu ai sửa tay trước đó thì lệnh tự đứng yên thay vì đè. Kèm bảng đối chiếu trong `docs/`.
+- **Báo SCOPE phải ĐẾM trước khi nói.** Báo "1 dòng dangling của 8B1" trong khi thực tế **150 dòng / 12 tài liệu MẪU** → suýt lấy cái gật cho 1 dòng đi xoá 150. Luôn query `count(*)` toàn hệ trước khi mô tả quy mô một vấn đề.
+- **DB là PRODUCTION đang có người dùng.** Giữa lúc chạy migration, `gami_grades` tăng vì GV đang chấm thật (9A2 buổi hôm đó). Migration nặng nên hỏi giờ trước.

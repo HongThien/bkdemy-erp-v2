@@ -4,12 +4,12 @@ import { createPortal } from 'react-dom'
 import {
   buoiAoCuaNgay, moBuoi, getBuoi, huyBuoi, huyBuoiCuaNgay, setNguoiDay,
   getRoster, diemDanh, markBaoDen, xoaHSKhoiBuoi, dongBoSiSo, listProblems, addProblem, setProblemDang, ensureProblems, listGrades, gradeMuc, closePhase,
-  loadETForBuoi, ensureETProblems, resyncETProblems, gradeET, deleteGrade, reopenPhase,
-  loadBTVNForBuoi, ensureBTVNProblems, getBtvnKetQua, setBtvnKetQua, listCanhBao, themCanhBao, xoaCanhBao, closeBTVN, reopenBTVN,
+  loadETForBuoi, syncDocProblems, xepLuoiTheoDe, gradeET, deleteGrade, reopenPhase,
+  loadBTVNForBuoi, syncBTVNProblems, getBtvnKetQua, setBtvnKetQua, listCanhBao, themCanhBao, xoaCanhBao, closeBTVN, reopenBTVN,
   type BtvnKQ, type CanhBao, type BtvnTrangThai, type BtvnThaiDo,
   getDanhGia, setDanhGiaDang, setNhanXet, setHoanThanhPct, HOAN_THANH_PCT_OPTS, dongDanhGia, moLaiDanhGia, setNoiDungBuoi,
-  loadLiveTestForBuoi, getDangTen, loadMTForBuoi, ensureMTProblems,
-  type BuoiAo, type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type Phase, type DiemDanh, type DanhGiaHS, type DanhGiaDiem, type TabKey, type ETResult,
+  loadLiveTestForBuoi, getDangTen, loadMTForBuoi, syncMTProblems,
+  type BuoiAo, type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type Phase, type DiemDanh, type DanhGiaHS, type DanhGiaDiem, type TabKey, type ETResult, type LuoiSync,
 } from '../../lib/gami'
 import { getLiveSnapshot, type BaiTest, type BaiTestCau, type BaiLam, type LiveAnswer } from '../../lib/testonline'
 import type { MTPhanCaus } from '../../lib/mt'
@@ -546,19 +546,29 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
   const [loading, setLoading] = useState(true)
   const [closing, setClosing] = useState(false)
   const [anhPH, setAnhPH] = useState(false) // overlay ảnh kết quả ET gửi phụ huynh
+  const [sync, setSync] = useState<LuoiSync | null>(null) // kết quả bám đề của lưới (xem syncDocProblems)
   const coMat = roster.filter((r) => r.diem_danh === 'co_mat')
   const tenHT = tenHienThiDs(coMat.map((r) => r.hoc_sinh?.ho_ten)) // 2 HS trùng tên rút gọn → bung đủ (Thùy 07-06)
   const dongCol = buoi.et_dong_at
 
-  async function reloadP() { const [p, g] = await Promise.all([listProblems(buoiId, 'et'), listGrades(buoiId)]); setProbs(p); setGrades(g) }
+  // Lưới hiển thị THEO THỨ TỰ ĐỀ (khớp ô↔câu qua ma_cau), không theo problem_no — xem syncDocProblems.
+  const causRef = useRef<CauHoi[]>([])
+  async function reloadP() {
+    const [p, g] = await Promise.all([listProblems(buoiId, 'et'), listGrades(buoiId)])
+    setProbs(xepLuoiTheoDe(p, causRef.current)); setGrades(g)
+  }
   useEffect(() => { (async () => {
     setLoading(true)
     try {
       const { etId, caus } = await loadETForBuoi(buoiId)
-      if (!etId) { setEtMissing(true); setEtCaus([]) }
-      else { setEtMissing(false); await ensureETProblems(buoiId, caus); setEtCaus(caus) }
-      await reloadP()
-    } catch { setEtMissing(true); setEtCaus([]) } finally { setLoading(false) }
+      causRef.current = caus
+      if (!etId) { setEtMissing(true); setEtCaus([]); setSync(null); await reloadP(); return }
+      setEtMissing(false); setEtCaus(caus)
+      // Sync CHỦ ĐỘNG mỗi lần mở tab — lưới tự bám đề. Phase đã đóng thì chỉ báo, không sửa lén.
+      const s = await syncDocProblems(buoiId, 'et', caus, !!buoi.et_dong_at)
+      setSync(s); setProbs(s.probs)
+      setGrades(await listGrades(buoiId))
+    } catch { setEtMissing(true); setEtCaus([]); setSync(null) } finally { setLoading(false) }
   })() }, [buoiId]) // eslint-disable-line
 
   const gradeOf = (pid: string, hsid: string) => grades.find((g) => g.problem_id === pid && g.hoc_sinh_id === hsid)
@@ -588,21 +598,20 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
     finally { setClosing(false) }
   }
   async function moLai() { await reopenPhase(buoiId, 'et'); onChange() }
-  async function dongBoET() { try { await resyncETProblems(buoiId, etCaus ?? []); await reloadP() } catch (e: any) { alert(e.message ?? String(e)) } }
 
   if (loading) return <p className="text-[12px] text-slate-400">Đang tải ET…</p>
   if (etMissing) return <p className="text-[13px] text-slate-400">Chưa có ET cho buổi này (khớp <b className="text-slate-600">lớp + ngày</b>). Vào <b className="text-slate-600">Làm tài liệu → ET</b> tạo ET đúng lớp + ngày của buổi rồi quay lại.</p>
   if (coMat.length === 0) return <p className="text-[12px] text-slate-400">Chưa có HS nào điểm danh “có mặt” — điểm danh trước khi chấm.</p>
 
   const tenDang = (md: string | null) => (md ? dangOpts.find((d) => d.ma_dang === md)?.ten ?? md : '—')
-  const cauOf = (idx: number) => etCaus?.[idx] ?? null
-  const mismatch = etCaus != null && etCaus.length !== probs.length
+  // Đề của 1 ô = tra theo MÃ CÂU (không theo vị trí) — ô mồ côi thì không có đề, đúng bản chất.
+  const cauOf = (p: Problem) => etCaus?.find((c) => c.ma_cau === p.ma_cau) ?? null
+  const moCoiIds = new Set((sync?.moCoi ?? []).map((m) => m.problem.id))
 
   return (
     <div className="flex h-full flex-col">
       <div className="mb-3 flex items-center gap-2">
         <span className="text-[12px] text-slate-400">{probs.length} câu (từ ET) · {coMat.length} HS · 1 click <b className="text-emerald-600">Đ</b>/<b className="text-amber-600">C</b>/<b className="text-rose-600">S</b> — C/S mở ô lỗi.</span>
-        {mismatch && !dongCol && <button onClick={dongBoET} title="ET đổi số câu — nạp lại (chỉ khi chưa chấm)" className="rounded-md border border-amber-300 px-2.5 py-1 text-[12px] font-medium text-amber-700 hover:bg-amber-50">↻ Đồng bộ từ ET</button>}
         <div className="ml-auto flex items-center gap-2">
           <button onClick={() => setAnhPH(true)} title="Tạo ảnh kết quả ET (dọc) để chụp gửi phụ huynh" className="rounded-md border border-slate-300 px-2.5 py-1.5 text-[12px] font-medium text-slate-600 hover:border-indigo-400">📷 Ảnh gửi PH</button>
           {dongCol ? (
@@ -616,16 +625,49 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
         </div>
       </div>
       {anhPH && <EtAnhGuiPH buoiId={buoiId} coMat={coMat} probs={probs} gradeOf={gradeOf} buoi={buoi} onClose={() => setAnhPH(false)} />}
+
+      {/* Lưới KHÔNG khớp đề — 3 tình huống, mỗi cái nói rõ mất gì / phải làm gì. Im lặng là điều DUY
+          NHẤT không được phép ở đây (bug 07-21: lệch âm thầm suốt từ 20/07 tới lúc Thùy tự phát hiện). */}
+      {sync?.doiCauTruc && (
+        <div className="mb-3 rounded-lg border border-amber-300 bg-amber-50 px-3 py-2 text-[12px] text-amber-800">
+          ⚠️ Đề ET đã đổi sau khi ET được xác nhận — lưới chấm giữ nguyên theo lúc chấm (Elo đã tính).
+          Muốn lưới bám đề mới thì bấm <b>↩ Mở lại để sửa</b>, hệ sẽ tự đồng bộ.
+        </div>
+      )}
+      {sync?.khongRoRang === 'lech_so' && (
+        <div className="mb-3 rounded-lg border border-rose-300 bg-rose-50 px-3 py-2 text-[12px] text-rose-800">
+          ⚠️ Lưới chấm này có từ trước bản vá 07-21 và <b>số ô ({probs.length}) khác số câu trong đề ({etCaus?.length ?? 0})</b>
+          {' '}— hệ <b>không tự đoán</b> ô nào ứng câu nào để khỏi gắn điểm sai dạng. Cần người đối chiếu đề giấy rồi quyết.
+        </div>
+      )}
+      {sync?.khongRoRang === 'lech_dang' && (
+        <div className="mb-3 rounded-lg border border-rose-300 bg-rose-50 px-3 py-2 text-[12px] text-rose-800">
+          ⚠️ Số ô và số câu bằng nhau, nhưng <b>dạng của ô không khớp dạng của câu</b> — nghĩa là đề đã bị
+          {' '}<b>thay/bớt câu ở giữa</b> sau khi chấm, ô không còn ứng đúng câu nữa. Hệ <b>không đoán</b> để khỏi gắn
+          {' '}điểm sai dạng (điểm vẫn giữ nguyên). Cần đối chiếu đề giấy đã phát cho HS rồi quyết.
+        </div>
+      )}
+      {!!sync?.moCoi.length && (
+        <div className="mb-3 rounded-lg border border-rose-300 bg-rose-50 px-3 py-2 text-[12px] text-rose-800">
+          ⚠️ {sync.moCoi.length} ô có điểm nhưng câu tương ứng <b>đã bị bỏ khỏi đề</b>
+          {' '}({sync.moCoi.map((m) => `câu ${m.problem.problem_no}: ${m.soDiem} điểm`).join(' · ')}).
+          {' '}Điểm được <b>giữ nguyên</b>, ô xếp cuối bảng. Muốn bỏ hẳn thì xoá từng ô điểm trước.
+        </div>
+      )}
+
       <div className="min-h-0 flex-1 overflow-auto rounded-xl border border-slate-200">
         <table className="w-auto border-collapse text-sm">
           <thead>
             <tr className="bg-slate-100">
               <th className="sticky left-0 top-0 z-30 whitespace-nowrap border border-slate-200 bg-slate-100 px-4 py-1.5 text-left text-[12px] font-semibold text-slate-700">Học sinh</th>
               {probs.map((p, idx) => {
-                const c = cauOf(idx)
+                const c = cauOf(p)
+                const moCoi = moCoiIds.has(p.id)
                 return (
-                  <th key={p.id} className="sticky top-0 z-10 w-[150px] border border-slate-200 bg-slate-100 px-2 py-1.5 text-center align-top">
-                    <div className="text-[12px] font-bold text-slate-700">Câu {p.problem_no}</div>
+                  <th key={p.id} className={`sticky top-0 z-10 w-[150px] border border-slate-200 px-2 py-1.5 text-center align-top ${moCoi ? 'bg-rose-50' : 'bg-slate-100'}`}>
+                    {/* Số câu = VỊ TRÍ TRONG ĐỀ (probs đã xếp theo đề), KHÔNG phải problem_no —
+                        problem_no giờ chỉ là slot nội bộ, có thể thủng số sau khi bỏ/thêm câu. */}
+                    <div className="text-[12px] font-bold text-slate-700">{moCoi ? 'Ngoài đề' : `Câu ${idx + 1}`}</div>
                     <div className="mx-auto max-w-[140px] truncate text-[11px] font-medium normal-case text-violet-600" title={tenDang(p.ma_dang)}>{tenDang(p.ma_dang)}</div>
                     {c && <button onClick={() => setPreview(c)} className="mt-1 rounded border border-slate-200 px-1.5 py-0.5 text-[10px] font-normal normal-case text-slate-400 hover:border-indigo-300 hover:text-indigo-600">ⓘ đề</button>}
                   </th>
@@ -918,7 +960,10 @@ async function copyImg(){
                 })}
               </tbody>
             </table>
-            <div style={{ marginTop: 12, fontSize: 12.5, color: '#5b6b78' }}>
+            {/* 2 khối tách RÕ bằng viền mỏng thay vì nền đậm (Thùy 07-19 lần 3: "background dậm quá,
+                chuyển về trắng cho sáng, chỉ cần đậm hơn 1 tẹo hoặc viền mỏng") — nền gần trắng, chỉ
+                khác nhau ở màu VIỀN để vẫn phân biệt được 2 loại thông tin, không nặng mắt. */}
+            <div style={{ marginTop: 12, borderRadius: 10, background: '#fdfcfa', border: '1px solid #e7ddc9', padding: '10px 12px', fontSize: 12.5, color: '#5b6b78' }}>
               {Object.values(ET_KQ_PH).map((v) => (
                 <span key={v.l} style={{ display: 'inline-block', marginRight: 14, whiteSpace: 'nowrap', verticalAlign: 'middle' }}>
                   <Badge hex={v.hex} letter={v.l} size={14} /><span style={{ marginLeft: 5 }}>{v.mo_ta}</span>
@@ -927,9 +972,12 @@ async function copyImg(){
               {/* Chú thích % hoàn thành (Thùy 07-19 lần 2: đổi câu mẫu số cụ thể "80%..." cho dễ hiểu hơn câu định nghĩa chung chung) — chỉ hiện khi có ít nhất 1 HS có %. */}
               {coHoanThanh && <div style={{ marginTop: 4 }}>80% thể hiện rằng con đáp ứng được 80% mục tiêu của buổi học.</div>}
             </div>
-            {/* Câu kết luận nhắc làm lại/chép lại đáp án (Thùy 07-19) — CHỈ hiện nếu có ≥1 HS có câu C/S. */}
+            {/* Câu kết luận nhắc làm lại/chép lại đáp án (Thùy 07-19) — CHỈ hiện nếu có ≥1 HS có câu C/S.
+                Thêm nhãn "Việc cần làm" (Thùy 07-19 lần 2) — phân biệt rõ với khối chú thích phía trên,
+                không chỉ khác màu nền mà còn khác Ý NGHĨA (đây là hành động, không phải giải thích ký hiệu). */}
             {canLamLai.length > 0 && (
-              <div style={{ marginTop: 10, fontSize: 12.5, color: '#2b3947', fontStyle: 'italic' }}>
+              <div style={{ marginTop: 8, borderRadius: 10, background: '#fefaf3', border: '1px solid #e8c27e', padding: '10px 12px', fontSize: 12.5, color: '#2b3947' }}>
+                <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#c8792a', marginBottom: 4 }}>Việc cần làm</div>
                 <b>{canLamLai.join(', ')}</b> cần làm lại/chép lại đáp án các bài chưa đạt.
               </div>
             )}
@@ -1050,7 +1098,8 @@ function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: Buo
     setLoading(true)
     try {
       const { mtId, phans: ps, caus: c } = await loadMTForBuoi(buoiId)
-      if (!mtId) { setMtMissing(true); setPhans([]) } else { setMtMissing(false); await ensureMTProblems(buoiId, c); setPhans(ps) }
+      // Lưới MT cũng bám đề qua ma_cau (chung syncDocProblems với ET) — xem ghi chú bug 07-21.
+      if (!mtId) { setMtMissing(true); setPhans([]) } else { setMtMissing(false); await syncMTProblems(buoiId, c, !!buoi.mt_dong_at); setPhans(ps) }
       await reloadP()
     } catch { setMtMissing(true); setPhans([]) } finally { setLoading(false) }
   })() }, [buoiId]) // eslint-disable-line
@@ -1248,7 +1297,7 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
     try {
       const { btvnId, caus } = await loadBTVNForBuoi(buoiId)
       if (!btvnId) setMissing(true)
-      else { setMissing(false); await ensureBTVNProblems(buoiId, caus) }
+      else { setMissing(false); await syncBTVNProblems(buoiId, caus, !!buoi.btvn_dong_at) }
       await reloadP(); await reloadKq()
     } catch { setMissing(true) } finally { setLoading(false) }
   })() }, [buoiId]) // eslint-disable-line

@@ -31,6 +31,26 @@ export function etFormOf(c: { ma_cau: string; loai_cau: string; lua_chon?: strin
   if (c.lua_chon && c.lua_chon.length) return 'trac_nghiem'      // mặc định: có phương án → trắc nghiệm
   return c.loai_cau === 'tu_luan' ? 'tu_luan' : 'tra_loi_ngan'   // còn lại theo kho, default trả lời ngắn
 }
+// ⭐ THỨ TỰ CHUẨN CỦA ET (Thùy chốt 07-20) — gom theo NHÓM IN: trắc nghiệm → trả lời ngắn → tự luận,
+// GIỮ NGUYÊN thứ tự chọn bên trong mỗi nhóm. Gom TẠI LÚC LƯU (ETScreen.luu) → ghi thẳng vào `thu_tu`.
+// VÌ SAO: trước đây CHỈ ETPrintView gom lúc render, còn bảng phiếu chấm / màn Chấm ET / ET online đọc
+// `thu_tu` thô → "Câu 3" trên giấy KHÔNG phải "Câu 3" trên hệ → GV chấm nhầm câu → gán sai `ma_dang`
+// → BẨN MASTERY (đơn vị chân lý HS × dạng). Giờ `thu_tu` là thứ tự duy nhất, mọi nơi đọc cùng một nguồn.
+// DÙNG CHUNG — đừng copy lại logic gom này ở nơi khác, lệch một bản là tái diễn đúng bug trên.
+export type ETGroup = 0 | 1 | 2
+export type ETCauLike = { ma_cau: string; loai_cau: string; lua_chon?: string[] | null; menh_de?: unknown[] | null }
+// Câu Đúng/Sai (có menh_de) LUÔN thuộc nhóm trắc nghiệm — bảng trả-lời-ngắn không hiển thị nổi 4 mệnh đề.
+export function etGroupOf(c: ETCauLike, ch: CauHinh): ETGroup {
+  if (c.menh_de && c.menh_de.length) return 0
+  const f = etFormOf(c, ch)
+  return f === 'trac_nghiem' ? 0 : f === 'tra_loi_ngan' ? 1 : 2
+}
+export function sortETCaus<T extends ETCauLike>(caus: T[], ch: CauHinh): T[] {
+  return caus
+    .map((c, i) => ({ c, i }))                                    // i = tie-break, giữ thứ tự chọn trong nhóm
+    .sort((a, b) => etGroupOf(a.c, ch) - etGroupOf(b.c, ch) || a.i - b.i)
+    .map((x) => x.c)
+}
 // file_url = link PDF public (bucket 'kho-tailieu') của bản export GẦN NHẤT — ghi đè mỗi lần "🔗 Lấy link" (uploadPagesAsLink, PrintView.tsx). "🖨 In / Xuất PDF" giờ dùng native window.print(), không upload.
 export type TaiLieu = { id: string; loai: string; ten: string; khoi: string; mon: string; ma_chuyen_de: string | null; theme: string; cau_hinh?: CauHinh; created_at?: string; updated_at?: string; created_by?: string | null; file_url?: string | null }
 // kieu = KIỂU HIỂN THỊ của block (phan): 'thuong'(1 cột) | '2cot' | '3cot' | '4cot' | … (registry mở rộng). Câu giữ ma_dang.
@@ -519,6 +539,11 @@ export async function getGiaoTrinhBuoiCaus(taiLieuId: string): Promise<CauHoi[]>
   return full.phans.filter((p) => p.loai_phan === 'dang').flatMap((p) => p.caus)
 }
 // Đặt LẠI toàn bộ câu ET theo thứ tự (UI tự dedup trong đề — trong buổi không trùng).
+// Bump `updated_at`: sửa CÂU chỉ đụng tai_lieu_cau nên trước đây KHÔNG để lại dấu thời gian nào —
+// `updated_at` chỉ đổi khi updateET (tên/lớp/ngày/cấu hình). Chẩn đoán bug ET 07-21 vì thế suýt đọc
+// nhầm "đề này chưa ai sửa" trong khi câu đã bị thay. Đổi nội dung đề = phải có vết (§4).
 export async function setETCaus(taiLieuId: string, maCaus: string[]): Promise<void> {
   await setCauOfPhan(await etPhanId(taiLieuId), maCaus)
+  const { error } = await supabase.from('tai_lieu').update({ updated_at: new Date().toISOString() }).eq('id', taiLieuId)
+  if (error) throw error
 }

@@ -2107,3 +2107,183 @@ tsc sạch + build pass. ⏳ chưa soi PDF bằng mắt (bản in paged.js).
 - **NhanSuHome (Việc-của-tôi):** card "📚 N đợt bổ trợ đuổi chờ chốt dạng" cho team học thuật (derive theo `hocThuatMons`) → click sang màn.
 - **Verify (read-only DB, KHÔNG click UI được vì auth gate — không đăng nhập):** FK `dang_duyet_boi→nhan_su` OK (embed resolve được); grandfather 7 duyệt/2 chưa đúng; `listDotChoDuyetDuoi('KHTN')`→Lê Thành An (về Phạm Anh Ngọc), `('Toán')`→Đặng Linh Trang; query detail per-buổi (nhận xét+dạng) hợp lệ. tsc+build sạch.
 - **Rủi ro nhỏ đã biết:** embed `duyet_boi:dang_duyet_boi(ho_ten)` cần PostgREST reload schema cache sau thêm FK — Supabase auto-reload trên DDL nên gần chắc ổn; nếu 400 "could not find relationship" thì `NOTIFY pgrst, 'reload schema'`.
+
+---
+
+## 2026-07-20 — ET: thứ tự câu trên GIẤY lệch thứ tự trên HỆ → gom theo nhóm TẠI LÚC LƯU
+
+**Thùy hỏi (audit, không phải báo lỗi):** "Khi làm ET, t chọn câu hỏi theo 1 thứ tự thì hệ thống tự sắp xếp lại theo loại. Vậy tài liệu đánh giá là theo thứ tự nào?" — hoá ra là hỏi trúng một bug thật.
+
+**Điều tra:** việc gom theo loại CHỈ xảy ra ở 1 chỗ duy nhất là `ETPrintView.tsx` LÚC RENDER (3 rổ tn/tln/tl + bộ đếm chung `next()` đánh số lại 1..N). Màn tạo ET KHÔNG gom — hiển thị và lưu đúng thứ tự Thùy chọn vào `tai_lieu_cau.thu_tu`. Nên 4 nơi tiêu thụ ET chạy 2 thứ tự khác nhau:
+- thân đề in (bản HS + bản GV) = đã gom theo loại;
+- bảng phiếu chấm ở ĐẦU CHÍNH TỜ ĐỀ ĐÓ (`caus.map((_,i)=>Câu i+1)`) = `thu_tu` thô;
+- màn Chấm ET (`gami.ts:278` → `getETCaus`) = `thu_tu` thô;
+- ET online (`testonline.ts:50` → `getETCaus`) = `thu_tu` thô.
+
+**Hệ quả nặng nhất KHÔNG phải chuyện thẩm mỹ:** GV chấm bài đánh số theo thứ tự đã gom, nhưng nhập điểm vào danh sách theo `thu_tu` → `dung_sai` gán NHẦM CÂU → nhầm luôn `ma_dang` → **bẩn mastery**, tức hỏng đúng đơn vị chân lý (HS × dạng). Chỉ ẩn khi thứ tự chọn tình cờ đã là TN→TLN→TL. Đây là ca đúng kiểu "derive ở 1 nhánh rồi để các nhánh khác đọc nguồn thô".
+
+**Thùy chốt:** gom theo loại TẠI LÚC LƯU. "Mục tiêu là 2 trên hệ thống và trên giấy phải khớp nhau."
+
+**Đã làm:**
+- `lib/tailieu.ts` — thêm `etGroupOf()` + `sortETCaus()` (TN=0 → TLN=1 → TL=2, giữ nguyên thứ tự chọn trong nhóm bằng tie-break index). Câu Đúng/Sai (`menh_de`) vẫn thuộc nhóm trắc nghiệm như logic cũ. **Helper DÙNG CHUNG** — cố ý đặt 1 chỗ để không thể lệch lại lần nữa.
+- `ETScreen.luu()` — sort trước khi `setETCaus` → `thu_tu` trong DB CHÍNH LÀ thứ tự sẽ in. Từ đây `thu_tu` là thứ tự duy nhất, cả 4 nơi đọc cùng nguồn.
+- `ETPrintView` — BỎ hẳn 3 rổ, in thẳng theo `thu_tu`. Heading "Phần …" giờ cắt theo KHÚC LIÊN TIẾP cùng nhóm (`runs`), roman nới tới X + fallback số.
+- Bảng phiếu chấm ở `:182` KHÔNG phải sửa — nó vốn đã theo `thu_tu`, giờ thân đề cũng thế nên tự khớp.
+
+**Bẫy đã tránh (suýt tạo bug im lặng):** bản sort đầu tiên định làm `chon.map(m=>cau[m]).filter(Boolean)` — nhưng cache `cau` CÓ THỂ THIẾU câu (`ensureCache` early-return khi dạng đó đã có câu khác trong cache: mở ET cũ để sửa rồi ✎ Chọn câu khác cùng dạng) → `filter(Boolean)` sẽ **lặng lẽ xoá câu khỏi đề mà vẫn báo lưu thành công**. Đã đổi thành nạp bù theo `maDang` rồi mới sort; còn thiếu thì **báo lỗi và KHÔNG lưu**, không đoán nhóm.
+
+**ET CŨ (thu_tu chưa gom):** vẫn in ĐÚNG THỨ TỰ và khớp mọi nơi — chỉ là có thể ra nhiều "Phần" hơn 3. Mở ra bấm Lưu 1 lần là gọn. Cố ý KHÔNG viết migration đè `thu_tu` hàng loạt: ET đã chấm rồi mà đổi thứ tự thì `dung_sai` đã ghi theo thứ tự cũ sẽ lệch — để người dùng tự chọn khi sửa là an toàn hơn.
+
+- tsc + build sạch. CHƯA verify bằng click UI (auth gate, không đăng nhập được) — logic thứ tự verify bằng đọc code 4 nhánh tiêu thụ.
+
+---
+
+## 2026-07-19 — Test đầu vào: đảo luồng theo BKDEMY_TESTDAUVAO_SPEC_ADDENDUM.md
+
+**Bối cảnh:** module build 07-08 (Story 1-4) rồi tạm dừng cho MT. Thùy gửi addendum đảo luồng, yêu cầu PHA 0 (khảo sát+PLAN, DỪNG chờ duyệt) trước khi sửa — làm đúng theo kỷ luật đó, viết `PLAN.md` (đè bản PLAN cũ của module Ops — module đó đã ship, an toàn ghi đè).
+
+**Phản biện trước khi code (PLAN.md có đầy đủ):**
+1. **REWORK-1 hẹp hơn addendum mô tả** — `de_test_cau` (câu gõ tay) đã DROP từ mig 0092, `de_test` đã chỉ còn là con trỏ khối×môn→tai_lieu, snapshot-từ-Kho-MT (`layCauTheoThuTu`) đã chạy đúng. Việc thật chỉ là đổi NGUỒN dropdown ở Điểm danh.
+2. **"Nhận xét" biến mất khỏi sơ đồ luồng mới** — addendum vẽ 2 nguồn (Chấm + Scan) đổ vào Trả bài, nhưng phiếu vẫn cần nội dung nhận xét/biểu đồ/lớp đề xuất, không rõ bước này đi đâu. **Thùy chốt:** gộp thẳng vào Trả bài — không còn là bước/gate riêng.
+3. **`de_test` giữ hay bỏ** — verify DB thật: 2 dòng, `ca_test` 4 dòng, TẤT CẢ `de_test_id` đang NULL (chưa ai gán thật) → an toàn drop. **Thùy chốt:** bỏ hẳn, `ca_test.tai_lieu_id` trỏ THẲNG `tai_lieu` (không qua lớp trung gian), dropdown lọc theo môn + khối ứng viên trực tiếp từ Kho MT.
+4. **Đổi đề 2 lần** (HS kêu khó, Ops đổi đề khác tại phòng) — code cũ chỉ INSERT câu mới vào `ca_test_cau`, sẽ CHỒNG câu cũ+mới. **Thùy chốt:** xoá `ca_test_cau_kq`+`ca_test_cau` của đề cũ trước khi snapshot đề mới.
+
+**Đã làm:**
+- Migration `0105_test_dau_vao_dao_luong.sql` — drop `de_test`, `ca_test` thêm `tai_lieu_id` (trỏ thẳng `tai_lieu`) + `bai_da_cham_url` (cột scan-đã-chấm, KHÁC `bai_url`=bài chưa chấm).
+- `lib/detest.ts` — viết lại: bỏ hẳn phần "ĐỀ TEST" (de_test CRUD); `ganDeCaTest` giờ xoá sạch câu cũ trước khi snapshot lại; thêm nhóm "SCAN BÀI ĐÃ CHẤM" (`listCanScanDaCham`/`listDaScanDaCham`/`dongScanDaCham` — có giá trị = xong, không cần cờ `*_xong_at` riêng, đúng anti-NULL); bỏ gate `danh_gia_xong_at` khỏi chuỗi (không còn `listCanNhanXet`/`dongNhanXet`/`moLaiNhanXet` — nhận xét giờ optional, autosave qua `setNhanXet` bất cứ lúc nào); `listCanTraBai`/`dongTraBai` viết lại — card sinh NGAY khi điểm danh đóng (không chờ chấm/scan xong mới hiện), mỗi card tự báo đang thiếu gì (`choChamXong`/`choScanDaCham`/`choLopDeXuat`), `dongTraBai` validate đủ cả 3 nguồn mới cho đóng.
+- `lib/tuyensinh.ts` — `CaTest.deTestId` → `taiLieuId` (đổi tên theo cột DB mới).
+- `screens/vanhanhops/DiemDanhTestScreen.tsx` — dropdown đề đổi từ `listDeTest()` (lọc `active`+`khoi` qua de_test) sang `listMT(mon)` lọc trực tiếp theo khối ứng viên (đã sort mới nhất lên đầu sẵn, khớp "mặc định MT tháng gần nhất"), đổi đề được bất kỳ lúc nào không giới hạn. Card Trả bài viết lại hoàn toàn — gộp UI biểu đồ chuyên đề + kỹ năng + kiến thức + lớp đề xuất (port từ `NhanXetTestScreen` cũ) vào ngay trong card, mở-rộng-để-làm thay vì màn riêng.
+- `screens/tuyensinh/ChamTestScreen.tsx` — bỏ cột trái xem scan (grid 3 cột → 2 cột), người chấm giờ chấm từ giấy ngoài, màn chỉ còn nhập liệu Đ/C/S thuần.
+- `screens/vanhanhops/ScanDaChamScreen.tsx` — **màn MỚI**, upload-only, độc lập hoàn toàn với Chấm.
+- `screens/tuyensinh/TestDauVaoScreen.tsx` — tab shell còn 3 tab (Điểm danh/Chấm/Scan bài đã chấm), bỏ tab Đề test + Nhận xét test.
+- **Xoá file:** `DeTestScreen.tsx`, `NhanXetTestScreen.tsx` (chức năng đã gộp/thay thế theo 4 quyết định trên — không còn nơi nào import).
+- `PhieuTestDauVao.tsx` — thêm nút "📄 Bài đã chấm" cạnh Copy ảnh (gửi PH = phiếu ảnh + file scan đính kèm riêng, KHÔNG nhồi chung 1 ảnh vì scan có thể nhiều trang).
+
+**Chưa làm (cần Thùy chạy migration + xác nhận qua UI thật):** migration `0105` mới viết, CHƯA CHẠY trên DB thật (Claude chỉ có quyền đọc). Việc dọn mục 4 addendum (verify upload e2e, xoá `ung_vien` rác UV0127, soi gate `mon`) — chưa làm, để sau khi luồng chính chạy được đã.
+
+- tsc sạch. CHƯA verify UI thật (auth gate, không đăng nhập được) — logic verify bằng đọc code + query DB trực tiếp (role read-only).
+
+**Sửa tiếp cùng ngày (Thùy phản hồi lần 2 sau khi xem UI):** "Trả bài rơi vào Điểm danh test — đáng lẽ tab riêng tương đương Chấm test. Scan bài không cần tab riêng, chỉ cần derive task cho Ops."
+- Tách Trả bài khỏi `DiemDanhTestScreen.tsx` → màn mới `screens/tuyensinh/TraBaiTestScreen.tsx`, thành tab ngang hàng Điểm danh/Chấm trong `TestDauVaoScreen.tsx` (bar tab giờ: Điểm danh / Chấm / Trả bài).
+- Bỏ tab "Scan bài đã chấm" khỏi bar tab — `ScanDaChamScreen.tsx` (đã build) giữ nguyên làm màn, nhưng chỉ vào được qua card derive ở "Việc của tôi" (`staffLeaf='test_dau_vao_scan'`, KHÔNG có trong sidebar/tab nào). `NhanSuHome.tsx`: thêm fetch `listCanScanDaCham()` (gate `scope.opsToanHe`, pool chung không lọc theo người — giống Chấm test), render card riêng trong khối "Vận hành" (không gom theo NgàyRow vì không có deadline), cộng vào `canLam`/`hasActive`/count section.
+- tsc sạch.
+
+---
+
+## 2026-07-21 — ET 5A2 20/07: in 5 câu / nhóm lớp 6 câu → lưới chấm KHÔNG bám đề
+
+**Thùy báo:** "ET của lớp 5A2 hôm qua in ra 5 câu nhưng trong nhóm lớp lại 6 câu. Hình như do lỗi sửa lại ET mà hệ thống ko cập nhật."
+
+**Chẩn đoán (query DB thật, script `scripts/_diag_et_problems.mjs` + `_diag_et_lech_dang.mjs` + `_diag_et_3ca.mjs`):**
+- Hai chỗ đọc HAI nguồn khác nhau: bản in ← `tai_lieu_cau` (đề thật); **ảnh gửi PH + lưới chấm ← `gami_session_problems`**.
+- `ensureETProblems` seed lưới **đúng một lần** (`if (cur.length) return`) rồi không theo đề nữa. Danh tính 1 ô chấm là **VỊ TRÍ** (`problem_no` ↔ index mảng câu) — không có gì trỏ về câu.
+- 5A2 20/07 (giờ VN): ET soạn 18:27 (6 câu) → lưới seed 19:43 → chấm 19:43–19:47 (5 ô đầu) → **GV sửa đề 21:39 bỏ 1 câu còn 5**. Lưới vẫn 6 ô, ô 6 có **0 điểm** = cột trống thừa trên ảnh gửi PH.
+- Ô 1–5 chấm TRƯỚC lúc sửa đề → nhãn dạng khớp đề tại thời điểm chấm. **Không có điểm nào gắn sai dạng, không đụng Elo.**
+
+**Quét toàn hệ (176 buổi có doc ET) — 2 ca ban đầu tưởng hỏng, mổ kỹ thì KHÔNG:**
+- **7S2 13/07** — có **2 doc ET** cùng (lớp+ngày). App dùng doc mới nhất (`getETByBuoi` order created_at desc) và lưới khớp ĐÚNG doc đó. Doc cũ `4efd950c` mồ côi. *(Scan đời đầu báo lệch vì so lưới với CẢ doc mồ côi — false positive, đã sửa cách đọc.)*
+- **8B1 02/07** — `tai_lieu_cau` có 1 dòng trỏ `ma_cau='08010202029'` **không còn trong kho** (`dai_cau_hoi`). `getTaiLieuFull` `.filter(Boolean)` nên câu này rụng ở mọi nơi → đề render 6 câu = lưới 6 ô. Khớp.
+- ⇒ **Chỉ 1 ca hỏng thật: 5A2 20/07.**
+
+**Bài học:** cảnh báo cũ (`mismatch = etCaus.length !== probs.length`) chỉ bắt lệch SỐ LƯỢNG → **đổi câu mà giữ nguyên số câu thì hỏng hoàn toàn im lặng**. Lệch âm thầm từ 20/07 tới khi Thùy tự phát hiện qua ảnh gửi nhóm lớp.
+
+**Đã làm:**
+- `0106_gami_problem_ma_cau.sql` — thêm cột `ma_cau` vào `gami_session_problems` + index + backfill. Backfill **chỉ map khi SỐ Ô == SỐ CÂU** (bằng nhau ⇒ không thêm/bớt ⇒ vị trí vẫn là danh tính đúng); lệch số thì để NULL, không đoán.
+- `0107_va_luoi_et_5a2_2007.sql` — xoá **đúng 1 dòng** `gami_session_problems` (ô 6 của 5A2 20/07, 0 điểm). Guard: chỉ xoá khi thật sự không có `gami_grades` nào. Chạy lại = no-op. **0 dòng grades bị mất.**
+- `lib/gami.ts` — `ensureETProblems`/`resyncETProblems`/`ensureMTProblems`/`ensureBTVNProblems` → thay bằng **1 hàm chung `syncDocProblems(buoiId, phase, caus, daDong)`** (ET/MT/BTVN cùng bản chất, đừng đẻ 3 bản copy-paste lệch nhau). Khớp ô↔câu theo `ma_cau`: câu còn → giữ ô + điểm; câu mới → thêm ô; ô mất câu 0 điểm → xoá; **ô mất câu CÒN ĐIỂM → giữ + báo lên UI**, tuyệt đối không tự xoá điểm. Đề rỗng/load lỗi → không đụng lưới. **Phase đã đóng → chỉ báo, không sửa cấu trúc** (§4 đã chốt thì giữ vết). Thêm `xepLuoiTheoDe` (sắp theo đề, không ghi DB) cho reload sau mỗi lần chấm.
+- `BuoiHocScreen.tsx` — ET/MT/BTVN gọi sync mỗi lần mở tab (bỏ nút "↻ Đồng bộ từ ET" thủ công, nó vốn từ chối chạy khi đã có điểm = vô dụng đúng lúc cần nhất). Header cột đánh số **theo vị trí trong ĐỀ** (`idx+1`), không theo `problem_no` (giờ chỉ là slot nội bộ, được phép thủng số). `cauOf` tra theo `ma_cau` thay vì index. 3 banner cảnh báo: đã-đóng-mà-đề-đổi / lưới-cũ-không-rõ-ràng / ô-mồ-côi-còn-điểm.
+- tsc sạch (exit 0).
+
+**Chưa làm:** migration `0106`+`0107` CHƯA CHẠY trên DB thật — Thùy chạy rồi mới verify UI được (code mới đọc cột `ma_cau`, **phải chạy migration TRƯỚC khi deploy code**).
+
+**Còn tồn (dữ liệu, chưa đụng — cần Thùy quyết vì là xoá):**
+1. `7S2 13/07` — doc ET mồ côi `4efd950c` (5 câu, không lưới nào dùng). Giữ hay xoá?
+2. `8B1 02/07` — dòng `tai_lieu_cau` trỏ câu `08010202029` đã bị xoá khỏi kho (dangling). Nên có FK/constraint hoặc job dọn.
+3. `setETCaus` KHÔNG bump `tai_lieu.updated_at` → sửa CÂU không để lại dấu vết thời gian, `updated_at` chỉ đổi khi `updateET` (tên/lớp/ngày/cấu hình). Làm chẩn đoán khó.
+
+### Cùng ngày 07-21 — chạy migration + verify, và MỘT SAI LẦM CỦA CHÍNH BẢN VÁ
+
+Thùy duyệt: xoá doc ET mồ côi 7S2, xoá dòng dangling 8B1, `setETCaus` ghi `updated_at`, và cho phép Claude tự chạy migration.
+
+**Đã chạy trên DB thật** (`gami_grades` 19402 → **19402**, không mất điểm nào ở bất kỳ bước nào):
+- `0106` — thêm cột `ma_cau`, backfill **2767 ô**.
+- `0107` — xoá **1 ô** (5A2 ô6, 0 điểm).
+- `0108` — xoá doc ET mồ côi 7S2 `4efd950c` (cascade: 1 phan + 5 tai_lieu_cau + 1 linkgen_jobs). PDF trong bucket `kho-tailieu` KHÔNG xoá.
+- `0109` — **gỡ 5 nhãn `ma_cau` gắn SAI** (xem dưới).
+- `npm run schema` → `schema.md` cập nhật (tiện thể bắt được `schema.md` đang stale so với 0101/0102/0105).
+
+**⛔ SAI LẦM CỦA BẢN VÁ (tự bắt được lúc verify, chưa kịp gây hại):**
+Luật backfill đời đầu của `0106` là *"số ô == số câu ⇒ vị trí là danh tính, map theo thứ tự"*. **Nghe hợp lý nhưng SAI.**
+Phản ví dụ chính là 5A2: đề gốc 6 câu → GV bỏ 1 câu **ở GIỮA** còn 5 → `0107` xoá ô rỗng thứ 6 → còn **5 ô / 5 câu, số khớp nhau** — nhưng ô 3,4,5 vẫn đang giữ câu **CŨ**, lệch 1 bậc. Map theo vị trí lúc đó gắn ô sang câu SAI (3 ô, 24 điểm). Cùng lỗi này `0106` cũng gắn sai 2 ô của `btvn 9C1 19/06`.
+
+**Cách bắt được:** `ma_dang` của ô được seed từ `dang_chinh` của câu **LÚC CHẤM** → nó là **nhân chứng độc lập**. Gắn nhãn xong đối chiếu `dang_chinh(ma_cau)` vs `ma_dang`: lệch = biết chắc sai. Quét ra đúng 5 ô mâu thuẫn / 2772.
+
+**Luật đúng (đã áp cho CẢ migration lẫn code):** gắn nhãn cần **HAI** điều kiện — (1) số ô == số câu (cần, **không đủ**) **và** (2) **kiểm tra chéo dạng** `dang_chinh(câu) == ma_dang(ô)` cho **mọi** ô; lệch dù 1 ô ⇒ bỏ cả lượt, để NULL, hỏi người. Lưới 5A2 vì thế **cố ý để `ma_cau` = NULL** — hệ không biết và không được đoán.
+→ **Bài học rút:** khi map lại quan hệ đã mất, "số lượng khớp" KHÔNG phải bằng chứng. Phải tìm **nhân chứng thứ hai độc lập** rồi mới dám ghi. Nếu không có nhân chứng → để trống (§1.5), đừng suy luận cho gọn.
+
+**Verify trên app thật** (dev server, login admin, buổi 5A2 · 2026-07-20 → tab ET):
+- Lưới chấm: **5 cột** (trước 6). Header đánh số theo đề: Câu 1..5.
+- **Ảnh gửi PH: 8 HS × 5 badge, grid `repeat(5, 26px)`** — đúng chỗ Thùy thấy 6 câu, giờ 5. **Lỗi gốc đã hết.**
+- Banner đỏ hiện đúng lý do `lech_dang` ("số ô và số câu bằng nhau nhưng dạng của ô không khớp dạng của câu…"). Ban đầu banner in ra câu vô nghĩa "số ô (5) khác số câu (5)" vì gộp 2 lý do vào 1 cờ boolean → tách thành `khongRoRang: null | 'lech_so' | 'lech_dang'`.
+- Console 0 lỗi. tsc exit 0.
+
+**CHƯA LÀM — việc 2 (dangling câu) BỊ DỪNG, scope thật khác xa lúc báo:**
+Em báo "1 dòng của 8B1", Thùy duyệt xoá 1 dòng. Query ra **150 dòng** `tai_lieu_cau` trỏ câu **không còn trong kho** (`dai_cau_hoi`), trải khắp GT/BTVN/ET **và cả tài liệu MẪU** (Giáo trình 11A ~15 câu, Giáo trình 7S/7A/7B, 9A/9B/9S, 11A1, 12A1, 5T1/5T2…). **KHÔNG xoá** — gật cho 1 dòng không phải gật cho 150 (Luật xoá: không gộp xoá vào bước lớn hơn).
+Đây là bug ĐỘC LẬP và có thể nặng hơn bug ET: `getTaiLieuFull` `.filter(Boolean)` nên câu chết **rụng im lặng** khỏi bản in — giáo trình/BTVN đang phát cho HS **thiếu câu mà không ai biết**. Cần Thùy quyết hướng: (a) chặn xoá câu khỏi kho khi còn tài liệu dùng (FK/guard), (b) soft-delete câu, hay (c) cảnh báo ở màn soạn tài liệu. Xoá 150 dòng chỉ là dọn triệu chứng.
+
+---
+
+## 2026-07-21 — Ops không tick được "chuẩn bị phòng" (ca Tối) → lộ ra một LOẠI lỗi, không phải một lỗi
+
+**Triệu chứng:** Ops (Hoàng Khánh Linh) bấm tick chuẩn bị phòng → `new row for relation prep_phong ... violates check constraint`.
+
+**Nguyên nhân:** KHÔNG phải quyền/RLS. `prep_phong.luot` có CHECK `('ngay','sang','chieu')` từ `0086` (thiết kế cũ: T2-T6 gộp 1 lượt `'ngay'`). Thùy chốt **07-19** đổi sang **3 ca cố định sang/chiều/tối mọi ngày** → `CaTruc` trong `opsvanhanh.ts` sửa theo, **constraint đứng yên**. Data xác nhận: `ngay 20 · chieu 7 · sang 1 · toi **0**` — ca Sáng/Chiều vẫn tick được nên lỗi ẩn cả tháng, chỉ nhánh `'toi'` chết.
+
+**Đã làm:**
+- Thùy chạy tay trên prod: CHECK → `('ngay','sang','chieu','toi')`. Verify lại từ DB live: đúng, 28 dòng cũ còn nguyên. Giữ `'ngay'` để đọc lại lịch sử (UI không sinh nữa).
+- `0110_prep_phong_luot_toi.sql` — ghi lại bản vá đó, idempotent. **KHÔNG có file này thì migrate-from-scratch sinh lại y nguyên bug**, vì `0086` vẫn giữ constraint cũ.
+- `0111_vh_duyet_tab_mt.sql` — **CHƯA CHẠY**, chờ áp.
+
+**Quả thứ hai, cùng loại, tìm ra khi truy quét:** `viec_van_hanh_duyet.tab` CHECK = `danhgia/ingame/et/btvn`, còn `TASK_TABS` (`vanhanh.ts:70`) = `danhgia/ingame/et/btvn/**mt**`. Hễ ai duyệt task **chấm MT** là dính đúng câu lỗi đó. Bảng đang **0 dòng** → *cần Thùy xác nhận: tính năng duyệt chưa dùng, hay đang fail lặng?* Không thêm `'diemdanh'` (TASK_TABS không sinh tab này — nới cho đường code không tồn tại là sai).
+
+**⛔ Cơ chế khiến loại lỗi này ẩn được (đây mới là gốc):**
+`introspect.mjs` dump cột/kiểu/PK/FK/trigger/function — **KHÔNG dump CHECK**. Nên tra `schema.md` chỉ thấy `| luot | text |`, tức "chứa được mọi chuỗi", trong khi sự thật DB chỉ nhận 3 giá trị. **Tập giá trị hợp lệ vô hình với chính công cụ tra cứu chuẩn.** DB đang có **56 CHECK, 46 dạng enum** → 46 điểm có thể lệch ngầm y hệt.
+
+**Sửa cơ chế:** `introspect.mjs` thêm query `pg_constraint contype='c'`; check dạng `x = ANY (ARRAY[...])` parse ra và in thẳng vào cột **"giá trị hợp lệ"** của từng cột; check phức tạp (so sánh số, nhiều cột) rơi xuống mục "Checks khác" in nguyên văn — **không đoán bừa**. Kết quả: `56 check: 46 enum + 10 khác`.
+→ Lần đầu chạy ra `0 enum + 56 khác`: regex bắt buộc `(col)::text = ANY`, nhưng cột **text thật** thì Postgres in `col = ANY` **không có cast** (chỉ varchar mới có). Cast phải là **tùy chọn**.
+→ CLAUDE.md §2.1 thêm luật: **thêm giá trị vào union type TS ⇒ phải có migration nới CHECK đi kèm.**
+
+**Bài học:** lỗi user báo là *một* nút không bấm được; thứ đáng sửa là *công cụ tra cứu đang giấu một chiều của schema*. Vá `prep_phong` chỉ trừ 1/46 điểm; sửa `introspect` thì 45 điểm còn lại tự lộ ở lần `npm run schema` kế. Đúng tinh thần triangulation §5 — để mâu thuẫn tự lộ qua data, đừng trông vào người nhớ.
+
+**Va số migration:** file đầu em đánh `0109`, trùng `0109_go_nhan_ma_cau_mau_thuan.sql` (việc `ma_cau` cùng ngày) → đã đổi thành `0110`/`0111`.
+
+### 07-21 (tiếp) — KHO RÁC + thay câu chết
+
+Thùy chốt: *"câu hỏi trong kho bị sai nên trước khi xoá đều được duyệt trước, vẫn cần xoá. Nhưng có tài liệu đã in ra dùng rồi, nên cách hoàn hảo là khi xoá ở kho chính thì chuyển qua kho rác — giữ lại để tham chiếu không sai lệch, mà kho đang dùng vẫn sạch. Tôi chủ động dọn kho rác khi cần."* · *"Thay tự động đi."*
+
+**`0111` — Kho rác.** Cột `xoa_at` NGAY TRONG bảng câu, **không tách bảng rác riêng**. 2 lý do cứng:
+1. Tách bảng ⇒ mọi chỗ resolve câu phải join 2 nơi — sót 1 chỗ là tài liệu lại thiếu câu, đúng cái bug đang sửa.
+2. `nextCauSeq` cấp mã mới = max(STT trong bảng)+1. Rác nằm **cùng bảng** ⇒ mã đã xoá **không bao giờ bị cấp lại** ⇒ tham chiếu cũ không bị trỏ nhầm sang câu mới toanh. Tách bảng là mất tính chất này — nguy hiểm hơn hẳn việc thiếu câu.
+
+Ghi vết theo **§4**: bản nháp đầu em ghi `xoa_boi` **từ app** — sai luật ("app không được tự nhớ ghi log"). Làm lại: `xoa_at` = cột trạng thái đọc nhanh, lịch sử do **trigger `log_kho_cau`** đẻ vào `kho_cau_log` (hành_dong `vao_rac`/`khoi_phuc`/`xoa_vinh_vien`, actor = `jwt_uid()`). Verify thật: thao tác qua app ghi đúng actor `b29f4e12…`; thao tác qua script SQL ghi `actor=null` **nhưng vẫn có dòng log** — đúng ý đồ "không đường nào thoát khỏi vết".
+
+Luật đọc (áp vào `lib/kho/api.ts`): chỗ **CHỌN** câu lọc `xoa_at is null` (`listCauByDang`, `searchCau`, `listDungSaiByDang`, RPC `count_cau_by_dang`) · chỗ **RESOLVE** câu (`getTaiLieuFull`, bản in, chấm) **không lọc**. `deleteDaiCum`/`deleteKhtnCum` (xoá cụm dạng kèm câu) đổi từ xoá cứng sang vào rác.
+Màn **`KhoRac.tsx`** (nút 🗑 trong Bản đồ kiến thức): xem/khôi phục/xoá hẳn, cột "đang dùng" = số `tai_lieu_cau` còn trỏ tới. **`xoaVinhVienCau` CHẶN ở API** khi count > 0 — đây là cửa duy nhất còn đẻ được tham chiếu chết, chặn ở API chứ không chỉ ẩn nút.
+
+**`0112` — thay 149/150 câu chết.** Suy dạng từ mã câu (8 ký tự đầu = mã dạng); kiểm chứng **8667/8675 câu (99,9%)**, 8 ngoại lệ đều là mã đời đầu `DC000006`/`DCDEMO01`. Chọn câu thay: cùng dạng · chưa có trong CHÍNH tài liệu đó · **ít dùng nhất trước** (cùng luật `suggestCauForDang`) · tie-break theo mã cho tất định. Migration ghi **cặp thay thế TƯỜNG MINH** (149 lệnh `update … where id=… and ma_cau=…`) thay vì SQL suy diễn lúc chạy → soát được, chạy lại = no-op. Bảng đối chiếu đầy đủ: `docs/2026-07-21-thay-cau-chet.md`.
+Kết quả: tham chiếu chết **150 → 1** (`DC000012`, mã đời đầu không suy được dạng — bỏ, đúng như Thùy: "mất thì cũng mất rồi"). Giáo trình MẪU 11A/7S/9A: **0 câu chết còn lại**.
+Verify chống trùng: kiểm **từng dòng** trong 149 dòng xem mã mới có bị trùng trong chính tài liệu của nó không → **0**. *(Lần kiểm đầu em so trùng theo mã câu toàn hệ và tưởng 0112 gây 1 cặp trùng ở "Giáo trình 9B" — sai, dòng 0112 ghi nằm ở tài liệu KHÁC. Bài học: so trùng phải so trong đúng phạm vi (tài liệu), không so theo giá trị toàn cục.)*
+
+**PHÁT HIỆN MỚI, chưa đụng:** **396 cặp câu TRÙNG trong cùng 1 tài liệu** (có sẵn từ trước, không phải do 0112) — cùng mã câu xuất hiện 2–3 lần trong một giáo trình, có cặp ở cả phan `dang` lẫn `btvn`, có cặp **2 lần trong CÙNG một phan**. Vd `Giáo trình 9A` · `09080106018` × 3. Chưa rõ cố ý (ôn lại) hay lỗi `setDangOfBuoi`/nhân bản. Cần Thùy xem trước khi quyết.
+
+`npm run schema` → 98 bảng · 10 trigger · 27 function. tsc exit 0. Verify UI thật: mở Bản đồ kiến thức → 🗑 Kho rác, đưa 2 câu vào rác (1 câu 14 tài liệu dùng, 1 câu không ai dùng) → nút "Xoá hẳn" **disabled** đúng câu đang dùng (title "Còn 14 tài liệu dùng câu này"), **bật** đúng câu rảnh → bấm Khôi phục cả 2 qua UI → kho rác trống, `xoa_at` về NULL, log đủ 4 dòng.
+
+**Chốt cuối ngày 07-21 (Thùy chạy tay trên prod, em verify lại từ DB live):**
+- `viec_van_hanh_duyet.tab` → thêm `'mt'` (= `0111`). Thùy xác nhận **tính năng duyệt chưa dùng bao giờ** → đây là vá PHÒNG, không phải dọn hậu quả.
+- `prep_phong` → **xoá 20 dòng `luot='ngay'`**, CHECK siết còn `('sang','chieu','toi')` (= `0112`). Lý do không migrate: `'ngay'` nghĩa là *1 lượt cho CẢ NGÀY* (một lần dọn phục vụ nhiều ca liên tiếp), **không tương ứng ca nào** và dòng dữ liệu không có trường nào ghi ca → map sang ca = bịa (§1.5). Đã mất: 17 lượt đã đóng · 19 ảnh · 6 lượt leader chốt, ngày 06/07-17/07. **19 file trong `kho-anh/ops/` không xoá theo → mồ côi** (chấp nhận, giai đoạn test).
+- **Bằng chứng bug đã hết:** `luot='toi'` từ **0 → 7 dòng** sau khi nới constraint. Đúng nhánh Linh không tick được. (`chieu` 7→14, `sang` 1.)
+
+**Ghi chú quy trình:** trước khi xoá em dừng lại vì dữ kiện **mâu thuẫn giả định** — Thùy nói "đang test, data không quan trọng", nhưng 19/20 dòng có ảnh evidence thật và 6 dòng leader đã chốt, tức là log vận hành thật chứ không phải row rỗng. Nêu ra rồi mới xoá. Luật xoá không chỉ là "hỏi cho có" — nó là chỗ bắt sai lệch giữa *điều người ta nhớ* và *điều data nói*.
+
+**Va số migration — LẦN THỨ HAI trong ngày.** Sáng: em đánh `0109` trùng `0109_go_nhan_ma_cau_mau_thuan`. Chiều: cả `0110`/`0111`/`0112` của em trùng `0110_5a2_2007_gan_dung_cau` / `0111_kho_rac_cau_hoi` / `0112_thay_cau_chet`. Đã dời thành `0113`/`0114`/`0115` (giữ thứ tự phụ thuộc: nới CHECK `0113` phải chạy TRƯỚC siết CHECK `0115`).
+→ Số thứ tự hiện được cấp bằng cách "nhìn file cuối rồi +1" — hai luồng làm song song trong ngày là đụng nhau chắc chắn. `migrate.mjs` sort theo tên nên trùng số vẫn chạy được, **nhưng thứ tự giữa 2 file cùng số do chữ cái quyết định** — với cặp nới/siết CHECK thì đảo thứ tự là fail. Cần đổi cách cấp số (timestamp `YYYYMMDDHHMM_` như Supabase CLI chuẩn, hoặc reserve trước khi code). **Chưa làm — cần Thùy quyết.**

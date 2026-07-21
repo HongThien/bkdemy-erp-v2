@@ -82,6 +82,20 @@
 - **Migration:** verify schema TRƯỚC. Sau migrate: grep toàn repo + `pg_trigger` + `pg_proc.prosrc` tìm cột/đường cũ.
   Trigger là "hidden code" — nghi ngờ đầu tiên khi INSERT/UPDATE 400 dù code/RLS/constraint đúng.
 - **React:** reset state ngay trước async query; `useState` cho data hiển thị, `useRef` cho data chỉ trigger logic.
+- **⭐ DANH TÍNH bám KHOÁ TỰ NHIÊN, KHÔNG bám VỊ TRÍ.** Nối 2 tập bằng "phần tử thứ i ↔ phần tử thứ i"
+  là **sai ngay khi một bên thêm/bớt ở giữa** — và hỏng ÂM THẦM (không lỗi, chỉ gắn nhầm). Lưu thẳng
+  khoá của bên kia (`ma_cau`, `ma_dang`…), vị trí chỉ để HIỂN THỊ. *(Đã dính: ô chấm ET ↔ câu trong đề
+  nối bằng `problem_no` ↔ index — sửa đề là điểm gắn sang dạng khác, lệch 1 ngày mới lộ.)*
+- **⭐ Cảnh báo lệch phải so NỘI DUNG, không so SỐ LƯỢNG.** `a.length !== b.length` mù hoàn toàn với
+  "đổi phần tử mà giữ nguyên số lượng" — đúng ca nguy hiểm nhất.
+- **⭐ Map lại quan hệ đã mất: "số lượng khớp" KHÔNG phải bằng chứng.** Phải có **nhân chứng thứ hai
+  độc lập** (vd `ma_dang` seed từ lúc chấm) rồi mới dám ghi; lệch dù 1 phần tử ⇒ bỏ cả lượt, để trống,
+  hỏi người (§1.5 "thà bỏ trống còn hơn đánh sai"). Suy luận cho gọn = ghi đè dữ liệu thật bằng phỏng đoán.
+- **⭐ Tham chiếu bằng TEXT (không FK) thì cấm xoá cứng bên được trỏ.** Không có FK ⇒ DB không chặn ⇒
+  chỗ resolve `.filter(Boolean)` cho nó **rụng im lặng**. Dùng **kho rác** (cột `xoa_at` NGAY TRONG bảng
+  gốc — tách bảng thì mọi chỗ resolve phải join 2 nơi, và mã đã xoá bị cấp lại cho bản ghi mới).
+- **Đổi NỘI DUNG con phải bump `updated_at` của cha.** Sửa `tai_lieu_cau` mà không đụng `tai_lieu`
+  ⇒ không còn dấu vết thời gian ⇒ chẩn đoán về sau đọc nhầm "chưa ai sửa".
 
 ---
 
@@ -92,7 +106,12 @@
 - Claude Code dùng role **`claude_ro`** (chỉ `SELECT`) qua `DATABASE_URL_RO` trong `.env` (gitignored).
   Role này **không ghi được DB** — an toàn cứng, không dựa vào lời hứa.
 - **Refresh / introspect:** `npm run schema` (`scripts/introspect.mjs`, dùng `pg`) → đọc DB live, ghi `schema.md`
-  (bảng/cột/kiểu/PK/FK/enum/trigger/function). Cách chuẩn, chạy ngay với Node.
+  (bảng/cột/kiểu/PK/FK/**CHECK**/enum/trigger/function). Cách chuẩn, chạy ngay với Node.
+- **⚠️ Cột `text` KHÔNG nói lên tập giá trị hợp lệ** — CHECK constraint mới nói. Cột trạng thái/loại
+  (`luot`, `tab`, `trang_thai`…) luôn đọc cột **"giá trị hợp lệ"** trong `schema.md`, và khi thêm giá trị mới
+  vào union type TS thì **phải có migration nới CHECK đi kèm** — nếu không, DB chặn đúng lúc user bấm nút
+  ("violates check constraint"), và **chỉ nhánh giá trị mới mới chết** nên lỗi ẩn rất lâu.
+  (Đã dính 2 lần: `prep_phong.luot` thiếu `'toi'` · `viec_van_hanh_duyet.tab` thiếu `'mt'`.)
   *(Tùy chọn: cài PostgreSQL client → `scripts/dump-schema.ps1` cho DDL `.sql` đầy đủ.)*
 - **Trước khi code module đụng bảng nào:** đọc `schema.md`. Cần chắc 1 cột/trigger/function có thật
   → `npm run schema` refresh, hoặc query thẳng `information_schema` / `pg_catalog` từ DB live. **KHÔNG đoán từ doc cũ.**

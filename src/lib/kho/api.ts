@@ -74,10 +74,18 @@ export type CauHoi = {
   created_at?: string
 }
 
+// ── KHO RÁC (mig 0111) ────────────────────────────────────────────
+// Xoá câu = CHUYỂN VÀO RÁC (`xoa_at`), không xoá cứng. Lý do: `tai_lieu_cau` giữ `ma_cau` dạng text
+// KHÔNG FK, nên xoá cứng làm câu RỤNG IM LẶNG khỏi tài liệu đã in (bug 07-21: 150 tham chiếu chết,
+// Giáo trình 11A thiếu 24 câu). Rác vẫn resolve được → tài liệu cũ in đủ; kho đang dùng vẫn sạch.
+// LUẬT: chỗ CHỌN câu lọc `xoa_at is null` · chỗ RESOLVE câu (getTaiLieuFull/bản in/chấm) KHÔNG lọc.
+const CHUA_XOA = 'xoa_at' // tên cột, gom 1 chỗ cho dễ grep
+
+// CHỌN câu → chỉ câu đang dùng.
 // tbl = bảng câu theo MÔN (default Toán 'dai_cau_hoi'; KHTN 'khtn_cau_hoi'). Giữ default → Toán không đổi hành vi.
 export async function listCauByDang(maDang: string, tbl = 'dai_cau_hoi'): Promise<CauHoi[]> {
   const { data, error } = await supabase.from(tbl).select('*')
-    .eq('dang_chinh', maDang).order('created_at').limit(LIMIT)
+    .eq('dang_chinh', maDang).is(CHUA_XOA, null).order('created_at').limit(LIMIT)
   if (error) throw error
   return (data ?? []) as CauHoi[]
 }
@@ -97,8 +105,40 @@ export async function updateCau(ma_cau: string, patch: Partial<CauInput>, tbl = 
   const { error } = await supabase.from(tbl).update(patch).eq('ma_cau', ma_cau)
   if (error) throw error
 }
+// Xoá câu = ĐƯA VÀO KHO RÁC (không xoá cứng — xem ghi chú KHO RÁC ở trên).
+// KHÔNG ghi actor ở đây: trigger `log_kho_cau` (mig 0111) tự đẻ dòng `kho_cau_log` kèm jwt_uid().
+// CLAUDE.md §4 — app không được tự nhớ ghi log, nếu không sẽ mất vết ở những đường không đi qua hàm này.
 export async function deleteCau(ma_cau: string, tbl = 'dai_cau_hoi'): Promise<void> {
-  const { error } = await supabase.from(tbl).delete().eq('ma_cau', ma_cau)
+  const { error } = await supabase.from(tbl)
+    .update({ xoa_at: new Date().toISOString() })
+    .eq('ma_cau', ma_cau).is(CHUA_XOA, null)
+  if (error) throw error
+}
+
+// ── Màn KHO RÁC: xem / khôi phục / xoá vĩnh viễn ─────────────────
+export type CauRac = CauHoi & { xoa_at: string; soTaiLieuDung: number }
+export async function listCauRac(tbl = 'dai_cau_hoi'): Promise<CauRac[]> {
+  const { data, error } = await supabase.from(tbl).select('*').not(CHUA_XOA, 'is', null).order('xoa_at', { ascending: false }).limit(LIMIT)
+  if (error) throw error
+  const caus = (data ?? []) as CauRac[]
+  if (!caus.length) return []
+  // Còn bao nhiêu TÀI LIỆU đang dùng câu này — con số quyết định có được xoá vĩnh viễn hay không.
+  const { data: dung } = await supabase.from('tai_lieu_cau').select('ma_cau').in('ma_cau', caus.map((c) => c.ma_cau)).limit(LIMIT * 50)
+  const dem = new Map<string, number>()
+  for (const r of (dung ?? []) as { ma_cau: string }[]) dem.set(r.ma_cau, (dem.get(r.ma_cau) ?? 0) + 1)
+  return caus.map((c) => ({ ...c, soTaiLieuDung: dem.get(c.ma_cau) ?? 0 }))
+}
+export async function khoiPhucCau(ma_cau: string, tbl = 'dai_cau_hoi'): Promise<void> {
+  const { error } = await supabase.from(tbl).update({ xoa_at: null }).eq('ma_cau', ma_cau)
+  if (error) throw error
+}
+// Xoá VĨNH VIỄN — chỉ cho phép khi KHÔNG còn tài liệu nào tham chiếu. Đây chính là cửa duy nhất còn
+// sinh ra được tham chiếu chết, nên chặn ngay tại đây thay vì tin vào người bấm.
+export async function xoaVinhVienCau(ma_cau: string, tbl = 'dai_cau_hoi'): Promise<void> {
+  const { count, error: eC } = await supabase.from('tai_lieu_cau').select('id', { count: 'exact', head: true }).eq('ma_cau', ma_cau)
+  if (eC) throw eC
+  if (count) throw new Error(`Không xoá vĩnh viễn được: còn ${count} tài liệu đang dùng câu này. Thay câu trong các tài liệu đó trước.`)
+  const { error } = await supabase.from(tbl).delete().eq('ma_cau', ma_cau).not(CHUA_XOA, 'is', null)
   if (error) throw error
 }
 
@@ -111,6 +151,7 @@ export async function searchCau(q: string, tbl = 'dai_cau_hoi'): Promise<CauTimT
   if (!safe) return []
   const { data, error } = await supabase.from(tbl).select('*')
     .or(`ma_cau.ilike.${safe}%,noi_dung.ilike.%${safe}%`)
+    .is(CHUA_XOA, null)
     .order('ma_cau').limit(200)
   if (error) throw error
   const caus = (data ?? []) as CauHoi[]
@@ -134,7 +175,7 @@ export async function listDangOptions(tbl = 'dai_cau_hoi'): Promise<{ id: string
 // ── BANK ĐÚNG/SAI: con của CHUYÊN ĐỀ (như lý thuyết). câu loai_cau='dung_sai' có dang_chinh ∈ dạng của chuyên đề đó. ──
 export async function listDungSaiByDang(dangMas: string[], tbl = 'dai_cau_hoi'): Promise<CauHoi[]> {
   if (!dangMas.length) return []
-  const { data, error } = await supabase.from(tbl).select('*').eq('loai_cau', 'dung_sai').in('dang_chinh', dangMas).order('created_at').limit(LIMIT)
+  const { data, error } = await supabase.from(tbl).select('*').eq('loai_cau', 'dung_sai').in('dang_chinh', dangMas).is(CHUA_XOA, null).order('created_at').limit(LIMIT)
   if (error) throw error
   return (data ?? []) as CauHoi[]
 }
@@ -1075,7 +1116,7 @@ export async function renameDaiChuyenDe(maChuyenDe: string, ten: string): Promis
 // Xoá CẢ CỤM (chủ đề/chuyên đề) KÈM câu: xoá dai_cau_hoi trước (cascade tai_lieu_cau/bo_đề/parent), rồi dai_ban_do (cascade lý thuyết).
 export async function deleteDaiCum(leafMas: string[]): Promise<void> {
   if (!leafMas.length) return
-  const { error: e1 } = await supabase.from('dai_cau_hoi').delete().in('dang_chinh', leafMas)
+  const { error: e1 } = await supabase.from('dai_cau_hoi').update({ xoa_at: new Date().toISOString() }).in('dang_chinh', leafMas).is('xoa_at', null)
   if (e1) throw e1
   const { error: e2 } = await supabase.from('dai_ban_do').delete().in('ma_dang', leafMas)
   if (e2) throw e2
@@ -1221,7 +1262,7 @@ export async function deleteKhtnLeaves(leafMas: string[]): Promise<void> {
 }
 export async function deleteKhtnCum(leafMas: string[]): Promise<void> {
   if (!leafMas.length) return
-  const { error: e1 } = await supabase.from('khtn_cau_hoi').delete().in('dang_chinh', leafMas); if (e1) throw e1
+  const { error: e1 } = await supabase.from('khtn_cau_hoi').update({ xoa_at: new Date().toISOString() }).in('dang_chinh', leafMas).is('xoa_at', null); if (e1) throw e1
   const { error: e2 } = await supabase.from('khtn_ban_do').delete().in('ma_dang', leafMas); if (e2) throw e2
 }
 export async function renameKhtnChuDe(khoi: string, maChuDe: string, ten: string): Promise<void> {

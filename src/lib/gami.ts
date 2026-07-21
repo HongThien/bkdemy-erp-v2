@@ -30,7 +30,7 @@ export type BuoiHoc = {
   noi_dung_buoi?: string | null; mo_ta?: string | null
 }
 export type BuoiHocHS = { id: string; buoi_hoc_id: string; hoc_sinh_id: string; diem_danh: DiemDanh | null; bao_den_at: string | null; bu_cho_buoi_id: string | null; bo_tro_duoi_id?: string | null; hoc_sinh?: { ho_ten: string; ma_hs: string | null; anh_url: string | null } }
-export type Problem = { id: string; buoi_hoc_id: string; phase: Phase; problem_no: number; hidden: boolean; ma_dang: string | null; hoc_sinh_id?: string | null }
+export type Problem = { id: string; buoi_hoc_id: string; phase: Phase; problem_no: number; hidden: boolean; ma_dang: string | null; ma_cau?: string | null; hoc_sinh_id?: string | null }
 export type Grade = { id: string; problem_id: string; hoc_sinh_id: string; result: string; presentation: string; speed: string; points: number; loi?: string[]; muc?: number | null }
 export type ETResult = 'correct' | 'partial' | 'wrong'
 
@@ -292,25 +292,115 @@ export async function loadLiveTestForBuoi(buoiId: string): Promise<{ baiTest: Ba
   if (!baiTest) return null
   return { baiTest, caus: await getBaiTestCaus(baiTest.id) }
 }
-// Seed problem ET 1-câu-1-bài (idempotent: chỉ seed khi chưa có problem ET nào). ma_dang lấy từ câu.
-export async function ensureETProblems(buoiId: string, caus: CauHoi[]): Promise<void> {
-  const cur = await listProblems(buoiId, 'et')
-  if (cur.length || !caus.length) return
-  const rows = caus.map((c, i) => ({ buoi_hoc_id: buoiId, phase: 'et', problem_no: i + 1, ma_dang: c.dang_chinh ?? null }))
-  const { error } = await supabase.from('gami_session_problems').upsert(rows, { onConflict: 'buoi_hoc_id,phase,problem_no', ignoreDuplicates: true })
-  if (error) throw error
+// ── LƯỚI CHẤM BÁM ĐỀ (ET / MT / BTVN) ─────────────────────────────
+// ⚠ BUG THẬT 07-21 (Thùy: "ET 5A2 hôm qua in ra 5 câu nhưng nhóm lớp lại 6 câu"): đời cũ seed lưới
+// ĐÚNG MỘT LẦN (`if (cur.length) return`) rồi KHÔNG bao giờ theo đề nữa, và danh tính 1 ô chấm là
+// VỊ TRÍ (problem_no ↔ index mảng câu). Sửa đề = thêm/bớt/đổi câu ở giữa → ô lệch câu → điểm gắn
+// sang DẠNG khác → mastery sai. Tệ nhất: UI cũ chỉ cảnh báo khi SỐ câu lệch, nên đổi câu mà giữ
+// nguyên số lượng thì hỏng HOÀN TOÀN IM LẶNG.
+// Nay ô mang `ma_cau` (mig 0106) — danh tính là CÂU, vị trí chỉ còn là thứ tự hiển thị:
+//   · câu còn trong đề → GIỮ nguyên ô + điểm (đồng bộ lại ma_dang nếu kho sửa dạng của câu)
+//   · câu mới          → thêm ô
+//   · ô mất câu, 0 điểm → xoá (ô rỗng = cấu trúc, không phải phép đo — §1.5, không mất gì)
+//   · ô mất câu, CÒN ĐIỂM → GIỮ + báo lên UI cho người quyết. TUYỆT ĐỐI không tự xoá điểm.
+// Phase ĐÃ ĐÓNG (Elo đã tính) thì KHÔNG đụng cấu trúc — chỉ trả chênh lệch để UI cảnh báo, người
+// phải "Mở lại" mới sửa (§4: đã chốt thì giữ vết, không sửa lén sau lưng).
+export type OMoCoi = { problem: Problem; soDiem: number }
+export type LuoiSync = {
+  probs: Problem[]          // ĐÚNG THỨ TỰ ĐỀ (ô mồ côi còn điểm xếp cuối) — UI hiển thị theo mảng này
+  moCoi: OMoCoi[]           // ô mất câu nhưng còn điểm → cần người quyết
+  khongRoRang: null | 'lech_so' | 'lech_dang'  // lưới đời cũ không gắn được nhãn — kèm LÝ DO (2 cái khác hẳn nhau)
+  doiCauTruc: boolean       // có chênh lệch nhưng phase đã đóng nên chưa áp
 }
-// Đồng bộ lại khi ET đổi số câu (CHỈ khi chưa chấm): xoá problem ET cũ + seed lại theo câu mới.
-export async function resyncETProblems(buoiId: string, caus: CauHoi[]): Promise<void> {
-  const cur = await listProblems(buoiId, 'et')
-  const ids = cur.map((p) => p.id)
-  if (ids.length) {
-    const { data: g } = await supabase.from('gami_grades').select('id').in('problem_id', ids).limit(1)
-    if (g && g.length) throw new Error('ET đã có bài chấm — không thể đồng bộ lại (xoá điểm trước nếu cần).')
-    const { error } = await supabase.from('gami_session_problems').delete().in('id', ids)
+const luoiNguyen = (probs: Problem[]): LuoiSync => ({ probs, moCoi: [], khongRoRang: null, doiCauTruc: false })
+
+export async function syncDocProblems(buoiId: string, phase: 'et' | 'mt' | 'btvn', caus: CauHoi[], daDong?: boolean): Promise<LuoiSync> {
+  const cur = await listProblems(buoiId, phase)
+  // Đề rỗng/chưa tải được → KHÔNG đụng lưới. (Đừng để một lần load hỏng biến thành "xoá sạch ô chấm".)
+  if (!caus.length) return luoiNguyen(cur)
+  if (!cur.length) {
+    if (daDong) return { ...luoiNguyen(cur), doiCauTruc: true }
+    const rows = caus.map((c, i) => ({ buoi_hoc_id: buoiId, phase, problem_no: i + 1, ma_cau: c.ma_cau, ma_dang: c.dang_chinh ?? null }))
+    // ignoreDuplicates: chống đẻ trùng khi effect chạy 2 lần (StrictMode) — unique (buoi,phase,problem_no).
+    const { error } = await supabase.from('gami_session_problems').upsert(rows, { onConflict: 'buoi_hoc_id,phase,problem_no', ignoreDuplicates: true })
     if (error) throw error
+    return luoiNguyen(await listProblems(buoiId, phase))
   }
-  await ensureETProblems(buoiId, caus)
+
+  // Lưới đời cũ (trước mig 0106) chưa có ma_cau. Chỉ dám gắn nhãn khi SỐ Ô == SỐ CÂU — bằng nhau tức
+  // không có thêm/bớt, vị trí VẪN là danh tính đúng. Lệch số thì KHÔNG ĐOÁN: trả cờ, để người quyết.
+  // Gắn nhãn KHÔNG bị chặn bởi `daDong`: nó chỉ ghi CHÚ THÍCH ô nào ứng câu nào — không thêm/bớt ô,
+  // không đụng điểm, không đụng Elo. Chỉ ĐỔI CẤU TRÚC mới phải chờ "Mở lại".
+  // ⚠ "Số ô == số câu ⇒ vị trí là danh tính" NGHE HỢP LÝ NHƯNG SAI. Phản ví dụ thật (5A2 20/07): bỏ 1
+  // câu ở GIỮA rồi dọn ô rỗng cuối → số lại khớp, nhưng ô 3,4,5 vẫn giữ câu CŨ. Nên phải có nhân
+  // chứng thứ hai: `ma_dang` của ô seed từ dang_chinh của câu LÚC CHẤM → chỉ nhận nhãn khi KHỚP.
+  // Lệch dù chỉ 1 ô ⇒ bỏ cả lượt, để NULL, hỏi người. Thà bỏ trống còn hơn đánh sai (CLAUDE §1.5).
+  let lam = cur
+  if (cur.some((p) => !p.ma_cau)) {
+    if (cur.length !== caus.length) return { ...luoiNguyen(cur), khongRoRang: 'lech_so' }
+    const dangKhop = cur.every((p, i) => !p.ma_dang || !caus[i].dang_chinh || p.ma_dang === caus[i].dang_chinh)
+    if (!dangKhop) return { ...luoiNguyen(cur), khongRoRang: 'lech_dang' }
+    await Promise.all(cur.map((p, i) => supabase.from('gami_session_problems').update({ ma_cau: caus[i].ma_cau }).eq('id', p.id)))
+    lam = cur.map((p, i) => ({ ...p, ma_cau: caus[i].ma_cau }))
+  }
+
+  // Bắt cặp theo MÃ CÂU (splice: đề có 2 câu trùng mã thì mỗi ô chỉ được dùng 1 lần).
+  const thua = [...lam]
+  const ghep = caus.map((c) => {
+    const i = thua.findIndex((p) => p.ma_cau === c.ma_cau)
+    return i >= 0 ? { co: thua.splice(i, 1)[0], cau: c } : { co: null, cau: c }
+  })
+  const thieu = ghep.filter((g) => !g.co)
+  const lech = thieu.length > 0 || thua.length > 0
+  if (lech && daDong) return { ...luoiNguyen(lam), doiCauTruc: true }
+
+  // Ô mất câu: 0 điểm → xoá; còn điểm → giữ lại và báo.
+  const moCoi: OMoCoi[] = []
+  if (thua.length) {
+    const ids = thua.map((p) => p.id)
+    const { data: gs, error } = await supabase.from('gami_grades').select('problem_id').in('problem_id', ids).limit(LIMIT)
+    if (error) throw error
+    const dem = new Map<string, number>()
+    for (const g of (gs ?? []) as { problem_id: string }[]) dem.set(g.problem_id, (dem.get(g.problem_id) ?? 0) + 1)
+    const rong = thua.filter((p) => !dem.has(p.id))
+    for (const p of thua) if (dem.has(p.id)) moCoi.push({ problem: p, soDiem: dem.get(p.id) as number })
+    if (rong.length) {
+      const { error: eDel } = await supabase.from('gami_session_problems').delete().in('id', rong.map((p) => p.id))
+      if (eDel) throw eDel
+    }
+  }
+
+  // Câu mới → thêm ô (nối tiếp problem_no lớn nhất; problem_no chỉ là slot, thứ tự hiển thị lấy từ đề).
+  let no = lam.length ? Math.max(...lam.map((p) => p.problem_no)) : 0
+  let daTao: Problem[] = []
+  if (thieu.length) {
+    const rows = thieu.map((g) => ({ buoi_hoc_id: buoiId, phase, problem_no: ++no, ma_cau: g.cau.ma_cau, ma_dang: g.cau.dang_chinh ?? null }))
+    const { data, error } = await supabase.from('gami_session_problems').insert(rows).select()
+    if (error) throw error
+    daTao = (data ?? []) as Problem[]
+  }
+
+  // Dạng của câu có thể được sửa trong kho sau khi seed → đồng bộ lại nhãn của ô đang giữ.
+  const doiDang = ghep.filter((g) => g.co && (g.co.ma_dang ?? null) !== (g.cau.dang_chinh ?? null))
+  await Promise.all(doiDang.map((g) => supabase.from('gami_session_problems').update({ ma_dang: g.cau.dang_chinh ?? null }).eq('id', (g.co as Problem).id)))
+
+  const taoMap = new Map(daTao.map((p) => [p.ma_cau as string, p]))
+  const theoDe = ghep
+    .map((g) => (g.co ? { ...g.co, ma_dang: g.cau.dang_chinh ?? null } : taoMap.get(g.cau.ma_cau)))
+    .filter(Boolean) as Problem[]
+  return { probs: [...theoDe, ...moCoi.map((m) => m.problem)], moCoi, khongRoRang: null, doiCauTruc: false }
+}
+
+// Sắp lưới theo THỨ TỰ ĐỀ mà không ghi DB — dùng cho reload sau mỗi lần chấm (sync đã chạy lúc mở tab).
+export function xepLuoiTheoDe(probs: Problem[], caus: CauHoi[]): Problem[] {
+  if (!caus.length) return probs
+  const con = [...probs]
+  const theoDe: Problem[] = []
+  for (const c of caus) {
+    const i = con.findIndex((p) => p.ma_cau === c.ma_cau)
+    if (i >= 0) theoDe.push(con.splice(i, 1)[0])
+  }
+  return [...theoDe, ...con] // ô không khớp câu nào (mồ côi / lưới cũ chưa gắn nhãn) xếp cuối
 }
 // ── CHẤM MT: nạp câu từ tài liệu mt_buoi khớp buổi (lớp+ngày) — CÙNG mẫu ET (chấm dùng gradeET/
 // deleteGrade generic, không cần hàm riêng — phase='mt' đã tách qua gami_session_problems.phase). ──
@@ -326,13 +416,10 @@ export async function loadMTForBuoi(buoiId: string): Promise<{ mtId: string | nu
   const phans = await getMTPhanCaus(mt.id)
   return { mtId: mt.id, phans, caus: phans.flatMap((p) => p.caus) }
 }
-export async function ensureMTProblems(buoiId: string, caus: CauHoi[]): Promise<void> {
-  const cur = await listProblems(buoiId, 'mt')
-  if (cur.length || !caus.length) return
-  const rows = caus.map((c, i) => ({ buoi_hoc_id: buoiId, phase: 'mt', problem_no: i + 1, ma_dang: c.dang_chinh ?? null }))
-  const { error } = await supabase.from('gami_session_problems').upsert(rows, { onConflict: 'buoi_hoc_id,phase,problem_no', ignoreDuplicates: true })
-  if (error) throw error
-}
+// MT/BTVN dùng CHUNG syncDocProblems với ET — cùng một bản chất "lưới bám đề", đừng đẻ 3 bản logic
+// lệch nhau (bug ET lặp lại y hệt ở MT/BTVN vì trước đây copy-paste `if (cur.length) return`).
+export const syncMTProblems = (buoiId: string, caus: CauHoi[], daDong?: boolean) => syncDocProblems(buoiId, 'mt', caus, daDong)
+export const syncBTVNProblems = (buoiId: string, caus: CauHoi[], daDong?: boolean) => syncDocProblems(buoiId, 'btvn', caus, daDong)
 export async function listGrades(buoiId: string): Promise<Grade[]> {
   const { data, error } = await supabase.from('gami_grades').select('*').eq('buoi_hoc_id', buoiId).limit(LIMIT)
   if (error) throw error
@@ -376,13 +463,6 @@ export async function loadBTVNForBuoi(buoiId: string): Promise<{ btvnId: string 
   const doc = await getBTVNByBuoi(lopId, (b as any).ngay)
   if (!doc) return { btvnId: null, caus: [] }
   return { btvnId: doc.id, caus: await getBTVNCaus(doc.id) }
-}
-export async function ensureBTVNProblems(buoiId: string, caus: CauHoi[]): Promise<void> {
-  const cur = await listProblems(buoiId, 'btvn')
-  if (cur.length || !caus.length) return
-  const rows = caus.map((c, i) => ({ buoi_hoc_id: buoiId, phase: 'btvn', problem_no: i + 1, ma_dang: c.dang_chinh ?? null }))
-  const { error } = await supabase.from('gami_session_problems').upsert(rows, { onConflict: 'buoi_hoc_id,phase,problem_no', ignoreDuplicates: true })
-  if (error) throw error
 }
 
 // Trạng thái nộp + thái độ (per HS×buổi) — btvn_ket_qua. Upsert idempotent.
