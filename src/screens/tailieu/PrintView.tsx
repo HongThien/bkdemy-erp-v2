@@ -740,7 +740,7 @@ const CONTENT_CSS = `
 .pv-btvn .pv-cau{break-inside:auto}
 .pv-btvn .pv-cau .pv-math:first-child{break-after:avoid}
 /* Khối tiêu đề phiếu BTVN: tiêu đề (tên tài liệu) trên cùng · trái = họ tên + lớp · phải = ô điểm. */
-.pv-bt-head{border:1.5px solid var(--pv-accent,#E91E8C);border-radius:12px;padding:12px 16px 14px;margin-bottom:16px;break-inside:avoid;break-after:avoid}
+.pv-bt-head{border:1.5px solid var(--pv-accent,#E91E8C);border-radius:12px;padding:12px 16px 14px;margin-bottom:16px;break-inside:avoid}
 .pv-bt-titlewrap{text-align:center;margin-bottom:13px}
 .pv-bt-eyebrow{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:#8a9097}
 .pv-bt-title{font-size:22px;font-weight:800;color:var(--pv-accent,#E91E8C);line-height:1.2;margin-top:2px}

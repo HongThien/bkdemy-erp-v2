@@ -11,7 +11,7 @@
     {
       "name": "bkdemy-web-dev",
       "runtimeExecutable": "cmd",
-      "runtimeArgs": ["/c", "cd /d C:\\Users\\Admin\\Desktop\\BKERP\\bkdemy-web && npm run dev"],
+      "runtimeArgs": ["/c", "cd /d C:\\Users\\WBPC\\Desktop\\BKERP\\bkdemy-web && npm run dev"],
       "port": 3000
     }
   ]
