@@ -1,17 +1,21 @@
 import { useEffect, useState } from 'react'
 import {
   getTaiLieuFull, updateTaiLieu, updatePhan, setCauOfPhan,
-  addBuoi, deleteBuoi, setDangOfBuoi, reorderDangInBuoi, autoSuggestByLoai, autoSuggestBtvn, cauUsage, trichXuatBuoi, listTrichXuat, khoCuaMon, setPhanKieu, BLOCK_KIEU,
+  addBuoi, deleteBuoi, setDangOfBuoi, reorderDangInBuoi, autoSuggestByLoai, autoSuggestBtvn, trichXuatBuoi, listTrichXuat, khoCuaMon, setPhanKieu, setPhanHienLt, BLOCK_KIEU,
   DEFAULT_LUYEN_COUNTS, DEFAULT_BTVN_COUNTS, DEFAULT_BTVN_LINES,
   type TaiLieuFull, type PhanResolved, type CauHinh, type TrichState,
 } from '../../lib/tailieu'
-import { listCauByDang, groupMap, LOAI_CAU, type CauHoi, type Tier1Node } from '../../lib/kho/api'
+import { groupMap, LOAI_CAU, type CauHoi, type Tier1Node } from '../../lib/kho/api'
 import { listLop, type Lop } from '../../lib/nhansu'
 import { MathText, inp } from '../kho/ui'
 import SearchSelect from '../../components/SearchSelect'
 import BuoiNgaySelect from '../../components/BuoiNgaySelect'
+import { KhoPicker } from '../../components/KhoPicker'
+import OnTapConfirmScreen from './OnTapConfirmScreen'
 import PrintView from './PrintView'
 import { useStore } from '../../store/useStore'
+
+export { KhoPicker } // re-export — ETScreen/MTScreen/BTScreen import KhoPicker từ đây (giữ nguyên, khỏi sửa 3 nơi)
 
 const loaiLabel = (v: string) => LOAI_CAU.find((x) => x.value === v)?.label ?? v
 const MAU_PRESET = [['#E91E8C', 'Hồng'], ['#F7941E', 'Cam'], ['#2D9CDB', 'Xanh dương'], ['#16a34a', 'Xanh lá'], ['#7c3aed', 'Tím']]
@@ -54,6 +58,13 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
   async function saveCh(patch: Partial<CauHinh>) { const next = { ...ch, ...patch }; setCh(next); await updateTaiLieu(id, { cau_hinh: next }); markSaved() }
   async function applyCaus(phanId: string, maCaus: string[]) { await setCauOfPhan(phanId, maCaus); await reload(); markSaved() }
   async function onSetKieu(phanId: string, kieu: string) { await setPhanKieu(phanId, kieu); await reload(); markSaved() }
+  // Optimistic (không await reload() cả tài liệu — nặng, chỉ đổi 1 cờ boolean): tự sửa state tại chỗ,
+  // lưu nền; sai thì lùi lại đúng ô đó (không kéo cả app về "Lỗi" vì 1 checkbox).
+  function onSetHienLt(phanId: string, v: boolean) {
+    setFull((f) => (f ? { ...f, phans: f.phans.map((p) => (p.id === phanId ? { ...p, hien_lt: v } : p)) } : f))
+    markSaved()
+    setPhanHienLt(phanId, v).catch(() => setFull((f) => (f ? { ...f, phans: f.phans.map((p) => (p.id === phanId ? { ...p, hien_lt: !v } : p)) } : f)))
+  }
   // Câu đã dùng ở phần khác CÙNG BUỔI → cấm chọn lại (auto & thủ công). Khác buổi ĐƯỢC dùng lại (Thùy 07-04).
   const usedExcept = (phanId: string): Set<string> => {
     const s = new Set<string>()
@@ -129,7 +140,7 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
                   onDelete={async () => { if (confirm('Xoá cả buổi này (gồm dạng trên lớp + BTVN)?')) { await deleteBuoi(id, b.marker.id); await reload(); markSaved() } }}
                   onChonDang={() => setDangPicker({ buoiId: b.marker.id, selected: b.dangs.map((d) => d.ref_ma!).filter(Boolean) })}
                   onReorderDang={async (order) => { await reorderDangInBuoi(id, b.marker.id, order); await reload(); markSaved() }}
-                  onApply={applyCaus} openPicker={openPicker} cauTbl={cauTbl} onSetKieu={onSetKieu} usedExcept={usedExcept}
+                  onApply={applyCaus} openPicker={openPicker} cauTbl={cauTbl} onSetKieu={onSetKieu} onSetHienLt={onSetHienLt} usedExcept={usedExcept}
                   onPreview={() => setPreviewBuoiId(b.marker.id)}
                 />
               )
@@ -149,10 +160,10 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
 }
 
 // ── 1 BUỔI: tiêu đề (sửa được) + nút Chọn dạng + danh sách dạng (mỗi dạng có Bài luyện + BTVN) ──
-function BuoiCard({ buoi, startNo, linesByCau, onLine, onLineAll, onRename, onDelete, onChonDang, onReorderDang, onApply, openPicker, cauTbl, onSetKieu, usedExcept, onPreview }: {
+function BuoiCard({ buoi, startNo, linesByCau, onLine, onLineAll, onRename, onDelete, onChonDang, onReorderDang, onApply, openPicker, cauTbl, onSetKieu, onSetHienLt, usedExcept, onPreview }: {
   buoi: BuoiUI; startNo: number; linesByCau: Record<string, number>; onLine: (maCau: string, n: number) => void; onLineAll: (maCaus: string[], n: number) => void
   onRename: (t: string) => void; onDelete: () => void; onChonDang: () => void; onReorderDang: (order: string[]) => void
-  onApply: (phanId: string, maCaus: string[]) => void; openPicker: (phanId: string, ma: string, selected: string[]) => void; cauTbl: string; onSetKieu: (phanId: string, kieu: string) => void
+  onApply: (phanId: string, maCaus: string[]) => void; openPicker: (phanId: string, ma: string, selected: string[]) => void; cauTbl: string; onSetKieu: (phanId: string, kieu: string) => void; onSetHienLt: (phanId: string, v: boolean) => void
   usedExcept: (phanId: string) => Set<string>; onPreview: () => void
 }) {
   const order = buoi.dangs.map((d) => d.ref_ma!).filter(Boolean)
@@ -178,7 +189,7 @@ function BuoiCard({ buoi, startNo, linesByCau, onLine, onLineAll, onRename, onDe
           ? <div className="text-[12px] italic text-slate-400">Chưa có dạng — bấm “+ Chọn dạng” để chọn các dạng cho buổi (mọi chuyên đề).</div>
           : buoi.dangs.map((d, i) => (
             <DangCard key={d.id} no={startNo + i + 1} dang={d} btvn={d.ref_ma ? buoi.btvnByMa[d.ref_ma] : undefined}
-              linesByCau={linesByCau} onLine={onLine} onLineAll={onLineAll} onApply={onApply} openPicker={openPicker} cauTbl={cauTbl} onSetKieu={onSetKieu} usedExcept={usedExcept}
+              linesByCau={linesByCau} onLine={onLine} onLineAll={onLineAll} onApply={onApply} openPicker={openPicker} cauTbl={cauTbl} onSetKieu={onSetKieu} onSetHienLt={onSetHienLt} usedExcept={usedExcept}
               canUp={i > 0} canDown={i < buoi.dangs.length - 1} onUp={() => move(i, -1)} onDown={() => move(i, 1)} />
           ))}
       </div>
@@ -187,9 +198,9 @@ function BuoiCard({ buoi, startNo, linesByCau, onLine, onLineAll, onRename, onDe
 }
 
 // ── 1 DẠNG trong buổi: 2 khối cấu hình — Bài luyện (trên lớp) + BTVN (về nhà), đều theo số câu mỗi loại ──
-function DangCard({ no, dang, btvn, linesByCau, onLine, onLineAll, onApply, openPicker, cauTbl, onSetKieu, usedExcept, canUp, canDown, onUp, onDown }: {
+function DangCard({ no, dang, btvn, linesByCau, onLine, onLineAll, onApply, openPicker, cauTbl, onSetKieu, onSetHienLt, usedExcept, canUp, canDown, onUp, onDown }: {
   no: number; dang: PhanResolved; btvn?: PhanResolved; linesByCau: Record<string, number>
-  onLine: (maCau: string, n: number) => void; onLineAll: (maCaus: string[], n: number) => void; onApply: (phanId: string, maCaus: string[]) => void; openPicker: (phanId: string, ma: string, selected: string[]) => void; cauTbl: string; onSetKieu: (phanId: string, kieu: string) => void
+  onLine: (maCau: string, n: number) => void; onLineAll: (maCaus: string[], n: number) => void; onApply: (phanId: string, maCaus: string[]) => void; openPicker: (phanId: string, ma: string, selected: string[]) => void; cauTbl: string; onSetKieu: (phanId: string, kieu: string) => void; onSetHienLt: (phanId: string, v: boolean) => void
   usedExcept: (phanId: string) => Set<string>
   canUp: boolean; canDown: boolean; onUp: () => void; onDown: () => void
 }) {
@@ -218,7 +229,11 @@ function DangCard({ no, dang, btvn, linesByCau, onLine, onLineAll, onApply, open
         </span>
         <span className="text-[14px] font-semibold text-pink-600">Dạng {no}: {dang.dang?.ten_dang ?? ma}</span>
         <span className="truncate text-[11px] text-slate-400">· {dang.dang?.ten_chuyen_de ?? ''}</span>
-        <span className={`ml-auto rounded-full px-2 py-0.5 text-[11px] font-medium ${dang.lyThuyetDang?.noi_dung?.trim() ? 'bg-emerald-50 text-emerald-600' : 'bg-amber-50 text-amber-700'}`}>{dang.lyThuyetDang?.noi_dung?.trim() ? 'có lý thuyết' : 'chưa có lý thuyết'}</span>
+        <label className="ml-auto flex shrink-0 items-center gap-1.5 text-[11px] text-slate-500" title="Bật/tắt hiện khối Lý thuyết của RIÊNG dạng này khi in (vd dạng ôn lại — tắt để đỡ lặp, dạng mới học — bật)">
+          <input type="checkbox" checked={dang.hien_lt !== false} onChange={(e) => onSetHienLt(dang.id, e.target.checked)} />
+          Lý thuyết
+        </label>
+        <span className={`shrink-0 rounded-full px-2 py-0.5 text-[11px] font-medium ${dang.lyThuyetDang?.noi_dung?.trim() ? 'bg-emerald-50 text-emerald-600' : 'bg-amber-50 text-amber-700'}`}>{dang.lyThuyetDang?.noi_dung?.trim() ? 'có lý thuyết' : 'chưa có lý thuyết'}</span>
       </div>
 
       {/* Bài luyện (trên lớp) */}
@@ -390,81 +405,6 @@ function StructureTree({ buois, ten, onJump }: { buois: BuoiUI[]; ten: string; o
   )
 }
 
-export function KhoPicker({ maDangs, selected, disabled = [], cauTbl = 'dai_cau_hoi', onClose, onConfirm }: { maDangs: string[]; selected: string[]; disabled?: string[]; cauTbl?: string; onClose: () => void; onConfirm: (m: string[]) => void }) {
-  const [groups, setGroups] = useState<{ maDang: string; caus: CauHoi[] }[]>([])
-  const [sel, setSel] = useState<Set<string>>(new Set(selected))
-  const [fLoai, setFLoai] = useState<Set<string>>(new Set())
-  const [usage, setUsage] = useState<Map<string, number>>(new Map()) // số lượt câu đã dùng trong MỌI tài liệu (chỉ báo)
-  const [loading, setLoading] = useState(true)
-  // Câu đã dùng ở buổi này/buổi trước (cùng giáo trình) → KHOÁ; trừ câu đang chọn ở chính phần này.
-  const blocked = new Set(disabled.filter((m) => !selected.includes(m)))
-  useEffect(() => {
-    Promise.all(maDangs.map(async (md) => ({ maDang: md, caus: await listCauByDang(md, cauTbl) }))).then(async (g) => {
-      setGroups(g); setLoading(false)
-      setUsage(await cauUsage(g.flatMap((x) => x.caus.map((c) => c.ma_cau))))
-    }).catch(() => setLoading(false))
-  }, []) // eslint-disable-line
-  const toggle = (ma: string) => { if (blocked.has(ma)) return; setSel((s) => { const n = new Set(s); n.has(ma) ? n.delete(ma) : n.add(ma); return n }) }
-  const toggleLoai = (v: string) => setFLoai((s) => { const n = new Set(s); n.has(v) ? n.delete(v) : n.add(v); return n })
-  function confirm() {
-    const all = groups.flatMap((g) => g.caus.map((c) => c.ma_cau))
-    const ordered = [...selected.filter((s) => sel.has(s)), ...all.filter((m) => sel.has(m) && !selected.includes(m))]
-    onConfirm(ordered)
-  }
-  return (
-    <div className="fixed inset-0 z-[70] bg-slate-900/50 backdrop-blur-sm" onClick={onClose}>
-      <div className="absolute inset-x-[12%] inset-y-10 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
-        <div className="flex items-center gap-3 border-b border-slate-200 px-6 py-3">
-          <h3 className="text-base font-semibold text-slate-900">Chọn câu từ kho</h3>
-          <span className="text-[13px] text-slate-400">đã chọn <b className="text-indigo-600">{sel.size}</b></span>
-          <button onClick={onClose} className="ml-auto flex h-8 w-8 items-center justify-center rounded-md text-slate-400 hover:bg-slate-100">✕</button>
-        </div>
-        <div className="flex flex-wrap items-center gap-1.5 border-b border-slate-100 px-6 py-2">
-          <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">Lọc loại:</span>
-          {LOAI_CAU.map((l) => (
-            <button key={l.value} onClick={() => toggleLoai(l.value)} className={`rounded-md px-2.5 py-1 text-[12px] font-medium transition ${fLoai.has(l.value) ? 'bg-indigo-600 text-white shadow-sm' : 'border border-slate-200 text-slate-500 hover:border-indigo-300 hover:text-indigo-700'}`}>{l.label}</button>
-          ))}
-          {fLoai.size > 0 && <button onClick={() => setFLoai(new Set())} className="ml-1 text-[12px] font-medium text-slate-400 hover:text-rose-600">Xoá lọc</button>}
-        </div>
-        <div className="min-h-0 flex-1 overflow-auto p-5">
-          {loading ? <p className="text-sm text-slate-400">Đang tải kho…</p>
-            : groups.every((g) => !g.caus.length) ? <p className="text-sm text-slate-400">Kho các dạng này chưa có câu nào.</p>
-            : groups.map((g) => {
-              const caus = fLoai.size ? g.caus.filter((c) => fLoai.has(c.loai_cau)) : g.caus
-              return (
-                <div key={g.maDang} className="mb-4">
-                  {maDangs.length > 1 && <div className="mb-1 text-[12px] font-bold uppercase tracking-wide text-slate-500">Dạng {g.maDang}</div>}
-                  <div className="space-y-1">
-                    {caus.map((c) => {
-                      const isBlocked = blocked.has(c.ma_cau)
-                      const n = usage.get(c.ma_cau) ?? 0
-                      return (
-                      <label key={c.ma_cau} title={isBlocked ? 'Câu này đã dùng trong buổi này / buổi trước — không chọn lại' : undefined}
-                        className={`flex items-start gap-2 rounded-md border px-2.5 py-1.5 ${isBlocked ? 'cursor-not-allowed border-slate-100 bg-slate-50 opacity-55' : sel.has(c.ma_cau) ? 'cursor-pointer border-indigo-300 bg-indigo-50/40' : 'cursor-pointer border-slate-100 hover:bg-slate-50'}`}>
-                        <input type="checkbox" checked={sel.has(c.ma_cau)} disabled={isBlocked} onChange={() => toggle(c.ma_cau)} className="mt-1" />
-                        <MaCau ma={c.ma_cau} />
-                        <span className="min-w-0 flex-1 text-[14px] text-slate-700"><MathText>{c.noi_dung}</MathText></span>
-                        {isBlocked
-                          ? <span className="shrink-0 rounded bg-rose-100 px-1.5 text-[10px] font-semibold text-rose-600">đã dùng</span>
-                          : <span className={`shrink-0 rounded px-1.5 text-[10px] font-medium ${n > 0 ? 'bg-amber-50 text-amber-600' : 'bg-emerald-50 text-emerald-600'}`} title="Số lượt câu này đã dùng trong các tài liệu ở Kho">{n > 0 ? `dùng ${n}×` : 'chưa dùng'}</span>}
-                        <span className="shrink-0 rounded bg-slate-100 px-1.5 text-[10px] font-medium text-slate-500">{loaiLabel(c.loai_cau)}</span>
-                      </label>
-                    )})}
-                    {caus.length === 0 && <div className="px-1 py-1 text-[12px] italic text-slate-400">— không có câu khớp lọc —</div>}
-                  </div>
-                </div>
-              )
-            })}
-        </div>
-        <div className="flex justify-end gap-2 border-t border-slate-200 px-6 py-3">
-          <button onClick={onClose} className="rounded-md px-3 py-1.5 text-sm text-slate-500 hover:bg-slate-100">Huỷ</button>
-          <button onClick={confirm} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500">Dùng {sel.size} câu</button>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 // TRÍCH XUẤT cấp GIÁO TRÌNH: chọn LỚP → hiện 10 buổi + TRẠNG THÁI đã gán (ngày nào) cho lớp đó → gán buổi chưa gán.
 function TrichPanel({ masterId, khoi, buois, onClose }: { masterId: string; khoi: string; buois: BuoiUI[]; onClose: () => void }) {
   const [lops, setLops] = useState<Lop[]>([])
@@ -476,11 +416,12 @@ function TrichPanel({ masterId, khoi, buois, onClose }: { masterId: string; khoi
   async function loadState(id: string) { setLoading(true); try { setState(await listTrichXuat(masterId, id)) } finally { setLoading(false) } }
   useEffect(() => { if (lopId) loadState(lopId); else setState({}) }, [lopId]) // eslint-disable-line
 
-  async function gan(buoiId: string, tenBuoi: string, ngay: string, gt: boolean, bt: boolean) {
+  // Gán = CHỈ tạo GT (Thùy 07-22: BTVN hoãn sang OnTapConfirmScreen — tự nó lo saveOnTapConfig +
+  // trichXuatBuoi(btvn:true) + appendOnTapToBtvnDoc lúc bấm Xác nhận, xem BuoiTrichRow).
+  async function gan(buoiId: string, tenBuoi: string, ngay: string, gt: boolean) {
     if (!lop) return
-    const created = await trichXuatBuoi(masterId, buoiId, { lopId: lop.id, ngay, khoi, tenLop: lop.ten_lop, tenBuoi, giaoTrinh: gt, btvn: bt })
-    // ⭐ 07-12: doc VẬN HÀNH (giao_trinh_buoi/btvn) trích xong là ĐỦ NỘI DUNG ngay — enqueue link luôn,
-    // không đợi Thùy quay lại Kho tài liệu bấm.
+    const created = await trichXuatBuoi(masterId, buoiId, { lopId: lop.id, ngay, khoi, tenLop: lop.ten_lop, tenBuoi, giaoTrinh: gt, btvn: false })
+    // ⭐ 07-12: doc VẬN HÀNH (giao_trinh_buoi) trích xong là ĐỦ NỘI DUNG ngay — enqueue link luôn.
     created.forEach((d) => useStore.getState().enqueueLinkGen(d.id, d.loai))
     await loadState(lop.id)
   }
@@ -499,8 +440,10 @@ function TrichPanel({ masterId, khoi, buois, onClose }: { masterId: string; khoi
             : loading ? <p className="text-sm text-slate-400">Đang tải trạng thái…</p>
             : (
               <div className="mx-auto max-w-[760px] space-y-2">
-                <p className="mb-2 text-[12px] text-slate-400">Mỗi buổi của giáo trình → gán cho 1 ngày của lớp <b>{lop.ten_lop}</b> → sinh “Giáo trình buổi” + “BTVN” vào Kho. Buổi đã gán hiện ngày.</p>
-                {buois.map((b, i) => <BuoiTrichRow key={b.marker.id} no={i + 1} lopId={lopId} buoi={b} st={state[b.marker.id]} onGan={(ngay, gt, bt) => gan(b.marker.id, b.marker.tieu_de || `Buổi ${i + 1}`, ngay, gt, bt)} />)}
+                <p className="mb-2 text-[12px] text-slate-400">Mỗi buổi của giáo trình → gán cho 1 ngày của lớp <b>{lop.ten_lop}</b> → sinh “Giáo trình buổi”. BTVN (kèm ôn tập) làm ở bước riêng sau khi gán, có xem trước trước khi tạo.</p>
+                {buois.map((b, i) => <BuoiTrichRow key={b.marker.id} no={i + 1} lopId={lopId} tenLop={lop.ten_lop} masterId={masterId} khoi={khoi} mon={lop.mon} buoi={b} st={state[b.marker.id]}
+                  onGan={(ngay, gt) => gan(b.marker.id, b.marker.tieu_de || `Buổi ${i + 1}`, ngay, gt)}
+                  onBtvnConfirmed={() => loadState(lop.id)} />)}
               </div>
             )}
         </div>
@@ -509,34 +452,59 @@ function TrichPanel({ masterId, khoi, buois, onClose }: { masterId: string; khoi
   )
 }
 
-function BuoiTrichRow({ no, lopId, buoi, st, onGan }: { no: number; lopId: string | null; buoi: BuoiUI; st?: TrichState; onGan: (ngay: string, gt: boolean, bt: boolean) => Promise<void> }) {
+// ⭐ 07-22 (Thùy nắn UX): gán buổi CHỈ tạo GT — BTVN hoãn sang màn "Ôn tập + Preview" riêng (OnTapConfirmScreen),
+// người dùng soi trước rồi mới bấm Xác nhận mới CHÍNH THỨC tạo BTVN vào Kho. Không còn checkbox BTVN /
+// OnTapEditor nhúng ở đây nữa — trạng thái "đã có GT, chưa có BTVN" tự nhiên derive từ `st` (listTrichXuat),
+// không cần nhớ "có định làm BTVN không" ở đâu cả — bấm "+ BTVN / Ôn tập" lúc nào cũng được, kể cả về sau.
+function BuoiTrichRow({ no, lopId, tenLop, masterId, khoi, mon, buoi, st, onGan, onBtvnConfirmed }: {
+  no: number; lopId: string | null; tenLop: string; masterId: string; khoi: string; mon: string; buoi: BuoiUI; st?: TrichState
+  onGan: (ngay: string, gt: boolean) => Promise<void>
+  onBtvnConfirmed: () => void
+}) {
   const [ngay, setNgay] = useState('')
   const [gt, setGt] = useState(true)
-  const [bt, setBt] = useState(true)
   const [busy, setBusy] = useState(false)
+  const [onTapOpen, setOnTapOpen] = useState(false)
   const ganNgay = st?.ngay ? st.ngay.split('-').reverse().join('/') : null
-  async function go() { if (!ngay || (!gt && !bt)) return; setBusy(true); try { await onGan(ngay, gt, bt) } finally { setBusy(false) } }
+  const tenBuoi = buoi.marker.tieu_de || `Buổi ${no}`
+  async function go() {
+    if (!ngay || !gt) return
+    setBusy(true)
+    try { await onGan(ngay, gt) } finally { setBusy(false) }
+  }
   return (
-    <div className="flex flex-wrap items-center gap-2.5 rounded-xl border border-slate-200 bg-white p-2.5">
-      <span className="w-6 shrink-0 text-center text-[13px] font-bold text-indigo-600">{no}</span>
-      <div className="min-w-[120px] flex-1">
-        <div className="text-[13px] font-semibold text-slate-800">{buoi.marker.tieu_de || `Buổi ${no}`}</div>
-        <div className="text-[11px] text-slate-400">{buoi.dangs.length} dạng</div>
+    <div className="rounded-xl border border-slate-200 bg-white p-2.5">
+      <div className="flex flex-wrap items-center gap-2.5">
+        <span className="w-6 shrink-0 text-center text-[13px] font-bold text-indigo-600">{no}</span>
+        <div className="min-w-[120px] flex-1">
+          <div className="text-[13px] font-semibold text-slate-800">{tenBuoi}</div>
+          <div className="text-[11px] text-slate-400">{buoi.dangs.length} dạng</div>
+        </div>
+        {ganNgay ? (
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="rounded-full bg-emerald-50 px-2.5 py-1 text-[12px] font-medium text-emerald-700">✓ Đã gán · {ganNgay}</span>
+            <span className="text-[11px] text-slate-400">{st?.hasGT ? 'GT' : ''}{st?.hasGT && st?.hasBTVN ? ' + ' : ''}{st?.hasBTVN ? 'BTVN' : ''}</span>
+            {st?.hasGT && !st?.hasBTVN && (
+              <button onClick={() => setOnTapOpen(true)} className="rounded-md bg-violet-600 px-2.5 py-1 text-[11px] font-medium text-white hover:bg-violet-500">+ BTVN / Ôn tập</button>
+            )}
+            <button onClick={go} disabled={busy || !ngay} title="Gán lại sang ngày khác (tạo bản mới)" className="rounded-md border border-slate-200 px-2 py-1 text-[11px] text-slate-500 hover:border-indigo-300">Gán lại</button>
+            <BuoiNgaySelect lopId={lopId} value={ngay} onChange={setNgay} className="h-7 rounded border border-slate-300 px-1.5 text-[12px]" />
+          </div>
+        ) : (
+          <div className="flex flex-wrap items-center gap-2">
+            <BuoiNgaySelect lopId={lopId} value={ngay} onChange={setNgay} className="h-7 rounded border border-slate-300 px-1.5 text-[12px]" />
+            <label className="flex items-center gap-1 text-[12px] text-slate-600"><input type="checkbox" checked={gt} onChange={(e) => setGt(e.target.checked)} />GT</label>
+            <button onClick={go} disabled={busy || !ngay || !gt} className="rounded-md bg-violet-600 px-3 py-1 text-[12px] font-medium text-white hover:bg-violet-500 disabled:opacity-40">{busy ? '…' : 'Gán'}</button>
+          </div>
+        )}
       </div>
-      {ganNgay ? (
-        <div className="flex items-center gap-2">
-          <span className="rounded-full bg-emerald-50 px-2.5 py-1 text-[12px] font-medium text-emerald-700">✓ Đã gán · {ganNgay}</span>
-          <span className="text-[11px] text-slate-400">{st?.hasGT ? 'GT' : ''}{st?.hasGT && st?.hasBTVN ? ' + ' : ''}{st?.hasBTVN ? 'BTVN' : ''}</span>
-          <button onClick={go} disabled={busy || !ngay} title="Gán lại sang ngày khác (tạo bản mới)" className="rounded-md border border-slate-200 px-2 py-1 text-[11px] text-slate-500 hover:border-indigo-300">Gán lại</button>
-          <BuoiNgaySelect lopId={lopId} value={ngay} onChange={setNgay} className="h-7 rounded border border-slate-300 px-1.5 text-[12px]" />
-        </div>
-      ) : (
-        <div className="flex flex-wrap items-center gap-2">
-          <BuoiNgaySelect lopId={lopId} value={ngay} onChange={setNgay} className="h-7 rounded border border-slate-300 px-1.5 text-[12px]" />
-          <label className="flex items-center gap-1 text-[12px] text-slate-600"><input type="checkbox" checked={gt} onChange={(e) => setGt(e.target.checked)} />GT</label>
-          <label className="flex items-center gap-1 text-[12px] text-slate-600"><input type="checkbox" checked={bt} onChange={(e) => setBt(e.target.checked)} />BTVN</label>
-          <button onClick={go} disabled={busy || !ngay || (!gt && !bt)} className="rounded-md bg-violet-600 px-3 py-1 text-[12px] font-medium text-white hover:bg-violet-500 disabled:opacity-40">{busy ? '…' : 'Gán'}</button>
-        </div>
+      {onTapOpen && lopId && st?.ngay && (
+        <OnTapConfirmScreen
+          masterId={masterId} buoiId={buoi.marker.id} tenBuoi={tenBuoi} lopId={lopId} tenLop={tenLop} ngay={st.ngay} khoi={khoi} mon={mon}
+          regularBtvn={Object.values(buoi.btvnByMa)}
+          onClose={() => setOnTapOpen(false)}
+          onConfirmed={() => { setOnTapOpen(false); onBtvnConfirmed() }}
+        />
       )}
     </div>
   )

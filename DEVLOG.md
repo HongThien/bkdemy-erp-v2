@@ -2339,3 +2339,60 @@ Query mồ côi ra **43 file**, không phải 19 như em đoán. Đúng cái gua
 **Fix 2 lớp:** (a) chưa biết môn thì KHÔNG query · (b) `reqId` chống race (tái dùng mẫu sẵn có ở `SearchCau`).
 
 **Verify** — đối chiếu UI vs SQL, khớp **5/5 tổ hợp**: Toán 258 · Toán+khối 9 = 72 · Toán+khối 9+hệ S = 13 · Toán+hệ S mọi khối = 64 · Toán+chưa xếp lớp = 5. Đổi sang KHTN → 49 dòng và dropdown hệ **tự rút còn "Hệ A + Chưa xếp lớp"** (KHTN chỉ có lớp bậc A) — đúng hành vi "dựng options từ data". Quay lại Toán → 258. tsc exit 0.
+
+## 2026-07-22 — Fix nhỏ: Lý thuyết per-DẠNG trong buổi (không còn theo cả doc)
+
+**Thùy:** *"Khi làm giáo trình: cái có lý thuyết hay ko có lý thuyết t muốn nó chọn theo từng dạng kiểu checkbox. Ví dụ 1 buổi học có thể học dạng mới mà vẫn ôn dạng cũ thì t muốn dạng mới vẫn hiện lý thuyết còn dạng cũ thì ko."*
+
+- Mig `202607221643_tai_lieu_phan_hien_lt.sql`: `tai_lieu_phan.hien_lt boolean not null default true` — additive, default giữ nguyên hành vi cũ. Verify DB trước: không có CHECK constraint thật, an toàn thêm cột.
+- `TaiLieuBuilder.tsx` (`DangCard`): thêm checkbox "Lý thuyết" cạnh badge "có/chưa có lý thuyết" mỗi dạng → `setPhanHienLt(phanId, v)`.
+- `PrintView.tsx`: `DangBlock` (LT ví dụ riêng dạng) VÀ `BuoiBlock`'s group header (LT chuyên đề, ẩn nếu MỌI dạng trong nhóm tắt hien_lt) đều gate theo `hien_lt !== false`.
+- **Bug tự bắt + tự sửa:** `onSetHienLt` ban đầu `await setPhanHienLt(...) → await reload()` — reload() là `getTaiLieuFull` NẶNG (6+ query cả doc) cho 1 checkbox → Thùy báo "delay hơi lâu tẹo". Sửa thành **optimistic**: `setFull` sửa state tại chỗ ngay (không await), lưu nền, lỗi thì lùi lại đúng ô — bỏ hẳn reload() cho action này.
+
+## 2026-07-22 (tiếp) — Ôn tập trong BTVN (spec-btvn-ontap.md) — build đầy đủ theo §9
+
+PHA 0 verify DB thật phát hiện 2 chỗ spec đoán sai: **RLS `btvn_ontap_config` phải ENABLE** (spec ghi "disable" nhưng 3 bảng `tai_lieu*` anh em đều enable + policy `la_thanh_vien()`) · `nguon_buoi` kiểu **`text`** (giá trị là uuid string nhưng cột là text, khớp `tai_lieu.nguon_buoi`). Ghi PLAN.md + phản biện, Thùy duyệt + tự chạy migration (`btvn_ontap_config` bảng mới).
+
+**`src/lib/ontap.ts` (file mới) — engine 4 bước + CRUD:**
+- `goiYOnTap(nguonId, buoiId, lopId, mon)`: B1 ứng viên = dạng ở buổi TRƯỚC (loại dạng của chính buổi đang gán) · B2 chấm điểm `(yếu×1+cần_luyện×0.5)/đã_đo` qua `getMasteryByDang` **KHÔNG set `includeBTVN`** (y hệt pivot view ④, tránh vòng lặp ôn-tập-tự-đo-bằng-BTVN) · B3 sort giảm dần, tie-break "lâu chưa gặp" (tie-break "tiên quyết" bỏ — `TODO(tienquyet)`, bảng link chưa có trong repo v2) · B4 chọn ≤2 câu/dạng qua `suggestCauForDang` (né cứng `usedCausOfBuoi`, né mềm câu lớp đã làm 30 ngày — rút từ đề xuất 60 của spec, hết pool thì bỏ né-mềm).
+- CRUD `getOnTapConfig`/`saveOnTapConfig` (bảng riêng, sống sót qua `trichXuatBuoi` xoá-rồi-tạo doc BTVN).
+- `appendOnTapToBtvnDoc`/`rebuildOnTapInDoc`: append phan `loai_phan='ontap'` sau khối btvn cuối (thu_tu nối tiếp), revalidate câu còn tồn tại trong kho (câu chết → bỏ + trả về cho UI toast), merge `cau_hinh.btvnLinesByCau`.
+- **Compose ở CALL SITE thay vì sửa `trichXuatBuoi`** — tránh vòng import ngược `tailieu.ts`↔`ontap.ts` (ontap.ts vốn đã import từ tailieu.ts). `TrichPanel.gan()` gọi `trichXuatBuoi` xong rồi mới gọi `appendOnTapToBtvnDoc` — kết quả giống hệt spec §6 yêu cầu, không cần sửa hàm gốc.
+
+**`tailieu.ts`:** `PhanLoai` thêm `'ontap'` (không migration, không CHECK thật) · `getTaiLieuFull`'s `dangMas`/`dangLike` mở thêm `'ontap'` (nếu không, phan ôn tập không resolve được tên dạng → PrintView vỡ) · `getBTVNCaus` thêm `'ontap'` vào filter (BtvnTab chấm + test online `phatHanhTest` đều đi qua hàm này, không cần sửa riêng).
+
+**`PrintView.tsx`:** `buildBuois`/`BtvnSheet` thêm khối `ontaps`, render SAU btvn với header pill riêng `.pv-h-ontap` ("PHẦN ÔN TẬP", màu xám trung tính — phân biệt bài mới/ôn lại), số câu đếm **liên tục 1 mạch** (không reset). Soi PDF thật cả bản HS lẫn bản GV (đáp án+lời giải) — đúng.
+
+**`src/components/KhoPicker.tsx` (tách ra từ `TaiLieuBuilder.tsx`)** — để `OnTapEditor` dùng được mà không vòng import screen↔component; `TaiLieuBuilder.tsx` re-export lại `KhoPicker` nên `ETScreen`/`MTScreen`/`BTScreen` (đang `import {KhoPicker} from './TaiLieuBuilder'`) không cần sửa.
+
+**`src/components/OnTapEditor.tsx` (file mới, component CHUNG — cấm copy-paste 2 bản, ADR-017):** controlled (`config`+`onChange`, cha quyết khi nào lưu). Boot: có config cũ → hiện đúng config đó (KHÔNG gợi ý mới); chưa có → auto-suggest điền sẵn. reqId race-guard (mẫu SearchCau) cho đổi buổi/lớp nhanh. Card mỗi dạng: badge `lớp yếu N%` (có engine score) hoặc `chọn tay` (dạng thêm tay/load từ config cũ) · preview câu (lazy-fetch theo ma_cau, cache) · ✎ Đổi câu (KhoPicker, khoá câu đã dùng cùng buổi + câu dạng ôn tập kia) · ✕ bỏ dạng · + Dạng (DangPickerOne, disable khi đủ 2) · "Không ôn tập buổi này" (skipped).
+
+**Wiring 2 điểm chạm (đúng spec, dùng CHUNG 1 component):**
+- `TrichPanel.BuoiTrichRow`: `OnTapEditor` hiện dưới ngày/GT/BTVN khi đã chọn lớp + tick BTVN. Bấm Gán/Gán lại → `saveOnTapConfig` TRƯỚC rồi mới `onGan` (đúng thứ tự spec §5, để `trichXuatBuoi`+`appendOnTapToBtvnDoc` đọc được config ngay lần này).
+- `KhoTaiLieuScreen`: nút "✎ Ôn tập" cạnh "✎ Sửa" (chỉ `loai==='btvn'`) → modal nhỏ bọc `OnTapEditor`, Lưu = `saveOnTapConfig`+`rebuildOnTapInDoc` (rebuild-tại-chỗ, KHÔNG re-trích cả doc). Cảnh báo mềm nếu buổi đã đóng BTVN (`btvnDaDong` — proxy qua `buoi_hoc.btvn_dong_at`, câu hỏi mở #4 Thùy chốt "chỉ cảnh báo không chặn cứng").
+
+**Verify TRÊN DATA THẬT (không phải chỉ node script rời)** — Giáo trình 9A / lớp 9A1 (15 buổi đã trích thật):
+- Engine chạy buổi 10 (9 buổi trước) → 2 dạng hợp lý mắt người (score 0.43/0.25, dạng phân thức yếu hơn dạng cơ bản — đúng trực giác độ khó), buổi 1 (0 buổi trước) → `[]` không crash.
+- **Click "Gán" THẬT** trên buổi 11 (chưa từng gán cho 9A1 — an toàn, không đụng data cũ): config lưu đúng, doc GT+BTVN sinh đúng, phan `ontap` append đúng thu_tu (7,8 sau 6 phan btvn có sẵn). Xoá sạch test data sau khi verify (Luật xoá — chỉ xoá đúng cái mình vừa tạo).
+- **Click "Lưu" THẬT** ở modal KhoTaiLieuScreen trên doc BTVN buổi 21/9A1 có thật (chưa đóng BTVN) — ontap phan append đúng, cảnh báo "đã đóng BTVN" hiện đúng khi test trên buổi 10 (buổi này `btvn_dong_at` có thật). Ghi baseline trước, xoá sạch phan/config test sau, đối chiếu lại đúng baseline.
+
+**CÒN:** chưa test lại "re-trích 1 buổi ĐÃ có ontap config — config có sống sót" bằng click thật (đã đúng by construction: config sống ở bảng riêng, `trichXuatBuoi` xoá-rồi-tạo không đụng `btvn_ontap_config`) — verify tay lần đầu Thùy dùng thật.
+
+## 2026-07-22 (tiếp #2) — Nắn UX Ôn tập: tách gán khỏi tạo BTVN, thêm màn xem trước
+
+**Thùy phản hồi ngay sau khi build xong bản đầu:** *"t ko nghĩ nên hiện ở màn chung như này đâu"* — không đồng ý OnTapEditor nhúng thẳng vào panel Gán buổi. Yêu cầu luồng mới:
+1. Gán buổi = như cũ nhưng **chưa tạo BTVN vội**.
+2. Sang **màn riêng** chọn ôn tập, **có preview**.
+3. Bấm Xác nhận **mới chính thức** tạo BTVN vào Kho.
+4. "✎ Sửa" sau này — hỏi ý chị trước khi đổi (xem AskUserQuestion).
+
+**Hỏi lại 2 điểm rủi ro trước khi sửa** (không tự đoán — đổi kiến trúc, không phải câu tự trả lời được):
+- Sửa sau này (đã build tuần trước, modal ✎ Ôn tập ở KhoTaiLieuScreen) có đẩy ngược lên MASTER không? → **Chị chốt: KHÔNG, chỉ update bản riêng buổi/lớp đó** — khớp quyết định CHỐT cũ "master giữ trinh nguyên", giữ nguyên `rebuildOnTapInDoc` đã build, không sửa gì thêm.
+- GT (giáo trình buổi) tạo lúc nào? → **Chị: "tùy, giáo trình ko ảnh hưởng mà"** — chọn giữ GT tạo ngay lúc Gán (đổi ít nhất, khớp đúng chữ chị viết "gán buổi như bình thường").
+
+**Kiến trúc mới:**
+- `TrichPanel.gan()` bớt tham số `bt` — CHỈ còn tạo GT (`trichXuatBuoi(...,btvn:false)`). Bỏ hẳn logic append ôn tập ra khỏi hàm này.
+- `BuoiTrichRow`: bỏ checkbox BTVN + `OnTapEditor` nhúng. State "đã GT, chưa BTVN" **tự derive** từ `listTrichXuat` (không cần nhớ ý định ở đâu) → hiện nút tím **"+ BTVN / Ôn tập"**, bấm lúc nào cũng được (kể cả quay lại sau).
+- **`src/screens/tailieu/OnTapConfirmScreen.tsx` (file mới)** — full-screen 2 cột: trái `OnTapEditor` (dùng lại y nguyên, không sửa) · phải **preview LIVE** phiếu BTVN (toggle Bản học sinh/Bản GV) — ghép [câu BTVN thường từ MASTER (buoi.btvnByMa, đã có sẵn trong bộ nhớ, khỏi fetch)] + [câu ôn tập đang chọn, resolve nội dung ngay khi GV tick — chưa lưu DB]. Tái dùng thẳng `CauItem`/`CauList`/`CHROME_CSS` **export sẵn từ PrintView.tsx** → preview y hệt bản in thật (kể cả câu Đúng/Sai, trắc nghiệm nhiều cột, LaTeX), không phải viết lại renderer. Bấm "✕ Huỷ" → **KHÔNG ghi gì vào DB** (đúng yêu cầu "chưa tạo BTVN vội"). Bấm "✓ Xác nhận" → `saveOnTapConfig` → `trichXuatBuoi(btvn:true)` → `appendOnTapToBtvnDoc` (đúng thứ tự spec §5, gộp cả 3 bước cũ nằm rải rác về 1 chỗ).
+
+**Verify lại TRÊN DATA THẬT** (Giáo trình 9A / lớp 9A1, buổi 13 — chưa từng gán, an toàn): buổi chưa gán giờ chỉ còn checkbox GT (đúng, bỏ BTVN) → Gán → chỉ tạo GT, hiện nút "+ BTVN / Ôn tập" → mở màn mới, preview LIVE đúng (câu thường + khối "PHẦN ÔN TẬP" nối số câu liên tục, soi cả 2 dạng) → Xác nhận → DB tạo đúng: GT+BTVN, 8 phan btvn gốc + 2 phan ontap nối `thu_tu` đúng, config lưu đúng. Xoá sạch test data sau khi verify (Luật xoá — chỉ xoá đúng ID mình vừa tạo, soát kỹ vì buổi 13 còn tồn tại ở LỚP KHÁC (9A2) trùng `nguon_buoi` — suýt tưởng nhầm là sót dọn, hoá ra data thật của lớp khác không liên quan).

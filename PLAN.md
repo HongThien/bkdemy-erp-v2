@@ -113,4 +113,4 @@ Không đụng `TaiLieuBuilder.tsx` (master) — đúng non-goal.
 
 ---
 
-## Open — chờ Thùy duyệt bản này (đặc biệt Phản biện A) rồi mới chạy migration + code.
+## ✅ DONE 2026-07-22 — build đủ 8 bước §4, verify trên data thật (không chỉ script rời). Chi tiết: DEVLOG.md "Ôn tập trong BTVN".

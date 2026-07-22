@@ -346,15 +346,18 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly,
   )
 }
 
-type Buoi = { id: string; title: string; dangs: PhanResolved[]; btvns: PhanResolved[] }
+// ontaps = khối "Ôn tập" cuối phiếu BTVN (spec-btvn-ontap.md §7.1) — dạng ôn từ buổi trước, render SAU
+// toàn bộ btvns, số câu đếm tiếp (KHÔNG reset), header riêng "PHẦN ÔN TẬP".
+type Buoi = { id: string; title: string; dangs: PhanResolved[]; btvns: PhanResolved[]; ontaps: PhanResolved[] }
 function buildBuois(phans: PhanResolved[]): Buoi[] {
   const out: Buoi[] = []
   let cur: Buoi | null = null
-  const ensure = () => { if (!cur) { cur = { id: 'implicit', title: '', dangs: [], btvns: [] }; out.push(cur) } return cur }
+  const ensure = () => { if (!cur) { cur = { id: 'implicit', title: '', dangs: [], btvns: [], ontaps: [] }; out.push(cur) } return cur }
   for (const p of phans) {
-    if (p.loai_phan === 'buoi') { cur = { id: p.id, title: p.tieu_de || 'Buổi', dangs: [], btvns: [] }; out.push(cur) }
+    if (p.loai_phan === 'buoi') { cur = { id: p.id, title: p.tieu_de || 'Buổi', dangs: [], btvns: [], ontaps: [] }; out.push(cur) }
     else if (p.loai_phan === 'dang') ensure().dangs.push(p)
     else if (p.loai_phan === 'btvn') ensure().btvns.push(p)
+    else if (p.loai_phan === 'ontap') ensure().ontaps.push(p)
   }
   return out
 }
@@ -388,8 +391,8 @@ function Doc({ full, gv, scope, lt = true, onlyBuoiId }: { full: TaiLieuFull; gv
       )}
       {/* QUYỂN BTVN riêng = chỉ các phiếu BTVN (mỗi buổi). Còn lại = giáo trình (skip BTVN nếu 'giaotrinh'). */}
       {scope === 'btvn'
-        ? buois.filter((b) => b.btvns.some((x) => x.caus.length)).map((b) => (
-          <BtvnSheet key={b.id} btvns={b.btvns} gv={gv} docTitle={taiLieu.ten} buoiTitle={b.title} dangNoByMa={dangNoByMa} linesByCau={linesByCau} isBtvnDoc={taiLieu.loai === 'btvn'} />
+        ? buois.filter((b) => b.btvns.some((x) => x.caus.length) || b.ontaps.some((x) => x.caus.length)).map((b) => (
+          <BtvnSheet key={b.id} btvns={b.btvns} ontaps={b.ontaps} gv={gv} docTitle={taiLieu.ten} buoiTitle={b.title} dangNoByMa={dangNoByMa} linesByCau={linesByCau} isBtvnDoc={taiLieu.loai === 'btvn'} />
         ))
         : buois.map((b) => (
           <BuoiBlock key={b.id} buoi={b} gv={gv} scope={scope} lt={lt} docTitle={taiLieu.ten} ltCd={ltChuyenDe} tenCd={tenChuyenDe} dangNoByMa={dangNoByMa} linesByCau={linesByCau} />
@@ -414,13 +417,14 @@ function BuoiBlock({ buoi, gv, scope, lt = true, docTitle, ltCd, tenCd, dangNoBy
       {buoi.title && <h1 className="pv-h-buoi">{buoi.title}</h1>}
       {groups.map((g, gi) => (
         <div key={gi}>
-          {/* 1 chuyên đề: chỉ "Lý thuyết" (tên chuyên đề ĐÃ ở dải buổi → khỏi lặp). Nhiều chuyên đề: ghi tên để phân biệt. */}
-          {lt && <LtBlock title={groups.length > 1 ? `Lý thuyết chuyên đề: ${tenCd[g.cd] ?? ''}` : 'Lý thuyết'} lt={ltCd[g.cd]} big />}
+          {/* 1 chuyên đề: chỉ "Lý thuyết" (tên chuyên đề ĐÃ ở dải buổi → khỏi lặp). Nhiều chuyên đề: ghi tên để phân biệt.
+              Ẩn cả khối chuyên đề nếu MỌI dạng trong nhóm đều tắt hien_lt (vd buổi chỉ ôn dạng cũ). */}
+          {lt && g.dangs.some((d) => d.hien_lt !== false) && <LtBlock title={groups.length > 1 ? `Lý thuyết chuyên đề: ${tenCd[g.cd] ?? ''}` : 'Lý thuyết'} lt={ltCd[g.cd]} big />}
           {g.dangs.map((d) => <DangBlock key={d.id} no={dangNoByMa[d.ref_ma ?? ''] ?? 0} p={d} gv={gv} lt={lt} />)}
         </div>
       ))}
-      {scope === 'all' && buoi.btvns.some((b) => b.caus.length) && (
-        <BtvnSheet btvns={buoi.btvns} gv={gv} docTitle={docTitle} buoiTitle={buoi.title} dangNoByMa={dangNoByMa} linesByCau={linesByCau} />
+      {scope === 'all' && (buoi.btvns.some((b) => b.caus.length) || buoi.ontaps.some((b) => b.caus.length)) && (
+        <BtvnSheet btvns={buoi.btvns} ontaps={buoi.ontaps} gv={gv} docTitle={docTitle} buoiTitle={buoi.title} dangNoByMa={dangNoByMa} linesByCau={linesByCau} />
       )}
     </section>
   )
@@ -465,7 +469,7 @@ function DangBlock({ no, p, gv, lt = true }: { no: number; p: PhanResolved; gv: 
   return (
     <section className="pv-sec">
       <h2 className="pv-h-dang">Dạng {no}: {p.dang?.ten_dang ?? p.ref_ma}</h2>
-      {lt && p.lyThuyetDang?.noi_dung?.trim() && (
+      {lt && p.hien_lt !== false && p.lyThuyetDang?.noi_dung?.trim() && (
         <div className="pv-box-lt"><div className="pv-box-label">Lý thuyết · Ví dụ</div><LyThuyetBody text={p.lyThuyetDang.noi_dung} /></div>
       )}
       {p.caus.length > 0 && (<>
@@ -478,8 +482,8 @@ function DangBlock({ no, p, gv, lt = true }: { no: number; p: PhanResolved; gv: 
 
 // BTVN của 1 BUỔI = phiếu RIÊNG (sang trang mới), nhóm theo DẠNG (mirror trên lớp). HS viết thẳng vào dòng kẻ.
 // Đầu phiếu: tiêu đề = tên tài liệu · trái = Họ tên + Lớp · phải = ô Điểm. Bản GV = đáp án (bỏ ô điền, hiện lời giải).
-function BtvnSheet({ btvns, gv, docTitle, buoiTitle, dangNoByMa, linesByCau, isBtvnDoc = false }: {
-  btvns: PhanResolved[]; gv: boolean; docTitle: string; buoiTitle: string; dangNoByMa: Record<string, number>; linesByCau: Record<string, number>; isBtvnDoc?: boolean
+function BtvnSheet({ btvns, ontaps = [], gv, docTitle, buoiTitle, dangNoByMa, linesByCau, isBtvnDoc = false }: {
+  btvns: PhanResolved[]; ontaps?: PhanResolved[]; gv: boolean; docTitle: string; buoiTitle: string; dangNoByMa: Record<string, number>; linesByCau: Record<string, number>; isBtvnDoc?: boolean
 }) {
   return (
     <section className="pv-sec pv-btvn">
@@ -506,13 +510,28 @@ function BtvnSheet({ btvns, gv, docTitle, buoiTitle, dangNoByMa, linesByCau, isB
           </div>
         )}
       </div>
-      {(() => { let bno = 0; return btvns.filter((b) => b.caus.length).map((b) => (
-        <div key={b.id} className="pv-sec">
-          <h2 className="pv-h-dang">Dạng {dangNoByMa[b.ref_ma ?? ''] ?? ''}: {b.dang?.ten_dang ?? b.ref_ma}</h2>
-          {/* Số câu BTVN đếm LIÊN TỤC xuyên các dạng (dạng 1: 1,2 → dạng 2: 3,4,5…) — KHÔNG reset mỗi dạng. */}
-          <CauList kieu={b.kieu}>{b.caus.map((c) => { bno += 1; return <CauItem key={c.ma_cau} no={bno} c={c} gv={gv} lines={gv ? 0 : (linesByCau[c.ma_cau] ?? DEFAULT_BTVN_LINES)} /> })}</CauList>
-        </div>
-      )) })()}
+      {(() => {
+        let bno = 0
+        const dangBlock = (b: PhanResolved) => (
+          <div key={b.id} className="pv-sec">
+            <h2 className="pv-h-dang">Dạng {dangNoByMa[b.ref_ma ?? ''] ?? ''}: {b.dang?.ten_dang ?? b.ref_ma}</h2>
+            {/* Số câu đếm LIÊN TỤC xuyên các dạng (dạng 1: 1,2 → dạng 2: 3,4,5…) — KHÔNG reset mỗi dạng,
+                kể cả sang khối Ôn tập bên dưới (đếm 1 mạch hết phiếu, đúng spec §7.1). */}
+            <CauList kieu={b.kieu}>{b.caus.map((c) => { bno += 1; return <CauItem key={c.ma_cau} no={bno} c={c} gv={gv} lines={gv ? 0 : (linesByCau[c.ma_cau] ?? DEFAULT_BTVN_LINES)} /> })}</CauList>
+          </div>
+        )
+        const btvnBlocks = btvns.filter((b) => b.caus.length).map(dangBlock)
+        const ontapList = ontaps.filter((b) => b.caus.length)
+        return <>
+          {btvnBlocks}
+          {ontapList.length > 0 && (
+            <div className="pv-sec pv-ontap">
+              <h2 className="pv-h-ontap">PHẦN ÔN TẬP</h2>
+              {ontapList.map(dangBlock)}
+            </div>
+          )}
+        </>
+      })()}
     </section>
   )
 }
@@ -701,6 +720,9 @@ const CONTENT_CSS = `
 .pv-buoi{break-before:page}
 .pv-buoi:first-of-type{break-before:auto}
 .pv-h-buoi{background:var(--pv-accent,#E91E8C);color:#fff;font-size:20px;font-weight:800;padding:7px 14px;border-radius:9px;margin:0 0 8px;letter-spacing:.5px;break-after:avoid}
+/* Khối "Ôn tập" cuối phiếu BTVN (spec-btvn-ontap.md §7.1) — dải NHỎ hơn .pv-h-buoi, màu trung tính
+   (không dùng --pv-accent) để HS/PH phân biệt ngay "bài mới" (hồng) vs "ôn lại" (xám). */
+.pv-h-ontap{display:inline-block;background:#eef0f4;color:#4b5563;font-size:13px;font-weight:800;padding:4px 12px;border-radius:7px;margin:16px 0 8px;letter-spacing:.5px;break-after:avoid}
 /* BTVN = phiếu riêng → sang trang mới; mỗi bài có dòng kẻ chấm để HS viết thẳng vào phiếu. */
 .pv-btvn{break-before:page}
 /* Quyển BTVN riêng (scope btvn, không bìa): phiếu ĐẦU bắt đầu ngay trang 1, không chừa trang trống.

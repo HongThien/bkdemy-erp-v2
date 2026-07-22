@@ -16,12 +16,14 @@ import { DeThiEditor } from './DeThiScreen'
 import { MTEditor } from './MTScreen'
 import SearchSelect from '../../components/SearchSelect'
 import BuoiNgaySelect from '../../components/BuoiNgaySelect'
+import OnTapEditor from '../../components/OnTapEditor'
+import { saveOnTapConfig, rebuildOnTapInDoc, btvnDaDong, type OnTapConfig } from '../../lib/ontap'
 
 // Loại tài liệu có thể mở builder để sửa từ Kho. (mt_buoi = INSTANCE đã gán buổi — sửa nội dung
 // phải qua master rồi gán lại, không sửa trực tiếp instance để tránh lệch với các lớp khác đã gán.)
 const EDITABLE = new Set(['et', 'giao_trinh', 'giao_trinh_buoi', 'btvn', 'de_thi', 'mt'])
 
-type Row = TaiLieu & { lop_id?: string | null; ngay?: string | null }
+type Row = TaiLieu & { lop_id?: string | null; ngay?: string | null; nguon_id?: string | null; nguon_buoi?: string | null }
 const LOAI_TEN: Record<string, string> = { giao_trinh: 'Giáo trình', giao_trinh_buoi: 'Giáo trình buổi', btvn: 'BTVN', et: 'ET', de_thi: 'Đề thi', bo_tro: 'Tài liệu bổ trợ', mt: 'MT', mt_buoi: 'MT buổi', chuyen_de: 'Chuyên đề' }
 const loaiTen = (l: string) => LOAI_TEN[l] ?? l
 const fmt = (iso?: string | null) => (iso ? new Date(iso).toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' }) : '—')
@@ -45,6 +47,7 @@ export default function KhoTaiLieuScreen() {
   const [editGt, setEditGt] = useState<string | null>(null) // sửa giáo trình/BTVN (mở TaiLieuBuilder)
   const [editDeThi, setEditDeThi] = useState<string | null>(null) // sửa đề thi (mở DeThiEditor)
   const [editMT, setEditMT] = useState<string | null>(null) // sửa MT master (mở MTEditor)
+  const [editOnTap, setEditOnTap] = useState<Row | null>(null) // sửa ôn tập (modal nhỏ, spec-btvn-ontap.md §8)
   const [phBusy, setPhBusy] = useState<string | null>(null) // id doc đang phát hành
   const [phRes, setPhRes] = useState<{ ok: boolean; msg: string; skipped?: { ma_cau: string; warn: string }[] } | null>(null)
   const [copiedId, setCopiedId] = useState<string | null>(null) // feedback "✓ Đã copy" thoáng qua, không alert()
@@ -227,6 +230,9 @@ export default function KhoTaiLieuScreen() {
                       <td className="whitespace-nowrap px-3 py-2">
                         <div className="flex justify-end gap-1.5">
                           {EDITABLE.has(r.loai) && <button onClick={() => sua(r)} className="shrink-0 rounded-md border border-slate-200 px-2.5 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-300">✎ Sửa</button>}
+                          {r.loai === 'btvn' && r.nguon_id && r.nguon_buoi && r.lop_id && (
+                            <button onClick={() => setEditOnTap(r)} className="shrink-0 rounded-md border border-violet-300 px-2.5 py-1 text-[12px] font-medium text-violet-700 hover:bg-violet-50">✎ Ôn tập</button>
+                          )}
                           {PHAT_HANH_DUOC.has(r.loai) && r.lop_id && r.ngay && (
                             <button onClick={() => phatHanh(r)} disabled={phBusy === r.id} title="Phát hành online"
                               className="shrink-0 rounded-md border border-emerald-300 bg-emerald-50 px-2 py-1 text-[12px] font-medium text-emerald-700 hover:bg-emerald-100 disabled:opacity-40">
@@ -331,6 +337,57 @@ export default function KhoTaiLieuScreen() {
           </div>
         </div>
       )}
+
+      {editOnTap && <OnTapModal doc={editOnTap} onClose={() => setEditOnTap(null)} onSaved={reload} />}
+    </div>
+  )
+}
+
+// Modal nhỏ "✎ Ôn tập" (spec-btvn-ontap.md §8) — nội dung = ĐÚNG khối UI ở TrichPanel (OnTapEditor dùng
+// chung, cấm copy-paste 2 bản, ADR-017). Lưu = saveOnTapConfig + rebuild-tại-chỗ (KHÔNG re-trích cả doc —
+// không đụng khối BTVN gốc). doc.nguon_id/nguon_buoi/lop_id đã verify non-null ở nút mở modal.
+function OnTapModal({ doc, onClose, onSaved }: { doc: Row; onClose: () => void; onSaved: () => void }) {
+  const [config, setConfig] = useState<OnTapConfig | null>(null)
+  const [daDo, setDaDo] = useState(false)
+  const [saving, setSaving] = useState(false)
+  useEffect(() => {
+    let alive = true
+    if (doc.lop_id && doc.ngay) btvnDaDong(doc.lop_id, doc.ngay).then((v) => { if (alive) setDaDo(v) }).catch(() => {})
+    return () => { alive = false }
+  }, [doc.id]) // eslint-disable-line
+
+  async function luu() {
+    if (!doc.nguon_id || !doc.nguon_buoi || !doc.lop_id || !config) return
+    // Câu hỏi mở #4 (Thùy chốt): CHỈ CẢNH BÁO, không chặn cứng như xoaHSKhoiBuoi.
+    if (daDo && !confirm('Buổi này đã đóng BTVN (đã chấm) — đổi câu ôn tập có thể ảnh hưởng phép đo đã ghi nhận. Vẫn lưu?')) return
+    setSaving(true)
+    try {
+      await saveOnTapConfig(doc.nguon_id, doc.nguon_buoi, doc.lop_id, config)
+      const { matChet } = await rebuildOnTapInDoc(doc.id, doc.nguon_id, doc.nguon_buoi, doc.lop_id, doc.mon)
+      if (matChet.length) alert(`${matChet.length} câu không còn trong kho (đã xoá/đổi mã) — đã bỏ khỏi phiếu, mở lại để chọn câu khác.`)
+      onSaved()
+      onClose()
+    } finally { setSaving(false) }
+  }
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 px-4" onClick={onClose}>
+      <div className="flex h-[80vh] w-[640px] max-w-full flex-col overflow-hidden rounded-2xl bg-white shadow-xl" onClick={(e) => e.stopPropagation()}>
+        <div className="flex items-center gap-3 border-b border-slate-100 px-5 py-3">
+          <p className="min-w-0 truncate text-[15px] font-semibold text-slate-900" title={doc.ten}>✎ Ôn tập · {doc.ten}</p>
+          <button onClick={onClose} className="ml-auto flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-slate-400 hover:bg-slate-100">✕</button>
+        </div>
+        {daDo && <div className="mx-5 mt-3 shrink-0 rounded-md border border-amber-300 bg-amber-50 px-3 py-2 text-[12px] text-amber-800">⚠ Buổi này đã đóng BTVN (đã chấm) — đổi câu có thể ảnh hưởng phép đo đã ghi.</div>}
+        <div className="min-h-0 flex-1 overflow-auto px-5 pb-3">
+          {doc.nguon_id && doc.nguon_buoi && doc.lop_id && (
+            <OnTapEditor nguonId={doc.nguon_id} buoiId={doc.nguon_buoi} lopId={doc.lop_id} khoi={doc.khoi} mon={doc.mon} config={config} onChange={setConfig} />
+          )}
+        </div>
+        <div className="flex shrink-0 justify-end gap-2 border-t border-slate-100 px-5 py-3">
+          <button onClick={onClose} disabled={saving} className="rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-600 disabled:opacity-40">Huỷ</button>
+          <button onClick={luu} disabled={saving || !config} className="rounded-lg bg-violet-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-violet-500 disabled:opacity-40">{saving ? 'Đang lưu…' : 'Lưu'}</button>
+        </div>
+      </div>
     </div>
   )
 }

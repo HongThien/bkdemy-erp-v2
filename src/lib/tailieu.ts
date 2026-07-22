@@ -13,7 +13,10 @@ export function khoCuaMon(mon?: string | null): { cauTbl: string; banDoTbl: stri
 
 // buoi = mốc tầng-1 (Buổi 1, 2…). Trong 1 buổi: dang (trên lớp) + btvn (per-dạng) của các dạng đã chọn.
 // Lý thuyết chuyên đề KHÔNG lưu phan — DERIVE từ chuyên đề của các dạng trong buổi (lt_chuyen_de chỉ còn cho data cũ).
-export type PhanLoai = 'buoi' | 'lt_chuyen_de' | 'dang' | 'btvn' | 'custom'
+// ontap = khối "Ôn tập" cuối phiếu BTVN (spec-btvn-ontap.md) — dạng ôn từ buổi trước, ref_ma = ma_dang
+// giống 'dang'/'btvn'. KHÔNG có CHECK constraint thật trên loai_phan (verify pg_constraint) → thêm giá trị
+// mới KHÔNG cần migration, chỉ cần mọi chỗ lọc 'dang'/'btvn' cân nhắc có nên gộp thêm 'ontap' hay không.
+export type PhanLoai = 'buoi' | 'lt_chuyen_de' | 'dang' | 'btvn' | 'ontap' | 'custom'
 // btvnLinesByCau = số dòng kẻ (chấm chấm) để HS viết, RIÊNG cho TỪNG bài BTVN (key = ma_cau).
 // Không có entry cho câu nào → dùng DEFAULT_BTVN_LINES. (HS làm thẳng vào phiếu, không làm vào vở.)
 // etFormByCau = FORM HIỂN THỊ của câu TRONG ET (khác loai_cau của kho) — vd câu kho "trả lời ngắn"
@@ -59,7 +62,10 @@ export const BLOCK_KIEU: { v: BlockKieu; lbl: string; cols: number }[] = [
   { v: 'thuong', lbl: 'Thường', cols: 1 }, { v: '2cot', lbl: '2 cột', cols: 2 }, { v: '3cot', lbl: '3 cột', cols: 3 }, { v: '4cot', lbl: '4 cột', cols: 4 },
 ]
 export const kieuCols = (k?: string): number => BLOCK_KIEU.find((x) => x.v === k)?.cols ?? 1
-export type TaiLieuPhan = { id: string; tai_lieu_id: string; thu_tu: number; loai_phan: PhanLoai; ref_ma: string | null; tieu_de: string | null; noi_dung: string | null; kieu?: string }
+// hien_lt = BẬT/TẮT lý thuyết RIÊNG cho phan này (chỉ có ý nghĩa với loai_phan='dang') — khác
+// cau_hinh.inLyThuyet (toàn doc): 1 buổi vừa học dạng mới (hien_lt=true) vừa ôn dạng cũ (hien_lt=false).
+// Default true = giữ nguyên hành vi cũ (mọi phan trước đây coi như luôn hiện LT nếu kho có nội dung).
+export type TaiLieuPhan = { id: string; tai_lieu_id: string; thu_tu: number; loai_phan: PhanLoai; ref_ma: string | null; tieu_de: string | null; noi_dung: string | null; kieu?: string; hien_lt?: boolean }
 type LtRow = { noi_dung: string; file_url: string | null; ten_file: string | null }
 type DangRow = { ma_dang: string; ten_dang: string; muc_do: number | null; bac_toi_thieu: string; ma_chuyen_de: string; ten_chuyen_de: string }
 export type PhanResolved = TaiLieuPhan & {
@@ -130,6 +136,11 @@ export async function updatePhan(id: string, patch: Partial<Pick<TaiLieuPhan, 't
 // Đặt KIỂU HIỂN THỊ cho 1 block (phan).
 export async function setPhanKieu(id: string, kieu: string): Promise<void> {
   const { error } = await supabase.from('tai_lieu_phan').update({ kieu }).eq('id', id)
+  if (error) throw error
+}
+// Bật/tắt lý thuyết RIÊNG cho 1 phan 'dang' — xem ghi chú ở TaiLieuPhan.hien_lt.
+export async function setPhanHienLt(id: string, hien_lt: boolean): Promise<void> {
+  const { error } = await supabase.from('tai_lieu_phan').update({ hien_lt }).eq('id', id)
   if (error) throw error
 }
 export async function deletePhan(id: string): Promise<void> {
@@ -348,7 +359,7 @@ export async function getTaiLieuFull(id: string): Promise<TaiLieuFull> {
   const caus = maCaus.length ? (((await supabase.from(K.cauTbl).select('*').in('ma_cau', maCaus).limit(LIMIT)).data ?? []) as CauHoi[]) : []
   const cauMap = new Map(caus.map((c) => [c.ma_cau, c]))
   // Dạng dùng cho CẢ 'dang' (trên lớp) lẫn 'btvn' (về nhà) — đều ref_ma = ma_dang.
-  const dangMas = [...new Set(phans.filter((p) => (p.loai_phan === 'dang' || p.loai_phan === 'btvn') && p.ref_ma).map((p) => p.ref_ma as string))]
+  const dangMas = [...new Set(phans.filter((p) => (p.loai_phan === 'dang' || p.loai_phan === 'btvn' || p.loai_phan === 'ontap') && p.ref_ma).map((p) => p.ref_ma as string))]
   const dangs = dangMas.length ? (((await supabase.from(K.banDoTbl).select('ma_dang,ten_dang,muc_do,bac_toi_thieu,ma_chuyen_de,ten_chuyen_de').in('ma_dang', dangMas).limit(LIMIT)).data ?? []) as DangRow[]) : []
   const dangMap = new Map(dangs.map((d) => [d.ma_dang, d]))
   const ltDangRows = dangMas.length ? (((await supabase.from(K.ltDangTbl).select('*').in('ma_dang', dangMas).limit(LIMIT)).data ?? []) as (LtRow & { ma_dang: string })[]) : []
@@ -364,7 +375,7 @@ export async function getTaiLieuFull(id: string): Promise<TaiLieuFull> {
 
   const phansResolved: PhanResolved[] = phans.map((p) => {
     const maList = cauRows.filter((r) => r.phan_id === p.id).sort((a, b) => a.thu_tu - b.thu_tu).map((r) => r.ma_cau)
-    const dangLike = p.loai_phan === 'dang' || p.loai_phan === 'btvn'
+    const dangLike = p.loai_phan === 'dang' || p.loai_phan === 'btvn' || p.loai_phan === 'ontap'
     return {
       ...p,
       dang: dangLike && p.ref_ma ? dangMap.get(p.ref_ma) ?? null : undefined,
@@ -383,7 +394,7 @@ export async function getTaiLieuFull(id: string): Promise<TaiLieuFull> {
 export async function layCauTheoThuTu(taiLieuId: string): Promise<CauHoi[]> {
   const full = await getTaiLieuFull(taiLieuId)
   const custom = full.phans.filter((p) => p.loai_phan === 'custom')
-  const source = custom.length ? custom : full.phans.filter((p) => p.loai_phan === 'dang' || p.loai_phan === 'btvn')
+  const source = custom.length ? custom : full.phans.filter((p) => p.loai_phan === 'dang' || p.loai_phan === 'btvn' || p.loai_phan === 'ontap')
   return source.flatMap((p) => p.caus)
 }
 
@@ -525,7 +536,7 @@ export async function getBTVNByBuoi(lopId: string, ngay: string): Promise<{ id: 
 }
 export async function getBTVNCaus(taiLieuId: string): Promise<CauHoi[]> {
   const full = await getTaiLieuFull(taiLieuId)
-  return full.phans.filter((p) => p.loai_phan === 'btvn').flatMap((p) => p.caus)
+  return full.phans.filter((p) => p.loai_phan === 'btvn' || p.loai_phan === 'ontap').flatMap((p) => p.caus)
 }
 // Giáo trình buổi (lớp+ngày) — doc loai='giao_trinh_buoi' (từ trích xuất). Dùng để khớp buổi ↔ test online.
 export async function getGiaoTrinhBuoiDoc(lopId: string, ngay: string): Promise<{ id: string } | null> {
