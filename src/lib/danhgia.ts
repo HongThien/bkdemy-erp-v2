@@ -15,7 +15,7 @@ import { supabase } from './supabase'
 import { masteryOfDang, MASTERY_CONFIG, RESULT_VALUE } from '../gami/mastery.js'
 import {
   DANHGIA_CONFIG, cuaSoCua, chuoiDiemChuyenDe, chamPha1, chamPha2,
-  trungBinhTruot3, docAmLienTiep, deXuatLevelKienThuc, deXuatLevelThaiDo,
+  trungBinhTruot3, docAmLienTiep, dangDoiBucketXau, deXuatLevelKienThuc, deXuatLevelThaiDo,
 } from '../gami/danhgia.js'
 import { khoCuaMon } from './tailieu'
 
@@ -53,7 +53,7 @@ export type ChuyenDeStat = {
   cham: any                 // pha 1 (so lớp) hoặc pha 2 (so chính mình) — engine quyết
   vuotTbLopMuot: (number | null)[] // đường B đã mượt MA-3 (null = chưa đủ 3 chu kỳ)
   docAm: number             // số nhịp dốc B-mượt âm liên tiếp → trigger ngầm
-  dangDoiBucketXau: string[] // dạng con chuyển Đ→C / C→S — ứng viên bổ trợ sẵn (spec §2.A①)
+  dangDoiBucketXau: { ma_dang: string; tu: string; den: string }[] // dạng con tụt bucket = ứng viên bổ trợ sẵn (spec §2.A①)
 }
 export type StatSheetHS = {
   hoc_sinh_id: string
@@ -163,6 +163,8 @@ export async function getStatSheetLop(lopId: string): Promise<StatSheetHS[]> {
     napDangDangMo(hsIds, mon),
   ])
   const banDo = await napBanDo(mon, [...new Set(doRows.map((r) => r.ma_dang))])
+  const cdTen = new Map<string, string>()
+  for (const info of banDo.values()) cdTen.set(info.ma_chuyen_de, info.ten_chuyen_de)
 
   // Gom: HS → dạng → lần đo (2 bản: GỘP và chỉ-GIÁM-SÁT, để bắt cờ "BTVN che").
   const byHS = new Map<string, { dang: Map<string, DoEval[]>; dangEtMt: Map<string, DoEval[]>; cd: Map<string, DoEval[]> }>()
@@ -247,12 +249,20 @@ export async function getStatSheetLop(lopId: string): Promise<StatSheetHS[]> {
         return p.diem.score - ds.reduce((x, y) => x + y, 0) / ds.length
       })
       const muot = trungBinhTruot3(vuot)
+      // NET-BUCKET (spec §2.A①): chuyên đề tụt thì phải chỉ được dạng con nào tụt — đó chính là
+      // danh sách ứng viên bổ trợ. Chỉ tính khi có ≥2 cửa sổ (cần mốc trước để so).
+      let doiXau: { ma_dang: string; tu: string; den: string }[] = []
+      if (coDiem.length >= 2 && h) {
+        const evalsCuaCd: Record<string, DoEval[]> = {}
+        for (const [ma, evs] of h.dang) if (banDo.get(ma)?.ma_chuyen_de === cd) evalsCuaCd[ma] = evs
+        doiXau = dangDoiBucketXau(evalsCuaCd, coDiem[coDiem.length - 2].cuaSo, coDiem[coDiem.length - 1].cuaSo)
+      }
       chuyenDes.push({
         ma_chuyen_de: cd,
-        ten_chuyen_de: dangs.find((d) => banDo.get(d.ma_dang)?.ma_chuyen_de === cd)?.ten_chuyen_de ?? cd,
+        ten_chuyen_de: cdTen.get(cd) ?? cd,
         chuoi: chuoi.map((p) => ({ cuaSo: p.cuaSo, score: p.diem?.score ?? null, n: p.diem?.n ?? 0, itLanDo: !!p.diem?.itLanDo })),
         cham, vuotTbLopMuot: muot, docAm: docAmLienTiep(muot),
-        dangDoiBucketXau: [], // TODO: cần snapshot bucket cửa sổ trước — làm ở Pha 3 (kênh ①)
+        dangDoiBucketXau: doiXau,
       })
     }
 
@@ -268,7 +278,7 @@ export async function getStatSheetLop(lopId: string): Promise<StatSheetHS[]> {
       dangs, chuyenDes, thaiDo: td, coChuongDo, coLoTienQuyet,
       deXuatKienThuc: deXuatLevelKienThuc({
         levelHienTai: lv?.kien_thuc ?? 0, dangs, coChuongDo, coLoTienQuyet, bayGio: Date.now(),
-      }),
+      }), // `dangs` đã mang `daMo` → engine áp đúng luật trễ 2 mốc
       deXuatThaiDo: deXuatLevelThaiDo(td),
     })
   }
@@ -276,6 +286,83 @@ export async function getStatSheetLop(lopId: string): Promise<StatSheetHS[]> {
 }
 
 function push<T>(m: Map<string, T[]>, k: string, v: T) { const a = m.get(k) ?? []; a.push(v); m.set(k, a) }
+
+// ── QUÉT CANDIDATE — 4 KÊNH (spec §2.A + §6) ──────────────────────────────────────────
+// "RULE lọc thô ra candidate → CLAUDE đọc stat sheet của candidate". Tầng này là RULE: chỉ
+// lọc + xếp ưu tiên, KHÔNG phán. Claude/người đọc `lyDo` rồi mới quyết.
+//
+// 4 kênh KHÔNG cộng dồn thành 1 điểm số — mỗi kênh bắt một thứ khác nhau, gộp thành 1 số là
+// mất thông tin (spec: "con người phán chỗ máy mù; máy đo chỗ người không quét xuể"). Vì vậy
+// trả về `kenh[]` để thấy vì sao HS này lọt vào, và chỉ dùng `uuTien` để XẾP THỨ TỰ đọc.
+export type Candidate = {
+  hoc_sinh_id: string; ho_ten: string; mon: string
+  kenh: ('trend' | 'thai_do' | 'chuong_do' | 'tien_quyet')[]
+  uuTien: number            // càng cao càng đọc trước — CHỈ để sắp xếp, không phải "mức độ nặng"
+  trongDigest: boolean      // lọt digest tuần này (uuTien ≥ NGUONG_DIGEST) — xem ghi chú dưới
+  lyDo: string[]
+  deXuatKienThuc: any; deXuatThaiDo: any
+  sheet: StatSheetHS
+}
+export async function listCandidatesLop(lopId: string): Promise<Candidate[]> {
+  const sheets = await getStatSheetLop(lopId)
+  const out: Candidate[] = []
+  for (const s of sheets) {
+    const kenh: Candidate['kenh'] = []
+    const lyDo: string[] = []
+    let uuTien = 0
+
+    // ③④ — flag CỨNG của NGƯỜI. Ưu tiên cao nhất, Claude KHÔNG xét lại (spec §2.A③④).
+    if (s.coChuongDo) { kenh.push('chuong_do'); lyDo.push('③ chuông đỏ: TA báo lỗi nghiêm trọng khi chấm BTVN'); uuTien += 100 }
+    if (s.coLoTienQuyet) { kenh.push('tien_quyet'); lyDo.push('④ GV báo hổng kiến thức NỀN'); uuTien += 100 }
+
+    // ① TREND chuyên đề — kênh định lượng chính. Bắt "đang rơi", không đợi chạm sàn.
+    const tut = s.chuyenDes.filter((c) => c.cham?.pha === 2 && c.cham.huong === 'lui')
+    const docAm = s.chuyenDes.filter((c) => c.docAm >= 2) // dốc B-mượt âm liên tiếp (spec §2.B)
+    if (tut.length || docAm.length) {
+      kenh.push('trend')
+      for (const c of tut) {
+        const xau = c.dangDoiBucketXau
+        // Dòng lý do đúng dạng spec §2.A① mô tả: "PT bậc nhất: 0.81 → 0.62 ▼ 4 dạng chuyển Đ→C".
+        lyDo.push(`${c.ten_chuyen_de}: ${c.cham.truoc.toFixed(2)} → ${c.cham.sau.toFixed(2)}`
+          + (xau.length ? `  ▼ ${xau.length} dạng tụt (${xau.slice(0, 3).map((d) => `${d.tu}→${d.den}`).join(', ')})` : ''))
+      }
+      for (const c of docAm) lyDo.push(`${c.ten_chuyen_de}: vượt-TB-lớp dốc âm ${c.docAm} nhịp liên tiếp`)
+      uuTien += tut.length * 10 + docAm.length * 15
+    }
+
+    // ② THÁI ĐỘ — leading, độc lập ①. Chuẩn TUYỆT ĐỐI (dưới Nghiêm túc là tín hiệu).
+    if (s.deXuatThaiDo.deXuat > 0) {
+      kenh.push('thai_do')
+      lyDo.push(`② thái độ: ${s.deXuatThaiDo.lyDo.join(', ')}`)
+      uuTien += s.deXuatThaiDo.deXuat * 20
+    }
+
+    // Diện bổ trợ có dạng yếu đủ độ tin → luôn là candidate (dù chưa kênh nào bật).
+    const dien = s.deXuatKienThuc.bangChung.dien as string[]
+    if (dien.length) { uuTien += dien.length * 5; lyDo.push(`${dien.length} dạng trong diện bổ trợ`) }
+
+    // Cờ chẩn đoán phụ — không tự đẩy vào candidate, nhưng nếu đã vào thì phải hiện.
+    const che = s.deXuatKienThuc.bangChung.btvnChe as string[]
+    if (che.length) lyDo.push(`⚠ ${che.length} dạng "BTVN che": yếu ở ET/MT nhưng ổn ở bài tự làm`)
+    const thieu = s.deXuatKienThuc.bangChung.yeuThieuDo as string[]
+    if (thieu.length) lyDo.push(`⚠ ${thieu.length} dạng yếu nhưng CHƯA đủ ${DANHGIA_CONFIG.GATE_N} lần đo — chưa gọi bổ trợ`)
+
+    // Đề xuất đổi level cũng là lý do để lọt vào danh sách đọc.
+    const doiLevel = s.deXuatKienThuc.deXuat !== s.levelKienThuc || s.deXuatThaiDo.deXuat !== s.levelThaiDo
+    if (!kenh.length && !dien.length && !doiLevel) continue // không có gì để nói → bỏ qua
+    if (doiLevel) uuTien += 8
+
+    out.push({
+      hoc_sinh_id: s.hoc_sinh_id, ho_ten: s.ho_ten, mon: s.mon,
+      kenh, uuTien, trongDigest: uuTien >= DANHGIA_CONFIG.NGUONG_DIGEST, lyDo,
+      deXuatKienThuc: s.deXuatKienThuc, deXuatThaiDo: s.deXuatThaiDo, sheet: s,
+    })
+  }
+  // ⚠ TRẢ VỀ HẾT, chỉ SẮP XẾP — không tự cắt. Đo thật: quét thô ra 38% roster, `trongDigest`
+  // (uuTien ≥ 40) khoanh còn ~11% đúng mục tiêu spec §8. Phần còn lại VẪN trả về để UI hiện
+  // "còn N em dưới ngưỡng" — cắt âm thầm sẽ đọc thành "chỉ có ngần này em cần chú ý", sai.
+  return out.sort((a, b) => b.uuTien - a.uuTien)
+}
 
 async function napThaiDo(hsIds: string[]): Promise<{ hoc_sinh_id: string; thai_do: string; t: string }[]> {
   const { data } = await supabase.from('btvn_ket_qua')

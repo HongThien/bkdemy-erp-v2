@@ -4,6 +4,7 @@ import {
   DANHGIA_CONFIG, THAI_DO_BAC, cuaSoCua, cuaSoTruoc, chuoiCuaSo,
   diemChuyenDe, chuoiDiemChuyenDe, trungVi, chamPha1, chamPha2,
   trungBinhTruot3, docAmLienTiep, coBTVNChe, lenRoiRot,
+  cuoiCuaSo, bucketTaiThoiDiem, dangDoiBucketXau,
   deXuatLevelKienThuc, deXuatLevelThaiDo,
 } from '../src/gami/danhgia.js'
 
@@ -74,6 +75,30 @@ ok(near(ma[2], 0.6) && near(ma[3], 0.9), 'MA-3 phẳng = TB 3 điểm liền k�
 ok(eq(trungBinhTruot3([0.3, null, 0.9, 1.2]), [null, null, null, null]), 'bộ 3 dính lỗ → null, KHÔNG nội suy qua chỗ khuyết')
 ok(docAmLienTiep([null, null, 0.9, 0.7, 0.5]) === 2, 'đếm dốc âm liên tiếp từ cuối chuỗi')
 ok(docAmLienTiep([null, null, 0.5, 0.7, 0.9]) === 0, 'dốc dương → 0 nhịp âm')
+
+// ── NET-BUCKET: dạng con đổi bucket XẤU (spec §2.A①) ──────────────────────────────
+const V = (t) => new Date(t).getTime()
+ok(cuoiCuaSo('2026-07-A') === V('2026-07-15T23:59:59.999+07:00'), 'cuối cửa sổ A = hết ngày 15 giờ VN')
+ok(cuoiCuaSo('2026-07-B') === V('2026-07-31T23:59:59.999+07:00'), 'cuối cửa sổ B = hết ngày cuối THÁNG (31)')
+ok(cuoiCuaSo('2026-02-B') === V('2026-02-28T23:59:59.999+07:00'), 'tháng 2 → ngày cuối là 28, không hardcode 30/31')
+const E = (value, t) => ({ value, t, src: 'et' })
+// Dạng D1: 06-B toàn đúng (đạt) → 07-A thêm 5 lần sai (yếu) ⇒ TỤT.
+const tut = {
+  D1: [E(1, '2026-06-20T10:00:00+07:00'), E(1, '2026-06-21T10:00:00+07:00'), E(1, '2026-06-22T10:00:00+07:00'),
+       E(0, '2026-07-05T10:00:00+07:00'), E(0, '2026-07-06T10:00:00+07:00'), E(0, '2026-07-07T10:00:00+07:00'),
+       E(0, '2026-07-08T10:00:00+07:00'), E(0, '2026-07-09T10:00:00+07:00')],
+  D2: [E(1, '2026-06-20T10:00:00+07:00'), E(1, '2026-07-05T10:00:00+07:00')], // giữ đạt
+}
+const doi = dangDoiBucketXau(tut, '2026-06-B', '2026-07-A')
+ok(doi.length === 1 && doi[0].ma_dang === 'D1' && doi[0].tu === 'dat' && doi[0].den === 'yeu', 'bắt đúng dạng tụt bucket (D1 đạt→yếu), D2 giữ nguyên thì không kể')
+// ⚠ Mastery = "tính TỚI thời điểm", không phải "chỉ dùng câu TRONG cửa sổ": cửa sổ vắng bài
+// KHÔNG được thành tụt hạng giả.
+const vangBai = { D3: [E(1, '2026-06-20T10:00:00+07:00'), E(1, '2026-06-21T10:00:00+07:00')] }
+ok(eq(dangDoiBucketXau(vangBai, '2026-06-B', '2026-07-A'), []), 'cửa sổ sau KHÔNG có bài → giữ nguyên bucket cũ, KHÔNG báo tụt giả')
+// Chưa đo ở mốc trước → không kết luận (không coi "mới xuất hiện" là tụt).
+const moiCo = { D4: [E(0, '2026-07-05T10:00:00+07:00')] }
+ok(eq(dangDoiBucketXau(moiCo, '2026-06-B', '2026-07-A'), []), 'dạng chỉ mới đo ở cửa sổ sau → không kết luận tụt')
+ok(bucketTaiThoiDiem([], Date.now()) === null, 'không lần đo nào → null (chưa-đo, không phải yếu)')
 
 // ── CỜ CHẨN ĐOÁN ──────────────────────────────────────────────────────────────────
 ok(coBTVNChe(0.4, 0.6) === true, 'BTVN che: yếu theo ET+MT, hết yếu khi gộp → cờ')

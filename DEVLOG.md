@@ -2540,3 +2540,18 @@ Cũng sửa: `diemChuyenDe` trả `n` = số câu **có đóng góp** (weight>0)
 **Verify lại e2e** (9A1): dạng 0.33 → `yeu [DIỆN]`; bốn dạng 0.50 → `can_luyen`, KHÔNG vào diện. Nhãn và hành động hết đá nhau, và không còn lệch với màn Kết quả học tập.
 
 `verify_danhgia` (66 test) + `verify_mastery` PASS · `tsc` sạch.
+
+## 2026-07-22 (tiếp #10) — PHA 3: 4 kênh phát hiện + net-bucket + quét candidate
+
+**Net-bucket (spec §2.A① — mảnh còn thiếu của kênh ①):** `cuoiCuaSo` · `bucketTaiThoiDiem` · `dangDoiBucketXau` (engine). Khi chuyên đề tụt, kèm được đúng dòng spec mô tả: `"Giải toán bằng cách lập Hệ phương trình: 1.00 → 0.53  ▼ 2 dạng tụt (dat→yeu, dat→can_luyen)"`. Danh sách dạng tụt = **ứng viên bổ trợ sẵn**, nối thẳng §3.
+
+**⚠ Chỗ dễ làm sai mà test bắt được:** mastery là **"tính TỚI một thời điểm"**, KHÔNG phải "chỉ dùng câu NẰM TRONG cửa sổ". Nếu cắt theo cách thứ hai thì **cửa sổ vắng bài sẽ thành "tụt hạng" giả** (không học ≠ kém đi). Cài đúng: vẫn lấy 5 lần gần nhất *tính tới mốc cắt*, chỉ bỏ lần đo SAU mốc. 3 test khoá: cửa sổ sau không có bài → không báo tụt · dạng mới xuất hiện ở cửa sổ sau → không kết luận · `cuoiCuaSo('2026-02-B')` = 28 (không hardcode 30/31).
+
+**`listCandidatesLop` — RULE lọc thô (spec §6), KHÔNG phán.** 4 kênh KHÔNG cộng dồn thành 1 điểm (gộp = mất thông tin) → trả `kenh[]` để thấy *vì sao* lọt vào; `uuTien` CHỈ để xếp thứ tự đọc. ③④ cộng 100 ⇒ flag của người luôn nổi lên đầu.
+
+**[CALIBRATE] ngưỡng digest — đo thật 12 lớp Toán / 92 HS:** quét thô ra **38% roster** (rộng gấp đôi mục tiêu spec §8 là 10–15%). Phân bố: ≥15 → 26,1% · ≥30 → 19,6% · **≥40 → 10,9%** · ≥50 → 6,5% ⇒ chốt `NGUONG_DIGEST = 40`.
+**KHÔNG cắt danh sách** — chỉ gắn cờ `trongDigest`. Lý do: (a) cắt bằng 1 số tổng hợp thì mâu thuẫn với chính nguyên tắc "4 kênh không cộng dồn" ở trên; (b) cắt âm thầm sẽ đọc thành "chỉ ngần này em cần chú ý" — sai. Đây là ngưỡng **SỨC ĐỌC MỖI TUẦN**, không phải "ai có vấn đề"; 27% còn lại vẫn trả về để UI hiện "còn N em dưới ngưỡng".
+
+**Đọc thử top ưu tiên trên data thật** — lý do ra đúng dạng người đọc được ngay, ví dụ: *Nguyễn Quang Nhật (9S1), ưu tiên 83, kênh trend+thái độ; 2 chuyên đề tụt kèm dạng con; 3/5 buổi gần nhất dưới Nghiêm túc; 3 dạng trong diện; 1 dạng "BTVN che"*. Và bắt được ca `Chống đối` → nhảy nấc ngay (Vũ Minh Đức Anh 12A1) đúng luật §4.2.
+
+Hiệu năng: ~640ms/lớp. `verify_danhgia` (72 test) PASS · `tsc` sạch.

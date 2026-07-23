@@ -8,7 +8,7 @@
 //    · tầng DẠNG    → MỨC   → quyết bổ trợ dạng nào. Dùng `masteryOfDang` (5 gần nhất, cap 5).
 //    · tầng CHUYÊN ĐỀ → TREND → phát hiện tiến/lùi. Tính THẲNG CÂU, MỌI câu trong cửa sổ, KHÔNG cap.
 //    Net-bucket chỉ tồn tại ở tầng DẠNG. Chuyên đề KHÔNG gắn nhãn đạt/cần-luyện/yếu.
-import { MASTERY_CONFIG } from './mastery.js'
+import { MASTERY_CONFIG, masteryOfDang } from './mastery.js'
 
 export const DANHGIA_CONFIG = {
   // Gate "đủ số lần đánh giá" (Thùy 07-22). KHÔNG phải số mới: = MASTERY_CONFIG.TIN_TB (n≤2 = độ tin
@@ -28,6 +28,12 @@ export const DANHGIA_CONFIG = {
   //   học tập", KHÔNG có 2 sự thật. Chỉ TƯ CÁCH THÀNH VIÊN của diện mới dùng 2 mốc trên.
   MOC: MASTERY_CONFIG.CAN_LUYEN, // = 0.5
   KET_NGAY: 7, // trần "kẹt chưa retest" = 1 tuần (spec §9) → đủ để ĐỀ XUẤT lên level
+  // [CALIBRATE 07-22] Ngưỡng vào DIGEST TUẦN — đo thật trên 12 lớp Toán (92 HS):
+  //   ≥15 → 26,1% · ≥30 → 19,6% · **≥40 → 10,9%** · ≥50 → 6,5%
+  //   ⇒ 40 trúng mục tiêu spec §8 "candidate ~10–15% roster".
+  // ⚠ Đây là ngưỡng SỨC ĐỌC MỖI TUẦN, KHÔNG phải "ai có vấn đề". HS dưới ngưỡng vẫn nằm trong
+  //   danh sách trả về (cờ `trongDigest=false`) — KHÔNG cắt âm thầm, vì cắt = mất dấu.
+  NGUONG_DIGEST: 40,
   MA_CHU_KY: 3, // moving average 3 chu kỳ PHẲNG (spec §2.B đường B)
   // [CALIBRATE] "dai dẳng nhiều buổi dưới Nghiêm túc" → L2 (spec §4.2 không cho con số).
   // Tạm: ≥3 buổi dưới-Nghiêm-túc trong 5 buổi gần nhất. Chỉnh theo base-rate thật.
@@ -72,6 +78,44 @@ export function chuoiCuaSo(tu, den) {
   const out = [den]
   let cur = den
   for (let i = 0; i < 240 && cur !== tu; i++) { cur = cuaSoTruoc(cur); out.unshift(cur) }
+  return out
+}
+
+// Mốc KẾT THÚC của 1 cửa sổ (ms) — nửa A hết ngày 15, nửa B hết ngày cuối tháng, theo giờ VN.
+// Dùng làm "cắt thời gian" khi hỏi *mastery của dạng TẠI thời điểm đó* (net-bucket §2.A①).
+export function cuoiCuaSo(win) {
+  const y = +win.slice(0, 4), m = +win.slice(5, 7), nua = win.slice(8)
+  // Ngày cuối nửa: A → 15 · B → ngày cuối tháng (dùng day 0 của tháng sau).
+  const ngayCuoi = nua === 'A' ? 15 : new Date(Date.UTC(y, m, 0)).getUTCDate()
+  // 23:59:59.999 giờ VN = trừ offset để ra mốc UTC.
+  return Date.UTC(y, m - 1, ngayCuoi, 23, 59, 59, 999) - VN_OFFSET_MS
+}
+
+// ── NET-BUCKET (spec §2.A①) — CHỈ tồn tại ở tầng DẠNG ────────────────────────────────
+// Khi điểm chuyên đề đổi, phải kèm được lý do từ tầng dạng:
+//   "PT bậc nhất: 0.81 → 0.62  ▼ 4 dạng chuyển Đ→C"
+// Danh sách dạng đổi bucket XẤU = ứng viên bổ trợ SẴN (nối thẳng §3).
+//
+// ⚠ Mastery là "tính tới một THỜI ĐIỂM", không phải "của riêng cửa sổ đó": vẫn lấy 5 lần đo gần
+//   nhất TÍNH TỚI mốc cắt (đúng engine masteryOfDang), chỉ bỏ những lần đo SAU mốc. Nếu chỉ dùng
+//   các lần đo NẰM TRONG cửa sổ thì 1 cửa sổ vắng bài sẽ thành "tụt hạng" giả.
+const BUCKET_RANK = { dat: 2, can_luyen: 1, yeu: 0 }
+export function bucketTaiThoiDiem(evals, cutoffMs) {
+  const tr = (evals ?? []).filter((e) => Date.parse(e.t) <= cutoffMs)
+  if (!tr.length) return null
+  return masteryOfDang(tr, MASTERY_CONFIG)?.muc ?? null
+}
+// evalsByDang = { ma_dang: [lần đo…] } — CHỈ các dạng thuộc chuyên đề đang xét.
+// Trả [{ ma_dang, tu, den }] cho dạng TỤT bucket giữa 2 cửa sổ (Đ→C, Đ→S, C→S).
+export function dangDoiBucketXau(evalsByDang, winTruoc, winSau) {
+  const cutTruoc = cuoiCuaSo(winTruoc), cutSau = cuoiCuaSo(winSau)
+  const out = []
+  for (const ma of Object.keys(evalsByDang ?? {})) {
+    const a = bucketTaiThoiDiem(evalsByDang[ma], cutTruoc)
+    const b = bucketTaiThoiDiem(evalsByDang[ma], cutSau)
+    if (!a || !b) continue // chưa-đo ở 1 trong 2 mốc → KHÔNG kết luận (không coi là tụt)
+    if (BUCKET_RANK[b] < BUCKET_RANK[a]) out.push({ ma_dang: ma, tu: a, den: b })
+  }
   return out
 }
 
