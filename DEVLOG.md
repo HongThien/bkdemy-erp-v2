@@ -2555,3 +2555,23 @@ Cũng sửa: `diemChuyenDe` trả `n` = số câu **có đóng góp** (weight>0)
 **Đọc thử top ưu tiên trên data thật** — lý do ra đúng dạng người đọc được ngay, ví dụ: *Nguyễn Quang Nhật (9S1), ưu tiên 83, kênh trend+thái độ; 2 chuyên đề tụt kèm dạng con; 3/5 buổi gần nhất dưới Nghiêm túc; 3 dạng trong diện; 1 dạng "BTVN che"*. Và bắt được ca `Chống đối` → nhảy nấc ngay (Vũ Minh Đức Anh 12A1) đúng luật §4.2.
 
 Hiệu năng: ~640ms/lớp. `verify_danhgia` (72 test) PASS · `tsc` sạch.
+
+## 2026-07-22 (tiếp #11) — PHA 5 (UI): màn "Dashboard học tập" + phát hiện RLS làm MÙ script chẩn đoán
+
+**Thùy chốt chỗ đặt:** tab riêng trong nhóm **"Quản lý chất lượng"** (nhóm đã có sẵn: Kết quả học tập · Duyệt chấm online) → leaf `db_hoctap`, `src/screens/danhgia/DashboardHocTapScreen.tsx`. Phân vai rõ: `ketqua` = **TRA CỨU** số liệu · `db_hoctap` = **PHÁT HIỆN → ĐỀ XUẤT → NGƯỜI DUYỆT**.
+
+**Màn gồm:** 3 thẻ số (cần đọc tuần / dưới ngưỡng / đề xuất đổi level) · khu **"Cần đọc tuần này"** (trongDigest) · khu **"Dưới ngưỡng — theo dõi"** (vẫn hiện, KHÔNG ẩn) · modal chi tiết: vì-sao-được-nêu, 2 khối duyệt (kiến thức / thái độ) với 4 nút L0–L3 (★ = máy đề xuất, sửa được), bảng dạng trong diện, chuỗi trend chuyên đề kèm dạng tụt, **lịch sử duyệt** có badge "máy đề xuất L*" khi người chốt khác máy.
+
+**⚠️ BUG THẬT bắt được khi soi màn chạy:** thái độ L2 hiện nhãn **"Cần bổ trợ"** vì em dùng CHUNG 1 bảng nhãn cho 2 thang. Sai nghiệp vụ: spec §4.2 thì thái độ L2 = **nhắc PHỤ HUYNH**, không phải xếp buổi bổ trợ — nhân viên đọc xong sẽ làm nhầm việc. Fix: tách `TEN_KT` / `TEN_TD`, hàm `lvUI(lv, loai)`.
+
+**⚠️⚠️ PHÁT HIỆN LỚN — "0 dòng" từ script pg KHÔNG phải bằng chứng "không có data":**
+Duyệt thử trên UI → modal đóng (tức `duyetLevel` resolve OK) nhưng `select` bằng pg ra **0 dòng** ⇒ tưởng ghi hỏng. Query lại **qua app** (supabase client) thì **CÓ ĐỦ**: `hs_level` 2 dòng, `hs_level_log` 2 dòng, đủ `level_cu`/`level_may_de_xuat`/`level_chot`/`actor` + `ly_do_may` snapshot đóng băng.
+**Gốc rễ = QUYỀN SỞ HỮU BẢNG:** `select pg_get_userbyid(relowner)` → **98 bảng owner `claude_build`** (owner được **miễn RLS** ⇒ script đọc thoải mái) · **5 bảng owner `postgres`** = 4 bảng mới + **`phan_cong_ca`** ⇒ RLS chặn `claude_build` (không thuộc role `authenticated`, policy `to authenticated` không áp) → trả **rỗng, KHÔNG báo lỗi**.
+Vì sao lệch owner: migration cũ chạy qua `claude_build`; migration hôm nay Thùy **chạy tay trên Supabase SQL editor** ⇒ owner `postgres`. **Cùng gốc rễ với vụ `schema.md` thiếu bảng sáng nay** — và giải thích luôn vì sao `phan_cong_ca` vô hình rất lâu.
+**Đã kiểm chéo để không hoảng nhầm:** `bt_grades`/`ky_thi`/`diem_thi` owner = `claude_build` ⇒ 0 dòng của chúng là **rỗng THẬT**, báo cáo verify §8 sáng nay KHÔNG sai.
+**Quy tắc mới:** trước khi kết luận "bảng rỗng", phải xem owner + `relrowsecurity`; nếu owner ≠ role đang nối và bảng bật RLS → đọc bằng **app client** (đã đăng nhập), đừng tin pg.
+**Đề xuất Thùy chạy:** `alter table … owner to claude_build` cho 5 bảng để hết lệch (chi tiết ở tin nhắn).
+
+**Test data còn trên prod:** HS *Nguyễn Văn Đức Huy* (11A1) đang có `hs_level` kiến-thức L1 + thái-độ L2 do em bấm duyệt thử — **chưa xoá, chờ Thùy quyết** (Luật xoá).
+
+`tsc` sạch · `verify_danhgia` PASS.

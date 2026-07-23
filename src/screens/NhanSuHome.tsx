@@ -46,6 +46,7 @@ import TestDauVaoScreen from './tuyensinh/TestDauVaoScreen'
 import BoTroScreen from './botro/BoTroScreen'
 import BoTroDuoiScreen from './botro/BoTroDuoiScreen'
 import ChatLuongVanHanhScreen from './dashboard/ChatLuongVanHanhScreen'
+import DashboardHocTapScreen from './danhgia/DashboardHocTapScreen'
 
 // tg thấy thêm tab 'mt' (chấm MT nếu buổi có gán — tự ẩn/hiện rỗng như ET nếu chưa có).
 const tabsCuaVai = (vai: 'gv' | 'tg'): TabKey[] => (vai === 'gv' ? ['danhgia', 'ingame'] : ['ingame', 'et', 'mt'])
@@ -571,6 +572,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'hocphi' ? <HocPhiScreen />
       : staffLeaf === 'giaoviec' ? <GiaoViecScreen />
       : staffLeaf === 'db_chatluong' ? <ChatLuongVanHanhScreen />
+      : staffLeaf === 'db_hoctap' ? <DashboardHocTapScreen />
       : staffLeaf === 'ns' ? <NhanSuScreen />
       : staffLeaf === 'phancong' ? <PhanCongScreen />
       : staffLeaf === 'tkb' ? <TKBScreen />
