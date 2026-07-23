@@ -1,0 +1,370 @@
+// Data-layer ĐÁNH GIÁ KẾT QUẢ HỌC TẬP (seam) — nạp lần đo → gọi engine PURE `src/gami/danhgia.js`
+// → trả **STAT SHEET SẠCH**. Theo `spec-danhgia-hoctap.md` + `PLAN-danhgia-hoctap.md` (Thùy duyệt 07-22).
+//
+// ⭐ NGUYÊN TẮC (spec §0): CODE TÍNH SỐ, CLAUDE PHÁN. Tầng này chỉ ra BẢNG SỐ + đề xuất có lý do.
+//    Không viết văn, không tự đổi state. Người duyệt mới ghi (xem `duyetLevel`).
+// ⭐ Mastery KHÔNG lưu — suy động mỗi lần gọi (CLAUDE.md §1). Tầng này cũng KHÔNG cache.
+//
+// ⚠ HAI BẪY ĐÃ DÍNH THẬT, mọi query ở đây phải né (HANDOFF ②):
+//  1. `ma_dang` KHÔNG unique xuyên môn — 30 mã TRÙNG SỐ giữa `dai_ban_do`/`khtn_ban_do` (07-14 ghi
+//     17, nay 30 và còn tăng). ⇒ có `mon` trong tay lúc nào thì dùng NGAY (`khoCuaMon`), CẤM gộp
+//     2 bản đồ rồi join bằng `ma_dang` (lần verify đầu 07-22 nhân đôi 18.102 → 23.429 dòng đo).
+//  2. Buổi BÙ có `lop_id` NULL ⇒ MẤT nhãn môn (134 lần đo ET). Phải lùi về buổi GỐC qua
+//     `buoi_hoc_hs.bu_cho_buoi_id` mới lấy được môn. Bỏ qua = im lặng đánh rơi data thật.
+import { supabase } from './supabase'
+import { masteryOfDang, MASTERY_CONFIG, RESULT_VALUE } from '../gami/mastery.js'
+import {
+  DANHGIA_CONFIG, cuaSoCua, chuoiDiemChuyenDe, chamPha1, chamPha2,
+  trungBinhTruot3, docAmLienTiep, deXuatLevelKienThuc, deXuatLevelThaiDo,
+} from '../gami/danhgia.js'
+import { khoCuaMon } from './tailieu'
+
+const LIMIT = 10000
+
+// ⚠ LỆCH NGƯỠNG TẠI ĐÚNG 0.5 — CÓ THẬT, ĐÃ ĐO, CHỜ THÙY CHỐT (đừng "dọn cho gọn").
+//   · spec §9 nói HAI lần rằng 0.5 KHÔNG đủ tốt: "Yếu ≤ 0.5" và "đóng dạng = retest > 0.5
+//     (bằng 0.5 KHÔNG tính)" ⇒ 0.5 = YẾU, phải vào diện bổ trợ.
+//   · `masteryOfDang` (engine đang chạy, nuôi màn "Kết quả học tập") dùng `score >= 0.5
+//     → 'can_luyen'` ⇒ 0.5 = CẦN LUYỆN.
+//   Đo trên data thật 07-22: **274/3365 ô (8%) rơi đúng 0.5**, trong đó **83 ô đủ độ tin n≥3**
+//   — KHÔNG phải ca hiếm (rất dễ gặp: n=2 với 1 đúng 1 sai, hoặc 1 câu "chưa đạt").
+//   Tạm xử: module theo SPEC (`mucCuaModule`) để nhãn không mâu thuẫn với hành động — không thể
+//   vừa hiện "cần luyện" vừa gọi HS đi bổ trợ. Kèm `mucManHinhKQ` để thấy rõ chỗ 2 màn khác nhau.
+const mucCuaModule = (score: number): 'dat' | 'can_luyen' | 'yeu' =>
+  score <= DANHGIA_CONFIG.YEU ? 'yeu' : score < MASTERY_CONFIG.DAT ? 'can_luyen' : 'dat'
+
+export type LoaiLevel = 'kien_thuc' | 'thai_do'
+export type DoEval = { value: number; t: string; src: string }
+
+// ── STAT SHEET (spec §6: "CLAUDE đọc stat sheet của candidate") ────────────────────────
+export type DangStat = {
+  ma_dang: string
+  ten_dang: string
+  ten_chuyen_de: string
+  muc_do: number | null
+  score: number          // mastery GỘP (ET+MT+BTVN) — bản máy level dùng, spec §9
+  scoreEtMt: number | null // mastery chỉ nguồn GIÁM SÁT — để bắt cờ "BTVN che" (PLAN §1.D)
+  n: number              // tổng lần đo = độ tin (KHÁC 5 lần dùng tính điểm)
+  muc: 'dat' | 'can_luyen' | 'yeu'
+  mucManHinhKQ: 'dat' | 'can_luyen' | 'yeu' // nhãn của màn "Kết quả học tập" — lệch tại ĐÚNG 0.5, xem mucCuaModule
+  trongDien: boolean     // có vào diện bổ trợ không (yếu + đủ độ tin) — nguồn sự thật cho HÀNH ĐỘNG
+  cuoiCungAt: string     // lần đo gần nhất → cờ "cũ" nếu > 30 ngày (spec §1)
+}
+export type ChuyenDeStat = {
+  ma_chuyen_de: string
+  ten_chuyen_de: string
+  chuoi: { cuaSo: string; score: number | null; n: number; itLanDo: boolean }[] // đủ mốc, khuyết = null
+  cham: any                 // pha 1 (so lớp) hoặc pha 2 (so chính mình) — engine quyết
+  vuotTbLopMuot: (number | null)[] // đường B đã mượt MA-3 (null = chưa đủ 3 chu kỳ)
+  docAm: number             // số nhịp dốc B-mượt âm liên tiếp → trigger ngầm
+  dangDoiBucketXau: string[] // dạng con chuyển Đ→C / C→S — ứng viên bổ trợ sẵn (spec §2.A①)
+}
+export type StatSheetHS = {
+  hoc_sinh_id: string
+  ho_ten: string
+  mon: string
+  levelKienThuc: number     // hiện tại (không có dòng = 0)
+  levelThaiDo: number
+  dangs: DangStat[]
+  chuyenDes: ChuyenDeStat[]
+  thaiDo: { thai_do: string; t: string }[]
+  coChuongDo: boolean       // ③ TA bấm lúc chấm BTVN
+  coLoTienQuyet: boolean    // ④ GV báo hổng kiến thức NỀN
+  deXuatKienThuc: any       // { deXuat, lyDo[], bangChung } — engine, KHÔNG tự ghi
+  deXuatThaiDo: any
+}
+
+// ── NẠP LẦN ĐO (1 lần cho N học sinh — bulk, không gọi từng HS) ────────────────────────
+type DoRow = { hoc_sinh_id: string; ma_dang: string; value: number; t: string; src: string }
+
+// Môn của lần đo = `lop.mon` của buổi; buổi BÙ (lop_id null) lùi về buổi gốc theo TỪNG HS
+// (1 buổi bù gom HS từ nhiều lớp/môn khác nhau → không thể suy 1 môn cho cả buổi).
+async function napLanDo(hsIds: string[], mon: string): Promise<DoRow[]> {
+  if (!hsIds.length) return []
+  const { data: grades, error } = await supabase
+    .from('gami_grades')
+    .select('hoc_sinh_id, result, graded_at, buoi_hoc_id, prob:problem_id(phase, ma_dang)')
+    .in('hoc_sinh_id', hsIds)
+    .limit(LIMIT)
+  if (error) throw error
+  const rows = (grades ?? []) as any[]
+
+  // Môn của buổi: 1 query cho mọi buổi liên quan.
+  const buoiIds = [...new Set(rows.map((r) => r.buoi_hoc_id).filter(Boolean))]
+  const monCuaBuoi = new Map<string, string | null>()
+  const buoiThieuMon: string[] = []
+  if (buoiIds.length) {
+    const { data: buois } = await supabase.from('buoi_hoc').select('id, lop:lop_id(mon)').in('id', buoiIds).limit(LIMIT)
+    for (const b of (buois ?? []) as any[]) {
+      const m = b.lop?.mon ?? null
+      monCuaBuoi.set(b.id, m)
+      if (!m) buoiThieuMon.push(b.id) // buổi bù — xử ở dưới
+    }
+  }
+  // Bẫy #2: buổi bù → môn theo LỚP GỐC của từng HS.
+  const monBuTheoHs = new Map<string, string>() // `${buoiId}|${hsId}` → mon
+  if (buoiThieuMon.length) {
+    const { data: links } = await supabase.from('buoi_hoc_hs')
+      .select('buoi_hoc_id, hoc_sinh_id, goc:bu_cho_buoi_id(lop:lop_id(mon))')
+      .in('buoi_hoc_id', buoiThieuMon).limit(LIMIT)
+    for (const l of (links ?? []) as any[]) {
+      const m = l.goc?.lop?.mon
+      if (m) monBuTheoHs.set(`${l.buoi_hoc_id}|${l.hoc_sinh_id}`, m)
+    }
+  }
+
+  const out: DoRow[] = []
+  for (const r of rows) {
+    const p = r.prob
+    if (!p?.ma_dang) continue
+    // Chỉ nguồn có trọng số > 0 (et/mt/btvn — spec §9). ingame/dg/bt weight 0 → loại tại đây,
+    // KHÔNG để lọt xuống engine rồi mới rụng (lọt xuống thì `n` đếm sai độ tin).
+    if (!(DANHGIA_CONFIG.WEIGHT as any)[p.phase]) continue
+    const value = RESULT_VALUE[r.result as keyof typeof RESULT_VALUE]
+    if (value === undefined) continue
+    const m = monCuaBuoi.get(r.buoi_hoc_id) ?? monBuTheoHs.get(`${r.buoi_hoc_id}|${r.hoc_sinh_id}`) ?? null
+    if (m !== mon) continue // scope MÔN (§1.6) — buổi bù đã lùi về lớp gốc ở trên
+    out.push({ hoc_sinh_id: r.hoc_sinh_id, ma_dang: p.ma_dang, value, t: r.graded_at, src: p.phase })
+  }
+  return out
+}
+
+// Bản đồ dạng → chuyên đề + tên + độ khó, tra ĐÚNG 1 bảng theo môn (bẫy #1).
+async function napBanDo(mon: string, maDangs: string[]) {
+  const K = khoCuaMon(mon)
+  const info = new Map<string, { ten_dang: string; ma_chuyen_de: string; ten_chuyen_de: string; muc_do: number | null }>()
+  if (!maDangs.length) return info
+  const { data } = await supabase.from(K.banDoTbl)
+    .select('ma_dang, ten_dang, ma_chuyen_de, ten_chuyen_de, muc_do')
+    .in('ma_dang', maDangs).limit(LIMIT)
+  for (const d of (data ?? []) as any[]) {
+    info.set(d.ma_dang, { ten_dang: d.ten_dang, ma_chuyen_de: d.ma_chuyen_de, ten_chuyen_de: d.ten_chuyen_de, muc_do: d.muc_do ?? null })
+  }
+  return info
+}
+
+// ── STAT SHEET cho CẢ LỚP (1 lượt) ────────────────────────────────────────────────────
+// Vì sao theo LỚP chứ không theo HS: pha 1 (§2.A①) chấm bằng SO LỚP → bắt buộc có điểm của
+// mọi bạn cùng lớp trong cùng cửa sổ mới tính được rank/trung vị. Gọi từng HS là không đủ data.
+export async function getStatSheetLop(lopId: string): Promise<StatSheetHS[]> {
+  const { data: lop } = await supabase.from('lop').select('id, mon, ten_lop, khoi').eq('id', lopId).single()
+  if (!lop) return []
+  const mon = (lop as any).mon as string
+
+  const { data: roster } = await supabase.from('hoc_sinh_lop')
+    .select('hoc_sinh_id, hoc_sinh:hoc_sinh_id(id, ho_ten)')
+    .eq('lop_id', lopId).eq('trang_thai', 'dang_hoc').limit(LIMIT)
+  const hsMap = new Map<string, string>()
+  for (const r of (roster ?? []) as any[]) if (r.hoc_sinh) hsMap.set(r.hoc_sinh.id, r.hoc_sinh.ho_ten)
+  const hsIds = [...hsMap.keys()]
+  if (!hsIds.length) return []
+
+  const [doRows, levels, thaiDoRows, canhBao] = await Promise.all([
+    napLanDo(hsIds, mon),
+    getLevels(hsIds, mon),
+    napThaiDo(hsIds),
+    napCanhBao(hsIds),
+  ])
+  const banDo = await napBanDo(mon, [...new Set(doRows.map((r) => r.ma_dang))])
+
+  // Gom: HS → dạng → lần đo (2 bản: GỘP và chỉ-GIÁM-SÁT, để bắt cờ "BTVN che").
+  const byHS = new Map<string, { dang: Map<string, DoEval[]>; dangEtMt: Map<string, DoEval[]>; cd: Map<string, DoEval[]> }>()
+  for (const r of doRows) {
+    const info = banDo.get(r.ma_dang)
+    if (!info) continue // dạng không thuộc bản đồ MÔN này → bỏ (verify 07-22: 0 dạng mồ côi)
+    let h = byHS.get(r.hoc_sinh_id)
+    if (!h) { h = { dang: new Map(), dangEtMt: new Map(), cd: new Map() }; byHS.set(r.hoc_sinh_id, h) }
+    const ev: DoEval = { value: r.value, t: r.t, src: r.src }
+    push(h.dang, r.ma_dang, ev)
+    if (r.src !== 'btvn') push(h.dangEtMt, r.ma_dang, ev)
+    push(h.cd, info.ma_chuyen_de, ev) // tầng chuyên đề: THẲNG CÂU, mọi dạng con
+  }
+
+  // Điểm chuyên đề của CẢ LỚP theo cửa sổ → nền cho pha 1 (so lớp) + đường B (vượt TB lớp).
+  // { ma_chuyen_de → cuaSo → [score của từng HS] }
+  const lopTheoCd = new Map<string, Map<string, number[]>>()
+  const chuoiCuaHs = new Map<string, Map<string, ReturnType<typeof chuoiDiemChuyenDe>>>()
+  for (const [hsId, h] of byHS) {
+    const m = new Map<string, ReturnType<typeof chuoiDiemChuyenDe>>()
+    for (const [cd, cau] of h.cd) {
+      const chuoi = chuoiDiemChuyenDe(cau)
+      m.set(cd, chuoi)
+      let perWin = lopTheoCd.get(cd)
+      if (!perWin) { perWin = new Map(); lopTheoCd.set(cd, perWin) }
+      for (const p of chuoi) {
+        if (p.diem == null) continue
+        const arr = perWin.get(p.cuaSo) ?? []
+        arr.push(p.diem.score)
+        perWin.set(p.cuaSo, arr)
+      }
+    }
+    chuoiCuaHs.set(hsId, m)
+  }
+
+  const out: StatSheetHS[] = []
+  for (const hsId of hsIds) {
+    const h = byHS.get(hsId)
+    const dangs: DangStat[] = []
+    if (h) {
+      for (const [ma, evs] of h.dang) {
+        const info = banDo.get(ma)!
+        const m = masteryOfDang(evs, MASTERY_CONFIG)
+        if (!m) continue
+        const mEtMt = h.dangEtMt.has(ma) ? masteryOfDang(h.dangEtMt.get(ma)!, MASTERY_CONFIG) : null
+        const moiNhat = evs.reduce((a, b) => (Date.parse(b.t) > Date.parse(a.t) ? b : a))
+        const score = (m as any).score as number
+        const n = (m as any).n as number
+        dangs.push({
+          ma_dang: ma, ten_dang: info.ten_dang, ten_chuyen_de: info.ten_chuyen_de, muc_do: info.muc_do,
+          score, scoreEtMt: (mEtMt as any)?.score ?? null, n,
+          muc: mucCuaModule(score),          // theo spec §9 — khớp với HÀNH ĐỘNG (diện bổ trợ)
+          mucManHinhKQ: (m as any).muc,      // theo engine cũ — để đối chiếu, lệch tại đúng 0.5
+          trongDien: score <= DANHGIA_CONFIG.YEU && n >= DANHGIA_CONFIG.GATE_N,
+          cuoiCungAt: moiNhat.t,
+        })
+      }
+    }
+    dangs.sort((a, b) => a.score - b.score) // yếu nhất lên đầu — cái cần chú ý trước
+
+    // Chuyên đề: chuỗi + chấm pha 1/2 + đường B mượt.
+    const chuyenDes: ChuyenDeStat[] = []
+    for (const [cd, chuoi] of chuoiCuaHs.get(hsId) ?? []) {
+      const coDiem = chuoi.filter((p) => p.diem != null)
+      // Pha 1 = cửa sổ ĐẦU TIÊN của chuyên đề (chưa có mốc bản thân) → so LỚP.
+      // Pha 2 = từ cửa sổ thứ 2 → so CHÍNH MÌNH, giữ cả 2 số.
+      let cham: any = null
+      if (coDiem.length === 1) {
+        const w = coDiem[0].cuaSo
+        cham = chamPha1(coDiem[0].diem!.score, lopTheoCd.get(cd)?.get(w) ?? [])
+      } else if (coDiem.length >= 2) {
+        const a = coDiem[coDiem.length - 2].diem!.score, b = coDiem[coDiem.length - 1].diem!.score
+        cham = chamPha2(a, b)
+      }
+      // Đường B: khoảng cách HS − TB lớp mỗi cửa sổ, rồi mượt MA-3 (spec §2.B).
+      const vuot = chuoi.map((p) => {
+        if (p.diem == null) return null
+        const ds = lopTheoCd.get(cd)?.get(p.cuaSo) ?? []
+        if (!ds.length) return null
+        return p.diem.score - ds.reduce((x, y) => x + y, 0) / ds.length
+      })
+      const muot = trungBinhTruot3(vuot)
+      chuyenDes.push({
+        ma_chuyen_de: cd,
+        ten_chuyen_de: dangs.find((d) => banDo.get(d.ma_dang)?.ma_chuyen_de === cd)?.ten_chuyen_de ?? cd,
+        chuoi: chuoi.map((p) => ({ cuaSo: p.cuaSo, score: p.diem?.score ?? null, n: p.diem?.n ?? 0, itLanDo: !!p.diem?.itLanDo })),
+        cham, vuotTbLopMuot: muot, docAm: docAmLienTiep(muot),
+        dangDoiBucketXau: [], // TODO: cần snapshot bucket cửa sổ trước — làm ở Pha 3 (kênh ①)
+      })
+    }
+
+    const td = thaiDoRows.filter((r) => r.hoc_sinh_id === hsId).map((r) => ({ thai_do: r.thai_do, t: r.t }))
+    const cb = canhBao.filter((r) => r.hoc_sinh_id === hsId)
+    const coChuongDo = cb.some((r) => r.nguon === 'btvn' || r.nguon === 'chuong_do')
+    const coLoTienQuyet = cb.some((r) => r.nguon === 'gv_tien_quyet')
+    const lv = levels.get(hsId)
+
+    out.push({
+      hoc_sinh_id: hsId, ho_ten: hsMap.get(hsId)!, mon,
+      levelKienThuc: lv?.kien_thuc ?? 0, levelThaiDo: lv?.thai_do ?? 0,
+      dangs, chuyenDes, thaiDo: td, coChuongDo, coLoTienQuyet,
+      deXuatKienThuc: deXuatLevelKienThuc({
+        levelHienTai: lv?.kien_thuc ?? 0, dangs, coChuongDo, coLoTienQuyet, bayGio: Date.now(),
+      }),
+      deXuatThaiDo: deXuatLevelThaiDo(td),
+    })
+  }
+  return out
+}
+
+function push<T>(m: Map<string, T[]>, k: string, v: T) { const a = m.get(k) ?? []; a.push(v); m.set(k, a) }
+
+async function napThaiDo(hsIds: string[]): Promise<{ hoc_sinh_id: string; thai_do: string; t: string }[]> {
+  const { data } = await supabase.from('btvn_ket_qua')
+    .select('hoc_sinh_id, thai_do, buoi:buoi_hoc_id(ngay)')
+    .in('hoc_sinh_id', hsIds).not('thai_do', 'is', null).limit(LIMIT)
+  return ((data ?? []) as any[])
+    .filter((r) => r.buoi?.ngay)
+    .map((r) => ({ hoc_sinh_id: r.hoc_sinh_id, thai_do: r.thai_do, t: r.buoi.ngay }))
+}
+
+// ③ chuông đỏ + ④ lỗ tiên quyết — flag CỨNG của NGƯỜI, Claude KHÔNG xét lại (spec §2.A③④).
+async function napCanhBao(hsIds: string[]): Promise<{ hoc_sinh_id: string; ma_dang: string; nguon: string; ghi_chu: string | null }[]> {
+  const { data } = await supabase.from('canh_bao_yeu')
+    .select('hoc_sinh_id, ma_dang, nguon, ghi_chu').in('hoc_sinh_id', hsIds).limit(LIMIT)
+  return (data ?? []) as any
+}
+
+// ── LEVEL: đọc / duyệt ────────────────────────────────────────────────────────────────
+// "Không có dòng" = L0 (§1.5 chống-NULL: KHÔNG seed roster ở L0) → coalesce về 0 ở đây.
+export async function getLevels(hsIds: string[], mon: string): Promise<Map<string, { kien_thuc: number; thai_do: number }>> {
+  const out = new Map<string, { kien_thuc: number; thai_do: number }>()
+  if (!hsIds.length) return out
+  const { data } = await supabase.from('hs_level')
+    .select('hoc_sinh_id, loai, level').in('hoc_sinh_id', hsIds).eq('mon', mon).limit(LIMIT)
+  for (const r of (data ?? []) as any[]) {
+    const cur = out.get(r.hoc_sinh_id) ?? { kien_thuc: 0, thai_do: 0 }
+    ;(cur as any)[r.loai] = r.level
+    out.set(r.hoc_sinh_id, cur)
+  }
+  return out
+}
+
+// ⭐ DUYỆT — chỗ DUY NHẤT được đổi level (PLAN §1.F: máy chỉ đề xuất, NGƯỜI chốt).
+// Ghi CẢ HAI VẾ vào `hs_level_log` ⇒ delta (`level_chot` ≠ `level_may_de_xuat`) lộ TỰ ĐỘNG,
+// không cần bắt người tự khai đã sửa gì.
+// `lyDoMay` = SNAPSHOT tín hiệu lúc đề xuất — PHẢI đóng băng: mastery suy-động nên đọc lại sau
+// sẽ KHÔNG tái tạo được bối cảnh lúc quyết.
+export async function duyetLevel(input: {
+  hocSinhId: string; mon: string; loai: LoaiLevel
+  levelChot: number
+  levelMayDeXuat?: number | null
+  lyDoMay?: any
+  lyDoNguoi?: string | null
+}): Promise<void> {
+  const { data: { user } } = await supabase.auth.getUser()
+  const { data: cur } = await supabase.from('hs_level')
+    .select('level').eq('hoc_sinh_id', input.hocSinhId).eq('mon', input.mon).eq('loai', input.loai).maybeSingle()
+  const levelCu = (cur as any)?.level ?? 0
+
+  // Log TRƯỚC (bằng chứng quan trọng hơn trạng thái): nếu bước sau hỏng vẫn còn vết đã quyết gì.
+  const { error: eLog } = await supabase.from('hs_level_log').insert({
+    hoc_sinh_id: input.hocSinhId, mon: input.mon, loai: input.loai,
+    level_cu: levelCu, level_may_de_xuat: input.levelMayDeXuat ?? null,
+    ly_do_may: input.lyDoMay ?? {}, level_chot: input.levelChot,
+    ly_do_nguoi: input.lyDoNguoi ?? null, actor: user?.id ?? null,
+  })
+  if (eLog) throw eLog
+
+  // L0 = "bình thường" = KHÔNG có dòng (§1.5). Về 0 thì XOÁ dòng, không giữ dòng level=0.
+  if (input.levelChot === 0) {
+    const { error } = await supabase.from('hs_level')
+      .delete().eq('hoc_sinh_id', input.hocSinhId).eq('mon', input.mon).eq('loai', input.loai)
+    if (error) throw error
+    return
+  }
+  const { error } = await supabase.from('hs_level').upsert({
+    hoc_sinh_id: input.hocSinhId, mon: input.mon, loai: input.loai,
+    level: input.levelChot, updated_at: new Date().toISOString(),
+  }, { onConflict: 'hoc_sinh_id,mon,loai' })
+  if (error) throw error
+}
+
+// Lịch sử duyệt của 1 HS = CASE LOG (spec §6 "log quyết định"; Thùy: "ghi lại toàn bộ để analys").
+export type LevelLogRow = {
+  id: string; loai: LoaiLevel; level_cu: number | null; level_may_de_xuat: number | null
+  level_chot: number; ly_do_may: any; ly_do_nguoi: string | null; created_at: string
+  lechVoiMay: boolean // = delta, suy tại chỗ cho UI khỏi tự so
+}
+export async function getLevelLog(hocSinhId: string, mon: string): Promise<LevelLogRow[]> {
+  const { data, error } = await supabase.from('hs_level_log')
+    .select('id, loai, level_cu, level_may_de_xuat, level_chot, ly_do_may, ly_do_nguoi, created_at')
+    .eq('hoc_sinh_id', hocSinhId).eq('mon', mon)
+    .order('created_at', { ascending: false }).limit(LIMIT)
+  if (error) throw error
+  return ((data ?? []) as any[]).map((r) => ({
+    ...r, lechVoiMay: r.level_may_de_xuat != null && r.level_may_de_xuat !== r.level_chot,
+  }))
+}
+
+// Cửa sổ hiện tại (giờ VN) — UI hiện "đang ở kỳ nào".
+export const cuaSoHienTai = () => cuaSoCua(Date.now())

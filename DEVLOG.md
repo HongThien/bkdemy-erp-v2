@@ -2500,3 +2500,23 @@ Cũng sửa: `diemChuyenDe` trả `n` = số câu **có đóng góp** (weight>0)
 **Dry-run lại sau migration** (`scripts/_diag_danhgia_dryrun.mjs`, đổi tên từ `_chk_dgh.mjs` cho khớp convention `_diag_*`): 19.922 lần đo (tăng từ 18.414 sáng nay — GV vẫn đang chấm), L0 49,2% · L1 49,2% · L2 4 HS (tăng 1 vì có thêm dòng `canh_bao_yeu` mới). Engine ăn data mới bình thường.
 
 `node scripts/verify_danhgia.mjs` + `verify_mastery.mjs` PASS · `tsc --noEmit` sạch.
+
+## 2026-07-22 (tiếp #8) — PHA 2: data layer `src/lib/danhgia.ts` (chạy THẬT end-to-end)
+
+**Làm:** `src/lib/danhgia.ts` — seam nạp lần đo → gọi engine PURE → **stat sheet sạch** (spec §6). `getStatSheetLop` · `getLevels` · `duyetLevel` · `getLevelLog`.
+
+**Vì sao theo LỚP chứ không theo HS:** pha 1 (§2.A①) chấm bằng SO LỚP → phải có điểm của mọi bạn cùng lớp trong CÙNG cửa sổ mới ra rank/trung vị. Gọi từng HS là thiếu data về nguyên tắc, không phải chuyện tối ưu.
+
+**Né 2 bẫy HANDOFF ②:** (1) `napBanDo` tra ĐÚNG 1 bảng theo `khoCuaMon(mon)` — không gộp 2 bản đồ (30 mã trùng số). (2) buổi bù `lop_id` NULL → lùi về buổi gốc qua `bu_cho_buoi_id` **theo TỪNG HS** (1 buổi bù gom HS nhiều lớp/môn → không suy 1 môn cho cả buổi được).
+
+**HANDOFF:602 nói `buoi_hoc_hs` có 2 FK về `buoi_hoc` ⇒ "KHÔNG embed, tách 2 bước", hỏng kiểu RỖNG ÂM THẦM.** Không suy luận — test thật qua PostgREST (login dev account): `select('goc:bu_cho_buoi_id(lop:lop_id(mon))')` **CHẠY ĐÚNG, 5/5 dòng lấy được môn**. ⇒ **Tinh chỉnh bài học cũ:** nhập nhằng chỉ xảy ra khi embed KHÔNG nêu tên cột FK; **nêu đích danh cột (`bu_cho_buoi_id`) là đủ để PostgREST phân giải** — đúng như `botro.ts:listCaBoTro` đã dùng và chạy production từ lâu. Không phải cấm embed, mà là cấm embed mơ hồ. Cũng verify luôn: 4 bảng mới `authenticated` đọc được (RLS+grant OK).
+
+**Chạy THẬT `getStatSheetLop` bằng vite-node** (`scripts/_diag_danhgia_statsheet.ts`) — lớp 9A1, 15 HS, **790ms**: đề xuất KT L0=9/L1=6 · TĐ L0=2/L1=10/L2=3. Pha 1/pha 2 ra đúng hình (rank 1/15 ở cửa sổ đầu; `0.50→0.75 tien`, `1.00→0.83 lui` ở cửa sổ sau).
+
+**⚠️ PHÁT HIỆN — MÂU THUẪN NGƯỠNG TẠI ĐÚNG 0.5 (chờ Thùy chốt):** output đầu tiên hiện một dạng `0.50` gắn nhãn **"cần luyện"** nhưng LẠI nằm trong **diện bổ trợ** — vừa bảo ổn vừa gọi đi học thêm.
+- spec §9 nói HAI lần rằng 0.5 chưa đủ tốt: *"Yếu ≤ 0.5"* và *"đóng dạng = retest **> 0.5**, bằng 0.5 KHÔNG tính"* ⇒ 0.5 = YẾU.
+- `masteryOfDang` (engine đang chạy, nuôi màn Kết quả học tập) dùng `score >= 0.5 → 'can_luyen'` ⇒ 0.5 = CẦN LUYỆN.
+- **Đo data thật: 274/3365 ô (8,1%) rơi ĐÚNG 0.5**, trong đó **83 ô đủ độ tin n≥3**. KHÔNG phải ca hiếm — n=2 kiểu 1 đúng 1 sai, hoặc 1 câu "chưa đạt", là ra 0.5 ngay.
+- **Tạm xử:** module theo SPEC (`mucCuaModule`) để nhãn không mâu thuẫn với hành động; thêm `trongDien` (nguồn sự thật cho hành động) + `mucManHinhKQ` (nhãn màn cũ) để thấy rõ chỗ 2 màn lệch. Hệ quả: 83 ô hiện "yếu · cần bổ trợ" ở module nhưng "cần luyện" ở màn Kết quả học tập. **Cần Thùy chốt: sửa spec (yếu = < 0.5) hay sửa engine mastery (0.5 → yếu, ảnh hưởng màn KQ + rollup lớp/khối)?**
+
+`verify_danhgia` + `verify_mastery` + `verify_gami` PASS · `tsc --noEmit` sạch.
