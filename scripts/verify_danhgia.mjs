@@ -99,8 +99,25 @@ ok(deXuatLevelKienThuc({ levelHienTai: 0, dangs: [D({})], bayGio: NOW }).deXuat 
 // `Cần luyện` KHÔNG vào diện — đi luồng ôn tập, KHÔNG bổ trợ, KHÔNG lên level (spec §4.3).
 const cl = deXuatLevelKienThuc({ levelHienTai: 0, dangs: [D({ score: 0.65 })], bayGio: NOW })
 ok(cl.deXuat === 0 && eq(cl.bangChung.canLuyen, ['D1']), 'Cần luyện (0.5–0.8) → không lên level, tách sang luồng ôn tập')
-// Ranh giới: đúng 0.5 LÀ yếu (spec §9: "≤ 0.5"), 0.51 thì không.
-ok(deXuatLevelKienThuc({ levelHienTai: 0, dangs: [D({ score: 0.5 })], bayGio: NOW }).deXuat === 1, 'score = 0.5 chẵn → vẫn YẾU (ngưỡng ≤)')
+
+// ── MỐC 0.5 = 2 NGƯỠNG LỆCH NHAU (TRỄ) — Thùy 07-22 ──────────────────────────────
+// Đánh giá CHUNG: 0.5 = cần luyện. VÀO diện: < 0.5. RA khỏi diện: > 0.5. Đúng 0.5 = giữ nguyên.
+const b05 = deXuatLevelKienThuc({ levelHienTai: 0, dangs: [D({ score: 0.5 })], bayGio: NOW })
+ok(b05.deXuat === 0 && eq(b05.bangChung.dien, []), 'score = 0.5, CHƯA mở đợt → cần luyện, KHÔNG vào diện')
+ok(eq(b05.bangChung.canLuyen, ['D1']), 'score = 0.5 nằm ở nhóm "cần luyện" (khớp masteryOfDang + màn Kết quả học tập)')
+ok(deXuatLevelKienThuc({ levelHienTai: 0, dangs: [D({ score: 0.49 })], bayGio: NOW }).deXuat === 1, 'score < 0.5 → yếu thật → vào diện, đề xuất L1')
+// ĐÃ mở đợt: 0.5 chưa đủ để RA (spec §4.1 "bằng 0.5 KHÔNG tính") → ở lại, GIỮ level.
+const mo05 = deXuatLevelKienThuc({ levelHienTai: 1, dangs: [D({ score: 0.5, daMo: true })], bayGio: NOW })
+ok(eq(mo05.bangChung.dien, ['D1']) && mo05.deXuat === 1, 'ĐÃ mở đợt + retest đúng 0.5 → Ở LẠI diện, GIỮ level (không lên, không xuống)')
+const mo06 = deXuatLevelKienThuc({ levelHienTai: 1, dangs: [D({ score: 0.6, daMo: true })], bayGio: NOW })
+ok(eq(mo06.bangChung.dien, []) && mo06.deXuat === 0, 'ĐÃ mở đợt + retest > 0.5 → RA khỏi diện, đề xuất hạ level')
+// Trễ = chống rung: cùng score 0.5 nhưng kết quả khác nhau tuỳ trạng thái ĐANG có.
+ok(deXuatLevelKienThuc({ levelHienTai: 1, dangs: [D({ score: 0.5, daMo: true })], bayGio: NOW }).bangChung.dien.length === 1
+   && deXuatLevelKienThuc({ levelHienTai: 0, dangs: [D({ score: 0.5 })], bayGio: NOW }).bangChung.dien.length === 0,
+   'TRỄ: cùng 0.5 — đã mở thì ở lại, chưa mở thì không vào (chống vào-ra-vào-ra mỗi lần chấm)')
+// retest đúng 0.5 KHÔNG phải "xử không work" → không được leo thang.
+const r05 = deXuatLevelKienThuc({ levelHienTai: 1, dangs: [D({ score: 0.5, daMo: true, dayAt: '2026-07-20T10:00:00+07:00', retests: [{ value: 0.5, t: 'z' }] })], bayGio: NOW })
+ok(r05.deXuat === 1, 'retest = 0.5 → KHÔNG lên level (chưa đóng được dạng, nhưng cũng chưa phải xử hỏng)')
 
 // ③④ = flag CỨNG của người → vọt thẳng L2+, bỏ qua nấc. Máy KHÔNG xét lại.
 const cd = deXuatLevelKienThuc({ levelHienTai: 0, dangs: [], coChuongDo: true, bayGio: NOW })
@@ -108,16 +125,16 @@ ok(cd.deXuat === 2 && cd.bangChung.nhay === true, '③ chuông đỏ → vọt t
 ok(deXuatLevelKienThuc({ levelHienTai: 3, dangs: [], coLoTienQuyet: true, bayGio: NOW }).deXuat === 3, '④ ở L3 rồi thì giữ L3, không tụt về 2')
 
 // "Không work" → đề xuất LÊN. Hai cửa: retest vẫn yếu · kẹt > 1 tuần chưa retest.
-const rh = deXuatLevelKienThuc({ levelHienTai: 1, dangs: [D({ dayAt: '2026-07-20T10:00:00+07:00', retests: [{ value: 0, t: 'z' }] })], bayGio: NOW })
-ok(rh.deXuat === 2, 'retest vẫn ≤0.5 → xử chưa work → đề xuất lên L2')
-const ket = deXuatLevelKienThuc({ levelHienTai: 1, dangs: [D({ dayAt: '2026-07-10T10:00:00+07:00' })], bayGio: NOW })
+const rh = deXuatLevelKienThuc({ levelHienTai: 1, dangs: [D({ daMo: true, dayAt: '2026-07-20T10:00:00+07:00', retests: [{ value: 0, t: 'z' }] })], bayGio: NOW })
+ok(rh.deXuat === 2, 'retest vẫn < 0.5 → xử chưa work → đề xuất lên L2')
+const ket = deXuatLevelKienThuc({ levelHienTai: 1, dangs: [D({ daMo: true, dayAt: '2026-07-10T10:00:00+07:00' })], bayGio: NOW })
 ok(ket.deXuat === 2, 'kẹt >1 tuần chưa retest được → tự đề xuất lên level (lỡ 1 tuần = lỡ 1 nhịp)')
-const chuaKet = deXuatLevelKienThuc({ levelHienTai: 1, dangs: [D({ dayAt: '2026-07-18T10:00:00+07:00' })], bayGio: NOW })
+const chuaKet = deXuatLevelKienThuc({ levelHienTai: 1, dangs: [D({ daMo: true, dayAt: '2026-07-18T10:00:00+07:00' })], bayGio: NOW })
 ok(chuaKet.deXuat === 1, 'mới 4 ngày chưa tới trần 1 tuần → giữ level, chưa đề xuất lên')
-ok(deXuatLevelKienThuc({ levelHienTai: 3, dangs: [D({ retests: [{ value: 0, t: 'z' }] })], bayGio: NOW }).deXuat === 3, 'L3 là trần — không đề xuất vượt quá')
+ok(deXuatLevelKienThuc({ levelHienTai: 3, dangs: [D({ daMo: true, retests: [{ value: 0, t: 'z' }] })], bayGio: NOW }).deXuat === 3, 'L3 là trần — không đề xuất vượt quá')
 
 // Đóng dạng: retest > 0.5 là XONG (KHÔNG đòi tới 0.8) → rút khỏi diện.
-const dong = deXuatLevelKienThuc({ levelHienTai: 1, dangs: [D({ score: 0.6 })], bayGio: NOW })
+const dong = deXuatLevelKienThuc({ levelHienTai: 1, dangs: [D({ score: 0.6, daMo: true })], bayGio: NOW })
 ok(dong.deXuat === 0 && eq(dong.bangChung.dien, []), 'retest lên 0.6 (>0.5) → dạng rút khỏi diện, không đòi Đạt 0.8')
 
 // Xuống level: L1 = 1 nhịp đủ · L2/L3 = phải 2 nhịp (kiểm độ BỀN, chống hiểu-giả).

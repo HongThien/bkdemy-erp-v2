@@ -2520,3 +2520,23 @@ Cũng sửa: `diemChuyenDe` trả `n` = số câu **có đóng góp** (weight>0)
 - **Tạm xử:** module theo SPEC (`mucCuaModule`) để nhãn không mâu thuẫn với hành động; thêm `trongDien` (nguồn sự thật cho hành động) + `mucManHinhKQ` (nhãn màn cũ) để thấy rõ chỗ 2 màn lệch. Hệ quả: 83 ô hiện "yếu · cần bổ trợ" ở module nhưng "cần luyện" ở màn Kết quả học tập. **Cần Thùy chốt: sửa spec (yếu = < 0.5) hay sửa engine mastery (0.5 → yếu, ảnh hưởng màn KQ + rollup lớp/khối)?**
 
 `verify_danhgia` + `verify_mastery` + `verify_gami` PASS · `tsc --noEmit` sạch.
+
+## 2026-07-22 (tiếp #9) — Thùy bác "mâu thuẫn 0.5": KHÔNG mâu thuẫn, là 2 NGƯỠNG (trễ/hysteresis)
+
+**Claude báo mâu thuẫn ở #8 — SAI, đã sửa.** Thùy: *"Đánh giá chung chấp nhận 0.5 là cần luyện. Còn retest là đánh giá riêng lấy cao hơn 0.5 mới xuống level. còn 0.5 thì vẫn giữ level. đâu có mâu thuẫn"*.
+
+**Chỗ Claude sai:** gộp 2 phép đo KHÁC NHAU vào 1 ngưỡng rồi kết luận hệ tự mâu thuẫn. Thực tế:
+- **NHÃN mức** = đánh giá CHUNG → 0.5 = **cần luyện**. Dùng thẳng `masteryOfDang`, khớp màn Kết quả học tập. **Bỏ hàm `mucCuaModule`** Claude tự đẻ ra ở #8 — nó tạo sự thật thứ hai, đúng thứ CLAUDE.md cấm.
+- **TƯ CÁCH THÀNH VIÊN của diện** mới dùng 2 mốc LỆCH nhau: **VÀO khi < 0.5** · **RA khi > 0.5** · **đúng 0.5 = GIỮ NGUYÊN trạng thái đang có**.
+
+**Đây là TRỄ (hysteresis) — chống rung, không phải lỗi thiết kế.** Một ngưỡng duy nhất thì dạng dao động quanh 0.5 sẽ vào-ra-vào-ra mỗi lần chấm (274/3365 ô = 8% nằm đúng mốc này → rung thật, không phải lý thuyết). Hai mốc lệch nhau tạo vùng dính.
+
+**Hệ quả kỹ thuật:** "ra" phụ thuộc trạng thái CŨ ⇒ engine cần biết dạng **đã trong đợt chưa** → thêm input `daMo` (`deXuatLevelKienThuc`) + `napDangDangMo()` (`danhgia.ts`: đọc `bo_tro_yeu_dang` chưa `dong_at`). Không có `daMo` → coi như chưa mở (an toàn, chỉ ảnh hưởng đúng ca score = 0.5).
+
+**Sửa thêm:** `retestHong` từ `<= MOC` → **`< MOC`** (spec §4.1 viết "retest ≤ 0.5 → lên level", **Thùy chỉnh lại: 0.5 giữ level** — CEO quyết). `coBTVNChe` dùng `< / >=`. `canLuyen` gồm cả 0.5. Nhãn lý do đổi "≤0.5" → "<0.5".
+
+**Test mới (6 ca) đóng đinh luật trễ:** 0.5 chưa mở → không vào diện, nằm nhóm cần luyện · 0.49 → vào diện · **đã mở + retest đúng 0.5 → Ở LẠI diện, GIỮ level (không lên không xuống)** · đã mở + 0.6 → ra khỏi diện, hạ level · cùng 0.5 mà kết quả khác nhau tuỳ trạng thái đang có (chính là định nghĩa của trễ) · retest = 0.5 không bị tính là "xử không work".
+
+**Verify lại e2e** (9A1): dạng 0.33 → `yeu [DIỆN]`; bốn dạng 0.50 → `can_luyen`, KHÔNG vào diện. Nhãn và hành động hết đá nhau, và không còn lệch với màn Kết quả học tập.
+
+`verify_danhgia` (66 test) + `verify_mastery` PASS · `tsc` sạch.

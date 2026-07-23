@@ -15,7 +15,18 @@ export const DANHGIA_CONFIG = {
   // THẤP). Đo thật: bỏ gate → 76,8% roster có ≥1 dạng yếu, trong đó 35% ô yếu chỉ có ĐÚNG 1 lần đo
   // ("1 câu sai → gọi bổ trợ"). Gate n≥3 → 48,4%.
   GATE_N: MASTERY_CONFIG.TIN_TB,
-  YEU: MASTERY_CONFIG.CAN_LUYEN, // ≤ 0.5 = yếu = vào diện bổ trợ (spec §9)
+  // ⭐ MỐC 0.5 KHÔNG PHẢI 1 NGƯỠNG — LÀ 2 (Thùy chốt 07-22, sửa cách hiểu ban đầu của Claude).
+  //   "Đánh giá chung chấp nhận 0.5 là cần luyện. Còn retest là đánh giá riêng, lấy CAO HƠN 0.5
+  //    mới xuống level. Còn 0.5 thì vẫn giữ level."
+  //   ⇒ VÀO diện: score **< 0.5** (0.5 = cần luyện, mà cần luyện KHÔNG vào diện — spec §4.3).
+  //   ⇒ RA  khỏi diện: score **> 0.5** (spec §4.1 "bằng 0.5 KHÔNG tính").
+  //   Đúng 0.5 = VÙNG DÍNH: chưa đủ tốt để đóng, cũng chưa đủ xấu để leo thang → GIỮ NGUYÊN.
+  //   Đây là **trễ (hysteresis)** cố ý, KHÔNG phải mâu thuẫn: 2 ngưỡng lệch nhau chống rung
+  //   (dạng dao động quanh 0.5 mà 1 ngưỡng thì cứ vào-ra-vào-ra mỗi lần chấm). Vì thế ngưỡng
+  //   vào/ra phải hỏi "dạng này ĐÃ trong đợt chưa" (`daMo`) — xem `deXuatLevelKienThuc`.
+  //   ⚠ Hệ quả: NHÃN mức vẫn do `masteryOfDang` quyết (0.5 = cần luyện) — khớp màn "Kết quả
+  //   học tập", KHÔNG có 2 sự thật. Chỉ TƯ CÁCH THÀNH VIÊN của diện mới dùng 2 mốc trên.
+  MOC: MASTERY_CONFIG.CAN_LUYEN, // = 0.5
   KET_NGAY: 7, // trần "kẹt chưa retest" = 1 tuần (spec §9) → đủ để ĐỀ XUẤT lên level
   MA_CHU_KY: 3, // moving average 3 chu kỳ PHẲNG (spec §2.B đường B)
   // [CALIBRATE] "dai dẳng nhiều buổi dưới Nghiêm túc" → L2 (spec §4.2 không cho con số).
@@ -151,24 +162,25 @@ export function docAmLienTiep(muot) {
 // Đo thật 07-22: BTVN dễ hơn (tỉ lệ đúng TB 0,854 vs ET 0,799 vs MT 0,647) → 235 ô được "cứu",
 // chỉ 46 ô đi ngược. Ô bị che = kém ở bài có giám sát, ổn ở bài tự làm ở nhà ⇒ đáng nghi nhất.
 // Vá điểm mù false-negative mà spec §5 tự nhận "chưa build v1".
-export function coBTVNChe(scoreEtMt, scoreGop, nguong = DANHGIA_CONFIG.YEU) {
+export function coBTVNChe(scoreEtMt, scoreGop, moc = DANHGIA_CONFIG.MOC) {
   if (scoreEtMt == null || scoreGop == null) return false
-  return scoreEtMt <= nguong && scoreGop > nguong
+  return scoreEtMt < moc && scoreGop >= moc // yếu (<0.5) theo giám sát · hết yếu khi gộp BTVN
 }
 // "LÊN RỒI RỚT" (nhặt từ BKDEMY_CANHBAO_BOTRO_SPEC §5) — ngay sau bổ trợ thì lên, các lần sau tụt
 // ⇒ buổi đó NHỒI chứ không DẠY HIỂU. Một mốc đo thì mù chuyện này.
 // retests = [{value, t}] SAU day_at, theo thứ tự thời gian tăng dần.
-export function lenRoiRot(retests, nguong = DANHGIA_CONFIG.YEU) {
+// "Rớt" = tụt về mức KHÔNG đủ đóng dạng (≤ 0.5) — dùng mốc RA, vì đây là câu hỏi "giữ được không".
+export function lenRoiRot(retests, moc = DANHGIA_CONFIG.MOC) {
   if (!retests || retests.length < 2) return false
   const dau = retests[0].value
   const sau = retests.slice(1)
-  return dau > nguong && sau.every((r) => r.value <= nguong)
+  return dau > moc && sau.every((r) => r.value <= moc)
 }
 
 // ── MÁY LEVEL KIẾN THỨC (spec §4.1 + PLAN §1.F: chỉ ĐỀ XUẤT) ─────────────────────────
 // ⭐ Level = trạng thái của HỌC SINH, KHÔNG phải của dạng. Mastery dạng chỉ quyết định BỔ TRỢ
 //    DẠNG NÀO, không nâng/hạ level.
-// ⭐ Diện bổ trợ = CHỈ dạng YẾU (≤0.5) VÀ đủ độ tin (n ≥ GATE_N). `Cần luyện` (0.5–0.8) KHÔNG vào
+// ⭐ Diện bổ trợ = CHỈ dạng YẾU (<0.5) VÀ đủ độ tin (n ≥ GATE_N). `Cần luyện` (0.5–0.8) KHÔNG vào
 //    diện — bổ trợ chữa đoạn HIỂU BÀI, không chữa đoạn THÀNH THẠO → luồng ôn tập/lặp (§4.3).
 // ⭐ Máy KHÔNG tự đổi level. Trả { deXuat, lyDo[], bangChung } để NGƯỜI duyệt (Thùy 07-22).
 //
@@ -183,11 +195,17 @@ export function deXuatLevelKienThuc(input) {
   const { levelHienTai = 0, dangs = [], coChuongDo = false, coLoTienQuyet = false, nhipOnLienTiep = 0, bayGio = 0 } = input
   const lyDo = []
 
-  // Diện = dạng yếu ĐỦ ĐỘ TIN. Dạng yếu mà n < gate → tách riêng để UI cảnh báo "ít lần đo",
-  // KHÔNG đẩy vào diện (Thùy 07-22).
-  const dien = dangs.filter((d) => d.score <= cfg.YEU && d.n >= cfg.GATE_N)
-  const yeuThieuDo = dangs.filter((d) => d.score <= cfg.YEU && d.n < cfg.GATE_N)
-  const canLuyen = dangs.filter((d) => d.score > cfg.YEU && d.score < MASTERY_CONFIG.DAT)
+  // ⭐ DIỆN dùng 2 MỐC LỆCH NHAU (trễ — xem DANHGIA_CONFIG.MOC):
+  //   · dạng CHƯA mở đợt: VÀO khi score **< 0.5** và đủ độ tin (0.5 = cần luyện, không vào).
+  //   · dạng ĐÃ mở đợt (`daMo` — có dòng `bo_tro_yeu_dang` chưa `dong_at`): RA khi score
+  //     **> 0.5**; đúng 0.5 thì Ở LẠI (Thùy: "0.5 thì vẫn giữ level").
+  // Không có `daMo` thì coi như chưa mở — an toàn: chỉ ảnh hưởng đúng ca score = 0.5.
+  const dien = dangs.filter((d) => (d.daMo ? d.score <= cfg.MOC : d.score < cfg.MOC && d.n >= cfg.GATE_N))
+  // Yếu thật (<0.5) nhưng chưa đủ lần đo → CHỈ cảnh báo, không gọi bổ trợ (Thùy 07-22).
+  const yeuThieuDo = dangs.filter((d) => !d.daMo && d.score < cfg.MOC && d.n < cfg.GATE_N)
+  // Cần luyện (0.5 ≤ score < 0.8) → luồng ôn tập/lặp, KHÔNG bổ trợ, KHÔNG lên level (spec §4.3).
+  // Lưu ý 0.5 nằm ở ĐÂY (nhãn "cần luyện", khớp masteryOfDang + màn Kết quả học tập).
+  const canLuyen = dangs.filter((d) => d.score >= cfg.MOC && d.score < MASTERY_CONFIG.DAT)
   const btvnChe = dangs.filter((d) => coBTVNChe(d.scoreEtMt, d.score))
 
   // ③④ — flag CỨNG của người: vọt thẳng L2+, bỏ qua nấc (spec §4.1).
@@ -196,12 +214,16 @@ export function deXuatLevelKienThuc(input) {
     return ket(Math.max(levelHienTai, 2), lyDo, { dien, yeuThieuDo, canLuyen, btvnChe, nhay: true })
   }
 
-  // "KHÔNG WORK" → đề xuất LÊN 1 mức. Hai cửa (spec §4.1):
-  //   (a) retest ≤ 0.5 (vẫn yếu)  (b) kẹt > 1 tuần chưa retest được — lỡ 1 tuần = lỡ 1 nhịp.
-  const retestHong = dien.filter((d) => d.retests?.length && d.retests[d.retests.length - 1].value <= cfg.YEU)
+  // "KHÔNG WORK" → đề xuất LÊN 1 mức. Hai cửa:
+  //   (a) retest vẫn **< 0.5** (xử rồi mà còn yếu)
+  //   (b) kẹt > 1 tuần chưa retest được — lỡ 1 tuần = lỡ 1 nhịp can thiệp.
+  // ⚠ retest ĐÚNG 0.5 KHÔNG vào đây (Thùy 07-22: "0.5 thì vẫn giữ level") — chưa đủ để đóng
+  //   dạng, nhưng cũng KHÔNG phải "xử không work" để leo thang. Dạng ở lại diện, xử tiếp.
+  //   (Spec §4.1 viết "retest ≤ 0.5 → lên level"; Thùy chỉnh lại — CEO quyết, theo Thùy.)
+  const retestHong = dien.filter((d) => d.retests?.length && d.retests[d.retests.length - 1].value < cfg.MOC)
   const ket1Tuan = dien.filter((d) => d.dayAt && !d.retests?.length && (bayGio - Date.parse(d.dayAt)) > cfg.KET_NGAY * 86400_000)
   if (levelHienTai > 0 && (retestHong.length || ket1Tuan.length)) {
-    if (retestHong.length) lyDo.push(`${retestHong.length} dạng retest vẫn ≤0.5 (xử chưa work)`)
+    if (retestHong.length) lyDo.push(`${retestHong.length} dạng retest vẫn <0.5 (xử chưa work)`)
     if (ket1Tuan.length) lyDo.push(`${ket1Tuan.length} dạng kẹt >${cfg.KET_NGAY} ngày chưa retest được`)
     return ket(Math.min(levelHienTai + 1, 3), lyDo, { dien, yeuThieuDo, canLuyen, btvnChe })
   }
@@ -224,7 +246,7 @@ export function deXuatLevelKienThuc(input) {
 
   // Còn diện, chưa có tín hiệu "không work" → L0 lên L1; đang ở L1+ thì GIỮ, xử nốt.
   if (levelHienTai === 0) {
-    lyDo.push(`${dien.length} dạng yếu (≤0.5, đủ ${cfg.GATE_N} lần đo)`)
+    lyDo.push(`${dien.length} dạng yếu (<0.5, đủ ${cfg.GATE_N} lần đo)`)
     return ket(1, lyDo, { dien, yeuThieuDo, canLuyen, btvnChe })
   }
   lyDo.push(`còn ${dien.length} dạng trong diện, đang xử`)

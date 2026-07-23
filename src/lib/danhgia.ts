@@ -21,17 +21,13 @@ import { khoCuaMon } from './tailieu'
 
 const LIMIT = 10000
 
-// ⚠ LỆCH NGƯỠNG TẠI ĐÚNG 0.5 — CÓ THẬT, ĐÃ ĐO, CHỜ THÙY CHỐT (đừng "dọn cho gọn").
-//   · spec §9 nói HAI lần rằng 0.5 KHÔNG đủ tốt: "Yếu ≤ 0.5" và "đóng dạng = retest > 0.5
-//     (bằng 0.5 KHÔNG tính)" ⇒ 0.5 = YẾU, phải vào diện bổ trợ.
-//   · `masteryOfDang` (engine đang chạy, nuôi màn "Kết quả học tập") dùng `score >= 0.5
-//     → 'can_luyen'` ⇒ 0.5 = CẦN LUYỆN.
-//   Đo trên data thật 07-22: **274/3365 ô (8%) rơi đúng 0.5**, trong đó **83 ô đủ độ tin n≥3**
-//   — KHÔNG phải ca hiếm (rất dễ gặp: n=2 với 1 đúng 1 sai, hoặc 1 câu "chưa đạt").
-//   Tạm xử: module theo SPEC (`mucCuaModule`) để nhãn không mâu thuẫn với hành động — không thể
-//   vừa hiện "cần luyện" vừa gọi HS đi bổ trợ. Kèm `mucManHinhKQ` để thấy rõ chỗ 2 màn khác nhau.
-const mucCuaModule = (score: number): 'dat' | 'can_luyen' | 'yeu' =>
-  score <= DANHGIA_CONFIG.YEU ? 'yeu' : score < MASTERY_CONFIG.DAT ? 'can_luyen' : 'dat'
+// ⭐ MỐC 0.5 = 2 NGƯỠNG, KHÔNG PHẢI MÂU THUẪN (Thùy 07-22 — Claude hiểu sai lúc đầu, đã sửa):
+//   NHÃN mức là "đánh giá chung" → 0.5 = **cần luyện**, dùng thẳng `masteryOfDang` ⇒ khớp màn
+//   "Kết quả học tập", KHÔNG đẻ ra sự thật thứ hai.
+//   TƯ CÁCH THÀNH VIÊN của diện bổ trợ mới dùng 2 mốc lệch (trễ): vào khi < 0.5 · ra khi > 0.5 ·
+//   đúng 0.5 thì giữ nguyên trạng thái đang có. Logic ở `deXuatLevelKienThuc` (gami/danhgia.js).
+//   Vì "ra" phụ thuộc trạng thái CŨ nên phải truyền `daMo` = dạng đang có trong đợt bổ trợ
+//   (dòng `bo_tro_yeu_dang` chưa `dong_at`) — xem `napDangDangMo`.
 
 export type LoaiLevel = 'kien_thuc' | 'thai_do'
 export type DoEval = { value: number; t: string; src: string }
@@ -45,9 +41,9 @@ export type DangStat = {
   score: number          // mastery GỘP (ET+MT+BTVN) — bản máy level dùng, spec §9
   scoreEtMt: number | null // mastery chỉ nguồn GIÁM SÁT — để bắt cờ "BTVN che" (PLAN §1.D)
   n: number              // tổng lần đo = độ tin (KHÁC 5 lần dùng tính điểm)
-  muc: 'dat' | 'can_luyen' | 'yeu'
-  mucManHinhKQ: 'dat' | 'can_luyen' | 'yeu' // nhãn của màn "Kết quả học tập" — lệch tại ĐÚNG 0.5, xem mucCuaModule
-  trongDien: boolean     // có vào diện bổ trợ không (yếu + đủ độ tin) — nguồn sự thật cho HÀNH ĐỘNG
+  muc: 'dat' | 'can_luyen' | 'yeu' // đánh giá CHUNG (masteryOfDang) — 0.5 = cần luyện
+  daMo: boolean          // đang có trong đợt bổ trợ yếu (bo_tro_yeu_dang chưa dong_at)
+  trongDien: boolean     // sau khi áp 2 mốc trễ — nguồn sự thật cho HÀNH ĐỘNG
   cuoiCungAt: string     // lần đo gần nhất → cờ "cũ" nếu > 30 ngày (spec §1)
 }
 export type ChuyenDeStat = {
@@ -159,11 +155,12 @@ export async function getStatSheetLop(lopId: string): Promise<StatSheetHS[]> {
   const hsIds = [...hsMap.keys()]
   if (!hsIds.length) return []
 
-  const [doRows, levels, thaiDoRows, canhBao] = await Promise.all([
+  const [doRows, levels, thaiDoRows, canhBao, dangDangMo] = await Promise.all([
     napLanDo(hsIds, mon),
     getLevels(hsIds, mon),
     napThaiDo(hsIds),
     napCanhBao(hsIds),
+    napDangDangMo(hsIds, mon),
   ])
   const banDo = await napBanDo(mon, [...new Set(doRows.map((r) => r.ma_dang))])
 
@@ -214,12 +211,14 @@ export async function getStatSheetLop(lopId: string): Promise<StatSheetHS[]> {
         const moiNhat = evs.reduce((a, b) => (Date.parse(b.t) > Date.parse(a.t) ? b : a))
         const score = (m as any).score as number
         const n = (m as any).n as number
+        const daMo = dangDangMo.get(hsId)?.has(ma) ?? false
         dangs.push({
           ma_dang: ma, ten_dang: info.ten_dang, ten_chuyen_de: info.ten_chuyen_de, muc_do: info.muc_do,
           score, scoreEtMt: (mEtMt as any)?.score ?? null, n,
-          muc: mucCuaModule(score),          // theo spec §9 — khớp với HÀNH ĐỘNG (diện bổ trợ)
-          mucManHinhKQ: (m as any).muc,      // theo engine cũ — để đối chiếu, lệch tại đúng 0.5
-          trongDien: score <= DANHGIA_CONFIG.YEU && n >= DANHGIA_CONFIG.GATE_N,
+          muc: (m as any).muc, // đánh giá CHUNG — cùng engine với màn Kết quả học tập
+          daMo,
+          // 2 mốc trễ: đã mở thì ở lại tới khi > 0.5 · chưa mở thì phải < 0.5 + đủ độ tin.
+          trongDien: daMo ? score <= DANHGIA_CONFIG.MOC : score < DANHGIA_CONFIG.MOC && n >= DANHGIA_CONFIG.GATE_N,
           cuoiCungAt: moiNhat.t,
         })
       }
@@ -285,6 +284,28 @@ async function napThaiDo(hsIds: string[]): Promise<{ hoc_sinh_id: string; thai_d
   return ((data ?? []) as any[])
     .filter((r) => r.buoi?.ngay)
     .map((r) => ({ hoc_sinh_id: r.hoc_sinh_id, thai_do: r.thai_do, t: r.buoi.ngay }))
+}
+
+// Dạng ĐANG MỞ trong đợt bổ trợ yếu (chưa `dong_at`) → cho phép luật "trễ": đã vào diện thì ở
+// lại tới khi retest > 0.5, đúng 0.5 KHÔNG đủ để ra (Thùy 07-22).
+// Trả { hoc_sinh_id → Set(ma_dang) }.
+async function napDangDangMo(hsIds: string[], mon: string): Promise<Map<string, Set<string>>> {
+  const out = new Map<string, Set<string>>()
+  if (!hsIds.length) return out
+  const { data: dots } = await supabase.from('bo_tro_yeu')
+    .select('id, hoc_sinh_id').in('hoc_sinh_id', hsIds).eq('mon', mon).eq('trang_thai', 'dang_xu').limit(LIMIT)
+  const dotHs = new Map<string, string>()
+  for (const d of (dots ?? []) as any[]) dotHs.set(d.id, d.hoc_sinh_id)
+  if (!dotHs.size) return out
+  const { data: ds } = await supabase.from('bo_tro_yeu_dang')
+    .select('bo_tro_yeu_id, ma_dang').in('bo_tro_yeu_id', [...dotHs.keys()]).is('dong_at', null).limit(LIMIT)
+  for (const r of (ds ?? []) as any[]) {
+    const hs = dotHs.get(r.bo_tro_yeu_id)
+    if (!hs) continue
+    const s = out.get(hs) ?? new Set<string>()
+    s.add(r.ma_dang); out.set(hs, s)
+  }
+  return out
 }
 
 // ③ chuông đỏ + ④ lỗ tiên quyết — flag CỨNG của NGƯỜI, Claude KHÔNG xét lại (spec §2.A③④).

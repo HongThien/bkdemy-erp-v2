@@ -38,7 +38,7 @@ console.log(`   yếu thiếu lần đo (${ai.deXuatKienThuc.bangChung.yeuThieuD
 console.log(`đề xuất TĐ → L${ai.deXuatThaiDo.deXuat} · ${ai.deXuatThaiDo.lyDo.join(' | ')} (${ai.thaiDo.length} buổi có chấm)`)
 console.log(`\n5 dạng yếu nhất:`)
 for (const d of ai.dangs.slice(0, 5)) {
-  console.log(`   ${d.score.toFixed(2)} (n=${d.n}, ET+MT=${d.scoreEtMt?.toFixed(2) ?? '—'}) ${d.muc.padEnd(10)}${d.trongDien?'[DIỆN]':'      '} ${d.muc!==d.mucManHinhKQ?'⚠lệch màn KQ:'+d.mucManHinhKQ:''} ${d.ten_dang.slice(0, 42)}`)
+  console.log(`   ${d.score.toFixed(2)} (n=${d.n}, ET+MT=${d.scoreEtMt?.toFixed(2) ?? '—'}) ${d.muc.padEnd(10)}${d.trongDien?'[DIỆN]':'      '}${d.daMo?' (đã mở đợt)':''} ${d.ten_dang.slice(0, 42)}`)
 }
 console.log(`\nChuyên đề (${ai.chuyenDes.length}):`)
 for (const c of ai.chuyenDes.slice(0, 5)) {
