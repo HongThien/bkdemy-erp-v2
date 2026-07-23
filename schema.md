@@ -2,7 +2,7 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-98 bảng · 0 enum · 10 trigger · 27 function
+103 bảng · 0 enum · 10 trigger · 27 function
 
 ## bai_lam
 
@@ -157,6 +157,33 @@
 | day_buoi_id | uuid | Y |  | FK→buoi_hoc.id |  |
 | day_at | timestamp with time zone | Y |  |  |  |
 
+## bo_tro_yeu
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |  |
+| lop_id | uuid | Y |  | FK→lop.id |  |
+| mon | text |  |  |  |  |
+| nguon | text |  | 'thu_cong'::text |  |  |
+| ly_do | text | Y |  |  |  |
+| trang_thai | text |  | 'dang_xu'::text |  | `dang_xu` · `hoan_thanh` |
+| actor | uuid | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| hoan_thanh_at | timestamp with time zone | Y |  |  |  |
+
+## bo_tro_yeu_dang
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| bo_tro_yeu_id | uuid |  |  | FK→bo_tro_yeu.id |  |
+| ma_dang | text |  |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| day_buoi_id | uuid | Y |  | FK→buoi_hoc.id |  |
+| day_at | timestamp with time zone | Y |  |  |  |
+| dong_at | timestamp with time zone | Y |  |  |  |
+
 ## bt_grades
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -257,6 +284,7 @@
 | created_at | timestamp with time zone |  | now() |  |  |
 | bo_tro_duoi_id | uuid | Y |  | FK→bo_tro_duoi.id |  |
 | bao_den_at | timestamp with time zone | Y |  |  |  |
+| bo_tro_yeu_id | uuid | Y |  | FK→bo_tro_yeu.id |  |
 
 ## ca_test
 
@@ -718,6 +746,32 @@
 | loai_key | text |  |  | PK FK→thanh_tich_loai.key |  |
 | thu_tu | integer |  | 0 |  |  |
 
+## hs_level
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| hoc_sinh_id | uuid |  |  | PK FK→hoc_sinh.id |  |
+| mon | text |  |  | PK |  |
+| loai | text |  |  | PK | `kien_thuc` · `thai_do` |
+| level | smallint |  |  |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
+## hs_level_log
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |  |
+| mon | text |  |  |  |  |
+| loai | text |  |  |  | `kien_thuc` · `thai_do` |
+| level_cu | smallint | Y |  |  |  |
+| level_may_de_xuat | smallint | Y |  |  |  |
+| ly_do_may | jsonb |  | '{}'::jsonb |  |  |
+| level_chot | smallint |  |  |  |  |
+| ly_do_nguoi | text | Y |  |  |  |
+| actor | uuid | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
 ## kho_cau_log
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -956,6 +1010,18 @@
 | created_by | uuid | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 
+## phan_cong_ca
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| thu | smallint |  |  |  |  |
+| ca | text |  |  |  | `sang` · `chieu` · `toi` |
+| nhan_su_id | uuid |  |  | FK→nhan_su.id |  |
+| hieu_luc_tu | date |  |  |  |  |
+| hieu_luc_den | date | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
 ## phan_cong_lop
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -1076,6 +1142,7 @@
 | tieu_de | text | Y |  |  |  |
 | noi_dung | text | Y |  |  |  |
 | kieu | text |  | 'thuong'::text |  |  |
+| hien_lt | boolean |  | true |  |  |
 
 ## team
 
@@ -1342,6 +1409,10 @@
 | dai_ban_do | dai_ban_do_muc_do_check | `CHECK (((muc_do >= 1) AND (muc_do <= 5)))` |
 | hinh_bai | hinh_bai_muc_do_check | `CHECK (((muc_do >= 1) AND (muc_do <= 5)))` |
 | hoc_phi_phat_sinh | hoc_phi_phat_sinh_dung_loai | `CHECK ((((loai = 'lop'::text) AND (lop_id IS NOT NULL) AND (hoc_sinh_id IS NULL)) OR ((loai = 'ca_nhan'::text) AND (hoc_sinh_id IS NOT NULL) AND (lop_id IS NULL))))` |
+| hs_level | hs_level_level_check | `CHECK (((level >= 0) AND (level <= 3)))` |
+| hs_level_log | hs_level_log_level_chot_check | `CHECK (((level_chot >= 0) AND (level_chot <= 3)))` |
+| hs_level_log | hs_level_log_level_cu_check | `CHECK (((level_cu >= 0) AND (level_cu <= 3)))` |
+| hs_level_log | hs_level_log_level_may_de_xuat_check | `CHECK (((level_may_de_xuat >= 0) AND (level_may_de_xuat <= 3)))` |
 | ky_thi | ky_thi_he_so_check | `CHECK ((he_so = ANY (ARRAY[1, 2])))` |
 | muc_nang_luc | muc_nang_luc_muc_check | `CHECK (((muc >= 1) AND (muc <= 3)))` |
 | phan_cong_ca | phan_cong_ca_thu_check | `CHECK (((thu >= 2) AND (thu <= 8)))` |

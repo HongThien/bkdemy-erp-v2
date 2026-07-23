@@ -17,23 +17,47 @@ function loadUrl() {
 }
 
 const Q = {
-  columns: `select table_name, column_name, ordinal_position, data_type, udt_name, is_nullable, column_default
-            from information_schema.columns where table_schema='public'
-            order by table_name, ordinal_position`,
-  pks: `select tc.table_name, kcu.column_name
-        from information_schema.table_constraints tc
-        join information_schema.key_column_usage kcu
-          on kcu.constraint_name=tc.constraint_name and kcu.table_schema=tc.table_schema
-        where tc.table_schema='public' and tc.constraint_type='PRIMARY KEY'
-        order by tc.table_name, kcu.ordinal_position`,
-  fks: `select tc.table_name, kcu.column_name, ccu.table_name as ref_table, ccu.column_name as ref_column
-        from information_schema.table_constraints tc
-        join information_schema.key_column_usage kcu
-          on kcu.constraint_name=tc.constraint_name and kcu.table_schema=tc.table_schema
-        join information_schema.constraint_column_usage ccu
-          on ccu.constraint_name=tc.constraint_name and ccu.table_schema=tc.table_schema
-        where tc.table_schema='public' and tc.constraint_type='FOREIGN KEY'
-        order by tc.table_name, kcu.column_name`,
+  // ⚠ ĐỌC pg_catalog, KHÔNG đọc information_schema — 3 query dưới đây từng dùng information_schema
+  // và ĂN QUẢ LỪA IM LẶNG (07-22): các view đó TỰ LỌC THEO QUYỀN của role đang nối.
+  //   · `columns`: chỉ hiện bảng role có ÍT NHẤT 1 quyền → bảng mới cấp chưa kịp = BIẾN MẤT khỏi
+  //     schema.md, không lỗi, không cảnh báo. (Đã dính: 4 bảng đánh giá học tập + `phan_cong_ca`
+  //     vô hình rất lâu — schema.md ghi 98 bảng trong khi DB có 103.)
+  //   · `table_constraints`: theo docs PG chỉ hiện constraint của bảng mà user SỞ HỮU hoặc có
+  //     quyền KHÁC SELECT. Role chỉ-đọc ⇒ PK/FK trống trơn dù bảng đã hiện — còn tệ hơn thiếu hẳn
+  //     bảng, vì nhìn vào tưởng bảng thật sự không có khoá.
+  // pg_catalog không lọc kiểu đó ⇒ schema.md phản ánh ĐÚNG DB bất kể role. Đây cũng là lý do
+  // `checks`/`triggers`/`functions` bên dưới vốn đã đúng: chúng đọc pg_catalog từ đầu.
+  columns: `select c.relname as table_name, a.attname as column_name, a.attnum as ordinal_position,
+                   format_type(a.atttypid, a.atttypmod) as data_type,
+                   t.typname as udt_name,
+                   case when a.attnotnull then 'NO' else 'YES' end as is_nullable,
+                   pg_get_expr(d.adbin, d.adrelid) as column_default
+            from pg_class c
+            join pg_namespace n on n.oid = c.relnamespace
+            join pg_attribute a on a.attrelid = c.oid
+            join pg_type t on t.oid = a.atttypid
+            left join pg_attrdef d on d.adrelid = c.oid and d.adnum = a.attnum
+            where n.nspname='public' and c.relkind in ('r','p') and a.attnum > 0 and not a.attisdropped
+            order by c.relname, a.attnum`,
+  pks: `select c.relname as table_name, a.attname as column_name
+        from pg_constraint con
+        join pg_class c on c.oid = con.conrelid
+        join pg_namespace n on n.oid = c.relnamespace
+        join unnest(con.conkey) with ordinality as k(attnum, ord) on true
+        join pg_attribute a on a.attrelid = c.oid and a.attnum = k.attnum
+        where n.nspname='public' and con.contype='p'
+        order by c.relname, k.ord`,
+  fks: `select c.relname as table_name, a.attname as column_name,
+               rc.relname as ref_table, ra.attname as ref_column
+        from pg_constraint con
+        join pg_class c on c.oid = con.conrelid
+        join pg_namespace n on n.oid = c.relnamespace
+        join pg_class rc on rc.oid = con.confrelid
+        join unnest(con.conkey, con.confkey) with ordinality as k(attnum, refattnum, ord) on true
+        join pg_attribute a on a.attrelid = c.oid and a.attnum = k.attnum
+        join pg_attribute ra on ra.attrelid = rc.oid and ra.attnum = k.refattnum
+        where n.nspname='public' and con.contype='f'
+        order by c.relname, a.attname`,
   enums: `select t.typname, e.enumlabel from pg_type t
           join pg_enum e on e.enumtypid=t.oid
           join pg_namespace n on n.oid=t.typnamespace

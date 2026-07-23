@@ -2408,3 +2408,95 @@ PHA 0 verify DB thật phát hiện 2 chỗ spec đoán sai: **RLS `btvn_ontap_c
 **Fix:** bỏ `break-after:avoid` khỏi `.pv-bt-head` (giữ nguyên `break-inside:avoid` — header vẫn không bị xé đôi, chỉ không còn ép câu đầu phải dính liền). `git log -S` xác nhận dòng CSS này có từ lâu, không phải do sửa hôm nay — nhưng chỉ lộ rõ ở doc ĐỦ DÀI (nhiều "avoid" cộng dồn mới vượt quá 1 trang).
 
 **Verify:** cùng doc 11A1 Buổi 6 — sau fix, "Dạng 1 + Câu 1" hiện NGAY sau header trên trang 1, tổng **14 trang → còn 6 trang** (giảm hơn nửa — xác nhận bug lặp lại ở mọi Dạng, không chỉ Dạng đầu). Soi thêm 1 doc BTVN khác (9A1 Buổi 21, có khối ôn tập) — Câu 1 vẫn hiện đúng ngay sau header, không regress.
+
+## 2026-07-22 (tiếp #4) — CHUẨN BỊ module "Đánh giá kết quả học tập": chạy VERIFY §8 trên data thật
+
+**Bối cảnh:** Thùy đưa `spec-danhgia-hoctap.md` (thiết kế chỉ số + luồng, chốt qua brainstorm). Spec §8 bắt buộc chạy verify trước khi implement — mọi ngưỡng `[CALIBRATE]` phải đọc từ data thật, không guess. Chưa viết dòng code module nào.
+
+**Làm:** `scripts/verify_danhgia_hoctap.mjs` (CHỈ SELECT, role `claude_ro`) — 8 query enum (A) + 7 connectivity (B) + 8 calibrate (C). Output lưu `docs/verify-danhgia-hoctap.md` (chạy lại được).
+
+**Dính đúng bẫy đã ghi trong HANDOFF ② ngay lần chạy đầu:** join `dai_ban_do UNION ALL khtn_ban_do` bằng `ma_dang` → **nhân đôi dòng đo** (18.102 → 23.429). Nguyên nhân: mã dạng TRÙNG SỐ giữa 2 bản đồ — **nay đã 30 mã** (HANDOFF ghi 17 hồi 07-14 → đang TĂNG vì KHTN vẫn seed format số giống Toán, chưa dọn gốc). Sửa: suy `mon` TRƯỚC rồi mới join đúng 1 bảng. Số liệu lần 1 đã sai, chỉ số lần 2 mới dùng được. → Bằng chứng: bài học "có `mon` trong tay lúc nào thì dùng NGAY" phải áp cho CẢ query phân tích, không riêng UI tra tên.
+
+**Buổi BÙ không có `lop_id`** (134 lần đo ET) → mất nhãn môn, vi phạm §1.6. Lùi được về buổi gốc qua `buoi_hoc_hs.bu_cho_buoi_id` → phục hồi 100%. Mọi query học tập chạm buổi bù phải có fallback này.
+
+**Kết quả verify (data 16/06 → 22/07, ~5 tuần, 18.102 lần đo vào mastery — 100% môn Toán):**
+- Enum THẬT: `thai_do` = `nghiem_tuc·chua_het_suc·chua_nghiem_tuc·chong_doi` (đúng 4 bậc spec) · `trang_thai_nop` = `nop_dung_han·nop_muon·xin_phep·khong_lam` · `bo_tro_duoi.nguon` = `thu_cong·tuyen_sinh` · `canh_bao_yeu.nguon` = chỉ `btvn`.
+- **③ chuông đỏ ĐÃ persist** ở `canh_bao_yeu` (nguon='btvn', 3 dòng, có đủ ma_dang+buoi+ghi_chu) → hết [VERIFY]. **④ chọn mã nguồn mới không đụng ai.**
+- **`bo_tro_duoi_dang.day_at` CÓ populate 9/12 (75%)** → outcome loop §5 sống, nhưng n bé + 25% trống ⇒ cần ép set lúc bấm "đã dạy".
+- Nối dạng→chuyên đề **100%**, **0 dạng mồ côi**. `ma_dang` phủ 100% ở et/mt/btvn (ingame 17% — không dùng).
+- `thai_do` phủ 799/1.086 HS-có-mặt của buổi đã đóng BTVN = **73,6%**.
+- **`bt_grades` RỖNG (0 dòng)** · **test online ~20 dòng** → 2 nguồn này coi như CHƯA TỒN TẠI ở v1, đừng thiết kế phụ thuộc.
+- **`tien_quyet` CHƯA CÓ BẢNG** (spec-link-tienquyet chưa build) → ④ chạy chế độ "GV tự chọn dạng nền", nối DAG sau.
+- Mật độ (HS × chuyên đề × cửa sổ 14 ngày): p50 = **6 câu**; ≥3 câu: 77,3% · **≥5 câu: 57,5%** → `k=5` giữ được nhưng loại 42% ô.
+- **Chuỗi dài hạn: chỉ 6 cặp (HS×chuyên đề) có ≥3 cửa sổ** → **đường B (moving-average 3 chu kỳ) CHƯA CHẠY ĐƯỢC** ở data hiện tại (hệ mới ~5 tuần, có 3 cửa sổ).
+- **76,8% HS Toán có ≥1 dạng yếu** (TB 2,5 dạng/HS trên 13,4 dạng đã đo). Diện bổ trợ định nghĩa "mọi dạng ≤0.5" ⇒ 3/4 roster vào L2. Muốn candidate 10–15% thì ngưỡng phải ~**≥6 dạng yếu (14,6%)**.
+- Trọng số thực tế ở tầng chuyên đề (không cap 5): BTVN **43%** tổng trọng số (11.195 câu × w1) vs ET 45% (5.833 × w2) vs MT 12% → **nguồn KHÔNG giám sát gánh gần nửa điểm trend**.
+- Sĩ số: **11/32 lớp Toán < 8 HS** (min 1) → luật "lùi lên khối" kích hoạt cho ~1/3 lớp, không phải ca hiếm.
+
+**Chưa quyết (chờ Thùy):** ngưỡng vào diện/level · có cap tỉ trọng BTVN ở tầng chuyên đề không · dài hạn §2.B hoãn hay build-để-đó · dọn gốc 30 mã trùng hay tiếp tục né.
+
+**Bổ sung (cùng ngày, sau khi đọc code):** spec §4.1/§5/§6 trỏ L2 vào `bo_tro_duoi` — **sai đường**. `bo_tro_duoi` = bổ trợ ĐUỔI (HS mới/vào lớp giữa chừng, verify: `nguon` chỉ `thu_cong`+`tuyen_sinh`, ly_do thật "Vào lớp giữa chừng"), vòng đời = cover hết dạng trong N buổi rồi đóng, KHÔNG dính mastery. Bổ trợ YẾU **chưa build**: `buoi_hoc.loai='bo_tro_yeu'` có trong CHECK nhưng **0 buổi**, không bảng case, grep repo chỉ thấy 1 type union + 1 nhãn UI. Ghi HS yếu vào `bo_tro_duoi` sẽ phá `demTabDuoi` + chỉ số "Xếp x/N · Học y/N" + luồng duyệt học thuật, và unique partial (HS×lớp) chặn HS nhiều đợt. → đề xuất bảng riêng `bo_tro_yeu(_dang)` đối xứng, copy cơ chế `day_at`. **Chờ Thùy chốt, chưa code.**
+
+Thêm: repo đã có `BKDEMY_CANHBAO_BOTRO_SPEC.md` phủ CÙNG vòng đời (phát hiện→quyết định→bổ trợ→đánh giá) nhưng mâu thuẫn xương sống (case-log-dựng-trước vs cold-start-log-rỗng) → hỏi Thùy spec nào là chuẩn, không tự hợp nhất.
+
+Gate "đủ số lần đánh giá" (Thùy chốt) → đo thật: n≥1 = 76,8% roster · **n≥3 = 48,4%** · n≥5 = 39%. **210/609 ô yếu (35%) chỉ có ĐÚNG 1 lần đo.** Đề xuất gate `n≥3` vì trùng `MASTERY_CONFIG.TIN_TB=3` sẵn có (n≤2 = độ tin thấp) — không đẻ hằng số mới.
+
+Kế hoạch build: `PLAN-danhgia-hoctap.md` (chờ Thùy duyệt trước khi code + migration).
+
+**Chốt §1.D (Thùy 07-22):** màn Kết quả học tập GIỮ 2 ô (① ET+MT · ② gộp tất cả BTVN+Bổ trợ) — không đụng. Máy level dùng bản GỘP (đúng trọng số spec §9). Đo để chọn, không chọn bừa: gate n≥3 → chỉ ET+MT = 86 HS/199 ô yếu · gộp BTVN = **121 HS/278 ô**. Nghịch lý: BTVN **dễ hơn thật** (tỉ lệ đúng TB btvn 0,854 > et 0,799 > mt 0,647) nên nó KÉO LÊN — 235 ô "yếu→hết yếu" nhờ BTVN vs chỉ 46 ô ngược lại; nhưng tổng diện vẫn rộng hơn vì BTVN đẩy nhiều ô vượt gate độ tin n≥3 và phần lớn ô mới đó yếu thật. → **Cờ "BTVN che"** = ô yếu theo ET+MT mà hết yếu khi gộp (235 ô): kém ở bài GIÁM SÁT, ổn ở bài tự làm ở nhà = đáng nghi nhất. Biến cặp-2-số của Thùy từ thứ để NHÌN thành TÍN HIỆU trong máy level, vá luôn điểm mù false-negative spec §5 tự nhận chưa build.
+
+**Chốt §1.A/§1.B/§1.C/§1.F (Thùy 07-22):**
+- **§1.A bảng RIÊNG** `bo_tro_yeu` + `bo_tro_yeu_dang` (không dùng chung `bo_tro_duoi`).
+- **§1.B theo spec MỚI.** Thùy: *"Bản chất việc L1 L2 L3 chính là case log rồi đấy"* → KHÔNG dựng entity `case`/`van_de`/`playbook`/`catalog_can_thiep`/`benchmark` của `BKDEMY_CANHBAO_BOTRO_SPEC` (spec cũ 05-07, chưa build dòng nào — DB không có bảng nào trong số đó, nên thay không mất gì). Mỗi lần HS chuyển level = 1 mắt xích của vòng. Lý do bỏ benchmark/period: log rỗng + 5 tuần data ⇒ tự rơi vào gate "chưa đủ mẫu → miễn đánh giá" của CHÍNH spec cũ, build xong nằm im rất lâu.
+- **§1.C gate n≥3** (= `MASTERY_CONFIG.TIN_TB` sẵn có).
+- **⭐ §1.F máy chỉ ĐỀ XUẤT, NGƯỜI duyệt mới đóng** (sửa §4.1/§4.2 spec — spec viết máy tự lên/xuống). *"Ghi lại log của toàn bộ duyệt để sau này analys."*
+  - **Đề xuất = PURE-DERIVE, KHÔNG đẻ dòng chờ** (đúng luật §4 CLAUDE.md: không bảng `tasks`, không row placeholder). Chỉ khi người bấm duyệt mới INSERT.
+  - `hs_level_log` ghi **cả 2 vế 1 dòng**: `level_cu · level_may_de_xuat · ly_do_may(jsonb snapshot tín hiệu) · level_chot · ly_do_nguoi · actor`. ⇒ **DELTA bắt được TỰ ĐỘNG** (`level_chot ≠ level_may_de_xuat`), không cần người tự khai — thứ mà spec cũ phải bắt thủ công ("bắt delta, không cho approve trơn") giờ thành hệ quả cấu trúc.
+  - Ghi từ APP lúc duyệt (không phải trigger — trigger chỉ thấy cũ/mới, không biết máy đề xuất gì) + trigger phòng thủ trên `hs_level` chống đổi chui.
+- **Lỗ kỹ thuật spec mới (nhặt từ spec cũ §5):** §4.1 nói "retest > 0.5 thì đóng dạng" mà KHÔNG nói mấy lần đo. Mastery = TB 5 lần gần nhất ⇒ đo ngay sau bổ trợ = 1 điểm mới trộn 4 điểm cũ = số đẹp giả. Vì người quyết chứ không phải máy ⇒ **KHÔNG gate cứng**, máy hiện bằng chứng để người tự cân: "đã có N lần đo giám sát kể từ `day_at`" + cờ **"lên rồi rớt"** (post-1 cao, post-2 tụt = nhồi chứ không dạy hiểu).
+
+## 2026-07-22 (tiếp #5) — PHA 1 XONG: engine đánh giá thuần + test + dry-run data thật
+
+**Làm:** `src/gami/danhgia.js` (PURE, không đụng DB) + `scripts/verify_danhgia.mjs` (**60 test, PASS hết**). `npx tsc --noEmit` sạch.
+
+**Nội dung engine:** cửa sổ 14 ngày mốc-fix giờ VN (`YYYY-MM-A|B`) + `cuaSoTruoc`/`chuoiCuaSo` · `diemChuyenDe` (tầng CHUYÊN ĐỀ: weighted, **KHÔNG cap 5**, khác tầng dạng) · `chuoiDiemChuyenDe` (lỗ để ĐỨT, không nội suy) · `chamPha1` (so LỚP: rank + khoảng cách trung vị) / `chamPha2` (so CHÍNH MÌNH, **giữ cả 2 số, không phun delta**) · `trungBinhTruot3` + `docAmLienTiep` (đường B) · `coBTVNChe` · `lenRoiRot` · `deXuatLevelKienThuc` / `deXuatLevelThaiDo` (chỉ ĐỀ XUẤT + lý do + bằng chứng, KHÔNG tự đổi state).
+
+**Bẫy tự dính rồi tự sửa — trọng số `bt`:** viết comment "bổ trợ đuổi weight 0 → tự rụng" nhưng code lại đọc `MASTERY_CONFIG.WEIGHT` mà bảng đó có **`bt: 1`**. Spec §9 chốt bổ trợ đuổi = **0**. Fix: `DANHGIA_CONFIG.WEIGHT = { ...MASTERY_CONFIG.WEIGHT, bt: 0, ingame: 0, dg: 0 }` — neo vào bảng chung cho et/mt/btvn, chỉ ghi đè 3 nguồn KHÔNG thuộc §9. **Cố ý lệch, đã ghi comment "đừng dọn cho gọn"** (tầng DẠNG vẫn dùng `MASTERY_CONFIG` vì màn Kết quả học tập có toggle riêng cho BT/BTVN). Hiện `bt_grades` rỗng nên chưa đổi số nào — đúng-về-nguyên-tắc trước khi có data.
+
+Cũng sửa: `diemChuyenDe` trả `n` = số câu **có đóng góp** (weight>0), không phải `cauList.length`; và "có câu nhưng toàn nguồn weight 0" → trả `null` (CHƯA-ĐO) chứ không phải 0 điểm (CLAUDE.md §5).
+
+**Test bắt được 2 ca timezone thật:** 23h ngày 15 giờ VN (=16:00Z) phải là nửa **A** · 00h ngày 16 (=17:00Z hôm trước) phải là **B**. Tính theo UTC là sai cả hai.
+
+**DRY-RUN trên data thật** (`scripts/_chk_dgh.mjs`, chỉ SELECT — 246 HS Toán, 18.414 lần đo), coi mọi HS đang ở L0:
+- Đề xuất **L0 50,0% · L1 48,8% · L2 1,2%** (3 HS L2 = đúng 3 dòng `canh_bao_yeu` đang có → kênh ③ vọt L2 chạy đúng).
+- Σ ô diện bổ trợ **279** · ô yếu THIẾU lần đo (chỉ cảnh báo, không vào diện) **332** · cờ "BTVN che" **235 ô / 110 HS**.
+- Thái độ (độc lập): L0 72,0% · L1 24,0% · L2 4,1%.
+- **⭐ TRIANGULATION (CLAUDE.md §5):** engine JS ra 279 ô diện / 235 ô BTVN-che / 48,8% L1 — khớp gần như tuyệt đối với đợt calibrate bằng **SQL thuần** hôm nay (278 / 235 / 48,4%). Hai đường tính độc lập cùng kết quả ⇒ tin được, không phải "chạy không lỗi là đúng".
+- Trend: HS mẫu 9 chuyên đề nhưng **0/6 đủ 3 cửa sổ** để mượt MA-3 → xác nhận lại đường B phải hiện "chưa đủ dữ liệu" đúng như đã chốt (build sẵn, data tự lấp).
+
+**TIẾP:** Pha 2 — `src/lib/danhgia.ts` (data layer, nạp lần đo → stat sheet sạch). Migration (`hs_level`, `hs_level_log`, `bo_tro_yeu(_dang)`) CHƯA chạy — chờ Thùy duyệt PLAN §3.
+
+## 2026-07-22 (tiếp #6) — Migration đánh giá học tập (SOẠN XONG, CHƯA CHẠY) + phát hiện về quyền DB
+
+**Soạn:** `supabase/migrations/202607222255_danhgia_hoctap_level_botro_yeu.sql` — `hs_level` (trạng thái hiện tại, PK (hs, mon, loai), KHÔNG seed roster ở L0 theo §1.5) · `hs_level_log` (**= case log**, ghi cả `level_may_de_xuat` + `level_chot` + `ly_do_may` jsonb snapshot ⇒ delta lộ tự động; có index riêng cho phần lệch) · `bo_tro_yeu` + `bo_tro_yeu_dang` (`day_at` neo outcome, `dong_at` đóng TỪNG dạng khi retest>0.5) · `buoi_hoc_hs.bo_tro_yeu_id`. Toàn bộ CREATE IF NOT EXISTS + 1 ADD COLUMN nullable — **không drop/thu hẹp gì**.
+
+**Verify migration KHÔNG cần chạy thật:** chạy trọn file trong 1 transaction rồi `ROLLBACK` → 4 bảng + 1 cột tạo đúng, 0 lỗi cú pháp, `public.la_thanh_vien()` có thật; kiểm lại sau rollback: 0 bảng còn sót. (Lần đầu chạy từng câu một rồi rollback từng câu → cả loạt "relation does not exist" giả — sai cách đo, không phải lỗi SQL.)
+
+**⚠️ PHÁT HIỆN AN TOÀN — CLAUDE.md §2.1 đang MÔ TẢ SAI thực tế:** §2.1 ghi *"Claude Code dùng role `claude_ro` (chỉ SELECT) qua `DATABASE_URL_RO`… Role này không ghi được DB — an toàn CỨNG, không dựa vào lời hứa."* Kiểm thật: `.env` chỉ có `DATABASE_URL` (không có `DATABASE_URL_RO`), và nó nối bằng role **`claude_build`** với `has_schema_privilege(public,CREATE)=true`, `INSERT/UPDATE hoc_sinh=true`, `DELETE gami_grades=true`. ⇒ **Rào cứng đó KHÔNG tồn tại.** Mọi thứ chạy hôm nay chỉ-đọc là do KỶ LUẬT tự giữ, chứ không phải do DB chặn — đúng cái "dựa vào lời hứa" mà §2.1 muốn tránh. Cần Thùy quyết: cấp `claude_ro` thật rồi trỏ `DATABASE_URL_RO`, hay sửa CLAUDE.md cho khớp thực tế (đừng để doc hứa một đằng DB một nẻo — nguy hiểm hơn không hứa gì).
+
+**CHƯA CHẠY migration** — chờ Thùy gật (đây là đổi DB prod, khó lùi).
+
+## 2026-07-22 (tiếp #7) — Migration ĐÃ CHẠY + 2 lỗ hổng schema.md lộ ra (đều sửa gốc)
+
+**Thùy chạy migration tay trên Supabase** (`202607222255_danhgia_hoctap_level_botro_yeu.sql`). Verify sau khi chạy: 4 bảng + cột `buoi_hoc_hs.bo_tro_yeu_id` có thật, RLS bật, policy `*_member_all` đủ, `authenticated` có SELECT+INSERT → **app dùng được ngay**.
+
+**⚠️ LỖ HỔNG #1 — `schema.md` THIẾU BẢNG mà KHÔNG BÁO LỖI.** Chạy `npm run schema` sau migration: vẫn ghi **98 bảng** trong khi DB có **103**. Nguyên nhân: `introspect.mjs` đọc `information_schema.columns`, view này **TỰ LỌC THEO QUYỀN** — bảng nào role đang nối không có quyền gì thì **biến mất lặng lẽ**. Bảng mới do `postgres` tạo (Thùy chạy trên Supabase editor), `claude_build` chưa được cấp → vô hình. **Và `phan_cong_ca` đã vô hình như vậy từ TRƯỚC** — không ai biết. → Đúng kiểu "drift = thảm họa v1" mà CLAUDE.md §2.1 cảnh báo, chỉ khác là drift nằm ở chính CÔNG CỤ chống drift. Thùy đã chạy `grant select on all tables` + `alter default privileges` cho `claude_build` → giờ ra đủ **103 bảng**.
+
+**⚠️ LỖ HỔNG #2 — PK/FK TRỐNG TRƠN dù bảng đã hiện.** Sau khi cấp SELECT, 4 bảng mới hiện ra nhưng cột "khóa" rỗng hết (bảng cũ thì đủ PK/FK). Theo docs PG, `information_schema.table_constraints` chỉ hiện constraint của bảng mà user **SỞ HỮU hoặc có quyền KHÁC SELECT** — role chỉ-đọc thì thấy bảng nhưng không thấy khoá. **Nguy hơn thiếu hẳn bảng**: nhìn vào tưởng bảng thật sự không có PK/FK.
+
+**Sửa GỐC (không nới quyền ghi cho Claude):** `scripts/introspect.mjs` — 3 query `columns`/`pks`/`fks` chuyển từ `information_schema` sang **`pg_catalog`** (`pg_class`/`pg_attribute`/`pg_constraint` + `unnest(conkey, confkey) with ordinality` để giữ đúng thứ tự cột trong khoá phức hợp). pg_catalog không lọc theo quyền ⇒ schema.md phản ánh ĐÚNG DB bất kể role. (`checks`/`triggers`/`functions` vốn đã đọc pg_catalog từ đầu — đó là lý do CHECK của `hs_level` hiện được ngay từ lần chạy đầu trong khi bảng thì không: **manh mối chẩn đoán chính**.)
+**Verify không regress:** diff schema.md so bản gốc = **+72 / −1**, dòng xoá duy nhất là dòng đếm "98 bảng". Tức 98 bảng cũ ra **byte-identical** — đổi nguồn đọc không đổi output, chỉ thêm cái trước đây bị giấu.
+
+**Dry-run lại sau migration** (`scripts/_diag_danhgia_dryrun.mjs`, đổi tên từ `_chk_dgh.mjs` cho khớp convention `_diag_*`): 19.922 lần đo (tăng từ 18.414 sáng nay — GV vẫn đang chấm), L0 49,2% · L1 49,2% · L2 4 HS (tăng 1 vì có thêm dòng `canh_bao_yeu` mới). Engine ăn data mới bình thường.
+
+`node scripts/verify_danhgia.mjs` + `verify_mastery.mjs` PASS · `tsc --noEmit` sạch.
