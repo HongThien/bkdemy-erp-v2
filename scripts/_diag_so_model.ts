@@ -8,16 +8,27 @@ import { getStatSheetLop, listCandidatesLop, goiGon } from '../src/lib/danhgia'
 import { SYSTEM, SCHEMA } from '../worker/danhgia_prompt.mjs'
 
 const envRaw = readFileSync('.env.local', 'utf8')
-const env = (k: string) => envRaw.match(new RegExp(`^\s*${k}\s*=\s*(.+?)\s*$`, 'm'))?.[1]?.replace(/^["']|["']$/g, '')
+// ⚠ ĐỪNG dùng regex trong template literal cho việc này. Bản trước viết
+//   `^\s*${k}\s*=\s*(.+?)\s*$` nhưng chỉ có MỘT dấu \ → JS đọc `\s` thành ký tự 's'
+//   → regex hoá ra `s*=s*(.+?)` → chữ `s*` sau dấu = ĂN MẤT chữ "s" đầu của key
+//   (`sk-ant-...` → `k-ant-...`) → 401 invalid_api_key, mà nhìn key vẫn "trông đúng".
+//   Tách dòng rồi cắt tại dấu = là hết cả lớp lỗi này.
+const env = (k: string) => {
+  const line = envRaw.split(/\r?\n/).find((l) => l.trim().startsWith(k + '='))
+  return line ? line.slice(line.indexOf('=') + 1).trim().replace(/^["']|["']$/g, '') : undefined
+}
 const claude = new Anthropic({ apiKey: env('ANTHROPIC_API_KEY')! })
 const [, email, pass] = (env('VITE_DEV_ACCOUNTS') as string).split(';')[0].split('|')
 await supabase.auth.signInWithPassword({ email, password: pass })
 
-const GIA: Record<string, { vao: number; ra: number }> = {
+const GIA_DAY_DU: Record<string, { vao: number; ra: number }> = {
   'claude-opus-4-8': { vao: 5, ra: 25 },
   'claude-sonnet-5': { vao: 2, ra: 10 },   // giá KM tới 31/8/2026
   'claude-haiku-4-5': { vao: 1, ra: 5 },
 }
+// Chạy 1 model: MODELS=claude-opus-4-8 npx vite-node ...  (mặc định chạy cả 3 để so mù)
+const chon = process.env.MODELS?.split(',').map((s) => s.trim())
+const GIA = chon ? Object.fromEntries(chon.map((m) => [m, GIA_DAY_DU[m]])) : GIA_DAY_DU
 const USD_VND = 26_000
 
 const tenLop = process.argv[2] ?? '9S1'

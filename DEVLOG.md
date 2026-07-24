@@ -2639,3 +2639,21 @@ Vì sao lệch owner: migration cũ chạy qua `claude_build`; migration hôm na
 **VẪN CHƯA KIỂM ĐƯỢC** (401 chặn trước khi tới tầng validate): `output_config` mang ĐỒNG THỜI `effort` + `format` — tài liệu nêu riêng từng cái. Có key thật là biết ngay.
 
 **Bài học quy trình:** sinh file .ts bằng python heredoc qua bash làm `\n` bị diễn giải thành xuống dòng thật → chuỗi vỡ, sửa vòng vo 4 lượt. Lần sau viết thẳng bằng công cụ ghi file, đừng sinh code qua nhiều tầng escaping.
+
+## 2026-07-23 (tiếp) — GỌI THẬT LẦN ĐẦU: Opus 4.8 trên lớp 11B1
+
+**Bug chặn 3 lượt: regex đọc key ĂN MẤT chữ đầu của key.** `_diag_so_model.ts` sinh qua python heredoc → `\s` thành `\s`, mà **`\s` trong template literal JS bị đọc thành ký tự `'s'`** → regex hoá ra `^s*KEYs*=s*(.+?)s*$` → cụm `s*` sau dấu `=` **khớp luôn chữ "s" đầu của `sk-ant-...`** → gửi đi `k-ant-...` → 401. Nhìn `.env.local` thấy key 108 ký tự đúng y, không ai nghi ra.
+Cách bắt: so hàm `env()` của worker (đúng, `\s`) với bản trong script (hỏng, `\s`) trên **cùng một file** → worker 108 · script 107, và 20 ký tự đầu lệch đúng 1 vị trí.
+⚠ Trước đó Claude đã chẩn đoán SAI hai lượt (đổ cho key hỏng, rồi đổ cho regex rụng ký tự cuối) vì test qua `node -e` trong bash — **escaping của shell làm sai lệch chính phép đo**. Chỉ khi ghi ra FILE THẬT rồi chạy mới ra đúng. Bài học: đo escaping thì đừng đo qua thêm một tầng escaping.
+**Worker KHÔNG dính** (dùng `\s` đúng). Đã thay regex trong script bằng tách dòng + cắt tại `=` — hết cả lớp lỗi này.
+
+**✅ XÁC NHẬN ĐIỀU CÒN TREO:** `output_config` mang ĐỒNG THỜI `effort` + `format` **chạy bình thường**, không 400. Cấu hình hiện tại hợp lệ.
+
+**Kết quả thật (11B1, 4/7 em có tín hiệu):** 88,2s · vào 6.245 · ra 5.025 · **4.078 đ** · `cache_read = 0` (đúng như dự đoán: system prompt 1.540 token, dưới ngưỡng 4.096 của Opus). Kiểm tự động: **không bịa mã dạng nào**.
+
+**Ước lượng trước THIẾU ~2,3 lần** (1.792 đ vs 4.078 đ thật) — sai chủ yếu ở token suy nghĩ (ước 2.760, thật 5.025). Từ nay lấy số thật, bỏ bảng ước.
+
+**Chất lượng — Claude nêu được thứ rule engine KHÔNG thấy:** dạng `11010502` có điểm 5-lần-gần-nhất = 0 ở 3/4 em NHƯNG điểm chỉ-giám-sát lại 0.6–1 → nó đặt nghi vấn **"có thể do đề BTVN dạng này có vấn đề, không phải các em kém"**. Đó là suy luận cấp LỚP về chất lượng DỮ LIỆU, rule engine per-HS không thể ra. Ngoài ra: xếp `11010202` (giám sát = 0) ưu tiên hơn `11010502` vì bằng chứng giám sát nặng hơn; và tự chặn `11020103` "mới 1 lần đo, chưa đủ căn cứ" — đúng luật 3 + luật 8 của prompt.
+
+**Nhịp Thùy chốt: 2 tuần/lần** (khớp 2 cửa sổ 14 ngày/tháng). Đo thật: chỉ **~60% lớp có em cần đọc**, lớp không có ai bị chặn từ `taoAiJob` nên không tốn tiền → ~25 lượt/lần quét.
+Chi phí THẬT theo nhịp này: **Opus 204k đ/tháng** (499 đ/HS/tháng) · Sonnet 5 82k · Haiku 41k · **Batch API còn một nửa**.
