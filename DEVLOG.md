@@ -2624,3 +2624,18 @@ Vì sao lệch owner: migration cũ chạy qua `claude_build`; migration hôm na
 **Quy tắc từ nay:** thêm bảng/cột lên DB đang chạy = **đưa SQL cho Thùy dán vào Supabase SQL Editor**, file migration trong repo chỉ để from-scratch. Đừng bảo chạy `npm run migrate` trên prod.
 
 **Kèm luôn `alter table … owner to claude_build`** vào mọi SQL đưa Thùy dán — bảng tạo qua SQL Editor thuộc sở hữu `postgres`, RLS chặn role Claude Code, `schema.md` chiếu thiếu **mà không báo lỗi** (đã dính đúng vụ này với 4 bảng level hôm qua + `phan_cong_ca` vô hình rất lâu).
+
+## 2026-07-23 (tiếp) — Model configurable + script SO MODEL (đo thay vì cãi)
+
+**Thùy hỏi: "claude hay chatgpt tốt hơn" · "có cần opus 4.8 không" · "AI nào phù hợp nhất".** Trả lời trung thực: với việc NÀY khoảng cách giữa các hãng nhỏ, vì **phần khó đã do code làm xong** (tính mastery, dò trend, bắt dạng tụt, áp ngưỡng, lọc ai cần đọc). Model chỉ còn đọc bảng nhỏ đã sạch + áp luật đã viết rõ + viết vài câu tiếng Việt — không phải chỗ cần model mạnh nhất. Claude tự nhận có thiên vị khi tự đánh giá mình, nên **dựng công cụ để Thùy tự đo** thay vì tranh luận.
+
+- `DANHGIA_MODEL` / `DANHGIA_EFFORT` đọc từ `.env.local` → đổi model KHÔNG cần sửa code.
+- **Bug tự gây, tự bắt:** đặt `const MODEL = env(...)` **TRƯỚC** khi khai báo hàm `env()` → TDZ, worker chết ngay khi khởi động. Chạy thử mới lộ. Đã chuyển xuống sau + ghi cảnh báo tại chỗ.
+- Tách `worker/danhgia_prompt.mjs` (SYSTEM + SCHEMA dùng chung) — trước đó script so sánh phải tự cắt chuỗi từ worker; sửa prompt là số liệu so sánh **sai thầm lặng**.
+- `scripts/_diag_so_model.ts`: chạy CÙNG 1 lớp thật qua Opus 4.8 / Sonnet 5 / Haiku 4.5 → in **BẢN A/B/C KHÔNG kèm tên model** (so mù, tránh định kiến thương hiệu) → cuối mới tiết lộ + chi phí thật. Kèm **kiểm tự động: model nào bịa mã dạng không có trong stat sheet** — đây là rủi ro nguy hiểm nhất (bịa số → TA xử lý sai học sinh), quan trọng hơn văn hay.
+
+**Chạy thử → 401 `invalid x-api-key`.** Soi hình dạng key (KHÔNG in giá trị): dài **23 ký tự, chứa `...`** ⇒ Thùy dán nhầm **bản rút gọn Console hiển thị** (`sk-ant-...jgAA`), không phải key thật (~100 ký tự). Console chỉ hiện key đầy đủ 1 lần lúc tạo → phải tạo key mới. **Cách soi an toàn: in độ dài + 6 ký tự đầu + 4 ký tự cuối, không bao giờ in cả key.**
+
+**VẪN CHƯA KIỂM ĐƯỢC** (401 chặn trước khi tới tầng validate): `output_config` mang ĐỒNG THỜI `effort` + `format` — tài liệu nêu riêng từng cái. Có key thật là biết ngay.
+
+**Bài học quy trình:** sinh file .ts bằng python heredoc qua bash làm `\n` bị diễn giải thành xuống dòng thật → chuỗi vỡ, sửa vòng vo 4 lượt. Lần sau viết thẳng bằng công cụ ghi file, đừng sinh code qua nhiều tầng escaping.
