@@ -7,6 +7,9 @@ import { readFileSync } from 'node:fs'
 import Anthropic from '@anthropic-ai/sdk'
 
 const src = readFileSync('worker/danhgia.mjs', 'utf8')
+// SYSTEM + SCHEMA đã tách sang file dùng chung (worker và script so model cùng đọc
+// một nguồn, khỏi lệch). Soi cả hai file.
+const promptSrc = readFileSync('worker/danhgia_prompt.mjs', 'utf8')
 let fail = 0
 const ok = (c, m) => { if (!c) { console.error('✗', m); fail++ } else console.log('✓', m) }
 
@@ -14,19 +17,25 @@ const ok = (c, m) => { if (!c) { console.error('✗', m); fail++ } else console.
 const c = new Anthropic({ apiKey: 'sk-ant-fake-for-shape-check' })
 ok(typeof c.messages?.create === 'function', 'SDK có client.messages.create')
 
-// 2. Model string — phải khớp danh mục, KHÔNG được tự chế hậu tố ngày
-const model = src.match(/const MODEL = '([^']+)'/)?.[1]
-ok(model === 'claude-opus-4-8', `model = ${model} (đúng chuỗi trong danh mục, không hậu tố ngày)`)
+// 2. Model string — mọi model được phép chọn phải nằm trong danh mục THẬT.
+// Model giờ đọc từ env (đổi khỏi sửa code) nên soi cả mặc định lẫn danh sách gợi ý
+// trong comment — chặn kiểu tự chế hậu tố ngày (`claude-opus-4-8-20260101` → 404).
+const HOP_LE = new Set(['claude-opus-4-8', 'claude-opus-4-7', 'claude-sonnet-5', 'claude-sonnet-4-6', 'claude-haiku-4-5', 'claude-fable-5'])
+const macDinh = src.match(/const MODEL = .*?\?\?\s*'([^']+)'/)?.[1]
+ok(HOP_LE.has(macDinh), `model mặc định = ${macDinh} (có trong danh mục)`)
+const neuTrongComment = [...src.matchAll(/claude-[a-z0-9-]+/g)].map((m) => m[0])
+const la = neuTrongComment.filter((m) => !HOP_LE.has(m))
+ok(la.length === 0, la.length ? `model KHÔNG có trong danh mục: ${[...new Set(la)].join(', ')}` : 'không có model string lạ nào trong file')
 
 // 3. Rút SCHEMA ra kiểm ràng buộc structured outputs.
-// Tự trích + eval tại chỗ (KHÔNG sinh file tạm rồi import — file tạm bị quên xoá
-// là script sau chạy trên schema CŨ mà không ai biết).
+// SCHEMA nằm ở file dùng chung; eval tại chỗ (KHÔNG sinh file tạm rồi import —
+// file tạm bị quên xoá là script sau chạy trên schema CŨ mà không ai biết).
 let SCHEMA = null
 try {
-  const i = src.indexOf('const SCHEMA = {'), j = src.indexOf('async function phan')
-  SCHEMA = new Function(src.slice(i, j).replace('const SCHEMA =', 'return'))()
+  const i = promptSrc.indexOf('export const SCHEMA = {')
+  SCHEMA = new Function(promptSrc.slice(i).replace('export const SCHEMA =', 'return'))()
 } catch { /* để ok() bên dưới báo */ }
-ok(!!SCHEMA, 'trích được SCHEMA')
+ok(!!SCHEMA, 'trích được SCHEMA (từ worker/danhgia_prompt.mjs)')
 if (SCHEMA) {
   const loi = []
   const duyet = (s, path = '$') => {
