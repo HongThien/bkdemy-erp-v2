@@ -2612,3 +2612,15 @@ Vì sao lệch owner: migration cũ chạy qua `claude_build`; migration hôm na
 
 **Chi phí đo trên payload THẬT** (`scripts/_diag_danhgia_chiphi.ts`, tỷ giá 26k): 1 lớp TB ≈ 2.888 đ · quét hết **42 lớp/tuần ≈ 121k đ/tuần ≈ 522k đ/tháng**. Rẻ hơn: Sonnet 5 (KM tới 31/8) 209k/tháng · Haiku 4.5 104k/tháng · **Batch API −50%** (hợp nhịp digest tuần của spec §6, chờ tối đa 24h).
 ⚠ Đây là **ƯỚC LƯỢNG** (quy đổi ký tự→token, ước token suy nghĩ). Số THẬT in ở log worker sau lượt gọi đầu (`usage`) — lấy số đó thay bảng này.
+
+## 2026-07-23 (tiếp) — ⚠️ BẪY: `npm run migrate` KHÔNG dùng được cho DB đang chạy
+
+**Claude hướng dẫn sai, Thùy chạy và gặp lỗi:** `npm run migrate` → `Applying 0001_kho_canonical_knowledge.sql ... FAIL — relation "dai_ban_do" already exists`.
+
+**Gốc rễ:** `scripts/migrate.mjs` **KHÔNG có bảng theo dõi migration nào cả** — nó `readdirSync` toàn bộ `supabase/migrations/*.sql`, sort theo tên, rồi áp **TẤT CẢ từ file 0001** mỗi lần chạy. Đây là công cụ **dựng DB từ TRỐNG** (migrate-from-scratch), KHÔNG phải công cụ áp migration mới lên DB prod. Khớp với ghi chú đã có trong mig 0113: *"Đã áp tay trên DB prod; file này để migrate-from-scratch không lệch lại"* — tức quy trình THẬT của repo là **áp tay trên Supabase SQL Editor**, file trong repo chỉ để dựng lại từ đầu.
+
+**Không mất gì:** mỗi file chạy trong 1 transaction; file đầu fail → `rollback` → dừng. Xác nhận sau sự cố: 103 bảng · `dai_ban_do` 462 · `gami_grades` 23.377 · `hoc_sinh` 409 — nguyên vẹn.
+
+**Quy tắc từ nay:** thêm bảng/cột lên DB đang chạy = **đưa SQL cho Thùy dán vào Supabase SQL Editor**, file migration trong repo chỉ để from-scratch. Đừng bảo chạy `npm run migrate` trên prod.
+
+**Kèm luôn `alter table … owner to claude_build`** vào mọi SQL đưa Thùy dán — bảng tạo qua SQL Editor thuộc sở hữu `postgres`, RLS chặn role Claude Code, `schema.md` chiếu thiếu **mà không báo lỗi** (đã dính đúng vụ này với 4 bảng level hôm qua + `phan_cong_ca` vô hình rất lâu).
