@@ -2671,3 +2671,17 @@ Chi phí THẬT theo nhịp này: **Opus 204k đ/tháng** (499 đ/HS/tháng) · 
 Verify trên app thật (dev server, đăng nhập bằng nút DEV — không nhập mật khẩu): màn render đúng, có nút gạt 2 model, 0 lỗi console. `tsc` sạch · `verify_danhgia` 72 test · `verify_danhgia_claude` 14 mục PASS.
 
 **Chờ Thùy chạy:** `alter table danhgia_ai_job add column if not exists model_chon text;` — chưa có cột thì bấm nút sẽ lỗi insert.
+
+## 2026-07-23 (tiếp) — Worker 401 dù key ĐÚNG: tiến trình cũ giữ key cũ trong bộ nhớ
+
+**Triệu chứng:** worker báo `401 API key is invalid.` 3 lần rồi bỏ cuộc, trong khi script chạy tay với CÙNG key lại thành công.
+
+**Nguyên nhân: worker đọc `.env.local` ĐÚNG MỘT LẦN lúc khởi động.** Tiến trình được bật từ lúc key còn là placeholder 23 ký tự; sau đó Thùy cắm key thật vào file nhưng tiến trình vẫn giữ key cũ trong bộ nhớ → 401 vĩnh viễn dù nhìn file thấy key đúng.
+
+**Hai manh mối chỉ đúng hướng ngay từ log, không cần đoán:**
+1. Dòng job in `đang hỏi Claude…` — bản code hiện tại đã đổi thành `· <model> · đang hỏi…` ⇒ tiến trình chạy code CŨ.
+2. Thông báo `"API key is invalid."` + `request_id: null`, KHÁC `"invalid x-api-key"` + có request_id mà script gặp ⇒ hai loại key sai khác nhau (key rác vs key sai định dạng).
+
+**Sửa — chết sớm thay vì đốt 3 lượt mỗi job:** worker kiểm key NGAY lúc khởi động — soi hình dạng (`sk-ant-`, ≥90 ký tự, không chứa `...`) rồi gọi `models.list()` (**KHÔNG tốn token**). Sai thì thoát ngay kèm nhắc *"vừa sửa .env.local thì nhớ KHỞI ĐỘNG LẠI worker"*.
+
+**Job 9A1 (15 em, Sonnet 5) đã đưa về `pending`** để chạy lại khi worker mới bật — stat sheet đã đóng băng từ lúc bấm nên không cần tạo lại.

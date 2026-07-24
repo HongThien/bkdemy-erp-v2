@@ -55,7 +55,9 @@ export function sortETCaus<T extends ETCauLike>(caus: T[], ch: CauHinh): T[] {
     .map((x) => x.c)
 }
 // file_url = link PDF public (bucket 'kho-tailieu') của bản export GẦN NHẤT — ghi đè mỗi lần "🔗 Lấy link" (uploadPagesAsLink, PrintView.tsx). "🖨 In / Xuất PDF" giờ dùng native window.print(), không upload.
-export type TaiLieu = { id: string; loai: string; ten: string; khoi: string; mon: string; ma_chuyen_de: string | null; theme: string; cau_hinh?: CauHinh; created_at?: string; updated_at?: string; created_by?: string | null; file_url?: string | null }
+// stt_lop = SỐ BUỔI CỦA LỚP (1,2,3…) cho doc vận hành bám (lop_id, ngay) — xem §"Bộ giáo trình riêng
+// của lớp" phía dưới. NULL với master/ET/đề thi (không thuộc lớp nào).
+export type TaiLieu = { id: string; loai: string; ten: string; khoi: string; mon: string; ma_chuyen_de: string | null; theme: string; cau_hinh?: CauHinh; created_at?: string; updated_at?: string; created_by?: string | null; file_url?: string | null; stt_lop?: number | null }
 // kieu = KIỂU HIỂN THỊ của block (phan): 'thuong'(1 cột) | '2cot' | '3cot' | '4cot' | … (registry mở rộng). Câu giữ ma_dang.
 export type BlockKieu = 'thuong' | '2cot' | '3cot' | '4cot'
 export const BLOCK_KIEU: { v: BlockKieu; lbl: string; cols: number }[] = [

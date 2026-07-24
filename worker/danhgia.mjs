@@ -125,7 +125,27 @@ async function chay() {
   }
 }
 
-console.log(`[danhgia] worker chạy · model ${MODEL} · quét mỗi ${POLL_MS / 1000}s`)
+// ── KIỂM KEY NGAY LÚC KHỞI ĐỘNG ────────────────────────────────────────────
+// ⚠ Worker đọc .env.local ĐÚNG MỘT LẦN lúc khởi động. Sửa key trong file mà không
+//   khởi động lại thì nó vẫn dùng key cũ trong bộ nhớ — đã dính: worker bật từ lúc
+//   key còn là placeholder, sau đó key thật được cắm nhưng worker vẫn 401 mãi.
+//   `models.list()` KHÔNG tốn token → kiểm được miễn phí, chết sớm còn hơn để mỗi
+//   job đốt 3 lượt thử rồi mới báo 'failed'.
+if (!/^sk-ant-/.test(ANTHROPIC_KEY) || ANTHROPIC_KEY.length < 90 || ANTHROPIC_KEY.includes('...')) {
+  console.error(`❌ ANTHROPIC_API_KEY trông không giống key thật (dài ${ANTHROPIC_KEY.length} ký tự${ANTHROPIC_KEY.includes('...') ? ', còn dấu "..."' : ''}).`)
+  console.error('   Key thật dài ~108 ký tự, bắt đầu bằng sk-ant-. Console chỉ hiện đầy đủ 1 lần lúc tạo —')
+  console.error('   nếu đã lỡ, tạo key mới ở console.anthropic.com → Settings → API keys.')
+  process.exit(1)
+}
+try {
+  await claude.models.list()
+} catch (e) {
+  console.error('❌ Key bị Anthropic từ chối:', e?.error?.error?.message ?? e?.message ?? e)
+  console.error('   Nếu vừa sửa .env.local thì nhớ KHỞI ĐỘNG LẠI worker — nó chỉ đọc file 1 lần lúc bật.')
+  process.exit(1)
+}
+
+console.log(`[danhgia] worker chạy · model mặc định ${MODEL} · quét mỗi ${POLL_MS / 1000}s`)
 let dangChay = false
 setInterval(async () => {
   if (dangChay) return // 1 job 1 lúc — gọi Claude tốn tiền, không chồng lệnh
