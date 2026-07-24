@@ -1,7 +1,7 @@
 // KHO TÀI LIỆU = bảng tổng MỌI tài liệu đã tạo trong hệ (giáo trình · ET · MT · chuyên đề…).
 // Cột thông tin + nút IN (giáo trình→PrintView, ET→ETPrintView) + Nhân bản (tái sử dụng) + Xoá.
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { listAllTaiLieu, deleteTaiLieu, duplicateTaiLieu, updateTaiLieu, type TaiLieu } from '../../lib/tailieu'
+import { listAllTaiLieu, deleteTaiLieu, duplicateTaiLieu, updateTaiLieu, renumberBuoiLop, type TaiLieu } from '../../lib/tailieu'
 import { phatHanhTest, PHAT_HANH_DUOC } from '../../lib/testonline'
 import { listLinkGenJobs, type LinkGenJobRow } from '../../lib/linkgen'
 import { listLop, type Lop } from '../../lib/nhansu'
@@ -147,6 +147,11 @@ export default function KhoTaiLieuScreen() {
       const created = await duplicateTaiLieu(dup.id, { ten, lop_id: l.id, ngay: dupNgay })
       // ⭐ 07-12: bản sao ĐỦ NỘI DUNG ngay (copy từ nguồn) — enqueue link luôn, không đợi bấm.
       useStore.getState().enqueueLinkGen(created.id, created.loai)
+      // ⭐ 07-24: bản sao GT/BTVN gắn lớp = thêm 1 buổi vào bộ giáo trình của lớp → đánh số lại cả lớp
+      // (tên + tiêu đề buổi mang số CỦA LỚP, kể cả bản sao vừa tạo — nó đang mang tên chép từ nguồn).
+      if (['giao_trinh_buoi', 'btvn'].includes(created.loai)) {
+        for (const d of await renumberBuoiLop(l.id)) useStore.getState().enqueueLinkGen(d.id, d.loai)
+      }
       setDup(null)
       reload()
     } catch (e: any) { setDupErr(e.message ?? String(e)) } finally { setDupBusy(false) }
@@ -264,7 +269,9 @@ export default function KhoTaiLieuScreen() {
                           <button onClick={() => useStore.getState().enqueueLinkGen(r.id, r.loai)} title="Tạo lại link (dùng khi mãi không thấy link, hoặc nội dung vừa đổi ở nơi khác)"
                             className="shrink-0 rounded-md border border-slate-200 px-2 py-1 text-[12px] text-slate-400 hover:border-sky-300 hover:text-sky-600">↻</button>
                           <button onClick={() => nhanBan(r)} className="shrink-0 rounded-md border border-slate-200 px-2.5 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-300">Nhân bản</button>
-                          <button onClick={async () => { if (confirm(`Xoá “${r.ten}”?`)) { await deleteTaiLieu(r.id); reload() } }} className="shrink-0 rounded-md border border-slate-200 px-2.5 py-1 text-[12px] text-slate-400 hover:border-rose-300 hover:text-rose-600">Xoá</button>
+                          {/* Xoá 1 buổi GIỮA lịch của lớp ⇒ các buổi sau dồn số (deleteTaiLieu tự đánh
+                              số lại cả lớp) → doc nào đổi tiêu đề buổi thì phải làm mới link PDF. */}
+                          <button onClick={async () => { if (confirm(`Xoá “${r.ten}”?`)) { for (const d of await deleteTaiLieu(r.id)) useStore.getState().enqueueLinkGen(d.id, d.loai); reload() } }} className="shrink-0 rounded-md border border-slate-200 px-2.5 py-1 text-[12px] text-slate-400 hover:border-rose-300 hover:text-rose-600">Xoá</button>
                         </div>
                       </td>
                     </tr>

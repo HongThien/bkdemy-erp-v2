@@ -369,11 +369,9 @@ function Doc({ full, gv, scope, lt = true, onlyBuoiId }: { full: TaiLieuFull; gv
   const linesByCau = ch.btvnLinesByCau ?? {}
   let buois = buildBuois(phans)
   if (onlyBuoiId) buois = buois.filter((b) => b.id === onlyBuoiId)
-  // Đánh số dạng (trên lớp) LIÊN TỤC toàn giáo trình theo ma_dang (vd buổi1: dạng1,2 · buổi2: dạng3,4).
-  // Tính trên `phans` GỐC (không lọc) kể cả khi onlyBuoiId → số dạng khớp với bản in cả giáo trình.
-  const dangNoByMa: Record<string, number> = {}
-  let n = 0
-  for (const p of phans) if (p.loai_phan === 'dang' && p.ref_ma && !(p.ref_ma in dangNoByMa)) dangNoByMa[p.ref_ma] = ++n
+  // ⭐ 07-24 (Thùy chốt): BỎ đánh số dạng chạy 1,2,3… toàn giáo trình — số đó nhảy mỗi lần thêm/bớt/đổi
+  // thứ tự dạng nên "Dạng 5" của bản in hôm nay ≠ hôm qua ≠ trong builder → đối chiếu là loạn. Tiêu đề
+  // dạng giờ mang MÃ DẠNG của bản đồ kiến thức (bất biến, trỏ thẳng về đúng KP) — xem DangBlock/BtvnSheet.
   return (
     // .pv-rh/.pv-rf = running elements → paged.js đặt vào margin box (header/footer) MỌI trang.
     <div className={`pv-doc${scope === 'btvn' ? ' pv-doc-btvn' : ''}`} style={{ '--pv-accent': accent } as CSSProperties}>
@@ -392,18 +390,18 @@ function Doc({ full, gv, scope, lt = true, onlyBuoiId }: { full: TaiLieuFull; gv
       {/* QUYỂN BTVN riêng = chỉ các phiếu BTVN (mỗi buổi). Còn lại = giáo trình (skip BTVN nếu 'giaotrinh'). */}
       {scope === 'btvn'
         ? buois.filter((b) => b.btvns.some((x) => x.caus.length) || b.ontaps.some((x) => x.caus.length)).map((b) => (
-          <BtvnSheet key={b.id} btvns={b.btvns} ontaps={b.ontaps} gv={gv} docTitle={taiLieu.ten} buoiTitle={b.title} dangNoByMa={dangNoByMa} linesByCau={linesByCau} isBtvnDoc={taiLieu.loai === 'btvn'} />
+          <BtvnSheet key={b.id} btvns={b.btvns} ontaps={b.ontaps} gv={gv} docTitle={taiLieu.ten} buoiTitle={b.title} linesByCau={linesByCau} isBtvnDoc={taiLieu.loai === 'btvn'} />
         ))
         : buois.map((b) => (
-          <BuoiBlock key={b.id} buoi={b} gv={gv} scope={scope} lt={lt} docTitle={taiLieu.ten} ltCd={ltChuyenDe} tenCd={tenChuyenDe} dangNoByMa={dangNoByMa} linesByCau={linesByCau} />
+          <BuoiBlock key={b.id} buoi={b} gv={gv} scope={scope} lt={lt} docTitle={taiLieu.ten} ltCd={ltChuyenDe} tenCd={tenChuyenDe} linesByCau={linesByCau} />
         ))}
     </div>
   )
 }
 
 // 1 BUỔI: tiêu đề buổi → [LT chuyên đề + các dạng] gom theo chuyên đề → phiếu BTVN của buổi.
-function BuoiBlock({ buoi, gv, scope, lt = true, docTitle, ltCd, tenCd, dangNoByMa, linesByCau }: {
-  buoi: Buoi; gv: boolean; scope: 'all' | 'giaotrinh'; lt?: boolean; docTitle: string; ltCd: Record<string, { noi_dung: string; file_url: string | null; ten_file: string | null } | null>; tenCd: Record<string, string>; dangNoByMa: Record<string, number>; linesByCau: Record<string, number>
+function BuoiBlock({ buoi, gv, scope, lt = true, docTitle, ltCd, tenCd, linesByCau }: {
+  buoi: Buoi; gv: boolean; scope: 'all' | 'giaotrinh'; lt?: boolean; docTitle: string; ltCd: Record<string, { noi_dung: string; file_url: string | null; ten_file: string | null } | null>; tenCd: Record<string, string>; linesByCau: Record<string, number>
 }) {
   // Gom dạng liền nhau theo chuyên đề → mỗi nhóm hiện LT chuyên đề 1 lần (buổi tách chuyên đề vẫn có LT).
   const groups: { cd: string; dangs: PhanResolved[] }[] = []
@@ -420,11 +418,11 @@ function BuoiBlock({ buoi, gv, scope, lt = true, docTitle, ltCd, tenCd, dangNoBy
           {/* 1 chuyên đề: chỉ "Lý thuyết" (tên chuyên đề ĐÃ ở dải buổi → khỏi lặp). Nhiều chuyên đề: ghi tên để phân biệt.
               Ẩn cả khối chuyên đề nếu MỌI dạng trong nhóm đều tắt hien_lt (vd buổi chỉ ôn dạng cũ). */}
           {lt && g.dangs.some((d) => d.hien_lt !== false) && <LtBlock title={groups.length > 1 ? `Lý thuyết chuyên đề: ${tenCd[g.cd] ?? ''}` : 'Lý thuyết'} lt={ltCd[g.cd]} big />}
-          {g.dangs.map((d) => <DangBlock key={d.id} no={dangNoByMa[d.ref_ma ?? ''] ?? 0} p={d} gv={gv} lt={lt} />)}
+          {g.dangs.map((d) => <DangBlock key={d.id} p={d} gv={gv} lt={lt} />)}
         </div>
       ))}
       {scope === 'all' && (buoi.btvns.some((b) => b.caus.length) || buoi.ontaps.some((b) => b.caus.length)) && (
-        <BtvnSheet btvns={buoi.btvns} ontaps={buoi.ontaps} gv={gv} docTitle={docTitle} buoiTitle={buoi.title} dangNoByMa={dangNoByMa} linesByCau={linesByCau} />
+        <BtvnSheet btvns={buoi.btvns} ontaps={buoi.ontaps} gv={gv} docTitle={docTitle} buoiTitle={buoi.title} linesByCau={linesByCau} />
       )}
     </section>
   )
@@ -465,10 +463,10 @@ export function CauList({ kieu, children }: { kieu?: string; children: React.Rea
   )
 }
 
-function DangBlock({ no, p, gv, lt = true }: { no: number; p: PhanResolved; gv: boolean; lt?: boolean }) {
+function DangBlock({ p, gv, lt = true }: { p: PhanResolved; gv: boolean; lt?: boolean }) {
   return (
     <section className="pv-sec">
-      <h2 className="pv-h-dang">Dạng {no}: {p.dang?.ten_dang ?? p.ref_ma}</h2>
+      <h2 className="pv-h-dang">Dạng {p.ref_ma}: {p.dang?.ten_dang ?? p.ref_ma}</h2>
       {lt && p.hien_lt !== false && p.lyThuyetDang?.noi_dung?.trim() && (
         <div className="pv-box-lt"><div className="pv-box-label">Lý thuyết · Ví dụ</div><LyThuyetBody text={p.lyThuyetDang.noi_dung} /></div>
       )}
@@ -482,8 +480,8 @@ function DangBlock({ no, p, gv, lt = true }: { no: number; p: PhanResolved; gv: 
 
 // BTVN của 1 BUỔI = phiếu RIÊNG (sang trang mới), nhóm theo DẠNG (mirror trên lớp). HS viết thẳng vào dòng kẻ.
 // Đầu phiếu: tiêu đề = tên tài liệu · trái = Họ tên + Lớp · phải = ô Điểm. Bản GV = đáp án (bỏ ô điền, hiện lời giải).
-function BtvnSheet({ btvns, ontaps = [], gv, docTitle, buoiTitle, dangNoByMa, linesByCau, isBtvnDoc = false }: {
-  btvns: PhanResolved[]; ontaps?: PhanResolved[]; gv: boolean; docTitle: string; buoiTitle: string; dangNoByMa: Record<string, number>; linesByCau: Record<string, number>; isBtvnDoc?: boolean
+function BtvnSheet({ btvns, ontaps = [], gv, docTitle, buoiTitle, linesByCau, isBtvnDoc = false }: {
+  btvns: PhanResolved[]; ontaps?: PhanResolved[]; gv: boolean; docTitle: string; buoiTitle: string; linesByCau: Record<string, number>; isBtvnDoc?: boolean
 }) {
   return (
     <section className="pv-sec pv-btvn">
@@ -514,7 +512,7 @@ function BtvnSheet({ btvns, ontaps = [], gv, docTitle, buoiTitle, dangNoByMa, li
         let bno = 0
         const dangBlock = (b: PhanResolved) => (
           <div key={b.id} className="pv-sec">
-            <h2 className="pv-h-dang">Dạng {dangNoByMa[b.ref_ma ?? ''] ?? ''}: {b.dang?.ten_dang ?? b.ref_ma}</h2>
+            <h2 className="pv-h-dang">Dạng {b.ref_ma}: {b.dang?.ten_dang ?? b.ref_ma}</h2>
             {/* Số câu đếm LIÊN TỤC xuyên các dạng (dạng 1: 1,2 → dạng 2: 3,4,5…) — KHÔNG reset mỗi dạng,
                 kể cả sang khối Ôn tập bên dưới (đếm 1 mạch hết phiếu, đúng spec §7.1). */}
             <CauList kieu={b.kieu}>{b.caus.map((c) => { bno += 1; return <CauItem key={c.ma_cau} no={bno} c={c} gv={gv} lines={gv ? 0 : (linesByCau[c.ma_cau] ?? DEFAULT_BTVN_LINES)} /> })}</CauList>

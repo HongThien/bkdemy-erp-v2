@@ -109,9 +109,15 @@ export async function updateTaiLieu(id: string, patch: Partial<Pick<TaiLieu, 'te
   const { error } = await supabase.from('tai_lieu').update({ ...patch, updated_at: new Date().toISOString() }).eq('id', id)
   if (error) throw error
 }
-export async function deleteTaiLieu(id: string): Promise<void> {
+// Trả về doc bị ĐỔI TÊN/SỐ BUỔI theo (xoá 1 buổi giữa lịch ⇒ các buổi sau của lớp dồn số) — caller
+// enqueueLinkGen cho chúng. Xoá doc không thuộc lớp nào → mảng rỗng.
+export async function deleteTaiLieu(id: string): Promise<{ id: string; loai: string }[]> {
+  const { data: row } = await supabase.from('tai_lieu').select('lop_id, loai').eq('id', id).maybeSingle()
   const { error } = await supabase.from('tai_lieu').delete().eq('id', id) // cascade phan + cau
   if (error) throw error
+  const r = row as { lop_id: string | null; loai: string } | null
+  if (!r?.lop_id || !LOAI_DOC_LOP.includes(r.loai)) return []
+  return renumberBuoiLop(r.lop_id)
 }
 // Ghi link PDF public sau khi "🔗 Lấy link" upload lên Storage xong (uploadPagesAsLink, PrintView.tsx).
 // KHÔNG đụng updated_at — đây là tác dụng phụ của xuất-file, không phải người dùng sửa nội dung tài liệu.
@@ -311,14 +317,12 @@ export async function setDangOfBuoi(taiLieuId: string, buoiId: string, maDangs: 
   const firstMarkerIdx = phans.findIndex((p) => p.loai_phan === 'buoi')
   const order: string[] = []
   if (firstMarkerIdx > 0) for (let k = 0; k < firstMarkerIdx; k++) order.push(phans[k].id) // giữ phan rời (data cũ) ở đầu
-  // GIỮ thứ tự dạng hiện có (reorder tay không bị xoá); dạng MỚI chèn cạnh chuyên đề cùng họ (LT chuyên đề vẫn 1 lần), không có thì append cuối.
-  const cdOf = (ma: string) => ma.slice(0, 6) // 6 ký tự đầu ma_dang = ma_chuyen_de
-  const targetOrder = target.order.filter((ma) => maDangs.includes(ma))
-  for (const ma of maDangs.filter((m) => !target.order.includes(m))) {
-    let idx = -1
-    for (let i = targetOrder.length - 1; i >= 0; i--) if (cdOf(targetOrder[i]) === cdOf(ma)) { idx = i; break }
-    if (idx >= 0) targetOrder.splice(idx + 1, 0, ma); else targetOrder.push(ma)
-  }
+  // ⭐ 07-24 (Thùy chốt): THỨ TỰ = ĐÚNG THỨ TỰ NGƯỜI CHỌN trong picker — chọn trước ra trước, chọn sau
+  // ra sau. Trước đây dạng mới bị TỰ CHÈN cạnh dạng cùng chuyên đề (để LT chuyên đề gom 1 lần) → người
+  // soạn chọn theo mạch dạy nhưng bản in lại nhảy chỗ, không đoán được. Gom LT chuyên đề vẫn chạy (nó
+  // gom các dạng LIỀN NHAU cùng chuyên đề, xem PrintView.BuoiBlock) — chỉ là không tự sắp xếp lại nữa.
+  // Dạng đã có mà picker giữ nguyên → vẫn ở đúng chỗ vì picker nhận `selected` = thứ tự hiện tại.
+  const targetOrder = maDangs
   for (const m of markers) {
     order.push(m.id)
     const g = m.id === buoiId
@@ -457,13 +461,101 @@ export async function duplicateTaiLieu(srcId: string, over: { ten: string; lop_i
 
 // Copy 1 phan (+ câu) sang tài liệu khác. GIỮ `kieu` (kiểu cột) — xem ghi chú ở duplicateTaiLieu.
 // Export (không chỉ dùng nội bộ trichXuatBuoi) — MT dùng lại y hệt cho "gán vào buổi" (mt.ts).
-export async function copyPhanInto(targetId: string, p: TaiLieuPhan, thu_tu: number): Promise<void> {
-  const np = await addPhan({ tai_lieu_id: targetId, thu_tu, loai_phan: p.loai_phan, ref_ma: p.ref_ma, tieu_de: p.tieu_de, noi_dung: p.noi_dung, kieu: p.kieu })
+// `over` = ghi đè vài trường khi copy (hiện chỉ `tieu_de` — mốc buổi của doc lớp phải mang SỐ BUỔI CỦA
+// LỚP, không phải số của giáo trình gốc; xem §"Bộ giáo trình riêng của lớp").
+export async function copyPhanInto(targetId: string, p: TaiLieuPhan, thu_tu: number, over?: { tieu_de?: string }): Promise<void> {
+  const np = await addPhan({ tai_lieu_id: targetId, thu_tu, loai_phan: p.loai_phan, ref_ma: p.ref_ma, tieu_de: over?.tieu_de ?? p.tieu_de, noi_dung: p.noi_dung, kieu: p.kieu })
   const { data: caus } = await supabase.from('tai_lieu_cau').select('ma_cau, thu_tu').eq('phan_id', p.id).order('thu_tu').limit(LIMIT)
   if (caus?.length) await supabase.from('tai_lieu_cau').insert((caus as any[]).map((c) => ({ phan_id: np.id, ma_cau: c.ma_cau, thu_tu: c.thu_tu })))
 }
+// ════════ BỘ GIÁO TRÌNH RIÊNG CỦA LỚP (Thùy 07-24) ══════════════════════════════════════════════
+// 1 master (vd 10 buổi) gán cho nhiều lớp, mỗi lớp học một TẬP CON khác nhau (9A1: buổi 1,2,3,6,7,8,10
+// · 9A2: buổi 1..7). Doc đã gán của một lớp = BỘ GIÁO TRÌNH CỦA RIÊNG LỚP ĐÓ: nội dung ánh xạ từ master
+// (nguon_id/nguon_buoi) nhưng SỐ THỨ TỰ BUỔI LÀ SỐ CỦA LỚP — buổi thứ 7 của 9A1 là buổi 10 của master
+// nhưng với 9A1 nó vẫn là "Buổi 7". Trước đây doc copy nguyên tiêu đề master → phiếu in ra "Buổi 10".
+// Số của lớp = HẠNG CỦA NGÀY trong lịch đã gán của lớp (không phải "số lúc tạo": gán chèn vào giữa
+// lịch thì các buổi sau phải dồn số) ⇒ mọi thao tác gán/gán lại/xoá đều gọi renumberBuoiLop.
+
+const LOAI_DOC_LOP = ['giao_trinh_buoi', 'btvn'] // doc vận hành bám (lớp+ngày) = một buổi của lớp
+// Thay SỐ trong tiêu đề buổi bằng số của lớp, GIỮ phần tên chuyên đề phía sau ("Buổi 10: Hằng đẳng
+// thức" → "Buổi 7: Hằng đẳng thức"). Tiêu đề không theo mẫu "Buổi N" → gắn số vào trước.
+export function tieuDeBuoiLop(tieuDeMaster: string | null | undefined, stt: number): string {
+  const t = (tieuDeMaster ?? '').trim()
+  if (/^buổi\s*\d+/i.test(t)) return t.replace(/^buổi\s*\d+/i, `Buổi ${stt}`)
+  return t ? `Buổi ${stt} · ${t}` : `Buổi ${stt}`
+}
+const tenDocBuoi = (loai: string, tenLop: string, ngay: string, tieuDe: string) =>
+  `${loai === 'btvn' ? 'BTVN' : 'GT'} ${tenLop} ${ngay.split('-').reverse().join('/')} · ${tieuDe}`
+
+// Đánh lại số buổi CHO CẢ LỚP theo thứ tự ngày. Trả về doc nào đã ĐỔI NỘI DUNG HIỂN THỊ (tên/tiêu đề
+// buổi in ra giấy) → caller enqueueLinkGen cho chúng (lib không import store, tránh vòng phụ thuộc).
+export async function renumberBuoiLop(lopId: string): Promise<{ id: string; loai: string }[]> {
+  const { data: lopRow } = await supabase.from('lop').select('ten_lop').eq('id', lopId).single()
+  const tenLop = (lopRow as { ten_lop?: string } | null)?.ten_lop ?? ''
+  const { data, error } = await supabase.from('tai_lieu').select('id, loai, ngay, ten, stt_lop')
+    .eq('lop_id', lopId).in('loai', LOAI_DOC_LOP).limit(LIMIT)
+  if (error) throw error
+  const rows = (data ?? []) as { id: string; loai: string; ngay: string | null; ten: string; stt_lop: number | null }[]
+  const docs = rows.filter((r) => r.ngay)
+  if (!docs.length) return []
+  // 'YYYY-MM-DD' so chuỗi = so thời gian (không dựng Date — CLAUDE.md §2 cấm new Date('YYYY-MM-DD')).
+  const ngays = [...new Set(docs.map((r) => r.ngay as string))].sort()
+  const sttOf = new Map(ngays.map((n, i) => [n, i + 1]))
+  // Mốc 'buoi' của từng doc — 1 query cho cả lớp (đừng listPhan từng doc: N round-trip).
+  const { data: mk } = await supabase.from('tai_lieu_phan').select('id, tai_lieu_id, tieu_de')
+    .in('tai_lieu_id', docs.map((r) => r.id)).eq('loai_phan', 'buoi').limit(LIMIT)
+  const markerOf = new Map(((mk ?? []) as { id: string; tai_lieu_id: string; tieu_de: string | null }[]).map((p) => [p.tai_lieu_id, p]))
+  const changed: { id: string; loai: string }[] = []
+  for (const r of docs) {
+    const stt = sttOf.get(r.ngay as string) as number
+    const marker = markerOf.get(r.id)
+    const tieuDe = tieuDeBuoiLop(marker?.tieu_de, stt)
+    const ten = tenDocBuoi(r.loai, tenLop, r.ngay as string, tieuDe)
+    let doi = false
+    if (marker && marker.tieu_de !== tieuDe) { await updatePhan(marker.id, { tieu_de: tieuDe }); doi = true }
+    const patch: Record<string, unknown> = {}
+    if (r.stt_lop !== stt) patch.stt_lop = stt
+    if (r.ten !== ten) { patch.ten = ten; doi = true }
+    if (Object.keys(patch).length) {
+      const { error: e2 } = await supabase.from('tai_lieu').update(patch).eq('id', r.id)
+      if (e2) throw e2
+    }
+    if (doi) changed.push({ id: r.id, loai: r.loai })
+  }
+  return changed
+}
+
+// 1 buổi trong BỘ GIÁO TRÌNH CỦA LỚP: số của lớp + ngày + doc GT/BTVN + buổi gốc bên master.
+export type BuoiLop = { stt: number; ngay: string; tieu_de: string; nguon_id: string | null; nguon_buoi: string | null; gt: TaiLieu | null; btvn: TaiLieu | null }
+export async function listGiaoTrinhLop(lopId: string): Promise<BuoiLop[]> {
+  const { data, error } = await supabase.from('tai_lieu').select('*')
+    .eq('lop_id', lopId).in('loai', LOAI_DOC_LOP).order('ngay').limit(LIMIT)
+  if (error) throw error
+  const rows = (data ?? []).filter((r: { ngay: string | null }) => r.ngay) as (TaiLieu & { ngay: string; nguon_id: string | null; nguon_buoi: string | null })[]
+  const byNgay = new Map<string, BuoiLop>()
+  for (const r of rows) {
+    const b = byNgay.get(r.ngay) ?? { stt: r.stt_lop ?? 0, ngay: r.ngay, tieu_de: '', nguon_id: r.nguon_id, nguon_buoi: r.nguon_buoi, gt: null, btvn: null }
+    if (r.loai === 'btvn') b.btvn = r; else b.gt = r
+    if (r.stt_lop) b.stt = r.stt_lop
+    if (r.nguon_buoi) { b.nguon_id = r.nguon_id; b.nguon_buoi = r.nguon_buoi }
+    byNgay.set(r.ngay, b)
+  }
+  const out = [...byNgay.values()].sort((a, b) => a.ngay.localeCompare(b.ngay))
+  // Tiêu đề buổi = mốc 'buoi' THẬT trong doc (đúng cái in ra giấy), không parse ngược từ tên file.
+  const { data: mk } = rows.length ? await supabase.from('tai_lieu_phan').select('tai_lieu_id, tieu_de')
+    .in('tai_lieu_id', rows.map((r) => r.id)).eq('loai_phan', 'buoi').limit(LIMIT) : { data: [] }
+  const tieuDeOf = new Map(((mk ?? []) as { tai_lieu_id: string; tieu_de: string | null }[]).map((p) => [p.tai_lieu_id, p.tieu_de]))
+  out.forEach((b, i) => {
+    if (!b.stt) b.stt = i + 1
+    b.tieu_de = tieuDeBuoiLop(tieuDeOf.get(b.gt?.id ?? '') ?? tieuDeOf.get(b.btvn?.id ?? '') ?? null, b.stt)
+  })
+  return out
+}
+
 // TRÍCH XUẤT 1 buổi của giáo trình master → doc con BÁM (lớp+ngày): "Giáo trình buổi X" (lý thuyết+luyện) và/hoặc "BTVN buổi X".
 // loai con: 'giao_trinh_buoi' (vận hành) · 'btvn' (vận hành). Master (giao_trinh) = phát triển. Cả 3 hiện ở Kho.
+// Số buổi ghi vào doc + mốc buổi là SỐ CỦA LỚP (xem §"Bộ giáo trình riêng của lớp"), KHÔNG phải số của
+// master — `opts.tenBuoi` (tên buổi bên master) chỉ còn dùng làm phần chữ phía sau số.
 export async function trichXuatBuoi(masterId: string, buoiPhanId: string, opts: { lopId: string; ngay: string; khoi: string; tenLop: string; tenBuoi: string; giaoTrinh: boolean; btvn: boolean }): Promise<TaiLieu[]> {
   const phans = await listPhan(masterId)
   const { data: master } = await supabase.from('tai_lieu').select('cau_hinh, theme, mon').eq('id', masterId).single()
@@ -476,26 +568,32 @@ export async function trichXuatBuoi(masterId: string, buoiPhanId: string, opts: 
     else if (phans[j].loai_phan === 'btvn') btvnPhans.push(phans[j])
   }
   const { data: { user } } = await supabase.auth.getUser()
-  const ngayVn = opts.ngay.split('-').reverse().join('/')
-  const mk = async (loai: string, ten: string): Promise<TaiLieu> => {
+  // Số buổi của LỚP cho ngày này = hạng của ngày trong lịch đã gán (kể cả ngày này nếu chưa có).
+  // Tính TRƯỚC khi insert để đặt tên/tiêu đề đúng ngay; renumberBuoiLop cuối hàm chốt lại cả lớp.
+  const { data: dsNgay } = await supabase.from('tai_lieu').select('ngay')
+    .eq('lop_id', opts.lopId).in('loai', LOAI_DOC_LOP).limit(LIMIT)
+  const ngays = [...new Set([...((dsNgay ?? []) as { ngay: string | null }[]).map((r) => r.ngay).filter(Boolean) as string[], opts.ngay])].sort()
+  const stt = ngays.indexOf(opts.ngay) + 1
+  const tieuDeLop = tieuDeBuoiLop(marker.tieu_de ?? opts.tenBuoi, stt)
+  const mk = async (loai: string): Promise<TaiLieu> => {
     // Re-trích = THAY THẾ doc cũ cùng (lớp+ngày+loại) — chống trùng (unique uq_tai_lieu_van_hanh).
     await supabase.from('tai_lieu').delete().eq('loai', loai).eq('lop_id', opts.lopId).eq('ngay', opts.ngay)
     const { data, error } = await supabase.from('tai_lieu').insert({
-      loai, ten, khoi: opts.khoi, mon: (master as any)?.mon ?? 'Toán', theme: (master as any)?.theme ?? 'bkdemy', cau_hinh: (master as any)?.cau_hinh ?? {},
-      lop_id: opts.lopId, ngay: opts.ngay, nguon_id: masterId, nguon_buoi: buoiPhanId, created_by: user?.id ?? null,
+      loai, ten: tenDocBuoi(loai, opts.tenLop, opts.ngay, tieuDeLop), khoi: opts.khoi, mon: (master as any)?.mon ?? 'Toán', theme: (master as any)?.theme ?? 'bkdemy', cau_hinh: (master as any)?.cau_hinh ?? {},
+      lop_id: opts.lopId, ngay: opts.ngay, nguon_id: masterId, nguon_buoi: buoiPhanId, stt_lop: stt, created_by: user?.id ?? null,
     }).select().single()
     if (error) throw error
     return data as TaiLieu
   }
   const out: TaiLieu[] = []
   if (opts.giaoTrinh) {
-    const nw = await mk('giao_trinh_buoi', `GT ${opts.tenLop} ${ngayVn} · ${opts.tenBuoi}`)
-    let t = 0; await copyPhanInto(nw.id, marker, t++); for (const p of dangPhans) await copyPhanInto(nw.id, p, t++)
+    const nw = await mk('giao_trinh_buoi')
+    let t = 0; await copyPhanInto(nw.id, marker, t++, { tieu_de: tieuDeLop }); for (const p of dangPhans) await copyPhanInto(nw.id, p, t++)
     out.push(nw)
   }
   if (opts.btvn && btvnPhans.length) {
-    const nw = await mk('btvn', `BTVN ${opts.tenLop} ${ngayVn} · ${opts.tenBuoi}`)
-    let t = 0; await copyPhanInto(nw.id, marker, t++); for (const p of btvnPhans) await copyPhanInto(nw.id, p, t++)
+    const nw = await mk('btvn')
+    let t = 0; await copyPhanInto(nw.id, marker, t++, { tieu_de: tieuDeLop }); for (const p of btvnPhans) await copyPhanInto(nw.id, p, t++)
     out.push(nw)
   }
   return out

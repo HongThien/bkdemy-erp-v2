@@ -2,7 +2,7 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-103 bảng · 0 enum · 10 trigger · 27 function
+104 bảng · 0 enum · 10 trigger · 27 function
 
 ## bai_lam
 
@@ -449,6 +449,26 @@
 |---|---|---|---|---|---|
 | id | text |  | ('TT'::text \|\| lpad((nextval('dai_tt_seq'::regclass))::text, 4, '0'::text)) | PK |  |
 | ten | text |  |  |  |  |
+
+## danhgia_ai_job
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| lop_id | uuid |  |  | FK→lop.id |  |
+| mon | text |  |  |  |  |
+| stat_sheet | jsonb |  |  |  |  |
+| trang_thai | text |  | 'pending'::text |  | `pending` · `processing` · `done` · `failed` |
+| attempt | integer |  | 0 |  |  |
+| ket_qua | jsonb | Y |  |  |  |
+| model | text | Y |  |  |  |
+| usage | jsonb | Y |  |  |  |
+| error | text | Y |  |  |  |
+| created_by | uuid | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+| done_at | timestamp with time zone | Y |  |  |  |
+| model_chon | text | Y |  |  |  |
 
 ## diem_thi
 
@@ -1120,6 +1140,7 @@
 | mon | text |  | 'Toán'::text |  |  |
 | hoc_sinh_id | uuid | Y |  | FK→hoc_sinh.id |  |
 | file_url | text | Y |  |  |  |
+| stt_lop | integer | Y |  |  |  |
 
 ## tai_lieu_cau
 

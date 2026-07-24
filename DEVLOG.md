@@ -2685,3 +2685,40 @@ Verify trên app thật (dev server, đăng nhập bằng nút DEV — không nh
 **Sửa — chết sớm thay vì đốt 3 lượt mỗi job:** worker kiểm key NGAY lúc khởi động — soi hình dạng (`sk-ant-`, ≥90 ký tự, không chứa `...`) rồi gọi `models.list()` (**KHÔNG tốn token**). Sai thì thoát ngay kèm nhắc *"vừa sửa .env.local thì nhớ KHỞI ĐỘNG LẠI worker"*.
 
 **Job 9A1 (15 em, Sonnet 5) đã đưa về `pending`** để chạy lại khi worker mới bật — stat sheet đã đóng băng từ lúc bấm nên không cần tạo lại.
+
+## 2026-07-24 — Giáo trình: bộ RIÊNG của lớp · dạng theo MÃ · thứ tự chọn
+
+**Thùy nêu 3 việc** (làm song song với dashboard học tập — không đụng chung file):
+
+**1. Mỗi lớp phải có BỘ GIÁO TRÌNH RIÊNG, số buổi của lớp.** 1 master gán cho nhiều lớp nhưng mỗi lớp
+học một tập con khác nhau (9A1: buổi 1,2,3,6,7,8,10 · 9A2: 1..7). Doc trích xuất copy NGUYÊN tiêu đề mốc
+buổi của master → phiếu in ra sai số. Soi DB xác nhận đúng triệu chứng: buổi thứ 13 của 9A2 mang tiêu đề
+*"Buổi 7 : Bất đẳng thức"*, buổi thứ 16 mang *"Buổi 22: …"*; 9A1 buổi thứ 7 là *"Buổi 8"*, thứ 8 là *"Buổi 10"*.
+
+- Migration `202607241517_giao_trinh_rieng_cua_lop` — thêm `tai_lieu.stt_lop` (+ index từng phần). **KHÔNG
+  đẻ bảng mới**: doc vận hành đã bám `(lop_id, ngay)` + `nguon_id/nguon_buoi` (đường ánh xạ về master),
+  chỉ thiếu đúng một thứ là số buổi TRONG LỚP.
+- `stt_lop` = **hạng của NGÀY** trong lịch đã gán của lớp, KHÔNG phải "số lúc tạo" — gán chèn vào giữa
+  lịch thì buổi sau phải dồn số ⇒ `renumberBuoiLop(lopId)` tính lại cả lớp, chạy sau MỌI thao tác đổi tập
+  buổi (gán · gán lại · xoá doc ở Kho · nhân bản có gắn lớp). GT + BTVN cùng ngày = cùng một buổi ⇒ cùng số.
+- `tieuDeBuoiLop()` thay SỐ nhưng GIỮ phần chữ: *"Buổi 22: GTLN-GTNN"* → *"Buổi 16: GTLN-GTNN"*. Đã test
+  10 ca lấy từ tiêu đề THẬT trong DB + **idempotent** (chạy lại không cộng dồn số) bằng file `.mjs`.
+- Đổi tiêu đề buổi = đổi nội dung in ra giấy ⇒ `renumberBuoiLop` trả về danh sách doc đã đổi để caller
+  `enqueueLinkGen` (lib không import store — tránh vòng phụ thuộc).
+- UI panel "Gán lớp" tách 2 cột: trái = buổi của giáo trình gốc + nút gán (hàng đã gán hiện thêm badge
+  *"→ Buổi k của lớp"*), phải = **📚 Giáo trình riêng của lớp** (buổi 1..N theo ngày, badge GT/BTVN, ghi
+  chú "từ buổi m của giáo trình gốc"). Nút **↻ Đánh số lại** cho các lớp đã gán TỪ TRƯỚC — dữ liệu cũ chỉ
+  đổi khi người dùng chủ động bấm (hoặc khi gán buổi mới), không tự ý sửa hàng loạt.
+
+**2. Bỏ đánh số dạng chạy 1,2,3… → hiện MÃ DẠNG của bản đồ kiến thức.** Số chạy nhảy mỗi lần thêm/bớt/đổi
+thứ tự dạng nên "Dạng 5" hôm nay ≠ hôm qua ≠ trong builder → đối chiếu là loạn. Mã dạng bất biến và trỏ
+thẳng về đúng KP (đơn vị chân lý HS × dạng). Áp cả builder (thẻ dạng + cây trái), bản in (giáo trình +
+phiếu BTVN) và màn xem trước ôn tập — bỏ hẳn `dangNoByMa`, không còn nguồn đánh số thứ hai.
+
+**3. Thứ tự dạng = ĐÚNG THỨ TỰ CHỌN.** Trước: picker trả về theo thứ tự BẢN ĐỒ và `setDangOfBuoi` còn tự
+chèn dạng mới cạnh dạng cùng chuyên đề → người soạn không nắn được thứ tự. Giờ `[...sel]` (JS Set giữ thứ
+tự chèn) và `setDangOfBuoi` dùng nguyên thứ tự truyền vào. Gom lý thuyết chuyên đề vẫn chạy (nó gom các
+dạng LIỀN NHAU cùng chuyên đề) — chỉ là không tự sắp xếp lại nữa.
+
+`tsc` sạch · `vite build` sạch · migration đã áp (`_apply_one`) · `schema.md` refresh. **Chưa soi được trên
+app thật**: cổng dev đang bị phiên khác (dashboard học tập) chiếm, preview không mở được.

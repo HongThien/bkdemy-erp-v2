@@ -3,7 +3,7 @@
 // Không có gì ghi DB cho tới lúc Xác nhận — Huỷ = không có BTVN nào ra đời, mở lại bất cứ lúc nào sau đó
 // (trạng thái "đã GT, chưa BTVN" tự derive từ listTrichXuat, không cần nhớ ý định ở đâu khác).
 import { useEffect, useState } from 'react'
-import { trichXuatBuoi, khoCuaMon, DEFAULT_BTVN_LINES, type PhanResolved } from '../../lib/tailieu'
+import { trichXuatBuoi, renumberBuoiLop, khoCuaMon, DEFAULT_BTVN_LINES, type PhanResolved } from '../../lib/tailieu'
 import { type CauHoi } from '../../lib/kho/api'
 import { saveOnTapConfig, appendOnTapToBtvnDoc, fetchCausByMa, fetchTenDangByMa, type OnTapConfig } from '../../lib/ontap'
 import { useStore } from '../../store/useStore'
@@ -53,6 +53,8 @@ export default function OnTapConfirmScreen({ masterId, buoiId, tenBuoi, lopId, t
         const { matChet } = await appendOnTapToBtvnDoc(btvnDoc.id, masterId, buoiId, lopId, mon)
         if (matChet.length) alert(`${matChet.length} câu ôn tập không còn trong kho (đã xoá/đổi mã) — mở ✎ Ôn tập ở Kho tài liệu để thay câu khác.`)
       }
+      // Số buổi là số CỦA LỚP → chốt lại cả lớp; doc nào đổi tiêu đề/tên thì làm mới link PDF.
+      for (const d of await renumberBuoiLop(lopId)) useStore.getState().enqueueLinkGen(d.id, d.loai)
       onConfirmed()
     } finally { setBusy(false) }
   }
@@ -90,7 +92,7 @@ export default function OnTapConfirmScreen({ masterId, buoiId, tenBuoi, lopId, t
               {regularShown.length === 0 && ontapPreview.length === 0 && <p className="text-center text-[13px] italic text-slate-400">Buổi này chưa có câu BTVN nào ở giáo trình.</p>}
               {regularShown.map((b) => (
                 <div key={b.id} className="pv-sec">
-                  <h2 className="pv-h-dang">Dạng: {b.dang?.ten_dang ?? b.ref_ma}</h2>
+                  <h2 className="pv-h-dang">Dạng {b.ref_ma}: {b.dang?.ten_dang ?? b.ref_ma}</h2>
                   <CauList kieu={b.kieu}>{b.caus.map((c) => { bno += 1; return <CauItem key={c.ma_cau} no={bno} c={c} gv={gv} lines={gv ? 0 : DEFAULT_BTVN_LINES} /> })}</CauList>
                 </div>
               ))}

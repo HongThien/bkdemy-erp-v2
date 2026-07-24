@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import {
   getTaiLieuFull, updateTaiLieu, updatePhan, setCauOfPhan,
-  addBuoi, deleteBuoi, setDangOfBuoi, reorderDangInBuoi, autoSuggestByLoai, autoSuggestBtvn, trichXuatBuoi, listTrichXuat, khoCuaMon, setPhanKieu, setPhanHienLt, BLOCK_KIEU,
+  addBuoi, deleteBuoi, setDangOfBuoi, reorderDangInBuoi, autoSuggestByLoai, autoSuggestBtvn, trichXuatBuoi, listTrichXuat, listGiaoTrinhLop, renumberBuoiLop, tieuDeBuoiLop, khoCuaMon, setPhanKieu, setPhanHienLt, BLOCK_KIEU,
   DEFAULT_LUYEN_COUNTS, DEFAULT_BTVN_COUNTS, DEFAULT_BTVN_LINES,
-  type TaiLieuFull, type PhanResolved, type CauHinh, type TrichState,
+  type TaiLieuFull, type PhanResolved, type CauHinh, type TrichState, type BuoiLop,
 } from '../../lib/tailieu'
 import { groupMap, LOAI_CAU, type CauHoi, type Tier1Node } from '../../lib/kho/api'
 import { listLop, type Lop } from '../../lib/nhansu'
@@ -93,7 +93,6 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
   const linesByCau = ch.btvnLinesByCau ?? {}
   const mon = full.taiLieu.mon                    // môn của tài liệu → chọn kho (Toán dai_ / KHTN khtn_)
   const cauTbl = khoCuaMon(mon).cauTbl
-  let dangNo = 0
 
   return (
     <div className="flex h-full flex-col bg-[#fafafb]">
@@ -132,10 +131,9 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
           <div className="mx-auto max-w-[860px] space-y-4">
             {buois.length === 0 && <div className="rounded-xl border border-dashed border-slate-300 bg-white p-6 text-center text-[13px] text-slate-400">Chưa có buổi nào. Bấm “+ Thêm buổi” để bắt đầu.</div>}
             {buois.map((b) => {
-              const startNo = dangNo; dangNo += b.dangs.length
               return (
                 <BuoiCard
-                  key={b.marker.id} buoi={b} startNo={startNo} linesByCau={linesByCau} onLine={onLine} onLineAll={onLineAll}
+                  key={b.marker.id} buoi={b} linesByCau={linesByCau} onLine={onLine} onLineAll={onLineAll}
                   onRename={(t) => updatePhan(b.marker.id, { tieu_de: t }).then(reload).then(markSaved)}
                   onDelete={async () => { if (confirm('Xoá cả buổi này (gồm dạng trên lớp + BTVN)?')) { await deleteBuoi(id, b.marker.id); await reload(); markSaved() } }}
                   onChonDang={() => setDangPicker({ buoiId: b.marker.id, selected: b.dangs.map((d) => d.ref_ma!).filter(Boolean) })}
@@ -160,8 +158,8 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
 }
 
 // ── 1 BUỔI: tiêu đề (sửa được) + nút Chọn dạng + danh sách dạng (mỗi dạng có Bài luyện + BTVN) ──
-function BuoiCard({ buoi, startNo, linesByCau, onLine, onLineAll, onRename, onDelete, onChonDang, onReorderDang, onApply, openPicker, cauTbl, onSetKieu, onSetHienLt, usedExcept, onPreview }: {
-  buoi: BuoiUI; startNo: number; linesByCau: Record<string, number>; onLine: (maCau: string, n: number) => void; onLineAll: (maCaus: string[], n: number) => void
+function BuoiCard({ buoi, linesByCau, onLine, onLineAll, onRename, onDelete, onChonDang, onReorderDang, onApply, openPicker, cauTbl, onSetKieu, onSetHienLt, usedExcept, onPreview }: {
+  buoi: BuoiUI; linesByCau: Record<string, number>; onLine: (maCau: string, n: number) => void; onLineAll: (maCaus: string[], n: number) => void
   onRename: (t: string) => void; onDelete: () => void; onChonDang: () => void; onReorderDang: (order: string[]) => void
   onApply: (phanId: string, maCaus: string[]) => void; openPicker: (phanId: string, ma: string, selected: string[]) => void; cauTbl: string; onSetKieu: (phanId: string, kieu: string) => void; onSetHienLt: (phanId: string, v: boolean) => void
   usedExcept: (phanId: string) => Set<string>; onPreview: () => void
@@ -188,7 +186,7 @@ function BuoiCard({ buoi, startNo, linesByCau, onLine, onLineAll, onRename, onDe
         {buoi.dangs.length === 0
           ? <div className="text-[12px] italic text-slate-400">Chưa có dạng — bấm “+ Chọn dạng” để chọn các dạng cho buổi (mọi chuyên đề).</div>
           : buoi.dangs.map((d, i) => (
-            <DangCard key={d.id} no={startNo + i + 1} dang={d} btvn={d.ref_ma ? buoi.btvnByMa[d.ref_ma] : undefined}
+            <DangCard key={d.id} dang={d} btvn={d.ref_ma ? buoi.btvnByMa[d.ref_ma] : undefined}
               linesByCau={linesByCau} onLine={onLine} onLineAll={onLineAll} onApply={onApply} openPicker={openPicker} cauTbl={cauTbl} onSetKieu={onSetKieu} onSetHienLt={onSetHienLt} usedExcept={usedExcept}
               canUp={i > 0} canDown={i < buoi.dangs.length - 1} onUp={() => move(i, -1)} onDown={() => move(i, 1)} />
           ))}
@@ -198,8 +196,8 @@ function BuoiCard({ buoi, startNo, linesByCau, onLine, onLineAll, onRename, onDe
 }
 
 // ── 1 DẠNG trong buổi: 2 khối cấu hình — Bài luyện (trên lớp) + BTVN (về nhà), đều theo số câu mỗi loại ──
-function DangCard({ no, dang, btvn, linesByCau, onLine, onLineAll, onApply, openPicker, cauTbl, onSetKieu, onSetHienLt, usedExcept, canUp, canDown, onUp, onDown }: {
-  no: number; dang: PhanResolved; btvn?: PhanResolved; linesByCau: Record<string, number>
+function DangCard({ dang, btvn, linesByCau, onLine, onLineAll, onApply, openPicker, cauTbl, onSetKieu, onSetHienLt, usedExcept, canUp, canDown, onUp, onDown }: {
+  dang: PhanResolved; btvn?: PhanResolved; linesByCau: Record<string, number>
   onLine: (maCau: string, n: number) => void; onLineAll: (maCaus: string[], n: number) => void; onApply: (phanId: string, maCaus: string[]) => void; openPicker: (phanId: string, ma: string, selected: string[]) => void; cauTbl: string; onSetKieu: (phanId: string, kieu: string) => void; onSetHienLt: (phanId: string, v: boolean) => void
   usedExcept: (phanId: string) => Set<string>
   canUp: boolean; canDown: boolean; onUp: () => void; onDown: () => void
@@ -227,7 +225,10 @@ function DangCard({ no, dang, btvn, linesByCau, onLine, onLineAll, onApply, open
           <button onClick={onUp} disabled={!canUp} className="text-[10px] text-slate-400 hover:text-indigo-600 disabled:opacity-25">▲</button>
           <button onClick={onDown} disabled={!canDown} className="text-[10px] text-slate-400 hover:text-indigo-600 disabled:opacity-25">▼</button>
         </span>
-        <span className="text-[14px] font-semibold text-pink-600">Dạng {no}: {dang.dang?.ten_dang ?? ma}</span>
+        {/* ⭐ 07-24 (Thùy chốt): KHÔNG đánh số dạng chạy 1,2,3… nữa — số chạy tự nhảy mỗi lần thêm/bớt/
+            đổi thứ tự dạng nên "Dạng 5" hôm nay ≠ "Dạng 5" hôm qua, đối chiếu là loạn. Hiện MÃ DẠNG của
+            bản đồ kiến thức — mã bất biến, trỏ thẳng về đúng KP (đơn vị chân lý HS × dạng). */}
+        <span className="text-[14px] font-semibold text-pink-600">Dạng {ma}: {dang.dang?.ten_dang ?? ma}</span>
         <span className="truncate text-[11px] text-slate-400">· {dang.dang?.ten_chuyen_de ?? ''}</span>
         <label className="ml-auto flex shrink-0 items-center gap-1.5 text-[11px] text-slate-500" title="Bật/tắt hiện khối Lý thuyết của RIÊNG dạng này khi in (vd dạng ôn lại — tắt để đỡ lặp, dạng mới học — bật)">
           <input type="checkbox" checked={dang.hien_lt !== false} onChange={(e) => onSetHienLt(dang.id, e.target.checked)} />
@@ -334,9 +335,13 @@ export function DangPicker({ khoi, mon, selected, onClose, onConfirm }: { khoi: 
   useEffect(() => { khoCuaMon(mon).listMap(khoi).then((r) => { setTree(groupMap(r)); setLoading(false) }).catch(() => setLoading(false)) }, [khoi, mon])
   const toggle = (ma: string) => setSel((s) => { const n = new Set(s); n.has(ma) ? n.delete(ma) : n.add(ma); return n })
   const toggleCd = (mas: string[], on: boolean) => setSel((s) => { const n = new Set(s); mas.forEach((m) => on ? n.add(m) : n.delete(m)); return n })
+  // ⭐ 07-24 (Thùy chốt): trả về ĐÚNG THỨ TỰ CHỌN — chọn trước ra trước. `sel` là Set, JS Set giữ thứ tự
+  // CHÈN nên [...sel] chính là thứ tự bấm (dạng đã có sẵn nạp vào theo thứ tự hiện tại của buổi → không
+  // bị xáo khi mở lại picker; bỏ chọn rồi chọn lại = đưa xuống cuối, đúng ý "chọn sau thì ở sau").
+  // TRƯỚC: sắp theo thứ tự BẢN ĐỒ (dạng cùng chuyên đề liền nhau) — máy tự quyết, người soạn không nắn được.
   function confirm() {
-    const all = tree.flatMap((t1) => t1.tier2s.flatMap((t2) => t2.leaves.map((l) => l.leafMa)))
-    onConfirm(all.filter((m) => sel.has(m))) // giữ thứ tự bản đồ → dạng cùng chuyên đề liền nhau
+    const all = new Set(tree.flatMap((t1) => t1.tier2s.flatMap((t2) => t2.leaves.map((l) => l.leafMa))))
+    onConfirm([...sel].filter((m) => all.has(m))) // lọc mã lạ (dạng đã xoá khỏi bản đồ) nhưng GIỮ thứ tự chọn
   }
   return (
     <div className="fixed inset-0 z-[70] bg-slate-900/50 backdrop-blur-sm" onClick={onClose}>
@@ -387,7 +392,6 @@ export function DangPicker({ khoi, mon, selected, onClose, onConfirm }: { khoi: 
 // Cây quan hệ bên trái: Buổi → Dạng → BTVN. Click = nhảy tới thẻ.
 function StructureTree({ buois, ten, onJump }: { buois: BuoiUI[]; ten: string; onJump: (pid: string) => void }) {
   const item = 'block w-full truncate rounded px-2 py-1 text-left text-[13px] hover:bg-slate-100'
-  let dangNo = 0
   return (
     <div>
       <div className="mb-2 truncate px-1 text-[13px] font-bold text-slate-700">📄 {ten || 'Giáo trình'}</div>
@@ -396,7 +400,7 @@ function StructureTree({ buois, ten, onJump }: { buois: BuoiUI[]; ten: string; o
         <div key={b.marker.id} className="mb-1">
           <button onClick={() => onJump(b.marker.id)} className={`${item} font-semibold text-indigo-700`}>🗓️ {b.marker.tieu_de}</button>
           <div className="ml-2 border-l border-slate-100 pl-1">
-            {b.dangs.map((d) => { dangNo += 1; return <button key={d.id} onClick={() => onJump(d.id)} className={`${item} text-slate-600`}>Dạng {dangNo}: {d.dang?.ten_dang ?? d.ref_ma} <span className="text-slate-300">({d.caus.length})</span></button> })}
+            {b.dangs.map((d) => <button key={d.id} onClick={() => onJump(d.id)} title={`Mã dạng ${d.ref_ma}`} className={`${item} text-slate-600`}>Dạng {d.ref_ma}: {d.dang?.ten_dang ?? d.ref_ma} <span className="text-slate-300">({d.caus.length})</span></button>)}
             {b.dangs.length > 0 && <div className="px-2 py-1 text-[12px] text-orange-500">📝 BTVN ({Object.values(b.btvnByMa).reduce((s, p) => s + p.caus.length, 0)} câu)</div>}
           </div>
         </div>
@@ -410,11 +414,16 @@ function TrichPanel({ masterId, khoi, buois, onClose }: { masterId: string; khoi
   const [lops, setLops] = useState<Lop[]>([])
   const [lopId, setLopId] = useState<string | null>(null)
   const [state, setState] = useState<Record<string, TrichState>>({})
+  const [boLop, setBoLop] = useState<BuoiLop[]>([])   // BỘ GIÁO TRÌNH RIÊNG CỦA LỚP (số buổi của lớp)
   const [loading, setLoading] = useState(false)
   useEffect(() => { listLop().then(setLops).catch(() => { }) }, [])
   const lop = lops.find((l) => l.id === lopId)
-  async function loadState(id: string) { setLoading(true); try { setState(await listTrichXuat(masterId, id)) } finally { setLoading(false) } }
-  useEffect(() => { if (lopId) loadState(lopId); else setState({}) }, [lopId]) // eslint-disable-line
+  async function loadState(id: string) {
+    setLoading(true)
+    try { const [st, bo] = await Promise.all([listTrichXuat(masterId, id), listGiaoTrinhLop(id)]); setState(st); setBoLop(bo) }
+    finally { setLoading(false) }
+  }
+  useEffect(() => { if (lopId) loadState(lopId); else { setState({}); setBoLop([]) } }, [lopId]) // eslint-disable-line
 
   // Gán = CHỈ tạo GT (Thùy 07-22: BTVN hoãn sang OnTapConfirmScreen — tự nó lo saveOnTapConfig +
   // trichXuatBuoi(btvn:true) + appendOnTapToBtvnDoc lúc bấm Xác nhận, xem BuoiTrichRow).
@@ -423,32 +432,94 @@ function TrichPanel({ masterId, khoi, buois, onClose }: { masterId: string; khoi
     const created = await trichXuatBuoi(masterId, buoiId, { lopId: lop.id, ngay, khoi, tenLop: lop.ten_lop, tenBuoi, giaoTrinh: gt, btvn: false })
     // ⭐ 07-12: doc VẬN HÀNH (giao_trinh_buoi) trích xong là ĐỦ NỘI DUNG ngay — enqueue link luôn.
     created.forEach((d) => useStore.getState().enqueueLinkGen(d.id, d.loai))
+    // ⭐ 07-24: gán vào GIỮA lịch làm các buổi sau của lớp dồn số → đánh số lại cả lớp, doc nào đổi
+    // tiêu đề buổi (in ra giấy) thì làm mới link PDF. Dùng Map để không enqueue trùng doc vừa tạo.
+    const doi = new Map((await renumberBuoiLop(lop.id)).map((d) => [d.id, d]))
+    created.forEach((d) => doi.delete(d.id))
+    doi.forEach((d) => useStore.getState().enqueueLinkGen(d.id, d.loai))
     await loadState(lop.id)
   }
 
+  // Đánh số lại TAY — cho bộ giáo trình lớp đã gán TỪ TRƯỚC (còn mang số buổi của master). Gán/xoá buổi
+  // mới thì tự chạy rồi, nút này chỉ để dọn dữ liệu cũ mà không cần gán thêm gì.
+  async function danhSoLai() {
+    if (!lop) return
+    if (!confirm(`Đánh số lại ${boLop.length} buổi của lớp ${lop.ten_lop} theo thứ tự NGÀY HỌC?\n\nTên file + tiêu đề buổi in trên phiếu sẽ mang số của LỚP (buổi 1, 2, 3…) thay cho số buổi của giáo trình gốc. Nội dung câu hỏi KHÔNG đổi.`)) return
+    setLoading(true)
+    try {
+      for (const d of await renumberBuoiLop(lop.id)) useStore.getState().enqueueLinkGen(d.id, d.loai)
+    } finally { setLoading(false) }
+    await loadState(lop.id)
+  }
+
+  // Buổi gốc (master) ↔ buổi của lớp: doc lớp giữ nguon_buoi = id mốc buổi bên master.
+  const soBuoiMaster = new Map(buois.map((b, i) => [b.marker.id, i + 1]))
+  const sttLopCua = (markerId: string) => boLop.find((b) => b.nguon_buoi === markerId)?.stt
+
   return (
     <div className="fixed inset-0 z-[70] bg-slate-900/50 backdrop-blur-sm" onClick={onClose}>
-      <div className="absolute inset-x-[12%] inset-y-10 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
+      <div className="absolute inset-x-[8%] inset-y-10 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center gap-3 border-b border-slate-200 px-6 py-3">
-          <h3 className="text-base font-semibold text-slate-900">Trích xuất giáo trình → gán cho lớp</h3>
+          <h3 className="text-base font-semibold text-slate-900">Gán giáo trình cho lớp</h3>
           <div className="w-56"><SearchSelect value={lopId} onChange={setLopId} placeholder="chọn lớp…"
             options={lops.filter((l) => !khoi || l.khoi === khoi).map((l) => ({ id: l.id, label: l.ten_lop, sub: `${l.mon}${l.khoi ? ' · K' + l.khoi : ''}` }))} /></div>
           <button onClick={onClose} className="ml-auto flex h-8 w-8 items-center justify-center rounded-md text-slate-400 hover:bg-slate-100">✕</button>
         </div>
-        <div className="min-h-0 flex-1 overflow-auto p-5">
-          {!lop ? <p className="text-center text-sm text-slate-400">Chọn lớp để xem trạng thái gán + trích từng buổi.</p>
-            : loading ? <p className="text-sm text-slate-400">Đang tải trạng thái…</p>
-            : (
-              <div className="mx-auto max-w-[760px] space-y-2">
-                <p className="mb-2 text-[12px] text-slate-400">Mỗi buổi của giáo trình → gán cho 1 ngày của lớp <b>{lop.ten_lop}</b> → sinh “Giáo trình buổi”. BTVN (kèm ôn tập) làm ở bước riêng sau khi gán, có xem trước trước khi tạo.</p>
-                {buois.map((b, i) => <BuoiTrichRow key={b.marker.id} no={i + 1} lopId={lopId} tenLop={lop.ten_lop} masterId={masterId} khoi={khoi} mon={lop.mon} buoi={b} st={state[b.marker.id]}
-                  onGan={(ngay, gt) => gan(b.marker.id, b.marker.tieu_de || `Buổi ${i + 1}`, ngay, gt)}
-                  onBtvnConfirmed={() => loadState(lop.id)} />)}
+        {!lop ? <p className="p-8 text-center text-sm text-slate-400">Chọn lớp để xem bộ giáo trình riêng của lớp + gán tiếp buổi mới.</p>
+          : loading ? <p className="p-8 text-sm text-slate-400">Đang tải trạng thái…</p>
+          : (
+            <div className="grid min-h-0 flex-1 grid-cols-[1fr_340px] grid-rows-[minmax(0,1fr)] overflow-hidden">
+              <div className="min-h-0 overflow-auto p-5">
+                <p className="mb-2 text-[12px] text-slate-400">Mỗi buổi của giáo trình gốc → gán cho 1 ngày của lớp <b>{lop.ten_lop}</b>. Lớp học buổi nào là <b>tự chọn</b> — không cần gán đủ, không cần đúng thứ tự. BTVN (kèm ôn tập) làm ở bước riêng sau khi gán, có xem trước.</p>
+                <div className="space-y-2">
+                  {buois.map((b, i) => <BuoiTrichRow key={b.marker.id} no={i + 1} sttLop={sttLopCua(b.marker.id)} lopId={lopId} tenLop={lop.ten_lop} masterId={masterId} khoi={khoi} mon={lop.mon} buoi={b} st={state[b.marker.id]}
+                    onGan={(ngay, gt) => gan(b.marker.id, b.marker.tieu_de || `Buổi ${i + 1}`, ngay, gt)}
+                    onBtvnConfirmed={() => loadState(lop.id)} />)}
+                </div>
               </div>
-            )}
-        </div>
+              <BoGiaoTrinhLop tenLop={lop.ten_lop} bo={boLop} soBuoiMaster={soBuoiMaster} onDanhSoLai={danhSoLai} />
+            </div>
+          )}
       </div>
     </div>
+  )
+}
+
+// ── BỘ GIÁO TRÌNH RIÊNG CỦA LỚP ────────────────────────────────────────────────────────────────
+// Các buổi lớp đã được gán, đánh số THEO LỚP (1,2,3… theo ngày học) — buổi thứ 7 của lớp có thể là
+// buổi 10 của giáo trình gốc, nhưng với lớp nó là "Buổi 7". Cột "gốc" chỉ để đối chiếu khi soạn.
+function BoGiaoTrinhLop({ tenLop, bo, soBuoiMaster, onDanhSoLai }: { tenLop: string; bo: BuoiLop[]; soBuoiMaster: Map<string, number>; onDanhSoLai: () => void }) {
+  return (
+    <aside className="min-h-0 overflow-auto border-l border-slate-200 bg-slate-50/60 p-4">
+      <div className="mb-1 flex items-center gap-2">
+        <span className="text-[13px] font-bold text-slate-800">📚 Giáo trình riêng của {tenLop}</span>
+        {bo.length > 0 && <button onClick={onDanhSoLai} title="Đánh số lại các buổi đã gán theo thứ tự ngày học của lớp (dùng cho buổi gán từ trước, còn mang số của giáo trình gốc)" className="ml-auto shrink-0 rounded-md border border-slate-300 bg-white px-2 py-0.5 text-[11px] font-medium text-slate-600 hover:border-indigo-400 hover:text-indigo-600">↻ Đánh số lại</button>}
+      </div>
+      <p className="mb-3 text-[11px] text-slate-400">Số buổi ở đây là số <b>của lớp</b> (theo ngày học), không phải số buổi của giáo trình gốc.</p>
+      {bo.length === 0
+        ? <div className="rounded-lg border border-dashed border-slate-300 p-4 text-center text-[12px] italic text-slate-400">Lớp chưa được gán buổi nào.</div>
+        : (
+          <ol className="space-y-1.5">
+            {bo.map((b) => {
+              const goc = b.nguon_buoi ? soBuoiMaster.get(b.nguon_buoi) : undefined
+              return (
+                <li key={b.ngay} className="rounded-lg border border-slate-200 bg-white px-2.5 py-2">
+                  <div className="flex items-center gap-2">
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-indigo-600 text-[11px] font-bold text-white">{b.stt}</span>
+                    <span className="min-w-0 flex-1 truncate text-[12.5px] font-medium text-slate-800" title={b.tieu_de}>{b.tieu_de}</span>
+                    <span className="shrink-0 text-[11px] text-slate-400">{b.ngay.split('-').reverse().join('/')}</span>
+                  </div>
+                  <div className="mt-1 flex items-center gap-1.5 pl-8">
+                    <span className={`rounded px-1.5 py-0.5 text-[10px] font-medium ${b.gt ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-400'}`}>GT</span>
+                    <span className={`rounded px-1.5 py-0.5 text-[10px] font-medium ${b.btvn ? 'bg-orange-50 text-orange-600' : 'bg-slate-100 text-slate-400'}`}>BTVN</span>
+                    <span className="ml-auto text-[10px] text-slate-400">{goc ? `từ buổi ${goc} của giáo trình gốc` : 'nguồn khác'}</span>
+                  </div>
+                </li>
+              )
+            })}
+          </ol>
+        )}
+    </aside>
   )
 }
 
@@ -456,8 +527,8 @@ function TrichPanel({ masterId, khoi, buois, onClose }: { masterId: string; khoi
 // người dùng soi trước rồi mới bấm Xác nhận mới CHÍNH THỨC tạo BTVN vào Kho. Không còn checkbox BTVN /
 // OnTapEditor nhúng ở đây nữa — trạng thái "đã có GT, chưa có BTVN" tự nhiên derive từ `st` (listTrichXuat),
 // không cần nhớ "có định làm BTVN không" ở đâu cả — bấm "+ BTVN / Ôn tập" lúc nào cũng được, kể cả về sau.
-function BuoiTrichRow({ no, lopId, tenLop, masterId, khoi, mon, buoi, st, onGan, onBtvnConfirmed }: {
-  no: number; lopId: string | null; tenLop: string; masterId: string; khoi: string; mon: string; buoi: BuoiUI; st?: TrichState
+function BuoiTrichRow({ no, sttLop, lopId, tenLop, masterId, khoi, mon, buoi, st, onGan, onBtvnConfirmed }: {
+  no: number; sttLop?: number; lopId: string | null; tenLop: string; masterId: string; khoi: string; mon: string; buoi: BuoiUI; st?: TrichState
   onGan: (ngay: string, gt: boolean) => Promise<void>
   onBtvnConfirmed: () => void
 }) {
@@ -466,7 +537,8 @@ function BuoiTrichRow({ no, lopId, tenLop, masterId, khoi, mon, buoi, st, onGan,
   const [busy, setBusy] = useState(false)
   const [onTapOpen, setOnTapOpen] = useState(false)
   const ganNgay = st?.ngay ? st.ngay.split('-').reverse().join('/') : null
-  const tenBuoi = buoi.marker.tieu_de || `Buổi ${no}`
+  // Tên hiển thị khi đã gán = tên THEO SỐ CỦA LỚP (đúng cái in ra phiếu), không phải số buổi của master.
+  const tenBuoi = sttLop ? tieuDeBuoiLop(buoi.marker.tieu_de, sttLop) : (buoi.marker.tieu_de || `Buổi ${no}`)
   async function go() {
     if (!ngay || !gt) return
     setBusy(true)
@@ -477,11 +549,13 @@ function BuoiTrichRow({ no, lopId, tenLop, masterId, khoi, mon, buoi, st, onGan,
       <div className="flex flex-wrap items-center gap-2.5">
         <span className="w-6 shrink-0 text-center text-[13px] font-bold text-indigo-600">{no}</span>
         <div className="min-w-[120px] flex-1">
-          <div className="text-[13px] font-semibold text-slate-800">{tenBuoi}</div>
+          <div className="text-[13px] font-semibold text-slate-800">{buoi.marker.tieu_de || `Buổi ${no}`}</div>
           <div className="text-[11px] text-slate-400">{buoi.dangs.length} dạng</div>
         </div>
         {ganNgay ? (
           <div className="flex flex-wrap items-center gap-2">
+            {/* Số của LỚP — buổi này là buổi thứ mấy trong lịch học của lớp (khác số buổi bên trái = số của giáo trình gốc). */}
+            {sttLop && <span className="rounded-full bg-indigo-50 px-2.5 py-1 text-[12px] font-semibold text-indigo-700" title={`Với lớp ${tenLop}, đây là buổi thứ ${sttLop}`}>→ Buổi {sttLop} của lớp</span>}
             <span className="rounded-full bg-emerald-50 px-2.5 py-1 text-[12px] font-medium text-emerald-700">✓ Đã gán · {ganNgay}</span>
             <span className="text-[11px] text-slate-400">{st?.hasGT ? 'GT' : ''}{st?.hasGT && st?.hasBTVN ? ' + ' : ''}{st?.hasBTVN ? 'BTVN' : ''}</span>
             {st?.hasGT && !st?.hasBTVN && (
