@@ -11,7 +11,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import SearchSelect, { type Opt } from '../../components/SearchSelect'
 import { supabase } from '../../lib/supabase'
-import { listCandidatesLop, duyetLevel, getLevelLog, cuaSoHienTai, taoAiJob, getAiJob, getAiJobMoiNhat, type Candidate, type LevelLogRow, type AiJob } from '../../lib/danhgia'
+import { listCandidatesLop, duyetLevel, getLevelLog, cuaSoHienTai, taoAiJob, getAiJob, listAiJobs, tienCuaLuot, MODEL_CHON, MODEL_MAC_DINH, type Candidate, type LevelLogRow, type AiJob } from '../../lib/danhgia'
 
 // ⚠ HAI THANG LEVEL KHÁC NGHĨA — KHÔNG dùng chung nhãn (spec §4.1 vs §4.2).
 // Kiến thức: L1 để ý · L2 bổ trợ riêng · L3 vượt quy trình (team học thuật).
@@ -134,29 +134,43 @@ const PHAN_LOAI_UI: Record<string, { ten: string; cls: string }> = {
 const DO_TIN_UI: Record<string, string> = { cao: 'độ tin cao', trung_binh: 'độ tin trung bình', thap: 'độ tin thấp' }
 
 function NhanDinhClaude({ lopId }: { lopId: string }) {
-  const [job, setJob] = useState<AiJob | null>(null)
+  const [jobs, setJobs] = useState<AiJob[]>([])   // các lượt đã chạy — để đặt cạnh nhau mà so model
+  const [xemId, setXemId] = useState<string | null>(null)
+  const [model, setModel] = useState<string>(MODEL_MAC_DINH)
   const [busy, setBusy] = useState(false)
   const [loi, setLoi] = useState<string | null>(null)
   const [mo, setMo] = useState(false)
 
-  useEffect(() => { setJob(null); setLoi(null); if (lopId) getAiJobMoiNhat(lopId).then(setJob) }, [lopId])
+  const nap = async (id?: string) => {
+    const ds = await listAiJobs(lopId)
+    setJobs(ds)
+    setXemId((cur) => id ?? cur ?? ds[0]?.id ?? null)
+  }
+  useEffect(() => { setJobs([]); setXemId(null); setLoi(null); if (lopId) nap() }, [lopId])
+
+  const job = jobs.find((j) => j.id === xemId) ?? null
 
   // Đang chạy thì hỏi lại mỗi 3s cho tới khi worker xong (job chạy nền, không giữ UI).
   useEffect(() => {
     if (!job || (job.trang_thai !== 'pending' && job.trang_thai !== 'processing')) return
-    const t = setInterval(async () => { const m = await getAiJob(job.id); if (m) setJob(m) }, 3000)
+    const t = setInterval(async () => {
+      const m = await getAiJob(job.id)
+      if (m) setJobs((ds) => ds.map((j) => (j.id === m.id ? m : j)))
+    }, 3000)
     return () => clearInterval(t)
   }, [job?.id, job?.trang_thai])
 
   const hoi = async () => {
     setBusy(true); setLoi(null)
-    try { const id = await taoAiJob(lopId); setJob(await getAiJob(id)); setMo(true) }
+    try { const id = await taoAiJob(lopId, { model }); await nap(id); setMo(true) }
     catch (e: any) { setLoi(e?.message ?? String(e)) }
     finally { setBusy(false) }
   }
 
   const dangChay = job?.trang_thai === 'pending' || job?.trang_thai === 'processing'
+  const coAiDangChay = jobs.some((j) => j.trang_thai === 'pending' || j.trang_thai === 'processing')
   const kq = job?.trang_thai === 'done' ? job.ket_qua : null
+  const tenModel = (j: AiJob) => MODEL_CHON.find((m) => j.model?.startsWith(m.id) || j.model_chon === m.id)?.ten ?? (j.model_chon ?? j.model ?? '?')
 
   return (
     <div className="mb-6 rounded-2xl bg-white p-5 ring-1 ring-slate-200">
@@ -167,11 +181,40 @@ function NhanDinhClaude({ lopId }: { lopId: string }) {
             Số liệu do hệ thống tính; Claude đọc rồi viết lý do và nêu độ tin. Vẫn là <b>đề xuất</b> — người duyệt mới đổi.
           </p>
         </div>
-        <button disabled={busy || dangChay} onClick={hoi}
+        {/* Chọn model rồi chạy CÙNG một lớp nhiều lần → đọc cạnh nhau mới biết
+            Sonnet có đủ dùng không. So bằng cảm giác thì không kết luận được. */}
+        <div className="flex rounded-lg bg-slate-100 p-1">
+          {MODEL_CHON.map((m) => (
+            <button key={m.id} onClick={() => setModel(m.id)} title={m.mo_ta}
+              className={`rounded-md px-3 py-1.5 text-[12px] font-semibold transition ${model === m.id ? 'bg-white text-slate-800 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>
+              {m.ten}
+            </button>
+          ))}
+        </div>
+        <button disabled={busy || coAiDangChay} onClick={hoi}
           className="rounded-lg bg-slate-800 px-4 py-2 text-[13px] font-semibold text-white transition hover:bg-slate-900 disabled:opacity-50">
-          {dangChay ? 'Claude đang đọc…' : busy ? 'Đang gửi…' : kq ? 'Hỏi lại' : 'Nhờ Claude đọc'}
+          {coAiDangChay ? 'Đang đọc…' : busy ? 'Đang gửi…' : jobs.length ? 'Chạy lại' : 'Nhờ Claude đọc'}
         </button>
       </div>
+
+      {jobs.length > 1 && (
+        <div className="mt-3 flex flex-wrap items-center gap-2 border-t border-slate-100 pt-3">
+          <span className="text-[12px] text-slate-500">Các lượt đã chạy — bấm để so:</span>
+          {jobs.map((j) => {
+            const d = tienCuaLuot(j)
+            return (
+              <button key={j.id} onClick={() => setXemId(j.id)}
+                className={`rounded-lg px-2.5 py-1 text-[12px] transition ${j.id === xemId ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}>
+                {tenModel(j)}
+                <span className={j.id === xemId ? 'text-indigo-200' : 'text-slate-400'}>
+                  {' · '}{new Date(j.created_at).toLocaleString('vi-VN', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })}
+                  {d != null ? ` · ${d.toLocaleString('vi-VN')}đ` : j.trang_thai === 'failed' ? ' · lỗi' : ' · …'}
+                </span>
+              </button>
+            )
+          })}
+        </div>
+      )}
 
       {loi && <p className="mt-3 rounded-lg bg-rose-50 px-3 py-2 text-[12px] text-rose-700">{loi}</p>}
       {job?.trang_thai === 'failed' && (
@@ -222,9 +265,10 @@ function NhanDinhClaude({ lopId }: { lopId: string }) {
           )}
 
           <p className="mt-3 text-[11px] text-slate-400">
-            {job?.model} · {job?.usage?.input_tokens?.toLocaleString('vi-VN')} token vào
-            {job?.usage?.cache_read_input_tokens ? ` (${job.usage.cache_read_input_tokens.toLocaleString('vi-VN')} đọc từ cache)` : ''}
-            {' · '}{job?.usage?.output_tokens?.toLocaleString('vi-VN')} token ra
+            <b className="text-slate-500">{job && tenModel(job)}</b>
+            {' · '}{job?.usage?.input_tokens?.toLocaleString('vi-VN')} token vào
+            {' · '}{job?.usage?.output_tokens?.toLocaleString('vi-VN')} token ra (gồm cả token suy nghĩ)
+            {job && tienCuaLuot(job) != null ? ` · ~${tienCuaLuot(job)!.toLocaleString('vi-VN')} đ lượt này` : ''}
             {job?.done_at ? ` · ${new Date(job.done_at).toLocaleString('vi-VN')}` : ''}
           </p>
         </div>

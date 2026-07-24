@@ -53,8 +53,11 @@ const svc = createClient(SB_URL, SB_SERVICE) // service role: đọc/ghi job, kh
 const claude = new Anthropic({ apiKey: ANTHROPIC_KEY })
 
 async function phan(job) {
+  // Model do NGƯỜI chọn trên màn hình (cột `model_chon`) — để Thùy tự so Sonnet vs Opus
+  // trên cùng dữ liệu. Không chọn thì rơi về mặc định của worker.
+  const model = job.model_chon ?? MODEL
   const res = await claude.messages.create({
-    model: MODEL,
+    model,
     max_tokens: 16000,
     // Adaptive thinking: Claude tự quyết nghĩ sâu tới đâu. effort high vì đây là
     // việc phán đoán về học sinh thật — sai thì ảnh hưởng người, không phải chỉ tốn token.
@@ -101,7 +104,7 @@ async function chay() {
   if (!claimed?.length) return // worker khác nhận mất rồi
 
   const soHS = job.stat_sheet?.hoc_sinh?.length ?? 0
-  console.log(`[danhgia] job ${job.id.slice(0, 8)} · ${soHS} HS · đang hỏi Claude…`)
+  console.log(`[danhgia] job ${job.id.slice(0, 8)} · ${soHS} HS · ${job.model_chon ?? MODEL} · đang hỏi…`)
   const t0 = Date.now()
   try {
     const { ketQua, usage, model } = await phan(job)

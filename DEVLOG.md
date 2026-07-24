@@ -2657,3 +2657,17 @@ Cách bắt: so hàm `env()` của worker (đúng, `\s`) với bản trong scrip
 
 **Nhịp Thùy chốt: 2 tuần/lần** (khớp 2 cửa sổ 14 ngày/tháng). Đo thật: chỉ **~60% lớp có em cần đọc**, lớp không có ai bị chặn từ `taoAiJob` nên không tốn tiền → ~25 lượt/lần quét.
 Chi phí THẬT theo nhịp này: **Opus 204k đ/tháng** (499 đ/HS/tháng) · Sonnet 5 82k · Haiku 41k · **Batch API còn một nửa**.
+
+## 2026-07-23 (tiếp) — Chọn model NGAY TRÊN ERP để Thùy tự so
+
+**Thùy:** *"Tốt nhất là cho t chỗ để chọn sonnet5 và opus 4.8 là được. t sẽ tự test so sánh."* → dừng việc Claude tự chạy so sánh bằng script, chuyển thành **chức năng thật trong app**.
+
+- Cột mới `danhgia_ai_job.model_chon` (client ghi model NGƯỜI chọn; worker đọc cột này, không có thì rơi về mặc định của worker).
+- UI: nút gạt **Sonnet 5 / Opus 4.8** cạnh nút chạy. Mặc định **Sonnet 5** — rẻ hơn ~60%, và giả thuyết là đủ dùng vì phần khó đã do code làm.
+- **Dải "Các lượt đã chạy — bấm để so"**: mỗi lượt hiện `model · giờ · số tiền THẬT`, bấm qua lại để đọc 2 bản trên **CÙNG dữ liệu**. Đây mới là thứ cho kết luận — so bằng cảm giác thì không quyết được.
+- `tienCuaLuot()` quy tiền từ `usage` THẬT của từng lượt (không ước). Dòng cuối kết quả hiện luôn "~N đ lượt này" + ghi rõ token ra **gồm cả token suy nghĩ** — chỗ ước lượng ban đầu sai 2,3 lần.
+- Worker log thêm tên model đang chạy.
+
+Verify trên app thật (dev server, đăng nhập bằng nút DEV — không nhập mật khẩu): màn render đúng, có nút gạt 2 model, 0 lỗi console. `tsc` sạch · `verify_danhgia` 72 test · `verify_danhgia_claude` 14 mục PASS.
+
+**Chờ Thùy chạy:** `alter table danhgia_ai_job add column if not exists model_chon text;` — chưa có cột thì bấm nút sẽ lỗi insert.

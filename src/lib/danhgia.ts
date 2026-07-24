@@ -483,8 +483,26 @@ export const cuaSoHienTai = () => cuaSoCua(Date.now())
 //   cũng đốt được. Repo đã cháy tiền một lần vì gọi model đắt (DEVLOG "vụ 920k").
 export type AiJob = {
   id: string; trang_thai: 'pending' | 'processing' | 'done' | 'failed'
-  ket_qua: any; usage: any; model: string | null; error: string | null
-  created_at: string; done_at: string | null
+  ket_qua: any; usage: any; model: string | null; model_chon: string | null
+  error: string | null; created_at: string; done_at: string | null
+}
+
+// Model cho Thùy tự chọn & so. Giá USD/1 triệu token — số THẬT từ bảng giá Anthropic.
+// Đo thật 07-23 trên lớp 11B1 (4 em có tín hiệu): Opus 4.8 = 4.078 đ/lượt, 88 giây.
+export const MODEL_CHON = [
+  { id: 'claude-sonnet-5', ten: 'Sonnet 5', mo_ta: 'nhanh & rẻ hơn ~60%', vao: 2, ra: 10 },
+  { id: 'claude-opus-4-8', ten: 'Opus 4.8', mo_ta: 'mạnh nhất, đắt nhất', vao: 5, ra: 25 },
+] as const
+export const MODEL_MAC_DINH = 'claude-sonnet-5'
+
+// Quy tiền từ `usage` THẬT của lượt gọi — không ước, không đoán.
+// (Ước lượng ban đầu của Claude lệch 2,3 lần vì đánh giá thấp token suy nghĩ.)
+const USD_VND = 26_000
+export function tienCuaLuot(job: AiJob): number | null {
+  const g = MODEL_CHON.find((m) => job.model?.startsWith(m.id) || job.model_chon === m.id)
+  if (!g || !job.usage) return null
+  const u = job.usage
+  return Math.round(((u.input_tokens * g.vao + u.output_tokens * g.ra) / 1e6) * USD_VND)
 }
 
 // Rút gọn stat sheet trước khi gửi: bỏ trường chỉ UI cần. Ít token = rẻ hơn VÀ
@@ -524,7 +542,7 @@ export function goiGon(sheets: StatSheetHS[], tenLop: string, soHSCaLop?: number
 // Đo thật 07-23: cả lớp 9S1 (13 HS) = 16.891 token; chỉ em có tín hiệu = ít hơn
 // nhiều lần. Em không có tín hiệu nào thì Claude cũng chỉ trả về "ổn định" —
 // trả tiền cho một câu mình đã biết trước. Cần soi cả lớp thì `{ caLop: true }`.
-export async function taoAiJob(lopId: string, opts?: { caLop?: boolean }): Promise<string> {
+export async function taoAiJob(lopId: string, opts?: { caLop?: boolean; model?: string }): Promise<string> {
   const { data: lop } = await supabase.from('lop').select('ten_lop, mon').eq('id', lopId).single()
   if (!lop) throw new Error('Không tìm thấy lớp')
   const sheets = await getStatSheetLop(lopId)
@@ -541,6 +559,7 @@ export async function taoAiJob(lopId: string, opts?: { caLop?: boolean }): Promi
   const { data, error } = await supabase.from('danhgia_ai_job').insert({
     lop_id: lopId, mon: (lop as any).mon,
     stat_sheet: goiGon(gui, (lop as any).ten_lop, sheets.length),
+    model_chon: opts?.model ?? MODEL_MAC_DINH, // worker theo cột này; để trống thì worker dùng mặc định của nó
     created_by: user?.id ?? null,
   }).select('id').single()
   if (error) throw error
@@ -549,14 +568,23 @@ export async function taoAiJob(lopId: string, opts?: { caLop?: boolean }): Promi
 
 export async function getAiJob(id: string): Promise<AiJob | null> {
   const { data } = await supabase.from('danhgia_ai_job')
-    .select('id, trang_thai, ket_qua, usage, model, error, created_at, done_at').eq('id', id).maybeSingle()
+    .select('id, trang_thai, ket_qua, usage, model, model_chon, error, created_at, done_at').eq('id', id).maybeSingle()
   return (data as any) ?? null
 }
 
 // Lượt hỏi gần nhất của lớp — mở màn là thấy ngay kết quả cũ, khỏi hỏi lại (tốn tiền).
 export async function getAiJobMoiNhat(lopId: string): Promise<AiJob | null> {
   const { data } = await supabase.from('danhgia_ai_job')
-    .select('id, trang_thai, ket_qua, usage, model, error, created_at, done_at')
+    .select('id, trang_thai, ket_qua, usage, model, model_chon, error, created_at, done_at')
     .eq('lop_id', lopId).order('created_at', { ascending: false }).limit(1).maybeSingle()
   return (data as any) ?? null
+}
+
+// Các lượt đã chạy của lớp — để ĐẶT CẠNH NHAU mà so model, đó là cách duy nhất
+// biết Sonnet có đủ dùng không (đọc 2 bản trên CÙNG dữ liệu, không so bằng cảm giác).
+export async function listAiJobs(lopId: string, limit = 8): Promise<AiJob[]> {
+  const { data } = await supabase.from('danhgia_ai_job')
+    .select('id, trang_thai, ket_qua, usage, model, model_chon, error, created_at, done_at')
+    .eq('lop_id', lopId).order('created_at', { ascending: false }).limit(limit)
+  return (data ?? []) as any
 }
