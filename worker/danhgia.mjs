@@ -53,9 +53,14 @@ const svc = createClient(SB_URL, SB_SERVICE) // service role: đọc/ghi job, kh
 const claude = new Anthropic({ apiKey: ANTHROPIC_KEY })
 
 // ── HÀNG RÀO CHI PHÍ ─────────────────────────────────────────────────────────
-// Mọi con số dưới đây ĐO THẬT, không ước: lớp 11B1 (4 em) → vào 6.245 · ra 5.025
-// token ⇒ ~1.256 token ra mỗi em (đã gồm token suy nghĩ).
-const TOK_MOI_EM = 1300      // token ra mỗi em
+// Mọi con số dưới đây ĐO THẬT trên lớp thật, chỉnh lại 07-23 sau 2 lượt chạy:
+//   11B1 (4 em): vào 6.245 · ra 5.025    9C1 (7 em): vào 23.564 · ra 12.914
+// ⚠ KÝ TỰ/TOKEN = 1,4 chứ KHÔNG phải 3,2. Tiếng Việt có dấu + dấu ngoặc JSON tốn
+//   token gấp hơn hai lần tiếng Anh thuần. Lần đầu lấy 3,2 (thói quen tiếng Anh)
+//   → ước thiếu input 2,3 lần. Hàng rào chi phí dựa vào hằng số này nên sai là
+//   hàng rào vô nghĩa.
+const CH_MOI_TOK = 1.4
+const TOK_MOI_EM = 1900      // token ra mỗi em (đo: 1.256 ở 11B1, 1.845 ở 9C1 → lấy cận trên)
 const TOK_NEN = 1500         // phần tổng quan + cảnh báo cả lớp
 const HE_SO_AN_TOAN = 1.6    // chừa chỗ cho em có nhiều dạng bất thường
 const TRAN_TOKEN_RA = 40_000 // trần cứng, chặn ca sinh chữ chạy loạn
@@ -80,7 +85,7 @@ async function phan(job) {
   if (!gia) throw Object.assign(new Error(`Model "${model}" không có trong bảng giá — từ chối gọi để khỏi tiêu tiền mù.`), { khongThuLai: true })
 
   const soHS = job.stat_sheet?.hoc_sinh?.length ?? 0
-  const vaoUoc = Math.round(JSON.stringify(job.stat_sheet).length / 3.2) + 1600 // +system+schema
+  const vaoUoc = Math.round(JSON.stringify(job.stat_sheet).length / CH_MOI_TOK) + 1600 // +system+schema
   const raUoc = TOK_NEN + TOK_MOI_EM * soHS
   // max_tokens theo CỠ LỚP, không để cố định 64.000: trần cố định nghĩa là một lượt
   // chạy loạn có thể sinh 64k token = ~41.600 đ trên Opus.

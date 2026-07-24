@@ -2740,3 +2740,48 @@ app thật**: cổng dev đang bị phiên khác (dashboard học tập) chiếm
 **Log worker giờ in cả ƯỚC lẫn THẬT + token/em**, lệch >40% thì cảnh báo chỉnh hằng số — không để ước lượng trôi khỏi thực tế rồi hàng rào thành vô nghĩa.
 
 **Hiện trạng theo bảng:** Sonnet 5 chạy được tới 25 em · Opus chặn từ 25 em (quá trần tiền) · mọi model chặn ở 40 em (quá trần token). Lớp to nhất của trung tâm là 15 em nên chưa chạm giới hạn nào.
+
+## 2026-07-24 (tiếp) — Buổi học: thanh tìm theo LỚP (toggle, không đụng màn theo-ngày)
+
+**Thùy:** *"muốn tìm ca học của lớp 9A1 ngày 22/07 thì phải chọn lịch đúng ngày đấy — bất tiện kinh"*, và
+hỏi nên build thẳng vào màn hay để 1 toggle.
+
+**Chọn TOGGLE.** Hai chế độ khác TRỤC chứ không phải khác bộ lọc: "Theo ngày" = buổi ẢO của MỘT ngày (suy
+TKB × ngày, có bộ đếm chưa-mở/đã-mở/đã-huỷ **của ngày đó**); "Tìm lớp" = LỚP xuyên thời gian. Trộn chung
+một danh sách thì mấy con số đếm theo-ngày hết nghĩa, mà màn này là spine vận hành hằng ngày của OPS —
+đổi nó là rủi ro không đáng. Gạt chế độ ⇒ màn chính giữ nguyên 100% hành vi.
+
+- `timBuoiTheoLop(q)` (gami.ts): khớp `lop.ten_lop ilike %q%` → gộp 2 nguồn: ① buổi THẬT (`buoi_hoc`, **mọi
+  `loai`** — bù/bổ trợ/MT cũng là buổi của lớp) ② buổi ẢO sắp tới (TKB, hôm nay → +14 ngày, bỏ ngày đã có
+  buổi thường). Chỉ tra TKB của **lớp đã khớp tên**, khác `buoiAoCuaKhoang` quét toàn trung tâm → gõ tới đâu chạy tới đó.
+- **Gom (lớp × ngày) về 1 dòng ảo, giữ slot sớm nhất.** TKB có slot TRÙNG THỨ còn hiệu lực chồng nhau —
+  9A1 thật sự có 2 dòng `T6 15:00` (1 dòng `hieu_luc_den` cũ, 1 dòng NULL). Không gom thì ra 2 hàng y hệt,
+  bấm "Mở buổi" hàng nào cũng ra cùng 1 buổi (moBuoi tra theo lop+ngay).
+- Search debounce 250ms + cờ huỷ (gõ "9A1" = 3 lượt, không để lượt cũ trả về sau rồi đè kết quả mới).
+- **Từ khoá tìm để ở BuoiHocScreen, không ở trong panel** — vào 1 buổi rồi bấm "← Buổi học" là panel bị
+  unmount, để state bên trong thì mất chữ, phải gõ lại mỗi lần xem xong 1 buổi (thao tác lặp nhiều nhất).
+- Hàng đã có buổi → bấm cả hàng vào thẳng; chưa mở → nút "Mở buổi" riêng (không bấm nhầm cả hàng mà đẻ dòng).
+
+Verify trên app thật (dev server phiên khác, HMR cùng cây làm việc): gõ `9A1` → **23 buổi** (6 sắp tới +
+17 đã mở, không trùng), có đúng hàng **T4 · 22/07/2026 · Hoàn tất**, bấm vào ra `9A1 · 2026-07-22`
+(`9A1.T4.22072026`, điểm danh 13/15). Gõ `9A` → **46 buổi · 2 lớp (9A1, 9A2)**. Vào buổi rồi back → ô tìm
+vẫn giữ "9A". Gạt về "Theo ngày" → màn cũ nguyên vẹn (Chưa mở 8 · Đã mở 4). 0 lỗi console. `tsc` + `vite build` sạch.
+
+## 2026-07-23 (tiếp) — Lượt chạy THÀNH CÔNG đầu tiên qua app · chỉnh lại hằng số ước
+
+**9C1 · 7 em · Sonnet 5:** 137s · vào 23.564 · ra 12.914 · **4.583 đ** (ước 3.331 đ, **lệch +38%**). Claude trả 7 mục học sinh + 3 cảnh báo cả lớp.
+
+**Hai hằng số ước SAI, đã chỉnh theo đo thật:**
+1. **KÝ TỰ/TOKEN: 3,2 → 1,4.** Payload 30.286 ký tự nhưng tốn 23.564 token ⇒ **1,38 ký tự/token**. Tiếng Việt có dấu + dấu ngoặc JSON tốn token **gấp hơn hai lần** tiếng Anh thuần. Claude lấy 3,2 theo thói quen tiếng Anh → ước thiếu input **2,3 lần**. Hàng rào chi phí dựa vào hằng số này nên sai là hàng rào vô nghĩa.
+2. **TOKEN RA MỖI EM: 1.300 → 1.900** (đo: 1.256 ở 11B1 · 1.845 ở 9C1 → lấy cận trên).
+
+**Hệ quả CẦN THÙY QUYẾT — trần 25.000 đ/lượt giờ CHẶN Opus từ lớp 10 em:**
+| model | ≤9 em | 10–15 em | ≥25 em |
+|---|---|---|---|
+| Opus 4.8 | chạy | ⛔ quá trần tiền (25.948 đ ở 10 em) | ⛔ quá đông |
+| Sonnet 5 | chạy | chạy (15 em ≈ 10.535 đ) | ⛔ quá đông |
+| Haiku 4.5 | chạy | chạy | ⛔ quá đông |
+
+Lớp của trung tâm tới 15 em ⇒ **Opus gần như không dùng được ở trần hiện tại**. Hai đường: nâng trần (vd 35.000 đ) hoặc chốt Sonnet 5. Trần là con số Claude tự đặt, không phải Thùy chốt — cần hỏi.
+
+Test `verify_danhgia_chiphi` chỉnh theo: mốc kiểm "chặn vì tiền" chuyển từ 25 em sang **10 em** (ở hằng số mới, 25 em bị chặn vì quá đông trước khi kịp chạm trần tiền).
