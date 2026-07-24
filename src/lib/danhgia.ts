@@ -489,9 +489,15 @@ export type AiJob = {
 
 // Rút gọn stat sheet trước khi gửi: bỏ trường chỉ UI cần. Ít token = rẻ hơn VÀ
 // Claude đỡ nhiễu — gửi cả cục raw là đi ngược §0 ("Claude đọc stat sheet SẠCH").
-function goiGon(sheets: StatSheetHS[], tenLop: string) {
+export function goiGon(sheets: StatSheetHS[], tenLop: string, soHSCaLop?: number) {
   return {
     ten_lop: tenLop, cua_so: cuaSoHienTai(),
+    // Nói rõ đã lọc bao nhiêu, để Claude không tưởng lớp chỉ có ngần này em rồi
+    // kết luận sai về mặt bằng chung (§: cắt mà không nói = đọc thành "cả lớp chỉ có thế").
+    si_so_ca_lop: soHSCaLop ?? sheets.length,
+    ghi_chu: soHSCaLop && soHSCaLop > sheets.length
+      ? `Chỉ gửi ${sheets.length}/${soHSCaLop} em CÓ TÍN HIỆU cần xem. ${soHSCaLop - sheets.length} em còn lại không có tín hiệu nào, đã lược bỏ.`
+      : 'Gửi toàn bộ học sinh của lớp.',
     hoc_sinh: sheets.map((s) => ({
       hoc_sinh_id: s.hoc_sinh_id, ho_ten: s.ho_ten,
       level_hien_tai: { kien_thuc: s.levelKienThuc, thai_do: s.levelThaiDo },
@@ -514,15 +520,27 @@ function goiGon(sheets: StatSheetHS[], tenLop: string) {
   }
 }
 
-export async function taoAiJob(lopId: string): Promise<string> {
+// ⭐ MẶC ĐỊNH CHỈ GỬI EM CÓ TÍN HIỆU (`chiCanDocData`), không gửi cả lớp.
+// Đo thật 07-23: cả lớp 9S1 (13 HS) = 16.891 token; chỉ em có tín hiệu = ít hơn
+// nhiều lần. Em không có tín hiệu nào thì Claude cũng chỉ trả về "ổn định" —
+// trả tiền cho một câu mình đã biết trước. Cần soi cả lớp thì `{ caLop: true }`.
+export async function taoAiJob(lopId: string, opts?: { caLop?: boolean }): Promise<string> {
   const { data: lop } = await supabase.from('lop').select('ten_lop, mon').eq('id', lopId).single()
   if (!lop) throw new Error('Không tìm thấy lớp')
   const sheets = await getStatSheetLop(lopId)
   if (!sheets.length) throw new Error('Lớp chưa có dữ liệu đo')
+
+  let gui = sheets
+  if (!opts?.caLop) {
+    const cands = new Set((await listCandidatesLop(lopId)).map((c) => c.hoc_sinh_id))
+    gui = sheets.filter((s) => cands.has(s.hoc_sinh_id))
+    if (!gui.length) throw new Error('Lớp này không có em nào có tín hiệu cần xem — chưa cần hỏi Claude.')
+  }
+
   const { data: { user } } = await supabase.auth.getUser()
   const { data, error } = await supabase.from('danhgia_ai_job').insert({
     lop_id: lopId, mon: (lop as any).mon,
-    stat_sheet: goiGon(sheets, (lop as any).ten_lop),
+    stat_sheet: goiGon(gui, (lop as any).ten_lop, sheets.length),
     created_by: user?.id ?? null,
   }).select('id').single()
   if (error) throw error

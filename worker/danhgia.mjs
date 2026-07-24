@@ -140,8 +140,12 @@ async function phan(job) {
     // việc phán đoán về học sinh thật — sai thì ảnh hưởng người, không phải chỉ tốn token.
     thinking: { type: 'adaptive' },
     output_config: { effort: 'high', format: { type: 'json_schema', schema: SCHEMA } },
-    // cache_control ở khối system: prompt này cố định, mỗi lớp chỉ đổi phần user
-    // → từ lần gọi thứ 2 trở đi phần này đọc từ cache (~1/10 giá).
+    // ⚠ cache_control ở đây HIỆN CHƯA CÓ TÁC DỤNG và đó là chuyện bình thường:
+    //   Opus 4.8 chỉ cache tiền tố từ 4096 token trở lên; system prompt + schema
+    //   của ta mới ~1540 token → dưới ngưỡng, API lặng lẽ KHÔNG cache (không báo lỗi).
+    //   Giữ lại vì (a) vô hại, (b) prompt dài thêm là tự động có hiệu lực.
+    //   Muốn biết đã cache chưa: xem `usage.cache_read_input_tokens` trong log —
+    //   bằng 0 mãi nghĩa là vẫn dưới ngưỡng.
     system: [{ type: 'text', text: SYSTEM, cache_control: { type: 'ephemeral' } }],
     messages: [{
       role: 'user',

@@ -2598,3 +2598,17 @@ Vì sao lệch owner: migration cũ chạy qua `claude_build`; migration hôm na
 **⚠ CHƯA GỌI THẬT LẦN NÀO** — `.env.local` chưa có `ANTHROPIC_API_KEY` (cố ý KHÔNG đặt tên `VITE_*`) và migration chưa chạy. Mọi thứ trên mới chỉ đúng về CẤU TRÚC. Chỗ rủi ro nhất chưa kiểm được: `output_config` mang ĐỒNG THỜI `effort` + `format` — tài liệu nêu riêng từng cái, chưa thấy ví dụ gộp; nếu 400 thì tách `effort` ra hoặc bỏ.
 
 `tsc` sạch · `verify_danhgia` 72 test PASS.
+
+## 2026-07-23 (tiếp) — Xoá test data · ĐO chi phí thật · lọc payload
+
+**Xoá test data (Thùy duyệt "test thì xóa đi thôi"):** liệt kê chính xác trước rồi mới xoá — 4 dòng, đều của **HS0059 Nguyễn Văn Đức Huy**, đều do Claude bấm duyệt thử (`hs_level` KT L1 + TĐ L2, `hs_level_log` 2 lượt). Xác nhận sau xoá: `hs_level` 0 · `hs_level_log` 0. Không đụng dữ liệu thật nào.
+
+**⚠️ PHÁT HIỆN 1 — `cache_control` HIỆN KHÔNG CÓ TÁC DỤNG.** Opus 4.8 chỉ cache tiền tố **từ 4096 token**; system prompt + schema của ta mới **~1540 token** → dưới ngưỡng, API **lặng lẽ không cache, không báo lỗi**. Giữ lại vì vô hại và prompt dài thêm là tự có hiệu lực; đã ghi comment cách tự kiểm (`usage.cache_read_input_tokens` = 0 mãi nghĩa là vẫn dưới ngưỡng). Bài học: đặt `cache_control` KHÔNG bảo đảm có cache — phải soi `usage` mới biết.
+
+**⚠️ PHÁT HIỆN 2 — ước lượng đầu tiên BỎ SÓT token suy nghĩ.** `thinking` bị tính giá **output**; ở `effort:'high'` đây mới là khoản tốn nhất, KHÔNG phải payload. Ước lại: suy nghĩ ~5.580 tok/lớp khi gửi cả lớp — nhiều hơn cả phần chữ trả về.
+
+**⭐ SỬA: mặc định CHỈ GỬI em CÓ TÍN HIỆU, không gửi cả lớp** (`taoAiJob(lopId)`; muốn cả lớp thì `{caLop:true}`). Đo thật 10 lớp Toán: TB 7,4 HS/lớp nhưng chỉ **3,1 em có tín hiệu**. Lớp không có em nào → chặn luôn, báo "chưa cần hỏi Claude" thay vì đốt tiền để nghe "cả lớp ổn định". Payload kèm `si_so_ca_lop` + `ghi_chu` nói rõ đã lọc bao nhiêu — **cắt mà không nói thì Claude đọc thành "lớp chỉ có ngần này em"** rồi kết luận sai về mặt bằng.
+→ **tiết kiệm ~51%**: 5.853 đ → **2.888 đ/lượt** (Opus 4.8, TB 1 lớp).
+
+**Chi phí đo trên payload THẬT** (`scripts/_diag_danhgia_chiphi.ts`, tỷ giá 26k): 1 lớp TB ≈ 2.888 đ · quét hết **42 lớp/tuần ≈ 121k đ/tuần ≈ 522k đ/tháng**. Rẻ hơn: Sonnet 5 (KM tới 31/8) 209k/tháng · Haiku 4.5 104k/tháng · **Batch API −50%** (hợp nhịp digest tuần của spec §6, chờ tối đa 24h).
+⚠ Đây là **ƯỚC LƯỢNG** (quy đổi ký tự→token, ước token suy nghĩ). Số THẬT in ở log worker sau lượt gọi đầu (`usage`) — lấy số đó thay bảng này.
