@@ -476,3 +476,69 @@ export async function getLevelLog(hocSinhId: string, mon: string): Promise<Level
 
 // Cửa sổ hiện tại (giờ VN) — UI hiện "đang ở kỳ nào".
 export const cuaSoHienTai = () => cuaSoCua(Date.now())
+
+// ── NHỜ CLAUDE PHÁN (spec §0 "code tính số, Claude phán" · §6) ─────────────────
+// Client tính stat sheet → ghi job → `worker/danhgia.mjs` gọi Anthropic API → ghi kết quả.
+// ⚠ KHÔNG gọi Anthropic thẳng từ browser: key sẽ nằm trong bundle (`VITE_*`), ai
+//   cũng đốt được. Repo đã cháy tiền một lần vì gọi model đắt (DEVLOG "vụ 920k").
+export type AiJob = {
+  id: string; trang_thai: 'pending' | 'processing' | 'done' | 'failed'
+  ket_qua: any; usage: any; model: string | null; error: string | null
+  created_at: string; done_at: string | null
+}
+
+// Rút gọn stat sheet trước khi gửi: bỏ trường chỉ UI cần. Ít token = rẻ hơn VÀ
+// Claude đỡ nhiễu — gửi cả cục raw là đi ngược §0 ("Claude đọc stat sheet SẠCH").
+function goiGon(sheets: StatSheetHS[], tenLop: string) {
+  return {
+    ten_lop: tenLop, cua_so: cuaSoHienTai(),
+    hoc_sinh: sheets.map((s) => ({
+      hoc_sinh_id: s.hoc_sinh_id, ho_ten: s.ho_ten,
+      level_hien_tai: { kien_thuc: s.levelKienThuc, thai_do: s.levelThaiDo },
+      // Chỉ dạng đáng nói: trong diện, hoặc yếu/cần luyện. Dạng đã Đạt không cần Claude đọc.
+      dang: s.dangs.filter((d) => d.trongDien || d.muc !== 'dat').map((d) => ({
+        ma: d.ma_dang, ten: d.ten_dang, chuyen_de: d.ten_chuyen_de,
+        diem: +d.score.toFixed(2), diem_chi_giam_sat: d.scoreEtMt == null ? null : +d.scoreEtMt.toFixed(2),
+        so_lan_do: d.n, muc: d.muc, trong_dien_bo_tro: d.trongDien,
+      })),
+      chuyen_de: s.chuyenDes.map((c) => ({
+        ten: c.ten_chuyen_de,
+        chuoi: c.chuoi.map((p) => ({ cua_so: p.cuaSo, diem: p.score == null ? null : +p.score.toFixed(2), so_cau: p.n, it_lan_do: p.itLanDo })),
+        dang_tut_hang: c.dangDoiBucketXau,
+      })),
+      thai_do_cac_buoi: s.thaiDo,
+      chuong_do: s.coChuongDo, lo_tien_quyet: s.coLoTienQuyet,
+      // Đề xuất của RULE ENGINE — để Claude đối chiếu, KHÔNG phải để chép lại.
+      de_xuat_cua_may: { kien_thuc: s.deXuatKienThuc, thai_do: s.deXuatThaiDo },
+    })),
+  }
+}
+
+export async function taoAiJob(lopId: string): Promise<string> {
+  const { data: lop } = await supabase.from('lop').select('ten_lop, mon').eq('id', lopId).single()
+  if (!lop) throw new Error('Không tìm thấy lớp')
+  const sheets = await getStatSheetLop(lopId)
+  if (!sheets.length) throw new Error('Lớp chưa có dữ liệu đo')
+  const { data: { user } } = await supabase.auth.getUser()
+  const { data, error } = await supabase.from('danhgia_ai_job').insert({
+    lop_id: lopId, mon: (lop as any).mon,
+    stat_sheet: goiGon(sheets, (lop as any).ten_lop),
+    created_by: user?.id ?? null,
+  }).select('id').single()
+  if (error) throw error
+  return (data as any).id
+}
+
+export async function getAiJob(id: string): Promise<AiJob | null> {
+  const { data } = await supabase.from('danhgia_ai_job')
+    .select('id, trang_thai, ket_qua, usage, model, error, created_at, done_at').eq('id', id).maybeSingle()
+  return (data as any) ?? null
+}
+
+// Lượt hỏi gần nhất của lớp — mở màn là thấy ngay kết quả cũ, khỏi hỏi lại (tốn tiền).
+export async function getAiJobMoiNhat(lopId: string): Promise<AiJob | null> {
+  const { data } = await supabase.from('danhgia_ai_job')
+    .select('id, trang_thai, ket_qua, usage, model, error, created_at, done_at')
+    .eq('lop_id', lopId).order('created_at', { ascending: false }).limit(1).maybeSingle()
+  return (data as any) ?? null
+}

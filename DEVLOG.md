@@ -2575,3 +2575,26 @@ Vì sao lệch owner: migration cũ chạy qua `claude_build`; migration hôm na
 **Test data còn trên prod:** HS *Nguyễn Văn Đức Huy* (11A1) đang có `hs_level` kiến-thức L1 + thái-độ L2 do em bấm duyệt thử — **chưa xoá, chờ Thùy quyết** (Luật xoá).
 
 `tsc` sạch · `verify_danhgia` PASS.
+
+## 2026-07-23 — NỐI CLAUDE API: "code tính số, Claude phán" (vế còn lại của spec §0)
+
+**Thùy:** *"Đây mới là hệ thống đề xuất. t cần gọi api claude vào để nó đọc dữ liệu và đề xuất. chứ nếu chỉ rule base thì chưa dc"* — đúng spec §0/§6: rule engine là vế "code tính số", còn thiếu vế "Claude phán".
+
+**⭐ KIẾN TRÚC: QUA BẢNG JOB + WORKER, KHÔNG GỌI THẲNG TỪ BROWSER.** Gọi Anthropic từ browser buộc nhúng key vào bundle (`VITE_*`). Repo đã chấp nhận điều đó cho Gemini, nhưng: (a) Opus 4.8 đắt hơn nhiều lần; (b) **đã có tiền lệ cháy tiền** — DEVLOG "vụ 920k", phải khoá cứng Gemini về Flash. Key lộ = người lạ đốt tiền. ⇒ dùng lại **pattern worker sẵn có** (`linkgen_jobs` + `worker/index.mjs`): browser ghi job, worker Node giữ key server-side.
+
+**⭐ `stat_sheet` do CLIENT tính rồi ghi vào job**, worker KHÔNG tự tính lại: (a) không nhân đôi logic; (b) **đóng băng bằng chứng** đúng thời điểm hỏi — mastery suy-động, tính lại sau ra số khác thì không đối chiếu được với câu Claude đã trả lời.
+
+**Đã làm:**
+- Migration `202607232117_danhgia_ai_job.sql` (**CHƯA CHẠY** — chờ Thùy): job có `stat_sheet`(vào) · `ket_qua`(ra) · `usage`(soi chi phí THẬT) · `model` · attempt/error.
+- `worker/danhgia.mjs` (`npm run worker:danhgia`): poll → gọi Claude → ghi kết quả. Nhận job có điều kiện (`.eq('trang_thai','pending')` lúc update) chống 2 worker ăn 1 job; 1 job/lượt (gọi Claude tốn tiền, không chồng lệnh).
+- `src/lib/danhgia.ts`: `taoAiJob`/`getAiJob`/`getAiJobMoiNhat` + `goiGon()` — **lọc bớt trước khi gửi**: chỉ dạng trong-diện hoặc chưa-Đạt, bỏ trường chỉ UI cần. Ít token = rẻ hơn VÀ đúng §0 (Claude đọc stat sheet SẠCH, không phải cục raw). Mở màn hiện lượt hỏi GẦN NHẤT → khỏi hỏi lại tốn tiền.
+- UI: khu "Nhận định của Claude" trong Dashboard học tập — tổng quan + cảnh báo cả lớp + từng em (phân loại/lý do/việc cần làm/dạng ưu tiên/độ tin/còn thiếu) + dòng token đã dùng.
+
+**Cấu hình API (theo tài liệu chính thức, không đoán):** `claude-opus-4-8` · `thinking:{type:'adaptive'}` (⚠ `budget_tokens` **bị 400** trên Opus 4.8) · `output_config:{effort:'high', format:{type:'json_schema'}}` (structured outputs — API ép JSON đúng hình, khỏi parse mò) · `cache_control` ở system prompt (lần 2 trở đi đọc cache ~1/10 giá) · **xử lý `stop_reason` TRƯỚC khi đọc content** (`refusal` → content rỗng; `max_tokens` → JSON cụt). System prompt cố ý KHÔNG nhét biến động (ngày/tên lớp/id) — caching là so khớp TIỀN TỐ, đổi 1 byte là hỏng cache mọi request sau.
+
+**`scripts/verify_danhgia_claude.mjs` — soát cấu hình KHÔNG cần key, không gọi mạng.** Bắt các lỗi `tsc` không thấy: model string sai/hậu tố ngày · tham số đã bị gỡ khỏi Opus 4.8 (`budget_tokens`/`temperature`) · schema vi phạm ràng buộc structured outputs (thiếu `additionalProperties:false`, dùng `minLength`…) · thiếu xử lý `stop_reason` · **key rò sang bundle browser**. 13/13 pass.
+*Lần đầu viết check này BÁO NHẦM* — quy tắc "browser không đụng Anthropic" bắt cả **comment** nhắc tên. Sửa: bỏ comment trước khi soi, và chỉ chặn thứ thật sự nguy hiểm (import SDK · `api.anthropic.com` · chuỗi `sk-ant-` · đọc `ANTHROPIC_API_KEY`). Cũng bỏ luôn kiểu sinh file tạm rồi import — file tạm quên xoá là lần sau soi nhầm schema CŨ mà không ai biết.
+
+**⚠ CHƯA GỌI THẬT LẦN NÀO** — `.env.local` chưa có `ANTHROPIC_API_KEY` (cố ý KHÔNG đặt tên `VITE_*`) và migration chưa chạy. Mọi thứ trên mới chỉ đúng về CẤU TRÚC. Chỗ rủi ro nhất chưa kiểm được: `output_config` mang ĐỒNG THỜI `effort` + `format` — tài liệu nêu riêng từng cái, chưa thấy ví dụ gộp; nếu 400 thì tách `effort` ra hoặc bỏ.
+
+`tsc` sạch · `verify_danhgia` 72 test PASS.

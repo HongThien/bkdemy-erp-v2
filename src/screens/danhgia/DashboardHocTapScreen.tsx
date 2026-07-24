@@ -11,7 +11,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import SearchSelect, { type Opt } from '../../components/SearchSelect'
 import { supabase } from '../../lib/supabase'
-import { listCandidatesLop, duyetLevel, getLevelLog, cuaSoHienTai, type Candidate, type LevelLogRow } from '../../lib/danhgia'
+import { listCandidatesLop, duyetLevel, getLevelLog, cuaSoHienTai, taoAiJob, getAiJob, getAiJobMoiNhat, type Candidate, type LevelLogRow, type AiJob } from '../../lib/danhgia'
 
 // ⚠ HAI THANG LEVEL KHÁC NGHĨA — KHÔNG dùng chung nhãn (spec §4.1 vs §4.2).
 // Kiến thức: L1 để ý · L2 bổ trợ riêng · L3 vượt quy trình (team học thuật).
@@ -94,6 +94,8 @@ export default function DashboardHocTapScreen() {
               </div>
             )}
 
+            <NhanDinhClaude lopId={lopId} />
+
             {digest.length > 0 && (
               <>
                 <h2 className="mb-3 text-[15px] font-bold text-slate-700">Cần đọc tuần này</h2>
@@ -115,6 +117,119 @@ export default function DashboardHocTapScreen() {
       </div>
       {moHS && <ChiTietModal c={moHS} onDong={() => setMoHS(null)} onXong={() => { setMoHS(null); reload() }} />}
     </section>
+  )
+}
+
+// ── NHẬN ĐỊNH CỦA CLAUDE (spec §0 "code tính số, Claude phán") ────────────────
+// Khu này ĐỌC bổ sung, KHÔNG thay rule engine ở trên. Rule engine phát hiện +
+// xếp ưu tiên (tất định, giải thích được); Claude đọc stat sheet rồi viết lý do,
+// bắt chỗ số liệu mù, nêu độ tin. Người vẫn là người duyệt.
+// Gọi qua bảng job → `worker/danhgia.mjs` (key Anthropic ở server, không vào bundle).
+const PHAN_LOAI_UI: Record<string, { ten: string; cls: string }> = {
+  on_dinh: { ten: 'Ổn định', cls: 'bg-emerald-50 text-emerald-700 ring-emerald-200' },
+  can_theo_doi: { ten: 'Cần theo dõi', cls: 'bg-amber-50 text-amber-700 ring-amber-200' },
+  can_bo_tro: { ten: 'Cần bổ trợ', cls: 'bg-orange-50 text-orange-700 ring-orange-200' },
+  can_can_thiep_gap: { ten: 'Cần can thiệp gấp', cls: 'bg-rose-50 text-rose-700 ring-rose-200' },
+}
+const DO_TIN_UI: Record<string, string> = { cao: 'độ tin cao', trung_binh: 'độ tin trung bình', thap: 'độ tin thấp' }
+
+function NhanDinhClaude({ lopId }: { lopId: string }) {
+  const [job, setJob] = useState<AiJob | null>(null)
+  const [busy, setBusy] = useState(false)
+  const [loi, setLoi] = useState<string | null>(null)
+  const [mo, setMo] = useState(false)
+
+  useEffect(() => { setJob(null); setLoi(null); if (lopId) getAiJobMoiNhat(lopId).then(setJob) }, [lopId])
+
+  // Đang chạy thì hỏi lại mỗi 3s cho tới khi worker xong (job chạy nền, không giữ UI).
+  useEffect(() => {
+    if (!job || (job.trang_thai !== 'pending' && job.trang_thai !== 'processing')) return
+    const t = setInterval(async () => { const m = await getAiJob(job.id); if (m) setJob(m) }, 3000)
+    return () => clearInterval(t)
+  }, [job?.id, job?.trang_thai])
+
+  const hoi = async () => {
+    setBusy(true); setLoi(null)
+    try { const id = await taoAiJob(lopId); setJob(await getAiJob(id)); setMo(true) }
+    catch (e: any) { setLoi(e?.message ?? String(e)) }
+    finally { setBusy(false) }
+  }
+
+  const dangChay = job?.trang_thai === 'pending' || job?.trang_thai === 'processing'
+  const kq = job?.trang_thai === 'done' ? job.ket_qua : null
+
+  return (
+    <div className="mb-6 rounded-2xl bg-white p-5 ring-1 ring-slate-200">
+      <div className="flex flex-wrap items-center gap-3">
+        <div className="min-w-0 flex-1">
+          <h2 className="text-[15px] font-bold text-slate-700">Nhận định của Claude</h2>
+          <p className="mt-0.5 text-[12px] text-slate-500">
+            Số liệu do hệ thống tính; Claude đọc rồi viết lý do và nêu độ tin. Vẫn là <b>đề xuất</b> — người duyệt mới đổi.
+          </p>
+        </div>
+        <button disabled={busy || dangChay} onClick={hoi}
+          className="rounded-lg bg-slate-800 px-4 py-2 text-[13px] font-semibold text-white transition hover:bg-slate-900 disabled:opacity-50">
+          {dangChay ? 'Claude đang đọc…' : busy ? 'Đang gửi…' : kq ? 'Hỏi lại' : 'Nhờ Claude đọc'}
+        </button>
+      </div>
+
+      {loi && <p className="mt-3 rounded-lg bg-rose-50 px-3 py-2 text-[12px] text-rose-700">{loi}</p>}
+      {job?.trang_thai === 'failed' && (
+        <p className="mt-3 rounded-lg bg-rose-50 px-3 py-2 text-[12px] text-rose-700">Không chạy được: {job.error}</p>
+      )}
+      {dangChay && (
+        <p className="mt-3 text-[12px] text-slate-500">
+          Đang chạy nền — có thể rời màn này, quay lại vẫn thấy kết quả. (Cần <code className="rounded bg-slate-100 px-1">node worker/danhgia.mjs</code> đang bật.)
+        </p>
+      )}
+
+      {kq && (
+        <div className="mt-4 border-t border-slate-100 pt-4">
+          <p className="text-[14px] leading-relaxed text-slate-700">{kq.tong_quan}</p>
+
+          {kq.canh_bao_he?.length > 0 && (
+            <ul className="mt-3 space-y-1 rounded-xl bg-amber-50 p-3">
+              {kq.canh_bao_he.map((c: string, i: number) => <li key={i} className="text-[13px] text-amber-900">· {c}</li>)}
+            </ul>
+          )}
+
+          <button onClick={() => setMo(!mo)} className="mt-3 text-[13px] font-semibold text-indigo-600 hover:text-indigo-700">
+            {mo ? '▾ Thu gọn' : `▸ Xem từng em (${kq.hoc_sinh?.length ?? 0})`}
+          </button>
+
+          {mo && (
+            <div className="mt-3 space-y-3">
+              {kq.hoc_sinh?.map((h: any) => (
+                <div key={h.hoc_sinh_id} className="rounded-xl bg-slate-50 p-4">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="text-[14px] font-semibold text-slate-800">{h.ho_ten}</span>
+                    {PHAN_LOAI_UI[h.phan_loai] && <Pill {...PHAN_LOAI_UI[h.phan_loai]} />}
+                    <span className="text-[11px] text-slate-400">{DO_TIN_UI[h.do_tin] ?? h.do_tin}</span>
+                  </div>
+                  <p className="mt-2 text-[13px] leading-relaxed text-slate-600">{h.ly_do}</p>
+                  {h.viec_can_lam?.length > 0 && (
+                    <ul className="mt-2 space-y-0.5">
+                      {h.viec_can_lam.map((v: string, i: number) => <li key={i} className="text-[13px] text-slate-700">→ {v}</li>)}
+                    </ul>
+                  )}
+                  {h.dang_uu_tien_bo_tro?.length > 0 && (
+                    <p className="mt-2 text-[12px] text-slate-500">Dạng nên bổ trợ trước: {h.dang_uu_tien_bo_tro.join(', ')}</p>
+                  )}
+                  {h.con_thieu && <p className="mt-2 text-[12px] text-amber-700">Còn thiếu: {h.con_thieu}</p>}
+                </div>
+              ))}
+            </div>
+          )}
+
+          <p className="mt-3 text-[11px] text-slate-400">
+            {job?.model} · {job?.usage?.input_tokens?.toLocaleString('vi-VN')} token vào
+            {job?.usage?.cache_read_input_tokens ? ` (${job.usage.cache_read_input_tokens.toLocaleString('vi-VN')} đọc từ cache)` : ''}
+            {' · '}{job?.usage?.output_tokens?.toLocaleString('vi-VN')} token ra
+            {job?.done_at ? ` · ${new Date(job.done_at).toLocaleString('vi-VN')}` : ''}
+          </p>
+        </div>
+      )}
+    </div>
   )
 }
 

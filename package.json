@@ -10,9 +10,11 @@
     "migrate": "node scripts/migrate.mjs",
     "new-migration": "node scripts/new-migration.mjs",
     "worker": "node worker/index.mjs",
-    "test:dethi": "vite-node scripts/test-dethi-ingest.ts"
+    "test:dethi": "vite-node scripts/test-dethi-ingest.ts",
+    "worker:danhgia": "node worker/danhgia.mjs"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.113.0",
     "@supabase/supabase-js": "^2.45.0",
     "html-to-image": "^1.11.13",
     "html2canvas": "^1.4.1",
