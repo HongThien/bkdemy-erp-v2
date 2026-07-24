@@ -52,16 +52,68 @@ const EFFORT = env('DANHGIA_EFFORT') ?? process.env.DANHGIA_EFFORT ?? 'high'
 const svc = createClient(SB_URL, SB_SERVICE) // service role: đọc/ghi job, không vướng RLS
 const claude = new Anthropic({ apiKey: ANTHROPIC_KEY })
 
+// ── HÀNG RÀO CHI PHÍ ─────────────────────────────────────────────────────────
+// Mọi con số dưới đây ĐO THẬT, không ước: lớp 11B1 (4 em) → vào 6.245 · ra 5.025
+// token ⇒ ~1.256 token ra mỗi em (đã gồm token suy nghĩ).
+const TOK_MOI_EM = 1300      // token ra mỗi em
+const TOK_NEN = 1500         // phần tổng quan + cảnh báo cả lớp
+const HE_SO_AN_TOAN = 1.6    // chừa chỗ cho em có nhiều dạng bất thường
+const TRAN_TOKEN_RA = 40_000 // trần cứng, chặn ca sinh chữ chạy loạn
+const TRAN_TIEN_1_LUOT = 25_000 // đ — vượt thì DỪNG, báo người, không âm thầm tiêu
+const USD_VND = 26_000
+const GIA = { // USD / 1 triệu token
+  'claude-opus-4-8': { vao: 5, ra: 25 },
+  'claude-opus-4-7': { vao: 5, ra: 25 },
+  'claude-sonnet-5': { vao: 2, ra: 10 },
+  'claude-sonnet-4-6': { vao: 3, ra: 15 },
+  'claude-haiku-4-5': { vao: 1, ra: 5 },
+}
+// ⚠ Haiku 4.5 KHÔNG hỗ trợ adaptive thinking (API trả 400 "adaptive thinking is not
+//   supported on this model"). Gửi kèm `thinking` cho model không hỗ trợ = job chết.
+const CO_ADAPTIVE = new Set(['claude-opus-4-8', 'claude-opus-4-7', 'claude-sonnet-5', 'claude-sonnet-4-6', 'claude-fable-5'])
+
 async function phan(job) {
   // Model do NGƯỜI chọn trên màn hình (cột `model_chon`) — để Thùy tự so Sonnet vs Opus
   // trên cùng dữ liệu. Không chọn thì rơi về mặc định của worker.
   const model = job.model_chon ?? MODEL
-  const res = await claude.messages.create({
+  const gia = GIA[model]
+  if (!gia) throw Object.assign(new Error(`Model "${model}" không có trong bảng giá — từ chối gọi để khỏi tiêu tiền mù.`), { khongThuLai: true })
+
+  const soHS = job.stat_sheet?.hoc_sinh?.length ?? 0
+  const vaoUoc = Math.round(JSON.stringify(job.stat_sheet).length / 3.2) + 1600 // +system+schema
+  const raUoc = TOK_NEN + TOK_MOI_EM * soHS
+  // max_tokens theo CỠ LỚP, không để cố định 64.000: trần cố định nghĩa là một lượt
+  // chạy loạn có thể sinh 64k token = ~41.600 đ trên Opus.
+  const maxTokens = Math.min(TRAN_TOKEN_RA, Math.max(8000, Math.round(raUoc * HE_SO_AN_TOAN)))
+  const tienUoc = Math.round(((vaoUoc * gia.vao + raUoc * gia.ra) / 1e6) * USD_VND)
+  const tienToiDa = Math.round(((vaoUoc * gia.vao + maxTokens * gia.ra) / 1e6) * USD_VND)
+
+  // Lớp đông tới mức nhu cầu vượt TRẦN CỨNG → gọi cũng chắc chắn bị cắt giữa chừng.
+  // Chặn từ đầu thay vì trả tiền cho một kết quả hỏng đã biết trước.
+  if (raUoc > TRAN_TOKEN_RA) {
+    throw Object.assign(new Error(
+      `Lớp quá đông: ${soHS} em cần ~${raUoc.toLocaleString('vi-VN')} token ra, vượt trần cứng ` +
+      `${TRAN_TOKEN_RA.toLocaleString('vi-VN')}. Gọi cũng sẽ bị cắt giữa chừng — cần chia nhỏ lớp.`), { khongThuLai: true })
+  }
+  if (tienToiDa > TRAN_TIEN_1_LUOT) {
+    throw Object.assign(new Error(
+      `Chặn trước khi gọi: lượt này có thể tốn tới ${tienToiDa.toLocaleString('vi-VN')} đ ` +
+      `(${soHS} em, ${model}) — vượt trần ${TRAN_TIEN_1_LUOT.toLocaleString('vi-VN')} đ. ` +
+      `Chọn model rẻ hơn, hoặc chia nhỏ lớp.`), { khongThuLai: true })
+  }
+  console.log(`[danhgia]   ước ~${tienUoc.toLocaleString('vi-VN')} đ (tối đa ${tienToiDa.toLocaleString('vi-VN')} đ) · trần token ra ${maxTokens.toLocaleString('vi-VN')}`)
+  // ⚠ max_tokens là trần cho TOÀN BỘ phần sinh ra, GỒM CẢ token suy nghĩ.
+  //   Đo thật: 4 em → 5.025 token ra. Lớp 15 em vượt 16.000 → JSON đứt giữa chừng.
+  //   Nâng lên 64.000 thì BẮT BUỘC dùng streaming: gọi thường với max_tokens lớn sẽ
+  //   treo tới khi đứt kết nối HTTP (SDK cũng chặn). Streaming không đổi kết quả,
+  //   chỉ giữ kết nối sống; `finalMessage()` trả về đúng object như messages.create.
+  const stream = claude.messages.stream({
     model,
-    max_tokens: 16000,
+    max_tokens: maxTokens,
     // Adaptive thinking: Claude tự quyết nghĩ sâu tới đâu. effort high vì đây là
     // việc phán đoán về học sinh thật — sai thì ảnh hưởng người, không phải chỉ tốn token.
-    thinking: { type: 'adaptive' },
+    // Model không hỗ trợ (Haiku) thì BỎ HẲN trường này, gửi kèm là 400.
+    ...(CO_ADAPTIVE.has(model) ? { thinking: { type: 'adaptive' } } : {}),
     output_config: { effort: EFFORT, format: { type: 'json_schema', schema: SCHEMA } },
     // ⚠ cache_control ở đây HIỆN CHƯA CÓ TÁC DỤNG và đó là chuyện bình thường:
     //   Opus 4.8 chỉ cache tiền tố từ 4096 token trở lên; system prompt + schema
@@ -79,16 +131,24 @@ ${JSON.stringify(job.stat_sheet, null, 1)}`,
     }],
   })
 
+  const res = await stream.finalMessage()
+
   // stop_reason phải xem TRƯỚC khi đọc content: refusal → content rỗng; max_tokens → JSON cụt.
+  // ⚠ Gắn cờ `khongThuLai` cho lỗi TẤT ĐỊNH — thử lại chắc chắn hỏng y hệt mà vẫn
+  //   sinh đủ token rồi vứt. Đã dính: lớp 15 em bị cắt, worker thử 3 lần, đốt ~15.000 đ
+  //   cho ba lần hỏng giống nhau.
   if (res.stop_reason === 'refusal') {
-    throw new Error(`Claude từ chối trả lời (${res.stop_details?.category ?? 'không rõ lý do'})`)
+    throw Object.assign(new Error(`Claude từ chối trả lời (${res.stop_details?.category ?? 'không rõ lý do'})`), { khongThuLai: true })
   }
   if (res.stop_reason === 'max_tokens') {
-    throw new Error('Kết quả bị cắt giữa chừng (max_tokens) — lớp quá đông, cần chia nhỏ stat sheet')
+    throw Object.assign(new Error(`Kết quả bị cắt giữa chừng: sinh ${res.usage?.output_tokens} token, chạm trần 64.000. Lớp quá đông — cần chia nhỏ stat sheet.`), { khongThuLai: true })
   }
   const text = res.content.find((b) => b.type === 'text')?.text
   if (!text) throw new Error('Không có khối text nào trong phản hồi')
-  return { ketQua: JSON.parse(text), usage: res.usage, model: res.model }
+  const tienThat = Math.round(((res.usage.input_tokens * gia.vao + res.usage.output_tokens * gia.ra) / 1e6) * USD_VND)
+  // In cả ƯỚC lẫn THẬT: lệch nhiều nghĩa là hằng số TOK_MOI_EM sai, phải chỉnh —
+  // không để ước lượng trôi khỏi thực tế rồi hàng rào chi phí thành vô nghĩa.
+  return { ketQua: JSON.parse(text), usage: res.usage, model: res.model, tienThat, tienUoc, soHS }
 }
 
 async function chay() {
@@ -107,21 +167,25 @@ async function chay() {
   console.log(`[danhgia] job ${job.id.slice(0, 8)} · ${soHS} HS · ${job.model_chon ?? MODEL} · đang hỏi…`)
   const t0 = Date.now()
   try {
-    const { ketQua, usage, model } = await phan(job)
+    const { ketQua, usage, model, tienThat, tienUoc, soHS: n } = await phan(job)
     await svc.from('danhgia_ai_job').update({
       trang_thai: 'done', ket_qua: ketQua, usage, model, error: null,
       updated_at: new Date().toISOString(), done_at: new Date().toISOString(),
     }).eq('id', job.id)
     const u = usage ?? {}
-    console.log(`[danhgia] ✓ ${((Date.now() - t0) / 1000).toFixed(1)}s · vào ${u.input_tokens} (cache đọc ${u.cache_read_input_tokens ?? 0}) · ra ${u.output_tokens}`)
+    const lech = tienUoc ? Math.round((tienThat / tienUoc - 1) * 100) : 0
+    console.log(`[danhgia] ✓ ${((Date.now() - t0) / 1000).toFixed(1)}s · vào ${u.input_tokens} · ra ${u.output_tokens} · ${tienThat.toLocaleString('vi-VN')} đ (ước ${tienUoc.toLocaleString('vi-VN')} đ, lệch ${lech > 0 ? '+' : ''}${lech}%) · ${Math.round(u.output_tokens / Math.max(n, 1))} token/em`)
+    if (Math.abs(lech) > 40) console.log(`[danhgia]   ⚠ ước lệch >40% — chỉnh hằng số TOK_MOI_EM trong worker cho khớp thực tế`)
   } catch (e) {
     const attempt = (job.attempt ?? 0) + 1
-    const hong = attempt >= MAX_ATTEMPTS
+    // Lỗi TẤT ĐỊNH (bị cắt / bị từ chối) → hỏng luôn, KHÔNG thử lại: kết quả y hệt
+    // mà mỗi lần vẫn sinh đủ token và vẫn tính tiền.
+    const hong = e?.khongThuLai === true || attempt >= MAX_ATTEMPTS
     await svc.from('danhgia_ai_job').update({
       trang_thai: hong ? 'failed' : 'pending', attempt, error: String(e?.message ?? e),
       updated_at: new Date().toISOString(),
     }).eq('id', job.id)
-    console.error(`[danhgia] ✗ lần ${attempt}${hong ? ' (bỏ cuộc)' : ''}: ${e?.message ?? e}`)
+    console.error(`[danhgia] ✗ lần ${attempt}${e?.khongThuLai ? ' (lỗi tất định — không thử lại)' : hong ? ' (bỏ cuộc)' : ''}: ${e?.message ?? e}`)
   }
 }
 

@@ -2722,3 +2722,21 @@ dạng LIỀN NHAU cùng chuyên đề) — chỉ là không tự sắp xếp l�
 
 `tsc` sạch · `vite build` sạch · migration đã áp (`_apply_one`) · `schema.md` refresh. **Chưa soi được trên
 app thật**: cổng dev đang bị phiên khác (dashboard học tập) chiếm, preview không mở được.
+
+## 2026-07-23 (tiếp) — HÀNG RÀO CHI PHÍ (Thùy: "logic thử đốt tiền như này thì chết")
+
+**Thùy chặn đúng lúc.** Rà lại thì có **ba** lỗ đốt tiền, không phải một:
+
+1. **Thử lại lỗi TẤT ĐỊNH.** Lớp 15 em bị cắt `max_tokens` → worker thử 3 lần, mỗi lần sinh đủ 16k token rồi vứt ⇒ **~15.000 đ cho ba lần hỏng giống hệt nhau**. Sửa: cờ `khongThuLai` cho `max_tokens`/`refusal`/model-lạ → hỏng luôn, không thử lại.
+2. **`max_tokens: 64000` CỐ ĐỊNH** (Claude vừa tự nâng lên để chữa lỗi cắt, mà không đặt trần tiền). Một lượt chạy loạn trên Opus = 64k × $25/1M = **~41.600 đ**. Sửa: `max_tokens` tính theo CỠ LỚP (`1500 + 1300×soHS`, ×1,6 an toàn, trần cứng 40k).
+3. **Không có trần tiền.** Sửa: ước chi phí TRƯỚC khi gọi, vượt `TRAN_TIEN_1_LUOT = 25.000 đ` thì DỪNG và báo người — không âm thầm tiêu.
+
+**Phát hiện thêm — Haiku 4.5 KHÔNG hỗ trợ adaptive thinking** (`400 adaptive thinking is not supported on this model`). Lỗi 400 bị chặn trước khi sinh chữ nên KHÔNG mất tiền, nhưng job chết. Sửa: `CO_ADAPTIVE` whitelist, model không hỗ trợ thì bỏ hẳn trường `thinking`. (UI chỉ cho chọn Sonnet 5 / Opus 4.8 nên không dính, nhưng `DANHGIA_MODEL` env thì có.)
+
+**Bảng chạy khô lộ tiếp một chỗ vô lý Claude tự tạo:** ở 40 em, *ước* (42.263 đ) > *tối đa* (33.488 đ) — không thể. Vì lớp đông quá thì `max_tokens` bị cắt về trần 40k trong khi nhu cầu thật là 53.500 ⇒ **gọi cũng CHẮC CHẮN bị cắt**. Sửa: chặn ngay từ đầu với lý do "lớp quá đông, cần chia nhỏ" thay vì trả tiền cho kết quả hỏng đã biết trước.
+
+**`scripts/verify_danhgia_chiphi.mjs` — CHẠY KHÔ, không gọi API, không tốn đồng nào.** In bảng (model × cỡ lớp → max_tokens / ước / tối đa / chặn hay không) + 8 bảo đảm. Đọc hằng số THẲNG từ worker nên sửa worker mà quên là test đỏ ngay.
+
+**Log worker giờ in cả ƯỚC lẫn THẬT + token/em**, lệch >40% thì cảnh báo chỉnh hằng số — không để ước lượng trôi khỏi thực tế rồi hàng rào thành vô nghĩa.
+
+**Hiện trạng theo bảng:** Sonnet 5 chạy được tới 25 em · Opus chặn từ 25 em (quá trần tiền) · mọi model chặn ở 40 em (quá trần token). Lớp to nhất của trung tâm là 15 em nên chưa chạm giới hạn nào.
