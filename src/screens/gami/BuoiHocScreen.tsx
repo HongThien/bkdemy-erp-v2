@@ -2,14 +2,14 @@ import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 // (Ảnh gửi PH dùng html2canvas tải từ CDN TRONG popup — đúng pattern V1, không import vào bundle.)
 import {
-  buoiAoCuaNgay, moBuoi, getBuoi, huyBuoi, huyBuoiCuaNgay, setNguoiDay,
+  buoiAoCuaNgay, timBuoiTheoLop, moBuoi, getBuoi, huyBuoi, huyBuoiCuaNgay, setNguoiDay,
   getRoster, diemDanh, markBaoDen, xoaHSKhoiBuoi, dongBoSiSo, listProblems, addProblem, setProblemDang, ensureProblems, listGrades, gradeMuc, closePhase,
   loadETForBuoi, syncDocProblems, xepLuoiTheoDe, gradeET, deleteGrade, reopenPhase,
   loadBTVNForBuoi, syncBTVNProblems, getBtvnKetQua, setBtvnKetQua, listCanhBao, themCanhBao, xoaCanhBao, closeBTVN, reopenBTVN,
   type BtvnKQ, type CanhBao, type BtvnTrangThai, type BtvnThaiDo,
   getDanhGia, setDanhGiaDang, setNhanXet, setHoanThanhPct, HOAN_THANH_PCT_OPTS, dongDanhGia, moLaiDanhGia, setNoiDungBuoi,
   loadLiveTestForBuoi, getDangTen, loadMTForBuoi, syncMTProblems,
-  type BuoiAo, type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type Phase, type DiemDanh, type DanhGiaHS, type DanhGiaDiem, type TabKey, type ETResult, type LuoiSync,
+  type BuoiAo, type BuoiTim, type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type Phase, type DiemDanh, type DanhGiaHS, type DanhGiaDiem, type TabKey, type ETResult, type LuoiSync,
 } from '../../lib/gami'
 import { getLiveSnapshot, type BaiTest, type BaiTestCau, type BaiLam, type LiveAnswer } from '../../lib/testonline'
 import type { MTPhanCaus } from '../../lib/mt'
@@ -18,6 +18,7 @@ import { listNhanSu, type NhanSu } from '../../lib/nhansu'
 import { listDaiDang, type CauHoi } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
 import SearchSelect from '../../components/SearchSelect'
+import { NGU_CANH_LUOT, setNguCanhLuotBuoi, type NguCanhLuot } from '../../lib/kho/hinh'
 import DangPickerOne from '../../components/DangPickerOne'
 import { useIsMobile } from '../../hooks/useIsMobile'
 import { tenHienThiDs, tenNganHS } from '../../lib/hoten'
@@ -41,6 +42,14 @@ export default function BuoiHocScreen() {
   const [err, setErr] = useState<string | null>(null)
   const [open, setOpen] = useState<{ id: string; lopId: string } | null>(null)
   const [filter, setFilter] = useState<BuoiStatus>('chua')
+  // ⭐ 07-24: 2 CHẾ ĐỘ XEM, gạt qua lại — KHÔNG trộn vào nhau. "Theo ngày" là trục vận hành hằng ngày
+  // (buổi ẢO của 1 ngày, suy từ TKB, có bộ đếm chưa-mở/đã-mở/đã-huỷ theo ngày đó); "Tìm lớp" lật trục
+  // sang LỚP xuyên thời gian — nguồn dữ liệu, cách đếm, cách sắp đều khác. Nhét chung một danh sách thì
+  // mấy con số filter theo-ngày hết nghĩa. Tách chế độ ⇒ màn chính giữ nguyên hành vi, không rủi ro.
+  const [mode, setMode] = useState<'ngay' | 'tim'>('ngay')
+  // Từ khoá tìm sống ở ĐÂY, không ở trong panel: vào 1 buổi rồi bấm "← Buổi học" là panel bị unmount,
+  // để state bên trong thì mất chữ vừa gõ → phải gõ lại mỗi lần xem xong 1 buổi (đúng thao tác hay lặp nhất).
+  const [q, setQ] = useState('')
   const me = useStore((s) => s.me)
   const laAdmin = !!useStore((s) => s.quyen)?.laAdmin
   const myMons = me?.mons ?? []
@@ -71,16 +80,27 @@ export default function BuoiHocScreen() {
   const shown = view.filter((ba) => statusOf(ba.buoi) === filter)
   const tab = (on: boolean) => `h-7 rounded-md px-3 text-[13px] font-semibold transition ${on ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`
 
+  const segBtn = (on: boolean) => `h-7 rounded-md px-2.5 text-[12px] font-semibold transition ${on ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`
+
   return (
     <div className="flex h-full min-w-0 flex-col bg-[#fafafb]">
       <div className="flex items-center gap-3 border-b border-slate-200 bg-white px-6 py-2.5">
         <span className="text-sm font-semibold text-slate-900">Buổi học</span>
-        <input type="date" value={ngay} onChange={(e) => setNgay(e.target.value)} className="rounded-md border border-slate-200 px-2 py-1 text-[13px]" />
-        <div className="ml-2 flex items-center gap-1">
-          {FILTERS.map((f) => <button key={f.v} onClick={() => setFilter(f.v)} className={tab(filter === f.v)}>{f.lbl} <span className={filter === f.v ? 'opacity-80' : 'text-slate-400'}>{cnt[f.v]}</span></button>)}
-        </div>
+        <span className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5">
+          <button onClick={() => setMode('ngay')} className={segBtn(mode === 'ngay')}>📅 Theo ngày</button>
+          <button onClick={() => setMode('tim')} className={segBtn(mode === 'tim')}>🔎 Tìm lớp</button>
+        </span>
+        {mode === 'ngay' && <>
+          <input type="date" value={ngay} onChange={(e) => setNgay(e.target.value)} className="rounded-md border border-slate-200 px-2 py-1 text-[13px]" />
+          <div className="ml-2 flex items-center gap-1">
+            {FILTERS.map((f) => <button key={f.v} onClick={() => setFilter(f.v)} className={tab(filter === f.v)}>{f.lbl} <span className={filter === f.v ? 'opacity-80' : 'text-slate-400'}>{cnt[f.v]}</span></button>)}
+          </div>
+        </>}
       </div>
 
+      {mode === 'tim' ? (
+        <TimLopPanel q={q} setQ={setQ} monScope={(laAdmin || laOps || myMons.length === 0) ? null : myMons} onOpened={(id, lopId) => setOpen({ id, lopId })} />
+      ) : (
       <div className="min-h-0 flex-1 overflow-auto p-6">
         {loading ? <p className="text-sm text-slate-400">Đang tải…</p>
           : err ? <p className="text-sm text-rose-600">Lỗi: {err}</p>
@@ -92,6 +112,95 @@ export default function BuoiHocScreen() {
             </div>
           )}
       </div>
+      )}
+    </div>
+  )
+}
+
+// ── 🔎 TÌM LỚP: gõ tên lớp → mọi buổi của lớp đó (mới nhất trước) ───────────────────────────────
+// Chỉ đọc, không đụng state của chế độ "Theo ngày" — gạt qua lại không mất gì.
+function TimLopPanel({ q, setQ, monScope, onOpened }: { q: string; setQ: (v: string) => void; monScope: string[] | null; onOpened: (id: string, lopId: string) => void }) {
+  const [rows, setRows] = useState<BuoiTim[]>([])
+  const [loading, setLoading] = useState(false)
+  const [err, setErr] = useState<string | null>(null)
+  // Debounce 250ms + cờ huỷ: gõ "9A1" là 3 lượt gõ, không để lượt cũ trả về SAU rồi đè kết quả mới.
+  useEffect(() => {
+    const tu = q.trim()
+    if (!tu) { setRows([]); setErr(null); setLoading(false); return }
+    let bo = false
+    setLoading(true)
+    const t = setTimeout(() => {
+      timBuoiTheoLop(tu)
+        .then((r) => { if (!bo) { setRows(r); setErr(null) } })
+        .catch((e) => { if (!bo) setErr(e.message ?? String(e)) })
+        .finally(() => { if (!bo) setLoading(false) })
+    }, 250)
+    return () => { bo = true; clearTimeout(t) }
+  }, [q])
+
+  const view = monScope ? rows.filter((r) => monScope.includes(r.lop.mon)) : rows
+  // Gom theo LỚP khi tên gõ khớp nhiều lớp (vd gõ "9A" ra 9A1, 9A2) — đỡ lẫn buổi của 2 lớp vào nhau.
+  const nhomLop = [...new Map(view.map((r) => [r.lop.id, r.lop])).values()]
+
+  return (
+    <div className="grid min-h-0 flex-1 grid-rows-[auto_minmax(0,1fr)] overflow-hidden">
+      <div className="flex items-center gap-3 border-b border-slate-100 bg-white px-6 py-2.5">
+        <input autoFocus value={q} onChange={(e) => setQ(e.target.value)} placeholder="Gõ tên lớp… (vd 9A1)"
+          className="h-9 w-64 rounded-md border border-slate-300 px-3 text-[14px] outline-none focus:border-indigo-500" />
+        {q.trim() && !loading && <span className="text-[12px] text-slate-400"><b className="text-slate-600">{view.length}</b> buổi{nhomLop.length > 1 ? ` · ${nhomLop.length} lớp (${nhomLop.map((l) => l.ten_lop).join(', ')})` : ''}</span>}
+        <span className="ml-auto text-[11px] text-slate-400">Buổi đã học + buổi sắp tới trong 14 ngày</span>
+      </div>
+      <div className="min-h-0 overflow-auto p-6">
+        {!q.trim() ? <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">Gõ tên lớp để xem tất cả buổi của lớp đó — khỏi phải dò từng ngày trên lịch.</div>
+          : loading ? <p className="text-sm text-slate-400">Đang tìm…</p>
+          : err ? <p className="text-sm text-rose-600">Lỗi: {err}</p>
+          : view.length === 0 ? <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">Không thấy lớp/buổi nào khớp “{q.trim()}”.</div>
+          : <div className="mx-auto max-w-[880px] space-y-1.5">{view.map((r) => <BuoiTimRow key={`${r.lop.id}|${r.ngay}|${r.buoi?.id ?? 'ao'}`} r={r} onOpened={onOpened} />)}</div>}
+      </div>
+    </div>
+  )
+}
+
+const LOAI_BUOI_TEN: Record<string, string> = { bu: 'Bù', bo_tro_yeu: 'Bổ trợ yếu', bo_tro_duoi: 'Bổ trợ đuổi', mt: 'MT' }
+function BuoiTimRow({ r, onOpened }: { r: BuoiTim; onOpened: (id: string, lopId: string) => void }) {
+  const [busy, setBusy] = useState(false)
+  const b = r.buoi
+  const ngayVN = r.ngay.split('-').reverse().join('/')
+  const thuLbl = r.thu === 8 ? 'CN' : 'T' + r.thu
+  const gio = r.slot.gio_bat_dau ? `${r.slot.gio_bat_dau.slice(0, 5)}–${(r.slot.gio_ket_thuc ?? '').slice(0, 5)}` : ''
+  async function moRoiVao() {
+    setBusy(true)
+    try { const nw = await moBuoi(r.lop.id, r.ngay, r.slot as any); onOpened(nw.id, r.lop.id) }
+    catch (e: any) { alert(e.message ?? String(e)); setBusy(false) }
+  }
+  const chip = b?.trang_thai === 'huy' ? <span className="rounded bg-slate-200 px-1.5 py-0.5 text-[11px] font-medium text-slate-500">Đã hủy</span>
+    : b?.trang_thai === 'hoan_tat' ? <span className="rounded bg-emerald-100 px-1.5 py-0.5 text-[11px] font-medium text-emerald-700">Hoàn tất</span>
+    : b ? <span className="rounded bg-indigo-100 px-1.5 py-0.5 text-[11px] font-medium text-indigo-700">Đang mở</span>
+    : <span className="rounded bg-amber-50 px-1.5 py-0.5 text-[11px] font-medium text-amber-700">Chưa mở</span>
+
+  const noiDung = (
+    <>
+      <span className="w-[92px] shrink-0 text-[13px] font-semibold text-slate-900">{r.lop.ten_lop}</span>
+      <span className="w-[112px] shrink-0 text-[12px] text-slate-400">{r.lop.mon}{r.lop.khoi ? ` · K${r.lop.khoi}` : ''}</span>
+      <span className="w-[124px] shrink-0 text-[13px] font-medium text-slate-700">{thuLbl} · {ngayVN}</span>
+      <span className="w-[104px] shrink-0 text-[12px] text-slate-500">{gio}</span>
+      <span className="w-[64px] shrink-0 text-[12px] text-slate-400">{r.slot.phong ?? ''}</span>
+      {b && b.loai !== 'thuong' && <span className="shrink-0 rounded bg-violet-50 px-1.5 py-0.5 text-[11px] font-medium text-violet-700">{LOAI_BUOI_TEN[b.loai] ?? b.loai}</span>}
+      <span className="ml-auto shrink-0">{chip}</span>
+    </>
+  )
+  // Buổi đã có dòng → bấm cả hàng để vào. Chưa mở (ảo) → nút "Mở buổi" (không bấm nhầm cả hàng mà đẻ dòng).
+  if (b && b.trang_thai !== 'huy') return (
+    <button onClick={() => onOpened(b.id, r.lop.id)} className="flex w-full items-center gap-3 rounded-lg border border-slate-200 bg-white px-3 py-2 text-left transition hover:border-indigo-400 hover:bg-indigo-50/40">
+      {noiDung}
+      <span className="shrink-0 text-[12px] font-medium text-indigo-600">→</span>
+    </button>
+  )
+  return (
+    <div className="flex w-full items-center gap-3 rounded-lg border border-slate-200 bg-white px-3 py-2">
+      {noiDung}
+      {b ? <span className="shrink-0 text-[11px] italic text-slate-400" title={b.ly_do_huy ?? ''}>{b.ly_do_huy ?? ''}</span>
+        : <button onClick={moRoiVao} disabled={busy} className="shrink-0 rounded-md bg-indigo-600 px-2.5 py-1 text-[12px] font-medium text-white hover:bg-indigo-500 disabled:opacity-40">{busy ? '…' : 'Mở buổi'}</button>}
     </div>
   )
 }
@@ -194,6 +303,22 @@ export function BuoiDetail({ id, onClose, tabs, initialTab, canManage = true, on
             </span>
           ) })()}
         </div>}
+        {/* LƯỢT DẠY của buổi (spec-kho-hinh-v3 §8). Buổi lượt-1 dạy mô hình thì dạng+bổ đề đã được
+            scaffold sẵn ⇒ HS sai quy về MÔ HÌNH; lượt-2 dạy dạng thì mô hình đã quen ⇒ sai quy về DẠNG.
+            Không có nhãn này thì các trục chồng lên một quan sát, sau KHÔNG gỡ ra được.
+            KHÔNG gate theo môn (ADR-mon §1.6: cấm `if mon==='Toán'` trong code dùng chung) — mọi môn
+            đều có khái niệm lượt dạy; nhánh nào chưa dùng thì để trống. */}
+        {!isMobile && canManage && (
+          <div className="flex items-center gap-1 text-[12px] text-slate-500">Lượt:
+            <select value={(buoi as { ngu_canh_luot?: string | null }).ngu_canh_luot ?? ''}
+              onChange={async (e) => { await setNguCanhLuotBuoi(id, (e.target.value || null) as NguCanhLuot | null); reload() }}
+              title="Lượt dạy sinh ra quan sát — dùng để quy lỗi đúng trục khi đo"
+              className="rounded-md border border-slate-200 px-1.5 py-1 text-[12px] text-slate-700 outline-none focus:border-indigo-400">
+              <option value="">— chưa khai —</option>
+              {NGU_CANH_LUOT.map((x) => <option key={x.v} value={x.v} title={x.mo_ta}>{x.label}</option>)}
+            </select>
+          </div>
+        )}
         {canManage && buoi.trang_thai !== 'huy' && buoi.trang_thai !== 'hoan_tat' && (
           <button onClick={async () => { const ly = prompt('Lý do hủy buổi?'); if (ly) { await huyBuoi(id, ly); reload() } }}
             className="ml-auto rounded-md border border-rose-200 px-2.5 py-1 text-[12px] font-medium text-rose-600 hover:bg-rose-50">Hủy buổi</button>

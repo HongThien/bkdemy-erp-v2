@@ -944,6 +944,67 @@ export async function buoiAoCuaKhoang(tu: string, den: string): Promise<(BuoiAo 
   return out
 }
 
+// ── TÌM BUỔI THEO LỚP (thanh search màn Buổi học) ──────────────────────────────────────────────
+// Màn chính là "buổi ẢO của MỘT NGÀY" (TKB × ngày) — muốn xem buổi 22/07 của 9A1 phải bấm đúng ngày đó.
+// Hàm này lật trục: gõ tên lớp → MỌI buổi của lớp đó xuyên thời gian. Hai nguồn, gộp lại:
+//   ① buổi THẬT (`buoi_hoc`, mọi loai: thường/bù/bổ trợ/MT) — quá khứ + đã mở, cái hay cần tìm nhất;
+//   ② buổi ẢO SẮP TỚI (TKB, hôm nay → +14 ngày, chưa đẻ dòng) — để mở buổi thẳng từ đây, khỏi quay lại lịch.
+// CHỈ tra TKB của các lớp ĐÃ KHỚP TÊN (khác buoiAoCuaKhoang quét toàn trung tâm) → rẻ, gõ tới đâu chạy tới đó.
+export type BuoiTim = {
+  lop: { id: string; ten_lop: string; mon: string; khoi: string | null }
+  ngay: string; thu: number
+  slot: { gio_bat_dau: string | null; gio_ket_thuc: string | null; phong: string | null }
+  buoi: BuoiHoc | null   // null = chưa mở (ảo, suy từ TKB)
+}
+const NGAY_TIM_TOI = 14  // buổi ảo sắp tới: hôm nay → +14 ngày
+export async function timBuoiTheoLop(q: string): Promise<BuoiTim[]> {
+  const tu = q.trim()
+  if (!tu) return []
+  // Tên lớp là mã ngắn (9A1, 7S2…) → khớp CHỨA, không phân biệt hoa thường.
+  const { data: lops, error } = await supabase.from('lop')
+    .select('id, ten_lop, mon, khoi, ngay_khai_giang, trang_thai').ilike('ten_lop', `%${tu}%`).limit(50)
+  if (error) throw error
+  const dsLop = (lops ?? []) as { id: string; ten_lop: string; mon: string; khoi: string | null; ngay_khai_giang: string | null; trang_thai: string }[]
+  if (!dsLop.length) return []
+  const lopMap = new Map(dsLop.map((l) => [l.id, l]))
+  const ids = dsLop.map((l) => l.id)
+
+  // ① Buổi THẬT — mới nhất trước. Lấy mọi `loai` (buổi bù/bổ trợ cũng là buổi của lớp, cần tìm được).
+  const { data: rows } = await supabase.from('buoi_hoc').select('*')
+    .in('lop_id', ids).order('ngay', { ascending: false }).limit(500)
+  const that = ((rows ?? []) as BuoiHoc[]).map((b) => {
+    const l = lopMap.get(b.lop_id as string)!
+    return { lop: { id: l.id, ten_lop: l.ten_lop, mon: l.mon, khoi: l.khoi }, ngay: b.ngay, thu: b.thu ?? thuOf(b.ngay), slot: { gio_bat_dau: b.gio_bat_dau, gio_ket_thuc: b.gio_ket_thuc, phong: b.phong }, buoi: b }
+  })
+  const daCo = new Set(that.filter((r) => r.buoi?.loai === 'thuong').map((r) => `${r.lop.id}|${r.ngay}`))
+
+  // ② Buổi ẢO sắp tới (chỉ lớp đang học) — bỏ ngày đã có buổi thường (nó đã nằm ở ①).
+  const homNay = vnToday()
+  const den = congNgay(homNay, NGAY_TIM_TOI)
+  const { data: slots } = await supabase.from('thoi_khoa_bieu')
+    .select('lop_id, thu, gio_bat_dau, gio_ket_thuc, phong, hieu_luc_tu, hieu_luc_den').in('lop_id', ids).lte('hieu_luc_tu', den).limit(LIMIT)
+  // 1 (lớp × ngày) = 1 buổi thường DUY NHẤT (moBuoi tra theo lop+ngay) → gom về 1 dòng, giữ slot SỚM NHẤT.
+  // Cần thật: TKB có slot TRÙNG THỨ còn hiệu lực chồng nhau (9A1 có 2 dòng T6 15:00, 1 dòng đã hết hiệu
+  // lực) — không gom thì ra 2 dòng y hệt trong kết quả tìm, bấm "Mở buổi" ở dòng nào cũng ra cùng 1 buổi.
+  const aoMap = new Map<string, BuoiTim>()
+  for (let day = homNay; day <= den; day = congNgay(day, 1)) {
+    const thu = thuOf(day)
+    for (const s of ((slots ?? []) as any[])) {
+      const l = lopMap.get(s.lop_id)
+      if (!l || l.trang_thai !== 'dang_hoc' || !l.ngay_khai_giang || l.ngay_khai_giang > day) continue
+      if (s.thu !== thu || s.hieu_luc_tu > day || (s.hieu_luc_den && s.hieu_luc_den < day)) continue
+      const k = `${l.id}|${day}`
+      if (daCo.has(k)) continue
+      const cu = aoMap.get(k)
+      if (cu && (cu.slot.gio_bat_dau ?? '') <= (s.gio_bat_dau ?? '')) continue
+      aoMap.set(k, { lop: { id: l.id, ten_lop: l.ten_lop, mon: l.mon, khoi: l.khoi }, ngay: day, thu, slot: { gio_bat_dau: s.gio_bat_dau, gio_ket_thuc: s.gio_ket_thuc, phong: s.phong }, buoi: null })
+    }
+  }
+  const ao = [...aoMap.values()]
+  // Mới/sắp tới trước, cùng ngày thì theo giờ. Ngày dạng 'YYYY-MM-DD' nên so chuỗi = so thời gian.
+  return [...ao, ...that].sort((a, b) => b.ngay.localeCompare(a.ngay) || (a.slot.gio_bat_dau ?? '').localeCompare(b.slot.gio_bat_dau ?? ''))
+}
+
 // MỞ LẠI 1 phase đã đóng để SỬA (vd TA sửa điểm ET): rollback Elo/EXP của phase đó rồi gỡ cờ đóng + về 'mo'.
 // Idempotent với đóng lại: xoá elo_history + exp_ledger của phase, hoàn elo về elo_before, trừ session nếu phase tính session.
 export async function reopenPhase(buoiId: string, phase: Phase): Promise<void> {
