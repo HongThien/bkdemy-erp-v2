@@ -2952,3 +2952,64 @@ khối đang mở (bỏ ô "Khối (tuỳ chọn)" free-text). Header M0/M4/M9 h
 React không mount; phải tự `preview_start name=dev` + đăng nhập quick-login Admin): khối 8 rỗng (empty
 state đúng) → tạo họ "Trực tâm" ở khối 8 → hiện ở khối 8 · chuyển khối 9 → KHÔNG thấy (rỗng) · quay lại
 khối 8 → còn đó. Xoá họ verify (DB), reload → khối 8 rail đếm 0, sạch. `tsc` + `vite build` sạch.
+
+## 2026-07-25 — BTVN "mất chỗ nhập" = doc gán nhầm ngày + nắn UX gán
+
+**Thùy báo:** 8A1 · 23/07 vào buổi không thấy chỗ nhập BTVN (dù đã làm BTVN kiểu mới kèm ôn tập).
+
+**Nguyên nhân (KHÔNG phải bug ôn tập):** GT + BTVN "Buổi 7" của 8A1 bị gán nhầm sang **CN 23/08** thay vì
+**T5 23/07**. `loadBTVNForBuoi` khớp doc theo (lop_id, ngay) cứng → buổi 23/07 không thấy doc → BtvnTab
+báo "Chưa có BTVN". Cả GT lẫn BTVN cùng ở 23/08 ⇒ lệch từ bước GÁN, không phải bước ôn tập. `getBTVNCaus`
+đã gộp `btvn`+`ontap` đúng; doc có đủ 5 btvn + 2×2 ôn tập. Quét toàn hệ: chỉ 3 doc lệch ngày (8A1 2 doc,
+11B1 1 doc) — không hệ thống. `ngayBuoiHopLeCuaLop` không có bug tháng; 8A1 học CẢ T5 lẫn CN nên 23/07(T5)
+và 23/08(CN) đều là option hợp lệ trong dropdown → bấm nhầm 1 dòng là lệch nguyên tháng.
+
+**Fix data (Thùy gật):** `_fix_8a1_buoi7_ngay.mjs` — UPDATE 2 doc `ngay` 08-23→07-23 + sửa chuỗi ngày trong
+`ten`. Không đụng phan/câu/ôn-tập-config (config khoá theo nguon_buoi, không theo ngày → vẫn liên kết).
+
+**Nắn UX gán (Thùy: "ko hiện list tất cả buổi nữa, chỉ hiện đúng ngày gán; mặc định buổi gần nhất chưa
+gán"):** `TrichPanel` load thêm `tkbDates` (ngayBuoiHopLeCuaLop), suy `defNgayByMarker` = lấp TUẦN TỰ buổi
+master chưa-gán vào ngày TKB trống (chưa có trong bộ giáo trình lớp) sớm nhất. `BuoiTrichRow` nhận
+`defaultNgay`: hàng chưa-gán hiện thẳng "Gán vào **Thứ X · dd/mm**" (không bày dropdown), nút "đổi ngày" mới
+mở `BuoiNgaySelect` cho ca bù/nhảy buổi. Bỏ checkbox GT (gán luôn = tạo GT). `touched` giữ lựa chọn tay
+khỏi bị default đè khi panel reload. `tsc` sạch. (CHƯA verify click-through trên app — panel sau đăng nhập
+staff, không tự login được.)
+
+## 2026-07-25 (tiếp 2) — Pha 4 CHỐT THIẾT KẾ: một mastery + nhãn trạng thái · 2 bài BT
+
+**Vướng (Thùy nêu):** BT không tính mastery ⇒ dạng yếu cứ hiện, khó biết đã xử lý chưa. Thùy đề
+"tính độc lập có BT / không BT để đo hiệu quả". Rồi tự thấy: "chia ra thành nhiều quá (có BT/ko,
+có BTVN/ko), rối".
+
+**⭐ CHỐT — KHÔNG đẻ nhiều mastery. MỘT mastery + vài NHÃN trạng thái:**
+- 1 mastery (giữ §9: ET/MT/BTVN) = số duy nhất đọc, quyết diện/level/mức.
+- "Đã xử lý chưa" KHÔNG cần số thứ hai — nằm ở HỒ SƠ CA (bo_tro_yeu). Ca đang mở=đang xử lý;
+  ca đóng=đã xử lý. Ca CHÍNH LÀ tracker, trực tiếp hơn suy qua một con số.
+- BT không thành mastery — là TRẠNG THÁI của ca. "BTVN che" giữ nguyên = 1 CỜ (so ET/MT vs gộp).
+- Dashboard mỗi dạng yếu = 1 điểm + 1 nhãn: chưa xử lý · đang bổ trợ · đã bổ trợ–chờ xác nhận · nghi BTVN che.
+
+**⭐ ĐO HIỆU QUẢ BT — Thùy: ET phục vụ bài MỚI (ít quay lại dạng cũ), MT tháng/lần (không phủ đủ),
+BT tại buổi vừa học không đáng tin (vừa được dạy).** ⇒ tín hiệu xác nhận độc lập KHÔNG tự đến, phải
+CỐ Ý tạo. **Cần 2 bài BT:**
+- **BT-ngay** (`bt_ngay`): tại buổi bổ trợ. Nhiễm (vừa dạy) ⇒ **weight 0** trong DANHGIA (không gỡ diện).
+- **BT-xác-nhận** (`bt_xn`): buổi KẾ TIẾP, HS đến sớm/ở lại muộn, giám sát, cold-check 2–3 câu tự
+  bơm từ kho. **BẮT BUỘC** (Thùy: không lấy mẫu). Trễ+cold ⇒ **weight >0** — ĐÂY là tín hiệu gỡ diện.
+- ⇒ **Đóng ca (bt_xn đạt) ≠ Ra khỏi diện (bt_xn vào mastery, vượt mốc).** Hai sự kiện, nhưng cùng do bt_xn.
+- **Hiệu quả BT** = mastery ĐỘC LẬP trước ca vs tại bt_xn, tính OFFLINE (đo immutable, dựng lại mốc
+  từ graded_at). "gắn với" chưa phải "gây ra" (cần nhóm chứng không-BT sau). Gap tại-chỗ (bt_ngay−trước)
+  = tín hiệu QUẢN TRỊ, KHÔNG phải hiệu quả bền — đừng gộp, kẻo thổi phồng dữ liệu moat.
+
+**Vận hành (Thùy: sợ khối lượng, nhưng pure-derive thì OK):** task BT-xn **tự bắn cho TA/OPS của ca**
+(dùng phan_cong_ca), quanh buổi kế; làm xong tự tắt (không danh sách tồn trung tâm ⇒ không phình).
+**Van xả bắt buộc:** quá hạn (đề xuất 2 buổi HS có mặt / 4 tuần — Thùy CHƯA chốt số) ⇒ đóng ca
+`ket_qua='khong_do_duoc'` (≠ chua_dat; anti-NULL: không-đo-được ≠ thất-bại) ⇒ chặn trần backlog.
+
+**Việc CÒN cho pha 4 (chưa build):**
+1. Migration `202607241948`: BỎ ô `retest_*` đơn → **bảng con `bo_tro_yeu_retest`** (mỗi lần đo 1 dòng,
+   `loai ∈ {ngay, xac_nhan}`, điểm, buổi, at) [anti-NULL: đo=append, không nullable]; thêm
+   `khong_do_duoc` vào CHECK ket_qua; (đã có sẵn duyet_boi/duyet_at, diem_luc_mo, muc/muc_may_de_xuat).
+2. Config mastery: thêm nguồn `bt_xn` (weight>0 ở DANHGIA_CONFIG) · `bt_ngay` giữ 0. napLanDo đọc thêm.
+3. Đóng ca = có dòng xac_nhan; ket_qua suy từ nó. Task BT-xn pure-derive + van xả quá hạn.
+4. ⚠ Thùy CHƯA chốt: ngưỡng quá hạn (2 buổi hay 4 tuần).
+
+**Ops đã chốt trước đó:** team học thuật DUYỆT ca → OPS XẾP LỊCH (=gắn day_buoi_id).

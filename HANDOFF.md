@@ -252,6 +252,69 @@
 - **✅ VERIFY THẬT e2e đủ cả 5 mảnh trên** (browser thật, không giả lập) — xem chi tiết DEVLOG 07-05. tsc + build pass toàn bộ, `npm run schema` (17 function).
 - **CÒN (đề thi, theo spec §9 OUT — có chủ đích):** nối `ky_thi` (band/điểm sát hạch) · tự luận online chấm-bước (nộp ảnh) · auto phân dạng AI vượt mức nhập-kho · đa cơ sở.
 
+### Đã build (07-22→25 — ⭐ DASHBOARD HỌC TẬP: rule engine phát hiện → AI đề xuất → người duyệt)
+Module `spec-danhgia-hoctap.md`. KHÁC "Kết quả học tập" (tra cứu): bên này PHÁT HIỆN→ĐỀ XUẤT→DUYỆT.
+Leaf `db_hoctap`, nhóm "Quản lý chất lượng". Files: `src/gami/danhgia.js` (engine PURE, test
+`scripts/verify_danhgia.mjs` 72 test) · `src/lib/danhgia.ts` (data-layer) · `src/screens/danhgia/
+DashboardHocTapScreen.tsx` · `worker/danhgia.mjs`+`worker/danhgia_prompt.mjs` (gọi Claude, key server).
+- **Mastery suy động = TB có trọng số 5 lần đo gần nhất.** Trọng số (spec §9): MT=3·ET=2·BTVN=1·
+  bổ trợ/ingame/dg=0. `DANHGIA_CONFIG.WEIGHT` override `bt:0,ingame:0,dg:0` (KHÁC MASTERY_CONFIG — đừng
+  "dọn gọn"). 2 lớp đo: **dạng** (cap 5 → MỨC) vs **chuyên đề** (mọi câu, không cap → TREND).
+- **⭐ CỬA SỔ = NỬA THÁNG LỊCH A/B** (`cuaSoCua`: ngày≤15='A', >15='B'), key `YYYY-MM-A|B`, giờ VN.
+  Thùy phân vân fortnight-neo-29/6 (29/6/2026 ĐÚNG thứ Hai) nhưng **CHỐT GIỮ A/B** vì **MT (weight 3,
+  cao nhất) neo theo THÁNG** → cửa sổ phải khớp tháng. Bất đối xứng 15/16 ngày vô hại (điểm chuyên đề
+  là TB không TỔNG; % so lớp theo TỪNG BÀI). Đổi CHỮ "14 ngày"→"nửa tháng", KHÔNG đụng lõi. ⚠ Đổi lại
+  = đổi atom thời gian (mọi key/delta/digest/trễ) — rất nặng.
+- **Trễ (hysteresis) mốc 0.5:** NHÃN mức dùng 0.5=cần luyện (khớp Kết quả học tập). TƯ CÁCH diện bổ trợ
+  dùng 2 mốc lệch: vào khi <0.5 (+đủ tin n≥3) · ra khi >0.5 · =0.5 giữ trạng thái. Cần `daMo` (dạng
+  đang trong `bo_tro_yeu_dang` chưa dong_at). KHÔNG mâu thuẫn (Thùy sửa Claude hiểu sai lúc đầu).
+- **4 kênh phát hiện KHÔNG cộng dồn** (mỗi kênh bắt thứ khác): ① trend · ② thái độ (thang tuyệt đối,
+  mọi buổi dưới "nghiêm túc"=tín hiệu) · ③ chuông đỏ (TA bấm) · ④ lỗ tiền quyết (GV báo). ③④ = phán
+  đoán NGƯỜI, bê nguyên không xét lại. Trả `kenh[]`+`uuTien` (chỉ để XẾP THỨ TỰ đọc, KHÔNG "mức nặng").
+- **Human-in-loop = NHÀ MÁY NHÃN:** máy chỉ ĐỀ XUẤT, người duyệt mới đổi state. `duyetLevel` ghi
+  `hs_level_log` CẢ 2 VẾ (level_may_de_xuat + level_chot) ⇒ delta lộ tự động = nhiên liệu "AI đẻ luật".
+- **⭐ AI = TẦNG CHÍNH SÁCH, KHÔNG tầng ca (Thùy chốt sau khi đo):** so rule (miễn phí, gửi kèm) vs
+  Claude job 9C1 = **khớp 13/14 quyết định**; chỗ Claude "tinh tế" (BTVN che, tự chặn thiếu đo, dai
+  dẳng) đều là rule tính sẵn. ⇒ Claude ĐỌC LẠI bảng rule, không phát hiện thêm. Lộ trình: G0 kho (AI
+  sinh 81% kho, đang chạy) · G1 nhà máy nhãn (pha 4, KHÔNG AI) · G2 AI đọc log duyệt→đẻ LUẬT→người
+  duyệt luật · G3 model dự báo. Ràng buộc G3 = THỜI GIAN LỊCH (38 ngày data ⇒ chỉ 30 ca "ổn→tụt").
+  **Moat KHÔNG ở khâu phát hiện (rule đủ) mà ở VÒNG ĐÓNG:** cặp (can thiệp→retest→kết quả) đối thủ
+  mua Claude cũng không có. `gami_grades`: 25k ô, 5.6k sai, **0,6% có mã lỗi** (Thùy: gắn mã lỗi=
+  "9 lên 10", không đáng; chỉ cần đúng dạng/đúng lúc/thực hiện được = 90%).
+- **UI (07-25 redesign):** card chính RÚT còn tên + thanh ưu tiên (bỏ "ưu tiên N" vô nghĩa) + hint đổi
+  level + badge "máy đề xuất đổi"; ③④ giữ nổi; duyệt DỜI vào popup ("tên là đủ, t click vào đọc").
+  **Popup 4 VÙNG:** ①vì sao (level·thái độ·điểm chuyên đề Δ theo MÃ·đếm dạng đổi mức) ②so TB lớp 8 bài
+  giám sát (điểm HS·TB lớp·xếp HẠNG; bỏ "% hơn/kém" vì nổ to khi lớp yếu) ③chi tiết dạng trước→hiện
+  tại→delta nhóm theo chuyên đề + khối riêng "trong diện chưa đổi" (dạng yếu ỔN ĐỊNH dễ bị bỏ sót) ④duyệt.
+  Data-layer thêm `StatSheetHS.soLop` (so bài, ≤8, BTVN loại) + `DangStat.scoreTruoc/mucTruoc` (mastery
+  tới cuối cửa sổ trước; null=mới). `goiGon` whitelist ⇒ payload AI + tiền KHÔNG đổi. ✓ tsc + verify app 11A1.
+- **Migrations (hand-apply Supabase SQL Editor, KHÔNG `npm run migrate`):** `hs_level`·`hs_level_log`·
+  `bo_tro_yeu`·`bo_tro_yeu_dang`·`danhgia_ai_job`(+model_chon) ĐÃ áp. `202607241948_bo_tro_yeu_them_nhan`
+  (thêm cột nhãn) **VIẾT, CHƯA áp** — xem pha 4.
+- **Worker chi phí (Thùy: "logic đốt tiền như này thì chết"):** hằng rào `worker/danhgia.mjs`, verify
+  khô `scripts/verify_danhgia_chiphi.mjs`. Đo thật: 1,4 ký tự/token (tiếng Việt gấp đôi giả định) ·
+  1900 tok/em · trần tiền 25k/lượt · trần token theo cỡ lớp · KHÔNG thử lại lỗi tất định · Haiku loại
+  khỏi adaptive thinking. Model picker Sonnet 5 / Opus 4.8 (Thùy tự so). Mặc định gửi CHỈ em có tín hiệu.
+
+### 🔜 PHA 4 — ĐƯỜNG ỐNG CA YẾU (bổ trợ) — THIẾT KẾ XONG, CHƯA BUILD (ưu tiên tiếp theo)
+Vòng: đề xuất → **team học thuật DUYỆT** → **OPS xếp lịch** → dạy + BT-ngay → buổi kế BT-xác-nhận → đóng.
+- **⭐ MỘT mastery + NHÃN trạng thái** (KHÔNG đẻ nhiều mastery — Thùy: "chia ra rối"). "Đã xử lý chưa"
+  = trạng thái CA (bo_tro_yeu), không phải số thứ hai. Dashboard mỗi dạng yếu = 1 điểm + 1 nhãn
+  (chưa xử lý·đang bổ trợ·đã bổ trợ chờ xác nhận·nghi BTVN che).
+- **⭐ 2 BÀI BT (vì ET=bài mới, MT=tháng/lần, không tự phủ lại dạng cũ ⇒ phải cố ý tạo tín hiệu):**
+  `bt_ngay` (tại buổi bổ trợ, nhiễm vì vừa dạy → **weight 0**, không gỡ diện) · `bt_xn` (buổi kế, HS
+  đến sớm/ở lại, giám sát, cold-check 2–3 câu tự bơm từ kho, **BẮT BUỘC** → **weight >0** = tín hiệu
+  gỡ diện). **Đóng ca (bt_xn đạt) ≠ ra khỏi diện (bt_xn vào mastery vượt mốc)** — 2 sự kiện, cùng do bt_xn.
+- **Hiệu quả BT** = mastery ĐỘC LẬP trước ca vs tại bt_xn, tính OFFLINE (đo immutable, dựng lại mốc).
+  Gap tại-chỗ (bt_ngay−trước) = tín hiệu QUẢN TRỊ, KHÔNG phải hiệu quả bền — đừng gộp (thổi phồng moat).
+- **Vận hành pure-derive:** task BT-xn tự bắn cho TA/OPS của ca (phan_cong_ca), buổi kế; xong tự tắt.
+  **Van xả:** quá hạn (Thùy CHƯA chốt: 2 buổi HS có mặt hay 4 tuần) ⇒ đóng `ket_qua='khong_do_duoc'`
+  (≠ chua_dat; anti-NULL) ⇒ chặn trần backlog.
+- **VIỆC CÒN:** (1) migration `202607241948` — BỎ ô `retest_*` đơn → **bảng con `bo_tro_yeu_retest`**
+  (`loai∈{ngay,xac_nhan}`, mỗi đo 1 dòng), thêm `khong_do_duoc` vào CHECK ket_qua; (2) config mastery
+  thêm nguồn `bt_xn` weight>0, `bt_ngay`=0, napLanDo đọc thêm; (3) đóng ca=có dòng xac_nhan; (4) Thùy
+  chốt ngưỡng quá hạn. Chi tiết raw: DEVLOG 2026-07-25 (3 mục).
+
 ### Chưa làm
 - ✅ **(XONG 07-03)** KB3 nhập-kho ingest-first — màn `nhapkho` (xem section trên). AI auto-tag dạng ĐÃ làm (không còn "điền tay 100%"). Còn: mo_ta_ngan + distiller.
 - ✅ **(XONG 07-02)** Màn Kết quả học tập — 4 view đầy đủ (xem section trên). Chỉ còn điểm-năng-lực + mặt-HS/PH.
