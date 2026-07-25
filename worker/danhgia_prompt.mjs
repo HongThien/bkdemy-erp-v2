@@ -69,7 +69,9 @@ export const SCHEMA = {
           },
           dang_uu_tien_bo_tro: {
             type: 'array',
-            description: 'Mã dạng nên bổ trợ trước, lấy từ diện trong stat sheet. Xếp quan trọng nhất lên đầu.',
+            description: 'TỐI ĐA 3 mã dạng nên bổ trợ TRƯỚC TIÊN, quan trọng nhất lên đầu. '
+              + 'Em có 10 dạng yếu thì vẫn chỉ chọn 3 — người phụ trách cần biết bắt đầu từ đâu, '
+              + 'liệt kê hết là không còn ưu tiên. Số còn lại nói trong ly_do.',
             items: { type: 'string' },
           },
           do_tin: {

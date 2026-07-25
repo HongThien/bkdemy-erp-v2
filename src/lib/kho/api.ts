@@ -1225,13 +1225,12 @@ export async function deleteHinhLeaves(leafMas: string[]): Promise<void> {
   const { error } = await supabase.from('hinh_ban_do').delete().in('ma_dang_hinh', leafMas)
   if (error) throw error
 }
-// #ý treo theo dạng-hình (qua hinh_y.dang_hinh)
+// #ý treo theo dạng-hình — TRẢ RỖNG từ 2026-07-24.
+// Model Hình v3 (spec-kho-hinh-v3) bỏ cột `hinh_y.dang_hinh`: ý không còn trỏ thẳng dạng
+// mà trỏ NODE lưới (`hinh_y.baitoan_id`), dạng gắn ở CÁCH GIẢI của node. Bản đồ dạng-hình
+// cũ (`hinh_ban_do`, 87 dòng) giữ nguyên để tra cứu nhưng không còn ý nào treo vào nó.
 export async function countYByDangHinh(): Promise<Record<string, number>> {
-  const { data, error } = await supabase.from('hinh_y').select('dang_hinh').limit(LIMIT)
-  if (error) throw error
-  const m: Record<string, number> = {}
-  for (const r of data ?? []) m[r.dang_hinh] = (m[r.dang_hinh] ?? 0) + 1
-  return m
+  return {}
 }
 
 // ── KHTN: bản đồ (clone shape Đại, bảng khtn_*) — 1 cây Chủ-đề→Chuyên-đề→Dạng, KHÔNG nhánh ──
@@ -1296,3 +1295,8 @@ export async function upsertKhtnChuyenDeLyThuyet(ma_chuyen_de: string, noi_dung:
 export async function deleteKhtnChuyenDeLyThuyet(ma_chuyen_de: string): Promise<void> {
   const { error } = await supabase.from('khtn_chuyen_de_ly_thuyet').delete().eq('ma_chuyen_de', ma_chuyen_de); if (error) throw error
 }
+
+// ── HÌNH v3 (spec-kho-hinh-v3): lưới mô hình + lưới bài toán nhỏ + kho bài vật lý ──
+// Ở FILE RIÊNG `hinh.ts` cho dễ đọc; re-export tại đây để UI chỉ cần 1 cửa `kho/api`.
+export * from './hinh'
+export * from './hinhConfig'

@@ -109,7 +109,7 @@ export default function DashboardHocTapScreen() {
                 <p className="mb-3 text-[12px] text-slate-400">
                   Có tín hiệu nhưng chưa tới mức ưu tiên đọc trong tuần. Hiện ở đây để không bị bỏ sót.
                 </p>
-                <div className="space-y-2">{duoiNguong.map((c) => <CandCard key={c.hoc_sinh_id} c={c} gon onMo={() => setMoHS(c)} />)}</div>
+                <div className="space-y-2">{duoiNguong.map((c) => <CandCard key={c.hoc_sinh_id} c={c} onMo={() => setMoHS(c)} />)}</div>
               </>
             )}
           </>
@@ -287,29 +287,37 @@ function Stat({ ten, so, nhan, mo }: { ten: string; so: number; nhan: string; mo
   )
 }
 
-function CandCard({ c, gon, onMo }: { c: Candidate; gon?: boolean; onMo: () => void }) {
+// Thanh ưu tiên bên trái: nóng→nguội theo mức đề xuất CAO NHẤT của 2 thang (spec màu ⑤).
+// Chỉ để LIẾC thấy nặng-nhẹ; con số "ưu tiên N" cũ bỏ đi vì không có mốc so, đọc thành vô nghĩa.
+const BAR = ['bg-slate-300', 'bg-amber-400', 'bg-orange-400', 'bg-rose-500']
+
+// Card chính = TÊN + tín hiệu tối thiểu (Thùy 07-25: "tên là đủ, t sẽ click vào đọc").
+// ③④ (chuông đỏ / lỗ nền) là phán đoán NGƯỜI đứng lớp, khẩn nhất → giữ nổi trên mặt card.
+// Việc DUYỆT nằm trong popup, không nhồi lên đây.
+function CandCard({ c, onMo }: { c: Candidate; onMo: () => void }) {
   const ktDoi = c.deXuatKienThuc.deXuat !== c.sheet.levelKienThuc
   const tdDoi = c.deXuatThaiDo.deXuat !== c.sheet.levelThaiDo
+  const tier = Math.max(c.deXuatKienThuc.deXuat, c.deXuatThaiDo.deXuat)
+  const co34 = c.kenh.filter((k) => k === 'chuong_do' || k === 'tien_quyet')
   return (
-    <button onClick={onMo} className="block w-full rounded-2xl bg-white p-4 text-left ring-1 ring-slate-200 transition hover:ring-indigo-300">
-      <div className="flex flex-wrap items-center gap-2">
-        <span className="text-[15px] font-semibold text-slate-800">{c.ho_ten}</span>
-        {c.kenh.map((k) => <Pill key={k} {...KENH_UI[k]} />)}
-        <span className="ml-auto text-[11px] text-slate-400">ưu tiên {c.uuTien}</span>
+    <button onClick={onMo} className="flex w-full items-center gap-3 rounded-2xl bg-white p-4 text-left ring-1 ring-slate-200 transition hover:ring-indigo-300">
+      <span className={`h-9 w-1 flex-shrink-0 rounded ${BAR[tier] ?? BAR[0]}`} />
+      <div className="min-w-0 flex-1">
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="text-[15px] font-semibold text-slate-800">{c.ho_ten}</span>
+          {co34.map((k) => <Pill key={k} {...KENH_UI[k]} />)}
+        </div>
+        <div className="mt-1 flex flex-wrap items-center gap-x-4 gap-y-0.5 text-[12px] text-slate-500">
+          {ktDoi
+            ? <span>Kiến thức <span className="text-slate-400 line-through">L{c.sheet.levelKienThuc}</span> → <b className="font-semibold text-slate-700">L{c.deXuatKienThuc.deXuat}</b></span>
+            : <span className="text-slate-400">Kiến thức giữ L{c.sheet.levelKienThuc}</span>}
+          {tdDoi
+            ? <span>Thái độ <span className="text-slate-400 line-through">L{c.sheet.levelThaiDo}</span> → <b className="font-semibold text-slate-700">L{c.deXuatThaiDo.deXuat}</b></span>
+            : <span className="text-slate-400">Thái độ giữ L{c.sheet.levelThaiDo}</span>}
+        </div>
       </div>
-      <div className="mt-2 flex flex-wrap items-center gap-2 text-[12px]">
-        <span className="text-slate-400">Kiến thức</span>
-        <Pill {...lvUI(c.sheet.levelKienThuc, 'kien_thuc')} />
-        {ktDoi && <><span className="text-slate-400">→ đề xuất</span><Pill {...lvUI(c.deXuatKienThuc.deXuat, 'kien_thuc')} /></>}
-        <span className="ml-3 text-slate-400">Thái độ</span>
-        <Pill {...lvUI(c.sheet.levelThaiDo, 'thai_do')} />
-        {tdDoi && <><span className="text-slate-400">→ đề xuất</span><Pill {...lvUI(c.deXuatThaiDo.deXuat, 'thai_do')} /></>}
-      </div>
-      {!gon && (
-        <ul className="mt-3 space-y-1 border-t border-slate-100 pt-3">
-          {c.lyDo.map((l, i) => <li key={i} className="text-[13px] leading-relaxed text-slate-600">· {l}</li>)}
-        </ul>
-      )}
+      {(ktDoi || tdDoi) && <span className="flex-shrink-0 rounded-full bg-indigo-50 px-2.5 py-1 text-[11px] font-semibold text-indigo-700 ring-1 ring-indigo-200">máy đề xuất đổi</span>}
+      <i className="text-slate-300" aria-hidden>›</i>
     </button>
   )
 }
@@ -318,61 +326,139 @@ function CandCard({ c, gon, onMo }: { c: Candidate; gon?: boolean; onMo: () => v
 function ChiTietModal({ c, onDong, onXong }: { c: Candidate; onDong: () => void; onXong: () => void }) {
   const [log, setLog] = useState<LevelLogRow[]>([])
   useEffect(() => { getLevelLog(c.hoc_sinh_id, c.mon).then(setLog) }, [c.hoc_sinh_id, c.mon])
+
+  const dangs = c.sheet.dangs
+  // Vùng 1: dạng đổi MỨC giữa 2 cửa sổ (cần có `mucTruoc` mới so được).
+  const doiMuc = dangs.filter((d) => d.mucTruoc && d.mucTruoc !== d.muc)
+  const tut = doiMuc.filter((d) => MUC_RANK[d.muc] < MUC_RANK[d.mucTruoc!])
+  const len = doiMuc.filter((d) => MUC_RANK[d.muc] > MUC_RANK[d.mucTruoc!])
+  // Điểm chuyên đề: 2 cửa sổ có điểm gần nhất (mã đủ, không cần tên — Thùy 07-25).
+  const cdDelta = c.sheet.chuyenDes.map((cd) => {
+    const pts = cd.chuoi.filter((p) => p.score != null)
+    if (pts.length < 2) return null
+    const tu = pts[pts.length - 2].score!, den = pts[pts.length - 1].score!
+    return { ma: cd.ma_chuyen_de, tu, den, delta: den - tu }
+  }).filter(Boolean) as { ma: string; tu: number; den: number; delta: number }[]
+  // Vùng 3: dạng CÓ thay đổi điểm (gồm "mới" nếu đáng chú ý) — nhóm theo chuyên đề.
+  const doiDang = dangs.filter((d) => d.scoreTruoc == null ? (d.trongDien || d.muc !== 'dat') : Math.abs(d.score - d.scoreTruoc) > 0.005)
+  const nhomDoi = new Map<string, typeof dangs>()
+  for (const d of doiDang) { const a = nhomDoi.get(d.ten_chuyen_de) ?? []; a.push(d); nhomDoi.set(d.ten_chuyen_de, a) }
+  // Dạng đứng yên NHƯNG đang trong diện (yếu ổn định) — khối riêng để không bị bỏ sót (clarify #1).
+  const dienYen = dangs.filter((d) => d.trongDien && !doiDang.includes(d))
+
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center overflow-auto bg-slate-900/40 p-8" onClick={onDong}>
       <div className="w-full max-w-[900px] rounded-2xl bg-white p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
         <div className="mb-4 flex items-center justify-between">
           <div>
             <h3 className="text-[18px] font-bold text-slate-800">{c.ho_ten}</h3>
-            <p className="text-[12px] text-slate-500">{c.mon} · ưu tiên {c.uuTien}</p>
+            <p className="text-[12px] text-slate-500">{c.mon} · kỳ {cuaSoHienTai()}</p>
           </div>
           <button onClick={onDong} className="rounded-lg px-3 py-1.5 text-slate-400 hover:bg-slate-100">✕</button>
         </div>
 
-        <Khoi ten="Vì sao được nêu">
-          <ul className="space-y-1">{c.lyDo.map((l, i) => <li key={i} className="text-[13px] text-slate-600">· {l}</li>)}</ul>
-        </Khoi>
-
-        <div className="grid gap-4 md:grid-cols-2">
-          <DuyetKhoi c={c} loai="kien_thuc" ten="Level kiến thức" hienTai={c.sheet.levelKienThuc} deXuat={c.deXuatKienThuc} onXong={onXong} />
-          <DuyetKhoi c={c} loai="thai_do" ten="Level thái độ" hienTai={c.sheet.levelThaiDo} deXuat={c.deXuatThaiDo} onXong={onXong} />
-        </div>
-
-        <Khoi ten={`Dạng trong diện bổ trợ (${c.deXuatKienThuc.bangChung.dien.length})`}>
+        {/* ── VÙNG 1 — Vì sao cần lưu ý (tổng quan ngắn gọn) ─────────────────────── */}
+        <Khoi ten="Vì sao cần lưu ý">
           <table className="w-full text-[13px]">
-            <thead><tr className="text-left text-[11px] uppercase tracking-wide text-slate-400">
-              <th className="pb-1">Dạng</th><th className="pb-1 text-right">Gộp</th><th className="pb-1 text-right">ET+MT</th><th className="pb-1 text-right">n</th><th className="pb-1">Mức</th>
-            </tr></thead>
             <tbody>
-              {c.sheet.dangs.filter((d) => d.trongDien || d.muc === 'yeu').slice(0, 12).map((d) => (
-                <tr key={d.ma_dang} className="border-t border-slate-100">
-                  <td className="py-1.5 pr-2 text-slate-700">{d.ten_dang}</td>
-                  <td className="py-1.5 text-right font-semibold text-slate-800">{d.score.toFixed(2)}</td>
-                  <td className="py-1.5 text-right text-slate-500">{d.scoreEtMt?.toFixed(2) ?? '—'}</td>
-                  <td className="py-1.5 text-right text-slate-400">{d.n}</td>
-                  <td className="py-1.5 pl-2">{d.trongDien ? <Pill ten="Trong diện" cls="bg-orange-50 text-orange-700 ring-orange-200" /> : <span className="text-slate-400">{d.muc}</span>}</td>
-                </tr>
-              ))}
+              <tr>
+                <td className="w-[132px] py-1.5 align-top text-slate-500">Level hiện tại</td>
+                <td className="py-1.5"><Pill {...lvUI(c.sheet.levelKienThuc, 'kien_thuc')} /> <span className="mx-1 text-slate-300">·</span> <Pill {...lvUI(c.sheet.levelThaiDo, 'thai_do')} /></td>
+              </tr>
+              <tr className="border-t border-slate-100">
+                <td className="py-1.5 align-top text-slate-500">Thái độ</td>
+                <td className="py-1.5 text-slate-700">{thaiDoTomTat(c.sheet.thaiDo)}</td>
+              </tr>
+              <tr className="border-t border-slate-100">
+                <td className="py-1.5 align-top text-slate-500">Điểm chuyên đề</td>
+                <td className="py-1.5 tabular-nums">
+                  {cdDelta.length === 0 ? <span className="text-slate-400">chưa đủ 2 cửa sổ để so</span> : cdDelta.map((x) => (
+                    <div key={x.ma} className="leading-relaxed">
+                      <span className="text-slate-400">{x.ma}</span> {x.tu.toFixed(2)} → {x.den.toFixed(2)} <span className={deltaCls(x.delta)}>({x.delta >= 0 ? '+' : ''}{x.delta.toFixed(2)})</span>
+                    </div>
+                  ))}
+                </td>
+              </tr>
+              <tr className="border-t border-slate-100">
+                <td className="py-1.5 align-top text-slate-500">Dạng đổi mức</td>
+                <td className="py-1.5">
+                  {tut.length === 0 && len.length === 0 ? <span className="text-slate-400">không dạng nào đổi mức giữa 2 cửa sổ</span> : <>
+                    {tut.length > 0 && <div className="text-rose-600">▼ {tut.length} dạng tụt <span className="text-slate-400">— {goiDoiMuc(tut)}</span></div>}
+                    {len.length > 0 && <div className="text-green-700">▲ {len.length} dạng lên <span className="text-slate-400">— {goiDoiMuc(len)}</span></div>}
+                  </>}
+                </td>
+              </tr>
             </tbody>
           </table>
         </Khoi>
 
-        <Khoi ten="Chuyên đề — trend">
-          {c.sheet.chuyenDes.map((cd) => (
-            <div key={cd.ma_chuyen_de} className="border-t border-slate-100 py-2 first:border-0">
-              <div className="flex items-baseline gap-2">
-                <span className="text-[13px] font-medium text-slate-700">{cd.ten_chuyen_de}</span>
-                <span className="text-[12px] text-slate-500">
-                  {cd.chuoi.map((p) => `${p.cuaSo.slice(5)}: ${p.score == null ? '—' : p.score.toFixed(2)}${p.itLanDo ? ' ⚠' : ''}`).join('   ')}
-                </span>
-              </div>
-              {cd.dangDoiBucketXau.length > 0 && (
-                <div className="mt-0.5 text-[12px] text-rose-600">▼ {cd.dangDoiBucketXau.length} dạng tụt: {cd.dangDoiBucketXau.map((d) => `${d.tu}→${d.den}`).join(', ')}</div>
-              )}
+        {/* ── VÙNG 2 — So với trung bình lớp theo từng bài ────────────────────────── */}
+        <Khoi ten="So với trung bình lớp — 8 bài giám sát gần nhất">
+          {c.sheet.soLop.length === 0 ? <p className="text-[12px] text-slate-400">Chưa có bài giám sát nào.</p> : (
+            <div className="grid grid-cols-4 gap-1.5 sm:grid-cols-8">
+              {c.sheet.soLop.map((b) => {
+                const tren = b.diemHS - b.tbLop
+                const bg = tren > 0.01 ? 'bg-green-50 text-green-700' : tren < -0.01 ? 'bg-rose-50 text-rose-700' : 'bg-slate-100 text-slate-600'
+                return (
+                  <div key={b.buoi_hoc_id} className="rounded-lg px-1 py-2 text-center tabular-nums">
+                    <div className={`rounded-md py-1 text-[13px] font-semibold ${bg}`}>{b.diemHS.toFixed(2)}</div>
+                    <div className="mt-1 text-[11px] text-slate-400">lớp {b.tbLop.toFixed(2)}</div>
+                    <div className="text-[11px] font-medium text-slate-500">#{b.hang}/{b.siSo}</div>
+                    <div className="mt-0.5 text-[10px] text-slate-400">{nhanKy(b.cuaSo)}</div>
+                  </div>
+                )
+              })}
+            </div>
+          )}
+          <p className="mt-2 text-[11px] text-slate-400">Mỗi ô = 1 bài có giám sát (cũ→mới): điểm của em · trung bình lớp cùng bài · hạng trong số bạn cùng làm.</p>
+        </Khoi>
+
+        {/* ── VÙNG 3 — Chi tiết dạng có thay đổi (theo chuyên đề) ─────────────────── */}
+        <Khoi ten="Chi tiết dạng có thay đổi">
+          {nhomDoi.size === 0 ? <p className="text-[12px] text-slate-400">Không dạng nào đổi mức giữa 2 cửa sổ.</p> : [...nhomDoi.entries()].map(([cd, ds]) => (
+            <div key={cd} className="mb-3 last:mb-0">
+              <div className="mb-1 text-[13px] font-semibold text-slate-700">{ds[0].ma_dang.slice(0, 6)} <span className="font-normal text-slate-400">{cd}</span></div>
+              <table className="w-full text-[13px] tabular-nums">
+                <thead><tr className="text-left text-[11px] text-slate-400">
+                  <th className="font-normal">Dạng</th><th className="w-[110px] font-normal">Trước</th><th className="w-[110px] font-normal">Hiện tại</th><th className="w-[60px] text-right font-normal">Delta</th>
+                </tr></thead>
+                <tbody>
+                  {ds.map((d) => (
+                    <tr key={d.ma_dang} className="border-t border-slate-100">
+                      <td className="py-1.5 pr-2 text-slate-600">{d.ten_dang}</td>
+                      <td className="py-1.5">{d.scoreTruoc == null ? <span className="text-slate-400">mới</span> : <span className={mucCls(d.mucTruoc!)}>{d.scoreTruoc.toFixed(2)} {MUC_TEXT[d.mucTruoc!]}</span>}</td>
+                      <td className="py-1.5"><span className={mucCls(d.muc)}>{d.score.toFixed(2)} {MUC_TEXT[d.muc]}</span></td>
+                      <td className="py-1.5 text-right">{d.scoreTruoc == null ? '—' : <span className={deltaCls(d.score - d.scoreTruoc)}>{d.score - d.scoreTruoc >= 0 ? '+' : ''}{(d.score - d.scoreTruoc).toFixed(2)}</span>}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           ))}
-          <p className="mt-2 text-[11px] text-slate-400">⚠ = cửa sổ đó ít lần đo, số vẫn tính nhưng độ tin thấp.</p>
+          {dienYen.length > 0 && (
+            <div className="mt-3 border-t border-slate-200 pt-3">
+              <div className="mb-1 text-[12px] font-semibold text-orange-700">Đang trong diện bổ trợ, chưa đổi mức ({dienYen.length})</div>
+              <p className="mb-2 text-[11px] text-slate-400">Yếu ổn định qua các cửa sổ — không "thay đổi" nên không nằm bảng trên, nhưng vẫn là việc cần làm.</p>
+              <table className="w-full text-[13px] tabular-nums">
+                <tbody>
+                  {dienYen.map((d) => (
+                    <tr key={d.ma_dang} className="border-t border-slate-100 first:border-0">
+                      <td className="py-1.5 pr-2 text-slate-600">{d.ten_dang}</td>
+                      <td className="w-[110px] py-1.5"><span className={mucCls(d.muc)}>{d.score.toFixed(2)} {MUC_TEXT[d.muc]}</span></td>
+                      <td className="w-[70px] py-1.5 text-right text-slate-400">n {d.n}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </Khoi>
+
+        {/* ── VÙNG 4 — Duyệt (máy đề xuất, người quyết) ──────────────────────────── */}
+        <div className="grid gap-4 md:grid-cols-2">
+          <DuyetKhoi c={c} loai="kien_thuc" ten="Level kiến thức" hienTai={c.sheet.levelKienThuc} deXuat={c.deXuatKienThuc} onXong={onXong} />
+          <DuyetKhoi c={c} loai="thai_do" ten="Level thái độ" hienTai={c.sheet.levelThaiDo} deXuat={c.deXuatThaiDo} onXong={onXong} />
+        </div>
 
         <Khoi ten={`Lịch sử duyệt (${log.length})`}>
           {log.length === 0 ? <p className="text-[12px] text-slate-400">Chưa có lượt duyệt nào.</p> : (
@@ -399,6 +485,27 @@ const Khoi = ({ ten, children }: { ten: string; children: React.ReactNode }) => 
     {children}
   </div>
 )
+
+// ── Nhãn + màu cho popup chi tiết ─────────────────────────────────────────────
+const MUC_TEXT: Record<'dat' | 'can_luyen' | 'yeu', string> = { dat: 'đạt', can_luyen: 'cần luyện', yeu: 'yếu' }
+const MUC_RANK: Record<'dat' | 'can_luyen' | 'yeu', number> = { yeu: 0, can_luyen: 1, dat: 2 }
+const mucCls = (m: 'dat' | 'can_luyen' | 'yeu') => m === 'yeu' ? 'text-rose-600' : m === 'can_luyen' ? 'text-amber-600' : 'text-slate-600'
+// Tụt = xấu = đỏ · lên = tốt = xanh (KHÔNG neon, theo design system). 0 = xám.
+const deltaCls = (d: number) => d < -0.005 ? 'text-rose-600' : d > 0.005 ? 'text-green-700' : 'text-slate-400'
+// '2026-07-B' → 'nửa sau 07' — bỏ chữ "14 ngày", cửa sổ thực chất là nửa tháng (Thùy 07-25).
+const nhanKy = (win: string) => `${win.slice(8) === 'A' ? 'đầu' : 'sau'} ${win.slice(5, 7)}`
+// Tóm thái độ: đếm buổi dưới chuẩn "nghiêm túc" trong dữ liệu đang có.
+function thaiDoTomTat(td: { thai_do: string; t: string }[]): string {
+  if (!td.length) return 'chưa có dữ liệu thái độ'
+  const duoi = td.filter((x) => x.thai_do !== 'nghiem_tuc').length
+  return duoi === 0 ? `${td.length}/${td.length} buổi nghiêm túc — không có tín hiệu` : `${duoi}/${td.length} buổi dưới nghiêm túc`
+}
+// Gộp "từ→đến" các dạng đổi mức thành chuỗi đếm: "đạt→cần luyện ×3, cần luyện→yếu ×2".
+function goiDoiMuc(ds: { muc: 'dat' | 'can_luyen' | 'yeu'; mucTruoc: 'dat' | 'can_luyen' | 'yeu' | null }[]): string {
+  const dem = new Map<string, number>()
+  for (const d of ds) { const k = `${MUC_TEXT[d.mucTruoc!]}→${MUC_TEXT[d.muc]}`; dem.set(k, (dem.get(k) ?? 0) + 1) }
+  return [...dem.entries()].map(([k, n]) => `${k}${n > 1 ? ` ×${n}` : ''}`).join(', ')
+}
 
 // Người duyệt: mặc định = đề xuất của máy, sửa được. Ghi log CẢ HAI VẾ ⇒ delta tự lộ.
 function DuyetKhoi({ c, loai, ten, hienTai, deXuat, onXong }: {

@@ -14,7 +14,7 @@
 import { supabase } from './supabase'
 import { masteryOfDang, MASTERY_CONFIG, RESULT_VALUE } from '../gami/mastery.js'
 import {
-  DANHGIA_CONFIG, cuaSoCua, chuoiDiemChuyenDe, chamPha1, chamPha2,
+  DANHGIA_CONFIG, cuaSoCua, cuaSoTruoc, cuoiCuaSo, chuoiDiemChuyenDe, chamPha1, chamPha2,
   trungBinhTruot3, docAmLienTiep, dangDoiBucketXau, deXuatLevelKienThuc, deXuatLevelThaiDo,
 } from '../gami/danhgia.js'
 import { khoCuaMon } from './tailieu'
@@ -42,6 +42,11 @@ export type DangStat = {
   scoreEtMt: number | null // mastery chỉ nguồn GIÁM SÁT — để bắt cờ "BTVN che" (PLAN §1.D)
   n: number              // tổng lần đo = độ tin (KHÁC 5 lần dùng tính điểm)
   muc: 'dat' | 'can_luyen' | 'yeu' // đánh giá CHUNG (masteryOfDang) — 0.5 = cần luyện
+  // "TRƯỚC" = mastery tính TỚI cuối cửa sổ liền trước (không phải "của riêng cửa sổ đó": vẫn 5
+  // lần đo gần nhất tính tới mốc cắt, chỉ bỏ lần đo SAU mốc — đúng engine, xem `cuoiCuaSo`).
+  // `score`/`muc` ở trên là HIỆN TẠI (realtime). null = trước mốc chưa có lần đo nào ⇒ không so.
+  scoreTruoc: number | null
+  mucTruoc: 'dat' | 'can_luyen' | 'yeu' | null
   daMo: boolean          // đang có trong đợt bổ trợ yếu (bo_tro_yeu_dang chưa dong_at)
   trongDien: boolean     // sau khi áp 2 mốc trễ — nguồn sự thật cho HÀNH ĐỘNG
   cuoiCungAt: string     // lần đo gần nhất → cờ "cũ" nếu > 30 ngày (spec §1)
@@ -63,6 +68,7 @@ export type StatSheetHS = {
   levelThaiDo: number
   dangs: DangStat[]
   chuyenDes: ChuyenDeStat[]
+  soLop: SoLopBai[]         // so với TB lớp theo TỪNG BÀI giám sát (≤8 bài gần nhất) — vùng 3 popup
   thaiDo: { thai_do: string; t: string }[]
   coChuongDo: boolean       // ③ TA bấm lúc chấm BTVN
   coLoTienQuyet: boolean    // ④ GV báo hổng kiến thức NỀN
@@ -70,8 +76,21 @@ export type StatSheetHS = {
   deXuatThaiDo: any
 }
 
+// So với TB lớp theo TỪNG BÀI có giám sát (1 buổi = 1 bài): điểm của em, TB lớp bài đó, và
+// xếp hạng trong số các bạn CÙNG LÀM bài đó. Chỉ nguồn giám sát (ET/MT) — BTVN tự làm ở nhà
+// không đưa vào so hạng (không giám sát ⇒ không công bằng để xếp hạng).
+export type SoLopBai = {
+  buoi_hoc_id: string
+  t: string                 // thời điểm bài (graded_at đại diện) — để xếp thứ tự + suy cửa sổ
+  cuaSo: string             // nửa-tháng chứa bài
+  diemHS: number            // điểm trung bình của em trong bài đó (0–1)
+  tbLop: number             // trung bình lớp CÙNG bài
+  hang: number              // xếp hạng của em (1 = cao nhất) trong các bạn cùng làm bài
+  siSo: number              // số bạn cùng làm bài (mẫu số của hạng)
+}
+
 // ── NẠP LẦN ĐO (1 lần cho N học sinh — bulk, không gọi từng HS) ────────────────────────
-type DoRow = { hoc_sinh_id: string; ma_dang: string; value: number; t: string; src: string }
+type DoRow = { hoc_sinh_id: string; ma_dang: string; value: number; t: string; src: string; buoi_hoc_id: string | null }
 
 // Môn của lần đo = `lop.mon` của buổi; buổi BÙ (lop_id null) lùi về buổi gốc theo TỪNG HS
 // (1 buổi bù gom HS từ nhiều lớp/môn khác nhau → không thể suy 1 môn cho cả buổi).
@@ -120,7 +139,7 @@ async function napLanDo(hsIds: string[], mon: string): Promise<DoRow[]> {
     if (value === undefined) continue
     const m = monCuaBuoi.get(r.buoi_hoc_id) ?? monBuTheoHs.get(`${r.buoi_hoc_id}|${r.hoc_sinh_id}`) ?? null
     if (m !== mon) continue // scope MÔN (§1.6) — buổi bù đã lùi về lớp gốc ở trên
-    out.push({ hoc_sinh_id: r.hoc_sinh_id, ma_dang: p.ma_dang, value, t: r.graded_at, src: p.phase })
+    out.push({ hoc_sinh_id: r.hoc_sinh_id, ma_dang: p.ma_dang, value, t: r.graded_at, src: p.phase, buoi_hoc_id: r.buoi_hoc_id ?? null })
   }
   return out
 }
@@ -200,6 +219,27 @@ export async function getStatSheetLop(lopId: string): Promise<StatSheetHS[]> {
     chuoiCuaHs.set(hsId, m)
   }
 
+  // ── SO LỚP THEO TỪNG BÀI (buổi giám sát) — nền cho vùng 3 popup ─────────────────────
+  // 1 buổi = 1 bài. Điểm em trong bài = TB các câu giám sát của em buổi đó; TB lớp = TB điểm
+  // của mọi bạn CÙNG làm bài. BTVN loại khỏi đây (không giám sát ⇒ xếp hạng không công bằng).
+  const buoiMap = new Map<string, { t: string; perHS: Map<string, { sum: number; count: number }> }>()
+  for (const r of doRows) {
+    if (r.src === 'btvn' || !r.buoi_hoc_id) continue
+    let b = buoiMap.get(r.buoi_hoc_id)
+    if (!b) { b = { t: r.t, perHS: new Map() }; buoiMap.set(r.buoi_hoc_id, b) }
+    if (Date.parse(r.t) > Date.parse(b.t)) b.t = r.t // mốc đại diện = câu chấm muộn nhất buổi
+    const hh = b.perHS.get(r.hoc_sinh_id) ?? { sum: 0, count: 0 }
+    hh.sum += r.value; hh.count++; b.perHS.set(r.hoc_sinh_id, hh)
+  }
+  const buoiTinh = [...buoiMap.entries()].map(([id, b]) => {
+    const means = new Map<string, number>()
+    for (const [hs, s] of b.perHS) means.set(hs, s.sum / s.count)
+    return { buoi_hoc_id: id, t: b.t, cuaSo: cuaSoCua(b.t), means }
+  })
+
+  // Mốc cắt cho cột "TRƯỚC" = hết cửa sổ liền trước cửa sổ hiện tại (1 lần, dùng chung mọi dạng).
+  const cutTruoc = cuoiCuaSo(cuaSoTruoc(cuaSoCua(Date.now())))
+
   const out: StatSheetHS[] = []
   for (const hsId of hsIds) {
     const h = byHS.get(hsId)
@@ -214,10 +254,15 @@ export async function getStatSheetLop(lopId: string): Promise<StatSheetHS[]> {
         const score = (m as any).score as number
         const n = (m as any).n as number
         const daMo = dangDangMo.get(hsId)?.has(ma) ?? false
+        // "TRƯỚC": chạy lại engine trên các lần đo TỚI mốc cắt (bỏ lần đo sau). null = trước
+        // mốc chưa có lần đo nào (dạng mới xuất hiện cửa sổ này) ⇒ UI hiện "mới", không so delta.
+        const evTruoc = evs.filter((e) => Date.parse(e.t) <= cutTruoc)
+        const mTruoc = evTruoc.length ? masteryOfDang(evTruoc, MASTERY_CONFIG) : null
         dangs.push({
           ma_dang: ma, ten_dang: info.ten_dang, ten_chuyen_de: info.ten_chuyen_de, muc_do: info.muc_do,
           score, scoreEtMt: (mEtMt as any)?.score ?? null, n,
           muc: (m as any).muc, // đánh giá CHUNG — cùng engine với màn Kết quả học tập
+          scoreTruoc: (mTruoc as any)?.score ?? null, mucTruoc: (mTruoc as any)?.muc ?? null,
           daMo,
           // 2 mốc trễ: đã mở thì ở lại tới khi > 0.5 · chưa mở thì phải < 0.5 + đủ độ tin.
           trongDien: daMo ? score <= DANHGIA_CONFIG.MOC : score < DANHGIA_CONFIG.MOC && n >= DANHGIA_CONFIG.GATE_N,
@@ -266,6 +311,21 @@ export async function getStatSheetLop(lopId: string): Promise<StatSheetHS[]> {
       })
     }
 
+    // Vùng 3: 8 bài giám sát gần nhất em có tham gia, hiển thị cũ→mới.
+    const soLop: SoLopBai[] = buoiTinh
+      .filter((b) => b.means.has(hsId))
+      .sort((a, b) => Date.parse(b.t) - Date.parse(a.t))
+      .slice(0, 8)
+      .map((b) => {
+        const vals = [...b.means.values()]
+        const diemHS = b.means.get(hsId)!
+        const tbLop = vals.reduce((x, y) => x + y, 0) / vals.length
+        // hạng 1 = cao nhất; đồng điểm cùng hạng (đếm số bạn điểm CAO HƠN + 1)
+        const hang = vals.filter((v) => v > diemHS + 1e-9).length + 1
+        return { buoi_hoc_id: b.buoi_hoc_id, t: b.t, cuaSo: b.cuaSo, diemHS, tbLop, hang, siSo: vals.length }
+      })
+      .reverse()
+
     const td = thaiDoRows.filter((r) => r.hoc_sinh_id === hsId).map((r) => ({ thai_do: r.thai_do, t: r.t }))
     const cb = canhBao.filter((r) => r.hoc_sinh_id === hsId)
     const coChuongDo = cb.some((r) => r.nguon === 'btvn' || r.nguon === 'chuong_do')
@@ -275,7 +335,7 @@ export async function getStatSheetLop(lopId: string): Promise<StatSheetHS[]> {
     out.push({
       hoc_sinh_id: hsId, ho_ten: hsMap.get(hsId)!, mon,
       levelKienThuc: lv?.kien_thuc ?? 0, levelThaiDo: lv?.thai_do ?? 0,
-      dangs, chuyenDes, thaiDo: td, coChuongDo, coLoTienQuyet,
+      dangs, chuyenDes, soLop, thaiDo: td, coChuongDo, coLoTienQuyet,
       deXuatKienThuc: deXuatLevelKienThuc({
         levelHienTai: lv?.kien_thuc ?? 0, dangs, coChuongDo, coLoTienQuyet, bayGio: Date.now(),
       }), // `dangs` đã mang `daMo` → engine áp đúng luật trễ 2 mốc

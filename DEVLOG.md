@@ -2785,3 +2785,170 @@ vẫn giữ "9A". Gạt về "Theo ngày" → màn cũ nguyên vẹn (Chưa mở
 Lớp của trung tâm tới 15 em ⇒ **Opus gần như không dùng được ở trần hiện tại**. Hai đường: nâng trần (vd 35.000 đ) hoặc chốt Sonnet 5. Trần là con số Claude tự đặt, không phải Thùy chốt — cần hỏi.
 
 Test `verify_danhgia_chiphi` chỉnh theo: mốc kiểm "chặn vì tiền" chuyển từ 25 em sang **10 em** (ở hằng số mới, 25 em bị chặn vì quá đông trước khi kịp chạm trần tiền).
+
+## 2026-07-24 — Kho HÌNH v3: bản đồ kiến thức 4 tầng (spec-kho-hinh-v3)
+
+**Làm:** dựng trọn nhánh Hình theo `spec-kho-hinh-v3.md` (copy vào repo) + `docs/mockup-kho-hinh-v4.html`.
+Tab "Hình học" của Bản đồ kiến thức giờ render `src/screens/kho/hinh/KhoHinhScreen.tsx` (rail 9 màn M0–M9),
+KHÔNG dùng chung component bản đồ 3 tầng của Đại/KHTN nữa.
+
+**Đọc DB thật trước khi migration (§6 spec bắt buộc):**
+- Đếm live: 6 bảng Hình CŨ (`hinh_bai`/`hinh_y`/`hinh_bai_mo_hinh`/`hinh_y_bo_de`/`hinh_danh_muc_bo_de`/
+  `hinh_danh_muc_mo_hinh`) **đều 0 dòng** → Thùy duyệt drop. `hinh_ban_do` (87 dòng) GIỮ NGUYÊN.
+- **Spec §6.2 SAI so với DB v2:** spec ghi "bảng dữ liệu DISABLE RLS, chỉ `staffs` ENABLE" — đó là
+  convention v1. Dump `pg_tables`: **101/104 bảng public ENABLE RLS**, `dai_*` đều có policy
+  `<tbl>_member_all` FOR ALL TO authenticated USING `la_thanh_vien()`. Theo DB, không theo spec.
+- Seed `915xx` mà spec §5 nhắc **không có trong DB này** (thuộc kho V1 đã gỡ) → dựng họ demo mới.
+
+**Migration:** `202607241919_kho_hinh_v3.sql` (10 bảng + index + RLS) · `202607241923_kho_hinh_v3_derive.sql`
+(3 function đệ quy: hậu duệ/tổ tiên mô hình, bao đóng tiền đề — có guard đường-đi chống vòng).
+⚠ `migrate.mjs` áp LẠI mọi file mỗi lần chạy ⇒ khối `drop` phải có **cổng nhận diện shape cũ**
+(chỉ `hinh_y` CŨ mới có cột `dang_hinh`), không thì lần chạy thứ hai xoá sạch bảng MỚI đã có data.
+
+**Seam:** `src/lib/kho/hinh.ts` + `hinhConfig.ts`, re-export qua `kho/api.ts` (UI vẫn 1 cửa import).
+`countYByDangHinh` trả rỗng — ý không còn trỏ thẳng dạng nữa mà trỏ NODE lưới.
+
+**2 lỗi logic tự bắt được khi verify trên app thật:**
+1. **Node teal**: so với GỐC HỌ thì mọi node hoá teal (gốc "Tam giác nhọn" rỗng bài toán). Mốc đúng =
+   **mô hình nông nhất THỰC SỰ có bài toán** → 9 xanh + 3 teal, khớp mockup.
+2. **`hoHang` là code chết**: lấy `khúc = bao đóng(B) trừ dưới-A` thì mọi tiền đề nhánh khác tự rơi vào
+   buổi ⇒ "cảnh báo hở" không bao giờ bật. Định nghĩa đúng: **khúc = bao đóng(B) ∩ phụ-thuộc-A**;
+   tiền đề không thuộc khúc và không dưới A ⇒ BÁO ĐỎ. Sau khi sửa: khúc BT.005→BT.012 ra
+   "3 bài · cấp 2→4 · 2 mô hình · 1 nhắc lại · 1 hở" — đúng y mockup.
+
+**Seed demo** (`scripts/seed_hinh_v3.mjs`, xoá bằng `--xoa`, mọi dòng mang nhãn `seed-demo`):
+5 mô hình / 2 họ · 14 bài toán nhỏ trải 4 cấp · 13 cạnh tiền đề (có cạnh XUYÊN mô hình) · 17 dạng 2 tầng ·
+5 bổ đề · 4 bài thật (3 kho chính, 1 kho tạm có 1 ý ở hàng chờ). Hình demo = SVG tĩnh trong `public/hinh-demo/`.
+
+**Verify trên app thật** (dev server phiên khác, HMR cùng cây): M0 2 họ · M1 4 cột cấp, 12 cạnh + 4 cạnh
+xuyên mô hình nét đứt teal · detail node đủ (cấp gợi ý, tiền đề, ý thực tế trỏ tới) · M2 3 tầng, kế thừa ·
+M3 2/3 ý đã gán, không có đường tạo node · M5 → M2 mở form với mô tả điền sẵn · M4 bài mang 2 tag mô hình ·
+M6 tra ngược "3 bài toán · trải 2 họ" + rollup · M7 "4 bài toán · 2 họ" · M8 chuỗi + lời giải liền mạch có
+bước "không có trong đề" · M9 Ôn tập 1 dạng → 2 ý từ **2 họ khác nhau**. `tsc` + `vite build` sạch.
+
+**CÒN:** cổng 2 mới có data ở nhánh demo; chưa có PrintView riêng cho Hình (nút In hiện gọi `window.print()`);
+chưa nối `ma_y` + `ngu_canh_luot` cho Measurement (hook reserve của spec §8).
+
+## 2026-07-24 (tiếp) — Bản in nhánh Hình + hook đo lường (2 mục "CÒN" của sáng nay)
+
+**1. `HinhPrintView`** (`src/screens/kho/hinh/HinhPrintView.tsx`) — paged.js, preview = bản in A4 thật.
+Tái dùng khung trang của Đại (`buildPagedCss` + `CHROME_CSS`) nên logo/dải sóng/số trang giống hệt;
+chỉ nới kiểu tham số `pageChrome/buildPagedCss` từ `TaiLieuFull['taiLieu']` → `{ten,khoi}` (`ChromeSrc`)
+vì Hình in từ node/chuỗi, KHÔNG có row `tai_lieu` nào.
+KHÔNG dùng lại `PrintView`: Đại in theo *câu hỏi*, Hình in theo *ý* và mỗi ý kéo HAI hình (hình đề của
+đề gốc + hình đáp án của node) — bố cục "văn bản trái · hình phải", ngắt trang phải giữ hình dính với ý.
+Ba lối gọi, chung một model `MucIn`: M9 Ôn tập (ý từ bài thật) · M9 Giảng dạy (khúc A→B: nhắc lại +
+mốc chương + node topo) · M8 Tài liệu chuẩn (giả thiết 1 lần + lời giải liền mạch, bước trung gian gắn
+nhãn). Bản HS = dòng kẻ để viết · bản GV = lời giải + hình đáp án + nhãn "lời giải THAM CHIẾU".
+
+**⚠ Bẫy StrictMode:** gọi `Previewer.preview()` THẲNG trong `useEffect` ⇒ StrictMode chạy effect 2 lần
+⇒ hai Previewer chồng nhau trên cùng document ⇒ paged.js trả về **đúng 0 trang, không lỗi, không cảnh
+báo** (nhìn như treo). Fix: hoãn `setTimeout(…, 0)` + `clearTimeout` trong cleanup ⇒ run đầu bị huỷ
+trước khi kịp bắt đầu. `PrintView` của Đại vô tình né được vì nó đợi `full` nạp xong mới dựng.
+
+**2. Hook đo lường** (`202607242050_hinh_hook_do_luong.sql`, đã áp, chạy 2 lần OK):
+`hinh_y.ma_y` (HY.00001…, mã cho NGƯỜI đọc; ref thật vẫn đi uuid+FK) · `buoi_hoc.ngu_canh_luot` ·
+`gami_session_problems.hinh_y_id` + `ngu_canh_luot` · `canh_bao_yeu.hinh_y_id` + `ngu_canh_luot`,
+CHECK ∈ {mo_hinh, dang, luyen_de}. Khai ở buổi, **snapshot xuống dòng quan sát** — đổi ý định của buổi
+sau này không được viết lại lịch sử đã đo. Seam: `NGU_CANH_LUOT` / `setNguCanhLuotBuoi` /
+`ganYVaoProblem` / `ganYVaoCanhBao` / `quanSatCuaY` (`lib/kho/hinh.ts`). UI: dropdown "Lượt" ở header
+`BuoiDetail` — **KHÔNG gate theo môn** (ADR-mon §1.6 cấm `if mon==='Toán'` trong code dùng chung).
+
+**Verify:** `tsc` + `vite build` sạch. Nguồn bản in đúng cho cả 3 lối gọi (đọc `.pv-src`): phiếu ôn tập
+2 ý/2 bài/2 họ kèm `HY.xxxxx` + `<img>` hình đề · buổi A→B ra 1 nhắc lại + 2 chương + 3 bài, bản GV có
+lời giải · tài liệu chuẩn có nhãn "không có trong đề". Hook: transaction ROLLBACK chứng minh ma_y tự
+sinh, nối được quan sát→ý, CHECK chặn giá trị lạ — DB không đổi gì.
+
+**⚠ CHƯA XEM ĐƯỢC BẰNG MẮT (giới hạn môi trường, KHÔNG phải lỗi code):** Browser pane của phiên này
+không hiển thị ⇒ `window.innerWidth = 0`. Hệ quả: (a) paged.js không có hộp layout để đo → 0 trang —
+**đối chứng: `PrintView` của Đại cũng đứng ở "đang dựng trang…" trong pane này**; (b) `useIsMobile`
+trả true → mọi control chỉ-desktop ở header BuoiDetail bị ẩn (cả ô chọn GV có sẵn lẫn dropdown "Lượt"
+mới). Phải mở app trong trình duyệt thật để nghiệm thu bố cục trang in + dropdown Lượt.
+
+## 2026-07-25 — Dashboard học tập: redesign popup 4 vùng + chốt định nghĩa cửa sổ
+
+**Bối cảnh chiến lược (Thùy dẫn):** "AI gắn vào chỗ nào? BK cạnh tranh độc quyền dựa trên AI."
+Đo thật để trả lời, KHÔNG phán cảm tính:
+- So `de_xuat_cua_may` (rule, MIỄN PHÍ, đã gửi kèm) vs kết luận Claude trên job 9C1: **khớp 13/14
+  quyết định**; chỗ Claude khen "tinh tế" (BTVN che, tự chặn khi thiếu đo, dai dẳng 3/3) đều là rule
+  đã tính sẵn và gửi lên. ⇒ Claude ĐỌC LẠI bảng rule rồi viết văn xuôi, không phát hiện thêm.
+- `gami_grades`: 25.511 ô đo · 5.620 ô SAI · **35 ô có mã lỗi (0,6%)**. (Thùy: gắn mã lỗi = "9 lên 10",
+  không đáng — chỉ cần đúng dạng/đúng lúc/thực hiện được là 90%.)
+- Vòng bổ trợ: `bo_tro_yeu`/`hs_level` = 0 dòng (pha 4 chưa build); `bo_tro_duoi_dang` 22 xếp → 12 có
+  dấu đã dạy = **54,5% rơi ở bước cuối**. ⇒ moat KHÔNG ở khâu phát hiện (rule đủ) mà ở VÒNG ĐÓNG:
+  cặp (can thiệp → retest → kết quả) là dữ liệu đối thủ mua Claude cũng không có.
+- **Kết luận công thức (Thùy chốt):** AI ở tầng CHÍNH SÁCH (đọc log duyệt → đẻ LUẬT mới → người
+  duyệt luật), rule ở tầng CA (tái lập + giải thích được với phụ huynh). Lộ trình: G0 kho (đang chạy,
+  AI sinh 81% kho) · G1 nhà máy nhãn (pha 4, KHÔNG AI) · G2 AI đẻ luật · G3 model dự báo. Nhãn dự báo
+  hiện có: 38 ngày data ⇒ chỉ 30 ca "đang ổn rồi tụt" — ràng buộc là THỜI GIAN LỊCH, không phải tiền.
+
+**Migration `202607241948_bo_tro_yeu_them_nhan.sql` (VIẾT, CHƯA áp — chờ Thùy):** chỉ ADD cột để mỗi
+ca bổ trợ đóng lại = 1 nhãn: `muc`(L1/L2/L3=hình thức) · `muc_may_de_xuat`+`de_xuat_may` · `diem_luc_mo`
++`so_lan_do_luc_mo` (chụp độ nặng LÚC MỞ vì mastery suy động — chống confounding-by-indication: L3 luôn
+nhận ca nặng nên đừng để nó "trông tệ hơn" TA) · `ket_qua`(dat/mot_phan/chua_dat/**bo**) · retest_* .
+CHECK chốt: `trang_thai='hoan_thanh' ⇒ ket_qua NOT NULL` (không cho đóng ca rỗng ⇒ nhãn không rỗng).
+
+**⭐ CHỐT ĐỊNH NGHĨA CỬA SỔ (Thùy phân vân, chọn theo lý do MT):** GIỮ **nửa-tháng lịch A/B**
+(`cuaSoCua`: ngày≤15='A'). KHÔNG đổi sang fortnight-neo-29/6 (dù 29/6/2026 ĐÚNG là thứ Hai). Lý do
+quyết định: **MT (trọng số 3, cao nhất) neo theo THÁNG** → cửa sổ phải khớp tháng, không khớp tuần.
+Bất đối xứng 15/16 ngày vô hại (điểm chuyên đề là TRUNG BÌNH không phải TỔNG; % so lớp theo TỪNG BÀI).
+Chỉ đổi CHỮ hiển thị "14 ngày"→"nửa tháng". Lõi + 72 test KHÔNG đụng. (Nếu sau này nghi lại: đây là
+đổi atom thời gian ⇒ đổi mọi key `YYYY-MM-A|B`, mọi delta, digest, trễ — cân nhắc rất nặng.)
+
+**Data layer (`src/lib/danhgia.ts`) — thêm số, whitelist `goiGon` KHÔNG đổi ⇒ payload AI + tiền y cũ:**
+- `DoRow.buoi_hoc_id` (đã có trong query, chỉ chưa mang xuống).
+- `StatSheetHS.soLop: SoLopBai[]` — so TB lớp theo TỪNG BÀI giám sát (1 buổi=1 bài): điểm HS · TB lớp
+  cùng bài · **xếp hạng** trong bạn cùng làm · ≤8 bài gần nhất, hiện cũ→mới. BTVN loại (không giám sát).
+  (Thùy đổi ý #3: bỏ "% hơn/kém" — nổ to khi lớp yếu — thay bằng điểm HS/TB lớp/hạng.)
+- `DangStat.scoreTruoc/mucTruoc` = mastery TỚI cuối cửa sổ liền trước (`cuoiCuaSo(cuaSoTruoc(...))`,
+  lọc lần đo sau mốc rồi chạy lại `masteryOfDang` — 5 lần gần nhất tới mốc, KHÔNG "của riêng cửa sổ").
+  null = trước mốc chưa có lần đo ⇒ hiện "mới", không so delta.
+
+**UI (`DashboardHocTapScreen.tsx`):** Card chính RÚT còn tên + thanh ưu tiên (bỏ "ưu tiên N" vô nghĩa)
++ hint đổi level + badge "máy đề xuất đổi"; giữ ③④ nổi (phán đoán người, khẩn nhất). Việc DUYỆT nằm
+trong popup (Thùy: "tên là đủ, t sẽ click vào đọc"). Popup 4 VÙNG: ①vì sao (level·thái độ·điểm chuyên
+đề Δ theo MÃ·đếm dạng đổi mức) ②so lớp 8 bài ③chi tiết dạng trước→hiện tại→delta nhóm theo chuyên đề
++ khối riêng "trong diện chưa đổi" (dạng yếu ỔN ĐỊNH không "thay đổi" nên dễ bị bỏ sót) ④duyệt.
+
+**Verify:** `tsc --noEmit` exit 0. Chạy app thật (11A1): 5 card slim + popup 4 vùng render đủ với data
+thật, 0 lỗi console/server. Ca Trần Phạm Hà Linh = minh hoạ đúng mục đích: trend ▲4 dạng lên NHƯNG máy
+đề xuất KT L0→L2 vì có ③ chuông đỏ — card cũ không đọc nổi mâu thuẫn này, popup mới bày rõ ở vùng 1.
+
+**CÒN:** (1) migration nhãn chờ áp; (2) pha 4 (đường ống ca yếu + retest đóng ca) chưa build —
+Thùy còn 2 câu vận hành chưa chốt: ai xếp buổi bổ trợ (OPS/GVCN), retest chèn ET hay bài riêng.
+
+## 2026-07-25 (tiếp) — Chốt quy trình pha 4 + hệ quả "retest = BT"
+
+**Ops (Thùy chốt):** TEAM HỌC THUẬT duyệt ca bổ trợ → OPS xếp lịch. Retest = **Bổ trợ, mã BT**.
+
+**⭐ Hệ quả kỹ thuật của retest=BT (grounded từ mastery.js):**
+`MASTERY_CONFIG.WEIGHT.bt = 1` (màn Kết quả học tập TÍNH) NHƯNG `DANHGIA_CONFIG.WEIGHT.bt = 0`
+(engine level/diện KHÔNG tính — spec §9 bổ trợ không đo năng lực). ⇒ retest BT **ĐÓNG ca được**
+(qua `bo_tro_yeu_dang.retest_diem/dat`) nhưng **KHÔNG kéo mastery-level** ⇒ theo luật trễ (`daMo`,
+score≤0.5 giữ diện) em **VẪN trong diện** tới khi có ET/MT ĐỘC LẬP kế tiếp chạm dạng đó.
+Đây là thiết kế đúng (chống gian lận: dạy-lại-rồi-test-ngay ≠ bằng chứng độc lập). ⇒ **2 sự kiện
+TÁCH RỜI:** đóng-ca (retest BT đạt) ≠ ra-khỏi-diện (ET/MT độc lập đạt). **CHỜ Thùy xác nhận** intent
+này; nếu muốn đóng-ca = hết-cảnh-báo thì phải đổi §9 (bt≠0 trong DANHGIA_CONFIG) — cân nhắc riêng.
+
+**Migration cập nhật (vẫn CHƯA áp):** `retest_nguon` đổi `et|mt|rieng` → **`bt|et|mt`** (mặc định bt);
+thêm `bo_tro_yeu.duyet_boi/duyet_at` (team học thuật) — OPS xếp lịch = gắn `day_buoi_id` (đã có).
+
+## 2026-07-24 (tiếp 2) — Hình đi THEO KHỐI + gỡ sạch data test
+
+**Thùy:** "Hình cũng phải đi theo khối chứ sao chung hết các khối" + "bỏ mấy cái dữ liệu test có sẵn".
+
+**Theo khối:** `loadLuoi(khoi)` cắt lưới về đúng khối — `khoi` gắn ở MÔ HÌNH (một họ không trải nhiều
+khối), node/cách/tiền đề KHÔNG mang cột khối mà DERIVE từ mô hình (spec §1.1). Cascade: mô hình cùng khối
+→ node của chúng → cách → tiền đề/bổ đề. **Catalog (dạng + bổ đề) NGOẠI LỆ, dùng chung mọi khối** (một
+"cách xử lý" gặp ở lớp nào cũng vậy — mockup M6 "toàn nhánh Hình, dùng chung mọi họ"). `listBai`/
+`listHangCho`/`listYTheoDang` lọc theo khối. `KhoScreen` render `<KhoHinhScreen key={hinh-${khoi}} khoi>`
+(remount reset state khi đổi khối — giống BanDo của Đại). Form tạo mô hình/bài KHÔNG hỏi khối nữa: khoá =
+khối đang mở (bỏ ô "Khối (tuỳ chọn)" free-text). Header M0/M4/M9 hiện "· Khối N".
+
+**Gỡ data test:** `node seed_hinh_v3.mjs --xoa` (mọi bảng hinh_* về 0) → xoá `public/hinh-demo/` (3 SVG demo)
++ `scripts/seed_hinh_v3.mjs` (script seed). Đều là scaffold test tôi tạo phiên trước, Thùy muốn sạch.
+
+**Verify trên app thật** (dev server RIÊNG của phiên này port 5183 — server phiên khác ở 5173 kẹt,
+React không mount; phải tự `preview_start name=dev` + đăng nhập quick-login Admin): khối 8 rỗng (empty
+state đúng) → tạo họ "Trực tâm" ở khối 8 → hiện ở khối 8 · chuyển khối 9 → KHÔNG thấy (rỗng) · quay lại
+khối 8 → còn đó. Xoá họ verify (DB), reload → khối 8 rail đếm 0, sạch. `tsc` + `vite build` sạch.

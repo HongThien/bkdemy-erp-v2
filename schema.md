@@ -2,7 +2,7 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-104 bảng · 0 enum · 10 trigger · 27 function
+108 bảng · 0 enum · 10 trigger · 30 function
 
 ## bai_lam
 
@@ -271,6 +271,7 @@
 | mt_dong_at | timestamp with time zone | Y |  |  |  |
 | noi_dung_buoi | text | Y |  |  |  |
 | mo_ta | text | Y |  |  |  |
+| ngu_canh_luot | text | Y |  |  | `mo_hinh` · `dang` · `luyen_de` |
 
 ## buoi_hoc_hs
 
@@ -363,6 +364,8 @@
 | ghi_chu | text | Y |  |  |  |
 | created_by | uuid | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
+| hinh_y_id | uuid | Y |  | FK→hinh_y.id |  |
+| ngu_canh_luot | text | Y |  |  | `mo_hinh` · `dang` · `luyen_de` |
 
 ## dai_ban_do
 
@@ -556,24 +559,40 @@
 | ma_dang | text | Y |  |  |  |
 | hoc_sinh_id | uuid | Y |  | FK→hoc_sinh.id |  |
 | ma_cau | text | Y |  |  |  |
+| hinh_y_id | uuid | Y |  | FK→hinh_y.id |  |
+| ngu_canh_luot | text | Y |  |  | `mo_hinh` · `dang` · `luyen_de` |
 
 ## hinh_bai
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| ma_bai | text |  | ('HBai'::text \|\| lpad((nextval('hinh_bai_seq'::regclass))::text, 5, '0'::text)) | PK |  |
-| muc_do | smallint |  |  |  |  |
-| noi_dung | text |  |  |  |  |
-| anh_de | text | Y |  |  |  |
-| anh_dap_an | text | Y |  |  |  |
+| id | uuid |  | gen_random_uuid() | PK |  |
+| mon | text |  | 'Toán'::text |  |  |
+| ma_bai | text |  | ('HH.'::text \|\| lpad((nextval('hinh_bai_v3_seq'::regclass))::text, 4, '0'::text)) |  |  |
+| de_bai | text |  |  |  |  |
+| anh_de | text |  |  |  |  |
+| nguon | text | Y |  |  |  |
+| khoi | text | Y |  |  |  |
+| trang_thai | text |  | 'tam'::text |  | `tam` · `chinh` |
+| created_by | uuid | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
 
-## hinh_bai_mo_hinh
+## hinh_baitoan
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| ma_bai | text |  |  | PK FK→hinh_bai.ma_bai |  |
-| id_mo_hinh | text |  |  | PK FK→hinh_danh_muc_mo_hinh.id |  |
+| id | uuid |  | gen_random_uuid() | PK |  |
+| mon | text |  | 'Toán'::text |  |  |
+| ma | text |  | ('BT.'::text \|\| lpad((nextval('hinh_baitoan_seq'::regclass))::text, 3, '0'::text)) |  |  |
+| phat_bieu | text |  |  |  |  |
+| mo_hinh_id | uuid |  |  | FK→hinh_mo_hinh.id |  |
+| cap | smallint |  |  |  |  |
+| de_bai_chuan | text | Y |  |  |  |
+| anh_chuan | text | Y |  |  |  |
+| ghi_chu | text | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
 
 ## hinh_ban_do
 
@@ -589,38 +608,106 @@
 | created_at | timestamp with time zone |  | now() |  |  |
 | bac_toi_thieu | text |  |  | FK→lop_bac.ma |  |
 
-## hinh_danh_muc_bo_de
+## hinh_bo_de
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| id | text |  | ('HB'::text \|\| lpad((nextval('hinh_bd_seq'::regclass))::text, 4, '0'::text)) | PK |  |
+| id | uuid |  | gen_random_uuid() | PK |  |
+| mon | text |  | 'Toán'::text |  |  |
+| ma | text |  | ('BD.'::text \|\| lpad((nextval('hinh_bo_de_seq'::regclass))::text, 3, '0'::text)) |  |  |
 | ten | text |  |  |  |  |
+| phat_bieu | text | Y |  |  |  |
+| thu_tu | integer |  | 0 |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
 
-## hinh_danh_muc_mo_hinh
+## hinh_cach_bo_de
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| id | text |  | ('MH'::text \|\| lpad((nextval('hinh_mh_seq'::regclass))::text, 4, '0'::text)) | PK |  |
+| cach_id | uuid |  |  | PK FK→hinh_cach_giai.id |  |
+| bo_de_id | uuid |  |  | PK FK→hinh_bo_de.id |  |
+
+## hinh_cach_giai
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| baitoan_id | uuid |  |  | FK→hinh_baitoan.id |  |
+| ten | text | Y |  |  |  |
+| dang_id | uuid |  |  | FK→hinh_dang.id |  |
+| loi_giai | text | Y |  |  |  |
+| anh_loi_giai | text | Y |  |  |  |
+| la_mac_dinh | boolean |  | false |  |  |
+| thu_tu | integer |  | 0 |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
+## hinh_cach_tien_de
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| cach_id | uuid |  |  | PK FK→hinh_cach_giai.id |  |
+| tien_de_id | uuid |  |  | PK FK→hinh_baitoan.id |  |
+
+## hinh_dang
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| mon | text |  | 'Toán'::text |  |  |
+| ma | text |  | ('DH.'::text \|\| lpad((nextval('hinh_dang_v3_seq'::regclass))::text, 3, '0'::text)) |  |  |
 | ten | text |  |  |  |  |
+| cap | text |  |  |  | `loai_ch` · `dang` |
+| cha_id | uuid | Y |  | FK→hinh_dang.id |  |
+| thu_tu | integer |  | 0 |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
+## hinh_mo_hinh
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| mon | text |  | 'Toán'::text |  |  |
+| ma | text |  | ('MH.'::text \|\| lpad((nextval('hinh_mo_hinh_seq'::regclass))::text, 3, '0'::text)) |  |  |
+| ten | text |  |  |  |  |
+| gia_thiet | text |  |  |  |  |
+| gia_thiet_them | text | Y |  |  |  |
+| anh_cau_hinh | text | Y |  |  |  |
+| la_goc_ho | boolean |  | false |  |  |
+| cap_mo_hinh | smallint | Y |  |  |  |
+| khoi | text | Y |  |  |  |
+| ghi_chu | text | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
+## hinh_mo_hinh_cha
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| mo_hinh_id | uuid |  |  | PK FK→hinh_mo_hinh.id |  |
+| cha_id | uuid |  |  | PK FK→hinh_mo_hinh.id |  |
 
 ## hinh_y
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| ma_y | text |  | ('HY'::text \|\| lpad((nextval('hinh_y_seq'::regclass))::text, 6, '0'::text)) | PK |  |
-| ma_bai | text |  |  | FK→hinh_bai.ma_bai |  |
-| thu_tu | smallint |  |  |  |  |
-| dang_hinh | text |  |  | FK→hinh_ban_do.ma_dang_hinh |  |
-| noi_dung_y | text |  |  |  |  |
-| dap_an_y | text | Y |  |  |  |
-| loi_giai_y | text | Y |  |  |  |
-
-## hinh_y_bo_de
-
-| cột | kiểu | null | default | khóa | giá trị hợp lệ |
-|---|---|---|---|---|---|
-| ma_y | text |  |  | PK FK→hinh_y.ma_y |  |
-| id_bo_de | text |  |  | PK FK→hinh_danh_muc_bo_de.id |  |
+| id | uuid |  | gen_random_uuid() | PK |  |
+| bai_id | uuid |  |  | FK→hinh_bai.id |  |
+| thu_tu | integer |  |  |  |  |
+| nhan_hien_thi | text | Y |  |  |  |
+| noi_dung | text |  |  |  |  |
+| dap_an | text | Y |  |  |  |
+| loi_giai | text | Y |  |  |  |
+| anh_loi_giai | text | Y |  |  |  |
+| da_duyet | boolean |  | false |  |  |
+| baitoan_id | uuid | Y |  | FK→hinh_baitoan.id |  |
+| co_thieu_node | boolean |  | false |  |  |
+| mo_ta_thieu | text | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+| ma_y | text |  | ('HY.'::text \|\| lpad((nextval('hinh_y_ma_seq'::regclass))::text, 5, '0'::text)) |  |  |
 
 ## hoa_don
 
@@ -1395,6 +1482,9 @@
 - `count_cau_by_dang(p_tbl text)` → jsonb
 - `et_de(p_bai_test uuid)` → jsonb
 - `et_nop(p_bai_lam uuid)` → jsonb
+- `hinh_bao_dong_tien_de(goc uuid)` → TABLE(id uuid, do_sau integer)
+- `hinh_mo_hinh_hau_due(goc uuid)` → TABLE(id uuid, do_sau integer)
+- `hinh_mo_hinh_to_tien(nut uuid)` → TABLE(id uuid, do_sau integer)
 - `hs_nghi_tu_roi_lop()` → trigger
 - `hs_o_lop(p_lop uuid)` → boolean
 - `increment_qaa_hit(p_id uuid)` → void
@@ -1428,7 +1518,8 @@
 | buoi_danh_gia_dang | buoi_danh_gia_dang_diem_check | `CHECK ((diem = ANY (ARRAY[(0)::numeric, 0.5, (1)::numeric])))` |
 | ca_test | ca_test_thoi_luong_phut_check | `CHECK ((thoi_luong_phut = ANY (ARRAY[45, 60, 75, 90, 120])))` |
 | dai_ban_do | dai_ban_do_muc_do_check | `CHECK (((muc_do >= 1) AND (muc_do <= 5)))` |
-| hinh_bai | hinh_bai_muc_do_check | `CHECK (((muc_do >= 1) AND (muc_do <= 5)))` |
+| hinh_mo_hinh | hinh_mo_hinh_cap_mo_hinh_check | `CHECK (((cap_mo_hinh >= 1) AND (cap_mo_hinh <= 4)))` |
+| hinh_mo_hinh_cha | hinh_mo_hinh_cha_check | `CHECK ((mo_hinh_id <> cha_id))` |
 | hoc_phi_phat_sinh | hoc_phi_phat_sinh_dung_loai | `CHECK ((((loai = 'lop'::text) AND (lop_id IS NOT NULL) AND (hoc_sinh_id IS NULL)) OR ((loai = 'ca_nhan'::text) AND (hoc_sinh_id IS NOT NULL) AND (lop_id IS NULL))))` |
 | hs_level | hs_level_level_check | `CHECK (((level >= 0) AND (level <= 3)))` |
 | hs_level_log | hs_level_log_level_chot_check | `CHECK (((level_chot >= 0) AND (level_chot <= 3)))` |

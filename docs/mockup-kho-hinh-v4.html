@@ -1,0 +1,763 @@
+<meta charset="utf-8">
+<title>Kho Hình học v4 — hai mặt phẳng của sơ đồ</title>
+<style>
+  :root{
+    --ink:#1f2530;--ink2:#5b6472;--ink3:#8a93a3;--line:#e6e8ee;--line2:#d3d7e0;--bg:#f5f6f9;
+    --mh-bg:#e1f5ee;--mh-bd:#5dcaa5;--mh-tx:#0f6e56;--mh-so:#1d9e75;
+    --bt-bg:#e6f1fb;--bt-bd:#6aa9e0;--bt-tx:#185fa5;--bt-so:#378add;
+    --dg-bg:#eeedfe;--dg-bd:#7f77dd;--dg-tx:#3c3489;--dg-so:#534ab7;
+    --bd-bg:#faeeda;--bd-bd:#ef9f27;--bd-tx:#854f0b;--bd-so:#ba7517;
+    --wr-bg:#fdecec;--wr-bd:#e08b8b;--wr-tx:#9c2b2b;
+  }
+  *{box-sizing:border-box}html,body{margin:0}
+  body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);font-size:14px;line-height:1.5}
+  .m{font-style:italic;font-family:"Cambria Math",Cambria,Georgia,serif}
+  .app{display:grid;grid-template-columns:214px 1fr;min-height:100vh}
+  .nav{background:#fff;border-right:1px solid var(--line);padding:16px 12px;position:sticky;top:0;height:100vh;overflow:auto}
+  .brand{font-weight:600;font-size:15px;padding:6px 10px 12px;display:flex;align-items:center;gap:8px}
+  .brand .d{width:9px;height:9px;border-radius:50%;background:var(--mh-so)}
+  .navitem{display:flex;align-items:center;gap:9px;padding:8px 11px;border-radius:8px;cursor:pointer;color:var(--ink2);font-weight:500;margin-bottom:2px;font-size:13.5px}
+  .navitem:hover{background:#f2f4f8}.navitem.on{background:var(--bt-bg);color:var(--bt-tx)}
+  .navitem .n{margin-left:auto;font-size:11px;background:#f2f4f8;border-radius:10px;padding:1px 7px;color:var(--ink3)}
+  .navsub{font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink3);padding:15px 11px 6px;font-weight:600}
+  .lg{display:flex;gap:8px;align-items:flex-start;padding:4px 11px;font-size:11.5px;color:var(--ink2)}
+  .sw{width:10px;height:10px;border-radius:3px;margin-top:3px;flex:0 0 auto}
+  .main{padding:20px 24px 70px;max-width:1280px}
+  .head{display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;gap:12px}
+  .head h1{font-size:19px;font-weight:600;margin:0}
+  .sub{color:var(--ink2);font-size:12.5px;margin:0 0 16px;max-width:900px}
+  .btn{height:34px;border:1px solid var(--line2);background:#fff;border-radius:8px;padding:0 12px;font-size:13px;font-weight:500;cursor:pointer;color:var(--ink);display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+  .btn:hover{background:#f2f4f8}
+  .btn.pri{background:var(--bt-tx);border-color:var(--bt-tx);color:#fff}
+  .btn.pri:disabled{background:#c9d3dd;border-color:#c9d3dd;cursor:not-allowed}
+  .tag{display:inline-flex;align-items:center;gap:4px;border-radius:14px;padding:2px 9px;font-size:11.5px;font-weight:500;border:1px solid transparent;white-space:nowrap}
+  .tag.mh{background:var(--mh-bg);border-color:var(--mh-bd);color:var(--mh-tx)}
+  .tag.bt{background:var(--bt-bg);border-color:var(--bt-bd);color:var(--bt-tx)}
+  .tag.dg{background:var(--dg-bg);border-color:var(--dg-bd);color:var(--dg-tx)}
+  .tag.bdd{background:var(--bd-bg);border-color:var(--bd-bd);color:var(--bd-tx)}
+  .tag.gh{background:#fff;border:1px dashed var(--line2);color:var(--ink3)}
+  .hidden{display:none}
+  .panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px}
+  .plabel{font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink3);font-weight:600;margin:0 0 9px}
+  .note{background:#fff;border:1px solid var(--line);border-left:3px solid var(--bd-bd);border-radius:0 10px 10px 0;padding:10px 13px;font-size:12.5px;color:var(--ink2);margin-top:16px;max-width:960px}
+  .note b{color:var(--ink)}
+  .crumb{display:flex;align-items:center;gap:8px;color:var(--ink2);font-size:12.5px;margin-bottom:11px;flex-wrap:wrap}
+  .crumb .bk{cursor:pointer;font-weight:500}.crumb .bk:hover{color:var(--ink)}
+  .code{font-family:ui-monospace,Menlo,monospace;font-size:10.5px;color:var(--ink3)}
+  .figmini{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fbfcfe}
+  .figmini svg{width:100%;display:block}
+  .figcap{font-size:10.5px;color:var(--ink3);padding:5px 8px;border-top:1px solid var(--line);background:#fff}
+
+  /* M0 chọn mô hình gốc */
+  .goc{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:14px}
+  .gcard{background:#fff;border:1.5px solid var(--mh-bd);border-radius:13px;overflow:hidden;cursor:pointer}
+  .gcard:hover{box-shadow:0 2px 10px rgba(20,30,50,.09)}
+  .gcard .fig{height:120px;background:#fbfcfe;border-bottom:1px solid var(--line)}
+  .gcard .fig svg{width:100%;height:100%}
+  .gcard .b{padding:11px 13px 13px}
+  .gcard .tt{font-weight:600;font-size:15px;margin:3px 0 6px}
+  .gt{font-size:11.5px;color:var(--ink2);background:#f4f8f6;border-radius:6px;padding:6px 8px;margin-bottom:8px;line-height:1.45}
+  .gt b{color:var(--mh-tx)}
+  .st{display:flex;gap:12px;font-size:11.5px;color:var(--ink3);flex-wrap:wrap}
+  .st b{color:var(--ink)}
+
+  /* toggle 2 view */
+  .seg{display:inline-flex;border:1px solid var(--line2);border-radius:9px;overflow:hidden;background:#fff}
+  .seg button{border:none;background:#fff;padding:8px 14px;font-size:13px;font-weight:500;cursor:pointer;color:var(--ink2);border-right:1px solid var(--line)}
+  .seg button:last-child{border-right:none}
+  .seg button.on{background:var(--bt-tx);color:#fff}
+
+  /* graph */
+  .gwrap{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px;overflow-x:auto}
+  .ghead{display:flex;gap:40px;margin-bottom:9px;min-width:920px}
+  .ghead div{width:200px;font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink3);font-weight:600;text-align:center;background:#f4f6fa;border-radius:6px;padding:4px 0}
+  .gr{position:relative;min-width:920px}
+  .gr svg.ed{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+  .nd{position:absolute;width:200px;border:1px solid var(--bt-bd);background:#fff;border-radius:9px;padding:6px 9px;cursor:pointer;font-size:11.5px;line-height:1.35}
+  .nd:hover{border-color:var(--bt-so);box-shadow:0 2px 7px rgba(20,30,50,.1)}
+  .nd.sel{border-color:var(--bt-so);border-width:1.5px;box-shadow:0 0 0 3px rgba(55,138,221,.14)}
+  .nd.oth{border-color:var(--mh-bd);background:#f7fdfa}
+  .nd .r{display:flex;gap:5px;align-items:center;margin-top:4px}
+  .lv{font-size:9.5px;font-weight:700;background:var(--bt-so);color:#fff;border-radius:4px;padding:1px 5px}
+  .nd.oth .lv{background:var(--mh-so)}
+  .mc{font-family:ui-monospace,monospace;font-size:9px;color:var(--ink3)}
+  .nd.path{border-color:var(--bd-bd);border-width:2px;background:#fffaf1;box-shadow:0 0 0 3px rgba(239,159,39,.16)}
+  .nd.yhere{border-color:var(--dg-so);border-width:2px}
+  .ypin{position:absolute;top:-8px;right:-7px;background:var(--dg-so);color:#fff;font-size:9.5px;font-weight:700;border-radius:5px;padding:1px 5px}
+
+  /* mô hình column view */
+  .mhcol{position:absolute;width:224px;border:1.5px solid var(--mh-bd);background:#fff;border-radius:11px;overflow:hidden;cursor:pointer}
+  .mhcol:hover{box-shadow:0 2px 8px rgba(20,30,50,.09)}
+  .mhcol.sel{box-shadow:0 0 0 3px rgba(93,202,165,.3)}
+  .mhcol .f{height:64px;background:#fbfcfe;border-bottom:1px solid var(--line)}
+  .mhcol .f svg{width:100%;height:100%}
+  .mhcol .bb{padding:8px 10px 10px}
+  .mhcol .tt{font-weight:600;font-size:12.5px;margin:2px 0 5px}
+
+  .split{display:grid;grid-template-columns:1fr 330px;gap:16px;align-items:start}
+  .kv{display:flex;gap:8px;font-size:12.5px;margin-bottom:7px}
+  .kv .k{color:var(--ink3);min-width:72px;flex:0 0 auto}
+  .kv .v{flex:1;min-width:0}
+  .sol{font-size:12.5px;line-height:1.65;color:var(--ink2);background:#fbfcff;border:1px solid var(--line);border-radius:9px;padding:10px 12px}
+  .btlist{font-size:12.5px;line-height:1.5}
+  .btrow{display:flex;gap:8px;align-items:center;padding:6px 8px;border-radius:7px;cursor:pointer}
+  .btrow:hover{background:#f4f8fd}
+  .btrow .t{flex:1;min-width:0}
+
+  /* chuỗi hướng dẫn */
+  .chain{background:#fffaf1;border:1px solid var(--bd-bd);border-radius:12px;padding:14px;margin-top:16px}
+  .chstep{display:flex;gap:11px;align-items:flex-start;padding:9px 0;border-bottom:1px dashed #eddcc0}
+  .chstep:last-child{border-bottom:none}
+  .chn{width:24px;height:24px;border-radius:50%;background:var(--bd-so);color:#fff;font-weight:700;font-size:11.5px;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+  .chn.you{background:var(--dg-so)}
+  .chb{flex:1;min-width:0;font-size:12.5px;line-height:1.55}
+  .chb .h{font-weight:600;margin-bottom:2px}
+  .chb .s{color:var(--ink2)}
+</style>
+
+<svg width="0" height="0" style="position:absolute"><defs>
+  <marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6" fill="none" stroke="#9aa5b4" stroke-width="1.3"/></marker>
+  <marker id="arm" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6" fill="none" stroke="#5dcaa5" stroke-width="1.3"/></marker>
+  <marker id="arg" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto"><path d="M0,0 L7,3.2 L0,6.4" fill="none" stroke="#ba7517" stroke-width="1.7"/></marker>
+  <symbol id="tt" viewBox="0 0 300 200">
+    <path d="M60 158 L150 40 L244 158 Z" fill="none" stroke="#334155" stroke-width="1.6"/>
+    <line x1="150" y1="40" x2="150" y2="158" stroke="#64707f" stroke-width="1.2"/>
+    <line x1="60" y1="158" x2="205" y2="86" stroke="#64707f" stroke-width="1.2"/>
+    <line x1="244" y1="158" x2="112" y2="92" stroke="#64707f" stroke-width="1.2"/>
+    <circle cx="150" cy="110" r="3" fill="#1f2530"/>
+    <g font-size="12" font-style="italic" font-family="Cambria,Georgia,serif" fill="#1f2530">
+      <text x="146" y="34">A</text><text x="48" y="170">B</text><text x="248" y="170">C</text>
+      <text x="156" y="108">H</text><text x="140" y="172">D</text><text x="210" y="84">E</text><text x="100" y="90">F</text></g></symbol>
+  <symbol id="ttm" viewBox="0 0 300 200"><use href="#tt"/>
+    <line x1="112" y1="92" x2="205" y2="86" stroke="#1d9e75" stroke-width="1.4"/>
+    <line x1="30" y1="158" x2="244" y2="158" stroke="#1d9e75" stroke-width="1.4" stroke-dasharray="4 3"/>
+    <circle cx="34" cy="158" r="3" fill="#1d9e75"/>
+    <text x="22" y="152" font-size="12" font-style="italic" font-family="Cambria,Georgia,serif" fill="#0f6e56">M</text></symbol>
+  <symbol id="ttc" viewBox="0 0 300 200"><use href="#tt"/>
+    <circle cx="150" cy="120" r="52" fill="none" stroke="#534ab7" stroke-width="1.3" stroke-dasharray="4 3"/></symbol>
+  <symbol id="tri" viewBox="0 0 300 200"><path d="M60 158 L150 40 L244 158 Z" fill="none" stroke="#334155" stroke-width="1.6"/></symbol>
+  <symbol id="tiep" viewBox="0 0 300 200">
+    <circle cx="196" cy="100" r="54" fill="none" stroke="#334155" stroke-width="1.6"/>
+    <line x1="62" y1="100" x2="164" y2="54" stroke="#334155" stroke-width="1.5"/>
+    <line x1="62" y1="100" x2="164" y2="146" stroke="#334155" stroke-width="1.5"/>
+    <line x1="164" y1="54" x2="164" y2="146" stroke="#64707f" stroke-width="1.2"/>
+    <g fill="#334155"><circle cx="62" cy="100" r="2.6"/><circle cx="164" cy="54" r="2.6"/><circle cx="164" cy="146" r="2.6"/></g></symbol>
+  <symbol id="tgnt" viewBox="0 0 300 200">
+    <circle cx="150" cy="104" r="56" fill="none" stroke="#334155" stroke-width="1.6"/>
+    <path d="M100 145 L150 48 L200 145 Z" fill="none" stroke="#334155" stroke-width="1.5"/></symbol>
+  <symbol id="tgnt2" viewBox="0 0 300 200">
+    <circle cx="150" cy="104" r="56" fill="none" stroke="#334155" stroke-width="1.6"/>
+    <path d="M96 140 L204 140 L186 62 L112 62 Z" fill="none" stroke="#334155" stroke-width="1.5"/></symbol>
+</defs></svg>
+
+<div class="app">
+<aside class="nav">
+  <div class="brand"><span class="d"></span> BKdemy · Kho Toán</div>
+  <div class="navsub">Sơ đồ gốc · tham chiếu &amp; giảng dạy</div>
+  <div class="navitem on" data-v="m0"><span>◇</span> Chọn mô hình gốc</div>
+  <div class="navitem" data-v="m2"><span>◈</span> Sơ đồ (2 view)</div>
+  <div class="navsub">Kho nhập · dùng để IN</div>
+  <div class="navitem" data-v="m3"><span>▤</span> Kho tạm &amp; gán <span class="n">7</span></div>
+  <div class="navitem" data-v="m5"><span>⚑</span> Hàng chờ <span class="n">4</span></div>
+  <div class="navitem" data-v="m4"><span>▦</span> Kho chính <span class="n">128</span></div>
+  <div class="navitem" data-v="m7"><span>⎙</span> Tài liệu chuẩn <span class="n">41</span></div>
+  <div class="navitem" data-v="m9"><span>✎</span> Soạn tài liệu</div>
+  <div class="navsub">Catalog</div>
+  <div class="navitem" data-v="m6"><span>⌥</span> Dạng bài <span class="n">37</span></div>
+  <div class="navitem" data-v="m8"><span>◦</span> Bổ đề <span class="n">14</span></div>
+  <div style="margin-top:16px;border-top:1px solid var(--line);padding-top:12px">
+    <div class="lg"><span class="sw" style="background:var(--mh-so)"></span><span><b>Mô hình</b> — trục giả thiết</span></div>
+    <div class="lg"><span class="sw" style="background:var(--bt-so)"></span><span><b>Bài toán nhỏ</b> — trục suy luận</span></div>
+    <div class="lg"><span class="sw" style="background:var(--bd-so)"></span><span><b>Chuỗi hướng dẫn</b> — đường in ra</span></div>
+  </div>
+  <div style="margin-top:14px;padding:9px 11px;background:#fbfcfe;border:1px solid var(--line);border-radius:9px;font-size:11px;color:var(--ink2);line-height:1.5">
+    <b style="color:var(--ink)">Sơ đồ gốc</b> để tham chiếu · lý thuyết · giảng dạy.<br>
+    <b style="color:var(--ink)">Kho nhập</b> mới là cái in ra dùng hiện tại.
+  </div>
+</aside>
+
+<main class="main">
+
+<!-- ══════ M0 — CHỌN MÔ HÌNH GỐC ══════ -->
+<section id="v-m0">
+  <div class="head"><h1>Chọn mô hình gốc</h1><button class="btn pri">＋ Mô hình gốc</button></div>
+  <p class="sub">Các họ mô hình <b>tương đối độc lập</b> với nhau — vào từng họ mới có sơ đồ. Mỗi họ là một graph riêng, không nối sang họ khác.</p>
+  <div class="goc">
+    <div class="gcard" data-go="m2">
+      <div class="fig"><svg viewBox="0 0 300 200"><use href="#tt"/></svg></div>
+      <div class="b"><span class="code">MH.021</span><div class="tt">Trực tâm</div>
+        <div class="gt"><b>Giả thiết:</b> <span class="m">△ABC</span> nhọn, ba đường cao <span class="m">AD, BE, CF</span> cắt nhau tại <span class="m">H</span></div>
+        <div class="st"><span><b>3</b> mô hình con</span><span><b>29</b> bài toán</span><span>cấp <b>1–6</b></span></div></div>
+    </div>
+    <div class="gcard">
+      <div class="fig"><svg viewBox="0 0 300 200"><use href="#tiep"/></svg></div>
+      <div class="b"><span class="code">MH.012</span><div class="tt">Hai tiếp tuyến chung điểm</div>
+        <div class="gt"><b>Giả thiết:</b> <span class="m">(O)</span>, <span class="m">A</span> ngoài <span class="m">(O)</span>, hai tiếp tuyến <span class="m">AB, AC</span></div>
+        <div class="st"><span><b>4</b> mô hình con</span><span><b>24</b> bài toán</span><span>cấp <b>1–5</b></span></div></div>
+    </div>
+    <div class="gcard">
+      <div class="fig"><svg viewBox="0 0 300 200"><use href="#tgnt2"/></svg></div>
+      <div class="b"><span class="code">MH.045</span><div class="tt">Tứ giác nội tiếp</div>
+        <div class="gt"><b>Giả thiết:</b> tứ giác <span class="m">ABCD</span> nội tiếp <span class="m">(O)</span></div>
+        <div class="st"><span><b>2</b> mô hình con</span><span><b>18</b> bài toán</span><span>cấp <b>1–4</b></span></div></div>
+    </div>
+    <div class="gcard">
+      <div class="fig"><svg viewBox="0 0 300 200"><use href="#tgnt"/></svg></div>
+      <div class="b"><span class="code">MH.052</span><div class="tt">Tam giác nội tiếp + đường cao</div>
+        <div class="gt"><b>Giả thiết:</b> <span class="m">△ABC</span> nội tiếp <span class="m">(O)</span>, đường cao <span class="m">AH</span></div>
+        <div class="st"><span><b>2</b> mô hình con</span><span><b>15</b> bài toán</span><span>cấp <b>1–4</b></span></div></div>
+    </div>
+  </div>
+  <div class="note">Họ nào cũng bắt đầu từ một <b>xô nước gốc</b>. Đổ thêm nước (thêm giả thiết) → mô hình con, nước chảy xa hơn trong sơ đồ. Giữa hai họ khác nhau: <b>không có quan hệ</b>.</div>
+</section>
+
+<!-- ══════ M2 — SƠ ĐỒ, HAI VIEW ══════ -->
+<section id="v-m2" class="hidden">
+  <div class="crumb"><span class="bk" data-v="m0">← Chọn mô hình gốc</span><span style="color:var(--line2)">/</span>
+    <span class="tag mh">◇ MH.021 · Trực tâm</span>
+    <span style="color:var(--ink3)">graph 3D · chiếu thành 2 mặt phẳng</span></div>
+  <div class="head">
+    <h1>Sơ đồ họ Trực tâm</h1>
+    <div style="display:flex;gap:9px;align-items:center">
+      <div class="seg"><button class="on" id="tabBT">◈ View bài toán</button><button id="tabMH">◇ View mô hình</button></div>
+      <button class="btn pri">＋ Node</button>
+    </div>
+  </div>
+
+  <!-- VIEW BÀI TOÁN -->
+  <div id="viewBT">
+    <p class="sub">Chiếu bỏ trục giả thiết → còn <b>trục suy luận</b>. Cột = <b>cấp</b>. Node của mô hình con hiện <span style="color:var(--mh-tx)">viền teal</span> ngay trong cùng cột — cấp là <b>toàn cục</b>, không reset theo mô hình.</p>
+    <div class="split">
+      <div class="gwrap">
+        <div class="ghead"><div>Cấp 1</div><div>Cấp 2</div><div>Cấp 3</div><div>Cấp 4</div></div>
+        <div class="gr" style="height:322px">
+          <svg class="ed" viewBox="0 0 920 322" preserveAspectRatio="none">
+            <path d="M200,27 C224,27 216,55 240,55" fill="none" stroke="#9aa5b4" stroke-width="1.3" marker-end="url(#ar)"/>
+            <path d="M200,27 C226,27 214,139 240,139" fill="none" stroke="#9aa5b4" stroke-width="1.3" marker-end="url(#ar)"/>
+            <path d="M200,83 C224,83 216,139 240,139" fill="none" stroke="#9aa5b4" stroke-width="1.3" marker-end="url(#ar)"/>
+            <path d="M200,139 C226,139 214,223 240,223" fill="none" stroke="#9aa5b4" stroke-width="1.3" marker-end="url(#ar)"/>
+            <path d="M200,195 C224,195 216,223 240,223" fill="none" stroke="#9aa5b4" stroke-width="1.3" marker-end="url(#ar)"/>
+            <path d="M440,139 C464,139 456,195 480,195" fill="none" stroke="#9aa5b4" stroke-width="1.3" marker-end="url(#ar)"/>
+            <path d="M680,195 C704,195 696,139 720,139" fill="none" stroke="#9aa5b4" stroke-width="1.3" marker-end="url(#ar)"/>
+            <path d="M440,55 C468,55 452,279 480,279" fill="none" stroke="#5dcaa5" stroke-width="1.4" stroke-dasharray="5 3" marker-end="url(#arm)"/>
+            <path d="M440,223 C464,223 456,279 480,279" fill="none" stroke="#5dcaa5" stroke-width="1.4" stroke-dasharray="5 3" marker-end="url(#arm)"/>
+            <!-- chuỗi hướng dẫn -->
+            <path d="M200,27 C224,27 216,55 240,55" fill="none" stroke="#ba7517" stroke-width="2.4" marker-end="url(#arg)"/>
+            <path d="M440,55 C468,55 452,279 480,279" fill="none" stroke="#ba7517" stroke-width="2.4" stroke-dasharray="6 3" marker-end="url(#arg)"/>
+            <path d="M680,279 C700,279 704,279 720,279" fill="none" stroke="#ba7517" stroke-width="2.4" stroke-dasharray="6 3" marker-end="url(#arg)"/>
+            <path d="M440,55 C464,55 456,83 480,83" fill="none" stroke="#9aa5b4" stroke-width="1.3" marker-end="url(#ar)"/>
+            <path d="M680,83 C704,83 696,139 720,139" fill="none" stroke="#9aa5b4" stroke-width="1.3" marker-end="url(#ar)"/>
+          </svg>
+
+          <div class="nd path" style="left:0;top:4px"><span class="ypin">ý a</span>
+            Tứ giác <span class="m">BFEC</span> nội tiếp (đk <span class="m">BC</span>)
+            <div class="r"><span class="lv">c1</span><span class="mc">BT.101</span></div></div>
+          <div class="nd" style="left:0;top:60px">Tứ giác <span class="m">AFHE</span> nội tiếp (đk <span class="m">AH</span>)
+            <div class="r"><span class="lv">c1</span><span class="mc">BT.102</span></div></div>
+          <div class="nd" style="left:0;top:116px"><span class="m">BH · BE = BD · BC</span>
+            <div class="r"><span class="lv">c1</span><span class="mc">BT.104</span></div></div>
+          <div class="nd" style="left:0;top:172px"><span class="m">△BDH ∽ △BEC</span>
+            <div class="r"><span class="lv">c1</span><span class="mc">BT.106</span></div></div>
+
+          <div class="nd path sel" style="left:240px;top:32px"><span class="ypin">ý b</span>
+            <span class="m">△AEF ∽ △ABC</span> (tỉ số <span class="m">cos A</span>)
+            <div class="r"><span class="lv">c2</span><span class="mc">BT.111</span></div></div>
+          <div class="nd" style="left:240px;top:116px"><span class="m">H</span> là tâm nội tiếp <span class="m">△DEF</span>
+            <div class="r"><span class="lv">c2</span><span class="mc">BT.115</span></div></div>
+          <div class="nd" style="left:240px;top:200px"><span class="m">AH · AD = AF · AB</span>
+            <div class="r"><span class="lv">c2</span><span class="mc">BT.118</span></div></div>
+
+          <div class="nd" style="left:480px;top:60px"><span class="m">AH = 2·OM</span> (<span class="m">M</span> trung điểm <span class="m">BC</span>)
+            <div class="r"><span class="lv">c3</span><span class="mc">BT.121</span></div></div>
+          <div class="nd" style="left:480px;top:172px">Đối xứng <span class="m">H</span> qua <span class="m">BC</span> ∈ <span class="m">(O)</span>
+            <div class="r"><span class="lv">c3</span><span class="mc">BT.124</span></div></div>
+          <div class="nd oth path" style="left:480px;top:256px"><span class="m">(M,D,B,C)</span> hàng điểm điều hoà
+            <div class="r"><span class="lv">c3</span><span class="mc">BT.140</span><span class="tag mh" style="font-size:9.5px;padding:1px 6px">MH.034</span></div></div>
+
+          <div class="nd" style="left:720px;top:116px">Đường tròn Euler qua 9 điểm
+            <div class="r"><span class="lv">c4</span><span class="mc">BT.131</span></div></div>
+          <div class="nd oth path" style="left:720px;top:256px"><span class="ypin">ý c</span>
+            <span class="m">TK ⊥ MO</span> với <span class="m">T = EF ∩ BC</span>
+            <div class="r"><span class="lv">c4</span><span class="mc">BT.145</span><span class="tag mh" style="font-size:9.5px;padding:1px 6px">MH.034</span></div></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <p class="plabel">Detail — node đang chọn</p>
+        <div style="font-weight:600;font-size:13.5px;margin-bottom:8px"><span class="m">△AEF ∽ △ABC</span></div>
+        <div class="kv"><span class="k">Mã · cấp</span><span class="v"><span class="mc" style="font-size:11.5px">BT.111</span> · <b>cấp 2</b></span></div>
+        <div class="kv"><span class="k">Mô hình</span><span class="v"><span class="tag mh">◇ MH.021</span></span></div>
+        <div class="kv"><span class="k">Dạng</span><span class="v"><span class="tag dg">đồng dạng › hai góc bằng nhau</span></span></div>
+        <div class="kv"><span class="k">Tiền đề</span><span class="v"><span class="tag bt">◈ BT.101 · c1</span></span></div>
+
+        <p class="plabel" style="margin-top:12px">Đề bài chuẩn</p>
+        <div class="sol" style="margin-bottom:9px">Cho <span class="m">△ABC</span> nhọn, ba đường cao <span class="m">AD, BE, CF</span> đồng quy tại <span class="m">H</span>. Chứng minh <span class="m">△AEF ∽ △ABC</span>.</div>
+        <p class="plabel">Đáp án đầy đủ</p>
+        <div class="sol">Tứ giác <span class="m">BFEC</span> nội tiếp (BT.101) ⇒ <span class="m">∠AEF = ∠ABC</span> (góc ngoài bằng góc trong đối diện).<br>
+          Hai tam giác <span class="m">AEF</span> và <span class="m">ABC</span> có <span class="m">∠A</span> chung và <span class="m">∠AEF = ∠ABC</span> ⇒ đồng dạng (g.g).<br>
+          Tỉ số: <span class="m">AE/AB = cos A</span>.</div>
+        <div class="figmini" style="margin-top:9px"><svg viewBox="0 0 300 200"><use href="#tt"/><path d="M112 92 L205 86 L150 40 Z" fill="#534ab7" fill-opacity=".13" stroke="#534ab7" stroke-width="1.2"/></svg><div class="figcap">Hình chuẩn của node</div></div>
+      </div>
+    </div>
+
+    <div class="chain">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+        <b style="font-size:13.5px">Chuỗi hướng dẫn — bài HH.0067 có ý ở cấp 1 · 2 · 4</b>
+        <span class="tag bdd">in cho HS</span>
+        <button class="btn" style="margin-left:auto;height:30px">⎙ In hướng dẫn</button>
+      </div>
+      <div style="font-size:12.5px;color:var(--ink2);margin-bottom:8px">HS chỉ thấy ba ý rời. Truy chuỗi tiền đề trong sơ đồ → in <b>lời giải liền mạch</b>, không hụt bước. Bài mẫu không cần trùng bài HS đang làm — cùng một đường trong sơ đồ là đủ.</div>
+      <div class="chstep"><span class="chn you">1</span><div class="chb"><div class="h">BT.101 · <span class="m">BFEC</span> nội tiếp đường tròn đường kính <span class="m">BC</span> <span class="tag dg" style="margin-left:4px">= ý a của HS</span></div><div class="s"><span class="m">∠BFC = ∠BEC = 90°</span> ⇒ <span class="m">F, E</span> cùng nhìn <span class="m">BC</span> dưới góc vuông.</div></div></div>
+      <div class="chstep"><span class="chn you">2</span><div class="chb"><div class="h">BT.111 · <span class="m">△AEF ∽ △ABC</span> <span class="tag dg" style="margin-left:4px">= ý b của HS</span></div><div class="s">Từ bước 1 ⇒ <span class="m">∠AEF = ∠ABC</span>; chung <span class="m">∠A</span> ⇒ đồng dạng (g.g).</div></div></div>
+      <div class="chstep"><span class="chn">3</span><div class="chb"><div class="h">BT.140 · <span class="m">(M,D,B,C)</span> hàng điểm điều hoà <span class="tag mh" style="margin-left:4px">MH.034 — bước HS KHÔNG thấy</span></div><div class="s">Từ bước 2 và BT.118, khi <span class="m">EF</span> cắt <span class="m">BC</span> tại <span class="m">M</span> thì <span class="m">(M,D,B,C)</span> điều hoà.</div></div></div>
+      <div class="chstep"><span class="chn you">4</span><div class="chb"><div class="h">BT.145 · <span class="m">TK ⊥ MO</span> <span class="tag dg" style="margin-left:4px">= ý c của HS</span></div><div class="s">Từ bước 3, dùng phương tích ⇒ kết luận.</div></div></div>
+      <div style="font-size:11.5px;color:var(--bd-tx);margin-top:9px">⚠ Bước 3 là mắt xích HS <b>không được hỏi</b> nhưng cần để hiểu ý c. Không có sơ đồ thì hướng dẫn sẽ hụt đúng chỗ này.</div>
+    </div>
+  </div>
+
+  <!-- VIEW MÔ HÌNH -->
+  <div id="viewMH" class="hidden">
+    <p class="sub">Chiếu bỏ trục suy luận → còn <b>trục giả thiết</b>. Cột = <b>tầng</b> (độ sâu trong họ). Detail của card = <b>danh sách bài toán</b> trong mô hình đó.</p>
+    <div class="split">
+      <div class="gwrap">
+        <div class="ghead" style="min-width:760px"><div style="width:224px">Tầng 0 — gốc họ</div><div style="width:224px">Tầng 1</div><div style="width:224px">Tầng 2</div></div>
+        <div class="gr" style="height:270px;min-width:760px">
+          <svg class="ed" viewBox="0 0 760 270" preserveAspectRatio="none">
+            <path d="M224,74 C248,74 244,60 268,60" fill="none" stroke="#5dcaa5" stroke-width="1.5" marker-end="url(#arm)"/>
+            <path d="M492,60 C516,60 512,42 536,42" fill="none" stroke="#5dcaa5" stroke-width="1.5" marker-end="url(#arm)"/>
+            <path d="M492,60 C516,60 512,178 536,178" fill="none" stroke="#5dcaa5" stroke-width="1.5" marker-end="url(#arm)"/>
+          </svg>
+          <div class="mhcol" style="left:0;top:16px">
+            <div class="f"><svg viewBox="0 0 300 200"><use href="#tri"/></svg></div>
+            <div class="bb"><span class="code">MH.010</span><div class="tt">Tam giác nhọn</div>
+              <div class="st"><span><b>4</b> bài toán</span><span>cấp <b>1</b></span></div></div>
+          </div>
+          <div class="mhcol sel" style="left:268px;top:2px">
+            <div class="f"><svg viewBox="0 0 300 200"><use href="#tt"/></svg></div>
+            <div class="bb"><span class="code">MH.021</span><div class="tt">Trực tâm</div>
+              <div class="st"><span><b>18</b> bài toán</span><span>cấp <b>1–4</b></span></div></div>
+          </div>
+          <div class="mhcol" style="left:536px;top:-16px">
+            <div class="f"><svg viewBox="0 0 300 200"><use href="#ttm"/></svg></div>
+            <div class="bb"><span class="code">MH.034</span><div class="tt">+ <span class="m">EF ∩ BC = M</span></div>
+              <div class="st"><span><b>6</b> bài toán</span><span>cấp <b>3–5</b></span></div></div>
+          </div>
+          <div class="mhcol" style="left:536px;top:120px">
+            <div class="f"><svg viewBox="0 0 300 200"><use href="#ttc"/></svg></div>
+            <div class="bb"><span class="code">MH.037</span><div class="tt">+ đường tròn Euler</div>
+              <div class="st"><span><b>5</b> bài toán</span><span>cấp <b>2–6</b></span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <p class="plabel">Detail — mô hình đang chọn</p>
+        <div style="font-weight:600;font-size:14px;margin-bottom:6px">MH.021 · Trực tâm</div>
+        <div class="gt"><b>+ Giả thiết:</b> ba đường cao <span class="m">AD, BE, CF</span> cắt nhau tại <span class="m">H</span></div>
+        <div class="figmini" style="margin-bottom:11px"><svg viewBox="0 0 300 200"><use href="#tt"/></svg><div class="figcap">Hình cấu hình</div></div>
+        <p class="plabel">Bài toán trong mô hình này · 18</p>
+        <div class="btlist">
+          <div style="font-size:10.5px;color:var(--ink3);font-weight:600;margin:6px 0 2px">CẤP 1</div>
+          <div class="btrow"><span class="lv">c1</span><span class="t"><span class="m">BFEC</span> nội tiếp</span><span class="mc">BT.101</span></div>
+          <div class="btrow"><span class="lv">c1</span><span class="t"><span class="m">AFHE</span> nội tiếp</span><span class="mc">BT.102</span></div>
+          <div class="btrow"><span class="lv">c1</span><span class="t"><span class="m">BH·BE = BD·BC</span></span><span class="mc">BT.104</span></div>
+          <div style="font-size:10.5px;color:var(--ink3);font-weight:600;margin:6px 0 2px">CẤP 2</div>
+          <div class="btrow"><span class="lv">c2</span><span class="t"><span class="m">△AEF ∽ △ABC</span></span><span class="mc">BT.111</span></div>
+          <div class="btrow"><span class="lv">c2</span><span class="t"><span class="m">H</span> tâm nội tiếp <span class="m">△DEF</span></span><span class="mc">BT.115</span></div>
+          <div style="font-size:10.5px;color:var(--ink3);font-weight:600;margin:6px 0 2px">CẤP 3</div>
+          <div class="btrow"><span class="lv">c3</span><span class="t"><span class="m">AH = 2·OM</span></span><span class="mc">BT.121</span></div>
+          <div class="btrow"><span class="lv">c3</span><span class="t">Đối xứng <span class="m">H</span> qua <span class="m">BC</span></span><span class="mc">BT.124</span></div>
+          <div style="font-size:11.5px;color:var(--ink3);padding:6px 8px">… và 11 bài toán khác</div>
+        </div>
+        <div style="margin-top:10px;padding:9px 11px;background:#f4f8f6;border-radius:8px;font-size:11.5px;color:var(--ink2)">
+          <b style="color:var(--mh-tx)">Kế thừa:</b> mô hình con MH.034 · MH.037 dùng được <b>toàn bộ 18</b> bài toán này.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ M3 ══════ -->
+<section id="v-m3" class="hidden">
+  <div class="head"><h1>Kho tạm — gán ý vào sơ đồ</h1><button class="btn pri" disabled>Chuyển sang kho chính</button></div>
+  <p class="sub">Việc <b>cơ học</b>: tra node có sẵn để trỏ vào. <b>Không có nút tạo node</b> — vị trí trong sơ đồ không suy được từ đề bài.</p>
+  <div class="panel" style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+    <span style="font-size:12.5px;color:var(--ink2)">HH.0114 · <span class="code">THCS Cầu Giấy — HK1 2025</span></span>
+    <div style="flex:1;height:7px;background:#eef1f5;border-radius:4px;overflow:hidden"><i style="display:block;height:100%;width:67%;background:var(--bt-so)"></i></div>
+    <span style="font-size:12.5px;font-weight:600">2/3 ý đã gán</span>
+  </div>
+  <div class="split" style="grid-template-columns:320px 1fr">
+    <div class="panel">
+      <p class="plabel">Đề bài — nguyên văn</p>
+      <div class="sol">Cho <span class="m">△MNP</span> nhọn có ba đường cao <span class="m">MQ, NR, PS</span> cắt nhau tại <span class="m">K</span>.</div>
+      <div class="figmini" style="margin-top:10px"><svg viewBox="0 0 300 200"><use href="#tt"/></svg><div class="figcap">Hình đề — bắt buộc</div></div>
+      <div style="margin-top:10px;font-size:11.5px;color:var(--ink2);background:#f4f8f6;border-radius:8px;padding:8px 10px">
+        <b style="color:var(--mh-tx)">Mô hình (derive):</b> ◇ MH.021 Trực tâm</div>
+      <div style="margin-top:8px;font-size:11.5px;color:var(--ink3);line-height:1.5">Đề dùng <span class="m">MNP/K</span>, node chuẩn dùng <span class="m">ABC/H</span> — biến thể điểm, gán bình thường.</div>
+    </div>
+    <div>
+      <div class="panel" style="border-color:var(--bt-bd);margin-bottom:11px">
+        <div style="display:flex;gap:9px;align-items:center;margin-bottom:9px"><span style="width:24px;height:24px;border-radius:6px;background:var(--dg-bg);color:var(--dg-tx);font-weight:600;display:flex;align-items:center;justify-content:center;font-size:12.5px">a</span>
+          <span style="flex:1;font-size:13px">Chứng minh tứ giác <span class="m">NSRP</span> nội tiếp.</span><span class="tag bt">✓ đã gán</span></div>
+        <div style="background:#f7fbff;border:1px solid #dceaf8;border-radius:9px;padding:9px 11px;font-size:12.5px">
+          <b>◈ BT.101</b> — Tứ giác <span class="m">BFEC</span> nội tiếp đường tròn đường kính <span class="m">BC</span>
+          <div style="display:flex;gap:5px;margin-top:7px;flex-wrap:wrap"><span class="lv">c1</span><span class="tag dg">tứ giác nội tiếp › cùng nhìn một cạnh</span><span class="tag gh">độ khó 1</span></div></div>
+      </div>
+      <div class="panel" style="border-color:var(--bt-bd);margin-bottom:11px">
+        <div style="display:flex;gap:9px;align-items:center;margin-bottom:9px"><span style="width:24px;height:24px;border-radius:6px;background:var(--dg-bg);color:var(--dg-tx);font-weight:600;display:flex;align-items:center;justify-content:center;font-size:12.5px">b</span>
+          <span style="flex:1;font-size:13px">Chứng minh <span class="m">△MRS ∽ △MNP</span>.</span><span class="tag bt">✓ đã gán</span></div>
+        <div style="background:#f7fbff;border:1px solid #dceaf8;border-radius:9px;padding:9px 11px;font-size:12.5px">
+          <b>◈ BT.111</b> — <span class="m">△AEF ∽ △ABC</span>
+          <div style="display:flex;gap:5px;margin-top:7px;flex-wrap:wrap"><span class="lv">c2</span><span class="tag dg">đồng dạng › hai góc bằng nhau</span><span class="tag gh">độ khó 2</span></div></div>
+      </div>
+      <div class="panel" style="border-color:var(--bd-bd)">
+        <div style="display:flex;gap:9px;align-items:center;margin-bottom:9px"><span style="width:24px;height:24px;border-radius:6px;background:var(--dg-bg);color:var(--dg-tx);font-weight:600;display:flex;align-items:center;justify-content:center;font-size:12.5px">c</span>
+          <span style="flex:1;font-size:13px">Gọi <span class="m">T = RS ∩ NP</span>. Chứng minh <span class="m">TK ⊥ MO</span>.</span><span class="tag bdd">chưa gán</span></div>
+        <input style="width:100%;height:34px;border:1px solid var(--line2);border-radius:8px;padding:0 11px;font-size:13px;margin-bottom:9px" value="RS cắt NP">
+        <div style="border:1px solid var(--line);border-radius:9px;overflow:hidden;font-size:12.5px">
+          <div style="padding:8px 11px;border-bottom:1px solid var(--line);display:flex;gap:8px;align-items:center"><b>◈ BT.140</b> <span class="m">(M,D,B,C)</span> điều hoà <span class="tag mh" style="font-size:10px">MH.034</span><span style="margin-left:auto;font-size:10.5px;color:var(--ink3)">gần đúng</span></div>
+          <div style="padding:8px 11px;color:var(--ink3);text-align:center">— không có node nào khớp —</div>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:10px;align-items:center">
+          <button class="btn" style="border-color:var(--bd-bd);color:var(--bd-tx);background:var(--bd-bg)">⚑ Thiếu node trong sơ đồ</button>
+          <span style="font-size:11.5px;color:var(--ink3)">→ hàng chờ, bài vẫn lưu ở kho tạm</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ M5 ══════ -->
+<section id="v-m5" class="hidden">
+  <div class="head"><h1>Hàng chờ — sơ đồ còn thiếu gì</h1><span style="font-size:12.5px;color:var(--ink3)">kênh bottom-up · 4 mục</span></div>
+  <p class="sub">Bottom-up <b>cấp tín hiệu</b>, không cấp quyền ghi. Thùy vào sơ đồ đặt node đúng chỗ, xong bài tự nối được.</p>
+  <div class="panel" style="border-left:3px solid var(--bd-bd);border-radius:0 11px 11px 0;display:flex;gap:13px;align-items:center;margin-bottom:9px">
+    <span class="tag mh">◇ MH.034 ?</span>
+    <div style="flex:1"><div style="font-weight:500;font-size:13px">HH.0114 · ý c — <span class="m">TK ⊥ MO</span> khi <span class="m">T = RS ∩ NP</span></div>
+      <div style="font-size:11.5px;color:var(--ink3);margin-top:3px">"có vẻ thuộc mô hình con + M" · THCS Cầu Giấy 2025</div></div>
+    <button class="btn" data-v="m2">Đặt node →</button>
+  </div>
+  <div class="panel" style="border-left:3px solid var(--bd-bd);border-radius:0 11px 11px 0;display:flex;gap:13px;align-items:center;margin-bottom:9px">
+    <span class="tag mh">◇ MH.021 ?</span>
+    <div style="flex:1"><div style="font-weight:500;font-size:13px">HH.0102 · ý c — đường thẳng Steiner</div>
+      <div style="font-size:11.5px;color:var(--ink3);margin-top:3px">"cấp cao, chưa thấy trong sơ đồ" · đề ôn vào 10</div></div>
+    <button class="btn" data-v="m2">Đặt node →</button>
+  </div>
+  <div class="panel" style="border-left:3px solid var(--bd-bd);border-radius:0 11px 11px 0;display:flex;gap:13px;align-items:center;margin-bottom:9px">
+    <span class="tag gh">? chưa rõ</span>
+    <div style="flex:1"><div style="font-weight:500;font-size:13px">HH.0108 · ý b — tính <span class="m">S(△DEF)</span> theo <span class="m">S(△ABC)</span></div>
+      <div style="font-size:11.5px;color:var(--ink3);margin-top:3px">"bài tính toán, không chắc là tính chất trong sơ đồ"</div></div>
+    <button class="btn" data-v="m2">Đặt node →</button>
+  </div>
+</section>
+
+<!-- ══════ M4 ══════ -->
+<section id="v-m4" class="hidden">
+  <div class="head"><h1>Kho chính — cái IN RA dùng hiện tại</h1><div style="display:flex;gap:8px"><button class="btn">Lọc ▾</button><button class="btn pri">Soạn giáo trình</button></div></div>
+  <p class="sub">Bài vật lý đã gán đủ node. Đây là kho <b>đang dùng để in</b>. Sơ đồ gốc dùng để tham chiếu · lý thuyết · <b>in hướng dẫn có chuỗi đầy đủ</b>.</p>
+  <div class="panel" style="display:grid;grid-template-columns:92px 1fr auto;gap:13px;align-items:center;margin-bottom:9px;cursor:pointer">
+    <div class="figmini" style="height:68px"><svg viewBox="0 0 300 200" style="height:100%"><use href="#tt"/></svg></div>
+    <div><div class="code">HH.0067 · THCS Archimedes 2024</div>
+      <div style="font-weight:500;margin:2px 0 6px;font-size:13.5px">Trực tâm + <span class="m">M</span> — nội tiếp, đồng dạng, vuông góc</div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap"><span class="tag mh">◇ MH.021</span><span class="tag mh">◇ MH.034</span><span class="tag bt">◈ cấp 1·2·4</span><span class="tag bdd">chuỗi 4 bước</span></div></div>
+    <div style="text-align:right;font-size:11px;color:var(--ink3)"><b style="display:block;color:var(--ink);font-size:17px">3</b>ý<br>độ khó 1–4</div>
+  </div>
+  <div class="panel" style="display:grid;grid-template-columns:92px 1fr auto;gap:13px;align-items:center;margin-bottom:9px;cursor:pointer">
+    <div class="figmini" style="height:68px"><svg viewBox="0 0 300 200" style="height:100%"><use href="#tt"/></svg></div>
+    <div><div class="code">HH.0042 · THCS Cầu Giấy 2025</div>
+      <div style="font-weight:500;margin:2px 0 6px;font-size:13.5px">Trực tâm — nội tiếp, đồng dạng, đối xứng</div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap"><span class="tag mh">◇ MH.021</span><span class="tag bt">◈ cấp 1·2·3</span><span class="tag dg">3 dạng</span></div></div>
+    <div style="text-align:right;font-size:11px;color:var(--ink3)"><b style="display:block;color:var(--ink);font-size:17px">3</b>ý<br>độ khó 1–3</div>
+  </div>
+  <div class="note">HH.0067 mang <b>hai tag mô hình</b> — ý a·b thuộc MH.021, ý c thuộc MH.034. Derive từ node, không nhập tay. Tag <b>"chuỗi 4 bước"</b> = đã gán đủ để in hướng dẫn liền mạch.</div>
+</section>
+
+<!-- ══════ M6 — DẠNG BÀI ══════ -->
+<section id="v-m6" class="hidden">
+  <div class="head"><h1>Danh sách dạng bài</h1><button class="btn pri">＋ Dạng</button></div>
+  <p class="sub">Hai tầng: <b>loại câu hỏi › cách xử lý</b>. Gắn ở <b>cách giải</b> của bài toán nhỏ, không gắn ở ý. Toàn nhánh Hình, dùng chung mọi họ mô hình.</p>
+  <div class="split" style="grid-template-columns:1fr 380px">
+    <div class="panel">
+      <div style="display:flex;gap:8px;margin-bottom:11px"><input style="flex:1;height:34px;border:1px solid var(--line2);border-radius:8px;padding:0 11px;font-size:13px" placeholder="Tìm dạng…"><button class="btn">Lọc ▾</button></div>
+      <div style="font-size:11.5px;font-weight:600;color:var(--ink2);padding:8px 9px 3px">Chứng minh 3 điểm thẳng hàng <span style="color:var(--ink3);font-weight:400">· 29</span></div>
+      <div class="btrow"><span class="tag dg">… bằng tiên đề Ơ-clit</span><span class="t"></span><span class="mc">14 bài toán</span></div>
+      <div class="btrow"><span class="tag dg">… bằng cộng góc</span><span class="t"></span><span class="mc">9</span></div>
+      <div class="btrow"><span class="tag dg">… bằng tính chất hình bình hành</span><span class="t"></span><span class="mc">6</span></div>
+      <div style="font-size:11.5px;font-weight:600;color:var(--ink2);padding:12px 9px 3px;border-top:1px solid var(--line);margin-top:6px">Chứng minh tứ giác nội tiếp <span style="color:var(--ink3);font-weight:400">· 62</span></div>
+      <div class="btrow"><span class="tag dg">… tổng hai góc đối = 180°</span><span class="t"></span><span class="mc">31</span></div>
+      <div class="btrow" style="background:var(--dg-bg)"><span class="tag dg">… hai đỉnh cùng nhìn một cạnh</span><span class="t"></span><span class="mc">27</span></div>
+      <div class="btrow"><span class="tag dg">… bốn điểm cách đều một điểm</span><span class="t"></span><span class="mc">4</span></div>
+      <div style="font-size:11.5px;font-weight:600;color:var(--ink2);padding:12px 9px 3px;border-top:1px solid var(--line);margin-top:6px">Chứng minh đồng dạng <span style="color:var(--ink3);font-weight:400">· 33</span></div>
+      <div class="btrow"><span class="tag dg">… hai góc bằng nhau</span><span class="t"></span><span class="mc">22</span></div>
+      <div class="btrow"><span class="tag dg">… cạnh–góc–cạnh</span><span class="t"></span><span class="mc">11</span></div>
+      <div style="font-size:11.5px;font-weight:600;color:var(--ink2);padding:12px 9px 3px;border-top:1px solid var(--line);margin-top:6px">Chứng minh hệ thức <span style="color:var(--ink3);font-weight:400">· 50</span></div>
+      <div class="btrow"><span class="tag dg">… tam giác đồng dạng</span><span class="t"></span><span class="mc">38</span></div>
+      <div class="btrow"><span class="tag dg">… phương tích</span><span class="t"></span><span class="mc">12</span></div>
+    </div>
+    <div class="panel">
+      <p class="plabel">Tra ngược — dạng đang chọn</p>
+      <div style="font-weight:600;font-size:13.5px;margin-bottom:4px">Tứ giác nội tiếp › hai đỉnh cùng nhìn một cạnh</div>
+      <div style="font-size:12px;color:var(--ink3);margin-bottom:11px">27 bài toán nhỏ · trải 4 họ mô hình</div>
+      <p class="plabel">Bài toán nhỏ dùng dạng này</p>
+      <div class="btlist">
+        <div class="btrow"><span class="lv">c1</span><span class="t"><span class="m">BFEC</span> nội tiếp (đk <span class="m">BC</span>)</span><span class="tag mh" style="font-size:9.5px">MH.021</span></div>
+        <div class="btrow"><span class="lv">c1</span><span class="t"><span class="m">AFHE</span> nội tiếp (đk <span class="m">AH</span>)</span><span class="tag mh" style="font-size:9.5px">MH.021</span></div>
+        <div class="btrow"><span class="lv">c1</span><span class="t"><span class="m">ABOC</span> nội tiếp (đk <span class="m">AO</span>)</span><span class="tag mh" style="font-size:9.5px">MH.012</span></div>
+        <div class="btrow"><span class="lv">c2</span><span class="t"><span class="m">MDOE</span> nội tiếp</span><span class="tag mh" style="font-size:9.5px">MH.034</span></div>
+        <div class="btrow"><span class="lv">c3</span><span class="t">Bốn điểm <span class="m">A, H, I, K</span> đồng viên</span><span class="tag mh" style="font-size:9.5px">MH.037</span></div>
+        <div style="font-size:11.5px;color:var(--ink3);padding:6px 9px">… và 22 bài toán khác</div>
+      </div>
+      <div style="margin-top:11px;padding:9px 11px;background:#f7fbff;border:1px solid #dceaf8;border-radius:8px;font-size:11.5px;color:var(--ink2);line-height:1.5">
+        <b style="color:var(--bt-tx)">Rollup:</b> đọc ở tầng trên (<i>chứng minh tứ giác nội tiếp</i>, 62 bài toán) = mẫu lớn, tín hiệu chắc. Đọc ở lá này = mẫu nhỏ, chẩn đoán, <b>dè dặt</b>.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ M8 — BỔ ĐỀ ══════ -->
+<section id="v-m8" class="hidden">
+  <div class="head"><h1>Danh sách bổ đề</h1><button class="btn pri">＋ Bổ đề</button></div>
+  <p class="sub">Danh mục <b>phẳng</b>. Bổ đề = <b>mối nối</b> bắc cầu giữa nửa-xuôi (giả thiết) và nửa-ngược (câu hỏi) — nhãn chẩn đoán, <b>không phải trục đo ngang hàng</b> với mô hình và dạng.</p>
+  <div class="split" style="grid-template-columns:1fr 380px">
+    <div class="panel">
+      <div style="display:flex;gap:8px;margin-bottom:11px"><input style="flex:1;height:34px;border:1px solid var(--line2);border-radius:8px;padding:0 11px;font-size:13px" placeholder="Tìm bổ đề…"><button class="btn">Lọc ▾</button></div>
+      <div class="btrow" style="background:var(--bd-bg)"><span class="tag bdd">◦ Hệ thức lượng trong tam giác vuông</span><span class="t"></span><span class="mc">23 bài toán</span></div>
+      <div class="btrow"><span class="tag bdd">◦ Phương tích của điểm với đường tròn</span><span class="t"></span><span class="mc">12</span></div>
+      <div class="btrow"><span class="tag bdd">◦ Hàng điểm điều hoà</span><span class="t"></span><span class="mc">7</span></div>
+      <div class="btrow"><span class="tag bdd">◦ Định lý Ptolemy</span><span class="t"></span><span class="mc">4</span></div>
+      <div class="btrow"><span class="tag bdd">◦ Đường thẳng Simson</span><span class="t"></span><span class="mc">3</span></div>
+      <div class="btrow"><span class="tag bdd">◦ Tứ giác điều hoà</span><span class="t"></span><span class="mc">2</span></div>
+      <div class="btrow"><span class="tag bdd">◦ Phép quay bảo toàn góc</span><span class="t"></span><span class="mc">2</span></div>
+      <div class="btrow"><span class="tag bdd">◦ Định lý Ceva</span><span class="t"></span><span class="mc">2</span></div>
+      <div class="btrow"><span class="tag bdd">◦ Định lý Menelaus</span><span class="t"></span><span class="mc">1</span></div>
+    </div>
+    <div class="panel">
+      <p class="plabel">Tra ngược — bổ đề đang chọn</p>
+      <div style="font-weight:600;font-size:13.5px;margin-bottom:6px">◦ Hệ thức lượng trong tam giác vuông</div>
+      <div class="sol" style="margin-bottom:11px"><span class="m">△ABC</span> vuông tại <span class="m">A</span>, đường cao <span class="m">AH</span>:<br><span class="m">AB² = BH·BC</span> · <span class="m">AH² = BH·CH</span> · <span class="m">AH·BC = AB·AC</span></div>
+      <p class="plabel">Bài toán nhỏ dùng bổ đề này</p>
+      <div class="btlist">
+        <div class="btrow"><span class="lv">c1</span><span class="t"><span class="m">BH·BE = BD·BC</span></span><span class="tag mh" style="font-size:9.5px">MH.021</span></div>
+        <div class="btrow"><span class="lv">c2</span><span class="t"><span class="m">AH·AD = AF·AB</span></span><span class="tag mh" style="font-size:9.5px">MH.021</span></div>
+        <div class="btrow"><span class="lv">c3</span><span class="t"><span class="m">AH = 2·OM</span></span><span class="tag mh" style="font-size:9.5px">MH.021</span></div>
+        <div class="btrow"><span class="lv">c2</span><span class="t"><span class="m">AB² = AH·AO</span></span><span class="tag mh" style="font-size:9.5px">MH.012</span></div>
+        <div style="font-size:11.5px;color:var(--ink3);padding:6px 9px">… và 19 bài toán khác</div>
+      </div>
+      <div style="margin-top:11px;padding:9px 11px;background:var(--bd-bg);border:1px solid var(--bd-bd);border-radius:8px;font-size:11.5px;color:var(--bd-tx);line-height:1.5">
+        <b>Cổng đọc theo bậc:</b> mô hình đọc được luôn → dạng đọc khi mô hình đã sạch → <b>bổ đề đọc khi cả hai đã sạch</b>. Trước đó, sai một bài có bổ đề chưa kết luận gì về bổ đề.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ M7 — TÀI LIỆU CHUẨN ══════ -->
+<section id="v-m7" class="hidden">
+  <div class="head"><h1>Tài liệu chuẩn</h1><span style="font-size:12.5px;color:var(--ink3)">sinh từ chuỗi node · tái dùng cho nhiều bài thật</span></div>
+  <p class="sub">Một tài liệu chuẩn phục vụ <b>mọi bài đi cùng một chuỗi</b> — khác trường, khác tên điểm, vẫn một bản. Sinh một lần, cache, dùng mãi. Số tài liệu chuẩn <b>ít hơn nhiều</b> số bài trong kho.</p>
+  <div class="split" style="grid-template-columns:300px 1fr">
+    <div class="panel">
+      <p class="plabel">Chuỗi · 41 tài liệu</p>
+      <div class="btrow" style="background:#fffaf1;border:1px solid var(--bd-bd)"><span class="t"><b style="font-size:12.5px">BT.101 → 111 → 140 → 145</b><div style="font-size:11px;color:var(--ink3);margin-top:2px">cấp 1·2·4 · MH.021+034</div></span><span class="mc">7 bài</span></div>
+      <div class="btrow"><span class="t"><b style="font-size:12.5px">BT.101 → 111 → 121</b><div style="font-size:11px;color:var(--ink3);margin-top:2px">cấp 1·2·3 · MH.021</div></span><span class="mc">12 bài</span></div>
+      <div class="btrow"><span class="t"><b style="font-size:12.5px">BT.102 → 115 → 124 → 131</b><div style="font-size:11px;color:var(--ink3);margin-top:2px">cấp 1·2·3·4 · MH.021+037</div></span><span class="mc">5 bài</span></div>
+      <div class="btrow"><span class="t"><b style="font-size:12.5px">BT.104 → 118 → 140</b><div style="font-size:11px;color:var(--ink3);margin-top:2px">cấp 1·2·3 · MH.034</div></span><span class="mc">4 bài</span></div>
+      <div style="margin-top:10px;padding:9px 11px;background:#fbfcfe;border:1px solid var(--line);border-radius:8px;font-size:11.5px;color:var(--ink2);line-height:1.5">
+        Chuỗi chỉ sinh được khi <b style="color:var(--ink)">cổng 2</b> (nối tiền đề) đã xong ở nhánh đó. Nhánh chưa nối → chỉ ghép được các node rời, mất phần nối.
+      </div>
+    </div>
+
+    <div class="panel" style="background:#fffdfa">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+        <span class="tag bdd">Bài tương đương — tên điểm theo hệ thống</span>
+        <span style="font-size:11.5px;color:var(--ink3)">dùng cho 7 bài thật</span>
+        <button class="btn" style="margin-left:auto;height:30px">⎙ In</button>
+      </div>
+
+      <p class="plabel">Đề chuẩn</p>
+      <div class="split" style="grid-template-columns:1fr 200px;gap:12px;margin-bottom:14px">
+        <div class="sol">Cho <span class="m">△ABC</span> nhọn, ba đường cao <span class="m">AD, BE, CF</span> cắt nhau tại <span class="m">H</span>. Gọi <span class="m">O</span> là tâm đường tròn ngoại tiếp, <span class="m">M</span> là giao của <span class="m">EF</span> và <span class="m">BC</span>.<br><br>
+          <b>a)</b> Chứng minh tứ giác <span class="m">BFEC</span> nội tiếp.<br>
+          <b>b)</b> Chứng minh <span class="m">△AEF ∽ △ABC</span>.<br>
+          <b>c)</b> Chứng minh <span class="m">MH ⊥ AO</span>.</div>
+        <div class="figmini"><svg viewBox="0 0 300 200"><use href="#ttm"/></svg><div class="figcap">Hình chuẩn — node sâu nhất</div></div>
+      </div>
+
+      <p class="plabel">Lời giải liền mạch</p>
+      <div class="chstep"><span class="chn you">1</span><div class="chb"><div class="h">Câu a · <span class="m">BFEC</span> nội tiếp <span class="mc">BT.101 · c1</span></div><div class="s"><span class="m">∠BFC = ∠BEC = 90°</span> ⇒ <span class="m">E, F</span> cùng nhìn <span class="m">BC</span> dưới góc vuông ⇒ bốn điểm thuộc đường tròn đường kính <span class="m">BC</span>.</div></div></div>
+      <div class="chstep"><span class="chn you">2</span><div class="chb"><div class="h">Câu b · <span class="m">△AEF ∽ △ABC</span> <span class="mc">BT.111 · c2</span></div><div class="s">Từ bước 1 ⇒ <span class="m">∠AEF = ∠ABC</span>. Chung <span class="m">∠A</span> ⇒ đồng dạng (g.g), tỉ số <span class="m">cos A</span>.</div></div></div>
+      <div class="chstep"><span class="chn">3</span><div class="chb"><div class="h">Bước trung gian · <span class="m">(M,D,B,C)</span> hàng điểm điều hoà <span class="mc">BT.140 · c3</span> <span class="tag bdd" style="margin-left:4px">không có trong đề</span></div><div class="s">Từ bước 2 và <span class="m">AH·AD = AF·AB</span>, khi <span class="m">EF</span> cắt <span class="m">BC</span> tại <span class="m">M</span> thì <span class="m">(M,D,B,C)</span> điều hoà.</div></div></div>
+      <div class="chstep"><span class="chn you">4</span><div class="chb"><div class="h">Câu c · <span class="m">MH ⊥ AO</span> <span class="mc">BT.145 · c4</span></div><div class="s">Từ bước 3, phương tích của <span class="m">M</span> với đường tròn đường kính <span class="m">BC</span> và <span class="m">(O)</span> ⇒ <span class="m">M</span> thuộc trục đẳng phương ⇒ <span class="m">MH ⊥ AO</span>.</div></div></div>
+      <div style="font-size:11.5px;color:var(--bd-tx);margin-top:10px;padding:9px 11px;background:var(--bd-bg);border-radius:8px">
+        <b>Bước 3 không nằm trong đề</b> nhưng bắt buộc phải có mới nối được câu b sang câu c. Đây chính là chỗ hướng dẫn bị hụt nếu không có sơ đồ.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ M9 — SOẠN TÀI LIỆU ══════ -->
+<section id="v-m9" class="hidden">
+  <div class="head"><h1>Soạn tài liệu</h1>
+    <div class="seg"><button class="on" id="tabGD">▶ Giảng dạy — đi tới đích</button><button id="tabOT">↻ Ôn tập — theo dạng</button></div></div>
+
+  <!-- CHẾ ĐỘ GIẢNG DẠY -->
+  <div id="modeGD">
+    <p class="sub">Một buổi = <b>một khúc</b>. In từ <b>A đến B</b>, không in lại từ cấp 1 — buổi trước đã dạy đoạn dưới. (Bản đầy đủ 1→B chỉ dùng cho <b>lời giải tham chiếu</b>, xem tab Tài liệu chuẩn.)</p>
+    <div class="split" style="grid-template-columns:300px 1fr">
+      <div class="panel">
+        <p class="plabel">Khúc của buổi này</p>
+        <div style="border:1px solid var(--line2);border-radius:9px;padding:9px 11px;font-size:12.5px;margin-bottom:7px">
+          <div style="font-size:10.5px;color:var(--ink3);font-weight:600;margin-bottom:3px">TỪ (A)</div>
+          <b>◈ BT.111</b> — <span class="m">△AEF ∽ △ABC</span><div style="display:flex;gap:5px;margin-top:5px"><span class="lv">c2</span></div></div>
+        <div style="text-align:center;color:var(--ink3);font-size:13px;margin:2px 0">↓</div>
+        <div style="border:1.5px solid var(--bt-so);border-radius:9px;padding:9px 11px;font-size:12.5px;margin-bottom:12px;background:#f7fbff">
+          <div style="font-size:10.5px;color:var(--ink3);font-weight:600;margin-bottom:3px">ĐẾN (B)</div>
+          <b>◈ BT.145</b> — <span class="m">MH ⊥ AO</span><div style="display:flex;gap:5px;margin-top:5px"><span class="lv">c4</span><span class="tag mh" style="font-size:9.5px">MH.034</span></div></div>
+
+        <div style="padding:10px 11px;background:#f7fbff;border:1px solid #dceaf8;border-radius:9px;font-size:11.5px;color:var(--ink2);line-height:1.55;margin-bottom:11px">
+          <b style="color:var(--bt-tx)">Khúc: 3 bài</b> · cấp 2→4 · qua 2 mô hình<br>
+          <span style="color:var(--ink3)">1 nhắc lại · <b style="color:var(--wr-tx)">1 cảnh báo hở</b></span>
+        </div>
+
+        <p class="plabel">Chuỗi buổi</p>
+        <div style="font-size:12px;line-height:1.5;color:var(--ink2)">
+          <div style="padding:5px 8px;border-radius:6px;background:#f4f6fa;margin-bottom:4px">Buổi 1 · cấp 1→2 <span class="mc">101→118</span></div>
+          <div style="padding:5px 8px;border-radius:6px;background:var(--bt-bg);color:var(--bt-tx);font-weight:500;margin-bottom:4px">Buổi 2 · cấp 2→4 <span class="mc">111→145</span></div>
+          <div style="padding:5px 8px;border-radius:6px;border:1px dashed var(--line2);color:var(--ink3)">＋ thêm mốc chia buổi</div>
+        </div>
+        <button class="btn pri" style="width:100%;justify-content:center;margin-top:11px">⎙ Xuất buổi 2</button>
+      </div>
+
+      <div class="panel">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+          <span class="tag bt">Buổi 2 · 3 bài</span><span class="tag mh">2 chương</span>
+          <span style="font-size:11.5px;color:var(--ink3);margin-left:auto">tên điểm chuẩn, nhất quán toàn tài liệu</span></div>
+
+        <div style="border:1px dashed var(--line2);border-radius:9px;padding:10px 12px;margin-bottom:8px;background:#fafbfc">
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink3);font-weight:600;margin-bottom:6px">Nhắc lại đầu buổi — đã học buổi trước</div>
+          <div style="font-size:12.5px;color:var(--ink2)">◈ BT.101 · <span class="m">BFEC</span> nội tiếp đường tròn đường kính <span class="m">BC</span> <span class="lv" style="background:var(--ink3)">c1</span></div>
+          <div style="font-size:11px;color:var(--ink3);margin-top:5px">tiền đề nằm <b>dưới A</b> ⇒ hệ tự đưa vào phần nhắc lại, không dạy lại</div>
+        </div>
+
+        <div style="border:1px solid var(--wr-bd);background:var(--wr-bg);border-radius:9px;padding:10px 12px;margin-bottom:12px">
+          <div style="font-size:12.5px;color:var(--wr-tx);font-weight:600;margin-bottom:4px">⚠ Khúc bị hở — 1 tiền đề chưa học</div>
+          <div style="font-size:12.5px;color:var(--wr-tx)">◈ BT.118 · <span class="m">AH · AD = AF · AB</span> <span class="lv" style="background:var(--wr-tx)">c2</span></div>
+          <div style="font-size:11.5px;color:var(--wr-tx);margin-top:5px;opacity:.85">BT.140 cần node này, nhưng nó <b>không nằm dưới A</b> — nhánh khác, buổi trước không đi qua.</div>
+          <div style="display:flex;gap:7px;margin-top:9px"><button class="btn" style="height:29px;font-size:12px">Thêm vào buổi</button><button class="btn" style="height:29px;font-size:12px">Đánh dấu đã học</button></div>
+        </div>
+
+        <div style="background:var(--mh-bg);border:1px solid var(--mh-bd);border-radius:9px;padding:10px 12px;margin-bottom:10px">
+          <div style="font-weight:600;font-size:13px;color:var(--mh-tx)">CHƯƠNG 1 — Mô hình Trực tâm</div>
+          <div style="font-size:12px;color:var(--ink2);margin-top:3px"><b>Giả thiết:</b> <span class="m">△ABC</span> nhọn, ba đường cao <span class="m">AD, BE, CF</span> cắt nhau tại <span class="m">H</span></div>
+        </div>
+        <div class="panel" style="margin-bottom:8px;padding:10px 12px;border-color:var(--dg-bd)"><div style="display:flex;gap:9px;align-items:center">
+          <span class="chn" style="background:var(--dg-so)">1</span><div style="flex:1"><b style="font-size:12.5px">Chứng minh <span class="m">△AEF ∽ △ABC</span></b>
+          <div style="font-size:11.5px;color:var(--ink3);margin-top:2px">BT.111 · cấp 2 · đồng dạng › hai góc bằng nhau</div></div><span class="tag dg" style="font-size:10px">điểm A — mở đầu</span></div></div>
+
+        <div style="background:var(--mh-bg);border:1px solid var(--mh-bd);border-radius:9px;padding:10px 12px;margin:14px 0 10px">
+          <div style="font-weight:600;font-size:13px;color:var(--mh-tx)">CHƯƠNG 2 — Thêm giả thiết</div>
+          <div style="font-size:12px;color:var(--ink2);margin-top:3px">Nay cho thêm: <span class="m">EF</span> cắt <span class="m">BC</span> tại <span class="m">M</span> <span class="tag mh" style="font-size:9.5px;margin-left:4px">MH.034</span></div>
+        </div>
+        <div class="panel" style="margin-bottom:8px;padding:10px 12px"><div style="display:flex;gap:9px;align-items:center">
+          <span class="chn" style="background:var(--bt-so)">2</span><div style="flex:1"><b style="font-size:12.5px">Chứng minh <span class="m">(M, D, B, C)</span> là hàng điểm điều hoà</b>
+          <div style="font-size:11.5px;color:var(--ink3);margin-top:2px">BT.140 · cấp 3 · cần BT.111 ✓ và BT.118 ⚠</div></div><span class="lv">c3</span></div></div>
+        <div class="panel" style="margin-bottom:8px;padding:10px 12px;border-color:var(--bt-so);border-width:1.5px;background:#f7fbff"><div style="display:flex;gap:9px;align-items:center">
+          <span class="chn" style="background:var(--bt-so)">3</span><div style="flex:1"><b style="font-size:12.5px">Chứng minh <span class="m">MH ⊥ AO</span></b>
+          <div style="font-size:11.5px;color:var(--ink3);margin-top:2px">BT.145 · cấp 4 · bổ đề phương tích</div></div><span class="tag bt">ĐÍCH B</span></div></div>
+
+        <div style="font-size:11.5px;color:var(--mh-tx);margin-top:11px;padding:9px 11px;background:var(--mh-bg);border-radius:8px;line-height:1.55">
+          <b>Chương tự chia theo lần thêm giả thiết.</b> Đường đi cắt biên mô hình ⇒ hệ chèn mốc "nay cho thêm…". Không soạn tay.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHẾ ĐỘ ÔN TẬP -->
+  <div id="modeOT" class="hidden">
+    <p class="sub">Rút từ <b>bài thật</b> trong kho nhập — luyện tập cần đa dạng lời văn, hình vẽ, tên điểm. Chọn dạng <b>hoàn toàn độc lập với mô hình</b>: cùng một cách xử lý, gặp ở họ mô hình nào cũng được.</p>
+    <div class="split" style="grid-template-columns:290px 1fr 250px">
+      <div class="panel">
+        <p class="plabel">Chọn dạng</p>
+        <div style="font-size:11.5px;font-weight:600;color:var(--ink2);padding:6px 8px 3px">Chứng minh hệ thức</div>
+        <div class="btrow" style="background:var(--dg-bg)"><span class="tag dg">… tam giác đồng dạng</span><span class="t"></span><span class="mc">38</span></div>
+        <div class="btrow"><span class="tag dg">… phương tích</span><span class="t"></span><span class="mc">12</span></div>
+        <div style="font-size:11.5px;font-weight:600;color:var(--ink2);padding:10px 8px 3px;border-top:1px solid var(--line);margin-top:5px">Chứng minh tứ giác nội tiếp</div>
+        <div class="btrow"><span class="tag dg">… tổng hai góc đối</span><span class="t"></span><span class="mc">31</span></div>
+        <div class="btrow"><span class="tag dg">… cùng nhìn một cạnh</span><span class="t"></span><span class="mc">27</span></div>
+        <p class="plabel" style="margin-top:14px">Lọc thêm</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap"><span class="tag gh">độ khó 2–3</span><span class="tag gh">khối 9</span><span class="tag gh">mọi mô hình ✓</span></div>
+      </div>
+
+      <div>
+        <div style="font-size:12px;color:var(--ink3);margin-bottom:9px">38 ý thuộc dạng này · trải <b>4 họ mô hình</b> · tick từng ý</div>
+        <div class="panel" style="margin-bottom:9px;padding:11px 13px">
+          <div style="display:flex;gap:10px;align-items:flex-start">
+            <div style="width:19px;height:19px;border:1.5px solid var(--bt-so);background:var(--bt-so);border-radius:5px;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;margin-top:2px">✓</div>
+            <div style="flex:1"><div class="code">HH.0042 · ý b · THCS Cầu Giấy 2025</div>
+              <div style="font-size:12.5px;margin:3px 0 5px">Cho <span class="m">△MNP</span> … Chứng minh <span class="m">MK · MQ = MS · MN</span>.</div>
+              <div style="display:flex;gap:5px;flex-wrap:wrap"><span class="tag mh" style="font-size:9.5px">MH.021</span><span class="lv">c2</span><span class="tag gh">độ khó 2</span></div></div>
+            <div class="figmini" style="width:88px"><svg viewBox="0 0 300 200"><use href="#tt"/></svg></div></div>
+        </div>
+        <div class="panel" style="margin-bottom:9px;padding:11px 13px">
+          <div style="display:flex;gap:10px;align-items:flex-start">
+            <div style="width:19px;height:19px;border:1.5px solid var(--bt-so);background:var(--bt-so);border-radius:5px;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;margin-top:2px">✓</div>
+            <div style="flex:1"><div class="code">HH.0088 · ý a · THCS Ngô Sĩ Liên 2024</div>
+              <div style="font-size:12.5px;margin:3px 0 5px">Cho <span class="m">(O)</span> và điểm <span class="m">S</span> ngoài … Chứng minh <span class="m">SA² = SI · SO</span>.</div>
+              <div style="display:flex;gap:5px;flex-wrap:wrap"><span class="tag mh" style="font-size:9.5px">MH.012</span><span class="lv">c2</span><span class="tag gh">độ khó 2</span></div></div>
+            <div class="figmini" style="width:88px"><svg viewBox="0 0 300 200"><use href="#tiep"/></svg></div></div>
+        </div>
+        <div class="panel" style="margin-bottom:9px;padding:11px 13px">
+          <div style="display:flex;gap:10px;align-items:flex-start">
+            <div style="width:19px;height:19px;border:1.5px solid var(--line2);border-radius:5px;margin-top:2px"></div>
+            <div style="flex:1"><div class="code">HH.0103 · ý b · đề ôn HK1</div>
+              <div style="font-size:12.5px;margin:3px 0 5px">Cho tứ giác <span class="m">ABCD</span> nội tiếp … Chứng minh <span class="m">EA · EC = EB · ED</span>.</div>
+              <div style="display:flex;gap:5px;flex-wrap:wrap"><span class="tag mh" style="font-size:9.5px">MH.045</span><span class="lv">c3</span><span class="tag gh">độ khó 3</span></div></div>
+            <div class="figmini" style="width:88px"><svg viewBox="0 0 300 200"><use href="#tgnt2"/></svg></div></div>
+        </div>
+        <div class="panel" style="padding:11px 13px">
+          <div style="display:flex;gap:10px;align-items:flex-start">
+            <div style="width:19px;height:19px;border:1.5px solid var(--line2);border-radius:5px;margin-top:2px"></div>
+            <div style="flex:1"><div class="code">HH.0117 · ý b · THCS Archimedes 2025</div>
+              <div style="font-size:12.5px;margin:3px 0 5px">Cho <span class="m">△XYZ</span> nội tiếp <span class="m">(O)</span> … Chứng minh <span class="m">XT · XH = XY · XF</span>.</div>
+              <div style="display:flex;gap:5px;flex-wrap:wrap"><span class="tag mh" style="font-size:9.5px">MH.052</span><span class="lv">c2</span><span class="tag gh">độ khó 2</span></div></div>
+            <div class="figmini" style="width:88px"><svg viewBox="0 0 300 200"><use href="#tgnt"/></svg></div></div>
+        </div>
+      </div>
+
+      <div class="panel" style="position:sticky;top:16px">
+        <p class="plabel">Phiếu ôn tập</p>
+        <div style="font-size:12.5px;line-height:1.9;color:var(--ink2)">
+          <div>HH.0042 · ý b <span class="mc">MH.021</span></div>
+          <div>HH.0088 · ý a <span class="mc">MH.012</span></div>
+        </div>
+        <div style="border-top:1px solid var(--line);margin-top:11px;padding-top:11px;font-size:12.5px">
+          <div style="display:flex;justify-content:space-between"><span>Số ý</span><b>2</b></div>
+          <div style="display:flex;justify-content:space-between;margin-top:3px"><span>Họ mô hình</span><b>2</b></div>
+          <div style="display:flex;justify-content:space-between;margin-top:3px"><span>Độ khó TB</span><b>2.0</b></div>
+        </div>
+        <div style="margin-top:11px;padding:9px 10px;background:var(--dg-bg);border:1px solid var(--dg-bd);border-radius:8px;font-size:11.5px;color:var(--dg-tx);line-height:1.5">
+          Cùng một <b>cách xử lý</b>, bốn cấu hình khác nhau — đó là điều ôn tập cần. Không cần mạch liền như giảng dạy.
+        </div>
+        <button class="btn pri" style="width:100%;justify-content:center;margin-top:11px">⎙ Xuất phiếu</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main></div>
+
+<script>
+  const V={m0:'v-m0',m2:'v-m2',m3:'v-m3',m4:'v-m4',m5:'v-m5',m6:'v-m6',m7:'v-m7',m8:'v-m8',m9:'v-m9'};
+  function show(v){for(const k in V)document.getElementById(V[k]).classList.toggle('hidden',k!==v);
+    document.querySelectorAll('.navitem[data-v]').forEach(n=>n.classList.toggle('on',n.dataset.v===v));window.scrollTo(0,0);}
+  document.querySelectorAll('[data-v]').forEach(n=>n.addEventListener('click',()=>show(n.dataset.v)));
+  document.querySelectorAll('[data-go]').forEach(n=>n.addEventListener('click',e=>{e.stopPropagation();show(n.dataset.go);}));
+  const tB=document.getElementById('tabBT'),tM=document.getElementById('tabMH'),vB=document.getElementById('viewBT'),vM=document.getElementById('viewMH');
+  tB.onclick=()=>{tB.classList.add('on');tM.classList.remove('on');vB.classList.remove('hidden');vM.classList.add('hidden')};
+  tM.onclick=()=>{tM.classList.add('on');tB.classList.remove('on');vM.classList.remove('hidden');vB.classList.add('hidden')};
+  document.querySelectorAll('.nd').forEach(n=>n.addEventListener('click',()=>{
+    document.querySelectorAll('.nd').forEach(x=>x.classList.remove('sel'));n.classList.add('sel');}));
+  document.querySelectorAll('.mhcol').forEach(n=>n.addEventListener('click',()=>{
+    document.querySelectorAll('.mhcol').forEach(x=>x.classList.remove('sel'));n.classList.add('sel');}));
+  const gG=document.getElementById('tabGD'),gO=document.getElementById('tabOT'),mG=document.getElementById('modeGD'),mO=document.getElementById('modeOT');
+  gG.onclick=()=>{gG.classList.add('on');gO.classList.remove('on');mG.classList.remove('hidden');mO.classList.add('hidden')};
+  gO.onclick=()=>{gO.classList.add('on');gG.classList.remove('on');mO.classList.remove('hidden');mG.classList.add('hidden')};
+</script>

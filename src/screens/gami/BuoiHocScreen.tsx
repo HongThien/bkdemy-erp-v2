@@ -18,6 +18,7 @@ import { listNhanSu, type NhanSu } from '../../lib/nhansu'
 import { listDaiDang, type CauHoi } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
 import SearchSelect from '../../components/SearchSelect'
+import { NGU_CANH_LUOT, setNguCanhLuotBuoi, type NguCanhLuot } from '../../lib/kho/hinh'
 import DangPickerOne from '../../components/DangPickerOne'
 import { useIsMobile } from '../../hooks/useIsMobile'
 import { tenHienThiDs, tenNganHS } from '../../lib/hoten'
@@ -302,6 +303,22 @@ export function BuoiDetail({ id, onClose, tabs, initialTab, canManage = true, on
             </span>
           ) })()}
         </div>}
+        {/* LƯỢT DẠY của buổi (spec-kho-hinh-v3 §8). Buổi lượt-1 dạy mô hình thì dạng+bổ đề đã được
+            scaffold sẵn ⇒ HS sai quy về MÔ HÌNH; lượt-2 dạy dạng thì mô hình đã quen ⇒ sai quy về DẠNG.
+            Không có nhãn này thì các trục chồng lên một quan sát, sau KHÔNG gỡ ra được.
+            KHÔNG gate theo môn (ADR-mon §1.6: cấm `if mon==='Toán'` trong code dùng chung) — mọi môn
+            đều có khái niệm lượt dạy; nhánh nào chưa dùng thì để trống. */}
+        {!isMobile && canManage && (
+          <div className="flex items-center gap-1 text-[12px] text-slate-500">Lượt:
+            <select value={(buoi as { ngu_canh_luot?: string | null }).ngu_canh_luot ?? ''}
+              onChange={async (e) => { await setNguCanhLuotBuoi(id, (e.target.value || null) as NguCanhLuot | null); reload() }}
+              title="Lượt dạy sinh ra quan sát — dùng để quy lỗi đúng trục khi đo"
+              className="rounded-md border border-slate-200 px-1.5 py-1 text-[12px] text-slate-700 outline-none focus:border-indigo-400">
+              <option value="">— chưa khai —</option>
+              {NGU_CANH_LUOT.map((x) => <option key={x.v} value={x.v} title={x.mo_ta}>{x.label}</option>)}
+            </select>
+          </div>
+        )}
         {canManage && buoi.trang_thai !== 'huy' && buoi.trang_thai !== 'hoan_tat' && (
           <button onClick={async () => { const ly = prompt('Lý do hủy buổi?'); if (ly) { await huyBuoi(id, ly); reload() } }}
             className="ml-auto rounded-md border border-rose-200 px-2.5 py-1 text-[12px] font-medium text-rose-600 hover:bg-rose-50">Hủy buổi</button>

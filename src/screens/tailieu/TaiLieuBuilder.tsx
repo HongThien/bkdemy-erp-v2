@@ -10,6 +10,8 @@ import { listLop, type Lop } from '../../lib/nhansu'
 import { MathText, inp } from '../kho/ui'
 import SearchSelect from '../../components/SearchSelect'
 import BuoiNgaySelect from '../../components/BuoiNgaySelect'
+import { ngayBuoiHopLeCuaLop } from '../../lib/gami'
+import { homNayVN, congNgay, ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import { KhoPicker } from '../../components/KhoPicker'
 import OnTapConfirmScreen from './OnTapConfirmScreen'
 import PrintView from './PrintView'
@@ -415,12 +417,20 @@ function TrichPanel({ masterId, khoi, buois, onClose }: { masterId: string; khoi
   const [lopId, setLopId] = useState<string | null>(null)
   const [state, setState] = useState<Record<string, TrichState>>({})
   const [boLop, setBoLop] = useState<BuoiLop[]>([])   // BỘ GIÁO TRÌNH RIÊNG CỦA LỚP (số buổi của lớp)
+  const [tkbDates, setTkbDates] = useState<string[]>([])  // ngày CÓ trong TKB của lớp (tăng dần) — để suy ngày gán mặc định
   const [loading, setLoading] = useState(false)
   useEffect(() => { listLop().then(setLops).catch(() => { }) }, [])
   const lop = lops.find((l) => l.id === lopId)
   async function loadState(id: string) {
     setLoading(true)
-    try { const [st, bo] = await Promise.all([listTrichXuat(masterId, id), listGiaoTrinhLop(id)]); setState(st); setBoLop(bo) }
+    const today = homNayVN()
+    try {
+      const [st, bo, tkb] = await Promise.all([
+        listTrichXuat(masterId, id), listGiaoTrinhLop(id),
+        ngayBuoiHopLeCuaLop(id, congNgay(today, -60), congNgay(today, 90)).catch(() => [] as { ngay: string }[]),
+      ])
+      setState(st); setBoLop(bo); setTkbDates(tkb.map((o) => o.ngay))
+    }
     finally { setLoading(false) }
   }
   useEffect(() => { if (lopId) loadState(lopId); else { setState({}); setBoLop([]) } }, [lopId]) // eslint-disable-line
@@ -456,6 +466,19 @@ function TrichPanel({ masterId, khoi, buois, onClose }: { masterId: string; khoi
   const soBuoiMaster = new Map(buois.map((b, i) => [b.marker.id, i + 1]))
   const sttLopCua = (markerId: string) => boLop.find((b) => b.nguon_buoi === markerId)?.stt
 
+  // ⭐ Ngày gán MẶC ĐỊNH = buổi TKB gần nhất CHƯA gán (Thùy: BTVN luôn làm vào ngày học/gần đó → khỏi
+  // bới cả list, tránh bấm nhầm sang tháng khác như 8A1 Buổi 7 gán nhầm CN 23/08 thay vì T5 23/07).
+  // Lấp tuần tự theo thứ tự buổi master: buổi chưa-gán thứ k → ngày trống thứ k (tăng dần). "Đã gán" tính
+  // theo BỘ GIÁO TRÌNH LỚP (mọi giáo trình, không riêng master này) để không cấp trùng ngày đã có buổi.
+  const daGan = new Set(boLop.map((b) => b.ngay))
+  const ngayTrong = tkbDates.filter((d) => !daGan.has(d))
+  const defNgayByMarker = new Map<string, string>()
+  let kTrong = 0
+  for (const b of buois) {
+    if (state[b.marker.id]?.ngay) continue        // buổi này đã gán → không cần ngày mặc định
+    if (kTrong < ngayTrong.length) defNgayByMarker.set(b.marker.id, ngayTrong[kTrong++])
+  }
+
   return (
     <div className="fixed inset-0 z-[70] bg-slate-900/50 backdrop-blur-sm" onClick={onClose}>
       <div className="absolute inset-x-[8%] inset-y-10 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
@@ -472,7 +495,7 @@ function TrichPanel({ masterId, khoi, buois, onClose }: { masterId: string; khoi
               <div className="min-h-0 overflow-auto p-5">
                 <p className="mb-2 text-[12px] text-slate-400">Mỗi buổi của giáo trình gốc → gán cho 1 ngày của lớp <b>{lop.ten_lop}</b>. Lớp học buổi nào là <b>tự chọn</b> — không cần gán đủ, không cần đúng thứ tự. BTVN (kèm ôn tập) làm ở bước riêng sau khi gán, có xem trước.</p>
                 <div className="space-y-2">
-                  {buois.map((b, i) => <BuoiTrichRow key={b.marker.id} no={i + 1} sttLop={sttLopCua(b.marker.id)} lopId={lopId} tenLop={lop.ten_lop} masterId={masterId} khoi={khoi} mon={lop.mon} buoi={b} st={state[b.marker.id]}
+                  {buois.map((b, i) => <BuoiTrichRow key={b.marker.id} no={i + 1} sttLop={sttLopCua(b.marker.id)} lopId={lopId} tenLop={lop.ten_lop} masterId={masterId} khoi={khoi} mon={lop.mon} buoi={b} st={state[b.marker.id]} defaultNgay={defNgayByMarker.get(b.marker.id)}
                     onGan={(ngay, gt) => gan(b.marker.id, b.marker.tieu_de || `Buổi ${i + 1}`, ngay, gt)}
                     onBtvnConfirmed={() => loadState(lop.id)} />)}
                 </div>
@@ -527,22 +550,27 @@ function BoGiaoTrinhLop({ tenLop, bo, soBuoiMaster, onDanhSoLai }: { tenLop: str
 // người dùng soi trước rồi mới bấm Xác nhận mới CHÍNH THỨC tạo BTVN vào Kho. Không còn checkbox BTVN /
 // OnTapEditor nhúng ở đây nữa — trạng thái "đã có GT, chưa có BTVN" tự nhiên derive từ `st` (listTrichXuat),
 // không cần nhớ "có định làm BTVN không" ở đâu cả — bấm "+ BTVN / Ôn tập" lúc nào cũng được, kể cả về sau.
-function BuoiTrichRow({ no, sttLop, lopId, tenLop, masterId, khoi, mon, buoi, st, onGan, onBtvnConfirmed }: {
-  no: number; sttLop?: number; lopId: string | null; tenLop: string; masterId: string; khoi: string; mon: string; buoi: BuoiUI; st?: TrichState
+function BuoiTrichRow({ no, sttLop, lopId, tenLop, masterId, khoi, mon, buoi, st, defaultNgay, onGan, onBtvnConfirmed }: {
+  no: number; sttLop?: number; lopId: string | null; tenLop: string; masterId: string; khoi: string; mon: string; buoi: BuoiUI; st?: TrichState; defaultNgay?: string
   onGan: (ngay: string, gt: boolean) => Promise<void>
   onBtvnConfirmed: () => void
 }) {
-  const [ngay, setNgay] = useState('')
-  const [gt, setGt] = useState(true)
+  // Mặc định = buổi TKB gần nhất chưa gán (panel tính, truyền xuống). CHƯA chọn tay thì bám theo default;
+  // đã chọn tay (touched) thì giữ lựa chọn người dùng, không bị default đè khi panel reload.
+  const [ngay, setNgay] = useState(defaultNgay ?? '')
+  const [touched, setTouched] = useState(false)
   const [busy, setBusy] = useState(false)
+  const [doiNgay, setDoiNgay] = useState(false)   // mở dropdown chọn ngày khác (hiếm — bù/nhảy buổi)
   const [onTapOpen, setOnTapOpen] = useState(false)
+  useEffect(() => { if (!touched) setNgay(defaultNgay ?? '') }, [defaultNgay, touched])
+  const pickNgay = (v: string) => { setTouched(true); setNgay(v) }
   const ganNgay = st?.ngay ? st.ngay.split('-').reverse().join('/') : null
   // Tên hiển thị khi đã gán = tên THEO SỐ CỦA LỚP (đúng cái in ra phiếu), không phải số buổi của master.
   const tenBuoi = sttLop ? tieuDeBuoiLop(buoi.marker.tieu_de, sttLop) : (buoi.marker.tieu_de || `Buổi ${no}`)
   async function go() {
-    if (!ngay || !gt) return
+    if (!ngay) return
     setBusy(true)
-    try { await onGan(ngay, gt) } finally { setBusy(false) }
+    try { await onGan(ngay, true) } finally { setBusy(false) }
   }
   return (
     <div className="rounded-xl border border-slate-200 bg-white p-2.5">
@@ -562,13 +590,22 @@ function BuoiTrichRow({ no, sttLop, lopId, tenLop, masterId, khoi, mon, buoi, st
               <button onClick={() => setOnTapOpen(true)} className="rounded-md bg-violet-600 px-2.5 py-1 text-[11px] font-medium text-white hover:bg-violet-500">+ BTVN / Ôn tập</button>
             )}
             <button onClick={go} disabled={busy || !ngay} title="Gán lại sang ngày khác (tạo bản mới)" className="rounded-md border border-slate-200 px-2 py-1 text-[11px] text-slate-500 hover:border-indigo-300">Gán lại</button>
-            <BuoiNgaySelect lopId={lopId} value={ngay} onChange={setNgay} className="h-7 rounded border border-slate-300 px-1.5 text-[12px]" />
+            <BuoiNgaySelect lopId={lopId} value={ngay} onChange={pickNgay} className="h-7 rounded border border-slate-300 px-1.5 text-[12px]" />
           </div>
         ) : (
+          // Un-gán: KHÔNG bày cả list ngày. Hiện thẳng ngày mặc định = buổi gần nhất chưa gán (BTVN làm
+          // vào/ gần ngày học). Cần nhảy buổi (bù/ lệch thứ tự) mới bấm "đổi ngày" mở dropdown.
           <div className="flex flex-wrap items-center gap-2">
-            <BuoiNgaySelect lopId={lopId} value={ngay} onChange={setNgay} className="h-7 rounded border border-slate-300 px-1.5 text-[12px]" />
-            <label className="flex items-center gap-1 text-[12px] text-slate-600"><input type="checkbox" checked={gt} onChange={(e) => setGt(e.target.checked)} />GT</label>
-            <button onClick={go} disabled={busy || !ngay || !gt} className="rounded-md bg-violet-600 px-3 py-1 text-[12px] font-medium text-white hover:bg-violet-500 disabled:opacity-40">{busy ? '…' : 'Gán'}</button>
+            {ngay ? (
+              <span className="rounded-full bg-violet-50 px-2.5 py-1 text-[12px] font-medium text-violet-700" title="Buổi TKB gần nhất chưa gán — bấm “đổi ngày” nếu muốn ngày khác">
+                Gán vào <b>{thuCuaNgay(ngay)} · {ddmmVN(ngay)}</b>
+              </span>
+            ) : (
+              <span className="text-[12px] text-slate-400">{doiNgay ? 'Chọn ngày…' : 'Lớp chưa có buổi trống trong lịch'}</span>
+            )}
+            <button onClick={() => setDoiNgay((v) => !v)} className="text-[11px] text-slate-400 underline decoration-dotted underline-offset-2 hover:text-indigo-600">đổi ngày</button>
+            {doiNgay && <BuoiNgaySelect lopId={lopId} value={ngay} onChange={pickNgay} className="h-7 rounded border border-slate-300 px-1.5 text-[12px]" />}
+            <button onClick={go} disabled={busy || !ngay} className="rounded-md bg-violet-600 px-3 py-1 text-[12px] font-medium text-white hover:bg-violet-500 disabled:opacity-40">{busy ? '…' : 'Gán'}</button>
           </div>
         )}
       </div>

@@ -769,7 +769,11 @@ function waveUri(path: string, c1: string, c2: string, c3: string): string {
 
 // Chrome trang (dải sóng header/footer + logo + text) — DÙNG CHUNG cho paged.js CSS (pseudo) và onclone của html2canvas (phần tử thật).
 export type PageChrome = { head: boolean; foot: boolean; headUri: string; footUri: string; headText: string; footText: string; footPre: boolean; logoUrl: string; chipUri: string }
-export function pageChrome(taiLieu: TaiLieuFull['taiLieu'], ch: CauHinh, opts?: { headerText?: string; footerText?: string }): PageChrome {
+// `taiLieu` chỉ dùng để dựng chữ header/footer mặc định ⇒ nhận kiểu TỐI THIỂU, không đòi cả row
+// `tai_lieu`. Nhờ vậy nhánh HÌNH (in từ node/chuỗi, KHÔNG có row tài liệu nào) tái dùng được y hệt
+// khung trang A4 + dải sóng + số trang, thay vì đẻ bản sao thứ hai của cùng bộ CSS.
+export type ChromeSrc = { ten: string; khoi: string }
+export function pageChrome(taiLieu: ChromeSrc, ch: CauHinh, opts?: { headerText?: string; footerText?: string }): PageChrome {
   return {
     head: ch.header !== 'none', foot: ch.footer !== 'none',
     // Dải MÀU cao hơn (phủ gần hết dải) → text canh giữa nằm TRỌN trên màu.
@@ -784,7 +788,7 @@ export function pageChrome(taiLieu: TaiLieuFull['taiLieu'], ch: CauHinh, opts?: 
   }
 }
 // Stylesheet cho paged.js: A4 + lề + dải sóng full-bleed (pseudo của pagebox) + số trang (@page margin box).
-export function buildPagedCss(taiLieu: TaiLieuFull['taiLieu'], ch: CauHinh, accent: string, opts?: { headerText?: string; footerText?: string }): string {
+export function buildPagedCss(taiLieu: ChromeSrc, ch: CauHinh, accent: string, opts?: { headerText?: string; footerText?: string }): string {
   const cr = pageChrome(taiLieu, ch, opts)
   const { head, foot, headUri, footUri, logoUrl, chipUri } = cr
   const headTxt = cssStr(cr.headText)
