@@ -280,11 +280,14 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
   const opsActive = opsList.filter((ba) => !opsXong(ba))
   const opsDone = opsList.filter(opsXong)
 
-  // GV/TG: việc trong TUẦN + filter loại. Gom/lọc theo NGÀY DEADLINE (không phải ngày buổi/ngày tạo) —
-  // Thùy 07-11: "việc xuất hiện ở ngày 2, hạn ngày 4 thì phải hiện ở hàng ngày 4" (rõ nhất với BTVN: hạn
-  // = 2h trước ca học TIẾP THEO, có thể cách xa ngày buổi). ET/chấm bài/đánh giá/MT hạn cùng ngày/hôm sau
-  // nên không đổi hành vi; chỉ BTVN thực sự dịch ngày.
-  const ngayViec = (t: MyTask) => (t.deadline != null ? ngayCuaTs(t.deadline) : t.ngay)
+  // GV/TG: việc trong TUẦN + filter loại. Gom/lọc theo NGÀY của việc:
+  //  • BTVN → theo NGÀY DEADLINE (Thùy 07-11: hạn = 2h trước ca học TIẾP THEO, cách xa ngày buổi → phải
+  //    hiện ở hàng ngày hạn, thường sang tuần sau — chấm ở buổi kế).
+  //  • Còn lại (chấm bài/đánh giá/ET/MT) → theo NGÀY BUỔI. ⭐ Bug 07-26 (Bảo Ngân, lớp học CHỦ NHẬT):
+  //    trước gom MỌI task theo deadline; ET hạn 12h TRƯA HÔM SAU, mà buổi CN là ngày CUỐI tuần BK (T2→CN)
+  //    → deadline rơi sang THỨ 2 = TUẦN SAU → task ET của buổi hôm nay biến mất khỏi "tuần này". Các task
+  //    này là việc NGAY của buổi nên phải nằm cùng tuần/ngày buổi; deadline vẫn hiển thị riêng ở badge.
+  const ngayViec = (t: MyTask) => (t.tab === 'btvn' && t.deadline != null ? ngayCuaTs(t.deadline) : t.ngay)
   const weekTasks = tasks.filter((t) => tuanCuaNgay(ngayViec(t)) === tuan && matchLoai(t.tab))
   const taskActive = weekTasks.filter((t) => !t.done)
   // Lịch sử "đã xong" — TẤT CẢ thời gian, gần→xa theo doneAt (20/lần). Độc lập filter tuần.

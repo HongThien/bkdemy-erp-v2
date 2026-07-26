@@ -792,35 +792,54 @@ export async function getMyTasks(): Promise<MyTask[]> {
       }
     }
   }
-  // ── BUỔI BÙ (loai='bu'): người phụ trách gắn TRÊN buổi (nguoi_day=GV→đánh giá · nguoi_day_tg=TA→ET). KHÔNG qua phan_cong_lop, KHÔNG Elo.
+  // ── BUỔI BÙ (loai='bu'): TA đứng lớp (nguoi_day_tg) LÀM CẢ chấm ET LẪN đánh giá. Buổi bù do TA chạy
+  // (người bổ trợ mặc định); màn BuoiBuDetail gộp CẢ ET lẫn đánh giá + 2 nút đóng vào 1 chỗ → ai mở buổi
+  // làm cả hai. GV KHÔNG nhận task ở buổi bù (Thùy chốt 07-26). KHÔNG qua phan_cong_lop, KHÔNG Elo.
+  // ⚠ BUG CŨ (đã sửa 07-26): đánh giá route nhầm sang nguoi_day (GV) nên TA — người thật sự đánh giá —
+  //   KHÔNG BAO GIỜ thấy task "Đánh giá buổi bù" ở Việc của tôi (chỉ thấy ET). Nay cả 2 về TA.
   // ⭐ Fix 07-16 (Thùy: "HS báo vắng nhưng Task ET không tự mất"): R-ET/R-DG pure-derive đúng nghĩa phải
   // là "CÓ HS co_mat" — trước đây chỉ dựa vào cờ et_dong_at/danh_gia_xong_at, mà nút "Xác nhận ET"/"Hoàn
   // thành đánh giá" ở BuoiBuDetail (BoTroScreen.tsx) chỉ hiện khi coMat.length>0 → buổi bù toàn vắng
   // (HS báo bù rồi lại không đến) thì KHÔNG CÁCH NÀO set được cờ, task kẹt vĩnh viễn. Sửa tận gốc: buổi
   // 0 HS có mặt = không có gì để chấm/đánh giá → KHÔNG sinh task luôn (N/A, không phải "chưa xong"). ──
   const myId = prof.nhanSu.id
+  // owner buổi bổ trợ = TA đứng lớp (nguoi_day_tg); nếu buổi CHƯA gán TA thì fallback GV (nguoi_day) để
+  // task không mồ côi. Lấy cả 2 slot rồi lọc theo owner ở client (PostgREST khó biểu diễn "coalesce = me").
   const { data: bu } = await supabase.from('buoi_hoc')
     .select('id, ngay, nguoi_day, nguoi_day_tg, et_dong_at, danh_gia_xong_at').eq('loai', 'bu').neq('trang_thai', 'huy')
     .or(`nguoi_day.eq.${myId},nguoi_day_tg.eq.${myId}`).limit(LIMIT)
-  const buIds = ((bu ?? []) as any[]).map((b) => b.id)
+  const buMine = ((bu ?? []) as any[]).filter((b) => (b.nguoi_day_tg ?? b.nguoi_day) === myId)
+  const buIds = buMine.map((b) => b.id)
   const coMatCountBu = new Map<string, number>()
+  const chuaDDBu = new Map<string, number>() // HS CHƯA điểm danh (diem_danh null) — KHÁC vắng
   if (buIds.length) {
     const { data: buRoster } = await supabase.from('buoi_hoc_hs').select('buoi_hoc_id, diem_danh').in('buoi_hoc_id', buIds).limit(LIMIT)
-    for (const r of (buRoster ?? []) as any[]) if (r.diem_danh === 'co_mat') coMatCountBu.set(r.buoi_hoc_id, (coMatCountBu.get(r.buoi_hoc_id) ?? 0) + 1)
+    for (const r of (buRoster ?? []) as any[]) {
+      if (r.diem_danh === 'co_mat') coMatCountBu.set(r.buoi_hoc_id, (coMatCountBu.get(r.buoi_hoc_id) ?? 0) + 1)
+      else if (r.diem_danh == null) chuaDDBu.set(r.buoi_hoc_id, (chuaDDBu.get(r.buoi_hoc_id) ?? 0) + 1)
+    }
   }
-  for (const b of (bu ?? []) as any[]) {
-    if ((coMatCountBu.get(b.id) ?? 0) === 0) continue // 0 HS có mặt → không có gì để chấm/đánh giá, bỏ qua buổi này
-    if (b.nguoi_day_tg === myId) out.push({ buoiId: b.id, lopId: '', lop: 'Buổi bù', ngay: b.ngay, vai: 'tg', tab: 'et', label: 'Chấm ET (bù)', done: !!b.et_dong_at, doneAt: b.et_dong_at, deadline: vnInstant(congNgay(b.ngay, 1), '12:00'), loai: 'bu' })
-    if (b.nguoi_day === myId) out.push({ buoiId: b.id, lopId: '', lop: 'Buổi bù', ngay: b.ngay, vai: 'gv', tab: 'danhgia', label: 'Đánh giá buổi bù', done: !!b.danh_gia_xong_at, doneAt: b.danh_gia_xong_at, deadline: vnInstant(b.ngay, '23:59'), loai: 'bu' })
+  for (const b of buMine) {
+    // ⭐ Bug Ánh Tuyết (07-26): guard cũ chỉ đếm co_mat nên buổi CHƯA ai điểm danh (diem_danh null) bị
+    // ẩn HẲN khỏi Việc của tôi → TA không có đường vào để điểm danh + chấm. Điểm danh buổi bù làm NGAY
+    // trong BuoiBuDetail (không có task 'diemdanh' riêng), nên task ET/đánh giá PHẢI hiện khi buổi còn
+    // HS chưa điểm danh. CHỈ bỏ qua khi điểm danh XONG mà 0 ai có mặt (toàn vắng — không có gì để chấm).
+    if ((coMatCountBu.get(b.id) ?? 0) === 0 && (chuaDDBu.get(b.id) ?? 0) === 0) continue
+    const vaiBu: 'gv' | 'tg' = b.nguoi_day_tg ? 'tg' : 'gv' // nhãn vai theo slot owner thật (fallback GV khi thiếu TA)
+    out.push({ buoiId: b.id, lopId: '', lop: 'Buổi bù', ngay: b.ngay, vai: vaiBu, tab: 'et', label: 'Chấm ET (bù)', done: !!b.et_dong_at, doneAt: b.et_dong_at, deadline: vnInstant(congNgay(b.ngay, 1), '12:00'), loai: 'bu' })
+    out.push({ buoiId: b.id, lopId: '', lop: 'Buổi bù', ngay: b.ngay, vai: vaiBu, tab: 'danhgia', label: 'Đánh giá buổi bù', done: !!b.danh_gia_xong_at, doneAt: b.danh_gia_xong_at, deadline: vnInstant(b.ngay, '23:59'), loai: 'bu' })
   }
-  // ── BUỔI ĐUỔI (loai='bo_tro_duoi'): GV nhận xét (nguoi_day) — bug 07-07: THIẾU HẲN nhánh này từ
-  // trước tới giờ, GV xếp đuổi xong KHÔNG BAO GIỜ thấy task "Đánh giá" ở "Việc của tôi". Đuổi KHÔNG
-  // có ET nên KHÔNG route cho TA (nguoi_day_tg không có phase riêng để đóng ở màn này).
+  // ── BUỔI ĐUỔI (loai='bo_tro_duoi'): TA đứng lớp (nguoi_day_tg) nhận xét + tick "dạng đã dạy" ở
+  // BuoiDuoiDetail. Buổi đuổi do TA chạy như buổi bù (Thùy chốt 07-26 — nhất quán với buổi bù); GV
+  // chốt/duyệt KẾ HOẠCH đợt ở màn Bổ trợ Đuổi, KHÔNG cầm task đánh giá per-buổi nữa. Đuổi KHÔNG có ET.
+  // ⚠ BUG CŨ (đã sửa 07-26): route sang nguoi_day (GV) — nay về nguoi_day_tg (TA) cho khớp người đứng lớp.
   const { data: duoi } = await supabase.from('buoi_hoc')
-    .select('id, ngay, nguoi_day, danh_gia_xong_at').eq('loai', 'bo_tro_duoi').neq('trang_thai', 'huy')
-    .eq('nguoi_day', myId).limit(LIMIT)
+    .select('id, ngay, nguoi_day, nguoi_day_tg, danh_gia_xong_at').eq('loai', 'bo_tro_duoi').neq('trang_thai', 'huy')
+    .or(`nguoi_day.eq.${myId},nguoi_day_tg.eq.${myId}`).limit(LIMIT)
   for (const b of (duoi ?? []) as any[]) {
-    out.push({ buoiId: b.id, lopId: '', lop: 'Buổi đuổi', ngay: b.ngay, vai: 'gv', tab: 'danhgia', label: 'Đánh giá buổi đuổi', done: !!b.danh_gia_xong_at, doneAt: b.danh_gia_xong_at, deadline: vnInstant(b.ngay, '23:59'), loai: 'bo_tro_duoi' })
+    if ((b.nguoi_day_tg ?? b.nguoi_day) !== myId) continue // owner = TA đứng lớp, fallback GV khi buổi chưa gán TA
+    const vaiDuoi: 'gv' | 'tg' = b.nguoi_day_tg ? 'tg' : 'gv'
+    out.push({ buoiId: b.id, lopId: '', lop: 'Buổi đuổi', ngay: b.ngay, vai: vaiDuoi, tab: 'danhgia', label: 'Đánh giá buổi đuổi', done: !!b.danh_gia_xong_at, doneAt: b.danh_gia_xong_at, deadline: vnInstant(b.ngay, '23:59'), loai: 'bo_tro_duoi' })
   }
   return out
 }

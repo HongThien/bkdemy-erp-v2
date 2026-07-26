@@ -3013,3 +3013,62 @@ CỐ Ý tạo. **Cần 2 bài BT:**
 4. ⚠ Thùy CHƯA chốt: ngưỡng quá hạn (2 buổi hay 4 tuần).
 
 **Ops đã chốt trước đó:** team học thuật DUYỆT ca → OPS XẾP LỊCH (=gắn day_buoi_id).
+
+---
+
+## 2026-07-26 — Fix task Đánh giá buổi bổ trợ không hiện trên tài khoản Trợ giảng
+
+**Lỗi (Thùy báo):** bổ trợ xong nhưng task "Đánh giá" không hiện ở "Việc của tôi" của TA.
+
+**Gốc rễ:** `getMyTasks` (`gami.ts`) route task buổi bù/đuổi SAI người — đánh giá gắn cho
+`nguoi_day` (GV), ET gắn cho `nguoi_day_tg` (TA). Nhưng buổi bổ trợ do TA đứng lớp (người bổ trợ
+mặc định) và màn BuoiBuDetail gộp CẢ ET lẫn đánh giá + 2 nút đóng vào 1 chỗ. Đo data thật: 101 buổi
+bù, 98 có GV==TA (bug bị che vì cùng người thấy cả 2), **3 buổi GV≠TA (TA=Nguyễn Công Hải)** — đây
+đúng ca lộ bug: TA chạy buổi nhưng đánh giá đẩy sang GV khác nên TA chỉ thấy ET.
+
+**Sửa (Thùy chốt 07-26):** owner buổi bổ trợ = TA đứng lớp (`nguoi_day_tg`); TA nhận CẢ ET lẫn đánh
+giá (bù) / đánh giá (đuổi). GV không cầm task per-buổi ở bổ trợ nữa (GV vẫn chốt/duyệt KẾ HOẠCH đợt
+đuổi ở màn riêng). **Fallback:** buổi chưa gán TA (`nguoi_day_tg` null) → owner về GV để task không
+mồ côi (data thật: 2 buổi đuổi TA=null). `vai` nhãn theo slot owner thật.
+
+**Còn quan sát (CHƯA sửa, chờ Thùy quyết scope):**
+- `listAllStaffTasks` (Dashboard "Chất lượng vận hành") CHỈ tính `loai='thuong'` → task bổ trợ
+  (bù/đuổi) KHÔNG BAO GIỜ vào dashboard đo hiệu suất. Gap có sẵn từ trước, độc lập bug này.
+- Cần kiểm: đánh giá per-dạng buổi bù (`buoi_danh_gia_dang`, lop_id null) có feed mastery đúng nhãn
+  MÔN không (bẫy #2 buổi bù mất nhãn môn — danhgia.ts đã né ở ET, chưa rà nhánh buoi_danh_gia_dang).
+
+### Bổ sung 07-26 — Bug THẬT của TA Ánh Tuyết (khác bug routing ở trên)
+
+Check ca cụ thể Phạm Thị Ánh Tuyết (NS019, TA 4A1/5A1/5A2): cả 4 buổi bổ trợ cô ấy vừa là
+nguoi_day vừa nguoi_day_tg → routing KHÔNG phải vấn đề của cô ấy (code cũ vẫn fire cả 2 nhánh).
+
+Gốc rễ thật: buổi bù 07-23 có 1 HS `diem_danh=null` (CHƯA điểm danh), co_mat=0. Guard 07-16
+(`if coMat===0 continue`) bỏ qua CẢ buổi → ẩn hẳn khỏi Việc của tôi, TA không có đường vào để điểm
+danh + chấm. Guard gộp nhầm "CHƯA điểm danh (null)" với "điểm danh xong, vắng hết (vang)".
+
+Sửa: đếm thêm `chuaDDBu` (diem_danh null); CHỈ bỏ qua khi `coMat===0 && chuaDD===0` (điểm danh xong,
+toàn vắng). Còn HS chưa điểm danh → vẫn sinh task. Mô phỏng logic mới trên data thật: buổi 07-23 nay
+hiện cả ET lẫn đánh giá cho cô ấy. (Nút đóng trong BuoiBuDetail vẫn gate coMat>0 → cô ấy điểm danh
+trước rồi mới đóng — nhất quán; ca toàn-vắng vẫn được ẩn đúng như fix 07-16.)
+
+### Audit toàn bộ TA (07-26) — bug guard điểm danh là DIỆN RỘNG
+
+Quét 158 buổi bù+đuổi: **48 buổi bù đang kẹt "chưa điểm danh"** (co_mat=0, vang=0, toàn HS diem_danh
+null) → guard cũ ẩn hẳn khỏi Việc-của-tôi. Trải **8 TA** (Phạm Quang Minh 10 · Nguyễn Công Hải 10 ·
+Trần Thị Thảo Nguyên 11 · Phạm Bảo Ngân 5 · Hoàng Thị Quỳnh Trang 4 · Tạ Quốc Cường 4 · Trần Hoàng
+Đạt 3 · Phạm Thị Thùy Trang 1) — KHÔNG riêng Ánh Tuyết. Fix guard (đếm chuaDD) mở lại hết 1 lượt.
+0 buổi mồ côi (fallback owner=coalesce(TA,GV) chạy đúng). Fix chỉ ở getMyStasks (1 chỗ, derive) → global.
+
+### Bug 07-26 (Bảo Ngân) — buổi CHỦ NHẬT không hiện ở "Việc của tôi" tuần hiện tại
+
+KHÁC hẳn bug bổ trợ ở trên — đây là buổi HỌC CHÍNH (loai='thuong'). Ca: Phạm Bảo Ngân (TA 5T1), buổi
+5T1 sáng CN 26/07 đã mở (ingame đóng, ET/BTVN chưa) nhưng không thấy trong Việc của tôi tuần này.
+
+Gốc rễ: `VietCuaToi` gom task vào tuần theo `ngayViec = deadline ?? ngay` (Thùy 07-11, vốn để BTVN
+hiện đúng ngày hạn). Tuần BK = T2→CN. Buổi CN = ngày CUỐI tuần; deadline ET = 12h TRƯA HÔM SAU = Thứ 2
+= TUẦN SAU → task ET của buổi hôm nay rơi sang Tuần 5, biến mất khỏi Tuần 4 (tuần hiện tại). Dính MỌI
+lớp học Chủ Nhật (comment cũ giả định "ET hạn hôm sau không đổi hành vi" — sai ở biên CN).
+
+Sửa (NhanSuHome.tsx `ngayViec`): BTVN giữ gom theo DEADLINE (chấm ở buổi kế, cố ý sang tuần sau); các
+task còn lại (chấm bài/đánh giá/ET/MT) gom theo NGÀY BUỔI → nằm cùng tuần/ngày buổi, deadline vẫn hiện
+ở badge. Kiểm chứng: ET buổi CN 26/07 nay vào Tuần 4 (= tuần hiện tại) thay vì Tuần 5. Fix 1 chỗ, global.
