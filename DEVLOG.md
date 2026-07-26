@@ -3072,3 +3072,26 @@ lớp học Chủ Nhật (comment cũ giả định "ET hạn hôm sau không đ
 Sửa (NhanSuHome.tsx `ngayViec`): BTVN giữ gom theo DEADLINE (chấm ở buổi kế, cố ý sang tuần sau); các
 task còn lại (chấm bài/đánh giá/ET/MT) gom theo NGÀY BUỔI → nằm cùng tuần/ngày buổi, deadline vẫn hiện
 ở badge. Kiểm chứng: ET buổi CN 26/07 nay vào Tuần 4 (= tuần hiện tại) thay vì Tuần 5. Fix 1 chỗ, global.
+
+## 2026-07-24 (tiếp 3) — Làm rõ AND cho tiền đề (Thùy chỉ ra lỗ)
+
+**Thùy:** có bài cần 2-3 tiền đề ở các vị trí khác nhau — KHÁC "2 cách làm". 2 cách = OR (bỏ 1 cách
+vẫn giải được cách kia); 2 tiền đề của MỘT cách = AND (bỏ 1 tiền đề là không giải được).
+
+**Kiểm tra model:** schema + derive ĐÃ đúng AND rồi — không phải bug logic:
+- `hinh_cach_tien_de` PK (cach_id, tien_de_id) → một cách nhiều tiền đề = AND. OR = nhiều `hinh_cach_giai`.
+- `tinhKhuc` (M9): thiếu **bất kỳ** tiền đề nào của node → báo "khúc hở" (đúng AND).
+- `baoDongTienDe`/`chuoiCuaBai` (M8): gom **tất cả** tiền đề vào chuỗi (đúng AND).
+- (Nhiều CÁCH giải OR đầy đủ vẫn là OUT theo spec §8 — v1 mỗi node 1 cách, nhưng cách đó cần bao
+  nhiêu tiền đề cùng lúc cũng được.)
+
+**Cái sót = UI/hiển thị mập mờ,** đọc chip rời tưởng "một trong số" (OR). Sửa cho rõ AND:
+- `FormBaiToan`: đoạn hướng dẫn thêm cảnh báo "đừng nhầm hai chuyện" (AND vs OR); nhãn ô đổi thành
+  "Tiền đề của cách này — CẦN CẢ (AND) · N tiền đề"; dòng tóm tắt vẽ dấu "+" giữa các tiền đề
+  ("Cách này cần CẢ: A + B — bỏ 1 là không giải được").
+- `SoDo` detail panel (M1): tiền đề của mỗi cách hiện "cần cả A + B" (dấu +), không còn chip rời.
+
+**Verify trên app thật** (dev riêng 5183 + login): mở form node — hiện đủ đoạn "CẦN CẢ (AND)… Còn nhiều
+CÁCH khác nhau (OR)… làm sau"; tick 2 tiền đề → nhãn "2 TIỀN ĐỀ" + tóm tắt "Cách này cần CẢ: BT.015 +
+BT.016 — bỏ 1 là không giải được". Data verify tạo tạm qua DB, xoá sạch sau (mọi bảng hinh_* = 0).
+`tsc` + `vite build` sạch. (Không sửa `spec-kho-hinh-v3.md` — spec là của Thùy/Notion; ghi ở đây thôi.)

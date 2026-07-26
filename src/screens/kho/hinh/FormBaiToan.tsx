@@ -123,7 +123,11 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
 
       <div className="my-4 border-t border-slate-200 pt-3">
         <div className="mb-2 text-[12px] font-semibold uppercase tracking-wider text-slate-600">Cách giải mặc định</div>
-        <p className="mb-2.5 text-[11.5px] text-slate-500">Tiền đề gắn ở <b>cách giải</b>, không gắn ở bài toán — nhiều cách giải = nhiều bộ tiền đề. v1 điền 1 cách (ngắn nhất).</p>
+        <p className="mb-2.5 text-[11.5px] leading-relaxed text-slate-500">
+          Tiền đề gắn ở <b>cách giải</b>, không gắn ở bài toán. v1 điền 1 cách (ngắn nhất).<br />
+          ⚠ <b>Đừng nhầm hai chuyện:</b> một cách có thể cần <b>nhiều tiền đề cùng lúc — CẦN CẢ (AND)</b>, bỏ 1 là không giải được →
+          tick hết vào đây. Còn <b>nhiều CÁCH khác nhau (OR)</b> — bỏ cách này vẫn còn cách kia — là chuyện khác, làm sau (spec §8).
+        </p>
         <Field label="Dạng (loại câu hỏi › cách xử lý)">
           <select className={inp} value={dangId} onChange={(e) => setDangId(e.target.value)}>
             <option value="">— chưa gắn dạng —</option>
@@ -133,7 +137,7 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
         <Field label="Lời giải"><textarea className={`${inp} h-24`} value={loiGiai} onChange={(e) => setLoiGiai(e.target.value)} /></Field>
         <Field label="Ảnh lời giải"><AnhInput value={anhGiai} onChange={setAnhGiai} cap="Hình lời giải" /></Field>
 
-        <Field label="Tiền đề — đi XUYÊN mô hình tự do">
+        <Field label={`Tiền đề của cách này — CẦN CẢ (AND)${tienDe.length ? ` · ${tienDe.length} tiền đề` : ''} · đi xuyên mô hình tự do`}>
           <input className={`${inp} mb-1.5`} value={tim} onChange={(e) => setTim(e.target.value)} placeholder="lọc theo phát biểu / mã…" />
           <div className="max-h-44 space-y-0.5 overflow-y-auto rounded-lg border border-slate-200 p-2">
             {ungVien.slice(0, 60).map((b) => (
@@ -164,11 +168,17 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
         </Field>
         {!!tienDe.length && (
           <div className="flex flex-wrap items-center gap-1.5 text-[12px] text-slate-500">
-            <span>Đang chọn:</span>
-            {tienDe.map((id) => {
+            <span>{tienDe.length > 1 ? 'Cách này cần CẢ:' : 'Cần:'}</span>
+            {tienDe.map((id, i) => {
               const b = L.baiToan.find((x) => x.id === id)
-              return b ? <Tag key={id} ton="bt">◈ {b.ma} · c{b.cap}</Tag> : null
+              return b ? (
+                <span key={id} className="flex items-center gap-1.5">
+                  {i > 0 && <span className="font-bold text-slate-400">+</span>}
+                  <Tag ton="bt">◈ {b.ma} · c{b.cap}</Tag>
+                </span>
+              ) : null
             })}
+            {tienDe.length > 1 && <span className="text-[11px] text-amber-700">— bỏ 1 là không giải được</span>}
           </div>
         )}
       </div>

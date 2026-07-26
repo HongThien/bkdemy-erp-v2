@@ -224,10 +224,17 @@ function DetailBaiToan({ L, bt, onSua, onChon }: { L: Luoi; bt: BaiToan; onSua: 
             <div className="mb-1 flex items-center gap-1.5 text-[12px] font-medium text-slate-600">
               {c.ten ?? 'cách giải'} {c.la_mac_dinh && <span className="rounded bg-slate-100 px-1.5 text-[10px] text-slate-500">mặc định</span>}
             </div>
-            <div className="flex flex-wrap gap-1">
-              {td.map((id) => {
+            {/* Tiền đề của MỘT cách = AND: cần CẢ. Vẽ dấu "+" giữa các tiền đề để không đọc nhầm là "một trong số". */}
+            <div className="flex flex-wrap items-center gap-1">
+              {td.length > 1 && <span className="mr-0.5 text-[10.5px] font-semibold text-slate-500">cần cả</span>}
+              {td.map((id, i) => {
                 const b = L.baiToan.find((x) => x.id === id)
-                return b ? <Tag key={id} ton="bt" onClick={() => onChon(b.id)}>◈ {b.ma} · c{b.cap}</Tag> : null
+                return b ? (
+                  <span key={id} className="flex items-center gap-1">
+                    {i > 0 && <span className="font-bold text-slate-400">+</span>}
+                    <Tag ton="bt" onClick={() => onChon(b.id)}>◈ {b.ma} · c{b.cap}</Tag>
+                  </span>
+                ) : null
               })}
               {bd.map((id) => {
                 const b = L.boDe.find((x) => x.id === id)
