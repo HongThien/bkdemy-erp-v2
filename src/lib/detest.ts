@@ -4,27 +4,29 @@
 // Thùy chốt 07-19: "ở trong task trả bài đó" — KHÔNG còn là bước riêng gate giữa Chấm và Trả bài).
 // ⭐ Đề = CHỌN THẲNG 1 tài liệu trong Kho (mig 0105, bỏ hẳn de_test — Thùy 07-19). ca_test.tai_lieu_id
 // trỏ THẲNG tai_lieu (không qua lớp trung gian). KHÔNG feed mastery (§A cố ý).
-// ⭐ 07-27 (Thùy): thêm "Quản lý đề test" = GHIM tài liệu có sẵn làm đề (KHÔNG dựng lại de_test CRUD),
-// nguồn mở rộng MT → MT + Đề thi (mọi loại master TRỪ ET/GT/BTVN). Xem section GHIM cuối file.
+// ⭐ 07-27 (Thùy): thêm "Quản lý đề test đầu vào" = SINH tài liệu mới (copy nội dung) từ nguồn MT/Đề thi
+// (KHÔNG dựng lại de_test CRUD, cũng KHÔNG "ghim/trỏ"). Nguồn = MT + Đề thi (mọi master TRỪ ET/GT/BTVN).
+// Mỗi khối×môn 1 đề đang dùng (bản sinh mới nhất), đề cũ giữ làm lịch sử. Xem section ĐỀ TEST ĐẦU VÀO.
 import { supabase } from './supabase'
-import { khoCuaMon, layCauTheoThuTu, type TaiLieu } from './tailieu'
+import { khoCuaMon, layCauTheoThuTu, listPhan, copyPhanInto, type TaiLieu } from './tailieu'
 import { updateUngVien, toggleViec } from './tuyensinh'
 import type { MenhDe } from './kho/api'
 
 const LIMIT = 10000
 
 // ============================================================================
-// QUẢN LÝ ĐỀ TEST (ghim) — Thùy chốt 07-27. Đề test đầu vào = tài liệu CÓ SẴN trong Kho được GHIM làm
-// đề; nguồn = MT + Đề thi (mọi loại master TRỪ ET/GT/BTVN). KHÔNG dựng lại de_test CRUD (đã bỏ mig 0105).
-// Phạm vi khối×môn suy từ chính tai_lieu.khoi/mon (đề gắn khối+môn). Ghim = 1 dòng de_test_ghim (có
-// dòng = đang ghim — anti-NULL §1.5). Điểm danh test chỉ hiện đề ĐÃ GHIM khớp khối×môn; chưa ghim đề
-// nào cho khối×môn đó thì fallback toàn bộ MT+Đề thi khớp (không chặn Ops).
+// ĐỀ TEST ĐẦU VÀO (sinh từ nguồn) — Thùy chốt 07-27. "Đề test đầu vào" là 1 TÀI LIỆU MỚI được SINH ra
+// (copy nội dung) từ 1 nguồn MT/Đề thi: học thuật chọn khối×môn + chọn nguồn → hệ tạo tai_lieu
+// loai='de_test_dau_vao' (ten "Đề test đầu vào · Khối 8 · <tên nguồn>"), copy các phần 'custom' + câu.
+// nguon_id trỏ nguồn gốc (lưu vết). Mỗi khối×môn có 1 đề ĐANG DÙNG = bản sinh MỚI NHẤT; sinh đề mới →
+// thành đề hiện tại, đề cũ GIỮ làm lịch sử (không xoá). Điểm danh test gán đề = snapshot câu từ chính
+// tài liệu de_test_dau_vao này vào ca_test_cau (mirror MT/Đề thi — layCauTheoThuTu đã generic).
 // ============================================================================
-export const LOAI_DE_TEST = ['mt', 'de_thi'] as const
+export const LOAI_DE_TEST = ['mt', 'de_thi'] as const // các loại nguồn dùng được để sinh đề test đầu vào
 export const TEN_LOAI_DE: Record<string, string> = { mt: 'MT', de_thi: 'Đề thi' }
 
-// Mọi tài liệu DÙNG ĐƯỢC làm đề test (MT + Đề thi master, lop_id null). Lọc mon/khoi nếu truyền.
-export async function listTaiLieuLamDe(mon?: string, khoi?: string): Promise<TaiLieu[]> {
+// NGUỒN dùng được để sinh đề (MT + Đề thi master, lop_id null). Lọc mon/khoi nếu truyền.
+export async function listNguonDe(mon?: string, khoi?: string): Promise<TaiLieu[]> {
   let q = supabase.from('tai_lieu').select('*').in('loai', LOAI_DE_TEST as unknown as string[])
     .is('lop_id', null).order('created_at', { ascending: false }).limit(LIMIT)
   if (mon) q = q.eq('mon', mon)
@@ -33,23 +35,54 @@ export async function listTaiLieuLamDe(mon?: string, khoi?: string): Promise<Tai
   if (error) throw error
   return (data ?? []) as TaiLieu[]
 }
-// Tập id tài liệu ĐANG GHIM (có dòng = ghim).
-export async function listGhimDe(): Promise<Set<string>> {
-  const { data, error } = await supabase.from('de_test_ghim').select('tai_lieu_id').limit(LIMIT)
-  if (error) throw error
-  return new Set(((data ?? []) as { tai_lieu_id: string }[]).map((r) => r.tai_lieu_id))
+
+// 1 đề test đầu vào đã sinh (kèm nguồn gốc + cờ đang-dùng).
+export type DeTestRow = {
+  id: string; ten: string; khoi: string; mon: string
+  nguonId: string | null; nguonTen: string | null; nguonLoai: string | null
+  createdAt: string; laHienTai: boolean
 }
-// Ghim / bỏ ghim 1 tài liệu làm đề test đầu vào (idempotent).
-export async function ghimDe(taiLieuId: string, on: boolean): Promise<void> {
-  if (on) {
-    const { data: { user } } = await supabase.auth.getUser()
-    const { error } = await supabase.from('de_test_ghim')
-      .upsert({ tai_lieu_id: taiLieuId, ghim_boi: user?.id ?? null }, { onConflict: 'tai_lieu_id', ignoreDuplicates: true })
-    if (error) throw error
-  } else {
-    const { error } = await supabase.from('de_test_ghim').delete().eq('tai_lieu_id', taiLieuId)
-    if (error) throw error
+// Danh sách đề test đầu vào ĐÃ SINH (desc thời gian). laHienTai = bản mới nhất của mỗi (khoi,mon) = đang
+// dùng; các bản còn lại = lịch sử. Lọc mon nếu truyền.
+export async function listDeTestDauVao(mon?: string): Promise<DeTestRow[]> {
+  let q = supabase.from('tai_lieu').select('id, ten, khoi, mon, nguon_id, created_at')
+    .eq('loai', 'de_test_dau_vao').order('created_at', { ascending: false }).limit(LIMIT)
+  if (mon) q = q.eq('mon', mon)
+  const { data, error } = await q
+  if (error) throw error
+  const rows = (data ?? []) as { id: string; ten: string; khoi: string; mon: string; nguon_id: string | null; created_at: string }[]
+  const nguonIds = [...new Set(rows.map((r) => r.nguon_id).filter(Boolean) as string[])]
+  const nguonMap = new Map<string, { ten: string; loai: string }>()
+  if (nguonIds.length) {
+    const { data: ns } = await supabase.from('tai_lieu').select('id, ten, loai').in('id', nguonIds).limit(LIMIT)
+    for (const n of (ns ?? []) as { id: string; ten: string; loai: string }[]) nguonMap.set(n.id, { ten: n.ten, loai: n.loai })
   }
+  const seen = new Set<string>() // (khoi|mon) đầu tiên gặp (mới nhất) = đang dùng
+  return rows.map((r) => {
+    const key = `${r.khoi}|${r.mon}`
+    const laHienTai = !seen.has(key); if (laHienTai) seen.add(key)
+    const n = r.nguon_id ? nguonMap.get(r.nguon_id) : null
+    return { id: r.id, ten: r.ten, khoi: r.khoi, mon: r.mon, nguonId: r.nguon_id, nguonTen: n?.ten ?? null, nguonLoai: n?.loai ?? null, createdAt: r.created_at, laHienTai }
+  })
+}
+
+// SINH 1 đề test đầu vào cho khối×môn từ nguồn (MT/Đề thi): tạo tai_lieu loai='de_test_dau_vao' + copy
+// các phần 'custom' (nội dung câu) từ nguồn. Bản mới nhất tự thành "đang dùng"; KHÔNG đụng bản cũ (lịch sử).
+export async function sinhDeTestDauVao(nguonId: string, khoi: string, mon: string): Promise<TaiLieu> {
+  const { data: { user } } = await supabase.auth.getUser()
+  const { data: src, error: eS } = await supabase.from('tai_lieu').select('ten, theme, cau_hinh').eq('id', nguonId).single()
+  if (eS) throw eS
+  const s = src as { ten: string; theme: string | null; cau_hinh: unknown }
+  const { data: nw, error } = await supabase.from('tai_lieu').insert({
+    loai: 'de_test_dau_vao', ten: `Đề test đầu vào · Khối ${khoi} · ${s.ten}`,
+    khoi, mon, theme: s.theme ?? 'bkdemy', cau_hinh: s.cau_hinh ?? {}, nguon_id: nguonId, created_by: user?.id ?? null,
+  }).select().single()
+  if (error) throw error
+  const doc = nw as TaiLieu
+  const phans = (await listPhan(nguonId)).filter((p) => p.loai_phan === 'custom')
+  let t = 0
+  for (const p of phans) await copyPhanInto(doc.id, p, t++)
+  return doc
 }
 
 // ============================================================================

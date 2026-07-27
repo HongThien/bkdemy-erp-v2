@@ -3177,3 +3177,54 @@ giả thiết "△ABC nhọn, 3 đường cao..." mượn từ mô hình, câu h
 (node cấp cao nhất), cây tiền đề hiện "◇ MH.012 · Trực tâm › node"; card MH.013 con hiện giả thiết
 COMPOSED "...; EF cắt BC tại M"; form sửa con hiện kế thừa bố read-only + ô thêm chỉ delta + xem trước full;
 panel Hệ sinh thái hiện mô hình trung tâm + BT.017/BT.018 theo cấp. `tsc` + `vite build` sạch.
+
+## 2026-07-24 (tiếp 6) — Card mô hình: mã phân cấp + field-card có màu, canh lề gọn
+
+**Thùy:** card chữ đậm/nhạt trôi nổi, lệch, xấu → mỗi trường bọc trong card con bo tròn có màu khác nền;
+mã mô hình phân cấp 1 / 1.1 / 1.1.1 (dễ quản lý nhiều tầng).
+
+**Mã phân cấp (derive, hinh.ts `maPhanCapMap`):** gốc trong khối đánh 1,2,3…; con = mã cha + '.' + thứ tự
+(1.1, 1.1.1). ⚠ KHÁC `ma` trơ (MH.014): mã phân cấp là mã HIỂN THỊ suy từ cây, tự tính lại khi đổi cây —
+giữ luật spec §2.1 "mã trơ" (id ổn định bên dưới vẫn là `ma`, immune đổi cha/DAG). `ma` giữ làm phụ đề mờ.
+
+**UI (hinhUi):** `MaPill` (pill đặc màu teal, chữ trắng — đọc rõ tầng) · `FieldCard` (card con nền màu nhạt,
+bo tròn, có nhãn — thay chữ trôi nổi) · `Chip` (số liệu nền xám bo tròn). Áp vào: M0 card · graph View mô
+hình card · ecosystem panel · select mô hình trong form bài toán.
+
+**Verify trên app thật** (data test _vt2 gốc→con→cháu, xoá sau): M0 card = pill "1"/"2" + tên + FieldCard
+giả thiết + chips, canh lề gọn; graph hiện đúng **2 → 2.1 → 2.1.1**; ecosystem panel pill + FieldCard.
+`tsc` + `vite build` sạch. (MH.008/010/011 là data Thùy đang dựng — giữ nguyên.)
+
+## 2026-07-24 (tiếp 7) — Fix công thức KaTeX to hơn chữ thường 21%
+
+**Thùy:** chữ hoa / code LaTeX trông to hơn chữ thường. **Nguyên nhân:** `main.tsx` import
+`katex.min.css` SAU `index.css`; katex.css đặt `.katex{font-size:1.21em}`, cùng độ ưu tiên với override
+`1.0em` của index.css nên cái sau (katex) thắng → mọi công thức inline (kể cả $ABC$) to hơn 21%.
+**Fix:** `index.css` `.katex{font-size:1em !important}` (giống PrintView đã dùng !important).
+**Verify:** inject `<span class=katex>` trong container 16px → computed 16px (trước: 19.36px). `build` sạch.
+
+### 2026-07-27 (sửa cùng ngày) — Đề test đầu vào: đổi model GHIM → SINH (copy)
+
+Thùy: model "ghim" (mục trên) HIỂU SAI ý. Đúng: "Đề test đầu vào" là 1 TÀI LIỆU MỚI được SINH ra (copy
+nội dung) từ nguồn MT/Đề thi — chọn khối×môn + chọn nguồn → hệ tạo `tai_lieu loai='de_test_dau_vao'`
+(ten "Đề test đầu vào · Khối X · <tên nguồn>"), copy các phần 'custom' + câu. Mỗi khối×môn có 1 đề ĐANG
+DÙNG = bản sinh mới nhất; sinh đề mới → thành đề hiện tại, đề cũ GIỮ lịch sử (điểm 3 của Thùy). => lưu
+được cả lịch sử đề test đầu vào.
+
+**Đổi:**
+- KHÔNG cần bảng mới (tai_lieu.loai không có CHECK — verify pg_constraint; nguon_id sẵn có). "Đang dùng"
+  = derive bản mới nhất per (khoi,mon), không cột cờ.
+- `detest.ts`: bỏ listGhimDe/ghimDe; thêm `listNguonDe`, `listDeTestDauVao`→DeTestRow[] (laHienTai=mới
+  nhất/khối×môn), `sinhDeTestDauVao(nguonId,khoi,mon)` (insert doc + copyPhanInto các phan 'custom').
+- `QuanLyDeTestScreen` viết lại: list đề ĐANG DÙNG theo khối×môn + Lịch sử collapse + modal "Tạo đề"
+  (chọn khối/môn → dropdown nguồn MT/Đề thi khớp → Sinh).
+- `DiemDanhTestScreen`: đề = `listDeTestDauVao()` khớp khối×môn (đang dùng đứng đầu, chọn được bản lịch
+  sử); chưa có đề → báo "nhờ học thuật tạo ở tab Đề test" (KHÔNG fallback MT thô).
+
+**Bảng de_test_ghim (mig 202607271322) giờ THỪA** (0 dòng, code không còn tham chiếu). CHƯA drop — chờ
+Thùy gật (Luật xoá). Bỏ file scaffold migration drop (chưa áp, chưa commit).
+
+**Verify app thật** (dev 5183): tab "Đề test" → Tạo (khối 9·Toán, nguồn MT Mã 2) → card "Đang dùng",
+DB có doc `de_test_dau_vao` copy đúng 3 phần + 18 câu (= 18 câu custom của nguồn). Sinh tiếp Mã 1 → Mã 1
+thành "Đang dùng", Mã 2 xuống "Lịch sử (1)". `tsc` sạch, không lỗi console. 2 đề verify đã xoá (cascade),
+2 MT master giữ nguyên.

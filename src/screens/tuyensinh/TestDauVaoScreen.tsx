@@ -25,7 +25,7 @@ export default function TestDauVaoScreen() {
         <div className="mx-auto max-w-[1500px]">
           <div className="mb-4">
             <h2 className="text-[22px] font-semibold text-slate-800">Test đầu vào</h2>
-            <p className="text-[13px] text-slate-500">Đề test (ghim MT · Đề thi theo khối×môn) → Điểm danh (chọn đề đã ghim) → Chấm Đ/C/S ∥ Scan bài đã chấm (Ops, việc riêng ở "Việc của tôi") → Trả bài (nhận xét + lớp đề xuất + phiếu)</p>
+            <p className="text-[13px] text-slate-500">Đề test (sinh từ MT · Đề thi theo khối×môn) → Điểm danh (gán đề đang dùng) → Chấm Đ/C/S ∥ Scan bài đã chấm (Ops, việc riêng ở "Việc của tôi") → Trả bài (nhận xét + lớp đề xuất + phiếu)</p>
           </div>
 
           <div className="mb-4 flex w-fit flex-wrap gap-1.5 rounded-2xl border border-slate-200 bg-white p-1.5 shadow-sm">
