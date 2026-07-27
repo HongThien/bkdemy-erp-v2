@@ -34,6 +34,31 @@ export const Ma = ({ children }: { children: ReactNode }) => (
   <span className="font-mono text-[10px] text-slate-400">{children}</span>
 )
 
+/** Pill mã PHÂN CẤP (1 / 1.1 / 1.1.1) — đặc màu, chữ trắng, đọc rõ tầng. `ma` trơ để làm phụ đề mờ. */
+export function MaPill({ code, ton = 'mh', size = 'md' }: { code: string; ton?: 'mh' | 'bt'; size?: 'sm' | 'md' }) {
+  const bg = ton === 'mh' ? 'bg-teal-600' : 'bg-blue-600'
+  const s = size === 'sm' ? 'px-1.5 py-0.5 text-[10.5px]' : 'px-2 py-0.5 text-[12px]'
+  return <span className={`inline-flex items-center rounded-md font-bold text-white ${bg} ${s}`}>{code}</span>
+}
+
+/** Chip số liệu nhỏ — nền xám nhạt bo tròn, thay mấy con số "đậm/nhạt" trôi nổi. */
+export const Chip = ({ children }: { children: ReactNode }) => (
+  <span className="inline-flex items-center rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-600">{children}</span>
+)
+
+/** Card con của MỘT trường thông tin — nền màu nhạt (khác nền trắng của card cha), bo tròn, có nhãn.
+ *  Thay kiểu "chữ đậm/nhạt trôi nổi" bằng khối gọn, canh lề nhất quán. */
+export function FieldCard({ label, children, ton = 'mh', className = '' }: { label?: string; children: ReactNode; ton?: 'mh' | 'bt' | 'dg' | 'slate'; className?: string }) {
+  const tone = ton === 'mh' ? 'bg-teal-50 text-slate-700' : ton === 'bt' ? 'bg-blue-50 text-slate-700' : ton === 'dg' ? 'bg-violet-50 text-slate-700' : 'bg-slate-50 text-slate-700'
+  const lblc = ton === 'mh' ? 'text-teal-700' : ton === 'bt' ? 'text-blue-700' : ton === 'dg' ? 'text-violet-700' : 'text-slate-500'
+  return (
+    <div className={`rounded-lg px-2.5 py-1.5 ${tone} ${className}`}>
+      {label && <div className={`mb-0.5 text-[9.5px] font-semibold uppercase tracking-wide ${lblc}`}>{label}</div>}
+      <div className="text-[12.5px] leading-relaxed">{children}</div>
+    </div>
+  )
+}
+
 export function Panel({ label, children, className = '' }: { label?: string; children: ReactNode; className?: string }) {
   return (
     <div className={`rounded-xl border border-slate-200 bg-white p-3.5 ${className}`}>

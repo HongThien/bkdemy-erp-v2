@@ -6,13 +6,15 @@ import { useState } from 'react'
 import * as api from '../../../lib/kho/api'
 import type { Luoi, MoHinh } from '../../../lib/kho/hinh'
 import { MathText, Shell, Field, Actions, inp } from '../ui'
-import { AnhInput, Btn, Empty, Fig, Ma, Note, OcrButton, inpCls, tron } from './hinhUi'
+import { AnhInput, Btn, Chip, Empty, Fig, FieldCard, Ma, MaPill, Note, OcrButton, inpCls, tron } from './hinhUi'
+import { useMemo } from 'react'
 import type { Nhay } from './KhoHinhScreen'
 
 export default function Ho({ L, khoi, di, reload }: { L: Luoi; khoi: string; di: (n: Nhay) => void; reload: () => Promise<void> }) {
   const [form, setForm] = useState<{ sua?: MoHinh } | null>(null)
   const [loi, setLoi] = useState<string | null>(null)
   const goc = L.moHinh.filter((m) => m.la_goc_ho)
+  const maCap = useMemo(() => api.maPhanCapMap(L), [L])
 
   const xoa = async (m: MoHinh) => {
     if (!confirm(`Xoá họ "${tron(m.ten)}" (${m.ma})?`)) return
@@ -36,7 +38,7 @@ export default function Ho({ L, khoi, di, reload }: { L: Luoi; khoi: string; di:
         : (
           <div className="grid gap-4 [grid-template-columns:repeat(auto-fill,minmax(360px,1fr))]">
             {goc.map((m) => (
-              <Card key={m.id} L={L} m={m} onOpen={() => di({ man: 'sodo', hoId: m.id })}
+              <Card key={m.id} L={L} m={m} maCap={maCap.get(m.id) ?? '?'} onOpen={() => di({ man: 'sodo', hoId: m.id })}
                 onEdit={() => setForm({ sua: m })} onDelete={() => xoa(m)} />
             ))}
           </div>
@@ -52,7 +54,7 @@ export default function Ho({ L, khoi, di, reload }: { L: Luoi; khoi: string; di:
   )
 }
 
-function Card({ L, m, onOpen, onEdit, onDelete }: { L: Luoi; m: MoHinh; onOpen: () => void; onEdit: () => void; onDelete: () => void }) {
+function Card({ L, m, maCap, onOpen, onEdit, onDelete }: { L: Luoi; m: MoHinh; maCap: string; onOpen: () => void; onEdit: () => void; onDelete: () => void }) {
   const tk = api.thongKeHo(L, m.id)
   // Không dùng <button> bọc ngoài (nút-trong-nút không hợp lệ) — div click mở sơ đồ, hai nút góc
   // nổi khi hover, stopPropagation để không mở nhầm.
@@ -65,16 +67,18 @@ function Card({ L, m, onOpen, onEdit, onDelete }: { L: Luoi; m: MoHinh; onOpen: 
         <button onClick={(e) => { e.stopPropagation(); onDelete() }} title="Xoá họ"
           className="flex h-7 w-7 items-center justify-center rounded-lg border border-rose-300 bg-white/90 text-rose-600 shadow-sm hover:bg-rose-50">🗑</button>
       </div>
-      <Fig src={api.anhCauHinhCua(L, m.id)} h="h-44" />
-      <div className="p-3.5">
-        <div className="flex items-center gap-2"><Ma>{m.ma}</Ma><span className="text-[13px] font-semibold text-slate-800"><MathText>{m.ten}</MathText></span></div>
-        <div className="mb-2.5 mt-1.5 rounded-md bg-teal-50/70 px-2.5 py-2 text-[13px] leading-relaxed text-slate-700">
-          <b className="text-teal-700">Giả thiết:</b> <MathText>{api.giaThietDayDu(L, m.id)}</MathText>
+      <Fig src={api.anhCauHinhCua(L, m.id)} h="h-40" />
+      <div className="space-y-2 p-3.5">
+        <div className="flex items-center gap-2">
+          <MaPill code={maCap} />
+          <span className="min-w-0 flex-1 truncate text-[14px] font-semibold text-slate-800"><MathText>{m.ten}</MathText></span>
+          <Ma>{m.ma}</Ma>
         </div>
-        <div className="flex flex-wrap gap-3 text-[11.5px] text-slate-400">
-          <span><b className="text-slate-700">{tk.soMoHinhCon}</b> mô hình con</span>
-          <span><b className="text-slate-700">{tk.soBaiToan}</b> bài toán</span>
-          {tk.capTu != null && <span>cấp <b className="text-slate-700">{tk.capTu === tk.capDen ? tk.capTu : `${tk.capTu}–${tk.capDen}`}</b></span>}
+        <FieldCard label="Giả thiết"><MathText>{api.giaThietDayDu(L, m.id)}</MathText></FieldCard>
+        <div className="flex flex-wrap gap-1.5">
+          <Chip>{tk.soMoHinhCon} mô hình con</Chip>
+          <Chip>{tk.soBaiToan} bài toán</Chip>
+          {tk.capTu != null && <Chip>cấp {tk.capTu === tk.capDen ? tk.capTu : `${tk.capTu}–${tk.capDen}`}</Chip>}
         </div>
       </div>
     </div>

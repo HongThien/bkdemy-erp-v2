@@ -3,11 +3,16 @@
 //
 // Tra ngược = giá trị chính của hai màn này: chọn 1 dạng/bổ đề → thấy các bài toán nhỏ
 // dùng nó, kèm tag mô hình → một dạng trải nhiều họ.
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import * as api from '../../../lib/kho/api'
 import type { Luoi } from '../../../lib/kho/hinh'
 import { MathText, Shell, Field, Actions, inp } from '../ui'
 import { Btn, Cap, Empty, Ma, Panel, Sol, Tag, inpCls } from './hinhUi'
+import { LyThuyetModal } from '../BanDo'
+
+// Lý thuyết đã có hay chưa → chấm tròn nhỏ trước tên dạng (như % ở Đại, nhưng gọn).
+type LtMap = Record<string, { noi_dung: string; file_url: string | null }>
+const coLt = (m: LtMap, id: string) => !!(m[id]?.noi_dung?.trim() || m[id]?.file_url)
 
 export default function Catalog({ L, loai, reload }: { L: Luoi; loai: 'dang' | 'bode'; reload: () => Promise<void> }) {
   return loai === 'dang' ? <MDang L={L} reload={reload} /> : <MBoDe L={L} reload={reload} />
@@ -18,12 +23,29 @@ function MDang({ L, reload }: { L: Luoi; reload: () => Promise<void> }) {
   const [chon, setChon] = useState<string | null>(null)
   const [q, setQ] = useState('')
   const [form, setForm] = useState<{ id?: string; cap: 'loai_ch' | 'dang'; cha?: string | null } | null>(null)
+  const [ltMap, setLtMap] = useState<LtMap>({})
+  const [ltModal, setLtModal] = useState<{ id: string; ten: string } | null>(null)
+
+  const napLt = () => api.hinhDangLyThuyet.list().then((m) => setLtMap(m as LtMap)).catch(() => { /* */ })
+  useEffect(() => { napLt() }, [])
 
   const theo = useMemo(() => api.baiToanTheoDang(L), [L])
   const rollup = useMemo(() => api.demTheoDangRollup(L), [L])
   const loaiCh = L.dang.filter((d) => d.cap === 'loai_ch')
   const laMatch = (ten: string) => !q.trim() || ten.toLowerCase().includes(q.toLowerCase())
   const d = chon ? L.dang.find((x) => x.id === chon) : null
+  // Terminal dạng = lá: cách xử lý, hoặc loại câu hỏi CHƯA tách con (chính nó là dạng). Lý thuyết gắn ở đây.
+  const laTerminal = (id: string) => !L.dang.some((x) => x.cha_id === id)
+
+  const RowDang = ({ id, ten, ton }: { id: string; ten: string; ton: 'dg' | 'loai' }) => (
+    <button onClick={() => setChon(id)}
+      className={`flex w-full items-center gap-2 rounded-lg px-2 py-1.5 text-left transition ${chon === id ? 'bg-violet-50' : 'hover:bg-slate-50'}`}>
+      <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${coLt(ltMap, id) ? 'bg-emerald-500' : 'bg-slate-200'}`} title={coLt(ltMap, id) ? 'đã có lý thuyết' : 'chưa có lý thuyết'} />
+      {ton === 'dg' ? <Tag ton="dg">… {ten}</Tag> : <span className="text-[12.5px] font-medium text-slate-700">{ten}</span>}
+      <span className="flex-1" />
+      <Ma>{theo.get(id)?.length ?? 0} bài toán</Ma>
+    </button>
+  )
 
   return (
     <>
@@ -32,7 +54,7 @@ function MDang({ L, reload }: { L: Luoi; reload: () => Promise<void> }) {
         <Btn kind="pri" onClick={() => setForm({ cap: 'loai_ch' })}>＋ Loại câu hỏi</Btn>
       </div>
       <p className="mb-4 max-w-3xl text-[12.5px] text-slate-500">
-        Hai tầng: <b>loại câu hỏi › cách xử lý</b>. Gắn ở <b>cách giải</b> của bài toán nhỏ, không gắn ở ý.
+        Hai tầng: <b>loại câu hỏi › cách xử lý</b>. Gắn ở <b>cách giải</b> của bài toán nhỏ. Mỗi dạng gắn được <b>lý thuyết/phương pháp</b> (chấm <span className="text-emerald-600">●</span> = đã có).
       </p>
 
       <div className="grid items-start gap-4 lg:grid-cols-[1fr_380px]">
@@ -42,24 +64,28 @@ function MDang({ L, reload }: { L: Luoi; reload: () => Promise<void> }) {
           {loaiCh.map((lc) => {
             const con = L.dang.filter((x) => x.cha_id === lc.id)
             if (q.trim() && !laMatch(lc.ten) && !con.some((c) => laMatch(c.ten))) return null
+            const terminal = con.length === 0   // loại chưa tách con → chính nó là dạng chọn được
             return (
               <div key={lc.id} className="mb-1 border-t border-slate-100 pt-2 first:border-0 first:pt-0">
-                <div className="group flex items-center gap-2 px-2 py-1 text-[12px] font-semibold text-slate-700">
-                  <span className="flex-1">{lc.ten} <span className="font-normal text-slate-400">· {rollup.get(lc.id) ?? 0}</span></span>
-                  <span className="hidden gap-1 group-hover:flex">
-                    <Btn className="h-6 px-1.5 text-[11px]" onClick={() => setForm({ id: lc.id, cap: 'loai_ch' })}>✎</Btn>
-                    <Btn className="h-6 px-1.5 text-[11px]" onClick={() => setForm({ cap: 'dang', cha: lc.id })}>＋ dạng</Btn>
-                  </span>
-                </div>
+                {terminal ? (
+                  <div className="group flex items-center gap-1">
+                    <div className="flex-1"><RowDang id={lc.id} ten={lc.ten} ton="loai" /></div>
+                    <span className="hidden gap-1 group-hover:flex">
+                      <Btn className="h-6 px-1.5 text-[11px]" onClick={() => setForm({ cap: 'dang', cha: lc.id })}>＋ tách</Btn>
+                    </span>
+                  </div>
+                ) : (
+                  <div className="group flex items-center gap-2 px-2 py-1 text-[12px] font-semibold text-slate-700">
+                    <span className="flex-1">{lc.ten} <span className="font-normal text-slate-400">· {rollup.get(lc.id) ?? 0}</span></span>
+                    <span className="hidden gap-1 group-hover:flex">
+                      <Btn className="h-6 px-1.5 text-[11px]" onClick={() => setForm({ id: lc.id, cap: 'loai_ch' })}>✎</Btn>
+                      <Btn className="h-6 px-1.5 text-[11px]" onClick={() => setForm({ cap: 'dang', cha: lc.id })}>＋ dạng</Btn>
+                    </span>
+                  </div>
+                )}
                 {con.filter((c) => laMatch(c.ten) || laMatch(lc.ten)).map((c) => (
-                  <button key={c.id} onClick={() => setChon(c.id)}
-                    className={`flex w-full items-center gap-2 rounded-lg px-2 py-1.5 text-left transition ${chon === c.id ? 'bg-violet-50' : 'hover:bg-slate-50'}`}>
-                    <Tag ton="dg">… {c.ten}</Tag>
-                    <span className="flex-1" />
-                    <Ma>{theo.get(c.id)?.length ?? 0} bài toán</Ma>
-                  </button>
+                  <RowDang key={c.id} id={c.id} ten={c.ten} ton="dg" />
                 ))}
-                {!con.length && <div className="px-2 py-1 text-[11.5px] text-slate-400">— chưa có cách xử lý nào —</div>}
               </div>
             )
           })}
@@ -71,24 +97,46 @@ function MDang({ L, reload }: { L: Luoi; reload: () => Promise<void> }) {
               <div className="mb-1 flex items-start justify-between gap-2">
                 <div className="text-[13.5px] font-semibold text-slate-900">{api.tenDangDayDu(L, d.id)}</div>
                 <div className="flex shrink-0 gap-1">
-                  <Btn className="h-6 px-1.5 text-[11px]" onClick={() => setForm({ id: d.id, cap: 'dang', cha: d.cha_id })}>✎</Btn>
+                  <Btn className="h-6 px-1.5 text-[11px]" onClick={() => setForm({ id: d.id, cap: d.cap, cha: d.cha_id })}>✎</Btn>
                   <Btn className="h-6 px-1.5 text-[11px]" onClick={async () => {
                     if (!confirm(`Xoá dạng "${d.ten}"?`)) return
                     try { await api.deleteDang(d.id); setChon(null); await reload() } catch (e: any) { alert(e.message) }
                   }}>🗑</Btn>
                 </div>
               </div>
+
+              {/* Lý thuyết / phương pháp của dạng (chỉ ở TERMINAL dạng) — tái dùng editor của Đại */}
+              {laTerminal(d.id) && (
+                <div className="mb-3 rounded-lg border border-violet-200 bg-violet-50/50 px-2.5 py-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[11px] font-semibold uppercase tracking-wide text-violet-700">Lý thuyết / phương pháp</span>
+                    <Btn className="ml-auto h-6 px-2 text-[11px]" onClick={() => setLtModal({ id: d.id, ten: api.tenDangDayDu(L, d.id) })}>
+                      {coLt(ltMap, d.id) ? '✎ Sửa' : '＋ Soạn'}
+                    </Btn>
+                  </div>
+                  {coLt(ltMap, d.id)
+                    ? <div className="mt-1.5 max-h-40 overflow-y-auto text-[12px] leading-relaxed text-slate-700"><MathText>{ltMap[d.id]?.noi_dung ?? ''}</MathText></div>
+                    : <div className="mt-1 text-[11.5px] text-slate-400">Chưa có — bấm Soạn (gõ tay hoặc dán ảnh/PDF → AI bóc LaTeX).</div>}
+                </div>
+              )}
+
               <DsBaiToan L={L} ds={theo.get(d.id) ?? []} />
-              <div className="mt-3 rounded-lg border border-blue-100 bg-blue-50/50 px-2.5 py-2 text-[11.5px] leading-relaxed text-slate-600">
-                <b className="text-blue-700">Rollup:</b> đọc ở tầng trên (<i>{L.dang.find((x) => x.id === d.cha_id)?.ten}</i>, {rollup.get(d.cha_id ?? '') ?? 0} bài toán)
-                = mẫu lớn, tín hiệu chắc. Đọc ở lá này = mẫu nhỏ, chẩn đoán, <b>dè dặt</b>.
-              </div>
+              {d.cha_id && (
+                <div className="mt-3 rounded-lg border border-blue-100 bg-blue-50/50 px-2.5 py-2 text-[11.5px] leading-relaxed text-slate-600">
+                  <b className="text-blue-700">Rollup:</b> đọc ở tầng trên (<i>{L.dang.find((x) => x.id === d.cha_id)?.ten}</i>, {rollup.get(d.cha_id ?? '') ?? 0} bài toán)
+                  = mẫu lớn, tín hiệu chắc. Đọc ở lá này = mẫu nhỏ, chẩn đoán, <b>dè dặt</b>.
+                </div>
+              )}
             </>
           )}
         </Panel>
       </div>
 
       {form && <FormDang L={L} init={form} onClose={() => setForm(null)} onDone={reload} />}
+      {ltModal && (
+        <LyThuyetModal ma={ltModal.id} ten={ltModal.ten} current={ltMap[ltModal.id] as any} api={api.hinhDangLyThuyet as any}
+          onClose={() => setLtModal(null)} onSaved={() => { setLtModal(null); napLt() }} />
+      )}
     </>
   )
 }

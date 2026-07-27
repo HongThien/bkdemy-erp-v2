@@ -3228,3 +3228,37 @@ Thùy gật (Luật xoá). Bỏ file scaffold migration drop (chưa áp, chưa c
 DB có doc `de_test_dau_vao` copy đúng 3 phần + 18 câu (= 18 câu custom của nguồn). Sinh tiếp Mã 1 → Mã 1
 thành "Đang dùng", Mã 2 xuống "Lịch sử (1)". `tsc` sạch, không lỗi console. 2 đề verify đã xoá (cascade),
 2 MT master giữ nguyên.
+
+## 2026-07-27 — Fix dropdown gắn dạng + lý thuyết cho dạng Hình (tái dùng module Đại)
+
+**Thùy:** (1) form node "Gắn dạng" không load được dạng từ M6; (2) dạng bài cần chỗ gắn lý thuyết như Đại.
+
+**(1)** `hinh_dang` mới chỉ có 1 dòng cấp `loai_ch` chưa tách con; form lọc `cap==='dang'` (chỉ lá cách-xử-lý)
+nên rỗng. Fix: dạng chọn được = LÁ của cây = cách xử lý HOẶC **loại câu hỏi chưa có con** (chính nó là dạng
+terminal). Áp cả FormBaiToan lẫn M6 (loại chưa tách con giờ là hàng chọn được). Verify: dropdown hiện
+"Giải tam giác - Tính cạnh, góc" (DH.018).
+
+**(2)** Bảng `hinh_dang_ly_thuyet` (mirror `dai_dang_ly_thuyet`, khoá `dang_id`→hinh_dang.id) + RLS
+(migration 202607271436, áp 2 lần OK). Seam `api.hinhDangLyThuyet` (list/upsert/remove, cùng shape
+`LyThuyetApi`). **Tái dùng NGUYÊN `LyThuyetModal` của Đại** (export từ BanDo.tsx) — upload ảnh/PDF → AI bóc
+LaTeX, cắt hình chèn, dán clipboard. M6 tra-ngược panel: dạng terminal có khối "Lý thuyết/phương pháp" +
+nút Soạn/Sửa + preview; hàng dạng có chấm ● xanh = đã có lý thuyết. Verify end-to-end: soạn → lưu →
+preview KaTeX + chấm xanh; xoá lý thuyết test khỏi dạng thật của Thùy sau khi verify.
+
+`tsc` + `vite build` sạch.
+
+## 2026-07-27 (tiếp) — Lưới bài toán: đề (từ mô hình) + câu hỏi; node card có hình, click = expand
+
+**Thùy:** lưới bài toán cần cả ĐỀ (lấy từ mô hình nó thuộc) + CÂU HỎI (phat_bieu đã nhập); mỗi card
+cũng cần hình + đề, hoặc 2 trạng thái thu nhỏ/expand.
+
+- **Node card (thu nhỏ, mặc định):** thêm THUMBNAIL hình của mô hình (nguồn đề) + câu hỏi (2 dòng) +
+  chip mô hình (◇ mã phân cấp, tooltip = giả thiết đầy đủ). NODE_H 56→78, COL_W 206→214, layout hình|chữ.
+  Chip mô hình hiện ở MỌI node (không chỉ node khác mô hình) — để lưới nào cũng thấy nguồn đề.
+- **Click node = expand:** detail panel tách rõ **ĐỀ — giả thiết (từ mô hình X)** (giaThietDayDu, FieldCard
+  teal) và **CÂU HỎI (đã nhập)** ("Chứng minh " + phat_bieu, FieldCard xanh) — thay khối "Đề bài chuẩn"
+  gộp cũ. Đề luôn MƯỢN của mô hình, câu hỏi là phần riêng của bài toán.
+
+**Verify trên app thật** (data _vt gốc+node, xoá sau): node card hiện thumbnail + câu hỏi + "◇ 2"; click →
+panel "ĐỀ — GIẢ THIẾT (TỪ MÔ HÌNH 2): △ABC nhọn..." + "CÂU HỎI: Chứng minh tứ giác BFEC nội tiếp".
+`tsc` + `vite build` sạch.

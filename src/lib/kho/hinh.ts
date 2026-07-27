@@ -106,6 +106,27 @@ function luyThua(next: (id: string) => string[], goc: string): Set<string> {
 export const toTienCua = (L: Luoi, id: string) => luyThua((x) => chaCua(L, x), id)
 export const hauDueCua = (L: Luoi, id: string) => luyThua((x) => conCua(L, x), id)
 
+/** ⭐ Mã PHÂN CẤP để HIỂN THỊ (khác `ma` trơ): gốc trong khối đánh 1, 2, 3…; con = mã cha + '.' + thứ
+ *  tự con (1.1, 1.1.1). SUY từ cây — tự tính lại khi cây đổi, KHÔNG lưu (giữ luật "mã trơ": id ổn định
+ *  bên dưới vẫn là `ma`, immune với đổi cha/nhiều cha). DAG nhiều cha → lấy đường cha đầu tiên.
+ *  Trả map id→mã phân cấp cho cả lưới (build 1 lần, tra O(1)). */
+export function maPhanCapMap(L: Luoi): Map<string, string> {
+  const map = new Map<string, string>()
+  const seen = new Set<string>()
+  const theoMa = (id: string) => L.moHinh.find((m) => m.id === id)?.ma ?? ''
+  const conSorted = (id: string) => conCua(L, id).filter((k) => !seen.has(k)).sort((a, b) => theoMa(a).localeCompare(theoMa(b)))
+  const gan = (id: string, code: string) => {
+    if (seen.has(id)) return
+    seen.add(id); map.set(id, code)
+    conSorted(id).forEach((k, i) => gan(k, `${code}.${i + 1}`))
+  }
+  L.moHinh.filter((m) => m.la_goc_ho).sort((a, b) => a.ma.localeCompare(b.ma)).forEach((m, i) => gan(m.id, String(i + 1)))
+  // Mô hình mồ côi (không nối gốc nào) — vẫn cần mã: đánh tiếp số gốc.
+  let k = map.size
+  L.moHinh.filter((m) => !seen.has(m.id)).forEach((m) => { map.set(m.id, `#${++k}`) })
+  return map
+}
+
 /** Đường từ GỐC HỌ xuống tới một mô hình (theo cha ĐẦU TIÊN — v1 thường 1 cha). Gồm cả hai đầu. */
 export function duongToTien(L: Luoi, id: string): string[] {
   const path: string[] = []
@@ -749,4 +770,26 @@ export async function quanSatCuaY(hinhYId: string): Promise<{ problems: { id: st
   if (p.error) throw p.error
   if (cb.error) throw cb.error
   return { problems: (p.data ?? []) as any, canhBao: (cb.data ?? []) as any }
+}
+
+// ══════════════════ LÝ THUYẾT của DẠNG (tái dùng LyThuyetModal của Đại) ══════════════════
+// Cùng shape LyThuyetApi (list/upsert/remove keyed by string) như dai_dang_ly_thuyet, nhưng khoá theo
+// hinh_dang.id (uuid). Gắn ở TERMINAL dạng (lá cây loại-câu-hỏi › cách-xử-lý).
+export const hinhDangLyThuyet = {
+  async list(): Promise<Record<string, { noi_dung: string; file_url: string | null; ten_file: string | null; cap_nhat_at?: string }>> {
+    const { data, error } = await supabase.from('hinh_dang_ly_thuyet').select('*').limit(LIMIT)
+    if (error) throw error
+    const m: Record<string, { noi_dung: string; file_url: string | null; ten_file: string | null; cap_nhat_at?: string }> = {}
+    for (const r of (data ?? []) as any[]) m[r.dang_id] = { noi_dung: r.noi_dung ?? '', file_url: r.file_url, ten_file: r.ten_file, cap_nhat_at: r.cap_nhat_at }
+    return m
+  },
+  async upsert(dangId: string, noiDung: string, fileUrl: string | null, tenFile: string | null): Promise<void> {
+    const { error } = await supabase.from('hinh_dang_ly_thuyet')
+      .upsert({ dang_id: dangId, noi_dung: noiDung, file_url: fileUrl, ten_file: tenFile, cap_nhat_at: new Date().toISOString() }, { onConflict: 'dang_id' })
+    if (error) throw error
+  },
+  async remove(dangId: string): Promise<void> {
+    const { error } = await supabase.from('hinh_dang_ly_thuyet').delete().eq('dang_id', dangId)
+    if (error) throw error
+  },
 }

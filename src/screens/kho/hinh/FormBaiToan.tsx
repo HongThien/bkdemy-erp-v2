@@ -43,7 +43,11 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
   const [loi, setLoi] = useState<string | null>(null)
   const [gan, setGan] = useState<BaiToan[]>([])
 
-  const dangLa = L.dang.filter((d) => d.cap === 'dang')
+  // Dạng chọn được = LÁ của cây dạng: cách xử lý (cap='dang'), HOẶC loại câu hỏi chưa tách con
+  // (loại chưa có cách xử lý con thì chính nó là dạng terminal). Nhờ vậy mọi dạng tạo ở M6 đều chọn được,
+  // không bắt buộc phải luôn có tầng "cách xử lý".
+  const dangLa = L.dang.filter((d) => d.cap === 'dang' || (d.cap === 'loai_ch' && !L.dang.some((x) => x.cha_id === d.id)))
+  const maCap = useMemo(() => api.maPhanCapMap(L), [L])
   const giaThiet = api.giaThietDayDu(L, moHinhId)
   const anhMoHinh = api.anhCauHinhCua(L, moHinhId)
 
@@ -98,7 +102,7 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
           <div className="min-w-0 space-y-3 overflow-y-auto border-r border-slate-100 p-5">
             <Lbl>Mô hình <span className="font-normal normal-case text-slate-400">— bài toán trực tiếp thuộc mô hình này (vì dựa trên giả thiết của nó)</span></Lbl>
             <select className={inp} value={moHinhId} onChange={(e) => setMoHinhId(e.target.value)}>
-              {L.moHinh.map((m) => <option key={m.id} value={m.id}>{m.ma} · {tron(m.ten)}</option>)}
+              {L.moHinh.map((m) => <option key={m.id} value={m.id}>{maCap.get(m.id) ?? '?'} · {tron(m.ten)}</option>)}
             </select>
 
             <div className="rounded-lg border border-teal-200 bg-teal-50/60 px-3 py-2.5">

@@ -472,7 +472,7 @@ type LtFile = { name: string; mimeType: string; dataBase64: string; isImage: boo
 function ltToBase64(f: File): Promise<string> {
   return new Promise((res, rej) => { const r = new FileReader(); r.onload = () => { const s = String(r.result); res(s.slice(s.indexOf(',') + 1)) }; r.onerror = rej; r.readAsDataURL(f) })
 }
-function LyThuyetModal({ ma, ten, current, api, allowKhongCan, onClose, onSaved }: {
+export function LyThuyetModal({ ma, ten, current, api, allowKhongCan, onClose, onSaved }: {
   ma: string; ten: string; current?: LyThuyet; allowKhongCan?: boolean
   api: LyThuyetApi; onClose: () => void; onSaved: () => void
 }) {
