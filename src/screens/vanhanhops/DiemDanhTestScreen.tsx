@@ -12,8 +12,7 @@ import {
   listUngVienL5, getUngVien, gioKetThucCaTest, THOI_LUONG_OPTIONS, MON_OPTIONS,
   type CaTest, type TaoCaTestInput, type MonTS,
 } from '../../lib/tuyensinh'
-import { ganDeCaTest } from '../../lib/detest'
-import { listMT } from '../../lib/mt'
+import { ganDeCaTest, listTaiLieuLamDe, listGhimDe, TEN_LOAI_DE } from '../../lib/detest'
 import type { TaiLieu } from '../../lib/tailieu'
 import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../lib/kho/api'
 import { homNayVN, mucDeadline, nhanConLai, type DeadlineMuc } from '../../lib/tuan'
@@ -27,7 +26,8 @@ const Lbl = ({ children }: { children: React.ReactNode }) => <label className="m
 export default function DiemDanhTestScreen() {
   const [dangChay, setDangChay] = useState<CaTest[]>([])
   const [hoanThanhHomNay, setHoanThanhHomNay] = useState<CaTest[]>([])
-  const [mtList, setMtList] = useState<TaiLieu[]>([])
+  const [deList, setDeList] = useState<TaiLieu[]>([])
+  const [ghim, setGhim] = useState<Set<string>>(new Set())
   const [loading, setLoading] = useState(true)
   const [form, setForm] = useState(false)
   const [now, setNow] = useState(() => Date.now())
@@ -35,8 +35,8 @@ export default function DiemDanhTestScreen() {
   async function reload() {
     setLoading(true)
     try {
-      const [a, b, m] = await Promise.all([listCaTestDangChay(), listCaTestHoanThanh(homNayVN()), listMT()])
-      setDangChay(a); setHoanThanhHomNay(b); setMtList(m)
+      const [a, b, m, g] = await Promise.all([listCaTestDangChay(), listCaTestHoanThanh(homNayVN()), listTaiLieuLamDe(), listGhimDe()])
+      setDangChay(a); setHoanThanhHomNay(b); setDeList(m); setGhim(g)
     } finally { setLoading(false) }
   }
   useEffect(() => { reload() }, [])
@@ -58,7 +58,7 @@ export default function DiemDanhTestScreen() {
         <div className="rounded-lg border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">Không có ca test nào đang chạy.</div>
       ) : (
         <div className="grid gap-3 sm:grid-cols-2">
-          {dangChay.map((c) => <CaTestCard key={c.id} c={c} now={now} mtList={mtList} onChanged={reload} />)}
+          {dangChay.map((c) => <CaTestCard key={c.id} c={c} now={now} deList={deList} ghim={ghim} onChanged={reload} />)}
         </div>
       )}
 
@@ -82,7 +82,7 @@ export default function DiemDanhTestScreen() {
   )
 }
 
-function CaTestCard({ c, now, mtList, onChanged }: { c: CaTest; now: number; mtList: TaiLieu[]; onChanged: () => void }) {
+function CaTestCard({ c, now, deList, ghim, onChanged }: { c: CaTest; now: number; deList: TaiLieu[]; ghim: Set<string>; onChanged: () => void }) {
   const [baiUrl, setBaiUrl] = useState<string | null>(c.baiUrl)
   const [taiLieuId, setTaiLieuId] = useState(c.taiLieuId)
   const [chonMT, setChonMT] = useState('')
@@ -90,11 +90,14 @@ function CaTestCard({ c, now, mtList, onChanged }: { c: CaTest; now: number; mtL
   const [err, setErr] = useState<string | null>(null)
   const deadline = gioKetThucCaTest(c)
   const muc = mucDeadline(deadline, now) ?? 'con_nhieu'
-  // Dropdown = Kho MT lọc theo môn + khối của ứng viên (Thùy 07-19: "chọn trong kho MT có filter khối
-  // là được" — thí sinh CHƯA có hệ CB/NC, nhưng khối/lớp đang nhắm tới thì đã biết). listMT() đã sort
-  // created_at desc (mới nhất lên đầu) → mặc định con trỏ tự đúng "MT tháng gần nhất".
-  const mtOpts = mtList.filter((d) => d.mon === c.mon && (!c.ungVien.khoi || d.khoi === c.ungVien.khoi))
-  const mtHienTai = mtList.find((d) => d.id === taiLieuId)
+  // Dropdown = đề (MT + Đề thi) lọc theo môn + khối ứng viên. Ưu tiên đề ĐÃ GHIM (học thuật curate ở
+  // tab "Đề test"); chưa ghim đề nào cho khối×môn này → fallback toàn bộ khớp (không chặn Ops). listTaiLieuLamDe()
+  // sort created_at desc → mặc định con trỏ tự đúng "đề gần nhất".
+  const cands = deList.filter((d) => d.mon === c.mon && (!c.ungVien.khoi || d.khoi === c.ungVien.khoi))
+  const daGhim = cands.filter((d) => ghim.has(d.id))
+  const deOpts = daGhim.length ? daGhim : cands
+  const dungFallback = !daGhim.length && cands.length > 0
+  const deHienTai = deList.find((d) => d.id === taiLieuId)
 
   async function chonFile(e: React.ChangeEvent<HTMLInputElement>) {
     const f = e.target.files?.[0]; if (!f) return
@@ -128,12 +131,13 @@ function CaTestCard({ c, now, mtList, onChanged }: { c: CaTest; now: number; mtL
       </div>
 
       <div className="mb-2 flex flex-wrap items-center gap-1.5">
-        {mtHienTai && <span className="text-[12px] text-slate-500">📘 {mtHienTai.ten}</span>}
+        {deHienTai && <span className="text-[12px] text-slate-500">📘 {TEN_LOAI_DE[deHienTai.loai] ?? deHienTai.loai} · {deHienTai.ten}</span>}
         <select className="rounded-md border border-slate-200 px-2 py-1 text-[12px]" value={chonMT} onChange={(e) => setChonMT(e.target.value)}>
-          <option value="">{mtHienTai ? 'Đổi đề khác…' : 'Chọn đề…'}</option>
-          {mtOpts.map((d) => <option key={d.id} value={d.id}>{d.ten}</option>)}
+          <option value="">{deHienTai ? 'Đổi đề khác…' : 'Chọn đề…'}</option>
+          {deOpts.map((d) => <option key={d.id} value={d.id}>{(TEN_LOAI_DE[d.loai] ?? d.loai)} · {d.ten}</option>)}
         </select>
-        {chonMT && <button onClick={ganDe} disabled={busy} className="rounded-md bg-slate-700 px-2 py-1 text-[11px] font-medium text-white hover:bg-slate-600 disabled:opacity-40">{mtHienTai ? 'Đổi đề' : 'Gán đề'}</button>}
+        {chonMT && <button onClick={ganDe} disabled={busy} className="rounded-md bg-slate-700 px-2 py-1 text-[11px] font-medium text-white hover:bg-slate-600 disabled:opacity-40">{deHienTai ? 'Đổi đề' : 'Gán đề'}</button>}
+        {dungFallback && <span className="text-[11px] text-amber-600" title="Học thuật chưa ghim đề cho khối×môn này — đang hiện tất cả MT + Đề thi khớp.">⚠ chưa ghim đề</span>}
       </div>
 
       <div className="flex flex-wrap items-center gap-2">

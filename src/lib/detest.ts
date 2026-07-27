@@ -2,15 +2,55 @@
 // ca_test (tuyensinh.ts) = "buổi test". File này nối tiếp: gán đề (snapshot từ Kho MT) → chấm Đ/C/S
 // per câu ∥ scan bài đã chấm (2 nguồn ĐỘC LẬP) → Trả bài (gộp nhận xét + biểu đồ + lớp đề xuất + phiếu,
 // Thùy chốt 07-19: "ở trong task trả bài đó" — KHÔNG còn là bước riêng gate giữa Chấm và Trả bài).
-// ⭐ Đề = CHỌN THẲNG 1 tài liệu MT trong Kho (mig 0105, bỏ hẳn de_test — Thùy chốt 07-19: "chọn trong
-// kho MT có filter khối là được"). ca_test.tai_lieu_id trỏ THẲNG tai_lieu (không qua lớp trung gian).
-// KHÔNG feed mastery (§A cố ý).
+// ⭐ Đề = CHỌN THẲNG 1 tài liệu trong Kho (mig 0105, bỏ hẳn de_test — Thùy 07-19). ca_test.tai_lieu_id
+// trỏ THẲNG tai_lieu (không qua lớp trung gian). KHÔNG feed mastery (§A cố ý).
+// ⭐ 07-27 (Thùy): thêm "Quản lý đề test" = GHIM tài liệu có sẵn làm đề (KHÔNG dựng lại de_test CRUD),
+// nguồn mở rộng MT → MT + Đề thi (mọi loại master TRỪ ET/GT/BTVN). Xem section GHIM cuối file.
 import { supabase } from './supabase'
-import { khoCuaMon, layCauTheoThuTu } from './tailieu'
+import { khoCuaMon, layCauTheoThuTu, type TaiLieu } from './tailieu'
 import { updateUngVien, toggleViec } from './tuyensinh'
 import type { MenhDe } from './kho/api'
 
 const LIMIT = 10000
+
+// ============================================================================
+// QUẢN LÝ ĐỀ TEST (ghim) — Thùy chốt 07-27. Đề test đầu vào = tài liệu CÓ SẴN trong Kho được GHIM làm
+// đề; nguồn = MT + Đề thi (mọi loại master TRỪ ET/GT/BTVN). KHÔNG dựng lại de_test CRUD (đã bỏ mig 0105).
+// Phạm vi khối×môn suy từ chính tai_lieu.khoi/mon (đề gắn khối+môn). Ghim = 1 dòng de_test_ghim (có
+// dòng = đang ghim — anti-NULL §1.5). Điểm danh test chỉ hiện đề ĐÃ GHIM khớp khối×môn; chưa ghim đề
+// nào cho khối×môn đó thì fallback toàn bộ MT+Đề thi khớp (không chặn Ops).
+// ============================================================================
+export const LOAI_DE_TEST = ['mt', 'de_thi'] as const
+export const TEN_LOAI_DE: Record<string, string> = { mt: 'MT', de_thi: 'Đề thi' }
+
+// Mọi tài liệu DÙNG ĐƯỢC làm đề test (MT + Đề thi master, lop_id null). Lọc mon/khoi nếu truyền.
+export async function listTaiLieuLamDe(mon?: string, khoi?: string): Promise<TaiLieu[]> {
+  let q = supabase.from('tai_lieu').select('*').in('loai', LOAI_DE_TEST as unknown as string[])
+    .is('lop_id', null).order('created_at', { ascending: false }).limit(LIMIT)
+  if (mon) q = q.eq('mon', mon)
+  if (khoi) q = q.eq('khoi', khoi)
+  const { data, error } = await q
+  if (error) throw error
+  return (data ?? []) as TaiLieu[]
+}
+// Tập id tài liệu ĐANG GHIM (có dòng = ghim).
+export async function listGhimDe(): Promise<Set<string>> {
+  const { data, error } = await supabase.from('de_test_ghim').select('tai_lieu_id').limit(LIMIT)
+  if (error) throw error
+  return new Set(((data ?? []) as { tai_lieu_id: string }[]).map((r) => r.tai_lieu_id))
+}
+// Ghim / bỏ ghim 1 tài liệu làm đề test đầu vào (idempotent).
+export async function ghimDe(taiLieuId: string, on: boolean): Promise<void> {
+  if (on) {
+    const { data: { user } } = await supabase.auth.getUser()
+    const { error } = await supabase.from('de_test_ghim')
+      .upsert({ tai_lieu_id: taiLieuId, ghim_boi: user?.id ?? null }, { onConflict: 'tai_lieu_id', ignoreDuplicates: true })
+    if (error) throw error
+  } else {
+    const { error } = await supabase.from('de_test_ghim').delete().eq('tai_lieu_id', taiLieuId)
+    if (error) throw error
+  }
+}
 
 // ============================================================================
 // GÁN ĐỀ vào ca_test — SNAPSHOT câu THẬT từ tài liệu MT (anti-live-ref: đổi/sửa MT sau KHÔNG hỏng bài

@@ -2,7 +2,7 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-108 bảng · 0 enum · 10 trigger · 30 function
+109 bảng · 0 enum · 10 trigger · 30 function
 
 ## bai_lam
 
@@ -171,6 +171,12 @@
 | actor | uuid | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | hoan_thanh_at | timestamp with time zone | Y |  |  |  |
+| muc | smallint | Y |  |  |  |
+| muc_may_de_xuat | smallint | Y |  |  |  |
+| de_xuat_may | jsonb |  | '{}'::jsonb |  |  |
+| ket_qua | text | Y |  |  | `dat` · `mot_phan` · `chua_dat` · `bo` |
+| dong_boi | uuid | Y |  | FK→nhan_su.id |  |
+| ghi_chu_dong | text | Y |  |  |  |
 
 ## bo_tro_yeu_dang
 
@@ -183,6 +189,12 @@
 | day_buoi_id | uuid | Y |  | FK→buoi_hoc.id |  |
 | day_at | timestamp with time zone | Y |  |  |  |
 | dong_at | timestamp with time zone | Y |  |  |  |
+| diem_luc_mo | numeric | Y |  |  |  |
+| so_lan_do_luc_mo | smallint | Y |  |  |  |
+| retest_diem | numeric | Y |  |  |  |
+| retest_at | timestamp with time zone | Y |  |  |  |
+| retest_nguon | text | Y |  |  | `et` · `mt` · `rieng` |
+| dat | boolean | Y |  |  |  |
 
 ## bt_grades
 
@@ -472,6 +484,14 @@
 | updated_at | timestamp with time zone |  | now() |  |  |
 | done_at | timestamp with time zone | Y |  |  |  |
 | model_chon | text | Y |  |  |  |
+
+## de_test_ghim
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| tai_lieu_id | uuid |  |  | PK FK→tai_lieu.id |  |
+| ghim_boi | uuid | Y |  |  |  |
+| ghim_at | timestamp with time zone |  | now() |  |  |
 
 ## diem_thi
 
@@ -1514,6 +1534,9 @@
 
 | bảng | constraint | định nghĩa |
 |---|---|---|
+| bo_tro_yeu | bo_tro_yeu_dong_du_ck | `CHECK (((trang_thai <> 'hoan_thanh'::text) OR ((ket_qua IS NOT NULL) AND (hoan_thanh_at IS NOT NULL))))` |
+| bo_tro_yeu | bo_tro_yeu_muc_ck | `CHECK (((muc IS NULL) OR (muc = ANY (ARRAY[1, 2, 3]))))` |
+| bo_tro_yeu | bo_tro_yeu_muc_may_ck | `CHECK (((muc_may_de_xuat IS NULL) OR (muc_may_de_xuat = ANY (ARRAY[1, 2, 3]))))` |
 | buoi_danh_gia | buoi_danh_gia_hoan_thanh_pct_check | `CHECK (((hoan_thanh_pct IS NULL) OR (((hoan_thanh_pct >= 0) AND (hoan_thanh_pct <= 100)) AND (((hoan_thanh_pct)::integer % 5) = 0))))` |
 | buoi_danh_gia_dang | buoi_danh_gia_dang_diem_check | `CHECK ((diem = ANY (ARRAY[(0)::numeric, 0.5, (1)::numeric])))` |
 | ca_test | ca_test_thoi_luong_phut_check | `CHECK ((thoi_luong_phut = ANY (ARRAY[45, 60, 75, 90, 120])))` |

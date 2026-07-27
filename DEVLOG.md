@@ -3120,3 +3120,30 @@ Cắm vào MỌI ô có công thức: đề bài + từng ý (Kho tạm ＋ Bài
 "Cho tam giác $ABC$ vuông tại $A$, đường cao $AH$. Chứng minh $AB^2 = BH \cdot BC$..." (thêm dấu tiếng
 Việt + LaTeX đúng). `tsc` + `vite build` sạch. (Data test tạo lúc verify đã xoá; MH.008 "tam giác vuông"
 là data của Thùy, giữ nguyên.)
+
+---
+
+## 2026-07-27 — Test đầu vào: Quản lý đề (ghim MT + Đề thi)
+
+Thùy chốt 2 nhánh (AskUserQuestion): (1) "Quản lý đề test" = **ghim tài liệu có sẵn theo khối×môn**
+(KHÔNG dựng lại de_test CRUD đã bỏ mig 0105); (2) nguồn đề = **MT + Đề thi** (mọi loại master TRỪ
+ET/GT/BTVN). Đây là ĐẢO lại quyết định 07-19 ("bỏ tab Đề test, chọn thẳng MT ở Điểm danh") — nay thêm
+lại lớp curate nhẹ (chỉ tag, không soạn nội dung).
+
+**Làm:**
+- Mig `202607271322_de_test_ghim.sql` (áp bằng `_apply_one.mjs`, role claude_build): bảng `de_test_ghim`
+  (`tai_lieu_id` PK FK→tai_lieu on delete cascade + ghim_boi + ghim_at). Có dòng = đang ghim (anti-NULL).
+  Phạm vi khối×môn suy từ chính tai_lieu.khoi/mon → bảng không lặp khoi/mon. RLS staff-only + grants.
+- `detest.ts`: `LOAI_DE_TEST=['mt','de_thi']`, `TEN_LOAI_DE`, `listTaiLieuLamDe(mon?,khoi?)`,
+  `listGhimDe()→Set`, `ghimDe(id,on)`.
+- `QuanLyDeTestScreen.tsx` (mới): list MT+Đề thi gom theo khối, filter môn, nút ★ Ghim/☆. Tab "Đề test"
+  cắm lại vào `TestDauVaoScreen` (tab thứ 4).
+- `DiemDanhTestScreen`: dropdown đề đổi từ `listMT()` → `listTaiLieuLamDe()`+`listGhimDe()`. Ưu tiên đề
+  ĐÃ GHIM khớp khối×môn; chưa ghim đề nào cho khối×môn đó → fallback toàn bộ khớp + badge "⚠ chưa ghim
+  đề" (KHÔNG chặn Ops). Option/nhãn hiện loại (MT / Đề thi). `layCauTheoThuTu` đã generic nên snapshot
+  câu vào ca_test_cau chạy cho cả Đề thi (nhiều phan 'custom').
+
+**Verify app thật** (dev 5183 + dev-login admin): tab "Đề test" render đúng — gom Khối 9/12, 2 MT thật,
+filter môn. Ghim 1 MT → nút ★ + "Đã ghim: 1" + DB có 1 dòng (join tai_lieu OK). Bỏ ghim → DB về 0.
+`tsc --noEmit` sạch, `npm run schema` refresh (de_test_ghim vào schema.md). Không lỗi console. Dòng ghim
+test lúc verify đã xoá.

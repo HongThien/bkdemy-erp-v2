@@ -10,10 +10,11 @@ import { useState } from 'react'
 import DiemDanhTestScreen from '../vanhanhops/DiemDanhTestScreen'
 import ChamTestScreen from './ChamTestScreen'
 import TraBaiTestScreen from './TraBaiTestScreen'
+import QuanLyDeTestScreen from './QuanLyDeTestScreen'
 
-type Tab = 'diem_danh' | 'cham' | 'tra_bai'
+type Tab = 'diem_danh' | 'cham' | 'tra_bai' | 'de'
 const TABS: { v: Tab; lbl: string }[] = [
-  { v: 'diem_danh', lbl: 'Điểm danh test' }, { v: 'cham', lbl: 'Chấm test' }, { v: 'tra_bai', lbl: 'Trả bài' },
+  { v: 'diem_danh', lbl: 'Điểm danh test' }, { v: 'cham', lbl: 'Chấm test' }, { v: 'tra_bai', lbl: 'Trả bài' }, { v: 'de', lbl: 'Đề test' },
 ]
 
 export default function TestDauVaoScreen() {
@@ -24,7 +25,7 @@ export default function TestDauVaoScreen() {
         <div className="mx-auto max-w-[1500px]">
           <div className="mb-4">
             <h2 className="text-[22px] font-semibold text-slate-800">Test đầu vào</h2>
-            <p className="text-[13px] text-slate-500">Điểm danh (chọn đề từ Kho MT) → Chấm Đ/C/S ∥ Scan bài đã chấm (Ops, việc riêng ở "Việc của tôi") → Trả bài (nhận xét + lớp đề xuất + phiếu)</p>
+            <p className="text-[13px] text-slate-500">Đề test (ghim MT · Đề thi theo khối×môn) → Điểm danh (chọn đề đã ghim) → Chấm Đ/C/S ∥ Scan bài đã chấm (Ops, việc riêng ở "Việc của tôi") → Trả bài (nhận xét + lớp đề xuất + phiếu)</p>
           </div>
 
           <div className="mb-4 flex w-fit flex-wrap gap-1.5 rounded-2xl border border-slate-200 bg-white p-1.5 shadow-sm">
@@ -41,7 +42,8 @@ export default function TestDauVaoScreen() {
       <div className="min-h-0 flex-1 overflow-hidden">
         {tab === 'diem_danh' ? <DiemDanhTestScreen />
           : tab === 'cham' ? <ChamTestScreen />
-          : <TraBaiTestScreen />}
+          : tab === 'tra_bai' ? <TraBaiTestScreen />
+          : <QuanLyDeTestScreen />}
       </div>
     </div>
   )
