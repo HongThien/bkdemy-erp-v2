@@ -3,7 +3,7 @@
 // Gu staff: clean/modern nhiều màu, KHÔNG sci-fi.
 import { useState, type ReactNode } from 'react'
 import { MathText, readClipboardImageFile } from '../ui'
-import { uploadKhoImage } from '../../../lib/kho/api'
+import { uploadKhoImage, ocrDeTuAnh } from '../../../lib/kho/api'
 
 export type Ton = 'mh' | 'bt' | 'dg' | 'bd' | 'gh'
 
@@ -133,6 +133,34 @@ export const tron = (s: string) => {
 }
 
 export const inpCls = 'w-full rounded-lg border border-slate-300 px-2.5 py-1.5 text-[13px] outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20'
+
+const fileToBase64 = (f: File): Promise<string> =>
+  new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(String(r.result).split(',')[1] ?? ''); r.onerror = rej; r.readAsDataURL(f) })
+
+/** Nút "dán ảnh đề có công thức → AI dịch ra text + LaTeX". Đặt cạnh MỌI ô nhập đề/ý/giả thiết.
+ *  `onText` nhận chuỗi AI trả về (caller quyết ghi đè hay chèn). CHỈ bóc CHỮ — hình đề đính riêng. */
+export function OcrButton({ onText, nhan = '📋 Ảnh → AI dịch' }: { onText: (t: string) => void; nhan?: string }) {
+  const [busy, setBusy] = useState(false)
+  const [err, setErr] = useState<string | null>(null)
+  const chay = async (f: File | null) => {
+    if (!f) { setErr('Clipboard chưa có ảnh — copy ảnh đề trước rồi bấm.'); return }
+    setBusy(true); setErr(null)
+    try { onText(await ocrDeTuAnh({ mimeType: f.type, dataBase64: await fileToBase64(f) })) }
+    catch (e: any) { setErr(e?.message ?? String(e)) } finally { setBusy(false) }
+  }
+  return (
+    <div className="flex flex-wrap items-center gap-1.5">
+      <Btn className="h-7 text-[12px]" disabled={busy} onClick={async () => chay(await readClipboardImageFile())}>
+        {busy ? 'AI đang đọc…' : nhan}
+      </Btn>
+      <label className="inline-flex h-7 cursor-pointer items-center rounded-lg border border-slate-300 bg-white px-2 text-[12px] font-medium text-slate-600 hover:bg-slate-50">
+        chọn ảnh
+        <input type="file" accept="image/*" className="hidden" onChange={(e) => chay(e.target.files?.[0] ?? null)} />
+      </label>
+      {err && <span className="text-[11px] text-rose-600">{err}</span>}
+    </div>
+  )
+}
 
 /** Ô ảnh: chọn file HOẶC dán clipboard → bucket `kho-anh`, DB chỉ giữ URL (không base64). */
 export function AnhInput({ value, onChange, cap }: { value: string | null | undefined; onChange: (url: string | null) => void; cap?: string }) {

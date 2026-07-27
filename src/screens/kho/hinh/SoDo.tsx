@@ -64,7 +64,7 @@ export default function SoDo({ L, khoi, hoId, di, reload, moTaNode, nodeId }: {
 
       {view === 'bt'
         ? <ViewBaiToan L={L} ho={ho} nodes={nodes} chon={chonBt} setChon={setChonBt} onSua={(b) => setFormBt({ sua: b })} />
-        : <ViewMoHinh L={L} ho={ho} trongHo={trongHo} chon={chonMh ?? ho.id} setChon={setChonMh} onSua={(m) => setFormMh({ sua: m })} onThemCon={(id) => setFormMh({ cha: id })} />}
+        : <ViewMoHinh L={L} ho={ho} trongHo={trongHo} chon={chonMh ?? ho.id} setChon={setChonMh} onSua={(m) => setFormMh({ sua: m })} onThemCon={(id) => setFormMh({ cha: id })} reload={reload} />}
 
       {formBt && <FormBaiToan L={L} moHinhMacDinh={chonMh ?? ho.id} sua={formBt.sua} phatBieuGoi={formBt.goi}
         onClose={() => setFormBt(null)} onDone={reload} />}
@@ -268,9 +268,9 @@ function DetailBaiToan({ L, bt, onSua, onChon }: { L: Luoi; bt: BaiToan; onSua: 
 }
 
 // ══════════════════ VIEW MÔ HÌNH — cột = TẦNG ══════════════════
-function ViewMoHinh({ L, ho, trongHo, chon, setChon, onSua, onThemCon }: {
+function ViewMoHinh({ L, ho, trongHo, chon, setChon, onSua, onThemCon, reload }: {
   L: Luoi; ho: MoHinh; trongHo: Set<string>; chon: string; setChon: (id: string) => void
-  onSua: (m: MoHinh) => void; onThemCon: (id: string) => void
+  onSua: (m: MoHinh) => void; onThemCon: (id: string) => void; reload: () => Promise<void>
 }) {
   const { cots, pos, cao, rong } = useMemo(() => {
     const ds = L.moHinh.filter((m) => trongHo.has(m.id))
@@ -354,7 +354,13 @@ function ViewMoHinh({ L, ho, trongHo, chon, setChon, onSua, onThemCon }: {
         <Panel label="Detail — mô hình đang chọn">
           <div className="mb-1.5 flex items-start justify-between gap-2">
             <div className="text-[14px] font-semibold text-slate-900">{mh.ma} · <MathText>{mh.ten}</MathText></div>
-            <Btn onClick={() => onSua(mh)} className="h-7 shrink-0 px-2">✎</Btn>
+            <div className="flex shrink-0 gap-1">
+              <Btn onClick={() => onSua(mh)} className="h-7 px-2" title="Sửa mô hình">✎</Btn>
+              <Btn onClick={async () => {
+                if (!confirm(`Xoá mô hình ${mh.ma} · ${tron(mh.ten)}?`)) return
+                try { await api.deleteMoHinh(mh.id); setChon(ho.id); await reload() } catch (e: any) { alert(e.message) }
+              }} className="h-7 px-2 border-rose-300 text-rose-600 hover:bg-rose-50" title="Xoá mô hình">🗑</Btn>
+            </div>
           </div>
           <div className="mb-2.5 rounded-md bg-teal-50/70 px-2.5 py-2 text-[12px] leading-relaxed text-slate-600">
             <b className="text-teal-700">{mh.gia_thiet_them ? '+ Giả thiết:' : 'Giả thiết:'}</b>{' '}

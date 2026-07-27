@@ -7,7 +7,7 @@ import { useEffect, useMemo, useState } from 'react'
 import * as api from '../../../lib/kho/api'
 import type { BaiToan, Luoi } from '../../../lib/kho/hinh'
 import { MathText, Shell, Field, Actions, inp } from '../ui'
-import { AnhInput, Cap, Ma, Tag, tron } from './hinhUi'
+import { AnhInput, Cap, Ma, OcrButton, Tag, tron } from './hinhUi'
 
 export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClose, onDone }: {
   L: Luoi
@@ -82,6 +82,7 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
       <Field label="Phát biểu CHUẨN HOÁ (bộ chữ cái chuẩn của họ — △ABC, trực tâm H, chân đường cao D·E·F)">
         <textarea className={`${inp} h-16`} value={phatBieu} onChange={(e) => setPhatBieu(e.target.value)}
           placeholder="Tứ giác $BFEC$ nội tiếp đường tròn đường kính $BC$" />
+        <div className="mt-1.5"><OcrButton onText={setPhatBieu} /></div>
       </Field>
       {gan.length > 0 && (
         <div className="-mt-1 mb-3 rounded-lg border border-amber-300 bg-amber-50 px-3 py-2">
@@ -118,6 +119,7 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
 
       <Field label="Đề bài chuẩn (hiện ở detail panel + tài liệu chuẩn)">
         <textarea className={`${inp} h-16`} value={deBai} onChange={(e) => setDeBai(e.target.value)} />
+        <div className="mt-1.5"><OcrButton onText={setDeBai} /></div>
       </Field>
       <Field label="Hình chuẩn"><AnhInput value={anh} onChange={setAnh} cap="Hình chuẩn của node" /></Field>
 
@@ -134,7 +136,10 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
             {dangLa.map((d) => <option key={d.id} value={d.id}>{api.tenDangDayDu(L, d.id)}</option>)}
           </select>
         </Field>
-        <Field label="Lời giải"><textarea className={`${inp} h-24`} value={loiGiai} onChange={(e) => setLoiGiai(e.target.value)} /></Field>
+        <Field label="Lời giải">
+          <textarea className={`${inp} h-24`} value={loiGiai} onChange={(e) => setLoiGiai(e.target.value)} />
+          <div className="mt-1.5"><OcrButton onText={setLoiGiai} /></div>
+        </Field>
         <Field label="Ảnh lời giải"><AnhInput value={anhGiai} onChange={setAnhGiai} cap="Hình lời giải" /></Field>
 
         <Field label={`Tiền đề của cách này — CẦN CẢ (AND)${tienDe.length ? ` · ${tienDe.length} tiền đề` : ''} · đi xuyên mô hình tự do`}>

@@ -1148,6 +1148,27 @@ export function parseLyThuyetJson(text: string): string {
   return String(obj.noi_dung ?? obj.noiDung ?? '').trim()
 }
 
+// ── OCR đề toán (ảnh clipboard/file) → text + LaTeX ──────────────
+// Đề Hình hay có công thức/ký hiệu ($\triangle$, $\perp$, $AB^2 = BH\cdot BC$). Dán ảnh → AI chép chữ,
+// công thức bọc $…$. CHỈ lấy CHỮ, bỏ qua hình vẽ (hình đề đính riêng, không nhờ AI vẽ). Tái dùng
+// LYTHUYET_SCHEMA/parseLyThuyetJson (cùng shape { noi_dung }) — không đẻ schema mới cho việc y hệt.
+export function buildOcrDePrompt(): string {
+  return [
+    'Ảnh dưới là một đoạn ĐỀ TOÁN (hình học, có thể chứa công thức/ký hiệu).',
+    'Chép lại NGUYÊN VĂN phần CHỮ thành một chuỗi text — GIỮ đúng câu chữ, KHÔNG giải, KHÔNG tóm tắt, KHÔNG thêm bớt.',
+    'QUY TẮC:',
+    '- Ký hiệu/công thức toán DÙNG LaTeX trong $...$ — vd $\\triangle ABC$, $\\angle BAC = 90^\\circ$, $AB^2 = BH \\cdot BC$, $\\perp$, $\\parallel$, $\\widehat{ABC}$.',
+    '- Giữ xuống dòng bằng xuống dòng thật.',
+    '- Có HÌNH VẼ thì BỎ QUA hình (đừng mô tả) — chỉ lấy CHỮ của đề.',
+    '- Trong JSON: lệnh LaTeX PHẢI double backslash ("\\\\triangle", "\\\\perp", "\\\\cdot"); CHỈ trả JSON.',
+    'Trả về JSON: { "noi_dung": "..." }',
+  ].join('\n')
+}
+export async function ocrDeTuAnh(file: { mimeType: string; dataBase64: string }): Promise<string> {
+  const raw = await callGeminiJson(buildOcrDePrompt(), { schema: LYTHUYET_SCHEMA, files: [file] })
+  return parseLyThuyetJson(raw)
+}
+
 // ── Lý thuyết đi kèm dạng Đại (1-1) + chuẩn completeness ──────────
 export const CHUAN_SO_CAU = 50 // chuẩn kho: mỗi dạng ≥ 50 câu (sàn SỐ LƯỢNG, chỉnh 1 chỗ)
 // noi_dung = nội dung lý thuyết (text + LaTeX); file_url/ten_file = đính kèm; khong_can = đánh dấu "không cần" (chỉ chuyên đề)

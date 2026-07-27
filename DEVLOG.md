@@ -3095,3 +3095,28 @@ vẫn giải được cách kia); 2 tiền đề của MỘT cách = AND (bỏ 1
 CÁCH khác nhau (OR)… làm sau"; tick 2 tiền đề → nhãn "2 TIỀN ĐỀ" + tóm tắt "Cách này cần CẢ: BT.015 +
 BT.016 — bỏ 1 là không giải được". Data verify tạo tạm qua DB, xoá sạch sau (mọi bảng hinh_* = 0).
 `tsc` + `vite build` sạch. (Không sửa `spec-kho-hinh-v3.md` — spec là của Thùy/Notion; ghi ở đây thôi.)
+
+## 2026-07-24 (tiếp 4) — Sửa/xoá mô hình + OCR ảnh đề → LaTeX
+
+**Thùy:** (1) chưa có sửa mô hình; (2) đề bài có công thức → cho dán ảnh clipboard, hệ tự dịch.
+
+**1. Sửa + xoá mô hình:**
+- Trước: sửa mô hình CÓ nhưng chôn sâu (Sơ đồ → View mô hình → click card → ✎); xoá thì KHÔNG có.
+- Nay: M0 card mỗi họ có nút ✎ Sửa + 🗑 Xoá (nổi khi hover; card đổi từ `<button>` sang `<div role=button>`
+  để nút-trong-nút hợp lệ, stopPropagation). Detail panel View mô hình thêm nút 🗑 cạnh ✎.
+- `deleteMoHinh` siết guard: chặn nếu còn bài toán HOẶC còn mô hình con (xoá cha = con mồ côi, cạnh cha
+  cascade mất, con không còn đường lên lưới).
+
+**2. OCR ảnh đề → text + LaTeX** (`ocrDeTuAnh` + `buildOcrDePrompt`, api.ts): tái dùng ĐÚNG đường Gemini
+đã chạy production cho lý thuyết Đại (`callGeminiJson` + `LYTHUYET_SCHEMA` + `parseLyThuyetJson`) —
+KHÔNG đẻ schema mới. Prompt: chép CHỮ, công thức bọc `$…$`, BỎ QUA hình vẽ (hình đề đính riêng).
+Component dùng chung `OcrButton` (hinhUi.tsx): dán clipboard HOẶC chọn file → gọi OCR → `onText(kết quả)`.
+Cắm vào MỌI ô có công thức: đề bài + từng ý (Kho tạm ＋ Bài mới + sửa ý), phát biểu/đề chuẩn/lời giải
+(node), giả thiết (mô hình).
+
+**Verify trên app thật** (dev 5183 + login): tạo họ → card hiện ✎/🗑 hover; ✎ mở form đúng data cũ
+("Sửa mô hình MH.xxx", tên+giả thiết điền sẵn); 🗑 xoá được (card biến mất). OCR THẬT: đẩy ảnh canvas
+"Cho tam giac ABC vuong tai A... AB^2 = BH.BC" vào ô đề → AI trả
+"Cho tam giác $ABC$ vuông tại $A$, đường cao $AH$. Chứng minh $AB^2 = BH \cdot BC$..." (thêm dấu tiếng
+Việt + LaTeX đúng). `tsc` + `vite build` sạch. (Data test tạo lúc verify đã xoá; MH.008 "tam giác vuông"
+là data của Thùy, giữ nguyên.)

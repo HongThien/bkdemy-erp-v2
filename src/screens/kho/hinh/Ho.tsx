@@ -6,19 +6,26 @@ import { useState } from 'react'
 import * as api from '../../../lib/kho/api'
 import type { Luoi, MoHinh } from '../../../lib/kho/hinh'
 import { MathText, Shell, Field, Actions, inp } from '../ui'
-import { AnhInput, Btn, Empty, Fig, Ma, Note, inpCls, tron } from './hinhUi'
+import { AnhInput, Btn, Empty, Fig, Ma, Note, OcrButton, inpCls, tron } from './hinhUi'
 import type { Nhay } from './KhoHinhScreen'
 
 export default function Ho({ L, khoi, di, reload }: { L: Luoi; khoi: string; di: (n: Nhay) => void; reload: () => Promise<void> }) {
-  const [form, setForm] = useState(false)
+  const [form, setForm] = useState<{ sua?: MoHinh } | null>(null)
+  const [loi, setLoi] = useState<string | null>(null)
   const goc = L.moHinh.filter((m) => m.la_goc_ho)
+
+  const xoa = async (m: MoHinh) => {
+    if (!confirm(`Xoá họ "${tron(m.ten)}" (${m.ma})?`)) return
+    try { await api.deleteMoHinh(m.id); await reload() } catch (e: any) { setLoi(e.message ?? String(e)) }
+  }
 
   return (
     <>
       <div className="mb-1 flex items-center justify-between gap-3">
         <h1 className="text-[19px] font-semibold text-slate-900">Chọn họ mô hình gốc <span className="text-slate-400">· Khối {khoi}</span></h1>
-        <Btn kind="pri" onClick={() => setForm(true)}>＋ Mô hình gốc</Btn>
+        <Btn kind="pri" onClick={() => setForm({})}>＋ Mô hình gốc</Btn>
       </div>
+      {loi && <div className="mb-3 rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[12.5px] text-rose-700">{loi}</div>}
       <p className="mb-4 max-w-3xl text-[12.5px] text-slate-500">
         Các họ mô hình <b>độc lập</b> với nhau — vào từng họ mới có sơ đồ. Mỗi họ là một graph riêng, không nối sang họ khác.
         Kho Hình đi <b>theo khối</b>: đây là các họ của <b>khối {khoi}</b>.
@@ -28,7 +35,10 @@ export default function Ho({ L, khoi, di, reload }: { L: Luoi; khoi: string; di:
         ? <Empty>Chưa có họ nào. Bấm <b>＋ Mô hình gốc</b> để dựng xô nước đầu tiên — vd họ <i>Trực tâm</i>: “△ABC nhọn, ba đường cao AD, BE, CF cắt nhau tại H”.</Empty>
         : (
           <div className="grid gap-3.5 [grid-template-columns:repeat(auto-fill,minmax(268px,1fr))]">
-            {goc.map((m) => <Card key={m.id} L={L} m={m} onOpen={() => di({ man: 'sodo', hoId: m.id })} />)}
+            {goc.map((m) => (
+              <Card key={m.id} L={L} m={m} onOpen={() => di({ man: 'sodo', hoId: m.id })}
+                onEdit={() => setForm({ sua: m })} onDelete={() => xoa(m)} />
+            ))}
           </div>
         )}
 
@@ -37,15 +47,24 @@ export default function Ho({ L, khoi, di, reload }: { L: Luoi; khoi: string; di:
         Giữa hai họ khác nhau: <b>không có quan hệ</b>.
       </Note>
 
-      {form && <FormMoHinh L={L} khoiMacDinh={khoi} onClose={() => setForm(false)} onDone={reload} />}
+      {form && <FormMoHinh L={L} khoiMacDinh={khoi} sua={form.sua} onClose={() => setForm(null)} onDone={reload} />}
     </>
   )
 }
 
-function Card({ L, m, onOpen }: { L: Luoi; m: MoHinh; onOpen: () => void }) {
+function Card({ L, m, onOpen, onEdit, onDelete }: { L: Luoi; m: MoHinh; onOpen: () => void; onEdit: () => void; onDelete: () => void }) {
   const tk = api.thongKeHo(L, m.id)
+  // Không dùng <button> bọc ngoài (nút-trong-nút không hợp lệ) — div click mở sơ đồ, hai nút góc
+  // nổi khi hover, stopPropagation để không mở nhầm.
   return (
-    <button onClick={onOpen} className="overflow-hidden rounded-xl border-[1.5px] border-teal-300 bg-white text-left transition hover:shadow-md">
+    <div onClick={onOpen} role="button" tabIndex={0}
+      className="group relative cursor-pointer overflow-hidden rounded-xl border-[1.5px] border-teal-300 bg-white text-left transition hover:shadow-md">
+      <div className="absolute right-2 top-2 z-10 hidden gap-1 group-hover:flex">
+        <button onClick={(e) => { e.stopPropagation(); onEdit() }} title="Sửa mô hình"
+          className="flex h-7 w-7 items-center justify-center rounded-lg border border-slate-300 bg-white/90 text-slate-600 shadow-sm hover:bg-slate-50">✎</button>
+        <button onClick={(e) => { e.stopPropagation(); onDelete() }} title="Xoá họ"
+          className="flex h-7 w-7 items-center justify-center rounded-lg border border-rose-300 bg-white/90 text-rose-600 shadow-sm hover:bg-rose-50">🗑</button>
+      </div>
       <Fig src={m.anh_cau_hinh} h="h-28" />
       <div className="p-3">
         <Ma>{m.ma}</Ma>
@@ -59,7 +78,7 @@ function Card({ L, m, onOpen }: { L: Luoi; m: MoHinh; onOpen: () => void }) {
           {tk.capTu != null && <span>cấp <b className="text-slate-700">{tk.capTu === tk.capDen ? tk.capTu : `${tk.capTu}–${tk.capDen}`}</b></span>}
         </div>
       </div>
-    </button>
+    </div>
   )
 }
 
@@ -101,6 +120,7 @@ export function FormMoHinh({ L, chaMacDinh, khoiMacDinh, sua, onClose, onDone }:
       <Field label="Giả thiết (bó đầy đủ — text + LaTeX $…$)">
         <textarea className={`${inp} h-20`} value={gt} onChange={(e) => setGt(e.target.value)}
           placeholder="$\\triangle ABC$ nhọn, ba đường cao $AD, BE, CF$ cắt nhau tại $H$" />
+        <div className="mt-1.5"><OcrButton onText={setGt} /></div>
       </Field>
       {cha.length > 0 && (
         <Field label="Giả thiết CỘNG so với cha (hiện trên cạnh lưới)">

@@ -252,9 +252,16 @@ export async function setChaMoHinh(moHinhId: string, chaIds: string[]): Promise<
   await updateMoHinh(moHinhId, { la_goc_ho: chaIds.length === 0 })
 }
 export async function deleteMoHinh(id: string): Promise<void> {
-  const { count, error: e0 } = await supabase.from('hinh_baitoan').select('id', { count: 'exact', head: true }).eq('mo_hinh_id', id)
+  // Chặn nếu còn bài toán (mất tri thức) HOẶC còn mô hình con (xoá cha = con mồ côi, không hiện trên
+  // lưới nữa: cạnh cha cascade mất, con giữ la_goc_ho=false nhưng không còn đường lên).
+  const [{ count: nBt, error: e0 }, { count: nCon, error: e1 }] = await Promise.all([
+    supabase.from('hinh_baitoan').select('id', { count: 'exact', head: true }).eq('mo_hinh_id', id),
+    supabase.from('hinh_mo_hinh_cha').select('mo_hinh_id', { count: 'exact', head: true }).eq('cha_id', id),
+  ])
   if (e0) throw e0
-  if (count) throw new Error(`Mô hình còn ${count} bài toán nhỏ — chuyển/xoá chúng trước.`)
+  if (e1) throw e1
+  if (nBt) throw new Error(`Mô hình còn ${nBt} bài toán nhỏ — chuyển/xoá chúng trước.`)
+  if (nCon) throw new Error(`Mô hình còn ${nCon} mô hình con — xoá/tách chúng trước.`)
   const { error } = await supabase.from('hinh_mo_hinh').delete().eq('id', id)
   if (error) throw error
 }

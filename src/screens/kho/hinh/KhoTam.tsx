@@ -8,7 +8,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import * as api from '../../../lib/kho/api'
 import type { Bai, BaiToan, Luoi, Y } from '../../../lib/kho/hinh'
 import { MathText, Shell, Field, Actions, inp } from '../ui'
-import { AnhInput, Btn, Cap, Empty, Fig, Ma, Panel, Sol, Tag, inpCls } from './hinhUi'
+import { AnhInput, Btn, Cap, Empty, Fig, Ma, OcrButton, Panel, Sol, Tag, inpCls } from './hinhUi'
 import type { Nhay } from './KhoHinhScreen'
 
 export default function KhoTam({ L, khoi, di, reload, baiId }: { L: Luoi; khoi: string; di: (n: Nhay) => void; reload: () => Promise<void>; baiId?: string }) {
@@ -253,6 +253,7 @@ function FormY({ y, onClose, onDone }: { y: Y; onClose: () => void; onDone: () =
     <Shell title={`Sửa ý ${y.nhan_hien_thi ?? y.thu_tu}`} onClose={onClose}>
       <Field label="Nguyên văn ý (đề gốc — KHÔNG chuẩn hoá chữ cái)">
         <textarea className={`${inp} h-20`} value={nd} onChange={(e) => setNd(e.target.value)} />
+        <div className="mt-1.5"><OcrButton onText={setNd} /></div>
       </Field>
       <div className="grid grid-cols-2 gap-3">
         <Field label="Nhãn hiển thị (2 ý nguyên tử in chung một nhãn)"><input className={inp} value={nhan} onChange={(e) => setNhan(e.target.value)} placeholder="b" /></Field>
@@ -301,14 +302,18 @@ function FormBai({ khoi, onClose, onDone }: { khoi: string; onClose: () => void;
       <Field label="Đề bài — NGUYÊN VĂN đề gốc (giữ đúng bộ chữ của đề)">
         <textarea className={`${inp} h-20`} value={de} onChange={(e) => setDe(e.target.value)}
           placeholder="Cho $\\triangle MNP$ nhọn có ba đường cao $MQ, NR, PS$ cắt nhau tại $K$." />
+        <div className="mt-1.5"><OcrButton onText={setDe} nhan="📋 Ảnh đề → AI dịch (có công thức)" /></div>
       </Field>
       <Field label="Nguồn"><input className={inp} value={nguon} onChange={(e) => setNguon(e.target.value)} placeholder="THCS Cầu Giấy — HK1 2025" /></Field>
       <Field label="Hình đề — BẮT BUỘC"><AnhInput value={anh} onChange={setAnh} cap="Hình đề" /></Field>
       <Field label="Các ý (nguyên văn, mỗi ô một ý)">
         {ys.map((v, i) => (
-          <div key={i} className="mb-1.5 flex gap-2">
+          <div key={i} className="mb-2.5 flex gap-2">
             <span className="mt-2 w-4 text-[12px] text-slate-400">{String.fromCharCode(97 + i)}</span>
-            <textarea className={`${inp} h-14`} value={v} onChange={(e) => setYs((a) => a.map((x, j) => (j === i ? e.target.value : x)))} />
+            <div className="min-w-0 flex-1">
+              <textarea className={`${inp} h-14`} value={v} onChange={(e) => setYs((a) => a.map((x, j) => (j === i ? e.target.value : x)))} />
+              <div className="mt-1"><OcrButton onText={(t) => setYs((a) => a.map((x, j) => (j === i ? t : x)))} nhan="📋 Ảnh → AI dịch" /></div>
+            </div>
           </div>
         ))}
         <button type="button" onClick={() => setYs((a) => [...a, ''])} className="text-[12.5px] font-medium text-blue-600 hover:underline">＋ thêm ý</button>
