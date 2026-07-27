@@ -3,7 +3,7 @@
 // Controlled: cha giữ OnTapConfig (để lưu ĐÚNG LÚC cha cần — TrichPanel lưu trước khi gán, modal lưu khi bấm Lưu).
 import { useEffect, useRef, useState } from 'react'
 import { MathText } from '../screens/kho/ui'
-import { khoCuaMon, usedCausOfBuoi } from '../lib/tailieu'
+import { khoCuaMon, usedCausOfBuoi, DEFAULT_BTVN_LINES } from '../lib/tailieu'
 import { type CauHoi } from '../lib/kho/api'
 import { goiYOnTap, getOnTapConfig, fetchCausByMa, fetchTenDangByMa, CAP_DANG, CAP_CAU_MOI_DANG, type OnTapConfig } from '../lib/ontap'
 import { KhoPicker } from './KhoPicker'
@@ -91,6 +91,21 @@ export default function OnTapEditor({ nguonId, buoiId, lopId, khoi, mon, config,
   const capDay = config.dangs.length >= CAP_DANG
   const otherDangCaus = (exceptMaDang: string) => config.dangs.filter((d) => d.ma_dang !== exceptMaDang).flatMap((d) => d.ma_caus)
 
+  // Số dòng kẻ để HS viết — RIÊNG từng câu ôn tập (key ma_cau, sống trong config.dangs[].linesByCau).
+  // appendOnTapToBtvnDoc gộp linesByCau này vào cau_hinh.btvnLinesByCau → phiếu in đúng số dòng (như BTVN chính).
+  const setLine = (maDang: string, maCau: string, n: number) => onChange({
+    ...config, dangs: config.dangs.map((x) => (x.ma_dang === maDang ? { ...x, linesByCau: { ...(x.linesByCau ?? {}), [maCau]: n } } : x)),
+  })
+  const setLineAll = (maDang: string, maCaus: string[], n: number) => onChange({
+    ...config,
+    dangs: config.dangs.map((x) => {
+      if (x.ma_dang !== maDang) return x
+      const next = { ...(x.linesByCau ?? {}) }
+      for (const ma of maCaus) next[ma] = n
+      return { ...x, linesByCau: next }
+    }),
+  })
+
   return (
     <div className="mt-3 rounded-lg border border-violet-200 bg-violet-50/40 p-3">
       <div className="mb-2 flex flex-wrap items-center gap-2">
@@ -121,15 +136,23 @@ export default function OnTapEditor({ nguonId, buoiId, lopId, khoi, mon, config,
                     {score !== undefined
                       ? <span className="rounded bg-amber-50 px-1.5 py-0.5 text-[11px] font-medium text-amber-700" title="Tỉ lệ HS yếu/cần luyện dạng này trong lớp">lớp yếu {Math.round(score * 100)}%</span>
                       : <span className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] font-medium text-slate-500">chọn tay</span>}
-                    <button onClick={() => onChange({ ...config, dangs: config.dangs.filter((x) => x.ma_dang !== d.ma_dang) })}
-                      className="ml-auto text-[12px] text-slate-400 hover:text-rose-600" title="Bỏ dạng này khỏi ôn tập">✕</button>
+                    <div className="ml-auto flex items-center gap-2">
+                      {caus.length > 0 && <ApplyLinesAll count={caus.length} onApply={(n) => setLineAll(d.ma_dang, caus.map((c) => c.ma_cau), n)} />}
+                      <button onClick={() => onChange({ ...config, dangs: config.dangs.filter((x) => x.ma_dang !== d.ma_dang) })}
+                        className="text-[12px] text-slate-400 hover:text-rose-600" title="Bỏ dạng này khỏi ôn tập">✕</button>
+                    </div>
                   </div>
                   {caus.length > 0 ? (
                     <ol className="space-y-1">
                       {caus.map((c) => (
-                        <li key={c.ma_cau} className="flex items-start gap-2 rounded border border-slate-100 bg-slate-50/60 px-2 py-1">
+                        <li key={c.ma_cau} className="flex items-center gap-2 rounded border border-slate-100 bg-slate-50/60 px-2 py-1">
                           <span className="shrink-0 rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[10px] text-slate-500">{c.ma_cau}</span>
                           <span className="min-w-0 flex-1 truncate text-[12px] text-slate-700"><MathText>{c.noi_dung}</MathText></span>
+                          <label className="flex shrink-0 items-center gap-1 text-[11px] text-slate-400" title="Số dòng kẻ để HS viết bài này">dòng
+                            <input type="number" min={0} max={30} value={d.linesByCau?.[c.ma_cau] ?? DEFAULT_BTVN_LINES}
+                              onChange={(e) => setLine(d.ma_dang, c.ma_cau, Math.max(0, Math.min(30, +e.target.value || 0)))}
+                              className="h-6 w-11 rounded border border-slate-300 px-1 text-center text-[12px]" />
+                          </label>
                         </li>
                       ))}
                     </ol>
@@ -163,5 +186,20 @@ export default function OnTapEditor({ nguonId, buoiId, lopId, khoi, mon, config,
         />
       )}
     </div>
+  )
+}
+
+// Áp 1 số dòng cho CẢ dạng ôn tập cùng lúc (giống ApplyLinesAll của TaiLieuBuilder) — gõ số rồi Enter/blur
+// mới ghi (tránh ghi đè N câu mỗi keystroke). Ghi xong vẫn sửa riêng từng câu bình thường.
+function ApplyLinesAll({ count, onApply }: { count: number; onApply: (n: number) => void }) {
+  const [val, setVal] = useState('')
+  const commit = () => { if (val.trim() === '') return; onApply(Math.max(0, Math.min(30, +val || 0))); setVal('') }
+  return (
+    <label className="flex shrink-0 items-center gap-1 text-[11px] text-slate-400" title={`Áp số dòng này cho cả ${count} câu ôn tập của dạng — vẫn sửa riêng từng câu được sau đó`}>
+      dòng cả dạng
+      <input type="number" min={0} max={30} value={val} placeholder="—"
+        onChange={(e) => setVal(e.target.value)} onBlur={commit} onKeyDown={(e) => e.key === 'Enter' && commit()}
+        className="h-6 w-11 rounded border border-violet-300 px-1 text-center text-[12px]" />
+    </label>
   )
 }

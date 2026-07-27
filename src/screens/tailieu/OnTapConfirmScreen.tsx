@@ -19,7 +19,7 @@ export default function OnTapConfirmScreen({ masterId, buoiId, tenBuoi, lopId, t
   const [config, setConfig] = useState<OnTapConfig | null>(null)
   const [gv, setGv] = useState(false)
   const [busy, setBusy] = useState(false)
-  const [ontapPreview, setOntapPreview] = useState<{ ten_dang: string; caus: CauHoi[] }[]>([])
+  const [ontapPreview, setOntapPreview] = useState<{ ten_dang: string; caus: CauHoi[]; linesByCau: Record<string, number> }[]>([])
   const cauTbl = khoCuaMon(mon).cauTbl
 
   // Preview khối ôn tập — resolve NỘI DUNG câu + tên dạng từ config (đang sống ở state, chưa lưu DB) để
@@ -34,7 +34,7 @@ export default function OnTapConfirmScreen({ masterId, buoiId, tenBuoi, lopId, t
         ...config.dangs.map((d) => fetchCausByMa(d.ma_caus, cauTbl)),
       ])
       if (!alive) return
-      setOntapPreview(config.dangs.map((d, i) => ({ ten_dang: tenMap.get(d.ma_dang) ?? d.ma_dang, caus: causLists[i] })))
+      setOntapPreview(config.dangs.map((d, i) => ({ ten_dang: tenMap.get(d.ma_dang) ?? d.ma_dang, caus: causLists[i], linesByCau: d.linesByCau ?? {} })))
     })()
     return () => { alive = false }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -102,7 +102,7 @@ export default function OnTapConfirmScreen({ masterId, buoiId, tenBuoi, lopId, t
                   {ontapPreview.map((d, i) => (
                     <div key={i} className="pv-sec">
                       <h2 className="pv-h-dang">{d.ten_dang}</h2>
-                      <CauList>{d.caus.map((c) => { bno += 1; return <CauItem key={c.ma_cau} no={bno} c={c} gv={gv} lines={gv ? 0 : DEFAULT_BTVN_LINES} /> })}</CauList>
+                      <CauList>{d.caus.map((c) => { bno += 1; return <CauItem key={c.ma_cau} no={bno} c={c} gv={gv} lines={gv ? 0 : (d.linesByCau[c.ma_cau] ?? DEFAULT_BTVN_LINES)} /> })}</CauList>
                     </div>
                   ))}
                 </div>
