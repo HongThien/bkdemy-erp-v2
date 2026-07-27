@@ -106,6 +106,50 @@ function luyThua(next: (id: string) => string[], goc: string): Set<string> {
 export const toTienCua = (L: Luoi, id: string) => luyThua((x) => chaCua(L, x), id)
 export const hauDueCua = (L: Luoi, id: string) => luyThua((x) => conCua(L, x), id)
 
+/** Đường từ GỐC HỌ xuống tới một mô hình (theo cha ĐẦU TIÊN — v1 thường 1 cha). Gồm cả hai đầu. */
+export function duongToTien(L: Luoi, id: string): string[] {
+  const path: string[] = []
+  const seen = new Set<string>()
+  let cur: string | undefined = id
+  while (cur && !seen.has(cur)) { seen.add(cur); path.unshift(cur); cur = chaCua(L, cur)[0] }
+  return path
+}
+/** ⭐ Giả thiết ĐẦY ĐỦ của một mô hình = giả thiết gốc họ + phần THÊM của TỪNG ĐỜI xuống tới nó.
+ *  Kế thừa: con KHÔNG lưu lại full — chỉ lưu `gia_thiet_them`; full suy ở đây. (Thùy: giả thiết con =
+ *  giả thiết bố + giả thiết riêng con.) Bài toán KHÔNG có giả thiết riêng — luôn mượn của mô hình. */
+export function giaThietDayDu(L: Luoi, moHinhId: string): string {
+  const parts: string[] = []
+  duongToTien(L, moHinhId).forEach((mid, i) => {
+    const m = L.moHinh.find((x) => x.id === mid); if (!m) return
+    if (i === 0) { if (m.gia_thiet?.trim()) parts.push(m.gia_thiet.trim()) }   // gốc: giả thiết nền đầy đủ
+    else if (m.gia_thiet_them?.trim()) parts.push(m.gia_thiet_them.trim())      // đời sau: chỉ phần thêm
+  })
+  return parts.join('; ')
+}
+/** Hình cấu hình HIỆN DÙNG của một mô hình = hình của chính nó, thiếu thì leo lên tổ tiên gần nhất có hình. */
+export function anhCauHinhCua(L: Luoi, moHinhId: string): string | null {
+  for (const mid of duongToTien(L, moHinhId).slice().reverse()) {
+    const m = L.moHinh.find((x) => x.id === mid)
+    if (m?.anh_cau_hinh) return m.anh_cau_hinh
+  }
+  return null
+}
+/** "Bài toán phía trước" — gợi ý làm TIỀN ĐỀ CHÍNH khi tạo node mới trong một mô hình: node cấp cao
+ *  nhất đã có trong mô hình đó (hoặc tổ tiên gần nhất có node). */
+export function nodeTruoc(L: Luoi, moHinhId: string): BaiToan | null {
+  for (const mid of duongToTien(L, moHinhId).slice().reverse()) {
+    const ds = L.baiToan.filter((b) => b.mo_hinh_id === mid).sort((a, b) => b.cap - a.cap || b.ma.localeCompare(a.ma))
+    if (ds.length) return ds[0]
+  }
+  return null
+}
+/** Đề bài chuẩn của một node = giả thiết đầy đủ của mô hình (mượn) + câu hỏi (`phat_bieu`) + hình mô hình. KHÔNG lưu. */
+export function deBaiChuanCua(L: Luoi, baiToanId: string): { giaThiet: string; cauHoi: string; anh: string | null } {
+  const bt = L.baiToan.find((b) => b.id === baiToanId)
+  if (!bt) return { giaThiet: '', cauHoi: '', anh: null }
+  return { giaThiet: giaThietDayDu(L, bt.mo_hinh_id), cauHoi: bt.phat_bieu, anh: anhCauHinhCua(L, bt.mo_hinh_id) }
+}
+
 /** Gốc họ của một mô hình: truy lên tới `la_goc_ho`. Không thấy → chính nó (họ 1 node). */
 export function gocHoCua(L: Luoi, id: string): string {
   const mh = L.moHinh.find((m) => m.id === id)
@@ -530,7 +574,9 @@ export function dapAnHaiBac(L: Luoi, y: Y): { bac: 'chuan_xac' | 'tham_chieu' | 
   const bt = y.baitoan_id ? L.baiToan.find((b) => b.id === y.baitoan_id) : null
   if (!bt) return { bac: 'chua_co', loiGiai: null, anh: null }
   const c = cachMacDinh(L, bt.id)
-  return { bac: 'tham_chieu', loiGiai: c?.loi_giai ?? null, anh: c?.anh_loi_giai ?? bt.anh_chuan, deBaiChuan: bt.de_bai_chuan }
+  // Hình tham chiếu: ảnh lời giải của cách → thiếu thì hình cấu hình của MÔ HÌNH (node không có hình riêng).
+  // Đề chuẩn = giả thiết đầy đủ của mô hình + câu hỏi (derive), không đọc cột de_bai_chuan cũ nữa.
+  return { bac: 'tham_chieu', loiGiai: c?.loi_giai ?? null, anh: c?.anh_loi_giai ?? anhCauHinhCua(L, bt.mo_hinh_id), deBaiChuan: bt.phat_bieu }
 }
 
 // ══════════════════ M9 ÔN TẬP — rút từ BÀI THẬT theo DẠNG ══════════════════

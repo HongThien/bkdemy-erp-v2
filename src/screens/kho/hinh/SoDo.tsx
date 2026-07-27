@@ -19,7 +19,9 @@ import type { Nhay } from './KhoHinhScreen'
 /** Dải cấp gọn: 4–4 đọc thừa, chỉ in 4. */
 export const dai = (ns: number[]) => (Math.min(...ns) === Math.max(...ns) ? String(ns[0]) : `${Math.min(...ns)}–${Math.max(...ns)}`)
 
-const COL_W = 206, GAP = 40, NODE_H = 56, ROW_GAP = 12, MH_W = 224, MH_H = 118
+const COL_W = 206, GAP = 40, NODE_H = 56, ROW_GAP = 12
+// Card mô hình TO — Thùy: đọc tên khó hình dung, phải thấy hình + giả thiết. Cao hơn để chứa cả hai.
+const MH_W = 272, MH_H = 210
 
 export default function SoDo({ L, khoi, hoId, di, reload, moTaNode, nodeId }: {
   L: Luoi; khoi: string; hoId: string | null; di: (n: Nhay) => void; reload: () => Promise<void>
@@ -246,13 +248,12 @@ function DetailBaiToan({ L, bt, onSua, onChon }: { L: Luoi; bt: BaiToan; onSua: 
         )
       })}
 
-      <p className="mb-1.5 mt-3 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Đề bài chuẩn</p>
-      <Sol>{bt.de_bai_chuan}</Sol>
+      {/* Đề chuẩn = giả thiết ĐẦY ĐỦ của mô hình (mượn) + câu hỏi. Node không có đề/hình riêng. */}
+      <p className="mb-1.5 mt-3 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Đề bài chuẩn (giả thiết mô hình + câu hỏi)</p>
+      <Sol>{[api.giaThietDayDu(L, bt.mo_hinh_id), `Chứng minh ${bt.phat_bieu}`].filter(Boolean).join('. ')}</Sol>
       <p className="mb-1.5 mt-2.5 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Đáp án đầy đủ</p>
       <Sol>{cachMd?.loi_giai}</Sol>
-      {(bt.anh_chuan || cachMd?.anh_loi_giai) && (
-        <div className="mt-2"><Fig src={cachMd?.anh_loi_giai ?? bt.anh_chuan} cap="Hình chuẩn của node" /></div>
-      )}
+      <div className="mt-2"><Fig src={cachMd?.anh_loi_giai ?? api.anhCauHinhCua(L, bt.mo_hinh_id)} cap={cachMd?.anh_loi_giai ? 'Hình lời giải' : 'Hình cấu hình (của mô hình)'} /></div>
 
       <p className="mb-1.5 mt-3 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Ý thực tế đang trỏ tới node · {ys.length}</p>
       {ys.length
@@ -329,17 +330,17 @@ function ViewMoHinh({ L, ho, trongHo, chon, setChon, onSua, onThemCon, reload }:
                 const caps = n.map((b) => b.cap)
                 return (
                   <button key={m.id} onClick={() => setChon(m.id)} style={{ left: p.x, top: p.y, width: MH_W, height: MH_H }}
-                    className={`absolute overflow-hidden rounded-xl border-[1.5px] border-teal-300 bg-white text-left transition ${
+                    className={`absolute flex flex-col overflow-hidden rounded-xl border-[1.5px] border-teal-300 bg-white text-left transition ${
                       chon === m.id ? 'ring-[3px] ring-teal-300/50' : 'hover:shadow-sm'}`}>
-                    <div className="h-14 border-b border-slate-100 bg-slate-50/50">
-                      {m.anh_cau_hinh
-                        ? <img src={m.anh_cau_hinh} alt="" className="h-full w-full bg-white object-contain" />
+                    <div className="h-24 shrink-0 border-b border-slate-100 bg-slate-50/50">
+                      {api.anhCauHinhCua(L, m.id)
+                        ? <img src={api.anhCauHinhCua(L, m.id)!} alt="" className="h-full w-full bg-white object-contain" />
                         : <div className="flex h-full items-center justify-center text-[10.5px] text-slate-300">chưa có hình</div>}
                     </div>
-                    <div className="px-2.5 py-1.5">
-                      <Ma>{m.ma}</Ma>
-                      <div className="truncate text-[12.5px] font-semibold text-slate-800"><MathText>{m.ten}</MathText></div>
-                      <div className="flex gap-2.5 text-[11px] text-slate-400">
+                    <div className="flex min-h-0 flex-1 flex-col px-2.5 py-1.5">
+                      <div className="flex items-center gap-1.5"><Ma>{m.ma}</Ma><span className="truncate text-[12px] font-semibold text-slate-800"><MathText>{m.ten}</MathText></span></div>
+                      <div className="mt-0.5 line-clamp-2 text-[11px] leading-snug text-slate-600"><MathText>{api.giaThietDayDu(L, m.id)}</MathText></div>
+                      <div className="mt-auto flex gap-2.5 pt-1 text-[11px] text-slate-400">
                         <span><b className="text-slate-700">{n.length}</b> bài toán</span>
                         {caps.length > 0 && <span>cấp <b className="text-slate-700">{dai(caps)}</b></span>}
                       </div>
@@ -351,9 +352,12 @@ function ViewMoHinh({ L, ho, trongHo, chon, setChon, onSua, onThemCon, reload }:
           </div>
         </div>
 
-        <Panel label="Detail — mô hình đang chọn">
-          <div className="mb-1.5 flex items-start justify-between gap-2">
-            <div className="text-[14px] font-semibold text-slate-900">{mh.ma} · <MathText>{mh.ten}</MathText></div>
+        {/* HỆ SINH THÁI của mô hình đang chọn: mô hình làm TRUNG TÂM (hình + giả thiết đầy đủ), rồi
+            các bài toán PHỤ THUỘC nó (nhóm theo cấp). Lưới mô hình = quan hệ mô hình↔bài toán, khác
+            lưới bài toán (chỉ quan hệ bài↔bài). */}
+        <Panel label="Hệ sinh thái của mô hình">
+          <div className="mb-2 flex items-start justify-between gap-2">
+            <div className="text-[14px] font-semibold text-slate-900"><Ma>{mh.ma}</Ma> <MathText>{mh.ten}</MathText></div>
             <div className="flex shrink-0 gap-1">
               <Btn onClick={() => onSua(mh)} className="h-7 px-2" title="Sửa mô hình">✎</Btn>
               <Btn onClick={async () => {
@@ -362,20 +366,25 @@ function ViewMoHinh({ L, ho, trongHo, chon, setChon, onSua, onThemCon, reload }:
               }} className="h-7 px-2 border-rose-300 text-rose-600 hover:bg-rose-50" title="Xoá mô hình">🗑</Btn>
             </div>
           </div>
-          <div className="mb-2.5 rounded-md bg-teal-50/70 px-2.5 py-2 text-[12px] leading-relaxed text-slate-600">
-            <b className="text-teal-700">{mh.gia_thiet_them ? '+ Giả thiết:' : 'Giả thiết:'}</b>{' '}
-            <MathText>{mh.gia_thiet_them || mh.gia_thiet}</MathText>
+          {/* Card TRUNG TÂM */}
+          <div className="rounded-xl border-[1.5px] border-teal-300 bg-teal-50/30 p-2.5">
+            <Fig src={api.anhCauHinhCua(L, mh.id)} cap="Hình cấu hình của mô hình" h="h-40" />
+            <div className="mt-2 text-[12.5px] leading-relaxed text-slate-700">
+              <b className="text-teal-700">Giả thiết:</b> <MathText>{api.giaThietDayDu(L, mh.id)}</MathText>
+            </div>
+            {mh.gia_thiet_them && <div className="mt-1 text-[11.5px] text-slate-500">(phần thêm so với bố: <MathText>{mh.gia_thiet_them}</MathText>)</div>}
           </div>
-          <Fig src={mh.anh_cau_hinh} cap="Hình cấu hình" />
 
-          <p className="mb-1.5 mt-3 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">
-            Bài toán trong mô hình này · {lt.rieng.length}
-          </p>
+          <div className="mb-1 mt-3 flex items-center gap-2">
+            <span className="text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Bài toán phụ thuộc mô hình · {lt.rieng.length}</span>
+            <Btn className="ml-auto h-6 px-2 text-[11px]" onClick={() => onThemCon(mh.id)}>＋ Mô hình con</Btn>
+          </div>
+          {/* Bài toán = các nhánh toả ra từ trung tâm, nhóm theo cấp; đường gạch trái teal gợi "thuộc mô hình". */}
           {[...theoCap.keys()].sort((a, b) => a - b).map((c) => (
-            <div key={c}>
+            <div key={c} className="border-l-2 border-teal-200 pl-2.5">
               <div className="mb-0.5 mt-1.5 text-[10.5px] font-semibold text-slate-400">CẤP {c}</div>
               {theoCap.get(c)!.map((b) => (
-                <div key={b.id} className="flex items-center gap-2 rounded px-1.5 py-1 text-[12.5px] hover:bg-slate-50">
+                <div key={b.id} className="flex items-center gap-2 rounded px-1.5 py-1 text-[12.5px]">
                   <Cap cap={b.cap} /><span className="min-w-0 flex-1 truncate"><MathText>{b.phat_bieu}</MathText></span><Ma>{b.ma}</Ma>
                 </div>
               ))}
@@ -393,7 +402,6 @@ function ViewMoHinh({ L, ho, trongHo, chon, setChon, onSua, onThemCon, reload }:
               <b className="text-teal-700">Toả xuống:</b> {con.map((c) => c.ma).join(' · ')} dùng được <b>toàn bộ {lt.rieng.length}</b> bài toán này.
             </div>
           )}
-          <Btn className="mt-2.5 w-full justify-center" onClick={() => onThemCon(mh.id)}>＋ Mô hình con của {mh.ma}</Btn>
         </Panel>
       </div>
     </>

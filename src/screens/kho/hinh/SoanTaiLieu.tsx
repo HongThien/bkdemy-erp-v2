@@ -174,14 +174,13 @@ function banInBuoi(L: Luoi, khuc: ReturnType<typeof api.tinhKhuc>, trong: BaiToa
       })
     }
     const c = api.cachMacDinh(L, n.id)
+    // Đề = giả thiết đầy đủ của mô hình (mượn) + câu hỏi. Node không có đề/hình riêng.
     mucs.push({
       kieu: 'de',
-      deBai: n.de_bai_chuan || `Chứng minh ${n.phat_bieu}`,
-      anhDe: n.anh_chuan,
+      deBai: [api.giaThietDayDu(L, n.mo_hinh_id), `Chứng minh ${n.phat_bieu}`].filter(Boolean).join('. '),
+      anhDe: api.anhCauHinhCua(L, n.mo_hinh_id),
       ma: n.ma,
-      // noiDung để TRỐNG: `de_bai_chuan` ở trên đã chứa đúng câu hỏi rồi — nhét thêm `phat_bieu`
-      // là in lặp y nguyên một câu hai lần trên giấy.
-      ys: [{ nhan: '', noiDung: '', loiGiai: c?.loi_giai, anh: c?.anh_loi_giai ?? n.anh_chuan, ma: n.ma, cap: n.cap }],
+      ys: [{ nhan: '', noiDung: '', loiGiai: c?.loi_giai, anh: c?.anh_loi_giai ?? api.anhCauHinhCua(L, n.mo_hinh_id), ma: n.ma, cap: n.cap }],
     })
   })
   return {

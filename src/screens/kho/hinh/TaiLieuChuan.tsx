@@ -80,7 +80,7 @@ export default function TaiLieuChuan({ L, khoi }: { L: Luoi; khoi: string }) {
                 <p className="mb-1.5 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Đề chuẩn</p>
                 <div className="mb-3.5 grid gap-3 md:grid-cols-[1fr_200px]">
                   <div className="rounded-lg border border-slate-200 bg-white p-3 text-[12.5px] leading-relaxed text-slate-700">
-                    {mhSau && <MathText>{mhSau.gia_thiet}</MathText>}
+                    {mhSau && <MathText>{api.giaThietDayDu(L, mhSau.id)}</MathText>}
                     <div className="mt-2 space-y-1">
                       {c.nodeIds.filter((id) => nodeCoY.has(id)).map((id, i) => {
                         const n = L.baiToan.find((b) => b.id === id)!
@@ -91,7 +91,7 @@ export default function TaiLieuChuan({ L, khoi }: { L: Luoi; khoi: string }) {
                       })}
                     </div>
                   </div>
-                  <Fig src={mhSau?.anh_cau_hinh} cap="Hình chuẩn — mô hình sâu nhất chuỗi chạm tới" />
+                  <Fig src={mhSau ? api.anhCauHinhCua(L, mhSau.id) : null} cap="Hình chuẩn — mô hình sâu nhất chuỗi chạm tới" />
                 </div>
 
                 <p className="mb-1.5 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Lời giải liền mạch</p>
@@ -139,8 +139,8 @@ function banInChuan(L: Luoi, nodeIds: string[], nodeCoY: Set<string>, soBai: num
     ghiChuDau: 'Bài tương đương — TÊN ĐIỂM THEO HỆ THỐNG, không trùng tên điểm của đề gốc. HS tự đối chiếu.',
     mucs: [{
       kieu: 'de',
-      deBai: mhSau?.gia_thiet ?? '',
-      anhDe: mhSau?.anh_cau_hinh,
+      deBai: mhSau ? api.giaThietDayDu(L, mhSau.id) : '',
+      anhDe: mhSau ? api.anhCauHinhCua(L, mhSau.id) : null,
       ma: mhSau?.ma,
       ys: nodeIds.map((id) => {
         const n = L.baiToan.find((b) => b.id === id)!
@@ -150,7 +150,7 @@ function banInChuan(L: Luoi, nodeIds: string[], nodeCoY: Set<string>, soBai: num
           nhan: trongDe ? String.fromCharCode(97 + i++) : '',
           noiDung: `Chứng minh ${n.phat_bieu}`,
           loiGiai: cach?.loi_giai,
-          anh: cach?.anh_loi_giai ?? n.anh_chuan,
+          anh: cach?.anh_loi_giai ?? api.anhCauHinhCua(L, n.mo_hinh_id),
           ghiChu: trongDe ? null : 'không có trong đề',
           ma: n.ma, cap: n.cap,
         }

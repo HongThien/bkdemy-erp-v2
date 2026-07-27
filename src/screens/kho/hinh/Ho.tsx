@@ -34,7 +34,7 @@ export default function Ho({ L, khoi, di, reload }: { L: Luoi; khoi: string; di:
       {goc.length === 0
         ? <Empty>Chưa có họ nào. Bấm <b>＋ Mô hình gốc</b> để dựng xô nước đầu tiên — vd họ <i>Trực tâm</i>: “△ABC nhọn, ba đường cao AD, BE, CF cắt nhau tại H”.</Empty>
         : (
-          <div className="grid gap-3.5 [grid-template-columns:repeat(auto-fill,minmax(268px,1fr))]">
+          <div className="grid gap-4 [grid-template-columns:repeat(auto-fill,minmax(360px,1fr))]">
             {goc.map((m) => (
               <Card key={m.id} L={L} m={m} onOpen={() => di({ man: 'sodo', hoId: m.id })}
                 onEdit={() => setForm({ sua: m })} onDelete={() => xoa(m)} />
@@ -65,12 +65,11 @@ function Card({ L, m, onOpen, onEdit, onDelete }: { L: Luoi; m: MoHinh; onOpen: 
         <button onClick={(e) => { e.stopPropagation(); onDelete() }} title="Xoá họ"
           className="flex h-7 w-7 items-center justify-center rounded-lg border border-rose-300 bg-white/90 text-rose-600 shadow-sm hover:bg-rose-50">🗑</button>
       </div>
-      <Fig src={m.anh_cau_hinh} h="h-28" />
-      <div className="p-3">
-        <Ma>{m.ma}</Ma>
-        <div className="mb-1.5 mt-0.5 text-[15px] font-semibold text-slate-900"><MathText>{m.ten}</MathText></div>
-        <div className="mb-2 rounded-md bg-teal-50/70 px-2 py-1.5 text-[11.5px] leading-relaxed text-slate-600">
-          <b className="text-teal-700">Giả thiết:</b> <MathText>{m.gia_thiet}</MathText>
+      <Fig src={api.anhCauHinhCua(L, m.id)} h="h-44" />
+      <div className="p-3.5">
+        <div className="flex items-center gap-2"><Ma>{m.ma}</Ma><span className="text-[13px] font-semibold text-slate-800"><MathText>{m.ten}</MathText></span></div>
+        <div className="mb-2.5 mt-1.5 rounded-md bg-teal-50/70 px-2.5 py-2 text-[13px] leading-relaxed text-slate-700">
+          <b className="text-teal-700">Giả thiết:</b> <MathText>{api.giaThietDayDu(L, m.id)}</MathText>
         </div>
         <div className="flex flex-wrap gap-3 text-[11.5px] text-slate-400">
           <span><b className="text-slate-700">{tk.soMoHinhCon}</b> mô hình con</span>
@@ -100,31 +99,51 @@ export function FormMoHinh({ L, chaMacDinh, khoiMacDinh, sua, onClose, onDone }:
   const [loi, setLoi] = useState<string | null>(null)
   // Không cho chọn cha là chính nó hoặc hậu duệ của nó — sẽ tạo vòng (service chặn, UI khỏi mời).
   const cam = sua ? new Set([sua.id, ...api.hauDueCua(L, sua.id)]) : new Set<string>()
+  const laCon = cha.length > 0
+  // Kế thừa: giả thiết đầy đủ của mô hình con = giả thiết của bố + phần THÊM riêng. Bố = cha đầu tiên.
+  const chaFull = laCon ? api.giaThietDayDu(L, cha[0]) : ''
+  const fullXemTruoc = laCon ? [chaFull, gtThem.trim()].filter(Boolean).join('; ') : gt
 
   const luu = async () => {
     setSaving(true); setLoi(null)
     try {
+      // Con: KHÔNG lưu lại full — chỉ phần thêm. Cột gia_thiet (NOT NULL) giữ bản composed cho tương thích;
+      // hiển thị luôn suy live qua giaThietDayDu nên dù bố đổi vẫn đúng.
+      const giaThiet = laCon ? fullXemTruoc : gt
+      const them = laCon ? (gtThem.trim() || null) : null
       if (sua) {
-        await api.updateMoHinh(sua.id, { ten, gia_thiet: gt, gia_thiet_them: gtThem || null, anh_cau_hinh: anh, khoi })
+        await api.updateMoHinh(sua.id, { ten, gia_thiet: giaThiet, gia_thiet_them: them, anh_cau_hinh: anh, khoi })
         await api.setChaMoHinh(sua.id, cha)
       } else {
-        await api.createMoHinh({ ten, gia_thiet: gt, gia_thiet_them: gtThem || null, anh_cau_hinh: anh, khoi }, cha)
+        await api.createMoHinh({ ten, gia_thiet: giaThiet, gia_thiet_them: them, anh_cau_hinh: anh, khoi }, cha)
       }
       await onDone(); onClose()
     } catch (e: any) { setLoi(e.message ?? String(e)); setSaving(false) }
   }
 
   return (
-    <Shell title={sua ? `Sửa mô hình ${sua.ma}` : cha.length ? 'Mô hình con (đổ thêm nước)' : 'Mô hình gốc của một họ'} onClose={onClose}>
-      <Field label="Tên"><input className={inp} value={ten} onChange={(e) => setTen(e.target.value)} placeholder="Trực tâm  ·  Trực tâm + EF∩BC=M" /></Field>
-      <Field label="Giả thiết (bó đầy đủ — text + LaTeX $…$)">
-        <textarea className={`${inp} h-20`} value={gt} onChange={(e) => setGt(e.target.value)}
-          placeholder="$\\triangle ABC$ nhọn, ba đường cao $AD, BE, CF$ cắt nhau tại $H$" />
-        <div className="mt-1.5"><OcrButton onText={setGt} /></div>
-      </Field>
-      {cha.length > 0 && (
-        <Field label="Giả thiết CỘNG so với cha (hiện trên cạnh lưới)">
-          <input className={inp} value={gtThem} onChange={(e) => setGtThem(e.target.value)} placeholder="$EF$ cắt $BC$ tại $M$" />
+    <Shell title={sua ? `Sửa mô hình ${sua.ma}` : laCon ? 'Mô hình con (đổ thêm giả thiết)' : 'Mô hình gốc của một họ'} onClose={onClose}>
+      <Field label="Tên (ngắn gọn — đề & hình mới là chính)"><input className={inp} value={ten} onChange={(e) => setTen(e.target.value)} placeholder="Trực tâm  ·  Trực tâm + EF∩BC=M" /></Field>
+      {laCon ? (
+        <>
+          <div className="mb-3 rounded-lg border border-teal-200 bg-teal-50/60 px-3 py-2.5">
+            <div className="mb-1 text-[10.5px] font-semibold uppercase tracking-wide text-teal-700">Kế thừa từ bố (không sửa ở đây)</div>
+            <div className="text-[13px] leading-relaxed text-slate-700">{chaFull ? <MathText>{chaFull}</MathText> : <span className="text-slate-400">bố chưa có giả thiết</span>}</div>
+          </div>
+          <Field label="Giả thiết THÊM của mô hình con này (chỉ phần cộng — full = bố + phần này)">
+            <textarea className={`${inp} h-16`} value={gtThem} onChange={(e) => setGtThem(e.target.value)} placeholder="$EF$ cắt $BC$ tại $M$" />
+            <div className="mt-1.5"><OcrButton onText={setGtThem} /></div>
+          </Field>
+          <div className="mb-3 rounded-lg border border-slate-200 bg-slate-50/60 px-3 py-2 text-[12.5px]">
+            <span className="text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Giả thiết đầy đủ (xem trước): </span>
+            {fullXemTruoc ? <MathText>{fullXemTruoc}</MathText> : <span className="text-slate-400">—</span>}
+          </div>
+        </>
+      ) : (
+        <Field label="Giả thiết nền của họ (đầy đủ — text + LaTeX $…$)">
+          <textarea className={`${inp} h-20`} value={gt} onChange={(e) => setGt(e.target.value)}
+            placeholder="$\\triangle ABC$ nhọn, ba đường cao $AD, BE, CF$ cắt nhau tại $H$" />
+          <div className="mt-1.5"><OcrButton onText={setGt} /></div>
         </Field>
       )}
       <Field label="Mô hình cha — bỏ trống = gốc của một họ mới">
@@ -144,7 +163,7 @@ export function FormMoHinh({ L, chaMacDinh, khoiMacDinh, sua, onClose, onDone }:
         <AnhInput value={anh} onChange={setAnh} cap="Hình chuẩn của mô hình" />
       </Field>
       {loi && <div className="mb-2 rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[12.5px] text-rose-700">{loi}</div>}
-      <Actions onClose={onClose} onSave={luu} disabled={!ten.trim() || !gt.trim() || saving} saving={saving} label={sua ? 'Lưu' : 'Tạo mô hình'} />
+      <Actions onClose={onClose} onSave={luu} disabled={!ten.trim() || !fullXemTruoc.trim() || saving} saving={saving} label={sua ? 'Lưu' : 'Tạo mô hình'} />
     </Shell>
   )
 }

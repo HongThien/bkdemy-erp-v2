@@ -3147,3 +3147,33 @@ lại lớp curate nhẹ (chỉ tag, không soạn nội dung).
 filter môn. Ghim 1 MT → nút ★ + "Đã ghim: 1" + DB có 1 dòng (join tai_lieu OK). Bỏ ghim → DB về 0.
 `tsc --noEmit` sạch, `npm run schema` refresh (de_test_ghim vào schema.md). Không lỗi console. Dòng ghim
 test lúc verify đã xoá.
+
+## 2026-07-24 (tiếp 5) — Redesign form bài toán + kế thừa giả thiết + card mô hình to + hệ sinh thái
+
+**Thùy chốt model:** bài toán KHÔNG có giả thiết/hình riêng — MƯỢN của mô hình; bài toán trong một
+mô hình chỉ khác nhau ở CÂU HỎI. Vì câu hỏi dựa trên giả thiết ⇒ mỗi bài toán TRỰC TIẾP thuộc 1 mô hình
+(trường mô hình bắt buộc). Không migration — schema đã đủ.
+
+**Derive mới (hinh.ts):** `giaThietDayDu` (giả thiết gốc + phần thêm từng đời — kế thừa) · `anhCauHinhCua`
+(hình của mô hình, leo tổ tiên nếu thiếu) · `nodeTruoc` (node cấp cao nhất trong mô hình → gợi ý tiền đề
+CHÍNH khi tạo node) · `deBaiChuanCua` · `duongToTien`. `dapAnHaiBac` + mọi chỗ in/detail bỏ đọc
+`de_bai_chuan`/`anh_chuan` (cột giữ nhưng thôi ghi) → đề = giả thiết mô hình + câu hỏi, hình = hình mô hình.
+
+**FormBaiToan viết lại — popup lớn 2 cột** (portal ra body): TRÁI = mô hình (select, bắt buộc) + giả thiết
+đầy đủ (read-only, mượn) + cấp độ + hình mô hình (read-only) + CÂU HỎI (=phat_bieu). PHẢI = dạng + lời giải
++ ảnh lời giải + tiền đề + bổ đề. Tiền đề: mặc định gắn "bài toán phía trước" làm CHÍNH; nút "＋ Thêm tiền đề"
+mở CÂY (Mô hình › node, cả họ) để thêm — AND. Mọi ô công thức có OcrButton (dán ảnh → LaTeX).
+
+**FormMoHinh kế thừa:** mô hình con chỉ nhập "giả thiết THÊM" (delta); box read-only hiện giả thiết bố;
+xem trước full = bố + delta. Lưu: gia_thiet = composed (cho NOT NULL/reader cũ), hiển thị luôn suy live
+qua giaThietDayDu (bố đổi vẫn đúng).
+
+**Card mô hình TO:** M0 (grid minmax 360) + graph View mô hình (MH_W 272 × MH_H 210) hiện HÌNH lớn +
+GIẢ THIẾT đầy đủ (tên phụ). Detail View mô hình đổi thành **"Hệ sinh thái"**: mô hình trung tâm (hình +
+giả thiết) + bài toán phụ thuộc nhóm theo cấp (gạch trái teal = thuộc mô hình).
+
+**Verify trên app thật** (dev 5183 + login, data test tạo qua DB rồi xoá): form bài toán mở popup lớn,
+giả thiết "△ABC nhọn, 3 đường cao..." mượn từ mô hình, câu hỏi riêng, tiền đề chính auto = △AEF∽△ABC
+(node cấp cao nhất), cây tiền đề hiện "◇ MH.012 · Trực tâm › node"; card MH.013 con hiện giả thiết
+COMPOSED "...; EF cắt BC tại M"; form sửa con hiện kế thừa bố read-only + ô thêm chỉ delta + xem trước full;
+panel Hệ sinh thái hiện mô hình trung tâm + BT.017/BT.018 theo cấp. `tsc` + `vite build` sạch.
