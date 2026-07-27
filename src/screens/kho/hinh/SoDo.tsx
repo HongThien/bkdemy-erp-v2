@@ -19,7 +19,7 @@ import type { Nhay } from './KhoHinhScreen'
 /** Dải cấp gọn: 4–4 đọc thừa, chỉ in 4. */
 export const dai = (ns: number[]) => (Math.min(...ns) === Math.max(...ns) ? String(ns[0]) : `${Math.min(...ns)}–${Math.max(...ns)}`)
 
-const COL_W = 214, GAP = 40, NODE_H = 78, ROW_GAP = 12
+const COL_W = 236, GAP = 40, NODE_H = 112, ROW_GAP = 12
 // Card mô hình TO — Thùy: đọc tên khó hình dung, phải thấy hình + giả thiết. Cao hơn để chứa cả hai.
 const MH_W = 272, MH_H = 210
 
@@ -168,23 +168,23 @@ function ViewBaiToan({ L, ho, nodes, chon, setChon, onSua }: {
                       <button key={n.id} onClick={() => setChon(n.id)}
                         style={{ left: p.x, top: p.y, width: COL_W, height: NODE_H }}
                         title="Bấm để xem đầy đủ đề · hình · đáp án"
-                        className={`absolute flex gap-2 overflow-hidden rounded-lg border bg-white p-2 text-left text-[11.5px] leading-tight transition ${
+                        className={`absolute flex flex-col gap-1 overflow-hidden rounded-lg border bg-white p-2 text-left leading-tight transition ${
                           khac ? 'border-teal-300 bg-teal-50/40' : 'border-blue-300'
                         } ${chon === n.id ? 'shadow-md ring-2 ring-blue-400/40' : 'hover:shadow-sm'}`}>
-                        {/* Thumbnail hình (của MÔ HÌNH — nguồn đề). Card thu nhỏ = hình + câu hỏi; click → panel đầy đủ. */}
-                        <div className="h-[58px] w-[58px] shrink-0 overflow-hidden rounded border border-slate-100 bg-slate-50">
-                          {api.anhCauHinhCua(L, n.mo_hinh_id)
-                            ? <img src={api.anhCauHinhCua(L, n.mo_hinh_id)!} alt="" className="h-full w-full object-contain" />
-                            : <div className="flex h-full items-center justify-center text-[9px] text-slate-300">chưa có<br />hình</div>}
-                        </div>
-                        <div className="flex min-w-0 flex-1 flex-col">
-                          <div className="line-clamp-2 flex-1 text-slate-700"><MathText>{n.phat_bieu}</MathText></div>
-                          <div className="mt-1 flex items-center gap-1.5">
-                            <Cap cap={n.cap} teal={khac} />
-                            {/* Mã mô hình = NGUỒN ĐỀ (đề = giả thiết mô hình + câu hỏi); tooltip = giả thiết. */}
-                            {mh && <span className="truncate rounded-full border border-teal-300 bg-teal-50 px-1.5 text-[9.5px] text-teal-700" title={api.giaThietDayDu(L, mh.id)}>◇ {maCap.get(mh.id) ?? mh.ma}</span>}
-                            <Ma>{n.ma}</Ma>
+                        {/* ĐỀ = giả thiết mô hình (mượn) + hình mô hình. Câu hỏi = phat_bieu. Cả hai hiện thẳng trên card. */}
+                        <div className="flex gap-2">
+                          <div className="h-[42px] w-[42px] shrink-0 overflow-hidden rounded border border-slate-100 bg-slate-50">
+                            {api.anhCauHinhCua(L, n.mo_hinh_id)
+                              ? <img src={api.anhCauHinhCua(L, n.mo_hinh_id)!} alt="" className="h-full w-full object-contain" />
+                              : <div className="flex h-full items-center justify-center text-center text-[8.5px] text-slate-300">chưa<br />có hình</div>}
                           </div>
+                          <div className="line-clamp-3 min-w-0 flex-1 text-[10px] text-teal-700"><MathText>{api.giaThietDayDu(L, n.mo_hinh_id)}</MathText></div>
+                        </div>
+                        <div className="line-clamp-2 flex-1 border-t border-slate-100 pt-1 text-[11.5px] font-medium text-slate-800"><MathText>{n.phat_bieu}</MathText></div>
+                        <div className="flex items-center gap-1.5">
+                          <Cap cap={n.cap} teal={khac} />
+                          {mh && <span className="truncate rounded-full border border-teal-300 bg-teal-50 px-1.5 text-[9.5px] text-teal-700" title={api.giaThietDayDu(L, mh.id)}>◇ {maCap.get(mh.id) ?? mh.ma}</span>}
+                          <Ma>{n.ma}</Ma>
                         </div>
                       </button>
                     )
@@ -387,29 +387,16 @@ function ViewMoHinh({ L, ho, trongHo, chon, setChon, onSua, onThemCon, reload }:
               }} className="h-7 px-2 border-rose-300 text-rose-600 hover:bg-rose-50" title="Xoá mô hình">🗑</Btn>
             </div>
           </div>
-          {/* Card TRUNG TÂM */}
-          <div className="space-y-2 rounded-xl border-[1.5px] border-teal-300 bg-teal-50/30 p-2.5">
-            <Fig src={api.anhCauHinhCua(L, mh.id)} cap="Hình cấu hình của mô hình" h="h-40" />
-            <FieldCard label="Giả thiết đầy đủ"><MathText>{api.giaThietDayDu(L, mh.id)}</MathText></FieldCard>
-            {mh.gia_thiet_them && <FieldCard label="Phần thêm so với bố" ton="slate"><MathText>{mh.gia_thiet_them}</MathText></FieldCard>}
-          </div>
+          <FieldCard label="Giả thiết đầy đủ (đề của MỌI bài toán trong mô hình)"><MathText>{api.giaThietDayDu(L, mh.id)}</MathText></FieldCard>
+          {mh.gia_thiet_them && <FieldCard label="Phần thêm so với bố" ton="slate" className="mt-1.5"><MathText>{mh.gia_thiet_them}</MathText></FieldCard>}
 
           <div className="mb-1 mt-3 flex items-center gap-2">
-            <span className="text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Bài toán phụ thuộc mô hình · {lt.rieng.length}</span>
+            <span className="text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Sơ đồ tâm–vệ tinh · {lt.rieng.length} bài toán phụ thuộc</span>
             <Btn className="ml-auto h-6 px-2 text-[11px]" onClick={() => onThemCon(mh.id)}>＋ Mô hình con</Btn>
           </div>
-          {/* Bài toán = các nhánh toả ra từ trung tâm, nhóm theo cấp; đường gạch trái teal gợi "thuộc mô hình". */}
-          {[...theoCap.keys()].sort((a, b) => a - b).map((c) => (
-            <div key={c} className="border-l-2 border-teal-200 pl-2.5">
-              <div className="mb-0.5 mt-1.5 text-[10.5px] font-semibold text-slate-400">CẤP {c}</div>
-              {theoCap.get(c)!.map((b) => (
-                <div key={b.id} className="flex items-center gap-2 rounded px-1.5 py-1 text-[12.5px]">
-                  <Cap cap={b.cap} /><span className="min-w-0 flex-1 truncate"><MathText>{b.phat_bieu}</MathText></span><Ma>{b.ma}</Ma>
-                </div>
-              ))}
-            </div>
-          ))}
-          {!lt.rieng.length && <div className="text-[12px] text-slate-400">— mô hình này chưa có bài toán nào (vùng chưa khai thác) —</div>}
+          {lt.rieng.length
+            ? <RadialEco L={L} mh={mh} nodes={lt.rieng} maCap={maCap} />
+            : <div className="py-6 text-center text-[12px] text-slate-400">— mô hình này chưa có bài toán nào (vùng chưa khai thác) —</div>}
 
           {!!lt.keThua.length && (
             <div className="mt-2.5 rounded-lg bg-teal-50/70 px-2.5 py-2 text-[11.5px] leading-relaxed text-slate-600">
@@ -424,5 +411,47 @@ function ViewMoHinh({ L, ho, trongHo, chon, setChon, onSua, onThemCon, reload }:
         </Panel>
       </div>
     </>
+  )
+}
+
+// ══════════════════ SƠ ĐỒ TÂM–VỆ TINH ══════════════════
+// Hệ sinh thái của MỘT mô hình: mô hình làm TÂM, các bài toán phụ thuộc xếp thành vòng VỆ TINH quanh nó,
+// nối bằng nan hoa. Đây là quan hệ mô hình↔bài toán (khác lưới bài toán = bài↔bài, khác view tổng = mô
+// hình↔mô hình). Nhiều bài toán → vòng đông; đủ dùng cho quy mô một mô hình.
+function RadialEco({ L, mh, nodes, maCap }: { L: Luoi; mh: MoHinh; nodes: BaiToan[]; maCap: Map<string, string> }) {
+  const W = 298, H = 298, cx = W / 2, cy = H / 2   // vừa panel detail 330px (trừ padding)
+  const N = nodes.length
+  const r = 98
+  const pts = nodes.map((n, i) => {
+    const ang = -Math.PI / 2 + (N === 1 ? 0 : (i * 2 * Math.PI) / N)   // bài đầu ở đỉnh (12h), quay theo chiều kim
+    return { n, x: cx + r * Math.cos(ang), y: cy + r * Math.sin(ang) }
+  })
+  const anh = api.anhCauHinhCua(L, mh.id)
+  return (
+    <div className="relative mx-auto" style={{ width: W, height: H }}>
+      <svg className="pointer-events-none absolute inset-0" width={W} height={H}>
+        {pts.map((p, i) => <line key={i} x1={cx} y1={cy} x2={p.x} y2={p.y} stroke="#5eccb0" strokeWidth="1.4" />)}
+      </svg>
+      {/* TÂM = mô hình */}
+      <div className="absolute z-10 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-xl border-[1.5px] border-teal-400 bg-white shadow"
+        style={{ left: cx, top: cy, width: 108 }}>
+        <div className="h-14 border-b border-slate-100 bg-slate-50">
+          {anh ? <img src={anh} alt="" className="h-full w-full object-contain" /> : <div className="flex h-full items-center justify-center text-[9px] text-slate-300">chưa có hình</div>}
+        </div>
+        <div className="px-1.5 py-1 text-center">
+          <MaPill code={maCap.get(mh.id) ?? '?'} size="sm" />
+          <div className="mt-0.5 line-clamp-1 text-[10.5px] font-semibold text-slate-700"><MathText>{mh.ten}</MathText></div>
+        </div>
+      </div>
+      {/* VỆ TINH = bài toán phụ thuộc */}
+      {pts.map((p) => (
+        <div key={p.n.id} title={tron(p.n.phat_bieu)}
+          className="absolute z-20 -translate-x-1/2 -translate-y-1/2 rounded-lg border border-blue-300 bg-white px-1.5 py-1 shadow-sm"
+          style={{ left: p.x, top: p.y, width: 86 }}>
+          <div className="mb-0.5 flex items-center gap-1"><Cap cap={p.n.cap} /><Ma>{p.n.ma}</Ma></div>
+          <div className="line-clamp-2 text-[10px] leading-tight text-slate-700"><MathText>{p.n.phat_bieu}</MathText></div>
+        </div>
+      ))}
+    </div>
   )
 }

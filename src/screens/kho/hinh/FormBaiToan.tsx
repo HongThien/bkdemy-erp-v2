@@ -27,6 +27,9 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
   const [moHinhId, setMoHinhId] = useState(sua?.mo_hinh_id ?? moHinhMacDinh ?? L.moHinh[0]?.id ?? '')
   const [phatBieu, setPhatBieu] = useState(sua?.phat_bieu ?? phatBieuGoi ?? '')
   const [cap, setCap] = useState<number>(sua?.cap ?? 1)
+  // Node MỚI: hệ ĐIỀN SẴN cấp = gợi ý (1 + max cấp tiền đề), vẫn sửa tay được. Node đang SỬA: giữ cấp cũ,
+  // coi như người đã chốt (không auto-đè). Người gõ tay 1 lần → `capTuNhap` = true, hệ thôi điền lại.
+  const [capTuNhap, setCapTuNhap] = useState(!!sua)
   const [dangId, setDangId] = useState(cachCu?.dang_id ?? '')
   const [loiGiai, setLoiGiai] = useState(cachCu?.loi_giai ?? '')
   const [anhGiai, setAnhGiai] = useState<string | null>(cachCu?.anh_loi_giai ?? null)
@@ -51,8 +54,10 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
   const giaThiet = api.giaThietDayDu(L, moHinhId)
   const anhMoHinh = api.anhCauHinhCua(L, moHinhId)
 
-  // Cấp gợi ý = 1 + max(cap tiền đề). Chỉ ĐỐI CHIẾU, không ghi đè cấp nhập tay (§1.1).
+  // Cấp gợi ý = 1 + max(cap tiền đề); không tiền đề ⇒ 1.
   const capGoi = useMemo(() => (tienDe.length ? 1 + Math.max(...tienDe.map((id) => L.baiToan.find((b) => b.id === id)?.cap ?? 0)) : 1), [tienDe, L])
+  // Điền sẵn cấp = gợi ý cho tới khi người tự gõ (đổi tiền đề thì cấp tự cập nhật theo, khỏi sửa tay).
+  useEffect(() => { if (!capTuNhap) setCap(capGoi) }, [capGoi, capTuNhap])
 
   // Search-before-create: gõ câu hỏi → hiện node gần giống trong cùng mô hình + cha/con (nhắc, không chặn).
   useEffect(() => {
@@ -114,15 +119,9 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
 
             <div className="flex items-end gap-3">
               <div className="w-40">
-                <Lbl>Cấp độ (nhập tay, toàn cục)</Lbl>
-                <div className="flex items-center gap-2">
-                  <input type="number" min={1} className={inp} value={cap} onChange={(e) => setCap(Number(e.target.value) || 1)} />
-                  {cap !== capGoi && (
-                    <span className="whitespace-nowrap rounded-md bg-amber-100 px-2 py-1 text-[11px] font-medium text-amber-800" title="1 + max(cấp tiền đề) — chỉ đối chiếu">
-                      ⚠ gợi ý {capGoi}
-                    </span>
-                  )}
-                </div>
+                <Lbl>Cấp độ <span className="font-normal normal-case text-slate-400">— điền sẵn, sửa được</span></Lbl>
+                <input type="number" min={1} className={inp} value={cap}
+                  onChange={(e) => { setCap(Number(e.target.value) || 1); setCapTuNhap(true) }} />
               </div>
               <p className="flex-1 pb-1 text-[11px] leading-snug text-slate-400">Cấp = số tính chất phải CM trước. Độ sâu mô hình KHÔNG cộng vào cấp — mô hình con vẫn có bài cấp 1.</p>
             </div>

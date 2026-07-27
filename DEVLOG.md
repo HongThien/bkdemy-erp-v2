@@ -3262,3 +3262,25 @@ cũng cần hình + đề, hoặc 2 trạng thái thu nhỏ/expand.
 **Verify trên app thật** (data _vt gốc+node, xoá sau): node card hiện thumbnail + câu hỏi + "◇ 2"; click →
 panel "ĐỀ — GIẢ THIẾT (TỪ MÔ HÌNH 2): △ABC nhọn..." + "CÂU HỎI: Chứng minh tứ giác BFEC nội tiếp".
 `tsc` + `vite build` sạch.
+
+## 2026-07-27 (tiếp 2) — Đề (giả thiết) hiện THẲNG trong node card
+
+**Thùy:** đề ngắn, cho đề vào card bài toán luôn — nhìn dễ hơn hẳn (không chỉ tooltip/panel).
+Node card giờ 3 tầng: [thumbnail hình mô hình + ĐỀ giả thiết (teal, line-clamp-3)] › CÂU HỎI (phat_bieu,
+đậm, gạch ngăn) › chips (cấp · ◇ mã mô hình · mã BT). NODE_H 78→112, COL_W 214→236.
+Verify: card hiện "△ABC nhọn, ba đường cao... | tứ giác BFEC nội tiếp | c1 ◇2 BT" — scrollH=clientH=110
+(vừa khít, không tràn). `tsc` + `vite build` sạch.
+
+## 2026-07-27 (tiếp 3) — Cấp độ điền sẵn + hệ sinh thái tâm–vệ tinh
+
+**Thùy (2 việc):**
+1. **Cấp độ bỏ badge gợi ý, ĐIỀN SẴN vào ô** (vẫn nhập tay). FormBaiToan: node mới cap init = capGoi
+   (1+max tiền đề); `useEffect` sync cap=capGoi tới khi người tự gõ (`capTuNhap`=true) → đổi tiền đề thì
+   cap tự cập nhật, khỏi sửa. Node sửa: giữ cap cũ. Bỏ badge "⚠ gợi ý N". Verify: node mới trong mô hình
+   có node cấp 2 → ô cap điền sẵn **3**.
+2. **Click mô hình → hệ sinh thái kiểu TÂM–VỆ TINH** (radial), thay list nhóm-theo-cấp cũ. `RadialEco`
+   (SoDo.tsx): mô hình làm TÂM (hình + mã phân cấp + tên), bài toán phụ thuộc xếp vòng VỆ TINH quanh,
+   nối nan hoa teal. W/H 298 (vừa panel detail 330). Verify: header "SƠ ĐỒ TÂM–VỆ TINH · N bài toán",
+   tâm = mô hình, vệ tinh = BT với cấp/mã, box không tràn panel.
+
+`tsc` + `vite build` sạch.
