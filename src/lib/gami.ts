@@ -7,8 +7,8 @@ import { getMTInstanceByBuoi, getMTPhanCaus, type MTPhanCaus } from './mt'
 import { getBaiTestByDoc, getBaiTestCaus, type BaiTest, type BaiTestCau } from './testonline'
 import type { CauHoi } from './kho/api'
 import { computeEloUpdate } from '../gami/elo.js'
-import { problemPoints, expForRank, rankSession } from '../gami/exp.js'
-import { RANK_EXP, ATTEND_FLOOR_EXP } from '../gami/config.js'
+import { problemPoints, rankSession, etRankExp, monthlyBtvnExp } from '../gami/exp.js'
+import { ATTEND_FLOOR_EXP } from '../gami/config.js'
 import { seasonOf, seasonLabel } from '../gami/season.js'
 import { vnInstant, congNgay } from './tuan'
 
@@ -500,28 +500,82 @@ export async function xoaCanhBao(id: string): Promise<void> {
   if (error) throw error
 }
 
-// Đóng BTVN: thưởng EXP HOÀN THÀNH theo trạng thái nộp (KHÔNG Elo, KHÔNG gate hoàn-tất buổi). Idempotent (claim btvn_dong_at).
-const BTVN_EXP: Record<string, number> = { nop_dung_han: 200, nop_muon: 100, xin_phep: 50, khong_lam: 0 } // PROVISIONAL
+// ════ EXP THÁNG (redesign 07-28, Thùy chốt) — EXP = CHĂM CHỈ, TÍNH LẠI theo (lớp × tháng) ════
+// EXP mỗi buổi (ET rank) + phần THÁNG (BTVN: base/bài × thái độ + thưởng/phạt so lớp). Tháng = Σ buổi.
+// Lưu 1 dòng ledger source='exp_thang', note=ym / (HS×môn×tháng). TỰ recompute khi buổi đổi (đóng/mở ET|BTVN).
+// Nguồn chính = recompute (idempotent) → không còn ghi rank_*/btvn per-buổi. Bù/bổ trợ vẫn 'attend_floor' riêng.
+
+// BTVN grades → độ-đúng per (hs×buổi). PHÂN TRANG: 1 lớp/tháng cũng có thể >1000 grades (PostgREST cap).
+async function fetchBtvnAcc(buoiIds: string[]): Promise<Map<string, number[]>> {
+  const accByHs = new Map<string, number[]>()
+  if (!buoiIds.length) return accByHs
+  const agg = new Map<string, { pts: number; n: number }>()
+  const PAGE = 1000
+  for (let fromR = 0; fromR < 200000; fromR += PAGE) {
+    const { data, error } = await supabase.from('gami_grades')
+      .select('hoc_sinh_id, points, prob:problem_id!inner(buoi_hoc_id, phase)')
+      .eq('prob.phase', 'btvn').in('prob.buoi_hoc_id', buoiIds)
+      .order('problem_id').order('hoc_sinh_id').range(fromR, fromR + PAGE - 1)
+    if (error) throw error
+    const rows = (data ?? []) as any[]
+    for (const g of rows) { const bId = g.prob?.buoi_hoc_id; if (!bId) continue; const k = g.hoc_sinh_id + ':' + bId; const a = agg.get(k) ?? { pts: 0, n: 0 }; a.pts += Number(g.points); a.n += 1; agg.set(k, a) }
+    if (rows.length < PAGE) break
+  }
+  for (const [k, v] of agg) { const hs = k.split(':')[0]; const acc = v.n ? v.pts / (v.n * 100) : 0; (accByHs.get(hs) ?? accByHs.set(hs, []).get(hs)!).push(acc) }
+  return accByHs
+}
+
+// Tính lại EXP THÁNG cho 1 lớp (idempotent). Thay MỌI EXP của (lớp×tháng): xoá per-buổi cũ (ref_buoi trong
+// tháng: rank_*/btvn) + exp_thang cũ → chèn exp_thang. KHÔNG đụng bù/bổ trợ (buổi loai≠'thuong', attend_floor).
+export async function recomputeExpThang(lopId: string, ym: string): Promise<{ hs: number; tong: number }> {
+  const { data: lopRow } = await supabase.from('lop').select('mon').eq('id', lopId).maybeSingle()
+  const mon = (lopRow as any)?.mon ?? 'Toán'
+  const [Y, M] = ym.split('-').map(Number)
+  const from = `${ym}-01`, to = M === 12 ? `${Y + 1}-01-01` : `${Y}-${String(M + 1).padStart(2, '0')}-01`
+  const { data: bs } = await supabase.from('buoi_hoc').select('id').eq('lop_id', lopId).eq('loai', 'thuong').neq('trang_thai', 'huy').gte('ngay', from).lt('ngay', to).limit(LIMIT)
+  const buoiIds = ((bs ?? []) as any[]).map((b) => b.id)
+
+  type Acc = { et: number; bais: { trangThai: string; thaiDo: string }[]; acc: number[] }
+  const perHs = new Map<string, Acc>()
+  const ensure = (id: string) => perHs.get(id) ?? perHs.set(id, { et: 0, bais: [], acc: [] }).get(id)!
+  if (buoiIds.length) {
+    const { data: eh } = await supabase.from('gami_elo_history').select('hoc_sinh_id, rank, rank_total').eq('phase', 'et').in('buoi_hoc_id', buoiIds).limit(LIMIT)
+    for (const r of (eh ?? []) as any[]) if (r.rank != null && r.rank_total != null) ensure(r.hoc_sinh_id).et += etRankExp(r.rank, r.rank_total)
+    const { data: kq } = await supabase.from('btvn_ket_qua').select('hoc_sinh_id, trang_thai_nop, thai_do').in('buoi_hoc_id', buoiIds).limit(LIMIT)
+    for (const r of (kq ?? []) as any[]) ensure(r.hoc_sinh_id).bais.push({ trangThai: r.trang_thai_nop, thaiDo: r.thai_do })
+    for (const [hs, arr] of await fetchBtvnAcc(buoiIds)) ensure(hs).acc = arr
+  }
+  const means = [...perHs.values()].map((p) => p.acc.length ? p.acc.reduce((s, x) => s + x, 0) / p.acc.length : null).filter((x): x is number => x != null)
+  const classMean = means.length ? means.reduce((s, x) => s + x, 0) / means.length : null
+
+  const rows = [] as { hoc_sinh_id: string; source: string; amount: number; mon: string; note: string }[]
+  for (const [hs, p] of perHs) {
+    const studentAcc = p.acc.length ? p.acc.reduce((s, x) => s + x, 0) / p.acc.length : null
+    const total = p.et + monthlyBtvnExp(p.bais, studentAcc, classMean).total   // MT = 0 (diem_thi rỗng)
+    if (total > 0) rows.push({ hoc_sinh_id: hs, source: 'exp_thang', amount: total, mon, note: ym })
+  }
+  if (buoiIds.length) await supabase.from('gami_exp_ledger').delete().in('ref_buoi_hoc_id', buoiIds)   // per-buổi cũ
+  const hsList = [...perHs.keys()]
+  if (hsList.length) await supabase.from('gami_exp_ledger').delete().eq('source', 'exp_thang').eq('mon', mon).eq('note', ym).in('hoc_sinh_id', hsList)
+  if (rows.length) await supabase.from('gami_exp_ledger').insert(rows)
+  return { hs: rows.length, tong: rows.reduce((s, r) => s + r.amount, 0) }
+}
+
+// Đóng BTVN: chỉ CHỐT trạng thái buổi → recompute EXP tháng (idempotent). KHÔNG Elo, KHÔNG gate hoàn-tất.
 export async function closeBTVN(buoiId: string): Promise<{ already?: boolean; thuong: number }> {
-  const { data: b, error } = await supabase.from('buoi_hoc').select('btvn_dong_at, lop_id').eq('id', buoiId).single()
+  const { data: b, error } = await supabase.from('buoi_hoc').select('btvn_dong_at, lop_id, ngay').eq('id', buoiId).single()
   if (error) throw error
   if ((b as any).btvn_dong_at) return { already: true, thuong: 0 }
   const claim = await supabase.from('buoi_hoc').update({ btvn_dong_at: new Date().toISOString(), updated_at: new Date().toISOString() }).eq('id', buoiId).is('btvn_dong_at', null).select('id')
   if (claim.error) throw claim.error
   if (!claim.data?.length) return { already: true, thuong: 0 }
-  const { data: lopRow } = await supabase.from('lop').select('mon').eq('id', (b as any).lop_id).maybeSingle()
-  const mon = (lopRow as any)?.mon ?? 'Toán'
-  const kq = await getBtvnKetQua(buoiId)
-  let thuong = 0
-  for (const [hsId, v] of Object.entries(kq)) {
-    const exp = BTVN_EXP[v.trang_thai_nop ?? ''] ?? 0
-    if (exp > 0) { await supabase.from('gami_exp_ledger').insert({ hoc_sinh_id: hsId, source: 'btvn', amount: exp, ref_buoi_hoc_id: buoiId, mon }); thuong++ }
-  }
-  return { thuong }
+  const res = await recomputeExpThang((b as any).lop_id, String((b as any).ngay).slice(0, 7))
+  return { thuong: res.hs }
 }
 export async function reopenBTVN(buoiId: string): Promise<void> {
-  await supabase.from('gami_exp_ledger').delete().eq('ref_buoi_hoc_id', buoiId).eq('source', 'btvn')
+  const { data: b } = await supabase.from('buoi_hoc').select('lop_id, ngay').eq('id', buoiId).maybeSingle()
   await supabase.from('buoi_hoc').update({ btvn_dong_at: null, updated_at: new Date().toISOString() }).eq('id', buoiId)
+  if (b && (b as any).lop_id) await recomputeExpThang((b as any).lop_id, String((b as any).ngay).slice(0, 7))
 }
 
 // ── BẢNG TÍNH ELO 1 phase (đọc lại từ history — kiểm tra/quản lý sau khi đóng) ──
@@ -648,25 +702,23 @@ export async function closePhase(buoiId: string, phase: Phase): Promise<{ alread
       await supabase.from('gami_elo_history').insert({ hoc_sinh_id: id, buoi_hoc_id: buoiId, phase, mon, elo_before: u.eloBefore, expected: u.expected, actual: u.actual, delta: u.delta, elo_after: u.eloAfter, rank: rankMap.get(id) ?? null, rank_total: rankTotal })
       await supabase.from('gami_elo').update({ elo: eloMap.get(id).elo + u.delta, updated_at: new Date().toISOString() }).eq('hoc_sinh_id', id).eq('mon', mon)
     }
-    // EXP theo hạng. CÔNG BẰNG khi HOÀ: cùng điểm thô = cùng EXP = TRUNG BÌNH bậc EXP các vị trí nhóm chiếm.
-    const grp = new Map<number, number[]>()
-    for (const r of ranks) { const p = raw[r.studentId]; (grp.get(p) ?? grp.set(p, []).get(p))!.push(expForRank(r.rank, hsIds.length, (RANK_EXP as Record<string, number[]>)[phase])) }
-    const expByPoints = new Map<number, number>()
-    for (const [p, arr] of grp) expByPoints.set(p, Math.round(arr.reduce((s, x) => s + x, 0) / arr.length))
+    // EXP KHÔNG ghi per-buổi nữa (nguồn chính = recomputeExpThang cuối hàm). Reveal chỉ HIỂN THỊ đóng góp
+    // buổi: ET = etRankExp(hạng) · ingame/mt = 0 (không vào EXP). EXP THÁNG thật được tính lại sau markClosed.
     for (const r of ranks) {
-      const exp = expByPoints.get(raw[r.studentId]) ?? 0
-      await supabase.from('gami_exp_ledger').insert({ hoc_sinh_id: r.studentId, source: 'rank_' + phase, amount: exp, ref_buoi_hoc_id: buoiId, mon })
+      const exp = phase === 'et' ? etRankExp(r.rank, hsIds.length) : 0
       const u: any = eloOf.get(r.studentId)
       reveal.push({ hoc_sinh_id: r.studentId, rawPoints: raw[r.studentId], rank: r.rank, exp, eloBefore: u?.eloBefore, eloAfter: u?.eloAfter, delta: u?.delta })
     }
   } else {
-    // bù/bổ trợ: không Elo, EXP sàn (đi học là có)
+    // bù/bổ trợ: không Elo, EXP sàn (đi học là có) — GIỮ per-buổi, KHÔNG vào model tháng
     for (const id of hsIds) {
       await supabase.from('gami_exp_ledger').insert({ hoc_sinh_id: id, source: 'attend_floor', amount: ATTEND_FLOOR_EXP, ref_buoi_hoc_id: buoiId, mon })
       reveal.push({ hoc_sinh_id: id, rawPoints: raw[id], rank: 0, exp: ATTEND_FLOOR_EXP })
     }
   }
   await markClosed(buoiId, dongCol, b.loai, otherClosed)
+  // TỰ cập nhật EXP tháng khi đóng ET buổi thường (ET là nguồn EXP; ingame/mt không đổi EXP).
+  if (phase === 'et' && b.loai === 'thuong' && b.lop_id) { try { await recomputeExpThang(b.lop_id, String(b.ngay).slice(0, 7)) } catch (e) { console.error('recomputeExpThang lỗi sau đóng ET:', e) } }
   return { reveal }
 }
 async function markClosed(buoiId: string, dongCol: string, loai: string, otherClosed: boolean): Promise<void> {
@@ -1057,6 +1109,8 @@ export async function reopenPhase(buoiId: string, phase: Phase): Promise<void> {
   await supabase.from('gami_elo_history').delete().eq('buoi_hoc_id', buoiId).eq('phase', phase)
   await supabase.from('gami_exp_ledger').delete().eq('ref_buoi_hoc_id', buoiId).in('source', ['rank_' + phase, 'attend_floor'])
   await supabase.from('buoi_hoc').update({ [dongCol]: null, trang_thai: 'mo', updated_at: new Date().toISOString() }).eq('id', buoiId)
+  // Mở lại ET buổi thường → EXP tháng đổi → tự tính lại.
+  if (phase === 'et') { const { data: b } = await supabase.from('buoi_hoc').select('lop_id, ngay, loai').eq('id', buoiId).maybeSingle(); if (b && (b as any).loai === 'thuong' && (b as any).lop_id) try { await recomputeExpThang((b as any).lop_id, String((b as any).ngay).slice(0, 7)) } catch (e) { console.error('recomputeExpThang lỗi sau mở ET:', e) } }
 }
 
 // ── QUẢN LÝ ĐIỂM (Elo/EXP) — bảng tổng + hồ sơ HS ─────────────────
