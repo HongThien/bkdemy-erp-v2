@@ -6,7 +6,7 @@ import { createPortal } from 'react-dom'
 import SearchSelect, { type Opt } from '../../components/SearchSelect'
 import { listHSDangHoc } from '../../lib/tuyensinh'
 import { listLop, listHSCuaLop, listLopCuaHS } from '../../lib/nhansu'
-import { getMasteryHS, listBuoiHoatDong, getMasteryRollup, getMasteryByDang, getMasteryByChuyenDe, getTongQuanHS, SRC_LABEL, type DangMastery, type DangEval, type BuoiActivity, type HSRollup, type TongQuanHS } from '../../lib/mastery'
+import { getMasteryHS, listBuoiHoatDong, getMasteryRollup, getMasteryByDang, getMasteryByChuyenDe, getTongQuanHS, getClassMatrix, SRC_LABEL, type DangMastery, type DangEval, type BuoiActivity, type HSRollup, type TongQuanHS, type ClassMatrix, type MatrixPhase, type MatrixCell } from '../../lib/mastery'
 import { BuoiDetail } from '../gami/BuoiHocScreen'
 import type { TabKey } from '../../lib/gami'
 import { tenHienThiDs } from '../../lib/hoten'
@@ -24,7 +24,7 @@ const TIN = { cao: 'Tin cao', tb: 'Tin TB', thap: 'Tin thấp' } as const
 
 const fmtShort = (iso: string) => { const d = new Date(iso); return isNaN(+d) ? '' : d.toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit' }) }
 
-type ViewKey = 'hs' | 'raw' | 'lop' | 'dang'
+type ViewKey = 'hs' | 'matrix' | 'raw' | 'lop' | 'dang'
 export default function KetQuaScreen() {
   const [view, setView] = useState<ViewKey>('hs')
   // lazy-mount + GIỮ mount (ẩn bằng `hidden`) → đổi tab qua lại KHÔNG mất lựa chọn/kết quả đã tìm.
@@ -36,12 +36,14 @@ export default function KetQuaScreen() {
       <div className="flex items-center gap-2 border-b border-slate-200 bg-white px-6 py-2.5">
         <span className="mr-2 text-sm font-semibold text-slate-900">Kết quả học tập</span>
         <button onClick={() => go('hs')} className={tab(view === 'hs')}>Từng học sinh</button>
+        <button onClick={() => go('matrix')} className={tab(view === 'matrix')}>Cả lớp</button>
         <button onClick={() => go('raw')} className={tab(view === 'raw')}>Theo buổi (raw)</button>
         <button onClick={() => go('lop')} className={tab(view === 'lop')}>Lớp / Khối</button>
         <button onClick={() => go('dang')} className={tab(view === 'dang')}>Theo dạng</button>
       </div>
       <div className="min-h-0 min-w-0 flex-1 overflow-auto p-6">
         {seen.hs && <div className={view === 'hs' ? '' : 'hidden'}><PerHocSinh /></div>}
+        {seen.matrix && <div className={view === 'matrix' ? '' : 'hidden'}><ClassMatrixView /></div>}
         {seen.raw && <div className={view === 'raw' ? '' : 'hidden'}><RawBuoi /></div>}
         {seen.lop && <div className={view === 'lop' ? '' : 'hidden'}><LopKhoiRollup /></div>}
         {seen.dang && <div className={view === 'dang' ? '' : 'hidden'}><TheoDang /></div>}
@@ -58,7 +60,7 @@ function PerHocSinh() {
   const [hsOpts, setHsOpts] = useState<Opt[]>([])
   const [lopOpts, setLopOpts] = useState<Opt[]>([])
   const [roster, setRoster] = useState<{ id: string; ho_ten: string; ma_hs: string | null }[]>([])
-  const [sub, setSub] = useState<'tongquan' | 'dangbai' | 'lichsu'>('tongquan')
+  const [sub, setSub] = useState<'tongquan' | 'dangbai'>('tongquan')
 
   // Đổi môn: reset + nạp HS + lớp của môn.
   useEffect(() => {
@@ -125,11 +127,8 @@ function PerHocSinh() {
               <div className="mb-4 flex items-center gap-1 border-b border-slate-200">
                 <button onClick={() => setSub('tongquan')} className={subBtn(sub === 'tongquan')}>Tổng quan</button>
                 <button onClick={() => setSub('dangbai')} className={subBtn(sub === 'dangbai')}>Dạng bài</button>
-                <button onClick={() => setSub('lichsu')} className={subBtn(sub === 'lichsu')}>Lịch sử hoạt động</button>
               </div>
-              {sub === 'tongquan' ? <TongQuanTab hsId={hsId} mon={mon} />
-                : sub === 'dangbai' ? <DangBaiTab hsId={hsId} mon={mon} />
-                : <ActivityHistory mon={mon} hocSinhId={hsId} />}
+              {sub === 'tongquan' ? <TongQuanTab hsId={hsId} mon={mon} /> : <DangBaiTab hsId={hsId} mon={mon} />}
             </>
           )}
         </div>
@@ -437,6 +436,115 @@ function RawBuoi() {
         ? <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Chọn một lớp để xem lịch sử hoạt động của lớp.</div>
         : <ActivityHistory mon={mon} lopId={lopId} />}
     </>
+  )
+}
+
+// ── VIEW CẢ LỚP: ma trận HS × buổi cho ET/BTVN/MT — mỗi ô % hoàn thành; "không làm" tô cảnh báo ──
+const MATRIX_PHASES: { key: MatrixPhase; label: string }[] = [{ key: 'et', label: 'ET' }, { key: 'btvn', label: 'BTVN' }, { key: 'mt', label: 'MT' }]
+const pctCls = (p: number) => p >= 80 ? 'bg-emerald-50 text-emerald-700' : p >= 50 ? 'bg-amber-50 text-amber-700' : 'bg-rose-50 text-rose-700'
+// 'YYYY-MM' — tháng hiện tại + dịch tháng (điều hướng next/prev, không dropdown).
+const curYM = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}` }
+const shiftYM = (ym: string, delta: number) => { const [y, m] = ym.split('-').map(Number); const i = y * 12 + (m - 1) + delta; return `${Math.floor(i / 12)}-${String(i % 12 + 1).padStart(2, '0')}` }
+function ClassMatrixView() {
+  const [mon, setMon] = useState('Toán')
+  const [lopId, setLopId] = useState<string | null>(null)
+  const [lopOpts, setLopOpts] = useState<Opt[]>([])
+  const [phase, setPhase] = useState<MatrixPhase>('btvn')
+  const [ym, setYm] = useState(curYM())
+  const [data, setData] = useState<ClassMatrix | null>(null)
+  const [loading, setLoading] = useState(false)
+  useEffect(() => {
+    setLopId(null)
+    listLop().then((ls) => setLopOpts(ls.filter((l: any) => l.mon === mon).map((l: any) => ({ id: l.id, label: l.ten_lop, sub: l.khoi ? `K${l.khoi}` : undefined })))).catch(() => setLopOpts([]))
+  }, [mon])
+  useEffect(() => {
+    if (!lopId) { setData(null); return }
+    setLoading(true)
+    getClassMatrix(lopId, phase, ym).then(setData).catch(() => setData(null)).finally(() => setLoading(false))
+  }, [lopId, phase, ym])
+  const monBtn = (on: boolean) => `h-7 rounded-md px-3 text-[13px] font-semibold transition ${on ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`
+  const phBtn = (on: boolean) => `h-8 rounded-md px-4 text-[13px] font-semibold transition ${on ? 'bg-slate-800 text-white shadow-sm' : 'bg-white text-slate-500 ring-1 ring-slate-200 hover:text-slate-800'}`
+  const [yy, mm] = ym.split('-')
+  return (
+    <>
+      <div className="mb-3 flex flex-wrap items-center gap-2">
+        <span className="text-[12px] font-semibold uppercase tracking-wider text-slate-500">Môn</span>
+        {MON_CO_KHO.map((m) => <button key={m} onClick={() => setMon(m)} className={monBtn(mon === m)}>{m}</button>)}
+        <div className="ml-2 w-56"><SearchSelect value={lopId} onChange={setLopId} options={lopOpts} placeholder="Chọn lớp…" /></div>
+        {/* điều hướng THÁNG: prev ‹ · nhãn · next › */}
+        <div className="ml-2 flex items-center gap-0.5 rounded-md ring-1 ring-slate-200">
+          <button onClick={() => setYm(shiftYM(ym, -1))} className="h-7 rounded-l-md px-2 text-slate-500 hover:bg-slate-100" title="Tháng trước">‹</button>
+          <span className="min-w-[92px] text-center text-[13px] font-semibold tabular-nums text-slate-700">Tháng {Number(mm)}/{yy}</span>
+          <button onClick={() => setYm(shiftYM(ym, +1))} className="h-7 rounded-r-md px-2 text-slate-500 hover:bg-slate-100" title="Tháng sau">›</button>
+        </div>
+        <div className="ml-auto flex items-center gap-1.5">
+          {MATRIX_PHASES.map((p) => <button key={p.key} onClick={() => setPhase(p.key)} className={phBtn(phase === p.key)}>{p.label}</button>)}
+        </div>
+      </div>
+      {!lopId ? (
+        <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Chọn một lớp để xem tổng quan cả lớp.</div>
+      ) : loading ? (
+        <p className="text-sm text-slate-500">Đang tải…</p>
+      ) : !data || data.buois.length === 0 ? (
+        <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Không có buổi nào đã đóng {phase.toUpperCase()} trong tháng {Number(mm)}/{yy}.</div>
+      ) : (
+        <>
+          <MatrixTable data={data} />
+          <Legend2 phase={phase} />
+        </>
+      )}
+    </>
+  )
+}
+function MatrixTable({ data }: { data: ClassMatrix }) {
+  const { buois, students, cells } = data
+  return (
+    <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm">
+      <table className="min-w-full border-collapse text-[12px]">
+        <thead>
+          <tr className="border-b border-slate-200 bg-slate-50">
+            <th className="sticky left-0 z-10 bg-slate-50 px-3 py-2 text-left font-semibold text-slate-600" style={{ minWidth: 168 }}>Học sinh</th>
+            {buois.map((b) => {
+              const d = new Date(b.ngay + 'T00:00:00')
+              return <th key={b.id} className="px-1.5 py-2 text-center font-semibold text-slate-500" style={{ minWidth: 48 }} title={b.ma_buoi ?? b.ngay}>{isNaN(+d) ? b.ngay : d.toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit' })}</th>
+            })}
+            <th className="sticky right-0 z-10 bg-slate-50 px-2 py-2 text-center font-semibold text-slate-600" style={{ minWidth: 48 }}>TB</th>
+          </tr>
+        </thead>
+        <tbody>
+          {students.map((s) => {
+            const done = buois.map((b) => cells[s.id + ':' + b.id]).filter((c) => c?.status === 'done').map((c) => c!.pct as number)
+            const avg = done.length ? Math.round(done.reduce((x, y) => x + y, 0) / done.length) : null
+            return (
+              <tr key={s.id} className="border-b border-slate-100 last:border-0 hover:bg-slate-50/60">
+                <td className="sticky left-0 z-10 bg-white px-3 py-1.5 font-medium text-slate-800" style={{ minWidth: 168 }}>{s.ho_ten}</td>
+                {buois.map((b) => <MatrixCellTd key={b.id} cell={cells[s.id + ':' + b.id]} />)}
+                <td className="sticky right-0 z-10 bg-white px-2 py-1.5 text-center font-bold tabular-nums text-slate-700">{avg != null ? avg + '%' : '·'}</td>
+              </tr>
+            )
+          })}
+        </tbody>
+      </table>
+    </div>
+  )
+}
+function MatrixCellTd({ cell }: { cell: MatrixCell | undefined }) {
+  if (!cell || cell.status === 'none') return <td className="px-1.5 py-1.5 text-center text-slate-300">·</td>
+  if (cell.status === 'khong_lam') return <td className="px-1 py-1.5 text-center"><span className="inline-block rounded bg-rose-600 px-1 py-0.5 text-[10px] font-bold text-white">Ko làm</span></td>
+  if (cell.status === 'vang') return <td className="px-1.5 py-1.5 text-center text-[11px] font-medium text-slate-400">V</td>
+  const p = cell.pct as number
+  return <td className="px-1.5 py-1.5 text-center"><span className={`inline-block min-w-[36px] rounded px-1 py-0.5 text-[11px] font-bold tabular-nums ${pctCls(p)}`}>{p}%</span></td>
+}
+function Legend2({ phase }: { phase: MatrixPhase }) {
+  return (
+    <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[11px] text-slate-500">
+      <span className="inline-flex items-center gap-1"><span className="inline-block h-3 w-4 rounded bg-emerald-100 ring-1 ring-emerald-200" />≥80%</span>
+      <span className="inline-flex items-center gap-1"><span className="inline-block h-3 w-4 rounded bg-amber-100 ring-1 ring-amber-200" />50–79%</span>
+      <span className="inline-flex items-center gap-1"><span className="inline-block h-3 w-4 rounded bg-rose-100 ring-1 ring-rose-200" />&lt;50%</span>
+      {phase === 'btvn' && <span className="inline-flex items-center gap-1"><span className="inline-block rounded bg-rose-600 px-1 py-0.5 text-[9px] font-bold text-white">Ko làm</span>xin phép / không làm</span>}
+      <span className="inline-flex items-center gap-1"><span className="w-4 text-center font-medium text-slate-400">V</span>vắng</span>
+      <span className="inline-flex items-center gap-1"><span className="w-4 text-center text-slate-300">·</span>chưa có dữ liệu</span>
+    </div>
   )
 }
 

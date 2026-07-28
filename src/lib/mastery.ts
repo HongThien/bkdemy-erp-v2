@@ -365,3 +365,77 @@ export async function listBuoiHoatDong(opts: { mon?: string; lopId?: string | nu
     chamBai: !!b.ingame_dong_at, et: !!b.et_dong_at, danhGia: !!b.danh_gia_xong_at, btvn: !!b.btvn_dong_at, mt: !!b.mt_dong_at,
   }))
 }
+
+// ── VIEW CẢ LỚP: ma trận (HS × buổi) cho 1 hoạt động (ET/BTVN/MT). Ô = % hoàn thành + trạng thái. ──
+// Nhìn tổng quát cả lớp: ai làm/chưa làm, được bao nhiêu %. "Không làm" (BTVN xin phép/không làm) tô cảnh báo.
+export type MatrixPhase = 'et' | 'btvn' | 'mt'
+export type MatrixCell = { pct: number | null; status: 'done' | 'khong_lam' | 'vang' | 'none' }
+export type ClassMatrix = {
+  buois: { id: string; ngay: string; ma_buoi: string | null }[]        // cột — ngày tăng dần
+  students: { id: string; ho_ten: string; ma_hs: string | null }[]     // dòng — theo tên
+  cells: Record<string, MatrixCell>                                    // key `${hsId}:${buoiId}`
+}
+const DONG_AT: Record<MatrixPhase, string> = { et: 'et_dong_at', btvn: 'btvn_dong_at', mt: 'mt_dong_at' }
+// ym = 'YYYY-MM' (tùy chọn) → chỉ lấy buổi trong tháng đó (điều hướng next/prev ở UI).
+export async function getClassMatrix(lopId: string, phase: MatrixPhase, ym?: string): Promise<ClassMatrix> {
+  // 1) buổi thường của lớp ĐÃ ĐÓNG hoạt động này → cột (lọc tháng nếu có)
+  let bq = supabase.from('buoi_hoc')
+    .select('id, ngay, ma_buoi').eq('lop_id', lopId).eq('loai', 'thuong').neq('trang_thai', 'huy')
+    .not(DONG_AT[phase], 'is', null)
+  if (ym) {
+    const [y, m] = ym.split('-').map(Number)
+    const to = m === 12 ? `${y + 1}-01-01` : `${y}-${String(m + 1).padStart(2, '0')}-01`
+    bq = bq.gte('ngay', `${ym}-01`).lt('ngay', to)
+  }
+  const { data: bs, error: eB } = await bq.order('ngay', { ascending: true }).limit(LIMIT)
+  if (eB) throw eB
+  const buois = (bs ?? []).map((b: any) => ({ id: b.id, ngay: b.ngay, ma_buoi: b.ma_buoi }))
+  const buoiIds = buois.map((b) => b.id)
+
+  // 2) roster lớp (đang học — vắng vẫn hiện dòng)
+  const { data: hl, error: eH } = await supabase.from('hoc_sinh_lop')
+    .select('hoc_sinh(id, ho_ten, ma_hs)').eq('lop_id', lopId).eq('trang_thai', 'dang_hoc').limit(LIMIT)
+  if (eH) throw eH
+  const students = (hl ?? []).map((r: any) => r.hoc_sinh).filter(Boolean)
+    .sort((a: any, b: any) => String(a.ho_ten).localeCompare(String(b.ho_ten), 'vi'))
+  const cells: Record<string, MatrixCell> = {}
+  if (!buoiIds.length || !students.length) return { buois, students, cells }
+
+  // 3) điểm chấm (gami_grades × session_problems của phase) → gộp (hs×buổi): pts/(n×100)
+  const { data: probs } = await supabase.from('gami_session_problems')
+    .select('id, buoi_hoc_id').eq('phase', phase).in('buoi_hoc_id', buoiIds).limit(LIMIT)
+  const probBuoi = new Map<string, string>((probs ?? []).map((p: any) => [p.id, p.buoi_hoc_id]))
+  const probIds = [...probBuoi.keys()]
+  const agg = new Map<string, { pts: number; n: number }>()
+  if (probIds.length) {
+    const { data: gs } = await supabase.from('gami_grades').select('hoc_sinh_id, problem_id, points').in('problem_id', probIds).limit(LIMIT)
+    for (const g of (gs ?? []) as any[]) {
+      const bId = probBuoi.get(g.problem_id); if (!bId) continue
+      const k = g.hoc_sinh_id + ':' + bId
+      const a = agg.get(k) ?? { pts: 0, n: 0 }; a.pts += Number(g.points); a.n += 1; agg.set(k, a)
+    }
+  }
+
+  // 4) BTVN: xin phép / không làm → cảnh báo "không làm"
+  const miss = new Set<string>()
+  if (phase === 'btvn') {
+    const { data: kq } = await supabase.from('btvn_ket_qua').select('hoc_sinh_id, buoi_hoc_id, trang_thai_nop').in('buoi_hoc_id', buoiIds).limit(LIMIT)
+    for (const r of (kq ?? []) as any[]) if (r.trang_thai_nop === 'khong_lam' || r.trang_thai_nop === 'xin_phep') miss.add(r.hoc_sinh_id + ':' + r.buoi_hoc_id)
+  }
+
+  // 5) vắng → phân biệt "vắng" vs "chưa có dữ liệu"
+  const vang = new Set<string>()
+  const { data: dd } = await supabase.from('buoi_hoc_hs').select('hoc_sinh_id, buoi_hoc_id, diem_danh').in('buoi_hoc_id', buoiIds).limit(LIMIT)
+  for (const r of (dd ?? []) as any[]) if (r.diem_danh === 'vang' || r.diem_danh === 'vang_phep') vang.add(r.hoc_sinh_id + ':' + r.buoi_hoc_id)
+
+  // 6) dựng ô
+  for (const s of students) for (const b of buois) {
+    const k = s.id + ':' + b.id
+    const a = agg.get(k)
+    if (a && a.n > 0) cells[k] = { pct: Math.min(100, Math.round((a.pts / (a.n * 100)) * 100)), status: 'done' }
+    else if (miss.has(k)) cells[k] = { pct: null, status: 'khong_lam' }
+    else if (vang.has(k)) cells[k] = { pct: null, status: 'vang' }
+    else cells[k] = { pct: null, status: 'none' }
+  }
+  return { buois, students, cells }
+}
