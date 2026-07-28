@@ -6,7 +6,7 @@ import { createPortal } from 'react-dom'
 import SearchSelect, { type Opt } from '../../components/SearchSelect'
 import { listHSDangHoc } from '../../lib/tuyensinh'
 import { listLop, listHSCuaLop, listLopCuaHS, type Lop, type HSTrongLop } from '../../lib/nhansu'
-import { getMasteryHS, listBuoiHoatDong, getMasteryRollup, getMasteryByDang, getMasteryByChuyenDe, getTongQuanHS, getClassMatrix, bucketMucDo, SRC_LABEL, type DangMastery, type DangEval, type BuoiActivity, type HSRollup, type TongQuanHS, type ClassMatrix, type MatrixPhase, type MatrixCell, type ActPct, type BucketPct, type HoanThanhCard as HoanThanhCardT, type MucDoFilter } from '../../lib/mastery'
+import { getMasteryHS, listBuoiHoatDong, getMasteryRollup, getMasteryByDang, getMasteryByChuyenDe, getTongQuanHS, getClassMatrix, getAllClassesCompletion, bucketMucDo, SRC_LABEL, type DangMastery, type DangEval, type BuoiActivity, type HSRollup, type TongQuanHS, type ClassMatrix, type MatrixPhase, type MatrixCell, type ClassCompletion, type ActPct, type BucketPct, type HoanThanhCard as HoanThanhCardT, type MucDoFilter } from '../../lib/mastery'
 import {
   listKyThi, createKyThi, listDiemThiByKyThi, upsertDiemThi, currentMua, getDiemThiTruong,
   LOAI_KY_THI, HE_SO_KY_THI, DOT_LABEL, DOT_ORDER, type KyThi, type DiemThi, type Verdict, type TruongDiemRow,
@@ -547,6 +547,7 @@ const pctCls = (p: number) => p >= 80 ? 'bg-emerald-50 text-emerald-700' : p >= 
 const curYM = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}` }
 const shiftYM = (ym: string, delta: number) => { const [y, m] = ym.split('-').map(Number); const i = y * 12 + (m - 1) + delta; return `${Math.floor(i / 12)}-${String(i % 12 + 1).padStart(2, '0')}` }
 function ClassMatrixView() {
+  const [mode, setMode] = useState<'all' | 'detail'>('all')   // Tất cả lớp (tổng quan) ↔ Chi tiết 1 lớp
   const [mon, setMon] = useState('Toán')
   const [lopId, setLopId] = useState<string | null>(null)
   const [lopOpts, setLopOpts] = useState<Opt[]>([])
@@ -554,24 +555,38 @@ function ClassMatrixView() {
   const [ym, setYm] = useState(curYM())
   const [data, setData] = useState<ClassMatrix | null>(null)
   const [loading, setLoading] = useState(false)
+  const [rows, setRows] = useState<ClassCompletion[] | null>(null)   // tổng quan các lớp
+  const [rowsLoading, setRowsLoading] = useState(false)
   useEffect(() => {
     setLopId(null)
     listLop().then((ls) => setLopOpts(ls.filter((l: any) => l.mon === mon).map((l: any) => ({ id: l.id, label: l.ten_lop, sub: l.khoi ? `K${l.khoi}` : undefined })))).catch(() => setLopOpts([]))
   }, [mon])
   useEffect(() => {
-    if (!lopId) { setData(null); return }
+    if (mode !== 'detail' || !lopId) { setData(null); return }
     setLoading(true)
     getClassMatrix(lopId, phase, ym).then(setData).catch(() => setData(null)).finally(() => setLoading(false))
-  }, [lopId, phase, ym])
+  }, [mode, lopId, phase, ym])
+  useEffect(() => {
+    if (mode !== 'all') return
+    setRowsLoading(true)
+    getAllClassesCompletion(mon, phase, ym).then(setRows).catch(() => setRows([])).finally(() => setRowsLoading(false))
+  }, [mode, mon, phase, ym])
   const monBtn = (on: boolean) => `h-7 rounded-md px-3 text-[13px] font-semibold transition ${on ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`
   const phBtn = (on: boolean) => `h-8 rounded-md px-4 text-[13px] font-semibold transition ${on ? 'bg-slate-800 text-white shadow-sm' : 'bg-white text-slate-500 ring-1 ring-slate-200 hover:text-slate-800'}`
+  const modeBtn = (on: boolean) => `h-8 rounded-md px-3 text-[13px] font-semibold transition ${on ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`
+  const openDetail = (id: string) => { setLopId(id); setMode('detail') }
   const [yy, mm] = ym.split('-')
   return (
     <>
       <div className="mb-3 flex flex-wrap items-center gap-2">
-        <span className="text-[12px] font-semibold uppercase tracking-wider text-slate-500">Môn</span>
+        {/* toggle CHẾ ĐỘ: tổng quan tất cả lớp ↔ chi tiết 1 lớp */}
+        <div className="flex items-center gap-1 rounded-lg bg-slate-100 p-0.5">
+          <button onClick={() => setMode('all')} className={modeBtn(mode === 'all')}>Tất cả lớp</button>
+          <button onClick={() => setMode('detail')} className={modeBtn(mode === 'detail')}>Chi tiết lớp</button>
+        </div>
+        <span className="ml-1 text-[12px] font-semibold uppercase tracking-wider text-slate-500">Môn</span>
         {MON_CO_KHO.map((m) => <button key={m} onClick={() => setMon(m)} className={monBtn(mon === m)}>{m}</button>)}
-        <div className="ml-2 w-56"><SearchSelect value={lopId} onChange={setLopId} options={lopOpts} placeholder="Chọn lớp…" /></div>
+        {mode === 'detail' && <div className="ml-2 w-56"><SearchSelect value={lopId} onChange={setLopId} options={lopOpts} placeholder="Chọn lớp…" /></div>}
         {/* điều hướng THÁNG: prev ‹ · nhãn · next › */}
         <div className="ml-2 flex items-center gap-0.5 rounded-md ring-1 ring-slate-200">
           <button onClick={() => setYm(shiftYM(ym, -1))} className="h-7 rounded-l-md px-2 text-slate-500 hover:bg-slate-100" title="Tháng trước">‹</button>
@@ -582,8 +597,14 @@ function ClassMatrixView() {
           {MATRIX_PHASES.map((p) => <button key={p.key} onClick={() => setPhase(p.key)} className={phBtn(phase === p.key)}>{p.label}</button>)}
         </div>
       </div>
-      {!lopId ? (
-        <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Chọn một lớp để xem tổng quan cả lớp.</div>
+
+      {mode === 'all' ? (
+        rowsLoading ? <p className="text-sm text-slate-500">Đang tải…</p>
+          : !rows || rows.length === 0 ? (
+            <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Không có lớp nào có buổi đã đóng {phase.toUpperCase()} trong tháng {Number(mm)}/{yy}.</div>
+          ) : <AllClassesTable rows={rows} phase={phase} onOpen={openDetail} />
+      ) : !lopId ? (
+        <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Chọn một lớp để xem chi tiết (hoặc bấm 1 lớp ở "Tất cả lớp").</div>
       ) : loading ? (
         <p className="text-sm text-slate-500">Đang tải…</p>
       ) : !data || data.buois.length === 0 ? (
@@ -594,6 +615,44 @@ function ClassMatrixView() {
           <Legend2 phase={phase} />
         </>
       )}
+    </>
+  )
+}
+// TỔNG QUAN các lớp: mỗi lớp 1 dòng tỉ lệ hoàn thành dữ liệu (thấp nhất lên đầu). Bấm → chi tiết lớp.
+function AllClassesTable({ rows, phase, onOpen }: { rows: ClassCompletion[]; phase: MatrixPhase; onOpen: (id: string) => void }) {
+  const barCls = (p: number) => p >= 80 ? 'bg-emerald-500' : p >= 50 ? 'bg-amber-500' : 'bg-rose-500'
+  return (
+    <>
+      <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+        <table className="min-w-full text-[13px]">
+          <thead>
+            <tr className="border-b border-slate-200 bg-slate-50 text-slate-600">
+              <th className="px-4 py-2.5 text-left font-semibold">Lớp</th>
+              <th className="px-3 py-2.5 text-center font-semibold">Buổi</th>
+              <th className="px-3 py-2.5 text-left font-semibold">Hoàn thành dữ liệu {phase.toUpperCase()}</th>
+              <th className="px-4 py-2.5 text-right font-semibold">Ô đã có / kỳ vọng</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((r) => (
+              <tr key={r.lopId} onClick={() => onOpen(r.lopId)} className="cursor-pointer border-b border-slate-100 last:border-0 hover:bg-indigo-50/40">
+                <td className="px-4 py-2.5 font-semibold text-slate-800">{r.tenLop}</td>
+                <td className="px-3 py-2.5 text-center tabular-nums text-slate-500">{r.buoiCount}</td>
+                <td className="px-3 py-2.5">
+                  <div className="flex items-center gap-2">
+                    <div className="h-2.5 w-40 overflow-hidden rounded-full bg-slate-100">
+                      {r.pct != null && <div className={`h-full rounded-full ${barCls(r.pct)}`} style={{ width: `${r.pct}%` }} />}
+                    </div>
+                    <span className={`min-w-[42px] rounded px-1.5 py-0.5 text-[12px] font-bold tabular-nums ${r.pct == null ? 'text-slate-400' : pctCls(r.pct)}`}>{r.pct == null ? '—' : r.pct + '%'}</span>
+                  </div>
+                </td>
+                <td className="px-4 py-2.5 text-right tabular-nums text-slate-500">{r.done}/{r.expected}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p className="mt-2 text-[11px] text-slate-400">Ô kỳ vọng = HS có mặt × buổi đã đóng {phase.toUpperCase()}. "Hoàn thành" = ô đã có dữ liệu {phase === 'btvn' ? '(đã ghi trạng thái nộp — kể cả "không làm")' : '(đã chấm điểm)'}. Bấm 1 lớp để xem chi tiết. Lớp nhập thiếu nhất xếp trên.</p>
     </>
   )
 }

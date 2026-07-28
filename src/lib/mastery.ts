@@ -546,3 +546,52 @@ export async function getClassMatrix(lopId: string, phase: MatrixPhase, ym?: str
   }
   return { buois, students, cells }
 }
+
+// ── TỔNG QUAN TẤT CẢ LỚP: tỉ lệ HOÀN THÀNH DỮ LIỆU của từng lớp cho 1 hoạt động (ET/BTVN/MT) ──
+// "Hoàn thành" = ô (HS-có-mặt × buổi) đã có dữ liệu / tổng ô kỳ vọng. ET/MT: có chấm điểm. BTVN: đã ghi
+// trạng thái nộp (btvn_ket_qua — kể cả "không làm" cũng là ĐÃ ghi). Dùng để soi lớp nào GV chưa nhập kịp.
+export type ClassCompletion = { lopId: string; tenLop: string; buoiCount: number; expected: number; done: number; pct: number | null }
+export async function getAllClassesCompletion(mon: string, phase: MatrixPhase, ym: string): Promise<ClassCompletion[]> {
+  const { data: lops } = await supabase.from('lop').select('id, ten_lop').eq('mon', mon).limit(LIMIT)
+  const lopList = (lops ?? []) as { id: string; ten_lop: string }[]
+  if (!lopList.length) return []
+  const [y, m] = ym.split('-').map(Number)
+  const to = m === 12 ? `${y + 1}-01-01` : `${y}-${String(m + 1).padStart(2, '0')}-01`
+  const { data: bs } = await supabase.from('buoi_hoc').select('id, lop_id')
+    .in('lop_id', lopList.map((l) => l.id)).eq('loai', 'thuong').neq('trang_thai', 'huy')
+    .not(DONG_AT[phase], 'is', null).gte('ngay', `${ym}-01`).lt('ngay', to).limit(LIMIT)
+  const buois = (bs ?? []) as { id: string; lop_id: string }[]
+  const buoiLop = new Map<string, string>(buois.map((b) => [b.id, b.lop_id]))
+  const buoiIds = buois.map((b) => b.id)
+  const per = new Map<string, { buoi: Set<string>; expected: Set<string>; done: Set<string> }>()
+  for (const l of lopList) per.set(l.id, { buoi: new Set(), expected: new Set(), done: new Set() })
+  for (const b of buois) per.get(b.lop_id)?.buoi.add(b.id)
+
+  if (buoiIds.length) {
+    // ô KỲ VỌNG = HS có mặt × buổi
+    const { data: att } = await supabase.from('buoi_hoc_hs').select('hoc_sinh_id, buoi_hoc_id').in('buoi_hoc_id', buoiIds).eq('diem_danh', 'co_mat').limit(LIMIT)
+    for (const a of (att ?? []) as any[]) { const lop = buoiLop.get(a.buoi_hoc_id); if (lop) per.get(lop)?.expected.add(a.hoc_sinh_id + ':' + a.buoi_hoc_id) }
+    // ô ĐÃ CÓ DỮ LIỆU
+    const donePairs = new Set<string>()   // hs:buoi
+    if (phase === 'btvn') {
+      const { data: kq } = await supabase.from('btvn_ket_qua').select('hoc_sinh_id, buoi_hoc_id').in('buoi_hoc_id', buoiIds).limit(LIMIT)
+      for (const r of (kq ?? []) as any[]) donePairs.add(r.hoc_sinh_id + ':' + r.buoi_hoc_id)
+    } else {
+      const { data: probs } = await supabase.from('gami_session_problems').select('id, buoi_hoc_id').eq('phase', phase).in('buoi_hoc_id', buoiIds).limit(LIMIT)
+      const pb = new Map<string, string>((probs ?? []).map((p: any) => [p.id, p.buoi_hoc_id]))
+      if (pb.size) {
+        const { data: gs } = await supabase.from('gami_grades').select('hoc_sinh_id, problem_id').in('problem_id', [...pb.keys()]).limit(LIMIT)
+        for (const g of (gs ?? []) as any[]) { const b = pb.get(g.problem_id); if (b) donePairs.add(g.hoc_sinh_id + ':' + b) }
+      }
+    }
+    for (const k of donePairs) { const bId = k.split(':')[1]; const lop = buoiLop.get(bId); if (lop) per.get(lop)?.done.add(k) }
+  }
+
+  return lopList.map((l) => {
+    const p = per.get(l.id)!
+    let done = 0; for (const k of p.done) if (p.expected.has(k)) done++   // chỉ đếm trong ô kỳ vọng
+    const expected = p.expected.size
+    return { lopId: l.id, tenLop: l.ten_lop, buoiCount: p.buoi.size, expected, done, pct: expected ? Math.round((done / expected) * 100) : null }
+  }).filter((c) => c.buoiCount > 0)
+    .sort((a, z) => (a.pct ?? 101) - (z.pct ?? 101) || a.tenLop.localeCompare(z.tenLop, 'vi'))   // lag (thấp) lên đầu
+}
