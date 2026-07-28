@@ -99,7 +99,8 @@ export async function ganMTVaoBuoi(masterId: string, opts: { lopId: string; ngay
   await supabase.from('buoi_hoc').update({ et_dong_at: nowIso }).eq('id', buoiId).is('et_dong_at', null)
   await supabase.from('buoi_hoc').update({ btvn_dong_at: nowIso }).eq('id', buoiId).is('btvn_dong_at', null)
 
-  // 2) Doc con bám (lớp+ngày) — re-gán = THAY THẾ (xoá cũ rồi tạo mới), copy phans từ master.
+  // 2) Doc con bám (lớp+ngày) — re-gán CÙNG MASTER cho lớp này = THAY THẾ (1 lớp chỉ có 1 lượt gán
+  // đang hiệu lực / MT, xem cảnh báo "đè" ở GanBuoiModal).
   const master = await getTaiLieuFull(masterId)
   const customPhans = master.phans.filter((p) => p.loai_phan === 'custom')
 
@@ -111,13 +112,38 @@ export async function ganMTVaoBuoi(masterId: string, opts: { lopId: string; ngay
   const allMaDang = [...new Set(customPhans.flatMap((p) => p.caus.map((c) => c.dang_chinh).filter(Boolean)))]
   const bacMap = await bacOfDangs(master.taiLieu.mon, allMaDang)
 
-  await supabase.from('tai_lieu').delete().eq('loai', 'mt_buoi').eq('lop_id', opts.lopId).eq('ngay', opts.ngay)
-  const { data: nw, error: eNw } = await supabase.from('tai_lieu').insert({
-    loai: 'mt_buoi', ten: master.taiLieu.ten, khoi: master.taiLieu.khoi, mon: master.taiLieu.mon, theme: master.taiLieu.theme,
-    lop_id: opts.lopId, ngay: opts.ngay, nguon_id: masterId, created_by: user?.id ?? null,
-  }).select().single()
-  if (eNw) throw eNw
-  const docCon = nw as TaiLieu
+  // ⚠ BUG THẬT 07-13 (Thùy: "gán MT vẫn ko được" — báo thành công nhưng vào xem vẫn thiếu nội dung):
+  // đời cũ XOÁ MỌI bản cũ rồi TẠO MỚI, không kiểm tra lỗi xoá. Nếu bản cũ đang bị bảng khác tham chiếu
+  // (vd `de_test.tai_lieu_id` — "Đề test đầu vào" đang active trỏ vào chính bản mt_buoi này), Postgres
+  // CHẶN xoá (FK RESTRICT) nhưng code cứ lặng lẽ đi tiếp → bản cũ VẪN CÒN, bản mới chồng thêm lên
+  // (kiểm chứng: 3 bản trùng (nguon_id, lop_id) cùng tồn tại cho 9S1 · Mã 1, tích tụ qua nhiều lần
+  // "re-gán" tưởng đã thay thế). Fix TẬN GỐC (Thùy 07-13: "fix lỗi duplicate tránh sau này bug tiếp"):
+  // KHÔNG xoá-rồi-tạo nữa — TÌM bản đang giữ (nếu có) rồi CẬP NHẬT TẠI CHỖ (giữ nguyên id, đổi ngày +
+  // thay phans/câu) → không bao giờ đụng FK của bảng khác trỏ vào đúng bản đang giữ. Nếu lịch sử để lại
+  // NHIỀU bản trùng (bug cũ), GIỮ bản CŨ NHẤT (nhiều khả năng là bản bị tham chiếu — created_at asc),
+  // dọn các bản THỪA best-effort (bỏ qua nếu 1 bản thừa khác lại đang bị tham chiếu — cực hiếm).
+  const { data: existing, error: eFind } = await supabase.from('tai_lieu').select('id')
+    .eq('loai', 'mt_buoi').eq('nguon_id', masterId).eq('lop_id', opts.lopId).order('created_at', { ascending: true }).limit(LIMIT)
+  if (eFind) throw eFind
+  const keepId = (existing as { id: string }[] | null)?.[0]?.id ?? null
+  for (const row of ((existing as { id: string }[] | null) ?? []).slice(1)) await supabase.from('tai_lieu').delete().eq('id', row.id)
+
+  let docCon: TaiLieu
+  if (keepId) {
+    await supabase.from('tai_lieu_phan').delete().eq('tai_lieu_id', keepId) // xoá phans/câu CŨ (cascade) trước khi chép lại
+    const { data: upd, error: eUpd } = await supabase.from('tai_lieu').update({
+      ten: master.taiLieu.ten, khoi: master.taiLieu.khoi, mon: master.taiLieu.mon, theme: master.taiLieu.theme, ngay: opts.ngay,
+    }).eq('id', keepId).select().single()
+    if (eUpd) throw eUpd
+    docCon = upd as TaiLieu
+  } else {
+    const { data: nw, error: eNw } = await supabase.from('tai_lieu').insert({
+      loai: 'mt_buoi', ten: master.taiLieu.ten, khoi: master.taiLieu.khoi, mon: master.taiLieu.mon, theme: master.taiLieu.theme,
+      lop_id: opts.lopId, ngay: opts.ngay, nguon_id: masterId, created_by: user?.id ?? null,
+    }).select().single()
+    if (eNw) throw eNw
+    docCon = nw as TaiLieu
+  }
   const phanBacEp = master.taiLieu.cau_hinh?.phanBac ?? {} // ép tay (GV chọn ở MTEditor) — đè lên suy tự động
   let t = 0
   let soCauLoai = 0

@@ -8,9 +8,10 @@ import { tuanCuaNgay, khoangTuan, homNayVN, nhanTuan, thuCuaNgay, ddmmVN } from 
 import { useIsMobile } from '../../hooks/useIsMobile'
 import { getMyScope } from '../../lib/nhansu'
 import { useStore } from '../../store/useStore'
+import ImgZoom from '../../components/ImgZoom'
 
 const hhmm = (t: string) => t.slice(0, 5)
-const LUOT_LABEL: Record<PrepLuotKey, string> = { ngay: 'Cả buổi tối', sang: 'Sáng', chieu: 'Chiều' }
+const LUOT_LABEL: Record<PrepLuotKey, string> = { sang: 'Sáng', chieu: 'Chiều', toi: 'Tối' }
 const QUICK_PICKS = [100, 90, 80, 70]
 
 export default function PrepScreen() {
@@ -26,7 +27,17 @@ export default function PrepScreen() {
   // OPS thuần chỉ thấy checklist + đóng (đúng việc của OPS).
   const quyen = useStore((s) => s.quyen)
   const [canChamVaChot, setCanChamVaChot] = useState(false)
-  useEffect(() => { getMyScope().then((s) => setCanChamVaChot(!!quyen?.laAdmin || !!s?.trucTiep.length || !!s?.laQuanLy)).catch(() => setCanChamVaChot(false)) }, [quyen])
+  const [myId, setMyId] = useState<string | null>(null)
+  const [scopeLoaded, setScopeLoaded] = useState(false)
+  useEffect(() => {
+    getMyScope().then((s) => { setCanChamVaChot(!!quyen?.laAdmin || !!s?.trucTiep.length || !!s?.laQuanLy); setMyId(s?.nhanSu.id ?? null) })
+      .catch(() => { setCanChamVaChot(false); setMyId(null) }).finally(() => setScopeLoaded(true))
+  }, [quyen])
+  // ⭐ Fix 07-19 (Thùy báo LẦN 2 "vẫn hiện task của nhân sự khác"): bản trước mặc định theo VAI (OPS →
+  // của tôi, GV/leader → tất cả) — nhưng người bấm vào từ card "Việc của tôi" LUÔN đang muốn xem VIỆC
+  // CỦA HỌ trước tiên, bất kể vai gì khác họ đang kiêm. Đổi mặc định thành LUÔN "của tôi", không suy theo
+  // vai nữa — GV/leader cần xem hết để chấm/chốt thì tự bấm "Tất cả" (đổi được cả 2 chiều).
+  const [chiCuaToi, setChiCuaToi] = useState(true)
 
   // ⚠ Fix (Thùy báo lỗi 07-10, cùng gốc PhanCongOpsScreen): reload() vô điều kiện `setLoading(true)` →
   // sau mỗi lần đóng 1 lượt, lưới co về "Đang tải…" rồi build lại → mất vị trí cuộn đang xem. Chỉ hiện
@@ -37,8 +48,9 @@ export default function PrepScreen() {
   }
   useEffect(() => { reload() }, [tuan]) // eslint-disable-line
 
+  const shown = chiCuaToi && myId ? luots.filter((l) => l.nhanSuId === myId) : luots
   const dayMap = new Map<string, PrepLuot[]>()
-  for (const l of luots) { const a = dayMap.get(l.ngay) ?? []; a.push(l); dayMap.set(l.ngay, a) }
+  for (const l of shown) { const a = dayMap.get(l.ngay) ?? []; a.push(l); dayMap.set(l.ngay, a) }
   const dayGroups = [...dayMap.entries()].sort((a, b) => a[0].localeCompare(b[0]))
   const homNay = homNayVN()
   const toggleXem = (ngay: string) => setXemThem((s) => { const n = new Set(s); n.has(ngay) ? n.delete(ngay) : n.add(ngay); return n })
@@ -53,7 +65,14 @@ export default function PrepScreen() {
       <div className={isMobile ? 'mx-auto w-full max-w-[1100px] px-3 pt-3' : 'mx-auto w-full max-w-[1100px] px-6 pt-6'}>
         <div className="mb-4 flex flex-wrap items-center gap-2">
           <h2 className="text-[20px] font-semibold text-slate-800">Chuẩn bị phòng (Prep)</h2>
-          <span className="text-[12px] text-slate-400">Dọn phòng + KIT · 1 lượt/ngày thường · 2 lượt (sáng/chiều) T7-CN</span>
+          <span className="text-[12px] text-slate-400">Dọn phòng + KIT · 1 lượt/ca (Sáng/Chiều/Tối) · mọi ngày trong tuần</span>
+          {/* Của tôi / Tất cả (Thùy 07-19, báo 2 lần) — LUÔN mặc định "Của tôi" bất kể vai, bấm đổi được cả 2 chiều. */}
+          {myId && (
+            <div className="flex items-center gap-1 rounded-md border border-slate-200 p-0.5 text-[12px]">
+              <button onClick={() => setChiCuaToi(true)} className={`rounded px-2 py-1 font-medium ${chiCuaToi ? 'bg-indigo-600 text-white' : 'text-slate-500 hover:bg-slate-100'}`}>Của tôi</button>
+              <button onClick={() => setChiCuaToi(false)} className={`rounded px-2 py-1 font-medium ${!chiCuaToi ? 'bg-indigo-600 text-white' : 'text-slate-500 hover:bg-slate-100'}`}>Tất cả</button>
+            </div>
+          )}
           <div className="ml-auto flex items-center gap-1.5">
             <button onClick={() => setTuan((t) => t - 1)} className="rounded-md border border-slate-200 px-2.5 py-1.5 text-[16px] leading-none text-slate-600 hover:border-indigo-300">‹</button>
             <span className="min-w-[210px] text-center text-[15px] font-semibold text-slate-700">{nhanTuan(tuan)}</span>
@@ -64,8 +83,8 @@ export default function PrepScreen() {
 
       <div className={`min-h-0 flex-1 overflow-auto ${isMobile ? 'px-3 pb-3' : 'px-6 pb-6'}`}>
         <div className="mx-auto max-w-[1100px]">
-          {loading ? <p className="text-sm text-slate-400">Đang tải…</p> : luots.length === 0 ? (
-            <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">Không có lượt prep nào tuần này.</div>
+          {loading || !scopeLoaded ? <p className="text-sm text-slate-400">Đang tải…</p> : shown.length === 0 ? (
+            <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">{chiCuaToi ? 'Bạn không có lượt prep nào tuần này.' : 'Không có lượt prep nào tuần này.'}</div>
           ) : (
             <div className="flex flex-col gap-4">
               {dayGroups.map(([ngay, list]) => {
@@ -81,7 +100,8 @@ export default function PrepScreen() {
                     </button>
                     {expanded && (
                       <div className="grid gap-2 sm:grid-cols-2">
-                        {list.sort((a, b) => a.phong.localeCompare(b.phong) || a.gioCaDau.localeCompare(b.gioCaDau)).map((l) => (
+                        {/* Sắp theo CA (Sáng→Chiều→Tối) TRƯỚC, phòng sau (Thùy 07-19: "rõ ràng cho dễ nhìn") — gioCaDau = giờ bắt đầu cố định của ca nên sort tăng dần đúng thứ tự Sáng/Chiều/Tối. */}
+                        {list.sort((a, b) => a.gioCaDau.localeCompare(b.gioCaDau) || a.phong.localeCompare(b.phong)).map((l) => (
                           <LuotCard key={l.phong + l.luot} l={l} onChanged={reload} canChamVaChot={canChamVaChot} />
                         ))}
                       </div>
@@ -112,19 +132,22 @@ function LuotCard({ l, onChanged, canChamVaChot }: { l: PrepLuot; onChanged: () 
     try { await tickPrepChecklist(l.phong, l.ngay, l.luot, { [field]: !(row?.[field] ?? false) }); setRow(await getPrepRow(l.phong, l.ngay, l.luot)) }
     catch (e: any) { setErr(e.message ?? String(e)) } finally { setBusy(false) }
   }
+  // 1 lượt prep = 1 slot ảnh (trùng đúng khoá unique phong+ngay+luot của prep_phong) → dán lại thì ĐÈ,
+  // không đẻ file mới. Xem uploadOpsAnh (opsvanhanh.ts) để biết vì sao.
+  const slotAnh = `prep-${l.phong}-${l.ngay}-${l.luot}`
   async function ganAnh(url: string) {
     await tickPrepChecklist(l.phong, l.ngay, l.luot, { anhUrl: url })
     setRow(await getPrepRow(l.phong, l.ngay, l.luot))
   }
   async function dan() {
     setErr(null)
-    try { const f = await readClipboardImageFile(); if (!f) { setErr('Clipboard không có ảnh.'); return }; setBusy(true); await ganAnh(await uploadOpsAnh(f)) }
+    try { const f = await readClipboardImageFile(); if (!f) { setErr('Clipboard không có ảnh.'); return }; setBusy(true); await ganAnh(await uploadOpsAnh(f, slotAnh)) }
     catch (e: any) { setErr(e.message ?? String(e)) } finally { setBusy(false) }
   }
   async function chonFile(e: React.ChangeEvent<HTMLInputElement>) {
     const f = e.target.files?.[0]; if (!f) return
     setBusy(true); setErr(null)
-    try { await ganAnh(await uploadOpsAnh(f)) } catch (ex: any) { setErr(ex.message ?? String(ex)) } finally { setBusy(false) }
+    try { await ganAnh(await uploadOpsAnh(f, slotAnh)) } catch (ex: any) { setErr(ex.message ?? String(ex)) } finally { setBusy(false) }
   }
   async function dong() {
     if (!row?.anhUrl) { setErr('Cần ảnh chụp tại thời điểm đóng.'); return }
@@ -175,14 +198,14 @@ function LuotCard({ l, onChanged, canChamVaChot }: { l: PrepLuot; onChanged: () 
               {isMobile ? '📸 Chụp ảnh' : '📎 Chọn ảnh'}
               <input type="file" accept="image/*" capture="environment" className="hidden" onChange={chonFile} />
             </label>
-            {row?.anhUrl && <img src={row.anhUrl} className={isMobile ? 'h-11 w-11 shrink-0 rounded object-cover ring-1 ring-slate-200' : 'h-7 w-7 rounded object-cover ring-1 ring-slate-200'} />}
+            {row?.anhUrl && <ImgZoom src={row.anhUrl} className={isMobile ? 'h-11 w-11 shrink-0 rounded object-cover ring-1 ring-slate-200' : 'h-7 w-7 rounded object-cover ring-1 ring-slate-200'} />}
           </div>
           <button onClick={dong} disabled={busy || !row?.donPhong || !row?.chuanBiKit || !row?.anhUrl} className={isMobile ? 'rounded-lg bg-indigo-600 px-3 py-2.5 text-[13px] font-semibold text-white disabled:opacity-40' : 'ml-auto rounded-md bg-indigo-600 px-2.5 py-1 text-[11px] font-semibold text-white hover:bg-indigo-500 disabled:opacity-40'}>Đóng</button>
         </div>
       )}
       {dong_at && (
         <div className="mt-1.5 flex flex-wrap items-center gap-2 border-t border-slate-200 pt-1.5 text-[12px]">
-          {row?.anhUrl && <img src={row.anhUrl} className="h-7 w-7 rounded object-cover ring-1 ring-slate-200" />}
+          {row?.anhUrl && <ImgZoom src={row.anhUrl} className="h-10 w-10 rounded object-cover ring-1 ring-slate-200" />}
           <span className="text-slate-500">GV chấm: <b className="text-slate-700">{row?.gvDiemNen}%</b>{row?.gvChamAt ? '' : ' (mặc định)'}</span>
           {/* Chấm điểm nền (GV) + chốt (leader) — CHỈ GV/TG/quản lý/admin, KHÔNG phải OPS (Thùy báo lỗi 07-10). */}
           {!row?.leaderChotAt && canChamVaChot && (

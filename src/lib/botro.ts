@@ -6,17 +6,17 @@ import { loadETForBuoi, listProblems } from './gami'
 const LIMIT = 10000
 
 // L1 — 1 lần-nghỉ = (HS × buổi-mẹ). id = buoi_hoc_hs.id ở buổi mẹ.
-export type CanBuItem = { id: string; hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; buoi_me_id: string; ngay: string; lop: string; mon: string }
+export type CanBuItem = { id: string; hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; buoi_me_id: string; ngay: string; lop: string; mon: string; khoi: string | null }
 // mon/lop_bu = LỚP GỐC (mẹ) của HS đang bù (buổi bù bản thân không có lớp — gom HS TỪ NHIỀU lớp/môn khác
 // nhau, 07-07 phát hiện thiếu nhãn môn gây nhầm lẫn khi nhiều môn cùng chạy). bu_cho = "buổi gốc · ngày"
 // (nội dung buổi học HS đang bù cho) — Thùy 07-07: PHẢI hiện, trước đây có data nhưng chưa render ra UI.
-export type CaBoTroHS = { hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; diem_danh: string | null; lop_bu: string; mon: string; bu_cho: string }
+export type CaBoTroHS = { hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; diem_danh: string | null; lop_bu: string; mon: string; khoi: string | null; bu_cho: string }
 export type CaBoTro = { id: string; ngay: string; gio_bat_dau: string | null; phong: string | null; trang_thai: string; et_dong_at: string | null; danh_gia_xong_at: string | null; nguoi_day: string | null; nguoi_day_tg: string | null; hs: CaBoTroHS[] }
 
 // L1: vắng ở buổi thường, CHƯA xếp bù & CHƯA ghi không-bù.
 export async function listCanBu(): Promise<CanBuItem[]> {
   const { data: vang } = await supabase.from('buoi_hoc_hs')
-    .select('id, hoc_sinh_id, buoi_hoc_id, hoc_sinh:hoc_sinh_id(ho_ten, ma_hs), buoi:buoi_hoc_id(loai, trang_thai, ngay, lop:lop_id(ten_lop, mon))')
+    .select('id, hoc_sinh_id, buoi_hoc_id, hoc_sinh:hoc_sinh_id(ho_ten, ma_hs), buoi:buoi_hoc_id(loai, trang_thai, ngay, lop:lop_id(ten_lop, mon, khoi))')
     .in('diem_danh', ['vang', 'vang_phep']).limit(LIMIT)
   const abs = (vang ?? []).filter((r: any) => r.buoi?.loai === 'thuong' && r.buoi?.trang_thai !== 'huy')
   const { data: links } = await supabase.from('buoi_hoc_hs').select('hoc_sinh_id, bu_cho_buoi_id').not('bu_cho_buoi_id', 'is', null).limit(LIMIT)
@@ -24,7 +24,7 @@ export async function listCanBu(): Promise<CanBuItem[]> {
   const { data: kb } = await supabase.from('bang_khong_bu').select('buoi_hoc_hs_id').limit(LIMIT)
   const decided = new Set((kb ?? []).map((k: any) => k.buoi_hoc_hs_id))
   return abs.filter((r: any) => !handled.has(`${r.hoc_sinh_id}|${r.buoi_hoc_id}`) && !decided.has(r.id))
-    .map((r: any) => ({ id: r.id, hoc_sinh_id: r.hoc_sinh_id, ho_ten: r.hoc_sinh?.ho_ten ?? '?', ma_hs: r.hoc_sinh?.ma_hs ?? null, buoi_me_id: r.buoi_hoc_id, ngay: r.buoi?.ngay, lop: r.buoi?.lop?.ten_lop ?? '?', mon: r.buoi?.lop?.mon ?? '' }))
+    .map((r: any) => ({ id: r.id, hoc_sinh_id: r.hoc_sinh_id, ho_ten: r.hoc_sinh?.ho_ten ?? '?', ma_hs: r.hoc_sinh?.ma_hs ?? null, buoi_me_id: r.buoi_hoc_id, ngay: r.buoi?.ngay, lop: r.buoi?.lop?.ten_lop ?? '?', mon: r.buoi?.lop?.mon ?? '', khoi: r.buoi?.lop?.khoi ?? null }))
 }
 
 // L2 (done=false) / L3 (done=true): ca bổ trợ (buổi bù) + danh sách HS.
@@ -36,14 +36,14 @@ export async function listCaBoTro(done: boolean): Promise<CaBoTro[]> {
   if (!filt.length) return []
   const ids = filt.map((b: any) => b.id)
   const { data: hs } = await supabase.from('buoi_hoc_hs')
-    .select('buoi_hoc_id, hoc_sinh_id, diem_danh, hoc_sinh:hoc_sinh_id(ho_ten, ma_hs), bu_cho:bu_cho_buoi_id(ngay, lop:lop_id(ten_lop, mon))')
+    .select('buoi_hoc_id, hoc_sinh_id, diem_danh, hoc_sinh:hoc_sinh_id(ho_ten, ma_hs), bu_cho:bu_cho_buoi_id(ngay, lop:lop_id(ten_lop, mon, khoi))')
     .in('buoi_hoc_id', ids).limit(LIMIT)
   const by: Record<string, any[]> = {}
   for (const r of hs ?? []) (by[(r as any).buoi_hoc_id] ??= []).push(r)
   return filt.map((b: any) => ({
     ...b, hs: (by[b.id] ?? []).map((r: any) => ({
       hoc_sinh_id: r.hoc_sinh_id, ho_ten: r.hoc_sinh?.ho_ten ?? '?', ma_hs: r.hoc_sinh?.ma_hs ?? null,
-      diem_danh: r.diem_danh, lop_bu: r.bu_cho?.lop?.ten_lop ?? '', mon: r.bu_cho?.lop?.mon ?? '',
+      diem_danh: r.diem_danh, lop_bu: r.bu_cho?.lop?.ten_lop ?? '', mon: r.bu_cho?.lop?.mon ?? '', khoi: r.bu_cho?.lop?.khoi ?? null,
       bu_cho: r.bu_cho ? `${r.bu_cho.lop?.ten_lop ?? ''} · ${r.bu_cho.ngay}` : '',
     })),
   }))

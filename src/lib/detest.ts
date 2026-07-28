@@ -1,104 +1,148 @@
-// Data-layer "Test đầu vào — Đề + Chấm + Nhận xét + Trả bài" (BKDEMY_TESTDAUVAO_SPEC_DETAIL.md).
-// ca_test (tuyensinh.ts) = "buổi test" của spec. File này nối tiếp: gán đề (snapshot) → chấm Đ/C/S
-// per câu → nhận xét (biểu đồ chuyên đề + lớp đề xuất) → trả bài (phiếu). KHÔNG feed mastery (§A cố ý).
+// Data-layer "Test đầu vào — Chấm + Trả bài (gồm nhận xét)" (BKDEMY_TESTDAUVAO_SPEC_ADDENDUM.md).
+// ca_test (tuyensinh.ts) = "buổi test". File này nối tiếp: gán đề (snapshot từ Kho MT) → chấm Đ/C/S
+// per câu ∥ scan bài đã chấm (2 nguồn ĐỘC LẬP) → Trả bài (gộp nhận xét + biểu đồ + lớp đề xuất + phiếu,
+// Thùy chốt 07-19: "ở trong task trả bài đó" — KHÔNG còn là bước riêng gate giữa Chấm và Trả bài).
+// ⭐ Đề = CHỌN THẲNG 1 tài liệu trong Kho (mig 0105, bỏ hẳn de_test — Thùy 07-19). ca_test.tai_lieu_id
+// trỏ THẲNG tai_lieu (không qua lớp trung gian). KHÔNG feed mastery (§A cố ý).
+// ⭐ 07-27 (Thùy): thêm "Quản lý đề test đầu vào" = SINH tài liệu mới (copy nội dung) từ nguồn MT/Đề thi
+// (KHÔNG dựng lại de_test CRUD, cũng KHÔNG "ghim/trỏ"). Nguồn = MT + Đề thi (mọi master TRỪ ET/GT/BTVN).
+// Mỗi khối×môn 1 đề đang dùng (bản sinh mới nhất), đề cũ giữ làm lịch sử. Xem section ĐỀ TEST ĐẦU VÀO.
 import { supabase } from './supabase'
-import { khoCuaMon } from './tailieu'
-import { toggleViec, updateUngVien } from './tuyensinh'
+import { khoCuaMon, layCauTheoThuTu, listPhan, copyPhanInto, type TaiLieu } from './tailieu'
+import { updateUngVien, toggleViec } from './tuyensinh'
+import type { MenhDe } from './kho/api'
 
 const LIMIT = 10000
 
 // ============================================================================
-// ĐỀ TEST (chuẩn bị trước — Ops/học thuật soạn, đổi định kỳ giữ lịch sử)
+// ĐỀ TEST ĐẦU VÀO (sinh từ nguồn) — Thùy chốt 07-27. "Đề test đầu vào" là 1 TÀI LIỆU MỚI được SINH ra
+// (copy nội dung) từ 1 nguồn MT/Đề thi: học thuật chọn khối×môn + chọn nguồn → hệ tạo tai_lieu
+// loai='de_test_dau_vao' (ten "Đề test đầu vào · Khối 8 · <tên nguồn>"), copy các phần 'custom' + câu.
+// nguon_id trỏ nguồn gốc (lưu vết). Mỗi khối×môn có 1 đề ĐANG DÙNG = bản sinh MỚI NHẤT; sinh đề mới →
+// thành đề hiện tại, đề cũ GIỮ làm lịch sử (không xoá). Điểm danh test gán đề = snapshot câu từ chính
+// tài liệu de_test_dau_vao này vào ca_test_cau (mirror MT/Đề thi — layCauTheoThuTu đã generic).
 // ============================================================================
-export type DeTest = { id: string; khoi: string; mon: string; ten: string; active: boolean; createdAt: string }
-export type DeTestCau = { id: string; deTestId: string; thuTu: number; nhan: string; diemToiDa: number; dapAn: string | null; maDang: string | null }
+export const LOAI_DE_TEST = ['mt', 'de_thi'] as const // các loại nguồn dùng được để sinh đề test đầu vào
+export const TEN_LOAI_DE: Record<string, string> = { mt: 'MT', de_thi: 'Đề thi' }
 
-export async function listDeTest(khoi?: string, mon?: string): Promise<DeTest[]> {
-  let q = supabase.from('de_test').select('*')
-  if (khoi) q = q.eq('khoi', khoi)
+// NGUỒN dùng được để sinh đề (MT + Đề thi master, lop_id null). Lọc mon/khoi nếu truyền.
+export async function listNguonDe(mon?: string, khoi?: string): Promise<TaiLieu[]> {
+  let q = supabase.from('tai_lieu').select('*').in('loai', LOAI_DE_TEST as unknown as string[])
+    .is('lop_id', null).order('created_at', { ascending: false }).limit(LIMIT)
   if (mon) q = q.eq('mon', mon)
-  const { data, error } = await q.order('created_at', { ascending: false }).limit(LIMIT)
+  if (khoi) q = q.eq('khoi', khoi)
+  const { data, error } = await q
   if (error) throw error
-  return (data ?? []).map((r: any) => ({ id: r.id, khoi: r.khoi, mon: r.mon, ten: r.ten, active: r.active, createdAt: r.created_at }))
+  return (data ?? []) as TaiLieu[]
 }
-export async function createDeTest(input: { khoi: string; mon: string; ten: string }): Promise<DeTest> {
+
+// 1 đề test đầu vào đã sinh (kèm nguồn gốc + cờ đang-dùng).
+export type DeTestRow = {
+  id: string; ten: string; khoi: string; mon: string
+  nguonId: string | null; nguonTen: string | null; nguonLoai: string | null
+  createdAt: string; laHienTai: boolean
+}
+// Danh sách đề test đầu vào ĐÃ SINH (desc thời gian). laHienTai = bản mới nhất của mỗi (khoi,mon) = đang
+// dùng; các bản còn lại = lịch sử. Lọc mon nếu truyền.
+export async function listDeTestDauVao(mon?: string): Promise<DeTestRow[]> {
+  let q = supabase.from('tai_lieu').select('id, ten, khoi, mon, nguon_id, created_at')
+    .eq('loai', 'de_test_dau_vao').order('created_at', { ascending: false }).limit(LIMIT)
+  if (mon) q = q.eq('mon', mon)
+  const { data, error } = await q
+  if (error) throw error
+  const rows = (data ?? []) as { id: string; ten: string; khoi: string; mon: string; nguon_id: string | null; created_at: string }[]
+  const nguonIds = [...new Set(rows.map((r) => r.nguon_id).filter(Boolean) as string[])]
+  const nguonMap = new Map<string, { ten: string; loai: string }>()
+  if (nguonIds.length) {
+    const { data: ns } = await supabase.from('tai_lieu').select('id, ten, loai').in('id', nguonIds).limit(LIMIT)
+    for (const n of (ns ?? []) as { id: string; ten: string; loai: string }[]) nguonMap.set(n.id, { ten: n.ten, loai: n.loai })
+  }
+  const seen = new Set<string>() // (khoi|mon) đầu tiên gặp (mới nhất) = đang dùng
+  return rows.map((r) => {
+    const key = `${r.khoi}|${r.mon}`
+    const laHienTai = !seen.has(key); if (laHienTai) seen.add(key)
+    const n = r.nguon_id ? nguonMap.get(r.nguon_id) : null
+    return { id: r.id, ten: r.ten, khoi: r.khoi, mon: r.mon, nguonId: r.nguon_id, nguonTen: n?.ten ?? null, nguonLoai: n?.loai ?? null, createdAt: r.created_at, laHienTai }
+  })
+}
+
+// SINH 1 đề test đầu vào cho khối×môn từ nguồn (MT/Đề thi): tạo tai_lieu loai='de_test_dau_vao' + copy
+// các phần 'custom' (nội dung câu) từ nguồn. Bản mới nhất tự thành "đang dùng"; KHÔNG đụng bản cũ (lịch sử).
+export async function sinhDeTestDauVao(nguonId: string, khoi: string, mon: string): Promise<TaiLieu> {
   const { data: { user } } = await supabase.auth.getUser()
-  const { data, error } = await supabase.from('de_test').insert({ ...input, created_by: user?.id ?? null }).select().single()
+  const { data: src, error: eS } = await supabase.from('tai_lieu').select('ten, theme, cau_hinh').eq('id', nguonId).single()
+  if (eS) throw eS
+  const s = src as { ten: string; theme: string | null; cau_hinh: unknown }
+  const { data: nw, error } = await supabase.from('tai_lieu').insert({
+    loai: 'de_test_dau_vao', ten: `Đề test đầu vào · Khối ${khoi} · ${s.ten}`,
+    khoi, mon, theme: s.theme ?? 'bkdemy', cau_hinh: s.cau_hinh ?? {}, nguon_id: nguonId, created_by: user?.id ?? null,
+  }).select().single()
   if (error) throw error
-  return { id: data.id, khoi: data.khoi, mon: data.mon, ten: data.ten, active: data.active, createdAt: data.created_at }
-}
-export async function setDeTestActive(id: string, active: boolean): Promise<void> {
-  const { error } = await supabase.from('de_test').update({ active }).eq('id', id)
-  if (error) throw error
-}
-export async function listDeTestCau(deTestId: string): Promise<DeTestCau[]> {
-  const { data, error } = await supabase.from('de_test_cau').select('*').eq('de_test_id', deTestId).order('thu_tu').limit(LIMIT)
-  if (error) throw error
-  return (data ?? []).map(mapDeTestCau)
-}
-function mapDeTestCau(r: any): DeTestCau {
-  return { id: r.id, deTestId: r.de_test_id, thuTu: r.thu_tu, nhan: r.nhan, diemToiDa: Number(r.diem_toi_da), dapAn: r.dap_an, maDang: r.ma_dang }
-}
-export async function addDeTestCau(deTestId: string, input: { nhan: string; diemToiDa: number; dapAn?: string | null; maDang?: string | null }): Promise<DeTestCau> {
-  const { data: existing } = await supabase.from('de_test_cau').select('thu_tu').eq('de_test_id', deTestId).order('thu_tu', { ascending: false }).limit(1)
-  const thuTu = ((existing?.[0] as any)?.thu_tu ?? 0) + 1
-  const { data, error } = await supabase.from('de_test_cau')
-    .insert({ de_test_id: deTestId, thu_tu: thuTu, nhan: input.nhan, diem_toi_da: input.diemToiDa, dap_an: input.dapAn ?? null, ma_dang: input.maDang ?? null })
-    .select().single()
-  if (error) throw error
-  return mapDeTestCau(data)
-}
-export async function updateDeTestCau(id: string, patch: Partial<{ nhan: string; diemToiDa: number; dapAn: string | null; maDang: string | null }>): Promise<void> {
-  const p: any = {}
-  if (patch.nhan !== undefined) p.nhan = patch.nhan
-  if (patch.diemToiDa !== undefined) p.diem_toi_da = patch.diemToiDa
-  if (patch.dapAn !== undefined) p.dap_an = patch.dapAn
-  if (patch.maDang !== undefined) p.ma_dang = patch.maDang
-  const { error } = await supabase.from('de_test_cau').update(p).eq('id', id)
-  if (error) throw error
-}
-export async function deleteDeTestCau(id: string): Promise<void> {
-  const { error } = await supabase.from('de_test_cau').delete().eq('id', id)
-  if (error) throw error
+  const doc = nw as TaiLieu
+  const phans = (await listPhan(nguonId)).filter((p) => p.loai_phan === 'custom')
+  let t = 0
+  for (const p of phans) await copyPhanInto(doc.id, p, t++)
+  return doc
 }
 
 // ============================================================================
-// GÁN ĐỀ vào ca_test — SNAPSHOT câu (§A.2: đổi đề sau không hỏng bài đã chấm)
+// GÁN ĐỀ vào ca_test — SNAPSHOT câu THẬT từ tài liệu MT (anti-live-ref: đổi/sửa MT sau KHÔNG hỏng bài
+// đã chấm). Đổi đề (Ops đổi tại phòng, HS kêu khó) = XOÁ SẠCH câu cũ rồi snapshot lại câu mới — Thùy
+// chốt 07-19: "xoá câu đề cũ trước khi snapshot đề mới" (tránh chồng câu cũ+mới nếu đổi đề 2 lần).
 // ============================================================================
-export async function ganDeCaTest(caTestId: string, deTestId: string): Promise<void> {
-  const cau = await listDeTestCau(deTestId)
-  if (!cau.length) throw new Error('Đề chưa có câu nào.')
-  const { error: e1 } = await supabase.from('ca_test').update({ de_test_id: deTestId }).eq('id', caTestId)
+export async function ganDeCaTest(caTestId: string, taiLieuId: string): Promise<void> {
+  const cau = await layCauTheoThuTu(taiLieuId)
+  if (!cau.length) throw new Error('Tài liệu chưa có câu nào.')
+  const { data: cauCu } = await supabase.from('ca_test_cau').select('id').eq('ca_test_id', caTestId).limit(LIMIT)
+  const idCu = ((cauCu ?? []) as any[]).map((c) => c.id)
+  if (idCu.length) {
+    // Xoá kết quả chấm CỦA ĐỀ CŨ trước (FK con) rồi mới xoá câu — HS lỡ được chấm 1 phần trước khi đổi
+    // đề thì kết quả đó không còn ý nghĩa (câu đã đổi hẳn sang đề khác).
+    await supabase.from('ca_test_cau_kq').delete().in('ca_test_cau_id', idCu)
+    await supabase.from('ca_test_cau').delete().in('id', idCu)
+  }
+  const { error: e1 } = await supabase.from('ca_test').update({ tai_lieu_id: taiLieuId }).eq('id', caTestId)
   if (e1) throw e1
+  // Đúng/Sai (menh_de) snapshot NGUYÊN 1 câu (4 mệnh đề) — chấm HOLISTIC 1 mức Đ/C/S cho cả câu.
   const { error: e2 } = await supabase.from('ca_test_cau').insert(
-    cau.map((c) => ({ ca_test_id: caTestId, de_test_cau_id: c.id, thu_tu: c.thuTu, nhan: c.nhan, diem_toi_da: c.diemToiDa, dap_an: c.dapAn, ma_dang: c.maDang })),
+    cau.map((c, i) => ({
+      ca_test_id: caTestId, thu_tu: i + 1, ma_cau: c.ma_cau, loai_cau: c.loai_cau, noi_dung: c.noi_dung,
+      lua_chon: c.lua_chon, menh_de: c.menh_de, dap_an: c.dap_an, loi_giai: c.loi_giai,
+      anh_de: c.anh_de, anh_dap_an: c.anh_dap_an, ma_dang: c.dang_chinh, diem_toi_da: 1,
+    })),
   )
   if (e2) throw e2
 }
 
 // ============================================================================
-// CHẤM TEST (Story 2) — pool team học thuật, ai mở thì làm.
+// CHẤM TEST (Story 2) — pool team học thuật, ai mở thì làm. Bảng nhập liệu Đ/C/S THUẦN (Thùy 07-19:
+// "bỏ cột scan" — người chấm chấm từ giấy NGOÀI hệ thống, không cần xem lại scan trên màn).
 // ============================================================================
-export type CaTestCau = { id: string; thuTu: number; nhan: string; diemToiDa: number; dapAn: string | null; maDang: string | null; ketQua: 'correct' | 'partial' | 'wrong' | null; diem: number | null }
+export type CaTestCau = {
+  id: string; thuTu: number; maCau: string | null; loaiCau: string | null; noiDung: string | null
+  luaChon: string[] | null; menhDe: MenhDe[] | null; dapAn: string | null; loiGiai: string | null
+  anhDe: string | null; anhDapAn: string | null; diemToiDa: number; maDang: string | null
+  ketQua: 'correct' | 'partial' | 'wrong' | null; diem: number | null
+}
 export type CaTestChoCham = {
-  id: string; ungVienId: string; mon: string; ngay: string; baiUrl: string | null; deTestId: string | null
+  id: string; ungVienId: string; mon: string; ngay: string; baiUrl: string | null; taiLieuId: string | null
   hoTenHs: string; khoi: string | null
 }
-// Hàng đợi CHUNG (team học thuật) — đã điểm danh xong (có bài scan + đề gán) + chưa chấm xong.
+// Hàng đợi CHUNG (team học thuật) — đã điểm danh xong (có đề gán) + chưa chấm xong.
 export async function listCanCham(): Promise<CaTestChoCham[]> {
   const { data, error } = await supabase.from('ca_test')
-    .select('id, ung_vien_id, mon, ngay, bai_url, de_test_id, cham_xong_at, trang_thai, ung_vien:ung_vien_id(ho_ten_hs, khoi)')
-    .eq('trang_thai', 'hoan_thanh').not('de_test_id', 'is', null).is('cham_xong_at', null)
+    .select('id, ung_vien_id, mon, ngay, bai_url, tai_lieu_id, cham_xong_at, trang_thai, ung_vien:ung_vien_id(ho_ten_hs, khoi)')
+    .eq('trang_thai', 'hoan_thanh').not('tai_lieu_id', 'is', null).is('cham_xong_at', null)
     .order('ngay').limit(LIMIT)
   if (error) throw error
-  return (data ?? []).map((r: any) => ({ id: r.id, ungVienId: r.ung_vien_id, mon: r.mon, ngay: r.ngay, baiUrl: r.bai_url, deTestId: r.de_test_id, hoTenHs: r.ung_vien?.ho_ten_hs ?? '?', khoi: r.ung_vien?.khoi ?? null }))
+  return (data ?? []).map((r: any) => ({ id: r.id, ungVienId: r.ung_vien_id, mon: r.mon, ngay: r.ngay, baiUrl: r.bai_url, taiLieuId: r.tai_lieu_id, hoTenHs: r.ung_vien?.ho_ten_hs ?? '?', khoi: r.ung_vien?.khoi ?? null }))
 }
 export async function listDaCham(ngay?: string): Promise<CaTestChoCham[]> {
-  let q = supabase.from('ca_test').select('id, ung_vien_id, mon, ngay, bai_url, de_test_id, ung_vien:ung_vien_id(ho_ten_hs, khoi)').not('cham_xong_at', 'is', null)
+  let q = supabase.from('ca_test').select('id, ung_vien_id, mon, ngay, bai_url, tai_lieu_id, ung_vien:ung_vien_id(ho_ten_hs, khoi)').not('cham_xong_at', 'is', null)
   if (ngay) q = q.eq('ngay', ngay)
   const { data, error } = await q.order('cham_xong_at', { ascending: false }).limit(LIMIT)
   if (error) throw error
-  return (data ?? []).map((r: any) => ({ id: r.id, ungVienId: r.ung_vien_id, mon: r.mon, ngay: r.ngay, baiUrl: r.bai_url, deTestId: r.de_test_id, hoTenHs: r.ung_vien?.ho_ten_hs ?? '?', khoi: r.ung_vien?.khoi ?? null }))
+  return (data ?? []).map((r: any) => ({ id: r.id, ungVienId: r.ung_vien_id, mon: r.mon, ngay: r.ngay, baiUrl: r.bai_url, taiLieuId: r.tai_lieu_id, hoTenHs: r.ung_vien?.ho_ten_hs ?? '?', khoi: r.ung_vien?.khoi ?? null }))
 }
 export async function getCaTestCauKq(caTestId: string): Promise<CaTestCau[]> {
   const { data: cau, error } = await supabase.from('ca_test_cau').select('*').eq('ca_test_id', caTestId).order('thu_tu').limit(LIMIT)
@@ -108,7 +152,12 @@ export async function getCaTestCauKq(caTestId: string): Promise<CaTestCau[]> {
   const kqMap = new Map(((kq ?? []) as any[]).map((k) => [k.ca_test_cau_id, k]))
   return (cau ?? []).map((c: any) => {
     const k = kqMap.get(c.id)
-    return { id: c.id, thuTu: c.thu_tu, nhan: c.nhan, diemToiDa: Number(c.diem_toi_da), dapAn: c.dap_an, maDang: c.ma_dang, ketQua: k?.ket_qua ?? null, diem: k ? Number(k.diem) : null }
+    return {
+      id: c.id, thuTu: c.thu_tu, maCau: c.ma_cau, loaiCau: c.loai_cau, noiDung: c.noi_dung,
+      luaChon: c.lua_chon, menhDe: c.menh_de, dapAn: c.dap_an, loiGiai: c.loi_giai,
+      anhDe: c.anh_de, anhDapAn: c.anh_dap_an, diemToiDa: Number(c.diem_toi_da), maDang: c.ma_dang,
+      ketQua: k?.ket_qua ?? null, diem: k ? Number(k.diem) : null,
+    }
   })
 }
 const HE_SO: Record<'correct' | 'partial' | 'wrong', number> = { correct: 1, partial: 0.5, wrong: 0 }
@@ -125,7 +174,7 @@ export function tongDiem(cau: CaTestCau[]): { diem: number; toiDa: number; pct: 
   const diem = cau.reduce((s, c) => s + (c.diem ?? 0), 0)
   return { diem, toiDa, pct: toiDa ? Math.round((diem / toiDa) * 100) : 0 }
 }
-// Đóng chấm — mọi câu phải có kq (done-when spec). Auto tick 'cham_bai' ở ung_vien_viec (derive=true, xem tuyensinh.ts).
+// Đóng chấm — mọi câu phải có kq (done-when spec). Auto tick 'cham_bai' ở ung_vien_viec (derive=true, xem tuyensinh.ts) — giữ nguyên hành vi cũ.
 export async function dongChamTest(caTestId: string, ungVienId: string): Promise<void> {
   const cau = await getCaTestCauKq(caTestId)
   if (cau.some((c) => c.ketQua == null)) throw new Error('Còn câu chưa chấm.')
@@ -139,17 +188,35 @@ export async function moLaiChamTest(caTestId: string): Promise<void> {
 }
 
 // ============================================================================
-// NHẬN XÉT (Story 3) — biểu đồ chuyên đề (derive từ Đ/C/S per câu, "chỉ để trông xịn") + nhận xét tay.
+// SCAN BÀI ĐÃ CHẤM (task Ops MỚI, addendum §1 Task 3) — ĐỘC LẬP với Chấm, không ép thứ tự. Người chấm
+// khoanh Đ/C/S trên giấy xong → đưa Ops → Ops scan → upload (KHÁC bai_url = bài CHƯA chấm ở Điểm danh).
+// ============================================================================
+export type CaTestChoScanDaCham = CaTestChoCham
+export async function listCanScanDaCham(): Promise<CaTestChoScanDaCham[]> {
+  const { data, error } = await supabase.from('ca_test')
+    .select('id, ung_vien_id, mon, ngay, bai_url, tai_lieu_id, ung_vien:ung_vien_id(ho_ten_hs, khoi)')
+    .eq('trang_thai', 'hoan_thanh').is('bai_da_cham_url', null).order('ngay').limit(LIMIT)
+  if (error) throw error
+  return (data ?? []).map((r: any) => ({ id: r.id, ungVienId: r.ung_vien_id, mon: r.mon, ngay: r.ngay, baiUrl: r.bai_url, taiLieuId: r.tai_lieu_id, hoTenHs: r.ung_vien?.ho_ten_hs ?? '?', khoi: r.ung_vien?.khoi ?? null }))
+}
+export async function listDaScanDaCham(ngay?: string): Promise<CaTestChoScanDaCham[]> {
+  let q = supabase.from('ca_test').select('id, ung_vien_id, mon, ngay, bai_url, tai_lieu_id, ung_vien:ung_vien_id(ho_ten_hs, khoi)').not('bai_da_cham_url', 'is', null)
+  if (ngay) q = q.eq('ngay', ngay)
+  const { data, error } = await q.order('ngay', { ascending: false }).limit(LIMIT)
+  if (error) throw error
+  return (data ?? []).map((r: any) => ({ id: r.id, ungVienId: r.ung_vien_id, mon: r.mon, ngay: r.ngay, baiUrl: r.bai_url, taiLieuId: r.tai_lieu_id, hoTenHs: r.ung_vien?.ho_ten_hs ?? '?', khoi: r.ung_vien?.khoi ?? null }))
+}
+export async function dongScanDaCham(caTestId: string, url: string): Promise<void> {
+  if (!url) throw new Error('Cần ảnh/scan bài đã chấm.')
+  const { error } = await supabase.from('ca_test').update({ bai_da_cham_url: url }).eq('id', caTestId)
+  if (error) throw error
+}
+
+// ============================================================================
+// NHẬN XÉT — biểu đồ chuyên đề (derive từ Đ/C/S per câu, "chỉ để trông xịn") + nhận xét tay + lớp đề
+// xuất. Thùy chốt 07-19: KHÔNG còn là bước/gate riêng — nhập NGAY TRONG Trả bài (xem mục dưới).
 // ============================================================================
 export type NhanXet = { trinhBay?: 'tot' | 'on' | 'kem'; tinhToan?: 'tot' | 'on' | 'kem'; kienThuc?: { hinhCoBan?: string; daiCoBan?: string; hinhNangCao?: string; daiNangCao?: string }; khac?: string }
-export type CaTestChoNhanXet = CaTestChoCham & { deTestId: string }
-export async function listCanNhanXet(): Promise<CaTestChoNhanXet[]> {
-  const { data, error } = await supabase.from('ca_test')
-    .select('id, ung_vien_id, mon, ngay, bai_url, de_test_id, ung_vien:ung_vien_id(ho_ten_hs, khoi)')
-    .not('cham_xong_at', 'is', null).is('danh_gia_xong_at', null).order('ngay').limit(LIMIT)
-  if (error) throw error
-  return (data ?? []).map((r: any) => ({ id: r.id, ungVienId: r.ung_vien_id, mon: r.mon, ngay: r.ngay, baiUrl: r.bai_url, deTestId: r.de_test_id, hoTenHs: r.ung_vien?.ho_ten_hs ?? '?', khoi: r.ung_vien?.khoi ?? null }))
-}
 export type BieuDoChuyenDe = { chuyenDe: string; diem: number; toiDa: number; pct: number }
 // Gom Đ/C/S per câu (đã chấm) theo CHUYÊN ĐỀ của ma_dang neo — tra đúng kho theo MÔN (CLAUDE.md §1.6: có `mon` trong tay → dùng NGAY).
 export async function getBieuDoChuyenDe(caTestId: string, mon: string): Promise<BieuDoChuyenDe[]> {
@@ -169,19 +236,9 @@ export async function getBieuDoChuyenDe(caTestId: string, mon: string): Promise<
   }
   return [...byCd.entries()].map(([chuyenDe, g]) => ({ chuyenDe, diem: g.diem, toiDa: g.toiDa, pct: g.toiDa ? Math.round((g.diem / g.toiDa) * 100) : 0 }))
 }
+// Lưu nháp nhận xét — gọi bất cứ lúc nào (autosave khi gõ), KHÔNG gate gì.
 export async function setNhanXet(caTestId: string, nhanXet: NhanXet): Promise<void> {
   const { error } = await supabase.from('ca_test').update({ nhan_xet: nhanXet }).eq('id', caTestId)
-  if (error) throw error
-}
-// done-when: ≥1 mục nhận xét + lớp đề xuất đã chọn + đóng. Lớp đề xuất REUSE ung_vien.lop_du_kien_id.
-export async function dongNhanXet(caTestId: string, ungVienId: string, lopDeXuatId: string | null): Promise<void> {
-  if (!lopDeXuatId) throw new Error('Chưa chọn lớp đề xuất.')
-  await updateUngVien(ungVienId, { lop_du_kien_id: lopDeXuatId })
-  const { error } = await supabase.from('ca_test').update({ danh_gia_xong_at: new Date().toISOString() }).eq('id', caTestId).is('danh_gia_xong_at', null)
-  if (error) throw error
-}
-export async function moLaiNhanXet(caTestId: string): Promise<void> {
-  const { error } = await supabase.from('ca_test').update({ danh_gia_xong_at: null }).eq('id', caTestId)
   if (error) throw error
 }
 // Thư viện câu mẫu (gõ-để-tìm, mirror V1 sat_hach_nhan_xet_templates).
@@ -201,36 +258,57 @@ export async function luuNhanXetMau(mon: string, nhom: NhanXetMau['nhom'], noiDu
 }
 
 // ============================================================================
-// TRẢ BÀI (Story 4) — Ops xem/xuất phiếu → gửi Zalo → đóng. HẾT chuỗi.
+// TRẢ BÀI (Story 4) — sinh SỚM ngay khi điểm danh đóng (trang_thai='hoan_thanh'), nhưng CHẶN ĐÓNG tới
+// khi ĐỦ: chấm xong + có scan-đã-chấm + đã chọn lớp đề xuất (nhận xét gộp vào đây — Thùy chốt 07-19).
+// Card báo rõ đang thiếu gì. Ops xem/xuất phiếu (kèm bài đã chấm) → gửi Zalo → đóng. HẾT chuỗi.
 // ============================================================================
-export type CaTestChoTraBai = CaTestChoCham & { lopDeXuatId: string | null }
+export type CaTestChoTraBai = CaTestChoCham & {
+  choChamXong: boolean; choScanDaCham: boolean; choLopDeXuat: boolean
+  baiDaChamUrl: string | null; lopDeXuatId: string | null; nhanXet: NhanXet | null
+}
+function mapTraBai(r: any): CaTestChoTraBai {
+  return {
+    id: r.id, ungVienId: r.ung_vien_id, mon: r.mon, ngay: r.ngay, baiUrl: r.bai_url, taiLieuId: r.tai_lieu_id,
+    hoTenHs: r.ung_vien?.ho_ten_hs ?? '?', khoi: r.ung_vien?.khoi ?? null,
+    choChamXong: !r.cham_xong_at, choScanDaCham: !r.bai_da_cham_url, choLopDeXuat: !r.ung_vien?.lop_du_kien_id,
+    baiDaChamUrl: r.bai_da_cham_url ?? null, lopDeXuatId: r.ung_vien?.lop_du_kien_id ?? null, nhanXet: r.nhan_xet ?? null,
+  }
+}
+const TRA_BAI_SELECT = 'id, ung_vien_id, mon, ngay, bai_url, tai_lieu_id, cham_xong_at, bai_da_cham_url, nhan_xet, ung_vien:ung_vien_id(ho_ten_hs, khoi, lop_du_kien_id)'
 export async function listCanTraBai(): Promise<CaTestChoTraBai[]> {
-  const { data, error } = await supabase.from('ca_test')
-    .select('id, ung_vien_id, mon, ngay, bai_url, de_test_id, ung_vien:ung_vien_id(ho_ten_hs, khoi, lop_du_kien_id)')
-    .not('danh_gia_xong_at', 'is', null).is('tra_bai_xong_at', null).order('ngay').limit(LIMIT)
+  const { data, error } = await supabase.from('ca_test').select(TRA_BAI_SELECT)
+    .eq('trang_thai', 'hoan_thanh').is('tra_bai_xong_at', null).order('ngay').limit(LIMIT)
   if (error) throw error
-  return (data ?? []).map((r: any) => ({ id: r.id, ungVienId: r.ung_vien_id, mon: r.mon, ngay: r.ngay, baiUrl: r.bai_url, deTestId: r.de_test_id, hoTenHs: r.ung_vien?.ho_ten_hs ?? '?', khoi: r.ung_vien?.khoi ?? null, lopDeXuatId: r.ung_vien?.lop_du_kien_id ?? null }))
+  return (data ?? []).map(mapTraBai)
 }
 export async function listDaTraBai(): Promise<CaTestChoTraBai[]> {
-  const { data, error } = await supabase.from('ca_test')
-    .select('id, ung_vien_id, mon, ngay, bai_url, de_test_id, ung_vien:ung_vien_id(ho_ten_hs, khoi, lop_du_kien_id)')
+  const { data, error } = await supabase.from('ca_test').select(TRA_BAI_SELECT)
     .not('tra_bai_xong_at', 'is', null).order('tra_bai_xong_at', { ascending: false }).limit(100)
   if (error) throw error
-  return (data ?? []).map((r: any) => ({ id: r.id, ungVienId: r.ung_vien_id, mon: r.mon, ngay: r.ngay, baiUrl: r.bai_url, deTestId: r.de_test_id, hoTenHs: r.ung_vien?.ho_ten_hs ?? '?', khoi: r.ung_vien?.khoi ?? null, lopDeXuatId: r.ung_vien?.lop_du_kien_id ?? null }))
+  return (data ?? []).map(mapTraBai)
 }
-export async function dongTraBai(caTestId: string): Promise<void> {
-  const { error } = await supabase.from('ca_test').update({ tra_bai_xong_at: new Date().toISOString() }).eq('id', caTestId).is('tra_bai_xong_at', null)
+// Đóng trả bài — validate ĐỦ 3 nguồn trước khi đóng (evidence-trước-khi-đóng). lopDeXuatId bắt buộc
+// (ghi ung_vien.lop_du_kien_id, REUSE, cùng field cũ dongNhanXet từng ghi).
+export async function dongTraBai(caTestId: string, ungVienId: string, lopDeXuatId: string | null): Promise<void> {
+  const { data: ct, error: e0 } = await supabase.from('ca_test').select('cham_xong_at, bai_da_cham_url').eq('id', caTestId).single()
+  if (e0) throw e0
+  const r: any = ct
+  if (!r.cham_xong_at) throw new Error('Chưa chấm xong.')
+  if (!r.bai_da_cham_url) throw new Error('Chưa có bài scan đã chấm.')
+  if (!lopDeXuatId) throw new Error('Chưa chọn lớp đề xuất.')
+  await updateUngVien(ungVienId, { lop_du_kien_id: lopDeXuatId })
+  const { error } = await supabase.from('ca_test').update({ danh_gia_xong_at: new Date().toISOString(), tra_bai_xong_at: new Date().toISOString() }).eq('id', caTestId).is('tra_bai_xong_at', null)
   if (error) throw error
 }
 
-// ── Dữ liệu ghép phiếu kết quả (§D) — điểm+%·biểu đồ·nhận xét·lớp đề xuất. Dùng cho card Nhận xét (preview) + Trả bài (xuất). ──
+// ── Dữ liệu ghép phiếu kết quả (§D) — điểm+%·biểu đồ·nhận xét·lớp đề xuất·bài đã chấm. ──
 export type PhieuKetQua = {
   hoTenHs: string; khoi: string | null; mon: string; ngay: string
   diem: number; toiDa: number; pct: number
-  bieuDo: BieuDoChuyenDe[]; nhanXet: NhanXet | null; lopDeXuatTen: string | null
+  bieuDo: BieuDoChuyenDe[]; nhanXet: NhanXet | null; lopDeXuatTen: string | null; baiDaChamUrl: string | null
 }
 export async function getPhieuKetQua(caTestId: string): Promise<PhieuKetQua> {
-  const { data: ct, error } = await supabase.from('ca_test').select('mon, ngay, nhan_xet, ung_vien:ung_vien_id(ho_ten_hs, khoi, lop_du_kien_id)').eq('id', caTestId).single()
+  const { data: ct, error } = await supabase.from('ca_test').select('mon, ngay, nhan_xet, bai_da_cham_url, ung_vien:ung_vien_id(ho_ten_hs, khoi, lop_du_kien_id)').eq('id', caTestId).single()
   if (error) throw error
   const r: any = ct
   const cau = await getCaTestCauKq(caTestId)
@@ -241,5 +319,5 @@ export async function getPhieuKetQua(caTestId: string): Promise<PhieuKetQua> {
     const { data: lop } = await supabase.from('lop').select('ten_lop').eq('id', r.ung_vien.lop_du_kien_id).single()
     lopDeXuatTen = (lop as any)?.ten_lop ?? null
   }
-  return { hoTenHs: r.ung_vien?.ho_ten_hs ?? '?', khoi: r.ung_vien?.khoi ?? null, mon: r.mon, ngay: r.ngay, diem, toiDa, pct, bieuDo, nhanXet: r.nhan_xet ?? null, lopDeXuatTen }
+  return { hoTenHs: r.ung_vien?.ho_ten_hs ?? '?', khoi: r.ung_vien?.khoi ?? null, mon: r.mon, ngay: r.ngay, diem, toiDa, pct, bieuDo, nhanXet: r.nhan_xet ?? null, lopDeXuatTen, baiDaChamUrl: r.bai_da_cham_url ?? null }
 }

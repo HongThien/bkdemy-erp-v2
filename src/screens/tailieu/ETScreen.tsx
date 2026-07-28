@@ -6,7 +6,7 @@
 import { useEffect, useState } from 'react'
 import {
   createET, updateET, getTaiLieuFull, setETCaus, suggestCauForDang, khoCuaMon,
-  maET, ET_FORMS, etFormOf, type ETDoc, type CauHinh, type ETForm as ETFormKind,
+  maET, ET_FORMS, etFormOf, sortETCaus, type ETDoc, type CauHinh, type ETForm as ETFormKind,
 } from '../../lib/tailieu'
 import { listLop, type Lop } from '../../lib/nhansu'
 import { listCauByDang, LOAI_CAU, type CauHoi } from '../../lib/kho/api'
@@ -15,6 +15,8 @@ import { KhoPicker } from './TaiLieuBuilder'
 import ETPrintView from './ETPrintView'
 import SearchSelect from '../../components/SearchSelect'
 import DangPickerOne from '../../components/DangPickerOne'
+import BuoiNgaySelect from '../../components/BuoiNgaySelect'
+import { useStore } from '../../store/useStore'
 
 const loaiLabel = (v: string) => LOAI_CAU.find((x) => x.value === v)?.label ?? v
 const DEFAULT_ROWS = 5
@@ -101,20 +103,42 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
   async function luu() {
     if (!lop) { setErr('Chọn lớp.'); return }
     if (!ngay) { setErr('Chọn ngày buổi học.'); return }
-    const maCaus = rows.map((r) => r.maCau).filter(Boolean) as string[]
-    if (!maCaus.length) { setErr('ET cần ít nhất 1 câu.'); return }
+    const chon = rows.filter((r) => r.maCau) as { maDang: string | null; maCau: string }[]
+    if (!chon.length) { setErr('ET cần ít nhất 1 câu.'); return }
     setBusy(true); setErr(null)
     try {
+      // ⭐ 07-20: GOM THEO NHÓM IN NGAY LÚC LƯU → `thu_tu` trong DB = đúng thứ tự sẽ in ra giấy.
+      // Mọi nơi đọc ET (đề in, bảng phiếu chấm, Chấm ET, ET online) đều theo `thu_tu` → khớp nhau.
+      // Cache `cau` CÓ THỂ THIẾU câu: ensureCache early-return khi dạng đó đã có câu khác trong cache
+      // (mở ET cũ để sửa rồi ✎ Chọn câu khác cùng dạng). Thiếu cache = không biết nhóm → phải nạp bù,
+      // TUYỆT ĐỐI không được lặng lẽ bỏ câu đó ra khỏi đề.
+      let bank = cau
+      const thieu = chon.filter((r) => !bank[r.maCau])
+      if (thieu.length) {
+        const them: Record<string, CauHoi> = {}
+        for (const md of new Set(thieu.map((r) => r.maDang).filter(Boolean) as string[])) {
+          for (const c of await listCauByDang(md, cauTbl)) them[c.ma_cau] = c
+        }
+        bank = { ...bank, ...them }
+        setCau(bank)
+      }
+      const conThieu = chon.filter((r) => !bank[r.maCau]).map((r) => r.maCau)
+      if (conThieu.length) { setErr(`Không nạp được nội dung câu: ${conThieu.join(', ')} — chưa lưu. Thử lại.`); return }
+      const maCaus = sortETCaus(chon.map((r) => bank[r.maCau]), ch).map((c) => c.ma_cau)
       const ten = `ET ${lop.ten_lop} · ${ngay.split('-').reverse().join('/')}`
       if (editing) {
         await updateET(et!.id, { ten, lop_id: lop.id, ngay, cau_hinh: ch })
         await setETCaus(et!.id, maCaus)
+        // ⭐ 07-12: link PDF phải CÓ SẴN ngay khi lưu xong, Thùy chỉ click để copy — không phải bấm
+        // "Lấy link" rồi chờ. Enqueue vào hàng đợi TOÀN CỤC (LinkGenWorker, mount ở App.tsx).
+        useStore.getState().enqueueLinkGen(et!.id, 'et')
         onClose?.()
         return
       }
       const created = await createET({ lopId: lop.id, ngay, ten, khoi: lop.khoi ?? '', mon: lop.mon })
       await setETCaus(created.id, maCaus)
       if (Object.keys(ch).length) await updateET(created.id, { cau_hinh: ch })
+      useStore.getState().enqueueLinkGen(created.id, 'et')
       resetForm()
       setFlash('Đã lưu ET vào Kho tài liệu. Form đã reset để tạo ET mới.')
     } catch (e: any) { setErr(e.message ?? String(e)) } finally { setBusy(false) }
@@ -134,7 +158,7 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
             options={lops.map((l) => ({ id: l.id, label: l.ten_lop, sub: `${l.mon}${l.khoi ? ' · K' + l.khoi : ''}` }))} /></div>
         </div>
         <div className="flex items-center gap-1.5 text-[12px] text-slate-500">Ngày
-          <input type="date" value={ngay} onChange={(e) => setNgay(e.target.value)} className="h-8 rounded-md border border-slate-300 px-2 text-[13px]" />
+          <BuoiNgaySelect lopId={lopId} value={ngay} onChange={setNgay} />
         </div>
         {lop && ngay && <span className="font-mono text-[11px] text-violet-500">{maET(lop.ten_lop, ngay)}</span>}
         <span className="ml-auto text-[12px] text-slate-400">{soCau} câu</span>

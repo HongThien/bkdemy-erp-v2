@@ -3,7 +3,9 @@ import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../lib/kho/api'
 import { useStore } from '../../store/useStore'
 import BanDo from './BanDo'
 import SearchCau from './SearchCau'
+import KhoRac from './KhoRac'
 import { daiBranch, hinhBranch, khtnBranch } from './branches'
+import KhoHinhScreen from './hinh/KhoHinhScreen'
 
 type Tab = 'dai' | 'hinh'
 type Mon = 'toan' | 'khtn'
@@ -28,6 +30,7 @@ export default function KhoScreen() {
   // môn KHTN = 1 cây (không nhánh Đại/Hình); Toán = nhánh tab → branch.
   const config = mon === 'khtn' ? khtnBranch : tab === 'dai' ? daiBranch : hinhBranch
   const [timCau, setTimCau] = useState(false)
+  const [rac, setRac] = useState(false)   // kho rác — câu đã xoá, vẫn resolve được cho tài liệu cũ
 
   // Scope④ THEO MÔN: admin hệ thống thấy tất; người khác chỉ thấy môn được phân (nhan_su_mon). Chưa gán → không thấy môn nào.
   const me = useStore((s) => s.me)
@@ -67,6 +70,12 @@ export default function KhoScreen() {
             🔍 Tìm câu
           </button>
         )}
+        {config.cauTbl && (
+          <button onClick={() => setRac(true)} title="Câu đã xoá khỏi kho — vẫn giữ để tài liệu cũ in đủ câu"
+            className="flex items-center gap-1.5 rounded-md border border-slate-200 bg-white px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-rose-300 hover:text-rose-700">
+            🗑 Kho rác
+          </button>
+        )}
         {/* Khối */}
         <div className={`${config.cauTbl ? '' : 'ml-auto '}flex items-center gap-1`}>
           <span className="mr-1 text-[12px] font-semibold uppercase tracking-wider text-slate-600">Khối</span>
@@ -100,10 +109,16 @@ export default function KhoScreen() {
                 <p className="mt-1.5 text-[13px] text-slate-500">Tài khoản chưa gắn môn nào nên không xem được kho. Liên hệ quản trị để được phân môn (màn <b>Nhân sự</b> → sửa → Môn phụ trách).</p>
               </div>
             </div>
-          ) : <BanDo key={`${config.key}-${khoi}`} config={config} khoi={khoi} />}
+          ) : mon === 'toan' && tab === 'hinh'
+            // Nhánh HÌNH = model RIÊNG (spec-kho-hinh-v3): 4 tầng họ mô hình → lưới mô hình →
+            // lưới bài toán nhỏ → kho bài. KHÔNG dùng chung component bản đồ 3-tầng của Đại/KHTN.
+            // Đi THEO KHỐI như Đại — `key={khoi}` để remount, reset state sạch khi đổi khối.
+            ? <KhoHinhScreen key={`hinh-${khoi}`} khoi={khoi} />
+            : <BanDo key={`${config.key}-${khoi}`} config={config} khoi={khoi} />}
       </div>
 
       {timCau && config.cauTbl && allowed.length > 0 && <SearchCau cauTbl={config.cauTbl} onClose={() => setTimCau(false)} />}
+      {rac && config.cauTbl && allowed.length > 0 && <KhoRac cauTbl={config.cauTbl} onClose={() => setRac(false)} />}
     </div>
   )
 }

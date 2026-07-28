@@ -1,7 +1,9 @@
 @import "tailwindcss";
 
-/* Công thức KaTeX cỡ bằng chữ thường */
-.katex { font-size: 1.0em; }
+/* Công thức KaTeX cỡ bằng chữ thường.
+   ⚠ !important: katex.min.css (import SAU index.css ở main.tsx) đặt `.katex{font-size:1.21em}` — cùng
+   độ ưu tiên nên cái sau thắng, làm mọi công thức inline (kể cả $ABC$) to hơn chữ thường 21%. */
+.katex { font-size: 1em !important; }
 .katex-display { margin: 0.5em 0; }
 /* Mỗi dòng công thức là 1 block (.mline) → giãn bằng margin, phân số không đè nhau */
 .katex-text { line-height: 1.5; }

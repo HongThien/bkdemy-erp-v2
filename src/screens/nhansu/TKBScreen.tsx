@@ -9,6 +9,28 @@ const THU_LABEL: Record<number, string> = { 2: 'Thứ 2', 3: 'Thứ 3', 4: 'Th�
 const ROOMS = ['P101', 'P102', 'P201', 'P202', 'P301', 'P302']
 const MON_TONE: Record<string, string> = { 'Toán': 'border-indigo-400 bg-indigo-50 text-indigo-900', 'Văn': 'border-rose-400 bg-rose-50 text-rose-900', 'Anh': 'border-emerald-400 bg-emerald-50 text-emerald-900', 'KHTN': 'border-amber-400 bg-amber-50 text-amber-900' }
 const monTone = (mon?: string) => (mon && MON_TONE[mon]) || 'border-slate-300 bg-slate-50 text-slate-700'
+
+// Xếp các ca của 1 ô (khung × thứ) vào lưới 6 phòng mà KHÔNG ĐƯỢC MẤT ca nào.
+// Bug cũ: mỗi vị trí phòng dùng `cell.find(phòng khớp)` → 2 ca cùng phòng, hoặc nhiều ca `phong = NULL`
+// (thực tế 50/76 ca chưa gán phòng) chỉ hiện được 1 ca, phần còn lại BIẾN MẤT im lặng.
+// Nay: ① ca có phòng thật → về đúng vị trí · ② ca còn lại (NULL / phòng lạ / trùng chỗ) lấp các vị trí trống
+// theo thứ tự giờ · ③ vẫn dư (>6 ca/ô) → trả `du` để vẽ thêm dưới lưới. Tổng ca vẽ ra luôn = tổng ca có.
+function xepCa(cell: TKBSlot[]): { o: (TKBSlot | null)[]; du: TKBSlot[] } {
+  const o: (TKBSlot | null)[] = ROOMS.map(() => null)
+  const conLai: TKBSlot[] = []
+  for (const s of cell) {
+    const i = ROOMS.indexOf(s.phong ?? '')
+    if (i >= 0 && !o[i]) o[i] = s
+    else conLai.push(s)
+  }
+  const du: TKBSlot[] = []
+  for (const s of conLai) {
+    const i = o.indexOf(null)
+    if (i >= 0) o[i] = s
+    else du.push(s)
+  }
+  return { o, du }
+}
 const hhmm = (t: string) => t.slice(0, 5)
 const toMin = (t: string) => Number(t.slice(0, 2)) * 60 + Number(t.slice(3, 5))
 const today = () => new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Ho_Chi_Minh' })
@@ -54,6 +76,7 @@ export default function TKBScreen() {
   const view = mon === 'all' ? slots : slots.filter((s) => s.lop?.mon === mon)
   const slotsInBand = (band: Band, thu: number) =>
     view.filter((s) => s.thu === thu && toMin(s.gio_bat_dau) >= band.lo && toMin(s.gio_bat_dau) < band.hi)
+      .sort((a, b) => toMin(a.gio_bat_dau) - toMin(b.gio_bat_dau))
   const bands = BANDS.filter((b) => !b.an || THU_COLS.some((t) => slotsInBand(b, t).length > 0))
 
   return (
@@ -90,20 +113,21 @@ export default function TKBScreen() {
                       <div className="text-[10px] leading-tight text-slate-400">{band.ten.split('\n')[1]}</div>
                     </td>
                     {THU_COLS.map((thu) => {
-                      const cell = slotsInBand(band, thu)
+                      const { o, du } = xepCa(slotsInBand(band, thu))
                       return (
                         <td key={thu} className="rounded-md bg-white p-1 align-middle">
                           {/* lưới phòng 3 cột × 2 hàng CỐ ĐỊNH — ô trống hiện mờ, click xếp ca vào đúng phòng */}
                           <div className="grid grid-cols-3 grid-rows-2 gap-1">
-                            {ROOMS.map((phong) => {
-                              const s = cell.find((x) => (x.phong ?? '') === phong) ?? (phong === ROOMS[5] ? cell.find((x) => !ROOMS.includes(x.phong ?? '')) : undefined)
+                            {ROOMS.map((phong, i) => {
+                              const s = o[i]
                               return s ? (
                                 <button key={phong} onClick={() => setSel(s)}
                                   className={`rounded-md border-[1.5px] px-0.5 py-0.5 text-center shadow-sm transition hover:shadow ${monTone(s.lop?.mon)}`}
-                                  title={`${s.lop?.ten_lop} · ${hhmm(s.gio_bat_dau)}–${hhmm(s.gio_ket_thuc)} · ${s.phong ?? ''}`}>
+                                  title={`${s.lop?.ten_lop} · ${hhmm(s.gio_bat_dau)}–${hhmm(s.gio_ket_thuc)} · ${s.phong ?? 'chưa gán phòng'}`}>
                                   <div className="text-[13px] font-bold leading-tight">{s.lop?.ten_lop ?? '?'}</div>
                                   {/* giờ THẬT của ca — khung hàng chỉ là nhãn thô */}
                                   <div className="text-[8px] leading-tight opacity-70">{hhmm(s.gio_bat_dau)}–{hhmm(s.gio_ket_thuc)}</div>
+                                  {/* phòng THẬT của ca (— = chưa gán), KHÔNG phải nhãn vị trí ô */}
                                   <div className="text-[8px] leading-tight opacity-60">{s.phong ?? '—'}</div>
                                 </button>
                               ) : (
@@ -115,6 +139,20 @@ export default function TKBScreen() {
                               )
                             })}
                           </div>
+                          {/* >6 ca trong 1 khung × thứ: vẽ tiếp dưới lưới thay vì nuốt mất */}
+                          {du.length > 0 && (
+                            <div className="mt-1 grid grid-cols-3 gap-1">
+                              {du.map((s) => (
+                                <button key={s.id} onClick={() => setSel(s)}
+                                  className={`rounded-md border-[1.5px] px-0.5 py-0.5 text-center shadow-sm transition hover:shadow ${monTone(s.lop?.mon)}`}
+                                  title={`${s.lop?.ten_lop} · ${hhmm(s.gio_bat_dau)}–${hhmm(s.gio_ket_thuc)} · ${s.phong ?? 'chưa gán phòng'}`}>
+                                  <div className="text-[13px] font-bold leading-tight">{s.lop?.ten_lop ?? '?'}</div>
+                                  <div className="text-[8px] leading-tight opacity-70">{hhmm(s.gio_bat_dau)}–{hhmm(s.gio_ket_thuc)}</div>
+                                  <div className="text-[8px] leading-tight opacity-60">{s.phong ?? '—'}</div>
+                                </button>
+                              ))}
+                            </div>
+                          )}
                         </td>
                       )
                     })}

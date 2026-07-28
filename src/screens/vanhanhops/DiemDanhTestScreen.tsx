@@ -2,14 +2,17 @@
 // Bằng chứng thật "đã đến test" cho ops-lead tuyển sinh audit L5→L6 (xem tuyensinh.ts).
 // Leaf riêng (KHÔNG nhét vào màn Tuyển sinh `tuyensinh` — OPS chỉ cần đúng việc này, không cần
 // thấy/sửa cả phễu L5-L8) — cùng nguyên tắc tách leaf đã áp cho Report/Prep (BKDEMY_OPS_SPEC_DETAIL.md).
+// ⭐ Đảo luồng 07-19 (BKDEMY_TESTDAUVAO_SPEC_ADDENDUM.md): đề chọn THẲNG từ Kho MT (dropdown, mặc định
+// MT mới nhất, đổi được bất kỳ lúc nào tại phòng) — KHÔNG còn qua de_test (đã bỏ hẳn, mig 0105).
+// Trả bài (Story 4, gộp Nhận xét) TÁCH RA tab riêng — xem TraBaiTestScreen.tsx (Thùy chốt 07-19 lần 2:
+// "Trả bài rơi vào điểm danh test, đáng lẽ là tab riêng tương đương Chấm test").
 import { useEffect, useState } from 'react'
 import {
   listCaTestDangChay, listCaTestHoanThanh, taoCaTest, uploadCaTestBai, ganBaiCaTest, hoanThanhCaTest,
   listUngVienL5, getUngVien, gioKetThucCaTest, THOI_LUONG_OPTIONS, MON_OPTIONS,
   type CaTest, type TaoCaTestInput, type MonTS,
 } from '../../lib/tuyensinh'
-import { listDeTest, ganDeCaTest, listCanTraBai, listDaTraBai, dongTraBai, getPhieuKetQua, type DeTest, type CaTestChoTraBai, type PhieuKetQua } from '../../lib/detest'
-import { PhieuTestModal } from '../tuyensinh/PhieuTestDauVao'
+import { ganDeCaTest, listDeTestDauVao, type DeTestRow } from '../../lib/detest'
 import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../lib/kho/api'
 import { homNayVN, mucDeadline, nhanConLai, type DeadlineMuc } from '../../lib/tuan'
 import SearchSelect from '../../components/SearchSelect'
@@ -22,9 +25,7 @@ const Lbl = ({ children }: { children: React.ReactNode }) => <label className="m
 export default function DiemDanhTestScreen() {
   const [dangChay, setDangChay] = useState<CaTest[]>([])
   const [hoanThanhHomNay, setHoanThanhHomNay] = useState<CaTest[]>([])
-  const [deTests, setDeTests] = useState<DeTest[]>([])
-  const [canTraBai, setCanTraBai] = useState<CaTestChoTraBai[]>([])
-  const [daTraBai, setDaTraBai] = useState<CaTestChoTraBai[]>([])
+  const [deList, setDeList] = useState<DeTestRow[]>([])
   const [loading, setLoading] = useState(true)
   const [form, setForm] = useState(false)
   const [now, setNow] = useState(() => Date.now())
@@ -32,8 +33,8 @@ export default function DiemDanhTestScreen() {
   async function reload() {
     setLoading(true)
     try {
-      const [a, b, d, c, t] = await Promise.all([listCaTestDangChay(), listCaTestHoanThanh(homNayVN()), listDeTest(), listCanTraBai(), listDaTraBai()])
-      setDangChay(a); setHoanThanhHomNay(b); setDeTests(d); setCanTraBai(c); setDaTraBai(t)
+      const [a, b, m] = await Promise.all([listCaTestDangChay(), listCaTestHoanThanh(homNayVN()), listDeTestDauVao()])
+      setDangChay(a); setHoanThanhHomNay(b); setDeList(m)
     } finally { setLoading(false) }
   }
   useEffect(() => { reload() }, [])
@@ -55,7 +56,7 @@ export default function DiemDanhTestScreen() {
         <div className="rounded-lg border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">Không có ca test nào đang chạy.</div>
       ) : (
         <div className="grid gap-3 sm:grid-cols-2">
-          {dangChay.map((c) => <CaTestCard key={c.id} c={c} now={now} deTests={deTests} onChanged={reload} />)}
+          {dangChay.map((c) => <CaTestCard key={c.id} c={c} now={now} deList={deList} onChanged={reload} />)}
         </div>
       )}
 
@@ -73,71 +74,26 @@ export default function DiemDanhTestScreen() {
         </details>
       )}
 
-      {/* STORY 4 — Trả bài: chờ ở đây sau khi nhận xét xong (đội học thuật) */}
-      <div className="mt-8">
-        <h3 className="mb-1 text-[16px] font-semibold text-slate-800">Trả bài</h3>
-        <p className="mb-3 text-[12px] text-slate-400">Xem/xuất phiếu → gửi Zalo cho PH → đóng.</p>
-        {canTraBai.length === 0 ? (
-          <div className="rounded-lg border border-dashed border-slate-200 py-8 text-center text-sm text-slate-400">Không có bài nào cần trả.</div>
-        ) : (
-          <div className="grid gap-2.5 sm:grid-cols-2">
-            {canTraBai.map((c) => <TraBaiCard key={c.id} c={c} onChanged={reload} />)}
-          </div>
-        )}
-        {daTraBai.length > 0 && (
-          <details className="mt-3">
-            <summary className="cursor-pointer text-[12px] font-medium text-emerald-700">✓ Đã trả bài ({daTraBai.length})</summary>
-            <div className="mt-2 grid gap-2 sm:grid-cols-2">
-              {daTraBai.map((c) => (
-                <div key={c.id} className="rounded-xl border border-slate-100 bg-white px-3 py-2 text-[12px] text-slate-500 shadow-sm">
-                  <span className="font-semibold text-slate-700">{c.hoTenHs}</span> · {c.mon}
-                </div>
-              ))}
-            </div>
-          </details>
-        )}
-      </div>
-
       {form && <TaoCaTestModal onClose={() => setForm(false)} onDone={async () => { setForm(false); await reload() }} />}
     </div>
     </div>
   )
 }
 
-function TraBaiCard({ c, onChanged }: { c: CaTestChoTraBai; onChanged: () => void }) {
-  const [phieu, setPhieu] = useState<PhieuKetQua | null>(null)
-  const [busy, setBusy] = useState(false)
-  const [err, setErr] = useState<string | null>(null)
-  async function xemPhieu() { try { setPhieu(await getPhieuKetQua(c.id)) } catch (e: any) { setErr(e.message ?? String(e)) } }
-  async function dong() {
-    setBusy(true); setErr(null)
-    try { await dongTraBai(c.id); onChanged() }
-    catch (e: any) { setErr(e.message ?? String(e)) } finally { setBusy(false) }
-  }
-  return (
-    <div className="rounded-2xl border border-slate-100 bg-white p-3.5 shadow-sm">
-      <div className="text-[14px] font-semibold text-slate-800">{c.hoTenHs}</div>
-      <div className="mb-2 text-[12px] text-slate-400">{c.mon}{c.khoi ? ` · Lớp ${c.khoi}` : ''} · {new Date(c.ngay + 'T00:00:00').toLocaleDateString('vi-VN')}</div>
-      <div className="flex gap-2">
-        <button onClick={xemPhieu} className="rounded-md border border-slate-200 px-2.5 py-1.5 text-[12px] font-medium text-slate-600 hover:border-indigo-300">📋 Xem/Xuất phiếu</button>
-        <button onClick={dong} disabled={busy} className="ml-auto rounded-md bg-emerald-600 px-3 py-1.5 text-[12px] font-semibold text-white hover:bg-emerald-500 disabled:opacity-40">✓ Đã gửi, đóng</button>
-      </div>
-      {err && <p className="mt-1.5 text-[12px] text-rose-600">{err}</p>}
-      {phieu && <PhieuTestModal p={phieu} onClose={() => setPhieu(null)} />}
-    </div>
-  )
-}
-
-function CaTestCard({ c, now, deTests, onChanged }: { c: CaTest; now: number; deTests: DeTest[]; onChanged: () => void }) {
+function CaTestCard({ c, now, deList, onChanged }: { c: CaTest; now: number; deList: DeTestRow[]; onChanged: () => void }) {
   const [baiUrl, setBaiUrl] = useState<string | null>(c.baiUrl)
-  const [deTestId, setDeTestId] = useState(c.deTestId)
-  const [chonDe, setChonDe] = useState('')
+  const [taiLieuId, setTaiLieuId] = useState(c.taiLieuId)
+  const [chonMT, setChonMT] = useState('')
   const [busy, setBusy] = useState(false)
   const [err, setErr] = useState<string | null>(null)
   const deadline = gioKetThucCaTest(c)
   const muc = mucDeadline(deadline, now) ?? 'con_nhieu'
-  const deOpts = deTests.filter((d) => d.active && d.mon === c.mon && d.khoi === c.ungVien.khoi)
-  const deHienTai = deTests.find((d) => d.id === deTestId)
+  // Đề = đề test đầu vào ĐÃ SINH (tab "Đề test") khớp môn + khối ứng viên. listDeTestDauVao() sort desc →
+  // đề ĐANG DÙNG (laHienTai) đứng đầu; lịch sử phía sau (Ops vẫn chọn được bản cũ nếu cần). Chưa có đề
+  // nào cho khối×môn → báo nhờ học thuật tạo (không fallback MT thô — đề đầu vào phải do học thuật curate).
+  const cands = deList.filter((d) => d.mon === c.mon && (!c.ungVien.khoi || d.khoi === c.ungVien.khoi))
+  const chuaCoDe = cands.length === 0
+  const deDaGan = deList.find((d) => d.id === taiLieuId)
 
   async function chonFile(e: React.ChangeEvent<HTMLInputElement>) {
     const f = e.target.files?.[0]; if (!f) return
@@ -145,10 +101,11 @@ function CaTestCard({ c, now, deTests, onChanged }: { c: CaTest; now: number; de
     try { const url = await uploadCaTestBai(f); await ganBaiCaTest(c.id, url); setBaiUrl(url) }
     catch (ex: any) { setErr(ex.message ?? String(ex)) } finally { setBusy(false) }
   }
+  // Đổi đề bất kỳ lúc nào tại phòng (HS kêu khó quá) — dropdown luôn mở, KHÔNG khoá sau khi đã gán 1 lần.
   async function ganDe() {
-    if (!chonDe) return
+    if (!chonMT) return
     setBusy(true); setErr(null)
-    try { await ganDeCaTest(c.id, chonDe); setDeTestId(chonDe) }
+    try { await ganDeCaTest(c.id, chonMT); setTaiLieuId(chonMT); setChonMT('') }
     catch (ex: any) { setErr(ex.message ?? String(ex)) } finally { setBusy(false) }
   }
   async function hoanTat() {
@@ -169,16 +126,17 @@ function CaTestCard({ c, now, deTests, onChanged }: { c: CaTest; now: number; de
         <span className={`ml-auto font-semibold ${DEADLINE_TONE[muc]}`}>{muc === 'qua_han' ? '⚠ ' : ''}{nhanConLai(deadline, now)}</span>
       </div>
 
-      <div className="mb-2 flex items-center gap-1.5">
-        {deHienTai ? (
-          <span className="text-[12px] text-slate-500">📘 {deHienTai.ten}</span>
+      <div className="mb-2 flex flex-wrap items-center gap-1.5">
+        {deDaGan && <span className="text-[12px] text-slate-500">📘 {deDaGan.ten}</span>}
+        {chuaCoDe ? (
+          <span className="text-[11px] text-amber-600" title='Học thuật chưa tạo đề test đầu vào cho khối×môn này ở tab "Đề test".'>⚠ Chưa có đề test đầu vào cho khối này</span>
         ) : (
           <>
-            <select className="rounded-md border border-slate-200 px-2 py-1 text-[12px]" value={chonDe} onChange={(e) => setChonDe(e.target.value)}>
-              <option value="">Chọn đề…</option>
-              {deOpts.map((d) => <option key={d.id} value={d.id}>{d.ten}</option>)}
+            <select className="rounded-md border border-slate-200 px-2 py-1 text-[12px]" value={chonMT} onChange={(e) => setChonMT(e.target.value)}>
+              <option value="">{deDaGan ? 'Đổi đề khác…' : 'Chọn đề…'}</option>
+              {cands.map((d) => <option key={d.id} value={d.id}>{d.ten}{d.laHienTai ? ' · đang dùng' : ' · lịch sử'}</option>)}
             </select>
-            <button onClick={ganDe} disabled={busy || !chonDe} className="rounded-md bg-slate-700 px-2 py-1 text-[11px] font-medium text-white hover:bg-slate-600 disabled:opacity-40">Gán đề</button>
+            {chonMT && <button onClick={ganDe} disabled={busy} className="rounded-md bg-slate-700 px-2 py-1 text-[11px] font-medium text-white hover:bg-slate-600 disabled:opacity-40">{deDaGan ? 'Đổi đề' : 'Gán đề'}</button>}
           </>
         )}
       </div>

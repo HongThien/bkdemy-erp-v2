@@ -2,6 +2,7 @@
 // UI KHÔNG gọi supabase trực tiếp — chỉ qua file này (seam, giống lib/kho/api.ts).
 import { createClient } from '@supabase/supabase-js'
 import { supabase } from './supabase'
+import { reopenPhase, moLaiDanhGia } from './gami'
 
 const LIMIT = 10000
 
@@ -119,6 +120,7 @@ export type MyProfile = {
   viTris: (ViTri & { team_ten: string })[]        // vị trí đang giữ (chỉ xem)
   phanCong: (PhanCongLop & { lop?: Lop })[]       // phân công lớp (chỉ xem)
   mons: string[]                                  // môn được phân (scope④ — gate kho/tài liệu theo môn)
+  hocThuatMons: string[]                          // môn NS là team học thuật (ghế hoc_thuat) — quyền chốt/duyệt kế hoạch (vd duyệt dạng đuổi)
 }
 export async function getMyProfile(): Promise<MyProfile | null> {
   const { data: au } = await supabase.auth.getUser()
@@ -139,12 +141,13 @@ export async function getMyProfile(): Promise<MyProfile | null> {
     }
   }
   if (!nsId) return null
-  const [nsRes, teamAll, teamMap, vtRes, pcRes, monRows] = await Promise.all([
+  const [nsRes, teamAll, teamMap, vtRes, pcRes, monRows, htMonRows] = await Promise.all([
     supabase.from('nhan_su').select('*').eq('id', nsId).single(),
     listTeam(), listNhanSuTeamMap(),
     supabase.from('vi_tri').select('*').eq('nhan_su_id', nsId).limit(LIMIT),
     supabase.from('phan_cong_lop').select('*, lop(*)').eq('nhan_su_id', nsId).limit(LIMIT),
     listMonOfNhanSu(nsId),
+    listMonHocThuatCuaToi(nsId),
   ])
   if (nsRes.error) throw nsRes.error
   const tmById = new Map(teamAll.map((t) => [t.id, t]))
@@ -154,6 +157,7 @@ export async function getMyProfile(): Promise<MyProfile | null> {
     viTris: ((vtRes.data ?? []) as ViTri[]).map((v) => ({ ...v, team_ten: tmById.get(v.team_id)?.ten ?? '?' })),
     phanCong: (pcRes.data ?? []) as (PhanCongLop & { lop?: Lop })[],
     mons: monRows,
+    hocThuatMons: htMonRows,
   }
 }
 // ── SCOPE ENGINE — "ai thấy task nào" (Thùy chốt 12/06) ──────────
@@ -278,6 +282,16 @@ export async function listMonOfNhanSu(nhanSuId: string): Promise<string[]> {
   const { data, error } = await supabase.from('nhan_su_mon').select('mon').eq('nhan_su_id', nhanSuId).limit(LIMIT)
   if (error) throw error
   return (data ?? []).map((r: any) => r.mon as string)
+}
+// Môn mà NS là TEAM HỌC THUẬT (ngồi ghế team `hoc_thuat` của môn đó — vi_tri.mon). KHÁC `nhan_su_mon`
+// (scope④ content gate kho): đây là "quyền CHỐT/DUYỆT kế hoạch học thuật" (vd duyệt dạng bổ trợ đuổi).
+// Ghế học thuật liên-môn (mon=null) KHÔNG tính (duyệt phải theo môn cụ thể). Xem ADR chiều môn.
+export async function listMonHocThuatCuaToi(nhanSuId: string): Promise<string[]> {
+  const { data: team } = await supabase.from('team').select('id').eq('ma', 'hoc_thuat').maybeSingle()
+  if (!team) return []
+  const { data, error } = await supabase.from('vi_tri').select('mon').eq('team_id', (team as any).id).eq('nhan_su_id', nhanSuId).not('mon', 'is', null).limit(LIMIT)
+  if (error) throw error
+  return [...new Set((data ?? []).map((r: any) => r.mon as string))]
 }
 // Set trọn bộ môn của 1 NS (delete + insert — bảng nối nhỏ).
 export async function setMonOfNhanSu(nhanSuId: string, mons: string[]): Promise<void> {
@@ -464,15 +478,25 @@ export async function listHSCuaLop(lopId: string, gomDaRoi = false): Promise<HST
 }
 // Khi HS vào lớp: tự thêm vào roster MỌI buổi đã mở của lớp từ ngay_vao trở đi (mo + hoan_tat, bỏ huy) →
 // HS thêm-sau-khi-mở-buổi vẫn vào luồng điểm danh NGAY (không cần mở lại buổi). Idempotent (bỏ buổi đã có HS).
+// ⭐ 07-10 (Thùy): buổi đã ĐÓNG chấm/đánh giá mà giờ có HS mới → TỰ MỞ LẠI (ingame/mt/đánh giá) — xem
+// ghi chú đầy đủ ở dongBoSiSo (gami.ts), 2 hàm này cùng chung 1 lỗ hổng (khoá theo phase, không phải roster).
 async function syncHSVaoBuoiTuNgay(hocSinhId: string, lopId: string, tuNgay: string): Promise<void> {
-  const { data: buois } = await supabase.from('buoi_hoc').select('id')
+  const { data: buois } = await supabase.from('buoi_hoc').select('id, ingame_dong_at, mt_dong_at, danh_gia_xong_at')
     .eq('lop_id', lopId).eq('loai', 'thuong').neq('trang_thai', 'huy').gte('ngay', tuNgay).limit(LIMIT)
-  const ids = (buois ?? []).map((b: any) => b.id)
+  const all = (buois ?? []) as { id: string; ingame_dong_at: string | null; mt_dong_at: string | null; danh_gia_xong_at: string | null }[]
+  const ids = all.map((b) => b.id)
   if (!ids.length) return
   const { data: co } = await supabase.from('buoi_hoc_hs').select('buoi_hoc_id').eq('hoc_sinh_id', hocSinhId).in('buoi_hoc_id', ids).limit(LIMIT)
   const have = new Set((co ?? []).map((r: any) => r.buoi_hoc_id))
-  const rows = ids.filter((id) => !have.has(id)).map((id) => ({ buoi_hoc_id: id, hoc_sinh_id: hocSinhId }))
-  if (rows.length) { const { error } = await supabase.from('buoi_hoc_hs').insert(rows); if (error) throw error }
+  const moi = all.filter((b) => !have.has(b.id))
+  if (!moi.length) return
+  const { error } = await supabase.from('buoi_hoc_hs').insert(moi.map((b) => ({ buoi_hoc_id: b.id, hoc_sinh_id: hocSinhId })))
+  if (error) throw error
+  for (const b of moi) {
+    if (b.ingame_dong_at) await reopenPhase(b.id, 'ingame')
+    if (b.mt_dong_at) await reopenPhase(b.id, 'mt')
+    if (b.danh_gia_xong_at) await moLaiDanhGia(b.id)
+  }
 }
 export async function ghiDanh(hocSinhId: string, lopId: string, mucNangLucId: string | null = null, ngayVao?: string): Promise<void> {
   // upsert idempotent: ghi danh lại lớp cũ (đã rời) → bật lại 'dang_hoc' với ngày vào MỚI.

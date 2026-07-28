@@ -2,24 +2,26 @@ import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 // (Ảnh gửi PH dùng html2canvas tải từ CDN TRONG popup — đúng pattern V1, không import vào bundle.)
 import {
-  buoiAoCuaNgay, moBuoi, getBuoi, huyBuoi, huyBuoiCuaNgay, setNguoiDay,
+  buoiAoCuaNgay, timBuoiTheoLop, moBuoi, getBuoi, huyBuoi, huyBuoiCuaNgay, setNguoiDay,
   getRoster, diemDanh, markBaoDen, xoaHSKhoiBuoi, dongBoSiSo, listProblems, addProblem, setProblemDang, ensureProblems, listGrades, gradeMuc, closePhase,
-  loadETForBuoi, ensureETProblems, resyncETProblems, gradeET, deleteGrade, reopenPhase,
-  loadBTVNForBuoi, ensureBTVNProblems, getBtvnKetQua, setBtvnKetQua, listCanhBao, themCanhBao, xoaCanhBao, closeBTVN, reopenBTVN,
+  loadETForBuoi, syncDocProblems, xepLuoiTheoDe, gradeET, deleteGrade, reopenPhase,
+  loadBTVNForBuoi, syncBTVNProblems, getBtvnKetQua, setBtvnKetQua, listCanhBao, themCanhBao, xoaCanhBao, closeBTVN, reopenBTVN,
   type BtvnKQ, type CanhBao, type BtvnTrangThai, type BtvnThaiDo,
-  getDanhGia, setDanhGiaDang, setNhanXet, dongDanhGia, moLaiDanhGia,
-  loadLiveTestForBuoi, getDangTen, loadMTForBuoi, ensureMTProblems,
-  type BuoiAo, type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type Phase, type DiemDanh, type DanhGiaHS, type DanhGiaDiem, type TabKey, type ETResult,
+  getDanhGia, setDanhGiaDang, setNhanXet, setHoanThanhPct, HOAN_THANH_PCT_OPTS, dongDanhGia, moLaiDanhGia, setNoiDungBuoi,
+  loadLiveTestForBuoi, getDangTen, loadMTForBuoi, syncMTProblems,
+  type BuoiAo, type BuoiTim, type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type Phase, type DiemDanh, type DanhGiaHS, type DanhGiaDiem, type TabKey, type ETResult, type LuoiSync,
 } from '../../lib/gami'
 import { getLiveSnapshot, type BaiTest, type BaiTestCau, type BaiLam, type LiveAnswer } from '../../lib/testonline'
 import type { MTPhanCaus } from '../../lib/mt'
+import { getOrCreateKyThiMTChoBuoi, listDiemThiByKyThi, upsertDiemThi, currentMua, type KyThi, type DiemThi, type Verdict } from '../../lib/thanhtich'
 import { listNhanSu, type NhanSu } from '../../lib/nhansu'
 import { listDaiDang, type CauHoi } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
 import SearchSelect from '../../components/SearchSelect'
+import { NGU_CANH_LUOT, setNguCanhLuotBuoi, type NguCanhLuot } from '../../lib/kho/hinh'
 import DangPickerOne from '../../components/DangPickerOne'
 import { useIsMobile } from '../../hooks/useIsMobile'
-import { tenHienThiDs } from '../../lib/hoten'
+import { tenHienThiDs, tenNganHS } from '../../lib/hoten'
 import { useStore } from '../../store/useStore'
 
 type DangOpt = { ma_dang: string; ten: string }
@@ -40,9 +42,22 @@ export default function BuoiHocScreen() {
   const [err, setErr] = useState<string | null>(null)
   const [open, setOpen] = useState<{ id: string; lopId: string } | null>(null)
   const [filter, setFilter] = useState<BuoiStatus>('chua')
+  // ⭐ 07-24: 2 CHẾ ĐỘ XEM, gạt qua lại — KHÔNG trộn vào nhau. "Theo ngày" là trục vận hành hằng ngày
+  // (buổi ẢO của 1 ngày, suy từ TKB, có bộ đếm chưa-mở/đã-mở/đã-huỷ theo ngày đó); "Tìm lớp" lật trục
+  // sang LỚP xuyên thời gian — nguồn dữ liệu, cách đếm, cách sắp đều khác. Nhét chung một danh sách thì
+  // mấy con số filter theo-ngày hết nghĩa. Tách chế độ ⇒ màn chính giữ nguyên hành vi, không rủi ro.
+  const [mode, setMode] = useState<'ngay' | 'tim'>('ngay')
+  // Từ khoá tìm sống ở ĐÂY, không ở trong panel: vào 1 buổi rồi bấm "← Buổi học" là panel bị unmount,
+  // để state bên trong thì mất chữ vừa gõ → phải gõ lại mỗi lần xem xong 1 buổi (đúng thao tác hay lặp nhất).
+  const [q, setQ] = useState('')
   const me = useStore((s) => s.me)
   const laAdmin = !!useStore((s) => s.quyen)?.laAdmin
   const myMons = me?.mons ?? []
+  // Team ops điểm danh LIÊN MÔN (spine vận hành) — KHÔNG được quyết bởi `nhan_su_mon` (đó là chiều
+  // scope④ gate KHO/tài liệu cho GV/TA, khác hẳn). Ops được backfill `nhan_su_mon='Toán'` mặc định
+  // (06-29, cho MỌI nhân sự) vẫn phải thấy hết — suy trực tiếp từ biên chế team, giống `opsToanHe`
+  // ở nhansu.ts `getMyScope()` (Thùy báo lỗi 07-15: lớp KHTN biến mất khỏi Buổi học của ops).
+  const laOps = (me?.teams ?? []).some((t) => t.ma === 'ops')
   // OPS/người ngoài lớp không có việc "chấm bài như TA" — chỉ GV/TG của CHÍNH lớp đó (hoặc admin) mới
   // thấy đủ 4 tab; còn lại (OPS quản lý buổi qua leaf "Buổi học") chỉ thấy Điểm danh (đúng việc của họ).
   const myLopIds = new Set((me?.phanCong ?? []).map((pc) => pc.lop_id))
@@ -58,23 +73,34 @@ export default function BuoiHocScreen() {
     return <BuoiDetail id={open.id} tabs={tabs} onClose={() => { setOpen(null); reload() }} />
   }
 
-  // Scope MÔN: GV/TA có môn → chỉ buổi môn mình; Ops/admin (không gán môn) → thấy TẤT (điểm danh liên-môn).
-  const view = (laAdmin || myMons.length === 0) ? list : list.filter((ba) => myMons.includes(ba.lop.mon))
+  // Scope MÔN: GV/TA có môn → chỉ buổi môn mình; Ops/admin/chưa-gán-môn → thấy TẤT (điểm danh liên-môn).
+  const view = (laAdmin || laOps || myMons.length === 0) ? list : list.filter((ba) => myMons.includes(ba.lop.mon))
   const cnt: Record<BuoiStatus, number> = { chua: 0, mo: 0, huy: 0 }
   for (const ba of view) cnt[statusOf(ba.buoi)]++
   const shown = view.filter((ba) => statusOf(ba.buoi) === filter)
   const tab = (on: boolean) => `h-7 rounded-md px-3 text-[13px] font-semibold transition ${on ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`
 
+  const segBtn = (on: boolean) => `h-7 rounded-md px-2.5 text-[12px] font-semibold transition ${on ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`
+
   return (
     <div className="flex h-full min-w-0 flex-col bg-[#fafafb]">
       <div className="flex items-center gap-3 border-b border-slate-200 bg-white px-6 py-2.5">
         <span className="text-sm font-semibold text-slate-900">Buổi học</span>
-        <input type="date" value={ngay} onChange={(e) => setNgay(e.target.value)} className="rounded-md border border-slate-200 px-2 py-1 text-[13px]" />
-        <div className="ml-2 flex items-center gap-1">
-          {FILTERS.map((f) => <button key={f.v} onClick={() => setFilter(f.v)} className={tab(filter === f.v)}>{f.lbl} <span className={filter === f.v ? 'opacity-80' : 'text-slate-400'}>{cnt[f.v]}</span></button>)}
-        </div>
+        <span className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5">
+          <button onClick={() => setMode('ngay')} className={segBtn(mode === 'ngay')}>📅 Theo ngày</button>
+          <button onClick={() => setMode('tim')} className={segBtn(mode === 'tim')}>🔎 Tìm lớp</button>
+        </span>
+        {mode === 'ngay' && <>
+          <input type="date" value={ngay} onChange={(e) => setNgay(e.target.value)} className="rounded-md border border-slate-200 px-2 py-1 text-[13px]" />
+          <div className="ml-2 flex items-center gap-1">
+            {FILTERS.map((f) => <button key={f.v} onClick={() => setFilter(f.v)} className={tab(filter === f.v)}>{f.lbl} <span className={filter === f.v ? 'opacity-80' : 'text-slate-400'}>{cnt[f.v]}</span></button>)}
+          </div>
+        </>}
       </div>
 
+      {mode === 'tim' ? (
+        <TimLopPanel q={q} setQ={setQ} monScope={(laAdmin || laOps || myMons.length === 0) ? null : myMons} onOpened={(id, lopId) => setOpen({ id, lopId })} />
+      ) : (
       <div className="min-h-0 flex-1 overflow-auto p-6">
         {loading ? <p className="text-sm text-slate-400">Đang tải…</p>
           : err ? <p className="text-sm text-rose-600">Lỗi: {err}</p>
@@ -86,6 +112,95 @@ export default function BuoiHocScreen() {
             </div>
           )}
       </div>
+      )}
+    </div>
+  )
+}
+
+// ── 🔎 TÌM LỚP: gõ tên lớp → mọi buổi của lớp đó (mới nhất trước) ───────────────────────────────
+// Chỉ đọc, không đụng state của chế độ "Theo ngày" — gạt qua lại không mất gì.
+function TimLopPanel({ q, setQ, monScope, onOpened }: { q: string; setQ: (v: string) => void; monScope: string[] | null; onOpened: (id: string, lopId: string) => void }) {
+  const [rows, setRows] = useState<BuoiTim[]>([])
+  const [loading, setLoading] = useState(false)
+  const [err, setErr] = useState<string | null>(null)
+  // Debounce 250ms + cờ huỷ: gõ "9A1" là 3 lượt gõ, không để lượt cũ trả về SAU rồi đè kết quả mới.
+  useEffect(() => {
+    const tu = q.trim()
+    if (!tu) { setRows([]); setErr(null); setLoading(false); return }
+    let bo = false
+    setLoading(true)
+    const t = setTimeout(() => {
+      timBuoiTheoLop(tu)
+        .then((r) => { if (!bo) { setRows(r); setErr(null) } })
+        .catch((e) => { if (!bo) setErr(e.message ?? String(e)) })
+        .finally(() => { if (!bo) setLoading(false) })
+    }, 250)
+    return () => { bo = true; clearTimeout(t) }
+  }, [q])
+
+  const view = monScope ? rows.filter((r) => monScope.includes(r.lop.mon)) : rows
+  // Gom theo LỚP khi tên gõ khớp nhiều lớp (vd gõ "9A" ra 9A1, 9A2) — đỡ lẫn buổi của 2 lớp vào nhau.
+  const nhomLop = [...new Map(view.map((r) => [r.lop.id, r.lop])).values()]
+
+  return (
+    <div className="grid min-h-0 flex-1 grid-rows-[auto_minmax(0,1fr)] overflow-hidden">
+      <div className="flex items-center gap-3 border-b border-slate-100 bg-white px-6 py-2.5">
+        <input autoFocus value={q} onChange={(e) => setQ(e.target.value)} placeholder="Gõ tên lớp… (vd 9A1)"
+          className="h-9 w-64 rounded-md border border-slate-300 px-3 text-[14px] outline-none focus:border-indigo-500" />
+        {q.trim() && !loading && <span className="text-[12px] text-slate-400"><b className="text-slate-600">{view.length}</b> buổi{nhomLop.length > 1 ? ` · ${nhomLop.length} lớp (${nhomLop.map((l) => l.ten_lop).join(', ')})` : ''}</span>}
+        <span className="ml-auto text-[11px] text-slate-400">Buổi đã học + buổi sắp tới trong 14 ngày</span>
+      </div>
+      <div className="min-h-0 overflow-auto p-6">
+        {!q.trim() ? <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">Gõ tên lớp để xem tất cả buổi của lớp đó — khỏi phải dò từng ngày trên lịch.</div>
+          : loading ? <p className="text-sm text-slate-400">Đang tìm…</p>
+          : err ? <p className="text-sm text-rose-600">Lỗi: {err}</p>
+          : view.length === 0 ? <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">Không thấy lớp/buổi nào khớp “{q.trim()}”.</div>
+          : <div className="mx-auto max-w-[880px] space-y-1.5">{view.map((r) => <BuoiTimRow key={`${r.lop.id}|${r.ngay}|${r.buoi?.id ?? 'ao'}`} r={r} onOpened={onOpened} />)}</div>}
+      </div>
+    </div>
+  )
+}
+
+const LOAI_BUOI_TEN: Record<string, string> = { bu: 'Bù', bo_tro_yeu: 'Bổ trợ yếu', bo_tro_duoi: 'Bổ trợ đuổi', mt: 'MT' }
+function BuoiTimRow({ r, onOpened }: { r: BuoiTim; onOpened: (id: string, lopId: string) => void }) {
+  const [busy, setBusy] = useState(false)
+  const b = r.buoi
+  const ngayVN = r.ngay.split('-').reverse().join('/')
+  const thuLbl = r.thu === 8 ? 'CN' : 'T' + r.thu
+  const gio = r.slot.gio_bat_dau ? `${r.slot.gio_bat_dau.slice(0, 5)}–${(r.slot.gio_ket_thuc ?? '').slice(0, 5)}` : ''
+  async function moRoiVao() {
+    setBusy(true)
+    try { const nw = await moBuoi(r.lop.id, r.ngay, r.slot as any); onOpened(nw.id, r.lop.id) }
+    catch (e: any) { alert(e.message ?? String(e)); setBusy(false) }
+  }
+  const chip = b?.trang_thai === 'huy' ? <span className="rounded bg-slate-200 px-1.5 py-0.5 text-[11px] font-medium text-slate-500">Đã hủy</span>
+    : b?.trang_thai === 'hoan_tat' ? <span className="rounded bg-emerald-100 px-1.5 py-0.5 text-[11px] font-medium text-emerald-700">Hoàn tất</span>
+    : b ? <span className="rounded bg-indigo-100 px-1.5 py-0.5 text-[11px] font-medium text-indigo-700">Đang mở</span>
+    : <span className="rounded bg-amber-50 px-1.5 py-0.5 text-[11px] font-medium text-amber-700">Chưa mở</span>
+
+  const noiDung = (
+    <>
+      <span className="w-[92px] shrink-0 text-[13px] font-semibold text-slate-900">{r.lop.ten_lop}</span>
+      <span className="w-[112px] shrink-0 text-[12px] text-slate-400">{r.lop.mon}{r.lop.khoi ? ` · K${r.lop.khoi}` : ''}</span>
+      <span className="w-[124px] shrink-0 text-[13px] font-medium text-slate-700">{thuLbl} · {ngayVN}</span>
+      <span className="w-[104px] shrink-0 text-[12px] text-slate-500">{gio}</span>
+      <span className="w-[64px] shrink-0 text-[12px] text-slate-400">{r.slot.phong ?? ''}</span>
+      {b && b.loai !== 'thuong' && <span className="shrink-0 rounded bg-violet-50 px-1.5 py-0.5 text-[11px] font-medium text-violet-700">{LOAI_BUOI_TEN[b.loai] ?? b.loai}</span>}
+      <span className="ml-auto shrink-0">{chip}</span>
+    </>
+  )
+  // Buổi đã có dòng → bấm cả hàng để vào. Chưa mở (ảo) → nút "Mở buổi" (không bấm nhầm cả hàng mà đẻ dòng).
+  if (b && b.trang_thai !== 'huy') return (
+    <button onClick={() => onOpened(b.id, r.lop.id)} className="flex w-full items-center gap-3 rounded-lg border border-slate-200 bg-white px-3 py-2 text-left transition hover:border-indigo-400 hover:bg-indigo-50/40">
+      {noiDung}
+      <span className="shrink-0 text-[12px] font-medium text-indigo-600">→</span>
+    </button>
+  )
+  return (
+    <div className="flex w-full items-center gap-3 rounded-lg border border-slate-200 bg-white px-3 py-2">
+      {noiDung}
+      {b ? <span className="shrink-0 text-[11px] italic text-slate-400" title={b.ly_do_huy ?? ''}>{b.ly_do_huy ?? ''}</span>
+        : <button onClick={moRoiVao} disabled={busy} className="shrink-0 rounded-md bg-indigo-600 px-2.5 py-1 text-[12px] font-medium text-white hover:bg-indigo-500 disabled:opacity-40">{busy ? '…' : 'Mở buổi'}</button>}
     </div>
   )
 }
@@ -188,6 +303,22 @@ export function BuoiDetail({ id, onClose, tabs, initialTab, canManage = true, on
             </span>
           ) })()}
         </div>}
+        {/* LƯỢT DẠY của buổi (spec-kho-hinh-v3 §8). Buổi lượt-1 dạy mô hình thì dạng+bổ đề đã được
+            scaffold sẵn ⇒ HS sai quy về MÔ HÌNH; lượt-2 dạy dạng thì mô hình đã quen ⇒ sai quy về DẠNG.
+            Không có nhãn này thì các trục chồng lên một quan sát, sau KHÔNG gỡ ra được.
+            KHÔNG gate theo môn (ADR-mon §1.6: cấm `if mon==='Toán'` trong code dùng chung) — mọi môn
+            đều có khái niệm lượt dạy; nhánh nào chưa dùng thì để trống. */}
+        {!isMobile && canManage && (
+          <div className="flex items-center gap-1 text-[12px] text-slate-500">Lượt:
+            <select value={(buoi as { ngu_canh_luot?: string | null }).ngu_canh_luot ?? ''}
+              onChange={async (e) => { await setNguCanhLuotBuoi(id, (e.target.value || null) as NguCanhLuot | null); reload() }}
+              title="Lượt dạy sinh ra quan sát — dùng để quy lỗi đúng trục khi đo"
+              className="rounded-md border border-slate-200 px-1.5 py-1 text-[12px] text-slate-700 outline-none focus:border-indigo-400">
+              <option value="">— chưa khai —</option>
+              {NGU_CANH_LUOT.map((x) => <option key={x.v} value={x.v} title={x.mo_ta}>{x.label}</option>)}
+            </select>
+          </div>
+        )}
         {canManage && buoi.trang_thai !== 'huy' && buoi.trang_thai !== 'hoan_tat' && (
           <button onClick={async () => { const ly = prompt('Lý do hủy buổi?'); if (ly) { await huyBuoi(id, ly); reload() } }}
             className="ml-auto rounded-md border border-rose-200 px-2.5 py-1 text-[12px] font-medium text-rose-600 hover:bg-rose-50">Hủy buổi</button>
@@ -362,7 +493,7 @@ function ChamTab({ buoiId, phase, roster, buoi, dangOpts, onChange }: { buoiId: 
     if (closing) return
     if (!confirm('Xác nhận chấm bài trên lớp? Sẽ tính Elo + EXP. Mở lại được nếu cần sửa.')) return
     setClosing(true)
-    try { const res = await closePhase(buoiId, phase); if (res.already) alert('Đã xác nhận rồi.'); else onChange() }
+    try { const res = await closePhase(buoiId, phase); if (res.already) alert('Đã xác nhận rồi.'); else { if (res.khongCoDuLieu) alert('Đã đóng, nhưng KHÔNG tính Elo/EXP — chưa chấm ô nào. Muốn tính thì Mở lại, chấm rồi xác nhận lại.'); onChange() } }
     catch (e: any) { alert(e?.message ?? String(e)) }
     finally { setClosing(false) }
   }
@@ -541,19 +672,29 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
   const [loading, setLoading] = useState(true)
   const [closing, setClosing] = useState(false)
   const [anhPH, setAnhPH] = useState(false) // overlay ảnh kết quả ET gửi phụ huynh
+  const [sync, setSync] = useState<LuoiSync | null>(null) // kết quả bám đề của lưới (xem syncDocProblems)
   const coMat = roster.filter((r) => r.diem_danh === 'co_mat')
   const tenHT = tenHienThiDs(coMat.map((r) => r.hoc_sinh?.ho_ten)) // 2 HS trùng tên rút gọn → bung đủ (Thùy 07-06)
   const dongCol = buoi.et_dong_at
 
-  async function reloadP() { const [p, g] = await Promise.all([listProblems(buoiId, 'et'), listGrades(buoiId)]); setProbs(p); setGrades(g) }
+  // Lưới hiển thị THEO THỨ TỰ ĐỀ (khớp ô↔câu qua ma_cau), không theo problem_no — xem syncDocProblems.
+  const causRef = useRef<CauHoi[]>([])
+  async function reloadP() {
+    const [p, g] = await Promise.all([listProblems(buoiId, 'et'), listGrades(buoiId)])
+    setProbs(xepLuoiTheoDe(p, causRef.current)); setGrades(g)
+  }
   useEffect(() => { (async () => {
     setLoading(true)
     try {
       const { etId, caus } = await loadETForBuoi(buoiId)
-      if (!etId) { setEtMissing(true); setEtCaus([]) }
-      else { setEtMissing(false); await ensureETProblems(buoiId, caus); setEtCaus(caus) }
-      await reloadP()
-    } catch { setEtMissing(true); setEtCaus([]) } finally { setLoading(false) }
+      causRef.current = caus
+      if (!etId) { setEtMissing(true); setEtCaus([]); setSync(null); await reloadP(); return }
+      setEtMissing(false); setEtCaus(caus)
+      // Sync CHỦ ĐỘNG mỗi lần mở tab — lưới tự bám đề. Phase đã đóng thì chỉ báo, không sửa lén.
+      const s = await syncDocProblems(buoiId, 'et', caus, !!buoi.et_dong_at)
+      setSync(s); setProbs(s.probs)
+      setGrades(await listGrades(buoiId))
+    } catch { setEtMissing(true); setEtCaus([]); setSync(null) } finally { setLoading(false) }
   })() }, [buoiId]) // eslint-disable-line
 
   const gradeOf = (pid: string, hsid: string) => grades.find((g) => g.problem_id === pid && g.hoc_sinh_id === hsid)
@@ -579,26 +720,25 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
     if (closing) return
     if (!confirm('Xác nhận ET? Sẽ tính Elo + EXP. Mở lại được nếu cần sửa.')) return
     setClosing(true)
-    try { const res = await closePhase(buoiId, 'et'); if (res.already) alert('Đã xác nhận rồi.'); else onChange() }
+    try { const res = await closePhase(buoiId, 'et'); if (res.already) alert('Đã xác nhận rồi.'); else { if (res.khongCoDuLieu) alert('Đã đóng, nhưng KHÔNG tính Elo/EXP — chưa chấm ô nào. Muốn tính thì Mở lại, chấm rồi xác nhận lại.'); onChange() } }
     catch (e: any) { alert(e?.message ?? String(e)) }
     finally { setClosing(false) }
   }
   async function moLai() { await reopenPhase(buoiId, 'et'); onChange() }
-  async function dongBoET() { try { await resyncETProblems(buoiId, etCaus ?? []); await reloadP() } catch (e: any) { alert(e.message ?? String(e)) } }
 
   if (loading) return <p className="text-[12px] text-slate-400">Đang tải ET…</p>
   if (etMissing) return <p className="text-[13px] text-slate-400">Chưa có ET cho buổi này (khớp <b className="text-slate-600">lớp + ngày</b>). Vào <b className="text-slate-600">Làm tài liệu → ET</b> tạo ET đúng lớp + ngày của buổi rồi quay lại.</p>
   if (coMat.length === 0) return <p className="text-[12px] text-slate-400">Chưa có HS nào điểm danh “có mặt” — điểm danh trước khi chấm.</p>
 
   const tenDang = (md: string | null) => (md ? dangOpts.find((d) => d.ma_dang === md)?.ten ?? md : '—')
-  const cauOf = (idx: number) => etCaus?.[idx] ?? null
-  const mismatch = etCaus != null && etCaus.length !== probs.length
+  // Đề của 1 ô = tra theo MÃ CÂU (không theo vị trí) — ô mồ côi thì không có đề, đúng bản chất.
+  const cauOf = (p: Problem) => etCaus?.find((c) => c.ma_cau === p.ma_cau) ?? null
+  const moCoiIds = new Set((sync?.moCoi ?? []).map((m) => m.problem.id))
 
   return (
     <div className="flex h-full flex-col">
       <div className="mb-3 flex items-center gap-2">
         <span className="text-[12px] text-slate-400">{probs.length} câu (từ ET) · {coMat.length} HS · 1 click <b className="text-emerald-600">Đ</b>/<b className="text-amber-600">C</b>/<b className="text-rose-600">S</b> — C/S mở ô lỗi.</span>
-        {mismatch && !dongCol && <button onClick={dongBoET} title="ET đổi số câu — nạp lại (chỉ khi chưa chấm)" className="rounded-md border border-amber-300 px-2.5 py-1 text-[12px] font-medium text-amber-700 hover:bg-amber-50">↻ Đồng bộ từ ET</button>}
         <div className="ml-auto flex items-center gap-2">
           <button onClick={() => setAnhPH(true)} title="Tạo ảnh kết quả ET (dọc) để chụp gửi phụ huynh" className="rounded-md border border-slate-300 px-2.5 py-1.5 text-[12px] font-medium text-slate-600 hover:border-indigo-400">📷 Ảnh gửi PH</button>
           {dongCol ? (
@@ -611,17 +751,50 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
           )}
         </div>
       </div>
-      {anhPH && <EtAnhGuiPH coMat={coMat} probs={probs} gradeOf={gradeOf} buoi={buoi} onClose={() => setAnhPH(false)} />}
+      {anhPH && <EtAnhGuiPH buoiId={buoiId} coMat={coMat} probs={probs} gradeOf={gradeOf} buoi={buoi} onClose={() => setAnhPH(false)} />}
+
+      {/* Lưới KHÔNG khớp đề — 3 tình huống, mỗi cái nói rõ mất gì / phải làm gì. Im lặng là điều DUY
+          NHẤT không được phép ở đây (bug 07-21: lệch âm thầm suốt từ 20/07 tới lúc Thùy tự phát hiện). */}
+      {sync?.doiCauTruc && (
+        <div className="mb-3 rounded-lg border border-amber-300 bg-amber-50 px-3 py-2 text-[12px] text-amber-800">
+          ⚠️ Đề ET đã đổi sau khi ET được xác nhận — lưới chấm giữ nguyên theo lúc chấm (Elo đã tính).
+          Muốn lưới bám đề mới thì bấm <b>↩ Mở lại để sửa</b>, hệ sẽ tự đồng bộ.
+        </div>
+      )}
+      {sync?.khongRoRang === 'lech_so' && (
+        <div className="mb-3 rounded-lg border border-rose-300 bg-rose-50 px-3 py-2 text-[12px] text-rose-800">
+          ⚠️ Lưới chấm này có từ trước bản vá 07-21 và <b>số ô ({probs.length}) khác số câu trong đề ({etCaus?.length ?? 0})</b>
+          {' '}— hệ <b>không tự đoán</b> ô nào ứng câu nào để khỏi gắn điểm sai dạng. Cần người đối chiếu đề giấy rồi quyết.
+        </div>
+      )}
+      {sync?.khongRoRang === 'lech_dang' && (
+        <div className="mb-3 rounded-lg border border-rose-300 bg-rose-50 px-3 py-2 text-[12px] text-rose-800">
+          ⚠️ Số ô và số câu bằng nhau, nhưng <b>dạng của ô không khớp dạng của câu</b> — nghĩa là đề đã bị
+          {' '}<b>thay/bớt câu ở giữa</b> sau khi chấm, ô không còn ứng đúng câu nữa. Hệ <b>không đoán</b> để khỏi gắn
+          {' '}điểm sai dạng (điểm vẫn giữ nguyên). Cần đối chiếu đề giấy đã phát cho HS rồi quyết.
+        </div>
+      )}
+      {!!sync?.moCoi.length && (
+        <div className="mb-3 rounded-lg border border-rose-300 bg-rose-50 px-3 py-2 text-[12px] text-rose-800">
+          ⚠️ {sync.moCoi.length} ô có điểm nhưng câu tương ứng <b>đã bị bỏ khỏi đề</b>
+          {' '}({sync.moCoi.map((m) => `câu ${m.problem.problem_no}: ${m.soDiem} điểm`).join(' · ')}).
+          {' '}Điểm được <b>giữ nguyên</b>, ô xếp cuối bảng. Muốn bỏ hẳn thì xoá từng ô điểm trước.
+        </div>
+      )}
+
       <div className="min-h-0 flex-1 overflow-auto rounded-xl border border-slate-200">
         <table className="w-auto border-collapse text-sm">
           <thead>
             <tr className="bg-slate-100">
               <th className="sticky left-0 top-0 z-30 whitespace-nowrap border border-slate-200 bg-slate-100 px-4 py-1.5 text-left text-[12px] font-semibold text-slate-700">Học sinh</th>
               {probs.map((p, idx) => {
-                const c = cauOf(idx)
+                const c = cauOf(p)
+                const moCoi = moCoiIds.has(p.id)
                 return (
-                  <th key={p.id} className="sticky top-0 z-10 w-[150px] border border-slate-200 bg-slate-100 px-2 py-1.5 text-center align-top">
-                    <div className="text-[12px] font-bold text-slate-700">Câu {p.problem_no}</div>
+                  <th key={p.id} className={`sticky top-0 z-10 w-[150px] border border-slate-200 px-2 py-1.5 text-center align-top ${moCoi ? 'bg-rose-50' : 'bg-slate-100'}`}>
+                    {/* Số câu = VỊ TRÍ TRONG ĐỀ (probs đã xếp theo đề), KHÔNG phải problem_no —
+                        problem_no giờ chỉ là slot nội bộ, có thể thủng số sau khi bỏ/thêm câu. */}
+                    <div className="text-[12px] font-bold text-slate-700">{moCoi ? 'Ngoài đề' : `Câu ${idx + 1}`}</div>
                     <div className="mx-auto max-w-[140px] truncate text-[11px] font-medium normal-case text-violet-600" title={tenDang(p.ma_dang)}>{tenDang(p.ma_dang)}</div>
                     {c && <button onClick={() => setPreview(c)} className="mt-1 rounded border border-slate-200 px-1.5 py-0.5 text-[10px] font-normal normal-case text-slate-400 hover:border-indigo-300 hover:text-indigo-600">ⓘ đề</button>}
                   </th>
@@ -685,33 +858,76 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
 // ── Ảnh kết quả ET gửi phụ huynh (TẠM THỜI — dashboard sau): ẢNH CẢ LỚP (bảng dọc HS × Bài) để CHỤP gửi PH.
 // Chỉ hiện Bài 1/2/3… + Đ/C/S (KHÔNG đề/dạng).
 // hex (sRGB) — KHÔNG dùng class màu Tailwind v4 ở card export vì compute ra oklch() → html-to-image trắng xóa.
+// Màu (Thùy 07-19 lần 2: bản dịu trước "u ám" quá — tươi lên 1 nấc, vẫn giữ đúng hue-mapping xanh=Đ/cam=C/đỏ=S,
+// không quay lại mức chói neon #10b981/#f59e0b/#f43f5e của bản gốc).
 const ET_KQ_PH: Record<string, { l: string; hex: string; mo_ta: string }> = {
-  correct: { l: 'Đ', hex: '#10b981', mo_ta: 'Đúng' },
-  partial: { l: 'C', hex: '#f59e0b', mo_ta: 'Trình bày chưa hoàn thiện' },
-  wrong: { l: 'S', hex: '#f43f5e', mo_ta: 'Chưa biết làm' },
+  correct: { l: 'Đ', hex: '#3fa172', mo_ta: 'Đúng' },
+  partial: { l: 'C', hex: '#e2984a', mo_ta: 'Trình bày chưa hoàn thiện' },
+  wrong: { l: 'S', hex: '#d6604a', mo_ta: 'Chưa biết làm' },
 }
 // Badge tròn Đ/C/S = SVG (circle + text căn tâm bằng dominant-baseline) → html2canvas render qua engine trình duyệt = pixel-perfect, KHỎI căn tay.
+// Rút "2 chữ cuối" CHỈ cho câu kết luận cuối ảnh gửi PH (Thùy 07-19: "Đào Minh Quân" → "Minh Quân") — KHÁC
+// tenHienThiDs (lib/hoten.ts, đã đảo về full-name 07-07 vì trùng tên gây nhầm khi DÙNG ĐỂ ĐỊNH DANH). Ở đây
+// chỉ là câu văn ngắn gọn cho gọn ảnh, không phải định danh — chấp nhận trùng-tên-ngắn giữa 2 HS khác nhau.
+function ten2TuCuoi(hoTen: string): string {
+  const w = hoTen.trim().split(/\s+/)
+  return w.slice(-2).join(' ')
+}
 function Badge({ hex, letter, size }: { hex: string; letter: string; size: number }) {
   const c = size / 2
   return (
     <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} style={{ display: 'inline-block', verticalAlign: 'middle' }}>
       <circle cx={c} cy={c} r={c} fill={hex} />
-      <text x={c} y={c} textAnchor="middle" dominantBaseline="central" fontSize={size * 0.52} fontWeight={700} fill="#ffffff"
+      {/* Chữ to hơn, vòng tròn giữ nguyên (Thùy 07-19): 0.52 → 0.64 tỉ lệ so với size. */}
+      <text x={c} y={c} textAnchor="middle" dominantBaseline="central" fontSize={size * 0.64} fontWeight={700} fill="#ffffff"
         fontFamily='system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif'>{letter}</text>
     </svg>
   )
 }
-function EtAnhGuiPH({ coMat, probs, gradeOf, buoi, onClose }: {
-  coMat: BuoiHocHS[]; probs: Problem[]; gradeOf: (pid: string, hsid: string) => Grade | undefined; buoi: BuoiHoc; onClose: () => void
+function EtAnhGuiPH({ buoiId, coMat, probs, gradeOf, buoi, onClose }: {
+  buoiId: string; coMat: BuoiHocHS[]; probs: Problem[]; gradeOf: (pid: string, hsid: string) => Grade | undefined; buoi: BuoiHoc; onClose: () => void
 }) {
   const cardRef = useRef<HTMLDivElement>(null)
+  // Đánh giá sau buổi (nhận xét + % hoàn thành) — Thùy 07-16: hiện thêm trên ảnh gửi PH, NHƯNG chỉ khi
+  // có ít nhất 1 HS có dữ liệu (logic "có thì hiện không thì thôi" — tránh card trống-không ai viết gì).
+  const [dg, setDg] = useState<Record<string, DanhGiaHS>>({})
+  useEffect(() => { getDanhGia(buoiId).then(setDg).catch(() => setDg({})) }, [buoiId])
   if (!coMat.length) return null
   const lop = (buoi as any).lop?.ten_lop ?? ''
   const ngayVN = buoi.ngay ? buoi.ngay.split('-').reverse().join('/') : ''
-  const tenHT = tenHienThiDs(coMat.map((r) => r.hoc_sinh?.ho_ten)) // 2 HS trùng tên rút gọn → bung đủ (Thùy 07-06)
-  // Card giãn theo số câu để KHÔNG cắt cột: cột tên ~96px + mỗi câu ~30px + padding.
-  const COL_W = 30, NAME_W = 100
-  const cardW = Math.max(440, NAME_W + probs.length * COL_W + 32)
+  const ngayVNNgan = ngayVN.split('/').slice(0, 2).join('/') // dd/mm, không năm — cho dòng góc "Báo cáo buổi học 16/07 - 6S2"
+  // Tên trên ảnh (Thùy 07-19 lần 6): CHỈ 2 chữ cuối (vd "Chu Bảo Ngọc" → "Bảo Ngọc") — KHÁC tenHienThiDs
+  // (lib/hoten.ts, cố tình full-name để tránh nhầm KHI ĐỊNH DANH trong hệ thống). Ảnh gửi PH không phải chỗ
+  // định danh nên rút gọn OK, NHƯNG nếu 2 HS trùng "2 chữ cuối" (vd Chu Bảo Ngọc + Hồ Bảo Ngọc) → phải phân
+  // biệt: hiện phần còn lại (họ/tên đệm) ở DÒNG DƯỚI, trong ngoặc, cỡ chữ nhỏ hơn.
+  const tenNgan = coMat.map((r) => ten2TuCuoi(tenNganHS(r.hoc_sinh?.ho_ten)))
+  const demTenNgan = new Map<string, number>()
+  for (const t of tenNgan) demTenNgan.set(t, (demTenNgan.get(t) ?? 0) + 1)
+  const tenHT = coMat.map((r, i) => {
+    const full = tenNganHS(r.hoc_sinh?.ho_ten)
+    const short = tenNgan[i]
+    const trung = (demTenNgan.get(short) ?? 0) > 1
+    const conLai = full.trim().split(/\s+/).slice(0, -2).join(' ')
+    return { short, phanBiet: trung && conLai ? conLai : null }
+  })
+  const coNhanXet = coMat.some((r) => !!dg[r.hoc_sinh_id]?.nhan_xet?.trim())
+  const coHoanThanh = coMat.some((r) => dg[r.hoc_sinh_id]?.hoanThanhPct != null)
+  // Câu kết luận (Thùy 07-19): HS có ≥1 câu C/S (chưa đạt) → nêu tên (2 chữ cuối) nhắc làm lại/chép lại đáp
+  // án. "có thì hiện không thì thôi" — buổi cả lớp toàn Đ thì khỏi câu này.
+  const canLamLai = coMat
+    .filter((r) => probs.some((p) => { const kq = gradeOf(p.id, r.hoc_sinh_id)?.result; return kq === 'partial' || kq === 'wrong' }))
+    .map((r) => ten2TuCuoi(tenNganHS(r.hoc_sinh?.ho_ten)))
+  // Test Cuối giờ: ≤5 câu = 1 dòng; ≥6 câu = CHIA ĐÔI ĐỀU 2 dòng (6→3-3, 7→4-3, 8→4-4...) — Thùy 07-19 lần 7:
+  // lần trước hiểu nhầm "cho thành 1 dòng thôi" là bỏ luôn chia-2-dòng, thực ra ý là CHỈ đổi tên header cho
+  // ngắn/khỏi wrap chữ "Kết quả Test cuối giờ" → "Test Cuối giờ" — lưới badge vẫn phải chia 2 dòng khi ≥6 câu.
+  const ITEM_W = 26, NAME_W = 100, NX_W = 230, HT_W = 68
+  const KQ_COLS = probs.length <= 5 ? Math.max(probs.length, 1) : Math.ceil(probs.length / 2)
+  // Cột hẹp (lớp ít câu, vd 1-2 câu) vẫn phải đủ rộng để header "Test Cuối giờ" KHÔNG xuống dòng (Thùy
+  // 07-19) — đặt sàn KQ_MIN_W, tính vào cardW luôn (không chỉ set width cho <th>, kẻo bị cắt bởi
+  // overflow:hidden của card khi bảng auto-layout tự giãn rộng hơn cardW).
+  const KQ_MIN_W = 120
+  const KQ_W = Math.max(ITEM_W * KQ_COLS, KQ_MIN_W)
+  const cardW = Math.max(420, NAME_W + KQ_W + (coNhanXet ? NX_W : 0) + (coHoanThanh ? HT_W : 0) + 32)
   // COPY ảnh — ĐÚNG pattern V1 (TabSatHach.handleCopy / openReportPopup, chạy production ổn định):
   // MỞ POPUP chứa HTML phiếu + nút "Copy ảnh" NGAY TRONG popup. Bấm Copy trong popup = user-gesture trong
   // context popup → html2canvas (CDN) + clipboard.write chạy ngon (paste Zalo); fallback tải file CHỈ khi clipboard bị chặn.
@@ -724,7 +940,7 @@ function EtAnhGuiPH({ coMat, probs, gradeOf, buoi, onClose }: {
     const html = `<!DOCTYPE html><html><head><meta charset="utf-8">
 <base href="${location.origin}/">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kết quả ET — Lớp ${lop}</title>
+<title>Báo cáo tình hình buổi học - Lớp ${lop}</title>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"><\/script>
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
@@ -770,58 +986,130 @@ async function copyImg(){
       </div>
       <div className="min-h-0 flex-1 overflow-auto p-4" onClick={(e) => e.stopPropagation()}>
         {/* ẢNH CẢ LỚP — "Copy ảnh" chụp đúng cái này.
-            ⚠ TẤT CẢ màu = inline hex/rgb (sRGB), KHÔNG class màu Tailwind v4 (compute oklch → html-to-image trắng xóa). */}
+            ⚠ TẤT CẢ màu = inline hex/rgb (sRGB), KHÔNG class màu Tailwind v4 (compute oklch → html-to-image trắng xóa).
+            Tông màu (Thùy 07-19 lần 2): bản trước "u ám" quá — nền card vẫn TRẮNG là chính nhưng header đổi
+            gradient navy SÁNG hơn (bớt gần-đen) + viền/badge lên tông ấm-tươi hơn cho có sức sống, không
+            còn dịu-tới-mức-xỉn như bản cũ. */}
         <div
           ref={cardRef}
           style={{
             margin: '0 auto', width: cardW, overflow: 'hidden', borderRadius: 16,
-            background: '#ffffff', color: '#1e293b', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25)',
+            background: '#ffffff', color: '#2b3947', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25)',
             fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif',
           }}
         >
-          <div style={{ background: 'linear-gradient(90deg, #E91E8C 0%, #F7941E 50%, #2D9CDB 100%)', padding: '16px 20px', color: '#ffffff' }}>
-            <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.2em', opacity: 0.9 }}>BK Academy</div>
-            <div style={{ fontSize: 20, fontWeight: 800, lineHeight: 1.15 }}>Kết quả ET — Lớp {lop || '—'}</div>
-            <div style={{ fontSize: 12, opacity: 0.95 }}>Ngày {ngayVN} · {coMat.length} học sinh</div>
+          {/* Header redesign (Thùy 07-19 lần 8): bỏ dòng "Ngày · N học sinh"; tiêu đề cũ "Báo cáo tình hình
+              buổi học - Lớp X" THU NHỎ dồn lên góc phải làm nhãn phụ; NỘI DUNG BUỔI HỌC lên làm chữ TO NHẤT,
+              căn giữa — vì đây mới là thứ PH cần đọc trước tiên. Mô tả (nếu có) ra khỏi banner, nằm dưới. */}
+          <div style={{ background: 'linear-gradient(120deg, #2c5891 0%, #1e3a5f 100%)', borderBottom: '3px solid #d1963c', padding: '12px 20px 18px', color: '#ffffff' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 8 }}>
+              {/* Logo thay chữ "BK Academy" (Thùy 07-19) — logo chữ xám đậm, KHÔNG đọc được trên nền navy →
+                  bọc pill nền trắng cho đủ tương phản. Src TUYỆT ĐỐI (location.origin) — popup Copy ảnh mở
+                  bằng window.open('','_blank') rồi document.write, KHÔNG có origin thật (about:blank) nên
+                  path tương đối/root-relative sẽ vỡ (giống bài học PrintView.tsx logoUrl). */}
+              <div style={{ background: '#ffffff', borderRadius: 6, padding: '3px 8px', display: 'inline-flex', alignItems: 'center', lineHeight: 0 }}>
+                <img src={`${location.origin}/Logo.png`} alt="BK Academy" style={{ height: 16, display: 'block' }} />
+              </div>
+              <div style={{ fontSize: 11, opacity: 0.85, textAlign: 'right', whiteSpace: 'nowrap' }}>Báo cáo buổi học {ngayVNNgan} - {lop || '—'}</div>
+            </div>
+            <div style={{ marginTop: 10, textAlign: 'center' }}>
+              {buoi.noi_dung_buoi?.trim() ? (
+                <>
+                  <div style={{ fontSize: 11, fontWeight: 600, opacity: 0.85, letterSpacing: '0.03em' }}>Nội dung buổi học</div>
+                  <div style={{ marginTop: 2, fontSize: 23, fontWeight: 800, lineHeight: 1.2 }}>{buoi.noi_dung_buoi}</div>
+                </>
+              ) : (
+                <div style={{ fontSize: 23, fontWeight: 800, lineHeight: 1.2 }}>{`Lớp ${lop || '—'}`}</div>
+              )}
+            </div>
           </div>
+          {/* Mô tả — nội bộ (GV/TA), nằm NGOÀI banner, chữ nhỏ. Chỉ hiện nếu có nhập. */}
+          {!!buoi.mo_ta?.trim() && <div style={{ padding: '8px 20px', fontSize: 11.5, color: '#5b6b78', background: '#f7f4ee', borderBottom: '1px solid #e7ddc9' }}>{buoi.mo_ta}</div>}
           <div style={{ padding: '12px 16px' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
               <thead>
-                <tr style={{ color: '#64748b' }}>
-                  <th style={{ borderBottom: '2px solid #e2e8f0', padding: '6px 4px', textAlign: 'left', fontWeight: 600 }}>Học sinh</th>
-                  {probs.map((p) => <th key={p.id} style={{ borderBottom: '2px solid #e2e8f0', padding: '6px 4px', textAlign: 'center', fontWeight: 600 }}>B{p.problem_no}</th>)}
+                {/* 1 hàng header duy nhất (Thùy 07-19: bỏ B1..B6 — "6 cột là hiểu 6 bài", 2 tầng nhìn rối).
+                    Tất cả <th> cùng padding/verticalAlign → cao bằng nhau, chữ căn giữa từng cột. */}
+                <tr style={{ color: '#5b6b78' }}>
+                  <th style={{ borderBottom: '2px solid #d1963c', padding: '6px 4px', textAlign: 'center', fontWeight: 600, verticalAlign: 'middle' }}>Học sinh</th>
+                  <th style={{ borderBottom: '2px solid #d1963c', padding: '6px 4px', textAlign: 'center', fontWeight: 600, verticalAlign: 'middle', width: KQ_W, whiteSpace: 'nowrap' }}>Test Cuối giờ</th>
+                  {/* Nhận xét + % vẫn 2 CỘT DỮ LIỆU riêng (Thùy 07-19: tách để dễ đọc), nhưng chỉ 1 HEADER GỘP
+                      "Đánh giá của giáo viên" (colSpan) — khỏi phải viết riêng "Mức độ hoàn thành". */}
+                  {(coNhanXet || coHoanThanh) && (
+                    <th colSpan={(coNhanXet ? 1 : 0) + (coHoanThanh ? 1 : 0)} style={{ borderBottom: '2px solid #d1963c', padding: '6px 4px', textAlign: 'center', fontWeight: 600, verticalAlign: 'middle' }}>Đánh giá của giáo viên</th>
+                  )}
                 </tr>
               </thead>
               <tbody>
-                {coMat.map((r, i) => (
-                  <tr key={r.id} style={{ borderBottom: '1px solid #f1f5f9' }}>
-                    <td style={{ padding: '6px 4px', fontWeight: 500, color: '#1e293b', whiteSpace: 'nowrap' }}>{tenHT[i]}</td>
-                    {probs.map((p) => {
-                      const kq = gradeOf(p.id, r.hoc_sinh_id)?.result
-                      const v = kq ? ET_KQ_PH[kq] : null
-                      return (
-                        <td key={p.id} style={{ padding: '6px 4px', textAlign: 'center' }}>
-                          {v
-                            // Badge = SVG (circle + text dominant-baseline=central) → html2canvas render qua engine trình duyệt = căn tâm pixel-perfect.
-                            // (line-height/nudge KHÔNG chắc ăn: html2canvas đặt baseline lệch + bỏ qua position:relative inline.)
-                            ? <Badge hex={v.hex} letter={v.l} size={24} />
-                            : <span style={{ color: '#cbd5e1' }}>–</span>}
+                {coMat.map((r, i) => {
+                  const nx = dg[r.hoc_sinh_id]?.nhan_xet?.trim()
+                  const pct = dg[r.hoc_sinh_id]?.hoanThanhPct
+                  return (
+                    <tr key={r.id} style={{ borderBottom: '1px solid #e7ddc9' }}>
+                      {/* Tên HS: 2 chữ cuối, 1 dòng; nếu trùng "2 chữ cuối" với HS khác trong lớp → thêm dòng
+                          dưới (ngoặc, nhỏ hơn) ghi phần còn lại để phân biệt. Căn TRÁI (Thùy 07-19), giữa THEO CHIỀU HÀNG. */}
+                      <td style={{ padding: '6px 4px', fontWeight: 500, color: '#2b3947', whiteSpace: 'nowrap', verticalAlign: 'middle', textAlign: 'left' }}>
+                        <div>{tenHT[i].short}</div>
+                        {tenHT[i].phanBiet && <div style={{ fontSize: 10.5, fontWeight: 400, color: '#8a94a3' }}>({tenHT[i].phanBiet})</div>}
+                      </td>
+                      {/* Test Cuối giờ = grid, số cột = KQ_COLS (≤5 câu 1 dòng, ≥6 câu chia đôi 2 dòng). */}
+                      <td style={{ padding: '6px 4px', verticalAlign: 'top' }}>
+                        <div style={{ display: 'grid', gridTemplateColumns: `repeat(${KQ_COLS}, ${ITEM_W}px)`, rowGap: 4 }}>
+                          {probs.map((p) => {
+                            const kq = gradeOf(p.id, r.hoc_sinh_id)?.result
+                            const v = kq ? ET_KQ_PH[kq] : null
+                            return (
+                              <div key={p.id} style={{ display: 'flex', justifyContent: 'center' }}>
+                                {v
+                                  // Badge = SVG (circle + text dominant-baseline=central) → html2canvas render qua engine trình duyệt = căn tâm pixel-perfect.
+                                  // (line-height/nudge KHÔNG chắc ăn: html2canvas đặt baseline lệch + bỏ qua position:relative inline.)
+                                  // Thu nhỏ 24→18 (Thùy 07-19: "giảm diện tích cho đỡ chật").
+                                  ? <Badge hex={v.hex} letter={v.l} size={18} />
+                                  : <span style={{ color: '#c9bfa6' }}>–</span>}
+                              </div>
+                            )
+                          })}
+                        </div>
+                      </td>
+                      {coNhanXet && (
+                        <td style={{ padding: '6px 4px', textAlign: 'left', verticalAlign: 'top', color: '#5b6b78', fontSize: 12, whiteSpace: 'normal', wordBreak: 'break-word', width: NX_W }}>
+                          {nx || <span style={{ color: '#c9bfa6' }}>–</span>}
                         </td>
-                      )
-                    })}
-                  </tr>
-                ))}
+                      )}
+                      {/* % tách cột riêng ở CUỐI bảng (Thùy 07-19 lần 3). */}
+                      {coHoanThanh && (
+                        <td style={{ padding: '6px 4px', textAlign: 'center', fontWeight: 700, color: '#c8792a', verticalAlign: 'top' }}>
+                          {pct != null ? `${pct}%` : <span style={{ color: '#c9bfa6', fontWeight: 400 }}>–</span>}
+                        </td>
+                      )}
+                    </tr>
+                  )
+                })}
               </tbody>
             </table>
-            <div style={{ marginTop: 12, fontSize: 10.5, color: '#64748b' }}>
+            {/* 2 khối tách RÕ bằng viền mỏng thay vì nền đậm (Thùy 07-19 lần 3: "background dậm quá,
+                chuyển về trắng cho sáng, chỉ cần đậm hơn 1 tẹo hoặc viền mỏng") — nền gần trắng, chỉ
+                khác nhau ở màu VIỀN để vẫn phân biệt được 2 loại thông tin, không nặng mắt. */}
+            <div style={{ marginTop: 12, borderRadius: 10, background: '#fdfcfa', border: '1px solid #e7ddc9', padding: '10px 12px', fontSize: 12.5, color: '#5b6b78' }}>
               {Object.values(ET_KQ_PH).map((v) => (
-                <span key={v.l} style={{ display: 'inline-block', marginRight: 12, whiteSpace: 'nowrap', verticalAlign: 'middle' }}>
-                  <Badge hex={v.hex} letter={v.l} size={16} /><span style={{ marginLeft: 4 }}>{v.mo_ta}</span>
+                <span key={v.l} style={{ display: 'inline-block', marginRight: 14, whiteSpace: 'nowrap', verticalAlign: 'middle' }}>
+                  <Badge hex={v.hex} letter={v.l} size={14} /><span style={{ marginLeft: 5 }}>{v.mo_ta}</span>
                 </span>
               ))}
+              {/* Chú thích % hoàn thành (Thùy 07-19 lần 2: đổi câu mẫu số cụ thể "80%..." cho dễ hiểu hơn câu định nghĩa chung chung) — chỉ hiện khi có ít nhất 1 HS có %. */}
+              {coHoanThanh && <div style={{ marginTop: 4 }}>80% thể hiện rằng con đáp ứng được 80% mục tiêu của buổi học.</div>}
             </div>
+            {/* Câu kết luận nhắc làm lại/chép lại đáp án (Thùy 07-19) — CHỈ hiện nếu có ≥1 HS có câu C/S.
+                Thêm nhãn "Việc cần làm" (Thùy 07-19 lần 2) — phân biệt rõ với khối chú thích phía trên,
+                không chỉ khác màu nền mà còn khác Ý NGHĨA (đây là hành động, không phải giải thích ký hiệu). */}
+            {canLamLai.length > 0 && (
+              <div style={{ marginTop: 8, borderRadius: 10, background: '#fefaf3', border: '1px solid #e8c27e', padding: '10px 12px', fontSize: 12.5, color: '#2b3947' }}>
+                <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#c8792a', marginBottom: 4 }}>Việc cần làm</div>
+                <b>{canLamLai.join(', ')}</b> cần làm lại/chép lại đáp án các bài chưa đạt.
+              </div>
+            )}
           </div>
-          <div style={{ borderTop: '1px solid #f1f5f9', padding: '10px 20px', textAlign: 'center', fontSize: 11, color: '#94a3b8' }}>BK Academy · Tel : 0963.209.309 · 17A10 KĐT Geleximco</div>
+          <div style={{ borderTop: '2px solid #d1963c', background: '#ffffff', padding: '10px 20px', textAlign: 'center', fontSize: 11, color: '#5b6b78' }}>BK Academy · Tel : 0963.209.309 · 17A10 KĐT Geleximco</div>
         </div>
       </div>
     </div>,
@@ -912,7 +1200,7 @@ function LiveTab({ buoiId, roster }: { buoiId: string; roster: BuoiHocHS[] }) {
 // ── CHẤM MT (kỳ thi lớn) — CÙNG buổi, CÙNG roster/điểm danh với các tab khác (Thùy 07-08: "phải
 // hiện trong buổi học giống như chấm ET"). GIỮ cấu trúc PHẦN (Phần I/II…) đúng file MT đã gán —
 // KHÔNG làm phẳng câu. Đóng phase = Elo K=60 (cột riêng `mt_dong_at`, KHÔNG đụng ingame_dong_at).
-function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: BuoiHocHS[]; buoi: BuoiHoc & { lop?: { mon: string } }; onChange: () => void }) {
+function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: BuoiHocHS[]; buoi: BuoiHoc & { lop?: { mon: string; ten_lop?: string; khoi?: string | null } }; onChange: () => void }) {
   const [probs, setProbs] = useState<Problem[]>([])
   const [grades, setGrades] = useState<Grade[]>([])
   const [phans, setPhans] = useState<MTPhanCaus[]>([])
@@ -921,6 +1209,7 @@ function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: Buo
   const [preview, setPreview] = useState<CauHoi | null>(null)
   const [loading, setLoading] = useState(true)
   const [closing, setClosing] = useState(false)
+  const [diemMTOpen, setDiemMTOpen] = useState(false)
   const coMat = roster.filter((r) => r.diem_danh === 'co_mat')
   const tenHT = tenHienThiDs(coMat.map((r) => r.hoc_sinh?.ho_ten))
   const dongCol = buoi.mt_dong_at
@@ -936,7 +1225,8 @@ function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: Buo
     setLoading(true)
     try {
       const { mtId, phans: ps, caus: c } = await loadMTForBuoi(buoiId)
-      if (!mtId) { setMtMissing(true); setPhans([]) } else { setMtMissing(false); await ensureMTProblems(buoiId, c); setPhans(ps) }
+      // Lưới MT cũng bám đề qua ma_cau (chung syncDocProblems với ET) — xem ghi chú bug 07-21.
+      if (!mtId) { setMtMissing(true); setPhans([]) } else { setMtMissing(false); await syncMTProblems(buoiId, c, !!buoi.mt_dong_at); setPhans(ps) }
       await reloadP()
     } catch { setMtMissing(true); setPhans([]) } finally { setLoading(false) }
   })() }, [buoiId]) // eslint-disable-line
@@ -951,7 +1241,7 @@ function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: Buo
     if (closing) return
     if (!confirm('Đóng chấm MT? Sẽ tính Elo (K=60) + EXP. Mở lại được nếu cần sửa.')) return
     setClosing(true)
-    try { const res = await closePhase(buoiId, 'mt'); if (res.already) alert('Đã đóng rồi.'); else onChange() }
+    try { const res = await closePhase(buoiId, 'mt'); if (res.already) alert('Đã đóng rồi.'); else { if (res.khongCoDuLieu) alert('Đã đóng, nhưng KHÔNG tính Elo/EXP — chưa chấm ô nào. Muốn tính thì Mở lại, chấm rồi xác nhận lại.'); onChange() } }
     finally { setClosing(false) }
   }
   async function moLai() { await reopenPhase(buoiId, 'mt'); onChange() }
@@ -968,6 +1258,7 @@ function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: Buo
       <div className="mb-3 flex items-center gap-2">
         <span className="text-[12px] text-slate-400">{probs.length} câu ({phans.length} phần) · {coMat.length} HS · 1 click <b className="text-emerald-600">Đ</b>/<b className="text-amber-600">C</b>/<b className="text-rose-600">S</b>.</span>
         <div className="ml-auto flex items-center gap-2">
+          <button onClick={() => setDiemMTOpen((v) => !v)} className={`rounded-md border px-3 py-1.5 text-[13px] font-medium ${diemMTOpen ? 'border-violet-400 bg-violet-100 text-violet-800' : 'border-violet-300 bg-violet-50 text-violet-700 hover:bg-violet-100'}`}>🔢 Điểm MT</button>
           {dongCol ? (
             <>
               <span className="rounded-md bg-emerald-50 px-2.5 py-1 text-[13px] font-medium text-emerald-700">✓ Đã đóng MT (Elo K=60)</span>
@@ -978,6 +1269,7 @@ function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: Buo
           )}
         </div>
       </div>
+      {diemMTOpen && <DiemMTPanel buoiId={buoiId} buoi={buoi} coMat={coMat} tenHT={tenHT} />}
       <div className="min-h-0 flex-1 overflow-auto rounded-xl border border-slate-200">
         <table className="w-auto border-collapse text-sm">
           <thead>
@@ -1037,6 +1329,72 @@ function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: Buo
   )
 }
 
+// ── ĐIỂM MT (Thùy 07-14) — tách RIÊNG khỏi chấm Đ/C/S từng câu ở trên: 1 điểm số/HS/buổi, TÁI DÙNG hạ
+// tầng ky_thi/diem_thi (loai='mt_sat_hach', buoi_hoc_id=buổi này — tìm-hoặc-tạo LẦN ĐẦU mở panel, các lần
+// sau tái dùng). Cùng bảng với "Nhập điểm" ở Kết quả học tập › Điểm thi — nhập ở đây hiện luôn ở đó, KHÔNG
+// tách data riêng. verdict vẫn bắt buộc (cột NOT NULL) nhưng bỏ "vượt band" (khái niệm sát hạch xếp lớp,
+// không áp dụng cho điểm MT buổi học) — luôn ghi false.
+function DiemMTPanel({ buoiId, buoi, coMat, tenHT }: { buoiId: string; buoi: BuoiHoc & { lop?: { mon: string; ten_lop?: string; khoi?: string | null } }; coMat: BuoiHocHS[]; tenHT: string[] }) {
+  const [ky, setKy] = useState<KyThi | null>(null)
+  const [diems, setDiems] = useState<DiemThi[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    setLoading(true)
+    getOrCreateKyThiMTChoBuoi(buoiId, `MT ${buoi.lop?.ten_lop ?? ''} ${buoi.ngay}`.trim(), buoi.lop?.mon ?? '', buoi.lop?.khoi ?? null, currentMua())
+      .then(async (k) => { setKy(k); setDiems(await listDiemThiByKyThi([k.id])) })
+      .finally(() => setLoading(false))
+  }, [buoiId]) // eslint-disable-line
+
+  const diemOf = (hsId: string) => diems.find((d) => d.hoc_sinh_id === hsId) ?? null
+  async function save(hsId: string, verdict: Verdict, diem: number | null) {
+    if (!ky) return
+    await upsertDiemThi({ kyThiId: ky.id, hocSinhId: hsId, diem, bandLucThi: null, verdict, vuotBand: false })
+    setDiems((prev) => [...prev.filter((d) => d.hoc_sinh_id !== hsId), { ky_thi_id: ky.id, hoc_sinh_id: hsId, diem, band_luc_thi: null, verdict, vuot_band: false }])
+  }
+
+  return (
+    <div className="mb-3 rounded-xl border border-violet-200 bg-violet-50/40 p-3">
+      <div className="mb-2 flex items-center gap-2">
+        <span className="text-[13px] font-semibold text-violet-800">Điểm MT</span>
+        <span className="text-[11px] text-slate-500">độc lập với chấm Đ/C/S từng câu · hiện ở Kết quả học tập › Điểm MT</span>
+      </div>
+      {loading || !ky ? <p className="text-[12px] text-slate-400">Đang tải…</p> : (
+        <table className="w-full max-w-xl text-[13px]">
+          <thead><tr className="text-left text-[11px] uppercase tracking-wide text-slate-400">
+            <th className="py-1">Học sinh</th><th className="w-20">Điểm /10</th><th className="w-52">Verdict</th>
+          </tr></thead>
+          <tbody>
+            {coMat.map((r, i) => <DiemMTRow key={r.hoc_sinh_id} ten={tenHT[i]} init={diemOf(r.hoc_sinh_id)} onSave={(v, d) => save(r.hoc_sinh_id, v, d)} />)}
+          </tbody>
+        </table>
+      )}
+    </div>
+  )
+}
+
+const V_LABEL_MT: Record<Verdict, string> = { dat: 'Đạt', gan_dat: 'Gần', khong_dat: 'Không' }
+const V_CLS_MT: Record<Verdict, string> = { dat: 'bg-emerald-500 text-white', gan_dat: 'bg-amber-500 text-white', khong_dat: 'bg-rose-500 text-white' }
+function DiemMTRow({ ten, init, onSave }: { ten: string; init: DiemThi | null; onSave: (v: Verdict, d: number | null) => void }) {
+  const [diem, setDiem] = useState(init?.diem != null ? String(init.diem) : '')
+  const [verdict, setVerdict] = useState<Verdict | null>(init?.verdict ?? null)
+  const d = () => (diem.trim() === '' ? null : Number(diem))
+  const pick = (v: Verdict) => { setVerdict(v); onSave(v, d()) }
+  return (
+    <tr className="border-t border-violet-100">
+      <td className="py-1 font-medium text-slate-700">{ten}</td>
+      <td><input value={diem} onChange={(e) => setDiem(e.target.value)} onBlur={() => verdict && onSave(verdict, d())} inputMode="decimal" className="h-7 w-16 rounded border border-slate-300 px-2 text-[13px]" /></td>
+      <td>
+        <div className="flex gap-1">
+          {(['dat', 'gan_dat', 'khong_dat'] as Verdict[]).map((v) => (
+            <button key={v} onClick={() => pick(v)} className={`h-7 rounded px-2 text-[12px] font-medium ${verdict === v ? V_CLS_MT[v] : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}>{V_LABEL_MT[v]}</button>
+          ))}
+        </div>
+      </td>
+    </tr>
+  )
+}
+
 // ── CHẤM BTVN (buổi sau): câu Đ/C/S như ET (THAM KHẢO, không mastery/Elo) + trạng thái nộp + thái độ + báo động ──
 const NOP_OPTS: { v: BtvnTrangThai; l: string }[] = [
   { v: 'nop_dung_han', l: 'Nộp đúng hạn' }, { v: 'nop_muon', l: 'Nộp muộn' }, { v: 'xin_phep', l: 'Đã xin phép' }, { v: 'khong_lam', l: 'Không làm bài' },
@@ -1066,7 +1424,7 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
     try {
       const { btvnId, caus } = await loadBTVNForBuoi(buoiId)
       if (!btvnId) setMissing(true)
-      else { setMissing(false); await ensureBTVNProblems(buoiId, caus) }
+      else { setMissing(false); await syncBTVNProblems(buoiId, caus, !!buoi.btvn_dong_at) }
       await reloadP(); await reloadKq()
     } catch { setMissing(true) } finally { setLoading(false) }
   })() }, [buoiId]) // eslint-disable-line
@@ -1218,15 +1576,32 @@ function DanhGiaTab({ buoiId, roster, dangOpts, buoi, onChange }: { buoiId: stri
   // dạng của buổi = ma_dang đã gắn ở "Chấm bài trên lớp" (ingame)
   const dangs = [...new Set(probs.map((p) => p.ma_dang).filter(Boolean))] as string[]
 
-  async function reload() { setLoading(true); try { const [p, g, d] = await Promise.all([listProblems(buoiId, 'ingame'), listGrades(buoiId), getDanhGia(buoiId)]); setProbs(p); setGrades(g); setData(d) } finally { setLoading(false) } }
+  // getDanhGia tách riêng try/catch: lỗi ở đây (vd cột mới hoan_thanh_pct chưa migrate) KHÔNG được kéo
+  // sập luôn phần chấm-theo-dạng (probs/grades) — chỉ nhận xét/% hoàn thành tạm rỗng.
+  async function reload() {
+    setLoading(true)
+    try {
+      const [p, g] = await Promise.all([listProblems(buoiId, 'ingame'), listGrades(buoiId)])
+      setProbs(p); setGrades(g)
+      try { setData(await getDanhGia(buoiId)) } catch { setData({}) }
+    } finally { setLoading(false) }
+  }
   useEffect(() => { reload() }, [buoiId]) // eslint-disable-line
 
   async function setDiem(hsId: string, maDang: string, cur: DanhGiaDiem | undefined, val: DanhGiaDiem) {
     const next: DanhGiaDiem | null = cur === val ? null : val // bấm lại = bỏ chọn (về chưa-đánh-giá)
-    setData((d) => { const hs = d[hsId] ?? { hoc_sinh_id: hsId, nhan_xet: null, diemTheoDang: {} }; const dd = { ...hs.diemTheoDang }; if (next === null) delete dd[maDang]; else dd[maDang] = next; return { ...d, [hsId]: { ...hs, diemTheoDang: dd } } })
+    setData((d) => { const hs = d[hsId] ?? { hoc_sinh_id: hsId, nhan_xet: null, hoanThanhPct: null, diemTheoDang: {} }; const dd = { ...hs.diemTheoDang }; if (next === null) delete dd[maDang]; else dd[maDang] = next; return { ...d, [hsId]: { ...hs, diemTheoDang: dd } } })
     try { await setDanhGiaDang(buoiId, hsId, maDang, next) } catch (e: any) { alert(e.message ?? String(e)); reload() }
   }
   async function saveNX(hsId: string, txt: string) { try { await setNhanXet(buoiId, hsId, txt) } catch (e: any) { alert(e.message ?? String(e)) } }
+  async function saveHT(hsId: string, v: string) {
+    const pct = v === '' ? null : Number(v)
+    setData((d) => { const hs = d[hsId] ?? { hoc_sinh_id: hsId, nhan_xet: null, hoanThanhPct: null, diemTheoDang: {} }; return { ...d, [hsId]: { ...hs, hoanThanhPct: pct } } })
+    try { await setHoanThanhPct(buoiId, hsId, pct) } catch (e: any) { alert(e.message ?? String(e)); reload() }
+  }
+  // Nội dung buổi học (hiện trên ảnh gửi PH) + Mô tả (nội bộ) — CẤP BUỔI, không riêng từng HS. Chuỗi rỗng → null (anti-NULL: "chưa nhập").
+  async function saveND(txt: string) { try { await setNoiDungBuoi(buoiId, { noi_dung_buoi: txt.trim() || null }); onChange() } catch (e: any) { alert(e.message ?? String(e)) } }
+  async function saveMT(txt: string) { try { await setNoiDungBuoi(buoiId, { mo_ta: txt.trim() || null }); onChange() } catch (e: any) { alert(e.message ?? String(e)) } }
 
   if (loading) return <p className="text-[13px] text-slate-400">Đang tải…</p>
   if (coMat.length === 0) return <p className="text-[12px] text-slate-400">Chưa có HS nào điểm danh “có mặt” — điểm danh trước.</p>
@@ -1239,6 +1614,19 @@ function DanhGiaTab({ buoiId, roster, dangOpts, buoi, onChange }: { buoiId: stri
               <button onClick={async () => { await moLaiDanhGia(buoiId); onChange() }} className="rounded-md border border-amber-300 px-2.5 py-1 text-[12px] font-medium text-amber-700 hover:bg-amber-50">↩ Mở lại để sửa</button></>
           : <button onClick={async () => { await dongDanhGia(buoiId); onChange() }} className="rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-indigo-500">✓ Hoàn thành đánh giá</button>}
       </div>
+      {/* Nội dung buổi học + Mô tả — CẤP BUỔI (chung cả lớp, không riêng từng HS), Thùy 07-19. */}
+      <div className="mb-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <div>
+          <label className="mb-1 block text-[12px] font-semibold text-slate-600">Nội dung buổi học <span className="font-normal text-slate-400">(hiện trên ảnh gửi PH)</span></label>
+          <input defaultValue={buoi.noi_dung_buoi ?? ''} onBlur={(e) => saveND(e.target.value)} disabled={xong} placeholder="vd: Số chẵn - Số lẻ"
+            className="h-9 w-full rounded-md border border-slate-200 px-2.5 text-[13px] disabled:bg-slate-50 disabled:text-slate-500" />
+        </div>
+        <div>
+          <label className="mb-1 block text-[12px] font-semibold text-slate-600">Mô tả <span className="font-normal text-slate-400">(nội bộ, không hiện trên ảnh)</span></label>
+          <textarea defaultValue={buoi.mo_ta ?? ''} onBlur={(e) => saveMT(e.target.value)} disabled={xong} placeholder="vd: đây là nội dung nâng cao thuộc phần 10 điểm trong đề thi…"
+            className="h-9 w-full resize-none rounded-md border border-slate-200 px-2.5 py-1.5 text-[13px] disabled:bg-slate-50 disabled:text-slate-500" />
+        </div>
+      </div>
       <p className="mb-2 text-[12px] text-slate-400">
         {dangs.length === 0
           ? <>Chưa có dạng nào — gắn dạng cho bài ở tab <b>Chấm bài trên lớp</b> sẽ tự hiện cột. Tạm thời chỉ nhập nhận xét.</>
@@ -1250,6 +1638,7 @@ function DanhGiaTab({ buoiId, roster, dangOpts, buoi, onChange }: { buoiId: stri
             <tr className="bg-slate-100">
               <th className="sticky left-0 top-0 z-30 border border-slate-200 bg-slate-100 px-3 py-2 text-left text-[12px] font-semibold text-slate-700">Học sinh</th>
               {dangs.map((md) => <th key={md} className="sticky top-0 z-10 min-w-[160px] border border-slate-200 bg-slate-100 px-3 py-2 text-left text-[12px] font-semibold text-slate-700"><div className="max-w-[200px] truncate" title={tenDang(md)}>{tenDang(md)}</div></th>)}
+              <th className="sticky top-0 z-10 border border-slate-200 bg-slate-100 px-3 py-2 text-left text-[12px] font-semibold text-slate-700" title="Ước lượng thô — hiện trên ảnh gửi PH nếu có HS nào được chọn">Hoàn thành buổi</th>
               <th className="sticky top-0 z-10 border border-slate-200 bg-slate-100 px-3 py-2 text-left text-[12px] font-semibold text-slate-700">Nhận xét</th>
             </tr>
           </thead>
@@ -1279,6 +1668,13 @@ function DanhGiaTab({ buoiId, roster, dangOpts, buoi, onChange }: { buoiId: stri
                       </td>
                     )
                   })}
+                  <td className="border border-slate-200 px-3 py-2">
+                    <select value={hs?.hoanThanhPct ?? ''} onChange={(e) => saveHT(hsId, e.target.value)} disabled={xong}
+                      className="h-8 w-24 rounded-md border border-slate-200 px-1.5 text-[12px] disabled:bg-slate-50 disabled:text-slate-500">
+                      <option value="">— chưa chọn —</option>
+                      {HOAN_THANH_PCT_OPTS.map((p) => <option key={p} value={p}>{p}%</option>)}
+                    </select>
+                  </td>
                   <td className="border border-slate-200 px-3 py-2">
                     <textarea defaultValue={hs?.nhan_xet ?? ''} onBlur={(e) => saveNX(hsId, e.target.value)} readOnly={xong} placeholder="nhận xét…"
                       className="h-12 w-96 rounded-md border border-slate-200 px-2 py-1 text-[12px] read-only:bg-slate-50 read-only:text-slate-500" />

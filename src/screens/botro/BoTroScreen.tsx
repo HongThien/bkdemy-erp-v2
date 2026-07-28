@@ -9,13 +9,14 @@ import { getRoster, getBuoi, diemDanh, huyBuoi, xoaHSKhoiBuoi, listProblems, gra
 import SuaBuoiModal from './SuaBuoiModal'
 import { listNhanSu, type NhanSu } from '../../lib/nhansu'
 import { homNayVN } from '../../lib/tuan'
-import SearchSelect from '../../components/SearchSelect'
+import SearchSelect, { norm } from '../../components/SearchSelect'
 import { tenNganHS, tenHienThiDs } from '../../lib/hoten'
 
 type Tab = 'canbu' | 'daxep' | 'xong' | 'khongbu'
 const TABS: { k: Tab; ten: string }[] = [{ k: 'canbu', ten: 'Cần bù' }, { k: 'daxep', ten: 'Đã xếp' }, { k: 'xong', ten: 'Hoàn thành' }, { k: 'khongbu', ten: 'Không bù' }]
 const inputCls = 'w-full rounded-lg border border-slate-300 px-3 py-2 text-[14px] outline-none focus:border-indigo-400'
 const ddmm = (s?: string | null) => (s ? s.split('-').reverse().slice(0, 2).join('/') : '')
+const khoiSort = (a: string, b: string) => a.localeCompare(b, 'vi', { numeric: true })
 
 export default function BoTroScreen() {
   const [tab, setTab] = useState<Tab>('canbu')
@@ -28,6 +29,10 @@ export default function BoTroScreen() {
   const [khongModal, setKhongModal] = useState<{ item: CanBuItem } | null>(null)
   const [detail, setDetail] = useState<{ ca: CaBoTro; readOnly: boolean } | null>(null)
   const [suaBuoi, setSuaBuoi] = useState<CaBoTro | null>(null)
+  // Filter khối + tìm tên (Thùy 07-16) — áp dụng 3 tab Cần bù/Đã xếp/Hoàn thành (không áp Không bù).
+  const [khoiFilter, setKhoiFilter] = useState<string | null>(null)
+  const [q, setQ] = useState('')
+  const showFilter = tab !== 'khongbu'
 
   async function reloadCounts() { try { setCounts(await demTabBoTro()) } catch { /* */ } }
   async function reload() {
@@ -45,9 +50,20 @@ export default function BoTroScreen() {
 
   async function onKhongXep(item: CanBuItem) { try { await ghiKhongBu(item.id, 'khong_xep_duoc'); await refresh() } catch (e: any) { alert(e.message ?? String(e)) } }
 
+  // canbu = card 1 HS (lọc trực tiếp). daxep/xong = card 1 BUỔI (nhiều HS/ca) → giữ ca nếu CÓ ÍT NHẤT 1 HS
+  // khớp cả 2 filter (tìm học sinh trong ca gộp nhiều em). Đặt TRƯỚC early-return detail (rules-of-hooks).
+  const khopQ = (hoTen: string, maHs: string | null) => !q.trim() || norm(hoTen).includes(norm(q)) || (!!maHs && norm(maHs).includes(norm(q)))
+  const khoiOpts = useMemo(() => {
+    const set = tab === 'canbu' ? new Set(canbu.map((c) => c.khoi).filter(Boolean) as string[])
+      : new Set(cas.flatMap((c) => c.hs.map((h) => h.khoi).filter(Boolean) as string[]))
+    return [...set].sort(khoiSort)
+  }, [tab, canbu, cas])
+  const canbuShown = useMemo(() => canbu.filter((c) => (!khoiFilter || c.khoi === khoiFilter) && khopQ(c.ho_ten, c.ma_hs)), [canbu, khoiFilter, q])
+  const casShown = useMemo(() => cas.filter((c) => c.hs.some((h) => (!khoiFilter || h.khoi === khoiFilter) && khopQ(h.ho_ten, h.ma_hs))), [cas, khoiFilter, q])
+
   if (detail) return <BuoiBuDetail buoiId={detail.ca.id} readOnly={detail.readOnly} onClose={() => { setDetail(null); refresh() }} />
   // 2 HS trùng tên rút gọn trong CÙNG danh sách → bung đủ họ tên cả 2 (Thùy 07-06).
-  const tenCanBu = tenHienThiDs(canbu.map((c) => c.ho_ten))
+  const tenCanBu = tenHienThiDs(canbuShown.map((c) => c.ho_ten))
   const tenKhongBu = tenHienThiDs(khongbu.map((k) => k.ho_ten))
 
   return (
@@ -69,12 +85,30 @@ export default function BoTroScreen() {
           })}
         </div>
 
+        {/* Filter khối + tìm tên (Thùy 07-16) — áp dụng 3 tab Cần bù/Đã xếp/Hoàn thành */}
+        {showFilter && (
+          <div className="mb-4 flex flex-wrap items-center gap-2">
+            <span className="text-[12px] font-semibold uppercase tracking-wide text-slate-500">Khối</span>
+            <span className="inline-flex flex-wrap gap-1 rounded-xl border border-slate-200 bg-white p-1 shadow-sm">
+              <button onClick={() => setKhoiFilter(null)} className={`rounded-lg px-2.5 py-1 text-[13px] font-medium transition ${khoiFilter === null ? 'bg-indigo-600 text-white' : 'text-slate-600 hover:bg-slate-100'}`}>Tất cả</button>
+              {khoiOpts.map((k) => (
+                <button key={k} onClick={() => setKhoiFilter(k)} className={`rounded-lg px-2.5 py-1 text-[13px] font-medium transition ${khoiFilter === k ? 'bg-indigo-600 text-white' : 'text-slate-600 hover:bg-slate-100'}`}>{k}</button>
+              ))}
+            </span>
+            <div className="relative ml-2 w-64">
+              <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="🔎 Tìm tên / mã HS…" className="h-9 w-full rounded-xl border border-slate-300 px-3 text-[13px] outline-none focus:border-indigo-400" />
+              {q && <button onClick={() => setQ('')} className="absolute right-2 top-1/2 -translate-y-1/2 text-[13px] text-slate-400 hover:text-slate-600">✕</button>}
+            </div>
+          </div>
+        )}
+
         {loading ? <div className="p-8 text-[14px] text-slate-400">Đang tải…</div>
           : tab === 'canbu' ? (
             canbu.length === 0 ? <Empty t="Không có HS nghỉ nào cần bù." />
+              : canbuShown.length === 0 ? <Empty t="Không có HS nào khớp bộ lọc." />
               : (
                 <div className="space-y-2.5">
-                  {canbu.map((c, i) => (
+                  {canbuShown.map((c, i) => (
                     <div key={c.id} className="flex flex-wrap items-center gap-3 rounded-2xl border border-slate-200 bg-white p-3.5 shadow-sm">
                       {/* 3 block: tên · lớp · ngày */}
                       <div className="min-w-[180px] flex-1">
@@ -123,9 +157,10 @@ export default function BoTroScreen() {
               </div>
             )
           ) : (
-            cas.length === 0 ? <Empty t={tab === 'daxep' ? 'Chưa có ca bổ trợ nào đang chờ.' : 'Chưa có ca bổ trợ nào hoàn thành.'} /> : (
+            cas.length === 0 ? <Empty t={tab === 'daxep' ? 'Chưa có ca bổ trợ nào đang chờ.' : 'Chưa có ca bổ trợ nào hoàn thành.'} />
+              : casShown.length === 0 ? <Empty t="Không có buổi nào khớp bộ lọc." /> : (
               <div className="grid gap-3 [grid-template-columns:repeat(auto-fill,minmax(320px,1fr))]">
-                {cas.map((ca) => {
+                {casShown.map((ca) => {
                   const hsShown = ca.hs.slice(0, 6)
                   const tenHsShown = tenHienThiDs(hsShown.map((h) => h.ho_ten)) // trùng tên trong 6 người hiện ra → bung đủ
                   return (

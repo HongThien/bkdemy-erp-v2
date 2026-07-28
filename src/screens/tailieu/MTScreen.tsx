@@ -6,7 +6,7 @@
 import { useEffect, useState } from 'react'
 import { useStore } from '../../store/useStore'
 import {
-  listMT, createMT, renameMT, addPhanMT, ganMTVaoBuoi, listGanMT,
+  listMT, createMT, renameMT, deleteMT, addPhanMT, ganMTVaoBuoi, listGanMT,
   type MTGanRow,
 } from '../../lib/mt'
 import {
@@ -18,6 +18,7 @@ import { listCauByDang, listLopBac, LOAI_CAU, KHOI_OPTIONS, DEFAULT_KHOI, type C
 import { MathText, inp } from '../kho/ui'
 import { KhoPicker } from './TaiLieuBuilder'
 import DangPickerOne from '../../components/DangPickerOne'
+import BuoiNgaySelect from '../../components/BuoiNgaySelect'
 import SearchSelect from '../../components/SearchSelect'
 import MTPrintView from './MTPrintView'
 
@@ -61,10 +62,21 @@ export default function MTScreen() {
           : (
             <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
               {list.map((d) => (
-                <button key={d.id} onClick={() => setOpenId(d.id)} className="rounded-xl border border-slate-200 bg-white p-4 text-left shadow-sm transition hover:border-indigo-300 hover:shadow-md">
-                  <div className="font-medium text-slate-800">{d.ten}</div>
-                  <div className="mt-1 text-[12px] text-slate-500">Khối {d.khoi}</div>
-                </button>
+                <div key={d.id} className="group relative rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition hover:border-indigo-300 hover:shadow-md">
+                  <button onClick={() => setOpenId(d.id)} className="block w-full text-left">
+                    <div className="font-medium text-slate-800 pr-6">{d.ten}</div>
+                    <div className="mt-1 text-[12px] text-slate-500">Khối {d.khoi}</div>
+                  </button>
+                  <button
+                    onClick={async (e) => {
+                      e.stopPropagation()
+                      if (!confirm(`Xoá MT "${d.ten}"? Toàn bộ phần/câu trong mẫu này sẽ mất (câu vẫn còn trong kho). Các buổi đã gán từ mẫu này trước đó KHÔNG bị xoá theo.`)) return
+                      await deleteMT(d.id); reload()
+                    }}
+                    title="Xoá MT"
+                    className="absolute right-2 top-2 rounded-md px-1.5 py-1 text-[13px] text-slate-300 opacity-0 hover:text-rose-600 group-hover:opacity-100"
+                  >🗑</button>
+                </div>
               ))}
             </div>
           )}
@@ -165,6 +177,11 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
     return qualifying.length >= lopBacs.length ? 'Mọi hệ' : `Hệ ${qualifying.join(', ')}`
   }
   async function saveTen() { if (d && ten.trim() && ten.trim() !== d.ten) { await renameMT(id, ten.trim()); markSaved() } }
+  async function xoaMT() {
+    const canhBao = ganList.length ? ` Đã gán cho ${ganList.length} lượt lớp+ngày trước đó — các buổi đó KHÔNG bị xoá theo, chỉ mất liên kết về mẫu gốc.` : ''
+    if (!confirm(`Xoá MT "${d?.ten}"? Toàn bộ phần/câu trong mẫu này sẽ mất (câu vẫn còn trong kho).${canhBao}`)) return
+    await deleteMT(id); onClose()
+  }
 
   // Câu ĐANG DÙNG xuyên MỌI PHẦN (không riêng phần đang sửa) — chống trùng câu trong 1 MT.
   const usedGlobal = (exceptPhan: string, exceptIdx: number) => {
@@ -229,13 +246,16 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
   return (
     <div className="flex h-full flex-col bg-[#fafafb]">
       <div className="flex flex-wrap items-center gap-3 border-b border-slate-200 bg-white px-5 py-2.5">
-        <button onClick={onClose} className="text-[13px] font-medium text-slate-400 hover:text-indigo-600">← Kho tài liệu</button>
+        {/* ⭐ 07-12: MT master cũng autosave (không nút Lưu) — enqueue link ở lúc ĐÓNG. Bản thân master
+            hiếm khi tự gửi PH (thường gửi bản mt_buoi đã gán lớp), nhưng vẫn có link sẵn nếu cần. */}
+        <button onClick={() => { useStore.getState().enqueueLinkGen(id, 'mt'); onClose() }} className="text-[13px] font-medium text-slate-400 hover:text-indigo-600">← Kho tài liệu</button>
         <input value={ten} onChange={(e) => setTen(e.target.value)} onBlur={saveTen} className="min-w-[260px] flex-1 rounded-md border border-transparent px-2 py-1 text-[15px] font-semibold text-slate-900 hover:border-slate-200 focus:border-indigo-400 focus:outline-none" />
         <span className="rounded bg-violet-50 px-2 py-0.5 text-[11px] font-medium text-violet-600">{d.mon} · Khối {d.khoi} · mẫu độc lập</span>
         {saved && <span className="text-[12px] text-emerald-600">✓ Đã lưu</span>}
         <span className="text-[12px] text-slate-400">{soCau} câu · {phans.length} phần{ganList.length ? ` · đã gán ${ganList.length} lớp` : ''}</span>
         <button onClick={() => setPrinting(true)} disabled={!soCau} className="ml-auto rounded-md border border-slate-300 px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-indigo-400 disabled:opacity-40">🖨 Xem / In</button>
         <button onClick={() => setGanModal(true)} disabled={!soCau} className="rounded-md border border-emerald-300 bg-emerald-50 px-3 py-1.5 text-[13px] font-medium text-emerald-700 hover:bg-emerald-100 disabled:opacity-40">🎯 Gán vào buổi</button>
+        <button onClick={xoaMT} title="Xoá MT" className="rounded-md border border-rose-200 px-3 py-1.5 text-[13px] font-medium text-rose-600 hover:bg-rose-50">🗑 Xoá</button>
       </div>
 
       <div className="min-h-0 flex-1 overflow-auto p-5">
@@ -334,7 +354,7 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
             setPicker(null)
           }} />
       )}
-      {ganModal && d && <GanBuoiModal mtId={id} mon={d.mon} onClose={() => setGanModal(false)} onDone={async () => { setGanModal(false); await reload() }} />}
+      {ganModal && d && <GanBuoiModal mtId={id} mon={d.mon} ganList={ganList} onClose={() => setGanModal(false)} onDone={async () => { setGanModal(false); await reload() }} />}
       {printing && <MTPrintView id={id} onClose={() => setPrinting(false)} />}
     </div>
   )
@@ -342,7 +362,7 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
 
 // ── GÁN VÀO BUỔI: CHỈ chọn lớp (cùng môn với MT) + ngày (Thùy 07-08: "giờ/GV/phòng thuộc về buổi
 // học, MT không cần hỏi lại" — buổi mới (nếu chưa có) tự suy giờ/phòng từ TKB, xem tkbSlotCuaLop mt.ts) ──
-function GanBuoiModal({ mtId, mon, onClose, onDone }: { mtId: string; mon: string; onClose: () => void; onDone: () => void }) {
+function GanBuoiModal({ mtId, mon, ganList, onClose, onDone }: { mtId: string; mon: string; ganList: MTGanRow[]; onClose: () => void; onDone: () => void }) {
   const [lops, setLops] = useState<Lop[]>([])
   const [lopId, setLopId] = useState<string | null>(null)
   const [ngay, setNgay] = useState('')
@@ -350,11 +370,20 @@ function GanBuoiModal({ mtId, mon, onClose, onDone }: { mtId: string; mon: strin
   const [res, setRes] = useState<{ ok: boolean; msg: string } | null>(null)
   useEffect(() => { listLop().then((ls) => setLops(ls.filter((l) => l.mon === mon))) }, [mon])
 
+  // Lớp này đã có 1 lượt gán (từ đúng MT này) rồi — gán ngày khác sẽ THAY THẾ (đè), cảnh báo trước.
+  const daGan = lopId ? ganList.find((g) => g.lopId === lopId) : null
+  const daySo = (s: string) => s.split('-').reverse().join('/')
+
   async function xacNhan() {
     if (!lopId || !ngay) return
+    if (daGan && daGan.ngay !== ngay) {
+      if (!confirm(`Lớp này đã gán MT vào ngày ${daySo(daGan.ngay)}. Gán ngày ${daySo(ngay)} sẽ THAY THẾ — bản gán ngày ${daySo(daGan.ngay)} bị xoá (buổi học ngày đó vẫn còn, chỉ mất nội dung MT). Tiếp tục?`)) return
+    }
     setBusy(true)
     try {
       const kq = await ganMTVaoBuoi(mtId, { lopId, ngay })
+      // ⭐ 07-12: doc mt_buoi vừa gán ĐỦ NỘI DUNG ngay (copy từ master) — enqueue link luôn.
+      useStore.getState().enqueueLinkGen(kq.taiLieuId, 'mt_buoi')
       const loaiMsg = kq.soCauLoai > 0 ? ` (đã tự loại ${kq.soCauLoai} câu nâng cao — lớp này không đủ tư cách theo bậc dạng ở bản đồ kiến thức)` : ''
       setRes({ ok: true, msg: (kq.buoiMoi ? 'Đã tạo buổi mới + gán nội dung MT.' : 'Đã gán nội dung MT vào buổi có sẵn (lớp+ngày này đã có buổi).') + loaiMsg + ' Chấm ở tab "🏆 MT" trong buổi (Buổi học/Việc của tôi).' })
     } catch (e: any) { setRes({ ok: false, msg: e.message ?? String(e) }) } finally { setBusy(false) }
@@ -377,7 +406,12 @@ function GanBuoiModal({ mtId, mon, onClose, onDone }: { mtId: string; mon: strin
             <label className="mt-3 block text-[12px] font-medium text-slate-600">Lớp ({mon})</label>
             <div className="mt-1"><SearchSelect value={lopId} onChange={setLopId} placeholder="Chọn lớp…" options={lops.map((l) => ({ id: l.id, label: l.ten_lop, sub: l.khoi ? `Khối ${l.khoi}` : '' }))} /></div>
             <label className="mt-3 block text-[12px] font-medium text-slate-600">Ngày *</label>
-            <input type="date" value={ngay} onChange={(e) => setNgay(e.target.value)} className={`${inp} mt-1 w-full`} />
+            <BuoiNgaySelect lopId={lopId} value={ngay} onChange={setNgay} className={`${inp} mt-1 w-full`} />
+            {daGan && (
+              <p className="mt-2 rounded-lg border border-amber-200 bg-amber-50 px-2.5 py-1.5 text-[12px] text-amber-700">
+                ⚠ Lớp này đã gán MT này vào <b>{daySo(daGan.ngay)}</b>{daGan.ngay !== ngay ? ' — chọn "Gán" sẽ THAY THẾ bản gán đó.' : '.'}
+              </p>
+            )}
             <div className="mt-4 flex justify-end gap-2">
               <button onClick={onClose} className="rounded-lg border border-slate-300 px-3 py-1.5 text-[13px] text-slate-600">Huỷ</button>
               <button disabled={!lopId || !ngay || busy} onClick={xacNhan} className="rounded-lg bg-emerald-600 px-4 py-1.5 text-[13px] font-medium text-white disabled:opacity-40">{busy ? 'Đang gán…' : 'Gán'}</button>

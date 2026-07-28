@@ -1,32 +1,152 @@
-// Data-layer BỔ TRỢ ĐUỔI — HS mới chậm hơn chương trình lớp → học đuổi (mig 0055).
-// Case `bo_tro_duoi` (HS×lớp) kéo dài nhiều buổi. Buổi đuổi = buoi_hoc loai='bo_tro_duoi' (điểm danh + nhận xét, KHÔNG ET).
-// Cần đuổi = case can_duoi CHƯA nằm trong buổi đuổi đang MỞ → buổi xong thì HS tự về Cần đuổi (xếp tiếp).
+// Data-layer BỔ TRỢ ĐUỔI — HS mới chậm hơn chương trình lớp → học đuổi (mig 0055, redesign 0097).
+// ĐỢT (case `bo_tro_duoi`, HS×lớp) mang KẾ HOẠCH (Thùy chốt 07-13): scope DẠNG cần dạy + SỐ BUỔI dự
+// kiến (logic gốc: số buổi phải cover hết dạng). Buổi đuổi = buoi_hoc loai='bo_tro_duoi' (điểm danh +
+// nhận xét, KHÔNG ET, KHÔNG đo mastery — mục tiêu là kịp kiến thức nghe hiểu buổi chính).
+// Card = ĐỢT, sống ở tab "Đang đuổi" suốt vòng đời với chỉ số "Xếp x/N · Học y/N" — xếp lịch BATCH cả
+// đợt 1 lần (không còn luồng xong-buổi-1-mới-xếp-buổi-2). Vắng = huỷ suất (không đếm, xếp lại). Học đủ
+// N buổi CÓ MẶT → hệ ĐỀ XUẤT đóng (GV bấm Hoàn thành/Gia hạn — không đóng câm).
 import { supabase } from './supabase'
+import { getMyProfile } from './nhansu'
 
 const LIMIT = 10000
 
 export type CanDuoiItem = { caseId: string; hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; lop_id: string | null; lop: string; mon: string; nguon: string; ly_do: string | null }
-export type CaDuoiHS = { hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; diem_danh: string | null; caseId: string | null; lop: string; mon: string }
+export type CaDuoiHS = { hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; diem_danh: string | null; caseId: string | null; lop: string; mon: string; khoi: string | null }
 export type CaDuoi = { id: string; ngay: string; gio_bat_dau: string | null; phong: string | null; trang_thai: string; danh_gia_xong_at: string | null; nguoi_day: string | null; nguoi_day_tg: string | null; muc_hoc_duoi_id: string | null; hs: CaDuoiHS[] }
 
-// Cần đuổi: case 'can_duoi' KHÔNG nằm trong buổi đuổi đang mở (chưa đóng đánh giá).
-export async function listCanDuoi(): Promise<CanDuoiItem[]> {
+// 1 buổi trong đợt (view theo-đợt — dùng ở card detail; click mở BuoiDuoiDetail readOnly như cũ).
+// nhanXet = nhận xét GV cho HS của đợt ở buổi này; dangDay = mã dạng đã dạy Ở BUỔI NÀY (day_buoi_id khớp).
+export type BuoiCuaDot = { buoiId: string; ngay: string; gio_bat_dau: string | null; phong: string | null; danh_gia_xong_at: string | null; diem_danh: string | null; nhanXet: string | null; dangDay: string[] }
+// 1 dạng trong scope đợt — day_at NULL = CHƯA DẠY (0099, Thùy 07-13: GV xác nhận đã dạy dạng nào
+// mới biết lúc nào kết thúc được đợt / cần gia hạn hay thu ngắn).
+export type DangDuoi = { id: string; ma_dang: string; day_buoi_id: string | null; day_at: string | null }
+export type DotDuoi = CanDuoiItem & {
+  khoi: string | null
+  so_buoi_du_kien: number | null // NULL = chưa chốt kế hoạch (đợt cũ / mới tạo) — UI bắt chốt trước khi xếp
+  dangs: DangDuoi[]              // scope dạng của đợt + trạng thái đã dạy
+  daXep: number                  // suất HIỆU LỰC: buổi chưa diễn ra/đang mở + buổi đã học có mặt (vắng KHÔNG đếm)
+  daHoc: number                  // buổi đã đóng đánh giá + HS CÓ MẶT
+  hoan_thanh_at: string | null
+  buois: BuoiCuaDot[]            // các buổi của đợt (sort theo ngày) — cho detail, khỏi query lại
+  dangDuyetAt: string | null     // NULL = học thuật CHƯA duyệt dạng (gate mềm: Ops vẫn xếp được; GV chưa tick dạng được)
+  duyetBoiTen: string | null     // tên người (team học thuật) đã duyệt — hiển thị "duyệt bởi X"
+}
+
+// Danh sách ĐỢT theo trạng thái — tab "Đang đuổi" (can_duoi) / "Hoàn thành" (hoan_thanh).
+// buoi_hoc_hs có 2 FK về buoi_hoc (buoi_hoc_id + bu_cho_buoi_id) → KHÔNG embed được, tách 2 bước
+// (bài học HANDOFF §PostgREST-embed).
+export async function listDotDuoi(done: boolean): Promise<DotDuoi[]> {
   const { data: cases } = await supabase.from('bo_tro_duoi')
-    .select('id, hoc_sinh_id, lop_id, nguon, ly_do, hoc_sinh:hoc_sinh_id(ho_ten, ma_hs), lop:lop_id(ten_lop, mon)')
-    .eq('trang_thai', 'can_duoi').order('created_at').limit(LIMIT)
+    .select('id, hoc_sinh_id, lop_id, nguon, ly_do, so_buoi_du_kien, hoan_thanh_at, dang_duyet_at, duyet_boi:dang_duyet_boi(ho_ten), hoc_sinh:hoc_sinh_id(ho_ten, ma_hs), lop:lop_id(ten_lop, mon, khoi)')
+    .eq('trang_thai', done ? 'hoan_thanh' : 'can_duoi').order('created_at', { ascending: !done }).limit(LIMIT)
   if (!cases?.length) return []
-  // buổi đuổi đang MỞ → case nào đã xếp vào đó thì loại khỏi Cần đuổi
-  const { data: openBuoi } = await supabase.from('buoi_hoc').select('id').eq('loai', 'bo_tro_duoi').neq('trang_thai', 'huy').is('danh_gia_xong_at', null).limit(LIMIT)
-  const openIds = (openBuoi ?? []).map((b: any) => b.id)
-  let scheduled = new Set<string>()
-  if (openIds.length) {
-    const { data: links } = await supabase.from('buoi_hoc_hs').select('bo_tro_duoi_id').in('buoi_hoc_id', openIds).not('bo_tro_duoi_id', 'is', null).limit(LIMIT)
-    scheduled = new Set((links ?? []).map((l: any) => l.bo_tro_duoi_id))
+  const caseIds = (cases as any[]).map((c) => c.id)
+
+  const [{ data: dangRows }, { data: links }] = await Promise.all([
+    supabase.from('bo_tro_duoi_dang').select('id, bo_tro_duoi_id, ma_dang, day_buoi_id, day_at').in('bo_tro_duoi_id', caseIds).order('ma_dang').limit(LIMIT),
+    supabase.from('buoi_hoc_hs').select('bo_tro_duoi_id, hoc_sinh_id, buoi_hoc_id, diem_danh').in('bo_tro_duoi_id', caseIds).limit(LIMIT),
+  ])
+  const dangsBy: Record<string, DangDuoi[]> = {}
+  for (const r of (dangRows ?? []) as any[]) (dangsBy[r.bo_tro_duoi_id] ??= []).push({ id: r.id, ma_dang: r.ma_dang, day_buoi_id: r.day_buoi_id, day_at: r.day_at })
+  // Dạng đã dạy Ở BUỔI NÀO (day_buoi_id) → map buoiId → [ma_dang], cho detail hiện "buổi này dạy dạng gì".
+  const dangDayByBuoi: Record<string, string[]> = {}
+  for (const r of (dangRows ?? []) as any[]) if (r.day_buoi_id) (dangDayByBuoi[r.day_buoi_id] ??= []).push(r.ma_dang)
+
+  const buoiIds = [...new Set(((links ?? []) as any[]).map((l) => l.buoi_hoc_id))]
+  let buoiBy: Record<string, any> = {}
+  let nxByBuoiHs: Record<string, string> = {}
+  if (buoiIds.length) {
+    const [{ data: buois }, { data: nxRows }] = await Promise.all([
+      supabase.from('buoi_hoc').select('id, ngay, gio_bat_dau, phong, trang_thai, danh_gia_xong_at').in('id', buoiIds).limit(LIMIT),
+      supabase.from('buoi_danh_gia').select('buoi_hoc_id, hoc_sinh_id, nhan_xet').in('buoi_hoc_id', buoiIds).limit(LIMIT),
+    ])
+    buoiBy = Object.fromEntries(((buois ?? []) as any[]).map((b) => [b.id, b]))
+    nxByBuoiHs = Object.fromEntries(((nxRows ?? []) as any[]).map((r) => [`${r.buoi_hoc_id}|${r.hoc_sinh_id}`, r.nhan_xet]))
   }
-  return (cases as any[]).filter((c) => !scheduled.has(c.id)).map((c) => ({
-    caseId: c.id, hoc_sinh_id: c.hoc_sinh_id, ho_ten: c.hoc_sinh?.ho_ten ?? '?', ma_hs: c.hoc_sinh?.ma_hs ?? null,
-    lop_id: c.lop_id, lop: c.lop?.ten_lop ?? '—', mon: c.lop?.mon ?? '', nguon: c.nguon, ly_do: c.ly_do,
-  }))
+  const buoisBy: Record<string, BuoiCuaDot[]> = {}
+  for (const l of (links ?? []) as any[]) {
+    const b = buoiBy[l.buoi_hoc_id]
+    if (!b || b.trang_thai === 'huy') continue // ca đã huỷ = không tồn tại với đợt
+    ;(buoisBy[l.bo_tro_duoi_id] ??= []).push({
+      buoiId: b.id, ngay: b.ngay, gio_bat_dau: b.gio_bat_dau, phong: b.phong, danh_gia_xong_at: b.danh_gia_xong_at, diem_danh: l.diem_danh,
+      nhanXet: nxByBuoiHs[`${b.id}|${l.hoc_sinh_id}`] ?? null, dangDay: dangDayByBuoi[b.id] ?? [],
+    })
+  }
+
+  return (cases as any[]).map((c) => {
+    const buois = (buoisBy[c.id] ?? []).sort((a, b) => a.ngay.localeCompare(b.ngay))
+    // Vắng = huỷ suất (Thùy 07-13): buổi ĐÃ đóng mà không có mặt → không đếm vào xếp lẫn học.
+    const daHoc = buois.filter((b) => b.danh_gia_xong_at && b.diem_danh === 'co_mat').length
+    const daXep = daHoc + buois.filter((b) => !b.danh_gia_xong_at).length
+    return {
+      caseId: c.id, hoc_sinh_id: c.hoc_sinh_id, ho_ten: c.hoc_sinh?.ho_ten ?? '?', ma_hs: c.hoc_sinh?.ma_hs ?? null,
+      lop_id: c.lop_id, lop: c.lop?.ten_lop ?? '—', mon: c.lop?.mon ?? '', khoi: c.lop?.khoi ?? null,
+      nguon: c.nguon, ly_do: c.ly_do, so_buoi_du_kien: c.so_buoi_du_kien, hoan_thanh_at: c.hoan_thanh_at,
+      dangs: dangsBy[c.id] ?? [], daXep, daHoc, buois,
+      dangDuyetAt: c.dang_duyet_at ?? null, duyetBoiTen: c.duyet_boi?.ho_ten ?? null,
+    }
+  })
+}
+
+// Chốt/sửa KẾ HOẠCH đợt: số buổi dự kiến + scope dạng. DIFF (không delete-all-insert-all — 0099:
+// dòng dạng mang dấu ĐÃ DẠY day_at/day_buoi_id, replace toàn bộ sẽ xoá mất dấu của dạng giữ nguyên).
+export async function chotKeHoachDuoi(caseId: string, soBuoi: number, maDangs: string[]): Promise<void> {
+  const { error } = await supabase.from('bo_tro_duoi').update({ so_buoi_du_kien: soBuoi }).eq('id', caseId)
+  if (error) throw error
+  const { data: cur, error: eCur } = await supabase.from('bo_tro_duoi_dang').select('id, ma_dang').eq('bo_tro_duoi_id', caseId).limit(LIMIT)
+  if (eCur) throw eCur
+  const curMa = new Set(((cur ?? []) as any[]).map((r) => r.ma_dang))
+  const moiMa = new Set(maDangs)
+  const boIds = ((cur ?? []) as any[]).filter((r) => !moiMa.has(r.ma_dang)).map((r) => r.id)
+  const themMa = maDangs.filter((m) => !curMa.has(m))
+  if (boIds.length) {
+    const { error: eDel } = await supabase.from('bo_tro_duoi_dang').delete().in('id', boIds)
+    if (eDel) throw eDel
+  }
+  if (themMa.length) {
+    const { error: eIns } = await supabase.from('bo_tro_duoi_dang').insert(themMa.map((m) => ({ bo_tro_duoi_id: caseId, ma_dang: m })))
+    if (eIns) throw eIns
+  }
+}
+
+// DUYỆT kế hoạch (team học thuật, 0100): chốt dạng + số buổi ĐỒNG THỜI đánh dấu ĐÃ DUYỆT (dang_duyet_at
+// + người duyệt). Sau đó GV dạy mới có dạng để bám/tick. KHÁC chotKeHoachDuoi (chỉ ghi kế hoạch, dùng
+// cho gia hạn +1 buổi sau khi đã duyệt) — duyệt chỉ do học thuật của môn bấm 1 lần đầu.
+export async function duyetKeHoachDuoi(caseId: string, soBuoi: number, maDangs: string[]): Promise<void> {
+  await chotKeHoachDuoi(caseId, soBuoi, maDangs)
+  const prof = await getMyProfile()
+  const { error } = await supabase.from('bo_tro_duoi')
+    .update({ dang_duyet_at: new Date().toISOString(), dang_duyet_boi: prof?.nhanSu.id ?? null })
+    .eq('id', caseId)
+  if (error) throw error
+}
+
+// Đợt CHỜ team học thuật chốt/duyệt dạng — derive cho "Việc của tôi" + gate màn. Lọc CHƯA duyệt +
+// môn thuộc quyền học thuật của người xem (mons = hocThuatMons). KHÔNG bảng tasks (đúng luật derive).
+export async function listDotChoDuyetDuoi(mons: string[]): Promise<DotDuoi[]> {
+  if (!mons.length) return []
+  const all = await listDotDuoi(false)
+  return all.filter((d) => d.dangDuyetAt == null && mons.includes(d.mon))
+}
+
+// Scope dạng (kèm trạng thái đã dạy) của MỌI case trong 1 buổi đuổi — cho BuoiDuoiDetail (GV tick
+// "đã dạy dạng nào" ngay trong khối đánh giá per-HS). Trả map caseId → dạng[].
+export async function getDangCuaBuoiDuoi(buoiId: string): Promise<Record<string, DangDuoi[]>> {
+  const { data: links } = await supabase.from('buoi_hoc_hs').select('bo_tro_duoi_id').eq('buoi_hoc_id', buoiId).not('bo_tro_duoi_id', 'is', null).limit(LIMIT)
+  const caseIds = [...new Set(((links ?? []) as any[]).map((l) => l.bo_tro_duoi_id))]
+  if (!caseIds.length) return {}
+  const { data, error } = await supabase.from('bo_tro_duoi_dang').select('id, bo_tro_duoi_id, ma_dang, day_buoi_id, day_at').in('bo_tro_duoi_id', caseIds).order('ma_dang').limit(LIMIT)
+  if (error) throw error
+  const out: Record<string, DangDuoi[]> = {}
+  for (const r of (data ?? []) as any[]) (out[r.bo_tro_duoi_id] ??= []).push({ id: r.id, ma_dang: r.ma_dang, day_buoi_id: r.day_buoi_id, day_at: r.day_at })
+  return out
+}
+// Tick/bỏ tick "đã dạy dạng này" — buoiId có = đã dạy (ghi bằng chứng buổi nào); null = bỏ tick.
+export async function setDangDay(dangRowId: string, buoiId: string | null): Promise<void> {
+  const { error } = await supabase.from('bo_tro_duoi_dang')
+    .update(buoiId ? { day_buoi_id: buoiId, day_at: new Date().toISOString() } : { day_buoi_id: null, day_at: null })
+    .eq('id', dangRowId)
+  if (error) throw error
 }
 
 // Đã xếp (done=false) / Hoàn thành (done=true): buổi đuổi + HS. "xong buổi" = danh_gia_xong_at có.
@@ -38,14 +158,14 @@ export async function listCaDuoi(done: boolean): Promise<CaDuoi[]> {
   if (!filt.length) return []
   const ids = filt.map((b: any) => b.id)
   const { data: hs } = await supabase.from('buoi_hoc_hs')
-    .select('buoi_hoc_id, hoc_sinh_id, diem_danh, bo_tro_duoi_id, hoc_sinh:hoc_sinh_id(ho_ten, ma_hs), duoi:bo_tro_duoi_id(lop:lop_id(ten_lop, mon))')
+    .select('buoi_hoc_id, hoc_sinh_id, diem_danh, bo_tro_duoi_id, hoc_sinh:hoc_sinh_id(ho_ten, ma_hs), duoi:bo_tro_duoi_id(lop:lop_id(ten_lop, mon, khoi))')
     .in('buoi_hoc_id', ids).limit(LIMIT)
   const by: Record<string, any[]> = {}
   for (const r of hs ?? []) (by[(r as any).buoi_hoc_id] ??= []).push(r)
   return filt.map((b: any) => ({
     ...b, hs: (by[b.id] ?? []).map((r: any) => ({
       hoc_sinh_id: r.hoc_sinh_id, ho_ten: r.hoc_sinh?.ho_ten ?? '?', ma_hs: r.hoc_sinh?.ma_hs ?? null,
-      diem_danh: r.diem_danh, caseId: r.bo_tro_duoi_id, lop: r.duoi?.lop?.ten_lop ?? '', mon: r.duoi?.lop?.mon ?? '',
+      diem_danh: r.diem_danh, caseId: r.bo_tro_duoi_id, lop: r.duoi?.lop?.ten_lop ?? '', mon: r.duoi?.lop?.mon ?? '', khoi: r.duoi?.lop?.khoi ?? null,
     })),
   }))
 }
@@ -132,7 +252,13 @@ export async function lopCuaHS(hocSinhId: string): Promise<{ id: string; ten_lop
   return (data ?? []).map((r: any) => r.lop).filter(Boolean)
 }
 
+// Đếm tab: Đang đuổi = ĐỢT đang mở · Đã xếp = BUỔI đang chờ · Hoàn thành = ĐỢT đã đóng (07-13:
+// tab 1 và 3 đơn vị là ĐỢT, chỉ tab 2 là buổi).
 export async function demTabDuoi(): Promise<Record<string, number>> {
-  const [l1, l2, l3] = await Promise.all([listCanDuoi(), listCaDuoi(false), listCaDuoi(true)])
-  return { canduoi: l1.length, daxep: l2.length, xong: l3.length }
+  const [{ count: dang }, { count: xong }, l2] = await Promise.all([
+    supabase.from('bo_tro_duoi').select('id', { count: 'exact', head: true }).eq('trang_thai', 'can_duoi'),
+    supabase.from('bo_tro_duoi').select('id', { count: 'exact', head: true }).eq('trang_thai', 'hoan_thanh'),
+    listCaDuoi(false),
+  ])
+  return { canduoi: dang ?? 0, daxep: l2.length, xong: xong ?? 0 }
 }

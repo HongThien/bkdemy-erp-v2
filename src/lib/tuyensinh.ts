@@ -2,7 +2,7 @@
 // Lead = `ung_vien` RIÊNG; convert L7→L8 tạo hoc_sinh. UI chỉ gọi qua đây.
 import { supabase } from './supabase'
 import { suggestMaHS, suggestMaPH, createHocSinh, createPhuHuynh, ghiDanh } from './nhansu'
-import { homNayVN, vnInstant } from './tuan'
+import { homNayVN, vnInstant, congNgay } from './tuan'
 import { MON_LIST, type Mon } from './mon'
 import { uploadKhoFile } from './kho/api'
 
@@ -166,28 +166,34 @@ export async function convertUngVien(uv: UngVien, opts: { khoi?: string | null; 
   return hs.id
 }
 
-// đếm cho toggle bar: L5–L7 từ ung_vien dang_chay; L8 = hoc_sinh đang học; loai = đã loại
-export async function demTheoLevel(mon?: string): Promise<Record<string, number>> {
+// đếm cho toggle bar: L5–L7 từ ung_vien dang_chay; L8 = hoc_sinh mới (songay ngày); loai = đã loại
+export async function demTheoLevel(mon?: string, songay = 14): Promise<Record<string, number>> {
   const out: Record<string, number> = { L5: 0, L6: 0, L7: 0, L8: 0, loai: 0 }
   let q = supabase.from('ung_vien').select('level, trang_thai').limit(LIMIT)
   if (mon) q = q.eq('mon', mon)
   const { data } = await q
   for (const r of (data ?? []) as any[]) { if (r.trang_thai === 'dang_chay') out[r.level] = (out[r.level] ?? 0) + 1; else if (r.trang_thai === 'loai') out.loai++ }
-  out.L8 = (await listHSDangHoc(mon)).length
+  out.L8 = (await listHSDangHoc(mon, songay)).length
   return out
 }
-// L8 = list HS đang học. Có mon → chỉ HS đang học ở lớp môn đó (distinct).
-export async function listHSDangHoc(mon?: string): Promise<{ id: string; ma_hs: string | null; ho_ten: string; khoi: string | null }[]> {
+export const KHOANG_NGAY_MOI = [7, 14, 28] as const // toggle "quan sát xu hướng" HS mới
+// L8 = list HS MỚI vào (ngay_nhap_hoc trong `songay` ngày gần nhất) — tránh trùng với màn Học sinh (đã hiện TOÀN BỘ đang học).
+// Có mon → chỉ HS mới ở lớp môn đó (distinct).
+export async function listHSDangHoc(mon?: string, songay = 14): Promise<{ id: string; ma_hs: string | null; ho_ten: string; khoi: string | null }[]> {
+  const tuNgay = congNgay(homNayVN(), -songay)
   if (mon) {
     const { data, error } = await supabase.from('hoc_sinh_lop')
-      .select('hoc_sinh:hoc_sinh_id(id, ma_hs, ho_ten, khoi, trang_thai), lop:lop_id!inner(mon)')
+      .select('hoc_sinh:hoc_sinh_id(id, ma_hs, ho_ten, khoi, trang_thai, ngay_nhap_hoc), lop:lop_id!inner(mon)')
       .eq('trang_thai', 'dang_hoc').eq('lop.mon', mon).limit(LIMIT)
     if (error) throw error
     const seen = new Set<string>(); const out: any[] = []
-    for (const r of (data ?? []) as any[]) { const h = r.hoc_sinh; if (h && h.trang_thai === 'dang_hoc' && !seen.has(h.id)) { seen.add(h.id); out.push({ id: h.id, ma_hs: h.ma_hs, ho_ten: h.ho_ten, khoi: h.khoi }) } }
+    for (const r of (data ?? []) as any[]) {
+      const h = r.hoc_sinh
+      if (h && h.trang_thai === 'dang_hoc' && h.ngay_nhap_hoc >= tuNgay && !seen.has(h.id)) { seen.add(h.id); out.push({ id: h.id, ma_hs: h.ma_hs, ho_ten: h.ho_ten, khoi: h.khoi }) }
+    }
     return out.sort((a, b) => a.ho_ten.localeCompare(b.ho_ten))
   }
-  const { data, error } = await supabase.from('hoc_sinh').select('id, ma_hs, ho_ten, khoi').eq('trang_thai', 'dang_hoc').order('ho_ten').limit(LIMIT)
+  const { data, error } = await supabase.from('hoc_sinh').select('id, ma_hs, ho_ten, khoi').eq('trang_thai', 'dang_hoc').gte('ngay_nhap_hoc', tuNgay).order('ho_ten').limit(LIMIT)
   if (error) throw error
   return (data ?? []) as any
 }
@@ -204,7 +210,7 @@ export type CaTestTrangThai = 'dang_test' | 'hoan_thanh'
 export type CaTest = {
   id: string; ungVienId: string; mon: string; ngay: string; gioBatDau: string
   thoiLuongPhut: number; trangThai: CaTestTrangThai; baiUrl: string | null; hoanThanhAt: string | null
-  deTestId: string | null
+  taiLieuId: string | null
   createdAt: string
   ungVien: { hoTenHs: string; maUv: string | null; khoi: string | null; hoTenPh: string | null; sdtPh: string | null }
 }
@@ -213,7 +219,7 @@ function mapCaTest(r: any): CaTest {
   return {
     id: r.id, ungVienId: r.ung_vien_id, mon: r.mon, ngay: r.ngay, gioBatDau: r.gio_bat_dau,
     thoiLuongPhut: r.thoi_luong_phut, trangThai: r.trang_thai, baiUrl: r.bai_url, hoanThanhAt: r.hoan_thanh_at,
-    deTestId: r.de_test_id ?? null,
+    taiLieuId: r.tai_lieu_id ?? null,
     createdAt: r.created_at,
     ungVien: { hoTenHs: r.ung_vien?.ho_ten_hs ?? '?', maUv: r.ung_vien?.ma_uv ?? null, khoi: r.ung_vien?.khoi ?? null, hoTenPh: r.ung_vien?.ho_ten_ph ?? null, sdtPh: r.ung_vien?.sdt_ph ?? null },
   }

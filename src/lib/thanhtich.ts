@@ -47,6 +47,12 @@ export async function listThanhTichLoai(): Promise<ThanhTichLoai[]> {
   return (data ?? []) as ThanhTichLoai[]
 }
 
+// Nhãn dùng chung (Quản lý Level view-only + tab Điểm thi trong Kết quả học tập).
+export const LOAI_KY_THI: Record<string, string> = { truong: 'Thi trường', mt_sat_hach: 'BK sát hạch (MT)', khao_sat_thang: 'Khảo sát tháng' }
+export const HE_SO_KY_THI: Record<string, number> = { truong: 2, mt_sat_hach: 2, khao_sat_thang: 1 }
+export const DOT_LABEL: Record<string, string> = { giua_ky_1: 'Giữa kì I', cuoi_ky_1: 'Cuối kì I', giua_ky_2: 'Giữa kì II', cuoi_ky_2: 'Cuối kì II' }
+export const DOT_ORDER = ['giua_ky_1', 'cuoi_ky_1', 'giua_ky_2', 'cuoi_ky_2'] as const
+
 // ── Kì thi / điểm thi (khung cho tab quản lý Level) ──
 export async function listKyThi(mua: string, mon?: string): Promise<KyThi[]> {
   let q = supabase.from('ky_thi').select('*').eq('mua', mua).order('ngay', { ascending: true }).limit(LIMIT)
@@ -79,4 +85,54 @@ export async function upsertDiemThi(d: { kyThiId: string; hocSinhId: string; die
     { ky_thi_id: d.kyThiId, hoc_sinh_id: d.hocSinhId, diem: d.diem, band_luc_thi: d.bandLucThi, verdict: d.verdict, vuot_band: d.vuotBand, graded_by: user?.id ?? null, updated_at: new Date().toISOString() },
     { onConflict: 'ky_thi_id,hoc_sinh_id' })
   if (error) throw error
+}
+
+// ── ĐIỂM MT trong buổi (Thùy 07-14): "Điểm MT" tách riêng khỏi chấm Đ/C/S từng câu — TÁI DÙNG hạ tầng
+// ky_thi/diem_thi (loai='mt_sat_hach') thay vì đẻ bảng mới. 1 ky_thi GẮN buoi_hoc_id (cột có sẵn cho đúng
+// việc này) → tìm-hoặc-tạo LẦN ĐẦU nhập điểm ở tab MT, các lần mở lại tái dùng (idempotent, không đẻ trùng
+// kỳ thi). KHÔNG ảnh hưởng query khác: mastery.ts/thanhtich.ts đọc ky_thi qua (mon, mua, loai) — buoi_hoc_id
+// chỉ là liên kết PHỤ để tab MT tự tìm lại đúng kỳ thi của buổi, không đổi cách các nơi khác truy vấn.
+export async function getOrCreateKyThiMTChoBuoi(buoiId: string, ten: string, mon: string, khoi: string | null, mua: string): Promise<KyThi> {
+  const { data: existing, error: e1 } = await supabase.from('ky_thi').select('*').eq('buoi_hoc_id', buoiId).eq('loai', 'mt_sat_hach').limit(1)
+  if (e1) throw e1
+  if (existing?.[0]) return existing[0] as KyThi
+  return createKyThi({ ten, loai: 'mt_sat_hach', he_so: HE_SO_KY_THI.mt_sat_hach, dot: null, ngay: null, mon, khoi, mua, buoi_hoc_id: buoiId })
+}
+
+// ── ĐIỂM THI TRÊN TRƯỜNG (pivot, tab riêng trong Kết quả học tập) — mỗi HS × 4 đợt (GK1/GK2/CK1/CK2),
+// nguồn NHẬP THỦ CÔNG loai='truong' (ky_thi/diem_thi, cùng hạ tầng "Nhập điểm"). Roster theo lớp/khối/toàn
+// bộ (giống loadMasteryCells) — KHÔNG gọi getMasteryHS, đây là điểm số nhập tay, không phải mastery suy động.
+export type TruongDiemRow = {
+  hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; lop: string | null; truong_hoc: string | null
+  diem: Partial<Record<typeof DOT_ORDER[number], number | null>>
+}
+export async function getDiemThiTruong(opts: { mon: string; mua: string; lopId?: string | null; khoi?: string | null }): Promise<TruongDiemRow[]> {
+  let sq
+  if (opts.lopId) sq = supabase.from('hoc_sinh_lop').select('hoc_sinh:hoc_sinh_id(id, ho_ten, ma_hs, truong_hoc), lop:lop_id(ten_lop)').eq('lop_id', opts.lopId).eq('trang_thai', 'dang_hoc').limit(LIMIT)
+  else if (opts.khoi) sq = supabase.from('hoc_sinh_lop').select('hoc_sinh:hoc_sinh_id(id, ho_ten, ma_hs, truong_hoc), lop:lop_id!inner(ten_lop, khoi, mon)').eq('trang_thai', 'dang_hoc').eq('lop.khoi', opts.khoi).eq('lop.mon', opts.mon).limit(LIMIT)
+  else sq = supabase.from('hoc_sinh_lop').select('hoc_sinh:hoc_sinh_id(id, ho_ten, ma_hs, truong_hoc), lop:lop_id!inner(ten_lop, mon)').eq('trang_thai', 'dang_hoc').eq('lop.mon', opts.mon).limit(LIMIT)
+  const { data: sd, error: se } = await sq
+  if (se) throw se
+  const hsMap = new Map<string, TruongDiemRow>()
+  for (const r of (sd ?? []) as any[]) {
+    const h = r.hoc_sinh; if (!h || hsMap.has(h.id)) continue
+    hsMap.set(h.id, { hoc_sinh_id: h.id, ho_ten: h.ho_ten, ma_hs: h.ma_hs, lop: r.lop?.ten_lop ?? null, truong_hoc: h.truong_hoc ?? null, diem: {} })
+  }
+  const hsIds = [...hsMap.keys()]
+  if (!hsIds.length) return []
+
+  const { data: kts, error: ke } = await supabase.from('ky_thi').select('id, dot').eq('loai', 'truong').eq('mon', opts.mon).eq('mua', opts.mua).not('dot', 'is', null).limit(LIMIT)
+  if (ke) throw ke
+  const dotOfKy = new Map(((kts ?? []) as { id: string; dot: string }[]).map((k) => [k.id, k.dot]))
+  const kyIds = [...dotOfKy.keys()]
+  if (kyIds.length) {
+    const { data: dts, error: de } = await supabase.from('diem_thi').select('ky_thi_id, hoc_sinh_id, diem').in('ky_thi_id', kyIds).in('hoc_sinh_id', hsIds).limit(LIMIT)
+    if (de) throw de
+    for (const d of (dts ?? []) as any[]) {
+      const row = hsMap.get(d.hoc_sinh_id); if (!row) continue
+      const dot = dotOfKy.get(d.ky_thi_id); if (!dot) continue
+      row.diem[dot as typeof DOT_ORDER[number]] = d.diem
+    }
+  }
+  return [...hsMap.values()]
 }
