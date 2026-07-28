@@ -508,6 +508,24 @@ async function fetchGradeAgg(phase: MatrixPhase, buoiIds: string[]): Promise<Map
   return agg
 }
 
+// Lấy HẾT dòng theo buoi_hoc_id — PHÂN TRANG (PostgREST cap max-rows=1000). apply = filter thêm (vd co_mat).
+// ⚠ Overview gộp buổi CẢ 38 lớp → điểm danh/btvn_ket_qua dễ >1000 → nếu .limit(10000) sẽ RỚT lớp → sai số.
+async function pagedByBuoi(table: string, cols: string, buoiIds: string[], apply?: (q: any) => any): Promise<any[]> {
+  const out: any[] = []
+  if (!buoiIds.length) return out
+  const PAGE = 1000
+  for (let from = 0; from < 500000; from += PAGE) {
+    let query: any = supabase.from(table).select(cols).in('buoi_hoc_id', buoiIds)
+    if (apply) query = apply(query)
+    const { data, error } = await query.order('buoi_hoc_id').order('hoc_sinh_id').range(from, from + PAGE - 1)
+    if (error) throw error
+    const rows = (data ?? []) as any[]
+    out.push(...rows)
+    if (rows.length < PAGE) break
+  }
+  return out
+}
+
 // ym = 'YYYY-MM' (tùy chọn) → chỉ lấy buổi trong tháng đó (điều hướng next/prev ở UI).
 export async function getClassMatrix(lopId: string, phase: MatrixPhase, ym?: string): Promise<ClassMatrix> {
   // 1) buổi thường của lớp ĐÃ ĐÓNG hoạt động này → cột (lọc tháng nếu có)
@@ -539,14 +557,14 @@ export async function getClassMatrix(lopId: string, phase: MatrixPhase, ym?: str
   // 4) BTVN: xin phép / không làm → cảnh báo "không làm"
   const miss = new Set<string>()
   if (phase === 'btvn') {
-    const { data: kq } = await supabase.from('btvn_ket_qua').select('hoc_sinh_id, buoi_hoc_id, trang_thai_nop').in('buoi_hoc_id', buoiIds).limit(LIMIT)
-    for (const r of (kq ?? []) as any[]) if (r.trang_thai_nop === 'khong_lam' || r.trang_thai_nop === 'xin_phep') miss.add(r.hoc_sinh_id + ':' + r.buoi_hoc_id)
+    for (const r of await pagedByBuoi('btvn_ket_qua', 'hoc_sinh_id, buoi_hoc_id, trang_thai_nop', buoiIds))
+      if (r.trang_thai_nop === 'khong_lam' || r.trang_thai_nop === 'xin_phep') miss.add(r.hoc_sinh_id + ':' + r.buoi_hoc_id)
   }
 
   // 5) vắng → phân biệt "vắng" vs "chưa có dữ liệu"
   const vang = new Set<string>()
-  const { data: dd } = await supabase.from('buoi_hoc_hs').select('hoc_sinh_id, buoi_hoc_id, diem_danh').in('buoi_hoc_id', buoiIds).limit(LIMIT)
-  for (const r of (dd ?? []) as any[]) if (r.diem_danh === 'vang' || r.diem_danh === 'vang_phep') vang.add(r.hoc_sinh_id + ':' + r.buoi_hoc_id)
+  for (const r of await pagedByBuoi('buoi_hoc_hs', 'hoc_sinh_id, buoi_hoc_id, diem_danh', buoiIds))
+    if (r.diem_danh === 'vang' || r.diem_danh === 'vang_phep') vang.add(r.hoc_sinh_id + ':' + r.buoi_hoc_id)
 
   // 6) dựng ô
   for (const s of students) for (const b of buois) {
@@ -581,14 +599,14 @@ export async function getAllClassesCompletion(mon: string, phase: MatrixPhase, y
   for (const b of buois) per.get(b.lop_id)?.buoi.add(b.id)
 
   if (buoiIds.length) {
-    // ô KỲ VỌNG = HS có mặt × buổi
-    const { data: att } = await supabase.from('buoi_hoc_hs').select('hoc_sinh_id, buoi_hoc_id').in('buoi_hoc_id', buoiIds).eq('diem_danh', 'co_mat').limit(LIMIT)
-    for (const a of (att ?? []) as any[]) { const lop = buoiLop.get(a.buoi_hoc_id); if (lop) per.get(lop)?.expected.add(a.hoc_sinh_id + ':' + a.buoi_hoc_id) }
+    // ô KỲ VỌNG = HS có mặt × buổi (PHÂN TRANG — gộp cả 38 lớp dễ >1000 dòng)
+    for (const a of await pagedByBuoi('buoi_hoc_hs', 'hoc_sinh_id, buoi_hoc_id', buoiIds, (q) => q.eq('diem_danh', 'co_mat'))) {
+      const lop = buoiLop.get(a.buoi_hoc_id); if (lop) per.get(lop)?.expected.add(a.hoc_sinh_id + ':' + a.buoi_hoc_id)
+    }
     // ô ĐÃ CÓ DỮ LIỆU
     const donePairs = new Set<string>()   // hs:buoi
     if (phase === 'btvn') {
-      const { data: kq } = await supabase.from('btvn_ket_qua').select('hoc_sinh_id, buoi_hoc_id').in('buoi_hoc_id', buoiIds).limit(LIMIT)
-      for (const r of (kq ?? []) as any[]) donePairs.add(r.hoc_sinh_id + ':' + r.buoi_hoc_id)
+      for (const r of await pagedByBuoi('btvn_ket_qua', 'hoc_sinh_id, buoi_hoc_id', buoiIds)) donePairs.add(r.hoc_sinh_id + ':' + r.buoi_hoc_id)
     } else {
       const agg = await fetchGradeAgg(phase, buoiIds)   // phân trang + embed (xem fetchGradeAgg)
       for (const k of agg.keys()) donePairs.add(k)
