@@ -3284,3 +3284,8 @@ Verify: card hiện "△ABC nhọn, ba đường cao... | tứ giác BFEC nội 
    tâm = mô hình, vệ tinh = BT với cấp/mã, box không tràn panel.
 
 `tsc` + `vite build` sạch.
+
+### 07-28 (tối) — Gộp nhánh EXP (làm ở nhà, base cũ 78 commit) lên main + build EXP engine + View cả lớp
+- **Sự cố:** nhánh `elo-redesign-2026-07-28` (đại tu Elo làm ở nhà) bị cắt từ `main` CŨ 78 commit → localhost chạy nhánh này = thiếu toàn bộ 78 commit Jul-27 (Kho Hình, Test đầu vào, Điểm thi…) → "mất màn Kết quả học tập / 9A1 trống sau 13/07" chỉ là **code cũ**, không phải data/quyền (localhost + script cùng Supabase `osrvycilwshkzhljuxef`; data 9A1 T7 đầy đủ tới 24/07). **Merge `origin/main` vào nhánh**: conflict DEVLOG (lấy main) · BuoiHocScreen (gộp `catch` của EXP + alert `khongCoDuLieu` của main) · KetQuaScreen (gộp import + `ViewKey` — tab "Cả lớp" của tôi CÙNG "Điểm thi" của main). `gami.ts`/`mastery.ts` auto-merge sạch (logic coElo + `getClassMatrix` sống). `tsc`+`verify_gami`+`sim_exp` PASS.
+- **EXP ENGINE (build mới, `src/gami/exp.js` + `config.js EXP`):** `etRankExp`·`btvnBaiExp`·`monthlyBtvnExp`·`mtExp` — xem HANDOFF ⭐EXP. Thùy chốt: thái độ phạt THEO BÀI (chưa nghiêm túc ×0.7, chống đối ×0); xin phép = không làm = 0; nộp muộn ×0.9; so-lớp theo tháng; sàn MT 0. **LEVEL** BASE_COST 600→1100 (thang cũ vỡ). Mô phỏng data THẬT 9A1/T7 (`sim_exp.mjs`): BTVN 48% tổng · TB ~4900 EXP/HS · tháng đầu trải L3-5. Trường Hải đáy vì bỏ 8/9 BTVN dù ET tốt — đúng "EXP=chăm chỉ". **Chưa nối service** (chờ duyệt số).
+- **VIEW CẢ LỚP + toggle câu gốc:** tab "Cả lớp" ma trận HS×buổi (ET/BTVN/MT, %+cảnh báo Ko-làm, filter tháng ‹›, `getClassMatrix`); bỏ subtab "Lịch sử hoạt động"; Kho câu hỏi (`DangHub`) thêm toggle **Câu gốc/Tất cả** (gốc = `nguon≠'clone'`, có đếm).

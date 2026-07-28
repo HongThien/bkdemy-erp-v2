@@ -36,7 +36,13 @@ export default function DangHub({ d, config, chuan, onClose, onEditDang, onDelet
   const [err, setErr] = useState<string | null>(null)
   const [cauModal, setCauModal] = useState<null | { editing: CauHoi }>(null)
   const [importMode, setImportMode] = useState<'clone' | 'batch' | null>(null)
+  const [filterGoc, setFilterGoc] = useState<'all' | 'goc'>('all')
   const tone = mucDoTone(d.mucDo)
+  // Câu GỐC = mọi câu KHÔNG do AI sinh (nguon ≠ 'clone'). Biến thể AI = nguon 'clone'.
+  const laGoc = (c: CauHoi) => c.nguon !== 'clone'
+  const gocCount = caus.filter(laGoc).length
+  const shown = filterGoc === 'goc' ? caus.filter(laGoc) : caus
+  const filterBtn = (on: boolean) => `h-7 rounded-full px-3.5 text-[12px] font-semibold transition ${on ? 'bg-slate-800 text-white' : 'bg-white text-slate-500 ring-1 ring-slate-200 hover:text-slate-800'}`
 
   async function reload() {
     if (!hasCau) return
@@ -101,15 +107,25 @@ export default function DangHub({ d, config, chuan, onClose, onEditDang, onDelet
                 </div>
               )}
 
+              {!loading && !err && caus.length > 0 && (
+                <div className="mb-4 flex items-center gap-1.5">
+                  <button onClick={() => setFilterGoc('all')} className={filterBtn(filterGoc === 'all')}>Tất cả <span className="opacity-60">{caus.length}</span></button>
+                  <button onClick={() => setFilterGoc('goc')} className={filterBtn(filterGoc === 'goc')}>Câu gốc <span className="opacity-60">{gocCount}</span></button>
+                  <span className="ml-1 text-[12px] text-slate-400">{caus.length - gocCount} biến thể AI</span>
+                </div>
+              )}
+
               {loading ? <p className="text-sm text-slate-400">Đang tải…</p>
                 : err ? <p className="text-sm text-rose-600">Lỗi: {err}</p>
                 : caus.length === 0 ? (
                   <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">
                     Chưa có câu nào. <b>Clone biến thể</b> (sinh từ 1 bài mẫu) hoặc <b>Nhập chuỗi câu</b> (cả file câu có sẵn).
                   </div>
+                ) : shown.length === 0 ? (
+                  <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">Không có câu gốc nào trong dạng này (tất cả là biến thể AI).</div>
                 ) : (
                   <ul className="grid grid-cols-1 gap-3 lg:grid-cols-2 2xl:grid-cols-3">
-                    {caus.map((c, i) => (
+                    {shown.map((c, i) => (
                       <li key={c.ma_cau} className="rounded-xl border border-slate-200 bg-white p-4">
                         <div className="mb-2 flex items-center justify-between">
                           <div className="flex items-center gap-2">
