@@ -1,5 +1,10 @@
 // ELO ENGINE — PURE (không gọi DB). Cờ vua đa người: 1 buổi = đấu cả lớp cùng lúc.
-// E_i = Σ_(j≠i) 1/(1+10^((Rj−Ri)/400)); actual_i = #(điểm_i>điểm_j)+0.5×#(hoà); Δ=clamp(K(actual−E),±60)
+// E_i = Σ_(j≠i) 1/(1+10^((Rj−Ri)/400)); actual_i = #(điểm_i>điểm_j)+0.5×#(hoà)
+// Δ_i = clamp( w·K·(A−E)/(N−1), ±w·RANK_CAP ) + P − λ·(elo_i − mean_lớp)
+//   • phần HẠNG chuẩn-hoá /(N−1) → biên độ tự nhiên, không thiên vị sĩ số
+//   • P = tiến-trình (mọi HS có mặt cùng dâng → bảng cao dần, KHÔNG đổi thứ hạng)
+//   • λ = kéo về mean lớp (bó khoảng cách, cho phép lật kèo)
+//   • MT: w=MT_WEIGHT — chỉ nhân phần HẠNG + trần hạng; P & λ giữ ×1
 import { ELO } from './config.js'
 
 // Kỳ vọng số bạn vượt (R = elo đầu event)
@@ -16,26 +21,24 @@ export function actualScore(pointsI, otherPoints) {
   return a
 }
 
-// Chọn K: MT > calibration(<4 buổi) > lớp nhỏ(≤8) > thường
-export function getK({ sessionsPlayed, isMT, classSize }) {
-  if (isMT) return ELO.K_MT
-  if (sessionsPlayed < ELO.CALIBRATION_SESSIONS) return ELO.K_CALIBRATION
-  if (classSize <= ELO.SMALL_CLASS_SIZE) return ELO.K_SMALL_CLASS
-  return ELO.K_NORMAL
-}
-
 const clamp = (x, lo, hi) => Math.max(lo, Math.min(hi, x))
 
-// Tính cả event cho cả lớp. students = [{studentId, elo, points, sessionsPlayed}]
+// Tính cả event cho cả lớp. students = [{studentId, elo, points}]
+//   elo = mốc TRƯỚC event · mean_lớp lấy TỪ chính mảng này (các HS có mặt)
 // → [{studentId, eloBefore, expected, actual, delta, eloAfter}]
 export function computeEloUpdate(students, { isMT = false, classSize } = {}) {
   const n = classSize ?? students.length
+  const denom = Math.max(1, n - 1)
+  const w = isMT ? ELO.MT_WEIGHT : 1
+  const cap = ELO.RANK_CAP * w
+  const mean = students.reduce((s, o) => s + o.elo, 0) / students.length
   return students.map((s) => {
     const others = students.filter((o) => o !== s)
     const expected = expectedScore(s.elo, others.map((o) => o.elo))
     const actual = actualScore(s.points, others.map((o) => o.points))
-    const k = getK({ sessionsPlayed: s.sessionsPlayed ?? 0, isMT, classSize: n })
-    const delta = Math.round(clamp(k * (actual - expected), -ELO.DELTA_CAP, ELO.DELTA_CAP))
+    const rank = clamp((w * ELO.K * (actual - expected)) / denom, -cap, cap)
+    const revert = -ELO.LAMBDA * (s.elo - mean)
+    const delta = Math.round(rank + ELO.PROGRESS_P + revert)
     return { studentId: s.studentId, eloBefore: s.elo, expected, actual, delta, eloAfter: s.elo + delta }
   })
 }

@@ -1,14 +1,14 @@
 // Gami config — tunable, tách khỏi engine (spec master §4). Núm chỉnh ở đây, không sửa logic.
+// Δ = clamp( w·K·(A−E)/(N−1), ±w·RANK_CAP ) + PROGRESS_P − LAMBDA·(elo − mean_lớp)
+//   w=1 buổi thường · w=MT_WEIGHT cho MT (chỉ nhân phần HẠNG; P & λ luôn ×1).
 export const ELO = {
   BASE_RATING: 1000,
-  SCALE: 400,
-  K_CALIBRATION: 32,        // 4 buổi đầu mỗi HS (hạ từ 48 → mượt hơn, đỡ chạm trần)
-  CALIBRATION_SESSIONS: 4,
-  K_NORMAL: 24,
-  K_MT: 60,                 // Grand Slam
-  K_SMALL_CLASS: 18,        // lớp ≤ 8
-  SMALL_CLASS_SIZE: 8,
-  DELTA_CAP: 40,            // giới hạn Δ mỗi event (hạ từ 60)
+  SCALE: 400,           // thang Elo cổ điển
+  K: 30,                // độ nhạy 1 buổi (đã chuẩn hoá /(N−1) → KHÔNG cần K theo sĩ số/calibration)
+  RANK_CAP: 20,         // trần phần HẠNG mỗi buổi thường (trần tổng ≈ +30 = 20 hạng + 10 P)
+  PROGRESS_P: 10,       // điểm tiến-trình cộng cho MỌI HS có mặt → mean lớp dâng ~+P/buổi
+  LAMBDA: 0.05,         // lực kéo về mean lớp: bó khoảng cách top–đáy, cho phép lật kèo
+  MT_WEIGHT: 4,         // MT "grand slam" = ×4 phần HẠNG + trần hạng (P & λ giữ ×1) → trần ≈ +90
 }
 
 export const PROBLEM_SCORE = {

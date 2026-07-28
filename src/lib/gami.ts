@@ -454,11 +454,24 @@ export async function closePhase(buoiId: string, phase: Phase): Promise<{ alread
   // (KHÔNG dùng chung ingame_dong_at nữa — buổi thường có ingame THẬT, dùng chung sẽ đụng độ).
   const dongCol = phase === 'et' ? 'et_dong_at' : phase === 'mt' ? 'mt_dong_at' : 'ingame_dong_at'
   if ((b as any)[dongCol]) return { already: true }
+  // ── KHÓA THỨ TỰ (ET): chỉ đóng ET khi MỌI buổi thường TRƯỚC (cùng lớp) đã đóng ET. ──
+  // Elo mới có λ (kéo về mean) phụ thuộc TRẠNG THÁI → phải áp tuần tự theo ngày, cấm đóng nhảy cóc.
+  if (phase === 'et' && b.loai === 'thuong') {
+    const { data: earlier } = await supabase.from('buoi_hoc')
+      .select('ngay').eq('lop_id', b.lop_id).eq('loai', 'thuong').neq('trang_thai', 'huy')
+      .lt('ngay', b.ngay).is('et_dong_at', null).order('ngay', { ascending: true }).limit(1)
+    if (earlier && earlier.length) throw new Error(`Chưa đóng ET buổi ${(earlier[0] as any).ngay}. Phải đóng ET các buổi theo đúng thứ tự ngày (Elo tính tuần tự).`)
+  }
   // CLAIM cờ đóng NGAY + atomic (chỉ set được khi đang null) → chống đóng 2 lần (double-click/race tính Elo×2).
   const claim = await supabase.from('buoi_hoc').update({ [dongCol]: new Date().toISOString(), updated_at: new Date().toISOString() }).eq('id', buoiId).is(dongCol, null).select('id')
   if (claim.error) throw claim.error
   if (!claim.data || !claim.data.length) return { already: true }
-  const coElo = b.loai === 'thuong' || b.loai === 'mt'
+  const coRank = b.loai === 'thuong' || b.loai === 'mt'   // buổi có xếp hạng (ingame/et/mt) → EXP theo hạng
+  // Elo TẠM chỉ tính ET. Ingame & MT đều CHƯA vào Elo:
+  //  · ingame (chấm lớp): data chưa ổn định.
+  //  · MT: cần ĐIỂM CHI TIẾT thang 10 riêng (chưa có) — điểm thô 0/50/100 theo bài không đủ mịn.
+  //    Engine MT×4 (isMT) giữ nguyên; bật lại `|| phase === 'mt'` + nguồn điểm MT khi có luồng chấm thang 10.
+  const coElo = coRank && phase === 'et'
   // Phase KIA đã đóng chưa? buổi thường = hoàn tất khi ingame + et + (mt NẾU buổi này có gán MT) đều đóng.
   // MT không auto-tồn-tại trên mọi buổi (khác ingame/et luôn có) → phải hỏi thật có gami_session_problems phase='mt' không.
   const hasMT = phase === 'mt' ? true : !!(await supabase.from('gami_session_problems').select('id', { count: 'exact', head: true }).eq('buoi_hoc_id', buoiId).eq('phase', 'mt')).count
@@ -483,34 +496,38 @@ export async function closePhase(buoiId: string, phase: Phase): Promise<{ alread
   for (const g of grades as any[]) if (g.hoc_sinh_id in raw) raw[g.hoc_sinh_id] += Number(g.points)
 
   const reveal: RevealRow[] = []
-  if (coElo) {
-    // đảm bảo có dòng elo (mặc định 1000)
-    const { data: eloRows } = await supabase.from('gami_elo').select('*').eq('mon', mon).in('hoc_sinh_id', hsIds).limit(LIMIT)
-    const eloMap = new Map((eloRows ?? []).map((e: any) => [e.hoc_sinh_id, e]))
-    const missing = hsIds.filter((id) => !eloMap.has(id))
-    if (missing.length) {
-      const { data: created } = await supabase.from('gami_elo').insert(missing.map((id) => ({ hoc_sinh_id: id, mon }))).select()
-      for (const e of (created ?? []) as any[]) eloMap.set(e.hoc_sinh_id, e)
+  if (coRank) {
+    // ── ELO: CHỈ ET + MT (ingame chưa tính — data chấm lớp chưa ổn định). eloOf rỗng khi ingame. ──
+    const eloOf = new Map<string, any>()   // studentId → update (chỉ có khi coElo)
+    let eloMap = new Map<string, any>()
+    if (coElo) {
+      // đảm bảo có dòng elo (mặc định 1000)
+      const { data: eloRows } = await supabase.from('gami_elo').select('*').eq('mon', mon).in('hoc_sinh_id', hsIds).limit(LIMIT)
+      eloMap = new Map((eloRows ?? []).map((e: any) => [e.hoc_sinh_id, e]))
+      const missing = hsIds.filter((id) => !eloMap.has(id))
+      if (missing.length) {
+        const { data: created } = await supabase.from('gami_elo').insert(missing.map((id) => ({ hoc_sinh_id: id, mon }))).select()
+        for (const e of (created ?? []) as any[]) eloMap.set(e.hoc_sinh_id, e)
+      }
+      // pre = elo hiện tại TRỪ delta của CHÍNH buổi này đã áp (phase Elo kia, nếu có). Model cộng-dồn.
+      const { data: priorHist } = await supabase.from('gami_elo_history').select('hoc_sinh_id, delta').eq('buoi_hoc_id', buoiId).limit(LIMIT)
+      const priorDelta = new Map<string, number>()
+      for (const h of (priorHist ?? []) as any[]) priorDelta.set(h.hoc_sinh_id, (priorDelta.get(h.hoc_sinh_id) ?? 0) + h.delta)
+      const students = hsIds.map((id) => ({ studentId: id, elo: eloMap.get(id).elo - (priorDelta.get(id) ?? 0), points: raw[id] }))
+      // isMT=false: hiện chỉ ET vào Elo. Khi bật MT (có điểm thang 10) → truyền isMT=(phase==='mt').
+      const updates = computeEloUpdate(students, { isMT: false, classSize: hsIds.length } as any)
+      for (const u of updates) eloOf.set(u.studentId, u)
     }
-    // 2 Elo (lớp + ET) ĐỘC LẬP, CẢ HAI tính theo trạng thái TRƯỚC BUỔI (không nối tiếp).
-    // pre = elo hiện tại TRỪ các delta của CHÍNH buổi này đã áp (phase kia) · preSessions tương tự.
-    const { data: priorHist } = await supabase.from('gami_elo_history').select('hoc_sinh_id, delta, phase').eq('buoi_hoc_id', buoiId).limit(LIMIT)
-    const priorDelta = new Map<string, number>(); const priorSess = new Map<string, number>()
-    for (const h of (priorHist ?? []) as any[]) { priorDelta.set(h.hoc_sinh_id, (priorDelta.get(h.hoc_sinh_id) ?? 0) + h.delta); if (h.phase !== 'et') priorSess.set(h.hoc_sinh_id, (priorSess.get(h.hoc_sinh_id) ?? 0) + 1) }
-    const students = hsIds.map((id) => ({ studentId: id, elo: eloMap.get(id).elo - (priorDelta.get(id) ?? 0), points: raw[id], sessionsPlayed: eloMap.get(id).sessions_played - (priorSess.get(id) ?? 0) }))
-    const updates = computeEloUpdate(students, { isMT: phase === 'mt', classSize: hsIds.length } as any)
-    const incSession = phase !== 'et' // ingame/mt mới +1 (calibration); ET không tính buổi
-    // Hạng buổi (theo điểm thô) — tính SỚM để LƯU vào history (đếm Top-1 / hạng cao nhất sau).
-    const ranks = rankSession(updates.map((u: any) => ({ studentId: u.studentId, rawPoints: raw[u.studentId], eloDelta: u.delta })))
+    // ── HẠNG buổi (theo điểm thô, eloDelta là tie-break) — cho MỌI phase xếp hạng ──
+    const ranks = rankSession(hsIds.map((id) => ({ studentId: id, rawPoints: raw[id], eloDelta: eloOf.get(id)?.delta ?? 0 })))
     const rankMap = new Map(ranks.map((r) => [r.studentId, r.rank]))
     const rankTotal = hsIds.length
-    for (const u of updates) {
-      // elo_before/after = mốc TRƯỚC BUỔI → +delta (đóng góp riêng của phase). gami_elo CỘNG DỒN delta (độc lập thứ tự đóng).
-      await supabase.from('gami_elo_history').insert({ hoc_sinh_id: u.studentId, buoi_hoc_id: buoiId, phase, mon, elo_before: u.eloBefore, expected: u.expected, actual: u.actual, delta: u.delta, elo_after: u.eloAfter, rank: rankMap.get(u.studentId) ?? null, rank_total: rankTotal })
-      await supabase.from('gami_elo').update({ elo: eloMap.get(u.studentId).elo + u.delta, sessions_played: eloMap.get(u.studentId).sessions_played + (incSession ? 1 : 0), updated_at: new Date().toISOString() }).eq('hoc_sinh_id', u.studentId).eq('mon', mon)
+    // ghi Elo (chỉ ET/MT): elo_before/after = mốc TRƯỚC BUỔI → +delta. gami_elo CỘNG DỒN delta.
+    if (coElo) for (const [id, u] of eloOf) {
+      await supabase.from('gami_elo_history').insert({ hoc_sinh_id: id, buoi_hoc_id: buoiId, phase, mon, elo_before: u.eloBefore, expected: u.expected, actual: u.actual, delta: u.delta, elo_after: u.eloAfter, rank: rankMap.get(id) ?? null, rank_total: rankTotal })
+      await supabase.from('gami_elo').update({ elo: eloMap.get(id).elo + u.delta, updated_at: new Date().toISOString() }).eq('hoc_sinh_id', id).eq('mon', mon)
     }
     // EXP theo hạng. CÔNG BẰNG khi HOÀ: cùng điểm thô = cùng EXP = TRUNG BÌNH bậc EXP các vị trí nhóm chiếm.
-    const deltaMap = new Map(updates.map((u: any) => [u.studentId, u]))
     const grp = new Map<number, number[]>()
     for (const r of ranks) { const p = raw[r.studentId]; (grp.get(p) ?? grp.set(p, []).get(p))!.push(expForRank(r.rank, hsIds.length, (RANK_EXP as Record<string, number[]>)[phase])) }
     const expByPoints = new Map<number, number>()
@@ -518,8 +535,8 @@ export async function closePhase(buoiId: string, phase: Phase): Promise<{ alread
     for (const r of ranks) {
       const exp = expByPoints.get(raw[r.studentId]) ?? 0
       await supabase.from('gami_exp_ledger').insert({ hoc_sinh_id: r.studentId, source: 'rank_' + phase, amount: exp, ref_buoi_hoc_id: buoiId, mon })
-      const u: any = deltaMap.get(r.studentId)
-      reveal.push({ hoc_sinh_id: r.studentId, rawPoints: raw[r.studentId], rank: r.rank, exp, eloBefore: u.eloBefore, eloAfter: u.eloAfter, delta: u.delta })
+      const u: any = eloOf.get(r.studentId)
+      reveal.push({ hoc_sinh_id: r.studentId, rawPoints: raw[r.studentId], rank: r.rank, exp, eloBefore: u?.eloBefore, eloAfter: u?.eloAfter, delta: u?.delta })
     }
   } else {
     // bù/bổ trợ: không Elo, EXP sàn (đi học là có)

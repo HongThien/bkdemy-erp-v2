@@ -363,6 +363,7 @@ function ChamTab({ buoiId, phase, roster, buoi, dangOpts, onChange }: { buoiId: 
     if (!confirm('Xác nhận chấm bài trên lớp? Sẽ tính Elo + EXP. Mở lại được nếu cần sửa.')) return
     setClosing(true)
     try { const res = await closePhase(buoiId, phase); if (res.already) alert('Đã xác nhận rồi.'); else onChange() }
+    catch (e: any) { alert(e?.message ?? String(e)) }
     finally { setClosing(false) }
   }
   async function moLai() { await reopenPhase(buoiId, phase); onChange() } // mở lại để sửa → hoàn Elo/EXP, xác nhận lại sau
@@ -579,6 +580,7 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
     if (!confirm('Xác nhận ET? Sẽ tính Elo + EXP. Mở lại được nếu cần sửa.')) return
     setClosing(true)
     try { const res = await closePhase(buoiId, 'et'); if (res.already) alert('Đã xác nhận rồi.'); else onChange() }
+    catch (e: any) { alert(e?.message ?? String(e)) }
     finally { setClosing(false) }
   }
   async function moLai() { await reopenPhase(buoiId, 'et'); onChange() }
