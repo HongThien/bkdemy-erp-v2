@@ -483,6 +483,31 @@ export type ClassMatrix = {
   cells: Record<string, MatrixCell>                                    // key `${hsId}:${buoiId}`
 }
 const DONG_AT: Record<MatrixPhase, string> = { et: 'et_dong_at', btvn: 'btvn_dong_at', mt: 'mt_dong_at' }
+
+// gami_grades (phase + buổi) → gộp (hs×buổi)={pts,n}. Filter qua embed !inner theo buoi_hoc_id (list buổi
+// NHỎ, tránh IN problem_id dài). ⚠ PHÂN TRANG bắt buộc: PostgREST cap max-rows=1000 → .limit(10000) bị bỏ
+// qua, nếu >1000 grades sẽ RỚT nguyên vài buổi (thứ tự trả về không theo ngày) → ô hiện "·" dù đã chấm.
+async function fetchGradeAgg(phase: MatrixPhase, buoiIds: string[]): Promise<Map<string, { pts: number; n: number }>> {
+  const agg = new Map<string, { pts: number; n: number }>()
+  if (!buoiIds.length) return agg
+  const PAGE = 1000
+  for (let from = 0; from < 200000; from += PAGE) {
+    const { data, error } = await supabase.from('gami_grades')
+      .select('hoc_sinh_id, points, prob:problem_id!inner(buoi_hoc_id, phase)')
+      .eq('prob.phase', phase).in('prob.buoi_hoc_id', buoiIds)
+      .order('problem_id').order('hoc_sinh_id').range(from, from + PAGE - 1)
+    if (error) throw error
+    const rows = (data ?? []) as any[]
+    for (const g of rows) {
+      const bId = g.prob?.buoi_hoc_id; if (!bId) continue
+      const k = g.hoc_sinh_id + ':' + bId
+      const a = agg.get(k) ?? { pts: 0, n: 0 }; a.pts += Number(g.points); a.n += 1; agg.set(k, a)
+    }
+    if (rows.length < PAGE) break
+  }
+  return agg
+}
+
 // ym = 'YYYY-MM' (tùy chọn) → chỉ lấy buổi trong tháng đó (điều hướng next/prev ở UI).
 export async function getClassMatrix(lopId: string, phase: MatrixPhase, ym?: string): Promise<ClassMatrix> {
   // 1) buổi thường của lớp ĐÃ ĐÓNG hoạt động này → cột (lọc tháng nếu có)
@@ -508,20 +533,8 @@ export async function getClassMatrix(lopId: string, phase: MatrixPhase, ym?: str
   const cells: Record<string, MatrixCell> = {}
   if (!buoiIds.length || !students.length) return { buois, students, cells }
 
-  // 3) điểm chấm (gami_grades × session_problems của phase) → gộp (hs×buổi): pts/(n×100)
-  const { data: probs } = await supabase.from('gami_session_problems')
-    .select('id, buoi_hoc_id').eq('phase', phase).in('buoi_hoc_id', buoiIds).limit(LIMIT)
-  const probBuoi = new Map<string, string>((probs ?? []).map((p: any) => [p.id, p.buoi_hoc_id]))
-  const probIds = [...probBuoi.keys()]
-  const agg = new Map<string, { pts: number; n: number }>()
-  if (probIds.length) {
-    const { data: gs } = await supabase.from('gami_grades').select('hoc_sinh_id, problem_id, points').in('problem_id', probIds).limit(LIMIT)
-    for (const g of (gs ?? []) as any[]) {
-      const bId = probBuoi.get(g.problem_id); if (!bId) continue
-      const k = g.hoc_sinh_id + ':' + bId
-      const a = agg.get(k) ?? { pts: 0, n: 0 }; a.pts += Number(g.points); a.n += 1; agg.set(k, a)
-    }
-  }
+  // 3) điểm chấm → gộp (hs×buổi): pts/(n×100). Phân trang (fetchGradeAgg) vì PostgREST cap 1000 dòng.
+  const agg = await fetchGradeAgg(phase, buoiIds)
 
   // 4) BTVN: xin phép / không làm → cảnh báo "không làm"
   const miss = new Set<string>()
@@ -577,12 +590,8 @@ export async function getAllClassesCompletion(mon: string, phase: MatrixPhase, y
       const { data: kq } = await supabase.from('btvn_ket_qua').select('hoc_sinh_id, buoi_hoc_id').in('buoi_hoc_id', buoiIds).limit(LIMIT)
       for (const r of (kq ?? []) as any[]) donePairs.add(r.hoc_sinh_id + ':' + r.buoi_hoc_id)
     } else {
-      const { data: probs } = await supabase.from('gami_session_problems').select('id, buoi_hoc_id').eq('phase', phase).in('buoi_hoc_id', buoiIds).limit(LIMIT)
-      const pb = new Map<string, string>((probs ?? []).map((p: any) => [p.id, p.buoi_hoc_id]))
-      if (pb.size) {
-        const { data: gs } = await supabase.from('gami_grades').select('hoc_sinh_id, problem_id').in('problem_id', [...pb.keys()]).limit(LIMIT)
-        for (const g of (gs ?? []) as any[]) { const b = pb.get(g.problem_id); if (b) donePairs.add(g.hoc_sinh_id + ':' + b) }
-      }
+      const agg = await fetchGradeAgg(phase, buoiIds)   // phân trang + embed (xem fetchGradeAgg)
+      for (const k of agg.keys()) donePairs.add(k)
     }
     for (const k of donePairs) { const bId = k.split(':')[1]; const lop = buoiLop.get(bId); if (lop) per.get(lop)?.done.add(k) }
   }
