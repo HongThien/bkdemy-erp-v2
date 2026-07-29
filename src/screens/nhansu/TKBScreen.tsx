@@ -81,7 +81,7 @@ export default function TKBScreen() {
 
   return (
     <div className="flex h-full flex-col bg-[#fafafb]">
-      <div className="flex items-center gap-3 border-b border-slate-200 bg-white px-6 py-2">
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-2 border-b border-slate-200 bg-white px-6 py-2">
         <span className="text-sm font-semibold text-slate-900">Thời khóa biểu</span>
         <span className="rounded bg-indigo-50 px-2 py-0.5 text-[12px] font-medium text-indigo-600">{view.length} ca{mon !== 'all' ? ` · ${mon}` : ' / tuần'}</span>
         {/* Toggle môn — Tất cả + từng môn có ca */}

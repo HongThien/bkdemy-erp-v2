@@ -118,7 +118,7 @@ export default function OrgChartScreen() {
   return (
     <div className="flex h-full flex-col bg-[#fafafb]">
       <style>{OC_CSS}</style>
-      <div className="flex items-center gap-1 border-b border-slate-200 bg-white px-6 py-2.5">
+      <div className="flex flex-wrap items-center gap-x-1 gap-y-2 border-b border-slate-200 bg-white px-6 py-2.5">
         <span className="mr-3 text-sm font-semibold text-slate-900">Sơ đồ tổ chức</span>
         {teams.map((t) => (
           <button key={t.id} onClick={() => setTeamId(t.id)}
@@ -151,7 +151,9 @@ export default function OrgChartScreen() {
               {isChuyenMon ? <>Môn <b className="text-violet-600">{mon}</b> chưa có vị trí.</> : 'Team chưa có vị trí.'} Bấm <b className="text-slate-600">+ Vị trí gốc</b> để dựng cây (vị trí sinh vị trí), rồi đặt người vào.
             </div>
           ) : (
-            <div className="flex min-w-max justify-center gap-12">
+            // mx-auto + w-max: căn giữa khi cây HẸP hơn khung; khi RỘNG hơn thì margin auto co về 0 nên
+            // cuộn được TỪ TRÁI (justify-center cũ đẩy nhánh trái ra ngoài vùng cuộn → không kéo tới được).
+            <div className="mx-auto flex w-max gap-12">
               {roots.map((g) => <Branch key={g.id} g={g} />)}
             </div>
           )}

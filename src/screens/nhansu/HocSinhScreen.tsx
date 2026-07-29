@@ -79,7 +79,7 @@ export default function HocSinhScreen() {
 
   return (
     <div className="flex h-full flex-col bg-[#fafafb]">
-      <div className="flex items-center gap-4 border-b border-slate-200 bg-white px-6 py-2.5">
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-2 border-b border-slate-200 bg-white px-6 py-2.5">
         <span className="text-sm font-semibold text-slate-900">Học sinh</span>
         <span className="text-[12px] font-semibold text-slate-400">{khoi === ALL ? 'Tổng' : `Khối ${khoi}`}</span>
         {/* Toggle trạng thái — quản lý riêng Đang học / Nghỉ (Bảo lưu hiện khi có) */}
@@ -91,7 +91,7 @@ export default function HocSinhScreen() {
             </button>
           ))}
         </div>
-        <div className="ml-auto flex items-center gap-1">
+        <div className="ml-auto flex flex-wrap items-center justify-end gap-x-1 gap-y-2">
           <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm tên/mã…" className="mr-2 h-7 w-40 rounded-md border border-slate-200 px-2.5 text-[13px] outline-none focus:border-indigo-400" />
           <button onClick={() => setKhoi(ALL)} className={`h-7 rounded-md px-2.5 text-xs font-semibold transition ${khoi === ALL ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`}>Tất cả</button>
           <span className="mx-1 text-[12px] font-semibold uppercase tracking-wider text-slate-600">Khối</span>

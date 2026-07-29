@@ -560,7 +560,11 @@ export default function NhanSuHome({ user }: { user: User }) {
           🔒 Bạn chỉ có quyền XEM ở màn này — thao tác lưu/sửa/xoá sẽ bị chặn.
         </div>
       )}
-      <div className="grid min-h-0 min-w-0 flex-1 grid-rows-[minmax(0,1fr)] overflow-hidden">
+      {/* grid-cols-[minmax(0,1fr)]: track co được (0→1fr) nên screen root — grid item — KHÔNG bị min-width:auto
+          (theo nội dung) ép phình. Thiếu track này thì màn có nội dung rộng (org chart, ma trận phân quyền,
+          bảng học phí…) tự nong ra rồi bị overflow-hidden của shell CẮT CỤT không cuộn tới được. Có track,
+          root co về đúng bề rộng, phần thân overflow-auto tự cuộn ngang. */}
+      <div className="grid min-h-0 min-w-0 flex-1 grid-cols-[minmax(0,1fr)] grid-rows-[minmax(0,1fr)] overflow-hidden">
       {loading ? (
         <section className="p-8 text-sm text-slate-400">Đang tải…</section>
       ) : staffLeaf === 'viec' ? (
