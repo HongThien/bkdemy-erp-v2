@@ -1,6 +1,7 @@
 // REPORT PHỤ HUYNH (tháng) — leaf riêng. Chọn MÔN → LỚP → HS (giống Kết quả học tập) → tháng.
 // Bố cục: DỮ LIỆU bên TRÁI (bảng theo buổi + tổng quan mastery) · NHẬN XÉT bên PHẢI (3 ô + thanh mức kết luận).
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import SearchSelect, { type Opt } from '../../components/SearchSelect'
 import { listLop, listHSCuaLop } from '../../lib/nhansu'
 import { getTongQuanHS, type TongQuanHS } from '../../lib/mastery'
@@ -59,23 +60,30 @@ export default function ReportPHScreen() {
       <div className="min-h-0 flex-1 overflow-auto p-6">
         {!hsId ? (
           <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Chọn lớp rồi chọn học sinh để xem report.</div>
-        ) : <ReportBody key={hsId + mon + ym} hsId={hsId} mon={mon} ym={ym} />}
+        ) : <ReportBody key={hsId + mon + ym} hsId={hsId} mon={mon} ym={ym} hsName={hsOpts.find((o) => o.id === hsId)?.label ?? ''} lopTen={lopOpts.find((o) => o.id === lopId)?.label ?? ''} />}
       </div>
     </div>
   )
 }
 
-function ReportBody({ hsId, mon, ym }: { hsId: string; mon: string; ym: string }) {
+function ReportBody({ hsId, mon, ym, hsName, lopTen }: { hsId: string; mon: string; ym: string; hsName: string; lopTen: string }) {
   const [rows, setRows] = useState<ReportBuoiRow[] | null>(null)
   const [tq, setTq] = useState<TongQuanHS | null>(null)
   const [loading, setLoading] = useState(true)
+  const [anh, setAnh] = useState(false)
   useEffect(() => {
     setLoading(true)
     Promise.all([getReportBuoiHS(hsId, mon, ym), getTongQuanHS(hsId, mon)])
       .then(([r, t]) => { setRows(r); setTq(t) }).catch(() => { setRows([]); setTq(null) }).finally(() => setLoading(false))
   }, [hsId, mon, ym])
   if (loading) return <p className="text-sm text-slate-500">Đang tải…</p>
+  const missCount = (rows ?? []).filter((r) => r.btvnTrangThai === 'khong_lam' || r.btvnTrangThai === 'xin_phep').length
   return (
+    <>
+    <div className="mb-3 flex justify-end">
+      <button onClick={() => setAnh(true)} className="rounded-lg bg-indigo-600 px-3.5 py-1.5 text-[13px] font-semibold text-white shadow-sm hover:bg-indigo-500">📸 Ảnh gửi phụ huynh</button>
+    </div>
+    {anh && tq && <PhAnhModal hsId={hsId} mon={mon} ym={ym} hsName={hsName} lopTen={lopTen} tq={tq} missCount={missCount} onClose={() => setAnh(false)} />}
     <div className="grid gap-5 xl:grid-cols-[1fr_400px]">
       {/* ── TRÁI: SỐ LIỆU ── */}
       <div className="space-y-5">
@@ -102,6 +110,7 @@ function ReportBody({ hsId, mon, ym }: { hsId: string; mon: string; ym: string }
       {/* ── PHẢI: NHẬN XÉT ── */}
       <div className="xl:sticky xl:top-0 xl:self-start"><NhanXet hsId={hsId} mon={mon} ym={ym} /></div>
     </div>
+    </>
   )
 }
 
@@ -206,5 +215,100 @@ function NhanXet({ hsId, mon, ym }: { hsId: string; mon: string; ym: string }) {
       </div>
       <p className="mt-2 text-[11px] text-slate-400">Tự lưu khi rời ô / chọn mức. {mon} · tháng {Number(ym.split('-')[1])}/{ym.split('-')[0]}.</p>
     </div>
+  )
+}
+
+// ── ẢNH GỬI PHỤ HUYNH — thẻ inline-hex (né oklch Tailwind v4), layout kiểu tab Kết quả app PH ──
+const MUC_HEX: Record<string, { bg: string; fg: string; emoji: string; label: string }> = {
+  vuot_bac: { bg: '#ecfdf5', fg: '#047857', emoji: '🚀', label: 'Tiến bộ vượt bậc' },
+  tien_bo: { bg: '#f0fdf4', fg: '#15803d', emoji: '📈', label: 'Con đang tiến bộ' },
+  on_dinh: { bg: '#f0f9ff', fg: '#0369a1', emoji: '⚖️', label: 'Con đang ổn định' },
+  di_xuong: { bg: '#fffbeb', fg: '#b45309', emoji: '📉', label: 'Con đang đi xuống' },
+  can_ho_tro: { bg: '#fff1f2', fg: '#be123c', emoji: '🆘', label: 'Con đang cần hỗ trợ' },
+}
+const s10 = (pct: number | null) => pct == null ? '—' : (pct / 10).toFixed(1)
+const hexPct = (pct: number | null) => pct == null ? '#cbd5e1' : pct >= 80 ? '#059669' : pct >= 50 ? '#d97706' : '#e11d48'
+
+function NxBlock({ ten, noi }: { ten: string; noi: string }) {
+  return (
+    <div style={{ background: '#fff', border: '1px solid #eef2f7', borderRadius: 14, padding: '10px 14px', marginBottom: 10 }}>
+      <div style={{ fontSize: 11, fontWeight: 700, color: '#6366f1', marginBottom: 3 }}>{ten}</div>
+      <div style={{ fontSize: 13, color: '#334155', lineHeight: 1.5, whiteSpace: 'pre-wrap' }}>{noi}</div>
+    </div>
+  )
+}
+
+function PhAnhModal({ hsId, mon, ym, hsName, lopTen, tq, missCount, onClose }: { hsId: string; mon: string; ym: string; hsName: string; lopTen: string; tq: TongQuanHS; missCount: number; onClose: () => void }) {
+  const [bc, setBc] = useState<BaoCaoPH>({ thai_do: null, kien_thuc_ky_nang: null, ket_luan: null, ket_luan_muc: null })
+  const cardRef = useRef<HTMLDivElement>(null)
+  useEffect(() => { getBaoCaoPH(hsId, mon, ym).then(setBc).catch(() => {}) }, [hsId, mon, ym])
+
+  function handleCopy() {
+    const el = cardRef.current; if (!el) return
+    const cardHTML = el.outerHTML
+    const fname = `Report_${hsName.replace(/\s+/g, '')}_${ym}.png`
+    const html = '<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">'
+      + '<title>Report ' + hsName + '</title><scr' + 'ipt src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></scr' + 'ipt>'
+      + '<style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif;background:#f1f5f9;padding:12px;display:flex;flex-direction:column;align-items:center}'
+      + '.btn{width:100%;max-width:400px;padding:11px;border:none;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;background:#16a34a;color:#fff;margin-bottom:10px}.btn:hover{opacity:.9}'
+      + '#msg{font-size:12px;color:#16a34a;margin-top:6px;min-height:18px}#c{background:#fff;border-radius:18px;overflow:hidden}</style></head><body>'
+      + '<button class="btn" onclick="cp()">📋 Copy ảnh (paste vào Zalo)</button><div id="c">' + cardHTML + '</div><p id="msg"></p>'
+      + '<scr' + 'ipt>async function cp(){var m=document.getElementById("msg");m.textContent="⏳ Đang xử lý...";try{var n=document.getElementById("c");var cv=await html2canvas(n,{scale:2,backgroundColor:"#ffffff",useCORS:true,logging:false,width:n.scrollWidth,height:n.scrollHeight});cv.toBlob(async function(b){try{await navigator.clipboard.write([new ClipboardItem({"image/png":b})]);m.textContent="✅ Đã copy! Ctrl+V vào Zalo.";}catch(e){var u=URL.createObjectURL(b);var a=document.createElement("a");a.href=u;a.download=' + JSON.stringify(fname) + ';a.click();URL.revokeObjectURL(u);m.textContent="✅ Đã tải ảnh!";}},"image/png");}catch(e){m.textContent="Lỗi: "+e.message;}}</scr' + 'ipt></body></html>'
+    const p = window.open('', '_blank', 'width=460,height=900,scrollbars=yes')
+    if (!p) { alert('Trình duyệt chặn popup. Bật "Allow pop-ups" cho site này.'); return }
+    p.document.write(html); p.document.close()
+  }
+
+  const muc = bc.ket_luan_muc ? MUC_HEX[bc.ket_luan_muc] : null
+  const h = tq.hoanThanh.toanBo.etMt, a = tq.hoatDong
+  const act = (ten: string, emoji: string, cb: number | null, nc: number | null, warn?: string) => (
+    <div style={{ background: '#fff', border: '1px solid #eef2f7', borderRadius: 14, padding: '12px 14px', marginTop: 10 }}>
+      <div style={{ fontSize: 13, fontWeight: 700, color: '#334155', marginBottom: 8 }}>{emoji} {ten}</div>
+      <div style={{ display: 'flex', gap: 22 }}>
+        <div><div style={{ fontSize: 10, color: '#94a3b8', fontWeight: 600 }}>Cơ bản</div><div style={{ fontSize: 22, fontWeight: 800, color: hexPct(cb) }}>{s10(cb)}</div></div>
+        <div><div style={{ fontSize: 10, color: '#94a3b8', fontWeight: 600 }}>Nâng cao</div><div style={{ fontSize: 22, fontWeight: 800, color: hexPct(nc) }}>{s10(nc)}</div></div>
+      </div>
+      {warn ? <div style={{ fontSize: 11, color: '#b45309', marginTop: 6 }}>⚠ {warn}</div> : null}
+    </div>
+  )
+  return createPortal(
+    <div className="fixed inset-0 z-[90] flex flex-col bg-slate-900/70" onClick={onClose}>
+      <div className="flex items-center gap-3 border-b border-slate-700 bg-slate-800 px-4 py-2.5 text-white" onClick={(e) => e.stopPropagation()}>
+        <span className="text-sm font-semibold">Ảnh report gửi phụ huynh — {hsName}</span>
+        <button onClick={handleCopy} className="ml-auto rounded-md bg-indigo-600 px-3 py-1 text-sm font-medium hover:bg-indigo-500">📋 Copy ảnh</button>
+        <button onClick={onClose} className="rounded-md border border-slate-500 px-3 py-1 text-sm hover:bg-slate-700">Đóng</button>
+      </div>
+      <div className="min-h-0 flex-1 overflow-auto p-4" onClick={(e) => e.stopPropagation()}>
+        <div ref={cardRef} style={{ width: 380, margin: '0 auto', background: '#fff', borderRadius: 18, overflow: 'hidden', fontFamily: "-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif" }}>
+          <div style={{ background: 'linear-gradient(135deg,#4f46e5,#6366f1)', color: '#fff', padding: '16px 18px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+              <div style={{ width: 44, height: 44, borderRadius: 22, background: 'rgba(255,255,255,.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, fontWeight: 800 }}>{hsName.trim().slice(-1) || '?'}</div>
+              <div><div style={{ fontSize: 17, fontWeight: 800 }}>{hsName}</div><div style={{ fontSize: 12, opacity: .9 }}>{lopTen} · {mon} · Tháng {Number(ym.split('-')[1])}/{ym.split('-')[0]}</div></div>
+            </div>
+          </div>
+          <div style={{ padding: 16, background: '#f8fafc' }}>
+            {muc ? <div style={{ background: muc.bg, borderRadius: 14, padding: '12px 14px', marginBottom: 12, textAlign: 'center' }}>
+              <div style={{ fontSize: 30 }}>{muc.emoji}</div>
+              <div style={{ fontSize: 16, fontWeight: 800, color: muc.fg }}>{muc.label}</div>
+            </div> : null}
+            {bc.ket_luan ? <NxBlock ten="Kết luận" noi={bc.ket_luan} /> : null}
+            {bc.thai_do ? <NxBlock ten="Thái độ học tập" noi={bc.thai_do} /> : null}
+            {bc.kien_thuc_ky_nang ? <NxBlock ten="Kiến thức & Kĩ năng" noi={bc.kien_thuc_ky_nang} /> : null}
+            <div style={{ background: '#fff', border: '1px solid #eef2f7', borderRadius: 14, padding: '12px 14px', marginTop: 12 }}>
+              <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 4 }}>
+                <span style={{ background: '#ecfdf5', color: '#047857', borderRadius: 8, padding: '3px 9px', fontSize: 12, fontWeight: 700 }}>{h.dat} dạng đạt</span>
+                <span style={{ background: '#fffbeb', color: '#b45309', borderRadius: 8, padding: '3px 9px', fontSize: 12, fontWeight: 700 }}>{h.can_luyen} cần luyện</span>
+                <span style={{ background: '#fff1f2', color: '#be123c', borderRadius: 8, padding: '3px 9px', fontSize: 12, fontWeight: 700 }}>{h.yeu} yếu</span>
+              </div>
+              <div style={{ fontSize: 11, color: '#94a3b8' }}>Đã tính cả bài tập về nhà và bổ trợ</div>
+            </div>
+            {act('Test cuối giờ', '📝', a.etCoBan.pct, a.etNangCao.pct)}
+            {act('Bài tập về nhà', '🏠', a.btvnCoBan.pct, a.btvnNangCao.pct, missCount > 0 ? `Chưa hoàn thành BTVN ${missCount} lần trong tháng này` : undefined)}
+            {act('Test tháng', '📅', a.mtCoBan.pct, a.mtNangCao.pct)}
+          </div>
+        </div>
+      </div>
+    </div>,
+    document.body,
   )
 }
