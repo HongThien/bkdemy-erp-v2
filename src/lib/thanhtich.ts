@@ -21,6 +21,11 @@ export function tinhDiemMT(coBan: number | null | undefined, nangCao: number | n
   const tong = (coBan ?? 0) + (nangCao ?? 0)
   return tong >= 10 ? 9.75 : Math.round(tong * 100) / 100
 }
+// Verdict TỰ SUY từ điểm (màn MT bỏ chọn verdict tay — cột `verdict` NOT NULL nên vẫn lưu ngầm để Level dùng).
+// Ngưỡng thang-10: đạt ≥8 · gần đạt 6.5–<8 · <6.5 không đạt.
+export function verdictTuDiem(diem: number): Verdict {
+  return diem >= 8 ? 'dat' : diem >= 6.5 ? 'gan_dat' : 'khong_dat'
+}
 export type ThanhTichLoai = { key: string; ten: string; icon: string | null; nhom: string | null; kieu: string | null; per_mon: boolean; thu_tu: number }
 export type LuongBac = { min_exp: number; xu: number }
 

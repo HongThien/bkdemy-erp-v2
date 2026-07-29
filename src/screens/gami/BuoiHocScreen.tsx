@@ -13,7 +13,7 @@ import {
 } from '../../lib/gami'
 import { getLiveSnapshot, type BaiTest, type BaiTestCau, type BaiLam, type LiveAnswer } from '../../lib/testonline'
 import type { MTPhanCaus } from '../../lib/mt'
-import { getOrCreateKyThiMTChoBuoi, listDiemThiByKyThi, upsertDiemThi, tinhDiemMT, currentMua, type KyThi, type DiemThi, type Verdict } from '../../lib/thanhtich'
+import { getOrCreateKyThiMTChoBuoi, listDiemThiByKyThi, upsertDiemThi, tinhDiemMT, verdictTuDiem, currentMua, type KyThi, type DiemThi } from '../../lib/thanhtich'
 import { listNhanSu, type NhanSu } from '../../lib/nhansu'
 import { listDaiDang, type CauHoi } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
@@ -1348,9 +1348,10 @@ function DiemMTPanel({ buoiId, buoi, coMat, tenHT }: { buoiId: string; buoi: Buo
   }, [buoiId]) // eslint-disable-line
 
   const diemOf = (hsId: string) => diems.find((d) => d.hoc_sinh_id === hsId) ?? null
-  async function save(hsId: string, verdict: Verdict, p: { coBan: number | null; nangCao: number | null; full: boolean }) {
+  async function save(hsId: string, p: { coBan: number | null; nangCao: number | null; full: boolean }) {
     if (!ky) return
     const diem = tinhDiemMT(p.coBan, p.nangCao, p.full)
+    const verdict = verdictTuDiem(diem)   // tự suy từ điểm (màn MT bỏ chọn verdict tay)
     await upsertDiemThi({ kyThiId: ky.id, hocSinhId: hsId, diem, bandLucThi: null, verdict, vuotBand: false, coBan: p.coBan, nangCao: p.nangCao, full: p.full })
     setDiems((prev) => [...prev.filter((d) => d.hoc_sinh_id !== hsId), { ky_thi_id: ky.id, hoc_sinh_id: hsId, diem, band_luc_thi: null, verdict, vuot_band: false, diem_co_ban: p.coBan, diem_nang_cao: p.nangCao, full_diem: p.full }])
   }
@@ -1359,15 +1360,15 @@ function DiemMTPanel({ buoiId, buoi, coMat, tenHT }: { buoiId: string; buoi: Buo
     <div className="mb-3 rounded-xl border border-violet-200 bg-violet-50/40 p-3">
       <div className="mb-2 flex items-center gap-2">
         <span className="text-[13px] font-semibold text-violet-800">Điểm MT</span>
-        <span className="text-[11px] text-slate-500">Cơ bản + Nâng cao → tự tính (≥10 ⇒ 9.75 · tick <b>Full</b> ⇒ 10). Đếm câu thuộc mastery, không nhập ở đây.</span>
+        <span className="text-[11px] text-slate-500">Cơ bản + Nâng cao → tự tính, <b>tự lưu ngay</b> (≥10 ⇒ 9.75 · tick <b>Full</b> ⇒ 10). Đếm câu thuộc mastery, không nhập ở đây.</span>
       </div>
       {loading || !ky ? <p className="text-[12px] text-slate-400">Đang tải…</p> : (
-        <table className="w-full max-w-2xl text-[13px]">
+        <table className="w-full max-w-lg text-[13px]">
           <thead><tr className="text-left text-[11px] uppercase tracking-wide text-slate-400">
-            <th className="py-1">Học sinh</th><th className="w-20">Cơ bản</th><th className="w-20">Nâng cao</th><th className="w-14">Full</th><th className="w-16">Điểm</th><th className="w-52">Verdict</th>
+            <th className="py-1">Học sinh</th><th className="w-20">Cơ bản</th><th className="w-20">Nâng cao</th><th className="w-14">Full</th><th className="w-16">Điểm</th>
           </tr></thead>
           <tbody>
-            {coMat.map((r, i) => <DiemMTRow key={r.hoc_sinh_id} ten={tenHT[i]} init={diemOf(r.hoc_sinh_id)} onSave={(v, p) => save(r.hoc_sinh_id, v, p)} />)}
+            {coMat.map((r, i) => <DiemMTRow key={r.hoc_sinh_id} ten={tenHT[i]} init={diemOf(r.hoc_sinh_id)} onSave={(p) => save(r.hoc_sinh_id, p)} />)}
           </tbody>
         </table>
       )}
@@ -1375,17 +1376,14 @@ function DiemMTPanel({ buoiId, buoi, coMat, tenHT }: { buoiId: string; buoi: Buo
   )
 }
 
-const V_LABEL_MT: Record<Verdict, string> = { dat: 'Đạt', gan_dat: 'Gần', khong_dat: 'Không' }
-const V_CLS_MT: Record<Verdict, string> = { dat: 'bg-emerald-500 text-white', gan_dat: 'bg-amber-500 text-white', khong_dat: 'bg-rose-500 text-white' }
-function DiemMTRow({ ten, init, onSave }: { ten: string; init: DiemThi | null; onSave: (v: Verdict, p: { coBan: number | null; nangCao: number | null; full: boolean }) => void }) {
+function DiemMTRow({ ten, init, onSave }: { ten: string; init: DiemThi | null; onSave: (p: { coBan: number | null; nangCao: number | null; full: boolean }) => void }) {
   const [coBan, setCoBan] = useState(init?.diem_co_ban != null ? String(init.diem_co_ban) : '')
   const [nangCao, setNangCao] = useState(init?.diem_nang_cao != null ? String(init.diem_nang_cao) : '')
   const [full, setFull] = useState(!!init?.full_diem)
-  const [verdict, setVerdict] = useState<Verdict | null>(init?.verdict ?? null)
   const num = (s: string) => (s.trim() === '' ? null : Number(s))
-  const commit = (v: Verdict | null = verdict, f = full) => { if (v) onSave(v, { coBan: num(coBan), nangCao: num(nangCao), full: f }) }
-  const pick = (v: Verdict) => { setVerdict(v); commit(v) }
-  const chuaNhap = coBan.trim() === '' && nangCao.trim() === '' && !full
+  const trong = (f = full) => coBan.trim() === '' && nangCao.trim() === '' && !f
+  // Tự LƯU NGAY khi rời ô / tick Full (không cần verdict — verdict tự suy ở tầng service). Bỏ qua khi trống.
+  const commit = (f = full) => { if (!trong(f)) onSave({ coBan: num(coBan), nangCao: num(nangCao), full: f }) }
   const diem = tinhDiemMT(num(coBan), num(nangCao), full)
   const inp = 'h-7 w-16 rounded border border-slate-300 px-2 text-[13px]'
   return (
@@ -1393,15 +1391,8 @@ function DiemMTRow({ ten, init, onSave }: { ten: string; init: DiemThi | null; o
       <td className="py-1 font-medium text-slate-700">{ten}</td>
       <td><input value={coBan} onChange={(e) => setCoBan(e.target.value)} onBlur={() => commit()} inputMode="decimal" className={inp} /></td>
       <td><input value={nangCao} onChange={(e) => setNangCao(e.target.value)} onBlur={() => commit()} inputMode="decimal" className={inp} /></td>
-      <td><input type="checkbox" checked={full} onChange={(e) => { setFull(e.target.checked); commit(verdict, e.target.checked) }} className="h-4 w-4 accent-violet-600" title="Làm trọn vẹn không sai gì = 10đ" /></td>
-      <td className={`font-semibold tabular-nums ${chuaNhap ? 'text-slate-300' : diem >= 9.75 ? 'text-emerald-700' : 'text-violet-800'}`}>{chuaNhap ? '—' : diem}</td>
-      <td>
-        <div className="flex gap-1">
-          {(['dat', 'gan_dat', 'khong_dat'] as Verdict[]).map((v) => (
-            <button key={v} onClick={() => pick(v)} className={`h-7 rounded px-2 text-[12px] font-medium ${verdict === v ? V_CLS_MT[v] : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}>{V_LABEL_MT[v]}</button>
-          ))}
-        </div>
-      </td>
+      <td><input type="checkbox" checked={full} onChange={(e) => { setFull(e.target.checked); commit(e.target.checked) }} className="h-4 w-4 accent-violet-600" title="Làm trọn vẹn không sai gì = 10đ" /></td>
+      <td className={`font-semibold tabular-nums ${trong() ? 'text-slate-300' : diem >= 9.75 ? 'text-emerald-700' : 'text-violet-800'}`}>{trong() ? '—' : diem}</td>
     </tr>
   )
 }
