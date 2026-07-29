@@ -726,9 +726,34 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
     finally { setClosing(false) }
   }
   async function moLai() { await reopenPhase(buoiId, 'et'); onChange() }
+  // Buổi KHÔNG có đề ET (etMissing) vẫn phải đóng được — nếu không, task R-ET ("chấm ET") treo VĨNH VIỄN
+  // ở "Việc của tôi" vì chỉ et_dong_at mới clear nó, mà UI cũ không cho đóng khi thiếu đề. closePhase khớp
+  // đúng: không có dòng chấm → khongCoDuLieu (đóng phase, KHÔNG tính Elo/EXP). §1.5 "thiếu data = ít dòng".
+  async function dongKhongET() {
+    if (closing) return
+    if (!confirm('Buổi này KHÔNG có đề ET. Xác nhận đóng ET (không tính Elo/EXP) để hết treo ở "Việc của tôi"? Mở lại được nếu sau này có ET.')) return
+    setClosing(true)
+    try { const res = await closePhase(buoiId, 'et'); if (res.already) alert('Đã đóng rồi.'); else onChange() }
+    catch (e: any) { alert(e?.message ?? String(e)) }
+    finally { setClosing(false) }
+  }
 
   if (loading) return <p className="text-[12px] text-slate-400">Đang tải ET…</p>
-  if (etMissing) return <p className="text-[13px] text-slate-400">Chưa có ET cho buổi này (khớp <b className="text-slate-600">lớp + ngày</b>). Vào <b className="text-slate-600">Làm tài liệu → ET</b> tạo ET đúng lớp + ngày của buổi rồi quay lại.</p>
+  if (etMissing) return (
+    <div className="flex flex-col gap-3">
+      <p className="text-[13px] text-slate-400">Chưa có ET cho buổi này (khớp <b className="text-slate-600">lớp + ngày</b>). Nếu buổi CÓ ET: vào <b className="text-slate-600">Làm tài liệu → ET</b> tạo đúng lớp + ngày rồi quay lại. Nếu buổi <b className="text-slate-600">KHÔNG có ET</b>: xác nhận đóng để hết treo ở “Việc của tôi”.</p>
+      <div className="flex items-center gap-2">
+        {dongCol ? (
+          <>
+            <span className="rounded-md bg-emerald-50 px-2.5 py-1 text-[13px] font-medium text-emerald-700">✓ Đã đóng ET (không có đề)</span>
+            <button onClick={moLai} className="rounded-md border border-amber-300 px-2.5 py-1 text-[12px] font-medium text-amber-700 hover:bg-amber-50">↩ Mở lại</button>
+          </>
+        ) : (
+          <button onClick={dongKhongET} disabled={closing} className="rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-indigo-500 disabled:opacity-40">{closing ? 'Đang lưu…' : '✓ Không có ET — đóng'}</button>
+        )}
+      </div>
+    </div>
+  )
   if (coMat.length === 0) return <p className="text-[12px] text-slate-400">Chưa có HS nào điểm danh “có mặt” — điểm danh trước khi chấm.</p>
 
   const tenDang = (md: string | null) => (md ? dangOpts.find((d) => d.ma_dang === md)?.ten ?? md : '—')
