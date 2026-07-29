@@ -9,7 +9,7 @@ import type { CauHoi } from './kho/api'
 import { computeEloUpdate } from '../gami/elo.js'
 import { problemPoints, rankSession, etRankExp, monthlyBtvnExp } from '../gami/exp.js'
 import { ATTEND_FLOOR_EXP } from '../gami/config.js'
-import { seasonOf, seasonLabel } from '../gami/season.js'
+import { seasonOf, seasonLabel, seasonStartUtc } from '../gami/season.js'
 import { vnInstant, congNgay } from './tuan'
 
 const LIMIT = 10000
@@ -1124,7 +1124,12 @@ export async function listGamiBangTong(mon?: string): Promise<DiemRow[]> {
   if (mon) q = q.eq('mon', mon)
   const { data: elo, error } = await q
   if (error) throw error
-  const { data: exp } = await supabase.from('gami_exp_ledger').select('hoc_sinh_id, mon, amount').limit(LIMIT * 5)
+  // EXP = MÙA HIỆN TẠI (reset mỗi mùa) — window created_at ≥ đầu mùa (cũng đưa số dòng <1000, tránh cap
+  // PostgREST vốn âm thầm cắt EXP all-time). LOẠI nguồn legacy `rank_*`/`btvn` (mô hình cũ đang bị thay bằng
+  // `exp_thang`; buổi mùa-nay đã sạch legacy — chỉ còn legacy mùa CŨ đóng-muộn lọt window created_at).
+  const muaStart = seasonStartUtc(seasonOf(new Date(Date.now() + 7 * 3600 * 1000).toISOString().slice(0, 10)))
+  const { data: exp } = await supabase.from('gami_exp_ledger').select('hoc_sinh_id, mon, amount')
+    .gte('created_at', muaStart).not('source', 'in', '(rank_et,rank_ingame,rank_mt,btvn)').limit(LIMIT)
   const expMap = new Map<string, number>()
   for (const r of (exp ?? []) as any[]) { const k = r.hoc_sinh_id + '|' + (r.mon ?? ''); expMap.set(k, (expMap.get(k) ?? 0) + Number(r.amount)) }
   // Ghi danh ĐANG HỌC → (HS × môn) ⇒ hệ + tên lớp. Lấy TOÀN BỘ rồi lọc ở client, KHÔNG `.in(hsIds)`:

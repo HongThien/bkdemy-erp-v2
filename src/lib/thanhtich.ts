@@ -27,7 +27,8 @@ export async function getLevelXu(hocSinhId: string, mon: string): Promise<LevelX
   const mua = seasonOf(vnTodayStr())
   const [dt, exp, bac] = await Promise.all([
     supabase.from('diem_thi').select('verdict, ky_thi:ky_thi_id(he_so, mon, mua)').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
-    supabase.from('gami_exp_ledger').select('amount').eq('hoc_sinh_id', hocSinhId).eq('mon', mon).gte('created_at', monthStartUtcISO()).limit(LIMIT),
+    // LOẠI legacy rank_*/btvn (mô hình cũ thay bằng exp_thang; legacy mùa cũ đóng-muộn có thể lọt window created_at).
+    supabase.from('gami_exp_ledger').select('amount').eq('hoc_sinh_id', hocSinhId).eq('mon', mon).gte('created_at', monthStartUtcISO()).not('source', 'in', '(rank_et,rank_ingame,rank_mt,btvn)').limit(LIMIT),
     supabase.from('luong_bac').select('min_exp, xu').order('min_exp', { ascending: true }).limit(LIMIT),
   ])
   let level = 0
