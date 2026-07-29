@@ -87,7 +87,7 @@ function ReportBody({ hsId, mon, ym, hsName, lopTen }: { hsId: string; mon: stri
     <div className="grid gap-5 xl:grid-cols-[1fr_400px]">
       {/* ── TRÁI: SỐ LIỆU ── */}
       <div className="space-y-5">
-        {tq && <TongQuanCards tq={tq} />}
+        {tq && <TongQuanCards tq={tq} missCount={missCount} />}
         <div>
           <h3 className="mb-2 text-[13px] font-semibold uppercase tracking-wider text-slate-500">Chi tiết theo buổi · tháng {Number(ym.split('-')[1])}</h3>
           {!rows || rows.length === 0 ? (
@@ -130,42 +130,50 @@ function BuoiRow({ r }: { r: ReportBuoiRow }) {
   )
 }
 
-function Tile({ label, pct, sub }: { label: string; pct: number | null; sub?: string }) {
+type Bucket = { pct: number | null; n: number }
+function tongPct(a: Bucket, b: Bucket): number | null {
+  const parts = [a, b].filter((x) => x.pct != null && x.n > 0)
+  if (!parts.length) return null
+  const N = parts.reduce((s, x) => s + x.n, 0)
+  return Math.round(parts.reduce((s, x) => s + (x.pct as number) * x.n, 0) / N)
+}
+function NumCol({ label, pct, big }: { label: string; pct: number | null; big?: boolean }) {
   return (
-    <div className="rounded-xl border border-slate-200 bg-white px-3 py-2.5 shadow-sm">
-      <div className="text-[11px] font-medium text-slate-500">{label}</div>
-      <div className={`text-[20px] font-bold tabular-nums ${pctCls(pct)}`}>{pct == null ? '—' : pct + '%'}</div>
-      {sub && <div className="text-[10px] text-slate-400">{sub}</div>}
+    <div className="flex-1 px-3 text-center first:pl-0">
+      <div className="text-[10px] font-semibold uppercase tracking-wide text-slate-400">{label}</div>
+      <div className={`font-extrabold tabular-nums ${big ? 'text-[26px]' : 'text-[20px]'} ${pctCls(pct)}`}>{pct == null ? '—' : pct + '%'}</div>
     </div>
   )
 }
-function TongQuanCards({ tq }: { tq: TongQuanHS }) {
-  const h = tq.hoanThanh, a = tq.hoatDong
+function ActCard({ icon, ten, cb, nc, warn }: { icon: string; ten: string; cb: Bucket; nc: Bucket; warn?: string }) {
+  return (
+    <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+      <div className="mb-3 text-[14px] font-bold text-slate-700">{icon} {ten}</div>
+      <div className="flex divide-x divide-slate-100">
+        <NumCol label="Tổng" pct={tongPct(cb, nc)} big />
+        <NumCol label="Cơ bản" pct={cb.pct} />
+        <NumCol label="Nâng cao" pct={nc.pct} />
+      </div>
+      {warn && <div className="mt-2.5 rounded-lg bg-amber-50 px-2.5 py-1.5 text-[11px] font-medium text-amber-700">⚠ {warn}</div>}
+    </div>
+  )
+}
+function TongQuanCards({ tq, missCount }: { tq: TongQuanHS; missCount: number }) {
+  const h = tq.hoanThanh.toanBo.etMt, a = tq.hoatDong
   return (
     <div className="space-y-3">
-      <div>
-        <h3 className="mb-2 text-[13px] font-semibold uppercase tracking-wider text-slate-500">Hoàn thành kiến thức (cả quá trình)</h3>
-        <div className="grid grid-cols-3 gap-2.5">
-          <Tile label="Toàn bộ" pct={h.toanBo.etMt.pct} sub={`${h.toanBo.etMt.dat}/${h.toanBo.etMt.total} dạng đạt`} />
-          <Tile label="Cơ bản" pct={h.daiCoBan.etMt.pct} sub={`${h.daiCoBan.etMt.dat}/${h.daiCoBan.etMt.total} dạng`} />
-          <Tile label="Nâng cao" pct={h.daiNangCao.etMt.pct} sub={`${h.daiNangCao.etMt.dat}/${h.daiNangCao.etMt.total} dạng`} />
+      <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+        <div className="mb-2.5 text-[14px] font-bold text-slate-700">🗺️ Bản đồ kiến thức</div>
+        <div className="flex flex-wrap gap-2">
+          <span className="rounded-lg bg-emerald-50 px-3 py-1 text-[13px] font-bold text-emerald-700">{h.dat} dạng đạt</span>
+          <span className="rounded-lg bg-amber-50 px-3 py-1 text-[13px] font-bold text-amber-700">{h.can_luyen} cần luyện</span>
+          <span className="rounded-lg bg-rose-50 px-3 py-1 text-[13px] font-bold text-rose-700">{h.yeu} yếu</span>
         </div>
+        <div className="mt-1.5 text-[11px] text-slate-400">Đã tính cả bài tập về nhà và bổ trợ</div>
       </div>
-      <div>
-        <h3 className="mb-2 text-[13px] font-semibold uppercase tracking-wider text-slate-500">Hoạt động (độ đúng)</h3>
-        <div className="grid grid-cols-3 gap-2.5">
-          <Tile label="ET cơ bản" pct={a.etCoBan.pct} />
-          <Tile label="ET nâng cao" pct={a.etNangCao.pct} />
-          <Tile label="BTVN cơ bản" pct={a.btvnCoBan.pct} />
-          <Tile label="BTVN nâng cao" pct={a.btvnNangCao.pct} />
-          <Tile label="MT cơ bản" pct={a.mtCoBan.pct} />
-          <Tile label="MT nâng cao" pct={a.mtNangCao.pct} />
-        </div>
-      </div>
-      <div className="flex gap-3 text-[13px]">
-        <span className="rounded-lg bg-white px-3 py-1.5 shadow-sm ring-1 ring-slate-200">Điểm MT TB: <b className="tabular-nums">{tq.diem.mt.tb ?? '—'}</b> <span className="text-slate-400">({tq.diem.mt.n})</span></span>
-        <span className="rounded-lg bg-white px-3 py-1.5 shadow-sm ring-1 ring-slate-200">Điểm trường TB: <b className="tabular-nums">{tq.diem.truong.tb ?? '—'}</b> <span className="text-slate-400">({tq.diem.truong.n})</span></span>
-      </div>
+      <ActCard icon="📝" ten="Test cuối giờ (ET)" cb={a.etCoBan} nc={a.etNangCao} />
+      <ActCard icon="🏠" ten="Bài tập về nhà" cb={a.btvnCoBan} nc={a.btvnNangCao} warn={missCount > 0 ? `Chưa hoàn thành BTVN ${missCount} lần trong tháng này` : undefined} />
+      <ActCard icon="📅" ten="Test tháng (MT)" cb={a.mtCoBan} nc={a.mtNangCao} warn={tq.diem.mt.tb != null ? `Điểm MT trung bình: ${tq.diem.mt.tb} · Điểm trường: ${tq.diem.truong.tb ?? '—'}` : undefined} />
     </div>
   )
 }
@@ -261,14 +269,17 @@ function PhAnhModal({ hsId, mon, ym, hsName, lopTen, tq, missCount, onClose }: {
 
   const muc = bc.ket_luan_muc ? MUC_HEX[bc.ket_luan_muc] : null
   const h = tq.hoanThanh.toanBo.etMt, a = tq.hoatDong
-  const act = (ten: string, emoji: string, cb: number | null, nc: number | null, warn?: string) => (
-    <div style={{ background: '#fff', border: '1px solid #eef2f7', borderRadius: 14, padding: '12px 14px', marginTop: 10 }}>
-      <div style={{ fontSize: 13, fontWeight: 700, color: '#334155', marginBottom: 8 }}>{emoji} {ten}</div>
-      <div style={{ display: 'flex', gap: 22 }}>
-        <div><div style={{ fontSize: 10, color: '#94a3b8', fontWeight: 600 }}>Cơ bản</div><div style={{ fontSize: 22, fontWeight: 800, color: hexPct(cb) }}>{s10(cb)}</div></div>
-        <div><div style={{ fontSize: 10, color: '#94a3b8', fontWeight: 600 }}>Nâng cao</div><div style={{ fontSize: 22, fontWeight: 800, color: hexPct(nc) }}>{s10(nc)}</div></div>
-      </div>
-      {warn ? <div style={{ fontSize: 11, color: '#b45309', marginTop: 6 }}>⚠ {warn}</div> : null}
+  const col = (label: string, pct: number | null, big?: boolean) => (
+    <div style={{ flex: 1, textAlign: 'center', borderLeft: big ? 'none' : '1px solid #f1f5f9' }}>
+      <div style={{ fontSize: 9, color: '#94a3b8', fontWeight: 700, textTransform: 'uppercase', letterSpacing: .4 }}>{label}</div>
+      <div style={{ fontSize: big ? 27 : 20, fontWeight: 800, color: hexPct(pct), lineHeight: 1.15 }}>{s10(pct)}</div>
+    </div>
+  )
+  const act = (ten: string, emoji: string, cb: Bucket, nc: Bucket, warn?: string) => (
+    <div style={{ background: '#fff', borderRadius: 16, padding: 14, marginTop: 10, boxShadow: '0 1px 3px rgba(15,23,42,.07)' }}>
+      <div style={{ fontSize: 13, fontWeight: 800, color: '#1e293b', marginBottom: 10 }}>{emoji} {ten}</div>
+      <div style={{ display: 'flex', alignItems: 'flex-end' }}>{col('Tổng', tongPct(cb, nc), true)}{col('Cơ bản', cb.pct)}{col('Nâng cao', nc.pct)}</div>
+      {warn ? <div style={{ fontSize: 11, color: '#b45309', marginTop: 9, background: '#fffbeb', borderRadius: 9, padding: '6px 10px', fontWeight: 600 }}>⚠ {warn}</div> : null}
     </div>
   )
   return createPortal(
@@ -279,32 +290,39 @@ function PhAnhModal({ hsId, mon, ym, hsName, lopTen, tq, missCount, onClose }: {
         <button onClick={onClose} className="rounded-md border border-slate-500 px-3 py-1 text-sm hover:bg-slate-700">Đóng</button>
       </div>
       <div className="min-h-0 flex-1 overflow-auto p-4" onClick={(e) => e.stopPropagation()}>
-        <div ref={cardRef} style={{ width: 380, margin: '0 auto', background: '#fff', borderRadius: 18, overflow: 'hidden', fontFamily: "-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif" }}>
-          <div style={{ background: 'linear-gradient(135deg,#4f46e5,#6366f1)', color: '#fff', padding: '16px 18px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-              <div style={{ width: 44, height: 44, borderRadius: 22, background: 'rgba(255,255,255,.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, fontWeight: 800 }}>{hsName.trim().slice(-1) || '?'}</div>
-              <div><div style={{ fontSize: 17, fontWeight: 800 }}>{hsName}</div><div style={{ fontSize: 12, opacity: .9 }}>{lopTen} · {mon} · Tháng {Number(ym.split('-')[1])}/{ym.split('-')[0]}</div></div>
+        <div ref={cardRef} style={{ width: 380, margin: '0 auto', background: '#fff', borderRadius: 20, overflow: 'hidden', fontFamily: "-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif", boxShadow: '0 10px 30px rgba(15,23,42,.12)' }}>
+          {/* HEADER */}
+          <div style={{ background: 'linear-gradient(135deg,#4338ca 0%,#6d28d9 55%,#7c3aed 100%)', color: '#fff', padding: '18px 20px 20px' }}>
+            <div style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: 1.5, opacity: .85 }}>BKDEMY · BÁO CÁO HỌC TẬP THÁNG</div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 13, marginTop: 12 }}>
+              <div style={{ width: 48, height: 48, borderRadius: 24, background: 'rgba(255,255,255,.22)', border: '2px solid rgba(255,255,255,.35)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 21, fontWeight: 800 }}>{hsName.trim().slice(-1) || '?'}</div>
+              <div><div style={{ fontSize: 18, fontWeight: 800, letterSpacing: .2 }}>{hsName}</div><div style={{ fontSize: 12, opacity: .92, marginTop: 1 }}>Lớp {lopTen} · {mon} · Tháng {Number(ym.split('-')[1])}/{ym.split('-')[0]}</div></div>
             </div>
           </div>
-          <div style={{ padding: 16, background: '#f8fafc' }}>
-            {muc ? <div style={{ background: muc.bg, borderRadius: 14, padding: '12px 14px', marginBottom: 12, textAlign: 'center' }}>
-              <div style={{ fontSize: 30 }}>{muc.emoji}</div>
-              <div style={{ fontSize: 16, fontWeight: 800, color: muc.fg }}>{muc.label}</div>
+          <div style={{ padding: 16, background: '#f1f5f9' }}>
+            {/* KẾT LUẬN (nổi bật) */}
+            {muc ? <div style={{ background: '#fff', borderRadius: 16, padding: '16px 14px', marginBottom: 12, textAlign: 'center', borderTop: `4px solid ${muc.fg}`, boxShadow: '0 1px 3px rgba(15,23,42,.07)' }}>
+              <div style={{ fontSize: 38, lineHeight: 1 }}>{muc.emoji}</div>
+              <div style={{ fontSize: 18, fontWeight: 800, color: muc.fg, marginTop: 6 }}>{muc.label}</div>
             </div> : null}
-            {bc.ket_luan ? <NxBlock ten="Kết luận" noi={bc.ket_luan} /> : null}
-            {bc.thai_do ? <NxBlock ten="Thái độ học tập" noi={bc.thai_do} /> : null}
-            {bc.kien_thuc_ky_nang ? <NxBlock ten="Kiến thức & Kĩ năng" noi={bc.kien_thuc_ky_nang} /> : null}
-            <div style={{ background: '#fff', border: '1px solid #eef2f7', borderRadius: 14, padding: '12px 14px', marginTop: 12 }}>
-              <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 4 }}>
-                <span style={{ background: '#ecfdf5', color: '#047857', borderRadius: 8, padding: '3px 9px', fontSize: 12, fontWeight: 700 }}>{h.dat} dạng đạt</span>
-                <span style={{ background: '#fffbeb', color: '#b45309', borderRadius: 8, padding: '3px 9px', fontSize: 12, fontWeight: 700 }}>{h.can_luyen} cần luyện</span>
-                <span style={{ background: '#fff1f2', color: '#be123c', borderRadius: 8, padding: '3px 9px', fontSize: 12, fontWeight: 700 }}>{h.yeu} yếu</span>
+            {bc.ket_luan ? <NxBlock ten="💬 Kết luận" noi={bc.ket_luan} /> : null}
+            {bc.thai_do ? <NxBlock ten="🎯 Thái độ học tập" noi={bc.thai_do} /> : null}
+            {bc.kien_thuc_ky_nang ? <NxBlock ten="📚 Kiến thức & Kĩ năng" noi={bc.kien_thuc_ky_nang} /> : null}
+            {/* SỐ LIỆU */}
+            <div style={{ fontSize: 10.5, fontWeight: 800, letterSpacing: 1, color: '#64748b', margin: '16px 2px 2px' }}>KẾT QUẢ HỌC TẬP</div>
+            <div style={{ background: '#fff', borderRadius: 16, padding: 14, marginTop: 8, boxShadow: '0 1px 3px rgba(15,23,42,.07)' }}>
+              <div style={{ fontSize: 13, fontWeight: 800, color: '#1e293b', marginBottom: 9 }}>🗺️ Bản đồ kiến thức</div>
+              <div style={{ display: 'flex', gap: 7, flexWrap: 'wrap' }}>
+                <span style={{ background: '#ecfdf5', color: '#047857', borderRadius: 9, padding: '4px 11px', fontSize: 12.5, fontWeight: 700 }}>{h.dat} dạng đạt</span>
+                <span style={{ background: '#fffbeb', color: '#b45309', borderRadius: 9, padding: '4px 11px', fontSize: 12.5, fontWeight: 700 }}>{h.can_luyen} cần luyện</span>
+                <span style={{ background: '#fff1f2', color: '#be123c', borderRadius: 9, padding: '4px 11px', fontSize: 12.5, fontWeight: 700 }}>{h.yeu} yếu</span>
               </div>
-              <div style={{ fontSize: 11, color: '#94a3b8' }}>Đã tính cả bài tập về nhà và bổ trợ</div>
+              <div style={{ fontSize: 10.5, color: '#94a3b8', marginTop: 7 }}>Đã tính cả bài tập về nhà và bổ trợ · Thang điểm /10</div>
             </div>
-            {act('Test cuối giờ', '📝', a.etCoBan.pct, a.etNangCao.pct)}
-            {act('Bài tập về nhà', '🏠', a.btvnCoBan.pct, a.btvnNangCao.pct, missCount > 0 ? `Chưa hoàn thành BTVN ${missCount} lần trong tháng này` : undefined)}
-            {act('Test tháng', '📅', a.mtCoBan.pct, a.mtNangCao.pct)}
+            {act('Test cuối giờ', '📝', a.etCoBan, a.etNangCao)}
+            {act('Bài tập về nhà', '🏠', a.btvnCoBan, a.btvnNangCao, missCount > 0 ? `Chưa hoàn thành BTVN ${missCount} lần trong tháng này` : undefined)}
+            {act('Test tháng', '📅', a.mtCoBan, a.mtNangCao)}
+            <div style={{ textAlign: 'center', fontSize: 10.5, color: '#94a3b8', marginTop: 16, fontWeight: 600 }}>BKdemy · Đồng hành cùng con trên hành trình học tập 💜</div>
           </div>
         </div>
       </div>
