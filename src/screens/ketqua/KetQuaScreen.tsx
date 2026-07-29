@@ -1211,7 +1211,9 @@ function DiemRowEntry({ ten, init, onSave }: { ten: string; init: DiemThi | null
 }
 
 function TaoKyThiModal({ lop, mua, onClose, onCreated }: { lop: Lop; mua: string; onClose: () => void; onCreated: () => void }) {
-  const [loai, setLoai] = useState<KyThi['loai']>('khao_sat_thang')
+  // Tab Điểm thi CHỈ nhập điểm THI TRƯỜNG (Thùy chốt A). MT sát hạch nhập trong buổi (tab Điểm MT),
+  // khảo sát tháng chưa dùng → bỏ chọn loại, cố định 'truong' (tránh đẻ MT "mồ côi" lệch pha với buổi MT).
+  const [loai] = useState<KyThi['loai']>('truong')
   const [ten, setTen] = useState('')
   const [dot, setDot] = useState<string>('')
   const [ngay, setNgay] = useState('')
@@ -1229,12 +1231,7 @@ function TaoKyThiModal({ lop, mua, onClose, onCreated }: { lop: Lop; mua: string
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/30 p-4 backdrop-blur-sm" onClick={onClose}>
       <div className="w-[440px] max-w-[95vw] rounded-2xl bg-white p-5 shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <div className="mb-3 text-base font-semibold text-slate-900">Thêm kì thi · {lop.mon} K{lop.khoi}</div>
-        <label className="mb-1 block text-[12px] font-semibold text-slate-500">Loại</label>
-        <div className="mb-3 flex gap-1.5">
-          {(Object.keys(LOAI_KY_THI) as KyThi['loai'][]).map((l) => (
-            <button key={l} onClick={() => setLoai(l)} className={`flex-1 rounded-lg px-2 py-2 text-[12px] font-medium ${loai === l ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-600'}`}>{LOAI_KY_THI[l]}<div className="text-[10px] opacity-70">hệ số {HE_SO_KY_THI[l]}</div></button>
-          ))}
-        </div>
+        <div className="mb-3 rounded-lg bg-indigo-50 px-3 py-2 text-[12px] text-indigo-700">Loại: <b>Thi trường</b> (hệ số {HE_SO_KY_THI.truong}). Điểm MT sát hạch nhập trong <b>buổi học › Điểm MT</b>, không nhập ở đây.</div>
         <label className="mb-1 block text-[12px] font-semibold text-slate-500">Tên</label>
         <input value={ten} onChange={(e) => setTen(e.target.value)} placeholder={LOAI_KY_THI[loai]} className="mb-3 h-9 w-full rounded-lg border border-slate-300 px-3 text-[13px]" autoFocus />
         {coDot && (
