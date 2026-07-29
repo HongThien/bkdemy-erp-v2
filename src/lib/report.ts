@@ -57,12 +57,12 @@ export async function getReportBuoiHS(hocSinhId: string, mon: string, ym: string
 }
 
 // ── Nhận xét GV (3 ô) cho (HS × môn × tháng) ──
-export type BaoCaoPH = { thai_do: string | null; kien_thuc_ky_nang: string | null; ket_luan: string | null }
+export type BaoCaoPH = { thai_do: string | null; kien_thuc_ky_nang: string | null; ket_luan: string | null; ket_luan_muc: string | null }
 export async function getBaoCaoPH(hocSinhId: string, mon: string, thang: string): Promise<BaoCaoPH> {
-  const { data, error } = await supabase.from('bao_cao_ph').select('thai_do, kien_thuc_ky_nang, ket_luan')
+  const { data, error } = await supabase.from('bao_cao_ph').select('thai_do, kien_thuc_ky_nang, ket_luan, ket_luan_muc')
     .eq('hoc_sinh_id', hocSinhId).eq('mon', mon).eq('thang', thang).maybeSingle()
   if (error) throw error
-  return (data as BaoCaoPH) ?? { thai_do: null, kien_thuc_ky_nang: null, ket_luan: null }
+  return (data as BaoCaoPH) ?? { thai_do: null, kien_thuc_ky_nang: null, ket_luan: null, ket_luan_muc: null }
 }
 export async function upsertBaoCaoPH(hocSinhId: string, mon: string, thang: string, patch: Partial<BaoCaoPH>): Promise<void> {
   const { data: { user } } = await supabase.auth.getUser()
