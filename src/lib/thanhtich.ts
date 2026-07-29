@@ -12,7 +12,15 @@ const monthStartUtcISO = () => { const v = vnNow(); return new Date(Date.UTC(v.g
 
 export type Verdict = 'dat' | 'gan_dat' | 'khong_dat'
 export type KyThi = { id: string; ten: string; loai: string; he_so: number; dot: string | null; ngay: string | null; mon: string | null; khoi: string | null; mua: string | null; buoi_hoc_id: string | null }
-export type DiemThi = { ky_thi_id: string; hoc_sinh_id: string; diem: number | null; band_luc_thi: string | null; verdict: Verdict; vuot_band: boolean }
+export type DiemThi = { ky_thi_id: string; hoc_sinh_id: string; diem: number | null; band_luc_thi: string | null; verdict: Verdict; vuot_band: boolean; diem_co_ban?: number | null; diem_nang_cao?: number | null; full_diem?: boolean }
+
+// Điểm MT (BK sát hạch) = ĐIỂM CƠ BẢN + ĐIỂM NÂNG CAO (GV nhập thẳng). Trần: tổng ≥ 10 → 9.75.
+// "Full điểm" (tick) → 10 (chỉ cách này ra 10 — làm trọn vẹn không sai). Làm tròn 2 chữ số.
+export function tinhDiemMT(coBan: number | null | undefined, nangCao: number | null | undefined, full: boolean): number {
+  if (full) return 10
+  const tong = (coBan ?? 0) + (nangCao ?? 0)
+  return tong >= 10 ? 9.75 : Math.round(tong * 100) / 100
+}
 export type ThanhTichLoai = { key: string; ten: string; icon: string | null; nhom: string | null; kieu: string | null; per_mon: boolean; thu_tu: number }
 export type LuongBac = { min_exp: number; xu: number }
 
@@ -80,10 +88,12 @@ export async function listDiemThiByKyThi(kyThiIds: string[]): Promise<DiemThi[]>
   return (data ?? []) as DiemThi[]
 }
 // Nhập/sửa điểm thi 1 HS. verdict do staff duyệt (gợi ý theo band sau). Anti-NULL: có dòng = đã chấm.
-export async function upsertDiemThi(d: { kyThiId: string; hocSinhId: string; diem: number | null; bandLucThi: string | null; verdict: Verdict; vuotBand: boolean }): Promise<void> {
+export async function upsertDiemThi(d: { kyThiId: string; hocSinhId: string; diem: number | null; bandLucThi: string | null; verdict: Verdict; vuotBand: boolean; coBan?: number | null; nangCao?: number | null; full?: boolean }): Promise<void> {
   const { data: { user } } = await supabase.auth.getUser()
   const { error } = await supabase.from('diem_thi').upsert(
-    { ky_thi_id: d.kyThiId, hoc_sinh_id: d.hocSinhId, diem: d.diem, band_luc_thi: d.bandLucThi, verdict: d.verdict, vuot_band: d.vuotBand, graded_by: user?.id ?? null, updated_at: new Date().toISOString() },
+    { ky_thi_id: d.kyThiId, hoc_sinh_id: d.hocSinhId, diem: d.diem, band_luc_thi: d.bandLucThi, verdict: d.verdict, vuot_band: d.vuotBand,
+      diem_co_ban: d.coBan ?? null, diem_nang_cao: d.nangCao ?? null, full_diem: d.full ?? false,
+      graded_by: user?.id ?? null, updated_at: new Date().toISOString() },
     { onConflict: 'ky_thi_id,hoc_sinh_id' })
   if (error) throw error
 }
