@@ -1043,6 +1043,7 @@ export type BuoiTim = {
   ngay: string; thu: number
   slot: { gio_bat_dau: string | null; gio_ket_thuc: string | null; phong: string | null }
   buoi: BuoiHoc | null   // null = chưa mở (ảo, suy từ TKB)
+  coMT?: boolean         // buổi có gán MT (có câu phase='mt') → hiện nhãn 🏆 khi tìm
 }
 const NGAY_TIM_TOI = 14  // buổi ảo sắp tới: hôm nay → +14 ngày
 export async function timBuoiTheoLop(q: string): Promise<BuoiTim[]> {
@@ -1060,7 +1061,7 @@ export async function timBuoiTheoLop(q: string): Promise<BuoiTim[]> {
   // ① Buổi THẬT — mới nhất trước. Lấy mọi `loai` (buổi bù/bổ trợ cũng là buổi của lớp, cần tìm được).
   const { data: rows } = await supabase.from('buoi_hoc').select('*')
     .in('lop_id', ids).order('ngay', { ascending: false }).limit(500)
-  const that = ((rows ?? []) as BuoiHoc[]).map((b) => {
+  const that: BuoiTim[] = ((rows ?? []) as BuoiHoc[]).map((b) => {
     const l = lopMap.get(b.lop_id as string)!
     return { lop: { id: l.id, ten_lop: l.ten_lop, mon: l.mon, khoi: l.khoi }, ngay: b.ngay, thu: b.thu ?? thuOf(b.ngay), slot: { gio_bat_dau: b.gio_bat_dau, gio_ket_thuc: b.gio_ket_thuc, phong: b.phong }, buoi: b }
   })
@@ -1089,6 +1090,13 @@ export async function timBuoiTheoLop(q: string): Promise<BuoiTim[]> {
     }
   }
   const ao = [...aoMap.values()]
+  // Cờ "có MT": buổi có câu phase='mt' (MT đã gán). 1 query cho mọi buổi thật tìm được.
+  const buoiThatIds = that.map((r) => r.buoi?.id).filter(Boolean) as string[]
+  if (buoiThatIds.length) {
+    const { data: mtp } = await supabase.from('gami_session_problems').select('buoi_hoc_id').eq('phase', 'mt').in('buoi_hoc_id', buoiThatIds).limit(LIMIT)
+    const coMTSet = new Set((mtp ?? []).map((p: any) => p.buoi_hoc_id))
+    for (const r of that) if (r.buoi && coMTSet.has(r.buoi.id)) r.coMT = true
+  }
   // Mới/sắp tới trước, cùng ngày thì theo giờ. Ngày dạng 'YYYY-MM-DD' nên so chuỗi = so thời gian.
   return [...ao, ...that].sort((a, b) => b.ngay.localeCompare(a.ngay) || (a.slot.gio_bat_dau ?? '').localeCompare(b.slot.gio_bat_dau ?? ''))
 }

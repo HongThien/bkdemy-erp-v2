@@ -186,6 +186,7 @@ function BuoiTimRow({ r, onOpened }: { r: BuoiTim; onOpened: (id: string, lopId:
       <span className="w-[104px] shrink-0 text-[12px] text-slate-500">{gio}</span>
       <span className="w-[64px] shrink-0 text-[12px] text-slate-400">{r.slot.phong ?? ''}</span>
       {b && b.loai !== 'thuong' && <span className="shrink-0 rounded bg-violet-50 px-1.5 py-0.5 text-[11px] font-medium text-violet-700">{LOAI_BUOI_TEN[b.loai] ?? b.loai}</span>}
+      {r.coMT && <span className="shrink-0 rounded bg-rose-100 px-1.5 py-0.5 text-[11px] font-semibold text-rose-700" title="Buổi có MT (kỳ thi sát hạch)">🏆 MT</span>}
       <span className="ml-auto shrink-0">{chip}</span>
     </>
   )
