@@ -38,10 +38,11 @@ for (const k of evOrder) {
   const w = ev.phase === 'mt' ? ELO.MT_WEIGHT : 1
   const cap = ELO.RANK_CAP * w
   const keyOf = r => r.hoc_sinh_id + '|' + r.mon
-  const mean = rs.reduce((s, r) => s + get(keyOf(r)), 0) / N
+  const snap = new Map(rs.map((r) => [keyOf(r), get(keyOf(r))]))  // FIX: mốc elo ĐẦU buổi — mọi HS chấm trên cùng snapshot (khớp computeEloUpdate). Trước đây get() bị elo.set mid-loop làm nhiễm expected.
+  const mean = [...snap.values()].reduce((s, v) => s + v, 0) / N
   for (const r of rs) {
-    const kk = keyOf(r); const Ri = get(kk)
-    const others = rs.filter(o => o !== r).map(o => get(o.hoc_sinh_id + '|' + o.mon))
+    const kk = keyOf(r); const Ri = snap.get(kk)
+    const others = rs.filter(o => o !== r).map(o => snap.get(keyOf(o)))
     const expected = expectedScore(Ri, others)
     const rank = clamp((w * ELO.K * (Number(r.actual) - expected)) / (N - 1), cap)
     const delta = Math.round(rank + ELO.PROGRESS_P - ELO.LAMBDA * (Ri - mean))

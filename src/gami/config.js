@@ -7,7 +7,9 @@ export const ELO = {
   K: 30,                // độ nhạy 1 buổi (đã chuẩn hoá /(N−1) → KHÔNG cần K theo sĩ số/calibration)
   RANK_CAP: 20,         // trần phần HẠNG mỗi buổi thường (trần tổng ≈ +30 = 20 hạng + 10 P)
   PROGRESS_P: 10,       // điểm tiến-trình cộng cho MỌI HS có mặt → mean lớp dâng ~+P/buổi
-  LAMBDA: 0.05,         // lực kéo về mean lớp: bó khoảng cách top–đáy, cho phép lật kèo
+  LAMBDA: 0,            // TẮT (07-29): λ per-buổi đẻ nghịch lý "điểm cao mà Δ thấp hơn điểm thấp"
+                        // (test scripts/_test_elo_logic: 32 nghịch lý → 1 khi λ=0). Nén-về-mean / lật-kèo
+                        // CHUYỂN sang SOFT-RESET đầu mùa (niên khóa 1/7), không làm nhiễu mỗi buổi.
   MT_WEIGHT: 4,         // MT "grand slam" = ×4 phần HẠNG + trần hạng (P & λ giữ ×1) → trần ≈ +90
 }
 

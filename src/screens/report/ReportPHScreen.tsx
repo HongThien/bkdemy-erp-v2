@@ -5,9 +5,11 @@ import { createPortal } from 'react-dom'
 import SearchSelect, { type Opt } from '../../components/SearchSelect'
 import { listLop, listHSCuaLop } from '../../lib/nhansu'
 import { getTongQuanHS, type TongQuanHS } from '../../lib/mastery'
-import { getReportBuoiHS, getBaoCaoPH, upsertBaoCaoPH, type ReportBuoiRow, type BaoCaoPH } from '../../lib/report'
+import { getReportBuoiHS, getBaoCaoPH, upsertBaoCaoPH, getGVChinhLop, type ReportBuoiRow, type BaoCaoPH } from '../../lib/report'
 
 const MON_CO_KHO = ['Toán', 'KHTN']
+// Thang 5 cho skill bar (GV tự chọn). index 0..4 ↔ mức 1..5.
+const SKILL_MUC = ['Cần cố gắng', 'Trung bình', 'Khá', 'Tốt', 'Xuất sắc'] as const
 const curYM = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}` }
 const shiftYM = (ym: string, delta: number) => { const [y, m] = ym.split('-').map(Number); const i = y * 12 + (m - 1) + delta; return `${Math.floor(i / 12)}-${String(i % 12 + 1).padStart(2, '0')}` }
 const NOP_LABEL: Record<string, string> = { nop_dung_han: 'Đúng hạn', nop_muon: 'Nộp muộn', xin_phep: 'Xin phép', khong_lam: 'Không làm' }
@@ -60,15 +62,16 @@ export default function ReportPHScreen() {
       <div className="min-h-0 flex-1 overflow-auto p-6">
         {!hsId ? (
           <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Chọn lớp rồi chọn học sinh để xem report.</div>
-        ) : <ReportBody key={hsId + mon + ym} hsId={hsId} mon={mon} ym={ym} hsName={hsOpts.find((o) => o.id === hsId)?.label ?? ''} lopTen={lopOpts.find((o) => o.id === lopId)?.label ?? ''} />}
+        ) : <ReportBody key={hsId + mon + ym} hsId={hsId} mon={mon} ym={ym} lopId={lopId} hsName={hsOpts.find((o) => o.id === hsId)?.label ?? ''} lopTen={lopOpts.find((o) => o.id === lopId)?.label ?? ''} />}
       </div>
     </div>
   )
 }
 
-function ReportBody({ hsId, mon, ym, hsName, lopTen }: { hsId: string; mon: string; ym: string; hsName: string; lopTen: string }) {
+function ReportBody({ hsId, mon, ym, lopId, hsName, lopTen }: { hsId: string; mon: string; ym: string; lopId: string | null; hsName: string; lopTen: string }) {
   const [rows, setRows] = useState<ReportBuoiRow[] | null>(null)
   const [tq, setTq] = useState<TongQuanHS | null>(null)
+  const [gvName, setGvName] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
   const [anh, setAnh] = useState(false)
   useEffect(() => {
@@ -76,17 +79,15 @@ function ReportBody({ hsId, mon, ym, hsName, lopTen }: { hsId: string; mon: stri
     Promise.all([getReportBuoiHS(hsId, mon, ym), getTongQuanHS(hsId, mon)])
       .then(([r, t]) => { setRows(r); setTq(t) }).catch(() => { setRows([]); setTq(null) }).finally(() => setLoading(false))
   }, [hsId, mon, ym])
+  useEffect(() => { setGvName(null); if (lopId) getGVChinhLop(lopId).then(setGvName).catch(() => {}) }, [lopId])
   if (loading) return <p className="text-sm text-slate-500">Đang tải…</p>
   const missCount = (rows ?? []).filter((r) => r.btvnTrangThai === 'khong_lam' || r.btvnTrangThai === 'xin_phep').length
-  const TD_SCORE: Record<string, number> = { nghiem_tuc: 100, chua_het_suc: 75, chua_nghiem_tuc: 40, chong_doi: 0 }
-  const tds = (rows ?? []).map((r) => r.btvnThaiDo).filter(Boolean).map((t) => TD_SCORE[t as string] ?? 60)
-  const thaiDoPct = tds.length ? Math.round(tds.reduce((s, x) => s + x, 0) / tds.length) : null
   return (
     <>
     <div className="mb-3 flex justify-end">
       <button onClick={() => setAnh(true)} className="rounded-lg bg-indigo-600 px-3.5 py-1.5 text-[13px] font-semibold text-white shadow-sm hover:bg-indigo-500">📸 Ảnh gửi phụ huynh</button>
     </div>
-    {anh && tq && <PhAnhModal hsId={hsId} mon={mon} ym={ym} hsName={hsName} lopTen={lopTen} tq={tq} missCount={missCount} thaiDoPct={thaiDoPct} onClose={() => setAnh(false)} />}
+    {anh && tq && <PhAnhModal hsId={hsId} mon={mon} ym={ym} hsName={hsName} lopTen={lopTen} gvName={gvName} tq={tq} missCount={missCount} onClose={() => setAnh(false)} />}
     <div className="grid gap-5 xl:grid-cols-[1fr_400px]">
       {/* ── TRÁI: SỐ LIỆU ── */}
       <div className="space-y-5">
@@ -181,12 +182,12 @@ function TongQuanCards({ tq, missCount }: { tq: TongQuanHS; missCount: number })
   )
 }
 
-const NX_FIELDS: { key: keyof BaoCaoPH; label: string; ph: string }[] = [
-  { key: 'thai_do', label: 'Thái độ học tập', ph: 'Thái độ, chuyên cần, tinh thần học tập trong tháng…' },
-  { key: 'kien_thuc_ky_nang', label: 'Kiến thức & Kĩ năng', ph: 'Mức nắm kiến thức, kĩ năng làm bài, mạnh/yếu…' },
+const NX_FIELDS: { key: 'thai_do' | 'kien_thuc_ky_nang'; mucKey: 'muc_thai_do' | 'muc_kien_thuc'; label: string; ph: string; hx: string }[] = [
+  { key: 'kien_thuc_ky_nang', mucKey: 'muc_kien_thuc', label: 'Kiến thức & Kĩ năng', ph: 'Mức nắm kiến thức, kĩ năng làm bài, mạnh/yếu…', hx: 'bg-indigo-500' },
+  { key: 'thai_do', mucKey: 'muc_thai_do', label: 'Thái độ học tập', ph: 'Thái độ, chuyên cần, tinh thần học tập trong tháng…', hx: 'bg-emerald-500' },
 ]
 function NhanXet({ hsId, mon, ym }: { hsId: string; mon: string; ym: string }) {
-  const [val, setVal] = useState<BaoCaoPH>({ thai_do: null, kien_thuc_ky_nang: null, ket_luan: null, ket_luan_muc: null, muc_tieu: null })
+  const [val, setVal] = useState<BaoCaoPH>({ thai_do: null, kien_thuc_ky_nang: null, ket_luan: null, ket_luan_muc: null, muc_tieu: null, muc_kien_thuc: null, muc_thai_do: null })
   const [saved, setSaved] = useState<string | null>(null)
   useEffect(() => { getBaoCaoPH(hsId, mon, ym).then(setVal).catch(() => {}) }, [hsId, mon, ym])
   const save = async (patch: Partial<BaoCaoPH>, tag: string) => {
@@ -198,15 +199,26 @@ function NhanXet({ hsId, mon, ym }: { hsId: string; mon: string; ym: string }) {
     <div>
       <h3 className="mb-2 text-[13px] font-semibold uppercase tracking-wider text-slate-500">Nhận xét của giáo viên</h3>
       <div className="space-y-3">
-        {NX_FIELDS.map((f) => (
+        {NX_FIELDS.map((f) => {
+          const lvl = val[f.mucKey] as number | null
+          return (
           <div key={f.key} className="rounded-xl border border-slate-200 bg-white p-3 shadow-sm">
             <div className="mb-1.5 flex items-center justify-between">
               <span className="text-[12px] font-semibold text-slate-700">{f.label}</span>
-              {saved === f.key && <span className="text-[11px] text-emerald-600">✓ đã lưu</span>}
+              {(saved === f.key || saved === f.mucKey) && <span className="text-[11px] text-emerald-600">✓ đã lưu</span>}
+            </div>
+            {/* Chọn mức thang 5 */}
+            <div className="mb-2 flex items-center gap-1.5">
+              {[1, 2, 3, 4, 5].map((i) => (
+                <button key={i} onClick={() => save({ [f.mucKey]: lvl === i ? null : i }, f.mucKey)} title={SKILL_MUC[i - 1]}
+                  className={`h-7 flex-1 rounded-md text-[11px] font-bold ring-1 transition ${lvl != null && i <= lvl ? `${f.hx} text-white ring-transparent` : 'bg-slate-50 text-slate-400 ring-slate-200 hover:bg-slate-100'}`}>{i}</button>
+              ))}
+              <span className="ml-1 w-[68px] shrink-0 text-right text-[11px] font-semibold text-slate-500">{lvl ? SKILL_MUC[lvl - 1] : '—'}</span>
             </div>
             <textarea defaultValue={val[f.key] as string ?? ''} onBlur={(e) => save({ [f.key]: e.target.value.trim() || null }, f.key)} placeholder={f.ph} rows={4} className={box} />
           </div>
-        ))}
+          )
+        })}
         {/* KẾT LUẬN: thanh mức + chữ */}
         <div className="rounded-xl border border-slate-200 bg-white p-3 shadow-sm">
           <div className="mb-1.5 flex items-center justify-between">
@@ -248,8 +260,8 @@ const MUC_HEX: Record<string, { bg: string; fg: string; emoji: string; label: st
 const s10 = (pct: number | null) => pct == null ? '—' : (pct / 10).toFixed(1)
 const hexPct = (pct: number | null) => pct == null ? '#cbd5e1' : pct >= 80 ? '#059669' : pct >= 50 ? '#d97706' : '#e11d48'
 
-function PhAnhModal({ hsId, mon, ym, hsName, lopTen, tq, missCount, thaiDoPct, onClose }: { hsId: string; mon: string; ym: string; hsName: string; lopTen: string; tq: TongQuanHS; missCount: number; thaiDoPct: number | null; onClose: () => void }) {
-  const [bc, setBc] = useState<BaoCaoPH>({ thai_do: null, kien_thuc_ky_nang: null, ket_luan: null, ket_luan_muc: null, muc_tieu: null })
+function PhAnhModal({ hsId, mon, ym, hsName, lopTen, gvName, tq, missCount, onClose }: { hsId: string; mon: string; ym: string; hsName: string; lopTen: string; gvName: string | null; tq: TongQuanHS; missCount: number; onClose: () => void }) {
+  const [bc, setBc] = useState<BaoCaoPH>({ thai_do: null, kien_thuc_ky_nang: null, ket_luan: null, ket_luan_muc: null, muc_tieu: null, muc_kien_thuc: null, muc_thai_do: null })
   const cardRef = useRef<HTMLDivElement>(null)
   useEffect(() => { getBaoCaoPH(hsId, mon, ym).then(setBc).catch(() => {}) }, [hsId, mon, ym])
 
@@ -272,14 +284,18 @@ function PhAnhModal({ hsId, mon, ym, hsName, lopTen, tq, missCount, thaiDoPct, o
   const muc = bc.ket_luan_muc ? MUC_HEX[bc.ket_luan_muc] : null
   const a = tq.hoatDong, hh = tq.hoanThanh.toanBo.etMt
   const progress = hh.pct
-  const kienThuc = tongPct(a.etCoBan, a.etNangCao)         // "Kiến thức & kỹ năng" ~ độ đúng ET
   const trendV = tq.trend.hoanThanhToanBo
   const ringHex = progress == null ? '#94a3b8' : progress >= 80 ? '#12a875' : progress >= 50 ? '#e29a23' : '#e45858'
   const RC = 2 * Math.PI * 32
-  const bar = (label: string, pct: number | null, hx: string) => (
-    <div style={{ background: '#f7f9fd', border: '1px solid #edf1f7', borderRadius: 13, padding: '9px 10px' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 9.5, marginBottom: 7 }}><span style={{ color: '#70809b' }}>{label}</span><b style={{ fontSize: 10.5, color: '#15233b' }}>{pct == null ? '—' : pct + '%'}</b></div>
-      <div style={{ height: 6, background: '#e9eef6', borderRadius: 999, overflow: 'hidden' }}><div style={{ height: '100%', width: `${pct ?? 0}%`, background: hx, borderRadius: 999 }} /></div>
+  // Skill bar THANG 5 (GV chọn) + text nhận xét kèm tag.
+  const bar5 = (label: string, lvl: number | null, hx: string, text: string | null) => (
+    <div style={{ background: '#f7f9fd', border: '1px solid #edf1f7', borderRadius: 13, padding: '10px 11px', marginTop: 8 }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 7 }}>
+        <span style={{ display: 'inline-flex', gap: 6, alignItems: 'center', fontSize: 10.5, fontWeight: 800, color: '#15233b' }}><span style={{ width: 7, height: 7, borderRadius: 4, background: hx }} />{label}</span>
+        <span style={{ fontSize: 9.5, fontWeight: 800, color: lvl ? hx : '#94a3b8' }}>{lvl ? SKILL_MUC[lvl - 1] : '—'}</span>
+      </div>
+      <div style={{ display: 'flex', gap: 4 }}>{[1, 2, 3, 4, 5].map((i) => <div key={i} style={{ flex: 1, height: 7, borderRadius: 4, background: lvl && i <= lvl ? hx : '#e9eef6' }} />)}</div>
+      {text ? <p style={{ fontSize: 10, lineHeight: 1.45, color: '#42516a', margin: '8px 0 0', whiteSpace: 'pre-wrap' }}>{text}</p> : null}
     </div>
   )
   const statusC = (n: number, label: string, hx: string) => (
@@ -318,7 +334,7 @@ function PhAnhModal({ hsId, mon, ym, hsName, lopTen, tq, missCount, thaiDoPct, o
             <div style={{ position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: '54px 1fr', gap: 13, alignItems: 'center' }}>
               <div style={{ width: 54, height: 54, borderRadius: 18, display: 'grid', placeItems: 'center', fontSize: 22, fontWeight: 900, background: 'linear-gradient(145deg,#fff,#dce9ff)', color: '#315fdd', border: '3px solid rgba(255,255,255,.28)' }}>{hsName.trim().slice(-1) || '?'}</div>
               <div><div style={{ fontSize: 20, fontWeight: 900, lineHeight: 1.12, letterSpacing: -.25 }}>{hsName}</div>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, fontSize: 11, color: '#e9f2ff', marginTop: 6 }}><span>Lớp {lopTen}</span><span>· Môn {mon}</span></div>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, fontSize: 11, color: '#e9f2ff', marginTop: 6 }}><span>Lớp {lopTen}</span><span>· Môn {mon}</span>{gvName ? <span>· GV {gvName}</span> : null}</div>
               </div>
             </div>
           </div>
@@ -338,14 +354,15 @@ function PhAnhModal({ hsId, mon, ym, hsName, lopTen, tq, missCount, thaiDoPct, o
                 {trendV != null && trendV !== 0 ? <span style={{ display: 'inline-flex', gap: 5, alignItems: 'center', fontSize: 10, fontWeight: 900, color: trendV > 0 ? '#12a875' : '#e45858', background: trendV > 0 ? '#ecfbf5' : '#fdecec', padding: '6px 8px', borderRadius: 999 }}>{trendV > 0 ? '↗' : '↘'} {trendV > 0 ? 'Tăng' : 'Giảm'} {Math.abs(trendV)}% so với kỳ trước</span> : null}
               </div>
             </div>
-            {/* NHẬN XÉT GV + skill bars */}
-            {(bc.ket_luan || bc.thai_do || bc.kien_thuc_ky_nang) ? <div style={{ background: '#fff', border: '1px solid #e8edf5', borderRadius: 20, padding: 14, marginBottom: 10, boxShadow: '0 7px 18px rgba(35,63,104,.055)' }}>
+            {/* NHẬN XÉT GV + skill bars (thang 5) + text kèm tag */}
+            {(bc.ket_luan || bc.thai_do || bc.kien_thuc_ky_nang || bc.muc_kien_thuc || bc.muc_thai_do) ? <div style={{ background: '#fff', border: '1px solid #e8edf5', borderRadius: 20, padding: 14, marginBottom: 10, boxShadow: '0 7px 18px rgba(35,63,104,.055)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 9, marginBottom: 10 }}>
                 <span style={{ width: 31, height: 31, borderRadius: 11, display: 'grid', placeItems: 'center', background: '#eef0ff', fontSize: 15 }}>✦</span>
-                <div><div style={{ fontSize: 13, fontWeight: 800, color: '#15233b' }}>Nhận xét của giáo viên</div><div style={{ fontSize: 9, color: '#70809b' }}>Đánh giá cá nhân theo quá trình học</div></div>
+                <div><div style={{ fontSize: 13, fontWeight: 800, color: '#15233b' }}>Nhận xét của giáo viên</div><div style={{ fontSize: 9, color: '#70809b' }}>{gvName ? `GV ${gvName}` : 'Đánh giá cá nhân theo quá trình học'}</div></div>
               </div>
-              {bc.ket_luan ? <p style={{ fontSize: 11, lineHeight: 1.48, color: '#42516a', margin: '0 0 11px', whiteSpace: 'pre-wrap' }}>{bc.ket_luan}</p> : null}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>{bar('Kiến thức & kỹ năng', kienThuc, '#315fdd')}{bar('Thái độ học tập', thaiDoPct, '#12a875')}</div>
+              {bc.ket_luan ? <p style={{ fontSize: 11, lineHeight: 1.48, color: '#42516a', margin: '0 0 4px', whiteSpace: 'pre-wrap' }}>{bc.ket_luan}</p> : null}
+              {bar5('Kiến thức & kỹ năng', bc.muc_kien_thuc, '#315fdd', bc.kien_thuc_ky_nang)}
+              {bar5('Thái độ học tập', bc.muc_thai_do, '#12a875', bc.thai_do)}
             </div> : null}
             {/* STATUS */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 7, marginBottom: 10 }}>{statusC(hh.dat, 'Đang đạt', '#12a875')}{statusC(hh.can_luyen, 'Cần luyện', '#e29a23')}{statusC(hh.yeu, 'Đang yếu', '#e45858')}</div>

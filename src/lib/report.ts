@@ -56,13 +56,22 @@ export async function getReportBuoiHS(hocSinhId: string, mon: string, ym: string
   }))
 }
 
-// ── Nhận xét GV (3 ô) cho (HS × môn × tháng) ──
-export type BaoCaoPH = { thai_do: string | null; kien_thuc_ky_nang: string | null; ket_luan: string | null; ket_luan_muc: string | null; muc_tieu: string | null }
+// ── Nhận xét GV cho (HS × môn × tháng) ──
+// muc_kien_thuc / muc_thai_do = thang 5 (GV tự chọn 1..5, không suy động).
+export type BaoCaoPH = { thai_do: string | null; kien_thuc_ky_nang: string | null; ket_luan: string | null; ket_luan_muc: string | null; muc_tieu: string | null; muc_kien_thuc: number | null; muc_thai_do: number | null }
+const BC_EMPTY: BaoCaoPH = { thai_do: null, kien_thuc_ky_nang: null, ket_luan: null, ket_luan_muc: null, muc_tieu: null, muc_kien_thuc: null, muc_thai_do: null }
 export async function getBaoCaoPH(hocSinhId: string, mon: string, thang: string): Promise<BaoCaoPH> {
-  const { data, error } = await supabase.from('bao_cao_ph').select('thai_do, kien_thuc_ky_nang, ket_luan, ket_luan_muc, muc_tieu')
+  const { data, error } = await supabase.from('bao_cao_ph').select('thai_do, kien_thuc_ky_nang, ket_luan, ket_luan_muc, muc_tieu, muc_kien_thuc, muc_thai_do')
     .eq('hoc_sinh_id', hocSinhId).eq('mon', mon).eq('thang', thang).maybeSingle()
   if (error) throw error
-  return (data as BaoCaoPH) ?? { thai_do: null, kien_thuc_ky_nang: null, ket_luan: null, ket_luan_muc: null, muc_tieu: null }
+  return (data as BaoCaoPH) ?? { ...BC_EMPTY }
+}
+
+// GV chủ nhiệm (GV chính) của lớp — cho dòng "GV: …" trên report.
+export async function getGVChinhLop(lopId: string): Promise<string | null> {
+  const { data } = await supabase.from('phan_cong_lop')
+    .select('nhan_su:nhan_su_id(ho_ten)').eq('lop_id', lopId).eq('vai_tro', 'gv').eq('la_chinh', true).maybeSingle()
+  return (data as any)?.nhan_su?.ho_ten ?? null
 }
 export async function upsertBaoCaoPH(hocSinhId: string, mon: string, thang: string, patch: Partial<BaoCaoPH>): Promise<void> {
   const { data: { user } } = await supabase.auth.getUser()

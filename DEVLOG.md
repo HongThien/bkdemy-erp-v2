@@ -3307,3 +3307,9 @@ Verify: card hiện "△ABC nhọn, ba đường cao... | tứ giác BFEC nội 
 - **`thaiDoPct`** suy từ thái độ BTVN theo buổi (nghiêm túc 100 · chưa hết sức 75 · chưa nghiêm túc 40 · chống đối 0, TB) truyền vào modal cho skill bar Thái độ.
 - tsc sạch. Commit `b4b5cef` push thẳng `main`.
 - **CÒN chờ Thùy chốt (đã báo):** ① tên GV phụ trách (mockup có "GV: Thầy Minh" — hệ chưa fetch, đang bỏ) · ② 2 skill bar hiện là SỐ SUY ĐỘNG, không phải GV nhập — có muốn GV tự chấm không · ③ 2 ô text "Thái độ"/"Kiến thức & kỹ năng" GV nhập tay hiện KHÔNG lên ảnh nữa (ảnh chỉ show `ket_luan` + 2 bar) — giữ vậy hay ghép cả text · ④ trend pill trống ở tháng đầu môn (chưa có kỳ trước để so).
+
+### 07-29 (tiếp) — Thùy chốt 3 điểm Report PH
+- **① GV chủ nhiệm:** `getGVChinhLop(lopId)` (report.ts) = `phan_cong_lop` vai_tro=gv·la_chinh=true → `nhan_su.ho_ten`. ReportBody fetch theo lopId, truyền `gvName` vào PhAnhModal → hiện "· GV …" ở hero meta + subtitle teacher-card.
+- **② Skill bar → THANG 5, GV tự chọn** (bỏ % suy động): migration `202607291500_baocao_ph_muc_skill.sql` thêm `muc_kien_thuc`/`muc_thai_do` smallint (1..5, null=chưa chọn, áp lẻ OK). NhanXet: mỗi ô (Kiến thức & Kĩ năng · Thái độ) có **5 nút 1..5** (bấm lại = bỏ chọn) + nhãn `SKILL_MUC` (Cần cố gắng/Trung bình/Khá/Tốt/Xuất sắc), tự lưu. Ảnh: `bar5` = 5 đoạn tô theo mức + nhãn mức.
+- **③ Ghép text vào ảnh, giữ tag:** teacher-card trên ảnh giờ = `ket_luan` (note) + 2 khối `bar5` mỗi khối có **tag** ("Kiến thức & kỹ năng" / "Thái độ học tập") + thanh mức 5 + **text nhận xét** GV nhập (`kien_thuc_ky_nang`/`thai_do`) ngay dưới. Bỏ `thaiDoPct`/`kienThuc` suy động khỏi modal.
+- tsc sạch. Push `main`.
