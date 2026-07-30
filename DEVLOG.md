@@ -3313,3 +3313,16 @@ Verify: card hiện "△ABC nhọn, ba đường cao... | tứ giác BFEC nội 
 - **② Skill bar → THANG 5, GV tự chọn** (bỏ % suy động): migration `202607291500_baocao_ph_muc_skill.sql` thêm `muc_kien_thuc`/`muc_thai_do` smallint (1..5, null=chưa chọn, áp lẻ OK). NhanXet: mỗi ô (Kiến thức & Kĩ năng · Thái độ) có **5 nút 1..5** (bấm lại = bỏ chọn) + nhãn `SKILL_MUC` (Cần cố gắng/Trung bình/Khá/Tốt/Xuất sắc), tự lưu. Ảnh: `bar5` = 5 đoạn tô theo mức + nhãn mức.
 - **③ Ghép text vào ảnh, giữ tag:** teacher-card trên ảnh giờ = `ket_luan` (note) + 2 khối `bar5` mỗi khối có **tag** ("Kiến thức & kỹ năng" / "Thái độ học tập") + thanh mức 5 + **text nhận xét** GV nhập (`kien_thuc_ky_nang`/`thai_do`) ngay dưới. Bỏ `thaiDoPct`/`kienThuc` suy động khỏi modal.
 - tsc sạch. Push `main`.
+
+### 07-29 (tiếp #2) — Report PH: chữ đầy đủ "Dạng bài …" + logo BK
+- **Trạng thái dạng bài ghi RÕ:** on-screen chips + status row trên ảnh đổi từ "27 dạng đạt/…" → **"27 Dạng bài Đạt yêu cầu · 4 Dạng bài Cần luyện tập · 3 Dạng bài còn Yếu"**. `statusC` (ảnh) restyle: số to + "DẠNG BÀI" + nhãn đầy đủ.
+- **Logo BK:** thay ô grid 4 màu abstract ở hero bằng **SVG dựng lại logo BK** (B hồng #e5389a · K cam #f7941e · tam giác + xanh #2bb6d6 · tròn − lục #7ac143) + chữ "BK ACADEMY" trắng. Dùng SVG (không nhúng `public/Logo.png`) vì popup html2canvas là about:blank → path tương đối vỡ, và wordmark xám của PNG chìm trên nền navy. tsc sạch.
+
+## 2026-07-30 — Elo: λ=0, reset niên khóa, FIX bug recalc, khởi động Mức 2 (pure-derive)
+- **Bối cảnh:** soi Elo 9A1 sau ET → DB là "hoá thạch" nhiều đời công thức (ảnh cũ ±40; engine hiện K30/cap20/P10/λ). Engine LÕI (`computeEloUpdate`, elo.js) ĐÃ đúng (pairwise A/E chuẩn hoá /(N−1) + P + λ). Vấn đề = số đã LƯU chưa tính lại theo engine cuối + đóng buổi lệch thứ tự (backdate) làm elo_before trôi.
+- **λ (LAMBDA) → 0 (config.js).** Test `scripts/_test_elo_logic.mjs` / 1852 lượt ET thật: λ=0.05 đẻ **32 nghịch lý "điểm cao mà Δ thấp hơn điểm thấp"** (vd 450đ elo1112→Δ−5 < 0đ→Δ+2) — λ trừ theo elo bất kể làm bài tốt/dở. Bỏ λ → 32→**1** (cái còn lại là Elo đúng bản chất: thắng-KỲ-VỌNG > điểm thô, cùng nguyên lý underdog). Nén-mean/lật-kèo CHUYỂN sang soft-reset đầu mùa.
+- **Reset Elo = NIÊN KHÓA (1/7), 1 năm/lần** (khớp SEASON). KHÔNG reset tháng; reset T7 chỉ là test. Soft-reset (`elo=1000+k·(elo_cuối−1000)`) thiết kế trước 1/7/2027.
+- **🐛 FIX bug THẬT `recalc_elo.mjs`:** `elo.set(kk,Ri+delta)` NGAY TRONG loop per-HS → HS sau tính `expected` trên elo ĐÃ cập nhật của HS trước (không phải mốc trước-buổi chung) → lệch ≤1 ở ~21% dòng, cascade. `computeEloUpdate` snapshot đầu buổi = ĐÚNG; recalc chép-lại-công-thức nên sai (đúng bẫy "trùng lặp đẻ divergence ẩn"). Fix: `snap`=elo đầu buổi. Harness sau fix: [1] stored==engine **0/1852**.
+- **Elo giờ CÓ THỂ âm** khi hụt kỳ vọng mạnh (rank≤−10) — đúng "thước trình thật"; động lực "đi học luôn dương" để EXP lo.
+- **Recalc --write (λ=0, đã fix):** 9A1 1243/1097/1170 · 9A2 1219/1078/1145 · 9S1 1178/1027/1125.
+- **MỨC 2 — Elo pure-derive** (khớp §1 "mastery không lưu, suy động"): chân lý=`gami_grades`+roster co_mat; `gami_elo`/`_history`=CACHE; đóng/mở/sửa ET → recompute-forward qua 1 hàm derive DUY NHẤT (`computeEloUpdate`), bỏ vá-delta. Diệt fossil+backdate+reopen-rollback. Bước 1: tách `src/gami/replay.js` (pure) → recalc & app dùng chung.

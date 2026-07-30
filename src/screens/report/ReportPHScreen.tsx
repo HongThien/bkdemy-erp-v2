@@ -169,9 +169,9 @@ function TongQuanCards({ tq, missCount }: { tq: TongQuanHS; missCount: number })
       <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
         <div className="mb-2.5 text-[14px] font-bold text-slate-700">🗺️ Bản đồ kiến thức</div>
         <div className="flex flex-wrap gap-2">
-          <span className="rounded-lg bg-emerald-50 px-3 py-1 text-[13px] font-bold text-emerald-700">{h.dat} dạng đạt</span>
-          <span className="rounded-lg bg-amber-50 px-3 py-1 text-[13px] font-bold text-amber-700">{h.can_luyen} cần luyện</span>
-          <span className="rounded-lg bg-rose-50 px-3 py-1 text-[13px] font-bold text-rose-700">{h.yeu} yếu</span>
+          <span className="rounded-lg bg-emerald-50 px-3 py-1 text-[13px] font-bold text-emerald-700">{h.dat} Dạng bài Đạt yêu cầu</span>
+          <span className="rounded-lg bg-amber-50 px-3 py-1 text-[13px] font-bold text-amber-700">{h.can_luyen} Dạng bài Cần luyện tập</span>
+          <span className="rounded-lg bg-rose-50 px-3 py-1 text-[13px] font-bold text-rose-700">{h.yeu} Dạng bài còn Yếu</span>
         </div>
         <div className="mt-1.5 text-[11px] text-slate-400">Đã tính cả bài tập về nhà và bổ trợ</div>
       </div>
@@ -299,8 +299,10 @@ function PhAnhModal({ hsId, mon, ym, hsName, lopTen, gvName, tq, missCount, onCl
     </div>
   )
   const statusC = (n: number, label: string, hx: string) => (
-    <div style={{ padding: '10px 7px', textAlign: 'center', background: '#fff', border: '1px solid #e8edf5', borderRadius: 15 }}>
-      <b style={{ display: 'block', fontSize: 17, color: hx, marginBottom: 4 }}>{n}</b><small style={{ fontSize: 9, color: '#70809b', fontWeight: 700 }}>{label}</small>
+    <div style={{ padding: '10px 6px 9px', textAlign: 'center', background: '#fff', border: '1px solid #e8edf5', borderRadius: 15 }}>
+      <b style={{ display: 'block', fontSize: 19, color: hx, lineHeight: 1 }}>{n}</b>
+      <small style={{ display: 'block', fontSize: 7.5, color: '#a0aabd', fontWeight: 800, letterSpacing: .3, marginTop: 3 }}>DẠNG BÀI</small>
+      <small style={{ display: 'block', fontSize: 9, color: '#5a6a83', fontWeight: 800, lineHeight: 1.15, marginTop: 1 }}>{label}</small>
     </div>
   )
   const cell = (lb: string, pct: number | null, sz: number) => <div><span style={{ fontSize: 7.5, color: '#94a3b8', display: 'block' }}>{lb}</span><span style={{ fontSize: sz, fontWeight: 900, color: hexPct(pct) }}>{s10(pct)}</span></div>
@@ -324,9 +326,17 @@ function PhAnhModal({ hsId, mon, ym, hsName, lopTen, gvName, tq, missCount, onCl
             <div style={{ position: 'absolute', width: 185, height: 185, right: -88, bottom: -125, border: '28px solid rgba(255,255,255,.08)', borderRadius: '50%' }} />
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'relative', zIndex: 1, marginBottom: 18 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 9, fontWeight: 900, letterSpacing: .5, fontSize: 13 }}>
-                <span style={{ display: 'grid', gridTemplateColumns: 'repeat(2,7px)', gridTemplateRows: 'repeat(2,7px)', gap: 2, padding: 6, background: 'rgba(255,255,255,.14)', border: '1px solid rgba(255,255,255,.22)', borderRadius: 10 }}>
-                  <i style={{ display: 'block', borderRadius: 2, background: '#53d7dc' }} /><i style={{ display: 'block', borderRadius: 2, background: '#f7c34d' }} /><i style={{ display: 'block', borderRadius: 2, background: '#ff7c63' }} /><i style={{ display: 'block', borderRadius: 2, background: '#9ec36e' }} />
-                </span>
+                {/* Logo BK: B hồng · K cam · tam giác + xanh · tròn − lục */}
+                <svg width={32} height={32} viewBox="0 0 36 36" style={{ display: 'block' }}>
+                  <rect x="1" y="1" width="15" height="15" rx="4.5" fill="#e5389a" />
+                  <text x="8.5" y="13" textAnchor="middle" fontSize="12" fontWeight="900" fill="#fff" fontFamily="Arial,Helvetica,sans-serif">B</text>
+                  <rect x="20" y="1" width="15" height="15" rx="6" fill="#f7941e" />
+                  <text x="27.5" y="13" textAnchor="middle" fontSize="12" fontWeight="900" fill="#fff" fontFamily="Arial,Helvetica,sans-serif">K</text>
+                  <path d="M8.5 19.5 L16.2 34 L0.8 34 Z" fill="#2bb6d6" />
+                  <text x="8.5" y="33" textAnchor="middle" fontSize="9" fontWeight="900" fill="#fff" fontFamily="Arial,Helvetica,sans-serif">+</text>
+                  <circle cx="27.5" cy="27.5" r="7.6" fill="#7ac143" />
+                  <text x="27.5" y="31.4" textAnchor="middle" fontSize="12" fontWeight="900" fill="#fff" fontFamily="Arial,Helvetica,sans-serif">−</text>
+                </svg>
                 <span>BK ACADEMY</span>
               </div>
               <span style={{ fontSize: 11, fontWeight: 800, padding: '7px 10px', borderRadius: 999, background: 'rgba(255,255,255,.14)', border: '1px solid rgba(255,255,255,.22)' }}>THÁNG {ym.split('-')[1]}/{ym.split('-')[0]}</span>
@@ -365,7 +375,7 @@ function PhAnhModal({ hsId, mon, ym, hsName, lopTen, gvName, tq, missCount, onCl
               {bar5('Thái độ học tập', bc.muc_thai_do, '#12a875', bc.thai_do)}
             </div> : null}
             {/* STATUS */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 7, marginBottom: 10 }}>{statusC(hh.dat, 'Đang đạt', '#12a875')}{statusC(hh.can_luyen, 'Cần luyện', '#e29a23')}{statusC(hh.yeu, 'Đang yếu', '#e45858')}</div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 7, marginBottom: 10 }}>{statusC(hh.dat, 'Đạt yêu cầu', '#12a875')}{statusC(hh.can_luyen, 'Cần luyện tập', '#e29a23')}{statusC(hh.yeu, 'Còn yếu', '#e45858')}</div>
             {/* ĐÁNH GIÁ */}
             <div style={{ background: '#fff', border: '1px solid #e8edf5', borderRadius: 20, padding: '13px 14px 10px', marginBottom: 10, boxShadow: '0 7px 18px rgba(35,63,104,.055)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 9, marginBottom: 8 }}>
