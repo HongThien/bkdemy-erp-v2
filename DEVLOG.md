@@ -3318,6 +3318,9 @@ Verify: card hiện "△ABC nhọn, ba đường cao... | tứ giác BFEC nội 
 - **Trạng thái dạng bài ghi RÕ:** on-screen chips + status row trên ảnh đổi từ "27 dạng đạt/…" → **"27 Dạng bài Đạt yêu cầu · 4 Dạng bài Cần luyện tập · 3 Dạng bài còn Yếu"**. `statusC` (ảnh) restyle: số to + "DẠNG BÀI" + nhãn đầy đủ.
 - **Logo BK:** thay ô grid 4 màu abstract ở hero bằng **SVG dựng lại logo BK** (B hồng #e5389a · K cam #f7941e · tam giác + xanh #2bb6d6 · tròn − lục #7ac143) + chữ "BK ACADEMY" trắng. Dùng SVG (không nhúng `public/Logo.png`) vì popup html2canvas là about:blank → path tương đối vỡ, và wordmark xám của PNG chìm trên nền navy. tsc sạch.
 
+### 07-29 (tiếp #4) — Giáo trình: chọn câu giữ ĐÚNG thứ tự click
+- **Thùy:** thứ tự câu trong builder phải theo thứ tự click (click trước hiện trước). `KhoPicker.confirm()` cũ nối câu mới theo **thứ tự KHO** (`all = groups.flatMap(...)`) → không khớp thứ tự bấm. **Fix:** `onConfirm([...sel])` — `sel` là Set nên giữ thứ tự chèn = thứ tự click (câu cũ giữ vị trí cũ, câu mới nối theo đúng thứ tự tick). Chuỗi lưu/hiện đã đúng sẵn: `setCauOfPhan` ghi `thu_tu:i` theo index mảng, load sắp theo `thu_tu`. Không đụng auto-suggest (`setDangOfBuoi` round-robin). tsc sạch.
+
 ### 07-29 (tiếp #3) — Trend KHÔNG so với tháng 6 (chưa chính thức)
 - **Thùy chốt:** tháng 6 = dữ liệu chưa chính thức (trước ngày khai mùa 1/7) → KHÔNG dùng làm mốc so sánh trend. `getTongQuanHS` (mastery.ts) tính trend = cửa sổ 30 ngày gần vs 30 ngày trước, mà "prior" (30–60 ngày trước) rơi trúng T6 khi hôm nay là cuối T7. **Fix:** thêm **sàn mùa** `seasonMs = seasonStartUtc(seasonOf(vnToday))` — cả `inRecent`/`inPrior` đều thêm điều kiện `t >= seasonMs`. Prior rơi hết vào trước mùa → rỗng → trend = null → pill "so kỳ trước" tự ẩn (đúng, không bịa mốc T6). Áp cho MỌI trend (hoàn thành + ET/BTVN/MT). Nhất quán với season-windowing của EXP/leaderboard. tsc sạch.
 

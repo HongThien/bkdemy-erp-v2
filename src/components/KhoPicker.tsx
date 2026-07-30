@@ -28,9 +28,9 @@ export function KhoPicker({ maDangs, selected, disabled = [], cauTbl = 'dai_cau_
   const toggle = (ma: string) => { if (blocked.has(ma)) return; setSel((s) => { const n = new Set(s); n.has(ma) ? n.delete(ma) : n.add(ma); return n }) }
   const toggleLoai = (v: string) => setFLoai((s) => { const n = new Set(s); n.has(v) ? n.delete(v) : n.add(v); return n })
   function confirm() {
-    const all = groups.flatMap((g) => g.caus.map((c) => c.ma_cau))
-    const ordered = [...selected.filter((s) => sel.has(s)), ...all.filter((m) => sel.has(m) && !selected.includes(m))]
-    onConfirm(ordered)
+    // Thứ tự = THỨ TỰ CLICK (Set giữ thứ tự chèn): câu đã chọn từ trước giữ đúng vị trí cũ,
+    // câu mới tick nối theo đúng thứ tự người bấm — "click trước hiện trước". KHÔNG sắp theo thứ tự kho.
+    onConfirm([...sel])
   }
   return (
     <div className="fixed inset-0 z-[70] bg-slate-900/50 backdrop-blur-sm" onClick={onClose}>
