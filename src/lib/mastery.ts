@@ -7,6 +7,7 @@
 // (chuẩn nhất) · et=2 · btvn/bt=1 (tự luyện).
 import { supabase } from './supabase'
 import { masteryOfDang, RESULT_VALUE, MASTERY_CONFIG } from '../gami/mastery.js'
+import { seasonOf, seasonStartUtc } from '../gami/season.js'
 import { khoCuaMon } from './tailieu'
 
 const LIMIT = 10000
@@ -191,8 +192,11 @@ export async function getTongQuanHS(hocSinhId: string, mon: string): Promise<Ton
     fetchBTEvals(hocSinhId),
   ])
   const now = Date.now(), D30 = 30 * 86400_000, cut1 = now - D30, cut2 = now - 2 * D30
-  const inRecent = (t: number) => t >= cut1
-  const inPrior = (t: number) => t >= cut2 && t < cut1
+  // SÀN MÙA: dữ liệu trước ngày khai mùa (1/7) = tháng 6 "chưa chính thức" → KHÔNG tính vào trend,
+  // KHÔNG làm mốc so sánh (Thùy chốt). Nếu cửa sổ "kỳ trước" rơi hết vào trước mùa → prior rỗng → trend null.
+  const seasonMs = Date.parse(seasonStartUtc(seasonOf(new Date(now + 7 * 3600_000).toISOString().slice(0, 10))))
+  const inRecent = (t: number) => t >= cut1 && t >= seasonMs
+  const inPrior = (t: number) => t >= cut2 && t < cut1 && t >= seasonMs
 
   // Raw theo NGUỒN (et/btvn/mt) — bucket cơ bản/nâng cao SAU khi có muc_do (chung 1 vòng lặp, đối xứng 3 nguồn).
   type Raw = { ma: string | null; value: number; t: string }
