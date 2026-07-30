@@ -466,17 +466,18 @@ function TrichPanel({ masterId, khoi, buois, onClose }: { masterId: string; khoi
   const soBuoiMaster = new Map(buois.map((b, i) => [b.marker.id, i + 1]))
   const sttLopCua = (markerId: string) => boLop.find((b) => b.nguon_buoi === markerId)?.stt
 
-  // ⭐ Ngày gán MẶC ĐỊNH = buổi TKB gần nhất CHƯA gán (Thùy: BTVN luôn làm vào ngày học/gần đó → khỏi
-  // bới cả list, tránh bấm nhầm sang tháng khác như 8A1 Buổi 7 gán nhầm CN 23/08 thay vì T5 23/07).
-  // Lấp tuần tự theo thứ tự buổi master: buổi chưa-gán thứ k → ngày trống thứ k (tăng dần). "Đã gán" tính
-  // theo BỘ GIÁO TRÌNH LỚP (mọi giáo trình, không riêng master này) để không cấp trùng ngày đã có buổi.
+  // ⭐ Ngày gán MẶC ĐỊNH = buổi TKB gần nhất CHƯA gán, tính TỪ HÔM NAY trở đi (Thùy: BTVN luôn làm vào
+  // ngày học/gần đó → khỏi bới cả list, tránh bấm nhầm sang tháng khác như 8A1 Buổi 7 gán nhầm CN 23/08).
+  // ⭐ 07-30 (Thùy): MỖI LẦN GÁN CHỈ 1 BUỔI → mọi dòng chưa-gán cùng mặc định ĐÚNG 1 ngày (hôm nay), KHÔNG
+  // nhảy tăng dần mỗi dòng sang các ngày sau. Gán xong 1 buổi → reload: ngày đó vào "đã gán", mặc định tự
+  // lùi sang ngày trống kế tiếp. "Đã gán" tính theo BỘ GIÁO TRÌNH LỚP (mọi giáo trình) để không cấp trùng.
   const daGan = new Set(boLop.map((b) => b.ngay))
-  const ngayTrong = tkbDates.filter((d) => !daGan.has(d))
+  const today = homNayVN()
+  const ngayMacDinh = tkbDates.find((d) => !daGan.has(d) && d >= today) ?? ''
   const defNgayByMarker = new Map<string, string>()
-  let kTrong = 0
   for (const b of buois) {
     if (state[b.marker.id]?.ngay) continue        // buổi này đã gán → không cần ngày mặc định
-    if (kTrong < ngayTrong.length) defNgayByMarker.set(b.marker.id, ngayTrong[kTrong++])
+    if (ngayMacDinh) defNgayByMarker.set(b.marker.id, ngayMacDinh)
   }
 
   return (
