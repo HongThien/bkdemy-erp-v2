@@ -236,7 +236,7 @@ function ETDoc({ ten, caus, ch, gv, badge, hoTen }: { ten: string; caus: CauHoi[
           <>
             {/* Chỉ "Học sinh" — bỏ "Lớp" (đã có trong tiêu đề, tránh lặp). */}
             <div className="pv-et-info">
-              <span className="pv-bt-field pv-et-name"><span className="pv-bt-lbl">Học sinh:</span><span className="pv-bt-fill">{hoTen ? <b className="pv-et-hoten">{hoTen}</b> : null}</span></span>
+              <span className="pv-bt-field pv-et-name"><span className="pv-bt-lbl">Học sinh:</span>{hoTen ? <b className="pv-et-hoten">{hoTen}</b> : <span className="pv-bt-fill" />}</span>
             </div>
             {/* ET chấm THEO CÂU: bảng ngang 2 hàng — trên = Câu i, dưới = ô trống điền Đ/S. Bao nhiêu câu bấy nhiêu cột. */}
             <table className="pv-et-score"><tbody>
@@ -294,6 +294,6 @@ const ET_CSS = `
 .pv-et .pv-cau .pv-math:first-child{break-after:avoid}
 /* Mỗi MÃ ĐỀ 1 trang mới (mỗi HS 1 phiếu riêng). */
 .pv-de-break{break-before:page}
-/* Họ tên HS in sẵn (chế độ in theo HS) — chữ nằm trên dòng kẻ. */
-.pv-et-hoten{font-weight:700;padding:0 4px}
+/* Họ tên HS in sẵn (chế độ in theo HS) — chữ đậm, cùng dòng với nhãn, KHÔNG dòng kẻ. */
+.pv-et-hoten{font-weight:700}
 `
