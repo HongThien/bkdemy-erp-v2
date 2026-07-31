@@ -68,7 +68,9 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
     const ch0 = full.taiLieu.cau_hinh ?? {}
     // Kiểu BK có thương hiệu riêng trong thân → BỎ dải header trên cùng của trang (tránh trùng logo/lớp·ngày).
     const ch = kieu === 'bk' ? { ...ch0, header: 'none' as const } : ch0
-    const css = buildPagedCss(full.taiLieu, ch, ch.mau || '#7c3aed') + ET_CSS
+    // BK: accent XANH LAM (chữ Phần/Câu theo tông BK) + kéo lề trên lên (đã bỏ header) + border đậm hơn.
+    const accent = kieu === 'bk' ? '#3b5bd8' : (ch.mau || '#7c3aed')
+    const css = buildPagedCss(full.taiLieu, ch, accent) + ET_CSS + (kieu === 'bk' ? ET_CSS_BK : '')
     const cssUrl = URL.createObjectURL(new Blob([css], { type: 'text/css' }))
     const html = srcRef.current.innerHTML
     // Race-safe: KHÔNG xoá DOM của container cũ — nếu Previewer của nó còn đang đo layout dở (paged.js
@@ -421,4 +423,13 @@ const ET_CSS = `
 .pv-bkh-qno{margin-bottom:6px;color:var(--navy);font-size:10.5px;font-weight:800;white-space:nowrap}
 .pv-bkh-status{display:flex;justify-content:center;gap:4px}
 .pv-bkh-circle{display:grid;place-items:center;width:20px;height:20px;border:1.5px solid #cfd4df;border-radius:50%;color:#737d91;font-size:9px;font-weight:900;line-height:1}
+`
+
+// Override CHỈ cho kiểu BK: kéo lề trên lên (đã bỏ header trên cùng) + border đậm/tối hơn 1 chút.
+const ET_CSS_BK = `
+@page{margin-top:8mm}
+.pv-bkh{border-width:1.5px;border-color:#c2cbdb;--line:#c9d2e0}
+.pv-bkh-mark,.pv-bkh-pill,.pv-bkh-student,.pv-bkh-assess,.pv-bkh-qcard{border-width:1.5px}
+.pv-bkh-field:not(:last-child)::after{width:1.5px}
+.pv-bkh-circle{border-width:2px;border-color:#b3bbca}
 `
