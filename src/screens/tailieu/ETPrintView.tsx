@@ -228,15 +228,15 @@ function ETDoc({ ten, caus, ch, gv, badge, hoTen }: { ten: string; caus: CauHoi[
     <div className="pv-et">
       <div className="pv-bt-head">
         <div className="pv-bt-titlewrap">
-          <div className="pv-bt-eyebrow">Đề ET{badge ? ` · ${badge}` : ''}{gv ? ' · Đáp án' : ''}</div>
-          <div className="pv-bt-title">{ten}</div>
+          {/* "ET 6S1 · ngày" → "Đề kiểm tra cuối giờ lớp 6S1 · ngày" (ngày đã ở tiêu đề → dưới không lặp lại). */}
+          <div className="pv-bt-title">{ten.replace(/^ET\s+/, 'Đề kiểm tra cuối giờ lớp ')}{gv ? ' · Đáp án' : ''}</div>
+          {badge && <div className="pv-et-made">{badge}</div>}
         </div>
         {!gv && (
           <>
-            {/* Họ tên + Lớp CÙNG 1 dòng */}
+            {/* Chỉ "Học sinh" — bỏ "Lớp" (đã có trong tiêu đề, tránh lặp). */}
             <div className="pv-et-info">
-              <span className="pv-bt-field pv-et-name"><span className="pv-bt-lbl">Họ và tên:</span><span className="pv-bt-fill">{hoTen ? <b className="pv-et-hoten">{hoTen}</b> : null}</span></span>
-              <span className="pv-bt-field pv-et-lop"><span className="pv-bt-lbl">Lớp:</span><span className="pv-bt-fill" /></span>
+              <span className="pv-bt-field pv-et-name"><span className="pv-bt-lbl">Học sinh:</span><span className="pv-bt-fill">{hoTen ? <b className="pv-et-hoten">{hoTen}</b> : null}</span></span>
             </div>
             {/* ET chấm THEO CÂU: bảng ngang 2 hàng — trên = Câu i, dưới = ô trống điền Đ/S. Bao nhiêu câu bấy nhiêu cột. */}
             <table className="pv-et-score"><tbody>
@@ -275,7 +275,9 @@ function ETDoc({ ten, caus, ch, gv, badge, hoTen }: { ten: string; caus: CauHoi[
 }
 
 const ET_CSS = `
-/* Họ tên + Lớp cùng 1 dòng (Họ tên co giãn, Lớp cố định). */
+/* Mã đề: dòng riêng dưới tiêu đề, in đậm, căn giữa. */
+.pv-et-made{text-align:center;font-size:12.5px;font-weight:700;color:#6d28d9;margin-top:2px;letter-spacing:.3px}
+/* Chỉ còn "Học sinh" (bỏ Lớp) — chiếm cả dòng. */
 .pv-et-info{display:flex;align-items:flex-end;gap:20px;margin:4px 0 11px}
 .pv-et-name{flex:1}
 .pv-et-lop{width:42mm}
