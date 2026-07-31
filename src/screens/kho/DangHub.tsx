@@ -2,6 +2,7 @@ import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 're
 import {
   listCauByDang, updateCau, deleteCau,
   buildClonePrompt, parseCloneJson, saveCloneBatch,
+  buildOcrGocPrompt, parseGocJson, buildCloneFromGocPrompt, parseVariantsJson, GOC_SCHEMA, VARIANTS_SCHEMA,
   buildBatchPrompt, parseBatchJson, parseStructuredText, saveCauBatch, callGeminiJson,
   CLONE_SCHEMA, BATCH_SCHEMA, callGeminiRich, buildIngestPrompt, parseIngestJson, INGEST_SCHEMA,
   uploadKhoImage, LOAI_CAU, type CauHoi, type MapRow,
@@ -322,6 +323,26 @@ function AiImportModal({ mode, dangChinh, tenDang, cauTbl, onClose, onSaved }: {
     try { applyJson(await callGeminiJson(effPrompt(), { model: safeModel, think: (isClone || giaiAI) ? 8192 : 0, schema: isClone ? CLONE_SCHEMA : BATCH_SCHEMA, files: files.map((f) => ({ mimeType: f.mimeType, dataBase64: f.dataBase64 })) })) }
     catch (e: any) { setError(e.message ?? String(e)) } finally { setBusy(false) }
   }
+  // ── CLONE 2 BƯỚC (Thùy 07-31) — bước 1 CHỈ bóc bài gốc để CHỐT; bước 2 clone TỪ TEXT gốc đã chốt. ──
+  const withImgShare = (ri: ReviewItem) => (shareImgDe && !ri.anhDe ? { ...ri, anhDe: shareImgDe } : ri) // gắn ảnh đề chung
+  async function runOcrGoc() {
+    setError(null); setParseErr(null); setBusy(true)
+    try {
+      const text = await callGeminiJson(buildOcrGocPrompt({ tenDang, loaiCau: loai }), { model, think: 0, schema: GOC_SCHEMA, files: files.map((f) => ({ mimeType: f.mimeType, dataBase64: f.dataBase64 })) })
+      setGoc(withImgShare(toRI(parseGocJson(text), true))); setItems([]); setShowVariants(false); setVi(0)
+    } catch (e: any) { setError(e.message ?? String(e)) } finally { setBusy(false) }
+  }
+  async function runCloneFromGoc() {
+    if (!goc) { setError('Chưa có bài gốc — bấm “① Nhận bài gốc” trước.'); return }
+    setError(null); setBusy(true)
+    try {
+      // Clone TỪ TEXT gốc đã chốt (KHÔNG gửi lại ảnh) → hết phụ thuộc OCR. LUÔN Flash + suy luận (generation).
+      const text = await callGeminiJson(buildCloneFromGocPrompt({ goc: toCND(goc), soBienThe, ghiChu: ghiChu.trim(), tenDang, loaiCau: loai }), { model: 'gemini-2.5-flash', think: 8192, schema: VARIANTS_SCHEMA })
+      const variants = parseVariantsJson(text).slice(0, soBienThe)
+      setItems(variants.map((v) => withImgShare({ ...toRI(v), nguonGiai: 'ai' }))); setShowVariants(true); setVi(0)
+      if (!variants.length) setError('AI không sinh được biến thể nào — thử lại hoặc sửa bài gốc.')
+    } catch (e: any) { setError(e.message ?? String(e)) } finally { setBusy(false) }
+  }
   // NHẬP CHUỖI CÂU từ ảnh/PDF = nhập chuỗi câu + PHÂN TÍCH HÌNH: render trang DPI cao → AI tách câu + bbox hình
   // → cắt hình gắn anh_de → vào ĐÚNG màn preview từng câu (CauEditor) như nhập chuỗi câu. Đa trang gộp hết.
   async function runAutoIngest() {
@@ -474,7 +495,15 @@ function AiImportModal({ mode, dangChinh, tenDang, cauTbl, onClose, onSaved }: {
                     <input type="checkbox" checked={hasHinh} onChange={(e) => setHasHinh(e.target.checked)} />📐 Có hình
                   </label>
                 )}
-                <button onClick={isClone ? runAuto : (hasHinh ? runAutoIngest : runAuto)} disabled={!files.length || busy} className="h-[34px] rounded-md bg-indigo-600 px-4 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40" title={isClone ? '' : hasHinh ? 'Tách câu + tự cắt & gắn hình' : 'Tách câu (chữ thuần)'}>{busy ? '⏳ Đang gọi…' : isClone ? '🪄 Tạo bảng AI' : hasHinh ? '🪄 Tách câu + hình' : '🪄 Tách câu'}</button>
+                {isClone ? (
+                  <>
+                    {/* 2 BƯỚC: ① bóc bài gốc để CHỐT chuẩn → ② clone theo gốc đã chốt (không phụ thuộc OCR nữa). */}
+                    <button onClick={runOcrGoc} disabled={!files.length || busy} className="h-[34px] rounded-md bg-slate-700 px-4 text-[13px] font-medium text-white shadow-sm hover:bg-slate-600 disabled:opacity-40" title="Bước 1: AI chỉ bóc BÀI GỐC từ ảnh — sửa/chốt cho chuẩn trước khi clone">{busy ? '⏳…' : '① Nhận bài gốc'}</button>
+                    <button onClick={runCloneFromGoc} disabled={!goc || busy} className="h-[34px] rounded-md bg-indigo-600 px-4 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40" title={goc ? 'Bước 2: sinh biến thể theo BÀI GỐC đã chốt (dùng text gốc, không đọc lại ảnh)' : 'Nhận & chốt bài gốc trước đã'}>{busy ? '⏳…' : `② Clone theo bài gốc${goc ? '' : ' (chốt gốc trước)'}`}</button>
+                  </>
+                ) : (
+                  <button onClick={hasHinh ? runAutoIngest : runAuto} disabled={!files.length || busy} className="h-[34px] rounded-md bg-indigo-600 px-4 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40" title={hasHinh ? 'Tách câu + tự cắt & gắn hình' : 'Tách câu (chữ thuần)'}>{busy ? '⏳ Đang gọi…' : hasHinh ? '🪄 Tách câu + hình' : '🪄 Tách câu'}</button>
+                )}
               </>
             ) : null}
           </div>
@@ -498,7 +527,7 @@ function AiImportModal({ mode, dangChinh, tenDang, cauTbl, onClose, onSaved }: {
           <div className="mt-1 flex min-h-0 flex-1 flex-col">
           {!parsed ? (
             <div className="flex flex-1 items-center justify-center rounded-xl border border-dashed border-slate-200 text-sm text-slate-400">
-              {method === 'text' ? 'Dán văn bản có cấu trúc rồi bấm “Tách câu”.' : method === 'manual' ? 'Dán JSON ở trên để xem trước.' : 'Chọn ảnh/PDF rồi “Tạo bảng AI”.'}
+              {method === 'text' ? 'Dán văn bản có cấu trúc rồi bấm “Tách câu”.' : method === 'manual' ? 'Dán JSON ở trên để xem trước.' : isClone ? 'Chọn ảnh bài gốc rồi bấm “① Nhận bài gốc”.' : 'Chọn ảnh/PDF rồi “Tách câu”.'}
             </div>
           ) : isClone ? (
             <div className="grid min-h-0 flex-1 grid-cols-2 gap-6">

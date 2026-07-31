@@ -379,6 +379,76 @@ export function parseCloneJson(text: string): { goc: CauNoiDung; variants: CauNo
   const variants = (Array.isArray(obj.variants) ? obj.variants : []).filter((v: any) => v?.de_bai).map(normCau)
   return { goc: normCau(bg), variants }
 }
+// ── 2 BƯỚC (Thùy 07-31): tách OCR bài gốc ↔ clone. Trước đây 1 call vừa bóc gốc vừa sinh biến thể → OCR
+// gốc sai kéo biến thể sai theo, sửa lại phải sinh lại cả mớ. Giờ: BƯỚC 1 chỉ bóc gốc (extraction, think 0)
+// → người CHỐT gốc chuẩn → BƯỚC 2 clone TỪ TEXT gốc đã chốt (generation, Flash + think), KHÔNG đọc lại ảnh. ──
+export function buildOcrGocPrompt(a: { tenDang: string; loaiCau: string }): string {
+  const f = loaiFields(a.loaiCau)
+  return [
+    'Bạn là trợ lý bóc đề toán tiểu học/THCS. Bên dưới là ẢNH 1 BÀI MẪU (có thể kèm sơ đồ).',
+    `Dạng bài: "${a.tenDang}". Loại câu: ${loaiVi(a.loaiCau)}.`,
+    '',
+    `NHIỆM VỤ DUY NHẤT: TRÍCH NGUYÊN VĂN bài mẫu thành các trường: ${f.spec}.`,
+    '⚠ GIỮ NGUYÊN văn đề mẫu, KHÔNG sửa chữ, KHÔNG tự giải khác, TUYỆT ĐỐI KHÔNG sinh thêm câu/biến thể nào.',
+    '',
+    f.ruleDapAn,
+    FMT_RULES,
+    '',
+    'Trả về JSON đúng format:',
+    `{ "bai_goc": ${f.obj} }`,
+  ].filter(Boolean).join('\n')
+}
+export function parseGocJson(text: string): CauNoiDung {
+  let t = text.trim()
+  const fence = t.match(/```(?:json)?\s*([\s\S]*?)```/i)
+  if (fence) t = fence[1].trim()
+  let obj: any
+  try { obj = lenientJsonParse(t) } catch (e: any) { throw new Error('JSON không hợp lệ: ' + e.message) }
+  const bg = obj.bai_goc ?? obj.baiGoc ?? obj
+  if (!bg || !bg.de_bai) throw new Error('Thiếu "bai_goc.de_bai" trong JSON.')
+  return normCau(bg)
+}
+export function buildCloneFromGocPrompt(a: { goc: CauNoiDung; soBienThe: number; ghiChu: string; tenDang: string; loaiCau: string }): string {
+  const f = loaiFields(a.loaiCau)
+  const g = a.goc
+  const gocText = [
+    'BÀI GỐC (người ra đề đã CHỐT chuẩn — clone phải bám ĐÚNG bài này, coi như văn bản gốc tuyệt đối):',
+    `de_bai: ${g.noi_dung}`,
+    g.lua_chon?.length ? `lua_chon: ${JSON.stringify(g.lua_chon)}` : '',
+    `dap_an: ${g.dap_an ?? ''}`,
+    `loi_giai: ${g.loi_giai ?? ''}`,
+  ].filter(Boolean).join('\n')
+  return [
+    'Bạn là chuyên gia ra đề toán tiểu học/THCS.',
+    `Dạng bài: "${a.tenDang}". Loại câu: ${loaiVi(a.loaiCau)}.`,
+    '',
+    gocText,
+    '',
+    `NHIỆM VỤ: Sinh ĐÚNG ${a.soBienThe} biến thể của BÀI GỐC trên (mảng "variants" có ĐÚNG ${a.soBienThe} phần tử, KHÔNG hơn KHÔNG kém). KHÔNG trả lại bài gốc.`,
+    '',
+    '⚠ RÀNG BUỘC BÁM BÀI GỐC (tuân thủ TUYỆT ĐỐI — quan trọng nhất):',
+    '- BÁM SÁT bài gốc: GIỮ NGUYÊN cấu trúc câu, phương pháp giải, SỐ BƯỚC và THỨ TỰ bước của lời giải. CHỈ thay con số / tên người / bối cảnh.',
+    '- CẤM: thêm bước, bớt bước, đổi cách giải, thêm dữ kiện/điều kiện/giả thiết KHÔNG có trong bài gốc, hay diễn giải dài hơn gốc. Lời giải biến thể phải SONG ÁNH từng bước với gốc, chỉ khác con số.',
+    '- SỐ LIỆU thay phải cho KẾT QUẢ ĐẸP (số nguyên hoặc phân số tối giản đơn giản giống gốc), CÙNG độ khó & CÙNG độ lớn. TUYỆT ĐỐI KHÔNG ra số lẻ/xấu — ra xấu thì THỬ bộ số khác cho tới khi đẹp.',
+    '- Nếu bài gốc không nói rõ một bước, biến thể CŨNG không tự bịa bước đó.',
+    '- ⚠ KHÔNG thêm nhãn ý con "a)","b)","c)"… vào đầu dòng.',
+    a.ghiChu ? `- ⚠ GHI CHÚ NGƯỜI RA ĐỀ = RÀNG BUỘC CỨNG, ưu tiên CAO NHẤT, áp cho MỌI biến thể: ${a.ghiChu}` : '',
+    '',
+    f.ruleDapAn,
+    FMT_RULES,
+    '',
+    'Trả về JSON đúng format:',
+    `{ "variants": [ ${f.obj} ] }`,
+  ].filter(Boolean).join('\n')
+}
+export function parseVariantsJson(text: string): CauNoiDung[] {
+  let t = text.trim()
+  const fence = t.match(/```(?:json)?\s*([\s\S]*?)```/i)
+  if (fence) t = fence[1].trim()
+  let obj: any
+  try { obj = lenientJsonParse(t) } catch (e: any) { throw new Error('JSON không hợp lệ: ' + e.message) }
+  return (Array.isArray(obj.variants) ? obj.variants : []).filter((v: any) => v?.de_bai).map(normCau)
+}
 export async function saveCloneBatch(a: {
   dangChinh: string; loaiCau: string; goc: CauNoiDung; variants: CauNoiDung[]
 }, tbl = 'dai_cau_hoi'): Promise<{ goc: string; soClone: number }> {
@@ -521,6 +591,9 @@ const CAU_ITEM_SCHEMA = { type: 'OBJECT', properties: {
   lua_chon: { type: 'ARRAY', items: { type: 'STRING' } },
 }, required: ['de_bai'] }
 export const CLONE_SCHEMA = { type: 'OBJECT', properties: { bai_goc: CAU_ITEM_SCHEMA, variants: { type: 'ARRAY', items: CAU_ITEM_SCHEMA } }, required: ['bai_goc', 'variants'] }
+// 2 bước: GOC = chỉ bóc bài gốc (bước 1) · VARIANTS = chỉ sinh biến thể từ gốc đã chốt (bước 2).
+export const GOC_SCHEMA = { type: 'OBJECT', properties: { bai_goc: CAU_ITEM_SCHEMA }, required: ['bai_goc'] }
+export const VARIANTS_SCHEMA = { type: 'OBJECT', properties: { variants: { type: 'ARRAY', items: CAU_ITEM_SCHEMA } }, required: ['variants'] }
 export const BATCH_SCHEMA = { type: 'OBJECT', properties: { cau_hoi: { type: 'ARRAY', items: CAU_ITEM_SCHEMA } }, required: ['cau_hoi'] }
 export const LYTHUYET_SCHEMA = { type: 'OBJECT', properties: { noi_dung: { type: 'STRING' } }, required: ['noi_dung'] }
 export async function callGeminiJson(prompt: string, opts?: { model?: string; files?: GeminiFile[]; think?: number; schema?: any }): Promise<string> {
