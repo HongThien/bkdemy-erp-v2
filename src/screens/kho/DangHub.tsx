@@ -557,6 +557,14 @@ function AiImportModal({ mode, dangChinh, tenDang, cauTbl, onClose, onSaved }: {
                       {items[vi] && <CauEditor item={items[vi]} fill onChange={(p) => setItems((a) => a.map((x, idx) => idx === vi ? { ...x, ...p } : x))} />}
                     </div>
                   </>
+                ) : items.length === 0 ? (
+                  /* Đã chốt gốc, CHƯA clone → nhắc bước ② + nút clone ngay tại chỗ. */
+                  <div className="flex min-h-0 flex-1 flex-col items-center justify-center rounded-xl border-2 border-dashed border-slate-200 bg-slate-50/50 px-6 text-center">
+                    <span className="text-3xl">✍️</span>
+                    <span className="mt-2 text-sm font-semibold text-slate-600">Sửa &amp; chốt bài gốc bên trái</span>
+                    <span className="mt-0.5 text-[12px] text-slate-400">chuẩn rồi bấm nút dưới để sinh <b>{soBienThe}</b> biến thể theo đúng bài gốc.</span>
+                    <button onClick={runCloneFromGoc} disabled={busy} className="mt-3 rounded-md bg-indigo-600 px-4 py-2 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">{busy ? '⏳ Đang clone…' : '② Clone theo bài gốc'}</button>
+                  </div>
                 ) : (
                   <button onClick={() => setShowVariants(true)} className="flex min-h-0 flex-1 flex-col items-center justify-center rounded-xl border-2 border-dashed border-indigo-200 bg-indigo-50/40 text-indigo-700 transition hover:bg-indigo-50">
                     <span className="text-3xl">✨</span>
