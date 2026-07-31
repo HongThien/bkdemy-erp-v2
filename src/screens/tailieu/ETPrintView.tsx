@@ -224,26 +224,33 @@ function ETDoc({ ten, caus, ch, gv, badge, hoTen }: { ten: string; caus: CauHoi[
   let sec = 0
   const part = () => { const i = sec++; return roman[i] ?? String(i + 1) }
   const GLBL = ['Trắc nghiệm', 'Trả lời ngắn', 'Tự luận']
+  // "ET 6S1 · 31/07/2026" → tên đề "Đề kiểm tra cuối giờ lớp 6S1" + ngày riêng (mỗi thứ 1 dòng ở cột phải).
+  const _dot = ten.indexOf(' · ')
+  const tenDe = (_dot >= 0 ? ten.slice(0, _dot) : ten).replace(/^ET\s+/, 'Đề kiểm tra cuối giờ lớp ')
+  const ngayDe = _dot >= 0 ? ten.slice(_dot + 3) : ''
   return (
     <div className="pv-et">
       <div className="pv-bt-head">
-        <div className="pv-bt-titlewrap">
-          {/* "ET 6S1 · ngày" → "Đề kiểm tra cuối giờ lớp 6S1 · ngày" (ngày đã ở tiêu đề → dưới không lặp lại). */}
-          <div className="pv-bt-title">{ten.replace(/^ET\s+/, 'Đề kiểm tra cuối giờ lớp ')}{gv ? ' · Đáp án' : ''}</div>
-          {badge && <div className="pv-et-made">{badge}</div>}
+        {/* 2 cột ngang: TRÁI = họ tên HS (tên to), PHẢI = tên đề (bé) · ngày · mã đề, mỗi thứ 1 dòng. */}
+        <div className="pv-et-head2">
+          {!gv && (
+            <div className="pv-et-hs">
+              <div className="pv-et-hs-lbl">Họ tên</div>
+              {hoTen ? <div className="pv-et-hs-name">{hoTen}</div> : <div className="pv-et-hs-blank" />}
+            </div>
+          )}
+          <div className="pv-et-de">
+            <div className="pv-et-de-ten">{tenDe}{gv ? ' · Đáp án' : ''}</div>
+            {ngayDe && <div className="pv-et-de-sub">{ngayDe}</div>}
+            {badge && <div className="pv-et-de-sub pv-et-made">{badge}</div>}
+          </div>
         </div>
         {!gv && (
-          <>
-            {/* Chỉ "Học sinh" — bỏ "Lớp" (đã có trong tiêu đề, tránh lặp). */}
-            <div className="pv-et-info">
-              <span className="pv-bt-field pv-et-name"><span className="pv-bt-lbl">Học sinh:</span>{hoTen ? <b className="pv-et-hoten">{hoTen}</b> : <span className="pv-bt-fill" />}</span>
-            </div>
-            {/* ET chấm THEO CÂU: bảng ngang 2 hàng — trên = Câu i, dưới = ô trống điền Đ/S. Bao nhiêu câu bấy nhiêu cột. */}
-            <table className="pv-et-score"><tbody>
-              <tr>{caus.map((_, i) => <th key={i}>Câu {i + 1}</th>)}</tr>
-              <tr>{caus.map((_, i) => <td key={i} />)}</tr>
-            </tbody></table>
-          </>
+          /* Bảng điểm THEO CÂU nằm DƯỚI CÙNG: 2 hàng — trên = Câu i, dưới = ô trống điền Đ/S. */
+          <table className="pv-et-score"><tbody>
+            <tr>{caus.map((_, i) => <th key={i}>Câu {i + 1}</th>)}</tr>
+            <tr>{caus.map((_, i) => <td key={i} />)}</tr>
+          </tbody></table>
         )}
       </div>
 
@@ -275,12 +282,16 @@ function ETDoc({ ten, caus, ch, gv, badge, hoTen }: { ten: string; caus: CauHoi[
 }
 
 const ET_CSS = `
-/* Mã đề: dòng riêng dưới tiêu đề, in đậm, căn giữa. */
-.pv-et-made{text-align:center;font-size:12.5px;font-weight:700;color:#6d28d9;margin-top:2px;letter-spacing:.3px}
-/* Chỉ còn "Học sinh" (bỏ Lớp) — chiếm cả dòng. */
-.pv-et-info{display:flex;align-items:flex-end;gap:20px;margin:4px 0 11px}
-.pv-et-name{flex:1}
-.pv-et-lop{width:42mm}
+/* Header 2 cột: TRÁI = họ tên HS (tên to), PHẢI = tên đề (bé) · ngày · mã đề (mỗi thứ 1 dòng). Bảng điểm ở DƯỚI. */
+.pv-et-head2{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;margin:2px 0 10px}
+.pv-et-hs{flex:1;min-width:0}
+.pv-et-hs-lbl{font-size:12px;font-weight:600;color:#5b6570}
+.pv-et-hs-name{font-size:19px;font-weight:800;color:#111;line-height:1.15;margin-top:1px;word-break:break-word}
+.pv-et-hs-blank{border-bottom:1.5px dotted #9aa6b2;height:20px;margin-top:6px;max-width:70mm}
+.pv-et-de{flex-shrink:0;max-width:56%;text-align:right}
+.pv-et-de-ten{font-size:13.5px;font-weight:700;color:var(--pv-accent,#6d28d9);line-height:1.2}
+.pv-et-de-sub{font-size:12px;color:#374151;margin-top:2px}
+.pv-et-made{font-weight:700;color:var(--pv-accent,#6d28d9)}
 /* Bảng điểm THEO CÂU: 2 hàng (Câu i / ô trống Đ-S), bao nhiêu câu bấy nhiêu cột.
    Cap rộng tối đa 60% (ít câu → ô to, nhiều câu → ô bé, nhưng KHÔNG quá rộng) · căn GIỮA. */
 .pv-et-score{width:60%;margin:0 auto;border-collapse:collapse;table-layout:fixed}
@@ -294,6 +305,4 @@ const ET_CSS = `
 .pv-et .pv-cau .pv-math:first-child{break-after:avoid}
 /* Mỗi MÃ ĐỀ 1 trang mới (mỗi HS 1 phiếu riêng). */
 .pv-de-break{break-before:page}
-/* Họ tên HS in sẵn (chế độ in theo HS) — chữ đậm, cùng dòng với nhãn, KHÔNG dòng kẻ. */
-.pv-et-hoten{font-weight:700}
 `
