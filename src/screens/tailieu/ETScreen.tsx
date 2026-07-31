@@ -46,6 +46,7 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
   const [printing, setPrinting] = useState(false)
   const [roster, setRoster] = useState<{ id: string; ho_ten: string; ma_hs: string | null }[]>([])
   const [classPrint, setClassPrint] = useState<{ id: string; ho_ten: string; maDe: number }[] | null>(null)
+  const [savedId, setSavedId] = useState<string | null>(et?.id ?? null)  // id doc đã lưu (create xong → update, không đẻ trùng)
   const [loading, setLoading] = useState(true)
   const [busy, setBusy] = useState(false)
   const [err, setErr] = useState<string | null>(null)
@@ -168,8 +169,12 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
   const deReady = !!ch.etMaDe && baseRows().length > 0 && oTrong().length === 0   // đủ 3 mã đề, không ô trống
   const setHsMa = (hsId: string, maDe: number) => setCh((c) => ({ ...c, hsMaDe: { ...(c.hsMaDe ?? {}), [hsId]: maDe } }))
   const raiTuDong = () => setCh((c) => { const m = { ...(c.hsMaDe ?? {}) }; roster.forEach((hs, i) => { m[hs.id] = (i % 3) + 1 }); return { ...c, hsMaDe: m } })
-  // In theo HS = mở PREVIEW từ dữ liệu đang soạn (in-memory, chưa cần lưu). HS chưa gán → mặc định mã 1.
-  const inTheoHS = (list: typeof roster) => setClassPrint(list.map((hs) => ({ id: hs.id, ho_ten: hs.ho_ten, maDe: ch.hsMaDe?.[hs.id] ?? 1 })))
+  // In theo HS = TỰ LƯU (giữ hsMaDe cho học bù) rồi mở preview. HS chưa gán → mặc định mã 1.
+  async function inTheoHS(list: typeof roster) {
+    const id = await persistET()
+    if (!id) return   // lưu lỗi / mã đề còn trống → đã báo, không in
+    setClassPrint(list.map((hs) => ({ id: hs.id, ho_ten: hs.ho_ten, maDe: ch.hsMaDe?.[hs.id] ?? 1 })))
+  }
   // TaiLieuFull DỰNG TỪ STATE để ETPrintView render preview không cần đọc DB (chưa lưu vẫn xem được).
   const previewFull = useMemo<TaiLieuFull>(() => {
     const chon = rows.filter((r) => r.maCau && cau[r.maCau!])
@@ -181,11 +186,13 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
     } as TaiLieuFull
   }, [rows, cau, ch, lop, ngay, mon, khoi, lopId, et])
 
-  async function luu() {
-    if (!lop) { setErr('Chọn lớp.'); return }
-    if (!ngay) { setErr('Chọn ngày buổi học.'); return }
+  // persistET = LƯU (create/update) không đóng/không reset → trả id đã lưu, null nếu chặn/lỗi. Dùng chung cho
+  // nút Lưu ET và In cả lớp/🖨 (Thùy 07-31: bấm in cả lớp phải TỰ LƯU, khỏi lưu-riêng rồi mới in được).
+  async function persistET(): Promise<string | null> {
+    if (!lop) { setErr('Chọn lớp.'); return null }
+    if (!ngay) { setErr('Chọn ngày buổi học.'); return null }
     const chon = rows.filter((r) => r.maCau) as { maDang: string | null; maCau: string }[]
-    if (!chon.length) { setErr('ET cần ít nhất 1 câu.'); return }
+    if (!chon.length) { setErr('ET cần ít nhất 1 câu.'); return null }
     setBusy(true); setErr(null)
     try {
       // ⭐ 07-20: GOM THEO NHÓM IN NGAY LÚC LƯU → `thu_tu` trong DB = đúng thứ tự sẽ in ra giấy.
@@ -204,7 +211,7 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
         setCau(bank)
       }
       const conThieu = chon.filter((r) => !bank[r.maCau]).map((r) => r.maCau)
-      if (conThieu.length) { setErr(`Không nạp được nội dung câu: ${conThieu.join(', ')} — chưa lưu. Thử lại.`); return }
+      if (conThieu.length) { setErr(`Không nạp được nội dung câu: ${conThieu.join(', ')} — chưa lưu. Thử lại.`); return null }
       // ── 3 MÃ ĐỀ: đề 2/3 phải phủ ĐÚNG bộ câu gốc hiện tại. Đổi câu gốc → sinh lại; còn TRỐNG → CHẶN lưu.
       const baseList = chon.map((r) => ({ maDang: r.maDang ?? bank[r.maCau]?.dang_chinh ?? '', maCau: r.maCau }))
       const baseSet = baseList.map((r) => r.maCau)
@@ -217,25 +224,30 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
         setCau((p) => { const n = { ...p }; for (const c of built.caus) n[c.ma_cau] = c; return n })
       }
       const soTrong = baseSet.filter((m) => { const a = chSave.etMaDe?.[m]; return !a || !a[0] || !a[1] }).length
-      if (soTrong) { setErr(`Mã đề 2/3 còn ${soTrong} ô TRỐNG (không đủ câu cùng dạng + cùng form) — bấm ✎ ở đề 2/đề 3 để chọn tay rồi lưu lại. Chưa lưu.`); return }
+      if (soTrong) { setErr(`Mã đề 2/3 còn ${soTrong} ô TRỐNG (không đủ câu cùng dạng + cùng form) — bấm ✎ ở đề 2/đề 3 để chọn tay rồi lưu lại. Chưa lưu.`); return null }
       const maCaus = sortETCaus(chon.map((r) => bank[r.maCau]), chSave).map((c) => c.ma_cau)
       const ten = `ET ${lop.ten_lop} · ${ngay.split('-').reverse().join('/')}`
-      if (editing) {
-        await updateET(et!.id, { ten, lop_id: lop.id, ngay, cau_hinh: chSave })
-        await setETCaus(et!.id, maCaus)
-        // ⭐ 07-12: link PDF phải CÓ SẴN ngay khi lưu xong, Thùy chỉ click để copy — không phải bấm
-        // "Lấy link" rồi chờ. Enqueue vào hàng đợi TOÀN CỤC (LinkGenWorker, mount ở App.tsx).
-        useStore.getState().enqueueLinkGen(et!.id, 'et')
-        onClose?.()
-        return
+      const id = savedId ?? et?.id ?? null
+      if (id) {
+        await updateET(id, { ten, lop_id: lop.id, ngay, cau_hinh: chSave })
+        await setETCaus(id, maCaus)
+        // ⭐ 07-12: link PDF có sẵn ngay khi lưu → enqueue hàng đợi TOÀN CỤC (LinkGenWorker, App.tsx).
+        useStore.getState().enqueueLinkGen(id, 'et')
+        return id
       }
       const created = await createET({ lopId: lop.id, ngay, ten, khoi: lop.khoi ?? '', mon: lop.mon })
       await setETCaus(created.id, maCaus)
       if (Object.keys(chSave).length) await updateET(created.id, { cau_hinh: chSave })
       useStore.getState().enqueueLinkGen(created.id, 'et')
-      resetForm()
-      setFlash('Đã lưu ET vào Kho tài liệu. Form đã reset để tạo ET mới.')
-    } catch (e: any) { setErr(e.message ?? String(e)) } finally { setBusy(false) }
+      setSavedId(created.id)   // create xong → lần lưu sau UPDATE, không đẻ doc trùng
+      return created.id
+    } catch (e: any) { setErr(e.message ?? String(e)); return null } finally { setBusy(false) }
+  }
+  async function luu() {
+    const id = await persistET()
+    if (!id) return
+    if (editing) { onClose?.(); return }   // sửa từ Kho → đóng builder
+    resetForm(); setSavedId(null); setFlash('Đã lưu ET vào Kho tài liệu. Form đã reset để tạo ET mới.')
   }
 
   if (loading) return <div className="p-8 text-sm text-slate-400">Đang tải…</div>
@@ -387,8 +399,8 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
       )}
       </div>
 
-      {printing && <ETPrintView id={et?.id ?? 'preview'} fullOverride={previewFull} varCauOverride={cau} onClose={() => setPrinting(false)} />}
-      {classPrint && <ETPrintView id={et?.id ?? 'preview'} fullOverride={previewFull} varCauOverride={cau} perHS={classPrint} onClose={() => setClassPrint(null)} />}
+      {printing && <ETPrintView id={savedId ?? et?.id ?? 'preview'} fullOverride={previewFull} varCauOverride={cau} onClose={() => setPrinting(false)} />}
+      {classPrint && <ETPrintView id={savedId ?? et?.id ?? 'preview'} fullOverride={previewFull} varCauOverride={cau} perHS={classPrint} onClose={() => setClassPrint(null)} />}
       {dangModal !== null && <DangPickerOne khoi={khoi} mon={mon} onClose={() => setDangModal(null)}
         onPick={(ma) => { const i = dangModal; setDangModal(null); pickDang(i, ma) }} />}
       {picker && <KhoPicker maDangs={[picker.maDang]} cauTbl={cauTbl} selected={rows[picker.idx].maCau ? [rows[picker.idx].maCau!] : []} onClose={() => setPicker(null)}
