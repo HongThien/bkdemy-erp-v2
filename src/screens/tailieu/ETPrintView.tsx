@@ -7,7 +7,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
-import { getTaiLieuFull, etGroupOf, type ETGroup, type TaiLieuFull } from '../../lib/tailieu'
+import { getTaiLieuFull, etGroupOf, khoCuaMon, type ETGroup, type TaiLieuFull, type CauHinh } from '../../lib/tailieu'
+import { fetchCausByMa } from '../../lib/ontap'
 import type { CauHoi } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
 import { CauItem, OptGrid, GvAnswer, WriteLines, splitStem, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChrome, printWithFilename } from './PrintView'
@@ -34,10 +35,27 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
   // Container ĐANG HIỂN THỊ (run mới nhất đã resolve xong) — uploadPagesAsLink/window.print CHỈ đọc trang
   // từ container này, KHÔNG quét cả dstRef (có thể còn container cũ ẩn/treo — xem comment effect dưới).
   const activeContainerRef = useRef<HTMLElement | null>(null)
+  // Câu của MÃ ĐỀ 2/3 (chỉ lưu ma_cau trong cau_hinh.etMaDe) — nạp nội dung để in. varReady chặn paged.js
+  // dựng trang TRƯỚC khi có câu 2/3 (không thì đề 2/3 in RỖNG rồi headless tự in mất).
+  const [varCau, setVarCau] = useState<Record<string, CauHoi>>({})
+  const [varReady, setVarReady] = useState(false)
   useEffect(() => { getTaiLieuFull(id).then(setFull).catch((e) => setErr(e.message ?? String(e))) }, [id])
+  useEffect(() => {
+    if (!full) return
+    setVarReady(false)
+    const ch = full.taiLieu.cau_hinh ?? {}
+    const need = new Set<string>()
+    for (const arr of Object.values(ch.etMaDe ?? {})) for (const m of arr) if (m) need.add(m)
+    if (!need.size) { setVarCau({}); setVarReady(true); return }
+    let alive = true
+    fetchCausByMa([...need], khoCuaMon(full.taiLieu.mon).cauTbl)
+      .then((cs) => { if (alive) { setVarCau(Object.fromEntries(cs.map((c) => [c.ma_cau, c]))); setVarReady(true) } })
+      .catch(() => { if (alive) setVarReady(true) })
+    return () => { alive = false }
+  }, [full])
 
   useEffect(() => {
-    if (!full || !srcRef.current || !dstRef.current) return
+    if (!full || !varReady || !srcRef.current || !dstRef.current) return
     let cancelled = false
     setRendering(true)
     const ch = full.taiLieu.cau_hinh ?? {}
@@ -81,7 +99,7 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
       })
       .finally(() => URL.revokeObjectURL(cssUrl))
     return () => { cancelled = true; clearTimeout(watchdog) }
-  }, [full, gv])
+  }, [full, gv, varReady])
 
   const seg = (on: boolean) => `rounded-md px-3 py-1 text-[13px] font-medium transition ${on ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`
   const printFileName = () => `${full?.taiLieu.ten ?? ''}${gv ? ' - Bản GV' : ''}`
@@ -112,7 +130,7 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
   if (headless) return createPortal(
     <>
       <div style={{ position: 'fixed', top: 0, left: 0, zIndex: 88, width: '210mm', background: '#fff' }}><div ref={dstRef} className="pv-pages" /></div>
-      <div ref={srcRef} className="pv-src" aria-hidden>{full && <ETDoc full={full} gv={gv} />}</div>
+      <div ref={srcRef} className="pv-src" aria-hidden>{full && <ETAllDe full={full} gv={gv} varCau={varCau} />}</div>
       <div className="no-print fixed inset-0 z-[95] flex items-center justify-center bg-white">
         <div className="rounded-xl border border-slate-200 bg-white px-6 py-4 text-sm font-medium text-slate-700 shadow-xl">
           {dlErr ? <span className="text-rose-600">{dlErr}</span> : linkOnly ? <>⏳ Đang lấy link…</> : <>⏳ Đang chuẩn bị in{pages ? ` (${pages} trang)` : ''}…</>}
@@ -143,17 +161,30 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
           : !full ? <p className="text-center text-slate-400">Đang tải…</p>
           : <div ref={dstRef} className="pv-pages" />}
       </div>
-      <div ref={srcRef} className="pv-src" aria-hidden>{full && <ETDoc full={full} gv={gv} />}</div>
+      <div ref={srcRef} className="pv-src" aria-hidden>{full && <ETAllDe full={full} gv={gv} varCau={varCau} />}</div>
       <style>{CHROME_CSS}</style>
     </div>,
     document.body,
   )
 }
 
-function ETDoc({ full, gv }: { full: TaiLieuFull; gv: boolean }) {
+// 3 MÃ ĐỀ (Thùy 07-31): đề gốc = câu phan 'custom'; đề 2/3 = thay từng câu bằng ma_cau trong etMaDe
+// (neo theo CÂU GỐC, đúng thứ tự gốc → cùng nhóm form → in ra 3 phiếu cấu trúc y hệt, khác câu). ET cũ
+// (không etMaDe / chưa đủ) → in 1 đề như trước (backward-compatible).
+function ETAllDe({ full, gv, varCau }: { full: TaiLieuFull; gv: boolean; varCau: Record<string, CauHoi> }) {
   const ch = full.taiLieu.cau_hinh ?? {}
+  const base = full.phans.find((p) => p.loai_phan === 'custom')?.caus ?? []
+  const etMaDe = ch.etMaDe
+  const complete = !!etMaDe && base.length > 0 && base.every((c) => { const a = etMaDe[c.ma_cau]; return a && a[0] && a[1] })
+  const build = (v: number) => (complete ? (base.map((c) => varCau[etMaDe![c.ma_cau][v] as string]).filter(Boolean) as CauHoi[]) : [])
+  const des = complete
+    ? [{ label: 'Mã đề 1', caus: base }, { label: 'Mã đề 2', caus: build(0) }, { label: 'Mã đề 3', caus: build(1) }]
+    : [{ label: '', caus: base }]
+  return <>{des.map((d, i) => <div key={i} className={i ? 'pv-de-break' : ''}><ETDoc ten={full.taiLieu.ten} caus={d.caus} ch={ch} gv={gv} badge={d.label} /></div>)}</>
+}
+
+function ETDoc({ ten, caus, ch, gv, badge }: { ten: string; caus: CauHoi[]; ch: CauHinh; gv: boolean; badge?: string }) {
   const lines = ch.btvnLinesByCau ?? {}
-  const caus = full.phans.find((p) => p.loai_phan === 'custom')?.caus ?? []
   // ⭐ 07-20: KHÔNG gom lại theo loại ở đây nữa. Thứ tự in = ĐÚNG `thu_tu` của DB (đã gom theo nhóm
   // từ lúc LƯU — sortETCaus trong ETScreen.luu). Trước đây gom ở render nên "Câu 3" trên giấy khác
   // "Câu 3" ở bảng phiếu chấm / màn Chấm ET / ET online → chấm nhầm câu → sai ma_dang → bẩn mastery.
@@ -176,8 +207,8 @@ function ETDoc({ full, gv }: { full: TaiLieuFull; gv: boolean }) {
     <div className="pv-et">
       <div className="pv-bt-head">
         <div className="pv-bt-titlewrap">
-          <div className="pv-bt-eyebrow">Đề ET{gv ? ' · Đáp án' : ''}</div>
-          <div className="pv-bt-title">{full.taiLieu.ten}</div>
+          <div className="pv-bt-eyebrow">Đề ET{badge ? ` · ${badge}` : ''}{gv ? ' · Đáp án' : ''}</div>
+          <div className="pv-bt-title">{ten}</div>
         </div>
         {!gv && (
           <>
@@ -238,4 +269,6 @@ const ET_CSS = `
 /* Câu CHẢY liên tục: cho tách ngang trang thay vì nhảy cả câu → KHÔNG bỏ trống cuối trang. */
 .pv-et .pv-cau{break-inside:auto}
 .pv-et .pv-cau .pv-math:first-child{break-after:avoid}
+/* Mỗi MÃ ĐỀ 1 trang mới (mỗi HS 1 phiếu riêng). */
+.pv-de-break{break-before:page}
 `

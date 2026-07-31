@@ -6,7 +6,7 @@
 import { useEffect, useState } from 'react'
 import {
   createET, updateET, getTaiLieuFull, setETCaus, suggestCauForDang, khoCuaMon,
-  maET, ET_FORMS, etFormOf, sortETCaus, type ETDoc, type CauHinh, type ETForm as ETFormKind,
+  maET, ET_FORMS, etFormOf, canBeETForm, sortETCaus, type ETDoc, type CauHinh, type ETForm as ETFormKind,
 } from '../../lib/tailieu'
 import { listLop, type Lop } from '../../lib/nhansu'
 import { listCauByDang, LOAI_CAU, type CauHoi } from '../../lib/kho/api'
@@ -40,6 +40,7 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
   const [dangOpts, setDangOpts] = useState<{ ma_dang: string; ten_dang: string; ten_chuyen_de: string }[]>([])
   const [ch, setCh] = useState<CauHinh>({})
   const [picker, setPicker] = useState<{ idx: number; maDang: string } | null>(null)
+  const [varPicker, setVarPicker] = useState<{ baseMaCau: string; v: number; maDang: string; form: ETFormKind } | null>(null)
   const [dangModal, setDangModal] = useState<number | null>(null)
   const [printing, setPrinting] = useState(false)
   const [loading, setLoading] = useState(true)
@@ -99,6 +100,58 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
   const setLines = (maCau: string, n: number) => setCh((c) => ({ ...c, btvnLinesByCau: { ...(c.btvnLinesByCau ?? {}), [maCau]: n } }))
   const setForm = (maCau: string, f: ETFormKind) => setCh((c) => ({ ...c, etFormByCau: { ...(c.etFormByCau ?? {}), [maCau]: f } }))
 
+  // ── 3 MÃ ĐỀ (Thùy 07-31) — đề GỐC = rows; đề 2/3 sinh tự động: mỗi câu gốc → câu KHÁC cùng dạng+form.
+  // Neo theo CÂU GỐC (key ma_cau gốc). Hàm PURE (không setState) để dùng lại được ở luu(). ──
+  async function buildMaDe(base: { maDang: string; maCau: string }[], baseCh: CauHinh): Promise<{ ch: CauHinh; caus: CauHoi[] }> {
+    const pools: Record<string, CauHoi[]> = {}
+    for (const md of new Set(base.map((b) => b.maDang))) pools[md] = await listCauByDang(md, cauTbl)
+    const allCau = Object.values(pools).flat()
+    const byMa = new Map(allCau.map((c) => [c.ma_cau, c]))
+    const etFormByCau: Record<string, string> = { ...(baseCh.etFormByCau ?? {}) }
+    const etMaDe: Record<string, (string | null)[]> = {}
+    const used = new Set<string>(base.map((b) => b.maCau))   // loại mọi câu GỐC → đề 2/3 luôn khác đề gốc
+    for (const b of base) {
+      const baseCau = byMa.get(b.maCau) ?? cau[b.maCau]
+      const form: ETFormKind = baseCau ? etFormOf(baseCau, baseCh) : 'tra_loi_ngan'
+      const picks: (string | null)[] = []
+      for (let v = 0; v < 2; v++) {
+        const cand = (pools[b.maDang] ?? []).find((c) => !used.has(c.ma_cau) && canBeETForm(c, form))
+        if (cand) { used.add(cand.ma_cau); etFormByCau[cand.ma_cau] = form; picks.push(cand.ma_cau) }
+        else picks.push(null)   // hết câu cùng dạng+form → TRỐNG (chặn lưu, người dùng chọn tay)
+      }
+      etMaDe[b.maCau] = picks
+    }
+    return { ch: { ...baseCh, etFormByCau, etMaDe }, caus: allCau }
+  }
+  const baseRows = () => rows.filter((r) => r.maCau && r.maDang).map((r) => ({ maDang: r.maDang!, maCau: r.maCau! }))
+  async function sinhMaDe() {
+    const base = baseRows()
+    if (!base.length) return
+    const { ch: chNew, caus } = await buildMaDe(base, ch)
+    setCau((p) => { const n = { ...p }; for (const c of caus) n[c.ma_cau] = c; return n })
+    setCh(chNew)
+  }
+  // Gán tay 1 ô mã đề (đề 2/3) khi TRỐNG hoặc muốn đổi — ép cùng form với câu gốc.
+  function setVar(baseMaCau: string, v: number, maCau: string, form: ETFormKind) {
+    setCh((c) => {
+      const cur = c.etMaDe?.[baseMaCau] ?? [null, null]
+      const next = [...cur]; next[v] = maCau
+      return { ...c, etMaDe: { ...(c.etMaDe ?? {}), [baseMaCau]: next }, etFormByCau: { ...(c.etFormByCau ?? {}), [maCau]: form } }
+    })
+  }
+  // Câu đã dùng ở BẤT KỲ đề nào (gốc + 2/3) — cấm chọn lại để 3 đề không đụng câu nhau.
+  const usedMoiDe = (): Set<string> => {
+    const s = new Set<string>(rows.map((r) => r.maCau).filter(Boolean) as string[])
+    for (const arr of Object.values(ch.etMaDe ?? {})) for (const m of arr) if (m) s.add(m)
+    return s
+  }
+  // Danh sách ô TRỐNG (đề 2/3 chưa có câu) theo câu gốc đang có — dùng để chặn lưu + cảnh báo.
+  const oTrong = (chk: CauHinh = ch): { maCau: string; v: number }[] => {
+    const out: { maCau: string; v: number }[] = []
+    for (const r of baseRows()) { const arr = chk.etMaDe?.[r.maCau]; for (let v = 0; v < 2; v++) if (!arr || !arr[v]) out.push({ maCau: r.maCau, v }) }
+    return out
+  }
+
   function resetForm() { setLopId(null); setNgay(''); setRows(blankRows()); setCau({}); setCh({}) }
   async function luu() {
     if (!lop) { setErr('Chọn lớp.'); return }
@@ -124,10 +177,23 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
       }
       const conThieu = chon.filter((r) => !bank[r.maCau]).map((r) => r.maCau)
       if (conThieu.length) { setErr(`Không nạp được nội dung câu: ${conThieu.join(', ')} — chưa lưu. Thử lại.`); return }
-      const maCaus = sortETCaus(chon.map((r) => bank[r.maCau]), ch).map((c) => c.ma_cau)
+      // ── 3 MÃ ĐỀ: đề 2/3 phải phủ ĐÚNG bộ câu gốc hiện tại. Đổi câu gốc → sinh lại; còn TRỐNG → CHẶN lưu.
+      const baseList = chon.map((r) => ({ maDang: r.maDang ?? bank[r.maCau]?.dang_chinh ?? '', maCau: r.maCau }))
+      const baseSet = baseList.map((r) => r.maCau)
+      const curDe = ch.etMaDe ?? {}
+      const stale = baseSet.some((m) => !curDe[m]) || Object.keys(curDe).some((k) => !baseSet.includes(k))
+      let chSave = ch
+      if (stale) {
+        const built = await buildMaDe(baseList, ch)
+        chSave = built.ch; setCh(chSave)
+        setCau((p) => { const n = { ...p }; for (const c of built.caus) n[c.ma_cau] = c; return n })
+      }
+      const soTrong = baseSet.filter((m) => { const a = chSave.etMaDe?.[m]; return !a || !a[0] || !a[1] }).length
+      if (soTrong) { setErr(`Mã đề 2/3 còn ${soTrong} ô TRỐNG (không đủ câu cùng dạng + cùng form) — bấm ✎ ở đề 2/đề 3 để chọn tay rồi lưu lại. Chưa lưu.`); return }
+      const maCaus = sortETCaus(chon.map((r) => bank[r.maCau]), chSave).map((c) => c.ma_cau)
       const ten = `ET ${lop.ten_lop} · ${ngay.split('-').reverse().join('/')}`
       if (editing) {
-        await updateET(et!.id, { ten, lop_id: lop.id, ngay, cau_hinh: ch })
+        await updateET(et!.id, { ten, lop_id: lop.id, ngay, cau_hinh: chSave })
         await setETCaus(et!.id, maCaus)
         // ⭐ 07-12: link PDF phải CÓ SẴN ngay khi lưu xong, Thùy chỉ click để copy — không phải bấm
         // "Lấy link" rồi chờ. Enqueue vào hàng đợi TOÀN CỤC (LinkGenWorker, mount ở App.tsx).
@@ -137,7 +203,7 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
       }
       const created = await createET({ lopId: lop.id, ngay, ten, khoi: lop.khoi ?? '', mon: lop.mon })
       await setETCaus(created.id, maCaus)
-      if (Object.keys(ch).length) await updateET(created.id, { cau_hinh: ch })
+      if (Object.keys(chSave).length) await updateET(created.id, { cau_hinh: chSave })
       useStore.getState().enqueueLinkGen(created.id, 'et')
       resetForm()
       setFlash('Đã lưu ET vào Kho tài liệu. Form đã reset để tạo ET mới.')
@@ -171,13 +237,24 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
           {flash && <div className="mb-3 rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-[13px] font-medium text-emerald-700">✓ {flash}</div>}
           {err && <div className="mb-3 rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[13px] text-rose-600">{err}</div>}
           <p className="mb-3 text-[12px] text-slate-400">Mỗi câu chọn 1 dạng → hệ gợi ý câu <b>ít dùng nhất</b> (đổi được). Câu không trùng nhau trong đề.{!khoi && <span className="text-amber-600"> Chọn <b>lớp</b> trước để chọn dạng.</span>}</p>
+          {soCau > 0 && (() => { const t = oTrong().length; const gen = !!(ch.etMaDe && Object.keys(ch.etMaDe).length)
+            return (
+              <div className="mb-3 flex flex-wrap items-center gap-2 rounded-lg border border-violet-100 bg-violet-50/40 px-3 py-2">
+                <span className="text-[12px] font-semibold text-violet-700">🧩 3 mã đề</span>
+                <span className="text-[11px] text-slate-500">Đề gốc = các câu trên; đề 2 &amp; 3 tự sinh — cùng dạng + cùng form, khác câu (mỗi HS 1 mã).</span>
+                <button onClick={sinhMaDe} className="ml-auto rounded-md border border-violet-300 bg-white px-2.5 py-1 text-[11px] font-medium text-violet-700 hover:bg-violet-100">🎲 {gen ? 'Sinh lại' : 'Sinh'} đề 2 &amp; 3</button>
+                {t ? <span className="rounded bg-rose-50 px-2 py-0.5 text-[11px] font-medium text-rose-600">{t} ô trống — chọn tay trước khi lưu</span>
+                  : gen ? <span className="rounded bg-emerald-50 px-2 py-0.5 text-[11px] font-medium text-emerald-600">✓ đủ 3 mã đề</span> : null}
+              </div>
+            ) })()}
           <div className="space-y-2">
             {rows.map((r, i) => {
               const c = r.maCau ? cau[r.maCau] : null
               const form = c ? etFormOf(c, ch) : null
               const formOpts = ET_FORMS.filter((f) => f.v !== 'trac_nghiem' || !!(c?.lua_chon && c.lua_chon.length))
               return (
-                <div key={i} className="flex items-start gap-2 rounded-xl border border-slate-200 bg-white p-2.5">
+                <div key={i} className="rounded-xl border border-slate-200 bg-white p-2.5">
+                  <div className="flex items-start gap-2">
                   <span className="mt-1.5 w-6 shrink-0 text-center text-[13px] font-bold text-violet-600">{i + 1}</span>
                   <button onClick={() => khoi && setDangModal(i)} disabled={!khoi} className="w-56 shrink-0 rounded-md border border-slate-300 bg-white px-2.5 py-2 text-left text-[13px] hover:border-indigo-400 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-300">
                     {r.maDang ? <span className="text-slate-700">{tenDang(r.maDang)}</span> : <span className={khoi ? 'text-indigo-500' : ''}>{khoi ? '+ chọn dạng…' : 'chọn lớp trước'}</span>}
@@ -211,6 +288,32 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
                     </div>
                   )}
                   <button onClick={() => xoaRow(i)} title="Xoá hàng" className="shrink-0 px-1 pt-1 text-[13px] text-slate-300 hover:text-rose-600">✕</button>
+                  </div>
+                  {/* Mã đề 2 & 3 — câu khác cùng dạng + cùng form với câu gốc; TRỐNG thì chặn lưu, chọn tay. */}
+                  {c && (
+                    <div className="mt-2 ml-8 space-y-1 border-t border-dashed border-slate-100 pt-2">
+                      {[0, 1].map((v) => {
+                        const vm = ch.etMaDe?.[c.ma_cau]?.[v] ?? null
+                        const vc = vm ? cau[vm] : null
+                        const f = etFormOf(c, ch)
+                        return (
+                          <div key={v} className="flex items-center gap-2 text-[12px]">
+                            <span className="shrink-0 rounded bg-slate-100 px-1.5 py-0.5 text-[10px] font-medium text-slate-500">Mã đề {v + 2}</span>
+                            {vm ? (
+                              <>
+                                <span className="shrink-0 rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[10px] text-slate-400">{vm}</span>
+                                <span className="min-w-0 flex-1 truncate text-slate-600">{vc ? <MathText>{vc.noi_dung}</MathText> : '…'}</span>
+                              </>
+                            ) : (
+                              <span className="min-w-0 flex-1 font-medium text-rose-500">⚠ TRỐNG — chưa có câu cùng dạng + form khác</span>
+                            )}
+                            <button onClick={() => setVarPicker({ baseMaCau: c.ma_cau, v, maDang: r.maDang ?? c.dang_chinh, form: f })}
+                              className="shrink-0 rounded-md border border-slate-300 px-2 py-0.5 text-[11px] font-medium text-slate-600 hover:border-violet-400">✎ {vm ? 'Đổi' : 'Chọn'}</button>
+                          </div>
+                        )
+                      })}
+                    </div>
+                  )}
                 </div>
               )
             })}
@@ -229,6 +332,19 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
           if (pick) await ensureCache(picker.maDang)
           setRows((rs) => rs.map((x, i) => (i === picker.idx ? { ...x, maCau: pick } : x)))
           setPicker(null)
+        }} />}
+      {varPicker && <KhoPicker maDangs={[varPicker.maDang]} cauTbl={cauTbl}
+        selected={ch.etMaDe?.[varPicker.baseMaCau]?.[varPicker.v] ? [ch.etMaDe[varPicker.baseMaCau][varPicker.v]!] : []}
+        disabled={[...usedMoiDe()]} onClose={() => setVarPicker(null)}
+        onConfirm={async (m) => {
+          const used = usedMoiDe()
+          const pick = m.find((x) => !used.has(x)) ?? m[0] ?? null
+          if (pick) {
+            const list = await listCauByDang(varPicker.maDang, cauTbl)
+            setCau((p) => ({ ...p, ...Object.fromEntries(list.map((cc) => [cc.ma_cau, cc])) }))
+            setVar(varPicker.baseMaCau, varPicker.v, pick, varPicker.form)
+          }
+          setVarPicker(null)
         }} />}
     </div>
   )
