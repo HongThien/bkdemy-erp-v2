@@ -4,6 +4,9 @@ import { Previewer } from 'pagedjs'
 import { getTaiLieuFull, setTaiLieuFileUrl, DEFAULT_BTVN_LINES, kieuCols, type TaiLieuFull, type PhanResolved } from '../../lib/tailieu'
 import type { CauHinh } from '../../lib/tailieu'
 import { listLop } from '../../lib/nhansu'
+import { hsCoMatCuaBuoi, ngayBuoiHopLeCuaLop } from '../../lib/gami'
+import { congNgay } from '../../lib/tuan'
+import { BK_CSS, BtvnBkHead } from './bkPrint'
 import { MathText } from '../kho/ui'
 import { uploadKhoFile } from '../../lib/kho/api'
 import type { CauHoi } from '../../lib/kho/api'
@@ -146,6 +149,10 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly,
   const [err, setErr] = useState<string | null>(null)
   const [gv, setGv] = useState(false) // false = bản HS · true = bản GV
   const [scope, setScope] = useState<'all' | 'giaotrinh' | 'btvn'>('all') // tách quyển: giáo trình (LT+luyện) vs BTVN riêng
+  const [kieu, setKieu] = useState<'gon' | 'bk'>('bk')   // đầu phiếu BTVN: gọn (cũ) / BK (mới). Chỉ áp cho doc BTVN.
+  const [perHS, setPerHS] = useState(false)              // in cả lớp: mỗi HS có mặt 1 phiếu, tên in sẵn
+  const [roster, setRoster] = useState<{ id: string; ho_ten: string; ma_hs: string | null }[]>([])
+  const [ngayNop, setNgayNop] = useState('')             // ngày nộp = buổi TKB kế tiếp − 1 ngày (dd/mm/yyyy)
   const lt = full?.taiLieu.cau_hinh?.inLyThuyet !== false // kèm LÝ THUYẾT = SETTING của giáo trình (default có); trích xuất kế thừa
   const buoiTitle = onlyBuoiId ? full?.phans.find((p) => p.id === onlyBuoiId)?.tieu_de : undefined
   const [pages, setPages] = useState(0)
@@ -178,6 +185,20 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly,
   }, [id])
   // Doc 'btvn' (trích xuất) → chỉ có phần BTVN → mặc định scope BTVN.
   useEffect(() => { if (full?.taiLieu.loai === 'btvn') setScope('btvn') }, [full])
+  // BTVN: nạp HS có mặt (in tên sẵn) + tính NGÀY NỘP = buổi TKB kế tiếp − 1 ngày.
+  useEffect(() => {
+    const tl = full?.taiLieu as { loai?: string; lop_id?: string | null; ngay?: string | null } | undefined
+    if (tl?.loai !== 'btvn' || !tl.lop_id || !tl.ngay) { setRoster([]); setNgayNop(''); return }
+    let alive = true
+    const lopId = tl.lop_id, ngay = tl.ngay
+    hsCoMatCuaBuoi(lopId, ngay).then((r) => { if (alive) setRoster(r) }).catch(() => { if (alive) setRoster([]) })
+    ngayBuoiHopLeCuaLop(lopId, ngay, congNgay(ngay, 120)).then((list) => {
+      if (!alive) return
+      const next = list.map((x) => x.ngay).find((d) => d > ngay)   // buổi TKB đầu tiên SAU ngày phát
+      setNgayNop(next ? congNgay(next, -1).split('-').reverse().join('/') : '')
+    }).catch(() => { if (alive) setNgayNop('') })
+    return () => { alive = false }
+  }, [full])
 
   // Phân trang THẬT bằng paged.js → preview = bản in (A4, header/footer + số trang mỗi trang).
   useEffect(() => {
@@ -185,17 +206,20 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly,
     if (lopTen === null) return // buoiDoc: đợi lopTen nạp xong hẳn — KHÔNG dựng trang 2 lần nữa (fix 07-16, xem comment lopTen)
     let cancelled = false
     setRendering(true); setRenderErr(null)
-    const ch = full.taiLieu.cau_hinh ?? {}
+    const ch0 = full.taiLieu.cau_hinh ?? {}
+    // BTVN kiểu BK: đầu phiếu BK có thương hiệu riêng → BỎ dải header + footer chrome (như ET), kéo lề trên.
+    const bkBtvn = full.taiLieu.loai === 'btvn' && kieu === 'bk'
+    const ch = bkBtvn ? { ...ch0, header: 'none' as const, footer: 'none' as const } : ch0
     // Phiếu BTVN & Giáo trình buổi (trích xuất): KHÔNG lặp lớp/ngày/tên — tên buổi hiện 1 lần (dải buổi),
     //   Header = Lớp · ngày · Footer = liên hệ BK Academy (KHÔNG lặp lại tên/khối tài liệu).
     const buoiDoc = full.taiLieu.loai === 'btvn' || full.taiLieu.loai === 'giao_trinh_buoi'
     const ngay = (full.taiLieu as { ngay?: string | null }).ngay
     const ngayVN = ngay ? ngay.split('-').reverse().join('/') : ''
-    const cssOpts = buoiDoc ? {
+    const cssOpts = (buoiDoc && !bkBtvn) ? {
       headerText: `${lopTen ? `Lớp ${lopTen} · ` : ''}${ngayVN}`,
       footerText: 'BK Academy        Tel : 0963.209.309        Địa chỉ : 17A10 KĐT Geleximco',
     } : undefined
-    const css = buildPagedCss(full.taiLieu, ch, ch.mau || '#E91E8C', cssOpts)
+    const css = buildPagedCss(full.taiLieu, ch, ch0.mau || '#E91E8C', cssOpts) + (bkBtvn ? BK_CSS + '@page{margin-top:8mm}' : '')
     const cssUrl = URL.createObjectURL(new Blob([css], { type: 'text/css' }))
     const html = srcRef.current.innerHTML
     // Race-safe: mỗi lần render vào CONTAINER RIÊNG (append live để paged.js đo layout). KHÔNG xoá DOM
@@ -236,7 +260,7 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly,
       })
       .finally(() => URL.revokeObjectURL(cssUrl))
     return () => { cancelled = true; clearTimeout(watchdog) }
-  }, [full, gv, scope, lopTen, onlyBuoiId])
+  }, [full, gv, scope, lopTen, onlyBuoiId, kieu, perHS, roster, ngayNop])
 
   const seg = (on: boolean) => `rounded-md px-3 py-1 text-[13px] font-medium transition ${on ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`
 
@@ -291,7 +315,7 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly,
     <>
       {/* Trang dựng để chụp: on-screen top-left (html2canvas chụp ổn định hơn ngoài -99999px), NHƯNG nằm SAU lớp phủ đục. */}
       <div style={{ position: 'fixed', top: 0, left: 0, zIndex: 88, width: '210mm', background: '#fff' }}><div ref={dstRef} className="pv-pages" /></div>
-      <div ref={srcRef} className="pv-src" aria-hidden>{full && <Doc full={full} gv={gv} scope={scope} lt={lt} />}</div>
+      <div ref={srcRef} className="pv-src" aria-hidden>{full && <Doc full={full} gv={gv} scope={scope} lt={lt} kieu={kieu} perHS={perHS} roster={roster} ngayNop={ngayNop} lopTen={lopTen ?? ''} />}</div>
       {/* no-print: lớp phủ "đang xử lý" CHỈ hiện trên màn hình, KHÔNG bao giờ lọt vào bản in/PDF thật (dù
           window.print() có được gọi ngay khi lớp phủ còn đang hiện, @media print tự ẩn nó). */}
       <div className="no-print fixed inset-0 z-[95] flex items-center justify-center bg-white">
@@ -319,6 +343,18 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly,
           <button onClick={() => setScope('giaotrinh')} className={seg(scope === 'giaotrinh')}>Chỉ giáo trình</button>
           <button onClick={() => setScope('btvn')} className={seg(scope === 'btvn')}>Chỉ BTVN</button>
         </div>
+        {full?.taiLieu.loai === 'btvn' && (
+          <>
+            <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5" title="Đầu phiếu BTVN: kiểu BK (mới) / gọn (cũ)">
+              <button onClick={() => setKieu('bk')} className={seg(kieu === 'bk')}>Kiểu BK</button>
+              <button onClick={() => setKieu('gon')} className={seg(kieu === 'gon')}>Kiểu gọn</button>
+            </div>
+            <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5" title={roster.length ? `${roster.length} HS có mặt — in mỗi HS 1 phiếu, tên sẵn` : 'Chưa điểm danh có mặt → chỉ in bản trống'}>
+              <button onClick={() => setPerHS(false)} className={seg(!perHS)}>Bản trống</button>
+              <button onClick={() => setPerHS(true)} disabled={!roster.length} className={`${seg(perHS)} disabled:opacity-40`}>🖨 Cả lớp{roster.length ? ` (${roster.length})` : ''}</button>
+            </div>
+          </>
+        )}
         {scope !== 'btvn' && !lt && <span className="rounded bg-amber-50 px-2 py-0.5 text-[12px] font-medium text-amber-700" title="Đổi ở Builder → Trình bày → Lý thuyết">Không kèm lý thuyết</span>}
         <span className="text-[12px] text-slate-400">{rendering ? 'đang dựng trang…' : `${pages} trang`}</span>
         <div className="ml-auto flex gap-2">
@@ -339,7 +375,7 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly,
             </>}
       </div>
       {/* Nguồn ẩn — chỉ để lấy HTML cho paged.js (KaTeX đã render sẵn trong này) */}
-      <div ref={srcRef} className="pv-src" aria-hidden>{full && <Doc full={full} gv={gv} scope={scope} lt={lt} onlyBuoiId={onlyBuoiId} />}</div>
+      <div ref={srcRef} className="pv-src" aria-hidden>{full && <Doc full={full} gv={gv} scope={scope} lt={lt} onlyBuoiId={onlyBuoiId} kieu={kieu} perHS={perHS} roster={roster} ngayNop={ngayNop} lopTen={lopTen ?? ''} />}</div>
       <style>{CHROME_CSS}</style>
     </div>,
     document.body,
@@ -362,11 +398,16 @@ function buildBuois(phans: PhanResolved[]): Buoi[] {
   return out
 }
 
-function Doc({ full, gv, scope, lt = true, onlyBuoiId }: { full: TaiLieuFull; gv: boolean; scope: 'all' | 'giaotrinh' | 'btvn'; lt?: boolean; onlyBuoiId?: string }) {
+function Doc({ full, gv, scope, lt = true, onlyBuoiId, kieu = 'gon', perHS = false, roster = [], ngayNop = '', lopTen = '' }: {
+  full: TaiLieuFull; gv: boolean; scope: 'all' | 'giaotrinh' | 'btvn'; lt?: boolean; onlyBuoiId?: string
+  kieu?: 'gon' | 'bk'; perHS?: boolean; roster?: { id: string; ho_ten: string }[]; ngayNop?: string; lopTen?: string
+}) {
   const { taiLieu, phans, ltChuyenDe, tenChuyenDe } = full
   const ch = taiLieu.cau_hinh ?? {}
   const accent = ch.mau || '#E91E8C'
   const linesByCau = ch.btvnLinesByCau ?? {}
+  const ngayRaw = (taiLieu as { ngay?: string | null }).ngay ?? ''
+  const ngayPhat = ngayRaw ? ngayRaw.split('-').reverse().join('/') : ''
   let buois = buildBuois(phans)
   if (onlyBuoiId) buois = buois.filter((b) => b.id === onlyBuoiId)
   // ⭐ 07-24 (Thùy chốt): BỎ đánh số dạng chạy 1,2,3… toàn giáo trình — số đó nhảy mỗi lần thêm/bớt/đổi
@@ -389,9 +430,17 @@ function Doc({ full, gv, scope, lt = true, onlyBuoiId }: { full: TaiLieuFull; gv
       )}
       {/* QUYỂN BTVN riêng = chỉ các phiếu BTVN (mỗi buổi). Còn lại = giáo trình (skip BTVN nếu 'giaotrinh'). */}
       {scope === 'btvn'
-        ? buois.filter((b) => b.btvns.some((x) => x.caus.length) || b.ontaps.some((x) => x.caus.length)).map((b) => (
-          <BtvnSheet key={b.id} btvns={b.btvns} ontaps={b.ontaps} gv={gv} docTitle={taiLieu.ten} buoiTitle={b.title} linesByCau={linesByCau} isBtvnDoc={taiLieu.loai === 'btvn'} />
-        ))
+        ? (() => {
+          const btvnBuois = buois.filter((b) => b.btvns.some((x) => x.caus.length) || b.ontaps.some((x) => x.caus.length))
+          const sheet = (b: Buoi, hoTen: string | undefined, key: string) => (
+            <BtvnSheet key={key} btvns={b.btvns} ontaps={b.ontaps} gv={gv} docTitle={taiLieu.ten} buoiTitle={b.title} linesByCau={linesByCau}
+              isBtvnDoc={taiLieu.loai === 'btvn'} kieu={kieu} hoTen={hoTen} ngayPhat={ngayPhat} ngayNop={ngayNop} lopTen={lopTen} />
+          )
+          // In cả lớp: mỗi HS có mặt 1 phiếu (tên in sẵn). Không thì 1 phiếu trống cho mỗi buổi như cũ.
+          return (perHS && roster.length)
+            ? roster.flatMap((hs) => btvnBuois.map((b) => sheet(b, hs.ho_ten, hs.id + b.id)))
+            : btvnBuois.map((b) => sheet(b, undefined, b.id))
+        })()
         : buois.map((b) => (
           <BuoiBlock key={b.id} buoi={b} gv={gv} scope={scope} lt={lt} docTitle={taiLieu.ten} ltCd={ltChuyenDe} tenCd={tenChuyenDe} linesByCau={linesByCau} />
         ))}
@@ -480,11 +529,17 @@ function DangBlock({ p, gv, lt = true }: { p: PhanResolved; gv: boolean; lt?: bo
 
 // BTVN của 1 BUỔI = phiếu RIÊNG (sang trang mới), nhóm theo DẠNG (mirror trên lớp). HS viết thẳng vào dòng kẻ.
 // Đầu phiếu: tiêu đề = tên tài liệu · trái = Họ tên + Lớp · phải = ô Điểm. Bản GV = đáp án (bỏ ô điền, hiện lời giải).
-function BtvnSheet({ btvns, ontaps = [], gv, docTitle, buoiTitle, linesByCau, isBtvnDoc = false }: {
+function BtvnSheet({ btvns, ontaps = [], gv, docTitle, buoiTitle, linesByCau, isBtvnDoc = false, kieu = 'gon', hoTen, ngayPhat = '', ngayNop = '', lopTen = '' }: {
   btvns: PhanResolved[]; ontaps?: PhanResolved[]; gv: boolean; docTitle: string; buoiTitle: string; linesByCau: Record<string, number>; isBtvnDoc?: boolean
+  kieu?: 'gon' | 'bk'; hoTen?: string; ngayPhat?: string; ngayNop?: string; lopTen?: string
 }) {
+  // Kiểu BK CHỈ cho doc BTVN thật (isBtvnDoc) — CSS pv-bkh + bỏ header/footer chỉ bật ở nhánh loai='btvn'.
+  const bk = kieu === 'bk' && isBtvnDoc
   return (
     <section className="pv-sec pv-btvn">
+      {bk ? (
+        <BtvnBkHead buoiTitle={buoiTitle || docTitle} ngayPhat={ngayPhat} ngayNop={ngayNop} lopTen={lopTen} hoTen={hoTen} gv={gv} />
+      ) : (
       <div className="pv-bt-head">
         {/* Phiếu BTVN trích xuất (isBtvnDoc): tiêu đề = TÊN BUỔI HỌC, 1 lần (lớp/ngày đã ở header/ô điền).
             BTVN nhúng giáo trình: giữ eyebrow "Bài tập về nhà" + tên tài liệu để tách khỏi phần lý thuyết. */}
@@ -508,6 +563,7 @@ function BtvnSheet({ btvns, ontaps = [], gv, docTitle, buoiTitle, linesByCau, is
           </div>
         )}
       </div>
+      )}
       {(() => {
         let bno = 0
         const dangBlock = (b: PhanResolved) => (

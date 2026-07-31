@@ -9,6 +9,7 @@ import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
 import { getTaiLieuFull, etGroupOf, khoCuaMon, type ETGroup, type TaiLieuFull, type CauHinh } from '../../lib/tailieu'
 import { fetchCausByMa } from '../../lib/ontap'
+import { BK_CSS } from './bkPrint'
 import type { CauHoi } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
 import { CauItem, OptGrid, GvAnswer, WriteLines, splitStem, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChrome, printWithFilename } from './PrintView'
@@ -70,7 +71,7 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
     const ch = kieu === 'bk' ? { ...ch0, header: 'none' as const, footer: 'none' as const } : ch0
     // BK: accent XANH LAM (chữ Phần/Câu theo tông BK) + kéo lề trên lên (đã bỏ header) + border đậm hơn.
     const accent = kieu === 'bk' ? '#3b5bd8' : (ch.mau || '#7c3aed')
-    const css = buildPagedCss(full.taiLieu, ch, accent) + ET_CSS + (kieu === 'bk' ? ET_CSS_BK : '')
+    const css = buildPagedCss(full.taiLieu, ch, accent) + ET_CSS + BK_CSS + (kieu === 'bk' ? ET_CSS_BK : '')
     const cssUrl = URL.createObjectURL(new Blob([css], { type: 'text/css' }))
     const html = srcRef.current.innerHTML
     // Race-safe: KHÔNG xoá DOM của container cũ — nếu Previewer của nó còn đang đo layout dở (paged.js
@@ -391,42 +392,8 @@ const ET_CSS = `
 .pv-et .pv-cau .pv-math:first-child{break-after:avoid}
 /* Mỗi MÃ ĐỀ 1 trang mới (mỗi HS 1 phiếu riêng). */
 .pv-de-break{break-before:page}
-
-/* ══ ĐẦU PHIẾU KIỂU BK (mockup BK Academy) — mọi class prefix pv-bkh, KHÔNG đụng chrome in chung ══ */
-.pv-bkh{--navy:#24324b;--blue:#4c6fff;--blue-soft:#eef2ff;--gold:#c89b52;--muted:#6f7890;--line:#e7eaf1;position:relative;overflow:hidden;border:1px solid #dfe3ec;border-radius:20px;background:#fff;color:#172033;margin-bottom:14px;break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-.pv-bkh::before{content:"";position:absolute;inset:0 0 auto 0;height:6px;background:linear-gradient(90deg,var(--blue),#7966e8 48%,var(--gold))}
-.pv-bkh-top{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding:18px 22px 12px}
-.pv-bkh-brand{display:flex;align-items:center;gap:10px;min-width:0}
-.pv-bkh-logo{height:30px;width:auto;object-fit:contain;flex:0 0 auto}
-.pv-bkh-bn strong{display:block;color:var(--navy);font-size:14px;letter-spacing:.04em;white-space:nowrap}
-.pv-bkh-label{justify-self:center;padding:5px 11px;border-radius:999px;background:var(--blue-soft);color:var(--blue);font-size:9px;font-weight:750;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
-.pv-bkh-meta{justify-self:end;display:flex;gap:8px}
-.pv-bkh-pill{display:flex;flex-direction:column;padding:6px 11px;border:1px solid var(--line);border-radius:12px;color:var(--muted);font-size:10px;white-space:nowrap;line-height:1.3}
-.pv-bkh-pill strong{color:var(--navy);font-size:12.5px}
-.pv-bkh-hero{padding:4px 22px 14px;text-align:center}
-.pv-bkh-title{margin:0;color:var(--navy);font-size:25px;font-weight:820;line-height:1.08;letter-spacing:-.03em}
-.pv-bkh-divider{width:60px;height:4px;margin:11px auto 0;border-radius:99px;background:linear-gradient(90deg,var(--blue),var(--gold))}
-.pv-bkh-student{display:grid;grid-template-columns:1.55fr .7fr .75fr;margin:0 16px 11px;overflow:hidden;border:1px solid var(--line);border-radius:15px;background:#f8faff}
-.pv-bkh-field{position:relative;padding:11px 16px;min-height:56px;display:flex;flex-direction:column;justify-content:center;gap:5px}
-.pv-bkh-field:not(:last-child)::after{content:"";position:absolute;top:13px;right:0;bottom:13px;width:1px;background:var(--line)}
-.pv-bkh-flbl{color:var(--muted);font-size:10px;font-weight:750;letter-spacing:.07em;text-transform:uppercase}
-.pv-bkh-fval{color:var(--navy);font-size:16px;font-weight:760;min-height:20px;line-height:1.2}
-.pv-bkh-assess{margin:0 16px 16px;padding:12px 14px;border:1px solid var(--line);border-radius:15px;background:#fff}
-.pv-bkh-ahead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
-.pv-bkh-atitle{color:var(--navy);font-size:11px;font-weight:850;letter-spacing:.08em;text-transform:uppercase}
-.pv-bkh-anote{color:var(--muted);font-size:10px}
-.pv-bkh-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(72px,1fr));gap:7px}
-.pv-bkh-qcard{padding:7px 4px 6px;border:1px solid var(--line);border-radius:12px;text-align:center}
-.pv-bkh-qno{margin-bottom:6px;color:var(--navy);font-size:10.5px;font-weight:800;white-space:nowrap}
-.pv-bkh-status{display:flex;justify-content:center;gap:4px}
-.pv-bkh-circle{display:grid;place-items:center;width:20px;height:20px;border:1.5px solid #cfd4df;border-radius:50%;color:#737d91;font-size:9px;font-weight:900;line-height:1}
 `
 
-// Override CHỈ cho kiểu BK: kéo lề trên lên (đã bỏ header trên cùng) + border đậm/tối hơn 1 chút.
-const ET_CSS_BK = `
-@page{margin-top:8mm}
-.pv-bkh{border-width:1.5px;border-color:#c2cbdb;--line:#c9d2e0}
-.pv-bkh-mark,.pv-bkh-pill,.pv-bkh-student,.pv-bkh-assess,.pv-bkh-qcard{border-width:1.5px}
-.pv-bkh-field:not(:last-child)::after{width:1.5px}
-.pv-bkh-circle{border-width:2px;border-color:#b3bbca}
-`
+// CSS pv-bkh (đầu phiếu BK) DÙNG CHUNG ở bkPrint.ts (BK_CSS). Đây chỉ còn override cấp trang khi bật BK:
+// đã bỏ dải header trên cùng → kéo lề trên lên.
+const ET_CSS_BK = `@page{margin-top:8mm}`
