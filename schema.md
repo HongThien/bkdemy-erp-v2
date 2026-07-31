@@ -2,7 +2,7 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-110 bảng · 0 enum · 10 trigger · 30 function
+112 bảng · 0 enum · 10 trigger · 31 function
 
 ## bai_lam
 
@@ -98,6 +98,23 @@
 | ly_do | text | Y |  |  |  |
 | actor | uuid | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
+
+## bao_cao_ph
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| hoc_sinh_id | uuid |  |  | PK FK→hoc_sinh.id |  |
+| mon | text |  |  | PK |  |
+| thang | text |  |  | PK |  |
+| thai_do | text | Y |  |  |  |
+| kien_thuc_ky_nang | text | Y |  |  |  |
+| ket_luan | text | Y |  |  |  |
+| updated_by | uuid | Y |  |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+| ket_luan_muc | text | Y |  |  |  |
+| muc_tieu | text | Y |  |  |  |
+| muc_kien_thuc | smallint | Y |  |  |  |
+| muc_thai_do | smallint | Y |  |  |  |
 
 ## bao_loi
 
@@ -505,6 +522,9 @@
 | vuot_band | boolean |  | false |  |  |
 | graded_by | uuid | Y |  |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
+| diem_co_ban | numeric | Y |  |  |  |
+| diem_nang_cao | numeric | Y |  |  |  |
+| full_diem | boolean |  | false |  |  |
 
 ## gami_elo
 
@@ -581,6 +601,22 @@
 | ma_cau | text | Y |  |  |  |
 | hinh_y_id | uuid | Y |  | FK→hinh_y.id |  |
 | ngu_canh_luot | text | Y |  |  | `mo_hinh` · `dang` · `luyen_de` |
+
+## hang_muc
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| ten | text |  |  |  |  |
+| mo_ta | text | Y |  |  |  |
+| kieu | text |  |  |  | `mot_lan` · `lien_tuc` |
+| trang_thai | text |  | 'backlog'::text |  | `backlog` · `dang_chay` · `xong` · `dung` |
+| pham_vi | numeric | Y |  |  |  |
+| chan_troi | date | Y |  |  |  |
+| gia_tri | integer | Y |  |  |  |
+| co | integer | Y |  |  |  |
+| tac_gia_id | uuid | Y |  | FK→nhan_su.id |  |
+| created_at | timestamp with time zone |  | now() |  |  |
 
 ## hinh_bai
 
@@ -1029,8 +1065,6 @@
 |---|---|---|---|---|---|
 | id | uuid |  | gen_random_uuid() | PK |  |
 | ten | text |  |  |  |  |
-| phuong_thuc_cham | text |  |  |  | `frontline` · `phat_trien` |
-| task_nho | boolean |  | false |  |  |
 | thang_kl | jsonb |  | '[]'::jsonb |  |  |
 | active | boolean |  | true |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
@@ -1439,22 +1473,36 @@
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | id | uuid |  | gen_random_uuid() | PK |  |
-| loai_viec_id | uuid |  |  | FK→loai_viec.id |  |
+| loai_viec_id | uuid | Y |  | FK→loai_viec.id |  |
+| hang_muc_id | uuid | Y |  | FK→hang_muc.id |  |
+| y_tuong_id | uuid | Y |  | FK→y_tuong.id |  |
 | tieu_de | text |  |  |  |  |
+| muc_tieu | text | Y |  |  |  |
+| output | text | Y |  |  |  |
 | mo_ta | text | Y |  |  |  |
-| nguoi_giao | uuid |  |  | FK→nhan_su.id |  |
+| nguoi_lam_id | uuid |  |  | FK→nhan_su.id |  |
+| nguoi_giao_id | uuid |  |  | FK→nhan_su.id |  |
 | khoi_luong | numeric |  |  |  |  |
-| trang_thai | text |  | 'giao'::text |  | `giao` · `dang_lam` · `cho_nghiem_thu` · `dat` · `tra_lai` |
+| nguon | text |  | 'ke_hoach'::text |  | `ke_hoach` · `phat_sinh` |
+| trang_thai | text |  | 'moi_giao'::text |  | `moi_giao` · `dang_lam` · `cho_nghiem_thu` · `dat` · `tra_lai` · `hold` · `huy` · `chuyen` |
+| deadline | date | Y |  |  |  |
+| deadline_goc | date | Y |  |  |  |
+| so_lan_gia_han | integer |  | 0 |  |  |
+| ngay_nop | date | Y |  |  |  |
+| ky_tuan | date | Y |  |  |  |
 | tien_do | numeric | Y |  |  |  |
 | chat_luong | numeric | Y |  |  |  |
 | phan_tram | numeric | Y |  |  |  |
-| bang_chung | text | Y |  |  |  |
-| ky_tinh | text | Y |  |  |  |
-| han_nghiem_thu | date | Y |  |  |  |
+| so_lan_tra_lai | integer |  | 0 |  |  |
+| evidence | text | Y |  |  |  |
+| phan_tram_ghi_nhan | numeric | Y |  |  |  |
+| ly_do_huy | text | Y |  |  |  |
+| ngay_hold | timestamp with time zone | Y |  |  |  |
+| viec_ke_thua_id | uuid | Y |  | FK→viec.id |  |
+| ghi_chu_nghiem_thu | text | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | hoan_thanh_at | timestamp with time zone | Y |  |  |  |
 | nghiem_thu_at | timestamp with time zone | Y |  |  |  |
-| ghi_chu_nghiem_thu | text | Y |  |  |  |
 
 ## viec_log
 
@@ -1467,13 +1515,6 @@
 | sau | jsonb |  |  |  |  |
 | actor | uuid | Y |  |  |  |
 | ts | timestamp with time zone |  | now() |  |  |
-
-## viec_nguoi_lam
-
-| cột | kiểu | null | default | khóa | giá trị hợp lệ |
-|---|---|---|---|---|---|
-| viec_id | uuid |  |  | PK FK→viec.id |  |
-| nhan_su_id | uuid |  |  | PK FK→nhan_su.id |  |
 
 ## viec_van_hanh_duyet
 
@@ -1491,6 +1532,22 @@
 | tien_do_de_xuat | numeric |  | 100 |  |  |
 | tien_do_ly_do | text | Y |  |  |  |
 | hieu_suat | numeric | Y |  |  |  |
+
+## y_tuong
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| tieu_de | text |  |  |  |  |
+| mo_ta | text | Y |  |  |  |
+| tac_gia_id | uuid |  |  | FK→nhan_su.id |  |
+| trang_thai | text |  | 'moi'::text |  | `moi` · `backlog` · `da_trien_khai` · `ngu_dong` · `tu_choi` |
+| ly_do_tu_choi | text | Y |  |  |  |
+| gia_tri | integer | Y |  |  |  |
+| co | integer | Y |  |  |  |
+| ngay_vao_backlog | date | Y |  |  |  |
+| hang_muc_id | uuid | Y |  | FK→hang_muc.id |  |
+| created_at | timestamp with time zone |  | now() |  |  |
 
 ## Triggers
 
@@ -1512,6 +1569,7 @@
 - `count_cau_by_dang(p_tbl text)` → jsonb
 - `et_de(p_bai_test uuid)` → jsonb
 - `et_nop(p_bai_lam uuid)` → jsonb
+- `giaoviec_housekeeping()` → void
 - `hinh_bao_dong_tien_de(goc uuid)` → TABLE(id uuid, do_sau integer)
 - `hinh_mo_hinh_hau_due(goc uuid)` → TABLE(id uuid, do_sau integer)
 - `hinh_mo_hinh_to_tien(nut uuid)` → TABLE(id uuid, do_sau integer)
@@ -1551,6 +1609,8 @@
 | buoi_danh_gia_dang | buoi_danh_gia_dang_diem_check | `CHECK ((diem = ANY (ARRAY[(0)::numeric, 0.5, (1)::numeric])))` |
 | ca_test | ca_test_thoi_luong_phut_check | `CHECK ((thoi_luong_phut = ANY (ARRAY[45, 60, 75, 90, 120])))` |
 | dai_ban_do | dai_ban_do_muc_do_check | `CHECK (((muc_do >= 1) AND (muc_do <= 5)))` |
+| hang_muc | hang_muc_co_check | `CHECK (((co >= 1) AND (co <= 3)))` |
+| hang_muc | hang_muc_gia_tri_check | `CHECK (((gia_tri >= 1) AND (gia_tri <= 3)))` |
 | hinh_mo_hinh | hinh_mo_hinh_cap_mo_hinh_check | `CHECK (((cap_mo_hinh >= 1) AND (cap_mo_hinh <= 4)))` |
 | hinh_mo_hinh_cha | hinh_mo_hinh_cha_check | `CHECK ((mo_hinh_id <> cha_id))` |
 | hoc_phi_phat_sinh | hoc_phi_phat_sinh_dung_loai | `CHECK ((((loai = 'lop'::text) AND (lop_id IS NOT NULL) AND (hoc_sinh_id IS NULL)) OR ((loai = 'ca_nhan'::text) AND (hoc_sinh_id IS NOT NULL) AND (lop_id IS NULL))))` |
@@ -1562,4 +1622,6 @@
 | muc_nang_luc | muc_nang_luc_muc_check | `CHECK (((muc >= 1) AND (muc <= 3)))` |
 | phan_cong_ca | phan_cong_ca_thu_check | `CHECK (((thu >= 2) AND (thu <= 8)))` |
 | thoi_khoa_bieu | thoi_khoa_bieu_thu_check | `CHECK (((thu >= 2) AND (thu <= 8)))` |
+| y_tuong | y_tuong_co_check | `CHECK (((co >= 1) AND (co <= 3)))` |
+| y_tuong | y_tuong_gia_tri_check | `CHECK (((gia_tri >= 1) AND (gia_tri <= 3)))` |
 
