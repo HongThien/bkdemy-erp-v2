@@ -9,7 +9,7 @@ import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
 import { getTaiLieuFull, etGroupOf, khoCuaMon, type ETGroup, type TaiLieuFull, type CauHinh } from '../../lib/tailieu'
 import { fetchCausByMa } from '../../lib/ontap'
-import { BK_CSS } from './bkPrint'
+import { BK_CSS, BkFooter } from './bkPrint'
 import type { CauHoi } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
 import { CauItem, OptGrid, GvAnswer, WriteLines, splitStem, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChrome, printWithFilename } from './PrintView'
@@ -265,6 +265,7 @@ function ETDoc({ ten, caus, ch, gv, badge, hoTen, kieu }: { ten: string; caus: C
         </section>
       ))}
       {caus.length === 0 && <p className="pv-empty">ET chưa có câu nào.</p>}
+      <BkFooter />
     </div>
   )
   return (
@@ -331,7 +332,6 @@ function ETHeaderBK({ title, ngay, lop, made, hoTen, soCau, gv }: {
       <div className="pv-bkh-top">
         <div className="pv-bkh-brand">
           <img className="pv-bkh-logo" src={location.origin + '/Logo.png'} alt="BK ACADEMY" />
-          <div className="pv-bkh-bn"><strong>BK ACADEMY</strong></div>
         </div>
         <div className="pv-bkh-label">Bài test cuối giờ{gv ? ' · Đáp án' : ''}</div>
         <div className="pv-bkh-meta">
@@ -396,4 +396,4 @@ const ET_CSS = `
 
 // CSS pv-bkh (đầu phiếu BK) DÙNG CHUNG ở bkPrint.ts (BK_CSS). Đây chỉ còn override cấp trang khi bật BK:
 // đã bỏ header/footer chrome → lề 4 phía HẸP (in PHIẾU, không phải sách) ~1/2 lề cũ.
-const ET_CSS_BK = `@page{margin:8mm 7mm}`
+const ET_CSS_BK = `@page{margin:8mm 10mm}`

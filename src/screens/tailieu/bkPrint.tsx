@@ -29,6 +29,14 @@ export const BK_CSS = `
 .pv-bkh-qno{margin-bottom:6px;color:var(--navy);font-size:10.5px;font-weight:800;white-space:nowrap}
 .pv-bkh-status{display:flex;justify-content:center;gap:4px}
 .pv-bkh-circle{display:grid;place-items:center;width:20px;height:20px;border:2px solid #b3bbca;border-radius:50%;color:#737d91;font-size:9px;font-weight:900;line-height:1}
+/* FOOTER BK — 3 mục Đơn vị · Điện thoại · Địa chỉ, vạch gradient dọc bên trái. */
+.pv-bkf{position:relative;overflow:hidden;display:grid;grid-template-columns:1.15fr .8fr 1.35fr;align-items:center;margin-top:14px;border:1.5px solid #c2cbdb;border-radius:16px;background:#fff;break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.pv-bkf::before{content:"";position:absolute;inset:0 auto 0 0;width:5px;background:linear-gradient(180deg,#4c6fff,#c89b52)}
+.pv-bkf-item{position:relative;padding:11px 18px;min-height:52px;display:flex;flex-direction:column;justify-content:center}
+.pv-bkf-item:first-child{padding-left:22px}
+.pv-bkf-item:not(:last-child)::after{content:"";position:absolute;top:13px;right:0;bottom:13px;width:1.5px;background:#c9d2e0}
+.pv-bkf-lbl{margin-bottom:3px;color:#6f7890;font-size:9.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.pv-bkf-val{color:#24324b;font-size:12.5px;font-weight:760;line-height:1.35}
 `
 
 // Đầu phiếu BTVN kiểu BK — như ET nhưng: nhãn "BTVN", tiêu đề = tên buổi, meta = Ngày phát / Ngày nộp,
@@ -41,7 +49,6 @@ export function BtvnBkHead({ buoiTitle, ngayPhat, ngayNop, lopTen, hoTen, gv }: 
       <div className="pv-bkh-top">
         <div className="pv-bkh-brand">
           <img className="pv-bkh-logo" src={location.origin + '/Logo.png'} alt="BK ACADEMY" />
-          <div className="pv-bkh-bn"><strong>BK ACADEMY</strong></div>
         </div>
         <div className="pv-bkh-label">BTVN{gv ? ' · Đáp án' : ''}</div>
         <div className="pv-bkh-meta">
@@ -60,6 +67,17 @@ export function BtvnBkHead({ buoiTitle, ngayPhat, ngayNop, lopTen, hoTen, gv }: 
           <div className="pv-bkh-field"><div className="pv-bkh-flbl">Điểm</div><div className="pv-bkh-fval">&nbsp;</div></div>
         </div>
       )}
+    </div>
+  )
+}
+
+// Footer BK — thông tin liên hệ, dùng chung ET + BTVN (đặt cuối mỗi phiếu kiểu BK).
+export function BkFooter() {
+  return (
+    <div className="pv-bkf">
+      <div className="pv-bkf-item"><div className="pv-bkf-lbl">Đơn vị</div><div className="pv-bkf-val">CLB Toán học BK Academy</div></div>
+      <div className="pv-bkf-item"><div className="pv-bkf-lbl">Điện thoại</div><div className="pv-bkf-val">0963.209.309</div></div>
+      <div className="pv-bkf-item"><div className="pv-bkf-lbl">Địa chỉ</div><div className="pv-bkf-val">Số 17A10 KĐT Geleximco</div></div>
     </div>
   )
 }
