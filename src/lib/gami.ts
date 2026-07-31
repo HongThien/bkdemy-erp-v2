@@ -170,6 +170,19 @@ export async function getRoster(buoiId: string): Promise<BuoiHocHS[]> {
     (a.hoc_sinh?.ho_ten ?? '').localeCompare(b.hoc_sinh?.ho_ten ?? '', 'vi') || a.id.localeCompare(b.id))
   return rows
 }
+// HS CÓ MẶT của buổi (lớp+ngày) — cho gán mã đề ET theo HS (in phiếu tên sẵn). Đọc buổi 'thuong' của
+// lớp+ngày rồi lọc buoi_hoc_hs co_mat. Chưa điểm danh / chưa có buổi → [] (UI hiện nhắc điểm danh trước).
+export async function hsCoMatCuaBuoi(lopId: string, ngay: string): Promise<{ id: string; ho_ten: string; ma_hs: string | null }[]> {
+  const { data: buoi } = await supabase.from('buoi_hoc').select('id').eq('lop_id', lopId).eq('ngay', ngay).eq('loai', 'thuong').order('created_at', { ascending: true }).limit(1).maybeSingle()
+  if (!buoi) return []
+  const { data, error } = await supabase.from('buoi_hoc_hs')
+    .select('hoc_sinh:hoc_sinh_id(id, ho_ten, ma_hs)').eq('buoi_hoc_id', (buoi as { id: string }).id).eq('diem_danh', 'co_mat').limit(LIMIT)
+  if (error) throw error
+  return ((data ?? []) as any[])
+    .map((r) => r.hoc_sinh).filter(Boolean)
+    .map((h: any) => ({ id: h.id as string, ho_ten: h.ho_ten as string, ma_hs: (h.ma_hs ?? null) as string | null }))
+    .sort((a, b) => a.ho_ten.localeCompare(b.ho_ten, 'vi'))
+}
 // Tiến độ điểm danh nhiều buổi (1 query): buoiId → { tong, daDanh }. daDanh = số HS đã có trạng thái.
 // "Điểm danh xong" = daDanh >= tong (mọi HS đã đánh dấu). Dùng để OPS task tự rời khỏi "cần làm".
 export async function diemDanhTienDo(buoiIds: string[]): Promise<Record<string, { tong: number; daDanh: number }>> {

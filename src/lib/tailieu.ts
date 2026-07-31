@@ -26,7 +26,9 @@ export type PhanLoai = 'buoi' | 'lt_chuyen_de' | 'dang' | 'btvn' | 'ontap' | 'cu
 // etMaDe = 3 MÃ ĐỀ của ET (Thùy 07-31). Đề GỐC = câu trong phan 'custom' (như cũ). Mã đề 2/3 sinh tự động:
 // mỗi câu gốc → câu KHÁC cùng DẠNG + cùng FORM. Neo theo CÂU GỐC (key = ma_cau gốc, KHÔNG theo vị trí —
 // tránh lệch khi sortETCaus đảo thứ tự). Mỗi entry = [ma_cau đề2, ma_cau đề3]; null = TRỐNG (chặn lưu).
-export type CauHinh = { header?: 'wave' | 'none'; footer?: 'wave' | 'none'; watermark?: 'logo' | 'none'; mau?: string; inLyThuyet?: boolean; btvnLinesByCau?: Record<string, number>; etFormByCau?: Record<string, string>; phanBac?: Record<string, string>; etMaDe?: Record<string, (string | null)[]> }
+// hsMaDe = mã đề gán cho TỪNG HS (hoc_sinh_id → 1|2|3) để in phiếu tên sẵn, tránh HS cạnh nhau trùng đề.
+// Mapping BỀN (Thùy 07-31: sau này đáp án/tự-chấm cũng theo mã đề = theo HS → cần lưu chắc ở đây).
+export type CauHinh = { header?: 'wave' | 'none'; footer?: 'wave' | 'none'; watermark?: 'logo' | 'none'; mau?: string; inLyThuyet?: boolean; btvnLinesByCau?: Record<string, number>; etFormByCau?: Record<string, string>; phanBac?: Record<string, string>; etMaDe?: Record<string, (string | null)[]>; hsMaDe?: Record<string, number> }
 export const DEFAULT_BTVN_LINES = 5
 // Form hiển thị trong ET (độc lập loai_cau kho).
 export type ETForm = 'trac_nghiem' | 'tra_loi_ngan' | 'tu_luan'

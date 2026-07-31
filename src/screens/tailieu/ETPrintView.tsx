@@ -22,7 +22,9 @@ const DEFAULT_TLN_LINES = 2
 // onReady/onRenderErr (07-12, đời 2 server-gen): PrintJobPage (trang worker mở qua Puppeteer) cần biết
 // paged.js dựng XONG hay LỖI để bấm nút "in ra PDF" đúng lúc — component tự bắn tín hiệu, worker không
 // phải đoán mò qua DOM.
-export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, onReady, onRenderErr }: { id: string; onClose: () => void; headless?: boolean; linkOnly?: boolean; onFail?: () => void; onReady?: () => void; onRenderErr?: (msg: string) => void }) {
+// perHS: in theo HÌNH THỨC MỖI HS 1 PHIẾU — mã đề đã gán + họ tên in sẵn (gán ở ETScreen, cau_hinh.hsMaDe).
+// Không truyền → in 3 mã đề tổng quát như cũ (ô tên trống).
+export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, onReady, onRenderErr, perHS }: { id: string; onClose: () => void; headless?: boolean; linkOnly?: boolean; onFail?: () => void; onReady?: () => void; onRenderErr?: (msg: string) => void; perHS?: { id: string; ho_ten: string; maDe: number }[] }) {
   const [full, setFull] = useState<TaiLieuFull | null>(null)
   const [err, setErr] = useState<string | null>(null)
   const [gv, setGv] = useState(false)
@@ -130,7 +132,7 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
   if (headless) return createPortal(
     <>
       <div style={{ position: 'fixed', top: 0, left: 0, zIndex: 88, width: '210mm', background: '#fff' }}><div ref={dstRef} className="pv-pages" /></div>
-      <div ref={srcRef} className="pv-src" aria-hidden>{full && <ETAllDe full={full} gv={gv} varCau={varCau} />}</div>
+      <div ref={srcRef} className="pv-src" aria-hidden>{full && <ETAllDe full={full} gv={gv} varCau={varCau} perHS={perHS} />}</div>
       <div className="no-print fixed inset-0 z-[95] flex items-center justify-center bg-white">
         <div className="rounded-xl border border-slate-200 bg-white px-6 py-4 text-sm font-medium text-slate-700 shadow-xl">
           {dlErr ? <span className="text-rose-600">{dlErr}</span> : linkOnly ? <>⏳ Đang lấy link…</> : <>⏳ Đang chuẩn bị in{pages ? ` (${pages} trang)` : ''}…</>}
@@ -161,7 +163,7 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
           : !full ? <p className="text-center text-slate-400">Đang tải…</p>
           : <div ref={dstRef} className="pv-pages" />}
       </div>
-      <div ref={srcRef} className="pv-src" aria-hidden>{full && <ETAllDe full={full} gv={gv} varCau={varCau} />}</div>
+      <div ref={srcRef} className="pv-src" aria-hidden>{full && <ETAllDe full={full} gv={gv} varCau={varCau} perHS={perHS} />}</div>
       <style>{CHROME_CSS}</style>
     </div>,
     document.body,
@@ -171,7 +173,7 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
 // 3 MÃ ĐỀ (Thùy 07-31): đề gốc = câu phan 'custom'; đề 2/3 = thay từng câu bằng ma_cau trong etMaDe
 // (neo theo CÂU GỐC, đúng thứ tự gốc → cùng nhóm form → in ra 3 phiếu cấu trúc y hệt, khác câu). ET cũ
 // (không etMaDe / chưa đủ) → in 1 đề như trước (backward-compatible).
-function ETAllDe({ full, gv, varCau }: { full: TaiLieuFull; gv: boolean; varCau: Record<string, CauHoi> }) {
+function ETAllDe({ full, gv, varCau, perHS }: { full: TaiLieuFull; gv: boolean; varCau: Record<string, CauHoi>; perHS?: { id: string; ho_ten: string; maDe: number }[] }) {
   const ch = full.taiLieu.cau_hinh ?? {}
   const base = full.phans.find((p) => p.loai_phan === 'custom')?.caus ?? []
   const etMaDe = ch.etMaDe
@@ -184,13 +186,21 @@ function ETAllDe({ full, gv, varCau }: { full: TaiLieuFull; gv: boolean; varCau:
     for (const bc of base) { const vm = etMaDe![bc.ma_cau][vIdx]; const bl = ch.btvnLinesByCau?.[bc.ma_cau]; if (vm && bl != null) lines[vm] = bl }
     return { ...ch, btvnLinesByCau: lines }
   }
+  // Mã đề n → (câu, cấu hình dòng). Chưa đủ 3 mã đề thì mọi mã về đề gốc (an toàn).
+  const deOf = (maDe: number) => (complete && maDe === 2) ? { caus: build(0), ch: chVar(0) }
+    : (complete && maDe === 3) ? { caus: build(1), ch: chVar(1) } : { caus: base, ch }
+  // Chế độ IN THEO HS: mỗi HS 1 phiếu = mã đề đã gán + tên in sẵn.
+  if (perHS) {
+    return <>{perHS.map((hs, i) => { const d = deOf(hs.maDe)
+      return <div key={hs.id} className={i ? 'pv-de-break' : ''}><ETDoc ten={full.taiLieu.ten} caus={d.caus} ch={d.ch} gv={gv} badge={`Mã đề ${hs.maDe}`} hoTen={hs.ho_ten} /></div> })}</>
+  }
   const des = complete
     ? [{ label: 'Mã đề 1', caus: base, ch }, { label: 'Mã đề 2', caus: build(0), ch: chVar(0) }, { label: 'Mã đề 3', caus: build(1), ch: chVar(1) }]
     : [{ label: '', caus: base, ch }]
   return <>{des.map((d, i) => <div key={i} className={i ? 'pv-de-break' : ''}><ETDoc ten={full.taiLieu.ten} caus={d.caus} ch={d.ch} gv={gv} badge={d.label} /></div>)}</>
 }
 
-function ETDoc({ ten, caus, ch, gv, badge }: { ten: string; caus: CauHoi[]; ch: CauHinh; gv: boolean; badge?: string }) {
+function ETDoc({ ten, caus, ch, gv, badge, hoTen }: { ten: string; caus: CauHoi[]; ch: CauHinh; gv: boolean; badge?: string; hoTen?: string }) {
   const lines = ch.btvnLinesByCau ?? {}
   // ⭐ 07-20: KHÔNG gom lại theo loại ở đây nữa. Thứ tự in = ĐÚNG `thu_tu` của DB (đã gom theo nhóm
   // từ lúc LƯU — sortETCaus trong ETScreen.luu). Trước đây gom ở render nên "Câu 3" trên giấy khác
@@ -221,7 +231,7 @@ function ETDoc({ ten, caus, ch, gv, badge }: { ten: string; caus: CauHoi[]; ch: 
           <>
             {/* Họ tên + Lớp CÙNG 1 dòng */}
             <div className="pv-et-info">
-              <span className="pv-bt-field pv-et-name"><span className="pv-bt-lbl">Họ và tên:</span><span className="pv-bt-fill" /></span>
+              <span className="pv-bt-field pv-et-name"><span className="pv-bt-lbl">Họ và tên:</span><span className="pv-bt-fill">{hoTen ? <b className="pv-et-hoten">{hoTen}</b> : null}</span></span>
               <span className="pv-bt-field pv-et-lop"><span className="pv-bt-lbl">Lớp:</span><span className="pv-bt-fill" /></span>
             </div>
             {/* ET chấm THEO CÂU: bảng ngang 2 hàng — trên = Câu i, dưới = ô trống điền Đ/S. Bao nhiêu câu bấy nhiêu cột. */}
@@ -278,4 +288,6 @@ const ET_CSS = `
 .pv-et .pv-cau .pv-math:first-child{break-after:avoid}
 /* Mỗi MÃ ĐỀ 1 trang mới (mỗi HS 1 phiếu riêng). */
 .pv-de-break{break-before:page}
+/* Họ tên HS in sẵn (chế độ in theo HS) — chữ nằm trên dòng kẻ. */
+.pv-et-hoten{font-weight:700;padding:0 4px}
 `

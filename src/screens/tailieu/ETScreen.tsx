@@ -9,6 +9,7 @@ import {
   maET, ET_FORMS, etFormOf, canBeETForm, sortETCaus, type ETDoc, type CauHinh, type ETForm as ETFormKind,
 } from '../../lib/tailieu'
 import { listLop, type Lop } from '../../lib/nhansu'
+import { hsCoMatCuaBuoi } from '../../lib/gami'
 import { listCauByDang, LOAI_CAU, type CauHoi } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
 import { KhoPicker } from './TaiLieuBuilder'
@@ -43,6 +44,8 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
   const [varPicker, setVarPicker] = useState<{ baseMaCau: string; v: number; maDang: string; form: ETFormKind } | null>(null)
   const [dangModal, setDangModal] = useState<number | null>(null)
   const [printing, setPrinting] = useState(false)
+  const [roster, setRoster] = useState<{ id: string; ho_ten: string; ma_hs: string | null }[]>([])
+  const [classPrint, setClassPrint] = useState<{ id: string; ho_ten: string; maDe: number }[] | null>(null)
   const [loading, setLoading] = useState(true)
   const [busy, setBusy] = useState(false)
   const [err, setErr] = useState<string | null>(null)
@@ -153,6 +156,27 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
   }
 
   function resetForm() { setLopId(null); setNgay(''); setRows(blankRows()); setCau({}); setCh({}) }
+
+  // ── GÁN MÃ ĐỀ THEO HS (Thùy 07-31) — chỉ khi SỬA ET đã lưu (cần id để in + có 3 mã đề). Bảng = HS CÓ MẶT
+  // của buổi (điểm danh co_mat). Gán 1/2/3 mỗi HS → in phiếu tên sẵn, tránh HS cạnh nhau trùng đề. ──
+  useEffect(() => {
+    if (!editing || !lopId || !ngay) { setRoster([]); return }
+    let alive = true
+    hsCoMatCuaBuoi(lopId, ngay).then((r) => { if (alive) setRoster(r) }).catch(() => { if (alive) setRoster([]) })
+    return () => { alive = false }
+  }, [editing, lopId, ngay])
+  const deReady = !!ch.etMaDe && baseRows().length > 0 && oTrong().length === 0   // đủ 3 mã đề, không ô trống
+  const setHsMa = (hsId: string, maDe: number) => setCh((c) => ({ ...c, hsMaDe: { ...(c.hsMaDe ?? {}), [hsId]: maDe } }))
+  const raiTuDong = () => setCh((c) => { const m = { ...(c.hsMaDe ?? {}) }; roster.forEach((hs, i) => { m[hs.id] = (i % 3) + 1 }); return { ...c, hsMaDe: m } })
+  // In theo HS: lưu cau_hinh (giữ hsMaDe cho học bù) rồi mở preview. HS chưa gán → mặc định mã 1.
+  async function inTheoHS(list: typeof roster) {
+    if (!et) return
+    const perHS = list.map((hs) => ({ id: hs.id, ho_ten: hs.ho_ten, maDe: ch.hsMaDe?.[hs.id] ?? 1 }))
+    try { await updateET(et.id, { cau_hinh: ch }); useStore.getState().enqueueLinkGen(et.id, 'et') }
+    catch (e: any) { setErr(e.message ?? String(e)); return }
+    setClassPrint(perHS)
+  }
+
   async function luu() {
     if (!lop) { setErr('Chọn lớp.'); return }
     if (!ngay) { setErr('Chọn ngày buổi học.'); return }
@@ -232,6 +256,7 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
         <button onClick={luu} disabled={busy || !lop || !ngay || !soCau} className="rounded-md bg-indigo-600 px-4 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">{busy ? 'Đang lưu…' : '💾 Lưu ET'}</button>
       </div>
 
+      <div className="min-h-0 flex flex-1 overflow-hidden">
       <div className="min-h-0 flex-1 overflow-auto p-5">
         <div className="mx-auto max-w-[820px]">
           {flash && <div className="mb-3 rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-[13px] font-medium text-emerald-700">✓ {flash}</div>}
@@ -321,8 +346,45 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
           <button onClick={themCau} className="mt-3 w-full rounded-xl border-2 border-dashed border-violet-200 bg-violet-50/40 py-2.5 text-[14px] font-medium text-violet-700 transition hover:bg-violet-50">+ Thêm câu</button>
         </div>
       </div>
+      {/* Bảng gán mã đề theo HS (chỉ khi sửa ET đã lưu — cần id + 3 mã đề). Học bù: bấm 🖨 in lại phiếu 1 HS. */}
+      {editing && (
+        <div className="w-80 shrink-0 overflow-auto border-l border-slate-200 bg-white p-4">
+          <div className="mb-2 text-[13px] font-semibold text-slate-800">👥 Gán mã đề theo HS</div>
+          {!deReady ? (
+            <p className="text-[12px] italic text-slate-400">Sinh đủ <b>3 mã đề</b> (không còn ô trống) và <b>Lưu ET</b> trước, rồi gán mã đề cho từng HS ở đây.</p>
+          ) : roster.length === 0 ? (
+            <p className="text-[12px] italic text-slate-400">Chưa có HS <b>điểm danh có mặt</b> cho buổi này. Điểm danh xong (có mặt) sẽ hiện danh sách.</p>
+          ) : (
+            <>
+              <div className="mb-2 flex items-center gap-2">
+                <button onClick={raiTuDong} className="rounded-md border border-violet-300 bg-white px-2.5 py-1 text-[11px] font-medium text-violet-700 hover:bg-violet-100">🎲 Rải tự động</button>
+                <button onClick={() => inTheoHS(roster)} className="ml-auto rounded-md bg-indigo-600 px-2.5 py-1 text-[11px] font-medium text-white hover:bg-indigo-500">🖨 Xem &amp; In cả lớp</button>
+              </div>
+              <ol className="space-y-1">
+                {roster.map((hs) => { const cur = ch.hsMaDe?.[hs.id]
+                  return (
+                    <li key={hs.id} className="flex items-center gap-2 rounded-md border border-slate-100 px-2 py-1.5">
+                      <span className="min-w-0 flex-1 truncate text-[12px] text-slate-700" title={hs.ma_hs ?? ''}>{hs.ho_ten}</span>
+                      <div className="flex gap-0.5">
+                        {[1, 2, 3].map((n) => (
+                          <button key={n} onClick={() => setHsMa(hs.id, n)} title={`Mã đề ${n}`}
+                            className={`h-6 w-6 rounded text-[12px] font-bold ${cur === n ? 'bg-violet-600 text-white' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}>{n}</button>
+                        ))}
+                      </div>
+                      <button onClick={() => inTheoHS([hs])} title="In lại phiếu HS này (học bù)" className="shrink-0 text-[13px] text-slate-400 hover:text-indigo-600">🖨</button>
+                    </li>
+                  )
+                })}
+              </ol>
+              <p className="mt-2 text-[11px] text-slate-400">Rải tự động = xoay vòng 1·2·3 theo thứ tự (HS cạnh nhau khác mã). Gán xong bấm <b>Lưu ET</b> để dùng lại khi học bù.</p>
+            </>
+          )}
+        </div>
+      )}
+      </div>
 
       {printing && et && <ETPrintView id={et.id} onClose={() => setPrinting(false)} />}
+      {classPrint && et && <ETPrintView id={et.id} perHS={classPrint} onClose={() => setClassPrint(null)} />}
       {dangModal !== null && <DangPickerOne khoi={khoi} mon={mon} onClose={() => setDangModal(null)}
         onPick={(ma) => { const i = dangModal; setDangModal(null); pickDang(i, ma) }} />}
       {picker && <KhoPicker maDangs={[picker.maDang]} cauTbl={cauTbl} selected={rows[picker.idx].maCau ? [rows[picker.idx].maCau!] : []} onClose={() => setPicker(null)}
