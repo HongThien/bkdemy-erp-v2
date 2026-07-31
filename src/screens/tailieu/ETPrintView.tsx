@@ -177,10 +177,17 @@ function ETAllDe({ full, gv, varCau }: { full: TaiLieuFull; gv: boolean; varCau:
   const etMaDe = ch.etMaDe
   const complete = !!etMaDe && base.length > 0 && base.every((c) => { const a = etMaDe[c.ma_cau]; return a && a[0] && a[1] })
   const build = (v: number) => (complete ? (base.map((c) => varCau[etMaDe![c.ma_cau][v] as string]).filter(Boolean) as CauHoi[]) : [])
+  // Đề 2/3 KẾ THỪA số dòng (tự luận) của câu gốc: lines keyed theo ma_cau nên phải map ma_cau gốc → biến
+  // thể lúc IN. Nguồn DUY NHẤT = btvnLinesByCau của câu gốc → đổi dòng đề 1 rồi lưu là đề 2/3 tự khớp.
+  const chVar = (vIdx: number): CauHinh => {
+    const lines = { ...(ch.btvnLinesByCau ?? {}) }
+    for (const bc of base) { const vm = etMaDe![bc.ma_cau][vIdx]; const bl = ch.btvnLinesByCau?.[bc.ma_cau]; if (vm && bl != null) lines[vm] = bl }
+    return { ...ch, btvnLinesByCau: lines }
+  }
   const des = complete
-    ? [{ label: 'Mã đề 1', caus: base }, { label: 'Mã đề 2', caus: build(0) }, { label: 'Mã đề 3', caus: build(1) }]
-    : [{ label: '', caus: base }]
-  return <>{des.map((d, i) => <div key={i} className={i ? 'pv-de-break' : ''}><ETDoc ten={full.taiLieu.ten} caus={d.caus} ch={ch} gv={gv} badge={d.label} /></div>)}</>
+    ? [{ label: 'Mã đề 1', caus: base, ch }, { label: 'Mã đề 2', caus: build(0), ch: chVar(0) }, { label: 'Mã đề 3', caus: build(1), ch: chVar(1) }]
+    : [{ label: '', caus: base, ch }]
+  return <>{des.map((d, i) => <div key={i} className={i ? 'pv-de-break' : ''}><ETDoc ten={full.taiLieu.ten} caus={d.caus} ch={d.ch} gv={gv} badge={d.label} /></div>)}</>
 }
 
 function ETDoc({ ten, caus, ch, gv, badge }: { ten: string; caus: CauHoi[]; ch: CauHinh; gv: boolean; badge?: string }) {
