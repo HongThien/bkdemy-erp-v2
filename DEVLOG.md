@@ -3364,3 +3364,8 @@ Verify: card hiện "△ABC nhọn, ba đường cao... | tứ giác BFEC nội 
 - `ui.tsx`: +`NguoiPicker` (ô search lọc theo tên/mã NS + list cuộn có avatar tròn + tick chọn) · +`NguoiChip` (pill indigo + avatar; "chưa gán" = pill hổ phách) · +`DeadlineChip` (màu theo độ gấp: đỏ quá hạn/cam ≤2 ngày/xám thường, nhãn "trễ Nd"/"hôm nay") · `initials()`. Modal `wide` → max-w-3xl, padding p-6.
 - Áp NguoiPicker + wide vào: GanModal (Weekly Planning), GiaoViecModal (giao/tách con/phát sinh), ChuyenModal (loại người cũ). LeafRow Weekly Planning: người + deadline thành CHIP nổi bật vị trí cố định.
 - Verify: tsc sạch, Vite build không lỗi. (Live click-through chặn do session dev hết hạn — không tự nhập mật khẩu; thay đổi thuần presentational.)
+
+## 2026-07-31 (6) — Việc của tôi: bỏ filter loại việc, thêm toggle Vận hành/Phát triển
+- CEO: (1) bỏ các filter chip Chấm bài/Chấm ET/... — số task trực quan, không cần lọc; (2) thay bằng TOGGLE Vận hành ⇄ Phát triển; (3) Phát triển tách sang view riêng full-width cho rộng.
+- `NhanSuHome/VietCuaToi`: gỡ ChipDef/OPS_CHIPS/GVTA_CHIPS/chipCls + state `loai`/matchLoai/toggleLoai + SectionHead (không còn dùng). Thêm state `view`. Header: toggle pill Vận hành/Phát triển; week-nav chỉ hiện ở Vận hành. Bỏ layout 2 cột (grid ...280px rail) → mỗi view full-width. Vận hành = metrics + day-groups; Phát triển = alert bổ trợ đuổi + VietCuaToiTab.
+- Verify: tsc sạch + `vite build` OK (8.2s). Commit chỉ file NhanSuHome (rút kinh nghiệm: không git add -A).

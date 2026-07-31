@@ -79,17 +79,6 @@ const TASK_STYLE: Record<TabKey, { icon: string; accent: string }> = {
 // Loại việc cho filter chip — THEO VAI (Thùy 07-06: "Ops không có chấm bài như TA, phải hiện đúng
 // việc của ops"): Ops thấy Điểm danh/Report/Báo tan/Chuẩn bị phòng · GV/TA thấy Chấm bài/ET/BTVN/Đánh
 // giá. 'diemdanh' CHỈ thuộc nhóm Ops (GV/TA không có item diemdanh nào — xem TASKS_BY_VAI ở gami.ts).
-type ChipDef = { key: string; ten: string; icon: string }
-const OPS_CHIPS: ChipDef[] = [
-  { key: 'diemdanh', ten: 'Điểm danh', icon: '👥' }, { key: 'report', ten: 'Report', icon: '📣' },
-  { key: 'tan', ten: 'Báo tan', icon: '🔔' }, { key: 'prep', ten: 'Chuẩn bị phòng', icon: '🧹' },
-]
-const GVTA_CHIPS: ChipDef[] = [
-  { key: 'ingame', ten: 'Chấm bài', icon: '✏️' }, { key: 'et', ten: 'Chấm ET', icon: '📝' },
-  { key: 'btvn', ten: 'Chấm BTVN', icon: '📒' }, { key: 'danhgia', ten: 'Đánh giá', icon: '⭐' },
-  { key: 'mt', ten: 'Chấm MT', icon: '🏆' },
-]
-const chipCls = (on: boolean) => `rounded-full border px-3.5 py-1.5 text-[14px] font-medium transition ${on ? 'border-indigo-300 bg-indigo-50 text-indigo-700' : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'}`
 
 // Dải số liệu — card TRẮNG nổi trên nền xám + số màu theo loại (gu Apple: trắng + bóng mềm, không viền nặng).
 // `compact` (mobile, Thùy 07-06: "4 cái thẻ đếm quá to") = 1 hàng label+số gọn, KHÔNG xếp dọc to như desktop.
@@ -105,16 +94,6 @@ function Metric({ label, value, tone, compact }: { label: string; value: number;
     <div className="rounded-2xl border border-slate-200/70 bg-white px-4 py-3 shadow-sm">
       <div className="text-[13px] font-medium text-slate-500">{label}</div>
       <div className={`text-[26px] font-semibold leading-tight ${METRIC_TONE[tone]}`}>{value}</div>
-    </div>
-  )
-}
-// Tiêu đề khu vực (vận hành / phát triển) — thanh màu + chữ to để nhìn rõ ranh giới.
-function SectionHead({ label, count, color }: { label: string; count?: number; color: string }) {
-  return (
-    <div className="mb-3 flex items-center gap-2">
-      <span className={`h-5 w-1.5 rounded-full ${color}`} />
-      <span className="text-[16px] font-semibold text-slate-800">{label}</span>
-      {count != null && <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[12px] font-semibold text-slate-500">{count}</span>}
     </div>
   )
 }
@@ -214,7 +193,7 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
   const [opsWeek, setOpsWeek] = useState<(BuoiAo & { ngay: string })[]>([])
   const [tienDo, setTienDo] = useState<Record<string, TienDo>>({})
   const [tuan, setTuan] = useState(tuanNay)
-  const [loai, setLoai] = useState<Set<string>>(new Set())
+  const [view, setView] = useState<'vanhanh' | 'phattrien'>('vanhanh')
   const [doneShown, setDoneShown] = useState(20)
   const [now, setNow] = useState(() => Date.now())
   // Report/Báo tan + Chuẩn bị phòng (Ops, xem opsvanhanh.ts) — Thùy 07-06: "các loại việc chính của
@@ -265,17 +244,9 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
 
   if (!scope) return <div className="text-sm text-slate-400">Tài khoản chưa gắn nhân sự — chưa có phạm vi việc.</div>
 
-  const matchLoai = (tab: string) => loai.size === 0 || loai.has(tab)
-  const toggleLoai = (tab: string) => setLoai((s) => { const n = new Set(s); n.has(tab) ? n.delete(tab) : n.add(tab); return n })
-  // Vai trò quyết định BỘ CHIP nào hiện — Ops KHÔNG có chấm-bài-như-TA (Thùy 07-06), GV/TA không có
-  // điểm danh/report/tan/prep. `trucTiep` = có ghế gv/tg lớp nào không (MyScope, nhansu.ts).
-  const isOps = !!scope.opsToanHe
-  const isGvTa = scope.trucTiep.length > 0
-  const chipDefs: ChipDef[] = [...(isOps ? OPS_CHIPS : []), ...(isGvTa ? GVTA_CHIPS : [])]
-
   // OPS điểm danh (trong tuần đang chọn): XONG = buổi mở & mọi HS đã đánh dấu.
   const opsXong = (ba: BuoiAo) => { const b = ba.buoi; if (!b || b.trang_thai === 'huy') return false; const t = tienDo[b.id]; return !!t && t.daDanh >= t.tong }
-  const opsList = matchLoai('diemdanh') ? opsWeek.filter((ba) => !ba.buoi || ba.buoi.trang_thai !== 'huy') : []
+  const opsList = opsWeek.filter((ba) => !ba.buoi || ba.buoi.trang_thai !== 'huy')
   const opsActive = opsList.filter((ba) => !opsXong(ba))
   const opsDone = opsList.filter(opsXong)
 
@@ -287,16 +258,15 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
   //    → deadline rơi sang THỨ 2 = TUẦN SAU → task ET của buổi hôm nay biến mất khỏi "tuần này". Các task
   //    này là việc NGAY của buổi nên phải nằm cùng tuần/ngày buổi; deadline vẫn hiển thị riêng ở badge.
   const ngayViec = (t: MyTask) => (t.tab === 'btvn' && t.deadline != null ? ngayCuaTs(t.deadline) : t.ngay)
-  const weekTasks = tasks.filter((t) => tuanCuaNgay(ngayViec(t)) === tuan && matchLoai(t.tab))
+  const weekTasks = tasks.filter((t) => tuanCuaNgay(ngayViec(t)) === tuan)
   const taskActive = weekTasks.filter((t) => !t.done)
   // Lịch sử "đã xong" — TẤT CẢ thời gian, gần→xa theo doneAt (20/lần). Độc lập filter tuần.
-  const doneHistory = tasks.filter((t) => t.done && matchLoai(t.tab)).sort((a, b) => (b.doneAt ?? '').localeCompare(a.doneAt ?? ''))
-  // Report/Báo tan + Chuẩn bị phòng — đã fetch SẴN theo đúng tuần đang chọn (opsExtra/prepTasks), qua
-  // CÙNG bộ lọc loại việc (report/tan/prep giờ có chip riêng trong OPS_CHIPS).
-  const opsExtraFiltered = opsExtra.filter((t) => matchLoai(t.tab))
+  const doneHistory = tasks.filter((t) => t.done).sort((a, b) => (b.doneAt ?? '').localeCompare(a.doneAt ?? ''))
+  // Report/Báo tan + Chuẩn bị phòng — đã fetch SẴN theo đúng tuần đang chọn (opsExtra/prepTasks).
+  const opsExtraFiltered = opsExtra
   const opsExtraActive = opsExtraFiltered.filter((t) => !t.done)
   const opsExtraDone = opsExtraFiltered.filter((t) => t.done)
-  const prepFiltered = matchLoai('prep') ? prepTasks : []
+  const prepFiltered = prepTasks
   const prepActive = prepFiltered.filter((t) => !t.done)
   const prepDone = prepFiltered.filter((t) => t.done)
   const hasActive = opsActive.length + taskActive.length + opsExtraActive.length + prepActive.length + scanTest.length > 0
@@ -333,26 +303,30 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
       {/* Header + điều hướng tuần — Thùy 07-19 (mobile): "lởm quá, quá nhiều thông tin thừa" — bỏ h2
           "Việc của tôi" trùng lặp (top bar mobile đã hiện rồi, xem NhanSuHome ~dòng 493), tuần dồn gọn
           góc phải, MÀN HÌNH CHỈ CÒN CARD VIỆC LÀ CHÍNH. */}
-      <div className={isMobile ? 'mb-2 flex items-center justify-end gap-1' : 'mb-4 flex flex-wrap items-center gap-2'}>
+      <div className={isMobile ? 'mb-3 flex flex-wrap items-center gap-2' : 'mb-4 flex flex-wrap items-center gap-3'}>
         {!isMobile && <h2 className="text-[22px] font-semibold text-slate-800">Việc của tôi</h2>}
-        <div className={isMobile ? 'flex items-center gap-1' : 'ml-auto flex items-center gap-1.5'}>
-          <button onClick={() => setTuan((t) => t - 1)} className={isMobile ? 'rounded-md border border-slate-200 px-2 py-1 text-[14px] leading-none text-slate-600' : 'rounded-md border border-slate-200 px-2.5 py-1.5 text-[16px] leading-none text-slate-600 hover:border-indigo-300'}>‹</button>
-          <span className={isMobile ? 'text-center text-[12.5px] font-semibold text-slate-700' : 'min-w-[210px] text-center text-[15px] font-semibold text-slate-700'}>
-            {isMobile ? `${ddmmVN(khoangTuan(tuan).tu)}–${ddmmVN(khoangTuan(tuan).den)}` : nhanTuan(tuan)}
-          </span>
-          <button onClick={() => setTuan((t) => t + 1)} className={isMobile ? 'rounded-md border border-slate-200 px-2 py-1 text-[14px] leading-none text-slate-600' : 'rounded-md border border-slate-200 px-2.5 py-1.5 text-[16px] leading-none text-slate-600 hover:border-indigo-300'}>›</button>
-          {tuan !== tuanNay && <button onClick={() => setTuan(tuanNay)} className={isMobile ? 'ml-1 rounded-md bg-indigo-50 px-2 py-1 text-[12px] font-medium text-indigo-600' : 'ml-1 rounded-md bg-indigo-50 px-2.5 py-1.5 text-[14px] font-medium text-indigo-600 hover:bg-indigo-100'}>Tuần này</button>}
+        {/* TOGGLE Vận hành / Phát triển — thay cho filter loại việc (CEO chốt 07-31). Số task trực quan,
+            không cần lọc; Phát triển tách hẳn sang view riêng cho rộng rãi. */}
+        <div className="inline-flex rounded-full bg-slate-100 p-0.5">
+          {([['vanhanh', '🛠 Vận hành'], ['phattrien', '🚀 Phát triển']] as const).map(([k, ten]) => (
+            <button key={k} onClick={() => setView(k)}
+              className={`rounded-full px-4 py-1.5 text-[13px] font-semibold transition ${view === k ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>{ten}</button>
+          ))}
         </div>
+        {view === 'vanhanh' && (
+          <div className={isMobile ? 'flex items-center gap-1' : 'ml-auto flex items-center gap-1.5'}>
+            <button onClick={() => setTuan((t) => t - 1)} className={isMobile ? 'rounded-md border border-slate-200 px-2 py-1 text-[14px] leading-none text-slate-600' : 'rounded-md border border-slate-200 px-2.5 py-1.5 text-[16px] leading-none text-slate-600 hover:border-indigo-300'}>‹</button>
+            <span className={isMobile ? 'text-center text-[12.5px] font-semibold text-slate-700' : 'min-w-[210px] text-center text-[15px] font-semibold text-slate-700'}>
+              {isMobile ? `${ddmmVN(khoangTuan(tuan).tu)}–${ddmmVN(khoangTuan(tuan).den)}` : nhanTuan(tuan)}
+            </span>
+            <button onClick={() => setTuan((t) => t + 1)} className={isMobile ? 'rounded-md border border-slate-200 px-2 py-1 text-[14px] leading-none text-slate-600' : 'rounded-md border border-slate-200 px-2.5 py-1.5 text-[16px] leading-none text-slate-600 hover:border-indigo-300'}>›</button>
+            {tuan !== tuanNay && <button onClick={() => setTuan(tuanNay)} className={isMobile ? 'ml-1 rounded-md bg-indigo-50 px-2 py-1 text-[12px] font-medium text-indigo-600' : 'ml-1 rounded-md bg-indigo-50 px-2.5 py-1.5 text-[14px] font-medium text-indigo-600 hover:bg-indigo-100'}>Tuần này</button>}
+          </div>
+        )}
       </div>
-      {/* Filter loại việc — chip THEO VAI (Ops/GV/TA khác bộ, xem chipDefs). Thùy 07-19: "Ops làm việc
-          qua Việc của tôi mà" — ẨN trên mobile (thông tin thừa, chật màn hình), giữ nguyên trên desktop. */}
-      {!isMobile && (
-        <div className="mb-4 flex flex-wrap items-center gap-1.5">
-          {chipDefs.map((x) => <button key={x.key} onClick={() => toggleLoai(x.key)} className={chipCls(loai.has(x.key))}>{x.icon} {x.ten}</button>)}
-          {loai.size > 0 && <button onClick={() => setLoai(new Set())} className="px-2 py-1 text-[12px] text-slate-400 hover:text-slate-600">× Xoá lọc</button>}
-        </div>
-      )}
 
+      {view === 'vanhanh' ? (
+        <>
       {/* Dải số liệu tổng quan — compact (mobile, Thùy 07-06: "4 cái thẻ đếm quá to") */}
       <div className={isMobile ? 'mb-4 grid grid-cols-4 gap-1.5' : 'mb-4 grid grid-cols-2 gap-2.5 sm:grid-cols-4'}>
         <Metric label="Cần làm" value={canLam} tone="slate" compact={isMobile} />
@@ -361,10 +335,8 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
         <Metric label="Đã xong tuần" value={daXongTuan} tone="emerald" compact={isMobile} />
       </div>
 
-      <div className="grid grid-cols-1 gap-5 lg:grid-cols-[minmax(0,1fr)_280px]">
-        {/* VẬN HÀNH — chiếm hết phần còn lại */}
+        {/* VẬN HÀNH — full width */}
         <div className="min-w-0">
-          <SectionHead label="Vận hành" count={hasActive ? canLam : undefined} color="bg-indigo-500" />
           {!hasActive ? (
             <div className="rounded-lg border border-emerald-200 bg-emerald-50/60 px-4 py-3 text-[13px] font-medium text-emerald-700">✓ Không còn việc vận hành cần làm trong {nhanTuan(tuan).toLowerCase()}.</div>
           ) : (
@@ -448,23 +420,20 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
             )}
           </details>
         </div>
-
-        {/* PHÁT TRIỂN — rail hẹp, ngăn cách bằng đường kẻ dọc. Task THẬT (viec/viec_nguoi_lam), không reset theo tuần. */}
-        <div className="lg:border-l-2 lg:border-slate-200 lg:pl-5">
-          <SectionHead label="Phát triển" color="bg-violet-500" />
+        </>
+      ) : (
+        /* PHÁT TRIỂN — view riêng, full width (task THẬT viec/task mẹ-con, không reset theo tuần) */
+        <div>
           {/* Team học thuật: đợt bổ trợ đuổi chờ chốt dạng (derive theo hocThuatMons) — Thùy 07-15 */}
           {choDuyetDuoi > 0 && (
-            <button onClick={() => setStaffLeaf('botro_duoi')} className="mb-2 block w-full rounded-2xl border border-amber-200 bg-amber-50 p-3.5 text-left shadow-sm hover:shadow-md">
+            <button onClick={() => setStaffLeaf('botro_duoi')} className="mx-auto mb-3 block w-full max-w-[900px] rounded-2xl border border-amber-200 bg-amber-50 p-3.5 text-left shadow-sm hover:shadow-md">
               <div className="flex items-center gap-2 text-[14px] font-semibold text-amber-800">📚 {choDuyetDuoi} đợt bổ trợ đuổi chờ chốt dạng</div>
               <p className="mt-1 text-[12px] leading-relaxed text-amber-700">Ops đã tạo card đuổi — bạn (team học thuật) chốt dạng cần đuổi + số buổi để GV dạy bám theo.</p>
             </button>
           )}
-          {/* Task phát triển CỦA TÔI — tương tác đầy đủ (bắt đầu/hoàn thành+evidence/xin gia hạn)
-              + hiệu suất kỳ. "Việc của tôi" sống Ở ĐÂY, không phải tab trong màn quản lý (CEO chốt 07-31). */}
           {scope && <VietCuaToiTab nhanSuId={scope.nhanSu.id} />}
-          <button onClick={() => setStaffLeaf('giaoviec')} className="mt-2 text-[12px] font-medium text-indigo-600 hover:underline">Mở màn Tạo &amp; giao việc →</button>
         </div>
-      </div>
+      )}
     </div>
   )
 }
