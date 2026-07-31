@@ -30,6 +30,7 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
   const [full, setFull] = useState<TaiLieuFull | null>(null)
   const [err, setErr] = useState<string | null>(null)
   const [gv, setGv] = useState(false)
+  const [kieu, setKieu] = useState<'gon' | 'bk'>('bk')   // kiểu đầu phiếu: gọn (cũ) / BK (thiết kế mới)
   const [pages, setPages] = useState(0)
   const [rendering, setRendering] = useState(true)
   const [, setDl] = useState(false) // "đang lấy link" — chỉ đọc trong headless linkOnly, nút "⬇ Tải PDF" đã bỏ
@@ -105,7 +106,7 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
       })
       .finally(() => URL.revokeObjectURL(cssUrl))
     return () => { cancelled = true; clearTimeout(watchdog) }
-  }, [full, gv, varReady])
+  }, [full, gv, varReady, kieu])
 
   const seg = (on: boolean) => `rounded-md px-3 py-1 text-[13px] font-medium transition ${on ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`
   const printFileName = () => `${full?.taiLieu.ten ?? ''}${gv ? ' - Bản GV' : ''}`
@@ -136,7 +137,7 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
   if (headless) return createPortal(
     <>
       <div style={{ position: 'fixed', top: 0, left: 0, zIndex: 88, width: '210mm', background: '#fff' }}><div ref={dstRef} className="pv-pages" /></div>
-      <div ref={srcRef} className="pv-src" aria-hidden>{full && <ETAllDe full={full} gv={gv} varCau={varCau} perHS={perHS} />}</div>
+      <div ref={srcRef} className="pv-src" aria-hidden>{full && <ETAllDe full={full} gv={gv} varCau={varCau} perHS={perHS} kieu={kieu} />}</div>
       <div className="no-print fixed inset-0 z-[95] flex items-center justify-center bg-white">
         <div className="rounded-xl border border-slate-200 bg-white px-6 py-4 text-sm font-medium text-slate-700 shadow-xl">
           {dlErr ? <span className="text-rose-600">{dlErr}</span> : linkOnly ? <>⏳ Đang lấy link…</> : <>⏳ Đang chuẩn bị in{pages ? ` (${pages} trang)` : ''}…</>}
@@ -155,6 +156,10 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
           <button onClick={() => setGv(false)} className={seg(!gv)}>Bản học sinh</button>
           <button onClick={() => setGv(true)} className={seg(gv)}>Bản giáo viên</button>
         </div>
+        <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5">
+          <button onClick={() => setKieu('bk')} className={seg(kieu === 'bk')}>Kiểu BK</button>
+          <button onClick={() => setKieu('gon')} className={seg(kieu === 'gon')}>Kiểu gọn</button>
+        </div>
         <span className="text-[12px] text-slate-400">{rendering ? 'đang dựng trang…' : `${pages} trang`}</span>
         {dlErr && <span className="text-[12px] text-rose-600">{dlErr}</span>}
         <div className="ml-auto flex gap-2">
@@ -167,7 +172,7 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
           : !full ? <p className="text-center text-slate-400">Đang tải…</p>
           : <div ref={dstRef} className="pv-pages" />}
       </div>
-      <div ref={srcRef} className="pv-src" aria-hidden>{full && <ETAllDe full={full} gv={gv} varCau={varCau} perHS={perHS} />}</div>
+      <div ref={srcRef} className="pv-src" aria-hidden>{full && <ETAllDe full={full} gv={gv} varCau={varCau} perHS={perHS} kieu={kieu} />}</div>
       <style>{CHROME_CSS}</style>
     </div>,
     document.body,
@@ -177,7 +182,7 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
 // 3 MÃ ĐỀ (Thùy 07-31): đề gốc = câu phan 'custom'; đề 2/3 = thay từng câu bằng ma_cau trong etMaDe
 // (neo theo CÂU GỐC, đúng thứ tự gốc → cùng nhóm form → in ra 3 phiếu cấu trúc y hệt, khác câu). ET cũ
 // (không etMaDe / chưa đủ) → in 1 đề như trước (backward-compatible).
-function ETAllDe({ full, gv, varCau, perHS }: { full: TaiLieuFull; gv: boolean; varCau: Record<string, CauHoi>; perHS?: { id: string; ho_ten: string; maDe: number }[] }) {
+function ETAllDe({ full, gv, varCau, perHS, kieu }: { full: TaiLieuFull; gv: boolean; varCau: Record<string, CauHoi>; perHS?: { id: string; ho_ten: string; maDe: number }[]; kieu: 'gon' | 'bk' }) {
   const ch = full.taiLieu.cau_hinh ?? {}
   const base = full.phans.find((p) => p.loai_phan === 'custom')?.caus ?? []
   const etMaDe = ch.etMaDe
@@ -196,15 +201,15 @@ function ETAllDe({ full, gv, varCau, perHS }: { full: TaiLieuFull; gv: boolean; 
   // Chế độ IN THEO HS: mỗi HS 1 phiếu = mã đề đã gán + tên in sẵn.
   if (perHS) {
     return <>{perHS.map((hs, i) => { const d = deOf(hs.maDe)
-      return <div key={hs.id} className={i ? 'pv-de-break' : ''}><ETDoc ten={full.taiLieu.ten} caus={d.caus} ch={d.ch} gv={gv} badge={`Mã đề ${hs.maDe}`} hoTen={hs.ho_ten} /></div> })}</>
+      return <div key={hs.id} className={i ? 'pv-de-break' : ''}><ETDoc ten={full.taiLieu.ten} caus={d.caus} ch={d.ch} gv={gv} badge={`Mã đề ${hs.maDe}`} hoTen={hs.ho_ten} kieu={kieu} /></div> })}</>
   }
   const des = complete
     ? [{ label: 'Mã đề 1', caus: base, ch }, { label: 'Mã đề 2', caus: build(0), ch: chVar(0) }, { label: 'Mã đề 3', caus: build(1), ch: chVar(1) }]
     : [{ label: '', caus: base, ch }]
-  return <>{des.map((d, i) => <div key={i} className={i ? 'pv-de-break' : ''}><ETDoc ten={full.taiLieu.ten} caus={d.caus} ch={d.ch} gv={gv} badge={d.label} /></div>)}</>
+  return <>{des.map((d, i) => <div key={i} className={i ? 'pv-de-break' : ''}><ETDoc ten={full.taiLieu.ten} caus={d.caus} ch={d.ch} gv={gv} badge={d.label} kieu={kieu} /></div>)}</>
 }
 
-function ETDoc({ ten, caus, ch, gv, badge, hoTen }: { ten: string; caus: CauHoi[]; ch: CauHinh; gv: boolean; badge?: string; hoTen?: string }) {
+function ETDoc({ ten, caus, ch, gv, badge, hoTen, kieu }: { ten: string; caus: CauHoi[]; ch: CauHinh; gv: boolean; badge?: string; hoTen?: string; kieu: 'gon' | 'bk' }) {
   const lines = ch.btvnLinesByCau ?? {}
   // ⭐ 07-20: KHÔNG gom lại theo loại ở đây nữa. Thứ tự in = ĐÚNG `thu_tu` của DB (đã gom theo nhóm
   // từ lúc LƯU — sortETCaus trong ETScreen.luu). Trước đây gom ở render nên "Câu 3" trên giấy khác
@@ -226,8 +231,33 @@ function ETDoc({ ten, caus, ch, gv, badge, hoTen }: { ten: string; caus: CauHoi[
   const GLBL = ['Trắc nghiệm', 'Trả lời ngắn', 'Tự luận']
   // "ET 6S1 · 31/07/2026" → tên đề "Đề kiểm tra cuối giờ lớp 6S1" + ngày riêng (mỗi thứ 1 dòng ở cột phải).
   const _dot = ten.indexOf(' · ')
-  const tenDe = (_dot >= 0 ? ten.slice(0, _dot) : ten).replace(/^ET\s+/, 'Đề kiểm tra cuối giờ lớp ')
+  const rawName = _dot >= 0 ? ten.slice(0, _dot) : ten
+  const tenDe = rawName.replace(/^ET\s+/, 'Đề kiểm tra cuối giờ lớp ')
   const ngayDe = _dot >= 0 ? ten.slice(_dot + 3) : ''
+  const tenLop = rawName.replace(/^ET\s+/, '')                    // "6S1"
+  const made = badge ? badge.replace(/^Mã đề\s*/i, '') : ''       // "2" (từ "Mã đề 2")
+  if (kieu === 'bk') return (
+    <div className="pv-et pv-et-bk">
+      <ETHeaderBK title={tenDe} ngay={ngayDe} lop={tenLop} made={made} hoTen={hoTen} soCau={caus.length} gv={gv} />
+      {runs.map((run, ri) => (
+        <section key={ri} className="pv-sec"><h2 className="pv-h-dang">Phần {part()} · {GLBL[run.g]}</h2>
+          <ol className="pv-caulist">{run.items.map((c) => {
+            if (run.g === 0) return <CauItem key={c.ma_cau} no={next()} c={c} gv={gv} />
+            const { stem, grid, emb } = splitStem(c)
+            return (
+              <li key={c.ma_cau} className="pv-cau">
+                <div className="pv-math"><MathText prefix={`<span class="pv-cau-no">Câu ${next()}.</span> `}>{stem}</MathText></div>
+                {grid && <OptGrid grid={grid} emb={emb} />}
+                {c.anh_de && <img src={c.anh_de} alt="" className="pv-img" />}
+                {gv ? <GvAnswer c={c} /> : grid ? null : <WriteLines n={lines[c.ma_cau] ?? (run.g === 1 ? DEFAULT_TLN_LINES : DEFAULT_TL_LINES)} />}
+              </li>
+            )
+          })}</ol>
+        </section>
+      ))}
+      {caus.length === 0 && <p className="pv-empty">ET chưa có câu nào.</p>}
+    </div>
+  )
   return (
     <div className="pv-et">
       <div className="pv-bt-head">
@@ -281,6 +311,53 @@ function ETDoc({ ten, caus, ch, gv, badge, hoTen }: { ten: string; caus: CauHoi[
   )
 }
 
+// Đầu phiếu KIỂU BK (thiết kế mới, Thùy 07-31 — theo mockup BK Academy). Thương hiệu + nhãn "Bài test cuối
+// giờ" + thời gian 10 phút + ngày; tiêu đề; bảng HS (Họ tên · Lớp · Mã đề); lưới "Đánh giá từng câu" Đ/C/S,
+// số ô = SỐ CÂU của đề. Bản GV bỏ bảng HS + lưới chấm.
+function ETHeaderBK({ title, ngay, lop, made, hoTen, soCau, gv }: {
+  title: string; ngay: string; lop: string; made: string; hoTen?: string; soCau: number; gv: boolean
+}) {
+  return (
+    <div className="pv-bkh">
+      <div className="pv-bkh-top">
+        <div className="pv-bkh-brand">
+          <div className="pv-bkh-mark"><span /><span /><span /><span /></div>
+          <div className="pv-bkh-bn"><strong>BK ACADEMY</strong><span>Học chắc nền tảng · Bứt phá tư duy</span></div>
+        </div>
+        <div className="pv-bkh-label">Bài test cuối giờ{gv ? ' · Đáp án' : ''}</div>
+        <div className="pv-bkh-meta">
+          <div className="pv-bkh-pill"><span>Thời gian</span><strong>10 phút</strong></div>
+          <div className="pv-bkh-pill"><span>Ngày</span><strong>{ngay}</strong></div>
+        </div>
+      </div>
+      <div className="pv-bkh-hero">
+        <h1 className="pv-bkh-title">{title}</h1>
+        <div className="pv-bkh-divider" />
+      </div>
+      {!gv && (
+        <div className="pv-bkh-student">
+          <div className="pv-bkh-field"><div className="pv-bkh-flbl">Họ và tên học sinh</div><div className="pv-bkh-fval">{hoTen || ' '}</div></div>
+          <div className="pv-bkh-field"><div className="pv-bkh-flbl">Lớp</div><div className="pv-bkh-fval">{lop}</div></div>
+          <div className="pv-bkh-field"><div className="pv-bkh-flbl">Mã đề</div><div className="pv-bkh-fval">{made || ' '}</div></div>
+        </div>
+      )}
+      {!gv && (
+        <div className="pv-bkh-assess">
+          <div className="pv-bkh-ahead"><div className="pv-bkh-atitle">Đánh giá từng câu</div><div className="pv-bkh-anote">Trợ giảng tích Đ / C / S cho mỗi câu</div></div>
+          <div className="pv-bkh-grid">
+            {Array.from({ length: soCau }, (_, i) => (
+              <div key={i} className="pv-bkh-qcard">
+                <div className="pv-bkh-qno">Câu {i + 1}</div>
+                <div className="pv-bkh-status">{['Đ', 'C', 'S'].map((s) => <span key={s} className="pv-bkh-circle">{s}</span>)}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
 const ET_CSS = `
 /* Header 2 CỘT có VẠCH NGĂN giữa (viền phải cột trái). TRÁI = họ tên HS (tên to). PHẢI = tên đề · ngày ·
    mã đề, căn CHÍNH GIỮA cột 2. 2 cột CĂN TRÊN (lề trên ngang nhau). Chữ TÍM (accent) đồng bộ cả file. */
@@ -306,4 +383,36 @@ const ET_CSS = `
 .pv-et .pv-cau .pv-math:first-child{break-after:avoid}
 /* Mỗi MÃ ĐỀ 1 trang mới (mỗi HS 1 phiếu riêng). */
 .pv-de-break{break-before:page}
+
+/* ══ ĐẦU PHIẾU KIỂU BK (mockup BK Academy) — mọi class prefix pv-bkh, KHÔNG đụng chrome in chung ══ */
+.pv-bkh{--navy:#24324b;--blue:#4c6fff;--blue-soft:#eef2ff;--gold:#c89b52;--muted:#6f7890;--line:#e7eaf1;position:relative;overflow:hidden;border:1px solid #dfe3ec;border-radius:20px;background:#fff;color:#172033;margin-bottom:14px;break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.pv-bkh::before{content:"";position:absolute;inset:0 0 auto 0;height:6px;background:linear-gradient(90deg,var(--blue),#7966e8 48%,var(--gold))}
+.pv-bkh-top{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding:18px 22px 12px}
+.pv-bkh-brand{display:flex;align-items:center;gap:11px;min-width:0}
+.pv-bkh-mark{display:grid;grid-template-columns:repeat(2,12px);gap:3px;padding:7px;border:1px solid var(--line);border-radius:12px;background:#fff;flex:0 0 auto}
+.pv-bkh-mark span{width:12px;height:12px;border-radius:4px}
+.pv-bkh-mark span:nth-child(1){background:#4c6fff}.pv-bkh-mark span:nth-child(2){background:#f3b447}.pv-bkh-mark span:nth-child(3){background:#ef6b73}.pv-bkh-mark span:nth-child(4){background:#39b89a}
+.pv-bkh-bn strong{display:block;color:var(--navy);font-size:14px;letter-spacing:.04em;white-space:nowrap}
+.pv-bkh-bn span{display:block;margin-top:2px;color:var(--muted);font-size:10.5px;white-space:nowrap}
+.pv-bkh-label{justify-self:center;padding:7px 13px;border-radius:999px;background:var(--blue-soft);color:var(--blue);font-size:10.5px;font-weight:750;letter-spacing:.10em;text-transform:uppercase;white-space:nowrap}
+.pv-bkh-meta{justify-self:end;display:flex;gap:8px}
+.pv-bkh-pill{display:flex;flex-direction:column;padding:6px 11px;border:1px solid var(--line);border-radius:12px;color:var(--muted);font-size:10px;white-space:nowrap;line-height:1.3}
+.pv-bkh-pill strong{color:var(--navy);font-size:12.5px}
+.pv-bkh-hero{padding:4px 22px 14px;text-align:center}
+.pv-bkh-title{margin:0;color:var(--navy);font-size:25px;font-weight:820;line-height:1.08;letter-spacing:-.03em}
+.pv-bkh-divider{width:60px;height:4px;margin:11px auto 0;border-radius:99px;background:linear-gradient(90deg,var(--blue),var(--gold))}
+.pv-bkh-student{display:grid;grid-template-columns:1.55fr .7fr .75fr;margin:0 16px 11px;overflow:hidden;border:1px solid var(--line);border-radius:15px;background:#f8faff}
+.pv-bkh-field{position:relative;padding:11px 16px;min-height:56px;display:flex;flex-direction:column;justify-content:center;gap:5px}
+.pv-bkh-field:not(:last-child)::after{content:"";position:absolute;top:13px;right:0;bottom:13px;width:1px;background:var(--line)}
+.pv-bkh-flbl{color:var(--muted);font-size:10px;font-weight:750;letter-spacing:.07em;text-transform:uppercase}
+.pv-bkh-fval{color:var(--navy);font-size:16px;font-weight:760;min-height:20px;line-height:1.2}
+.pv-bkh-assess{margin:0 16px 16px;padding:12px 14px;border:1px solid var(--line);border-radius:15px;background:#fff}
+.pv-bkh-ahead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
+.pv-bkh-atitle{color:var(--navy);font-size:11px;font-weight:850;letter-spacing:.08em;text-transform:uppercase}
+.pv-bkh-anote{color:var(--muted);font-size:10px}
+.pv-bkh-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(72px,1fr));gap:7px}
+.pv-bkh-qcard{padding:7px 4px 6px;border:1px solid var(--line);border-radius:12px;text-align:center}
+.pv-bkh-qno{margin-bottom:6px;color:var(--navy);font-size:10.5px;font-weight:800;white-space:nowrap}
+.pv-bkh-status{display:flex;justify-content:center;gap:4px}
+.pv-bkh-circle{display:grid;place-items:center;width:20px;height:20px;border:1.5px solid #cfd4df;border-radius:50%;color:#737d91;font-size:9px;font-weight:900;line-height:1}
 `
