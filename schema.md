@@ -2,7 +2,7 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-112 bảng · 0 enum · 10 trigger · 31 function
+111 bảng · 0 enum · 10 trigger · 31 function
 
 ## bai_lam
 
@@ -601,22 +601,6 @@
 | ma_cau | text | Y |  |  |  |
 | hinh_y_id | uuid | Y |  | FK→hinh_y.id |  |
 | ngu_canh_luot | text | Y |  |  | `mo_hinh` · `dang` · `luyen_de` |
-
-## hang_muc
-
-| cột | kiểu | null | default | khóa | giá trị hợp lệ |
-|---|---|---|---|---|---|
-| id | uuid |  | gen_random_uuid() | PK |  |
-| ten | text |  |  |  |  |
-| mo_ta | text | Y |  |  |  |
-| kieu | text |  |  |  | `mot_lan` · `lien_tuc` |
-| trang_thai | text |  | 'backlog'::text |  | `backlog` · `dang_chay` · `xong` · `dung` |
-| pham_vi | numeric | Y |  |  |  |
-| chan_troi | date | Y |  |  |  |
-| gia_tri | integer | Y |  |  |  |
-| co | integer | Y |  |  |  |
-| tac_gia_id | uuid | Y |  | FK→nhan_su.id |  |
-| created_at | timestamp with time zone |  | now() |  |  |
 
 ## hinh_bai
 
@@ -1474,13 +1458,12 @@
 |---|---|---|---|---|---|
 | id | uuid |  | gen_random_uuid() | PK |  |
 | loai_viec_id | uuid | Y |  | FK→loai_viec.id |  |
-| hang_muc_id | uuid | Y |  | FK→hang_muc.id |  |
 | y_tuong_id | uuid | Y |  | FK→y_tuong.id |  |
 | tieu_de | text |  |  |  |  |
 | muc_tieu | text | Y |  |  |  |
 | output | text | Y |  |  |  |
 | mo_ta | text | Y |  |  |  |
-| nguoi_lam_id | uuid |  |  | FK→nhan_su.id |  |
+| nguoi_lam_id | uuid | Y |  | FK→nhan_su.id |  |
 | nguoi_giao_id | uuid |  |  | FK→nhan_su.id |  |
 | khoi_luong | numeric |  |  |  |  |
 | nguon | text |  | 'ke_hoach'::text |  | `ke_hoach` · `phat_sinh` |
@@ -1505,6 +1488,7 @@
 | created_at | timestamp with time zone |  | now() |  |  |
 | hoan_thanh_at | timestamp with time zone | Y |  |  |  |
 | nghiem_thu_at | timestamp with time zone | Y |  |  |  |
+| task_me_id | uuid | Y |  | FK→viec.id |  |
 
 ## viec_log
 
@@ -1543,12 +1527,11 @@
 | tieu_de | text |  |  |  |  |
 | mo_ta | text | Y |  |  |  |
 | tac_gia_id | uuid |  |  | FK→nhan_su.id |  |
-| trang_thai | text |  | 'moi'::text |  | `moi` · `backlog` · `da_trien_khai` · `ngu_dong` · `tu_choi` |
+| trang_thai | text |  | 'moi'::text |  | `moi` · `backlog` · `holding` · `da_trien_khai` · `ngu_dong` · `tu_choi` |
 | ly_do_tu_choi | text | Y |  |  |  |
 | gia_tri | integer | Y |  |  |  |
 | co | integer | Y |  |  |  |
 | ngay_vao_backlog | date | Y |  |  |  |
-| hang_muc_id | uuid | Y |  | FK→hang_muc.id |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 
 ## Triggers
@@ -1611,8 +1594,6 @@
 | buoi_danh_gia_dang | buoi_danh_gia_dang_diem_check | `CHECK ((diem = ANY (ARRAY[(0)::numeric, 0.5, (1)::numeric])))` |
 | ca_test | ca_test_thoi_luong_phut_check | `CHECK ((thoi_luong_phut = ANY (ARRAY[45, 60, 75, 90, 120])))` |
 | dai_ban_do | dai_ban_do_muc_do_check | `CHECK (((muc_do >= 1) AND (muc_do <= 5)))` |
-| hang_muc | hang_muc_co_check | `CHECK (((co >= 1) AND (co <= 3)))` |
-| hang_muc | hang_muc_gia_tri_check | `CHECK (((gia_tri >= 1) AND (gia_tri <= 3)))` |
 | hinh_mo_hinh | hinh_mo_hinh_cap_mo_hinh_check | `CHECK (((cap_mo_hinh >= 1) AND (cap_mo_hinh <= 4)))` |
 | hinh_mo_hinh_cha | hinh_mo_hinh_cha_check | `CHECK ((mo_hinh_id <> cha_id))` |
 | hoc_phi_phat_sinh | hoc_phi_phat_sinh_dung_loai | `CHECK ((((loai = 'lop'::text) AND (lop_id IS NOT NULL) AND (hoc_sinh_id IS NULL)) OR ((loai = 'ca_nhan'::text) AND (hoc_sinh_id IS NOT NULL) AND (lop_id IS NULL))))` |

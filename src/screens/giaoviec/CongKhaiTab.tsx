@@ -3,8 +3,7 @@
 // Tổng: tỉ lệ phát sinh, huỷ theo người giao, hạng mục quá chân trời.
 import { useEffect, useState } from 'react'
 import {
-  listViecTheoTuan, tiLePhatSinh, demViecHuyTheoNguoiGiao, listHangMuc, hangMucQuaChanTroi,
-  type ViecFull, type HangMucFull,
+  listViecTheoTuan, tiLePhatSinh, demViecHuyTheoNguoiGiao, type ViecFull,
 } from '../../lib/giaoviec'
 import { kyTuanHienTai, kyTuanCuaNgay, nhanKyTuan, todayVN, soNgayLech } from '../../lib/giaoviec-config'
 import { Badge, VIEC_TT, Section, Empty, ErrBar, Stat, fmtNgay } from './ui'
@@ -14,14 +13,13 @@ export default function CongKhaiTab() {
   const [rows, setRows] = useState<ViecFull[]>([])
   const [phatSinh, setPhatSinh] = useState<{ tong: number; phatSinh: number; tiLe: number | null } | null>(null)
   const [huyMap, setHuyMap] = useState<Record<string, number>>({})
-  const [hangMucs, setHangMucs] = useState<HangMucFull[]>([])
   const [loading, setLoading] = useState(true); const [err, setErr] = useState<string | null>(null)
 
   async function reload() {
     setLoading(true); setErr(null)
     try {
-      const [v, ps, hm, hMuc] = await Promise.all([listViecTheoTuan(ky), tiLePhatSinh(ky), demViecHuyTheoNguoiGiao(), listHangMuc(['backlog', 'dang_chay'])])
-      setRows(v); setPhatSinh(ps); setHuyMap(hm); setHangMucs(hMuc)
+      const [v, ps, hm] = await Promise.all([listViecTheoTuan(ky), tiLePhatSinh(ky), demViecHuyTheoNguoiGiao()])
+      setRows(v); setPhatSinh(ps); setHuyMap(hm)
     } catch (e: any) { setErr(e?.message ?? String(e)) } finally { setLoading(false) }
   }
   useEffect(() => { reload() }, [ky])
@@ -31,7 +29,6 @@ export default function CongKhaiTab() {
     const dt = new Date(Date.UTC(y, m - 1, d)); dt.setUTCDate(dt.getUTCDate() + delta * 7)
     setKy(kyTuanCuaNgay(`${dt.getUTCFullYear()}-${String(dt.getUTCMonth() + 1).padStart(2, '0')}-${String(dt.getUTCDate()).padStart(2, '0')}`))
   }
-  const quaChanTroi = hangMucs.filter(hangMucQuaChanTroi)
 
   return (
     <div className="mx-auto max-w-[960px] space-y-5">
@@ -47,7 +44,7 @@ export default function CongKhaiTab() {
         <Stat label="Task tuần này" value={phatSinh?.tong ?? 0} />
         <Stat label="Tỉ lệ phát sinh" value={phatSinh?.tiLe === null ? '—' : `${phatSinh?.tiLe}%`} accent={(phatSinh?.tiLe ?? 0) > 50 ? 'text-rose-600' : 'text-slate-800'} />
         <Stat label="Đạt tuần này" value={rows.filter((r) => r.trang_thai === 'dat').length} accent="text-emerald-600" />
-        <Stat label="Hạng mục quá chân trời" value={quaChanTroi.length} accent={quaChanTroi.length ? 'text-rose-600' : 'text-slate-800'} />
+        <Stat label="Đang hold" value={rows.filter((r) => r.trang_thai === 'hold').length} accent="text-violet-600" />
       </div>
       {(phatSinh?.tiLe ?? 0) > 50 && <div className="rounded-lg bg-rose-50 px-3 py-2 text-[12px] text-rose-700">⚠ Tỉ lệ phát sinh &gt; 50% — trung tâm đang chữa cháy, backlog chỉ là đồ trang trí.</div>}
 
@@ -79,16 +76,6 @@ export default function CongKhaiTab() {
               </table>
             </div>
           )}
-        </Section>
-      )}
-
-      {!!quaChanTroi.length && (
-        <Section title="Hạng mục quá chân trời — phải quyết lại">
-          {quaChanTroi.map((hm) => (
-            <div key={hm.id} className="rounded-2xl bg-white p-3.5 shadow-sm ring-1 ring-rose-200">
-              <b className="text-slate-800">{hm.ten}</b> <span className="text-[12px] text-rose-600">· chân trời {fmtNgay(hm.chan_troi)} đã qua · đã ra {hm.so_lat_da_ra} lát</span>
-            </div>
-          ))}
         </Section>
       )}
 

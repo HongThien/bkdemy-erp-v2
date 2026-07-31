@@ -33,7 +33,7 @@ import ReportPHScreen from './report/ReportPHScreen'
 import DuyetChamScreen from './duyetcham/DuyetChamScreen'
 import HocPhiScreen from './hocphi/HocPhiScreen'
 import GiaoViecScreen from './giaoviec/GiaoViecScreen'
-import { listViecCuaToi, type ViecFull } from '../lib/giaoviec'
+import VietCuaToiTab from './giaoviec/VietCuaToiTab'
 import { listDotChoDuyetDuoi } from '../lib/botro_duoi'
 import QuanLyLevelScreen from './gami/QuanLyLevelScreen'
 import PhanQuyenScreen from './phanquyen/PhanQuyenScreen'
@@ -217,7 +217,6 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
   const [loai, setLoai] = useState<Set<string>>(new Set())
   const [doneShown, setDoneShown] = useState(20)
   const [now, setNow] = useState(() => Date.now())
-  const [viecPT, setViecPT] = useState<ViecFull[]>([])
   // Report/Báo tan + Chuẩn bị phòng (Ops, xem opsvanhanh.ts) — Thùy 07-06: "các loại việc chính của
   // ops chưa được đưa vào Việc của tôi". Nguồn = phan_cong_ca/prep_phong (KHÁC phan_cong_lop/MyTask),
   // fetch riêng theo TỪNG NGƯỜI (không gate theo opsToanHe — assignment là per-person).
@@ -236,7 +235,6 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
   const [xemThem, setXemThem] = useState<Set<string>>(new Set())
 
   useEffect(() => { getMyTasks().then(setTasks).catch(() => setTasks([])) }, [])
-  useEffect(() => { if (scope?.nhanSu.id) listViecCuaToi(scope.nhanSu.id).then(setViecPT).catch(() => setViecPT([])) }, [scope?.nhanSu.id])
   useEffect(() => {
     const htMons = me?.hocThuatMons ?? []
     if (!htMons.length) { setChoDuyetDuoi(0); return }
@@ -461,22 +459,10 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
               <p className="mt-1 text-[12px] leading-relaxed text-amber-700">Ops đã tạo card đuổi — bạn (team học thuật) chốt dạng cần đuổi + số buổi để GV dạy bám theo.</p>
             </button>
           )}
-          {viecPT.filter((v) => v.trang_thai !== 'dat').length === 0 ? (
-            <div className="rounded-2xl border border-dashed border-slate-300 bg-white p-4 shadow-sm">
-              <div className="flex items-center gap-2 text-[14px] font-medium text-slate-700">📨 Chưa có việc phát triển nào</div>
-              <p className="mt-1.5 text-[12px] leading-relaxed text-slate-500">Việc phát triển được cấp trên giao (soạn tài liệu, nhập kho…) sẽ hiện ở đây khi có.</p>
-            </div>
-          ) : (
-            <div className="space-y-2">
-              {viecPT.filter((v) => v.trang_thai !== 'dat').map((v) => (
-                <button key={v.id} onClick={() => setStaffLeaf('giaoviec')} className="block w-full rounded-2xl bg-white p-3.5 text-left shadow-sm hover:shadow-md">
-                  <div className="text-[13px] font-semibold text-slate-800">{v.tieu_de}</div>
-                  <div className="mt-1 text-[11px] text-slate-500">{v.loai_viec_ten ?? 'Việc'} · {v.nguoi_giao_ten} giao{v.deadline ? ` · hạn ${v.deadline.slice(8, 10)}/${v.deadline.slice(5, 7)}` : ''}</div>
-                </button>
-              ))}
-            </div>
-          )}
-          <button onClick={() => setStaffLeaf('giaoviec')} className="mt-2 text-[12px] font-medium text-indigo-600 hover:underline">Mở màn Giao việc →</button>
+          {/* Task phát triển CỦA TÔI — tương tác đầy đủ (bắt đầu/hoàn thành+evidence/xin gia hạn)
+              + hiệu suất kỳ. "Việc của tôi" sống Ở ĐÂY, không phải tab trong màn quản lý (CEO chốt 07-31). */}
+          {scope && <VietCuaToiTab nhanSuId={scope.nhanSu.id} />}
+          <button onClick={() => setStaffLeaf('giaoviec')} className="mt-2 text-[12px] font-medium text-indigo-600 hover:underline">Mở màn Tạo &amp; giao việc →</button>
         </div>
       </div>
     </div>

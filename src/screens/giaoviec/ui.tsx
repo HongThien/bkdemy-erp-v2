@@ -27,9 +27,10 @@ export const VIEC_TT: Record<string, { ten: string; cls: string }> = {
 export const IDEA_TT: Record<string, { ten: string; cls: string }> = {
   moi:           { ten: 'Mới',           cls: 'bg-sky-50 text-sky-700 ring-sky-200' },
   backlog:       { ten: 'Backlog',       cls: 'bg-indigo-50 text-indigo-700 ring-indigo-200' },
+  holding:       { ten: 'Holding',       cls: 'bg-amber-50 text-amber-700 ring-amber-200' },
   da_trien_khai: { ten: 'Đã triển khai', cls: 'bg-emerald-50 text-emerald-700 ring-emerald-200' },
   ngu_dong:      { ten: 'Ngủ đông',      cls: 'bg-slate-100 text-slate-400 ring-slate-200' },
-  tu_choi:       { ten: 'Từ chối',       cls: 'bg-rose-50 text-rose-600 ring-rose-200' },
+  tu_choi:       { ten: 'Đã huỷ',        cls: 'bg-rose-50 text-rose-600 ring-rose-200' },
 }
 
 export function Badge({ map, k }: { map: Record<string, { ten: string; cls: string }>; k: string }) {

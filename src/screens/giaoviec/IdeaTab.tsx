@@ -2,7 +2,7 @@
 // CEO duyệt vào backlog / từ chối kèm lý do (hiện cho tác giả). Idea quá 1 chu kỳ → đỏ.
 import { useEffect, useState } from 'react'
 import {
-  listYTuong, createYTuong, refineYTuong, duyetYTuongVaoBacklog, tuChoiYTuong, taoBacklogTopDown,
+  listYTuong, createYTuong, refineYTuong, duyetYTuongVaoBacklog, holdingYTuong, tuChoiYTuong, taoBacklogTopDown,
   ideaQuaHanTriage, type YTuongFull,
 } from '../../lib/giaoviec'
 import { CX_INPUT, CX_BTN, CX_BTN_GHOST, Badge, IDEA_TT, Section, Empty, ErrBar, Modal, Field, Chon13 } from './ui'
@@ -27,6 +27,7 @@ export default function IdeaTab({ laAdmin, laQuanLy }: { laAdmin: boolean; laQua
 
   const moi = rows.filter((r) => r.trang_thai === 'moi')
   const backlog = rows.filter((r) => r.trang_thai === 'backlog')
+  const holding = rows.filter((r) => r.trang_thai === 'holding')
   const daTK = rows.filter((r) => r.trang_thai === 'da_trien_khai')
   const tuChoi = rows.filter((r) => r.trang_thai === 'tu_choi')
   const nguDong = rows.filter((r) => r.trang_thai === 'ngu_dong')
@@ -41,25 +42,40 @@ export default function IdeaTab({ laAdmin, laQuanLy }: { laAdmin: boolean; laQua
 
       {loading ? <p className="text-sm text-slate-400">Đang tải…</p> : (
         <>
-          <Section title={`Chờ triage (${moi.length})`} highlight={moi.some((r) => ideaQuaHanTriage(r.created_at))}>
-            {!moi.length ? <Empty>Không có ý tưởng nào chờ triage.</Empty> : moi.map((r) => (
+          <Section title={`Chờ duyệt (${moi.length})`} highlight={moi.some((r) => ideaQuaHanTriage(r.created_at))}>
+            {!moi.length ? <Empty>Không có ý tưởng nào chờ duyệt.</Empty> : moi.map((r) => (
               <IdeaCard key={r.id} r={r} canRefine={laAdmin || laQuanLy}
                 onRefine={(patch) => act(() => refineYTuong(r.id, patch))}
                 actions={laAdmin && (
                   <div className="flex gap-1.5">
-                    <button onClick={() => act(() => duyetYTuongVaoBacklog(r.id))} className={CX_BTN}>Duyệt → Backlog</button>
-                    <button onClick={() => setTuChoiId(r.id)} className="rounded-lg border border-rose-300 px-3 py-2 text-[12px] font-medium text-rose-600 hover:bg-rose-50">Từ chối</button>
+                    <button onClick={() => act(() => duyetYTuongVaoBacklog(r.id))} className={CX_BTN}>→ Backlog</button>
+                    <button onClick={() => act(() => holdingYTuong(r.id))} className="rounded-lg border border-amber-300 px-3 py-2 text-[12px] font-medium text-amber-700 hover:bg-amber-50">Holding</button>
+                    <button onClick={() => setTuChoiId(r.id)} className="rounded-lg border border-rose-300 px-3 py-2 text-[12px] font-medium text-rose-600 hover:bg-rose-50">Huỷ</button>
                   </div>
                 )} />
             ))}
           </Section>
+
+          {!!holding.length && (
+            <Section title={`Holding — tạm hoãn (${holding.length})`} highlight>
+              {holding.map((r) => (
+                <IdeaCard key={r.id} r={r}
+                  actions={laAdmin && (
+                    <div className="flex gap-1.5">
+                      <button onClick={() => act(() => duyetYTuongVaoBacklog(r.id))} className={CX_BTN}>→ Backlog</button>
+                      <button onClick={() => setTuChoiId(r.id)} className="rounded-lg border border-rose-300 px-3 py-2 text-[12px] font-medium text-rose-600 hover:bg-rose-50">Huỷ</button>
+                    </div>
+                  )} />
+              ))}
+            </Section>
+          )}
 
           <Section title={`Trong backlog (${backlog.length})`}>
             {!backlog.length ? <Empty>Chưa có ý tưởng nào vào backlog.</Empty> : backlog.map((r) => <IdeaCard key={r.id} r={r} />)}
           </Section>
 
           {!!daTK.length && <Section title={`Đã triển khai (${daTK.length})`}>{daTK.map((r) => <IdeaCard key={r.id} r={r} />)}</Section>}
-          {!!tuChoi.length && <Section title={`Từ chối (${tuChoi.length})`}>{tuChoi.map((r) => <IdeaCard key={r.id} r={r} />)}</Section>}
+          {!!tuChoi.length && <Section title={`Đã huỷ (${tuChoi.length})`}>{tuChoi.map((r) => <IdeaCard key={r.id} r={r} />)}</Section>}
           {!!nguDong.length && <Section title={`Ngủ đông (${nguDong.length})`}>{nguDong.map((r) => <IdeaCard key={r.id} r={r} />)}</Section>}
         </>
       )}
