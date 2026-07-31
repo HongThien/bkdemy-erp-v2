@@ -406,7 +406,7 @@ function GanBuoiModal({ mtId, mon, ganList, onClose, onDone }: { mtId: string; m
             <label className="mt-3 block text-[12px] font-medium text-slate-600">Lớp ({mon})</label>
             <div className="mt-1"><SearchSelect value={lopId} onChange={setLopId} placeholder="Chọn lớp…" options={lops.map((l) => ({ id: l.id, label: l.ten_lop, sub: l.khoi ? `Khối ${l.khoi}` : '' }))} /></div>
             <label className="mt-3 block text-[12px] font-medium text-slate-600">Ngày *</label>
-            <BuoiNgaySelect lopId={lopId} value={ngay} onChange={setNgay} className={`${inp} mt-1 w-full`} />
+            <BuoiNgaySelect lopId={lopId} value={ngay} onChange={setNgay} className={`${inp} mt-1 w-full`} defaultToday />
             {daGan && (
               <p className="mt-2 rounded-lg border border-amber-200 bg-amber-50 px-2.5 py-1.5 text-[12px] text-amber-700">
                 ⚠ Lớp này đã gán MT này vào <b>{daySo(daGan.ngay)}</b>{daGan.ngay !== ngay ? ' — chọn "Gán" sẽ THAY THẾ bản gán đó.' : '.'}

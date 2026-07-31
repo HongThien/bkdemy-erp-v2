@@ -158,7 +158,7 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
             options={lops.map((l) => ({ id: l.id, label: l.ten_lop, sub: `${l.mon}${l.khoi ? ' · K' + l.khoi : ''}` }))} /></div>
         </div>
         <div className="flex items-center gap-1.5 text-[12px] text-slate-500">Ngày
-          <BuoiNgaySelect lopId={lopId} value={ngay} onChange={setNgay} />
+          <BuoiNgaySelect lopId={lopId} value={ngay} onChange={setNgay} defaultToday />
         </div>
         {lop && ngay && <span className="font-mono text-[11px] text-violet-500">{maET(lop.ten_lop, ngay)}</span>}
         <span className="ml-auto text-[12px] text-slate-400">{soCau} câu</span>

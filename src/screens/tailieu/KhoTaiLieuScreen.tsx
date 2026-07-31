@@ -313,7 +313,7 @@ export default function KhoTaiLieuScreen() {
               </div>
               <div>
                 <label className="mb-1 block text-[12px] font-medium text-slate-600">Ngày buổi học</label>
-                <BuoiNgaySelect lopId={dupLop} value={dupNgay} onChange={setDupNgay} className="h-9 w-full rounded-md border border-slate-300 px-2 text-[13px] disabled:bg-slate-50 disabled:text-slate-300" />
+                <BuoiNgaySelect lopId={dupLop} value={dupNgay} onChange={setDupNgay} className="h-9 w-full rounded-md border border-slate-300 px-2 text-[13px] disabled:bg-slate-50 disabled:text-slate-300" defaultToday />
               </div>
             </div>
             {dupErr && <p className="mt-3 text-[12px] text-rose-600">{dupErr}</p>}
