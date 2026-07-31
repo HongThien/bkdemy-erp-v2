@@ -466,20 +466,21 @@ function TrichPanel({ masterId, khoi, buois, onClose }: { masterId: string; khoi
   const soBuoiMaster = new Map(buois.map((b, i) => [b.marker.id, i + 1]))
   const sttLopCua = (markerId: string) => boLop.find((b) => b.nguon_buoi === markerId)?.stt
 
-  // ⭐ Ngày gán MẶC ĐỊNH = buổi TKB gần nhất CHƯA gán (Thùy: BTVN luôn làm vào ngày học/gần đó → khỏi bới
-  // cả list, tránh bấm nhầm sang tháng khác như 8A1 Buổi 7 gán nhầm CN 23/08). Lấp TUẦN TỰ theo thứ tự
-  // buổi master: buổi chưa-gán thứ k → ngày trống thứ k → MỖI DÒNG một ngày RIÊNG (không gộp chung 1 ngày).
-  // ⭐ 07-31 (Thùy): revert f714f4c — bản đó gộp mọi dòng về ĐÚNG 1 ngày + chặn cứng `d >= today` gây 2 lỗi:
-  //   (1) lớp hết buổi tương lai → mọi dòng MẤT NGÀY;  (2) mọi dòng chưa-gán HIỆN CÙNG 1 ngày (sai dòng).
-  // Cấp ngày trống gồm CẢ quá khứ (back-fill BTVN buổi vừa học) → không dòng nào mất ngày. "Đã gán" tính
-  // theo BỘ GIÁO TRÌNH LỚP (mọi giáo trình, không riêng master này) để không cấp trùng ngày đã có buổi.
+  // ⭐ Ngày gán MẶC ĐỊNH = buổi học GẦN NHẤT CHƯA GÁN — chỉ 1 ngày, mọi dòng chưa-gán hiện CÙNG ngày đó.
+  // Thùy 07-31 (chốt lại sau khi thử cả 2 hướng): MỖI LẦN GÁN CHỈ 1 BUỔI → đừng dự đoán 2–3 buổi tiếp,
+  // đừng cấp mỗi dòng một ngày tăng dần (rối). Luôn chỉ "buổi tới". Gán xong 1 buổi → reload: ngày đó vào
+  // "đã gán", ngày mặc định TỰ lùi sang buổi trống kế tiếp — hệ tự xử lý, GV không cần chọn ngày trước.
+  // Ưu tiên buổi TỪ HÔM NAY trở đi; lớp hết buổi tương lai trống thì lùi về buổi trống gần nhất ĐÃ QUA
+  // (KHÔNG để dòng nào mất ngày — chính là lỗi khiến bản f714f4c bị revert, nay đã sửa). "Đã gán" tính theo
+  // BỘ GIÁO TRÌNH LỚP (mọi giáo trình, không riêng master này) để không cấp trùng ngày đã có buổi.
   const daGan = new Set(boLop.map((b) => b.ngay))
-  const ngayTrong = tkbDates.filter((d) => !daGan.has(d))
+  const ngayTrong = tkbDates.filter((d) => !daGan.has(d))   // tăng dần, gồm CẢ quá khứ
+  const today = homNayVN()
+  const ngayMacDinh = ngayTrong.find((d) => d >= today) ?? ngayTrong[ngayTrong.length - 1] ?? ''
   const defNgayByMarker = new Map<string, string>()
-  let kTrong = 0
   for (const b of buois) {
     if (state[b.marker.id]?.ngay) continue        // buổi này đã gán → không cần ngày mặc định
-    if (kTrong < ngayTrong.length) defNgayByMarker.set(b.marker.id, ngayTrong[kTrong++])
+    if (ngayMacDinh) defNgayByMarker.set(b.marker.id, ngayMacDinh)
   }
 
   return (
