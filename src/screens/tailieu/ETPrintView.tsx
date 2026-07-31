@@ -66,8 +66,8 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
     let cancelled = false
     setRendering(true)
     const ch0 = full.taiLieu.cau_hinh ?? {}
-    // Kiểu BK có thương hiệu riêng trong thân → BỎ dải header trên cùng của trang (tránh trùng logo/lớp·ngày).
-    const ch = kieu === 'bk' ? { ...ch0, header: 'none' as const } : ch0
+    // Kiểu BK có thương hiệu riêng trong thân → BỎ cả dải header TRÊN lẫn footer DƯỚI của trang (khỏi trùng/lệch tông).
+    const ch = kieu === 'bk' ? { ...ch0, header: 'none' as const, footer: 'none' as const } : ch0
     // BK: accent XANH LAM (chữ Phần/Câu theo tông BK) + kéo lề trên lên (đã bỏ header) + border đậm hơn.
     const accent = kieu === 'bk' ? '#3b5bd8' : (ch.mau || '#7c3aed')
     const css = buildPagedCss(full.taiLieu, ch, accent) + ET_CSS + (kieu === 'bk' ? ET_CSS_BK : '')
@@ -121,7 +121,7 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
     setDl(true); setDlErr(null)
     try {
       const ch0 = full.taiLieu.cau_hinh ?? {}
-      const chChrome = kieu === 'bk' ? { ...ch0, header: 'none' as const } : ch0  // BK bỏ dải header trên cùng
+      const chChrome = kieu === 'bk' ? { ...ch0, header: 'none' as const, footer: 'none' as const } : ch0  // BK bỏ header + footer
       await uploadPagesAsLink(activeContainerRef.current, printFileName(), pageChrome(full.taiLieu, chChrome), full.taiLieu.id); return true
     }
     catch (e) { setDlErr('Lấy link lỗi: ' + (e instanceof Error ? e.message : String(e))); return false }
@@ -329,8 +329,8 @@ function ETHeaderBK({ title, ngay, lop, made, hoTen, soCau, gv }: {
     <div className="pv-bkh">
       <div className="pv-bkh-top">
         <div className="pv-bkh-brand">
-          <div className="pv-bkh-mark"><span /><span /><span /><span /></div>
-          <div className="pv-bkh-bn"><strong>BK ACADEMY</strong><span>Học chắc nền tảng · Bứt phá tư duy</span></div>
+          <img className="pv-bkh-logo" src={location.origin + '/Logo.png'} alt="BK ACADEMY" />
+          <div className="pv-bkh-bn"><strong>BK ACADEMY</strong></div>
         </div>
         <div className="pv-bkh-label">Bài test cuối giờ{gv ? ' · Đáp án' : ''}</div>
         <div className="pv-bkh-meta">
@@ -396,13 +396,10 @@ const ET_CSS = `
 .pv-bkh{--navy:#24324b;--blue:#4c6fff;--blue-soft:#eef2ff;--gold:#c89b52;--muted:#6f7890;--line:#e7eaf1;position:relative;overflow:hidden;border:1px solid #dfe3ec;border-radius:20px;background:#fff;color:#172033;margin-bottom:14px;break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .pv-bkh::before{content:"";position:absolute;inset:0 0 auto 0;height:6px;background:linear-gradient(90deg,var(--blue),#7966e8 48%,var(--gold))}
 .pv-bkh-top{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding:18px 22px 12px}
-.pv-bkh-brand{display:flex;align-items:center;gap:11px;min-width:0}
-.pv-bkh-mark{display:grid;grid-template-columns:repeat(2,12px);gap:3px;padding:7px;border:1px solid var(--line);border-radius:12px;background:#fff;flex:0 0 auto}
-.pv-bkh-mark span{width:12px;height:12px;border-radius:4px}
-.pv-bkh-mark span:nth-child(1){background:#4c6fff}.pv-bkh-mark span:nth-child(2){background:#f3b447}.pv-bkh-mark span:nth-child(3){background:#ef6b73}.pv-bkh-mark span:nth-child(4){background:#39b89a}
+.pv-bkh-brand{display:flex;align-items:center;gap:10px;min-width:0}
+.pv-bkh-logo{height:30px;width:auto;object-fit:contain;flex:0 0 auto}
 .pv-bkh-bn strong{display:block;color:var(--navy);font-size:14px;letter-spacing:.04em;white-space:nowrap}
-.pv-bkh-bn span{display:block;margin-top:2px;color:var(--muted);font-size:10.5px;white-space:nowrap}
-.pv-bkh-label{justify-self:center;padding:7px 13px;border-radius:999px;background:var(--blue-soft);color:var(--blue);font-size:10.5px;font-weight:750;letter-spacing:.10em;text-transform:uppercase;white-space:nowrap}
+.pv-bkh-label{justify-self:center;padding:5px 11px;border-radius:999px;background:var(--blue-soft);color:var(--blue);font-size:9px;font-weight:750;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
 .pv-bkh-meta{justify-self:end;display:flex;gap:8px}
 .pv-bkh-pill{display:flex;flex-direction:column;padding:6px 11px;border:1px solid var(--line);border-radius:12px;color:var(--muted);font-size:10px;white-space:nowrap;line-height:1.3}
 .pv-bkh-pill strong{color:var(--navy);font-size:12.5px}
