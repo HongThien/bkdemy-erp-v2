@@ -33,20 +33,22 @@ export default function ETScreen() {
 // et === undefined → tạo mới (lưu xong reset form). et !== undefined → sửa (lưu xong gọi onClose).
 export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void }) {
   const editing = !!et
+  // Nháp ET tạo-mới đã lưu ở store (Thùy 07-31: rời màn rồi quay lại KHÔNG reset). Chỉ khôi phục khi TẠO MỚI.
+  const draft0 = et ? null : useStore.getState().etDraft
   const [lops, setLops] = useState<Lop[]>([])
-  const [lopId, setLopId] = useState<string | null>(et?.lop_id ?? null)
-  const [ngay, setNgay] = useState<string>(et?.ngay ?? '')
-  const [rows, setRows] = useState<Row[]>(blankRows())
-  const [cau, setCau] = useState<Record<string, CauHoi>>({}) // cache để preview
+  const [lopId, setLopId] = useState<string | null>(et?.lop_id ?? draft0?.lopId ?? null)
+  const [ngay, setNgay] = useState<string>(et?.ngay ?? draft0?.ngay ?? '')
+  const [rows, setRows] = useState<Row[]>(() => (draft0?.rows as Row[] | undefined) ?? blankRows())
+  const [cau, setCau] = useState<Record<string, CauHoi>>(() => (draft0?.cau as Record<string, CauHoi>) ?? {}) // cache để preview
   const [dangOpts, setDangOpts] = useState<{ ma_dang: string; ten_dang: string; ten_chuyen_de: string }[]>([])
-  const [ch, setCh] = useState<CauHinh>({})
+  const [ch, setCh] = useState<CauHinh>(() => (draft0?.ch as CauHinh) ?? {})
   const [picker, setPicker] = useState<{ idx: number; maDang: string } | null>(null)
   const [varPicker, setVarPicker] = useState<{ baseMaCau: string; v: number; maDang: string; form: ETFormKind } | null>(null)
   const [dangModal, setDangModal] = useState<number | null>(null)
   const [printing, setPrinting] = useState(false)
   const [roster, setRoster] = useState<{ id: string; ho_ten: string; ma_hs: string | null }[]>([])
   const [classPrint, setClassPrint] = useState<{ id: string; ho_ten: string; maDe: number }[] | null>(null)
-  const [savedId, setSavedId] = useState<string | null>(et?.id ?? null)  // id doc đã lưu (create xong → update, không đẻ trùng)
+  const [savedId, setSavedId] = useState<string | null>(et?.id ?? draft0?.savedId ?? null)  // id doc đã lưu (create xong → update, không đẻ trùng)
   const [loading, setLoading] = useState(true)
   const [busy, setBusy] = useState(false)
   const [err, setErr] = useState<string | null>(null)
@@ -74,6 +76,12 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
     } catch (e: any) { setErr(e.message ?? String(e)) } finally { setLoading(false) }
   }
   useEffect(() => { loadBase() }, []) // eslint-disable-line
+  // Giữ NHÁP ET tạo-mới vào store mỗi khi state đổi → rời màn rồi quay lại KHÔNG mất. Form rỗng → xoá nháp.
+  useEffect(() => {
+    if (et) return
+    const empty = !lopId && !ngay && rows.every((r) => !r.maCau)
+    useStore.getState().setEtDraft(empty ? null : { lopId, ngay, savedId, rows, cau, ch })
+  }, [et, lopId, ngay, savedId, rows, cau, ch])
   // dạng theo khối (đổi khi chọn lớp khác khối)
   useEffect(() => {
     if (!khoi) { setDangOpts([]); return }

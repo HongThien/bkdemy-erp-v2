@@ -10,6 +10,14 @@ import type { User, Vai, NavGroup, NavLeaf, AdminLeaf } from '../types'
 export type LinkGenJob = { id: string; loai: string; attempt: number }
 export const MAX_LINKGEN_ATTEMPTS = 3
 
+// Nháp ET đang soạn (chế độ TẠO MỚI) — giữ khi rời/quay lại màn để không mất công. cau/ch để lỏng (any)
+// tránh coupling store với type kho. Sống trong RAM (không persist) → F5 mới mất.
+export type EtDraft = {
+  lopId: string | null; ngay: string; savedId: string | null
+  rows: { maDang: string | null; maCau: string | null }[]
+  cau: Record<string, any>; ch: Record<string, any>
+}
+
 interface UiState {
   currentUserId: string
   screen: 'nhansu' | 'admin'
@@ -32,6 +40,9 @@ interface UiState {
   setHocPhiTab: (t: string) => void
   setHocPhiKy: (k: string) => void
   setHocPhiPhId: (id: string | null) => void
+  // ── Nháp ET tạo-mới — giữ NGUYÊN khi rời/quay lại màn (không reset công đang soạn) ──
+  etDraft: EtDraft | null
+  setEtDraft: (d: EtDraft | null) => void
   // ── Bộ lọc màn Chất lượng vận hành — giữ NGUYÊN khi rời/quay lại màn ──────
   dbVanHanhKy: string          // 'YYYY-MM', rỗng = tháng hiện tại
   dbVanHanhView: 'theonguoi' | 'theomuc' | 'chitiet' | 'duyet'   // 4 TẦNG TRÊN (Thùy chốt 07-05 lần 4: +Duyệt chất lượng)
@@ -79,6 +90,8 @@ export const useStore = create<UiState>()(persist((set, get) => ({
   setHocPhiTab: (t) => set({ hocPhiTab: t }),
   setHocPhiKy: (k) => set({ hocPhiKy: k }),
   setHocPhiPhId: (id) => set({ hocPhiPhId: id }),
+  etDraft: null,
+  setEtDraft: (d) => set({ etDraft: d }),
   dbVanHanhKy: '',
   dbVanHanhView: 'theonguoi',
   dbVanHanhMuc: 'tatca',
