@@ -219,7 +219,7 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly,
       headerText: `${lopTen ? `Lớp ${lopTen} · ` : ''}${ngayVN}`,
       footerText: 'BK Academy        Tel : 0963.209.309        Địa chỉ : 17A10 KĐT Geleximco',
     } : undefined
-    const css = buildPagedCss(full.taiLieu, ch, ch0.mau || '#E91E8C', cssOpts) + (bkBtvn ? BK_CSS + '@page{margin-top:8mm}' : '')
+    const css = buildPagedCss(full.taiLieu, ch, ch0.mau || '#E91E8C', cssOpts) + (bkBtvn ? BK_CSS + '@page{margin:8mm 7mm}' : '')
     const cssUrl = URL.createObjectURL(new Blob([css], { type: 'text/css' }))
     const html = srcRef.current.innerHTML
     // Race-safe: mỗi lần render vào CONTAINER RIÊNG (append live để paged.js đo layout). KHÔNG xoá DOM

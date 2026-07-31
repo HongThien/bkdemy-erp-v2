@@ -395,5 +395,5 @@ const ET_CSS = `
 `
 
 // CSS pv-bkh (đầu phiếu BK) DÙNG CHUNG ở bkPrint.ts (BK_CSS). Đây chỉ còn override cấp trang khi bật BK:
-// đã bỏ dải header trên cùng → kéo lề trên lên.
-const ET_CSS_BK = `@page{margin-top:8mm}`
+// đã bỏ header/footer chrome → lề 4 phía HẸP (in PHIẾU, không phải sách) ~1/2 lề cũ.
+const ET_CSS_BK = `@page{margin:8mm 7mm}`
