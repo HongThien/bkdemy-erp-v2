@@ -3354,3 +3354,7 @@ Verify: card hiện "△ABC nhọn, ba đường cao... | tứ giác BFEC nội 
 - **Data layer:** bỏ mọi hàm hang_muc/burn-up. +holdingYTuong. createViec: task_me_id thay hang_muc_id, nguoi_lam nullable. +xacNhanTuan (backlog→task mẹ tuần này), taoTaskCon, ganNguoiLam, listWeeklyPlanning. decorateViec đếm so_con/so_con_dat. Hiệu suất CHỈ đếm task LEAF (loại mẹ có con — không đếm 2 lần).
 - **UI:** shell tabs = Idea list · Backlog · Weekly Planning · Công khai · Loại việc (BỎ tab Việc của tôi + Review tuần). IdeaTab: 3 nút Backlog/Holding/Hủy + section Holding. BacklogTab: multi-select tick + Xác nhận → Weekly. WeeklyPlanningTab MỚI: cụm card mẹ/con, task lẻ chưa gán → Gán 1 người / Tách nhiều con, leaf actions (nghiệm thu/hold/chuyển/huỷ/duyệt GH), Detail modal. VietCuaToiTab chuyển vào rail "Việc của tôi" (NhanSuHome cột Phát triển) — cá nhân sống ở đó.
 - **Verify:** tsc sạch. E2E DB luồng mới 4/4 (holding CHECK · task mẹ nguoi_lam null · task con self-FK 2 con/1 đạt · hiệu suất leaf-only 100%/sản lượng 3), dọn sạch 0 dòng. (Browser pane không compositing lần này nên chưa walk-through live được; phiên trước đã xác nhận render + RLS write.)
+
+## 2026-07-31 (4) — Backlog: giá trị & cỡ thang Fibonacci (1·2·3·5·8)
+- CEO chốt: đổi thang giá trị/cỡ của backlog từ 1–3 → **5 mức Fibonacci 1·2·3·5·8** (chuẩn story-point, phân biệt độ chênh rõ hơn).
+- Mig `202607311557`: nới CHECK `y_tuong.gia_tri`/`co` → `in (1,2,3,5,8)` (1–3 là tập con → data cũ vẫn hợp lệ, không mất gì). UI `Chon13` → const FIBO=[1,2,3,5,8]. Verify DB: nhận 8/5, chặn 4. tsc sạch.

@@ -1605,6 +1605,6 @@
 | muc_nang_luc | muc_nang_luc_muc_check | `CHECK (((muc >= 1) AND (muc <= 3)))` |
 | phan_cong_ca | phan_cong_ca_thu_check | `CHECK (((thu >= 2) AND (thu <= 8)))` |
 | thoi_khoa_bieu | thoi_khoa_bieu_thu_check | `CHECK (((thu >= 2) AND (thu <= 8)))` |
-| y_tuong | y_tuong_co_check | `CHECK (((co >= 1) AND (co <= 3)))` |
-| y_tuong | y_tuong_gia_tri_check | `CHECK (((gia_tri >= 1) AND (gia_tri <= 3)))` |
+| y_tuong | y_tuong_co_check | `CHECK ((co = ANY (ARRAY[1, 2, 3, 5, 8])))` |
+| y_tuong | y_tuong_gia_tri_check | `CHECK ((gia_tri = ANY (ARRAY[1, 2, 3, 5, 8])))` |
 

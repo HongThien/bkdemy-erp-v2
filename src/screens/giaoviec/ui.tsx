@@ -91,11 +91,12 @@ export function Field({ label, children }: { label: string; children: ReactNode 
   return <label className="block"><div className="mb-1 text-[12px] font-medium text-slate-600">{label}</div>{children}</label>
 }
 
-// Chọn 1–3 (gia_tri / co) — pill.
+// Chọn giá trị/cỡ theo thang FIBONACCI (1·2·3·5·8) — pill. CEO chốt 07-31.
+export const FIBO = [1, 2, 3, 5, 8] as const
 export function Chon13({ value, onChange }: { value: number | null; onChange: (v: number) => void }) {
   return (
     <div className="flex gap-1.5">
-      {[1, 2, 3].map((n) => <Pill key={n} on={value === n} onClick={() => onChange(n)}>{n}</Pill>)}
+      {FIBO.map((n) => <Pill key={n} on={value === n} onClick={() => onChange(n)}>{n}</Pill>)}
     </div>
   )
 }
