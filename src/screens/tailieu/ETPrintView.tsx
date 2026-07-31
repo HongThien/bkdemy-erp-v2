@@ -24,7 +24,9 @@ const DEFAULT_TLN_LINES = 2
 // phải đoán mò qua DOM.
 // perHS: in theo HÌNH THỨC MỖI HS 1 PHIẾU — mã đề đã gán + họ tên in sẵn (gán ở ETScreen, cau_hinh.hsMaDe).
 // Không truyền → in 3 mã đề tổng quát như cũ (ô tên trống).
-export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, onReady, onRenderErr, perHS }: { id: string; onClose: () => void; headless?: boolean; linkOnly?: boolean; onFail?: () => void; onReady?: () => void; onRenderErr?: (msg: string) => void; perHS?: { id: string; ho_ten: string; maDe: number }[] }) {
+// fullOverride/varCauOverride: render từ dữ liệu ĐANG SOẠN (in-memory) thay vì đọc bản đã lưu — cho phép
+// PREVIEW ngay trong màn tạo ET, chưa cần lưu (Thùy 07-31).
+export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, onReady, onRenderErr, perHS, fullOverride, varCauOverride }: { id: string; onClose: () => void; headless?: boolean; linkOnly?: boolean; onFail?: () => void; onReady?: () => void; onRenderErr?: (msg: string) => void; perHS?: { id: string; ho_ten: string; maDe: number }[]; fullOverride?: TaiLieuFull; varCauOverride?: Record<string, CauHoi> }) {
   const [full, setFull] = useState<TaiLieuFull | null>(null)
   const [err, setErr] = useState<string | null>(null)
   const [gv, setGv] = useState(false)
@@ -41,10 +43,11 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
   // dựng trang TRƯỚC khi có câu 2/3 (không thì đề 2/3 in RỖNG rồi headless tự in mất).
   const [varCau, setVarCau] = useState<Record<string, CauHoi>>({})
   const [varReady, setVarReady] = useState(false)
-  useEffect(() => { getTaiLieuFull(id).then(setFull).catch((e) => setErr(e.message ?? String(e))) }, [id])
+  useEffect(() => { if (fullOverride) { setFull(fullOverride); return } getTaiLieuFull(id).then(setFull).catch((e) => setErr(e.message ?? String(e))) }, [id, fullOverride])
   useEffect(() => {
     if (!full) return
     setVarReady(false)
+    if (varCauOverride) { setVarCau(varCauOverride); setVarReady(true); return }
     const ch = full.taiLieu.cau_hinh ?? {}
     const need = new Set<string>()
     for (const arr of Object.values(ch.etMaDe ?? {})) for (const m of arr) if (m) need.add(m)
@@ -54,6 +57,7 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
       .then((cs) => { if (alive) { setVarCau(Object.fromEntries(cs.map((c) => [c.ma_cau, c]))); setVarReady(true) } })
       .catch(() => { if (alive) setVarReady(true) })
     return () => { alive = false }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [full])
 
   useEffect(() => {

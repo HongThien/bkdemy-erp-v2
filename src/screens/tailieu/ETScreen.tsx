@@ -3,10 +3,10 @@
 //   - mỗi hàng: chọn DẠNG → hệ gợi ý câu ít-dùng-nhất (đổi được) → câu không trùng trong đề.
 // Bấm "Lưu ET" → lưu vào KHO TÀI LIỆU → form reset về tạo ET mới. Sửa ET cũ = từ Kho tài liệu (mở ETEditor edit).
 // ET nối buổi qua (lớp+ngày); tab Chấm ET (buổi học) tự load câu qua getETByBuoi.
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import {
   createET, updateET, getTaiLieuFull, setETCaus, suggestCauForDang, khoCuaMon,
-  maET, ET_FORMS, etFormOf, canBeETForm, sortETCaus, type ETDoc, type CauHinh, type ETForm as ETFormKind,
+  maET, ET_FORMS, etFormOf, canBeETForm, sortETCaus, type ETDoc, type CauHinh, type ETForm as ETFormKind, type TaiLieuFull,
 } from '../../lib/tailieu'
 import { listLop, type Lop } from '../../lib/nhansu'
 import { hsCoMatCuaBuoi } from '../../lib/gami'
@@ -157,25 +157,29 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
 
   function resetForm() { setLopId(null); setNgay(''); setRows(blankRows()); setCau({}); setCh({}) }
 
-  // ── GÁN MÃ ĐỀ THEO HS (Thùy 07-31) — chỉ khi SỬA ET đã lưu (cần id để in + có 3 mã đề). Bảng = HS CÓ MẶT
-  // của buổi (điểm danh co_mat). Gán 1/2/3 mỗi HS → in phiếu tên sẵn, tránh HS cạnh nhau trùng đề. ──
+  // ── GÁN MÃ ĐỀ THEO HS (Thùy 07-31) — LÀM NGAY trong màn tạo ET (không cần lưu-rồi-mở-lại). Bảng = HS CÓ
+  // MẶT của buổi (điểm danh co_mat). Gán 1/2/3 mỗi HS → preview/in phiếu tên sẵn, tránh HS cạnh nhau trùng đề. ──
   useEffect(() => {
-    if (!editing || !lopId || !ngay) { setRoster([]); return }
+    if (!lopId || !ngay) { setRoster([]); return }
     let alive = true
     hsCoMatCuaBuoi(lopId, ngay).then((r) => { if (alive) setRoster(r) }).catch(() => { if (alive) setRoster([]) })
     return () => { alive = false }
-  }, [editing, lopId, ngay])
+  }, [lopId, ngay])
   const deReady = !!ch.etMaDe && baseRows().length > 0 && oTrong().length === 0   // đủ 3 mã đề, không ô trống
   const setHsMa = (hsId: string, maDe: number) => setCh((c) => ({ ...c, hsMaDe: { ...(c.hsMaDe ?? {}), [hsId]: maDe } }))
   const raiTuDong = () => setCh((c) => { const m = { ...(c.hsMaDe ?? {}) }; roster.forEach((hs, i) => { m[hs.id] = (i % 3) + 1 }); return { ...c, hsMaDe: m } })
-  // In theo HS: lưu cau_hinh (giữ hsMaDe cho học bù) rồi mở preview. HS chưa gán → mặc định mã 1.
-  async function inTheoHS(list: typeof roster) {
-    if (!et) return
-    const perHS = list.map((hs) => ({ id: hs.id, ho_ten: hs.ho_ten, maDe: ch.hsMaDe?.[hs.id] ?? 1 }))
-    try { await updateET(et.id, { cau_hinh: ch }); useStore.getState().enqueueLinkGen(et.id, 'et') }
-    catch (e: any) { setErr(e.message ?? String(e)); return }
-    setClassPrint(perHS)
-  }
+  // In theo HS = mở PREVIEW từ dữ liệu đang soạn (in-memory, chưa cần lưu). HS chưa gán → mặc định mã 1.
+  const inTheoHS = (list: typeof roster) => setClassPrint(list.map((hs) => ({ id: hs.id, ho_ten: hs.ho_ten, maDe: ch.hsMaDe?.[hs.id] ?? 1 })))
+  // TaiLieuFull DỰNG TỪ STATE để ETPrintView render preview không cần đọc DB (chưa lưu vẫn xem được).
+  const previewFull = useMemo<TaiLieuFull>(() => {
+    const chon = rows.filter((r) => r.maCau && cau[r.maCau!])
+    const baseCaus = sortETCaus(chon.map((r) => cau[r.maCau!]), ch)
+    const ten = lop && ngay ? `ET ${lop.ten_lop} · ${ngay.split('-').reverse().join('/')}` : (et?.ten ?? 'ET')
+    return {
+      taiLieu: { ...(et ?? {}), id: et?.id ?? 'preview', ten, loai: 'et', mon, khoi, lop_id: lopId, ngay, cau_hinh: ch } as any,
+      phans: [{ id: 'custom', tai_lieu_id: 'preview', thu_tu: 0, loai_phan: 'custom', ref_ma: null, tieu_de: 'ET', noi_dung: null, hien_lt: false, caus: baseCaus } as any],
+    } as TaiLieuFull
+  }, [rows, cau, ch, lop, ngay, mon, khoi, lopId, et])
 
   async function luu() {
     if (!lop) { setErr('Chọn lớp.'); return }
@@ -252,7 +256,7 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
         </div>
         {lop && ngay && <span className="font-mono text-[11px] text-violet-500">{maET(lop.ten_lop, ngay)}</span>}
         <span className="ml-auto text-[12px] text-slate-400">{soCau} câu</span>
-        {editing && <button onClick={() => setPrinting(true)} disabled={!soCau} className="rounded-md border border-slate-300 px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-indigo-400 disabled:opacity-40">🖨 Xem / In</button>}
+        {soCau > 0 && <button onClick={() => setPrinting(true)} className="rounded-md border border-slate-300 px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-indigo-400">🖨 Xem / In (3 mã đề)</button>}
         <button onClick={luu} disabled={busy || !lop || !ngay || !soCau} className="rounded-md bg-indigo-600 px-4 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">{busy ? 'Đang lưu…' : '💾 Lưu ET'}</button>
       </div>
 
@@ -346,12 +350,12 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
           <button onClick={themCau} className="mt-3 w-full rounded-xl border-2 border-dashed border-violet-200 bg-violet-50/40 py-2.5 text-[14px] font-medium text-violet-700 transition hover:bg-violet-50">+ Thêm câu</button>
         </div>
       </div>
-      {/* Bảng gán mã đề theo HS (chỉ khi sửa ET đã lưu — cần id + 3 mã đề). Học bù: bấm 🖨 in lại phiếu 1 HS. */}
-      {editing && (
+      {/* Bảng gán mã đề theo HS — làm ngay khi soạn (có câu). Học bù: bấm 🖨 in lại phiếu 1 HS. */}
+      {soCau > 0 && (
         <div className="w-80 shrink-0 overflow-auto border-l border-slate-200 bg-white p-4">
           <div className="mb-2 text-[13px] font-semibold text-slate-800">👥 Gán mã đề theo HS</div>
           {!deReady ? (
-            <p className="text-[12px] italic text-slate-400">Sinh đủ <b>3 mã đề</b> (không còn ô trống) và <b>Lưu ET</b> trước, rồi gán mã đề cho từng HS ở đây.</p>
+            <p className="text-[12px] italic text-slate-400">Bấm <b>🎲 Sinh đề 2 &amp; 3</b> (đủ 3 mã đề, không còn ô trống) rồi gán mã đề cho từng HS ở đây.</p>
           ) : roster.length === 0 ? (
             <p className="text-[12px] italic text-slate-400">Chưa có HS <b>điểm danh có mặt</b> cho buổi này. Điểm danh xong (có mặt) sẽ hiện danh sách.</p>
           ) : (
@@ -383,8 +387,8 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
       )}
       </div>
 
-      {printing && et && <ETPrintView id={et.id} onClose={() => setPrinting(false)} />}
-      {classPrint && et && <ETPrintView id={et.id} perHS={classPrint} onClose={() => setClassPrint(null)} />}
+      {printing && <ETPrintView id={et?.id ?? 'preview'} fullOverride={previewFull} varCauOverride={cau} onClose={() => setPrinting(false)} />}
+      {classPrint && <ETPrintView id={et?.id ?? 'preview'} fullOverride={previewFull} varCauOverride={cau} perHS={classPrint} onClose={() => setClassPrint(null)} />}
       {dangModal !== null && <DangPickerOne khoi={khoi} mon={mon} onClose={() => setDangModal(null)}
         onPick={(ma) => { const i = dangModal; setDangModal(null); pickDang(i, ma) }} />}
       {picker && <KhoPicker maDangs={[picker.maDang]} cauTbl={cauTbl} selected={rows[picker.idx].maCau ? [rows[picker.idx].maCau!] : []} onClose={() => setPicker(null)}
