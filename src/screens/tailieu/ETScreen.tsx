@@ -3,7 +3,7 @@
 //   - mỗi hàng: chọn DẠNG → hệ gợi ý câu ít-dùng-nhất (đổi được) → câu không trùng trong đề.
 // Bấm "Lưu ET" → lưu vào KHO TÀI LIỆU → form reset về tạo ET mới. Sửa ET cũ = từ Kho tài liệu (mở ETEditor edit).
 // ET nối buổi qua (lớp+ngày); tab Chấm ET (buổi học) tự load câu qua getETByBuoi.
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import {
   createET, updateET, getTaiLieuFull, setETCaus, suggestCauForDang, khoCuaMon,
   maET, ET_FORMS, etFormOf, canBeETForm, sortETCaus, type ETDoc, type CauHinh, type ETForm as ETFormKind, type TaiLieuFull,
@@ -82,6 +82,16 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
     const empty = !lopId && !ngay && rows.every((r) => !r.maCau)
     useStore.getState().setEtDraft(empty ? null : { lopId, ngay, savedId, rows, cau, ch })
   }, [et, lopId, ngay, savedId, rows, cau, ch])
+  // Người dùng ĐỔI LỚP → câu/mã đề/ngày cũ thuộc kho (khối/môn) khác → RESET. Không reset lúc mount/khôi phục
+  // nháp (lopRef khởi tạo bằng lopId ban đầu) hay lần chọn lớp ĐẦU TIÊN (prev = null, chưa có câu ý nghĩa).
+  const lopRef = useRef(lopId)
+  useEffect(() => {
+    if (lopRef.current === lopId) return
+    const prev = lopRef.current
+    lopRef.current = lopId
+    if (prev == null) return
+    setRows(blankRows()); setCau({}); setCh({}); setNgay(''); setRoster([]); setClassPrint(null)
+  }, [lopId])
   // dạng theo khối (đổi khi chọn lớp khác khối)
   useEffect(() => {
     if (!khoi) { setDangOpts([]); return }
