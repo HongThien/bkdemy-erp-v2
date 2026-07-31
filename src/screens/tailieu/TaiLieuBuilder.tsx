@@ -468,12 +468,18 @@ function TrichPanel({ masterId, khoi, buois, onClose }: { masterId: string; khoi
 
   // ⭐ Ngày gán MẶC ĐỊNH = buổi TKB gần nhất CHƯA gán, tính TỪ HÔM NAY trở đi (Thùy: BTVN luôn làm vào
   // ngày học/gần đó → khỏi bới cả list, tránh bấm nhầm sang tháng khác như 8A1 Buổi 7 gán nhầm CN 23/08).
-  // ⭐ 07-30 (Thùy): MỖI LẦN GÁN CHỈ 1 BUỔI → mọi dòng chưa-gán cùng mặc định ĐÚNG 1 ngày (hôm nay), KHÔNG
+  // ⭐ 07-30 (Thùy): MỖI LẦN GÁN CHỈ 1 BUỔI → mọi dòng chưa-gán cùng mặc định ĐÚNG 1 ngày, KHÔNG
   // nhảy tăng dần mỗi dòng sang các ngày sau. Gán xong 1 buổi → reload: ngày đó vào "đã gán", mặc định tự
   // lùi sang ngày trống kế tiếp. "Đã gán" tính theo BỘ GIÁO TRÌNH LỚP (mọi giáo trình) để không cấp trùng.
+  // ⭐ 07-31 (fix "mất ngày"): ưu tiên buổi trống SẮP TỚI (từ hôm nay), NHƯNG nếu không còn buổi tương lai
+  // (đang gán BTVN cho buổi vừa học xong) thì lùi về buổi trống QUÁ KHỨ gần nhất — KHÔNG để dòng mất ngày.
+  // (tkbDates tăng dần) Trước đây chặn cứng `d >= today` khiến lớp không còn buổi tương lai bị trống hết ngày.
   const daGan = new Set(boLop.map((b) => b.ngay))
   const today = homNayVN()
-  const ngayMacDinh = tkbDates.find((d) => !daGan.has(d) && d >= today) ?? ''
+  const chuaGan = tkbDates.filter((d) => !daGan.has(d))
+  const ngayMacDinh = chuaGan.find((d) => d >= today)              // buổi trống sắp tới gần nhất
+    ?? [...chuaGan].reverse().find((d) => d < today)               // fallback: buổi trống quá khứ gần nhất
+    ?? ''
   const defNgayByMarker = new Map<string, string>()
   for (const b of buois) {
     if (state[b.marker.id]?.ngay) continue        // buổi này đã gán → không cần ngày mặc định
