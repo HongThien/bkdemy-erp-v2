@@ -282,16 +282,17 @@ function ETDoc({ ten, caus, ch, gv, badge, hoTen }: { ten: string; caus: CauHoi[
 }
 
 const ET_CSS = `
-/* Header 2 cột: TRÁI = họ tên HS (tên to), PHẢI = tên đề (bé) · ngày · mã đề (mỗi thứ 1 dòng). Bảng điểm ở DƯỚI. */
-.pv-et-head2{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;margin:2px 0 10px}
-.pv-et-hs{flex:1;min-width:0}
-.pv-et-hs-lbl{font-size:12px;font-weight:600;color:#5b6570}
-.pv-et-hs-name{font-size:19px;font-weight:800;color:#111;line-height:1.15;margin-top:1px;word-break:break-word}
+/* Header 2 CỘT có VẠCH NGĂN giữa (viền phải cột trái). TRÁI = họ tên HS (tên to). PHẢI = tên đề · ngày ·
+   mã đề, căn CHÍNH GIỮA cột 2. Toàn header CÙNG 1 MÀU CHỮ (#23272b). Bảng điểm nằm DƯỚI. */
+.pv-et-head2{display:flex;align-items:stretch;margin:2px 0 12px}
+.pv-et-hs{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;padding-right:16px;border-right:1.5px solid #cbd5e1}
+.pv-et-hs-lbl{font-size:12px;font-weight:600;color:#23272b}
+.pv-et-hs-name{font-size:20px;font-weight:800;color:#23272b;line-height:1.15;margin-top:1px;word-break:break-word}
 .pv-et-hs-blank{border-bottom:1.5px dotted #9aa6b2;height:20px;margin-top:6px;max-width:70mm}
-.pv-et-de{flex-shrink:0;max-width:56%;text-align:right}
-.pv-et-de-ten{font-size:13.5px;font-weight:700;color:var(--pv-accent,#6d28d9);line-height:1.2}
-.pv-et-de-sub{font-size:12px;color:#374151;margin-top:2px}
-.pv-et-made{font-weight:700;color:var(--pv-accent,#6d28d9)}
+.pv-et-de{flex:1;min-width:0;padding-left:16px;text-align:center;display:flex;flex-direction:column;justify-content:center}
+.pv-et-de-ten{font-size:13.5px;font-weight:700;color:#23272b;line-height:1.25}
+.pv-et-de-sub{font-size:12px;color:#23272b;margin-top:2px}
+.pv-et-made{font-weight:700;color:#23272b}
 /* Bảng điểm THEO CÂU: 2 hàng (Câu i / ô trống Đ-S), bao nhiêu câu bấy nhiêu cột.
    Cap rộng tối đa 60% (ít câu → ô to, nhiều câu → ô bé, nhưng KHÔNG quá rộng) · căn GIỮA. */
 .pv-et-score{width:60%;margin:0 auto;border-collapse:collapse;table-layout:fixed}
