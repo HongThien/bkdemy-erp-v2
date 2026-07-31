@@ -23,7 +23,10 @@ export type PhanLoai = 'buoi' | 'lt_chuyen_de' | 'dang' | 'btvn' | 'ontap' | 'cu
 // vẫn in dạng "tự luận" (kẻ dòng) nếu GV muốn. Per ma_cau.
 // phanBac (MT — nâng cao theo hệ, per phan.id) = ÉP TAY hệ tối thiểu thấy được cả PHẦN, đè lên
 // suy-tự-động-từ-bac_toi_thieu-của-dạng (mt.ts). Không set (thiếu key) = tự tính theo dạng bên trong.
-export type CauHinh = { header?: 'wave' | 'none'; footer?: 'wave' | 'none'; watermark?: 'logo' | 'none'; mau?: string; inLyThuyet?: boolean; btvnLinesByCau?: Record<string, number>; etFormByCau?: Record<string, string>; phanBac?: Record<string, string> }
+// etMaDe = 3 MÃ ĐỀ của ET (Thùy 07-31). Đề GỐC = câu trong phan 'custom' (như cũ). Mã đề 2/3 sinh tự động:
+// mỗi câu gốc → câu KHÁC cùng DẠNG + cùng FORM. Neo theo CÂU GỐC (key = ma_cau gốc, KHÔNG theo vị trí —
+// tránh lệch khi sortETCaus đảo thứ tự). Mỗi entry = [ma_cau đề2, ma_cau đề3]; null = TRỐNG (chặn lưu).
+export type CauHinh = { header?: 'wave' | 'none'; footer?: 'wave' | 'none'; watermark?: 'logo' | 'none'; mau?: string; inLyThuyet?: boolean; btvnLinesByCau?: Record<string, number>; etFormByCau?: Record<string, string>; phanBac?: Record<string, string>; etMaDe?: Record<string, (string | null)[]> }
 export const DEFAULT_BTVN_LINES = 5
 // Form hiển thị trong ET (độc lập loai_cau kho).
 export type ETForm = 'trac_nghiem' | 'tra_loi_ngan' | 'tu_luan'
@@ -33,6 +36,15 @@ export function etFormOf(c: { ma_cau: string; loai_cau: string; lua_chon?: strin
   if (set === 'trac_nghiem' || set === 'tra_loi_ngan' || set === 'tu_luan') return set
   if (c.lua_chon && c.lua_chon.length) return 'trac_nghiem'      // mặc định: có phương án → trắc nghiệm
   return c.loai_cau === 'tu_luan' ? 'tu_luan' : 'tra_loi_ngan'   // còn lại theo kho, default trả lời ngắn
+}
+// Câu ứng viên có IN ĐƯỢC ở `form` không (cho sinh mã đề 2/3 — "phải cùng form"). Chỉ trắc nghiệm cần
+// phương án; trả-lời-ngắn/tự-luận thì câu nào cũng ép được (set etFormByCau khi sinh). Câu Đúng/Sai
+// (có menh_de) chỉ khớp trắc nghiệm — bảng TLN/TL không hiển thị nổi 4 mệnh đề.
+export function canBeETForm(c: { lua_chon?: string[] | null; menh_de?: unknown[] | null }, form: ETForm): boolean {
+  const coMenhDe = !!(c.menh_de && c.menh_de.length)
+  if (coMenhDe) return form === 'trac_nghiem'
+  if (form === 'trac_nghiem') return !!(c.lua_chon && c.lua_chon.length)
+  return true
 }
 // ⭐ THỨ TỰ CHUẨN CỦA ET (Thùy chốt 07-20) — gom theo NHÓM IN: trắc nghiệm → trả lời ngắn → tự luận,
 // GIỮ NGUYÊN thứ tự chọn bên trong mỗi nhóm. Gom TẠI LÚC LƯU (ETScreen.luu) → ghi thẳng vào `thu_tu`.

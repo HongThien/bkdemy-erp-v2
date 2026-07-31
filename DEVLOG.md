@@ -3358,3 +3358,9 @@ Verify: card hiện "△ABC nhọn, ba đường cao... | tứ giác BFEC nội 
 ## 2026-07-31 (4) — Backlog: giá trị & cỡ thang Fibonacci (1·2·3·5·8)
 - CEO chốt: đổi thang giá trị/cỡ của backlog từ 1–3 → **5 mức Fibonacci 1·2·3·5·8** (chuẩn story-point, phân biệt độ chênh rõ hơn).
 - Mig `202607311557`: nới CHECK `y_tuong.gia_tri`/`co` → `in (1,2,3,5,8)` (1–3 là tập con → data cũ vẫn hợp lệ, không mất gì). UI `Chon13` → const FIBO=[1,2,3,5,8]. Verify DB: nhận 8/5, chặn 4. tsc sạch.
+
+## 2026-07-31 (5) — Giao việc UX polish: search-picker người, popup rộng, chip người/deadline
+- CEO yêu cầu: (1) chỗ gán người phải có Ô SEARCH tìm người; (2) popup rộng/to hơn; (3) người làm + deadline highlight nổi bật (để sau filter/sort).
+- `ui.tsx`: +`NguoiPicker` (ô search lọc theo tên/mã NS + list cuộn có avatar tròn + tick chọn) · +`NguoiChip` (pill indigo + avatar; "chưa gán" = pill hổ phách) · +`DeadlineChip` (màu theo độ gấp: đỏ quá hạn/cam ≤2 ngày/xám thường, nhãn "trễ Nd"/"hôm nay") · `initials()`. Modal `wide` → max-w-3xl, padding p-6.
+- Áp NguoiPicker + wide vào: GanModal (Weekly Planning), GiaoViecModal (giao/tách con/phát sinh), ChuyenModal (loại người cũ). LeafRow Weekly Planning: người + deadline thành CHIP nổi bật vị trí cố định.
+- Verify: tsc sạch, Vite build không lỗi. (Live click-through chặn do session dev hết hạn — không tự nhập mật khẩu; thay đổi thuần presentational.)

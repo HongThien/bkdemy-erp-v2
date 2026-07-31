@@ -5,7 +5,7 @@ import { createPortal } from 'react-dom'
 import SearchSelect, { type Opt } from '../../components/SearchSelect'
 import { listLop, listHSCuaLop } from '../../lib/nhansu'
 import { getTongQuanHS, type TongQuanHS } from '../../lib/mastery'
-import { getReportBuoiHS, getBaoCaoPH, upsertBaoCaoPH, getGVChinhLop, type ReportBuoiRow, type BaoCaoPH } from '../../lib/report'
+import { getReportBuoiHS, getBaoCaoPH, upsertBaoCaoPH, getGVChinhLop, BC_EMPTY, type ReportBuoiRow, type BaoCaoPH } from '../../lib/report'
 
 const MON_CO_KHO = ['Toán', 'KHTN']
 // Thang 5 cho skill bar (GV tự chọn). index 0..4 ↔ mức 1..5.
@@ -25,6 +25,20 @@ export const KET_LUAN_MUC = [
   { key: 'di_xuong', label: 'Con đang đi xuống', emoji: '📉', dot: 'bg-amber-400', sel: 'bg-amber-500 text-white ring-amber-500' },
   { key: 'can_ho_tro', label: 'Con đang cần hỗ trợ', emoji: '🆘', dot: 'bg-rose-400', sel: 'bg-rose-500 text-white ring-rose-500' },
 ] as const
+
+// Band năng lực GV chọn (cao → thấp). 7 chỉ số phát triển (mức 1..5).
+const BANDS = ['S+', 'S', 'S-', 'A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'D-'] as const
+const CHI_SO: { key: 'cs_thai_do' | 'cs_tap_trung' | 'cs_tiep_thu' | 'cs_tu_duy' | 'cs_ky_nang' | 'cs_van_dung' | 'cs_vuot_kho'; label: string }[] = [
+  { key: 'cs_thai_do', label: 'Thái độ học tập' },
+  { key: 'cs_tap_trung', label: 'Khả năng tập trung' },
+  { key: 'cs_tiep_thu', label: 'Khả năng tiếp thu' },
+  { key: 'cs_tu_duy', label: 'Tư duy học tập' },
+  { key: 'cs_ky_nang', label: 'Kỹ năng làm bài' },
+  { key: 'cs_van_dung', label: 'Khả năng vận dụng' },
+  { key: 'cs_vuot_kho', label: 'Khả năng vượt khó' },
+]
+// màu mức 1..5: 1-2 đỏ, 3 cam, 4 xanh nhạt, 5 xanh đậm (khớp app PH).
+const mucBg = (i: number) => i <= 2 ? 'bg-rose-500' : i === 3 ? 'bg-amber-500' : i === 4 ? 'bg-green-400' : 'bg-emerald-600'
 
 export default function ReportPHScreen() {
   const [mon, setMon] = useState('Toán')
@@ -187,9 +201,14 @@ const NX_FIELDS: { key: 'thai_do' | 'kien_thuc_ky_nang'; mucKey: 'muc_thai_do' |
   { key: 'thai_do', mucKey: 'muc_thai_do', label: 'Thái độ học tập', ph: 'Thái độ, chuyên cần, tinh thần học tập trong tháng…', hx: 'bg-emerald-500' },
 ]
 function NhanXet({ hsId, mon, ym }: { hsId: string; mon: string; ym: string }) {
-  const [val, setVal] = useState<BaoCaoPH>({ thai_do: null, kien_thuc_ky_nang: null, ket_luan: null, ket_luan_muc: null, muc_tieu: null, muc_kien_thuc: null, muc_thai_do: null })
+  const [val, setVal] = useState<BaoCaoPH>({ ...BC_EMPTY })
+  const [prev, setPrev] = useState<BaoCaoPH>({ ...BC_EMPTY })
   const [saved, setSaved] = useState<string | null>(null)
+  const [diemStr, setDiemStr] = useState('')
+  const [saiStr, setSaiStr] = useState('')
   useEffect(() => { getBaoCaoPH(hsId, mon, ym).then(setVal).catch(() => {}) }, [hsId, mon, ym])
+  useEffect(() => { getBaoCaoPH(hsId, mon, shiftYM(ym, -1)).then(setPrev).catch(() => setPrev({ ...BC_EMPTY })) }, [hsId, mon, ym])
+  useEffect(() => { setDiemStr(val.nl_diem != null ? String(val.nl_diem) : ''); setSaiStr(val.nl_sai_so != null ? String(val.nl_sai_so) : '') }, [val.nl_diem, val.nl_sai_so])
   const save = async (patch: Partial<BaoCaoPH>, tag: string) => {
     setVal((p) => ({ ...p, ...patch }))
     try { await upsertBaoCaoPH(hsId, mon, ym, patch); setSaved(tag); setTimeout(() => setSaved((s) => (s === tag ? null : s)), 1500) } catch { /* ignore */ }
@@ -199,6 +218,74 @@ function NhanXet({ hsId, mon, ym }: { hsId: string; mon: string; ym: string }) {
     <div>
       <h3 className="mb-2 text-[13px] font-semibold uppercase tracking-wider text-slate-500">Nhận xét của giáo viên</h3>
       <div className="space-y-3">
+        {/* NĂNG LỰC: band (GV chọn) + điểm + sai số */}
+        <div className="rounded-xl border border-indigo-200 bg-indigo-50/40 p-3 shadow-sm">
+          <div className="mb-2 flex items-center justify-between">
+            <span className="text-[12px] font-semibold text-indigo-800">⚡ Năng lực tháng này</span>
+            {saved === 'nl' && <span className="text-[11px] text-emerald-600">✓ đã lưu</span>}
+          </div>
+          <div className="grid grid-cols-3 gap-2">
+            <label className="block">
+              <span className="mb-1 block text-[11px] font-medium text-slate-500">Band</span>
+              <select value={val.nl_band ?? ''} onChange={(e) => save({ nl_band: e.target.value || null }, 'nl')}
+                className="h-9 w-full rounded-lg border border-slate-200 bg-white px-2 text-[13px] font-bold focus:border-indigo-300 focus:outline-none">
+                <option value="">—</option>
+                {BANDS.map((b) => <option key={b} value={b}>{b}</option>)}
+              </select>
+            </label>
+            <label className="block">
+              <span className="mb-1 block text-[11px] font-medium text-slate-500">Điểm năng lực</span>
+              <input type="number" step="0.1" min="0" max="10" value={diemStr}
+                onChange={(e) => setDiemStr(e.target.value)}
+                onBlur={() => { const n = parseFloat(diemStr); save({ nl_diem: diemStr.trim() === '' || isNaN(n) ? null : n }, 'nl') }}
+                className="h-9 w-full rounded-lg border border-slate-200 bg-white px-2 text-[13px] focus:border-indigo-300 focus:outline-none" />
+            </label>
+            <label className="block">
+              <span className="mb-1 block text-[11px] font-medium text-slate-500">Sai số (±)</span>
+              <input type="number" step="0.1" min="0" max="5" value={saiStr}
+                onChange={(e) => setSaiStr(e.target.value)}
+                onBlur={() => { const n = parseFloat(saiStr); save({ nl_sai_so: saiStr.trim() === '' || isNaN(n) ? null : n }, 'nl') }}
+                className="h-9 w-full rounded-lg border border-slate-200 bg-white px-2 text-[13px] focus:border-indigo-300 focus:outline-none" />
+            </label>
+          </div>
+          {val.nl_diem != null && <p className="mt-1.5 text-[11px] text-slate-500">Dự kiến điểm thi: <b>{(val.nl_diem - (val.nl_sai_so ?? 0)).toFixed(1)} – {(val.nl_diem + (val.nl_sai_so ?? 0)).toFixed(1)}</b></p>}
+        </div>
+
+        {/* 7 CHỈ SỐ PHÁT TRIỂN (mức 1..5) + xu hướng so tháng trước */}
+        <div className="rounded-xl border border-slate-200 bg-white p-3 shadow-sm">
+          <div className="mb-2 flex items-center justify-between">
+            <span className="text-[12px] font-semibold text-slate-700">7 chỉ số phát triển</span>
+            <span className="text-[10px] text-slate-400">so với tháng {Number(shiftYM(ym, -1).split('-')[1])}</span>
+          </div>
+          <div className="space-y-2">
+            {CHI_SO.map((c) => {
+              const lvl = val[c.key] as number | null
+              const pv = prev[c.key] as number | null
+              const tr = lvl != null && pv != null ? (lvl > pv ? 'up' : lvl < pv ? 'down' : 'flat') : null
+              return (
+                <div key={c.key}>
+                  <div className="mb-1 flex items-center justify-between">
+                    <span className="text-[12px] text-slate-700">{c.label}</span>
+                    <span className="flex items-center gap-2 text-[10px]">
+                      {pv != null && <span className="text-slate-400">Trước: {pv}</span>}
+                      {tr === 'up' && <span className="font-bold text-emerald-600">↑ tiến bộ</span>}
+                      {tr === 'down' && <span className="font-bold text-rose-600">↓ giảm</span>}
+                      {tr === 'flat' && <span className="font-bold text-slate-400">→ giữ</span>}
+                      {saved === c.key && <span className="text-emerald-600">✓</span>}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    {[1, 2, 3, 4, 5].map((i) => (
+                      <button key={i} onClick={() => save({ [c.key]: lvl === i ? null : i }, c.key)}
+                        className={`h-6 flex-1 rounded text-[10px] font-bold ring-1 transition ${lvl != null && i <= lvl ? `${mucBg(lvl)} text-white ring-transparent` : 'bg-slate-50 text-slate-400 ring-slate-200 hover:bg-slate-100'}`}>{i}</button>
+                    ))}
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+
         {NX_FIELDS.map((f) => {
           const lvl = val[f.mucKey] as number | null
           return (
@@ -261,7 +348,7 @@ const s10 = (pct: number | null) => pct == null ? '—' : (pct / 10).toFixed(1)
 const hexPct = (pct: number | null) => pct == null ? '#cbd5e1' : pct >= 80 ? '#059669' : pct >= 50 ? '#d97706' : '#e11d48'
 
 function PhAnhModal({ hsId, mon, ym, hsName, lopTen, gvName, tq, missCount, onClose }: { hsId: string; mon: string; ym: string; hsName: string; lopTen: string; gvName: string | null; tq: TongQuanHS; missCount: number; onClose: () => void }) {
-  const [bc, setBc] = useState<BaoCaoPH>({ thai_do: null, kien_thuc_ky_nang: null, ket_luan: null, ket_luan_muc: null, muc_tieu: null, muc_kien_thuc: null, muc_thai_do: null })
+  const [bc, setBc] = useState<BaoCaoPH>({ ...BC_EMPTY })
   const cardRef = useRef<HTMLDivElement>(null)
   useEffect(() => { getBaoCaoPH(hsId, mon, ym).then(setBc).catch(() => {}) }, [hsId, mon, ym])
 

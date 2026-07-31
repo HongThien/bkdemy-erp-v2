@@ -6,7 +6,7 @@ import {
   type LoaiViec, type MucKhoiLuong, type NguoiDuocGiao,
 } from '../../lib/giaoviec'
 import { todayVN } from '../../lib/giaoviec-config'
-import { CX_INPUT, CX_BTN, CX_BTN_GHOST, Modal, Field, Pill } from './ui'
+import { CX_INPUT, CX_BTN, CX_BTN_GHOST, Modal, Field, Pill, NguoiPicker } from './ui'
 
 export type GiaoPrefill = {
   y_tuong_id?: string; task_me_id?: string; tieu_de?: string; nguon?: 'ke_hoach' | 'phat_sinh'; title?: string
@@ -43,7 +43,7 @@ export default function GiaoViecModal({ prefill, onClose, onDone }: { prefill?: 
   }
 
   return (
-    <Modal title={prefill?.title ?? 'Giao việc mới'} onClose={onClose}>
+    <Modal title={prefill?.title ?? 'Giao việc mới'} onClose={onClose} wide>
       <div className="space-y-3">
         <Field label="Loại việc (để lấy thang khối lượng — tuỳ chọn)">
           <select value={loaiViecId} onChange={(e) => { setLoaiViecId(e.target.value); setMucKl(null) }} className={CX_INPUT}>
@@ -57,10 +57,8 @@ export default function GiaoViecModal({ prefill, onClose, onDone }: { prefill?: 
           <Field label="Output (để nghiệm thu)"><input value={output} onChange={(e) => setOutput(e.target.value)} className={CX_INPUT} placeholder="VD: file PDF 20 câu" /></Field>
         </div>
         <Field label="Giao cho (1 người)">
-          <div className="flex flex-wrap gap-1.5">
-            {nguoi.map((n) => <Pill key={n.nhan_su_id} on={nguoiLamId === n.nhan_su_id} onClick={() => setNguoiLamId(n.nhan_su_id)}>{n.ho_ten}</Pill>)}
-            {!nguoi.length && <span className="text-[12px] text-slate-400">Bạn chưa quản lý ai trong cây tổ chức (chỉ tự giao cho mình).</span>}
-          </div>
+          {!nguoi.length ? <span className="text-[12px] text-slate-400">Bạn chưa quản lý ai trong cây tổ chức (chỉ tự giao cho mình).</span>
+            : <NguoiPicker nguoi={nguoi} value={nguoiLamId} onChange={setNguoiLamId} />}
         </Field>
         <Field label="Khối lượng">
           {!!loaiViec?.thang_kl.length && (

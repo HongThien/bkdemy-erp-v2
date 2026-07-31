@@ -7,7 +7,7 @@ import {
   holdQuaHan, type ViecFull, type NguoiDuocGiao,
 } from '../../lib/giaoviec'
 import { kyTuanHienTai, kyTuanCuaNgay, nhanKyTuan } from '../../lib/giaoviec-config'
-import { CX_INPUT, CX_BTN, CX_BTN_GHOST, Badge, VIEC_TT, Empty, ErrBar, Modal, Field, Pill, fmtNgay } from './ui'
+import { CX_INPUT, CX_BTN, CX_BTN_GHOST, Badge, VIEC_TT, Empty, ErrBar, Modal, Field, NguoiPicker, NguoiChip, DeadlineChip, fmtNgay } from './ui'
 import { NghiemThuModal, HuyModal, ChuyenModal } from './TaskActions'
 import GiaoViecModal, { type GiaoPrefill } from './GiaoViecModal'
 
@@ -131,17 +131,21 @@ export default function WeeklyPlanningTab() {
 }
 
 function LeafRow({ v, actions, card }: { v: ViecFull; actions?: React.ReactNode; card?: boolean }) {
+  const active = !['dat', 'huy', 'chuyen'].includes(v.trang_thai)
   return (
-    <div className={`flex flex-wrap items-center gap-x-3 gap-y-1 ${card ? 'rounded-2xl bg-white p-3.5 shadow-sm' : 'py-1.5'}`}>
+    <div className={`flex flex-wrap items-center gap-x-3 gap-y-1.5 ${card ? 'rounded-2xl bg-white p-3.5 shadow-sm' : 'py-1.5'}`}>
       <div className="min-w-0 flex-1">
         <div className="flex items-center gap-2">
           <span className="text-[13px] font-medium text-slate-800">{v.tieu_de}</span>
           <Badge map={VIEC_TT} k={v.trang_thai} />
           {v.phan_tram !== null && <span className="text-[11px] font-semibold text-slate-600">{v.phan_tram}%</span>}
         </div>
-        <div className="text-[11px] text-slate-500">
-          {v.nguoi_lam_ten ?? '—'} · KL {v.khoi_luong}{v.deadline && ` · hạn ${fmtNgay(v.deadline)}`}
-          {v.so_lan_tra_lai > 0 && ` · trả ${v.so_lan_tra_lai}×`}
+        {/* Người làm + deadline = CHIP nổi bật, vị trí cố định (để sau filter/sort) */}
+        <div className="mt-1 flex flex-wrap items-center gap-1.5">
+          <NguoiChip ten={v.nguoi_lam_ten} />
+          <DeadlineChip deadline={v.deadline} active={active} />
+          <span className="text-[11px] text-slate-400">KL {v.khoi_luong}</span>
+          {v.so_lan_tra_lai > 0 && <span className="text-[11px] text-rose-500">trả {v.so_lan_tra_lai}×</span>}
         </div>
       </div>
       {actions}
@@ -162,9 +166,9 @@ function GanModal({ v, onClose, onDone }: { v: ViecFull; onClose: () => void; on
     catch (e: any) { setErr(e?.message ?? String(e)) } finally { setSaving(false) }
   }
   return (
-    <Modal title={`Gán người — ${v.tieu_de}`} onClose={onClose}>
+    <Modal title={`Gán người — ${v.tieu_de}`} onClose={onClose} wide>
       <div className="space-y-3">
-        <Field label="Người làm (1 người)"><div className="flex flex-wrap gap-1.5">{nguoi.map((n) => <Pill key={n.nhan_su_id} on={id === n.nhan_su_id} onClick={() => setId(n.nhan_su_id)}>{n.ho_ten}</Pill>)}</div></Field>
+        <Field label="Người làm (1 người)"><NguoiPicker nguoi={nguoi} value={id} onChange={setId} /></Field>
         <div className="grid grid-cols-2 gap-2">
           <Field label="Khối lượng"><input type="number" value={kl} onChange={(e) => setKl(e.target.value === '' ? '' : Number(e.target.value))} className={CX_INPUT} /></Field>
           <Field label="Deadline"><input type="date" value={dl} onChange={(e) => setDl(e.target.value)} className={CX_INPUT} /></Field>

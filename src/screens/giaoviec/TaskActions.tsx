@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import {
   nghiemThu, huyViec, chuyenNguoi, listNguoiDuocGiao, type ViecFull, type NguoiDuocGiao,
 } from '../../lib/giaoviec'
-import { CX_INPUT, CX_BTN, CX_BTN_GHOST, Modal, Field, Pill, fmtNgay } from './ui'
+import { CX_INPUT, CX_BTN, CX_BTN_GHOST, Modal, Field, NguoiPicker, fmtNgay } from './ui'
 
 export function NghiemThuModal({ v, onClose, onDone }: { v: ViecFull; onClose: () => void; onDone: () => void }) {
   const [chatLuong, setChatLuong] = useState(100)
@@ -87,17 +87,13 @@ export function ChuyenModal({ v, onClose, onDone }: { v: ViecFull; onClose: () =
   }
   const klConLai = (Number(v.khoi_luong) * (1 - pct / 100)).toFixed(2)
   return (
-    <Modal title={`Chuyển người — ${v.tieu_de}`} onClose={onClose}>
+    <Modal title={`Chuyển người — ${v.tieu_de}`} onClose={onClose} wide>
       <div className="space-y-3">
         <p className="text-[12px] text-slate-500">Đóng task cũ với partial cho <b>{v.nguoi_lam_ten}</b> + đẻ task mới (KL = phần còn lại) cho người mới. Mỗi task luôn đúng 1 người từ đầu đến cuối.</p>
         <Field label={`Ghi nhận cho người cũ: ${pct}% → task mới KL ≈ ${klConLai}`}>
           <input type="range" min={0} max={100} step={5} value={pct} onChange={(e) => setPct(Number(e.target.value))} className="w-full" />
         </Field>
-        <Field label="Người mới">
-          <div className="flex flex-wrap gap-1.5">
-            {nguoi.filter((n) => n.nhan_su_id !== v.nguoi_lam_id).map((n) => <Pill key={n.nhan_su_id} on={moiId === n.nhan_su_id} onClick={() => setMoiId(n.nhan_su_id)}>{n.ho_ten}</Pill>)}
-          </div>
-        </Field>
+        <Field label="Người mới"><NguoiPicker nguoi={nguoi} value={moiId} onChange={setMoiId} exclude={v.nguoi_lam_id ?? undefined} /></Field>
         <Field label="Lý do (tuỳ chọn)"><input value={lyDo} onChange={(e) => setLyDo(e.target.value)} className={CX_INPUT} /></Field>
         {err && <div className="rounded-lg bg-rose-50 px-3 py-2 text-[12px] text-rose-600">{err}</div>}
         <div className="flex justify-end gap-2"><button onClick={onClose} className={CX_BTN_GHOST}>Thôi</button><button disabled={saving} onClick={submit} className={CX_BTN}>{saving ? '…' : 'Chuyển'}</button></div>

@@ -58,10 +58,20 @@ export async function getReportBuoiHS(hocSinhId: string, mon: string, ym: string
 
 // ── Nhận xét GV cho (HS × môn × tháng) ──
 // muc_kien_thuc / muc_thai_do = thang 5 (GV tự chọn 1..5, không suy động).
-export type BaoCaoPH = { thai_do: string | null; kien_thuc_ky_nang: string | null; ket_luan: string | null; ket_luan_muc: string | null; muc_tieu: string | null; muc_kien_thuc: number | null; muc_thai_do: number | null }
-const BC_EMPTY: BaoCaoPH = { thai_do: null, kien_thuc_ky_nang: null, ket_luan: null, ket_luan_muc: null, muc_tieu: null, muc_kien_thuc: null, muc_thai_do: null }
+// nl_* = năng lực (band GV chọn + điểm + sai số); cs_* = 7 chỉ số phát triển mức 1..5.
+export type BaoCaoPH = {
+  thai_do: string | null; kien_thuc_ky_nang: string | null; ket_luan: string | null; ket_luan_muc: string | null; muc_tieu: string | null; muc_kien_thuc: number | null; muc_thai_do: number | null
+  nl_band: string | null; nl_diem: number | null; nl_sai_so: number | null
+  cs_thai_do: number | null; cs_tap_trung: number | null; cs_tiep_thu: number | null; cs_tu_duy: number | null; cs_ky_nang: number | null; cs_van_dung: number | null; cs_vuot_kho: number | null
+}
+export const BC_EMPTY: BaoCaoPH = {
+  thai_do: null, kien_thuc_ky_nang: null, ket_luan: null, ket_luan_muc: null, muc_tieu: null, muc_kien_thuc: null, muc_thai_do: null,
+  nl_band: null, nl_diem: null, nl_sai_so: null,
+  cs_thai_do: null, cs_tap_trung: null, cs_tiep_thu: null, cs_tu_duy: null, cs_ky_nang: null, cs_van_dung: null, cs_vuot_kho: null,
+}
+const BC_COLS = 'thai_do, kien_thuc_ky_nang, ket_luan, ket_luan_muc, muc_tieu, muc_kien_thuc, muc_thai_do, nl_band, nl_diem, nl_sai_so, cs_thai_do, cs_tap_trung, cs_tiep_thu, cs_tu_duy, cs_ky_nang, cs_van_dung, cs_vuot_kho'
 export async function getBaoCaoPH(hocSinhId: string, mon: string, thang: string): Promise<BaoCaoPH> {
-  const { data, error } = await supabase.from('bao_cao_ph').select('thai_do, kien_thuc_ky_nang, ket_luan, ket_luan_muc, muc_tieu, muc_kien_thuc, muc_thai_do')
+  const { data, error } = await supabase.from('bao_cao_ph').select(BC_COLS)
     .eq('hoc_sinh_id', hocSinhId).eq('mon', mon).eq('thang', thang).maybeSingle()
   if (error) throw error
   return (data as BaoCaoPH) ?? { ...BC_EMPTY }

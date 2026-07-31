@@ -1,6 +1,7 @@
 // Primitives dùng chung cho các tab Giao việc v2 (Apple-clean: nền xám, card trắng, pill mềm).
-import type { ReactNode } from 'react'
-import { nhanKyTuan } from '../../lib/giaoviec-config'
+import { useState, type ReactNode } from 'react'
+import { nhanKyTuan, todayVN, soNgayLech } from '../../lib/giaoviec-config'
+import type { NguoiDuocGiao } from '../../lib/giaoviec'
 
 export const CX_INPUT = 'w-full rounded-lg border border-slate-300 px-3 py-2 text-[13px] outline-none focus:border-indigo-400'
 export const CX_BTN = 'rounded-lg bg-indigo-600 px-4 py-2 text-[13px] font-semibold text-white shadow-sm hover:bg-indigo-700 disabled:opacity-40'
@@ -77,7 +78,7 @@ export function Stat({ label, value, accent }: { label: string; value: ReactNode
 export function Modal({ title, onClose, children, wide }: { title: string; onClose: () => void; children: ReactNode; wide?: boolean }) {
   return (
     <div className="fixed inset-0 z-[90] flex items-center justify-center bg-slate-900/40 p-4" onClick={onClose}>
-      <div className={`max-h-[85vh] w-full ${wide ? 'max-w-2xl' : 'max-w-lg'} overflow-auto rounded-2xl bg-white p-5 shadow-xl`} onClick={(e) => e.stopPropagation()}>
+      <div className={`max-h-[88vh] w-full ${wide ? 'max-w-3xl' : 'max-w-lg'} overflow-auto rounded-2xl bg-white p-6 shadow-xl`} onClick={(e) => e.stopPropagation()}>
         <div className="mb-3 flex items-center justify-between">
           <span className="text-sm font-semibold text-slate-900">{title}</span>
           <button onClick={onClose} className="text-slate-400 hover:text-slate-600">✕</button>
@@ -89,6 +90,68 @@ export function Modal({ title, onClose, children, wide }: { title: string; onClo
 }
 export function Field({ label, children }: { label: string; children: ReactNode }) {
   return <label className="block"><div className="mb-1 text-[12px] font-medium text-slate-600">{label}</div>{children}</label>
+}
+
+// Viết tắt tên (2 chữ cái cuối) cho avatar tròn.
+export function initials(hoTen: string): string {
+  const parts = hoTen.replace(/\s*\(tôi\)\s*/, '').trim().split(/\s+/)
+  const a = parts[parts.length - 1]?.[0] ?? ''
+  const b = parts.length > 1 ? (parts[parts.length - 2]?.[0] ?? '') : ''
+  return (b + a).toUpperCase()
+}
+
+// PICKER NGƯỜI có Ô SEARCH (tìm theo tên / mã NS) — dùng chung mọi chỗ gán người.
+export function NguoiPicker({ nguoi, value, onChange, exclude }: {
+  nguoi: NguoiDuocGiao[]; value: string; onChange: (id: string) => void; exclude?: string
+}) {
+  const [q, setQ] = useState('')
+  const kw = q.trim().toLowerCase()
+  const rows = nguoi.filter((n) => n.nhan_su_id !== exclude &&
+    (!kw || n.ho_ten.toLowerCase().includes(kw) || (n.ma_ns ?? '').toLowerCase().includes(kw)))
+  return (
+    <div>
+      <div className="relative">
+        <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">🔍</span>
+        <input autoFocus value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm người theo tên hoặc mã NS…"
+          className={`${CX_INPUT} pl-9`} />
+      </div>
+      <div className="mt-1.5 max-h-64 divide-y divide-slate-50 overflow-auto rounded-xl border border-slate-200">
+        {!rows.length ? <div className="px-3 py-6 text-center text-[12px] text-slate-400">Không tìm thấy ai khớp “{q}”.</div> :
+          rows.map((n) => (
+            <button key={n.nhan_su_id} type="button" onClick={() => onChange(n.nhan_su_id)}
+              className={`flex w-full items-center gap-2.5 px-3 py-2 text-left text-[13px] transition ${value === n.nhan_su_id ? 'bg-indigo-50 font-semibold text-indigo-700' : 'text-slate-700 hover:bg-slate-50'}`}>
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-slate-200 text-[10px] font-bold text-slate-600">{initials(n.ho_ten)}</span>
+              <span className="min-w-0 flex-1 truncate">{n.ho_ten}</span>
+              {n.ma_ns && <span className="text-[11px] text-slate-400">{n.ma_ns}</span>}
+              {value === n.nhan_su_id && <span className="text-indigo-600">✓</span>}
+            </button>
+          ))}
+      </div>
+    </div>
+  )
+}
+
+// CHIP người làm — nổi bật, đồng nhất (để scan + sau này filter/sort).
+export function NguoiChip({ ten }: { ten?: string | null }) {
+  if (!ten) return <span className="inline-flex items-center gap-1 rounded-full bg-amber-50 px-2 py-0.5 text-[11px] font-medium text-amber-700 ring-1 ring-amber-200">◌ chưa gán</span>
+  return (
+    <span className="inline-flex items-center gap-1.5 rounded-full bg-indigo-50 px-2 py-0.5 text-[11px] font-semibold text-indigo-700 ring-1 ring-indigo-200">
+      <span className="flex h-4 w-4 items-center justify-center rounded-full bg-indigo-600 text-[8px] font-bold text-white">{initials(ten)}</span>
+      {ten}
+    </span>
+  )
+}
+
+// CHIP deadline — màu theo độ gấp (đỏ quá hạn · cam ≤2 ngày · xám thường).
+export function DeadlineChip({ deadline, active = true }: { deadline?: string | null; active?: boolean }) {
+  if (!deadline) return <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-400 ring-1 ring-slate-200">📅 chưa hạn</span>
+  const con = active ? soNgayLech(todayVN(), deadline) : 99   // âm = quá hạn
+  const cls = !active ? 'bg-slate-100 text-slate-500 ring-slate-200'
+    : con < 0 ? 'bg-rose-50 text-rose-700 ring-rose-200'
+    : con <= 2 ? 'bg-amber-50 text-amber-700 ring-amber-200'
+    : 'bg-slate-100 text-slate-600 ring-slate-200'
+  const nhan = con < 0 && active ? ` (trễ ${-con}d)` : con === 0 && active ? ' (hôm nay)' : ''
+  return <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-semibold ring-1 ${cls}`}>📅 {fmtNgay(deadline)}{nhan}</span>
 }
 
 // Chọn giá trị/cỡ theo thang FIBONACCI (1·2·3·5·8) — pill. CEO chốt 07-31.
