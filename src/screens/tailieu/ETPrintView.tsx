@@ -65,7 +65,9 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
     if (!full || !varReady || !srcRef.current || !dstRef.current) return
     let cancelled = false
     setRendering(true)
-    const ch = full.taiLieu.cau_hinh ?? {}
+    const ch0 = full.taiLieu.cau_hinh ?? {}
+    // Kiểu BK có thương hiệu riêng trong thân → BỎ dải header trên cùng của trang (tránh trùng logo/lớp·ngày).
+    const ch = kieu === 'bk' ? { ...ch0, header: 'none' as const } : ch0
     const css = buildPagedCss(full.taiLieu, ch, ch.mau || '#7c3aed') + ET_CSS
     const cssUrl = URL.createObjectURL(new Blob([css], { type: 'text/css' }))
     const html = srcRef.current.innerHTML
@@ -115,7 +117,11 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
   async function layLink(): Promise<boolean> {
     if (!activeContainerRef.current || !full) return false
     setDl(true); setDlErr(null)
-    try { await uploadPagesAsLink(activeContainerRef.current, printFileName(), pageChrome(full.taiLieu, full.taiLieu.cau_hinh ?? {}), full.taiLieu.id); return true }
+    try {
+      const ch0 = full.taiLieu.cau_hinh ?? {}
+      const chChrome = kieu === 'bk' ? { ...ch0, header: 'none' as const } : ch0  // BK bỏ dải header trên cùng
+      await uploadPagesAsLink(activeContainerRef.current, printFileName(), pageChrome(full.taiLieu, chChrome), full.taiLieu.id); return true
+    }
     catch (e) { setDlErr('Lấy link lỗi: ' + (e instanceof Error ? e.message : String(e))); return false }
     finally { setDl(false) }
   }
