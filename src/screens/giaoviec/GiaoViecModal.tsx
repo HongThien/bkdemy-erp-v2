@@ -9,7 +9,7 @@ import { todayVN } from '../../lib/giaoviec-config'
 import { CX_INPUT, CX_BTN, CX_BTN_GHOST, Modal, Field, Pill } from './ui'
 
 export type GiaoPrefill = {
-  y_tuong_id?: string; hang_muc_id?: string; tieu_de?: string; nguon?: 'ke_hoach' | 'phat_sinh'
+  y_tuong_id?: string; task_me_id?: string; tieu_de?: string; nguon?: 'ke_hoach' | 'phat_sinh'; title?: string
 }
 
 export default function GiaoViecModal({ prefill, onClose, onDone }: { prefill?: GiaoPrefill; onClose: () => void; onDone: () => void }) {
@@ -36,14 +36,14 @@ export default function GiaoViecModal({ prefill, onClose, onDone }: { prefill?: 
         tieu_de: tieuDe.trim(), nguoi_lam_id: nguoiLamId, khoi_luong: khoiLuong,
         loai_viec_id: loaiViecId || null, muc_tieu: mucTieu.trim() || undefined, output: output.trim() || undefined,
         deadline: deadline || null, nguon: prefill?.nguon ?? 'ke_hoach',
-        y_tuong_id: prefill?.y_tuong_id, hang_muc_id: prefill?.hang_muc_id,
+        y_tuong_id: prefill?.y_tuong_id, task_me_id: prefill?.task_me_id,
       })
       onDone()
     } catch (e: any) { setErr(e?.message ?? String(e)) } finally { setSaving(false) }
   }
 
   return (
-    <Modal title="Giao việc mới" onClose={onClose}>
+    <Modal title={prefill?.title ?? 'Giao việc mới'} onClose={onClose}>
       <div className="space-y-3">
         <Field label="Loại việc (để lấy thang khối lượng — tuỳ chọn)">
           <select value={loaiViecId} onChange={(e) => { setLoaiViecId(e.target.value); setMucKl(null) }} className={CX_INPUT}>

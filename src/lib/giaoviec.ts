@@ -64,12 +64,12 @@ export async function updateLoaiViec(id: string, patch: Partial<Pick<LoaiViec, '
 // ════════════════════════════════════════════════════════════════════════════
 // 2) Ý TƯỞNG (idea) + BACKLOG — §2. Idea→Backlog = ĐỔI TRẠNG THÁI (cùng dòng)
 // ════════════════════════════════════════════════════════════════════════════
-export type TrangThaiYTuong = 'moi' | 'backlog' | 'da_trien_khai' | 'ngu_dong' | 'tu_choi'
+export type TrangThaiYTuong = 'moi' | 'backlog' | 'holding' | 'da_trien_khai' | 'ngu_dong' | 'tu_choi'
 export type YTuong = {
   id: string; tieu_de: string; mo_ta: string | null; tac_gia_id: string
   trang_thai: TrangThaiYTuong; ly_do_tu_choi: string | null
   gia_tri: number | null; co: number | null; ngay_vao_backlog: string | null
-  hang_muc_id: string | null; created_at: string
+  created_at: string
 }
 export type YTuongFull = YTuong & { tac_gia_ten?: string }
 
@@ -94,9 +94,14 @@ export async function refineYTuong(id: string, patch: { gia_tri?: number | null;
   const { error } = await supabase.from('y_tuong').update(patch).eq('id', id)
   if (error) throw error
 }
-// Triage — CEO DUYỆT: moi → backlog (đổi trạng thái, KHÔNG đẻ dòng mới — §2.4 cửa 1).
+// Triage — CEO DUYỆT: → backlog (đổi trạng thái, KHÔNG đẻ dòng mới). Dùng cho cả holding→backlog.
 export async function duyetYTuongVaoBacklog(id: string): Promise<void> {
   const { error } = await supabase.from('y_tuong').update({ trang_thai: 'backlog', ngay_vao_backlog: todayVN() }).eq('id', id)
+  if (error) throw error
+}
+// Triage — HOLDING: tạm hoãn quyết định (chưa gật, chưa từ chối). Quyết lại sau.
+export async function holdingYTuong(id: string): Promise<void> {
+  const { error } = await supabase.from('y_tuong').update({ trang_thai: 'holding' }).eq('id', id)
   if (error) throw error
 }
 // Từ chối — BẮT BUỘC lý do, hiện cho tác giả (§2.1). KHÔNG xoá (tra cứu + tránh đề xuất lại §2.1).
@@ -130,64 +135,7 @@ export function ideaQuaHanTriage(created_at: string): boolean {
 }
 
 // ════════════════════════════════════════════════════════════════════════════
-// 3) HẠNG MỤC (epic/initiative) — §3
-// ════════════════════════════════════════════════════════════════════════════
-export type KieuHangMuc = 'mot_lan' | 'lien_tuc'
-export type TrangThaiHangMuc = 'backlog' | 'dang_chay' | 'xong' | 'dung'
-export type HangMuc = {
-  id: string; ten: string; mo_ta: string | null; kieu: KieuHangMuc; trang_thai: TrangThaiHangMuc
-  pham_vi: number | null; chan_troi: string | null; gia_tri: number | null; co: number | null
-  tac_gia_id: string | null; created_at: string
-}
-export type HangMucFull = HangMuc & { so_lat_da_ra: number }
-
-export async function listHangMuc(trangThai?: TrangThaiHangMuc | TrangThaiHangMuc[]): Promise<HangMucFull[]> {
-  let q = supabase.from('hang_muc').select('*').order('created_at', { ascending: false }).limit(LIMIT)
-  if (trangThai) q = Array.isArray(trangThai) ? q.in('trang_thai', trangThai) : q.eq('trang_thai', trangThai)
-  const { data, error } = await q
-  if (error) throw error
-  const rows = (data ?? []) as HangMuc[]
-  if (!rows.length) return []
-  // so_lat_da_ra = DERIVE: đếm viec 'dat' theo hạng mục.
-  const { data: viecs } = await supabase.from('viec').select('hang_muc_id').eq('trang_thai', 'dat').in('hang_muc_id', rows.map((r) => r.id)).limit(LIMIT * 5)
-  const cnt = new Map<string, number>()
-  for (const v of (viecs ?? []) as any[]) if (v.hang_muc_id) cnt.set(v.hang_muc_id, (cnt.get(v.hang_muc_id) ?? 0) + 1)
-  return rows.map((r) => ({ ...r, so_lat_da_ra: cnt.get(r.id) ?? 0 }))
-}
-export async function createHangMuc(p: {
-  ten: string; mo_ta?: string; kieu: KieuHangMuc; pham_vi?: number | null; chan_troi?: string | null; gia_tri?: number | null; co?: number | null
-}): Promise<void> {
-  const me = await myNhanSuId()
-  const { error } = await supabase.from('hang_muc').insert({
-    ten: p.ten, mo_ta: p.mo_ta ?? null, kieu: p.kieu, trang_thai: p.kieu === 'lien_tuc' ? 'dang_chay' : 'backlog',
-    pham_vi: p.pham_vi ?? null, chan_troi: p.chan_troi ?? null, gia_tri: p.gia_tri ?? null, co: p.co ?? null, tac_gia_id: me,
-  })
-  if (error) throw error
-}
-export async function updateHangMuc(id: string, patch: Partial<Pick<HangMuc, 'ten' | 'mo_ta' | 'pham_vi' | 'chan_troi' | 'trang_thai' | 'gia_tri' | 'co'>>): Promise<void> {
-  const { error } = await supabase.from('hang_muc').update(patch).eq('id', id)
-  if (error) throw error
-}
-
-// Hạng mục liên tục quá chan_troi mà chưa xong → cảnh báo (§3.3 mốc BẮT BUỘC QUYẾT LẠI).
-export function hangMucQuaChanTroi(hm: HangMuc): boolean {
-  return !!hm.chan_troi && ['backlog', 'dang_chay'].includes(hm.trang_thai) && soNgayLech(hm.chan_troi, todayVN()) > 0
-}
-
-// BURN-UP (§3.1): đường luỹ kế số lát ĐÃ RA theo tuần. Chạy được cả khi pham_vi null.
-export type BurnUpDiem = { ky_tuan: string; luy_ke: number }
-export async function burnUpHangMuc(hangMucId: string): Promise<BurnUpDiem[]> {
-  const { data, error } = await supabase.from('viec').select('ky_tuan').eq('hang_muc_id', hangMucId).eq('trang_thai', 'dat').not('ky_tuan', 'is', null).limit(LIMIT)
-  if (error) throw error
-  const perWeek = new Map<string, number>()
-  for (const v of (data ?? []) as any[]) perWeek.set(v.ky_tuan, (perWeek.get(v.ky_tuan) ?? 0) + 1)
-  const weeks = [...perWeek.keys()].sort()
-  let acc = 0
-  return weeks.map((w) => { acc += perWeek.get(w)!; return { ky_tuan: w, luy_ke: acc } })
-}
-
-// ════════════════════════════════════════════════════════════════════════════
-// 4) AI GIAO ĐƯỢC CHO AI — reuse span-of-control (getMyScope), §5
+// 3) AI GIAO ĐƯỢC CHO AI — reuse span-of-control (getMyScope), §5
 // ════════════════════════════════════════════════════════════════════════════
 export type NguoiDuocGiao = { nhan_su_id: string; ho_ten: string; ma_ns?: string }
 export async function listNguoiDuocGiao(): Promise<NguoiDuocGiao[]> {
@@ -207,9 +155,9 @@ export async function listNguoiDuocGiao(): Promise<NguoiDuocGiao[]> {
 // ════════════════════════════════════════════════════════════════════════════
 export type TrangThaiViec = 'moi_giao' | 'dang_lam' | 'cho_nghiem_thu' | 'dat' | 'tra_lai' | 'hold' | 'huy' | 'chuyen'
 export type Viec = {
-  id: string; loai_viec_id: string | null; hang_muc_id: string | null; y_tuong_id: string | null
+  id: string; loai_viec_id: string | null; task_me_id: string | null; y_tuong_id: string | null
   tieu_de: string; muc_tieu: string | null; output: string | null; mo_ta: string | null
-  nguoi_lam_id: string; nguoi_giao_id: string; khoi_luong: number; nguon: 'ke_hoach' | 'phat_sinh'
+  nguoi_lam_id: string | null; nguoi_giao_id: string; khoi_luong: number; nguon: 'ke_hoach' | 'phat_sinh'
   trang_thai: TrangThaiViec; deadline: string | null; deadline_goc: string | null; so_lan_gia_han: number
   gia_han_xin_deadline: string | null; gia_han_xin_ly_do: string | null
   ngay_nop: string | null; ky_tuan: string | null
@@ -219,24 +167,33 @@ export type Viec = {
   created_at: string; hoan_thanh_at: string | null; nghiem_thu_at: string | null
 }
 export type ViecFull = Viec & {
-  nguoi_lam_ten?: string; nguoi_giao_ten?: string; loai_viec_ten?: string; hang_muc_ten?: string; y_tuong_tieu_de?: string
+  nguoi_lam_ten?: string; nguoi_giao_ten?: string; loai_viec_ten?: string; y_tuong_tieu_de?: string
+  so_con?: number; so_con_dat?: number      // chỉ set cho task MẸ (decorateViec đếm con)
 }
 
 async function decorateViec(rows: Viec[]): Promise<ViecFull[]> {
   if (!rows.length) return []
-  const [nsMap, lvMap, hmMap, ytMap] = await Promise.all([
+  const ids = rows.map((r) => r.id)
+  const [nsMap, lvMap, ytMap, conRows] = await Promise.all([
     nhanSuTenMap(rows.flatMap((r) => [r.nguoi_lam_id, r.nguoi_giao_id])),
     mapById('loai_viec', rows.map((r) => r.loai_viec_id), 'ten'),
-    mapById('hang_muc', rows.map((r) => r.hang_muc_id), 'ten'),
     mapById('y_tuong', rows.map((r) => r.y_tuong_id), 'tieu_de'),
+    supabase.from('viec').select('task_me_id, trang_thai').in('task_me_id', ids).limit(LIMIT * 5),
   ])
+  const conCnt = new Map<string, { tong: number; dat: number }>()
+  for (const c of ((conRows.data ?? []) as any[])) {
+    const m = conCnt.get(c.task_me_id) ?? { tong: 0, dat: 0 }
+    m.tong++; if (c.trang_thai === 'dat') m.dat++
+    conCnt.set(c.task_me_id, m)
+  }
   return rows.map((v) => ({
     ...v,
-    nguoi_lam_ten: nsMap.get(v.nguoi_lam_id) ?? '?',
+    nguoi_lam_ten: v.nguoi_lam_id ? (nsMap.get(v.nguoi_lam_id) ?? '?') : undefined,
     nguoi_giao_ten: nsMap.get(v.nguoi_giao_id) ?? '?',
     loai_viec_ten: v.loai_viec_id ? lvMap.get(v.loai_viec_id) : undefined,
-    hang_muc_ten: v.hang_muc_id ? hmMap.get(v.hang_muc_id) : undefined,
     y_tuong_tieu_de: v.y_tuong_id ? ytMap.get(v.y_tuong_id) : undefined,
+    so_con: conCnt.get(v.id)?.tong ?? 0,
+    so_con_dat: conCnt.get(v.id)?.dat ?? 0,
   }))
 }
 async function mapById(table: string, ids: (string | null)[], col: string): Promise<Map<string, string>> {
@@ -246,25 +203,62 @@ async function mapById(table: string, ids: (string | null)[], col: string): Prom
   return new Map(((data ?? []) as any[]).map((r) => [r.id, r[col]]))
 }
 
-// GIAO VIỆC (§4.1). 1 người. deadline_goc = deadline (bất biến). ky_tuan = tuần plan.
-// Nếu từ backlog (y_tuong_id): §2.4 cửa 2 — ĐẺ DÒNG viec mới + y_tuong → da_trien_khai.
+// GIAO VIỆC (§4.1). Task LẺ/CON = 1 người. Task MẸ = nguoi_lam null (con là đơn vị làm).
+// deadline_goc = deadline (bất biến). ky_tuan = tuần plan. Nếu từ backlog (y_tuong_id):
+// cửa 2 — ĐẺ DÒNG viec mới + y_tuong → da_trien_khai (không chuyển dòng vật lý).
 export async function createViec(p: {
-  tieu_de: string; nguoi_lam_id: string; khoi_luong: number
-  loai_viec_id?: string | null; hang_muc_id?: string | null; y_tuong_id?: string | null
-  muc_tieu?: string; output?: string; mo_ta?: string; deadline?: string | null; nguon?: 'ke_hoach' | 'phat_sinh'
+  tieu_de: string; nguoi_lam_id?: string | null; khoi_luong: number
+  loai_viec_id?: string | null; task_me_id?: string | null; y_tuong_id?: string | null
+  muc_tieu?: string; output?: string; mo_ta?: string; deadline?: string | null
+  nguon?: 'ke_hoach' | 'phat_sinh'; ky_tuan?: string
 }): Promise<Viec> {
   const me = await myNhanSuId()
   const { data: viec, error } = await supabase.from('viec').insert({
-    tieu_de: p.tieu_de, nguoi_lam_id: p.nguoi_lam_id, nguoi_giao_id: me, khoi_luong: p.khoi_luong,
-    loai_viec_id: p.loai_viec_id ?? null, hang_muc_id: p.hang_muc_id ?? null, y_tuong_id: p.y_tuong_id ?? null,
+    tieu_de: p.tieu_de, nguoi_lam_id: p.nguoi_lam_id ?? null, nguoi_giao_id: me, khoi_luong: p.khoi_luong,
+    loai_viec_id: p.loai_viec_id ?? null, task_me_id: p.task_me_id ?? null, y_tuong_id: p.y_tuong_id ?? null,
     muc_tieu: p.muc_tieu ?? null, output: p.output ?? null, mo_ta: p.mo_ta ?? null,
     deadline: p.deadline ?? null, deadline_goc: p.deadline ?? null,
-    nguon: p.nguon ?? 'ke_hoach', ky_tuan: kyTuanHienTai(), trang_thai: 'moi_giao',
+    nguon: p.nguon ?? 'ke_hoach', ky_tuan: p.ky_tuan ?? kyTuanHienTai(), trang_thai: 'moi_giao',
   }).select().single()
   if (error) throw error
-  // Cửa 2: idea đã triển khai (KHÔNG chuyển dòng vật lý — chỉ đổi trạng thái §2.4).
   if (p.y_tuong_id) await supabase.from('y_tuong').update({ trang_thai: 'da_trien_khai' }).eq('id', p.y_tuong_id)
   return viec as Viec
+}
+
+// XÁC NHẬN TUẦN (story §3): CEO chọn nhiều item backlog → mỗi item đẻ 1 TASK MẸ ở tuần
+// này (Weekly Planning) + y_tuong → da_trien_khai. Task mẹ chưa gán người (tách con sau).
+export async function xacNhanTuan(yTuongIds: string[], kyTuan?: string): Promise<void> {
+  const ky = kyTuan ?? kyTuanHienTai()
+  const { data: yts } = await supabase.from('y_tuong').select('id, tieu_de, mo_ta').in('id', yTuongIds).limit(LIMIT)
+  for (const yt of (yts ?? []) as any[]) {
+    await createViec({ tieu_de: yt.tieu_de, mo_ta: yt.mo_ta ?? undefined, y_tuong_id: yt.id, khoi_luong: 0, ky_tuan: ky, nguon: 'ke_hoach' })
+  }
+}
+
+// Tạo TASK CON dưới 1 task mẹ (1 người). ky_tuan kế thừa từ mẹ.
+export async function taoTaskCon(taskMeId: string, p: {
+  tieu_de: string; nguoi_lam_id: string; khoi_luong: number; deadline?: string | null; muc_tieu?: string; output?: string; loai_viec_id?: string | null
+}): Promise<void> {
+  const { data: me } = await supabase.from('viec').select('ky_tuan').eq('id', taskMeId).single()
+  await createViec({ ...p, task_me_id: taskMeId, ky_tuan: (me as any)?.ky_tuan ?? undefined, nguon: 'ke_hoach' })
+}
+
+// Gán người + khối lượng cho một task chưa gán (biến task lẻ chưa gán thành đơn vị làm được).
+export async function ganNguoiLam(id: string, p: { nguoi_lam_id: string; khoi_luong: number; deadline?: string | null; muc_tieu?: string; output?: string }): Promise<void> {
+  const { error } = await supabase.from('viec').update({
+    nguoi_lam_id: p.nguoi_lam_id, khoi_luong: p.khoi_luong,
+    deadline: p.deadline ?? null, deadline_goc: p.deadline ?? null,
+    muc_tieu: p.muc_tieu ?? null, output: p.output ?? null,
+  }).eq('id', id)
+  if (error) throw error
+}
+
+// WEEKLY PLANNING (story §4): mọi task của tuần (mẹ + con + lẻ). UI gom cụm theo task_me_id.
+export async function listWeeklyPlanning(kyTuan: string): Promise<ViecFull[]> {
+  const { data, error } = await supabase.from('viec').select('*').eq('ky_tuan', kyTuan)
+    .not('trang_thai', 'in', '("huy","chuyen")').order('created_at', { ascending: true }).limit(LIMIT)
+  if (error) throw error
+  return decorateViec((data ?? []) as Viec[])
 }
 
 // NS bắt đầu làm (rời 'moi_giao').
@@ -371,7 +365,7 @@ export async function chuyenNguoi(id: string, nguoiMoiId: string, phanTramGhiNha
   const { data: moi, error: e1 } = await supabase.from('viec').insert({
     tieu_de: viec.tieu_de, muc_tieu: viec.muc_tieu, output: viec.output, mo_ta: viec.mo_ta,
     nguoi_lam_id: nguoiMoiId, nguoi_giao_id: me, khoi_luong: klConLai,
-    loai_viec_id: viec.loai_viec_id, hang_muc_id: viec.hang_muc_id, y_tuong_id: viec.y_tuong_id,
+    loai_viec_id: viec.loai_viec_id, task_me_id: viec.task_me_id, y_tuong_id: viec.y_tuong_id,
     deadline: viec.deadline, deadline_goc: viec.deadline, nguon: viec.nguon, ky_tuan: kyTuanHienTai(), trang_thai: 'moi_giao',
   }).select().single()
   if (e1) throw e1
@@ -447,10 +441,16 @@ function tinhTuViecs(viecs: Viec[]): HieuSuatKy {
   }
 }
 // Hiệu suất THÁNG ('YYYY-MM') = gộp mọi tuần plan có ky_tuan rơi vào tháng đó.
+// CHỈ đếm task LEAF (loại task mẹ có con) — con carry credit, không đếm 2 lần.
 export async function tinhHieuSuatThang(nhanSuId: string, thang: string): Promise<HieuSuatKy> {
   const { data, error } = await supabase.from('viec').select('*').eq('nguoi_lam_id', nhanSuId).not('ky_tuan', 'is', null).limit(LIMIT)
   if (error) throw error
-  const viecs = ((data ?? []) as Viec[]).filter((v) => v.ky_tuan && thangCuaKyTuan(v.ky_tuan) === thang)
+  let viecs = ((data ?? []) as Viec[]).filter((v) => v.ky_tuan && thangCuaKyTuan(v.ky_tuan) === thang)
+  if (viecs.length) {
+    const { data: cons } = await supabase.from('viec').select('task_me_id').in('task_me_id', viecs.map((v) => v.id)).limit(LIMIT * 5)
+    const laMe = new Set(((cons ?? []) as any[]).map((c) => c.task_me_id))
+    viecs = viecs.filter((v) => !laMe.has(v.id))
+  }
   return tinhTuViecs(viecs)
 }
 
