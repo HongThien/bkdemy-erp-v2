@@ -466,24 +466,20 @@ function TrichPanel({ masterId, khoi, buois, onClose }: { masterId: string; khoi
   const soBuoiMaster = new Map(buois.map((b, i) => [b.marker.id, i + 1]))
   const sttLopCua = (markerId: string) => boLop.find((b) => b.nguon_buoi === markerId)?.stt
 
-  // ⭐ Ngày gán MẶC ĐỊNH = buổi TKB gần nhất CHƯA gán, tính TỪ HÔM NAY trở đi (Thùy: BTVN luôn làm vào
-  // ngày học/gần đó → khỏi bới cả list, tránh bấm nhầm sang tháng khác như 8A1 Buổi 7 gán nhầm CN 23/08).
-  // ⭐ 07-30 (Thùy): MỖI LẦN GÁN CHỈ 1 BUỔI → mọi dòng chưa-gán cùng mặc định ĐÚNG 1 ngày, KHÔNG
-  // nhảy tăng dần mỗi dòng sang các ngày sau. Gán xong 1 buổi → reload: ngày đó vào "đã gán", mặc định tự
-  // lùi sang ngày trống kế tiếp. "Đã gán" tính theo BỘ GIÁO TRÌNH LỚP (mọi giáo trình) để không cấp trùng.
-  // ⭐ 07-31 (fix "mất ngày"): ưu tiên buổi trống SẮP TỚI (từ hôm nay), NHƯNG nếu không còn buổi tương lai
-  // (đang gán BTVN cho buổi vừa học xong) thì lùi về buổi trống QUÁ KHỨ gần nhất — KHÔNG để dòng mất ngày.
-  // (tkbDates tăng dần) Trước đây chặn cứng `d >= today` khiến lớp không còn buổi tương lai bị trống hết ngày.
+  // ⭐ Ngày gán MẶC ĐỊNH = buổi TKB gần nhất CHƯA gán (Thùy: BTVN luôn làm vào ngày học/gần đó → khỏi bới
+  // cả list, tránh bấm nhầm sang tháng khác như 8A1 Buổi 7 gán nhầm CN 23/08). Lấp TUẦN TỰ theo thứ tự
+  // buổi master: buổi chưa-gán thứ k → ngày trống thứ k → MỖI DÒNG một ngày RIÊNG (không gộp chung 1 ngày).
+  // ⭐ 07-31 (Thùy): revert f714f4c — bản đó gộp mọi dòng về ĐÚNG 1 ngày + chặn cứng `d >= today` gây 2 lỗi:
+  //   (1) lớp hết buổi tương lai → mọi dòng MẤT NGÀY;  (2) mọi dòng chưa-gán HIỆN CÙNG 1 ngày (sai dòng).
+  // Cấp ngày trống gồm CẢ quá khứ (back-fill BTVN buổi vừa học) → không dòng nào mất ngày. "Đã gán" tính
+  // theo BỘ GIÁO TRÌNH LỚP (mọi giáo trình, không riêng master này) để không cấp trùng ngày đã có buổi.
   const daGan = new Set(boLop.map((b) => b.ngay))
-  const today = homNayVN()
-  const chuaGan = tkbDates.filter((d) => !daGan.has(d))
-  const ngayMacDinh = chuaGan.find((d) => d >= today)              // buổi trống sắp tới gần nhất
-    ?? [...chuaGan].reverse().find((d) => d < today)               // fallback: buổi trống quá khứ gần nhất
-    ?? ''
+  const ngayTrong = tkbDates.filter((d) => !daGan.has(d))
   const defNgayByMarker = new Map<string, string>()
+  let kTrong = 0
   for (const b of buois) {
     if (state[b.marker.id]?.ngay) continue        // buổi này đã gán → không cần ngày mặc định
-    if (ngayMacDinh) defNgayByMarker.set(b.marker.id, ngayMacDinh)
+    if (kTrong < ngayTrong.length) defNgayByMarker.set(b.marker.id, ngayTrong[kTrong++])
   }
 
   return (
