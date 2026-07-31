@@ -1488,6 +1488,8 @@
 | deadline | date | Y |  |  |  |
 | deadline_goc | date | Y |  |  |  |
 | so_lan_gia_han | integer |  | 0 |  |  |
+| gia_han_xin_deadline | date | Y |  |  |  |
+| gia_han_xin_ly_do | text | Y |  |  |  |
 | ngay_nop | date | Y |  |  |  |
 | ky_tuan | date | Y |  |  |  |
 | tien_do | numeric | Y |  |  |  |

@@ -85,6 +85,8 @@ create table if not exists viec (
   deadline           date,                               -- hiện hành (sau gia hạn nếu duyệt)
   deadline_goc       date,                               -- ⭐ BẤT BIẾN (§4.3) — luôn lưu để soi
   so_lan_gia_han     int not null default 0,             -- trần GIA_HAN_TOI_DA (§4.8)
+  gia_han_xin_deadline date,                             -- NS xin gia hạn (pending, chờ leader duyệt §4.3)
+  gia_han_xin_ly_do  text,                               -- lý do xin gia hạn
   ngay_nop           date,                               -- ngày bấm hoàn thành LẦN ĐƯỢC DUYỆT ĐẠT (§4.8)
   ky_tuan            date,                               -- ⭐ = TUẦN PLAN (thứ 2 VN của tuần giao) — kỳ tính
   -- Chấm

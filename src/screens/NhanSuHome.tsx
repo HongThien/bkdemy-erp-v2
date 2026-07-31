@@ -471,7 +471,7 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
               {viecPT.filter((v) => v.trang_thai !== 'dat').map((v) => (
                 <button key={v.id} onClick={() => setStaffLeaf('giaoviec')} className="block w-full rounded-2xl bg-white p-3.5 text-left shadow-sm hover:shadow-md">
                   <div className="text-[13px] font-semibold text-slate-800">{v.tieu_de}</div>
-                  <div className="mt-1 text-[11px] text-slate-500">{v.loai_viec?.ten} · {v.nguoi_giao_ten} giao{v.han_nghiem_thu ? ` · hạn ${new Date(v.han_nghiem_thu).toLocaleDateString('vi-VN')}` : ''}</div>
+                  <div className="mt-1 text-[11px] text-slate-500">{v.loai_viec_ten ?? 'Việc'} · {v.nguoi_giao_ten} giao{v.deadline ? ` · hạn ${v.deadline.slice(8, 10)}/${v.deadline.slice(5, 7)}` : ''}</div>
                 </button>
               ))}
             </div>
