@@ -91,6 +91,7 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
     lopRef.current = lopId
     if (prev == null) return
     setRows(blankRows()); setCau({}); setCh({}); setNgay(''); setRoster([]); setClassPrint(null)
+    if (!et) setSavedId(null)   // tạo mới + đổi lớp → doc mới, KHÔNG update đè doc lớp cũ (sửa từ Kho thì giữ id)
   }, [lopId])
   // dạng theo khối (đổi khi chọn lớp khác khối)
   useEffect(() => {
@@ -246,8 +247,8 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
       const maCaus = sortETCaus(chon.map((r) => bank[r.maCau]), chSave).map((c) => c.ma_cau)
       const ten = `ET ${lop.ten_lop} · ${ngay.split('-').reverse().join('/')}`
       const id = savedId ?? et?.id ?? null
-      if (id) {
-        await updateET(id, { ten, lop_id: lop.id, ngay, cau_hinh: chSave })
+      // updateET trả false = doc không còn (savedId trỏ doc đã xoá) → RƠI xuống tạo mới, tránh FK khi setETCaus.
+      if (id && await updateET(id, { ten, lop_id: lop.id, ngay, cau_hinh: chSave })) {
         await setETCaus(id, maCaus)
         // ⭐ 07-12: link PDF có sẵn ngay khi lưu → enqueue hàng đợi TOÀN CỤC (LinkGenWorker, App.tsx).
         useStore.getState().enqueueLinkGen(id, 'et')

@@ -440,9 +440,12 @@ export async function createET(input: { lopId: string; ngay: string; ten: string
   return data as ETDoc
 }
 // Cập nhật ET (tên / gán lại lớp+ngày / cấu hình). lop_id+ngay = đường nối buổi.
-export async function updateET(id: string, patch: { ten?: string; lop_id?: string | null; ngay?: string | null; cau_hinh?: CauHinh }): Promise<void> {
-  const { error } = await supabase.from('tai_lieu').update({ ...patch, updated_at: new Date().toISOString() }).eq('id', id)
+// Trả TRUE nếu update trúng dòng (doc còn tồn tại), FALSE nếu id không có trong tai_lieu (doc đã xoá) —
+// caller dựa vào đây để KHÔNG setETCaus(id ma) rồi dính FK tai_lieu_phan_tai_lieu_id_fkey (tạo mới thay vì).
+export async function updateET(id: string, patch: { ten?: string; lop_id?: string | null; ngay?: string | null; cau_hinh?: CauHinh }): Promise<boolean> {
+  const { data, error } = await supabase.from('tai_lieu').update({ ...patch, updated_at: new Date().toISOString() }).eq('id', id).select('id')
   if (error) throw error
+  return ((data as unknown[])?.length ?? 0) > 0
 }
 // ET tìm theo buổi (lớp+ngày) — dùng khi tab Chấm ET load (buổi materialize).
 export async function getETByBuoi(lopId: string, ngay: string): Promise<ETDoc | null> {
