@@ -1,9 +1,10 @@
 // Panel ĐÚNG/SAI — CON của 1 CHUYÊN ĐỀ (mở từ header chuyên đề trong BanDo, cạnh "Lý thuyết chung").
 // Câu = 1 đề chung + 4 mệnh đề, MỖI mệnh đề 1 dạng riêng (chọn dạng bất kỳ trong khối). Lưu ở dai_cau_hoi (menh_de jsonb).
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { listDungSaiByDang, createCauDungSai, updateCau, deleteCau, uploadKhoImage, callGeminiJson, buildDungSaiIngestPrompt, parseDungSaiJson, DUNGSAI_SCHEMA, type CauHoi, type MenhDe, type MapRow } from '../../lib/kho/api'
 import { inp, MathText } from './ui'
 import SearchSelect from '../../components/SearchSelect'
+import { ImgInsertBar, insertImageAtCursor } from '../../components/ImgInsertBar'
 
 const ABCD = ['a', 'b', 'c', 'd']
 const blankMD = (): MenhDe => ({ noi_dung: '', dap_an: 'D', ma_dang: '', loi_giai: '' })
@@ -224,6 +225,7 @@ export function DungSaiModal({ cau, dangChinhMoi, tbl, dangOpts, onClose, onSave
     return base.slice(0, 4)
   })
   const [busy, setBusy] = useState(false)
+  const lgRef = useRef<HTMLTextAreaElement>(null)
   const setMdi = (i: number, p: Partial<MenhDe>) => setMd((s) => s.map((x, j) => (j === i ? { ...x, ...p } : x)))
 
   async function uploadAnh(file: File) { try { setAnhDe(await uploadKhoImage(file)) } catch (e: any) { alert(e.message ?? String(e)) } }
@@ -280,8 +282,14 @@ export function DungSaiModal({ cau, dangChinhMoi, tbl, dangOpts, onClose, onSave
           ))}
 
           <div>
-            <label className="mb-1 block text-[13px] font-medium text-slate-600">Lời giải chung (tuỳ)</label>
-            <textarea value={loiGiai} onChange={(e) => setLoiGiai(e.target.value)} className={`${inp} h-20 leading-relaxed`} />
+            <div className="mb-1 flex items-center justify-between">
+              <label className="text-[13px] font-medium text-slate-600">Lời giải chung (tuỳ)</label>
+              <ImgInsertBar taRef={lgRef} value={loiGiai} onChange={setLoiGiai} />
+            </div>
+            <textarea ref={lgRef} value={loiGiai} onChange={(e) => setLoiGiai(e.target.value)}
+              onPaste={(e) => { const f = Array.from(e.clipboardData.files).find((x) => x.type.startsWith('image/')); if (f) { e.preventDefault(); void insertImageAtCursor(f, lgRef, loiGiai, setLoiGiai).catch((err: any) => alert('Upload ảnh lỗi: ' + (err?.message ?? err))) } }}
+              className={`${inp} h-20 leading-relaxed`} />
+            {loiGiai.trim() && <div className="mt-1 rounded-lg bg-slate-50 px-3 py-2 text-[14px] text-slate-700"><MathText>{loiGiai}</MathText></div>}
           </div>
         </div>
         <div className="flex justify-end gap-2 border-t border-slate-200 px-5 py-3">

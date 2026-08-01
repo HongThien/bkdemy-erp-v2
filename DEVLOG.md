@@ -3318,6 +3318,13 @@ Verify: card hiện "△ABC nhọn, ba đường cao... | tứ giác BFEC nội 
 - **Trạng thái dạng bài ghi RÕ:** on-screen chips + status row trên ảnh đổi từ "27 dạng đạt/…" → **"27 Dạng bài Đạt yêu cầu · 4 Dạng bài Cần luyện tập · 3 Dạng bài còn Yếu"**. `statusC` (ảnh) restyle: số to + "DẠNG BÀI" + nhãn đầy đủ.
 - **Logo BK:** thay ô grid 4 màu abstract ở hero bằng **SVG dựng lại logo BK** (B hồng #e5389a · K cam #f7941e · tam giác + xanh #2bb6d6 · tròn − lục #7ac143) + chữ "BK ACADEMY" trắng. Dùng SVG (không nhúng `public/Logo.png`) vì popup html2canvas là about:blank → path tương đối vỡ, và wordmark xám của PNG chìm trên nền navy. tsc sạch.
 
+### 07-29 (tiếp #6) — Chèn ảnh inline ở MỌI ô soạn (lời giải + lý thuyết CĐ/dạng + Đúng/Sai)
+- **Thùy:** làm ở mọi chỗ — lý thuyết chuyên đề, lý thuyết dạng luôn. Tách toolbar dùng chung `src/components/ImgInsertBar.tsx` (🖼 Chèn ảnh / 📋 Dán / ✂️ Cắt PDF → upload → chèn `![](url)` tại con trỏ) + helper `insertImageAtCursor` (dùng cho onPaste thẳng trong ô). Import `readClipboardImageFile`/`MathText` từ screens/kho/ui vào component = pattern đã có (KhoPicker). Áp:
+  - **DangHub** (lời giải câu): thay `SolutionField` bespoke → dùng `ImgInsertBar` (khỏi lặp).
+  - **BanDo `LyThuyetModal`** (DÙNG CHUNG lý thuyết DẠNG `config.lyThuyet` + CHUYÊN ĐỀ `config.lyThuyetT2`): thêm nút **🖼 Chèn ảnh** (upload file→insertImg, ref riêng `insertFileRef` khác `fileRef` nguồn-AI) cạnh **✂️ Cắt hình chèn** sẵn có + onPaste ảnh thẳng vào ô code → insertImg. (Giữ nguyên "📎 Chọn ảnh/PDF"/"📋 Dán clipboard" = nguồn cho AI bóc.)
+  - **DungSaiBank** (lời giải chung Đúng/Sai): thêm `ImgInsertBar` + onPaste + preview MathText (trước KHÔNG có preview).
+- tsc + vite build sạch.
+
 ### 07-29 (tiếp #5) — Kho làm bài: chèn ẢNH INLINE vào lời giải
 - **Thùy:** clone bài có hình → muốn bổ sung hình vào lời giải SAU (như tính năng cũ: upload ảnh → lấy link → nhét vào bài giải). Hạ tầng có sẵn (`MathText` render `![](url)` cả màn + preview, `uploadKhoImage`), chỉ thiếu nút chèn tại con trỏ ở ô lời giải. **Fix:** component `SolutionField` (DangHub) bọc ô "Đáp án chi tiết" + toolbar **🖼 Chèn ảnh / 📋 Dán / ✂️ Cắt PDF** → upload → chèn `![](url)` NGAY TẠI con trỏ (giữ selectionStart/End); cả onPaste ảnh trong ô cũng tự upload+chèn. Thay 3 `<textarea loi_giai>` (fill/opts/grid) trong CauEditor. Chèn được nhiều hình, mọi vị trí; giữ nguyên ô "Ảnh giải" (`anhDapAn`) đơn. KHÔNG đổi schema. tsc + vite build sạch.
 

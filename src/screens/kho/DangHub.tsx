@@ -9,6 +9,7 @@ import {
 } from '../../lib/kho/api'
 import { fileToCanvases, canvasToJpegBase64, cropCanvasBox } from '../../lib/pdfRender'
 import PdfCropper from '../../components/PdfCropper'
+import { ImgInsertBar, insertImageAtCursor } from '../../components/ImgInsertBar'
 
 const SAMPLE_TEXT = `Câu 1.
 Đề bài: Tìm số tự nhiên nhỏ nhất chia hết cho cả 3 và 5.
@@ -771,37 +772,12 @@ function AutoTextarea({ value, onChange, className, maxPx }: { value: string; on
 // lấy link đặt vào bài giải"). Chèn được NHIỀU hình, ở bất kỳ vị trí nào trong lời giải.
 function SolutionField({ value, onChange, taClassName, wrapClassName }: { value: string; onChange: (v: string) => void; taClassName: string; wrapClassName?: string }) {
   const taRef = useRef<HTMLTextAreaElement>(null)
-  const fileRef = useRef<HTMLInputElement>(null)
-  const [busy, setBusy] = useState(false)
-  const [crop, setCrop] = useState(false)
-  const insert = async (f: File | null | undefined) => {
-    if (!f || !f.type.startsWith('image/')) return
-    setBusy(true)
-    try {
-      const u = await uploadKhoImage(f)
-      const ta = taRef.current
-      const a = ta?.selectionStart ?? value.length, b = ta?.selectionEnd ?? value.length
-      onChange(value.slice(0, a) + `\n![](${u})\n` + value.slice(b))
-    } catch (e: any) { alert('Upload ảnh lỗi: ' + (e?.message ?? e)) }
-    finally { setBusy(false); setCrop(false) }
-  }
-  const pasteClip = async () => {
-    try { const f = await readClipboardImageFile(); if (f) void insert(f); else alert('Clipboard không có ảnh — copy ảnh trước.') }
-    catch (e: any) { alert(e?.message ?? String(e)) }
-  }
-  const btn = 'inline-flex items-center gap-1 whitespace-nowrap rounded-md border border-dashed border-slate-300 px-2 py-0.5 text-[12px] font-medium text-slate-400 transition hover:border-indigo-400 hover:text-indigo-500 disabled:opacity-60'
   return (
     <div className={`flex min-h-0 flex-col ${wrapClassName ?? ''}`}>
-      <div className="mb-1 flex flex-wrap items-center gap-1">
-        <button type="button" onClick={() => !busy && fileRef.current?.click()} disabled={busy} title="Upload ảnh → chèn ![](url) vào lời giải tại con trỏ" className={btn}>{busy ? '⏳ Đang chèn…' : '🖼 Chèn ảnh'}</button>
-        <button type="button" onClick={() => !busy && pasteClip()} disabled={busy} title="Dán ảnh từ clipboard (Ctrl+V)" className={btn}>📋 Dán</button>
-        <button type="button" onClick={() => !busy && setCrop(true)} disabled={busy} title="Cắt hình từ PDF/ảnh (render DPI cao)" className={btn}>✂️ Cắt PDF</button>
-      </div>
+      <ImgInsertBar taRef={taRef} value={value} onChange={onChange} className="mb-1" />
       <textarea ref={taRef} value={value} onChange={(e) => onChange(e.target.value)}
-        onPaste={(e) => { const f = Array.from(e.clipboardData.files).find((x) => x.type.startsWith('image/')); if (f) { e.preventDefault(); e.stopPropagation(); void insert(f) } }}
+        onPaste={(e) => { const f = Array.from(e.clipboardData.files).find((x) => x.type.startsWith('image/')); if (f) { e.preventDefault(); e.stopPropagation(); void insertImageAtCursor(f, taRef, value, onChange).catch((err: any) => alert('Upload ảnh lỗi: ' + (err?.message ?? err))) } }}
         className={taClassName} />
-      <input ref={fileRef} type="file" accept="image/*" hidden onChange={(e) => { void insert(e.target.files?.[0]); e.target.value = '' }} />
-      {crop && <PdfCropper title="Cắt hình chèn vào lời giải" onClose={() => setCrop(false)} onCrop={async (f) => { await insert(f) }} />}
     </div>
   )
 }

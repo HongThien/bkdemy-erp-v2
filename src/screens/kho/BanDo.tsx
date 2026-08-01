@@ -490,6 +490,7 @@ export function LyThuyetModal({ ma, ten, current, api, allowKhongCan, onClose, o
   const [error, setError] = useState<string | null>(null)
   const [crop, setCrop] = useState(false)
   const fileRef = useRef<HTMLInputElement>(null)
+  const insertFileRef = useRef<HTMLInputElement>(null) // upload ảnh CHÈN THẲNG vào lý thuyết (khác fileRef = nguồn cho AI)
   const attachRef = useRef<HTMLInputElement>(null)
   const taRef = useRef<HTMLTextAreaElement>(null)
   const hasContent = !!noiDung.trim() || !!url.trim()
@@ -589,8 +590,10 @@ export function LyThuyetModal({ ma, ten, current, api, allowKhongCan, onClose, o
               <div className="mt-2.5 flex flex-wrap items-center gap-2">
                 <button onClick={() => fileRef.current?.click()} className="h-[34px] shrink-0 whitespace-nowrap rounded-md border border-slate-300 bg-white px-3 text-[13px] font-medium text-slate-600 hover:border-indigo-400">📎 Chọn ảnh/PDF</button>
                 <button onClick={pasteClip} className="h-[34px] shrink-0 whitespace-nowrap rounded-md border border-slate-300 bg-white px-3 text-[13px] font-medium text-slate-600 hover:border-indigo-400">📋 Dán clipboard</button>
+                <button onClick={() => insertFileRef.current?.click()} disabled={uploading} title="Upload ảnh từ máy → chèn ![](url) vào lý thuyết tại vị trí con trỏ" className="h-[34px] shrink-0 whitespace-nowrap rounded-md border border-violet-300 bg-white px-3 text-[13px] font-medium text-violet-700 hover:bg-violet-50 disabled:opacity-50">{uploading ? '⏳ Đang chèn…' : '🖼 Chèn ảnh'}</button>
                 <button onClick={() => setCrop(true)} disabled={uploading} title="Cắt hình từ PDF/ảnh (DPI cao) → chèn vào lý thuyết tại vị trí con trỏ" className="h-[34px] shrink-0 whitespace-nowrap rounded-md border border-violet-300 bg-white px-3 text-[13px] font-medium text-violet-700 hover:bg-violet-50 disabled:opacity-50">{uploading ? '⏳ Đang chèn…' : '✂️ Cắt hình chèn'}</button>
                 <input ref={fileRef} type="file" accept="image/*,application/pdf" multiple hidden onChange={(e) => e.target.files && addFiles(e.target.files)} />
+                <input ref={insertFileRef} type="file" accept="image/*" hidden onChange={(e) => { const f = e.target.files?.[0]; if (f) void insertImg(f); e.target.value = '' }} />
                 <select value={model} onChange={(e) => setModel(e.target.value)} className={`${sel} shrink-0`}>{LT_MODELS.map((m) => <option key={m.value} value={m.value}>{m.label}</option>)}</select>
                 <input value={ghiChu} onChange={(e) => setGhiChu(e.target.value)} placeholder="ghi chú AI (tuỳ)" className={`${inp} h-[34px] min-w-[120px] flex-1 text-[13px]`} />
                 <button onClick={runAuto} disabled={!files.length || busy} className="h-[34px] shrink-0 whitespace-nowrap rounded-md bg-indigo-600 px-4 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40" title="Bóc chữ + công thức (KHÔNG kèm hình)">{busy ? '⏳ Đang bóc…' : '🪄 Bóc chữ'}</button>
@@ -621,7 +624,8 @@ export function LyThuyetModal({ ma, ten, current, api, allowKhongCan, onClose, o
           <div className="flex min-h-0 flex-col border-r border-slate-200">
             <div className="border-b border-slate-100 px-4 py-1.5 text-[12px] font-bold uppercase tracking-wide text-slate-500">Code (LaTeX) — sửa tự do</div>
             <textarea ref={taRef} value={noiDung} onChange={(e) => setNoiDung(e.target.value)}
-              placeholder={'Lý thuyết · phương pháp · ví dụ…\nCông thức $\\dfrac{-b}{2a}$, $x \\neq 0$\nChèn hình: ![](url) — dùng nút ✂️ Cắt hình chèn'}
+              onPaste={(e) => { const f = Array.from(e.clipboardData.files).find((x) => x.type.startsWith('image/')); if (f) { e.preventDefault(); void insertImg(f) } }}
+              placeholder={'Lý thuyết · phương pháp · ví dụ…\nCông thức $\\dfrac{-b}{2a}$, $x \\neq 0$\nChèn hình: ![](url) — nút 🖼 Chèn ảnh / ✂️ Cắt hình chèn, hoặc dán ảnh (Ctrl+V) thẳng vào đây'}
               className="min-h-0 flex-1 resize-none p-4 font-mono text-[13px] leading-relaxed outline-none" />
           </div>
           <div className="flex min-h-0 flex-col">
