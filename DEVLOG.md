@@ -3411,3 +3411,10 @@ Verify: card hiện "△ABC nhọn, ba đường cao... | tứ giác BFEC nội 
 - **QR VietQR** (kênh Zalo tự hiện "Chuyển tiền"): `lib/vietqr.ts` sinh chuỗi NAPAS local (verify CRC + TLV OK, bank VPBank 970432/38496433), nhét QR 180px vào phiếu. App PH (repo ph): migration 0018 hoa_don_view/dong_view (FDW, đã apply), màn Học phí (QR 220px + nút Tải ảnh QR + copy nội dung).
 - **Verify:** tsc xanh (ERP + ph). Replay Anh Khoa khớp 6=5+1. ⚠ CHƯA có hoá đơn chốt nào (ERP hoa_don=0) → getPhieuAo/phiếu-thật/app-PH chờ CEO chốt 1 kỳ mới verify end-to-end.
 - ⚠ Latent: `buByGocKy` buLinks .limit(LIMIT) toàn trường — paginate khi link bù >2000 (cùng bẫy fetchAllBhh 08-01(2)).
+
+## 2026-08-01 (5) — Học phí tổng: gộp Phiếu vào list + BỎ xét duyệt (auto CT1/CT2)
+- **CEO:** bỏ tab Phiếu, mọi thứ ở tab "Học phí tổng" (list tất cả PH, không picker từng người). Và BỎ luôn xét duyệt vì hết phiếu (bug duplicate-key `hoc_phi_xet_duyet` do ensureXetDuyet SELECT-rồi-INSERT bị đua khi expand).
+- **Tab "Học phí học chính" → "Học phí tổng":** list mọi PH + tổng ĐẦY ĐỦ (chinh + đuổi + nợ — thêm `soDuNoTheoPH` batch + nâng `listPhieuTheoKy`). Mỗi PH nút "Chi tiết ▾" bung → khoản + Chốt kỳ + Thu tiền (component `PhieuChiTietExpand` gộp từ PhieuTab cũ). Bỏ tab Phiếu (xoá PhieuTab).
+- **BỎ xét duyệt hoàn toàn:** xoá tab + XetDuyetTab + lib (ensureXetDuyet/listXetDuyetChoDuyet/duyetXetDuyet + type XetDuyet). `getPhieuAo` giờ TỰ tính CT1/CT2: `ct = chọn-tay(hoc_phi_cong_thuc) ?? deXuatCongThuc(nghỉ,lop)`; soBuoi = ct2 ? (đi học+bù) : buổi lớp. Không còn gate người duyệt → chốt ngay. chotKy bỏ guard choDuyet. (Bảng hoc_phi_xet_duyet để trơ, không drop.)
+- **Verify live:** tab Xét duyệt mất, expand 1 PH không lỗi, Chốt kỳ enabled, số đúng. tsc xanh.
+- **CÒN (chưa làm):** task 3 trạng thái Đã báo/Đã nộp + cảnh báo 3 ngày (cần migration `bao_lan1_at`); task 2 tab "Học phí nợ"; task 4 CT1/CT2 toggle bar + xác nhận.
