@@ -57,13 +57,15 @@ for (const phase of ['ingame', 'et', 'mt']) {
 }
 ok(expForRank(5, 5, RANK_EXP.ingame) === 290, 'N=5 hạng 5 = bậc 5 (290), KHÔNG dùng sàn 250')
 
-// ── SEASON (niên khóa, START=1/7) ──
+// ── SEASON (niên khóa, START=1/8 · END chốt cứng 31/5 → hè 6–7 off-season) ──
 import { seasonOf, seasonStartUtc, seasonEndUtc } from '../src/gami/season.js'
-ok(seasonOf('2026-06-30') === '2025-26', 'trước 1/7 → mùa trước (2025-26)')
-ok(seasonOf('2026-07-01') === '2026-27', 'đúng 1/7 → mùa mới (2026-27)')
+ok(seasonOf('2026-07-31') === '2025-26', 'tháng 7 (đợt chạy thử) < 1/8 → mùa cũ (2025-26)')
+ok(seasonOf('2026-08-01') === '2026-27', 'đúng 1/8 → mùa mới (2026-27)')
 ok(seasonOf('2027-01-15') === '2026-27', 'giữa năm dương lịch vẫn cùng niên khóa (2026-27)')
-ok(seasonStartUtc('2026-27') === '2026-06-30T17:00:00.000Z', 'đầu mùa 1/7 VN = 30/6 17:00 UTC')
-ok(seasonEndUtc('2026-27') === seasonStartUtc('2027-28'), 'cuối mùa = đầu mùa kế (liền mạch)')
+ok(seasonOf('2027-05-31') === '2026-27', 'cuối kỳ dạy 31/5 vẫn thuộc mùa 2026-27')
+ok(seasonStartUtc('2026-27') === '2026-07-31T17:00:00.000Z', 'đầu mùa 1/8 VN = 31/7 17:00 UTC')
+ok(seasonEndUtc('2026-27') === '2027-05-31T17:00:00.000Z', 'cuối mùa = hết 31/5 VN (biên mở 1/6)')
+ok(seasonEndUtc('2026-27') !== seasonStartUtc('2027-28'), 'KHÔNG liền mạch — có GAP hè (6–7) off-season')
 
 // ── LEVEL ──
 import { expToLevel, cumExpFor, stepCost, avatarTier } from '../src/gami/level.js'

@@ -5,9 +5,15 @@
 // Dry-run mặc định (chỉ backup + in số). Ghi thật: thêm cờ  --write
 import { readFileSync, writeFileSync } from 'node:fs'; import { fileURLToPath } from 'node:url'; import { dirname, join } from 'node:path'; import pg from 'pg'
 import { replayEloEvents } from '../src/gami/replay.js'
+import { seasonOf, seasonStartUtc } from '../src/gami/season.js'
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const url = readFileSync(join(root, '.env'), 'utf8').match(/^\s*DATABASE_URL\s*=\s*(.+?)\s*$/m)?.[1].replace(/^["']|["']$/g, '')
 const WRITE = process.argv.includes('--write')
+// SEASON-AWARE: chỉ replay ET của MÙA hiện tại (mặc định), để recalc TÁI TẠO đúng hard-reset đầu mùa
+// (không kéo data mùa cũ/chạy-thử tháng 7 trở lại). `--all-time` để replay xuyên mùa như đời cũ nếu cần.
+const ALL_TIME = process.argv.includes('--all-time')
+const vnToday = new Date(Date.now() + 7 * 3600 * 1000).toISOString().slice(0, 10)
+const SEASON_START = seasonStartUtc(seasonOf(vnToday)).slice(0, 10) // 'YYYY-MM-DD' đầu mùa (giờ VN)
 const c = new pg.Client({ connectionString: url }); await c.connect()
 const q = async (s, p) => (await c.query(s, p)).rows
 
@@ -22,9 +28,12 @@ console.log(`BACKUP → scripts/_backup_gami_elo_${stamp}.json (${bkElo.length} 
 console.log(`Trong history cũ: ingame=${ingameCnt} · et=${bkHist.filter(h=>h.phase==='et').length} · mt=${bkHist.filter(h=>h.phase==='mt').length}`)
 
 // ── ĐỌC facts: participants (roster từng chấm, từ history cũ) + ĐIỂM THÔ (gami_grades) ──
+// Lọc theo mùa (b.ngay >= đầu mùa) trừ khi --all-time. Đầu mùa '2026-27' = 2026-08-01.
+console.log(`Phạm vi replay: ${ALL_TIME ? 'TOÀN THỜI GIAN (--all-time)' : `mùa hiện tại (ET từ ${SEASON_START})`}`)
 const rows = await q(`select h.buoi_hoc_id, h.hoc_sinh_id, h.rank, h.rank_total, b.ngay, l.mon
   from gami_elo_history h join buoi_hoc b on b.id=h.buoi_hoc_id join lop l on l.id=b.lop_id
-  where h.phase = 'et' order by b.ngay asc, h.buoi_hoc_id asc`)
+  where h.phase = 'et' ${ALL_TIME ? '' : 'and b.ngay >= $1'} order by b.ngay asc, h.buoi_hoc_id asc`,
+  ALL_TIME ? undefined : [SEASON_START])
 const graw = await q(`select p.buoi_hoc_id, g.hoc_sinh_id, sum(g.points)::float pts
   from gami_grades g join gami_session_problems p on p.id=g.problem_id
   where p.phase='et' group by p.buoi_hoc_id, g.hoc_sinh_id`)

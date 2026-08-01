@@ -5,6 +5,7 @@ import { readFileSync } from 'node:fs'; import { fileURLToPath } from 'node:url'
 import { etRankExp, monthlyBtvnExp } from '../src/gami/exp.js'
 import { expToLevel } from '../src/gami/level.js'
 import { seasonStartUtc } from '../src/gami/season.js'
+import { SEASON } from '../src/gami/config.js'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const url = readFileSync(join(root, '.env'), 'utf8').match(/^\s*DATABASE_URL\s*=\s*(.+?)\s*$/m)?.[1].replace(/^["']|["']$/g, '')
@@ -13,8 +14,10 @@ const c = new pg.Client({ connectionString: url }); await c.connect()
 const q = async (s, p) => (await c.query(s, p)).rows
 
 const y0 = Number(MUA.split('-')[0])
+// 12 tháng của mùa, BẮT ĐẦU từ SEASON.START_MONTH (mùa '2026-27' = 8/2026 … 7/2027, tháng 6–7 là hè
+// off-season vẫn liệt kê nhưng không có buổi → EXP 0). Trước đây hardcode tháng 7 (mùa cũ START 1/7).
 const monthsOfMua = []
-for (let i = 0; i < 12; i++) { const m = 7 + i; const yy = m > 12 ? y0 + 1 : y0; const mm = ((m - 1) % 12) + 1; monthsOfMua.push(`${yy}-${String(mm).padStart(2, '0')}`) }
+for (let i = 0; i < 12; i++) { const m = SEASON.START_MONTH + i; const yy = m > 12 ? y0 + 1 : y0; const mm = ((m - 1) % 12) + 1; monthsOfMua.push(`${yy}-${String(mm).padStart(2, '0')}`) }
 
 const lops = await q(`select id, ten_lop, mon from lop where mon in ('Toán','KHTN') order by ten_lop`)
 

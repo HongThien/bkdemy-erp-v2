@@ -21,6 +21,9 @@ function startYearOf(code) { return Number(code.split('-')[0]) }
 export function seasonStartUtc(code) {
   return new Date(Date.UTC(startYearOf(code), SEASON.START_MONTH - 1, SEASON.START_DAY, -7, 0, 0)).toISOString()
 }
+// Cuối mùa = mốc END (biên MỞ) của năm-sau. Với START 1/8 · END 1/6 → mùa active [1/8 … 1/6 năm sau),
+// tức HẾT 31/5. Tháng 6–7 nằm NGOÀI [đầu-mùa-này, cuối-mùa-này] ⇒ HÈ off-season (KHÔNG liền mạch
+// với mùa kế — cố ý; xem verify_gami "gap hè").
 export function seasonEndUtc(code) {
-  return new Date(Date.UTC(startYearOf(code) + 1, SEASON.START_MONTH - 1, SEASON.START_DAY, -7, 0, 0)).toISOString()
+  return new Date(Date.UTC(startYearOf(code) + 1, SEASON.END_MONTH - 1, SEASON.END_DAY, -7, 0, 0)).toISOString()
 }

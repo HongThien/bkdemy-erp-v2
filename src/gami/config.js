@@ -60,8 +60,10 @@ export const EXP = {
 }
 
 // ── SEASON (niên khóa) — EXP/Level reset mỗi mùa; huy hiệu/thành tựu giữ vĩnh viễn ──
-// Mùa = niên khóa, bắt đầu 1/7 (giờ VN), khớp chu kỳ lên lớp + khai giảng. Mã mùa = 'YYYY-YY'.
-export const SEASON = { START_MONTH: 7, START_DAY: 1 }
+// Mùa = niên khóa, bắt đầu 1/8 (giờ VN) và CHỐT CỨNG kết mùa 31/5 năm sau → tháng 6–7 là HÈ
+// off-season (không buổi ⇒ ELO đứng yên). Mã mùa = 'YYYY-YY'. (Tháng 7/2026 = đợt chạy thử, thuộc
+// mùa cũ '2025-26', đã backup + hard-reset trước khi mùa '2026-27' bắt đầu 1/8/2026.)
+export const SEASON = { START_MONTH: 8, START_DAY: 1, END_MONTH: 6, END_DAY: 1 }
 
 // ── LEVEL — hàm thuần của EXP-TÍCH-LUỸ-TRONG-MÙA (per-môn). 21 mốc. ──
 // Calibrate 07-28 với data THẬT (9A1/T7 model EXP mới): TB ~4900 EXP/HS/tháng → mùa ~9 tháng

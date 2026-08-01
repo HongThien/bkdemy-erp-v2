@@ -1300,6 +1300,27 @@ export async function getThanhTich(hocSinhId: string): Promise<ThanhTich> {
   return { season, seasonLabel: seasonLabel(season), mons }
 }
 
+// ── BẢNG ELO + EXP tháng của cả roster (đầu buổi chiếu cho HS xem) — PURE-DERIVE, 2 query batch. ──
+// ELO = mốc HIỆN TẠI (gami_elo, thiếu dòng → 1000). EXP tháng = Σ ledger tháng này (đúng bộ lọc
+// getLevelXu: loại legacy rank_*/btvn, chỉ tính exp_thang/attend_floor của THÁNG hiện tại). Scope MÔN.
+export type EloExpRow = { hoc_sinh_id: string; elo: number; expThang: number }
+export async function getBangEloExp(hocSinhIds: string[], mon: string): Promise<EloExpRow[]> {
+  const ids = [...new Set(hocSinhIds.filter(Boolean))]
+  if (!ids.length) return []
+  // Đầu tháng VN → instant UTC ISO (so created_at). Date.UTC -7h = VN-midnight (§2, không toISOString ngày-local).
+  const v = new Date(Date.now() + 7 * 3600 * 1000)
+  const monthStart = new Date(Date.UTC(v.getUTCFullYear(), v.getUTCMonth(), 1, -7, 0, 0)).toISOString()
+  const [eloR, expR] = await Promise.all([
+    supabase.from('gami_elo').select('hoc_sinh_id, elo').eq('mon', mon).in('hoc_sinh_id', ids).limit(LIMIT),
+    supabase.from('gami_exp_ledger').select('hoc_sinh_id, amount').eq('mon', mon).in('hoc_sinh_id', ids)
+      .gte('created_at', monthStart).not('source', 'in', '(rank_et,rank_ingame,rank_mt,btvn)').limit(LIMIT),
+  ])
+  const eloMap = new Map(((eloR.data ?? []) as any[]).map((e) => [e.hoc_sinh_id, Number(e.elo)]))
+  const expMap = new Map<string, number>()
+  for (const r of (expR.data ?? []) as any[]) expMap.set(r.hoc_sinh_id, (expMap.get(r.hoc_sinh_id) ?? 0) + Number(r.amount))
+  return ids.map((id) => ({ hoc_sinh_id: id, elo: eloMap.get(id) ?? 1000, expThang: expMap.get(id) ?? 0 }))
+}
+
 // ── GHIM thành tích thi đấu khoe (ADR §6): HS tự chọn ≤4 loại; chưa ghim → UI dùng gợi ý. ──
 // PK (hoc_sinh_id, mon, loai_key); thu_tu = thứ tự hiển thị.
 export async function getThanhTichGhim(hocSinhId: string, mon: string): Promise<string[]> {

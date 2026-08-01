@@ -713,7 +713,7 @@ export function CauEditor({ item, label, onChange, onToggle, fill }: {
           <div className="flex min-h-0 flex-1 flex-col">
             <label className={lbl}>Đáp án chi tiết</label>
             <div className="mb-1.5"><ImageSlot url={item.anhDapAn} label="Ảnh giải" onChange={(v) => onChange({ anhDapAn: v })} /></div>
-            <textarea value={item.loi_giai} onChange={(e) => onChange({ loi_giai: e.target.value })} className={`${inp} min-h-0 flex-1 resize-none leading-relaxed`} />
+            <SolutionField value={item.loi_giai} onChange={(v) => onChange({ loi_giai: v })} wrapClassName="min-h-0 flex-1" taClassName={`${inp} min-h-0 flex-1 resize-none leading-relaxed`} />
           </div>
         </div>
       </div>
@@ -727,12 +727,12 @@ export function CauEditor({ item, label, onChange, onToggle, fill }: {
       {hasOpts ? (
         <>
           <div className="mt-2">{optsEdit}</div>
-          <div className="mt-2"><label className={lbl}>Đáp án chi tiết</label><textarea value={item.loi_giai} onChange={(e) => onChange({ loi_giai: e.target.value })} className={`${ta} min-h-[44px]`} /></div>
+          <div className="mt-2"><label className={lbl}>Đáp án chi tiết</label><SolutionField value={item.loi_giai} onChange={(v) => onChange({ loi_giai: v })} taClassName={`${ta} min-h-[44px]`} /></div>
         </>
       ) : (
         <div className="mt-2 grid grid-cols-2 gap-3">
           <div><label className={lbl}>Đáp án</label><input value={item.dap_an} onChange={(e) => onChange({ dap_an: e.target.value })} className={inp} /></div>
-          <div><label className={lbl}>Đáp án chi tiết</label><textarea value={item.loi_giai} onChange={(e) => onChange({ loi_giai: e.target.value })} className={`${ta} min-h-[44px]`} /></div>
+          <div><label className={lbl}>Đáp án chi tiết</label><SolutionField value={item.loi_giai} onChange={(v) => onChange({ loi_giai: v })} taClassName={`${ta} min-h-[44px]`} /></div>
         </div>
       )}
     </div>
@@ -763,6 +763,47 @@ function AutoTextarea({ value, onChange, className, maxPx }: { value: string; on
     el.style.height = `${Math.min(el.scrollHeight, maxPx ?? 100000)}px`
   }, [value, maxPx])
   return <textarea ref={ref} rows={1} value={value} onChange={(e) => onChange(e.target.value)} className={className} />
+}
+
+// Ô "Đáp án chi tiết" (lời giải) + CHÈN ẢNH INLINE: upload / dán clipboard / cắt-PDF → chèn markdown
+// ![](url) NGAY TẠI CON TRỎ trong lời giải. MathText render ![](url) sẵn (màn + preview) → hình hiện
+// thẳng trong bài giải. Dùng khi clone bài có hình rồi bổ sung hình vào lời giải sau ("upload ảnh xong
+// lấy link đặt vào bài giải"). Chèn được NHIỀU hình, ở bất kỳ vị trí nào trong lời giải.
+function SolutionField({ value, onChange, taClassName, wrapClassName }: { value: string; onChange: (v: string) => void; taClassName: string; wrapClassName?: string }) {
+  const taRef = useRef<HTMLTextAreaElement>(null)
+  const fileRef = useRef<HTMLInputElement>(null)
+  const [busy, setBusy] = useState(false)
+  const [crop, setCrop] = useState(false)
+  const insert = async (f: File | null | undefined) => {
+    if (!f || !f.type.startsWith('image/')) return
+    setBusy(true)
+    try {
+      const u = await uploadKhoImage(f)
+      const ta = taRef.current
+      const a = ta?.selectionStart ?? value.length, b = ta?.selectionEnd ?? value.length
+      onChange(value.slice(0, a) + `\n![](${u})\n` + value.slice(b))
+    } catch (e: any) { alert('Upload ảnh lỗi: ' + (e?.message ?? e)) }
+    finally { setBusy(false); setCrop(false) }
+  }
+  const pasteClip = async () => {
+    try { const f = await readClipboardImageFile(); if (f) void insert(f); else alert('Clipboard không có ảnh — copy ảnh trước.') }
+    catch (e: any) { alert(e?.message ?? String(e)) }
+  }
+  const btn = 'inline-flex items-center gap-1 whitespace-nowrap rounded-md border border-dashed border-slate-300 px-2 py-0.5 text-[12px] font-medium text-slate-400 transition hover:border-indigo-400 hover:text-indigo-500 disabled:opacity-60'
+  return (
+    <div className={`flex min-h-0 flex-col ${wrapClassName ?? ''}`}>
+      <div className="mb-1 flex flex-wrap items-center gap-1">
+        <button type="button" onClick={() => !busy && fileRef.current?.click()} disabled={busy} title="Upload ảnh → chèn ![](url) vào lời giải tại con trỏ" className={btn}>{busy ? '⏳ Đang chèn…' : '🖼 Chèn ảnh'}</button>
+        <button type="button" onClick={() => !busy && pasteClip()} disabled={busy} title="Dán ảnh từ clipboard (Ctrl+V)" className={btn}>📋 Dán</button>
+        <button type="button" onClick={() => !busy && setCrop(true)} disabled={busy} title="Cắt hình từ PDF/ảnh (render DPI cao)" className={btn}>✂️ Cắt PDF</button>
+      </div>
+      <textarea ref={taRef} value={value} onChange={(e) => onChange(e.target.value)}
+        onPaste={(e) => { const f = Array.from(e.clipboardData.files).find((x) => x.type.startsWith('image/')); if (f) { e.preventDefault(); e.stopPropagation(); void insert(f) } }}
+        className={taClassName} />
+      <input ref={fileRef} type="file" accept="image/*" hidden onChange={(e) => { void insert(e.target.files?.[0]); e.target.value = '' }} />
+      {crop && <PdfCropper title="Cắt hình chèn vào lời giải" onClose={() => setCrop(false)} onCrop={async (f) => { await insert(f) }} />}
+    </div>
+  )
 }
 
 // Ảnh đề/đáp án: click chọn file HOẶC bấm vào ô rồi Ctrl+V dán ảnh → UPLOAD Supabase Storage, DB chỉ lưu URL.

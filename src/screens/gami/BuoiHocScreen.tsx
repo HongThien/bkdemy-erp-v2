@@ -8,8 +8,8 @@ import {
   loadBTVNForBuoi, syncBTVNProblems, getBtvnKetQua, setBtvnKetQua, listCanhBao, themCanhBao, xoaCanhBao, closeBTVN, reopenBTVN,
   type BtvnKQ, type CanhBao, type BtvnTrangThai, type BtvnThaiDo,
   getDanhGia, setDanhGiaDang, setNhanXet, setHoanThanhPct, HOAN_THANH_PCT_OPTS, dongDanhGia, moLaiDanhGia, setNoiDungBuoi,
-  loadLiveTestForBuoi, getDangTen, loadMTForBuoi, syncMTProblems,
-  type BuoiAo, type BuoiTim, type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type Phase, type DiemDanh, type DanhGiaHS, type DanhGiaDiem, type TabKey, type ETResult, type LuoiSync,
+  loadLiveTestForBuoi, getDangTen, loadMTForBuoi, syncMTProblems, getBangEloExp,
+  type BuoiAo, type BuoiTim, type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type Phase, type DiemDanh, type DanhGiaHS, type DanhGiaDiem, type TabKey, type ETResult, type LuoiSync, type EloExpRow,
 } from '../../lib/gami'
 import { getLiveSnapshot, type BaiTest, type BaiTestCau, type BaiLam, type LiveAnswer } from '../../lib/testonline'
 import type { MTPhanCaus } from '../../lib/mt'
@@ -269,7 +269,7 @@ export function BuoiDetail({ id, onClose, tabs, initialTab, canManage = true, on
   const [dangOpts, setDangOpts] = useState<DangOpt[]>([])
   // 'live' KHÔNG phải TabKey (đó là task-scope engine getMyTasks/dashboard — xem live không phải "task"
   // có deadline/nghiệm thu) → chỉ mở rộng union CỤC BỘ ở đây, không đụng TabKey dùng chung.
-  const [tab, setTab] = useState<TabKey | 'live'>(initialTab ?? tabs?.[0] ?? 'diemdanh')
+  const [tab, setTab] = useState<TabKey | 'live' | 'daubuoi'>(initialTab ?? tabs?.[0] ?? 'diemdanh')
   const isMobile = useIsMobile()
 
   async function reload() {
@@ -334,8 +334,11 @@ export function BuoiDetail({ id, onClose, tabs, initialTab, canManage = true, on
             {([['diemdanh', `Điểm danh (${soCoMat}/${roster.length})`], ['danhgia', 'Đánh giá sau buổi'], ['ingame', 'Chấm bài trên lớp'], ['et', 'ET'], ['btvn', 'BTVN'], ['mt', '🏆 MT']] as const).filter(([k]) => !tabs || tabs.includes(k)).map(([k, lbl]) => (
               <button key={k} onClick={() => setTab(k as any)} className={`-mb-px shrink-0 whitespace-nowrap border-b-2 px-3 py-2 text-[13px] font-medium ${tab === k ? 'border-indigo-600 text-indigo-700' : 'border-transparent text-slate-500 hover:text-slate-700'}`}>{lbl}</button>
             ))}
-            {/* "Xem live" không phải task-scope tab (không có deadline/nghiệm thu) → chỉ hiện ở view ĐỦ (tabs=undefined,
-                giống Ops/admin/GV-lớp-mình mở từ "Buổi học"), KHÔNG hiện khi mở từ task 1-tab của "Việc của tôi". */}
+            {/* "ELO & EXP" + "Xem live" KHÔNG phải task-scope tab (không có deadline/nghiệm thu) → chỉ hiện ở view ĐỦ
+                (tabs=undefined, giống Ops/admin/GV-lớp-mình mở từ "Buổi học"), KHÔNG hiện khi mở từ task 1-tab của "Việc của tôi". */}
+            {!tabs && (
+              <button onClick={() => setTab('daubuoi')} className={`-mb-px shrink-0 whitespace-nowrap border-b-2 px-3 py-2 text-[13px] font-medium ${tab === 'daubuoi' ? 'border-indigo-600 text-indigo-700' : 'border-transparent text-slate-500 hover:text-slate-700'}`}>🏆 ELO &amp; EXP</button>
+            )}
             {!tabs && (
               <button onClick={() => setTab('live')} className={`-mb-px shrink-0 whitespace-nowrap border-b-2 px-3 py-2 text-[13px] font-medium ${tab === 'live' ? 'border-indigo-600 text-indigo-700' : 'border-transparent text-slate-500 hover:text-slate-700'}`}>👁 Xem live</button>
             )}
@@ -353,10 +356,122 @@ export function BuoiDetail({ id, onClose, tabs, initialTab, canManage = true, on
               ? <MTTab buoiId={id} roster={roster} buoi={buoi} onChange={reload} />
               : tab === 'live'
               ? <LiveTab buoiId={id} roster={roster} />
+              : tab === 'daubuoi'
+              ? <EloExpTab roster={roster} mon={(buoi as any).lop?.mon ?? ''} tenLop={(buoi as any).lop?.ten_lop ?? ''} />
               : <ChamTab buoiId={id} phase="ingame" roster={roster} buoi={buoi} dangOpts={dangOpts} onChange={reload} />}
           </div>
         </>
       )}
+    </div>
+  )
+}
+
+// ── 🏆 ELO & EXP đầu buổi: bảng số liệu HIỆN TẠI của cả lớp, chiếu cho HS xem (ELO qua ET, EXP qua
+// BTVN — cập nhật ngầm nên HS không tự biết). Chỉ HIỂN THỊ (pure-derive), không sửa gì. Có "Trình chiếu".
+type EloExpView = { hoc_sinh_id: string; ten: string; elo: number; expThang: number; rank: number }
+const MEDAL = (r: number) => (r === 1 ? '🥇' : r === 2 ? '🥈' : r === 3 ? '🥉' : null)
+
+function EloExpTab({ roster, mon, tenLop }: { roster: BuoiHocHS[]; mon: string; tenLop: string }) {
+  const [rows, setRows] = useState<EloExpView[] | null>(null)
+  const [err, setErr] = useState<string | null>(null)
+  const [chieu, setChieu] = useState(false)
+
+  useEffect(() => {
+    let live = true
+    setRows(null); setErr(null)
+    const ids = roster.map((r) => r.hoc_sinh_id)
+    const tenHT = tenHienThiDs(roster.map((r) => r.hoc_sinh?.ho_ten))
+    const tenById = new Map(roster.map((r, i) => [r.hoc_sinh_id, tenHT[i]]))
+    getBangEloExp(ids, mon)
+      .then((data: EloExpRow[]) => {
+        if (!live) return
+        const sorted = [...data].sort((a, b) => b.elo - a.elo || b.expThang - a.expThang)
+        setRows(sorted.map((d, i) => ({ hoc_sinh_id: d.hoc_sinh_id, ten: tenById.get(d.hoc_sinh_id) ?? '?', elo: d.elo, expThang: d.expThang, rank: i + 1 })))
+      })
+      .catch((e: any) => { if (live) setErr(e.message ?? String(e)) })
+    return () => { live = false }
+  }, [roster, mon])
+
+  // Esc thoát trình chiếu.
+  useEffect(() => {
+    if (!chieu) return
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setChieu(false) }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [chieu])
+
+  if (err) return <p className="text-[13px] text-rose-600">Lỗi tải ELO/EXP: {err}</p>
+  if (!rows) return <p className="text-[13px] text-slate-400">Đang tải bảng ELO & EXP…</p>
+  if (!rows.length) return <p className="text-[13px] text-slate-400">Lớp chưa có HS trong buổi này.</p>
+
+  return (
+    <div>
+      <div className="mb-3 flex flex-wrap items-center gap-2">
+        <span className="text-[13px] font-semibold text-slate-700">Bảng ELO &amp; EXP hiện tại</span>
+        <span className="text-[12px] text-slate-400">{tenLop}{mon ? ` · ${mon}` : ''} · {rows.length} HS · số cập nhật qua ET (ELO) &amp; BTVN (EXP tháng).</span>
+        <button onClick={() => setChieu(true)} className="ml-auto rounded-md bg-slate-900 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-slate-700">⛶ Trình chiếu</button>
+      </div>
+      <EloExpBang rows={rows} />
+      {chieu && createPortal(<EloExpChieu rows={rows} tenLop={tenLop} mon={mon} onClose={() => setChieu(false)} />, document.body)}
+    </div>
+  )
+}
+
+// Bảng thường (trong tab).
+function EloExpBang({ rows }: { rows: EloExpView[] }) {
+  return (
+    <div className="overflow-hidden rounded-xl border border-slate-200">
+      <table className="w-full border-collapse text-sm">
+        <thead>
+          <tr className="bg-slate-100 text-[12px] font-semibold text-slate-600">
+            <th className="w-16 px-3 py-2 text-center">Hạng</th>
+            <th className="px-3 py-2 text-left">Học sinh</th>
+            <th className="w-28 px-3 py-2 text-right">ELO</th>
+            <th className="w-32 px-3 py-2 text-right">EXP tháng</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((r) => (
+            <tr key={r.hoc_sinh_id} className="border-t border-slate-100">
+              <td className="px-3 py-2 text-center font-semibold text-slate-500 tabular-nums">{MEDAL(r.rank) ?? r.rank}</td>
+              <td className="px-3 py-2 font-medium text-slate-800">{r.ten}</td>
+              <td className="px-3 py-2 text-right font-bold text-indigo-600 tabular-nums">{r.elo}</td>
+              <td className="px-3 py-2 text-right font-semibold text-amber-600 tabular-nums">{r.expThang.toLocaleString('vi-VN')}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
+}
+
+// Chế độ TRÌNH CHIẾU — full-screen nền tối, chữ to, chiếu máy chiếu cho cả lớp. Esc / ✕ thoát.
+function EloExpChieu({ rows, tenLop, mon, onClose }: { rows: EloExpView[]; tenLop: string; mon: string; onClose: () => void }) {
+  return (
+    <div className="fixed inset-0 z-[60] overflow-auto bg-gradient-to-b from-slate-900 to-slate-950 text-white">
+      <div className="mx-auto max-w-4xl px-6 py-8 sm:py-12">
+        <div className="mb-6 flex items-center gap-3">
+          <span className="text-3xl">🏆</span>
+          <div>
+            <div className="text-2xl font-extrabold tracking-tight sm:text-3xl">Bảng xếp hạng lớp {tenLop}</div>
+            <div className="text-sm text-slate-400">{mon ? `${mon} · ` : ''}ELO (qua ET) &amp; EXP tháng (qua BTVN)</div>
+          </div>
+          <button onClick={onClose} className="ml-auto rounded-lg border border-white/20 px-4 py-2 text-sm font-medium text-slate-200 hover:bg-white/10">✕ Đóng (Esc)</button>
+        </div>
+        <div className="grid grid-cols-[auto_1fr_auto_auto] items-center gap-x-4 rounded-2xl border border-white/10 bg-white/5 px-5 py-3 text-[13px] font-semibold uppercase tracking-wide text-slate-400 sm:text-sm">
+          <span className="text-center">Hạng</span><span>Học sinh</span><span className="text-right">ELO</span><span className="text-right">EXP tháng</span>
+        </div>
+        <div className="mt-2 space-y-2">
+          {rows.map((r) => (
+            <div key={r.hoc_sinh_id} className={`grid grid-cols-[auto_1fr_auto_auto] items-center gap-x-4 rounded-2xl border px-5 py-4 ${r.rank <= 3 ? 'border-amber-400/40 bg-amber-400/10' : 'border-white/10 bg-white/5'}`}>
+              <span className="w-12 text-center text-2xl font-extrabold tabular-nums sm:text-3xl">{MEDAL(r.rank) ?? r.rank}</span>
+              <span className="truncate text-lg font-bold sm:text-2xl">{r.ten}</span>
+              <span className="text-right text-xl font-extrabold text-indigo-300 tabular-nums sm:text-3xl">{r.elo}</span>
+              <span className="text-right text-lg font-bold text-amber-300 tabular-nums sm:text-2xl">{r.expThang.toLocaleString('vi-VN')}</span>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   )
 }
