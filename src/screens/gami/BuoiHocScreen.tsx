@@ -7,7 +7,7 @@ import {
   loadETForBuoi, syncDocProblems, xepLuoiTheoDe, gradeET, deleteGrade, reopenPhase,
   loadBTVNForBuoi, syncBTVNProblems, getBtvnKetQua, setBtvnKetQua, listCanhBao, themCanhBao, xoaCanhBao, closeBTVN, reopenBTVN,
   type BtvnKQ, type CanhBao, type BtvnTrangThai, type BtvnThaiDo,
-  getDanhGia, setDanhGiaDang, setNhanXet, setHoanThanhPct, HOAN_THANH_PCT_OPTS, dongDanhGia, moLaiDanhGia, setNoiDungBuoi,
+  getDanhGia, setDanhGiaDang, setNhanXet, setMuc, MUC_OPTS, MUC_LABELS, dongDanhGia, moLaiDanhGia, setNoiDungBuoi,
   loadLiveTestForBuoi, getDangTen, loadMTForBuoi, syncMTProblems, getBangEloExp,
   type BuoiAo, type BuoiTim, type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type Phase, type DiemDanh, type DanhGiaHS, type DanhGiaDiem, type TabKey, type ETResult, type LuoiSync, type EloExpRow,
 } from '../../lib/gami'
@@ -1052,7 +1052,7 @@ function EtAnhGuiPH({ buoiId, coMat, probs, gradeOf, buoi, onClose }: {
     return { short, phanBiet: trung && conLai ? conLai : null }
   })
   const coNhanXet = coMat.some((r) => !!dg[r.hoc_sinh_id]?.nhan_xet?.trim())
-  const coHoanThanh = coMat.some((r) => dg[r.hoc_sinh_id]?.hoanThanhPct != null)
+  const coHoanThanh = coMat.some((r) => dg[r.hoc_sinh_id]?.muc != null)
   // Câu kết luận (Thùy 07-19): HS có ≥1 câu C/S (chưa đạt) → nêu tên (2 chữ cuối) nhắc làm lại/chép lại đáp
   // án. "có thì hiện không thì thôi" — buổi cả lớp toàn Đ thì khỏi câu này.
   const canLamLai = coMat
@@ -1184,7 +1184,7 @@ async function copyImg(){
               <tbody>
                 {coMat.map((r, i) => {
                   const nx = dg[r.hoc_sinh_id]?.nhan_xet?.trim()
-                  const pct = dg[r.hoc_sinh_id]?.hoanThanhPct
+                  const muc = dg[r.hoc_sinh_id]?.muc
                   return (
                     <tr key={r.id} style={{ borderBottom: '1px solid #e7ddc9' }}>
                       {/* Tên HS: 2 chữ cuối, 1 dòng; nếu trùng "2 chữ cuối" với HS khác trong lớp → thêm dòng
@@ -1219,8 +1219,8 @@ async function copyImg(){
                       )}
                       {/* % tách cột riêng ở CUỐI bảng (Thùy 07-19 lần 3). */}
                       {coHoanThanh && (
-                        <td style={{ padding: '6px 4px', textAlign: 'center', fontWeight: 700, color: '#c8792a', verticalAlign: 'top' }}>
-                          {pct != null ? `${pct}%` : <span style={{ color: '#c9bfa6', fontWeight: 400 }}>–</span>}
+                        <td style={{ padding: '6px 4px', textAlign: 'center', fontWeight: 700, color: '#c8792a', verticalAlign: 'top', whiteSpace: 'nowrap' }}>
+                          {muc != null ? `Mức ${muc}` : <span style={{ color: '#c9bfa6', fontWeight: 400 }}>–</span>}
                         </td>
                       )}
                     </tr>
@@ -1238,7 +1238,7 @@ async function copyImg(){
                 </span>
               ))}
               {/* Chú thích % hoàn thành (Thùy 07-19 lần 2: đổi câu mẫu số cụ thể "80%..." cho dễ hiểu hơn câu định nghĩa chung chung) — chỉ hiện khi có ít nhất 1 HS có %. */}
-              {coHoanThanh && <div style={{ marginTop: 4 }}>80% thể hiện rằng con đáp ứng được 80% mục tiêu của buổi học.</div>}
+              {coHoanThanh && <div style={{ marginTop: 4, lineHeight: 1.5 }}>Mức buổi: 5 = làm đúng &amp; nhanh · 4 = đúng, chưa nhanh/sai ít · 3 = không ổn định, sai nhiều · 2 = cần hướng dẫn · 1 = chưa tư duy được cách làm.</div>}
             </div>
             {/* Câu kết luận nhắc làm lại/chép lại đáp án (Thùy 07-19) — CHỈ hiện nếu có ≥1 HS có câu C/S.
                 Thêm nhãn "Việc cần làm" (Thùy 07-19 lần 2) — phân biệt rõ với khối chú thích phía trên,
@@ -1732,14 +1732,14 @@ function DanhGiaTab({ buoiId, roster, dangOpts, buoi, onChange }: { buoiId: stri
 
   async function setDiem(hsId: string, maDang: string, cur: DanhGiaDiem | undefined, val: DanhGiaDiem) {
     const next: DanhGiaDiem | null = cur === val ? null : val // bấm lại = bỏ chọn (về chưa-đánh-giá)
-    setData((d) => { const hs = d[hsId] ?? { hoc_sinh_id: hsId, nhan_xet: null, hoanThanhPct: null, diemTheoDang: {} }; const dd = { ...hs.diemTheoDang }; if (next === null) delete dd[maDang]; else dd[maDang] = next; return { ...d, [hsId]: { ...hs, diemTheoDang: dd } } })
+    setData((d) => { const hs = d[hsId] ?? { hoc_sinh_id: hsId, nhan_xet: null, hoanThanhPct: null, muc: null, diemTheoDang: {} }; const dd = { ...hs.diemTheoDang }; if (next === null) delete dd[maDang]; else dd[maDang] = next; return { ...d, [hsId]: { ...hs, diemTheoDang: dd } } })
     try { await setDanhGiaDang(buoiId, hsId, maDang, next) } catch (e: any) { alert(e.message ?? String(e)); reload() }
   }
   async function saveNX(hsId: string, txt: string) { try { await setNhanXet(buoiId, hsId, txt) } catch (e: any) { alert(e.message ?? String(e)) } }
-  async function saveHT(hsId: string, v: string) {
-    const pct = v === '' ? null : Number(v)
-    setData((d) => { const hs = d[hsId] ?? { hoc_sinh_id: hsId, nhan_xet: null, hoanThanhPct: null, diemTheoDang: {} }; return { ...d, [hsId]: { ...hs, hoanThanhPct: pct } } })
-    try { await setHoanThanhPct(buoiId, hsId, pct) } catch (e: any) { alert(e.message ?? String(e)); reload() }
+  async function saveMuc(hsId: string, v: string) {
+    const muc = v === '' ? null : Number(v)
+    setData((d) => { const hs = d[hsId] ?? { hoc_sinh_id: hsId, nhan_xet: null, hoanThanhPct: null, muc: null, diemTheoDang: {} }; return { ...d, [hsId]: { ...hs, muc } } })
+    try { await setMuc(buoiId, hsId, muc) } catch (e: any) { alert(e.message ?? String(e)); reload() }
   }
   // Nội dung buổi học (hiện trên ảnh gửi PH) + Mô tả (nội bộ) — CẤP BUỔI, không riêng từng HS. Chuỗi rỗng → null (anti-NULL: "chưa nhập").
   async function saveND(txt: string) { try { await setNoiDungBuoi(buoiId, { noi_dung_buoi: txt.trim() || null }); onChange() } catch (e: any) { alert(e.message ?? String(e)) } }
@@ -1780,7 +1780,7 @@ function DanhGiaTab({ buoiId, roster, dangOpts, buoi, onChange }: { buoiId: stri
             <tr className="bg-slate-100">
               <th className="sticky left-0 top-0 z-30 border border-slate-200 bg-slate-100 px-3 py-2 text-left text-[12px] font-semibold text-slate-700">Học sinh</th>
               {dangs.map((md) => <th key={md} className="sticky top-0 z-10 min-w-[160px] border border-slate-200 bg-slate-100 px-3 py-2 text-left text-[12px] font-semibold text-slate-700"><div className="max-w-[200px] truncate" title={tenDang(md)}>{tenDang(md)}</div></th>)}
-              <th className="sticky top-0 z-10 border border-slate-200 bg-slate-100 px-3 py-2 text-left text-[12px] font-semibold text-slate-700" title="Ước lượng thô — hiện trên ảnh gửi PH nếu có HS nào được chọn">Hoàn thành buổi</th>
+              <th className="sticky top-0 z-10 border border-slate-200 bg-slate-100 px-3 py-2 text-left text-[12px] font-semibold text-slate-700" title="Mức 1–5 GV chấm — hiện trên ảnh gửi PH & app phụ huynh">Mức buổi</th>
               <th className="sticky top-0 z-10 border border-slate-200 bg-slate-100 px-3 py-2 text-left text-[12px] font-semibold text-slate-700">Nhận xét</th>
             </tr>
           </thead>
@@ -1811,10 +1811,10 @@ function DanhGiaTab({ buoiId, roster, dangOpts, buoi, onChange }: { buoiId: stri
                     )
                   })}
                   <td className="border border-slate-200 px-3 py-2">
-                    <select value={hs?.hoanThanhPct ?? ''} onChange={(e) => saveHT(hsId, e.target.value)} disabled={xong}
-                      className="h-8 w-24 rounded-md border border-slate-200 px-1.5 text-[12px] disabled:bg-slate-50 disabled:text-slate-500">
+                    <select value={hs?.muc ?? ''} onChange={(e) => saveMuc(hsId, e.target.value)} disabled={xong} title={hs?.muc ? MUC_LABELS[hs.muc] : undefined}
+                      className="h-8 w-40 rounded-md border border-slate-200 px-1.5 text-[12px] disabled:bg-slate-50 disabled:text-slate-500">
                       <option value="">— chưa chọn —</option>
-                      {HOAN_THANH_PCT_OPTS.map((p) => <option key={p} value={p}>{p}%</option>)}
+                      {MUC_OPTS.map((m) => <option key={m} value={m} title={MUC_LABELS[m]}>Mức {m} · {MUC_LABELS[m]}</option>)}
                     </select>
                   </td>
                   <td className="border border-slate-200 px-3 py-2">
