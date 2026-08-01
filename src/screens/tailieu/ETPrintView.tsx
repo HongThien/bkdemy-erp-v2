@@ -9,7 +9,7 @@ import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
 import { getTaiLieuFull, etGroupOf, khoCuaMon, type ETGroup, type TaiLieuFull, type CauHinh } from '../../lib/tailieu'
 import { fetchCausByMa } from '../../lib/ontap'
-import { BK_CSS, BkFooter } from './bkPrint'
+import { BK_CSS, BK_PAGE_CSS } from './bkPrint'
 import type { CauHoi } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
 import { CauItem, OptGrid, GvAnswer, WriteLines, splitStem, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChrome, printWithFilename } from './PrintView'
@@ -71,7 +71,7 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
     const ch = kieu === 'bk' ? { ...ch0, header: 'none' as const, footer: 'none' as const } : ch0
     // BK: accent XANH LAM (chữ Phần/Câu theo tông BK) + kéo lề trên lên (đã bỏ header) + border đậm hơn.
     const accent = kieu === 'bk' ? '#3b5bd8' : (ch.mau || '#7c3aed')
-    const css = buildPagedCss(full.taiLieu, ch, accent) + ET_CSS + BK_CSS + (kieu === 'bk' ? ET_CSS_BK : '')
+    const css = buildPagedCss(full.taiLieu, ch, accent) + ET_CSS + BK_CSS + (kieu === 'bk' ? BK_PAGE_CSS : '')
     const cssUrl = URL.createObjectURL(new Blob([css], { type: 'text/css' }))
     const html = srcRef.current.innerHTML
     // Race-safe: KHÔNG xoá DOM của container cũ — nếu Previewer của nó còn đang đo layout dở (paged.js
@@ -265,7 +265,6 @@ function ETDoc({ ten, caus, ch, gv, badge, hoTen, kieu }: { ten: string; caus: C
         </section>
       ))}
       {caus.length === 0 && <p className="pv-empty">ET chưa có câu nào.</p>}
-      <BkFooter />
     </div>
   )
   return (
@@ -394,6 +393,4 @@ const ET_CSS = `
 .pv-de-break{break-before:page}
 `
 
-// CSS pv-bkh (đầu phiếu BK) DÙNG CHUNG ở bkPrint.ts (BK_CSS). Đây chỉ còn override cấp trang khi bật BK:
-// đã bỏ header/footer chrome → lề 4 phía HẸP (in PHIẾU, không phải sách) ~1/2 lề cũ.
-const ET_CSS_BK = `@page{margin:8mm 10mm 18mm;@bottom-center{content:element(bkfoot)}}`
+// CSS pv-bkh (đầu phiếu BK) + @page/footer BK dùng chung ở bkPrint.ts (BK_CSS + BK_PAGE_CSS).

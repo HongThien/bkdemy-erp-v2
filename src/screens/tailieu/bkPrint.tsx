@@ -29,14 +29,14 @@ export const BK_CSS = `
 .pv-bkh-qno{margin-bottom:6px;color:var(--navy);font-size:10.5px;font-weight:800;white-space:nowrap}
 .pv-bkh-status{display:flex;justify-content:center;gap:4px}
 .pv-bkh-circle{display:grid;place-items:center;width:20px;height:20px;border:2px solid #b3bbca;border-radius:50%;color:#737d91;font-size:9px;font-weight:900;line-height:1}
-/* FOOTER BK — 3 mục Đơn vị · Điện thoại · Địa chỉ, vạch gradient dọc bên trái. RUNNING ELEMENT: paged.js
-   nhấc ra khỏi luồng, ghim vào LỀ DƯỚI mọi trang (@bottom-center) → không rơi sang trang sau. */
-.pv-bkf{position:running(bkfoot);overflow:hidden;display:grid;grid-template-columns:1.15fr .8fr 1.35fr;align-items:center;width:100%;border:1.5px solid #c2cbdb;border-radius:16px;background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-.pv-bkf::before{content:"";position:absolute;inset:0 auto 0 0;width:5px;background:linear-gradient(180deg,#4c6fff,#c89b52)}
-.pv-bkf-item{position:relative;padding:9px 16px;min-height:32px;display:flex;align-items:center;justify-content:center}
-.pv-bkf-item:first-child{padding-left:20px}
-.pv-bkf-item:not(:last-child)::after{content:"";position:absolute;top:8px;right:0;bottom:8px;width:1.5px;background:#c9d2e0}
-.pv-bkf-val{color:#172033;font-size:12.5px;font-weight:800;line-height:1.3;text-align:center}
+`
+
+// @page cho kiểu BK: lề hẹp (in PHIẾU) + FOOTER full-width ghim ĐÁY MỌI TRANG bằng pseudo ::after trên
+// .pagedjs_pagebox (đúng cơ chế footer chrome cũ → NGANG cuối trang, không rơi sang trang sau). 3 giá trị,
+// đậm, căn giữa, cách nhau bằng "·". Chỉ dùng khi bật kiểu BK (append riêng, không đụng in giáo trình).
+export const BK_PAGE_CSS = `
+@page{margin:8mm 10mm 16mm}
+.pagedjs_pagebox::after{content:"CLB Toán học BK Academy      ·      0963.209.309      ·      Số 17A10 KĐT Geleximco";position:absolute;left:10mm;right:10mm;bottom:4mm;height:9mm;display:flex;align-items:center;justify-content:center;border:1.5px solid #c2cbdb;border-radius:11px;background:#fff;color:#172033;font-weight:800;font-size:11.5px;white-space:pre;z-index:2;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 `
 
 // Đầu phiếu BTVN kiểu BK — như ET nhưng: nhãn "BTVN", tiêu đề = tên buổi, meta = Ngày phát / Ngày nộp,
@@ -67,17 +67,6 @@ export function BtvnBkHead({ buoiTitle, ngayPhat, ngayNop, lopTen, hoTen, gv }: 
           <div className="pv-bkh-field"><div className="pv-bkh-flbl">Điểm</div><div className="pv-bkh-fval">&nbsp;</div></div>
         </div>
       )}
-    </div>
-  )
-}
-
-// Footer BK — thông tin liên hệ, dùng chung ET + BTVN (đặt cuối mỗi phiếu kiểu BK).
-export function BkFooter() {
-  return (
-    <div className="pv-bkf">
-      <div className="pv-bkf-item"><div className="pv-bkf-val">CLB Toán học BK Academy</div></div>
-      <div className="pv-bkf-item"><div className="pv-bkf-val">0963.209.309</div></div>
-      <div className="pv-bkf-item"><div className="pv-bkf-val">Số 17A10 KĐT Geleximco</div></div>
     </div>
   )
 }
