@@ -8,11 +8,12 @@ import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { getPhieuThongBao, type DongPhieu } from '../../lib/hocphi'
 import { tenNganHS } from '../../lib/hoten'
+import { BANK_THU_HOC_PHI, noiDungCK, vietQRDataUrl } from '../../lib/vietqr'
 
 const tienVN = (n: number) => Math.round(n).toLocaleString('vi-VN') + 'đ'
 const LOAI_LABEL: Record<string, string> = { hoc_phi: 'Học phí', hoc_duoi: 'Học đuổi', hoc_lieu: 'Học liệu', phat_sinh: 'Phát sinh', no_ky_truoc: 'Nợ kỳ trước' }
 function chiTiet(d: DongPhieu): string {
-  if (d.loai === 'hoc_phi') return `${d.so_luong} buổi × ${tienVN(d.don_gia ?? 0)}${d.he_so && d.he_so !== 1 ? ` × ${d.he_so}` : ''}`
+  if (d.loai === 'hoc_phi') return `${d.so_luong} buổi × ${tienVN(d.don_gia ?? 0)}${d.he_so && d.he_so !== 1 ? ` × ${d.he_so}` : ''}${d.mo_ta ? ` — ${d.mo_ta}` : ''}`
   return d.mo_ta ?? ''
 }
 function tenDongKemCon(d: DongPhieu): string {
@@ -22,8 +23,12 @@ function tenDongKemCon(d: DongPhieu): string {
 const safeFileName = (s: string) => (s || 'phieu').replace(/[\\/:*?"<>|]/g, '').replace(/\s+/g, ' ').trim().slice(0, 120)
 
 // Card phiếu (inline-hex) — dùng CHUNG cho ảnh popup lẫn PDF headless.
-function InvoiceCard({ phTen, maPh, ky, dong, tongTien, daChot }: { phTen: string; maPh: string; ky: string; dong: DongPhieu[]; tongTien: number; daChot: boolean }) {
+// qrDataUrl (data-URL PNG) truyền từ ngoài (async) — có thì hiện khối VietQR để PH quẹt thẳng.
+function InvoiceCard({ phTen, maPh, ky, dong, tongTien, daChot, qrDataUrl }: { phTen: string; maPh: string; ky: string; dong: DongPhieu[]; tongTien: number; daChot: boolean; qrDataUrl?: string | null }) {
   const kyVN = `${ky.slice(5, 7)}/${ky.slice(0, 4)}`
+  const infoRow = (label: string, value: string, bold?: boolean) => (
+    <div style={{ display: 'flex', gap: 6 }}><span style={{ color: '#94a3b8', flex: '0 0 64px' }}>{label}</span><span style={{ color: '#1e293b', fontWeight: bold ? 700 : 500 }}>{value}</span></div>
+  )
   return (
     <div style={{ width: 480, overflow: 'hidden', borderRadius: 16, background: '#ffffff', color: '#1e293b', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25)', fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif' }}>
       <div style={{ background: 'linear-gradient(90deg, #E91E8C 0%, #F7941E 50%, #2D9CDB 100%)', padding: '16px 20px', color: '#ffffff' }}>
@@ -55,6 +60,21 @@ function InvoiceCard({ phTen, maPh, ky, dong, tongTien, daChot }: { phTen: strin
           <span style={{ fontSize: 13, fontWeight: 700, color: '#1e293b' }}>TỔNG CỘNG</span>
           <span style={{ fontSize: 18, fontWeight: 800, color: '#E91E8C' }}>{tienVN(tongTien)}</span>
         </div>
+        {qrDataUrl && (
+          <div style={{ marginTop: 12, paddingTop: 12, borderTop: '1px dashed #cbd5e1', display: 'flex', gap: 16, alignItems: 'center' }}>
+            {/* QR TO (180px) trên nền trắng → Zalo/app bank đọc chắc từ ảnh: bấm "Chuyển tiền" ra thẳng app bank. */}
+            <img src={qrDataUrl} alt="QR chuyển khoản" style={{ width: 180, height: 180, flex: '0 0 auto', border: '1px solid #e2e8f0', borderRadius: 10 }} />
+            <div style={{ fontSize: 12.5, lineHeight: 1.6, minWidth: 0 }}>
+              <div style={{ fontSize: 13, fontWeight: 800, color: '#E91E8C', marginBottom: 5 }}>Quét mã / gửi Zalo bấm "Chuyển tiền"</div>
+              {infoRow('Ngân hàng', BANK_THU_HOC_PHI.tenNganHang)}
+              {infoRow('Số TK', BANK_THU_HOC_PHI.soTaiKhoan, true)}
+              {infoRow('Chủ TK', BANK_THU_HOC_PHI.tenChuTk)}
+              {infoRow('Số tiền', tienVN(tongTien), true)}
+              {infoRow('Nội dung', noiDungCK(maPh, ky), true)}
+            </div>
+          </div>
+        )}
+        <div style={{ marginTop: 10, fontSize: 10.5, color: '#94a3b8', textAlign: 'center' }}>Vui lòng chuyển khoản ĐÚNG nội dung để trung tâm đối soát nhanh.</div>
       </div>
     </div>
   )
@@ -63,8 +83,22 @@ function InvoiceCard({ phTen, maPh, ky, dong, tongTien, daChot }: { phTen: strin
 // ── Modal "Ảnh gửi PH" — 1 PH, mở popup + copy clipboard (đúng pattern EtAnhGuiPH) ──
 export function AnhGuiPHModal({ phuHuynhId, phTen, maPh, ky, onClose }: { phuHuynhId: string; phTen: string; maPh: string; ky: string; onClose: () => void }) {
   const [data, setData] = useState<{ dong: DongPhieu[]; tongTien: number; daChot: boolean } | null>(null)
+  const [qr, setQr] = useState<string | null>(null)
   const cardRef = useRef<HTMLDivElement>(null)
-  useEffect(() => { getPhieuThongBao(phuHuynhId, phTen, maPh, ky).then(setData) }, [phuHuynhId, phTen, maPh, ky])
+  useEffect(() => {
+    let alive = true
+    setData(null); setQr(null)
+    getPhieuThongBao(phuHuynhId, phTen, maPh, ky).then(async (d) => {
+      if (!alive) return
+      setData(d)
+      // QR chỉ khi có tiền để thu (tongTien>0); nội dung = khoá đối soát mã PH + kỳ.
+      if (d.tongTien > 0) {
+        const url = await vietQRDataUrl({ bin: BANK_THU_HOC_PHI.bin, soTaiKhoan: BANK_THU_HOC_PHI.soTaiKhoan, amount: d.tongTien, addInfo: noiDungCK(maPh, ky) })
+        if (alive) setQr(url)
+      }
+    })
+    return () => { alive = false }
+  }, [phuHuynhId, phTen, maPh, ky])
 
   function handleCopy() {
     const el = cardRef.current
@@ -115,13 +149,13 @@ async function copyImg(){
     <div className="fixed inset-0 z-[90] flex flex-col bg-slate-900/70" onClick={onClose}>
       <div className="flex items-center gap-3 border-b border-slate-700 bg-slate-800 px-4 py-2.5 text-white" onClick={(e) => e.stopPropagation()}>
         <span className="text-sm font-semibold">Thông báo học phí — {phTen}</span>
-        <button onClick={handleCopy} disabled={!data} className="ml-auto rounded-md bg-indigo-600 px-3 py-1 text-sm font-medium hover:bg-indigo-500 disabled:opacity-40">📋 Copy ảnh</button>
+        <button onClick={handleCopy} disabled={!data || (!!data.tongTien && data.tongTien > 0 && !qr)} className="ml-auto rounded-md bg-indigo-600 px-3 py-1 text-sm font-medium hover:bg-indigo-500 disabled:opacity-40">📋 Copy ảnh</button>
         <button onClick={onClose} className="rounded-md border border-slate-500 px-3 py-1 text-sm hover:bg-slate-700">Đóng</button>
       </div>
       <div className="min-h-0 flex-1 overflow-auto p-4" onClick={(e) => e.stopPropagation()}>
         {!data ? <p className="text-center text-sm text-slate-300">Đang tải…</p> : (
           <div ref={cardRef} style={{ margin: '0 auto' }}>
-            <InvoiceCard phTen={phTen} maPh={maPh} ky={ky} dong={data.dong} tongTien={data.tongTien} daChot={data.daChot} />
+            <InvoiceCard phTen={phTen} maPh={maPh} ky={ky} dong={data.dong} tongTien={data.tongTien} daChot={data.daChot} qrDataUrl={qr} />
           </div>
         )}
       </div>
@@ -137,6 +171,7 @@ async function copyImg(){
 // che mắt người dùng — html2canvas chụp đúng vì phần tử ở vị trí "thật", không bị lệch tính toán.
 export async function taiPdfPhieu(phuHuynhId: string, phTen: string, maPh: string, ky: string): Promise<void> {
   const data = await getPhieuThongBao(phuHuynhId, phTen, maPh, ky)
+  const qr = data.tongTien > 0 ? await vietQRDataUrl({ bin: BANK_THU_HOC_PHI.bin, soTaiKhoan: BANK_THU_HOC_PHI.soTaiKhoan, amount: data.tongTien, addInfo: noiDungCK(maPh, ky) }) : null
   const host = document.createElement('div')
   host.style.cssText = 'position:fixed;top:0;left:0;z-index:9998;pointer-events:none'
   document.body.appendChild(host)
@@ -145,8 +180,8 @@ export async function taiPdfPhieu(phuHuynhId: string, phTen: string, maPh: strin
   document.body.appendChild(overlay)
   const { createRoot } = await import('react-dom/client')
   const root = createRoot(host)
-  root.render(<InvoiceCard phTen={phTen} maPh={maPh} ky={ky} dong={data.dong} tongTien={data.tongTien} daChot={data.daChot} />)
-  await new Promise((r) => setTimeout(r, 150)) // chờ 1 nhịp render (font/layout ổn định)
+  root.render(<InvoiceCard phTen={phTen} maPh={maPh} ky={ky} dong={data.dong} tongTien={data.tongTien} daChot={data.daChot} qrDataUrl={qr} />)
+  await new Promise((r) => setTimeout(r, 200)) // chờ render + ảnh QR (data-URL) decode xong trước html2canvas
   try {
     const [h2cMod, jspdfMod] = await Promise.all([import('html2canvas-pro'), import('jspdf')])
     const target = host.firstChild as HTMLElement

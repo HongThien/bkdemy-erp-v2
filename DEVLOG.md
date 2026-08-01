@@ -3399,3 +3399,15 @@ Verify: card hiện "△ABC nhọn, ba đường cao... | tứ giác BFEC nội 
 - **Fix:** 1 biến `--app-z` (index.css `#root{zoom:var(--app-z)}` + `--app-unz`=1/z). `main.tsx fitZoom()` kẹp `z=clamp(1, clientWidth/1150, 1.15)` lúc load + on resize (1150 = bề rộng layout tối thiểu app cần, đo thực ~1113 +margin). App.tsx đọc CÙNG biến: HS/mobile bù `zoom:var(--app-unz)`, chiều cao khung desktop `h-[calc(100vh/var(--app-z))]` — mọi chỗ 1.15 hardcode (4 chỗ) giờ 1 nguồn.
 - **Verify live (resize):** 1024→z=1.0 (không tràn) · 1280→1.113 · 1600→1.15 (giữ full mật độ màn rộng). clipsRight=false cả 3. HS/mobile net = z×(1/z)=1.0 theo cấu trúc. tsc xanh.
 - **Lưu ý:** `zoom` không animate, đổi bậc khi resize — chấp nhận (hiếm khi kéo cửa sổ). PrintJobPage (worker) bỏ qua fitZoom → giữ fallback 1.15.
+
+## 2026-08-01 (4) — Học phí: sửa LOGIC BÙ (theo tháng gốc + đã xếp/huỷ) + QR phiếu + màn app PH
+- **CEO 08-01:** bù của tháng 7 có thể diễn ra tháng 8 → phải tính theo THÁNG BUỔI GỐC; gồm cả buổi đã xếp chưa diễn ra; buổi đã xếp bị HUỶ vẫn tính (đã bỏ công sắp xếp). Hiện rõ "đã bù vs đã xếp".
+- **Data thật (Anh Khoa 9C1 T7):** buổi lớp 14, nghỉ 6, đi học 8. Bù cũ đếm theo NGÀY BÙ + chỉ co_mat → chỉ 3 (2 buổi bù 1/8 rớt sang T8, 1 buổi xếp 2/8 không tính). Đúng: **bù=6 = 5 đã bù + 1 đã xếp** → CT2 = (8+6)=14.
+- **`buByGocKy(hsIds, kyStart, kyEnd)` — NGUỒN DUY NHẤT đếm bù** (bảng HS-theo-môn + thongKeBuoiConLop + xét duyệt cùng gọi, chống 2 nơi lệch): theo tháng buổi GỐC · gồm đã bù/đã xếp/đã-diễn-ra-vắng/**huỷ** · dedupe theo buổi gốc (1 vắng = tối đa 1 bù → bù ≤ nghỉ). `tachBu()` tách done (đã bù thật=hoàn tất+co_mat) vs còn lại (đã xếp).
+- **`thongKeBuoiConLop` +đi học +bù** → `getPhieuAo` & xét duyệt dùng chung.
+- **Xét duyệt (CEO chốt: GIỮ duyệt, ĐIỀN SẴN số đúng):** `listXetDuyetChoDuyet` suy `soBuoiDeXuat=đi học+bù` + breakdown; UI thêm nút **"✓ Chốt đề xuất (14 = đi 8 + bù 6)"** + hiện đi/nghỉ/bù(đã bù,đã xếp). KHÔNG auto-giảm (human-in-loop giữ nguyên).
+- **Phiếu "thông báo đủ":** dòng học phí `getPhieuAo` mo_ta = "gồm X buổi bù (Y đã bù, Z đã xếp lịch)" → chotKy copy vào hoa_don_dong → hiện ở phiếu ảnh/PDF (chiTiet) + app PH.
+- **Tab HS-theo-môn:** cột BÙ "6 (5+1)" + Detail "5 đã bù, 1 đã xếp" + chú thích quy tắc.
+- **QR VietQR** (kênh Zalo tự hiện "Chuyển tiền"): `lib/vietqr.ts` sinh chuỗi NAPAS local (verify CRC + TLV OK, bank VPBank 970432/38496433), nhét QR 180px vào phiếu. App PH (repo ph): migration 0018 hoa_don_view/dong_view (FDW, đã apply), màn Học phí (QR 220px + nút Tải ảnh QR + copy nội dung).
+- **Verify:** tsc xanh (ERP + ph). Replay Anh Khoa khớp 6=5+1. ⚠ CHƯA có hoá đơn chốt nào (ERP hoa_don=0) → getPhieuAo/phiếu-thật/app-PH chờ CEO chốt 1 kỳ mới verify end-to-end.
+- ⚠ Latent: `buByGocKy` buLinks .limit(LIMIT) toàn trường — paginate khi link bù >2000 (cùng bẫy fetchAllBhh 08-01(2)).

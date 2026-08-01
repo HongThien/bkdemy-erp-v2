@@ -191,7 +191,7 @@ function TheoMonTab() {
                         <span className="text-slate-700">Lớp <b>{r.soBuoiLop}</b></span>
                         {r.soBuoiNghi > 0 ? <span className="text-rose-600"> · nghỉ <b>{r.soBuoiNghi}</b></span> : <span className="text-slate-300"> · nghỉ 0</span>}
                       </td>
-                      <td className="px-2 py-2 text-center">{r.soBuoiBu > 0 ? <b className="text-sky-700">{r.soBuoiBu}</b> : <span className="text-slate-300">—</span>}</td>
+                      <td className="px-2 py-2 text-center">{r.soBuoiBu > 0 ? <span title={`Tổng ${r.soBuoiBu} buổi bù = ${r.soBuoiBuDaHoc} đã bù + ${r.soBuoiBuDaXep} đã xếp lịch`}><b className="text-sky-700">{r.soBuoiBu}</b>{r.soBuoiBuDaXep > 0 ? <span className="ml-0.5 text-[11px] font-semibold text-amber-600">({r.soBuoiBuDaHoc}+{r.soBuoiBuDaXep})</span> : null}</span> : <span className="text-slate-300">—</span>}</td>
                       <td className="px-2 py-2 text-center">{r.soBuoiDuoi > 0 ? <b className="text-orange-600">{r.soBuoiDuoi}</b> : <span className="text-slate-300">—</span>}</td>
                       <td className="px-2 py-2">
                         {/* Chỉ hiện CT đang áp (Thùy 07-13) — click = đảo sang công thức kia; vàng = đang chọn tay khác đề xuất */}
@@ -237,7 +237,7 @@ function TheoMonDetailModal({ r, onClose }: { r: DongTheoMonV2; onClose: () => v
         <div className="space-y-3">
           <div><div className="mb-1 text-[12px] font-medium uppercase tracking-wide text-slate-400">Đi học ({r.soBuoiDiHoc} buổi)</div><NgayChips ngays={r.ngayDiHoc} mau="bg-emerald-50 text-emerald-700" /></div>
           <div><div className="mb-1 text-[12px] font-medium uppercase tracking-wide text-slate-400">Nghỉ ({r.soBuoiNghi} buổi)</div><NgayChips ngays={r.ngayNghi} mau="bg-rose-50 text-rose-700" /></div>
-          <div><div className="mb-1 text-[12px] font-medium uppercase tracking-wide text-slate-400">Bù ({r.soBuoiBu} buổi)</div><NgayChips ngays={r.ngayBu} mau="bg-sky-50 text-sky-700" /></div>
+          <div><div className="mb-1 text-[12px] font-medium uppercase tracking-wide text-slate-400">Bù ({r.soBuoiBu} buổi{r.soBuoiBuDaXep > 0 ? <span className="normal-case text-slate-500"> — {r.soBuoiBuDaHoc} đã bù, <span className="text-amber-600">{r.soBuoiBuDaXep} đã xếp lịch</span></span> : null})</div><NgayChips ngays={r.ngayBu} mau="bg-sky-50 text-sky-700" /><div className="mt-0.5 text-[11px] text-slate-400">Bù tính theo tháng buổi GỐC (bù tháng này có thể diễn ra tháng sau); buổi đã xếp lịch vẫn tính tiền.</div></div>
           <div><div className="mb-1 text-[12px] font-medium uppercase tracking-wide text-slate-400">Học đuổi ({r.soBuoiDuoi} buổi)</div><NgayChips ngays={r.ngayDuoi} mau="bg-orange-50 text-orange-700" /></div>
           <div className="rounded-xl bg-slate-50 p-3 text-[13px]">
             <div className="mb-1.5 text-[12px] font-medium uppercase tracking-wide text-slate-400">Thành tiền</div>
@@ -588,7 +588,7 @@ function PhieuTab() {
                 <tr key={i} className="border-b border-slate-50">
                   <td className="py-1.5"><span className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] font-medium text-slate-600">{LOAI_LABEL[d.loai]}</span></td>
                   <td className="text-slate-700">{d.hoc_sinh_ten ?? '—'}{d.lop_ten ? ` · ${d.lop_ten}` : ''}</td>
-                  <td className="text-slate-500">{d.loai === 'hoc_phi' ? `${d.so_luong} buổi × ${tienVN(d.don_gia ?? 0)}${d.he_so && d.he_so !== 1 ? ` × ${d.he_so}` : ''}` : d.mo_ta ?? ''}</td>
+                  <td className="text-slate-500">{d.loai === 'hoc_phi' ? `${d.so_luong} buổi × ${tienVN(d.don_gia ?? 0)}${d.he_so && d.he_so !== 1 ? ` × ${d.he_so}` : ''}${d.mo_ta ? ` — ${d.mo_ta}` : ''}` : d.mo_ta ?? ''}</td>
                   <td className="text-right font-medium text-slate-800">{tienVN(d.thanh_tien)}</td>
                 </tr>
               ))}
@@ -646,12 +646,14 @@ function XetDuyetTab({ onChanged }: { onChanged: () => void }) {
   async function reload() { setLoading(true); try { setRows(await listXetDuyetChoDuyet()) } finally { setLoading(false) } }
   useEffect(() => { reload() }, [])
 
-  async function duyet(r: XetDuyet, dungMacDinh: boolean) {
-    const inp2 = inputs[r.id]
-    const soBuoi = dungMacDinh ? (r.so_buoi_window ?? 0) : Number(inp2?.soBuoi ?? r.so_buoi_window ?? 0)
-    const ghiChu = inp2?.ghiChu || (dungMacDinh ? 'Giữ nguyên số buổi window' : 'Chỉnh tay')
+  async function duyetSo(r: XetDuyet, soBuoi: number, ghiChu: string) {
     setBusyId(r.id)
     try { await duyetXetDuyet(r.id, soBuoi, ghiChu); await reload(); onChanged() } finally { setBusyId(null) }
+  }
+  function duyetTay(r: XetDuyet) {
+    const inp2 = inputs[r.id]
+    const soBuoi = Number(inp2?.soBuoi ?? r.soBuoiDeXuat ?? r.so_buoi_window ?? 0)
+    duyetSo(r, soBuoi, inp2?.ghiChu || 'Chỉnh tay')
   }
 
   return (
@@ -668,16 +670,20 @@ function XetDuyetTab({ onChanged }: { onChanged: () => void }) {
               <span className={`rounded-full px-2.5 py-1 text-[12px] font-semibold ${r.ly_do === 'nghi_30' ? 'bg-rose-50 text-rose-700' : 'bg-amber-50 text-amber-700'}`}>{r.ly_do === 'nghi_30' ? '🚩 Nghỉ ≥30%' : '↔ Lệch window'}</span>
               <span className="text-[12px] text-slate-400">Kỳ {r.ky.slice(5, 7)}/{r.ky.slice(0, 4)}</span>
             </div>
-            <div className="mb-3 flex gap-4 text-[13px] text-slate-600">
+            <div className="mb-3 flex flex-wrap gap-x-4 gap-y-1 text-[13px] text-slate-600">
               <span>Buổi lớp: <b>{r.so_buoi_lop}</b></span>
-              <span>Buổi trong window: <b>{r.so_buoi_window}</b></span>
-              <span>Buổi nghỉ: <b className="text-rose-600">{r.so_buoi_nghi}</b></span>
+              <span>Đi học: <b className="text-emerald-600">{r.soBuoiDiHoc ?? '—'}</b></span>
+              <span>Nghỉ: <b className="text-rose-600">{r.so_buoi_nghi}</b></span>
+              <span>Bù: <b className="text-sky-700">{r.soBuoiBu ?? '—'}</b>{r.soBuoiBu ? <span className="text-slate-400"> ({r.soBuoiBuDaHoc} đã bù{r.soBuoiBuDaXep ? `, ${r.soBuoiBuDaXep} đã xếp` : ''})</span> : null}</span>
             </div>
             <div className="flex flex-wrap items-center gap-2">
-              <button disabled={busyId === r.id} onClick={() => duyet(r, true)} className="rounded-lg bg-indigo-600 px-3 py-1.5 text-[12px] font-medium text-white disabled:opacity-40">✓ Giữ nguyên ({r.so_buoi_window} buổi)</button>
-              <input placeholder="Số buổi khác…" value={inputs[r.id]?.soBuoi ?? ''} onChange={(e) => setInputs((s) => ({ ...s, [r.id]: { ...s[r.id], soBuoi: e.target.value } }))} className={`${inp} w-28`} />
-              <input placeholder="Ghi chú quyết định…" value={inputs[r.id]?.ghiChu ?? ''} onChange={(e) => setInputs((s) => ({ ...s, [r.id]: { ...s[r.id], ghiChu: e.target.value } }))} className={`${inp} w-52`} />
-              <button disabled={busyId === r.id || !inputs[r.id]?.soBuoi} onClick={() => duyet(r, false)} className="rounded-lg border border-slate-300 px-3 py-1.5 text-[12px] font-medium text-slate-600 hover:border-indigo-400 disabled:opacity-40">Chốt số khác</button>
+              {r.soBuoiDeXuat != null && (
+                <button disabled={busyId === r.id} onClick={() => duyetSo(r, r.soBuoiDeXuat!, `Chốt theo đề xuất: đi học ${r.soBuoiDiHoc} + bù ${r.soBuoiBu}`)} className="rounded-lg bg-indigo-600 px-3 py-1.5 text-[12px] font-semibold text-white disabled:opacity-40" title={`Đi học ${r.soBuoiDiHoc} + bù ${r.soBuoiBu} (gồm ${r.soBuoiBuDaXep ?? 0} buổi đã xếp lịch)`}>✓ Chốt đề xuất ({r.soBuoiDeXuat} buổi = đi {r.soBuoiDiHoc} + bù {r.soBuoiBu})</button>
+              )}
+              <button disabled={busyId === r.id} onClick={() => duyetSo(r, r.so_buoi_window ?? 0, 'Giữ nguyên số buổi lớp (không giảm)')} className="rounded-lg border border-slate-300 px-3 py-1.5 text-[12px] font-medium text-slate-600 hover:border-indigo-400 disabled:opacity-40">Giữ nguyên ({r.so_buoi_window})</button>
+              <input placeholder={`Số khác (${r.soBuoiDeXuat ?? r.so_buoi_window})…`} value={inputs[r.id]?.soBuoi ?? ''} onChange={(e) => setInputs((s) => ({ ...s, [r.id]: { ...s[r.id], soBuoi: e.target.value } }))} className={`${inp} w-24`} />
+              <input placeholder="Ghi chú…" value={inputs[r.id]?.ghiChu ?? ''} onChange={(e) => setInputs((s) => ({ ...s, [r.id]: { ...s[r.id], ghiChu: e.target.value } }))} className={`${inp} w-44`} />
+              <button disabled={busyId === r.id || !inputs[r.id]?.soBuoi} onClick={() => duyetTay(r)} className="rounded-lg border border-slate-300 px-3 py-1.5 text-[12px] font-medium text-slate-600 hover:border-indigo-400 disabled:opacity-40">Chốt số khác</button>
             </div>
           </div>
         ))}

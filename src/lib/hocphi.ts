@@ -170,8 +170,43 @@ export function kyHienTai(): string {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-01`
 }
 
+// ── BÙ theo tháng buổi GỐC — NGUỒN DUY NHẤT (bảng "HS theo môn" + xét duyệt + phiếu cùng gọi) ───
+// Bù của tháng 7 có thể diễn ra tháng 8 → tính theo tháng buổi GỐC (buổi bị vắng), KHÔNG theo ngày bù.
+// GỒM: đã bù thật (hoàn tất + có mặt) · đã xếp chưa diễn ra · đã diễn ra mà vắng · bị HUỶ — tất cả tính
+// (đã bỏ công sắp xếp, Thùy 08-01). DEDUPE theo buổi gốc: 1 vắng = tối đa 1 bù (bù không vượt số nghỉ).
+// done=true chỉ để phân loại HIỂN THỊ (đã bù vs đã xếp). Trả Map `${hs}|${lopGốc}` -> gocId -> {done, ngày bù}.
+// ⚠ buLinks .limit(LIMIT) toàn trường — nếu số link bù vượt 2000 phải paginate (cùng bẫy fetchAllBhh).
+async function buByGocKy(hsIds: string[], kyStart: string, kyEnd: string): Promise<Map<string, Map<string, { done: boolean; ngay: string }>>> {
+  const out = new Map<string, Map<string, { done: boolean; ngay: string }>>()
+  if (!hsIds.length) return out
+  const { data: buLinks, error } = await supabase.from('buoi_hoc_hs')
+    .select('hoc_sinh_id, buoi_hoc_id, bu_cho_buoi_id, diem_danh').in('hoc_sinh_id', hsIds).not('bu_cho_buoi_id', 'is', null).limit(LIMIT)
+  if (error) throw error
+  const ids = [...new Set(((buLinks ?? []) as any[]).flatMap((l) => [l.buoi_hoc_id, l.bu_cho_buoi_id]))]
+  const info = new Map<string, { ngay: string; lop_id: string | null; trang_thai: string }>()
+  if (ids.length) {
+    const { data: bs } = await supabase.from('buoi_hoc').select('id, ngay, lop_id, trang_thai').in('id', ids).limit(LIMIT)
+    for (const b of (bs ?? []) as any[]) info.set(b.id, b)
+  }
+  for (const l of (buLinks ?? []) as any[]) {
+    const bu = info.get(l.buoi_hoc_id); const goc = info.get(l.bu_cho_buoi_id)
+    if (!bu || !goc?.lop_id) continue
+    if (goc.ngay < kyStart || goc.ngay >= kyEnd) continue // thuộc kỳ theo buổi GỐC
+    const done = bu.trang_thai === 'hoan_tat' && l.diem_danh === 'co_mat'
+    const key = `${l.hoc_sinh_id}|${goc.lop_id}`
+    let m = out.get(key); if (!m) { m = new Map(); out.set(key, m) }
+    m.set(l.bu_cho_buoi_id, { done: (m.get(l.bu_cho_buoi_id)?.done ?? false) || done, ngay: bu.ngay })
+  }
+  return out
+}
+export function tachBu(m?: Map<string, { done: boolean; ngay: string }>): { soBuoiBu: number; soBuoiBuDaHoc: number; soBuoiBuDaXep: number; ngayBu: string[] } {
+  const arr = [...(m?.values() ?? [])]
+  const soBuoiBuDaHoc = arr.filter((x) => x.done).length
+  return { soBuoiBu: arr.length, soBuoiBuDaHoc, soBuoiBuDaXep: arr.length - soBuoiBuDaHoc, ngayBu: arr.map((x) => x.ngay).sort() }
+}
+
 // ── THỐNG KÊ BUỔI (con × lớp × kỳ) — nền cho học phí + xét duyệt ────────────
-export type ThongKeBuoi = { soBuoiLop: number; soBuoiWindow: number; soBuoiNghi: number }
+export type ThongKeBuoi = { soBuoiLop: number; soBuoiWindow: number; soBuoiNghi: number; soBuoiDiHoc: number; soBuoiBu: number; soBuoiBuDaHoc: number; soBuoiBuDaXep: number }
 async function thongKeBuoiConLop(hocSinhId: string, lopId: string, kyStart: string, kyEnd: string): Promise<ThongKeBuoi> {
   // buổi LỚP trong tháng: mo/hoan_tat, KHÁC huỷ, loai≠'bu' (bo_tro_duoi/bu không có lop_id nên tự loại — vẫn lọc tường minh theo spec).
   const { data: buoiLop, error: e1 } = await supabase.from('buoi_hoc').select('id, ngay')
@@ -186,14 +221,18 @@ async function thongKeBuoiConLop(hocSinhId: string, lopId: string, kyStart: stri
   const inWindow = (ngay: string) => (!w?.ngay_vao || ngay >= w.ngay_vao) && (!w?.ngay_roi || ngay <= w.ngay_roi)
   const buoiTrongWindow = (buoiLop ?? []).filter((b) => inWindow(b.ngay))
   const soBuoiWindow = buoiTrongWindow.length
-  let soBuoiNghi = 0
+  let soBuoiNghi = 0, soBuoiDiHoc = 0
   const buoiIds = buoiTrongWindow.map((b) => b.id)
   if (buoiIds.length) {
     const { data: bhh, error: e3 } = await supabase.from('buoi_hoc_hs').select('diem_danh').eq('hoc_sinh_id', hocSinhId).in('buoi_hoc_id', buoiIds).limit(LIMIT)
     if (e3) throw e3
-    soBuoiNghi = ((bhh ?? []) as { diem_danh: string | null }[]).filter((r) => r.diem_danh === 'vang' || r.diem_danh === 'vang_phep').length
+    const dds = (bhh ?? []) as { diem_danh: string | null }[]
+    soBuoiNghi = dds.filter((r) => r.diem_danh === 'vang' || r.diem_danh === 'vang_phep').length
+    soBuoiDiHoc = dds.filter((r) => r.diem_danh === 'co_mat').length
   }
-  return { soBuoiLop, soBuoiWindow, soBuoiNghi }
+  // BÙ (đề xuất CT2 = đi học + bù) — CÙNG nguồn buByGocKy với bảng "HS theo môn", không đếm lệch.
+  const bu = tachBu((await buByGocKy([hocSinhId], kyStart, kyEnd)).get(`${hocSinhId}|${lopId}`))
+  return { soBuoiLop, soBuoiWindow, soBuoiNghi, soBuoiDiHoc, soBuoiBu: bu.soBuoiBu, soBuoiBuDaHoc: bu.soBuoiBuDaHoc, soBuoiBuDaXep: bu.soBuoiBuDaXep }
 }
 
 // ── XÉT DUYỆT (người-trong-vòng-lặp, KHÔNG auto-giảm — §5) ──────────────────
@@ -203,6 +242,8 @@ export type XetDuyet = {
   trang_thai: 'cho_duyet' | 'da_duyet'; so_buoi_chot: number | null; quyet_dinh: string | null
   nguoi_duyet?: string | null; duyet_at?: string | null; created_at?: string
   hoc_sinh_ten?: string; ma_hs?: string | null; lop_ten?: string
+  // Đề xuất số buổi tính tiền CT2 (điền sẵn cho người duyệt xác nhận) = đi học + bù. Suy khi list, không lưu.
+  soBuoiDiHoc?: number; soBuoiBu?: number; soBuoiBuDaHoc?: number; soBuoiBuDaXep?: number; soBuoiDeXuat?: number
 }
 // Đảm bảo có hàng xét duyệt nếu rơi vào 1 trong 2 case (§5.1/§5.2) — idempotent (unique hs+lop+ky).
 async function ensureXetDuyet(hocSinhId: string, lopId: string, ky: string, tk: ThongKeBuoi): Promise<XetDuyet | null> {
@@ -223,7 +264,13 @@ export async function listXetDuyetChoDuyet(): Promise<XetDuyet[]> {
   const { data, error } = await supabase.from('hoc_phi_xet_duyet')
     .select('*, hoc_sinh:hoc_sinh_id(ho_ten, ma_hs), lop:lop_id(ten_lop)').eq('trang_thai', 'cho_duyet').order('created_at').limit(LIMIT)
   if (error) throw error
-  return ((data ?? []) as any[]).map((r) => ({ ...r, hoc_sinh_ten: r.hoc_sinh?.ho_ten, ma_hs: r.hoc_sinh?.ma_hs ?? null, lop_ten: r.lop?.ten_lop })) as XetDuyet[]
+  const rows = ((data ?? []) as any[]).map((r) => ({ ...r, hoc_sinh_ten: r.hoc_sinh?.ho_ten, ma_hs: r.hoc_sinh?.ma_hs ?? null, lop_ten: r.lop?.ten_lop })) as XetDuyet[]
+  // Điền sẵn đề xuất (đi học + bù) cho người duyệt — tính tươi từ thongKeBuoiConLop (danh sách chờ nhỏ, N+1 OK).
+  return Promise.all(rows.map(async (r) => {
+    const { kyStart, kyEnd } = kyRange(r.ky)
+    const tk = await thongKeBuoiConLop(r.hoc_sinh_id, r.lop_id, kyStart, kyEnd)
+    return { ...r, soBuoiDiHoc: tk.soBuoiDiHoc, soBuoiBu: tk.soBuoiBu, soBuoiBuDaHoc: tk.soBuoiBuDaHoc, soBuoiBuDaXep: tk.soBuoiBuDaXep, soBuoiDeXuat: tk.soBuoiDiHoc + tk.soBuoiBu }
+  }))
 }
 // Người chốt: ghi quyết định (số buổi tính lại / miễn=0 / giữ nguyên=so_buoi_window).
 export async function duyetXetDuyet(id: string, soBuoiChot: number, quyetDinh: string): Promise<void> {
@@ -311,9 +358,11 @@ export async function getPhieuAo(phuHuynhId: string, ky: string): Promise<PhieuA
       const muc = enroll.lop?.muc_hoc_phi_id ? (await supabase.from('muc_hoc_phi').select('*').eq('id', enroll.lop.muc_hoc_phi_id).single()).data as MucHocPhi | null : null
       const coHocPhi = !!muc && soBuoi > 0
       if (coHocPhi) {
+        // Ghi rõ bù trên phiếu để PH hiểu đầy đủ (thông báo đủ, Thùy 08-01): "gồm X buổi bù (Y đã bù, Z đã xếp)".
+        const moTaBu = tk.soBuoiBu > 0 ? `gồm ${tk.soBuoiBu} buổi bù (${tk.soBuoiBuDaHoc} đã bù${tk.soBuoiBuDaXep ? `, ${tk.soBuoiBuDaXep} đã xếp lịch` : ''})` : null
         dong.push({
           loai: 'hoc_phi', hoc_sinh_id: con.id, hoc_sinh_ten: con.ho_ten, lop_id: enroll.lop_id, lop_ten: enroll.lop?.ten_lop,
-          mo_ta: null, so_luong: soBuoi, don_gia: muc!.don_gia_buoi, he_so: con.he_so_hoc_phi,
+          mo_ta: moTaBu, so_luong: soBuoi, don_gia: muc!.don_gia_buoi, he_so: con.he_so_hoc_phi,
           thanh_tien: thanhTienHocPhi(muc!.don_gia_buoi, soBuoi, con.he_so_hoc_phi),
         })
       }
@@ -776,7 +825,7 @@ export type CongThuc = 'ct1' | 'ct2'
 export type DongTheoMonV2 = {
   hoc_sinh_id: string; hoc_sinh_ten: string; ma_hs: string | null
   lop_id: string; lop_ten: string; mon: string
-  soBuoiLop: number; soBuoiNghi: number; soBuoiDiHoc: number; soBuoiBu: number; soBuoiDuoi: number
+  soBuoiLop: number; soBuoiNghi: number; soBuoiDiHoc: number; soBuoiBu: number; soBuoiBuDaHoc: number; soBuoiBuDaXep: number; soBuoiDuoi: number
   donGia: number; heSo: number
   congThucDeXuat: CongThuc; congThucChon: CongThuc | null // null = theo đề xuất (không có dòng trong hoc_phi_cong_thuc)
   tienHocChinh: number; tienDuoi: number; tienHocLieu: number; thanhTien: number
@@ -821,26 +870,8 @@ export async function listHocPhiTheoMonV2(ky: string): Promise<DongTheoMonV2[]> 
     const bhh = await fetchAllBhh(allBuoiIds, hsIds)
     for (const r of bhh) ddMap.set(`${r.hoc_sinh_id}|${r.buoi_hoc_id}`, r.diem_danh)
   }
-  // BÙ: link có bu_cho_buoi_id (buổi gốc → lớp nào), HS có mặt, buổi bù diễn ra trong kỳ.
-  // buoi_hoc_hs có 2 FK về buoi_hoc → KHÔNG embed, tách bước (bài học §552).
-  const { data: buLinks, error: e4 } = await supabase.from('buoi_hoc_hs')
-    .select('hoc_sinh_id, buoi_hoc_id, bu_cho_buoi_id, diem_danh').in('hoc_sinh_id', hsIds).not('bu_cho_buoi_id', 'is', null).limit(LIMIT)
-  if (e4) throw e4
-  const buBuoiIds = [...new Set(((buLinks ?? []) as any[]).flatMap((l) => [l.buoi_hoc_id, l.bu_cho_buoi_id]))]
-  const buoiInfo = new Map<string, { ngay: string; lop_id: string | null; trang_thai: string }>()
-  if (buBuoiIds.length) {
-    const { data: bs } = await supabase.from('buoi_hoc').select('id, ngay, lop_id, trang_thai').in('id', buBuoiIds).limit(LIMIT)
-    for (const b of (bs ?? []) as any[]) buoiInfo.set(b.id, b)
-  }
-  const buByHSLop = new Map<string, string[]>() // `${hs}|${lopGốc}` -> ngày bù[]
-  for (const l of (buLinks ?? []) as any[]) {
-    if (l.diem_danh !== 'co_mat') continue
-    const buBuoi = buoiInfo.get(l.buoi_hoc_id); const goc = buoiInfo.get(l.bu_cho_buoi_id)
-    if (!buBuoi || buBuoi.trang_thai === 'huy' || !goc?.lop_id) continue
-    if (buBuoi.ngay < kyStart || buBuoi.ngay >= kyEnd) continue
-    const key = `${l.hoc_sinh_id}|${goc.lop_id}`
-    const a = buByHSLop.get(key) ?? []; a.push(buBuoi.ngay); buByHSLop.set(key, a)
-  }
+  // BÙ (tính học phí CT2) — NGUỒN DUY NHẤT buByGocKy (theo tháng buổi GỐC · gồm đã xếp/huỷ · dedupe theo gốc).
+  const buByHSLop = await buByGocKy(hsIds, kyStart, kyEnd)
   // ĐUỔI: buổi loai='bo_tro_duoi' HS có mặt trong kỳ — gắn về LỚP của case (bo_tro_duoi.lop_id).
   const { data: bhhDuoi, error: e5 } = await supabase.from('buoi_hoc_hs')
     .select('hoc_sinh_id, bo_tro_duoi_id, buoi:buoi_hoc_id!inner(ngay, loai, muc_hoc_duoi_id)')
@@ -890,7 +921,7 @@ export async function listHocPhiTheoMonV2(ky: string): Promise<DongTheoMonV2[]> 
       if (dd === 'co_mat') ngayDiHoc.push(b.ngay)
       else if (dd === 'vang' || dd === 'vang_phep') ngayNghi.push(b.ngay)
     }
-    const ngayBu = (buByHSLop.get(key) ?? []).sort()
+    const { soBuoiBu, soBuoiBuDaHoc, soBuoiBuDaXep, ngayBu } = tachBu(buByHSLop.get(key))
     const duoi = (duoiByHSLop.get(key) ?? []).sort((a, b) => a.ngay.localeCompare(b.ngay))
     const soBuoiLop = buois.length
     if (soBuoiLop <= 0 && !duoi.length) continue // kỳ này không có gì với lớp này
@@ -899,14 +930,14 @@ export async function listHocPhiTheoMonV2(ky: string): Promise<DongTheoMonV2[]> 
     const congThucDeXuat = deXuatCongThuc(ngayNghi.length, soBuoiLop) as CongThuc
     const congThucChon = ctChonMap.get(key) ?? null
     const ct = congThucChon ?? congThucDeXuat
-    const tienHocChinh = donGia > 0 && soBuoiLop > 0 ? thanhTienHocChinh(ct, { soBuoiLop, soBuoiDiHoc: ngayDiHoc.length, soBuoiBu: ngayBu.length }, donGia, heSo) : 0
+    const tienHocChinh = donGia > 0 && soBuoiLop > 0 ? thanhTienHocChinh(ct, { soBuoiLop, soBuoiDiHoc: ngayDiHoc.length, soBuoiBu }, donGia, heSo) : 0
     const tienDuoi = duoi.reduce((s, d) => s + d.gia, 0)
     const mucLieu = tienHocChinh > 0 && enroll.lop?.muc_hoc_lieu_id ? mucLieuById2.get(enroll.lop.muc_hoc_lieu_id) : null
     const tienHocLieu = mucLieu?.gia ?? 0
     out.push({
       hoc_sinh_id: enroll.hoc_sinh_id, hoc_sinh_ten: hs.ho_ten, ma_hs: hs.ma_hs ?? null,
       lop_id: enroll.lop_id, lop_ten: enroll.lop?.ten_lop ?? '', mon: enroll.lop?.mon ?? '',
-      soBuoiLop, soBuoiNghi: ngayNghi.length, soBuoiDiHoc: ngayDiHoc.length, soBuoiBu: ngayBu.length, soBuoiDuoi: duoi.length,
+      soBuoiLop, soBuoiNghi: ngayNghi.length, soBuoiDiHoc: ngayDiHoc.length, soBuoiBu, soBuoiBuDaHoc, soBuoiBuDaXep, soBuoiDuoi: duoi.length,
       donGia, heSo, congThucDeXuat, congThucChon,
       tienHocChinh, tienDuoi, tienHocLieu, thanhTien: tienHocChinh + tienDuoi + tienHocLieu,
       hocLieuTen: mucLieu?.ten ?? null,
@@ -922,7 +953,7 @@ export async function listHocPhiTheoMonV2(ky: string): Promise<DongTheoMonV2[]> 
     out.push({
       hoc_sinh_id: hocSinhId, hoc_sinh_ten: hs.ho_ten, ma_hs: hs.ma_hs ?? null,
       lop_id: '', lop_ten: '—', mon: 'Học đuổi',
-      soBuoiLop: 0, soBuoiNghi: 0, soBuoiDiHoc: 0, soBuoiBu: 0, soBuoiDuoi: duoi.length,
+      soBuoiLop: 0, soBuoiNghi: 0, soBuoiDiHoc: 0, soBuoiBu: 0, soBuoiBuDaHoc: 0, soBuoiBuDaXep: 0, soBuoiDuoi: duoi.length,
       donGia: 0, heSo: 1, congThucDeXuat: 'ct1', congThucChon: null,
       tienHocChinh: 0, tienDuoi, tienHocLieu: 0, thanhTien: tienDuoi,
       hocLieuTen: null, ngayDiHoc: [], ngayNghi: [], ngayBu: [], ngayDuoi: duoi.map((d) => d.ngay),
