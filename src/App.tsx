@@ -39,9 +39,9 @@ export default function App() {
   if (session === undefined) return <div className="flex min-h-screen items-center justify-center text-sm text-slate-400">Đang tải…</div>
   if (!session) return <Login />
   if (hsId === undefined) return <div className="flex min-h-screen items-center justify-center text-sm text-slate-400">Đang tải…</div>
-  // App HS = trải nghiệm ĐIỆN THOẠI riêng → huỷ zoom 1.15 của #root (mật độ desktop staff) về net 1.0.
+  // App HS = trải nghiệm ĐIỆN THOẠI riêng → huỷ zoom #root (mật độ desktop staff) về net 1.0.
   if (hsId) return (
-    <div style={{ zoom: 1 / 1.15 }}>
+    <div style={{ zoom: 'var(--app-unz)' }}>
       <HocSinhApp hocSinhId={hsId} hoTen={(session.user.user_metadata?.ho_ten as string) || 'bạn'} />
     </div>
   )
@@ -54,7 +54,7 @@ export default function App() {
     // overflow-auto bên trong) bị cuộn, kéo luôn header/nút back ra khỏi màn hình theo. 100dvh (h-dvh) đo
     // ĐÚNG viewport đang hiện (dynamic viewport height) → khung ngoài khớp màn hình thật, hết cuộn trang,
     // header/back luôn đứng yên như thiết kế ban đầu (chỉ nội dung bên trong tự cuộn).
-    <div className={isMobile ? 'flex h-dvh flex-col overflow-hidden bg-slate-50 text-slate-800' : 'flex h-[calc(100vh/1.15)] flex-col overflow-hidden bg-slate-50 text-slate-800'}>
+    <div className={isMobile ? 'flex h-dvh flex-col overflow-hidden bg-slate-50 text-slate-800' : 'flex h-[calc(100vh/var(--app-z))] flex-col overflow-hidden bg-slate-50 text-slate-800'}>
       <TopBar email={session.user.email ?? ''} />
       <div className="min-h-0 flex-1 overflow-hidden">
         <NhanSuHome user={user} />
@@ -66,8 +66,8 @@ export default function App() {
           SERVER (worker/index.mjs) tự gen PDF chữ thật — máy người dùng không render gì nữa. */}
     </div>
   )
-  // Mobile: huỷ zoom:1.15 (#root, mật độ desktop) về net 1.0 — CÙNG trick với HocSinhApp ở trên (bọc
-  // 1/1.15 để h-screen bên trong tính lại đúng 100vh THẬT, tránh chữ/nút quá to trên màn hình nhỏ).
-  // Desktop: giữ NGUYÊN — Chiều cao khung = đúng viewport, #root zoom:1.15 nên chia 1.15 để không tràn.
-  return isMobile ? <div style={{ zoom: 1 / 1.15 }}>{shell}</div> : shell
+  // Mobile: huỷ zoom #root (mật độ desktop) về net 1.0 — CÙNG trick với HocSinhApp ở trên (bọc
+  // var(--app-unz)=1/--app-z để h-screen bên trong tính lại đúng 100vh THẬT, tránh chữ/nút quá to).
+  // Desktop: giữ NGUYÊN — Chiều cao khung = đúng viewport, #root zoom var(--app-z) nên chia lại để không tràn.
+  return isMobile ? <div style={{ zoom: 'var(--app-unz)' }}>{shell}</div> : shell
 }

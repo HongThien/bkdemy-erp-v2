@@ -9,8 +9,11 @@
 .katex-text { line-height: 1.5; }
 .mline + .mline { margin-top: 0.55em; }
 
-/* Phóng to toàn bộ ~15% (chữ + layout). Chrome/Edge. */
-#root { zoom: 1.15; }
+/* Phóng to mật độ staff desktop, VỪA-KHÍT theo bề rộng màn. JS (main.tsx fitZoom) hạ --app-z
+   xuống nếu màn HẸP (MacBook…) để layout KHÔNG tràn mép phải (bug Mac 08-01); tối đa 1.15 trên
+   màn rộng. --app-unz = 1/--app-z (bù về net 1.0 cho HS/mobile). Fallback nếu JS chưa chạy. */
+:root { --app-z: 1.15; --app-unz: 0.8696; }
+#root { zoom: var(--app-z); }
 
 /* Ảnh chèn trong lý thuyết (markdown ![](url) qua MathText) — cắt từ PDF/ảnh */
 .mt-img { display: block; max-width: 100%; max-height: 360px; object-fit: contain; margin: 8px auto; border: 1px solid #e2e8f0; border-radius: 8px; }

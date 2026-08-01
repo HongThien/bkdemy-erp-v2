@@ -3393,3 +3393,9 @@ Verify: card hiện "△ABC nhọn, ba đường cao... | tứ giác BFEC nội 
 - **Fix:** thêm `fetchAllBhh(buoiIds, hsIds)` — phân trang `.range(from, from+999)` + `.order('buoi_hoc_id').order('hoc_sinh_id')` (cặp duy nhất → range không lệch trang), lặp tới khi trang cuối < PAGE. Thay query cắt cụt ở dòng ~800.
 - **Verify LIVE:** kỳ 7/2026 Bùi Minh Hải giờ "Lớp 13 · nghỉ 3 · bù 3" (khớp data thật). tsc: hocphi sạch (lỗi còn lại chỉ ở BuoiHocScreen.tsx — WIP phiên khác).
 - **⚠ Latent CÙNG BẪY (chưa đụng, ghi để không quên):** (a) `buLinks` (bù) fetch MỌI HS all-time `.limit(LIMIT)` KHÔNG lọc kỳ → tích luỹ đủ lâu sẽ vượt 2000; (b) `hsl` (ghi danh) `.limit(LIMIT)` ~450 dòng giờ ok nhưng cùng pattern. Nên bọc paginate khi có dấu hiệu chạm trần.
+
+## 2026-08-01 (3) — Zoom staff desktop VỪA-KHÍT (fix Mac cắt mép phải)
+- **CEO:** màn Học phí trên Mac "thiếu góc bên phải". Đo: `#root { zoom: 1.15 }` (index.css) cứng → màn HẸP (MacBook) 1.15× cần rộng hơn cửa sổ → tràn, cắt mép phải. (Comment cũ ghi "Chrome/Edge" — không tính Mac.)
+- **Fix:** 1 biến `--app-z` (index.css `#root{zoom:var(--app-z)}` + `--app-unz`=1/z). `main.tsx fitZoom()` kẹp `z=clamp(1, clientWidth/1150, 1.15)` lúc load + on resize (1150 = bề rộng layout tối thiểu app cần, đo thực ~1113 +margin). App.tsx đọc CÙNG biến: HS/mobile bù `zoom:var(--app-unz)`, chiều cao khung desktop `h-[calc(100vh/var(--app-z))]` — mọi chỗ 1.15 hardcode (4 chỗ) giờ 1 nguồn.
+- **Verify live (resize):** 1024→z=1.0 (không tràn) · 1280→1.113 · 1600→1.15 (giữ full mật độ màn rộng). clipsRight=false cả 3. HS/mobile net = z×(1/z)=1.0 theo cấu trúc. tsc xanh.
+- **Lưu ý:** `zoom` không animate, đổi bậc khi resize — chấp nhận (hiếm khi kéo cửa sổ). PrintJobPage (worker) bỏ qua fitZoom → giữ fallback 1.15.
