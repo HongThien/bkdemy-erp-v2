@@ -9,6 +9,24 @@ import { tinhHeSoHocSinh, thanhTienHocPhi, thanhTienHocDuoi, canXetDuyetNghi30, 
 
 const LIMIT = 2000
 
+// Đọc HẾT điểm danh theo (buổi × HS) qua PHÂN TRANG — chống .limit() cắt cụt khi tập > LIMIT.
+// .order() ổn định (cặp buoi_hoc_id+hoc_sinh_id là duy nhất cho buổi lớp) để .range() không lệch trang.
+// PAGE < LIMIT server (đã biết ≥2000 vì .limit(2000) cũ trả đủ 2000) → an toàn. Dừng khi trang cuối < PAGE.
+async function fetchAllBhh(buoiIds: string[], hsIds: string[]) {
+  const PAGE = 1000
+  const out: { hoc_sinh_id: string; buoi_hoc_id: string; diem_danh: string | null }[] = []
+  for (let from = 0; ; from += PAGE) {
+    const { data, error } = await supabase.from('buoi_hoc_hs')
+      .select('hoc_sinh_id, buoi_hoc_id, diem_danh')
+      .in('buoi_hoc_id', buoiIds).in('hoc_sinh_id', hsIds)
+      .order('buoi_hoc_id').order('hoc_sinh_id').range(from, from + PAGE - 1)
+    if (error) throw error
+    out.push(...((data ?? []) as any[]))
+    if (!data || data.length < PAGE) break
+  }
+  return out
+}
+
 // ── MỨC HỌC PHÍ / HỌC ĐUỔI / HỌC LIỆU — 3 bảng ĐỘC LẬP, CÙNG quy tắc (Thùy 07-05):
 // mỗi khoản 1 bảng mức riêng, LỚP tham chiếu FK riêng từng cái (không suy công thức chéo nhau).
 // Tên mức TỰ ĐẶT theo giá (KHÔNG bắt gõ tay — "tên" và "giá" trùng nhau, Thùy chỉ ra).
@@ -793,13 +811,15 @@ export async function listHocPhiTheoMonV2(ky: string): Promise<DongTheoMonV2[]> 
     const a = buoiByLop.get(b.lop_id) ?? []; a.push(b); buoiByLop.set(b.lop_id, a)
     lopOfBuoi.set(b.id, b.lop_id)
   }
-  // điểm danh của MỌI buổi lớp trong kỳ (1 query)
+  // điểm danh của MỌI buổi lớp trong kỳ — PHÂN TRANG, KHÔNG .limit(LIMIT) 1 phát.
+  // ⚠ Bug thật (08-01): toàn trường ~2500 dòng > LIMIT 2000 → .limit cắt cụt, PostgREST trả
+  // 2000 dòng đầu (thứ tự không đảm bảo) → HS rớt ngoài lát cắt bị đọc THIẾU điểm danh →
+  // nghỉ/đi-học đếm sai (vd Bùi Minh Hải 9B1: vắng 3 buổi mà hiện "nghỉ 1"), kéo theo tiền CT2 sai.
   const allBuoiIds = (buoiRows ?? []).map((b: any) => b.id)
   const ddMap = new Map<string, string | null>() // `${hs}|${buoi}` -> diem_danh
   if (allBuoiIds.length) {
-    const { data: bhh, error: e3 } = await supabase.from('buoi_hoc_hs').select('hoc_sinh_id, buoi_hoc_id, diem_danh').in('buoi_hoc_id', allBuoiIds).in('hoc_sinh_id', hsIds).limit(LIMIT)
-    if (e3) throw e3
-    for (const r of (bhh ?? []) as any[]) ddMap.set(`${r.hoc_sinh_id}|${r.buoi_hoc_id}`, r.diem_danh)
+    const bhh = await fetchAllBhh(allBuoiIds, hsIds)
+    for (const r of bhh) ddMap.set(`${r.hoc_sinh_id}|${r.buoi_hoc_id}`, r.diem_danh)
   }
   // BÙ: link có bu_cho_buoi_id (buổi gốc → lớp nào), HS có mặt, buổi bù diễn ra trong kỳ.
   // buoi_hoc_hs có 2 FK về buoi_hoc → KHÔNG embed, tách bước (bài học §552).

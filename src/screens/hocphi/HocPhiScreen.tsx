@@ -23,6 +23,24 @@ import { useStore } from '../../store/useStore'
 
 const tienVN = (n: number) => Math.round(n).toLocaleString('vi-VN') + 'đ'
 const LOAI_LABEL: Record<string, string> = { hoc_phi: 'Học phí', hoc_duoi: 'Học đuổi', hoc_lieu: 'Học liệu', phat_sinh: 'Phát sinh', no_ky_truoc: 'Nợ kỳ trước' }
+
+// Chọn kỳ (tháng) — thay input[type=month] (Safari/Mac hiện "July 2026" khó chịu). Nút ‹ › + nhãn VN.
+// value/onChange giữ nguyên format 'YYYY-MM-01' như setKy cũ → thay tại chỗ, không đụng logic tab.
+// Cộng/trừ tháng bằng số học index (không new Date('YYYY-MM…') — cấm theo CLAUDE.md, tránh lệch TZ).
+function KyPicker({ ky, onChange, className = '' }: { ky: string; onChange: (ky: string) => void; className?: string }) {
+  const [y, m] = ky.slice(0, 7).split('-').map(Number) // m: 1..12
+  const shift = (d: number) => {
+    const idx = y * 12 + (m - 1) + d
+    onChange(`${Math.floor(idx / 12)}-${String((idx % 12) + 1).padStart(2, '0')}-01`)
+  }
+  return (
+    <div className={`inline-flex select-none items-center overflow-hidden rounded-lg border border-slate-300 bg-white ${className}`}>
+      <button type="button" onClick={() => shift(-1)} aria-label="Kỳ trước" className="grid h-9 w-8 place-items-center text-base text-slate-500 hover:bg-slate-100 active:bg-slate-200">‹</button>
+      <span className="min-w-[96px] px-1 text-center text-[13px] font-medium tabular-nums text-slate-800">Tháng {m}/{y}</span>
+      <button type="button" onClick={() => shift(1)} aria-label="Kỳ sau" className="grid h-9 w-8 place-items-center text-base text-slate-500 hover:bg-slate-100 active:bg-slate-200">›</button>
+    </div>
+  )
+}
 const TAB = [['theomon', 'HS theo môn'], ['diemdanh', 'Điểm danh'], ['danhsach', 'Học phí học chính'], ['hocduoi', 'Học phí bổ trợ đuổi'], ['phieu', 'Phiếu'], ['xetduyet', 'Xét duyệt'], ['heso', 'Hệ số'], ['muc', 'Mức & Lớp'], ['phatsinh', 'Phát sinh']] as const
 type Tab = (typeof TAB)[number][0]
 
@@ -126,7 +144,7 @@ function TheoMonTab() {
   return (
     <div className="mx-auto max-w-[1250px]">
       <div className="mb-3 flex flex-wrap items-center gap-3 rounded-xl border border-slate-200 bg-white p-4">
-        <input type="month" value={ky.slice(0, 7)} onChange={(e) => setKy(e.target.value + '-01')} className={`${inp} w-40`} />
+        <KyPicker ky={ky} onChange={setKy} />
         {/* Toggle MÔN (Thùy 07-13: "lần lượt từng môn Toán - Văn - Anh - KHTN") */}
         <div className="flex overflow-hidden rounded-lg border border-slate-300">
           {MON_TOGGLE.map((m) => (
@@ -283,7 +301,7 @@ function DiemDanhTab() {
       <div className="flex min-h-0 min-w-0 flex-1 flex-col">
         <div className="mb-3 flex flex-none flex-wrap items-center gap-3 rounded-xl border border-slate-200 bg-white p-3.5">
           <span className="text-[15px] font-semibold text-slate-800">{lop ? `${lop.ten_lop} · ${lop.mon}` : 'Chọn lớp'}</span>
-          <input type="month" value={ky.slice(0, 7)} onChange={(e) => setKy(e.target.value + '-01')} className={`${inp} w-40`} />
+          <KyPicker ky={ky} onChange={setKy} />
           {data && <span className="text-[12px] text-slate-400">{data.hs.length} HS · {data.buois.length} buổi trong kỳ</span>}
           <span className="ml-auto flex items-center gap-2 text-[11px] text-slate-400"><span className="rounded bg-emerald-100 px-1.5 py-0.5 font-medium text-emerald-700">✓ có mặt</span><span className="rounded bg-rose-100 px-1.5 py-0.5 font-medium text-rose-700">✕ vắng</span><span className="rounded bg-slate-100 px-1.5 py-0.5 font-medium text-slate-400">— chưa điểm danh</span></span>
         </div>
@@ -357,7 +375,7 @@ function DanhSachTab() {
   return (
     <div className="mx-auto max-w-[1150px]">
       <div className="mb-3 flex flex-wrap items-center gap-3 rounded-xl border border-slate-200 bg-white p-4">
-        <input type="month" value={ky.slice(0, 7)} onChange={(e) => setKy(e.target.value + '-01')} className={`${inp} w-40`} />
+        <KyPicker ky={ky} onChange={setKy} />
         <span className="text-[12px] text-slate-400">{rows.length} PH · {soDaChot} đã chốt · tổng đã chốt {tienVN(tongDaChot)}</span>
         <button onClick={taiTatCa} disabled={!rows.length || !!bulkDl} className="ml-auto rounded-lg border border-indigo-300 bg-indigo-50 px-3 py-1.5 text-[12px] font-medium text-indigo-700 hover:bg-indigo-100 disabled:opacity-40">
           {bulkDl ? `⏳ Đang tải ${bulkDl.done}/${bulkDl.total}…` : '⬇ Tải PDF tất cả (mỗi PH 1 file)'}
@@ -452,7 +470,7 @@ function DuoiTab() {
     <div className="mx-auto max-w-[700px]">
       <p className="mb-3 text-[12px] text-slate-400">Học phí bổ trợ đuổi ĐỘC LẬP với học phí học chính (không xét duyệt nghỉ ≥30%, giá theo mức của từng ca — xem tab "Đuổi" để gán). Vẫn cộng chung vào 1 hoá đơn khi chốt kỳ ở tab "Phiếu".</p>
       <div className="mb-3 flex flex-wrap items-center gap-3 rounded-xl border border-slate-200 bg-white p-4">
-        <input type="month" value={ky.slice(0, 7)} onChange={(e) => setKy(e.target.value + '-01')} className={`${inp} w-40`} />
+        <KyPicker ky={ky} onChange={setKy} />
         <span className="text-[12px] text-slate-400">{rows.length} PH có con học đuổi · tổng {tienVN(tongCong)}</span>
       </div>
       {loading ? <p className="py-8 text-center text-sm text-slate-400">Đang tải…</p>
@@ -540,7 +558,7 @@ function PhieuTab() {
     <div className="mx-auto max-w-[900px]">
       <div className="mb-4 flex flex-wrap items-center gap-3 rounded-xl border border-slate-200 bg-white p-4">
         <div className="w-72"><SearchSelect value={phId} onChange={setPhId} placeholder="Chọn phụ huynh…" options={phs.map((p) => ({ id: p.id, label: p.ho_ten, sub: `${p.ma_ph} · ${p.soCon} con` }))} /></div>
-        <input type="month" value={ky.slice(0, 7)} onChange={(e) => setKy(e.target.value + '-01')} className={`${inp} w-40`} />
+        <KyPicker ky={ky} onChange={setKy} />
       </div>
 
       {err && <div className="mb-3 rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[13px] text-rose-600">{err}</div>}
@@ -914,7 +932,7 @@ function PhatSinhTab() {
     <div className="mx-auto max-w-[900px]">
       <p className="mb-3 text-[12px] text-slate-400">Chi phí phát sinh theo LỚP (áp mọi HS đang học lớp đó) hoặc CÁ NHÂN (áp riêng 1 HS) — nhập 1 lần ở đây, tự cộng vào phiếu ảo/đã chốt của kỳ, khỏi phải gõ tay từng PH.</p>
       <div className="mb-3 flex flex-wrap items-end gap-2 rounded-xl border border-slate-200 bg-white p-4">
-        <Field2 label="Kỳ"><input type="month" value={ky.slice(0, 7)} onChange={(e) => setKy(e.target.value + '-01')} className={`${inp} w-36`} /></Field2>
+        <Field2 label="Kỳ"><KyPicker ky={ky} onChange={setKy} /></Field2>
         <Field2 label="Loại">
           <div className="flex overflow-hidden rounded-lg border border-slate-300">
             <button onClick={() => { setLoai('lop'); setTargetId(null) }} className={`px-3 py-1.5 text-[13px] font-medium ${loai === 'lop' ? 'bg-indigo-600 text-white' : 'bg-white text-slate-600'}`}>Theo lớp</button>

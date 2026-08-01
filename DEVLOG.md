@@ -3379,3 +3379,17 @@ Verify: card hiện "△ABC nhọn, ba đường cao... | tứ giác BFEC nội 
 - CEO: (1) bỏ các filter chip Chấm bài/Chấm ET/... — số task trực quan, không cần lọc; (2) thay bằng TOGGLE Vận hành ⇄ Phát triển; (3) Phát triển tách sang view riêng full-width cho rộng.
 - `NhanSuHome/VietCuaToi`: gỡ ChipDef/OPS_CHIPS/GVTA_CHIPS/chipCls + state `loai`/matchLoai/toggleLoai + SectionHead (không còn dùng). Thêm state `view`. Header: toggle pill Vận hành/Phát triển; week-nav chỉ hiện ở Vận hành. Bỏ layout 2 cột (grid ...280px rail) → mỗi view full-width. Vận hành = metrics + day-groups; Phát triển = alert bổ trợ đuổi + VietCuaToiTab.
 - Verify: tsc sạch + `vite build` OK (8.2s). Commit chỉ file NhanSuHome (rút kinh nghiệm: không git add -A).
+
+## 2026-08-01 — Học phí: thay input[type=month] bằng KyPicker (nút ‹ ›)
+- **CEO:** trên Mac/Safari `<input type="month">` hiện "July 2026" khó chịu → đổi thành filter có nút prev/next.
+- **`KyPicker`** (HocPhiScreen.tsx, gần đầu file): `{ ky, onChange }` giữ NGUYÊN format `'YYYY-MM-01'` như setKy cũ → thay tại chỗ 6 input, KHÔNG đụng logic/query tab nào. Nhãn VN "Tháng M/YYYY", nút ‹ Kỳ trước / Kỳ sau ›. Cộng/trừ tháng bằng số học index (`y*12+(m-1)±1`) — KHÔNG `new Date('YYYY-MM…')` (cấm §2 CLAUDE.md, tránh lệch TZ).
+- Thay 6 chỗ: TheoMon · DiemDanh · DanhSach (Học phí học chính) · Duoi · Phieu · PhatSinh (trong Field2).
+- **Verify live:** admin dev-login → Học phí. Prev đổi "Tháng 8/2026"→"Tháng 7/2026", data reload đúng (63 dòng/11.6tr → 286 dòng/392tr). Ky dùng chung zustand `hocPhiKy` nên giữ khi chuyển tab (tab Học phí học chính cũng hiện KyPicker cùng kỳ). tsc: HocPhiScreen sạch (lỗi còn lại chỉ ở BuoiHocScreen.tsx — WIP phiên khác, không liên quan).
+
+## 2026-08-01 (2) — 🐛 BUG THẬT: học phí "HS theo môn" đếm nghỉ/đi-học SAI do .limit() cắt cụt
+- **Triệu chứng (CEO soi):** Bùi Minh Hải 9B1 kỳ 7/2026 hiện "nghỉ 1 bù 3" — vô lý (bù > nghỉ).
+- **Điều tra data thật (script _chk_bu*.mjs, chỉ SELECT):** HS0282 vắng ĐÚNG 3 buổi July (Jul 4 vang, Jul 11/18 vang_phep), bù đủ 3 (Jul 13×2 + Jul 20, 3 buổi bù VẬT LÝ riêng, KHÔNG trùng/đếm đôi), không có dòng điểm danh trùng. Vậy đáng ra "nghỉ 3 bù 3". Bù (3) ĐÚNG; nghỉ (1) SAI.
+- **Root cause:** `listHocPhiTheoMonV2` (hocphi.ts) gom điểm danh TOÀN TRƯỜNG 1 query `.in(buoi).in(hs).limit(LIMIT=2000)`. Thực tế kỳ 7 = **2518 dòng > 2000** → PostgREST trả 2000 dòng đầu (thứ tự KHÔNG đảm bảo, không ORDER BY), 518 dòng rớt ÂM THẦM. HS có buổi rơi ngoài lát cắt → `ddMap.get` = undefined → KHÔNG tính vào nghỉ lẫn đi-học. → cả bảng sai (đi-học thiếu kéo tiền CT2 sai), không riêng 1 em. Đúng bẫy CLAUDE.md §2 "luôn paginate, đừng xài default cap".
+- **Fix:** thêm `fetchAllBhh(buoiIds, hsIds)` — phân trang `.range(from, from+999)` + `.order('buoi_hoc_id').order('hoc_sinh_id')` (cặp duy nhất → range không lệch trang), lặp tới khi trang cuối < PAGE. Thay query cắt cụt ở dòng ~800.
+- **Verify LIVE:** kỳ 7/2026 Bùi Minh Hải giờ "Lớp 13 · nghỉ 3 · bù 3" (khớp data thật). tsc: hocphi sạch (lỗi còn lại chỉ ở BuoiHocScreen.tsx — WIP phiên khác).
+- **⚠ Latent CÙNG BẪY (chưa đụng, ghi để không quên):** (a) `buLinks` (bù) fetch MỌI HS all-time `.limit(LIMIT)` KHÔNG lọc kỳ → tích luỹ đủ lâu sẽ vượt 2000; (b) `hsl` (ghi danh) `.limit(LIMIT)` ~450 dòng giờ ok nhưng cùng pattern. Nên bọc paginate khi có dấu hiệu chạm trần.
