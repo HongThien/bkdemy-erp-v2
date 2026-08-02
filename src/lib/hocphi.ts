@@ -781,29 +781,66 @@ async function tinhTamTinhTheoPH(ky: string): Promise<{ chinh: Map<string, numbe
 export type DongSoHang = {
   phu_huynh_id: string; ho_ten: string; ma_ph: string; soCon: number; tenCon: string[]; daChot: boolean; tongTien: number | null; trangThai: string | null
   tienChinh: number; tienDuoi: number; tienNo: number // breakdown TẠM TÍNH (chưa chốt); chốt rồi thì xem chi tiết hoá đơn
+  dong: DongPhieu[] // CHI TIẾT từng dòng (như phiếu) — chưa chốt: batch tính; chốt: hoa_don_dong
   hoaDonId: string | null; trangThaiTB: TrangThaiTB | null; baoLan1At: string | null; daThuKy: number
 }
+// Chi tiết từng dòng theo PH (BATCH, không N+1) — để card hiện ĐỦ như phiếu. Nguồn = listHocPhiTheoMonV2
+// (CT1/CT2 + bù, KHỚP getPhieuAo) + phát sinh. KHÔNG gồm nợ (nợ thêm ở listPhieuTheoKy).
+export async function listChiTietTheoPH(ky: string): Promise<Map<string, DongPhieu[]>> {
+  const rows = await listHocPhiTheoMonV2(ky)
+  const hsIds = [...new Set(rows.map((r) => r.hoc_sinh_id))]
+  const phOf = new Map<string, string>(); const tenOf = new Map<string, string>()
+  if (hsIds.length) {
+    const { data } = await supabase.from('hoc_sinh').select('id, ho_ten, phu_huynh_id').in('id', hsIds).limit(LIMIT)
+    for (const h of (data ?? []) as any[]) { if (h.phu_huynh_id) phOf.set(h.id, h.phu_huynh_id); tenOf.set(h.id, h.ho_ten) }
+  }
+  const out = new Map<string, DongPhieu[]>()
+  const push = (phId: string, d: DongPhieu) => { const a = out.get(phId) ?? []; a.push(d); out.set(phId, a) }
+  for (const r of rows) {
+    const phId = phOf.get(r.hoc_sinh_id); if (!phId) continue
+    const ct = r.congThucChon ?? r.congThucDeXuat
+    const soBuoiTinh = ct === 'ct2' ? r.soBuoiDiHoc + r.soBuoiBu : r.soBuoiLop
+    if (r.tienHocChinh > 0) push(phId, { loai: 'hoc_phi', hoc_sinh_id: r.hoc_sinh_id, hoc_sinh_ten: r.hoc_sinh_ten, lop_id: r.lop_id || null, lop_ten: r.lop_ten, so_luong: soBuoiTinh, don_gia: r.donGia, he_so: r.heSo, thanh_tien: r.tienHocChinh, mo_ta: r.soBuoiBu > 0 ? `gồm ${r.soBuoiBu} bù (${r.soBuoiBuDaHoc} đã bù${r.soBuoiBuDaXep ? `, ${r.soBuoiBuDaXep} đã xếp` : ''})` : null })
+    if (r.tienHocLieu > 0) push(phId, { loai: 'hoc_lieu', hoc_sinh_id: r.hoc_sinh_id, hoc_sinh_ten: r.hoc_sinh_ten, lop_id: r.lop_id || null, lop_ten: r.lop_ten, so_luong: 1, don_gia: r.tienHocLieu, he_so: null, thanh_tien: r.tienHocLieu, mo_ta: r.hocLieuTen })
+    if (r.tienDuoi > 0) push(phId, { loai: 'hoc_duoi', hoc_sinh_id: r.hoc_sinh_id, hoc_sinh_ten: r.hoc_sinh_ten, lop_id: r.lop_id || null, lop_ten: r.lop_ten, so_luong: r.soBuoiDuoi, don_gia: null, he_so: null, thanh_tien: r.tienDuoi, mo_ta: `${r.soBuoiDuoi} buổi đuổi` })
+  }
+  const { data: psRows } = await supabase.from('hoc_phi_phat_sinh').select('loai, lop_id, hoc_sinh_id, mo_ta, so_tien').eq('ky', ky).limit(LIMIT)
+  for (const ps of (psRows ?? []) as any[]) {
+    const so = Number(ps.so_tien)
+    if (ps.loai === 'ca_nhan' && ps.hoc_sinh_id) { const phId = phOf.get(ps.hoc_sinh_id); if (phId) push(phId, { loai: 'phat_sinh', hoc_sinh_id: ps.hoc_sinh_id, hoc_sinh_ten: tenOf.get(ps.hoc_sinh_id), lop_id: null, so_luong: null, don_gia: null, he_so: null, thanh_tien: so, mo_ta: ps.mo_ta }) }
+    else if (ps.loai === 'lop' && ps.lop_id) { for (const r of rows) if (r.lop_id === ps.lop_id) { const phId = phOf.get(r.hoc_sinh_id); if (phId) push(phId, { loai: 'phat_sinh', hoc_sinh_id: r.hoc_sinh_id, hoc_sinh_ten: r.hoc_sinh_ten, lop_id: r.lop_id || null, lop_ten: r.lop_ten, so_luong: null, don_gia: null, he_so: null, thanh_tien: so, mo_ta: ps.mo_ta }) } }
+  }
+  return out
+}
 export async function listPhieuTheoKy(ky: string): Promise<DongSoHang[]> {
-  const [phs, hds, tamTinh, noByPH] = await Promise.all([listPhuHuynhCoConDangHoc(), listHoaDonByKy(ky), tinhTamTinhTheoPH(ky), soDuNoTheoPH()])
+  const [phs, hds, chiTiet, noByPH] = await Promise.all([listPhuHuynhCoConDangHoc(), listHoaDonByKy(ky), listChiTietTheoPH(ky), soDuNoTheoPH()])
   const hdMap = new Map(hds.map((h) => [h.phu_huynh_id, h]))
-  // Đã thu của hoá đơn KỲ NÀY theo PH (batch) — cho card hiện "đã thu / còn lại".
-  const daThuByPH = new Map<string, number>()
   const hdIds = hds.map((h) => h.id)
   const hdToPh = new Map(hds.map((h) => [h.id, h.phu_huynh_id]))
+  // Batch: đã thu + DÒNG hoá đơn ĐÃ CHỐT (hiện chi tiết cho card chốt).
+  const daThuByPH = new Map<string, number>()
+  const dongChotByPH = new Map<string, DongPhieu[]>()
   if (hdIds.length) {
-    const { data: tts } = await supabase.from('thanh_toan').select('hoa_don_id, so_tien').in('hoa_don_id', hdIds).limit(LIMIT)
+    const [{ data: tts }, { data: dd }] = await Promise.all([
+      supabase.from('thanh_toan').select('hoa_don_id, so_tien').in('hoa_don_id', hdIds).limit(LIMIT),
+      supabase.from('hoa_don_dong').select('hoa_don_id, loai, hoc_sinh_id, lop_id, mo_ta, so_luong, don_gia, he_so, thanh_tien, hoc_sinh:hoc_sinh_id(ho_ten), lop:lop_id(ten_lop)').in('hoa_don_id', hdIds).limit(LIMIT),
+    ])
     for (const t of (tts ?? []) as any[]) { const ph = hdToPh.get(t.hoa_don_id); if (ph) daThuByPH.set(ph, (daThuByPH.get(ph) ?? 0) + Number(t.so_tien)) }
+    for (const d of (dd ?? []) as any[]) { const ph = hdToPh.get(d.hoa_don_id); if (!ph) continue; const a = dongChotByPH.get(ph) ?? []; a.push({ loai: d.loai, hoc_sinh_id: d.hoc_sinh_id, hoc_sinh_ten: d.hoc_sinh?.ho_ten, lop_id: d.lop_id, lop_ten: d.lop?.ten_lop, mo_ta: d.mo_ta, so_luong: d.so_luong, don_gia: d.don_gia, he_so: d.he_so, thanh_tien: Number(d.thanh_tien) }); dongChotByPH.set(ph, a) }
   }
   const rows = phs.map((p) => {
     const hd = hdMap.get(p.id)
-    const chinh = tamTinh.chinh.get(p.id) ?? 0
-    const duoi = tamTinh.duoi.get(p.id) ?? 0
-    const no = Math.max(0, noByPH.get(p.id) ?? 0) // nợ từ kỳ TRƯỚC (hoá đơn đã chốt chưa trả hết); chỉ lấy phần dương
+    const ct = chiTiet.get(p.id) ?? []
+    const chinh = ct.filter((d) => d.loai !== 'hoc_duoi').reduce((s, d) => s + d.thanh_tien, 0) // học phí + liệu + phát sinh
+    const duoi = ct.filter((d) => d.loai === 'hoc_duoi').reduce((s, d) => s + d.thanh_tien, 0)
+    const no = Math.max(0, noByPH.get(p.id) ?? 0)
+    const dongAo = [...ct]
+    if (no > 0) dongAo.push({ loai: 'no_ky_truoc', hoc_sinh_id: null, lop_id: null, mo_ta: null, so_luong: null, don_gia: null, he_so: null, thanh_tien: Math.round(no) })
     return {
       phu_huynh_id: p.id, ho_ten: p.ho_ten, ma_ph: p.ma_ph, soCon: p.soCon, tenCon: p.tenCon, daChot: !!hd,
-      // Chốt rồi → tổng THẬT (hd.tong_tien, đã gồm mọi khoản + nợ lúc chốt). Chưa chốt → tạm tính đầy đủ.
       tongTien: hd ? Number(hd.tong_tien) : chinh + duoi + no, trangThai: hd?.trang_thai ?? null,
       tienChinh: chinh, tienDuoi: duoi, tienNo: no,
+      dong: hd ? (dongChotByPH.get(p.id) ?? []) : dongAo, // chốt → dòng hoá đơn thật; chưa chốt → tính batch + nợ
       hoaDonId: hd?.id ?? null, trangThaiTB: hd?.trang_thai_tb ?? null, baoLan1At: hd?.bao_lan1_at ?? null, daThuKy: daThuByPH.get(p.id) ?? 0,
     }
   })

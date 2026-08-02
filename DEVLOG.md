@@ -3444,3 +3444,8 @@ Verify: card hiện "△ABC nhọn, ba đường cao... | tứ giác BFEC nội 
 - **"Đã thu"** (CEO): bấm → hiện ô nhập số tiền **mặc định = còn lại (số thông báo)** → `ghiThanhToan`; thu < tổng → phần thiếu TỰ thành nợ (cơ chế nợ = hoá đơn − đã thu). Card đổi nhóm sang "Đã thu" khi trả đủ.
 - **Bỏ hẳn:** cột-bảng cũ (ThuTienBadge/BaoCell/PhieuChiTietExpand) + nút PDF. Xoá import thừa (Fragment/getPhieuAo/getHoaDonByKy/getHoaDonDong/listThanhToan/PhieuAo/ThanhToan/DongPhieu/LOAI_LABEL).
 - **Verify live:** 254 card render, filter "Tất cả 254 · Chưa chốt 254", card hiện breakdown+tổng+checkbox+Ảnh QR (nợ khởi tạo hiện đúng "Nợ kỳ trước 590k"). tsc xanh.
+
+## 2026-08-01 (10) — Học phí tổng card: confirm khi chốt + hiện CHI TIẾT từng dòng như phiếu
+- **Point 1:** tích Chốt → `confirm()` "Chốt = X? đông cứng để thu tiền" trước khi chotKy.
+- **Point 2 (CEO: card phải detail như ảnh gửi PH):** thêm `listChiTietTheoPH(ky)` = BATCH dòng từng PH (từ `listHocPhiTheoMonV2` — CT1/CT2+bù, KHỚP getPhieuAo — map hoc_sinh→phu_huynh + phát sinh cá-nhân/lớp). `DongSoHang.dong: DongPhieu[]`. `listPhieuTheoKy` restructure: nguồn DUY NHẤT là listChiTietTheoPH (bỏ tinhTamTinhTheoPH khỏi hàm này) → tổng = Σ dòng (lines KHỚP tổng, không lệch); chưa chốt = dòng batch + nợ; **đã chốt = batch `hoa_don_dong`** (dòng thật đông cứng). Card render `r.dong` (Học phí · con · lớp · X buổi × đơn giá × hệ số (gồm bù) / Học liệu / Đuổi / Phát sinh / Nợ) — KHÔNG gọi getPhieuAo mỗi card nên vẫn nhanh (1 batch pass ~ tab HS-theo-môn).
+- **Verify live:** card chốt hiện "Học phí · 12C1 · 3 buổi × 180k = 540k · Học liệu 50k · TỔNG 590k" (dòng từ hoa_don_dong); card chưa chốt hiện dòng batch. tsc xanh.

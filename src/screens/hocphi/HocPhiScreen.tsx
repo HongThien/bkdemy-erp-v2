@@ -22,6 +22,7 @@ import { inp } from '../kho/ui'
 import { useStore } from '../../store/useStore'
 
 const tienVN = (n: number) => Math.round(n).toLocaleString('vi-VN') + 'đ'
+const LOAI_LABEL: Record<string, string> = { hoc_phi: 'Học phí', hoc_duoi: 'Học đuổi', hoc_lieu: 'Học liệu', phat_sinh: 'Phát sinh', no_ky_truoc: 'Nợ kỳ trước' }
 
 // Chọn kỳ (tháng) — thay input[type=month] (Safari/Mac hiện "July 2026" khó chịu). Nút ‹ › + nhãn VN.
 // value/onChange giữ nguyên format 'YYYY-MM-01' như setKy cũ → thay tại chỗ, không đụng logic tab.
@@ -387,6 +388,7 @@ function PhuHuynhCard({ r0, ky, onAnh, moMacDinh, onDoi }: { r0: DongSoHang; ky:
     setBusy(true)
     try {
       if (!r.daChot) {
+        if (!confirm(`Chốt học phí kỳ này cho ${r.ho_ten} = ${tienVN(tong)}?\nĐông cứng số này để thu tiền (sửa được sau bằng bỏ tích Chốt).`)) return
         const { hoaDonId, tongTien } = await chotKy(r.phu_huynh_id, ky, [])
         setR({ ...r, daChot: true, hoaDonId, tongTien, trangThai: 'chua_thu', baoLan1At: null, daThuKy: 0 })
       } else {
@@ -438,10 +440,20 @@ function PhuHuynhCard({ r0, ky, onAnh, moMacDinh, onDoi }: { r0: DongSoHang; ky:
       </div>
       {open && (
         <div className="border-t border-slate-100 px-3.5 py-2.5">
-          <div className="mb-2 space-y-0.5 text-[12px]">
-            {r.tienChinh > 0 && <div className="flex justify-between"><span className="text-slate-500">Học phí + học liệu</span><span className="font-medium text-slate-700">{tienVN(r.tienChinh)}</span></div>}
-            {r.tienDuoi > 0 && <div className="flex justify-between"><span className="text-slate-500">Bổ trợ đuổi</span><span className="font-medium text-slate-700">{tienVN(r.tienDuoi)}</span></div>}
-            {r.tienNo > 0 && <div className="flex justify-between"><span className="text-slate-500">Nợ kỳ trước</span><span className="font-medium text-rose-600">{tienVN(r.tienNo)}</span></div>}
+          <div className="mb-2 space-y-1 text-[12px]">
+            {/* CHI TIẾT từng dòng như phiếu gửi PH — kiểm tra đầy đủ thành phần */}
+            {r.dong.length === 0 && <div className="text-slate-400">Không có khoản nào trong kỳ.</div>}
+            {r.dong.map((d, i) => (
+              <div key={i} className="flex justify-between gap-2">
+                <span className="min-w-0 text-slate-500">
+                  <b className="text-slate-700">{LOAI_LABEL[d.loai] ?? d.loai}</b>
+                  {d.hoc_sinh_ten ? ` · ${d.hoc_sinh_ten}` : ''}{d.lop_ten ? ` · ${d.lop_ten}` : ''}
+                  {d.loai === 'hoc_phi' ? ` · ${d.so_luong} buổi × ${tienVN(d.don_gia ?? 0)}${d.he_so && d.he_so !== 1 ? ` × ${d.he_so}` : ''}` : ''}
+                  {d.mo_ta ? <span className="text-slate-400"> ({d.mo_ta})</span> : ''}
+                </span>
+                <span className={`whitespace-nowrap font-medium ${d.loai === 'no_ky_truoc' ? 'text-rose-600' : 'text-slate-700'}`}>{tienVN(d.thanh_tien)}</span>
+              </div>
+            ))}
             <div className="flex justify-between border-t border-slate-200 pt-1"><span className="font-bold text-slate-800">TỔNG{!r.daChot ? ' (tạm tính)' : ''}</span><span className="font-extrabold text-indigo-700">{tienVN(tong)}</span></div>
             {r.daChot && r.daThuKy > 0 && <div className="flex justify-between text-[11px]"><span className="text-slate-400">Đã thu {tienVN(r.daThuKy)} · còn lại</span><span className="font-semibold text-rose-600">{tienVN(conLai)}</span></div>}
           </div>
