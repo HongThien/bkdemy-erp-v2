@@ -6,13 +6,13 @@ import {
   listMucHocPhi, createMucHocPhi, deleteMucHocPhi,
   listMucHocDuoi, createMucHocDuoi, deleteMucHocDuoi,
   listMucHocLieu, createMucHocLieu, deleteMucHocLieu,
-  listPhieuTheoKy, listDuoiTheoKy, getPhieuAo, getHoaDonByKy, getHoaDonDong, chotKy, ghiThanhToan, listThanhToan, listNoPhaiThu,
+  listPhieuTheoKy, listDuoiTheoKy, getPhieuAo, getHoaDonByKy, getHoaDonDong, chotKy, huyChot, ghiThanhToan, listThanhToan, listNoPhaiThu, setNoKhoiTao, listPhuHuynhCoConDangHoc,
   kyHienTai,
   listHocPhiTheoMonV2, setCongThucHocPhi, getDiemDanhTheoLop,
   listHeSoHocSinh, xacNhanHeSo, setHeSoThuCong, boManualHeSo,
   listPhatSinhTheoKy, themPhatSinhLop, themPhatSinhCaNhan, xoaPhatSinh,
   layTenConDangHoc, soanThongBao, danhDauDaBao,
-  type MucHocPhi, type MucHocDuoi, type MucHocLieu, type PhieuAo, type ThanhToan, type DongPhieu, type DongSoHang, type DongDuoiSoHang, type DongNo, type HocSinhHeSo, type PhatSinhEntry,
+  type MucHocPhi, type MucHocDuoi, type MucHocLieu, type PhieuAo, type ThanhToan, type DongPhieu, type DongSoHang, type DongDuoiSoHang, type DongNo, type PHOpt, type HocSinhHeSo, type PhatSinhEntry,
   type DongTheoMonV2, type CongThuc, type DiemDanhLop,
 } from '../../lib/hocphi'
 import { listLop, listHocSinh, updateLop, type Lop, type HocSinh } from '../../lib/nhansu'
@@ -374,6 +374,12 @@ function PhieuChiTietExpand({ phId, ky, onChanged }: { phId: string; ky: string;
   useEffect(() => { reload() }, [phId, ky]) // eslint-disable-line
 
   async function chot() { setBusy(true); setErr(null); try { await chotKy(phId, ky, []); await reload(); onChanged() } catch (e: any) { setErr(e.message ?? String(e)) } finally { setBusy(false) } }
+  async function huy() {
+    const daThuNow = thanhToans.reduce((s, t) => s + Number(t.so_tien), 0)
+    const canhBao = daThuNow > 0 ? `\n⚠ Đã thu ${tienVN(daThuNow)} — huỷ chốt sẽ XOÁ bản ghi thu này.` : ''
+    if (!confirm(`Huỷ chốt phiếu kỳ này để sửa lại? Hoá đơn sẽ về "tạm tính".${canhBao}`)) return
+    setBusy(true); setErr(null); try { await huyChot(hd!.id); await reload(); onChanged() } catch (e: any) { setErr(e.message ?? String(e)) } finally { setBusy(false) }
+  }
   async function thu() {
     if (!hd || !thuTien.trim()) return
     const soTien = Number(thuTien.replace(/[.,]/g, '')); if (!soTien || soTien <= 0) { setErr('Số tiền không hợp lệ.'); return }
@@ -411,6 +417,7 @@ function PhieuChiTietExpand({ phId, ky, onChanged }: { phId: string; ky: string;
             <span className="text-[12px] text-slate-500">Đã thu <b className="text-emerald-600">{tienVN(daThu)}</b> · còn lại <b className="text-rose-600">{tienVN(Math.max(0, tongTien - daThu))}</b></span>
             <input value={thuTien} onChange={(e) => setThuTien(e.target.value)} placeholder="Số tiền thu…" className={`${inp} w-32`} />
             <button disabled={busy || !thuTien.trim()} onClick={thu} className="rounded-lg bg-emerald-600 px-3 py-1.5 text-[12px] font-semibold text-white disabled:opacity-40">Ghi thu tiền</button>
+            <button disabled={busy} onClick={huy} title="Huỷ chốt → về tạm tính để sửa (CT/phát sinh…) rồi chốt lại" className="ml-auto rounded-lg border border-rose-300 px-3 py-1.5 text-[12px] font-semibold text-rose-600 hover:bg-rose-50 disabled:opacity-40">Huỷ chốt / Sửa lại</button>
           </>
         )}
       </div>
@@ -427,9 +434,15 @@ function DanhSachTab() {
   const [anh, setAnh] = useState<{ id: string; ten: string; ma: string } | null>(null)
   const [dlId, setDlId] = useState<string | null>(null)
   const [bulkDl, setBulkDl] = useState<{ done: number; total: number } | null>(null)
+  const [q, setQ] = useState('')
 
   async function reload() { setLoading(true); try { setRows(await listPhieuTheoKy(ky)) } finally { setLoading(false) } }
   useEffect(() => { reload() }, [ky]) // eslint-disable-line
+
+  const boDau = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd').toLowerCase()
+  const filtered = q.trim()
+    ? rows.filter((r) => { const nq = boDau(q); return boDau(r.ho_ten).includes(nq) || r.ma_ph.toLowerCase().includes(nq) || r.tenCon.some((c) => boDau(c).includes(nq)) })
+    : rows
 
   async function taiMot(r: DongSoHang) {
     setDlId(r.phu_huynh_id)
@@ -451,27 +464,30 @@ function DanhSachTab() {
     <div className="mx-auto max-w-[1150px]">
       <div className="mb-3 flex flex-wrap items-center gap-3 rounded-xl border border-slate-200 bg-white p-4">
         <KyPicker ky={ky} onChange={setKy} />
-        <span className="text-[12px] text-slate-400">{rows.length} PH · {soDaChot} đã chốt · tổng đã chốt {tienVN(tongDaChot)}</span>
+        <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm phụ huynh / tên học sinh / mã…" className={`${inp} w-64`} />
+        <span className="text-[12px] text-slate-400">{q.trim() ? `${filtered.length}/` : ''}{rows.length} PH · {soDaChot} đã chốt · tổng đã chốt {tienVN(tongDaChot)}</span>
         <button onClick={taiTatCa} disabled={!rows.length || !!bulkDl} className="ml-auto rounded-lg border border-indigo-300 bg-indigo-50 px-3 py-1.5 text-[12px] font-medium text-indigo-700 hover:bg-indigo-100 disabled:opacity-40">
           {bulkDl ? `⏳ Đang tải ${bulkDl.done}/${bulkDl.total}…` : '⬇ Tải PDF tất cả (mỗi PH 1 file)'}
         </button>
       </div>
       {loading ? <p className="py-8 text-center text-sm text-slate-400">Đang tải…</p>
         : !rows.length ? <div className="rounded-xl border border-dashed border-slate-300 bg-white py-14 text-center text-sm text-slate-400">Chưa có phụ huynh nào có con đang học.</div>
+        : !filtered.length ? <div className="rounded-xl border border-dashed border-slate-300 bg-white py-14 text-center text-sm text-slate-400">Không tìm thấy phụ huynh/học sinh khớp &quot;{q}&quot;.</div>
         : (
           <div className="rounded-xl border border-slate-200 bg-white">
             <table className="w-full text-[13px]">
               <thead className="sticky top-0 z-10 bg-slate-50 text-left text-[11px] uppercase tracking-wide text-slate-400">
-                <tr><th className="px-4 py-2">Phụ huynh</th><th>Số con</th><th className="text-right">Tổng tiền</th><th>Trạng thái</th><th className="text-right px-4">Thao tác</th></tr>
+                <tr><th className="px-4 py-2">Phụ huynh</th><th>Học sinh</th><th className="text-right">Tổng tiền</th><th>Thu tiền</th><th>Thông báo</th><th className="text-right px-4">Thao tác</th></tr>
               </thead>
               <tbody>
-                {rows.map((r) => (
+                {filtered.map((r) => (
                   <Fragment key={r.phu_huynh_id}>
                   <tr className={`border-t border-slate-100 align-top ${expanded === r.phu_huynh_id ? 'bg-indigo-50/40' : ''}`}>
                     <td className="px-4 py-2 font-medium text-slate-800">{r.ho_ten} <span className="font-mono text-[11px] text-slate-400">{r.ma_ph}</span></td>
-                    <td className="text-slate-500">{r.soCon}</td>
+                    <td className="text-[12px] text-slate-600">{r.tenCon.length ? r.tenCon.join(', ') : <span className="text-slate-300">—</span>}</td>
                     <td className="text-right font-medium text-slate-800">{r.tongTien != null ? tienVN(r.tongTien) : '—'}</td>
-                    <td className="py-2"><TrangThaiThuCell r={r} ky={ky} onChanged={reload} /></td>
+                    <td className="py-2"><ThuTienBadge r={r} /></td>
+                    <td className="py-2"><BaoCell r={r} ky={ky} onChanged={reload} /></td>
                     <td className="px-4 py-2">
                       <div className="flex justify-end gap-1.5">
                         <button onClick={() => setExpanded((e) => (e === r.phu_huynh_id ? null : r.phu_huynh_id))} className={`rounded-md border px-2 py-1 text-[12px] font-medium ${expanded === r.phu_huynh_id ? 'border-indigo-400 bg-indigo-100 text-indigo-700' : 'border-slate-200 text-slate-600 hover:border-indigo-300'}`}>Chi tiết {expanded === r.phu_huynh_id ? '▴' : '▾'}</button>
@@ -481,7 +497,7 @@ function DanhSachTab() {
                     </td>
                   </tr>
                   {expanded === r.phu_huynh_id && (
-                    <tr className="bg-indigo-50/40"><td colSpan={5} className="border-t border-indigo-100 p-0"><PhieuChiTietExpand phId={r.phu_huynh_id} ky={ky} onChanged={reload} /></td></tr>
+                    <tr className="bg-indigo-50/40"><td colSpan={6} className="border-t border-indigo-100 p-0"><PhieuChiTietExpand phId={r.phu_huynh_id} ky={ky} onChanged={reload} /></td></tr>
                   )}
                   </Fragment>
                 ))}
@@ -494,13 +510,25 @@ function DanhSachTab() {
   )
 }
 
-// Ô TRẠNG THÁI (2 trạng thái, Thùy 08-01): Chưa chốt → Chưa báo → Đã báo → Đã nộp.
-// "Báo PH" copy nội dung soạn sẵn + ghi mốc bao_lan1_at. Quá 3 ngày từ báo lần 1 mà chưa nộp → cờ ĐỎ + "Báo lần 2".
-function TrangThaiThuCell({ r, ky, onChanged }: { r: DongSoHang; ky: string; onChanged: () => void }) {
+// Cột THU TIỀN — trạng thái thanh toán của hoá đơn (chưa chốt → chưa thu → thu 1 phần → đã thu/miễn).
+function ThuTienBadge({ r }: { r: DongSoHang }) {
+  if (!r.daChot) return <span className="rounded-full bg-indigo-50 px-2 py-0.5 text-[11px] font-medium text-indigo-700">Chưa chốt</span>
+  const map: Record<string, { l: string; c: string }> = {
+    da_thu: { l: 'Đã thu', c: 'bg-emerald-50 text-emerald-700' }, mien: { l: 'Miễn', c: 'bg-emerald-50 text-emerald-700' },
+    thu_mot_phan: { l: 'Thu 1 phần', c: 'bg-amber-50 text-amber-700' }, qua_han: { l: 'Quá hạn', c: 'bg-rose-50 text-rose-700' },
+    chua_thu: { l: 'Chưa thu', c: 'bg-slate-100 text-slate-600' },
+  }
+  const s = map[r.trangThai ?? ''] ?? { l: r.trangThai ?? '—', c: 'bg-slate-100 text-slate-600' }
+  return <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${s.c}`}>{s.l}</span>
+}
+
+// Cột THÔNG BÁO (Thùy 08-01): Chưa báo → Đã báo (dd/mm) → quá 3 ngày (đỏ + "Báo lần 2"). Đã thu/miễn → khỏi báo.
+// "Báo PH" copy nội dung soạn sẵn + ghi mốc bao_lan1_at (lần đầu) để đếm 3 ngày.
+function BaoCell({ r, ky, onChanged }: { r: DongSoHang; ky: string; onChanged: () => void }) {
   const [busy, setBusy] = useState(false)
   const [copied, setCopied] = useState(false)
-  if (!r.daChot || !r.hoaDonId) return <span className="text-[11px] text-slate-400">Chưa chốt</span>
-  if (r.trangThai === 'da_thu' || r.trangThai === 'mien') return <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-medium text-emerald-700">✓ Đã nộp</span>
+  if (!r.daChot || !r.hoaDonId) return <span className="text-[11px] text-slate-300">—</span>
+  if (r.trangThai === 'da_thu' || r.trangThai === 'mien') return <span className="text-[11px] text-slate-300">—</span>
   const daBao = !!r.baoLan1At
   const quaHan = daBao ? (Date.now() - Date.parse(r.baoLan1At!)) / 86400000 >= 3 : false
   const baoNgay = r.baoLan1At ? new Date(r.baoLan1At) : null
@@ -525,36 +553,63 @@ function TrangThaiThuCell({ r, ky, onChanged }: { r: DongSoHang; ky: string; onC
   )
 }
 
-// ── TAB HỌC PHÍ NỢ — PH còn dư nợ (Σ hoá đơn đã chốt − Σ đã thu > 0), sort nợ giảm dần.
-// KHÔNG theo kỳ (nợ tích luỹ mọi kỳ). Bấm 1 PH → sang tab "Học phí tổng" xem chi tiết + thu.
+// ── TAB HỌC PHÍ NỢ — 2 phần: nợ KHỞI TẠO (điền tay, nợ cũ trước khi có hệ thống) + nợ HỆ THỐNG
+// (Σ hoá đơn chốt − đã thu). Tổng = cả 2. Nợ khởi tạo tự cộng vào "nợ kỳ trước" trên phiếu (Thùy 08-01).
+function NoRow({ r, onSave }: { r: DongNo; onSave: (phId: string, so: number) => Promise<void> }) {
+  const [val, setVal] = useState(String(r.noKhoiTao))
+  const [busy, setBusy] = useState(false)
+  useEffect(() => { setVal(String(r.noKhoiTao)) }, [r.noKhoiTao])
+  async function save() {
+    const so = Number(val.replace(/[.,]/g, ''))
+    if (isNaN(so) || so === r.noKhoiTao) return
+    setBusy(true); try { await onSave(r.phu_huynh_id, so) } finally { setBusy(false) }
+  }
+  return (
+    <tr className="border-t border-slate-100">
+      <td className="px-4 py-2 font-medium text-slate-800">{r.ho_ten} <span className="font-mono text-[11px] text-slate-400">{r.ma_ph}</span></td>
+      <td className="px-2 py-2 text-right"><input value={val} onChange={(e) => setVal(e.target.value)} onBlur={save} onKeyDown={(e) => e.key === 'Enter' && (e.target as HTMLInputElement).blur()} disabled={busy} title="Nợ khởi tạo — sửa rồi Enter/rời ô để lưu" className={`${inp} w-28 text-right`} /></td>
+      <td className="px-2 py-2 text-right text-slate-600">{tienVN(r.noHeThong)}</td>
+      <td className="px-4 py-2 text-right font-bold text-rose-600">{tienVN(r.no)}</td>
+    </tr>
+  )
+}
 function NoTab() {
   const [rows, setRows] = useState<DongNo[]>([])
   const [loading, setLoading] = useState(true)
-  useEffect(() => { listNoPhaiThu().then(setRows).finally(() => setLoading(false)) }, [])
+  const [phs, setPhs] = useState<PHOpt[]>([])
+  const [addPh, setAddPh] = useState<string | null>(null)
+  const [addSo, setAddSo] = useState('')
+  const [busy, setBusy] = useState(false)
+  async function reload() { setLoading(true); try { setRows(await listNoPhaiThu()) } finally { setLoading(false) } }
+  useEffect(() => { reload(); listPhuHuynhCoConDangHoc().then(setPhs) }, [])
+  async function saveKhoiTao(phId: string, so: number) { await setNoKhoiTao(phId, so); await reload() }
+  async function them() {
+    if (!addPh || !addSo.trim()) return
+    const so = Number(addSo.replace(/[.,]/g, '')); if (isNaN(so) || so < 0) return
+    setBusy(true); try { await setNoKhoiTao(addPh, so); setAddPh(null); setAddSo(''); await reload() } finally { setBusy(false) }
+  }
   const tongNo = rows.reduce((s, r) => s + r.no, 0)
+  const tongKhoiTao = rows.reduce((s, r) => s + r.noKhoiTao, 0)
   return (
     <div className="mx-auto max-w-[900px]">
-      <div className="mb-3 flex flex-wrap items-center gap-3 rounded-xl border border-slate-200 bg-white p-4">
-        <span className="text-sm font-semibold text-slate-900">Học phí nợ</span>
-        <span className="text-[12px] text-slate-400">{rows.length} PH còn nợ · tổng <b className="text-rose-600">{tienVN(tongNo)}</b></span>
-        <span className="ml-auto text-[11px] text-slate-400">Nợ = tổng hoá đơn đã chốt − đã thu (mọi kỳ)</span>
+      <div className="mb-3 rounded-xl border border-slate-200 bg-white p-4">
+        <div className="mb-2.5 text-sm font-semibold text-slate-900">Học phí nợ <span className="ml-2 text-[12px] font-normal text-slate-400">{rows.length} PH · nợ khởi tạo {tienVN(tongKhoiTao)} · tổng nợ <b className="text-rose-600">{tienVN(tongNo)}</b></span></div>
+        <div className="flex flex-wrap items-center gap-2 rounded-lg bg-slate-50 p-2.5">
+          <span className="text-[12px] font-medium text-slate-500">Nhập nợ khởi tạo (nợ cũ):</span>
+          <div className="w-64"><SearchSelect value={addPh} onChange={setAddPh} placeholder="Chọn phụ huynh…" options={phs.map((p) => ({ id: p.id, label: p.ho_ten, sub: `${p.ma_ph} · ${p.tenCon.join(', ')}` }))} /></div>
+          <input value={addSo} onChange={(e) => setAddSo(e.target.value)} placeholder="Số tiền…" className={`${inp} w-32`} />
+          <button disabled={busy || !addPh || !addSo.trim()} onClick={them} className="rounded-lg bg-indigo-600 px-3 py-1.5 text-[12px] font-semibold text-white disabled:opacity-40">Lưu</button>
+        </div>
       </div>
       {loading ? <p className="py-8 text-center text-sm text-slate-400">Đang tải…</p>
-        : !rows.length ? <div className="rounded-xl border border-dashed border-slate-300 bg-white py-14 text-center text-sm text-slate-400">Không có phụ huynh nào đang nợ. 🎉</div>
+        : !rows.length ? <div className="rounded-xl border border-dashed border-slate-300 bg-white py-14 text-center text-sm text-slate-400">Không có phụ huynh nào đang nợ. 🎉 (nhập nợ khởi tạo ở trên nếu có nợ cũ)</div>
         : (
           <div className="rounded-xl border border-slate-200 bg-white">
             <table className="w-full text-[13px]">
               <thead className="bg-slate-50 text-left text-[11px] uppercase tracking-wide text-slate-400">
-                <tr><th className="px-4 py-2">Phụ huynh</th><th className="text-right px-4">Còn nợ</th></tr>
+                <tr><th className="px-4 py-2">Phụ huynh</th><th className="text-right">Nợ khởi tạo</th><th className="text-right">Nợ học phí</th><th className="text-right px-4">Tổng nợ</th></tr>
               </thead>
-              <tbody>
-                {rows.map((r) => (
-                  <tr key={r.phu_huynh_id} className="border-t border-slate-100">
-                    <td className="px-4 py-2 font-medium text-slate-800">{r.ho_ten} <span className="font-mono text-[11px] text-slate-400">{r.ma_ph}</span></td>
-                    <td className="px-4 py-2 text-right font-bold text-rose-600">{tienVN(r.no)}</td>
-                  </tr>
-                ))}
-              </tbody>
+              <tbody>{rows.map((r) => <NoRow key={r.phu_huynh_id} r={r} onSave={saveKhoiTao} />)}</tbody>
             </table>
           </div>
         )}

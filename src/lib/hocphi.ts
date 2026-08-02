@@ -471,41 +471,56 @@ export async function listHocPhiTheoHocSinhVaMon(ky: string): Promise<DongHocSin
 
 // Nợ (số dư) theo TỪNG PH — batch (không N+1), dùng cho list "Học phí tổng".
 // = Σ(hoá đơn ĐÃ CHỐT) − Σ(đã thu), group theo PH. >0 = còn nợ.
-export async function soDuNoTheoPH(): Promise<Map<string, number>> {
-  const noByPH = new Map<string, number>()
+// Nợ CHI TIẾT theo PH: khởi tạo (điền tay `phu_huynh.no_khoi_tao`) + hệ thống (Σ hoá đơn chốt − đã thu).
+async function noChiTietTheoPH(): Promise<Map<string, { khoiTao: number; heThong: number }>> {
+  const m = new Map<string, { khoiTao: number; heThong: number }>()
+  const get = (id: string) => { let x = m.get(id); if (!x) { x = { khoiTao: 0, heThong: 0 }; m.set(id, x) } return x }
+  const { data: phs, error: e0 } = await supabase.from('phu_huynh').select('id, no_khoi_tao').gt('no_khoi_tao', 0).limit(LIMIT)
+  if (e0) throw e0
+  for (const p of (phs ?? []) as any[]) get(p.id).khoiTao = Number(p.no_khoi_tao)
   const { data: hds, error: e1 } = await supabase.from('hoa_don').select('id, phu_huynh_id, tong_tien').not('dong_at', 'is', null).limit(LIMIT)
   if (e1) throw e1
   const hdPh = new Map<string, string>()
-  for (const h of (hds ?? []) as any[]) {
-    noByPH.set(h.phu_huynh_id, (noByPH.get(h.phu_huynh_id) ?? 0) + Number(h.tong_tien))
-    hdPh.set(h.id, h.phu_huynh_id)
-  }
+  for (const h of (hds ?? []) as any[]) { get(h.phu_huynh_id).heThong += Number(h.tong_tien); hdPh.set(h.id, h.phu_huynh_id) }
   const hdIds = [...hdPh.keys()]
   if (hdIds.length) {
     const { data: tts, error: e2 } = await supabase.from('thanh_toan').select('hoa_don_id, so_tien').in('hoa_don_id', hdIds).limit(LIMIT)
     if (e2) throw e2
-    for (const t of (tts ?? []) as any[]) { const ph = hdPh.get(t.hoa_don_id); if (ph) noByPH.set(ph, (noByPH.get(ph) ?? 0) - Number(t.so_tien)) }
+    for (const t of (tts ?? []) as any[]) { const ph = hdPh.get(t.hoa_don_id); if (ph) get(ph).heThong -= Number(t.so_tien) }
   }
-  return noByPH
+  return m
+}
+// Tổng nợ (khởi tạo + hệ thống) theo PH — dùng cho list "Học phí tổng" + tính "nợ kỳ trước" trên phiếu.
+export async function soDuNoTheoPH(): Promise<Map<string, number>> {
+  const out = new Map<string, number>()
+  for (const [id, v] of await noChiTietTheoPH()) out.set(id, v.khoiTao + v.heThong)
+  return out
+}
+// Nợ khởi tạo (điền tay) của 1 PH — cho tab Nợ sửa.
+export async function setNoKhoiTao(phuHuynhId: string, so: number): Promise<void> {
+  const { error } = await supabase.from('phu_huynh').update({ no_khoi_tao: Math.max(0, Math.round(so)) }).eq('id', phuHuynhId)
+  if (error) throw error
 }
 
-// Danh sách PH đang NỢ (tab "Học phí nợ") — chỉ PH còn dư nợ >0, sort nợ giảm dần.
-// Lấy PH từ chính bảng nợ (gồm cả PH con đã nghỉ mà còn nợ), không giới hạn "có con đang học".
-export type DongNo = { phu_huynh_id: string; ho_ten: string; ma_ph: string; no: number }
+// Danh sách PH đang NỢ (tab "Học phí nợ") — tách khởi tạo / hệ thống, chỉ PH tổng nợ >0, sort giảm.
+export type DongNo = { phu_huynh_id: string; ho_ten: string; ma_ph: string; noKhoiTao: number; noHeThong: number; no: number }
 export async function listNoPhaiThu(): Promise<DongNo[]> {
-  const noByPH = await soDuNoTheoPH()
-  const phIds = [...noByPH.entries()].filter(([, n]) => n > 0.5).map(([id]) => id)
-  if (!phIds.length) return []
-  const { data: phs, error } = await supabase.from('phu_huynh').select('id, ho_ten, ma_ph').in('id', phIds).limit(LIMIT)
+  const m = await noChiTietTheoPH()
+  const es = [...m.entries()].map(([id, v]) => ({ id, noKhoiTao: Math.round(v.khoiTao), noHeThong: Math.round(v.heThong) })).filter((r) => r.noKhoiTao + r.noHeThong > 0.5)
+  if (!es.length) return []
+  const { data: phs, error } = await supabase.from('phu_huynh').select('id, ho_ten, ma_ph').in('id', es.map((e) => e.id)).limit(LIMIT)
   if (error) throw error
   const phMap = new Map(((phs ?? []) as any[]).map((p) => [p.id, p]))
-  return phIds
-    .map((id) => ({ phu_huynh_id: id, ho_ten: phMap.get(id)?.ho_ten ?? '(không rõ)', ma_ph: phMap.get(id)?.ma_ph ?? '', no: Math.round(noByPH.get(id) ?? 0) }))
+  return es
+    .map((e) => ({ phu_huynh_id: e.id, ho_ten: phMap.get(e.id)?.ho_ten ?? '(không rõ)', ma_ph: phMap.get(e.id)?.ma_ph ?? '', noKhoiTao: e.noKhoiTao, noHeThong: e.noHeThong, no: e.noKhoiTao + e.noHeThong }))
     .sort((a, b) => b.no - a.no)
 }
 
 // ── CHỐT KỲ (Ảo→Thật, atomic claim — §7/§266) ───────────────────────────────
 export async function tinhSoDuNo(phuHuynhId: string): Promise<number> {
+  // Nợ khởi tạo (điền tay) tự cộng vào "nợ kỳ trước" trên phiếu (Thùy 08-01).
+  const { data: ph } = await supabase.from('phu_huynh').select('no_khoi_tao').eq('id', phuHuynhId).maybeSingle()
+  const khoiTao = Number((ph as { no_khoi_tao?: number } | null)?.no_khoi_tao ?? 0)
   const { data: hds, error: e1 } = await supabase.from('hoa_don').select('id, tong_tien').eq('phu_huynh_id', phuHuynhId).not('dong_at', 'is', null).limit(LIMIT)
   if (e1) throw e1
   const hdIds = (hds ?? []).map((h) => h.id)
@@ -516,7 +531,18 @@ export async function tinhSoDuNo(phuHuynhId: string): Promise<number> {
     if (e2) throw e2
     tongDaThu = (tt ?? []).reduce((s, t) => s + Number(t.so_tien), 0)
   }
-  return tongHoaDon - tongDaThu
+  return khoiTao + tongHoaDon - tongDaThu
+}
+
+// HUỶ CHỐT (sửa học phí sau chốt, Thùy 08-01): đưa PH về phiếu ẢO — xoá hoá đơn + dòng + thanh toán + log
+// theo thứ tự lá→gốc. Sau đó phiếu tự tính lại theo data/công thức mới → chốt lại.
+export async function huyChot(hoaDonId: string): Promise<void> {
+  for (const tbl of ['thanh_toan', 'hoa_don_log', 'hoa_don_dong'] as const) {
+    const { error } = await supabase.from(tbl).delete().eq('hoa_don_id', hoaDonId)
+    if (error) throw error
+  }
+  const { error } = await supabase.from('hoa_don').delete().eq('id', hoaDonId)
+  if (error) throw error
 }
 
 export async function getHoaDonByKy(phuHuynhId: string, ky: string): Promise<{ id: string; trang_thai: string; tong_tien: number } | null> {
@@ -585,15 +611,16 @@ export async function listThanhToan(hoaDonId: string): Promise<ThanhToan[]> {
 }
 
 // ── DANH SÁCH PHỤ HUYNH (để chọn phiếu) — chỉ PH có con đang học ────────────
-export type PHOpt = { id: string; ho_ten: string; ma_ph: string; soCon: number }
+export type PHOpt = { id: string; ho_ten: string; ma_ph: string; soCon: number; tenCon: string[] }
 export async function listPhuHuynhCoConDangHoc(): Promise<PHOpt[]> {
-  const { data, error } = await supabase.from('hoc_sinh').select('phu_huynh_id, phu_huynh:phu_huynh_id(id, ho_ten, ma_ph)').eq('trang_thai', 'dang_hoc').not('phu_huynh_id', 'is', null).limit(LIMIT)
+  const { data, error } = await supabase.from('hoc_sinh').select('ho_ten, phu_huynh:phu_huynh_id(id, ho_ten, ma_ph)').eq('trang_thai', 'dang_hoc').not('phu_huynh_id', 'is', null).order('ho_ten').limit(LIMIT)
   if (error) throw error
   const byPH = new Map<string, PHOpt>()
   for (const r of (data ?? []) as any[]) {
     const ph = r.phu_huynh; if (!ph) continue
-    const cur = byPH.get(ph.id) ?? { id: ph.id, ho_ten: ph.ho_ten, ma_ph: ph.ma_ph, soCon: 0 }
-    cur.soCon++; byPH.set(ph.id, cur)
+    const cur = byPH.get(ph.id) ?? { id: ph.id, ho_ten: ph.ho_ten, ma_ph: ph.ma_ph, soCon: 0, tenCon: [] as string[] }
+    cur.soCon++; if (r.ho_ten) cur.tenCon.push(r.ho_ten) // tên con để hiện + search theo tên HS ra PH
+    byPH.set(ph.id, cur)
   }
   return [...byPH.values()].sort((a, b) => a.ho_ten.localeCompare(b.ho_ten, 'vi'))
 }
@@ -752,7 +779,7 @@ async function tinhTamTinhTheoPH(ky: string): Promise<{ chinh: Map<string, numbe
 // Nhẹ: dùng hoa_don đã chốt cho tiền đã CHỐT; PH CHƯA chốt hiện TẠM TÍNH (batch, không N+1 — Thùy 07-05).
 // Số tạm tính KHÔNG gồm nợ kỳ trước/phát sinh tay — số cuối cùng để thu tiền vẫn lấy ở "Phiếu" (getPhieuAo).
 export type DongSoHang = {
-  phu_huynh_id: string; ho_ten: string; ma_ph: string; soCon: number; daChot: boolean; tongTien: number | null; trangThai: string | null
+  phu_huynh_id: string; ho_ten: string; ma_ph: string; soCon: number; tenCon: string[]; daChot: boolean; tongTien: number | null; trangThai: string | null
   tienChinh: number; tienDuoi: number; tienNo: number // breakdown TẠM TÍNH (chưa chốt); chốt rồi thì xem chi tiết hoá đơn
   hoaDonId: string | null; trangThaiTB: TrangThaiTB | null; baoLan1At: string | null
 }
@@ -765,7 +792,7 @@ export async function listPhieuTheoKy(ky: string): Promise<DongSoHang[]> {
     const duoi = tamTinh.duoi.get(p.id) ?? 0
     const no = Math.max(0, noByPH.get(p.id) ?? 0) // nợ từ kỳ TRƯỚC (hoá đơn đã chốt chưa trả hết); chỉ lấy phần dương
     return {
-      phu_huynh_id: p.id, ho_ten: p.ho_ten, ma_ph: p.ma_ph, soCon: p.soCon, daChot: !!hd,
+      phu_huynh_id: p.id, ho_ten: p.ho_ten, ma_ph: p.ma_ph, soCon: p.soCon, tenCon: p.tenCon, daChot: !!hd,
       // Chốt rồi → tổng THẬT (hd.tong_tien, đã gồm mọi khoản + nợ lúc chốt). Chưa chốt → tạm tính đầy đủ.
       tongTien: hd ? Number(hd.tong_tien) : chinh + duoi + no, trangThai: hd?.trang_thai ?? null,
       tienChinh: chinh, tienDuoi: duoi, tienNo: no,
