@@ -3435,3 +3435,12 @@ Verify: card hiện "△ABC nhọn, ba đường cao... | tứ giác BFEC nội 
 
 ## 2026-08-01 (8) — Học phí tổng: polish layout bảng (CEO: xấu, lệch/sát)
 - colgroup width cố định (PH 17% · HS 17% · Tổng tiền 14% · Thu tiền 13% · Thông báo 24% · Thao tác 15%) + mọi cell `px-3 py-2.5` → hết "lệch nhau / quá sát nhau" giữa Tổng tiền|Thu tiền|Thông báo. Base text 12px, tên PH font-medium + mã PH xuống dòng nhỏ (10px), tên HS nhỏ → nhường chỗ cột khác. Bỏ nút PDF (per-row + bulk "Tải PDF tất cả") + taiPdfPhieu/taiMot/taiTatCa/dlId/bulkDl. `overflow-x-auto` wrap.
+
+## 2026-08-01 (9) — Học phí tổng: REDESIGN bảng → CARD (CEO: xấu, load lâu, chốt refresh cả màn)
+- **Bảng → grid CARD** (2 cột md+). Mỗi PH = 1 card hiện ĐỦ cơ cấu tiền mặc định (học phí+liệu / đuổi / nợ / TỔNG) — KHÔNG cần click chi tiết. Thu gọn được từng card (▴/▾) + nút "Mở/Thu gọn tất cả" (mặc định MỞ).
+- **Load nhanh:** card dùng data BATCH có sẵn (`listPhieuTheoKy` — thêm `daThuKy` batch), BỎ `PhieuChiTietExpand` (gọi `getPhieuAo` mỗi click → lag). Chi tiết từng-HS bỏ (cơ cấu nhóm là đủ).
+- **KHÔNG refresh cả màn:** chốt/báo/thu = OPTIMISTIC — `PhuHuynhCard` giữ state riêng, `onDoi` cập nhật đúng 1 dòng trong `rows` (không `reload()` cả list). chotKy trả {hoaDonId,tongTien} → set thẳng.
+- **Chốt = CHECKBOX** (tích=chốt, bỏ tích=huỷ chốt+confirm). **Trạng thái = toggle bar 3 nấc "Chưa báo | Đã báo | Đã thu"** + **filter tabs** trên đầu (Tất cả/Chưa chốt/Chưa báo/Đã báo/Đã thu + đếm) → bấm nấc/tab để lọc & chuyển nhóm.
+- **"Đã thu"** (CEO): bấm → hiện ô nhập số tiền **mặc định = còn lại (số thông báo)** → `ghiThanhToan`; thu < tổng → phần thiếu TỰ thành nợ (cơ chế nợ = hoá đơn − đã thu). Card đổi nhóm sang "Đã thu" khi trả đủ.
+- **Bỏ hẳn:** cột-bảng cũ (ThuTienBadge/BaoCell/PhieuChiTietExpand) + nút PDF. Xoá import thừa (Fragment/getPhieuAo/getHoaDonByKy/getHoaDonDong/listThanhToan/PhieuAo/ThanhToan/DongPhieu/LOAI_LABEL).
+- **Verify live:** 254 card render, filter "Tất cả 254 · Chưa chốt 254", card hiện breakdown+tổng+checkbox+Ảnh QR (nợ khởi tạo hiện đúng "Nợ kỳ trước 590k"). tsc xanh.

@@ -1,18 +1,18 @@
 // Học phí (staff, Apple-clean §189 — KHÔNG sci-fi). Spec: spec-hocphi.md.
 // 5 tab: Danh sách (tổng quan mọi PH/kỳ → ảnh/PDF thông báo) · Phiếu (chọn PH+kỳ → phiếu ảo/thật,
 // chốt kỳ, thu tiền) · Xét duyệt (người-trong-vòng-lặp, KHÔNG auto-giảm) · Mức học phí · Mức học liệu.
-import { Fragment, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   listMucHocPhi, createMucHocPhi, deleteMucHocPhi,
   listMucHocDuoi, createMucHocDuoi, deleteMucHocDuoi,
   listMucHocLieu, createMucHocLieu, deleteMucHocLieu,
-  listPhieuTheoKy, listDuoiTheoKy, getPhieuAo, getHoaDonByKy, getHoaDonDong, chotKy, huyChot, ghiThanhToan, listThanhToan, listNoPhaiThu, setNoKhoiTao, listPhuHuynhCoConDangHoc,
+  listPhieuTheoKy, listDuoiTheoKy, chotKy, huyChot, ghiThanhToan, listNoPhaiThu, setNoKhoiTao, listPhuHuynhCoConDangHoc,
   kyHienTai,
   listHocPhiTheoMonV2, setCongThucHocPhi, getDiemDanhTheoLop,
   listHeSoHocSinh, xacNhanHeSo, setHeSoThuCong, boManualHeSo,
   listPhatSinhTheoKy, themPhatSinhLop, themPhatSinhCaNhan, xoaPhatSinh,
   layTenConDangHoc, soanThongBao, danhDauDaBao,
-  type MucHocPhi, type MucHocDuoi, type MucHocLieu, type PhieuAo, type ThanhToan, type DongPhieu, type DongSoHang, type DongDuoiSoHang, type DongNo, type PHOpt, type HocSinhHeSo, type PhatSinhEntry,
+  type MucHocPhi, type MucHocDuoi, type MucHocLieu, type DongSoHang, type DongDuoiSoHang, type DongNo, type PHOpt, type HocSinhHeSo, type PhatSinhEntry,
   type DongTheoMonV2, type CongThuc, type DiemDanhLop,
 } from '../../lib/hocphi'
 import { listLop, listHocSinh, updateLop, type Lop, type HocSinh } from '../../lib/nhansu'
@@ -22,7 +22,6 @@ import { inp } from '../kho/ui'
 import { useStore } from '../../store/useStore'
 
 const tienVN = (n: number) => Math.round(n).toLocaleString('vi-VN') + 'đ'
-const LOAI_LABEL: Record<string, string> = { hoc_phi: 'Học phí', hoc_duoi: 'Học đuổi', hoc_lieu: 'Học liệu', phat_sinh: 'Phát sinh', no_ky_truoc: 'Nợ kỳ trước' }
 
 // Chọn kỳ (tháng) — thay input[type=month] (Safari/Mac hiện "July 2026" khó chịu). Nút ‹ › + nhãn VN.
 // value/onChange giữ nguyên format 'YYYY-MM-01' như setKy cũ → thay tại chỗ, không đụng logic tab.
@@ -350,77 +349,123 @@ function DiemDanhTab() {
 }
 
 // ── TAB HỌC PHÍ HỌC CHÍNH — tổng quan mọi PH trong kỳ → xuất ảnh/PDF + toggle trạng thái thông báo
-// thu tiền (Thùy 07-05, giống toggle tuyển sinh): Đã thông báo lần 1 → Chưa nộp-đang xử lý → Đã hoàn
-// thành. Mỗi bước có sẵn nội dung — Nhân sự chỉ Copy → dán gửi PH, không phải nghĩ chữ.
-// Chi tiết 1 PH (bung trong list "Học phí tổng") — gộp từ tab Phiếu cũ: xem khoản + Chốt kỳ + Thu tiền.
-function PhieuChiTietExpand({ phId, ky, onChanged }: { phId: string; ky: string; onChanged: () => void }) {
-  const [ao, setAo] = useState<PhieuAo | null>(null)
-  const [dongChot, setDongChot] = useState<DongPhieu[]>([])
-  const [hd, setHd] = useState<{ id: string; trang_thai: string; tong_tien: number } | null>(null)
-  const [thanhToans, setThanhToans] = useState<ThanhToan[]>([])
-  const [loading, setLoading] = useState(true)
+// Nhóm trạng thái để LỌC (tab con) + màu card. Chưa chốt → Chưa báo → Đã báo → Đã thu.
+type NhomTT = 'chua_chot' | 'chua_bao' | 'da_bao' | 'da_thu'
+function nhomTT(r: DongSoHang): NhomTT {
+  if (!r.daChot) return 'chua_chot'
+  if (r.trangThai === 'da_thu' || r.trangThai === 'mien') return 'da_thu'
+  if (r.baoLan1At) return 'da_bao'
+  return 'chua_bao'
+}
+const NHOM: { key: 'all' | NhomTT; label: string }[] = [
+  { key: 'all', label: 'Tất cả' }, { key: 'chua_chot', label: 'Chưa chốt' }, { key: 'chua_bao', label: 'Chưa báo' }, { key: 'da_bao', label: 'Đã báo' }, { key: 'da_thu', label: 'Đã thu' },
+]
+const NHOM_MAU: Record<NhomTT, { vien: string; pill: string }> = {
+  chua_chot: { vien: 'border-l-slate-300', pill: 'bg-slate-100 text-slate-600' },
+  chua_bao: { vien: 'border-l-rose-400', pill: 'bg-rose-50 text-rose-700' },
+  da_bao: { vien: 'border-l-amber-400', pill: 'bg-amber-50 text-amber-700' },
+  da_thu: { vien: 'border-l-emerald-400', pill: 'bg-emerald-50 text-emerald-700' },
+}
+
+// 1 CARD phụ huynh — hiện ĐỦ cơ cấu tiền + tổng, thu gọn được. Chốt/báo/thu OPTIMISTIC (cập nhật đúng
+// card, KHÔNG refresh cả màn). Chốt = checkbox; trạng thái = toggle bar 3 nấc (Chưa báo/Đã báo/Đã thu).
+function PhuHuynhCard({ r0, ky, onAnh, moMacDinh, onDoi }: { r0: DongSoHang; ky: string; onAnh: (r: DongSoHang) => void; moMacDinh: boolean; onDoi: (r: DongSoHang) => void }) {
+  const [r, setRSt] = useState(r0)
+  const [open, setOpen] = useState(moMacDinh)
   const [busy, setBusy] = useState(false)
-  const [err, setErr] = useState<string | null>(null)
-  const [thuTien, setThuTien] = useState('')
+  const [showThu, setShowThu] = useState(false)
+  const [thuSo, setThuSo] = useState('')
+  const [copied, setCopied] = useState(false)
+  useEffect(() => { setRSt(r0) }, [r0])
+  useEffect(() => { setOpen(moMacDinh) }, [moMacDinh])
+  const setR = (nw: DongSoHang) => { setRSt(nw); onDoi(nw) }
+  const nhom = nhomTT(r)
+  const tong = r.tongTien ?? 0
+  const conLai = Math.max(0, tong - r.daThuKy)
 
-  async function reload() {
-    setLoading(true); setErr(null)
+  async function toggleChot() {
+    setBusy(true)
     try {
-      const existed = await getHoaDonByKy(phId, ky); setHd(existed)
-      if (existed) { setThanhToans(await listThanhToan(existed.id)); setDongChot(await getHoaDonDong(existed.id)); setAo(null) }
-      else { setAo(await getPhieuAo(phId, ky)); setThanhToans([]); setDongChot([]) }
-    } catch (e: any) { setErr(e.message ?? String(e)) } finally { setLoading(false) }
+      if (!r.daChot) {
+        const { hoaDonId, tongTien } = await chotKy(r.phu_huynh_id, ky, [])
+        setR({ ...r, daChot: true, hoaDonId, tongTien, trangThai: 'chua_thu', baoLan1At: null, daThuKy: 0 })
+      } else {
+        const cb = r.daThuKy > 0 ? `\n⚠ Đã thu ${tienVN(r.daThuKy)} — huỷ sẽ xoá bản ghi thu.` : ''
+        if (!confirm(`Huỷ chốt phiếu này để sửa lại?${cb}`)) return
+        await huyChot(r.hoaDonId!)
+        setR({ ...r, daChot: false, hoaDonId: null, trangThai: null, baoLan1At: null, daThuKy: 0, tongTien: r.tienChinh + r.tienDuoi + r.tienNo })
+      }
+    } catch (e: any) { alert(e.message ?? String(e)) } finally { setBusy(false) }
   }
-  useEffect(() => { reload() }, [phId, ky]) // eslint-disable-line
+  async function bao() {
+    setBusy(true)
+    try {
+      const tenCon = await layTenConDangHoc(r.phu_huynh_id)
+      const nd = soanThongBao(r.baoLan1At ? 'cho_xu_ly' : 'thong_bao_1', tenCon, ky, tong)
+      try { await navigator.clipboard.writeText(nd) } catch { /* clipboard bị chặn */ }
+      if (!r.baoLan1At) { await danhDauDaBao(r.hoaDonId!); setR({ ...r, baoLan1At: new Date().toISOString() }) }
+      setCopied(true); setTimeout(() => setCopied(false), 1500)
+    } catch (e: any) { alert(e.message ?? String(e)) } finally { setBusy(false) }
+  }
+  async function ghiThu() {
+    const so = Number(thuSo.replace(/[.,]/g, '')); if (!so || so <= 0) { alert('Số tiền không hợp lệ.'); return }
+    setBusy(true)
+    try {
+      await ghiThanhToan(r.hoaDonId!, so)
+      const daThuMoi = r.daThuKy + so
+      setR({ ...r, daThuKy: daThuMoi, trangThai: daThuMoi >= tong ? 'da_thu' : 'thu_mot_phan' })
+      setShowThu(false); setThuSo('')
+    } catch (e: any) { alert(e.message ?? String(e)) } finally { setBusy(false) }
+  }
+  const Seg = ({ k, label, onClick }: { k: NhomTT; label: string; onClick: () => void }) => (
+    <button disabled={busy} onClick={onClick} className={`px-2.5 py-1 text-[11px] font-semibold ${nhom === k ? 'bg-indigo-600 text-white' : 'text-slate-500 hover:bg-slate-100'} disabled:opacity-40`}>{label}</button>
+  )
 
-  async function chot() { setBusy(true); setErr(null); try { await chotKy(phId, ky, []); await reload(); onChanged() } catch (e: any) { setErr(e.message ?? String(e)) } finally { setBusy(false) } }
-  async function huy() {
-    const daThuNow = thanhToans.reduce((s, t) => s + Number(t.so_tien), 0)
-    const canhBao = daThuNow > 0 ? `\n⚠ Đã thu ${tienVN(daThuNow)} — huỷ chốt sẽ XOÁ bản ghi thu này.` : ''
-    if (!confirm(`Huỷ chốt phiếu kỳ này để sửa lại? Hoá đơn sẽ về "tạm tính".${canhBao}`)) return
-    setBusy(true); setErr(null); try { await huyChot(hd!.id); await reload(); onChanged() } catch (e: any) { setErr(e.message ?? String(e)) } finally { setBusy(false) }
-  }
-  async function thu() {
-    if (!hd || !thuTien.trim()) return
-    const soTien = Number(thuTien.replace(/[.,]/g, '')); if (!soTien || soTien <= 0) { setErr('Số tiền không hợp lệ.'); return }
-    setBusy(true); setErr(null); try { await ghiThanhToan(hd.id, soTien); setThuTien(''); await reload(); onChanged() } catch (e: any) { setErr(e.message ?? String(e)) } finally { setBusy(false) }
-  }
-
-  const dong = hd ? dongChot : (ao?.dong ?? [])
-  const tongTien = hd ? hd.tong_tien : (ao?.tongTien ?? 0)
-  const daThu = thanhToans.reduce((s, t) => s + Number(t.so_tien), 0)
-  if (loading) return <div className="px-4 py-3 text-[13px] text-slate-400">Đang tải chi tiết…</div>
   return (
-    <div className="px-4 py-3">
-      {err && <div className="mb-2 rounded bg-rose-50 px-2 py-1 text-[12px] text-rose-600">{err}</div>}
-      <table className="w-full text-[12px]">
-        <tbody>
-          {dong.map((d, i) => (
-            <tr key={i} className="border-b border-slate-100">
-              <td className="py-1 pr-2 align-top"><span className="rounded bg-slate-200 px-1.5 py-0.5 text-[11px] font-medium text-slate-600">{LOAI_LABEL[d.loai]}</span></td>
-              <td className="pr-2 text-slate-600">{d.hoc_sinh_ten ?? '—'}{d.lop_ten ? ` · ${d.lop_ten}` : ''}{d.loai === 'hoc_phi' ? ` — ${d.so_luong} buổi × ${tienVN(d.don_gia ?? 0)}${d.he_so && d.he_so !== 1 ? ` × ${d.he_so}` : ''}${d.mo_ta ? ` (${d.mo_ta})` : ''}` : d.mo_ta ? ` — ${d.mo_ta}` : ''}</td>
-              <td className="whitespace-nowrap text-right font-medium text-slate-800">{tienVN(d.thanh_tien)}</td>
-            </tr>
-          ))}
-          {!dong.length && <tr><td colSpan={3} className="py-2 text-center text-slate-400">Không có khoản nào trong kỳ.</td></tr>}
-        </tbody>
-      </table>
-      <div className="mt-2 flex items-center justify-between border-t-2 border-slate-800 pt-2">
-        <span className="text-[13px] font-bold text-slate-800">TỔNG CỘNG{!hd ? ' (tạm tính)' : ''}</span>
-        <span className="text-[15px] font-extrabold text-indigo-700">{tienVN(tongTien)}</span>
+    <div className={`rounded-xl border border-l-4 border-slate-200 bg-white ${NHOM_MAU[nhom].vien}`}>
+      <div className="flex items-center gap-2.5 px-3.5 py-2.5">
+        <label className="flex cursor-pointer items-center gap-1.5" title={r.daChot ? 'Đang chốt — bỏ tích để huỷ chốt/sửa lại' : 'Tích để chốt kỳ'}>
+          <input type="checkbox" checked={r.daChot} disabled={busy} onChange={toggleChot} className="h-4 w-4 accent-indigo-600" />
+          <span className="text-[11px] font-medium text-slate-500">Chốt</span>
+        </label>
+        <div className="min-w-0 flex-1">
+          <div className="truncate text-[13px] font-semibold text-slate-800">{r.ho_ten} <span className="font-mono text-[10px] font-normal text-slate-400">{r.ma_ph}</span></div>
+          {r.tenCon.length > 0 && <div className="truncate text-[11px] text-slate-500">{r.tenCon.join(', ')}</div>}
+        </div>
+        <span className={`whitespace-nowrap rounded-full px-2 py-0.5 text-[10px] font-bold ${NHOM_MAU[nhom].pill}`}>{NHOM.find((n) => n.key === nhom)?.label}</span>
+        <span className="whitespace-nowrap text-[15px] font-extrabold text-indigo-700">{tienVN(tong)}</span>
+        <button onClick={() => setOpen((o) => !o)} className="rounded-md border border-slate-200 px-1.5 py-1 text-[11px] text-slate-500 hover:border-indigo-300">{open ? '▴' : '▾'}</button>
       </div>
-      <div className="mt-2.5 flex flex-wrap items-center gap-2">
-        {!hd ? (
-          <button disabled={busy || !dong.length} onClick={chot} className="rounded-lg bg-indigo-600 px-3 py-1.5 text-[12px] font-semibold text-white disabled:opacity-40">{busy ? 'Đang chốt…' : '🔒 Chốt kỳ'}</button>
-        ) : (
-          <>
-            <span className="text-[12px] text-slate-500">Đã thu <b className="text-emerald-600">{tienVN(daThu)}</b> · còn lại <b className="text-rose-600">{tienVN(Math.max(0, tongTien - daThu))}</b></span>
-            <input value={thuTien} onChange={(e) => setThuTien(e.target.value)} placeholder="Số tiền thu…" className={`${inp} w-32`} />
-            <button disabled={busy || !thuTien.trim()} onClick={thu} className="rounded-lg bg-emerald-600 px-3 py-1.5 text-[12px] font-semibold text-white disabled:opacity-40">Ghi thu tiền</button>
-            <button disabled={busy} onClick={huy} title="Huỷ chốt → về tạm tính để sửa (CT/phát sinh…) rồi chốt lại" className="ml-auto rounded-lg border border-rose-300 px-3 py-1.5 text-[12px] font-semibold text-rose-600 hover:bg-rose-50 disabled:opacity-40">Huỷ chốt / Sửa lại</button>
-          </>
-        )}
-      </div>
+      {open && (
+        <div className="border-t border-slate-100 px-3.5 py-2.5">
+          <div className="mb-2 space-y-0.5 text-[12px]">
+            {r.tienChinh > 0 && <div className="flex justify-between"><span className="text-slate-500">Học phí + học liệu</span><span className="font-medium text-slate-700">{tienVN(r.tienChinh)}</span></div>}
+            {r.tienDuoi > 0 && <div className="flex justify-between"><span className="text-slate-500">Bổ trợ đuổi</span><span className="font-medium text-slate-700">{tienVN(r.tienDuoi)}</span></div>}
+            {r.tienNo > 0 && <div className="flex justify-between"><span className="text-slate-500">Nợ kỳ trước</span><span className="font-medium text-rose-600">{tienVN(r.tienNo)}</span></div>}
+            <div className="flex justify-between border-t border-slate-200 pt-1"><span className="font-bold text-slate-800">TỔNG{!r.daChot ? ' (tạm tính)' : ''}</span><span className="font-extrabold text-indigo-700">{tienVN(tong)}</span></div>
+            {r.daChot && r.daThuKy > 0 && <div className="flex justify-between text-[11px]"><span className="text-slate-400">Đã thu {tienVN(r.daThuKy)} · còn lại</span><span className="font-semibold text-rose-600">{tienVN(conLai)}</span></div>}
+          </div>
+          <div className="flex flex-wrap items-center gap-2">
+            {r.daChot ? (
+              <div className="inline-flex overflow-hidden rounded-md border border-slate-300">
+                <Seg k="chua_bao" label="Chưa báo" onClick={() => {}} />
+                <Seg k="da_bao" label={copied ? '✓ Copy' : 'Đã báo'} onClick={bao} />
+                <Seg k="da_thu" label="Đã thu" onClick={() => { setShowThu(true); setThuSo(String(conLai)) }} />
+              </div>
+            ) : <span className="text-[11px] text-slate-400">Tích &quot;Chốt&quot; để bắt đầu thu tiền</span>}
+            <button onClick={() => onAnh(r)} className="rounded-md border border-slate-200 px-2.5 py-1 text-[11px] font-medium text-slate-600 hover:border-indigo-300">📷 Ảnh QR</button>
+          </div>
+          {showThu && r.daChot && (
+            <div className="mt-2 flex flex-wrap items-center gap-2 rounded-lg bg-emerald-50 p-2">
+              <span className="text-[11px] font-medium text-slate-600">Số tiền thu (mặc định = số thông báo):</span>
+              <input value={thuSo} onChange={(e) => setThuSo(e.target.value)} className={`${inp} w-32`} />
+              <button disabled={busy} onClick={ghiThu} className="rounded-md bg-emerald-600 px-3 py-1 text-[11px] font-semibold text-white disabled:opacity-40">Ghi đã thu</button>
+              <button onClick={() => setShowThu(false)} className="text-[11px] text-slate-400 hover:text-slate-600">Huỷ</button>
+              <span className="text-[10px] text-slate-400">Thu ít hơn tổng → phần thiếu tự thành nợ.</span>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   )
 }
@@ -429,66 +474,40 @@ function DanhSachTab() {
   const ky = useStore((s) => s.hocPhiKy) || kyHienTai()
   const setKy = useStore((s) => s.setHocPhiKy)
   const [rows, setRows] = useState<DongSoHang[]>([])
-  const [expanded, setExpanded] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
   const [anh, setAnh] = useState<{ id: string; ten: string; ma: string } | null>(null)
   const [q, setQ] = useState('')
+  const [filter, setFilter] = useState<'all' | NhomTT>('all')
+  const [moAll, setMoAll] = useState(true)
 
   async function reload() { setLoading(true); try { setRows(await listPhieuTheoKy(ky)) } finally { setLoading(false) } }
   useEffect(() => { reload() }, [ky]) // eslint-disable-line
+  const onDoi = (nw: DongSoHang) => setRows((rs) => rs.map((x) => (x.phu_huynh_id === nw.phu_huynh_id ? nw : x))) // cập nhật 1 card, KHÔNG reload cả list
 
   const boDau = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd').toLowerCase()
-  const filtered = q.trim()
-    ? rows.filter((r) => { const nq = boDau(q); return boDau(r.ho_ten).includes(nq) || r.ma_ph.toLowerCase().includes(nq) || r.tenCon.some((c) => boDau(c).includes(nq)) })
-    : rows
-
-  const soDaChot = rows.filter((r) => r.daChot).length
-  const tongDaChot = rows.filter((r) => r.daChot).reduce((s, r) => s + (r.tongTien ?? 0), 0)
+  const timKhop = (r: DongSoHang) => { if (!q.trim()) return true; const nq = boDau(q); return boDau(r.ho_ten).includes(nq) || r.ma_ph.toLowerCase().includes(nq) || r.tenCon.some((c) => boDau(c).includes(nq)) }
+  const filtered = rows.filter((r) => timKhop(r) && (filter === 'all' || nhomTT(r) === filter))
+  const dem = (k: 'all' | NhomTT) => rows.filter((r) => timKhop(r) && (k === 'all' || nhomTT(r) === k)).length
 
   return (
     <div className="mx-auto max-w-[1150px]">
       <div className="mb-3 flex flex-wrap items-center gap-3 rounded-xl border border-slate-200 bg-white p-4">
         <KyPicker ky={ky} onChange={setKy} />
         <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm phụ huynh / tên học sinh / mã…" className={`${inp} w-64`} />
-        <span className="ml-auto text-[12px] text-slate-400">{q.trim() ? `${filtered.length}/` : ''}{rows.length} PH · {soDaChot} đã chốt · tổng đã chốt {tienVN(tongDaChot)}</span>
+        <button onClick={() => setMoAll((m) => !m)} className="rounded-lg border border-slate-200 px-3 py-1.5 text-[12px] font-medium text-slate-600 hover:border-indigo-300">{moAll ? '⊟ Thu gọn tất cả' : '⊞ Mở tất cả'}</button>
+        <span className="ml-auto text-[12px] text-slate-400">{filtered.length}/{rows.length} PH</span>
+      </div>
+      <div className="mb-3 flex flex-wrap gap-1.5">
+        {NHOM.map((n) => (
+          <button key={n.key} onClick={() => setFilter(n.key)} className={`rounded-lg px-3 py-1.5 text-[12px] font-medium ${filter === n.key ? 'bg-indigo-600 text-white' : 'border border-slate-200 bg-white text-slate-600 hover:border-indigo-300'}`}>{n.label} <span className={filter === n.key ? 'opacity-80' : 'text-slate-400'}>{dem(n.key)}</span></button>
+        ))}
       </div>
       {loading ? <p className="py-8 text-center text-sm text-slate-400">Đang tải…</p>
         : !rows.length ? <div className="rounded-xl border border-dashed border-slate-300 bg-white py-14 text-center text-sm text-slate-400">Chưa có phụ huynh nào có con đang học.</div>
-        : !filtered.length ? <div className="rounded-xl border border-dashed border-slate-300 bg-white py-14 text-center text-sm text-slate-400">Không tìm thấy phụ huynh/học sinh khớp &quot;{q}&quot;.</div>
+        : !filtered.length ? <div className="rounded-xl border border-dashed border-slate-300 bg-white py-14 text-center text-sm text-slate-400">Không có phụ huynh khớp bộ lọc.</div>
         : (
-          <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
-            <table className="w-full text-[12px]">
-              <colgroup><col style={{ width: '17%' }} /><col style={{ width: '17%' }} /><col style={{ width: '14%' }} /><col style={{ width: '13%' }} /><col style={{ width: '24%' }} /><col style={{ width: '15%' }} /></colgroup>
-              <thead className="sticky top-0 z-10 bg-slate-50 text-left text-[10px] uppercase tracking-wide text-slate-400">
-                <tr>
-                  <th className="px-3 py-2">Phụ huynh</th><th className="px-3 py-2">Học sinh</th>
-                  <th className="px-3 py-2 text-right">Tổng tiền</th><th className="px-3 py-2">Thu tiền</th>
-                  <th className="px-3 py-2">Thông báo</th><th className="px-3 py-2 text-right">Thao tác</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filtered.map((r) => (
-                  <Fragment key={r.phu_huynh_id}>
-                  <tr className={`border-t border-slate-100 align-middle ${expanded === r.phu_huynh_id ? 'bg-indigo-50/40' : ''}`}>
-                    <td className="px-3 py-2.5"><div className="font-medium text-slate-800">{r.ho_ten}</div><div className="font-mono text-[10px] text-slate-400">{r.ma_ph}</div></td>
-                    <td className="px-3 py-2.5 text-slate-600">{r.tenCon.length ? r.tenCon.join(', ') : <span className="text-slate-300">—</span>}</td>
-                    <td className="px-3 py-2.5 text-right font-semibold text-slate-800 whitespace-nowrap">{r.tongTien != null ? tienVN(r.tongTien) : '—'}</td>
-                    <td className="px-3 py-2.5"><ThuTienBadge r={r} /></td>
-                    <td className="px-3 py-2.5"><BaoCell r={r} ky={ky} onChanged={reload} /></td>
-                    <td className="px-3 py-2.5">
-                      <div className="flex justify-end gap-1.5">
-                        <button onClick={() => setExpanded((e) => (e === r.phu_huynh_id ? null : r.phu_huynh_id))} className={`rounded-md border px-2 py-1 font-medium ${expanded === r.phu_huynh_id ? 'border-indigo-400 bg-indigo-100 text-indigo-700' : 'border-slate-200 text-slate-600 hover:border-indigo-300'}`}>Chi tiết {expanded === r.phu_huynh_id ? '▴' : '▾'}</button>
-                        <button onClick={() => setAnh({ id: r.phu_huynh_id, ten: r.ho_ten, ma: r.ma_ph })} className="rounded-md border border-slate-200 px-2 py-1 font-medium text-slate-600 hover:border-indigo-300">📷 Ảnh</button>
-                      </div>
-                    </td>
-                  </tr>
-                  {expanded === r.phu_huynh_id && (
-                    <tr className="bg-indigo-50/40"><td colSpan={6} className="border-t border-indigo-100 p-0"><PhieuChiTietExpand phId={r.phu_huynh_id} ky={ky} onChanged={reload} /></td></tr>
-                  )}
-                  </Fragment>
-                ))}
-              </tbody>
-            </table>
+          <div className="grid grid-cols-1 gap-2.5 md:grid-cols-2">
+            {filtered.map((r) => <PhuHuynhCard key={r.phu_huynh_id} r0={r} ky={ky} moMacDinh={moAll} onAnh={(x) => setAnh({ id: x.phu_huynh_id, ten: x.ho_ten, ma: x.ma_ph })} onDoi={onDoi} />)}
           </div>
         )}
       {anh && <AnhGuiPHModal phuHuynhId={anh.id} phTen={anh.ten} maPh={anh.ma} ky={ky} onClose={() => setAnh(null)} />}
@@ -496,48 +515,6 @@ function DanhSachTab() {
   )
 }
 
-// Cột THU TIỀN — trạng thái thanh toán của hoá đơn (chưa chốt → chưa thu → thu 1 phần → đã thu/miễn).
-function ThuTienBadge({ r }: { r: DongSoHang }) {
-  if (!r.daChot) return <span className="rounded-full bg-indigo-50 px-2 py-0.5 text-[11px] font-medium text-indigo-700">Chưa chốt</span>
-  const map: Record<string, { l: string; c: string }> = {
-    da_thu: { l: 'Đã thu', c: 'bg-emerald-50 text-emerald-700' }, mien: { l: 'Miễn', c: 'bg-emerald-50 text-emerald-700' },
-    thu_mot_phan: { l: 'Thu 1 phần', c: 'bg-amber-50 text-amber-700' }, qua_han: { l: 'Quá hạn', c: 'bg-rose-50 text-rose-700' },
-    chua_thu: { l: 'Chưa thu', c: 'bg-slate-100 text-slate-600' },
-  }
-  const s = map[r.trangThai ?? ''] ?? { l: r.trangThai ?? '—', c: 'bg-slate-100 text-slate-600' }
-  return <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${s.c}`}>{s.l}</span>
-}
-
-// Cột THÔNG BÁO (Thùy 08-01): Chưa báo → Đã báo (dd/mm) → quá 3 ngày (đỏ + "Báo lần 2"). Đã thu/miễn → khỏi báo.
-// "Báo PH" copy nội dung soạn sẵn + ghi mốc bao_lan1_at (lần đầu) để đếm 3 ngày.
-function BaoCell({ r, ky, onChanged }: { r: DongSoHang; ky: string; onChanged: () => void }) {
-  const [busy, setBusy] = useState(false)
-  const [copied, setCopied] = useState(false)
-  if (!r.daChot || !r.hoaDonId) return <span className="text-[11px] text-slate-300">—</span>
-  if (r.trangThai === 'da_thu' || r.trangThai === 'mien') return <span className="text-[11px] text-slate-300">—</span>
-  const daBao = !!r.baoLan1At
-  const quaHan = daBao ? (Date.now() - Date.parse(r.baoLan1At!)) / 86400000 >= 3 : false
-  const baoNgay = r.baoLan1At ? new Date(r.baoLan1At) : null
-  async function bao() {
-    setBusy(true)
-    try {
-      const tenCon = await layTenConDangHoc(r.phu_huynh_id)
-      const noiDung = soanThongBao(quaHan || daBao ? 'cho_xu_ly' : 'thong_bao_1', tenCon, ky, r.tongTien ?? 0)
-      try { await navigator.clipboard.writeText(noiDung) } catch { /* clipboard có thể bị chặn */ }
-      if (!r.baoLan1At) await danhDauDaBao(r.hoaDonId!) // chỉ ghi mốc lần ĐẦU (để đếm 3 ngày)
-      setCopied(true); setTimeout(() => setCopied(false), 1500)
-      onChanged()
-    } finally { setBusy(false) }
-  }
-  return (
-    <div className="flex flex-wrap items-center gap-1.5">
-      {!daBao
-        ? <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-600">Chưa báo</span>
-        : <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${quaHan ? 'bg-rose-50 text-rose-700' : 'bg-amber-50 text-amber-700'}`}>Đã báo{baoNgay ? ` ${baoNgay.getDate()}/${baoNgay.getMonth() + 1}` : ''}{quaHan ? ' · quá 3 ngày' : ''}</span>}
-      <button disabled={busy} onClick={bao} className={`rounded-md border px-2 py-1 text-[11px] font-medium disabled:opacity-40 ${quaHan ? 'border-rose-300 bg-rose-50 text-rose-700 hover:bg-rose-100' : 'border-slate-200 text-slate-600 hover:border-indigo-300'}`}>{copied ? '✓ Đã copy' : !daBao ? '📋 Báo PH' : quaHan ? '📋 Báo lần 2' : '📋 Báo lại'}</button>
-    </div>
-  )
-}
 
 // ── TAB HỌC PHÍ NỢ — 2 phần: nợ KHỞI TẠO (điền tay, nợ cũ trước khi có hệ thống) + nợ HỆ THỐNG
 // (Σ hoá đơn chốt − đã thu). Tổng = cả 2. Nợ khởi tạo tự cộng vào "nợ kỳ trước" trên phiếu (Thùy 08-01).

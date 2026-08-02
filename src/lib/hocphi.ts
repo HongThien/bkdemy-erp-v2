@@ -781,11 +781,19 @@ async function tinhTamTinhTheoPH(ky: string): Promise<{ chinh: Map<string, numbe
 export type DongSoHang = {
   phu_huynh_id: string; ho_ten: string; ma_ph: string; soCon: number; tenCon: string[]; daChot: boolean; tongTien: number | null; trangThai: string | null
   tienChinh: number; tienDuoi: number; tienNo: number // breakdown TẠM TÍNH (chưa chốt); chốt rồi thì xem chi tiết hoá đơn
-  hoaDonId: string | null; trangThaiTB: TrangThaiTB | null; baoLan1At: string | null
+  hoaDonId: string | null; trangThaiTB: TrangThaiTB | null; baoLan1At: string | null; daThuKy: number
 }
 export async function listPhieuTheoKy(ky: string): Promise<DongSoHang[]> {
   const [phs, hds, tamTinh, noByPH] = await Promise.all([listPhuHuynhCoConDangHoc(), listHoaDonByKy(ky), tinhTamTinhTheoPH(ky), soDuNoTheoPH()])
   const hdMap = new Map(hds.map((h) => [h.phu_huynh_id, h]))
+  // Đã thu của hoá đơn KỲ NÀY theo PH (batch) — cho card hiện "đã thu / còn lại".
+  const daThuByPH = new Map<string, number>()
+  const hdIds = hds.map((h) => h.id)
+  const hdToPh = new Map(hds.map((h) => [h.id, h.phu_huynh_id]))
+  if (hdIds.length) {
+    const { data: tts } = await supabase.from('thanh_toan').select('hoa_don_id, so_tien').in('hoa_don_id', hdIds).limit(LIMIT)
+    for (const t of (tts ?? []) as any[]) { const ph = hdToPh.get(t.hoa_don_id); if (ph) daThuByPH.set(ph, (daThuByPH.get(ph) ?? 0) + Number(t.so_tien)) }
+  }
   const rows = phs.map((p) => {
     const hd = hdMap.get(p.id)
     const chinh = tamTinh.chinh.get(p.id) ?? 0
@@ -796,7 +804,7 @@ export async function listPhieuTheoKy(ky: string): Promise<DongSoHang[]> {
       // Chốt rồi → tổng THẬT (hd.tong_tien, đã gồm mọi khoản + nợ lúc chốt). Chưa chốt → tạm tính đầy đủ.
       tongTien: hd ? Number(hd.tong_tien) : chinh + duoi + no, trangThai: hd?.trang_thai ?? null,
       tienChinh: chinh, tienDuoi: duoi, tienNo: no,
-      hoaDonId: hd?.id ?? null, trangThaiTB: hd?.trang_thai_tb ?? null, baoLan1At: hd?.bao_lan1_at ?? null,
+      hoaDonId: hd?.id ?? null, trangThaiTB: hd?.trang_thai_tb ?? null, baoLan1At: hd?.bao_lan1_at ?? null, daThuKy: daThuByPH.get(p.id) ?? 0,
     }
   })
   // PH học phí = 0đ (chưa phát sinh gì trong kỳ) → đẩy XUỐNG CUỐI, không lẫn với PH có phí cần xử lý (Thùy 07-05).
