@@ -207,13 +207,13 @@ function ETAllDe({ full, gv, varCau, perHS }: { full: TaiLieuFull; gv: boolean; 
     : (complete && maDe === 3) ? { caus: build(1), ch: chVar(1) } : { caus: base, ch }
   // Chế độ IN THEO HS: mỗi HS 1 phiếu = mã đề đã gán + tên in sẵn.
   if (perHS) {
-    return <>{perHS.map((hs, i) => { const d = deOf(hs.maDe)
-      return <div key={hs.id} className={i ? 'pv-de-break' : ''}><ETDoc ten={full.taiLieu.ten} caus={d.caus} ch={d.ch} gv={gv} badge={`Mã đề ${hs.maDe}`} hoTen={hs.ho_ten} /></div> })}</>
+    return <>{perHS.map((hs) => { const d = deOf(hs.maDe)
+      return <div key={hs.id} className="pv-de-recto"><ETDoc ten={full.taiLieu.ten} caus={d.caus} ch={d.ch} gv={gv} badge={`Mã đề ${hs.maDe}`} hoTen={hs.ho_ten} /></div> })}</>
   }
   const des = complete
     ? [{ label: 'Mã đề 1', caus: base, ch }, { label: 'Mã đề 2', caus: build(0), ch: chVar(0) }, { label: 'Mã đề 3', caus: build(1), ch: chVar(1) }]
     : [{ label: '', caus: base, ch }]
-  return <>{des.map((d, i) => <div key={i} className={i ? 'pv-de-break' : ''}><ETDoc ten={full.taiLieu.ten} caus={d.caus} ch={d.ch} gv={gv} badge={d.label} /></div>)}</>
+  return <>{des.map((d, i) => <div key={i} className="pv-de-recto"><ETDoc ten={full.taiLieu.ten} caus={d.caus} ch={d.ch} gv={gv} badge={d.label} /></div>)}</>
 }
 
 function ETDoc({ ten, caus, ch, gv, badge, hoTen }: { ten: string; caus: CauHoi[]; ch: CauHinh; gv: boolean; badge?: string; hoTen?: string }) {
