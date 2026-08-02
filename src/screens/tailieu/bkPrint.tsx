@@ -36,6 +36,10 @@ export const BK_CSS = `
 // đậm, căn giữa, cách nhau bằng "·". Chỉ dùng khi bật kiểu BK (append riêng, không đụng in giáo trình).
 export const BK_PAGE_CSS = `
 @page{margin:8mm 10mm 16mm}
+/* In cả lớp: mỗi HS bắt đầu ở TRANG LẺ (mặt trước tờ giấy) → in 2 mặt mỗi HS luôn chẵn trang, HS lẻ trang
+   không dính sang HS sau (paged.js tự chèn trang trắng). Con đầu không break thêm (wrapper đã break). */
+.pv-hs-recto{break-before:right}
+.pv-hs-recto>.pv-btvn:first-child{break-before:auto}
 .pagedjs_pagebox::after{content:"CLB Toán học BK Academy      ·      0963.209.309      ·      Số 17A10 KĐT Geleximco";position:absolute;left:10mm;right:10mm;bottom:4mm;height:9mm;display:flex;align-items:center;justify-content:center;border:1.5px solid #c2cbdb;border-radius:11px;background:#fff;color:#172033;font-weight:800;font-size:11.5px;white-space:pre;z-index:2;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 `
 

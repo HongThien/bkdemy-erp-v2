@@ -431,9 +431,11 @@ function Doc({ full, gv, scope, lt = true, onlyBuoiId, perHS = false, roster = [
             <BtvnSheet key={key} btvns={b.btvns} ontaps={b.ontaps} gv={gv} docTitle={taiLieu.ten} buoiTitle={b.title} linesByCau={linesByCau}
               hoTen={hoTen} ngayPhat={ngayPhat} ngayNop={ngayNop} lopTen={lopTen} />
           )
-          // In cả lớp: mỗi HS có mặt 1 phiếu (tên in sẵn). Không thì 1 phiếu trống cho mỗi buổi như cũ.
+          // In cả lớp: mỗi HS có mặt 1 phiếu (tên in sẵn). Bọc mỗi HS trong .pv-hs-recto → break-before:right
+          // ép HS bắt đầu ở mặt TRƯỚC (trang lẻ) → in 2 mặt mỗi HS luôn CHẴN trang, thiếu thì paged.js tự
+          // chèn trang trắng (HS lẻ trang không dính sang HS sau). Không perHS → 1 phiếu trống mỗi buổi như cũ.
           return (perHS && roster.length)
-            ? roster.flatMap((hs) => btvnBuois.map((b) => sheet(b, hs.ho_ten, hs.id + b.id)))
+            ? roster.map((hs) => <div key={hs.id} className="pv-hs-recto">{btvnBuois.map((b) => sheet(b, hs.ho_ten, hs.id + b.id))}</div>)
             : btvnBuois.map((b) => sheet(b, undefined, b.id))
         })()
         : buois.map((b) => (
