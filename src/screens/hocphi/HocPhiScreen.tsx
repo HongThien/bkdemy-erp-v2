@@ -6,13 +6,13 @@ import {
   listMucHocPhi, createMucHocPhi, deleteMucHocPhi,
   listMucHocDuoi, createMucHocDuoi, deleteMucHocDuoi,
   listMucHocLieu, createMucHocLieu, deleteMucHocLieu,
-  listPhieuTheoKy, listDuoiTheoKy, getPhieuAo, getHoaDonByKy, getHoaDonDong, chotKy, ghiThanhToan, listThanhToan,
+  listPhieuTheoKy, listDuoiTheoKy, getPhieuAo, getHoaDonByKy, getHoaDonDong, chotKy, ghiThanhToan, listThanhToan, listNoPhaiThu,
   kyHienTai,
   listHocPhiTheoMonV2, setCongThucHocPhi, getDiemDanhTheoLop,
   listHeSoHocSinh, xacNhanHeSo, setHeSoThuCong, boManualHeSo,
   listPhatSinhTheoKy, themPhatSinhLop, themPhatSinhCaNhan, xoaPhatSinh,
-  layTenConDangHoc, soanThongBao, capNhatTrangThaiTB, trangThaiTBKeTiep, TRANG_THAI_TB_LABEL,
-  type MucHocPhi, type MucHocDuoi, type MucHocLieu, type PhieuAo, type ThanhToan, type DongPhieu, type DongSoHang, type DongDuoiSoHang, type HocSinhHeSo, type PhatSinhEntry, type TrangThaiTB,
+  layTenConDangHoc, soanThongBao, danhDauDaBao,
+  type MucHocPhi, type MucHocDuoi, type MucHocLieu, type PhieuAo, type ThanhToan, type DongPhieu, type DongSoHang, type DongDuoiSoHang, type DongNo, type HocSinhHeSo, type PhatSinhEntry,
   type DongTheoMonV2, type CongThuc, type DiemDanhLop,
 } from '../../lib/hocphi'
 import { listLop, listHocSinh, updateLop, type Lop, type HocSinh } from '../../lib/nhansu'
@@ -41,7 +41,7 @@ function KyPicker({ ky, onChange, className = '' }: { ky: string; onChange: (ky:
     </div>
   )
 }
-const TAB = [['theomon', 'HS theo môn'], ['diemdanh', 'Điểm danh'], ['danhsach', 'Học phí tổng'], ['hocduoi', 'Học phí bổ trợ đuổi'], ['heso', 'Hệ số'], ['muc', 'Mức & Lớp'], ['phatsinh', 'Phát sinh']] as const
+const TAB = [['theomon', 'HS theo môn'], ['diemdanh', 'Điểm danh'], ['danhsach', 'Học phí tổng'], ['hocduoi', 'Học phí bổ trợ đuổi'], ['no', 'Học phí nợ'], ['heso', 'Hệ số'], ['muc', 'Mức & Lớp'], ['phatsinh', 'Phát sinh']] as const
 type Tab = (typeof TAB)[number][0]
 
 export default function HocPhiScreen() {
@@ -63,6 +63,7 @@ export default function HocPhiScreen() {
         {tab === 'diemdanh' && <DiemDanhTab />}
         {tab === 'danhsach' && <DanhSachTab />}
         {tab === 'hocduoi' && <DuoiTab />}
+        {tab === 'no' && <NoTab />}
         {tab === 'heso' && <HeSoTab />}
         {tab === 'muc' && <MucTab />}
         {tab === 'phatsinh' && <PhatSinhTab />}
@@ -81,6 +82,36 @@ const MON_TOGGLE: { label: string; value: string }[] = [
   { label: 'Toán', value: 'Toán' }, { label: 'Văn', value: 'Văn' }, { label: 'Anh', value: 'Tiếng Anh' }, { label: 'KHTN', value: 'KHTN' },
 ]
 type SortKey = 'ten' | 'ma' | 'lop' | 'buoi' | 'bu' | 'duoi' | 'ct' | 'tien'
+
+// Toggle bar CT1/CT2 cho 1 HS×lớp — chọn rồi mới bấm "✓ Lưu" (không auto-lưu, Thùy 08-01).
+// Lưu = đề xuất → xoá dòng chọn tay (về theo hệ); khác đề xuất → ghi hoc_phi_cong_thuc.
+function CtToggle({ r, ky, onSaved }: { r: DongTheoMonV2; ky: string; onSaved: () => void }) {
+  const cur: CongThuc = r.congThucChon ?? r.congThucDeXuat
+  const [pending, setPending] = useState<CongThuc | null>(null)
+  const [busy, setBusy] = useState(false)
+  const chon = pending ?? cur
+  const tay = r.congThucChon != null
+  async function luu() {
+    if (!pending || pending === cur || !r.lop_id) return
+    setBusy(true)
+    try { await setCongThucHocPhi(r.hoc_sinh_id, r.lop_id, ky, pending === r.congThucDeXuat ? null : pending); setPending(null); onSaved() }
+    catch (e: any) { alert(e.message ?? String(e)) } finally { setBusy(false) }
+  }
+  return (
+    <div className="inline-flex items-center gap-1.5">
+      <div className="inline-flex overflow-hidden rounded-md border border-slate-300">
+        {(['ct1', 'ct2'] as CongThuc[]).map((v) => (
+          <button key={v} disabled={busy} onClick={() => setPending(v === cur ? null : v)}
+            title={v === 'ct1' ? 'CT1: số buổi LỚP × đơn giá × hệ số' : 'CT2: (đi học + bù) × đơn giá × hệ số'}
+            className={`px-2.5 py-0.5 text-[12px] font-bold ${chon === v ? 'bg-indigo-600 text-white' : 'text-slate-500 hover:bg-slate-100'}`}>{v.toUpperCase()}</button>
+        ))}
+      </div>
+      {pending && pending !== cur
+        ? <button disabled={busy} onClick={luu} className="rounded-md bg-emerald-600 px-2 py-0.5 text-[11px] font-semibold text-white disabled:opacity-40">{busy ? '…' : '✓ Lưu'}</button>
+        : tay ? <span title={`Đang chọn TAY (hệ đề xuất ${r.congThucDeXuat.toUpperCase()}, nghỉ ${r.soBuoiNghi}/${r.soBuoiLop})`} className="text-[10px] font-semibold text-amber-600">tay</span> : null}
+    </div>
+  )
+}
 function TheoMonTab() {
   const ky = useStore((s) => s.hocPhiKy) || kyHienTai()
   const setKy = useStore((s) => s.setHocPhiKy)
@@ -91,25 +122,12 @@ function TheoMonTab() {
   const [ctFilter, setCtFilter] = useState<'all' | CongThuc>('all') // toggle lọc CT1/CT2 trên header (Thùy 07-13)
   const [sort, setSort] = useState<{ key: SortKey; dir: 1 | -1 }>({ key: 'ten', dir: 1 })
   const [detail, setDetail] = useState<DongTheoMonV2 | null>(null)
-  const [busyKey, setBusyKey] = useState<string | null>(null)
 
   async function reload(silent = false) {
     if (!silent) setLoading(true)
     try { setRows(await listHocPhiTheoMonV2(ky)) } finally { if (!silent) setLoading(false) }
   }
   useEffect(() => { reload() }, [ky]) // eslint-disable-line
-
-  // Click nhãn CT trên dòng = ĐẢO sang công thức kia (Thùy 07-13: ô chỉ hiện CT1/CT2 thôi, không toggle
-  // 2 nút). Đảo về TRÙNG đề xuất → xoá dòng chọn tay (quay về theo hệ), không giữ dòng thừa.
-  async function daoCongThuc(r: DongTheoMonV2) {
-    if (!r.lop_id) return
-    const key = `${r.hoc_sinh_id}|${r.lop_id}`
-    const hienTai = r.congThucChon ?? r.congThucDeXuat
-    const moi: CongThuc = hienTai === 'ct1' ? 'ct2' : 'ct1'
-    setBusyKey(key)
-    try { await setCongThucHocPhi(r.hoc_sinh_id, r.lop_id, ky, moi === r.congThucDeXuat ? null : moi); await reload(true) }
-    catch (e: any) { alert(e.message ?? String(e)) } finally { setBusyKey(null) }
-  }
 
   const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
   const ctCua = (r: DongTheoMonV2) => r.congThucChon ?? r.congThucDeXuat
@@ -176,8 +194,6 @@ function TheoMonTab() {
               <tbody>
                 {sorted.map((r) => {
                   const key = `${r.hoc_sinh_id}|${r.lop_id}`
-                  const ct = r.congThucChon ?? r.congThucDeXuat
-                  const tay = !!r.congThucChon && r.congThucChon !== r.congThucDeXuat
                   return (
                     <tr key={key + r.mon} className="border-t border-slate-100">
                       <td className="truncate px-4 py-2 font-medium text-slate-800" title={r.hoc_sinh_ten}>{r.hoc_sinh_ten}</td>
@@ -190,14 +206,10 @@ function TheoMonTab() {
                       <td className="px-2 py-2 text-center">{r.soBuoiBu > 0 ? <span title={`Tổng ${r.soBuoiBu} buổi bù = ${r.soBuoiBuDaHoc} đã bù + ${r.soBuoiBuDaXep} đã xếp lịch`}><b className="text-sky-700">{r.soBuoiBu}</b>{r.soBuoiBuDaXep > 0 ? <span className="ml-0.5 text-[11px] font-semibold text-amber-600">({r.soBuoiBuDaHoc}+{r.soBuoiBuDaXep})</span> : null}</span> : <span className="text-slate-300">—</span>}</td>
                       <td className="px-2 py-2 text-center">{r.soBuoiDuoi > 0 ? <b className="text-orange-600">{r.soBuoiDuoi}</b> : <span className="text-slate-300">—</span>}</td>
                       <td className="px-2 py-2">
-                        {/* Chỉ hiện CT đang áp (Thùy 07-13) — click = đảo sang công thức kia; vàng = đang chọn tay khác đề xuất */}
-                        {r.lop_id && r.soBuoiLop > 0 ? (
-                          <button disabled={busyKey === key} onClick={() => daoCongThuc(r)}
-                            title={`${ct === 'ct1' ? 'CT1: số buổi LỚP × đơn giá × hệ số' : 'CT2: (buổi học thực tế + bù) × đơn giá × hệ số'}${tay ? ` — đang chọn TAY (hệ đề xuất ${r.congThucDeXuat.toUpperCase()}, nghỉ ${r.soBuoiNghi}/${r.soBuoiLop})` : ` — theo đề xuất (nghỉ ${r.soBuoiNghi}/${r.soBuoiLop})`}. Click để đổi.`}
-                            className={`rounded-md px-2.5 py-0.5 text-[12px] font-bold ${busyKey === key ? 'opacity-50' : ''} ${tay ? 'bg-amber-100 text-amber-800 hover:bg-amber-200' : ct === 'ct2' ? 'bg-violet-100 text-violet-700 hover:bg-violet-200' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}>
-                            {ct.toUpperCase()}
-                          </button>
-                        ) : <span className="text-slate-300">—</span>}
+                        {/* Toggle bar CT1/CT2 — chọn xong bấm ✓ Lưu mới ghi (Thùy 08-01). vàng "tay" = đang chọn khác đề xuất. */}
+                        {r.lop_id && r.soBuoiLop > 0
+                          ? <CtToggle r={r} ky={ky} onSaved={() => reload(true)} />
+                          : <span className="text-slate-300">—</span>}
                       </td>
                       <td className="px-2 py-2 text-right font-semibold text-slate-800">{tienVN(r.thanhTien)}</td>
                       <td className="px-2 py-2 text-center">
@@ -450,7 +462,7 @@ function DanhSachTab() {
           <div className="rounded-xl border border-slate-200 bg-white">
             <table className="w-full text-[13px]">
               <thead className="sticky top-0 z-10 bg-slate-50 text-left text-[11px] uppercase tracking-wide text-slate-400">
-                <tr><th className="px-4 py-2">Phụ huynh</th><th>Số con</th><th>Trạng thái thu</th><th className="text-right">Tổng tiền</th><th>Trạng thái thông báo</th><th className="text-right px-4">Thao tác</th></tr>
+                <tr><th className="px-4 py-2">Phụ huynh</th><th>Số con</th><th className="text-right">Tổng tiền</th><th>Trạng thái</th><th className="text-right px-4">Thao tác</th></tr>
               </thead>
               <tbody>
                 {rows.map((r) => (
@@ -458,17 +470,8 @@ function DanhSachTab() {
                   <tr className={`border-t border-slate-100 align-top ${expanded === r.phu_huynh_id ? 'bg-indigo-50/40' : ''}`}>
                     <td className="px-4 py-2 font-medium text-slate-800">{r.ho_ten} <span className="font-mono text-[11px] text-slate-400">{r.ma_ph}</span></td>
                     <td className="text-slate-500">{r.soCon}</td>
-                    <td>
-                      {r.daChot
-                        ? <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${r.trangThai === 'da_thu' ? 'bg-emerald-50 text-emerald-700' : r.trangThai === 'thu_mot_phan' ? 'bg-amber-50 text-amber-700' : 'bg-slate-100 text-slate-600'}`}>{{ chua_thu: 'Chưa thu', da_thu: 'Đã thu', thu_mot_phan: 'Thu 1 phần', qua_han: 'Quá hạn', xet_duyet: 'Chờ xét duyệt', mien: 'Miễn' }[r.trangThai ?? ''] ?? r.trangThai}</span>
-                        : <span className="rounded-full bg-indigo-50 px-2 py-0.5 text-[11px] font-medium text-indigo-700">Chưa chốt (tạm tính)</span>}
-                    </td>
                     <td className="text-right font-medium text-slate-800">{r.tongTien != null ? tienVN(r.tongTien) : '—'}</td>
-                    <td className="py-2">
-                      {r.daChot && r.hoaDonId && r.trangThaiTB
-                        ? <TrangThaiTBCell hoaDonId={r.hoaDonId} phuHuynhId={r.phu_huynh_id} ky={ky} tongTien={r.tongTien ?? 0} trangThai={r.trangThaiTB} onChanged={reload} />
-                        : <span className="text-[11px] text-slate-300">Cần chốt trước</span>}
-                    </td>
+                    <td className="py-2"><TrangThaiThuCell r={r} ky={ky} onChanged={reload} /></td>
                     <td className="px-4 py-2">
                       <div className="flex justify-end gap-1.5">
                         <button onClick={() => setExpanded((e) => (e === r.phu_huynh_id ? null : r.phu_huynh_id))} className={`rounded-md border px-2 py-1 text-[12px] font-medium ${expanded === r.phu_huynh_id ? 'border-indigo-400 bg-indigo-100 text-indigo-700' : 'border-slate-200 text-slate-600 hover:border-indigo-300'}`}>Chi tiết {expanded === r.phu_huynh_id ? '▴' : '▾'}</button>
@@ -478,7 +481,7 @@ function DanhSachTab() {
                     </td>
                   </tr>
                   {expanded === r.phu_huynh_id && (
-                    <tr className="bg-indigo-50/40"><td colSpan={6} className="border-t border-indigo-100 p-0"><PhieuChiTietExpand phId={r.phu_huynh_id} ky={ky} onChanged={reload} /></td></tr>
+                    <tr className="bg-indigo-50/40"><td colSpan={5} className="border-t border-indigo-100 p-0"><PhieuChiTietExpand phId={r.phu_huynh_id} ky={ky} onChanged={reload} /></td></tr>
                   )}
                   </Fragment>
                 ))}
@@ -491,35 +494,70 @@ function DanhSachTab() {
   )
 }
 
-// Ô trạng thái thông báo — badge trạng thái hiện tại + nút "Copy nội dung" (soạn sẵn, dán gửi PH
-// ngay) + nút "Xong bước này →" (tự nhảy bước kế). KHÔNG cần Nhân sự nghĩ chữ (Thùy 07-05).
-function TrangThaiTBCell({ hoaDonId, phuHuynhId, ky, tongTien, trangThai, onChanged }: {
-  hoaDonId: string; phuHuynhId: string; ky: string; tongTien: number; trangThai: TrangThaiTB; onChanged: () => void
-}) {
+// Ô TRẠNG THÁI (2 trạng thái, Thùy 08-01): Chưa chốt → Chưa báo → Đã báo → Đã nộp.
+// "Báo PH" copy nội dung soạn sẵn + ghi mốc bao_lan1_at. Quá 3 ngày từ báo lần 1 mà chưa nộp → cờ ĐỎ + "Báo lần 2".
+function TrangThaiThuCell({ r, ky, onChanged }: { r: DongSoHang; ky: string; onChanged: () => void }) {
   const [busy, setBusy] = useState(false)
   const [copied, setCopied] = useState(false)
-  const keTiep = trangThaiTBKeTiep(trangThai)
-  async function copyNoiDung() {
-    const tenCon = await layTenConDangHoc(phuHuynhId)
-    const noiDung = soanThongBao(trangThai, tenCon, ky, tongTien)
-    await navigator.clipboard.writeText(noiDung)
-    setCopied(true); setTimeout(() => setCopied(false), 1500)
-  }
-  async function xongBuoc() {
-    if (!keTiep) return
+  if (!r.daChot || !r.hoaDonId) return <span className="text-[11px] text-slate-400">Chưa chốt</span>
+  if (r.trangThai === 'da_thu' || r.trangThai === 'mien') return <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-medium text-emerald-700">✓ Đã nộp</span>
+  const daBao = !!r.baoLan1At
+  const quaHan = daBao ? (Date.now() - Date.parse(r.baoLan1At!)) / 86400000 >= 3 : false
+  const baoNgay = r.baoLan1At ? new Date(r.baoLan1At) : null
+  async function bao() {
     setBusy(true)
-    try { await capNhatTrangThaiTB(hoaDonId, keTiep); onChanged() } finally { setBusy(false) }
+    try {
+      const tenCon = await layTenConDangHoc(r.phu_huynh_id)
+      const noiDung = soanThongBao(quaHan || daBao ? 'cho_xu_ly' : 'thong_bao_1', tenCon, ky, r.tongTien ?? 0)
+      try { await navigator.clipboard.writeText(noiDung) } catch { /* clipboard có thể bị chặn */ }
+      if (!r.baoLan1At) await danhDauDaBao(r.hoaDonId!) // chỉ ghi mốc lần ĐẦU (để đếm 3 ngày)
+      setCopied(true); setTimeout(() => setCopied(false), 1500)
+      onChanged()
+    } finally { setBusy(false) }
   }
-  const mau = trangThai === 'hoan_thanh' ? 'bg-emerald-50 text-emerald-700' : trangThai === 'cho_xu_ly' ? 'bg-amber-50 text-amber-700' : 'bg-indigo-50 text-indigo-700'
   return (
     <div className="flex flex-wrap items-center gap-1.5">
-      <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${mau}`}>{TRANG_THAI_TB_LABEL[trangThai]}</span>
-      {trangThai !== 'hoan_thanh' && (
-        <>
-          <button onClick={copyNoiDung} className="rounded-md border border-slate-200 px-2 py-1 text-[11px] font-medium text-slate-600 hover:border-indigo-300">{copied ? '✓ Đã copy' : '📋 Copy nội dung'}</button>
-          <button disabled={busy} onClick={xongBuoc} className="rounded-md border border-indigo-200 bg-indigo-50 px-2 py-1 text-[11px] font-medium text-indigo-700 hover:bg-indigo-100 disabled:opacity-40">Xong bước này →</button>
-        </>
-      )}
+      {!daBao
+        ? <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-600">Chưa báo</span>
+        : <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${quaHan ? 'bg-rose-50 text-rose-700' : 'bg-amber-50 text-amber-700'}`}>Đã báo{baoNgay ? ` ${baoNgay.getDate()}/${baoNgay.getMonth() + 1}` : ''}{quaHan ? ' · quá 3 ngày' : ''}</span>}
+      <button disabled={busy} onClick={bao} className={`rounded-md border px-2 py-1 text-[11px] font-medium disabled:opacity-40 ${quaHan ? 'border-rose-300 bg-rose-50 text-rose-700 hover:bg-rose-100' : 'border-slate-200 text-slate-600 hover:border-indigo-300'}`}>{copied ? '✓ Đã copy' : !daBao ? '📋 Báo PH' : quaHan ? '📋 Báo lần 2' : '📋 Báo lại'}</button>
+    </div>
+  )
+}
+
+// ── TAB HỌC PHÍ NỢ — PH còn dư nợ (Σ hoá đơn đã chốt − Σ đã thu > 0), sort nợ giảm dần.
+// KHÔNG theo kỳ (nợ tích luỹ mọi kỳ). Bấm 1 PH → sang tab "Học phí tổng" xem chi tiết + thu.
+function NoTab() {
+  const [rows, setRows] = useState<DongNo[]>([])
+  const [loading, setLoading] = useState(true)
+  useEffect(() => { listNoPhaiThu().then(setRows).finally(() => setLoading(false)) }, [])
+  const tongNo = rows.reduce((s, r) => s + r.no, 0)
+  return (
+    <div className="mx-auto max-w-[900px]">
+      <div className="mb-3 flex flex-wrap items-center gap-3 rounded-xl border border-slate-200 bg-white p-4">
+        <span className="text-sm font-semibold text-slate-900">Học phí nợ</span>
+        <span className="text-[12px] text-slate-400">{rows.length} PH còn nợ · tổng <b className="text-rose-600">{tienVN(tongNo)}</b></span>
+        <span className="ml-auto text-[11px] text-slate-400">Nợ = tổng hoá đơn đã chốt − đã thu (mọi kỳ)</span>
+      </div>
+      {loading ? <p className="py-8 text-center text-sm text-slate-400">Đang tải…</p>
+        : !rows.length ? <div className="rounded-xl border border-dashed border-slate-300 bg-white py-14 text-center text-sm text-slate-400">Không có phụ huynh nào đang nợ. 🎉</div>
+        : (
+          <div className="rounded-xl border border-slate-200 bg-white">
+            <table className="w-full text-[13px]">
+              <thead className="bg-slate-50 text-left text-[11px] uppercase tracking-wide text-slate-400">
+                <tr><th className="px-4 py-2">Phụ huynh</th><th className="text-right px-4">Còn nợ</th></tr>
+              </thead>
+              <tbody>
+                {rows.map((r) => (
+                  <tr key={r.phu_huynh_id} className="border-t border-slate-100">
+                    <td className="px-4 py-2 font-medium text-slate-800">{r.ho_ten} <span className="font-mono text-[11px] text-slate-400">{r.ma_ph}</span></td>
+                    <td className="px-4 py-2 text-right font-bold text-rose-600">{tienVN(r.no)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
     </div>
   )
 }

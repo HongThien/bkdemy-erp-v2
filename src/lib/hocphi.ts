@@ -489,6 +489,21 @@ export async function soDuNoTheoPH(): Promise<Map<string, number>> {
   return noByPH
 }
 
+// Danh sách PH đang NỢ (tab "Học phí nợ") — chỉ PH còn dư nợ >0, sort nợ giảm dần.
+// Lấy PH từ chính bảng nợ (gồm cả PH con đã nghỉ mà còn nợ), không giới hạn "có con đang học".
+export type DongNo = { phu_huynh_id: string; ho_ten: string; ma_ph: string; no: number }
+export async function listNoPhaiThu(): Promise<DongNo[]> {
+  const noByPH = await soDuNoTheoPH()
+  const phIds = [...noByPH.entries()].filter(([, n]) => n > 0.5).map(([id]) => id)
+  if (!phIds.length) return []
+  const { data: phs, error } = await supabase.from('phu_huynh').select('id, ho_ten, ma_ph').in('id', phIds).limit(LIMIT)
+  if (error) throw error
+  const phMap = new Map(((phs ?? []) as any[]).map((p) => [p.id, p]))
+  return phIds
+    .map((id) => ({ phu_huynh_id: id, ho_ten: phMap.get(id)?.ho_ten ?? '(không rõ)', ma_ph: phMap.get(id)?.ma_ph ?? '', no: Math.round(noByPH.get(id) ?? 0) }))
+    .sort((a, b) => b.no - a.no)
+}
+
 // ── CHỐT KỲ (Ảo→Thật, atomic claim — §7/§266) ───────────────────────────────
 export async function tinhSoDuNo(phuHuynhId: string): Promise<number> {
   const { data: hds, error: e1 } = await supabase.from('hoa_don').select('id, tong_tien').eq('phu_huynh_id', phuHuynhId).not('dong_at', 'is', null).limit(LIMIT)
@@ -584,10 +599,15 @@ export async function listPhuHuynhCoConDangHoc(): Promise<PHOpt[]> {
 }
 
 // Đã chốt phiếu tháng này chưa (cho danh sách tổng quan) — bulk theo mọi PH.
-export async function listHoaDonByKy(ky: string): Promise<{ id: string; phu_huynh_id: string; trang_thai: string; tong_tien: number; trang_thai_tb: TrangThaiTB }[]> {
-  const { data, error } = await supabase.from('hoa_don').select('id, phu_huynh_id, trang_thai, tong_tien, trang_thai_tb').eq('ky', ky).limit(LIMIT)
+export async function listHoaDonByKy(ky: string): Promise<{ id: string; phu_huynh_id: string; trang_thai: string; tong_tien: number; trang_thai_tb: TrangThaiTB; bao_lan1_at: string | null }[]> {
+  const { data, error } = await supabase.from('hoa_don').select('id, phu_huynh_id, trang_thai, tong_tien, trang_thai_tb, bao_lan1_at').eq('ky', ky).limit(LIMIT)
   if (error) throw error
   return (data ?? []) as any[]
+}
+// Đánh dấu "Đã báo (lần 1)" — set mốc thời gian để tính cảnh báo quá-3-ngày (task 3, 08-01).
+export async function danhDauDaBao(hoaDonId: string): Promise<void> {
+  const { error } = await supabase.from('hoa_don').update({ bao_lan1_at: new Date().toISOString() }).eq('id', hoaDonId)
+  if (error) throw error
 }
 
 // ── TRẠNG THÁI THÔNG BÁO thu học phí — 3 bước, "Xong" tự nhảy bước kế (Thùy 07-05) ──
@@ -734,7 +754,7 @@ async function tinhTamTinhTheoPH(ky: string): Promise<{ chinh: Map<string, numbe
 export type DongSoHang = {
   phu_huynh_id: string; ho_ten: string; ma_ph: string; soCon: number; daChot: boolean; tongTien: number | null; trangThai: string | null
   tienChinh: number; tienDuoi: number; tienNo: number // breakdown TẠM TÍNH (chưa chốt); chốt rồi thì xem chi tiết hoá đơn
-  hoaDonId: string | null; trangThaiTB: TrangThaiTB | null
+  hoaDonId: string | null; trangThaiTB: TrangThaiTB | null; baoLan1At: string | null
 }
 export async function listPhieuTheoKy(ky: string): Promise<DongSoHang[]> {
   const [phs, hds, tamTinh, noByPH] = await Promise.all([listPhuHuynhCoConDangHoc(), listHoaDonByKy(ky), tinhTamTinhTheoPH(ky), soDuNoTheoPH()])
@@ -749,7 +769,7 @@ export async function listPhieuTheoKy(ky: string): Promise<DongSoHang[]> {
       // Chốt rồi → tổng THẬT (hd.tong_tien, đã gồm mọi khoản + nợ lúc chốt). Chưa chốt → tạm tính đầy đủ.
       tongTien: hd ? Number(hd.tong_tien) : chinh + duoi + no, trangThai: hd?.trang_thai ?? null,
       tienChinh: chinh, tienDuoi: duoi, tienNo: no,
-      hoaDonId: hd?.id ?? null, trangThaiTB: hd?.trang_thai_tb ?? null,
+      hoaDonId: hd?.id ?? null, trangThaiTB: hd?.trang_thai_tb ?? null, baoLan1At: hd?.bao_lan1_at ?? null,
     }
   })
   // PH học phí = 0đ (chưa phát sinh gì trong kỳ) → đẩy XUỐNG CUỐI, không lẫn với PH có phí cần xử lý (Thùy 07-05).
