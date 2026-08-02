@@ -3432,3 +3432,6 @@ Verify: card hiện "△ABC nhọn, ba đường cao... | tứ giác BFEC nội 
 - **Tách lại 2 cột trạng thái** (gộp 1 hơi quá tay): `ThuTienBadge` (chưa chốt/chưa thu/thu 1 phần/đã thu/miễn) + `BaoCell` (chưa báo/đã báo dd-mm/quá 3 ngày→"Báo lần 2"; đã thu→"—").
 - **Cột "Học sinh"** (tên các con, `PHOpt.tenCon`/`DongSoHang.tenCon`) + **ô SEARCH** lọc theo tên PH / tên HS / mã (bỏ dấu). Verify live: search "Anh Văn" → đúng 1 PH.
 - tsc xanh. schema.md KHÔNG commit (đang lẫn thay đổi phiên tuyensinh khác).
+
+## 2026-08-01 (8) — Học phí tổng: polish layout bảng (CEO: xấu, lệch/sát)
+- colgroup width cố định (PH 17% · HS 17% · Tổng tiền 14% · Thu tiền 13% · Thông báo 24% · Thao tác 15%) + mọi cell `px-3 py-2.5` → hết "lệch nhau / quá sát nhau" giữa Tổng tiền|Thu tiền|Thông báo. Base text 12px, tên PH font-medium + mã PH xuống dòng nhỏ (10px), tên HS nhỏ → nhường chỗ cột khác. Bỏ nút PDF (per-row + bulk "Tải PDF tất cả") + taiPdfPhieu/taiMot/taiTatCa/dlId/bulkDl. `overflow-x-auto` wrap.

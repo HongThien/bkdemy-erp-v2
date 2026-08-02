@@ -16,7 +16,7 @@ import {
   type DongTheoMonV2, type CongThuc, type DiemDanhLop,
 } from '../../lib/hocphi'
 import { listLop, listHocSinh, updateLop, type Lop, type HocSinh } from '../../lib/nhansu'
-import { AnhGuiPHModal, taiPdfPhieu } from './PhieuThongBao'
+import { AnhGuiPHModal } from './PhieuThongBao'
 import SearchSelect from '../../components/SearchSelect'
 import { inp } from '../kho/ui'
 import { useStore } from '../../store/useStore'
@@ -432,8 +432,6 @@ function DanhSachTab() {
   const [expanded, setExpanded] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
   const [anh, setAnh] = useState<{ id: string; ten: string; ma: string } | null>(null)
-  const [dlId, setDlId] = useState<string | null>(null)
-  const [bulkDl, setBulkDl] = useState<{ done: number; total: number } | null>(null)
   const [q, setQ] = useState('')
 
   async function reload() { setLoading(true); try { setRows(await listPhieuTheoKy(ky)) } finally { setLoading(false) } }
@@ -444,19 +442,6 @@ function DanhSachTab() {
     ? rows.filter((r) => { const nq = boDau(q); return boDau(r.ho_ten).includes(nq) || r.ma_ph.toLowerCase().includes(nq) || r.tenCon.some((c) => boDau(c).includes(nq)) })
     : rows
 
-  async function taiMot(r: DongSoHang) {
-    setDlId(r.phu_huynh_id)
-    try { await taiPdfPhieu(r.phu_huynh_id, r.ho_ten, r.ma_ph, ky) } finally { setDlId(null) }
-  }
-  async function taiTatCa() {
-    if (!confirm(`Tải PDF riêng cho ${rows.length} phụ huynh? (mỗi PH 1 file, không gộp)`)) return
-    setBulkDl({ done: 0, total: rows.length })
-    for (let i = 0; i < rows.length; i++) {
-      await taiPdfPhieu(rows[i].phu_huynh_id, rows[i].ho_ten, rows[i].ma_ph, ky)
-      setBulkDl({ done: i + 1, total: rows.length })
-    }
-    setBulkDl(null)
-  }
   const soDaChot = rows.filter((r) => r.daChot).length
   const tongDaChot = rows.filter((r) => r.daChot).reduce((s, r) => s + (r.tongTien ?? 0), 0)
 
@@ -465,34 +450,35 @@ function DanhSachTab() {
       <div className="mb-3 flex flex-wrap items-center gap-3 rounded-xl border border-slate-200 bg-white p-4">
         <KyPicker ky={ky} onChange={setKy} />
         <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm phụ huynh / tên học sinh / mã…" className={`${inp} w-64`} />
-        <span className="text-[12px] text-slate-400">{q.trim() ? `${filtered.length}/` : ''}{rows.length} PH · {soDaChot} đã chốt · tổng đã chốt {tienVN(tongDaChot)}</span>
-        <button onClick={taiTatCa} disabled={!rows.length || !!bulkDl} className="ml-auto rounded-lg border border-indigo-300 bg-indigo-50 px-3 py-1.5 text-[12px] font-medium text-indigo-700 hover:bg-indigo-100 disabled:opacity-40">
-          {bulkDl ? `⏳ Đang tải ${bulkDl.done}/${bulkDl.total}…` : '⬇ Tải PDF tất cả (mỗi PH 1 file)'}
-        </button>
+        <span className="ml-auto text-[12px] text-slate-400">{q.trim() ? `${filtered.length}/` : ''}{rows.length} PH · {soDaChot} đã chốt · tổng đã chốt {tienVN(tongDaChot)}</span>
       </div>
       {loading ? <p className="py-8 text-center text-sm text-slate-400">Đang tải…</p>
         : !rows.length ? <div className="rounded-xl border border-dashed border-slate-300 bg-white py-14 text-center text-sm text-slate-400">Chưa có phụ huynh nào có con đang học.</div>
         : !filtered.length ? <div className="rounded-xl border border-dashed border-slate-300 bg-white py-14 text-center text-sm text-slate-400">Không tìm thấy phụ huynh/học sinh khớp &quot;{q}&quot;.</div>
         : (
-          <div className="rounded-xl border border-slate-200 bg-white">
-            <table className="w-full text-[13px]">
-              <thead className="sticky top-0 z-10 bg-slate-50 text-left text-[11px] uppercase tracking-wide text-slate-400">
-                <tr><th className="px-4 py-2">Phụ huynh</th><th>Học sinh</th><th className="text-right">Tổng tiền</th><th>Thu tiền</th><th>Thông báo</th><th className="text-right px-4">Thao tác</th></tr>
+          <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
+            <table className="w-full text-[12px]">
+              <colgroup><col style={{ width: '17%' }} /><col style={{ width: '17%' }} /><col style={{ width: '14%' }} /><col style={{ width: '13%' }} /><col style={{ width: '24%' }} /><col style={{ width: '15%' }} /></colgroup>
+              <thead className="sticky top-0 z-10 bg-slate-50 text-left text-[10px] uppercase tracking-wide text-slate-400">
+                <tr>
+                  <th className="px-3 py-2">Phụ huynh</th><th className="px-3 py-2">Học sinh</th>
+                  <th className="px-3 py-2 text-right">Tổng tiền</th><th className="px-3 py-2">Thu tiền</th>
+                  <th className="px-3 py-2">Thông báo</th><th className="px-3 py-2 text-right">Thao tác</th>
+                </tr>
               </thead>
               <tbody>
                 {filtered.map((r) => (
                   <Fragment key={r.phu_huynh_id}>
-                  <tr className={`border-t border-slate-100 align-top ${expanded === r.phu_huynh_id ? 'bg-indigo-50/40' : ''}`}>
-                    <td className="px-4 py-2 font-medium text-slate-800">{r.ho_ten} <span className="font-mono text-[11px] text-slate-400">{r.ma_ph}</span></td>
-                    <td className="text-[12px] text-slate-600">{r.tenCon.length ? r.tenCon.join(', ') : <span className="text-slate-300">—</span>}</td>
-                    <td className="text-right font-medium text-slate-800">{r.tongTien != null ? tienVN(r.tongTien) : '—'}</td>
-                    <td className="py-2"><ThuTienBadge r={r} /></td>
-                    <td className="py-2"><BaoCell r={r} ky={ky} onChanged={reload} /></td>
-                    <td className="px-4 py-2">
+                  <tr className={`border-t border-slate-100 align-middle ${expanded === r.phu_huynh_id ? 'bg-indigo-50/40' : ''}`}>
+                    <td className="px-3 py-2.5"><div className="font-medium text-slate-800">{r.ho_ten}</div><div className="font-mono text-[10px] text-slate-400">{r.ma_ph}</div></td>
+                    <td className="px-3 py-2.5 text-slate-600">{r.tenCon.length ? r.tenCon.join(', ') : <span className="text-slate-300">—</span>}</td>
+                    <td className="px-3 py-2.5 text-right font-semibold text-slate-800 whitespace-nowrap">{r.tongTien != null ? tienVN(r.tongTien) : '—'}</td>
+                    <td className="px-3 py-2.5"><ThuTienBadge r={r} /></td>
+                    <td className="px-3 py-2.5"><BaoCell r={r} ky={ky} onChanged={reload} /></td>
+                    <td className="px-3 py-2.5">
                       <div className="flex justify-end gap-1.5">
-                        <button onClick={() => setExpanded((e) => (e === r.phu_huynh_id ? null : r.phu_huynh_id))} className={`rounded-md border px-2 py-1 text-[12px] font-medium ${expanded === r.phu_huynh_id ? 'border-indigo-400 bg-indigo-100 text-indigo-700' : 'border-slate-200 text-slate-600 hover:border-indigo-300'}`}>Chi tiết {expanded === r.phu_huynh_id ? '▴' : '▾'}</button>
-                        <button onClick={() => setAnh({ id: r.phu_huynh_id, ten: r.ho_ten, ma: r.ma_ph })} className="rounded-md border border-slate-200 px-2 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-300">📷 Ảnh</button>
-                        <button disabled={dlId === r.phu_huynh_id} onClick={() => taiMot(r)} className="rounded-md border border-indigo-200 bg-indigo-50 px-2 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-100 disabled:opacity-40">{dlId === r.phu_huynh_id ? '…' : '⬇ PDF'}</button>
+                        <button onClick={() => setExpanded((e) => (e === r.phu_huynh_id ? null : r.phu_huynh_id))} className={`rounded-md border px-2 py-1 font-medium ${expanded === r.phu_huynh_id ? 'border-indigo-400 bg-indigo-100 text-indigo-700' : 'border-slate-200 text-slate-600 hover:border-indigo-300'}`}>Chi tiết {expanded === r.phu_huynh_id ? '▴' : '▾'}</button>
+                        <button onClick={() => setAnh({ id: r.phu_huynh_id, ten: r.ho_ten, ma: r.ma_ph })} className="rounded-md border border-slate-200 px-2 py-1 font-medium text-slate-600 hover:border-indigo-300">📷 Ảnh</button>
                       </div>
                     </td>
                   </tr>
