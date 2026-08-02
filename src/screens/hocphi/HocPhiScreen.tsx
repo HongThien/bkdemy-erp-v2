@@ -7,6 +7,7 @@ import {
   listMucHocDuoi, createMucHocDuoi, deleteMucHocDuoi,
   listMucHocLieu, createMucHocLieu, deleteMucHocLieu,
   listPhieuTheoKy, listDuoiTheoKy, chotKy, huyChot, ghiThanhToan, listNoPhaiThu, setNoKhoiTao, listPhuHuynhCoConDangHoc,
+  themTinDung, listTinDung, xoaTinDung,
   kyHienTai,
   listHocPhiTheoMonV2, setCongThucHocPhi, getDiemDanhTheoLop,
   listHeSoHocSinh, setHeSoHieuLuc, boManualHeSo,
@@ -22,7 +23,7 @@ import { inp } from '../kho/ui'
 import { useStore } from '../../store/useStore'
 
 const tienVN = (n: number) => Math.round(n).toLocaleString('vi-VN') + 'đ'
-const LOAI_LABEL: Record<string, string> = { hoc_phi: 'Học phí', hoc_duoi: 'Học đuổi', hoc_lieu: 'Học liệu', phat_sinh: 'Phát sinh', no_ky_truoc: 'Nợ kỳ trước' }
+const LOAI_LABEL: Record<string, string> = { hoc_phi: 'Học phí', hoc_duoi: 'Học đuổi', hoc_lieu: 'Học liệu', phat_sinh: 'Phát sinh', no_ky_truoc: 'Nợ kỳ trước', giam_gioi_thieu: 'Giảm giới thiệu' }
 
 // Chọn kỳ (tháng) — thay input[type=month] (Safari/Mac hiện "July 2026" khó chịu). Nút ‹ › + nhãn VN.
 // value/onChange giữ nguyên format 'YYYY-MM-01' như setKy cũ → thay tại chỗ, không đụng logic tab.
@@ -41,7 +42,7 @@ function KyPicker({ ky, onChange, className = '' }: { ky: string; onChange: (ky:
     </div>
   )
 }
-const TAB = [['theomon', 'HS theo môn'], ['diemdanh', 'Điểm danh'], ['danhsach', 'Học phí tổng'], ['hocduoi', 'Học phí bổ trợ đuổi'], ['no', 'Học phí nợ'], ['heso', 'Hệ số'], ['muc', 'Mức & Lớp'], ['phatsinh', 'Phát sinh']] as const
+const TAB = [['theomon', 'HS theo môn'], ['diemdanh', 'Điểm danh'], ['danhsach', 'Học phí tổng'], ['hocduoi', 'Học phí bổ trợ đuổi'], ['no', 'Học phí nợ'], ['gioithieu', 'Giới thiệu'], ['heso', 'Hệ số'], ['muc', 'Mức & Lớp'], ['phatsinh', 'Phát sinh']] as const
 type Tab = (typeof TAB)[number][0]
 
 export default function HocPhiScreen() {
@@ -64,6 +65,7 @@ export default function HocPhiScreen() {
         {tab === 'danhsach' && <DanhSachTab />}
         {tab === 'hocduoi' && <DuoiTab />}
         {tab === 'no' && <NoTab />}
+        {tab === 'gioithieu' && <GioiThieuTab />}
         {tab === 'heso' && <HeSoTab />}
         {tab === 'muc' && <MucTab />}
         {tab === 'phatsinh' && <PhatSinhTab />}
@@ -451,7 +453,7 @@ function PhuHuynhCard({ r0, ky, onAnh, moMacDinh, onDoi }: { r0: DongSoHang; ky:
                   {d.loai === 'hoc_phi' ? ` · ${d.so_luong} buổi × ${tienVN(d.don_gia ?? 0)}${d.he_so && d.he_so !== 1 ? ` × ${d.he_so}` : ''}` : ''}
                   {d.mo_ta ? <span className="text-slate-400"> ({d.mo_ta})</span> : ''}
                 </span>
-                <span className={`whitespace-nowrap font-medium ${d.loai === 'no_ky_truoc' ? 'text-rose-600' : 'text-slate-700'}`}>{tienVN(d.thanh_tien)}</span>
+                <span className={`whitespace-nowrap font-medium ${d.loai === 'no_ky_truoc' ? 'text-rose-600' : d.loai === 'giam_gioi_thieu' ? 'text-emerald-600' : 'text-slate-700'}`}>{tienVN(d.thanh_tien)}</span>
               </div>
             ))}
             <div className="flex justify-between border-t border-slate-200 pt-1"><span className="font-bold text-slate-800">TỔNG{!r.daChot ? ' (tạm tính)' : ''}</span><span className="font-extrabold text-indigo-700">{tienVN(tong)}</span></div>
@@ -636,6 +638,64 @@ function DuoiTab() {
 // ── TAB HỆ SỐ — thông tin CỦA HỌC SINH (Thùy chốt 07-05). Bảng TO hiện MỌI HS đang học ở BK.
 // Hệ thống GỢI Ý (học ≥2 môn -5% · có anh chị em cùng học chung môn -5%, gộp -10%) — Nhân sự XÁC NHẬN mới ghi.
 // Sửa tay (học bổng, ngoại lệ…) khoá gợi ý cho tới khi bấm "Bỏ tay".
+// ── TAB GIỚI THIỆU — người cũ giới thiệu HS mới → tín dụng trừ vào học phí (trễ 1 tháng, trải đến hết) ──
+function GioiThieuTab() {
+  const [rows, setRows] = useState<Awaited<ReturnType<typeof listTinDung>>>([])
+  const [loading, setLoading] = useState(true)
+  const [phs, setPhs] = useState<PHOpt[]>([])
+  const [hocSinhs, setHocSinhs] = useState<HocSinh[]>([])
+  const [phId, setPhId] = useState<string | null>(null)
+  const [hsMoiId, setHsMoiId] = useState<string | null>(null)
+  const [soTien, setSoTien] = useState('500000')
+  const [hieuLucTu, setHieuLucTu] = useState(kyKeTiep())
+  const [busy, setBusy] = useState(false)
+  async function reload() { setLoading(true); try { setRows(await listTinDung()) } finally { setLoading(false) } }
+  useEffect(() => { reload(); listPhuHuynhCoConDangHoc().then(setPhs); listHocSinh().then((h) => setHocSinhs(h.filter((x) => x.trang_thai === 'dang_hoc'))) }, [])
+  async function luu() {
+    if (!phId) { alert('Chọn người giới thiệu.'); return }
+    const so = Number(soTien.replace(/[.,]/g, '')); if (!so || so <= 0) { alert('Số tiền không hợp lệ.'); return }
+    const hsTen = hocSinhs.find((h) => h.id === hsMoiId)?.ho_ten
+    setBusy(true)
+    try { await themTinDung(phId, hsMoiId, so, hieuLucTu, hsTen ? `Giới thiệu HS ${hsTen}` : 'Giới thiệu học sinh mới'); setPhId(null); setHsMoiId(null); setSoTien('500000'); await reload() } finally { setBusy(false) }
+  }
+  const kyVN = (s: string) => `${s.slice(5, 7)}/${s.slice(0, 4)}`
+  return (
+    <div className="mx-auto max-w-[950px]">
+      <p className="mb-3 text-[12px] text-slate-400">Người cũ giới thiệu HS mới → được tín dụng trừ vào học phí. Trễ 1 tháng (mặc định hiệu lực THÁNG SAU). Tín dụng trừ trải nhiều tháng đến khi hết (mỗi tháng trừ tối đa = học phí tháng đó).</p>
+      <div className="mb-3 rounded-xl border border-slate-200 bg-white p-4">
+        <div className="mb-2 text-sm font-semibold text-slate-900">Ghi lượt giới thiệu</div>
+        <div className="flex flex-wrap items-end gap-2.5">
+          <div><div className="mb-1 text-[11px] text-slate-500">Người giới thiệu (được hưởng)</div><div className="w-56"><SearchSelect value={phId} onChange={setPhId} placeholder="Chọn phụ huynh…" options={phs.map((p) => ({ id: p.id, label: p.ho_ten, sub: `${p.ma_ph} · ${p.tenCon.join(', ')}` }))} /></div></div>
+          <div><div className="mb-1 text-[11px] text-slate-500">HS được giới thiệu</div><div className="w-52"><SearchSelect value={hsMoiId} onChange={setHsMoiId} placeholder="Chọn học sinh…" options={hocSinhs.map((h) => ({ id: h.id, label: h.ho_ten, sub: h.ma_hs ?? '' }))} /></div></div>
+          <div><div className="mb-1 text-[11px] text-slate-500">Số tiền</div><input value={soTien} onChange={(e) => setSoTien(e.target.value)} className={`${inp} w-28`} /></div>
+          <div><div className="mb-1 text-[11px] text-slate-500">Hiệu lực từ</div><KyPicker ky={hieuLucTu} onChange={setHieuLucTu} /></div>
+          <button disabled={busy || !phId} onClick={luu} className="rounded-lg bg-indigo-600 px-3 py-1.5 text-[12px] font-semibold text-white disabled:opacity-40">Lưu</button>
+        </div>
+      </div>
+      {loading ? <p className="py-8 text-center text-sm text-slate-400">Đang tải…</p>
+        : !rows.length ? <div className="rounded-xl border border-dashed border-slate-300 bg-white py-14 text-center text-sm text-slate-400">Chưa có lượt giới thiệu nào.</div>
+        : (
+          <div className="rounded-xl border border-slate-200 bg-white">
+            <table className="w-full text-[13px]">
+              <thead className="bg-slate-50 text-left text-[11px] uppercase tracking-wide text-slate-400"><tr><th className="px-4 py-2">Người giới thiệu</th><th className="px-2 py-2">HS được GT</th><th className="px-2 py-2 text-right">Số tiền</th><th className="px-2 py-2">Hiệu lực từ</th><th className="px-4 py-2"></th></tr></thead>
+              <tbody>
+                {rows.map((r) => (
+                  <tr key={r.id} className="border-t border-slate-100">
+                    <td className="px-4 py-2 font-medium text-slate-800">{r.phu_huynh_ten ?? '—'} <span className="font-mono text-[11px] text-slate-400">{r.ma_ph}</span></td>
+                    <td className="px-2 py-2 text-slate-600">{r.hoc_sinh_moi_ten ?? '—'}</td>
+                    <td className="px-2 py-2 text-right font-semibold text-emerald-600">{tienVN(r.so_tien)}</td>
+                    <td className="px-2 py-2 text-slate-500">Tháng {kyVN(r.hieu_luc_tu)}</td>
+                    <td className="px-4 py-2 text-right"><button onClick={async () => { if (confirm('Xoá lượt giới thiệu này?')) { await xoaTinDung(r.id); await reload() } }} className="text-[12px] text-slate-400 hover:text-rose-600">Xoá</button></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+    </div>
+  )
+}
+
 // Tháng SAU tháng hiện tại — mặc định "áp dụng từ" (luật đủ-1-tháng: đổi hệ số áp từ kỳ tới).
 function kyKeTiep(): string {
   const [y, m] = kyHienTai().slice(0, 7).split('-').map(Number)

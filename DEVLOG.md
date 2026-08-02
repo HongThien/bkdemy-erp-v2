@@ -3457,3 +3457,11 @@ Verify: card hiện "△ABC nhọn, ba đường cao... | tứ giác BFEC nội 
 - **Billing dùng hệ số HIỆU LỰC theo kỳ:** `getPhieuAo` (heSoMap theo con) + `listHocPhiTheoMonV2` (heSoMap theo hsIds) thay `hs.he_so_hoc_phi`. `listHeSoHocSinh` hiện "hệ số hiện tại" = hiệu lực THÁNG NÀY (không stale). Verify DB: HS mẫu T7=0.95, T6=1(default).
 - **UI HeSoTab:** KyPicker "Áp dụng từ" (mặc định THÁNG SAU `kyKeTiep`) → Xác nhận/Sửa tay ghi entry hiệu lực từ tháng đó (setHeSoHieuLuc). Verify live: "Áp dụng từ Tháng 9/2026".
 - tsc xanh. (Cờ lệch gợi-ý vs hệ-số-hiện-tại vẫn giữ.)
+
+## 2026-08-01 (12) — TÍN DỤNG GIỚI THIỆU (người cũ giới thiệu HS mới → trừ học phí, trễ 1 tháng)
+- **CEO chốt cơ chế:** người giới thiệu (người cũ) được tín dụng (mặc định 500k, ghi TỰ DO), **hiệu lực từ tháng sau** (trễ 1 tháng), **người NHẬP TAY** (không auto-điều-kiện), trừ **trải nhiều tháng đến hết** (mỗi tháng trừ tối đa = học phí tháng đó, dư dồn sang). Người hưởng = người giới thiệu. Form có **chọn HS được giới thiệu** để lưu.
+- **Mig `202608020010`** (áp prod): bảng `hoc_phi_tin_dung`(phu_huynh_id·hoc_sinh_moi_id·so_tien·hieu_luc_tu·mo_ta) + RLS. Nới CHECK `hoa_don_dong.loai` thêm `'giam_gioi_thieu'` (dòng ÂM). `DongPhieu.loai` +giam_gioi_thieu.
+- **Lib:** themTinDung/listTinDung/xoaTinDung + `tinDungConLaiBatch(phIds, ky)` = Σ cấp(hieu_luc_tu≤ky) − Σ|giam_gioi_thieu ở hoá đơn CHỐT| (còn lại ≥0).
+- **Billing:** getPhieuAo + listPhieuTheoKy thêm dòng "Giảm giới thiệu" = −min(cònLại, học-phí-tháng-này[chinh+đuổi]); tổng trừ đi. Đã dùng = dòng giảm đông cứng ở hoá đơn chốt → tự trừ dần. Dư > học phí tháng này → dồn (không tính hết).
+- **UI:** tab "Giới thiệu" (form: người GT[SearchSelect PH] + HS được GT[SearchSelect HS] + số tiền[500k] + hiệu lực từ[KyPicker mặc định tháng sau] + Lưu; bảng + Xoá). Card hiện dòng "Giảm giới thiệu" màu xanh (âm).
+- Verify live: tab render, form đủ, 500k + hiệu lực Tháng 9. tsc xanh.

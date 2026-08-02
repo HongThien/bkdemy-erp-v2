@@ -310,7 +310,7 @@ async function layPhatSinhChoCon(hocSinhId: string, lopIds: string[], ky: string
 
 // ── PHIẾU ẢO (pure-derive realtime, §7) ──────────────────────────────────────
 export type DongPhieu = {
-  loai: 'hoc_phi' | 'hoc_duoi' | 'hoc_lieu' | 'phat_sinh' | 'no_ky_truoc'
+  loai: 'hoc_phi' | 'hoc_duoi' | 'hoc_lieu' | 'phat_sinh' | 'no_ky_truoc' | 'giam_gioi_thieu'
   hoc_sinh_id: string | null; hoc_sinh_ten?: string; lop_id: string | null; lop_ten?: string
   mo_ta: string | null; so_luong: number | null; don_gia: number | null; he_so: number | null; thanh_tien: number
 }
@@ -408,6 +408,12 @@ export async function getPhieuAo(phuHuynhId: string, ky: string): Promise<PhieuA
       }
     }
   }
+
+  // Giảm giới thiệu — trừ vào HỌC PHÍ tháng này (dong lúc này chỉ có học phí/liệu/đuổi/phát sinh, chưa gồm nợ).
+  // Trải đến hết: trừ tối đa = số học phí; dư mang sang tháng sau (tinDungConLaiBatch tự trừ phần đã dùng ở hoá đơn chốt).
+  const hocPhiSubtotal = dong.reduce((s, d) => s + d.thanh_tien, 0)
+  const giam = Math.min((await tinDungConLaiBatch([phuHuynhId], ky)).get(phuHuynhId) ?? 0, Math.max(0, hocPhiSubtotal))
+  if (giam > 0) dong.push({ loai: 'giam_gioi_thieu', hoc_sinh_id: null, lop_id: null, mo_ta: 'Giảm giới thiệu', so_luong: null, don_gia: null, he_so: null, thanh_tien: -Math.round(giam) })
 
   const soDuNoTruoc = await tinhSoDuNo(phuHuynhId)
   if (soDuNoTruoc > 0) dong.push({ loai: 'no_ky_truoc', hoc_sinh_id: null, lop_id: null, mo_ta: 'Nợ kỳ trước', so_luong: null, don_gia: null, he_so: null, thanh_tien: soDuNoTruoc })
@@ -545,6 +551,45 @@ export async function listNoPhaiThu(): Promise<DongNo[]> {
   return es
     .map((e) => ({ phu_huynh_id: e.id, ho_ten: phMap.get(e.id)?.ho_ten ?? '(không rõ)', ma_ph: phMap.get(e.id)?.ma_ph ?? '', noKhoiTao: e.noKhoiTao, noHeThong: e.noHeThong, no: e.noKhoiTao + e.noHeThong }))
     .sort((a, b) => b.no - a.no)
+}
+
+// ── TÍN DỤNG GIỚI THIỆU (08-01) — người cũ giới thiệu HS mới → trừ vào học phí, trễ 1 tháng, trải đến hết ──
+export type TinDung = { id: string; phu_huynh_id: string; hoc_sinh_moi_id: string | null; hoc_sinh_moi_ten: string | null; so_tien: number; hieu_luc_tu: string; mo_ta: string | null }
+export async function themTinDung(phuHuynhId: string, hocSinhMoiId: string | null, soTien: number, hieuLucTu: string, moTa: string | null): Promise<void> {
+  const { data: { user } } = await supabase.auth.getUser()
+  const { error } = await supabase.from('hoc_phi_tin_dung').insert({ phu_huynh_id: phuHuynhId, hoc_sinh_moi_id: hocSinhMoiId, so_tien: Math.round(soTien), hieu_luc_tu: hieuLucTu, mo_ta: moTa, created_by: user?.id ?? null })
+  if (error) throw error
+}
+export async function xoaTinDung(id: string): Promise<void> {
+  const { error } = await supabase.from('hoc_phi_tin_dung').delete().eq('id', id)
+  if (error) throw error
+}
+export async function listTinDung(): Promise<(TinDung & { phu_huynh_ten: string | null; ma_ph: string | null })[]> {
+  const { data, error } = await supabase.from('hoc_phi_tin_dung')
+    .select('id, phu_huynh_id, hoc_sinh_moi_id, so_tien, hieu_luc_tu, mo_ta, hoc_sinh:hoc_sinh_moi_id(ho_ten), phu_huynh:phu_huynh_id(ho_ten, ma_ph)')
+    .order('created_at', { ascending: false }).limit(LIMIT)
+  if (error) throw error
+  return ((data ?? []) as any[]).map((r) => ({ id: r.id, phu_huynh_id: r.phu_huynh_id, hoc_sinh_moi_id: r.hoc_sinh_moi_id, hoc_sinh_moi_ten: r.hoc_sinh?.ho_ten ?? null, so_tien: Number(r.so_tien), hieu_luc_tu: String(r.hieu_luc_tu).slice(0, 10), mo_ta: r.mo_ta, phu_huynh_ten: r.phu_huynh?.ho_ten ?? null, ma_ph: r.phu_huynh?.ma_ph ?? null }))
+}
+// Tín dụng CÒN LẠI theo PH cho kỳ (batch): Σ cấp (hieu_luc_tu ≤ ky) − Σ ĐÃ TRỪ (dòng giam_gioi_thieu ở hoá đơn CHỐT).
+export async function tinDungConLaiBatch(phIds: string[], ky: string): Promise<Map<string, number>> {
+  const out = new Map<string, number>()
+  if (!phIds.length) return out
+  const { data: tds, error: e1 } = await supabase.from('hoc_phi_tin_dung').select('phu_huynh_id, so_tien').in('phu_huynh_id', phIds).lte('hieu_luc_tu', ky).limit(LIMIT)
+  if (e1) throw e1
+  for (const t of (tds ?? []) as any[]) out.set(t.phu_huynh_id, (out.get(t.phu_huynh_id) ?? 0) + Number(t.so_tien))
+  if (out.size) {
+    // ĐÃ TRỪ = Σ |giam_gioi_thieu| ở hoá đơn ĐÃ CHỐT của PH (dòng âm → cộng trị tuyệt đối).
+    const { data: hds } = await supabase.from('hoa_don').select('id, phu_huynh_id').in('phu_huynh_id', [...out.keys()]).not('dong_at', 'is', null).limit(LIMIT)
+    const hdPh = new Map(((hds ?? []) as any[]).map((h) => [h.id, h.phu_huynh_id]))
+    const hdIds = [...hdPh.keys()]
+    if (hdIds.length) {
+      const { data: dd } = await supabase.from('hoa_don_dong').select('hoa_don_id, thanh_tien').eq('loai', 'giam_gioi_thieu').in('hoa_don_id', hdIds).limit(LIMIT)
+      for (const d of (dd ?? []) as any[]) { const ph = hdPh.get(d.hoa_don_id); if (ph) out.set(ph, (out.get(ph) ?? 0) - Math.abs(Number(d.thanh_tien))) }
+    }
+  }
+  for (const [k, v] of out) out.set(k, Math.max(0, v)) // còn lại ≥ 0
+  return out
 }
 
 // ── CHỐT KỲ (Ảo→Thật, atomic claim — §7/§266) ───────────────────────────────
@@ -845,6 +890,7 @@ export async function listChiTietTheoPH(ky: string): Promise<Map<string, DongPhi
 }
 export async function listPhieuTheoKy(ky: string): Promise<DongSoHang[]> {
   const [phs, hds, chiTiet, noByPH] = await Promise.all([listPhuHuynhCoConDangHoc(), listHoaDonByKy(ky), listChiTietTheoPH(ky), soDuNoTheoPH()])
+  const tinDungConLai = await tinDungConLaiBatch(phs.map((p) => p.id), ky) // tín dụng giới thiệu còn lại theo PH
   const hdMap = new Map(hds.map((h) => [h.phu_huynh_id, h]))
   const hdIds = hds.map((h) => h.id)
   const hdToPh = new Map(hds.map((h) => [h.id, h.phu_huynh_id]))
@@ -865,11 +911,14 @@ export async function listPhieuTheoKy(ky: string): Promise<DongSoHang[]> {
     const chinh = ct.filter((d) => d.loai !== 'hoc_duoi').reduce((s, d) => s + d.thanh_tien, 0) // học phí + liệu + phát sinh
     const duoi = ct.filter((d) => d.loai === 'hoc_duoi').reduce((s, d) => s + d.thanh_tien, 0)
     const no = Math.max(0, noByPH.get(p.id) ?? 0)
+    // Giảm giới thiệu: trừ vào HỌC PHÍ tháng này (chinh + đuổi), tối đa = số học phí; dư dồn sang tháng sau.
+    const giam = Math.min(tinDungConLai.get(p.id) ?? 0, Math.max(0, chinh + duoi))
     const dongAo = [...ct]
     if (no > 0) dongAo.push({ loai: 'no_ky_truoc', hoc_sinh_id: null, lop_id: null, mo_ta: null, so_luong: null, don_gia: null, he_so: null, thanh_tien: Math.round(no) })
+    if (giam > 0) dongAo.push({ loai: 'giam_gioi_thieu', hoc_sinh_id: null, lop_id: null, mo_ta: 'Giảm giới thiệu', so_luong: null, don_gia: null, he_so: null, thanh_tien: -Math.round(giam) })
     return {
       phu_huynh_id: p.id, ho_ten: p.ho_ten, ma_ph: p.ma_ph, soCon: p.soCon, tenCon: p.tenCon, daChot: !!hd,
-      tongTien: hd ? Number(hd.tong_tien) : chinh + duoi + no, trangThai: hd?.trang_thai ?? null,
+      tongTien: hd ? Number(hd.tong_tien) : chinh + duoi + no - giam, trangThai: hd?.trang_thai ?? null,
       tienChinh: chinh, tienDuoi: duoi, tienNo: no,
       dong: hd ? (dongChotByPH.get(p.id) ?? []) : dongAo, // chốt → dòng hoá đơn thật; chưa chốt → tính batch + nợ
       hoaDonId: hd?.id ?? null, trangThaiTB: hd?.trang_thai_tb ?? null, baoLan1At: hd?.bao_lan1_at ?? null, daThuKy: daThuByPH.get(p.id) ?? 0,
