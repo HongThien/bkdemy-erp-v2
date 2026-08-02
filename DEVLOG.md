@@ -3449,3 +3449,11 @@ Verify: card hiện "△ABC nhọn, ba đường cao... | tứ giác BFEC nội 
 - **Point 1:** tích Chốt → `confirm()` "Chốt = X? đông cứng để thu tiền" trước khi chotKy.
 - **Point 2 (CEO: card phải detail như ảnh gửi PH):** thêm `listChiTietTheoPH(ky)` = BATCH dòng từng PH (từ `listHocPhiTheoMonV2` — CT1/CT2+bù, KHỚP getPhieuAo — map hoc_sinh→phu_huynh + phát sinh cá-nhân/lớp). `DongSoHang.dong: DongPhieu[]`. `listPhieuTheoKy` restructure: nguồn DUY NHẤT là listChiTietTheoPH (bỏ tinhTamTinhTheoPH khỏi hàm này) → tổng = Σ dòng (lines KHỚP tổng, không lệch); chưa chốt = dòng batch + nợ; **đã chốt = batch `hoa_don_dong`** (dòng thật đông cứng). Card render `r.dong` (Học phí · con · lớp · X buổi × đơn giá × hệ số (gồm bù) / Học liệu / Đuổi / Phát sinh / Nợ) — KHÔNG gọi getPhieuAo mỗi card nên vẫn nhanh (1 batch pass ~ tab HS-theo-môn).
 - **Verify live:** card chốt hiện "Học phí · 12C1 · 3 buổi × 180k = 540k · Học liệu 50k · TỔNG 590k" (dòng từ hoa_don_dong); card chưa chốt hiện dòng batch. tsc xanh.
+
+## 2026-08-01 (11) — HỆ SỐ effective-dated (Cách 2 — luật "đủ 1 tháng mới giảm")
+- **CEO chốt Cách 2:** hệ số áp dụng TỪ tháng nào (effective-dated), thay vì 1 giá trị điểm-thời-gian. Vd 2 ae: em vào T7 → hệ số 0.95 hiệu lực từ T8; T7 của anh vẫn 1.
+- **Mig `202608012350_hoc_sinh_he_so_effective`** (áp prod): bảng `hoc_sinh_he_so`(hoc_sinh_id, he_so, **hieu_luc_tu** date, nguon, unique(hs,hieu_luc_tu)) + RLS member-gate. Backfill 58 HS có hệ số≠1 → entry hiệu lực 2026-07-01. `hoc_sinh.he_so_hoc_phi` GIỮ làm denormalize.
+- **Lib:** `heSoHieuLucBatch(hsIds, ky)` = entry hieu_luc_tu ≤ ky mới nhất (else 1). `setHeSoHieuLuc(hs, heSo, hieuLucTu, nguon)` upsert + sync denormalize nếu hieuLucTu ≤ tháng này. `listHeSoLichSu`.
+- **Billing dùng hệ số HIỆU LỰC theo kỳ:** `getPhieuAo` (heSoMap theo con) + `listHocPhiTheoMonV2` (heSoMap theo hsIds) thay `hs.he_so_hoc_phi`. `listHeSoHocSinh` hiện "hệ số hiện tại" = hiệu lực THÁNG NÀY (không stale). Verify DB: HS mẫu T7=0.95, T6=1(default).
+- **UI HeSoTab:** KyPicker "Áp dụng từ" (mặc định THÁNG SAU `kyKeTiep`) → Xác nhận/Sửa tay ghi entry hiệu lực từ tháng đó (setHeSoHieuLuc). Verify live: "Áp dụng từ Tháng 9/2026".
+- tsc xanh. (Cờ lệch gợi-ý vs hệ-số-hiện-tại vẫn giữ.)

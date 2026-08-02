@@ -94,6 +94,7 @@ export async function listHeSoHocSinh(): Promise<HocSinhHeSo[]> {
   if (e1) throw e1
   const rows = (hocSinh ?? []) as any[]
   const ids = rows.map((r) => r.id as string)
+  const heSoMap = await heSoHieuLucBatch(ids, kyHienTai()) // hệ số HIỆU LỰC tháng NÀY (effective-dated) → "hệ số hiện tại" luôn đúng
   const { data: hsl, error: e2 } = await supabase.from('hoc_sinh_lop').select('hoc_sinh_id, lop:lop_id(mon, ten_lop)').in('hoc_sinh_id', ids).eq('trang_thai', 'dang_hoc').limit(LIMIT)
   if (e2) throw e2
   const monsByHS = new Map<string, Set<string>>()
@@ -129,7 +130,7 @@ export async function listHeSoHocSinh(): Promise<HocSinhHeSo[]> {
     if (anhChiEm) lyDo.push(`Có anh chị em ${anhChiEm.ten} cùng học ${anhChiEm.monChung.join(', ')}`)
     return {
       id: r.id, ho_ten: r.ho_ten, phu_huynh_id: r.phu_huynh_id, phu_huynh_ten: r.phu_huynh?.ho_ten ?? null,
-      mons, lops: lopsByHS.get(r.id) ?? [], he_so_hoc_phi: Number(r.he_so_hoc_phi), he_so_nguon: r.he_so_nguon,
+      mons, lops: lopsByHS.get(r.id) ?? [], he_so_hoc_phi: heSoMap.get(r.id) ?? 1, he_so_nguon: r.he_so_nguon,
       heSoGoiY: tinhHeSoHocSinh(mons.length, !!anhChiEm), lyDoGoiY: lyDo.join(' · '),
     }
   })
@@ -156,6 +157,34 @@ export async function setHeSoThuCong(hocSinhId: string, heSo: number): Promise<v
 export async function boManualHeSo(hocSinhId: string): Promise<void> {
   const { error } = await supabase.from('hoc_sinh').update({ he_so_nguon: 'auto' }).eq('id', hocSinhId)
   if (error) throw error
+}
+// ── HỆ SỐ EFFECTIVE-DATED (Cách 2, Thùy 08-01) — hệ số áp dụng TỪ tháng nào (luật "đủ 1 tháng mới giảm") ──
+// Đặt hệ số hiệu lực từ 1 kỳ: ghi entry (HS × hiệu-lực-từ) + đồng bộ he_so_hoc_phi denormalize nếu áp THÁNG NÀY.
+export async function setHeSoHieuLuc(hocSinhId: string, heSo: number, hieuLucTu: string, nguon: 'auto' | 'manual'): Promise<void> {
+  const { data: { user } } = await supabase.auth.getUser()
+  const { error } = await supabase.from('hoc_sinh_he_so').upsert(
+    { hoc_sinh_id: hocSinhId, he_so: heSo, hieu_luc_tu: hieuLucTu, nguon, created_by: user?.id ?? null },
+    { onConflict: 'hoc_sinh_id,hieu_luc_tu' })
+  if (error) throw error
+  if (hieuLucTu <= kyHienTai()) { // entry này đang là hiệu lực của tháng hiện tại → cập nhật denormalize
+    await supabase.from('hoc_sinh').update({ he_so_hoc_phi: heSo, he_so_nguon: nguon }).eq('id', hocSinhId)
+  }
+}
+// Hệ số hiệu lực cho kỳ (BATCH) — entry hieu_luc_tu ≤ ky, MỚI NHẤT. Không có → caller dùng ?? 1.
+export async function heSoHieuLucBatch(hsIds: string[], ky: string): Promise<Map<string, number>> {
+  const m = new Map<string, number>()
+  if (!hsIds.length) return m
+  const { data, error } = await supabase.from('hoc_sinh_he_so').select('hoc_sinh_id, he_so, hieu_luc_tu')
+    .in('hoc_sinh_id', hsIds).lte('hieu_luc_tu', ky).order('hieu_luc_tu', { ascending: true }).limit(LIMIT)
+  if (error) throw error
+  for (const r of (data ?? []) as any[]) m.set(r.hoc_sinh_id, Number(r.he_so)) // asc → ghi cuối = mới nhất ≤ ky
+  return m
+}
+// Lịch sử hệ số của 1 HS (cho tab Hệ số hiện + chọn) — mới nhất trước.
+export async function listHeSoLichSu(hocSinhId: string): Promise<{ he_so: number; hieu_luc_tu: string; nguon: string }[]> {
+  const { data, error } = await supabase.from('hoc_sinh_he_so').select('he_so, hieu_luc_tu, nguon').eq('hoc_sinh_id', hocSinhId).order('hieu_luc_tu', { ascending: false }).limit(LIMIT)
+  if (error) throw error
+  return ((data ?? []) as any[]).map((r) => ({ he_so: Number(r.he_so), hieu_luc_tu: String(r.hieu_luc_tu).slice(0, 10), nguon: r.nguon }))
 }
 
 // ── CHU KỲ THÁNG — instant UTC (§8, KHÔNG format ngày-local) ────────────────
@@ -300,7 +329,9 @@ export async function getPhieuAo(phuHuynhId: string, ky: string): Promise<PhieuA
     const { data: ctRows } = await supabase.from('hoc_phi_cong_thuc').select('hoc_sinh_id, lop_id, cong_thuc').eq('ky', ky).in('hoc_sinh_id', conIds).limit(LIMIT)
     for (const r of (ctRows ?? []) as any[]) ctMap.set(`${r.hoc_sinh_id}|${r.lop_id}`, r.cong_thuc)
   }
+  const heSoMap = await heSoHieuLucBatch(conIds, ky) // ⭐ hệ số HIỆU LỰC cho kỳ (effective-dated, Cách 2 — luật "đủ 1 tháng")
   for (const con of (cons ?? []) as { id: string; ho_ten: string; he_so_hoc_phi: number }[]) {
+    const heSoCon = heSoMap.get(con.id) ?? 1
     // ghi danh CÓ HIỆU LỰC trong kỳ (đã vào trước kyEnd, chưa rời hoặc rời trong/sau kỳ).
     const { data: hslAll, error: e1 } = await supabase.from('hoc_sinh_lop')
       .select('lop_id, ngay_vao, ngay_roi, lop:lop_id(ten_lop, muc_hoc_phi_id, muc_hoc_lieu_id)')
@@ -323,8 +354,8 @@ export async function getPhieuAo(phuHuynhId: string, ky: string): Promise<PhieuA
         const moTaBu = tk.soBuoiBu > 0 ? `gồm ${tk.soBuoiBu} buổi bù (${tk.soBuoiBuDaHoc} đã bù${tk.soBuoiBuDaXep ? `, ${tk.soBuoiBuDaXep} đã xếp lịch` : ''})` : null
         dong.push({
           loai: 'hoc_phi', hoc_sinh_id: con.id, hoc_sinh_ten: con.ho_ten, lop_id: enroll.lop_id, lop_ten: enroll.lop?.ten_lop,
-          mo_ta: moTaBu, so_luong: soBuoi, don_gia: muc!.don_gia_buoi, he_so: con.he_so_hoc_phi,
-          thanh_tien: thanhTienHocPhi(muc!.don_gia_buoi, soBuoi, con.he_so_hoc_phi),
+          mo_ta: moTaBu, so_luong: soBuoi, don_gia: muc!.don_gia_buoi, he_so: heSoCon,
+          thanh_tien: thanhTienHocPhi(muc!.don_gia_buoi, soBuoi, heSoCon),
         })
       }
       // Học liệu CHỈ tính khi tháng đó thật sự có học phí (≥1 buổi) — chưa phát sinh học phí thì
@@ -919,6 +950,7 @@ export async function listHocPhiTheoMonV2(ky: string): Promise<DongTheoMonV2[]> 
   const hsIds = (hsRows ?? []).map((r: any) => r.id as string)
   if (!hsIds.length) return []
   const hsById = new Map((hsRows ?? []).map((r: any) => [r.id, r]))
+  const heSoMap = await heSoHieuLucBatch(hsIds, ky) // ⭐ hệ số HIỆU LỰC theo kỳ (effective-dated, Cách 2)
 
   const [{ data: hsl, error: e1 }, { data: ctRows, error: eCt }] = await Promise.all([
     supabase.from('hoc_sinh_lop').select('hoc_sinh_id, lop_id, ngay_vao, ngay_roi, lop:lop_id(ten_lop, mon, muc_hoc_phi_id, muc_hoc_lieu_id)').in('hoc_sinh_id', hsIds).limit(LIMIT),
@@ -1004,7 +1036,7 @@ export async function listHocPhiTheoMonV2(ky: string): Promise<DongTheoMonV2[]> 
     const duoi = (duoiByHSLop.get(key) ?? []).sort((a, b) => a.ngay.localeCompare(b.ngay))
     const soBuoiLop = buois.length
     if (soBuoiLop <= 0 && !duoi.length) continue // kỳ này không có gì với lớp này
-    const heSo = Number(hs.he_so_hoc_phi) || 1
+    const heSo = heSoMap.get(enroll.hoc_sinh_id) ?? 1 // hệ số hiệu lực của kỳ (effective-dated)
     const donGia = muc?.don_gia_buoi ?? 0
     const congThucDeXuat = deXuatCongThuc(ngayNghi.length, soBuoiLop) as CongThuc
     const congThucChon = ctChonMap.get(key) ?? null

@@ -9,7 +9,7 @@ import {
   listPhieuTheoKy, listDuoiTheoKy, chotKy, huyChot, ghiThanhToan, listNoPhaiThu, setNoKhoiTao, listPhuHuynhCoConDangHoc,
   kyHienTai,
   listHocPhiTheoMonV2, setCongThucHocPhi, getDiemDanhTheoLop,
-  listHeSoHocSinh, xacNhanHeSo, setHeSoThuCong, boManualHeSo,
+  listHeSoHocSinh, setHeSoHieuLuc, boManualHeSo,
   listPhatSinhTheoKy, themPhatSinhLop, themPhatSinhCaNhan, xoaPhatSinh,
   layTenConDangHoc, soanThongBao, danhDauDaBao,
   type MucHocPhi, type MucHocDuoi, type MucHocLieu, type DongSoHang, type DongDuoiSoHang, type DongNo, type PHOpt, type HocSinhHeSo, type PhatSinhEntry,
@@ -636,6 +636,12 @@ function DuoiTab() {
 // ── TAB HỆ SỐ — thông tin CỦA HỌC SINH (Thùy chốt 07-05). Bảng TO hiện MỌI HS đang học ở BK.
 // Hệ thống GỢI Ý (học ≥2 môn -5% · có anh chị em cùng học chung môn -5%, gộp -10%) — Nhân sự XÁC NHẬN mới ghi.
 // Sửa tay (học bổng, ngoại lệ…) khoá gợi ý cho tới khi bấm "Bỏ tay".
+// Tháng SAU tháng hiện tại — mặc định "áp dụng từ" (luật đủ-1-tháng: đổi hệ số áp từ kỳ tới).
+function kyKeTiep(): string {
+  const [y, m] = kyHienTai().slice(0, 7).split('-').map(Number)
+  const idx = y * 12 + (m - 1) + 1
+  return `${Math.floor(idx / 12)}-${String((idx % 12) + 1).padStart(2, '0')}-01`
+}
 function HeSoTab() {
   const [rows, setRows] = useState<HocSinhHeSo[]>([])
   const [loading, setLoading] = useState(true)
@@ -643,18 +649,19 @@ function HeSoTab() {
   const [suaId, setSuaId] = useState<string | null>(null)
   const [suaVal, setSuaVal] = useState('')
   const [q, setQ] = useState('')
+  const [apDungTu, setApDungTu] = useState(kyKeTiep()) // hệ số mới HIỆU LỰC từ kỳ này (mặc định tháng sau)
 
   async function reload() { setLoading(true); try { setRows(await listHeSoHocSinh()) } finally { setLoading(false) } }
   useEffect(() => { reload() }, [])
 
   async function xacNhan(hocSinhId: string, heSo: number) {
     setBusyId(hocSinhId)
-    try { await xacNhanHeSo(hocSinhId, heSo); await reload() } finally { setBusyId(null) }
+    try { await setHeSoHieuLuc(hocSinhId, heSo, apDungTu, 'auto'); await reload() } finally { setBusyId(null) }
   }
   async function luuTay(hocSinhId: string) {
     const v = Number(suaVal); if (!v || v <= 0) return
     setBusyId(hocSinhId)
-    try { await setHeSoThuCong(hocSinhId, v); setSuaId(null); await reload() } finally { setBusyId(null) }
+    try { await setHeSoHieuLuc(hocSinhId, v, apDungTu, 'manual'); setSuaId(null); await reload() } finally { setBusyId(null) }
   }
   async function boTay(hocSinhId: string) {
     setBusyId(hocSinhId)
@@ -667,10 +674,11 @@ function HeSoTab() {
 
   return (
     <div className="mx-auto max-w-[1200px]">
-      <p className="mb-3 text-[12px] text-slate-400">Hệ số là thông tin CỦA HỌC SINH. Hệ thống gợi ý: học ≥2 môn giảm 5% · có anh chị em cùng học chung ít nhất 1 môn giảm thêm 5% (gộp cả 2 = giảm 10%). Nhân sự bấm "Xác nhận" mới ghi vào phiếu; sửa tay (học bổng…) sẽ khoá gợi ý cho tới khi bấm "Bỏ tay".</p>
-      <div className="mb-3 flex items-center gap-3 rounded-xl border border-slate-200 bg-white p-4">
+      <p className="mb-3 text-[12px] text-slate-400">Hệ số là thông tin CỦA HỌC SINH, tính theo THỜI GIAN. Gợi ý: học ≥2 môn giảm 5% · có anh chị em cùng học chung ≥1 môn giảm thêm 5% (gộp = 10%). Luật &quot;đủ 1 tháng mới giảm&quot;: hệ số mới <b>áp dụng TỪ tháng chọn bên phải</b> (mặc định tháng sau) — tháng trước đó giữ nguyên. Hoá đơn đã chốt vẫn giữ hệ số lúc chốt.</p>
+      <div className="mb-3 flex flex-wrap items-center gap-3 rounded-xl border border-slate-200 bg-white p-4">
         <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm học sinh / phụ huynh…" className={`${inp} w-72`} />
-        <span className="text-[12px] text-slate-400">{rows.length} học sinh đang học{soLechGoiY > 0 ? ` · ${soLechGoiY} lệch gợi ý` : ''}</span>
+        <div className="flex items-center gap-1.5 rounded-lg bg-indigo-50 px-2.5 py-1.5"><span className="text-[12px] font-medium text-indigo-700">Áp dụng từ</span><KyPicker ky={apDungTu} onChange={setApDungTu} /></div>
+        <span className="ml-auto text-[12px] text-slate-400">{rows.length} học sinh{soLechGoiY > 0 ? ` · ${soLechGoiY} lệch gợi ý` : ''}</span>
       </div>
       {loading ? <p className="py-10 text-center text-sm text-slate-400">Đang tải…</p>
         : !filtered.length ? <div className="rounded-xl border border-dashed border-slate-300 bg-white py-14 text-center text-sm text-slate-400">Không có học sinh nào.</div>
