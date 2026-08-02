@@ -332,7 +332,8 @@ function ETHeaderBK({ title, ngay, lop, made, hoTen, soCau, gv }: {
         <div className="pv-bkh-brand">
           <img className="pv-bkh-logo" src={location.origin + '/Logo.png'} alt="BK ACADEMY" />
         </div>
-        <div className="pv-bkh-label">Bài test cuối giờ{gv ? ' · Đáp án' : ''}</div>
+        {/* Bản GV ẩn bảng HS (chứa Mã đề) → gắn Mã đề vào NHÃN để đáp án vẫn biết của mã đề nào. */}
+        <div className="pv-bkh-label">Bài test cuối giờ{gv ? (made ? ` · Mã đề ${made} · Đáp án` : ' · Đáp án') : ''}</div>
         <div className="pv-bkh-meta">
           <div className="pv-bkh-pill"><span>Thời gian</span><strong>10 phút</strong></div>
           <div className="pv-bkh-pill"><span>Ngày</span><strong>{ngay}</strong></div>
