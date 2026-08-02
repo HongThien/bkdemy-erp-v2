@@ -35,6 +35,7 @@ export default function HocSinhScreen() {
   const [khoi, setKhoi] = useState<string>(DEFAULT_KHOI)
   const [list, setList] = useState<HocSinh[]>([])
   const [countLop, setCountLop] = useState<Record<string, number>>({})
+  const [phCoSdt, setPhCoSdt] = useState<Set<string>>(new Set()) // id PH đã có SĐT (để cảnh báo HS thiếu)
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
   const [q, setQ] = useState('')
@@ -52,7 +53,9 @@ export default function HocSinhScreen() {
     try {
       const hs = await listHocSinh(khoi === ALL ? undefined : khoi)
       setList(hs)
-      setCountLop(await countLopActiveByHS(hs.map((h) => h.id))) // 1 query thay vì N
+      const [cl, phs] = await Promise.all([countLopActiveByHS(hs.map((h) => h.id)), listPhuHuynh()]) // 1 query đếm lớp + danh sách PH
+      setCountLop(cl)
+      setPhCoSdt(new Set(phs.filter((p) => p.so_dien_thoai?.trim()).map((p) => p.id)))
     } catch (e: any) { setErr(e.message ?? String(e)) } finally { setLoading(false) }
   }
   useEffect(() => { reload() }, [khoi]) // eslint-disable-line
@@ -125,6 +128,11 @@ export default function HocSinhScreen() {
                           : <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-sky-400 to-indigo-500 text-[12px] font-bold text-white">{h.ho_ten.trim().split(/\s+/).pop()?.[0]?.toUpperCase()}</span>}
                         {h.ho_ten}
                         <HoSoStatus h={h} />
+                        {!(h.phu_huynh_id && phCoSdt.has(h.phu_huynh_id)) && (
+                          <span title="Phụ huynh chưa có số điện thoại" className="inline-flex shrink-0 items-center gap-1 rounded-full bg-amber-50 px-2 py-0.5 text-[11px] font-medium text-amber-700 ring-1 ring-amber-200">
+                            ⚠ Chưa có SĐT
+                          </span>
+                        )}
                       </span>
                     </td>
                     <td className="px-3 text-slate-500">{h.ma_hs ?? '—'}</td>
