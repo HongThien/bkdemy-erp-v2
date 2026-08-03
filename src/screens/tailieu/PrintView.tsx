@@ -11,6 +11,10 @@ import { MathText } from '../kho/ui'
 import { uploadKhoFile } from '../../lib/kho/api'
 import type { CauHoi } from '../../lib/kho/api'
 
+// Bộ đếm render TOÀN CỤC → mỗi lần dựng trang có 1 class scope riêng (`pv-scope-N`) gắn lên container.
+// CSS chrome (::before/::after) prefix bằng class này ⇒ stylesheet paged.js chèn vào <head> chỉ khớp ĐÚNG
+// container của nó, không đè sang trang của render khác (gốc bug "nhầm lớp" — xem comment ở effect dựng trang).
+let pvRenderSeq = 0
 // Tên file an toàn Windows (bỏ \ / : * ? " < > | và khoảng trắng thừa).
 export function safeFileName(s: string): string {
   return (s || 'tai-lieu').replace(/[\\/:*?"<>|]/g, '').replace(/\s+/g, ' ').trim().slice(0, 120) || 'tai-lieu'
@@ -210,17 +214,22 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly,
     // XEM PHẦN BTVN (scope='btvn') → LUÔN kiểu BK: bỏ HẲN dải header + footer chrome cũ (Thùy: không tái dùng),
     // dùng đầu phiếu + footer BK. Áp cho cả BTVN riêng lẫn phần BTVN của doc giáo trình.
     const bkBtvn = scope === 'btvn'
-    const ch = bkBtvn ? { ...ch0, header: 'none' as const, footer: 'none' as const } : ch0
-    // Phiếu BTVN & Giáo trình buổi (trích xuất): KHÔNG lặp lớp/ngày/tên — tên buổi hiện 1 lần (dải buổi),
-    //   Header = Lớp · ngày · Footer = liên hệ BK Academy (KHÔNG lặp lại tên/khối tài liệu).
     const buoiDoc = full.taiLieu.loai === 'btvn' || full.taiLieu.loai === 'giao_trinh_buoi'
-    const ngay = (full.taiLieu as { ngay?: string | null }).ngay
-    const ngayVN = ngay ? ngay.split('-').reverse().join('/') : ''
+    // ⭐ Thùy chốt: BỎ HẲN dải header "Lớp · ngày" khỏi giáo-trình-buổi/BTVN — lớp/ngày đã hiện ở dải buổi
+    //   + đầu phiếu BtvnBkHead, không cần lặp trên mọi trang. Nên buoiDoc LUÔN tắt header (chỉ giữ footer
+    //   liên hệ). bkBtvn tắt luôn footer (dùng footer BK riêng trong BK_PAGE_CSS).
+    const ch = bkBtvn ? { ...ch0, header: 'none' as const, footer: 'none' as const }
+             : buoiDoc ? { ...ch0, header: 'none' as const }
+             : ch0
     const cssOpts = (buoiDoc && !bkBtvn) ? {
-      headerText: `${lopTen ? `Lớp ${lopTen} · ` : ''}${ngayVN}`,
       footerText: 'BK Academy        Tel : 0963.209.309        Địa chỉ : 17A10 KĐT Geleximco',
     } : undefined
-    const css = buildPagedCss(full.taiLieu, ch, ch0.mau || '#E91E8C', cssOpts) + (bkBtvn ? BK_CSS + BK_PAGE_CSS : '')
+    // ⭐ Scope CSS chrome theo ĐÚNG container render này (class `pv-scope-N` gắn lên container bên dưới) →
+    //   stylesheet paged.js chèn toàn cục vào <head> KHÔNG còn đè header lên trang của render khác. Đây là
+    //   gốc bug "nhầm lớp": render doc trước (chậm) resolve SAU → chèn <style> sau cùng → header của nó
+    //   thắng cascade, sơn "Lớp 6S2 · 16/07" lên trang 8B1 đang xem. Scope selector khớp đúng container.
+    const scopeCls = `pv-scope-${++pvRenderSeq}`
+    const css = buildPagedCss(full.taiLieu, ch, ch0.mau || '#E91E8C', cssOpts, `.${scopeCls}`) + (bkBtvn ? BK_CSS + BK_PAGE_CSS : '')
     const cssUrl = URL.createObjectURL(new Blob([css], { type: 'text/css' }))
     const html = srcRef.current.innerHTML
     // Race-safe: mỗi lần render vào CONTAINER RIÊNG (append live để paged.js đo layout). KHÔNG xoá DOM
@@ -230,6 +239,7 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly,
     // khác + trỏ activeContainerRef — tải/in luôn theo activeContainerRef, không quét cả dstRef.
     const dst = dstRef.current
     const container = document.createElement('div')
+    container.className = scopeCls // scope chrome CSS: các .pagedjs_page paged.js sinh ra nằm TRONG container này
     dst.appendChild(container)
     // Watchdog: paged.js Previewer.preview() từng TREO VĨNH VIỄN không resolve/không lỗi (xem DEVLOG
     // 07-11) — không có nó, headless (in nhanh/lấy link) mắc kẹt "⏳" mãi mãi KHÔNG CÓ NÚT ĐÓNG (nút chỉ
@@ -281,12 +291,11 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly,
   async function layLink(): Promise<boolean> {
     if (!activeContainerRef.current || !full) return false
     setDl(true); setRenderErr(null)
-    const ch = full.taiLieu.cau_hinh ?? {}
+    const ch0 = full.taiLieu.cau_hinh ?? {}
     const buoiDoc = full.taiLieu.loai === 'btvn' || full.taiLieu.loai === 'giao_trinh_buoi'
-    const ngay = (full.taiLieu as { ngay?: string | null }).ngay
-    const ngayVN = ngay ? ngay.split('-').reverse().join('/') : ''
+    // buoiDoc: bỏ header "Lớp · ngày" ĐỒNG BỘ với preview (drawChrome đọc cr.head = ch.header !== 'none').
+    const ch = buoiDoc ? { ...ch0, header: 'none' as const } : ch0
     const cssOpts = buoiDoc ? {
-      headerText: `${lopTen ? `Lớp ${lopTen} · ` : ''}${ngayVN}`,
       footerText: 'BK Academy        Tel : 0963.209.309        Địa chỉ : 17A10 KĐT Geleximco',
     } : undefined
     try { await uploadPagesAsLink(activeContainerRef.current, printFileName(), pageChrome(full.taiLieu, ch, cssOpts), full.taiLieu.id); return true }
@@ -814,12 +823,16 @@ export function pageChrome(taiLieu: ChromeSrc, ch: CauHinh, opts?: { headerText?
   }
 }
 // Stylesheet cho paged.js: A4 + lề + dải sóng full-bleed (pseudo của pagebox) + số trang (@page margin box).
-export function buildPagedCss(taiLieu: ChromeSrc, ch: CauHinh, accent: string, opts?: { headerText?: string; footerText?: string }): string {
+// `scopeSel` (vd '.pv-scope-7') — prefix ancestor cho 2 rule chrome (::before/::after) để stylesheet này
+// chỉ khớp trang TRONG đúng container render của nó, không rò sang render khác (xem PrintView effect). Rỗng
+// = toàn cục (giữ tương thích các caller khác).
+export function buildPagedCss(taiLieu: ChromeSrc, ch: CauHinh, accent: string, opts?: { headerText?: string; footerText?: string }, scopeSel = ''): string {
   const cr = pageChrome(taiLieu, ch, opts)
   const { head, foot, headUri, footUri, logoUrl, chipUri } = cr
   const headTxt = cssStr(cr.headText)
   const footTxt = cssStr(cr.footText)
   const footWS = cr.footPre ? 'white-space:pre;' : ''
+  const sc = scopeSel ? scopeSel + ' ' : ''
   return CONTENT_CSS + `
 .katex{font-size:0.95em!important}.pagedjs_page{font-family:'Times New Roman',Tinos,Times,serif;font-size:17px;color:#23272b;line-height:1.55;--pv-accent:${accent}}
 .pagedjs_pagebox{position:relative}
@@ -830,8 +843,8 @@ ${/* ⭐ 07-12 tiếp 5: `:not(.pv-no-chrome)` — gate SELECTOR (không phải 
     không) là hành vi CSS cơ bản, đáng tin hơn hẳn 1 property riêng lẻ. `uploadPagesAsLink` gắn class
     `pv-no-chrome` lên `.pagedjs_pagebox` TRÊN DOM SỐNG (không phải bản clone) NGAY TRƯỚC khi gọi
     html2canvas → rule đơn giản KHÔNG CÒN KHỚP nữa, không cần html2canvas "tôn trọng" gì thêm. */ ''}
-${head ? `.pagedjs_pagebox:not(.pv-no-chrome)::before{content:${headTxt};position:absolute;top:0;left:0;right:0;height:18mm;padding:0 10mm 0 50mm;box-sizing:border-box;background:url("${logoUrl}") 8mm 3.5mm / auto 5mm no-repeat, url("${chipUri}") 4.5mm 1.5mm / 42mm 9mm no-repeat, url("${headUri}") center/100% 100% no-repeat;display:flex;align-items:center;justify-content:flex-end;color:#fff;font-weight:700;font-size:11px;letter-spacing:.3px;text-shadow:0 1px 2px rgba(0,0,0,.25);z-index:1}` : ''}
-${foot ? `.pagedjs_pagebox:not(.pv-no-chrome)::after{content:${footTxt};${footWS}position:absolute;bottom:0;left:0;right:0;height:15mm;padding:0 16mm;box-sizing:border-box;background:url("${footUri}") center/100% 100% no-repeat;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:11px;letter-spacing:.3px;text-shadow:0 1px 3px rgba(0,0,0,.35);z-index:1}` : ''}
+${head ? `${sc}.pagedjs_pagebox:not(.pv-no-chrome)::before{content:${headTxt};position:absolute;top:0;left:0;right:0;height:18mm;padding:0 10mm 0 50mm;box-sizing:border-box;background:url("${logoUrl}") 8mm 3.5mm / auto 5mm no-repeat, url("${chipUri}") 4.5mm 1.5mm / 42mm 9mm no-repeat, url("${headUri}") center/100% 100% no-repeat;display:flex;align-items:center;justify-content:flex-end;color:#fff;font-weight:700;font-size:11px;letter-spacing:.3px;text-shadow:0 1px 2px rgba(0,0,0,.25);z-index:1}` : ''}
+${foot ? `${sc}.pagedjs_pagebox:not(.pv-no-chrome)::after{content:${footTxt};${footWS}position:absolute;bottom:0;left:0;right:0;height:15mm;padding:0 16mm;box-sizing:border-box;background:url("${footUri}") center/100% 100% no-repeat;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:11px;letter-spacing:.3px;text-shadow:0 1px 3px rgba(0,0,0,.35);z-index:1}` : ''}
 @page{
   size:A4;
   margin:18mm 14mm 22mm;
