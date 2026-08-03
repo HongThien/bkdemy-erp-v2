@@ -13,8 +13,8 @@ import {
   getTaiLieuFull, deletePhan, setCauOfPhan, suggestCauForDang, khoCuaMon, updateTaiLieu,
   ET_FORMS, etFormOf, type PhanResolved, type CauHinh, type ETForm as ETFormKind,
 } from '../../lib/tailieu'
-import { buildMaDe as buildMaDeLib, oTrongMaDe, usedMoiDe as usedMoiDeLib, setVarInCh, maDeStale, type BaseItem } from '../../lib/made'
-import { listLop, type Lop } from '../../lib/nhansu'
+import { buildMaDe as buildMaDeLib, oTrongMaDe, usedMoiDe as usedMoiDeLib, setVarInCh, maDeStale, maDeReady, type BaseItem } from '../../lib/made'
+import { listLop, listHSCuaLop, type Lop, type HocSinh } from '../../lib/nhansu'
 import { listCauByDang, listLopBac, LOAI_CAU, KHOI_OPTIONS, DEFAULT_KHOI, type CauHoi, type LopBac } from '../../lib/kho/api'
 import { MathText, inp } from '../kho/ui'
 import { KhoPicker } from './TaiLieuBuilder'
@@ -131,6 +131,7 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
   const [picker, setPicker] = useState<{ phanId: string; idx: number; maDang: string } | null>(null)
   const [varPicker, setVarPicker] = useState<{ baseMaCau: string; v: number; maDang: string; form: ETFormKind } | null>(null)
   const [dangModal, setDangModal] = useState<{ phanId: string; idx: number } | null>(null)
+  const [chiaDe, setChiaDe] = useState<{ taiLieuId: string; lopId: string; lopTen: string } | null>(null)
   const cauTbl = d ? khoCuaMon(d.mon).cauTbl : 'dai_cau_hoi'
   const markSaved = () => { setSaved(true); setTimeout(() => setSaved(false), 2000) }
 
@@ -283,7 +284,14 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
             <div className="mb-4 rounded-xl border border-slate-200 bg-white p-3">
               <p className="mb-1.5 text-[12px] font-semibold uppercase tracking-wide text-slate-400">Đã gán</p>
               <div className="flex flex-wrap gap-1.5">
-                {ganList.map((g) => <span key={g.taiLieuId} className="rounded-full bg-emerald-50 px-2.5 py-1 text-[12px] font-medium text-emerald-700">{g.lopTen} · {g.ngay.split('-').reverse().join('/')}</span>)}
+                {ganList.map((g) => (
+                  <span key={g.taiLieuId} className="flex items-center gap-1.5 rounded-full bg-emerald-50 py-1 pl-2.5 pr-1 text-[12px] font-medium text-emerald-700">
+                    {g.lopTen} · {g.ngay.split('-').reverse().join('/')}
+                    <button onClick={() => setChiaDe({ taiLieuId: g.taiLieuId, lopId: g.lopId, lopTen: g.lopTen })}
+                      title="Chia mã đề theo TỪNG HS trong lớp (in cho cả lớp, trước khi vào buổi) + in"
+                      className="rounded-full bg-white px-2 py-0.5 text-[11px] font-medium text-emerald-700 hover:bg-emerald-100">🎯 Chia đề &amp; In</button>
+                  </span>
+                ))}
               </div>
             </div>
           )}
@@ -435,6 +443,7 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
       )}
       {ganModal && d && <GanBuoiModal mtId={id} mon={d.mon} ganList={ganList} onClose={() => setGanModal(false)} onDone={async () => { setGanModal(false); await reload() }} />}
       {printing && <MTPrintView id={id} onClose={() => setPrinting(false)} />}
+      {chiaDe && <ChiaDeMTModal {...chiaDe} onClose={() => setChiaDe(null)} />}
     </div>
   )
 }
@@ -498,6 +507,91 @@ function GanBuoiModal({ mtId, mon, ganList, onClose, onDone }: { mtId: string; m
           </>
         )}
       </div>
+    </div>
+  )
+}
+
+// ═══════════ CHIA ĐỀ THEO HS + IN CẢ LỚP ═══════════
+// Thùy: "MT in TRƯỚC khi vào lớp — phải in theo DANH SÁCH LỚP" (khác ET in theo HS CÓ MẶT, vì ET in NGAY
+// TRONG buổi, sau điểm danh — hsCoMatCuaBuoi đọc điểm danh CHƯA có lúc phát đề MT). Roster = TOÀN BỘ HS
+// đang học của lớp (listHSCuaLop), không phụ thuộc điểm danh. Gán mã đề lưu vào cau_hinh.hsMaDe của BẢN
+// mt_buoi (doc đã gán riêng cho lớp này), KHÔNG phải master (master dùng chung cho nhiều lớp khác nhau).
+function ChiaDeMTModal({ taiLieuId, lopId, lopTen, onClose }: { taiLieuId: string; lopId: string; lopTen: string; onClose: () => void }) {
+  const [loading, setLoading] = useState(true)
+  const [phans, setPhans] = useState<PhanResolved[] | null>(null) // giữ để tính base (đủ 3 mã đề?)
+  const [ch, setCh] = useState<CauHinh>({})
+  const [roster, setRoster] = useState<{ id: string; ho_ten: string; ma_hs: string | null }[]>([])
+  const [saved, setSaved] = useState(false)
+  const [printing, setPrinting] = useState<{ id: string; ho_ten: string; maDe: number }[] | null>(null)
+  const markSaved = () => { setSaved(true); setTimeout(() => setSaved(false), 2000) }
+
+  useEffect(() => {
+    let alive = true
+    setLoading(true)
+    Promise.all([getTaiLieuFull(taiLieuId), listHSCuaLop(lopId)]).then(([f, hsl]) => {
+      if (!alive) return
+      setPhans(f.phans.filter((p) => p.loai_phan === 'custom'))
+      setCh(f.taiLieu.cau_hinh ?? {})
+      setRoster(
+        hsl.map((x) => x.hoc_sinh).filter((h): h is HocSinh => !!h)
+          .map((h) => ({ id: h.id, ho_ten: h.ho_ten, ma_hs: h.ma_hs }))
+          .sort((a, b) => a.ho_ten.localeCompare(b.ho_ten, 'vi')),
+      )
+    }).finally(() => { if (alive) setLoading(false) })
+    return () => { alive = false }
+  }, [taiLieuId, lopId])
+
+  const base: BaseItem[] = (phans ?? []).flatMap((p) => p.caus.filter((c) => c.ma_cau && c.dang_chinh).map((c) => ({ maDang: c.dang_chinh, maCau: c.ma_cau })))
+  const deReady = phans != null && maDeReady(base, ch)
+
+  async function save(next: CauHinh) { setCh(next); await updateTaiLieu(taiLieuId, { cau_hinh: next }); markSaved() }
+  const setHsMa = (hsId: string, maDe: number) => save({ ...ch, hsMaDe: { ...(ch.hsMaDe ?? {}), [hsId]: maDe } })
+  const raiTuDong = () => { const m: Record<string, number> = {}; roster.forEach((hs, i) => { m[hs.id] = (i % 3) + 1 }); save({ ...ch, hsMaDe: m }) }
+  const inCaLop = () => setPrinting(roster.map((hs) => ({ id: hs.id, ho_ten: hs.ho_ten, maDe: ch.hsMaDe?.[hs.id] ?? 1 })))
+
+  return (
+    <div className="fixed inset-0 z-[70] flex items-center justify-center bg-black/30 px-4" onClick={onClose}>
+      <div className="flex max-h-[85vh] w-[520px] max-w-full flex-col rounded-2xl bg-white p-5 shadow-xl" onClick={(e) => e.stopPropagation()}>
+        <div className="mb-1 flex items-center gap-2">
+          <p className="text-[15px] font-semibold text-slate-900">Chia đề — {lopTen}</p>
+          {saved && <span className="text-[12px] text-emerald-600">✓ Đã lưu</span>}
+        </div>
+        <p className="mb-3 text-[12px] text-slate-500">In <b>TRƯỚC khi vào buổi</b>, theo danh sách CẢ LỚP (khác ET in theo HS điểm danh có mặt) — chưa điểm danh cũng chia đề được.</p>
+        {loading ? <p className="text-[12px] italic text-slate-400">Đang tải…</p>
+          : !deReady ? (
+            <p className="text-[12px] italic text-amber-600">MT này chưa đủ 3 mã đề (còn ô trống hoặc chưa sinh) — mở MT, bấm "🎲 Sinh đề 2 &amp; 3" cho đủ trước khi chia đề.</p>
+          ) : roster.length === 0 ? (
+            <p className="text-[12px] italic text-slate-400">Lớp {lopTen} chưa có HS đang học.</p>
+          ) : (
+            <>
+              <div className="mb-2 flex items-center gap-2">
+                <button onClick={raiTuDong} className="rounded-md border border-violet-300 bg-white px-2.5 py-1 text-[11px] font-medium text-violet-700 hover:bg-violet-100">🎲 Rải tự động</button>
+                <button onClick={inCaLop} className="ml-auto rounded-md bg-indigo-600 px-2.5 py-1 text-[11px] font-medium text-white hover:bg-indigo-500">🖨 Xem &amp; In cả lớp</button>
+              </div>
+              <ol className="min-h-0 flex-1 space-y-1 overflow-auto">
+                {roster.map((hs) => { const cur = ch.hsMaDe?.[hs.id]
+                  return (
+                    <li key={hs.id} className="flex items-center gap-2 rounded-md border border-slate-100 px-2 py-1.5">
+                      <span className="min-w-0 flex-1 truncate text-[12px] text-slate-700" title={hs.ma_hs ?? ''}>{hs.ho_ten}</span>
+                      <div className="flex gap-0.5">
+                        {[1, 2, 3].map((n) => (
+                          <button key={n} onClick={() => setHsMa(hs.id, n)} title={`Mã đề ${n}`}
+                            className={`h-6 w-6 rounded text-[12px] font-bold ${cur === n ? 'bg-violet-600 text-white' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}>{n}</button>
+                        ))}
+                      </div>
+                      <button onClick={() => setPrinting([{ id: hs.id, ho_ten: hs.ho_ten, maDe: ch.hsMaDe?.[hs.id] ?? 1 }])} title="In riêng phiếu HS này" className="shrink-0 text-[13px] text-slate-400 hover:text-indigo-600">🖨</button>
+                    </li>
+                  )
+                })}
+              </ol>
+              <p className="mt-2 text-[11px] text-slate-400">Rải tự động = xoay vòng 1·2·3 theo thứ tự (HS cạnh nhau khác mã). Chưa gán tay HS nào → mặc định mã đề 1 lúc in.</p>
+            </>
+          )}
+        <div className="mt-4 flex justify-end">
+          <button onClick={onClose} className="rounded-lg border border-slate-300 px-3 py-1.5 text-[13px] text-slate-600">Đóng</button>
+        </div>
+      </div>
+      {printing && <MTPrintView id={taiLieuId} perHS={printing} lopTen={lopTen} onClose={() => setPrinting(null)} />}
     </div>
   )
 }

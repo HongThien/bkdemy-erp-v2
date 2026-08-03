@@ -1,6 +1,6 @@
-// made.ts — sinh 3 MÃ ĐỀ (đề gốc + đề 2 & 3). Mỗi câu GỐC → câu KHÁC cùng DẠNG + cùng FORM. Neo theo
-// CÂU GỐC (key = ma_cau gốc, KHÔNG theo vị trí). DÙNG CHUNG ET (1 lớp+ngày) và MT (mẫu nhiều phần) —
-// TÁCH khỏi ETScreen để MT tái dùng NGUYÊN LOGIC. Lệch một bản là 3 đề đụng câu nhau (bug ÂM THẦM).
+// made.ts — sinh 3 MÃ ĐỀ (đề gốc + đề 2 & 3). Mỗi câu GỐC → biến thể KHÁC CÙNG HỌ CÂU GỐC (parent_ma_cau
+// chung) + cùng FORM in. Neo theo CÂU GỐC (key = ma_cau gốc, KHÔNG theo vị trí). DÙNG CHUNG ET (1 lớp+ngày)
+// và MT (mẫu nhiều phần) — TÁCH khỏi ETScreen để MT tái dùng NGUYÊN LOGIC. Lệch một bản là 3 đề đụng câu nhau (bug ÂM THẦM).
 import { etFormOf, canBeETForm, type CauHinh, type ETForm } from './tailieu'
 import { listCauByDang, type CauHoi } from './kho/api'
 
@@ -9,9 +9,10 @@ export type BaseItem = { maDang: string; maCau: string }
 // Sinh đề 2/3 PURE: base = câu GỐC (đúng thứ tự), baseCh = cấu hình hiện tại. Trả cau_hinh mới (etMaDe +
 // etFormByCau bổ sung form cho câu biến thể) + toàn bộ câu đã nạp (để cache/preview). cauCache = câu đã
 // có sẵn ở màn soạn (fallback khi pool chưa chứa câu gốc).
-// ⭐ BẤT BIẾN (Thùy): mọi câu ở MỌI mã đề của 1 vị trí PHẢI CÙNG DẠNG với câu gốc. Ưu tiên câu KHÁC (chưa
-// dùng) cùng dạng+form; nếu dạng KHÔNG đủ câu khác (vd chỉ có 1 câu) thì CHO PHÉP TRÙNG — dùng lại câu
-// gốc / câu cùng dạng, KHÔNG để TRỐNG. Nhờ vậy picks luôn được lấp (không còn null từ lần sinh này).
+// ⭐ BẤT BIẾN (Thùy): mọi câu ở MỌI mã đề của 1 vị trí PHẢI CÙNG HỌ CÂU GỐC (parent_ma_cau chung) với câu
+// gốc — tức biến thể SONG SONG, KHÔNG chỉ tình cờ cùng dạng. Ưu tiên biến thể KHÁC (chưa dùng) cùng họ+form;
+// nếu họ KHÔNG đủ biến thể (vd chỉ có gốc + 1 clone) thì CHO PHÉP TRÙNG TRONG HỌ — dùng lại câu gốc / biến
+// thể cùng họ, KHÔNG nhảy sang bài gốc khác, KHÔNG để TRỐNG. Nhờ vậy picks luôn được lấp (không còn null).
 export async function buildMaDe(
   base: BaseItem[],
   baseCh: CauHinh,
@@ -25,18 +26,23 @@ export async function buildMaDe(
   const etFormByCau: Record<string, string> = { ...(baseCh.etFormByCau ?? {}) }
   const etMaDe: Record<string, (string | null)[]> = {}
   const used = new Set<string>(base.map((b) => b.maCau))   // ưu tiên: đề 2/3 khác MỌI câu gốc (khi còn đủ câu)
+  const rootOf = (c: CauHoi) => c.parent_ma_cau ?? c.ma_cau   // câu GỐC của họ (câu gốc tự trỏ chính nó)
   for (const b of base) {
     const baseCau = byMa.get(b.maCau) ?? cauCache[b.maCau]
     const form: ETForm = baseCau ? etFormOf(baseCau, baseCh) : 'tra_loi_ngan'
-    // Ứng viên = câu CÙNG DẠNG + in được cùng form (gồm cả câu gốc). Các mã đề bắt buộc nằm trong tập này.
-    const candidates = (pools[b.maDang] ?? []).filter((c) => canBeETForm(c, form))
+    const root = baseCau ? rootOf(baseCau) : b.maCau           // họ câu gốc của vị trí này
+    // Ứng viên = câu CÙNG HỌ CÂU GỐC (parent_ma_cau chung) + in được cùng form. KHÔNG lấy sang bài gốc
+    // KHÁC dù cùng dạng — đó chính là chỗ gây "loạn": biến thể phải song song với câu gốc (cùng cấu trúc),
+    // không chỉ tình cờ cùng dạng. Dạng vẫn tự khớp vì biến thể luôn cùng dang_chinh với gốc.
+    const candidates = (pools[b.maDang] ?? []).filter((c) => rootOf(c) === root && canBeETForm(c, form))
     const picks: (string | null)[] = []
     for (let v = 0; v < 2; v++) {
-      const fresh = candidates.find((c) => !used.has(c.ma_cau))   // câu KHÁC chưa dùng ở bất kỳ đề nào
+      const fresh = candidates.find((c) => !used.has(c.ma_cau))   // biến thể KHÁC chưa dùng ở bất kỳ đề nào
       if (fresh) { used.add(fresh.ma_cau); etFormByCau[fresh.ma_cau] = form; picks.push(fresh.ma_cau) }
       else {
-        // Không đủ câu khác cùng dạng+form → CHO TRÙNG: câu chưa xuất hiện ở đề NÀY (đề 3 tránh đề 2),
-        // rồi câu gốc. KHÔNG thêm vào `used` → câu gốc khác cùng dạng vẫn tái dùng được (đều thiếu câu).
+        // Không đủ biến thể cùng họ+form → CHO TRÙNG TRONG HỌ: biến thể chưa xuất hiện ở đề NÀY (đề 3 tránh
+        // đề 2), rồi câu gốc của họ. KHÔNG bao giờ nhảy sang bài gốc khác, KHÔNG thêm vào `used` (họ khác
+        // đang thiếu vẫn tái dùng gốc của mình được). picks luôn nằm trong họ → không loạn, không để trống.
         const dup = candidates.find((c) => !picks.includes(c.ma_cau))?.ma_cau ?? candidates[0]?.ma_cau ?? b.maCau
         etFormByCau[dup] = form; picks.push(dup)
       }
