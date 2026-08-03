@@ -10,9 +10,10 @@ import {
   type MTGanRow,
 } from '../../lib/mt'
 import {
-  getTaiLieuFull, deletePhan, setCauOfPhan, suggestCauForDang, khoCuaMon, updateTaiLieu,
+  getTaiLieuFull, deletePhan, setCauOfPhan, suggestCauForDang, khoCuaMon, updateTaiLieu, setPhanKieu, BLOCK_KIEU,
   ET_FORMS, etFormOf, type PhanResolved, type CauHinh, type ETForm as ETFormKind,
 } from '../../lib/tailieu'
+import { buildMaDe as buildMaDeLib, oTrongMaDe, usedMoiDe as usedMoiDeLib, setVarInCh, maDeStale, type BaseItem } from '../../lib/made'
 import { listLop, type Lop } from '../../lib/nhansu'
 import { listCauByDang, listLopBac, LOAI_CAU, KHOI_OPTIONS, DEFAULT_KHOI, type CauHoi, type LopBac } from '../../lib/kho/api'
 import { MathText, inp } from '../kho/ui'
@@ -128,6 +129,7 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
   const [ganList, setGanList] = useState<MTGanRow[]>([])
   const [printing, setPrinting] = useState(false)
   const [picker, setPicker] = useState<{ phanId: string; idx: number; maDang: string } | null>(null)
+  const [varPicker, setVarPicker] = useState<{ baseMaCau: string; v: number; maDang: string; form: ETFormKind } | null>(null)
   const [dangModal, setDangModal] = useState<{ phanId: string; idx: number } | null>(null)
   const cauTbl = d ? khoCuaMon(d.mon).cauTbl : 'dai_cau_hoi'
   const markSaved = () => { setSaved(true); setTimeout(() => setSaved(false), 2000) }
@@ -239,6 +241,26 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
     const next: CauHinh = { ...ch, etFormByCau: { ...(ch.etFormByCau ?? {}), [maCau]: f } }
     setCh(next); await updateTaiLieu(id, { cau_hinh: next }); markSaved()
   }
+  // Số cột khi in — RIÊNG từng PHẦN (kiểu 'thuong'/'2cot'/… lưu trên tai_lieu_phan, GIỐNG giáo trình).
+  async function setKieuPhan(phanId: string, kieu: string) {
+    setPhans((ps) => ps.map((p) => (p.id === phanId ? { ...p, kieu } : p)))
+    await setPhanKieu(phanId, kieu); markSaved()
+  }
+
+  // ── 3 MÃ ĐỀ (như ET) — base = MỌI câu XUYÊN mọi phần (đúng thứ tự phần → hàng). Đề 2/3 tự sinh khác
+  //    câu (cùng dạng + form), neo theo ma_cau gốc; lưu NGAY vào cau_hinh (MT autosave). Dùng lib/made. ──
+  const baseAll = (): BaseItem[] => phans.flatMap((p) => (rowsByPhan[p.id] ?? []).filter((r) => r.maCau && r.maDang).map((r) => ({ maDang: r.maDang!, maCau: r.maCau! })))
+  async function saveCh(next: CauHinh) { setCh(next); await updateTaiLieu(id, { cau_hinh: next }); markSaved() }
+  async function sinhMaDe() {
+    const base = baseAll()
+    if (!base.length) return
+    const { ch: chNew, caus } = await buildMaDeLib(base, ch, cauTbl, cau)
+    setCau((p) => { const n = { ...p }; for (const c of caus) n[c.ma_cau] = c; return n })
+    await saveCh(chNew)
+  }
+  const setVar = (baseMaCau: string, v: number, maCau: string, form: ETFormKind) => saveCh(setVarInCh(ch, baseMaCau, v, maCau, form))
+  const usedMoiDe = (): Set<string> => usedMoiDeLib(baseAll(), ch)
+  const oTrong = (): { maCau: string; v: number }[] => oTrongMaDe(baseAll(), ch)
 
   if (loading || !d) return <div className="p-8 text-sm text-slate-400">Đang tải…</div>
   const soCau = Object.values(rowsByPhan).reduce((s, rows) => s + rows.filter((r) => r.maCau).length, 0)
@@ -269,6 +291,18 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
             </div>
           )}
           <p className="mb-3 text-[12px] text-slate-400">Mỗi câu chọn 1 dạng → hệ gợi ý câu <b>ít dùng nhất</b> (đổi được). Câu không trùng nhau XUYÊN mọi phần của MT này.</p>
+          {soCau > 0 && (() => { const base = baseAll(); const t = oTrong().length
+            const gen = !!(ch.etMaDe && Object.keys(ch.etMaDe).length); const stale = gen && maDeStale(base, ch)
+            return (
+              <div className="mb-3 flex flex-wrap items-center gap-2 rounded-lg border border-violet-100 bg-violet-50/40 px-3 py-2">
+                <span className="text-[12px] font-semibold text-violet-700">🧩 3 mã đề</span>
+                <span className="text-[11px] text-slate-500">Đề gốc = các câu dưới; đề 2 &amp; 3 tự sinh — cùng dạng + form, khác câu (xuyên mọi phần).</span>
+                <button onClick={sinhMaDe} className="ml-auto rounded-md border border-violet-300 bg-white px-2.5 py-1 text-[11px] font-medium text-violet-700 hover:bg-violet-100">🎲 {gen ? 'Sinh lại' : 'Sinh'} đề 2 &amp; 3</button>
+                {stale ? <span className="rounded bg-amber-50 px-2 py-0.5 text-[11px] font-medium text-amber-700">đã đổi câu — bấm Sinh lại</span>
+                  : t ? <span className="rounded bg-rose-50 px-2 py-0.5 text-[11px] font-medium text-rose-600">{t} ô trống — chọn tay trước khi in</span>
+                  : gen ? <span className="rounded bg-emerald-50 px-2 py-0.5 text-[11px] font-medium text-emerald-600">✓ đủ 3 mã đề</span> : null}
+              </div>
+            ) })()}
           <div className="space-y-3">
             {phans.map((p) => {
               const rows = rowsByPhan[p.id] ?? []
@@ -284,6 +318,11 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
                       <option value="">Tự động</option>
                       {[...lopBacs].sort((a, b) => a.thu_tu - b.thu_tu).map((b) => <option key={b.ma} value={b.ma}>Ép: từ {b.ma} trở lên</option>)}
                     </select>
+                    <select value={p.kieu ?? 'thuong'} onChange={(e) => setKieuPhan(p.id, e.target.value)}
+                      title="Số cột khi in phần này (giống giáo trình)"
+                      className="rounded border border-slate-200 bg-white px-1.5 py-0.5 text-[11px] font-medium text-slate-500 hover:border-sky-300">
+                      {BLOCK_KIEU.map((k) => <option key={k.v} value={k.v}>🧱 {k.lbl}</option>)}
+                    </select>
                     <button onClick={() => xoaPhan(p)} className="ml-auto text-[12px] text-slate-300 hover:text-rose-600">Xoá phần</button>
                   </div>
                   <div className="space-y-2">
@@ -292,7 +331,8 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
                       const form = c ? etFormOf(c, ch) : null
                       const formOpts = ET_FORMS.filter((f) => f.v !== 'trac_nghiem' || !!(c?.lua_chon && c.lua_chon.length))
                       return (
-                        <div key={i} className="flex items-start gap-2 rounded-xl border border-slate-200 bg-slate-50/60 p-2.5">
+                        <div key={i} className="rounded-xl border border-slate-200 bg-slate-50/60 p-2.5">
+                          <div className="flex items-start gap-2">
                           <span className="mt-1.5 w-6 shrink-0 text-center text-[13px] font-bold text-violet-600">{i + 1}</span>
                           <button onClick={() => setDangModal({ phanId: p.id, idx: i })} className="w-56 shrink-0 rounded-md border border-slate-300 bg-white px-2.5 py-2 text-left text-[13px] hover:border-indigo-400">
                             {r.maDang ? <span className="text-slate-700">{tenDang(r.maDang)}</span> : <span className="text-indigo-500">+ chọn dạng…</span>}
@@ -326,6 +366,32 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
                             </div>
                           )}
                           <button onClick={() => xoaRow(p.id, i)} title="Xoá hàng" className="shrink-0 px-1 pt-1 text-[13px] text-slate-300 hover:text-rose-600">✕</button>
+                          </div>
+                          {/* Mã đề 2 & 3 — câu khác cùng dạng + form với câu gốc; TRỐNG thì chọn tay (giống ET). */}
+                          {c && ch.etMaDe?.[c.ma_cau] && (
+                            <div className="mt-2 ml-8 space-y-1 border-t border-dashed border-slate-200 pt-2">
+                              {[0, 1].map((v) => {
+                                const vm = ch.etMaDe?.[c.ma_cau]?.[v] ?? null
+                                const vc = vm ? cau[vm] : null
+                                const f = etFormOf(c, ch)
+                                return (
+                                  <div key={v} className="flex items-center gap-2 text-[12px]">
+                                    <span className="shrink-0 rounded bg-slate-100 px-1.5 py-0.5 text-[10px] font-medium text-slate-500">Mã đề {v + 2}</span>
+                                    {vm ? (
+                                      <>
+                                        <span className="shrink-0 rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[10px] text-slate-400">{vm}</span>
+                                        <span className="min-w-0 flex-1 truncate text-slate-600">{vc ? <MathText>{vc.noi_dung}</MathText> : '…'}</span>
+                                      </>
+                                    ) : (
+                                      <span className="min-w-0 flex-1 font-medium text-rose-500">⚠ TRỐNG — chưa có câu cùng dạng + form khác</span>
+                                    )}
+                                    <button onClick={() => setVarPicker({ baseMaCau: c.ma_cau, v, maDang: r.maDang ?? c.dang_chinh, form: f })}
+                                      className="shrink-0 rounded-md border border-slate-300 px-2 py-0.5 text-[11px] font-medium text-slate-600 hover:border-violet-400">✎ {vm ? 'Đổi' : 'Chọn'}</button>
+                                  </div>
+                                )
+                              })}
+                            </div>
+                          )}
                         </div>
                       )
                     })}
@@ -352,6 +418,21 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
             const rows = (rowsByPhan[picker.phanId] ?? []).map((x, i) => (i === picker.idx ? { ...x, maCau: pick } : x))
             await luuPhan(picker.phanId, rows)
             setPicker(null)
+          }} />
+      )}
+      {varPicker && (
+        <KhoPicker maDangs={[varPicker.maDang]} cauTbl={cauTbl}
+          selected={ch.etMaDe?.[varPicker.baseMaCau]?.[varPicker.v] ? [ch.etMaDe[varPicker.baseMaCau][varPicker.v]!] : []}
+          disabled={[...usedMoiDe()]} onClose={() => setVarPicker(null)}
+          onConfirm={async (m) => {
+            const used = usedMoiDe()
+            const pick = m.find((x) => !used.has(x)) ?? m[0] ?? null
+            if (pick) {
+              const list = await listCauByDang(varPicker.maDang, cauTbl)
+              setCau((prev) => ({ ...prev, ...Object.fromEntries(list.map((cc) => [cc.ma_cau, cc])) }))
+              await setVar(varPicker.baseMaCau, varPicker.v, pick, varPicker.form)
+            }
+            setVarPicker(null)
           }} />
       )}
       {ganModal && d && <GanBuoiModal mtId={id} mon={d.mon} ganList={ganList} onClose={() => setGanModal(false)} onDone={async () => { setGanModal(false); await reload() }} />}

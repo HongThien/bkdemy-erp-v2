@@ -133,6 +133,7 @@ export async function ganMTVaoBuoi(masterId: string, opts: { lopId: string; ngay
     await supabase.from('tai_lieu_phan').delete().eq('tai_lieu_id', keepId) // xoá phans/câu CŨ (cascade) trước khi chép lại
     const { data: upd, error: eUpd } = await supabase.from('tai_lieu').update({
       ten: master.taiLieu.ten, khoi: master.taiLieu.khoi, mon: master.taiLieu.mon, theme: master.taiLieu.theme, ngay: opts.ngay,
+      cau_hinh: master.taiLieu.cau_hinh ?? {},   // ⭐ copy cau_hinh (etFormByCau/lines/etColByGroup/etMaDe) sang bản buổi — trước đây bỏ sót
     }).eq('id', keepId).select().single()
     if (eUpd) throw eUpd
     docCon = upd as TaiLieu
@@ -140,6 +141,7 @@ export async function ganMTVaoBuoi(masterId: string, opts: { lopId: string; ngay
     const { data: nw, error: eNw } = await supabase.from('tai_lieu').insert({
       loai: 'mt_buoi', ten: master.taiLieu.ten, khoi: master.taiLieu.khoi, mon: master.taiLieu.mon, theme: master.taiLieu.theme,
       lop_id: opts.lopId, ngay: opts.ngay, nguon_id: masterId, created_by: user?.id ?? null,
+      cau_hinh: master.taiLieu.cau_hinh ?? {},   // ⭐ copy cau_hinh (etFormByCau/lines/etColByGroup/etMaDe) sang bản buổi
     }).select().single()
     if (eNw) throw eNw
     docCon = nw as TaiLieu

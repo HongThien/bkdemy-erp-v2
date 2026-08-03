@@ -12,7 +12,7 @@ import { fetchCausByMa } from '../../lib/ontap'
 import { BK_CSS, BK_PAGE_CSS } from './bkPrint'
 import type { CauHoi } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
-import { CauItem, OptGrid, GvAnswer, WriteLines, splitStem, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChrome, printWithFilename } from './PrintView'
+import { CauItem, CauList, OptGrid, GvAnswer, WriteLines, splitStem, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChrome, printWithFilename } from './PrintView'
 
 const DEFAULT_TL_LINES = 4
 const DEFAULT_TLN_LINES = 2
@@ -248,18 +248,19 @@ function ETDoc({ ten, caus, ch, gv, badge, hoTen }: { ten: string; caus: CauHoi[
       <ETHeaderBK title={tenDe} ngay={ngayDe} lop={tenLop} made={made} hoTen={hoTen} soCau={caus.length} gv={gv} />
       {runs.map((run, ri) => (
         <section key={ri} className="pv-sec"><h2 className="pv-h-dang">Phần {part()} · {GLBL[run.g]}</h2>
-          <ol className="pv-caulist">{run.items.map((c) => {
+          {/* Số cột theo NHÓM FORM (cau_hinh.etColByGroup) — CauList ghép câu theo hàng (giống giáo trình). */}
+          <CauList kieu={ch.etColByGroup?.[run.g]}>{run.items.map((c) => {
             if (run.g === 0) return <CauItem key={c.ma_cau} no={next()} c={c} gv={gv} />
             const { stem, grid, emb } = splitStem(c)
             return (
-              <li key={c.ma_cau} className="pv-cau">
+              <div key={c.ma_cau} className="pv-cau">
                 <div className="pv-math"><MathText prefix={`<span class="pv-cau-no">Câu ${next()}.</span> `}>{stem}</MathText></div>
                 {grid && <OptGrid grid={grid} emb={emb} />}
                 {c.anh_de && <img src={c.anh_de} alt="" className="pv-img" />}
                 {gv ? <GvAnswer c={c} /> : grid ? null : <WriteLines n={lines[c.ma_cau] ?? (run.g === 1 ? DEFAULT_TLN_LINES : DEFAULT_TL_LINES)} />}
-              </li>
+              </div>
             )
-          })}</ol>
+          })}</CauList>
         </section>
       ))}
       {caus.length === 0 && <p className="pv-empty">ET chưa có câu nào.</p>}

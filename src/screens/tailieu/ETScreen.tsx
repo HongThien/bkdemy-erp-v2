@@ -6,8 +6,9 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import {
   createET, updateET, getTaiLieuFull, setETCaus, suggestCauForDang, khoCuaMon,
-  maET, ET_FORMS, etFormOf, canBeETForm, sortETCaus, type ETDoc, type CauHinh, type ETForm as ETFormKind, type TaiLieuFull,
+  maET, ET_FORMS, etFormOf, sortETCaus, etGroupOf, BLOCK_KIEU, type ETDoc, type CauHinh, type ETForm as ETFormKind, type TaiLieuFull,
 } from '../../lib/tailieu'
+import { buildMaDe as buildMaDeLib, oTrongMaDe, usedMoiDe as usedMoiDeLib, setVarInCh } from '../../lib/made'
 import { listLop, type Lop } from '../../lib/nhansu'
 import { hsCoMatCuaBuoi } from '../../lib/gami'
 import { listCauByDang, LOAI_CAU, type CauHoi } from '../../lib/kho/api'
@@ -122,30 +123,19 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
   const xoaRow = (idx: number) => setRows((rs) => rs.filter((_, i) => i !== idx))
   const setLines = (maCau: string, n: number) => setCh((c) => ({ ...c, btvnLinesByCau: { ...(c.btvnLinesByCau ?? {}), [maCau]: n } }))
   const setForm = (maCau: string, f: ETFormKind) => setCh((c) => ({ ...c, etFormByCau: { ...(c.etFormByCau ?? {}), [maCau]: f } }))
+  // ── CHẾ ĐỘ CỘT khi in (Thùy) — theo NHÓM FORM (giống 'kiểu' của phan giáo trình, nhưng ET 1 phan nên
+  // khoá theo nhóm). Lưu ở cau_hinh.etColByGroup; áp cho cả 3 mã đề (chVar spread ch). ──
+  const setColGroup = (g: number, kieu: string) => setCh((c) => ({ ...c, etColByGroup: { ...(c.etColByGroup ?? {}), [g]: kieu } }))
+  const GROUP_LBL = ['Trắc nghiệm', 'Trả lời ngắn', 'Tự luận']
+  const groupsPresent = useMemo(() => {
+    const s = new Set<number>()
+    for (const r of rows) { const c = r.maCau ? cau[r.maCau] : null; if (c) s.add(etGroupOf(c, ch)) }
+    return [...s].sort((a, b) => a - b)
+  }, [rows, cau, ch])
 
   // ── 3 MÃ ĐỀ (Thùy 07-31) — đề GỐC = rows; đề 2/3 sinh tự động: mỗi câu gốc → câu KHÁC cùng dạng+form.
-  // Neo theo CÂU GỐC (key ma_cau gốc). Hàm PURE (không setState) để dùng lại được ở luu(). ──
-  async function buildMaDe(base: { maDang: string; maCau: string }[], baseCh: CauHinh): Promise<{ ch: CauHinh; caus: CauHoi[] }> {
-    const pools: Record<string, CauHoi[]> = {}
-    for (const md of new Set(base.map((b) => b.maDang))) pools[md] = await listCauByDang(md, cauTbl)
-    const allCau = Object.values(pools).flat()
-    const byMa = new Map(allCau.map((c) => [c.ma_cau, c]))
-    const etFormByCau: Record<string, string> = { ...(baseCh.etFormByCau ?? {}) }
-    const etMaDe: Record<string, (string | null)[]> = {}
-    const used = new Set<string>(base.map((b) => b.maCau))   // loại mọi câu GỐC → đề 2/3 luôn khác đề gốc
-    for (const b of base) {
-      const baseCau = byMa.get(b.maCau) ?? cau[b.maCau]
-      const form: ETFormKind = baseCau ? etFormOf(baseCau, baseCh) : 'tra_loi_ngan'
-      const picks: (string | null)[] = []
-      for (let v = 0; v < 2; v++) {
-        const cand = (pools[b.maDang] ?? []).find((c) => !used.has(c.ma_cau) && canBeETForm(c, form))
-        if (cand) { used.add(cand.ma_cau); etFormByCau[cand.ma_cau] = form; picks.push(cand.ma_cau) }
-        else picks.push(null)   // hết câu cùng dạng+form → TRỐNG (chặn lưu, người dùng chọn tay)
-      }
-      etMaDe[b.maCau] = picks
-    }
-    return { ch: { ...baseCh, etFormByCau, etMaDe }, caus: allCau }
-  }
+  // Logic PURE tách sang lib/made.ts (DÙNG CHUNG với MT). Wrapper mỏng dưới đây bơm cauTbl + cache `cau`. ──
+  const buildMaDe = (base: { maDang: string; maCau: string }[], baseCh: CauHinh) => buildMaDeLib(base, baseCh, cauTbl, cau)
   const baseRows = () => rows.filter((r) => r.maCau && r.maDang).map((r) => ({ maDang: r.maDang!, maCau: r.maCau! }))
   async function sinhMaDe() {
     const base = baseRows()
@@ -154,26 +144,12 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
     setCau((p) => { const n = { ...p }; for (const c of caus) n[c.ma_cau] = c; return n })
     setCh(chNew)
   }
-  // Gán tay 1 ô mã đề (đề 2/3) khi TRỐNG hoặc muốn đổi — ép cùng form với câu gốc.
-  function setVar(baseMaCau: string, v: number, maCau: string, form: ETFormKind) {
-    setCh((c) => {
-      const cur = c.etMaDe?.[baseMaCau] ?? [null, null]
-      const next = [...cur]; next[v] = maCau
-      return { ...c, etMaDe: { ...(c.etMaDe ?? {}), [baseMaCau]: next }, etFormByCau: { ...(c.etFormByCau ?? {}), [maCau]: form } }
-    })
-  }
-  // Câu đã dùng ở BẤT KỲ đề nào (gốc + 2/3) — cấm chọn lại để 3 đề không đụng câu nhau.
-  const usedMoiDe = (): Set<string> => {
-    const s = new Set<string>(rows.map((r) => r.maCau).filter(Boolean) as string[])
-    for (const arr of Object.values(ch.etMaDe ?? {})) for (const m of arr) if (m) s.add(m)
-    return s
-  }
-  // Danh sách ô TRỐNG (đề 2/3 chưa có câu) theo câu gốc đang có — dùng để chặn lưu + cảnh báo.
-  const oTrong = (chk: CauHinh = ch): { maCau: string; v: number }[] => {
-    const out: { maCau: string; v: number }[] = []
-    for (const r of baseRows()) { const arr = chk.etMaDe?.[r.maCau]; for (let v = 0; v < 2; v++) if (!arr || !arr[v]) out.push({ maCau: r.maCau, v }) }
-    return out
-  }
+  // Gán tay 1 ô mã đề (đề 2/3) khi TRỐNG hoặc muốn đổi — ép cùng form với câu gốc (setVarInCh lib/made).
+  const setVar = (baseMaCau: string, v: number, maCau: string, form: ETFormKind) => setCh((c) => setVarInCh(c, baseMaCau, v, maCau, form))
+  // Câu đã dùng ở BẤT KỲ đề nào (gốc + 2/3) — cấm chọn lại để 3 đề không đụng câu nhau (lib/made).
+  const usedMoiDe = (): Set<string> => usedMoiDeLib(baseRows(), ch)
+  // Danh sách ô TRỐNG (đề 2/3 chưa có câu) theo câu gốc đang có — dùng để chặn lưu + cảnh báo (lib/made).
+  const oTrong = (chk: CauHinh = ch): { maCau: string; v: number }[] => oTrongMaDe(baseRows(), chk)
 
   function resetForm() { setLopId(null); setNgay(''); setRows(blankRows()); setCau({}); setCh({}) }
 
@@ -307,6 +283,20 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
                   : gen ? <span className="rounded bg-emerald-50 px-2 py-0.5 text-[11px] font-medium text-emerald-600">✓ đủ 3 mã đề</span> : null}
               </div>
             ) })()}
+          {groupsPresent.length > 0 && (
+            <div className="mb-3 flex flex-wrap items-center gap-3 rounded-lg border border-sky-100 bg-sky-50/40 px-3 py-2">
+              <span className="text-[12px] font-semibold text-sky-700">🧱 Số cột khi in</span>
+              {groupsPresent.map((g) => (
+                <label key={g} className="flex items-center gap-1.5 text-[11px] text-slate-500">{GROUP_LBL[g]}
+                  <select value={ch.etColByGroup?.[g] ?? 'thuong'} onChange={(e) => setColGroup(g, e.target.value)}
+                    className="rounded border border-slate-200 bg-white px-1.5 py-0.5 text-[11px] font-medium text-slate-600 hover:border-sky-300">
+                    {BLOCK_KIEU.map((k) => <option key={k.v} value={k.v}>{k.lbl}</option>)}
+                  </select>
+                </label>
+              ))}
+              <span className="text-[11px] text-slate-400">Câu ngắn (trắc nghiệm / trả lời ngắn) xếp nhiều cột để tiết kiệm giấy.</span>
+            </div>
+          )}
           <div className="space-y-2">
             {rows.map((r, i) => {
               const c = r.maCau ? cau[r.maCau] : null
