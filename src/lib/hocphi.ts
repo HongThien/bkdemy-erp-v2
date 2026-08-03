@@ -540,16 +540,29 @@ export async function setNoKhoiTao(phuHuynhId: string, so: number): Promise<void
 }
 
 // Danh sách PH đang NỢ (tab "Học phí nợ") — tách khởi tạo / hệ thống, chỉ PH tổng nợ >0, sort giảm.
-export type DongNo = { phu_huynh_id: string; ho_ten: string; ma_ph: string; noKhoiTao: number; noHeThong: number; no: number }
+// coConDangHoc=false + conDaNghi = con đã nghỉ nhưng vẫn còn nợ (nợ cũ) → UI đánh dấu rõ (Thùy 08-03).
+export type DongNo = { phu_huynh_id: string; ho_ten: string; ma_ph: string; noKhoiTao: number; noHeThong: number; no: number; coConDangHoc: boolean; conDaNghi: string[] }
 export async function listNoPhaiThu(): Promise<DongNo[]> {
   const m = await noChiTietTheoPH()
   const es = [...m.entries()].map(([id, v]) => ({ id, noKhoiTao: Math.round(v.khoiTao), noHeThong: Math.round(v.heThong) })).filter((r) => r.noKhoiTao + r.noHeThong > 0.5)
   if (!es.length) return []
-  const { data: phs, error } = await supabase.from('phu_huynh').select('id, ho_ten, ma_ph').in('id', es.map((e) => e.id)).limit(LIMIT)
+  const ids = es.map((e) => e.id)
+  const [{ data: phs, error }, { data: cons, error: eCon }] = await Promise.all([
+    supabase.from('phu_huynh').select('id, ho_ten, ma_ph').in('id', ids).limit(LIMIT),
+    supabase.from('hoc_sinh').select('ho_ten, trang_thai, phu_huynh_id').in('phu_huynh_id', ids).limit(LIMIT),
+  ])
   if (error) throw error
+  if (eCon) throw eCon
   const phMap = new Map(((phs ?? []) as any[]).map((p) => [p.id, p]))
+  const conByPH = new Map<string, { dangHoc: boolean; nghi: string[] }>()
+  for (const c of (cons ?? []) as any[]) {
+    const cur = conByPH.get(c.phu_huynh_id) ?? { dangHoc: false, nghi: [] as string[] }
+    if (c.trang_thai === 'dang_hoc') cur.dangHoc = true
+    else if (c.ho_ten) cur.nghi.push(c.ho_ten)
+    conByPH.set(c.phu_huynh_id, cur)
+  }
   return es
-    .map((e) => ({ phu_huynh_id: e.id, ho_ten: phMap.get(e.id)?.ho_ten ?? '(không rõ)', ma_ph: phMap.get(e.id)?.ma_ph ?? '', noKhoiTao: e.noKhoiTao, noHeThong: e.noHeThong, no: e.noKhoiTao + e.noHeThong }))
+    .map((e) => ({ phu_huynh_id: e.id, ho_ten: phMap.get(e.id)?.ho_ten ?? '(không rõ)', ma_ph: phMap.get(e.id)?.ma_ph ?? '', noKhoiTao: e.noKhoiTao, noHeThong: e.noHeThong, no: e.noKhoiTao + e.noHeThong, coConDangHoc: conByPH.get(e.id)?.dangHoc ?? false, conDaNghi: conByPH.get(e.id)?.nghi ?? [] }))
     .sort((a, b) => b.no - a.no)
 }
 
@@ -696,6 +709,26 @@ export async function listPhuHuynhCoConDangHoc(): Promise<PHOpt[]> {
     const ph = r.phu_huynh; if (!ph) continue
     const cur = byPH.get(ph.id) ?? { id: ph.id, ho_ten: ph.ho_ten, ma_ph: ph.ma_ph, soCon: 0, tenCon: [] as string[] }
     cur.soCon++; if (r.ho_ten) cur.tenCon.push(r.ho_ten) // tên con để hiện + search theo tên HS ra PH
+    byPH.set(ph.id, cur)
+  }
+  return [...byPH.values()].sort((a, b) => a.ho_ten.localeCompare(b.ho_ten, 'vi'))
+}
+
+// Danh sách PH để NHẬP NỢ KHỞI TẠO (nợ cũ trước khi có ERP) — GỒM cả PH có con đã nghỉ hết.
+// KHÁC listPhuHuynhCoConDangHoc (chỉ dang_hoc, cho luồng chốt kỳ HS đang học): ở đây HS đã nghỉ vẫn
+// nợ học phí cũ nên PH phải chọn được để ghi nợ. Tên con NGHỈ được đánh dấu "(đã nghỉ)"; coConDangHoc=false
+// khi PH không còn con nào đang học (để UI gắn nhãn rõ — Thùy 08-03).
+export type PHNoOpt = PHOpt & { coConDangHoc: boolean }
+export async function listPhuHuynhChoNo(): Promise<PHNoOpt[]> {
+  const { data, error } = await supabase.from('hoc_sinh').select('ho_ten, trang_thai, phu_huynh:phu_huynh_id(id, ho_ten, ma_ph)').not('phu_huynh_id', 'is', null).order('ho_ten').limit(LIMIT)
+  if (error) throw error
+  const byPH = new Map<string, PHNoOpt>()
+  for (const r of (data ?? []) as any[]) {
+    const ph = r.phu_huynh; if (!ph) continue
+    const cur = byPH.get(ph.id) ?? { id: ph.id, ho_ten: ph.ho_ten, ma_ph: ph.ma_ph, soCon: 0, tenCon: [] as string[], coConDangHoc: false }
+    cur.soCon++
+    if (r.ho_ten) cur.tenCon.push(r.trang_thai === 'dang_hoc' ? r.ho_ten : `${r.ho_ten} (đã nghỉ)`)
+    if (r.trang_thai === 'dang_hoc') cur.coConDangHoc = true
     byPH.set(ph.id, cur)
   }
   return [...byPH.values()].sort((a, b) => a.ho_ten.localeCompare(b.ho_ten, 'vi'))

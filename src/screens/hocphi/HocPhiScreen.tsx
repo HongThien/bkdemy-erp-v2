@@ -6,14 +6,14 @@ import {
   listMucHocPhi, createMucHocPhi, deleteMucHocPhi,
   listMucHocDuoi, createMucHocDuoi, deleteMucHocDuoi,
   listMucHocLieu, createMucHocLieu, deleteMucHocLieu,
-  listPhieuTheoKy, listDuoiTheoKy, chotKy, huyChot, ghiThanhToan, listNoPhaiThu, setNoKhoiTao, listPhuHuynhCoConDangHoc,
+  listPhieuTheoKy, listDuoiTheoKy, chotKy, huyChot, ghiThanhToan, listNoPhaiThu, setNoKhoiTao, listPhuHuynhCoConDangHoc, listPhuHuynhChoNo,
   themTinDung, listTinDung, xoaTinDung,
   kyHienTai,
   listHocPhiTheoMonV2, setCongThucHocPhi, getDiemDanhTheoLop,
   listHeSoHocSinh, setHeSoHieuLuc, boManualHeSo,
   listPhatSinhTheoKy, themPhatSinhLop, themPhatSinhCaNhan, xoaPhatSinh,
   layTenConDangHoc, soanThongBao, danhDauDaBao,
-  type MucHocPhi, type MucHocDuoi, type MucHocLieu, type DongSoHang, type DongDuoiSoHang, type DongNo, type PHOpt, type HocSinhHeSo, type PhatSinhEntry,
+  type MucHocPhi, type MucHocDuoi, type MucHocLieu, type DongSoHang, type DongDuoiSoHang, type DongNo, type PHOpt, type PHNoOpt, type HocSinhHeSo, type PhatSinhEntry,
   type DongTheoMonV2, type CongThuc, type DiemDanhLop,
 } from '../../lib/hocphi'
 import { listLop, listHocSinh, updateLop, type Lop, type HocSinh } from '../../lib/nhansu'
@@ -543,7 +543,9 @@ function NoRow({ r, onSave }: { r: DongNo; onSave: (phId: string, so: number) =>
   }
   return (
     <tr className="border-t border-slate-100">
-      <td className="px-4 py-2 font-medium text-slate-800">{r.ho_ten} <span className="font-mono text-[11px] text-slate-400">{r.ma_ph}</span></td>
+      <td className="px-4 py-2 font-medium text-slate-800">{r.ho_ten} <span className="font-mono text-[11px] text-slate-400">{r.ma_ph}</span>
+        {!r.coConDangHoc && <span title={r.conDaNghi.length ? `Con đã nghỉ: ${r.conDaNghi.join(', ')}` : 'Không còn con đang học'} className="ml-1.5 rounded bg-amber-100 px-1.5 py-0.5 text-[10px] font-semibold text-amber-700">HS đã nghỉ</span>}
+      </td>
       <td className="px-2 py-2 text-right"><input value={val} onChange={(e) => setVal(e.target.value)} onBlur={save} onKeyDown={(e) => e.key === 'Enter' && (e.target as HTMLInputElement).blur()} disabled={busy} title="Nợ khởi tạo — sửa rồi Enter/rời ô để lưu" className={`${inp} w-28 text-right`} /></td>
       <td className="px-2 py-2 text-right text-slate-600">{tienVN(r.noHeThong)}</td>
       <td className="px-4 py-2 text-right font-bold text-rose-600">{tienVN(r.no)}</td>
@@ -553,12 +555,12 @@ function NoRow({ r, onSave }: { r: DongNo; onSave: (phId: string, so: number) =>
 function NoTab() {
   const [rows, setRows] = useState<DongNo[]>([])
   const [loading, setLoading] = useState(true)
-  const [phs, setPhs] = useState<PHOpt[]>([])
+  const [phs, setPhs] = useState<PHNoOpt[]>([])
   const [addPh, setAddPh] = useState<string | null>(null)
   const [addSo, setAddSo] = useState('')
   const [busy, setBusy] = useState(false)
   async function reload() { setLoading(true); try { setRows(await listNoPhaiThu()) } finally { setLoading(false) } }
-  useEffect(() => { reload(); listPhuHuynhCoConDangHoc().then(setPhs) }, [])
+  useEffect(() => { reload(); listPhuHuynhChoNo().then(setPhs) }, [])
   async function saveKhoiTao(phId: string, so: number) { await setNoKhoiTao(phId, so); await reload() }
   async function them() {
     if (!addPh || !addSo.trim()) return
@@ -573,7 +575,7 @@ function NoTab() {
         <div className="mb-2.5 text-sm font-semibold text-slate-900">Học phí nợ <span className="ml-2 text-[12px] font-normal text-slate-400">{rows.length} PH · nợ khởi tạo {tienVN(tongKhoiTao)} · tổng nợ <b className="text-rose-600">{tienVN(tongNo)}</b></span></div>
         <div className="flex flex-wrap items-center gap-2 rounded-lg bg-slate-50 p-2.5">
           <span className="text-[12px] font-medium text-slate-500">Nhập nợ khởi tạo (nợ cũ):</span>
-          <div className="w-64"><SearchSelect value={addPh} onChange={setAddPh} placeholder="Chọn phụ huynh…" options={phs.map((p) => ({ id: p.id, label: p.ho_ten, sub: `${p.ma_ph} · ${p.tenCon.join(', ')}` }))} /></div>
+          <div className="w-64"><SearchSelect value={addPh} onChange={setAddPh} placeholder="Chọn phụ huynh (cả HS đã nghỉ)…" options={phs.map((p) => ({ id: p.id, label: p.coConDangHoc ? p.ho_ten : `${p.ho_ten} · HS đã nghỉ`, sub: `${p.ma_ph} · ${p.tenCon.join(', ')}` }))} /></div>
           <input value={addSo} onChange={(e) => setAddSo(e.target.value)} placeholder="Số tiền…" className={`${inp} w-32`} />
           <button disabled={busy || !addPh || !addSo.trim()} onClick={them} className="rounded-lg bg-indigo-600 px-3 py-1.5 text-[12px] font-semibold text-white disabled:opacity-40">Lưu</button>
         </div>
