@@ -345,7 +345,9 @@ export async function getPhieuAo(phuHuynhId: string, ky: string): Promise<PhieuA
       const tk = await thongKeBuoiConLop(con.id, enroll.lop_id, kyStart, kyEnd)
       // Auto CT1/CT2 (bỏ xét duyệt): CT2 khi nghỉ ≥30% hoặc chọn tay → tiền theo (đi học + bù);
       // CT1 theo số buổi lớp. Không còn gate người duyệt — chốt được ngay.
-      const ct = ctMap.get(`${con.id}|${enroll.lop_id}`) ?? deXuatCongThuc(tk.soBuoiNghi, tk.soBuoiLop)
+      // Mẫu số xét ngưỡng nghỉ-30% = buổi TRONG WINDOW ghi danh (không tính buổi sau khi HS đã rời lớp),
+      // KHỚP listHocPhiTheoMonV2 (card/chốt) — nếu không, HS rời giữa tháng bị loãng tỉ lệ nghỉ → lật CT1↔CT2.
+      const ct = ctMap.get(`${con.id}|${enroll.lop_id}`) ?? deXuatCongThuc(tk.soBuoiNghi, tk.soBuoiWindow)
       const soBuoi = ct === 'ct2' ? tk.soBuoiDiHoc + tk.soBuoiBu : tk.soBuoiWindow
       const muc = enroll.lop?.muc_hoc_phi_id ? (await supabase.from('muc_hoc_phi').select('*').eq('id', enroll.lop.muc_hoc_phi_id).single()).data as MucHocPhi | null : null
       const coHocPhi = !!muc && soBuoi > 0
