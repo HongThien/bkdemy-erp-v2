@@ -13,7 +13,7 @@ import {
   getTaiLieuFull, deletePhan, setCauOfPhan, suggestCauForDang, khoCuaMon, updateTaiLieu,
   ET_FORMS, etFormOf, type PhanResolved, type CauHinh, type ETForm as ETFormKind,
 } from '../../lib/tailieu'
-import { buildMaDe as buildMaDeLib, oTrongMaDe, usedMoiDe as usedMoiDeLib, setVarInCh, maDeStale, maDeReady, type BaseItem } from '../../lib/made'
+import { buildMaDe as buildMaDeLib, oTrongMaDe, usedMoiDe as usedMoiDeLib, setVarInCh, maDeStale, type BaseItem } from '../../lib/made'
 import { listLop, listHSCuaLop, type Lop, type HocSinh } from '../../lib/nhansu'
 import { listCauByDang, listLopBac, LOAI_CAU, KHOI_OPTIONS, DEFAULT_KHOI, type CauHoi, type LopBac } from '../../lib/kho/api'
 import { MathText, inp } from '../kho/ui'
@@ -542,7 +542,13 @@ function ChiaDeMTModal({ taiLieuId, lopId, lopTen, onClose }: { taiLieuId: strin
   }, [taiLieuId, lopId])
 
   const base: BaseItem[] = (phans ?? []).flatMap((p) => p.caus.filter((c) => c.ma_cau && c.dang_chinh).map((c) => ({ maDang: c.dang_chinh, maCau: c.ma_cau })))
-  const deReady = phans != null && maDeReady(base, ch)
+  // ⭐ KHÔNG dùng maDeReady/maDeStale ở đây (Thùy báo "mỗi lần vào lại mất đề 2/3"): những hàm đó so
+  // KHỚP TUYỆT ĐỐI base ↔ etMaDe, đúng cho MTEditor (base = TOÀN BỘ câu của MT master) nhưng SAI ở đây —
+  // base của 1 lớp là TẬP CON (ganMTVaoBuoi LỌC BỚT câu nâng cao lớp không đủ bậc, xem mt.ts) trong khi
+  // etMaDe copy NGUYÊN từ master nên còn THỪA key của câu đã bị lọc. maDeStale thấy "thừa key" tưởng lệch
+  // → báo "chưa đủ 3 mã đề" dù dữ liệu vẫn nguyên ở MT gốc. Ở đây chỉ cần: mọi câu CÒN LẠI (sau lọc) có
+  // đủ cặp đề 2/3 — không quan tâm etMaDe dư key của câu đã lọc.
+  const deReady = phans != null && !!ch.etMaDe && base.length > 0 && oTrongMaDe(base, ch).length === 0
 
   async function save(next: CauHinh) { setCh(next); await updateTaiLieu(taiLieuId, { cau_hinh: next }); markSaved() }
   const setHsMa = (hsId: string, maDe: number) => save({ ...ch, hsMaDe: { ...(ch.hsMaDe ?? {}), [hsId]: maDe } })
