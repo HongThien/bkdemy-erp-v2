@@ -164,10 +164,12 @@ export default function MTPrintView({ id, onClose, headless, linkOnly, onFail, o
 
 // 1 câu trong MT tách ĐỀ/ĐÁP ÁN (cho CauColumns ghép cặp) — tôn trọng FORM HIỂN THỊ (etFormOf), KHÁC
 // cauItemParts thô (luôn hiện lua_chon nếu câu kho có). Đúng/Sai (menh_de) + trắc nghiệm → dùng cauItemParts.
+// ⚠ CHỈ còn gọi cho tự luận (bản HS) và MỌI form ở bản GV — trả lời ngắn (bản HS) giờ render qua
+// MTTlnTable/mtRunsOf (bảng câu-hỏi|ô-đáp-án), KHÔNG còn đi qua hàm này nữa (xem mtRunsOf).
 function mtCauParts(no: number, c: CauHoi, gv: boolean, ch: CauHinh): { content: React.ReactNode; lines: number } {
   const isDS = !!(c.menh_de && c.menh_de.length)
   if (isDS || etFormOf(c, ch) === 'trac_nghiem') return cauItemParts({ no, c, gv })
-  // tự luận / trả lời ngắn ÉP hiển thị: bỏ qua lua_chon dù câu kho có (tách stem thủ công, giống ET).
+  // tự luận / trả lời ngắn (bản GV) ÉP hiển thị: bỏ qua lua_chon dù câu kho có (tách stem thủ công, giống ET).
   const { stem, grid, emb } = splitStem(c)
   const form = etFormOf(c, ch)
   const nLines = ch.btvnLinesByCau?.[c.ma_cau] ?? DEFAULT_TL_LINES
@@ -177,10 +179,48 @@ function mtCauParts(no: number, c: CauHoi, gv: boolean, ch: CauHinh): { content:
       {grid && <OptGrid grid={grid} emb={emb} />}
       {c.anh_de && <img src={c.anh_de} alt="" className="pv-img" />}
       {gv && <GvAnswer c={c} />}
-      {!gv && !grid && form !== 'tu_luan' && <div className="pv-tln-ans"><span className="pv-tln-lbl">Đáp án:</span><span className="pv-tln-fill" /></div>}
     </>),
     lines: (!gv && !grid && form === 'tu_luan') ? nLines : 0,
   }
+}
+// Câu hỏi THUẦN (đề + hình + grid nhúng, KHÔNG đáp án/dòng kẻ) — dùng trong ô cột 1 của MTTlnTable.
+function tlnQuestionContent(no: number, c: CauHoi): React.ReactNode {
+  const { stem, grid, emb } = splitStem(c)
+  return (<>
+    <div className="pv-math"><MathText prefix={`<span class="pv-cau-no">Câu ${no}.</span> `}>{stem}</MathText></div>
+    {grid && <OptGrid grid={grid} emb={emb} />}
+    {c.anh_de && <img src={c.anh_de} alt="" className="pv-img" />}
+  </>)
+}
+// Trả lời ngắn (Thùy: "đưa về dạng bảng — cột 1 câu hỏi, cột 2 chỗ ghi đáp án") — BẢNG 2 cột thay cho
+// dòng chấm-chấm 1 dòng cũ. KHÔNG dùng <table>/CSS grid/column-count (paged.js TREO — xem PrintView.tsx
+// "Nhiều cột = ghép câu theo HÀNG, KHÔNG column-count/grid/table" / DEVLOG 07-05) — dựng bằng div/flex
+// như CauColumns, mỗi hàng break-inside:avoid nhưng cả khối vẫn CHẢY được (ngắt giữa các hàng).
+function MTTlnTable({ rows }: { rows: { key: string; content: React.ReactNode }[] }) {
+  return (
+    <div className="pv-tlnt">
+      {rows.map((r) => (
+        <div key={r.key} className="pv-tlnt-row">
+          <div className="pv-tlnt-q">{r.content}</div>
+          <div className="pv-tlnt-a" />
+        </div>
+      ))}
+    </div>
+  )
+}
+// Gom câu TRẢ LỜI NGẮN LIÊN TIẾP (bản HS) thành 1 BẢNG — chỉ gộp TRÌNH BÀY các câu CÙNG NHÓM liền kề,
+// KHÔNG đổi thứ tự/cấu trúc phần gốc (giữ đúng bất biến MT "giữ nguyên cấu trúc phần + thứ tự", xem đầu
+// file). Bản GV giữ style cũ (đáp án hiện luôn qua GvAnswer, không cần bảng) → chỉ gom khi !gv.
+function mtRunsOf(caus: CauHoi[], mapCau: (c: CauHoi, v: number | null) => CauHoi, ver: { v: number | null; ch: CauHinh }, gv: boolean): { tln: boolean; items: CauHoi[] }[] {
+  const runs: { tln: boolean; items: CauHoi[] }[] = []
+  for (const c of caus) {
+    const m = mapCau(c, ver.v)
+    const isTln = !gv && !(m.menh_de && m.menh_de.length) && etFormOf(m, ver.ch) === 'tra_loi_ngan'
+    const last = runs[runs.length - 1]
+    if (last && last.tln === isTln) last.items.push(c)
+    else runs.push({ tln: isTln, items: [c] })
+  }
+  return runs
 }
 
 // 3 MÃ ĐỀ (như ET): đề gốc = câu các phần; đề 2/3 = thay từng câu bằng ma_cau trong etMaDe (neo theo CÂU
@@ -208,16 +248,18 @@ function MTDoc({ full, gv, varCau, perHS, lopTen }: { full: TaiLieuFull; gv: boo
     : (complete && maDe === 3) ? { badge: 'Mã đề 3', v: 1, ch: chVar(1) }
     : { badge: complete ? 'Mã đề 1' : '', v: null, ch }
 
-  // Mỗi HS 1 phiếu SANG TRANG MỚI (giống mỗi mã đề ở chế độ mặc định) — dùng chung .pv-mt-de-break,
-  // KHÔNG dùng .pv-de-recto (class đó chỉ có CSS trong bkPrint.tsx, MT không import nên vô tác dụng).
+  // Mỗi mã đề/phiếu HS luôn bắt đầu Ở TRANG LẺ (giống ET, xem ETPrintView.tsx — .pv-de-recto áp cho
+  // MỌI đề, kể cả đề/phiếu ĐẦU, không chỉ i>0): in 2 mặt rồi cắt/đóng ghim, mỗi đề/phiếu phải NẰM TRỌN
+  // trên các trang RIÊNG (không dính mặt sau của đề/phiếu trước) — .pv-de-recto = break-before:right,
+  // KHÁC .pv-mt-de-break (break-before:page, sang trang kế tiếp bất kỳ, có thể là trang CHẴN).
   if (perHS) {
-    return <>{perHS.map((hs, i) => (
-      <div key={hs.id} className={i > 0 ? 'pv-mt-de-break' : undefined}><MTPhieu full={full} phans={phans} ver={verOf(hs.maDe)} gv={gv} mapCau={mapCau} hoTen={hs.ho_ten} lopTen={lopTen} /></div>
+    return <>{perHS.map((hs) => (
+      <div key={hs.id} className="pv-de-recto"><MTPhieu full={full} phans={phans} ver={verOf(hs.maDe)} gv={gv} mapCau={mapCau} hoTen={hs.ho_ten} lopTen={lopTen} /></div>
     ))}</>
   }
   const versions = complete ? [1, 2, 3].map(verOf) : [verOf(1)]
   return <>{versions.map((ver, vi) => (
-    <div key={vi} className={vi > 0 ? 'pv-mt-de-break' : undefined}><MTPhieu full={full} phans={phans} ver={ver} gv={gv} mapCau={mapCau} /></div>
+    <div key={vi} className="pv-de-recto"><MTPhieu full={full} phans={phans} ver={ver} gv={gv} mapCau={mapCau} /></div>
   ))}</>
 }
 
@@ -249,9 +291,11 @@ function MTPhieu({ full, phans, ver, gv, mapCau, hoTen, lopTen }: {
       {phans.map((p) => (
         <section key={p.id} className="pv-sec">
           <h2 className="pv-h-dang">{p.tieu_de}</h2>
-          {p.caus.length === 0 ? <p className="pv-empty">Phần này chưa có câu.</p> : (
-            <CauFlow items={p.caus.map((c) => ({ key: c.ma_cau, cols: ver.ch.colByCau?.[c.ma_cau] ?? 1, ...mtCauParts(next(), mapCau(c, ver.v), gv, ver.ch) }))} />
-          )}
+          {p.caus.length === 0 ? <p className="pv-empty">Phần này chưa có câu.</p> : mtRunsOf(p.caus, mapCau, ver, gv).map((run, ri) => (
+            run.tln
+              ? <MTTlnTable key={ri} rows={run.items.map((c) => { const n = next(); return { key: c.ma_cau, content: tlnQuestionContent(n, mapCau(c, ver.v)) } })} />
+              : <CauFlow key={ri} items={run.items.map((c) => ({ key: c.ma_cau, cols: ver.ch.colByCau?.[c.ma_cau] ?? 1, ...mtCauParts(next(), mapCau(c, ver.v), gv, ver.ch) }))} />
+          ))}
         </section>
       ))}
       {phans.length === 0 && <p className="pv-empty">MT chưa có phần nào.</p>}
@@ -264,10 +308,21 @@ const MT_CSS = `
 .pv-empty{color:#8a9097;font-style:italic;margin-top:10px}
 /* Tên/lớp IN SẴN (perHS) — thay ô trống chấm chấm bằng chữ đậm, giống BTPrintView. */
 .pv-bt-filled{flex:1;font-weight:600;color:#1e293b}
-/* Mỗi MÃ ĐỀ (2,3) sang trang mới — đề gốc (mã đề 1) ở trang đầu. */
-.pv-mt-de-break{break-before:page}
-/* Trả lời ngắn (form ép, không phải tự luận): 1 dòng đáp án ngắn thay vì nhiều dòng kẻ. */
-.pv-tln-ans{margin-top:6px;display:flex;align-items:center;gap:8px;font-size:14px}
-.pv-tln-lbl{font-weight:700;color:#475569;white-space:nowrap}
-.pv-tln-fill{flex:1;max-width:70mm;border-bottom:1.5px dotted #9aa6b2;height:14px}
+/* Mỗi MÃ ĐỀ/PHIẾU HS luôn bắt đầu Ở TRANG LẺ (giống ET) — MT không import bkPrint.tsx nên khai lại
+   TẠI ĐÂY (bkPrint.tsx định nghĩa y hệt cho ET, DÙNG CHUNG Ý NGHĨA, đừng đổi lệch giữa 2 nơi). */
+.pv-de-recto{break-before:right}
+/* ⭐ Câu (1 cột, KHÔNG qua CauColumns) phải CHẢY được giữa các trang — mặc định .pv-cau (PrintView.tsx)
+   break-inside:avoid khiến CẢ KHỐI (đề + mọi dòng kẻ viết) nhảy nguyên cục sang trang sau, bỏ trống cuối
+   trang HOẶC xuống dòng lệch khi khối dài hơn 1 trang. Giống ET đã fix (.pv-et .pv-cau), MT thiếu bản
+   này → "1 cột lỗi, 2 cột thì ngon" (Thùy báo) vì cột>1 đi qua CauColumns/.pv-lrow (chảy theo hàng, không
+   dính .pv-cau) nên không dính lỗi. .pv-wpair vẫn break-inside:avoid riêng (không mồ côi nửa cặp dòng kẻ). */
+.pv-mt .pv-cau{break-inside:auto}
+.pv-mt .pv-cau .pv-math:first-child{break-after:avoid}
+/* Trả lời ngắn — BẢNG câu hỏi | ô ghi đáp án (Thùy). Mỗi hàng break-inside:avoid (không xé đôi 1 câu)
+   nhưng khối bảng vẫn CHẢY được giữa các hàng — không dùng <table>/grid/column-count (paged.js TREO). */
+.pv-tlnt{margin:4px 0}
+.pv-tlnt-row{display:flex;align-items:stretch;border-bottom:1px solid #e2e8f0;break-inside:avoid;min-height:11mm}
+.pv-tlnt-row:first-child{border-top:1px solid #e2e8f0}
+.pv-tlnt-q{flex:1;min-width:0;padding:7px 10px 7px 0;display:flex;align-items:center}
+.pv-tlnt-a{width:42mm;flex-shrink:0;border-left:1px solid #e2e8f0}
 `
