@@ -12,6 +12,7 @@ import { buildMaDe as buildMaDeLib, oTrongMaDe, usedMoiDe as usedMoiDeLib, setVa
 import { listLop, type Lop } from '../../lib/nhansu'
 import { hsCoMatCuaBuoi } from '../../lib/gami'
 import { listCauByDang, LOAI_CAU, type CauHoi } from '../../lib/kho/api'
+import { fetchCausByMa } from '../../lib/ontap'
 import { MathText } from '../kho/ui'
 import { KhoPicker } from './TaiLieuBuilder'
 import ETPrintView from './ETPrintView'
@@ -68,8 +69,15 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
       if (et) {
         const full = await getTaiLieuFull(et.id)
         const caus = full.phans.find((p) => p.loai_phan === 'custom')?.caus ?? []
-        setCau(Object.fromEntries(caus.map((c) => [c.ma_cau, c])))
-        setCh(full.taiLieu.cau_hinh ?? {})
+        const cMap: Record<string, CauHoi> = Object.fromEntries(caus.map((c) => [c.ma_cau, c]))
+        const ch0 = full.taiLieu.cau_hinh ?? {}
+        // Nạp thêm nội dung câu MÃ ĐỀ 2/3 (etMaDe) — trên chỉ nạp câu GỐC (phan.caus) nên mở lại ET cũ,
+        // cột Mã đề 2/3 chỉ thấy MÃ câu, không thấy đề (chỉ "…") dù dữ liệu vẫn còn nguyên trong cau_hinh.
+        const need = new Set<string>()
+        for (const arr of Object.values(ch0.etMaDe ?? {})) for (const m of arr) if (m && !cMap[m]) need.add(m)
+        if (need.size) { const vs = await fetchCausByMa([...need], khoCuaMon(full.taiLieu.mon).cauTbl); for (const v of vs) cMap[v.ma_cau] = v }
+        setCau(cMap)
+        setCh(ch0)
         const r: Row[] = caus.map((c) => ({ maDang: c.dang_chinh, maCau: c.ma_cau }))
         while (r.length < DEFAULT_ROWS) r.push({ maDang: null, maCau: null })
         setRows(r)

@@ -16,6 +16,7 @@ import {
 import { buildMaDe as buildMaDeLib, oTrongMaDe, usedMoiDe as usedMoiDeLib, setVarInCh, maDeStale, type BaseItem } from '../../lib/made'
 import { listLop, listHSCuaLop, type Lop, type HocSinh } from '../../lib/nhansu'
 import { listCauByDang, listLopBac, LOAI_CAU, KHOI_OPTIONS, DEFAULT_KHOI, type CauHoi, type LopBac } from '../../lib/kho/api'
+import { fetchCausByMa } from '../../lib/ontap'
 import { MathText, inp } from '../kho/ui'
 import { KhoPicker } from './TaiLieuBuilder'
 import DangPickerOne from '../../components/DangPickerOne'
@@ -139,7 +140,8 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
     setLoading(true)
     try {
       const full = await getTaiLieuFull(id)
-      setD(full.taiLieu as any); setTen(full.taiLieu.ten); setCh(full.taiLieu.cau_hinh ?? {})
+      const ch0 = full.taiLieu.cau_hinh ?? {}
+      setD(full.taiLieu as any); setTen(full.taiLieu.ten); setCh(ch0)
       const ps = full.phans.filter((p) => p.loai_phan === 'custom')
       setPhans(ps)
       const rb: Record<string, Row[]> = {}
@@ -148,6 +150,11 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
         rb[p.id] = p.caus.map((x) => ({ maDang: x.dang_chinh, maCau: x.ma_cau }))
         for (const x of p.caus) c[x.ma_cau] = x
       }
+      // Nạp thêm nội dung câu MÃ ĐỀ 2/3 (etMaDe) — trên chỉ nạp câu GỐC (phan.caus) nên mở lại MT cũ,
+      // cột Mã đề 2/3 chỉ thấy MÃ câu, không thấy đề (chỉ "…") dù dữ liệu vẫn còn nguyên trong cau_hinh.
+      const need = new Set<string>()
+      for (const arr of Object.values(ch0.etMaDe ?? {})) for (const m of arr) if (m && !c[m]) need.add(m)
+      if (need.size) { const vs = await fetchCausByMa([...need], khoCuaMon(full.taiLieu.mon).cauTbl); for (const v of vs) c[v.ma_cau] = v }
       setRowsByPhan(rb); setCau((prev) => ({ ...prev, ...c }))
       setGanList(await listGanMT(id))
     } finally { setLoading(false) }
