@@ -3,12 +3,12 @@
 // Không có gì ghi DB cho tới lúc Xác nhận — Huỷ = không có BTVN nào ra đời, mở lại bất cứ lúc nào sau đó
 // (trạng thái "đã GT, chưa BTVN" tự derive từ listTrichXuat, không cần nhớ ý định ở đâu khác).
 import { useEffect, useState } from 'react'
-import { trichXuatBuoi, renumberBuoiLop, khoCuaMon, DEFAULT_BTVN_LINES, type PhanResolved } from '../../lib/tailieu'
+import { trichXuatBuoi, renumberBuoiLop, khoCuaMon, kieuCols, DEFAULT_BTVN_LINES, type PhanResolved } from '../../lib/tailieu'
 import { type CauHoi } from '../../lib/kho/api'
 import { saveOnTapConfig, appendOnTapToBtvnDoc, fetchCausByMa, fetchTenDangByMa, type OnTapConfig } from '../../lib/ontap'
 import { useStore } from '../../store/useStore'
 import OnTapEditor from '../../components/OnTapEditor'
-import { CauItem, CauList, CHROME_CSS } from './PrintView'
+import { cauItemParts, CauColumns, CHROME_CSS } from './PrintView'
 
 export default function OnTapConfirmScreen({ masterId, buoiId, tenBuoi, lopId, tenLop, ngay, khoi, mon, regularBtvn, onClose, onConfirmed }: {
   masterId: string; buoiId: string; tenBuoi: string; lopId: string; tenLop: string; ngay: string; khoi: string; mon: string
@@ -93,7 +93,7 @@ export default function OnTapConfirmScreen({ masterId, buoiId, tenBuoi, lopId, t
               {regularShown.map((b) => (
                 <div key={b.id} className="pv-sec">
                   <h2 className="pv-h-dang">Dạng {b.ref_ma}: {b.dang?.ten_dang ?? b.ref_ma}</h2>
-                  <CauList kieu={b.kieu}>{b.caus.map((c) => { bno += 1; return <CauItem key={c.ma_cau} no={bno} c={c} gv={gv} lines={gv ? 0 : DEFAULT_BTVN_LINES} /> })}</CauList>
+                  <CauColumns cols={kieuCols(b.kieu)} parts={b.caus.map((c) => { bno += 1; return { key: c.ma_cau, ...cauItemParts({ no: bno, c, gv, lines: gv ? 0 : DEFAULT_BTVN_LINES }) } })} />
                 </div>
               ))}
               {ontapPreview.length > 0 && (
@@ -102,7 +102,7 @@ export default function OnTapConfirmScreen({ masterId, buoiId, tenBuoi, lopId, t
                   {ontapPreview.map((d, i) => (
                     <div key={i} className="pv-sec">
                       <h2 className="pv-h-dang">{d.ten_dang}</h2>
-                      <CauList>{d.caus.map((c) => { bno += 1; return <CauItem key={c.ma_cau} no={bno} c={c} gv={gv} lines={gv ? 0 : (d.linesByCau[c.ma_cau] ?? DEFAULT_BTVN_LINES)} /> })}</CauList>
+                      <CauColumns cols={1} parts={d.caus.map((c) => { bno += 1; return { key: c.ma_cau, ...cauItemParts({ no: bno, c, gv, lines: gv ? 0 : (d.linesByCau[c.ma_cau] ?? DEFAULT_BTVN_LINES) }) } })} />
                     </div>
                   ))}
                 </div>

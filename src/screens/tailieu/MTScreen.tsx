@@ -10,7 +10,7 @@ import {
   type MTGanRow,
 } from '../../lib/mt'
 import {
-  getTaiLieuFull, deletePhan, setCauOfPhan, suggestCauForDang, khoCuaMon, updateTaiLieu, setPhanKieu, BLOCK_KIEU,
+  getTaiLieuFull, deletePhan, setCauOfPhan, suggestCauForDang, khoCuaMon, updateTaiLieu,
   ET_FORMS, etFormOf, type PhanResolved, type CauHinh, type ETForm as ETFormKind,
 } from '../../lib/tailieu'
 import { buildMaDe as buildMaDeLib, oTrongMaDe, usedMoiDe as usedMoiDeLib, setVarInCh, maDeStale, type BaseItem } from '../../lib/made'
@@ -241,11 +241,8 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
     const next: CauHinh = { ...ch, etFormByCau: { ...(ch.etFormByCau ?? {}), [maCau]: f } }
     setCh(next); await updateTaiLieu(id, { cau_hinh: next }); markSaved()
   }
-  // Số cột khi in — RIÊNG từng PHẦN (kiểu 'thuong'/'2cot'/… lưu trên tai_lieu_phan, GIỐNG giáo trình).
-  async function setKieuPhan(phanId: string, kieu: string) {
-    setPhans((ps) => ps.map((p) => (p.id === phanId ? { ...p, kieu } : p)))
-    await setPhanKieu(phanId, kieu); markSaved()
-  }
+  // Số cột khi in — RIÊNG TỪNG CÂU (cau_hinh.colByCau, autosave). Câu tag cột liền nhau tự xếp cạnh nhau.
+  const setColCau = (maCau: string, n: number) => saveCh({ ...ch, colByCau: { ...(ch.colByCau ?? {}), [maCau]: n } })
 
   // ── 3 MÃ ĐỀ (như ET) — base = MỌI câu XUYÊN mọi phần (đúng thứ tự phần → hàng). Đề 2/3 tự sinh khác
   //    câu (cùng dạng + form), neo theo ma_cau gốc; lưu NGAY vào cau_hinh (MT autosave). Dùng lib/made. ──
@@ -318,11 +315,6 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
                       <option value="">Tự động</option>
                       {[...lopBacs].sort((a, b) => a.thu_tu - b.thu_tu).map((b) => <option key={b.ma} value={b.ma}>Ép: từ {b.ma} trở lên</option>)}
                     </select>
-                    <select value={p.kieu ?? 'thuong'} onChange={(e) => setKieuPhan(p.id, e.target.value)}
-                      title="Số cột khi in phần này (giống giáo trình)"
-                      className="rounded border border-slate-200 bg-white px-1.5 py-0.5 text-[11px] font-medium text-slate-500 hover:border-sky-300">
-                      {BLOCK_KIEU.map((k) => <option key={k.v} value={k.v}>🧱 {k.lbl}</option>)}
-                    </select>
                     <button onClick={() => xoaPhan(p)} className="ml-auto text-[12px] text-slate-300 hover:text-rose-600">Xoá phần</button>
                   </div>
                   <div className="space-y-2">
@@ -364,6 +356,12 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
                               <button onClick={() => doiCau(p.id, i)} title="Đổi câu khác (ít dùng kế tiếp)" className="rounded-md bg-indigo-50 px-2 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-100">↻ Đổi</button>
                               <button onClick={() => setPicker({ phanId: p.id, idx: i, maDang: r.maDang! })} className="rounded-md border border-slate-300 px-2 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-400">✎ Chọn</button>
                             </div>
+                          )}
+                          {c && (
+                            <label className="flex shrink-0 items-center gap-1 self-start pt-1.5 text-[11px] text-slate-500" title="Tích = in 2 cột — các câu 2 cột LIỀN NHAU tự xếp cạnh nhau">
+                              <input type="checkbox" checked={(ch.colByCau?.[c.ma_cau] ?? 1) === 2} onChange={(e) => setColCau(c.ma_cau, e.target.checked ? 2 : 1)} className="h-3.5 w-3.5 accent-sky-600" />
+                              2 cột
+                            </label>
                           )}
                           <button onClick={() => xoaRow(p.id, i)} title="Xoá hàng" className="shrink-0 px-1 pt-1 text-[13px] text-slate-300 hover:text-rose-600">✕</button>
                           </div>

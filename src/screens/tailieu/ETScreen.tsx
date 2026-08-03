@@ -6,7 +6,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import {
   createET, updateET, getTaiLieuFull, setETCaus, suggestCauForDang, khoCuaMon,
-  maET, ET_FORMS, etFormOf, sortETCaus, etGroupOf, BLOCK_KIEU, type ETDoc, type CauHinh, type ETForm as ETFormKind, type TaiLieuFull,
+  maET, ET_FORMS, etFormOf, sortETCaus, type ETDoc, type CauHinh, type ETForm as ETFormKind, type TaiLieuFull,
 } from '../../lib/tailieu'
 import { buildMaDe as buildMaDeLib, oTrongMaDe, usedMoiDe as usedMoiDeLib, setVarInCh } from '../../lib/made'
 import { listLop, type Lop } from '../../lib/nhansu'
@@ -123,15 +123,9 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
   const xoaRow = (idx: number) => setRows((rs) => rs.filter((_, i) => i !== idx))
   const setLines = (maCau: string, n: number) => setCh((c) => ({ ...c, btvnLinesByCau: { ...(c.btvnLinesByCau ?? {}), [maCau]: n } }))
   const setForm = (maCau: string, f: ETFormKind) => setCh((c) => ({ ...c, etFormByCau: { ...(c.etFormByCau ?? {}), [maCau]: f } }))
-  // ── CHẾ ĐỘ CỘT khi in (Thùy) — theo NHÓM FORM (giống 'kiểu' của phan giáo trình, nhưng ET 1 phan nên
-  // khoá theo nhóm). Lưu ở cau_hinh.etColByGroup; áp cho cả 3 mã đề (chVar spread ch). ──
-  const setColGroup = (g: number, kieu: string) => setCh((c) => ({ ...c, etColByGroup: { ...(c.etColByGroup ?? {}), [g]: kieu } }))
-  const GROUP_LBL = ['Trắc nghiệm', 'Trả lời ngắn', 'Tự luận']
-  const groupsPresent = useMemo(() => {
-    const s = new Set<number>()
-    for (const r of rows) { const c = r.maCau ? cau[r.maCau] : null; if (c) s.add(etGroupOf(c, ch)) }
-    return [...s].sort((a, b) => a - b)
-  }, [rows, cau, ch])
+  // ── CHẾ ĐỘ CỘT khi in — RIÊNG TỪNG CÂU (Thùy): tag số cột trên mỗi câu; câu tag cột LIỀN NHAU tự xếp
+  // cạnh nhau (mỗi câu 1 cột), cách xa thì không ghép. Lưu ở cau_hinh.colByCau; áp cho cả 3 mã đề. ──
+  const setColCau = (maCau: string, n: number) => setCh((c) => ({ ...c, colByCau: { ...(c.colByCau ?? {}), [maCau]: n } }))
 
   // ── 3 MÃ ĐỀ (Thùy 07-31) — đề GỐC = rows; đề 2/3 sinh tự động: mỗi câu gốc → câu KHÁC cùng dạng+form.
   // Logic PURE tách sang lib/made.ts (DÙNG CHUNG với MT). Wrapper mỏng dưới đây bơm cauTbl + cache `cau`. ──
@@ -283,20 +277,7 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
                   : gen ? <span className="rounded bg-emerald-50 px-2 py-0.5 text-[11px] font-medium text-emerald-600">✓ đủ 3 mã đề</span> : null}
               </div>
             ) })()}
-          {groupsPresent.length > 0 && (
-            <div className="mb-3 flex flex-wrap items-center gap-3 rounded-lg border border-sky-100 bg-sky-50/40 px-3 py-2">
-              <span className="text-[12px] font-semibold text-sky-700">🧱 Số cột khi in</span>
-              {groupsPresent.map((g) => (
-                <label key={g} className="flex items-center gap-1.5 text-[11px] text-slate-500">{GROUP_LBL[g]}
-                  <select value={ch.etColByGroup?.[g] ?? 'thuong'} onChange={(e) => setColGroup(g, e.target.value)}
-                    className="rounded border border-slate-200 bg-white px-1.5 py-0.5 text-[11px] font-medium text-slate-600 hover:border-sky-300">
-                    {BLOCK_KIEU.map((k) => <option key={k.v} value={k.v}>{k.lbl}</option>)}
-                  </select>
-                </label>
-              ))}
-              <span className="text-[11px] text-slate-400">Câu ngắn (trắc nghiệm / trả lời ngắn) xếp nhiều cột để tiết kiệm giấy.</span>
-            </div>
-          )}
+          <p className="mb-3 text-[11px] text-slate-400">🧱 Tích <b>2 cột</b> ở từng câu (ô bên phải mỗi hàng). Các câu tích 2 cột <b>liền nhau</b> tự xếp cạnh nhau; câu ngắn (trắc nghiệm / trả lời ngắn) nên để 2 cột cho tiết kiệm giấy.</p>
           <div className="space-y-2">
             {rows.map((r, i) => {
               const c = r.maCau ? cau[r.maCau] : null
@@ -336,6 +317,12 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
                       <button onClick={() => doiCau(i)} title="Đổi câu khác (ít dùng kế tiếp)" className="rounded-md bg-indigo-50 px-2 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-100">↻ Đổi</button>
                       <button onClick={() => setPicker({ idx: i, maDang: r.maDang! })} className="rounded-md border border-slate-300 px-2 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-400">✎ Chọn</button>
                     </div>
+                  )}
+                  {c && (
+                    <label className="flex shrink-0 items-center gap-1 self-start pt-1.5 text-[11px] text-slate-500" title="Tích = in 2 cột — các câu 2 cột LIỀN NHAU tự xếp cạnh nhau">
+                      <input type="checkbox" checked={(ch.colByCau?.[c.ma_cau] ?? 1) === 2} onChange={(e) => setColCau(c.ma_cau, e.target.checked ? 2 : 1)} className="h-3.5 w-3.5 accent-sky-600" />
+                      2 cột
+                    </label>
                   )}
                   <button onClick={() => xoaRow(i)} title="Xoá hàng" className="shrink-0 px-1 pt-1 text-[13px] text-slate-300 hover:text-rose-600">✕</button>
                   </div>

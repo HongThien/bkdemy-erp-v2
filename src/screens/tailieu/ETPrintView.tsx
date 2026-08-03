@@ -12,7 +12,7 @@ import { fetchCausByMa } from '../../lib/ontap'
 import { BK_CSS, BK_PAGE_CSS } from './bkPrint'
 import type { CauHoi } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
-import { CauItem, CauList, OptGrid, GvAnswer, WriteLines, splitStem, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChrome, printWithFilename } from './PrintView'
+import { cauItemParts, CauFlow, OptGrid, GvAnswer, splitStem, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChrome, printWithFilename } from './PrintView'
 
 const DEFAULT_TL_LINES = 4
 const DEFAULT_TLN_LINES = 2
@@ -199,8 +199,13 @@ function ETAllDe({ full, gv, varCau, perHS }: { full: TaiLieuFull; gv: boolean; 
   // thể lúc IN. Nguồn DUY NHẤT = btvnLinesByCau của câu gốc → đổi dòng đề 1 rồi lưu là đề 2/3 tự khớp.
   const chVar = (vIdx: number): CauHinh => {
     const lines = { ...(ch.btvnLinesByCau ?? {}) }
-    for (const bc of base) { const vm = etMaDe![bc.ma_cau][vIdx]; const bl = ch.btvnLinesByCau?.[bc.ma_cau]; if (vm && bl != null) lines[vm] = bl }
-    return { ...ch, btvnLinesByCau: lines }
+    const colByCau = { ...(ch.colByCau ?? {}) } // số cột (colByCau) cũng kế thừa câu gốc → đề 2/3 cùng bố cục cột
+    for (const bc of base) {
+      const vm = etMaDe![bc.ma_cau][vIdx]; if (!vm) continue
+      const bl = ch.btvnLinesByCau?.[bc.ma_cau]; if (bl != null) lines[vm] = bl
+      const bc2 = ch.colByCau?.[bc.ma_cau]; if (bc2 != null) colByCau[vm] = bc2
+    }
+    return { ...ch, btvnLinesByCau: lines, colByCau }
   }
   // Mã đề n → (câu, cấu hình dòng). Chưa đủ 3 mã đề thì mọi mã về đề gốc (an toàn).
   const deOf = (maDe: number) => (complete && maDe === 2) ? { caus: build(0), ch: chVar(0) }
@@ -248,19 +253,24 @@ function ETDoc({ ten, caus, ch, gv, badge, hoTen }: { ten: string; caus: CauHoi[
       <ETHeaderBK title={tenDe} ngay={ngayDe} lop={tenLop} made={made} hoTen={hoTen} soCau={caus.length} gv={gv} />
       {runs.map((run, ri) => (
         <section key={ri} className="pv-sec"><h2 className="pv-h-dang">Phần {part()} · {GLBL[run.g]}</h2>
-          {/* Số cột theo NHÓM FORM (cau_hinh.etColByGroup) — CauList ghép câu theo hàng (giống giáo trình). */}
-          <CauList kieu={ch.etColByGroup?.[run.g]}>{run.items.map((c) => {
-            if (run.g === 0) return <CauItem key={c.ma_cau} no={next()} c={c} gv={gv} />
+          {/* Số cột RIÊNG TỪNG CÂU (cau_hinh.colByCau) — CauFlow gom câu tag cột liền nhau; dòng kẻ chảy lấp trang. */}
+          <CauFlow items={run.items.map((c) => {
+            const n = next()
+            const cols = ch.colByCau?.[c.ma_cau] ?? 1
+            if (run.g === 0) return { key: c.ma_cau, cols, ...cauItemParts({ no: n, c, gv }) }
             const { stem, grid, emb } = splitStem(c)
-            return (
-              <div key={c.ma_cau} className="pv-cau">
-                <div className="pv-math"><MathText prefix={`<span class="pv-cau-no">Câu ${next()}.</span> `}>{stem}</MathText></div>
+            return {
+              key: c.ma_cau,
+              cols,
+              content: (<>
+                <div className="pv-math"><MathText prefix={`<span class="pv-cau-no">Câu ${n}.</span> `}>{stem}</MathText></div>
                 {grid && <OptGrid grid={grid} emb={emb} />}
                 {c.anh_de && <img src={c.anh_de} alt="" className="pv-img" />}
-                {gv ? <GvAnswer c={c} /> : grid ? null : <WriteLines n={lines[c.ma_cau] ?? (run.g === 1 ? DEFAULT_TLN_LINES : DEFAULT_TL_LINES)} />}
-              </div>
-            )
-          })}</CauList>
+                {gv && <GvAnswer c={c} />}
+              </>),
+              lines: gv || grid ? 0 : (lines[c.ma_cau] ?? (run.g === 1 ? DEFAULT_TLN_LINES : DEFAULT_TL_LINES)),
+            }
+          })} />
         </section>
       ))}
       {caus.length === 0 && <p className="pv-empty">ET chưa có câu nào.</p>}

@@ -11,7 +11,7 @@ import { getTaiLieuFull, etFormOf, khoCuaMon, type TaiLieuFull, type CauHinh } f
 import { fetchCausByMa } from '../../lib/ontap'
 import type { CauHoi } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
-import { CauItem, CauList, OptGrid, GvAnswer, WriteLines, splitStem, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChrome, printWithFilename } from './PrintView'
+import { cauItemParts, CauFlow, OptGrid, GvAnswer, splitStem, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChrome, printWithFilename } from './PrintView'
 
 const DEFAULT_TL_LINES = 4
 
@@ -50,7 +50,9 @@ export default function MTPrintView({ id, onClose, headless, linkOnly, onFail, o
     if (!full || !varReady || !srcRef.current || !dstRef.current) return
     let cancelled = false
     setRendering(true)
-    const ch = full.taiLieu.cau_hinh ?? {}
+    // Bỏ HẲN dải header chrome (Thùy chốt: MT/ET/giáo trình đều bỏ header) — MT đã có đầu đề pv-bt-head
+    // trong thân; giữ footer (số trang + liên hệ).
+    const ch = { ...(full.taiLieu.cau_hinh ?? {}), header: 'none' as const }
     const css = buildPagedCss(full.taiLieu, ch, ch.mau || '#7c3aed') + MT_CSS
     const cssUrl = URL.createObjectURL(new Blob([css], { type: 'text/css' }))
     const html = srcRef.current.innerHTML
@@ -97,7 +99,7 @@ export default function MTPrintView({ id, onClose, headless, linkOnly, onFail, o
   async function layLink(): Promise<boolean> {
     if (!activeContainerRef.current || !full) return false
     setDl(true); setDlErr(null)
-    try { await uploadPagesAsLink(activeContainerRef.current, printFileName(), pageChrome(full.taiLieu, full.taiLieu.cau_hinh ?? {}), full.taiLieu.id); return true }
+    try { await uploadPagesAsLink(activeContainerRef.current, printFileName(), pageChrome(full.taiLieu, { ...(full.taiLieu.cau_hinh ?? {}), header: 'none' as const }), full.taiLieu.id); return true }
     catch (e) { setDlErr('Lấy link lỗi: ' + (e instanceof Error ? e.message : String(e))); return false }
     finally { setDl(false) }
   }
@@ -157,26 +159,25 @@ export default function MTPrintView({ id, onClose, headless, linkOnly, onFail, o
   )
 }
 
-// 1 câu trong MT — tôn trọng FORM HIỂN THỊ (etFormOf), KHÁC CauItem thô (CauItem luôn hiện lua_chon
-// nếu câu kho có, bất kể form override). Đúng/Sai (menh_de) luôn qua CauItem (form không áp dụng).
-function MtCau({ no, c, gv, ch }: { no: number; c: CauHoi; gv: boolean; ch: CauHinh }) {
+// 1 câu trong MT tách ĐỀ/ĐÁP ÁN (cho CauColumns ghép cặp) — tôn trọng FORM HIỂN THỊ (etFormOf), KHÁC
+// cauItemParts thô (luôn hiện lua_chon nếu câu kho có). Đúng/Sai (menh_de) + trắc nghiệm → dùng cauItemParts.
+function mtCauParts(no: number, c: CauHoi, gv: boolean, ch: CauHinh): { content: React.ReactNode; lines: number } {
   const isDS = !!(c.menh_de && c.menh_de.length)
-  if (isDS) return <CauItem no={no} c={c} gv={gv} />
-  const form = etFormOf(c, ch)
-  if (form === 'trac_nghiem') return <CauItem no={no} c={c} gv={gv} />
+  if (isDS || etFormOf(c, ch) === 'trac_nghiem') return cauItemParts({ no, c, gv })
   // tự luận / trả lời ngắn ÉP hiển thị: bỏ qua lua_chon dù câu kho có (tách stem thủ công, giống ET).
   const { stem, grid, emb } = splitStem(c)
-  const lines = ch.btvnLinesByCau?.[c.ma_cau] ?? DEFAULT_TL_LINES
-  return (
-    <div className="pv-cau">
+  const form = etFormOf(c, ch)
+  const nLines = ch.btvnLinesByCau?.[c.ma_cau] ?? DEFAULT_TL_LINES
+  return {
+    content: (<>
       <div className="pv-math"><MathText prefix={`<span class="pv-cau-no">Câu ${no}.</span> `}>{stem}</MathText></div>
       {grid && <OptGrid grid={grid} emb={emb} />}
       {c.anh_de && <img src={c.anh_de} alt="" className="pv-img" />}
-      {gv ? <GvAnswer c={c} /> : grid ? null : form === 'tu_luan'
-        ? <WriteLines n={lines} />
-        : <div className="pv-tln-ans"><span className="pv-tln-lbl">Đáp án:</span><span className="pv-tln-fill" /></div>}
-    </div>
-  )
+      {gv && <GvAnswer c={c} />}
+      {!gv && !grid && form !== 'tu_luan' && <div className="pv-tln-ans"><span className="pv-tln-lbl">Đáp án:</span><span className="pv-tln-fill" /></div>}
+    </>),
+    lines: (!gv && !grid && form === 'tu_luan') ? nLines : 0,
+  }
 }
 
 // 3 MÃ ĐỀ (như ET): đề gốc = câu các phần; đề 2/3 = thay từng câu bằng ma_cau trong etMaDe (neo theo CÂU
@@ -227,9 +228,7 @@ function MTDoc({ full, gv, varCau }: { full: TaiLieuFull; gv: boolean; varCau: R
               <section key={p.id} className="pv-sec">
                 <h2 className="pv-h-dang">{p.tieu_de}</h2>
                 {p.caus.length === 0 ? <p className="pv-empty">Phần này chưa có câu.</p> : (
-                  <CauList kieu={p.kieu}>
-                    {p.caus.map((c) => <MtCau key={c.ma_cau} no={next()} c={mapCau(c, ver.v)} gv={gv} ch={ver.ch} />)}
-                  </CauList>
+                  <CauFlow items={p.caus.map((c) => ({ key: c.ma_cau, cols: ver.ch.colByCau?.[c.ma_cau] ?? 1, ...mtCauParts(next(), mapCau(c, ver.v), gv, ver.ch) }))} />
                 )}
               </section>
             ))}

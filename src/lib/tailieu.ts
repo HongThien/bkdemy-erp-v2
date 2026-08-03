@@ -31,7 +31,10 @@ export type PhanLoai = 'buoi' | 'lt_chuyen_de' | 'dang' | 'btvn' | 'ontap' | 'cu
 // etColByGroup = SỐ CỘT khi in ET/MT theo NHÓM FORM (ETGroup 0=trắc nghiệm · 1=trả lời ngắn · 2=tự luận)
 // → kiểu cột (BLOCK_KIEU: 'thuong'|'2cot'|'3cot'|'4cot'). Thiếu key = 'thuong' (1 cột). Giống 'kieu' của
 // phan giáo trình nhưng ET chỉ có 1 phan 'custom' nên lưu ở cau_hinh, khoá theo nhóm form thay vì phan.
-export type CauHinh = { header?: 'wave' | 'none'; footer?: 'wave' | 'none'; watermark?: 'logo' | 'none'; mau?: string; inLyThuyet?: boolean; btvnLinesByCau?: Record<string, number>; etFormByCau?: Record<string, string>; phanBac?: Record<string, string>; etMaDe?: Record<string, (string | null)[]>; hsMaDe?: Record<string, number>; etColByGroup?: Record<number, string> }
+// colByCau = SỐ CỘT khi in RIÊNG TỪNG CÂU (key = ma_cau → 2/3/4; thiếu/1 = full width). Câu tag cột LIỀN
+// NHAU tự xếp cạnh nhau (mỗi câu 1 cột); câu tag cột cách xa nhau KHÔNG ghép; câu lẻ = nửa trang. Thay cho
+// kiểu cột theo-phần (tai_lieu_phan.kieu) / theo-nhóm-form (etColByGroup) cũ.
+export type CauHinh = { header?: 'wave' | 'none'; footer?: 'wave' | 'none'; watermark?: 'logo' | 'none'; mau?: string; inLyThuyet?: boolean; btvnLinesByCau?: Record<string, number>; etFormByCau?: Record<string, string>; phanBac?: Record<string, string>; etMaDe?: Record<string, (string | null)[]>; hsMaDe?: Record<string, number>; etColByGroup?: Record<number, string>; colByCau?: Record<string, number> }
 export const DEFAULT_BTVN_LINES = 5
 // Form hiển thị trong ET (độc lập loai_cau kho).
 export type ETForm = 'trac_nghiem' | 'tra_loi_ngan' | 'tu_luan'
