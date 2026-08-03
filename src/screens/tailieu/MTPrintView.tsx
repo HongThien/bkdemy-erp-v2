@@ -11,7 +11,7 @@ import { getTaiLieuFull, etFormOf, khoCuaMon, type TaiLieuFull, type CauHinh } f
 import { fetchCausByMa } from '../../lib/ontap'
 import type { CauHoi } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
-import { cauItemParts, CauFlow, OptGrid, GvAnswer, splitStem, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChrome, printWithFilename } from './PrintView'
+import { cauItemParts, CauFlow, OptGrid, GvAnswer, splitStem, questionOnlyContent, TLNTable, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChrome, printWithFilename } from './PrintView'
 
 const DEFAULT_TL_LINES = 4
 
@@ -165,7 +165,7 @@ export default function MTPrintView({ id, onClose, headless, linkOnly, onFail, o
 // 1 câu trong MT tách ĐỀ/ĐÁP ÁN (cho CauColumns ghép cặp) — tôn trọng FORM HIỂN THỊ (etFormOf), KHÁC
 // cauItemParts thô (luôn hiện lua_chon nếu câu kho có). Đúng/Sai (menh_de) + trắc nghiệm → dùng cauItemParts.
 // ⚠ CHỈ còn gọi cho tự luận (bản HS) và MỌI form ở bản GV — trả lời ngắn (bản HS) giờ render qua
-// MTTlnTable/mtRunsOf (bảng câu-hỏi|ô-đáp-án), KHÔNG còn đi qua hàm này nữa (xem mtRunsOf).
+// TLNTable/mtRunsOf (bảng câu-hỏi|ô-đáp-án, DÙNG CHUNG với ET — xem PrintView.tsx), KHÔNG còn qua hàm này.
 function mtCauParts(no: number, c: CauHoi, gv: boolean, ch: CauHinh): { content: React.ReactNode; lines: number } {
   const isDS = !!(c.menh_de && c.menh_de.length)
   if (isDS || etFormOf(c, ch) === 'trac_nghiem') return cauItemParts({ no, c, gv })
@@ -183,34 +183,10 @@ function mtCauParts(no: number, c: CauHoi, gv: boolean, ch: CauHinh): { content:
     lines: (!gv && !grid && form === 'tu_luan') ? nLines : 0,
   }
 }
-// Câu hỏi THUẦN (đề + hình + grid nhúng, KHÔNG đáp án/dòng kẻ) — dùng trong ô cột 1 của MTTlnTable.
-function tlnQuestionContent(no: number, c: CauHoi): React.ReactNode {
-  const { stem, grid, emb } = splitStem(c)
-  return (<>
-    <div className="pv-math"><MathText prefix={`<span class="pv-cau-no">Câu ${no}.</span> `}>{stem}</MathText></div>
-    {grid && <OptGrid grid={grid} emb={emb} />}
-    {c.anh_de && <img src={c.anh_de} alt="" className="pv-img" />}
-  </>)
-}
-// Trả lời ngắn (Thùy: "đưa về dạng bảng — cột 1 câu hỏi, cột 2 chỗ ghi đáp án") — BẢNG 2 cột thay cho
-// dòng chấm-chấm 1 dòng cũ. KHÔNG dùng <table>/CSS grid/column-count (paged.js TREO — xem PrintView.tsx
-// "Nhiều cột = ghép câu theo HÀNG, KHÔNG column-count/grid/table" / DEVLOG 07-05) — dựng bằng div/flex
-// như CauColumns, mỗi hàng break-inside:avoid nhưng cả khối vẫn CHẢY được (ngắt giữa các hàng).
-function MTTlnTable({ rows }: { rows: { key: string; content: React.ReactNode }[] }) {
-  return (
-    <div className="pv-tlnt">
-      {rows.map((r) => (
-        <div key={r.key} className="pv-tlnt-row">
-          <div className="pv-tlnt-q">{r.content}</div>
-          <div className="pv-tlnt-a" />
-        </div>
-      ))}
-    </div>
-  )
-}
-// Gom câu TRẢ LỜI NGẮN LIÊN TIẾP (bản HS) thành 1 BẢNG — chỉ gộp TRÌNH BÀY các câu CÙNG NHÓM liền kề,
-// KHÔNG đổi thứ tự/cấu trúc phần gốc (giữ đúng bất biến MT "giữ nguyên cấu trúc phần + thứ tự", xem đầu
-// file). Bản GV giữ style cũ (đáp án hiện luôn qua GvAnswer, không cần bảng) → chỉ gom khi !gv.
+// Gom câu TRẢ LỜI NGẮN LIÊN TIẾP (bản HS) thành 1 BẢNG (TLNTable, PrintView.tsx) — chỉ gộp TRÌNH BÀY các
+// câu CÙNG NHÓM liền kề, KHÔNG đổi thứ tự/cấu trúc phần gốc (giữ đúng bất biến MT "giữ nguyên cấu trúc
+// phần + thứ tự", xem đầu file). Bản GV giữ style cũ (đáp án hiện luôn qua GvAnswer, không cần bảng) →
+// chỉ gom khi !gv.
 function mtRunsOf(caus: CauHoi[], mapCau: (c: CauHoi, v: number | null) => CauHoi, ver: { v: number | null; ch: CauHinh }, gv: boolean): { tln: boolean; items: CauHoi[] }[] {
   const runs: { tln: boolean; items: CauHoi[] }[] = []
   for (const c of caus) {
@@ -293,7 +269,7 @@ function MTPhieu({ full, phans, ver, gv, mapCau, hoTen, lopTen }: {
           <h2 className="pv-h-dang">{p.tieu_de}</h2>
           {p.caus.length === 0 ? <p className="pv-empty">Phần này chưa có câu.</p> : mtRunsOf(p.caus, mapCau, ver, gv).map((run, ri) => (
             run.tln
-              ? <MTTlnTable key={ri} rows={run.items.map((c) => { const n = next(); return { key: c.ma_cau, content: tlnQuestionContent(n, mapCau(c, ver.v)) } })} />
+              ? <TLNTable key={ri} rows={run.items.map((c) => { const n = next(); return { key: c.ma_cau, content: questionOnlyContent(n, mapCau(c, ver.v)) } })} />
               : <CauFlow key={ri} items={run.items.map((c) => ({ key: c.ma_cau, cols: ver.ch.colByCau?.[c.ma_cau] ?? 1, ...mtCauParts(next(), mapCau(c, ver.v), gv, ver.ch) }))} />
           ))}
         </section>
@@ -318,11 +294,4 @@ const MT_CSS = `
    dính .pv-cau) nên không dính lỗi. .pv-wpair vẫn break-inside:avoid riêng (không mồ côi nửa cặp dòng kẻ). */
 .pv-mt .pv-cau{break-inside:auto}
 .pv-mt .pv-cau .pv-math:first-child{break-after:avoid}
-/* Trả lời ngắn — BẢNG câu hỏi | ô ghi đáp án (Thùy). Mỗi hàng break-inside:avoid (không xé đôi 1 câu)
-   nhưng khối bảng vẫn CHẢY được giữa các hàng — không dùng <table>/grid/column-count (paged.js TREO). */
-.pv-tlnt{margin:4px 0}
-.pv-tlnt-row{display:flex;align-items:stretch;border-bottom:1px solid #e2e8f0;break-inside:avoid;min-height:11mm}
-.pv-tlnt-row:first-child{border-top:1px solid #e2e8f0}
-.pv-tlnt-q{flex:1;min-width:0;padding:7px 10px 7px 0;display:flex;align-items:center}
-.pv-tlnt-a{width:42mm;flex-shrink:0;border-left:1px solid #e2e8f0}
 `

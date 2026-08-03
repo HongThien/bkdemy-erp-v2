@@ -704,6 +704,32 @@ export function CauItem(props: { no: number; c: CauHoi; gv: boolean; lines?: num
   const { content, lines } = cauItemParts(props)
   return <div className="pv-cau">{content}{lines > 0 && <WriteLines n={lines} />}</div>
 }
+// Câu hỏi THUẦN (đề + hình + grid nhúng, KHÔNG đáp án/dòng kẻ) — dùng cho ô cột 1 của TLNTable.
+export function questionOnlyContent(no: number, c: CauHoi): React.ReactNode {
+  const { stem, grid, emb } = splitStem(c)
+  return (<>
+    <div className="pv-math"><MathText prefix={`<span class="pv-cau-no">Câu ${no}.</span> `}>{stem}</MathText></div>
+    {grid && <OptGrid grid={grid} emb={emb} />}
+    {c.anh_de && <img src={c.anh_de} alt="" className="pv-img" />}
+  </>)
+}
+// Trả lời ngắn (Thùy: "đưa về dạng bảng — cột 1 đề, cột 2 điền đáp án") — BẢNG 2 cột thay dòng-kẻ-viết-tay.
+// DÙNG CHUNG ET + MT (form hiển thị vốn đã "DÙNG CHUNG", xem etFormOf/tailieu.ts — lệch 1 bản là tái diễn
+// bug). KHÔNG dùng <table>/CSS grid/column-count (paged.js TREO — xem CauColumns/DEVLOG 07-05) — dựng
+// bằng div/flex, mỗi hàng break-inside:avoid (không xé đôi 1 câu) nhưng cả khối vẫn CHẢY được giữa các hàng.
+export type TLNRow = { key: string; content: React.ReactNode }
+export function TLNTable({ rows }: { rows: TLNRow[] }) {
+  return (
+    <div className="pv-tlnt">
+      {rows.map((r) => (
+        <div key={r.key} className="pv-tlnt-row">
+          <div className="pv-tlnt-q">{r.content}</div>
+          <div className="pv-tlnt-a" />
+        </div>
+      ))}
+    </div>
+  )
+}
 // Layout NHIỀU CỘT theo CẶP: mỗi hàng `cols` câu. Băng ĐỀ (content) = 1 flex-row, các cell tự cao bằng đề CAO
 // NHẤT → đề thấp chừa dòng trống → dòng kẻ 2 cột bắt đầu NGANG NHAU. DÒNG KẺ = từng HÀNG lưới riêng (mỗi hàng
 // 1 dòng/cột), là block rời nên paged.js NGẮT ĐƯỢC giữa các dòng → chảy lấp đáy trang, KHÔNG nhảy cả câu
@@ -792,6 +818,13 @@ const CONTENT_CSS = `
 .pv-row > .pv-cau:not(:first-child){margin-left:9mm}
 .pv-cau{margin:12px 0;break-inside:avoid}
 .pv-cau-no{font-weight:700;color:var(--pv-accent,#E91E8C);margin-right:5px}
+/* Trả lời ngắn dạng BẢNG (TLNTable, xem PrintView.tsx) — cột 1 đề, cột 2 chỗ điền đáp án. Mỗi hàng
+   break-inside:avoid (không xé đôi 1 câu) nhưng cả khối vẫn CHẢY được giữa các hàng qua trang. */
+.pv-tlnt{margin:4px 0}
+.pv-tlnt-row{display:flex;align-items:stretch;border-bottom:1px solid #e2e8f0;break-inside:avoid;min-height:11mm}
+.pv-tlnt-row:first-child{border-top:1px solid #e2e8f0}
+.pv-tlnt-q{flex:1;min-width:0;padding:7px 10px 7px 0;display:flex;align-items:center}
+.pv-tlnt-a{width:42mm;flex-shrink:0;border-left:1px solid #e2e8f0}
 .pv-img{display:block;margin:7px auto;max-height:60mm;max-width:100%}
 .mt-img{display:block;margin:6px auto;max-height:60mm;max-width:100%;break-inside:avoid}
 .pv-opts{display:grid;column-gap:22px;row-gap:11px;margin-top:7px;align-items:start}

@@ -12,7 +12,7 @@ import { fetchCausByMa } from '../../lib/ontap'
 import { BK_CSS, BK_PAGE_CSS } from './bkPrint'
 import type { CauHoi } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
-import { cauItemParts, CauFlow, OptGrid, GvAnswer, splitStem, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChrome, printWithFilename } from './PrintView'
+import { cauItemParts, CauFlow, OptGrid, GvAnswer, splitStem, questionOnlyContent, TLNTable, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChrome, printWithFilename } from './PrintView'
 
 const DEFAULT_TL_LINES = 4
 const DEFAULT_TLN_LINES = 2
@@ -253,24 +253,30 @@ function ETDoc({ ten, caus, ch, gv, badge, hoTen }: { ten: string; caus: CauHoi[
       <ETHeaderBK title={tenDe} ngay={ngayDe} lop={tenLop} made={made} hoTen={hoTen} soCau={caus.length} gv={gv} />
       {runs.map((run, ri) => (
         <section key={ri} className="pv-sec"><h2 className="pv-h-dang">Phần {part()} · {GLBL[run.g]}</h2>
-          {/* Số cột RIÊNG TỪNG CÂU (cau_hinh.colByCau) — CauFlow gom câu tag cột liền nhau; dòng kẻ chảy lấp trang. */}
-          <CauFlow items={run.items.map((c) => {
-            const n = next()
-            const cols = ch.colByCau?.[c.ma_cau] ?? 1
-            if (run.g === 0) return { key: c.ma_cau, cols, ...cauItemParts({ no: n, c, gv }) }
-            const { stem, grid, emb } = splitStem(c)
-            return {
-              key: c.ma_cau,
-              cols,
-              content: (<>
-                <div className="pv-math"><MathText prefix={`<span class="pv-cau-no">Câu ${n}.</span> `}>{stem}</MathText></div>
-                {grid && <OptGrid grid={grid} emb={emb} />}
-                {c.anh_de && <img src={c.anh_de} alt="" className="pv-img" />}
-                {gv && <GvAnswer c={c} />}
-              </>),
-              lines: gv || grid ? 0 : (lines[c.ma_cau] ?? (run.g === 1 ? DEFAULT_TLN_LINES : DEFAULT_TL_LINES)),
-            }
-          })} />
+          {(!gv && run.g === 1) ? (
+            // Trả lời ngắn (bản HS, Thùy: "đưa về dạng bảng — cột 1 đề, cột 2 điền đáp án") — BẢNG thay
+            // dòng-kẻ-viết-tay (DEFAULT_TLN_LINES không còn dùng ở đây, xem TLNTable/PrintView.tsx).
+            <TLNTable rows={run.items.map((c) => { const n = next(); return { key: c.ma_cau, content: questionOnlyContent(n, c) } })} />
+          ) : (
+            /* Số cột RIÊNG TỪNG CÂU (cau_hinh.colByCau) — CauFlow gom câu tag cột liền nhau; dòng kẻ chảy lấp trang. */
+            <CauFlow items={run.items.map((c) => {
+              const n = next()
+              const cols = ch.colByCau?.[c.ma_cau] ?? 1
+              if (run.g === 0) return { key: c.ma_cau, cols, ...cauItemParts({ no: n, c, gv }) }
+              const { stem, grid, emb } = splitStem(c)
+              return {
+                key: c.ma_cau,
+                cols,
+                content: (<>
+                  <div className="pv-math"><MathText prefix={`<span class="pv-cau-no">Câu ${n}.</span> `}>{stem}</MathText></div>
+                  {grid && <OptGrid grid={grid} emb={emb} />}
+                  {c.anh_de && <img src={c.anh_de} alt="" className="pv-img" />}
+                  {gv && <GvAnswer c={c} />}
+                </>),
+                lines: gv || grid ? 0 : (lines[c.ma_cau] ?? (run.g === 1 ? DEFAULT_TLN_LINES : DEFAULT_TL_LINES)),
+              }
+            })} />
+          )}
         </section>
       ))}
       {caus.length === 0 && <p className="pv-empty">ET chưa có câu nào.</p>}
