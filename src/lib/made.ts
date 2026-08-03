@@ -8,7 +8,10 @@ export type BaseItem = { maDang: string; maCau: string }
 
 // Sinh đề 2/3 PURE: base = câu GỐC (đúng thứ tự), baseCh = cấu hình hiện tại. Trả cau_hinh mới (etMaDe +
 // etFormByCau bổ sung form cho câu biến thể) + toàn bộ câu đã nạp (để cache/preview). cauCache = câu đã
-// có sẵn ở màn soạn (fallback khi pool chưa chứa câu gốc). null trong picks = TRỐNG (chặn lưu, chọn tay).
+// có sẵn ở màn soạn (fallback khi pool chưa chứa câu gốc).
+// ⭐ BẤT BIẾN (Thùy): mọi câu ở MỌI mã đề của 1 vị trí PHẢI CÙNG DẠNG với câu gốc. Ưu tiên câu KHÁC (chưa
+// dùng) cùng dạng+form; nếu dạng KHÔNG đủ câu khác (vd chỉ có 1 câu) thì CHO PHÉP TRÙNG — dùng lại câu
+// gốc / câu cùng dạng, KHÔNG để TRỐNG. Nhờ vậy picks luôn được lấp (không còn null từ lần sinh này).
 export async function buildMaDe(
   base: BaseItem[],
   baseCh: CauHinh,
@@ -21,15 +24,22 @@ export async function buildMaDe(
   const byMa = new Map(allCau.map((c) => [c.ma_cau, c]))
   const etFormByCau: Record<string, string> = { ...(baseCh.etFormByCau ?? {}) }
   const etMaDe: Record<string, (string | null)[]> = {}
-  const used = new Set<string>(base.map((b) => b.maCau))   // loại mọi câu GỐC → đề 2/3 luôn khác đề gốc
+  const used = new Set<string>(base.map((b) => b.maCau))   // ưu tiên: đề 2/3 khác MỌI câu gốc (khi còn đủ câu)
   for (const b of base) {
     const baseCau = byMa.get(b.maCau) ?? cauCache[b.maCau]
     const form: ETForm = baseCau ? etFormOf(baseCau, baseCh) : 'tra_loi_ngan'
+    // Ứng viên = câu CÙNG DẠNG + in được cùng form (gồm cả câu gốc). Các mã đề bắt buộc nằm trong tập này.
+    const candidates = (pools[b.maDang] ?? []).filter((c) => canBeETForm(c, form))
     const picks: (string | null)[] = []
     for (let v = 0; v < 2; v++) {
-      const cand = (pools[b.maDang] ?? []).find((c) => !used.has(c.ma_cau) && canBeETForm(c, form))
-      if (cand) { used.add(cand.ma_cau); etFormByCau[cand.ma_cau] = form; picks.push(cand.ma_cau) }
-      else picks.push(null)   // hết câu cùng dạng+form → TRỐNG
+      const fresh = candidates.find((c) => !used.has(c.ma_cau))   // câu KHÁC chưa dùng ở bất kỳ đề nào
+      if (fresh) { used.add(fresh.ma_cau); etFormByCau[fresh.ma_cau] = form; picks.push(fresh.ma_cau) }
+      else {
+        // Không đủ câu khác cùng dạng+form → CHO TRÙNG: câu chưa xuất hiện ở đề NÀY (đề 3 tránh đề 2),
+        // rồi câu gốc. KHÔNG thêm vào `used` → câu gốc khác cùng dạng vẫn tái dùng được (đều thiếu câu).
+        const dup = candidates.find((c) => !picks.includes(c.ma_cau))?.ma_cau ?? candidates[0]?.ma_cau ?? b.maCau
+        etFormByCau[dup] = form; picks.push(dup)
+      }
     }
     etMaDe[b.maCau] = picks
   }
