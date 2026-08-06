@@ -2757,36 +2757,6 @@ một danh sách thì mấy con số đếm theo-ngày hết nghĩa, mà màn n�
 - **Gom (lớp × ngày) về 1 dòng ảo, giữ slot sớm nhất.** TKB có slot TRÙNG THỨ còn hiệu lực chồng nhau —
   9A1 thật sự có 2 dòng `T6 15:00` (1 dòng `hieu_luc_den` cũ, 1 dòng NULL). Không gom thì ra 2 hàng y hệt,
   bấm "Mở buổi" hàng nào cũng ra cùng 1 buổi (moBuoi tra theo lop+ngay).
-
-## 2026-08-06 — Kho Hình: kế thừa giả thiết 2 KIỂU (cộng thêm / tự phát biểu)
-
-**Thùy nêu lỗ mô hình:** kế thừa giả thiết KHÔNG phải lúc nào cũng là nối text. Ca con là đặc-biệt-hoá
-được ĐỊNH DANH: hình bình hành là con của hình thang, nhưng *"cho hình bình hành ABCD"* đã BAO
-*"cho hình thang ABCD"* — không thể viết cộng dồn *"ABCD là hình thang; ABCD là hình bình hành"*. Nên
-kế thừa-từ-bố (kiểu cộng text) chỉ là MỘT option. Chốt: **bản chất quan hệ không đổi, chỉ đổi cách hiển thị**.
-
-- **Phân biệt 2 tầng đang bị gộp làm một:** (1) cạnh logic is-a/subsumption — LUÔN kế thừa (bình hành xài
-  được mọi định lý hình thang), nuôi bao đóng tiền đề + kế thừa cách giải; (2) TEXT phát biểu giả thiết —
-  không luôn cộng được vì tiếng Việt định-danh-hoá (1 từ gói cả cụm ràng buộc, THAY cách gọi bố). Lý thuyết:
-  chênh giữa subtype (is-a) và lexicalization — subclass vừa extend vừa override `toString()` mà vẫn giữ Liskov.
-- **Fix = mode per-node, KHÔNG bỏ cạnh.** Cột `hinh_mo_hinh.gt_thay_the` boolean default false.
-  `false` = cộng thêm (full = bố + `gia_thiet_them`, hành vi cũ y hệt). `true` = tự phát biểu (node viết nguyên
-  câu vào `gia_thiet`, `gia_thiet_them=null`, derive DỪNG leo ở đây). Cạnh cha-con (DAG) giữ nguyên cả 2 kiểu.
-- `giaThietDayDu` viết lại: **BASE = node tự-phát-biểu SÂU NHẤT trên đường tổ tiên** (mặc định gốc họ i=0);
-  base góp giả thiết đầy đủ của nó, các đời SAU base góp phần thêm. Chuỗi nhiều tầng thay-thế (thang → bình
-  hành → chữ nhật) tự reset đúng ở mỗi node thay-thế.
-- `FormMoHinh` (Ho.tsx): toggle 2 nút cho mô hình con (Cộng thêm / Tự phát biểu). Thay-thế → ô textarea full
-  câu con + hiện giả thiết bố dạng THAM CHIẾU (mờ). `SoDo.tsx`: nhãn phân biệt 2 kiểu.
-- **Migration additive** (`add column if not exists ... default false`) → rows cũ = false = cộng thêm, không
-  đụng data. Áp riêng 1 file (không re-run toàn bộ), verify cột trong `information_schema`. `tsc` sạch ·
-  `vite build` sạch · `schema.md` refresh. Commit `a272407`, push `main`.
-
-**SAI/SỬA (nhỏ nhưng đáng ghi):** viết mới `scripts/_apply_one.mjs` để áp 1 migration mà KHÔNG check trước —
-repo ĐÃ có sẵn helper cùng tên (commit "ET"). Đã ghi đè + suýt xoá. Khôi phục nguyên trạng từ HEAD, không lọt
-vào commit. **Bài học: trước khi tạo file tên tổng quát, `git cat-file -e HEAD:path` / ls đã.**
-
-**CÒN (quyết định NỘI DUNG, không phải code):** cạnh "bình hành → thang" chỉ đúng nếu Thùy dùng định nghĩa
-hình thang BAO GỒM (2 cạnh đối song song — SGK VN). Nếu chỗ nào xài định nghĩa LOẠI TRỪ thì cạnh sai gốc.
 - Search debounce 250ms + cờ huỷ (gõ "9A1" = 3 lượt, không để lượt cũ trả về sau rồi đè kết quả mới).
 - **Từ khoá tìm để ở BuoiHocScreen, không ở trong panel** — vào 1 buổi rồi bấm "← Buổi học" là panel bị
   unmount, để state bên trong thì mất chữ, phải gõ lại mỗi lần xem xong 1 buổi (thao tác lặp nhiều nhất).
@@ -3516,3 +3486,56 @@ Verify: card hiện "△ABC nhọn, ba đường cao... | tứ giác BFEC nội 
 - **KHÔNG dùng column-count/grid/table** (đã thử column-count 1 vòng → đúng cảnh báo DEVLOG 07-05, bỏ). `CauList` (row inline-block `.pv-row`) GIỮ NGUYÊN cho **Bài tập/Đề thi** (BTPrintView/DeThiPrintView) — không đụng.
 - **Bài học:** yêu cầu "chia cột" của worksheet điền tay có 3 ràng buộc đối nghịch (đề cân theo cặp · dòng kẻ thẳng lưới · lấp đầy trang). Giải = tách content/lines: content ghép cặp flex (cân + atomic), lines rải hàng lưới block rời (fragment). Đừng để cả câu là 1 block atomic (nhảy nguyên → bỏ trống); cũng đừng column-count (paged treo).
 - ⚠ **Doc CŨ để cột theo-phần → in 1 cột** tới khi tick lại per-câu (chưa viết migration). tsc sạch, `npm run build` OK.
+
+## 2026-08-06 — Kho Hình: kế thừa giả thiết 2 kiểu · catalog theo khối · bổ đề lý thuyết · hình node/bước giải · popup to
+
+Một chuỗi 6 việc Kho Hình trong ngày (pull code erp-v2 về máy mới, đọc HANDOFF trước). Tất cả push thẳng `main`.
+
+**1. Kế thừa giả thiết 2 KIỂU (cộng thêm / tự phát biểu)** — commit `a272407`.
+- Thùy nêu lỗ: kế thừa KHÔNG phải lúc nào cũng nối text. Con định-danh-hoá (hình bình hành < hình thang):
+  *"cho hình bình hành ABCD"* đã BAO *"hình thang ABCD"*, không cộng dồn được. Kế-thừa-cộng-text chỉ là 1 option.
+- Tách 2 tầng bị gộp: (1) cạnh logic is-a — LUÔN kế thừa (nuôi bao đóng/cách giải); (2) TEXT phát biểu — không
+  luôn cộng. Lý thuyết: subtype vs lexicalization (extend vs override toString, vẫn giữ Liskov).
+- Fix: cột `hinh_mo_hinh.gt_thay_the` bool default false. false=cộng thêm (bố+`gia_thiet_them`); true=tự phát
+  biểu (viết nguyên câu vào `gia_thiet`, derive dừng leo). `giaThietDayDu` viết lại: base = node thay-thế sâu
+  nhất trên đường tổ tiên. **Cạnh DAG KHÔNG đổi cả 2 kiểu — chỉ đổi render text.** `FormMoHinh` toggle 2 nút.
+- Migration additive (rows cũ = false = cũ y hệt). `202608061549_hinh_gia_thiet_thay_the`.
+- **SAI/SỬA:** viết mới `scripts/_apply_one.mjs` mà không check — repo ĐÃ có helper cùng tên (commit "ET"). Ghi
+  đè + suýt xoá. Khôi phục từ HEAD. Bài học: trước khi tạo file tên tổng quát, `git cat-file -e HEAD:path` đã.
+- **CÒN (nội dung):** cạnh "bình hành→thang" chỉ đúng nếu Thùy dùng định nghĩa hình thang BAO GỒM (SGK VN).
+
+**2. Tách catalog (dạng + bổ đề) theo KHỐI** — commit `f52d530`.
+- Thùy: dạng/bổ đề gắn với phạm vi kiến thức từng khối, không dùng chung. Trước đây catalog là ngoại lệ (chung
+  mọi khối); mô hình vốn đã theo khối. Nay cột `hinh_dang.khoi` + `hinh_bo_de.khoi`, `loadLuoi` cắt catalog.
+- Verify TRƯỚC bằng query "dùng-xuyên-khối" = 0 (data non: 7 dạng, 0 bổ đề, 0 đo lường) → tách sớm gần như miễn
+  phí, không có mastery để phân mảnh. Backfill: Thùy bảo "khối 8", data soi ra dạng đang có thuộc **khối 9**
+  (DH.018/019 suy từ bài toán = 9) → HỎI/verify rồi sửa default 8→9. Bài học: data mâu thuẫn lời nói thì soi.
+
+**3. Bổ đề có lý thuyết + ví dụ (bóc ảnh/PDF như lý thuyết Đại)** — commit `9f142e5`.
+- Bổ đề là cấu trúc TO. Bảng `hinh_bo_de_ly_thuyet` (mirror hinh_dang_ly_thuyet, khoá bo_de_id) + seam
+  `api.hinhBoDeLyThuyet` + **tái dùng NGUYÊN LyThuyetModal**. M7: chấm ● + box "Lý thuyết / ví dụ" → Soạn/Sửa.
+
+**4. Node đặt hình riêng + hình bước giải mặc định = hình đề** — commit `695bb2c` + `7bca0b1`.
+- Thùy: cùng mô hình không có nghĩa hình giống hệt. Hồi sinh `hinh_baitoan.anh_chuan` (trước "thôi ghi"). Derive
+  `anhCuaBaiToan` = anh_chuan ?? anhCauHinhCua(mô hình). FormBaiToan toggle "Hình riêng". KHÔNG cần migration.
+- Hình bước giải (`anh_loi_giai`) mặc định null = mượn hình đề (mọi chỗ đã fallback `anh_loi_giai ?? anhCuaBaiToan`);
+  toggle "Hình riêng cho bước giải" khi cần hình tô/kẻ thêm.
+
+**5. Bấm node → popup TO 80% + hình node card to như card mô hình** — commit `f7849c2` + `233e327`.
+- `DetailBaiToan`: Panel 330px cạnh graph → **modal `createPortal` ra body** (thoát zoom 1.15× §707) 80vw×80vh,
+  2 cột (trái đề+câu hỏi+hình to · phải meta+cách giải+đáp án+ý). Graph full-width. Bấm tag tiền đề → đổi node.
+- Node card View bài toán: thumbnail 42×42 → dải hình full-width h-24 trên đầu như card mô hình; card 256×200.
+
+**6. Cỡ chữ popup — pt KHÔNG phải px** — commit (cùng đợt chữ).
+- Lần đầu tao để 13–15px, Thùy: "pt chứ không phải px, chữ vẫn bé". 12–13pt ≈ 16–17px. Sửa: prop `big` cho
+  primitive `FieldCard`/`Sol`/`KV`/`Tag`/`Ma` (hinhUi, mặc định false — KHÔNG đụng màn khác dùng chung); popup
+  truyền `big` → chữ 16–17px. KaTeX scale theo font container nên công thức tự to. Bài học: thêm prop tuỳ chọn +
+  truyền ở chỗ cần, đừng sửa hằng số trong component dùng chung (đổi cả app).
+
+Migration ngày: `202608061549_hinh_gia_thiet_thay_the` · `202608061835_hinh_catalog_theo_khoi` (backfill dạng=khối 9)
+· `202608061847_hinh_bo_de_ly_thuyet`. Tất cả tsc + vite build sạch, đã áp DB (`_apply_one`), `schema.md` refresh.
+Chưa soi được trên app thật (dev pane phiên này 0×0) — nhờ Thùy `npm run dev` xem popup/chữ/hình.
+
+*(Ghi chú: section này ban đầu tao lỡ chèn nhầm vào GIỮA entry 07-24 "thanh tìm theo LỚP" — vì matched dòng
+"moBuoi tra theo lop+ngay" tưởng là cuối file. Đã gỡ ra, nối lại 07-24, ghép trọn vào cuối. Bài học: file
+append-only không chronological chặt → xác định CUỐI FILE thật trước khi append, đừng tin `wc -l` sai encoding.)*
