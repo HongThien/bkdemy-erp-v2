@@ -200,7 +200,7 @@ function ViewBaiToan({ L, ho, nodes, chon, setChon, onSua }: {
   )
 }
 
-const KIEU_BT: Record<BienThe['kieu'], string> = { doi_so: 'Đổi số', doi_dinh: 'Đổi đỉnh', ca_hai: 'Đổi số + đỉnh' }
+const KIEU_BT: Record<BienThe['kieu'], string> = { doi_so: 'Đổi số', doi_dinh: 'Thay điểm' }
 const Lbl = ({ children }: { children: ReactNode }) => (
   <div className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-slate-500">{children}</div>
 )
@@ -371,7 +371,7 @@ function FormBienThe({ baiToanId, v, goc, onClose, onDone }: {
   goc: { de: string; anh: string | null; loiGiai: string | null; anhLoiGiai: string | null }
   onClose: () => void; onDone: () => Promise<void>
 }) {
-  const [kieu, setKieu] = useState<BienThe['kieu']>(v?.kieu ?? 'ca_hai')
+  const [kieu, setKieu] = useState<BienThe['kieu']>(v?.kieu ?? 'doi_dinh')
   // Mới → điền sẵn từ bài gốc (giống y). Sửa → giữ nội dung đã lưu.
   const [deBai, setDeBai] = useState(v?.de_bai ?? goc.de)
   const [anh, setAnh] = useState<string | null>(v?.anh ?? goc.anh)
@@ -407,21 +407,27 @@ function FormBienThe({ baiToanId, v, goc, onClose, onDone }: {
           <div>
             <Lbl>Kiểu biến thể</Lbl>
             <div className="flex gap-2">
-              {(['doi_so', 'doi_dinh', 'ca_hai'] as const).map((k) => (
+              {(['doi_dinh', 'doi_so'] as const).map((k) => (
                 <button key={k} type="button" onClick={() => setKieu(k)}
                   className={`rounded-lg border px-3 py-1.5 text-[13px] font-medium transition ${kieu === k ? 'border-indigo-400 bg-indigo-50 text-indigo-700' : 'border-slate-200 bg-white text-slate-500 hover:bg-slate-50'}`}>{KIEU_BT[k]}</button>
               ))}
             </div>
           </div>
-          {/* Đổi điểm: relabel tự động (chỉ trong $…$). Đổi số phải sửa tay + tính lại đáp án. */}
-          <div className="rounded-lg border border-indigo-200 bg-indigo-50/40 p-2.5">
-            <Lbl>Đổi điểm (relabel) — tự thay nhãn trong đề + lời giải</Lbl>
-            <div className="flex gap-2">
-              <input className={inpCls} value={mapText} onChange={(e) => setMapText(e.target.value)} placeholder="A>M, B>N, C>P, H>K" />
-              <Btn className="h-[38px] shrink-0 px-3" onClick={apDoiDiem}>Áp dụng</Btn>
+          {/* Thay điểm → relabel tự động (chỉ trong $…$). Đổi số → sửa tay + tính lại đáp án (2 kiểu tách hẳn). */}
+          {kieu === 'doi_dinh' ? (
+            <div className="rounded-lg border border-indigo-200 bg-indigo-50/40 p-2.5">
+              <Lbl>Thay điểm (relabel) — tự thay nhãn trong đề + lời giải</Lbl>
+              <div className="flex gap-2">
+                <input className={inpCls} value={mapText} onChange={(e) => setMapText(e.target.value)} placeholder="A>M, B>N, C>P, H>K" />
+                <Btn className="h-[38px] shrink-0 px-3" onClick={apDoiDiem}>Áp dụng</Btn>
+              </div>
+              <p className="mt-1 text-[11px] leading-snug text-slate-500">Chỉ đổi ký hiệu trong công thức <code>$…$</code>, giữ nguyên số. Hình bạn tự update theo đề mới.</p>
             </div>
-            <p className="mt-1 text-[11px] leading-snug text-slate-500">Chỉ đổi ký hiệu trong công thức <code>$…$</code>. <b>Đổi SỐ</b>: sửa tay số + đáp án (đổi số phải tính lại, không tự đúng được). Hình bạn tự update theo đề mới.</p>
-          </div>
+          ) : (
+            <div className="rounded-lg border border-amber-200 bg-amber-50/50 p-2.5 text-[11.5px] leading-snug text-amber-800">
+              <b>Đổi số:</b> sửa tay giá trị trong đề + <b>tính lại đáp án</b> (đổi số phải giải lại, không tự đúng được). Giữ nguyên tên điểm. Hình bạn tự update theo đề mới.
+            </div>
+          )}
           <div>
             <div className="mb-1 flex items-center gap-2">
               <Lbl>Đề — giả thiết + câu hỏi (text + LaTeX $…$)</Lbl>

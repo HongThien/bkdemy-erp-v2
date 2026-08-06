@@ -25,7 +25,7 @@ export type BaiToan = {
 /** Biến thể của một node = cùng bài toán, ĐỔI SỐ / ĐỔI ĐỈNH. Treo dưới node (không đẻ node mới, không
  *  phân mảnh mastery). Đề + hình + đáp án riêng, soạn tay. Cùng KP/logic với node gốc. */
 export type BienThe = {
-  id: string; baitoan_id: string; mon: string; kieu: 'doi_so' | 'doi_dinh' | 'ca_hai'
+  id: string; baitoan_id: string; mon: string; kieu: 'doi_so' | 'doi_dinh'
   de_bai: string; anh: string | null; loi_giai: string | null; anh_loi_giai: string | null
   ghi_chu: string | null; thu_tu: number
 }
