@@ -37,6 +37,8 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
   // nghĩa hình giống hệt. anh_chuan null = dùng chung hình mô hình.
   const [dungHinhRieng, setDungHinhRieng] = useState<boolean>(!!sua?.anh_chuan)
   const [anhRieng, setAnhRieng] = useState<string | null>(sua?.anh_chuan ?? null)
+  // Hình bước giải: mặc định = hình ĐỀ BÀI. Bật "hình riêng" khi bước giải cần hình có tô/kẻ thêm.
+  const [dungHinhGiaiRieng, setDungHinhGiaiRieng] = useState<boolean>(!!cachCu?.anh_loi_giai)
   // Tiền đề: khi TẠO node, mặc định gắn "bài toán phía trước" (node cấp cao nhất đã có trong mô hình)
   // làm tiền đề CHÍNH. Người thêm/bớt tự do sau.
   const [tienDe, setTienDe] = useState<string[]>(() => {
@@ -57,6 +59,8 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
   const maCap = useMemo(() => api.maPhanCapMap(L), [L])
   const giaThiet = api.giaThietDayDu(L, moHinhId)
   const anhMoHinh = api.anhCauHinhCua(L, moHinhId)
+  // Hình ĐỀ BÀI đang hiệu lực (node có hình riêng thì lấy nó, không thì mượn mô hình) — làm mặc định cho bước giải.
+  const anhDeHienTai = dungHinhRieng && anhRieng ? anhRieng : anhMoHinh
 
   // Cấp gợi ý = 1 + max(cap tiền đề); không tiền đề ⇒ 1.
   const capGoi = useMemo(() => (tienDe.length ? 1 + Math.max(...tienDe.map((id) => L.baiToan.find((b) => b.id === id)?.cap ?? 0)) : 1), [tienDe, L])
@@ -83,10 +87,12 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
       let btId = sua?.id
       if (sua) await api.updateBaiToan(sua.id, { phat_bieu: phatBieu, mo_hinh_id: moHinhId, cap, de_bai_chuan: null, anh_chuan: anhChuan })
       else btId = (await api.createBaiToan({ phat_bieu: phatBieu, mo_hinh_id: moHinhId, cap, de_bai_chuan: null, anh_chuan: anhChuan })).id
+      // Hình bước giải: mặc định null = mượn hình đề (mọi chỗ hiển thị fallback `anh_loi_giai ?? anhCuaBaiToan`).
+      const anhLoiGiai = dungHinhGiaiRieng ? (anhGiai || null) : null
       if (dangId) {
         const cachId = cachCu
-          ? (await api.updateCachGiai(cachCu.id, { dang_id: dangId, loi_giai: loiGiai || null, anh_loi_giai: anhGiai }), cachCu.id)
-          : (await api.createCachGiai({ baitoan_id: btId!, dang_id: dangId, ten: 'cách ngắn nhất', loi_giai: loiGiai || null, anh_loi_giai: anhGiai, la_mac_dinh: true })).id
+          ? (await api.updateCachGiai(cachCu.id, { dang_id: dangId, loi_giai: loiGiai || null, anh_loi_giai: anhLoiGiai }), cachCu.id)
+          : (await api.createCachGiai({ baitoan_id: btId!, dang_id: dangId, ten: 'cách ngắn nhất', loi_giai: loiGiai || null, anh_loi_giai: anhLoiGiai, la_mac_dinh: true })).id
         await api.setTienDe(cachId, btId!, tienDe)
         await api.setBoDeCuaCach(cachId, boDe)
       }
@@ -187,8 +193,24 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
               <div className="mt-1.5"><OcrButton onText={setLoiGiai} /></div>
             </div>
             <div>
-              <Lbl>Ảnh lời giải (tuỳ chọn — hình có tô/kẻ thêm cho bước giải)</Lbl>
-              <AnhInput value={anhGiai} onChange={setAnhGiai} cap="Hình lời giải" />
+              <div className="mb-1 flex items-center gap-2">
+                <Lbl>Ảnh bước giải</Lbl>
+                <label className="mb-1 inline-flex cursor-pointer items-center gap-1.5 text-[11px] font-medium text-slate-500">
+                  <input type="checkbox" checked={dungHinhGiaiRieng} onChange={(e) => setDungHinhGiaiRieng(e.target.checked)} />
+                  Hình riêng cho bước giải
+                </label>
+              </div>
+              {dungHinhGiaiRieng ? (
+                <>
+                  <AnhInput value={anhGiai} onChange={setAnhGiai} cap="Hình bước giải" />
+                  <p className="mt-1 text-[11px] text-slate-400">Hình có tô/kẻ thêm cho bước giải. <b>Bỏ trống = dùng hình đề bài.</b></p>
+                </>
+              ) : (
+                <>
+                  <Fig src={anhDeHienTai} cap={anhDeHienTai ? 'Dùng hình đề bài' : undefined} h="h-40" />
+                  <p className="mt-1 text-[11px] text-slate-400">Mặc định dùng hình đề bài. Tích ô trên nếu bước giải cần hình có tô/kẻ thêm.</p>
+                </>
+              )}
             </div>
 
             {/* Tiền đề */}
