@@ -652,7 +652,7 @@
 | id | uuid |  | gen_random_uuid() | PK |  |
 | baitoan_id | uuid |  |  | FK→hinh_baitoan.id |  |
 | mon | text |  | 'Toán'::text |  |  |
-| kieu | text |  | 'doi_dinh'::text |  | `doi_so` · `doi_dinh` |
+| kieu | text |  | 'doi_dinh'::text |  | `doi_so` · `doi_dinh` · `ca_hai` |
 | de_bai | text |  | ''::text |  |  |
 | anh | text | Y |  |  |  |
 | loi_giai | text | Y |  |  |  |

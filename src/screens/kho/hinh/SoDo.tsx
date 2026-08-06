@@ -200,7 +200,8 @@ function ViewBaiToan({ L, ho, nodes, chon, setChon, onSua }: {
   )
 }
 
-const KIEU_BT: Record<BienThe['kieu'], string> = { doi_so: 'Đổi số', doi_dinh: 'Thay điểm' }
+// Nhãn hiển thị. 'ca_hai' là giá trị CŨ (bundle trước) — giữ nhãn để row cũ không hiện undefined; UI mới KHÔNG tạo nó.
+const KIEU_BT: Record<string, string> = { doi_so: 'Đổi số', doi_dinh: 'Thay điểm', ca_hai: 'Đổi số + điểm (cũ)' }
 const Lbl = ({ children }: { children: ReactNode }) => (
   <div className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-slate-500">{children}</div>
 )
