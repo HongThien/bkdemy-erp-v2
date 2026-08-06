@@ -146,6 +146,10 @@ function MBoDe({ L, khoi, reload }: { L: Luoi; khoi: string; reload: () => Promi
   const [chon, setChon] = useState<string | null>(null)
   const [q, setQ] = useState('')
   const [form, setForm] = useState<{ id?: string } | null>(null)
+  const [ltMap, setLtMap] = useState<LtMap>({})
+  const [ltModal, setLtModal] = useState<{ id: string; ten: string } | null>(null)
+  const napLt = () => api.hinhBoDeLyThuyet.list().then((m) => setLtMap(m as LtMap)).catch(() => { /* */ })
+  useEffect(() => { napLt() }, [])
   const theo = useMemo(() => api.baiToanTheoBoDe(L), [L])
   const b = chon ? L.boDe.find((x) => x.id === chon) : null
 
@@ -158,6 +162,7 @@ function MBoDe({ L, khoi, reload }: { L: Luoi; khoi: string; reload: () => Promi
       <p className="mb-4 max-w-3xl text-[12.5px] text-slate-500">
         Danh mục <b>phẳng</b>. Bổ đề = <b>mối nối</b> bắc cầu giữa nửa-xuôi (giả thiết) và nửa-ngược (câu hỏi) —
         nhãn chẩn đoán, <b>không phải trục đo ngang hàng</b> với mô hình và dạng. Có bổ đề ⇒ độ khó +1 bậc.
+        Mỗi bổ đề soạn được <b>lý thuyết + ví dụ</b> (bóc từ ảnh/PDF; chấm <span className="text-emerald-600">●</span> = đã có).
       </p>
 
       <div className="grid items-start gap-4 lg:grid-cols-[1fr_380px]">
@@ -167,6 +172,7 @@ function MBoDe({ L, khoi, reload }: { L: Luoi; khoi: string; reload: () => Promi
           {L.boDe.filter((x) => !q.trim() || x.ten.toLowerCase().includes(q.toLowerCase())).map((x) => (
             <button key={x.id} onClick={() => setChon(x.id)}
               className={`flex w-full items-center gap-2 rounded-lg px-2 py-1.5 text-left transition ${chon === x.id ? 'bg-amber-50' : 'hover:bg-slate-50'}`}>
+              <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${coLt(ltMap, x.id) ? 'bg-emerald-500' : 'bg-slate-200'}`} title={coLt(ltMap, x.id) ? 'đã có lý thuyết' : 'chưa có lý thuyết'} />
               <Tag ton="bd">◦ {x.ten}</Tag>
               <span className="flex-1" />
               <Ma>{theo.get(x.id)?.length ?? 0} bài toán</Ma>
@@ -188,6 +194,20 @@ function MBoDe({ L, khoi, reload }: { L: Luoi; khoi: string; reload: () => Promi
                 </div>
               </div>
               <Sol className="mb-3">{b.phat_bieu}</Sol>
+
+              {/* Lý thuyết + ví dụ của bổ đề — tái dùng NGUYÊN editor lý thuyết của Đại (bóc ảnh/PDF). */}
+              <div className="mb-3 rounded-lg border border-violet-200 bg-violet-50/50 px-2.5 py-2">
+                <div className="flex items-center gap-2">
+                  <span className="text-[11px] font-semibold uppercase tracking-wide text-violet-700">Lý thuyết / ví dụ</span>
+                  <Btn className="ml-auto h-6 px-2 text-[11px]" onClick={() => setLtModal({ id: b.id, ten: b.ten })}>
+                    {coLt(ltMap, b.id) ? '✎ Sửa' : '＋ Soạn'}
+                  </Btn>
+                </div>
+                {coLt(ltMap, b.id)
+                  ? <div className="mt-1.5 max-h-40 overflow-y-auto text-[12px] leading-relaxed text-slate-700"><MathText>{ltMap[b.id]?.noi_dung ?? ''}</MathText></div>
+                  : <div className="mt-1 text-[11.5px] text-slate-400">Chưa có — bấm Soạn (gõ tay hoặc dán ảnh/PDF → AI bóc LaTeX).</div>}
+              </div>
+
               <DsBaiToan L={L} ds={theo.get(b.id) ?? []} />
               <div className="mt-3 rounded-lg border border-amber-300 bg-amber-50 px-2.5 py-2 text-[11.5px] leading-relaxed text-amber-800">
                 <b>Cổng đọc theo bậc:</b> mô hình đọc được luôn → dạng đọc khi mô hình đã sạch →
@@ -199,6 +219,10 @@ function MBoDe({ L, khoi, reload }: { L: Luoi; khoi: string; reload: () => Promi
       </div>
 
       {form && <FormBoDe L={L} khoi={khoi} id={form.id} onClose={() => setForm(null)} onDone={reload} />}
+      {ltModal && (
+        <LyThuyetModal ma={ltModal.id} ten={ltModal.ten} current={ltMap[ltModal.id] as any} api={api.hinhBoDeLyThuyet as any}
+          onClose={() => setLtModal(null)} onSaved={() => { setLtModal(null); napLt() }} />
+      )}
     </>
   )
 }

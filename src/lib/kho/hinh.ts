@@ -807,3 +807,26 @@ export const hinhDangLyThuyet = {
     if (error) throw error
   },
 }
+
+// ══════════════════ LÝ THUYẾT + VÍ DỤ của BỔ ĐỀ (tái dùng LyThuyetModal của Đại) ══════════════════
+// Bổ đề là cấu trúc TO: có lý thuyết + ví dụ đàng hoàng. Cùng shape LyThuyetApi như hinh_dang_ly_thuyet,
+// khoá theo hinh_bo_de.id. `ten`/`phat_bieu` ở hinh_bo_de = tiêu đề + phát biểu cô đọng; `noi_dung` đây
+// = lý thuyết + ví dụ đầy đủ (bóc được từ ảnh/PDF).
+export const hinhBoDeLyThuyet = {
+  async list(): Promise<Record<string, { noi_dung: string; file_url: string | null; ten_file: string | null; cap_nhat_at?: string }>> {
+    const { data, error } = await supabase.from('hinh_bo_de_ly_thuyet').select('*').limit(LIMIT)
+    if (error) throw error
+    const m: Record<string, { noi_dung: string; file_url: string | null; ten_file: string | null; cap_nhat_at?: string }> = {}
+    for (const r of (data ?? []) as any[]) m[r.bo_de_id] = { noi_dung: r.noi_dung ?? '', file_url: r.file_url, ten_file: r.ten_file, cap_nhat_at: r.cap_nhat_at }
+    return m
+  },
+  async upsert(boDeId: string, noiDung: string, fileUrl: string | null, tenFile: string | null): Promise<void> {
+    const { error } = await supabase.from('hinh_bo_de_ly_thuyet')
+      .upsert({ bo_de_id: boDeId, noi_dung: noiDung, file_url: fileUrl, ten_file: tenFile, cap_nhat_at: new Date().toISOString() }, { onConflict: 'bo_de_id' })
+    if (error) throw error
+  },
+  async remove(boDeId: string): Promise<void> {
+    const { error } = await supabase.from('hinh_bo_de_ly_thuyet').delete().eq('bo_de_id', boDeId)
+    if (error) throw error
+  },
+}
