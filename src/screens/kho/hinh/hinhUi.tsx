@@ -48,13 +48,13 @@ export const Chip = ({ children }: { children: ReactNode }) => (
 
 /** Card con của MỘT trường thông tin — nền màu nhạt (khác nền trắng của card cha), bo tròn, có nhãn.
  *  Thay kiểu "chữ đậm/nhạt trôi nổi" bằng khối gọn, canh lề nhất quán. */
-export function FieldCard({ label, children, ton = 'mh', className = '' }: { label?: string; children: ReactNode; ton?: 'mh' | 'bt' | 'dg' | 'slate'; className?: string }) {
+export function FieldCard({ label, children, ton = 'mh', className = '', big = false }: { label?: string; children: ReactNode; ton?: 'mh' | 'bt' | 'dg' | 'slate'; className?: string; big?: boolean }) {
   const tone = ton === 'mh' ? 'bg-teal-50 text-slate-700' : ton === 'bt' ? 'bg-blue-50 text-slate-700' : ton === 'dg' ? 'bg-violet-50 text-slate-700' : 'bg-slate-50 text-slate-700'
   const lblc = ton === 'mh' ? 'text-teal-700' : ton === 'bt' ? 'text-blue-700' : ton === 'dg' ? 'text-violet-700' : 'text-slate-500'
   return (
     <div className={`rounded-lg px-2.5 py-1.5 ${tone} ${className}`}>
-      {label && <div className={`mb-0.5 text-[9.5px] font-semibold uppercase tracking-wide ${lblc}`}>{label}</div>}
-      <div className="text-[12.5px] leading-relaxed">{children}</div>
+      {label && <div className={`mb-0.5 ${big ? 'text-[11.5px]' : 'text-[9.5px]'} font-semibold uppercase tracking-wide ${lblc}`}>{label}</div>}
+      <div className={`${big ? 'text-[15px]' : 'text-[12.5px]'} leading-relaxed`}>{children}</div>
     </div>
   )
 }
@@ -68,9 +68,9 @@ export function Panel({ label, children, className = '' }: { label?: string; chi
   )
 }
 
-export function KV({ k, children }: { k: string; children: ReactNode }) {
+export function KV({ k, children, big = false }: { k: string; children: ReactNode; big?: boolean }) {
   return (
-    <div className="mb-1.5 flex gap-2 text-[12.5px]">
+    <div className={`mb-1.5 flex gap-2 ${big ? 'text-[14px]' : 'text-[12.5px]'}`}>
       <span className="w-[76px] shrink-0 text-slate-400">{k}</span>
       <span className="min-w-0 flex-1">{children}</span>
     </div>
@@ -78,10 +78,11 @@ export function KV({ k, children }: { k: string; children: ReactNode }) {
 }
 
 /** Khối văn bản toán (đề chuẩn / lời giải) — render LaTeX qua MathText dùng chung. */
-export function Sol({ children, className = '' }: { children: string | null | undefined; className?: string }) {
-  if (!children) return <div className="rounded-lg border border-slate-200 bg-slate-50/60 p-2.5 text-[12.5px] italic text-slate-400">— chưa có —</div>
+export function Sol({ children, className = '', big = false }: { children: string | null | undefined; className?: string; big?: boolean }) {
+  const sz = big ? 'text-[15px]' : 'text-[12.5px]'
+  if (!children) return <div className={`rounded-lg border border-slate-200 bg-slate-50/60 p-2.5 ${sz} italic text-slate-400`}>— chưa có —</div>
   return (
-    <div className={`rounded-lg border border-slate-200 bg-slate-50/40 p-2.5 text-[12.5px] leading-relaxed text-slate-700 ${className}`}>
+    <div className={`rounded-lg border border-slate-200 bg-slate-50/40 p-2.5 ${sz} leading-relaxed text-slate-700 ${className}`}>
       <MathText>{children}</MathText>
     </div>
   )
