@@ -169,6 +169,14 @@ export function anhCauHinhCua(L: Luoi, moHinhId: string): string | null {
   }
   return null
 }
+/** ⭐ Hình HIỆN DÙNG của một BÀI TOÁN con = hình RIÊNG của nó (`anh_chuan`) nếu có, KHÔNG thì mượn hình
+ *  cấu hình của mô hình. (Thùy: cùng mô hình KHÔNG có nghĩa hình vẽ giống hệt — node được đặt hình riêng;
+ *  mặc định `anh_chuan` null = dùng chung hình mô hình.) */
+export function anhCuaBaiToan(L: Luoi, baiToanId: string): string | null {
+  const bt = L.baiToan.find((b) => b.id === baiToanId)
+  if (!bt) return null
+  return bt.anh_chuan ?? anhCauHinhCua(L, bt.mo_hinh_id)
+}
 /** "Bài toán phía trước" — gợi ý làm TIỀN ĐỀ CHÍNH khi tạo node mới trong một mô hình: node cấp cao
  *  nhất đã có trong mô hình đó (hoặc tổ tiên gần nhất có node). */
 export function nodeTruoc(L: Luoi, moHinhId: string): BaiToan | null {
@@ -178,11 +186,12 @@ export function nodeTruoc(L: Luoi, moHinhId: string): BaiToan | null {
   }
   return null
 }
-/** Đề bài chuẩn của một node = giả thiết đầy đủ của mô hình (mượn) + câu hỏi (`phat_bieu`) + hình mô hình. KHÔNG lưu. */
+/** Đề bài chuẩn của một node = giả thiết đầy đủ của mô hình (mượn) + câu hỏi (`phat_bieu`) + hình của node
+ *  (riêng nếu có, mặc định mượn của mô hình). KHÔNG lưu. */
 export function deBaiChuanCua(L: Luoi, baiToanId: string): { giaThiet: string; cauHoi: string; anh: string | null } {
   const bt = L.baiToan.find((b) => b.id === baiToanId)
   if (!bt) return { giaThiet: '', cauHoi: '', anh: null }
-  return { giaThiet: giaThietDayDu(L, bt.mo_hinh_id), cauHoi: bt.phat_bieu, anh: anhCauHinhCua(L, bt.mo_hinh_id) }
+  return { giaThiet: giaThietDayDu(L, bt.mo_hinh_id), cauHoi: bt.phat_bieu, anh: anhCuaBaiToan(L, bt.id) }
 }
 
 /** Gốc họ của một mô hình: truy lên tới `la_goc_ho`. Không thấy → chính nó (họ 1 node). */
@@ -611,7 +620,7 @@ export function dapAnHaiBac(L: Luoi, y: Y): { bac: 'chuan_xac' | 'tham_chieu' | 
   const c = cachMacDinh(L, bt.id)
   // Hình tham chiếu: ảnh lời giải của cách → thiếu thì hình cấu hình của MÔ HÌNH (node không có hình riêng).
   // Đề chuẩn = giả thiết đầy đủ của mô hình + câu hỏi (derive), không đọc cột de_bai_chuan cũ nữa.
-  return { bac: 'tham_chieu', loiGiai: c?.loi_giai ?? null, anh: c?.anh_loi_giai ?? anhCauHinhCua(L, bt.mo_hinh_id), deBaiChuan: bt.phat_bieu }
+  return { bac: 'tham_chieu', loiGiai: c?.loi_giai ?? null, anh: c?.anh_loi_giai ?? anhCuaBaiToan(L, bt.id), deBaiChuan: bt.phat_bieu }
 }
 
 // ══════════════════ M9 ÔN TẬP — rút từ BÀI THẬT theo DẠNG ══════════════════

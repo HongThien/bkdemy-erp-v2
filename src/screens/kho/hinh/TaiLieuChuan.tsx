@@ -150,7 +150,7 @@ function banInChuan(L: Luoi, nodeIds: string[], nodeCoY: Set<string>, soBai: num
           nhan: trongDe ? String.fromCharCode(97 + i++) : '',
           noiDung: `Chứng minh ${n.phat_bieu}`,
           loiGiai: cach?.loi_giai,
-          anh: cach?.anh_loi_giai ?? api.anhCauHinhCua(L, n.mo_hinh_id),
+          anh: cach?.anh_loi_giai ?? api.anhCuaBaiToan(L, n.id),
           ghiChu: trongDe ? null : 'không có trong đề',
           ma: n.ma, cap: n.cap,
         }

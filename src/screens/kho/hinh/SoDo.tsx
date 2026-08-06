@@ -171,11 +171,11 @@ function ViewBaiToan({ L, ho, nodes, chon, setChon, onSua }: {
                         className={`absolute flex flex-col gap-1 overflow-hidden rounded-lg border bg-white p-2 text-left leading-tight transition ${
                           khac ? 'border-teal-300 bg-teal-50/40' : 'border-blue-300'
                         } ${chon === n.id ? 'shadow-md ring-2 ring-blue-400/40' : 'hover:shadow-sm'}`}>
-                        {/* ĐỀ = giả thiết mô hình (mượn) + hình mô hình. Câu hỏi = phat_bieu. Cả hai hiện thẳng trên card. */}
+                        {/* ĐỀ = giả thiết mô hình (mượn) + hình của node (riêng nếu có, mặc định mượn mô hình). Câu hỏi = phat_bieu. */}
                         <div className="flex gap-2">
                           <div className="h-[42px] w-[42px] shrink-0 overflow-hidden rounded border border-slate-100 bg-slate-50">
-                            {api.anhCauHinhCua(L, n.mo_hinh_id)
-                              ? <img src={api.anhCauHinhCua(L, n.mo_hinh_id)!} alt="" className="h-full w-full object-contain" />
+                            {api.anhCuaBaiToan(L, n.id)
+                              ? <img src={api.anhCuaBaiToan(L, n.id)!} alt="" className="h-full w-full object-contain" />
                               : <div className="flex h-full items-center justify-center text-center text-[8.5px] text-slate-300">chưa<br />có hình</div>}
                           </div>
                           <div className="line-clamp-3 min-w-0 flex-1 text-[10px] text-teal-700"><MathText>{api.giaThietDayDu(L, n.mo_hinh_id)}</MathText></div>
@@ -268,7 +268,7 @@ function DetailBaiToan({ L, bt, onSua, onChon }: { L: Luoi; bt: BaiToan; onSua: 
 
       <p className="mb-1.5 mt-3 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Đáp án đầy đủ</p>
       <Sol>{cachMd?.loi_giai}</Sol>
-      <div className="mt-2"><Fig src={cachMd?.anh_loi_giai ?? api.anhCauHinhCua(L, bt.mo_hinh_id)} cap={cachMd?.anh_loi_giai ? 'Hình lời giải' : 'Hình cấu hình (của mô hình)'} /></div>
+      <div className="mt-2"><Fig src={cachMd?.anh_loi_giai ?? api.anhCuaBaiToan(L, bt.id)} cap={cachMd?.anh_loi_giai ? 'Hình lời giải' : bt.anh_chuan ? 'Hình riêng của bài toán' : 'Hình cấu hình (mượn của mô hình)'} /></div>
 
       <p className="mb-1.5 mt-3 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Ý thực tế đang trỏ tới node · {ys.length}</p>
       {ys.length

@@ -33,6 +33,10 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
   const [dangId, setDangId] = useState(cachCu?.dang_id ?? '')
   const [loiGiai, setLoiGiai] = useState(cachCu?.loi_giai ?? '')
   const [anhGiai, setAnhGiai] = useState<string | null>(cachCu?.anh_loi_giai ?? null)
+  // Hình: mặc định mượn của mô hình. Node bật "hình riêng" → tự vẽ (anh_chuan). Cùng mô hình không có
+  // nghĩa hình giống hệt. anh_chuan null = dùng chung hình mô hình.
+  const [dungHinhRieng, setDungHinhRieng] = useState<boolean>(!!sua?.anh_chuan)
+  const [anhRieng, setAnhRieng] = useState<string | null>(sua?.anh_chuan ?? null)
   // Tiền đề: khi TẠO node, mặc định gắn "bài toán phía trước" (node cấp cao nhất đã có trong mô hình)
   // làm tiền đề CHÍNH. Người thêm/bớt tự do sau.
   const [tienDe, setTienDe] = useState<string[]>(() => {
@@ -73,10 +77,12 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
   const luu = async () => {
     setSaving(true); setLoi(null)
     try {
-      // KHÔNG ghi de_bai_chuan/anh_chuan — bài toán mượn giả thiết + hình của mô hình.
+      // Giả thiết luôn mượn của mô hình (de_bai_chuan = null). Hình: mặc định mượn mô hình; bật "hình riêng"
+      // thì ghi anh_chuan của node (bỏ trống vẫn = null = mượn mô hình).
+      const anhChuan = dungHinhRieng ? (anhRieng || null) : null
       let btId = sua?.id
-      if (sua) await api.updateBaiToan(sua.id, { phat_bieu: phatBieu, mo_hinh_id: moHinhId, cap, de_bai_chuan: null, anh_chuan: null })
-      else btId = (await api.createBaiToan({ phat_bieu: phatBieu, mo_hinh_id: moHinhId, cap, de_bai_chuan: null, anh_chuan: null })).id
+      if (sua) await api.updateBaiToan(sua.id, { phat_bieu: phatBieu, mo_hinh_id: moHinhId, cap, de_bai_chuan: null, anh_chuan: anhChuan })
+      else btId = (await api.createBaiToan({ phat_bieu: phatBieu, mo_hinh_id: moHinhId, cap, de_bai_chuan: null, anh_chuan: anhChuan })).id
       if (dangId) {
         const cachId = cachCu
           ? (await api.updateCachGiai(cachCu.id, { dang_id: dangId, loi_giai: loiGiai || null, anh_loi_giai: anhGiai }), cachCu.id)
@@ -97,7 +103,7 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
         {/* Header */}
         <div className="flex items-center gap-3 border-b border-slate-200 px-5 py-3">
           <h3 className="text-[15px] font-semibold text-slate-900">{sua ? `Sửa bài toán ${sua.ma}` : 'Bài toán mới trong mô hình'}</h3>
-          <span className="text-[12px] text-slate-400">giả thiết + hình mượn của mô hình · chỉ câu hỏi là riêng</span>
+          <span className="text-[12px] text-slate-400">giả thiết mượn của mô hình · câu hỏi riêng · hình mặc định mượn, đặt riêng được</span>
           <button onClick={onClose} className="ml-auto rounded-lg border border-slate-300 px-3 py-1.5 text-[13px] text-slate-600 hover:bg-slate-50">Đóng</button>
         </div>
 
@@ -127,9 +133,24 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
             </div>
 
             <div>
-              <Lbl>Hình vẽ (của mô hình)</Lbl>
-              <Fig src={anhMoHinh} cap={anhMoHinh ? 'Hình cấu hình — mượn của mô hình' : undefined} h="h-52" />
-              <p className="mt-1 text-[11px] text-slate-400">Sửa hình ở form <b>mô hình</b>, không ở đây — mọi bài toán cùng mô hình dùng chung một hình.</p>
+              <div className="mb-1 flex items-center gap-2">
+                <Lbl>Hình vẽ</Lbl>
+                <label className="mb-1 inline-flex cursor-pointer items-center gap-1.5 text-[11px] font-medium text-slate-500">
+                  <input type="checkbox" checked={dungHinhRieng} onChange={(e) => setDungHinhRieng(e.target.checked)} />
+                  Hình riêng cho bài toán này
+                </label>
+              </div>
+              {dungHinhRieng ? (
+                <>
+                  <AnhInput value={anhRieng} onChange={setAnhRieng} cap="Hình riêng của bài toán" />
+                  <p className="mt-1 text-[11px] text-slate-400">Cùng mô hình không có nghĩa hình vẽ giống hệt — bài toán này được vẽ riêng. <b>Bỏ trống = vẫn mượn hình mô hình.</b></p>
+                </>
+              ) : (
+                <>
+                  <Fig src={anhMoHinh} cap={anhMoHinh ? 'Hình cấu hình — mượn của mô hình' : undefined} h="h-52" />
+                  <p className="mt-1 text-[11px] text-slate-400">Mặc định dùng chung hình mô hình (sửa ở form <b>mô hình</b>). Tích ô trên để vẽ hình riêng cho bài toán này.</p>
+                </>
+              )}
             </div>
 
             <div>
