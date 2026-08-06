@@ -22,6 +22,13 @@ export type BaiToan = {
   mo_hinh_id: string; cap: number
   de_bai_chuan: string | null; anh_chuan: string | null; ghi_chu: string | null
 }
+/** Biến thể của một node = cùng bài toán, ĐỔI SỐ / ĐỔI ĐỈNH. Treo dưới node (không đẻ node mới, không
+ *  phân mảnh mastery). Đề + hình + đáp án riêng, soạn tay. Cùng KP/logic với node gốc. */
+export type BienThe = {
+  id: string; baitoan_id: string; mon: string; kieu: 'doi_so' | 'doi_dinh' | 'ca_hai'
+  de_bai: string; anh: string | null; loi_giai: string | null; anh_loi_giai: string | null
+  ghi_chu: string | null; thu_tu: number
+}
 export type CachGiai = {
   id: string; baitoan_id: string; ten: string | null; dang_id: string
   loi_giai: string | null; anh_loi_giai: string | null; la_mac_dinh: boolean; thu_tu: number
@@ -374,6 +381,27 @@ export async function deleteBaiToan(id: string): Promise<void> {
   const { error } = await supabase.from('hinh_baitoan').delete().eq('id', id)
   if (error) throw error
 }
+// ── Biến thể của node (đổi số / đổi đỉnh) — soạn tay, load on-demand ở detail ──
+export async function listBienThe(baiToanId: string): Promise<BienThe[]> {
+  const { data, error } = await supabase.from('hinh_baitoan_bien_the')
+    .select('*').eq('baitoan_id', baiToanId).order('thu_tu').order('created_at').limit(LIMIT)
+  if (error) throw error
+  return (data ?? []) as BienThe[]
+}
+export async function createBienThe(input: Partial<Omit<BienThe, 'id' | 'mon'>> & { baitoan_id: string }): Promise<BienThe> {
+  const { data, error } = await supabase.from('hinh_baitoan_bien_the').insert(input).select('*').single()
+  if (error) throw error
+  return data as BienThe
+}
+export async function updateBienThe(id: string, patch: Partial<Omit<BienThe, 'id' | 'baitoan_id' | 'mon'>>): Promise<void> {
+  const { error } = await supabase.from('hinh_baitoan_bien_the').update({ ...patch, updated_at: new Date().toISOString() }).eq('id', id)
+  if (error) throw error
+}
+export async function deleteBienThe(id: string): Promise<void> {
+  const { error } = await supabase.from('hinh_baitoan_bien_the').delete().eq('id', id)
+  if (error) throw error
+}
+
 /** Search-before-create (§2 luật 7): tìm node gần giống theo phát biểu. NHẮC, không chặn. */
 export async function searchBaiToan(q: string, moHinhIds?: string[]): Promise<BaiToan[]> {
   if (!q.trim()) return []

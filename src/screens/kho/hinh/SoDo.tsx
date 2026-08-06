@@ -7,12 +7,12 @@
 //
 // Vì sao phải hai view: xếp cha–con giữa các BÀI là sai (10 bài hỏi 10 phương diện của
 // cùng một cấu hình thì không có quan hệ cha–con) — chính chỗ đó đẻ ra khái niệm mô hình.
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState, type ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 import * as api from '../../../lib/kho/api'
-import type { BaiToan, Luoi, MoHinh, Y, Bai } from '../../../lib/kho/hinh'
+import type { BaiToan, BienThe, Luoi, MoHinh, Y, Bai } from '../../../lib/kho/hinh'
 import { MathText } from '../ui'
-import { Btn, Cap, Chip, Empty, Fig, FieldCard, KV, Ma, MaPill, Panel, Seg, Sol, Tag, tron } from './hinhUi'
+import { AnhInput, Btn, Cap, Chip, Empty, Fig, FieldCard, KV, Ma, MaPill, OcrButton, Panel, Seg, Sol, Tag, inpCls, tron } from './hinhUi'
 import { FormMoHinh } from './Ho'
 import FormBaiToan from './FormBaiToan'
 import type { Nhay } from './KhoHinhScreen'
@@ -200,6 +200,11 @@ function ViewBaiToan({ L, ho, nodes, chon, setChon, onSua }: {
   )
 }
 
+const KIEU_BT: Record<BienThe['kieu'], string> = { doi_so: 'Đổi số', doi_dinh: 'Đổi đỉnh', ca_hai: 'Đổi số + đỉnh' }
+const Lbl = ({ children }: { children: ReactNode }) => (
+  <div className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-slate-500">{children}</div>
+)
+
 // Bấm một node → POPUP TO (80% màn hình, createPortal thoát zoom §707) hiển thị ĐẦY ĐỦ bài toán:
 // trái = đề (giả thiết mượn) + câu hỏi + hình to · phải = meta + cách giải/tiền đề + đáp án + ý thực tế.
 function DetailBaiToan({ L, bt, onSua, onChon, onClose }: { L: Luoi; bt: BaiToan; onSua: () => void; onChon: (id: string) => void; onClose: () => void }) {
@@ -212,8 +217,13 @@ function DetailBaiToan({ L, bt, onSua, onChon, onClose }: { L: Luoi; bt: BaiToan
   const cachMd = api.cachMacDinh(L, bt.id)
   const [ys, setYs] = useState<{ y: Y; bai: Bai }[]>([])
   useEffect(() => { api.yTheoNode(bt.id).then(setYs).catch(() => setYs([])) }, [bt.id])
+  const [bienThe, setBienThe] = useState<BienThe[]>([])
+  const [formBt, setFormBt] = useState<{ v?: BienThe } | null>(null)
+  const napBt = () => api.listBienThe(bt.id).then(setBienThe).catch(() => setBienThe([]))
+  useEffect(() => { napBt() }, [bt.id])
 
   return createPortal(
+    <>
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-3 sm:p-6" onClick={onClose}>
       <div className="flex h-[80vh] w-[80vw] flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
         {/* Header */}
@@ -286,6 +296,31 @@ function DetailBaiToan({ L, bt, onSua, onChon, onClose }: { L: Luoi; bt: BaiToan
             <Sol big>{cachMd?.loi_giai}</Sol>
             {cachMd?.anh_loi_giai && <div><Fig src={cachMd.anh_loi_giai} cap="Hình lời giải" /></div>}
 
+            {/* ⭐ Biến thể: cùng bài toán, đổi số / đổi đỉnh — treo dưới node, đề+hình+đáp án riêng (soạn tay). */}
+            <div className="mt-1 flex items-center gap-2">
+              <p className="text-[16px] font-semibold uppercase tracking-wide text-slate-400">Biến thể · {bienThe.length}</p>
+              <Btn className="ml-auto h-7 px-2 text-[13px]" onClick={() => setFormBt({})}>＋ Thêm biến thể</Btn>
+            </div>
+            <p className="text-[13px] leading-snug text-slate-400">Cùng bài toán, <b>đổi số / đổi đỉnh</b> — đề + hình + đáp án riêng. Cùng KP với node gốc (không đẻ node mới). Hình phải tự vẽ.</p>
+            {bienThe.length === 0
+              ? <div className="text-[15px] text-slate-400">— chưa có biến thể —</div>
+              : bienThe.map((v) => (
+                <div key={v.id} className="rounded-lg border border-indigo-200 bg-indigo-50/30 p-2">
+                  <div className="mb-1 flex items-center gap-1.5">
+                    <span className="rounded-full bg-indigo-100 px-2 py-px text-[13px] font-medium text-indigo-700">{KIEU_BT[v.kieu]}</span>
+                    <span className="flex-1" />
+                    <Btn className="h-6 px-1.5 text-[13px]" onClick={() => setFormBt({ v })}>✎</Btn>
+                    <Btn className="h-6 px-1.5 text-[13px]" onClick={async () => {
+                      if (!confirm('Xoá biến thể này?')) return
+                      try { await api.deleteBienThe(v.id); await napBt() } catch (e: any) { alert(e.message) }
+                    }}>🗑</Btn>
+                  </div>
+                  {v.de_bai && <div className="text-[15px] leading-relaxed text-slate-700"><MathText>{v.de_bai}</MathText></div>}
+                  {v.anh && <img src={v.anh} alt="" className="mt-1 max-h-44 rounded border border-slate-100 bg-white object-contain" />}
+                  {v.loi_giai && <div className="mt-1 rounded bg-white/70 p-1.5 text-[14px] leading-relaxed text-slate-600"><MathText>{v.loi_giai}</MathText></div>}
+                </div>
+              ))}
+
             <p className="mt-1 text-[16px] font-semibold uppercase tracking-wide text-slate-400">Ý thực tế đang trỏ tới node · {ys.length}</p>
             {ys.length
               ? ys.slice(0, 8).map(({ y, bai }) => (
@@ -295,6 +330,76 @@ function DetailBaiToan({ L, bt, onSua, onChon, onClose }: { L: Luoi; bt: BaiToan
                 </div>
               ))
               : <div className="text-[16px] text-slate-400">— chưa bài thật nào dùng node này —</div>}
+          </div>
+        </div>
+      </div>
+    </div>
+    {formBt && <FormBienThe baiToanId={bt.id} v={formBt.v} onClose={() => setFormBt(null)} onDone={async () => { setFormBt(null); await napBt() }} />}
+    </>,
+    document.body,
+  )
+}
+
+// Form biến thể (đổi số / đổi đỉnh) — modal riêng, z cao hơn popup detail. Soạn tay: đề + hình + đáp án.
+function FormBienThe({ baiToanId, v, onClose, onDone }: { baiToanId: string; v?: BienThe; onClose: () => void; onDone: () => Promise<void> }) {
+  const [kieu, setKieu] = useState<BienThe['kieu']>(v?.kieu ?? 'doi_so')
+  const [deBai, setDeBai] = useState(v?.de_bai ?? '')
+  const [anh, setAnh] = useState<string | null>(v?.anh ?? null)
+  const [loiGiai, setLoiGiai] = useState(v?.loi_giai ?? '')
+  const [anhGiai, setAnhGiai] = useState<string | null>(v?.anh_loi_giai ?? null)
+  const [saving, setSaving] = useState(false)
+  const [loi, setLoi] = useState<string | null>(null)
+  const luu = async () => {
+    setSaving(true); setLoi(null)
+    try {
+      const payload = { kieu, de_bai: deBai, anh, loi_giai: loiGiai || null, anh_loi_giai: anhGiai }
+      if (v) await api.updateBienThe(v.id, payload)
+      else await api.createBienThe({ baitoan_id: baiToanId, ...payload })
+      await onDone()
+    } catch (e: any) { setLoi(e.message ?? String(e)); setSaving(false) }
+  }
+  return createPortal(
+    <div className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-900/50 p-3 sm:p-6" onClick={onClose}>
+      <div className="flex max-h-[88vh] w-[92vw] max-w-2xl flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <div className="flex items-center gap-3 border-b border-slate-200 px-5 py-3">
+          <h3 className="text-[15px] font-semibold text-slate-900">{v ? 'Sửa biến thể' : 'Thêm biến thể'}</h3>
+          <span className="text-[12px] text-slate-400">cùng bài toán, đổi số / đổi đỉnh</span>
+          <button onClick={onClose} className="ml-auto rounded-lg border border-slate-300 px-3 py-1.5 text-[13px] text-slate-600 hover:bg-slate-50">Đóng</button>
+        </div>
+        <div className="min-h-0 flex-1 space-y-3 overflow-y-auto p-5">
+          <div>
+            <Lbl>Kiểu biến thể</Lbl>
+            <div className="flex gap-2">
+              {(['doi_so', 'doi_dinh', 'ca_hai'] as const).map((k) => (
+                <button key={k} type="button" onClick={() => setKieu(k)}
+                  className={`rounded-lg border px-3 py-1.5 text-[13px] font-medium transition ${kieu === k ? 'border-indigo-400 bg-indigo-50 text-indigo-700' : 'border-slate-200 bg-white text-slate-500 hover:bg-slate-50'}`}>{KIEU_BT[k]}</button>
+              ))}
+            </div>
+          </div>
+          <div>
+            <Lbl>Đề — giả thiết + câu hỏi (đã đổi số/đỉnh · text + LaTeX $…$)</Lbl>
+            <textarea className={`${inpCls} h-24`} value={deBai} onChange={(e) => setDeBai(e.target.value)} placeholder="$\triangle MNP$ nhọn, ba đường cao $MD, NE, PF$ cắt nhau tại $K$. Chứng minh…" />
+            <div className="mt-1.5"><OcrButton onText={setDeBai} /></div>
+          </div>
+          <div>
+            <Lbl>Hình của biến thể — tự vẽ/upload (AI không vẽ lại hình hình học được)</Lbl>
+            <AnhInput value={anh} onChange={setAnh} cap="Hình biến thể" />
+          </div>
+          <div>
+            <Lbl>Lời giải (tuỳ chọn)</Lbl>
+            <textarea className={`${inpCls} h-20`} value={loiGiai} onChange={(e) => setLoiGiai(e.target.value)} />
+            <div className="mt-1.5"><OcrButton onText={setLoiGiai} /></div>
+          </div>
+          <div>
+            <Lbl>Ảnh lời giải (tuỳ chọn)</Lbl>
+            <AnhInput value={anhGiai} onChange={setAnhGiai} cap="Hình lời giải" />
+          </div>
+          {loi && <div className="rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[12.5px] text-rose-700">{loi}</div>}
+        </div>
+        <div className="flex items-center gap-3 border-t border-slate-200 px-5 py-3">
+          <div className="ml-auto flex gap-2">
+            <button onClick={onClose} className="rounded-lg px-3 py-2 text-[13px] text-slate-500 hover:bg-slate-100">Huỷ</button>
+            <Btn kind="pri" disabled={!deBai.trim() || saving} onClick={luu}>{saving ? 'Đang lưu…' : v ? 'Lưu' : 'Thêm biến thể'}</Btn>
           </div>
         </div>
       </div>

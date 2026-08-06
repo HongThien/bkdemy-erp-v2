@@ -2,7 +2,7 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-114 bảng · 0 enum · 10 trigger · 31 function
+115 bảng · 0 enum · 10 trigger · 31 function
 
 ## bai_lam
 
@@ -642,6 +642,23 @@
 | de_bai_chuan | text | Y |  |  |  |
 | anh_chuan | text | Y |  |  |  |
 | ghi_chu | text | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
+## hinh_baitoan_bien_the
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| baitoan_id | uuid |  |  | FK→hinh_baitoan.id |  |
+| mon | text |  | 'Toán'::text |  |  |
+| kieu | text |  | 'doi_so'::text |  | `doi_so` · `doi_dinh` · `ca_hai` |
+| de_bai | text |  | ''::text |  |  |
+| anh | text | Y |  |  |  |
+| loi_giai | text | Y |  |  |  |
+| anh_loi_giai | text | Y |  |  |  |
+| ghi_chu | text | Y |  |  |  |
+| thu_tu | integer |  | 0 |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
 
