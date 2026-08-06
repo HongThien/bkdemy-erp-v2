@@ -8,6 +8,7 @@
 // Vì sao phải hai view: xếp cha–con giữa các BÀI là sai (10 bài hỏi 10 phương diện của
 // cùng một cấu hình thì không có quan hệ cha–con) — chính chỗ đó đẻ ra khái niệm mô hình.
 import { useEffect, useMemo, useState } from 'react'
+import { createPortal } from 'react-dom'
 import * as api from '../../../lib/kho/api'
 import type { BaiToan, Luoi, MoHinh, Y, Bai } from '../../../lib/kho/hinh'
 import { MathText } from '../ui'
@@ -128,8 +129,7 @@ function ViewBaiToan({ L, ho, nodes, chon, setChon, onSua }: {
         <span className="text-teal-700">viền teal</span> ngay trong cùng cột — cấp là <b>toàn cục</b>, không reset theo mô hình.
         Mốc so sánh là <b>{L.moHinh.find((m) => m.id === mocGoc)?.ten}</b> (mô hình nông nhất có bài toán).
       </p>
-      <div className="grid items-start gap-4 lg:grid-cols-[1fr_330px]">
-        <div className="min-w-0 overflow-x-auto rounded-xl border border-slate-200 bg-white p-3.5">
+      <div className="min-w-0 overflow-x-auto rounded-xl border border-slate-200 bg-white p-3.5">
           {!nodes.length
             ? <Empty icon="◈">Họ này chưa có bài toán nhỏ nào. Bấm <b>＋ Node</b> — lưới trước, gán sau.</Empty>
             : (
@@ -194,14 +194,14 @@ function ViewBaiToan({ L, ho, nodes, chon, setChon, onSua }: {
             )}
         </div>
 
-        {bt ? <DetailBaiToan L={L} bt={bt} onSua={() => onSua(bt)} onChon={setChon} />
-          : <Panel label="Detail — node đang chọn"><div className="py-6 text-center text-[12.5px] text-slate-400">Bấm một node để xem chi tiết.</div></Panel>}
-      </div>
+      {bt && <DetailBaiToan L={L} bt={bt} onSua={() => onSua(bt)} onChon={setChon} onClose={() => setChon(null)} />}
     </>
   )
 }
 
-function DetailBaiToan({ L, bt, onSua, onChon }: { L: Luoi; bt: BaiToan; onSua: () => void; onChon: (id: string) => void }) {
+// Bấm một node → POPUP TO (80% màn hình, createPortal thoát zoom §707) hiển thị ĐẦY ĐỦ bài toán:
+// trái = đề (giả thiết mượn) + câu hỏi + hình to · phải = meta + cách giải/tiền đề + đáp án + ý thực tế.
+function DetailBaiToan({ L, bt, onSua, onChon, onClose }: { L: Luoi; bt: BaiToan; onSua: () => void; onChon: (id: string) => void; onClose: () => void }) {
   const maCap = useMemo(() => api.maPhanCapMap(L), [L])
   const mh = L.moHinh.find((m) => m.id === bt.mo_hinh_id)
   const cachs = api.cachCua(L, bt.id)
@@ -212,74 +212,93 @@ function DetailBaiToan({ L, bt, onSua, onChon }: { L: Luoi; bt: BaiToan; onSua: 
   const [ys, setYs] = useState<{ y: Y; bai: Bai }[]>([])
   useEffect(() => { api.yTheoNode(bt.id).then(setYs).catch(() => setYs([])) }, [bt.id])
 
-  return (
-    <Panel label="Detail — node đang chọn">
-      <div className="mb-2 flex items-start justify-between gap-2">
-        <div className="text-[13.5px] font-semibold text-slate-900"><MathText>{bt.phat_bieu}</MathText></div>
-        <Btn onClick={onSua} className="h-7 shrink-0 px-2">✎</Btn>
+  return createPortal(
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-3 sm:p-6" onClick={onClose}>
+      <div className="flex h-[80vh] w-[80vw] flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        {/* Header */}
+        <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 px-5 py-3">
+          <span className="text-[14px] font-semibold text-slate-900">Bài toán</span>
+          <Ma>{bt.ma}</Ma>
+          <span className="rounded-md bg-slate-100 px-1.5 py-px text-[11.5px] font-medium text-slate-600">cấp {bt.cap}{mucDo ? ` · độ khó ${mucDo}` : ''}</span>
+          {mh && <Tag ton="mh">◇ {maCap.get(mh.id) ?? mh.ma} · {tron(mh.ten)}</Tag>}
+          {cachMd && <Tag ton="dg">{api.tenDangDayDu(L, cachMd.dang_id)}</Tag>}
+          <Btn onClick={onSua} className="ml-auto h-8 px-2.5">✎ Sửa</Btn>
+          <button onClick={onClose} className="rounded-lg border border-slate-300 px-3 py-1.5 text-[13px] text-slate-600 hover:bg-slate-50">Đóng</button>
+        </div>
+
+        {/* Thân — 2 cột */}
+        <div className="grid min-h-0 flex-1 gap-0 overflow-hidden lg:grid-cols-2">
+          {/* ── TRÁI: đề + câu hỏi + hình ── */}
+          <div className="min-w-0 space-y-2.5 overflow-y-auto border-r border-slate-100 p-5">
+            {/* ĐỀ + CÂU HỎI (Thùy): mỗi bài toán = đề (giả thiết MƯỢN của mô hình) + câu hỏi (phat_bieu đã nhập). */}
+            <p className="text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Đề — giả thiết (từ mô hình {mh ? maCap.get(mh.id) : ''})</p>
+            <FieldCard ton="mh"><MathText>{api.giaThietDayDu(L, bt.mo_hinh_id)}</MathText></FieldCard>
+            <p className="text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Câu hỏi</p>
+            <FieldCard ton="bt"><MathText>{`Chứng minh ${bt.phat_bieu}`}</MathText></FieldCard>
+            <p className="text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Hình</p>
+            <Fig src={api.anhCuaBaiToan(L, bt.id)} h="h-80"
+              cap={api.anhCuaBaiToan(L, bt.id) ? (bt.anh_chuan ? 'Hình riêng của bài toán' : 'Hình cấu hình (mượn của mô hình)') : undefined} />
+          </div>
+
+          {/* ── PHẢI: meta + cách giải + đáp án + ý thực tế ── */}
+          <div className="min-w-0 space-y-2.5 overflow-y-auto p-5">
+            <KV k="Cấp gợi ý">
+              {goi}
+              {lech !== 0 && (
+                <span className="ml-1.5 rounded-md bg-amber-100 px-1.5 py-px text-[11px] font-medium text-amber-800"
+                  title="1 + max(cấp tiền đề) theo cách mặc định — chỉ đối chiếu, không ghi đè cấp nhập tay">
+                  ⚠ lệch {lech > 0 ? '+' : ''}{lech}
+                </span>
+              )}
+            </KV>
+
+            {cachs.map((c) => {
+              const td = api.tienDeCuaCach(L, c.id), bd = api.boDeCuaCach(L, c.id)
+              return (
+                <div key={c.id} className="rounded-lg border border-slate-200 p-2">
+                  <div className="mb-1 flex items-center gap-1.5 text-[12px] font-medium text-slate-600">
+                    {c.ten ?? 'cách giải'} {c.la_mac_dinh && <span className="rounded bg-slate-100 px-1.5 text-[10px] text-slate-500">mặc định</span>}
+                  </div>
+                  {/* Tiền đề của MỘT cách = AND: cần CẢ. Vẽ dấu "+" giữa các tiền đề để không đọc nhầm là "một trong số". */}
+                  <div className="flex flex-wrap items-center gap-1">
+                    {td.length > 1 && <span className="mr-0.5 text-[10.5px] font-semibold text-slate-500">cần cả</span>}
+                    {td.map((id, i) => {
+                      const b = L.baiToan.find((x) => x.id === id)
+                      return b ? (
+                        <span key={id} className="flex items-center gap-1">
+                          {i > 0 && <span className="font-bold text-slate-400">+</span>}
+                          <Tag ton="bt" onClick={() => onChon(b.id)}>◈ {b.ma} · c{b.cap}</Tag>
+                        </span>
+                      ) : null
+                    })}
+                    {bd.map((id) => {
+                      const b = L.boDe.find((x) => x.id === id)
+                      return b ? <Tag key={id} ton="bd">◦ {b.ten}</Tag> : null
+                    })}
+                    {!td.length && !bd.length && <span className="text-[11.5px] text-slate-400">chưa nối tiền đề (cổng 2)</span>}
+                  </div>
+                </div>
+              )
+            })}
+
+            <p className="mt-1 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Đáp án đầy đủ</p>
+            <Sol>{cachMd?.loi_giai}</Sol>
+            {cachMd?.anh_loi_giai && <div><Fig src={cachMd.anh_loi_giai} cap="Hình lời giải" /></div>}
+
+            <p className="mt-1 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Ý thực tế đang trỏ tới node · {ys.length}</p>
+            {ys.length
+              ? ys.slice(0, 8).map(({ y, bai }) => (
+                <div key={y.id} className="flex items-center gap-2 py-0.5 text-[12px] text-slate-600">
+                  <Ma>{bai.ma_bai}</Ma>
+                  <span className="truncate">ý {y.nhan_hien_thi ?? y.thu_tu} · {bai.nguon ?? 'chưa rõ nguồn'}</span>
+                </div>
+              ))
+              : <div className="text-[12px] text-slate-400">— chưa bài thật nào dùng node này —</div>}
+          </div>
+        </div>
       </div>
-      <KV k="Mã · cấp"><Ma>{bt.ma}</Ma> · <b>cấp {bt.cap}</b>{mucDo && <span className="ml-1.5 text-slate-400">độ khó {mucDo}</span>}</KV>
-      <KV k="Cấp gợi ý">
-        {goi}
-        {lech !== 0 && (
-          <span className="ml-1.5 rounded-md bg-amber-100 px-1.5 py-px text-[11px] font-medium text-amber-800"
-            title="1 + max(cấp tiền đề) theo cách mặc định — chỉ đối chiếu, không ghi đè cấp nhập tay">
-            ⚠ lệch {lech > 0 ? '+' : ''}{lech}
-          </span>
-        )}
-      </KV>
-      <KV k="Mô hình">{mh && <Tag ton="mh">◇ {maCap.get(mh.id) ?? mh.ma} · {mh.ten}</Tag>}</KV>
-      {cachMd && <KV k="Dạng"><Tag ton="dg">{api.tenDangDayDu(L, cachMd.dang_id)}</Tag></KV>}
-
-      {/* ĐỀ + CÂU HỎI (Thùy): mỗi bài toán = đề (giả thiết MƯỢN của mô hình) + câu hỏi (phat_bieu đã nhập). */}
-      <p className="mb-1 mt-3 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Đề — giả thiết (từ mô hình {mh ? maCap.get(mh.id) : ''})</p>
-      <FieldCard ton="mh"><MathText>{api.giaThietDayDu(L, bt.mo_hinh_id)}</MathText></FieldCard>
-      <p className="mb-1 mt-2.5 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Câu hỏi (đã nhập)</p>
-      <FieldCard ton="bt"><MathText>{`Chứng minh ${bt.phat_bieu}`}</MathText></FieldCard>
-
-      {cachs.map((c) => {
-        const td = api.tienDeCuaCach(L, c.id), bd = api.boDeCuaCach(L, c.id)
-        return (
-          <div key={c.id} className="mb-2 rounded-lg border border-slate-200 p-2">
-            <div className="mb-1 flex items-center gap-1.5 text-[12px] font-medium text-slate-600">
-              {c.ten ?? 'cách giải'} {c.la_mac_dinh && <span className="rounded bg-slate-100 px-1.5 text-[10px] text-slate-500">mặc định</span>}
-            </div>
-            {/* Tiền đề của MỘT cách = AND: cần CẢ. Vẽ dấu "+" giữa các tiền đề để không đọc nhầm là "một trong số". */}
-            <div className="flex flex-wrap items-center gap-1">
-              {td.length > 1 && <span className="mr-0.5 text-[10.5px] font-semibold text-slate-500">cần cả</span>}
-              {td.map((id, i) => {
-                const b = L.baiToan.find((x) => x.id === id)
-                return b ? (
-                  <span key={id} className="flex items-center gap-1">
-                    {i > 0 && <span className="font-bold text-slate-400">+</span>}
-                    <Tag ton="bt" onClick={() => onChon(b.id)}>◈ {b.ma} · c{b.cap}</Tag>
-                  </span>
-                ) : null
-              })}
-              {bd.map((id) => {
-                const b = L.boDe.find((x) => x.id === id)
-                return b ? <Tag key={id} ton="bd">◦ {b.ten}</Tag> : null
-              })}
-              {!td.length && !bd.length && <span className="text-[11.5px] text-slate-400">chưa nối tiền đề (cổng 2)</span>}
-            </div>
-          </div>
-        )
-      })}
-
-      <p className="mb-1.5 mt-3 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Đáp án đầy đủ</p>
-      <Sol>{cachMd?.loi_giai}</Sol>
-      <div className="mt-2"><Fig src={cachMd?.anh_loi_giai ?? api.anhCuaBaiToan(L, bt.id)} cap={cachMd?.anh_loi_giai ? 'Hình lời giải' : bt.anh_chuan ? 'Hình riêng của bài toán' : 'Hình cấu hình (mượn của mô hình)'} /></div>
-
-      <p className="mb-1.5 mt-3 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Ý thực tế đang trỏ tới node · {ys.length}</p>
-      {ys.length
-        ? ys.slice(0, 8).map(({ y, bai }) => (
-          <div key={y.id} className="flex items-center gap-2 py-0.5 text-[12px] text-slate-600">
-            <Ma>{bai.ma_bai}</Ma>
-            <span className="truncate">ý {y.nhan_hien_thi ?? y.thu_tu} · {bai.nguon ?? 'chưa rõ nguồn'}</span>
-          </div>
-        ))
-        : <div className="text-[12px] text-slate-400">— chưa bài thật nào dùng node này —</div>}
-    </Panel>
+    </div>,
+    document.body,
   )
 }
 
