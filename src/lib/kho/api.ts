@@ -1242,6 +1242,31 @@ export async function ocrDeTuAnh(file: { mimeType: string; dataBase64: string })
   return parseLyThuyetJson(raw)
 }
 
+// ── Ingest CẢ BÀI Hình (ảnh/PDF) → tách ĐỀ + LỜI GIẢI ────────────
+// Up nguyên 1 bài rồi AI tách 2 phần, thay vì điền tay từng ô. CHỈ lấy CHỮ; HÌNH bỏ qua (người tự vẽ).
+export const HINH_BAI_SCHEMA = { type: 'OBJECT', properties: { de_bai: { type: 'STRING' }, loi_giai: { type: 'STRING' } }, required: ['de_bai'] }
+export function buildIngestBaiHinhPrompt(): string {
+  return [
+    'Ảnh/PDF dưới là MỘT BÀI TOÁN HÌNH HỌC hoàn chỉnh (gồm ĐỀ, có thể kèm LỜI GIẢI).',
+    'TÁCH thành 2 phần, chép NGUYÊN VĂN phần CHỮ — GIỮ đúng câu chữ, KHÔNG tóm tắt, KHÔNG thêm bớt:',
+    '- "de_bai": toàn bộ ĐỀ (giả thiết + câu hỏi/yêu cầu). Đề nhiều ý (a, b, c) giữ đủ.',
+    '- "loi_giai": toàn bộ LỜI GIẢI / chứng minh nếu có; KHÔNG có thì để "".',
+    'QUY TẮC:',
+    '- Ký hiệu/công thức DÙNG LaTeX trong $...$ — vd $\\triangle ABC$, $\\angle BAC=90^\\circ$, $AB^2=BH\\cdot BC$, $\\perp$, $\\parallel$. Phân số \\\\dfrac.',
+    '- Giữ xuống dòng bằng xuống dòng thật; mỗi ý/bước một dòng.',
+    '- Có HÌNH VẼ thì BỎ QUA (đừng mô tả, đừng vẽ lại) — chỉ lấy CHỮ.',
+    '- Nhiều trang/ảnh: gộp theo đúng thứ tự.',
+    '- Trong JSON: lệnh LaTeX PHẢI double backslash ("\\\\triangle", "\\\\perp", "\\\\cdot", "\\\\dfrac"); CHỈ trả JSON.',
+    'Trả về JSON: { "de_bai": "...", "loi_giai": "..." }',
+  ].join('\n')
+}
+export async function ingestBaiHinh(files: GeminiFile[]): Promise<{ de_bai: string; loi_giai: string }> {
+  const raw = await callGeminiJson(buildIngestBaiHinhPrompt(), { schema: HINH_BAI_SCHEMA, files })
+  let t = raw.trim(); const fence = t.match(/```(?:json)?\s*([\s\S]*?)```/i); if (fence) t = fence[1].trim()
+  const obj = lenientJsonParse(t)
+  return { de_bai: String(obj.de_bai ?? obj.deBai ?? '').trim(), loi_giai: String(obj.loi_giai ?? obj.loiGiai ?? '').trim() }
+}
+
 // ── Lý thuyết đi kèm dạng Đại (1-1) + chuẩn completeness ──────────
 export const CHUAN_SO_CAU = 50 // chuẩn kho: mỗi dạng ≥ 50 câu (sàn SỐ LƯỢNG, chỉnh 1 chỗ)
 // noi_dung = nội dung lý thuyết (text + LaTeX); file_url/ten_file = đính kèm; khong_can = đánh dấu "không cần" (chỉ chuyên đề)

@@ -12,7 +12,7 @@ import { createPortal } from 'react-dom'
 import * as api from '../../../lib/kho/api'
 import type { BaiToan, BienThe, Luoi, MoHinh, Y, Bai } from '../../../lib/kho/hinh'
 import { MathText } from '../ui'
-import { AnhInput, Btn, Cap, Chip, Empty, Fig, FieldCard, KV, Ma, MaPill, OcrButton, Panel, Seg, Sol, Tag, inpCls, tron } from './hinhUi'
+import { AnhInput, Btn, Cap, Chip, Empty, Fig, FieldCard, IngestBaiButton, KV, Ma, MaPill, OcrButton, Panel, Seg, Sol, Tag, inpCls, tron } from './hinhUi'
 import { FormMoHinh } from './Ho'
 import FormBaiToan from './FormBaiToan'
 import type { Nhay } from './KhoHinhScreen'
@@ -405,6 +405,16 @@ function FormBienThe({ baiToanId, v, goc, onClose, onDone }: {
           <button onClick={onClose} className="ml-auto rounded-lg border border-slate-300 px-3 py-1.5 text-[13px] text-slate-600 hover:bg-slate-50">Đóng</button>
         </div>
         <div className="min-h-0 flex-1 space-y-3 overflow-y-auto p-5">
+          {/* Up cả bài (ảnh/PDF) → AI tách ĐỀ + LỜI GIẢI, khỏi điền tay từng ô (như ingest bên Đại). */}
+          <div className="rounded-lg border border-indigo-200 bg-indigo-50/40 p-2.5">
+            <Lbl>Up cả bài → AI tự tách (đỡ điền tay)</Lbl>
+            <IngestBaiButton onResult={({ de_bai, loi_giai }) => {
+              if ((deBai.trim() || loiGiai.trim()) && !confirm('Ghi đè đề + lời giải hiện tại bằng bản AI tách?')) return
+              if (de_bai) setDeBai(de_bai)
+              if (loi_giai) setLoiGiai(loi_giai)
+            }} />
+            <p className="mt-1 text-[11px] leading-snug text-slate-500">AI đọc ảnh/PDF (nhiều trang được) → đổ <b>đề</b> + <b>lời giải</b> vào 2 ô dưới. Chỉ lấy chữ; <b>hình bạn tự upload</b>. Xong nhớ soát lại.</p>
+          </div>
           <div>
             <Lbl>Kiểu biến thể</Lbl>
             <div className="flex gap-2">

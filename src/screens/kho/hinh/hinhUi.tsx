@@ -3,7 +3,7 @@
 // Gu staff: clean/modern nhiều màu, KHÔNG sci-fi.
 import { useState, type ReactNode } from 'react'
 import { MathText, readClipboardImageFile } from '../ui'
-import { uploadKhoImage, ocrDeTuAnh } from '../../../lib/kho/api'
+import { uploadKhoImage, ocrDeTuAnh, ingestBaiHinh } from '../../../lib/kho/api'
 
 export type Ton = 'mh' | 'bt' | 'dg' | 'bd' | 'gh'
 
@@ -183,6 +183,33 @@ export function OcrButton({ onText, nhan = '📋 Ảnh → AI dịch' }: { onTex
         chọn ảnh
         <input type="file" accept="image/*" className="hidden" onChange={(e) => chay(e.target.files?.[0] ?? null)} />
       </label>
+      {err && <span className="text-[11px] text-rose-600">{err}</span>}
+    </div>
+  )
+}
+
+/** Up NGUYÊN 1 bài (ảnh/PDF, nhiều trang) → AI tách ĐỀ + LỜI GIẢI, đổ vào form (khỏi điền tay từng ô).
+ *  CHỈ lấy chữ; hình người tự vẽ/update. */
+export function IngestBaiButton({ onResult, nhan = '🪄 Up bài (ảnh/PDF) → tự tách' }: { onResult: (r: { de_bai: string; loi_giai: string }) => void; nhan?: string }) {
+  const [busy, setBusy] = useState(false)
+  const [err, setErr] = useState<string | null>(null)
+  const chay = async (files: File[]) => {
+    const fs = files.filter((f) => f.type.startsWith('image/') || f.type === 'application/pdf')
+    if (!fs.length) { setErr('Chọn ảnh hoặc PDF của bài trước.'); return }
+    setBusy(true); setErr(null)
+    try {
+      const gf = await Promise.all(fs.map(async (f) => ({ mimeType: f.type, dataBase64: await fileToBase64(f) })))
+      onResult(await ingestBaiHinh(gf))
+    } catch (e: any) { setErr(e?.message ?? String(e)) } finally { setBusy(false) }
+  }
+  return (
+    <div className="flex flex-wrap items-center gap-1.5">
+      <label className={`inline-flex h-8 cursor-pointer items-center rounded-lg border px-3 text-[13px] font-medium transition ${busy ? 'border-slate-200 text-slate-400' : 'border-indigo-300 bg-indigo-50 text-indigo-700 hover:bg-indigo-100'}`}>
+        {busy ? '⏳ AI đang tách…' : nhan}
+        <input type="file" accept="image/*,application/pdf" multiple className="hidden" disabled={busy}
+          onChange={(e) => chay(Array.from(e.target.files ?? []))} />
+      </label>
+      <Btn className="h-8 text-[12px]" disabled={busy} onClick={async () => { const f = await readClipboardImageFile(); if (f) chay([f]); else setErr('Clipboard chưa có ảnh.') }}>📋 Dán ảnh</Btn>
       {err && <span className="text-[11px] text-rose-600">{err}</span>}
     </div>
   )
