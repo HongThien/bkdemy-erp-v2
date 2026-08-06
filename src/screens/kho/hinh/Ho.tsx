@@ -94,6 +94,8 @@ export function FormMoHinh({ L, chaMacDinh, khoiMacDinh, sua, onClose, onDone }:
   const [ten, setTen] = useState(sua?.ten ?? '')
   const [gt, setGt] = useState(sua?.gia_thiet ?? '')
   const [gtThem, setGtThem] = useState(sua?.gia_thiet_them ?? '')
+  // Kiểu kế thừa của mô hình CON: cộng thêm (false) vs tự phát biểu / thay cách gọi bố (true).
+  const [thayThe, setThayThe] = useState(sua?.gt_thay_the ?? false)
   const [anh, setAnh] = useState<string | null>(sua?.anh_cau_hinh ?? null)
   const khoi = sua?.khoi ?? khoiMacDinh ?? null
   const [cha, setCha] = useState<string[]>(
@@ -104,22 +106,25 @@ export function FormMoHinh({ L, chaMacDinh, khoiMacDinh, sua, onClose, onDone }:
   // Không cho chọn cha là chính nó hoặc hậu duệ của nó — sẽ tạo vòng (service chặn, UI khỏi mời).
   const cam = sua ? new Set([sua.id, ...api.hauDueCua(L, sua.id)]) : new Set<string>()
   const laCon = cha.length > 0
-  // Kế thừa: giả thiết đầy đủ của mô hình con = giả thiết của bố + phần THÊM riêng. Bố = cha đầu tiên.
+  // Kế thừa: bố = cha đầu tiên. Full con = (cộng thêm) bố + phần thêm | (thay thế) chính câu con tự viết.
   const chaFull = laCon ? api.giaThietDayDu(L, cha[0]) : ''
-  const fullXemTruoc = laCon ? [chaFull, gtThem.trim()].filter(Boolean).join('; ') : gt
+  const fullXemTruoc = !laCon ? gt : thayThe ? gt.trim() : [chaFull, gtThem.trim()].filter(Boolean).join('; ')
 
   const luu = async () => {
     setSaving(true); setLoi(null)
     try {
-      // Con: KHÔNG lưu lại full — chỉ phần thêm. Cột gia_thiet (NOT NULL) giữ bản composed cho tương thích;
-      // hiển thị luôn suy live qua giaThietDayDu nên dù bố đổi vẫn đúng.
-      const giaThiet = laCon ? fullXemTruoc : gt
-      const them = laCon ? (gtThem.trim() || null) : null
+      // CỘNG THÊM: cột gia_thiet (NOT NULL) giữ bản composed cho tương thích, gia_thiet_them = delta; hiển
+      //   thị suy live qua giaThietDayDu nên dù bố đổi vẫn đúng. TỰ PHÁT BIỂU: gia_thiet = câu con tự viết,
+      //   gia_thiet_them = null, gt_thay_the = true → derive dừng leo ở node này. Quan hệ cha-con GIỮ NGUYÊN.
+      const conThayThe = laCon && thayThe
+      const giaThiet = !laCon ? gt : conThayThe ? gt.trim() : fullXemTruoc
+      const them = laCon && !thayThe ? (gtThem.trim() || null) : null
+      const payload = { ten, gia_thiet: giaThiet, gia_thiet_them: them, gt_thay_the: laCon ? thayThe : false, anh_cau_hinh: anh, khoi }
       if (sua) {
-        await api.updateMoHinh(sua.id, { ten, gia_thiet: giaThiet, gia_thiet_them: them, anh_cau_hinh: anh, khoi })
+        await api.updateMoHinh(sua.id, payload)
         await api.setChaMoHinh(sua.id, cha)
       } else {
-        await api.createMoHinh({ ten, gia_thiet: giaThiet, gia_thiet_them: them, anh_cau_hinh: anh, khoi }, cha)
+        await api.createMoHinh(payload, cha)
       }
       await onDone(); onClose()
     } catch (e: any) { setLoi(e.message ?? String(e)); setSaving(false) }
@@ -130,18 +135,41 @@ export function FormMoHinh({ L, chaMacDinh, khoiMacDinh, sua, onClose, onDone }:
       <Field label="Tên (ngắn gọn — đề & hình mới là chính)"><input className={inp} value={ten} onChange={(e) => setTen(e.target.value)} placeholder="Trực tâm  ·  Trực tâm + EF∩BC=M" /></Field>
       {laCon ? (
         <>
-          <div className="mb-3 rounded-lg border border-teal-200 bg-teal-50/60 px-3 py-2.5">
-            <div className="mb-1 text-[10.5px] font-semibold uppercase tracking-wide text-teal-700">Kế thừa từ bố (không sửa ở đây)</div>
+          {/* Chọn KIỂU kế thừa. Quan hệ cha-con KHÔNG đổi giữa hai kiểu — chỉ đổi cách VIẾT giả thiết. */}
+          <div className="mb-3">
+            <div className="mb-1.5 text-[11px] font-medium text-slate-600">Kiểu kế thừa giả thiết từ bố</div>
+            <div className="grid grid-cols-2 gap-2">
+              {([[false, 'Cộng thêm', 'Bố + phần thêm riêng (vd trực tâm → thêm EF∩BC=M)'],
+                 [true, 'Tự phát biểu', 'Con định danh, thay cách gọi bố (vd hình thang → hình bình hành)']] as const).map(([v, tit, mo]) => (
+                <button key={String(v)} type="button" onClick={() => setThayThe(v)}
+                  className={`rounded-lg border px-3 py-2 text-left transition ${thayThe === v ? 'border-teal-400 bg-teal-50 ring-1 ring-teal-300' : 'border-slate-200 bg-white hover:bg-slate-50'}`}>
+                  <div className="text-[12.5px] font-semibold text-slate-800">{tit}</div>
+                  <div className="mt-0.5 text-[10.5px] leading-snug text-slate-500">{mo}</div>
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className={`mb-3 rounded-lg border px-3 py-2.5 ${thayThe ? 'border-slate-200 bg-slate-50/60' : 'border-teal-200 bg-teal-50/60'}`}>
+            <div className={`mb-1 text-[10.5px] font-semibold uppercase tracking-wide ${thayThe ? 'text-slate-400' : 'text-teal-700'}`}>{thayThe ? 'Giả thiết của bố (tham chiếu — con sẽ THAY cách gọi này)' : 'Kế thừa từ bố (không sửa ở đây)'}</div>
             <div className="text-[13px] leading-relaxed text-slate-700">{chaFull ? <MathText>{chaFull}</MathText> : <span className="text-slate-400">bố chưa có giả thiết</span>}</div>
           </div>
-          <Field label="Giả thiết THÊM của mô hình con này (chỉ phần cộng — full = bố + phần này)">
-            <textarea className={`${inp} h-16`} value={gtThem} onChange={(e) => setGtThem(e.target.value)} placeholder="$EF$ cắt $BC$ tại $M$" />
-            <div className="mt-1.5"><OcrButton onText={setGtThem} /></div>
-          </Field>
-          <div className="mb-3 rounded-lg border border-slate-200 bg-slate-50/60 px-3 py-2 text-[12.5px]">
-            <span className="text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Giả thiết đầy đủ (xem trước): </span>
-            {fullXemTruoc ? <MathText>{fullXemTruoc}</MathText> : <span className="text-slate-400">—</span>}
-          </div>
+          {thayThe ? (
+            <Field label="Giả thiết của mô hình con (tự phát biểu ĐẦY ĐỦ — thay cách gọi của bố)">
+              <textarea className={`${inp} h-20`} value={gt} onChange={(e) => setGt(e.target.value)} placeholder="$ABCD$ là hình bình hành" />
+              <div className="mt-1.5"><OcrButton onText={setGt} /></div>
+            </Field>
+          ) : (
+            <>
+              <Field label="Giả thiết THÊM của mô hình con này (chỉ phần cộng — full = bố + phần này)">
+                <textarea className={`${inp} h-16`} value={gtThem} onChange={(e) => setGtThem(e.target.value)} placeholder="$EF$ cắt $BC$ tại $M$" />
+                <div className="mt-1.5"><OcrButton onText={setGtThem} /></div>
+              </Field>
+              <div className="mb-3 rounded-lg border border-slate-200 bg-slate-50/60 px-3 py-2 text-[12.5px]">
+                <span className="text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Giả thiết đầy đủ (xem trước): </span>
+                {fullXemTruoc ? <MathText>{fullXemTruoc}</MathText> : <span className="text-slate-400">—</span>}
+              </div>
+            </>
+          )}
         </>
       ) : (
         <Field label="Giả thiết nền của họ (đầy đủ — text + LaTeX $…$)">

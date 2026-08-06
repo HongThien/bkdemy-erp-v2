@@ -13,7 +13,7 @@ const LIMIT = 10000 // §2.11 — mọi list .limit(10000)
 // ══════════════════ KIỂU ══════════════════
 export type MoHinh = {
   id: string; mon: string; ma: string; ten: string
-  gia_thiet: string; gia_thiet_them: string | null; anh_cau_hinh: string | null
+  gia_thiet: string; gia_thiet_them: string | null; gt_thay_the: boolean; anh_cau_hinh: string | null
   la_goc_ho: boolean; cap_mo_hinh: number | null; khoi: string | null; ghi_chu: string | null
 }
 export type CanhMoHinh = { mo_hinh_id: string; cha_id: string }
@@ -135,16 +135,26 @@ export function duongToTien(L: Luoi, id: string): string[] {
   while (cur && !seen.has(cur)) { seen.add(cur); path.unshift(cur); cur = chaCua(L, cur)[0] }
   return path
 }
-/** ⭐ Giả thiết ĐẦY ĐỦ của một mô hình = giả thiết gốc họ + phần THÊM của TỪNG ĐỜI xuống tới nó.
- *  Kế thừa: con KHÔNG lưu lại full — chỉ lưu `gia_thiet_them`; full suy ở đây. (Thùy: giả thiết con =
- *  giả thiết bố + giả thiết riêng con.) Bài toán KHÔNG có giả thiết riêng — luôn mượn của mô hình. */
+/** ⭐ Giả thiết ĐẦY ĐỦ của một mô hình. Kế thừa có HAI KIỂU (per-node `gt_thay_the`), vì con không phải
+ *  lúc nào cũng = giả thiết bố + text thêm:
+ *   • CỘNG THÊM (`gt_thay_the=false`, mặc định): full = giả thiết gốc + phần THÊM từng đời (hành vi cũ).
+ *   • TỰ PHÁT BIỂU (`gt_thay_the=true`): con là đặc-biệt-hoá được ĐỊNH DANH (vd "hình bình hành" là con
+ *     của "hình thang") — "cho hình bình hành ABCD" đã BAO "cho hình thang ABCD", không cộng dồn được.
+ *     Node tự viết nguyên câu (ô `gia_thiet`), THAY cách gọi của bố; derive DỪNG leo ở đây.
+ *  Quan hệ cha-con (DAG) KHÔNG đổi giữa hai kiểu — chỉ đổi cách render text. Bài toán KHÔNG có giả thiết
+ *  riêng, luôn mượn của mô hình.
+ *  ⇒ BASE = node tự-phát-biểu SÂU NHẤT trên đường tổ tiên (mặc định gốc họ, i=0); base góp giả thiết đầy
+ *  đủ của nó, các đời SAU base góp phần thêm. */
 export function giaThietDayDu(L: Luoi, moHinhId: string): string {
+  const path = duongToTien(L, moHinhId)                       // [gốc … node]
+  const nodes = path.map((mid) => L.moHinh.find((x) => x.id === mid)).filter(Boolean) as MoHinh[]
+  let baseIdx = 0
+  nodes.forEach((m, i) => { if (i > 0 && m.gt_thay_the) baseIdx = i })   // node thay-thế sâu nhất
   const parts: string[] = []
-  duongToTien(L, moHinhId).forEach((mid, i) => {
-    const m = L.moHinh.find((x) => x.id === mid); if (!m) return
-    if (i === 0) { if (m.gia_thiet?.trim()) parts.push(m.gia_thiet.trim()) }   // gốc: giả thiết nền đầy đủ
-    else if (m.gia_thiet_them?.trim()) parts.push(m.gia_thiet_them.trim())      // đời sau: chỉ phần thêm
-  })
+  if (nodes[baseIdx]?.gia_thiet?.trim()) parts.push(nodes[baseIdx].gia_thiet.trim())  // base: full của nó
+  for (let i = baseIdx + 1; i < nodes.length; i++) {
+    if (nodes[i].gia_thiet_them?.trim()) parts.push(nodes[i].gia_thiet_them!.trim())  // đời sau: phần thêm
+  }
   return parts.join('; ')
 }
 /** Hình cấu hình HIỆN DÙNG của một mô hình = hình của chính nó, thiếu thì leo lên tổ tiên gần nhất có hình. */

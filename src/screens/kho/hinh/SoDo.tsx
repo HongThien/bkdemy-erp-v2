@@ -388,7 +388,9 @@ function ViewMoHinh({ L, ho, trongHo, chon, setChon, onSua, onThemCon, reload }:
             </div>
           </div>
           <FieldCard label="Giả thiết đầy đủ (đề của MỌI bài toán trong mô hình)"><MathText>{api.giaThietDayDu(L, mh.id)}</MathText></FieldCard>
-          {mh.gia_thiet_them && <FieldCard label="Phần thêm so với bố" ton="slate" className="mt-1.5"><MathText>{mh.gia_thiet_them}</MathText></FieldCard>}
+          {mh.gt_thay_the
+            ? <FieldCard label="Tự phát biểu — thay cách gọi của bố (quan hệ cha-con vẫn giữ)" ton="slate" className="mt-1.5"><MathText>{mh.gia_thiet}</MathText></FieldCard>
+            : mh.gia_thiet_them && <FieldCard label="Phần thêm so với bố" ton="slate" className="mt-1.5"><MathText>{mh.gia_thiet_them}</MathText></FieldCard>}
 
           <div className="mb-1 mt-3 flex items-center gap-2">
             <span className="text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Sơ đồ tâm–vệ tinh · {lt.rieng.length} bài toán phụ thuộc</span>

@@ -2,7 +2,7 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-111 bảng · 0 enum · 10 trigger · 31 function
+113 bảng · 0 enum · 10 trigger · 31 function
 
 ## bai_lam
 
@@ -115,6 +115,16 @@
 | muc_tieu | text | Y |  |  |  |
 | muc_kien_thuc | smallint | Y |  |  |  |
 | muc_thai_do | smallint | Y |  |  |  |
+| nl_band | text | Y |  |  | `S-` · `S` · `S+` · `A-` · `A` · `A+` · `B-` · `B` · `B+` · `C-` · `C` · `C+` · `D-` · `D` · `D+` |
+| nl_diem | numeric | Y |  |  |  |
+| nl_sai_so | numeric | Y |  |  |  |
+| cs_thai_do | smallint | Y |  |  |  |
+| cs_tap_trung | smallint | Y |  |  |  |
+| cs_tiep_thu | smallint | Y |  |  |  |
+| cs_tu_duy | smallint | Y |  |  |  |
+| cs_ky_nang | smallint | Y |  |  |  |
+| cs_van_dung | smallint | Y |  |  |  |
+| cs_vuot_kho | smallint | Y |  |  |  |
 
 ## bao_loi
 
@@ -260,6 +270,7 @@
 | graded_by | uuid | Y |  |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
 | hoan_thanh_pct | smallint | Y |  |  |  |
+| muc | smallint | Y |  |  |  |
 
 ## buoi_danh_gia_dang
 
@@ -731,6 +742,7 @@
 | ghi_chu | text | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
+| gt_thay_the | boolean |  | false |  |  |
 
 ## hinh_mo_hinh_cha
 
@@ -772,6 +784,7 @@
 | created_by | uuid | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | trang_thai_tb | text |  | 'thong_bao_1'::text |  | `thong_bao_1` · `cho_xu_ly` · `hoan_thanh` |
+| bao_lan1_at | timestamp with time zone | Y |  |  |  |
 
 ## hoa_don_dong
 
@@ -779,7 +792,7 @@
 |---|---|---|---|---|---|
 | id | uuid |  | gen_random_uuid() | PK |  |
 | hoa_don_id | uuid |  |  | FK→hoa_don.id |  |
-| loai | text |  |  |  | `hoc_phi` · `hoc_duoi` · `hoc_lieu` · `phat_sinh` · `no_ky_truoc` |
+| loai | text |  |  |  | `hoc_phi` · `hoc_duoi` · `hoc_lieu` · `phat_sinh` · `no_ky_truoc` · `giam_gioi_thieu` |
 | hoc_sinh_id | uuid | Y |  | FK→hoc_sinh.id |  |
 | lop_id | uuid | Y |  | FK→lop.id |  |
 | mo_ta | text | Y |  |  |  |
@@ -827,6 +840,19 @@
 | created_by | uuid | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 
+## hoc_phi_tin_dung
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| phu_huynh_id | uuid |  |  | FK→phu_huynh.id |  |
+| hoc_sinh_moi_id | uuid | Y |  | FK→hoc_sinh.id |  |
+| so_tien | numeric |  | 500000 |  |  |
+| hieu_luc_tu | date |  |  |  |  |
+| mo_ta | text | Y |  |  |  |
+| created_by | uuid | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
 ## hoc_phi_xet_duyet
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -868,6 +894,18 @@
 | he_so_hoc_phi | numeric |  | 1 |  |  |
 | he_so_nguon | text |  | 'auto'::text |  | `auto` · `manual` |
 
+## hoc_sinh_he_so
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |  |
+| he_so | numeric |  |  |  |  |
+| hieu_luc_tu | date |  |  |  |  |
+| nguon | text |  | 'manual'::text |  |  |
+| created_by | uuid | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
 ## hoc_sinh_lop
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -876,7 +914,7 @@
 | hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |  |
 | lop_id | uuid |  |  | FK→lop.id |  |
 | muc_nang_luc_id | uuid | Y |  | FK→muc_nang_luc.id |  |
-| ngay_vao | date | Y |  |  |  |
+| ngay_vao | date |  |  |  |  |
 | trang_thai | text |  | 'dang_hoc'::text |  | `dang_hoc` · `da_roi` |
 | ngay_roi | date | Y |  |  |  |
 
@@ -1211,6 +1249,7 @@
 | dia_chi | text | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
+| no_khoi_tao | numeric |  | 0 |  |  |
 
 ## prep_phong
 
@@ -1587,10 +1626,20 @@
 
 | bảng | constraint | định nghĩa |
 |---|---|---|
+| bao_cao_ph | bao_cao_ph_cs_ky_nang_chk | `CHECK (((cs_ky_nang IS NULL) OR ((cs_ky_nang >= 1) AND (cs_ky_nang <= 5))))` |
+| bao_cao_ph | bao_cao_ph_cs_tap_trung_chk | `CHECK (((cs_tap_trung IS NULL) OR ((cs_tap_trung >= 1) AND (cs_tap_trung <= 5))))` |
+| bao_cao_ph | bao_cao_ph_cs_thai_do_chk | `CHECK (((cs_thai_do IS NULL) OR ((cs_thai_do >= 1) AND (cs_thai_do <= 5))))` |
+| bao_cao_ph | bao_cao_ph_cs_tiep_thu_chk | `CHECK (((cs_tiep_thu IS NULL) OR ((cs_tiep_thu >= 1) AND (cs_tiep_thu <= 5))))` |
+| bao_cao_ph | bao_cao_ph_cs_tu_duy_chk | `CHECK (((cs_tu_duy IS NULL) OR ((cs_tu_duy >= 1) AND (cs_tu_duy <= 5))))` |
+| bao_cao_ph | bao_cao_ph_cs_van_dung_chk | `CHECK (((cs_van_dung IS NULL) OR ((cs_van_dung >= 1) AND (cs_van_dung <= 5))))` |
+| bao_cao_ph | bao_cao_ph_cs_vuot_kho_chk | `CHECK (((cs_vuot_kho IS NULL) OR ((cs_vuot_kho >= 1) AND (cs_vuot_kho <= 5))))` |
+| bao_cao_ph | bao_cao_ph_nl_diem_chk | `CHECK (((nl_diem IS NULL) OR ((nl_diem >= (0)::numeric) AND (nl_diem <= (10)::numeric))))` |
+| bao_cao_ph | bao_cao_ph_nl_sai_so_chk | `CHECK (((nl_sai_so IS NULL) OR ((nl_sai_so >= (0)::numeric) AND (nl_sai_so <= (5)::numeric))))` |
 | bo_tro_yeu | bo_tro_yeu_dong_du_ck | `CHECK (((trang_thai <> 'hoan_thanh'::text) OR ((ket_qua IS NOT NULL) AND (hoan_thanh_at IS NOT NULL))))` |
 | bo_tro_yeu | bo_tro_yeu_muc_ck | `CHECK (((muc IS NULL) OR (muc = ANY (ARRAY[1, 2, 3]))))` |
 | bo_tro_yeu | bo_tro_yeu_muc_may_ck | `CHECK (((muc_may_de_xuat IS NULL) OR (muc_may_de_xuat = ANY (ARRAY[1, 2, 3]))))` |
 | buoi_danh_gia | buoi_danh_gia_hoan_thanh_pct_check | `CHECK (((hoan_thanh_pct IS NULL) OR (((hoan_thanh_pct >= 0) AND (hoan_thanh_pct <= 100)) AND (((hoan_thanh_pct)::integer % 5) = 0))))` |
+| buoi_danh_gia | buoi_danh_gia_muc_chk | `CHECK (((muc IS NULL) OR ((muc >= 1) AND (muc <= 5))))` |
 | buoi_danh_gia_dang | buoi_danh_gia_dang_diem_check | `CHECK ((diem = ANY (ARRAY[(0)::numeric, 0.5, (1)::numeric])))` |
 | ca_test | ca_test_thoi_luong_phut_check | `CHECK ((thoi_luong_phut = ANY (ARRAY[45, 60, 75, 90, 120])))` |
 | dai_ban_do | dai_ban_do_muc_do_check | `CHECK (((muc_do >= 1) AND (muc_do <= 5)))` |
