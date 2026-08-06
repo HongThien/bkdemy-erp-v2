@@ -2757,6 +2757,36 @@ một danh sách thì mấy con số đếm theo-ngày hết nghĩa, mà màn n�
 - **Gom (lớp × ngày) về 1 dòng ảo, giữ slot sớm nhất.** TKB có slot TRÙNG THỨ còn hiệu lực chồng nhau —
   9A1 thật sự có 2 dòng `T6 15:00` (1 dòng `hieu_luc_den` cũ, 1 dòng NULL). Không gom thì ra 2 hàng y hệt,
   bấm "Mở buổi" hàng nào cũng ra cùng 1 buổi (moBuoi tra theo lop+ngay).
+
+## 2026-08-06 — Kho Hình: kế thừa giả thiết 2 KIỂU (cộng thêm / tự phát biểu)
+
+**Thùy nêu lỗ mô hình:** kế thừa giả thiết KHÔNG phải lúc nào cũng là nối text. Ca con là đặc-biệt-hoá
+được ĐỊNH DANH: hình bình hành là con của hình thang, nhưng *"cho hình bình hành ABCD"* đã BAO
+*"cho hình thang ABCD"* — không thể viết cộng dồn *"ABCD là hình thang; ABCD là hình bình hành"*. Nên
+kế thừa-từ-bố (kiểu cộng text) chỉ là MỘT option. Chốt: **bản chất quan hệ không đổi, chỉ đổi cách hiển thị**.
+
+- **Phân biệt 2 tầng đang bị gộp làm một:** (1) cạnh logic is-a/subsumption — LUÔN kế thừa (bình hành xài
+  được mọi định lý hình thang), nuôi bao đóng tiền đề + kế thừa cách giải; (2) TEXT phát biểu giả thiết —
+  không luôn cộng được vì tiếng Việt định-danh-hoá (1 từ gói cả cụm ràng buộc, THAY cách gọi bố). Lý thuyết:
+  chênh giữa subtype (is-a) và lexicalization — subclass vừa extend vừa override `toString()` mà vẫn giữ Liskov.
+- **Fix = mode per-node, KHÔNG bỏ cạnh.** Cột `hinh_mo_hinh.gt_thay_the` boolean default false.
+  `false` = cộng thêm (full = bố + `gia_thiet_them`, hành vi cũ y hệt). `true` = tự phát biểu (node viết nguyên
+  câu vào `gia_thiet`, `gia_thiet_them=null`, derive DỪNG leo ở đây). Cạnh cha-con (DAG) giữ nguyên cả 2 kiểu.
+- `giaThietDayDu` viết lại: **BASE = node tự-phát-biểu SÂU NHẤT trên đường tổ tiên** (mặc định gốc họ i=0);
+  base góp giả thiết đầy đủ của nó, các đời SAU base góp phần thêm. Chuỗi nhiều tầng thay-thế (thang → bình
+  hành → chữ nhật) tự reset đúng ở mỗi node thay-thế.
+- `FormMoHinh` (Ho.tsx): toggle 2 nút cho mô hình con (Cộng thêm / Tự phát biểu). Thay-thế → ô textarea full
+  câu con + hiện giả thiết bố dạng THAM CHIẾU (mờ). `SoDo.tsx`: nhãn phân biệt 2 kiểu.
+- **Migration additive** (`add column if not exists ... default false`) → rows cũ = false = cộng thêm, không
+  đụng data. Áp riêng 1 file (không re-run toàn bộ), verify cột trong `information_schema`. `tsc` sạch ·
+  `vite build` sạch · `schema.md` refresh. Commit `a272407`, push `main`.
+
+**SAI/SỬA (nhỏ nhưng đáng ghi):** viết mới `scripts/_apply_one.mjs` để áp 1 migration mà KHÔNG check trước —
+repo ĐÃ có sẵn helper cùng tên (commit "ET"). Đã ghi đè + suýt xoá. Khôi phục nguyên trạng từ HEAD, không lọt
+vào commit. **Bài học: trước khi tạo file tên tổng quát, `git cat-file -e HEAD:path` / ls đã.**
+
+**CÒN (quyết định NỘI DUNG, không phải code):** cạnh "bình hành → thang" chỉ đúng nếu Thùy dùng định nghĩa
+hình thang BAO GỒM (2 cạnh đối song song — SGK VN). Nếu chỗ nào xài định nghĩa LOẠI TRỪ thì cạnh sai gốc.
 - Search debounce 250ms + cờ huỷ (gõ "9A1" = 3 lượt, không để lượt cũ trả về sau rồi đè kết quả mới).
 - **Từ khoá tìm để ở BuoiHocScreen, không ở trong panel** — vào 1 buổi rồi bấm "← Buổi học" là panel bị
   unmount, để state bên trong thì mất chữ, phải gõ lại mỗi lần xem xong 1 buổi (thao tác lặp nhiều nhất).
