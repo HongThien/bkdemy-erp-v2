@@ -671,6 +671,7 @@
 | thu_tu | integer |  | 0 |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
+| khoi | text | Y |  |  |  |
 
 ## hinh_cach_bo_de
 
@@ -714,6 +715,7 @@
 | thu_tu | integer |  | 0 |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
+| khoi | text | Y |  |  |  |
 
 ## hinh_dang_ly_thuyet
 

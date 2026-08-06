@@ -116,8 +116,8 @@ export default function KhoHinhScreen({ khoi }: { khoi: string }) {
         {man === 'khotam' && <KhoTam L={L} khoi={khoi} di={di} reload={load} baiId={ctx.baiId} />}
         {man === 'hangcho' && <HangCho L={L} di={di} reload={load} />}
         {man === 'khochinh' && <KhoChinh L={L} khoi={khoi} di={di} />}
-        {man === 'dang' && <Catalog L={L} loai="dang" reload={load} />}
-        {man === 'bode' && <Catalog L={L} loai="bode" reload={load} />}
+        {man === 'dang' && <Catalog L={L} khoi={khoi} loai="dang" reload={load} />}
+        {man === 'bode' && <Catalog L={L} khoi={khoi} loai="bode" reload={load} />}
         {man === 'tlchuan' && <TaiLieuChuan L={L} khoi={khoi} />}
         {man === 'soan' && <SoanTaiLieu L={L} khoi={khoi} />}
       </div>

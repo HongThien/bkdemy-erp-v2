@@ -26,8 +26,8 @@ export type CachGiai = {
   id: string; baitoan_id: string; ten: string | null; dang_id: string
   loi_giai: string | null; anh_loi_giai: string | null; la_mac_dinh: boolean; thu_tu: number
 }
-export type DangHinh = { id: string; mon: string; ma: string; ten: string; cap: 'loai_ch' | 'dang'; cha_id: string | null; thu_tu: number }
-export type BoDe = { id: string; mon: string; ma: string; ten: string; phat_bieu: string | null; thu_tu: number }
+export type DangHinh = { id: string; mon: string; ma: string; ten: string; cap: 'loai_ch' | 'dang'; cha_id: string | null; thu_tu: number; khoi: string | null }
+export type BoDe = { id: string; mon: string; ma: string; ten: string; phat_bieu: string | null; thu_tu: number; khoi: string | null }
 export type Bai = {
   id: string; mon: string; ma_bai: string; de_bai: string; anh_de: string
   nguon: string | null; khoi: string | null; trang_thai: 'tam' | 'chinh'
@@ -58,7 +58,8 @@ export type Luoi = {
 // Lưới đi THEO KHỐI (như bản đồ Đại): mỗi khối một graph riêng. `khoi` gắn ở MÔ HÌNH —
 // một họ không trải nhiều khối (Trực tâm là chuyện của khối 9). Bài toán nhỏ / cách giải /
 // tiền đề KHÔNG mang cột khối, khối của chúng DERIVE từ mô hình (spec §1.1 "derive không lưu cột").
-// Catalog (dạng + bổ đề) là NGOẠI LỆ — dùng chung mọi khối (một "cách xử lý" gặp ở lớp nào cũng vậy).
+// Catalog (dạng + bổ đề) MANG cột khối và cũng cắt theo khối (Thùy: dạng/bổ đề gắn với PHẠM VI KIẾN THỨC
+// của từng khối — loại câu hỏi / bổ đề khối 9 không phải chuyện khối 7). Trước đây dùng chung, nay bỏ.
 export async function loadLuoi(khoi?: string): Promise<Luoi> {
   const q = <T,>(t: string, order?: string) => {
     let b = supabase.from(t).select('*').limit(LIMIT)
@@ -73,7 +74,7 @@ export async function loadLuoi(khoi?: string): Promise<Luoi> {
     q<{ cach_id: string; tien_de_id: string }>('hinh_cach_tien_de'),
     q<{ cach_id: string; bo_de_id: string }>('hinh_cach_bo_de'),
   ])
-  const [dang, boDe] = await Promise.all([q<DangHinh>('hinh_dang', 'thu_tu'), q<BoDe>('hinh_bo_de', 'thu_tu')])
+  let [dang, boDe] = await Promise.all([q<DangHinh>('hinh_dang', 'thu_tu'), q<BoDe>('hinh_bo_de', 'thu_tu')])
 
   if (khoi) {
     // Cắt lưới về đúng khối: giữ mô hình cùng khối, rồi cascade node → cách → tiền đề/bổ đề.
@@ -87,6 +88,9 @@ export async function loadLuoi(khoi?: string): Promise<Luoi> {
     const cachIds = new Set(cach.map((c) => c.id))
     tienDe = tienDe.filter((t) => cachIds.has(t.cach_id) && btIds.has(t.tien_de_id))
     cachBoDe = cachBoDe.filter((x) => cachIds.has(x.cach_id))
+    // Catalog cũng theo khối: chỉ giữ dạng/bổ đề của khối này.
+    dang = dang.filter((d) => d.khoi === khoi)
+    boDe = boDe.filter((b) => b.khoi === khoi)
   }
   return { moHinh, canh, baiToan, cach, tienDe, cachBoDe, dang, boDe }
 }
@@ -414,7 +418,7 @@ export async function listDang(): Promise<DangHinh[]> {
   if (error) throw error
   return (data ?? []) as DangHinh[]
 }
-export async function createDang(input: { ten: string; cap: 'loai_ch' | 'dang'; cha_id?: string | null; thu_tu?: number }): Promise<DangHinh> {
+export async function createDang(input: { ten: string; cap: 'loai_ch' | 'dang'; cha_id?: string | null; thu_tu?: number; khoi: string | null }): Promise<DangHinh> {
   if (input.cap === 'dang' && !input.cha_id) throw new Error('Dạng (cách xử lý) phải nằm dưới một loại câu hỏi.')
   const { data, error } = await supabase.from('hinh_dang').insert(input).select('*').single()
   if (error) throw error
@@ -440,7 +444,7 @@ export async function listBoDe(): Promise<BoDe[]> {
   if (error) throw error
   return (data ?? []) as BoDe[]
 }
-export async function createBoDe(input: { ten: string; phat_bieu?: string | null; thu_tu?: number }): Promise<BoDe> {
+export async function createBoDe(input: { ten: string; phat_bieu?: string | null; thu_tu?: number; khoi: string | null }): Promise<BoDe> {
   const { data, error } = await supabase.from('hinh_bo_de').insert(input).select('*').single()
   if (error) throw error
   return data as BoDe

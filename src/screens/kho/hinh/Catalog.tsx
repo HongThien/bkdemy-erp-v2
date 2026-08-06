@@ -14,12 +14,12 @@ import { LyThuyetModal } from '../BanDo'
 type LtMap = Record<string, { noi_dung: string; file_url: string | null }>
 const coLt = (m: LtMap, id: string) => !!(m[id]?.noi_dung?.trim() || m[id]?.file_url)
 
-export default function Catalog({ L, loai, reload }: { L: Luoi; loai: 'dang' | 'bode'; reload: () => Promise<void> }) {
-  return loai === 'dang' ? <MDang L={L} reload={reload} /> : <MBoDe L={L} reload={reload} />
+export default function Catalog({ L, khoi, loai, reload }: { L: Luoi; khoi: string; loai: 'dang' | 'bode'; reload: () => Promise<void> }) {
+  return loai === 'dang' ? <MDang L={L} khoi={khoi} reload={reload} /> : <MBoDe L={L} khoi={khoi} reload={reload} />
 }
 
 // ══════════════════ M6 — DẠNG BÀI ══════════════════
-function MDang({ L, reload }: { L: Luoi; reload: () => Promise<void> }) {
+function MDang({ L, khoi, reload }: { L: Luoi; khoi: string; reload: () => Promise<void> }) {
   const [chon, setChon] = useState<string | null>(null)
   const [q, setQ] = useState('')
   const [form, setForm] = useState<{ id?: string; cap: 'loai_ch' | 'dang'; cha?: string | null } | null>(null)
@@ -132,7 +132,7 @@ function MDang({ L, reload }: { L: Luoi; reload: () => Promise<void> }) {
         </Panel>
       </div>
 
-      {form && <FormDang L={L} init={form} onClose={() => setForm(null)} onDone={reload} />}
+      {form && <FormDang L={L} khoi={khoi} init={form} onClose={() => setForm(null)} onDone={reload} />}
       {ltModal && (
         <LyThuyetModal ma={ltModal.id} ten={ltModal.ten} current={ltMap[ltModal.id] as any} api={api.hinhDangLyThuyet as any}
           onClose={() => setLtModal(null)} onSaved={() => { setLtModal(null); napLt() }} />
@@ -142,7 +142,7 @@ function MDang({ L, reload }: { L: Luoi; reload: () => Promise<void> }) {
 }
 
 // ══════════════════ M7 — BỔ ĐỀ ══════════════════
-function MBoDe({ L, reload }: { L: Luoi; reload: () => Promise<void> }) {
+function MBoDe({ L, khoi, reload }: { L: Luoi; khoi: string; reload: () => Promise<void> }) {
   const [chon, setChon] = useState<string | null>(null)
   const [q, setQ] = useState('')
   const [form, setForm] = useState<{ id?: string } | null>(null)
@@ -198,7 +198,7 @@ function MBoDe({ L, reload }: { L: Luoi; reload: () => Promise<void> }) {
         </Panel>
       </div>
 
-      {form && <FormBoDe L={L} id={form.id} onClose={() => setForm(null)} onDone={reload} />}
+      {form && <FormBoDe L={L} khoi={khoi} id={form.id} onClose={() => setForm(null)} onDone={reload} />}
     </>
   )
 }
@@ -224,8 +224,8 @@ function DsBaiToan({ L, ds }: { L: Luoi; ds: typeof L.baiToan }) {
   )
 }
 
-function FormDang({ L, init, onClose, onDone }: {
-  L: Luoi; init: { id?: string; cap: 'loai_ch' | 'dang'; cha?: string | null }; onClose: () => void; onDone: () => Promise<void>
+function FormDang({ L, khoi, init, onClose, onDone }: {
+  L: Luoi; khoi: string; init: { id?: string; cap: 'loai_ch' | 'dang'; cha?: string | null }; onClose: () => void; onDone: () => Promise<void>
 }) {
   const cu = init.id ? L.dang.find((d) => d.id === init.id) : undefined
   const [ten, setTen] = useState(cu?.ten ?? '')
@@ -251,7 +251,7 @@ function FormDang({ L, init, onClose, onDone }: {
           setSaving(true); setLoi(null)
           try {
             if (cu) await api.updateDang(cu.id, { ten, cha_id: init.cap === 'dang' ? cha : null })
-            else await api.createDang({ ten, cap: init.cap, cha_id: init.cap === 'dang' ? cha : null })
+            else await api.createDang({ ten, cap: init.cap, cha_id: init.cap === 'dang' ? cha : null, khoi })
             await onDone(); onClose()
           } catch (e: any) { setLoi(e.message ?? String(e)); setSaving(false) }
         }} />
@@ -259,7 +259,7 @@ function FormDang({ L, init, onClose, onDone }: {
   )
 }
 
-function FormBoDe({ L, id, onClose, onDone }: { L: Luoi; id?: string; onClose: () => void; onDone: () => Promise<void> }) {
+function FormBoDe({ L, khoi, id, onClose, onDone }: { L: Luoi; khoi: string; id?: string; onClose: () => void; onDone: () => Promise<void> }) {
   const cu = id ? L.boDe.find((b) => b.id === id) : undefined
   const [ten, setTen] = useState(cu?.ten ?? '')
   const [pb, setPb] = useState(cu?.phat_bieu ?? '')
@@ -275,7 +275,7 @@ function FormBoDe({ L, id, onClose, onDone }: { L: Luoi; id?: string; onClose: (
         onSave={async () => {
           setSaving(true)
           if (cu) await api.updateBoDe(cu.id, { ten, phat_bieu: pb || null })
-          else await api.createBoDe({ ten, phat_bieu: pb || null })
+          else await api.createBoDe({ ten, phat_bieu: pb || null, khoi })
           await onDone(); onClose()
         }} />
     </Shell>
