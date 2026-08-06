@@ -204,6 +204,23 @@ const KIEU_BT: Record<BienThe['kieu'], string> = { doi_so: 'Đổi số', doi_di
 const Lbl = ({ children }: { children: ReactNode }) => (
   <div className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-slate-500">{children}</div>
 )
+// Parse ánh xạ điểm "A>M, B>N; H->K" → { A:'M', B:'N', H:'K' }.
+function parseMapDiem(s: string): Record<string, string> {
+  const m: Record<string, string> = {}
+  for (const pair of s.split(/[,;\n]/)) {
+    const [a, b] = pair.split(/\s*(?:->|>|→|:|=)\s*/).map((x) => x.trim())
+    if (a && b) m[a] = b
+  }
+  return m
+}
+// Đổi nhãn điểm CHỈ trong vùng $…$ (điểm nằm trong math — tránh đụng chữ hoa tiếng Việt như "Chứng").
+// Thay đồng thời 1 lượt (không chain A→M rồi M→X). Key dài trước (D' trước D).
+function doiDiem(text: string, map: Record<string, string>): string {
+  const keys = Object.keys(map)
+  if (!text || !keys.length) return text
+  const re = new RegExp(keys.sort((a, b) => b.length - a.length).map((k) => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|'), 'g')
+  return text.replace(/\$[^$]*\$/g, (seg) => seg.replace(re, (m) => map[m] ?? m))
+}
 
 // Bấm một node → POPUP TO (80% màn hình, createPortal thoát zoom §707) hiển thị ĐẦY ĐỦ bài toán:
 // trái = đề (giả thiết mượn) + câu hỏi + hình to · phải = meta + cách giải/tiền đề + đáp án + ý thực tế.
@@ -334,21 +351,41 @@ function DetailBaiToan({ L, bt, onSua, onChon, onClose }: { L: Luoi; bt: BaiToan
         </div>
       </div>
     </div>
-    {formBt && <FormBienThe baiToanId={bt.id} v={formBt.v} onClose={() => setFormBt(null)} onDone={async () => { setFormBt(null); await napBt() }} />}
+    {formBt && <FormBienThe baiToanId={bt.id} v={formBt.v}
+      goc={{
+        de: [api.giaThietDayDu(L, bt.mo_hinh_id), `Chứng minh ${bt.phat_bieu}`].filter(Boolean).join('. '),
+        anh: api.anhCuaBaiToan(L, bt.id),
+        loiGiai: cachMd?.loi_giai ?? null,
+        anhLoiGiai: cachMd?.anh_loi_giai ?? null,
+      }}
+      onClose={() => setFormBt(null)} onDone={async () => { setFormBt(null); await napBt() }} />}
     </>,
     document.body,
   )
 }
 
-// Form biến thể (đổi số / đổi đỉnh) — modal riêng, z cao hơn popup detail. Soạn tay: đề + hình + đáp án.
-function FormBienThe({ baiToanId, v, onClose, onDone }: { baiToanId: string; v?: BienThe; onClose: () => void; onDone: () => Promise<void> }) {
-  const [kieu, setKieu] = useState<BienThe['kieu']>(v?.kieu ?? 'doi_so')
-  const [deBai, setDeBai] = useState(v?.de_bai ?? '')
-  const [anh, setAnh] = useState<string | null>(v?.anh ?? null)
-  const [loiGiai, setLoiGiai] = useState(v?.loi_giai ?? '')
-  const [anhGiai, setAnhGiai] = useState<string | null>(v?.anh_loi_giai ?? null)
+// Form biến thể (đổi số / đổi đỉnh) — modal riêng, z cao hơn popup detail. Biến thể MỚI điền sẵn = BÀI GỐC
+// (giống y), rồi đổi điểm (relabel tự động) + đổi số (sửa tay + đáp án). Hình Thùy tự update theo đề mới.
+function FormBienThe({ baiToanId, v, goc, onClose, onDone }: {
+  baiToanId: string; v?: BienThe
+  goc: { de: string; anh: string | null; loiGiai: string | null; anhLoiGiai: string | null }
+  onClose: () => void; onDone: () => Promise<void>
+}) {
+  const [kieu, setKieu] = useState<BienThe['kieu']>(v?.kieu ?? 'ca_hai')
+  // Mới → điền sẵn từ bài gốc (giống y). Sửa → giữ nội dung đã lưu.
+  const [deBai, setDeBai] = useState(v?.de_bai ?? goc.de)
+  const [anh, setAnh] = useState<string | null>(v?.anh ?? goc.anh)
+  const [loiGiai, setLoiGiai] = useState(v?.loi_giai ?? goc.loiGiai ?? '')
+  const [anhGiai, setAnhGiai] = useState<string | null>(v?.anh_loi_giai ?? goc.anhLoiGiai)
+  const [mapText, setMapText] = useState('')
   const [saving, setSaving] = useState(false)
   const [loi, setLoi] = useState<string | null>(null)
+  const saoLaiGoc = () => { setDeBai(goc.de); setAnh(goc.anh); setLoiGiai(goc.loiGiai ?? ''); setAnhGiai(goc.anhLoiGiai) }
+  const apDoiDiem = () => {
+    const m = parseMapDiem(mapText)
+    if (!Object.keys(m).length) { setLoi('Ánh xạ điểm trống — nhập kiểu "A>M, B>N, C>P".'); return }
+    setLoi(null); setDeBai((s) => doiDiem(s, m)); setLoiGiai((s) => doiDiem(s, m))
+  }
   const luu = async () => {
     setSaving(true); setLoi(null)
     try {
@@ -376,8 +413,20 @@ function FormBienThe({ baiToanId, v, onClose, onDone }: { baiToanId: string; v?:
               ))}
             </div>
           </div>
+          {/* Đổi điểm: relabel tự động (chỉ trong $…$). Đổi số phải sửa tay + tính lại đáp án. */}
+          <div className="rounded-lg border border-indigo-200 bg-indigo-50/40 p-2.5">
+            <Lbl>Đổi điểm (relabel) — tự thay nhãn trong đề + lời giải</Lbl>
+            <div className="flex gap-2">
+              <input className={inpCls} value={mapText} onChange={(e) => setMapText(e.target.value)} placeholder="A>M, B>N, C>P, H>K" />
+              <Btn className="h-[38px] shrink-0 px-3" onClick={apDoiDiem}>Áp dụng</Btn>
+            </div>
+            <p className="mt-1 text-[11px] leading-snug text-slate-500">Chỉ đổi ký hiệu trong công thức <code>$…$</code>. <b>Đổi SỐ</b>: sửa tay số + đáp án (đổi số phải tính lại, không tự đúng được). Hình bạn tự update theo đề mới.</p>
+          </div>
           <div>
-            <Lbl>Đề — giả thiết + câu hỏi (đã đổi số/đỉnh · text + LaTeX $…$)</Lbl>
+            <div className="mb-1 flex items-center gap-2">
+              <Lbl>Đề — giả thiết + câu hỏi (text + LaTeX $…$)</Lbl>
+              <button type="button" onClick={saoLaiGoc} className="mb-1 rounded-md border border-slate-300 px-2 py-0.5 text-[11px] text-slate-500 hover:bg-slate-50">↺ Sao lại từ bài gốc</button>
+            </div>
             <textarea className={`${inpCls} h-24`} value={deBai} onChange={(e) => setDeBai(e.target.value)} placeholder="$\triangle MNP$ nhọn, ba đường cao $MD, NE, PF$ cắt nhau tại $K$. Chứng minh…" />
             <div className="mt-1.5"><OcrButton onText={setDeBai} /></div>
           </div>
