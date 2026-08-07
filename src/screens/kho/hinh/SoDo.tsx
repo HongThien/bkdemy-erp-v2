@@ -376,8 +376,8 @@ function FormBienThe({ L, baiToanId, v, goc, onClose, onDone }: {
 }) {
   const [kieu, setKieu] = useState<BienThe['kieu']>(v?.kieu ?? 'doi_dinh')
   const [chuoiOpen, setChuoiOpen] = useState(false)
-  // Chuỗi tiền đề của node (node + bao đóng tiền đề). >1 câu ⇒ cho clone đổi đỉnh CẢ CHUỖI (một lứa). Chỉ khi TẠO MỚI.
-  const chuoi = useMemo(() => (v ? [] : api.chuoiTienDe(L, baiToanId)), [L, baiToanId, v])
+  // Chuỗi LIÊN THÔNG của node (đi tiền đề cả 2 chiều) → click node nào cũng ra cả chuỗi. Chỉ khi TẠO MỚI.
+  const chuoi = useMemo(() => (v ? [] : api.chuoiKetNoi(L, baiToanId)), [L, baiToanId, v])
   // Mới → điền sẵn từ bài gốc (giống y). Sửa → giữ nội dung đã lưu.
   const [deBai, setDeBai] = useState(v?.de_bai ?? goc.de)
   const [anh, setAnh] = useState<string | null>(v?.anh ?? goc.anh)
