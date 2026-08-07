@@ -8,7 +8,7 @@ import type { Luoi } from '../../../lib/kho/hinh'
 import { listLop, type Lop } from '../../../lib/nhansu'
 import { Btn, Empty, Ma, Panel, Seg, tron, inpCls } from './hinhUi'
 import HinhPrintView, { type BanIn, type MucIn } from './HinhPrintView'
-import { mucGhep } from './SoanTaiLieu'
+import { mucGhep, mucGhepLua } from './SoanTaiLieu'
 import { createPortal } from 'react-dom'
 import { useStore, type SoanHinhDraft, type GhepItem } from '../../../store/useStore'
 import type { Nhay } from './KhoHinhScreen'
@@ -71,8 +71,9 @@ async function resolveBanIn(L: Luoi, tieuBuoi: string, bais: GtBai[], phan: 'lop
       const da = api.dapAnHaiBac(L, yb.y)
       mucs.push({ kieu: 'de', ma: yb.bai.ma_bai, deBai: yb.bai.de_bai, anhDe: yb.bai.anh_de, ys: [{ nhan: yb.y.nhan_hien_thi ?? String.fromCharCode(96 + yb.y.thu_tu), noiDung: yb.y.noi_dung, loiGiai: da.loiGiai, anh: da.anh, bacThamChieu: da.bac === 'tham_chieu', ma: yb.y.ma_y }], anDe: b.an_de || !yb.bai.anh_de, soDong: dong(b) })
     } else if (b.loai === 'ghep') {
-      const sig = [...b.ghep_node_ids].sort().join(','); if (seenGhep.has(sig)) continue; seenGhep.add(sig)
-      mucs.push(mucGhep(L, { key: b.id, phan: b.phan, luaId: b.lua_id, nodeIds: b.ghep_node_ids }, b.an_de, dong(b)))
+      const sig = `${b.lua_id ?? 'chuan'}|${[...b.ghep_node_ids].sort().join(',')}`; if (seenGhep.has(sig)) continue; seenGhep.add(sig)
+      if (b.lua_id) { const vs = await api.bienTheCuaLua(b.lua_id); mucs.push(mucGhepLua(L, b.ghep_node_ids, vs, b.an_de, dong(b))) }
+      else mucs.push(mucGhep(L, { key: b.id, phan: b.phan, luaId: b.lua_id, nodeIds: b.ghep_node_ids }, b.an_de, dong(b)))
     }
   }
   return { tieuDe: `${tieuBuoi} — ${phan === 'lop' ? 'Trên lớp' : 'Về nhà (BTVN)'}`, phuDe: `${mucs.length} mục`, mucs }
