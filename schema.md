@@ -2,7 +2,7 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-115 bảng · 0 enum · 10 trigger · 31 function
+118 bảng · 0 enum · 10 trigger · 31 function
 
 ## bai_lam
 
@@ -662,6 +662,7 @@
 | created_at | timestamp with time zone |  | now() |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
 | lua_id | uuid | Y |  |  |  |
+| tien_de_ids | uuid[] |  | '{}'::uuid[] |  |  |
 
 ## hinh_ban_do
 
@@ -754,6 +755,50 @@
 | file_url | text | Y |  |  |  |
 | ten_file | text | Y |  |  |  |
 | cap_nhat_at | timestamp with time zone |  | now() |  |  |
+
+## hinh_giao_trinh
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| ten | text |  |  |  |  |
+| khoi | text |  |  |  |  |
+| mon | text |  | 'Toán'::text |  |  |
+| created_by | uuid | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
+## hinh_gt_bai
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| buoi_id | uuid |  |  | FK→hinh_gt_buoi.id |  |
+| phan | text |  |  |  | `lop` · `nha` |
+| loai | text |  |  |  | `chuan` · `bienthe` · `y` · `ghep` |
+| ref_id | uuid | Y |  |  |  |
+| ghep_node_ids | uuid[] |  | '{}'::uuid[] |  |  |
+| lua_id | uuid | Y |  |  |  |
+| an_de | boolean |  | false |  |  |
+| thu_tu | integer |  | 0 |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
+## hinh_gt_buoi
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| thu_tu | integer |  | 0 |  |  |
+| tieu_de | text | Y |  |  |  |
+| mo_hinh_chinh_id | uuid | Y |  | FK→hinh_mo_hinh.id |  |
+| giao_trinh_id | uuid | Y |  | FK→hinh_giao_trinh.id |  |
+| lop_id | uuid | Y |  |  |  |
+| ngay | date | Y |  |  |  |
+| stt_lop | integer | Y |  |  |  |
+| nguon_buoi_id | uuid | Y |  |  |  |
+| created_by | uuid | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
 
 ## hinh_mo_hinh
 
@@ -923,6 +968,8 @@
 | anh_url | text | Y |  |  |  |
 | he_so_hoc_phi | numeric |  | 1 |  |  |
 | he_so_nguon | text |  | 'auto'::text |  | `auto` · `manual` |
+| ngay_nghi | date | Y |  |  |  |
+| ly_do_nghi | text | Y |  |  |  |
 
 ## hoc_sinh_he_so
 
