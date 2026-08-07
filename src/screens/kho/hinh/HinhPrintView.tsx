@@ -30,8 +30,8 @@ export type YIn = {
 export type MucIn =
   | { kieu: 'chuong'; tieuDe: string; moTa?: string | null }
   | { kieu: 'nhac_lai'; items: { ma: string; phatBieu: string; cap: number }[] }
-  | { kieu: 'de'; deBai: string; anhDe?: string | null; nguon?: string | null; ma?: string | null; ys: YIn[]; anDe?: boolean }
-  //                                                                                         anDe = ẨN hình đề, chừa Ô VẼ cho HS (bản HS)
+  | { kieu: 'de'; deBai: string; anhDe?: string | null; nguon?: string | null; ma?: string | null; ys: YIn[]; anDe?: boolean; soDong?: number | null }
+  //   anDe = ẨN hình đề → Ô VẼ cho HS. soDong = số dòng kẻ mỗi ý trên bản HS (BTVN chỉnh được).
 
 export type BanIn = {
   tieuDe: string
@@ -156,9 +156,7 @@ function Noi({ ban, gv }: { ban: BanIn; gv: boolean }) {
         soDe++
         return (
           <div key={i} className="hp-de">
-            <div className="hp-de-h">
-              Bài {soDe}.{m.nguon && <span className="hp-ma"> {m.nguon}</span>}
-            </div>
+            <div className="hp-de-h">Bài {soDe}.</div>
             {/* văn bản TRÁI · hình PHẢI — hình dính với đề, không trôi sang trang khác.
                 anDe (ẩn hình): bản HS chừa Ô VẼ 40% bên phải; bản GV vẫn hiện hình để đối chiếu. */}
             <div className={`hp-row${m.anDe ? ' hp-row-ve' : ''}`}>
@@ -175,7 +173,6 @@ function Noi({ ban, gv }: { ban: BanIn; gv: boolean }) {
                   <div className="hp-txt">
                     {y.nhan && <b>{y.nhan}) </b>}<MathText>{y.noiDung}</MathText>
                     {y.ghiChu && <span className="hp-tag">{y.ghiChu}</span>}
-                    {y.ma && <span className="hp-ma"> {y.ma}{y.cap != null ? ` · cấp ${y.cap}` : ''}</span>}
                   </div>
                   {gv && y.anh && <div className="hp-fig"><img src={y.anh} alt="" /></div>}
                 </div>
@@ -186,7 +183,7 @@ function Noi({ ban, gv }: { ban: BanIn; gv: boolean }) {
                       <MathText>{y.loiGiai ?? '—'}</MathText>
                     </div>
                   )
-                  : <div className="hp-ke" />}
+                  : <div className="hp-ke" style={m.soDong ? { height: `${Math.max(1, m.soDong) * 7.7}mm` } : undefined} />}
               </div>
             ))}
           </div>
@@ -208,8 +205,8 @@ const HINH_CSS = `
 .hp-nhac{border:1px dashed #cbd5e1;border-radius:8px;padding:9px 12px;margin-bottom:12px;background:#fafbfc;break-inside:avoid}
 .hp-nhac-t{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#6b7280;font-weight:700;margin-bottom:4px}
 .hp-nhac-i{font-size:15px;color:#374151;margin:2px 0}
-.hp-de{margin:0 0 14px;break-inside:auto}
-.hp-de-h{font-weight:800;color:#134e4a;font-size:18px;margin:10px 0 4px;break-after:avoid}
+.hp-de{margin:0 0 6px;break-inside:auto}
+.hp-de-h{font-weight:800;color:#134e4a;font-size:18px;margin:4px 0 3px;break-after:avoid}
 /* văn bản trái · hình phải: inline-block thay vì flex/grid — paged.js đo layout grid không đáng tin (DEVLOG 07-05) */
 .hp-row{font-size:0;break-inside:avoid}
 .hp-txt{display:inline-block;vertical-align:top;width:66%;font-size:17px;padding-right:4mm;box-sizing:border-box}
@@ -219,7 +216,7 @@ const HINH_CSS = `
 .hp-row-ve .hp-txt{width:60%}
 .hp-draw{display:inline-block;vertical-align:top;width:40%;height:58mm;box-sizing:border-box;border:1px dashed #94a3b8;border-radius:6px;background:#fff;position:relative}
 .hp-draw span{position:absolute;top:4px;left:6px;font-size:10px;color:#94a3b8;text-transform:uppercase;letter-spacing:.05em}
-.hp-y{margin:7px 0 0}
+.hp-y{margin:4px 0 0}
 .hp-ma{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#94a3b8}
 .hp-tag{display:inline-block;background:#faeeda;border:1px solid #ef9f27;color:#854f0b;border-radius:10px;padding:0 7px;font-size:11.5px;margin-left:5px;vertical-align:middle}
 .hp-giai{font-size:16px;color:#374151;background:#fbfcff;border:1px solid #e5e9f0;border-radius:7px;padding:7px 10px;margin-top:4px}

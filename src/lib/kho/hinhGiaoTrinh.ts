@@ -14,13 +14,14 @@ export type GtBuoi = {
 }
 export type GtBai = {
   id: string; buoi_id: string; phan: 'lop' | 'nha'; loai: 'chuan' | 'bienthe' | 'y' | 'ghep'
-  ref_id: string | null; ghep_node_ids: string[]; lua_id: string | null; an_de: boolean; thu_tu: number
+  ref_id: string | null; ghep_node_ids: string[]; lua_id: string | null; an_de: boolean; so_dong: number | null; thu_tu: number
 }
 // Hình chiếu của nháp "Theo mô hình" cần để lưu 1 buổi.
 export type NhapBuoi = {
   sel: Record<string, Record<string, 'lop' | 'nha'>>
   ghep: { key: string; phan: 'lop' | 'nha'; luaId: string | null; nodeIds: string[] }[]
   anDe: string[]
+  soDong: Record<string, number>
 }
 
 // poolKey của builder mã hoá sẵn nguồn: `${btId}:chuan` · `bt:${bienTheId}` · `y:${yId}`.
@@ -92,11 +93,11 @@ export async function saveBuoiSelection(buoiId: string, nhap: NhapBuoi): Promise
   for (const [, picks] of Object.entries(nhap.sel)) {
     for (const [key, phan] of Object.entries(picks)) {
       const d = decodeKey(key); if (!d) continue
-      rows.push({ buoi_id: buoiId, phan, loai: d.loai, ref_id: d.ref_id, ghep_node_ids: [], lua_id: null, an_de: an.has(key), thu_tu: thu++ })
+      rows.push({ buoi_id: buoiId, phan, loai: d.loai, ref_id: d.ref_id, ghep_node_ids: [], lua_id: null, an_de: an.has(key), so_dong: nhap.soDong[key] ?? null, thu_tu: thu++ })
     }
   }
   for (const g of nhap.ghep) {
-    rows.push({ buoi_id: buoiId, phan: g.phan, loai: 'ghep', ref_id: null, ghep_node_ids: g.nodeIds, lua_id: g.luaId, an_de: an.has(g.key), thu_tu: thu++ })
+    rows.push({ buoi_id: buoiId, phan: g.phan, loai: 'ghep', ref_id: null, ghep_node_ids: g.nodeIds, lua_id: g.luaId, an_de: an.has(g.key), so_dong: nhap.soDong[g.key] ?? null, thu_tu: thu++ })
   }
   const { error: e1 } = await supabase.from('hinh_gt_bai').delete().eq('buoi_id', buoiId)
   if (e1) throw e1
@@ -122,7 +123,7 @@ export async function ganLopSnapshot(masterBuoiId: string, lopId: string, ngay: 
   if (e1) throw e1
   const buoiLopId = (nb as { id: string }).id
   if (bais.length) {
-    const rows = bais.map((b) => ({ buoi_id: buoiLopId, phan: b.phan, loai: b.loai, ref_id: b.ref_id, ghep_node_ids: b.ghep_node_ids, lua_id: b.lua_id, an_de: b.an_de, thu_tu: b.thu_tu }))
+    const rows = bais.map((b) => ({ buoi_id: buoiLopId, phan: b.phan, loai: b.loai, ref_id: b.ref_id, ghep_node_ids: b.ghep_node_ids, lua_id: b.lua_id, an_de: b.an_de, so_dong: b.so_dong, thu_tu: b.thu_tu }))
     const { error: e2 } = await supabase.from('hinh_gt_bai').insert(rows)
     if (e2) throw e2
   }

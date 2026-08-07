@@ -373,6 +373,7 @@ function banInOnTap(L: Luoi, chon: { y: Y; bai: Bai; bt: BaiToan }[]): BanIn {
 type NguonBai = 'chuan' | 'bienthe' | 'that'
 type PoolItem = { key: string; nguon: NguonBai; deBai: string; anhDe: string | null; ys: YIn[] }
 const NGUON_NHAN: Record<NguonBai, string> = { chuan: 'chuẩn', bienthe: 'biến thể', that: 'bài thật' }
+const DONG_BTVN = 6   // số dòng kẻ mặc định mỗi ý ở phiếu Về nhà (chỉnh được per bài)
 
 /** Kho bài của MỘT node = đề chuẩn (1, derive) + biến thể (đổi số/thay điểm) + ý thật trỏ vào node (kho chính). */
 async function poolCuaNode(L: Luoi, bt: BaiToan): Promise<PoolItem[]> {
@@ -466,6 +467,10 @@ function TheoMoHinh({ L, khoi }: { L: Luoi; khoi: string }) {
   const anDe = mh.anDe
   const toggleAnDe = (key: string) => setMh({ anDe: anDe.includes(key) ? anDe.filter((k) => k !== key) : [...anDe, key] })
 
+  // Số dòng kẻ HS viết cho BTVN (per bài). Vắng = mặc định. Đặt 0 → xoá khỏi map.
+  const soDong = mh.soDong
+  const setSoDong = (key: string, n: number) => { const m = { ...soDong }; if (n > 0) m[key] = n; else delete m[key]; setMh({ soDong: m }) }
+
   const [luuOpen, setLuuOpen] = useState(false)   // popup "Lưu vào giáo trình"
   const coChon = dsLop.length + dsNha.length + ghep.length > 0
 
@@ -521,9 +526,9 @@ function TheoMoHinh({ L, khoi }: { L: Luoi; khoi: string }) {
             ? <div className="text-[12.5px] text-slate-400">— chưa tick node nào —</div>
             : (
               <>
-                <PhieuList nhan="📘 Trên lớp" ton="lop" ds={dsLop} ghep={ghepLop} L={L} onRemoveGhep={removeGhep} anDe={anDe} onToggleAnDe={toggleAnDe} />
+                <PhieuList nhan="📘 Trên lớp" ton="lop" ds={dsLop} ghep={ghepLop} L={L} onRemoveGhep={removeGhep} anDe={anDe} onToggleAnDe={toggleAnDe} soDong={soDong} onSetSoDong={setSoDong} />
                 <div className="my-2 border-t border-slate-100" />
-                <PhieuList nhan="📝 Về nhà" ton="nha" ds={dsNha} ghep={ghepNha} L={L} onRemoveGhep={removeGhep} anDe={anDe} onToggleAnDe={toggleAnDe} />
+                <PhieuList nhan="📝 Về nhà" ton="nha" ds={dsNha} ghep={ghepNha} L={L} onRemoveGhep={removeGhep} anDe={anDe} onToggleAnDe={toggleAnDe} soDong={soDong} onSetSoDong={setSoDong} />
               </>
             )}
           <div className="mt-3 flex gap-4 border-t border-slate-100 pt-3 text-[12.5px]">
@@ -532,9 +537,9 @@ function TheoMoHinh({ L, khoi }: { L: Luoi; khoi: string }) {
             <span className="ml-auto text-slate-400">{tickedNodes.length} node</span>
           </div>
           <Btn kind="pri" className="mt-3 w-full justify-center" disabled={!dsLop.length && !ghepLop.length}
-            onClick={() => setInBan(banInTheoMoHinh('Trên lớp', 'lop', tickedNodes, pools, sel, ghep, L, anDe))}>📘 Xuất phiếu Trên lớp</Btn>
+            onClick={() => setInBan(banInTheoMoHinh('Trên lớp', 'lop', tickedNodes, pools, sel, ghep, L, anDe, soDong))}>📘 Xuất phiếu Trên lớp</Btn>
           <Btn className="mt-2 w-full justify-center" disabled={!dsNha.length && !ghepNha.length}
-            onClick={() => setInBan(banInTheoMoHinh('Về nhà (BTVN)', 'nha', tickedNodes, pools, sel, ghep, L, anDe))}>📝 Xuất phiếu Về nhà</Btn>
+            onClick={() => setInBan(banInTheoMoHinh('Về nhà (BTVN)', 'nha', tickedNodes, pools, sel, ghep, L, anDe, soDong))}>📝 Xuất phiếu Về nhà</Btn>
           <p className="mt-2.5 text-[11px] leading-relaxed text-slate-400">Mỗi bài chỉ vào <b>một</b> phiếu. <b>🔗</b> = a,b,c ghép chuỗi. <b>✏️</b> = ẩn hình, chừa ô HS tự vẽ.</p>
           <div className="mt-3 border-t border-slate-100 pt-3">
             <Btn className="w-full justify-center border-violet-300 text-violet-700" disabled={!coChon} onClick={() => setLuuOpen(true)}>💾 Lưu vào giáo trình</Btn>
@@ -544,7 +549,7 @@ function TheoMoHinh({ L, khoi }: { L: Luoi; khoi: string }) {
       </div>
       {inBan && <HinhPrintView ban={inBan} onClose={() => setInBan(null)} />}
       {luuOpen && <LuuGiaoTrinhPopup khoi={khoi} moHinhChinhId={mainId || null}
-        nhap={{ sel, ghep, anDe }} onClose={() => setLuuOpen(false)} onDone={() => setLuuOpen(false)} />}
+        nhap={{ sel, ghep, anDe, soDong }} onClose={() => setLuuOpen(false)} onDone={() => setLuuOpen(false)} />}
     </>
   )
 }
@@ -552,7 +557,7 @@ function TheoMoHinh({ L, khoi }: { L: Luoi; khoi: string }) {
 // Popup "Lưu vào giáo trình": chọn/tạo giáo trình + đặt tên buổi → tạo buổi master + lưu bài của nháp.
 function LuuGiaoTrinhPopup({ khoi, moHinhChinhId, nhap, onClose, onDone }: {
   khoi: string; moHinhChinhId: string | null
-  nhap: { sel: Record<string, Record<string, 'lop' | 'nha'>>; ghep: GhepItem[]; anDe: string[] }
+  nhap: { sel: Record<string, Record<string, 'lop' | 'nha'>>; ghep: GhepItem[]; anDe: string[]; soDong: Record<string, number> }
   onClose: () => void; onDone: () => void
 }) {
   const [gts, setGts] = useState<GiaoTrinh[]>([])
@@ -608,20 +613,21 @@ function LuuGiaoTrinhPopup({ khoi, moHinhChinhId, nhap, onClose, onDone }: {
 }
 
 /** Bài lẻ (từ sel) + bài a,b,c GHÉP (từ ghep) của MỘT phiếu → bản in. */
-function banInTheoMoHinh(tieuDe: string, phan: 'lop' | 'nha', nodes: BaiToan[], pools: Map<string, PoolItem[]>, sel: Record<string, Record<string, 'lop' | 'nha'>>, ghep: GhepItem[], L: Luoi, anDe: string[]): BanIn {
+function banInTheoMoHinh(tieuDe: string, phan: 'lop' | 'nha', nodes: BaiToan[], pools: Map<string, PoolItem[]>, sel: Record<string, Record<string, 'lop' | 'nha'>>, ghep: GhepItem[], L: Luoi, anDe: string[], soDong: Record<string, number>): BanIn {
   const an = new Set(anDe)
+  const dong = (key: string) => (phan === 'nha' ? (soDong[key] ?? DONG_BTVN) : soDong[key] ?? null)   // BTVN mặc định DONG_BTVN
   const mucs: MucIn[] = []
   for (const bt of nodes) {
     const pick = sel[bt.id] ?? {}
     for (const it of (pools.get(bt.id) ?? [])) {
-      if (pick[it.key] === phan) mucs.push({ kieu: 'de', deBai: it.deBai, anhDe: it.anhDe, ma: bt.ma, ys: it.ys, anDe: an.has(it.key) || !it.anhDe })
+      if (pick[it.key] === phan) mucs.push({ kieu: 'de', deBai: it.deBai, anhDe: it.anhDe, ma: bt.ma, ys: it.ys, anDe: an.has(it.key) || !it.anhDe, soDong: dong(it.key) })
     }
   }
-  for (const g of ghep.filter((x) => x.phan === phan)) mucs.push(mucGhep(L, g, an.has(g.key)))
+  for (const g of ghep.filter((x) => x.phan === phan)) mucs.push(mucGhep(L, g, an.has(g.key), dong(g.key)))
   return { tieuDe: `Buổi học — ${tieuDe}`, phuDe: `${mucs.length} mục · ${nodes.length} node`, mucs }
 }
 /** Ghép chuỗi (đề chuẩn) → 1 bài a,b,c: giả thiết + hình của node SÂU NHẤT chung; ý a,b,c = câu hỏi + lời giải từng node. */
-export function mucGhep(L: Luoi, g: GhepItem, anDe: boolean): MucIn {
+export function mucGhep(L: Luoi, g: GhepItem, anDe: boolean, soDong?: number | null): MucIn {
   const nodes = (g.nodeIds.map((id) => L.baiToan.find((b) => b.id === id)).filter(Boolean) as BaiToan[])
     .sort((a, b) => a.cap - b.cap || a.ma.localeCompare(b.ma))
   let deep = nodes[0]; let dS = -1
@@ -631,7 +637,7 @@ export function mucGhep(L: Luoi, g: GhepItem, anDe: boolean): MucIn {
     return { nhan: String.fromCharCode(97 + i), noiDung: `Chứng minh ${bt.phat_bieu}`, loiGiai: c?.loi_giai ?? null, anh: c?.anh_loi_giai ?? null, ma: bt.ma, cap: bt.cap }
   })
   const anhDe = api.anhCuaBaiToan(L, deep.id)
-  return { kieu: 'de', deBai: api.giaThietDayDu(L, deep.mo_hinh_id), anhDe, ma: nodes.map((b) => b.ma).join('+'), ys, anDe: anDe || !anhDe }
+  return { kieu: 'de', deBai: api.giaThietDayDu(L, deep.mo_hinh_id), anhDe, ma: nodes.map((b) => b.ma).join('+'), ys, anDe: anDe || !anhDe, soDong: soDong ?? null }
 }
 
 // ── Một NODE trong builder: header tick + (khi mở) 2 KHỐI tách hẳn Trên lớp / Về nhà (như DangCard Đại) ──
@@ -760,11 +766,13 @@ function KhoBaiPicker({ node, phan, pool, pick, onClose, onConfirm }: {
   )
 }
 // Danh sách bài đã chọn cho 1 phiếu (cột xuất) — hiện rõ node + nguồn + đề, để soát trước khi in.
-function PhieuList({ nhan, ton, ds, ghep, L, onRemoveGhep, anDe, onToggleAnDe }: {
+function PhieuList({ nhan, ton, ds, ghep, L, onRemoveGhep, anDe, onToggleAnDe, soDong, onSetSoDong }: {
   nhan: string; ton: 'lop' | 'nha'; ds: { n: BaiToan; p: PoolItem }[]
   ghep: GhepItem[]; L: Luoi; onRemoveGhep: (key: string) => void; anDe: string[]; onToggleAnDe: (key: string) => void
+  soDong: Record<string, number>; onSetSoDong: (key: string, n: number) => void
 }) {
   const col = ton === 'lop' ? 'text-sky-700' : 'text-orange-600'
+  const laNha = ton === 'nha'
   const tong = ds.length + ghep.length
   // Nút ẩn/hiện hình: có hình mới bấm được (không hình thì HS luôn phải vẽ → hiện ✏️ mờ).
   const HinhBtn = ({ khoa, coHinh }: { khoa: string; coHinh: boolean }) => {
@@ -774,6 +782,11 @@ function PhieuList({ nhan, ton, ds, ghep, L, onRemoveGhep, anDe, onToggleAnDe }:
         className={`shrink-0 rounded px-1 text-[11px] ${an || !coHinh ? 'text-amber-600' : 'text-slate-400 hover:text-slate-700'}`}>{an || !coHinh ? '✏️' : '🖼'}</button>
     )
   }
+  // Số dòng HS viết (chỉ phiếu Về nhà = BTVN).
+  const DongIn = ({ khoa }: { khoa: string }) => laNha ? (
+    <input type="number" min={0} max={30} value={soDong[khoa] ?? DONG_BTVN} onChange={(e) => onSetSoDong(khoa, Math.max(0, Math.min(30, +e.target.value || 0)))}
+      title="Số dòng kẻ HS viết mỗi ý" className="h-5 w-9 shrink-0 rounded border border-slate-300 px-1 text-center text-[10px]" />
+  ) : null
   return (
     <div>
       <div className={`mb-1 text-[11px] font-semibold uppercase tracking-wide ${col}`}>{nhan} · {tong}</div>
@@ -783,6 +796,7 @@ function PhieuList({ nhan, ton, ds, ghep, L, onRemoveGhep, anDe, onToggleAnDe }:
           <Ma>{n.ma}</Ma>
           <span className="shrink-0 rounded bg-slate-100 px-1 text-[10px] text-slate-500">{NGUON_NHAN[p.nguon]}</span>
           <span className="min-w-0 flex-1 truncate"><MathText>{p.deBai}</MathText></span>
+          <DongIn khoa={p.key} />
           <HinhBtn khoa={p.key} coHinh={!!p.anhDe} />
         </div>
       ))}
@@ -792,6 +806,7 @@ function PhieuList({ nhan, ton, ds, ghep, L, onRemoveGhep, anDe, onToggleAnDe }:
           <div key={g.key} className="flex items-center gap-1.5 py-0.5 text-[11.5px] text-slate-600">
             <span className="shrink-0 rounded bg-violet-100 px-1 text-[10px] font-medium text-violet-700">🔗 a,b,c</span>
             <span className="min-w-0 flex-1 truncate">{mas.join(' · ')}</span>
+            <DongIn khoa={g.key} />
             <HinhBtn khoa={g.key} coHinh />
             <button onClick={() => onRemoveGhep(g.key)} className="shrink-0 text-slate-400 hover:text-rose-600" title="Bỏ bài ghép">✕</button>
           </div>
