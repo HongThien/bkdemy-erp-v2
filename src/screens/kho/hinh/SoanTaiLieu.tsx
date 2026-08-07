@@ -473,6 +473,14 @@ function TheoMoHinh({ L, khoi }: { L: Luoi; khoi: string }) {
 
   const [luuOpen, setLuuOpen] = useState(false)   // popup "Lưu vào giáo trình"
   const coChon = dsLop.length + dsNha.length + ghep.length > 0
+  // Sửa buổi giáo trình (mở từ màn Giáo trình): Lưu = CẬP NHẬT buổi đó, không tạo mới.
+  const editBuoi = mh.editBuoi
+  const capNhatBuoi = async () => {
+    if (!editBuoi) return
+    try { await gt.saveBuoiSelection(editBuoi, { sel, ghep, anDe, soDong }); alert('Đã cập nhật buổi giáo trình.') }
+    catch (e: any) { alert(e.message ?? String(e)) }
+  }
+  const buoiMoi = () => setMh({ mainId: '', satIds: [], nodeIds: [], sel: {}, ghep: [], anDe: [], soDong: {}, editBuoi: null })
 
   return (
     <>
@@ -542,8 +550,20 @@ function TheoMoHinh({ L, khoi }: { L: Luoi; khoi: string }) {
             onClick={() => setInBan(banInTheoMoHinh('Về nhà (BTVN)', 'nha', tickedNodes, pools, sel, ghep, L, anDe, soDong))}>📝 Xuất phiếu Về nhà</Btn>
           <p className="mt-2.5 text-[11px] leading-relaxed text-slate-400">Mỗi bài chỉ vào <b>một</b> phiếu. <b>🔗</b> = a,b,c ghép chuỗi. <b>✏️</b> = ẩn hình, chừa ô HS tự vẽ.</p>
           <div className="mt-3 border-t border-slate-100 pt-3">
-            <Btn className="w-full justify-center border-violet-300 text-violet-700" disabled={!coChon} onClick={() => setLuuOpen(true)}>💾 Lưu vào giáo trình</Btn>
-            <p className="mt-1.5 text-[11px] leading-relaxed text-slate-400">Lưu lựa chọn hiện tại thành <b>một buổi</b> trong giáo trình (để gán lớp sau).</p>
+            {editBuoi ? (
+              <>
+                <Btn kind="pri" className="w-full justify-center" disabled={!coChon} onClick={capNhatBuoi}>💾 Cập nhật buổi này</Btn>
+                <div className="mt-1.5 flex items-center gap-2 text-[11px]">
+                  <span className="font-medium text-violet-700">✎ Đang sửa buổi giáo trình</span>
+                  <button onClick={buoiMoi} className="ml-auto text-slate-400 hover:text-slate-700">↺ Thoát / Buổi mới</button>
+                </div>
+              </>
+            ) : (
+              <>
+                <Btn className="w-full justify-center border-violet-300 text-violet-700" disabled={!coChon} onClick={() => setLuuOpen(true)}>💾 Lưu vào giáo trình</Btn>
+                <p className="mt-1.5 text-[11px] leading-relaxed text-slate-400">Lưu lựa chọn hiện tại thành <b>một buổi</b> trong giáo trình (để gán lớp sau).</p>
+              </>
+            )}
           </div>
         </Panel>
       </div>
