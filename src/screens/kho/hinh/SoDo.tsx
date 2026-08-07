@@ -398,6 +398,17 @@ function FormBienThe({ baiToanId, v, goc, onClose, onDone }: {
       setAiDone(true)
     } catch (e: any) { setLoi(e.message ?? String(e)) } finally { setAiBusy(false) }
   }
+  // ✨ AI đổi ĐỈNH: giữ nguyên số + logic, chỉ đổi tên điểm (nhất quán khắp đề + lời giải). Đổ vào 2 ô; hình GIỮ gốc.
+  const doiDinhAI = async () => {
+    if (!goc.de.trim()) { setLoi('Chưa có đề gốc để đổi đỉnh.'); return }
+    setAiBusy(true); setLoi(null)
+    try {
+      const r = await api.doiDinhHinh({ de: goc.de, loiGiai: goc.loiGiai }, aiGhiChu)
+      if (r.de_bai) setDeBai(r.de_bai)
+      if (r.loi_giai) setLoiGiai(r.loi_giai)
+      setAiDone(true)
+    } catch (e: any) { setLoi(e.message ?? String(e)) } finally { setAiBusy(false) }
+  }
   const apDoiDiem = () => {
     const m = parseMapDiem(mapText)
     if (!Object.keys(m).length) { setLoi('Ánh xạ điểm trống — nhập kiểu "A>M, B>N, C>P".'); return }
@@ -435,20 +446,36 @@ function FormBienThe({ baiToanId, v, goc, onClose, onDone }: {
             <Lbl>Kiểu biến thể</Lbl>
             <div className="flex gap-2">
               {(['doi_dinh', 'doi_so'] as const).map((k) => (
-                <button key={k} type="button" onClick={() => setKieu(k)}
+                <button key={k} type="button" onClick={() => { setKieu(k); setAiDone(false) }}
                   className={`rounded-lg border px-3 py-1.5 text-[13px] font-medium transition ${kieu === k ? 'border-indigo-400 bg-indigo-50 text-indigo-700' : 'border-slate-200 bg-white text-slate-500 hover:bg-slate-50'}`}>{KIEU_BT[k]}</button>
               ))}
             </div>
           </div>
           {/* Thay điểm → relabel tự động (chỉ trong $…$). Đổi số → sửa tay + tính lại đáp án (2 kiểu tách hẳn). */}
           {kieu === 'doi_dinh' ? (
-            <div className="rounded-lg border border-indigo-200 bg-indigo-50/40 p-2.5">
-              <Lbl>Thay điểm (relabel) — tự thay nhãn trong đề + lời giải</Lbl>
-              <div className="flex gap-2">
-                <input className={inpCls} value={mapText} onChange={(e) => setMapText(e.target.value)} placeholder="A>M, B>N, C>P, H>K" />
-                <Btn className="h-[38px] shrink-0 px-3" onClick={apDoiDiem}>Áp dụng</Btn>
+            <div className="space-y-2">
+              <div className="rounded-lg border border-indigo-200 bg-indigo-50/40 p-2.5">
+                <Lbl>Thay điểm (thủ công) — gõ ánh xạ, tự thay trong $…$</Lbl>
+                <div className="flex gap-2">
+                  <input className={inpCls} value={mapText} onChange={(e) => setMapText(e.target.value)} placeholder="A>M, B>N, C>P, H>K" />
+                  <Btn className="h-[38px] shrink-0 px-3" onClick={apDoiDiem}>Áp dụng</Btn>
+                </div>
+                <p className="mt-1 text-[11px] leading-snug text-slate-500">Chỉ đổi ký hiệu trong <code>$…$</code>, giữ nguyên số.</p>
               </div>
-              <p className="mt-1 text-[11px] leading-snug text-slate-500">Chỉ đổi ký hiệu trong công thức <code>$…$</code>, giữ nguyên số. Hình bạn tự update theo đề mới.</p>
+              {/* ✨ Đổi đỉnh bằng AI: AI tự chọn bộ đỉnh mới, đổi nhất quán khắp đề + lời giải (cả ngoài $…$), giữ số + logic. */}
+              <div className="rounded-lg border border-indigo-200 bg-indigo-50/40 p-2.5">
+                <Lbl>✨ Đổi đỉnh bằng AI — tự chọn bộ đỉnh mới, giữ nguyên số & logic</Lbl>
+                <div className="flex gap-2">
+                  <input className={inpCls} value={aiGhiChu} onChange={(e) => setAiGhiChu(e.target.value)} placeholder="Ghi chú cho AI (tuỳ chọn): vd đổi sang M, N, P…" />
+                  <Btn kind="pri" className="h-[38px] shrink-0 px-3" disabled={aiBusy || !goc.de.trim()} onClick={doiDinhAI}>{aiBusy ? '⏳ Đang đổi…' : '✨ Đổi đỉnh'}</Btn>
+                </div>
+                <p className="mt-1 text-[11px] leading-snug text-slate-500">AI đổi TÊN điểm nhất quán khắp <b>đề</b> + <b>lời giải</b> (cả ngoài <code>$…$</code>), giữ nguyên số.</p>
+                {aiDone && (
+                  <p className="mt-1.5 rounded-md bg-amber-100 px-2 py-1 text-[11px] font-medium leading-snug text-amber-800">
+                    ⚠ Đã đổi tên điểm ở đề + lời giải. Hình vẫn là <b>hình gốc</b> — sửa nhãn điểm trên hình cho khớp bộ điểm mới.
+                  </p>
+                )}
+              </div>
             </div>
           ) : (
             <div className="space-y-2">

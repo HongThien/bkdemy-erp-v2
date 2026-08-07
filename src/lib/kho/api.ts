@@ -1307,6 +1307,43 @@ export async function sinhBienTheHinh(goc: { de: string; loiGiai: string | null 
   return { de_bai: String(obj.de_bai ?? obj.deBai ?? '').trim(), loi_giai: String(obj.loi_giai ?? obj.loiGiai ?? '').trim() }
 }
 
+// ── ĐỔI ĐỈNH bằng AI: GIỮ NGUYÊN số + logic + cấu hình, CHỈ đổi TÊN các điểm sang bộ khác, nhất quán ──
+// Khác relabel regex (doiDiem chỉ đổi trong $…$): AI đổi cả nhãn ngoài $ và tự chọn bộ đỉnh mới. Hình DÙNG LẠI gốc → nhãn điểm trên hình phải sửa (UI cảnh báo).
+export function buildDoiDinhHinhPrompt(a: { de: string; loiGiai: string; ghiChu?: string }): string {
+  const gocText = [
+    'BÀI GỐC (người ra đề đã chốt):',
+    `de_bai: ${a.de}`,
+    `loi_giai: ${a.loiGiai || '(chưa có lời giải — tự giải theo đúng phương pháp chuẩn của bài)'}`,
+  ].join('\n')
+  return [
+    'Bạn là chuyên gia ra đề toán HÌNH HỌC THCS.',
+    '',
+    gocText,
+    '',
+    'NHIỆM VỤ: Sinh 1 biến thể "ĐỔI ĐỈNH" — GIỮ NGUYÊN mọi số liệu, cấu hình hình và phương pháp giải; CHỈ ĐỔI TÊN các điểm/đỉnh sang bộ ký hiệu KHÁC. Trả 1 đề + 1 lời giải.',
+    '',
+    '⚠ RÀNG BUỘC (tuân thủ TUYỆT ĐỐI):',
+    '- ĐỔI TÊN mọi điểm sang bộ chữ KHÁC (vd $A,B,C,H \\to M,N,P,K$). NHẤT QUÁN: một điểm cũ ↦ đúng MỘT điểm mới ở MỌI chỗ trong đề + lời giải, kể cả trong lẫn ngoài $…$.',
+    '- GIỮ NGUYÊN TUYỆT ĐỐI: mọi con số / số đo, cấu hình hình (loại tam giác, vuông góc / song song / thẳng hàng / trung điểm…), SỐ BƯỚC & THỨ TỰ lời giải. KHÔNG đổi số, KHÔNG đổi logic, KHÔNG thêm/bớt dữ kiện.',
+    '- Bộ đỉnh mới phải KHÁC bộ cũ và không trùng ký hiệu đang dùng cho mục đích khác (đơn vị, biến số).',
+    '- KHÔNG đổi chữ KHÔNG phải tên điểm (đơn vị cm, ký hiệu $^\\circ$, tên đại lượng…).',
+    a.ghiChu ? `- ⚠ GHI CHÚ NGƯỜI RA ĐỀ = RÀNG BUỘC CỨNG, ưu tiên CAO NHẤT: ${a.ghiChu}` : '',
+    '',
+    FMT_RULES,
+    '',
+    'Trả về JSON: { "de_bai": "...", "loi_giai": "..." }',
+  ].filter(Boolean).join('\n')
+}
+export async function doiDinhHinh(goc: { de: string; loiGiai: string | null }, ghiChu?: string): Promise<{ de_bai: string; loi_giai: string }> {
+  const raw = await callGeminiJson(
+    buildDoiDinhHinhPrompt({ de: goc.de, loiGiai: goc.loiGiai ?? '', ghiChu: ghiChu?.trim() || undefined }),
+    { model: 'gemini-2.5-flash', think: 8192, schema: HINH_BAI_SCHEMA },
+  )
+  let t = raw.trim(); const fence = t.match(/```(?:json)?\s*([\s\S]*?)```/i); if (fence) t = fence[1].trim()
+  const obj = lenientJsonParse(t)
+  return { de_bai: String(obj.de_bai ?? obj.deBai ?? '').trim(), loi_giai: String(obj.loi_giai ?? obj.loiGiai ?? '').trim() }
+}
+
 // ── Lý thuyết đi kèm dạng Đại (1-1) + chuẩn completeness ──────────
 export const CHUAN_SO_CAU = 50 // chuẩn kho: mỗi dạng ≥ 50 câu (sàn SỐ LƯỢNG, chỉnh 1 chỗ)
 // noi_dung = nội dung lý thuyết (text + LaTeX); file_url/ten_file = đính kèm; khong_can = đánh dấu "không cần" (chỉ chuyên đề)
