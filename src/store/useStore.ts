@@ -33,6 +33,7 @@ export type SoanHinhDraft = {
     ghep: { key: string; phan: 'lop' | 'nha'; luaId: string | null; nodeIds: string[] }[]
     anDe: string[]
     soDong: Record<string, number>   // khoá bài → số dòng kẻ HS viết (BTVN). Vắng = mặc định bản in.
+    editBuoi: string | null          // đang SỬA buổi giáo trình này (Lưu = cập nhật buổi đó, không tạo mới)
   }
   ot: { dangIds: string[]; gio: string[]; dkTu: string; dkDen: string }
 }
@@ -40,7 +41,7 @@ export type GhepItem = SoanHinhDraft['mh']['ghep'][number]
 export const SOAN_HINH_DEFAULT: SoanHinhDraft = {
   che: 'gd',
   gd: { aId: '', bId: '', daHoc: [], themVao: [] },
-  mh: { mainId: '', satIds: [], nodeIds: [], sel: {}, ghep: [], anDe: [], soDong: {} },
+  mh: { mainId: '', satIds: [], nodeIds: [], sel: {}, ghep: [], anDe: [], soDong: {}, editBuoi: null },
   ot: { dangIds: [], gio: [], dkTu: '', dkDen: '' },
 }
 

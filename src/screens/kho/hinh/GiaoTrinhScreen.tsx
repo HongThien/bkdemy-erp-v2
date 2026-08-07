@@ -10,6 +10,41 @@ import { Btn, Empty, Ma, Panel, Seg, tron, inpCls } from './hinhUi'
 import HinhPrintView, { type BanIn, type MucIn } from './HinhPrintView'
 import { mucGhep } from './SoanTaiLieu'
 import { createPortal } from 'react-dom'
+import { useStore, type SoanHinhDraft, type GhepItem } from '../../../store/useStore'
+import type { Nhay } from './KhoHinhScreen'
+
+// Dựng lại NHÁP builder "Theo mô hình" từ buổi đã lưu → mở lại để SỬA (không mất cấu trúc).
+async function loadBuoiToDraft(L: Luoi, buoi: GtBuoi): Promise<SoanHinhDraft['mh']> {
+  const bais = await gt.listGtBai(buoi.id)
+  const [btMap, yMap] = await Promise.all([
+    gt.getBienTheByIds(bais.filter((b) => b.loai === 'bienthe').map((b) => b.ref_id!).filter(Boolean)),
+    gt.getYFull(bais.filter((b) => b.loai === 'y').map((b) => b.ref_id!).filter(Boolean)),
+  ])
+  const sel: Record<string, Record<string, 'lop' | 'nha'>> = {}
+  const ghep: GhepItem[] = []; const anDe: string[] = []; const soDong: Record<string, number> = {}
+  const nodeSet = new Set<string>()
+  const put = (nodeId: string, key: string, b: GtBai) => {
+    (sel[nodeId] ??= {})[key] = b.phan
+    if (b.an_de) anDe.push(key)
+    if (b.so_dong != null) soDong[key] = b.so_dong
+    nodeSet.add(nodeId)
+  }
+  for (const b of bais) {
+    if (b.loai === 'chuan' && b.ref_id) put(b.ref_id, `${b.ref_id}:chuan`, b)
+    else if (b.loai === 'bienthe' && b.ref_id) { const v = btMap.get(b.ref_id); if (v) put(v.baitoan_id, `bt:${b.ref_id}`, b) }
+    else if (b.loai === 'y' && b.ref_id) { const yb = yMap.get(b.ref_id); if (yb?.y.baitoan_id) put(yb.y.baitoan_id, `y:${b.ref_id}`, b) }
+    else if (b.loai === 'ghep') {
+      ghep.push({ key: b.id, phan: b.phan, luaId: b.lua_id, nodeIds: b.ghep_node_ids })
+      if (b.an_de) anDe.push(b.id)
+      if (b.so_dong != null) soDong[b.id] = b.so_dong
+      b.ghep_node_ids.forEach((id) => nodeSet.add(id))
+    }
+  }
+  const nodeIds = [...nodeSet]
+  const mainId = buoi.mo_hinh_chinh_id ?? (nodeIds.length ? (L.baiToan.find((x) => x.id === nodeIds[0])?.mo_hinh_id ?? '') : '')
+  const satIds = [...new Set(nodeIds.map((nid) => L.baiToan.find((x) => x.id === nid)?.mo_hinh_id).filter((m): m is string => !!m && m !== mainId))]
+  return { mainId, satIds, nodeIds, sel, ghep, anDe, soDong, editBuoi: buoi.id }
+}
 
 // ── Resolve bài của một buổi → BanIn cho 1 phiếu (lop/nha). Fetch biến thể/ý theo id. ──
 async function resolveBanIn(L: Luoi, tieuBuoi: string, bais: GtBai[], phan: 'lop' | 'nha'): Promise<BanIn> {
@@ -40,26 +75,32 @@ async function resolveBanIn(L: Luoi, tieuBuoi: string, bais: GtBai[], phan: 'lop
   return { tieuDe: `${tieuBuoi} — ${phan === 'lop' ? 'Trên lớp' : 'Về nhà (BTVN)'}`, phuDe: `${mucs.length} mục`, mucs }
 }
 
-export default function GiaoTrinhScreen({ L, khoi }: { L: Luoi; khoi: string }) {
+export default function GiaoTrinhScreen({ L, khoi, di }: { L: Luoi; khoi: string; di: (n: Nhay) => void }) {
   const [tab, setTab] = useState<'master' | 'lop'>('master')
   const [inBan, setInBan] = useState<BanIn | null>(null)
+  const setSoanHinh = useStore((s) => s.setSoanHinh)
   const inBuoi = useCallback(async (tieu: string, buoiId: string, phan: 'lop' | 'nha') => {
     try { setInBan(await resolveBanIn(L, tieu, await gt.listGtBai(buoiId), phan)) } catch (e: any) { alert(e.message ?? String(e)) }
   }, [L])
+  // Sửa: dựng lại nháp builder từ buổi → mở màn Soạn tài liệu (Theo mô hình), đánh dấu editBuoi.
+  const sua = useCallback(async (buoi: GtBuoi) => {
+    try { const mh = await loadBuoiToDraft(L, buoi); setSoanHinh(khoi, (cur) => ({ ...cur, che: 'mh', mh })); di({ man: 'soan' }) }
+    catch (e: any) { alert(e.message ?? String(e)) }
+  }, [L, khoi, setSoanHinh, di])
   return (
     <>
       <div className="mb-3 flex items-center justify-between gap-3">
         <h1 className="text-[19px] font-semibold text-slate-900">Giáo trình <span className="text-slate-400">· Khối {khoi}</span></h1>
         <Seg value={tab} onChange={setTab} options={[{ v: 'master', label: '▤ Master — soạn' }, { v: 'lop', label: '◷ Theo lớp — đã gán' }]} />
       </div>
-      {tab === 'master' ? <Master L={L} khoi={khoi} onIn={inBuoi} /> : <TheoLop khoi={khoi} onIn={inBuoi} />}
+      {tab === 'master' ? <Master L={L} khoi={khoi} onIn={inBuoi} onSua={sua} /> : <TheoLop khoi={khoi} onIn={inBuoi} />}
       {inBan && <HinhPrintView ban={inBan} onClose={() => setInBan(null)} />}
     </>
   )
 }
 
 // ══════════════ MASTER ══════════════
-function Master({ L, khoi, onIn }: { L: Luoi; khoi: string; onIn: (tieu: string, buoiId: string, phan: 'lop' | 'nha') => void }) {
+function Master({ L, khoi, onIn, onSua }: { L: Luoi; khoi: string; onIn: (tieu: string, buoiId: string, phan: 'lop' | 'nha') => void; onSua: (buoi: GtBuoi) => void }) {
   const [gts, setGts] = useState<GiaoTrinh[]>([])
   const [chon, setChon] = useState<string | null>(null)
   const [buois, setBuois] = useState<GtBuoi[]>([])
@@ -107,6 +148,7 @@ function Master({ L, khoi, onIn }: { L: Luoi; khoi: string; onIn: (tieu: string,
                   {b.mo_hinh_chinh_id && <span className="text-[11px] text-teal-600">◇ {L.moHinh.find((m) => m.id === b.mo_hinh_chinh_id)?.ma}</span>}
                   <span className="text-[11.5px] text-slate-400">{demBai[b.id] ?? '…'} bài</span>
                   <div className="ml-auto flex gap-1.5">
+                    <Btn className="h-7 px-2 text-[12px]" onClick={() => onSua(b)}>✎ Sửa</Btn>
                     <Btn className="h-7 px-2 text-[12px]" onClick={() => onIn(tieuBuoi(b, i), b.id, 'lop')}>📘 In Lớp</Btn>
                     <Btn className="h-7 px-2 text-[12px]" onClick={() => onIn(tieuBuoi(b, i), b.id, 'nha')}>📝 In Nhà</Btn>
                     <Btn className="h-7 px-2 text-[12px] border-violet-300 text-violet-700" onClick={() => setGanBuoi(b)}>＋ Gán lớp</Btn>
