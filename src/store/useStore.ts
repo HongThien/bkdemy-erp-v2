@@ -24,13 +24,14 @@ export type EtDraft = {
 export type SoanHinhDraft = {
   che: 'gd' | 'mh' | 'ot'
   gd: { aId: string; bId: string; daHoc: string[]; themVao: string[] }
-  mh: { mainId: string; satIds: string[]; nodeIds: string[]; cnt: Record<string, { lop: number; nha: number }> }
+  // sel: node → (khoá bài trong pool → 'lop' | 'nha'). Mỗi bài chỉ 1 phiếu ⇒ Lớp/Nhà KHÔNG bao giờ trùng.
+  mh: { mainId: string; satIds: string[]; nodeIds: string[]; sel: Record<string, Record<string, 'lop' | 'nha'>> }
   ot: { dangIds: string[]; gio: string[]; dkTu: string; dkDen: string }
 }
 export const SOAN_HINH_DEFAULT: SoanHinhDraft = {
   che: 'gd',
   gd: { aId: '', bId: '', daHoc: [], themVao: [] },
-  mh: { mainId: '', satIds: [], nodeIds: [], cnt: {} },
+  mh: { mainId: '', satIds: [], nodeIds: [], sel: {} },
   ot: { dangIds: [], gio: [], dkTu: '', dkDen: '' },
 }
 

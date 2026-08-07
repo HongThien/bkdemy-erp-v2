@@ -400,7 +400,7 @@ function TheoMoHinh({ L, khoi }: { L: Luoi; khoi: string }) {
   const maCap = useMemo(() => api.maPhanCapMap(L), [L])
   const [mh, setMh] = useSoanSlice(khoi, 'mh')  // nháp store (giữ khi rời màn) — chỉ LỰA CHỌN
   const mainId = mh.mainId
-  const cnt = mh.cnt  // Record<nodeId, {lop,nha}>
+  const sel = mh.sel  // node → (khoá bài → 'lop'|'nha'); mỗi bài 1 phiếu ⇒ không trùng
   const satIds = useMemo(() => new Set(mh.satIds), [mh.satIds])
   const nodeIds = useMemo(() => new Set(mh.nodeIds), [mh.nodeIds])
   const [pools, setPools] = useState<Map<string, PoolItem[]>>(new Map())  // pool bài — RAM local, re-fetch khi quay lại
@@ -414,7 +414,7 @@ function TheoMoHinh({ L, khoi }: { L: Luoi; khoi: string }) {
   const nodes = useMemo(() => L.baiToan.filter((b) => modelIds.includes(b.mo_hinh_id)).sort((a, b) => a.cap - b.cap || a.ma.localeCompare(b.ma)), [L, modelIds])
   const tickedNodes = useMemo(() => nodes.filter((n) => nodeIds.has(n.id)), [nodes, nodeIds])
 
-  // Quay lại màn: nodeIds phục hồi từ nháp nhưng pool (RAM local) rỗng → nạp lại pool + đặt cnt mặc định cho node mới.
+  // Quay lại màn: nodeIds phục hồi từ nháp nhưng pool (RAM local) rỗng → nạp lại pool (KHÔNG tự chọn sẵn).
   useEffect(() => {
     const missing = mh.nodeIds.filter((id) => !pools.has(id))
     if (!missing.length) return
@@ -424,20 +424,33 @@ function TheoMoHinh({ L, khoi }: { L: Luoi; khoi: string }) {
         if (!alive) return
         const loaded = res.filter(Boolean) as [string, PoolItem[]][]
         setPools((m) => { const n = new Map(m); for (const [id, p] of loaded) n.set(id, p); return n })
-        const themCnt = Object.fromEntries(loaded.filter(([id]) => !mh.cnt[id]).map(([id, p]) => [id, { lop: Math.min(2, p.length), nha: 0 }]))
-        if (Object.keys(themCnt).length) setMh({ cnt: { ...mh.cnt, ...themCnt } })
       })
     return () => { alive = false }
   }, [mh.nodeIds, L]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // Đổi mô hình chính → reset chọn (tránh giữ node/vệ tinh của mô hình cũ).
-  const chonMain = (id: string) => setMh({ mainId: id, satIds: [], nodeIds: [], cnt: {} })
+  const chonMain = (id: string) => setMh({ mainId: id, satIds: [], nodeIds: [], sel: {} })
   const toggleSat = (id: string) => setMh({ satIds: satIds.has(id) ? mh.satIds.filter((x) => x !== id) : [...mh.satIds, id] })
   const tickNode = (id: string) => setMh({ nodeIds: nodeIds.has(id) ? mh.nodeIds.filter((x) => x !== id) : [...mh.nodeIds, id] })
-  const setCount = (id: string, patch: Partial<{ lop: number; nha: number }>) =>
-    setMh({ cnt: { ...cnt, [id]: { ...(cnt[id] ?? { lop: 0, nha: 0 }), ...patch } } })
+  // Chọn 1 BÀI cụ thể vào phiếu: 'lop' | 'nha' | null (bỏ). Bấm lại đúng phiếu đang chọn = bỏ.
+  const setPick = (nodeId: string, key: string, val: 'lop' | 'nha' | null) => {
+    const cur = { ...(sel[nodeId] ?? {}) }
+    if (val === null) delete cur[key]; else cur[key] = val
+    setMh({ sel: { ...sel, [nodeId]: cur } })
+  }
+  // Gợi ý nhanh: N bài ĐẦU kho → Lớp, M bài KẾ → Nhà (ghi đè lựa chọn của node đó). Không trùng vì cắt liền.
+  const goiY = (nodeId: string, nLop: number, nNha: number) => {
+    const pool = pools.get(nodeId) ?? []
+    const cur: Record<string, 'lop' | 'nha'> = {}
+    pool.slice(0, nLop).forEach((p) => { cur[p.key] = 'lop' })
+    pool.slice(nLop, nLop + nNha).forEach((p) => { cur[p.key] = 'nha' })
+    setMh({ sel: { ...sel, [nodeId]: cur } })
+  }
+  const clearNode = (nodeId: string) => setMh({ sel: { ...sel, [nodeId]: {} } })
 
-  const tong = tickedNodes.reduce((s, n) => { const c = cnt[n.id] ?? { lop: 0, nha: 0 }; return { lop: s.lop + c.lop, nha: s.nha + c.nha } }, { lop: 0, nha: 0 })
+  // Bài đã chọn cho từng phiếu (kèm node) — dùng cho tổng kết + xuất. Lớp/Nhà rời nhau theo thiết kế.
+  const chosen = (phan: 'lop' | 'nha') => tickedNodes.flatMap((n) => (pools.get(n.id) ?? []).filter((p) => sel[n.id]?.[p.key] === phan).map((p) => ({ n, p })))
+  const dsLop = chosen('lop'), dsNha = chosen('nha')
 
   return (
     <>
@@ -477,62 +490,34 @@ function TheoMoHinh({ L, khoi }: { L: Luoi; khoi: string }) {
             ? <Empty icon="◇">Chọn <b>mô hình chính</b> ở cột trái — hệ bày mọi node của nó (và vệ tinh đã tick) để chọn vào buổi.</Empty>
             : !nodes.length
               ? <Empty icon="◇">Mô hình đã chọn chưa có node nào. Tạo node ở <b>Sơ đồ</b> trước.</Empty>
-              : nodes.map((n) => {
-                const mhNode = L.moHinh.find((m) => m.id === n.mo_hinh_id)
-                const on = nodeIds.has(n.id)
-                const pool = pools.get(n.id) ?? []
-                const c = cnt[n.id] ?? { lop: 0, nha: 0 }
-                const tran = c.lop + c.nha > pool.length
-                return (
-                  <div key={n.id} className={`mb-2 rounded-xl border p-3 ${on ? 'border-blue-300 bg-blue-50/30' : 'border-slate-200 bg-white'}`}>
-                    <button onClick={() => tickNode(n.id)} className="flex w-full items-start gap-2.5 text-left">
-                      <span className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md border-[1.5px] text-[12px] text-white ${on ? 'border-blue-500 bg-blue-500' : 'border-slate-300'}`}>{on ? '✓' : ''}</span>
-                      <div className="min-w-0 flex-1">
-                        <b className="text-[12.5px] text-slate-800"><MathText>{n.phat_bieu}</MathText></b>
-                        <div className="mt-0.5 flex flex-wrap items-center gap-1.5 text-[11px] text-slate-400">
-                          <Ma>{n.ma}</Ma><Cap cap={n.cap} />{mhNode && <Tag ton="mh">{maCap.get(mhNode.id) ?? mhNode.ma}</Tag>}
-                        </div>
-                      </div>
-                    </button>
-                    {on && (
-                      <div className="mt-2.5 flex flex-wrap items-center gap-x-4 gap-y-2 rounded-lg bg-white px-3 py-2 text-[12px]">
-                        <span className="text-slate-400">Kho: <b className="text-slate-600">{pool.length} bài</b>
-                          {pool.length > 0 && <span className="ml-1 text-[11px]">({['chuan', 'bienthe', 'that'].map((ng) => { const k = pool.filter((p) => p.nguon === ng).length; return k ? `${k} ${NGUON_NHAN[ng as NguonBai]}` : null }).filter(Boolean).join(' · ')})</span>}
-                        </span>
-                        <label className="flex items-center gap-1.5 font-medium text-sky-700">📘 Trên lớp
-                          <input type="number" min={0} value={c.lop} onChange={(e) => setCount(n.id, { lop: Math.max(0, +e.target.value || 0) })} className="h-7 w-12 rounded border border-slate-300 px-1 text-center" />
-                        </label>
-                        <label className="flex items-center gap-1.5 font-medium text-orange-600">📝 Về nhà
-                          <input type="number" min={0} value={c.nha} onChange={(e) => setCount(n.id, { nha: Math.max(0, +e.target.value || 0) })} className="h-7 w-12 rounded border border-slate-300 px-1 text-center" />
-                        </label>
-                        {tran && <span className="text-[11px] font-medium text-rose-600">⚠ vượt kho ({pool.length}) — thiếu bài, sẽ lấy tối đa</span>}
-                      </div>
-                    )}
-                  </div>
-                )
-              })}
+              : nodes.map((n) => (
+                <NodeRow key={n.id} L={L} n={n} maCap={maCap} on={nodeIds.has(n.id)} pool={pools.get(n.id) ?? []}
+                  pick={sel[n.id] ?? {}} onTick={() => tickNode(n.id)} onPick={(key, val) => setPick(n.id, key, val)}
+                  onGoiY={(a, b) => goiY(n.id, a, b)} onClear={() => clearNode(n.id)} />
+              ))}
         </div>
 
         {/* CỘT 3 — tổng kết + xuất 2 phiếu */}
         <Panel label="Xuất phiếu" className="sticky top-4">
-          <div className="space-y-1 text-[12.5px] text-slate-600">
-            {tickedNodes.length
-              ? tickedNodes.map((n) => { const c = cnt[n.id] ?? { lop: 0, nha: 0 }; return (
-                <div key={n.id} className="flex items-center gap-1.5">
-                  <Ma>{n.ma}</Ma><span className="ml-auto text-[11.5px] text-slate-400">{c.lop}+{c.nha}</span>
-                </div>) })
-              : <div className="text-slate-400">— chưa tick node nào —</div>}
+          {!tickedNodes.length
+            ? <div className="text-[12.5px] text-slate-400">— chưa tick node nào —</div>
+            : (
+              <>
+                <PhieuList nhan="📘 Trên lớp" ton="lop" ds={dsLop} />
+                <div className="my-2 border-t border-slate-100" />
+                <PhieuList nhan="📝 Về nhà" ton="nha" ds={dsNha} />
+              </>
+            )}
+          <div className="mt-3 flex gap-4 border-t border-slate-100 pt-3 text-[12.5px]">
+            <span className="text-sky-700">Lớp <b>{dsLop.length}</b></span>
+            <span className="text-orange-600">Nhà <b>{dsNha.length}</b></span>
+            <span className="ml-auto text-slate-400">{tickedNodes.length} node</span>
           </div>
-          <div className="mt-3 space-y-1 border-t border-slate-100 pt-3 text-[12.5px]">
-            <div className="flex justify-between"><span>Node</span><b>{tickedNodes.length}</b></div>
-            <div className="flex justify-between text-sky-700"><span>Bài trên lớp</span><b>{tong.lop}</b></div>
-            <div className="flex justify-between text-orange-600"><span>Bài về nhà</span><b>{tong.nha}</b></div>
-          </div>
-          <Btn kind="pri" className="mt-3 w-full justify-center" disabled={!tong.lop}
-            onClick={() => setInBan(banInTheoMoHinh('Trên lớp', 'lop', tickedNodes, pools, cnt))}>📘 Xuất phiếu Trên lớp</Btn>
-          <Btn className="mt-2 w-full justify-center" disabled={!tong.nha}
-            onClick={() => setInBan(banInTheoMoHinh('Về nhà (BTVN)', 'nha', tickedNodes, pools, cnt))}>📝 Xuất phiếu Về nhà</Btn>
-          <p className="mt-2.5 text-[11px] leading-relaxed text-slate-400">Trên lớp lấy các bài ĐẦU kho mỗi node; Về nhà lấy các bài KẾ TIẾP — không trùng bài trên lớp.</p>
+          <Btn kind="pri" className="mt-3 w-full justify-center" disabled={!dsLop.length}
+            onClick={() => setInBan(banInTheoMoHinh('Trên lớp', 'lop', tickedNodes, pools, sel))}>📘 Xuất phiếu Trên lớp</Btn>
+          <Btn className="mt-2 w-full justify-center" disabled={!dsNha.length}
+            onClick={() => setInBan(banInTheoMoHinh('Về nhà (BTVN)', 'nha', tickedNodes, pools, sel))}>📝 Xuất phiếu Về nhà</Btn>
+          <p className="mt-2.5 text-[11px] leading-relaxed text-slate-400">Mỗi bài chỉ vào <b>một</b> phiếu — Lớp và Nhà không bao giờ trùng.</p>
         </Panel>
       </div>
       {inBan && <HinhPrintView ban={inBan} onClose={() => setInBan(null)} />}
@@ -541,13 +526,95 @@ function TheoMoHinh({ L, khoi }: { L: Luoi; khoi: string }) {
 }
 
 /** Trên lớp = bài đầu kho mỗi node (0..lop); Về nhà = bài kế tiếp (lop..lop+nha) → KHÔNG trùng trên lớp. */
-function banInTheoMoHinh(tieuDe: string, phan: 'lop' | 'nha', nodes: BaiToan[], pools: Map<string, PoolItem[]>, cnt: Record<string, { lop: number; nha: number }>): BanIn {
+function banInTheoMoHinh(tieuDe: string, phan: 'lop' | 'nha', nodes: BaiToan[], pools: Map<string, PoolItem[]>, sel: Record<string, Record<string, 'lop' | 'nha'>>): BanIn {
   const mucs: MucIn[] = []
   for (const bt of nodes) {
-    const pool = pools.get(bt.id) ?? []
-    const c = cnt[bt.id] ?? { lop: 0, nha: 0 }
-    const items = phan === 'lop' ? pool.slice(0, c.lop) : pool.slice(c.lop, c.lop + c.nha)
-    for (const it of items) mucs.push({ kieu: 'de', deBai: it.deBai, anhDe: it.anhDe, ma: bt.ma, ys: it.ys })
+    const pick = sel[bt.id] ?? {}
+    for (const it of (pools.get(bt.id) ?? [])) {
+      if (pick[it.key] === phan) mucs.push({ kieu: 'de', deBai: it.deBai, anhDe: it.anhDe, ma: bt.ma, ys: it.ys })
+    }
   }
   return { tieuDe: `Buổi học — ${tieuDe}`, phuDe: `${mucs.length} bài · ${nodes.length} node`, mucs }
+}
+
+// ── Một NODE trong builder: header tick + (khi mở) picker từng bài trong kho + gợi ý nhanh ──
+function NodeRow({ L, n, maCap, on, pool, pick, onTick, onPick, onGoiY, onClear }: {
+  L: Luoi; n: BaiToan; maCap: Map<string, string>; on: boolean; pool: PoolItem[]
+  pick: Record<string, 'lop' | 'nha'>; onTick: () => void
+  onPick: (key: string, val: 'lop' | 'nha' | null) => void; onGoiY: (nLop: number, nNha: number) => void; onClear: () => void
+}) {
+  const [gLop, setGLop] = useState(2)
+  const [gNha, setGNha] = useState(2)
+  const mhNode = L.moHinh.find((m) => m.id === n.mo_hinh_id)
+  const nLop = Object.values(pick).filter((v) => v === 'lop').length
+  const nNha = Object.values(pick).filter((v) => v === 'nha').length
+  const numIn = 'h-6 w-10 rounded border border-slate-300 px-1 text-center text-[12px]'
+  return (
+    <div className={`mb-2 rounded-xl border p-3 ${on ? 'border-blue-300 bg-blue-50/30' : 'border-slate-200 bg-white'}`}>
+      <button onClick={onTick} className="flex w-full items-start gap-2.5 text-left">
+        <span className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md border-[1.5px] text-[12px] text-white ${on ? 'border-blue-500 bg-blue-500' : 'border-slate-300'}`}>{on ? '✓' : ''}</span>
+        <div className="min-w-0 flex-1">
+          <b className="text-[12.5px] text-slate-800"><MathText>{n.phat_bieu}</MathText></b>
+          <div className="mt-0.5 flex flex-wrap items-center gap-1.5 text-[11px] text-slate-400">
+            <Ma>{n.ma}</Ma><Cap cap={n.cap} />{mhNode && <Tag ton="mh">{maCap.get(mhNode.id) ?? mhNode.ma}</Tag>}
+            {on && nLop + nNha > 0 && <span className="text-slate-500">· <b className="text-sky-700">{nLop}</b>📘 <b className="text-orange-600">{nNha}</b>📝</span>}
+          </div>
+        </div>
+      </button>
+      {on && (
+        <div className="mt-2.5 rounded-lg bg-white px-3 py-2">
+          <div className="mb-1.5 flex flex-wrap items-center gap-2 text-[11.5px] text-slate-500">
+            <span>Kho <b className="text-slate-700">{pool.length} bài</b>
+              {pool.length > 0 && <span className="ml-1">({['chuan', 'bienthe', 'that'].map((ng) => { const k = pool.filter((p) => p.nguon === ng).length; return k ? `${k} ${NGUON_NHAN[ng as NguonBai]}` : null }).filter(Boolean).join(' · ')})</span>}</span>
+            <span className="ml-auto flex items-center gap-1">Gợi ý
+              <input type="number" min={0} value={gLop} onChange={(e) => setGLop(Math.max(0, +e.target.value || 0))} className={numIn} title="số bài Trên lớp" />
+              <input type="number" min={0} value={gNha} onChange={(e) => setGNha(Math.max(0, +e.target.value || 0))} className={numIn} title="số bài Về nhà" />
+              <Btn className="h-6 px-2 text-[11px]" onClick={() => onGoiY(gLop, gNha)}>↻</Btn>
+            </span>
+            {nLop + nNha > 0 && <button onClick={onClear} className="text-[11px] text-slate-400 hover:text-rose-600">bỏ chọn</button>}
+          </div>
+          {pool.length === 0
+            ? <div className="text-[11.5px] italic text-slate-400">Node chưa có bài (chưa biến thể / bài thật) — chỉ có đề chuẩn.</div>
+            : <ul className="space-y-1">
+              {pool.map((p, i) => (
+                <li key={p.key} className="flex items-center gap-2 rounded-md border border-slate-100 px-2 py-1">
+                  <span className="w-4 shrink-0 text-right text-[11px] text-slate-300">{i + 1}</span>
+                  <span className={`shrink-0 rounded px-1.5 text-[10px] font-medium ${p.nguon === 'chuan' ? 'bg-teal-50 text-teal-700' : p.nguon === 'bienthe' ? 'bg-indigo-50 text-indigo-700' : 'bg-slate-100 text-slate-500'}`}>{NGUON_NHAN[p.nguon]}</span>
+                  <span className="min-w-0 flex-1 truncate text-[12px] text-slate-700"><MathText>{p.deBai}</MathText></span>
+                  <Seg3 value={pick[p.key]} onLop={() => onPick(p.key, pick[p.key] === 'lop' ? null : 'lop')} onNha={() => onPick(p.key, pick[p.key] === 'nha' ? null : 'nha')} />
+                </li>
+              ))}
+            </ul>}
+        </div>
+      )}
+    </div>
+  )
+}
+// Chọn phiếu cho 1 bài: 📘 Lớp / 📝 Nhà (bấm lại = bỏ). Single-choice ⇒ 2 phiếu không trùng.
+function Seg3({ value, onLop, onNha }: { value?: 'lop' | 'nha'; onLop: () => void; onNha: () => void }) {
+  const base = 'h-6 px-2 text-[11px] font-medium border transition'
+  return (
+    <span className="flex shrink-0">
+      <button onClick={onLop} className={`${base} rounded-l-md ${value === 'lop' ? 'border-sky-400 bg-sky-100' : 'border-slate-200 bg-white opacity-60 hover:opacity-100'}`} title="Trên lớp">📘</button>
+      <button onClick={onNha} className={`${base} -ml-px rounded-r-md ${value === 'nha' ? 'border-orange-400 bg-orange-100' : 'border-slate-200 bg-white opacity-60 hover:opacity-100'}`} title="Về nhà">📝</button>
+    </span>
+  )
+}
+// Danh sách bài đã chọn cho 1 phiếu (cột xuất) — hiện rõ node + nguồn + đề, để soát trước khi in.
+function PhieuList({ nhan, ton, ds }: { nhan: string; ton: 'lop' | 'nha'; ds: { n: BaiToan; p: PoolItem }[] }) {
+  const col = ton === 'lop' ? 'text-sky-700' : 'text-orange-600'
+  return (
+    <div>
+      <div className={`mb-1 text-[11px] font-semibold uppercase tracking-wide ${col}`}>{nhan} · {ds.length}</div>
+      {ds.length === 0
+        ? <div className="text-[11.5px] text-slate-400">— chưa chọn bài —</div>
+        : ds.map(({ n, p }) => (
+          <div key={p.key} className="flex items-center gap-1.5 py-0.5 text-[11.5px] text-slate-600">
+            <Ma>{n.ma}</Ma>
+            <span className="shrink-0 rounded bg-slate-100 px-1 text-[10px] text-slate-500">{NGUON_NHAN[p.nguon]}</span>
+            <span className="min-w-0 flex-1 truncate"><MathText>{p.deBai}</MathText></span>
+          </div>
+        ))}
+    </div>
+  )
 }
