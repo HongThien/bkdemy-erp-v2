@@ -96,7 +96,10 @@ export async function saveBuoiSelection(buoiId: string, nhap: NhapBuoi): Promise
       rows.push({ buoi_id: buoiId, phan, loai: d.loai, ref_id: d.ref_id, ghep_node_ids: [], lua_id: null, an_de: an.has(key), so_dong: nhap.soDong[key] ?? null, thu_tu: thu++ })
     }
   }
+  const seenGhep = new Set<string>()   // khử ghép trùng (cùng phiếu + cùng bộ node) → DB không tích luỹ lặp
   for (const g of nhap.ghep) {
+    const sig = `${g.phan}|${[...g.nodeIds].sort().join(',')}`
+    if (seenGhep.has(sig)) continue; seenGhep.add(sig)
     rows.push({ buoi_id: buoiId, phan: g.phan, loai: 'ghep', ref_id: null, ghep_node_ids: g.nodeIds, lua_id: g.luaId, an_de: an.has(g.key), so_dong: nhap.soDong[g.key] ?? null, thu_tu: thu++ })
   }
   const { error: e1 } = await supabase.from('hinh_gt_bai').delete().eq('buoi_id', buoiId)
