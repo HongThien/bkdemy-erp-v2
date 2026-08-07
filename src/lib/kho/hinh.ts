@@ -117,19 +117,26 @@ function luyThua(next: (id: string) => string[], goc: string): Set<string> {
 export const toTienCua = (L: Luoi, id: string) => luyThua((x) => chaCua(L, x), id)
 export const hauDueCua = (L: Luoi, id: string) => luyThua((x) => conCua(L, x), id)
 
-/** ⭐ Mã PHÂN CẤP để HIỂN THỊ (khác `ma` trơ): gốc trong khối đánh 1, 2, 3…; con = mã cha + '.' + thứ
- *  tự con (1.1, 1.1.1). SUY từ cây — tự tính lại khi cây đổi, KHÔNG lưu (giữ luật "mã trơ": id ổn định
- *  bên dưới vẫn là `ma`, immune với đổi cha/nhiều cha). DAG nhiều cha → lấy đường cha đầu tiên.
+/** ⭐ Mã PHÂN CẤP để HIỂN THỊ (khác `ma` trơ): gốc trong khối đánh 1, 2, 3…
+ *  Con CÓ nhánh con (hub) = TẦNG THẬT → đánh SỐ tiếp mã cha (1.1, 1.1.1).
+ *  Con LÁ (không con) = VỆ TINH của bố → đánh CHỮ (1a, 1b, 1.1a) — KHÔNG mở tầng mới (Thùy 08-07).
+ *  SUY từ cây — tự tính lại khi cây đổi, KHÔNG lưu (id ổn định bên dưới vẫn là `ma`). DAG nhiều cha → đường cha đầu.
  *  Trả map id→mã phân cấp cho cả lưới (build 1 lần, tra O(1)). */
 export function maPhanCapMap(L: Luoi): Map<string, string> {
   const map = new Map<string, string>()
   const seen = new Set<string>()
   const theoMa = (id: string) => L.moHinh.find((m) => m.id === id)?.ma ?? ''
+  const coCon = (id: string) => conCua(L, id).length > 0
+  const chuCai = (n: number) => (n < 26 ? String.fromCharCode(97 + n) : String.fromCharCode(97 + (n % 26)) + (Math.floor(n / 26) + 1))
   const conSorted = (id: string) => conCua(L, id).filter((k) => !seen.has(k)).sort((a, b) => theoMa(a).localeCompare(theoMa(b)))
   const gan = (id: string, code: string) => {
     if (seen.has(id)) return
     seen.add(id); map.set(id, code)
-    conSorted(id).forEach((k, i) => gan(k, `${code}.${i + 1}`))
+    let hub = 0, la = 0
+    for (const k of conSorted(id)) {
+      if (coCon(k)) gan(k, `${code}.${++hub}`)  // con phân nhánh → tầng thật, số tiếp
+      else gan(k, `${code}${chuCai(la++)}`)      // con lá → vệ tinh, chữ cái
+    }
   }
   L.moHinh.filter((m) => m.la_goc_ho).sort((a, b) => a.ma.localeCompare(b.ma)).forEach((m, i) => gan(m.id, String(i + 1)))
   // Mô hình mồ côi (không nối gốc nào) — vẫn cần mã: đánh tiếp số gốc.

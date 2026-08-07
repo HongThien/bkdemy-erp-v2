@@ -23,6 +23,8 @@ export const dai = (ns: number[]) => (Math.min(...ns) === Math.max(...ns) ? Stri
 const COL_W = 256, GAP = 40, NODE_H = 200, ROW_GAP = 12
 // Card mô hình TO — Thùy: đọc tên khó hình dung, phải thấy hình + giả thiết. Cao hơn để chứa cả hai.
 const MH_W = 272, MH_H = 210
+// Vệ tinh (mô hình lá) — card RÚT GỌN treo dưới bố, không chiếm cột tầng riêng (Thùy 08-07).
+const SAT_W = 224, SAT_H = 34, SAT_GAP = 8, SAT_TOP = 16, SAT_INDENT = 22
 
 export default function SoDo({ L, khoi, hoId, di, reload, moTaNode, nodeId }: {
   L: Luoi; khoi: string; hoId: string | null; di: (n: Nhay) => void; reload: () => Promise<void>
@@ -509,16 +511,40 @@ function ViewMoHinh({ L, ho, trongHo, chon, setChon, onSua, onThemCon, reload }:
   L: Luoi; ho: MoHinh; trongHo: Set<string>; chon: string; setChon: (id: string) => void
   onSua: (m: MoHinh) => void; onThemCon: (id: string) => void; reload: () => Promise<void>
 }) {
-  const { cots, pos, cao, rong } = useMemo(() => {
+  // Tầng = chỉ node CÓ nhánh con (hub) + gốc họ. Node LÁ = vệ tinh, KHÔNG chiếm cột — treo dưới bố.
+  // (Thùy 08-07) Mọi tổ tiên của hub đều là hub ⇒ tầng hub = độ sâu (như cũ); chỉ lá là đổi.
+  const { cots, pos, satPos, cao, rong } = useMemo(() => {
     const ds = L.moHinh.filter((m) => trongHo.has(m.id))
-    const sau = new Map(ds.map((m) => [m.id, api.doSauTrongHo(L, m.id)]))
+    const coCon = (id: string) => api.conCua(L, id).length > 0
+    const laVeTinh = (m: MoHinh) => !m.la_goc_ho && !coCon(m.id)
+    const structural = ds.filter((m) => !laVeTinh(m))
+    // Vệ tinh gom theo bố (cha ĐẦU TIÊN — DAG nhiều cha thì treo dưới 1 chỗ), sắp theo mã cho ổn định.
+    const satOf = new Map<string, MoHinh[]>()
+    for (const lf of ds.filter(laVeTinh)) {
+      const pa = api.chaCua(L, lf.id)[0]; if (!pa) continue
+      const arr = satOf.get(pa) ?? []; arr.push(lf); satOf.set(pa, arr)
+    }
+    for (const arr of satOf.values()) arr.sort((a, b) => a.ma.localeCompare(b.ma))
+    const sau = new Map(structural.map((m) => [m.id, api.doSauTrongHo(L, m.id)]))
     const tang = [...new Set([...sau.values()])].sort((a, b) => a - b)
-    const cots = tang.map((t) => ({ tang: t, ms: ds.filter((m) => sau.get(m.id) === t) }))
+    const cots = tang.map((t) => ({ tang: t, ms: structural.filter((m) => sau.get(m.id) === t) }))
     const pos = new Map<string, { x: number; y: number }>()
-    cots.forEach((c, i) => c.ms.forEach((m, j) => pos.set(m.id, { x: i * (MH_W + GAP), y: j * (MH_H + ROW_GAP) })))
+    const satPos = new Map<string, { x: number; y: number }>()
+    const colH: number[] = []
+    cots.forEach((c, ci) => {
+      const x = ci * (MH_W + GAP)
+      let y = 0
+      c.ms.forEach((m) => {
+        pos.set(m.id, { x, y })
+        const sats = satOf.get(m.id) ?? []
+        sats.forEach((s, si) => satPos.set(s.id, { x: x + SAT_INDENT, y: y + MH_H + SAT_TOP + si * (SAT_H + SAT_GAP) }))
+        y += MH_H + (sats.length ? SAT_TOP + sats.length * (SAT_H + SAT_GAP) : 0) + ROW_GAP
+      })
+      colH.push(y)
+    })
     return {
-      cots, pos,
-      cao: Math.max(140, ...cots.map((c) => c.ms.length * (MH_H + ROW_GAP))),
+      cots, pos, satPos,
+      cao: Math.max(140, ...colH),
       rong: Math.max(560, cots.length * (MH_W + GAP) - GAP),
     }
   }, [L, trongHo])
@@ -533,8 +559,9 @@ function ViewMoHinh({ L, ho, trongHo, chon, setChon, onSua, onThemCon, reload }:
   return (
     <>
       <p className="mb-3 max-w-4xl text-[12.5px] leading-relaxed text-slate-500">
-        Chiếu bỏ trục suy luận → còn <b>trục giả thiết</b>. Cột = <b>tầng</b> (độ sâu trong họ).
-        Detail của card = <b>danh sách bài toán</b> trong mô hình đó. Độ sâu chỉ để <b>định vị cấu trúc</b> — độ khó đến từ cấp.
+        Chiếu bỏ trục suy luận → còn <b>trục giả thiết</b>. Cột = <b>tầng</b> — chỉ mô hình <b>có nhánh con</b>.
+        Mô hình <b>lá</b> (không con) treo dưới bố thành <b>vệ tinh</b> (mã chữ: <code>1a</code>), không mở tầng mới.
+        Detail card = <b>danh sách bài toán</b>. Độ sâu chỉ để <b>định vị</b> — độ khó đến từ cấp.
       </p>
       <div className="grid items-start gap-4 lg:grid-cols-[1fr_330px]">
         <div className="min-w-0 overflow-x-auto rounded-xl border border-slate-200 bg-white p-3.5">
@@ -549,11 +576,21 @@ function ViewMoHinh({ L, ho, trongHo, chon, setChon, onSua, onThemCon, reload }:
             </div>
             <div className="relative" style={{ height: cao }}>
               <svg className="pointer-events-none absolute inset-0" width={rong} height={cao}>
-                {L.canh.filter((e) => pos.has(e.cha_id) && pos.has(e.mo_hinh_id)).map((e, i) => {
-                  const a = pos.get(e.cha_id)!, b = pos.get(e.mo_hinh_id)!
-                  const x1 = a.x + MH_W, y1 = a.y + MH_H / 2, x2 = b.x, y2 = b.y + MH_H / 2
-                  return <path key={i} fill="none" d={`M${x1},${y1} C${x1 + GAP * 0.6},${y1} ${x2 - GAP * 0.6},${y2} ${x2},${y2}`}
-                    stroke="#14b8a6" strokeWidth="1.5" markerEnd="url(#hh-arm2)" />
+                {L.canh.map((e, i) => {
+                  const a = pos.get(e.cha_id); if (!a) return null
+                  const b = pos.get(e.mo_hinh_id)
+                  if (b) { // hub → hub: cạnh TẦNG THẬT (teal liền, có mũi tên)
+                    const x1 = a.x + MH_W, y1 = a.y + MH_H / 2, x2 = b.x, y2 = b.y + MH_H / 2
+                    return <path key={i} fill="none" d={`M${x1},${y1} C${x1 + GAP * 0.6},${y1} ${x2 - GAP * 0.6},${y2} ${x2},${y2}`}
+                      stroke="#14b8a6" strokeWidth="1.5" markerEnd="url(#hh-arm2)" />
+                  }
+                  const s = satPos.get(e.mo_hinh_id) // hub → VỆ TINH: nan hoa ĐỨT, chỉ vẽ từ bố đặt chỗ (cha đầu)
+                  if (s && api.chaCua(L, e.mo_hinh_id)[0] === e.cha_id) {
+                    const x1 = a.x + SAT_INDENT + 10, y1 = a.y + MH_H, x2 = s.x + 8, y2 = s.y + SAT_H / 2
+                    return <path key={i} fill="none" d={`M${x1},${y1} C${x1},${y1 + 14} ${x2 - 18},${y2} ${x2},${y2}`}
+                      stroke="#a5b4fc" strokeWidth="1.3" strokeDasharray="4 3" />
+                  }
+                  return null
                 })}
                 <defs>
                   <marker id="hh-arm2" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
@@ -561,7 +598,7 @@ function ViewMoHinh({ L, ho, trongHo, chon, setChon, onSua, onThemCon, reload }:
                   </marker>
                 </defs>
               </svg>
-              {L.moHinh.filter((m) => trongHo.has(m.id)).map((m) => {
+              {cots.flatMap((c) => c.ms).map((m) => {
                 const p = pos.get(m.id)!
                 const n = L.baiToan.filter((b) => b.mo_hinh_id === m.id)
                 const caps = n.map((b) => b.cap)
@@ -585,6 +622,18 @@ function ViewMoHinh({ L, ho, trongHo, chon, setChon, onSua, onThemCon, reload }:
                         {caps.length > 0 && <Chip>cấp {dai(caps)}</Chip>}
                       </div>
                     </div>
+                  </button>
+                )
+              })}
+              {/* VỆ TINH — card rút gọn (mã + tên), click mở tâm–bài toán như hub (RadialEco panel phải). */}
+              {[...satPos.entries()].map(([id, p]) => {
+                const m = L.moHinh.find((x) => x.id === id); if (!m) return null
+                return (
+                  <button key={id} onClick={() => setChon(id)} style={{ left: p.x, top: p.y, width: SAT_W, height: SAT_H }}
+                    className={`absolute flex items-center gap-1.5 rounded-lg border border-dashed border-indigo-300 bg-indigo-50/50 px-2 text-left transition hover:bg-indigo-50 ${
+                      chon === id ? 'ring-2 ring-indigo-300/60' : ''}`}>
+                    <MaPill code={maCap.get(id) ?? '?'} size="sm" />
+                    <span className="min-w-0 flex-1 truncate text-[11.5px] font-medium text-slate-700"><MathText>{m.ten}</MathText></span>
                   </button>
                 )
               })}
