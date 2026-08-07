@@ -12,6 +12,8 @@ import HinhPrintView, { type BanIn, type MucIn, type YIn } from './HinhPrintView
 import { MathText } from '../ui'
 import { Btn, Cap, Empty, Fig, Ma, Panel, Seg, Sol, Tag, inpCls, tron } from './hinhUi'
 import { useStore, SOAN_HINH_DEFAULT, type SoanHinhDraft, type GhepItem } from '../../../store/useStore'
+import * as gt from '../../../lib/kho/hinhGiaoTrinh'
+import type { GiaoTrinh } from '../../../lib/kho/hinhGiaoTrinh'
 
 // Nháp soạn tài liệu theo khối (store, RAM) — giữ lựa chọn khi rời/quay lại màn (như etDraft).
 // Trả slice của 1 chế độ + hàm patch (merge nông). Set→mảng, Map→record: component tự đổi qua lại.
@@ -464,6 +466,9 @@ function TheoMoHinh({ L, khoi }: { L: Luoi; khoi: string }) {
   const anDe = mh.anDe
   const toggleAnDe = (key: string) => setMh({ anDe: anDe.includes(key) ? anDe.filter((k) => k !== key) : [...anDe, key] })
 
+  const [luuOpen, setLuuOpen] = useState(false)   // popup "Lưu vào giáo trình"
+  const coChon = dsLop.length + dsNha.length + ghep.length > 0
+
   return (
     <>
       <p className="mb-3.5 max-w-4xl text-[12.5px] leading-relaxed text-slate-500">
@@ -531,10 +536,74 @@ function TheoMoHinh({ L, khoi }: { L: Luoi; khoi: string }) {
           <Btn className="mt-2 w-full justify-center" disabled={!dsNha.length && !ghepNha.length}
             onClick={() => setInBan(banInTheoMoHinh('Về nhà (BTVN)', 'nha', tickedNodes, pools, sel, ghep, L, anDe))}>📝 Xuất phiếu Về nhà</Btn>
           <p className="mt-2.5 text-[11px] leading-relaxed text-slate-400">Mỗi bài chỉ vào <b>một</b> phiếu. <b>🔗</b> = a,b,c ghép chuỗi. <b>✏️</b> = ẩn hình, chừa ô HS tự vẽ.</p>
+          <div className="mt-3 border-t border-slate-100 pt-3">
+            <Btn className="w-full justify-center border-violet-300 text-violet-700" disabled={!coChon} onClick={() => setLuuOpen(true)}>💾 Lưu vào giáo trình</Btn>
+            <p className="mt-1.5 text-[11px] leading-relaxed text-slate-400">Lưu lựa chọn hiện tại thành <b>một buổi</b> trong giáo trình (để gán lớp sau).</p>
+          </div>
         </Panel>
       </div>
       {inBan && <HinhPrintView ban={inBan} onClose={() => setInBan(null)} />}
+      {luuOpen && <LuuGiaoTrinhPopup khoi={khoi} moHinhChinhId={mainId || null}
+        nhap={{ sel, ghep, anDe }} onClose={() => setLuuOpen(false)} onDone={() => setLuuOpen(false)} />}
     </>
+  )
+}
+
+// Popup "Lưu vào giáo trình": chọn/tạo giáo trình + đặt tên buổi → tạo buổi master + lưu bài của nháp.
+function LuuGiaoTrinhPopup({ khoi, moHinhChinhId, nhap, onClose, onDone }: {
+  khoi: string; moHinhChinhId: string | null
+  nhap: { sel: Record<string, Record<string, 'lop' | 'nha'>>; ghep: GhepItem[]; anDe: string[] }
+  onClose: () => void; onDone: () => void
+}) {
+  const [gts, setGts] = useState<GiaoTrinh[]>([])
+  const [gtId, setGtId] = useState('')        // '' = tạo giáo trình mới
+  const [tenMoi, setTenMoi] = useState('')
+  const [tieuDe, setTieuDe] = useState('')
+  const [busy, setBusy] = useState(false)
+  const [loi, setLoi] = useState<string | null>(null)
+  useEffect(() => { gt.listGiaoTrinh(khoi).then((d) => { setGts(d); setGtId(d[0]?.id ?? '') }).catch(() => setGts([])) }, [khoi])
+  const luu = async () => {
+    if (!gtId && !tenMoi.trim()) { setLoi('Chọn giáo trình có sẵn hoặc đặt tên giáo trình mới.'); return }
+    setBusy(true); setLoi(null)
+    try {
+      const id = gtId || (await gt.createGiaoTrinh({ ten: tenMoi.trim(), khoi })).id
+      const buoi = await gt.createBuoiMaster(id, { tieu_de: tieuDe.trim() || null, mo_hinh_chinh_id: moHinhChinhId })
+      await gt.saveBuoiSelection(buoi.id, nhap)
+      alert('Đã lưu buổi vào giáo trình.')
+      onDone()
+    } catch (e: any) { setLoi(e.message ?? String(e)); setBusy(false) }
+  }
+  return createPortal(
+    <div className="fixed inset-0 z-[70] flex items-center justify-center bg-slate-900/50 p-3 sm:p-6" onClick={onClose}>
+      <div className="w-[92vw] max-w-md overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <div className="flex items-center gap-2 border-b border-slate-200 px-5 py-3">
+          <h3 className="text-[15px] font-semibold text-slate-900">💾 Lưu vào giáo trình</h3>
+          <button onClick={onClose} className="ml-auto rounded-lg border border-slate-300 px-3 py-1.5 text-[13px] text-slate-600 hover:bg-slate-50">Đóng</button>
+        </div>
+        <div className="space-y-3 p-5">
+          <div>
+            <div className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-slate-500">Giáo trình</div>
+            <select className={inpCls} value={gtId} onChange={(e) => setGtId(e.target.value)}>
+              {gts.map((g) => <option key={g.id} value={g.id}>{g.ten}</option>)}
+              <option value="">+ Tạo giáo trình mới…</option>
+            </select>
+            {!gtId && <input className={`${inpCls} mt-1.5`} value={tenMoi} onChange={(e) => setTenMoi(e.target.value)} placeholder={`Tên giáo trình mới · Khối ${khoi}`} />}
+          </div>
+          <div>
+            <div className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-slate-500">Tên buổi (tuỳ chọn)</div>
+            <input className={inpCls} value={tieuDe} onChange={(e) => setTieuDe(e.target.value)} placeholder="vd Buổi 5 — Trực tâm" />
+          </div>
+          {loi && <div className="rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[12.5px] text-rose-700">{loi}</div>}
+        </div>
+        <div className="flex items-center gap-3 border-t border-slate-200 px-5 py-3">
+          <div className="ml-auto flex gap-2">
+            <button onClick={onClose} className="rounded-lg px-3 py-2 text-[13px] text-slate-500 hover:bg-slate-100">Huỷ</button>
+            <Btn kind="pri" disabled={busy} onClick={luu}>{busy ? 'Đang lưu…' : 'Lưu buổi'}</Btn>
+          </div>
+        </div>
+      </div>
+    </div>,
+    document.body,
   )
 }
 
@@ -552,7 +621,7 @@ function banInTheoMoHinh(tieuDe: string, phan: 'lop' | 'nha', nodes: BaiToan[], 
   return { tieuDe: `Buổi học — ${tieuDe}`, phuDe: `${mucs.length} mục · ${nodes.length} node`, mucs }
 }
 /** Ghép chuỗi (đề chuẩn) → 1 bài a,b,c: giả thiết + hình của node SÂU NHẤT chung; ý a,b,c = câu hỏi + lời giải từng node. */
-function mucGhep(L: Luoi, g: GhepItem, anDe: boolean): MucIn {
+export function mucGhep(L: Luoi, g: GhepItem, anDe: boolean): MucIn {
   const nodes = (g.nodeIds.map((id) => L.baiToan.find((b) => b.id === id)).filter(Boolean) as BaiToan[])
     .sort((a, b) => a.cap - b.cap || a.ma.localeCompare(b.ma))
   let deep = nodes[0]; let dS = -1
