@@ -20,6 +20,7 @@
     "html2canvas": "^1.4.1",
     "html2canvas-pro": "^2.2.1",
     "jspdf": "^4.2.1",
+    "jszip": "^3.10.1",
     "katex": "^0.17.0",
     "pagedjs": "^0.4.3",
     "pdfjs-dist": "^4.10.38",

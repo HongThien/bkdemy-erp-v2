@@ -17,7 +17,7 @@ import {
   type DongTheoMonV2, type CongThuc, type DiemDanhLop,
 } from '../../lib/hocphi'
 import { listLop, listHocSinh, updateLop, type Lop, type HocSinh } from '../../lib/nhansu'
-import { AnhGuiPHModal } from './PhieuThongBao'
+import { AnhGuiPHModal, taiTatCaAnhZip } from './PhieuThongBao'
 import SearchSelect from '../../components/SearchSelect'
 import { inp } from '../kho/ui'
 import { useStore } from '../../store/useStore'
@@ -493,10 +493,55 @@ function DanhSachTab() {
   const [q, setQ] = useState('')
   const [filter, setFilter] = useState<'all' | NhomTT>('all')
   const [moAll, setMoAll] = useState(true)
+  const [chotting, setChotting] = useState<{ done: number; total: number } | null>(null)
+  const [taiing, setTaiing] = useState<{ done: number; total: number } | null>(null)
+  const [ketQuaChot, setKetQuaChot] = useState<string | null>(null)
 
   async function reload() { setLoading(true); try { setRows(await listPhieuTheoKy(ky)) } finally { setLoading(false) } }
   useEffect(() => { reload() }, [ky]) // eslint-disable-line
   const onDoi = (nw: DongSoHang) => setRows((rs) => rs.map((x) => (x.phu_huynh_id === nw.phu_huynh_id ? nw : x))) // cập nhật 1 card, KHÔNG reload cả list
+
+  // Chốt HÀNG LOẠT: mọi PH CHƯA chốt & có tổng > 0. Chạy tuần tự qua chotKy (đóng băng đúng như chốt tay từng PH),
+  // bỏ qua đã chốt + đơn 0đ; xong reload 1 lần. Đây là thao tác chủ động (không phải refresh mỗi thẻ Thùy từng chê).
+  async function chotTatCa() {
+    const canChot = rows.filter((r) => !r.daChot && (r.tongTien ?? 0) > 0)
+    const daRoi = rows.filter((r) => r.daChot).length
+    const khong = rows.filter((r) => !r.daChot && (r.tongTien ?? 0) <= 0).length
+    if (!canChot.length) { setKetQuaChot(`Không có PH nào cần chốt (đã chốt ${daRoi} · 0đ ${khong}).`); setTimeout(() => setKetQuaChot(null), 6000); return }
+    if (!confirm(`Chốt học phí kỳ này cho ${canChot.length} phụ huynh?\n(Bỏ qua ${daRoi} đã chốt · ${khong} đơn 0đ)\nĐông cứng số để thu tiền — sửa lại được bằng bỏ tích "Chốt" ở từng PH.`)) return
+    let loi = 0
+    setChotting({ done: 0, total: canChot.length })
+    for (let i = 0; i < canChot.length; i++) {
+      try { await chotKy(canChot[i].phu_huynh_id, ky, []) } catch (e) { loi++; console.error('Chốt lỗi', canChot[i].ma_ph, e) }
+      setChotting({ done: i + 1, total: canChot.length })
+    }
+    setChotting(null)
+    await reload()
+    setKetQuaChot(`✓ Đã chốt ${canChot.length - loi}/${canChot.length} phụ huynh${loi ? ` · ${loi} lỗi (xem console)` : ''}.`)
+    setTimeout(() => setKetQuaChot(null), 8000)
+  }
+
+  // Tải HÀNG LOẠT ảnh phiếu (kèm QR) của mọi PH ĐÃ CHỐT trong kỳ → 1 file ZIP (Thùy: thay vì copy từng
+  // ảnh gửi Zalo). Bỏ qua PH chưa chốt (chưa có QR/số tiền đóng băng). Tên file = TênPH_TêncáccHS_MM-YYYY.
+  async function taiAnhTatCa() {
+    const daChot = rows.filter((r) => r.daChot)
+    if (!daChot.length) { setKetQuaChot('Không có phụ huynh nào đã chốt trong kỳ để tải ảnh.'); setTimeout(() => setKetQuaChot(null), 6000); return }
+    if (!confirm(`Tải ảnh phiếu thông báo (kèm QR) cho ${daChot.length} phụ huynh đã chốt kỳ này, gói thành 1 file ZIP?`)) return
+    setTaiing({ done: 0, total: daChot.length })
+    try {
+      const { ok, loi } = await taiTatCaAnhZip(
+        daChot.map((r) => ({ phuHuynhId: r.phu_huynh_id, phTen: r.ho_ten, maPh: r.ma_ph, tenCon: r.tenCon })),
+        ky,
+        (done, total) => setTaiing({ done, total }),
+      )
+      setKetQuaChot(`✓ Đã tải ZIP ${ok}/${daChot.length} ảnh${loi ? ` · ${loi} lỗi (xem console)` : ''}.`)
+    } catch (e: any) {
+      setKetQuaChot('Lỗi tải ảnh: ' + (e.message ?? String(e)))
+    } finally {
+      setTaiing(null)
+      setTimeout(() => setKetQuaChot(null), 8000)
+    }
+  }
 
   const boDau = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd').toLowerCase()
   const timKhop = (r: DongSoHang) => { if (!q.trim()) return true; const nq = boDau(q); return boDau(r.ho_ten).includes(nq) || r.ma_ph.toLowerCase().includes(nq) || r.tenCon.some((c) => boDau(c).includes(nq)) }
@@ -509,8 +554,11 @@ function DanhSachTab() {
         <KyPicker ky={ky} onChange={setKy} />
         <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm phụ huynh / tên học sinh / mã…" className={`${inp} w-64`} />
         <button onClick={() => setMoAll((m) => !m)} className="rounded-lg border border-slate-200 px-3 py-1.5 text-[12px] font-medium text-slate-600 hover:border-indigo-300">{moAll ? '⊟ Thu gọn tất cả' : '⊞ Mở tất cả'}</button>
+        <button onClick={chotTatCa} disabled={!!chotting || !!taiing || loading} className="rounded-lg bg-indigo-600 px-3 py-1.5 text-[12px] font-semibold text-white hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-50">{chotting ? `Đang chốt ${chotting.done}/${chotting.total}…` : '✓ Chốt tất cả'}</button>
+        <button onClick={taiAnhTatCa} disabled={!!taiing || !!chotting || loading} title="Tải ảnh phiếu (kèm QR) của mọi PH đã chốt kỳ này → 1 file ZIP" className="rounded-lg border border-indigo-300 bg-white px-3 py-1.5 text-[12px] font-semibold text-indigo-700 hover:bg-indigo-50 disabled:cursor-not-allowed disabled:opacity-50">{taiing ? `Đang tạo ảnh ${taiing.done}/${taiing.total}…` : '⬇ Tải ảnh QR (ZIP)'}</button>
         <span className="ml-auto text-[12px] text-slate-400">{filtered.length}/{rows.length} PH</span>
       </div>
+      {ketQuaChot && <div className="mb-3 rounded-lg border border-indigo-200 bg-indigo-50 px-4 py-2 text-[13px] font-medium text-indigo-700">{ketQuaChot}</div>}
       <div className="mb-3 flex flex-wrap gap-1.5">
         {NHOM.map((n) => (
           <button key={n.key} onClick={() => setFilter(n.key)} className={`rounded-lg px-3 py-1.5 text-[12px] font-medium ${filter === n.key ? 'bg-indigo-600 text-white' : 'border border-slate-200 bg-white text-slate-600 hover:border-indigo-300'}`}>{n.label} <span className={filter === n.key ? 'opacity-80' : 'text-slate-400'}>{dem(n.key)}</span></button>
