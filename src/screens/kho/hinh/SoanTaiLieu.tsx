@@ -374,6 +374,11 @@ type NguonBai = 'chuan' | 'bienthe' | 'that'
 type PoolItem = { key: string; nguon: NguonBai; deBai: string; anhDe: string | null; ys: YIn[] }
 const NGUON_NHAN: Record<NguonBai, string> = { chuan: 'chuẩn', bienthe: 'biến thể', that: 'bài thật' }
 const DONG_BTVN = 6   // số dòng kẻ mặc định mỗi ý ở phiếu Về nhà (chỉnh được per bài)
+// Khử bài GHÉP trùng: cùng bộ node (bất kể thứ tự) chỉ giữ phần tử ĐẦU.
+function dedupeGhep<T extends { nodeIds: string[] }>(arr: T[]): T[] {
+  const seen = new Set<string>()
+  return arr.filter((g) => { const k = [...g.nodeIds].sort().join(','); if (seen.has(k)) return false; seen.add(k); return true })
+}
 
 /** Kho bài của MỘT node = đề chuẩn (1, derive) + biến thể (đổi số/thay điểm) + ý thật trỏ vào node (kho chính). */
 async function poolCuaNode(L: Luoi, bt: BaiToan): Promise<PoolItem[]> {
@@ -476,7 +481,8 @@ function TheoMoHinh({ L, khoi }: { L: Luoi; khoi: string }) {
     setMh({ sel: newSel, ghep: [...ghep, { key: crypto.randomUUID(), phan, luaId, nodeIds }] })
   }
   const removeGhep = (key: string) => setMh({ ghep: ghep.filter((g) => g.key !== key) })
-  const ghepLop = ghep.filter((g) => g.phan === 'lop'), ghepNha = ghep.filter((g) => g.phan === 'nha')
+  // Khử trùng: bài ghép GIỐNG HỆT (cùng bộ node) chỉ giữ 1 (phòng buổi cũ / reload dính ghép lặp).
+  const ghepLop = dedupeGhep(ghep.filter((g) => g.phan === 'lop')), ghepNha = dedupeGhep(ghep.filter((g) => g.phan === 'nha'))
 
   // Ẩn hình (HS tự vẽ) theo từng bài — mặc định HIỆN. anDe chứa khoá bài đã ẩn.
   const anDe = mh.anDe
@@ -660,7 +666,7 @@ function banInTheoMoHinh(tieuDe: string, phan: 'lop' | 'nha', nodes: BaiToan[], 
       if (pick[it.key] === phan) mucs.push({ kieu: 'de', deBai: it.deBai, anhDe: it.anhDe, ma: bt.ma, ys: it.ys, anDe: an.has(it.key) || !it.anhDe, soDong: dong(it.key) })
     }
   }
-  for (const g of ghep.filter((x) => x.phan === phan)) mucs.push(mucGhep(L, g, an.has(g.key), dong(g.key)))
+  for (const g of dedupeGhep(ghep.filter((x) => x.phan === phan))) mucs.push(mucGhep(L, g, an.has(g.key), dong(g.key)))
   return { tieuDe: `Buổi học — ${tieuDe}`, phuDe: `${mucs.length} mục · ${nodes.length} node`, mucs }
 }
 /** Ghép chuỗi (đề chuẩn) → 1 bài a,b,c: giả thiết + hình của node SÂU NHẤT chung; ý a,b,c = câu hỏi + lời giải từng node. */

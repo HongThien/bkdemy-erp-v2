@@ -55,6 +55,7 @@ async function resolveBanIn(L: Luoi, tieuBuoi: string, bais: GtBai[], phan: 'lop
   ])
   const dong = (b: GtBai) => (phan === 'nha' ? (b.so_dong ?? 6) : (b.so_dong ?? 0))   // BTVN mặc định 6; trên lớp không kẻ dòng
   const daGhep = new Set(list.filter((b) => b.loai === 'ghep').flatMap((b) => b.ghep_node_ids))   // node đã ghép → bỏ bài lẻ
+  const seenGhep = new Set<string>()   // khử bài ghép trùng (cùng bộ node)
   const mucs: MucIn[] = []
   for (const b of list) {
     if (b.loai === 'chuan') {
@@ -70,6 +71,7 @@ async function resolveBanIn(L: Luoi, tieuBuoi: string, bais: GtBai[], phan: 'lop
       const da = api.dapAnHaiBac(L, yb.y)
       mucs.push({ kieu: 'de', ma: yb.bai.ma_bai, deBai: yb.bai.de_bai, anhDe: yb.bai.anh_de, ys: [{ nhan: yb.y.nhan_hien_thi ?? String.fromCharCode(96 + yb.y.thu_tu), noiDung: yb.y.noi_dung, loiGiai: da.loiGiai, anh: da.anh, bacThamChieu: da.bac === 'tham_chieu', ma: yb.y.ma_y }], anDe: b.an_de || !yb.bai.anh_de, soDong: dong(b) })
     } else if (b.loai === 'ghep') {
+      const sig = [...b.ghep_node_ids].sort().join(','); if (seenGhep.has(sig)) continue; seenGhep.add(sig)
       mucs.push(mucGhep(L, { key: b.id, phan: b.phan, luaId: b.lua_id, nodeIds: b.ghep_node_ids }, b.an_de, dong(b)))
     }
   }
