@@ -462,7 +462,19 @@ function TheoMoHinh({ L, khoi }: { L: Luoi; khoi: string }) {
 
   // Bài a,b,c GHÉP từ chuỗi (đề chuẩn: luaId null). Chéo node ⇒ để ở mh (không per-node).
   const ghep = mh.ghep
-  const addGhep = (phan: 'lop' | 'nha', luaId: string | null, nodeIds: string[]) => setMh({ ghep: [...ghep, { key: crypto.randomUUID(), phan, luaId, nodeIds }] })
+  const addGhep = (phan: 'lop' | 'nha', luaId: string | null, nodeIds: string[]) => {
+    const dh = [...nodeIds].sort().join(',')
+    if (ghep.some((g) => g.phan === phan && [...g.nodeIds].sort().join(',') === dh)) return  // đã có ghép y hệt (cùng phiếu + node) → không thêm nữa
+    // Ghép "ăn" các node → xoá bài lẻ (sel) của chúng ở phiếu này, tránh lặp bài a,b,c với bài lẻ.
+    const newSel: typeof sel = { ...sel }
+    for (const nid of nodeIds) {
+      if (!newSel[nid]) continue
+      const cur = { ...newSel[nid] }
+      for (const k of Object.keys(cur)) if (cur[k] === phan) delete cur[k]
+      newSel[nid] = cur
+    }
+    setMh({ sel: newSel, ghep: [...ghep, { key: crypto.randomUUID(), phan, luaId, nodeIds }] })
+  }
   const removeGhep = (key: string) => setMh({ ghep: ghep.filter((g) => g.key !== key) })
   const ghepLop = ghep.filter((g) => g.phan === 'lop'), ghepNha = ghep.filter((g) => g.phan === 'nha')
 
