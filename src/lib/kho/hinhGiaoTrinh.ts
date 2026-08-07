@@ -2,6 +2,7 @@
 // 1 buổi = bản LƯU của nháp "Theo mô hình" (sel/ghep/anDe → hinh_gt_bai). Gán lớp = SNAPSHOT (copy bài).
 // Nội dung bài lưu STRUCTURED: mỗi bài 1 dòng (phan/loai/ref/an_de); resolve nội dung sống khi in (cần Luoi).
 import { supabase } from '../supabase'
+import type { Bai, BienThe, Y } from './hinh'
 
 const LIMIT = 10000
 
@@ -147,4 +148,27 @@ export async function goBuoiLop(buoiLopId: string, lopId: string): Promise<void>
   const { error } = await supabase.from('hinh_gt_buoi').delete().eq('id', buoiLopId)
   if (error) throw error
   await renumberBuoiLop(lopId)
+}
+
+// ══════════════ RESOLVE nội dung bài (để in) — fetch biến thể / ý theo id ══════════════
+export async function getBienTheByIds(ids: string[]): Promise<Map<string, BienThe>> {
+  const u = [...new Set(ids)].filter(Boolean)
+  if (!u.length) return new Map()
+  const { data, error } = await supabase.from('hinh_baitoan_bien_the').select('*').in('id', u).limit(LIMIT)
+  if (error) throw error
+  return new Map((data ?? []).map((v: any) => [v.id as string, v as BienThe]))
+}
+/** Ý thật + bài chứa nó, theo id ý. */
+export async function getYFull(ids: string[]): Promise<Map<string, { y: Y; bai: Bai }>> {
+  const u = [...new Set(ids)].filter(Boolean)
+  if (!u.length) return new Map()
+  const { data: ys, error } = await supabase.from('hinh_y').select('*').in('id', u).limit(LIMIT)
+  if (error) throw error
+  const yArr = (ys ?? []) as Y[]
+  const baiIds = [...new Set(yArr.map((y) => y.bai_id))]
+  const { data: bais } = await supabase.from('hinh_bai').select('*').in('id', baiIds).limit(LIMIT)
+  const mb = new Map((bais ?? []).map((b: any) => [b.id as string, b as Bai]))
+  const m = new Map<string, { y: Y; bai: Bai }>()
+  for (const y of yArr) { const bai = mb.get(y.bai_id); if (bai) m.set(y.id, { y, bai }) }
+  return m
 }
