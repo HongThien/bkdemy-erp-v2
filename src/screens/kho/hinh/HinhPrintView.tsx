@@ -157,35 +157,32 @@ function Noi({ ban, gv }: { ban: BanIn; gv: boolean }) {
         return (
           <div key={i} className="hp-de">
             <div className="hp-de-h">Bài {soDe}.</div>
-            {/* văn bản TRÁI · hình PHẢI — hình dính với đề, không trôi sang trang khác.
-                anDe (ẩn hình): bản HS chừa Ô VẼ 40% bên phải; bản GV vẫn hiện hình để đối chiếu. */}
-            <div className={`hp-row${m.anDe ? ' hp-row-ve' : ''}`}>
-              <div className="hp-txt"><MathText>{m.deBai}</MathText></div>
-              {m.anDe
-                ? (gv && m.anhDe
-                  ? <div className="hp-fig"><img src={m.anhDe} alt="" /></div>
-                  : <div className="hp-draw"><span>Vẽ hình</span></div>)
-                : (m.anhDe && <div className="hp-fig"><img src={m.anhDe} alt="" /></div>)}
-            </div>
+            {/* Hình / ô-vẽ FLOAT phải → đề + câu hỏi chảy SÁT bên trái, không bị đẩy xuống dưới hình.
+                anDe (ẩn hình): bản HS chừa ô vẽ; bản GV vẫn hiện hình để đối chiếu. */}
+            {m.anDe
+              ? (gv && m.anhDe
+                ? <div className="hp-fig-r"><img src={m.anhDe} alt="" /></div>
+                : <div className="hp-draw-r"><span>Vẽ hình</span></div>)
+              : (m.anhDe && <div className="hp-fig-r"><img src={m.anhDe} alt="" /></div>)}
+            <div className="hp-txt-flow"><MathText>{m.deBai}</MathText></div>
             {m.ys.map((y, j) => (
               <div key={j} className="hp-y">
-                <div className="hp-row">
-                  <div className="hp-txt">
-                    {y.nhan && <b>{y.nhan}) </b>}<MathText>{y.noiDung}</MathText>
-                    {y.ghiChu && <span className="hp-tag">{y.ghiChu}</span>}
-                  </div>
-                  {gv && y.anh && <div className="hp-fig"><img src={y.anh} alt="" /></div>}
+                <div className="hp-txt-flow">
+                  {y.nhan && <b>{y.nhan}) </b>}<MathText>{y.noiDung}</MathText>
+                  {y.ghiChu && <span className="hp-tag">{y.ghiChu}</span>}
                 </div>
                 {gv
                   ? (
                     <div className="hp-giai">
                       {y.bacThamChieu && <div className="hp-bac">Lời giải THAM CHIẾU — lấy từ bài chuẩn, tên điểm theo hệ thống (không phải tên điểm của đề này).</div>}
                       <MathText>{y.loiGiai ?? '—'}</MathText>
+                      {y.anh && <div className="hp-fig-r"><img src={y.anh} alt="" /></div>}
                     </div>
                   )
                   : m.soDong === 0 ? null : <div className="hp-ke" style={m.soDong ? { height: `${Math.max(1, m.soDong) * 7.7}mm` } : undefined} />}
               </div>
             ))}
+            <div style={{ clear: 'both' }} />
           </div>
         )
       })}
@@ -205,8 +202,14 @@ const HINH_CSS = `
 .hp-nhac{border:1px dashed #cbd5e1;border-radius:8px;padding:9px 12px;margin-bottom:12px;background:#fafbfc;break-inside:avoid}
 .hp-nhac-t{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#6b7280;font-weight:700;margin-bottom:4px}
 .hp-nhac-i{font-size:15px;color:#374151;margin:2px 0}
-.hp-de{margin:0 0 6px;break-inside:auto}
+.hp-de{margin:0 0 8px;break-inside:auto}
 .hp-de-h{font-weight:800;color:#134e4a;font-size:18px;margin:4px 0 3px;break-after:avoid}
+/* Đề + câu hỏi CHẢY sát bên trái · hình/ô-vẽ FLOAT phải (câu hỏi nằm ngay sau đề, không đợi hết chiều cao hình) */
+.hp-txt-flow{font-size:17px}
+.hp-fig-r{float:right;width:36%;margin:0 0 3px 5mm;box-sizing:border-box}
+.hp-fig-r img{width:100%;max-height:50mm;object-fit:contain;border:1px solid #e2e8f0;border-radius:6px;background:#fff}
+.hp-draw-r{float:right;width:40%;height:58mm;margin:0 0 3px 5mm;box-sizing:border-box;border:1px dashed #94a3b8;border-radius:6px;background:#fff;position:relative}
+.hp-draw-r span{position:absolute;top:4px;left:6px;font-size:10px;color:#94a3b8;text-transform:uppercase;letter-spacing:.05em}
 /* văn bản trái · hình phải: inline-block thay vì flex/grid — paged.js đo layout grid không đáng tin (DEVLOG 07-05) */
 .hp-row{font-size:0;break-inside:avoid}
 .hp-txt{display:inline-block;vertical-align:top;width:66%;font-size:17px;padding-right:4mm;box-sizing:border-box}
