@@ -297,6 +297,20 @@ export function chuoiTienDe(L: Luoi, baiToanId: string): BaiToan[] {
   const ids = new Set<string>([baiToanId, ...bd.keys()])
   return [...ids].map((id) => L.baiToan.find((b) => b.id === id)).filter(Boolean).sort((a, b) => a!.cap - b!.cap || a!.ma.localeCompare(b!.ma)) as BaiToan[]
 }
+/** Chuỗi LIÊN THÔNG chứa node — đi tiền đề CẢ HAI CHIỀU (bài nó cần + bài dùng nó), sắp topo.
+ *  Nhờ vậy click BẤT KỲ node nào trong chuỗi (đầu/giữa/cuối) đều ra cả chuỗi; người tick chọn câu. */
+export function chuoiKetNoi(L: Luoi, baiToanId: string): BaiToan[] {
+  const td = new Map<string, string[]>()      // node → tiền đề của nó (theo cách mặc định)
+  for (const b of L.baiToan) td.set(b.id, tienDeCua(L, b.id))
+  const nguoc = new Map<string, string[]>()    // node → ai DÙNG nó làm tiền đề
+  for (const [id, ts] of td) for (const t of ts) { const a = nguoc.get(t) ?? []; a.push(id); nguoc.set(t, a) }
+  const seen = new Set<string>([baiToanId]); const stack = [baiToanId]
+  while (stack.length) {
+    const x = stack.pop()!
+    for (const y of [...(td.get(x) ?? []), ...(nguoc.get(x) ?? [])]) if (!seen.has(y)) { seen.add(y); stack.push(y) }
+  }
+  return [...seen].map((id) => L.baiToan.find((b) => b.id === id)).filter(Boolean).sort((a, b) => a!.cap - b!.cap || a!.ma.localeCompare(b!.ma)) as BaiToan[]
+}
 
 /** Lý thuyết của một mô hình = bài toán của chính nó + KẾ THỪA toàn bộ từ tổ tiên (§1.1). */
 export function lyThuyetCuaMoHinh(L: Luoi, moHinhId: string): { rieng: BaiToan[]; keThua: BaiToan[] } {
