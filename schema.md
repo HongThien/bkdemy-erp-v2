@@ -661,6 +661,7 @@
 | thu_tu | integer |  | 0 |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
+| lua_id | uuid | Y |  |  |  |
 
 ## hinh_ban_do
 

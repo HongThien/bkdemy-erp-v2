@@ -28,6 +28,7 @@ export type BienThe = {
   id: string; baitoan_id: string; mon: string; kieu: 'doi_so' | 'doi_dinh'
   de_bai: string; anh: string | null; loi_giai: string | null; anh_loi_giai: string | null
   ghi_chu: string | null; thu_tu: number
+  lua_id: string | null   // cùng lua_id = cùng một LỨA clone chuỗi (1 map điểm); null = biến thể lẻ
 }
 export type CachGiai = {
   id: string; baitoan_id: string; ten: string | null; dang_id: string
@@ -289,6 +290,14 @@ export async function baoDongTienDeDB(baiToanId: string): Promise<{ id: string; 
   return (data ?? []) as { id: string; do_sau: number }[]
 }
 
+/** Chuỗi tiền đề của một node = node + BAO ĐÓNG tiền đề (mọi bài nó CẦN), sắp topo (cấp↑ rồi mã).
+ *  Dùng cho clone ĐỔI ĐỈNH cả chuỗi: bổ đề (tiền đề) đứng trước, node đang mở là câu cuối. */
+export function chuoiTienDe(L: Luoi, baiToanId: string): BaiToan[] {
+  const bd = baoDongTienDe(L, baiToanId)
+  const ids = new Set<string>([baiToanId, ...bd.keys()])
+  return [...ids].map((id) => L.baiToan.find((b) => b.id === id)).filter(Boolean).sort((a, b) => a!.cap - b!.cap || a!.ma.localeCompare(b!.ma)) as BaiToan[]
+}
+
 /** Lý thuyết của một mô hình = bài toán của chính nó + KẾ THỪA toàn bộ từ tổ tiên (§1.1). */
 export function lyThuyetCuaMoHinh(L: Luoi, moHinhId: string): { rieng: BaiToan[]; keThua: BaiToan[] } {
   const tt = toTienCua(L, moHinhId)
@@ -407,6 +416,21 @@ export async function updateBienThe(id: string, patch: Partial<Omit<BienThe, 'id
 export async function deleteBienThe(id: string): Promise<void> {
   const { error } = await supabase.from('hinh_baitoan_bien_the').delete().eq('id', id)
   if (error) throw error
+}
+/** Lưu MỘT LỨA biến thể (clone đổi đỉnh cả chuỗi): mỗi node 1 biến thể, CHUNG một `lua_id`. Tiền đề giữa
+ *  chúng không lưu — derive từ (tiền đề node × cùng lua_id). Trả `lua_id` vừa tạo. */
+export async function saveLuaBienThe(items: { baitoan_id: string; de_bai: string; anh: string | null; loi_giai: string | null; anh_loi_giai: string | null }[]): Promise<string> {
+  const lua_id = crypto.randomUUID()
+  const rows = items.map((it, i) => ({ ...it, kieu: 'doi_dinh', lua_id, thu_tu: i }))
+  const { error } = await supabase.from('hinh_baitoan_bien_the').insert(rows)
+  if (error) throw error
+  return lua_id
+}
+/** Các biến thể của một LỨA (mọi node), kèm node — để tài liệu ghép a,b,c sau này. */
+export async function bienTheCuaLua(luaId: string): Promise<BienThe[]> {
+  const { data, error } = await supabase.from('hinh_baitoan_bien_the').select('*').eq('lua_id', luaId).order('thu_tu').limit(LIMIT)
+  if (error) throw error
+  return (data ?? []) as BienThe[]
 }
 
 /** Search-before-create (§2 luật 7): tìm node gần giống theo phát biểu. NHẮC, không chặn. */
