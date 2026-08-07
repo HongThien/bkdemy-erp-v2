@@ -195,3 +195,59 @@ export async function taiPdfPhieu(phuHuynhId: string, phTen: string, maPh: strin
     root.unmount(); host.remove()
   }
 }
+
+// ── Tải HÀNG LOẠT ảnh phiếu (kèm QR) của nhiều PH → gói 1 file ZIP (Thùy: thay vì copy từng ảnh gửi
+// Zalo, tải cả loạt về). Tên file mỗi ảnh = "TênPH_TênHS1_TênHS2_Tháng.png".
+// Dùng 1 host+overlay DÙNG CHUNG cho cả lượt (đỡ nhấp nháy), render tuần tự từng phiếu vào cùng root
+// rồi html2canvas — theo đúng pattern headless của taiPdfPhieu (render top:0 + phủ trắng, KHÔNG toạ độ âm).
+export async function taiTatCaAnhZip(
+  list: { phuHuynhId: string; phTen: string; maPh: string; tenCon: string[] }[],
+  ky: string,
+  onProgress?: (done: number, total: number) => void,
+): Promise<{ ok: number; loi: number }> {
+  const mmYYYY = `${ky.slice(5, 7)}-${ky.slice(0, 4)}` // 'MM-YYYY' cho tên file
+  const [{ default: JSZip }, { createRoot }, { default: html2canvas }] = await Promise.all([
+    import('jszip'), import('react-dom/client'), import('html2canvas-pro'),
+  ])
+  const zip = new JSZip()
+  const host = document.createElement('div')
+  host.style.cssText = 'position:fixed;top:0;left:0;z-index:9998;pointer-events:none'
+  document.body.appendChild(host)
+  const overlay = document.createElement('div')
+  overlay.style.cssText = 'position:fixed;inset:0;z-index:9999;background:#ffffff'
+  document.body.appendChild(overlay)
+  const root = createRoot(host)
+  let ok = 0, loi = 0
+  try {
+    for (let i = 0; i < list.length; i++) {
+      const ph = list[i]
+      try {
+        const data = await getPhieuThongBao(ph.phuHuynhId, ph.phTen, ph.maPh, ky)
+        const qr = data.tongTien > 0
+          ? await vietQRDataUrl({ bin: BANK_THU_HOC_PHI.bin, soTaiKhoan: BANK_THU_HOC_PHI.soTaiKhoan, amount: data.tongTien, addInfo: noiDungCK(ph.maPh, ky) })
+          : null
+        root.render(<InvoiceCard phTen={ph.phTen} maPh={ph.maPh} ky={ky} dong={data.dong} tongTien={data.tongTien} daChot={data.daChot} qrDataUrl={qr} />)
+        await new Promise((r) => setTimeout(r, 200)) // chờ render + QR (data-URL) decode trước html2canvas
+        const target = host.firstChild as HTMLElement
+        const canvas = await html2canvas(target, { scale: 2, backgroundColor: '#ffffff', useCORS: true, logging: false, width: target.scrollWidth, height: target.scrollHeight, windowWidth: target.scrollWidth, windowHeight: target.scrollHeight })
+        const blob = await new Promise<Blob>((res, rej) => canvas.toBlob((b) => (b ? res(b) : rej(new Error('toBlob null'))), 'image/png'))
+        // Tên: TênPH_TênHS1_TênHS2_MM-YYYY (mỗi tên giữ nguyên, ngăn nhau bằng "_")
+        const fname = safeFileName([ph.phTen, ...ph.tenCon, mmYYYY].filter(Boolean).join('_')) + '.png'
+        zip.file(fname, blob)
+        ok++
+      } catch (e) { loi++; console.error('Ảnh ZIP lỗi', ph.maPh, e) }
+      onProgress?.(i + 1, list.length)
+    }
+  } finally {
+    overlay.remove()
+    root.unmount(); host.remove()
+  }
+  if (ok > 0) {
+    const zipBlob = await zip.generateAsync({ type: 'blob' })
+    const url = URL.createObjectURL(zipBlob)
+    const a = document.createElement('a')
+    a.href = url; a.download = `HocPhi_QR_${mmYYYY}.zip`; a.click()
+    URL.revokeObjectURL(url)
+  }
+  return { ok, loi }
+}
