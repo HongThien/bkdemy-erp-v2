@@ -25,13 +25,19 @@ export type SoanHinhDraft = {
   che: 'gd' | 'mh' | 'ot'
   gd: { aId: string; bId: string; daHoc: string[]; themVao: string[] }
   // sel: node → (khoá bài trong pool → 'lop' | 'nha'). Mỗi bài chỉ 1 phiếu ⇒ Lớp/Nhà KHÔNG bao giờ trùng.
-  mh: { mainId: string; satIds: string[]; nodeIds: string[]; sel: Record<string, Record<string, 'lop' | 'nha'>> }
+  // ghep: bài a,b,c ghép từ 1 chuỗi. luaId null = ghép đề chuẩn (a,b,c gốc); có = ghép bản đổi đỉnh của lứa.
+  mh: {
+    mainId: string; satIds: string[]; nodeIds: string[]
+    sel: Record<string, Record<string, 'lop' | 'nha'>>
+    ghep: { key: string; phan: 'lop' | 'nha'; luaId: string | null; nodeIds: string[] }[]
+  }
   ot: { dangIds: string[]; gio: string[]; dkTu: string; dkDen: string }
 }
+export type GhepItem = SoanHinhDraft['mh']['ghep'][number]
 export const SOAN_HINH_DEFAULT: SoanHinhDraft = {
   che: 'gd',
   gd: { aId: '', bId: '', daHoc: [], themVao: [] },
-  mh: { mainId: '', satIds: [], nodeIds: [], sel: {} },
+  mh: { mainId: '', satIds: [], nodeIds: [], sel: {}, ghep: [] },
   ot: { dangIds: [], gio: [], dkTu: '', dkDen: '' },
 }
 
