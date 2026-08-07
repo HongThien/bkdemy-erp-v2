@@ -484,6 +484,18 @@ function TheoMoHinh({ L, khoi }: { L: Luoi; khoi: string }) {
   // Khử trùng: bài ghép GIỐNG HỆT (cùng bộ node) chỉ giữ 1 (phòng buổi cũ / reload dính ghép lặp).
   const ghepLop = dedupeGhep(ghep.filter((g) => g.phan === 'lop')), ghepNha = dedupeGhep(ghep.filter((g) => g.phan === 'nha'))
 
+  // GOM node thành CHUỖI liên thông — mỗi chuỗi HIỆN 1 LẦN. Chuỗi >1 câu → khối ghép a,b,c; 1 câu → node lẻ.
+  const components = useMemo(() => {
+    const seen = new Set<string>(); const comps: BaiToan[][] = []
+    for (const n of nodes) { if (seen.has(n.id)) continue; const chain = api.chuoiKetNoi(L, n.id); chain.forEach((b) => seen.add(b.id)); comps.push(chain) }
+    return comps
+  }, [nodes, L])
+  // Đặt bài a,b,c của MỘT chuỗi cho MỘT phiếu (nodeIds = câu đã tick; rỗng = bỏ chuỗi khỏi phiếu). Thay đúng ghép của chuỗi đó.
+  const setChuoiGhep = (chuoiIds: Set<string>, phan: 'lop' | 'nha', nodeIds: string[]) => {
+    const others = ghep.filter((g) => !(g.phan === phan && g.nodeIds.length > 0 && g.nodeIds.every((id) => chuoiIds.has(id))))
+    setMh({ ghep: nodeIds.length ? [...others, { key: crypto.randomUUID(), phan, luaId: null, nodeIds }] : others })
+  }
+
   // Ẩn hình (HS tự vẽ) theo từng bài — mặc định HIỆN. anDe chứa khoá bài đã ẩn.
   const anDe = mh.anDe
   const toggleAnDe = (key: string) => setMh({ anDe: anDe.includes(key) ? anDe.filter((k) => k !== key) : [...anDe, key] })
@@ -541,12 +553,16 @@ function TheoMoHinh({ L, khoi }: { L: Luoi; khoi: string }) {
             ? <Empty icon="◇">Chọn <b>mô hình chính</b> ở cột trái — hệ bày mọi node của nó (và vệ tinh đã tick) để chọn vào buổi.</Empty>
             : !nodes.length
               ? <Empty icon="◇">Mô hình đã chọn chưa có node nào. Tạo node ở <b>Sơ đồ</b> trước.</Empty>
-              : nodes.map((n) => (
-                <NodeRow key={n.id} L={L} n={n} maCap={maCap} on={nodeIds.has(n.id)} pool={pools.get(n.id) ?? []}
-                  pick={sel[n.id] ?? {}} onTick={() => tickNode(n.id)}
-                  onSetPhan={(phan, keys) => setPhanPick(n.id, phan, keys)} onGoiY={(phan, c) => goiYPhan(n.id, phan, c)}
-                  onAddGhep={(phan, nodeIds) => addGhep(phan, null, nodeIds)} />
-              ))}
+              : components.map((comp) => {
+                if (comp.length > 1) return <ChuoiRow key={comp.map((b) => b.id).join(',')} chuoi={comp} ghep={ghep} onSet={setChuoiGhep} />
+                const n = comp[0]
+                return (
+                  <NodeRow key={n.id} L={L} n={n} maCap={maCap} on={nodeIds.has(n.id)} pool={pools.get(n.id) ?? []}
+                    pick={sel[n.id] ?? {}} onTick={() => tickNode(n.id)}
+                    onSetPhan={(phan, keys) => setPhanPick(n.id, phan, keys)} onGoiY={(phan, c) => goiYPhan(n.id, phan, c)}
+                    onAddGhep={(phan, ids) => addGhep(phan, null, ids)} />
+                )
+              })}
         </div>
 
         {/* CỘT 3 — tổng kết + xuất 2 phiếu */}
@@ -683,6 +699,52 @@ export function mucGhep(L: Luoi, g: GhepItem, anDe: boolean, soDong?: number | n
   return { kieu: 'de', deBai: api.giaThietDayDu(L, deep.mo_hinh_id), anhDe, ma: nodes.map((b) => b.ma).join('+'), ys, anDe: anDe || !anhDe, soDong: soDong ?? null }
 }
 
+// ── Một CHUỖI (nhiều câu nối tiền đề) — hiện 1 lần. 2 khối Trên lớp / Về nhà RIÊNG; tick câu → bài a,b,c của phiếu đó ──
+function ChuoiRow({ chuoi, ghep, onSet }: {
+  chuoi: BaiToan[]; ghep: GhepItem[]; onSet: (chuoiIds: Set<string>, phan: 'lop' | 'nha', nodeIds: string[]) => void
+}) {
+  const chuoiIds = useMemo(() => new Set(chuoi.map((b) => b.id)), [chuoi])
+  const ghepOf = (phan: 'lop' | 'nha') => ghep.find((g) => g.phan === phan && g.nodeIds.length > 0 && g.nodeIds.every((id) => chuoiIds.has(id)))
+  return (
+    <div className="mb-2 rounded-xl border border-violet-200 bg-violet-50/30 p-3">
+      <div className="mb-1.5 text-[11px] font-semibold uppercase tracking-wide text-violet-700">🔗 Chuỗi {chuoi.length} câu — ghép a,b,c</div>
+      <div className="space-y-2">
+        {(['lop', 'nha'] as const).map((phan) => {
+          const g = ghepOf(phan); const on = !!g
+          const checked = new Set(g?.nodeIds ?? chuoi.map((b) => b.id))
+          const laLop = phan === 'lop'
+          const toggle = () => onSet(chuoiIds, phan, on ? [] : chuoi.map((b) => b.id))
+          const tickCau = (id: string) => { const s = new Set(checked); s.has(id) ? s.delete(id) : s.add(id); onSet(chuoiIds, phan, chuoi.filter((b) => s.has(b.id)).map((b) => b.id)) }
+          return (
+            <div key={phan} className={`rounded-lg border p-2.5 ${laLop ? 'border-sky-200 bg-sky-50/40' : 'border-orange-200 bg-orange-50/40'}`}>
+              <label className="flex cursor-pointer items-center gap-2 text-[12px] font-semibold">
+                <input type="checkbox" checked={on} onChange={toggle} />
+                <span className={laLop ? 'text-sky-700' : 'text-orange-600'}>{laLop ? '📘 Trên lớp' : '📝 Về nhà'}</span>
+                {on && <span className="text-[11px] font-normal text-slate-400">— {chuoi.filter((b) => checked.has(b.id)).length} ý</span>}
+              </label>
+              {on && (
+                <ol className="mt-1.5 space-y-1">
+                  {chuoi.map((b, i) => {
+                    const c = checked.has(b.id)
+                    const idx = chuoi.filter((x, j) => j <= i && checked.has(x.id)).length
+                    return (
+                      <li key={b.id} className="flex items-center gap-2 rounded-md border border-slate-100 bg-white/70 px-2 py-1 text-[12px]">
+                        <input type="checkbox" checked={c} onChange={() => tickCau(b.id)} />
+                        <span className="w-4 shrink-0 text-center text-[11px] font-bold text-violet-600">{c ? `${String.fromCharCode(96 + idx)})` : '–'}</span>
+                        <span className="min-w-0 flex-1 truncate text-slate-700"><MathText>{b.phat_bieu}</MathText></span>
+                        <Ma>{b.ma}</Ma>
+                      </li>
+                    )
+                  })}
+                </ol>
+              )}
+            </div>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
 // ── Một NODE trong builder: header tick + (khi mở) 2 KHỐI tách hẳn Trên lớp / Về nhà (như DangCard Đại) ──
 function NodeRow({ L, n, maCap, on, pool, pick, onTick, onSetPhan, onGoiY, onAddGhep }: {
   L: Luoi; n: BaiToan; maCap: Map<string, string>; on: boolean; pool: PoolItem[]
