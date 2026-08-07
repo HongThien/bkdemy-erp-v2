@@ -109,10 +109,30 @@ export async function upsertDiemThi(d: { kyThiId: string; hocSinhId: string; die
 // kỳ thi). KHÔNG ảnh hưởng query khác: mastery.ts/thanhtich.ts đọc ky_thi qua (mon, mua, loai) — buoi_hoc_id
 // chỉ là liên kết PHỤ để tab MT tự tìm lại đúng kỳ thi của buổi, không đổi cách các nơi khác truy vấn.
 export async function getOrCreateKyThiMTChoBuoi(buoiId: string, ten: string, mon: string, khoi: string | null, mua: string): Promise<KyThi> {
-  const { data: existing, error: e1 } = await supabase.from('ky_thi').select('*').eq('buoi_hoc_id', buoiId).eq('loai', 'mt_sat_hach').limit(1)
-  if (e1) throw e1
-  if (existing?.[0]) return existing[0] as KyThi
-  return createKyThi({ ten, loai: 'mt_sat_hach', he_so: HE_SO_KY_THI.mt_sat_hach, dot: null, ngay: null, mon, khoi, mua, buoi_hoc_id: buoiId })
+  // ⚠ BUG 08-07 (Thùy: "điểm MT chưa lưu được"): "tìm-hoặc-tạo" NÀY KHÔNG an-toàn-race — check-rồi-insert
+  // KHÔNG nguyên tử + KHÔNG unique index trên (buoi_hoc_id) where loai='mt_sat_hach'. Hai lần gọi ĐỒNG THỜI
+  // (StrictMode dev double-fire useEffect, hoặc 2 tab/2 người mở cùng buổi) đều SELECT thấy rỗng rồi cùng
+  // INSERT → 2 ky_thi TRÙNG cho 1 buổi (đã thấy thật: buổi 9S1 07-08 có 2 kỳ). Kèm theo `.limit(1)` KHÔNG
+  // `order` → mỗi lần đọc trả kỳ BẤT KỲ trong 2 kỳ: điểm nhập vào kỳ A, lần mở sau đọc trúng kỳ B (rỗng)
+  // ⇒ "điểm chưa lưu". FIX (không xoá data): đọc DETERMINISTIC theo `created_at asc` — read & write LUÔN
+  // hội tụ về ĐÚNG 1 kỳ (cũ nhất). Bản trùng mới (nếu lỡ đẻ) thành kỳ chết vô hại, không bao giờ được đọc/ghi.
+  // (Chặn đẻ trùng tận gốc = unique partial index — cần migration + dedup bản cũ, làm riêng.)
+  const read = async () => {
+    const { data, error } = await supabase.from('ky_thi').select('*')
+      .eq('buoi_hoc_id', buoiId).eq('loai', 'mt_sat_hach').order('created_at', { ascending: true }).limit(1)
+    if (error) throw error
+    return (data?.[0] as KyThi | undefined) ?? null
+  }
+  const found = await read()
+  if (found) return found
+  try {
+    return await createKyThi({ ten, loai: 'mt_sat_hach', he_so: HE_SO_KY_THI.mt_sat_hach, dot: null, ngay: null, mon, khoi, mua, buoi_hoc_id: buoiId })
+  } catch (e: any) {
+    // Race: lần gọi kia đã INSERT trước → unique index `ky_thi_mt_1_per_buoi` (mig 202608071759) chặn INSERT
+    // của mình (23505). KHÔNG còn đẻ trùng như xưa — chỉ cần đọc lại kỳ vừa được tạo mà trả về (idempotent).
+    if (e?.code === '23505') { const again = await read(); if (again) return again }
+    throw e
+  }
 }
 
 // ── ĐIỂM THI TRÊN TRƯỜNG (pivot, tab riêng trong Kết quả học tập) — mỗi HS × 4 đợt (GK1/GK2/CK1/CK2),
