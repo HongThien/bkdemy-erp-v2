@@ -5,7 +5,7 @@ import {
   listHocSinh, createHocSinh, updateHocSinh, deleteHocSinh,
   listLopCuaHS, ghiDanh, roiLop, setBandGhiDanh, setNgayVao, chuyenLop,
   listLop, listMucNangLuc, countLopActiveByHS,
-  listPhuHuynh, createPhuHuynh, updatePhuHuynh, listConByPH, suggestMaHS, suggestMaPH, uploadAvatar,
+  listPhuHuynh, createPhuHuynh, updatePhuHuynh, listConByPH, suggestMaHS, suggestMaPH, uploadAvatar, todayVN,
   type HocSinh, type GhiDanh, type Lop, type MucNangLuc, type PhuHuynh,
 } from '../../lib/nhansu'
 import { Field, inp, Seg } from '../kho/ui'
@@ -172,6 +172,10 @@ function EditModal({ hocSinh, defaultKhoi, onClose, onSaved }: { hocSinh: HocSin
   const [ngay_sinh, setNgaySinh] = useState(hocSinh?.ngay_sinh ?? '')
   const [gioi_tinh, setGt] = useState<HocSinh['gioi_tinh']>(hocSinh?.gioi_tinh ?? null)
   const [trang_thai, setTt] = useState<HocSinh['trang_thai']>(hocSinh?.trang_thai ?? 'dang_hoc')
+  // Nghỉ học: ngày nghỉ + lý do (popup khi chuyển sang "Nghỉ"). Trigger DB tự rời hết lớp theo ngày nghỉ.
+  const [ngay_nghi, setNgayNghi] = useState(hocSinh?.ngay_nghi ?? '')
+  const [ly_do_nghi, setLyDoNghi] = useState(hocSinh?.ly_do_nghi ?? '')
+  const [nghiPopup, setNghiPopup] = useState(false)
   const [truong_hoc, setTruong] = useState(hocSinh?.truong_hoc ?? '')
   const [dia_chi, setDiaChi] = useState(hocSinh?.dia_chi ?? '')
   const [ngay_nhap_hoc, setNgayNhap] = useState(hocSinh?.ngay_nhap_hoc ?? '')
@@ -194,6 +198,9 @@ function EditModal({ hocSinh, defaultKhoi, onClose, onSaved }: { hocSinh: HocSin
         ngay_sinh: ngay_sinh || null, gioi_tinh, trang_thai, truong_hoc: truong_hoc.trim() || null,
         dia_chi: dia_chi.trim() || null, ngay_nhap_hoc: ngay_nhap_hoc || null,
         phu_huynh_id: phId, anh_url: anh_url || null,
+        // Ngày nghỉ + lý do chỉ có nghĩa khi trạng thái = Nghỉ; đổi sang trạng thái khác → xoá (null = N/A).
+        ngay_nghi:  trang_thai === 'nghi' ? (ngay_nghi || null) : null,
+        ly_do_nghi: trang_thai === 'nghi' ? (ly_do_nghi.trim() || null) : null,
       }
       if (isNew) { const created = await createHocSinh(patch); setCur(created); setDirty(true) } // ở lại modal → ghi danh ngay
       else { await updateHocSinh(cur!.id, patch); onSaved() }
@@ -253,7 +260,12 @@ function EditModal({ hocSinh, defaultKhoi, onClose, onSaved }: { hocSinh: HocSin
               <Field label="Ngày sinh"><input type="date" value={ngay_sinh} onChange={(e) => setNgaySinh(e.target.value)} className={inp} /></Field>
               <Field label="Giới tính"><Seg options={['nam', 'nu'] as const} value={gioi_tinh ?? 'nam'} onChange={setGt} render={(o) => o === 'nam' ? 'Nam' : 'Nữ'} /></Field>
               <Field label="Ngày nhập học"><input type="date" value={ngay_nhap_hoc} onChange={(e) => setNgayNhap(e.target.value)} className={inp} /></Field>
-              <Field label="Trạng thái"><Seg options={['dang_hoc', 'bao_luu', 'nghi'] as const} value={trang_thai} onChange={setTt} render={(o) => TT_LABEL[o]} /></Field>
+              <Field label="Trạng thái"><Seg options={['dang_hoc', 'bao_luu', 'nghi'] as const} value={trang_thai}
+                onChange={(v) => {
+                  if (v === 'nghi' && trang_thai !== 'nghi') { if (!ngay_nghi) setNgayNghi(todayVN()); setNghiPopup(true) } // hỏi ngày + lý do trước khi set
+                  else { setTt(v); if (v !== 'nghi') { setNgayNghi(''); setLyDoNghi('') } } // rời khỏi Nghỉ → xoá ngày/lý do
+                }}
+                render={(o) => TT_LABEL[o]} /></Field>
             </div>
             <Field label="Trường học"><input value={truong_hoc} onChange={(e) => setTruong(e.target.value)} className={inp} placeholder="vd: THCS Cầu Giấy" /></Field>
             <Field label="Địa chỉ nhà"><input value={dia_chi} onChange={(e) => setDiaChi(e.target.value)} className={inp} /></Field>
@@ -282,6 +294,23 @@ function EditModal({ hocSinh, defaultKhoi, onClose, onSaved }: { hocSinh: HocSin
         </div>
         )}
       </div>
+      {nghiPopup && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-900/40 p-4" onClick={() => setNghiPopup(false)}>
+          <div className="w-[380px] max-w-[95vw] rounded-2xl bg-white p-5 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+            <div className="mb-1 text-[15px] font-semibold text-slate-900">Ghi nhận nghỉ học</div>
+            <p className="mb-3 text-[12px] leading-snug text-slate-500">Đánh dấu Nghỉ sẽ tự rời <b>HẾT</b> lớp đang học (theo ngày nghỉ). Muốn rời từng lớp mà vẫn học môn khác thì dùng cột <b>Lớp &amp; band</b> bên phải, không đổi trạng thái.</p>
+            <label className="mb-1 block text-[12px] font-medium text-slate-600">Ngày nghỉ *</label>
+            <input type="date" value={ngay_nghi} onChange={(e) => setNgayNghi(e.target.value)} className={`${inp} mb-3`} />
+            <label className="mb-1 block text-[12px] font-medium text-slate-600">Lý do nghỉ *</label>
+            <textarea value={ly_do_nghi} onChange={(e) => setLyDoNghi(e.target.value)} rows={3} placeholder="PH báo nghỉ vì…, chuyển trường, điều kiện gia đình…" className={`${inp} mb-4 resize-none`} />
+            <div className="flex justify-end gap-2">
+              <button onClick={() => setNghiPopup(false)} className="rounded-md px-3 py-1.5 text-sm text-slate-500 hover:bg-slate-100">Huỷ</button>
+              <button disabled={!ngay_nghi || !ly_do_nghi.trim()} onClick={() => { setTt('nghi'); setNghiPopup(false) }} className="rounded-md bg-rose-600 px-4 py-1.5 text-sm font-medium text-white hover:bg-rose-500 disabled:opacity-40">Xác nhận nghỉ</button>
+            </div>
+            <p className="mt-2 text-[11px] text-slate-400">Bấm Xác nhận rồi bấm <b>Lưu</b> ở hồ sơ mới ghi vào hệ thống.</p>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
