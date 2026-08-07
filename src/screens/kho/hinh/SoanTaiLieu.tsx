@@ -420,7 +420,9 @@ function TheoMoHinh({ L, khoi }: { L: Luoi; khoi: string }) {
     ? api.conCua(L, mainId).map((id) => L.moHinh.find((m) => m.id === id)!).filter((m) => m && api.conCua(L, m.id).length === 0)
     : []), [L, mainId])
   const modelIds = useMemo(() => (mainId ? [mainId, ...mh.satIds] : []), [mainId, mh.satIds])
-  const nodes = useMemo(() => L.baiToan.filter((b) => modelIds.includes(b.mo_hinh_id)).sort((a, b) => a.cap - b.cap || a.ma.localeCompare(b.ma)), [L, modelIds])
+  // Mặc định: TẤT CẢ node trong kho (khối). Chọn mô hình chính = LỌC còn node của mô hình chính + vệ tinh.
+  const nodes = useMemo(() => (mainId ? L.baiToan.filter((b) => modelIds.includes(b.mo_hinh_id)) : L.baiToan.slice())
+    .sort((a, b) => a.cap - b.cap || a.ma.localeCompare(b.ma)), [L, mainId, modelIds])
   const tickedNodes = useMemo(() => nodes.filter((n) => nodeIds.has(n.id)), [nodes, nodeIds])
 
   // Quay lại màn: nodeIds phục hồi từ nháp nhưng pool (RAM local) rỗng → nạp lại pool (KHÔNG tự chọn sẵn).
@@ -518,15 +520,16 @@ function TheoMoHinh({ L, khoi }: { L: Luoi; khoi: string }) {
   return (
     <>
       <p className="mb-3.5 max-w-4xl text-[12.5px] leading-relaxed text-slate-500">
-        Một buổi đi <b>nhiều node</b>. Chọn <b>mô hình chính</b> + các <b>mô hình vệ tinh</b> → tick node → chọn
-        <b> số bài</b> mỗi node (kho bài = đề chuẩn + biến thể + bài thật, khác nhau từng node) → tách <b>Trên lớp</b> / <b>Về nhà</b>, hệ tự rút không trùng.
+        Hệ bày <b>tất cả chuỗi trong kho</b> (mỗi chuỗi = 1 dạng). Mỗi chuỗi chọn <b>bản</b> cho <b>Trên lớp</b> / <b>Về nhà</b>
+        (đề chuẩn hoặc lứa đổi đỉnh — 2 phiếu khác nhau, cùng logic). Node lẻ: tick → chọn <b>số bài</b> (đề chuẩn + biến thể + bài thật).
+        Muốn gọn thì <b>lọc theo mô hình</b> ở cột trái.
       </p>
       <div className="grid items-start gap-4 xl:grid-cols-[300px_1fr_248px]">
         {/* CỘT 1 — chọn mô hình chính + vệ tinh */}
-        <Panel label="Mô hình của buổi">
+        <Panel label="Lọc theo mô hình (tuỳ chọn)">
           <div className="mb-1 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Mô hình chính</div>
           <select className={inpCls} value={mainId} onChange={(e) => chonMain(e.target.value)}>
-            <option value="">— chọn mô hình —</option>
+            <option value="">— tất cả (không lọc) —</option>
             {L.moHinh.slice().sort((a, b) => (maCap.get(a.id) ?? '').localeCompare(maCap.get(b.id) ?? '')).map((m) => (
               <option key={m.id} value={m.id}>{maCap.get(m.id) ?? '?'} · {tron(m.ten).slice(0, 42)}</option>
             ))}
@@ -549,11 +552,13 @@ function TheoMoHinh({ L, khoi }: { L: Luoi; khoi: string }) {
 
         {/* CỘT 2 — tick node + builder số bài mỗi node */}
         <div className="min-w-0">
-          {!mainId
-            ? <Empty icon="◇">Chọn <b>mô hình chính</b> ở cột trái — hệ bày mọi node của nó (và vệ tinh đã tick) để chọn vào buổi.</Empty>
-            : !nodes.length
-              ? <Empty icon="◇">Mô hình đã chọn chưa có node nào. Tạo node ở <b>Sơ đồ</b> trước.</Empty>
-              : components.map((comp) => {
+          <div className="mb-2 flex items-center gap-2 text-[11px] text-slate-400">
+            <span>{mainId ? 'Đang lọc theo mô hình chính' : 'Tất cả chuỗi trong kho'} · <b className="text-slate-600">{components.length}</b> chuỗi · {nodes.length} câu</span>
+            {mainId && <button onClick={() => setMh({ mainId: '', satIds: [] })} className="rounded border border-slate-300 px-1.5 py-0.5 text-slate-500 hover:bg-slate-50">✕ Bỏ lọc</button>}
+          </div>
+          {!nodes.length
+            ? <Empty icon="◇">Kho khối này chưa có node nào. Tạo node ở <b>Sơ đồ</b> trước.</Empty>
+            : components.map((comp) => {
                 if (comp.length > 1) return <ChuoiRow key={comp.map((b) => b.id).join(',')} chuoi={comp} ghep={ghep} onSet={setChuoiGhep} />
                 const n = comp[0]
                 return (
