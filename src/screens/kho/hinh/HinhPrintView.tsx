@@ -30,7 +30,8 @@ export type YIn = {
 export type MucIn =
   | { kieu: 'chuong'; tieuDe: string; moTa?: string | null }
   | { kieu: 'nhac_lai'; items: { ma: string; phatBieu: string; cap: number }[] }
-  | { kieu: 'de'; deBai: string; anhDe?: string | null; nguon?: string | null; ma?: string | null; ys: YIn[] }
+  | { kieu: 'de'; deBai: string; anhDe?: string | null; nguon?: string | null; ma?: string | null; ys: YIn[]; anDe?: boolean }
+  //                                                                                         anDe = ẨN hình đề, chừa Ô VẼ cho HS (bản HS)
 
 export type BanIn = {
   tieuDe: string
@@ -158,10 +159,15 @@ function Noi({ ban, gv }: { ban: BanIn; gv: boolean }) {
             <div className="hp-de-h">
               Bài {soDe}.{m.nguon && <span className="hp-ma"> {m.nguon}</span>}
             </div>
-            {/* văn bản TRÁI · hình PHẢI — hình dính với đề, không trôi sang trang khác */}
-            <div className="hp-row">
+            {/* văn bản TRÁI · hình PHẢI — hình dính với đề, không trôi sang trang khác.
+                anDe (ẩn hình): bản HS chừa Ô VẼ 40% bên phải; bản GV vẫn hiện hình để đối chiếu. */}
+            <div className={`hp-row${m.anDe ? ' hp-row-ve' : ''}`}>
               <div className="hp-txt"><MathText>{m.deBai}</MathText></div>
-              {m.anhDe && <div className="hp-fig"><img src={m.anhDe} alt="" /></div>}
+              {m.anDe
+                ? (gv && m.anhDe
+                  ? <div className="hp-fig"><img src={m.anhDe} alt="" /></div>
+                  : <div className="hp-draw"><span>Vẽ hình</span></div>)
+                : (m.anhDe && <div className="hp-fig"><img src={m.anhDe} alt="" /></div>)}
             </div>
             {m.ys.map((y, j) => (
               <div key={j} className="hp-y">
@@ -209,6 +215,10 @@ const HINH_CSS = `
 .hp-txt{display:inline-block;vertical-align:top;width:66%;font-size:17px;padding-right:4mm;box-sizing:border-box}
 .hp-fig{display:inline-block;vertical-align:top;width:34%;box-sizing:border-box}
 .hp-fig img{width:100%;max-height:52mm;object-fit:contain;border:1px solid #e2e8f0;border-radius:6px;background:#fff}
+/* Ẩn hình → chừa Ô VẼ cho HS: đề 60% trái · ô vẽ 40% phải */
+.hp-row-ve .hp-txt{width:60%}
+.hp-draw{display:inline-block;vertical-align:top;width:40%;height:58mm;box-sizing:border-box;border:1px dashed #94a3b8;border-radius:6px;background:#fff;position:relative}
+.hp-draw span{position:absolute;top:4px;left:6px;font-size:10px;color:#94a3b8;text-transform:uppercase;letter-spacing:.05em}
 .hp-y{margin:7px 0 0}
 .hp-ma{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#94a3b8}
 .hp-tag{display:inline-block;background:#faeeda;border:1px solid #ef9f27;color:#854f0b;border-radius:10px;padding:0 7px;font-size:11.5px;margin-left:5px;vertical-align:middle}
