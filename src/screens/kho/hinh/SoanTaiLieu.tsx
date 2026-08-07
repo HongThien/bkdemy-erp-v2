@@ -12,14 +12,18 @@ import { MathText } from '../ui'
 import { Btn, Cap, Empty, Fig, Ma, Panel, Seg, Sol, Tag, inpCls, tron } from './hinhUi'
 
 export default function SoanTaiLieu({ L, khoi }: { L: Luoi; khoi: string }) {
-  const [che, setChe] = useState<'gd' | 'ot'>('gd')
+  const [che, setChe] = useState<'gd' | 'mh' | 'ot'>('gd')
   return (
     <>
       <div className="mb-3 flex items-center justify-between gap-3">
         <h1 className="text-[19px] font-semibold text-slate-900">Soạn tài liệu <span className="text-slate-400">· Khối {khoi}</span></h1>
-        <Seg value={che} onChange={setChe} options={[{ v: 'gd', label: '▶ Giảng dạy — đi tới đích' }, { v: 'ot', label: '↻ Ôn tập — theo dạng' }]} />
+        <Seg value={che} onChange={setChe} options={[
+          { v: 'gd', label: '▶ Giảng dạy — đi tới đích' },
+          { v: 'mh', label: '◇ Theo mô hình — chọn node' },
+          { v: 'ot', label: '↻ Ôn tập — theo dạng' },
+        ]} />
       </div>
-      {che === 'gd' ? <GiangDay L={L} /> : <OnTap L={L} khoi={khoi} />}
+      {che === 'gd' ? <GiangDay L={L} /> : che === 'mh' ? <TheoMoHinh L={L} /> : <OnTap L={L} khoi={khoi} />}
     </>
   )
 }
@@ -344,4 +348,185 @@ function banInOnTap(L: Luoi, chon: { y: Y; bai: Bai; bt: BaiToan }[]): BanIn {
       kieu: 'de' as const, deBai: g.bai.de_bai, anhDe: g.bai.anh_de, nguon: g.bai.nguon, ma: g.bai.ma_bai, ys: g.ys,
     })),
   }
+}
+
+// ══════════════════ CHẾ ĐỘ THEO MÔ HÌNH ══════════════════
+// Một buổi đi NHIỀU node. Soạn = chọn MÔ HÌNH CHÍNH + các mô hình VỆ TINH (lá) của nó → bày mọi node →
+// tick node → builder chọn SỐ BÀI mỗi node (kho bài = đề chuẩn + biến thể + ý thật, khác nhau từng node) →
+// tách TRÊN LỚP / VỀ NHÀ, auto rút không trùng → xuất 2 phiếu (như builder Đại). In nhẹ, không lưu DB.
+type NguonBai = 'chuan' | 'bienthe' | 'that'
+type PoolItem = { key: string; nguon: NguonBai; deBai: string; anhDe: string | null; ys: YIn[] }
+const NGUON_NHAN: Record<NguonBai, string> = { chuan: 'chuẩn', bienthe: 'biến thể', that: 'bài thật' }
+
+/** Kho bài của MỘT node = đề chuẩn (1, derive) + biến thể (đổi số/thay điểm) + ý thật trỏ vào node (kho chính). */
+async function poolCuaNode(L: Luoi, bt: BaiToan): Promise<PoolItem[]> {
+  const [bienThe, yThat] = await Promise.all([api.listBienThe(bt.id), api.yTheoNode(bt.id)])
+  const c = api.cachMacDinh(L, bt.id)
+  const anhChuan = api.anhCuaBaiToan(L, bt.id)
+  const items: PoolItem[] = [{
+    key: `${bt.id}:chuan`, nguon: 'chuan',
+    deBai: [api.giaThietDayDu(L, bt.mo_hinh_id), `Chứng minh ${bt.phat_bieu}`].filter(Boolean).join('. '),
+    anhDe: anhChuan,
+    ys: [{ nhan: '', noiDung: '', loiGiai: c?.loi_giai, anh: c?.anh_loi_giai ?? anhChuan, ma: bt.ma, cap: bt.cap }],
+  }]
+  for (const v of bienThe) items.push({
+    key: `bt:${v.id}`, nguon: 'bienthe', deBai: v.de_bai, anhDe: v.anh,
+    ys: [{ nhan: '', noiDung: '', loiGiai: v.loi_giai, anh: v.anh_loi_giai ?? v.anh, ma: bt.ma, cap: bt.cap }],
+  })
+  for (const { y, bai } of yThat) {
+    const da = api.dapAnHaiBac(L, y)
+    items.push({
+      key: `y:${y.id}`, nguon: 'that', deBai: bai.de_bai, anhDe: bai.anh_de,
+      ys: [{ nhan: y.nhan_hien_thi ?? String.fromCharCode(96 + y.thu_tu), noiDung: y.noi_dung, loiGiai: da.loiGiai, anh: da.anh, bacThamChieu: da.bac === 'tham_chieu', ma: y.ma_y }],
+    })
+  }
+  return items
+}
+
+function TheoMoHinh({ L }: { L: Luoi }) {
+  const maCap = useMemo(() => api.maPhanCapMap(L), [L])
+  const [mainId, setMainId] = useState('')
+  const [satIds, setSatIds] = useState<Set<string>>(new Set())
+  const [nodeIds, setNodeIds] = useState<Set<string>>(new Set())
+  const [pools, setPools] = useState<Map<string, PoolItem[]>>(new Map())
+  const [cnt, setCnt] = useState<Map<string, { lop: number; nha: number }>>(new Map())
+  const [inBan, setInBan] = useState<BanIn | null>(null)
+
+  // Vệ tinh = con LÁ (không có con) của mô hình chính.
+  const vetinh = useMemo(() => (mainId
+    ? api.conCua(L, mainId).map((id) => L.moHinh.find((m) => m.id === id)!).filter((m) => m && api.conCua(L, m.id).length === 0)
+    : []), [L, mainId])
+  const modelIds = useMemo(() => (mainId ? [mainId, ...[...satIds]] : []), [mainId, satIds])
+  const nodes = useMemo(() => L.baiToan.filter((b) => modelIds.includes(b.mo_hinh_id)).sort((a, b) => a.cap - b.cap || a.ma.localeCompare(b.ma)), [L, modelIds])
+  const tickedNodes = useMemo(() => nodes.filter((n) => nodeIds.has(n.id)), [nodes, nodeIds])
+
+  // Đổi mô hình chính → reset chọn (tránh giữ node/vệ tinh của mô hình cũ).
+  function chonMain(id: string) { setMainId(id); setSatIds(new Set()); setNodeIds(new Set()) }
+
+  async function tickNode(id: string) {
+    const on = nodeIds.has(id)
+    const next = new Set(nodeIds); on ? next.delete(id) : next.add(id); setNodeIds(next)
+    if (!on && !pools.has(id)) {
+      const bt = L.baiToan.find((b) => b.id === id)!
+      const p = await poolCuaNode(L, bt)
+      setPools((m) => new Map(m).set(id, p))
+      setCnt((m) => new Map(m).set(id, { lop: Math.min(2, p.length), nha: 0 }))
+    }
+  }
+  const setCount = (id: string, patch: Partial<{ lop: number; nha: number }>) =>
+    setCnt((m) => { const cur = m.get(id) ?? { lop: 0, nha: 0 }; return new Map(m).set(id, { ...cur, ...patch }) })
+
+  const tong = tickedNodes.reduce((s, n) => { const c = cnt.get(n.id) ?? { lop: 0, nha: 0 }; return { lop: s.lop + c.lop, nha: s.nha + c.nha } }, { lop: 0, nha: 0 })
+
+  return (
+    <>
+      <p className="mb-3.5 max-w-4xl text-[12.5px] leading-relaxed text-slate-500">
+        Một buổi đi <b>nhiều node</b>. Chọn <b>mô hình chính</b> + các <b>mô hình vệ tinh</b> → tick node → chọn
+        <b> số bài</b> mỗi node (kho bài = đề chuẩn + biến thể + bài thật, khác nhau từng node) → tách <b>Trên lớp</b> / <b>Về nhà</b>, hệ tự rút không trùng.
+      </p>
+      <div className="grid items-start gap-4 xl:grid-cols-[300px_1fr_248px]">
+        {/* CỘT 1 — chọn mô hình chính + vệ tinh */}
+        <Panel label="Mô hình của buổi">
+          <div className="mb-1 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Mô hình chính</div>
+          <select className={inpCls} value={mainId} onChange={(e) => chonMain(e.target.value)}>
+            <option value="">— chọn mô hình —</option>
+            {L.moHinh.slice().sort((a, b) => (maCap.get(a.id) ?? '').localeCompare(maCap.get(b.id) ?? '')).map((m) => (
+              <option key={m.id} value={m.id}>{maCap.get(m.id) ?? '?'} · {tron(m.ten).slice(0, 42)}</option>
+            ))}
+          </select>
+          {mainId && (
+            <div className="mt-3">
+              <div className="mb-1 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Mô hình vệ tinh · {vetinh.length}</div>
+              {vetinh.length === 0
+                ? <div className="text-[11.5px] text-slate-400">— mô hình này không có vệ tinh (lá) —</div>
+                : vetinh.map((v) => (
+                  <label key={v.id} className="mb-1 flex cursor-pointer items-center gap-2 rounded-lg border border-dashed border-indigo-200 bg-indigo-50/40 px-2 py-1.5 text-[12px] text-slate-700 hover:bg-indigo-50">
+                    <input type="checkbox" checked={satIds.has(v.id)} onChange={() => setSatIds((s) => { const n = new Set(s); n.has(v.id) ? n.delete(v.id) : n.add(v.id); return n })} />
+                    <Ma>{maCap.get(v.id) ?? '?'}</Ma><span className="min-w-0 flex-1 truncate"><MathText>{v.ten}</MathText></span>
+                  </label>
+                ))}
+              <p className="mt-2 text-[11px] leading-relaxed text-slate-400">Vệ tinh = mô hình lá treo dưới mô hình chính. Tick để lấy thêm node của nó vào buổi.</p>
+            </div>
+          )}
+        </Panel>
+
+        {/* CỘT 2 — tick node + builder số bài mỗi node */}
+        <div className="min-w-0">
+          {!mainId
+            ? <Empty icon="◇">Chọn <b>mô hình chính</b> ở cột trái — hệ bày mọi node của nó (và vệ tinh đã tick) để chọn vào buổi.</Empty>
+            : !nodes.length
+              ? <Empty icon="◇">Mô hình đã chọn chưa có node nào. Tạo node ở <b>Sơ đồ</b> trước.</Empty>
+              : nodes.map((n) => {
+                const mh = L.moHinh.find((m) => m.id === n.mo_hinh_id)
+                const on = nodeIds.has(n.id)
+                const pool = pools.get(n.id) ?? []
+                const c = cnt.get(n.id) ?? { lop: 0, nha: 0 }
+                const tran = c.lop + c.nha > pool.length
+                return (
+                  <div key={n.id} className={`mb-2 rounded-xl border p-3 ${on ? 'border-blue-300 bg-blue-50/30' : 'border-slate-200 bg-white'}`}>
+                    <button onClick={() => tickNode(n.id)} className="flex w-full items-start gap-2.5 text-left">
+                      <span className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md border-[1.5px] text-[12px] text-white ${on ? 'border-blue-500 bg-blue-500' : 'border-slate-300'}`}>{on ? '✓' : ''}</span>
+                      <div className="min-w-0 flex-1">
+                        <b className="text-[12.5px] text-slate-800"><MathText>{n.phat_bieu}</MathText></b>
+                        <div className="mt-0.5 flex flex-wrap items-center gap-1.5 text-[11px] text-slate-400">
+                          <Ma>{n.ma}</Ma><Cap cap={n.cap} />{mh && <Tag ton="mh">{maCap.get(mh.id) ?? mh.ma}</Tag>}
+                        </div>
+                      </div>
+                    </button>
+                    {on && (
+                      <div className="mt-2.5 flex flex-wrap items-center gap-x-4 gap-y-2 rounded-lg bg-white px-3 py-2 text-[12px]">
+                        <span className="text-slate-400">Kho: <b className="text-slate-600">{pool.length} bài</b>
+                          {pool.length > 0 && <span className="ml-1 text-[11px]">({['chuan', 'bienthe', 'that'].map((ng) => { const k = pool.filter((p) => p.nguon === ng).length; return k ? `${k} ${NGUON_NHAN[ng as NguonBai]}` : null }).filter(Boolean).join(' · ')})</span>}
+                        </span>
+                        <label className="flex items-center gap-1.5 font-medium text-sky-700">📘 Trên lớp
+                          <input type="number" min={0} value={c.lop} onChange={(e) => setCount(n.id, { lop: Math.max(0, +e.target.value || 0) })} className="h-7 w-12 rounded border border-slate-300 px-1 text-center" />
+                        </label>
+                        <label className="flex items-center gap-1.5 font-medium text-orange-600">📝 Về nhà
+                          <input type="number" min={0} value={c.nha} onChange={(e) => setCount(n.id, { nha: Math.max(0, +e.target.value || 0) })} className="h-7 w-12 rounded border border-slate-300 px-1 text-center" />
+                        </label>
+                        {tran && <span className="text-[11px] font-medium text-rose-600">⚠ vượt kho ({pool.length}) — thiếu bài, sẽ lấy tối đa</span>}
+                      </div>
+                    )}
+                  </div>
+                )
+              })}
+        </div>
+
+        {/* CỘT 3 — tổng kết + xuất 2 phiếu */}
+        <Panel label="Xuất phiếu" className="sticky top-4">
+          <div className="space-y-1 text-[12.5px] text-slate-600">
+            {tickedNodes.length
+              ? tickedNodes.map((n) => { const c = cnt.get(n.id) ?? { lop: 0, nha: 0 }; return (
+                <div key={n.id} className="flex items-center gap-1.5">
+                  <Ma>{n.ma}</Ma><span className="ml-auto text-[11.5px] text-slate-400">{c.lop}+{c.nha}</span>
+                </div>) })
+              : <div className="text-slate-400">— chưa tick node nào —</div>}
+          </div>
+          <div className="mt-3 space-y-1 border-t border-slate-100 pt-3 text-[12.5px]">
+            <div className="flex justify-between"><span>Node</span><b>{tickedNodes.length}</b></div>
+            <div className="flex justify-between text-sky-700"><span>Bài trên lớp</span><b>{tong.lop}</b></div>
+            <div className="flex justify-between text-orange-600"><span>Bài về nhà</span><b>{tong.nha}</b></div>
+          </div>
+          <Btn kind="pri" className="mt-3 w-full justify-center" disabled={!tong.lop}
+            onClick={() => setInBan(banInTheoMoHinh('Trên lớp', 'lop', tickedNodes, pools, cnt))}>📘 Xuất phiếu Trên lớp</Btn>
+          <Btn className="mt-2 w-full justify-center" disabled={!tong.nha}
+            onClick={() => setInBan(banInTheoMoHinh('Về nhà (BTVN)', 'nha', tickedNodes, pools, cnt))}>📝 Xuất phiếu Về nhà</Btn>
+          <p className="mt-2.5 text-[11px] leading-relaxed text-slate-400">Trên lớp lấy các bài ĐẦU kho mỗi node; Về nhà lấy các bài KẾ TIẾP — không trùng bài trên lớp.</p>
+        </Panel>
+      </div>
+      {inBan && <HinhPrintView ban={inBan} onClose={() => setInBan(null)} />}
+    </>
+  )
+}
+
+/** Trên lớp = bài đầu kho mỗi node (0..lop); Về nhà = bài kế tiếp (lop..lop+nha) → KHÔNG trùng trên lớp. */
+function banInTheoMoHinh(tieuDe: string, phan: 'lop' | 'nha', nodes: BaiToan[], pools: Map<string, PoolItem[]>, cnt: Map<string, { lop: number; nha: number }>): BanIn {
+  const mucs: MucIn[] = []
+  for (const bt of nodes) {
+    const pool = pools.get(bt.id) ?? []
+    const c = cnt.get(bt.id) ?? { lop: 0, nha: 0 }
+    const items = phan === 'lop' ? pool.slice(0, c.lop) : pool.slice(c.lop, c.lop + c.nha)
+    for (const it of items) mucs.push({ kieu: 'de', deBai: it.deBai, anhDe: it.anhDe, ma: bt.ma, ys: it.ys })
+  }
+  return { tieuDe: `Buổi học — ${tieuDe}`, phuDe: `${mucs.length} bài · ${nodes.length} node`, mucs }
 }
