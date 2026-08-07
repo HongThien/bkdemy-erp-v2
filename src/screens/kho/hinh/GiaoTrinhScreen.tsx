@@ -54,18 +54,19 @@ async function resolveBanIn(L: Luoi, tieuBuoi: string, bais: GtBai[], phan: 'lop
     gt.getYFull(list.filter((b) => b.loai === 'y').map((b) => b.ref_id!).filter(Boolean)),
   ])
   const dong = (b: GtBai) => (phan === 'nha' ? (b.so_dong ?? 6) : (b.so_dong ?? 0))   // BTVN mặc định 6; trên lớp không kẻ dòng
+  const daGhep = new Set(list.filter((b) => b.loai === 'ghep').flatMap((b) => b.ghep_node_ids))   // node đã ghép → bỏ bài lẻ
   const mucs: MucIn[] = []
   for (const b of list) {
     if (b.loai === 'chuan') {
-      const node = L.baiToan.find((x) => x.id === b.ref_id); if (!node) continue
+      const node = L.baiToan.find((x) => x.id === b.ref_id); if (!node || daGhep.has(node.id)) continue
       const c = api.cachMacDinh(L, node.id); const anh = api.anhCuaBaiToan(L, node.id)
       mucs.push({ kieu: 'de', ma: node.ma, deBai: [api.giaThietDayDu(L, node.mo_hinh_id), `Chứng minh ${node.phat_bieu}`].filter(Boolean).join('. '), anhDe: anh, ys: [{ nhan: '', noiDung: '', loiGiai: c?.loi_giai, anh: c?.anh_loi_giai ?? anh, ma: node.ma, cap: node.cap }], anDe: b.an_de || !anh, soDong: dong(b) })
     } else if (b.loai === 'bienthe') {
-      const v = btMap.get(b.ref_id!); if (!v) continue
+      const v = btMap.get(b.ref_id!); if (!v || daGhep.has(v.baitoan_id)) continue
       const node = L.baiToan.find((x) => x.id === v.baitoan_id)
       mucs.push({ kieu: 'de', ma: node?.ma ?? null, deBai: v.de_bai, anhDe: v.anh, ys: [{ nhan: '', noiDung: '', loiGiai: v.loi_giai, anh: v.anh_loi_giai ?? v.anh, ma: node?.ma, cap: node?.cap }], anDe: b.an_de || !v.anh, soDong: dong(b) })
     } else if (b.loai === 'y') {
-      const yb = yMap.get(b.ref_id!); if (!yb) continue
+      const yb = yMap.get(b.ref_id!); if (!yb || (yb.y.baitoan_id && daGhep.has(yb.y.baitoan_id))) continue
       const da = api.dapAnHaiBac(L, yb.y)
       mucs.push({ kieu: 'de', ma: yb.bai.ma_bai, deBai: yb.bai.de_bai, anhDe: yb.bai.anh_de, ys: [{ nhan: yb.y.nhan_hien_thi ?? String.fromCharCode(96 + yb.y.thu_tu), noiDung: yb.y.noi_dung, loiGiai: da.loiGiai, anh: da.anh, bacThamChieu: da.bac === 'tham_chieu', ma: yb.y.ma_y }], anDe: b.an_de || !yb.bai.anh_de, soDong: dong(b) })
     } else if (b.loai === 'ghep') {

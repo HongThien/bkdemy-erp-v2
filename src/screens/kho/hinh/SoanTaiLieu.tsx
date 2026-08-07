@@ -453,8 +453,11 @@ function TheoMoHinh({ L, khoi }: { L: Luoi; khoi: string }) {
     setMh({ sel: { ...sel, [nodeId]: cur } })
   }
 
-  // Bài đã chọn cho từng phiếu (kèm node) — dùng cho tổng kết + xuất. Lớp/Nhà rời nhau theo thiết kế.
-  const chosen = (phan: 'lop' | 'nha') => tickedNodes.flatMap((n) => (pools.get(n.id) ?? []).filter((p) => sel[n.id]?.[p.key] === phan).map((p) => ({ n, p })))
+  // Bài đã chọn cho từng phiếu (kèm node). Node ĐÃ GHÉP (cùng phiếu) → BỎ bài lẻ (đã nằm trong bài a,b,c).
+  const chosen = (phan: 'lop' | 'nha') => {
+    const daGhep = new Set(mh.ghep.filter((g) => g.phan === phan).flatMap((g) => g.nodeIds))
+    return tickedNodes.flatMap((n) => (daGhep.has(n.id) ? [] : (pools.get(n.id) ?? []).filter((p) => sel[n.id]?.[p.key] === phan).map((p) => ({ n, p }))))
+  }
   const dsLop = chosen('lop'), dsNha = chosen('nha')
 
   // Bài a,b,c GHÉP từ chuỗi (đề chuẩn: luaId null). Chéo node ⇒ để ở mh (không per-node).
@@ -635,9 +638,11 @@ function LuuGiaoTrinhPopup({ khoi, moHinhChinhId, nhap, onClose, onDone }: {
 /** Bài lẻ (từ sel) + bài a,b,c GHÉP (từ ghep) của MỘT phiếu → bản in. */
 function banInTheoMoHinh(tieuDe: string, phan: 'lop' | 'nha', nodes: BaiToan[], pools: Map<string, PoolItem[]>, sel: Record<string, Record<string, 'lop' | 'nha'>>, ghep: GhepItem[], L: Luoi, anDe: string[], soDong: Record<string, number>): BanIn {
   const an = new Set(anDe)
+  const daGhep = new Set(ghep.filter((g) => g.phan === phan).flatMap((g) => g.nodeIds))   // node đã ghép → bỏ bài lẻ
   const dong = (key: string) => (phan === 'nha' ? (soDong[key] ?? DONG_BTVN) : soDong[key] ?? 0)   // BTVN mặc định DONG_BTVN; trên lớp KHÔNG kẻ dòng (bài sát nhau)
   const mucs: MucIn[] = []
   for (const bt of nodes) {
+    if (daGhep.has(bt.id)) continue
     const pick = sel[bt.id] ?? {}
     for (const it of (pools.get(bt.id) ?? [])) {
       if (pick[it.key] === phan) mucs.push({ kieu: 'de', deBai: it.deBai, anhDe: it.anhDe, ma: bt.ma, ys: it.ys, anDe: an.has(it.key) || !it.anhDe, soDong: dong(it.key) })
