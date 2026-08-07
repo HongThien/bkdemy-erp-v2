@@ -224,6 +224,6 @@ const HINH_CSS = `
 .hp-tag{display:inline-block;background:#faeeda;border:1px solid #ef9f27;color:#854f0b;border-radius:10px;padding:0 7px;font-size:11.5px;margin-left:5px;vertical-align:middle}
 .hp-giai{font-size:16px;color:#374151;background:#fbfcff;border:1px solid #e5e9f0;border-radius:7px;padding:7px 10px;margin-top:4px}
 .hp-bac{font-size:12px;color:#8a5a12;background:#fffaf1;border-radius:5px;padding:3px 7px;margin-bottom:5px}
-/* bản HS: chỗ trống có dòng kẻ để viết */
-.hp-ke{height:26mm;margin-top:4px;background-image:repeating-linear-gradient(to bottom,transparent 0 7.6mm,#d7dee7 7.6mm 7.7mm)}
+/* bản HS: chỗ trống có DÒNG KẺ để viết — line rõ (0.3mm, xám vừa), mỗi 7.7mm 1 dòng */
+.hp-ke{height:23.1mm;margin-top:3px;background-image:repeating-linear-gradient(to bottom,transparent 0 7.4mm,#9aa7b5 7.4mm 7.7mm)}
 `
