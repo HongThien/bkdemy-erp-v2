@@ -7,7 +7,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { createPortal } from 'react-dom'
 import * as api from '../../../lib/kho/api'
-import type { Bai, BaiToan, Luoi, Y } from '../../../lib/kho/hinh'
+import type { Bai, BaiToan, BienThe, Luoi, Y } from '../../../lib/kho/hinh'
 import HinhPrintView, { type BanIn, type MucIn, type YIn } from './HinhPrintView'
 import { MathText } from '../ui'
 import { Btn, Cap, Empty, Fig, Ma, Panel, Seg, Sol, Tag, inpCls, tron } from './hinhUi'
@@ -490,10 +490,10 @@ function TheoMoHinh({ L, khoi }: { L: Luoi; khoi: string }) {
     for (const n of nodes) { if (seen.has(n.id)) continue; const chain = api.chuoiKetNoi(L, n.id); chain.forEach((b) => seen.add(b.id)); comps.push(chain) }
     return comps
   }, [nodes, L])
-  // Đặt bài a,b,c của MỘT chuỗi cho MỘT phiếu (nodeIds = câu đã tick; rỗng = bỏ chuỗi khỏi phiếu). Thay đúng ghép của chuỗi đó.
-  const setChuoiGhep = (chuoiIds: Set<string>, phan: 'lop' | 'nha', nodeIds: string[]) => {
+  // Đặt BẢN (đề chuẩn/luaId) của MỘT chuỗi cho MỘT phiếu. opt=null → bỏ chuỗi khỏi phiếu. Thay đúng ghép của chuỗi đó.
+  const setChuoiGhep = (chuoiIds: Set<string>, phan: 'lop' | 'nha', opt: { luaId: string | null } | null) => {
     const others = ghep.filter((g) => !(g.phan === phan && g.nodeIds.length > 0 && g.nodeIds.every((id) => chuoiIds.has(id))))
-    setMh({ ghep: nodeIds.length ? [...others, { key: crypto.randomUUID(), phan, luaId: null, nodeIds }] : others })
+    setMh({ ghep: opt ? [...others, { key: crypto.randomUUID(), phan, luaId: opt.luaId, nodeIds: [...chuoiIds] }] : others })
   }
 
   // Ẩn hình (HS tự vẽ) theo từng bài — mặc định HIỆN. anDe chứa khoá bài đã ẩn.
@@ -582,9 +582,9 @@ function TheoMoHinh({ L, khoi }: { L: Luoi; khoi: string }) {
             <span className="ml-auto text-slate-400">{tickedNodes.length} node</span>
           </div>
           <Btn kind="pri" className="mt-3 w-full justify-center" disabled={!dsLop.length && !ghepLop.length}
-            onClick={() => setInBan(banInTheoMoHinh('Trên lớp', 'lop', tickedNodes, pools, sel, ghep, L, anDe, soDong))}>📘 Xuất phiếu Trên lớp</Btn>
+            onClick={async () => setInBan(await banInTheoMoHinh('Trên lớp', 'lop', tickedNodes, pools, sel, ghep, L, anDe, soDong))}>📘 Xuất phiếu Trên lớp</Btn>
           <Btn className="mt-2 w-full justify-center" disabled={!dsNha.length && !ghepNha.length}
-            onClick={() => setInBan(banInTheoMoHinh('Về nhà (BTVN)', 'nha', tickedNodes, pools, sel, ghep, L, anDe, soDong))}>📝 Xuất phiếu Về nhà</Btn>
+            onClick={async () => setInBan(await banInTheoMoHinh('Về nhà (BTVN)', 'nha', tickedNodes, pools, sel, ghep, L, anDe, soDong))}>📝 Xuất phiếu Về nhà</Btn>
           <p className="mt-2.5 text-[11px] leading-relaxed text-slate-400">Mỗi bài chỉ vào <b>một</b> phiếu. <b>🔗</b> = a,b,c ghép chuỗi. <b>✏️</b> = ẩn hình, chừa ô HS tự vẽ.</p>
           <div className="mt-3 border-t border-slate-100 pt-3">
             {editBuoi ? (
@@ -670,7 +670,7 @@ function LuuGiaoTrinhPopup({ khoi, moHinhChinhId, nhap, onClose, onDone }: {
 }
 
 /** Bài lẻ (từ sel) + bài a,b,c GHÉP (từ ghep) của MỘT phiếu → bản in. */
-function banInTheoMoHinh(tieuDe: string, phan: 'lop' | 'nha', nodes: BaiToan[], pools: Map<string, PoolItem[]>, sel: Record<string, Record<string, 'lop' | 'nha'>>, ghep: GhepItem[], L: Luoi, anDe: string[], soDong: Record<string, number>): BanIn {
+async function banInTheoMoHinh(tieuDe: string, phan: 'lop' | 'nha', nodes: BaiToan[], pools: Map<string, PoolItem[]>, sel: Record<string, Record<string, 'lop' | 'nha'>>, ghep: GhepItem[], L: Luoi, anDe: string[], soDong: Record<string, number>): Promise<BanIn> {
   const an = new Set(anDe)
   const daGhep = new Set(ghep.filter((g) => g.phan === phan).flatMap((g) => g.nodeIds))   // node đã ghép → bỏ bài lẻ
   const dong = (key: string) => (phan === 'nha' ? (soDong[key] ?? DONG_BTVN) : soDong[key] ?? 0)   // BTVN mặc định DONG_BTVN; trên lớp KHÔNG kẻ dòng (bài sát nhau)
@@ -682,7 +682,10 @@ function banInTheoMoHinh(tieuDe: string, phan: 'lop' | 'nha', nodes: BaiToan[], 
       if (pick[it.key] === phan) mucs.push({ kieu: 'de', deBai: it.deBai, anhDe: it.anhDe, ma: bt.ma, ys: it.ys, anDe: an.has(it.key) || !it.anhDe, soDong: dong(it.key) })
     }
   }
-  for (const g of dedupeGhep(ghep.filter((x) => x.phan === phan))) mucs.push(mucGhep(L, g, an.has(g.key), dong(g.key)))
+  for (const g of dedupeGhep(ghep.filter((x) => x.phan === phan))) {
+    if (g.luaId) { const vs = await api.bienTheCuaLua(g.luaId); mucs.push(mucGhepLua(L, g.nodeIds, vs, an.has(g.key), dong(g.key))) }
+    else mucs.push(mucGhep(L, g, an.has(g.key), dong(g.key)))
+  }
   return { tieuDe: `Buổi học — ${tieuDe}`, phuDe: `${mucs.length} mục · ${nodes.length} node`, mucs }
 }
 /** Ghép chuỗi (đề chuẩn) → 1 bài a,b,c: giả thiết + hình của node SÂU NHẤT chung; ý a,b,c = câu hỏi + lời giải từng node. */
@@ -698,50 +701,77 @@ export function mucGhep(L: Luoi, g: GhepItem, anDe: boolean, soDong?: number | n
   const anhDe = api.anhCuaBaiToan(L, deep.id)
   return { kieu: 'de', deBai: api.giaThietDayDu(L, deep.mo_hinh_id), anhDe, ma: nodes.map((b) => b.ma).join('+'), ys, anDe: anDe || !anhDe, soDong: soDong ?? null }
 }
+// Tách đề biến thể: cắt ở "Chứng minh" → giả thiết (chung cả chuỗi) + câu hỏi (ý). Giả thiết các câu trong chuỗi giống nhau.
+function tachDe(deBai: string): { giaThiet: string; cauHoi: string } {
+  const i = deBai.lastIndexOf('Chứng minh')
+  if (i < 0) return { giaThiet: '', cauHoi: deBai.trim() }
+  return { giaThiet: deBai.slice(0, i).replace(/[.,;\s]+$/, '').trim(), cauHoi: deBai.slice(i).trim() }
+}
+/** Ghép 1 LỨA (đổi đỉnh) → a,b,c: giả thiết CHUNG (từ câu sâu nhất) + ý = câu hỏi từng câu (từ biến thể của lứa). */
+export function mucGhepLua(L: Luoi, nodeIds: string[], bienThes: BienThe[], anDe: boolean, soDong?: number | null): MucIn {
+  const byNode = new Map(bienThes.map((v) => [v.baitoan_id, v]))
+  const nodes = (nodeIds.map((id) => L.baiToan.find((b) => b.id === id)).filter(Boolean) as BaiToan[]).sort((a, b) => a.cap - b.cap || a.ma.localeCompare(b.ma))
+  let deep = nodes[0]; let dS = -1
+  for (const bt of nodes) { if (!byNode.has(bt.id)) continue; const d = api.doSauTrongHo(L, bt.mo_hinh_id); if (d > dS) { dS = d; deep = bt } }
+  const deepV = byNode.get(deep.id)
+  const giaThiet = deepV ? tachDe(deepV.de_bai).giaThiet : api.giaThietDayDu(L, deep.mo_hinh_id)
+  const ys: YIn[] = nodes.map((bt, i) => {
+    const v = byNode.get(bt.id)
+    return { nhan: String.fromCharCode(97 + i), noiDung: v ? tachDe(v.de_bai).cauHoi : `Chứng minh ${bt.phat_bieu}`, loiGiai: v?.loi_giai ?? null, anh: v?.anh_loi_giai ?? null, ma: bt.ma, cap: bt.cap }
+  })
+  const anhDe = deepV?.anh ?? api.anhCuaBaiToan(L, deep.id)
+  return { kieu: 'de', deBai: giaThiet, anhDe, ma: nodes.map((b) => b.ma).join('+'), ys, anDe: anDe || !anhDe, soDong: soDong ?? null }
+}
 
-// ── Một CHUỖI (nhiều câu nối tiền đề) — hiện 1 lần. 2 khối Trên lớp / Về nhà RIÊNG; tick câu → bài a,b,c của phiếu đó ──
+// ── Một CHUỖI (= 1 DẠNG, cùng logic tiền đề) — hiện 1 lần. Mỗi phiếu chọn 1 BẢN (đề chuẩn / lứa đổi đỉnh) KHÁC nhau ──
 function ChuoiRow({ chuoi, ghep, onSet }: {
-  chuoi: BaiToan[]; ghep: GhepItem[]; onSet: (chuoiIds: Set<string>, phan: 'lop' | 'nha', nodeIds: string[]) => void
+  chuoi: BaiToan[]; ghep: GhepItem[]; onSet: (chuoiIds: Set<string>, phan: 'lop' | 'nha', opt: { luaId: string | null } | null) => void
 }) {
   const chuoiIds = useMemo(() => new Set(chuoi.map((b) => b.id)), [chuoi])
+  const [luaOpts, setLuaOpts] = useState<{ luaId: string | null; label: string }[]>([{ luaId: null, label: 'Đề chuẩn (gốc)' }])
+  useEffect(() => {
+    let alive = true
+    Promise.all(chuoi.map((b) => api.listBienThe(b.id))).then((lists) => {
+      if (!alive) return
+      const byLua = new Map<string, Set<string>>()
+      lists.forEach((list, i) => list.forEach((v) => { if (v.lua_id) { const s = byLua.get(v.lua_id) ?? new Set<string>(); s.add(chuoi[i].id); byLua.set(v.lua_id, s) } }))
+      const opts = [{ luaId: null as string | null, label: 'Đề chuẩn (gốc)' }]
+      let k = 0
+      for (const [lua, nodes] of byLua) if (nodes.size >= 2) opts.push({ luaId: lua, label: `Lứa ${++k} (đổi đỉnh · ${nodes.size} câu)` })
+      setLuaOpts(opts)
+    }).catch(() => { /* giữ đề chuẩn */ })
+    return () => { alive = false }
+  }, [chuoi])
   const ghepOf = (phan: 'lop' | 'nha') => ghep.find((g) => g.phan === phan && g.nodeIds.length > 0 && g.nodeIds.every((id) => chuoiIds.has(id)))
   return (
     <div className="mb-2 rounded-xl border border-violet-200 bg-violet-50/30 p-3">
-      <div className="mb-1.5 text-[11px] font-semibold uppercase tracking-wide text-violet-700">🔗 Chuỗi {chuoi.length} câu — ghép a,b,c</div>
+      <div className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-violet-700">🔗 Chuỗi {chuoi.length} câu (a,b,c…)</div>
+      <div className="mb-2 text-[11px] leading-snug text-slate-500">
+        {chuoi.map((b, i) => <span key={b.id}>{i > 0 && ' → '}<Ma>{b.ma}</Ma></span>)}
+      </div>
       <div className="space-y-2">
         {(['lop', 'nha'] as const).map((phan) => {
-          const g = ghepOf(phan); const on = !!g
-          const checked = new Set(g?.nodeIds ?? chuoi.map((b) => b.id))
-          const laLop = phan === 'lop'
-          const toggle = () => onSet(chuoiIds, phan, on ? [] : chuoi.map((b) => b.id))
-          const tickCau = (id: string) => { const s = new Set(checked); s.has(id) ? s.delete(id) : s.add(id); onSet(chuoiIds, phan, chuoi.filter((b) => s.has(b.id)).map((b) => b.id)) }
+          const g = ghepOf(phan); const on = !!g; const laLop = phan === 'lop'
           return (
-            <div key={phan} className={`rounded-lg border p-2.5 ${laLop ? 'border-sky-200 bg-sky-50/40' : 'border-orange-200 bg-orange-50/40'}`}>
-              <label className="flex cursor-pointer items-center gap-2 text-[12px] font-semibold">
-                <input type="checkbox" checked={on} onChange={toggle} />
+            <div key={phan} className={`flex flex-wrap items-center gap-2 rounded-lg border p-2.5 ${laLop ? 'border-sky-200 bg-sky-50/40' : 'border-orange-200 bg-orange-50/40'}`}>
+              <label className="flex cursor-pointer items-center gap-1.5 text-[12px] font-semibold">
+                <input type="checkbox" checked={on} onChange={() => onSet(chuoiIds, phan, on ? null : { luaId: null })} />
                 <span className={laLop ? 'text-sky-700' : 'text-orange-600'}>{laLop ? '📘 Trên lớp' : '📝 Về nhà'}</span>
-                {on && <span className="text-[11px] font-normal text-slate-400">— {chuoi.filter((b) => checked.has(b.id)).length} ý</span>}
               </label>
               {on && (
-                <ol className="mt-1.5 space-y-1">
-                  {chuoi.map((b, i) => {
-                    const c = checked.has(b.id)
-                    const idx = chuoi.filter((x, j) => j <= i && checked.has(x.id)).length
-                    return (
-                      <li key={b.id} className="flex items-center gap-2 rounded-md border border-slate-100 bg-white/70 px-2 py-1 text-[12px]">
-                        <input type="checkbox" checked={c} onChange={() => tickCau(b.id)} />
-                        <span className="w-4 shrink-0 text-center text-[11px] font-bold text-violet-600">{c ? `${String.fromCharCode(96 + idx)})` : '–'}</span>
-                        <span className="min-w-0 flex-1 truncate text-slate-700"><MathText>{b.phat_bieu}</MathText></span>
-                        <Ma>{b.ma}</Ma>
-                      </li>
-                    )
-                  })}
-                </ol>
+                <>
+                  <span className="text-[11px] text-slate-400">bản:</span>
+                  <select className="h-7 rounded border border-slate-300 px-1.5 text-[12px]" value={g!.luaId ?? ''}
+                    onChange={(e) => onSet(chuoiIds, phan, { luaId: e.target.value || null })}>
+                    {luaOpts.map((o) => <option key={o.luaId ?? 'chuan'} value={o.luaId ?? ''}>{o.label}</option>)}
+                  </select>
+                </>
               )}
             </div>
           )
         })}
       </div>
+      {luaOpts.length === 1 && <p className="mt-1.5 text-[11px] leading-snug text-slate-400">Chỉ có đề chuẩn. Muốn Trên lớp / Về nhà khác nhau → tạo <b>lứa đổi đỉnh</b> cho chuỗi (Sơ đồ → node → Thêm biến thể → 🔗 Đổi đỉnh cả chuỗi).</p>}
     </div>
   )
 }
