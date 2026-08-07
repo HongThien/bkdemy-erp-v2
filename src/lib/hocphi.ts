@@ -924,7 +924,16 @@ export async function listChiTietTheoPH(ky: string): Promise<Map<string, DongPhi
   return out
 }
 export async function listPhieuTheoKy(ky: string): Promise<DongSoHang[]> {
-  const [phs, hds, chiTiet, noByPH] = await Promise.all([listPhuHuynhCoConDangHoc(), listHoaDonByKy(ky), listChiTietTheoPH(ky), soDuNoTheoPH()])
+  const [allPH, hds, chiTiet, noByPH] = await Promise.all([listPhuHuynhChoNo(), listHoaDonByKy(ky), listChiTietTheoPH(ky), soDuNoTheoPH()])
+  // Tập PH của kỳ = (còn con đang học) ∪ (PHÁT SINH phí kỳ này — kể cả con NGHỈ giữa tháng) ∪ (đã có
+  // hoá đơn) ∪ (đang nợ). KHÔNG chỉ "con đang học": HS nghỉ giữa tháng vẫn phải hiện học phí đã phát sinh.
+  const relevant = new Set<string>()
+  for (const p of allPH) if (p.coConDangHoc) relevant.add(p.id)
+  for (const id of chiTiet.keys()) relevant.add(id)
+  for (const h of hds) relevant.add(h.phu_huynh_id)
+  for (const [id, no] of noByPH) if ((no ?? 0) > 0) relevant.add(id)
+  const phById = new Map(allPH.map((p) => [p.id, p]))
+  const phs = [...relevant].map((id) => phById.get(id)).filter(Boolean) as PHOpt[]
   const tinDungConLai = await tinDungConLaiBatch(phs.map((p) => p.id), ky) // tín dụng giới thiệu còn lại theo PH
   const hdMap = new Map(hds.map((h) => [h.phu_huynh_id, h]))
   const hdIds = hds.map((h) => h.id)
@@ -1026,13 +1035,24 @@ export type DongTheoMonV2 = {
   hocLieuTen: string | null
   ngayDiHoc: string[]; ngayNghi: string[]; ngayBu: string[]; ngayDuoi: string[]
 }
+// HS cần tính học phí một kỳ = HS có GHI DANH overlap kỳ — KHÔNG lọc theo trang_thai hiện tại của HS.
+// HS nghỉ GIỮA tháng vẫn phát sinh phí cho các buổi đã học (§4 pure-derive: dựa ghi danh + buổi, KHÔNG
+// dựa snapshot trạng thái). Lọc thô ở DB "chưa rời TRƯỚC đầu kỳ"; cận trên (ngay_vao) để JS window lọc.
+async function hsIdsCoGhiDanhKy(ky: string): Promise<string[]> {
+  const { kyStart } = kyRange(ky)
+  const { data, error } = await supabase.from('hoc_sinh_lop')
+    .select('hoc_sinh_id').or(`ngay_roi.is.null,ngay_roi.gte.${kyStart}`).limit(LIMIT)
+  if (error) throw error
+  return [...new Set((data ?? []).map((r: any) => r.hoc_sinh_id as string))]
+}
+
 export async function listHocPhiTheoMonV2(ky: string): Promise<DongTheoMonV2[]> {
   const { kyStart, kyEnd } = kyRange(ky)
-  const { data: hsRows, error: e0 } = await supabase.from('hoc_sinh')
-    .select('id, ho_ten, ma_hs, he_so_hoc_phi').eq('trang_thai', 'dang_hoc').order('ho_ten').limit(LIMIT)
-  if (e0) throw e0
-  const hsIds = (hsRows ?? []).map((r: any) => r.id as string)
+  const hsIds = await hsIdsCoGhiDanhKy(ky) // gồm cả HS đã nghỉ giữa tháng — window ngay_vao/ngay_roi lọc phần overlap
   if (!hsIds.length) return []
+  const { data: hsRows, error: e0 } = await supabase.from('hoc_sinh')
+    .select('id, ho_ten, ma_hs, he_so_hoc_phi').in('id', hsIds).order('ho_ten').limit(LIMIT)
+  if (e0) throw e0
   const hsById = new Map((hsRows ?? []).map((r: any) => [r.id, r]))
   const heSoMap = await heSoHieuLucBatch(hsIds, ky) // ⭐ hệ số HIỆU LỰC theo kỳ (effective-dated, Cách 2)
 
