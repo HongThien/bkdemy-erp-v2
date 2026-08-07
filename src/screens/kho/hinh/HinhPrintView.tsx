@@ -183,7 +183,7 @@ function Noi({ ban, gv }: { ban: BanIn; gv: boolean }) {
                       <MathText>{y.loiGiai ?? '—'}</MathText>
                     </div>
                   )
-                  : <div className="hp-ke" style={m.soDong ? { height: `${Math.max(1, m.soDong) * 7.7}mm` } : undefined} />}
+                  : m.soDong === 0 ? null : <div className="hp-ke" style={m.soDong ? { height: `${Math.max(1, m.soDong) * 7.7}mm` } : undefined} />}
               </div>
             ))}
           </div>

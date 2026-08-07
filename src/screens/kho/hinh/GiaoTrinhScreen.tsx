@@ -18,7 +18,7 @@ async function resolveBanIn(L: Luoi, tieuBuoi: string, bais: GtBai[], phan: 'lop
     gt.getBienTheByIds(list.filter((b) => b.loai === 'bienthe').map((b) => b.ref_id!).filter(Boolean)),
     gt.getYFull(list.filter((b) => b.loai === 'y').map((b) => b.ref_id!).filter(Boolean)),
   ])
-  const dong = (b: GtBai) => (phan === 'nha' ? (b.so_dong ?? 6) : (b.so_dong ?? null))   // BTVN mặc định 6 dòng
+  const dong = (b: GtBai) => (phan === 'nha' ? (b.so_dong ?? 6) : (b.so_dong ?? 0))   // BTVN mặc định 6; trên lớp không kẻ dòng
   const mucs: MucIn[] = []
   for (const b of list) {
     if (b.loai === 'chuan') {

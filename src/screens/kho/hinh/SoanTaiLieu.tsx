@@ -615,7 +615,7 @@ function LuuGiaoTrinhPopup({ khoi, moHinhChinhId, nhap, onClose, onDone }: {
 /** Bài lẻ (từ sel) + bài a,b,c GHÉP (từ ghep) của MỘT phiếu → bản in. */
 function banInTheoMoHinh(tieuDe: string, phan: 'lop' | 'nha', nodes: BaiToan[], pools: Map<string, PoolItem[]>, sel: Record<string, Record<string, 'lop' | 'nha'>>, ghep: GhepItem[], L: Luoi, anDe: string[], soDong: Record<string, number>): BanIn {
   const an = new Set(anDe)
-  const dong = (key: string) => (phan === 'nha' ? (soDong[key] ?? DONG_BTVN) : soDong[key] ?? null)   // BTVN mặc định DONG_BTVN
+  const dong = (key: string) => (phan === 'nha' ? (soDong[key] ?? DONG_BTVN) : soDong[key] ?? 0)   // BTVN mặc định DONG_BTVN; trên lớp KHÔNG kẻ dòng (bài sát nhau)
   const mucs: MucIn[] = []
   for (const bt of nodes) {
     const pick = sel[bt.id] ?? {}
