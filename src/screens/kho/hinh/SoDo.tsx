@@ -381,7 +381,21 @@ function FormBienThe({ baiToanId, v, goc, onClose, onDone }: {
   const [mapText, setMapText] = useState('')
   const [saving, setSaving] = useState(false)
   const [loi, setLoi] = useState<string | null>(null)
+  const [aiBusy, setAiBusy] = useState(false)   // đang gọi AI sinh biến thể (đổi số)
+  const [aiGhiChu, setAiGhiChu] = useState('')  // ghi chú tuỳ chọn cho AI
+  const [aiDone, setAiDone] = useState(false)   // đã sinh xong → hiện cảnh báo soát hình
   const saoLaiGoc = () => { setDeBai(goc.de); setAnh(goc.anh); setLoiGiai(goc.loiGiai ?? ''); setAnhGiai(goc.anhLoiGiai) }
+  // ✨ Clone bài GỐC (đã chốt) → đổi số, giữ logic (giống clone bên Đại). Đổ vào ô đề + lời giải; hình GIỮ NGUYÊN gốc.
+  const sinhAI = async () => {
+    if (!goc.de.trim()) { setLoi('Chưa có đề gốc để sinh biến thể.'); return }
+    setAiBusy(true); setLoi(null)
+    try {
+      const r = await api.sinhBienTheHinh({ de: goc.de, loiGiai: goc.loiGiai }, aiGhiChu)
+      if (r.de_bai) setDeBai(r.de_bai)
+      if (r.loi_giai) setLoiGiai(r.loi_giai)
+      setAiDone(true)
+    } catch (e: any) { setLoi(e.message ?? String(e)) } finally { setAiBusy(false) }
+  }
   const apDoiDiem = () => {
     const m = parseMapDiem(mapText)
     if (!Object.keys(m).length) { setLoi('Ánh xạ điểm trống — nhập kiểu "A>M, B>N, C>P".'); return }
@@ -435,8 +449,24 @@ function FormBienThe({ baiToanId, v, goc, onClose, onDone }: {
               <p className="mt-1 text-[11px] leading-snug text-slate-500">Chỉ đổi ký hiệu trong công thức <code>$…$</code>, giữ nguyên số. Hình bạn tự update theo đề mới.</p>
             </div>
           ) : (
-            <div className="rounded-lg border border-amber-200 bg-amber-50/50 p-2.5 text-[11.5px] leading-snug text-amber-800">
-              <b>Đổi số:</b> sửa tay giá trị trong đề + <b>tính lại đáp án</b> (đổi số phải giải lại, không tự đúng được). Giữ nguyên tên điểm. Hình bạn tự update theo đề mới.
+            <div className="space-y-2">
+              <div className="rounded-lg border border-amber-200 bg-amber-50/50 p-2.5 text-[11.5px] leading-snug text-amber-800">
+                <b>Đổi số:</b> đổi giá trị trong đề + <b>tính lại đáp án</b> (đổi số phải giải lại, không tự đúng được). Giữ nguyên tên điểm. Sửa tay, hoặc để <b>AI sinh</b> ở dưới.
+              </div>
+              {/* ✨ Sinh bằng AI: clone bài gốc → đổi số, giữ logic (giống clone bên Đại). Hình DÙNG LẠI hình gốc → cảnh báo nếu số nằm trên hình. */}
+              <div className="rounded-lg border border-indigo-200 bg-indigo-50/40 p-2.5">
+                <Lbl>✨ Sinh bằng AI — giữ nguyên logic, chỉ đổi số</Lbl>
+                <div className="flex gap-2">
+                  <input className={inpCls} value={aiGhiChu} onChange={(e) => setAiGhiChu(e.target.value)} placeholder="Ghi chú cho AI (tuỳ chọn): vd số nhỏ hơn, kết quả nguyên…" />
+                  <Btn kind="pri" className="h-[38px] shrink-0 px-3" disabled={aiBusy || !goc.de.trim()} onClick={sinhAI}>{aiBusy ? '⏳ Đang sinh…' : '✨ Sinh'}</Btn>
+                </div>
+                <p className="mt-1 text-[11px] leading-snug text-slate-500">AI clone <b>bài gốc</b> → đổi số → đổ vào ô <b>đề</b> + <b>lời giải</b> dưới. Giữ nguyên tên điểm & cấu hình hình.</p>
+                {aiDone && (
+                  <p className="mt-1.5 rounded-md bg-amber-100 px-2 py-1 text-[11px] font-medium leading-snug text-amber-800">
+                    ⚠ Đã đổi số ở đề + lời giải. Hình vẫn là <b>hình gốc</b> — nếu có số ghi TRÊN hình, phải vẽ lại hình cho khớp số mới. Soát kỹ đáp án.
+                  </p>
+                )}
+              </div>
             </div>
           )}
           <div>

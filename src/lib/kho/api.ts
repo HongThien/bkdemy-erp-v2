@@ -1267,6 +1267,46 @@ export async function ingestBaiHinh(files: GeminiFile[]): Promise<{ de_bai: stri
   return { de_bai: String(obj.de_bai ?? obj.deBai ?? '').trim(), loi_giai: String(obj.loi_giai ?? obj.loiGiai ?? '').trim() }
 }
 
+// ── SINH BIẾN THỂ HÌNH (đổi số) — clone TỪ TEXT bài gốc, giống engine clone bên Đại (buildCloneFromGocPrompt) ──
+// Khác Đại: hình học KHÔNG vẽ lại được bằng AI → biến thể DÙNG LẠI hình gốc. Vì vậy CHỈ đổi CON SỐ, GIỮ NGUYÊN
+// cấu hình hình + tên điểm (đổi tên điểm là kiểu "thay điểm" riêng). Nếu số nằm TRÊN hình → người phải vẽ lại (UI cảnh báo).
+export function buildSinhBienTheHinhPrompt(a: { de: string; loiGiai: string; ghiChu?: string }): string {
+  const gocText = [
+    'BÀI GỐC (người ra đề đã chốt — biến thể phải bám ĐÚNG bài này):',
+    `de_bai: ${a.de}`,
+    `loi_giai: ${a.loiGiai || '(chưa có lời giải — tự giải theo đúng phương pháp chuẩn của bài)'}`,
+  ].join('\n')
+  return [
+    'Bạn là chuyên gia ra đề toán HÌNH HỌC THCS.',
+    '',
+    gocText,
+    '',
+    'NHIỆM VỤ: Sinh 1 BIẾN THỂ của bài gốc — CÙNG logic, CHỈ KHÁC SỐ LIỆU. Trả ĐÚNG 1 đề + 1 lời giải.',
+    '',
+    '⚠ RÀNG BUỘC BÁM BÀI GỐC (tuân thủ TUYỆT ĐỐI — quan trọng nhất):',
+    '- BÁM SÁT bài gốc: GIỮ NGUYÊN cấu trúc câu hỏi, phương pháp giải, SỐ BƯỚC và THỨ TỰ bước của lời giải. Lời giải biến thể phải SONG ÁNH từng bước với gốc, chỉ khác con số.',
+    '- ⚠ CHỈ thay CON SỐ (độ dài đoạn, số đo góc, diện tích…). TUYỆT ĐỐI GIỮ NGUYÊN: tên các điểm/ký hiệu ($A,B,C,H,M$…), cấu hình hình học (loại tam giác, quan hệ vuông góc / song song / thẳng hàng / trung điểm…). Đổi tên điểm là việc KHÁC — ở đây KHÔNG đổi.',
+    '- ⚠ Biến thể DÙNG LẠI HÌNH VẼ của bài gốc → cấu hình hình PHẢI y hệt gốc, chỉ số đo khác. KHÔNG đổi hình dạng/tương quan khiến hình cũ không còn đúng.',
+    '- CẤM: thêm bước, bớt bước, đổi cách giải, thêm/bớt dữ kiện hay câu hỏi, diễn giải dài hơn gốc.',
+    '- SỐ LIỆU mới phải cho KẾT QUẢ ĐẸP (số nguyên hoặc căn/phân số tối giản đơn giản giống gốc), CÙNG độ khó & CÙNG độ lớn. Ra số lẻ/xấu thì THỬ bộ số khác cho tới khi đẹp.',
+    '- Nếu bài gốc THUẦN chứng minh (không có giá trị số nào để đổi) → GIỮ NGUYÊN đề, chỉ trả lại y hệt.',
+    a.ghiChu ? `- ⚠ GHI CHÚ NGƯỜI RA ĐỀ = RÀNG BUỘC CỨNG, ưu tiên CAO NHẤT: ${a.ghiChu}` : '',
+    '',
+    FMT_RULES,
+    '',
+    'Trả về JSON: { "de_bai": "...", "loi_giai": "..." }',
+  ].filter(Boolean).join('\n')
+}
+export async function sinhBienTheHinh(goc: { de: string; loiGiai: string | null }, ghiChu?: string): Promise<{ de_bai: string; loi_giai: string }> {
+  const raw = await callGeminiJson(
+    buildSinhBienTheHinhPrompt({ de: goc.de, loiGiai: goc.loiGiai ?? '', ghiChu: ghiChu?.trim() || undefined }),
+    { model: 'gemini-2.5-flash', think: 8192, schema: HINH_BAI_SCHEMA }, // generation → bật suy luận (giống clone Đại)
+  )
+  let t = raw.trim(); const fence = t.match(/```(?:json)?\s*([\s\S]*?)```/i); if (fence) t = fence[1].trim()
+  const obj = lenientJsonParse(t)
+  return { de_bai: String(obj.de_bai ?? obj.deBai ?? '').trim(), loi_giai: String(obj.loi_giai ?? obj.loiGiai ?? '').trim() }
+}
+
 // ── Lý thuyết đi kèm dạng Đại (1-1) + chuẩn completeness ──────────
 export const CHUAN_SO_CAU = 50 // chuẩn kho: mỗi dạng ≥ 50 câu (sàn SỐ LƯỢNG, chỉnh 1 chỗ)
 // noi_dung = nội dung lý thuyết (text + LaTeX); file_url/ten_file = đính kèm; khong_can = đánh dấu "không cần" (chỉ chuyên đề)
