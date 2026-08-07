@@ -18,6 +18,22 @@ export type EtDraft = {
   cau: Record<string, any>; ch: Record<string, any>
 }
 
+// Nháp SOẠN TÀI LIỆU Hình — giữ khi rời/quay lại màn (như etDraft). Theo KHỐI (mỗi khối 1 nháp).
+// Sống trong RAM (không persist) → F5 mới mất. Chỉ giữ LỰA CHỌN (Set→mảng, Map→record) — pool bài
+// re-fetch lại khi quay lại, không nhét vào nháp.
+export type SoanHinhDraft = {
+  che: 'gd' | 'mh' | 'ot'
+  gd: { aId: string; bId: string; daHoc: string[]; themVao: string[] }
+  mh: { mainId: string; satIds: string[]; nodeIds: string[]; cnt: Record<string, { lop: number; nha: number }> }
+  ot: { dangIds: string[]; gio: string[]; dkTu: string; dkDen: string }
+}
+export const SOAN_HINH_DEFAULT: SoanHinhDraft = {
+  che: 'gd',
+  gd: { aId: '', bId: '', daHoc: [], themVao: [] },
+  mh: { mainId: '', satIds: [], nodeIds: [], cnt: {} },
+  ot: { dangIds: [], gio: [], dkTu: '', dkDen: '' },
+}
+
 interface UiState {
   currentUserId: string
   screen: 'nhansu' | 'admin'
@@ -43,6 +59,9 @@ interface UiState {
   // ── Nháp ET tạo-mới — giữ NGUYÊN khi rời/quay lại màn (không reset công đang soạn) ──
   etDraft: EtDraft | null
   setEtDraft: (d: EtDraft | null) => void
+  // ── Nháp soạn tài liệu Hình theo khối — giữ khi rời/quay lại màn (như etDraft) ──
+  soanHinh: Record<string, SoanHinhDraft>
+  setSoanHinh: (khoi: string, updater: (cur: SoanHinhDraft) => SoanHinhDraft) => void
   // ── Bộ lọc màn Chất lượng vận hành — giữ NGUYÊN khi rời/quay lại màn ──────
   dbVanHanhKy: string          // 'YYYY-MM', rỗng = tháng hiện tại
   dbVanHanhView: 'theonguoi' | 'theomuc' | 'chitiet' | 'duyet'   // 4 TẦNG TRÊN (Thùy chốt 07-05 lần 4: +Duyệt chất lượng)
@@ -92,6 +111,8 @@ export const useStore = create<UiState>()(persist((set, get) => ({
   setHocPhiPhId: (id) => set({ hocPhiPhId: id }),
   etDraft: null,
   setEtDraft: (d) => set({ etDraft: d }),
+  soanHinh: {},
+  setSoanHinh: (khoi, updater) => set((s) => ({ soanHinh: { ...s.soanHinh, [khoi]: updater(s.soanHinh[khoi] ?? SOAN_HINH_DEFAULT) } })),
   dbVanHanhKy: '',
   dbVanHanhView: 'theonguoi',
   dbVanHanhMuc: 'tatca',
