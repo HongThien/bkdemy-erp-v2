@@ -3,6 +3,7 @@
 // Nội dung bài lưu STRUCTURED: mỗi bài 1 dòng (phan/loai/ref/an_de); resolve nội dung sống khi in (cần Luoi).
 import { supabase } from '../supabase'
 import type { Bai, BienThe, Y } from './hinh'
+import type { PickItem } from '../../store/useStore'
 
 const LIMIT = 10000
 
@@ -16,21 +17,9 @@ export type GtBai = {
   id: string; buoi_id: string; phan: 'lop' | 'nha'; loai: 'chuan' | 'bienthe' | 'y' | 'ghep'
   ref_id: string | null; ghep_node_ids: string[]; lua_id: string | null; an_de: boolean; so_dong: number | null; thu_tu: number
 }
-// Hình chiếu của nháp "Theo mô hình" cần để lưu 1 buổi.
-export type NhapBuoi = {
-  sel: Record<string, Record<string, 'lop' | 'nha'>>
-  ghep: { key: string; phan: 'lop' | 'nha'; luaId: string | null; nodeIds: string[] }[]
-  anDe: string[]
-  soDong: Record<string, number>
-}
-
-// poolKey của builder mã hoá sẵn nguồn: `${btId}:chuan` · `bt:${bienTheId}` · `y:${yId}`.
-function decodeKey(key: string): { loai: 'chuan' | 'bienthe' | 'y'; ref_id: string } | null {
-  if (key.endsWith(':chuan')) return { loai: 'chuan', ref_id: key.slice(0, -':chuan'.length) }
-  if (key.startsWith('bt:')) return { loai: 'bienthe', ref_id: key.slice(3) }
-  if (key.startsWith('y:')) return { loai: 'y', ref_id: key.slice(2) }
-  return null
-}
+// Hình chiếu của nháp "Theo mô hình" cần để lưu 1 buổi — 1 DANH SÁCH pick thống nhất (§08-08 "1 chuỗi
+// ghép lại cũng là 1 bài"), thay cho sel+ghep tách rời trước đây.
+export type NhapBuoi = { picks: PickItem[]; anDe: string[]; soDong: Record<string, number> }
 
 // ══════════════ MASTER GIÁO TRÌNH ══════════════
 export async function listGiaoTrinh(khoi?: string, mon = 'Toán'): Promise<GiaoTrinh[]> {
@@ -88,24 +77,44 @@ export async function listGtBai(buoiId: string): Promise<GtBai[]> {
 /** Lưu NHÁP "Theo mô hình" thành bài của buổi (REPLACE toàn bộ bài của buổi). */
 export async function saveBuoiSelection(buoiId: string, nhap: NhapBuoi): Promise<void> {
   const an = new Set(nhap.anDe)
+  const seen = new Set<string>()   // khử pick trùng (cùng phiếu + cùng bản + cùng bộ node) → DB không tích luỹ lặp
   const rows: Omit<GtBai, 'id'>[] = []
   let thu = 0
-  for (const [, picks] of Object.entries(nhap.sel)) {
-    for (const [key, phan] of Object.entries(picks)) {
-      const d = decodeKey(key); if (!d) continue
-      rows.push({ buoi_id: buoiId, phan, loai: d.loai, ref_id: d.ref_id, ghep_node_ids: [], lua_id: null, an_de: an.has(key), so_dong: nhap.soDong[key] ?? null, thu_tu: thu++ })
-    }
-  }
-  const seenGhep = new Set<string>()   // khử ghép trùng (cùng phiếu + cùng bộ node) → DB không tích luỹ lặp
-  for (const g of nhap.ghep) {
-    const sig = `${g.phan}|${[...g.nodeIds].sort().join(',')}`
-    if (seenGhep.has(sig)) continue; seenGhep.add(sig)
-    rows.push({ buoi_id: buoiId, phan: g.phan, loai: 'ghep', ref_id: null, ghep_node_ids: g.nodeIds, lua_id: g.luaId, an_de: an.has(g.key), so_dong: nhap.soDong[g.key] ?? null, thu_tu: thu++ })
+  for (const p of nhap.picks) {
+    const sig = p.kind === 'ghep' ? `${p.phan}|ghep|${p.luaId ?? ''}|${[...p.nodeIds].sort().join(',')}` : `${p.phan}|${p.kind}|${p.kind === 'bienthe' ? p.bienTheId : p.yId}`
+    if (seen.has(sig)) continue; seen.add(sig)
+    const base = { buoi_id: buoiId, phan: p.phan, an_de: an.has(p.key), so_dong: nhap.soDong[p.key] ?? null, thu_tu: thu++ }
+    if (p.kind === 'ghep') rows.push({ ...base, loai: 'ghep', ref_id: null, ghep_node_ids: p.nodeIds, lua_id: p.luaId })
+    else if (p.kind === 'bienthe') rows.push({ ...base, loai: 'bienthe', ref_id: p.bienTheId, ghep_node_ids: [], lua_id: null })
+    else rows.push({ ...base, loai: 'y', ref_id: p.yId, ghep_node_ids: [], lua_id: null })
   }
   const { error: e1 } = await supabase.from('hinh_gt_bai').delete().eq('buoi_id', buoiId)
   if (e1) throw e1
   if (rows.length) { const { error: e2 } = await supabase.from('hinh_gt_bai').insert(rows); if (e2) throw e2 }
   await supabase.from('hinh_gt_buoi').update({ updated_at: new Date().toISOString() }).eq('id', buoiId)
+}
+// ── ⭐ Chống lạm dụng BẢN (least-used, 08-08 §Kho Hình soạn): đếm số lần mỗi bản đã dùng xuyên MỌI buổi
+// (master + lớp) → Gợi ý N ưu tiên bản ÍT DÙNG NHẤT (khuôn cauUsage của Đại, tailieu.ts). ──
+export async function banUsageCount(luaIds: string[], bienTheIds: string[], yIds: string[], chuanNodeIds: string[]) {
+  const lua = new Map<string, number>(), bienthe = new Map<string, number>(), y = new Map<string, number>(), chuan = new Map<string, number>()
+  const jobs: PromiseLike<void>[] = []
+  if (luaIds.length) jobs.push(supabase.from('hinh_gt_bai').select('lua_id').in('lua_id', luaIds).limit(LIMIT).then(({ data }) => {
+    for (const r of (data ?? []) as { lua_id: string }[]) lua.set(r.lua_id, (lua.get(r.lua_id) ?? 0) + 1)
+  }))
+  if (bienTheIds.length) jobs.push(supabase.from('hinh_gt_bai').select('ref_id').eq('loai', 'bienthe').in('ref_id', bienTheIds).limit(LIMIT).then(({ data }) => {
+    for (const r of (data ?? []) as { ref_id: string }[]) bienthe.set(r.ref_id, (bienthe.get(r.ref_id) ?? 0) + 1)
+  }))
+  if (yIds.length) jobs.push(supabase.from('hinh_gt_bai').select('ref_id').eq('loai', 'y').in('ref_id', yIds).limit(LIMIT).then(({ data }) => {
+    for (const r of (data ?? []) as { ref_id: string }[]) y.set(r.ref_id, (y.get(r.ref_id) ?? 0) + 1)
+  }))
+  if (chuanNodeIds.length) jobs.push(supabase.from('hinh_gt_bai').select('ref_id, ghep_node_ids').or('loai.eq.chuan,and(loai.eq.ghep,lua_id.is.null)').limit(LIMIT).then(({ data }) => {
+    for (const r of (data ?? []) as { ref_id: string | null; ghep_node_ids: string[] }[]) {
+      const hits = r.ref_id ? [r.ref_id] : r.ghep_node_ids
+      for (const id of hits) if (chuanNodeIds.includes(id)) chuan.set(id, (chuan.get(id) ?? 0) + 1)
+    }
+  }))
+  await Promise.all(jobs)
+  return { lua, bienthe, y, chuan }
 }
 /** Bài của buổi → NHÁP "Theo mô hình" để mở lại chỉnh (cần bản đồ ref→node cho reload UI; ở đây trả thô). */
 export async function loadBuoiSelection(buoiId: string): Promise<GtBai[]> {

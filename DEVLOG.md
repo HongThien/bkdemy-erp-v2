@@ -3633,3 +3633,34 @@ tsc + vite build sạch mọi bước. Dev pane phiên 0×0 → nhờ Thùy `npm
   Để riêng, chưa đụng.
 - Test: chỉ soi diff + tsc (không có preview server chạy phiên này). Không đụng `PrintView.tsx`/`bkPrint.tsx`
   — phiên song song đang sửa 2 file đó (Đại giáo trình print, paged.js overflow fix).
+
+## 2026-08-08 (tiếp 2) — Kho Hình soạn: hợp nhất node-lẻ + chuỗi thành 1 CƠ CHẾ PICK ("1 chuỗi ghép cũng là 1 bài")
+- **Brainstorm với Thùy trước khi code:** hỏi "node lẻ multi-pick nhiều biến thể — giữ hay hợp nhất về 1 bản/phiếu như chuỗi?".
+  Thùy chỉ ra khung đúng: *"hệ thống có cho chọn nhiều chuỗi không — có lúc vẫn phải làm nhiều chuỗi thì vẫn phải chọn nhiều lần chứ. Bản chất 1 chuỗi ghép lại cũng có thể coi là 1 bài mà."* → không phải "giữ multipick riêng cho node lẻ" mà là **generalize: 1 chuỗi (mọi cỡ, kể cả 1 node) = có thể góp NHIỀU bài vào 1 phiếu, mỗi bài 1 BẢN khác nhau**, thêm lặp lại được — node lẻ chỉ là trường hợp suy biến (chuỗi 1 node).
+  Xác nhận thêm 2 lượt: (1) Cách 1 = "N + Gợi ý" tự sinh N bài bản khác nhau, mặc định tick TOÀN chuỗi, sửa detail per-bài sau; (2) Cách 2 = thủ công, **mỗi lượt pick CHỈ 1 câu** (không multi-select như Đại — "Hình không giống Đại").
+- **⭐ Data model** (`useStore.ts`): `SoanHinhDraft.mh` bỏ `sel`(per-node pool multi-pick) + `nodeIds`(tick ngoài) +
+  `ghep`(chỉ multi-node, REPLACE-per-chuỗi) → thay bằng **1 mảng `picks: PickItem[]`** duy nhất. `PickItem` =
+  `{key,phan,nodeIds} & ({kind:'ghep',luaId}|{kind:'bienthe',bienTheId}|{kind:'y',yId})` — `ghep` (đề chuẩn
+  luaId=null hoặc lứa) áp mọi cỡ chuỗi kể cả 1 node; `bienthe`/`y` CHỈ chuỗi 1 node (biến thể/ý thật riêng lẻ
+  không nhóm được thành lứa). **Không cần migration** — `hinh_gt_bai` (loai='chuan'/'bienthe'/'y'/'ghep') đã đủ
+  chỗ chứa; `loai='chuan'` (data cũ) đọc lại y hệt `kind:'ghep',luaId:null,nodeIds:[ref_id]`.
+- **⭐ `hinhGiaoTrinh.ts`:** `NhapBuoi` = `{picks,anDe,soDong}` (bỏ sel/ghep tách rời), `saveBuoiSelection` 1
+  vòng lặp map mỗi pick → 1 dòng (trước là 2 vòng riêng). Mới `banUsageCount(luaIds,bienTheIds,yIds,chuanNodeIds)`
+  — least-used xuyên MỌI buổi (master+lớp), khuôn `cauUsage` Đại (`tailieu.ts`), 4 query song song count theo
+  `lua_id`/`ref_id`(loai bienthe/y)/`ref_id`+`ghep_node_ids` overlap (loai chuan/ghép-đề-chuẩn).
+- **⭐ `SoanTaiLieu.tsx` — hợp nhất luồng:** XOÁ hẳn `NodeRow`/`PhanBlock`/`KhoBaiPicker`/`PoolItem`/`poolCuaNode`
+  (dead sau hợp nhất). `ChuoiRow` giờ xử MỌI chuỗi (kể cả 1 node — "Câu lẻ"), mỗi phiếu: input N + "↻ Gợi ý"
+  (batch REPLACE, gọi `goiYChuoi`) + "＋ Thêm bài" (lặp lại được, mở `ChonChuoiPopup`) + list bài (✎ sửa/✕ xoá).
+  `ChonChuoiPopup` mở rộng: chuỗi 1 node liệt kê THÊM từng biến thể riêng + ý thật làm "bản" (trước chỉ
+  đề-chuẩn/lứa cho chuỗi ≥2); **chuỗi 1 node confirm THẲNG** (bỏ bước cây — không tiền đề, không gì ẩn/tick).
+  `banOptionsOfChuoi`/`goiYChuoi` (mới) enumerate bản + least-used + build `PickItem[]` batch.
+  `mucBienThe`/`mucY` (mới, tách từ logic inline cũ của `GiaoTrinhScreen.resolveBanIn`) → **dùng CHUNG** ở cả
+  preview sống (`banInTheoMoHinh`) lẫn bản đã lưu (`resolveBanIn`) — hết lệch giữa 2 nơi build MucIn.
+- **`GiaoTrinhScreen.tsx`:** `loadBuoiToDraft`/`resolveBanIn` viết lại theo `PickItem`; `resolveBanIn` bỏ
+  `daGhep`-node-skip (hết cần — mỗi pick tường minh, không còn "bài lẻ tự sinh cho node chưa ghép" để double-cover).
+- **Verify:** tsc sạch + `npx vite build` sạch (chỉ warning chunk-size, không liên quan). Chưa soi UI thật (dev
+  pane phiên này không mở) — cần Thùy `npm run dev` thử: 1 chuỗi bấm "＋ Thêm bài" 2 lần bản khác nhau ra 2
+  bài trong phiếu; "↻ Gợi ý 2" ra 2 bài auto; node lẻ bấm "＋ Thêm bài" thấy card Biến thể/Ý thật.
+- **Còn:** verify IN thật (paged.js) · `ChuoiRow`'s `nInput` mặc định cứng 2 (không nhớ theo nháp — chấp nhận,
+  tiểu tiết) · chưa relabel `gia_thiet_phu` cho lứa (nhắc từ trước, chưa làm) · Media/Marketing cross-môn (task
+  scope④ trước đó) không liên quan module này.

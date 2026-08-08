@@ -19,29 +19,35 @@ export type EtDraft = {
 }
 
 // Nháp SOẠN TÀI LIỆU Hình — giữ khi rời/quay lại màn (như etDraft). Theo KHỐI (mỗi khối 1 nháp).
-// Sống trong RAM (không persist) → F5 mới mất. Chỉ giữ LỰA CHỌN (Set→mảng, Map→record) — pool bài
-// re-fetch lại khi quay lại, không nhét vào nháp.
+// Sống trong RAM (không persist) → F5 mới mất. Chỉ giữ LỰA CHỌN — pool/bản re-fetch lại khi quay lại.
+// ⭐ 08-08 (Thùy chốt): "1 chuỗi ghép lại cũng là 1 bài" — MỌI node (lẻ hay chuỗi) đi qua CÙNG 1 cơ chế
+// PICK: chọn 1 BẢN (đề chuẩn / lứa / biến thể riêng / ý thật) + 1 tập TICK (ý), thêm vào phiếu. Bấm lặp lại
+// để có N bài từ CÙNG 1 chuỗi (khác bản mỗi lần) — KHÔNG còn khái niệm "node lẻ multipick" tách riêng.
+export type PickItem = {
+  key: string; phan: 'lop' | 'nha'
+  nodeIds: string[]   // tập TICK (ý). kind bienthe/y luôn đúng 1 phần tử (không tiền đề để nở).
+} & (
+  | { kind: 'ghep'; luaId: string | null }   // đề chuẩn (luaId=null) hoặc lứa — mọi cỡ chuỗi kể cả 1 node
+  | { kind: 'bienthe'; bienTheId: string }   // biến thể riêng lẻ (kieu='doi_so') — CHỈ chuỗi 1 node
+  | { kind: 'y'; yId: string }               // ý thật (đã chấm) — CHỈ chuỗi 1 node
+)
 export type SoanHinhDraft = {
   che: 'gd' | 'mh' | 'ot'
   gd: { aId: string; bId: string; daHoc: string[]; themVao: string[] }
-  // sel: node → (khoá bài trong pool → 'lop' | 'nha'). Mỗi bài chỉ 1 phiếu ⇒ Lớp/Nhà KHÔNG bao giờ trùng.
-  // ghep: bài a,b,c ghép từ 1 chuỗi. luaId null = ghép đề chuẩn (a,b,c gốc); có = ghép bản đổi đỉnh của lứa.
-  // anDe: khoá bài (poolKey / ghepKey) có ẨN hình → chừa ô vẽ cho HS. Vắng = hiện hình (mặc định).
+  // anDe: khoá bài (PickItem.key) có ẨN hình → chừa ô vẽ cho HS. Vắng = hiện hình (mặc định).
   mh: {
-    mainId: string; satIds: string[]; nodeIds: string[]
-    sel: Record<string, Record<string, 'lop' | 'nha'>>
-    ghep: { key: string; phan: 'lop' | 'nha'; luaId: string | null; nodeIds: string[] }[]
+    mainId: string; satIds: string[]
+    picks: PickItem[]
     anDe: string[]
     soDong: Record<string, number>   // khoá bài → số dòng kẻ HS viết (BTVN). Vắng = mặc định bản in.
     editBuoi: string | null          // đang SỬA buổi giáo trình này (Lưu = cập nhật buổi đó, không tạo mới)
   }
   ot: { dangIds: string[]; gio: string[]; dkTu: string; dkDen: string }
 }
-export type GhepItem = SoanHinhDraft['mh']['ghep'][number]
 export const SOAN_HINH_DEFAULT: SoanHinhDraft = {
   che: 'gd',
   gd: { aId: '', bId: '', daHoc: [], themVao: [] },
-  mh: { mainId: '', satIds: [], nodeIds: [], sel: {}, ghep: [], anDe: [], soDong: {}, editBuoi: null },
+  mh: { mainId: '', satIds: [], picks: [], anDe: [], soDong: {}, editBuoi: null },
   ot: { dangIds: [], gio: [], dkTu: '', dkDen: '' },
 }
 

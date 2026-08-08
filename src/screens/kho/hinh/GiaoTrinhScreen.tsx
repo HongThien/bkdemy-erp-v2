@@ -8,45 +8,38 @@ import type { Luoi } from '../../../lib/kho/hinh'
 import { listLop, type Lop } from '../../../lib/nhansu'
 import { Btn, Empty, Ma, Panel, Seg, tron, inpCls } from './hinhUi'
 import HinhPrintView, { type BanIn, type MucIn } from './HinhPrintView'
-import { mucGhep, mucGhepLua } from './SoanTaiLieu'
+import { mucGhep, mucGhepLua, mucBienThe, mucY } from './SoanTaiLieu'
 import { createPortal } from 'react-dom'
-import { useStore, type SoanHinhDraft, type GhepItem } from '../../../store/useStore'
+import { useStore, type SoanHinhDraft, type PickItem } from '../../../store/useStore'
 import type { Nhay } from './KhoHinhScreen'
 
 // Dựng lại NHÁP builder "Theo mô hình" từ buổi đã lưu → mở lại để SỬA (không mất cấu trúc).
+// loai='chuan' (dữ liệu CŨ, trước 08-08) đọc như 1 pick kind='ghep' luaId=null nodeIds=[ref_id] — TƯƠNG
+// ĐƯƠNG hệt bây giờ (đề chuẩn của 1 node = ghép 1-node), không cần migrate dữ liệu.
 async function loadBuoiToDraft(L: Luoi, buoi: GtBuoi): Promise<SoanHinhDraft['mh']> {
   const bais = await gt.listGtBai(buoi.id)
   const [btMap, yMap] = await Promise.all([
     gt.getBienTheByIds(bais.filter((b) => b.loai === 'bienthe').map((b) => b.ref_id!).filter(Boolean)),
     gt.getYFull(bais.filter((b) => b.loai === 'y').map((b) => b.ref_id!).filter(Boolean)),
   ])
-  const sel: Record<string, Record<string, 'lop' | 'nha'>> = {}
-  const ghep: GhepItem[] = []; const anDe: string[] = []; const soDong: Record<string, number> = {}
+  const picks: PickItem[] = []; const anDe: string[] = []; const soDong: Record<string, number> = {}
   const nodeSet = new Set<string>()
-  const put = (nodeId: string, key: string, b: GtBai) => {
-    (sel[nodeId] ??= {})[key] = b.phan
-    if (b.an_de) anDe.push(key)
-    if (b.so_dong != null) soDong[key] = b.so_dong
-    nodeSet.add(nodeId)
-  }
   for (const b of bais) {
-    if (b.loai === 'chuan' && b.ref_id) put(b.ref_id, `${b.ref_id}:chuan`, b)
-    else if (b.loai === 'bienthe' && b.ref_id) { const v = btMap.get(b.ref_id); if (v) put(v.baitoan_id, `bt:${b.ref_id}`, b) }
-    else if (b.loai === 'y' && b.ref_id) { const yb = yMap.get(b.ref_id); if (yb?.y.baitoan_id) put(yb.y.baitoan_id, `y:${b.ref_id}`, b) }
-    else if (b.loai === 'ghep') {
-      ghep.push({ key: b.id, phan: b.phan, luaId: b.lua_id, nodeIds: b.ghep_node_ids })
-      if (b.an_de) anDe.push(b.id)
-      if (b.so_dong != null) soDong[b.id] = b.so_dong
-      b.ghep_node_ids.forEach((id) => nodeSet.add(id))
-    }
+    if (b.an_de) anDe.push(b.id)
+    if (b.so_dong != null) soDong[b.id] = b.so_dong
+    if (b.loai === 'chuan' && b.ref_id) { picks.push({ key: b.id, phan: b.phan, kind: 'ghep', luaId: null, nodeIds: [b.ref_id] }); nodeSet.add(b.ref_id) }
+    else if (b.loai === 'bienthe' && b.ref_id) { const v = btMap.get(b.ref_id); if (v) { picks.push({ key: b.id, phan: b.phan, kind: 'bienthe', bienTheId: b.ref_id, nodeIds: [v.baitoan_id] }); nodeSet.add(v.baitoan_id) } }
+    else if (b.loai === 'y' && b.ref_id) { const yb = yMap.get(b.ref_id); if (yb?.y.baitoan_id) { picks.push({ key: b.id, phan: b.phan, kind: 'y', yId: b.ref_id, nodeIds: [yb.y.baitoan_id] }); nodeSet.add(yb.y.baitoan_id) } }
+    else if (b.loai === 'ghep') { picks.push({ key: b.id, phan: b.phan, kind: 'ghep', luaId: b.lua_id, nodeIds: b.ghep_node_ids }); b.ghep_node_ids.forEach((id) => nodeSet.add(id)) }
   }
   const nodeIds = [...nodeSet]
   const mainId = buoi.mo_hinh_chinh_id ?? (nodeIds.length ? (L.baiToan.find((x) => x.id === nodeIds[0])?.mo_hinh_id ?? '') : '')
   const satIds = [...new Set(nodeIds.map((nid) => L.baiToan.find((x) => x.id === nid)?.mo_hinh_id).filter((m): m is string => !!m && m !== mainId))]
-  return { mainId, satIds, nodeIds, sel, ghep, anDe, soDong, editBuoi: buoi.id }
+  return { mainId, satIds, picks, anDe, soDong, editBuoi: buoi.id }
 }
 
-// ── Resolve bài của một buổi → BanIn cho 1 phiếu (lop/nha). Fetch biến thể/ý theo id. ──
+// ── Resolve bài của một buổi → BanIn cho 1 phiếu (lop/nha). Fetch biến thể/ý theo id, dùng CHUNG resolver
+// với builder sống (mucGhep/mucGhepLua/mucBienThe/mucY) — 1 nguồn, hết lệch giữa preview và bản lưu. ──
 async function resolveBanIn(L: Luoi, tieuBuoi: string, bais: GtBai[], phan: 'lop' | 'nha'): Promise<BanIn> {
   const list = bais.filter((b) => b.phan === phan).sort((a, b) => a.thu_tu - b.thu_tu)
   const [btMap, yMap] = await Promise.all([
@@ -54,26 +47,22 @@ async function resolveBanIn(L: Luoi, tieuBuoi: string, bais: GtBai[], phan: 'lop
     gt.getYFull(list.filter((b) => b.loai === 'y').map((b) => b.ref_id!).filter(Boolean)),
   ])
   const dong = (b: GtBai) => (phan === 'nha' ? (b.so_dong ?? 6) : (b.so_dong ?? 0))   // BTVN mặc định 6; trên lớp không kẻ dòng
-  const daGhep = new Set(list.filter((b) => b.loai === 'ghep').flatMap((b) => b.ghep_node_ids))   // node đã ghép → bỏ bài lẻ
-  const seenGhep = new Set<string>()   // khử bài ghép trùng (cùng bộ node)
+  const seenGhep = new Set<string>()   // khử bài ghép trùng (cùng bản + cùng bộ node)
   const mucs: MucIn[] = []
   for (const b of list) {
     if (b.loai === 'chuan') {
-      const node = L.baiToan.find((x) => x.id === b.ref_id); if (!node || daGhep.has(node.id)) continue
-      const c = api.cachMacDinh(L, node.id); const anh = api.anhCuaBaiToan(L, node.id)
-      mucs.push({ kieu: 'de', ma: node.ma, deBai: [api.giaThietDayDu(L, node.mo_hinh_id), `Chứng minh ${node.phat_bieu}`].filter(Boolean).join('. '), anhDe: anh, ys: [{ nhan: '', noiDung: '', loiGiai: c?.loi_giai, anh: c?.anh_loi_giai ?? anh, ma: node.ma, cap: node.cap }], anDe: b.an_de || !anh, soDong: dong(b) })
+      const node = L.baiToan.find((x) => x.id === b.ref_id); if (!node) continue
+      mucs.push(mucGhep(L, { key: b.id, phan: b.phan, kind: 'ghep', luaId: null, nodeIds: [node.id] }, b.an_de, dong(b)))
     } else if (b.loai === 'bienthe') {
-      const v = btMap.get(b.ref_id!); if (!v || daGhep.has(v.baitoan_id)) continue
-      const node = L.baiToan.find((x) => x.id === v.baitoan_id)
-      mucs.push({ kieu: 'de', ma: node?.ma ?? null, deBai: v.de_bai, anhDe: v.anh, ys: [{ nhan: '', noiDung: '', loiGiai: v.loi_giai, anh: v.anh_loi_giai ?? v.anh, ma: node?.ma, cap: node?.cap }], anDe: b.an_de || !v.anh, soDong: dong(b) })
+      const v = btMap.get(b.ref_id!); if (!v) continue
+      mucs.push(mucBienThe(L, v, b.an_de, dong(b)))
     } else if (b.loai === 'y') {
-      const yb = yMap.get(b.ref_id!); if (!yb || (yb.y.baitoan_id && daGhep.has(yb.y.baitoan_id))) continue
-      const da = api.dapAnHaiBac(L, yb.y)
-      mucs.push({ kieu: 'de', ma: yb.bai.ma_bai, deBai: yb.bai.de_bai, anhDe: yb.bai.anh_de, ys: [{ nhan: yb.y.nhan_hien_thi ?? String.fromCharCode(96 + yb.y.thu_tu), noiDung: yb.y.noi_dung, loiGiai: da.loiGiai, anh: da.anh, bacThamChieu: da.bac === 'tham_chieu', ma: yb.y.ma_y }], anDe: b.an_de || !yb.bai.anh_de, soDong: dong(b) })
+      const yb = yMap.get(b.ref_id!); if (!yb) continue
+      mucs.push(mucY(L, yb, b.an_de, dong(b)))
     } else if (b.loai === 'ghep') {
       const sig = `${b.lua_id ?? 'chuan'}|${[...b.ghep_node_ids].sort().join(',')}`; if (seenGhep.has(sig)) continue; seenGhep.add(sig)
       if (b.lua_id) { const vs = await api.bienTheCuaLua(b.lua_id); mucs.push(mucGhepLua(L, b.ghep_node_ids, vs, b.an_de, dong(b))) }
-      else mucs.push(mucGhep(L, { key: b.id, phan: b.phan, luaId: b.lua_id, nodeIds: b.ghep_node_ids }, b.an_de, dong(b)))
+      else mucs.push(mucGhep(L, { key: b.id, phan: b.phan, kind: 'ghep', luaId: b.lua_id, nodeIds: b.ghep_node_ids }, b.an_de, dong(b)))
     }
   }
   return { tieuDe: `${tieuBuoi} — ${phan === 'lop' ? 'Trên lớp' : 'Về nhà (BTVN)'}`, phuDe: `${mucs.length} mục`, mucs }
