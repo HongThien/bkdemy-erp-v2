@@ -66,8 +66,11 @@ export default function HinhPrintView({ ban, onClose }: { ban: BanIn; onClose: (
     //  dữ liệu có sẵn trong tay nên đụng ngay.)
     const src = srcRef.current, dst = dstRef.current
     const hoan = setTimeout(() => {
-    const css = buildPagedCss({ ten: ban.tieuDe, khoi: '' }, {}, '#0f766e', {
-      headerText: `${ban.tieuDe}${gv ? ' · BẢN GV' : ''}`,
+    // ⭐ header: 'none' — BỎ HẲN dải sóng chạy TRÊN MỖI TRANG (khuôn Đại 08-03 "Bỏ hẳn dải header ở mọi
+    // bản in"; Hình trước giờ CHƯA áp, ch={} rỗng ⇒ pageChrome() mặc định head=true, dải sóng vẫn chạy
+    // song song với masthead nội dung mới — 2 header cùng lúc, đúng cái Thùy chỉ ra "vẫn còn header cũ").
+    // Giữ footer (số trang + liên hệ) — Đại cũng giữ.
+    const css = buildPagedCss({ ten: ban.tieuDe, khoi: '' }, { header: 'none' }, '#0f766e', {
       footerText: 'BK Academy        Tel : 0963.209.309        Địa chỉ : 17A10 KĐT Geleximco',
     }) + HINH_CSS
     const cssUrl = URL.createObjectURL(new Blob([css], { type: 'text/css' }))

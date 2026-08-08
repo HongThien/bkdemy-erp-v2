@@ -3810,3 +3810,20 @@ tsc + vite build sạch mọi bước. Dev pane phiên 0×0 → nhờ Thùy `npm
   cần pane hiển thị) — cần Thùy `npm run dev`: mở 1 phiếu Về nhà → gõ số vào "dòng kẻ (cả chuỗi)" → mọi bài
   hiện có của chuỗi đó đổi theo; bấm ✏️/🖼 ngay trong danh sách chuỗi (không cần cuộn sang Tóm tắt); Xuất
   PDF → thấy masthead gradient+logo mới thay khối tiêu đề cũ.
+
+## 2026-08-08 (tiếp 9) — Vẫn còn header cũ: dải sóng CHẠY TRÊN MỖI TRANG chưa bỏ (khác masthead nội dung)
+- **Thùy:** "bảo dùng header mới sao vẫn còn header cũ — bảo xoá hẳn header cũ mọi nơi không dùng nữa cơ mà."
+- **Root cause — 2 "header" HOÀN TOÀN KHÁC NHAU, entry trước chỉ sửa 1:** (1) masthead NỘI DUNG (đã đổi
+  `hp-cover`→`.hpmh-*`, entry trước) — 1 khối xuất hiện 1 LẦN đầu tài liệu. (2) header CHẠY TRÊN MỖI TRANG
+  (dải sóng hồng-cam-xanh, qua `.pagedjs_pagebox::before` trong `buildPagedCss`/`pageChrome`) — HOÀN TOÀN
+  RIÊNG, không đụng tới khi sửa (1). Đại đã BỎ HẲN cái (2) từ 08-03 ("Bỏ hẳn dải header ở mọi bản in":
+  `ch.header='none'` ở PrintView/MTPrintView) nhưng **Hình CHƯA TỪNG áp** — `HinhPrintView.tsx` gọi
+  `buildPagedCss({...}, {}, ...)` với `ch` RỖNG ⇒ `pageChrome()` mặc định `head: ch.header !== 'none'` =
+  `true` ⇒ dải sóng vẫn chạy mọi trang, chồng lên masthead mới — đúng cảnh "vẫn còn header cũ" Thùy thấy.
+- **Fix:** đổi `ch` truyền vào từ `{}` → `{ header: 'none' }`. Giữ `footer` (số trang + liên hệ) — khuôn
+  Đại "giữ footer, bỏ header". Bỏ luôn `headerText` option (không còn dùng, head=false render gì cũng vô nghĩa).
+- **Bài học:** "header" là từ ĐA NGHĨA trong hệ in — ít nhất 2 tầng riêng (nội dung 1-lần vs page-chrome
+  lặp mọi trang), cùng gọi là "header" nhưng nguồn CSS/vị trí sửa khác hẳn nhau. Sửa 1 tầng rồi báo "đã
+  dùng header mới" mà không xác nhận tầng KIA cũng đã tắt = vẫn còn nửa việc — soát hết MỌI NGUỒN sinh
+  ra chữ "header" trên trang in trước khi báo xong, không chỉ tầng vừa động tay.
+- **Verify:** tsc sạch + `npx vite build` sạch. Chưa soi PDF thật.
