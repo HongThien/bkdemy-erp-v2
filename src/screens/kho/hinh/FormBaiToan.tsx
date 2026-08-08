@@ -26,6 +26,9 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
   const cachCu = sua ? api.cachMacDinh(L, sua.id) : null
   const [moHinhId, setMoHinhId] = useState(sua?.mo_hinh_id ?? moHinhMacDinh ?? L.moHinh[0]?.id ?? '')
   const [phatBieu, setPhatBieu] = useState(sua?.phat_bieu ?? phatBieuGoi ?? '')
+  // Giả thiết phụ = dữ kiện lẻ của node (đa số là vẽ thêm "gọi I = AC∩BD"). Bám node: hiện ở đề nếu node
+  // được hỏi, ở đầu bước nếu node ẩn trong đáp án. Đừng nhét dữ kiện chung ở đây (đó là giả thiết mô hình).
+  const [giaThietPhu, setGiaThietPhu] = useState(sua?.gia_thiet_phu ?? '')
   const [cap, setCap] = useState<number>(sua?.cap ?? 1)
   // Node MỚI: hệ ĐIỀN SẴN cấp = gợi ý (1 + max cấp tiền đề), vẫn sửa tay được. Node đang SỬA: giữ cấp cũ,
   // coi như người đã chốt (không auto-đè). Người gõ tay 1 lần → `capTuNhap` = true, hệ thôi điền lại.
@@ -47,6 +50,10 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
     return truoc ? [truoc.id] : []
   })
   const [boDe, setBoDe] = useState<string[]>(cachCu ? api.boDeCuaCach(L, cachCu.id) : [])
+  // VAN "cho sẵn ở đề": tiền đề nào bật thì giả thiết phụ CỦA NÓ trồi lên ĐỀ của bài (giảm độ khó — HS
+  // khỏi tự dựng). Tắt = giả thiết phụ chỉ hiện trong bước giải. Cờ đặt trên CẠNH tiền đề (keo_gt_phu).
+  const [vanIds, setVanIds] = useState<Set<string>>(() =>
+    cachCu ? new Set(L.tienDe.filter((t) => t.cach_id === cachCu.id && t.keo_gt_phu).map((t) => t.tien_de_id)) : new Set())
   const [themTd, setThemTd] = useState(false)   // mở cây chọn tiền đề
   const [saving, setSaving] = useState(false)
   const [loi, setLoi] = useState<string | null>(null)
@@ -85,15 +92,16 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
       // thì ghi anh_chuan của node (bỏ trống vẫn = null = mượn mô hình).
       const anhChuan = dungHinhRieng ? (anhRieng || null) : null
       let btId = sua?.id
-      if (sua) await api.updateBaiToan(sua.id, { phat_bieu: phatBieu, mo_hinh_id: moHinhId, cap, de_bai_chuan: null, anh_chuan: anhChuan })
-      else btId = (await api.createBaiToan({ phat_bieu: phatBieu, mo_hinh_id: moHinhId, cap, de_bai_chuan: null, anh_chuan: anhChuan })).id
+      const gtPhu = giaThietPhu.trim() || null
+      if (sua) await api.updateBaiToan(sua.id, { phat_bieu: phatBieu, mo_hinh_id: moHinhId, cap, de_bai_chuan: null, anh_chuan: anhChuan, gia_thiet_phu: gtPhu })
+      else btId = (await api.createBaiToan({ phat_bieu: phatBieu, mo_hinh_id: moHinhId, cap, de_bai_chuan: null, anh_chuan: anhChuan, gia_thiet_phu: gtPhu })).id
       // Hình bước giải: mặc định null = mượn hình đề (mọi chỗ hiển thị fallback `anh_loi_giai ?? anhCuaBaiToan`).
       const anhLoiGiai = dungHinhGiaiRieng ? (anhGiai || null) : null
       if (dangId) {
         const cachId = cachCu
           ? (await api.updateCachGiai(cachCu.id, { dang_id: dangId, loi_giai: loiGiai || null, anh_loi_giai: anhLoiGiai }), cachCu.id)
           : (await api.createCachGiai({ baitoan_id: btId!, dang_id: dangId, ten: 'cách ngắn nhất', loi_giai: loiGiai || null, anh_loi_giai: anhLoiGiai, la_mac_dinh: true })).id
-        await api.setTienDe(cachId, btId!, tienDe)
+        await api.setTienDe(cachId, btId!, tienDe, vanIds)
         await api.setBoDeCuaCach(cachId, boDe)
       }
       await onDone(); onClose()
@@ -101,7 +109,8 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
   }
 
   const themTienDe = (id: string) => setTienDe((a) => (a.includes(id) ? a : [...a, id]))
-  const boTienDe = (id: string) => setTienDe((a) => a.filter((x) => x !== id))
+  const boTienDe = (id: string) => { setTienDe((a) => a.filter((x) => x !== id)); setVanIds((s) => { const n = new Set(s); n.delete(id); return n }) }
+  const toggleVan = (id: string) => setVanIds((s) => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n })
 
   return createPortal(
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-3 sm:p-6" onClick={onClose}>
@@ -188,6 +197,13 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
                 </div>
               )}
             </div>
+
+            <div>
+              <Lbl>Giả thiết phụ <span className="font-normal normal-case text-slate-400">— dữ kiện lẻ / vẽ thêm cho riêng bài này (không bắt buộc)</span></Lbl>
+              <textarea className={`${inp} h-16`} value={giaThietPhu} onChange={(e) => setGiaThietPhu(e.target.value)}
+                placeholder="gọi $I$ là giao điểm của $AC$ và $BD$" />
+              <p className="mt-1 text-[11px] leading-snug text-slate-400">Đa số là <b>vẽ thêm</b> — hiện ở ĐỀ khi bài hỏi node này, ở BƯỚC giải khi node ẩn. Nhiều dữ kiện phụ ⇒ nên tách thành mô hình riêng.</p>
+            </div>
           </div>
 
           {/* ── PHẢI: lời giải + tiền đề + bổ đề ── */}
@@ -247,6 +263,11 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
                           <Cap cap={b.cap} teal={b.mo_hinh_id !== moHinhId} />
                           <span className="min-w-0 flex-1 truncate"><MathText>{b.phat_bieu}</MathText></span>
                           {mh && <span className="shrink-0 text-[10px] text-teal-600">{mh.ma}</span>}
+                          {b.gia_thiet_phu?.trim() && (
+                            <label className="inline-flex shrink-0 cursor-pointer items-center gap-1 rounded bg-white px-1.5 py-0.5 text-[10.5px] text-slate-500" title="Cho sẵn giả thiết phụ của tiền đề này ở ĐỀ (giảm độ khó — HS khỏi tự dựng)">
+                              <input type="checkbox" checked={vanIds.has(id)} onChange={() => toggleVan(id)} />gt phụ ở đề
+                            </label>
+                          )}
                           <button onClick={() => boTienDe(id)} className="shrink-0 text-slate-400 hover:text-rose-600" title="Bỏ tiền đề">✕</button>
                         </div>
                       )

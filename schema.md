@@ -644,6 +644,7 @@
 | ghi_chu | text | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
+| gia_thiet_phu | text | Y |  |  |  |
 
 ## hinh_baitoan_bien_the
 
@@ -730,6 +731,7 @@
 |---|---|---|---|---|---|
 | cach_id | uuid |  |  | PK FK→hinh_cach_giai.id |  |
 | tien_de_id | uuid |  |  | PK FK→hinh_baitoan.id |  |
+| keo_gt_phu | boolean |  | false |  |  |
 
 ## hinh_dang
 
@@ -782,6 +784,7 @@
 | an_de | boolean |  | false |  |  |
 | thu_tu | integer |  | 0 |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
+| so_dong | integer | Y |  |  |  |
 
 ## hinh_gt_buoi
 

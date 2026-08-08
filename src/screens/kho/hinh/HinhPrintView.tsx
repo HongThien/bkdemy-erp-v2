@@ -17,11 +17,15 @@ import { MathText } from '../ui'
 import { CHROME_CSS, buildPagedCss, printWithFilename, safeFileName } from '../../tailieu/PrintView'
 
 // ── Model bản in ──────────────────────────────────────────────────
+// Một BƯỚC con = node ẨN nở vào lời giải một ý (bản GV). Đứng TRƯỚC lời giải chính, sắp cap↑.
+export type BuocIn = { phatBieu: string; giaThietPhu?: string | null; loiGiai?: string | null; anh?: string | null; ma?: string | null }
 export type YIn = {
   nhan: string                 // "a" / "b"
   noiDung: string
+  giaThietPhu?: string | null  // dữ kiện lẻ ở ĐỀ của ý (node + van trồi từ tiền đề) — vd "gọi I = AC∩BD"
   loiGiai?: string | null
   anh?: string | null          // hình ĐÁP ÁN của ý
+  buoc?: BuocIn[]              // node ẨN nở thành bước con (chỉ bản GV) — sắp cap↑, trước lời giải chính
   bacThamChieu?: boolean       // lời giải rơi về node ⇒ khác tên điểm, phải nói rõ trên giấy
   ghiChu?: string | null       // vd "không có trong đề"
   ma?: string | null
@@ -168,13 +172,21 @@ function Noi({ ban, gv }: { ban: BanIn; gv: boolean }) {
             {m.ys.map((y, j) => (
               <div key={j} className="hp-y">
                 <div className="hp-txt-flow">
-                  {y.nhan && <b>{y.nhan}) </b>}<MathText>{y.noiDung}</MathText>
+                  {y.nhan && <b>{y.nhan}) </b>}<MathText>{y.giaThietPhu ? `${y.giaThietPhu}. ${y.noiDung}` : y.noiDung}</MathText>
                   {y.ghiChu && <span className="hp-tag">{y.ghiChu}</span>}
                 </div>
                 {gv
                   ? (
                     <div className="hp-giai">
                       {y.bacThamChieu && <div className="hp-bac">Lời giải THAM CHIẾU — lấy từ bài chuẩn, tên điểm theo hệ thống (không phải tên điểm của đề này).</div>}
+                      {/* Node ẨN nở thành bước con (đề không hỏi vẫn phải giải) — đứng TRƯỚC lời giải chính. */}
+                      {(y.buoc ?? []).map((b, bi) => (
+                        <div key={bi} className="hp-buoc">
+                          <b>Bước {bi + 1} — {b.phatBieu}: </b>
+                          <MathText>{b.giaThietPhu ? `${b.giaThietPhu}. ${b.loiGiai ?? '—'}` : (b.loiGiai ?? '—')}</MathText>
+                          {b.anh && <div className="hp-fig-r"><img src={b.anh} alt="" /></div>}
+                        </div>
+                      ))}
                       <MathText>{y.loiGiai ?? '—'}</MathText>
                       {y.anh && <div className="hp-fig-r"><img src={y.anh} alt="" /></div>}
                     </div>
@@ -224,6 +236,8 @@ const HINH_CSS = `
 .hp-tag{display:inline-block;background:#faeeda;border:1px solid #ef9f27;color:#854f0b;border-radius:10px;padding:0 7px;font-size:11.5px;margin-left:5px;vertical-align:middle}
 .hp-giai{font-size:16px;color:#374151;background:#fbfcff;border:1px solid #e5e9f0;border-radius:7px;padding:7px 10px;margin-top:4px}
 .hp-bac{font-size:12px;color:#8a5a12;background:#fffaf1;border-radius:5px;padding:3px 7px;margin-bottom:5px}
+.hp-buoc{margin:0 0 5px;padding-left:9px;border-left:2px solid #cdd6e4}
+.hp-buoc b{color:#0f766e}
 /* bản HS: chỗ trống có DÒNG KẺ để viết — line rõ (0.3mm, xám vừa), mỗi 7.7mm 1 dòng */
 .hp-ke{height:23.1mm;margin-top:3px;background-image:repeating-linear-gradient(to bottom,transparent 0 7.4mm,#9aa7b5 7.4mm 7.7mm)}
 `

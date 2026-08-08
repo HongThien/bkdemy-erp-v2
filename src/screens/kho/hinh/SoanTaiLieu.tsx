@@ -695,13 +695,22 @@ async function banInTheoMoHinh(tieuDe: string, phan: 'lop' | 'nha', nodes: BaiTo
 }
 /** Ghép chuỗi (đề chuẩn) → 1 bài a,b,c: giả thiết + hình của node SÂU NHẤT chung; ý a,b,c = câu hỏi + lời giải từng node. */
 export function mucGhep(L: Luoi, g: GhepItem, anDe: boolean, soDong?: number | null): MucIn {
-  const nodes = (g.nodeIds.map((id) => L.baiToan.find((b) => b.id === id)).filter(Boolean) as BaiToan[])
-    .sort((a, b) => a.cap - b.cap || a.ma.localeCompare(b.ma))
+  const khung = api.noDapAn(L, g.nodeIds)             // ý = node tick; buocNodes = node ẩn nở; gtPhuKeo = van
+  const nodes = khung.map((k) => k.node)
   let deep = nodes[0]; let dS = -1
   for (const bt of nodes) { const d = api.doSauTrongHo(L, bt.mo_hinh_id); if (d > dS) { dS = d; deep = bt } }
-  const ys: YIn[] = nodes.map((bt, i) => {
-    const c = api.cachMacDinh(L, bt.id)
-    return { nhan: String.fromCharCode(97 + i), noiDung: `Chứng minh ${bt.phat_bieu}`, loiGiai: c?.loi_giai ?? null, anh: c?.anh_loi_giai ?? null, ma: bt.ma, cap: bt.cap }
+  const ys: YIn[] = khung.map((k, i) => {
+    const c = api.cachMacDinh(L, k.node.id)
+    const gtPhu = [k.node.gia_thiet_phu?.trim(), ...k.gtPhuKeo].filter(Boolean).join('; ') || null
+    return {
+      nhan: String.fromCharCode(97 + i), noiDung: `Chứng minh ${k.node.phat_bieu}`,
+      giaThietPhu: gtPhu, loiGiai: c?.loi_giai ?? null, anh: c?.anh_loi_giai ?? null,
+      buoc: k.buocNodes.map((n) => {
+        const cc = api.cachMacDinh(L, n.id)
+        return { phatBieu: n.phat_bieu, giaThietPhu: n.gia_thiet_phu?.trim() || null, loiGiai: cc?.loi_giai ?? null, anh: cc?.anh_loi_giai ?? null, ma: n.ma }
+      }),
+      ma: k.node.ma, cap: k.node.cap,
+    }
   })
   const anhDe = api.anhCuaBaiToan(L, deep.id)
   return { kieu: 'de', deBai: api.giaThietDayDu(L, deep.mo_hinh_id), anhDe, ma: nodes.map((b) => b.ma).join('+'), ys, anDe: anDe || !anhDe, soDong: soDong ?? null }
@@ -715,14 +724,25 @@ function tachDe(deBai: string): { giaThiet: string; cauHoi: string } {
 /** Ghép 1 LỨA (đổi đỉnh) → a,b,c: giả thiết CHUNG (từ câu sâu nhất) + ý = câu hỏi từng câu (từ biến thể của lứa). */
 export function mucGhepLua(L: Luoi, nodeIds: string[], bienThes: BienThe[], anDe: boolean, soDong?: number | null): MucIn {
   const byNode = new Map(bienThes.map((v) => [v.baitoan_id, v]))
-  const nodes = (nodeIds.map((id) => L.baiToan.find((b) => b.id === id)).filter(Boolean) as BaiToan[]).sort((a, b) => a.cap - b.cap || a.ma.localeCompare(b.ma))
+  const khung = api.noDapAn(L, nodeIds)
+  const nodes = khung.map((k) => k.node)
   let deep = nodes[0]; let dS = -1
   for (const bt of nodes) { if (!byNode.has(bt.id)) continue; const d = api.doSauTrongHo(L, bt.mo_hinh_id); if (d > dS) { dS = d; deep = bt } }
   const deepV = byNode.get(deep.id)
   const giaThiet = deepV ? tachDe(deepV.de_bai).giaThiet : api.giaThietDayDu(L, deep.mo_hinh_id)
-  const ys: YIn[] = nodes.map((bt, i) => {
-    const v = byNode.get(bt.id)
-    return { nhan: String.fromCharCode(97 + i), noiDung: v ? tachDe(v.de_bai).cauHoi : `Chứng minh ${bt.phat_bieu}`, loiGiai: v?.loi_giai ?? null, anh: v?.anh_loi_giai ?? null, ma: bt.ma, cap: bt.cap }
+  const ys: YIn[] = khung.map((k, i) => {
+    const v = byNode.get(k.node.id)
+    const gtPhu = [k.node.gia_thiet_phu?.trim(), ...k.gtPhuKeo].filter(Boolean).join('; ') || null
+    return {
+      nhan: String.fromCharCode(97 + i),
+      noiDung: v ? tachDe(v.de_bai).cauHoi : `Chứng minh ${k.node.phat_bieu}`,
+      giaThietPhu: gtPhu, loiGiai: v?.loi_giai ?? null, anh: v?.anh_loi_giai ?? null,
+      buoc: k.buocNodes.map((n) => {
+        const bv = byNode.get(n.id); const cc = api.cachMacDinh(L, n.id)
+        return { phatBieu: bv ? tachDe(bv.de_bai).cauHoi : n.phat_bieu, giaThietPhu: n.gia_thiet_phu?.trim() || null, loiGiai: bv?.loi_giai ?? cc?.loi_giai ?? null, anh: bv?.anh_loi_giai ?? cc?.anh_loi_giai ?? null, ma: n.ma }
+      }),
+      ma: k.node.ma, cap: k.node.cap,
+    }
   })
   const anhDe = deepV?.anh ?? api.anhCuaBaiToan(L, deep.id)
   return { kieu: 'de', deBai: giaThiet, anhDe, ma: nodes.map((b) => b.ma).join('+'), ys, anDe: anDe || !anhDe, soDong: soDong ?? null }
@@ -806,16 +826,16 @@ function NodeRow({ L, n, maCap, on, pool, pick, onTick, onSetPhan, onGoiY, onAdd
       </button>
       {on && (
         <div className="mt-2.5 space-y-2">
-          <PhanBlock n={n} phan="lop" pool={pool} pick={pick} chuoi={chuoi} onGoiY={(c) => onGoiY('lop', c)} onSetPick={(keys) => onSetPhan('lop', keys)} onAddGhep={(ids) => onAddGhep('lop', ids)} />
-          <PhanBlock n={n} phan="nha" pool={pool} pick={pick} chuoi={chuoi} onGoiY={(c) => onGoiY('nha', c)} onSetPick={(keys) => onSetPhan('nha', keys)} onAddGhep={(ids) => onAddGhep('nha', ids)} />
+          <PhanBlock L={L} n={n} phan="lop" pool={pool} pick={pick} chuoi={chuoi} onGoiY={(c) => onGoiY('lop', c)} onSetPick={(keys) => onSetPhan('lop', keys)} onAddGhep={(ids) => onAddGhep('lop', ids)} />
+          <PhanBlock L={L} n={n} phan="nha" pool={pool} pick={pick} chuoi={chuoi} onGoiY={(c) => onGoiY('nha', c)} onSetPick={(keys) => onSetPhan('nha', keys)} onAddGhep={(ids) => onAddGhep('nha', ids)} />
         </div>
       )}
     </div>
   )
 }
 // Một KHỐI phiếu (Trên lớp / Về nhà) của node: tiêu đề + tự động (Gợi ý) + Chọn bài (mở kho) + Ghép a,b,c + danh sách.
-function PhanBlock({ n, phan, pool, pick, chuoi, onGoiY, onSetPick, onAddGhep }: {
-  n: BaiToan; phan: 'lop' | 'nha'; pool: PoolItem[]; pick: Record<string, 'lop' | 'nha'>; chuoi: BaiToan[]
+function PhanBlock({ L, n, phan, pool, pick, chuoi, onGoiY, onSetPick, onAddGhep }: {
+  L: Luoi; n: BaiToan; phan: 'lop' | 'nha'; pool: PoolItem[]; pick: Record<string, 'lop' | 'nha'>; chuoi: BaiToan[]
   onGoiY: (n: number) => void; onSetPick: (keys: string[]) => void; onAddGhep: (nodeIds: string[]) => void
 }) {
   const [open, setOpen] = useState(false)
@@ -834,10 +854,10 @@ function PhanBlock({ n, phan, pool, pick, chuoi, onGoiY, onSetPick, onAddGhep }:
           <Btn className="h-6 px-2 text-[11px]" onClick={() => onGoiY(g)}>↻ Gợi ý</Btn>
         </span>
         <Btn className="h-6 px-2 text-[11px]" onClick={() => setOpen(true)}>✎ Chọn bài</Btn>
-        {chuoi.length > 1 && <Btn className="h-6 px-2 text-[11px] border-violet-300 text-violet-700" onClick={() => setGhepOpen(true)}>🔗 Ghép a,b,c</Btn>}
+        {chuoi.length > 1 && <Btn className="h-6 px-2 text-[11px] border-violet-300 text-violet-700" onClick={() => setGhepOpen(true)}>🌿 Chọn ý (cây)</Btn>}
         <span className="ml-auto text-[11px] text-slate-400">{chosen.length} bài</span>
       </div>
-      {ghepOpen && <GhepChuoiPopup phan={phan} chuoi={chuoi} onClose={() => setGhepOpen(false)} onConfirm={(ids) => { onAddGhep(ids); setGhepOpen(false) }} />}
+      {ghepOpen && <CayTickPopup L={L} phan={phan} chuoi={chuoi} onClose={() => setGhepOpen(false)} onConfirm={(ids) => { onAddGhep(ids); setGhepOpen(false) }} />}
       {chosen.length === 0
         ? <div className="mt-1.5 text-[11.5px] italic text-slate-400">Chưa có bài — bấm <b>Gợi ý</b> (tự động) hoặc <b>Chọn bài</b>.</div>
         : <ol className="mt-1.5 space-y-1">
@@ -955,43 +975,119 @@ function PhieuList({ nhan, ton, ds, ghep, L, onRemoveGhep, anDe, onToggleAnDe, s
     </div>
   )
 }
-// Popup GHÉP a,b,c: tick câu trong chuỗi (đề chuẩn) → 1 bài a,b,c, ý theo thứ tự tiền đề.
-function GhepChuoiPopup({ phan, chuoi, onClose, onConfirm }: {
-  phan: 'lop' | 'nha'; chuoi: BaiToan[]; onClose: () => void; onConfirm: (nodeIds: string[]) => void
+// Popup CÂY tick: chuỗi/cây node hội tụ vẽ NGANG (dữ kiện trái → bổ đề → đích phải). Tick node = ý được
+// HỎI; node bỏ tick = ẩn → nở thành BƯỚC trong đáp án (§ docs/spec-kho-hinh-soan-chuoi). Xem trước sống.
+function CayTickPopup({ L, phan, chuoi, onClose, onConfirm }: {
+  L: Luoi; phan: 'lop' | 'nha'; chuoi: BaiToan[]; onClose: () => void; onConfirm: (nodeIds: string[]) => void
 }) {
-  const [chon, setChon] = useState<Set<string>>(new Set(chuoi.map((b) => b.id)))
-  const selected = chuoi.filter((b) => chon.has(b.id))   // giữ thứ tự topo của chuoi
+  const [chon, setChon] = useState<Set<string>>(() => new Set(chuoi.map((b) => b.id)))
   const nhan = phan === 'lop' ? 'Trên lớp' : 'Về nhà'
+  const toggle = (id: string) => setChon((s) => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); if (!n.size) n.add(id); return n })
+
+  // Layout NGANG: cột = cấp (cap) tăng dần trái→phải (dữ kiện → bổ đề → đích); trong cột xếp dọc theo mã.
+  const CW = 150, CH = 62, GX = 66, GY = 12, PAD = 12
+  const { pos, W, H } = useMemo(() => {
+    const caps = [...new Set(chuoi.map((b) => b.cap))].sort((a, b) => a - b)
+    const byCol = new Map<number, BaiToan[]>()
+    for (const b of chuoi) { const a = byCol.get(b.cap) ?? []; a.push(b); byCol.set(b.cap, a) }
+    for (const a of byCol.values()) a.sort((x, y) => x.ma.localeCompare(y.ma))
+    const maxRows = Math.max(1, ...[...byCol.values()].map((a) => a.length))
+    const H = maxRows * CH + (maxRows - 1) * GY + PAD * 2
+    const pos = new Map<string, { x: number; y: number }>()
+    caps.forEach((cap, ci) => {
+      const arr = byCol.get(cap)!
+      const colH = arr.length * CH + (arr.length - 1) * GY
+      const y0 = (H - colH) / 2
+      arr.forEach((b, ri) => pos.set(b.id, { x: PAD + ci * (CW + GX), y: y0 + ri * (CH + GY) }))
+    })
+    const W = PAD * 2 + caps.length * CW + (caps.length - 1) * GX
+    return { pos, W, H }
+  }, [chuoi])
+  const edges = useMemo(() => chuoi.flatMap((b) => api.tienDeCua(L, b.id)
+    .filter((t) => pos.has(t)).map((t) => ({ from: pos.get(t)!, to: pos.get(b.id)! }))), [chuoi, L, pos])
+
+  // Xem trước sống: nở đáp án cho tập tick. Đề chung = giả thiết node sâu nhất được tick.
+  const ys = useMemo(() => {
+    const khung = api.noDapAn(L, [...chon])
+    return khung.map((k, i) => ({
+      nhan: String.fromCharCode(97 + i), node: k.node,
+      gtPhu: [k.node.gia_thiet_phu?.trim(), ...k.gtPhuKeo].filter(Boolean).join('; '),
+      giai: api.cachMacDinh(L, k.node.id)?.loi_giai ?? '—',
+      buoc: k.buocNodes.map((n) => ({ ch: n.phat_bieu, gt: n.gia_thiet_phu?.trim() || '', giai: api.cachMacDinh(L, n.id)?.loi_giai ?? '—' })),
+    }))
+  }, [chon, L])
+  const deBaiChung = useMemo(() => {
+    let deep: BaiToan | null = null, dS = -1
+    for (const b of chuoi) if (chon.has(b.id)) { const d = api.doSauTrongHo(L, b.mo_hinh_id); if (d > dS) { dS = d; deep = b } }
+    return deep ? api.giaThietDayDu(L, deep.mo_hinh_id) : ''
+  }, [chon, chuoi, L])
+
   return createPortal(
     <div className="fixed inset-0 z-[70] flex items-center justify-center bg-slate-900/50 p-3 sm:p-6" onClick={onClose}>
-      <div className="flex max-h-[85vh] w-[92vw] max-w-lg flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
+      <div className="flex max-h-[88vh] w-[92vw] max-w-5xl flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center gap-2 border-b border-slate-200 px-5 py-3">
-          <h3 className="text-[15px] font-semibold text-slate-900">🔗 Ghép a,b,c</h3>
-          <span className="text-[12px] text-slate-400">đề chuẩn · {nhan}</span>
+          <h3 className="text-[15px] font-semibold text-slate-900">🌿 Chọn ý trên cây</h3>
+          <span className="text-[12px] text-slate-400">{nhan} · tick = hỏi (thành ý) · bỏ tick = ẩn → bước trong đáp án</span>
           <button onClick={onClose} className="ml-auto rounded-lg border border-slate-300 px-3 py-1.5 text-[13px] text-slate-600 hover:bg-slate-50">Đóng</button>
         </div>
-        <div className="min-h-0 flex-1 space-y-2 overflow-y-auto p-4">
-          <p className="text-[12px] leading-snug text-slate-500">Tick các câu trong chuỗi → gộp thành <b>1 bài</b>: giả thiết + hình chung (node sâu nhất), ý <b>a, b, c</b> theo thứ tự tiền đề.</p>
-          {chuoi.map((b) => {
-            const on = chon.has(b.id)
-            const idx = selected.findIndex((x) => x.id === b.id)
-            return (
-              <button key={b.id} type="button" onClick={() => setChon((s) => { const n = new Set(s); n.has(b.id) ? n.delete(b.id) : n.add(b.id); return n })}
-                className={`flex w-full items-start gap-2 rounded-lg border px-2.5 py-2 text-left transition ${on ? 'border-violet-300 bg-violet-50/50' : 'border-slate-200 hover:bg-slate-50'}`}>
-                <span className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md border-[1.5px] text-[12px] font-bold text-white ${on ? 'border-violet-500 bg-violet-500' : 'border-slate-300 text-transparent'}`}>{on && idx >= 0 ? String.fromCharCode(97 + idx) : ''}</span>
-                <div className="min-w-0 flex-1">
-                  <div className="mb-0.5 flex items-center gap-1.5"><Ma>{b.ma}</Ma><Cap cap={b.cap} /></div>
-                  <div className="text-[12.5px] text-slate-700"><MathText>{b.phat_bieu}</MathText></div>
-                </div>
-              </button>
-            )
-          })}
+        <div className="min-h-0 flex-1 overflow-y-auto p-4">
+          <div className="mb-3 overflow-x-auto rounded-xl bg-slate-50 p-1">
+            <div className="relative" style={{ width: W, height: H }}>
+              <svg viewBox={`0 0 ${W} ${H}`} className="pointer-events-none absolute inset-0 h-full w-full">
+                {edges.map((e, i) => (
+                  <path key={i} d={`M${e.from.x + CW},${e.from.y + CH / 2} C${e.from.x + CW + GX * 0.6},${e.from.y + CH / 2} ${e.to.x - GX * 0.6},${e.to.y + CH / 2} ${e.to.x},${e.to.y + CH / 2}`} fill="none" stroke="#cbd5e1" strokeWidth={1.5} />
+                ))}
+              </svg>
+              {chuoi.map((b) => {
+                const p = pos.get(b.id)!; const on = chon.has(b.id)
+                const idx = ys.findIndex((y) => y.node.id === b.id)
+                const dich = !chuoi.some((x) => api.tienDeCua(L, x.id).includes(b.id))
+                return (
+                  <button key={b.id} type="button" onClick={() => toggle(b.id)}
+                    className={`absolute overflow-hidden rounded-lg border-[1.5px] px-2 py-1.5 text-left transition ${on ? 'border-blue-500 bg-blue-50' : 'border-dashed border-slate-300 bg-white'}`}
+                    style={{ left: p.x, top: p.y, width: CW, height: CH }}>
+                    <div className="mb-0.5 flex items-center gap-1">
+                      <span className={`font-mono text-[10px] ${on ? 'text-blue-600' : 'text-slate-400'}`}>{b.ma}</span>
+                      {dich && <span className="text-[10px] text-amber-500" title="đích">◎</span>}
+                      <span className={`ml-auto text-[10px] ${on ? 'text-blue-600' : 'text-slate-400'}`}>{on ? `ý ${idx >= 0 ? String.fromCharCode(97 + idx) : ''}` : 'ẩn → bước'}</span>
+                    </div>
+                    <div className="line-clamp-2 text-[11.5px] leading-tight text-slate-800"><MathText>{b.phat_bieu}</MathText></div>
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <div className="rounded-xl border border-slate-200 bg-white p-3">
+              <div className="mb-1.5 text-[11px] font-semibold uppercase tracking-wide text-slate-500">Đề — bản học sinh</div>
+              <div className="text-[12.5px] leading-relaxed text-slate-700">
+                {deBaiChung && <div className="mb-1"><MathText>{deBaiChung}</MathText></div>}
+                {ys.map((y) => (
+                  <div key={y.node.id} className="my-1"><b>{y.nhan})</b> {y.gtPhu && <span className="text-slate-500"><MathText>{`${y.gtPhu}. `}</MathText></span>}Chứng minh <MathText>{y.node.phat_bieu}</MathText>.</div>
+                ))}
+              </div>
+            </div>
+            <div className="rounded-xl border border-slate-200 bg-white p-3">
+              <div className="mb-1.5 text-[11px] font-semibold uppercase tracking-wide text-slate-500">Đáp án — bản giáo viên</div>
+              <div className="text-[12px] leading-relaxed text-slate-600">
+                {ys.map((y) => (
+                  <div key={y.node.id} className="my-1.5">
+                    <b className="text-slate-800">{y.nhan})</b>
+                    {y.buoc.map((bc, i) => (
+                      <div key={i} className="my-1 ml-2 border-l-2 border-slate-200 pl-2"><b className="text-blue-600">Bước {i + 1} — <MathText>{bc.ch}</MathText>:</b> {bc.gt && <i><MathText>{`${bc.gt}. `}</MathText></i>}<MathText>{bc.giai}</MathText></div>
+                    ))}
+                    <MathText>{y.giai}</MathText>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
         <div className="flex items-center gap-3 border-t border-slate-200 px-5 py-3">
-          <span className="text-[12.5px] text-slate-500"><b>{selected.length}</b> ý</span>
+          <span className="text-[12.5px] text-slate-500"><b>{ys.length}</b> ý · <b>{chuoi.length - ys.length}</b> node ẩn nở thành bước</span>
           <div className="ml-auto flex gap-2">
             <button onClick={onClose} className="rounded-lg px-3 py-2 text-[13px] text-slate-500 hover:bg-slate-100">Huỷ</button>
-            <Btn kind="pri" disabled={selected.length < 2} onClick={() => onConfirm(selected.map((b) => b.id))}>Ghép ({selected.length} ý)</Btn>
+            <Btn kind="pri" disabled={!chon.size} onClick={() => onConfirm([...chon])}>Dùng ({ys.length} ý)</Btn>
           </div>
         </div>
       </div>
