@@ -214,16 +214,20 @@ function GiaoTrinhBuilderHinh({ L, khoi, giaoTrinhId, onClose, onPreview }: {
 function BuoiCardHinh({ L, buoi, no, onDeleted, onPreview }: {
   L: Luoi; buoi: GtBuoi; no: number; onDeleted: () => void; onPreview: (ban: BanIn) => void
 }) {
-  const [open, setOpen] = useState(false)
+  // Nội dung LUÔN hiện inline (khuôn DangCard Đại — KHÔNG gấp/mở, tránh lặp lỗi "tự chế thêm bước Thùy
+  // không nhờ": người vào buổi phải thấy NGAY phần chọn mô hình + chọn bài, không phải bấm ▸ tìm ra).
   const [dem, setDem] = useState<{ lop: number; nha: number } | null>(null)
   const [nhap, setNhap] = useState<{ picks: PickItem[]; anDe: string[]; soDong: Record<string, number> } | null>(null)
   const [tieuDe, setTieuDe] = useState(buoi.tieu_de ?? '')
   const [saved, setSaved] = useState(false)
   const markSaved = () => { setSaved(true); setTimeout(() => setSaved(false), 1500) }
 
-  const napDem = useCallback(() => { gt.listGtBai(buoi.id).then((bais) => setDem({ lop: bais.filter((b) => b.phan === 'lop').length, nha: bais.filter((b) => b.phan === 'nha').length })) }, [buoi.id])
-  useEffect(() => { napDem() }, [napDem])
-  useEffect(() => { if (open && !nhap) gt.loadBuoiPicks(buoi.id).then(setNhap) }, [open, buoi.id]) // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    gt.loadBuoiPicks(buoi.id).then((n) => {
+      setNhap(n)
+      setDem({ lop: n.picks.filter((p) => p.phan === 'lop').length, nha: n.picks.filter((p) => p.phan === 'nha').length })
+    })
+  }, [buoi.id])
 
   async function saveNow(patch: Partial<{ picks: PickItem[]; anDe: string[]; soDong: Record<string, number> }>) {
     if (!nhap) return
@@ -254,7 +258,6 @@ function BuoiCardHinh({ L, buoi, no, onDeleted, onPreview }: {
   return (
     <div className="mb-2 rounded-xl border border-slate-200 bg-white">
       <div className="flex items-center gap-2 rounded-t-xl border-b border-slate-100 bg-indigo-50/50 px-4 py-2.5">
-        <button onClick={() => setOpen((v) => !v)} className="shrink-0 text-[12px] text-indigo-500">{open ? '▾' : '▸'}</button>
         <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-teal-500 text-[11.5px] font-bold text-white">{no}</span>
         <input value={tieuDe} onChange={(e) => setTieuDe(e.target.value)} onBlur={saveTen}
           placeholder={`Buổi ${no}`}
@@ -267,14 +270,12 @@ function BuoiCardHinh({ L, buoi, no, onDeleted, onPreview }: {
           <button onClick={xoa} title="Xoá buổi" className="rounded border border-slate-200 px-1.5 py-1 text-[12px] text-slate-400 hover:border-rose-300 hover:text-rose-600">✕</button>
         </div>
       </div>
-      {open && (
-        <div className="p-3">
-          {!nhap ? <div className="p-4 text-[12.5px] text-slate-400">Đang tải…</div> : (
-            <BuoiPickEditor L={L} picks={nhap.picks} anDe={nhap.anDe} soDong={nhap.soDong}
-              onChangePicks={(picks) => saveNow({ picks })} onChangeAnDe={(anDe) => saveNow({ anDe })} onChangeSoDong={(soDong) => saveNow({ soDong })} />
-          )}
-        </div>
-      )}
+      <div className="p-3">
+        {!nhap ? <div className="p-4 text-[12.5px] text-slate-400">Đang tải…</div> : (
+          <BuoiPickEditor L={L} picks={nhap.picks} anDe={nhap.anDe} soDong={nhap.soDong}
+            onChangePicks={(picks) => saveNow({ picks })} onChangeAnDe={(anDe) => saveNow({ anDe })} onChangeSoDong={(soDong) => saveNow({ soDong })} />
+        )}
+      </div>
     </div>
   )
 }

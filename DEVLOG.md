@@ -3750,3 +3750,19 @@ tsc + vite build sạch mọi bước. Dev pane phiên 0×0 → nhờ Thùy `npm
   list bên trái) đánh lừa cảm giác "đã giống" dù sai hẳn UX pattern (split-pane vs library-modal-navigate).
   **Khi nói "giống Đại", phải đọc ĐÚNG file Đại tương ứng, không suy từ ký ức/khung có sẵn gần đó.**
 - **Verify:** tsc sạch + `npx vite build` sạch. Chưa soi UI thật.
+
+## 2026-08-08 (tiếp 6) — BuoiCardHinh: bỏ gấp/mở tự chế — hiện THẲNG phần chọn mô hình+bài (khuôn DangCard)
+- **Thùy soi ảnh chụp màn hình thật:** "Buổi 1: Tứ giác" hiện ra collapsed (chỉ header + 📘0·📝0 + nút Xem),
+  KHÔNG thấy phần chọn mô hình/chọn bài đâu — hỏi "đâu rồi, như lúc làm tài liệu hình bên kia".
+- **Root cause:** `BuoiCardHinh` tự thêm nút ▸/▾ gấp-mở (`open` state, nội dung chỉ render khi `open===true`)
+  — **Đại KHÔNG có bước này**: `DangCard` trong `BuoiCard` (TaiLieuBuilder) LUÔN hiện nội dung, không gấp/mở.
+  Lại đúng bài học vừa ghi ở entry trước (tự chế thêm bước Thùy không nhờ) — lần này KHÔNG phải do lấy nhầm
+  khung cũ, mà tự suy diễn "buổi nhiều nội dung nên cho gấp gọn" — hợp lý bề ngoài nhưng SAI vì không khớp
+  hành vi thật của Đại (mẫu để "giống y" chỉ có 1 nguồn — đọc code, không đoán theo trực giác riêng).
+- **Fix:** xoá hẳn `open`/`setOpen`/nút ▸▾. `BuoiPickEditor` giờ LUÔN render trong mỗi thẻ buổi — vào Builder
+  là thấy ngay mô hình-filter + chuỗi + chọn bài, y hệt cảm giác màn "Soạn tài liệu → Theo mô hình" cũ (giờ
+  đã rút khỏi Soạn tài liệu — logic tương đương giờ SỐNG Ở ĐÂY, phải hiện đúng chỗ, đúng lúc).
+  `nhap`/`dem` tải ngay lúc mount (không còn gate theo `open`).
+- **Verify:** tsc sạch + `npx vite build` sạch. Chưa soi UI thật (dev pane phiên này không mở) — cần Thùy
+  `npm run dev` xác nhận: mở 1 giáo trình → mỗi buổi hiện ĐỦ 3 cột (lọc mô hình / chuỗi / tóm tắt) ngay,
+  không cần bấm gì thêm.
