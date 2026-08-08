@@ -17,11 +17,18 @@ import type { PickItem } from '../../../store/useStore'
 import { listLop, type Lop } from '../../../lib/nhansu'
 import { ngayBuoiHopLeCuaLop } from '../../../lib/gami'
 import { homNayVN, congNgay, ddmmVN, thuCuaNgay } from '../../../lib/tuan'
-import { Btn, Empty, Ma, Panel, Seg, tron, inpCls } from './hinhUi'
+import { Btn, Empty, Ma, Seg, tron, inpCls } from './hinhUi'
+import { Shell, Field, inp } from '../ui'
 import SearchSelect from '../../../components/SearchSelect'
 import BuoiNgaySelect from '../../../components/BuoiNgaySelect'
 import HinhPrintView, { type BanIn, type MucIn } from './HinhPrintView'
 import { mucGhep, mucGhepLua, mucBienThe, mucY, BuoiPickEditor, banInTheoMoHinh } from './SoanTaiLieu'
+
+// Ngày giờ VN (CLAUDE.md §2: không toISOString) — hiển thị "dd/mm/yyyy". Khuôn TaiLieuScreen (Đại).
+function fmtNgay(iso?: string): string {
+  if (!iso) return '—'
+  return new Date(iso).toLocaleDateString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', day: '2-digit', month: '2-digit', year: 'numeric' })
+}
 
 // ── Resolve bài ĐÃ LƯU của một buổi (master hoặc bản lớp) → BanIn cho 1 phiếu (lop/nha). Dùng CHUNG
 // resolver với builder sống (mucGhep/mucGhepLua/mucBienThe/mucY) — 1 nguồn, hết lệch preview↔bản lưu. ──
@@ -72,66 +79,133 @@ export default function GiaoTrinhScreen({ L, khoi }: { L: Luoi; khoi: string }) 
   )
 }
 
-// ══════════════ MASTER — cây Buổi tại chỗ (khuôn TaiLieuBuilder) ══════════════
+// ══════════════ MASTER — THƯ VIỆN dạng thẻ + modal Tạo (khuôn TaiLieuScreen Đại, ĐÚNG Y — Thùy chốt
+// "sao không làm giống Đại"). Mở 1 giáo trình = ĐIỀU HƯỚNG FULL-SCREEN vào GiaoTrinhBuilderHinh (không
+// còn split-pane sidebar+panel như bản trước — khuôn TaiLieuScreen: card "Mở/Xuất" → TaiLieuBuilder). ══
 function Master({ L, khoi, onPreview }: { L: Luoi; khoi: string; onPreview: (ban: BanIn) => void }) {
   const [gts, setGts] = useState<GiaoTrinh[]>([])
-  const [chon, setChon] = useState<string | null>(null)
-  const [buois, setBuois] = useState<GtBuoi[]>([])
-  const [trichOpen, setTrichOpen] = useState(false)
-  const [taoMoi, setTaoMoi] = useState(false)
-  const [tenMoi, setTenMoi] = useState('')
+  const [loading, setLoading] = useState(true)
+  const [q, setQ] = useState('')
+  const [sort, setSort] = useState<'moi' | 'ten'>('moi')
+  const [creating, setCreating] = useState(false)
+  const [openId, setOpenId] = useState<string | null>(null)   // giáo trình đang MỞ (builder full-screen)
 
-  const napGt = useCallback(async () => { const d = await gt.listGiaoTrinh(khoi); setGts(d); setChon((c) => (c && d.some((x) => x.id === c) ? c : d[0]?.id ?? null)) }, [khoi])
-  useEffect(() => { napGt() }, [napGt])
-  const napBuoi = useCallback(async (gtId: string | null) => { setBuois(gtId ? await gt.listBuoiMaster(gtId) : []) }, [])
-  useEffect(() => { napBuoi(chon) }, [chon, napBuoi])
+  const nap = useCallback(async () => { setLoading(true); try { setGts(await gt.listGiaoTrinh(khoi)) } finally { setLoading(false) } }, [khoi])
+  useEffect(() => { nap() }, [nap])
 
-  const gtChon = gts.find((g) => g.id === chon) ?? null
+  const shown = gts
+    .filter((g) => !q.trim() || g.ten.toLowerCase().includes(q.trim().toLowerCase()))
+    .sort((a, b) => sort === 'ten' ? a.ten.localeCompare(b.ten, 'vi') : (b.created_at ?? '').localeCompare(a.created_at ?? ''))
 
-  async function taoGiaoTrinh() {
-    if (!tenMoi.trim()) return
-    const g = await gt.createGiaoTrinh({ ten: tenMoi.trim(), khoi })
-    setTenMoi(''); setTaoMoi(false); await napGt(); setChon(g.id)
-  }
-  async function themBuoi() {
-    if (!chon) return
-    await gt.createBuoiMaster(chon, { thu_tu: buois.length })
-    await napBuoi(chon)
-  }
+  if (openId) return <GiaoTrinhBuilderHinh L={L} khoi={khoi} giaoTrinhId={openId} onClose={() => setOpenId(null)} onPreview={onPreview} />
 
   return (
-    <div className="grid items-start gap-4 lg:grid-cols-[240px_1fr]">
-      <Panel label="Giáo trình">
-        {gts.length === 0 && !taoMoi && <div className="mb-2 text-[12.5px] text-slate-400">Chưa có giáo trình Hình khối này.</div>}
-        {gts.map((g) => (
-          <button key={g.id} onClick={() => setChon(g.id)} className={`mb-1 block w-full truncate rounded-lg border px-2.5 py-2 text-left text-[13px] ${chon === g.id ? 'border-blue-300 bg-blue-50/60 font-medium text-blue-700' : 'border-slate-200 text-slate-700 hover:bg-slate-50'}`}>{g.ten}</button>
-        ))}
-        {taoMoi ? (
-          <div className="mt-1.5 flex gap-1.5">
-            <input autoFocus className={inpCls} value={tenMoi} onChange={(e) => setTenMoi(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && taoGiaoTrinh()} placeholder="Tên giáo trình…" />
-            <Btn kind="pri" className="shrink-0" onClick={taoGiaoTrinh}>+</Btn>
-          </div>
-        ) : <button onClick={() => setTaoMoi(true)} className="mt-1 w-full rounded-lg border-2 border-dashed border-indigo-200 py-1.5 text-[12.5px] font-medium text-indigo-700 hover:bg-indigo-50">+ Giáo trình mới</button>}
-      </Panel>
-
-      <div className="min-w-0">
-        {!gtChon ? <Empty icon="▤">Chọn hoặc tạo một giáo trình để soạn buổi.</Empty> : (
-          <>
-            <div className="mb-2 flex items-center gap-2">
-              <span className="text-[14px] font-semibold text-slate-900">{gtChon.ten}</span>
-              <span className="text-[12px] text-slate-400">· {buois.length} buổi</span>
-              <Btn className="ml-auto border-violet-300 text-violet-700" onClick={() => setTrichOpen(true)}>⬇ Trích xuất / Gán lớp</Btn>
-              <Btn className="border-rose-300 text-rose-600" onClick={async () => { if (confirm(`Xoá giáo trình "${gtChon.ten}" và mọi buổi?`)) { await gt.deleteGiaoTrinh(gtChon.id); setChon(null); await napGt() } }}>🗑 Xoá giáo trình</Btn>
-            </div>
-            {buois.length === 0 && <div className="mb-3 rounded-xl border border-dashed border-slate-300 bg-white p-6 text-center text-[13px] text-slate-400">Chưa có buổi nào. Bấm "+ Thêm buổi" để bắt đầu.</div>}
-            {buois.map((b, i) => (
-              <BuoiCardHinh key={b.id} L={L} buoi={b} no={i + 1} onDeleted={() => napBuoi(chon)} onPreview={onPreview} />
-            ))}
-            <button onClick={themBuoi} className="w-full rounded-xl border-2 border-dashed border-indigo-200 bg-indigo-50/40 py-3 text-[14px] font-medium text-indigo-700 transition hover:bg-indigo-50">+ Thêm buổi</button>
-          </>
-        )}
+    <div className="flex h-full flex-col">
+      <div className="mb-3 flex flex-wrap items-center gap-2">
+        <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm theo tên…" className="h-7 w-44 rounded-md border border-slate-200 px-2.5 text-[13px] outline-none focus:border-indigo-400" />
+        <button onClick={() => setSort(sort === 'moi' ? 'ten' : 'moi')} className="h-7 rounded-md border border-slate-200 px-2.5 text-[12px] font-medium text-slate-500 hover:bg-slate-100">{sort === 'moi' ? '↓ Mới nhất' : 'A→Z Tên'}</button>
+        <button onClick={() => setCreating(true)} className="ml-auto rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500">+ Tạo giáo trình</button>
       </div>
-      {trichOpen && gtChon && <TrichPanelHinh khoi={khoi} buois={buois} onClose={() => setTrichOpen(false)} />}
+      <div className="min-h-0 flex-1 overflow-auto">
+        {loading ? <p className="text-sm text-slate-400">Đang tải…</p>
+          : shown.length === 0 ? (
+            <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">
+              {q.trim() ? <>Không có giáo trình khớp "{q}".</> : <>Chưa có giáo trình Hình khối {khoi}. Bấm <b className="text-slate-600">+ Tạo giáo trình</b>.</>}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 gap-3 lg:grid-cols-2 2xl:grid-cols-3">
+              {shown.map((g) => (
+                <div key={g.id} className="flex flex-col rounded-xl border border-slate-200 bg-white p-4">
+                  <div className="text-[16px] font-semibold text-slate-900">{g.ten}</div>
+                  <div className="mt-1 text-[12px] text-slate-400">Khối {g.khoi}</div>
+                  <div className="mt-1 text-[11px] text-slate-400">Tạo {fmtNgay(g.created_at)}{g.updated_at && g.updated_at !== g.created_at ? ` · sửa ${fmtNgay(g.updated_at)}` : ''}</div>
+                  <div className="mt-3 flex gap-2">
+                    <button onClick={() => setOpenId(g.id)} className="rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-indigo-500">Mở / Xuất</button>
+                    <button onClick={async () => { if (confirm(`Xoá giáo trình "${g.ten}" và mọi buổi?`)) { await gt.deleteGiaoTrinh(g.id); nap() } }} className="rounded-md border border-slate-200 px-3 py-1.5 text-[13px] text-slate-500 hover:border-rose-300 hover:text-rose-600">Xoá</button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+      </div>
+      {creating && <CreateGiaoTrinhHinhModal khoi={khoi} onClose={() => setCreating(false)} onCreated={(id) => { setCreating(false); nap(); setOpenId(id) }} />}
+    </div>
+  )
+}
+
+function CreateGiaoTrinhHinhModal({ khoi, onClose, onCreated }: { khoi: string; onClose: () => void; onCreated: (id: string) => void }) {
+  const [ten, setTen] = useState('')
+  const [busy, setBusy] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  async function create() {
+    if (!ten.trim()) return
+    setBusy(true); setError(null)
+    try { const g = await gt.createGiaoTrinh({ ten: ten.trim(), khoi }); onCreated(g.id) }
+    catch (e: any) { setError(e.message ?? String(e)); setBusy(false) }
+  }
+  return (
+    <Shell title={`Tạo giáo trình Hình · Khối ${khoi}`} onClose={onClose}>
+      <Field label="Tên giáo trình"><input value={ten} onChange={(e) => setTen(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && create()} className={inp} placeholder="vd: Tam giác đồng dạng" autoFocus /></Field>
+      <div className="mb-3 text-[11px] text-slate-400">Tạo xong vào Builder → bấm <b>+ Thêm buổi</b>.</div>
+      {error && <p className="mb-2 text-xs text-rose-600">{error}</p>}
+      <div className="flex justify-end gap-2">
+        <button onClick={onClose} className="rounded-md px-3 py-1.5 text-sm text-slate-500 hover:bg-slate-100">Huỷ</button>
+        <button onClick={create} disabled={!ten.trim() || busy} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">{busy ? 'Đang tạo…' : 'Tạo'}</button>
+      </div>
+    </Shell>
+  )
+}
+
+// ── Builder FULL-SCREEN của 1 giáo trình (khuôn TaiLieuBuilder: "← Thư viện" + tên sửa tại chỗ + cây
+// buổi + "⬇ Trích xuất/Gán lớp"). Vào từ card "Mở/Xuất" ở thư viện — KHÔNG còn split-pane. ──
+function GiaoTrinhBuilderHinh({ L, khoi, giaoTrinhId, onClose, onPreview }: {
+  L: Luoi; khoi: string; giaoTrinhId: string; onClose: () => void; onPreview: (ban: BanIn) => void
+}) {
+  const [g, setG] = useState<GiaoTrinh | null>(null)
+  const [ten, setTen] = useState('')
+  const [buois, setBuois] = useState<GtBuoi[]>([])
+  const [trichOpen, setTrichOpen] = useState(false)
+  const [saved, setSaved] = useState(false)
+  const markSaved = () => { setSaved(true); setTimeout(() => setSaved(false), 1500) }
+
+  const nap = useCallback(async () => {
+    const [all, bs] = await Promise.all([gt.listGiaoTrinh(khoi), gt.listBuoiMaster(giaoTrinhId)])
+    const found = all.find((x) => x.id === giaoTrinhId) ?? null
+    setG(found); if (found) setTen(found.ten); setBuois(bs)
+  }, [khoi, giaoTrinhId])
+  useEffect(() => { nap() }, [nap])
+
+  async function saveTen() {
+    if (!g || !ten.trim() || ten.trim() === g.ten) return
+    await gt.updateGiaoTrinh(g.id, { ten: ten.trim() })
+    setG({ ...g, ten: ten.trim() }); markSaved()
+  }
+  async function themBuoi() {
+    await gt.createBuoiMaster(giaoTrinhId, { thu_tu: buois.length })
+    await nap()
+  }
+
+  if (!g) return <div className="p-8 text-sm text-slate-400">Đang tải…</div>
+  return (
+    <div className="flex h-full flex-col">
+      <div className="mb-3 flex items-center gap-3 border-b border-slate-200 pb-3">
+        <button onClick={onClose} className="text-[13px] font-medium text-slate-400 hover:text-indigo-600">← Thư viện</button>
+        <input value={ten} onChange={(e) => setTen(e.target.value)} onBlur={saveTen}
+          className="h-9 max-w-[420px] flex-1 rounded-md border border-transparent bg-transparent px-1.5 text-[16px] font-semibold text-slate-900 outline-none hover:border-slate-200 focus:border-indigo-400 focus:bg-white" />
+        <span className="text-[12px] text-slate-400">Khối {khoi}</span>
+        <span className={`rounded-md px-2 py-0.5 text-[11px] font-medium transition ${saved ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-400'}`}>{saved ? '✓ Đã lưu' : '↻ Tự động lưu'}</span>
+        <Btn className="ml-auto border-violet-300 text-violet-700" onClick={() => setTrichOpen(true)}>⬇ Trích xuất / Gán lớp</Btn>
+      </div>
+      <div className="min-h-0 flex-1 overflow-auto">
+        <div className="mx-auto max-w-[860px] space-y-2 pb-6">
+          {buois.length === 0 && <div className="rounded-xl border border-dashed border-slate-300 bg-white p-6 text-center text-[13px] text-slate-400">Chưa có buổi nào. Bấm "+ Thêm buổi" để bắt đầu.</div>}
+          {buois.map((b, i) => (
+            <BuoiCardHinh key={b.id} L={L} buoi={b} no={i + 1} onDeleted={nap} onPreview={onPreview} />
+          ))}
+          <button onClick={themBuoi} className="w-full rounded-xl border-2 border-dashed border-indigo-200 bg-indigo-50/40 py-3 text-[14px] font-medium text-indigo-700 transition hover:bg-indigo-50">+ Thêm buổi</button>
+        </div>
+      </div>
+      {trichOpen && <TrichPanelHinh khoi={khoi} buois={buois} onClose={() => setTrichOpen(false)} />}
     </div>
   )
 }

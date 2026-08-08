@@ -3733,3 +3733,20 @@ tsc + vite build sạch mọi bước. Dev pane phiên 0×0 → nhờ Thùy `npm
 - **Verify:** tsc sạch + `npx vite build` sạch. ⚠ CHƯA soi UI thật — cần Thùy `npm run dev`: menu "Làm tài
   liệu" thấy "Giáo trình (Hình)" cạnh "Giáo trình"; bấm vào có khối-selector + load được lưới + màn Giáo
   trình y hệt bản cũ (Master cây-buổi-tại-chỗ + Gán lớp TKB-gợi-ý).
+
+## 2026-08-08 (tiếp 5) — Master Hình: "tạo giáo trình mới" ĐÚNG Y khuôn Đại (Thùy: "sao ko làm giống y")
+- **Soi lại:** bản Master vừa dựng (sidebar tên + panel chi tiết split-pane, "+ Giáo trình mới" = input
+  inline trong sidebar) KHÔNG giống thật `TaiLieuScreen` Đại — Đại là **THƯ VIỆN DẠNG THẺ** (card grid, mỗi
+  giáo trình 1 thẻ tên/khối/ngày tạo-sửa + nút Mở/Xuất·Xoá) + **"+ Tạo giáo trình" mở MODAL** (`Shell`/`Field`
+  dùng chung) → tạo xong **NHẢY THẲNG vào Builder full-screen** (không phải chọn-rồi-xem-cạnh-nhau).
+- **Fix — chép ĐÚNG Y:** `Master` giờ = thư viện thẻ (search+sort+"+ Tạo giáo trình") y hệt bố cục
+  `TaiLieuScreen`; `CreateGiaoTrinhHinhModal` dùng CHUNG `Shell`/`Field`/`inp` (từ `kho/ui.tsx` — vốn đã
+  generic, không phải riêng Đại) thay vì input tự chế trong sidebar. Bấm "Mở/Xuất" 1 thẻ → `GiaoTrinhBuilderHinh`
+  full-screen (khuôn `TaiLieuBuilder`: "← Thư viện" + tên sửa tại chỗ (autosave, "↻ Tự động lưu") + Khối +
+  "⬇ Trích xuất/Gán lớp" + cây buổi bên dưới) — THAY split-pane cũ. "Xoá giáo trình" dời về thẻ thư viện
+  (khớp Đại — không có ở trong Builder).
+- **Bài học (lặp lại đúng bẫy cũ):** lúc build Master ban đầu, t lấy nguyên khung sidebar-list+panel từ bản
+  `GanLopPopup`-era CŨ (đã có sẵn trong file) thay vì tra lại `TaiLieuScreen` thật — same-shape giả (2 cột,
+  list bên trái) đánh lừa cảm giác "đã giống" dù sai hẳn UX pattern (split-pane vs library-modal-navigate).
+  **Khi nói "giống Đại", phải đọc ĐÚNG file Đại tương ứng, không suy từ ký ức/khung có sẵn gần đó.**
+- **Verify:** tsc sạch + `npx vite build` sạch. Chưa soi UI thật.
