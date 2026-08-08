@@ -5,7 +5,8 @@
 // Dry-run mặc định (chỉ backup + in số). Ghi thật: thêm cờ  --write
 import { readFileSync, writeFileSync } from 'node:fs'; import { fileURLToPath } from 'node:url'; import { dirname, join } from 'node:path'; import pg from 'pg'
 import { replayEloEvents } from '../src/gami/replay.js'
-import { seasonOf, seasonStartUtc } from '../src/gami/season.js'
+import { seasonOf } from '../src/gami/season.js'
+import { SEASON } from '../src/gami/config.js'
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const url = readFileSync(join(root, '.env'), 'utf8').match(/^\s*DATABASE_URL\s*=\s*(.+?)\s*$/m)?.[1].replace(/^["']|["']$/g, '')
 const WRITE = process.argv.includes('--write')
@@ -13,7 +14,9 @@ const WRITE = process.argv.includes('--write')
 // (không kéo data mùa cũ/chạy-thử tháng 7 trở lại). `--all-time` để replay xuyên mùa như đời cũ nếu cần.
 const ALL_TIME = process.argv.includes('--all-time')
 const vnToday = new Date(Date.now() + 7 * 3600 * 1000).toISOString().slice(0, 10)
-const SEASON_START = seasonStartUtc(seasonOf(vnToday)).slice(0, 10) // 'YYYY-MM-DD' đầu mùa (giờ VN)
+const MUA = seasonOf(vnToday)
+// Đầu mùa dạng NGÀY VN để so b.ngay (DATE). KHÔNG dùng seasonStartUtc().slice() — instant UTC lệch 1 ngày.
+const SEASON_START = `${MUA.split('-')[0]}-${String(SEASON.START_MONTH).padStart(2, '0')}-${String(SEASON.START_DAY).padStart(2, '0')}`
 const c = new pg.Client({ connectionString: url }); await c.connect()
 const q = async (s, p) => (await c.query(s, p)).rows
 

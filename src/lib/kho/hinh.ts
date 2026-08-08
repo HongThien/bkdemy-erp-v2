@@ -28,7 +28,8 @@ export type BienThe = {
   id: string; baitoan_id: string; mon: string; kieu: 'doi_so' | 'doi_dinh'
   de_bai: string; anh: string | null; loi_giai: string | null; anh_loi_giai: string | null
   ghi_chu: string | null; thu_tu: number
-  lua_id: string | null   // cùng lua_id = cùng một LỨA clone chuỗi (1 map điểm); null = biến thể lẻ
+  lua_id: string | null       // cùng lua_id = cùng một LỨA clone chuỗi (1 map điểm); null = biến thể lẻ
+  tien_de_ids: string[]        // id các biến thể tiền đề TRỰC TIẾP (trong lứa) — ĐÓNG BĂNG lúc clone, không derive
 }
 export type CachGiai = {
   id: string; baitoan_id: string; ten: string | null; dang_id: string
@@ -431,11 +432,19 @@ export async function deleteBienThe(id: string): Promise<void> {
   const { error } = await supabase.from('hinh_baitoan_bien_the').delete().eq('id', id)
   if (error) throw error
 }
-/** Lưu MỘT LỨA biến thể (clone đổi đỉnh cả chuỗi): mỗi node 1 biến thể, CHUNG một `lua_id`. Tiền đề giữa
- *  chúng không lưu — derive từ (tiền đề node × cùng lua_id). Trả `lua_id` vừa tạo. */
-export async function saveLuaBienThe(items: { baitoan_id: string; de_bai: string; anh: string | null; loi_giai: string | null; anh_loi_giai: string | null }[]): Promise<string> {
+/** Lưu MỘT LỨA biến thể (clone đổi đỉnh cả chuỗi): mỗi node 1 biến thể, CHUNG một `lua_id`.
+ *  Tiền đề bài-tầng ĐÓNG BĂNG vào `tien_de_ids`: `tienDeBaiToanIds` = node-tiền-đề TRỰC TIẾP (trong lứa)
+ *  → map sang id biến thể tương ứng. Sinh id client trước để tự trỏ trong cùng lô. Trả `lua_id`. */
+export async function saveLuaBienThe(items: { baitoan_id: string; de_bai: string; anh: string | null; loi_giai: string | null; anh_loi_giai: string | null; tienDeBaiToanIds: string[] }[]): Promise<string> {
   const lua_id = crypto.randomUUID()
-  const rows = items.map((it, i) => ({ ...it, kieu: 'doi_dinh', lua_id, thu_tu: i }))
+  const idOf = new Map<string, string>()          // baitoan_id → id biến thể (sinh trước)
+  for (const it of items) idOf.set(it.baitoan_id, crypto.randomUUID())
+  const rows = items.map((it, i) => ({
+    id: idOf.get(it.baitoan_id)!, baitoan_id: it.baitoan_id,
+    de_bai: it.de_bai, anh: it.anh, loi_giai: it.loi_giai, anh_loi_giai: it.anh_loi_giai,
+    kieu: 'doi_dinh', lua_id, thu_tu: i,
+    tien_de_ids: it.tienDeBaiToanIds.map((bid) => idOf.get(bid)).filter(Boolean) as string[],  // chỉ tiền đề CÓ trong lứa
+  }))
   const { error } = await supabase.from('hinh_baitoan_bien_the').insert(rows)
   if (error) throw error
   return lua_id

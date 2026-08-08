@@ -8,7 +8,7 @@ import { getBaiTestByDoc, getBaiTestCaus, type BaiTest, type BaiTestCau } from '
 import type { CauHoi } from './kho/api'
 import { computeEloUpdate } from '../gami/elo.js'
 import { problemPoints, rankSession, etRankExp, monthlyBtvnExp } from '../gami/exp.js'
-import { ATTEND_FLOOR_EXP } from '../gami/config.js'
+import { ATTEND_FLOOR_EXP, SEASON } from '../gami/config.js'
 import { seasonOf, seasonLabel, seasonStartUtc } from '../gami/season.js'
 import { vnInstant, congNgay } from './tuan'
 
@@ -1154,14 +1154,21 @@ export async function listGamiBangTong(mon?: string): Promise<DiemRow[]> {
   if (mon) q = q.eq('mon', mon)
   const { data: elo, error } = await q
   if (error) throw error
-  // EXP = MÙA HIỆN TẠI (reset mỗi mùa) — window created_at ≥ đầu mùa (cũng đưa số dòng <1000, tránh cap
-  // PostgREST vốn âm thầm cắt EXP all-time). LOẠI nguồn legacy `rank_*`/`btvn` (mô hình cũ đang bị thay bằng
-  // `exp_thang`; buổi mùa-nay đã sạch legacy — chỉ còn legacy mùa CŨ đóng-muộn lọt window created_at).
-  const muaStart = seasonStartUtc(seasonOf(new Date(Date.now() + 7 * 3600 * 1000).toISOString().slice(0, 10)))
-  const { data: exp } = await supabase.from('gami_exp_ledger').select('hoc_sinh_id, mon, amount')
-    .gte('created_at', muaStart).not('source', 'in', '(rank_et,rank_ingame,rank_mt,btvn)').limit(LIMIT)
+  // EXP = MÙA HIỆN TẠI (reset mỗi mùa). ⚠ exp_thang key theo `note` (tháng EXP THUỘC VỀ) trong khoảng
+  // tháng của mùa [startYm, nextStartYm) — KHÔNG theo created_at: recompute mùa/tháng cũ có thể chạy sang
+  // tháng mới (reset đầu mùa recompute tháng 7 đúng 1/8) → created_at lọt window mà note thì không. attend_floor
+  // (bù, no note, sinh 1 lần lúc đóng) lọc created_at ≥ đầu mùa. Vẫn loại legacy rank_*/btvn.
+  const nowVn = new Date(Date.now() + 7 * 3600 * 1000).toISOString().slice(0, 10)
+  const muaStart = seasonStartUtc(seasonOf(nowVn))
+  const startY = Number(seasonOf(nowVn).split('-')[0])
+  const startYm = `${startY}-${String(SEASON.START_MONTH).padStart(2, '0')}`, nextStartYm = `${startY + 1}-${String(SEASON.START_MONTH).padStart(2, '0')}`
+  const { data: exp } = await supabase.from('gami_exp_ledger').select('hoc_sinh_id, mon, amount, source, note, created_at')
+    .in('source', ['exp_thang', 'attend_floor']).limit(LIMIT)
   const expMap = new Map<string, number>()
-  for (const r of (exp ?? []) as any[]) { const k = r.hoc_sinh_id + '|' + (r.mon ?? ''); expMap.set(k, (expMap.get(k) ?? 0) + Number(r.amount)) }
+  for (const r of (exp ?? []) as any[]) {
+    const keep = r.source === 'exp_thang' ? (r.note >= startYm && r.note < nextStartYm) : r.created_at >= muaStart
+    if (keep) { const k = r.hoc_sinh_id + '|' + (r.mon ?? ''); expMap.set(k, (expMap.get(k) ?? 0) + Number(r.amount)) }
+  }
   // Ghi danh ĐANG HỌC → (HS × môn) ⇒ hệ + tên lớp. Lấy TOÀN BỘ rồi lọc ở client, KHÔNG `.in(hsIds)`:
   // 300+ uuid nhét vào URL là đường dẫn tới lỗi "URL quá dài" (CLAUDE.md §2), mà bảng này vốn nhỏ.
   const { data: gd } = await supabase.from('hoc_sinh_lop').select('hoc_sinh_id, lop:lop_id(mon, bac, ten_lop)').eq('trang_thai', 'dang_hoc').limit(LIMIT)
@@ -1317,17 +1324,25 @@ export type EloExpRow = { hoc_sinh_id: string; elo: number; expThang: number }
 export async function getBangEloExp(hocSinhIds: string[], mon: string): Promise<EloExpRow[]> {
   const ids = [...new Set(hocSinhIds.filter(Boolean))]
   if (!ids.length) return []
-  // Đầu tháng VN → instant UTC ISO (so created_at). Date.UTC -7h = VN-midnight (§2, không toISOString ngày-local).
+  // Tháng VN hiện tại. `ym` = tháng EXP THUỘC VỀ (khoá đúng), monthStart chỉ để lọc attend_floor.
+  // ⚠ EXP THÁNG phải key theo `note`=ym (recomputeExpThang ghi exp_thang note=ym), KHÔNG theo created_at:
+  // recompute có thể chạy ở tháng khác (vd reset đầu mùa recompute tháng 7 ĐÚNG NGÀY 1/8) → dòng note='2026-07'
+  // lại có created_at=1/8 sẽ lọt cửa sổ "tháng 8" nếu lọc bằng created_at. attend_floor (bù, không có note)
+  // chỉ sinh 1 lần lúc đóng nên created_at ≈ đúng tháng buổi → lọc created_at cho nó là ổn.
   const v = new Date(Date.now() + 7 * 3600 * 1000)
+  const ym = `${v.getUTCFullYear()}-${String(v.getUTCMonth() + 1).padStart(2, '0')}`
   const monthStart = new Date(Date.UTC(v.getUTCFullYear(), v.getUTCMonth(), 1, -7, 0, 0)).toISOString()
   const [eloR, expR] = await Promise.all([
     supabase.from('gami_elo').select('hoc_sinh_id, elo').eq('mon', mon).in('hoc_sinh_id', ids).limit(LIMIT),
-    supabase.from('gami_exp_ledger').select('hoc_sinh_id, amount').eq('mon', mon).in('hoc_sinh_id', ids)
-      .gte('created_at', monthStart).not('source', 'in', '(rank_et,rank_ingame,rank_mt,btvn)').limit(LIMIT),
+    supabase.from('gami_exp_ledger').select('hoc_sinh_id, amount, source, note, created_at')
+      .eq('mon', mon).in('hoc_sinh_id', ids).in('source', ['exp_thang', 'attend_floor']).limit(LIMIT),
   ])
   const eloMap = new Map(((eloR.data ?? []) as any[]).map((e) => [e.hoc_sinh_id, Number(e.elo)]))
   const expMap = new Map<string, number>()
-  for (const r of (expR.data ?? []) as any[]) expMap.set(r.hoc_sinh_id, (expMap.get(r.hoc_sinh_id) ?? 0) + Number(r.amount))
+  for (const r of (expR.data ?? []) as any[]) {
+    const keep = r.source === 'exp_thang' ? r.note === ym : r.created_at >= monthStart // attend_floor: theo created_at
+    if (keep) expMap.set(r.hoc_sinh_id, (expMap.get(r.hoc_sinh_id) ?? 0) + Number(r.amount))
+  }
   return ids.map((id) => ({ hoc_sinh_id: id, elo: eloMap.get(id) ?? 1000, expThang: expMap.get(id) ?? 0 }))
 }
 

@@ -5,7 +5,7 @@
 // ET nối buổi qua (lớp+ngày); tab Chấm ET (buổi học) tự load câu qua getETByBuoi.
 import { useEffect, useMemo, useRef, useState } from 'react'
 import {
-  createET, updateET, getTaiLieuFull, setETCaus, suggestCauForDang, khoCuaMon,
+  createET, updateET, getTaiLieuFull, setETCaus, suggestCauForDang, khoCuaMon, getETByBuoi,
   maET, ET_FORMS, etFormOf, sortETCaus, type ETDoc, type CauHinh, type ETForm as ETFormKind, type TaiLieuFull,
 } from '../../lib/tailieu'
 import { buildMaDe as buildMaDeLib, oTrongMaDe, usedMoiDe as usedMoiDeLib, setVarInCh } from '../../lib/made'
@@ -62,29 +62,58 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
   const cauTbl = khoCuaMon(mon).cauTbl
   const tenDang = (md: string | null) => dangOpts.find((d) => d.ma_dang === md)?.ten_dang ?? md ?? ''
 
+  // Nạp toàn bộ nội dung 1 ET (câu gốc + 3 mã đề + cấu hình) vào form. Dùng CHUNG cho: (a) sửa từ Kho
+  // (et prop), (b) auto-load ET có sẵn khi tạo mới chọn trúng (lớp+ngày). KHÔNG set savedId/flash ở đây —
+  // caller tự quyết (sửa vs auto-load khác nhau).
+  async function fillFromET(docId: string) {
+    const full = await getTaiLieuFull(docId)
+    const caus = full.phans.find((p) => p.loai_phan === 'custom')?.caus ?? []
+    const cMap: Record<string, CauHoi> = Object.fromEntries(caus.map((c) => [c.ma_cau, c]))
+    const ch0 = full.taiLieu.cau_hinh ?? {}
+    // Nạp thêm nội dung câu MÃ ĐỀ 2/3 (etMaDe) — trên chỉ nạp câu GỐC (phan.caus) nên nếu không nạp bù,
+    // cột Mã đề 2/3 chỉ thấy MÃ câu, không thấy đề (chỉ "…") dù dữ liệu vẫn còn nguyên trong cau_hinh.
+    const need = new Set<string>()
+    for (const arr of Object.values(ch0.etMaDe ?? {})) for (const m of arr) if (m && !cMap[m]) need.add(m)
+    if (need.size) { const vs = await fetchCausByMa([...need], khoCuaMon(full.taiLieu.mon).cauTbl); for (const v of vs) cMap[v.ma_cau] = v }
+    setCau(cMap)
+    setCh(ch0)
+    const r: Row[] = caus.map((c) => ({ maDang: c.dang_chinh, maCau: c.ma_cau }))
+    while (r.length < DEFAULT_ROWS) r.push({ maDang: null, maCau: null })
+    setRows(r)
+  }
+
   async function loadBase() {
     setLoading(true)
     try {
       setLops(await listLop())
-      if (et) {
-        const full = await getTaiLieuFull(et.id)
-        const caus = full.phans.find((p) => p.loai_phan === 'custom')?.caus ?? []
-        const cMap: Record<string, CauHoi> = Object.fromEntries(caus.map((c) => [c.ma_cau, c]))
-        const ch0 = full.taiLieu.cau_hinh ?? {}
-        // Nạp thêm nội dung câu MÃ ĐỀ 2/3 (etMaDe) — trên chỉ nạp câu GỐC (phan.caus) nên mở lại ET cũ,
-        // cột Mã đề 2/3 chỉ thấy MÃ câu, không thấy đề (chỉ "…") dù dữ liệu vẫn còn nguyên trong cau_hinh.
-        const need = new Set<string>()
-        for (const arr of Object.values(ch0.etMaDe ?? {})) for (const m of arr) if (m && !cMap[m]) need.add(m)
-        if (need.size) { const vs = await fetchCausByMa([...need], khoCuaMon(full.taiLieu.mon).cauTbl); for (const v of vs) cMap[v.ma_cau] = v }
-        setCau(cMap)
-        setCh(ch0)
-        const r: Row[] = caus.map((c) => ({ maDang: c.dang_chinh, maCau: c.ma_cau }))
-        while (r.length < DEFAULT_ROWS) r.push({ maDang: null, maCau: null })
-        setRows(r)
-      }
+      if (et) await fillFromET(et.id)
     } catch (e: any) { setErr(e.message ?? String(e)) } finally { setLoading(false) }
   }
   useEffect(() => { loadBase() }, []) // eslint-disable-line
+
+  // ── AUTO-LOAD ET có sẵn (Thùy 08-07): tạo mới, chọn (lớp+ngày) mà buổi đó ĐÃ có ET → tự nạp lại để khỏi
+  // soạn lại + lấy lại "3 mã đề" cho việc chia mã theo HS. Set savedId = doc cũ → Lưu là UPDATE (không đẻ
+  // trùng). GIỮ AN TOÀN: KHÔNG đè khi đang có nội dung tự soạn CHƯA lưu (rows có câu mà savedId null) — chỉ
+  // nạp khi form còn trống hoặc đang xem 1 doc đã lưu (đổi ngày giữa các ET đã lưu). autoRef chặn lặp/vòng.
+  const autoRef = useRef<string>('')
+  useEffect(() => {
+    if (et) return                                   // sửa từ Kho → không auto
+    if (!lopId || !ngay) return
+    const key = lopId + '|' + ngay
+    if (autoRef.current === key) return
+    if (rows.some((r) => r.maCau) && !savedId) return // có nội dung chưa lưu → đừng đè
+    autoRef.current = key
+    let alive = true
+    ;(async () => {
+      const doc = await getETByBuoi(lopId, ngay)
+      if (!alive || !doc || doc.id === savedId) return
+      await fillFromET(doc.id)
+      if (!alive) return
+      setSavedId(doc.id)
+      setFlash('Đã nạp ET có sẵn của buổi này — sửa rồi Lưu để cập nhật (3 mã đề & gán HS giữ nguyên).')
+    })().catch((e) => { if (alive) setErr(e?.message ?? String(e)) })
+    return () => { alive = false }
+  }, [lopId, ngay]) // eslint-disable-line
   // Giữ NHÁP ET tạo-mới vào store mỗi khi state đổi → rời màn rồi quay lại KHÔNG mất. Form rỗng → xoá nháp.
   useEffect(() => {
     if (et) return

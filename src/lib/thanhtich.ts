@@ -38,15 +38,19 @@ export const currentMua = () => seasonOf(vnTodayStr())
 export type LevelXu = { mua: string; level: number; levelMax: number; xu: number; expThang: number; xuKe: number | null; expKeMoc: number | null }
 export async function getLevelXu(hocSinhId: string, mon: string): Promise<LevelXu> {
   const mua = seasonOf(vnTodayStr())
+  const ym = vnTodayStr().slice(0, 7) // tháng VN hiện tại 'YYYY-MM' = tháng EXP thuộc về
   const [dt, exp, bac] = await Promise.all([
     supabase.from('diem_thi').select('verdict, ky_thi:ky_thi_id(he_so, mon, mua)').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
-    // LOẠI legacy rank_*/btvn (mô hình cũ thay bằng exp_thang; legacy mùa cũ đóng-muộn có thể lọt window created_at).
-    supabase.from('gami_exp_ledger').select('amount').eq('hoc_sinh_id', hocSinhId).eq('mon', mon).gte('created_at', monthStartUtcISO()).not('source', 'in', '(rank_et,rank_ingame,rank_mt,btvn)').limit(LIMIT),
+    // ⚠ EXP THÁNG key theo `note`=ym, KHÔNG theo created_at: recompute có thể chạy ở tháng khác (reset đầu mùa
+    // recompute tháng cũ ĐÚNG NGÀY 1 tháng mới) → dòng note tháng trước có created_at tháng này sẽ lọt window
+    // created_at. exp_thang lọc note===ym; attend_floor (bù, no note, sinh 1 lần) lọc created_at. Vẫn loại legacy rank_*/btvn.
+    supabase.from('gami_exp_ledger').select('amount, source, note, created_at').eq('hoc_sinh_id', hocSinhId).eq('mon', mon).in('source', ['exp_thang', 'attend_floor']).limit(LIMIT),
     supabase.from('luong_bac').select('min_exp, xu').order('min_exp', { ascending: true }).limit(LIMIT),
   ])
   let level = 0
   for (const r of (dt.data ?? []) as any[]) { const k = r.ky_thi; if (k && k.mon === mon && k.mua === mua) level += verdictPoint(r.verdict, k.he_so) }
-  const expThang = ((exp.data ?? []) as any[]).reduce((s, x) => s + Number(x.amount), 0)
+  const monthStart = monthStartUtcISO()
+  const expThang = ((exp.data ?? []) as any[]).reduce((s, x) => s + ((x.source === 'exp_thang' ? x.note === ym : x.created_at >= monthStart) ? Number(x.amount) : 0), 0)
   const bacs = (bac.data ?? []) as LuongBac[]
   let xu = 0, xuKe: number | null = null, expKeMoc: number | null = null
   for (let i = 0; i < bacs.length; i++) {
@@ -109,10 +113,30 @@ export async function upsertDiemThi(d: { kyThiId: string; hocSinhId: string; die
 // kỳ thi). KHÔNG ảnh hưởng query khác: mastery.ts/thanhtich.ts đọc ky_thi qua (mon, mua, loai) — buoi_hoc_id
 // chỉ là liên kết PHỤ để tab MT tự tìm lại đúng kỳ thi của buổi, không đổi cách các nơi khác truy vấn.
 export async function getOrCreateKyThiMTChoBuoi(buoiId: string, ten: string, mon: string, khoi: string | null, mua: string): Promise<KyThi> {
-  const { data: existing, error: e1 } = await supabase.from('ky_thi').select('*').eq('buoi_hoc_id', buoiId).eq('loai', 'mt_sat_hach').limit(1)
-  if (e1) throw e1
-  if (existing?.[0]) return existing[0] as KyThi
-  return createKyThi({ ten, loai: 'mt_sat_hach', he_so: HE_SO_KY_THI.mt_sat_hach, dot: null, ngay: null, mon, khoi, mua, buoi_hoc_id: buoiId })
+  // ⚠ BUG 08-07 (Thùy: "điểm MT chưa lưu được"): "tìm-hoặc-tạo" NÀY KHÔNG an-toàn-race — check-rồi-insert
+  // KHÔNG nguyên tử + KHÔNG unique index trên (buoi_hoc_id) where loai='mt_sat_hach'. Hai lần gọi ĐỒNG THỜI
+  // (StrictMode dev double-fire useEffect, hoặc 2 tab/2 người mở cùng buổi) đều SELECT thấy rỗng rồi cùng
+  // INSERT → 2 ky_thi TRÙNG cho 1 buổi (đã thấy thật: buổi 9S1 07-08 có 2 kỳ). Kèm theo `.limit(1)` KHÔNG
+  // `order` → mỗi lần đọc trả kỳ BẤT KỲ trong 2 kỳ: điểm nhập vào kỳ A, lần mở sau đọc trúng kỳ B (rỗng)
+  // ⇒ "điểm chưa lưu". FIX (không xoá data): đọc DETERMINISTIC theo `created_at asc` — read & write LUÔN
+  // hội tụ về ĐÚNG 1 kỳ (cũ nhất). Bản trùng mới (nếu lỡ đẻ) thành kỳ chết vô hại, không bao giờ được đọc/ghi.
+  // (Chặn đẻ trùng tận gốc = unique partial index — cần migration + dedup bản cũ, làm riêng.)
+  const read = async () => {
+    const { data, error } = await supabase.from('ky_thi').select('*')
+      .eq('buoi_hoc_id', buoiId).eq('loai', 'mt_sat_hach').order('created_at', { ascending: true }).limit(1)
+    if (error) throw error
+    return (data?.[0] as KyThi | undefined) ?? null
+  }
+  const found = await read()
+  if (found) return found
+  try {
+    return await createKyThi({ ten, loai: 'mt_sat_hach', he_so: HE_SO_KY_THI.mt_sat_hach, dot: null, ngay: null, mon, khoi, mua, buoi_hoc_id: buoiId })
+  } catch (e: any) {
+    // Race: lần gọi kia đã INSERT trước → unique index `ky_thi_mt_1_per_buoi` (mig 202608071759) chặn INSERT
+    // của mình (23505). KHÔNG còn đẻ trùng như xưa — chỉ cần đọc lại kỳ vừa được tạo mà trả về (idempotent).
+    if (e?.code === '23505') { const again = await read(); if (again) return again }
+    throw e
+  }
 }
 
 // ── ĐIỂM THI TRÊN TRƯỜNG (pivot, tab riêng trong Kết quả học tập) — mỗi HS × 4 đợt (GK1/GK2/CK1/CK2),

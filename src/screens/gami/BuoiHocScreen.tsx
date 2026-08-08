@@ -1492,7 +1492,12 @@ function DiemMTPanel({ buoiId, buoi, coMat, tenHT }: { buoiId: string; buoi: Buo
     if (!ky) return
     const diem = tinhDiemMT(p.coBan, p.nangCao, p.full)
     const verdict = verdictTuDiem(diem)   // tự suy từ điểm (màn MT bỏ chọn verdict tay)
-    await upsertDiemThi({ kyThiId: ky.id, hocSinhId: hsId, diem, bandLucThi: null, verdict, vuotBand: false, coBan: p.coBan, nangCao: p.nangCao, full: p.full })
+    // ⚠ 08-07: trước đây gọi từ onBlur KHÔNG await/try-catch → upsert lỗi là unhandled rejection, NUỐT lặng
+    // (user thấy điểm hiện trên màn = state cục bộ nhưng KHÔNG vào DB, tưởng đã lưu). Giờ báo lỗi rõ + chỉ
+    // cập nhật state khi lưu THẬT thành công (anti-NULL: state phản ánh đúng DB).
+    try {
+      await upsertDiemThi({ kyThiId: ky.id, hocSinhId: hsId, diem, bandLucThi: null, verdict, vuotBand: false, coBan: p.coBan, nangCao: p.nangCao, full: p.full })
+    } catch (e: any) { alert('Lưu điểm MT lỗi: ' + (e?.message ?? String(e))); return }
     setDiems((prev) => [...prev.filter((d) => d.hoc_sinh_id !== hsId), { ky_thi_id: ky.id, hoc_sinh_id: hsId, diem, band_luc_thi: null, verdict, vuot_band: false, diem_co_ban: p.coBan, diem_nang_cao: p.nangCao, full_diem: p.full }])
   }
 

@@ -564,9 +564,12 @@ function ChuoiDoiDinhPopup({ L, chuoi, onClose, onDone }: {
       }))
       const res = await api.doiDinhChuoiHinh(cau, ghiChu)
       if (res.length !== selected.length) throw new Error(`AI trả ${res.length}/${selected.length} câu — thử lại hoặc bớt câu.`)
+      const selIds = new Set(selected.map((b) => b.id))
       const items = selected.map((bt, i) => ({
         baitoan_id: bt.id, de_bai: res[i].de_bai, anh: api.anhCuaBaiToan(L, bt.id),
         loi_giai: res[i].loi_giai || null, anh_loi_giai: api.cachMacDinh(L, bt.id)?.anh_loi_giai ?? null,
+        // Tiền đề bài-tầng ĐÓNG BĂNG: node-tiền-đề TRỰC TIẾP của bt mà CŨNG nằm trong lứa (đã tick).
+        tienDeBaiToanIds: api.tienDeCua(L, bt.id).filter((id) => selIds.has(id)),
       }))
       await api.saveLuaBienThe(items)
       alert(`Đã tạo lứa ${items.length} biến thể đổi đỉnh (cùng một bộ điểm). Nhớ sửa nhãn điểm trên hình từng câu cho khớp.`)
