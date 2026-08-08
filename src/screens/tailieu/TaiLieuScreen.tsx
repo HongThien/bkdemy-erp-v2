@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../lib/kho/api'
 import { listTaiLieu, createTaiLieu, deleteTaiLieu, type TaiLieu } from '../../lib/tailieu'
 import { useStore } from '../../store/useStore'
+import { useMonScope } from '../../lib/mon'
 import { Shell, Field, inp } from '../kho/ui'
 import TaiLieuBuilder from './TaiLieuBuilder'
 
@@ -25,13 +26,13 @@ export default function TaiLieuScreen() {
   const [openId, setOpenId] = useState<string | null>(null)
   const [q, setQ] = useState('')
   const [sort, setSort] = useState<'moi' | 'ten'>('moi')
-  // Scope MÔN: admin = mọi môn có kho; staff = môn được phân (∩ môn-có-kho).
+  // Scope④ MÔN (useMonScope): admin/Ops/Media/Marketing = mọi môn có kho; staff = môn được phân ∩ môn-có-kho.
   const me = useStore((s) => s.me)
-  const laAdmin = !!useStore((s) => s.quyen)?.laAdmin
-  const allowedMons = laAdmin ? KHO_MON : (me?.mons ?? []).filter((m) => KHO_MON.includes(m))
+  const { allowedMons: monScope, isAll } = useMonScope()
+  const allowedMons = isAll ? KHO_MON : monScope.filter((m) => KHO_MON.includes(m))
   const [mon, setMon] = useState<string>('')
   useEffect(() => { if (allowedMons.length && !allowedMons.includes(mon)) setMon(allowedMons[0]) }, [allowedMons.join(','), mon])
-  const profileLoading = !laAdmin && me === null
+  const profileLoading = !isAll && me === null
 
   async function reload() {
     if (!mon) { setList([]); setLoading(false); return }

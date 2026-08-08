@@ -5,6 +5,7 @@
 // Phạm vi hiện tại: soạn + gán buổi. Chấm MT trong buổi (Đ/C/S, đóng phase, Elo K=60) = lượt sau.
 import { useEffect, useState } from 'react'
 import { useStore } from '../../store/useStore'
+import { useMonScope } from '../../lib/mon'
 import {
   listMT, createMT, renameMT, deleteMT, addPhanMT, ganMTVaoBuoi, listGanMT,
   type MTGanRow,
@@ -31,9 +32,8 @@ const loaiLabel = (v: string) => LOAI_CAU.find((x) => x.value === v)?.label ?? v
 
 // ═══════════ LIST (leaf lamtailieu:mt) — chọn MT để sửa / tạo mới ═══════════
 export default function MTScreen() {
-  const me = useStore((s) => s.me)
-  const laAdmin = !!useStore((s) => s.quyen)?.laAdmin
-  const allowedMons = laAdmin ? MONS : MONS.filter((m) => (me?.mons ?? []).includes(m))
+  const { allowedMons: monScope, isAll } = useMonScope()  // scope④ (admin/Ops/Media/Marketing = tất cả)
+  const allowedMons = isAll ? MONS : MONS.filter((m) => monScope.includes(m))
   const [mon, setMon] = useState(allowedMons[0] ?? 'Toán')
   useEffect(() => { if (allowedMons.length && !allowedMons.includes(mon)) setMon(allowedMons[0]) }, [allowedMons.join(',')]) // eslint-disable-line
   const [list, setList] = useState<Awaited<ReturnType<typeof listMT>>>([])

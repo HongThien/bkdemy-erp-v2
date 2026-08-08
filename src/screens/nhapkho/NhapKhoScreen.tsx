@@ -2,7 +2,7 @@
 // 1 người làm full luồng 1 phiên → giữ ở client-state (KHÔNG draft table). Duyệt TỪNG câu chiếm màn.
 // Hiển thị PREVIEW-FIRST (render công thức); bấm ✎ Sửa mới ra code LaTeX.
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { useStore } from '../../store/useStore'
+import { useMonScope } from '../../lib/mon'
 import { fileToCanvases, canvasToJpegBase64, cropCanvasBox } from '../../lib/pdfRender'
 import { MathText, inp, readClipboardImageFile } from '../kho/ui'
 import { CauEditor, type ReviewItem } from '../kho/DangHub'
@@ -55,9 +55,8 @@ type RItem = {
 }
 
 function NhapChuyenDe() {
-  const me = useStore((s) => s.me)
-  const laAdmin = !!useStore((s) => s.quyen)?.laAdmin
-  const allowed = laAdmin ? MONS.map((m) => m.key) : MONS.filter((m) => (me?.mons ?? []).includes(m.label)).map((m) => m.key)
+  const { allowedMons, isAll } = useMonScope()  // scope④ (admin/Ops/Media/Marketing = tất cả)
+  const allowed = MONS.filter((m) => isAll || allowedMons.includes(m.label)).map((m) => m.key)
   const [mon, setMon] = useState<KhoMon>('toan')
   useEffect(() => { if (allowed.length && !allowed.includes(mon)) setMon(allowed[0]) }, [allowed.join(',')]) // eslint-disable-line
 

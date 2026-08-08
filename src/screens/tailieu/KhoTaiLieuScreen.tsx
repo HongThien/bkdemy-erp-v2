@@ -6,6 +6,7 @@ import { phatHanhTest, PHAT_HANH_DUOC } from '../../lib/testonline'
 import { listLinkGenJobs, type LinkGenJobRow } from '../../lib/linkgen'
 import { listLop, type Lop } from '../../lib/nhansu'
 import { useStore } from '../../store/useStore'
+import { useMonScope } from '../../lib/mon'
 import PrintView from './PrintView'
 import ETPrintView from './ETPrintView'
 import DeThiPrintView from './DeThiPrintView'
@@ -35,9 +36,7 @@ export default function KhoTaiLieuScreen() {
   const [q, setQ] = useState('')
   const [loai, setLoai] = useState<string>('__all__')
   const [monF, setMonF] = useState<string>('__all__')
-  const me = useStore((s) => s.me)
-  const laAdmin = !!useStore((s) => s.quyen)?.laAdmin
-  const myMons = me?.mons ?? []
+  const { allowedMons: myMons, isAll: laAdmin } = useMonScope()
   // Trạng thái gen-link ĐỜI 2: đọc từ bảng `linkgen_jobs` (worker server xử lý — xem lib/linkgen.ts),
   // KHÔNG còn từ store client. Poll nhẹ khi đang mở màn để nhãn "⏳ đang tạo…" tự đổi thành link.
   const [linkJobs, setLinkJobs] = useState<LinkGenJobRow[]>([])
@@ -108,8 +107,11 @@ export default function KhoTaiLieuScreen() {
     if (r.file_url) copyLink(r.file_url, r.id)
   }
 
-  // Scope MÔN: GV/Học-thuật có môn → chỉ tài liệu môn mình; admin / không-gán-môn (Media/Marketing) → thấy tất.
-  const visibleRows = useMemo(() => (laAdmin || myMons.length === 0) ? rows : rows.filter((r) => myMons.includes(r.mon)), [rows, laAdmin, myMons])
+  // Scope④ MÔN (useMonScope): admin/Ops/Media/Marketing thấy tất (liên-môn theo BIÊN CHẾ TEAM); GV/Học-
+  // thuật/TG chỉ tài liệu môn mình — STRICT (chưa gán môn nào = KHÔNG thấy môn nào). Trước đây suy cross-
+  // môn từ "myMons rỗng" là BUG: đúng cho Media/Marketing (họ vốn không gán môn) nhưng SAI cho ai khác lỡ
+  // chưa được gán môn (leak thấy hết thay vì thấy rỗng) — giờ cross-môn suy từ TEAM, không suy từ rỗng.
+  const visibleRows = useMemo(() => laAdmin ? rows : rows.filter((r) => myMons.includes(r.mon)), [rows, laAdmin, myMons])
   const monsCo = useMemo(() => [...new Set(visibleRows.map((r) => r.mon).filter(Boolean))].sort(), [visibleRows])
   const loais = useMemo(() => [...new Set(visibleRows.map((r) => r.loai))], [visibleRows])
   const shown = visibleRows

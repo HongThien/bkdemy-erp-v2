@@ -1,6 +1,7 @@
 import { Fragment, useEffect, useState } from 'react'
 import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../lib/kho/api'
 import { useStore } from '../../store/useStore'
+import { useMonScope } from '../../lib/mon'
 import BanDo from './BanDo'
 import SearchCau from './SearchCau'
 import KhoRac from './KhoRac'
@@ -32,13 +33,14 @@ export default function KhoScreen() {
   const [timCau, setTimCau] = useState(false)
   const [rac, setRac] = useState(false)   // kho rác — câu đã xoá, vẫn resolve được cho tài liệu cũ
 
-  // Scope④ THEO MÔN: admin hệ thống thấy tất; người khác chỉ thấy môn được phân (nhan_su_mon). Chưa gán → không thấy môn nào.
+  // Scope④ THEO MÔN (dùng chung useMonScope — xem lib/mon.ts): admin + Ops thấy tất; người khác chỉ thấy
+  // môn được phân (nhan_su_mon). Chưa gán → không thấy môn nào.
   const me = useStore((s) => s.me)
-  const laAdmin = !!useStore((s) => s.quyen)?.laAdmin
-  const allowed = laAdmin ? MON_TABS.map((t) => t.key) : MON_TABS.filter((t) => (me?.mons ?? []).includes(t.label)).map((t) => t.key)
+  const { allowedMons, isAll } = useMonScope()
+  const allowed = MON_TABS.filter((t) => isAll || allowedMons.includes(t.label)).map((t) => t.key)
   // Nếu môn đang chọn không được phép → nhảy về môn đầu tiên được phép.
   useEffect(() => { if (allowed.length && !allowed.includes(mon)) setMon(allowed[0]) }, [allowed.join(','), mon])
-  const profileLoading = !laAdmin && me === null  // chưa load hồ sơ → chưa biết môn
+  const profileLoading = !isAll && me === null  // chưa load hồ sơ → chưa biết môn
 
   return (
     <div className="flex h-full flex-col bg-[#fafafb]">

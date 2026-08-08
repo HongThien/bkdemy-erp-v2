@@ -3602,3 +3602,34 @@ tsc + vite build sạch mọi bước. Dev pane phiên 0×0 → nhờ Thùy `npm
   đóng-băng để render). `ChonChuoiPopup` (thẻ chọn-bản) = list câu phẳng, không có ẩn/bước → không đụng.
 - **Còn (chưa làm):** áp migration `202608071400`+`202608031000` lên DB → `npm run schema` → commit schema.md ·
   đổi-đỉnh chưa relabel `gia_thiet_phu`/van cho lứa (giả thiết phụ lứa vẫn nhãn đỉnh gốc — cần đóng băng/relabel sau).
+
+## 2026-08-08 (tiếp) — Brainstorm "Làm tài liệu Hình" + centralize scope④ gate theo môn (toàn hệ)
+- **Brainstorm kiến trúc (Thùy hỏi "vì sao soạn tài liệu Hình khác Đại"):** đúng — chỉ khác THẬT ở "chọn nội
+  dung buổi" (Đại = dạng+least-used; Hình = node-tick-trên-cây+bản/lứa, §1 spec-kho-hinh-soan-chuoi cấm bê
+  least-used). Mọi thứ khác (thư viện, model buổi, trích xuất/gán lớp, kho-tài-liệu-tổng, nháp giữ, in
+  paged.js) ĐÁNG LẼ giống — hiện bất đối xứng chỉ vì soạn Hình co-develop NGAY TRONG rail KhoHinhScreen
+  (bồi tụ, không phải quyết định kiến trúc). **Thùy chốt Hướng A: 1 hub "Làm tài liệu" duy nhất, công tắc
+  MÔN → NHÁNH** (không phải 2 cửa rời B). Chưa code hub — còn dở luồng soạn Hình (spec §6 hợp nhất node-lẻ+
+  chuỗi) nên dời bóc-hub tới lúc làm nốt §6, tránh churn 2 lần. `SoanTaiLieu`/`GiaoTrinhScreen` NHẬN `L` như
+  input → đã decouple tầng component, bóc rẻ.
+- **⭐ Thùy hỏi tiếp "sao vẫn thấy KHTN" → phát hiện scope④ (gate kho/tài liệu theo `nhan_su_mon`) mới cắm
+  ĐÚNG 6 màn, mỗi màn TỰ VIẾT TAY bản sao-dán LỆCH NHAU** (đúng bài học §2 "sao chép dán lệch dần"):
+  4/6 màn (KhoTaiLieuScreen/NhapKhoScreen/DeThiScreen/MTScreen/TaiLieuScreen — nhầm, 5/6) THIẾU HẲN bypass
+  Ops; `KhoTaiLieuScreen` còn 1 **BUG THẬT**: coi "chưa gán môn" = "thấy TẤT CẢ" (ngược strict-deny mig 0056)
+  — đúng cho Media/Marketing (vốn không gán môn, cần browse mọi môn — comment cũ ghi rõ) nhưng **leak cho
+  BẤT KỲ ai khác lỡ chưa được gán môn** (thấy hết thay vì thấy rỗng).
+- **Thùy chốt:** gate theo môn = luật TOÀN HỆ (không riêng hub mới) · cross-môn CHỈ admin + Ops · GV/Học-
+  thuật/TG **luôn** scope chặt theo môn · hỏi thêm riêng Media/Marketing → **"coi như 1 kiểu ops"** (cross-môn,
+  KHÔNG strict-deny dù không gán `nhan_su_mon`).
+- **Fix:** `useMonScope()` (`lib/mon.ts`, 1 nguồn) = `{allowedMons, isAll, allowed(mon)}`; cross-môn suy từ
+  **TEAM** (`ma ∈ {ops, media, marketing}`) + `laAdmin`, KHÔNG suy từ "mons rỗng" (nguồn gốc bug leak). Quét
+  lại 6 màn dùng hook chung: `KhoScreen` (Bản đồ kiến thức) · `KhoTaiLieuScreen` (kho tổng, fix bug leak) ·
+  `NhapKhoScreen` (nhập chuyên đề AI) · `DeThiScreen`/`MTScreen`/`TaiLieuScreen` (list giáo trình/đề thi/MT).
+  tsc sạch (1 import `useStore` thừa ở NhapKhoScreen sau khi bỏ laAdmin thủ công — xoá).
+- **⚠ CÒN 1 lỗ thật, chưa vá (spec/đích tách biệt việc-vá):** `ETScreen.tsx` (tạo/sửa ET) **KHÔNG gate theo
+  môn** — môn suy từ `lop_id` chọn qua SearchSelect, KHÔNG rõ list lớp đó có tự lọc theo `nhan_su_mon` của
+  người tạo hay không (chưa verify). Khác cơ chế "tab chọn môn" của 6 màn kia (chọn LỚP → suy môn ngược,
+  không chọn môn xuôi) → sửa phải soi tận nguồn list lớp của SearchSelect, không phải chỗ mở rộng nhanh.
+  Để riêng, chưa đụng.
+- Test: chỉ soi diff + tsc (không có preview server chạy phiên này). Không đụng `PrintView.tsx`/`bkPrint.tsx`
+  — phiên song song đang sửa 2 file đó (Đại giáo trình print, paged.js overflow fix).

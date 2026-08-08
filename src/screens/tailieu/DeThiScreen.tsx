@@ -10,6 +10,7 @@
 // vẫn giữ, dùng để bổ sung câu sau này.
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useStore } from '../../store/useStore'
+import { useMonScope } from '../../lib/mon'
 import {
   listDeThi, createDeThi, renameDeThi, deThiMeta, updateDeThiMeta, attachPdfGoc,
   addPhanDeThi, getPhanCauList, type DeThi, type DeThiMeta,
@@ -36,9 +37,8 @@ const readB64 = (f: File) => new Promise<string>((res, rej) => { const r = new F
 
 // ═══════════ LIST (leaf lamtailieu:de_thi) — chọn đề để sửa / tạo mới ═══════════
 export default function DeThiScreen() {
-  const me = useStore((s) => s.me)
-  const laAdmin = !!useStore((s) => s.quyen)?.laAdmin
-  const allowedMons = laAdmin ? MONS : MONS.filter((m) => (me?.mons ?? []).includes(m))
+  const { allowedMons: monScope, isAll } = useMonScope()  // scope④ (admin/Ops/Media/Marketing = tất cả)
+  const allowedMons = isAll ? MONS : MONS.filter((m) => monScope.includes(m))
   const [mon, setMon] = useState(allowedMons[0] ?? 'Toán')
   useEffect(() => { if (allowedMons.length && !allowedMons.includes(mon)) setMon(allowedMons[0]) }, [allowedMons.join(',')]) // eslint-disable-line
   const [list, setList] = useState<DeThi[]>([])
