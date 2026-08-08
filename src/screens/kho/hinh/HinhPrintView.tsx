@@ -134,11 +134,18 @@ export default function HinhPrintView({ ban, onClose }: { ban: BanIn; onClose: (
 
 function Noi({ ban, gv }: { ban: BanIn; gv: boolean }) {
   let soDe = 0
+  // Masthead — khuôn "mới nhất" bên Đại (gtbk-mh, commit redesign BK 08-08): khung gradient bo góc +
+  // vạch trái cầu vồng + logo thật + tiêu đề. Namespace RIÊNG `hpmh-*` (không đụng `.gtbk-*` của Đại —
+  // PrintView.tsx đang sửa dở phiên khác). BỎ huy hiệu tròn "Buổi N" của Đại: Hình không có số buổi tách
+  // bạch sẵn ở MỌI nơi gọi (Kho tài liệu chỉ có tên ghép sẵn) — snapshot đơn giản hoá, xem DEVLOG.
+  const logoUrl = location.origin + '/Logo.png'
   return (
     <div>
-      <div className="hp-cover">
-        <div className="hp-title">{ban.tieuDe}</div>
-        {ban.phuDe && <div className="hp-sub">{ban.phuDe}</div>}
+      <div className="hpmh">
+        <div className="hpmh-grid" />
+        <div className="hpmh-brand"><img className="hpmh-logo" src={logoUrl} alt="BK Academy" /></div>
+        <h1 className="hpmh-title">{ban.tieuDe}</h1>
+        {ban.phuDe && <div className="hpmh-sub">{ban.phuDe}</div>}
       </div>
       {ban.ghiChuDau && <div className="hp-note">{ban.ghiChuDau}</div>}
 
@@ -203,10 +210,17 @@ function Noi({ ban, gv }: { ban: BanIn; gv: boolean }) {
 }
 
 // CSS nội dung bản Hình. Nối SAU buildPagedCss nên ghi đè được phần chung khi cần.
+const HP_SANS = "'Noto Sans','Segoe UI',Arial,sans-serif"
 const HINH_CSS = `
-.hp-cover{text-align:center;padding-bottom:12px;margin:6mm 0 14px;border-bottom:2px solid #0f766e}
-.hp-title{font-size:24px;font-weight:800;color:#134e4a}
-.hp-sub{color:#6b7280;font-size:12.5px;margin-top:4px}
+/* Masthead — khuôn "mới nhất" bên Đại (gtbk-mh), namespace RIÊNG hpmh-* (xem comment ở Noi()). */
+.hpmh{position:relative;overflow:hidden;margin:2mm 0 5mm;min-height:26mm;padding:5mm 6mm;border:1px solid #dbe7f4;border-radius:5mm;background:linear-gradient(112deg,#f5fbff 0%,#f8fbff 42%,#fff7fb 100%);break-inside:avoid;break-after:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.hpmh:before{content:"";position:absolute;left:0;top:0;bottom:0;width:2.3mm;background:linear-gradient(180deg,#1997d4 0%,#18a889 36%,#f0a63b 68%,#e83483 100%);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.hpmh:after{content:"";position:absolute;right:-10mm;top:-16mm;width:62mm;height:62mm;border-radius:50%;border:9mm solid rgba(25,151,212,.055);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.hpmh-grid{position:absolute;right:8mm;top:4mm;width:43mm;height:20mm;opacity:.16;background-image:radial-gradient(#53739c 1px,transparent 1px);background-size:5px 5px;transform:rotate(-5deg);z-index:0}
+.hpmh-brand{position:relative;z-index:3;margin-bottom:3mm}
+.hpmh-logo{height:6.5mm;width:auto;display:block}
+.hpmh-title{position:relative;z-index:3;margin:0;font-family:${HP_SANS};font-size:21pt;line-height:1.1;letter-spacing:-.03em;color:#142744;font-weight:900}
+.hpmh-sub{position:relative;z-index:3;margin-top:1.8mm;font-family:${HP_SANS};font-size:9.6pt;color:#6a7a93;font-weight:600}
 .hp-note{background:#fffaf1;border:1px solid #f0c987;border-radius:8px;padding:8px 11px;font-size:14px;color:#8a5a12;margin-bottom:12px}
 .hp-chuong{background:#e6f5f1;border:1px solid #5eccb0;border-radius:8px;padding:9px 12px;margin:14px 0 8px;break-inside:avoid;break-after:avoid}
 .hp-chuong-t{font-weight:800;color:#0f6e56;font-size:17px}

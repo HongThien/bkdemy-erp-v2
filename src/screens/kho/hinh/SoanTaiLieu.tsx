@@ -419,7 +419,12 @@ export function BuoiPickEditor({ L, picks, anDe, soDong, onChangePicks, onChange
     onChangePicks([...picks.filter((p) => !(p.phan === phan && p.nodeIds.every((id) => ids.has(id)))), ...news])
   }
   const toggleAnDe = (key: string) => onChangeAnDe(anDe.includes(key) ? anDe.filter((k) => k !== key) : [...anDe, key])
-  const setSoDongOne = (key: string, n: number) => { const m = { ...soDong }; if (n > 0) m[key] = n; else delete m[key]; onChangeSoDong(m) }
+  // Áp 1 số dòng cho NHIỀU bài 1 lượt (cả chuỗi) — thay setSoDongOne cũ (per-ý, Thùy: không cần nữa).
+  const setSoDongChuoi = (keys: string[], n: number) => {
+    const m = { ...soDong }
+    for (const k of keys) { if (n > 0) m[k] = n; else delete m[k] }
+    onChangeSoDong(m)
+  }
 
   const components = useMemo(() => {
     const seen = new Set<string>(); const comps: BaiToan[][] = []
@@ -465,8 +470,9 @@ export function BuoiPickEditor({ L, picks, anDe, soDong, onChangePicks, onChange
         {!nodes.length
           ? <Empty icon="◇">Kho khối này chưa có node nào. Tạo node ở <b>Sơ đồ</b> trước.</Empty>
           : components.map((comp) => (
-              <ChuoiRow key={comp.map((b) => b.id).join(',')} L={L} chuoi={comp} picks={picks}
-                onAdd={addPick} onUpdate={updatePick} onRemove={removePick} onGoiY={(phan, n) => goiY(comp, phan, n)} />
+              <ChuoiRow key={comp.map((b) => b.id).join(',')} L={L} chuoi={comp} picks={picks} anDe={anDe} soDong={soDong}
+                onAdd={addPick} onUpdate={updatePick} onRemove={removePick} onToggleAnDe={toggleAnDe} onSetSoDongChuoi={setSoDongChuoi}
+                onGoiY={(phan, n) => goiY(comp, phan, n)} />
             ))}
       </div>
 
@@ -475,9 +481,9 @@ export function BuoiPickEditor({ L, picks, anDe, soDong, onChangePicks, onChange
           ? <div className="text-[12.5px] text-slate-400">— chưa chọn bài nào —</div>
           : (
             <>
-              <PhieuList nhan="📘 Trên lớp" ton="lop" picks={picksLop} L={L} onRemove={removePick} anDe={anDe} onToggleAnDe={toggleAnDe} soDong={soDong} onSetSoDong={setSoDongOne} />
+              <PhieuList nhan="📘 Trên lớp" ton="lop" picks={picksLop} L={L} onRemove={removePick} />
               <div className="my-2 border-t border-slate-100" />
-              <PhieuList nhan="📝 Về nhà" ton="nha" picks={picksNha} L={L} onRemove={removePick} anDe={anDe} onToggleAnDe={toggleAnDe} soDong={soDong} onSetSoDong={setSoDongOne} />
+              <PhieuList nhan="📝 Về nhà" ton="nha" picks={picksNha} L={L} onRemove={removePick} />
             </>
           )}
         <div className="mt-2 flex gap-3 border-t border-slate-100 pt-2 text-[12px]">
@@ -622,9 +628,14 @@ async function goiYChuoi(chuoi: BaiToan[], phan: 'lop' | 'nha', n: number): Prom
 
 // ── Một CHUỖI (= 1 DẠNG, cùng logic tiền đề) — hiện 1 lần, kể cả chuỗi 1 câu (câu lẻ = chuỗi 1 node,
 // CÙNG cơ chế — Thùy chốt 08-08). Mỗi phiếu: N + Gợi ý (auto) hoặc ＋ Thêm bài (thủ công, lặp lại được). ──
-function ChuoiRow({ L, chuoi, picks, onAdd, onUpdate, onRemove, onGoiY }: {
-  L: Luoi; chuoi: BaiToan[]; picks: PickItem[]
+// ⭐ Ẩn/hiện hình + số dòng kẻ giờ nằm ở ĐÂY (card CHÍNH — Thùy chốt) — KHÔNG ở PhieuList/Tóm tắt (card
+// phụ) nữa. Số dòng chỉnh 1 LẦN CHO CẢ CHUỖI (áp hết mọi bài Về nhà đang có của chuỗi này), KHÔNG theo
+// từng ý riêng — khuôn `ApplyLinesAll` Đại (gõ số → Enter/blur ghi đè hết, vẫn thêm bài mới sau đó bình
+// thường với số dòng vừa áp làm giá trị chung).
+function ChuoiRow({ L, chuoi, picks, anDe, soDong, onAdd, onUpdate, onRemove, onToggleAnDe, onSetSoDongChuoi, onGoiY }: {
+  L: Luoi; chuoi: BaiToan[]; picks: PickItem[]; anDe: string[]; soDong: Record<string, number>
   onAdd: (p: PickItem) => void; onUpdate: (key: string, p: PickItem) => void; onRemove: (key: string) => void
+  onToggleAnDe: (key: string) => void; onSetSoDongChuoi: (keys: string[], n: number) => void
   onGoiY: (phan: 'lop' | 'nha', n: number) => void
 }) {
   const chuoiIds = useMemo(() => new Set(chuoi.map((b) => b.id)), [chuoi])
@@ -653,20 +664,27 @@ function ChuoiRow({ L, chuoi, picks, onAdd, onUpdate, onRemove, onGoiY }: {
                   <Btn className="h-6 px-2 text-[11px]" onClick={() => onGoiY(phan, nInput[phan])}>↻ Gợi ý</Btn>
                 </span>
                 <Btn className="h-6 px-2 text-[11px] border-violet-300 text-violet-700" onClick={() => setOpen({ phan })}>＋ Thêm bài</Btn>
+                {!laLop && <ApplyDongChuoi soBai={ds.length} onApply={(n) => onSetSoDongChuoi(ds.map((d) => d.key), n)} />}
                 <span className="ml-auto text-[11px] text-slate-400">{ds.length} bài</span>
               </div>
               {ds.length === 0
                 ? <div className="mt-1.5 text-[11.5px] italic text-slate-400">Chưa có bài — bấm <b>↻ Gợi ý</b> hoặc <b>＋ Thêm bài</b>.</div>
                 : <ol className="mt-1.5 space-y-1">
-                  {ds.map((p, i) => (
-                    <li key={p.key} className="flex items-center gap-2 rounded-md border border-slate-100 bg-white/70 px-2 py-1 text-[12px]">
-                      <span className="w-4 shrink-0 text-right text-[11px] text-slate-300">{i + 1}</span>
-                      <span className="shrink-0 rounded bg-slate-100 px-1.5 text-[10px] font-medium text-slate-600">{nhanBan(p)}</span>
-                      <span className="min-w-0 flex-1 truncate text-slate-700">{p.nodeIds.map((id) => L.baiToan.find((b) => b.id === id)?.ma).filter(Boolean).join(' · ')}</span>
-                      <button onClick={() => setOpen({ phan, editKey: p.key })} className="shrink-0 text-slate-400 hover:text-indigo-600" title="Sửa">✎</button>
-                      <button onClick={() => onRemove(p.key)} className="shrink-0 text-slate-400 hover:text-rose-600" title="Bỏ bài này">✕</button>
-                    </li>
-                  ))}
+                  {ds.map((p, i) => {
+                    const an = anDe.includes(p.key)
+                    return (
+                      <li key={p.key} className="flex items-center gap-2 rounded-md border border-slate-100 bg-white/70 px-2 py-1 text-[12px]">
+                        <span className="w-4 shrink-0 text-right text-[11px] text-slate-300">{i + 1}</span>
+                        <span className="shrink-0 rounded bg-slate-100 px-1.5 text-[10px] font-medium text-slate-600">{nhanBan(p)}</span>
+                        <span className="min-w-0 flex-1 truncate text-slate-700">{p.nodeIds.map((id) => L.baiToan.find((b) => b.id === id)?.ma).filter(Boolean).join(' · ')}</span>
+                        {!laLop && <span className="shrink-0 text-[10px] text-slate-400">{soDong[p.key] ?? DONG_BTVN} dòng</span>}
+                        <button onClick={() => onToggleAnDe(p.key)} title={an ? 'Đang ẩn hình — HS tự vẽ. Bấm để hiện.' : 'Đang hiện hình. Bấm để ẩn (HS tự vẽ).'}
+                          className={`shrink-0 rounded px-1 text-[11px] ${an ? 'text-amber-600' : 'text-slate-400 hover:text-slate-700'}`}>{an ? '✏️' : '🖼'}</button>
+                        <button onClick={() => setOpen({ phan, editKey: p.key })} className="shrink-0 text-slate-400 hover:text-indigo-600" title="Sửa">✎</button>
+                        <button onClick={() => onRemove(p.key)} className="shrink-0 text-slate-400 hover:text-rose-600" title="Bỏ bài này">✕</button>
+                      </li>
+                    )
+                  })}
                 </ol>}
             </div>
           )
@@ -682,26 +700,27 @@ function ChuoiRow({ L, chuoi, picks, onAdd, onUpdate, onRemove, onGoiY }: {
     </div>
   )
 }
-// Danh sách bài đã chọn cho 1 phiếu (cột xuất) — nhãn bản + node, để soát trước khi in.
-function PhieuList({ nhan, ton, picks, L, onRemove, anDe, onToggleAnDe, soDong, onSetSoDong }: {
+// Áp 1 số dòng kẻ cho CẢ CHUỖI (mọi bài Về nhà hiện có) 1 lượt — khuôn `ApplyLinesAll` Đại: gõ số rồi
+// Enter/blur mới ghi (tránh ghi đè mỗi keystroke); ghi xong bài MỚI thêm sau vẫn dùng mặc định chung.
+function ApplyDongChuoi({ soBai, onApply }: { soBai: number; onApply: (n: number) => void }) {
+  const [val, setVal] = useState('')
+  const commit = () => { if (val.trim() === '') return; onApply(Math.max(0, Math.min(30, +val || 0))); setVal('') }
+  return (
+    <label className="flex shrink-0 items-center gap-1 text-[11px] text-slate-500" title={soBai ? `Áp số dòng này cho cả ${soBai} bài Về nhà của chuỗi` : 'Chưa có bài Về nhà để áp'}>
+      dòng kẻ (cả chuỗi)
+      <input type="number" min={0} max={30} value={val} placeholder={String(DONG_BTVN)} disabled={!soBai}
+        onChange={(e) => setVal(e.target.value)} onBlur={commit} onKeyDown={(e) => e.key === 'Enter' && commit()}
+        className="h-6 w-11 rounded border border-violet-300 px-1 text-center text-[12px] disabled:bg-slate-50 disabled:text-slate-300" />
+    </label>
+  )
+}
+// Danh sách bài đã chọn cho 1 phiếu (cột xuất, TÓM TẮT) — chỉ nhãn bản + node + xoá. Sửa hình/dòng-kẻ
+// làm ở ChuoiRow (card chính), không lặp control ở đây.
+function PhieuList({ nhan, ton, picks, L, onRemove }: {
   nhan: string; ton: 'lop' | 'nha'; picks: PickItem[]; L: Luoi; onRemove: (key: string) => void
-  anDe: string[]; onToggleAnDe: (key: string) => void; soDong: Record<string, number>; onSetSoDong: (key: string, n: number) => void
 }) {
   const col = ton === 'lop' ? 'text-sky-700' : 'text-orange-600'
-  const laNha = ton === 'nha'
   const nhanBan = (p: PickItem) => p.kind === 'ghep' ? (p.nodeIds.length > 1 ? '🔗 a,b,c' : (p.luaId ? 'lứa' : 'gốc')) : p.kind === 'bienthe' ? 'biến thể' : 'ý thật'
-  const HinhBtn = ({ khoa }: { khoa: string }) => {
-    const an = anDe.includes(khoa)
-    return (
-      <button onClick={() => onToggleAnDe(khoa)} title={an ? 'Đang ẩn hình — HS tự vẽ. Bấm để hiện.' : 'Đang hiện hình. Bấm để ẩn (HS tự vẽ).'}
-        className={`shrink-0 rounded px-1 text-[11px] ${an ? 'text-amber-600' : 'text-slate-400 hover:text-slate-700'}`}>{an ? '✏️' : '🖼'}</button>
-    )
-  }
-  // Số dòng HS viết (chỉ phiếu Về nhà = BTVN).
-  const DongIn = ({ khoa }: { khoa: string }) => laNha ? (
-    <input type="number" min={0} max={30} value={soDong[khoa] ?? DONG_BTVN} onChange={(e) => onSetSoDong(khoa, Math.max(0, Math.min(30, +e.target.value || 0)))}
-      title="Số dòng kẻ HS viết mỗi ý" className="h-5 w-9 shrink-0 rounded border border-slate-300 px-1 text-center text-[10px]" />
-  ) : null
   return (
     <div>
       <div className={`mb-1 text-[11px] font-semibold uppercase tracking-wide ${col}`}>{nhan} · {picks.length}</div>
@@ -712,8 +731,6 @@ function PhieuList({ nhan, ton, picks, L, onRemove, anDe, onToggleAnDe, soDong, 
           <div key={p.key} className="flex items-center gap-1.5 py-0.5 text-[11.5px] text-slate-600">
             <span className="shrink-0 rounded bg-slate-100 px-1 text-[10px] font-medium text-slate-500">{nhanBan(p)}</span>
             <span className="min-w-0 flex-1 truncate">{mas.join(' · ')}</span>
-            <DongIn khoa={p.key} />
-            <HinhBtn khoa={p.key} />
             <button onClick={() => onRemove(p.key)} className="shrink-0 text-slate-400 hover:text-rose-600" title="Bỏ bài">✕</button>
           </div>
         )

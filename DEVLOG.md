@@ -3784,3 +3784,29 @@ tsc + vite build sạch mọi bước. Dev pane phiên 0×0 → nhờ Thùy `npm
   đang chép (860px hợp với khối hẹp, không hợp khối 3 cột). Chép SỐ mà không chép LÝ DO ra số đó = lỗi
   tái diễn.
 - **Verify:** tsc sạch + `npx vite build` sạch. Chưa soi UI thật.
+
+## 2026-08-08 (tiếp 8) — 3 ý Thùy sau khi soi ảnh chụp: số dòng theo chuỗi + hình ở card chính + masthead mới
+- **① Số dòng kẻ CHỈNH THEO CẢ CHUỖI, không theo từng ý:** trước `PhieuList` (Tóm tắt) có ô số-dòng RIÊNG
+  từng pick — mỗi bài trong 1 chuỗi chỉnh độc lập. Thêm `ApplyDongChuoi` trong `ChuoiRow` (khuôn
+  `ApplyLinesAll` Đại: gõ số → Enter/blur ghi ĐÈ HẾT mọi bài Về nhà hiện có của chuỗi đó 1 lượt) — CHỈ hiện
+  ở khối "Về nhà" (Trên lớp không kẻ dòng, đúng ngữ nghĩa cũ). XOÁ `DongIn` khỏi `PhieuList`.
+- **② Ẩn/hiện hình chuyển từ card PHỤ (Tóm tắt) sang card CHÍNH (ChuoiRow):** nút ✏️/🖼 giờ nằm ngay trong
+  từng dòng pick ở `ChuoiRow` (cạnh ✎ Sửa/✕ Xoá) — chỗ đang thao tác chọn bài, không phải bảng tổng kết bên
+  cạnh. `PhieuList` giờ THUẦN liệt kê (nhãn bản + node + xoá), không còn control nào — đúng vai "tóm tắt".
+- **③ Header bản in Hình dùng khuôn MỚI NHẤT của Đại:** hỏi lại rõ "header" nào — Thùy chốt header TRÊN BẢN
+  IN (không phải toolbar builder). Đại vừa redesign masthead (`3f771d8`, đang có WIP thêm chưa commit ở
+  `PrintView.tsx`/`bkPrint.tsx` — KHÔNG đụng file đó, chỉ đọc tham khảo): khung gradient bo góc + vạch trái
+  cầu vồng + logo thật + tiêu đề lớn, thay `hp-cover` cũ (viền dưới đơn giản). `HinhPrintView.tsx` thêm
+  `.hpmh-*` (namespace RIÊNG, không đụng `.gtbk-*` của Đại — 2 pipeline độc lập, style trùng nhưng KHÔNG
+  chia sẻ class/CSS-in-JS). **Đơn giản hoá có chủ đích:** BỎ huy hiệu tròn "Buổi N" + kicker-pill của Đại
+  (đòi hỏi thread thêm số-buổi qua 3 nơi gọi `banInTheoMoHinh`/`resolveBanIn` — Kho tài liệu bảng-tổng
+  không có sẵn số buổi sạch, chỉ có tên ghép chuỗi) — giữ lõi (gradient+logo+tiêu đề), bỏ phần cần dữ liệu
+  chưa có sẵn khắp nơi.
+- **⚠ Rủi ro đã biết:** `PrintView.tsx`/`bkPrint.tsx` còn WIP CHƯA COMMIT ở phiên khác (đã kiểm bằng
+  `git diff 3f771d8` — 54+31 dòng khác biệt nữa) → nếu họ đổi tiếp thiết kế masthead, `.hpmh-*` của Hình sẽ
+  LỆCH bản mới nhất thật sự. Đây là snapshot tại commit `3f771d8`, không phải bám live — cần đối chiếu lại
+  khi phiên kia commit xong.
+- **Verify:** tsc sạch + `npx vite build` sạch. Chưa soi UI/PDF thật (dev pane phiên này không mở, paged.js
+  cần pane hiển thị) — cần Thùy `npm run dev`: mở 1 phiếu Về nhà → gõ số vào "dòng kẻ (cả chuỗi)" → mọi bài
+  hiện có của chuỗi đó đổi theo; bấm ✏️/🖼 ngay trong danh sách chuỗi (không cần cuộn sang Tóm tắt); Xuất
+  PDF → thấy masthead gradient+logo mới thay khối tiêu đề cũ.
