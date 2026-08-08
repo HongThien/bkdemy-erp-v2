@@ -21,6 +21,7 @@ export type BaiToan = {
   id: string; mon: string; ma: string; phat_bieu: string
   mo_hinh_id: string; cap: number
   de_bai_chuan: string | null; anh_chuan: string | null; ghi_chu: string | null
+  gia_thiet_phu: string | null   // dữ kiện lẻ (đa số là vẽ thêm "gọi I = AC∩BD") — bám node, hiện ở đề nếu tick / ở bước nếu ẩn
 }
 /** Biến thể của một node = cùng bài toán, ĐỔI SỐ / ĐỔI ĐỈNH. Treo dưới node (không đẻ node mới, không
  *  phân mảnh mastery). Đề + hình + đáp án riêng, soạn tay. Cùng KP/logic với node gốc. */
@@ -58,7 +59,7 @@ export type Luoi = {
   canh: CanhMoHinh[]
   baiToan: BaiToan[]
   cach: CachGiai[]
-  tienDe: { cach_id: string; tien_de_id: string }[]
+  tienDe: { cach_id: string; tien_de_id: string; keo_gt_phu: boolean }[]
   cachBoDe: { cach_id: string; bo_de_id: string }[]
   dang: DangHinh[]
   boDe: BoDe[]
@@ -80,7 +81,7 @@ export async function loadLuoi(khoi?: string): Promise<Luoi> {
     q<CanhMoHinh>('hinh_mo_hinh_cha'),
     q<BaiToan>('hinh_baitoan', 'cap'),
     q<CachGiai>('hinh_cach_giai', 'thu_tu'),
-    q<{ cach_id: string; tien_de_id: string }>('hinh_cach_tien_de'),
+    q<{ cach_id: string; tien_de_id: string; keo_gt_phu: boolean }>('hinh_cach_tien_de'),
     q<{ cach_id: string; bo_de_id: string }>('hinh_cach_bo_de'),
   ])
   let [dang, boDe] = await Promise.all([q<DangHinh>('hinh_dang', 'thu_tu'), q<BoDe>('hinh_bo_de', 'thu_tu')])
@@ -313,6 +314,44 @@ export function chuoiKetNoi(L: Luoi, baiToanId: string): BaiToan[] {
   return [...seen].map((id) => L.baiToan.find((b) => b.id === id)).filter(Boolean).sort((a, b) => a!.cap - b!.cap || a!.ma.localeCompare(b!.ma)) as BaiToan[]
 }
 
+/** VAN trồi giả thiết phụ: tiền đề của một node qua các cạnh `keo_gt_phu=true` (theo cách mặc định). */
+function tienDeVan(L: Luoi, baiToanId: string): string[] {
+  const c = cachMacDinh(L, baiToanId)
+  if (!c) return []
+  return L.tienDe.filter((t) => t.cach_id === c.id && t.keo_gt_phu).map((t) => t.tien_de_id)
+}
+export type YKhung = { node: BaiToan; buocNodes: BaiToan[]; gtPhuKeo: string[] }
+/** ⭐ NỞ đáp án cho tập node ĐƯỢC HỎI (tick) trong một chuỗi/cây hội tụ (docs/spec-kho-hinh-soan-chuoi).
+ *  - Mỗi node tick = 1 Ý (sắp cap↑; đích = cap cao nhất = ý cuối).
+ *  - Node ẨN (bao đóng tiền đề \ tick) nở thành BƯỚC trong ý ĐẦU TIÊN cần tới nó — cắt tại node tick,
+ *    mỗi node đúng 1 LẦN ("đề không hỏi vẫn phải có mới giải được").
+ *  - `gtPhuKeo` = giả thiết phụ trồi lên ĐỀ của ý qua VAN `keo_gt_phu` (truyền bắc cầu cạnh bật, dừng ở tick).
+ *  Trả KHUNG node-only; nội dung (lời giải/câu hỏi/hình) do caller resolve — đề chuẩn ↔ biến thể lứa. */
+export function noDapAn(L: Luoi, tickIds: string[]): YKhung[] {
+  const tick = new Set(tickIds)
+  const bt = (id: string) => L.baiToan.find((b) => b.id === id)
+  const ticks = (tickIds.map(bt).filter(Boolean) as BaiToan[]).sort((a, b) => a.cap - b.cap || a.ma.localeCompare(b.ma))
+  const emitted = new Set<string>()   // node ẩn đã nở ở ý trước ⇒ không nở lại (hiện 1 lần)
+  const gom = (goc: string, next: (id: string) => string[], stop: (id: string) => boolean): BaiToan[] => {
+    const out: BaiToan[] = []; const seen = new Set<string>(); const stack = [...next(goc)]
+    while (stack.length) {
+      const x = stack.pop()!
+      if (tick.has(x) || seen.has(x) || stop(x)) continue
+      seen.add(x)
+      const n = bt(x); if (n) out.push(n)
+      stack.push(...next(x))
+    }
+    return out.sort((a, b) => a.cap - b.cap || a.ma.localeCompare(b.ma))
+  }
+  return ticks.map((T) => {
+    const buocNodes = gom(T.id, (id) => tienDeCua(L, id), (id) => emitted.has(id))
+    for (const n of buocNodes) emitted.add(n.id)
+    const gtPhuKeo = gom(T.id, (id) => tienDeVan(L, id), () => false)
+      .map((n) => n.gia_thiet_phu?.trim()).filter(Boolean) as string[]
+    return { node: T, buocNodes, gtPhuKeo }
+  })
+}
+
 /** Lý thuyết của một mô hình = bài toán của chính nó + KẾ THỪA toàn bộ từ tổ tiên (§1.1). */
 export function lyThuyetCuaMoHinh(L: Luoi, moHinhId: string): { rieng: BaiToan[]; keThua: BaiToan[] } {
   const tt = toTienCua(L, moHinhId)
@@ -481,7 +520,8 @@ export async function deleteCachGiai(id: string): Promise<void> {
   if (error) throw error
 }
 /** Tiền đề của một cách. CHẶN CHU TRÌNH: node chủ không được nằm trong bao đóng của tiền đề mới. */
-export async function setTienDe(cachId: string, baiToanChuId: string, tienDeIds: string[]): Promise<void> {
+export async function setTienDe(cachId: string, baiToanChuId: string, tienDeIds: string[], vanIds?: Set<string> | string[]): Promise<void> {
+  const van = vanIds instanceof Set ? vanIds : new Set(vanIds ?? [])   // tien_de_id có VAN "trồi gt phụ lên đề"
   for (const t of tienDeIds) {
     if (t === baiToanChuId) throw new Error('Bài toán không thể là tiền đề của chính nó.')
     const bd = await baoDongTienDeDB(t)
@@ -490,7 +530,7 @@ export async function setTienDe(cachId: string, baiToanChuId: string, tienDeIds:
   const { error: e1 } = await supabase.from('hinh_cach_tien_de').delete().eq('cach_id', cachId)
   if (e1) throw e1
   if (tienDeIds.length) {
-    const { error: e2 } = await supabase.from('hinh_cach_tien_de').insert(tienDeIds.map((tien_de_id) => ({ cach_id: cachId, tien_de_id })))
+    const { error: e2 } = await supabase.from('hinh_cach_tien_de').insert(tienDeIds.map((tien_de_id) => ({ cach_id: cachId, tien_de_id, keo_gt_phu: van.has(tien_de_id) })))
     if (e2) throw e2
   }
 }
