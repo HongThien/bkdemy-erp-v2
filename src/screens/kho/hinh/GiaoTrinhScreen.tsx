@@ -197,7 +197,9 @@ function GiaoTrinhBuilderHinh({ L, khoi, giaoTrinhId, onClose, onPreview }: {
         <Btn className="ml-auto border-violet-300 text-violet-700" onClick={() => setTrichOpen(true)}>⬇ Trích xuất / Gán lớp</Btn>
       </div>
       <div className="min-h-0 flex-1 overflow-auto">
-        <div className="mx-auto max-w-[860px] space-y-2 pb-6">
+        {/* KHÔNG max-w như Đại (860px cho khối Bài-luyện+BTVN hẹp) — mỗi buổi Hình là 3 CỘT (lọc mô
+            hình/chuỗi/tóm tắt), cần rộng hết cỡ khung mới đủ chỗ, bó hẹp là bóp chết cột giữa. */}
+        <div className="space-y-2 pb-6">
           {buois.length === 0 && <div className="rounded-xl border border-dashed border-slate-300 bg-white p-6 text-center text-[13px] text-slate-400">Chưa có buổi nào. Bấm "+ Thêm buổi" để bắt đầu.</div>}
           {buois.map((b, i) => (
             <BuoiCardHinh key={b.id} L={L} buoi={b} no={i + 1} onDeleted={nap} onPreview={onPreview} />

@@ -431,8 +431,10 @@ export function BuoiPickEditor({ L, picks, anDe, soDong, onChangePicks, onChange
   const picksNha = useMemo(() => dedupePicks(picks.filter((p) => p.phan === 'nha')), [picks])
 
   return (
-    <div className="grid items-start gap-3 xl:grid-cols-[240px_1fr_220px]">
-      <Panel label="Lọc theo mô hình (tuỳ chọn)">
+    // Lọc mô hình = MỤC LỤC (khuôn StructureTree Đại) — BÉ, chỉ để tìm nhanh; Tóm tắt cũng chỉ cần đủ đọc
+    // 1 dòng/bài. Cột GIỮA (chuỗi + chọn bài) là nơi thao tác chính — RỘNG NHẤT, không bị 2 cột kia bóp lại.
+    <div className="grid items-start gap-3 xl:grid-cols-[190px_minmax(0,1fr)_200px]">
+      <Panel label="Lọc mô hình (mục lục)">
         <div className="mb-1 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Mô hình chính</div>
         <select className={inpCls} value={mainId} onChange={(e) => chonMain(e.target.value)}>
           <option value="">— tất cả (không lọc) —</option>

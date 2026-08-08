@@ -3766,3 +3766,21 @@ tsc + vite build sạch mọi bước. Dev pane phiên 0×0 → nhờ Thùy `npm
 - **Verify:** tsc sạch + `npx vite build` sạch. Chưa soi UI thật (dev pane phiên này không mở) — cần Thùy
   `npm run dev` xác nhận: mở 1 giáo trình → mỗi buổi hiện ĐỦ 3 cột (lọc mô hình / chuỗi / tóm tắt) ngay,
   không cần bấm gì thêm.
+
+## 2026-08-08 (tiếp 7) — Layout buổi Hình: cột giữa bị bóp — 2 lỗi copy-khuôn-không-soát-kích-thước
+- **Thùy soi ảnh chụp:** cột giữa (chuỗi + chọn bài) hẹp dính sát, trong khi 2 cột 2 bên (lọc mô hình,
+  tóm tắt) chiếm nhiều chỗ ngang nhau — chỉ ra đúng: "bên trái mục lục bé thôi, bên phải rộng ra".
+- **2 root cause, CÙNG loại lỗi đã ghi 2 lần trước trong ngày (copy khuôn Đại không soát nó có KHỚP chỗ
+  dán không):**
+  1. `GiaoTrinhScreen.tsx` bọc list buổi trong `max-w-[860px]` — chép nguyên từ `TaiLieuBuilder` (Đại),
+     NHƯNG bên Đại con số đó bọc khối 1-CỘT (Bài luyện+BTVN, không cần rộng); Hình mỗi buổi là **3 CỘT**
+     (lọc mô hình/chuỗi/tóm tắt), ép vào trần 860px thì cột giữa gần như không còn chỗ. XOÁ cap.
+  2. `BuoiPickEditor` grid `240px_1fr_220px` — 2 cột biên đủ rộng nhưng KHÔNG PHẢI mục lục thật (mục lục
+     Đại = `StructureTree` chỉ để NHẢY, không phải khối điền liệu); đổi `190px_minmax(0,1fr)_200px` (thu
+     2 biên, `minmax(0,1fr)` chặn tràn nếu nội dung dài — đúng khuôn "min-w-0 cho item flex/grid" ở
+     CLAUDE.md §2).
+- **Bài học gộp cả 3 lần hôm nay:** "giống Đại" đòi soát ĐÚNG 2 thứ mỗi lần chép — (a) đúng FILE/component
+  Đại tương ứng (không suy từ khung gần đó có sẵn) — (b) đúng NGỮ CẢNH kích thước/chức năng của con số
+  đang chép (860px hợp với khối hẹp, không hợp khối 3 cột). Chép SỐ mà không chép LÝ DO ra số đó = lỗi
+  tái diễn.
+- **Verify:** tsc sạch + `npx vite build` sạch. Chưa soi UI thật.
