@@ -945,9 +945,12 @@ const GT_BK_CSS = `
 .gtbk-mh-badge{position:absolute;z-index:4;right:6.5mm;top:50%;transform:translateY(-50%);width:24mm;height:24mm;border-radius:6.5mm;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;background:linear-gradient(145deg,#168fcf 0%,#4867cc 100%);-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .gtbk-mh-badge small{font-family:${GT_SANS};font-size:6.5pt;font-weight:800;letter-spacing:.12em;opacity:.86;margin-bottom:.5mm;text-transform:uppercase}
 .gtbk-mh-badge strong{font-family:${GT_SANS};font-size:22pt;line-height:.9;font-weight:900}
-/* Card mỗi dạng — KHÔNG atomic (dạng dài chảy được qua trang), chỉ đầu card không mồ côi. */
-.gtbk-card{border:1px solid #dce5ef;border-radius:3.2mm;background:#fff;overflow:hidden;margin:0 0 4mm;break-inside:auto}
-.gtbk-card-head{display:flex;align-items:center;gap:2.6mm;padding:2.4mm 3.2mm;background:#f3f7fb;border-bottom:1px solid #e2e8f0;break-after:avoid;break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+/* Card mỗi dạng — KHÔNG atomic (dạng dài phải CHẢY nối tiếp qua trang, không bỏ trống nhảy trang).
+   ⭐ TUYỆT ĐỐI không overflow:hidden ở đây: paged.js coi box overflow:hidden là KHÔNG tách được → nguyên
+   card nhảy sang trang sau khi cuối trang không đủ chỗ (đúng lỗi "đề mục mới luôn sang trang"). Bo góc đầu
+   card xử bằng border-radius trên .gtbk-card-head thay cho overflow:hidden. */
+.gtbk-card{border:1px solid #dce5ef;border-radius:3.2mm;background:#fff;margin:0 0 4mm;break-inside:auto}
+.gtbk-card-head{display:flex;align-items:center;gap:2.6mm;padding:2.4mm 3.2mm;background:#f3f7fb;border-bottom:1px solid #e2e8f0;border-radius:3mm 3mm 0 0;break-after:avoid;break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .gtbk-code{flex:none;padding:1mm 2.6mm;background:#13233f;color:#fff;border-radius:99px;font-family:${GT_SANS};font-size:8.5pt;font-weight:900;letter-spacing:.04em;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .gtbk-card-title{flex:1;font-family:${GT_SANS};font-size:12pt;font-weight:800;color:#203454;line-height:1.22}
 .gtbk-pill{flex:none;font-family:${GT_SANS};font-size:8pt;color:#0e806f;font-weight:900;letter-spacing:.04em;text-transform:uppercase;background:#e8f8f3;border:1px solid #c9eee3;border-radius:99px;padding:.9mm 2.2mm;white-space:nowrap;-webkit-print-color-adjust:exact;print-color-adjust:exact}
