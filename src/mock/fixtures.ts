@@ -125,4 +125,5 @@ export const adminLeaves: AdminLeaf[] = [
   { id: 'db_tongquan', nhom: 'Dashboard', ten: 'Tổng quan',                   founderOnly: false },
   { id: 'db_taichinh', nhom: 'Dashboard', ten: 'Tài chính',                   founderOnly: true },
   { id: 'db_chatluong',nhom: 'Dashboard', ten: 'Chất lượng vận hành',         founderOnly: true },
+  { id: 'db_phdangnhap',nhom: 'Dashboard', ten: 'Đăng nhập Phụ huynh',        founderOnly: true }, // bộ đo PH đã/chưa đăng nhập Cổng PH + reset MK (core team)
 ]
