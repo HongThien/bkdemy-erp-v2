@@ -1344,6 +1344,40 @@ export async function doiDinhHinh(goc: { de: string; loiGiai: string | null }, g
   return { de_bai: String(obj.de_bai ?? obj.deBai ?? '').trim(), loi_giai: String(obj.loi_giai ?? obj.loiGiai ?? '').trim() }
 }
 
+// ── ĐỔI ĐỈNH CẢ CHUỖI (một LỨA) — N bài nối tiền đề, đổi đỉnh bằng ĐÚNG MỘT map điểm cho cả chuỗi ──
+// Vì cả chuỗi CHUNG một hình: điểm A ở câu 1 và câu 3 phải đổi thành CÙNG một tên. Đổi từng câu riêng =
+// mỗi câu một bộ điểm → ghép a,b,c vô nghĩa. Gộp 1 call để AI chốt 1 map dùng chung.
+export const HINH_CHUOI_SCHEMA = { type: 'OBJECT', properties: { cau: { type: 'ARRAY', items: HINH_BAI_SCHEMA } }, required: ['cau'] }
+export function buildDoiDinhChuoiPrompt(cau: { ma: string; de: string; loiGiai: string }[], ghiChu?: string): string {
+  const list = cau.map((c, i) => [`--- Câu ${i + 1} (${c.ma}) ---`, `de_bai: ${c.de}`, `loi_giai: ${c.loiGiai || '(tự giải theo phương pháp chuẩn)'}`].join('\n')).join('\n\n')
+  return [
+    'Bạn là chuyên gia ra đề toán HÌNH HỌC THCS.',
+    `Dưới đây là ${cau.length} bài toán NỐI TIẾP trong MỘT chuỗi — CÙNG một hình, ý sau dùng kết quả ý trước:`,
+    '',
+    list,
+    '',
+    `NHIỆM VỤ: Sinh biến thể "ĐỔI ĐỈNH" cho CẢ ${cau.length} câu — GIỮ NGUYÊN số liệu, cấu hình hình, logic; CHỈ đổi TÊN các điểm.`,
+    '',
+    `⚠ RÀNG BUỘC QUAN TRỌNG NHẤT — MỘT BỘ ĐIỂM DUY NHẤT cho cả ${cau.length} câu:`,
+    '- Chọn MỘT map đổi tên điểm (vd $A,B,C,H \\to M,N,P,K$) rồi áp Y HỆT cho MỌI câu. Điểm $A$ ở câu 1 và câu 3 PHẢI đổi thành CÙNG một tên. TUYỆT ĐỐI KHÔNG mỗi câu một bộ điểm khác nhau.',
+    '- Một điểm cũ ↦ đúng MỘT điểm mới, nhất quán toàn chuỗi (đề + lời giải, trong lẫn ngoài $…$).',
+    '- GIỮ NGUYÊN: mọi số / số đo, cấu hình hình, số bước & thứ tự lời giải từng câu. KHÔNG đổi số, KHÔNG đổi logic, KHÔNG thêm/bớt.',
+    `- Giữ ĐÚNG thứ tự & số lượng: mảng "cau" có ĐÚNG ${cau.length} phần tử, phần tử i ứng với câu i ở trên.`,
+    ghiChu ? `- ⚠ GHI CHÚ NGƯỜI RA ĐỀ = RÀNG BUỘC CỨNG, ưu tiên CAO NHẤT: ${ghiChu}` : '',
+    '',
+    FMT_RULES,
+    '',
+    `Trả về JSON: { "cau": [ ĐÚNG ${cau.length} phần tử dạng { "de_bai": "...", "loi_giai": "..." } ] }`,
+  ].filter(Boolean).join('\n')
+}
+export async function doiDinhChuoiHinh(cau: { ma: string; de: string; loiGiai: string }[], ghiChu?: string): Promise<{ de_bai: string; loi_giai: string }[]> {
+  const raw = await callGeminiJson(buildDoiDinhChuoiPrompt(cau, ghiChu?.trim() || undefined), { model: 'gemini-2.5-flash', think: 8192, schema: HINH_CHUOI_SCHEMA })
+  let t = raw.trim(); const fence = t.match(/```(?:json)?\s*([\s\S]*?)```/i); if (fence) t = fence[1].trim()
+  const obj = lenientJsonParse(t)
+  const arr = Array.isArray(obj.cau) ? obj.cau : []
+  return arr.map((x: any) => ({ de_bai: String(x.de_bai ?? x.deBai ?? '').trim(), loi_giai: String(x.loi_giai ?? x.loiGiai ?? '').trim() }))
+}
+
 // ── Lý thuyết đi kèm dạng Đại (1-1) + chuẩn completeness ──────────
 export const CHUAN_SO_CAU = 50 // chuẩn kho: mỗi dạng ≥ 50 câu (sàn SỐ LƯỢNG, chỉnh 1 chỗ)
 // noi_dung = nội dung lý thuyết (text + LaTeX); file_url/ten_file = đính kèm; khong_can = đánh dấu "không cần" (chỉ chuyên đề)

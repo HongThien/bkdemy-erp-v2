@@ -6,7 +6,7 @@ import type { CauHinh } from '../../lib/tailieu'
 import { listLop } from '../../lib/nhansu'
 import { hsCoMatCuaBuoi, ngayBuoiHopLeCuaLop } from '../../lib/gami'
 import { congNgay } from '../../lib/tuan'
-import { BK_CSS, BtvnBkHead, BK_PAGE_CSS } from './bkPrint'
+import { BK_CSS, BtvnBkHead } from './bkPrint'
 import { MathText } from '../kho/ui'
 import { uploadKhoFile } from '../../lib/kho/api'
 import type { CauHoi } from '../../lib/kho/api'
@@ -211,25 +211,20 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly,
     let cancelled = false
     setRendering(true); setRenderErr(null)
     const ch0 = full.taiLieu.cau_hinh ?? {}
-    // XEM PHẦN BTVN (scope='btvn') → LUÔN kiểu BK: bỏ HẲN dải header + footer chrome cũ (Thùy: không tái dùng),
-    // dùng đầu phiếu + footer BK. Áp cho cả BTVN riêng lẫn phần BTVN của doc giáo trình.
-    const bkBtvn = scope === 'btvn'
-    const buoiDoc = full.taiLieu.loai === 'btvn' || full.taiLieu.loai === 'giao_trinh_buoi'
-    // ⭐ Thùy chốt: BỎ HẲN dải header chrome (logo + "Tên · Khối" / "Lớp · ngày") ở MỌI NƠI — giáo trình
-    //   master lẫn buổi lẫn BTVN. Thông tin đầu trang đã có ở bìa / dải buổi / đầu phiếu BtvnBkHead, không
-    //   lặp trên mọi trang. Nên LUÔN tắt header, chỉ giữ footer (liên hệ + số trang). bkBtvn tắt luôn footer
-    //   (dùng footer BK riêng trong BK_PAGE_CSS).
-    const ch = bkBtvn ? { ...ch0, header: 'none' as const, footer: 'none' as const }
-             : { ...ch0, header: 'none' as const }
-    const cssOpts = (buoiDoc && !bkBtvn) ? {
-      footerText: 'BK Academy        Tel : 0963.209.309        Địa chỉ : 17A10 KĐT Geleximco',
-    } : undefined
+    // ⭐ Thùy chốt: BỎ HẲN dải header/footer sóng cũ ở MỌI NƠI (không tái dùng). Header luôn 'none'.
+    //   Từ 08-08: GIÁO TRÌNH và BTVN DÙNG CHUNG kiểu BK mới — dải gradient trên/dưới + footer liên hệ + số
+    //   trang (gtPageCss), nội dung theo GT_BK_CSS (masthead + card từng dạng). BTVN chỉ khác ở đầu phiếu
+    //   (BtvnBkHead = masthead + ô Họ tên·Lớp·Điểm) và câu có dòng kẻ — style vẫn chung. BK_CSS giữ cho
+    //   .pv-bkh* (ô HS của BtvnBkHead). Luật recto (in cả lớp chẵn trang) nằm trong gtPageCss.
+    // → footer LUÔN 'none' (buildPagedCss không vẽ sóng nữa); chrome mới đều là pseudo tự thêm.
+    const ch = { ...ch0, header: 'none' as const, footer: 'none' as const }
     // ⭐ Scope CSS chrome theo ĐÚNG container render này (class `pv-scope-N` gắn lên container bên dưới) →
     //   stylesheet paged.js chèn toàn cục vào <head> KHÔNG còn đè header lên trang của render khác. Đây là
     //   gốc bug "nhầm lớp": render doc trước (chậm) resolve SAU → chèn <style> sau cùng → header của nó
     //   thắng cascade, sơn "Lớp 6S2 · 16/07" lên trang 8B1 đang xem. Scope selector khớp đúng container.
     const scopeCls = `pv-scope-${++pvRenderSeq}`
-    const css = buildPagedCss(full.taiLieu, ch, ch0.mau || '#E91E8C', cssOpts, `.${scopeCls}`) + (bkBtvn ? BK_CSS + BK_PAGE_CSS : '')
+    const css = buildPagedCss(full.taiLieu, ch, ch0.mau || '#E91E8C', undefined, `.${scopeCls}`)
+      + BK_CSS + GT_BK_CSS + gtPageCss(`.${scopeCls} `)
     const cssUrl = URL.createObjectURL(new Blob([css], { type: 'text/css' }))
     const html = srcRef.current.innerHTML
     // Race-safe: mỗi lần render vào CONTAINER RIÊNG (append live để paged.js đo layout). KHÔNG xoá DOM
@@ -292,13 +287,10 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly,
     if (!activeContainerRef.current || !full) return false
     setDl(true); setRenderErr(null)
     const ch0 = full.taiLieu.cau_hinh ?? {}
-    const buoiDoc = full.taiLieu.loai === 'btvn' || full.taiLieu.loai === 'giao_trinh_buoi'
-    // Bỏ header ở MỌI NƠI, ĐỒNG BỘ với preview (drawChrome đọc cr.head = ch.header !== 'none').
-    const ch = { ...ch0, header: 'none' as const }
-    const cssOpts = buoiDoc ? {
-      footerText: 'BK Academy        Tel : 0963.209.309        Địa chỉ : 17A10 KĐT Geleximco',
-    } : undefined
-    try { await uploadPagesAsLink(activeContainerRef.current, printFileName(), pageChrome(full.taiLieu, ch, cssOpts), full.taiLieu.id); return true }
+    // Bỏ HẲN chrome sóng cũ ở MỌI NƠI, ĐỒNG BỘ với preview: header + footer đều 'none' (BTVN dùng footer
+    // pill BK, giáo trình dùng dải/footer gradient — cả hai là pseudo trong CSS, không phải chrome vẽ tay).
+    const ch = { ...ch0, header: 'none' as const, footer: 'none' as const }
+    try { await uploadPagesAsLink(activeContainerRef.current, printFileName(), pageChrome(full.taiLieu, ch), full.taiLieu.id); return true }
     catch (e) { setRenderErr('Lấy link lỗi: ' + (e instanceof Error ? e.message : String(e))); return false }
     finally { setDl(false) }
   }
@@ -449,15 +441,26 @@ function Doc({ full, gv, scope, lt = true, onlyBuoiId, perHS = false, roster = [
             : btvnBuois.map((b) => sheet(b, undefined, b.id))
         })()
         : buois.map((b) => (
-          <BuoiBlock key={b.id} buoi={b} gv={gv} scope={scope} lt={lt} docTitle={taiLieu.ten} ltCd={ltChuyenDe} tenCd={tenChuyenDe} linesByCau={linesByCau} colByCau={colByCau} />
+          <BuoiBlock key={b.id} buoi={b} gv={gv} scope={scope} lt={lt} docTitle={taiLieu.ten} ltCd={ltChuyenDe} tenCd={tenChuyenDe} linesByCau={linesByCau} colByCau={colByCau} lopTen={lopTen} ngayPhat={ngayPhat} />
         ))}
     </div>
   )
 }
 
-// 1 BUỔI: tiêu đề buổi → [LT chuyên đề + các dạng] gom theo chuyên đề → phiếu BTVN của buổi.
-function BuoiBlock({ buoi, gv, scope, lt = true, docTitle, ltCd, tenCd, linesByCau, colByCau }: {
-  buoi: Buoi; gv: boolean; scope: 'all' | 'giaotrinh'; lt?: boolean; docTitle: string; ltCd: Record<string, { noi_dung: string; file_url: string | null; ten_file: string | null } | null>; tenCd: Record<string, string>; linesByCau: Record<string, number>; colByCau: Record<string, number>
+// Tách "Buổi N" khỏi tên chủ đề để dựng hero BK: eyebrow "Buổi N" + huy hiệu số N + tiêu đề = chủ đề.
+// Không khớp mẫu "Buổi N" (tên tự do) → không eyebrow/huy hiệu, tiêu đề = cả tên.
+function parseBuoiTitle(title: string): { eyebrow: string; num: string; heading: string } {
+  const m = title.match(/^\s*Bu[ổôổ]i\s*0*(\d+)\s*[:：.\-–—]?\s*(.*)$/iu)
+  if (!m) return { eyebrow: '', num: '', heading: title }
+  const rest = (m[2] ?? '').trim()
+  return rest
+    ? { eyebrow: `Buổi ${m[1]}`, num: m[1], heading: rest }   // có chủ đề → tách
+    : { eyebrow: '', num: m[1], heading: `Buổi ${m[1]}` }     // chỉ "Buổi N" → tiêu đề = "Buổi N"
+}
+
+// 1 BUỔI: hero BK (Buổi N · chủ đề · lớp/ngày · huy hiệu) → [LT chuyên đề + card từng dạng] → phiếu BTVN.
+function BuoiBlock({ buoi, gv, scope, lt = true, docTitle, ltCd, tenCd, linesByCau, colByCau, lopTen = '', ngayPhat = '' }: {
+  buoi: Buoi; gv: boolean; scope: 'all' | 'giaotrinh'; lt?: boolean; docTitle: string; ltCd: Record<string, { noi_dung: string; file_url: string | null; ten_file: string | null } | null>; tenCd: Record<string, string>; linesByCau: Record<string, number>; colByCau: Record<string, number>; lopTen?: string; ngayPhat?: string
 }) {
   // Gom dạng liền nhau theo chuyên đề → mỗi nhóm hiện LT chuyên đề 1 lần (buổi tách chuyên đề vẫn có LT).
   const groups: { cd: string; dangs: PhanResolved[] }[] = []
@@ -466,9 +469,28 @@ function BuoiBlock({ buoi, gv, scope, lt = true, docTitle, ltCd, tenCd, linesByC
     const last = groups[groups.length - 1]
     if (last && last.cd === cd) last.dangs.push(d); else groups.push({ cd, dangs: [d] })
   }
+  const { num, heading } = parseBuoiTitle(buoi.title || '')
+  const sub = [lopTen && `Lớp ${lopTen}`, ngayPhat && `Ngày ${ngayPhat}`].filter(Boolean).join('  ·  ')
+  const logoUrl = location.origin + '/Logo.png' // logo THẬT của trung tâm (không dùng ô vuông placeholder mockup)
   return (
-    <section className="pv-buoi">
-      {buoi.title && <h1 className="pv-h-buoi">{buoi.title}</h1>}
+    <section className="pv-buoi gtbk">
+      {buoi.title && (
+        // Masthead cao cấp: khung gradient bo góc · logo thật · pill Buổi/Bài luyện · tiêu đề chủ đề ·
+        // dòng phụ = Lớp · Ngày · huy hiệu tròn "BUỔI N" bên phải. (Redesign v2 08-08 — mockup BK Buổi10 v2.)
+        <div className={`gtbk-mh${num ? '' : ' gtbk-mh-nobadge'}`}>
+          <div className="gtbk-mh-grid" />
+          <div className="gtbk-mh-main">
+            <div className="gtbk-mh-brand"><img className="gtbk-mh-logo" src={logoUrl} alt="BK Academy" /></div>
+            <div className="gtbk-mh-kicker">
+              {num && <span className="gtbk-mh-pill">Buổi {num}</span>}
+              <span className="gtbk-mh-tag">Bài luyện</span>
+            </div>
+            <h1 className="gtbk-mh-title">{heading}</h1>
+            {sub && <div className="gtbk-mh-sub">{sub}</div>}
+          </div>
+          {num && <div className="gtbk-mh-badge"><small>Buổi</small><strong>{num}</strong></div>}
+        </div>
+      )}
       {groups.map((g, gi) => (
         <div key={gi}>
           {/* 1 chuyên đề: chỉ "Lý thuyết" (tên chuyên đề ĐÃ ở dải buổi → khỏi lặp). Nhiều chuyên đề: ghi tên để phân biệt.
@@ -518,17 +540,25 @@ export function CauList({ kieu, children }: { kieu?: string; children: React.Rea
   )
 }
 
+// 1 DẠNG = 1 card BK: đầu card (mã dạng · tên dạng · pill "Bài luyện") → thân (LT·ví dụ nếu có → câu).
+// Card KHÔNG break-inside:avoid (dạng dài hơn 1 trang vẫn phải chảy, không thì paged.js cắt mất nội dung);
+// chỉ giữ đầu card không mồ côi (break-after:avoid trong CSS).
 function DangBlock({ p, gv, lt = true, colByCau }: { p: PhanResolved; gv: boolean; lt?: boolean; colByCau: Record<string, number> }) {
   return (
-    <section className="pv-sec">
-      <h2 className="pv-h-dang">Dạng {p.ref_ma}: {p.dang?.ten_dang ?? p.ref_ma}</h2>
-      {lt && p.hien_lt !== false && p.lyThuyetDang?.noi_dung?.trim() && (
-        <div className="pv-box-lt"><div className="pv-box-label">Lý thuyết · Ví dụ</div><LyThuyetBody text={p.lyThuyetDang.noi_dung} /></div>
-      )}
-      {p.caus.length > 0 && (<>
-        <div className="pv-h-bt">Bài luyện</div>
-        <CauFlow items={p.caus.map((c, i) => ({ key: c.ma_cau, cols: colByCau[c.ma_cau] ?? 1, ...cauItemParts({ no: i + 1, c, gv }) }))} />
-      </>)}
+    <section className="pv-sec gtbk-card">
+      <div className="gtbk-card-head">
+        <span className="gtbk-code">{p.ref_ma}</span>
+        <div className="gtbk-card-title">{p.dang?.ten_dang ?? p.ref_ma}</div>
+        <span className="gtbk-pill">Bài luyện</span>
+      </div>
+      <div className="gtbk-card-body">
+        {lt && p.hien_lt !== false && p.lyThuyetDang?.noi_dung?.trim() && (
+          <div className="pv-box-lt"><div className="pv-box-label">Lý thuyết · Ví dụ</div><LyThuyetBody text={p.lyThuyetDang.noi_dung} /></div>
+        )}
+        {p.caus.length > 0 && (
+          <CauFlow items={p.caus.map((c, i) => ({ key: c.ma_cau, cols: colByCau[c.ma_cau] ?? 1, ...cauItemParts({ no: i + 1, c, gv }) }))} />
+        )}
+      </div>
     </section>
   )
 }
@@ -545,12 +575,19 @@ function BtvnSheet({ btvns, ontaps = [], gv, docTitle, buoiTitle, linesByCau, co
       <BtvnBkHead buoiTitle={buoiTitle || docTitle} ngayPhat={ngayPhat} ngayNop={ngayNop} lopTen={lopTen} hoTen={hoTen} gv={gv} />
       {(() => {
         let bno = 0
+        // Mỗi dạng = 1 card kiểu giáo trình (mã dạng · tên dạng · pill "BTVN"); câu có dòng kẻ để HS viết.
         const dangBlock = (b: PhanResolved) => (
-          <div key={b.id} className="pv-sec">
-            <h2 className="pv-h-dang">Dạng {b.ref_ma}: {b.dang?.ten_dang ?? b.ref_ma}</h2>
+          <div key={b.id} className="pv-sec gtbk-card">
+            <div className="gtbk-card-head">
+              <span className="gtbk-code">{b.ref_ma}</span>
+              <div className="gtbk-card-title">{b.dang?.ten_dang ?? b.ref_ma}</div>
+              <span className="gtbk-pill">BTVN</span>
+            </div>
             {/* Số câu đếm LIÊN TỤC xuyên các dạng (dạng 1: 1,2 → dạng 2: 3,4,5…) — KHÔNG reset mỗi dạng,
                 kể cả sang khối Ôn tập bên dưới (đếm 1 mạch hết phiếu, đúng spec §7.1). */}
-            <CauFlow items={b.caus.map((c) => { bno += 1; return { key: c.ma_cau, cols: colByCau[c.ma_cau] ?? 1, ...cauItemParts({ no: bno, c, gv, lines: gv ? 0 : (linesByCau[c.ma_cau] ?? DEFAULT_BTVN_LINES) }) } })} />
+            <div className="gtbk-card-body">
+              <CauFlow items={b.caus.map((c) => { bno += 1; return { key: c.ma_cau, cols: colByCau[c.ma_cau] ?? 1, ...cauItemParts({ no: bno, c, gv, lines: gv ? 0 : (linesByCau[c.ma_cau] ?? DEFAULT_BTVN_LINES) }) } })} />
+            </div>
           </div>
         )
         const btvnBlocks = btvns.filter((b) => b.caus.length).map(dangBlock)
@@ -882,6 +919,67 @@ const CONTENT_CSS = `
 .pv-blk{break-inside:auto;margin:0 0 5px}
 .pv-blk:last-child{margin-bottom:0}
 .pv-box-lt .mline{break-inside:avoid}
+`
+
+// ⭐ REDESIGN giáo trình 08-08 (Thùy — mockup BK_Academy_Buoi10). Kiểu BK cho phần in giáo trình:
+//   · hero từng buổi: eyebrow "Buổi N" + tiêu đề chủ đề + dòng lớp/ngày + huy hiệu tròn số buổi;
+//   · mỗi DẠNG = 1 card bo góc (đầu: mã dạng nền navy · tên dạng · pill "Bài luyện"; thân: LT·ví dụ + câu);
+//   · dải gradient mảnh trên/dưới mọi trang + footer liên hệ + số trang (gtPageCss).
+// Bảng màu lấy đúng mockup (KHÔNG theo accent doc): gradient #1997d4→#18a889→#f0a63b→#e83483, navy #13233f.
+// Font tiêu đề/card = sans (Noto Sans) tách khỏi phần câu (Times) cho ra chất "sách in".
+const GT_SANS = "'Noto Sans','Segoe UI',Arial,sans-serif"
+const GT_GRAD = 'linear-gradient(90deg,#1997d4 0%,#18a889 34%,#f0a63b 66%,#e83483 100%)'
+const GT_BK_CSS = `
+/* Masthead buổi (đầu mỗi buổi): khung gradient bo góc + logo thật + pill + tiêu đề + Lớp/Ngày + huy hiệu tròn. */
+.gtbk-mh{position:relative;overflow:hidden;margin:2mm 0 5mm;min-height:40mm;padding:5mm 6mm;border:1px solid #dbe7f4;border-radius:5mm;background:linear-gradient(112deg,#f5fbff 0%,#f8fbff 42%,#fff7fb 100%);break-inside:avoid;break-after:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.gtbk-mh:before{content:"";position:absolute;left:0;top:0;bottom:0;width:2.3mm;background:linear-gradient(180deg,#1997d4 0%,#18a889 36%,#f0a63b 68%,#e83483 100%);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.gtbk-mh:after{content:"";position:absolute;right:-10mm;top:-16mm;width:62mm;height:62mm;border-radius:50%;border:9mm solid rgba(25,151,212,.055);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.gtbk-mh-grid{position:absolute;right:33mm;top:4mm;width:43mm;height:29mm;opacity:.16;background-image:radial-gradient(#53739c 1px,transparent 1px);background-size:5px 5px;transform:rotate(-5deg);z-index:0}
+.gtbk-mh-main{position:relative;z-index:3;width:calc(100% - 31mm)}
+.gtbk-mh-brand{display:flex;align-items:center;gap:2.4mm;margin-bottom:3mm}
+.gtbk-mh-logo{height:6.5mm;width:auto;display:block}
+.gtbk-mh-kicker{display:flex;align-items:center;gap:2mm;margin-bottom:1.8mm}
+.gtbk-mh-pill{display:inline-flex;align-items:center;height:6.2mm;padding:0 2.8mm;border-radius:99px;background:#e7f7f3;border:1px solid #c4eae1;color:#0f7e72;font-family:${GT_SANS};font-size:8.5pt;font-weight:900;letter-spacing:.06em;text-transform:uppercase;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.gtbk-mh-tag{display:inline-flex;align-items:center;height:6.2mm;padding:0 2.8mm;border-radius:99px;background:#fff;border:1px solid #e6dce5;color:#a64875;font-family:${GT_SANS};font-size:8pt;font-weight:800;letter-spacing:.045em;text-transform:uppercase}
+.gtbk-mh-title{margin:0;font-family:${GT_SANS};font-size:23pt;line-height:1.06;letter-spacing:-.03em;color:#142744;font-weight:900}
+.gtbk-mh-sub{margin-top:1.8mm;font-family:${GT_SANS};font-size:9.6pt;color:#6a7a93;font-weight:600}
+.gtbk-mh-badge{position:absolute;z-index:4;right:6.5mm;top:50%;transform:translateY(-50%);width:24mm;height:24mm;border-radius:6.5mm;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;background:linear-gradient(145deg,#168fcf 0%,#4867cc 100%);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.gtbk-mh-badge small{font-family:${GT_SANS};font-size:6.5pt;font-weight:800;letter-spacing:.12em;opacity:.86;margin-bottom:.5mm;text-transform:uppercase}
+.gtbk-mh-badge strong{font-family:${GT_SANS};font-size:22pt;line-height:.9;font-weight:900}
+/* Masthead KHÔNG huy hiệu (buổi không rõ số / BTVN) → phần chữ dùng full chiều ngang. */
+.gtbk-mh-nobadge .gtbk-mh-main{width:100%}
+/* Đầu phiếu BTVN = masthead + hàng ô Họ tên · Lớp · Điểm (tái dùng .pv-bkh-* trong BK_CSS). */
+.gtbk-btvn-head{break-inside:avoid;margin-bottom:12px}
+.gtbk-btvn-head .gtbk-mh{margin:2mm 0 3mm}
+.gtbk-btvn-head .pv-bkh-student{margin:0}
+/* Card mỗi dạng — KHÔNG atomic (dạng dài phải CHẢY nối tiếp qua trang, không bỏ trống nhảy trang).
+   ⭐ TUYỆT ĐỐI không overflow:hidden ở đây: paged.js coi box overflow:hidden là KHÔNG tách được → nguyên
+   card nhảy sang trang sau khi cuối trang không đủ chỗ (đúng lỗi "đề mục mới luôn sang trang"). Bo góc đầu
+   card xử bằng border-radius trên .gtbk-card-head thay cho overflow:hidden. */
+.gtbk-card{border:1px solid #dce5ef;border-radius:3.2mm;background:#fff;margin:0 0 4mm;break-inside:auto}
+.gtbk-card-head{display:flex;align-items:center;gap:2.6mm;padding:2.4mm 3.2mm;background:#f3f7fb;border-bottom:1px solid #e2e8f0;border-radius:3mm 3mm 0 0;break-after:avoid;break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.gtbk-code{flex:none;padding:1mm 2.6mm;background:#13233f;color:#fff;border-radius:99px;font-family:${GT_SANS};font-size:8.5pt;font-weight:900;letter-spacing:.04em;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.gtbk-card-title{flex:1;font-family:${GT_SANS};font-size:12pt;font-weight:800;color:#203454;line-height:1.22}
+.gtbk-pill{flex:none;font-family:${GT_SANS};font-size:8pt;color:#0e806f;font-weight:900;letter-spacing:.04em;text-transform:uppercase;background:#e8f8f3;border:1px solid #c9eee3;border-radius:99px;padding:.9mm 2.2mm;white-space:nowrap;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.gtbk-card-body{padding:2.4mm 3.4mm 2.8mm}
+.gtbk-card-body .pv-cau:first-child{margin-top:2px}
+`
+
+// @page + dải gradient/footer cho giáo trình BK. `sc` = selector container (vd '.pv-scope-7 ') để 2 pseudo
+// dải chỉ sơn lên trang TRONG container render này (không rò sang render khác — xem comment scope ở effect).
+// @page (margin + số trang + liên hệ) buộc phải toàn cục như buildPagedCss; render đang xem là <style> sau cùng.
+const gtPageCss = (sc: string) => `
+@page{
+  margin:11mm 13mm 15mm;
+  @bottom-center{content:"BK Academy   ·   Tel: 0963.209.309   ·   17A10 KĐT Geleximco";font-family:${GT_SANS};color:#6a7a93;font-weight:700;font-size:8pt;vertical-align:middle}
+  @bottom-right{content:counter(page) " / " counter(pages);font-family:${GT_SANS};color:#233755;font-weight:900;font-size:8.5pt;vertical-align:middle}
+}
+${sc}.pagedjs_pagebox::before{content:"";position:absolute;top:0;left:0;right:0;height:4mm;background:${GT_GRAD};z-index:2;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+${sc}.pagedjs_pagebox::after{content:"";position:absolute;bottom:0;left:0;right:0;height:3mm;background:${GT_GRAD};z-index:2;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+/* In cả lớp: mỗi HS bắt đầu ở TRANG LẺ (mặt trước) → in 2 mặt mỗi HS luôn chẵn trang, không dính HS sau
+   (paged.js tự chèn trang trắng). Con đầu không break thêm (wrapper đã break). */
+.pv-hs-recto{break-before:right}
+.pv-hs-recto>.pv-btvn:first-child{break-before:auto}
 `
 
 function cssStr(s: string): string { return '"' + s.replace(/\\/g, '\\\\').replace(/"/g, '\\"') + '"' }

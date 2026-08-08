@@ -354,7 +354,7 @@ function DetailBaiToan({ L, bt, onSua, onChon, onClose }: { L: Luoi; bt: BaiToan
         </div>
       </div>
     </div>
-    {formBt && <FormBienThe baiToanId={bt.id} v={formBt.v}
+    {formBt && <FormBienThe L={L} baiToanId={bt.id} v={formBt.v}
       goc={{
         de: [api.giaThietDayDu(L, bt.mo_hinh_id), `Chứng minh ${bt.phat_bieu}`].filter(Boolean).join('. '),
         anh: api.anhCuaBaiToan(L, bt.id),
@@ -369,12 +369,15 @@ function DetailBaiToan({ L, bt, onSua, onChon, onClose }: { L: Luoi; bt: BaiToan
 
 // Form biến thể (đổi số / đổi đỉnh) — modal riêng, z cao hơn popup detail. Biến thể MỚI điền sẵn = BÀI GỐC
 // (giống y), rồi đổi điểm (relabel tự động) + đổi số (sửa tay + đáp án). Hình Thùy tự update theo đề mới.
-function FormBienThe({ baiToanId, v, goc, onClose, onDone }: {
-  baiToanId: string; v?: BienThe
+function FormBienThe({ L, baiToanId, v, goc, onClose, onDone }: {
+  L: Luoi; baiToanId: string; v?: BienThe
   goc: { de: string; anh: string | null; loiGiai: string | null; anhLoiGiai: string | null }
   onClose: () => void; onDone: () => Promise<void>
 }) {
   const [kieu, setKieu] = useState<BienThe['kieu']>(v?.kieu ?? 'doi_dinh')
+  const [chuoiOpen, setChuoiOpen] = useState(false)
+  // Chuỗi LIÊN THÔNG của node (đi tiền đề cả 2 chiều) → click node nào cũng ra cả chuỗi. Chỉ khi TẠO MỚI.
+  const chuoi = useMemo(() => (v ? [] : api.chuoiKetNoi(L, baiToanId)), [L, baiToanId, v])
   // Mới → điền sẵn từ bài gốc (giống y). Sửa → giữ nội dung đã lưu.
   const [deBai, setDeBai] = useState(v?.de_bai ?? goc.de)
   const [anh, setAnh] = useState<string | null>(v?.anh ?? goc.anh)
@@ -454,6 +457,14 @@ function FormBienThe({ baiToanId, v, goc, onClose, onDone }: {
           {/* Thay điểm → relabel tự động (chỉ trong $…$). Đổi số → sửa tay + tính lại đáp án (2 kiểu tách hẳn). */}
           {kieu === 'doi_dinh' ? (
             <div className="space-y-2">
+              {chuoi.length > 1 && (
+                <div className="rounded-lg border border-violet-300 bg-violet-50/60 p-2.5">
+                  <Lbl>🔗 Bài này nằm trong chuỗi {chuoi.length} câu (nối tiền đề)</Lbl>
+                  <p className="text-[11.5px] leading-snug text-slate-600">Đổi đỉnh <b>cả chuỗi</b> bằng <b>một bộ điểm</b> → tạo một <b>lứa</b> khớp để ghép a,b,c sau. (Chỉ đổi riêng bài này thì dùng các ô dưới.)</p>
+                  <Btn kind="pri" className="mt-1.5 h-8 px-3 text-[12px]" onClick={() => setChuoiOpen(true)}>🔗 Đổi đỉnh cả chuỗi…</Btn>
+                </div>
+              )}
+              {chuoiOpen && <ChuoiDoiDinhPopup L={L} chuoi={chuoi} onClose={() => setChuoiOpen(false)} onDone={onDone} />}
               <div className="rounded-lg border border-indigo-200 bg-indigo-50/40 p-2.5">
                 <Lbl>Thay điểm (thủ công) — gõ ánh xạ, tự thay trong $…$</Lbl>
                 <div className="flex gap-2">
@@ -525,6 +536,78 @@ function FormBienThe({ baiToanId, v, goc, onClose, onDone }: {
           <div className="ml-auto flex gap-2">
             <button onClick={onClose} className="rounded-lg px-3 py-2 text-[13px] text-slate-500 hover:bg-slate-100">Huỷ</button>
             <Btn kind="pri" disabled={!deBai.trim() || saving} onClick={luu}>{saving ? 'Đang lưu…' : v ? 'Lưu' : 'Thêm biến thể'}</Btn>
+          </div>
+        </div>
+      </div>
+    </div>,
+    document.body,
+  )
+}
+
+// Popup ĐỔI ĐỈNH CẢ CHUỖI (một lứa): tick câu → AI relabel 1 map dùng chung → lưu mỗi node 1 biến thể cùng lua_id.
+function ChuoiDoiDinhPopup({ L, chuoi, onClose, onDone }: {
+  L: Luoi; chuoi: BaiToan[]; onClose: () => void; onDone: () => Promise<void>
+}) {
+  const [chon, setChon] = useState<Set<string>>(new Set(chuoi.map((b) => b.id)))
+  const [ghiChu, setGhiChu] = useState('')
+  const [busy, setBusy] = useState(false)
+  const [loi, setLoi] = useState<string | null>(null)
+  const selected = chuoi.filter((b) => chon.has(b.id))
+  const sinh = async () => {
+    if (!selected.length) { setLoi('Chọn ít nhất 1 câu.'); return }
+    setBusy(true); setLoi(null)
+    try {
+      const cau = selected.map((bt) => ({
+        ma: bt.ma,
+        de: [api.giaThietDayDu(L, bt.mo_hinh_id), `Chứng minh ${bt.phat_bieu}`].filter(Boolean).join('. '),
+        loiGiai: api.cachMacDinh(L, bt.id)?.loi_giai ?? '',
+      }))
+      const res = await api.doiDinhChuoiHinh(cau, ghiChu)
+      if (res.length !== selected.length) throw new Error(`AI trả ${res.length}/${selected.length} câu — thử lại hoặc bớt câu.`)
+      const items = selected.map((bt, i) => ({
+        baitoan_id: bt.id, de_bai: res[i].de_bai, anh: api.anhCuaBaiToan(L, bt.id),
+        loi_giai: res[i].loi_giai || null, anh_loi_giai: api.cachMacDinh(L, bt.id)?.anh_loi_giai ?? null,
+      }))
+      await api.saveLuaBienThe(items)
+      alert(`Đã tạo lứa ${items.length} biến thể đổi đỉnh (cùng một bộ điểm). Nhớ sửa nhãn điểm trên hình từng câu cho khớp.`)
+      await onDone()
+    } catch (e: any) { setLoi(e.message ?? String(e)); setBusy(false) }
+  }
+  return createPortal(
+    <div className="fixed inset-0 z-[70] flex items-center justify-center bg-slate-900/50 p-3 sm:p-6" onClick={onClose}>
+      <div className="flex max-h-[85vh] w-[92vw] max-w-lg flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <div className="flex items-center gap-2 border-b border-slate-200 px-5 py-3">
+          <h3 className="text-[15px] font-semibold text-slate-900">🔗 Đổi đỉnh cả chuỗi</h3>
+          <span className="text-[12px] text-slate-400">một bộ điểm cho cả lứa</span>
+          <button onClick={onClose} className="ml-auto rounded-lg border border-slate-300 px-3 py-1.5 text-[13px] text-slate-600 hover:bg-slate-50">Đóng</button>
+        </div>
+        <div className="min-h-0 flex-1 space-y-2 overflow-y-auto p-4">
+          <p className="text-[12px] leading-snug text-slate-500">Tick các câu đổi đỉnh cùng nhau. AI chọn <b>một</b> bộ điểm mới áp cho cả chuỗi → biến thể khớp nhau (một lứa), giữ nguyên số & logic.</p>
+          {chuoi.map((b, i) => {
+            const on = chon.has(b.id)
+            return (
+              <button key={b.id} type="button" onClick={() => setChon((s) => { const n = new Set(s); n.has(b.id) ? n.delete(b.id) : n.add(b.id); return n })}
+                className={`flex w-full items-start gap-2 rounded-lg border px-2.5 py-2 text-left transition ${on ? 'border-violet-300 bg-violet-50/50' : 'border-slate-200 hover:bg-slate-50'}`}>
+                <span className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md border-[1.5px] text-[12px] text-white ${on ? 'border-violet-500 bg-violet-500' : 'border-slate-300'}`}>{on ? '✓' : ''}</span>
+                <div className="min-w-0 flex-1">
+                  <div className="mb-0.5 flex items-center gap-1.5"><span className="text-[10px] text-slate-400">câu {i + 1}</span><Ma>{b.ma}</Ma><Cap cap={b.cap} /></div>
+                  <div className="text-[12.5px] text-slate-700"><MathText>{b.phat_bieu}</MathText></div>
+                </div>
+              </button>
+            )
+          })}
+          <div>
+            <div className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-slate-500">Ghi chú cho AI (tuỳ chọn)</div>
+            <input className={inpCls} value={ghiChu} onChange={(e) => setGhiChu(e.target.value)} placeholder="vd đổi sang M, N, P, Q…" />
+          </div>
+          {loi && <div className="rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[12.5px] text-rose-700">{loi}</div>}
+          <p className="rounded-md bg-amber-50 px-2 py-1 text-[11px] leading-snug text-amber-700">⚠ Hình mỗi câu vẫn là hình gốc — nhãn điểm trên hình phải sửa cho khớp bộ điểm mới.</p>
+        </div>
+        <div className="flex items-center gap-3 border-t border-slate-200 px-5 py-3">
+          <span className="text-[12.5px] text-slate-500"><b>{selected.length}</b>/{chuoi.length} câu</span>
+          <div className="ml-auto flex gap-2">
+            <button onClick={onClose} className="rounded-lg px-3 py-2 text-[13px] text-slate-500 hover:bg-slate-100">Huỷ</button>
+            <Btn kind="pri" disabled={busy || !selected.length} onClick={sinh}>{busy ? '⏳ Đang sinh…' : `Sinh lứa (${selected.length} câu)`}</Btn>
           </div>
         </div>
       </div>

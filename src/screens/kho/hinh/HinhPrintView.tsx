@@ -17,11 +17,15 @@ import { MathText } from '../ui'
 import { CHROME_CSS, buildPagedCss, printWithFilename, safeFileName } from '../../tailieu/PrintView'
 
 // ── Model bản in ──────────────────────────────────────────────────
+// Một BƯỚC con = node ẨN nở vào lời giải một ý (bản GV). Đứng TRƯỚC lời giải chính, sắp cap↑.
+export type BuocIn = { phatBieu: string; giaThietPhu?: string | null; loiGiai?: string | null; anh?: string | null; ma?: string | null }
 export type YIn = {
   nhan: string                 // "a" / "b"
   noiDung: string
+  giaThietPhu?: string | null  // dữ kiện lẻ ở ĐỀ của ý (node + van trồi từ tiền đề) — vd "gọi I = AC∩BD"
   loiGiai?: string | null
   anh?: string | null          // hình ĐÁP ÁN của ý
+  buoc?: BuocIn[]              // node ẨN nở thành bước con (chỉ bản GV) — sắp cap↑, trước lời giải chính
   bacThamChieu?: boolean       // lời giải rơi về node ⇒ khác tên điểm, phải nói rõ trên giấy
   ghiChu?: string | null       // vd "không có trong đề"
   ma?: string | null
@@ -30,7 +34,8 @@ export type YIn = {
 export type MucIn =
   | { kieu: 'chuong'; tieuDe: string; moTa?: string | null }
   | { kieu: 'nhac_lai'; items: { ma: string; phatBieu: string; cap: number }[] }
-  | { kieu: 'de'; deBai: string; anhDe?: string | null; nguon?: string | null; ma?: string | null; ys: YIn[] }
+  | { kieu: 'de'; deBai: string; anhDe?: string | null; nguon?: string | null; ma?: string | null; ys: YIn[]; anDe?: boolean; soDong?: number | null }
+  //   anDe = ẨN hình đề → Ô VẼ cho HS. soDong = số dòng kẻ mỗi ý trên bản HS (BTVN chỉnh được).
 
 export type BanIn = {
   tieuDe: string
@@ -155,34 +160,41 @@ function Noi({ ban, gv }: { ban: BanIn; gv: boolean }) {
         soDe++
         return (
           <div key={i} className="hp-de">
-            <div className="hp-de-h">
-              Bài {soDe}.{m.nguon && <span className="hp-ma"> {m.nguon}</span>}
-            </div>
-            {/* văn bản TRÁI · hình PHẢI — hình dính với đề, không trôi sang trang khác */}
-            <div className="hp-row">
-              <div className="hp-txt"><MathText>{m.deBai}</MathText></div>
-              {m.anhDe && <div className="hp-fig"><img src={m.anhDe} alt="" /></div>}
-            </div>
+            <div className="hp-de-h">Bài {soDe}.</div>
+            {/* Hình / ô-vẽ FLOAT phải → đề + câu hỏi chảy SÁT bên trái, không bị đẩy xuống dưới hình.
+                anDe (ẩn hình): bản HS chừa ô vẽ; bản GV vẫn hiện hình để đối chiếu. */}
+            {m.anDe
+              ? (gv && m.anhDe
+                ? <div className="hp-fig-r"><img src={m.anhDe} alt="" /></div>
+                : <div className="hp-draw-r"><span>Vẽ hình</span></div>)
+              : (m.anhDe && <div className="hp-fig-r"><img src={m.anhDe} alt="" /></div>)}
+            <div className="hp-txt-flow"><MathText>{m.deBai}</MathText></div>
             {m.ys.map((y, j) => (
               <div key={j} className="hp-y">
-                <div className="hp-row">
-                  <div className="hp-txt">
-                    {y.nhan && <b>{y.nhan}) </b>}<MathText>{y.noiDung}</MathText>
-                    {y.ghiChu && <span className="hp-tag">{y.ghiChu}</span>}
-                    {y.ma && <span className="hp-ma"> {y.ma}{y.cap != null ? ` · cấp ${y.cap}` : ''}</span>}
-                  </div>
-                  {gv && y.anh && <div className="hp-fig"><img src={y.anh} alt="" /></div>}
+                <div className="hp-txt-flow">
+                  {y.nhan && <b>{y.nhan}) </b>}<MathText>{y.giaThietPhu ? `${y.giaThietPhu}. ${y.noiDung}` : y.noiDung}</MathText>
+                  {y.ghiChu && <span className="hp-tag">{y.ghiChu}</span>}
                 </div>
                 {gv
                   ? (
                     <div className="hp-giai">
                       {y.bacThamChieu && <div className="hp-bac">Lời giải THAM CHIẾU — lấy từ bài chuẩn, tên điểm theo hệ thống (không phải tên điểm của đề này).</div>}
+                      {/* Node ẨN nở thành bước con (đề không hỏi vẫn phải giải) — đứng TRƯỚC lời giải chính. */}
+                      {(y.buoc ?? []).map((b, bi) => (
+                        <div key={bi} className="hp-buoc">
+                          <b>Bước {bi + 1} — {b.phatBieu}: </b>
+                          <MathText>{b.giaThietPhu ? `${b.giaThietPhu}. ${b.loiGiai ?? '—'}` : (b.loiGiai ?? '—')}</MathText>
+                          {b.anh && <div className="hp-fig-r"><img src={b.anh} alt="" /></div>}
+                        </div>
+                      ))}
                       <MathText>{y.loiGiai ?? '—'}</MathText>
+                      {y.anh && <div className="hp-fig-r"><img src={y.anh} alt="" /></div>}
                     </div>
                   )
-                  : <div className="hp-ke" />}
+                  : m.soDong === 0 ? null : <div className="hp-ke" style={m.soDong ? { height: `${Math.max(1, m.soDong) * 7.7}mm` } : undefined} />}
               </div>
             ))}
+            <div style={{ clear: 'both' }} />
           </div>
         )
       })}
@@ -202,18 +214,30 @@ const HINH_CSS = `
 .hp-nhac{border:1px dashed #cbd5e1;border-radius:8px;padding:9px 12px;margin-bottom:12px;background:#fafbfc;break-inside:avoid}
 .hp-nhac-t{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#6b7280;font-weight:700;margin-bottom:4px}
 .hp-nhac-i{font-size:15px;color:#374151;margin:2px 0}
-.hp-de{margin:0 0 14px;break-inside:auto}
-.hp-de-h{font-weight:800;color:#134e4a;font-size:18px;margin:10px 0 4px;break-after:avoid}
+.hp-de{margin:0 0 8px;break-inside:auto}
+.hp-de-h{font-weight:800;color:#134e4a;font-size:18px;margin:4px 0 3px;break-after:avoid}
+/* Đề + câu hỏi CHẢY sát bên trái · hình/ô-vẽ FLOAT phải (câu hỏi nằm ngay sau đề, không đợi hết chiều cao hình) */
+.hp-txt-flow{font-size:17px}
+.hp-fig-r{float:right;width:36%;margin:0 0 3px 5mm;box-sizing:border-box}
+.hp-fig-r img{width:100%;max-height:50mm;object-fit:contain;border:1px solid #e2e8f0;border-radius:6px;background:#fff}
+.hp-draw-r{float:right;width:40%;height:58mm;margin:0 0 3px 5mm;box-sizing:border-box;border:1px dashed #94a3b8;border-radius:6px;background:#fff;position:relative}
+.hp-draw-r span{position:absolute;top:4px;left:6px;font-size:10px;color:#94a3b8;text-transform:uppercase;letter-spacing:.05em}
 /* văn bản trái · hình phải: inline-block thay vì flex/grid — paged.js đo layout grid không đáng tin (DEVLOG 07-05) */
 .hp-row{font-size:0;break-inside:avoid}
 .hp-txt{display:inline-block;vertical-align:top;width:66%;font-size:17px;padding-right:4mm;box-sizing:border-box}
 .hp-fig{display:inline-block;vertical-align:top;width:34%;box-sizing:border-box}
 .hp-fig img{width:100%;max-height:52mm;object-fit:contain;border:1px solid #e2e8f0;border-radius:6px;background:#fff}
-.hp-y{margin:7px 0 0}
+/* Ẩn hình → chừa Ô VẼ cho HS: đề 60% trái · ô vẽ 40% phải */
+.hp-row-ve .hp-txt{width:60%}
+.hp-draw{display:inline-block;vertical-align:top;width:40%;height:58mm;box-sizing:border-box;border:1px dashed #94a3b8;border-radius:6px;background:#fff;position:relative}
+.hp-draw span{position:absolute;top:4px;left:6px;font-size:10px;color:#94a3b8;text-transform:uppercase;letter-spacing:.05em}
+.hp-y{margin:4px 0 0}
 .hp-ma{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#94a3b8}
 .hp-tag{display:inline-block;background:#faeeda;border:1px solid #ef9f27;color:#854f0b;border-radius:10px;padding:0 7px;font-size:11.5px;margin-left:5px;vertical-align:middle}
 .hp-giai{font-size:16px;color:#374151;background:#fbfcff;border:1px solid #e5e9f0;border-radius:7px;padding:7px 10px;margin-top:4px}
 .hp-bac{font-size:12px;color:#8a5a12;background:#fffaf1;border-radius:5px;padding:3px 7px;margin-bottom:5px}
-/* bản HS: chỗ trống có dòng kẻ để viết */
-.hp-ke{height:26mm;margin-top:4px;background-image:repeating-linear-gradient(to bottom,transparent 0 7.6mm,#d7dee7 7.6mm 7.7mm)}
+.hp-buoc{margin:0 0 5px;padding-left:9px;border-left:2px solid #cdd6e4}
+.hp-buoc b{color:#0f766e}
+/* bản HS: chỗ trống có DÒNG KẺ để viết — line rõ (0.3mm, xám vừa), mỗi 7.7mm 1 dòng */
+.hp-ke{height:23.1mm;margin-top:3px;background-image:repeating-linear-gradient(to bottom,transparent 0 7.4mm,#9aa7b5 7.4mm 7.7mm)}
 `

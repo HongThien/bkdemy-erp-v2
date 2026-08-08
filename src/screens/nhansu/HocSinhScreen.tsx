@@ -10,6 +10,7 @@ import {
 } from '../../lib/nhansu'
 import { Field, inp, Seg } from '../kho/ui'
 import BangThanhTich from '../gami/BangThanhTich'
+import { fetchPhLogins } from '../../lib/ph-login'
 
 const TT_LABEL: Record<string, string> = { dang_hoc: 'Đang học', bao_luu: 'Bảo lưu', nghi: 'Nghỉ' }
 const ALL = '__all__' // tab "Tất cả khối"
@@ -36,6 +37,8 @@ export default function HocSinhScreen() {
   const [list, setList] = useState<HocSinh[]>([])
   const [countLop, setCountLop] = useState<Record<string, number>>({})
   const [phCoSdt, setPhCoSdt] = useState<Set<string>>(new Set()) // id PH đã có SĐT (để cảnh báo HS thiếu)
+  const [phChuaDangNhap, setPhChuaDangNhap] = useState<Set<string>>(new Set()) // id PH đủ điều kiện nhưng CHƯA đăng nhập app
+  const [phLoginOK, setPhLoginOK] = useState(false) // đã lấy được trạng thái login (mới hiện cảnh báo, tránh báo nhầm khi lỗi)
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
   const [q, setQ] = useState('')
@@ -56,6 +59,10 @@ export default function HocSinhScreen() {
       const [cl, phs] = await Promise.all([countLopActiveByHS(hs.map((h) => h.id)), listPhuHuynh()]) // 1 query đếm lớp + danh sách PH
       setCountLop(cl)
       setPhCoSdt(new Set(phs.filter((p) => p.so_dien_thoai?.trim()).map((p) => p.id)))
+      // Trạng thái đăng nhập app — best-effort: ph-app lỗi/chưa cấu hình thì bỏ qua, không chặn bảng.
+      fetchPhLogins()
+        .then(({ parents }) => { setPhChuaDangNhap(new Set(parents.filter((p) => !p.last_sign_in_at).map((p) => p.phu_huynh_id))); setPhLoginOK(true) })
+        .catch(() => setPhLoginOK(false))
     } catch (e: any) { setErr(e.message ?? String(e)) } finally { setLoading(false) }
   }
   useEffect(() => { reload() }, [khoi]) // eslint-disable-line
@@ -131,6 +138,11 @@ export default function HocSinhScreen() {
                         {!(h.phu_huynh_id && phCoSdt.has(h.phu_huynh_id)) && (
                           <span title="Phụ huynh chưa có số điện thoại" className="inline-flex shrink-0 items-center gap-1 rounded-full bg-amber-50 px-2 py-0.5 text-[11px] font-medium text-amber-700 ring-1 ring-amber-200">
                             ⚠ Chưa có SĐT
+                          </span>
+                        )}
+                        {phLoginOK && h.phu_huynh_id && phChuaDangNhap.has(h.phu_huynh_id) && (
+                          <span title="Phụ huynh chưa đăng nhập app Cổng Phụ huynh" className="inline-flex shrink-0 items-center gap-1 rounded-full bg-orange-50 px-2 py-0.5 text-[11px] font-medium text-orange-700 ring-1 ring-orange-200">
+                            📱 PH chưa đăng nhập app
                           </span>
                         )}
                       </span>
