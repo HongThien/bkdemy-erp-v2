@@ -3539,3 +3539,42 @@ Chưa soi được trên app thật (dev pane phiên này 0×0) — nhờ Thùy 
 *(Ghi chú: section này ban đầu tao lỡ chèn nhầm vào GIỮA entry 07-24 "thanh tìm theo LỚP" — vì matched dòng
 "moBuoi tra theo lop+ngay" tưởng là cuối file. Đã gỡ ra, nối lại 07-24, ghép trọn vào cuối. Bài học: file
 append-only không chronological chặt → xác định CUỐI FILE thật trước khi append, đừng tin `wc -l` sai encoding.)*
+
+## 2026-08-08 — Kho Hình soạn tài liệu: nở đáp án theo node ẩn · giả thiết phụ/van · popup chọn-bản → cây tick
+
+Pull erp-v2 (2b3c820), đọc HANDOFF. Cả ngày làm phần SOẠN TÀI LIỆU HÌNH theo brainstorm với Thùy. Đã push main.
+
+**Brainstorm chốt model (trước khi code):**
+- 1 bài = **1 ĐÍCH** (node ngọn), tree = đích + bao đóng tiền đề **HỘI TỤ** (`chuoiTienDe`). Cấm phân kỳ.
+- Đề pick **tập con** node → ý a,b,c. Node KHÔNG pick = **ẩn → nở thành BƯỚC** trong đáp án của ý phụ thuộc,
+  cắt tại node tick, **hiện 1 LẦN**. "Đề không hỏi vẫn phải có mới giải được."
+- Nhãn ý **ĐỘNG** → lời giải cấm tham chiếu "ý a/b/c", viện dẫn theo TÊN tính chất.
+- Giả thiết phụ (dữ kiện lẻ, đa số = VẼ THÊM "gọi I=AC∩BD"): bám node, hiện ở đề nếu tick / ở bước nếu ẩn.
+  Mặc định ở ĐÁP ÁN (construction, HS tự dựng). VAN per-CẠNH (keo_gt_phu): bật → trồi gt phụ lên ĐỀ (giảm
+  độ khó). Nhiều gt phụ = nên tách mô hình. Đích = SUY (cap cao nhất trong tick, không lưu). Node lẻ = chuỗi 1 node.
+- Spec: `docs/spec-kho-hinh-soan-chuoi.md`.
+
+**Migration `202608080034_hinh_gia_thiet_phu_van`** (đã áp DB `_apply_one` + `npm run schema`):
+- `hinh_baitoan.gia_thiet_phu text` · `hinh_cach_tien_de.keo_gt_phu bool default false`.
+- ⚠ schema.md lúc pull STALE (thiếu `hinh_gt_bai.so_dong`) → `npm run schema` lấy sự thật DB TRƯỚC khi áp.
+
+**Code:**
+- `hinh.ts noDapAn(L, tickIds)`: khung nở (ý = tick sắp cap↑; buocNodes = ẩn cắt-tại-tick hiện-1-lần; gtPhuKeo =
+  van trồi gt phụ). `tienDeVan` đi cạnh keo_gt_phu. BaiToan +gia_thiet_phu, Luoi.tienDe +keo_gt_phu.
+- `mucGhep`/`mucGhepLua` dùng `noDapAn` → YIn thêm `giaThietPhu`+`buoc[]`; `HinhPrintView` render "Bước i —
+  [tính chất]" (chỉ GV) + giả thiết phụ ở đề/đầu bước.
+- `FormBaiToan`: ô Giả thiết phụ + checkbox "gt phụ ở đề" per cạnh tiền đề (chỉ hiện khi tiền đề có gt phụ);
+  `setTienDe(…, vanIds)` lưu keo_gt_phu.
+- `CayTickPopup`: cây NGANG (cột = ĐỘ SÂU tiền đề longest-path, KHÔNG dùng cap → chuỗi thẳng trải ngang), dây
+  nối, tick ý, xem trước sống đề HS/đáp án GV. 80vw, ô 234×116, chữ 16.5px (~12.5pt Thùy yêu cầu pt-không-px).
+- `ChonChuoiPopup` (màn 1): popup TO hiện đầy đủ TỪNG BẢN của chuỗi (gốc + lứa biến thể) — thẻ view giả thiết +
+  câu, nút "Chọn bản này" → màn 2 = CayTickPopup (nút ← Đổi bản). `ChuoiRow` mỗi phiếu có nút Chọn/Sửa mở nó.
+
+**SAI/SỬA (hiểu nhầm ý CEO 2 lần):**
+- Lần 1: hiểu "hiện list chuỗi trước" = list MỌI DẠNG khác nhau → build nút "Chọn ý cho Trên lớp/Về nhà" đầu cột
+  + popup list mọi component. SAI. Thùy: "các chuỗi của node" = GỐC + BIẾN THỂ của CHÍNH chuỗi đó. Revert.
+- Lần 2: làm list bản dạng nhãn nhỏ. Thùy: phải popup TO, VIEW full nội dung từng bản, mỗi bản 1 nút chọn. → thẻ view.
+- Bài học: thuật ngữ CEO ("chuỗi") nghĩa HẸP theo ngữ cảnh — soi ví dụ (ảnh màn) trước khi build UI.
+- Git: pull erp-v2 lần 2 (behind 3: Gami EXP · PH login · redesign in Đại) — không đụng file kho-hình, FF sạch.
+
+tsc + vite build sạch mọi bước. Dev pane phiên 0×0 → nhờ Thùy `npm run dev` soi. Migration + schema.md commit kèm.
