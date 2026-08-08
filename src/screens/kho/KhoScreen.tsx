@@ -5,10 +5,10 @@ import { useMonScope } from '../../lib/mon'
 import BanDo from './BanDo'
 import SearchCau from './SearchCau'
 import KhoRac from './KhoRac'
-import { daiBranch, hinhBranch, khtnBranch } from './branches'
+import { daiBranch, hinhBranch, hinhGiaiTichBranch, khtnBranch } from './branches'
 import KhoHinhScreen from './hinh/KhoHinhScreen'
 
-type Tab = 'dai' | 'hinh'
+type Tab = 'dai' | 'hinh' | 'hinhgt'
 type Mon = 'toan' | 'khtn'
 // Map môn-kho ↔ nhãn MON_LIST (nhan_su_mon lưu nhãn 'Toán'/'KHTN'). Kho mới hỗ trợ 2 môn này.
 const MON_TABS: { key: Mon; label: string }[] = [{ key: 'toan', label: 'Toán' }, { key: 'khtn', label: 'KHTN' }]
@@ -18,7 +18,10 @@ const readKhoi = () => {
   const k = localStorage.getItem('kho.khoi')
   return k && (KHOI_OPTIONS as readonly string[]).includes(k) ? k : DEFAULT_KHOI
 }
-const readTab = () => (localStorage.getItem('kho.tab') === 'hinh' ? 'hinh' : 'dai') as Tab
+const readTab = () => {
+  const v = localStorage.getItem('kho.tab')
+  return (v === 'hinh' || v === 'hinhgt' ? v : 'dai') as Tab
+}
 const readMon = () => (localStorage.getItem('kho.mon') === 'khtn' ? 'khtn' : 'toan') as Mon
 
 export default function KhoScreen() {
@@ -29,7 +32,7 @@ export default function KhoScreen() {
   useEffect(() => { localStorage.setItem('kho.tab', tab) }, [tab])
   useEffect(() => { localStorage.setItem('kho.mon', mon) }, [mon])
   // môn KHTN = 1 cây (không nhánh Đại/Hình); Toán = nhánh tab → branch.
-  const config = mon === 'khtn' ? khtnBranch : tab === 'dai' ? daiBranch : hinhBranch
+  const config = mon === 'khtn' ? khtnBranch : tab === 'dai' ? daiBranch : tab === 'hinhgt' ? hinhGiaiTichBranch : hinhBranch
   const [timCau, setTimCau] = useState(false)
   const [rac, setRac] = useState(false)   // kho rác — câu đã xoá, vẫn resolve được cho tài liệu cũ
 
@@ -62,6 +65,7 @@ export default function KhoScreen() {
           <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5">
             <TabBtn active={tab === 'dai'} onClick={() => setTab('dai')}>Đại số</TabBtn>
             <TabBtn active={tab === 'hinh'} onClick={() => setTab('hinh')}>Hình học</TabBtn>
+            <TabBtn active={tab === 'hinhgt'} onClick={() => setTab('hinhgt')}>Hình giải tích</TabBtn>
           </div>
         )}
         {allowed.length > 0 && !profileLoading && <>

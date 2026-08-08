@@ -1,13 +1,17 @@
 // Data-layer "Làm tài liệu" (giáo trình…). Tài liệu = THAM CHIẾU vào kho; resolver kéo nội dung sống khi render.
 import { supabase } from './supabase'
-import { listCauByDang, listDaiMap, listKhtnMap, type CauHoi, type MapRow } from './kho/api'
+import { listCauByDang, listDaiMap, listKhtnMap, listHgtMap, type CauHoi, type MapRow } from './kho/api'
 
 const LIMIT = 10000
 
-// ── DISPATCH KHO theo MÔN của tài liệu (Toán→dai_, KHTN→khtn_). Mặc định Toán → mã cũ KHÔNG đổi. ──
-export function khoCuaMon(mon?: string | null): { cauTbl: string; banDoTbl: string; ltDangTbl: string; ltCdTbl: string; listMap: (khoi: string) => Promise<MapRow[]> } {
+// ── DISPATCH KHO theo (MÔN, NHÁNH) của tài liệu (Toán→dai_, KHTN→khtn_, Toán+nhanh='hinh_gt'→hgt_).
+// `nhanh` chỉ có ý nghĩa TRONG mon='Toán' (Đại/Hình giải tích cùng mon để RBAC/billing/lop.mon sạch —
+// xem §1.6; phân biệt nhánh KHÔNG qua mon). Mặc định (mon≠KHTN, nhanh trống) → mã cũ KHÔNG đổi (Đại). ──
+export function khoCuaMon(mon?: string | null, nhanh?: string | null): { cauTbl: string; banDoTbl: string; ltDangTbl: string; ltCdTbl: string; listMap: (khoi: string) => Promise<MapRow[]> } {
   return mon === 'KHTN'
     ? { cauTbl: 'khtn_cau_hoi', banDoTbl: 'khtn_ban_do', ltDangTbl: 'khtn_dang_ly_thuyet', ltCdTbl: 'khtn_chuyen_de_ly_thuyet', listMap: listKhtnMap }
+    : nhanh === 'hinh_gt'
+    ? { cauTbl: 'hgt_cau_hoi', banDoTbl: 'hgt_ban_do', ltDangTbl: 'hgt_dang_ly_thuyet', ltCdTbl: 'hgt_chuyen_de_ly_thuyet', listMap: listHgtMap }
     : { cauTbl: 'dai_cau_hoi', banDoTbl: 'dai_ban_do', ltDangTbl: 'dai_dang_ly_thuyet', ltCdTbl: 'dai_chuyen_de_ly_thuyet', listMap: listDaiMap }
 }
 
@@ -77,7 +81,8 @@ export function sortETCaus<T extends ETCauLike>(caus: T[], ch: CauHinh): T[] {
 // file_url = link PDF public (bucket 'kho-tailieu') của bản export GẦN NHẤT — ghi đè mỗi lần "🔗 Lấy link" (uploadPagesAsLink, PrintView.tsx). "🖨 In / Xuất PDF" giờ dùng native window.print(), không upload.
 // stt_lop = SỐ BUỔI CỦA LỚP (1,2,3…) cho doc vận hành bám (lop_id, ngay) — xem §"Bộ giáo trình riêng
 // của lớp" phía dưới. NULL với master/ET/đề thi (không thuộc lớp nào).
-export type TaiLieu = { id: string; loai: string; ten: string; khoi: string; mon: string; ma_chuyen_de: string | null; theme: string; cau_hinh?: CauHinh; created_at?: string; updated_at?: string; created_by?: string | null; file_url?: string | null; stt_lop?: number | null }
+// nhanh: chỉ có ý nghĩa trong mon='Toán' — null = Đại (mặc định, mã cũ) | 'hinh_gt' = Hình giải tích.
+export type TaiLieu = { id: string; loai: string; ten: string; khoi: string; mon: string; nhanh?: string | null; ma_chuyen_de: string | null; theme: string; cau_hinh?: CauHinh; created_at?: string; updated_at?: string; created_by?: string | null; file_url?: string | null; stt_lop?: number | null }
 // kieu = KIỂU HIỂN THỊ của block (phan): 'thuong'(1 cột) | '2cot' | '3cot' | '4cot' | … (registry mở rộng). Câu giữ ma_dang.
 export type BlockKieu = 'thuong' | '2cot' | '3cot' | '4cot'
 export const BLOCK_KIEU: { v: BlockKieu; lbl: string; cols: number }[] = [
@@ -99,11 +104,14 @@ export type PhanResolved = TaiLieuPhan & {
 export type TaiLieuFull = { taiLieu: TaiLieu; phans: PhanResolved[]; ltChuyenDe: Record<string, LtRow | null>; tenChuyenDe: Record<string, string> }
 
 // ── Thư viện (CRUD tài liệu) ──────────────────────────────────────
-export async function listTaiLieu(khoi?: string, loai = 'giao_trinh', mon?: string): Promise<TaiLieu[]> {
+// nhanh: undefined = không lọc (mọi nhánh) · null = CHỈ Đại (nhanh is null) · string = CHỈ nhánh đó.
+export async function listTaiLieu(khoi?: string, loai = 'giao_trinh', mon?: string, nhanh?: string | null): Promise<TaiLieu[]> {
   // khoi = undefined → tất cả khối. mon = undefined → mọi môn.
   let q = supabase.from('tai_lieu').select('*').eq('loai', loai).order('created_at', { ascending: false }).limit(LIMIT)
   if (khoi) q = q.eq('khoi', khoi)
   if (mon) q = q.eq('mon', mon)
+  if (nhanh === null) q = q.is('nhanh', null)
+  else if (nhanh) q = q.eq('nhanh', nhanh)
   const { data, error } = await q
   if (error) throw error
   return (data ?? []) as TaiLieu[]
@@ -117,10 +125,10 @@ export async function listAllTaiLieu(mon?: string | string[]): Promise<TaiLieu[]
   if (error) throw error
   return (data ?? []) as TaiLieu[]
 }
-export async function createTaiLieu(input: { loai?: string; ten: string; khoi: string; mon?: string; ma_chuyen_de?: string | null; theme?: string }): Promise<TaiLieu> {
+export async function createTaiLieu(input: { loai?: string; ten: string; khoi: string; mon?: string; nhanh?: string | null; ma_chuyen_de?: string | null; theme?: string }): Promise<TaiLieu> {
   const { data: { user } } = await supabase.auth.getUser() // người tạo = session hiện tại
   const { data, error } = await supabase.from('tai_lieu')
-    .insert({ loai: input.loai ?? 'giao_trinh', ten: input.ten, khoi: input.khoi, mon: input.mon ?? 'Toán', ma_chuyen_de: input.ma_chuyen_de ?? null, theme: input.theme ?? 'bkdemy', created_by: user?.id ?? null })
+    .insert({ loai: input.loai ?? 'giao_trinh', ten: input.ten, khoi: input.khoi, mon: input.mon ?? 'Toán', nhanh: input.nhanh ?? null, ma_chuyen_de: input.ma_chuyen_de ?? null, theme: input.theme ?? 'bkdemy', created_by: user?.id ?? null })
     .select().single()
   if (error) throw error
   return data as TaiLieu
@@ -380,7 +388,7 @@ export async function getTaiLieuFull(id: string): Promise<TaiLieuFull> {
   const cauRows = phanIds.length
     ? (((await supabase.from('tai_lieu_cau').select('*').in('phan_id', phanIds).order('thu_tu').limit(LIMIT)).data ?? []) as { phan_id: string; ma_cau: string; thu_tu: number }[])
     : []
-  const K = khoCuaMon((tl as any).mon) // dispatch kho theo MÔN của tài liệu
+  const K = khoCuaMon((tl as any).mon, (tl as any).nhanh) // dispatch kho theo (MÔN, NHÁNH) của tài liệu
   const maCaus = [...new Set(cauRows.map((r) => r.ma_cau))]
   const caus = maCaus.length ? (((await supabase.from(K.cauTbl).select('*').in('ma_cau', maCaus).limit(LIMIT)).data ?? []) as CauHoi[]) : []
   const cauMap = new Map(caus.map((c) => [c.ma_cau, c]))
@@ -437,10 +445,10 @@ export async function listET(lopId?: string): Promise<ETDoc[]> {
   if (error) throw error
   return (data ?? []) as ETDoc[]
 }
-export async function createET(input: { lopId: string; ngay: string; ten: string; khoi: string; mon?: string }): Promise<ETDoc> {
+export async function createET(input: { lopId: string; ngay: string; ten: string; khoi: string; mon?: string; nhanh?: string | null }): Promise<ETDoc> {
   const { data: { user } } = await supabase.auth.getUser()
   const { data, error } = await supabase.from('tai_lieu')
-    .insert({ loai: 'et', ten: input.ten, khoi: input.khoi, mon: input.mon ?? 'Toán', lop_id: input.lopId, ngay: input.ngay, created_by: user?.id ?? null })
+    .insert({ loai: 'et', ten: input.ten, khoi: input.khoi, mon: input.mon ?? 'Toán', nhanh: input.nhanh ?? null, lop_id: input.lopId, ngay: input.ngay, created_by: user?.id ?? null })
     .select().single()
   if (error) throw error
   return data as ETDoc
@@ -467,7 +475,7 @@ export async function duplicateTaiLieu(srcId: string, over: { ten: string; lop_i
   const s = src as any
   const { data: { user } } = await supabase.auth.getUser()
   const { data: nw, error } = await supabase.from('tai_lieu').insert({
-    loai: s.loai, ten: over.ten, khoi: s.khoi, mon: s.mon ?? 'Toán', ma_chuyen_de: s.ma_chuyen_de, theme: s.theme, cau_hinh: s.cau_hinh,
+    loai: s.loai, ten: over.ten, khoi: s.khoi, mon: s.mon ?? 'Toán', nhanh: s.nhanh ?? null, ma_chuyen_de: s.ma_chuyen_de, theme: s.theme, cau_hinh: s.cau_hinh,
     lop_id: over.lop_id ?? null, ngay: over.ngay ?? null, created_by: user?.id ?? null,
   }).select().single()
   if (error) throw error
@@ -581,7 +589,7 @@ export async function listGiaoTrinhLop(lopId: string): Promise<BuoiLop[]> {
 // master — `opts.tenBuoi` (tên buổi bên master) chỉ còn dùng làm phần chữ phía sau số.
 export async function trichXuatBuoi(masterId: string, buoiPhanId: string, opts: { lopId: string; ngay: string; khoi: string; tenLop: string; tenBuoi: string; giaoTrinh: boolean; btvn: boolean }): Promise<TaiLieu[]> {
   const phans = await listPhan(masterId)
-  const { data: master } = await supabase.from('tai_lieu').select('cau_hinh, theme, mon').eq('id', masterId).single()
+  const { data: master } = await supabase.from('tai_lieu').select('cau_hinh, theme, mon, nhanh').eq('id', masterId).single()
   const i = phans.findIndex((p) => p.id === buoiPhanId)
   if (i < 0) throw new Error('Không thấy buổi.')
   const marker = phans[i]
@@ -602,7 +610,7 @@ export async function trichXuatBuoi(masterId: string, buoiPhanId: string, opts: 
     // Re-trích = THAY THẾ doc cũ cùng (lớp+ngày+loại) — chống trùng (unique uq_tai_lieu_van_hanh).
     await supabase.from('tai_lieu').delete().eq('loai', loai).eq('lop_id', opts.lopId).eq('ngay', opts.ngay)
     const { data, error } = await supabase.from('tai_lieu').insert({
-      loai, ten: tenDocBuoi(loai, opts.tenLop, opts.ngay, tieuDeLop), khoi: opts.khoi, mon: (master as any)?.mon ?? 'Toán', theme: (master as any)?.theme ?? 'bkdemy', cau_hinh: (master as any)?.cau_hinh ?? {},
+      loai, ten: tenDocBuoi(loai, opts.tenLop, opts.ngay, tieuDeLop), khoi: opts.khoi, mon: (master as any)?.mon ?? 'Toán', nhanh: (master as any)?.nhanh ?? null, theme: (master as any)?.theme ?? 'bkdemy', cau_hinh: (master as any)?.cau_hinh ?? {},
       lop_id: opts.lopId, ngay: opts.ngay, nguon_id: masterId, nguon_buoi: buoiPhanId, stt_lop: stt, created_by: user?.id ?? null,
     }).select().single()
     if (error) throw error

@@ -10,8 +10,8 @@ import { useStore } from '../../store/useStore'
 import OnTapEditor from '../../components/OnTapEditor'
 import { cauItemParts, CauColumns, CHROME_CSS } from './PrintView'
 
-export default function OnTapConfirmScreen({ masterId, buoiId, tenBuoi, lopId, tenLop, ngay, khoi, mon, regularBtvn, onClose, onConfirmed }: {
-  masterId: string; buoiId: string; tenBuoi: string; lopId: string; tenLop: string; ngay: string; khoi: string; mon: string
+export default function OnTapConfirmScreen({ masterId, buoiId, tenBuoi, lopId, tenLop, ngay, khoi, mon, nhanh, regularBtvn, onClose, onConfirmed }: {
+  masterId: string; buoiId: string; tenBuoi: string; lopId: string; tenLop: string; ngay: string; khoi: string; mon: string; nhanh?: string | null
   regularBtvn: PhanResolved[] // dạng+câu BTVN "thường" của buổi — lấy thẳng từ master (buoi.btvnByMa), không cần fetch
   onClose: () => void
   onConfirmed: () => void
@@ -20,7 +20,7 @@ export default function OnTapConfirmScreen({ masterId, buoiId, tenBuoi, lopId, t
   const [gv, setGv] = useState(false)
   const [busy, setBusy] = useState(false)
   const [ontapPreview, setOntapPreview] = useState<{ ten_dang: string; caus: CauHoi[]; linesByCau: Record<string, number> }[]>([])
-  const cauTbl = khoCuaMon(mon).cauTbl
+  const cauTbl = khoCuaMon(mon, nhanh).cauTbl
 
   // Preview khối ôn tập — resolve NỘI DUNG câu + tên dạng từ config (đang sống ở state, chưa lưu DB) để
   // vẽ y hệt cái sẽ ra khi Xác nhận. OnTapEditor tự giữ cache riêng của nó, không expose ra ngoài nên
@@ -30,7 +30,7 @@ export default function OnTapConfirmScreen({ masterId, buoiId, tenBuoi, lopId, t
     ;(async () => {
       if (!config || config.skipped || !config.dangs.length) { setOntapPreview([]); return }
       const [tenMap, ...causLists] = await Promise.all([
-        fetchTenDangByMa(config.dangs.map((d) => d.ma_dang), mon),
+        fetchTenDangByMa(config.dangs.map((d) => d.ma_dang), mon, nhanh),
         ...config.dangs.map((d) => fetchCausByMa(d.ma_caus, cauTbl)),
       ])
       if (!alive) return
@@ -50,7 +50,7 @@ export default function OnTapConfirmScreen({ masterId, buoiId, tenBuoi, lopId, t
       const btvnDoc = created.find((d) => d.loai === 'btvn')
       if (btvnDoc) {
         useStore.getState().enqueueLinkGen(btvnDoc.id, btvnDoc.loai)
-        const { matChet } = await appendOnTapToBtvnDoc(btvnDoc.id, masterId, buoiId, lopId, mon)
+        const { matChet } = await appendOnTapToBtvnDoc(btvnDoc.id, masterId, buoiId, lopId, mon, nhanh)
         if (matChet.length) alert(`${matChet.length} câu ôn tập không còn trong kho (đã xoá/đổi mã) — mở ✎ Ôn tập ở Kho tài liệu để thay câu khác.`)
       }
       // Số buổi là số CỦA LỚP → chốt lại cả lớp; doc nào đổi tiêu đề/tên thì làm mới link PDF.
@@ -73,7 +73,7 @@ export default function OnTapConfirmScreen({ masterId, buoiId, tenBuoi, lopId, t
       </div>
       <div className="grid min-h-0 flex-1 grid-cols-2 overflow-hidden">
         <div className="min-h-0 overflow-auto border-r border-slate-200 bg-[#fafafb] p-5">
-          <OnTapEditor nguonId={masterId} buoiId={buoiId} lopId={lopId} khoi={khoi} mon={mon} config={config} onChange={setConfig} />
+          <OnTapEditor nguonId={masterId} buoiId={buoiId} lopId={lopId} khoi={khoi} mon={mon} nhanh={nhanh} config={config} onChange={setConfig} />
         </div>
         <div className="flex min-h-0 flex-col overflow-hidden">
           <div className="flex items-center gap-2 border-b border-slate-100 px-4 py-2">

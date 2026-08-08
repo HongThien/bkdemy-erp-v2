@@ -107,6 +107,8 @@ export async function goiYOnTap(nguonId: string, buoiId: string, lopId: string, 
   // Bước 4: chọn câu ≤2/dạng — cứng né usedCausOfBuoi(nguonId, buoiId) (quét MASTER, doc BTVN đích chưa tồn tại
   // lúc gợi ý); mềm né câu lớp đã làm trong 30 ngày, hết pool thì bỏ né-mềm chứ không chặn. Không ép loại câu
   // (Thùy chốt "tự do theo pool") — suggestCauForDang tự sort least-used.
+  // ⚠ Hình giải tích (nhanh='hinh_gt'): chưa có mastery riêng (Phase 2) → byMa không khớp mã hgt_ → scored
+  // rỗng → return [] sớm ở trên, hàm này không tới đây với candidate hgt (an toàn, không cần K nhánh-aware).
   const K = khoCuaMon(mon)
   const [hardExclude, softExclude] = await Promise.all([usedCausOfBuoi(nguonId, buoiId), neCauLopGanDay(lopId)])
   const out: GoiY[] = []
@@ -150,9 +152,9 @@ export async function fetchCausByMa(maCaus: string[], cauTbl: string): Promise<C
   return (data ?? []) as CauHoi[]
 }
 // Tên dạng theo ma_dang (cho UI — config/DangPickerOne chỉ có ma_dang, không kèm tên).
-export async function fetchTenDangByMa(maDangs: string[], mon: string): Promise<Map<string, string>> {
+export async function fetchTenDangByMa(maDangs: string[], mon: string, nhanh?: string | null): Promise<Map<string, string>> {
   if (!maDangs.length) return new Map()
-  const { data, error } = await supabase.from(khoCuaMon(mon).banDoTbl).select('ma_dang, ten_dang').in('ma_dang', maDangs).limit(LIMIT)
+  const { data, error } = await supabase.from(khoCuaMon(mon, nhanh).banDoTbl).select('ma_dang, ten_dang').in('ma_dang', maDangs).limit(LIMIT)
   if (error) throw error
   return new Map(((data ?? []) as { ma_dang: string; ten_dang: string }[]).map((d) => [d.ma_dang, d.ten_dang]))
 }
@@ -160,10 +162,10 @@ export async function fetchTenDangByMa(maDangs: string[], mon: string): Promise<
 // ── Append vào doc BTVN đã trích (spec §6) — gọi SAU trichXuatBuoi (không sửa hàm đó, tránh vòng import
 // ngược tailieu.ts↔ontap.ts — compose ở CALL SITE, xem TrichPanel.gan trong TaiLieuBuilder.tsx). Không có
 // config / skipped / rỗng → không làm gì, doc y hệt hiện tại (đúng acceptance "không cấu hình → không regress").
-export async function appendOnTapToBtvnDoc(btvnDocId: string, nguonId: string, nguonBuoi: string, lopId: string, mon: string): Promise<{ added: number; matChet: string[] }> {
+export async function appendOnTapToBtvnDoc(btvnDocId: string, nguonId: string, nguonBuoi: string, lopId: string, mon: string, nhanh?: string | null): Promise<{ added: number; matChet: string[] }> {
   const config = await getOnTapConfig(nguonId, nguonBuoi, lopId)
   if (!config || config.skipped || !config.dangs.length) return { added: 0, matChet: [] }
-  const K = khoCuaMon(mon)
+  const K = khoCuaMon(mon, nhanh)
   const phans = await listPhan(btvnDocId)
   let t = phans.length ? Math.max(...phans.map((p) => p.thu_tu)) + 1 : 0
   const { data: doc } = await supabase.from('tai_lieu').select('cau_hinh').eq('id', btvnDocId).single()

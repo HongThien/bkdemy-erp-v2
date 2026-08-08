@@ -33,13 +33,16 @@ export default function TaiLieuScreen() {
   const [mon, setMon] = useState<string>('')
   useEffect(() => { if (allowedMons.length && !allowedMons.includes(mon)) setMon(allowedMons[0]) }, [allowedMons.join(','), mon])
   const profileLoading = !isAll && me === null
+  // Nhánh TRONG mon='Toán' (Đại/Hình giải tích — cùng mon để RBAC/billing sạch, xem lib/tailieu.ts).
+  // null = Đại (mặc định, không đổi hành vi cũ) · 'hinh_gt' = Hình giải tích.
+  const [nhanh, setNhanh] = useState<string | null>(null)
 
   async function reload() {
     if (!mon) { setList([]); setLoading(false); return }
     setLoading(true); setErr(null)
-    try { setList(await listTaiLieu(khoi === ALL ? undefined : khoi, 'giao_trinh', mon)) } catch (e: any) { setErr(e.message ?? String(e)) } finally { setLoading(false) }
+    try { setList(await listTaiLieu(khoi === ALL ? undefined : khoi, 'giao_trinh', mon, mon === 'Toán' ? nhanh : undefined)) } catch (e: any) { setErr(e.message ?? String(e)) } finally { setLoading(false) }
   }
-  useEffect(() => { reload() }, [khoi, mon]) // eslint-disable-line
+  useEffect(() => { reload() }, [khoi, mon, nhanh]) // eslint-disable-line
 
   // search + sort ở client (list 1 khối/ tất cả đều nhỏ)
   const shown = list
@@ -57,6 +60,13 @@ export default function TaiLieuScreen() {
             {allowedMons.map((m) => (
               <button key={m} onClick={() => setMon(m)} className={`rounded-md px-3 py-1 text-[13px] font-medium transition ${mon === m ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>{m}</button>
             ))}
+          </div>
+        )}
+        {/* Nhánh (chỉ Toán) — segmented, giống KhoScreen */}
+        {mon === 'Toán' && (
+          <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5">
+            <button onClick={() => setNhanh(null)} className={`rounded-md px-3 py-1 text-[13px] font-medium transition ${nhanh === null ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>Đại số</button>
+            <button onClick={() => setNhanh('hinh_gt')} className={`rounded-md px-3 py-1 text-[13px] font-medium transition ${nhanh === 'hinh_gt' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>Hình giải tích</button>
           </div>
         )}
         <div className="ml-auto flex items-center gap-1">
@@ -100,12 +110,12 @@ export default function TaiLieuScreen() {
           )}
       </div>
 
-      {creating && <CreateModal khoi={khoi === ALL ? DEFAULT_KHOI : khoi} mon={mon} onClose={() => setCreating(false)} onCreated={(id) => { setCreating(false); reload(); setOpenId(id) }} />}
+      {creating && <CreateModal khoi={khoi === ALL ? DEFAULT_KHOI : khoi} mon={mon} nhanh={mon === 'Toán' ? nhanh : null} onClose={() => setCreating(false)} onCreated={(id) => { setCreating(false); reload(); setOpenId(id) }} />}
     </div>
   )
 }
 
-function CreateModal({ khoi, mon, onClose, onCreated }: { khoi: string; mon: string; onClose: () => void; onCreated: (id: string) => void }) {
+function CreateModal({ khoi, mon, nhanh, onClose, onCreated }: { khoi: string; mon: string; nhanh: string | null; onClose: () => void; onCreated: (id: string) => void }) {
   const [ten, setTen] = useState('')
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -113,12 +123,12 @@ function CreateModal({ khoi, mon, onClose, onCreated }: { khoi: string; mon: str
   async function create() {
     if (!ten.trim()) return
     setBusy(true); setError(null)
-    try { const tl = await createTaiLieu({ ten: ten.trim(), khoi, mon }); onCreated(tl.id) }
+    try { const tl = await createTaiLieu({ ten: ten.trim(), khoi, mon, nhanh }); onCreated(tl.id) }
     catch (e: any) { setError(e.message ?? String(e)); setBusy(false) }
   }
 
   return (
-    <Shell title={`Tạo giáo trình · ${mon} · Khối ${khoi}`} onClose={onClose}>
+    <Shell title={`Tạo giáo trình · ${mon}${nhanh === 'hinh_gt' ? ' · Hình giải tích' : ''} · Khối ${khoi}`} onClose={onClose}>
       <Field label="Tên giáo trình"><input value={ten} onChange={(e) => setTen(e.target.value)} className={inp} placeholder="vd: Ôn tập Phân số" autoFocus /></Field>
       <div className="mb-3 text-[11px] text-slate-400">Tạo xong vào Builder → bấm <b>+ Thêm chuyên đề</b> (thêm nhiều chuyên đề để gộp thành 1 tài liệu lớn).</div>
       {error && <p className="mb-2 text-xs text-rose-600">{error}</p>}

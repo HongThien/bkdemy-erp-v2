@@ -3827,3 +3827,66 @@ tsc + vite build sạch mọi bước. Dev pane phiên 0×0 → nhờ Thùy `npm
   dùng header mới" mà không xác nhận tầng KIA cũng đã tắt = vẫn còn nửa việc — soát hết MỌI NGUỒN sinh
   ra chữ "header" trên trang in trước khi báo xong, không chỉ tầng vừa động tay.
 - **Verify:** tsc sạch + `npx vite build` sạch. Chưa soi PDF thật.
+
+## 2026-08-08 (tiếp 10) — Nhánh mới "Hình giải tích" (Phase 1: kho + soạn tài liệu)
+
+- **Thùy:** "trong hình học có 1 kiểu hình là hình giải tích — dù là hình nhưng cấu trúc nó giống như đại
+  (phù hợp chia chuyên đề/dạng hơn mô hình — tiêu biểu là hình lượng giác) ... t đang định trong phần hình
+  có hẳn 2 option 2 kiểu này luôn." Chốt taxonomy: **1 nhánh** "Hình giải tích" (lượng giác nay; Oxy/Oxyz
+  phẳng-không-gian sau — chỉ là chủ đề mới trong CÙNG nhánh, 0 schema thêm). Tên chốt "Hình giải tích"
+  (không phải "Giải tích" — vào Đại thì sai vì nó là Hình, vào Hình thì sai vì tư duy như Đại). Đứng chung
+  constraint đã có từ đầu phiên: **Hình và Đại là 2 giáo trình riêng — KHÔNG gộp bảng.**
+
+- **Quyết định kiến trúc (Task #20, tự trả lời — R2):** Hình giải tích tái dùng NGUYÊN `TaiLieuScreen`/
+  `TaiLieuBuilder`/`TrichPanel` của Đại (UX y hệt — "chọn buổi/chọn câu/gán buổi/xuất kho" đúng như Đại,
+  KHÔNG phải mô-hình/DAG của Hình tổng hợp cũ), nhưng bảng RIÊNG `hgt_*` (như KHTN clone `dai_*`). Vấn đề:
+  Hình giải tích PHẢI giữ `tai_lieu.mon = 'Toán'` (RBAC/billing/lop.mon sạch, §1.6) — không thể dùng `mon`
+  làm khoá dispatch như KHTN. **Giải pháp: tách 2 chiều.** `mon` = RBAC/billing (không đổi). Cột MỚI
+  `tai_lieu.nhanh` (null=Đại mặc định hành vi cũ | `'hinh_gt'`) = khoá dispatch kho TRONG mon='Toán'.
+  `khoCuaMon(mon, nhanh?)` (`lib/tailieu.ts`) mở rộng: KHTN theo `mon` như cũ; else `nhanh==='hinh_gt'` →
+  `hgt_*`; else → `dai_*` (default không đổi — 0 regression cho data cũ, `nhanh` luôn null).
+
+- **DB (`202608082109_hinh_giai_tich_kho.sql` + patch `202608082111`):** clone `0050_khtn_kho.sql` —
+  `hgt_ban_do`/`hgt_cau_hoi`/`hgt_dang_ly_thuyet`/`hgt_chuyen_de_ly_thuyet`, mã `GT`(dạng)/`GC`(câu) — đã
+  grep xác nhận không đụng `DH.` (hinh_dang mô hình) hay `DG/DC/KG/KC` hiện có. **Bẫy tự bắt:** clone
+  0050 quên rằng `0111_kho_rac_cau_hoi.sql` (kho rác) đến SAU 0050 — `hgt_cau_hoi` thiếu `xoa_at`/index/
+  trigger/whitelist `count_cau_by_dang` → phát hiện khi soát `deleteHgtCum` cần cột đó, vá NGAY bằng
+  migration patch thứ 2 (`create or replace function` mở whitelist thêm `'hgt_cau_hoi'`, không thu hẹp
+  gì). Áp cả 2 qua `scripts/_apply_one.mjs` (migrate.mjs replay-từ-0001 fail trên DB có data — gotcha cũ).
+  `tai_lieu.nhanh text` (nullable, default null) thêm vào cùng migration đầu.
+
+- **`api.ts`:** clone 13 hàm `Khtn*` → `Hgt*` (list/create/update/deleteLeaf(ves)/deleteCum/renameT1/T2/
+  countCauByDang/lyThuyết dạng+chuyên đề) bảng `hgt_*`. `KhoMon`/`khoTbls` (nhập-kho-tay) thêm nhánh `'hgt'`
+  cho sẵn (UI `NhapKhoScreen` CHƯA nối — xem Phase 2 dưới).
+
+- **`branches.ts` + `KhoScreen.tsx`:** `hinhGiaiTichBranch` (`BranchConfig`, `key:'hinhgt'`) — Bản đồ kiến
+  thức giờ có **3 tab dưới Toán**: Đại số / Hình học / Hình giải tích. Tab mới dùng CHUNG component `BanDo`
+  (như Đại/KHTN) — không phải `KhoHinhScreen` riêng của Hình tổng hợp.
+
+- **`TaiLieuScreen.tsx`:** thêm hàng pill nhánh lồng dưới mon=Toán (giống layout KhoScreen) — "Đại số /
+  Hình giải tích". `listTaiLieu`/`createTaiLieu` nhận thêm `nhanh` (null=lọc CHỈ Đại, tránh 2 nhánh lẫn
+  trong 1 danh sách).
+
+- **Sweep `nhanh` xuyên suốt pipeline "Làm tài liệu" thật sự chạm tới (đã trace kỹ, không đoán):**
+  `getTaiLieuFull` (điểm hội tụ trung tâm — mọi câu/dạng/lý-thuyết resolve qua đây) → `createTaiLieu`/
+  `duplicateTaiLieu`/`createET`/`trichXuatBuoi` (doc con `giao_trinh_buoi`/`btvn` PHẢI kế thừa `nhanh` của
+  master, không thì gán-lớp cho ra doc trỏ nhầm bảng) → `TaiLieuBuilder` (`DangPicker`, `cauTbl`) →
+  `TrichPanel`→`BuoiTrichRow`→`OnTapConfirmScreen` (bước xác nhận BTVN bắt buộc, Thùy chốt 07-22 — KHÔNG
+  optional, mọi buổi có BTVN đều qua đây) → `OnTapEditor`→`DangPickerOne`/`lib/ontap.ts`
+  (`fetchTenDangByMa`/`appendOnTapToBtvnDoc` — nội dung, load-bearing; `goiYOnTap` mastery-gợi-ý ĐỂ NGUYÊN,
+  tự graceful-empty vì chưa có đo lường cho `hgt_*`, không crash). `PrintView.tsx`/`bkPrint.tsx` (WIP phiên
+  khác, KHÔNG đụng) — soát xong: cả 2 KHÔNG hardcode bảng `dai_*` nào, hoàn toàn dựa vào `getTaiLieuFull`
+  đã resolve sẵn → tự động đúng, không cần sửa.
+
+- **Phase 2 — CHỦ ĐỘNG CHƯA làm (disclose rõ, không phải quên):** ET/MT/BT/Đề thi standalone + `mastery.ts`/
+  `gami.ts`/`ontap.ts`'s `goiYOnTap` (Elo/EXP, đo lường, gợi ý theo lớp-yếu) + `NhapKhoScreen` (AI-ingest ảnh
+  → câu) chưa nối `nhanh`. Lý do: KHÔNG nằm trong luồng "thêm buổi/chọn câu/gán buổi/xuất kho tài liệu" Thùy
+  mô tả — đây là tầng đo lường/kiểm tra downstream, tự nhiên chỉ cần khi lớp THẬT bắt đầu học Hình giải
+  tích và cần chấm ET/tính Elo. Câu hỏi kho ("+ Thêm câu" tay) VẪN dùng được ngay qua `DangHub` (đã tự động
+  đúng nhờ `config.cauTbl` generic) — chỉ thiếu đường AI-ingest hàng loạt.
+
+- **Verify:** tsc sạch · `npx vite build` sạch · click-through THẬT (dev pane, đăng nhập Admin): Bản đồ →
+  tab "Hình giải tích" hiện đúng (0 chủ đề, bảng trống — không lẫn dữ liệu Đại) · Làm tài liệu → Giáo trình
+  → pill "Hình giải tích" → danh sách rỗng riêng (4 giáo trình Đại KHÔNG lẫn vào) → tạo thử "TEST Lượng
+  giác" → Builder mở sạch không lỗi console → verify SQL trực tiếp `mon='Toán', nhanh='hinh_gt'` đúng như
+  thiết kế → xoá dòng test.

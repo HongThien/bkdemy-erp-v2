@@ -1,13 +1,14 @@
 // Popup TO chọn 1 DẠNG (browse chủ đề → chuyên đề → dạng, click 1 phát chọn + đóng). Dùng chung mọi nơi chọn dạng.
 import { useEffect, useState } from 'react'
-import { listDaiMap, listKhtnMap, groupMap, type Tier1Node } from '../lib/kho/api'
+import { groupMap, type Tier1Node } from '../lib/kho/api'
+import { khoCuaMon } from '../lib/tailieu'
 
-export default function DangPickerOne({ khoi, mon, onClose, onPick }: { khoi: string; mon?: string; onClose: () => void; onPick: (maDang: string) => void }) {
+export default function DangPickerOne({ khoi, mon, nhanh, onClose, onPick }: { khoi: string; mon?: string; nhanh?: string | null; onClose: () => void; onPick: (maDang: string) => void }) {
   const [tree, setTree] = useState<Tier1Node[]>([])
   const [loading, setLoading] = useState(true)
   const [q, setQ] = useState('')
-  const listMap = mon === 'KHTN' ? listKhtnMap : listDaiMap
-  useEffect(() => { listMap(khoi).then((r) => { setTree(groupMap(r)); setLoading(false) }).catch(() => setLoading(false)) }, [khoi, mon])
+  const listMap = khoCuaMon(mon, nhanh).listMap
+  useEffect(() => { listMap(khoi).then((r) => { setTree(groupMap(r)); setLoading(false) }).catch(() => setLoading(false)) }, [khoi, mon, nhanh])
   const kw = q.trim().toLowerCase()
   return (
     <div className="fixed inset-0 z-[70] bg-slate-900/50 backdrop-blur-sm" onClick={onClose}>

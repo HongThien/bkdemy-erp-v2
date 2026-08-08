@@ -96,7 +96,8 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
   const linesByCau = ch.btvnLinesByCau ?? {}
   const colByCau = ch.colByCau ?? {}
   const mon = full.taiLieu.mon                    // môn của tài liệu → chọn kho (Toán dai_ / KHTN khtn_)
-  const cauTbl = khoCuaMon(mon).cauTbl
+  const nhanh = full.taiLieu.nhanh                 // nhánh TRONG Toán (null=Đại / 'hinh_gt'=Hình giải tích)
+  const cauTbl = khoCuaMon(mon, nhanh).cauTbl
 
   return (
     <div className="flex h-full flex-col bg-[#fafafb]">
@@ -152,9 +153,9 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
         </div>
       </div>
 
-      {dangPicker && <DangPicker khoi={full.taiLieu.khoi} mon={mon} selected={dangPicker.selected} onClose={() => setDangPicker(null)} onConfirm={async (maDangs) => { const bid = dangPicker.buoiId; setDangPicker(null); await setDangOfBuoi(id, bid, maDangs, cauTbl); await reload(); markSaved() }} />}
+      {dangPicker && <DangPicker khoi={full.taiLieu.khoi} mon={mon} nhanh={nhanh} selected={dangPicker.selected} onClose={() => setDangPicker(null)} onConfirm={async (maDangs) => { const bid = dangPicker.buoiId; setDangPicker(null); await setDangOfBuoi(id, bid, maDangs, cauTbl); await reload(); markSaved() }} />}
       {picker && <KhoPicker {...picker} cauTbl={cauTbl} onClose={() => setPicker(null)} onConfirm={async (m) => { await applyCaus(picker.phanId, m); setPicker(null) }} />}
-      {trichOpen && <TrichPanel masterId={id} khoi={full.taiLieu.khoi} buois={buois} onClose={() => setTrichOpen(false)} />}
+      {trichOpen && <TrichPanel masterId={id} khoi={full.taiLieu.khoi} nhanh={nhanh} buois={buois} onClose={() => setTrichOpen(false)} />}
       {printing && <PrintView id={id} onClose={() => setPrinting(false)} />}
       {previewBuoiId && <PrintView id={id} onlyBuoiId={previewBuoiId} onClose={() => setPreviewBuoiId(null)} />}
     </div>
@@ -328,11 +329,11 @@ function CauRow({ no, c, col, onCol, onRemove }: { no: number; c: CauHoi; col: n
 }
 
 // ── Bộ chọn DẠNG cho 1 buổi (đa chọn, mọi chuyên đề; chọn 1 phần chuyên đề được) ──
-export function DangPicker({ khoi, mon, selected, onClose, onConfirm }: { khoi: string; mon?: string; selected: string[]; onClose: () => void; onConfirm: (maDangs: string[]) => void }) {
+export function DangPicker({ khoi, mon, nhanh, selected, onClose, onConfirm }: { khoi: string; mon?: string; nhanh?: string | null; selected: string[]; onClose: () => void; onConfirm: (maDangs: string[]) => void }) {
   const [tree, setTree] = useState<Tier1Node[]>([])
   const [sel, setSel] = useState<Set<string>>(new Set(selected))
   const [loading, setLoading] = useState(true)
-  useEffect(() => { khoCuaMon(mon).listMap(khoi).then((r) => { setTree(groupMap(r)); setLoading(false) }).catch(() => setLoading(false)) }, [khoi, mon])
+  useEffect(() => { khoCuaMon(mon, nhanh).listMap(khoi).then((r) => { setTree(groupMap(r)); setLoading(false) }).catch(() => setLoading(false)) }, [khoi, mon, nhanh])
   const toggle = (ma: string) => setSel((s) => { const n = new Set(s); n.has(ma) ? n.delete(ma) : n.add(ma); return n })
   const toggleCd = (mas: string[], on: boolean) => setSel((s) => { const n = new Set(s); mas.forEach((m) => on ? n.add(m) : n.delete(m)); return n })
   // ⭐ 07-24 (Thùy chốt): trả về ĐÚNG THỨ TỰ CHỌN — chọn trước ra trước. `sel` là Set, JS Set giữ thứ tự
@@ -410,7 +411,7 @@ function StructureTree({ buois, ten, onJump }: { buois: BuoiUI[]; ten: string; o
 }
 
 // TRÍCH XUẤT cấp GIÁO TRÌNH: chọn LỚP → hiện 10 buổi + TRẠNG THÁI đã gán (ngày nào) cho lớp đó → gán buổi chưa gán.
-function TrichPanel({ masterId, khoi, buois, onClose }: { masterId: string; khoi: string; buois: BuoiUI[]; onClose: () => void }) {
+function TrichPanel({ masterId, khoi, nhanh, buois, onClose }: { masterId: string; khoi: string; nhanh?: string | null; buois: BuoiUI[]; onClose: () => void }) {
   const [lops, setLops] = useState<Lop[]>([])
   const [lopId, setLopId] = useState<string | null>(null)
   const [state, setState] = useState<Record<string, TrichState>>({})
@@ -497,7 +498,7 @@ function TrichPanel({ masterId, khoi, buois, onClose }: { masterId: string; khoi
               <div className="min-h-0 overflow-auto p-5">
                 <p className="mb-2 text-[12px] text-slate-400">Mỗi buổi của giáo trình gốc → gán cho 1 ngày của lớp <b>{lop.ten_lop}</b>. Lớp học buổi nào là <b>tự chọn</b> — không cần gán đủ, không cần đúng thứ tự. BTVN (kèm ôn tập) làm ở bước riêng sau khi gán, có xem trước.</p>
                 <div className="space-y-2">
-                  {buois.map((b, i) => <BuoiTrichRow key={b.marker.id} no={i + 1} sttLop={sttLopCua(b.marker.id)} lopId={lopId} tenLop={lop.ten_lop} masterId={masterId} khoi={khoi} mon={lop.mon} buoi={b} st={state[b.marker.id]} defaultNgay={defNgayByMarker.get(b.marker.id)}
+                  {buois.map((b, i) => <BuoiTrichRow key={b.marker.id} no={i + 1} sttLop={sttLopCua(b.marker.id)} lopId={lopId} tenLop={lop.ten_lop} masterId={masterId} khoi={khoi} mon={lop.mon} nhanh={nhanh} buoi={b} st={state[b.marker.id]} defaultNgay={defNgayByMarker.get(b.marker.id)}
                     onGan={(ngay, gt) => gan(b.marker.id, b.marker.tieu_de || `Buổi ${i + 1}`, ngay, gt)}
                     onBtvnConfirmed={() => loadState(lop.id)} />)}
                 </div>
@@ -552,8 +553,8 @@ function BoGiaoTrinhLop({ tenLop, bo, soBuoiMaster, onDanhSoLai }: { tenLop: str
 // người dùng soi trước rồi mới bấm Xác nhận mới CHÍNH THỨC tạo BTVN vào Kho. Không còn checkbox BTVN /
 // OnTapEditor nhúng ở đây nữa — trạng thái "đã có GT, chưa có BTVN" tự nhiên derive từ `st` (listTrichXuat),
 // không cần nhớ "có định làm BTVN không" ở đâu cả — bấm "+ BTVN / Ôn tập" lúc nào cũng được, kể cả về sau.
-function BuoiTrichRow({ no, sttLop, lopId, tenLop, masterId, khoi, mon, buoi, st, defaultNgay, onGan, onBtvnConfirmed }: {
-  no: number; sttLop?: number; lopId: string | null; tenLop: string; masterId: string; khoi: string; mon: string; buoi: BuoiUI; st?: TrichState; defaultNgay?: string
+function BuoiTrichRow({ no, sttLop, lopId, tenLop, masterId, khoi, mon, nhanh, buoi, st, defaultNgay, onGan, onBtvnConfirmed }: {
+  no: number; sttLop?: number; lopId: string | null; tenLop: string; masterId: string; khoi: string; mon: string; nhanh?: string | null; buoi: BuoiUI; st?: TrichState; defaultNgay?: string
   onGan: (ngay: string, gt: boolean) => Promise<void>
   onBtvnConfirmed: () => void
 }) {
@@ -613,7 +614,7 @@ function BuoiTrichRow({ no, sttLop, lopId, tenLop, masterId, khoi, mon, buoi, st
       </div>
       {onTapOpen && lopId && st?.ngay && (
         <OnTapConfirmScreen
-          masterId={masterId} buoiId={buoi.marker.id} tenBuoi={tenBuoi} lopId={lopId} tenLop={tenLop} ngay={st.ngay} khoi={khoi} mon={mon}
+          masterId={masterId} buoiId={buoi.marker.id} tenBuoi={tenBuoi} lopId={lopId} tenLop={tenLop} ngay={st.ngay} khoi={khoi} mon={mon} nhanh={nhanh}
           regularBtvn={Object.values(buoi.btvnByMa)}
           onClose={() => setOnTapOpen(false)}
           onConfirmed={() => { setOnTapOpen(false); onBtvnConfirmed() }}

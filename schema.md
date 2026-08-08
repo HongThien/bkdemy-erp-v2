@@ -2,7 +2,7 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-118 bảng · 0 enum · 10 trigger · 31 function
+122 bảng · 0 enum · 10 trigger · 31 function
 
 ## bai_lam
 
@@ -612,6 +612,62 @@
 | ma_cau | text | Y |  |  |  |
 | hinh_y_id | uuid | Y |  | FK→hinh_y.id |  |
 | ngu_canh_luot | text | Y |  |  | `mo_hinh` · `dang` · `luyen_de` |
+
+## hgt_ban_do
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma_dang | text |  | ('GT'::text \|\| lpad((nextval('hgt_dang_seq'::regclass))::text, 5, '0'::text)) | PK |  |
+| khoi | text |  |  |  |  |
+| ma_chu_de | text |  |  |  |  |
+| ten_chu_de | text |  |  |  |  |
+| ma_chuyen_de | text |  |  |  |  |
+| ten_chuyen_de | text |  |  |  |  |
+| ten_dang | text |  |  |  |  |
+| muc_do | smallint |  |  |  |  |
+| bac_toi_thieu | text |  |  | FK→lop_bac.ma |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
+## hgt_cau_hoi
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma_cau | text |  | ('GC'::text \|\| lpad((nextval('hgt_cau_seq'::regclass))::text, 6, '0'::text)) | PK |  |
+| dang_chinh | text |  |  | FK→hgt_ban_do.ma_dang |  |
+| loai_cau | text |  |  |  |  |
+| noi_dung | text |  |  |  |  |
+| lua_chon | jsonb | Y |  |  |  |
+| menh_de | jsonb | Y |  |  |  |
+| dap_an | text | Y |  |  |  |
+| loi_giai | text | Y |  |  |  |
+| anh_de | text | Y |  |  |  |
+| anh_dap_an | text | Y |  |  |  |
+| nguon | text |  | 'le'::text |  |  |
+| nguon_giai | text |  | 'nguoi'::text |  |  |
+| parent_ma_cau | text | Y |  | FK→hgt_cau_hoi.ma_cau |  |
+| clone_method | text | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
+## hgt_chuyen_de_ly_thuyet
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma_chuyen_de | text |  |  | PK |  |
+| noi_dung | text |  | ''::text |  |  |
+| file_url | text | Y |  |  |  |
+| ten_file | text | Y |  |  |  |
+| khong_can | boolean |  | false |  |  |
+| cap_nhat_at | timestamp with time zone |  | now() |  |  |
+
+## hgt_dang_ly_thuyet
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma_dang | text |  |  | PK FK→hgt_ban_do.ma_dang |  |
+| noi_dung | text |  | ''::text |  |  |
+| file_url | text | Y |  |  |  |
+| ten_file | text | Y |  |  |  |
+| cap_nhat_at | timestamp with time zone |  | now() |  |  |
 
 ## hinh_bai
 
@@ -1395,6 +1451,7 @@
 | hoc_sinh_id | uuid | Y |  | FK→hoc_sinh.id |  |
 | file_url | text | Y |  |  |  |
 | stt_lop | integer | Y |  |  |  |
+| nhanh | text | Y |  |  |  |
 
 ## tai_lieu_cau
 

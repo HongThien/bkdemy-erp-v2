@@ -709,10 +709,12 @@ export function parseIngestJson(text: string): IngestCau[] {
 // LUỒNG NHẬP KHO (ingest-first, scope = CHỦ ĐỀ): 1 file → bóc MỌI loại → gán dạng → verify → đẩy kho.
 // Bóc/crop hình chạy ở SCREEN (DOM); ở đây = prompt + parse + phân loại grounded + verify + AI-giải + save + log.
 // ════════════════════════════════════════════════════════════════
-export type KhoMon = 'toan' | 'khtn'
+export type KhoMon = 'toan' | 'khtn' | 'hgt'
 export function khoTbls(mon: KhoMon): { cauTbl: string; banDoTbl: string; lyThuyetTbl: string } {
   return mon === 'khtn'
     ? { cauTbl: 'khtn_cau_hoi', banDoTbl: 'khtn_ban_do', lyThuyetTbl: 'khtn_dang_ly_thuyet' }
+    : mon === 'hgt'
+    ? { cauTbl: 'hgt_cau_hoi', banDoTbl: 'hgt_ban_do', lyThuyetTbl: 'hgt_dang_ly_thuyet' }
     : { cauTbl: 'dai_cau_hoi', banDoTbl: 'dai_ban_do', lyThuyetTbl: 'dai_dang_ly_thuyet' }
 }
 
@@ -1524,6 +1526,71 @@ export async function upsertKhtnChuyenDeLyThuyet(ma_chuyen_de: string, noi_dung:
 }
 export async function deleteKhtnChuyenDeLyThuyet(ma_chuyen_de: string): Promise<void> {
   const { error } = await supabase.from('khtn_chuyen_de_ly_thuyet').delete().eq('ma_chuyen_de', ma_chuyen_de); if (error) throw error
+}
+
+// ── HÌNH GIẢI TÍCH (hgt_*): clone shape Đại, nhánh thứ 3 của Toán (Đại/Hình/Hình-giải-tích) — lượng
+// giác, sau này Oxy/Oxyz. Tư duy như Đại (chia chuyên đề/dạng) chứ không mô-hình/DAG như Hình tổng hợp.
+// `tai_lieu.mon` của tài liệu Hình giải tích vẫn 'Toán' (RBAC/billing sạch) — phân biệt qua `tai_lieu.nhanh`.
+export async function listHgtMap(khoi: string): Promise<MapRow[]> {
+  const { data, error } = await supabase.from('hgt_ban_do').select('*')
+    .eq('khoi', khoi).order('ma_chu_de').order('ma_chuyen_de').order('ma_dang').limit(LIMIT)
+  if (error) throw error
+  return (data ?? []).map((r: any) => ({
+    leafMa: r.ma_dang, khoi: r.khoi, t1Ma: r.ma_chu_de, t1Ten: r.ten_chu_de,
+    t2Ma: r.ma_chuyen_de, t2Ten: r.ten_chuyen_de, leafTen: r.ten_dang, bac: r.bac_toi_thieu, mucDo: r.muc_do,
+  }))
+}
+export async function createHgtMap(row: MapRow): Promise<void> {
+  const { error } = await supabase.from('hgt_ban_do').insert({
+    ma_dang: row.leafMa, khoi: row.khoi, ma_chu_de: row.t1Ma, ten_chu_de: row.t1Ten,
+    ma_chuyen_de: row.t2Ma, ten_chuyen_de: row.t2Ten, ten_dang: row.leafTen, muc_do: row.mucDo ?? 3, bac_toi_thieu: row.bac,
+  })
+  if (error) throw error
+}
+export async function updateHgtLeaf(leafMa: string, patch: { leafTen: string; bac: string; mucDo: number | null }): Promise<void> {
+  const { error } = await supabase.from('hgt_ban_do').update({ ten_dang: patch.leafTen, bac_toi_thieu: patch.bac, muc_do: patch.mucDo ?? undefined }).eq('ma_dang', leafMa)
+  if (error) throw error
+}
+export const deleteHgtLeaf = async (leafMa: string) => { const { error } = await supabase.from('hgt_ban_do').delete().eq('ma_dang', leafMa); if (error) throw error }
+export async function deleteHgtLeaves(leafMas: string[]): Promise<void> {
+  if (!leafMas.length) return
+  const { error } = await supabase.from('hgt_ban_do').delete().in('ma_dang', leafMas); if (error) throw error
+}
+export async function deleteHgtCum(leafMas: string[]): Promise<void> {
+  if (!leafMas.length) return
+  const { error: e1 } = await supabase.from('hgt_cau_hoi').update({ xoa_at: new Date().toISOString() }).in('dang_chinh', leafMas).is('xoa_at', null); if (e1) throw e1
+  const { error: e2 } = await supabase.from('hgt_ban_do').delete().in('ma_dang', leafMas); if (e2) throw e2
+}
+export async function renameHgtChuDe(khoi: string, maChuDe: string, ten: string): Promise<void> {
+  const { error } = await supabase.from('hgt_ban_do').update({ ten_chu_de: ten }).eq('khoi', khoi).eq('ma_chu_de', maChuDe); if (error) throw error
+}
+export async function renameHgtChuyenDe(maChuyenDe: string, ten: string): Promise<void> {
+  const { error } = await supabase.from('hgt_ban_do').update({ ten_chuyen_de: ten }).eq('ma_chuyen_de', maChuyenDe); if (error) throw error
+}
+export async function countCauByDangHgt(): Promise<Record<string, number>> {
+  const { data, error } = await supabase.rpc('count_cau_by_dang', { p_tbl: 'hgt_cau_hoi' })
+  if (error) throw error
+  return (data ?? {}) as Record<string, number>
+}
+export async function listHgtLyThuyet(): Promise<Record<string, LyThuyet>> {
+  const { data, error } = await supabase.from('hgt_dang_ly_thuyet').select('*').limit(LIMIT); if (error) throw error
+  const m: Record<string, LyThuyet> = {}; for (const r of data ?? []) { const x = r as any; m[x.ma_dang] = { noi_dung: x.noi_dung ?? '', file_url: x.file_url, ten_file: x.ten_file, cap_nhat_at: x.cap_nhat_at } } return m
+}
+export async function upsertHgtLyThuyet(ma_dang: string, noi_dung: string, file_url: string | null, ten_file: string | null): Promise<void> {
+  const { error } = await supabase.from('hgt_dang_ly_thuyet').upsert({ ma_dang, noi_dung, file_url, ten_file }, { onConflict: 'ma_dang' }); if (error) throw error
+}
+export async function deleteHgtLyThuyet(ma_dang: string): Promise<void> {
+  const { error } = await supabase.from('hgt_dang_ly_thuyet').delete().eq('ma_dang', ma_dang); if (error) throw error
+}
+export async function listHgtChuyenDeLyThuyet(): Promise<Record<string, LyThuyet>> {
+  const { data, error } = await supabase.from('hgt_chuyen_de_ly_thuyet').select('*').limit(LIMIT); if (error) throw error
+  const m: Record<string, LyThuyet> = {}; for (const r of data ?? []) { const x = r as any; m[x.ma_chuyen_de] = { noi_dung: x.noi_dung ?? '', file_url: x.file_url, ten_file: x.ten_file, khong_can: x.khong_can ?? false, cap_nhat_at: x.cap_nhat_at } } return m
+}
+export async function upsertHgtChuyenDeLyThuyet(ma_chuyen_de: string, noi_dung: string, file_url: string | null, ten_file: string | null, khong_can = false): Promise<void> {
+  const { error } = await supabase.from('hgt_chuyen_de_ly_thuyet').upsert({ ma_chuyen_de, noi_dung, file_url, ten_file, khong_can }, { onConflict: 'ma_chuyen_de' }); if (error) throw error
+}
+export async function deleteHgtChuyenDeLyThuyet(ma_chuyen_de: string): Promise<void> {
+  const { error } = await supabase.from('hgt_chuyen_de_ly_thuyet').delete().eq('ma_chuyen_de', ma_chuyen_de); if (error) throw error
 }
 
 // ── HÌNH v3 (spec-kho-hinh-v3): lưới mô hình + lưới bài toán nhỏ + kho bài vật lý ──

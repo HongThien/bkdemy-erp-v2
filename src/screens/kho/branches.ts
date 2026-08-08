@@ -3,7 +3,7 @@ import * as api from '../../lib/kho/api'
 import type { MapRow, LyThuyet } from '../../lib/kho/api'
 
 export type BranchConfig = {
-  key: 'dai' | 'hinh' | 'khtn'
+  key: 'dai' | 'hinh' | 'khtn' | 'hinhgt'
   cauTbl?: string                                    // bảng câu theo môn (dai_cau_hoi/khtn_cau_hoi). undefined = nhánh chưa có câu (Hình)
   labels: { t1: string; t2: string; leaf: string }  // tầng1 / tầng2 / lá
   hasMucDo: boolean
@@ -75,6 +75,28 @@ export const khtnBranch: BranchConfig = {
   renameT2: api.renameKhtnChuyenDe,
   lyThuyet: { list: api.listKhtnLyThuyet, upsert: api.upsertKhtnLyThuyet, remove: api.deleteKhtnLyThuyet },
   lyThuyetT2: { list: api.listKhtnChuyenDeLyThuyet, upsert: api.upsertKhtnChuyenDeLyThuyet, remove: api.deleteKhtnChuyenDeLyThuyet },
+}
+
+// Hình giải tích = nhánh thứ 3 của Toán (lượng giác, sau này Oxy/Oxyz) — TƯ DUY như Đại (chia
+// chuyên đề/dạng), khác Hình tổng hợp (mô hình/DAG). Clone shape Đại/KHTN, bảng RIÊNG hgt_*.
+export const hinhGiaiTichBranch: BranchConfig = {
+  key: 'hinhgt',
+  cauTbl: 'hgt_cau_hoi',
+  labels: { t1: 'Chủ đề', t2: 'Chuyên đề', leaf: 'Dạng' },
+  hasMucDo: true,
+  countLabel: 'câu',
+  chuan: api.CHUAN_SO_CAU,
+  list: api.listHgtMap,
+  count: api.countCauByDangHgt,
+  create: api.createHgtMap,
+  updateLeaf: api.updateHgtLeaf,
+  deleteLeaf: api.deleteHgtLeaf,
+  deleteLeaves: api.deleteHgtLeaves,
+  deleteCum: api.deleteHgtCum,
+  renameT1: api.renameHgtChuDe,
+  renameT2: api.renameHgtChuyenDe,
+  lyThuyet: { list: api.listHgtLyThuyet, upsert: api.upsertHgtLyThuyet, remove: api.deleteHgtLyThuyet },
+  lyThuyetT2: { list: api.listHgtChuyenDeLyThuyet, upsert: api.upsertHgtChuyenDeLyThuyet, remove: api.deleteHgtChuyenDeLyThuyet },
 }
 
 export const hinhBranch: BranchConfig = {

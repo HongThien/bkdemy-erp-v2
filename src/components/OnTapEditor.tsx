@@ -9,11 +9,11 @@ import { goiYOnTap, getOnTapConfig, fetchCausByMa, fetchTenDangByMa, CAP_DANG, C
 import { KhoPicker } from './KhoPicker'
 import DangPickerOne from './DangPickerOne'
 
-export default function OnTapEditor({ nguonId, buoiId, lopId, khoi, mon, config, onChange }: {
-  nguonId: string; buoiId: string; lopId: string; khoi: string; mon: string
+export default function OnTapEditor({ nguonId, buoiId, lopId, khoi, mon, nhanh, config, onChange }: {
+  nguonId: string; buoiId: string; lopId: string; khoi: string; mon: string; nhanh?: string | null
   config: OnTapConfig | null; onChange: (c: OnTapConfig) => void
 }) {
-  const cauTbl = khoCuaMon(mon).cauTbl
+  const cauTbl = khoCuaMon(mon, nhanh).cauTbl
   const reqId = useRef(0)
   const [loading, setLoading] = useState(true)
   const [scoreByMa, setScoreByMa] = useState<Record<string, number>>({}) // ma_dang → score (0..1), chỉ có khi vừa chạy engine
@@ -78,13 +78,13 @@ export default function OnTapEditor({ nguonId, buoiId, lopId, khoi, mon, config,
     const missing = (config?.dangs.map((d) => d.ma_dang) ?? []).filter((m) => !tenDangCache.has(m))
     if (!missing.length) return
     let alive = true
-    fetchTenDangByMa(missing, mon).then((m) => {
+    fetchTenDangByMa(missing, mon, nhanh).then((m) => {
       if (!alive) return
       setTenDangCache((prev) => new Map([...prev, ...m]))
     })
     return () => { alive = false }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [config, mon])
+  }, [config, mon, nhanh])
 
   if (!config) return <div className="mt-3 text-[12px] text-slate-400">{loading ? 'Đang tải gợi ý ôn tập…' : ''}</div>
 
@@ -170,7 +170,7 @@ export default function OnTapEditor({ nguonId, buoiId, lopId, khoi, mon, config,
       )}
 
       {dangPicker && (
-        <DangPickerOne khoi={khoi} mon={mon}
+        <DangPickerOne khoi={khoi} mon={mon} nhanh={nhanh}
           onClose={() => setDangPicker(false)}
           onPick={(maDang) => { setDangPicker(false); onChange({ ...config, dangs: [...config.dangs, { ma_dang: maDang, ma_caus: [] }] }) }}
         />
