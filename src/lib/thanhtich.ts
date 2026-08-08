@@ -38,15 +38,19 @@ export const currentMua = () => seasonOf(vnTodayStr())
 export type LevelXu = { mua: string; level: number; levelMax: number; xu: number; expThang: number; xuKe: number | null; expKeMoc: number | null }
 export async function getLevelXu(hocSinhId: string, mon: string): Promise<LevelXu> {
   const mua = seasonOf(vnTodayStr())
+  const ym = vnTodayStr().slice(0, 7) // tháng VN hiện tại 'YYYY-MM' = tháng EXP thuộc về
   const [dt, exp, bac] = await Promise.all([
     supabase.from('diem_thi').select('verdict, ky_thi:ky_thi_id(he_so, mon, mua)').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
-    // LOẠI legacy rank_*/btvn (mô hình cũ thay bằng exp_thang; legacy mùa cũ đóng-muộn có thể lọt window created_at).
-    supabase.from('gami_exp_ledger').select('amount').eq('hoc_sinh_id', hocSinhId).eq('mon', mon).gte('created_at', monthStartUtcISO()).not('source', 'in', '(rank_et,rank_ingame,rank_mt,btvn)').limit(LIMIT),
+    // ⚠ EXP THÁNG key theo `note`=ym, KHÔNG theo created_at: recompute có thể chạy ở tháng khác (reset đầu mùa
+    // recompute tháng cũ ĐÚNG NGÀY 1 tháng mới) → dòng note tháng trước có created_at tháng này sẽ lọt window
+    // created_at. exp_thang lọc note===ym; attend_floor (bù, no note, sinh 1 lần) lọc created_at. Vẫn loại legacy rank_*/btvn.
+    supabase.from('gami_exp_ledger').select('amount, source, note, created_at').eq('hoc_sinh_id', hocSinhId).eq('mon', mon).in('source', ['exp_thang', 'attend_floor']).limit(LIMIT),
     supabase.from('luong_bac').select('min_exp, xu').order('min_exp', { ascending: true }).limit(LIMIT),
   ])
   let level = 0
   for (const r of (dt.data ?? []) as any[]) { const k = r.ky_thi; if (k && k.mon === mon && k.mua === mua) level += verdictPoint(r.verdict, k.he_so) }
-  const expThang = ((exp.data ?? []) as any[]).reduce((s, x) => s + Number(x.amount), 0)
+  const monthStart = monthStartUtcISO()
+  const expThang = ((exp.data ?? []) as any[]).reduce((s, x) => s + ((x.source === 'exp_thang' ? x.note === ym : x.created_at >= monthStart) ? Number(x.amount) : 0), 0)
   const bacs = (bac.data ?? []) as LuongBac[]
   let xu = 0, xuKe: number | null = null, expKeMoc: number | null = null
   for (let i = 0; i < bacs.length; i++) {
