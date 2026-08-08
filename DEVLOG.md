@@ -3664,3 +3664,52 @@ tsc + vite build sạch mọi bước. Dev pane phiên 0×0 → nhờ Thùy `npm
 - **Còn:** verify IN thật (paged.js) · `ChuoiRow`'s `nInput` mặc định cứng 2 (không nhớ theo nháp — chấp nhận,
   tiểu tiết) · chưa relabel `gia_thiet_phu` cho lứa (nhắc từ trước, chưa làm) · Media/Marketing cross-môn (task
   scope④ trước đó) không liên quan module này.
+
+## 2026-08-08 (tiếp 3) — Giáo trình Hình "chuyển nhà": cây Buổi tại-chỗ + Gán lớp TKB-gợi-ý (khuôn Đại)
+- **Thùy chỉnh sau khi t báo "đã có thêm buổi/chọn câu/gán buổi/xuất kho tài liệu":** KHÔNG đúng — Hình vẫn
+  chạy 1 luồng RIÊNG (dựng ở Soạn tài liệu → popup "Lưu vào giáo trình", tách khỏi nơi quản buổi; KHÔNG hiện
+  trong Kho tài liệu bảng-tổng). Chốt: **giống HẾT khuôn Đại** (`TaiLieuBuilder`/`TrichPanel`), CHỈ khác ở bước
+  chọn nội dung (Đại=dạng+câu · Hình=chuỗi, phần vừa xong). ⚠ **"Giáo trình Hình và Đại là 2 giáo trình RIÊNG,
+  KHÔNG gộp"** (nhắc giữa chừng) — giữ nguyên bảng `hinh_giao_trinh`/`hinh_gt_buoi`/`hinh_gt_bai` tách biệt
+  hoàn toàn `tai_lieu`, chỉ LIỆT KÊ CHUNG ở Kho tài liệu (khác gộp entity).
+- **⭐ RÚT "Theo mô hình" khỏi Soạn tài liệu** (`che: 'gd'|'ot'`, bỏ `'mh'`): logic build nội dung (mô hình
+  filter + `ChuoiRow` list + tóm tắt Lớp/Nhà) tách thành `BuoiPickEditor` (export, `SoanTaiLieu.tsx`) —
+  **props-driven** (`picks/anDe/soDong` + `onChange*`), KHÔNG giữ nháp riêng nữa — caller sở hữu state 1 buổi
+  cụ thể + tự autosave. Xoá `TheoMoHinh`/`LuuGiaoTrinhPopup`; `SoanHinhDraft.mh` xoá khỏi store (dead — nội
+  dung buổi giờ sống thẳng DB). `banInTheoMoHinh` export (dùng lại ở "👁 Xem buổi").
+- **⭐ `GiaoTrinhScreen` viết lại — Master = cây Buổi TẠI CHỖ (khuôn `TaiLieuBuilder`):** "+ Thêm buổi" tạo
+  `hinh_gt_buoi` rỗng ngay (`createBuoiMaster`) → thẻ `BuoiCardHinh` gấp gọn (tiêu đề sửa inline + đếm
+  📘/📝 + 👁 Xem 2 phiếu + Xoá), mở ra = `BuoiPickEditor` NHÚNG TẠI CHỖ, mỗi thay đổi **autosave ngay**
+  (`saveBuoiSelection`, khuôn `markSaved()`/"↻ Tự động lưu" của Đại) — hết luồng "dựng-rồi-lưu-popup".
+  Data-layer thêm `loadBuoiPicks` (nghịch đảo `saveBuoiSelection`, thay `loadBuoiToDraft` cũ).
+- **⭐ Gán lớp = `TrichPanelHinh` (khuôn `TrichPanel` Đại, thay `GanLopPopup` đơn giản cũ):** chọn lớp → list
+  MỌI buổi + trạng thái đã-gán, **ngày GỢI Ý theo TKB** (`ngayBuoiHopLeCuaLop`/`BuoiNgaySelect` — TÁI DÙNG
+  nguyên, 2 hàm này vốn đã generic theo `lop_id`, không đụng gì Đại) = buổi trống gần nhất chưa gán, tự lùi
+  buổi kế tiếp sau mỗi lượt gán. Sổ riêng `BoGiaoTrinhLopHinh` (khuôn `BoGiaoTrinhLop`): buổi lớp đã gán,
+  đánh số theo NGÀY HỌC (khác số buổi gốc), nút "↻ Đánh số lại" (`renumberBuoiLop` Hình đã có sẵn từ trước).
+  **Khác Đại có chủ đích:** KHÔNG tách GT/BTVN (1 lượt gán = cả Trên lớp + Về nhà — Hình không có luồng
+  "ôn tập tự sinh cần duyệt riêng" như `OnTapConfirmScreen`, nội dung buổi tác giả tự chọn đủ lúc soạn) →
+  không có bước "+ BTVN/Ôn tập" riêng · KHÔNG renumber lại TIÊU ĐỀ theo số-của-lớp (Hình tiêu đề tự do, không
+  ép khuôn "Buổi N" như Đại — chỉ renumber `stt_lop`).
+  **`ganLopSnapshot` thêm dedup:** gán-lại cùng (lớp,ngày) giờ THAY THẾ buổi cũ tại ngày đó (trước chỉ INSERT,
+  gán 2 lần cùng ngày ra rác) — khuôn `trichXuatBuoi` Đại ("Re-trích = THAY THẾ doc cũ cùng lớp+ngày+loại").
+- **⭐ Nối Kho tài liệu bảng-tổng (`KhoTaiLieuScreen`):** `hinhGiaoTrinh.listAllBuoiHinh()` — SUY hình chiếu
+  hiển thị (join `hinh_gt_buoi`→`hinh_giao_trinh` qua `giao_trinh_id` trực tiếp (master) hoặc qua
+  `nguon_buoi_id`→buổi-master→`giao_trinh_id` (bản lớp), vì `hinh_gt_buoi` không tự có cột `khoi`/`mon`) —
+  KHÔNG đụng bảng `tai_lieu`. `Row` = union `DaiRow | HinhKhoRow` (`nguon:'dai'|'hinh'`), bảng liệt kê CHUNG
+  1 danh sách; cột Thao tác + cột Tên rẽ nhánh theo `nguon` — Hình chỉ có **📘/📝 In · Xoá** (không
+  sửa/nhân-bản/copy-link/phát-hành — không có hạ tầng gen-link tĩnh cho Hình, in luôn LIVE qua `loadLuoi`+
+  `resolveBanIn`(export từ `GiaoTrinhScreen`)+`HinhPrintView`, khác hẳn PrintView id-based của Đại).
+  **Bắt kịp 1 bug thật lúc review:** poll "job link-gen xong → tải ngầm" cũ gọi thẳng `listAllTaiLieu()` →
+  set rows → sẽ XOÁ MẤT mọi dòng Hình mỗi lần 1 job Đại chạy xong. Tách `fetchAllRows()` (gộp 2 nguồn, KHÔNG
+  đụng `loading`) dùng chung cho `reload()` (có loading) và poll ngầm (không loading, giữ đúng hành vi cũ
+  "không xoá bảng ra Đang-tải giữa lúc đang lướt").
+- **Verify:** tsc sạch + `npx vite build` sạch (2 lượt, sau khi bắt bug poll). Migration: KHÔNG CẦN (schema
+  `hinh_gt_buoi`/`hinh_giao_trinh` đã đủ cột). ⚠ CHƯA soi UI thật (dev pane phiên này không mở) — cần Thùy
+  `npm run dev`: tạo buổi tại chỗ → sửa nội dung → thấy "✓ Đã lưu" tự động; gán lớp → ngày tự gợi ý buổi
+  trống gần nhất; Kho tài liệu thấy dòng Hình xen giữa Đại, bấm 📘/📝 ra đúng PDF.
+- **Còn (chưa làm, biết trước):** `banUsageCount`'s `.or('loai.eq.chuan,and(loai.eq.ghep,lua_id.is.null)')`
+  cú pháp PostgREST — CHƯA chạy thật, có rủi ro sai cú pháp (chỉ compile-time đúng, không có type-check cho
+  chuỗi filter) · xoá 1 buổi MASTER không cascade xoá các bản LỚP đã gán từ nó (giữ nguyên hành vi cũ, chưa
+  hỏi Thùy có cần chặn/cảnh báo không) · chưa test "Gán lại" đổi ngày có để lại buổi ở ngày CŨ hay không
+  (mirror đúng semantics Đại, cùng loại ambiguity đã có sẵn bên đó — không phải lỗi mới).

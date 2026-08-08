@@ -13,11 +13,10 @@ import { MathText } from '../ui'
 import { Btn, Cap, Empty, Fig, Ma, Panel, Seg, Sol, Tag, inpCls, tron } from './hinhUi'
 import { useStore, SOAN_HINH_DEFAULT, type SoanHinhDraft, type PickItem } from '../../../store/useStore'
 import * as gt from '../../../lib/kho/hinhGiaoTrinh'
-import type { GiaoTrinh } from '../../../lib/kho/hinhGiaoTrinh'
 
 // Nháp soạn tài liệu theo khối (store, RAM) — giữ lựa chọn khi rời/quay lại màn (như etDraft).
 // Trả slice của 1 chế độ + hàm patch (merge nông). Set→mảng, Map→record: component tự đổi qua lại.
-function useSoanSlice<K extends 'gd' | 'mh' | 'ot'>(khoi: string, mode: K): [SoanHinhDraft[K], (patch: Partial<SoanHinhDraft[K]>) => void] {
+function useSoanSlice<K extends 'gd' | 'ot'>(khoi: string, mode: K): [SoanHinhDraft[K], (patch: Partial<SoanHinhDraft[K]>) => void] {
   const slice = useStore((s) => (s.soanHinh[khoi] ?? SOAN_HINH_DEFAULT)[mode])
   const setSoanHinh = useStore((s) => s.setSoanHinh)
   const patch = useCallback((p: Partial<SoanHinhDraft[K]>) =>
@@ -25,21 +24,24 @@ function useSoanSlice<K extends 'gd' | 'mh' | 'ot'>(khoi: string, mode: K): [Soa
   return [slice, patch]
 }
 
+// ⭐ 08-08: chế độ "Theo mô hình" (build-rồi-lưu-popup) RÚT khỏi đây — dựng buổi giáo trình giờ làm TẠI
+// CHỖ trong cây buổi của màn Giáo trình (`BuoiPickEditor`, export bên dưới). Còn lại 2 chế độ ad-hoc
+// (không gắn giáo trình): Giảng dạy (khúc A→B) · Ôn tập (theo dạng, rút bài thật).
 export default function SoanTaiLieu({ L, khoi }: { L: Luoi; khoi: string }) {
   const che = useStore((s) => (s.soanHinh[khoi] ?? SOAN_HINH_DEFAULT).che)
   const setSoanHinh = useStore((s) => s.setSoanHinh)
-  const setChe = (v: 'gd' | 'mh' | 'ot') => setSoanHinh(khoi, (cur) => ({ ...cur, che: v }))
+  const setChe = (v: 'gd' | 'ot') => setSoanHinh(khoi, (cur) => ({ ...cur, che: v }))
   return (
     <>
       <div className="mb-3 flex items-center justify-between gap-3">
-        <h1 className="text-[19px] font-semibold text-slate-900">Soạn tài liệu <span className="text-slate-400">· Khối {khoi}</span></h1>
+        <h1 className="text-[19px] font-semibold text-slate-900">Soạn tài liệu (ad-hoc) <span className="text-slate-400">· Khối {khoi}</span></h1>
         <Seg value={che} onChange={setChe} options={[
           { v: 'gd', label: '▶ Giảng dạy — đi tới đích' },
-          { v: 'mh', label: '◇ Theo mô hình — chọn node' },
           { v: 'ot', label: '↻ Ôn tập — theo dạng' },
         ]} />
       </div>
-      {che === 'gd' ? <GiangDay L={L} khoi={khoi} /> : che === 'mh' ? <TheoMoHinh L={L} khoi={khoi} /> : <OnTap L={L} khoi={khoi} />}
+      <p className="mb-3 max-w-3xl text-[12px] text-slate-400">In nhanh, không gắn giáo trình. Soạn buổi cho <b>giáo trình</b> (chọn chuỗi, gán lớp) → màn <b>Giáo trình</b>.</p>
+      {che === 'gd' ? <GiangDay L={L} khoi={khoi} /> : <OnTap L={L} khoi={khoi} />}
     </>
   )
 }
@@ -380,222 +382,115 @@ function dedupePicks(arr: PickItem[]): PickItem[] {
   })
 }
 
-function TheoMoHinh({ L, khoi }: { L: Luoi; khoi: string }) {
+// ── ⭐ 08-08 "chuyển nhà": editor NỘI DUNG 1 buổi giáo trình — dùng TẠI CHỖ trong cây buổi của
+// GiaoTrinhScreen (khuôn TaiLieuBuilder Đại: mỗi buổi tự chứa content, KHÔNG còn "dựng rồi lưu popup"
+// tách rời). Props-driven, KHÔNG giữ nháp riêng — caller sở hữu state (picks/anDe/soDong của 1 buổi cụ
+// thể) + tự autosave (khuôn `markSaved()` của TaiLieuBuilder — mỗi thao tác ghi DB ngay, không nút Lưu). ──
+export function BuoiPickEditor({ L, picks, anDe, soDong, onChangePicks, onChangeAnDe, onChangeSoDong }: {
+  L: Luoi
+  picks: PickItem[]; anDe: string[]; soDong: Record<string, number>
+  onChangePicks: (picks: PickItem[]) => void
+  onChangeAnDe: (anDe: string[]) => void
+  onChangeSoDong: (soDong: Record<string, number>) => void
+}) {
   const maCap = useMemo(() => api.maPhanCapMap(L), [L])
-  const [mh, setMh] = useSoanSlice(khoi, 'mh')  // nháp store (giữ khi rời màn) — chỉ LỰA CHỌN
-  const mainId = mh.mainId
-  const satIds = useMemo(() => new Set(mh.satIds), [mh.satIds])
-  const picks = mh.picks   // ⭐ 08-08: 1 DANH SÁCH pick thống nhất (đề chuẩn/lứa/biến thể/ý thật) — "1 chuỗi ghép cũng là 1 bài"
-  const [inBan, setInBan] = useState<BanIn | null>(null)
+  // Lọc mô hình chỉ để TÌM node dễ hơn (state cục bộ, không lưu) — KHÔNG đụng picks đã có: 1 buổi có thể
+  // trộn node từ NHIỀU mô hình khác nhau, đổi bộ lọc không được xoá nội dung đã chọn.
+  const [mainId, setMainId] = useState('')
+  const [satIds, setSatIds] = useState<Set<string>>(new Set())
 
-  // Vệ tinh = con LÁ (không có con) của mô hình chính.
   const vetinh = useMemo(() => (mainId
     ? api.conCua(L, mainId).map((id) => L.moHinh.find((m) => m.id === id)!).filter((m) => m && api.conCua(L, m.id).length === 0)
     : []), [L, mainId])
-  const modelIds = useMemo(() => (mainId ? [mainId, ...mh.satIds] : []), [mainId, mh.satIds])
-  // Mặc định: TẤT CẢ node trong kho (khối). Chọn mô hình chính = LỌC còn node của mô hình chính + vệ tinh.
+  const modelIds = useMemo(() => (mainId ? [mainId, ...satIds] : []), [mainId, satIds])
   const nodes = useMemo(() => (mainId ? L.baiToan.filter((b) => modelIds.includes(b.mo_hinh_id)) : L.baiToan.slice())
     .sort((a, b) => a.cap - b.cap || a.ma.localeCompare(b.ma)), [L, mainId, modelIds])
 
-  // Đổi mô hình chính → reset chọn (tránh giữ node/vệ tinh của mô hình cũ).
-  const chonMain = (id: string) => setMh({ mainId: id, satIds: [], picks: [] })
-  const toggleSat = (id: string) => setMh({ satIds: satIds.has(id) ? mh.satIds.filter((x) => x !== id) : [...mh.satIds, id] })
+  const chonMain = (id: string) => { setMainId(id); setSatIds(new Set()) }
+  const toggleSat = (id: string) => setSatIds((s) => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n })
 
-  const addPick = (p: PickItem) => setMh({ picks: [...picks, p] })
-  const updatePick = (key: string, p: PickItem) => setMh({ picks: picks.map((x) => (x.key === key ? p : x)) })
-  const removePick = (key: string) => setMh({ picks: picks.filter((x) => x.key !== key) })
-  // Gợi ý N: SET tổng số pick của (chuỗi,phan) = N (REPLACE, giống goiYPhan cũ) — bản khác nhau, ưu tiên ít dùng.
+  const addPick = (p: PickItem) => onChangePicks([...picks, p])
+  const updatePick = (key: string, p: PickItem) => onChangePicks(picks.map((x) => (x.key === key ? p : x)))
+  const removePick = (key: string) => onChangePicks(picks.filter((x) => x.key !== key))
   const goiY = async (chuoi: BaiToan[], phan: 'lop' | 'nha', n: number) => {
     const news = await goiYChuoi(chuoi, phan, n)
     if (news.length < n) alert(`Chuỗi này chỉ có ${news.length} bản khác nhau — lấy đủ ${news.length}.`)
     const ids = new Set(chuoi.map((b) => b.id))
-    setMh({ picks: [...picks.filter((p) => !(p.phan === phan && p.nodeIds.every((id) => ids.has(id)))), ...news] })
+    onChangePicks([...picks.filter((p) => !(p.phan === phan && p.nodeIds.every((id) => ids.has(id)))), ...news])
   }
+  const toggleAnDe = (key: string) => onChangeAnDe(anDe.includes(key) ? anDe.filter((k) => k !== key) : [...anDe, key])
+  const setSoDongOne = (key: string, n: number) => { const m = { ...soDong }; if (n > 0) m[key] = n; else delete m[key]; onChangeSoDong(m) }
 
-  // Ẩn hình (HS tự vẽ) theo từng bài — mặc định HIỆN. anDe chứa khoá bài đã ẩn.
-  const anDe = mh.anDe
-  const toggleAnDe = (key: string) => setMh({ anDe: anDe.includes(key) ? anDe.filter((k) => k !== key) : [...anDe, key] })
-
-  // Số dòng kẻ HS viết cho BTVN (per bài). Vắng = mặc định. Đặt 0 → xoá khỏi map.
-  const soDong = mh.soDong
-  const setSoDong = (key: string, n: number) => { const m = { ...soDong }; if (n > 0) m[key] = n; else delete m[key]; setMh({ soDong: m }) }
-
-  // GOM node thành CHUỖI liên thông — mỗi chuỗi HIỆN 1 LẦN (>1 câu = a,b,c hội tụ; 1 câu = câu lẻ, CÙNG cơ chế).
   const components = useMemo(() => {
     const seen = new Set<string>(); const comps: BaiToan[][] = []
     for (const n of nodes) { if (seen.has(n.id)) continue; const chain = api.chuoiKetNoi(L, n.id); chain.forEach((b) => seen.add(b.id)); comps.push(chain) }
     return comps
   }, [nodes, L])
 
-  // Khử trùng: pick GIỐNG HỆT (cùng bản + cùng bộ node) chỉ giữ 1 (phòng buổi cũ / reload dính lặp).
   const picksLop = useMemo(() => dedupePicks(picks.filter((p) => p.phan === 'lop')), [picks])
   const picksNha = useMemo(() => dedupePicks(picks.filter((p) => p.phan === 'nha')), [picks])
 
-  const [luuOpen, setLuuOpen] = useState(false)   // popup "Lưu vào giáo trình"
-  const coChon = picks.length > 0
-  // Sửa buổi giáo trình (mở từ màn Giáo trình): Lưu = CẬP NHẬT buổi đó, không tạo mới.
-  const editBuoi = mh.editBuoi
-  const capNhatBuoi = async () => {
-    if (!editBuoi) return
-    try { await gt.saveBuoiSelection(editBuoi, { picks, anDe, soDong }); alert('Đã cập nhật buổi giáo trình.') }
-    catch (e: any) { alert(e.message ?? String(e)) }
-  }
-  const buoiMoi = () => setMh({ mainId: '', satIds: [], picks: [], anDe: [], soDong: {}, editBuoi: null })
-
   return (
-    <>
-      <p className="mb-3.5 max-w-4xl text-[12.5px] leading-relaxed text-slate-500">
-        Hệ bày <b>tất cả chuỗi trong kho</b> (mỗi chuỗi = 1 dạng — kể cả chuỗi 1 câu). Mỗi phiếu (Trên lớp/Về nhà):
-        nhập <b>số bài</b> + <b>↻ Gợi ý</b> để tự chọn bản khác nhau (mặc định tick toàn bộ chuỗi), hoặc <b>＋ Thêm bài</b>
-        để tự chọn (chọn bản → tick ý trên cây nếu chuỗi &gt;1 câu). Bấm lặp lại để có nhiều bài CÙNG chuỗi, khác bản.
-        Muốn gọn thì <b>lọc theo mô hình</b> ở cột trái.
-      </p>
-      <div className="grid items-start gap-4 xl:grid-cols-[300px_1fr_248px]">
-        {/* CỘT 1 — chọn mô hình chính + vệ tinh */}
-        <Panel label="Lọc theo mô hình (tuỳ chọn)">
-          <div className="mb-1 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Mô hình chính</div>
-          <select className={inpCls} value={mainId} onChange={(e) => chonMain(e.target.value)}>
-            <option value="">— tất cả (không lọc) —</option>
-            {L.moHinh.slice().sort((a, b) => (maCap.get(a.id) ?? '').localeCompare(maCap.get(b.id) ?? '')).map((m) => (
-              <option key={m.id} value={m.id}>{maCap.get(m.id) ?? '?'} · {tron(m.ten).slice(0, 42)}</option>
-            ))}
-          </select>
-          {mainId && (
-            <div className="mt-3">
-              <div className="mb-1 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Mô hình vệ tinh · {vetinh.length}</div>
-              {vetinh.length === 0
-                ? <div className="text-[11.5px] text-slate-400">— mô hình này không có vệ tinh (lá) —</div>
-                : vetinh.map((v) => (
-                  <label key={v.id} className="mb-1 flex cursor-pointer items-center gap-2 rounded-lg border border-dashed border-indigo-200 bg-indigo-50/40 px-2 py-1.5 text-[12px] text-slate-700 hover:bg-indigo-50">
-                    <input type="checkbox" checked={satIds.has(v.id)} onChange={() => toggleSat(v.id)} />
-                    <Ma>{maCap.get(v.id) ?? '?'}</Ma><span className="min-w-0 flex-1 truncate"><MathText>{v.ten}</MathText></span>
-                  </label>
-                ))}
-              <p className="mt-2 text-[11px] leading-relaxed text-slate-400">Vệ tinh = mô hình lá treo dưới mô hình chính. Tick để lấy thêm node của nó vào buổi.</p>
-            </div>
-          )}
-        </Panel>
-
-        {/* CỘT 2 — mỗi chuỗi (kể cả 1 câu) 1 ChuoiRow, tự quản N+Gợi-ý / Thêm-bài */}
-        <div className="min-w-0">
-          <div className="mb-2 flex items-center gap-2 text-[11px] text-slate-400">
-            <span>{mainId ? 'Đang lọc theo mô hình chính' : 'Tất cả chuỗi trong kho'} · <b className="text-slate-600">{components.length}</b> chuỗi · {nodes.length} câu</span>
-            {mainId && <button onClick={() => setMh({ mainId: '', satIds: [] })} className="rounded border border-slate-300 px-1.5 py-0.5 text-slate-500 hover:bg-slate-50">✕ Bỏ lọc</button>}
-          </div>
-          {!nodes.length
-            ? <Empty icon="◇">Kho khối này chưa có node nào. Tạo node ở <b>Sơ đồ</b> trước.</Empty>
-            : components.map((comp) => (
-                <ChuoiRow key={comp.map((b) => b.id).join(',')} L={L} chuoi={comp} picks={picks}
-                  onAdd={addPick} onUpdate={updatePick} onRemove={removePick} onGoiY={(phan, n) => goiY(comp, phan, n)} />
+    <div className="grid items-start gap-3 xl:grid-cols-[240px_1fr_220px]">
+      <Panel label="Lọc theo mô hình (tuỳ chọn)">
+        <div className="mb-1 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Mô hình chính</div>
+        <select className={inpCls} value={mainId} onChange={(e) => chonMain(e.target.value)}>
+          <option value="">— tất cả (không lọc) —</option>
+          {L.moHinh.slice().sort((a, b) => (maCap.get(a.id) ?? '').localeCompare(maCap.get(b.id) ?? '')).map((m) => (
+            <option key={m.id} value={m.id}>{maCap.get(m.id) ?? '?'} · {tron(m.ten).slice(0, 42)}</option>
+          ))}
+        </select>
+        {mainId && (
+          <div className="mt-3">
+            <div className="mb-1 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Mô hình vệ tinh · {vetinh.length}</div>
+            {vetinh.length === 0
+              ? <div className="text-[11.5px] text-slate-400">— mô hình này không có vệ tinh (lá) —</div>
+              : vetinh.map((v) => (
+                <label key={v.id} className="mb-1 flex cursor-pointer items-center gap-2 rounded-lg border border-dashed border-indigo-200 bg-indigo-50/40 px-2 py-1.5 text-[12px] text-slate-700 hover:bg-indigo-50">
+                  <input type="checkbox" checked={satIds.has(v.id)} onChange={() => toggleSat(v.id)} />
+                  <Ma>{maCap.get(v.id) ?? '?'}</Ma><span className="min-w-0 flex-1 truncate"><MathText>{v.ten}</MathText></span>
+                </label>
               ))}
-        </div>
+          </div>
+        )}
+      </Panel>
 
-        {/* CỘT 3 — tổng kết + xuất 2 phiếu */}
-        <Panel label="Xuất phiếu" className="sticky top-4">
-          {!picks.length
-            ? <div className="text-[12.5px] text-slate-400">— chưa chọn bài nào —</div>
-            : (
-              <>
-                <PhieuList nhan="📘 Trên lớp" ton="lop" picks={picksLop} L={L} onRemove={removePick} anDe={anDe} onToggleAnDe={toggleAnDe} soDong={soDong} onSetSoDong={setSoDong} />
-                <div className="my-2 border-t border-slate-100" />
-                <PhieuList nhan="📝 Về nhà" ton="nha" picks={picksNha} L={L} onRemove={removePick} anDe={anDe} onToggleAnDe={toggleAnDe} soDong={soDong} onSetSoDong={setSoDong} />
-              </>
-            )}
-          <div className="mt-3 flex gap-4 border-t border-slate-100 pt-3 text-[12.5px]">
-            <span className="text-sky-700">Lớp <b>{picksLop.length}</b></span>
-            <span className="text-orange-600">Nhà <b>{picksNha.length}</b></span>
-            <span className="ml-auto text-slate-400">{components.length} chuỗi</span>
-          </div>
-          <Btn kind="pri" className="mt-3 w-full justify-center" disabled={!picksLop.length}
-            onClick={async () => setInBan(await banInTheoMoHinh('Trên lớp', 'lop', picks, L, anDe, soDong))}>📘 Xuất phiếu Trên lớp</Btn>
-          <Btn className="mt-2 w-full justify-center" disabled={!picksNha.length}
-            onClick={async () => setInBan(await banInTheoMoHinh('Về nhà (BTVN)', 'nha', picks, L, anDe, soDong))}>📝 Xuất phiếu Về nhà</Btn>
-          <p className="mt-2.5 text-[11px] leading-relaxed text-slate-400"><b>🔗</b> = a,b,c ghép chuỗi. <b>✏️</b> = ẩn hình, chừa ô HS tự vẽ.</p>
-          <div className="mt-3 border-t border-slate-100 pt-3">
-            {editBuoi ? (
-              <>
-                <Btn kind="pri" className="w-full justify-center" disabled={!coChon} onClick={capNhatBuoi}>💾 Cập nhật buổi này</Btn>
-                <div className="mt-1.5 flex items-center gap-2 text-[11px]">
-                  <span className="font-medium text-violet-700">✎ Đang sửa buổi giáo trình</span>
-                  <button onClick={buoiMoi} className="ml-auto text-slate-400 hover:text-slate-700">↺ Thoát / Buổi mới</button>
-                </div>
-              </>
-            ) : (
-              <>
-                <Btn className="w-full justify-center border-violet-300 text-violet-700" disabled={!coChon} onClick={() => setLuuOpen(true)}>💾 Lưu vào giáo trình</Btn>
-                <p className="mt-1.5 text-[11px] leading-relaxed text-slate-400">Lưu lựa chọn hiện tại thành <b>một buổi</b> trong giáo trình (để gán lớp sau).</p>
-              </>
-            )}
-          </div>
-        </Panel>
+      <div className="min-w-0">
+        <div className="mb-2 flex items-center gap-2 text-[11px] text-slate-400">
+          <span>{mainId ? 'Đang lọc theo mô hình chính' : 'Tất cả chuỗi trong kho'} · <b className="text-slate-600">{components.length}</b> chuỗi</span>
+          {mainId && <button onClick={() => { setMainId(''); setSatIds(new Set()) }} className="rounded border border-slate-300 px-1.5 py-0.5 text-slate-500 hover:bg-slate-50">✕ Bỏ lọc</button>}
+        </div>
+        {!nodes.length
+          ? <Empty icon="◇">Kho khối này chưa có node nào. Tạo node ở <b>Sơ đồ</b> trước.</Empty>
+          : components.map((comp) => (
+              <ChuoiRow key={comp.map((b) => b.id).join(',')} L={L} chuoi={comp} picks={picks}
+                onAdd={addPick} onUpdate={updatePick} onRemove={removePick} onGoiY={(phan, n) => goiY(comp, phan, n)} />
+            ))}
       </div>
-      {inBan && <HinhPrintView ban={inBan} onClose={() => setInBan(null)} />}
-      {luuOpen && <LuuGiaoTrinhPopup khoi={khoi} moHinhChinhId={mainId || null}
-        nhap={{ picks, anDe, soDong }} onClose={() => setLuuOpen(false)} onDone={() => setLuuOpen(false)} />}
-    </>
+
+      <Panel label="Tóm tắt">
+        {!picks.length
+          ? <div className="text-[12.5px] text-slate-400">— chưa chọn bài nào —</div>
+          : (
+            <>
+              <PhieuList nhan="📘 Trên lớp" ton="lop" picks={picksLop} L={L} onRemove={removePick} anDe={anDe} onToggleAnDe={toggleAnDe} soDong={soDong} onSetSoDong={setSoDongOne} />
+              <div className="my-2 border-t border-slate-100" />
+              <PhieuList nhan="📝 Về nhà" ton="nha" picks={picksNha} L={L} onRemove={removePick} anDe={anDe} onToggleAnDe={toggleAnDe} soDong={soDong} onSetSoDong={setSoDongOne} />
+            </>
+          )}
+        <div className="mt-2 flex gap-3 border-t border-slate-100 pt-2 text-[12px]">
+          <span className="text-sky-700">Lớp <b>{picksLop.length}</b></span>
+          <span className="text-orange-600">Nhà <b>{picksNha.length}</b></span>
+        </div>
+        <p className="mt-2 text-[11px] leading-relaxed text-slate-400"><b>🔗</b> = a,b,c ghép chuỗi. <b>✏️</b> = ẩn hình, chừa ô HS tự vẽ.</p>
+      </Panel>
+    </div>
   )
 }
 
-// Popup "Lưu vào giáo trình": chọn/tạo giáo trình + đặt tên buổi → tạo buổi master + lưu bài của nháp.
-function LuuGiaoTrinhPopup({ khoi, moHinhChinhId, nhap, onClose, onDone }: {
-  khoi: string; moHinhChinhId: string | null
-  nhap: { picks: PickItem[]; anDe: string[]; soDong: Record<string, number> }
-  onClose: () => void; onDone: () => void
-}) {
-  const [gts, setGts] = useState<GiaoTrinh[]>([])
-  const [gtId, setGtId] = useState('')        // '' = tạo giáo trình mới
-  const [tenMoi, setTenMoi] = useState('')
-  const [tieuDe, setTieuDe] = useState('')
-  const [busy, setBusy] = useState(false)
-  const [loi, setLoi] = useState<string | null>(null)
-  useEffect(() => { gt.listGiaoTrinh(khoi).then((d) => { setGts(d); setGtId(d[0]?.id ?? '') }).catch(() => setGts([])) }, [khoi])
-  const luu = async () => {
-    if (!gtId && !tenMoi.trim()) { setLoi('Chọn giáo trình có sẵn hoặc đặt tên giáo trình mới.'); return }
-    setBusy(true); setLoi(null)
-    try {
-      const id = gtId || (await gt.createGiaoTrinh({ ten: tenMoi.trim(), khoi })).id
-      const buoi = await gt.createBuoiMaster(id, { tieu_de: tieuDe.trim() || null, mo_hinh_chinh_id: moHinhChinhId })
-      await gt.saveBuoiSelection(buoi.id, nhap)
-      alert('Đã lưu buổi vào giáo trình.')
-      onDone()
-    } catch (e: any) { setLoi(e.message ?? String(e)); setBusy(false) }
-  }
-  return createPortal(
-    <div className="fixed inset-0 z-[70] flex items-center justify-center bg-slate-900/50 p-3 sm:p-6" onClick={onClose}>
-      <div className="w-[92vw] max-w-md overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
-        <div className="flex items-center gap-2 border-b border-slate-200 px-5 py-3">
-          <h3 className="text-[15px] font-semibold text-slate-900">💾 Lưu vào giáo trình</h3>
-          <button onClick={onClose} className="ml-auto rounded-lg border border-slate-300 px-3 py-1.5 text-[13px] text-slate-600 hover:bg-slate-50">Đóng</button>
-        </div>
-        <div className="space-y-3 p-5">
-          <div>
-            <div className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-slate-500">Giáo trình</div>
-            <select className={inpCls} value={gtId} onChange={(e) => setGtId(e.target.value)}>
-              {gts.map((g) => <option key={g.id} value={g.id}>{g.ten}</option>)}
-              <option value="">+ Tạo giáo trình mới…</option>
-            </select>
-            {!gtId && <input className={`${inpCls} mt-1.5`} value={tenMoi} onChange={(e) => setTenMoi(e.target.value)} placeholder={`Tên giáo trình mới · Khối ${khoi}`} />}
-          </div>
-          <div>
-            <div className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-slate-500">Tên buổi (tuỳ chọn)</div>
-            <input className={inpCls} value={tieuDe} onChange={(e) => setTieuDe(e.target.value)} placeholder="vd Buổi 5 — Trực tâm" />
-          </div>
-          {loi && <div className="rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[12.5px] text-rose-700">{loi}</div>}
-        </div>
-        <div className="flex items-center gap-3 border-t border-slate-200 px-5 py-3">
-          <div className="ml-auto flex gap-2">
-            <button onClick={onClose} className="rounded-lg px-3 py-2 text-[13px] text-slate-500 hover:bg-slate-100">Huỷ</button>
-            <Btn kind="pri" disabled={busy} onClick={luu}>{busy ? 'Đang lưu…' : 'Lưu buổi'}</Btn>
-          </div>
-        </div>
-      </div>
-    </div>,
-    document.body,
-  )
-}
-
-/** ⭐ 08-08: MỌI pick (đề chuẩn/lứa/biến thể/ý thật) của MỘT phiếu → bản in — 1 cơ chế cho mọi cỡ chuỗi. */
-async function banInTheoMoHinh(tieuDe: string, phan: 'lop' | 'nha', picks: PickItem[], L: Luoi, anDe: string[], soDong: Record<string, number>): Promise<BanIn> {
+/** ⭐ 08-08: MỌI pick (đề chuẩn/lứa/biến thể/ý thật) của MỘT phiếu → bản in — 1 cơ chế cho mọi cỡ chuỗi.
+ *  Export — dùng bởi GiaoTrinhScreen ("👁 Xem buổi" / "🖨 In") ngoài chỗ gọi nội bộ cũ. */
+export async function banInTheoMoHinh(tieuDe: string, phan: 'lop' | 'nha', picks: PickItem[], L: Luoi, anDe: string[], soDong: Record<string, number>): Promise<BanIn> {
   const an = new Set(anDe)
   const dong = (key: string) => (phan === 'nha' ? (soDong[key] ?? DONG_BTVN) : soDong[key] ?? 0)   // BTVN mặc định DONG_BTVN; trên lớp KHÔNG kẻ dòng (bài sát nhau)
   const ps = dedupePicks(picks.filter((p) => p.phan === phan))

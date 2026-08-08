@@ -31,23 +31,19 @@ export type PickItem = {
   | { kind: 'bienthe'; bienTheId: string }   // biến thể riêng lẻ (kieu='doi_so') — CHỈ chuỗi 1 node
   | { kind: 'y'; yId: string }               // ý thật (đã chấm) — CHỈ chuỗi 1 node
 )
+// ⭐ 08-08 (tiếp, "chuyển nhà"): chế độ 'mh' (Theo mô hình, build-rồi-lưu-popup) RÚT khỏi Soạn tài liệu —
+// việc dựng nội dung 1 buổi giáo trình giờ làm TẠI CHỖ trong cây buổi của GiaoTrinhScreen (khuôn
+// TaiLieuBuilder Đại: +Thêm buổi → điền tại chỗ → tự động lưu), không còn bước "Lưu vào giáo trình" rời.
+// `picks`/`anDe`/`soDong` của 1 buổi giờ sống thẳng trong DB (hinh_gt_bai qua saveBuoiSelection mỗi lần
+// sửa), KHÔNG còn nháp draft ở đây nữa — component dùng chung là `BuoiPickEditor` (SoanTaiLieu.tsx, export).
 export type SoanHinhDraft = {
-  che: 'gd' | 'mh' | 'ot'
+  che: 'gd' | 'ot'
   gd: { aId: string; bId: string; daHoc: string[]; themVao: string[] }
-  // anDe: khoá bài (PickItem.key) có ẨN hình → chừa ô vẽ cho HS. Vắng = hiện hình (mặc định).
-  mh: {
-    mainId: string; satIds: string[]
-    picks: PickItem[]
-    anDe: string[]
-    soDong: Record<string, number>   // khoá bài → số dòng kẻ HS viết (BTVN). Vắng = mặc định bản in.
-    editBuoi: string | null          // đang SỬA buổi giáo trình này (Lưu = cập nhật buổi đó, không tạo mới)
-  }
   ot: { dangIds: string[]; gio: string[]; dkTu: string; dkDen: string }
 }
 export const SOAN_HINH_DEFAULT: SoanHinhDraft = {
   che: 'gd',
   gd: { aId: '', bId: '', daHoc: [], themVao: [] },
-  mh: { mainId: '', satIds: [], picks: [], anDe: [], soDong: {}, editBuoi: null },
   ot: { dangIds: [], gio: [], dkTu: '', dkDen: '' },
 }
 

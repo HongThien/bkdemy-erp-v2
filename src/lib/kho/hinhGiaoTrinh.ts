@@ -120,14 +120,36 @@ export async function banUsageCount(luaIds: string[], bienTheIds: string[], yIds
 export async function loadBuoiSelection(buoiId: string): Promise<GtBai[]> {
   return listGtBai(buoiId)
 }
+/** Nghịch đảo `saveBuoiSelection`: bài đã lưu (GtBai[]) → NhapBuoi (PickItem[] thống nhất) để BuoiPickEditor
+ *  sửa tại chỗ. `loai='chuan'` (data CŨ trước 08-08) đọc lại y hệt `kind:'ghep',luaId:null,nodeIds:[ref_id]`. */
+export async function loadBuoiPicks(buoiId: string): Promise<NhapBuoi> {
+  const bais = await listGtBai(buoiId)
+  const [btMap, yMap] = await Promise.all([
+    getBienTheByIds(bais.filter((b) => b.loai === 'bienthe').map((b) => b.ref_id!).filter(Boolean)),
+    getYFull(bais.filter((b) => b.loai === 'y').map((b) => b.ref_id!).filter(Boolean)),
+  ])
+  const picks: PickItem[] = []; const anDe: string[] = []; const soDong: Record<string, number> = {}
+  for (const b of bais) {
+    if (b.an_de) anDe.push(b.id)
+    if (b.so_dong != null) soDong[b.id] = b.so_dong
+    if (b.loai === 'chuan' && b.ref_id) picks.push({ key: b.id, phan: b.phan, kind: 'ghep', luaId: null, nodeIds: [b.ref_id] })
+    else if (b.loai === 'bienthe' && b.ref_id) { const v = btMap.get(b.ref_id); if (v) picks.push({ key: b.id, phan: b.phan, kind: 'bienthe', bienTheId: b.ref_id, nodeIds: [v.baitoan_id] }) }
+    else if (b.loai === 'y' && b.ref_id) { const yb = yMap.get(b.ref_id); if (yb?.y.baitoan_id) picks.push({ key: b.id, phan: b.phan, kind: 'y', yId: b.ref_id, nodeIds: [yb.y.baitoan_id] }) }
+    else if (b.loai === 'ghep') picks.push({ key: b.id, phan: b.phan, kind: 'ghep', luaId: b.lua_id, nodeIds: b.ghep_node_ids })
+  }
+  return { picks, anDe, soDong }
+}
 
 // ══════════════ GÁN LỚP (snapshot) ══════════════
-/** Gán 1 buổi MASTER cho (lớp, ngày): tạo buổi-kiểu-lớp mới + COPY bài (đóng băng). Trả id buổi lớp. */
+/** Gán 1 buổi MASTER cho (lớp, ngày): tạo buổi-kiểu-lớp mới + COPY bài (đóng băng). Trả id buổi lớp.
+ *  ⭐ Re-gán (Gán lại) cùng (lớp,ngày) → THAY THẾ buổi cũ tại ngày đó (khuôn `trichXuatBuoi` Đại: 1
+ *  lớp chỉ có 1 buổi Hình / ngày, kể cả nguồn buổi-master khác) — chống trùng lịch, không tích luỹ rác. */
 export async function ganLopSnapshot(masterBuoiId: string, lopId: string, ngay: string): Promise<string> {
   const { data: mb, error: e0 } = await supabase.from('hinh_gt_buoi').select('*').eq('id', masterBuoiId).single()
   if (e0) throw e0
   const bais = await listGtBai(masterBuoiId)
   const { data: u } = await supabase.auth.getUser()
+  await supabase.from('hinh_gt_buoi').delete().eq('lop_id', lopId).eq('ngay', ngay)   // thay thế buổi cũ (nếu có) tại ngày này
   const { data: nb, error: e1 } = await supabase.from('hinh_gt_buoi').insert({
     tieu_de: (mb as GtBuoi).tieu_de, mo_hinh_chinh_id: (mb as GtBuoi).mo_hinh_chinh_id,
     lop_id: lopId, ngay, nguon_buoi_id: masterBuoiId, thu_tu: 0, created_by: u.user?.id ?? null,
@@ -148,6 +170,21 @@ export async function listBuoiLop(lopId: string): Promise<GtBuoi[]> {
   if (error) throw error
   return (data ?? []) as GtBuoi[]
 }
+// ── ⭐ TRẠNG THÁI GÁN theo buổi MASTER (cho TrichPanel Hình, khuôn listTrichXuat Đại) ──
+export type TrichStateHinh = { ngay: string; id: string }
+/** Với 1 lớp: buổi MASTER nào (trong `buoiIds`) đã gán, gán vào ngày nào. Key = id buổi MASTER. */
+export async function listTrichXuatHinh(lopId: string, buoiIds: string[]): Promise<Record<string, TrichStateHinh>> {
+  if (!buoiIds.length) return {}
+  const { data, error } = await supabase.from('hinh_gt_buoi').select('id, ngay, nguon_buoi_id')
+    .eq('lop_id', lopId).in('nguon_buoi_id', buoiIds).limit(LIMIT)
+  if (error) throw error
+  const out: Record<string, TrichStateHinh> = {}
+  for (const r of (data ?? []) as { id: string; ngay: string | null; nguon_buoi_id: string | null }[]) {
+    if (!r.nguon_buoi_id || !r.ngay) continue
+    out[r.nguon_buoi_id] = { ngay: r.ngay, id: r.id }
+  }
+  return out
+}
 /** Đánh lại stt_lop (1,2,3…) theo NGÀY — gọi sau mỗi lần gán/xoá buổi của lớp. */
 export async function renumberBuoiLop(lopId: string): Promise<void> {
   const rows = await listBuoiLop(lopId)
@@ -161,6 +198,41 @@ export async function goBuoiLop(buoiLopId: string, lopId: string): Promise<void>
   const { error } = await supabase.from('hinh_gt_buoi').delete().eq('id', buoiLopId)
   if (error) throw error
   await renumberBuoiLop(lopId)
+}
+
+// ══════════════ ⭐ HIỆN CHUNG Ở KHO TÀI LIỆU (bảng tổng, cùng Đại — KHÔNG gộp bảng, chỉ liệt kê chung) ══
+export type HinhKhoRow = {
+  id: string; ten: string; khoi: string; mon: string
+  loai: 'hinh_giao_trinh' | 'hinh_giao_trinh_buoi'   // 'hinh_giao_trinh'=buổi MASTER (phát triển) · 'hinh_giao_trinh_buoi'=bản LỚP (vận hành)
+  lop_id: string | null; ngay: string | null; created_at: string
+}
+/** Mọi buổi Hình (master + gán lớp) → hình chiếu liệt kê chung với `tai_lieu` ở Kho tài liệu bảng-tổng.
+ *  KHÔNG đụng bảng `tai_lieu` — Hình vẫn 100% bảng riêng (Thùy chốt "2 giáo trình riêng, không gộp"),
+ *  hàm này chỉ SUY dữ liệu hiển thị tương thích để 1 màn liệt kê được cả 2 nguồn. */
+export async function listAllBuoiHinh(): Promise<HinhKhoRow[]> {
+  const [{ data: gts, error: e1 }, { data: buois, error: e2 }] = await Promise.all([
+    supabase.from('hinh_giao_trinh').select('id, ten, khoi, mon').limit(LIMIT),
+    supabase.from('hinh_gt_buoi').select('id, tieu_de, giao_trinh_id, lop_id, ngay, nguon_buoi_id, created_at').limit(LIMIT),
+  ])
+  if (e1) throw e1; if (e2) throw e2
+  const gtMap = new Map(((gts ?? []) as { id: string; ten: string; khoi: string; mon: string }[]).map((g) => [g.id, g]))
+  const rows = (buois ?? []) as { id: string; tieu_de: string | null; giao_trinh_id: string | null; lop_id: string | null; ngay: string | null; nguon_buoi_id: string | null; created_at: string }[]
+  const byId = new Map(rows.map((r) => [r.id, r]))
+  const gtOfMasterBuoi = (masterBuoiId: string | null) => {
+    const m = masterBuoiId ? byId.get(masterBuoiId) : null
+    return m?.giao_trinh_id ? (gtMap.get(m.giao_trinh_id) ?? null) : null
+  }
+  const out: HinhKhoRow[] = []
+  for (const r of rows) {
+    if (r.giao_trinh_id) {
+      const g = gtMap.get(r.giao_trinh_id); if (!g) continue
+      out.push({ id: r.id, ten: `${g.ten} — ${r.tieu_de || 'Buổi'}`, khoi: g.khoi, mon: g.mon, loai: 'hinh_giao_trinh', lop_id: null, ngay: null, created_at: r.created_at })
+    } else if (r.lop_id) {
+      const g = gtOfMasterBuoi(r.nguon_buoi_id); if (!g) continue
+      out.push({ id: r.id, ten: `${g.ten} — ${r.tieu_de || 'Buổi'}`, khoi: g.khoi, mon: g.mon, loai: 'hinh_giao_trinh_buoi', lop_id: r.lop_id, ngay: r.ngay, created_at: r.created_at })
+    }
+  }
+  return out
 }
 
 // ══════════════ RESOLVE nội dung bài (để in) — fetch biến thể / ý theo id ══════════════

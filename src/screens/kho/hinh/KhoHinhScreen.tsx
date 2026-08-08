@@ -122,7 +122,7 @@ export default function KhoHinhScreen({ khoi }: { khoi: string }) {
         {man === 'bode' && <Catalog L={L} khoi={khoi} loai="bode" reload={load} />}
         {man === 'tlchuan' && <TaiLieuChuan L={L} khoi={khoi} />}
         {man === 'soan' && <SoanTaiLieu L={L} khoi={khoi} />}
-        {man === 'giaotrinh' && <GiaoTrinhScreen L={L} khoi={khoi} di={di} />}
+        {man === 'giaotrinh' && <GiaoTrinhScreen L={L} khoi={khoi} />}
       </div>
     </div>
   )
