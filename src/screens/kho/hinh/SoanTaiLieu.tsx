@@ -724,7 +724,10 @@ function tachDe(deBai: string): { giaThiet: string; cauHoi: string } {
 /** Ghép 1 LỨA (đổi đỉnh) → a,b,c: giả thiết CHUNG (từ câu sâu nhất) + ý = câu hỏi từng câu (từ biến thể của lứa). */
 export function mucGhepLua(L: Luoi, nodeIds: string[], bienThes: BienThe[], anDe: boolean, soDong?: number | null): MucIn {
   const byNode = new Map(bienThes.map((v) => [v.baitoan_id, v]))
-  const khung = api.noDapAn(L, nodeIds)
+  // Cấu trúc ẩn/bước theo tiền-đề ĐÓNG BĂNG của lứa (ổn định khi đề-chuẩn đổi về sau); lứa CŨ (chưa có
+  // tien_de_ids) → về derive live như trước để không mất bước decomposition.
+  const coDongBang = bienThes.some((v) => v.tien_de_ids.length > 0)
+  const khung = coDongBang ? api.noDapAnLua(L, bienThes, nodeIds) : api.noDapAn(L, nodeIds)
   const nodes = khung.map((k) => k.node)
   let deep = nodes[0]; let dS = -1
   for (const bt of nodes) { if (!byNode.has(bt.id)) continue; const d = api.doSauTrongHo(L, bt.mo_hinh_id); if (d > dS) { dS = d; deep = bt } }

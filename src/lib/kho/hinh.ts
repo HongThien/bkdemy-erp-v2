@@ -351,6 +351,42 @@ export function noDapAn(L: Luoi, tickIds: string[]): YKhung[] {
     return { node: T, buocNodes, gtPhuKeo }
   })
 }
+/** Như `noDapAn` NHƯNG cấu trúc ẩn/bước lấy từ tiền-đề ĐÓNG BĂNG của LỨA (`bien_the.tien_de_ids`),
+ *  KHÔNG derive từ đề-chuẩn sống → lứa giữ nguyên chuỗi lúc clone dù đề-chuẩn về sau chèn/bỏ node giữa
+ *  chừng (§DANH-TÍNH: khoá tự nhiên, không vị trí). Trả KHUNG node-only (caller gắn nội dung biến thể).
+ *  `tickIds` = node (đề-chuẩn) được hỏi. Van (gtPhuKeo) vẫn đọc live — van chưa đóng băng vào lứa. */
+export function noDapAnLua(L: Luoi, bienThes: BienThe[], tickIds: string[]): YKhung[] {
+  const bt = (id: string) => L.baiToan.find((b) => b.id === id)
+  const vById = new Map(bienThes.map((v) => [v.id, v]))                 // id biến thể → biến thể
+  const varOfNode = new Map(bienThes.map((v) => [v.baitoan_id, v]))     // node → biến thể (mỗi node ≤1)
+  const nodeOfVar = (vid: string) => vById.get(vid)?.baitoan_id         // id biến thể → node
+  // cạnh ĐÓNG BĂNG (node → node): tien_de_ids của biến thể node đó, map ngược về node
+  const frozenTd = (nodeId: string): string[] => {
+    const v = varOfNode.get(nodeId)
+    return v ? (v.tien_de_ids.map(nodeOfVar).filter(Boolean) as string[]) : []
+  }
+  const tick = new Set(tickIds)
+  const ticks = (tickIds.map(bt).filter(Boolean) as BaiToan[]).sort((a, b) => a.cap - b.cap || a.ma.localeCompare(b.ma))
+  const emitted = new Set<string>()
+  const gom = (goc: string, next: (id: string) => string[], stop: (id: string) => boolean): BaiToan[] => {
+    const out: BaiToan[] = []; const seen = new Set<string>(); const stack = [...next(goc)]
+    while (stack.length) {
+      const x = stack.pop()!
+      if (tick.has(x) || seen.has(x) || stop(x)) continue
+      seen.add(x)
+      const n = bt(x); if (n) out.push(n)
+      stack.push(...next(x))
+    }
+    return out.sort((a, b) => a.cap - b.cap || a.ma.localeCompare(b.ma))
+  }
+  return ticks.map((T) => {
+    const buocNodes = gom(T.id, frozenTd, (id) => emitted.has(id))
+    for (const n of buocNodes) emitted.add(n.id)
+    const gtPhuKeo = gom(T.id, (id) => tienDeVan(L, id), () => false)
+      .map((n) => n.gia_thiet_phu?.trim()).filter(Boolean) as string[]
+    return { node: T, buocNodes, gtPhuKeo }
+  })
+}
 
 /** Lý thuyết của một mô hình = bài toán của chính nó + KẾ THỪA toàn bộ từ tổ tiên (§1.1). */
 export function lyThuyetCuaMoHinh(L: Luoi, moHinhId: string): { rieng: BaiToan[]; keThua: BaiToan[] } {

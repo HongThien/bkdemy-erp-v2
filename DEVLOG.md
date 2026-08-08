@@ -3578,3 +3578,27 @@ Pull erp-v2 (2b3c820), đọc HANDOFF. Cả ngày làm phần SOẠN TÀI LIỆU
 - Git: pull erp-v2 lần 2 (behind 3: Gami EXP · PH login · redesign in Đại) — không đụng file kho-hình, FF sạch.
 
 tsc + vite build sạch mọi bước. Dev pane phiên 0×0 → nhờ Thùy `npm run dev` soi. Migration + schema.md commit kèm.
+
+## 2026-08-08 (phiên khác máy) — Pull main vào nhánh QR + mucGhepLua theo tiền-đề ĐÓNG BĂNG của lứa
+- **Bối cảnh git (đúng cảnh báo §714):** nhánh `feat/tai-anh-qr-hangloat` (phiên song song) phân kỳ với
+  `origin/main` — nhiều commit Kho Hình TRÙNG NỘI DUNG khác SHA (cherry-pick), main lại đi TRƯỚC (soạn-tài-liệu
+  08-08: `noDapAn`/giả-thiết-phụ/van + popup chọn-bản → cây tick). Nhánh có 3 việc RIÊNG chưa lên main
+  (patch-id không khớp): `2b43d07` tải-ảnh-QR-hàng-loạt→ZIP · `6cc6e9a` HS nghỉ giữa tháng phát sinh phí ·
+  `9fa9afb` popup ngày nghỉ. + WIP chưa commit: tiền-đề bài-tầng ĐÓNG BĂNG (`saveLuaBienThe` ghi `tien_de_ids`).
+- **Xử:** KHÔNG reset/discard (cả 2 phía có việc thật). Snapshot WIP → `git merge origin/main`. Giải 5 conflict:
+  `hinh.ts` (giữ CẢ block `noDapAn`/`tienDeVan` mới của main LẪN tiền-đề đóng băng) · `HinhPrintView`/`SoanTaiLieu`
+  (lấy main — nhánh không có việc riêng ở đây, đã verify diff) · `HANDOFF.md` (lấy section 08-08 của main) ·
+  `schema.md` (lấy main; auto-gen → cần `npm run schema` sau khi áp migration `202608071400_hinh_bien_the_tien_de`).
+  Nhánh giờ 23 ahead / 0 behind. tsc sạch.
+- **⭐ `mucGhepLua` theo lứa (Thùy chọn):** trước đây cấu trúc ẩn/bước của LỨA lấy từ `noDapAn(L, nodeIds)` =
+  đề-chuẩn SỐNG → nếu đề-chuẩn về sau chèn/bỏ node giữa chuỗi, preview lứa lệch (kéo node không-có-biến-thể vào).
+  Thêm `noDapAnLua(L, bienThes, tickIds)` (hinh.ts) = bản sao `noDapAn` nhưng cạnh ẩn/bước đi theo `tien_de_ids`
+  ĐÓNG BĂNG của lứa (map biến-thể→node), sort/gt-phụ vẫn theo node gốc; van (gtPhuKeo) vẫn đọc live (chưa đóng
+  băng). `mucGhepLua` dùng nó khi lứa CÓ đóng băng (`some(tien_de_ids.length>0)`), else fallback `noDapAn` live
+  (lứa CŨ chưa migrate → không mất bước decomposition).
+- **Verify:** tsc sạch. Test thuần scratch (`t_nodapanlua.mjs`): tick {C} chuỗi A←B←C, giả lập đề-chuẩn chèn X
+  giữa B–C sau clone → FROZEN giữ [A,B] (bỏ X), LIVE sai kéo cả X; tick {B,C} cắt-tại-tick đúng (A nở ở ý B, C
+  dừng ở B). ⚠ CHƯA soi IN thật (dev pane 0×0 + migration `tien_de_ids` chưa chắc áp DB shared + chưa có data lứa
+  đóng-băng để render). `ChonChuoiPopup` (thẻ chọn-bản) = list câu phẳng, không có ẩn/bước → không đụng.
+- **Còn (chưa làm):** áp migration `202608071400`+`202608031000` lên DB → `npm run schema` → commit schema.md ·
+  đổi-đỉnh chưa relabel `gia_thiet_phu`/van cho lứa (giả thiết phụ lứa vẫn nhãn đỉnh gốc — cần đóng băng/relabel sau).
