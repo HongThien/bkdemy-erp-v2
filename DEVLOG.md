@@ -3713,3 +3713,23 @@ tsc + vite build sạch mọi bước. Dev pane phiên 0×0 → nhờ Thùy `npm
   chuỗi filter) · xoá 1 buổi MASTER không cascade xoá các bản LỚP đã gán từ nó (giữ nguyên hành vi cũ, chưa
   hỏi Thùy có cần chặn/cảnh báo không) · chưa test "Gán lại" đổi ngày có để lại buổi ở ngày CŨ hay không
   (mirror đúng semantics Đại, cùng loại ambiguity đã có sẵn bên đó — không phải lỗi mới).
+
+## 2026-08-08 (tiếp 4) — "Chuyển nhà" phần CÒN LẠI: kéo Giáo trình Hình ra khỏi rail Kho, lên hub Làm tài liệu
+- **Thùy nhắc lại:** "chuyển nhà" ý gồm CẢ chỗ VÀO (nav), không chỉ luồng thao tác bên trong (đã làm ở entry
+  trước). Đường cũ chôn sâu: Bản đồ kiến thức → tab Hình học → rail trái nhóm "Kho nhập" → "▤ Giáo trình +
+  lớp" — lẫn cùng nhóm với Kho tạm/Hàng chờ/Kho chính (màn quản lý NỘI DUNG kho, không phải nơi soạn tài liệu).
+- **Fix — ngang hàng Đại, 1 cửa duy nhất:**
+  - `LAMTAILIEU_CHILDREN` (useStore.ts) thêm `lamtailieu:giao_trinh_hinh` "Giáo trình (Hình)" cạnh "Giáo
+    trình" (Đại) — **dùng CHUNG quyền với leaf cha `lamtailieu`** (đã có convention sẵn, không cần thêm gì ở
+    Phân quyền — xem comment dòng 184 useStore.ts: mọi con `lamtailieu:*` ăn theo quyền cha).
+  - `GiaoTrinhHinhEntry.tsx` (mới, `screens/tailieu/`) — VỎ top-level: khối-selector (khuôn `KhoScreen`) +
+    `loadLuoi(khoi)` + gate scope④ (Hình chỉ thuộc Toán — `useMonScope`, admin/Ops/Media/Marketing qua hết,
+    còn lại cần được phân môn Toán) → render `GiaoTrinhScreen` (kho/hinh/) KHÔNG ĐỔI GÌ bên trong nó.
+  - `NhanSuHome.tsx` route `staffLeaf === 'lamtailieu:giao_trinh_hinh'`.
+  - `KhoHinhScreen.tsx` XOÁ mục rail "▤ Giáo trình + lớp" (`ManHinh` bỏ `'giaotrinh'`, xoá import
+    `GiaoTrinhScreen` không dùng nữa) — 1 cửa duy nhất, không còn 2 đường vào cùng 1 màn (không có nơi nào
+    khác trong Kho Hình điều hướng `man:'giaotrinh'` nên xoá an toàn, đã grep xác nhận). "Soạn tài liệu" giữ
+    nguyên trong rail (đổi nhãn "(ad-hoc)" cho rõ — đó là Giảng dạy/Ôn tập, KHÔNG gắn giáo trình).
+- **Verify:** tsc sạch + `npx vite build` sạch. ⚠ CHƯA soi UI thật — cần Thùy `npm run dev`: menu "Làm tài
+  liệu" thấy "Giáo trình (Hình)" cạnh "Giáo trình"; bấm vào có khối-selector + load được lưới + màn Giáo
+  trình y hệt bản cũ (Master cây-buổi-tại-chỗ + Gán lớp TKB-gợi-ý).

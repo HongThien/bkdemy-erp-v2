@@ -15,6 +15,7 @@ import NavTree from '../components/NavTree'
 import KhoScreen from './kho/KhoScreen'
 import NhapKhoScreen from './nhapkho/NhapKhoScreen'
 import TaiLieuScreen from './tailieu/TaiLieuScreen'
+import GiaoTrinhHinhEntry from './tailieu/GiaoTrinhHinhEntry'
 import ETScreen from './tailieu/ETScreen'
 import MTScreen from './tailieu/MTScreen'
 import BTScreen from './tailieu/BTScreen'
@@ -529,6 +530,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       ) : staffLeaf === 'bdkt' ? <KhoScreen />
       : staffLeaf === 'nhapkho' ? <NhapKhoScreen />
       : (staffLeaf === 'lamtailieu' || staffLeaf === 'lamtailieu:giao_trinh') ? <TaiLieuScreen />
+      : staffLeaf === 'lamtailieu:giao_trinh_hinh' ? <GiaoTrinhHinhEntry />
       : staffLeaf === 'lamtailieu:et' ? <ETScreen />
       : staffLeaf === 'lamtailieu:mt' ? <MTScreen />
       : staffLeaf === 'tl' ? <KhoTaiLieuScreen />

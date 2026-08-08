@@ -17,9 +17,8 @@ import KhoChinh from './KhoChinh'
 import Catalog from './Catalog'
 import TaiLieuChuan from './TaiLieuChuan'
 import SoanTaiLieu from './SoanTaiLieu'
-import GiaoTrinhScreen from './GiaoTrinhScreen'
 
-export type ManHinh = 'ho' | 'sodo' | 'khotam' | 'hangcho' | 'khochinh' | 'tlchuan' | 'soan' | 'giaotrinh' | 'dang' | 'bode'
+export type ManHinh = 'ho' | 'sodo' | 'khotam' | 'hangcho' | 'khochinh' | 'tlchuan' | 'soan' | 'dang' | 'bode'
 
 /** Điều hướng có mang theo ngữ cảnh: M5 "Đặt node" → M2 với mô tả điền sẵn (§4 M5). */
 export type Nhay = { man: ManHinh; hoId?: string; moTaNode?: string; nodeId?: string; baiId?: string }
@@ -66,8 +65,7 @@ export default function KhoHinhScreen({ khoi }: { khoi: string }) {
       { key: 'hangcho', icon: '⚑', ten: 'Hàng chờ', n: dem.hangCho },
       { key: 'khochinh', icon: '▦', ten: 'Kho chính', n: dem.chinh },
       { key: 'tlchuan', icon: '⎙', ten: 'Tài liệu chuẩn' },
-      { key: 'soan', icon: '✎', ten: 'Soạn tài liệu' },
-      { key: 'giaotrinh', icon: '▤', ten: 'Giáo trình + lớp' },
+      { key: 'soan', icon: '✎', ten: 'Soạn tài liệu (ad-hoc)' },
     ] },
     { nhom: 'Catalog', items: [
       { key: 'dang', icon: '⌥', ten: 'Dạng bài', n: L.dang.filter((d) => d.cap === 'dang').length },
@@ -122,7 +120,6 @@ export default function KhoHinhScreen({ khoi }: { khoi: string }) {
         {man === 'bode' && <Catalog L={L} khoi={khoi} loai="bode" reload={load} />}
         {man === 'tlchuan' && <TaiLieuChuan L={L} khoi={khoi} />}
         {man === 'soan' && <SoanTaiLieu L={L} khoi={khoi} />}
-        {man === 'giaotrinh' && <GiaoTrinhScreen L={L} khoi={khoi} />}
       </div>
     </div>
   )
