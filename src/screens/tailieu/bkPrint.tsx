@@ -45,26 +45,27 @@ export const BK_PAGE_CSS = `
 .pagedjs_pagebox::after{content:"CLB Toán học BK Academy      ·      0963.209.309      ·      Số 17A10 KĐT Geleximco";position:absolute;left:10mm;right:10mm;bottom:4mm;height:9mm;display:flex;align-items:center;justify-content:center;border:1.5px solid #c2cbdb;border-radius:11px;background:#fff;color:#172033;font-weight:800;font-size:11.5px;white-space:pre;z-index:2;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 `
 
-// Đầu phiếu BTVN kiểu BK — như ET nhưng: nhãn "BTVN", tiêu đề = tên buổi, meta = Ngày phát / Ngày nộp,
-// bảng HS = Họ tên · Lớp · Điểm (KHÔNG mã đề, KHÔNG lưới chấm từng câu). Bản GV bỏ bảng HS.
+// Đầu phiếu BTVN — KIỂU GIÁO TRÌNH (masthead 08-08): khung gradient bo góc + logo thật + pill "BTVN"
+// (+ "Đáp án" bản GV) + tiêu đề = tên buổi + dòng phụ (Lớp · Ngày phát · Hạn nộp). Dưới masthead là hàng ô
+// Họ tên · Lớp · Điểm (tái dùng .pv-bkh-* trong BK_CSS). Class masthead (.gtbk-mh*) đến từ GT_BK_CSS —
+// PrintView luôn append GT_BK_CSS khi render BTVN. Không huy hiệu tròn (BTVN không mang số buổi rõ).
 export function BtvnBkHead({ buoiTitle, ngayPhat, ngayNop, lopTen, hoTen, gv }: {
   buoiTitle: string; ngayPhat: string; ngayNop: string; lopTen: string; hoTen?: string; gv: boolean
 }) {
+  const sub = [lopTen && `Lớp ${lopTen}`, ngayPhat && `Ngày phát ${ngayPhat}`, ngayNop && `Hạn nộp ${ngayNop}`].filter(Boolean).join('  ·  ')
   return (
-    <div className="pv-bkh">
-      <div className="pv-bkh-top">
-        <div className="pv-bkh-brand">
-          <img className="pv-bkh-logo" src={location.origin + '/Logo.png'} alt="BK ACADEMY" />
+    <div className="gtbk-btvn-head">
+      <div className="gtbk-mh gtbk-mh-nobadge">
+        <div className="gtbk-mh-grid" />
+        <div className="gtbk-mh-main">
+          <div className="gtbk-mh-brand"><img className="gtbk-mh-logo" src={location.origin + '/Logo.png'} alt="BK Academy" /></div>
+          <div className="gtbk-mh-kicker">
+            <span className="gtbk-mh-pill">BTVN</span>
+            {gv && <span className="gtbk-mh-tag">Đáp án</span>}
+          </div>
+          <h1 className="gtbk-mh-title">{buoiTitle}</h1>
+          {sub && <div className="gtbk-mh-sub">{sub}</div>}
         </div>
-        <div className="pv-bkh-label">BTVN{gv ? ' · Đáp án' : ''}</div>
-        <div className="pv-bkh-meta">
-          <div className="pv-bkh-pill"><span>Ngày phát</span><strong>{ngayPhat || '—'}</strong></div>
-          <div className="pv-bkh-pill"><span>Ngày nộp</span><strong>{ngayNop || '—'}</strong></div>
-        </div>
-      </div>
-      <div className="pv-bkh-hero">
-        <h1 className="pv-bkh-title">{buoiTitle}</h1>
-        <div className="pv-bkh-divider" />
       </div>
       {!gv && (
         <div className="pv-bkh-student">
