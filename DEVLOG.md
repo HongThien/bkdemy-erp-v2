@@ -3905,3 +3905,21 @@ tsc + vite build sạch mọi bước. Dev pane phiên 0×0 → nhờ Thùy `npm
 - **Verify:** tsc sạch · `npx vite build` sạch · click-through THẬT (dev pane, Admin, họ "Tứ giác" K8 —
   data thật, KHÔNG xoá gì): mở 1 bài toán (BT.025) → thấy cả "✎ Sửa" lẫn "🗑 Xoá bài toán" ở header ·
   chuyển "◇ View mô hình" → thấy "Sửa mô hình"/"Xoá mô hình" đã có sẵn hoạt động bình thường · console sạch.
+
+## 2026-08-09 — Kho Hình giáo trình: đổi được thứ tự bài trong phiếu (Tóm tắt)
+
+- **Thùy:** "T cần chỉnh được thứ tự câu trong giáo trình của Hình học." Soát trước: `picks: PickItem[]`
+  (buổi giáo trình Hình) là mảng phẳng, thứ tự mảng = thứ tự IN thật (`banInTheoMoHinh` duyệt `ps` sau
+  lọc phan, không sort lại) — nhưng KHÔNG có control nào đổi thứ tự, chỉ thêm (cuối mảng) / xoá. Đại cũng
+  chỉ có reorder ở MỨC DẠNG (`reorderDangInBuoi`, ▲▼ trong `DangCard`), KHÔNG có reorder mức câu — Hình
+  không có khái niệm "dạng gộp nhiều câu" nên phải làm reorder Ở MỨC BÀI trực tiếp, ca mới so với Đại.
+- **Fix (`SoanTaiLieu.tsx`):** `movePick(key, dir)` trong `BuoiPickEditor` — đổi chỗ 2 phần tử LIỀN KỀ
+  TRONG CÙNG PHAN (lớp/nhà riêng, không trộn) ngay trên mảng `picks` gốc (tìm theo index trong subset
+  cùng phan → map ngược ra index thật trong mảng đầy đủ → swap). `PhieuList` (panel "Tóm tắt" — đúng view
+  nhóm Lớp/Nhà theo thứ tự in) thêm cột ▲▼ + số thứ tự 1,2,3…, y khuôn nút ▲▼ `DangCard` của Đại.
+- **Verify:** tsc sạch · `npx vite build` sạch · click-through THẬT (dev pane, Admin): tạo giáo trình
+  "TEST reorder" K8 → gợi ý 4 bài (BT.025×2, BT.027×2) vào Trên lớp → Tóm tắt hiện đúng 4 dòng có ▲▼ +
+  số thứ tự → bấm ▼ ở dòng 2 (BT.025) → xác nhận thứ tự đổi ngay (BT.025,BT.027,BT.025,gốc-BT.027) và
+  autosave (không cần F5) → xoá giáo trình test xong (gặp 1 lần lỗi `refresh_token_not_found` giữa chừng —
+  session hết hạn ngẫu nhiên do phiên dev mở lâu, không phải bug code; F5 + đăng nhập lại là xong, xoá
+  thành công lần retry, xác nhận list quay về đúng 2 giáo trình thật "8A"/"8S1", không sót data test).

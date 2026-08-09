@@ -412,6 +412,19 @@ export function BuoiPickEditor({ L, picks, anDe, soDong, onChangePicks, onChange
   const addPick = (p: PickItem) => onChangePicks([...picks, p])
   const updatePick = (key: string, p: PickItem) => onChangePicks(picks.map((x) => (x.key === key ? p : x)))
   const removePick = (key: string) => onChangePicks(picks.filter((x) => x.key !== key))
+  // Đổi thứ tự bài TRONG CÙNG PHIẾU (lớp/nhà riêng) — thứ tự này = thứ tự IN (banInTheoMoHinh duyệt
+  // `picks` theo mảng, lọc phan trước). Đổi chỗ 2 phần tử LIỀN KỀ trong cùng phan ngay trên mảng gốc
+  // (khuôn `move`/▲▼ của TaiLieuBuilder Đại, ở đây là mức BÀI thay vì mức DẠNG).
+  const movePick = (key: string, dir: -1 | 1) => {
+    const p = picks.find((x) => x.key === key); if (!p) return
+    const samePhan = picks.filter((x) => x.phan === p.phan)
+    const i = samePhan.findIndex((x) => x.key === key), j = i + dir
+    if (j < 0 || j >= samePhan.length) return
+    const other = samePhan[j]
+    const iFull = picks.findIndex((x) => x.key === p.key), jFull = picks.findIndex((x) => x.key === other.key)
+    const next = [...picks];[next[iFull], next[jFull]] = [next[jFull], next[iFull]]
+    onChangePicks(next)
+  }
   const goiY = async (chuoi: BaiToan[], phan: 'lop' | 'nha', n: number) => {
     const news = await goiYChuoi(chuoi, phan, n)
     if (news.length < n) alert(`Chuỗi này chỉ có ${news.length} bản khác nhau — lấy đủ ${news.length}.`)
@@ -481,9 +494,9 @@ export function BuoiPickEditor({ L, picks, anDe, soDong, onChangePicks, onChange
           ? <div className="text-[12.5px] text-slate-400">— chưa chọn bài nào —</div>
           : (
             <>
-              <PhieuList nhan="📘 Trên lớp" ton="lop" picks={picksLop} L={L} onRemove={removePick} />
+              <PhieuList nhan="📘 Trên lớp" ton="lop" picks={picksLop} L={L} onRemove={removePick} onMove={movePick} />
               <div className="my-2 border-t border-slate-100" />
-              <PhieuList nhan="📝 Về nhà" ton="nha" picks={picksNha} L={L} onRemove={removePick} />
+              <PhieuList nhan="📝 Về nhà" ton="nha" picks={picksNha} L={L} onRemove={removePick} onMove={movePick} />
             </>
           )}
         <div className="mt-2 flex gap-3 border-t border-slate-100 pt-2 text-[12px]">
@@ -716,8 +729,8 @@ function ApplyDongChuoi({ soBai, onApply }: { soBai: number; onApply: (n: number
 }
 // Danh sách bài đã chọn cho 1 phiếu (cột xuất, TÓM TẮT) — chỉ nhãn bản + node + xoá. Sửa hình/dòng-kẻ
 // làm ở ChuoiRow (card chính), không lặp control ở đây.
-function PhieuList({ nhan, ton, picks, L, onRemove }: {
-  nhan: string; ton: 'lop' | 'nha'; picks: PickItem[]; L: Luoi; onRemove: (key: string) => void
+function PhieuList({ nhan, ton, picks, L, onRemove, onMove }: {
+  nhan: string; ton: 'lop' | 'nha'; picks: PickItem[]; L: Luoi; onRemove: (key: string) => void; onMove: (key: string, dir: -1 | 1) => void
 }) {
   const col = ton === 'lop' ? 'text-sky-700' : 'text-orange-600'
   const nhanBan = (p: PickItem) => p.kind === 'ghep' ? (p.nodeIds.length > 1 ? '🔗 a,b,c' : (p.luaId ? 'lứa' : 'gốc')) : p.kind === 'bienthe' ? 'biến thể' : 'ý thật'
@@ -725,10 +738,15 @@ function PhieuList({ nhan, ton, picks, L, onRemove }: {
     <div>
       <div className={`mb-1 text-[11px] font-semibold uppercase tracking-wide ${col}`}>{nhan} · {picks.length}</div>
       {picks.length === 0 && <div className="text-[11.5px] text-slate-400">— chưa chọn bài —</div>}
-      {picks.map((p) => {
+      {picks.map((p, i) => {
         const mas = p.nodeIds.map((id) => L.baiToan.find((b) => b.id === id)?.ma).filter(Boolean)
         return (
           <div key={p.key} className="flex items-center gap-1.5 py-0.5 text-[11.5px] text-slate-600">
+            <span className="flex shrink-0 flex-col leading-none" title="Đổi thứ tự bài trong phiếu">
+              <button onClick={() => onMove(p.key, -1)} disabled={i === 0} className="text-[9px] text-slate-400 hover:text-indigo-600 disabled:opacity-25">▲</button>
+              <button onClick={() => onMove(p.key, 1)} disabled={i === picks.length - 1} className="text-[9px] text-slate-400 hover:text-indigo-600 disabled:opacity-25">▼</button>
+            </span>
+            <span className="w-3.5 shrink-0 text-right text-[10px] font-bold text-slate-400">{i + 1}.</span>
             <span className="shrink-0 rounded bg-slate-100 px-1 text-[10px] font-medium text-slate-500">{nhanBan(p)}</span>
             <span className="min-w-0 flex-1 truncate">{mas.join(' · ')}</span>
             <button onClick={() => onRemove(p.key)} className="shrink-0 text-slate-400 hover:text-rose-600" title="Bỏ bài">✕</button>
