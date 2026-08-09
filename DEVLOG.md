@@ -3890,3 +3890,18 @@ tsc + vite build sạch mọi bước. Dev pane phiên 0×0 → nhờ Thùy `npm
   → pill "Hình giải tích" → danh sách rỗng riêng (4 giáo trình Đại KHÔNG lẫn vào) → tạo thử "TEST Lượng
   giác" → Builder mở sạch không lỗi console → verify SQL trực tiếp `mon='Toán', nhanh='hinh_gt'` đúng như
   thiết kế → xoá dòng test.
+
+## 2026-08-08 (tiếp 11) — Kho Hình Sơ đồ: thêm nút "🗑 Xoá bài toán" (mô hình đã có sẵn)
+
+- **Thùy:** "Cần chức năng xóa bài / xóa mô hình nữa." Soát trước khi code: `api.deleteMoHinh`/`deleteBaiToan`
+  (`hinh.ts`) đã có SẴN từ trước (kèm guard đúng CLAUDE.md §2: `deleteMoHinh` chặn nếu còn bài toán/mô hình
+  con; `deleteBaiToan` chặn nếu còn `hinh_y` trỏ vào — không rụng con trỏ im lặng). **Xoá mô hình đã có UI**
+  (nút 🗑 trong `Ho.tsx` card họ gốc + `SoDo.tsx ViewMoHinh` hub panel) — chỉ **xoá bài toán THIẾU nút**,
+  `DetailBaiToan` (popup 80vw khi bấm 1 node) chỉ có "✎ Sửa", không có xoá.
+- **Fix:** thêm nút "🗑 Xoá" cạnh "✎ Sửa" ở header `DetailBaiToan` (`SoDo.tsx`) — y khuôn nút xoá mô hình
+  (confirm() + style viền rose + catch alert lỗi guard), gọi thẳng `api.deleteBaiToan(bt.id)` có sẵn, xong
+  đóng popup + `reload()` lưới. Thread `reload` xuyên `SoDo`→`ViewBaiToan`→`DetailBaiToan` (trước đó
+  `ViewBaiToan` không có `reload` trong props, chỉ `ViewMoHinh` có).
+- **Verify:** tsc sạch · `npx vite build` sạch · click-through THẬT (dev pane, Admin, họ "Tứ giác" K8 —
+  data thật, KHÔNG xoá gì): mở 1 bài toán (BT.025) → thấy cả "✎ Sửa" lẫn "🗑 Xoá bài toán" ở header ·
+  chuyển "◇ View mô hình" → thấy "Sửa mô hình"/"Xoá mô hình" đã có sẵn hoạt động bình thường · console sạch.
