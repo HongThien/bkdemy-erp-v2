@@ -3923,3 +3923,24 @@ tsc + vite build sạch mọi bước. Dev pane phiên 0×0 → nhờ Thùy `npm
   autosave (không cần F5) → xoá giáo trình test xong (gặp 1 lần lỗi `refresh_token_not_found` giữa chừng —
   session hết hạn ngẫu nhiên do phiên dev mở lâu, không phải bug code; F5 + đăng nhập lại là xong, xoá
   thành công lần retry, xác nhận list quay về đúng 2 giáo trình thật "8A"/"8S1", không sót data test).
+
+## 2026-08-09 (tiếp) — In BTVN ghép a,b,c: ĐỀ trọn khối rồi mới đến PHẦN GIẢI (không xen kẽ từng ý)
+
+- **Thùy:** "lúc gán dòng cho chuỗi là gán cho cả bài. Tức là đề abc rồi đến phần giải của abc chứ ko
+  phải a - giải a rồi b - giải b." — chốt lại đúng ý đợt sửa "số dòng chỉnh theo cả chuỗi" (08-08): số
+  dòng là CHO CẢ BÀI (a,b,c ghép = 1 bài), nên layout in cũng phải theo đơn vị đó — không lồng đề/giải
+  xen kẽ theo từng ý con.
+- **Root cause (`HinhPrintView.tsx Noi()`):** vòng `m.ys.map(...)` trước đó render MỖI Ý (a/b/c) thành 1
+  khối [đề ý đó → NGAY lời giải/dòng kẻ của ý đó], lặp lại cho từng ý — đúng cái Thùy chỉ ra "a-giải a-b-
+  giải b". Hệ quả phụ (không bị Thùy nêu nhưng cùng gốc): bản HS bị VẼ 3 KHỐI DÒNG KẺ riêng (mỗi khối cao
+  `soDong`) dù `soDong` đã là số-cho-cả-bài — tổng chiều cao kẻ dòng gấp 3 ý muốn.
+- **Fix:** tách `m.ys.map(...)` thành **2 vòng riêng**: (1) render TOÀN BỘ đề `a) b) c)` liền khối trước;
+  (2) SAU đó — bản GV: lời giải từng ý (label lại a)/b)/c), giữ nguyên logic bước-ẩn-nở/hình cũ, chỉ dời
+  vị trí; bản HS: **MỘT khối `hp-ke` DUY NHẤT cho cả bài** (không phải 1 khối/ý), cao theo `soDong` — khớp
+  đúng "gán dòng cho cả bài", không còn nhân 3.
+- **Verify:** tsc sạch · `npx vite build` sạch · click-through THẬT (dev pane, Admin): tạo giáo trình
+  "TEST layout in" → gán chuỗi 3 câu BT.033→034→035 (đề chuẩn, cả 3 ý) vào Về nhà → mở "📝 Xem" → soi DOM
+  nguồn `.hp-de` (trước khi paged.js phân trang): thứ tự con đúng **[Bài 1. · hình · đề chung · a) · b) ·
+  c) · MỘT hp-ke]** cho bản HS, và **[... · c) · a)-giải · b)-giải · c)-giải]** cho bản GV (bấm toggle GV
+  rồi soi lại) — cả 2 chế độ đề đứng TRỌN KHỐI trước phần giải, không xen kẽ. Xoá giáo trình test xong
+  (dính lại đúng session hết hạn như lần trước, F5 rồi xoá lại là qua).

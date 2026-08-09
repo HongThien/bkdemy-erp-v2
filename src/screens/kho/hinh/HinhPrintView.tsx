@@ -179,31 +179,38 @@ function Noi({ ban, gv }: { ban: BanIn; gv: boolean }) {
                 : <div className="hp-draw-r"><span>Vẽ hình</span></div>)
               : (m.anhDe && <div className="hp-fig-r"><img src={m.anhDe} alt="" /></div>)}
             <div className="hp-txt-flow"><MathText>{m.deBai}</MathText></div>
+            {/* ⭐ 08-09 (Thùy chốt): dòng kẻ gán theo CẢ BÀI (chuỗi ghép a,b,c = 1 bài), nên đề a,b,c
+                phải in LIỀN KHỐI trước, RỒI MỚI đến phần giải chung — không xen kẽ "a - giải a - b -
+                giải b" như trước (đọc rối, và HS phải đợi giải xong ý này mới thấy đề ý sau). */}
             {m.ys.map((y, j) => (
-              <div key={j} className="hp-y">
-                <div className="hp-txt-flow">
-                  {y.nhan && <b>{y.nhan}) </b>}<MathText>{y.giaThietPhu ? `${y.giaThietPhu}. ${y.noiDung}` : y.noiDung}</MathText>
-                  {y.ghiChu && <span className="hp-tag">{y.ghiChu}</span>}
-                </div>
-                {gv
-                  ? (
-                    <div className="hp-giai">
-                      {y.bacThamChieu && <div className="hp-bac">Lời giải THAM CHIẾU — lấy từ bài chuẩn, tên điểm theo hệ thống (không phải tên điểm của đề này).</div>}
-                      {/* Node ẨN nở thành bước con (đề không hỏi vẫn phải giải) — đứng TRƯỚC lời giải chính. */}
-                      {(y.buoc ?? []).map((b, bi) => (
-                        <div key={bi} className="hp-buoc">
-                          <b>Bước {bi + 1} — {b.phatBieu}: </b>
-                          <MathText>{b.giaThietPhu ? `${b.giaThietPhu}. ${b.loiGiai ?? '—'}` : (b.loiGiai ?? '—')}</MathText>
-                          {b.anh && <div className="hp-fig-r"><img src={b.anh} alt="" /></div>}
-                        </div>
-                      ))}
-                      <MathText>{y.loiGiai ?? '—'}</MathText>
-                      {y.anh && <div className="hp-fig-r"><img src={y.anh} alt="" /></div>}
-                    </div>
-                  )
-                  : m.soDong === 0 ? null : <div className="hp-ke" style={m.soDong ? { height: `${Math.max(1, m.soDong) * 7.7}mm` } : undefined} />}
+              <div key={j} className="hp-y hp-txt-flow">
+                {y.nhan && <b>{y.nhan}) </b>}<MathText>{y.giaThietPhu ? `${y.giaThietPhu}. ${y.noiDung}` : y.noiDung}</MathText>
+                {y.ghiChu && <span className="hp-tag">{y.ghiChu}</span>}
               </div>
             ))}
+            {gv
+              ? m.ys.map((y, j) => (
+                <div key={`giai-${j}`} className="hp-y">
+                  <div className="hp-giai">
+                    {y.nhan && <b>{y.nhan}) </b>}
+                    {y.bacThamChieu && <div className="hp-bac">Lời giải THAM CHIẾU — lấy từ bài chuẩn, tên điểm theo hệ thống (không phải tên điểm của đề này).</div>}
+                    {/* Node ẨN nở thành bước con (đề không hỏi vẫn phải giải) — đứng TRƯỚC lời giải chính. */}
+                    {(y.buoc ?? []).map((b, bi) => (
+                      <div key={bi} className="hp-buoc">
+                        <b>Bước {bi + 1} — {b.phatBieu}: </b>
+                        <MathText>{b.giaThietPhu ? `${b.giaThietPhu}. ${b.loiGiai ?? '—'}` : (b.loiGiai ?? '—')}</MathText>
+                        {b.anh && <div className="hp-fig-r"><img src={b.anh} alt="" /></div>}
+                      </div>
+                    ))}
+                    <MathText>{y.loiGiai ?? '—'}</MathText>
+                    {y.anh && <div className="hp-fig-r"><img src={y.anh} alt="" /></div>}
+                  </div>
+                </div>
+              ))
+              // Bản HS: MỘT khối dòng kẻ chung cho cả bài (không phải 1 khối/ý — đúng "gán dòng theo cả
+              // bài"), cao theo soDong đã chỉnh ở builder (ApplyDongChuoi, khuôn Đại "cả dạng" chứ không
+              // theo từng ý). soDong=0 → không kẻ (đề tự luận không cần viết, vd đã ẩn hình cho HS vẽ).
+              : m.soDong !== 0 && <div className="hp-ke" style={m.soDong ? { height: `${Math.max(1, m.soDong) * 7.7}mm` } : undefined} />}
             <div style={{ clear: 'both' }} />
           </div>
         )
