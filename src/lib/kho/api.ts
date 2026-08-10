@@ -7,7 +7,7 @@ const LIMIT = 10000 // spec-kho-v2 §1.3 — mọi list .limit(10000)
 // Khối = KEY text. '4'/'5' = hệ thường; '4T'/'5T' = Tăng cường (CLC, chỉ tiểu học 4-5 —
 // bản đồ khác cấu trúc nên là cây riêng). Thứ tự hiển thị theo ĐÚNG mảng này (KHÔNG lexsort).
 // Mã prefix 2 ký tự: thường '4'→'04…', CLC '4T…' — phân biệt, không đụng.
-export const KHOI_OPTIONS = ['4', '4T', '5', '5T', '6', '7', '8', '9', '10', '11', '12'] as const
+export const KHOI_OPTIONS = ['3', '4', '4T', '5', '5T', '6', '7', '8', '9', '10', '11', '12'] as const
 export const DEFAULT_KHOI = '8'
 
 export type LopBac = { ma: string; ten: string; thu_tu: number }
