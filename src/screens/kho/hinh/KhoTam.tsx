@@ -171,7 +171,7 @@ function OY({ L, y, ys, onDone }: { L: Luoi; y: Y; ys: Y[]; onDone: () => Promis
           <div className="text-slate-700"><b>◈ {bt.ma}</b> — <MathText>{bt.phat_bieu}</MathText></div>
           <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
             <Cap cap={bt.cap} />
-            {cach && <Tag ton="dg">{api.tenDangDayDu(L, cach.dang_id)}</Tag>}
+            {cach?.dang_id && <Tag ton="dg">{api.tenDangDayDu(L, cach.dang_id)}</Tag>}
             {cach && api.boDeCuaCach(L, cach.id).map((id) => {
               const b = L.boDe.find((x) => x.id === id); return b ? <Tag key={id} ton="bd">◦ {b.ten}</Tag> : null
             })}

@@ -97,10 +97,16 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
       else btId = (await api.createBaiToan({ phat_bieu: phatBieu, mo_hinh_id: moHinhId, cap, de_bai_chuan: null, anh_chuan: anhChuan, gia_thiet_phu: gtPhu })).id
       // Hình bước giải: mặc định null = mượn hình đề (mọi chỗ hiển thị fallback `anh_loi_giai ?? anhCuaBaiToan`).
       const anhLoiGiai = dungHinhGiaiRieng ? (anhGiai || null) : null
-      if (dangId) {
+      // ⭐ 08-10 FIX BUG NGHIÊM TRỌNG: TRƯỚC đây khối này chỉ chạy `if (dangId)` — chưa chọn Dạng (hợp lệ,
+      // UI cho phép "— chưa gắn dạng —") thì lời giải/tiền đề/bổ đề bị bỏ qua IM LẶNG, không lỗi, không
+      // cảnh báo (Thùy báo "nhập bài toán ko lưu được đáp án"). Nặng hơn: `tienDe` MẶC ĐỊNH tự điền "bài
+      // toán phía trước" cho node MỚI — quên chọn Dạng thì node mới còn KHÔNG NỐI được vào chuỗi tiền đề,
+      // hỏng cấu trúc DAG âm thầm. Dạng là TAXONOMY (điền sau cũng được — mig dang_id nullable 08-10);
+      // lời giải/tiền đề/bổ đề là CẤU TRÚC, PHẢI lưu được bất kể đã phân loại Dạng hay chưa — bỏ gate.
+      {
         const cachId = cachCu
-          ? (await api.updateCachGiai(cachCu.id, { dang_id: dangId, loi_giai: loiGiai || null, anh_loi_giai: anhLoiGiai }), cachCu.id)
-          : (await api.createCachGiai({ baitoan_id: btId!, dang_id: dangId, ten: 'cách ngắn nhất', loi_giai: loiGiai || null, anh_loi_giai: anhLoiGiai, la_mac_dinh: true })).id
+          ? (await api.updateCachGiai(cachCu.id, { dang_id: dangId || null, loi_giai: loiGiai || null, anh_loi_giai: anhLoiGiai }), cachCu.id)
+          : (await api.createCachGiai({ baitoan_id: btId!, dang_id: dangId || null, ten: 'cách ngắn nhất', loi_giai: loiGiai || null, anh_loi_giai: anhLoiGiai, la_mac_dinh: true })).id
         await api.setTienDe(cachId, btId!, tienDe, vanIds)
         await api.setBoDeCuaCach(cachId, boDe)
       }

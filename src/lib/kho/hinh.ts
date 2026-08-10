@@ -33,7 +33,9 @@ export type BienThe = {
   tien_de_ids: string[]        // id các biến thể tiền đề TRỰC TIẾP (trong lứa) — ĐÓNG BĂNG lúc clone, không derive
 }
 export type CachGiai = {
-  id: string; baitoan_id: string; ten: string | null; dang_id: string
+  // dang_id nullable (mig 08-10 — bug "mất đáp án"): Dạng là TAXONOMY, điền sau cũng được; lời giải/
+  // tiền đề/bổ đề là CẤU TRÚC, phải lưu được dù chưa phân loại Dạng. Đừng gate lưu-cách-giải theo dang_id.
+  id: string; baitoan_id: string; ten: string | null; dang_id: string | null
   loi_giai: string | null; anh_loi_giai: string | null; la_mac_dinh: boolean; thu_tu: number
 }
 export type DangHinh = { id: string; mon: string; ma: string; ten: string; cap: 'loai_ch' | 'dang'; cha_id: string | null; thu_tu: number; khoi: string | null }
@@ -403,7 +405,7 @@ export function dangCua(L: Luoi, baiToanId: string): DangHinh | null {
   return c ? L.dang.find((d) => d.id === c.dang_id) ?? null : null
 }
 /** Nhãn dạng 2 tầng: "loại câu hỏi › cách xử lý". */
-export function tenDangDayDu(L: Luoi, dangId: string): string {
+export function tenDangDayDu(L: Luoi, dangId: string | null): string {
   const d = L.dang.find((x) => x.id === dangId)
   if (!d) return ''
   const cha = d.cha_id ? L.dang.find((x) => x.id === d.cha_id) : null
@@ -542,7 +544,7 @@ export async function searchBaiToan(q: string, moHinhIds?: string[]): Promise<Ba
 }
 
 // ── cách giải + tiền đề + bổ đề ──
-export async function createCachGiai(input: { baitoan_id: string; dang_id: string; ten?: string | null; loi_giai?: string | null; anh_loi_giai?: string | null; la_mac_dinh?: boolean; thu_tu?: number }): Promise<CachGiai> {
+export async function createCachGiai(input: { baitoan_id: string; dang_id: string | null; ten?: string | null; loi_giai?: string | null; anh_loi_giai?: string | null; la_mac_dinh?: boolean; thu_tu?: number }): Promise<CachGiai> {
   const { data, error } = await supabase.from('hinh_cach_giai').insert(input).select('*').single()
   if (error) throw error
   return data as CachGiai
@@ -631,6 +633,7 @@ export async function deleteBoDe(id: string): Promise<void> {
 export function baiToanTheoDang(L: Luoi): Map<string, BaiToan[]> {
   const m = new Map<string, BaiToan[]>()
   for (const c of L.cach) {
+    if (!c.dang_id) continue // chưa phân loại Dạng — không tính vào tra-cứu-theo-dạng
     const bt = L.baiToan.find((b) => b.id === c.baitoan_id)
     if (!bt) continue
     const arr = m.get(c.dang_id) ?? []
@@ -785,7 +788,7 @@ export function dapAnHaiBac(L: Luoi, y: Y): { bac: 'chuan_xac' | 'tham_chieu' | 
 // Chọn dạng, KHÔNG ràng buộc mô hình: cùng một cách xử lý, gặp ở họ nào cũng được.
 // PostgREST không lọc được quan hệ lồng ⇒ đi 2 nhịp: dạng → node → ý.
 export async function listYTheoDang(L: Luoi, dangIds: string[], opts?: { khoi?: string | null; doKhoTu?: number; doKhoDen?: number }): Promise<{ y: Y; bai: Bai; bt: BaiToan }[]> {
-  const nodeIds = L.cach.filter((c) => dangIds.includes(c.dang_id)).map((c) => c.baitoan_id)
+  const nodeIds = L.cach.filter((c) => c.dang_id && dangIds.includes(c.dang_id)).map((c) => c.baitoan_id)
   if (!nodeIds.length) return []
   const { data, error } = await supabase.from('hinh_y').select('*').in('baitoan_id', [...new Set(nodeIds)]).limit(LIMIT)
   if (error) throw error

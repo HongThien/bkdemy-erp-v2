@@ -3944,3 +3944,36 @@ tsc + vite build sạch mọi bước. Dev pane phiên 0×0 → nhờ Thùy `npm
   c) · MỘT hp-ke]** cho bản HS, và **[... · c) · a)-giải · b)-giải · c)-giải]** cho bản GV (bấm toggle GV
   rồi soi lại) — cả 2 chế độ đề đứng TRỌN KHỐI trước phần giải, không xen kẽ. Xoá giáo trình test xong
   (dính lại đúng session hết hạn như lần trước, F5 rồi xoá lại là qua).
+
+## 2026-08-10 — ⭐⭐ BUG NGHIÊM TRỌNG: nhập bài toán (Kho Hình) không lưu được đáp án
+
+- **Thùy báo khẩn:** "hiện tại nhập bài toán ko lưu được đáp án" — dừng hết việc khác, sửa trước.
+- **Root cause:** `hinh_cach_giai.dang_id` là **NOT NULL** ở DB, nhưng `FormBaiToan.tsx` cho phép để
+  trống "Dạng" (option "— chưa gắn dạng —" hợp lệ). `luu()` gate **TOÀN BỘ** khối lưu cách-giải (lời
+  giải + tiền đề + bổ đề + van) sau `if (dangId)` — chưa chọn Dạng ⇒ cả khối bị bỏ qua **IM LẶNG**, không
+  lỗi, không cảnh báo. Nặng hơn triệu chứng "mất đáp án": `tienDe` **MẶC ĐỊNH tự điền** "bài toán phía
+  trước" cho node MỚI (line ~49) — quên chọn Dạng thì node mới còn **KHÔNG NỐI được vào chuỗi tiền đề**,
+  hỏng cấu trúc DAG âm thầm (cấp tính sai, chuỗi/gợi-ý đứt ngầm) — bug ẩn hơn hẳn "chỉ mất chữ".
+- **Fix tận gốc (không phải vá điều kiện):** Dạng là **TAXONOMY** (phân loại, điền sau cũng được) —
+  lời giải/tiền đề/bổ đề là **CẤU TRÚC** (phải lưu được bất kể đã phân loại Dạng chưa). Tách 2 khái niệm:
+  - Migration `202608101643_hinh_cach_giai_dang_id_nullable.sql`: `alter ... drop not null` trên
+    `hinh_cach_giai.dang_id`. Chỉ NỚI, không xoá/thu hẹp gì — data cũ (mọi dòng đã có dang_id thật)
+    không ảnh hưởng.
+  - `hinh.ts`: `CachGiai.dang_id: string | null` (từ `string`) + `tenDangDayDu(L, dangId: string|null)`
+    (đã tự return `''` khi không khớp, chỉ cần nới kiểu) + `createCachGiai` nhận `dang_id: string|null` +
+    `baiToanTheoDang`/`listYTheoDang` thêm guard bỏ qua cách-giải chưa có dang_id (không tính vào
+    tra-cứu-theo-dạng — đúng, vì nó CHƯA phân loại).
+  - `FormBaiToan.tsx luu()`: **bỏ hẳn gate `if (dangId)`** — luôn tạo/cập nhật cách giải (dùng
+    `dang_id: dangId || null`), luôn `setTienDe`/`setBoDeCuaCach`. Lời giải + tiền đề + bổ đề giờ CHẮC
+    CHẮN lưu, Dạng chỉ là field tuỳ chọn đi kèm.
+  - 3 chỗ hiển thị (`SoDo.tsx`/`KhoTam.tsx`/`SoanTaiLieu.tsx`) đổi `cach && <Tag>` → `cach?.dang_id &&
+    <Tag>` — tránh hiện badge Dạng rỗng khi chưa phân loại.
+- **Verify:** tsc sạch · `npx vite build` sạch · `npm run schema` (xác nhận `dang_id` cột `null: Y`) ·
+  click-through THẬT (dev pane, Admin, họ "Tứ giác" K8 — data thật): tạo node mới "TEST BUG: Chứng minh
+  OA=OC" + gõ Lời giải, **CỐ Ý để trống Dạng**, bấm Tạo → node hiện đúng cấp 2 (chứng minh tiền đề mặc
+  định ĐÃ NỐI) → mở lại node → "Đáp án đầy đủ" hiện đúng chữ vừa gõ (trước fix: sẽ RỖNG). Xoá node test
+  bằng nút 🗑 Xoá bài toán (built hôm 08-08) xong, list quay về đúng 11 node cũ.
+- **Việc song song bị gác lại:** đang làm dở "▲▼ đổi thứ tự bài NGAY TRONG builder" (Thùy: "để cái chỉnh
+  thứ tự câu ở trong builder giống như đại ấy" — chốt: chỉ đổi được thứ tự trong CÙNG 1 chuỗi, không kéo
+  qua chuỗi khác, Thùy đã biết và OK) — `swapPicks()` đã tách ra ở `BuoiPickEditor` (refactor an toàn,
+  `movePick`/Tóm tắt cũ chạy y hệt), CHƯA wire vào `ChuoiRow`. Tiếp tục ngay sau khi bug này qua.

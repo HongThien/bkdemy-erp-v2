@@ -158,7 +158,7 @@ function GiangDay({ L, khoi }: { L: Luoi; khoi: string }) {
                           <div className="min-w-0 flex-1">
                             <b className="text-[12.5px] text-slate-800"><MathText>{n.phat_bieu}</MathText></b>
                             <div className="mt-0.5 text-[11.5px] text-slate-400">
-                              {n.ma} · cấp {n.cap}{cach && ` · ${api.tenDangDayDu(L, cach.dang_id)}`}{mh && ` · ${mh.ma}`}
+                              {n.ma} · cấp {n.cap}{cach?.dang_id && ` · ${api.tenDangDayDu(L, cach.dang_id)}`}{mh && ` · ${mh.ma}`}
                             </div>
                           </div>
                           {n.id === aId && <Tag ton="dg">điểm A — mở đầu</Tag>}
@@ -413,17 +413,22 @@ export function BuoiPickEditor({ L, picks, anDe, soDong, onChangePicks, onChange
   const updatePick = (key: string, p: PickItem) => onChangePicks(picks.map((x) => (x.key === key ? p : x)))
   const removePick = (key: string) => onChangePicks(picks.filter((x) => x.key !== key))
   // Đổi thứ tự bài TRONG CÙNG PHIẾU (lớp/nhà riêng) — thứ tự này = thứ tự IN (banInTheoMoHinh duyệt
-  // `picks` theo mảng, lọc phan trước). Đổi chỗ 2 phần tử LIỀN KỀ trong cùng phan ngay trên mảng gốc
-  // (khuôn `move`/▲▼ của TaiLieuBuilder Đại, ở đây là mức BÀI thay vì mức DẠNG).
+  // `picks` theo mảng, lọc phan trước). Đổi chỗ 2 KEY bất kỳ ngay trên mảng gốc (không cần liền kề
+  // trong mảng — chỉ cần liền kề trong PHẠM VI đang thao tác, xem 2 chỗ gọi: `movePick` = liền kề trong
+  // CẢ PHIẾU (Tóm tắt), `ChuoiRow` = liền kề trong CÙNG CHUỖI (builder, khuôn ▲▼ Đại nhưng phạm vi hẹp
+  // hơn vì Hình nhóm theo chuỗi — không kéo được bài khác chuỗi lên trước/sau, Thùy đã biết và OK).
+  const swapPicks = (keyA: string, keyB: string) => {
+    const iFull = picks.findIndex((x) => x.key === keyA), jFull = picks.findIndex((x) => x.key === keyB)
+    if (iFull < 0 || jFull < 0) return
+    const next = [...picks];[next[iFull], next[jFull]] = [next[jFull], next[iFull]]
+    onChangePicks(next)
+  }
   const movePick = (key: string, dir: -1 | 1) => {
     const p = picks.find((x) => x.key === key); if (!p) return
     const samePhan = picks.filter((x) => x.phan === p.phan)
     const i = samePhan.findIndex((x) => x.key === key), j = i + dir
     if (j < 0 || j >= samePhan.length) return
-    const other = samePhan[j]
-    const iFull = picks.findIndex((x) => x.key === p.key), jFull = picks.findIndex((x) => x.key === other.key)
-    const next = [...picks];[next[iFull], next[jFull]] = [next[jFull], next[iFull]]
-    onChangePicks(next)
+    swapPicks(key, samePhan[j].key)
   }
   const goiY = async (chuoi: BaiToan[], phan: 'lop' | 'nha', n: number) => {
     const news = await goiYChuoi(chuoi, phan, n)

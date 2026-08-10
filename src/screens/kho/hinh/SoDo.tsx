@@ -255,7 +255,7 @@ function DetailBaiToan({ L, bt, onSua, onChon, onClose, reload }: {
           <Ma big>{bt.ma}</Ma>
           <span className="rounded-md bg-slate-100 px-2 py-0.5 text-[16px] font-medium text-slate-600">cấp {bt.cap}{mucDo ? ` · độ khó ${mucDo}` : ''}</span>
           {mh && <Tag ton="mh" big>◇ {maCap.get(mh.id) ?? mh.ma} · {tron(mh.ten)}</Tag>}
-          {cachMd && <Tag ton="dg" big>{api.tenDangDayDu(L, cachMd.dang_id)}</Tag>}
+          {cachMd?.dang_id && <Tag ton="dg" big>{api.tenDangDayDu(L, cachMd.dang_id)}</Tag>}
           <Btn onClick={onSua} className="ml-auto h-8 px-2.5">✎ Sửa</Btn>
           <Btn onClick={async () => {
             if (!confirm(`Xoá bài toán ${bt.ma}?`)) return

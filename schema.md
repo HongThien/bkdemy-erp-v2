@@ -2,7 +2,7 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-122 bảng · 0 enum · 10 trigger · 31 function
+122 bảng · 0 enum · 11 trigger · 31 function
 
 ## bai_lam
 
@@ -647,6 +647,7 @@
 | parent_ma_cau | text | Y |  | FK→hgt_cau_hoi.ma_cau |  |
 | clone_method | text | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
+| xoa_at | timestamp with time zone | Y |  |  |  |
 
 ## hgt_chuyen_de_ly_thuyet
 
@@ -773,7 +774,7 @@
 | id | uuid |  | gen_random_uuid() | PK |  |
 | baitoan_id | uuid |  |  | FK→hinh_baitoan.id |  |
 | ten | text | Y |  |  |  |
-| dang_id | uuid |  |  | FK→hinh_dang.id |  |
+| dang_id | uuid | Y |  | FK→hinh_dang.id |  |
 | loi_giai | text | Y |  |  |  |
 | anh_loi_giai | text | Y |  |  |  |
 | la_mac_dinh | boolean |  | false |  |  |
@@ -1717,6 +1718,7 @@
 | bao_loi | trg_log_bao_loi | BEFORE | UPDATE | log_bao_loi |
 | ca_test | trg_log_ca_test | AFTER | INSERT/UPDATE | log_ca_test |
 | dai_cau_hoi | trg_log_kho_cau_dai | AFTER | DELETE/UPDATE | log_kho_cau |
+| hgt_cau_hoi | trg_log_kho_cau_hgt | AFTER | DELETE/UPDATE | log_kho_cau |
 | hoa_don | trg_log_hoa_don | AFTER | INSERT/UPDATE | log_hoa_don |
 | hoc_sinh | trg_hs_nghi_tu_roi_lop | AFTER | UPDATE | hs_nghi_tu_roi_lop |
 | hoc_sinh | trg_log_he_so_hoc_phi | AFTER | UPDATE | log_he_so_hoc_phi |
