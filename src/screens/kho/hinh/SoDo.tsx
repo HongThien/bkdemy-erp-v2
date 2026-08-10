@@ -79,15 +79,29 @@ export default function SoDo({ L, khoi, hoId, di, reload, moTaNode, nodeId }: {
   )
 }
 
-// ══════════════════ VIEW BÀI TOÁN — cột = CẤP ══════════════════
-function ViewBaiToan({ L, ho, nodes, chon, setChon, onSua, reload }: {
+// ══════════════════ VIEW BÀI TOÁN — cột = CẤP (toggle: Toàn họ / Theo mô hình) ══════════════════
+function ViewBaiToan({ L, ho, nodes: nodesHo, chon, setChon, onSua, reload }: {
   L: Luoi; ho: MoHinh; nodes: BaiToan[]; chon: string | null; setChon: (id: string | null) => void; onSua: (b: BaiToan) => void
   reload: () => Promise<void>
 }) {
   const maCap = useMemo(() => api.maPhanCapMap(L), [L])
+  const trongHo = useMemo(() => api.moHinhCuaHo(L, ho.id), [L, ho])
+  // ⭐ 08-10 (Thùy): "Theo mô hình" = xem RIÊNG bài toán của 1 mô hình (mô hình = ô to bên trái, nối dây
+  // tới từng node) thay vì gộp cả họ theo cột-cấp. "Toàn họ" (cũ) VẪN GIỮ — Thùy: để dành cho view kiểu
+  // cây nhiều node sau này — làm TOGGLE, không thay hẳn.
+  const [scope, setScope] = useState<'ho' | 'mh'>('ho')
+  const [moHinhXem, setMoHinhXem] = useState<string>(ho.id)
+  const dsMoHinhChon = useMemo(() =>
+    [...trongHo].map((id) => L.moHinh.find((m) => m.id === id)).filter((m): m is MoHinh => !!m)
+      .sort((a, b) => (maCap.get(a.id) ?? '').localeCompare(maCap.get(b.id) ?? '')),
+    [trongHo, L, maCap])
+  const nodes = scope === 'mh' ? nodesHo.filter((n) => n.mo_hinh_id === moHinhXem) : nodesHo
+  const mhXem = scope === 'mh' ? L.moHinh.find((m) => m.id === moHinhXem) ?? null : null
+
   // MỐC so sánh "mô hình con" = mô hình NÔNG NHẤT thực sự có bài toán, KHÔNG phải gốc họ.
   // Gốc họ có thể rỗng (vd "Tam giác nhọn" chưa khai bài toán nào) — lấy nó làm mốc thì mọi node
-  // đều hoá teal, mất hẳn tín hiệu "node này cần THÊM giả thiết".
+  // đều hoá teal, mất hẳn tín hiệu "node này cần THÊM giả thiết". (scope='mh': mọi node cùng 1 mô
+  // hình nên mốc luôn = chính nó, viền teal tự nhiên KHÔNG hiện — đúng, hết ý nghĩa khi đã lọc riêng.)
   const mocGoc = useMemo(() => {
     let best: string | null = null, bestD = Infinity
     for (const mid of new Set(nodes.map((n) => n.mo_hinh_id))) {
@@ -97,16 +111,21 @@ function ViewBaiToan({ L, ho, nodes, chon, setChon, onSua, reload }: {
     return best ?? ho.id
   }, [nodes, L, ho])
   const sauMoc = api.doSauTrongHo(L, mocGoc)
+  // scope='mh': chừa cột 0 cho Ô MÔ HÌNH (hub) bên trái, cột cấp dồn sang phải.
+  const hubOffset = scope === 'mh' ? MH_W + GAP : 0
   const { cots, pos, cao, rong } = useMemo(() => {
     const caps = [...new Set(nodes.map((n) => n.cap))].sort((a, b) => a - b)
     const cots = caps.map((c) => ({ cap: c, ns: nodes.filter((n) => n.cap === c).sort((a, b) => a.ma.localeCompare(b.ma)) }))
     const pos = new Map<string, { x: number; y: number }>()
-    cots.forEach((col, i) => col.ns.forEach((n, j) => pos.set(n.id, { x: i * (COL_W + GAP), y: j * (NODE_H + ROW_GAP) })))
-    const cao = Math.max(120, ...cots.map((c) => c.ns.length * (NODE_H + ROW_GAP)))
-    return { cots, pos, cao, rong: Math.max(600, cots.length * (COL_W + GAP) - GAP) }
-  }, [nodes])
+    cots.forEach((col, i) => col.ns.forEach((n, j) => pos.set(n.id, { x: hubOffset + i * (COL_W + GAP), y: j * (NODE_H + ROW_GAP) })))
+    const cao = Math.max(scope === 'mh' ? MH_H : 120, ...cots.map((c) => c.ns.length * (NODE_H + ROW_GAP)))
+    return { cots, pos, cao, rong: Math.max(600, hubOffset + cots.length * (COL_W + GAP) - GAP) }
+  }, [nodes, hubOffset, scope])
+  const hubY = Math.max(0, (cao - MH_H) / 2)
 
-  // Cạnh = tiền đề (theo cách mặc định). Xuyên mô hình ⇒ nét đứt teal (§4 M1).
+  // Cạnh = tiền đề (theo cách mặc định). Xuyên mô hình ⇒ nét đứt teal (§4 M1) — CHỈ vẽ được khi CẢ HAI
+  // đầu đang hiện (scope='ho' luôn đủ; scope='mh' thì tiền đề ở mô hình KHÁC không có `pos` → tự bỏ qua,
+  // đánh dấu riêng ở node bằng `teDeAnDi` thay vì cố vẽ dây tới node không hiển thị).
   const canh = useMemo(() => {
     const ra: { x1: number; y1: number; x2: number; y2: number; xuyen: boolean; sang: boolean }[] = []
     for (const n of nodes) {
@@ -123,22 +142,47 @@ function ViewBaiToan({ L, ho, nodes, chon, setChon, onSua, reload }: {
     }
     return ra
   }, [nodes, pos, L, chon])
+  const teDeAnDi = useMemo(() => {
+    if (scope !== 'mh') return new Set<string>()
+    const s = new Set<string>()
+    for (const n of nodes) for (const t of api.tienDeCua(L, n.id)) if (!pos.has(t)) { s.add(n.id); break }
+    return s
+  }, [nodes, pos, scope, L])
+  // Dây MÔ HÌNH (hub) → từng node — khuôn `RadialEco` (tâm–vệ tinh) nhưng phóng vào canvas cột-cấp chính.
+  const hubCanh = useMemo(() => {
+    if (scope !== 'mh') return []
+    const x1 = MH_W, y1 = hubY + MH_H / 2
+    return nodes.map((n) => { const b = pos.get(n.id)!; return { x1, y1, x2: b.x, y2: b.y + NODE_H / 2 } })
+  }, [scope, nodes, pos, hubY])
 
   const bt = chon ? L.baiToan.find((b) => b.id === chon) ?? null : null
 
   return (
     <>
+      <div className="mb-2 flex flex-wrap items-center gap-2">
+        <Seg value={scope} onChange={setScope} options={[{ v: 'ho', label: 'Toàn họ' }, { v: 'mh', label: 'Theo mô hình' }]} />
+        {scope === 'mh' && (
+          <select className={`${inpCls} w-64`} value={moHinhXem} onChange={(e) => setMoHinhXem(e.target.value)}>
+            {dsMoHinhChon.map((m) => <option key={m.id} value={m.id}>{maCap.get(m.id) ?? '?'} · {tron(m.ten)}</option>)}
+          </select>
+        )}
+      </div>
       <p className="mb-3 max-w-4xl text-[12.5px] leading-relaxed text-slate-500">
-        Chiếu bỏ trục giả thiết → còn <b>trục suy luận</b>. Cột = <b>cấp</b>. Node của mô hình con hiện{' '}
-        <span className="text-teal-700">viền teal</span> ngay trong cùng cột — cấp là <b>toàn cục</b>, không reset theo mô hình.
-        Mốc so sánh là <b>{L.moHinh.find((m) => m.id === mocGoc)?.ten}</b> (mô hình nông nhất có bài toán).
+        {scope === 'ho' ? (
+          <>Chiếu bỏ trục giả thiết → còn <b>trục suy luận</b>. Cột = <b>cấp</b>. Node của mô hình con hiện{' '}
+          <span className="text-teal-700">viền teal</span> ngay trong cùng cột — cấp là <b>toàn cục</b>, không reset theo mô hình.
+          Mốc so sánh là <b>{L.moHinh.find((m) => m.id === mocGoc)?.ten}</b> (mô hình nông nhất có bài toán).</>
+        ) : (
+          <>Chỉ bài toán CỦA mô hình đang chọn (ô teal bên trái). Tiền đề ở mô hình khác không vẽ được dây (đang ở view khác) —
+          node liên quan đánh dấu <span className="text-amber-600">↗</span>, mở bài toán để xem đủ.</>
+        )}
       </p>
       <div className="min-w-0 overflow-x-auto rounded-xl border border-slate-200 bg-white p-3.5">
           {!nodes.length
-            ? <Empty icon="◈">Họ này chưa có bài toán nhỏ nào. Bấm <b>＋ Node</b> — lưới trước, gán sau.</Empty>
+            ? <Empty icon="◈">{scope === 'mh' ? 'Mô hình này chưa có bài toán nhỏ nào.' : 'Họ này chưa có bài toán nhỏ nào.'} Bấm <b>＋ Node</b> — lưới trước, gán sau.</Empty>
             : (
               <div style={{ width: rong }}>
-                <div className="mb-2 flex" style={{ gap: GAP }}>
+                <div className="mb-2 flex" style={{ gap: GAP, marginLeft: hubOffset }}>
                   {cots.map((c) => (
                     <div key={c.cap} style={{ width: COL_W }}
                       className="rounded-md bg-slate-100/80 py-1 text-center text-[10.5px] font-semibold uppercase tracking-wide text-slate-500">
@@ -156,6 +200,11 @@ function ViewBaiToan({ L, ho, nodes, chon, setChon, onSua, reload }: {
                         <path d="M0,0 L6.5,3 L0,6" fill="none" stroke="#14b8a6" strokeWidth="1.3" />
                       </marker>
                     </defs>
+                    {hubCanh.map((e, i) => (
+                      <path key={`hub-${i}`} fill="none"
+                        d={`M${e.x1},${e.y1} C${e.x1 + GAP * 0.6},${e.y1} ${e.x2 - GAP * 0.6},${e.y2} ${e.x2},${e.y2}`}
+                        stroke="#5eead4" strokeWidth="1.6" opacity="0.85" />
+                    ))}
                     {canh.map((e, i) => (
                       <path key={i} fill="none"
                         d={`M${e.x1},${e.y1} C${e.x1 + GAP * 0.6},${e.y1} ${e.x2 - GAP * 0.6},${e.y2} ${e.x2},${e.y2}`}
@@ -164,6 +213,24 @@ function ViewBaiToan({ L, ho, nodes, chon, setChon, onSua, reload }: {
                         markerEnd={`url(#${e.xuyen ? 'hh-arm' : 'hh-ar'})`} opacity={e.sang ? 1 : 0.75} />
                     ))}
                   </svg>
+                  {scope === 'mh' && mhXem && (
+                    <div style={{ left: 0, top: hubY, width: MH_W, height: MH_H }}
+                      className="absolute flex flex-col overflow-hidden rounded-xl border-[1.5px] border-teal-300 bg-white">
+                      <div className="h-24 shrink-0 border-b border-slate-100 bg-slate-50/50">
+                        {api.anhCauHinhCua(L, mhXem.id)
+                          ? <img src={api.anhCauHinhCua(L, mhXem.id)!} alt="" className="h-full w-full bg-white object-contain" />
+                          : <div className="flex h-full items-center justify-center text-[10.5px] text-slate-300">chưa có hình</div>}
+                      </div>
+                      <div className="flex min-h-0 flex-1 flex-col gap-1 px-2.5 py-2">
+                        <div className="flex items-center gap-1.5">
+                          <MaPill code={maCap.get(mhXem.id) ?? '?'} size="sm" />
+                          <span className="min-w-0 flex-1 truncate text-[12px] font-semibold text-slate-800"><MathText>{mhXem.ten}</MathText></span>
+                        </div>
+                        <div className="rounded-md bg-teal-50 px-2 py-1 line-clamp-3 text-[11px] leading-snug text-slate-700"><MathText>{api.giaThietDayDu(L, mhXem.id)}</MathText></div>
+                        <div className="mt-auto"><Chip>{nodes.length} bài toán</Chip></div>
+                      </div>
+                    </div>
+                  )}
                   {nodes.map((n) => {
                     const p = pos.get(n.id)!
                     const khac = api.doSauTrongHo(L, n.mo_hinh_id) > sauMoc   // node cần THÊM giả thiết
@@ -187,8 +254,9 @@ function ViewBaiToan({ L, ho, nodes, chon, setChon, onSua, reload }: {
                           <div className="line-clamp-2 rounded bg-teal-50 px-1.5 py-0.5 text-[10.5px] leading-snug text-teal-700"><MathText>{api.giaThietDayDu(L, n.mo_hinh_id)}</MathText></div>
                           <div className="mt-auto flex items-center gap-1.5">
                             <Cap cap={n.cap} teal={khac} />
-                            {mh && <span className="truncate rounded-full border border-teal-300 bg-teal-50 px-1.5 text-[9.5px] text-teal-700" title={api.giaThietDayDu(L, mh.id)}>◇ {maCap.get(mh.id) ?? mh.ma}</span>}
+                            {scope === 'ho' && mh && <span className="truncate rounded-full border border-teal-300 bg-teal-50 px-1.5 text-[9.5px] text-teal-700" title={api.giaThietDayDu(L, mh.id)}>◇ {maCap.get(mh.id) ?? mh.ma}</span>}
                             <Ma>{n.ma}</Ma>
+                            {teDeAnDi.has(n.id) && <span className="ml-auto shrink-0 text-[12px] font-bold text-amber-600" title="Còn tiền đề ở mô hình khác — không vẽ được dây, mở bài toán để xem đủ">↗</span>}
                           </div>
                         </div>
                       </button>

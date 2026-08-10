@@ -4011,3 +4011,35 @@ tsc + vite build sạch mọi bước. Dev pane phiên 0×0 → nhờ Thùy `npm
   (Về nhà) → xác nhận `.hp-box-lt` KHÔNG xuất hiện (đúng ý "chỉ in trên lớp"). Xoá sạch data test (giáo
   trình + nội dung lý thuyết mô hình qua nút "Gỡ") — không sót gì. 1 lần dính session hết hạn giữa chừng
   (recurring `refresh_token_not_found` của dev pane phiên này, không phải bug code — F5+đăng nhập lại qua).
+
+## 2026-08-10 (tiếp) — SoDo "View bài toán": toggle Toàn họ / Theo mô hình
+
+- **Thùy:** "Ở chỗ view bài toán, t muốn t click vào mô hình nào thì bài toán hiện theo mô hình đó thôi
+  chứ ko hiện toàn bộ kho bài toán. Mô hình ô to bên trái. các node là các ô như hiện tại nối với mô
+  hình. Có chỗ để chọn mô hình." Xác nhận qua lại: **giữ NGUYÊN node↔node tiền đề trong CÙNG mô hình**;
+  tiền đề XUYÊN mô hình (điểm còn lại không hiện) → **đánh dấu chú thích, KHÔNG cố vẽ dây**; **giữ luôn
+  "View bài toán" cũ** (Toàn họ, cột-cấp cả họ) — làm **TOGGLE** thay vì thay hẳn, vì sau này còn dùng
+  kiểu xem cây nhiều node.
+- **Xây (`SoDo.tsx ViewBaiToan`, khuôn tái dùng tối đa — không đẻ component mới):**
+  - `Seg` 2 lựa chọn **"Toàn họ" / "Theo mô hình"** (state `scope`) + dropdown chọn mô hình (`moHinhXem`,
+    khuôn y hệt "Mô hình chính" ở Lọc mô hình `SoanTaiLieu.tsx`) — chỉ hiện dropdown khi `scope='mh'`.
+  - `scope='ho'`: y hệt hành vi cũ 100% (đã verify regression — không đổi 1 pixel).
+  - `scope='mh'`: `nodes` lọc còn ĐÚNG mô hình đang chọn; cột-cấp GIỮ NGUYÊN thuật toán (chỉ scope hẹp
+    lại theo mô hình) — chừa cột 0 (`hubOffset = MH_W+GAP`) cho **Ô MÔ HÌNH TO** (khuôn card mô hình bên
+    `ViewMoHinh`: hình+mã+tên+giả thiết+đếm bài toán), đặt tại x=0 căn giữa dọc theo chiều cao canvas.
+    Dây **mô hình→node** (khuôn `RadialEco` tâm-vệ-tinh nhưng vẽ thẳng vào canvas chính, không phải panel
+    330px riêng) VẼ THÊM, cạnh dây **node→node tiền đề GIỮ NGUYÊN** thuật toán cũ — dây node→node tự
+    "biến mất" khi 1 đầu ở mô hình khác vì `pos.get(t)` không có (điểm đó không nằm trong `nodes` đã lọc)
+    → **`teDeAnDi`** dò các trường hợp này, gắn badge **↗** (icon nhỏ, tooltip) lên node bị cắt dây thay
+    vì cố vẽ dây tới node không hiển thị.
+  - Badge "◇ mã mô hình" trên mỗi node card **CHỈ hiện ở `scope='ho'`** (scope='mh' mọi node cùng 1 mô
+    hình = badge thừa, đã có Ô MÔ HÌNH TO làm ngữ cảnh rồi).
+- **Verify:** tsc sạch · `npx vite build` sạch · click-through THẬT (dev pane, Admin, họ "Tứ giác" K8,
+  data thật KHÔNG đổi gì): "Toàn họ" mặc định giống hệt trước (11 node, cột cấp 1-3, badge ◇ mã mô hình)
+  → bấm "Theo mô hình" → chọn "1·Tứ giác" → CHỈ 4 node của Tứ giác (BT.025/026/027/028), Ô MÔ HÌNH TO
+  hiện đúng "1 Tứ giác · 4 bài toán" → đổi dropdown sang "1a·Tứ giác có 2 cạnh bên cắt nhau" → nodes đổi
+  NGAY còn đúng 1 (BT.029) → quay lại "Toàn họ" xác nhận y hệt ban đầu (không mất/lệch gì) → bấm mở
+  BT.025 xác nhận popup chi tiết (5 biến thể, đáp án…) vẫn hoạt động bình thường ở cả 2 scope. Không tìm
+  được ví dụ tiền-đề-xuyên-mô-hình thật trong data hiện có để soi trực tiếp badge ↗ (mọi bài toán K8
+  "Tứ giác" đang tự chứa trong mô hình của nó) — logic đã soát kỹ (tái dùng chính cơ chế `pos.has()` sẵn
+  có), coi là an toàn, sẽ tự lộ khi có data thật chạm case đó.
