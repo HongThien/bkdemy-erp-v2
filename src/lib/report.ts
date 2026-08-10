@@ -4,6 +4,12 @@ import { supabase } from './supabase'
 
 const LIMIT = 10000
 
+// % ET/BTVN của MỘT buổi từ tổng điểm(points)/số câu đã chấm(n). Nguồn chân lý cho mọi màn hiển thị %
+// theo buổi (Report PH, Trước buổi…) — đừng viết lại công thức này ở nơi khác.
+export function pctFromAgg(pts: number, n: number): number | null {
+  return n ? Math.min(100, Math.round((pts / (n * 100)) * 100)) : null
+}
+
 // 1 dòng bảng theo buổi (1 HS × môn × tháng). vang → cột ET ghi "Vắng" (ET bản chất = điểm danh).
 export type ReportBuoiRow = {
   buoiId: string; ngay: string; maBuoi: string | null
@@ -45,7 +51,7 @@ export async function getReportBuoiHS(hocSinhId: string, mon: string, ym: string
   const { data: kq } = await supabase.from('btvn_ket_qua').select('buoi_hoc_id, trang_thai_nop, thai_do').eq('hoc_sinh_id', hocSinhId).in('buoi_hoc_id', ids).limit(LIMIT)
   for (const r of (kq ?? []) as any[]) kqMap.set(r.buoi_hoc_id, { tt: r.trang_thai_nop, td: r.thai_do })
 
-  const pct = (m: Map<string, { pts: number; n: number }>, id: string) => { const a = m.get(id); return a && a.n ? Math.min(100, Math.round((a.pts / (a.n * 100)) * 100)) : null }
+  const pct = (m: Map<string, { pts: number; n: number }>, id: string) => { const a = m.get(id); return pctFromAgg(a?.pts ?? 0, a?.n ?? 0) }
   return buois.map((b) => ({
     buoiId: b.id, ngay: b.ngay, maBuoi: b.ma_buoi,
     vang: b.diem_danh === 'vang' || b.diem_danh === 'vang_phep',

@@ -15,6 +15,7 @@ import { getLiveSnapshot, type BaiTest, type BaiTestCau, type BaiLam, type LiveA
 import type { MTPhanCaus } from '../../lib/mt'
 import { getOrCreateKyThiMTChoBuoi, listDiemThiByKyThi, upsertDiemThi, tinhDiemMT, verdictTuDiem, currentMua, type KyThi, type DiemThi } from '../../lib/thanhtich'
 import { listNhanSu, type NhanSu } from '../../lib/nhansu'
+import TruocBuoiTab from './TruocBuoiTab'
 import { listDaiDang, type CauHoi } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
 import SearchSelect from '../../components/SearchSelect'
@@ -40,7 +41,9 @@ export default function BuoiHocScreen() {
   const [list, setList] = useState<BuoiAo[]>([])
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
-  const [open, setOpen] = useState<{ id: string; lopId: string } | null>(null)
+  // Buổi ẢO: tab "Trước buổi" phải mở được TRƯỚC khi OPS bấm "Mở buổi" (spec-truocbuoi §2.1) — không có
+  // uuid nên nhận {lopId, ngay, mon} thay vì id, và KHÔNG được gọi moBuoi (không đẻ dòng buoi_hoc).
+  const [open, setOpen] = useState<{ id: string; lopId: string } | { virt: { lopId: string; tenLop: string; ngay: string; mon: string } } | null>(null)
   const [filter, setFilter] = useState<BuoiStatus>('chua')
   // ⭐ 07-24: 2 CHẾ ĐỘ XEM, gạt qua lại — KHÔNG trộn vào nhau. "Theo ngày" là trục vận hành hằng ngày
   // (buổi ẢO của 1 ngày, suy từ TKB, có bộ đếm chưa-mở/đã-mở/đã-huỷ theo ngày đó); "Tìm lớp" lật trục
@@ -69,6 +72,7 @@ export default function BuoiHocScreen() {
   useEffect(() => { reload() }, [ngay]) // eslint-disable-line
 
   if (open) {
+    if ('virt' in open) return <TruocBuoiVirtualPanel v={open.virt} onClose={() => { setOpen(null); reload() }} />
     const tabs = laAdmin || myLopIds.has(open.lopId) ? undefined : (['diemdanh'] as TabKey[])
     return <BuoiDetail id={open.id} tabs={tabs} onClose={() => { setOpen(null); reload() }} />
   }
@@ -99,7 +103,9 @@ export default function BuoiHocScreen() {
       </div>
 
       {mode === 'tim' ? (
-        <TimLopPanel q={q} setQ={setQ} monScope={(laAdmin || laOps || myMons.length === 0) ? null : myMons} onOpened={(id, lopId) => setOpen({ id, lopId })} />
+        <TimLopPanel q={q} setQ={setQ} monScope={(laAdmin || laOps || myMons.length === 0) ? null : myMons} onOpened={(id, lopId) => setOpen({ id, lopId })}
+          canTruocBuoi={(lopId) => laAdmin || myLopIds.has(lopId)}
+          onOpenTruocBuoi={(v) => setOpen({ virt: v })} />
       ) : (
       <div className="min-h-0 flex-1 overflow-auto p-6">
         {loading ? <p className="text-sm text-slate-400">Đang tải…</p>
@@ -108,7 +114,11 @@ export default function BuoiHocScreen() {
           : shown.length === 0 ? <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">Không có buổi “{FILTERS.find((f) => f.v === filter)?.lbl}” ngày này.</div>
           : (
             <div className="grid grid-cols-1 gap-3 md:grid-cols-2 2xl:grid-cols-3">
-              {shown.map((b) => <BuoiCard key={b.lop.id} ba={b} ngay={ngay} onOpened={(id, lopId) => setOpen({ id, lopId })} onChanged={reload} />)}
+              {shown.map((b) => (
+                <BuoiCard key={b.lop.id} ba={b} ngay={ngay} onOpened={(id, lopId) => setOpen({ id, lopId })} onChanged={reload}
+                  canTruocBuoi={laAdmin || myLopIds.has(b.lop.id)}
+                  onOpenTruocBuoi={() => setOpen({ virt: { lopId: b.lop.id, tenLop: b.lop.ten_lop, ngay, mon: b.lop.mon } })} />
+              ))}
             </div>
           )}
       </div>
@@ -119,7 +129,11 @@ export default function BuoiHocScreen() {
 
 // ── 🔎 TÌM LỚP: gõ tên lớp → mọi buổi của lớp đó (mới nhất trước) ───────────────────────────────
 // Chỉ đọc, không đụng state của chế độ "Theo ngày" — gạt qua lại không mất gì.
-function TimLopPanel({ q, setQ, monScope, onOpened }: { q: string; setQ: (v: string) => void; monScope: string[] | null; onOpened: (id: string, lopId: string) => void }) {
+type VirtDesc = { lopId: string; tenLop: string; ngay: string; mon: string }
+function TimLopPanel({ q, setQ, monScope, onOpened, canTruocBuoi, onOpenTruocBuoi }: {
+  q: string; setQ: (v: string) => void; monScope: string[] | null; onOpened: (id: string, lopId: string) => void
+  canTruocBuoi: (lopId: string) => boolean; onOpenTruocBuoi: (v: VirtDesc) => void
+}) {
   const [rows, setRows] = useState<BuoiTim[]>([])
   const [loading, setLoading] = useState(false)
   const [err, setErr] = useState<string | null>(null)
@@ -155,14 +169,17 @@ function TimLopPanel({ q, setQ, monScope, onOpened }: { q: string; setQ: (v: str
           : loading ? <p className="text-sm text-slate-400">Đang tìm…</p>
           : err ? <p className="text-sm text-rose-600">Lỗi: {err}</p>
           : view.length === 0 ? <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">Không thấy lớp/buổi nào khớp “{q.trim()}”.</div>
-          : <div className="mx-auto max-w-[880px] space-y-1.5">{view.map((r) => <BuoiTimRow key={`${r.lop.id}|${r.ngay}|${r.buoi?.id ?? 'ao'}`} r={r} onOpened={onOpened} />)}</div>}
+          : <div className="mx-auto max-w-[880px] space-y-1.5">{view.map((r) => (
+              <BuoiTimRow key={`${r.lop.id}|${r.ngay}|${r.buoi?.id ?? 'ao'}`} r={r} onOpened={onOpened}
+                canTruocBuoi={canTruocBuoi(r.lop.id)} onOpenTruocBuoi={() => onOpenTruocBuoi({ lopId: r.lop.id, tenLop: r.lop.ten_lop, ngay: r.ngay, mon: r.lop.mon })} />
+            ))}</div>}
       </div>
     </div>
   )
 }
 
 const LOAI_BUOI_TEN: Record<string, string> = { bu: 'Bù', bo_tro_yeu: 'Bổ trợ yếu', bo_tro_duoi: 'Bổ trợ đuổi', mt: 'MT' }
-function BuoiTimRow({ r, onOpened }: { r: BuoiTim; onOpened: (id: string, lopId: string) => void }) {
+function BuoiTimRow({ r, onOpened, canTruocBuoi, onOpenTruocBuoi }: { r: BuoiTim; onOpened: (id: string, lopId: string) => void; canTruocBuoi: boolean; onOpenTruocBuoi: () => void }) {
   const [busy, setBusy] = useState(false)
   const b = r.buoi
   const ngayVN = r.ngay.split('-').reverse().join('/')
@@ -201,12 +218,18 @@ function BuoiTimRow({ r, onOpened }: { r: BuoiTim; onOpened: (id: string, lopId:
     <div className="flex w-full items-center gap-3 rounded-lg border border-slate-200 bg-white px-3 py-2">
       {noiDung}
       {b ? <span className="shrink-0 text-[11px] italic text-slate-400" title={b.ly_do_huy ?? ''}>{b.ly_do_huy ?? ''}</span>
-        : <button onClick={moRoiVao} disabled={busy} className="shrink-0 rounded-md bg-indigo-600 px-2.5 py-1 text-[12px] font-medium text-white hover:bg-indigo-500 disabled:opacity-40">{busy ? '…' : 'Mở buổi'}</button>}
+        : <>
+          {canTruocBuoi && <button onClick={onOpenTruocBuoi} className="shrink-0 rounded-md border border-slate-200 px-2.5 py-1 text-[12px] font-medium text-slate-600 hover:bg-slate-50">Trước buổi</button>}
+          <button onClick={moRoiVao} disabled={busy} className="shrink-0 rounded-md bg-indigo-600 px-2.5 py-1 text-[12px] font-medium text-white hover:bg-indigo-500 disabled:opacity-40">{busy ? '…' : 'Mở buổi'}</button>
+        </>}
     </div>
   )
 }
 
-function BuoiCard({ ba, ngay, onOpened, onChanged }: { ba: BuoiAo; ngay: string; onOpened: (id: string, lopId: string) => void; onChanged: () => void }) {
+function BuoiCard({ ba, ngay, onOpened, onChanged, canTruocBuoi, onOpenTruocBuoi }: {
+  ba: BuoiAo; ngay: string; onOpened: (id: string, lopId: string) => void; onChanged: () => void
+  canTruocBuoi: boolean; onOpenTruocBuoi: () => void
+}) {
   const [busy, setBusy] = useState(false)
   const b = ba.buoi
   const st = statusOf(b)
@@ -254,6 +277,7 @@ function BuoiCard({ ba, ngay, onOpened, onChanged }: { ba: BuoiAo; ngay: string;
       <div className="mt-3 flex gap-2">
         <button onClick={open} disabled={busy} className="rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-indigo-500 disabled:opacity-40">{busy ? '…' : 'Mở buổi'}</button>
         <button onClick={huy} disabled={busy} className="rounded-md border border-rose-200 px-3 py-1.5 text-[13px] font-medium text-rose-600 hover:bg-rose-50 disabled:opacity-40">Hủy buổi</button>
+        {canTruocBuoi && <button onClick={onOpenTruocBuoi} className="ml-auto rounded-md border border-slate-200 px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:bg-slate-50">Trước buổi</button>}
       </div>
     </div>
   )
@@ -267,9 +291,9 @@ export function BuoiDetail({ id, onClose, tabs, initialTab, canManage = true, on
   const [roster, setRoster] = useState<BuoiHocHS[]>([])
   const [dsNS, setDsNS] = useState<NhanSu[]>([])
   const [dangOpts, setDangOpts] = useState<DangOpt[]>([])
-  // 'live' KHÔNG phải TabKey (đó là task-scope engine getMyTasks/dashboard — xem live không phải "task"
-  // có deadline/nghiệm thu) → chỉ mở rộng union CỤC BỘ ở đây, không đụng TabKey dùng chung.
-  const [tab, setTab] = useState<TabKey | 'live' | 'daubuoi'>(initialTab ?? tabs?.[0] ?? 'diemdanh')
+  // 'live'/'truocbuoi' KHÔNG phải TabKey (đó là task-scope engine getMyTasks/dashboard — xem live/trước-buổi
+  // không phải "task" có deadline/nghiệm thu) → chỉ mở rộng union CỤC BỘ ở đây, không đụng TabKey dùng chung.
+  const [tab, setTab] = useState<TabKey | 'live' | 'daubuoi' | 'truocbuoi'>(initialTab ?? tabs?.[0] ?? 'diemdanh')
   const isMobile = useIsMobile()
 
   async function reload() {
@@ -342,6 +366,11 @@ export function BuoiDetail({ id, onClose, tabs, initialTab, canManage = true, on
             {!tabs && (
               <button onClick={() => setTab('live')} className={`-mb-px shrink-0 whitespace-nowrap border-b-2 px-3 py-2 text-[13px] font-medium ${tab === 'live' ? 'border-indigo-600 text-indigo-700' : 'border-transparent text-slate-500 hover:text-slate-700'}`}>👁 Xem live</button>
             )}
+            {/* "Trước buổi" (spec-truocbuoi §2) — cùng gate với ELO&EXP/Xem live: chỉ GV/TG của CHÍNH lớp
+                này hoặc admin (tabs=undefined) mới thấy, OPS thì không. */}
+            {!tabs && (
+              <button onClick={() => setTab('truocbuoi')} className={`-mb-px shrink-0 whitespace-nowrap border-b-2 px-3 py-2 text-[13px] font-medium ${tab === 'truocbuoi' ? 'border-indigo-600 text-indigo-700' : 'border-transparent text-slate-500 hover:text-slate-700'}`}>Trước buổi</button>
+            )}
           </div>
           <div className={`min-h-0 min-w-0 flex-1 overflow-auto ${isMobile ? 'p-3' : 'p-6'}`}>
             {tab === 'diemdanh'
@@ -358,10 +387,33 @@ export function BuoiDetail({ id, onClose, tabs, initialTab, canManage = true, on
               ? <LiveTab buoiId={id} roster={roster} />
               : tab === 'daubuoi'
               ? <EloExpTab roster={roster} mon={(buoi as any).lop?.mon ?? ''} tenLop={(buoi as any).lop?.ten_lop ?? ''} />
+              : tab === 'truocbuoi'
+              ? <TruocBuoiTab lopId={buoi.lop_id ?? ''} ngayBuoi={buoi.ngay} mon={(buoi as any).lop?.mon ?? ''} />
               : <ChamTab buoiId={id} phase="ingame" roster={roster} buoi={buoi} dangOpts={dangOpts} onChange={reload} />}
           </div>
         </>
       )}
+    </div>
+  )
+}
+
+// "Trước buổi" mở trên buổi ẢO (spec-truocbuoi §2.1) — chưa có buoi_hoc.id nên KHÔNG dùng BuoiDetail
+// (nó gọi getBuoi(id) ngay khi mount, id giả sẽ treo "Đang tải…" vô hạn). Panel riêng, nhẹ, KHÔNG gọi
+// moBuoi — không đẻ dòng buoi_hoc chỉ vì GV ghé xem trước giờ dạy.
+function TruocBuoiVirtualPanel({ v, onClose }: { v: { lopId: string; tenLop: string; ngay: string; mon: string }; onClose: () => void }) {
+  return (
+    <div className="flex h-full min-w-0 flex-col bg-[#fafafb]">
+      <div className="flex flex-wrap items-center gap-3 border-b border-slate-200 bg-white px-6 py-2.5">
+        <button onClick={onClose} className="text-[13px] text-slate-500 hover:text-indigo-600">← Buổi học</button>
+        <span className="text-sm font-semibold text-slate-900">{v.tenLop} · {v.ngay}</span>
+        <span className="ml-auto rounded bg-amber-50 px-2 py-0.5 text-[11px] font-medium text-amber-700">Chưa mở buổi</span>
+      </div>
+      <div className="flex gap-1 border-b border-slate-200 bg-white px-6">
+        <span className="-mb-px shrink-0 whitespace-nowrap border-b-2 border-indigo-600 px-3 py-2 text-[13px] font-medium text-indigo-700">Trước buổi</span>
+      </div>
+      <div className="min-h-0 min-w-0 flex-1 overflow-auto p-6">
+        <TruocBuoiTab lopId={v.lopId} ngayBuoi={v.ngay} mon={v.mon} />
+      </div>
     </div>
   )
 }

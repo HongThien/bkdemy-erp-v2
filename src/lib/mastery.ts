@@ -323,14 +323,16 @@ export type HSRollup = {
 }
 // SHARED: nạp measures 1 phạm vi (lớp/khối) → mastery cell (HS × dạng). Dùng CHUNG cho rollup HS (view#2) + pivot dạng (view#3).
 // ~4 query: HS-list → grades(embed)+đánh-giá IN(hsIds) → banDo (tên + scope môn) → engine masteryOfDang mỗi ô.
-type CellBundle = {
+export type CellBundle = {
   hsMap: Map<string, { ho_ten: string; ma_hs: string | null; lop: string | null }>
   hsIds: string[]
   byHS: Map<string, Map<string, Mastery>> // mastery ĐÃ tính (non-null), CHỈ dạng thuộc môn
   dangInfo: Map<string, { ten_dang: string; ten_chuyen_de: string; muc_do: number | null }>
 }
 export type RollupScope = { mon: string; lopId?: string | null; khoi?: string | null; he?: string | null; includeBTVN?: boolean }
-async function loadMasteryCells(opts: RollupScope): Promise<CellBundle> {
+// export: dùng trực tiếp khi cần cell (HS × dạng) thô — vd Trước buổi cần "dạng yếu mức S, n>=3" theo HS,
+// khác getMasteryRollup/getMasteryByDang vốn chỉ trả về số đã GỘP (đếm), không giữ lại từng ô.
+export async function loadMasteryCells(opts: RollupScope): Promise<CellBundle> {
   const empty: CellBundle = { hsMap: new Map(), hsIds: [], byHS: new Map(), dangInfo: new Map() }
   const K = khoCuaMon(opts.mon)
   // Thùy 07-15: LOẠI ingame + đánh giá GV khỏi mastery (xem comment đầu file) — đối xứng với getMasteryHS.
