@@ -173,7 +173,10 @@ export type TongQuanHS = {
     btvnCoBan: ActPct; btvnNangCao: ActPct
     mtCoBan: ActPct; mtNangCao: ActPct
   }
-  diem: { mt: { tb: number | null; n: number }; truong: { tb: number | null; n: number } }
+  diem: {
+    mt: { tb: number | null; n: number; coBan: number | null; nCoBan: number; nangCao: number | null; nNangCao: number }
+    truong: { tb: number | null; n: number }
+  }
   // TREND = chênh (điểm %) 30 ngày GẦN so với 30 ngày TRƯỚC đó; null = chưa đủ data 1 trong 2 kỳ.
   // (hoanThanhToanBo chỉ tính trên nửa etMt — nửa coBTVN là số đối chiếu, không cần trend riêng.)
   trend: {
@@ -187,7 +190,7 @@ export async function getTongQuanHS(hocSinhId: string, mon: string): Promise<Ton
   const K = khoCuaMon(mon)
   const [{ data: grades }, { data: dt }, online, btGradeEvals] = await Promise.all([
     supabase.from('gami_grades').select('result, graded_at, prob:problem_id(phase, ma_dang)').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
-    supabase.from('diem_thi').select('diem, ky_thi:ky_thi_id(loai, mon)').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
+    supabase.from('diem_thi').select('diem, diem_co_ban, diem_nang_cao, ky_thi:ky_thi_id(loai, mon)').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
     fetchOnlineEvals(hocSinhId),
     fetchBTEvals(hocSinhId),
   ])
@@ -283,11 +286,18 @@ export async function getTongQuanHS(hocSinhId: string, mon: string): Promise<Ton
   const mtNCr = actBucket(mtRows, inRecent, laNangCao), mtNCp = actBucket(mtRows, inPrior, laNangCao)
 
   // ③ Điểm (nhập tay qua ky_thi/diem_thi) theo loại, scope môn — khao_sat_thang không hiện ở đây.
+  // MT: cơ bản/nâng cao TÁCH RIÊNG (Thùy 08-10: "ngoài % hiện thêm điểm cơ bản-nâng cao-tổng") — mỗi cột
+  // đếm/cộng ĐỘC LẬP, bỏ NULL riêng (không giả định 1 lượt luôn có đủ cả 2 — vd tick "Full" thì cả 2 null).
   let mtDiemSum = 0, mtDiemN = 0, trSum = 0, trN = 0
+  let mtCoBanSum = 0, mtCoBanN = 0, mtNangCaoSum = 0, mtNangCaoN = 0
   for (const r of (dt ?? []) as any[]) {
-    const k = r.ky_thi; if (!k || (k.mon && k.mon !== mon) || r.diem == null) continue
-    if (k.loai === 'truong') { trSum += Number(r.diem); trN++ }
-    else if (k.loai === 'mt_sat_hach') { mtDiemSum += Number(r.diem); mtDiemN++ }
+    const k = r.ky_thi; if (!k || (k.mon && k.mon !== mon)) continue
+    if (k.loai === 'truong') { if (r.diem != null) { trSum += Number(r.diem); trN++ } }
+    else if (k.loai === 'mt_sat_hach') {
+      if (r.diem != null) { mtDiemSum += Number(r.diem); mtDiemN++ }
+      if (r.diem_co_ban != null) { mtCoBanSum += Number(r.diem_co_ban); mtCoBanN++ }
+      if (r.diem_nang_cao != null) { mtNangCaoSum += Number(r.diem_nang_cao); mtNangCaoN++ }
+    }
   }
 
   const delta = (r: number | null, p: number | null) => (r != null && p != null ? r - p : null)
@@ -303,7 +313,11 @@ export async function getTongQuanHS(hocSinhId: string, mon: string): Promise<Ton
       mtCoBan: pctOf(mtCB), mtNangCao: pctOf(mtNC),
     },
     diem: {
-      mt: { tb: mtDiemN ? +(mtDiemSum / mtDiemN).toFixed(1) : null, n: mtDiemN },
+      mt: {
+        tb: mtDiemN ? +(mtDiemSum / mtDiemN).toFixed(1) : null, n: mtDiemN,
+        coBan: mtCoBanN ? +(mtCoBanSum / mtCoBanN).toFixed(1) : null, nCoBan: mtCoBanN,
+        nangCao: mtNangCaoN ? +(mtNangCaoSum / mtNangCaoN).toFixed(1) : null, nNangCao: mtNangCaoN,
+      },
       truong: { tb: trN ? +(trSum / trN).toFixed(1) : null, n: trN },
     },
     trend: {

@@ -215,7 +215,11 @@ function TongQuanTab({ hsId, mon }: { hsId: string; mon: string }) {
             <div className="mt-0.5 text-[11px] text-slate-500">Cần cấu trúc đề + đủ dạng đo (gồm Hình) — làm sau</div>
           </StatCard>
           <StatCard label="Điểm MT trung bình">
-            <div className="flex items-baseline gap-2"><span className="text-2xl font-bold text-slate-800">{d.diem.mt.tb ?? '—'}</span><span className="text-[11px] text-slate-500">({d.diem.mt.n} lượt)</span></div>
+            <div className="flex items-baseline gap-2"><span className="text-2xl font-bold text-slate-800">{d.diem.mt.tb ?? '—'}</span><span className="text-[11px] text-slate-500">({d.diem.mt.n} lượt) tổng</span></div>
+            <div className="mt-1 flex gap-3 text-[11px] text-slate-500">
+              <span>Cơ bản: <b className="text-slate-700">{d.diem.mt.coBan ?? '—'}</b> <span className="text-slate-400">({d.diem.mt.nCoBan})</span></span>
+              <span>Nâng cao: <b className="text-slate-700">{d.diem.mt.nangCao ?? '—'}</b> <span className="text-slate-400">({d.diem.mt.nNangCao})</span></span>
+            </div>
             <div className="mt-0.5 text-[11px] text-slate-500">Nhập ở tab MT trong buổi</div>
           </StatCard>
           <StatCard label="Điểm thi trường trung bình">
