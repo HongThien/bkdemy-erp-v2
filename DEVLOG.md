@@ -4043,3 +4043,28 @@ tsc + vite build sạch mọi bước. Dev pane phiên 0×0 → nhờ Thùy `npm
   được ví dụ tiền-đề-xuyên-mô-hình thật trong data hiện có để soi trực tiếp badge ↗ (mọi bài toán K8
   "Tứ giác" đang tự chứa trong mô hình của nó) — logic đã soát kỹ (tái dùng chính cơ chế `pos.has()` sẵn
   có), coi là an toàn, sẽ tự lộ khi có data thật chạm case đó.
+
+## 2026-08-10 (tiếp) — M0 "Chọn họ mô hình": nút "Gán lý thuyết" ngay trên card
+
+**Yêu cầu (Thùy, verbatim):** "Thế UI của m ko hợp lý. Màn hình đầu tiên là chọn họ mô hình đã là view
+mô hình ròi. THì phải gán được lý thuyết chỗ đấy luôn. Làm 1 nút gán lý thuyết chỗ đấy , bóc được từ
+ảnh hoặc pdf như các module quen thuộc đã làm rồi" — phản hồi sau khi tôi chỉ đường cũ (Sơ đồ → tab
+"◇ View mô hình" → chọn mô hình → box "LÝ THUYẾT"): Thùy cho rằng M0 (`Ho.tsx`, màn liệt kê card các
+họ mô hình gốc) BẢN THÂN NÓ đã là 1 view mô hình rồi, không cần chui sâu thêm mới gán được lý thuyết.
+
+**Làm:** `src/screens/kho/hinh/Ho.tsx` — thêm nút 📖 "Gán lý thuyết" vào hàng nút góc-trên-phải của mỗi
+card (cạnh ✎ Sửa / 🗑 Xoá, cùng kiểu hover-hiện), tái dùng NGUYÊN `LyThuyetModal` (from `../BanDo`) +
+`api.hinhMoHinhLyThuyet` — CHÍNH XÁC api/table đã build hôm nay cho `ViewMoHinh` (`SoDo.tsx`), không
+thêm bảng/hàm mới. State `moLtMap`/`moLtModal` + `napMoLt()` load 1 lần ở mount `Ho`, y hệt khuôn đã
+lặp lại 3 lần trong session (dạng/bổ đề/mô hình lý thuyết). Nút đổi màu viền tím khi mô hình đã có lý
+thuyết (coLt = có `noi_dung` hoặc `file_url`), giống quy ước "＋ Soạn" / "✎ Sửa".
+
+**Phạm vi:** M0 chỉ liệt kê mô hình GỐC (`la_goc_ho`) — mô hình con (vd "Hình thang", "Hình vuông"…)
+vẫn phải gán lý thuyết qua đường cũ (Sơ đồ → View mô hình), không đụng tới trong lần này vì Thùy chỉ
+yêu cầu cụ thể "màn hình đầu tiên". Đường cũ ở `ViewMoHinh` VẪN GIỮ NGUYÊN — không phải thay thế, hai
+chỗ cùng đọc/ghi 1 bảng `hinh_mo_hinh_ly_thuyet` nên dữ liệu luôn nhất quán dù gán từ đâu.
+
+**Verify:** tsc sạch · `npx vite build` sạch · click-through THẬT (dev pane, Admin, Hình học, K8): card
+"Tứ giác" hover hiện 3 nút 📖/✎/🗑 → bấm 📖 mở đúng modal "Lý thuyết · Tứ giác" với đầy đủ 📎 ảnh/PDF,
+📋 clipboard, chọn model AI (Flash-Lite/Flash/Pro), 🪄 Bóc chữ / 🖼 Bóc+hình — y hệt modal đã verify ở
+`ViewMoHinh` (cùng component) → Huỷ, không lưu nội dung test.

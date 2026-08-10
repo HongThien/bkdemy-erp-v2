@@ -2,11 +2,12 @@
 // Ẩn dụ chi phối (§0.1): giả thiết = một XÔ NƯỚC. Đổ nước → chảy xuống được một số nhánh
 // trong cây; muốn đi sâu hơn phải đổ thêm nước. Mỗi họ có xô gốc riêng; GIỮA HAI HỌ KHÔNG
 // CÓ QUAN HỆ — vào từng họ mới có sơ đồ.
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import * as api from '../../../lib/kho/api'
 import type { Luoi, MoHinh } from '../../../lib/kho/hinh'
 import { MathText, Shell, Field, Actions, inp } from '../ui'
 import { AnhInput, Btn, Chip, Empty, Fig, FieldCard, Ma, MaPill, Note, OcrButton, inpCls, tron } from './hinhUi'
+import { LyThuyetModal } from '../BanDo'
 import { useMemo } from 'react'
 import type { Nhay } from './KhoHinhScreen'
 
@@ -15,6 +16,13 @@ export default function Ho({ L, khoi, di, reload }: { L: Luoi; khoi: string; di:
   const [loi, setLoi] = useState<string | null>(null)
   const goc = L.moHinh.filter((m) => m.la_goc_ho)
   const maCap = useMemo(() => api.maPhanCapMap(L), [L])
+
+  // Lý thuyết của mô hình gốc — gán NGAY ở màn chọn họ, khỏi phải chui vào Sơ đồ → View mô hình.
+  // Tái dùng NGUYÊN LyThuyetModal + hinhMoHinhLyThuyet, khuôn hệt SoDo.tsx ViewMoHinh.
+  const [moLtMap, setMoLtMap] = useState<Record<string, { noi_dung: string; file_url: string | null; ten_file: string | null }>>({})
+  const [moLtModal, setMoLtModal] = useState<{ id: string; ten: string } | null>(null)
+  const napMoLt = () => api.hinhMoHinhLyThuyet.list().then(setMoLtMap).catch(() => { /* */ })
+  useEffect(() => { napMoLt() }, [])
 
   const xoa = async (m: MoHinh) => {
     if (!confirm(`Xoá họ "${tron(m.ten)}" (${m.ma})?`)) return
@@ -39,7 +47,9 @@ export default function Ho({ L, khoi, di, reload }: { L: Luoi; khoi: string; di:
           <div className="grid gap-4 [grid-template-columns:repeat(auto-fill,minmax(360px,1fr))]">
             {goc.map((m) => (
               <Card key={m.id} L={L} m={m} maCap={maCap.get(m.id) ?? '?'} onOpen={() => di({ man: 'sodo', hoId: m.id })}
-                onEdit={() => setForm({ sua: m })} onDelete={() => xoa(m)} />
+                onEdit={() => setForm({ sua: m })} onDelete={() => xoa(m)}
+                coLt={!!(moLtMap[m.id]?.noi_dung?.trim() || moLtMap[m.id]?.file_url)}
+                onLt={() => setMoLtModal({ id: m.id, ten: m.ten })} />
             ))}
           </div>
         )}
@@ -50,18 +60,26 @@ export default function Ho({ L, khoi, di, reload }: { L: Luoi; khoi: string; di:
       </Note>
 
       {form && <FormMoHinh L={L} khoiMacDinh={khoi} sua={form.sua} onClose={() => setForm(null)} onDone={reload} />}
+      {moLtModal && (
+        <LyThuyetModal ma={moLtModal.id} ten={moLtModal.ten} current={moLtMap[moLtModal.id] as any} api={api.hinhMoHinhLyThuyet as any}
+          onClose={() => setMoLtModal(null)} onSaved={() => { setMoLtModal(null); napMoLt() }} />
+      )}
     </>
   )
 }
 
-function Card({ L, m, maCap, onOpen, onEdit, onDelete }: { L: Luoi; m: MoHinh; maCap: string; onOpen: () => void; onEdit: () => void; onDelete: () => void }) {
+function Card({ L, m, maCap, onOpen, onEdit, onDelete, coLt, onLt }: {
+  L: Luoi; m: MoHinh; maCap: string; onOpen: () => void; onEdit: () => void; onDelete: () => void; coLt: boolean; onLt: () => void
+}) {
   const tk = api.thongKeHo(L, m.id)
-  // Không dùng <button> bọc ngoài (nút-trong-nút không hợp lệ) — div click mở sơ đồ, hai nút góc
+  // Không dùng <button> bọc ngoài (nút-trong-nút không hợp lệ) — div click mở sơ đồ, ba nút góc
   // nổi khi hover, stopPropagation để không mở nhầm.
   return (
     <div onClick={onOpen} role="button" tabIndex={0}
       className="group relative cursor-pointer overflow-hidden rounded-xl border-[1.5px] border-teal-300 bg-white text-left transition hover:shadow-md">
       <div className="absolute right-2 top-2 z-10 hidden gap-1 group-hover:flex">
+        <button onClick={(e) => { e.stopPropagation(); onLt() }} title={coLt ? 'Sửa lý thuyết' : 'Gán lý thuyết'}
+          className={`flex h-7 w-7 items-center justify-center rounded-lg border bg-white/90 shadow-sm ${coLt ? 'border-violet-300 text-violet-600 hover:bg-violet-50' : 'border-slate-300 text-slate-600 hover:bg-slate-50'}`}>📖</button>
         <button onClick={(e) => { e.stopPropagation(); onEdit() }} title="Sửa mô hình"
           className="flex h-7 w-7 items-center justify-center rounded-lg border border-slate-300 bg-white/90 text-slate-600 shadow-sm hover:bg-slate-50">✎</button>
         <button onClick={(e) => { e.stopPropagation(); onDelete() }} title="Xoá họ"
