@@ -10,7 +10,7 @@
 //   · M9 Ôn tập     → phiếu ý rút từ BÀI THẬT (khác hình, khác lời văn, khác tên điểm)
 //   · M9 Giảng dạy  → khúc A→B: mốc chương + nhắc lại + node theo thứ tự topo
 //   · M8 Tài liệu chuẩn → đề chuẩn (giả thiết 1 lần) + lời giải liền mạch, bước trung gian gắn nhãn
-import { useEffect, useRef, useState } from 'react'
+import { Fragment, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
 import { MathText } from '../ui'
@@ -34,14 +34,18 @@ export type YIn = {
 export type MucIn =
   | { kieu: 'chuong'; tieuDe: string; moTa?: string | null }
   | { kieu: 'nhac_lai'; items: { ma: string; phatBieu: string; cap: number }[] }
-  | { kieu: 'de'; deBai: string; anhDe?: string | null; nguon?: string | null; ma?: string | null; ys: YIn[]; anDe?: boolean; soDong?: number | null }
+  | { kieu: 'de'; deBai: string; anhDe?: string | null; nguon?: string | null; ma?: string | null; ys: YIn[]; anDe?: boolean; soDong?: number | null; moHinhId?: string | null }
   //   anDe = ẨN hình đề → Ô VẼ cho HS. soDong = số dòng kẻ mỗi ý trên bản HS (BTVN chỉnh được).
+  //   moHinhId = mô hình của node sâu nhất — để gom lý thuyết mô hình 1 lần/nhóm khi in (xem `Noi()`).
 
 export type BanIn = {
   tieuDe: string
   phuDe?: string | null
   ghiChuDau?: string | null    // vd "Bài tương đương — tên điểm theo hệ thống"
   mucs: MucIn[]
+  // ⭐ 08-10 (Thùy: "lý thuyết in ở phiếu bài tập trên lớp giống bên đại"): lý thuyết CỦA MÔ HÌNH, resolve
+  // sẵn ở banInTheoMoHinh (CHỈ phan='lop' — khuôn Đại: LT chỉ hiện ở buổi trên lớp, không lặp lại ở BTVN).
+  moHinhLyThuyet?: Record<string, { ten: string; noiDung: string }>
 }
 
 export default function HinhPrintView({ ban, onClose }: { ban: BanIn; onClose: () => void }) {
@@ -137,6 +141,7 @@ export default function HinhPrintView({ ban, onClose }: { ban: BanIn; onClose: (
 
 function Noi({ ban, gv }: { ban: BanIn; gv: boolean }) {
   let soDe = 0
+  let moHinhLtDaHien = ''  // gom LT mô hình 1 lần/nhóm liền nhau (khuôn Đại: LT chuyên đề hiện 1 lần)
   // Masthead — khuôn "mới nhất" bên Đại (gtbk-mh, commit redesign BK 08-08): khung gradient bo góc +
   // vạch trái cầu vồng + logo thật + tiêu đề. Namespace RIÊNG `hpmh-*` (không đụng `.gtbk-*` của Đại —
   // PrintView.tsx đang sửa dở phiên khác). BỎ huy hiệu tròn "Buổi N" của Đại: Hình không có số buổi tách
@@ -168,8 +173,20 @@ function Noi({ ban, gv }: { ban: BanIn; gv: boolean }) {
           </div>
         )
         soDe++
+        // LT mô hình — hiện MỘT LẦN ngay trước bài đầu tiên của mỗi nhóm mô hình liền nhau (chỉ có data
+        // khi banInTheoMoHinh dựng cho phan='lop' — bản BTVN không kèm, khuôn Đại "LT chỉ ở trên lớp").
+        const ltMh = m.moHinhId ? ban.moHinhLyThuyet?.[m.moHinhId] : null
+        const hienLt = !!ltMh && m.moHinhId !== moHinhLtDaHien
+        if (hienLt) moHinhLtDaHien = m.moHinhId!
         return (
-          <div key={i} className="hp-de">
+          <Fragment key={i}>
+            {hienLt && (
+              <div className="hp-box-lt">
+                <div className="hp-box-lt-t">Lý thuyết · {ltMh!.ten}</div>
+                <MathText>{ltMh!.noiDung}</MathText>
+              </div>
+            )}
+          <div className="hp-de">
             <div className="hp-de-h">Bài {soDe}.</div>
             {/* Hình / ô-vẽ FLOAT phải → đề + câu hỏi chảy SÁT bên trái, không bị đẩy xuống dưới hình.
                 anDe (ẩn hình): bản HS chừa ô vẽ; bản GV vẫn hiện hình để đối chiếu. */}
@@ -213,6 +230,7 @@ function Noi({ ban, gv }: { ban: BanIn; gv: boolean }) {
               : m.soDong !== 0 && <div className="hp-ke" style={m.soDong ? { height: `${Math.max(1, m.soDong) * 7.7}mm` } : undefined} />}
             <div style={{ clear: 'both' }} />
           </div>
+          </Fragment>
         )
       })}
     </div>
@@ -232,6 +250,9 @@ const HINH_CSS = `
 .hpmh-title{position:relative;z-index:3;margin:0;font-family:${HP_SANS};font-size:21pt;line-height:1.1;letter-spacing:-.03em;color:#142744;font-weight:900}
 .hpmh-sub{position:relative;z-index:3;margin-top:1.8mm;font-family:${HP_SANS};font-size:9.6pt;color:#6a7a93;font-weight:600}
 .hp-note{background:#fffaf1;border:1px solid #f0c987;border-radius:8px;padding:8px 11px;font-size:14px;color:#8a5a12;margin-bottom:12px}
+/* Lý thuyết mô hình — khuôn .pv-box-lt/.pv-box-label của Đại (PrintView.tsx), namespace hp-*. */
+.hp-box-lt{background:#eff7fd;border:1px solid #cfe6f5;border-radius:9px;padding:11px 13px;margin-bottom:10px;break-inside:avoid}
+.hp-box-lt-t{font-size:15px;font-weight:800;text-transform:uppercase;color:#2D9CDB;letter-spacing:.3px;margin-bottom:5px;break-after:avoid}
 .hp-chuong{background:#e6f5f1;border:1px solid #5eccb0;border-radius:8px;padding:9px 12px;margin:14px 0 8px;break-inside:avoid;break-after:avoid}
 .hp-chuong-t{font-weight:800;color:#0f6e56;font-size:17px}
 .hp-chuong-m{font-size:15px;color:#374151;margin-top:2px}

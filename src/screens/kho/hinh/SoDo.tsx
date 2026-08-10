@@ -16,6 +16,7 @@ import { AnhInput, Btn, Cap, Chip, Empty, Fig, FieldCard, IngestBaiButton, KV, M
 import { FormMoHinh } from './Ho'
 import FormBaiToan from './FormBaiToan'
 import type { Nhay } from './KhoHinhScreen'
+import { LyThuyetModal } from '../BanDo'
 
 /** Dải cấp gọn: 4–4 đọc thừa, chỉ in 4. */
 export const dai = (ns: number[]) => (Math.min(...ns) === Math.max(...ns) ? String(ns[0]) : `${Math.min(...ns)}–${Math.max(...ns)}`)
@@ -676,6 +677,14 @@ function ViewMoHinh({ L, ho, trongHo, chon, setChon, onSua, onThemCon, reload }:
   const theoCap = new Map<number, BaiToan[]>()
   for (const b of lt.rieng) { const a = theoCap.get(b.cap) ?? []; a.push(b); theoCap.set(b.cap, a) }
 
+  // Lý thuyết NỘI DUNG của mô hình (khác `lt` ở trên — đó là tập bài toán). Tái dùng NGUYÊN
+  // LyThuyetModal (gõ tay hoặc ảnh/PDF → AI bóc LaTeX), khuôn hệt bổ đề (Catalog.tsx MBoDe).
+  const [moLtMap, setMoLtMap] = useState<Record<string, { noi_dung: string; file_url: string | null; ten_file: string | null }>>({})
+  const [moLtModal, setMoLtModal] = useState<{ id: string; ten: string } | null>(null)
+  const napMoLt = () => api.hinhMoHinhLyThuyet.list().then(setMoLtMap).catch(() => { /* */ })
+  useEffect(() => { napMoLt() }, [])
+  const coMoLt = !!(moLtMap[mh.id]?.noi_dung?.trim() || moLtMap[mh.id]?.file_url)
+
   return (
     <>
       <p className="mb-3 max-w-4xl text-[12.5px] leading-relaxed text-slate-500">
@@ -782,6 +791,19 @@ function ViewMoHinh({ L, ho, trongHo, chon, setChon, onSua, onThemCon, reload }:
             ? <FieldCard label="Tự phát biểu — thay cách gọi của bố (quan hệ cha-con vẫn giữ)" ton="slate" className="mt-1.5"><MathText>{mh.gia_thiet}</MathText></FieldCard>
             : mh.gia_thiet_them && <FieldCard label="Phần thêm so với bố" ton="slate" className="mt-1.5"><MathText>{mh.gia_thiet_them}</MathText></FieldCard>}
 
+          {/* Lý thuyết của mô hình — tái dùng NGUYÊN editor lý thuyết của Đại (bóc ảnh/PDF), khuôn hệt bổ đề. */}
+          <div className="mt-1.5 rounded-lg border border-violet-200 bg-violet-50/50 px-2.5 py-2">
+            <div className="flex items-center gap-2">
+              <span className="text-[11px] font-semibold uppercase tracking-wide text-violet-700">Lý thuyết</span>
+              <Btn className="ml-auto h-6 px-2 text-[11px]" onClick={() => setMoLtModal({ id: mh.id, ten: mh.ten })}>
+                {coMoLt ? '✎ Sửa' : '＋ Soạn'}
+              </Btn>
+            </div>
+            {coMoLt
+              ? <div className="mt-1.5 max-h-40 overflow-y-auto text-[12px] leading-relaxed text-slate-700"><MathText>{moLtMap[mh.id]?.noi_dung ?? ''}</MathText></div>
+              : <div className="mt-1 text-[11.5px] text-slate-400">Chưa có — bấm Soạn (gõ tay hoặc dán ảnh/PDF → AI bóc LaTeX).</div>}
+          </div>
+
           <div className="mb-1 mt-3 flex items-center gap-2">
             <span className="text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Sơ đồ tâm–vệ tinh · {lt.rieng.length} bài toán phụ thuộc</span>
             <Btn className="ml-auto h-6 px-2 text-[11px]" onClick={() => onThemCon(mh.id)}>＋ Mô hình con</Btn>
@@ -802,6 +824,10 @@ function ViewMoHinh({ L, ho, trongHo, chon, setChon, onSua, onThemCon, reload }:
           )}
         </Panel>
       </div>
+      {moLtModal && (
+        <LyThuyetModal ma={moLtModal.id} ten={moLtModal.ten} current={moLtMap[moLtModal.id] as any} api={api.hinhMoHinhLyThuyet as any}
+          onClose={() => setMoLtModal(null)} onSaved={() => { setMoLtModal(null); napMoLt() }} />
+      )}
     </>
   )
 }

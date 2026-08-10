@@ -3977,3 +3977,37 @@ tsc + vite build sạch mọi bước. Dev pane phiên 0×0 → nhờ Thùy `npm
   thứ tự câu ở trong builder giống như đại ấy" — chốt: chỉ đổi được thứ tự trong CÙNG 1 chuỗi, không kéo
   qua chuỗi khác, Thùy đã biết và OK) — `swapPicks()` đã tách ra ở `BuoiPickEditor` (refactor an toàn,
   `movePick`/Tóm tắt cũ chạy y hệt), CHƯA wire vào `ChuoiRow`. Tiếp tục ngay sau khi bug này qua.
+
+## 2026-08-10 (tiếp) — Kho Hình: Lý thuyết cho MÔ HÌNH + in ở phiếu Trên lớp
+
+- **Thùy:** "mô hình cần có chỗ gán lý thuyết cho nó" → sau đó thêm: "lý thuyết sẽ in ở phiếu bài tập
+  trên lớp giống như bên đại số nhé". Mô hình (Tứ giác, Hình thang…) trước giờ chỉ có giả thiết+hình,
+  chưa có chỗ giải thích LÝ THUYẾT/tính chất của chính cấu hình — khác dạng (`hinh_dang_ly_thuyet`, 08-XX)
+  và bổ đề (`hinh_bo_de_ly_thuyet`, 08-06) đã có sẵn.
+- **Xây (mirror Y HỆT bổ đề — 3 bảng lý thuyết Hình giờ cùng 1 khuôn):**
+  - Migration `202608101716_hinh_mo_hinh_ly_thuyet.sql`: bảng `hinh_mo_hinh_ly_thuyet` (khoá
+    `mo_hinh_id references hinh_mo_hinh(id) on delete cascade`), RLS `la_thanh_vien()`. Clone y hệt
+    `hinh_bo_de_ly_thuyet`.
+  - `hinh.ts`: `hinhMoHinhLyThuyet` = `{list,upsert,remove}` (shape `LyThuyetApi`), clone `hinhBoDeLyThuyet`.
+  - `SoDo.tsx ViewMoHinh`: box "Lý thuyết" (＋Soạn/✎Sửa) chèn trong panel "Hệ sinh thái của mô hình", ngay
+    sau 2 `FieldCard` giả thiết — tái dùng NGUYÊN `LyThuyetModal` (import từ `../BanDo`, khuôn Catalog.tsx
+    `MBoDe`). State `moLtMap`/`moLtModal` LOCAL trong `ViewMoHinh` (không nhét vào `Luoi` snapshot — đúng
+    convention: lý thuyết dạng/bổ đề cũng fetch riêng qua `napLt()`, không nằm trong `L`).
+- **In ở phiếu Trên lớp (yêu cầu 2, khuôn Đại "LT chuyên đề gom theo nhóm, chỉ hiện ở buổi trên lớp"):**
+  - `MucIn` (kieu 'de') thêm `moHinhId?: string|null` — set ở cả 4 hàm build mục (`mucGhep`/`mucGhepLua`:
+    lấy từ node SÂU NHẤT · `mucBienThe`/`mucY`: lấy từ node của biến-thể/ý, `mucY` cẩn thận null vì
+    `Y.baitoan_id` có thể null).
+  - `BanIn` thêm `moHinhLyThuyet?: Record<moHinhId, {ten, noiDung}>` — `banInTheoMoHinh` CHỈ resolve khi
+    `phan==='lop'` (fetch `hinhMoHinhLyThuyet.list()` 1 lần, lọc còn mô hình có content THẬT trong `mucs`)
+    — BTVN/Về nhà không kèm, đúng "LT chỉ ở trên lớp" như Đại.
+  - `HinhPrintView.tsx Noi()`: track `moHinhLtDaHien` (biến mutable ngoài `.map`, khuôn `soDe`) — mô hình
+    ĐỔI so với mục trước VÀ có lý thuyết → chèn box `.hp-box-lt` (khuôn CSS `.pv-box-lt`/`.pv-box-label`
+    của Đại, namespace `hp-*`) NGAY TRƯỚC "Bài N" đầu tiên của nhóm đó. Phải bọc `Fragment` (2 phần tử/
+    lượt lặp thay vì 1) — thêm `import { Fragment } from 'react'`.
+- **Verify:** tsc sạch · `npx vite build` sạch · click-through THẬT (dev pane, Admin, họ "Tứ giác" K8):
+  soạn lý thuyết test cho mô hình Tứ giác → hiện đúng trong "Hệ sinh thái của mô hình" → tạo giáo trình
+  test, gán 2 bài BT.025 (thuộc Tứ giác) vào CẢ Trên lớp lẫn Về nhà → soi DOM nguồn `.pv-src` của "📘 Xem"
+  → `.hp-box-lt` xuất hiện đúng NGAY TRƯỚC "Bài 1" ("Lý thuyết · Tứ giác · [nội dung test]") → soi "📝 Xem"
+  (Về nhà) → xác nhận `.hp-box-lt` KHÔNG xuất hiện (đúng ý "chỉ in trên lớp"). Xoá sạch data test (giáo
+  trình + nội dung lý thuyết mô hình qua nút "Gỡ") — không sót gì. 1 lần dính session hết hạn giữa chừng
+  (recurring `refresh_token_not_found` của dev pane phiên này, không phải bug code — F5+đăng nhập lại qua).

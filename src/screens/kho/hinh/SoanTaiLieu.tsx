@@ -531,7 +531,23 @@ export async function banInTheoMoHinh(tieuDe: string, phan: 'lop' | 'nha', picks
     else if (p.luaId) { const vs = await api.bienTheCuaLua(p.luaId); mucs.push(mucGhepLua(L, p.nodeIds, vs, an.has(p.key), dong(p.key))) }
     else mucs.push(mucGhep(L, p, an.has(p.key), dong(p.key)))
   }
-  return { tieuDe: `Buổi học — ${tieuDe}`, phuDe: `${mucs.length} mục`, mucs }
+  // ⭐ 08-10 (Thùy: "lý thuyết in ở phiếu bài tập trên lớp giống bên đại"): CHỈ resolve cho phan='lop' —
+  // khuôn Đại (LT chuyên đề chỉ hiện ở buổi trên lớp, KHÔNG lặp lại ở phiếu BTVN riêng).
+  let moHinhLyThuyet: Record<string, { ten: string; noiDung: string }> | undefined
+  if (phan === 'lop') {
+    const moHinhIds = [...new Set(mucs.map((m) => (m.kieu === 'de' ? m.moHinhId : null)).filter((x): x is string => !!x))]
+    if (moHinhIds.length) {
+      const map = await api.hinhMoHinhLyThuyet.list()
+      moHinhLyThuyet = {}
+      for (const id of moHinhIds) {
+        const noiDung = map[id]?.noi_dung?.trim()
+        if (!noiDung) continue
+        const ten = L.moHinh.find((m) => m.id === id)?.ten ?? ''
+        moHinhLyThuyet[id] = { ten, noiDung }
+      }
+    }
+  }
+  return { tieuDe: `Buổi học — ${tieuDe}`, phuDe: `${mucs.length} mục`, mucs, moHinhLyThuyet }
 }
 /** Ghép chuỗi (đề chuẩn) → 1 bài a,b,c: giả thiết + hình của node SÂU NHẤT chung; ý a,b,c = câu hỏi + lời giải từng node. */
 export function mucGhep(L: Luoi, g: Extract<PickItem, { kind: 'ghep' }>, anDe: boolean, soDong?: number | null): MucIn {
@@ -553,7 +569,7 @@ export function mucGhep(L: Luoi, g: Extract<PickItem, { kind: 'ghep' }>, anDe: b
     }
   })
   const anhDe = api.anhCuaBaiToan(L, deep.id)
-  return { kieu: 'de', deBai: api.giaThietDayDu(L, deep.mo_hinh_id), anhDe, ma: nodes.map((b) => b.ma).join('+'), ys, anDe: anDe || !anhDe, soDong: soDong ?? null }
+  return { kieu: 'de', deBai: api.giaThietDayDu(L, deep.mo_hinh_id), anhDe, ma: nodes.map((b) => b.ma).join('+'), ys, anDe: anDe || !anhDe, soDong: soDong ?? null, moHinhId: deep.mo_hinh_id }
 }
 // Tách đề biến thể: cắt ở "Chứng minh" → giả thiết (chung cả chuỗi) + câu hỏi (ý). Giả thiết các câu trong chuỗi giống nhau.
 function tachDe(deBai: string): { giaThiet: string; cauHoi: string } {
@@ -588,17 +604,18 @@ export function mucGhepLua(L: Luoi, nodeIds: string[], bienThes: BienThe[], anDe
     }
   })
   const anhDe = deepV?.anh ?? api.anhCuaBaiToan(L, deep.id)
-  return { kieu: 'de', deBai: giaThiet, anhDe, ma: nodes.map((b) => b.ma).join('+'), ys, anDe: anDe || !anhDe, soDong: soDong ?? null }
+  return { kieu: 'de', deBai: giaThiet, anhDe, ma: nodes.map((b) => b.ma).join('+'), ys, anDe: anDe || !anhDe, soDong: soDong ?? null, moHinhId: deep.mo_hinh_id }
 }
 /** Biến thể riêng lẻ (đổi số/đổi tên) của MỘT node — không tiền đề nên không có bước ẩn để nở. */
 export function mucBienThe(L: Luoi, v: BienThe, anDe: boolean, soDong?: number | null): MucIn {
   const node = L.baiToan.find((x) => x.id === v.baitoan_id)
-  return { kieu: 'de', ma: node?.ma ?? null, deBai: v.de_bai, anhDe: v.anh, ys: [{ nhan: '', noiDung: '', loiGiai: v.loi_giai, anh: v.anh_loi_giai ?? v.anh, ma: node?.ma, cap: node?.cap }], anDe: anDe || !v.anh, soDong: soDong ?? null }
+  return { kieu: 'de', ma: node?.ma ?? null, deBai: v.de_bai, anhDe: v.anh, ys: [{ nhan: '', noiDung: '', loiGiai: v.loi_giai, anh: v.anh_loi_giai ?? v.anh, ma: node?.ma, cap: node?.cap }], anDe: anDe || !v.anh, soDong: soDong ?? null, moHinhId: node?.mo_hinh_id ?? null }
 }
 /** Ý thật (đã chấm, từ đo lường) trỏ vào MỘT node — dùng làm bài luyện. */
 export function mucY(L: Luoi, yb: { y: Y; bai: Bai }, anDe: boolean, soDong?: number | null): MucIn {
   const da = api.dapAnHaiBac(L, yb.y)
-  return { kieu: 'de', ma: yb.bai.ma_bai, deBai: yb.bai.de_bai, anhDe: yb.bai.anh_de, ys: [{ nhan: yb.y.nhan_hien_thi ?? String.fromCharCode(96 + yb.y.thu_tu), noiDung: yb.y.noi_dung, loiGiai: da.loiGiai, anh: da.anh, bacThamChieu: da.bac === 'tham_chieu', ma: yb.y.ma_y }], anDe: anDe || !yb.bai.anh_de, soDong: soDong ?? null }
+  const node = yb.y.baitoan_id ? L.baiToan.find((x) => x.id === yb.y.baitoan_id) : null
+  return { kieu: 'de', ma: yb.bai.ma_bai, deBai: yb.bai.de_bai, anhDe: yb.bai.anh_de, ys: [{ nhan: yb.y.nhan_hien_thi ?? String.fromCharCode(96 + yb.y.thu_tu), noiDung: yb.y.noi_dung, loiGiai: da.loiGiai, anh: da.anh, bacThamChieu: da.bac === 'tham_chieu', ma: yb.y.ma_y }], anDe: anDe || !yb.bai.anh_de, soDong: soDong ?? null, moHinhId: node?.mo_hinh_id ?? null }
 }
 
 // ── ⭐ 08-08 (Thùy chốt: "1 chuỗi ghép lại cũng là 1 bài") — 1 BẢN của 1 chuỗi (mọi cỡ, kể cả 1 node):

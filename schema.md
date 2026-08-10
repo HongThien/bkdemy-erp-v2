@@ -2,7 +2,7 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-122 bảng · 0 enum · 11 trigger · 31 function
+123 bảng · 0 enum · 11 trigger · 31 function
 
 ## bai_lam
 
@@ -885,6 +885,16 @@
 |---|---|---|---|---|---|
 | mo_hinh_id | uuid |  |  | PK FK→hinh_mo_hinh.id |  |
 | cha_id | uuid |  |  | PK FK→hinh_mo_hinh.id |  |
+
+## hinh_mo_hinh_ly_thuyet
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| mo_hinh_id | uuid |  |  | PK FK→hinh_mo_hinh.id |  |
+| noi_dung | text |  | ''::text |  |  |
+| file_url | text | Y |  |  |  |
+| ten_file | text | Y |  |  |  |
+| cap_nhat_at | timestamp with time zone |  | now() |  |  |
 
 ## hinh_y
 
