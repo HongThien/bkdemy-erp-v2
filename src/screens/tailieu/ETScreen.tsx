@@ -40,6 +40,10 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
   const [lops, setLops] = useState<Lop[]>([])
   const [lopId, setLopId] = useState<string | null>(et?.lop_id ?? draft0?.lopId ?? null)
   const [ngay, setNgay] = useState<string>(et?.ngay ?? draft0?.ngay ?? '')
+  // nhánh (Đại số | Hình giải tích, chỉ có ý nghĩa mon='Toán') — thuộc TÀI LIỆU (như giáo trình), KHÔNG
+  // thuộc lớp (schema.md: bảng lop không có cột nhanh). Cố định 1 lần: sửa ET đã lưu KHÔNG đổi được nữa
+  // (giống giáo trình — CreateModal chọn 1 lần), tránh đổi kho giữa chừng làm lệch câu đã chọn.
+  const [nhanh, setNhanh] = useState<string | null>(et?.nhanh ?? draft0?.nhanh ?? null)
   const [rows, setRows] = useState<Row[]>(() => (draft0?.rows as Row[] | undefined) ?? blankRows())
   const [cau, setCau] = useState<Record<string, CauHoi>>(() => (draft0?.cau as Record<string, CauHoi>) ?? {}) // cache để preview
   const [dangOpts, setDangOpts] = useState<{ ma_dang: string; ten_dang: string; ten_chuyen_de: string }[]>([])
@@ -59,7 +63,7 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
   const lop = lops.find((l) => l.id === lopId)
   const khoi = lop?.khoi ?? et?.khoi ?? ''
   const mon = lop?.mon ?? et?.mon ?? 'Toán'      // ET theo môn của lớp → chọn kho
-  const cauTbl = khoCuaMon(mon).cauTbl
+  const cauTbl = khoCuaMon(mon, nhanh).cauTbl
   const tenDang = (md: string | null) => dangOpts.find((d) => d.ma_dang === md)?.ten_dang ?? md ?? ''
 
   // Nạp toàn bộ nội dung 1 ET (câu gốc + 3 mã đề + cấu hình) vào form. Dùng CHUNG cho: (a) sửa từ Kho
@@ -74,9 +78,10 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
     // cột Mã đề 2/3 chỉ thấy MÃ câu, không thấy đề (chỉ "…") dù dữ liệu vẫn còn nguyên trong cau_hinh.
     const need = new Set<string>()
     for (const arr of Object.values(ch0.etMaDe ?? {})) for (const m of arr) if (m && !cMap[m]) need.add(m)
-    if (need.size) { const vs = await fetchCausByMa([...need], khoCuaMon(full.taiLieu.mon).cauTbl); for (const v of vs) cMap[v.ma_cau] = v }
+    if (need.size) { const vs = await fetchCausByMa([...need], khoCuaMon(full.taiLieu.mon, full.taiLieu.nhanh).cauTbl); for (const v of vs) cMap[v.ma_cau] = v }
     setCau(cMap)
     setCh(ch0)
+    setNhanh(full.taiLieu.nhanh ?? null)
     const r: Row[] = caus.map((c) => ({ maDang: c.dang_chinh, maCau: c.ma_cau }))
     while (r.length < DEFAULT_ROWS) r.push({ maDang: null, maCau: null })
     setRows(r)
@@ -118,8 +123,8 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
   useEffect(() => {
     if (et) return
     const empty = !lopId && !ngay && rows.every((r) => !r.maCau)
-    useStore.getState().setEtDraft(empty ? null : { lopId, ngay, savedId, rows, cau, ch })
-  }, [et, lopId, ngay, savedId, rows, cau, ch])
+    useStore.getState().setEtDraft(empty ? null : { lopId, ngay, savedId, nhanh, rows, cau, ch })
+  }, [et, lopId, ngay, savedId, nhanh, rows, cau, ch])
   // Người dùng ĐỔI LỚP → câu/mã đề/ngày cũ thuộc kho (khối/môn) khác → RESET. Không reset lúc mount/khôi phục
   // nháp (lopRef khởi tạo bằng lopId ban đầu) hay lần chọn lớp ĐẦU TIÊN (prev = null, chưa có câu ý nghĩa).
   const lopRef = useRef(lopId)
@@ -134,9 +139,16 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
   // dạng theo khối (đổi khi chọn lớp khác khối)
   useEffect(() => {
     if (!khoi) { setDangOpts([]); return }
-    khoCuaMon(mon).listMap(khoi).then((ds) => setDangOpts(ds.map((d) => ({ ma_dang: d.leafMa, ten_dang: d.leafTen, ten_chuyen_de: d.t2Ten })))).catch(() => { /* */ })
-  }, [khoi, mon])
+    khoCuaMon(mon, nhanh).listMap(khoi).then((ds) => setDangOpts(ds.map((d) => ({ ma_dang: d.leafMa, ten_dang: d.leafTen, ten_chuyen_de: d.t2Ten })))).catch(() => { /* */ })
+  }, [khoi, mon, nhanh])
   useEffect(() => { if (!flash) return; const t = setTimeout(() => setFlash(null), 2500); return () => clearTimeout(t) }, [flash])
+  // Đổi nhánh (Đại số ↔ Hình giải tích) TRƯỚC khi lưu → câu đã chọn thuộc kho CŨ, không còn hợp lệ → RESET
+  // giống đổi lớp (lopRef ở trên). Chỉ đổi thủ công qua nút bấm (KHÔNG qua effect theo dõi `nhanh`) để
+  // tránh đụng fillFromET (nó cũng gọi setNhanh khi nạp ET có sẵn — effect sẽ xoá luôn câu vừa nạp).
+  const chonNhanh = (v: string | null) => {
+    if (v === nhanh || editing) return   // sửa ET đã lưu: nhánh cố định, không đổi được nữa
+    setNhanh(v); setRows(blankRows()); setCau({}); setCh({}); setDangOpts([])
+  }
 
   const usedExcept = (idx: number) => new Set(rows.filter((_, i) => i !== idx).map((r) => r.maCau).filter(Boolean) as string[])
   async function ensureCache(maDang: string) {
@@ -207,10 +219,10 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
     const baseCaus = sortETCaus(chon.map((r) => cau[r.maCau!]), ch)
     const ten = lop && ngay ? `ET ${lop.ten_lop} · ${ngay.split('-').reverse().join('/')}` : (et?.ten ?? 'ET')
     return {
-      taiLieu: { ...(et ?? {}), id: et?.id ?? 'preview', ten, loai: 'et', mon, khoi, lop_id: lopId, ngay, cau_hinh: ch } as any,
+      taiLieu: { ...(et ?? {}), id: et?.id ?? 'preview', ten, loai: 'et', mon, nhanh, khoi, lop_id: lopId, ngay, cau_hinh: ch } as any,
       phans: [{ id: 'custom', tai_lieu_id: 'preview', thu_tu: 0, loai_phan: 'custom', ref_ma: null, tieu_de: 'ET', noi_dung: null, hien_lt: false, caus: baseCaus } as any],
     } as TaiLieuFull
-  }, [rows, cau, ch, lop, ngay, mon, khoi, lopId, et])
+  }, [rows, cau, ch, lop, ngay, mon, nhanh, khoi, lopId, et])
 
   // persistET = LƯU (create/update) không đóng/không reset → trả id đã lưu, null nếu chặn/lỗi. Dùng chung cho
   // nút Lưu ET và In cả lớp/🖨 (Thùy 07-31: bấm in cả lớp phải TỰ LƯU, khỏi lưu-riêng rồi mới in được).
@@ -261,7 +273,7 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
         useStore.getState().enqueueLinkGen(id, 'et')
         return id
       }
-      const created = await createET({ lopId: lop.id, ngay, ten, khoi: lop.khoi ?? '', mon: lop.mon })
+      const created = await createET({ lopId: lop.id, ngay, ten, khoi: lop.khoi ?? '', mon: lop.mon, nhanh: lop.mon === 'Toán' ? nhanh : null })
       await setETCaus(created.id, maCaus)
       if (Object.keys(chSave).length) await updateET(created.id, { cau_hinh: chSave })
       useStore.getState().enqueueLinkGen(created.id, 'et')
@@ -289,6 +301,12 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
           <div className="w-44"><SearchSelect value={lopId} onChange={setLopId} placeholder="chọn lớp…"
             options={lops.map((l) => ({ id: l.id, label: l.ten_lop, sub: `${l.mon}${l.khoi ? ' · K' + l.khoi : ''}` }))} /></div>
         </div>
+        {mon === 'Toán' && (
+          <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5" title={editing ? 'Nhánh cố định khi sửa ET đã lưu' : 'Chọn nhánh trước khi soạn câu'}>
+            <button onClick={() => chonNhanh(null)} disabled={editing} className={`rounded-md px-3 py-1 text-[13px] font-medium transition disabled:cursor-not-allowed disabled:opacity-60 ${nhanh === null ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>Đại số</button>
+            <button onClick={() => chonNhanh('hinh_gt')} disabled={editing} className={`rounded-md px-3 py-1 text-[13px] font-medium transition disabled:cursor-not-allowed disabled:opacity-60 ${nhanh === 'hinh_gt' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>Hình giải tích</button>
+          </div>
+        )}
         <div className="flex items-center gap-1.5 text-[12px] text-slate-500">Ngày
           <BuoiNgaySelect lopId={lopId} value={ngay} onChange={setNgay} defaultToday />
         </div>
@@ -434,7 +452,7 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
 
       {printing && <ETPrintView id={savedId ?? et?.id ?? 'preview'} fullOverride={previewFull} varCauOverride={cau} onClose={() => setPrinting(false)} />}
       {classPrint && <ETPrintView id={savedId ?? et?.id ?? 'preview'} fullOverride={previewFull} varCauOverride={cau} perHS={classPrint} onClose={() => setClassPrint(null)} />}
-      {dangModal !== null && <DangPickerOne khoi={khoi} mon={mon} onClose={() => setDangModal(null)}
+      {dangModal !== null && <DangPickerOne khoi={khoi} mon={mon} nhanh={nhanh} onClose={() => setDangModal(null)}
         onPick={(ma) => { const i = dangModal; setDangModal(null); pickDang(i, ma) }} />}
       {picker && <KhoPicker maDangs={[picker.maDang]} cauTbl={cauTbl} selected={rows[picker.idx].maCau ? [rows[picker.idx].maCau!] : []} onClose={() => setPicker(null)}
         onConfirm={async (m) => {

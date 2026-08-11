@@ -13,7 +13,7 @@ export const MAX_LINKGEN_ATTEMPTS = 3
 // Nháp ET đang soạn (chế độ TẠO MỚI) — giữ khi rời/quay lại màn để không mất công. cau/ch để lỏng (any)
 // tránh coupling store với type kho. Sống trong RAM (không persist) → F5 mới mất.
 export type EtDraft = {
-  lopId: string | null; ngay: string; savedId: string | null
+  lopId: string | null; ngay: string; savedId: string | null; nhanh?: string | null
   rows: { maDang: string | null; maCau: string | null }[]
   cau: Record<string, any>; ch: Record<string, any>
 }

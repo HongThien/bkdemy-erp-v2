@@ -54,7 +54,7 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
     for (const arr of Object.values(ch.etMaDe ?? {})) for (const m of arr) if (m) need.add(m)
     if (!need.size) { setVarCau({}); setVarReady(true); return }
     let alive = true
-    fetchCausByMa([...need], khoCuaMon(full.taiLieu.mon).cauTbl)
+    fetchCausByMa([...need], khoCuaMon(full.taiLieu.mon, full.taiLieu.nhanh).cauTbl)
       .then((cs) => { if (alive) { setVarCau(Object.fromEntries(cs.map((c) => [c.ma_cau, c]))); setVarReady(true) } })
       .catch(() => { if (alive) setVarReady(true) })
     return () => { alive = false }
