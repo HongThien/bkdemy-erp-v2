@@ -166,7 +166,7 @@ export default function MTPrintView({ id, onClose, headless, linkOnly, onFail, o
 // cauItemParts thô (luôn hiện lua_chon nếu câu kho có). Đúng/Sai (menh_de) + trắc nghiệm → dùng cauItemParts.
 // ⚠ CHỈ còn gọi cho tự luận (bản HS) và MỌI form ở bản GV — trả lời ngắn (bản HS) giờ render qua
 // TLNTable/mtRunsOf (bảng câu-hỏi|ô-đáp-án, DÙNG CHUNG với ET — xem PrintView.tsx), KHÔNG còn qua hàm này.
-function mtCauParts(no: number, c: CauHoi, gv: boolean, ch: CauHinh): { content: React.ReactNode; lines: number } {
+function mtCauParts(no: number, c: CauHoi, gv: boolean, ch: CauHinh): { content: React.ReactNode; lines: number; hasImg: boolean } {
   const isDS = !!(c.menh_de && c.menh_de.length)
   if (isDS || etFormOf(c, ch) === 'trac_nghiem') return cauItemParts({ no, c, gv })
   // tự luận / trả lời ngắn (bản GV) ÉP hiển thị: bỏ qua lua_chon dù câu kho có (tách stem thủ công, giống ET).
@@ -181,6 +181,7 @@ function mtCauParts(no: number, c: CauHoi, gv: boolean, ch: CauHinh): { content:
       {gv && <GvAnswer c={c} />}
     </>),
     lines: (!gv && !grid && form === 'tu_luan') ? nLines : 0,
+    hasImg: !!c.anh_de,
   }
 }
 // Gom câu TRẢ LỜI NGẮN LIÊN TIẾP (bản HS) thành 1 BẢNG (TLNTable, PrintView.tsx) — chỉ gộp TRÌNH BÀY các
