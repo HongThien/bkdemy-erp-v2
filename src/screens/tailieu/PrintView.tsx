@@ -700,8 +700,8 @@ export function WriteLines({ n }: { n: number }) {
 // TÁCH 1 câu thành `content` (đề + hình + ý con + phương án/mệnh đề/lời giải GV — mọi thứ TRỪ dòng kẻ) và
 // `lines` (SỐ dòng kẻ viết tay, 0 nếu không có). Dòng kẻ tách riêng để CauColumns rải THÀNH TỪNG HÀNG lưới
 // (ngắt được giữa các dòng → lấp đáy trang), còn content thì giữ nguyên khối.
-export type CauPart = { key: string; content: React.ReactNode; lines: number }
-export function cauItemParts({ no, c, gv, lines = 0 }: { no: number; c: CauHoi; gv: boolean; lines?: number }): { content: React.ReactNode; lines: number } {
+export type CauPart = { key: string; content: React.ReactNode; lines: number; hasImg: boolean }
+export function cauItemParts({ no, c, gv, lines = 0 }: { no: number; c: CauHoi; gv: boolean; lines?: number }): { content: React.ReactNode; lines: number; hasImg: boolean } {
   const md = c.menh_de && c.menh_de.length ? c.menh_de : null // câu Đúng/Sai: 4 mệnh đề, mỗi cái Đ/S riêng
   const hasOpts = !!(c.lua_chon && c.lua_chon.length)
   const letter = (i: number) => String.fromCharCode(65 + i)
@@ -735,6 +735,7 @@ export function cauItemParts({ no, c, gv, lines = 0 }: { no: number; c: CauHoi; 
       {gv && <GvAnswer c={c} />}
     </>),
     lines: (lines > 0 && !hasOpts && !grid && !md && !gv) ? lines : 0,
+    hasImg: !!c.anh_de,
   }
 }
 export function CauItem(props: { no: number; c: CauHoi; gv: boolean; lines?: number }) {
@@ -797,11 +798,15 @@ export function CauColumns({ cols, parts }: { cols: number; parts: CauPart[] }) 
 }
 // Xếp câu theo TAG CỘT PER-CÂU (colByCau): gom các câu LIÊN TIẾP cùng số cột (>1) thành 1 nhóm ghép cặp;
 // câu cols=1 (hoặc không tag) = full width. Câu cùng tag nhưng CÁCH XA (có câu khác chen giữa) KHÔNG gộp.
+// Câu CÓ ẢNH (c.anh_de) LUÔN ép cols=1 (không vào băng ghép cặp) dù được tag cột: .pv-band buộc
+// break-inside:avoid nguyên hàng (giữ 2 cột lên dòng kẻ ngang nhau — không đổi được, xem PrintView.tsx:848),
+// ảnh cao tới 60mm (.pv-img) làm băng dễ cao hơn khoảng trống còn lại cuối trang → cả băng nhảy sang trang
+// sau, bỏ trống trang trước (Thùy báo). Câu có ảnh in full-width, không xé nhóm 2 cột xung quanh nó.
 export type CauFlowItem = CauPart & { cols: number }
 export function CauFlow({ items }: { items: CauFlowItem[] }) {
   const groups: { cols: number; parts: CauPart[] }[] = []
   for (const it of items) {
-    const cols = it.cols > 1 ? it.cols : 1
+    const cols = it.cols > 1 && !it.hasImg ? it.cols : 1
     const last = groups[groups.length - 1]
     if (last && last.cols === cols) last.parts.push(it)
     else groups.push({ cols, parts: [it] })

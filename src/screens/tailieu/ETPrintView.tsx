@@ -7,7 +7,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
-import { getTaiLieuFull, etGroupOf, khoCuaMon, type ETGroup, type TaiLieuFull, type CauHinh } from '../../lib/tailieu'
+import { getTaiLieuFull, etGroupOf, etFormOf, khoCuaMon, type ETGroup, type TaiLieuFull, type CauHinh } from '../../lib/tailieu'
 import { fetchCausByMa } from '../../lib/ontap'
 import { BK_CSS, BK_PAGE_CSS } from './bkPrint'
 import type { CauHoi } from '../../lib/kho/api'
@@ -200,12 +200,17 @@ function ETAllDe({ full, gv, varCau, perHS }: { full: TaiLieuFull; gv: boolean; 
   const chVar = (vIdx: number): CauHinh => {
     const lines = { ...(ch.btvnLinesByCau ?? {}) }
     const colByCau = { ...(ch.colByCau ?? {}) } // số cột (colByCau) cũng kế thừa câu gốc → đề 2/3 cùng bố cục cột
+    // form (dòng kẻ tự luận / bảng trả lời ngắn / trắc nghiệm) LUÔN đọc lại từ câu gốc HIỆN TẠI lúc IN —
+    // không dùng snapshot etFormByCau[variant] ghi lúc "Sinh mã đề" (made.ts). GV đổi form câu gốc SAU khi
+    // đã sinh mã đề 2/3 mà không bấm sinh lại → snapshot cũ lệch với đề 1 → đề 2/3 in dòng kẻ khác đề 1.
+    const formByCau = { ...(ch.etFormByCau ?? {}) }
     for (const bc of base) {
       const vm = etMaDe![bc.ma_cau][vIdx]; if (!vm) continue
       const bl = ch.btvnLinesByCau?.[bc.ma_cau]; if (bl != null) lines[vm] = bl
       const bc2 = ch.colByCau?.[bc.ma_cau]; if (bc2 != null) colByCau[vm] = bc2
+      formByCau[vm] = etFormOf(bc, ch)
     }
-    return { ...ch, btvnLinesByCau: lines, colByCau }
+    return { ...ch, btvnLinesByCau: lines, colByCau, etFormByCau: formByCau }
   }
   // Mã đề n → (câu, cấu hình dòng). Chưa đủ 3 mã đề thì mọi mã về đề gốc (an toàn).
   const deOf = (maDe: number) => (complete && maDe === 2) ? { caus: build(0), ch: chVar(0) }
@@ -274,6 +279,7 @@ function ETDoc({ ten, caus, ch, gv, badge, hoTen }: { ten: string; caus: CauHoi[
                   {gv && <GvAnswer c={c} />}
                 </>),
                 lines: gv || grid ? 0 : (lines[c.ma_cau] ?? (run.g === 1 ? DEFAULT_TLN_LINES : DEFAULT_TL_LINES)),
+                hasImg: !!c.anh_de,
               }
             })} />
           )}
