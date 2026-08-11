@@ -77,3 +77,11 @@ export const LEVEL = {
   AVATAR_TIERS: 7,       // 21 level gộp thành 7 bậc tiến hóa avatar (mỗi bậc 3 level)
   EXP_MAX_MONTH: null,   // (tùy chọn) cap EXP/tháng tính vào level — chờ data, mặc định tắt
 }
+
+// ── TRƯỚC BUỔI (spec truocbuoi §5/§9) — ngưỡng "bất thường" Lớp 1, một chỗ duy nhất, không rải magic number ──
+export const TRUOCBUOI_CONFIG = {
+  ET_THAP: 50,          // ET buổi trước dưới ngưỡng này (%) → bất thường
+  ET_TUT: 10,           // TB ET tháng này thấp hơn TB tháng trước quá N điểm phần trăm → bất thường
+  MASTERY_YEU_N_MIN: 3, // dạng mức yếu cần ít nhất N lần đo mới tính "dạng yếu tháng" (đủ tin)
+  CARD_CAP: 8,          // >N em "Cần để mắt" → thu thẻ còn 1 dòng + băng "Lớp có X/Y em cần để mắt"
+}
