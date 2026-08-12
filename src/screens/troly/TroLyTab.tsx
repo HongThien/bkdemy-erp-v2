@@ -157,9 +157,13 @@ export default function TroLyTab() {
     setLoi(null)
     viecHomNay().then(setHomNay).catch((e) => setLoi(e?.message ?? String(e)))
     nhacViecHomNay().then(setBang).catch((e) => setLoi(e?.message ?? String(e)))
-    nhanDinhHeThong().then(setNhanDinh).catch((e) => setLoi(e?.message ?? String(e)))
-    // Bổ trợ bù hỏng thì KHÔNG kéo sập cả tab — mấy khối kia vẫn dùng được.
-    anhChupBoTroBu().then(setBu).catch(() => setBu(null))
+    // Bổ trợ bù load TRƯỚC rồi mới tới nhận định: nhận định về bù ăn CHÍNH snapshot này,
+    // không query lại — hai nguồn thì hai con số, và người sẽ thấy chúng chỏi nhau ngay
+    // trên cùng một màn hình. Bù hỏng thì KHÔNG kéo sập tab, nhận định vẫn chạy phần còn lại.
+    anhChupBoTroBu().catch(() => null).then((d) => {
+      setBu(d)
+      return nhanDinhHeThong(d).then(setNhanDinh)
+    }).catch((e) => setLoi(e?.message ?? String(e)))
   }
   useEffect(tai, [])
 

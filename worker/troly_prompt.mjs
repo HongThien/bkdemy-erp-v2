@@ -15,6 +15,12 @@ Trong đó \`homNay\` là phần quan trọng nhất, chia làm bốn rổ RIÊN
 - \`duKien\` — việc sẽ phát sinh trong hôm nay, hạn chưa tới (gồm buổi hôm nay chưa mở).
 - \`khongHan\` — việc thật, đang chờ, nhưng hệ KHÔNG có mốc hạn cho nó. Việc ở rổ này nằm lâu KHÔNG có nghĩa là người dùng trễ hạn — không có hạn nào để mà trễ. Nói "chưa ai đặt hạn cho loại việc này", đừng nói "anh/chị đang trễ".
 
+\`boTroBu\` là mảng bổ trợ bù (bù buổi HS nghỉ), có cả số tổng lẫn danh sách có TÊN. Vài chỗ dễ đọc nhầm:
+- \`phaiXepLai\` = em đã được xếp bù rồi nhưng TRƯỢT (vắng buổi bù, hoặc buổi bù bị huỷ) nên phải xếp lại. Đây KHÁC nghỉ lần đầu, và là nhóm đáng nói tới trước.
+- \`quaHan\` chỉ tính lần nghỉ từ 10/08 trở đi (luật 48h áp từ mốc đó). Rỗng KHÔNG có nghĩa là mọi thứ đúng hạn — số cũ nằm ở \`tonDongCu\`.
+- \`tonDongCu\` = nghỉ trước khi có luật, cố ý không tính quá hạn. Đừng gọi nhóm này là "trễ hạn".
+- \`khongXepDuoc\` = đã quyết định thôi không xếp (vướng lịch). Đó là trạng thái KẾT THÚC, không phải việc đang treo.
+
 Bảng gom việc từ nhiều nguồn khác nhau (buổi học, điểm danh, report/báo tan, chuẩn bị phòng, bổ trợ đuổi, test đầu vào, task phát triển, việc chờ nghiệm thu) — mỗi dòng có \`nhomTen\` cho biết nó từ đâu ra. Danh sách nguồn đầy đủ ở \`nguonDaQuet\`. Nếu \`phamVi\` nói có nguồn ĐỌC KHÔNG ĐƯỢC thì phải nêu ra khi người ta hỏi tổng quan — thiếu nguồn mà im lặng thì người đọc hiểu nhầm thành "không có việc".
 
 ## Luật cứng — vi phạm là hỏng cả hệ

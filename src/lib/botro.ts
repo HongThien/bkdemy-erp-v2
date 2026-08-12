@@ -368,7 +368,10 @@ export async function anhChupBoTroBu(): Promise<AnhChupBu> {
     khongBiet: [
       'Hệ không ghi vì sao HS vắng buổi bù — không phân biệt được em báo trước hay tự nghỉ.',
       'Không có chỗ ghi "đã xác nhận lịch buổi bù", nên buổi sắp tới chỉ liệt kê để nhìn, không đánh dấu được đã xem.',
-      `${koXep ?? 0} ca đánh dấu "không xếp được" nằm ngoài mọi mục ở đây — theo thiết kế hệ không tự gợi ý lại.`,
+      // CEO 12/08 làm rõ: "không xếp được" = gặp vấn đề về LỊCH và ko xếp LUÔN.
+      // Tức đây là trạng thái KẾT THÚC do người quyết, KHÔNG phải việc đang treo.
+      // ⇒ cố ý không nhắc lại, và cũng không đếm vào hàng đợi. Nêu ra chỉ để biết quy mô.
+      `${koXep ?? 0} ca "không xếp được" (vướng lịch, đã chốt thôi không xếp) — cố ý nằm ngoài mọi mục ở đây.`,
     ],
   }
 }

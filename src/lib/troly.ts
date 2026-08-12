@@ -27,6 +27,7 @@ import { getMyProfile, getMyScope } from './nhansu'
 import { myBuoiAoCuaKhoang, getMyOpsTasks, getMyPrepTasks, OPS_TASK_LABEL } from './opsvanhanh'
 import { listCanScanDaCham } from './detest'
 import { listViecCuaToi, listViecToiGiao, type ViecFull, type TrangThaiViec } from './giaoviec'
+import { anhChupBoTroBu, NGAY_AP_HAN_48H, type AnhChupBu } from './botro'
 import { ngayCuaTs } from './tuan'
 import { supabase } from './supabase'
 import { todayVN, soNgayLech } from './giaoviec-config'
@@ -422,9 +423,47 @@ const dem = async (bang: string, ap?: (q: any) => any): Promise<number> => {
   return count ?? 0
 }
 
-export async function nhanDinhHeThong(): Promise<NhanDinh[]> {
-  const homNay = todayVN()
+// ⭐ NHẬN ĐỊNH VỀ BỔ TRỢ BÙ — CEO 12/08: *"T cần nhận xét ở trên erp, chỗ AI ấy"*.
+// Bốn danh sách ở khối Bổ trợ bù mới chỉ là DỮ LIỆU; cái biến nó thành trợ lý là câu
+// NHẬN XÉT rút ra từ chúng. Ăn thẳng snapshot đã load ở màn — KHÔNG query lại (query lần
+// hai là mở đường cho hai con số lệch nhau trên cùng một màn hình).
+// Ngưỡng nằm ngay trong hàm: không có gì đáng nói thì IM, đừng bới cho đủ chỗ trống.
+function nhanDinhBu(d: AnhChupBu): NhanDinh[] {
   const ra: NhanDinh[] = []
+  if (d.phaiXepLai.length) {
+    const cu = d.phaiXepLai[0]
+    const vang = d.phaiXepLai.filter((l) => l.lyDoQuayLai === 'vang_buoi_bu').length
+    ra.push({
+      ma: 'bu_phai_xep_lai',
+      tieuDe: 'Có học sinh đã xếp bù nhưng trượt, chưa ai xếp lại',
+      so: `${d.phaiXepLai.length} lượt (${vang} vắng buổi bù · ${d.phaiXepLai.length - vang} buổi bù bị huỷ) · cũ nhất ${cu.ho_ten} nghỉ ${cu.ngay} (${cu.tuoiNgay} ngày)`,
+      dienGiai: 'Trước 12/08 hệ coi "đã xếp bù" là xong vĩnh viễn, không xét em có đến hay buổi có bị huỷ — nên mấy lượt này rơi khỏi hàng đợi mà không ai biết. Nay chúng đã quay lại "Cần xếp bù".',
+      goiY: 'Xếp lại cho nhóm này trước: đây là các em đã lỡ hai lần, và có em lỡ tới hai lượt khác nhau.',
+      quyetDinh: null, gacDen: null,
+    })
+  }
+  if (d.canXep.tonDongCu >= 20) ra.push({
+    ma: 'bu_ton_dong_cu',
+    tieuDe: 'Tồn đọng xếp bù tích lại từ trước khi có luật hạn',
+    so: `${d.canXep.tonDongCu} lượt nghỉ trước ${NGAY_AP_HAN_48H}${d.canXep.cuNhat ? ` · cũ nhất ${d.canXep.cuNhat}` : ''} · ${d.canXep.trongHan} lượt mới đang trong hạn 48h`,
+    dienGiai: 'Khối này không nằm trong luật 48h (luật mới áp từ 10/08), nên nó sẽ không tự nổi lên ở mục quá hạn. Không ai đụng thì nó nằm im mãi.',
+    goiY: 'Chọn một mốc: xử hết trong vài đợt, hoặc chốt là quá cũ rồi và đánh dấu không cần bù hàng loạt. Để lơ lửng là tệ nhất — số cứ to dần mà không nói lên điều gì.',
+    quyetDinh: null, gacDen: null,
+  })
+  if (d.dongKhong > 0) ra.push({
+    ma: 'bu_dong_khong',
+    tieuDe: 'Có buổi bù được chốt xong mà không có lấy một dòng chấm nào',
+    so: `${d.dongKhong} buổi đã đóng đủ ET + đánh giá nhưng 0 dòng chấm/đánh giá cho HS có mặt`,
+    dienGiai: 'Bấm đóng là một chuyện, có dữ liệu đo hay không là chuyện khác. Mấy buổi này tính là hoàn thành trong mọi thống kê nhưng không đóng góp gì cho mastery của HS.',
+    goiY: 'Xem thử vài buổi: nếu do buổi mẹ không có ET thì đó là chuyện bình thường, còn nếu do bấm cho xong thì phải nói lại với người chấm.',
+    quyetDinh: null, gacDen: null,
+  })
+  return ra
+}
+
+export async function nhanDinhHeThong(bu?: AnhChupBu | null): Promise<NhanDinh[]> {
+  const homNay = todayVN()
+  const ra: NhanDinh[] = bu ? nhanDinhBu(bu) : []
 
   // ① Cảnh báo yếu chảy vào hư không: đầu PHÁT chạy đều, đầu NHẬN không tồn tại.
   const [soCanhBao, soCaYeu] = await Promise.all([dem('canh_bao_yeu'), dem('bo_tro_yeu')])
@@ -527,11 +566,22 @@ export type BoiCanhTroLy = {
   theoKhau: { khau: string; tong: number; quaHan: number; cuNhat: number }[]
   viec: { lop: string; ngay: string; tuoi: number; khau: string; quaHan: boolean }[]
   nhanDinh: { ma: string; tieuDe: string; so: string; dienGiai: string; goiY: string }[]
+  // Story đầu tiên được khai đầy đủ. Gộp sẵn theo mục, KÈM vài dòng chi tiết có tên — hỏi
+  // "em nào phải xếp lại" mà bảng chỉ có con số thì model đúng luật sẽ phải trả lời là
+  // không biết, và người hỏi thấy trợ lý vô dụng dù dữ liệu nằm ngay đó.
+  boTroBu: {
+    tomTat: { chuaFillDu: number; sapToi: number; phaiXepLai: number; quaHan: number; canXep: number; tonDongCu: number; khongXepDuoc: number }
+    phaiXepLai: { ho_ten: string; lop: string; ngayNghi: string; tuoi: number; vi: string; soLanDaXep: number }[]
+    sapToi: { ngay: string; gio: string | null; phong: string | null; hs: string[] }[]
+    chuaFillDu: { ngay: string; tuoi: number; thieu: string[]; hs: string[] }[]
+  } | null
   khongBiet: string[]
 }
 
 export async function boiCanhChoHoi(): Promise<BoiCanhTroLy> {
-  const [bang, nd, hn] = await Promise.all([nhacViecHomNay(), nhanDinhHeThong(), viecHomNay()])
+  // Bổ trợ bù load TRƯỚC vì nhận định ăn chính snapshot đó — hai nguồn thì hai con số.
+  const bu = await anhChupBoTroBu().catch(() => null)
+  const [bang, nd, hn] = await Promise.all([nhacViecHomNay(), nhanDinhHeThong(bu), viecHomNay()])
 
   // Gộp sẵn — model KHÔNG phải đếm. Đây là phần quyết định chất lượng câu trả lời:
   // thiếu bảng gộp thì model sẽ tự cộng từ danh sách thô và cộng sai lúc nào không ai biết.
@@ -558,6 +608,18 @@ export async function boiCanhChoHoi(): Promise<BoiCanhTroLy> {
     theoKhau: gom((v) => v.nhan).map(({ _k, ...o }) => ({ khau: _k, ...o })),
     viec: bang.can.map((v) => ({ lop: v.lop, ngay: v.ngay, tuoi: v.tuoiNgay, khau: v.nhan, quaHan: v.quaHan })),
     nhanDinh: nd.map(({ ma, tieuDe, so, dienGiai, goiY }) => ({ ma, tieuDe, so, dienGiai, goiY })),
+    boTroBu: bu ? {
+      tomTat: {
+        chuaFillDu: bu.chuaFillDu.length, sapToi: bu.sapToi.length, phaiXepLai: bu.phaiXepLai.length,
+        quaHan: bu.quaHan.length, canXep: bu.canXep.tong, tonDongCu: bu.canXep.tonDongCu, khongXepDuoc: bu.khongXepDuoc,
+      },
+      phaiXepLai: bu.phaiXepLai.map((l) => ({
+        ho_ten: l.ho_ten, lop: l.lop, ngayNghi: l.ngay, tuoi: l.tuoiNgay,
+        vi: l.lyDoQuayLai === 'vang_buoi_bu' ? 'vắng buổi bù' : 'buổi bù bị huỷ', soLanDaXep: l.soLanDaXep,
+      })),
+      sapToi: bu.sapToi.map((b) => ({ ngay: b.ngay, gio: b.gio, phong: b.phong, hs: b.hs.map((h) => h.ho_ten) })),
+      chuaFillDu: bu.chuaFillDu.map((b) => ({ ngay: b.ngay, tuoi: b.tuoiNgay, thieu: b.thieu, hs: b.hs })),
+    } : null,
     // §4 "thiếu dấu vết thì khai là không biết" — nêu THẲNG giới hạn của bảng này,
     // để model không lấp bằng phỏng đoán khi bị hỏi ngoài phạm vi.
     khongBiet: [
@@ -565,6 +627,8 @@ export async function boiCanhChoHoi(): Promise<BoiCanhTroLy> {
       'Không có dữ liệu vì sao một khâu bị bỏ; chỉ biết nó chưa đóng.',
       'Không có thông tin lớp nào BẮT BUỘC làm khâu nào (hệ chưa ghi luật đó ở đâu cả).',
       'Không có nội dung bài/điểm số của học sinh trong bảng này.',
+      'Mục bổ trợ bù: hệ không ghi VÌ SAO học sinh vắng buổi bù, và không có chỗ đánh dấu "đã xác nhận lịch buổi bù sắp tới".',
+      '"Không xếp được" là quyết định KẾT THÚC (vướng lịch, chốt thôi không xếp) — cố ý không nằm trong hàng đợi, đừng đọc thành tồn đọng.',
     ],
   }
 }

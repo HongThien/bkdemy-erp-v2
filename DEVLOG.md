@@ -4551,3 +4551,30 @@ Chỉ còn CHẶN duy nhất: **ai CHẤM bài test**.
   gợi ý lại, nên chúng nằm im vĩnh viễn. Hoặc nhắc lại, hoặc khai tử trạng thái đó; **chưa hỏi CEO.**
   · Mục ② chưa có chỗ ghi "đã xác nhận lịch" (CEO chốt chưa thêm cột, chỉ hiện để nhìn).
   · `dongKhong` đã tính nhưng chưa render ra UI.
+
+## 2026-08-12 (tiếp) — Bổ trợ bù vào NHẬN ĐỊNH + KHUNG CHAT · làm rõ "không xếp được"
+
+- **CEO:** *"ko xếp được tức là gặp vấn đề về lịch và ko xếp luôn"* ⇒ `khong_xep_duoc` là trạng thái
+  **KẾT THÚC do người quyết**, KHÔNG phải việc treo. Lượt trước Claude nêu 35 ca đó như một "lỗ hổng
+  cần nhắc lại" — SAI, đã sửa lại wording trong `khongBiet` + prompt worker. Cố ý nằm ngoài hàng đợi.
+  *(Bài học lặp: dữ liệu nói CÁI GÌ, không nói VÌ SAO. Thấy 35 dòng nằm im rồi tự quy là hệ bỏ quên,
+  trong khi đó là người chủ động chốt — đúng lỗi đã ghi ở mục `ingame` sáng nay.)*
+- **CEO:** *"T cần nhận xét ở trên erp, chỗ AI ấy"* ⇒ 4 danh sách bổ trợ bù mới chỉ là DỮ LIỆU; cái
+  biến nó thành trợ lý là câu NHẬN XÉT. Thêm `nhanDinhBu(d)` sinh 3 nhận định (ăn CHÍNH snapshot đã
+  load ở màn, **không query lại** — query lần hai là mở đường cho hai con số lệch nhau trên cùng màn):
+  ① phải-xếp-lại (kèm tách vắng vs buổi-huỷ + ca cũ nhất có TÊN) · ② tồn đọng cũ (ngưỡng ≥20, kèm
+  đường thoát: xử hết hoặc chốt không-cần-bù hàng loạt — *"để lơ lửng là tệ nhất"*) · ③ đóng-khống.
+  `nhanDinhHeThong(bu?)` nhận snapshot; TroLyTab đổi từ gọi song song sang **chuỗi** bù → nhận định.
+- **KHUNG CHAT giờ BIẾT về bù** (`BoiCanhTroLy.boTroBu`): tổng theo mục + danh sách CÓ TÊN cho
+  phải-xếp-lại / sắp-tới / chưa-fill-đủ. Trước đó hỏi "em nào phải xếp lại" thì model **đúng luật §4
+  vẫn phải trả lời "bảng của tôi không có"** dù dữ liệu nằm ngay trên màn — đưa số vào UI mà quên đưa
+  vào bảng sạch là để trợ lý mù đúng chỗ vừa làm.
+- Prompt worker thêm 4 dòng chống đọc nhầm: `phaiXepLai` ≠ nghỉ lần đầu · `quaHan` rỗng KHÔNG phải
+  "mọi thứ đúng hạn" (số cũ ở `tonDongCu`) · `tonDongCu` đừng gọi là trễ hạn · `khongXepDuoc` là kết thúc.
+- **Verify:** tsc sạch · click-through thật: 3 nhận định bù hiện đủ kèm 3 nút. Số trên màn **132 cần
+  xếp · 14 trong hạn · 118 tồn đọng** khớp TUYỆT ĐỐI với oracle SQL chạy cùng lúc.
+  ⚠ Khác lượt đo trước đó (141/15/126) vì **DB đổi thật giữa hai lần chạy** — 9 lượt vừa được xử lý
+  trong lúc làm. Nhắc lại: đây là DB PRODUCTION đang có người dùng, số nhảy giữa hai lần đo là bình
+  thường; đừng vội đọc thành bug (đã suýt).
+- **CÒN:** `dongKhong` giờ hiện ở nhận định (67 buổi) nhưng CHƯA rõ bao nhiêu trong đó là "buổi mẹ
+  không có ET" (bình thường) vs "bấm cho xong" (vấn đề thật) — cần soi vài ca rồi mới kết luận được.
