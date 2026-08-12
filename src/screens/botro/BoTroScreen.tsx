@@ -2,8 +2,8 @@
 // Tabs: Cần bù (L1) / Đã xếp (L2) / Hoàn thành (L3) / Không bù. Detail buổi bù: điểm danh + ET per-HS + đánh giá.
 import { useEffect, useMemo, useState } from 'react'
 import {
-  listCanBu, listCaBoTro, listKhongBu, ghiKhongBu, xoaKhongBu, taoBuoiBu, themHSVaoBuoiBu, buoiBuSapToi, goiYBuoiBu,
-  ensureBuoiBuETProblems, demTabBoTro, getBuoiBuHsInfo, type CanBuItem, type CaBoTro,
+  listLanNghiCanXep, listCaBoTro, listKhongBu, ghiKhongBu, xoaKhongBu, taoBuoiBu, themHSVaoBuoiBu, buoiBuSapToi, goiYBuoiBu,
+  ensureBuoiBuETProblems, demTabBoTro, getBuoiBuHsInfo, type LanNghi, type CanBuItem, type CaBoTro,
 } from '../../lib/botro'
 import { getRoster, getBuoi, diemDanh, huyBuoi, xoaHSKhoiBuoi, listProblems, gradeET, deleteGrade, listGrades, closePhase, getDanhGia, setDanhGiaDang, setNhanXet, getDangTen, dongDanhGia, moLaiDanhGia, type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type ETResult } from '../../lib/gami'
 import SuaBuoiModal from './SuaBuoiModal'
@@ -21,7 +21,7 @@ const khoiSort = (a: string, b: string) => a.localeCompare(b, 'vi', { numeric: t
 export default function BoTroScreen() {
   const [tab, setTab] = useState<Tab>('canbu')
   const [counts, setCounts] = useState<Record<string, number>>({})
-  const [canbu, setCanbu] = useState<CanBuItem[]>([])
+  const [canbu, setCanbu] = useState<LanNghi[]>([])
   const [cas, setCas] = useState<CaBoTro[]>([])
   const [khongbu, setKhongbu] = useState<Awaited<ReturnType<typeof listKhongBu>>>([])
   const [loading, setLoading] = useState(true)
@@ -38,7 +38,7 @@ export default function BoTroScreen() {
   async function reload() {
     setLoading(true)
     try {
-      if (tab === 'canbu') setCanbu(await listCanBu())
+      if (tab === 'canbu') setCanbu(await listLanNghiCanXep())
       else if (tab === 'daxep') setCas(await listCaBoTro(false))
       else if (tab === 'xong') setCas(await listCaBoTro(true))
       else setKhongbu(await listKhongBu())
@@ -125,6 +125,17 @@ export default function BoTroScreen() {
                         <div className="text-[12px] font-medium uppercase tracking-wide text-slate-400">Ngày nghỉ</div>
                         <div className="text-[15px] font-semibold text-slate-700">{ddmm(c.ngay)}</div>
                       </div>
+                      {/* Lượt XẾP LẠI khác hẳn nghỉ lần đầu: em này đã được xếp rồi mà trượt.
+                          Không nói ra thì người xếp tưởng ca mới, và không biết em đã trượt mấy lần. */}
+                      {c.lyDoQuayLai && (
+                        <div className="min-w-[150px] rounded-xl bg-rose-50 px-3 py-2">
+                          <div className="text-[12px] font-medium uppercase tracking-wide text-rose-400">Xếp lại</div>
+                          <div className="text-[13px] font-semibold text-rose-700">
+                            {c.lyDoQuayLai === 'vang_buoi_bu' ? 'Vắng buổi bù' : 'Buổi bù bị huỷ'}
+                          </div>
+                          <div className="text-[11.5px] text-rose-400">đã xếp {c.soLanDaXep} lần</div>
+                        </div>
+                      )}
                       {/* 3 nút 1-click */}
                       <div className="ml-auto flex shrink-0 flex-wrap gap-2">
                         <button onClick={() => setXepItem(c)} className="rounded-lg bg-indigo-600 px-3.5 py-2 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500">Xếp bổ trợ</button>
@@ -468,7 +479,15 @@ export function BuoiBuDetail({ buoiId, readOnly = false, onClose }: { buoiId: st
                     </div>
                   </div>
                 )}
-                {r.diem_danh === 'vang' && <div className="mt-2 text-[12px] text-rose-400">Vắng — không chấm.</div>}
+                {/* Trước đây chỉ in "Vắng — không chấm." rồi thôi, nên người bấm không biết
+                    chuyện gì xảy ra tiếp (CEO 12/08: "ấn vắng ko thấy action gì") — mà thật ra
+                    hồi đó KHÔNG có chuyện gì xảy ra thật: lần nghỉ gốc đã bị coi là đã xử lý
+                    vĩnh viễn. Nay em tự quay lại hàng đợi, nên nói thẳng ra. */}
+                {(r.diem_danh === 'vang' || r.diem_danh === 'vang_phep') && (
+                  <div className="mt-2 rounded-lg bg-rose-50 px-3 py-2 text-[12px] text-rose-700">
+                    Vắng — không chấm buổi này. Lần nghỉ gốc đã <b>quay lại “Cần xếp bù”</b> để xếp lại buổi khác.
+                  </div>
+                )}
               </div>
             )
           })}

@@ -4503,3 +4503,51 @@ Chỉ còn CHẶN duy nhất: **ai CHẤM bài test**.
 - **CÒN:** ⚠ chưa chạy mắt bằng tài khoản có việc (chặn bởi quick-login) · gợi ý PHƯƠNG ÁN (CEO:
   *"sau này đủ giỏi thì gợi ý phương án cho t"*) chưa làm — hiện model chỉ đọc và kết luận ·
   chuỗi test đầu vào vẫn chờ CEO chốt AI CHẤM.
+
+## 2026-08-12 (tiếp) — ⭐⭐ STORY BỔ TRỢ BÙ: sửa bug làm RƠI NGƯỜI + khai 5 mục vào trợ lý
+
+- **CEO:** *"Cái này ko đủ detail đâu. Giờ đi 1 story cụ thể là bổ trợ bù đi"* + 5 thứ cần mỗi ngày
+  (① học xong chưa fill đủ · ② sắp đến lịch · ③ đã xếp mà vắng, phải xếp lại · ④ quá hạn 48h ·
+  ⑤ đang cần xếp — *"nhiều nên ko cần detail, cần số lượng và deeplink"*) + *"hiện tại hệ thống
+  đang lỗi phần này, ấn vắng ko thấy action gì"*.
+- **⭐⭐ BUG GỐC (`botro.ts listCanBu`) — hệ ĐANG LÀM RƠI NGƯỜI, im lặng.** `handled` = tồn tại BẤT KỲ
+  dòng `buoi_hoc_hs` nào có `bu_cho_buoi_id` = buổi mẹ. **Không xét em có ĐẾN không, không xét buổi
+  bù còn sống hay ĐÃ HUỶ.** ⇒ xếp bù xong là lần nghỉ biến mất khỏi hàng đợi VĨNH VIỄN.
+  Đo thật: **11 lượt vắng buổi bù + 6 lượt buổi bù bị huỷ**; sau khi sửa còn **14 ca** thật sự cần
+  xếp lại (3 lượt đã có lần xếp khác còn hiệu lực). Cũ nhất: Bùi Ngọc Bảo Ngân nghỉ 16/06 — **57
+  ngày** không ai biết. CEO chỉ thấy triệu chứng "ấn vắng ko thấy action gì"; sự thật là **KHÔNG CÓ
+  action nào cả**, và cái mất không phải nút bấm mà là bản thân lần nghỉ.
+  ⚠ **Vế "buổi bù bị huỷ" CEO KHÔNG nêu** — cùng một gốc, tự lộ khi đọc code. 6/14 ca là loại này.
+- **Sửa:** lần xếp chỉ tính là GIẢI QUYẾT khi ① buổi bù chưa huỷ VÀ ② em không vắng ở buổi bù đó.
+  `diem_danh = null` VẪN giữ chỗ (buổi chưa diễn ra) — kéo về sớm là đẻ lượt xếp trùng.
+  **Không cần migration**: unique của `buoi_hoc_hs` là `(buoi_hoc_id, hoc_sinh_id)` chứ không phải
+  `(hoc_sinh_id, bu_cho_buoi_id)` ⇒ xếp lại vào buổi bù KHÁC vốn đã hợp lệ; DB có sẵn 2 ca xếp 2 lần
+  cho cùng buổi mẹ (ai đó làm tay) — chứng minh luồng này đã xảy ra ngoài đời trước khi có code.
+- **`LanNghi` mang `lyDoQuayLai` + `soLanDaXep`** → card "Cần bù" hiện khối đỏ **XẾP LẠI · Vắng buổi
+  bù / Buổi bù bị huỷ · đã xếp N lần**, và màn buổi bù đổi dòng chết *"Vắng — không chấm."* thành
+  *"Lần nghỉ gốc đã quay lại Cần xếp bù"*. Trước đây bấm Vắng xong không ai biết chuyện gì xảy ra
+  **vì đúng là không có gì xảy ra**.
+- **⭐ HẠN 48H — KẺ ĐƯỜNG NGÀY (CEO chốt).** Lúc bật luật: **126/141 lần nghỉ đã quá hạn = 89%**.
+  Đỏ hết thì không còn là cảnh báo. ⇒ `NGAY_AP_HAN_48H='2026-08-10'`: nghỉ từ ngày đó trở đi mới
+  chịu hạn; trước đó thành MỘT con số "tồn đọng cũ". Hệ quả **cố ý**: mục ④ hôm nay = **0**, hàng
+  đầu tiên rơi vào 13/08. Không backdate, không xoá — cùng khuôn đã dùng cho đánh giá.
+- **⭐ TỰ DẪM BẪY MÌNH VỪA VIẾT — mục ① ra 105/151 buổi.** Ngay đầu hàm có comment cảnh báo "buổi
+  chưa đóng ≠ chưa fill đủ, phải xét khâu có ÁP DỤNG không"… rồi soi per-HS mà quên chính điều đó:
+  buổi **đã đóng đủ 2 mốc** vẫn bị lôi ra vì HS không có dòng chấm ET — mà **buổi mẹ không có ET thì
+  lấy gì chấm**. Sửa 2 cổng: ① `et_dong_at && danh_gia_xong_at` ⇒ người đã tự chốt, không nhắc nữa;
+  ② chỉ đòi chấm ET/đánh-giá-dạng khi `gami_session_problems` CÓ đề cho đúng em đó. **105 → 2.**
+  Ca "chốt mà không có lấy một dòng chấm nào" giữ lại thành MỘT con số (`dongKhong`), không phải
+  danh sách 98 dòng. *Bài học: viết cảnh báo ra không có nghĩa là đã tránh được nó — phải soi CON SỐ
+  đầu ra. 105 lộ ngay khi mở màn; đọc code lại thì không.*
+- **Verify — số khớp oracle SQL độc lập** (`scripts/_diag_botro_bu.mjs`, `_diag_botro_sau_fix.mjs`):
+  ① 2 · ② 10 (6 hôm nay + 4 sắp tới) · ③ **14** · ④ 0 · ⑤ **141** (15 trong hạn · 0 quá hạn · 126 tồn
+  đọng, cũ nhất 05/07). Tab "Cần bù" 141 → **155** (+14 quay lại), 3 em đầu đúng là mấy em từng rơi.
+  Deeplink "đi xếp bù ›" nhảy đúng màn. tsc + `vite build` sạch.
+  ⚠ Screenshot KHÔNG chụp được (pane không compositing) — verify bằng đọc DOM, đúng cách handoff đã ghi.
+- **2 lỗi hiển thị tự bắt lúc soi output:** `cuNhat` lấy `[length-1]` trong mảng đã sort GIẢM dần theo
+  tuổi ⇒ ra ngày MỚI nhất (hiện "11/08", đúng phải "05/07"); và `bu_cho` in ngày ISO đầy đủ giữa một
+  màn toàn dd/mm.
+- **CÒN:** ⚠ **35 ca `khong_xep_duoc`** (cũ nhất 19/06) nằm ngoài MỌI mục — theo thiết kế hệ không tự
+  gợi ý lại, nên chúng nằm im vĩnh viễn. Hoặc nhắc lại, hoặc khai tử trạng thái đó; **chưa hỏi CEO.**
+  · Mục ② chưa có chỗ ghi "đã xác nhận lịch" (CEO chốt chưa thêm cột, chỉ hiện để nhìn).
+  · `dongKhong` đã tính nhưng chưa render ra UI.
