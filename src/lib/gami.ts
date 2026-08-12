@@ -809,7 +809,10 @@ export async function setDanhGiaDang(buoiId: string, hsId: string, maDang: strin
 export type TabKey = 'diemdanh' | 'danhgia' | 'ingame' | 'et' | 'btvn' | 'mt'
 // deadline (Thùy chốt): chấm bài + đánh giá = 23h59 ngày buổi · ET = 12h trưa hôm sau · BTVN = 2h TRƯỚC ca học tiếp theo của lớp · MT = 23h59 ngày thi (giống chấm bài).
 export type MyTask = { buoiId: string; lopId: string; lop: string; ngay: string; vai: 'gv' | 'tg'; tab: TabKey; label: string; done: boolean; doneAt: string | null; deadline: number | null; loai?: 'bu' | 'bo_tro_duoi' }
-const TASKS_BY_VAI: Record<'gv' | 'tg', { tab: TabKey; label: string }[]> = {
+// Export: trợ lý cần ĐÚNG bảng vai→khâu này để dựng rổ "dự kiến hôm nay" cho buổi CHƯA MỞ
+// (chưa có dòng buoi_hoc ⇒ chưa có task để đọc). Chép lại một bản thứ hai ở troly.ts là đẻ
+// hai nguồn sự thật rồi lệch — thêm khâu ở đây mà quên bên kia thì rổ dự kiến thiếu âm thầm.
+export const TASKS_BY_VAI: Record<'gv' | 'tg', { tab: TabKey; label: string }[]> = {
   gv: [{ tab: 'danhgia', label: 'Đánh giá sau buổi' }, { tab: 'ingame', label: 'Chấm bài trên lớp' }],
   tg: [{ tab: 'ingame', label: 'Chấm bài trên lớp' }, { tab: 'et', label: 'Chấm ET' }, { tab: 'btvn', label: 'Chấm BTVN' }],
 }

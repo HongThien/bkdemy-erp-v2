@@ -4447,3 +4447,59 @@ khỏi `DATABASE_URL` (ghi, chỉ lúc migrate) — **CHƯA LÀM, cần CEO quy�
 **(bổ sung) — CEO chốt nốt luật cấp 3:** *"10A của Trang, còn 10B 12C của Đạt. tóm lại cấp 3 thì A của
 Trang B của Đạt"* ⇒ **cấp 3 (10·11·12): nhánh A → Trang · nhánh B và C → Đạt.** Không còn khối vô chủ.
 Chỉ còn CHẶN duy nhất: **ai CHẤM bài test**.
+
+## 2026-08-12 (tiếp) — ⭐ Trợ lý = "Việc của tôi" bản ĐẦY ĐỦ: 3 rổ + gom 8 nguồn
+
+- **CEO bẻ lái 2 nhịp trong cùng phiên, cả hai đều thu hẹp đúng chỗ Claude làm sai:**
+  ① *"Lúc báo việc thì phải báo việc đang NỢ, việc đang CẦN HOÀN THÀNH, và việc DỰ KIẾN sẽ phải
+  làm trong hôm nay mới có cái nhìn đầy đủ chứ."*
+  ② *"Bản chất của việc hàng ngày chính là 'Việc của tôi', nhưng là 1 phiên bản có nhận định và
+  đầy đủ hơn. Thay vì t phải đi click khắp nơi thì t chỉ còn click 1 chỗ."* + *"cả task phát triển
+  nữa. Tóm lại là trong mọi chỗ mà có việc của nó hoặc SẮP có việc của nó thì đều ở chỗ trợ lý."*
+  + *"nó chính là phiên bản việc của tôi mềm mại hơn, và quan trọng là CHỦ ĐỘNG hơn."*
+- **⭐ SỬA SAI 1 — nợ cũ bị GIẤU thành một con số.** Bản sáng nay rút nợ về `noCu: number` vì CEO
+  nói *"ko phải là mấy cái nợ kia nhé"*. Hiểu đúng ý (đừng trộn lẫn) nhưng làm sai cách (giấu đi).
+  Đúng là **TÁCH RỔ**: vẫn thấy đủ, vẫn không lẫn. Bài học chung: *"đừng trộn X vào Y"* nghĩa là
+  **tách chỗ đứng**, KHÔNG phải **bỏ X đi** — hai cách xử khác hẳn nhau mà nghe thì giống.
+- **⭐ SỬA SAI 2 — trợ lý chỉ đọc `getMyTasks` thì nó ĐÚNG LÀ "một dashboard nữa".** CEO đã nói câu
+  này từ lượt trước (*"hệ thống đưa ra thì khác gì dashboard"*) và Claude vá bằng KHUNG CHAT — đúng
+  một nửa. Nửa còn lại là ĐỘ PHỦ: người vẫn phải sang chỗ khác xem điểm danh, report, phòng, giao việc.
+- **8 NGUỒN (trước: 1).** ①`getMyTasks` ②`myBuoiAoCuaKhoang` (điểm danh ca tôi trực) ③`getMyOpsTasks`
+  (report/báo tan) ④`getMyPrepTasks` (chuẩn bị phòng) ⑤`listDotChoDuyetDuoi` ⑥`listCanScanDaCham`
+  ⑦`listViecCuaToi` (task phát triển tôi làm) ⑧`listViecToiGiao` **lọc `cho_nghiem_thu`** — việc
+  người ta NỘP RỒI đang chờ chính tôi duyệt. ⑧ dễ quên nhất mà đúng chỗ nghẽn đã đo (427/447
+  `vh_ops_task` đóng-mà-chưa-duyệt): **việc "chờ tôi duyệt" vẫn là việc CỦA TÔI dù tôi không làm.**
+  Nguồn ⑥ là POOL chung ⇒ giữ gate `opsToanHe`; bỏ gate là đổi hành vi chứ không phải "gom thêm".
+- **⭐ TÁCH "TRỄ HẠN" KHỎI "TUỔI" (`coHan` + `soNgay`) — suýt để lọt một lời nói dối.** Bản nháp
+  dùng chung một trường `treNgay`, nên việc KHÔNG CÓ HẠN (chờ nghiệm thu, đợt đuổi chờ chốt, bài
+  test chờ scan) nộp từ hôm qua là bị xếp thẳng vào rổ NỢ. Tức **bịa ra một mốc hạn chưa từng tồn
+  tại rồi kết tội người dùng trễ nó**. Giờ: `coHan=false` ⇒ KHÔNG BAO GIỜ vào nợ/hôm nay, đi rổ
+  riêng "Không có hạn — vẫn đang chờ bạn", sắp theo tuổi. Prompt worker cũng được dặn đúng câu này.
+  Đây là §1.5 ở dạng mới: không có dữ liệu (hạn) thì đừng suy ra kết luận (trễ).
+- **RỔ ③ "DỰ KIẾN" = phần CHỦ ĐỘNG.** Buổi hôm nay CHƯA MỞ thì chưa có dòng `buoi_hoc` ⇒
+  `getMyTasks` không sinh task nào ⇒ **lịch dạy hôm nay hoàn toàn vô hình** với bản cũ. Dựng từ
+  (vai trên lớp × `TASKS_BY_VAI`) — **export `TASKS_BY_VAI` từ gami.ts** thay vì chép bản thứ hai,
+  vì thêm khâu mới mà quên bên kia thì rổ dự kiến thiếu ÂM THẦM.
+  ⚠ Cố ý **KHÔNG gán hạn** cho nhóm này: hạn sinh ra sau khi buổi mở, đoán trước = copy luật hạn
+  sang nguồn thứ hai (đúng thứ CLAUDE.md §2 cấm).
+- **Một nguồn hỏng KHÔNG được kéo sập cả màn** (`anToan()` bọc từng nguồn) — nhưng **phải KHAI ra**
+  trong `phamVi`: hỏng mà im lặng thì người đọc hiểu thành "không có việc nào", đúng lỗi §9 bỏ sót.
+- **Ba nút Làm/Huỷ/Gác giờ được TRỪ ở CẢ hai màn** (tách `docQuyetDinh` dùng chung): bấm Huỷ rồi mà
+  rổ Nợ vẫn kêu thì ba nút thành vô nghĩa. Bản cũ chỉ trừ ở "Việc cần quyết".
+- **HẠN 23:59 CÙNG NGÀY: KHÔNG ĐỔI.** Claude đề xuất nới sang trưa hôm sau (rổ "hạn hôm nay" gần
+  như luôn rỗng); CEO không chọn phương án nào trong 3, mà **định nghĩa lại cách hiển thị** — 3 rổ.
+  ⇒ Luật hạn giữ nghiêm, chỗ sai là ở cách BÁO. Ghi lại vì đây là lần thứ n Claude định sửa LUẬT
+  trong khi thứ hỏng là VIEW.
+- **Verify:** tsc sạch · `npx vite build` sạch · click-through THẬT (dev pane 1280×720 — ⚠ pane vẫn
+  dựng ra 0×0, phải gọi `resize_window` mới có viewport; các phiên trước bỏ cuộc ở đúng chỗ này):
+  đăng nhập admin → tab 🤖 Trợ lý → 4 rổ render đúng, tất cả = 0.
+  **0 đó là ĐÚNG, không phải bug** — oracle SQL xác nhận NS005 có 0 ở cả 8 nguồn (0 phân công lớp ·
+  0 ca trực · 0 việc làm · 0 việc chờ duyệt). ⚠ Quick-login chỉ có `admin@gmail.com` nên KHÔNG tự
+  test được tài khoản CÓ việc. Số KỲ VỌNG dựng sẵn bằng `scripts/_chk_troly_nguon.mjs <maNS>`:
+  **NS001** = 18 lớp / 75 buổi hở khâu / 6 đợt đuổi chờ chốt / 4 bài test chờ scan / 1 task phát
+  triển / **4 lớp dạy HÔM NAY, 0 buổi đã mở** (⇒ rổ "dự kiến" có hàng thật).
+  **NS002** = 13 lớp / 66 buổi hở / 4 task phát triển / 1 lớp dạy hôm nay.
+  ⇒ CEO đăng nhập bằng tài khoản mình là đối chiếu được ngay từng rổ.
+- **CÒN:** ⚠ chưa chạy mắt bằng tài khoản có việc (chặn bởi quick-login) · gợi ý PHƯƠNG ÁN (CEO:
+  *"sau này đủ giỏi thì gợi ý phương án cho t"*) chưa làm — hiện model chỉ đọc và kết luận ·
+  chuỗi test đầu vào vẫn chờ CEO chốt AI CHẤM.

@@ -20,7 +20,7 @@ import { useEffect, useRef, useState } from 'react'
 import {
   nhacViecHomNay, ghiQuyetDinh, nhanDinhHeThong, ghiQuyetDinhNhanDinh,
   hoiTroLy, docDap, viecHomNay,
-  type BangHomNay, type BangNhac, type LuotHoi, type NhanDinh, type QuyetDinh, type ViecNhac,
+  type BangHomNay, type BangNhac, type LuotHoi, type NhanDinh, type QuyetDinh, type ViecGom, type ViecNhac,
 } from '../../lib/troly'
 
 // ── KHUNG CHAT ──────────────────────────────────────────────────────────────
@@ -236,57 +236,79 @@ export default function TroLyTab() {
   )
 }
 
-// ── HÔM NAY — đúng HAI RỔ theo CEO chốt 12/08 ───────────────────────────────
-//   *"Hôm nay là những việc có deadline là hôm nay thôi"*
-//   *"những việc phải hoàn thành hôm nay | những việc đã được start và chưa hoàn thành
-//     để t nhận thức được nó đang diễn ra"*
-// Nợ cũ CHỈ là một con số ở cuối — *"ko phải là mấy cái nợ kia nhé"*. Trộn vào là câu
-// trả lời chìm nghỉm giữa gần trăm dòng, đúng lỗi bản trước.
+// ── HÔM NAY — BA RỔ + rổ "không có hạn" (CEO chốt 12/08 lượt 2) ─────────────
+//   *"Phải báo việc đang NỢ, việc đang CẦN HOÀN THÀNH, và việc DỰ KIẾN sẽ phải làm trong
+//    hôm nay mới có cái nhìn đầy đủ chứ."*
+//   *"Bản chất của việc hàng ngày chính là 'Việc của tôi', nhưng đầy đủ hơn và có nhận định.
+//    Thay vì t phải đi click khắp nơi thì t chỉ còn click 1 chỗ."*
+//
+// Bản trước rút nợ cũ thành MỘT CON SỐ (hiểu đúng ý "đừng trộn lẫn" nhưng làm sai cách: giấu
+// đi). Nay tách rổ — vẫn thấy đủ, vẫn không lẫn. Mỗi dòng ghi rõ NHÓM để biết việc đến từ đâu,
+// vì giờ bảng này gom 8 nguồn chứ không riêng việc buổi.
+function Dong({ v }: { v: ViecGom }) {
+  return (
+    <div className="flex flex-wrap items-baseline gap-x-2.5 gap-y-0.5 py-0.5 text-[13px]">
+      {/* Mốc bên trái: giờ hạn nếu có, không thì số ngày. Cột cố định để mắt lướt dọc được. */}
+      <span className={`w-[52px] shrink-0 text-right text-[12px] font-medium tabular-nums ${v.quaGio || (v.coHan && v.soNgay > 0) ? 'text-rose-600' : 'text-slate-500'}`}>
+        {v.hanLuc ?? (v.soNgay > 0 ? `${v.soNgay} ngày` : '—')}
+      </span>
+      <span className="shrink-0 rounded bg-slate-100 px-1.5 py-px text-[11px] font-medium text-slate-500">{v.nhomTen}</span>
+      <span className="font-medium text-slate-800">{v.nhan}</span>
+      <span className="text-[12px] text-slate-500">{v.boiCanh}</span>
+      {v.dangDo && <span className="rounded-full bg-sky-50 px-1.5 py-px text-[11px] font-medium text-sky-700">đang dở</span>}
+      {v.quaGio && v.soNgay === 0 && <span className="text-[11.5px] font-medium text-rose-600">quá giờ</span>}
+    </div>
+  )
+}
+
+function Ro({ ten, mo_ta, ds, rong, mau }: {
+  ten: string; mo_ta?: string; ds: ViecGom[]; rong: string; mau: string
+}) {
+  return (
+    <div className="mt-3">
+      <div className={`text-[13px] font-semibold ${mau}`}>{ten} — {ds.length}</div>
+      {mo_ta && <p className="text-[11.5px] leading-relaxed text-slate-400">{mo_ta}</p>}
+      {/* §6 "được phép báo hôm nay không có gì" — im lặng đúng cũng là một câu trả lời. */}
+      {ds.length === 0 ? <div className="mt-0.5 text-[13px] text-slate-400">{rong}</div>
+        : <div className="mt-1">{ds.map((v) => <Dong key={v.khoa} v={v} />)}</div>}
+    </div>
+  )
+}
+
 function HomNay({ d }: { d: BangHomNay | null }) {
+  const [xemNguon, setXemNguon] = useState(false)
   if (!d) return null
+  const tong = d.no.length + d.hanHomNay.length + d.duKien.length + d.khongHan.length
   return (
     <div className="mb-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-      <div className="text-[15px] font-semibold text-slate-800">
-        {d.thu}, {d.ngay.slice(8)}/{d.ngay.slice(5, 7)}
+      <div className="flex flex-wrap items-baseline gap-x-3">
+        <span className="text-[15px] font-semibold text-slate-800">{d.thu}, {d.ngay.slice(8)}/{d.ngay.slice(5, 7)}</span>
+        <span className="text-[12.5px] text-slate-500">{tong} việc đang thuộc về bạn{d.soDangDo > 0 && <> · {d.soDangDo} đang dở</>}</span>
       </div>
 
-      <div className="mt-3 text-[13px] font-semibold text-slate-700">Phải hoàn thành hôm nay — {d.hanHomNay.length}</div>
-      {d.hanHomNay.length === 0 ? (
-        // §6 "được phép báo hôm nay không có gì" — im lặng đúng cũng là câu trả lời.
-        <div className="mt-1 text-[13px] text-slate-400">Không có việc nào đến hạn hôm nay.</div>
-      ) : (
-        <div className="mt-1.5 space-y-1">
-          {d.hanHomNay.map((v, i) => (
-            <div key={i} className="flex flex-wrap items-center gap-x-2.5 text-[13px]">
-              <span className={`w-[46px] shrink-0 font-medium ${v.quaGio ? 'text-rose-600' : 'text-slate-500'}`}>{v.hanLuc}</span>
-              <span className="font-semibold text-slate-800">{v.lop}</span>
-              <span className="text-slate-700">{v.nhan}</span>
-              <span className="text-[12px] text-slate-400">buổi {v.ngayBuoi.slice(5)}</span>
-              {v.quaGio && <span className="text-[12px] font-medium text-rose-600">quá giờ</span>}
-            </div>
-          ))}
-        </div>
-      )}
+      {/* Thứ tự cố ý: NỢ trước — món đắt nhất là món để lâu, không phải món đến hạn hôm nay. */}
+      <Ro ten="Đang nợ" mau="text-rose-700" ds={d.no} rong="Không nợ việc nào. "
+        mo_ta="Hạn đã qua mà chưa đóng. Sắp theo trễ nhiều nhất trước." />
+      <Ro ten="Phải hoàn thành hôm nay" mau="text-slate-700" ds={d.hanHomNay} rong="Không có việc nào đến hạn hôm nay."
+        mo_ta="Hạn rơi đúng hôm nay." />
+      <Ro ten="Dự kiến sẽ phải làm hôm nay" mau="text-slate-700" ds={d.duKien} rong="Hôm nay không có việc nào sắp phát sinh."
+        mo_ta="Việc phát sinh trong hôm nay, hạn chưa tới — gồm cả buổi hôm nay CHƯA MỞ (chưa có task nào tồn tại để mà nhắc)." />
+      <Ro ten="Không có hạn — vẫn đang chờ bạn" mau="text-amber-700" ds={d.khongHan} rong="Không có việc nào kiểu này."
+        mo_ta="Hệ không đặt hạn cho mấy việc này nên chúng không tự nổi lên chỗ nào. Sắp theo nằm lâu nhất trước." />
 
-      <div className="mt-3.5 text-[13px] font-semibold text-slate-700">Đang dở — {d.dangDo.length}</div>
-      <p className="text-[11.5px] text-slate-400">Đã bắt đầu nhưng chưa đóng. Không phải việc hạn hôm nay — để biết đang có gì dang dở.</p>
-      {d.dangDo.length === 0 ? (
-        <div className="mt-1 text-[13px] text-slate-400">Không có việc nào đang dở.</div>
-      ) : (
-        <div className="mt-1.5 space-y-1">
-          {d.dangDo.map((v, i) => (
-            <div key={i} className="flex flex-wrap items-center gap-x-2.5 text-[13px]">
-              <span className="w-[46px] shrink-0 text-right text-[12px] font-medium text-slate-500">{v.tuoiNgay}n</span>
-              <span className="font-semibold text-slate-800">{v.lop}</span>
-              <span className="text-slate-700">{v.nhan}</span>
-              <span className="text-[12px] text-slate-400">buổi {v.ngayBuoi.slice(5)}</span>
-            </div>
-          ))}
-        </div>
-      )}
-
-      <div className="mt-3 border-t border-slate-100 pt-2 text-[12px] text-slate-500">
-        Nợ cũ (hạn đã qua từ trước): <b>{d.noCu}</b> việc — xem ở mục dưới, cố ý không trộn vào đây.
+      <div className="mt-3 border-t border-slate-100 pt-2 text-[11.5px] leading-relaxed text-slate-500">
+        {d.phamVi}{' '}
+        <button onClick={() => setXemNguon((x) => !x)} className="font-medium text-indigo-600 hover:underline">
+          {xemNguon ? 'ẩn nguồn' : 'gom từ đâu?'}
+        </button>
+        {xemNguon && (
+          <ul className="mt-1.5 list-disc space-y-0.5 pl-4 text-slate-500">
+            {d.nguonDaQuet.map((n, i) => <li key={i}>{n}</li>)}
+            {/* Khai giới hạn ngay cạnh danh sách nguồn — người đọc thấy "đủ 8 nguồn" dễ tưởng
+                là đủ mọi thứ, mà mấy chỗ hệ mù thì vẫn mù. */}
+            {d.khongBiet.map((k, i) => <li key={`kb${i}`} className="text-slate-400">Chưa biết: {k}</li>)}
+          </ul>
+        )}
       </div>
     </div>
   )
