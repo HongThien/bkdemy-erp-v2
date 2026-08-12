@@ -165,6 +165,10 @@ export type Viec = {
   evidence: string | null; phan_tram_ghi_nhan: number | null; ly_do_huy: string | null; ngay_hold: string | null
   viec_ke_thua_id: string | null; ghi_chu_nghiem_thu: string | null
   created_at: string; hoan_thanh_at: string | null; nghiem_thu_at: string | null
+  // AI ĐỌC CỘT NÀY: 'dat' do người duyệt vs do housekeeping tự xả sau 7 ngày là HAI
+  // chuyện khác nhau — trước đây chỉ phân biệt được bằng chuỗi trong ghi_chu_nghiem_thu.
+  // Đếm 'tu_dong' theo tuần = chỉ số đo trợ lý có chặn được lỗ đen không (mong đợi: 0).
+  nghiem_thu_nguon: 'nguoi' | 'tu_dong' | null
 }
 export type ViecFull = Viec & {
   nguoi_lam_ten?: string; nguoi_giao_ten?: string; loai_viec_ten?: string; y_tuong_tieu_de?: string
@@ -313,6 +317,7 @@ export async function nghiemThu(id: string, p: { dat: boolean; chat_luong?: numb
     const { error } = await supabase.from('viec').update({
       trang_thai: 'dat', ngay_nop: ngayNop, tien_do: tienDo, chat_luong: chatLuong,
       phan_tram: gopPhanTram(tienDo, chatLuong), nghiem_thu_at: new Date().toISOString(),
+      nghiem_thu_nguon: 'nguoi', // đối trọng với 'tu_dong' của giaoviec_housekeeping()
       ghi_chu_nghiem_thu: p.ly_do?.trim() || null,
     }).eq('id', id)
     if (error) throw error

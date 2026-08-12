@@ -738,6 +738,164 @@ Vòng: đề xuất → **team học thuật DUYỆT** → **OPS xếp lịch** 
 
 ---
 
+### Đã build (12/08 — ⭐⭐ TRỢ LÝ AI: hỏi–đáp chạy thật + hạ tầng migrate/introspect)
+
+> Ngày này ĐỔI HƯỚNG 3 lần do CEO bẻ lái. Đọc phần "hướng đã chốt" trước, đừng đọc theo thứ tự thời gian.
+
+**HƯỚNG ĐÃ CHỐT (bản cuối, ghi đè mọi mô tả cũ):** trợ lý = **NHẮC VIỆC HÀNG NGÀY + HỎI ĐƯỢC**,
+KHÔNG phải công cụ kiểm toán dữ liệu, KHÔNG phải thêm một dashboard nữa.
+CEO: *"1 đứa trợ lý nhắc việc hàng ngày, và khi nó nhắc việc thì t sẽ nhận ra được cái gì cần phải làm,
+cái gì cần hủy, cái gì cần gác lại"* · *"t cần trao đổi với nó như đang trao đổi với m. chứ hệ thống
+đưa ra thì khác gì dashboard và việc của tôi nhỉ"*.
+
+**Màn hình:** tab **"🤖 Trợ lý"** trong *Việc của tôi* (`src/screens/troly/TroLyTab.tsx`) —
+KHÔNG đẻ leaf mới (leaf kéo theo quyền per-leaf + hiện ở nav MỌI role). Bốn khối, trên xuống:
+- **HÔM NAY** — đúng **HAI RỔ** CEO chốt: ① việc có **hạn rơi đúng hôm nay** ② việc **đang dở**
+  (đã bắt đầu, chưa đóng — *"để t nhận thức được nó đang diễn ra"*). Nợ cũ CHỈ là một con số.
+  CEO nhấn: *"ko phải là mấy cái nợ kia nhé"* và *"Hôm nay là những việc có deadline là hôm nay thôi"*.
+  "Đã bắt đầu" suy từ HIỆN VẬT: có dòng `buoi_danh_gia`/`gami_grades`/`btvn_ket_qua` mà cột đóng còn null.
+  ⚠ **Chấm ET CỐ Ý bỏ khỏi rổ ②** — không có bảng dấu vết theo buổi đủ tin; khai thẳng trong `khongBiet`.
+- **KHUNG CHAT** — chỗ AI vào. Client gói bảng sạch → `troly_hoi_dap` → `worker/troly.mjs` (quét 3s) → trả lời.
+- **NHẬN ĐỊNH CẤP HỆ** — 4 nhận định, số tính lại mỗi lần mở (`troly_nhan_dinh` chỉ lưu QUYẾT ĐỊNH, không lưu text).
+- **VIỆC LẺ** — mọi việc chưa xong, 3 nút.
+
+**BA NÚT `lam` / `huy` / `gac`** (bảng `troly_ra_soat`, khoá buổi×khâu) — ⭐ **gỡ đúng chỗ tưởng là bế tắc.**
+Trước đó kẹt ở *"hệ không biết lớp nào bắt buộc làm khâu nào (must-exist) nên không dám nhắc"* → đâm đi vá
+dữ liệu, sai hướng. **Nhắc sai thì người bấm HUỶ là xong; luật LỘ RA từ các lần bấm.** ⇒ mở HẾT mọi khâu.
+`gac` + `gac_den` biến nó thành công cụ HÀNG NGÀY: việc gác **quay lại** đúng hẹn (nút sẵn 3 ngày/1 tuần/1 tháng —
+bắt gõ ngày thì người ta bỏ qua thay vì gác).
+
+**RANH GIỚI MODEL (doc §4, KHÔNG mở lại):** CODE tính hết số → bảng sạch **đã gộp sẵn** theo lớp/theo khâu
+(để model không có lý do tự cộng); MODEL chỉ đọc rồi trò chuyện. Bảng có mục `khongBiet` liệt kê thẳng
+giới hạn. Ba khối không-chat vẫn chạy khi worker tắt.
+
+**ĐO THẬT (12/08):** bảng sạch ~10.500 token · **14 giây/câu · ~790 đ** (`claude-sonnet-5`).
+Ước cả tháng 5 câu/ngày: Haiku ~44k · Sonnet ~89k · Opus ~222k đ. Bật cache còn ~1/4.
+⚠ Tiền nằm gần hết ở ĐẦU VÀO ⇒ cắt input mới là cắt thật, đổi model rẻ chỉ giảm phần đã nhỏ.
+
+**KIỂM CHẤT LƯỢNG — model ĐẠT cả 2 phép thử:**
+- Số: 8S0=31 việc/cũ nhất 56 ngày · 12A1=16 · 9A2=13 · đánh giá 51 · chấm lớp 28 · cảnh báo yếu 20 — **khớp 100%** oracle SQL.
+- Không bịa: hỏi "em X yếu dạng nào" → *"bảng của tôi không có"*, trích đúng mục `khongBiet`, chỉ sang chỗ tra thật.
+- Tự khai giới hạn khi suy luận: *"Đây là góc nối, không phải nhân quả chắc chắn — bảng không cho biết vì sao 8S0 dồn nhiều."*
+
+**WORKER KHÔNG KHOÁ NHÀ CUNG CẤP:** adapter mỏng chạy `anthropic` lẫn `moonshot` (Moonshot = Kimi, MỘT nhà)
+trên CÙNG bảng sạch, đổi bằng 1 dòng `.env.local`, log token+tiền mỗi lượt ⇒ **so bằng số**.
+Moonshot dùng giao thức tương thích OpenAI ⇒ `fetch` thẳng, không thêm SDK. Cố ý KHÔNG dùng tính năng
+riêng của từng nhà (thinking/cache) — dùng thì bản so mất công bằng. ⚠ Bảng giá phải TỰ KIỂM lại.
+⚠ `moonshot-v1-8k` KHÔNG dùng được (bảng đã ~13k token). Bản `-vision` thừa. `K2.7 Code` sai việc.
+⭐ Bảng sạch **KHÔNG có tên học sinh** ⇒ thử nhà mới ở đây rủi ro thấp hơn hẳn `danhgia` (vốn gửi `ho_ten`).
+
+**HẠ TẦNG (độc lập trợ lý):**
+- **`npm run migrate` SỐNG LẠI** — sổ `_migrations` (tên + vân tay sha256), ghi TRONG CÙNG transaction.
+  `--status` xem thuần · `--baseline <file>` dựng sổ cho DB cũ (đã chạy, không cần lại) · DB có bảng mà
+  chưa có sổ ⇒ **từ chối chạy** + in đúng lệnh. Sửa file đã áp ⇒ nêu cờ, KHÔNG áp lại.
+- **`npm run schema` dump được VIEW** + **canary RLS** ghi cảnh báo thẳng vào đầu `schema.md`.
+- **`scripts/census-dulieu.mjs`** — bản đồ dữ liệu THẬT: 125 bảng · 78 sống · 22 nguội · 22 rỗng · 3 bị RLS che.
+- **`scripts/check-troly.mjs`** — oracle SQL độc lập, kiểm "sai đọc = 0%".
+- **`viec.nghiem_thu_nguon`** (`nguoi`/`tu_dong`) — đếm `tu_dong`/tuần = chỉ số đo trợ lý chặn được lỗ đen không.
+- **Quyền DB:** `.env` chỉ có `DATABASE_URL` → role `claude_build`, **GHI ĐƯỢC**, **SỞ HỮU 121/124 bảng**.
+  Rào "chỉ đọc" là **kỷ luật, không phải cơ chế**. Tách `DATABASE_URL_RO` chưa làm (phải kèm `bypassrls`).
+
+**⚠️ CÒN TREO — QUYẾT TRƯỚC KHI ĐI TIẾP:**
+1. **Hạn "đánh giá/chấm lớp" đang là 23:59 CÙNG NGÀY buổi** ⇒ buổi tối qua thành nợ ngay 0h sáng nay
+   ⇒ rổ "phải hoàn thành hôm nay" gần như LUÔN RỖNG (12/08: rỗng, trong khi 4 buổi 11/08 còn nguyên).
+   Đúng luật nhưng vô dụng. **Đề xuất: nới sang trưa hôm sau** (ET vốn đã 12h hôm sau — có tiền lệ).
+2. CEO hẹn bàn tiếp: **cần thông báo những gì** và **CEO hay miss những gì** → đây mới là nguồn thật
+   cho danh sách nhắc, thay cho phỏng đoán của Claude.
+3. Bổ trợ đuổi (lượt 2, `anhChupChuoiDuoi` đã viết sẵn): ngưỡng từ 34 đợt hoàn thành (p50=3·p75=7·p90=12·max=16)
+   ⇒ **4/8 đợt đáng nhắc**, cũ nhất 21 ngày (Phạm Kim Oanh 9C1). Lộc chỉ cần xác nhận 4 SỰ THẬT.
+4. Cụm bổ trợ+level, 3 kiểu hỏng khác nhau: `bo_tro_yeu` **không có đường ghi nào** (chưa xây xong) ·
+   `canh_bao_yeu` 20 dòng đang sống **chảy vào hư không** · Level thiếu **2/3 loại kỳ thi** nên không chốt được.
+5. Tách role RO/RW · ẩn danh (module này vốn đã không gửi tên HS).
+
+### Chuỗi đã dò xong #1 — TEST ĐẦU VÀO (12/08, chờ 1 câu để kích hoạt)
+
+**⭐ KHUÔN DÒ 1 CHUỖI (~30 phút) — dùng lại cho mọi chuỗi sau:**
+① chuỗi mấy khâu, mốc nào **đã có cột** trong DB? (thường ĐÃ CÓ SẴN)
+② ai **NỢ** mỗi khâu, suy từ dữ liệu nào? (hệ ghi đủ *ai đã làm*, thiếu *ai đang nợ*)
+③ hạn mỗi khâu?
+④ **dữ liệu định tuyến có đủ ĐỘ MỊN không?** (ít ai nghĩ tới mà lại là chỗ chặn thật)
+
+⇒ Câu hỏi đúng KHÔNG phải *"quy trình có đúng không"* — quy trình trong đầu CEO đã đúng và rõ —
+mà là **"hệ có đủ dữ liệu để CHẠY quy trình đó không"**.
+
+**Chuỗi:** HS test → thu bài/scan → chấm → trả kết quả.
+Bảng `ca_test` **đã có sẵn đủ 4 mốc**: `hoan_thanh_at` · `bai_url` · `cham_xong_at` · `tra_bai_xong_at`
+(cùng khuôn `*_dong_at` của `buoi_hoc`/`bo_tro_duoi`). ⇒ **KHÔNG cần bảng mới**, chỉ khai ai-nợ + hạn.
+⭐ Chấm/trả vẫn làm NGOÀI hệ được — **nhắc chỉ cần MỐC THỜI GIAN, không cần nội dung bài.**
+
+**LUẬT TRẢ KẾT QUẢ (CEO chốt 12/08) — key: `ung_vien.khoi` + nhánh lớp:**
+
+| khối | ai trả |
+|---|---|
+| 3 · 4 · 4T · 5 · 5T · 6 | **Thùy** |
+| 7 · 8 · 9 | **Trang** |
+| Cấp 3 (10·11·12) nhánh **A** | **Trang** |
+| Cấp 3 nhánh **B** và **C** (gồm 12C) | **Đạt** |
+
+**⚠ CHẶN KỸ THUẬT:** cấp 3 phân theo NHÁNH lớp (A/B/C) nhưng `ung_vien.khoi` chỉ ra `'11'`/`'12'`,
+không có nhánh; `lop_du_kien_id` **null ở cả 4 ca**. CEO chốt: **thêm ô chọn lớp dự kiến lúc tạo ca
+test** (cột đã có sẵn, chỉ chưa ai điền). Trước khi có ô đó, ca cấp 3 KHÔNG định tuyến được.
+
+**⚠ CHỜ 1 CÂU ĐỂ KÍCH HOẠT:** **AI CHẤM** — đúng khâu đang tắc cả 4 ca. (Ai thu bài/scan: nhiều khả
+năng quản lý học tập, cần chốt người cụ thể.)
+
+**Dữ liệu thật đang treo (đo 12/08) — cả 4 đã scan bài rồi NẰM IM, `cham_xong_at` NULL:**
+Minh Phúc (4T · 29 ngày → Thùy) · Lã Gia Huy (K11 · 34 ngày → chưa định được) ·
+Nguyễn Bá Thiện Minh (K7 · 32 ngày → Trang) · Nguyễn Test QA (K8 · data QA).
+**Đây đúng loại việc CEO hay miss — nằm sẵn trong DB hơn 1 tháng, chỉ chưa ai nhìn.**
+
+**⚠ ĐỪNG KHAI HÀNG LOẠT:** khai 2–3 chuỗi rồi **CHẠY THẬT 1 TUẦN** xem nhắc có đổi hành vi không.
+Hệ này đã 4 lần dựng năng lực rồi bỏ không dùng (`viec` 15 dòng đứng im · `bo_tro_yeu` không có đường
+ghi · `hs_level` 0 dòng · `viec_van_hanh_duyet` 0 dòng) — khai hàng loạt trước khi biết nhắc có tác
+dụng là lần thứ năm. Thứ tự: đi từ **chỗ CEO hay miss**, KHÔNG theo sơ đồ tổ chức.
+
+
+### ⭐ CÁCH LÀM ĐỂ HOÀN THIỆN DỮ LIỆU — chốt 12/08 (tối ưu THỜI GIAN CỦA CEO)
+
+Mục tiêu CEO đặt: *"hoàn thiện được bảng dữ liệu nhanh nhất và tốn ít thời gian của t nhất"*.
+Nút thắt KHÔNG phải công cụ mà là **thời gian của người**.
+
+**VÒNG LÀM VIỆC (3 việc cần CEO, mỗi việc vài phút):**
+1. **Claude chạy `node scripts/do-chuoi-tac.mjs [số ngày]`** → danh sách chuỗi đang tắc, xếp theo mức
+   tắc. ⇒ CEO **không phải nhớ ra** có những quy trình nào.
+2. **CEO kể FLOW đúng như trong đầu** (~2 phút, không phải tra cứu gì).
+3. **Claude đối chiếu DB với flow đó** → trả về **ĐÚNG MỘT BẢNG**: khâu nào đã có chỗ ghi, khâu nào
+   chưa, ai-nợ suy được hay không, thiếu dữ liệu định tuyến ở đâu.
+4. **CEO điền chỗ trống — MỘT LẦN.**
+
+**⭐ VÌ SAO CEO KỂ FLOW TRƯỚC, KHÔNG PHẢI CLAUDE ĐỌC DB TRƯỚC** (CEO đề xuất, đúng hơn ý Claude):
+**DB không bao giờ nói được cái gì ĐÁNG LẼ phải xảy ra.** Claude đọc trước rồi tự dựng nháp = lại suy
+quy trình từ dấu vết — đúng cái bẫy đã dẫm 5 lần trong ngày. CEO nói intent (rẻ, có sẵn trong đầu) →
+Claude chỉ còn ĐỐI CHIẾU, mà đối chiếu thì máy làm chuẩn.
+
+**⚠ LỖI QUY TRÌNH ĐÃ MẮC 12/08:** chuỗi test đầu vào tốn của CEO **3 lượt** chỉ vì Claude **hỏi trước
+khi đọc xong** (hỏi ai-trả → phát hiện thiếu 4T/5T → hỏi lại → phát hiện thiếu nhánh A/B → hỏi lại).
+**LUẬT: đọc HẾT rồi mới hỏi, và hỏi MỘT LẦN.**
+
+**CÔNG CỤ MỚI `scripts/do-chuoi-tac.mjs`:** hệ mô hình hoá chuỗi bằng **cột mốc thời gian**
+(`*_dong_at`/`*_xong_at`/`hoan_thanh_at`/`duyet_at`/`day_at`). Chuỗi tắc = mốc đầu ĐÃ điền, mốc sau
+CÒN TRỐNG, đã lâu. Script quét mọi bảng, dựng phễu, xếp theo mức tắc. Bỏ qua bảng bị RLS che.
+⚠ **MÁY ĐỀ CỬ, KHÔNG PHẢI KẾT LUẬN** — ô trống có thể là *chưa làm* HOẶC *không áp dụng*; DB không
+phân biệt được. Chỉ dùng để biết **CHỖ ĐÁNG HỎI**.
+
+**KẾT QUẢ QUÉT ĐẦU (≥20 ngày): 21 mốc / 11 bảng.** Đáng chú ý:
+- `prep_phong` — 341/347 đã đóng, nhưng `gv_cham_at` **1/347** · `leader_chot_at` **14/347** ⇒ khâu làm
+  chạy đều, hai khâu chấm+chốt phía sau gần như trắng.
+- `hoc_phi_xet_duyet` — **0/7 được duyệt**, cũ nhất 38 ngày (dính tiền).
+- `vh_ops_task.duyet_at` — 427/447 chưa duyệt · `bai_test` — `dong_at`+`deadline` trống hoàn toàn (31 dòng)
+- `bo_tro_duoi.dang_duyet_at` — 21/42 chưa duyệt dạng · `ca_test` — 3 mốc cuối trắng, 36 ngày.
+
+**⭐ NHỚ KHI CHẠY VÒNG NÀY:** mỗi lần CEO kể một chỗ hay miss, hỏi kèm **"miss cái đó thì AI chịu hậu
+quả, và hậu quả GÌ"**. CEO 12/08: *"có những việc ko có hậu quả cũng ko có tác dụng lớn nên chưa làm
+vì bận"* ⇒ **nhắc chỉ đẩy được thứ CÓ hậu quả**; thứ thật sự vô hậu quả thì nhắc = nhiễu, và câu trả
+lời đúng là HUỶ chứ không phải nhắc gắt hơn. Hai loại này nhìn giống hệt nhau trong DB (cùng là ô
+trống) nhưng cần hai cách xử NGƯỢC nhau.
+
+**ĐO ĐỂ BIẾT KHAI CHUỖI NÀO TIẾP — dùng chính 3 nút:** loại việc toàn bấm **Làm** = vô hình mà thật,
+nhắc đang có tác dụng, khai thêm chuỗi cùng họ · toàn **Huỷ** = thật sự vô hậu quả, ngừng nhắc ·
+toàn **Gác** = có hậu quả nhưng chưa tới lúc, nhắc lại đúng hẹn là đủ.
+
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
 
 
@@ -879,6 +1037,83 @@ Vòng: đề xuất → **team học thuật DUYỆT** → **OPS xếp lịch** 
 - **⭐⭐ 1 cột (`mon`) phục vụ ĐỒNG THỜI 2 mục đích xung đột (RBAC/billing cần GIÁ TRỊ CỐ ĐỊNH vs content-dispatch cần PHÂN BIỆT thêm) — đừng ép giá trị mới vào cột đó, TÁCH THÊM 1 CỘT CHIỀU KHÁC (Hình giải tích 08-08, áp dụng "Chiều MÔN §1.6" cho ca khó hơn KHTN):** KHTN dùng `tai_lieu.mon='KHTN'` làm khoá dispatch kho ĐƯỢC vì KHTN cũng là 1 mon RBAC hợp lệ — nhưng "Hình giải tích" KHÔNG PHẢI 1 môn mới, nó là 1 NHÁNH bên trong mon='Toán' (RBAC/billing/`lop.mon` đều cần thấy 'Toán' y hệt Đại). Nếu dùng `mon` để phân biệt sẽ phá §1.6 symmetry test ở MỌI nơi khác dùng `mon` (billing, RBAC scope④, `lop.mon`). Giải đúng: thêm cột `nhanh` (nullable, default = hành vi cũ) làm chiều dispatch RIÊNG, độc lập `mon`. **Quy tắc tổng quát: khi 1 field vừa là khoá NGHIỆP VỤ ổn định (không được đổi ý nghĩa) vừa cần thêm 1 chiều PHÂN LOẠI NỘI DUNG mới — đừng ép 2 việc vào 1 cột, tách cột mới cho chiều mới, giữ field gốc nguyên nghĩa cho MỌI consumer khác của nó.**
 
 ---
+
+### Bài học 12/08 — đọc dữ liệu & viết tài liệu
+
+- **⭐⭐ CẤM SUY TỪ DỮ LIỆU VẮNG MẶT — dẫm 3 lần trong 1 ngày, cả 3 đều tự tin và đều sai.**
+  ① `viec` đủ cột đẹp ⇒ tưởng mảng học liệu được đo tốt (thật ra **15 dòng, cả 15 đứng ở `moi_giao`**).
+  ② không có `bai_test` ⇒ tưởng buổi không có ET (thật ra `bai_test` chỉ là luồng **ONLINE**; **331/445
+  buổi đã đóng ET**). ③ đợt đuổi có 0 dạng ⇒ tưởng kẹt (thật ra **29/34 đợt HOÀN THÀNH cũng 0 dạng**).
+  **Luật:** trước khi kết luận "X không xảy ra", phải chỉ ra **cột nào ghi nhận X KHI NÓ XẢY RA** và xác
+  nhận cột đó có dữ liệu. **Và luôn đối chiếu nhóm ĐÃ THÀNH CÔNG trước khi gọi một trạng thái là bất thường.**
+- **⭐ Cột đầy đủ ≠ có dữ liệu.** Schema đẹp không nói gì về việc có ai dùng. Luôn `count(*)` + `max(ngày)`
+  trước khi chọn một mảng để xây gì lên trên.
+- **⭐ `must-exist` chưa bao giờ được ghi vào hệ.** CLAUDE.md §4 định nghĩa task = must-exist − does-exist;
+  vế does-exist làm rất tốt, vế must-exist thì **đóng cứng trong code** ("mọi buổi thường cần đủ 4 khâu").
+  Chỉ MT có guard thật (`mtKeys`). Thêm khâu/việc mới thì phải hỏi **"lấy đâu ra bằng chứng việc này
+  ĐÁNG LẼ phải xảy ra?"** trước.
+- **⭐ Thiếu vế thứ hai: hệ KHÔNG ghi nhận được "CỐ TÌNH BỎ QUA".** Rà soát 12/08 cho thấy 12/13 mục
+  `ingame` là CEO **chủ động không làm** — không phải quên, không phải lỗi code. Nhưng hệ chỉ có
+  "đã đóng" / "chưa đóng", nên **bỏ-có-chủ-ý và quên trông y hệt nhau**, và task treo vĩnh viễn.
+  ⇒ Task pure-derive cần **ba** trạng thái chứ không phải hai: *chưa làm* · *đã làm* · **_không cần_
+  (có người quyết, có dấu vết ai/khi nào)*. Thiếu trạng thái thứ ba thì mọi thống kê tồn đọng đều lẫn.
+- **⭐ Ngưỡng phải RÚT TỪ HÀNH VI THẬT, không đặt tay.** Đo phân phối của nhóm đã hoàn thành rồi so.
+  Ngưỡng rút từ dữ liệu thì cãi lại được; ngưỡng bịa thì không. Kèm cảnh báo **thiên lệch kẻ sống sót**:
+  cohort hoàn thành thiên về ca DỄ ⇒ p75/p90 là cận dưới; riêng "vượt mốc lâu nhất từng hoàn thành" thì vững.
+- **⭐ Ground truth phải do CHÍNH người dò kiểm được — tiêu chí này ĐỨNG TRÊN "dữ liệu sạch".**
+  Đã chọn sai một lần: lấy chuỗi bổ trợ đuổi (data sạch nhất) làm pilot cho người **không quản mảng đó**
+  ⇒ CEO bác đúng. Dữ liệu sạch mà không ai xác nhận nổi đúng/sai thì hiệu chuẩn = 0.
+- **⭐ Dữ liệu không chứa câu trả lời thì đừng gọi model.** Lượt 1 cố ý KHÔNG dùng AI: hệ không biết lớp
+  nào bắt buộc làm khâu nào, nên mọi suy luận trên đó — của người hay máy — đều là đoán. Người phân xử
+  trước, và **phán quyết đó CHÍNH LÀ dữ liệu đang thiếu**. §10 "dò lỗ hổng dữ liệu" = **THU ĐƯỢC** cái
+  thiếu, không phải phát hiện ra là thiếu.
+- **⭐ Hệ tự sinh trạng thái thay người thì PHẢI đánh dấu ở cột riêng.** `giaoviec_housekeeping()` tự đóng
+  việc thành `'dat'` chất lượng 100 — trước 12/08 chỉ phân biệt bằng chuỗi trong text tự do. DB **khẳng
+  định một điều sai** còn nguy hơn DB thiếu dữ liệu: không có chỗ nào để khai "không biết".
+- **⭐ ĐỪNG BACKDATE để "làm đẹp" dữ liệu.** Ghi lùi ngày = bịa lịch sử, vi phạm §1.5 ("cấm insert trước
+  điền sau"), xoá mất tín hiệu *treo bao lâu*, và nội dung bịa (`nhan_xet`/`muc`/`hoan_thanh_pct`) chảy
+  thẳng vào mastery/Elo ⇒ hỏng tầng Measurement. Thay bằng **kẻ ĐƯỜNG NGÀY**: từ ngày D mới bắt buộc,
+  trước D giữ nguyên + đánh dấu "chưa có luật".
+- **⭐ Tài liệu có ví dụ copy-paste-được thì ví dụ đó LÀ CODE.** Dòng mẫu `set DATABASE_URL_RW=postgresql://...
+  && npm run migrate` khiến cmd gán cả dấu cách trước `&&` ⇒ host `"... "` ⇒ ENOTFOUND, mà `.env` thì
+  đúng hoàn toàn nên cực khó lần. Placeholder phải **sai rõ ràng** (`USER:PASS@HOST`), đừng **mơ hồ hợp lệ**.
+- **⭐ Biến môi trường đè file cấu hình ⇒ lỗi PHẢI khai NGUỒN.** Biến sống hết phiên terminal nên chạy lại
+  bao nhiêu lần cũng hỏng y hệt — trông như lỗi mạng. Cùng lớp lỗi với `housekeeping()` chạy-theo-người-
+  mở-màn: **hai bên nhìn hai thực tại khác nhau mà không ai phát hiện ra.** Nghi ngờ đầu tiên khi
+  "file cấu hình đúng mà vẫn hỏng".
+- **Một dòng tài liệu nói "an toàn cứng" mà không ai verify thì NGUY HƠN không có dòng nào** — nó khiến
+  cả người lẫn Claude tưởng có rào. (CLAUDE.md §2.1 nói `claude_ro` chỉ SELECT suốt nhiều tháng, thực tế
+  là `claude_build` ghi được và sở hữu 121 bảng.)
+
+### Bài học 12/08 (phần 2) — dựng sản phẩm & bẫy kỹ thuật
+
+- **⭐⭐ DANH SÁCH = DASHBOARD. Thứ biến nó thành TRỢ LÝ là HỎI ĐƯỢC.** CEO: *"trợ lý đưa ra 1 đống thứ thì
+  khác gì dashboard và việc của tôi nhỉ"*. Doc §1 nói *"ERP đã hiển thị đủ dữ liệu, người quá tải không tự
+  tổng hợp nổi"* — mà Claude lại đi dựng THÊM một màn hiển thị. **Đọc-hộ-và-kết-luận** mới là sản phẩm.
+- **⭐ CHO NGƯỜI QUYẾT rẻ hơn nhiều so với CỐ HIỂU TRƯỚC.** Cả buổi kẹt ở "chưa biết must-exist nên không dám
+  nhắc" → đâm đi kiểm toán 125 bảng. Ba nút Làm/Huỷ/Gác gỡ sạch: **nhắc sai thì bấm Huỷ, luật lộ ra từ các
+  lần bấm.** Đúng vòng lặp doc §11 — nhắc trước, người quyết, dữ liệu tự đầy dần. Claude làm NGƯỢC.
+- **⭐ HỎI TIÊU CHÍ NGHIỆM THU TRƯỚC KHI XÂY.** CEO phải nói ba lần mới ra đúng thứ cần ("nhắc việc hàng ngày"
+  → "phải hỏi được" → "hôm nay = deadline hôm nay thôi, không phải nợ"). Mỗi vòng Claude đều xây thêm rồi
+  phải bỏ. **Câu "làm xong thì nó trả lời được câu gì?" đáng hỏi từ đầu.**
+- **⭐ StrictMode + ref-cleanup = giao diện treo VĨNH VIỄN.** Cleanup đặt cờ `true` mà THÂN effect không reset
+  về `false` ⇒ vòng mount-unmount-mount của StrictMode (bật ở `main.tsx`) để cờ đứng nguyên `true` ⇒ mọi vòng
+  lặp gác theo cờ đó không chạy nổi một vòng. Triệu chứng: server trả lời xong trong 14s, UI đứng ở "đang
+  tải…" mãi mãi. **Luôn reset cờ trong THÂN effect, không chỉ set ở cleanup.**
+- **⭐ Lỗi cấu hình phải nổ lúc BẬT, không nổ lúc DÙNG.** Worker thiếu key vẫn khởi động im ru; người dùng hỏi
+  một câu rồi ngồi chờ, job chết trong 0 giây. `danhgia.mjs` có bước kiểm key lúc bật, bản đầu `troly.mjs`
+  quên. **Mọi worker gọi API ngoài PHẢI tự kiểm key ngay khi khởi động.**
+- **⭐ Retry mà không đếm = vòng lặp VÔ HẠN có tính tiền.** Nhánh thử-lại đọc cột `so_lan` mà bảng chưa có ⇒
+  điều kiện bỏ cuộc không bao giờ đúng. **Mọi cơ chế retry phải ghi số lần vào DB, không giữ trong bộ nhớ.**
+- **⭐ Ví dụ copy-paste-được trong tài liệu LÀ CODE.** Dòng mẫu nối `&& npm run migrate` cùng dòng `set` khiến
+  cmd gán cả dấu cách vào biến ⇒ host `"... "` ⇒ ENOTFOUND, mà `.env` đúng hoàn toàn nên cực khó lần.
+  Placeholder phải **sai rõ ràng** (`USER:PASS@HOST`), đừng **mơ hồ hợp lệ**.
+- **⭐ Biến môi trường đè file cấu hình ⇒ lỗi PHẢI khai NGUỒN.** Biến sống hết phiên terminal nên chạy lại bao
+  nhiêu lần cũng hỏng y hệt — trông như lỗi mạng. Cùng lớp lỗi với `housekeeping()` chạy-theo-người-mở-màn:
+  **hai bên nhìn hai thực tại khác nhau mà không ai phát hiện ra.**
+- **⭐ ORACLE ẨU CÒN NGUY HƠN KHÔNG CÓ ORACLE.** Claude viết query kiểm vội (`tuổi > 1`) rồi kết luận model sai
+  ở "30/31", suýt đi sửa một tầng đang chạy ĐÚNG (bảng sạch tính theo deadline THẬT — 30 mới đúng).
+  **Bản kiểm phải dùng ĐÚNG định nghĩa của bản được kiểm, nếu không nó chỉ đo sự khác nhau giữa hai định nghĩa.**
 
 ## ③ Nhật ký
 → Chuyển sang **`DEVLOG.md`** (log thô append-only, theo ngày, KHÔNG load khi làm). Là nguồn bất biến để truy lại / tổng hợp lại HANDOFF nếu bản này sai logic.

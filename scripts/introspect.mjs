@@ -7,13 +7,27 @@ import pg from 'pg'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 
+// Đọc key THEO ĐÚNG TÊN. (Bản cũ dùng /DATABASE_URL(?:_RO)?/ nên lấy key nào đứng TRƯỚC
+// trong file — thêm DATABASE_URL_RO vào .env là hành vi đổi theo thứ tự dòng, im lặng.)
+function envKey(txt, ten) {
+  const m = txt.match(new RegExp(`^\\s*${ten}\\s*=\\s*(.+?)\\s*$`, 'm'))
+  return m ? m[1].replace(/^["']|["']$/g, '') : null
+}
+
+// Introspect chỉ ĐỌC ⇒ ưu tiên role chỉ-đọc. Không có thì vẫn chạy được bằng role ghi,
+// nhưng phải KÊU TO — im lặng dùng role ghi để đọc chính là cách rào "cứng" biến thành
+// lời hứa mà không ai nhận ra (CLAUDE.md §2.1 đã sai đúng kiểu đó tới 12/08).
 function loadUrl() {
   let txt
   try { txt = readFileSync(join(root, '.env'), 'utf8') }
   catch { console.error('❌ .env không có. Copy .env.example -> .env rồi điền DATABASE_URL_RO.'); process.exit(1) }
-  const m = txt.match(/^\s*DATABASE_URL(?:_RO)?\s*=\s*(.+?)\s*$/m)
-  if (!m) { console.error('❌ Thiếu DATABASE_URL trong .env'); process.exit(1) }
-  return m[1].replace(/^["']|["']$/g, '')
+  const ro = envKey(txt, 'DATABASE_URL_RO')
+  if (ro) return ro
+  const rw = envKey(txt, 'DATABASE_URL')
+  if (!rw) { console.error('❌ Thiếu DATABASE_URL_RO (hoặc DATABASE_URL) trong .env'); process.exit(1) }
+  console.warn('⚠️  Chưa có DATABASE_URL_RO — đang introspect bằng role GHI ĐƯỢC.')
+  console.warn('   Rào "chỉ đọc" hiện là kỷ luật, không phải cơ chế. Xem CLAUDE.md §2.1.')
+  return rw
 }
 
 const Q = {
@@ -27,7 +41,7 @@ const Q = {
   //     bảng, vì nhìn vào tưởng bảng thật sự không có khoá.
   // pg_catalog không lọc kiểu đó ⇒ schema.md phản ánh ĐÚNG DB bất kể role. Đây cũng là lý do
   // `checks`/`triggers`/`functions` bên dưới vốn đã đúng: chúng đọc pg_catalog từ đầu.
-  columns: `select c.relname as table_name, a.attname as column_name, a.attnum as ordinal_position,
+  columns: `select c.relname as table_name, c.relkind, a.attname as column_name, a.attnum as ordinal_position,
                    format_type(a.atttypid, a.atttypmod) as data_type,
                    t.typname as udt_name,
                    case when a.attnotnull then 'NO' else 'YES' end as is_nullable,
@@ -37,8 +51,16 @@ const Q = {
             join pg_attribute a on a.attrelid = c.oid
             join pg_type t on t.oid = a.atttypid
             left join pg_attrdef d on d.adrelid = c.oid and d.adnum = a.attnum
-            where n.nspname='public' and c.relkind in ('r','p') and a.attnum > 0 and not a.attisdropped
+            where n.nspname='public' and c.relkind in ('r','p','v','m') and a.attnum > 0 and not a.attisdropped
             order by c.relname, a.attnum`,
+  // VIEW + MATVIEW — bề mặt trợ lý AI đọc (v_pipeline_*, v_task_dang_treo...). Danh sách cột
+  // chỉ là vỏ; ĐỊNH NGHĨA mới là hợp đồng, nên dump luôn `pg_get_viewdef`. Thiếu mục này thì
+  // thứ duy nhất trong hệ không được tài liệu hoá lại đúng là thứ AI phụ thuộc vào.
+  views: `select c.relname, c.relkind, pg_get_viewdef(c.oid, true) as def
+          from pg_class c
+          join pg_namespace n on n.oid = c.relnamespace
+          where n.nspname='public' and c.relkind in ('v','m')
+          order by c.relname`,
   pks: `select c.relname as table_name, a.attname as column_name
         from pg_constraint con
         join pg_class c on c.oid = con.conrelid
@@ -106,6 +128,28 @@ try {
   const trigs = (await client.query(Q.triggers)).rows
   const funcs = (await client.query(Q.functions)).rows
   const checks = (await client.query(Q.checks)).rows
+  const vdefs = (await client.query(Q.views)).rows
+
+  // ── CANARY RLS ───────────────────────────────────────────────────────────────
+  // schema.md đọc pg_catalog nên LUÔN đầy đủ, kể cả khi role bị RLS cắt dữ liệu về 0 dòng.
+  // ⇒ schema nhìn hoàn hảo mà mọi query dữ liệu trả rỗng, không lỗi, không cảnh báo.
+  // 116/124 bảng đang bật RLS với policy `to authenticated`; role không-sở-hữu và không
+  // bypassrls sẽ khớp 0 policy. Nêu cờ ngay đây, đừng để phát hiện bằng một kết luận sai.
+  const { rows: [rq] } = await client.query(`
+    select current_user as ai,
+           coalesce((select rolbypassrls from pg_roles where rolname = current_user), false) as bo_qua_rls,
+           coalesce((select array_agg(c.relname::text order by c.relname)
+                     from pg_class c join pg_namespace n on n.oid = c.relnamespace
+                     where n.nspname='public' and c.relkind in ('r','p') and c.relrowsecurity
+                       and pg_get_userbyid(c.relowner) <> current_user),
+                    array[]::text[]) as bang_bi_cat`)
+  const biCat = rq.bo_qua_rls ? [] : rq.bang_bi_cat
+  if (biCat.length) {
+    console.warn(`⚠️  Role "${rq.ai}" không sở hữu ${biCat.length} bảng có RLS và không có bypassrls:`)
+    console.warn(`   ${biCat.join(', ')}`)
+    console.warn('   → SELECT trên ĐÚNG những bảng đó trả 0 dòng, im lặng, không lỗi.')
+    console.warn('   "0 dòng" ở đây KHÔNG phải bằng chứng bảng rỗng. Đã ghi cảnh báo vào schema.md.')
+  }
 
   const pkSet = new Set(pks.map(r => `${r.table_name}.${r.column_name}`))
   const fkMap = new Map()
@@ -119,10 +163,25 @@ try {
     else chkKhac.push(k)
   }
 
-  const tables = [...new Set(cols.map(c => c.table_name))]
+  // Tách BẢNG vs VIEW: view không có PK/FK/CHECK/default nên không dùng chung khuôn bảng được.
+  const kindOf = new Map(cols.map(c => [c.table_name, c.relkind]))
+  const tables = [...new Set(cols.filter(c => c.relkind === 'r' || c.relkind === 'p').map(c => c.table_name))]
+  const vNames = [...new Set(cols.filter(c => c.relkind === 'v' || c.relkind === 'm').map(c => c.table_name))]
+
   let md = `# Schema (public) — auto-generated, KHÔNG sửa tay\n\n`
   md += `> Sinh bởi \`npm run schema\` từ DB live (read-only). Nguồn chuẩn = DB.\n\n`
-  md += `${tables.length} bảng · ${enums.length ? new Set(enums.map(e=>e.typname)).size : 0} enum · ${trigs.length} trigger · ${funcs.length} function\n\n`
+  // Cảnh báo SỐNG TRONG schema.md: đây là file Claude đọc trước khi code. Chỉ in ra console
+  // thì phiên sau không thấy, rồi lại đọc "0 dòng" thành "chưa ai dùng module này".
+  if (biCat.length) {
+    md += `> ## ⚠️ ĐIỂM MÙ ĐỌC DỮ LIỆU — \`${biCat.length}\` BẢNG\n`
+    md += `> Role \`${rq.ai}\` **không sở hữu** và **không có \`bypassrls\`** với: `
+    md += `${biCat.map((t) => `\`${t}\``).join(' · ')}\n`
+    md += `> Các bảng này bật RLS với policy \`to authenticated\`, nên \`SELECT\` từ script/CLI trả **0 dòng,\n`
+    md += `> im lặng, không lỗi**. ⚠ **"0 dòng" ở đây KHÔNG phải bằng chứng bảng rỗng** — muốn biết số thật\n`
+    md += `> phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: \`alter role ... bypassrls\`,\n`
+    md += `> hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.\n\n`
+  }
+  md += `${tables.length} bảng · ${vNames.length} view · ${enums.length ? new Set(enums.map(e=>e.typname)).size : 0} enum · ${trigs.length} trigger · ${funcs.length} function\n\n`
 
   for (const t of tables) {
     md += `## ${t}\n\n| cột | kiểu | null | default | khóa | giá trị hợp lệ |\n|---|---|---|---|---|---|\n`
@@ -134,6 +193,22 @@ try {
       md += `| ${c.column_name} | ${type} | ${c.is_nullable === 'YES' ? 'Y' : ''} | ${(c.column_default || '').replace(/\|/g, '\\|')} | ${tag} | ${chk} |\n`
     }
     md += `\n`
+  }
+
+  // View: CHỈ in cột + kiểu + định nghĩa. KHÔNG bê khuôn 6 cột của bảng — view không có
+  // attnotnull/default/PK/FK, in ra sẽ là cột "null" toàn `Y` và cột "khóa" trống trơn:
+  // vô nghĩa và gây hiểu nhầm là view thật sự không có khoá (đúng cái bẫy 07-22).
+  if (vNames.length) {
+    md += `## Views\n\n`
+    md += `> BỀ MẶT trợ lý AI đọc. Đổi cột ở đây = ĐỔI HỢP ĐỒNG ⇒ phải sửa prompt kèm.\n\n`
+    for (const v of vNames) {
+      md += `### ${v}${kindOf.get(v) === 'm' ? ' (materialized)' : ''}\n\n| cột | kiểu |\n|---|---|\n`
+      for (const c of cols.filter(c => c.table_name === v)) {
+        const type = c.data_type === 'USER-DEFINED' ? c.udt_name : (c.data_type === 'ARRAY' ? c.udt_name : c.data_type)
+        md += `| ${c.column_name} | ${type} |\n`
+      }
+      md += `\n\`\`\`sql\n${(vdefs.find(d => d.relname === v)?.def ?? '').trim()}\n\`\`\`\n\n`
+    }
   }
 
   if (enums.length) {
@@ -166,7 +241,7 @@ try {
   }
 
   writeFileSync(join(root, 'schema.md'), md, 'utf8')
-  console.log(`OK -> schema.md  (${tables.length} bảng, ${trigs.length} trigger, ${funcs.length} function, ${checks.length} check: ${chkMap.size} enum + ${chkKhac.length} khác)`)
+  console.log(`OK -> schema.md  (${tables.length} bảng, ${vNames.length} view, ${trigs.length} trigger, ${funcs.length} function, ${checks.length} check: ${chkMap.size} enum + ${chkKhac.length} khác)`)
 } catch (e) {
   console.error('❌ Lỗi:', e.message)
   process.exit(1)

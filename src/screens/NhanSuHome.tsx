@@ -35,6 +35,7 @@ import DuyetChamScreen from './duyetcham/DuyetChamScreen'
 import HocPhiScreen from './hocphi/HocPhiScreen'
 import GiaoViecScreen from './giaoviec/GiaoViecScreen'
 import VietCuaToiTab from './giaoviec/VietCuaToiTab'
+import TroLyTab from './troly/TroLyTab'
 import { listDotChoDuyetDuoi } from '../lib/botro_duoi'
 import QuanLyLevelScreen from './gami/QuanLyLevelScreen'
 import PhanQuyenScreen from './phanquyen/PhanQuyenScreen'
@@ -195,7 +196,10 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
   const [opsWeek, setOpsWeek] = useState<(BuoiAo & { ngay: string })[]>([])
   const [tienDo, setTienDo] = useState<Record<string, TienDo>>({})
   const [tuan, setTuan] = useState(tuanNay)
-  const [view, setView] = useState<'vanhanh' | 'phattrien'>('vanhanh')
+  // 'rasoat' = tab TRỢ LÝ (nhắc việc hàng ngày + nhận định cấp hệ) — screens/troly/TroLyTab.tsx.
+  // CỐ Ý không đẻ leaf mới: leaf kéo theo quyền per-leaf ở Phân quyền + hiện trong nav của
+  // MỌI role, trong khi lượt này chỉ 1 người dùng. Tab thì bỏ đi cũng sạch.
+  const [view, setView] = useState<'vanhanh' | 'phattrien' | 'rasoat'>('vanhanh')
   const [doneShown, setDoneShown] = useState(20)
   const [now, setNow] = useState(() => Date.now())
   // Report/Báo tan + Chuẩn bị phòng (Ops, xem opsvanhanh.ts) — Thùy 07-06: "các loại việc chính của
@@ -310,7 +314,7 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
         {/* TOGGLE Vận hành / Phát triển — thay cho filter loại việc (CEO chốt 07-31). Số task trực quan,
             không cần lọc; Phát triển tách hẳn sang view riêng cho rộng rãi. */}
         <div className="inline-flex rounded-full bg-slate-100 p-0.5">
-          {([['vanhanh', '🛠 Vận hành'], ['phattrien', '🚀 Phát triển']] as const).map(([k, ten]) => (
+          {([['vanhanh', '🛠 Vận hành'], ['phattrien', '🚀 Phát triển'], ['rasoat', '🤖 Trợ lý']] as const).map(([k, ten]) => (
             <button key={k} onClick={() => setView(k)}
               className={`rounded-full px-4 py-1.5 text-[13px] font-semibold transition ${view === k ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>{ten}</button>
           ))}
@@ -423,6 +427,9 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
           </details>
         </div>
         </>
+      ) : view === 'rasoat' ? (
+        /* TRỢ LÝ — nhắc việc hàng ngày, 3 nút Làm/Huỷ/Gác. KHÔNG gọi model (xem đầu TroLyTab.tsx). */
+        <TroLyTab />
       ) : (
         /* PHÁT TRIỂN — view riêng, full width (task THẬT viec/task mẹ-con, không reset theo tuần) */
         <div>

@@ -22,6 +22,8 @@ export type BuoiCuaDot = { buoiId: string; ngay: string; gio_bat_dau: string | n
 export type DangDuoi = { id: string; ma_dang: string; day_buoi_id: string | null; day_at: string | null }
 export type DotDuoi = CanDuoiItem & {
   khoi: string | null
+  created_at: string             // mốc MỞ đợt — cần cho "treo bao lâu" (lib/troly.ts). Vốn đã order by
+                                 // cột này nhưng không select ra, nên tuổi đợt không đọc được ở client.
   so_buoi_du_kien: number | null // NULL = chưa chốt kế hoạch (đợt cũ / mới tạo) — UI bắt chốt trước khi xếp
   dangs: DangDuoi[]              // scope dạng của đợt + trạng thái đã dạy
   daXep: number                  // suất HIỆU LỰC: buổi chưa diễn ra/đang mở + buổi đã học có mặt (vắng KHÔNG đếm)
@@ -37,7 +39,7 @@ export type DotDuoi = CanDuoiItem & {
 // (bài học HANDOFF §PostgREST-embed).
 export async function listDotDuoi(done: boolean): Promise<DotDuoi[]> {
   const { data: cases } = await supabase.from('bo_tro_duoi')
-    .select('id, hoc_sinh_id, lop_id, nguon, ly_do, so_buoi_du_kien, hoan_thanh_at, dang_duyet_at, duyet_boi:dang_duyet_boi(ho_ten), hoc_sinh:hoc_sinh_id(ho_ten, ma_hs), lop:lop_id(ten_lop, mon, khoi)')
+    .select('id, hoc_sinh_id, lop_id, nguon, ly_do, so_buoi_du_kien, created_at, hoan_thanh_at, dang_duyet_at, duyet_boi:dang_duyet_boi(ho_ten), hoc_sinh:hoc_sinh_id(ho_ten, ma_hs), lop:lop_id(ten_lop, mon, khoi)')
     .eq('trang_thai', done ? 'hoan_thanh' : 'can_duoi').order('created_at', { ascending: !done }).limit(LIMIT)
   if (!cases?.length) return []
   const caseIds = (cases as any[]).map((c) => c.id)
@@ -81,7 +83,8 @@ export async function listDotDuoi(done: boolean): Promise<DotDuoi[]> {
     return {
       caseId: c.id, hoc_sinh_id: c.hoc_sinh_id, ho_ten: c.hoc_sinh?.ho_ten ?? '?', ma_hs: c.hoc_sinh?.ma_hs ?? null,
       lop_id: c.lop_id, lop: c.lop?.ten_lop ?? '—', mon: c.lop?.mon ?? '', khoi: c.lop?.khoi ?? null,
-      nguon: c.nguon, ly_do: c.ly_do, so_buoi_du_kien: c.so_buoi_du_kien, hoan_thanh_at: c.hoan_thanh_at,
+      nguon: c.nguon, ly_do: c.ly_do, so_buoi_du_kien: c.so_buoi_du_kien,
+      created_at: c.created_at, hoan_thanh_at: c.hoan_thanh_at,
       dangs: dangsBy[c.id] ?? [], daXep, daHoc, buois,
       dangDuyetAt: c.dang_duyet_at ?? null, duyetBoiTen: c.duyet_boi?.ho_ten ?? null,
     }

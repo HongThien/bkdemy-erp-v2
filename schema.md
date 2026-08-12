@@ -2,7 +2,22 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-123 bảng · 0 enum · 11 trigger · 31 function
+> ## ⚠️ ĐIỂM MÙ ĐỌC DỮ LIỆU — `3` BẢNG
+> Role `claude_build` **không sở hữu** và **không có `bypassrls`** với: `hinh_giao_trinh` · `hinh_gt_bai` · `hinh_gt_buoi`
+> Các bảng này bật RLS với policy `to authenticated`, nên `SELECT` từ script/CLI trả **0 dòng,
+> im lặng, không lỗi**. ⚠ **"0 dòng" ở đây KHÔNG phải bằng chứng bảng rỗng** — muốn biết số thật
+> phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
+> hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
+
+127 bảng · 0 view · 0 enum · 11 trigger · 31 function
+
+## _migrations
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ten | text |  |  | PK |  |
+| bam | text |  |  |  |  |
+| ap_luc | timestamp with time zone |  | now() |  |  |
 
 ## bai_lam
 
@@ -1538,6 +1553,50 @@
 | hieu_luc_den | date | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 
+## troly_hoi_dap
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| phien | uuid |  |  |  |  |
+| cau_hoi | text |  |  |  |  |
+| boi_canh | jsonb |  |  |  |  |
+| lich_su | jsonb |  | '[]'::jsonb |  |  |
+| trang_thai | text |  | 'pending'::text |  | `pending` · `processing` · `done` · `failed` |
+| so_lan | integer |  | 0 |  |  |
+| tra_loi | text | Y |  |  |  |
+| usage | jsonb | Y |  |  |  |
+| model | text | Y |  |  |  |
+| error | text | Y |  |  |  |
+| nguoi | uuid | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| done_at | timestamp with time zone | Y |  |  |  |
+
+## troly_nhan_dinh
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma | text |  |  | PK |  |
+| quyet_dinh | text |  |  |  | `lam` · `huy` · `gac` |
+| gac_den | date | Y |  |  |  |
+| ghi_chu | text | Y |  |  |  |
+| nguoi | uuid | Y |  |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
+## troly_ra_soat
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| buoi_hoc_id | uuid |  |  | FK→buoi_hoc.id |  |
+| tab | text |  |  |  | `diemdanh` · `ingame` · `danhgia` · `et` · `btvn` · `mt` · `viec` |
+| ket_luan | text |  |  |  | `lam` · `huy` · `gac` |
+| ghi_chu | text | Y |  |  |  |
+| nguoi | uuid | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| ket_luan_goc | text | Y |  |  |  |
+| gac_den | date | Y |  |  |  |
+
 ## ung_vien
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -1676,6 +1735,7 @@
 | hoan_thanh_at | timestamp with time zone | Y |  |  |  |
 | nghiem_thu_at | timestamp with time zone | Y |  |  |  |
 | task_me_id | uuid | Y |  | FK→viec.id |  |
+| nghiem_thu_nguon | text | Y |  |  | `nguoi` · `tu_dong` |
 
 ## viec_log
 
@@ -1803,6 +1863,8 @@
 | muc_nang_luc | muc_nang_luc_muc_check | `CHECK (((muc >= 1) AND (muc <= 3)))` |
 | phan_cong_ca | phan_cong_ca_thu_check | `CHECK (((thu >= 2) AND (thu <= 8)))` |
 | thoi_khoa_bieu | thoi_khoa_bieu_thu_check | `CHECK (((thu >= 2) AND (thu <= 8)))` |
+| troly_nhan_dinh | troly_nhan_dinh_gac_ck | `CHECK (((quyet_dinh = 'gac'::text) = (gac_den IS NOT NULL)))` |
+| troly_ra_soat | troly_ra_soat_gac_ck | `CHECK (((ket_luan = 'gac'::text) = (gac_den IS NOT NULL)))` |
 | y_tuong | y_tuong_co_check | `CHECK ((co = ANY (ARRAY[1, 2, 3, 5, 8])))` |
 | y_tuong | y_tuong_gia_tri_check | `CHECK ((gia_tri = ANY (ARRAY[1, 2, 3, 5, 8])))` |
 

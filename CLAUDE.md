@@ -103,8 +103,27 @@
 
 - **Nguồn chuẩn của schema = DB Postgres THẬT.** `schema.md` trong repo là **bản chiếu auto-gen**, KHÔNG sửa tay.
   Notion KHÔNG giữ schema (chỉ ERD khái niệm nếu cần). Schema chép tay = drift = thảm họa v1.
-- Claude Code dùng role **`claude_ro`** (chỉ `SELECT`) qua `DATABASE_URL_RO` trong `.env` (gitignored).
-  Role này **không ghi được DB** — an toàn cứng, không dựa vào lời hứa.
+- **⚠️ QUYỀN DB — mục này từng SAI, đã sửa 12/08. Đọc kỹ trước khi tin bất cứ dòng nào về "chỉ đọc".**
+  Bản cũ ghi *"Claude dùng role `claude_ro` chỉ SELECT qua `DATABASE_URL_RO` — an toàn cứng, không dựa
+  vào lời hứa"*. Kiểm thật bằng `has_schema_privilege`/`pg_roles` thì: `.env` chỉ có **một** key
+  `DATABASE_URL` trỏ role **`claude_build`**, role đó **GHI ĐƯỢC** và **SỞ HỮU 121/124 bảng**.
+  Tức rào cứng **không tồn tại** — mục này mô tả *ý định*, không mô tả *thực tế*, suốt nhiều tháng.
+  **Bài học chung: một dòng tài liệu nói "an toàn cứng" mà không ai verify thì nguy hơn không có dòng nào.**
+  - **Bố cục ĐÚNG (đang khôi phục — `.env.example` từ 28/07 vốn đã ghi vậy):**
+    `DATABASE_URL_RO` = role `claude_ro` **chỉ SELECT** → mọi thứ Claude chạy (`npm run schema`, mọi
+    query dò dữ liệu). `DATABASE_URL` (hoặc `DATABASE_URL_RW` truyền lúc gọi) = role ghi → **chỉ** lúc migrate.
+  - **⭐ Rào CỨNG thật sự = chuỗi kết nối GHI KHÔNG nằm trên đĩa.** Để nó trong `.env` thì Claude đọc
+    file là có — vẫn là lời hứa. Truyền lúc gọi thì Claude không thể lấy thứ không tồn tại trong file nào.
+    Cú pháp + 2 bẫy đã cắn thật (nối `&&` cùng dòng `set` ⇒ dấu cách lọt vào biến; biến ĐÈ `.env` và
+    sống hết phiên terminal): xem `.env.example`. `migrate.mjs` tự bắt cả hai và in nguồn chuỗi kết nối.
+  - **⚠️ TẠO `claude_ro` PHẢI KÈM `bypassrls`** (hoặc policy `for select to claude_ro using (true)` trên
+    từng bảng). 116/124 bảng bật RLS với policy `to authenticated`; role thường khớp **0 policy** ⇒
+    **mọi SELECT trả 0 dòng, im lặng, không lỗi** — mà `npm run schema` VẪN đúng (nó đọc `pg_catalog`,
+    không đụng dữ liệu). Schema nhìn hoàn hảo trong khi mọi kết luận về dữ liệu đều sai. `introspect.mjs`
+    đã có canary cho ca này và ghi cảnh báo thẳng vào đầu `schema.md`.
+  - **Điểm mù ĐANG TỒN TẠI (12/08):** `hinh_giao_trinh` · `hinh_gt_bai` · `hinh_gt_buoi` thuộc sở hữu
+    `postgres` (tạo tay qua SQL Editor, không qua migrate) ⇒ `claude_build` đọc ra **0 dòng** dù bảng có
+    data thật. **"0 dòng" từ CLI KHÔNG phải bằng chứng bảng rỗng** — luôn đối chiếu dashboard/app.
 - **Refresh / introspect:** `npm run schema` (`scripts/introspect.mjs`, dùng `pg`) → đọc DB live, ghi `schema.md`
   (bảng/cột/kiểu/PK/FK/**CHECK**/enum/trigger/function). Cách chuẩn, chạy ngay với Node.
 - **⚠️ Cột `text` KHÔNG nói lên tập giá trị hợp lệ** — CHECK constraint mới nói. Cột trạng thái/loại
@@ -115,6 +134,18 @@
   *(Tùy chọn: cài PostgreSQL client → `scripts/dump-schema.ps1` cho DDL `.sql` đầy đủ.)*
 - **Trước khi code module đụng bảng nào:** đọc `schema.md`. Cần chắc 1 cột/trigger/function có thật
   → `npm run schema` refresh, hoặc query thẳng `information_schema` / `pg_catalog` từ DB live. **KHÔNG đoán từ doc cũ.**
+- **Áp migration — `npm run migrate` (đã sửa 12/08, trước đó KHÔNG dùng được):** script giữ sổ
+  `_migrations` (tên file + vân tay nội dung) nên **chỉ chạy file chưa áp**. Trước 12/08 nó chạy lại
+  TOÀN BỘ từ `0001` — mà `0001..0115` dùng `create table` trần, không `if not exists` — nên trên DB
+  đang sống là chết ngay câu đầu (`relation "dai_ban_do" already exists`); cả đội phải hand-apply qua
+  Supabase SQL Editor, và sự thật đó chỉ nằm trong **một dòng giữa HANDOFF.md**, không ai đọc trước
+  khi gõ lệnh. Giờ:
+  - `node scripts/migrate.mjs --status` → xem đã áp / còn treo / **file đã áp mà bị sửa sau đó**. Xem thuần, không ghi.
+  - `npm run migrate` → áp các file còn treo, mỗi file 1 transaction, ghi sổ **trong cùng transaction**.
+  - `node scripts/migrate.mjs --baseline <file.sql>` → đánh dấu đã-áp mà KHÔNG chạy SQL (dựng sổ cho DB cũ). Dùng 1 lần.
+  - DB đã có bảng mà chưa có sổ ⇒ script **từ chối chạy** và in đúng lệnh cần gõ, thay vì đâm vào `0001`.
+  - **Lịch sử migration bất biến:** sửa file đã áp thì DB và repo nói hai chuyện khác nhau — `--status`
+    sẽ nêu cờ, nhưng script KHÔNG áp lại. Muốn đổi thì viết migration **MỚI** đè lên.
 - **Sau mỗi migration:** `npm run schema`, commit `schema.md` cùng migration (git diff thấy schema đổi gì).
 - **Đặt tên migration = TIMESTAMP, không phải số tăng dần:** `npm run new-migration ten_viec_snake_case`
   → `YYYYMMDDHHMM_ten_viec.sql` (giờ VN). Số tăng dần cấp bằng "nhìn file cuối +1" nên hai luồng làm

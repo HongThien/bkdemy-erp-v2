@@ -8,10 +8,12 @@
     "preview": "vite preview",
     "schema": "node scripts/introspect.mjs",
     "migrate": "node scripts/migrate.mjs",
+    "migrate:status": "node scripts/migrate.mjs --status",
     "new-migration": "node scripts/new-migration.mjs",
     "worker": "node worker/index.mjs",
     "test:dethi": "vite-node scripts/test-dethi-ingest.ts",
-    "worker:danhgia": "node worker/danhgia.mjs"
+    "worker:danhgia": "node worker/danhgia.mjs",
+    "worker:troly": "node worker/troly.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.113.0",
