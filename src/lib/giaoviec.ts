@@ -239,24 +239,6 @@ export async function xacNhanTuan(yTuongIds: string[], kyTuan?: string): Promise
   }
 }
 
-// Tạo TASK CON dưới 1 task mẹ (1 người). ky_tuan kế thừa từ mẹ.
-export async function taoTaskCon(taskMeId: string, p: {
-  tieu_de: string; nguoi_lam_id: string; khoi_luong: number; deadline?: string | null; muc_tieu?: string; output?: string; loai_viec_id?: string | null
-}): Promise<void> {
-  const { data: me } = await supabase.from('viec').select('ky_tuan').eq('id', taskMeId).single()
-  await createViec({ ...p, task_me_id: taskMeId, ky_tuan: (me as any)?.ky_tuan ?? undefined, nguon: 'ke_hoach' })
-}
-
-// Gán người + khối lượng cho một task chưa gán (biến task lẻ chưa gán thành đơn vị làm được).
-export async function ganNguoiLam(id: string, p: { nguoi_lam_id: string; khoi_luong: number; deadline?: string | null; muc_tieu?: string; output?: string }): Promise<void> {
-  const { error } = await supabase.from('viec').update({
-    nguoi_lam_id: p.nguoi_lam_id, khoi_luong: p.khoi_luong,
-    deadline: p.deadline ?? null, deadline_goc: p.deadline ?? null,
-    muc_tieu: p.muc_tieu ?? null, output: p.output ?? null,
-  }).eq('id', id)
-  if (error) throw error
-}
-
 // WEEKLY PLANNING (story §4): mọi task của tuần (mẹ + con + lẻ). UI gom cụm theo task_me_id.
 export async function listWeeklyPlanning(kyTuan: string): Promise<ViecFull[]> {
   const { data, error } = await supabase.from('viec').select('*').eq('ky_tuan', kyTuan)

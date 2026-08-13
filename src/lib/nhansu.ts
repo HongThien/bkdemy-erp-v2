@@ -199,8 +199,11 @@ export async function getMyScope(): Promise<MyScope | null> {
   // Quyền QL đến từ GHẾ (Trưởng/Phó), KHÔNG từ vai GV — GV thường quản lý ZERO người.
   // GV xem được data lớp mình = trục B (data-scope, dashboard), KHÔNG nằm ở task-scope này.
   const depthByNs = new Map<string, number>() // nhan_su_id → độ sâu NHỎ NHẤT dưới tôi (1 = trực tiếp)
-  for (const vt of prof.viTris) {
-    const all = await listViTri(vt.team_id)
+  // Song song hoá — mỗi vị trí 1 round-trip riêng nhưng CHẠY CÙNG LÚC (trước đây tuần tự,
+  // ai giữ ≥2 vị trí (vd Trang) là chậm gấp N lần thấy rõ mỗi lần mở modal Giao việc).
+  const viTriAllTeams = await Promise.all(prof.viTris.map((vt) => listViTri(vt.team_id)))
+  prof.viTris.forEach((vt, i) => {
+    const all = viTriAllTeams[i]
     const childrenOf = (id: string) => all.filter((x) => x.cha_id === id)
     const seenSeat = new Set<string>()
     let frontier = childrenOf(vt.id), depth = 1
@@ -217,7 +220,7 @@ export async function getMyScope(): Promise<MyScope | null> {
       }
       frontier = next; depth++
     }
-  }
+  })
   const giamSatTrucTiep: ScopeNguoiDuoi[] = [], giamSatSau: ScopeNguoiDuoi[] = []
   if (depthByNs.size) {
     const ids = [...depthByNs.keys()]

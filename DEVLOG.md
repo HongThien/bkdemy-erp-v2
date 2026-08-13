@@ -4447,3 +4447,38 @@ khỏi `DATABASE_URL` (ghi, chỉ lúc migrate) — **CHƯA LÀM, cần CEO quy�
 **(bổ sung) — CEO chốt nốt luật cấp 3:** *"10A của Trang, còn 10B 12C của Đạt. tóm lại cấp 3 thì A của
 Trang B của Đạt"* ⇒ **cấp 3 (10·11·12): nhánh A → Trang · nhánh B và C → Đạt.** Không còn khối vô chủ.
 Chỉ còn CHẶN duy nhất: **ai CHẤM bài test**.
+
+## 2026-08-13 — Giao việc: tối ưu giao việc phát triển (4 điểm CEO yêu cầu, nhánh `feat/giaoviec-toi-uu`)
+
+- **Perf — `getMyScope` (nhansu.ts):** vòng lặp tính giám sát-cấp-dưới qua `listViTri(vt.team_id)` mỗi
+  vị trí cũ chạy TUẦN TỰ (`for await`) — ai giữ ≥2 vị trí (vd Trang) là N round-trip nối đuôi mỗi lần mở
+  modal Giao việc. Đổi `Promise.all`. Không thêm cache session (nhiều điểm mutate — vị trí/phân công/
+  hồ sơ — cần invalidate đúng chỗ, để dành nếu vẫn thấy chậm sau fix này).
+- **Công khai hoá Weekly Plan (CEO 08-13: "team bé, làm gương, không rủi ro tâm lý"):** `NhanSuHome`
+  tab "Việc của tôi → Phát triển" giờ mặc định render `CongKhaiTab` (cả team, gồm cả khối "số lần huỷ
+  theo người giao") thay vì thẳng `VietCuaToiTab`; thêm toggle 👥 Cả team / 🙋 Chỉ tôi. Trước đó
+  `CongKhaiTab` chỉ nằm trong leaf `giaoviec` (Ops/Core team mới thấy) — nhân viên thường không mở được.
+- **⭐ Model mẹ/con: XOÁ false-dichotomy "Gán 1 người" vs "Tách nhiều con".** Trước đây chọn "Gán 1
+  người" là chốt CỨNG — task_me_id=null root nhận thẳng `nguoi_lam_id`, hết đường tách thêm. Giờ: root
+  CHƯA gán (`nguoi_lam_id=null`) LUÔN hiện dưới dạng cụm MẸ (kể cả 0 con), nút "+ Tách task con" LUÔN có
+  mặt kể cả sau khi đã có N con — tách được vô hạn lần. Root ĐÃ gán trực tiếp (từ "+ Việc phát sinh")
+  vẫn là leaf đơn giản, không đụng (tránh bẫy: nếu mẹ vừa mang việc trực tiếp vừa có con, `tinhHieuSuatThang`
+  loại nó khỏi Σ hiệu suất vì coi nó là "task mẹ có con" — làm rơi việc trực tiếp của nó khỏi hiệu suất
+  âm thầm). Xoá `ganNguoiLam`/`taoTaskCon` (dead code, GiaoViecModal luôn gọi thẳng `createViec`).
+  **Chưa xử ca cũ:** task root đã lỡ "Gán 1 người" trước bản vá này (nguoi_lam_id set sẵn, task_me_id
+  null) KHÔNG tự có nút tách thêm — chỉ áp cho task tạo mới. Nếu cần tách task cũ, báo lại.
+- **2 kiểu chia task con (CEO 08-13, vd "Trang chấm 7A · Cường chấm 8B"):** `GiaoViecModal` thêm toggle
+  **Theo bước** (mỗi con khác việc, mục tiêu/output gõ riêng — hành vi cũ) vs **Theo scope** (mọi con
+  CÙNG mục tiêu/output, kế thừa khoá từ mẹ; chỉ gõ "Phạm vi" — tiêu đề tự ghép `<mẹ> — <phạm vi>`).
+  Mẹ giờ có Detail riêng (`MeDetailModal`, click header mẹ) để xem/sửa mục tiêu/output/deadline qua
+  `suaViec` — đây là nguồn con "theo scope" kế thừa. Tiện thể vá 1 bug tiềm ẩn: con tách qua modal cũ
+  không kế thừa `ky_tuan` của mẹ (mặc định tuần HIỆN TẠI) — nếu leader đang xem tuần khác lúc tách, con
+  sinh ra sẽ RƠI KHỎI view của mẹ. Giờ `GiaoPrefill.me.ky_tuan` truyền `ky_tuan` mẹ xuống `createViec`.
+- **Card UI (`WeeklyPlanningTab`):** mỗi task = 1 `TaskCard` ngang (Tên · PIC · Deadline · Trạng thái ·
+  %), click mới ra `TaskDetailModal` (mục tiêu/output/người giao + toàn bộ nút hành động Hold/Chuyển/
+  Huỷ/Nghiệm thu/Duyệt-gia-hạn dời vào đây — mặt card gọn theo đúng 5 cột CEO yêu cầu). Cảnh báo gia
+  hạn-chờ-duyệt/hold-quá-hạn thu gọn thành chấm đỏ cạnh badge trạng thái thay vì chiếm chỗ trên card.
+- **Verify:** `tsc --noEmit` sạch. Test sống trên data prod thật (dev quick-login Admin) — mở/đóng mọi
+  modal (Detail, Mẹ Detail, Tách task con cả 2 kiểu chia) không lỗi console, KHÔNG submit ghi đè data
+  thật. Chưa test nhánh submit thật (nghiệm thu/huỷ/chuyển/lưu mẹ/tạo con) — cần CEO tự bấm thử hoặc
+  dựng data `ZTEST_` riêng nếu muốn Claude tự chạy hết luồng ghi.
