@@ -21,8 +21,13 @@
 //   nói khác màn hình. (Đã suýt dính: bản nháp đầu tự tính "task ma" từ `bai_test` —
 //   sai hoàn toàn vì đó là luồng test ONLINE, xem DEVLOG 12/08.)
 // ============================================================================
-import { listDotDuoi, type DotDuoi } from './botro_duoi'
-import { getMyTasks } from './gami'
+import { listDotDuoi, listDotChoDuyetDuoi, type DotDuoi } from './botro_duoi'
+import { getMyTasks, buoiAoCuaNgay, diemDanhTienDo, TASKS_BY_VAI } from './gami'
+import { getMyProfile, getMyScope } from './nhansu'
+import { myBuoiAoCuaKhoang, getMyOpsTasks, getMyPrepTasks, OPS_TASK_LABEL } from './opsvanhanh'
+import { listCanScanDaCham } from './detest'
+import { listViecCuaToi, listViecToiGiao, type ViecFull, type TrangThaiViec } from './giaoviec'
+import { anhChupBoTroBu, NGAY_AP_HAN_48H, type AnhChupBu } from './botro'
 import { ngayCuaTs } from './tuan'
 import { supabase } from './supabase'
 import { todayVN, soNgayLech } from './giaoviec-config'
@@ -326,17 +331,21 @@ export type BangNhac = {
   phamVi: string
 }
 
+// Quyết định người đã bấm, khoá (buổi × khâu). Tách hàm vì CẢ hai màn đều phải trừ
+// đúng một tập như nhau — việc đã bấm HUỶ mà rổ "nợ" vẫn kêu thì ba nút thành vô nghĩa.
+async function docQuyetDinh(buoiIds: string[]): Promise<Map<string, { quyetDinh: QuyetDinh; gacDen: string | null }>> {
+  const m = new Map<string, { quyetDinh: QuyetDinh; gacDen: string | null }>()
+  if (!buoiIds.length) return m
+  const { data } = await supabase.from('troly_ra_soat')
+    .select('buoi_hoc_id, tab, ket_luan, gac_den').in('buoi_hoc_id', buoiIds).limit(5000)
+  for (const r of (data ?? []) as any[]) m.set(`${r.buoi_hoc_id}|${r.tab}`, { quyetDinh: r.ket_luan, gacDen: r.gac_den })
+  return m
+}
+
 export async function nhacViecHomNay(): Promise<BangNhac> {
   const homNay = todayVN()
   const tasks = (await getMyTasks()).filter((t) => !t.done)
-
-  const qd = new Map<string, { quyetDinh: QuyetDinh; gacDen: string | null }>()
-  const ids = [...new Set(tasks.map((t) => t.buoiId))]
-  if (ids.length) {
-    const { data } = await supabase.from('troly_ra_soat')
-      .select('buoi_hoc_id, tab, ket_luan, gac_den').in('buoi_hoc_id', ids).limit(5000)
-    for (const r of (data ?? []) as any[]) qd.set(`${r.buoi_hoc_id}|${r.tab}`, { quyetDinh: r.ket_luan, gacDen: r.gac_den })
-  }
+  const qd = await docQuyetDinh([...new Set(tasks.map((t) => t.buoiId))])
 
   const now = Date.now()
   let soHuy = 0, soGacChuaToi = 0, gacHomNay = 0
@@ -414,9 +423,47 @@ const dem = async (bang: string, ap?: (q: any) => any): Promise<number> => {
   return count ?? 0
 }
 
-export async function nhanDinhHeThong(): Promise<NhanDinh[]> {
-  const homNay = todayVN()
+// ⭐ NHẬN ĐỊNH VỀ BỔ TRỢ BÙ — CEO 12/08: *"T cần nhận xét ở trên erp, chỗ AI ấy"*.
+// Bốn danh sách ở khối Bổ trợ bù mới chỉ là DỮ LIỆU; cái biến nó thành trợ lý là câu
+// NHẬN XÉT rút ra từ chúng. Ăn thẳng snapshot đã load ở màn — KHÔNG query lại (query lần
+// hai là mở đường cho hai con số lệch nhau trên cùng một màn hình).
+// Ngưỡng nằm ngay trong hàm: không có gì đáng nói thì IM, đừng bới cho đủ chỗ trống.
+function nhanDinhBu(d: AnhChupBu): NhanDinh[] {
   const ra: NhanDinh[] = []
+  if (d.phaiXepLai.length) {
+    const cu = d.phaiXepLai[0]
+    const vang = d.phaiXepLai.filter((l) => l.lyDoQuayLai === 'vang_buoi_bu').length
+    ra.push({
+      ma: 'bu_phai_xep_lai',
+      tieuDe: 'Có học sinh đã xếp bù nhưng trượt, chưa ai xếp lại',
+      so: `${d.phaiXepLai.length} lượt (${vang} vắng buổi bù · ${d.phaiXepLai.length - vang} buổi bù bị huỷ) · cũ nhất ${cu.ho_ten} nghỉ ${cu.ngay} (${cu.tuoiNgay} ngày)`,
+      dienGiai: 'Trước 12/08 hệ coi "đã xếp bù" là xong vĩnh viễn, không xét em có đến hay buổi có bị huỷ — nên mấy lượt này rơi khỏi hàng đợi mà không ai biết. Nay chúng đã quay lại "Cần xếp bù".',
+      goiY: 'Xếp lại cho nhóm này trước: đây là các em đã lỡ hai lần, và có em lỡ tới hai lượt khác nhau.',
+      quyetDinh: null, gacDen: null,
+    })
+  }
+  if (d.canXep.tonDongCu >= 20) ra.push({
+    ma: 'bu_ton_dong_cu',
+    tieuDe: 'Tồn đọng xếp bù tích lại từ trước khi có luật hạn',
+    so: `${d.canXep.tonDongCu} lượt nghỉ trước ${NGAY_AP_HAN_48H}${d.canXep.cuNhat ? ` · cũ nhất ${d.canXep.cuNhat}` : ''} · ${d.canXep.trongHan} lượt mới đang trong hạn 48h`,
+    dienGiai: 'Khối này không nằm trong luật 48h (luật mới áp từ 10/08), nên nó sẽ không tự nổi lên ở mục quá hạn. Không ai đụng thì nó nằm im mãi.',
+    goiY: 'Chọn một mốc: xử hết trong vài đợt, hoặc chốt là quá cũ rồi và đánh dấu không cần bù hàng loạt. Để lơ lửng là tệ nhất — số cứ to dần mà không nói lên điều gì.',
+    quyetDinh: null, gacDen: null,
+  })
+  if (d.dongKhong > 0) ra.push({
+    ma: 'bu_dong_khong',
+    tieuDe: 'Có buổi bù được chốt xong mà không có lấy một dòng chấm nào',
+    so: `${d.dongKhong} buổi đã đóng đủ ET + đánh giá nhưng 0 dòng chấm/đánh giá cho HS có mặt`,
+    dienGiai: 'Bấm đóng là một chuyện, có dữ liệu đo hay không là chuyện khác. Mấy buổi này tính là hoàn thành trong mọi thống kê nhưng không đóng góp gì cho mastery của HS.',
+    goiY: 'Xem thử vài buổi: nếu do buổi mẹ không có ET thì đó là chuyện bình thường, còn nếu do bấm cho xong thì phải nói lại với người chấm.',
+    quyetDinh: null, gacDen: null,
+  })
+  return ra
+}
+
+export async function nhanDinhHeThong(bu?: AnhChupBu | null): Promise<NhanDinh[]> {
+  const homNay = todayVN()
+  const ra: NhanDinh[] = bu ? nhanDinhBu(bu) : []
 
   // ① Cảnh báo yếu chảy vào hư không: đầu PHÁT chạy đều, đầu NHẬN không tồn tại.
   const [soCanhBao, soCaYeu] = await Promise.all([dem('canh_bao_yeu'), dem('bo_tro_yeu')])
@@ -519,11 +566,22 @@ export type BoiCanhTroLy = {
   theoKhau: { khau: string; tong: number; quaHan: number; cuNhat: number }[]
   viec: { lop: string; ngay: string; tuoi: number; khau: string; quaHan: boolean }[]
   nhanDinh: { ma: string; tieuDe: string; so: string; dienGiai: string; goiY: string }[]
+  // Story đầu tiên được khai đầy đủ. Gộp sẵn theo mục, KÈM vài dòng chi tiết có tên — hỏi
+  // "em nào phải xếp lại" mà bảng chỉ có con số thì model đúng luật sẽ phải trả lời là
+  // không biết, và người hỏi thấy trợ lý vô dụng dù dữ liệu nằm ngay đó.
+  boTroBu: {
+    tomTat: { chuaFillDu: number; sapToi: number; phaiXepLai: number; quaHan: number; canXep: number; tonDongCu: number; khongXepDuoc: number }
+    phaiXepLai: { ho_ten: string; lop: string; ngayNghi: string; tuoi: number; vi: string; soLanDaXep: number }[]
+    sapToi: { ngay: string; gio: string | null; phong: string | null; hs: string[] }[]
+    chuaFillDu: { ngay: string; tuoi: number; thieu: string[]; hs: string[] }[]
+  } | null
   khongBiet: string[]
 }
 
 export async function boiCanhChoHoi(): Promise<BoiCanhTroLy> {
-  const [bang, nd, hn] = await Promise.all([nhacViecHomNay(), nhanDinhHeThong(), viecHomNay()])
+  // Bổ trợ bù load TRƯỚC vì nhận định ăn chính snapshot đó — hai nguồn thì hai con số.
+  const bu = await anhChupBoTroBu().catch(() => null)
+  const [bang, nd, hn] = await Promise.all([nhacViecHomNay(), nhanDinhHeThong(bu), viecHomNay()])
 
   // Gộp sẵn — model KHÔNG phải đếm. Đây là phần quyết định chất lượng câu trả lời:
   // thiếu bảng gộp thì model sẽ tự cộng từ danh sách thô và cộng sai lúc nào không ai biết.
@@ -550,6 +608,18 @@ export async function boiCanhChoHoi(): Promise<BoiCanhTroLy> {
     theoKhau: gom((v) => v.nhan).map(({ _k, ...o }) => ({ khau: _k, ...o })),
     viec: bang.can.map((v) => ({ lop: v.lop, ngay: v.ngay, tuoi: v.tuoiNgay, khau: v.nhan, quaHan: v.quaHan })),
     nhanDinh: nd.map(({ ma, tieuDe, so, dienGiai, goiY }) => ({ ma, tieuDe, so, dienGiai, goiY })),
+    boTroBu: bu ? {
+      tomTat: {
+        chuaFillDu: bu.chuaFillDu.length, sapToi: bu.sapToi.length, phaiXepLai: bu.phaiXepLai.length,
+        quaHan: bu.quaHan.length, canXep: bu.canXep.tong, tonDongCu: bu.canXep.tonDongCu, khongXepDuoc: bu.khongXepDuoc,
+      },
+      phaiXepLai: bu.phaiXepLai.map((l) => ({
+        ho_ten: l.ho_ten, lop: l.lop, ngayNghi: l.ngay, tuoi: l.tuoiNgay,
+        vi: l.lyDoQuayLai === 'vang_buoi_bu' ? 'vắng buổi bù' : 'buổi bù bị huỷ', soLanDaXep: l.soLanDaXep,
+      })),
+      sapToi: bu.sapToi.map((b) => ({ ngay: b.ngay, gio: b.gio, phong: b.phong, hs: b.hs.map((h) => h.ho_ten) })),
+      chuaFillDu: bu.chuaFillDu.map((b) => ({ ngay: b.ngay, tuoi: b.tuoiNgay, thieu: b.thieu, hs: b.hs })),
+    } : null,
     // §4 "thiếu dấu vết thì khai là không biết" — nêu THẲNG giới hạn của bảng này,
     // để model không lấp bằng phỏng đoán khi bị hỏi ngoài phạm vi.
     khongBiet: [
@@ -557,6 +627,8 @@ export async function boiCanhChoHoi(): Promise<BoiCanhTroLy> {
       'Không có dữ liệu vì sao một khâu bị bỏ; chỉ biết nó chưa đóng.',
       'Không có thông tin lớp nào BẮT BUỘC làm khâu nào (hệ chưa ghi luật đó ở đâu cả).',
       'Không có nội dung bài/điểm số của học sinh trong bảng này.',
+      'Mục bổ trợ bù: hệ không ghi VÌ SAO học sinh vắng buổi bù, và không có chỗ đánh dấu "đã xác nhận lịch buổi bù sắp tới".',
+      '"Không xếp được" là quyết định KẾT THÚC (vướng lịch, chốt thôi không xếp) — cố ý không nằm trong hàng đợi, đừng đọc thành tồn đọng.',
     ],
   }
 }
@@ -584,43 +656,102 @@ export async function docDap(id: string): Promise<PhienDap | null> {
 }
 
 // ════════════════════════════════════════════════════════════════════════════
-// "HÔM NAY TÔI CÓ NHỮNG VIỆC GÌ CẦN HOÀN THÀNH?" — tiêu chí nghiệm thu số 1
+// "HÔM NAY" — BA RỔ, GOM MỌI NGUỒN VIỆC (CEO chốt 12/08, lượt 2)
 //
-// CEO 12/08 chốt gọn, sau khi Claude lại phức tạp hoá (nhét cả buổi dạy, chuẩn bị phòng,
-// report/báo tan vào):
-//   *"Hôm nay là những việc có deadline là hôm nay thôi"*
-//   *"những việc phải hoàn thành hôm nay | những việc đã được start và chưa hoàn thành
-//     để t nhận thức được nó đang diễn ra"*
+// *"Lúc báo việc thì phải báo việc đang NỢ, việc đang CẦN HOÀN THÀNH, và việc DỰ KIẾN sẽ
+//  phải làm trong hôm nay mới có cái nhìn đầy đủ chứ."*
+// *"Bản chất của việc hàng ngày chính là 'Việc của tôi', nhưng là 1 phiên bản có nhận định
+//  và đầy đủ hơn. Thay vì t phải đi click khắp nơi thì t chỉ còn click 1 chỗ."*
 //
-// ⇒ ĐÚNG HAI RỔ, không thêm gì:
-//   ① HẠN HÔM NAY  — deadline rơi đúng hôm nay (theo ngày của DEADLINE, không phải ngày buổi).
-//   ② ĐANG DỞ      — đã có dấu vết BẮT ĐẦU nhưng chưa đóng. Đây không phải "việc phải làm",
-//                    nó là thứ để người ta NHẬN THỨC đang có cái gì dở dang.
+// ⇒ HAI thay đổi so với bản trước, cả hai đều là SỬA SAI:
+//  ① Nợ cũ KHÔNG còn là một con số. Bản trước rút gọn nó thành con số vì CEO nói "ko phải
+//    mấy cái nợ kia nhé" — hiểu đúng ý lúc đó (đừng trộn lẫn) nhưng làm SAI cách (giấu đi).
+//    Đúng là TÁCH RỔ: vẫn thấy đủ, không lẫn vào nhau.
+//  ② Gom MỌI nguồn việc, không riêng task buổi. Trợ lý chỉ đọc `getMyTasks` thì nó đúng là
+//    "một dashboard nữa" — người vẫn phải sang chỗ khác xem điểm danh, report, phòng ốc.
+//    "Đầy đủ hơn Việc của tôi" là YÊU CẦU, không phải tính năng thêm.
 //
-// ⚠ Nợ cũ (hạn đã qua từ trước) CHỈ còn là một con số. CEO: *"ko phải là mấy cái nợ kia nhé"*.
-//   Trộn vào là câu trả lời chìm nghỉm giữa gần trăm dòng — đúng lỗi của bản trước.
+// LUẬT GOM (CEO chốt): *"mọi chỗ mà có việc của nó hoặc SẮP có việc của nó thì đều ở chỗ
+// trợ lý"* ⇒ thêm nguồn việc mới ở bất kỳ đâu trong app thì PHẢI nối vào đây, không phải
+// tuỳ chọn. Thiếu một nguồn là người lại phải đi chỗ khác — hỏng đúng lý do tồn tại của màn này.
 //
-// "ĐÃ START" suy từ HIỆN VẬT, không đoán: có dòng con cho buổi đó mà cột đóng còn null.
-//   đánh giá → `buoi_danh_gia` · chấm lớp → `gami_grades` · BTVN → `btvn_ket_qua`
-//   ⚠ ET KHÔNG có bảng hiện vật theo buổi mà tự tin nhận ra được ⇒ CỐ Ý bỏ khỏi rổ ②
-//     và khai thẳng trong `khongBiet`. Thà thiếu còn hơn đoán bừa là "đang dở".
+// TÁM NGUỒN (VẬN HÀNH ①–⑥ khớp `VietCuaToi` + PHÁT TRIỂN ⑦⑧ khớp `VietCuaToiTab` giao việc):
+//   ① getMyTasks            — đánh giá · chấm bài · ET · BTVN · MT (GV/TG, theo phân công lớp)
+//   ② myBuoiAoCuaKhoang     — điểm danh ca TÔI trực (Ops)
+//   ③ getMyOpsTasks         — report trước buổi · báo tan
+//   ④ getMyPrepTasks        — chuẩn bị phòng
+//   ⑤ listDotChoDuyetDuoi   — đợt bổ trợ đuổi chờ chốt kế hoạch (team học thuật, theo môn)
+//   ⑥ listCanScanDaCham     — bài test đã chấm chờ scan (pool Ops, KHÔNG theo người)
+//   ⑦ listViecCuaToi        — task PHÁT TRIỂN được giao cho tôi (đang mở)
+//   ⑧ listViecToiGiao       — task tôi GIAO, người ta nộp rồi, đang CHỜ TÔI nghiệm thu
+// ⑧ là loại dễ quên nhất mà lại đúng chỗ nghẽn đã đo được: `vh_ops_task` 427/447 dòng đóng
+// mà chưa duyệt. Việc "chờ tôi duyệt" vẫn là việc CỦA TÔI, dù tôi không phải người làm.
+// Nguồn nào không áp cho người đang đăng nhập thì tự trả rỗng — không cần gate thêm ở đây,
+// TRỪ ⑥ (pool chung, phải gate `opsToanHe` nếu không ai cũng thấy).
+//
+// ⚠ KHÔNG tự định nghĩa lại luật HẠN ở file này. Hạn do chính nguồn sinh ra (`deadline` của
+//   MyTask/OpsTask/MyPrepTask). Chép lại công thức hạn sang đây là đẻ nguồn sự thật thứ hai,
+//   rồi sửa một bên quên bên kia — đúng lỗi CLAUDE.md §2 đã ghi.
+//
+// PHÂN RỔ theo NGÀY CỦA HẠN, không theo ngày buổi:
+//   ① NỢ         — hạn đã qua trước hôm nay, chưa xong.
+//   ② HÔM NAY    — hạn rơi đúng hôm nay.
+//   ③ DỰ KIẾN    — việc PHÁT SINH hôm nay mà hạn chưa tới (gồm buổi hôm nay CHƯA MỞ:
+//                  chưa có dòng `buoi_hoc` nên chưa có task nào để đọc, phải dựng từ vai).
+//   ④ KHÔNG HẠN  — việc thật, đang chờ, nhưng hệ không có mốc hạn. Nêu ra chứ KHÔNG giấu:
+//                  giấu vì "không xếp được vào rổ nào" là đúng thứ §9 gọi là bỏ sót.
+//
+// "ĐANG DỞ" (yêu cầu cũ, vẫn còn hiệu lực: *"để t nhận thức được nó đang diễn ra"*) giờ là
+// CỜ trên từng dòng, không phải rổ thứ năm — cùng một việc vừa quá hạn vừa đang dở thì đáng
+// nằm ở rổ NỢ với dấu "đang dở", chứ không phải xuất hiện hai lần ở hai rổ.
 // ════════════════════════════════════════════════════════════════════════════
-export type ViecHanHomNay = { nhan: string; lop: string; ngayBuoi: string; hanLuc: string; quaGio: boolean }
-export type ViecDangDo = { nhan: string; lop: string; ngayBuoi: string; tuoiNgay: number }
+export type NhomViec = 'buoi' | 'diemdanh' | 'report_tan' | 'prep' | 'duyet_duoi' | 'scan_test' | 'giao_viec' | 'nghiem_thu'
+const TEN_NHOM: Record<NhomViec, string> = {
+  buoi: 'Buổi học', diemdanh: 'Điểm danh', report_tan: 'Report / Báo tan',
+  prep: 'Chuẩn bị phòng', duyet_duoi: 'Bổ trợ đuổi', scan_test: 'Test đầu vào',
+  giao_viec: 'Phát triển', nghiem_thu: 'Chờ bạn nghiệm thu',
+}
+// Trạng thái việc phát triển còn ĐANG MỞ với người làm. 'cho_nghiem_thu' KHÔNG nằm đây —
+// nộp rồi thì bóng sang sân người giao, để nguyên trong danh sách người làm là nhắc nhầm người.
+const VIEC_DANG_MO: TrangThaiViec[] = ['moi_giao', 'dang_lam', 'tra_lai']
+
+export type ViecGom = {
+  khoa: string              // ổn định — key React + khoá gắn quyết định 3 nút
+  nhom: NhomViec; nhomTen: string
+  nhan: string              // tên việc
+  boiCanh: string           // lớp / phòng / học sinh — ngữ cảnh gọn 1 dòng
+  ngay: string              // ngày GỐC của việc (ngày buổi / ngày ca / hạn)
+  // ⚠ HAI KHÁI NIỆM KHÁC NHAU, đừng gộp: "trễ hạn" đòi phải CÓ hạn để mà trễ; "tuổi" thì
+  //   việc nào cũng có. Gộp lại thì việc không-hạn nộp từ hôm qua bị gắn nhãn NỢ — bịa ra
+  //   một mốc hạn chưa từng tồn tại rồi kết tội người dùng trễ nó.
+  coHan: boolean            // hệ có mốc hạn cho việc này không
+  soNgay: number            // coHan ? số ngày ĐÃ TRỄ (0 = chưa trễ) : TUỔI của việc
+  hanLuc: string | null     // 'HH:mm' giờ VN — null = hạn tính theo NGÀY, không có mốc giờ
+  quaGio: boolean           // đã qua mốc hạn (dùng cho rổ ②: hạn hôm nay nhưng đã quá giờ)
+  dangDo: boolean           // có hiện vật đã bắt đầu mà chưa đóng
+  buoiId: string | null     // buoiId + tab đều có ⇒ bấm được Làm/Huỷ/Gác
+  tab: string | null
+}
 
 export type BangHomNay = {
   ngay: string; thu: string
-  hanHomNay: ViecHanHomNay[]
-  dangDo: ViecDangDo[]
-  noCu: number
+  no: ViecGom[]
+  hanHomNay: ViecGom[]
+  duKien: ViecGom[]
+  khongHan: ViecGom[]
+  soDangDo: number
+  nguonDaQuet: string[]     // khai thẳng "một chỗ" này gồm những gì — người mới đọc biết ngay
   phamVi: string
   khongBiet: string[]
 }
 
 const THU_VN = ['Chủ nhật', 'Thứ hai', 'Thứ ba', 'Thứ tư', 'Thứ năm', 'Thứ sáu', 'Thứ bảy']
 const gioVN = (ms: number) => new Date(ms).toLocaleTimeString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', hour: '2-digit', minute: '2-digit' })
+const hhmm = (s: string) => String(s).slice(0, 5)
 
-// Buổi nào ĐÃ có dấu vết bắt đầu, theo từng khâu.
+// Buổi nào ĐÃ có dấu vết bắt đầu, theo từng khâu. Suy từ HIỆN VẬT, không đoán.
+// ⚠ Chấm ET KHÔNG có bảng dấu vết theo buổi đủ tin ⇒ CỐ Ý bỏ, và khai trong `khongBiet`.
+//   Thà thiếu cờ "đang dở" còn hơn gắn bừa rồi người tin nhầm là đã làm dở.
 async function daBatDau(buoiIds: string[]): Promise<Record<string, Set<string>>> {
   const ra: Record<string, Set<string>> = { danhgia: new Set(), ingame: new Set(), btvn: new Set() }
   if (!buoiIds.length) return ra
@@ -638,39 +769,246 @@ async function daBatDau(buoiIds: string[]): Promise<Record<string, Set<string>>>
 export async function viecHomNay(): Promise<BangHomNay> {
   const homNay = todayVN()
   const now = Date.now()
-  const chuaXong = (await getMyTasks()).filter((t) => !t.done)
 
-  const batDau = await daBatDau([...new Set(chuaXong.map((t) => t.buoiId))])
+  // Gọi song song — 6 nguồn độc lập nhau, tuần tự thì màn chờ dài gấp mấy lần vô ích.
+  // Mỗi nguồn tự chịu lỗi riêng: một nguồn hỏng KHÔNG được kéo sập cả màn (trợ lý mất
+  // điểm danh vẫn hơn trợ lý trắng bảng), nhưng phải KHAI ra là nguồn đó lỗi — hỏng mà
+  // im lặng thì người đọc hiểu thành "không có việc nào", đúng lỗi §9 bỏ sót.
+  const hong: string[] = []
+  const anToan = async <T,>(ten: string, p: Promise<T>, macDinh: T): Promise<T> => {
+    try { return await p } catch { hong.push(ten); return macDinh }
+  }
+  const [tatCa, prof, scope, opsDD, opsRT, prep] = await Promise.all([
+    anToan('việc buổi', getMyTasks(), [] as Awaited<ReturnType<typeof getMyTasks>>),
+    getMyProfile(),
+    anToan('phạm vi', getMyScope(), null),
+    anToan('điểm danh', myBuoiAoCuaKhoang(homNay, homNay), [] as Awaited<ReturnType<typeof myBuoiAoCuaKhoang>>),
+    anToan('report/báo tan', getMyOpsTasks(homNay, homNay), [] as Awaited<ReturnType<typeof getMyOpsTasks>>),
+    anToan('chuẩn bị phòng', getMyPrepTasks(homNay, homNay), [] as Awaited<ReturnType<typeof getMyPrepTasks>>),
+  ])
 
-  const hanHomNay: ViecHanHomNay[] = []
-  const dangDo: ViecDangDo[] = []
-  let noCu = 0
+  const gom: ViecGom[] = []
+  const duKienRieng: ViecGom[] = []   // rổ ③ dựng tay (buổi chưa mở) — không đi qua đường hạn
 
-  for (const t of chuaXong) {
-    const hanNgay = t.deadline != null ? ngayCuaTs(t.deadline) : null
-    if (hanNgay === homNay) {
-      hanHomNay.push({ nhan: t.label, lop: t.lop, ngayBuoi: t.ngay, hanLuc: gioVN(t.deadline!), quaGio: t.deadline! < now })
-    } else if (hanNgay != null && hanNgay < homNay) noCu++
+  // ── ① VIỆC BUỔI (GV/TG) ───────────────────────────────────────────────────
+  const chuaXong = tatCa.filter((t) => !t.done)
+  const qd = await anToan('quyết định đã bấm', docQuyetDinh([...new Set(chuaXong.map((t) => t.buoiId))]), new Map())
+  // Trừ đúng tập mà màn "Việc cần quyết" đang trừ: bấm Huỷ rồi mà rổ Nợ vẫn kêu thì ba nút vô nghĩa.
+  const conSong = chuaXong.filter((t) => {
+    const d = qd.get(`${t.buoiId}|${t.tab}`)
+    if (d?.quyetDinh === 'huy') return false
+    if (d?.quyetDinh === 'gac' && d.gacDen && d.gacDen > homNay) return false
+    return true
+  })
+  const batDau = await anToan('dấu vết đang dở', daBatDau([...new Set(conSong.map((t) => t.buoiId))]), { danhgia: new Set<string>(), ingame: new Set<string>(), btvn: new Set<string>() })
+  for (const t of conSong) {
+    gom.push({
+      khoa: `buoi:${t.buoiId}|${t.tab}`, nhom: 'buoi', nhomTen: TEN_NHOM.buoi,
+      nhan: t.label, boiCanh: `${t.lop} · buổi ${t.ngay.slice(5)}`, ngay: t.ngay,
+      hanLuc: t.deadline != null ? gioVN(t.deadline) : null,
+      coHan: t.deadline != null,
+      soNgay: t.deadline != null ? Math.max(0, soNgayLech(ngayCuaTs(t.deadline), homNay)) : soNgayLech(t.ngay, homNay),
+      quaGio: t.deadline != null && t.deadline < now,
+      dangDo: !!batDau[t.tab]?.has(t.buoiId),
+      buoiId: t.buoiId, tab: t.tab,
+    })
+  }
 
-    // Rổ ② độc lập rổ ① — một việc vừa quá hạn vừa đang dở thì xuất hiện ở cả hai,
-    // vì hai rổ trả lời hai câu khác nhau ("phải xong" vs "đang diễn ra").
-    if (batDau[t.tab]?.has(t.buoiId)) {
-      dangDo.push({ nhan: t.label, lop: t.lop, ngayBuoi: t.ngay, tuoiNgay: soNgayLech(t.ngay, homNay) })
+  // ── ② ĐIỂM DANH ca tôi trực hôm nay ───────────────────────────────────────
+  // Buổi ĐÃ MỞ mà chưa đánh dấu đủ HS ⇒ việc thật hôm nay. Buổi CHƯA MỞ ⇒ dự kiến (rổ ③).
+  const buoiDaMo = opsDD.filter((ba) => ba.buoi && ba.buoi.trang_thai !== 'huy')
+  const tienDo = buoiDaMo.length
+    ? await anToan('tiến độ điểm danh', diemDanhTienDo(buoiDaMo.map((ba) => ba.buoi!.id)), {} as Record<string, { tong: number; daDanh: number }>)
+    : {}
+  for (const ba of opsDD) {
+    if (ba.buoi && ba.buoi.trang_thai === 'huy') continue
+    const boiCanh = `${ba.lop.ten_lop} · ${hhmm(ba.slot.gio_bat_dau)}${ba.slot.phong ? ` · phòng ${ba.slot.phong}` : ''}`
+    if (!ba.buoi) {
+      duKienRieng.push({
+        khoa: `dd-ao:${ba.lop.id}|${ba.ngay}`, nhom: 'diemdanh', nhomTen: TEN_NHOM.diemdanh,
+        nhan: 'Mở buổi + điểm danh', boiCanh: `${boiCanh} · buổi chưa mở`, ngay: ba.ngay,
+        coHan: false, soNgay: 0, hanLuc: null, quaGio: false, dangDo: false, buoiId: null, tab: null,
+      })
+      continue
+    }
+    const td = tienDo[ba.buoi.id]
+    if (td && td.daDanh >= td.tong) continue // xong rồi
+    gom.push({
+      khoa: `dd:${ba.buoi.id}`, nhom: 'diemdanh', nhomTen: TEN_NHOM.diemdanh,
+      nhan: 'Điểm danh', boiCanh: `${boiCanh}${td ? ` · ${td.daDanh}/${td.tong} HS` : ''}`, ngay: ba.ngay,
+      // Điểm danh không có cột hạn riêng — hạn thực tế là chính ngày buổi. Suy tại chỗ từ NGÀY,
+      // không phải chép công thức giờ của nguồn khác.
+      coHan: true, soNgay: Math.max(0, soNgayLech(ba.ngay, homNay)), hanLuc: null, quaGio: false,
+      dangDo: !!td && td.daDanh > 0 && td.daDanh < td.tong,
+      buoiId: null, tab: null,
+    })
+  }
+
+  // ── ③ REPORT / BÁO TAN ────────────────────────────────────────────────────
+  for (const t of opsRT) {
+    if (t.done) continue
+    gom.push({
+      khoa: `ops:${t.tkbId}|${t.ngay}|${t.tab}`, nhom: 'report_tan', nhomTen: TEN_NHOM.report_tan,
+      nhan: OPS_TASK_LABEL[t.tab], boiCanh: `${t.lopTen} · ${hhmm(t.gioBatDau)}–${hhmm(t.gioKetThuc)}`, ngay: t.ngay,
+      coHan: true, soNgay: Math.max(0, soNgayLech(ngayCuaTs(t.deadline), homNay)), hanLuc: gioVN(t.deadline),
+      quaGio: t.deadline < now, dangDo: false, buoiId: null, tab: null,
+    })
+  }
+
+  // ── ④ CHUẨN BỊ PHÒNG ──────────────────────────────────────────────────────
+  for (const t of prep) {
+    if (t.done) continue
+    gom.push({
+      khoa: `prep:${t.phong}|${t.ngay}|${t.luot}`, nhom: 'prep', nhomTen: TEN_NHOM.prep,
+      nhan: 'Chuẩn bị phòng', boiCanh: `Phòng ${t.phong} · ca ${hhmm(t.gioCaDau)}`, ngay: t.ngay,
+      coHan: true, soNgay: Math.max(0, soNgayLech(ngayCuaTs(t.deadline), homNay)), hanLuc: gioVN(t.deadline),
+      quaGio: t.deadline < now, dangDo: false, buoiId: null, tab: null,
+    })
+  }
+
+  // ── ⑤ ĐỢT BỔ TRỢ ĐUỔI CHỜ CHỐT (team học thuật, theo môn) ─────────────────
+  // KHÔNG có mốc hạn trong hệ ⇒ rổ ④. Vẫn phải hiện: đây đúng loại việc nằm im hàng tháng
+  // vì không ai có lý do nào để nhớ tới nó.
+  const htMons = prof?.hocThuatMons ?? []
+  const choDuyet = htMons.length ? await anToan('bổ trợ đuổi chờ chốt', listDotChoDuyetDuoi(htMons), [] as DotDuoi[]) : []
+  for (const d of choDuyet) {
+    gom.push({
+      khoa: `duoi:${d.caseId}`, nhom: 'duyet_duoi', nhomTen: TEN_NHOM.duyet_duoi,
+      nhan: 'Chốt kế hoạch đợt đuổi', boiCanh: `${d.ho_ten} · ${d.lop}`,
+      ngay: d.created_at ? ngayVN(d.created_at) : homNay,
+      coHan: false, soNgay: d.created_at ? soNgayLech(ngayVN(d.created_at), homNay) : 0,
+      hanLuc: null, quaGio: false, dangDo: false, buoiId: null, tab: null,
+    })
+  }
+
+  // ── ⑥ BÀI TEST ĐÃ CHẤM CHỜ SCAN (pool chung của Ops) ──────────────────────
+  // Pool, KHÔNG theo người ⇒ phải gate `opsToanHe`, không thì mọi nhân sự đều thấy việc
+  // của Ops. (VietCuaToi gate đúng chỗ này — bỏ gate là đổi hành vi, không phải "gom thêm".)
+  const scan = scope?.opsToanHe ? await anToan('bài test chờ scan', listCanScanDaCham(), [] as Awaited<ReturnType<typeof listCanScanDaCham>>) : []
+  for (const c of scan) {
+    gom.push({
+      khoa: `scan:${c.id}`, nhom: 'scan_test', nhomTen: TEN_NHOM.scan_test,
+      nhan: 'Scan bài test đã chấm', boiCanh: `${c.hoTenHs}${c.khoi ? ` · khối ${c.khoi}` : ''} · ${c.mon}`, ngay: c.ngay,
+      coHan: false, soNgay: Math.max(0, soNgayLech(c.ngay, homNay)), hanLuc: null, quaGio: false,
+      dangDo: false, buoiId: null, tab: null,
+    })
+  }
+
+  // ── ⑦⑧ VIỆC PHÁT TRIỂN (giao việc) ────────────────────────────────────────
+  // Hai chiều, KHÁC NHAU về ai đang cầm bóng:
+  //   ⑦ tôi LÀM  — trạng thái còn mở (mới giao / đang làm / bị trả lại)
+  //   ⑧ tôi DUYỆT — người ta nộp rồi, đang chờ chính tôi nghiệm thu
+  // `viec.deadline` là NGÀY ('YYYY-MM-DD'), không phải mốc mili-giây như OpsTask ⇒ so theo
+  // ngày, KHÔNG dựng giờ giả để nhét cho vừa khuôn (giờ bịa sẽ hiện ra màn như thật).
+  const myId = prof?.nhanSu.id
+  const [viecToiLam, viecToiGiao] = myId
+    ? await Promise.all([
+        anToan('việc phát triển của bạn', listViecCuaToi(myId), [] as ViecFull[]),
+        anToan('việc chờ bạn nghiệm thu', listViecToiGiao(myId), [] as ViecFull[]),
+      ])
+    : [[] as ViecFull[], [] as ViecFull[]]
+  for (const v of viecToiLam) {
+    if (!VIEC_DANG_MO.includes(v.trang_thai)) continue
+    gom.push({
+      khoa: `viec:${v.id}`, nhom: 'giao_viec', nhomTen: TEN_NHOM.giao_viec,
+      nhan: v.tieu_de,
+      boiCanh: [v.loai_viec_ten, v.trang_thai === 'tra_lai' ? 'bị trả lại' : null, v.nguoi_giao_ten ? `giao bởi ${v.nguoi_giao_ten}` : null].filter(Boolean).join(' · ') || 'Việc phát triển',
+      ngay: v.deadline ?? ngayVN(v.created_at),
+      hanLuc: null,
+      coHan: !!v.deadline,
+      soNgay: v.deadline ? Math.max(0, soNgayLech(v.deadline, homNay)) : soNgayLech(ngayVN(v.created_at), homNay),
+      quaGio: false, dangDo: v.trang_thai === 'dang_lam', buoiId: null, tab: null,
+    })
+  }
+  for (const v of viecToiGiao) {
+    if (v.trang_thai !== 'cho_nghiem_thu') continue
+    gom.push({
+      khoa: `nt:${v.id}`, nhom: 'nghiem_thu', nhomTen: TEN_NHOM.nghiem_thu,
+      nhan: `Nghiệm thu: ${v.tieu_de}`,
+      boiCanh: [v.nguoi_lam_ten ? `${v.nguoi_lam_ten} đã nộp` : 'đã nộp', v.ngay_nop ? `ngày ${v.ngay_nop.slice(5)}` : null].filter(Boolean).join(' · '),
+      ngay: v.ngay_nop ?? v.deadline ?? ngayVN(v.created_at),
+      hanLuc: null,
+      // Nghiệm thu KHÔNG có hạn riêng trong hệ. Đếm tuổi từ NGÀY NỘP: nộp xong nằm im
+      // chính là lỗ đen đã đo được (housekeeping tự xả sau 7 ngày rồi ghi 'dat' — việc
+      // chưa ai xem thành việc đạt). Để tuổi hiện ra thì người còn kịp duyệt trước mốc đó.
+      coHan: false,
+      soNgay: v.ngay_nop ? Math.max(0, soNgayLech(v.ngay_nop.slice(0, 10), homNay)) : 0,
+      quaGio: false, dangDo: false, buoiId: null, tab: null,
+    })
+  }
+
+  // ── ⑨ BUỔI HÔM NAY CHƯA MỞ → việc sẽ phát sinh (rổ ③) ─────────────────────
+  // Buổi chưa mở thì CHƯA CÓ dòng `buoi_hoc` ⇒ `getMyTasks` không sinh task nào ⇒ nếu chỉ
+  // đọc task thì lịch dạy hôm nay vô hình. Dựng từ (vai trên lớp × TASKS_BY_VAI) — dùng
+  // CHÍNH bảng vai→khâu của gami.ts, không chép lại.
+  // ⚠ KHÔNG gán hạn cho nhóm này: hạn của chúng do luật hạn sinh ra SAU KHI buổi mở; đoán
+  //   trước ở đây là copy luật sang nguồn thứ hai (xem cảnh báo đầu mục).
+  const vaiTheoLop = new Map<string, Set<'gv' | 'tg'>>()
+  for (const pc of prof?.phanCong ?? []) {
+    const v = pc.vai_tro === 'gv' ? 'gv' : 'tg'
+    if (!vaiTheoLop.has(pc.lop_id)) vaiTheoLop.set(pc.lop_id, new Set())
+    vaiTheoLop.get(pc.lop_id)!.add(v)
+  }
+  if (vaiTheoLop.size) {
+    const aoHomNay = await anToan('lịch dạy hôm nay', buoiAoCuaNgay(homNay), [] as Awaited<ReturnType<typeof buoiAoCuaNgay>>)
+    for (const a of aoHomNay) {
+      const vais = vaiTheoLop.get(a.lop.id)
+      if (!vais || a.buoi) continue          // đã mở ⇒ task thật đã có ở nguồn ①, không nhân đôi
+      const seen = new Set<string>()
+      for (const vai of ['gv', 'tg'] as const) {
+        if (!vais.has(vai)) continue
+        for (const k of TASKS_BY_VAI[vai]) {
+          if (seen.has(k.tab)) continue
+          seen.add(k.tab)
+          duKienRieng.push({
+            khoa: `du-kien:${a.lop.id}|${homNay}|${k.tab}`, nhom: 'buoi', nhomTen: TEN_NHOM.buoi,
+            nhan: k.label, boiCanh: `${a.lop.ten_lop} · ca ${hhmm(a.slot.gio_bat_dau)} · buổi chưa mở`,
+            ngay: homNay, coHan: false, soNgay: 0, hanLuc: null, quaGio: false, dangDo: false, buoiId: null, tab: null,
+          })
+        }
+      }
     }
   }
 
-  hanHomNay.sort((a, b) => a.hanLuc.localeCompare(b.hanLuc))
-  dangDo.sort((a, b) => b.tuoiNgay - a.tuoiNgay)
+  // ── PHÂN RỔ ───────────────────────────────────────────────────────────────
+  const no: ViecGom[] = []; const hanHomNay: ViecGom[] = []
+  const duKien: ViecGom[] = [...duKienRieng]; const khongHan: ViecGom[] = []
+  for (const v of gom) {
+    // Không có hạn ⇒ KHÔNG được xếp vào nợ/hôm nay dù tuổi lớn cỡ nào. Việc nằm 30 ngày mà
+    // hệ chưa từng đặt hạn cho nó thì đó là lỗ hổng KHAI BÁO, không phải người dùng trễ hạn.
+    if (!v.coHan) { khongHan.push(v); continue }
+    if (v.soNgay > 0) no.push(v)
+    else if (v.ngay === homNay || v.hanLuc != null) hanHomNay.push(v)
+    else duKien.push(v)
+  }
+
+  no.sort((a, b) => b.soNgay - a.soNgay || a.nhomTen.localeCompare(b.nhomTen))
+  hanHomNay.sort((a, b) => (a.hanLuc ?? '99:99').localeCompare(b.hanLuc ?? '99:99') || a.boiCanh.localeCompare(b.boiCanh))
+  duKien.sort((a, b) => a.boiCanh.localeCompare(b.boiCanh))
+  // Không có hạn thì thứ tự duy nhất đáng tin là TUỔI — nằm lâu nhất lên đầu.
+  khongHan.sort((a, b) => b.soNgay - a.soNgay || a.nhomTen.localeCompare(b.nhomTen))
+
   const [y, m, d] = homNay.split('-').map(Number)
+  const soDangDo = [...no, ...hanHomNay].filter((v) => v.dangDo).length
 
   return {
     ngay: homNay, thu: THU_VN[new Date(Date.UTC(y, m - 1, d)).getUTCDay()],
-    hanHomNay, dangDo, noCu,
-    phamVi: `Chỉ việc có HẠN rơi đúng ngày ${homNay}, cộng việc ĐANG DỞ (đã bắt đầu, chưa đóng). `
-      + `KHÔNG gồm ${noCu} việc hạn đã qua từ trước — đó là nợ cũ, mục riêng.`,
+    no, hanHomNay, duKien, khongHan, soDangDo,
+    nguonDaQuet: [
+      'Việc buổi học của bạn (đánh giá · chấm bài · ET · BTVN · MT)',
+      'Điểm danh ca bạn trực', 'Report trước buổi · Báo tan', 'Chuẩn bị phòng',
+      'Đợt bổ trợ đuổi chờ chốt kế hoạch (nếu bạn ở team học thuật)',
+      'Bài test đã chấm chờ scan (nếu bạn ở Ops)',
+      'Task phát triển được giao cho bạn',
+      'Task bạn giao, người ta đã nộp và đang chờ bạn nghiệm thu',
+    ],
+    phamVi: `Gom từ 8 nguồn việc, tính đến ${homNay}. Đã trừ việc bạn đã bấm Huỷ và việc đang gác chưa tới hẹn.`
+      + (hong.length ? ` ⚠ KHÔNG đọc được: ${hong.join(', ')} — phần đó đang thiếu khỏi bảng, không phải là không có việc.` : ''),
     khongBiet: [
-      'Chấm ET không có bảng dấu vết theo buổi nên KHÔNG xác định được là đang dở hay chưa bắt đầu.',
-      'Việc không có hạn (deadline trống) không nằm ở rổ nào — không suy được là hôm nay hay không.',
+      'Chấm ET không có bảng dấu vết theo buổi nên không xác định được là đang dở hay chưa bắt đầu.',
+      'Điểm danh và mấy việc ở mục "không có hạn" thì hệ không lưu mốc hạn — thứ tự trong đó chỉ theo ngày, không theo độ gấp.',
+      'Việc dự kiến của buổi CHƯA MỞ chưa có hạn: hạn chỉ sinh ra sau khi buổi được mở.',
+      'Bảng này chỉ có việc của người đang đăng nhập — không có việc của người khác.',
     ],
   }
 }

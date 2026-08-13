@@ -4448,6 +4448,137 @@ khỏi `DATABASE_URL` (ghi, chỉ lúc migrate) — **CHƯA LÀM, cần CEO quy�
 Trang B của Đạt"* ⇒ **cấp 3 (10·11·12): nhánh A → Trang · nhánh B và C → Đạt.** Không còn khối vô chủ.
 Chỉ còn CHẶN duy nhất: **ai CHẤM bài test**.
 
+## 2026-08-12 (tiếp) — ⭐ Trợ lý = "Việc của tôi" bản ĐẦY ĐỦ: 3 rổ + gom 8 nguồn
+
+- **CEO bẻ lái 2 nhịp trong cùng phiên, cả hai đều thu hẹp đúng chỗ Claude làm sai:**
+  ① *"Lúc báo việc thì phải báo việc đang NỢ, việc đang CẦN HOÀN THÀNH, và việc DỰ KIẾN sẽ phải
+  làm trong hôm nay mới có cái nhìn đầy đủ chứ."*
+  ② *"Bản chất của việc hàng ngày chính là 'Việc của tôi', nhưng là 1 phiên bản có nhận định và
+  đầy đủ hơn. Thay vì t phải đi click khắp nơi thì t chỉ còn click 1 chỗ."* + *"cả task phát triển
+  nữa. Tóm lại là trong mọi chỗ mà có việc của nó hoặc SẮP có việc của nó thì đều ở chỗ trợ lý."*
+  + *"nó chính là phiên bản việc của tôi mềm mại hơn, và quan trọng là CHỦ ĐỘNG hơn."*
+- **⭐ SỬA SAI 1 — nợ cũ bị GIẤU thành một con số.** Bản sáng nay rút nợ về `noCu: number` vì CEO
+  nói *"ko phải là mấy cái nợ kia nhé"*. Hiểu đúng ý (đừng trộn lẫn) nhưng làm sai cách (giấu đi).
+  Đúng là **TÁCH RỔ**: vẫn thấy đủ, vẫn không lẫn. Bài học chung: *"đừng trộn X vào Y"* nghĩa là
+  **tách chỗ đứng**, KHÔNG phải **bỏ X đi** — hai cách xử khác hẳn nhau mà nghe thì giống.
+- **⭐ SỬA SAI 2 — trợ lý chỉ đọc `getMyTasks` thì nó ĐÚNG LÀ "một dashboard nữa".** CEO đã nói câu
+  này từ lượt trước (*"hệ thống đưa ra thì khác gì dashboard"*) và Claude vá bằng KHUNG CHAT — đúng
+  một nửa. Nửa còn lại là ĐỘ PHỦ: người vẫn phải sang chỗ khác xem điểm danh, report, phòng, giao việc.
+- **8 NGUỒN (trước: 1).** ①`getMyTasks` ②`myBuoiAoCuaKhoang` (điểm danh ca tôi trực) ③`getMyOpsTasks`
+  (report/báo tan) ④`getMyPrepTasks` (chuẩn bị phòng) ⑤`listDotChoDuyetDuoi` ⑥`listCanScanDaCham`
+  ⑦`listViecCuaToi` (task phát triển tôi làm) ⑧`listViecToiGiao` **lọc `cho_nghiem_thu`** — việc
+  người ta NỘP RỒI đang chờ chính tôi duyệt. ⑧ dễ quên nhất mà đúng chỗ nghẽn đã đo (427/447
+  `vh_ops_task` đóng-mà-chưa-duyệt): **việc "chờ tôi duyệt" vẫn là việc CỦA TÔI dù tôi không làm.**
+  Nguồn ⑥ là POOL chung ⇒ giữ gate `opsToanHe`; bỏ gate là đổi hành vi chứ không phải "gom thêm".
+- **⭐ TÁCH "TRỄ HẠN" KHỎI "TUỔI" (`coHan` + `soNgay`) — suýt để lọt một lời nói dối.** Bản nháp
+  dùng chung một trường `treNgay`, nên việc KHÔNG CÓ HẠN (chờ nghiệm thu, đợt đuổi chờ chốt, bài
+  test chờ scan) nộp từ hôm qua là bị xếp thẳng vào rổ NỢ. Tức **bịa ra một mốc hạn chưa từng tồn
+  tại rồi kết tội người dùng trễ nó**. Giờ: `coHan=false` ⇒ KHÔNG BAO GIỜ vào nợ/hôm nay, đi rổ
+  riêng "Không có hạn — vẫn đang chờ bạn", sắp theo tuổi. Prompt worker cũng được dặn đúng câu này.
+  Đây là §1.5 ở dạng mới: không có dữ liệu (hạn) thì đừng suy ra kết luận (trễ).
+- **RỔ ③ "DỰ KIẾN" = phần CHỦ ĐỘNG.** Buổi hôm nay CHƯA MỞ thì chưa có dòng `buoi_hoc` ⇒
+  `getMyTasks` không sinh task nào ⇒ **lịch dạy hôm nay hoàn toàn vô hình** với bản cũ. Dựng từ
+  (vai trên lớp × `TASKS_BY_VAI`) — **export `TASKS_BY_VAI` từ gami.ts** thay vì chép bản thứ hai,
+  vì thêm khâu mới mà quên bên kia thì rổ dự kiến thiếu ÂM THẦM.
+  ⚠ Cố ý **KHÔNG gán hạn** cho nhóm này: hạn sinh ra sau khi buổi mở, đoán trước = copy luật hạn
+  sang nguồn thứ hai (đúng thứ CLAUDE.md §2 cấm).
+- **Một nguồn hỏng KHÔNG được kéo sập cả màn** (`anToan()` bọc từng nguồn) — nhưng **phải KHAI ra**
+  trong `phamVi`: hỏng mà im lặng thì người đọc hiểu thành "không có việc nào", đúng lỗi §9 bỏ sót.
+- **Ba nút Làm/Huỷ/Gác giờ được TRỪ ở CẢ hai màn** (tách `docQuyetDinh` dùng chung): bấm Huỷ rồi mà
+  rổ Nợ vẫn kêu thì ba nút thành vô nghĩa. Bản cũ chỉ trừ ở "Việc cần quyết".
+- **HẠN 23:59 CÙNG NGÀY: KHÔNG ĐỔI.** Claude đề xuất nới sang trưa hôm sau (rổ "hạn hôm nay" gần
+  như luôn rỗng); CEO không chọn phương án nào trong 3, mà **định nghĩa lại cách hiển thị** — 3 rổ.
+  ⇒ Luật hạn giữ nghiêm, chỗ sai là ở cách BÁO. Ghi lại vì đây là lần thứ n Claude định sửa LUẬT
+  trong khi thứ hỏng là VIEW.
+- **Verify:** tsc sạch · `npx vite build` sạch · click-through THẬT (dev pane 1280×720 — ⚠ pane vẫn
+  dựng ra 0×0, phải gọi `resize_window` mới có viewport; các phiên trước bỏ cuộc ở đúng chỗ này):
+  đăng nhập admin → tab 🤖 Trợ lý → 4 rổ render đúng, tất cả = 0.
+  **0 đó là ĐÚNG, không phải bug** — oracle SQL xác nhận NS005 có 0 ở cả 8 nguồn (0 phân công lớp ·
+  0 ca trực · 0 việc làm · 0 việc chờ duyệt). ⚠ Quick-login chỉ có `admin@gmail.com` nên KHÔNG tự
+  test được tài khoản CÓ việc. Số KỲ VỌNG dựng sẵn bằng `scripts/_chk_troly_nguon.mjs <maNS>`:
+  **NS001** = 18 lớp / 75 buổi hở khâu / 6 đợt đuổi chờ chốt / 4 bài test chờ scan / 1 task phát
+  triển / **4 lớp dạy HÔM NAY, 0 buổi đã mở** (⇒ rổ "dự kiến" có hàng thật).
+  **NS002** = 13 lớp / 66 buổi hở / 4 task phát triển / 1 lớp dạy hôm nay.
+  ⇒ CEO đăng nhập bằng tài khoản mình là đối chiếu được ngay từng rổ.
+- **CÒN:** ⚠ chưa chạy mắt bằng tài khoản có việc (chặn bởi quick-login) · gợi ý PHƯƠNG ÁN (CEO:
+  *"sau này đủ giỏi thì gợi ý phương án cho t"*) chưa làm — hiện model chỉ đọc và kết luận ·
+  chuỗi test đầu vào vẫn chờ CEO chốt AI CHẤM.
+
+## 2026-08-12 (tiếp) — ⭐⭐ STORY BỔ TRỢ BÙ: sửa bug làm RƠI NGƯỜI + khai 5 mục vào trợ lý
+
+- **CEO:** *"Cái này ko đủ detail đâu. Giờ đi 1 story cụ thể là bổ trợ bù đi"* + 5 thứ cần mỗi ngày
+  (① học xong chưa fill đủ · ② sắp đến lịch · ③ đã xếp mà vắng, phải xếp lại · ④ quá hạn 48h ·
+  ⑤ đang cần xếp — *"nhiều nên ko cần detail, cần số lượng và deeplink"*) + *"hiện tại hệ thống
+  đang lỗi phần này, ấn vắng ko thấy action gì"*.
+- **⭐⭐ BUG GỐC (`botro.ts listCanBu`) — hệ ĐANG LÀM RƠI NGƯỜI, im lặng.** `handled` = tồn tại BẤT KỲ
+  dòng `buoi_hoc_hs` nào có `bu_cho_buoi_id` = buổi mẹ. **Không xét em có ĐẾN không, không xét buổi
+  bù còn sống hay ĐÃ HUỶ.** ⇒ xếp bù xong là lần nghỉ biến mất khỏi hàng đợi VĨNH VIỄN.
+  Đo thật: **11 lượt vắng buổi bù + 6 lượt buổi bù bị huỷ**; sau khi sửa còn **14 ca** thật sự cần
+  xếp lại (3 lượt đã có lần xếp khác còn hiệu lực). Cũ nhất: Bùi Ngọc Bảo Ngân nghỉ 16/06 — **57
+  ngày** không ai biết. CEO chỉ thấy triệu chứng "ấn vắng ko thấy action gì"; sự thật là **KHÔNG CÓ
+  action nào cả**, và cái mất không phải nút bấm mà là bản thân lần nghỉ.
+  ⚠ **Vế "buổi bù bị huỷ" CEO KHÔNG nêu** — cùng một gốc, tự lộ khi đọc code. 6/14 ca là loại này.
+- **Sửa:** lần xếp chỉ tính là GIẢI QUYẾT khi ① buổi bù chưa huỷ VÀ ② em không vắng ở buổi bù đó.
+  `diem_danh = null` VẪN giữ chỗ (buổi chưa diễn ra) — kéo về sớm là đẻ lượt xếp trùng.
+  **Không cần migration**: unique của `buoi_hoc_hs` là `(buoi_hoc_id, hoc_sinh_id)` chứ không phải
+  `(hoc_sinh_id, bu_cho_buoi_id)` ⇒ xếp lại vào buổi bù KHÁC vốn đã hợp lệ; DB có sẵn 2 ca xếp 2 lần
+  cho cùng buổi mẹ (ai đó làm tay) — chứng minh luồng này đã xảy ra ngoài đời trước khi có code.
+- **`LanNghi` mang `lyDoQuayLai` + `soLanDaXep`** → card "Cần bù" hiện khối đỏ **XẾP LẠI · Vắng buổi
+  bù / Buổi bù bị huỷ · đã xếp N lần**, và màn buổi bù đổi dòng chết *"Vắng — không chấm."* thành
+  *"Lần nghỉ gốc đã quay lại Cần xếp bù"*. Trước đây bấm Vắng xong không ai biết chuyện gì xảy ra
+  **vì đúng là không có gì xảy ra**.
+- **⭐ HẠN 48H — KẺ ĐƯỜNG NGÀY (CEO chốt).** Lúc bật luật: **126/141 lần nghỉ đã quá hạn = 89%**.
+  Đỏ hết thì không còn là cảnh báo. ⇒ `NGAY_AP_HAN_48H='2026-08-10'`: nghỉ từ ngày đó trở đi mới
+  chịu hạn; trước đó thành MỘT con số "tồn đọng cũ". Hệ quả **cố ý**: mục ④ hôm nay = **0**, hàng
+  đầu tiên rơi vào 13/08. Không backdate, không xoá — cùng khuôn đã dùng cho đánh giá.
+- **⭐ TỰ DẪM BẪY MÌNH VỪA VIẾT — mục ① ra 105/151 buổi.** Ngay đầu hàm có comment cảnh báo "buổi
+  chưa đóng ≠ chưa fill đủ, phải xét khâu có ÁP DỤNG không"… rồi soi per-HS mà quên chính điều đó:
+  buổi **đã đóng đủ 2 mốc** vẫn bị lôi ra vì HS không có dòng chấm ET — mà **buổi mẹ không có ET thì
+  lấy gì chấm**. Sửa 2 cổng: ① `et_dong_at && danh_gia_xong_at` ⇒ người đã tự chốt, không nhắc nữa;
+  ② chỉ đòi chấm ET/đánh-giá-dạng khi `gami_session_problems` CÓ đề cho đúng em đó. **105 → 2.**
+  Ca "chốt mà không có lấy một dòng chấm nào" giữ lại thành MỘT con số (`dongKhong`), không phải
+  danh sách 98 dòng. *Bài học: viết cảnh báo ra không có nghĩa là đã tránh được nó — phải soi CON SỐ
+  đầu ra. 105 lộ ngay khi mở màn; đọc code lại thì không.*
+- **Verify — số khớp oracle SQL độc lập** (`scripts/_diag_botro_bu.mjs`, `_diag_botro_sau_fix.mjs`):
+  ① 2 · ② 10 (6 hôm nay + 4 sắp tới) · ③ **14** · ④ 0 · ⑤ **141** (15 trong hạn · 0 quá hạn · 126 tồn
+  đọng, cũ nhất 05/07). Tab "Cần bù" 141 → **155** (+14 quay lại), 3 em đầu đúng là mấy em từng rơi.
+  Deeplink "đi xếp bù ›" nhảy đúng màn. tsc + `vite build` sạch.
+  ⚠ Screenshot KHÔNG chụp được (pane không compositing) — verify bằng đọc DOM, đúng cách handoff đã ghi.
+- **2 lỗi hiển thị tự bắt lúc soi output:** `cuNhat` lấy `[length-1]` trong mảng đã sort GIẢM dần theo
+  tuổi ⇒ ra ngày MỚI nhất (hiện "11/08", đúng phải "05/07"); và `bu_cho` in ngày ISO đầy đủ giữa một
+  màn toàn dd/mm.
+- **CÒN:** ⚠ **35 ca `khong_xep_duoc`** (cũ nhất 19/06) nằm ngoài MỌI mục — theo thiết kế hệ không tự
+  gợi ý lại, nên chúng nằm im vĩnh viễn. Hoặc nhắc lại, hoặc khai tử trạng thái đó; **chưa hỏi CEO.**
+  · Mục ② chưa có chỗ ghi "đã xác nhận lịch" (CEO chốt chưa thêm cột, chỉ hiện để nhìn).
+  · `dongKhong` đã tính nhưng chưa render ra UI.
+
+## 2026-08-12 (tiếp) — Bổ trợ bù vào NHẬN ĐỊNH + KHUNG CHAT · làm rõ "không xếp được"
+
+- **CEO:** *"ko xếp được tức là gặp vấn đề về lịch và ko xếp luôn"* ⇒ `khong_xep_duoc` là trạng thái
+  **KẾT THÚC do người quyết**, KHÔNG phải việc treo. Lượt trước Claude nêu 35 ca đó như một "lỗ hổng
+  cần nhắc lại" — SAI, đã sửa lại wording trong `khongBiet` + prompt worker. Cố ý nằm ngoài hàng đợi.
+  *(Bài học lặp: dữ liệu nói CÁI GÌ, không nói VÌ SAO. Thấy 35 dòng nằm im rồi tự quy là hệ bỏ quên,
+  trong khi đó là người chủ động chốt — đúng lỗi đã ghi ở mục `ingame` sáng nay.)*
+- **CEO:** *"T cần nhận xét ở trên erp, chỗ AI ấy"* ⇒ 4 danh sách bổ trợ bù mới chỉ là DỮ LIỆU; cái
+  biến nó thành trợ lý là câu NHẬN XÉT. Thêm `nhanDinhBu(d)` sinh 3 nhận định (ăn CHÍNH snapshot đã
+  load ở màn, **không query lại** — query lần hai là mở đường cho hai con số lệch nhau trên cùng màn):
+  ① phải-xếp-lại (kèm tách vắng vs buổi-huỷ + ca cũ nhất có TÊN) · ② tồn đọng cũ (ngưỡng ≥20, kèm
+  đường thoát: xử hết hoặc chốt không-cần-bù hàng loạt — *"để lơ lửng là tệ nhất"*) · ③ đóng-khống.
+  `nhanDinhHeThong(bu?)` nhận snapshot; TroLyTab đổi từ gọi song song sang **chuỗi** bù → nhận định.
+- **KHUNG CHAT giờ BIẾT về bù** (`BoiCanhTroLy.boTroBu`): tổng theo mục + danh sách CÓ TÊN cho
+  phải-xếp-lại / sắp-tới / chưa-fill-đủ. Trước đó hỏi "em nào phải xếp lại" thì model **đúng luật §4
+  vẫn phải trả lời "bảng của tôi không có"** dù dữ liệu nằm ngay trên màn — đưa số vào UI mà quên đưa
+  vào bảng sạch là để trợ lý mù đúng chỗ vừa làm.
+- Prompt worker thêm 4 dòng chống đọc nhầm: `phaiXepLai` ≠ nghỉ lần đầu · `quaHan` rỗng KHÔNG phải
+  "mọi thứ đúng hạn" (số cũ ở `tonDongCu`) · `tonDongCu` đừng gọi là trễ hạn · `khongXepDuoc` là kết thúc.
+- **Verify:** tsc sạch · click-through thật: 3 nhận định bù hiện đủ kèm 3 nút. Số trên màn **132 cần
+  xếp · 14 trong hạn · 118 tồn đọng** khớp TUYỆT ĐỐI với oracle SQL chạy cùng lúc.
+  ⚠ Khác lượt đo trước đó (141/15/126) vì **DB đổi thật giữa hai lần chạy** — 9 lượt vừa được xử lý
+  trong lúc làm. Nhắc lại: đây là DB PRODUCTION đang có người dùng, số nhảy giữa hai lần đo là bình
+  thường; đừng vội đọc thành bug (đã suýt).
+- **CÒN:** `dongKhong` giờ hiện ở nhận định (67 buổi) nhưng CHƯA rõ bao nhiêu trong đó là "buổi mẹ
+  không có ET" (bình thường) vs "bấm cho xong" (vấn đề thật) — cần soi vài ca rồi mới kết luận được.
+
 ## 2026-08-13 — Giao việc: tối ưu giao việc phát triển (4 điểm CEO yêu cầu, nhánh `feat/giaoviec-toi-uu`)
 
 - **Perf — `getMyScope` (nhansu.ts):** vòng lặp tính giám sát-cấp-dưới qua `listViTri(vt.team_id)` mỗi
