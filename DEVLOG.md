@@ -5005,3 +5005,34 @@ xác nhận textarea rỗng lại (dọn sạch dữ liệu test, không để l
   tsc + vite build sạch.
 - **CÒN:** `nhansu_hieusuat` của Trang chưa làm · gate "ai thấy module nào" chưa có (hiện mọi người
   thấy hết) · test đầu vào vẫn chặn ở "ai chấm".
+
+## 2026-08-14 (tiếp) — ⭐ "Lớp nào THẬT SỰ chạy ET/BTVN" suy từ hành vi, không bắt ai tick
+
+- **CEO:** *"Tất cả các lớp m vừa báo là thực tế chưa chạy ET, vì nhiều lý do khác nhau. M bỏ qua
+  cái này. Những lớp thực sự chạy là những lớp còn lại. m chỉ care các lớp đã chạy rồi đi"*.
+- **⭐ TÍN HIỆU BIMODAL — xác nhận lại lần 2 (DEVLOG 12/08 từng ghi, nay đo lại vẫn đúng).**
+  Tỉ lệ buổi CÓ ĐỀ ET theo lớp, 60 ngày: **27 lớp ở 70–100%** (5A1/5A2/6A1/6S2 100% · 9B1 92% ·
+  9A2 88% · 9S1/9C1 87%) · **14 lớp ở 0–29%** (12C1/8S0/8K1/9K2 0% · 12B1 4% · TOÀN BỘ Tiếng Anh,
+  Văn) · **đúng 1 lớp ở giữa** (8B2 43%). Khoảng trống **43% → 74%** đủ rộng ⇒ ngưỡng 60% có dữ
+  liệu đỡ lưng, không phải bịa. `phanLoaiLopTheoKhau()` trong `troly-vanhanh.ts`.
+  ⇒ **Cờ must-exist theo lớp KHÔNG cần người khai** — thứ 12/08 tưởng phải ngồi tick 46 lớp thì
+  hành vi đã tự nói ra. Nhưng chỉ nói được vì có ĐỦ MẪU: lớp <4 buổi mặc định coi như CÓ chạy
+  (thà hỏi thừa một lớp mới còn hơn im lặng cả tháng — đúng lỗi bỏ-qua-âm-thầm).
+- **⭐ TÍN HIỆU MỚI, trước đây bị NUỐT: "lớp chạy ET mà buổi này thiếu đề".** Bản trước gộp mọi
+  buổi-không-có-đề vào một câu "không có đề nên không đòi" ⇒ lớp chạy ET đều 85% mà quên gán đề
+  một buổi thì hệ cũng im. Nay tách hai ca trông giống hệt nhau:
+  · **8A2, 8B1** — chạy ET 83–85% mà buổi 13/08 không có đề ⇒ **nghi quên gán, đáng hỏi**.
+  · **12A1, 7K1** — thực tế không chạy ET ⇒ bỏ qua, không phải việc.
+  Đây chính là "đánh đổi đã biết" ghi trong SPEC §2 ("luật này bỏ sót lớp đáng lẽ phải có ET mà
+  chưa ai soạn đề") — giờ hết bỏ sót.
+- **Số sau khi lọc:** nợ BTVN tuần 9 → 8 lớp · tổng lớp nợ 26 → 25. Nợ đánh giá giữ 19 (CEO chốt
+  đánh giá bắt buộc MỌI buổi thường, không lọc theo lớp).
+- **⚠ ĐÍNH CHÍNH bản thân (khoá thứ tự ET):** trước đó Claude đề nghị BỎ khoá vì nó chặn 16 lớp.
+  CEO bác đúng: khoá là **công cụ quản trị** — chặn thì TA leo thang lên leader, đó là quy trình
+  chứ không phải nhược điểm. Claude đã đánh giá nó như ma sát UX mà không hỏi nó tồn tại để làm gì.
+  **Nhưng đo ra thì phần lớn buổi gây chặn lại là buổi KHÔNG có đề ET** (12B1 chặn 23 buổi vì lỗ
+  17/06 vốn không có đề) ⇒ khoá đang hỏi *"cột null không"* thay vì *"còn nợ ET không"*. Với bộ
+  phân loại mới, điều kiện đúng nằm sẵn trong tay. **CHƯA sửa `closePhase`** — chờ CEO chốt vì nó
+  đụng luật đóng phase đang chạy thật.
+- Ghi nhận thêm: `closePhase` CHO đóng phase rỗng (chỉ không tính Elo) ⇒ không ai kẹt vĩnh viễn,
+  nhưng gỡ 16 chuỗi bằng tay là bấm xác nhận rỗng hàng chục lần — việc vặt vô nghĩa.

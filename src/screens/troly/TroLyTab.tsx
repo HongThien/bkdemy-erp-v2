@@ -417,11 +417,12 @@ function KhoiVanHanh({ d }: { d: BaoCaoVanHanh | null }) {
   if (!d) return null
   const q = d.buoiHomQua
   const du = q.filter((b) => b.du).map((b) => b.lop)
-  const thieuET = q.filter((b) => b.coDeET && !b.etXong).map((b) => b.lop)
+  const thieuET = q.filter((b) => b.lopChayET && b.coDeET && !b.etXong).map((b) => b.lop)
   const thieuDG = q.filter((b) => !b.dgXong).map((b) => b.lop)
   // Lớp không có đề ET: nêu RIÊNG, không trộn vào "thiếu" — chúng không nợ gì cả. Nêu ra để
   // người đọc không tưởng hệ bỏ sót (§ "cắt mà không nói = đọc thành toàn bộ").
-  const khongDeET = q.filter((b) => !b.coDeET).map((b) => b.lop)
+  const thieuDe = q.filter((b) => b.thieuDe).map((b) => b.lop)
+  const khongChayET = q.filter((b) => !b.lopChayET).map((b) => b.lop)
   const btvnThieu = d.btvn.filter((b) => !b.daGhiNhan)
   const btvnXong = d.btvn.filter((b) => b.daGhiNhan)
 
@@ -439,9 +440,14 @@ function KhoiVanHanh({ d }: { d: BaoCaoVanHanh | null }) {
           <DongCau nhan="Còn thiếu ET:" lops={thieuET} mau="text-rose-700" />
           <DongCau nhan="Chưa điền đánh giá:" lops={thieuDG} mau="text-rose-700" />
           {du.length === q.length && <div className="mt-1 text-[13px] text-emerald-700">Tất cả các lớp đã hoàn thành.</div>}
-          {khongDeET.length > 0 && (
+          {/* ⭐ TÁCH HAI CA TRÔNG GIỐNG NHAU: lớp KHÔNG chạy ET (bỏ qua, không phải việc) vs
+              lớp CÓ chạy mà buổi này thiếu đề (đáng hỏi — nhiều khả năng quên gán). Bản trước
+              gộp cả hai vào một câu "không có đề nên không đòi" ⇒ nuốt mất tín hiệu thứ hai. */}
+          <DongCau nhan="Lớp chạy ET nhưng buổi này CHƯA có đề — kiểm tra xem có quên gán không:"
+            lops={thieuDe} mau="text-amber-700" />
+          {khongChayET.length > 0 && (
             <div className="mt-1 text-[11.5px] leading-relaxed text-slate-400">
-              Không đòi ET ở {nốiLớp(khongDeET)} — mấy buổi này chưa có đề ET gắn vào, nên hệ không coi là nợ.
+              Bỏ qua ET ở {nốiLớp(khongChayET)} — mấy lớp này thực tế không chạy ET (suy từ 60 ngày gần nhất).
             </div>
           )}
         </>

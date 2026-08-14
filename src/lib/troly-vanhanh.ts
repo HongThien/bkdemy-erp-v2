@@ -39,11 +39,56 @@ const dauTuan = (ngay: string): string => {
   return congNgay(ngay, thu === 0 ? -6 : 1 - thu)
 }
 
+// ⭐ LỚP NÀO THẬT SỰ CHẠY ET / BTVN — SUY TỪ HÀNH VI, không bắt ai tick 46 lớp.
+//
+// CEO 14/08: *"Tất cả các lớp m vừa báo là thực tế chưa chạy ET, vì nhiều lý do khác nhau.
+// M bỏ qua cái này. Những lớp thực sự chạy là những lớp còn lại. m chỉ care các lớp đã chạy"*.
+//
+// Đo 60 ngày (14/08) — tín hiệu TÁCH ĐÔI rất sạch, không phải nhiễu:
+//   · 27 lớp ở 70–100% buổi có đề ET  (9B1 92% · 9A2 88% · 9S1/9C1 87% · nhóm 5A/6A 100%)
+//   · 14 lớp ở 0–29%                  (12B1 4% · 12C1/8S0/8K1/9K2 0% · toàn bộ Tiếng Anh, Văn)
+//   · ĐÚNG 1 lớp ở giữa (8B2 43%)
+// Khoảng trống 43% → 74% đủ rộng để đặt ngưỡng mà không phải bịa. Lấy 60%.
+//
+// ⚠ Mẫu nhỏ thì KHÔNG phân loại: lớp mới mở 1–3 buổi chưa nói lên gì (5E1, 8V1 mỗi lớp 1 buổi).
+//   Xếp nhầm một lớp mới vào "không chạy" là im lặng suốt, đúng lỗi bỏ-qua-âm-thầm.
+const CUA_SO_PHAN_LOAI = 60
+const NGUONG_CHAY = 0.6
+const MAU_TOI_THIEU = 4
+
+export type KhauLop = { chay: boolean; tyLe: number; soBuoi: number; duMau: boolean }
+export type PhanLoaiLop = Map<string, { et: KhauLop; btvn: KhauLop }>
+
+export async function phanLoaiLopTheoKhau(): Promise<PhanLoaiLop> {
+  const homNay = new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Ho_Chi_Minh' })
+  const tu = congNgay(homNay, -CUA_SO_PHAN_LOAI)
+  const ds = await buoiKemHienVat(tu, homNay)
+  const gom = new Map<string, { n: number; et: number; btvn: number }>()
+  for (const b of ds) {
+    const o = gom.get(b.lop_id) ?? { n: 0, et: 0, btvn: 0 }
+    o.n++; if (b.coDeET) o.et++; if (b.coDocBTVN) o.btvn++
+    gom.set(b.lop_id, o)
+  }
+  const ra: PhanLoaiLop = new Map()
+  for (const [lopId, o] of gom) {
+    const mk = (c: number): KhauLop => {
+      const tyLe = o.n ? c / o.n : 0
+      const duMau = o.n >= MAU_TOI_THIEU
+      // Chưa đủ mẫu ⇒ coi như CÓ chạy: thà hỏi thừa một lớp mới còn hơn im lặng cả tháng.
+      return { chay: duMau ? tyLe >= NGUONG_CHAY : true, tyLe, soBuoi: o.n, duMau }
+    }
+    ra.set(lopId, { et: mk(o.et), btvn: mk(o.btvn) })
+  }
+  return ra
+}
+
 export type BuoiHomQua = {
   lop: string; mon: string; buoiId: string
   etXong: boolean; coDeET: boolean
+  lopChayET: boolean     // lớp này có thật sự chạy ET không (suy từ 60 ngày)
+  thieuDe: boolean       // lớp CHẠY ET mà buổi này không có đề ⇒ nhiều khả năng QUÊN GÁN
   dgXong: boolean
-  du: boolean            // đủ nghĩa vụ của buổi vừa dạy (ET nếu có đề, + đánh giá)
+  du: boolean            // đủ nghĩa vụ của buổi vừa dạy (ET nếu lớp chạy + có đề, + đánh giá)
 }
 export type BtvnDenHan = {
   lop: string; mon: string; buoiTruoc: string; treNgay: number; daGhiNhan: boolean
@@ -86,20 +131,27 @@ export async function baoCaoVanHanh(): Promise<BaoCaoVanHanh> {
 
   // Quét từ đầu tuần (hoặc sớm hơn nếu hôm qua rơi trước đầu tuần — sáng thứ Hai).
   const tuQuet = tuNgay < homQua ? tuNgay : homQua
-  const [ds, aoHomNay] = await Promise.all([
+  const [ds, aoHomNay, phanLoai] = await Promise.all([
     buoiKemHienVat(tuQuet, homQua),
     // Lớp nào HÔM NAY có ca — nguồn của nghĩa vụ BTVN (chấm ở buổi kế).
     buoiAoCuaNgay(homNay).catch(() => []),
+    phanLoaiLopTheoKhau(),
   ])
+  const chayET = (lopId: string) => phanLoai.get(lopId)?.et.chay ?? true
+  const chayBTVN = (lopId: string) => phanLoai.get(lopId)?.btvn.chay ?? true
 
   // ── ① HÔM QUA: ET + đánh giá của buổi vừa dạy ───────────────────────────────
   const buoiHomQua: BuoiHomQua[] = ds.filter((b) => b.ngay === homQua).map((b) => {
     const etXong = !!b.et_dong_at, dgXong = !!b.danh_gia_xong_at
+    const lopChayET = chayET(b.lop_id)
+    // ⭐ Lớp CHẠY ET mà buổi lại không có đề = tín hiệu MỚI, trước đây bị nuốt.
+    //   Bản trước im ở mọi buổi thiếu đề ⇒ lớp chạy ET đều 87% mà quên gán đề một buổi thì
+    //   hệ cũng im, và đó chính là chỗ đáng hỏi nhất (quên soạn/quên gán, không phải không làm).
+    const thieuDe = lopChayET && !b.coDeET
     return {
       lop: b.lop?.ten_lop ?? '?', mon: b.lop?.mon ?? '', buoiId: b.id,
-      etXong, coDeET: b.coDeET, dgXong,
-      // "Đủ" = làm hết cái ĐÁNG LẼ phải làm. Không có đề ET thì ET không nằm trong nghĩa vụ.
-      du: (!b.coDeET || etXong) && dgXong,
+      etXong, coDeET: b.coDeET, lopChayET, thieuDe, dgXong,
+      du: (!lopChayET || !b.coDeET || etXong) && dgXong,
     }
   }).sort((a, b) => a.lop.localeCompare(b.lop))
 
@@ -116,7 +168,8 @@ export async function baoCaoVanHanh(): Promise<BaoCaoVanHanh> {
       if (!cu || b.ngay > cu.ngay) ganNhat.set(b.lop_id, b)
     }
     for (const b of ganNhat.values()) {
-      if (!b.coDocBTVN) continue   // không có doc BTVN ⇒ không có nghĩa vụ, im
+      if (!chayBTVN(b.lop_id)) continue  // lớp này không chạy BTVN ⇒ không có nghĩa vụ
+      if (!b.coDocBTVN) continue         // buổi không có doc ⇒ không có gì để chấm
       btvn.push({
         lop: b.lop?.ten_lop ?? '?', mon: b.lop?.mon ?? '', buoiTruoc: b.ngay,
         treNgay: lechNgay(b.ngay, homNay), daGhiNhan: !!b.btvn_dong_at,
@@ -132,10 +185,10 @@ export async function baoCaoVanHanh(): Promise<BaoCaoVanHanh> {
     const ten = b.lop?.ten_lop ?? '?'
     const o = gom.get(ten) ?? { lop: ten, noET: 0, noBTVN: 0, noDanhGia: 0, soBuoi: 0 }
     o.soBuoi++
-    if (b.coDeET && !b.et_dong_at) o.noET++
+    if (chayET(b.lop_id) && b.coDeET && !b.et_dong_at) o.noET++
     // BTVN chỉ tính nợ khi ĐÃ QUA ngày có ca kế — ở đây xấp xỉ bằng "buổi đã đủ già".
     // Buổi hôm qua chưa tới hạn BTVN, đưa vào là lặp lại đúng cái sai nhịp đã nêu ở đầu file.
-    if (b.coDocBTVN && !b.btvn_dong_at && lechNgay(b.ngay, homNay) >= 2) o.noBTVN++
+    if (chayBTVN(b.lop_id) && b.coDocBTVN && !b.btvn_dong_at && lechNgay(b.ngay, homNay) >= 2) o.noBTVN++
     if (!b.danh_gia_xong_at) o.noDanhGia++
     gom.set(ten, o)
   }
@@ -147,10 +200,11 @@ export async function baoCaoVanHanh(): Promise<BaoCaoVanHanh> {
     ngay: homNay, homQua, tuNgay,
     buoiHomQua, btvn, noTuan,
     phamVi: `Buổi thường TOÀN HỆ. Hôm qua ${homQua}: ${buoiHomQua.length} buổi. `
-      + `Nợ tính từ đầu tuần ${tuNgay}. ET chỉ đòi khi buổi có đề, BTVN chỉ đòi khi buổi có doc — `
-      + `hệ không có chỗ ghi lớp nào bắt buộc, nên suy từ hiện vật. Đánh giá đòi ở MỌI buổi thường.`,
+      + `Nợ tính từ đầu tuần ${tuNgay}. CHỈ tính lớp thật sự chạy khâu đó — suy từ 60 ngày gần nhất `
+      + `(≥60% buổi có đề/doc thì coi là có chạy). Lớp không chạy ET/BTVN bị bỏ hẳn khỏi mọi con số. `
+      + `Đánh giá đòi ở MỌI buổi thường.`,
     khongBiet: [
-      'Không biết lớp nào ĐÁNG LẼ phải có ET/BTVN mà chưa ai soạn đề — những buổi đó hệ im, không tính là nợ.',
+      'Lớp "có chạy ET/BTVN hay không" là SUY từ 60 ngày gần nhất, không phải ai đó khai. Lớp mới mở dưới 4 buổi thì mặc định coi như có chạy (thà hỏi thừa còn hơn im).',
       'Không biết ai là người phải fill từng khâu; báo cáo dừng ở mức LỚP, việc gán người là của người đọc.',
       'BTVN của buổi hôm qua chưa tới hạn (chấm ở buổi kế) nên cố ý không nằm trong mục "hôm qua".',
     ],
