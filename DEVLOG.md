@@ -4887,3 +4887,45 @@ sau một nút sửa.
 
 **Quan sát khi verify:** giữa phiên, tab Đã xếp 18→17 và Hoàn thành 150→151 — có người trong team vừa
 đóng một buổi bù lúc đang test. Nhớ: đây là DB THẬT đang chạy, không phải sandbox.
+
+## 2026-08-14 — Bài toán có thể có giả thiết RIÊNG (mirror mô hình con-cha)
+
+**Yêu cầu (Thùy, verbatim):** "trong phần bản đồ kiến thức hình. t muốn tầng từ node bài toán - mô
+hình cũng có thể có giả thiết riêng giống với mô hình con - mô hình bố. Thực tế không phải mọi bài
+đều tuyệt đối kế thừa. Tạm thời mới là để agile 1 chút : node bài toán có thể có giải thiết độc lập
+với mô hình" — nới model cũ (đã chốt cứng ở `FormBaiToan.tsx`/`hinh.ts`: "bài toán KHÔNG có giả thiết
+riêng, luôn mượn của mô hình").
+
+**Schema (`202608141750_hinh_baitoan_gia_thiet_rieng.sql`):** thêm `hinh_baitoan.gia_thiet_rieng text`
++ `gt_thay_the boolean not null default false`. KHÔNG mirror y hệt cặp cột của `hinh_mo_hinh`
+(`gia_thiet`+`gia_thiet_them`) — mô hình cần 2 cột vì `gia_thiet` NOT NULL đã có sẵn làm nền base;
+bài toán không có tiền lệ đó nên 1 cột nullable là đủ (đúng tinh thần "agile" của Thùy — ít schema
+surface nhất có thể). Mặc định `gt_thay_the=false, gia_thiet_rieng=null` ⇒ hành vi CŨ bảo toàn 100%.
+Cố ý KHÔNG đụng `gia_thiet_phu` đã có — đó là dữ kiện lẻ lan theo van tiền đề (`keo_gt_phu`), cơ chế
+khác hẳn, dễ nhầm tên nên ghi rõ trong comment ở cả 2 nơi.
+
+**Data-layer (`hinh.ts`):** hàm mới `giaThietBaiToan(L, baiToanId)` — CỘNG THÊM (mặc định): giả thiết
+mô hình + `gia_thiet_rieng`; THAY THẾ (`gt_thay_the=true`): chỉ `gia_thiet_rieng`, bỏ qua hẳn mô hình.
+`deBaiChuanCua` đổi sang gọi hàm này thay vì `giaThietDayDu(mo_hinh_id)` thẳng.
+
+**Quét toàn repo mọi chỗ đang gọi `giaThietDayDu(L, X.mo_hinh_id)` để phân loại ĐÚNG BÀI TOÁN (X là
+node — phải đổi) vs ĐÚNG MÔ HÌNH (X là mô hình hoặc mô hình sâu nhất của cả chuỗi — giữ nguyên):
+đổi 10 chỗ (SoDo.tsx ×4: node card, detail panel + 2 nơi build "đề" export; SoanTaiLieu.tsx ×6: mục
+Buổi, mucGhep, mucGhepLua, 2 bản versions, đề chung của phiếu tick). CỐ TÌNH giữ nguyên
+`TaiLieuChuan.tsx`'s `giaThietDayDu(L, mhSau.id)` — `mhSau` ở đó là MÔ HÌNH sâu nhất một CHUỖI (nhiều
+node, có thể khác mô hình) chạm tới, không phải 1 bài toán cụ thể — áp override của 1 node vào đây sai
+ngữ nghĩa.
+
+**UI (`FormBaiToan.tsx`):** thêm khối "Giả thiết riêng của bài này" — mirror UI y hệt kiểu-kế-thừa của
+`FormMoHinh` (Cộng thêm / Thay thế hẳn, 2 nút bấm) + textarea + OCR ảnh/PDF + preview live "Giả thiết
+đầy đủ (xem trước)" khi có nội dung riêng. Mặc định để trống = mượn 100% mô hình, không đổi UX cho
+99% bài toán hiện có. `SoDo.tsx` detail panel: nhãn "Đề — giả thiết" đổi động theo trạng thái (mượn /
+mô hình+riêng / riêng của bài này).
+
+**Verify:** `npm run migrate` áp sạch (chỉ 1 file mới, các cảnh báo "file sửa sau" khác là false-positive
+CRLF đã biết) · `npm run schema` xác nhận 2 cột mới · tsc sạch · `npx vite build` sạch · click-through
+THẬT trên BT.025 (họ Tứ giác K8, dev server phiên song song khác đang chạy — mở qua browser tool, dữ
+liệu vẫn chung 1 DB Supabase): mở Sửa → gõ "TEST góc D = 65 độ" ở ô Giả thiết riêng (mặc định Cộng
+thêm) → preview live ghép đúng "Cho tứ giác ABCD; TEST góc D = 65 độ" → Lưu → card node + panel detail
++ nhãn đều đổi đúng ("ĐỀ — GIẢ THIẾT (MÔ HÌNH + RIÊNG)") → mở lại Sửa, xoá trắng ô riêng → Lưu →
+xác nhận textarea rỗng lại (dọn sạch dữ liệu test, không để lại vết trên BT.025 thật).

@@ -1,8 +1,11 @@
 // Form node lưới ③ (bài toán nhỏ). CHỈ mở từ M1/M2 (xây lưới) — M3 (gán bài) không có đường tới đây (§0.4).
 //
-// ⭐ MODEL (Thùy chốt): bài toán KHÔNG có giả thiết/hình riêng — cả hai MƯỢN của MÔ HÌNH. Các bài toán
-//   trong một mô hình chỉ khác nhau ở CÂU HỎI. Vì câu hỏi luôn dựa trên giả thiết ⇒ mỗi bài toán phải
-//   TRỰC TIẾP thuộc đúng 1 mô hình (trường "Mô hình" bắt buộc).
+// ⭐ MODEL (Thùy chốt, nới 08-14): bài toán mặc định KHÔNG có giả thiết/hình riêng — cả hai MƯỢN của
+//   MÔ HÌNH. Nhưng không phải bài nào cũng tuyệt đối kế thừa: node được phép CỘNG THÊM hoặc THAY HẲN
+//   giả thiết riêng (mirror quan hệ mô hình con-cha, xem `giaThietBaiToan` trong hinh.ts) — mặc định
+//   vẫn mượn 100%, chỉ ai chủ động gõ mới lệch. Các bài toán trong một mô hình vẫn chủ yếu khác nhau ở
+//   CÂU HỎI. Vì câu hỏi luôn dựa trên giả thiết ⇒ mỗi bài toán phải TRỰC TIẾP thuộc đúng 1 mô hình
+//   (trường "Mô hình" bắt buộc).
 //
 // Bố cục: popup lớn 2 cột.
 //   TRÁI  = ngữ cảnh (mô hình + giả thiết đầy đủ + cấp + hình mô hình) → rồi CÂU HỎI.
@@ -29,6 +32,10 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
   // Giả thiết phụ = dữ kiện lẻ của node (đa số là vẽ thêm "gọi I = AC∩BD"). Bám node: hiện ở đề nếu node
   // được hỏi, ở đầu bước nếu node ẩn trong đáp án. Đừng nhét dữ kiện chung ở đây (đó là giả thiết mô hình).
   const [giaThietPhu, setGiaThietPhu] = useState(sua?.gia_thiet_phu ?? '')
+  // Giả thiết RIÊNG của node (khác gia_thiet_phu ở trên) — mirror mô hình con-cha: mặc định CỘNG THÊM
+  // vào giả thiết mô hình, hoặc THAY hẳn (node tự đứng độc lập). Mặc định để trống = mượn 100% mô hình.
+  const [gtRieng, setGtRieng] = useState(sua?.gia_thiet_rieng ?? '')
+  const [gtThayThe, setGtThayThe] = useState(sua?.gt_thay_the ?? false)
   const [cap, setCap] = useState<number>(sua?.cap ?? 1)
   // Node MỚI: hệ ĐIỀN SẴN cấp = gợi ý (1 + max cấp tiền đề), vẫn sửa tay được. Node đang SỬA: giữ cấp cũ,
   // coi như người đã chốt (không auto-đè). Người gõ tay 1 lần → `capTuNhap` = true, hệ thôi điền lại.
@@ -64,7 +71,8 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
   // không bắt buộc phải luôn có tầng "cách xử lý".
   const dangLa = L.dang.filter((d) => d.cap === 'dang' || (d.cap === 'loai_ch' && !L.dang.some((x) => x.cha_id === d.id)))
   const maCap = useMemo(() => api.maPhanCapMap(L), [L])
-  const giaThiet = api.giaThietDayDu(L, moHinhId)
+  const giaThietMoHinh = api.giaThietDayDu(L, moHinhId)
+  const giaThietFull = gtThayThe ? (gtRieng.trim() || giaThietMoHinh) : [giaThietMoHinh, gtRieng.trim()].filter(Boolean).join('; ')
   const anhMoHinh = api.anhCauHinhCua(L, moHinhId)
   // Hình ĐỀ BÀI đang hiệu lực (node có hình riêng thì lấy nó, không thì mượn mô hình) — làm mặc định cho bước giải.
   const anhDeHienTai = dungHinhRieng && anhRieng ? anhRieng : anhMoHinh
@@ -93,8 +101,9 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
       const anhChuan = dungHinhRieng ? (anhRieng || null) : null
       let btId = sua?.id
       const gtPhu = giaThietPhu.trim() || null
-      if (sua) await api.updateBaiToan(sua.id, { phat_bieu: phatBieu, mo_hinh_id: moHinhId, cap, de_bai_chuan: null, anh_chuan: anhChuan, gia_thiet_phu: gtPhu })
-      else btId = (await api.createBaiToan({ phat_bieu: phatBieu, mo_hinh_id: moHinhId, cap, de_bai_chuan: null, anh_chuan: anhChuan, gia_thiet_phu: gtPhu })).id
+      const gtRiengVal = gtRieng.trim() || null
+      if (sua) await api.updateBaiToan(sua.id, { phat_bieu: phatBieu, mo_hinh_id: moHinhId, cap, de_bai_chuan: null, anh_chuan: anhChuan, gia_thiet_phu: gtPhu, gia_thiet_rieng: gtRiengVal, gt_thay_the: gtThayThe })
+      else btId = (await api.createBaiToan({ phat_bieu: phatBieu, mo_hinh_id: moHinhId, cap, de_bai_chuan: null, anh_chuan: anhChuan, gia_thiet_phu: gtPhu, gia_thiet_rieng: gtRiengVal, gt_thay_the: gtThayThe })).id
       // Hình bước giải: mặc định null = mượn hình đề (mọi chỗ hiển thị fallback `anh_loi_giai ?? anhCuaBaiToan`).
       const anhLoiGiai = dungHinhGiaiRieng ? (anhGiai || null) : null
       // ⭐ 08-10 FIX BUG NGHIÊM TRỌNG: TRƯỚC đây khối này chỉ chạy `if (dangId)` — chưa chọn Dạng (hợp lệ,
@@ -124,7 +133,7 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
         {/* Header */}
         <div className="flex items-center gap-3 border-b border-slate-200 px-5 py-3">
           <h3 className="text-[15px] font-semibold text-slate-900">{sua ? `Sửa bài toán ${sua.ma}` : 'Bài toán mới trong mô hình'}</h3>
-          <span className="text-[12px] text-slate-400">giả thiết mượn của mô hình · câu hỏi riêng · hình mặc định mượn, đặt riêng được</span>
+          <span className="text-[12px] text-slate-400">giả thiết mặc định mượn của mô hình, đặt riêng được · câu hỏi riêng · hình mặc định mượn, đặt riêng được</span>
           <button onClick={onClose} className="ml-auto rounded-lg border border-slate-300 px-3 py-1.5 text-[13px] text-slate-600 hover:bg-slate-50">Đóng</button>
         </div>
 
@@ -150,11 +159,38 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
               {L.moHinh.map((m) => <option key={m.id} value={m.id}>{maCap.get(m.id) ?? '?'} · {tron(m.ten)}</option>)}
             </select>
 
-            <div className="rounded-lg border border-teal-200 bg-teal-50/60 px-3 py-2.5">
-              <div className="mb-1 text-[10.5px] font-semibold uppercase tracking-wide text-teal-700">Giả thiết đầy đủ (mượn của mô hình, kế thừa từ bố)</div>
-              <div className="text-[13px] leading-relaxed text-slate-700">
-                {giaThiet ? <MathText>{giaThiet}</MathText> : <span className="text-slate-400">mô hình chưa có giả thiết</span>}
+            <div className={`rounded-lg border px-3 py-2.5 ${gtThayThe ? 'border-slate-200 bg-slate-50/60' : 'border-teal-200 bg-teal-50/60'}`}>
+              <div className={`mb-1 text-[10.5px] font-semibold uppercase tracking-wide ${gtThayThe ? 'text-slate-400' : 'text-teal-700'}`}>
+                {gtThayThe ? 'Giả thiết của mô hình (tham chiếu — bài này sẽ THAY bằng câu riêng)' : 'Giả thiết đầy đủ của mô hình (kế thừa)'}
               </div>
+              <div className="text-[13px] leading-relaxed text-slate-700">
+                {giaThietMoHinh ? <MathText>{giaThietMoHinh}</MathText> : <span className="text-slate-400">mô hình chưa có giả thiết</span>}
+              </div>
+            </div>
+
+            {/* Giả thiết RIÊNG của bài (Thùy 08-14): không phải bài nào cũng tuyệt đối kế thừa mô hình.
+                Mặc định để trống = mượn 100% (hành vi cũ). Mirror UI kiểu kế thừa của mô hình con-cha. */}
+            <div>
+              <div className="mb-1.5 text-[11px] font-medium text-slate-600">Giả thiết riêng của bài này <span className="font-normal text-slate-400">— không bắt buộc, đa số để trống (mượn nguyên mô hình)</span></div>
+              <div className="grid grid-cols-2 gap-2">
+                {([[false, 'Cộng thêm', 'Giữ giả thiết mô hình, thêm chi tiết/điều kiện riêng cho bài này'],
+                   [true, 'Thay thế hẳn', 'Bỏ qua giả thiết mô hình — bài này tự đứng độc lập']] as const).map(([v, tit, mo]) => (
+                  <button key={String(v)} type="button" onClick={() => setGtThayThe(v)}
+                    className={`rounded-lg border px-3 py-2 text-left transition ${gtThayThe === v ? 'border-teal-400 bg-teal-50 ring-1 ring-teal-300' : 'border-slate-200 bg-white hover:bg-slate-50'}`}>
+                    <div className="text-[12.5px] font-semibold text-slate-800">{tit}</div>
+                    <div className="mt-0.5 text-[10.5px] leading-snug text-slate-500">{mo}</div>
+                  </button>
+                ))}
+              </div>
+              <textarea className={`${inp} mt-2 h-16`} value={gtRieng} onChange={(e) => setGtRieng(e.target.value)}
+                placeholder={gtThayThe ? 'Giả thiết ĐẦY ĐỦ tự viết riêng cho bài này…' : 'Phần giả thiết THÊM riêng cho bài này (không bắt buộc)…'} />
+              <div className="mt-1.5"><OcrButton onText={setGtRieng} /></div>
+              {(gtThayThe || gtRieng.trim()) && (
+                <div className="mt-2 rounded-lg bg-violet-50/70 px-3 py-2 text-[12.5px] leading-relaxed text-slate-700">
+                  <span className="text-[10.5px] font-semibold uppercase tracking-wide text-violet-700">Giả thiết đầy đủ (xem trước): </span>
+                  {giaThietFull ? <MathText>{giaThietFull}</MathText> : <span className="text-slate-400">—</span>}
+                </div>
+              )}
             </div>
 
             <div className="flex items-end gap-3">

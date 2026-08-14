@@ -1,0 +1,21 @@
+-- ============================================================================
+-- 202608141750 — hinh_baitoan_gia_thiet_rieng
+-- ----------------------------------------------------------------------------
+-- VÌ SAO (Thùy 08-14): "node bài toán cũng có thể có giả thiết riêng, giống quan hệ mô hình con -
+--   mô hình bố — thực tế không phải mọi bài đều tuyệt đối kế thừa." Trước giờ model chốt "bài toán
+--   KHÔNG có giả thiết riêng, luôn mượn 100% của mô hình" (comment cũ ở FormBaiToan.tsx/hinh.ts).
+--   Nới model: mirror ĐÚNG cặp cột `gia_thiet_them` + `gt_thay_the` đã có ở `hinh_mo_hinh` (mô hình
+--   con/cha), nhưng gộp 1 cột `gia_thiet_rieng` (không cần 2 cột như mô hình vì mô hình có sẵn cột
+--   `gia_thiet` NOT NULL làm nền base — bài toán không có tiền lệ đó, 1 cột nullable là đủ):
+--     • gt_thay_the = false (mặc định, hành vi CŨ giữ nguyên 100%): full = giả thiết mô hình + gia_thiet_rieng.
+--     • gt_thay_the = true: full = gia_thiet_rieng (bỏ qua hẳn giả thiết mô hình — bài đứng độc lập).
+--   Quan hệ node→mô hình (`mo_hinh_id`) KHÔNG đổi — vẫn xác định context/cây/tiền đề, chỉ đổi TEXT
+--   giả thiết hiển thị. `gia_thiet_rieng` KHÁC `gia_thiet_phu` đã có (đó là "dữ kiện lẻ" lan theo
+--   chuỗi tiền đề qua van keo_gt_phu — cơ chế riêng, không đụng ở đây).
+--
+-- MẤT GÌ: không — chỉ THÊM 2 cột nullable/default, không đổi dữ liệu cũ. Mọi node hiện có
+--   gt_thay_the=false, gia_thiet_rieng=null ⇒ giaThietBaiToan() trả về y hệt giaThietDayDu(mô hình)
+--   như trước (hành vi cũ bảo toàn tuyệt đối).
+-- ============================================================================
+alter table hinh_baitoan add column if not exists gia_thiet_rieng text;
+alter table hinh_baitoan add column if not exists gt_thay_the boolean not null default false;

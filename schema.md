@@ -752,6 +752,8 @@
 | created_at | timestamp with time zone |  | now() |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
 | gia_thiet_phu | text | Y |  |  |  |
+| gia_thiet_rieng | text | Y |  |  |  |
+| gt_thay_the | boolean |  | false |  |  |
 
 ## hinh_baitoan_bien_the
 

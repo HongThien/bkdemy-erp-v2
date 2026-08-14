@@ -201,7 +201,7 @@ function banInBuoi(L: Luoi, khuc: ReturnType<typeof api.tinhKhuc>, trong: BaiToa
     // Đề = giả thiết đầy đủ của mô hình (mượn) + câu hỏi. Hình của node: riêng nếu có, mặc định mượn mô hình.
     mucs.push({
       kieu: 'de',
-      deBai: [api.giaThietDayDu(L, n.mo_hinh_id), `Chứng minh ${n.phat_bieu}`].filter(Boolean).join('. '),
+      deBai: [api.giaThietBaiToan(L, n.id), `Chứng minh ${n.phat_bieu}`].filter(Boolean).join('. '),
       anhDe: api.anhCuaBaiToan(L, n.id),
       ma: n.ma,
       ys: [{ nhan: '', noiDung: '', loiGiai: c?.loi_giai, anh: c?.anh_loi_giai ?? api.anhCuaBaiToan(L, n.id), ma: n.ma, cap: n.cap }],
@@ -569,7 +569,7 @@ export function mucGhep(L: Luoi, g: Extract<PickItem, { kind: 'ghep' }>, anDe: b
     }
   })
   const anhDe = api.anhCuaBaiToan(L, deep.id)
-  return { kieu: 'de', deBai: api.giaThietDayDu(L, deep.mo_hinh_id), anhDe, ma: nodes.map((b) => b.ma).join('+'), ys, anDe: anDe || !anhDe, soDong: soDong ?? null, moHinhId: deep.mo_hinh_id }
+  return { kieu: 'de', deBai: api.giaThietBaiToan(L, deep.id), anhDe, ma: nodes.map((b) => b.ma).join('+'), ys, anDe: anDe || !anhDe, soDong: soDong ?? null, moHinhId: deep.mo_hinh_id }
 }
 // Tách đề biến thể: cắt ở "Chứng minh" → giả thiết (chung cả chuỗi) + câu hỏi (ý). Giả thiết các câu trong chuỗi giống nhau.
 function tachDe(deBai: string): { giaThiet: string; cauHoi: string } {
@@ -588,7 +588,7 @@ export function mucGhepLua(L: Luoi, nodeIds: string[], bienThes: BienThe[], anDe
   let deep = nodes[0]; let dS = -1
   for (const bt of nodes) { if (!byNode.has(bt.id)) continue; const d = api.doSauTrongHo(L, bt.mo_hinh_id); if (d > dS) { dS = d; deep = bt } }
   const deepV = byNode.get(deep.id)
-  const giaThiet = deepV ? tachDe(deepV.de_bai).giaThiet : api.giaThietDayDu(L, deep.mo_hinh_id)
+  const giaThiet = deepV ? tachDe(deepV.de_bai).giaThiet : api.giaThietBaiToan(L, deep.id)
   const ys: YIn[] = khung.map((k, i) => {
     const v = byNode.get(k.node.id)
     const gtPhu = [k.node.gia_thiet_phu?.trim(), ...k.gtPhuKeo].filter(Boolean).join('; ') || null
@@ -801,7 +801,7 @@ function ChonChuoiPopup({ L, phan, chuoi, editing, onClose, onConfirm }: {
   const versions = useMemo(() => {
     const deep = deepestOf(nodesSorted)
     const out: { ban: Ban; label: string; giaThiet: string; cau: { ma: string | null; text: string }[] }[] = [
-      { ban: { kind: 'ghep', luaId: null }, label: 'Đề chuẩn (gốc)', giaThiet: api.giaThietDayDu(L, deep.mo_hinh_id), cau: nodesSorted.map((b) => ({ ma: b.ma, text: b.phat_bieu })) },
+      { ban: { kind: 'ghep', luaId: null }, label: 'Đề chuẩn (gốc)', giaThiet: api.giaThietBaiToan(L, deep.id), cau: nodesSorted.map((b) => ({ ma: b.ma, text: b.phat_bieu })) },
     ]
     if (!lai1 && lists) {
       const byLua = new Map<string, Set<string>>()
@@ -814,7 +814,7 @@ function ChonChuoiPopup({ L, phan, chuoi, editing, onClose, onConfirm }: {
         const withV = nodesSorted.filter((b) => byNode.has(b.id))
         const deepL = deepestOf(withV.length ? withV : nodesSorted)
         const deepV = byNode.get(deepL.id)
-        const giaThiet = deepV ? tachDe(deepV.de_bai).giaThiet : api.giaThietDayDu(L, deepL.mo_hinh_id)
+        const giaThiet = deepV ? tachDe(deepV.de_bai).giaThiet : api.giaThietBaiToan(L, deepL.id)
         out.push({ ban: { kind: 'ghep', luaId: lua }, label: `Lứa ${k} (đổi đỉnh)`, giaThiet, cau: nodesSorted.map((b) => { const v = byNode.get(b.id); return { ma: b.ma, text: v ? tachDe(v.de_bai).cauHoi : b.phat_bieu } }) })
       }
     }
@@ -934,7 +934,7 @@ function CayTickPopup({ L, phan, chuoi, luaOpts = [{ luaId: null, label: 'Đề 
   const deBaiChung = useMemo(() => {
     let deep: BaiToan | null = null, dS = -1
     for (const b of chuoi) if (chon.has(b.id)) { const d = api.doSauTrongHo(L, b.mo_hinh_id); if (d > dS) { dS = d; deep = b } }
-    return deep ? api.giaThietDayDu(L, deep.mo_hinh_id) : ''
+    return deep ? api.giaThietBaiToan(L, deep.id) : ''
   }, [chon, chuoi, L])
 
   return createPortal(

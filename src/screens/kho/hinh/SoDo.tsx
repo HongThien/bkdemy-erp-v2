@@ -251,7 +251,7 @@ function ViewBaiToan({ L, ho, nodes: nodesHo, chon, setChon, onSua, reload }: {
                         {/* Câu hỏi = nội dung chính · giả thiết (mượn mô hình) = context phụ · cấp/mã. */}
                         <div className="flex min-h-0 flex-1 flex-col gap-1 px-2 py-1.5">
                           <div className="line-clamp-2 text-[12px] font-medium text-slate-800"><MathText>{n.phat_bieu}</MathText></div>
-                          <div className="line-clamp-2 rounded bg-teal-50 px-1.5 py-0.5 text-[10.5px] leading-snug text-teal-700"><MathText>{api.giaThietDayDu(L, n.mo_hinh_id)}</MathText></div>
+                          <div className="line-clamp-2 rounded bg-teal-50 px-1.5 py-0.5 text-[10.5px] leading-snug text-teal-700"><MathText>{api.giaThietBaiToan(L, n.id)}</MathText></div>
                           <div className="mt-auto flex items-center gap-1.5">
                             <Cap cap={n.cap} teal={khac} />
                             {scope === 'ho' && mh && <span className="truncate rounded-full border border-teal-300 bg-teal-50 px-1.5 text-[9.5px] text-teal-700" title={api.giaThietDayDu(L, mh.id)}>◇ {maCap.get(mh.id) ?? mh.ma}</span>}
@@ -337,9 +337,12 @@ function DetailBaiToan({ L, bt, onSua, onChon, onClose, reload }: {
         <div className="grid min-h-0 flex-1 gap-0 overflow-hidden lg:grid-cols-2">
           {/* ── TRÁI: đề + câu hỏi + hình ── */}
           <div className="min-w-0 space-y-2.5 overflow-y-auto border-r border-slate-100 p-5">
-            {/* ĐỀ + CÂU HỎI (Thùy): mỗi bài toán = đề (giả thiết MƯỢN của mô hình) + câu hỏi (phat_bieu đã nhập). */}
-            <p className="text-[16px] font-semibold uppercase tracking-wide text-slate-400">Đề — giả thiết (từ mô hình {mh ? maCap.get(mh.id) : ''})</p>
-            <FieldCard ton="mh" big><MathText>{api.giaThietDayDu(L, bt.mo_hinh_id)}</MathText></FieldCard>
+            {/* ĐỀ + CÂU HỎI (Thùy 08-14): giả thiết mặc định MƯỢN mô hình, nhưng node được phép có phần
+                RIÊNG (cộng thêm) hoặc THAY hẳn — không phải bài nào cũng tuyệt đối kế thừa. */}
+            <p className="text-[16px] font-semibold uppercase tracking-wide text-slate-400">
+              Đề — giả thiết{bt.gt_thay_the ? ' (riêng của bài này)' : bt.gia_thiet_rieng?.trim() ? ' (mô hình + riêng)' : ` (từ mô hình ${mh ? maCap.get(mh.id) : ''})`}
+            </p>
+            <FieldCard ton="mh" big><MathText>{api.giaThietBaiToan(L, bt.id)}</MathText></FieldCard>
             <p className="text-[16px] font-semibold uppercase tracking-wide text-slate-400">Câu hỏi</p>
             <FieldCard ton="bt" big><MathText>{`Chứng minh ${bt.phat_bieu}`}</MathText></FieldCard>
             <p className="text-[16px] font-semibold uppercase tracking-wide text-slate-400">Hình</p>
@@ -432,7 +435,7 @@ function DetailBaiToan({ L, bt, onSua, onChon, onClose, reload }: {
     </div>
     {formBt && <FormBienThe L={L} baiToanId={bt.id} v={formBt.v}
       goc={{
-        de: [api.giaThietDayDu(L, bt.mo_hinh_id), `Chứng minh ${bt.phat_bieu}`].filter(Boolean).join('. '),
+        de: [api.giaThietBaiToan(L, bt.id), `Chứng minh ${bt.phat_bieu}`].filter(Boolean).join('. '),
         anh: api.anhCuaBaiToan(L, bt.id),
         loiGiai: cachMd?.loi_giai ?? null,
         anhLoiGiai: cachMd?.anh_loi_giai ?? null,
@@ -635,7 +638,7 @@ function ChuoiDoiDinhPopup({ L, chuoi, onClose, onDone }: {
     try {
       const cau = selected.map((bt) => ({
         ma: bt.ma,
-        de: [api.giaThietDayDu(L, bt.mo_hinh_id), `Chứng minh ${bt.phat_bieu}`].filter(Boolean).join('. '),
+        de: [api.giaThietBaiToan(L, bt.id), `Chứng minh ${bt.phat_bieu}`].filter(Boolean).join('. '),
         loiGiai: api.cachMacDinh(L, bt.id)?.loi_giai ?? '',
       }))
       const res = await api.doiDinhChuoiHinh(cau, ghiChu)

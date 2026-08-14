@@ -22,6 +22,11 @@ export type BaiToan = {
   mo_hinh_id: string; cap: number
   de_bai_chuan: string | null; anh_chuan: string | null; ghi_chu: string | null
   gia_thiet_phu: string | null   // dữ kiện lẻ (đa số là vẽ thêm "gọi I = AC∩BD") — bám node, hiện ở đề nếu tick / ở bước nếu ẩn
+  // Giả thiết RIÊNG của node — mặc định null/false = mượn 100% mô hình (hành vi cũ). Không phải bài nào
+  // cũng tuyệt đối kế thừa (Thùy 08-14): xem `giaThietBaiToan()`. KHÁC `gia_thiet_phu` ở trên (đó là dữ
+  // kiện lẻ lan theo van tiền đề, cơ chế riêng).
+  gia_thiet_rieng: string | null
+  gt_thay_the: boolean
 }
 /** Biến thể của một node = cùng bài toán, ĐỔI SỐ / ĐỔI ĐỈNH. Treo dưới node (không đẻ node mới, không
  *  phân mảnh mastery). Đề + hình + đáp án riêng, soạn tay. Cùng KP/logic với node gốc. */
@@ -164,10 +169,9 @@ export function duongToTien(L: Luoi, id: string): string[] {
  *   • TỰ PHÁT BIỂU (`gt_thay_the=true`): con là đặc-biệt-hoá được ĐỊNH DANH (vd "hình bình hành" là con
  *     của "hình thang") — "cho hình bình hành ABCD" đã BAO "cho hình thang ABCD", không cộng dồn được.
  *     Node tự viết nguyên câu (ô `gia_thiet`), THAY cách gọi của bố; derive DỪNG leo ở đây.
- *  Quan hệ cha-con (DAG) KHÔNG đổi giữa hai kiểu — chỉ đổi cách render text. Bài toán KHÔNG có giả thiết
- *  riêng, luôn mượn của mô hình.
+ *  Quan hệ cha-con (DAG) KHÔNG đổi giữa hai kiểu — chỉ đổi cách render text.
  *  ⇒ BASE = node tự-phát-biểu SÂU NHẤT trên đường tổ tiên (mặc định gốc họ, i=0); base góp giả thiết đầy
- *  đủ của nó, các đời SAU base góp phần thêm. */
+ *  đủ của nó, các đời SAU base góp phần thêm. (Giả thiết riêng CỦA BÀI TOÁN — khác tầng — xem `giaThietBaiToan`.) */
 export function giaThietDayDu(L: Luoi, moHinhId: string): string {
   const path = duongToTien(L, moHinhId)                       // [gốc … node]
   const nodes = path.map((mid) => L.moHinh.find((x) => x.id === mid)).filter(Boolean) as MoHinh[]
@@ -205,12 +209,25 @@ export function nodeTruoc(L: Luoi, moHinhId: string): BaiToan | null {
   }
   return null
 }
-/** Đề bài chuẩn của một node = giả thiết đầy đủ của mô hình (mượn) + câu hỏi (`phat_bieu`) + hình của node
- *  (riêng nếu có, mặc định mượn của mô hình). KHÔNG lưu. */
+/** ⭐ Giả thiết ĐẦY ĐỦ của một BÀI TOÁN. Mặc định (`gt_thay_the=false`, `gia_thiet_rieng=null`) MƯỢN
+ *  100% của mô hình — y hệt hành vi cũ. Nới model (Thùy 08-14, "không phải bài nào cũng tuyệt đối kế
+ *  thừa"): mirror cặp CỘNG THÊM / THAY THẾ đã có ở mô hình con-cha, đặt tầng node→mô hình thay vì
+ *  mô hình→mô hình:
+ *   • CỘNG THÊM (mặc định): full = giả thiết mô hình + `gia_thiet_rieng` (nếu có).
+ *   • THAY THẾ (`gt_thay_the=true`): full = `gia_thiet_rieng` — bỏ qua hẳn giả thiết mô hình, node tự
+ *     đứng độc lập. Quan hệ node→mô hình (`mo_hinh_id`) KHÔNG đổi — vẫn xác định context/cây/tiền đề. */
+export function giaThietBaiToan(L: Luoi, baiToanId: string): string {
+  const bt = L.baiToan.find((b) => b.id === baiToanId)
+  if (!bt) return ''
+  if (bt.gt_thay_the) return bt.gia_thiet_rieng?.trim() ?? ''
+  return [giaThietDayDu(L, bt.mo_hinh_id), bt.gia_thiet_rieng?.trim()].filter(Boolean).join('; ')
+}
+/** Đề bài chuẩn của một node = giả thiết đầy đủ của bài toán (mượn mô hình, + riêng nếu có) + câu hỏi
+ *  (`phat_bieu`) + hình của node (riêng nếu có, mặc định mượn của mô hình). KHÔNG lưu. */
 export function deBaiChuanCua(L: Luoi, baiToanId: string): { giaThiet: string; cauHoi: string; anh: string | null } {
   const bt = L.baiToan.find((b) => b.id === baiToanId)
   if (!bt) return { giaThiet: '', cauHoi: '', anh: null }
-  return { giaThiet: giaThietDayDu(L, bt.mo_hinh_id), cauHoi: bt.phat_bieu, anh: anhCuaBaiToan(L, bt.id) }
+  return { giaThiet: giaThietBaiToan(L, baiToanId), cauHoi: bt.phat_bieu, anh: anhCuaBaiToan(L, bt.id) }
 }
 
 /** Gốc họ của một mô hình: truy lên tới `la_goc_ho`. Không thấy → chính nó (họ 1 node). */
