@@ -26,7 +26,7 @@ theo cây ghế vì cây hiện có người giữ 6 ghế ⇒ phạm vi rộng 
 | `botro_bu` — bổ trợ bù | ✅ | | ✅ |
 | `botro_yeu` — HS bị gắn cờ yếu | ✅ | | ✅ |
 | `tuyensinh_test` — test đầu vào (chuỗi 4 mốc) | ✅ | phần **trả bài** | ✅ |
-| `hoanthanh_buoi` — ET · BTVN · Đánh giá theo LỚP | | ✅ | ✅ |
+| `hoanthanh_buoi` — ET · BTVN · Đánh giá theo LỚP **(làm ĐẦU TIÊN)** | | ✅ | ✅ |
 | `nhansu_hieusuat` — ai miss / ai làm tốt | | ✅ | ✅ |
 | `viec_cua_toi` — task cá nhân (8 nguồn, đã có) | ✅ | ✅ | ✅ |
 
@@ -50,7 +50,23 @@ người là **kết tội người đang làm đúng**. Sai số thì sửa đ�
 **Luật:** một khâu chỉ tính là NỢ khi có hiện vật chứng minh nó phải xảy ra —
 - ET: buổi có **đề ET gắn vào** (`tai_lieu loai='et'` khớp lớp+ngày, hoặc `gami_session_problems` phase='et').
 - BTVN: buổi có **doc BTVN** gắn vào.
-- Đánh giá: **không suy được** ⇒ KHÔNG tính là nợ, chỉ hiện như thông tin.
+- Đánh giá: **BẮT BUỘC** — CEO đảo lại 14/08, "đòi như ET". Mọi buổi thường đều phải có.
+  ⚠ Điều này **ghi đè** dòng cũ ở đây ("không bắt buộc, chỉ hiện như thông tin"). Đo lúc đảo:
+  hôm qua 7/9 lớp chưa đánh giá, 30 ngày gần nhất 100/310 buổi ⇒ danh sách mấy tuần đầu sẽ dài.
+  CEO chọn đòi hết, KHÔNG kẻ đường ngày như luật 48h của bù — cố ý, đã hỏi rõ.
+
+### 2.1 NHỊP — "theo lịch hôm nay phải có gì, hệ ghi nhận được gì" (CEO chốt 14/08)
+
+Đây là cách đặt đúng cho MỌI khâu, không riêng BTVN:
+> *"Theo lịch hôm nay lớp ABC phải nộp nhưng trên hệ thống mới chỉ ghi nhận lớp A"*
+
+Nghĩa vụ **suy từ LỊCH**, không phải từ "hôm qua có gì chưa xong". Cụ thể:
+- **ET · đánh giá** — nghĩa vụ của buổi VỪA DẠY. Đo thật: ET đóng ngay trong ngày **244/339 ca
+  (72%)**, thêm 43 ca sau 1 ngày ⇒ hỏi vào sáng hôm sau là ĐÚNG nhịp.
+- **BTVN** — chấm ở buổi KẾ TIẾP (thiết kế, không phải lười). Đo thật: đóng sau 2–6 ngày là chuẩn;
+  đóng trong vòng 1 ngày chỉ **2/250 ca**. ⇒ Nhắc theo ngày là **sai nhịp và sai 100%**: sáng hôm
+  sau thì lớp nào cũng "thiếu BTVN", kể cả lớp đang làm rất chuẩn. Đúng phải là: **lớp nào HÔM NAY
+  có ca ⇒ BTVN của buổi trước đến hạn hôm nay**, rồi so với cái đã ghi nhận.
 
 **Đánh đổi đã biết, không giấu:** luật này **bỏ sót** lớp đáng lẽ phải có ET mà chưa ai soạn đề —
 hệ sẽ im. Chấp nhận, vì thà sót còn hơn đổ oan. Muốn hết sót thì phải khai cờ bắt buộc theo lớp
@@ -81,6 +97,14 @@ Ba khối không-chat vẫn chạy khi worker tắt.
 giữa các nhân sự** (86/117 policy chỉ là cổng nhị phân `la_thanh_vien()`), và worker chạy
 `SUPABASE_SERVICE_ROLE` bypass toàn bộ RLS ⇒ **"ai thấy gì" phải chặn ở code dựng context**,
 không được dựa vào DB.
+
+---
+
+## 4.5 THỨ TỰ LÀM — vận hành buổi học TRƯỚC
+
+CEO chốt 14/08: module này **đang chạy đầy đủ nhất** nên khai trước. Mấy mảng còn lại
+(bù · đuổi · yếu · test đầu vào) có mảng dữ liệu mỏng hơn hoặc còn chặn ở quyết định.
+Đặt trong **tab 🤖 Trợ lý**, không đẻ lá mới — để hỏi được ngay trong khung chat.
 
 ---
 

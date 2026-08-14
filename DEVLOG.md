@@ -4929,3 +4929,45 @@ liệu vẫn chung 1 DB Supabase): mở Sửa → gõ "TEST góc D = 65 độ" �
 thêm) → preview live ghép đúng "Cho tứ giác ABCD; TEST góc D = 65 độ" → Lưu → card node + panel detail
 + nhãn đều đổi đúng ("ĐỀ — GIẢ THIẾT (MÔ HÌNH + RIÊNG)") → mở lại Sửa, xoá trắng ô riêng → Lưu →
 xác nhận textarea rỗng lại (dọn sạch dữ liệu test, không để lại vết trên BT.025 thật).
+
+## 2026-08-14 — ⭐ Worktree `feat/troly-ai`: chốt trục MẢNG + khai module VẬN HÀNH BUỔI HỌC
+
+- **CEO chốt bản chất:** *"vẫn là m đi xây bộ tổng hợp dữ liệu và thông báo cho từng module:
+  bổ trợ bù, bổ trợ đuổi, bổ trợ yếu, kiểm tra đầu vào, vận hành buổi học"* + *"vận hành buổi học
+  đang chạy đầy đủ nhất nên làm đầu tiên"*. Đặt trong tab 🤖 Trợ lý, không đẻ lá mới.
+- **⭐ ĐỔI TRỤC (lý do CỨNG, không phải thẩm mỹ):** trợ lý cũ đọc `getMyTasks()` = task theo lớp
+  được phân công. **Lộc (NS003) có 0 phân công lớp ⇒ mở ra TRẮNG.** Và "lớp nào còn thiếu" của
+  Trang là việc của NGƯỜI KHÁC. ⇒ trục = **MẢNG PHỤ TRÁCH**, "việc của tôi" tụt xuống thành MỘT
+  mảng. Thêm người = gán mảng. (Loại hardcode-3-tài-khoản vì nghịch luật "quyền bám GHẾ"; loại
+  đi-theo-cây-ghế vì có người giữ 6 ghế ⇒ phạm vi rộng ngoài ý muốn.) → `SPEC-troly-nhansu.md`.
+- **⚠ Suýt build nhầm người:** hệ có HAI người tên Trang — NS002 Phạm Thị Thùy Trang (Trưởng khối
+  THCS · Quản lý trợ giảng · 14 lớp) và NS009 Hoàng Thị Quỳnh Trang (QLHT · 6 lớp). Mô tả của CEO
+  khớp cả hai theo hai kiểu. Hỏi → **NS002**. Ghi vào spec để phiên sau khỏi đoán.
+- **⭐⭐ NHỊP — CEO đảo cả hai phương án Claude đưa ra, và đảo đúng.** Claude hỏi "BTVN nhắc theo
+  ngày hay sau buổi kế"; CEO trả lời bằng cách đặt lại vấn đề: *"Báo cáo những thứ ĐÁNG LẼ PHẢI
+  XẢY RA: theo lịch hôm nay lớp ABC phải nộp nhưng hệ thống mới chỉ ghi nhận lớp A"*.
+  ⇒ Nghĩa vụ suy từ **LỊCH**, không phải từ "hôm qua còn sót gì". Tổng quát cho mọi khâu.
+  Số đỡ lưng (60 ngày): **ET đóng ngay trong ngày 244/339 ca (72%)** + 43 ca sau 1 ngày ⇒ hỏi sáng
+  hôm sau là đúng nhịp. **BTVN đóng sau 2–6 ngày** (chấm ở buổi kế — thiết kế), đóng trong vòng
+  1 ngày chỉ **2/250 ca** ⇒ hỏi theo ngày là **sai 100%**: sáng nào danh sách cũng đủ mặt mọi lớp,
+  kể cả lớp đang làm chuẩn. Danh sách lúc nào cũng đầy = không ai đọc nữa.
+- **⭐ CEO ĐẢO luật đánh giá:** 12/08 chốt "đánh giá KHÔNG bắt buộc"; 14/08 chốt **BẮT BUỘC, đòi
+  như ET**. Đã ghi đè dòng cũ trong spec (để nguyên hai dòng mâu thuẫn là phiên sau đọc nhầm).
+  Claude nêu trước hệ quả: hôm qua 7/9 lớp chưa đánh giá, 30 ngày 100/310 buổi ⇒ danh sách sẽ dài;
+  CEO chọn đòi hết, KHÔNG kẻ đường ngày như luật 48h của bù — cố ý.
+- **`src/lib/troly-vanhanh.ts` + `KhoiVanHanh`** — viết ra thành CÂU chứ không phải bảng (CEO hình
+  dung ra thành câu). Ba khâu ba nhịp, cố ý KHÔNG gộp: ① hôm qua = ET + đánh giá · ② BTVN = đến hạn
+  theo lịch HÔM NAY · ③ từ đầu tuần = nợ tích luỹ.
+  Nợ BTVN ở ③ có guard `>= 2 ngày` — buổi hôm qua chưa tới hạn, đưa vào là lặp đúng cái sai nhịp.
+- **Verify trên dev server CỦA WORKTREE** (cổng 5190) — số khớp oracle SQL chạy cùng lúc:
+  hôm qua 13/08 · 9 buổi · đủ: 7K1, 9C1 · chưa đánh giá 7 lớp · **ET sạch 100%** (6/6 lớp có đề đều
+  chốt) · không đòi ET ở 12A1/8A2/8B1 (không có đề — nêu riêng, không trộn vào "thiếu") ·
+  BTVN đến hạn hôm nay 3 lớp, **cả 3 đã ghi nhận** · từ đầu tuần 26 lớp nợ (ET 5 · BTVN 9 · đánh giá 19).
+- **⚠ BẪY HẠ TẦNG — suýt verify nhầm cây:** `preview_start` resolve launch config từ thư mục CHA
+  (`BKERP/.claude/`), **không theo cwd** ⇒ lệnh "dev" luôn chạy CÂY CHÍNH dù đang đứng trong
+  worktree. Phát hiện bằng cách `fetch('/src/.../TroLyTab.tsx')` qua dev server rồi tìm đoạn code
+  mới: không có. Đã thêm config **"troly" cổng 5190** trỏ đúng worktree.
+  **Luật: làm trong worktree thì việc ĐẦU TIÊN là chứng minh dev server đang phục vụ đúng cây.**
+- **CÒN:** mảng của Lộc (bù · yếu · test đầu vào) chưa ráp · `nhansu_hieusuat` chưa làm · gate "ai
+  thấy mảng nào" chưa có (worker bypass RLS ⇒ phải chặn ở code dựng context) · test đầu vào vẫn
+  chặn ở "ai chấm", CEO sẽ mở context riêng xử lý.

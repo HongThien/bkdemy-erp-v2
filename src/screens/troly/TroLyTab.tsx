@@ -23,6 +23,7 @@ import {
   type BangHomNay, type BangNhac, type LuotHoi, type NhanDinh, type QuyetDinh, type ViecGom, type ViecNhac,
 } from '../../lib/troly'
 import { anhChupBoTroBu, NGAY_AP_HAN_48H, type AnhChupBu } from '../../lib/botro'
+import { baoCaoVanHanh, type BaoCaoVanHanh } from '../../lib/troly-vanhanh'
 import { useStore } from '../../store/useStore'
 
 // ── KHUNG CHAT ──────────────────────────────────────────────────────────────
@@ -149,6 +150,7 @@ export default function TroLyTab() {
   const [bang, setBang] = useState<BangNhac | null>(null)
   const [nhanDinh, setNhanDinh] = useState<NhanDinh[] | null>(null)
   const [bu, setBu] = useState<AnhChupBu | null>(null)
+  const [vh, setVh] = useState<BaoCaoVanHanh | null>(null)
   const setStaffLeaf = useStore((s) => s.setStaffLeaf)
   const [loi, setLoi] = useState<string | null>(null)
   const [moGac, setMoGac] = useState<string | null>(null)
@@ -160,6 +162,7 @@ export default function TroLyTab() {
     // Bổ trợ bù load TRƯỚC rồi mới tới nhận định: nhận định về bù ăn CHÍNH snapshot này,
     // không query lại — hai nguồn thì hai con số, và người sẽ thấy chúng chỏi nhau ngay
     // trên cùng một màn hình. Bù hỏng thì KHÔNG kéo sập tab, nhận định vẫn chạy phần còn lại.
+    baoCaoVanHanh().then(setVh).catch(() => setVh(null))
     anhChupBoTroBu().catch(() => null).then((d) => {
       setBu(d)
       return nhanDinhHeThong(d).then(setNhanDinh)
@@ -184,6 +187,7 @@ export default function TroLyTab() {
   return (
     <div className="mx-auto max-w-[900px]">
       <HomNay d={homNay} />
+      <KhoiVanHanh d={vh} />
       <KhoiBu d={bu} onDen={() => setStaffLeaf('botro')} />
       <Chat />
 
@@ -442,6 +446,112 @@ function KhoiBu({ d, onDen }: { d: AnhChupBu | null; onDen: () => void }) {
           </ul>
         )}
       </div>
+    </div>
+  )
+}
+
+// ── MẢNG "VẬN HÀNH BUỔI HỌC" — bộ đầu tiên được khai đầy đủ (spec §4.5) ─────
+// CEO hình dung ra thành CÂU chứ không phải bảng: *"Ngày hôm qua các lớp XYZ đã hoàn thành
+// điền dữ liệu, lớp ABC còn thiếu ET…"* → đọc xong là biết đi nhắc ai. Nên khối này viết
+// thành câu tiếng Việt, chỉ rơi xuống dạng danh sách khi số lớp nhiều.
+//
+// ⚠ Ba khâu BA NHỊP KHÁC NHAU, cố ý không gộp một chỗ (spec §2.1):
+//   ET + đánh giá = của buổi hôm qua · BTVN = đến hạn theo LỊCH HÔM NAY (chấm ở buổi kế).
+const nốiLớp = (ds: string[]) => ds.join(', ')
+
+function DongCau({ nhan, lops, mau }: { nhan: string; lops: string[]; mau: string }) {
+  if (!lops.length) return null
+  return (
+    <div className="mt-1 text-[13px] leading-relaxed">
+      <span className={`font-semibold ${mau}`}>{nhan}</span>{' '}
+      <span className="text-slate-700">{nốiLớp(lops)}</span>
+      <span className="text-[12px] text-slate-400"> ({lops.length})</span>
+    </div>
+  )
+}
+
+function KhoiVanHanh({ d }: { d: BaoCaoVanHanh | null }) {
+  const [moTuan, setMoTuan] = useState(false)
+  if (!d) return null
+  const q = d.buoiHomQua
+  const du = q.filter((b) => b.du).map((b) => b.lop)
+  const thieuET = q.filter((b) => b.coDeET && !b.etXong).map((b) => b.lop)
+  const thieuDG = q.filter((b) => !b.dgXong).map((b) => b.lop)
+  // Lớp không có đề ET: nêu RIÊNG, không trộn vào "thiếu" — chúng không nợ gì cả. Nêu ra để
+  // người đọc không tưởng hệ bỏ sót (§ "cắt mà không nói = đọc thành toàn bộ").
+  const khongDeET = q.filter((b) => !b.coDeET).map((b) => b.lop)
+  const btvnThieu = d.btvn.filter((b) => !b.daGhiNhan)
+  const btvnXong = d.btvn.filter((b) => b.daGhiNhan)
+
+  return (
+    <div className="mb-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+      <div className="text-[15px] font-semibold text-slate-800">Vận hành buổi học</div>
+
+      {/* ① HÔM QUA — ET + đánh giá */}
+      <div className="mt-2.5 text-[13px] font-semibold text-slate-700">
+        Hôm qua {d.homQua.slice(8)}/{d.homQua.slice(5, 7)} — {q.length} buổi
+      </div>
+      {q.length === 0 ? <div className="mt-0.5 text-[13px] text-slate-400">Không có buổi nào.</div> : (
+        <>
+          <DongCau nhan="Đã đủ dữ liệu:" lops={du} mau="text-emerald-700" />
+          <DongCau nhan="Còn thiếu ET:" lops={thieuET} mau="text-rose-700" />
+          <DongCau nhan="Chưa điền đánh giá:" lops={thieuDG} mau="text-rose-700" />
+          {du.length === q.length && <div className="mt-1 text-[13px] text-emerald-700">Tất cả các lớp đã hoàn thành.</div>}
+          {khongDeET.length > 0 && (
+            <div className="mt-1 text-[11.5px] leading-relaxed text-slate-400">
+              Không đòi ET ở {nốiLớp(khongDeET)} — mấy buổi này chưa có đề ET gắn vào, nên hệ không coi là nợ.
+            </div>
+          )}
+        </>
+      )}
+
+      {/* ② BTVN — đến hạn theo LỊCH HÔM NAY, không phải "hôm qua chưa có" */}
+      <div className="mt-3 text-[13px] font-semibold text-slate-700">BTVN đến hạn hôm nay — {d.btvn.length} lớp</div>
+      <p className="text-[11.5px] leading-relaxed text-slate-400">
+        Lớp có ca hôm nay ⇒ BTVN của buổi trước phải được chấm trong buổi này.
+      </p>
+      {d.btvn.length === 0 ? <div className="mt-0.5 text-[13px] text-slate-400">Hôm nay không lớp nào tới hạn BTVN.</div> : (
+        <>
+          {btvnThieu.length > 0 && (
+            <div className="mt-1 text-[13px] leading-relaxed">
+              <span className="font-semibold text-rose-700">Chưa ghi nhận:</span>{' '}
+              <span className="text-slate-700">{btvnThieu.map((b) => `${b.lop} (buổi ${b.buoiTruoc.slice(8)}/${b.buoiTruoc.slice(5, 7)})`).join(', ')}</span>
+            </div>
+          )}
+          <DongCau nhan="Đã ghi nhận:" lops={btvnXong.map((b) => b.lop)} mau="text-emerald-700" />
+        </>
+      )}
+
+      {/* ③ TỪ ĐẦU TUẦN — nợ tích luỹ */}
+      <div className="mt-3 flex flex-wrap items-baseline gap-x-2">
+        <span className="text-[13px] font-semibold text-slate-700">Từ đầu tuần ({d.tuNgay.slice(8)}/{d.tuNgay.slice(5, 7)}) — {d.noTuan.length} lớp còn nợ</span>
+        {d.noTuan.length > 0 && (
+          <button onClick={() => setMoTuan((x) => !x)} className="text-[12px] font-medium text-indigo-600 hover:underline">
+            {moTuan ? 'thu gọn' : 'xem chi tiết'}
+          </button>
+        )}
+      </div>
+      {d.noTuan.length === 0 ? <div className="mt-0.5 text-[13px] text-slate-400">Không lớp nào nợ dữ liệu trong tuần.</div> : moTuan ? (
+        <div className="mt-1 space-y-0.5">
+          {d.noTuan.map((o) => (
+            <div key={o.lop} className="flex flex-wrap items-baseline gap-x-2.5 text-[13px]">
+              <span className="w-[56px] shrink-0 font-semibold text-slate-800">{o.lop}</span>
+              {o.noET > 0 && <span className="text-rose-700">ET {o.noET}</span>}
+              {o.noBTVN > 0 && <span className="text-rose-700">BTVN {o.noBTVN}</span>}
+              {o.noDanhGia > 0 && <span className="text-amber-700">đánh giá {o.noDanhGia}</span>}
+              <span className="text-[12px] text-slate-400">/ {o.soBuoi} buổi</span>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="mt-1 text-[13px] leading-relaxed">
+          <DongCau nhan="Nợ ET:" lops={d.noTuan.filter((o) => o.noET).map((o) => o.lop)} mau="text-rose-700" />
+          <DongCau nhan="Nợ BTVN:" lops={d.noTuan.filter((o) => o.noBTVN).map((o) => o.lop)} mau="text-rose-700" />
+          <DongCau nhan="Nợ đánh giá:" lops={d.noTuan.filter((o) => o.noDanhGia).map((o) => o.lop)} mau="text-amber-700" />
+        </div>
+      )}
+
+      <div className="mt-2.5 border-t border-slate-100 pt-2 text-[11.5px] leading-relaxed text-slate-500">{d.phamVi}</div>
     </div>
   )
 }
