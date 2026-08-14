@@ -40,6 +40,10 @@ export default function CumBaiTab({ maDang, caus, cauTbl, view, onEditCau, onCha
   const [gopTu, setGopTu] = useState<string | null>(null)     // cụm đang chờ chọn cụm đích để gộp
   const [tienDeCum, setTienDeCum] = useState<string | null>(null)
   const [themVao, setThemVao] = useState<CumBai | null>(null) // cụm đang mở picker "＋ Thêm bài"
+  // Đặt tên cụm = ô nhập TẠI CHỖ, không dùng prompt(): tên cụm là thao tác lõi (người đặt tên), mà
+  // hộp thoại native thì không style được, không kiểm thử tự động được, và trên mobile rất tệ.
+  const [tao, setTao] = useState<null | { ten: string; kemChon: boolean }>(null)
+  const [suaTen, setSuaTen] = useState<null | { ma: string; ten: string }>(null)
   const [busy, setBusy] = useState(false)
 
   async function reloadCums() {
@@ -74,10 +78,10 @@ export default function CumBaiTab({ maDang, caus, cauTbl, view, onEditCau, onCha
   // 2 đường tạo cụm — cùng một hàm, khác chỗ bắt đầu:
   //  ① cụm RỖNG + đặt tên trước, gán bài vào sau (luồng chính)
   //  ② đang chọn sẵn mấy bài thì gom thẳng (đỡ 1 bước)
-  async function taoCum(kemChon: boolean) {
-    const n = kemChon ? chon.size : 0
-    const ten = prompt(n ? `Tên cụm cho ${n} bài đã chọn:` : 'Tên cụm mới:')
-    if (ten === null) return
+  async function luuCumMoi() {
+    if (!tao) return
+    const { ten, kemChon } = tao
+    setTao(null)
     await chay(() => createCumBai({ maDang, ten, maCaus: kemChon ? [...chon] : [] }, cauTbl))
   }
   async function xoaCum(c: CumBai) {
@@ -88,6 +92,21 @@ export default function CumBaiTab({ maDang, caus, cauTbl, view, onEditCau, onCha
 
   const ungVienCum = cums.map((c) => ({ ma: c.ma_cum, ten: tenCum(c) }))
   const gocChua = chuaPhanCum.filter(laGoc)
+
+  // Ô nhập tên cụm mới — Enter để lưu, Esc để huỷ.
+  const oTaoCum = tao && (
+    <div className="flex flex-wrap items-center gap-2 rounded-xl border border-indigo-200 bg-indigo-50/50 p-3">
+      <span className="text-[13px] font-semibold text-slate-700">Tên cụm mới</span>
+      <input autoFocus value={tao.ten} onChange={(e) => setTao({ ...tao, ten: e.target.value })}
+        onKeyDown={(e) => { if (e.key === 'Enter') luuCumMoi(); if (e.key === 'Escape') setTao(null) }}
+        placeholder="vd: Hệ 2 ẩn hệ số nguyên — giải bằng thế"
+        className={`${inp} max-w-[360px] flex-1 text-[13px]`} />
+      {tao.kemChon && <span className="text-[12px] text-slate-500">kèm <b>{chon.size}</b> bài đã chọn</span>}
+      <button onClick={luuCumMoi} disabled={busy}
+        className="rounded-md bg-indigo-600 px-3 py-1.5 text-[12px] font-semibold text-white hover:bg-indigo-500 disabled:opacity-40">Tạo cụm</button>
+      <button onClick={() => setTao(null)} className={btn}>Huỷ</button>
+    </div>
+  )
 
   const thanhCloneToggle = (
     <label className="flex cursor-pointer items-center gap-1.5 text-[12px] font-medium text-slate-600">
@@ -125,12 +144,13 @@ export default function CumBaiTab({ maDang, caus, cauTbl, view, onEditCau, onCha
                 {cums.map((x) => <option key={x.ma_cum} value={x.ma_cum}>{tenCum(x)}</option>)}
               </select>
             )}
-            <button onClick={() => taoCum(chon.size > 0)} disabled={busy}
+            <button onClick={() => setTao({ ten: '', kemChon: chon.size > 0 })} disabled={busy}
               className="rounded-md bg-slate-800 px-3 py-1 text-[12px] font-semibold text-white hover:bg-slate-700 disabled:opacity-40">
               {chon.size ? `Gom ${chon.size} bài thành cụm mới` : '＋ Cụm mới (rỗng)'}
             </button>
           </div>
         </div>
+        {oTaoCum}
 
         {gocChua.length === 0 ? (
           <div className="rounded-xl border border-dashed border-emerald-200 bg-emerald-50/40 py-14 text-center text-sm text-emerald-700">
@@ -160,13 +180,14 @@ export default function CumBaiTab({ maDang, caus, cauTbl, view, onEditCau, onCha
         </div>
         <div className="flex items-center gap-3">
           {thanhCloneToggle}
-          <button onClick={() => taoCum(false)} disabled={busy}
+          <button onClick={() => setTao({ ten: '', kemChon: false })} disabled={busy}
             className="rounded-md bg-indigo-600 px-3 py-1.5 text-[12px] font-semibold text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">
             ＋ Cụm mới
           </button>
         </div>
       </div>
 
+      {oTaoCum}
       {err && <p className="text-[13px] text-rose-600">Lỗi: {err}</p>}
 
       {cums.length === 0 ? (
@@ -179,15 +200,20 @@ export default function CumBaiTab({ maDang, caus, cauTbl, view, onEditCau, onCha
         return (
           <div key={c.ma_cum} className="rounded-xl border border-slate-200 bg-white p-4">
             <div className="mb-2.5 flex flex-wrap items-center gap-2">
-              <button
-                onClick={async () => {
-                  const t = prompt('Tên cụm:', c.ten ?? '')
-                  if (t === null) return
-                  await chay(() => renameCumBai(c.ma_cum, t, cauTbl))
-                }}
-                className="text-[15px] font-semibold text-slate-900 hover:text-indigo-600" title="Bấm để đổi tên">
-                {tenCum(c)}{!c.ten && <span className="ml-1 text-[12px] font-normal text-slate-400">(chưa đặt tên)</span>}
-              </button>
+              {suaTen?.ma === c.ma_cum ? (
+                <input autoFocus value={suaTen.ten} onChange={(e) => setSuaTen({ ...suaTen, ten: e.target.value })}
+                  onKeyDown={async (e) => {
+                    if (e.key === 'Escape') setSuaTen(null)
+                    if (e.key === 'Enter') { const t = suaTen.ten; setSuaTen(null); await chay(() => renameCumBai(c.ma_cum, t, cauTbl)) }
+                  }}
+                  onBlur={async () => { const t = suaTen.ten; setSuaTen(null); await chay(() => renameCumBai(c.ma_cum, t, cauTbl)) }}
+                  className={`${inp} max-w-[320px] text-[14px] font-semibold`} />
+              ) : (
+                <button onClick={() => setSuaTen({ ma: c.ma_cum, ten: c.ten ?? '' })}
+                  className="text-[15px] font-semibold text-slate-900 hover:text-indigo-600" title="Bấm để đổi tên">
+                  {tenCum(c)}{!c.ten && <span className="ml-1 text-[12px] font-normal text-slate-400">(chưa đặt tên)</span>}
+                </button>
+              )}
               <Code>{c.ma_cum}</Code>
               <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[12px] font-medium text-slate-600">
                 {gocs.length} bài{pool.length > gocs.length ? ` · ${pool.length - gocs.length} clone` : ''}
