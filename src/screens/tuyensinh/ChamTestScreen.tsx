@@ -48,6 +48,7 @@ export default function ChamTestScreen() {
             <button key={c.id} onClick={() => setOpenId(c.id)} className="rounded-2xl border border-slate-100 bg-white p-3.5 text-left shadow-sm hover:shadow-md">
               <div className="text-[14px] font-semibold text-slate-800">{c.hoTenHs}</div>
               <div className="mt-0.5 text-[12px] text-slate-400">{c.mon}{c.khoi ? ` · Lớp ${c.khoi}` : ''} · {new Date(c.ngay + 'T00:00:00').toLocaleDateString('vi-VN')}</div>
+              {c.nguoiChamTen && <div className="mt-1 inline-block rounded-full bg-indigo-50 px-2 py-0.5 text-[11px] font-medium text-indigo-600">👤 {c.nguoiChamTen}</div>}
             </button>
           ))}
         </div>
@@ -109,6 +110,7 @@ function ChamCard({ item, onClose, onDone }: { item: CaTestChoCham; onClose: () 
         <button onClick={onClose} className="text-[13px] font-medium text-indigo-600 hover:underline">← Quay lại</button>
         <span className="text-[14px] font-semibold text-slate-800">{item.hoTenHs}</span>
         <span className="text-[12px] text-slate-400">{item.mon}{item.khoi ? ` · Lớp ${item.khoi}` : ''}</span>
+        {item.nguoiChamTen && <span className="rounded-full bg-indigo-50 px-2 py-0.5 text-[11px] font-medium text-indigo-600">👤 {item.nguoiChamTen}</span>}
         <span className="ml-auto text-[15px] font-bold text-indigo-600">{diem}/{toiDa} · {pct}%</span>
       </div>
       {loading ? <p className="p-6 text-sm text-slate-400">Đang tải…</p> : (

@@ -116,6 +116,7 @@ function TraBaiCard({ c, onChanged }: { c: CaTestChoTraBai; onChanged: () => voi
         <div>
           <div className="text-[14px] font-semibold text-slate-800">{c.hoTenHs}</div>
           <div className="text-[12px] text-slate-400">{c.mon}{c.khoi ? ` · Lớp ${c.khoi}` : ''} · {new Date(c.ngay + 'T00:00:00').toLocaleDateString('vi-VN')}</div>
+          {c.nguoiTraBaiTen && <div className="mt-1 inline-block rounded-full bg-indigo-50 px-2 py-0.5 text-[11px] font-medium text-indigo-600">👤 {c.nguoiTraBaiTen}</div>}
         </div>
         <div className="ml-auto flex flex-wrap justify-end gap-1">
           {conThieu.length === 0
