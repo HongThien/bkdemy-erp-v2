@@ -599,6 +599,27 @@ export async function saveCloneBatch(a: {
   return { goc: g.ma_cau, soClone: a.variants.length }
 }
 
+// CLONE TỪ BÀI CÓ SẴN TRONG KHO — chỉ đẻ BIẾN THỂ, không tạo gốc mới.
+// Biến thể bám vào câu đang có (`parent_ma_cau`) và THỪA KẾ `ma_cum` của nó ⇒ rơi đúng cụm bài,
+// không phải gom tay lại. Đây là điểm khác duy nhất so với `saveCloneBatch` (vốn đẻ gốc + biến thể).
+export async function saveCloneVariants(a: {
+  goc: Pick<CauHoi, 'ma_cau' | 'dang_chinh' | 'loai_cau' | 'ma_cum'>; variants: CauNoiDung[]
+}, tbl = 'dai_cau_hoi'): Promise<number> {
+  if (!a.variants.length) return 0
+  const start = await nextCauSeq(a.goc.dang_chinh, tbl)
+  const rows = a.variants.map((v, i) => ({
+    ma_cau: maCau(a.goc.dang_chinh, start + i),
+    dang_chinh: a.goc.dang_chinh, loai_cau: a.goc.loai_cau,
+    noi_dung: v.noi_dung, dap_an: v.dap_an, loi_giai: v.loi_giai, lua_chon: v.lua_chon ?? null,
+    anh_de: v.anh_de ?? null, anh_dap_an: v.anh_dap_an ?? null,
+    nguon: 'clone', nguon_giai: 'ai', parent_ma_cau: a.goc.ma_cau, clone_method: 'manual_gemini',
+    ma_cum: a.goc.ma_cum ?? null,
+  }))
+  const { error } = await supabase.from(tbl).insert(rows)
+  if (error) throw error
+  return rows.length
+}
+
 // ── NHẬP CHUỖI CÂU CÓ SẴN (batch): prompt tách + parse + lưu (tất cả 'le') ──
 // Luật lời giải theo 2 luồng: bóc-nguyên (người, tin) vs AI-tự-giải (cần duyệt).
 const giaiRule = (giaiAI?: boolean) => giaiAI
@@ -702,6 +723,90 @@ export function resetGeminiMeter() { _meter = { in: 0, out: 0, think: 0, calls: 
 function recordUsage(u: GeminiUsage, model: string) {
   _meter = { in: _meter.in + u.in, out: _meter.out + u.out, think: _meter.think + u.think, calls: _meter.calls + 1, vnd: _meter.vnd + geminiCostVND(u, model) }
   _meterListeners.forEach((f) => f())
+}
+// Nhà khác Gemini — giá USD / 1 TRIỆU token. ⚠ PROVISIONAL, kiểm lại theo trang giá của từng nhà.
+// (DeepSeek: api-docs.deepseek.com/quick_start/pricing · Anthropic: platform.claude.com/docs/en/pricing)
+export const AI_GIA: Record<string, { in: number; out: number }> = {
+  'deepseek-chat': { in: 0.27, out: 1.10 },
+  'deepseek-reasoner': { in: 0.55, out: 2.19 },
+  'claude-opus-5': { in: 5.0, out: 25.0 },
+  'claude-sonnet-5': { in: 3.0, out: 15.0 },
+}
+function recordUsageKhac(u: { in: number; out: number }, model: string) {
+  const g = AI_GIA[model] ?? { in: 1, out: 5 }
+  const vnd = Math.round(((u.in * g.in + u.out * g.out) / 1e6) * USD_VND)
+  _meter = { in: _meter.in + u.in, out: _meter.out + u.out, think: _meter.think, calls: _meter.calls + 1, vnd: _meter.vnd + vnd }
+  _meterListeners.forEach((f) => f())
+  console.info(`[${model}] tokens — in:${u.in} out:${u.out} ≈ ${vnd.toLocaleString('vi')}đ`)
+}
+
+// ══ NHÀ AI CHO CLONE — DeepSeek | Claude ═══════════════════════════════════
+// VÌ SAO (Thùy 14/08): Gemini clone kém. CLONE = generation thuần text → đổi nhà là đổi sạch,
+// không vướng gì. OCR / bóc bài gốc / nhập chuỗi câu / cắt bbox hình VẪN Ở GEMINI — nó là nhà duy
+// nhất trong 3 nhà này làm được khoản đọc ảnh + toạ độ hình.
+//
+// ⚠ KEY NẰM TRONG BUNDLE TRÌNH DUYỆT (`VITE_*`) — ai mở app là đọc được, đăng nhập KHÔNG che được
+//   (file JS tải về trước cả màn login). Khác Gemini, key Anthropic/DeepSeek KHÔNG khoá theo tên miền
+//   được. Chấp nhận vì 2 tài khoản đều nạp-tới-đâu-tiêu-tới-đó (Thùy 14/08) ⇒ mất tối đa = số dư.
+//   ⛔ TRƯỚC KHI DEPLOY ERP RA ĐỊA CHỈ PUBLIC: chuyển 2 lời gọi này qua proxy ở `worker/`.
+export type AiNha = 'deepseek' | 'claude'
+export const AI_MODELS: { nha: AiNha; value: string; label: string; sub: string }[] = [
+  { nha: 'deepseek', value: 'deepseek-chat', label: 'DeepSeek', sub: 'rẻ nhất — thử trước' },
+  { nha: 'deepseek', value: 'deepseek-reasoner', label: 'DeepSeek R1', sub: 'suy luận sâu, chậm hơn' },
+  { nha: 'claude', value: 'claude-opus-5', label: 'Claude Opus 5', sub: '⚠ đắt — toán khó mới cần' },
+]
+export const nhaCuaModel = (m: string): AiNha => (m.startsWith('claude') ? 'claude' : 'deepseek')
+
+// DeepSeek — chuẩn OpenAI. JSON mode cần chữ "json" xuất hiện trong prompt (prompt clone đã có).
+async function callDeepSeekJson(prompt: string, model: string): Promise<string> {
+  const key = import.meta.env.VITE_DEEPSEEK_KEY as string | undefined
+  if (!key) throw new Error('Chưa có VITE_DEEPSEEK_KEY trong .env.local → chọn nhà khác hoặc thêm key.')
+  const res = await fetch('https://api.deepseek.com/chat/completions', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${key}` },
+    body: JSON.stringify({
+      model, max_tokens: 8192, stream: false,
+      response_format: { type: 'json_object' },
+      messages: [{ role: 'user', content: prompt }],
+    }),
+  })
+  if (!res.ok) throw new Error(`DeepSeek lỗi ${res.status}: ${(await res.text()).slice(0, 300)}`)
+  const data = await res.json()
+  const u = data?.usage
+  recordUsageKhac({ in: u?.prompt_tokens ?? 0, out: u?.completion_tokens ?? 0 }, model)
+  const txt: string = data?.choices?.[0]?.message?.content ?? ''
+  if (data?.choices?.[0]?.finish_reason === 'length') throw new Error('DeepSeek bị CẮT do output quá dài (JSON dở) → giảm "Số biến thể" rồi thử lại.')
+  if (!txt.trim()) throw new Error('DeepSeek trả rỗng.')
+  return txt
+}
+
+// Claude — dùng SDK chính thức (@anthropic-ai/sdk đã có sẵn trong repo).
+// `dangerouslyAllowBrowser` = thừa nhận key nằm ở client (xem cảnh báo đầu mục).
+// Suy luận: để adaptive — clone toán là GENERATION, cần nghĩ; Opus 5 mặc định đã bật.
+async function callClaudeJson(prompt: string, model: string): Promise<string> {
+  const key = import.meta.env.VITE_ANTHROPIC_KEY as string | undefined
+  if (!key) throw new Error('Chưa có VITE_ANTHROPIC_KEY trong .env.local → chọn nhà khác hoặc thêm key.')
+  const { default: Anthropic } = await import('@anthropic-ai/sdk')
+  const client = new Anthropic({ apiKey: key, dangerouslyAllowBrowser: true })
+  const res = await client.messages.create({
+    model, max_tokens: 16000,
+    thinking: { type: 'adaptive' },
+    messages: [{ role: 'user', content: prompt }],
+  })
+  const u = res.usage
+  recordUsageKhac({ in: u?.input_tokens ?? 0, out: u?.output_tokens ?? 0 }, model)
+  if (res.stop_reason === 'refusal') throw new Error('Claude từ chối yêu cầu này — đổi nhà hoặc sửa đề bài.')
+  if (res.stop_reason === 'max_tokens') throw new Error('Claude bị CẮT do output quá dài (JSON dở) → giảm "Số biến thể" rồi thử lại.')
+  // Bỏ khối thinking, chỉ lấy text.
+  const txt = res.content.filter((b) => b.type === 'text').map((b) => (b as { text: string }).text).join('')
+  if (!txt.trim()) throw new Error('Claude trả rỗng.')
+  return txt
+}
+
+// Cửa vào CHUNG cho clone. Không ép schema như Gemini (2 nhà này không dùng cùng format schema) —
+// bù lại `parseVariantsJson`/`parseCloneJson` vốn đã gỡ ```fence``` + parse nới lỏng.
+export async function callAiClone(prompt: string, model: string): Promise<string> {
+  return nhaCuaModel(model) === 'claude' ? callClaudeJson(prompt, model) : callDeepSeekJson(prompt, model)
 }
 
 // ── AUTO: gọi Gemini API thẳng từ client (key VITE_GEMINI_KEY — rủi ro lộ, chấp nhận) ──

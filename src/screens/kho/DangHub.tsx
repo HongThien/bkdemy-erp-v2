@@ -2,10 +2,11 @@ import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 're
 import {
   listCauByDang, updateCau, deleteCau,
   buildClonePrompt, parseCloneJson, saveCloneBatch,
-  buildOcrGocPrompt, parseGocJson, buildCloneFromGocPrompt, parseVariantsJson, GOC_SCHEMA, VARIANTS_SCHEMA,
+  buildOcrGocPrompt, parseGocJson, buildCloneFromGocPrompt, parseVariantsJson, GOC_SCHEMA,
   buildBatchPrompt, parseBatchJson, parseStructuredText, saveCauBatch, callGeminiJson,
   CLONE_SCHEMA, BATCH_SCHEMA, callGeminiRich, buildIngestPrompt, parseIngestJson, INGEST_SCHEMA,
-  uploadKhoImage, LOAI_CAU, CUM_TBL, type CauHoi, type MapRow,
+  uploadKhoImage, LOAI_CAU, CUM_TBL, callAiClone, saveCloneVariants, AI_MODELS,
+  type CauHoi, type MapRow,
 } from '../../lib/kho/api'
 import CumBaiTab from './CumBaiTab'
 import TienDeBox from './TienDeBox'
@@ -42,6 +43,7 @@ export default function DangHub({ d, config, chuan, allDang, onClose, onEditDang
   const [err, setErr] = useState<string | null>(null)
   const [cauModal, setCauModal] = useState<null | { editing: CauHoi }>(null)
   const [importMode, setImportMode] = useState<'clone' | 'batch' | null>(null)
+  const [cloneTu, setCloneTu] = useState<CauHoi | null>(null)   // clone TỪ BÀI CÓ SẴN trong kho
   const [tab, setTab] = useState<'cum' | 'chua' | 'kho'>('cum')
   const [moTienDe, setMoTienDe] = useState(false)
   const tone = mucDoTone(d.mucDo)
@@ -141,7 +143,7 @@ export default function DangHub({ d, config, chuan, allDang, onClose, onEditDang
 
               {!loading && !err && coCum && tab !== 'kho' && caus.length > 0 ? (
                 <CumBaiTab maDang={d.leafMa} caus={caus} cauTbl={cauTbl} view={tab}
-                  onEditCau={(c) => setCauModal({ editing: c })} onChanged={reload} />
+                  onEditCau={(c) => setCauModal({ editing: c })} onCloneCau={setCloneTu} onChanged={reload} />
               ) : loading ? <p className="text-sm text-slate-400">Đang tải…</p>
                 : err ? <p className="text-sm text-rose-600">Lỗi: {err}</p>
                 : caus.length === 0 ? (
@@ -161,6 +163,7 @@ export default function DangHub({ d, config, chuan, allDang, onClose, onEditDang
                             {c.nguon_giai === 'ai' && <span className="rounded bg-amber-50 px-2 py-0.5 text-[12px] font-medium text-amber-700" title="Lời giải do AI tạo — cần duyệt">🤖 AI giải</span>}
                           </div>
                           <div className="flex gap-3">
+                            <button onClick={() => setCloneTu(c)} className="text-[13px] font-medium text-slate-500 hover:text-violet-600" title="Sinh biến thể từ chính bài này (không cần ảnh)">✨ Clone</button>
                             <button onClick={() => setCauModal({ editing: c })} className="text-[13px] font-medium text-slate-500 hover:text-indigo-600">Sửa</button>
                             <button onClick={() => onDelCau(c)} className="text-[13px] font-medium text-slate-500 hover:text-rose-600">Xoá</button>
                           </div>
@@ -191,6 +194,10 @@ export default function DangHub({ d, config, chuan, allDang, onClose, onEditDang
       {importMode && (
         <AiImportModal mode={importMode} dangChinh={d.leafMa} tenDang={d.leafTen} cauTbl={cauTbl}
           onClose={() => setImportMode(null)} onSaved={async () => { setImportMode(null); await reload() }} />
+      )}
+      {cloneTu && (
+        <AiImportModal mode="clone" dangChinh={d.leafMa} tenDang={d.leafTen} cauTbl={cauTbl} presetGoc={cloneTu}
+          onClose={() => setCloneTu(null)} onSaved={async () => { setCloneTu(null); await reload() }} />
       )}
     </div>
   )
@@ -258,13 +265,17 @@ function fileToBase64(f: File): Promise<string> {
   })
 }
 
-function AiImportModal({ mode, dangChinh, tenDang, cauTbl, onClose, onSaved }: {
-  mode: 'clone' | 'batch'; dangChinh: string; tenDang: string; cauTbl: string; onClose: () => void; onSaved: () => void
+function AiImportModal({ mode, dangChinh, tenDang, cauTbl, presetGoc, onClose, onSaved }: {
+  mode: 'clone' | 'batch'; dangChinh: string; tenDang: string; cauTbl: string
+  presetGoc?: CauHoi          // clone TỪ BÀI CÓ SẴN trong kho → bỏ qua bước ① OCR, chỉ đẻ biến thể
+  onClose: () => void; onSaved: () => void
 }) {
   const isClone = mode === 'clone'
   const [method, setMethod] = useState<'manual' | 'auto' | 'text'>(mode === 'clone' ? 'auto' : 'text')
+  // Nhà AI cho CLONE (DeepSeek/Claude) — tách hẳn khỏi `model` (Gemini) vốn lo OCR/nhập chuỗi.
+  const [modelClone, setModelClone] = useState(AI_MODELS[0].value)
   const [textInput, setTextInput] = useState('')
-  const [loai, setLoai] = useState('tra_loi_ngan')
+  const [loai, setLoai] = useState(presetGoc?.loai_cau ?? 'tra_loi_ngan')
   const [ghiChu, setGhiChu] = useState('')
   const [soBienThe, setSoBienThe] = useState(5)
   const [model, setModel] = useState('gemini-2.5-flash')
@@ -273,7 +284,7 @@ function AiImportModal({ mode, dangChinh, tenDang, cauTbl, onClose, onSaved }: {
   const [json, setJson] = useState('')
   const [files, setFiles] = useState<UpFile[]>([])
   const [shareImgDe, setShareImgDe] = useState<string | null>(null) // ảnh đề dùng chung: gắn cho gốc + MỌI biến thể (dán 1 lần)
-  const [goc, setGoc] = useState<ReviewItem | null>(null)
+  const [goc, setGoc] = useState<ReviewItem | null>(presetGoc ? toRI(presetGoc, true) : null)
   const [items, setItems] = useState<ReviewItem[]>([])
   const [showVariants, setShowVariants] = useState(false)
   const [vi, setVi] = useState(0)  // biến thể đang xem
@@ -360,8 +371,9 @@ function AiImportModal({ mode, dangChinh, tenDang, cauTbl, onClose, onSaved }: {
     if (!goc) { setError('Chưa có bài gốc — bấm “① Nhận bài gốc” trước.'); return }
     setError(null); setBusy(true)
     try {
-      // Clone TỪ TEXT gốc đã chốt (KHÔNG gửi lại ảnh) → hết phụ thuộc OCR. LUÔN Flash + suy luận (generation).
-      const text = await callGeminiJson(buildCloneFromGocPrompt({ goc: toCND(goc), soBienThe, ghiChu: ghiChu.trim(), tenDang, loaiCau: loai }), { model: 'gemini-2.5-flash', think: 8192, schema: VARIANTS_SCHEMA })
+      // Clone TỪ TEXT gốc đã chốt (KHÔNG gửi lại ảnh) → hết phụ thuộc OCR, nên đổi nhà AI được thoải mái.
+      // Gemini clone kém (Thùy 14/08) ⇒ bước này chạy DeepSeek/Claude; Gemini chỉ còn lo đọc ảnh.
+      const text = await callAiClone(buildCloneFromGocPrompt({ goc: toCND(goc), soBienThe, ghiChu: ghiChu.trim(), tenDang, loaiCau: loai }), modelClone)
       const variants = parseVariantsJson(text).slice(0, soBienThe)
       setItems(variants.map((v) => withImgShare({ ...toRI(v), nguonGiai: 'ai' }))); setShowVariants(true); setVi(0)
       if (!variants.length) setError('AI không sinh được biến thể nào — thử lại hoặc sửa bài gốc.')
@@ -401,8 +413,14 @@ function AiImportModal({ mode, dangChinh, tenDang, cauTbl, onClose, onSaved }: {
       if (isClone) {
         if (!goc) throw new Error('Chưa có bài gốc.')
         const variants = items.filter((v) => v.approved && v.noi_dung.trim())
-        const res = await saveCloneBatch({ dangChinh, loaiCau: loai, goc: toCND(goc), variants: variants.map(toCND) }, cauTbl)
-        alert(`Đã lưu: 1 gốc + ${res.soClone} biến thể.`)
+        if (presetGoc) {
+          // Clone từ bài CÓ SẴN: không đẻ gốc mới, biến thể bám vào câu đó + thừa kế cụm của nó.
+          const n = await saveCloneVariants({ goc: presetGoc, variants: variants.map(toCND) }, cauTbl)
+          alert(`Đã lưu ${n} biến thể cho ${presetGoc.ma_cau}${presetGoc.ma_cum ? ' (cùng cụm bài)' : ''}.`)
+        } else {
+          const res = await saveCloneBatch({ dangChinh, loaiCau: loai, goc: toCND(goc), variants: variants.map(toCND) }, cauTbl)
+          alert(`Đã lưu: 1 gốc + ${res.soClone} biến thể.`)
+        }
       } else {
         const n = await saveCauBatch({ dangChinh, loaiCau: loai, items: items.filter((v) => v.approved && v.noi_dung.trim()).map(toCND) }, cauTbl)
         alert(`Đã lưu ${n} câu.`)
@@ -433,12 +451,16 @@ function AiImportModal({ mode, dangChinh, tenDang, cauTbl, onClose, onSaved }: {
     <div className="fixed inset-0 z-[60] bg-slate-900/50 backdrop-blur-sm" onClick={onClose}>
       <div className="absolute inset-4 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center gap-4 border-b border-slate-200 px-6 py-3.5">
-          <h3 className="text-base font-semibold text-slate-900">{isClone ? '✨ Clone biến thể' : '📥 Nhập chuỗi câu'} · {tenDang}</h3>
-          <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5">
-            {!isClone && <MethodBtn active={method === 'text'} onClick={() => setMethod('text')}>Văn bản (cấu trúc)</MethodBtn>}
-            <MethodBtn active={method === 'auto'} onClick={() => setMethod('auto')}>Tự động (ảnh → API)</MethodBtn>
-            <MethodBtn active={method === 'manual'} onClick={() => setMethod('manual')}>Thủ công (dán JSON)</MethodBtn>
-          </div>
+          <h3 className="text-base font-semibold text-slate-900">
+            {isClone ? (presetGoc ? `✨ Clone từ ${presetGoc.ma_cau}` : '✨ Clone biến thể') : '📥 Nhập chuỗi câu'} · {tenDang}
+          </h3>
+          {!presetGoc && (
+            <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5">
+              {!isClone && <MethodBtn active={method === 'text'} onClick={() => setMethod('text')}>Văn bản (cấu trúc)</MethodBtn>}
+              <MethodBtn active={method === 'auto'} onClick={() => setMethod('auto')}>Tự động (ảnh → API)</MethodBtn>
+              <MethodBtn active={method === 'manual'} onClick={() => setMethod('manual')}>Thủ công (dán JSON)</MethodBtn>
+            </div>
+          )}
           <button onClick={onClose} className="ml-auto flex h-8 w-8 items-center justify-center rounded-md text-slate-400 hover:bg-slate-100">✕</button>
         </div>
 
@@ -458,9 +480,18 @@ function AiImportModal({ mode, dangChinh, tenDang, cauTbl, onClose, onSaved }: {
                 </select>
               </Cell>
             )}
-            {method === 'auto' && (
-              <Cell label="Model">
-                {/* CLONE: ẩn Pro hẳn (clone không bao giờ cần Pro). Pro chỉ hiện ở batch/OCR khó. */}
+            {/* CLONE dùng NHÀ KHÁC (DeepSeek/Claude) — Gemini clone kém. Ô Gemini chỉ còn cho bước
+                ĐỌC ẢNH: ① nhận bài gốc (clone) và tách câu (nhập chuỗi). */}
+            {isClone && (
+              <Cell label="Nhà AI clone">
+                <select value={modelClone} onChange={(e) => setModelClone(e.target.value)} className={sel}>
+                  {AI_MODELS.map((m) => <option key={m.value} value={m.value}>{m.label} · {m.sub}</option>)}
+                </select>
+              </Cell>
+            )}
+            {method === 'auto' && !presetGoc && (
+              <Cell label={isClone ? 'Gemini (đọc ảnh)' : 'Model'}>
+                {/* CLONE: ẩn Pro hẳn (đọc bài gốc không cần Pro). Pro chỉ hiện ở batch/OCR khó. */}
                 <select value={model} onChange={(e) => setModel(e.target.value)} className={sel}>
                   {MODELS.filter((m) => !(isClone && m.value.includes('pro'))).map((m) => <option key={m.value} value={m.value}>{m.label} · {m.sub}</option>)}
                 </select>
@@ -488,6 +519,8 @@ function AiImportModal({ mode, dangChinh, tenDang, cauTbl, onClose, onSaved }: {
               </>
             ) : method === 'auto' ? (
               <>
+                {/* Clone từ bài CÓ SẴN: đề đã nằm trong kho → không cần ảnh, không cần bước ①. */}
+                {!presetGoc && (
                 <Cell label="Ảnh/PDF">
                   <div className="flex items-center gap-1.5">
                     <button onClick={() => fileRef.current?.click()} title="Chọn ảnh/PDF từ máy" className="h-[34px] whitespace-nowrap rounded-md border border-slate-300 bg-white px-3 text-[13px] font-medium text-slate-600 hover:border-indigo-400">📎 Chọn</button>
@@ -495,6 +528,7 @@ function AiImportModal({ mode, dangChinh, tenDang, cauTbl, onClose, onSaved }: {
                   </div>
                   <input ref={fileRef} type="file" accept="image/*,application/pdf" multiple hidden onChange={(e) => e.target.files && addFiles(e.target.files)} />
                 </Cell>
+                )}
                 {files.length > 0 && (
                   <div className="flex items-end gap-1.5 pb-0.5">
                     {files.map((f, i) => (
@@ -521,8 +555,11 @@ function AiImportModal({ mode, dangChinh, tenDang, cauTbl, onClose, onSaved }: {
                 )}
                 {isClone ? (
                   <>
-                    {/* 2 BƯỚC: ① bóc bài gốc để CHỐT chuẩn → ② clone theo gốc đã chốt (không phụ thuộc OCR nữa). */}
-                    <button onClick={runOcrGoc} disabled={!files.length || busy} className="h-[34px] rounded-md bg-slate-700 px-4 text-[13px] font-medium text-white shadow-sm hover:bg-slate-600 disabled:opacity-40" title="Bước 1: AI chỉ bóc BÀI GỐC từ ảnh — sửa/chốt cho chuẩn trước khi clone">{busy ? '⏳…' : '① Nhận bài gốc'}</button>
+                    {/* 2 BƯỚC: ① bóc bài gốc để CHỐT chuẩn → ② clone theo gốc đã chốt (không phụ thuộc OCR nữa).
+                        Clone từ bài có sẵn thì bỏ hẳn bước ① — đề đã chuẩn trong kho rồi. */}
+                    {!presetGoc && (
+                      <button onClick={runOcrGoc} disabled={!files.length || busy} className="h-[34px] rounded-md bg-slate-700 px-4 text-[13px] font-medium text-white shadow-sm hover:bg-slate-600 disabled:opacity-40" title="Bước 1: AI chỉ bóc BÀI GỐC từ ảnh — sửa/chốt cho chuẩn trước khi clone">{busy ? '⏳…' : '① Nhận bài gốc'}</button>
+                    )}
                     <button onClick={runCloneFromGoc} disabled={!goc || busy} className="h-[34px] rounded-md bg-indigo-600 px-4 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40" title={goc ? 'Bước 2: sinh biến thể theo BÀI GỐC đã chốt (dùng text gốc, không đọc lại ảnh)' : 'Nhận & chốt bài gốc trước đã'}>{busy ? '⏳…' : `② Clone theo bài gốc${goc ? '' : ' (chốt gốc trước)'}`}</button>
                   </>
                 ) : (

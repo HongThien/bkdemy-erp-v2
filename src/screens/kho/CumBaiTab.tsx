@@ -24,12 +24,13 @@ const selCum = 'h-[26px] max-w-[170px] rounded-md border border-slate-300 bg-whi
 
 export type CumView = 'cum' | 'chua'
 
-export default function CumBaiTab({ maDang, caus, cauTbl, view, onEditCau, onChanged }: {
+export default function CumBaiTab({ maDang, caus, cauTbl, view, onEditCau, onCloneCau, onChanged }: {
   maDang: string
   caus: CauHoi[]
   cauTbl: string
   view: CumView
   onEditCau: (c: CauHoi) => void
+  onCloneCau: (c: CauHoi) => void  // sinh biến thể TỪ chính bài này (biến thể thừa kế cụm của nó)
   onChanged: () => void          // reload câu ở màn cha (ma_cum vừa đổi)
 }) {
   const [cums, setCums] = useState<CumBai[]>([])
@@ -161,7 +162,7 @@ export default function CumBaiTab({ maDang, caus, cauTbl, view, onEditCau, onCha
             {gocChua.map((g) => (
               <CauDong key={g.ma_cau} c={g} clones={hienClone ? cloneCuaGoc(g.ma_cau, chuaPhanCum) : []}
                 chon={chon.has(g.ma_cau)} onChon={() => toggleChon(g.ma_cau)}
-                onEdit={() => onEditCau(g)} phai={dropdownGan(g)} />
+                onEdit={() => onEditCau(g)} onClone={() => onCloneCau(g)} phai={dropdownGan(g)} />
             ))}
           </ul>
         )}
@@ -248,7 +249,7 @@ export default function CumBaiTab({ maDang, caus, cauTbl, view, onEditCau, onCha
               <ul className="space-y-1.5">
                 {gocs.map((g) => (
                   <CauDong key={g.ma_cau} c={g} clones={hienClone ? cloneCuaGoc(g.ma_cau, pool) : []}
-                    onEdit={() => onEditCau(g)} phai={dropdownGan(g)}
+                    onEdit={() => onEditCau(g)} onClone={() => onCloneCau(g)} phai={dropdownGan(g)}
                     onGo={() => chay(() => ganCumBai([g.ma_cau], null, cauTbl))} />
                 ))}
               </ul>
@@ -310,9 +311,9 @@ function PickerBaiModal({ cum, ungVien, hienClone, cloneCuaGoc, onClose, onThem 
 }
 
 // 1 dòng câu gốc (+ clone của nó khi bật toggle)
-function CauDong({ c, clones, chon, onChon, onEdit, onGo, phai }: {
+function CauDong({ c, clones, chon, onChon, onEdit, onClone, onGo, phai }: {
   c: CauHoi; clones: CauHoi[]; chon?: boolean; onChon?: () => void
-  onEdit: () => void; onGo?: () => void; phai?: React.ReactNode
+  onEdit: () => void; onClone?: () => void; onGo?: () => void; phai?: React.ReactNode
 }) {
   return (
     <li>
@@ -322,6 +323,7 @@ function CauDong({ c, clones, chon, onChon, onEdit, onGo, phai }: {
         <div className="min-w-0 flex-1 truncate text-[14px] text-slate-800"><MathText>{c.noi_dung}</MathText></div>
         {c.nguon_giai === 'ai' && <span className="shrink-0 rounded bg-amber-50 px-1.5 py-0.5 text-[11px] font-medium text-amber-700" title="Lời giải do AI tạo — cần duyệt">🤖</span>}
         {phai}
+        {onClone && <button onClick={onClone} className="shrink-0 text-[12px] font-medium text-slate-400 hover:text-violet-600" title="Sinh biến thể từ bài này — biến thể tự vào đúng cụm">✨</button>}
         <button onClick={onEdit} className="shrink-0 text-[12px] font-medium text-slate-400 hover:text-indigo-600">Sửa</button>
         {onGo && <button onClick={onGo} className="shrink-0 text-[12px] font-medium text-slate-400 hover:text-rose-600" title="Gỡ khỏi cụm (về tab Chưa phân cụm)">Gỡ</button>}
       </div>
