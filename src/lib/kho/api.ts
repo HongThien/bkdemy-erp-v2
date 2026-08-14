@@ -733,8 +733,9 @@ function recordUsage(u: GeminiUsage, model: string) {
 export const AI_GIA: Record<string, { in: number; out: number }> = {
   'deepseek-chat': { in: 0.27, out: 1.10 },
   'deepseek-reasoner': { in: 0.55, out: 2.19 },
-  'claude-opus-5': { in: 5.0, out: 25.0 },
-  'claude-sonnet-5': { in: 3.0, out: 15.0 },
+  'claude-haiku-4-5': { in: 1.0, out: 5.0 },
+  'claude-sonnet-5': { in: 3.0, out: 15.0 },   // có giá giới thiệu $2/$10 tới 31/08/2026 — để giá CHÍNH THỨC cho đồng hồ không báo thiếu
+  'claude-opus-5': { in: 5.0, out: 25.0 },     // ⚠ Opus 4.7 GIÁ Y HỆT Opus 5 → hạ đời không rẻ hơn, muốn rẻ phải sang Sonnet/Haiku
 }
 function recordUsageKhac(u: { in: number; out: number }, model: string) {
   const g = AI_GIA[model] ?? { in: 1, out: 5 }
@@ -753,11 +754,18 @@ function recordUsageKhac(u: { in: number; out: number }, model: string) {
 //   (file JS tải về trước cả màn login). Khác Gemini, key Anthropic/DeepSeek KHÔNG khoá theo tên miền
 //   được. Chấp nhận vì 2 tài khoản đều nạp-tới-đâu-tiêu-tới-đó (Thùy 14/08) ⇒ mất tối đa = số dư.
 //   ⛔ TRƯỚC KHI DEPLOY ERP RA ĐỊA CHỈ PUBLIC: chuyển 2 lời gọi này qua proxy ở `worker/`.
+// Bội số tiền = ĐO THẬT trên bài DC000006, 2 biến thể, cùng prompt (15/08/2026):
+//   DeepSeek 27đ · Haiku ~150đ · Sonnet 597đ · Opus 787đ.
+// ⚠ Sonnet KHÔNG rẻ bằng tỉ lệ giá niêm yết (1,7×) vì nó xài nhiều output token hơn Opus
+//   (1043 vs 714) ⇒ thực tế chỉ rẻ hơn Opus ~24%. Muốn rẻ THẬT thì bước xuống DeepSeek/Haiku,
+//   không phải Opus→Sonnet. (Và Opus 4.7 giá y hệt Opus 5 — hạ đời không tiết kiệm gì.)
 export type AiNha = 'deepseek' | 'claude'
 export const AI_MODELS: { nha: AiNha; value: string; label: string; sub: string }[] = [
-  { nha: 'deepseek', value: 'deepseek-chat', label: 'DeepSeek', sub: 'rẻ nhất — thử trước' },
+  { nha: 'deepseek', value: 'deepseek-chat', label: 'DeepSeek', sub: 'rẻ nhất · mặc định' },
   { nha: 'deepseek', value: 'deepseek-reasoner', label: 'DeepSeek R1', sub: 'suy luận sâu, chậm hơn' },
-  { nha: 'claude', value: 'claude-opus-5', label: 'Claude Opus 5', sub: '⚠ đắt — toán khó mới cần' },
+  { nha: 'claude', value: 'claude-haiku-4-5', label: 'Claude Haiku', sub: '~5× DeepSeek · nhanh' },
+  { nha: 'claude', value: 'claude-sonnet-5', label: 'Claude Sonnet 5', sub: '~22× DeepSeek · khi DeepSeek sai' },
+  { nha: 'claude', value: 'claude-opus-5', label: 'Claude Opus 5', sub: '⚠ ~29× DeepSeek · chỉ toán khó nhất' },
 ]
 export const nhaCuaModel = (m: string): AiNha => (m.startsWith('claude') ? 'claude' : 'deepseek')
 
@@ -793,9 +801,10 @@ async function callClaudeJson(prompt: string, model: string): Promise<string> {
   if (!key) throw new Error('Chưa có VITE_ANTHROPIC_API_KEY trong .env.local → chọn nhà khác hoặc thêm key.')
   const { default: Anthropic } = await import('@anthropic-ai/sdk')
   const client = new Anthropic({ apiKey: key, dangerouslyAllowBrowser: true })
+  // Haiku KHÔNG nhận adaptive thinking (API trả 400) — chỉ bật suy luận cho Opus/Sonnet.
   const res = await client.messages.create({
     model, max_tokens: 16000,
-    thinking: { type: 'adaptive' },
+    ...(model.includes('haiku') ? {} : { thinking: { type: 'adaptive' as const } }),
     messages: [{ role: 'user', content: prompt }],
   })
   const u = res.usage
