@@ -916,6 +916,12 @@ export async function listChiTietTheoPH(ky: string): Promise<Map<string, DongPhi
     if (r.tienDuoi > 0) push(phId, { loai: 'hoc_duoi', hoc_sinh_id: r.hoc_sinh_id, hoc_sinh_ten: r.hoc_sinh_ten, lop_id: r.lop_id || null, lop_ten: r.lop_ten, so_luong: r.soBuoiDuoi, don_gia: null, he_so: null, thanh_tien: r.tienDuoi, mo_ta: `${r.soBuoiDuoi} buổi đuổi` })
   }
   const { data: psRows } = await supabase.from('hoc_phi_phat_sinh').select('loai, lop_id, hoc_sinh_id, mo_ta, so_tien').eq('ky', ky).limit(LIMIT)
+  // HS có phát sinh CÁ NHÂN nhưng KHÔNG ghi danh trong kỳ (vd đã nghỉ trước kỳ) → resolve PH+tên để không sót.
+  const psThieu = [...new Set((psRows ?? []).filter((p: any) => p.loai === 'ca_nhan' && p.hoc_sinh_id && !phOf.has(p.hoc_sinh_id)).map((p: any) => p.hoc_sinh_id as string))]
+  if (psThieu.length) {
+    const { data: mh } = await supabase.from('hoc_sinh').select('id, ho_ten, phu_huynh_id').in('id', psThieu).limit(LIMIT)
+    for (const h of (mh ?? []) as any[]) { if (h.phu_huynh_id) phOf.set(h.id, h.phu_huynh_id); tenOf.set(h.id, h.ho_ten) }
+  }
   for (const ps of (psRows ?? []) as any[]) {
     const so = Number(ps.so_tien)
     if (ps.loai === 'ca_nhan' && ps.hoc_sinh_id) { const phId = phOf.get(ps.hoc_sinh_id); if (phId) push(phId, { loai: 'phat_sinh', hoc_sinh_id: ps.hoc_sinh_id, hoc_sinh_ten: tenOf.get(ps.hoc_sinh_id), lop_id: null, so_luong: null, don_gia: null, he_so: null, thanh_tien: so, mo_ta: ps.mo_ta }) }
