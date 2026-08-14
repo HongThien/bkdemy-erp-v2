@@ -645,11 +645,15 @@ function splitUnlabeled(s: string): { stem: string; parts: { lbl: string; body: 
 }
 // Tách đề + lưới ý con — DÙNG CHUNG (PrintView giáo trình + ET). Ưu tiên: đáp án A/B/C/D nhúng → ý con a/b/c → ý con KHÔNG nhãn (đã strip).
 export function splitStem(c: CauHoi): { stem: string; grid: { lbl: string; body: string }[] | null; emb: boolean } {
+  // "[hình]" là quy ước NHẬP LIỆU (kho/api.ts: nhân sự cắt ảnh đính sau vào anh_de) — không phải nội dung
+  // đề thật. Đã có anh_de (ảnh đã đính) mà chuỗi thô vẫn còn placeholder → strip lúc IN, đừng để lộ literal
+  // "[hình]" ra giấy (Thùy báo ảnh chụp MT câu 7). KHÔNG sửa DB — chỉ ẩn lúc render.
+  const noiDung = c.anh_de ? c.noi_dung.replace(/\[\s*hình\s*\]/gi, '').replace(/\s+/g, ' ').trim() : c.noi_dung
   const hasOpts = !!(c.lua_chon && c.lua_chon.length)
-  const emb = hasOpts ? null : splitLabeled(c.noi_dung, 'ABCDEFGH')
-  const yc = hasOpts || emb ? null : splitLabeled(c.noi_dung, 'abcdefghijkl')
-  const un = hasOpts || emb || yc ? null : splitUnlabeled(c.noi_dung)
-  return { stem: emb?.stem ?? yc?.stem ?? un?.stem ?? c.noi_dung, grid: emb?.parts ?? yc?.parts ?? un?.parts ?? null, emb: !!emb }
+  const emb = hasOpts ? null : splitLabeled(noiDung, 'ABCDEFGH')
+  const yc = hasOpts || emb ? null : splitLabeled(noiDung, 'abcdefghijkl')
+  const un = hasOpts || emb || yc ? null : splitUnlabeled(noiDung)
+  return { stem: emb?.stem ?? yc?.stem ?? un?.stem ?? noiDung, grid: emb?.parts ?? yc?.parts ?? un?.parts ?? null, emb: !!emb }
 }
 // Lưới ý con (đáp án nhúng / ý con có/không nhãn). Không nhãn → chỉ hiện nội dung, không dấu ).
 export function OptGrid({ grid, emb }: { grid: { lbl: string; body: string }[]; emb: boolean }) {
@@ -865,7 +869,11 @@ const CONTENT_CSS = `
 .pv-tlnt{margin:4px 0}
 .pv-tlnt-row{display:flex;align-items:stretch;border-bottom:1px solid #e2e8f0;break-inside:avoid;min-height:11mm}
 .pv-tlnt-row:first-child{border-top:1px solid #e2e8f0}
-.pv-tlnt-q{flex:1;min-width:0;padding:7px 10px 7px 0;display:flex;align-items:center}
+/* flex-direction:column (KHÔNG phải row mặc định): questionOnlyContent trả về NHIỀU con (đề + <img> nếu
+   câu có anh_de, vd câu trắc nghiệm bị ép hiển thị "trả lời ngắn" mà vẫn còn hình minh hoạ). row sẽ xếp
+   đề/ảnh CẠNH NHAU → đề bị bóp còn 1 cột chữ hẹp dính từng từ (Thùy báo ảnh chụp, MT câu 7). column xếp
+   đề rồi ảnh CHỒNG DỌC như cauItemParts vẫn làm, justify-content:center giữ nguyên ý "canh giữa" ban đầu. */
+.pv-tlnt-q{flex:1;min-width:0;padding:7px 10px 7px 0;display:flex;flex-direction:column;justify-content:center}
 .pv-tlnt-a{width:42mm;flex-shrink:0;border-left:1px solid #e2e8f0}
 .pv-img{display:block;margin:7px auto;max-height:60mm;max-width:100%}
 .mt-img{display:block;margin:6px auto;max-height:60mm;max-width:100%;break-inside:avoid}

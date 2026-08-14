@@ -11,6 +11,7 @@ import { getTaiLieuFull, etFormOf, khoCuaMon, type TaiLieuFull, type CauHinh } f
 import { fetchCausByMa } from '../../lib/ontap'
 import type { CauHoi } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
+import { BK_CSS, BK_PAGE_CSS } from './bkPrint'
 import { cauItemParts, CauFlow, OptGrid, GvAnswer, splitStem, questionOnlyContent, TLNTable, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChrome, printWithFilename } from './PrintView'
 
 const DEFAULT_TL_LINES = 4
@@ -53,10 +54,10 @@ export default function MTPrintView({ id, onClose, headless, linkOnly, onFail, o
     if (!full || !varReady || !srcRef.current || !dstRef.current) return
     let cancelled = false
     setRendering(true)
-    // Bỏ HẲN dải header chrome (Thùy chốt: MT/ET/giáo trình đều bỏ header) — MT đã có đầu đề pv-bt-head
-    // trong thân; giữ footer (số trang + liên hệ).
-    const ch = { ...(full.taiLieu.cau_hinh ?? {}), header: 'none' as const }
-    const css = buildPagedCss(full.taiLieu, ch, ch.mau || '#7c3aed') + MT_CSS
+    // Kiểu BK có thương hiệu riêng trong thân → bỏ cả header lẫn footer cũ (đồng bộ ET/BTVN, Thùy báo MT
+    // còn sót lại chrome cũ). Footer giờ là dải liên hệ cố định đáy trang của BK_PAGE_CSS.
+    const ch = { ...(full.taiLieu.cau_hinh ?? {}), header: 'none' as const, footer: 'none' as const }
+    const css = buildPagedCss(full.taiLieu, ch, ch.mau || '#7c3aed') + MT_CSS + BK_CSS + BK_PAGE_CSS
     const cssUrl = URL.createObjectURL(new Blob([css], { type: 'text/css' }))
     const html = srcRef.current.innerHTML
     // Race-safe: KHÔNG xoá DOM của container cũ (rút DOM giữa lúc paged.js còn đo layout dở → sinh trang
@@ -102,7 +103,10 @@ export default function MTPrintView({ id, onClose, headless, linkOnly, onFail, o
   async function layLink(): Promise<boolean> {
     if (!activeContainerRef.current || !full) return false
     setDl(true); setDlErr(null)
-    try { await uploadPagesAsLink(activeContainerRef.current, printFileName(), pageChrome(full.taiLieu, { ...(full.taiLieu.cau_hinh ?? {}), header: 'none' as const }), full.taiLieu.id); return true }
+    try {
+      const chChrome = { ...(full.taiLieu.cau_hinh ?? {}), header: 'none' as const, footer: 'none' as const }  // MT giờ luôn BK → bỏ header + footer cũ
+      await uploadPagesAsLink(activeContainerRef.current, printFileName(), pageChrome(full.taiLieu, chChrome), full.taiLieu.id); return true
+    }
     catch (e) { setDlErr('Lấy link lỗi: ' + (e instanceof Error ? e.message : String(e))); return false }
     finally { setDl(false) }
   }
@@ -248,22 +252,7 @@ function MTPhieu({ full, phans, ver, gv, mapCau, hoTen, lopTen }: {
   const next = () => ++no
   return (
     <div className="pv-mt" style={{ '--pv-accent': ver.ch.mau || '#7c3aed' } as CSSProperties}>
-      <div className="pv-bt-head">
-        <div className="pv-bt-titlewrap">
-          <div className="pv-bt-eyebrow">Kỳ thi lớn (MT){ver.badge ? ` · ${ver.badge}` : ''}{gv ? ' · Đáp án' : ''}</div>
-          <div className="pv-bt-title">{full.taiLieu.ten}</div>
-        </div>
-        {!gv && (
-          <div className="pv-bt-row">
-            <div className="pv-bt-info">
-              <div className="pv-bt-field"><span className="pv-bt-lbl">Họ và tên:</span>{hoTen ? <span className="pv-bt-filled">{hoTen}</span> : <span className="pv-bt-fill" />}</div>
-              <div className="pv-bt-field"><span className="pv-bt-lbl">Lớp:</span>{lopTen ? <span className="pv-bt-filled">{lopTen}</span> : <span className="pv-bt-fill" />}</div>
-              {ver.badge && <div className="pv-bt-field"><span className="pv-bt-lbl">{ver.badge}</span></div>}
-            </div>
-            <div className="pv-bt-score"><div className="pv-bt-score-lbl">ĐIỂM</div><div className="pv-bt-score-box" /></div>
-          </div>
-        )}
-      </div>
+      <MTHeaderBK ten={full.taiLieu.ten} badge={ver.badge} gv={gv} hoTen={hoTen} lopTen={lopTen} />
 
       {phans.map((p) => (
         <section key={p.id} className="pv-sec">
@@ -280,14 +269,47 @@ function MTPhieu({ full, phans, ver, gv, mapCau, hoTen, lopTen }: {
   )
 }
 
+// Đầu phiếu kiểu BK (đồng bộ ET/BTVN, xem ETHeaderBK/BtvnBkHead) — khung .pv-bkh (logo/nhãn/tiêu đề) từ
+// bkPrint.tsx, còn khối Họ tên/Lớp/Mã đề + ô ĐIỂM giữ NGUYÊN .pv-bt-row/.pv-bt-score cũ (MT cần cả Mã đề
+// LẪN Điểm cùng lúc — khác ET chỉ có Mã đề/BTVN chỉ có Điểm — nên không tái dùng thẳng .pv-bkh-student).
+function MTHeaderBK({ ten, badge, gv, hoTen, lopTen }: { ten: string; badge: string; gv: boolean; hoTen?: string; lopTen?: string }) {
+  return (
+    <div className="pv-bkh">
+      <div className="pv-bkh-top">
+        <div className="pv-bkh-brand"><img className="pv-bkh-logo" src={location.origin + '/Logo.png'} alt="BK ACADEMY" /></div>
+        <div className="pv-bkh-label">Kỳ thi lớn (MT){badge ? ` · ${badge}` : ''}{gv ? ' · Đáp án' : ''}</div>
+        <div className="pv-bkh-meta" />
+      </div>
+      <div className="pv-bkh-hero">
+        <h1 className="pv-bkh-title">{ten}</h1>
+        <div className="pv-bkh-divider" />
+      </div>
+      {!gv && (
+        <div className="pv-bt-row">
+          <div className="pv-bt-info">
+            <div className="pv-bt-field"><span className="pv-bt-lbl">Họ và tên:</span>{hoTen ? <span className="pv-bt-filled">{hoTen}</span> : <span className="pv-bt-fill" />}</div>
+            <div className="pv-bt-field"><span className="pv-bt-lbl">Lớp:</span>{lopTen ? <span className="pv-bt-filled">{lopTen}</span> : <span className="pv-bt-fill" />}</div>
+            {badge && <div className="pv-bt-field"><span className="pv-bt-lbl">{badge}</span></div>}
+          </div>
+          <div className="pv-bt-score"><div className="pv-bt-score-lbl">ĐIỂM</div><div className="pv-bt-score-box" /></div>
+        </div>
+      )}
+    </div>
+  )
+}
+
 const MT_CSS = `
 .pv-mt .pv-h-dang{border-bottom:none;padding-bottom:0}
 .pv-empty{color:#8a9097;font-style:italic;margin-top:10px}
 /* Tên/lớp IN SẴN (perHS) — thay ô trống chấm chấm bằng chữ đậm, giống BTPrintView. */
 .pv-bt-filled{flex:1;font-weight:600;color:#1e293b}
-/* Mỗi MÃ ĐỀ/PHIẾU HS luôn bắt đầu Ở TRANG LẺ (giống ET) — MT không import bkPrint.tsx nên khai lại
-   TẠI ĐÂY (bkPrint.tsx định nghĩa y hệt cho ET, DÙNG CHUNG Ý NGHĨA, đừng đổi lệch giữa 2 nơi). */
-.pv-de-recto{break-before:right}
+/* .pv-bt-row (Họ tên/Lớp/Mã đề + ô Điểm, PrintView.tsx) giờ nằm TRỰC TIẾP trong .pv-bkh (MTHeaderBK)
+   thay vì trong .pv-bt-head cũ — .pv-bt-head có padding bao quanh, .pv-bkh thì không (mỗi khối con tự
+   padding) nên bù margin riêng ở đây. Scope .pv-mt để KHÔNG đụng .pv-bt-row của BTPrintView/DeThiPrintView
+   (vẫn dùng .pv-bt-head cũ, xem PrintView.tsx:906). */
+.pv-mt .pv-bt-row{margin:0 16px 16px}
+/* .pv-de-recto (mỗi mã đề/phiếu HS bắt đầu Ở TRANG LẺ) giờ đến từ BK_PAGE_CSS (bkPrint.tsx) — MT đã
+   import bkPrint.tsx (như ET), KHÔNG khai lại ở đây nữa (từng khai trùng, xem git blame nếu cần đối chiếu). */
 /* ⭐ Câu (1 cột, KHÔNG qua CauColumns) phải CHẢY được giữa các trang — mặc định .pv-cau (PrintView.tsx)
    break-inside:avoid khiến CẢ KHỐI (đề + mọi dòng kẻ viết) nhảy nguyên cục sang trang sau, bỏ trống cuối
    trang HOẶC xuống dòng lệch khi khối dài hơn 1 trang. Giống ET đã fix (.pv-et .pv-cau), MT thiếu bản
