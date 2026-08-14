@@ -4697,3 +4697,86 @@ migration đang treo của họ** — chạy OK, nhưng đó là áp hộ thứ 
 CÓ biết bảng cụm và sửa FK `dai_cum_bai`/`khtn_cum_bai`/`*_dang_tien_de` thành `on update cascade`, nên
 mã dạng đổi `09010201` → `T103010101` mà cụm không gãy.
 → **Luật rút ra: trước khi `npm run migrate`, chạy `--status` xem có file treo của người khác không.**
+
+## 2026-08-14 (tiếp) — Tiền tố mã theo MÔN/NHÁNH: T1 Đại · T2 Hình · T3 Giải tích · K KHTN
+
+**CEO bắt lỗi:** *"mã dạng bài của KHTN và Toán trùng nhau. T tưởng đã bảo m phải fix rồi."* — đúng, và
+nghiêm trọng hơn tao tưởng lúc đầu.
+
+**Bug:** mã dạng là mã VỊ TRÍ thuần số (`khối2+chủđề2+chuyênđề2+dạng2`) nên MỌI kho sinh cùng một dải mã.
+Đo được trên DB thật: Đại∩KHTN **62** · Đại∩Hình **48** · KHTN∩Hình 9 · KHTN∩GT 7 · Đại∩GT 3 · Hình∩GT 1.
+Mã CÂU cũng trùng (Đại∩KHTN 4 · KHTN∩GT 22). Mà đo lường (`buoi_danh_gia_dang`, `gami_session_problems`,
+`bt_grades`…) lưu `ma_dang` là **text trần KHÔNG nhãn môn** ⇒ ô (HS × dạng) của 2 môn gộp âm thầm.
+
+**Đính chính quan trọng cho chính tao:** lúc đầu tao báo "1066 dòng đang trộn". SAI mức độ — 1066 là số
+dòng *mang mã nhập nhằng*, còn KHTN mới có ~22 dòng đo thật. Hỏng **chưa xảy ra diện rộng**, nhưng là
+súng đã lên đạn: lớp KHTN chạy thật là gộp ngay. Phải phân biệt "đã hỏng" vs "sẽ hỏng".
+
+**2 phát hiện chỉ lòi ra khi dò GIÁ TRỊ thay vì đọc tên cột / default:**
+1. **`hinh_ban_do` KHÔNG dùng `HD00001`** như default cột ghi — 0/87 dòng dùng nó, cả 87 là mã vị trí
+   8 số, và trùng Đại 48 mã. Tao đã suýt kết luận "kho Hình an toàn, để dành T2" từ đọc `schema.md`.
+   → **Default của cột không nói lên dữ liệu thật** (họ hàng với §2.1 "cột text không nói tập giá trị").
+2. Ngược lại, `ma_dang_hinh` **không được cột nào khác tham chiếu** (kiểm `information_schema`) — nhánh
+   Hình nối vào đo bằng `hinh_y_id` (uuid). Nên T2 phải bị LOẠI khỏi tập ứng viên khi backfill text trần;
+   để nó trong đó làm kẹt 563 dòng Đại vốn phân giải được.
+
+**Fix:** `202608141259_tien_to_ma_theo_mon.sql` — mỗi kho một tiền tố, mã tự mang danh tính môn/nhánh.
+Idempotent nhờ bất biến: mã CŨ luôn bắt đầu bằng CHỮ SỐ, mã MỚI luôn bằng CHỮ CÁI (`~ '^[0-9]'` làm guard).
+
+**Phân giải 30k dòng text trần — nhân chứng, không đoán:**
+- Nguyên tắc: mỗi nhân chứng chỉ **THU HẸP** tập ứng viên; chỉ kết luận khi còn ĐÚNG MỘT. Giao rỗng
+  (2 nhân chứng mâu thuẫn) ⇒ bỏ cả lượt, để nguyên.
+- Nhân chứng: ① `ma_cau` (Đại∩GT = 0 ⇒ sạch cho Đại↔Giải tích) ② mã chỉ có ở 1 kho ③ `lop.mon` /
+  `tai_lieu.mon`+`nhanh` ④ mốc thời gian — kho `hgt_` sinh **10/08/2026**, câu đầu 11/08 ⇒ dòng đo trước
+  10/08 KHÔNG THỂ là Giải tích.
+- 1044 dòng `mon = NULL` (buổi BÙ, `lop_id` null) phân giải qua `buoi_hoc_hs.bu_cho_buoi_id` → buổi gốc →
+  lớp. 100% ra Toán, không dòng nào phải đoán.
+
+**Bug tao tự tạo rồi tự sửa (đáng nhớ nhất):** bản đầu hàm phân giải **return sớm** ở nhân chứng mã câu —
+"ra 1 kho thì chốt, không thì bỏ cuộc". 103 dòng Hình giải tích rơi hết, vì mã câu của chúng trùng KHTN
+(`{K,T3}`) nên bị coi là "không kết luận được", trong khi chỉ cần giao với `mon='Toán'` là ra ngay `T3`.
+→ **Bài học: short-circuit từng nhân chứng ≠ giao các nhân chứng.** Cái đầu vứt thông tin, cái sau dùng hết.
+
+**Bẫy kỹ thuật đã cắn (ghi để khỏi cắn lại):**
+- Self-FK `parent_ma_cau` **không dùng được `ON UPDATE CASCADE`** khi đổi hàng loạt PK cùng bảng — cascade
+  sửa parent của dòng chưa tới lượt ⇒ vi phạm giữa chừng. Phải gỡ FK → đổi cả 2 cột trong MỘT câu → gắn lại.
+- Postgres **cấm `LATERAL` tham chiếu bảng đích của `UPDATE`**. Dùng `FROM (subquery đọc chính bảng đó)`.
+- Hàm phân giải tra bảng mapping có PK `(kho, loai, ma_cu)` ⇒ tra theo `(loai, ma_cu)` không dùng được PK
+  ⇒ seq scan 13k dòng × 30k lần = treo >2 phút. **Thêm index là bắt buộc, không phải tối ưu.**
+- 12/17 FK trỏ vào các bảng kho **thiếu `ON UPDATE CASCADE`** ⇒ phải nới TRƯỚC khi đổi PK.
+
+**Kết quả (dry-run rollback rồi verify lại trên DB sau khi áp — số khớp y hệt):**
+0 mã trùng giữa mọi cặp kho · 0 dòng còn mã cũ · 0 mồ côi · số dòng mọi bảng không đổi ·
+0 dòng khớp >1 kho. Phân bổ: `gami_session_problems` T1=8281 · T3=63 · K=8 · `tai_lieu_phan` T1=4664 ·
+T3=64 · K=12 · `bai_test_cau` T1=479 · K=14.
+
+**Code:** tiền tố dài KHÁC NHAU (K=1, T1/T2/T3=2) ⇒ **cấm cắt mã bằng chỉ số tuyệt đối**. Thêm
+`tachTienTo` / `maChuDeCua` / `maChuyenDeCua` / `soThuTuCua` vào `lib/kho/api.ts`, mọi phép cắt đi qua đó
+(`maxOrd` — nếu quên thì số thứ tự đọc sai và mã mới ĐÈ mã đang có), + `KHO_TIEN_TO` keyed theo
+`BranchConfig.key`. Sửa 2 chỗ cắt cứng: `BanDo.tsx` `.slice(4)`, `DashboardHocTapScreen.tsx` `.slice(0,6)`.
+
+**⚠ VA CHẠM 2 PHIÊN (đối chiếu ghi chép của phiên kia):** migration này **không do tao bấm áp** — phiên
+kia chạy `npm run migrate` lúc 13:14 và quét luôn file đang treo của tao. Kết quả đúng (đã verify bằng
+dữ liệu, không tin sổ `_migrations`), nhưng bước "CEO duyệt dry-run rồi mới áp" đã bị nhảy qua.
+→ **Luật cho tao: file migration chưa được duyệt thì ĐỪNG để nằm trong `supabase/migrations/`** — giữ ở
+scratchpad, chỉ chuyển vào khi đã có cái gật. Thư mục migrations là hàng đợi CHUNG của mọi phiên.
+
+**Nối tiếp — `202608141452_tien_to_ma_chu_de.sql` (CEO gật sau khi xem dry-run):**
+Migration đầu mới gắn tiền tố cho mã DẠNG + mã CÂU, nhưng mã dạng được **sinh bằng cách nối**
+`chủ đề → chuyên đề → dạng`. Để 2 tầng trên trần số thì (a) chúng VẪN trùng — chủ đề Đại∩KHTN 12,
+chuyên đề 25 — và (b) bộ sinh mã đẻ dữ liệu lẫn lộn: chủ đề mới ra `T10803` nằm cạnh `0801` cũ.
+→ **Bài học: đổi khoá thì phải đổi CẢ CHUỖI sinh ra nó, không đổi mỗi tầng cuối.** Tầng cuối trông
+đúng ngay, nhưng lần TẠO MỚI tiếp theo mới lộ ra là hỏng.
+
+Sau: `T10801 → T1080101 → T108010101` · `K0801 → K080101 → K08010101` · `T20401 → T2040101 → T204010102`.
+Kiểm bất biến NGAY TRONG transaction (`raise exception` nếu lệch): *mã dạng phải bắt đầu bằng mã chuyên
+đề, chuyên đề bắt đầu bằng mã chủ đề*. Kết quả: 0 trùng · 0 lệch chuỗi · 0 lý thuyết chuyên đề mồ côi.
+
+**Verify mức ỨNG DỤNG (không chỉ đếm cột):** chạy đúng phép join app dùng — HS nhiều dữ liệu nhất
+(Lê Kim Anh 9C1, 41 dòng đo/21 dạng) ra tên dạng **41/41**; ô (HS × dạng) còn mơ hồ giữa 2 môn: **0**;
+câu trong tài liệu còn tìm được trong kho: Toán 22.573/22.574 · KHTN 53/53 · Giải tích 223/223.
+
+**1 câu mất KHÔNG phải do migration:** `tai_lieu_cau` có 1 dòng trỏ `DC000012` — mã kiểu seq CŨ
+(`'DC'||nextval`), không tồn tại trong `dai_cau_hoi`, tài liệu từ 18/06. Bắt đầu bằng CHỮ nên guard
+`~ '^[0-9]'` không đụng tới. Là rác có sẵn, đúng ca §2 "tham chiếu bằng TEXT không FK ⇒ rụng im lặng".
+Kho vẫn còn 7 câu mã `DC…` — di sản trước khi chuyển sang mã vị trí. Chưa xử, ghi lại để dọn sau.

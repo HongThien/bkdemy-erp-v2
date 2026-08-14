@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-133 bảng · 0 view · 0 enum · 11 trigger · 39 function
+134 bảng · 0 view · 0 enum · 11 trigger · 39 function
 
 ## _migrations
 
@@ -18,6 +18,15 @@
 | ten | text |  |  | PK |  |
 | bam | text |  |  |  |  |
 | ap_luc | timestamp with time zone |  | now() |  |  |
+
+## _tt_mapping
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| kho | text |  |  | PK |  |
+| loai | text |  |  | PK |  |
+| ma_cu | text |  |  | PK |  |
+| ma_moi | text |  |  |  |  |
 
 ## bai_lam
 

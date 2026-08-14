@@ -1219,19 +1219,47 @@ export function groupDai(rows: DaiDang[]): ChuDeNode[] {
   return [...cd.values()]
 }
 
+// ════════════════════════════════════════════════════════════════
+// TIỀN TỐ KHO — danh tính MÔN/NHÁNH nằm ngay trong mã (migration 202608141259).
+// ════════════════════════════════════════════════════════════════
+// Mã = <TIỀN TỐ> + khối(2) + chủ đề(2) + chuyên đề(2) + dạng(2), vd `T107010103`.
+// TRƯỚC migration mã chỉ có phần vị trí (`07010103`) nên MỌI kho sinh cùng dải mã ⇒
+// Toán và KHTN trùng 62 mã, và đo lường (`ma_dang` text trần, KHÔNG nhãn môn) gộp ô
+// (HS × dạng) của hai môn vào nhau âm thầm. Tiền tố làm mã TỰ mang danh tính.
+//
+// ⚠ Tiền tố DÀI KHÁC NHAU (K = 1 ký tự, T1/T2/T3 = 2) ⇒ CẤM cắt mã bằng chỉ số tuyệt
+// đối (`ma.slice(0,6)`). Mọi phép cắt theo vị trí phải đi qua `tachTienTo` bên dưới.
+export type KhoKey = 'dai' | 'hinh' | 'hinhgt' | 'khtn'
+export const KHO_TIEN_TO: Record<KhoKey, string> = { dai: 'T1', hinh: 'T2', hinhgt: 'T3', khtn: 'K' }
+// V = Văn, A = Anh — để dành, chưa có kho.
+const RE_TIEN_TO = /^(T[123]|K|V|A)(?=[0-9])/
+/** Tách mã thành (tiền tố kho, phần vị trí). Mã cũ chưa có tiền tố → tienTo = ''. */
+export function tachTienTo(ma: string): { tienTo: string; vt: string } {
+  const m = RE_TIEN_TO.exec(ma)
+  return m ? { tienTo: m[1], vt: ma.slice(m[1].length) } : { tienTo: '', vt: ma }
+}
+/** Mã CHỦ ĐỀ chứa mã này (giữ tiền tố) — vd T107010103 → T10701. */
+export const maChuDeCua = (ma: string) => { const { tienTo, vt } = tachTienTo(ma); return tienTo + vt.slice(0, 4) }
+/** Mã CHUYÊN ĐỀ chứa mã này (giữ tiền tố) — vd T107010103 → T1070101. */
+export const maChuyenDeCua = (ma: string) => { const { tienTo, vt } = tachTienTo(ma); return tienTo + vt.slice(0, 6) }
+/** Số thứ tự tại một tầng (bỏ tiền tố) — vd (T1070103, 4) → '03'. */
+export const soThuTuCua = (ma: string, from: number) => tachTienTo(ma).vt.slice(from)
+
 // ── Sinh MÃ VỊ TRÍ (auto-suggest; người sửa được) ────────────────
-// Mã chủ đề  = khối(2) + thứ tự(2)              vd K7 → 0701
-// Mã chuyên đề = mã chủ đề + thứ tự(2)          vd 070101
-// Mã dạng    = mã chuyên đề + thứ tự(2)         vd 07010103  (thứ tự TRONG chuyên đề)
+// Mã chủ đề  = tiền tố + khối(2) + thứ tự(2)     vd Đại K7 → T10701
+// Mã chuyên đề = mã chủ đề + thứ tự(2)           vd T1070101
+// Mã dạng    = mã chuyên đề + thứ tự(2)          vd T107010103  (thứ tự TRONG chuyên đề)
 // Append-only: thứ tự mới = max anh em + 1 (xoá để lại lỗ, không đánh lại số).
 const pad2 = (n: number) => String(n).padStart(2, '0')
 export const khoiCode = (khoi: string) => khoi.padStart(2, '0')
 const maxOrd = (codes: string[], from: number): number => {
-  const ords = codes.map((c) => parseInt(c.slice(from), 10)).filter((n) => Number.isFinite(n))
+  // cắt trên PHẦN VỊ TRÍ, không phải mã thô — nếu không thì mã có tiền tố lệch 1-2 ký tự
+  // và số thứ tự đọc ra sai ⇒ mã mới đè lên mã đang có.
+  const ords = codes.map((c) => parseInt(soThuTuCua(c, from), 10)).filter((n) => Number.isFinite(n))
   return ords.length ? Math.max(...ords) : 0
 }
-export function suggestChuDeMa(khoi: string, tree: ChuDeNode[]): string {
-  return khoiCode(khoi) + pad2(maxOrd(tree.map((c) => c.ma_chu_de), 2) + 1)
+export function suggestChuDeMa(khoi: string, tree: ChuDeNode[], tienTo = KHO_TIEN_TO.dai): string {
+  return tienTo + khoiCode(khoi) + pad2(maxOrd(tree.map((c) => c.ma_chu_de), 2) + 1)
 }
 export function suggestChuyenDeMa(cdCode: string, chude: ChuDeNode | null): string {
   return cdCode + pad2(maxOrd((chude?.chuyenDes ?? []).map((x) => x.ma_chuyen_de), 4) + 1)
@@ -1267,8 +1295,8 @@ export function groupMap(rows: MapRow[]): Tier1Node[] {
   }
   return [...m.values()]
 }
-export function suggestT1Ma(khoi: string, tree: Tier1Node[]): string {
-  return khoiCode(khoi) + pad2(maxOrd(tree.map((t) => t.t1Ma), 2) + 1)
+export function suggestT1Ma(khoi: string, tree: Tier1Node[], tienTo = KHO_TIEN_TO.dai): string {
+  return tienTo + khoiCode(khoi) + pad2(maxOrd(tree.map((t) => t.t1Ma), 2) + 1)
 }
 export function suggestT2Ma(t1Code: string, t1: Tier1Node | null): string {
   return t1Code + pad2(maxOrd((t1?.tier2s ?? []).map((x) => x.t2Ma), 4) + 1)
