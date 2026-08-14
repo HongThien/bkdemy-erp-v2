@@ -1,4 +1,4 @@
-import { Children, useEffect, useRef, useState, type CSSProperties } from 'react'
+import { Children, Fragment, useEffect, useRef, useState, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
 import { getTaiLieuFull, setTaiLieuFileUrl, DEFAULT_BTVN_LINES, kieuCols, type TaiLieuFull, type PhanResolved } from '../../lib/tailieu'
@@ -502,13 +502,22 @@ function BuoiBlock({ buoi, gv, scope, lt = true, docTitle, ltCd, tenCd, linesByC
           {num && <div className="gtbk-mh-badge"><small>Buổi</small><strong>{num}</strong></div>}
         </div>
       )}
+      {/* ⭐ Fragment, KHÔNG PHẢI <div> — đây là GỐC bug "chèn trang trắng + lặp nội dung" (Thùy báo GT 8S1
+          14/08, verify bằng render thật): <div> bọc nhóm tạo thêm 1 lớp BOX LỒNG chứa TOÀN BỘ card của nhóm.
+          paged.js xé được từng card, nhưng xé lớp box bọc-tất-cả này thì hỏng: nó dựng DỞ card đầu ở trang 1,
+          để TRẮNG HẲN trang 2, rồi dựng LẠI TỪ ĐẦU card đó ở trang 3 (mất/lặp nội dung thật, không chỉ xấu).
+          Bỏ lớp box đó đi (Fragment không sinh thẻ DOM) → nội dung chảy đúng như mong đợi: hết trang 1 thì
+          sang trang 2, không trang trắng, không lặp. Đã tự tay loại trừ mọi nghi phạm CSS khác: overflow:hidden,
+          min-height, pseudo trang trí, break-inside/after ở masthead + card-head + box-label, nền/viền của
+          .pv-box-lt, chờ document.fonts.ready — bỏ từng cái đều KHÔNG hết bug; bỏ <div> này thì hết ngay.
+          ⚠ ĐỪNG đổi ngược về <div> để "gom nhóm cho gọn" — bug quay lại y hệt. */}
       {groups.map((g, gi) => (
-        <div key={gi}>
+        <Fragment key={gi}>
           {/* 1 chuyên đề: chỉ "Lý thuyết" (tên chuyên đề ĐÃ ở dải buổi → khỏi lặp). Nhiều chuyên đề: ghi tên để phân biệt.
               Ẩn cả khối chuyên đề nếu MỌI dạng trong nhóm đều tắt hien_lt (vd buổi chỉ ôn dạng cũ). */}
           {lt && g.dangs.some((d) => d.hien_lt !== false) && <LtBlock title={groups.length > 1 ? `Lý thuyết chuyên đề: ${tenCd[g.cd] ?? ''}` : 'Lý thuyết'} lt={ltCd[g.cd]} big />}
           {g.dangs.map((d) => <DangBlock key={d.id} p={d} gv={gv} lt={lt} colByCau={colByCau} />)}
-        </div>
+        </Fragment>
       ))}
       {scope === 'all' && (buoi.btvns.some((b) => b.caus.length) || buoi.ontaps.some((b) => b.caus.length)) && (
         <BtvnSheet btvns={buoi.btvns} ontaps={buoi.ontaps} gv={gv} docTitle={docTitle} buoiTitle={buoi.title} linesByCau={linesByCau} colByCau={colByCau} />
@@ -954,20 +963,10 @@ const CONTENT_CSS = `
 const GT_SANS = "'Noto Sans','Segoe UI',Arial,sans-serif"
 const GT_GRAD = 'linear-gradient(90deg,#1997d4 0%,#18a889 34%,#f0a63b 66%,#e83483 100%)'
 const GT_BK_CSS = `
-/* Masthead buổi (đầu mỗi buổi): khung gradient bo góc + logo thật + pill + tiêu đề + Lớp/Ngày + huy hiệu tròn. */
-/* ⭐ break-after:page BẮT BUỘC (Thùy báo GT 8S1 14/08 "cách 1 trang" — verify bằng render thật, không phải
-   đoán CSS): khi card đầu buổi ĐỦ CAO để "có thể vừa, có thể không" lọt nốt phần còn lại của trang 1 sau
-   masthead, paged.js RA QUYẾT ĐỊNH SAI — dựng DỞ card đó trên trang 1 (cắt ngang, không phải do CSS ép),
-   để TRẮNG HẲN trang 2, rồi RENDER LẠI TỪ ĐẦU y hệt card đó (đủ, không cắt) ở trang 3. Đã tự tay loại trừ:
-   không phải overflow:hidden (bỏ thử vẫn y hệt), không phải font chưa tải xong (đã thêm chờ
-   document.fonts.ready, vẫn y hệt), không phải break-after:avoid chồng nhau ở .gtbk-card-head/.pv-box-label
-   (bỏ thử vẫn y hệt) — tức là bug THẬT của paged.js khi phải "ước lượng" 1 khối cao sát ranh giới trang,
-   không phải hệ quả 1 rule CSS cụ thể nào sửa được. Ép break-after:page xoá bỏ hẳn tình huống "ước lượng"
-   đó (masthead LUÔN đứng 1 mình 1 trang, card đầu LUÔN bắt đầu trang mới, không còn cửa nào để đoán sai).
-   Đổi lại tốn thêm ~1 trang mỗi buổi giáo trình — chấp nhận được (in 1 bản/buổi, không phải theo đầu HS).
-   ⚠ KHÔNG áp cho BTVN (in theo TỪNG HS, tốn giấy gấp đôi cả lớp) — xem override .gtbk-btvn-head .gtbk-mh
-   bên dưới, phiếu BTVN dính bug này thì phải quay lại đào tiếp, chưa có bằng chứng nên chưa đụng. */
-.gtbk-mh{position:relative;overflow:hidden;margin:2mm 0 5mm;min-height:40mm;padding:5mm 6mm;border:1px solid #dbe7f4;border-radius:5mm;background:linear-gradient(112deg,#f5fbff 0%,#f8fbff 42%,#fff7fb 100%);break-inside:avoid;break-after:page;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+/* Masthead buổi (đầu mỗi buổi): khung gradient bo góc + logo thật + pill + tiêu đề + Lớp/Ngày + huy hiệu tròn.
+   ⚠ ĐỪNG thêm break-after:page/avoid vào đây để "chữa" bug trắng trang — đã thử, chỉ đổi chỗ lãng phí chứ
+   không sửa gốc (gốc nằm ở thẻ <div> bọc nhóm card trong BuoiBlock, xem comment ở đó). */
+.gtbk-mh{position:relative;overflow:hidden;margin:2mm 0 5mm;min-height:40mm;padding:5mm 6mm;border:1px solid #dbe7f4;border-radius:5mm;background:linear-gradient(112deg,#f5fbff 0%,#f8fbff 42%,#fff7fb 100%);break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .gtbk-mh:before{content:"";position:absolute;left:0;top:0;bottom:0;width:2.3mm;background:linear-gradient(180deg,#1997d4 0%,#18a889 36%,#f0a63b 68%,#e83483 100%);-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .gtbk-mh:after{content:"";position:absolute;right:-10mm;top:-16mm;width:62mm;height:62mm;border-radius:50%;border:9mm solid rgba(25,151,212,.055);-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .gtbk-mh-grid{position:absolute;right:33mm;top:4mm;width:43mm;height:29mm;opacity:.16;background-image:radial-gradient(#53739c 1px,transparent 1px);background-size:5px 5px;transform:rotate(-5deg);z-index:0}
