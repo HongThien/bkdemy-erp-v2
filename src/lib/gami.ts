@@ -101,8 +101,14 @@ export async function moBuoi(lopId: string, ngay: string, slot: { gio_bat_dau?: 
 export async function getBuoi(id: string): Promise<BuoiHoc & { lop?: { ten_lop: string; mon: string; khoi: string | null }; gv_chinh_id: string | null }> {
   const { data, error } = await supabase.from('buoi_hoc').select('*, lop:lop_id(ten_lop, mon, khoi)').eq('id', id).single()
   if (error) throw error
-  // GV chính của lớp (mặc định hiển thị khi nguoi_day trống — dạy thay mới ghi nguoi_day)
-  const { data: pc } = await supabase.from('phan_cong_lop').select('nhan_su_id').eq('lop_id', (data as any).lop_id).eq('vai_tro', 'gv').eq('la_chinh', true).maybeSingle()
+  // GV chính của lớp (mặc định hiển thị khi nguoi_day trống — dạy thay mới ghi nguoi_day).
+  // ⚠ Buổi bù/đuổi KHÔNG có lớp (`lop_id` null) ⇒ `.eq('lop_id', null)` gửi chuỗi "null" cho cột uuid →
+  // Postgres 400 `invalid input syntax for type uuid` mỗi lần mở buổi bù. Không vỡ gì (pc undefined →
+  // null) nên sống lâu trong console, nhưng là request hỏng vô ích: không có lớp thì không có GV chính.
+  const lopId = (data as any).lop_id as string | null
+  const { data: pc } = lopId
+    ? await supabase.from('phan_cong_lop').select('nhan_su_id').eq('lop_id', lopId).eq('vai_tro', 'gv').eq('la_chinh', true).maybeSingle()
+    : { data: null }
   return { ...(data as any), gv_chinh_id: (pc as any)?.nhan_su_id ?? null }
 }
 export async function setNguoiDay(buoiId: string, nhanSuId: string | null): Promise<void> {
@@ -193,6 +199,37 @@ export async function diemDanhTienDo(buoiIds: string[]): Promise<Record<string, 
   for (const r of (data ?? []) as { buoi_hoc_id: string; diem_danh: string | null }[]) {
     const o = (out[r.buoi_hoc_id] ??= { tong: 0, daDanh: 0 })
     o.tong++; if (r.diem_danh) o.daDanh++
+  }
+  return out
+}
+// ⭐ TIẾN ĐỘ ĐÁNH GIÁ — derive từ DÒNG THẬT, không đọc cờ `danh_gia_xong_at` (thêm 14/08).
+//
+// Cả hệ (Việc của tôi · trợ lý · dashboard vận hành · Kết quả học tập) đều chỉ đọc MỘT cờ nhị phân
+// `danh_gia_xong_at`, tức "đã bấm nút Hoàn thành hay chưa". Hệ quả: buổi đã điền nhận xét/chấm dạng
+// cho ĐỦ HS mà người điền quên bấm nút thì hiện y hệt buổi TRẮNG TINH — công của TA/GV vô hình
+// (CEO 14/08: "trợ giảng đã đánh giá nhưng hệ thống vẫn chưa hiện"). Đo thật lúc thêm: 8 buổi đã qua
+// có dữ liệu đánh giá thật mà cờ vẫn NULL (vd 5T1 18/07 đủ 6/6 HS cả nhận xét lẫn chấm dạng).
+//
+// KHÔNG tự đóng mốc thay người: `danh_gia_xong_at` là tuyên bố của NGƯỜI phụ trách (§4 — mốc người
+// tự chốt), tự set hộ là bịa chữ ký. Chỉ hiện thêm phần ĐÃ LÀM để "chưa xong" nói rõ chưa xong ở đâu.
+// daDanh = HS có nhận xét KHÔNG rỗng HOẶC có ít nhất 1 ô chấm dạng. tong = HS `co_mat` (§4 R-DG:
+// vắng không thuộc nghĩa vụ đánh giá) — buổi chưa điểm danh ⇒ tong = 0, không đòi gì.
+export async function danhGiaTienDo(buoiIds: string[]): Promise<Record<string, { tong: number; daDanh: number }>> {
+  if (!buoiIds.length) return {}
+  const [ros, nx, dang] = await Promise.all([
+    supabase.from('buoi_hoc_hs').select('buoi_hoc_id, hoc_sinh_id, diem_danh').in('buoi_hoc_id', buoiIds).limit(LIMIT),
+    supabase.from('buoi_danh_gia').select('buoi_hoc_id, hoc_sinh_id, nhan_xet').in('buoi_hoc_id', buoiIds).limit(LIMIT),
+    supabase.from('buoi_danh_gia_dang').select('buoi_hoc_id, hoc_sinh_id').in('buoi_hoc_id', buoiIds).limit(LIMIT),
+  ])
+  const co = new Set<string>()
+  for (const r of (nx.data ?? []) as any[]) if ((r.nhan_xet ?? '').trim()) co.add(`${r.buoi_hoc_id}|${r.hoc_sinh_id}`)
+  for (const r of (dang.data ?? []) as any[]) co.add(`${r.buoi_hoc_id}|${r.hoc_sinh_id}`)
+  const out: Record<string, { tong: number; daDanh: number }> = {}
+  for (const b of buoiIds) out[b] = { tong: 0, daDanh: 0 }
+  for (const r of (ros.data ?? []) as any[]) {
+    if (r.diem_danh !== 'co_mat') continue
+    const o = (out[r.buoi_hoc_id] ??= { tong: 0, daDanh: 0 })
+    o.tong++; if (co.has(`${r.buoi_hoc_id}|${r.hoc_sinh_id}`)) o.daDanh++
   }
   return out
 }

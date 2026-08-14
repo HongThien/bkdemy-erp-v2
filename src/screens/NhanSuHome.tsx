@@ -3,7 +3,7 @@ import type { User, NavGroup } from '../types'
 import { useStore, staffNavFromScope, adminNavFromQuyen } from '../store/useStore'
 import { getMyScope, type MyScope } from '../lib/nhansu'
 import { useIsMobile } from '../hooks/useIsMobile'
-import { getMyTasks, moBuoi, diemDanhTienDo, type MyTask, type BuoiAo, type TabKey } from '../lib/gami'
+import { getMyTasks, moBuoi, diemDanhTienDo, danhGiaTienDo, type MyTask, type BuoiAo, type TabKey } from '../lib/gami'
 import { getMyOpsTasks, getMyPrepTasks, myBuoiAoCuaKhoang, OPS_TASK_LABEL, type OpsTask, type MyPrepTask } from '../lib/opsvanhanh'
 import { listCanScanDaCham, type CaTestChoScanDaCham } from '../lib/detest'
 import { homNayVN, tuanCuaNgay, khoangTuan, nhanTuan, mucDeadline, nhanConLai, thuCuaNgay, ddmmVN, ngayCuaTs, type DeadlineMuc } from '../lib/tuan'
@@ -129,16 +129,24 @@ function OpsBuoiCard({ ba, ngay, td, done, onOpen }: { ba: BuoiAo; ngay: string;
   )
 }
 
-function TaskCard({ t, now, done, onOpenBuoi }: { t: MyTask; now: number; done?: boolean; onOpenBuoi: (o: OpenBuoi) => void }) {
+function TaskCard({ t, now, done, dg, onOpenBuoi }: { t: MyTask; now: number; done?: boolean; dg?: { tong: number; daDanh: number }; onOpenBuoi: (o: OpenBuoi) => void }) {
   const st = TASK_STYLE[t.tab]
   const base = done ? 'border-l-emerald-500 bg-emerald-50' : `${st.accent} bg-white`
   const onClick = () => onOpenBuoi({ id: t.buoiId, tabs: tabsCuaVai(t.vai), initialTab: t.tab, canManage: false, loai: t.loai })
+  // Đánh giá đã điền dở/đủ mà chưa bấm Hoàn thành: nói ra số. Điền ĐỦ mà chưa chốt là ca hay gặp
+  // nhất (người làm tưởng xong rồi) → tô hổ phách để phân biệt hẳn với buổi chưa ai đụng.
+  const duDien = !!dg && dg.tong > 0 && dg.daDanh >= dg.tong
   return (
     <button onClick={onClick} className={`flex flex-col gap-0.5 rounded-lg border-l-4 px-2.5 py-2 text-left shadow-sm transition ${base}`}>
       <div className="flex items-center gap-1.5">
         <span className="shrink-0 text-[15px]">{done ? '✓' : st.icon}</span>
         <span className={`min-w-0 flex-1 text-[13px] font-medium ${done ? 'text-emerald-700' : 'text-slate-800'}`}>{t.label} · {t.lop}</span>
       </div>
+      {!done && dg && dg.daDanh > 0 && (
+        <span className={`pl-[21px] text-[11px] font-medium ${duDien ? 'text-amber-600' : 'text-slate-400'}`}>
+          đã điền {dg.daDanh}/{dg.tong}{duDien ? ' — bấm ✓ Hoàn thành để chốt' : ''}
+        </span>
+      )}
       {!done && t.deadline != null && <div className="pl-[21px]"><DeadlineBadge deadline={t.deadline} now={now} /></div>}
     </button>
   )
@@ -196,6 +204,7 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
   const [tasks, setTasks] = useState<MyTask[]>([])
   const [opsWeek, setOpsWeek] = useState<(BuoiAo & { ngay: string })[]>([])
   const [tienDo, setTienDo] = useState<Record<string, TienDo>>({})
+  const [dgTienDo, setDgTienDo] = useState<Record<string, { tong: number; daDanh: number }>>({})
   const [tuan, setTuan] = useState(tuanNay)
   // 'rasoat' = tab TRỢ LÝ (nhắc việc hàng ngày + nhận định cấp hệ) — screens/troly/TroLyTab.tsx.
   // CỐ Ý không đẻ leaf mới: leaf kéo theo quyền per-leaf ở Phân quyền + hiện trong nav của
@@ -223,7 +232,15 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
   // "mục tiêu 1 màn nhìn thấy gần hết việc cần làm" — cùng pattern đã áp OpsReportScreen/PrepScreen).
   const [xemThem, setXemThem] = useState<Set<string>>(new Set())
 
-  useEffect(() => { getMyTasks().then(setTasks).catch(() => setTasks([])) }, [])
+  useEffect(() => {
+    getMyTasks().then(async (ts) => {
+      setTasks(ts)
+      // Việc "Đánh giá" chưa chốt: hỏi thêm ĐÃ ĐIỀN tới đâu (dòng thật), để card nói "5/6" thay vì
+      // im lặng như buổi trắng — xem `danhGiaTienDo` (gami.ts) cho lý do.
+      const ids = [...new Set(ts.filter((t) => t.tab === 'danhgia' && !t.done).map((t) => t.buoiId))]
+      try { setDgTienDo(ids.length ? await danhGiaTienDo(ids) : {}) } catch { setDgTienDo({}) }
+    }).catch(() => setTasks([]))
+  }, [])
   useEffect(() => {
     const htMons = me?.hocThuatMons ?? []
     if (!htMons.length) { setChoDuyetDuoi(0); return }
@@ -368,7 +385,7 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
                 return (
                   <DayRow key={ngay} ngay={ngay} today={ngay === homNay} isFuture={isFuture} onToggle={() => toggleXem(ngay)}>
                     {g.ops.map((ba) => <OpsBuoiCard key={ba.lop.id + ba.ngay} ba={ba} ngay={ba.ngay} td={ba.buoi ? tienDo[ba.buoi.id] : undefined} onOpen={onOpenBuoi} />)}
-                    {g.tasks.map((t) => <TaskCard key={t.buoiId + t.tab} t={t} now={now} onOpenBuoi={onOpenBuoi} />)}
+                    {g.tasks.map((t) => <TaskCard key={t.buoiId + t.tab} t={t} now={now} dg={t.tab === 'danhgia' ? dgTienDo[t.buoiId] : undefined} onOpenBuoi={onOpenBuoi} />)}
                     {g.opsExtra.map((t) => <OpsExtraCard key={t.tkbId + t.tab} t={t} now={now} onGoLeaf={setStaffLeaf} />)}
                     {g.prep.map((t) => <PrepTaskCard key={t.phong + t.luot + t.ngay} t={t} now={now} onGoLeaf={setStaffLeaf} />)}
                   </DayRow>

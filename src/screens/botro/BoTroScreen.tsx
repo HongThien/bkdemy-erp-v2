@@ -2,9 +2,12 @@
 // Tabs: Cần bù (L1) / Đã xếp (L2) / Hoàn thành (L3) / Không bù. Detail buổi bù: điểm danh + ET per-HS + đánh giá.
 import { useEffect, useMemo, useState } from 'react'
 import {
-  listLanNghiCanXep, listCaBoTro, listKhongBu, ghiKhongBu, xoaKhongBu, taoBuoiBu, themHSVaoBuoiBu, buoiBuSapToi, goiYBuoiBu,
-  ensureBuoiBuETProblems, demTabBoTro, getBuoiBuHsInfo, type LanNghi, type CanBuItem, type CaBoTro,
+  listLanNghiCanXep, listCaBoTro, listCaBoTroTraVe, listKhongBu, ghiKhongBu, xoaKhongBu, taoBuoiBu, themHSVaoBuoiBu, buoiBuSapToi, goiYBuoiBu,
+  ensureBuoiBuETProblems, demTabBoTro, getBuoiBuHsInfo, taiLieuCuaBuoiMe,
+  type LanNghi, type CanBuItem, type CaBoTro, type BuoiBuHsInfo, type DocBuoi,
 } from '../../lib/botro'
+import PrintView from '../tailieu/PrintView'
+import ETPrintView from '../tailieu/ETPrintView'
 import { getRoster, getBuoi, diemDanh, huyBuoi, xoaHSKhoiBuoi, listProblems, gradeET, deleteGrade, listGrades, closePhase, getDanhGia, setDanhGiaDang, setNhanXet, getDangTen, dongDanhGia, moLaiDanhGia, type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type ETResult } from '../../lib/gami'
 import SuaBuoiModal from './SuaBuoiModal'
 import { listNhanSu, type NhanSu } from '../../lib/nhansu'
@@ -23,6 +26,10 @@ export default function BoTroScreen() {
   const [counts, setCounts] = useState<Record<string, number>>({})
   const [canbu, setCanbu] = useState<LanNghi[]>([])
   const [cas, setCas] = useState<CaBoTro[]>([])
+  // Buổi bù toàn-bộ-HS-vắng: HS đã về "Cần bù", buổi chỉ còn vỏ. Không nằm trong hàng đợi
+  // nhưng cũng KHÔNG được biến mất không dấu vết (sửa nhầm điểm danh / huỷ buổi cho sạch).
+  const [traVe, setTraVe] = useState<CaBoTro[]>([])
+  const [moTraVe, setMoTraVe] = useState(false)
   const [khongbu, setKhongbu] = useState<Awaited<ReturnType<typeof listKhongBu>>>([])
   const [loading, setLoading] = useState(true)
   const [xepItem, setXepItem] = useState<CanBuItem | null>(null)
@@ -39,7 +46,7 @@ export default function BoTroScreen() {
     setLoading(true)
     try {
       if (tab === 'canbu') setCanbu(await listLanNghiCanXep())
-      else if (tab === 'daxep') setCas(await listCaBoTro(false))
+      else if (tab === 'daxep') { const [l, t] = await Promise.all([listCaBoTro(false), listCaBoTroTraVe()]); setCas(l); setTraVe(t) }
       else if (tab === 'xong') setCas(await listCaBoTro(true))
       else setKhongbu(await listKhongBu())
     } catch { /* */ } finally { setLoading(false) }
@@ -168,34 +175,33 @@ export default function BoTroScreen() {
               </div>
             )
           ) : (
-            cas.length === 0 ? <Empty t={tab === 'daxep' ? 'Chưa có ca bổ trợ nào đang chờ.' : 'Chưa có ca bổ trợ nào hoàn thành.'} />
-              : casShown.length === 0 ? <Empty t="Không có buổi nào khớp bộ lọc." /> : (
-              <div className="grid gap-3 [grid-template-columns:repeat(auto-fill,minmax(320px,1fr))]">
-                {casShown.map((ca) => {
-                  const hsShown = ca.hs.slice(0, 6)
-                  const tenHsShown = tenHienThiDs(hsShown.map((h) => h.ho_ten)) // trùng tên trong 6 người hiện ra → bung đủ
-                  return (
-                  <div key={ca.id} role="button" onClick={() => setDetail({ ca, readOnly: tab === 'xong' })} className="cursor-pointer rounded-2xl border-l-4 border-l-violet-400 bg-white p-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-                    <div className="flex items-center gap-2">
-                      <span className="text-[15px] font-semibold text-slate-800">Buổi bù · {ddmm(ca.ngay)}</span>
-                      <span className="ml-auto rounded-full bg-violet-100 px-2 py-0.5 text-[11px] font-medium text-violet-700">{ca.hs.length} HS</span>
-                      {tab !== 'xong' && <button onClick={(e) => { e.stopPropagation(); setSuaBuoi(ca) }} title="Sửa buổi (ngày/giờ/phòng/GV/TA)" className="rounded border border-slate-200 px-1.5 py-0.5 text-[12px] text-slate-400 hover:border-indigo-300 hover:text-indigo-700">✎</button>}
+            <>
+              {cas.length === 0 ? <Empty t={tab === 'daxep' ? 'Chưa có ca bổ trợ nào đang chờ.' : 'Chưa có ca bổ trợ nào hoàn thành.'} />
+                : casShown.length === 0 ? <Empty t="Không có buổi nào khớp bộ lọc." /> : (
+                <div className="grid gap-3 [grid-template-columns:repeat(auto-fill,minmax(320px,1fr))]">
+                  {casShown.map((ca) => (
+                    <CaCard key={ca.id} ca={ca} onOpen={() => setDetail({ ca, readOnly: tab === 'xong' })} onSua={tab === 'xong' ? undefined : () => setSuaBuoi(ca)} />
+                  ))}
+                </div>
+              )}
+              {/* Buổi bù mà MỌI HS đã vắng: các em đã quay về "Cần bù" nên buổi không còn là việc ở
+                  đây — nhưng nó cũng không tự đóng được (nút "Xác nhận ET" chỉ hiện khi có HS có mặt),
+                  nên phải có lối vào để sửa nhầm hoặc huỷ, thay vì để nó kẹt trong hàng đợi. */}
+              {tab === 'daxep' && traVe.length > 0 && (
+                <div className="mt-4 rounded-2xl border border-slate-200 bg-white shadow-sm">
+                  <button onClick={() => setMoTraVe((v) => !v)} className="flex w-full items-center gap-2 px-4 py-3 text-left">
+                    <span className="text-[13px] font-medium text-slate-600">{traVe.length} buổi bù đã trả HS về “Cần bù”</span>
+                    <span className="text-[12px] text-slate-400">toàn bộ HS vắng — buổi này chỉ còn vỏ, nên huỷ cho sạch</span>
+                    <span className="ml-auto text-[13px] text-slate-400">{moTraVe ? '▴' : '▾'}</span>
+                  </button>
+                  {moTraVe && (
+                    <div className="grid gap-3 border-t border-slate-100 p-4 [grid-template-columns:repeat(auto-fill,minmax(320px,1fr))]">
+                      {traVe.map((ca) => <CaCard key={ca.id} ca={ca} traVe onOpen={() => setDetail({ ca, readOnly: false })} onSua={() => setSuaBuoi(ca)} />)}
                     </div>
-                    <div className="mt-1 text-[12px] text-slate-500">{ca.gio_bat_dau?.slice(0, 5) || '—'}{ca.phong ? ` · ${ca.phong}` : ''}</div>
-                    <div className="mt-2 flex flex-wrap gap-1">{hsShown.map((h, i) => (
-                      <span key={h.hoc_sinh_id} className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] text-slate-600">
-                        {tenHsShown[i]}{h.ma_hs ? <span className="ml-1 font-mono text-slate-400">{h.ma_hs}</span> : null}{h.lop_bu ? ` · ${h.lop_bu}${h.mon ? ` (${h.mon})` : ''}` : ''}
-                      </span>
-                    ))}{ca.hs.length > 6 && <span className="text-[11px] text-slate-400">+{ca.hs.length - 6}</span>}</div>
-                    <div className="mt-2 flex gap-1.5 text-[11px]">
-                      <span className={`rounded px-1.5 py-0.5 font-medium ${ca.et_dong_at ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-500'}`}>ET {ca.et_dong_at ? '✓' : '…'}</span>
-                      <span className={`rounded px-1.5 py-0.5 font-medium ${ca.danh_gia_xong_at ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-500'}`}>Đánh giá {ca.danh_gia_xong_at ? '✓' : '…'}</span>
-                    </div>
-                  </div>
-                  )
-                })}
-              </div>
-            )
+                  )}
+                </div>
+              )}
+            </>
           )}
       </div>
 
@@ -207,6 +213,41 @@ export default function BoTroScreen() {
 }
 
 const Empty = ({ t }: { t: string }) => <div className="rounded-2xl border border-slate-200 bg-white p-10 text-center text-[14px] text-slate-400 shadow-sm">{t}</div>
+
+// Card 1 buổi bù. Sĩ số + chip HS chỉ đếm em CÒN ở buổi (`ca.hs`); em đã tích vắng nằm ở
+// `ca.hsVang` và chỉ hiện thành một dòng nhỏ — vì lần nghỉ của em đã quay về "Cần bù",
+// đếm em vào đây nữa là cùng một người xuất hiện ở hai tab (bug CEO nêu 14/08).
+function CaCard({ ca, traVe = false, onOpen, onSua }: { ca: CaBoTro; traVe?: boolean; onOpen: () => void; onSua?: () => void }) {
+  const hsShown = ca.hs.slice(0, 6)
+  const tenHsShown = tenHienThiDs(hsShown.map((h) => h.ho_ten)) // trùng tên trong 6 người hiện ra → bung đủ
+  const tenVang = tenHienThiDs(ca.hsVang.map((h) => h.ho_ten))
+  return (
+    <div role="button" onClick={onOpen} className={`cursor-pointer rounded-2xl border-l-4 bg-white p-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md ${traVe ? 'border-l-slate-300' : 'border-l-violet-400'}`}>
+      <div className="flex items-center gap-2">
+        <span className="text-[15px] font-semibold text-slate-800">Buổi bù · {ddmm(ca.ngay)}</span>
+        <span className={`ml-auto rounded-full px-2 py-0.5 text-[11px] font-medium ${traVe ? 'bg-slate-100 text-slate-500' : 'bg-violet-100 text-violet-700'}`}>{ca.hs.length} HS</span>
+        {onSua && <button onClick={(e) => { e.stopPropagation(); onSua() }} title="Sửa buổi (ngày/giờ/phòng/GV/TA)" className="rounded border border-slate-200 px-1.5 py-0.5 text-[12px] text-slate-400 hover:border-indigo-300 hover:text-indigo-700">✎</button>}
+      </div>
+      <div className="mt-1 text-[12px] text-slate-500">{ca.gio_bat_dau?.slice(0, 5) || '—'}{ca.phong ? ` · ${ca.phong}` : ''}</div>
+      {hsShown.length > 0 && (
+        <div className="mt-2 flex flex-wrap gap-1">{hsShown.map((h, i) => (
+          <span key={h.hoc_sinh_id} className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] text-slate-600">
+            {tenHsShown[i]}{h.ma_hs ? <span className="ml-1 font-mono text-slate-400">{h.ma_hs}</span> : null}{h.lop_bu ? ` · ${h.lop_bu}${h.mon ? ` (${h.mon})` : ''}` : ''}
+          </span>
+        ))}{ca.hs.length > 6 && <span className="text-[11px] text-slate-400">+{ca.hs.length - 6}</span>}</div>
+      )}
+      {ca.hsVang.length > 0 && (
+        <div className="mt-2 rounded-lg bg-rose-50 px-2 py-1.5 text-[11px] text-rose-700">
+          Vắng → đã về “Cần bù”: {tenVang.join(' · ')}
+        </div>
+      )}
+      <div className="mt-2 flex gap-1.5 text-[11px]">
+        <span className={`rounded px-1.5 py-0.5 font-medium ${ca.et_dong_at ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-500'}`}>ET {ca.et_dong_at ? '✓' : '…'}</span>
+        <span className={`rounded px-1.5 py-0.5 font-medium ${ca.danh_gia_xong_at ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-500'}`}>Đánh giá {ca.danh_gia_xong_at ? '✓' : '…'}</span>
+      </div>
+    </div>
+  )
+}
 
 function Modal({ title, onClose, children, maxW = 'max-w-[460px]' }: { title: string; onClose: () => void; children: React.ReactNode; maxW?: string }) {
   return (
@@ -304,10 +345,12 @@ function XepModal({ item, onClose, onDone }: { item: CanBuItem; onClose: () => v
             <div><label className="mb-1 block text-[13px] font-medium text-slate-600">Giờ</label><input type="time" className={inputCls} value={gio} onChange={(e) => setGio(e.target.value)} /></div>
             <div><label className="mb-1 block text-[13px] font-medium text-slate-600">Phòng</label><input className={inputCls} value={phong} onChange={(e) => setPhong(e.target.value)} /></div>
           </div>
+          {/* Nhãn theo ĐÚNG người nhận việc — xem ghi chú đầu SuaBuoiModal.tsx. */}
           <div className="grid grid-cols-2 gap-3">
-            <div><label className="mb-1 block text-[13px] font-medium text-slate-600">GV (đánh giá)</label><SearchSelect value={gv} onChange={setGv} options={nsOpts} placeholder="Chọn GV…" /></div>
-            <div><label className="mb-1 block text-[13px] font-medium text-slate-600">TA (chấm ET)</label><SearchSelect value={ta} onChange={setTa} options={nsOpts} placeholder="Chọn TA…" /></div>
+            <div><label className="mb-1 block text-[13px] font-medium text-slate-600">Người dạy bổ trợ *</label><SearchSelect value={ta} onChange={setTa} options={nsOpts} placeholder="Chọn người dạy bù…" /></div>
+            <div><label className="mb-1 block text-[13px] font-medium text-slate-600">GV</label><SearchSelect value={gv} onChange={setGv} options={nsOpts} placeholder="Chọn GV…" /></div>
           </div>
+          <p className="text-[12px] text-slate-400">Chấm ET + đánh giá về <b>người dạy bổ trợ</b>; bỏ trống ô đó thì việc rơi sang GV.</p>
         </div>
       ) : (
         <div className="max-h-72 space-y-2 overflow-auto">
@@ -339,6 +382,45 @@ function XepModal({ item, onClose, onDone }: { item: CanBuItem; onClose: () => v
   )
 }
 
+// ⭐ GIÁO TRÌNH · BTVN · ET CỦA BUỔI MẸ ngay trong buổi bù (CEO 14/08: "để nhân sự khỏi lục lại kho
+// tài liệu"). Người dạy bù cần đúng 3 thứ này của buổi em đã nghỉ — trước đây phải nhớ lớp + ngày rồi
+// sang Kho tài liệu tự lọc, mỗi em một bộ khác nhau (buổi bù gom nhiều lớp).
+// Loại nào KHÔNG có thì vẫn hiện nhãn xám "chưa có": im lặng bỏ đi thì người dạy tưởng mình tìm thiếu,
+// còn nói ra thì biết là buổi đó thật sự chưa soạn — hai chuyện khác hẳn nhau.
+const DOC_META: Record<DocBuoi['loai'], { icon: string; ten: string }> = {
+  giao_trinh_buoi: { icon: '📘', ten: 'Giáo trình' },
+  btvn: { icon: '📝', ten: 'BTVN' },
+  et: { icon: '🧪', ten: 'ET' },
+}
+const DOC_THU_TU: DocBuoi['loai'][] = ['giao_trinh_buoi', 'btvn', 'et']
+function TaiLieuBuoiMe({ docs, onIn }: { docs: DocBuoi[]; onIn: (d: DocBuoi) => void }) {
+  const [copied, setCopied] = useState<string | null>(null)
+  async function copy(d: DocBuoi) {
+    if (!d.file_url) return
+    await navigator.clipboard.writeText(d.file_url)
+    setCopied(d.id); setTimeout(() => setCopied((c) => (c === d.id ? null : c)), 2000)
+  }
+  return (
+    <div className="mt-2 flex flex-wrap items-center gap-1.5">
+      <span className="text-[11px] font-medium uppercase tracking-wide text-slate-400">Tài liệu buổi đã nghỉ</span>
+      {DOC_THU_TU.map((loai) => {
+        const d = docs.find((x) => x.loai === loai)
+        const m = DOC_META[loai]
+        if (!d) return <span key={loai} className="rounded-lg border border-dashed border-slate-200 px-2 py-1 text-[11px] text-slate-300">{m.icon} {m.ten} — chưa có</span>
+        return (
+          <span key={loai} className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-slate-50 py-0.5 pl-2 pr-0.5 text-[11px] text-slate-600" title={d.ten}>
+            {m.icon} {m.ten}
+            <button onClick={() => onIn(d)} className="rounded-md px-1.5 py-1 font-medium text-indigo-600 hover:bg-indigo-50">🖨 In</button>
+            {d.file_url
+              ? <button onClick={() => copy(d)} className="rounded-md px-1.5 py-1 font-medium text-sky-600 hover:bg-sky-50">{copied === d.id ? '✓' : '🔗 Link'}</button>
+              : <span className="px-1 text-slate-300" title="Tài liệu chưa có link PDF — vẫn in được">—</span>}
+          </span>
+        )
+      })}
+    </div>
+  )
+}
+
 // ── Detail buổi bù: điểm danh + ET per-HS + đánh giá ──
 const ET_LBL: Record<ETResult, { l: string; on: string }> = { correct: { l: 'Đ', on: 'bg-emerald-500' }, partial: { l: 'C', on: 'bg-amber-500' }, wrong: { l: 'S', on: 'bg-rose-500' } }
 const DG_LBL: { v: 1 | 0.5 | 0; l: string; on: string }[] = [{ v: 1, l: 'Đ', on: 'bg-emerald-500' }, { v: 0.5, l: 'C', on: 'bg-amber-500' }, { v: 0, l: 'S', on: 'bg-rose-500' }]
@@ -352,7 +434,10 @@ export function BuoiBuDetail({ buoiId, readOnly = false, onClose }: { buoiId: st
   const [dg, setDg] = useState<Record<string, { diemTheoDang: Record<string, number> }>>({})
   const [nx, setNx] = useState<Record<string, string>>({})
   const [dangTen, setDangTen] = useState<Record<string, string>>({})
-  const [hsInfo, setHsInfo] = useState<Record<string, { ma_hs: string | null; lop_bu: string; mon: string; bu_cho: string }>>({})
+  const [hsInfo, setHsInfo] = useState<Record<string, BuoiBuHsInfo>>({})
+  // Tài liệu buổi MẸ theo buoi_me_id (không theo HS: 2 em cùng nghỉ 1 buổi thì dùng chung bộ).
+  const [docs, setDocs] = useState<Record<string, DocBuoi[]>>({})
+  const [inDoc, setInDoc] = useState<DocBuoi | null>(null)
   const [busy, setBusy] = useState(false)
   const [sua, setSua] = useState(false)
   const etXong = !!buoi?.et_dong_at, dgXong = !!buoi?.danh_gia_xong_at
@@ -363,6 +448,7 @@ export function BuoiBuDetail({ buoiId, readOnly = false, onClose }: { buoiId: st
   async function reload() {
     const [b, r, p, g, dgData, hi] = await Promise.all([getBuoi(buoiId), getRoster(buoiId), listProblems(buoiId, 'et'), listGrades(buoiId), getDanhGia(buoiId), getBuoiBuHsInfo(buoiId)])
     setBuoi(b as BuoiHoc); setRoster(r); setProbs(p); setGrades(g); setDg(dgData as any); setHsInfo(hi)
+    try { setDocs(await taiLieuCuaBuoiMe(Object.values(hi).map((v) => v.buoi_me_id).filter(Boolean) as string[])) } catch { setDocs({}) }
     const m: Record<string, string> = {}
     for (const [hsId, v] of Object.entries(dgData)) m[hsId] = (v as any).nhan_xet ?? ''
     setNx(m)
@@ -388,6 +474,8 @@ export function BuoiBuDetail({ buoiId, readOnly = false, onClose }: { buoiId: st
   const tenDang = (md: string, hocSinhId: string) => { const mon = hsInfo[hocSinhId]?.mon || 'Toán'; return dangTen[`${mon}|${md}`] ?? md }
   useEffect(() => { (async () => { try { await ensureBuoiBuETProblems(buoiId) } catch { /* */ } reload() })() }, []) // eslint-disable-line
   const coMat = roster.filter((r) => r.diem_danh === 'co_mat')
+  // Đã đánh giá = có nhận xét không rỗng HOẶC ≥1 ô chấm dạng (cùng công thức `danhGiaTienDo`, gami.ts).
+  const daDienDG = coMat.filter((r) => (nx[r.hoc_sinh_id] ?? '').trim() || Object.keys(dg[r.hoc_sinh_id]?.diemTheoDang ?? {}).length > 0).length
   const tenHT = tenHienThiDs(roster.map((r) => r.hoc_sinh?.ho_ten)) // 2 HS trùng tên rút gọn → bung đủ (Thùy 07-06)
   const gradeOf = (pid: string, hsid: string) => grades.find((g) => g.problem_id === pid && g.hoc_sinh_id === hsid)
   const dangCuaHS = (hsid: string) => [...new Set(probs.filter((p) => p.hoc_sinh_id === hsid).map((p) => p.ma_dang).filter(Boolean))] as string[]
@@ -437,6 +525,7 @@ export function BuoiBuDetail({ buoiId, readOnly = false, onClose }: { buoiId: st
                     {!readOnly && <button onClick={() => onXoaHS(r)} title="Gỡ HS khỏi buổi bù" className="rounded px-1.5 py-1 text-[12px] text-slate-300 hover:bg-rose-50 hover:text-rose-600">✕</button>}
                   </div>
                 </div>
+                <TaiLieuBuoiMe docs={info?.buoi_me_id ? docs[info.buoi_me_id] ?? [] : []} onIn={setInDoc} />
                 {r.diem_danh === 'co_mat' && (
                   <div className="mt-3 space-y-3 border-t border-slate-100 pt-3">
                     <div className="grid gap-4 md:grid-cols-2">
@@ -495,7 +584,13 @@ export function BuoiBuDetail({ buoiId, readOnly = false, onClose }: { buoiId: st
       </div>
 
       {!readOnly && coMat.length > 0 && (
-        <div className="flex items-center justify-end gap-2 border-t border-slate-200 bg-white px-5 py-3">
+        <div className="flex flex-wrap items-center justify-end gap-2 border-t border-slate-200 bg-white px-5 py-3">
+          {/* Điền xong ≠ đã chốt — xem ghi chú ở DanhGiaTab (BuoiHocScreen.tsx). */}
+          {!dgXong && daDienDG > 0 && (
+            <span className={`mr-auto text-[12px] font-medium ${daDienDG >= coMat.length ? 'text-amber-600' : 'text-slate-400'}`}>
+              đã đánh giá {daDienDG}/{coMat.length} HS{daDienDG >= coMat.length ? ' — chưa bấm “Hoàn thành” thì hệ vẫn tính là CHƯA đánh giá' : ''}
+            </span>
+          )}
           {etXong ? <span className="rounded-lg bg-emerald-100 px-4 py-2 text-[13px] font-medium text-emerald-700">✓ ET đã xác nhận</span>
             : <button onClick={() => doClose('et')} disabled={busy} className="rounded-lg bg-emerald-600 px-4 py-2 text-[14px] font-medium text-white hover:bg-emerald-500 disabled:opacity-50">Xác nhận ET</button>}
           {dgXong ? <><span className="rounded-lg bg-emerald-100 px-4 py-2 text-[13px] font-medium text-emerald-700">✓ Đánh giá xong</span><button onClick={() => reopen('danhgia')} disabled={busy} className="rounded-lg border border-slate-200 px-4 py-2 text-[13px] text-slate-600">↩ Mở lại</button></>
@@ -503,6 +598,10 @@ export function BuoiBuDetail({ buoiId, readOnly = false, onClose }: { buoiId: st
         </div>
       )}
       {sua && buoi && <SuaBuoiModal buoi={buoi} onClose={() => setSua(false)} onSaved={() => { setSua(false); reload() }} />}
+      {/* Cùng bộ in với Kho tài liệu (ET có layout riêng) — không dựng bản in thứ hai để khỏi lệch. */}
+      {inDoc && (inDoc.loai === 'et'
+        ? <ETPrintView id={inDoc.id} onClose={() => setInDoc(null)} />
+        : <PrintView id={inDoc.id} onClose={() => setInDoc(null)} />)}
     </div>
   )
 }
