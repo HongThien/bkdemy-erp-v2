@@ -185,28 +185,37 @@ của 1 vị trí phải cùng `parent_ma_cau`"*. Sau spec này nghĩa đúng l�
 
 ### 6.1 Trong màn Dạng (`DangHub`) — thay bộ lọc "Câu gốc" hiện tại
 
-Bộ lọc `Tất cả | Câu gốc` ([`DangHub.tsx:114`](src/screens/kho/DangHub.tsx)) đổi thành **2 tab**:
+Bộ lọc `Tất cả | Câu gốc` đổi thành **3 tab**:
 
-**Tab "Cụm bài"** (mặc định) — mỗi cụm 1 card:
-- Đầu card: tên cụm (`ten ?? "Cụm {thu_tu}"`, bấm sửa tại chỗ) · số bài · nút tiền đề.
-- Thân card: **liệt kê MỌI câu gốc trong cụm** (không phải 1 gốc làm mặt — cụm có nhiều gốc).
-- Toggle **`Gốc | Clone`** trong card: mặc định Gốc; bật Clone thì hiện thêm biến thể (kèm badge 🤖 AI giải
-  để còn duyệt).
-- Cuối danh sách: rổ **"Chưa phân cụm — N câu"**.
+**① Tab "Cụm bài"** (mặc định) — mỗi cụm 1 card:
+- Đầu card: tên cụm (`ten ?? "Cụm {thu_tu}"`, bấm sửa tại chỗ) · số bài · **＋ Thêm bài** · 🔗 Tiền đề ·
+  ⤵ Gộp · Xoá cụm.
+- Thân card: **liệt kê MỌI câu gốc trong cụm** (không phải 1 gốc làm mặt — cụm có nhiều gốc), mỗi dòng
+  kèm dropdown chuyển cụm + nút **Gỡ**.
+- Toggle **`Hiện cả biến thể clone`**: mặc định chỉ gốc; bật thì clone hiện lồng dưới gốc của nó (kèm
+  badge 🤖 AI giải để còn duyệt).
+- Nút **＋ Cụm mới** tạo **cụm RỖNG + đặt tên trước**, gán bài vào sau.
 
-**Tab "Toàn bộ kho"** — danh sách phẳng như hiện nay (gốc + clone), không đổi.
+**② Tab "Chưa phân cụm"** (CEO yêu cầu tab riêng, không nhét cuối trang) — hàng đợi việc chính:
+mỗi dòng có checkbox + **dropdown "gán vào cụm"**; chọn nhiều → *Gom thành cụm mới* / *Thêm N bài vào cụm ▾*.
 
-### 6.2 Thao tác gom (gom tay — CEO chốt, không AI gợi ý)
+**③ Tab "Toàn bộ kho"** — danh sách phẳng như hiện nay (gốc + clone), không đổi.
 
-Vì 1.587 câu lẻ rải trong 123 dạng (nặng nhất **120 câu/dạng**), gán từng câu bằng dropdown là không dùng được:
+### 6.2 Gán 2 CHIỀU (CEO chốt) — gom tay, không AI gợi ý
 
-- **Chọn nhiều** câu trong rổ chưa phân cụm → **"Gom thành cụm mới"** (hỏi tên, tên do người đặt) hoặc
-  **"Thêm vào cụm ▾"**.
+Cùng đổ về một hàm `ganCumBai`, khác chỗ bắt đầu:
+
+| chiều | đường đi |
+|---|---|
+| **BÀI → CỤM** | dropdown "gán vào cụm" ngay trên từng dòng (tab Chưa phân cụm & trong card cụm) |
+| **CỤM → BÀI** | nút **＋ Thêm bài** trên card cụm → modal picker (có ô tìm) chọn nhiều bài từ hàng đợi |
+
 - **Gộp 2 cụm** → chọn cụm đích, giữ tên cụm đích, mọi câu (gốc + clone) chuyển sang.
-- **Gỡ câu khỏi cụm** → về rổ chưa phân cụm. (Gom tay chắc chắn có nhầm ⇒ đường lùi phải có từ ngày đầu.)
-- Dropdown "thuộc cụm nào" ở **màn sửa 1 câu** vẫn có, nhưng chỉ là đường phụ. Dropdown **chỉ liệt kê cụm
-  trong đúng dạng của câu đó**.
-- Clone **tự thừa kế `ma_cum` của gốc** lúc sinh ([`api.ts:469`](src/lib/kho/api.ts) `saveCloneBatch`).
+- **Gỡ câu khỏi cụm** → về tab Chưa phân cụm. (Gom tay chắc chắn có nhầm ⇒ đường lùi có từ ngày đầu.)
+- **Clone luôn đi theo gốc** khi gán/gỡ/gộp — clone tương đương gốc của nó, không có ca nào nó ở lại
+  cụm khác mà đúng.
+- Clone **tự thừa kế `ma_cum` của gốc** lúc sinh (`saveCloneBatch`).
+- Mọi dropdown **chỉ liệt kê cụm trong đúng dạng của câu đó**.
 
 ### 6.3 Tiền đề
 

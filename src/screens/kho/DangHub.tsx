@@ -42,12 +42,13 @@ export default function DangHub({ d, config, chuan, allDang, onClose, onEditDang
   const [err, setErr] = useState<string | null>(null)
   const [cauModal, setCauModal] = useState<null | { editing: CauHoi }>(null)
   const [importMode, setImportMode] = useState<'clone' | 'batch' | null>(null)
-  const [tab, setTab] = useState<'cum' | 'kho'>('cum')
+  const [tab, setTab] = useState<'cum' | 'chua' | 'kho'>('cum')
   const [moTienDe, setMoTienDe] = useState(false)
   const tone = mucDoTone(d.mucDo)
   // Câu GỐC = mọi câu KHÔNG do AI sinh (nguon ≠ 'clone'). Biến thể AI = nguon 'clone'.
   const laGoc = (c: CauHoi) => c.nguon !== 'clone'
   const gocCount = caus.filter(laGoc).length
+  const chuaPhanCumCount = caus.filter((c) => laGoc(c) && !c.ma_cum).length
   const shown = caus
   const tabBtn = (on: boolean) => `h-7 rounded-full px-3.5 text-[12px] font-semibold transition ${on ? 'bg-slate-800 text-white' : 'bg-white text-slate-500 ring-1 ring-slate-200 hover:text-slate-800'}`
 
@@ -130,13 +131,16 @@ export default function DangHub({ d, config, chuan, allDang, onClose, onEditDang
               {!loading && !err && coCum && (
                 <div className="mb-4 flex items-center gap-1.5">
                   <button onClick={() => setTab('cum')} className={tabBtn(tab === 'cum')}>Cụm bài</button>
+                  <button onClick={() => setTab('chua')} className={tabBtn(tab === 'chua')}>
+                    Chưa phân cụm <span className="opacity-60">{chuaPhanCumCount}</span>
+                  </button>
                   <button onClick={() => setTab('kho')} className={tabBtn(tab === 'kho')}>Toàn bộ kho <span className="opacity-60">{caus.length}</span></button>
                   <span className="ml-1 text-[12px] text-slate-400">{gocCount} gốc · {caus.length - gocCount} biến thể AI</span>
                 </div>
               )}
 
-              {!loading && !err && coCum && tab === 'cum' && caus.length > 0 ? (
-                <CumBaiTab maDang={d.leafMa} caus={caus} cauTbl={cauTbl}
+              {!loading && !err && coCum && tab !== 'kho' && caus.length > 0 ? (
+                <CumBaiTab maDang={d.leafMa} caus={caus} cauTbl={cauTbl} view={tab}
                   onEditCau={(c) => setCauModal({ editing: c })} onChanged={reload} />
               ) : loading ? <p className="text-sm text-slate-400">Đang tải…</p>
                 : err ? <p className="text-sm text-rose-600">Lỗi: {err}</p>
