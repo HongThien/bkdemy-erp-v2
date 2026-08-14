@@ -896,9 +896,26 @@ trống) nhưng cần hai cách xử NGƯỢC nhau.
 nhắc đang có tác dụng, khai thêm chuỗi cùng họ · toàn **Huỷ** = thật sự vô hậu quả, ngừng nhắc ·
 toàn **Gác** = có hậu quả nhưng chưa tới lúc, nhắc lại đúng hẹn là đủ.
 
+### 08-14 — Test đầu vào: assign người chấm/trả bài dự kiến (đã merge main)
+`ca_test` có thêm 2 cột `nguoi_cham_id`/`nguoi_tra_bai_id` (FK `nhan_su`, nullable) — điền lúc "+ Tạo
+test đầu vào" hoặc sửa sau ngay trên card, **chỉ để BIẾT trước ai dự kiến làm, KHÔNG khoá hàng đợi**
+Chấm/Trả bài (vẫn pool chung, "ai mở thì làm" — nguyên tắc 07-19 giữ nguyên). Dropdown chọn người: TOÀN
+BỘ `nhan_su_mon` của môn ca đó (không curate/roster riêng — thử rồi bỏ, xem ② mục PURE-DERIVE), chỉ ưu
+tiên hiển thị nhóm **"Gần đây"** = ai từng được gán gần nhất cho môn đó (derive từ lịch sử `ca_test`,
+hàm `listNguoiChoCham`/`listNguoiChoTraBai` ở `tuyensinh.ts`). Badge tên hiện ở Chấm test/Trả bài. Chưa
+có màn báo cáo nào nối vào 2 cột này (Thùy có ý muốn báo theo người-được-assign) — khi làm thì join
+thẳng `ca_test.nguoi_cham_id`/`nguoi_tra_bai_id`, data đã sẵn, không cần thêm gì ở tầng data.
+
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
 
 
+- **⭐ PURE-DERIVE thắng roster tĩnh khi vấn đề chỉ là "list quá dài" (Test đầu vào assign, 08-14):**
+  build xong 1 bảng curate riêng (`test_dau_vao_nhan_su`) để rút gọn dropdown chọn người, Thùy phản
+  biện ngay — sort theo GẦN NHẤT-TỪNG-ĐƯỢC-GÁN (derive từ lịch sử, đã có sẵn trong DB) giải quyết đúng
+  vấn đề mà không cần bảng/màn CRUD mới, không ai phải nhớ bảo trì khi người nghỉ việc. Bài học: trước
+  khi thêm bảng/cột mới để "gọn UI", hỏi trước — dữ liệu LỊCH SỬ đã có sẵn có derive ra được thứ tự ưu
+  tiên tương đương không? Chỉ tạo state tĩnh mới khi thật sự có KHÁI NIỆM MỚI (ở đây `nguoi_cham_id`/
+  `nguoi_tra_bai_id` trên `ca_test` là assign THẬT của từng ca — giữ; danh mục "ai được chọn" thì KHÔNG).
 - **⭐ Thuật ngữ CEO nghĩa HẸP theo ngữ cảnh — soi ví dụ TRƯỚC khi build UI (Kho Hình 08-08, hiểu nhầm 2 vòng):** Thùy nói "hiện list chuỗi trước" → tao hiểu list MỌI dạng/chuỗi khác nhau (build sai nút + popup list mọi component); ý thật = "các chuỗi CỦA NODE" = **gốc + biến thể của CHÍNH chuỗi đang xem**. Rồi lần 2 làm list nhãn nhỏ, Thùy muốn popup TO view full từng bản. Gặp danh từ CEO ("chuỗi", "bản", "ghế"…) có ≥2 nghĩa → **hỏi/soi 1 ví dụ cụ thể (ảnh màn) trước khi dựng cả UI**, đừng chọn nghĩa rộng rồi code. Rẻ vì đã tách UI khỏi logic (chỉ sửa popup, không đụng `noDapAn`).
 - **`zoom:1.15` (#root) + `100vh`**: mọi `100vh`/`min-h-screen` painted ×1.15 → body scrollbar thừa. Chặn chiều cao 1 lần ở App = `h-[calc(100vh/1.15)]`, dưới dùng `h-full`. **MODAL (`fixed inset-0`+`vh`/`vw`) trong #root cũng bị phóng 1.15× → tràn màn hình → `createPortal(modal, document.body)` để THOÁT zoom.**
 - **PostgREST embed: FK ĐƠN mới embed thẳng được; nhiều FK cùng đích → NHẬP NHẰNG (query lỗi âm thầm → rỗng).** `gami_grades.problem_id→gami_session_problems` = FK đơn → `select('...,prob:problem_id(...)')` (bỏ luôn IN-list, tránh URL dài). Còn `buoi_hoc_hs` có **2 FK** về `buoi_hoc` (`buoi_hoc_id`+`bu_cho_buoi_id`) → KHÔNG embed, phải **tách 2 bước** (lấy id rồi `.in()`).

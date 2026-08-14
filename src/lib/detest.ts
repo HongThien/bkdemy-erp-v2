@@ -126,23 +126,28 @@ export type CaTestCau = {
 }
 export type CaTestChoCham = {
   id: string; ungVienId: string; mon: string; ngay: string; baiUrl: string | null; taiLieuId: string | null
-  hoTenHs: string; khoi: string | null
+  hoTenHs: string; khoi: string | null; nguoiChamTen?: string | null
 }
-// Hàng đợi CHUNG (team học thuật) — đã điểm danh xong (có đề gán) + chưa chấm xong.
+// Hàng đợi CHUNG (team học thuật) — đã điểm danh xong (có đề gán) + chưa chấm xong. `nguoi_cham` chỉ
+// là NHÃN hiển thị dự kiến (Thùy chốt 08-14) — ai mở cũng chấm được, không lọc theo người được gán.
+const CHO_CHAM_SELECT = 'id, ung_vien_id, mon, ngay, bai_url, tai_lieu_id, cham_xong_at, trang_thai, ung_vien:ung_vien_id(ho_ten_hs, khoi), nguoi_cham:nguoi_cham_id(ho_ten)'
+function mapChoCham(r: any): CaTestChoCham {
+  return { id: r.id, ungVienId: r.ung_vien_id, mon: r.mon, ngay: r.ngay, baiUrl: r.bai_url, taiLieuId: r.tai_lieu_id, hoTenHs: r.ung_vien?.ho_ten_hs ?? '?', khoi: r.ung_vien?.khoi ?? null, nguoiChamTen: r.nguoi_cham?.ho_ten ?? null }
+}
 export async function listCanCham(): Promise<CaTestChoCham[]> {
   const { data, error } = await supabase.from('ca_test')
-    .select('id, ung_vien_id, mon, ngay, bai_url, tai_lieu_id, cham_xong_at, trang_thai, ung_vien:ung_vien_id(ho_ten_hs, khoi)')
+    .select(CHO_CHAM_SELECT)
     .eq('trang_thai', 'hoan_thanh').not('tai_lieu_id', 'is', null).is('cham_xong_at', null)
     .order('ngay').limit(LIMIT)
   if (error) throw error
-  return (data ?? []).map((r: any) => ({ id: r.id, ungVienId: r.ung_vien_id, mon: r.mon, ngay: r.ngay, baiUrl: r.bai_url, taiLieuId: r.tai_lieu_id, hoTenHs: r.ung_vien?.ho_ten_hs ?? '?', khoi: r.ung_vien?.khoi ?? null }))
+  return (data ?? []).map(mapChoCham)
 }
 export async function listDaCham(ngay?: string): Promise<CaTestChoCham[]> {
-  let q = supabase.from('ca_test').select('id, ung_vien_id, mon, ngay, bai_url, tai_lieu_id, ung_vien:ung_vien_id(ho_ten_hs, khoi)').not('cham_xong_at', 'is', null)
+  let q = supabase.from('ca_test').select(CHO_CHAM_SELECT).not('cham_xong_at', 'is', null)
   if (ngay) q = q.eq('ngay', ngay)
   const { data, error } = await q.order('cham_xong_at', { ascending: false }).limit(LIMIT)
   if (error) throw error
-  return (data ?? []).map((r: any) => ({ id: r.id, ungVienId: r.ung_vien_id, mon: r.mon, ngay: r.ngay, baiUrl: r.bai_url, taiLieuId: r.tai_lieu_id, hoTenHs: r.ung_vien?.ho_ten_hs ?? '?', khoi: r.ung_vien?.khoi ?? null }))
+  return (data ?? []).map(mapChoCham)
 }
 export async function getCaTestCauKq(caTestId: string): Promise<CaTestCau[]> {
   const { data: cau, error } = await supabase.from('ca_test_cau').select('*').eq('ca_test_id', caTestId).order('thu_tu').limit(LIMIT)
@@ -265,6 +270,7 @@ export async function luuNhanXetMau(mon: string, nhom: NhanXetMau['nhom'], noiDu
 export type CaTestChoTraBai = CaTestChoCham & {
   choChamXong: boolean; choScanDaCham: boolean; choLopDeXuat: boolean
   baiDaChamUrl: string | null; lopDeXuatId: string | null; nhanXet: NhanXet | null
+  nguoiTraBaiTen: string | null
 }
 function mapTraBai(r: any): CaTestChoTraBai {
   return {
@@ -272,9 +278,10 @@ function mapTraBai(r: any): CaTestChoTraBai {
     hoTenHs: r.ung_vien?.ho_ten_hs ?? '?', khoi: r.ung_vien?.khoi ?? null,
     choChamXong: !r.cham_xong_at, choScanDaCham: !r.bai_da_cham_url, choLopDeXuat: !r.ung_vien?.lop_du_kien_id,
     baiDaChamUrl: r.bai_da_cham_url ?? null, lopDeXuatId: r.ung_vien?.lop_du_kien_id ?? null, nhanXet: r.nhan_xet ?? null,
+    nguoiTraBaiTen: r.nguoi_tra_bai?.ho_ten ?? null,
   }
 }
-const TRA_BAI_SELECT = 'id, ung_vien_id, mon, ngay, bai_url, tai_lieu_id, cham_xong_at, bai_da_cham_url, nhan_xet, ung_vien:ung_vien_id(ho_ten_hs, khoi, lop_du_kien_id)'
+const TRA_BAI_SELECT = 'id, ung_vien_id, mon, ngay, bai_url, tai_lieu_id, cham_xong_at, bai_da_cham_url, nhan_xet, ung_vien:ung_vien_id(ho_ten_hs, khoi, lop_du_kien_id), nguoi_tra_bai:nguoi_tra_bai_id(ho_ten)'
 export async function listCanTraBai(): Promise<CaTestChoTraBai[]> {
   const { data, error } = await supabase.from('ca_test').select(TRA_BAI_SELECT)
     .eq('trang_thai', 'hoan_thanh').is('tra_bai_xong_at', null).order('ngay').limit(LIMIT)

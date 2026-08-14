@@ -211,18 +211,56 @@ export type CaTest = {
   id: string; ungVienId: string; mon: string; ngay: string; gioBatDau: string
   thoiLuongPhut: number; trangThai: CaTestTrangThai; baiUrl: string | null; hoanThanhAt: string | null
   taiLieuId: string | null
+  nguoiChamId: string | null; nguoiChamTen: string | null
+  nguoiTraBaiId: string | null; nguoiTraBaiTen: string | null
   createdAt: string
   ungVien: { hoTenHs: string; maUv: string | null; khoi: string | null; hoTenPh: string | null; sdtPh: string | null }
 }
-const CA_TEST_SELECT = '*, ung_vien:ung_vien_id(ho_ten_hs, ma_uv, khoi, ho_ten_ph, sdt_ph)'
+const CA_TEST_SELECT = '*, ung_vien:ung_vien_id(ho_ten_hs, ma_uv, khoi, ho_ten_ph, sdt_ph), nguoi_cham:nguoi_cham_id(ho_ten), nguoi_tra_bai:nguoi_tra_bai_id(ho_ten)'
 function mapCaTest(r: any): CaTest {
   return {
     id: r.id, ungVienId: r.ung_vien_id, mon: r.mon, ngay: r.ngay, gioBatDau: r.gio_bat_dau,
     thoiLuongPhut: r.thoi_luong_phut, trangThai: r.trang_thai, baiUrl: r.bai_url, hoanThanhAt: r.hoan_thanh_at,
     taiLieuId: r.tai_lieu_id ?? null,
+    nguoiChamId: r.nguoi_cham_id ?? null, nguoiChamTen: r.nguoi_cham?.ho_ten ?? null,
+    nguoiTraBaiId: r.nguoi_tra_bai_id ?? null, nguoiTraBaiTen: r.nguoi_tra_bai?.ho_ten ?? null,
     createdAt: r.created_at,
     ungVien: { hoTenHs: r.ung_vien?.ho_ten_hs ?? '?', maUv: r.ung_vien?.ma_uv ?? null, khoi: r.ung_vien?.khoi ?? null, hoTenPh: r.ung_vien?.ho_ten_ph ?? null, sdtPh: r.ung_vien?.sdt_ph ?? null },
   }
+}
+
+// Gợi ý người chấm/trả bài — nhân sự nhan_su_mon(môn), ai GẦN NHẤT từng được gán cho môn này lên đầu
+// (derive từ chính lịch sử ca_test.nguoi_cham_id/nguoi_tra_bai_id — KHÔNG bảng riêng, Thùy phản biện
+// 08-14: roster tĩnh phải bảo trì tay, vi phạm PURE-DERIVE §4). Đầy đủ nhan_su_mon của môn vẫn chọn
+// được hết (KHÔNG khoá ai) — chỉ ưu tiên hiển thị. Người nghỉ việc tự rụng khỏi cả 2 nhóm (lọc
+// trang_thai='dang_lam'), không ai phải nhớ dọn.
+export type NguoiChoAssign = { nhanSuId: string; hoTen: string; ganDay: boolean }
+async function listNguoiChoAssign(mon: string, cot: 'nguoi_cham_id' | 'nguoi_tra_bai_id'): Promise<NguoiChoAssign[]> {
+  const { data: full, error } = await supabase.from('nhan_su_mon').select('nhan_su:nhan_su_id(id, ho_ten, trang_thai)').eq('mon', mon).limit(LIMIT)
+  if (error) throw error
+  const dsFull = (full ?? []).map((r: any) => r.nhan_su).filter((n: any) => n?.trang_thai === 'dang_lam') as { id: string; ho_ten: string }[]
+  const { data: hist } = await supabase.from('ca_test').select(cot).eq('mon', mon).not(cot, 'is', null).order('created_at', { ascending: false }).limit(200)
+  const seen = new Set<string>()
+  const ganDayIds: string[] = []
+  for (const r of (hist ?? []) as any[]) { const id = r[cot]; if (id && !seen.has(id)) { seen.add(id); ganDayIds.push(id) } }
+  const byId = new Map(dsFull.map((n) => [n.id, n]))
+  const out: NguoiChoAssign[] = []
+  for (const id of ganDayIds) { const n = byId.get(id); if (n) out.push({ nhanSuId: n.id, hoTen: n.ho_ten, ganDay: true }) }
+  for (const n of dsFull.filter((n) => !seen.has(n.id)).sort((a, b) => a.ho_ten.localeCompare(b.ho_ten))) out.push({ nhanSuId: n.id, hoTen: n.ho_ten, ganDay: false })
+  return out
+}
+export const listNguoiChoCham = (mon: string) => listNguoiChoAssign(mon, 'nguoi_cham_id')
+export const listNguoiChoTraBai = (mon: string) => listNguoiChoAssign(mon, 'nguoi_tra_bai_id')
+
+// Assign — điền lúc lập ca, sửa được sau đó (như gán đề). Chỉ để BIẾT trước ai dự kiến làm; hàng đợi
+// Chấm/Trả bài vẫn CHUNG (KHÔNG khoá theo người được gán).
+export async function ganNguoiChamCaTest(id: string, nguoiChamId: string | null): Promise<void> {
+  const { error } = await supabase.from('ca_test').update({ nguoi_cham_id: nguoiChamId }).eq('id', id)
+  if (error) throw error
+}
+export async function ganNguoiTraBaiCaTest(id: string, nguoiTraBaiId: string | null): Promise<void> {
+  const { error } = await supabase.from('ca_test').update({ nguoi_tra_bai_id: nguoiTraBaiId }).eq('id', id)
+  if (error) throw error
 }
 // Deadline (epoch ms) hiển thị đếm ngược — tái dùng vnInstant/mucDeadline/nhanConLai (tuan.ts).
 export function gioKetThucCaTest(t: Pick<CaTest, 'ngay' | 'gioBatDau' | 'thoiLuongPhut'>): number {
@@ -256,6 +294,7 @@ export type TaoCaTestInput = {
   ungVienId?: string // đã có ở L5 → dùng thẳng
   ungVienMoi?: { hoTenHs: string; mon: string; khoi?: string | null; ngaySinh?: string | null; hoTenPh?: string | null; sdtPh?: string | null; truongHoc?: string | null } // walk-in
   ngay: string; gioBatDau: string; thoiLuongPhut: number
+  nguoiChamId?: string | null; nguoiTraBaiId?: string | null // dự kiến — sửa được sau, KHÔNG bắt buộc
 }
 export async function taoCaTest(input: TaoCaTestInput): Promise<CaTest> {
   const { data: { user } } = await supabase.auth.getUser()
@@ -278,7 +317,10 @@ export async function taoCaTest(input: TaoCaTestInput): Promise<CaTest> {
     await updateUngVien(ungVienId, { level: 'L6' }) // walk-in: đăng ký + đến diễn ra cùng lúc, bỏ qua L5
   }
   const { data, error } = await supabase.from('ca_test')
-    .insert({ ung_vien_id: ungVienId, mon, ngay: input.ngay, gio_bat_dau: input.gioBatDau, thoi_luong_phut: input.thoiLuongPhut, created_by: user?.id ?? null })
+    .insert({
+      ung_vien_id: ungVienId, mon, ngay: input.ngay, gio_bat_dau: input.gioBatDau, thoi_luong_phut: input.thoiLuongPhut, created_by: user?.id ?? null,
+      nguoi_cham_id: input.nguoiChamId ?? null, nguoi_tra_bai_id: input.nguoiTraBaiId ?? null,
+    })
     .select(CA_TEST_SELECT).single()
   if (error) throw error
   return mapCaTest(data)

@@ -4888,6 +4888,44 @@ sau một nút sửa.
 **Quan sát khi verify:** giữa phiên, tab Đã xếp 18→17 và Hoàn thành 150→151 — có người trong team vừa
 đóng một buổi bù lúc đang test. Nhớ: đây là DB THẬT đang chạy, không phải sandbox.
 
+## 2026-08-14 (tiếp) — Ca test đầu vào: assign người chấm/người trả bài dự kiến (derive, KHÔNG roster)
+
+CEO: *"Khi lập ca test đầu vào cần có thêm thông tin assign người chấm và người trả bài."*
+
+Nhánh `fix/test-dau-vao`, worktree riêng `bkdemy-erp-v2-testdauvao` (Explore trước: `+ Tạo test đầu
+vào` nằm ở `DiemDanhTestScreen.tsx` trong module `TestDauVaoScreen.tsx`; Chấm/Trả bài đã ghi rõ đây là
+**hàng đợi CHUNG, "ai mở thì làm" — KHÔNG owner cứng**, Thùy chốt 07-19). Assign chỉ để BIẾT trước, KHÔNG
+đổi model pool đó — Thùy 08-14 xác nhận: *"hiển thị vẫn chung... nhưng vẫn assign chính cho người được
+phân công. Trong các tab báo cáo vẫn phải báo theo người được assign"*.
+
+**Vòng 1 (BỎ — roster tĩnh):** tạo bảng `test_dau_vao_nhan_su` (mig `202608142255`) curate riêng nhóm
+nhỏ đủ điều kiện, vì "chọn từ toàn bộ `nhan_su_mon` quá nhiều". Thùy phản biện ngay: sao không ưu tiên
+hiển thị người GẦN NHẤT từng được gán lên đầu list, đỡ phải thêm bảng/cột. Đúng — roster tĩnh vi phạm
+tinh thần PURE-DERIVE (CLAUDE.md §4) + phải bảo trì tay (người nghỉ việc phải nhớ xoá khỏi roster).
+
+**Vòng 2 (LÀM):** revert bảng roster (mig `202608142304`, DROP — bảng đang 0 dòng, chưa ai dùng, an
+toàn). Giữ 2 cột `ca_test.nguoi_cham_id`/`nguoi_tra_bai_id` (uuid, FK `nhan_su`, nullable — đây là assign
+THẬT của từng ca, không phải danh mục nên KHÔNG derive được). Thêm `listNguoiChoCham(mon)` /
+`listNguoiChoTraBai(mon)` trong `tuyensinh.ts` — nguồn = TOÀN BỘ `nhan_su_mon` của môn (không khoá ai),
+tự sort: ai từng xuất hiện trong lịch sử `ca_test.nguoi_cham_id`/`nguoi_tra_bai_id` của môn đó (200 ca
+gần nhất, dedup, mới→cũ) lên nhóm **"Gần đây"** (optgroup) trước, còn lại xuống **"Khác"**. Người nghỉ
+việc (`nhan_su.trang_thai≠'dang_lam'`) tự rụng khỏi cả 2 nhóm — không ai phải nhớ dọn.
+
+UI: `DiemDanhTestScreen.tsx` — 2 select "Người chấm/trả bài (dự kiến)" trong modal Tạo ca (optional,
+không block tạo) + sửa được ngay trên card ca đang chạy (giống cách gán đề/upload bài — không khoá sau
+khi chọn 1 lần). Badge tên hiện ở `ChamTestScreen.tsx`/`TraBaiTestScreen.tsx` (đọc qua join
+`nguoi_cham`/`nguoi_tra_bai` trong `CA_TEST_SELECT`/`CHO_CHAM_SELECT`/`TRA_BAI_SELECT`).
+
+**Verify:** `tsc --noEmit` sạch (strict + noUnusedLocals). Dev server của phiên chat khác đang chạy
+NGAY TRONG worktree này nhưng WS HMR chết (`ws://localhost:5183` fail) → fetch module qua nó vẫn trả
+bundle CŨ dù đã sửa file trên đĩa (im lặng, không lỗi) — phải tự bật dev server RIÊNG (port 5299) mới
+thấy code mới. **Bài học: 1 dev server có mở KHÔNG chắc đang serve đúng version — luôn fetch thẳng
+source qua nó để đối chiếu trước khi tin UI hiện đúng.** Login qua nút "⚡ DEV — ĐĂNG NHẬP NHANH" (app
+tự có, không phải Claude nhập mật khẩu). Tạo 1 ca test thật (`ZTEST Nguyen Van A` / `UV0166`) → gán
+Đào Xuân Thùy (chấm) + Hoàng Khánh Linh (trả bài) → card load lại đúng 2 select đã chọn sẵn → mở modal
+Tạo ca lần 2, môn Toán → xác nhận Đào Xuân Thùy đã nhảy lên nhóm "Gần đây". Dọn `ung_vien` UV0166 (cascade
+xoá `ca_test`/`ca_test_log` liên kết — FK `on delete cascade` có sẵn từ mig 0088) sau khi Thùy gật.
+
 ## 2026-08-14 — Bài toán có thể có giả thiết RIÊNG (mirror mô hình con-cha)
 
 **Yêu cầu (Thùy, verbatim):** "trong phần bản đồ kiến thức hình. t muốn tầng từ node bài toán - mô
