@@ -4668,3 +4668,32 @@ bao đóng · xoá cụm ⇒ câu về rổ không mất) — prod không còn d
 
 **Sau migrate:** Đại 1.279 cụm · 10.642 câu đã có cụm · **1.614 câu ở rổ chưa phân cụm (124 dạng)**.
 KHTN 10 cụm · 224 câu ở rổ. Đó là việc gom tay tồn đọng, không phải lỗi.
+
+## 2026-08-14 (tiếp) — Gỡ backfill cụm: CỤM LÀ THỦ CÔNG 100% · 3 tab · gán 2 chiều
+
+**CEO bắt lỗi:** *"T bảo cụm là thủ công cơ mà. Người dùng phải đặt tên cụm rồi mới gán các câu vào chứ,
+sao m lại đi phân cụm rồi"*. Đúng — và tệ hơn: **backfill đó THỪA**, do chính tao làm nó thành thừa.
+Lý do ban đầu backfill là giữ hành vi mã đề; nhưng giữa chừng tao đổi khoá thành
+`ma_cum ?? parent_ma_cau ?? ma_cau` — **tầng giữa đã tự giữ hành vi cũ**. Từ lúc thêm tầng đó, backfill
+chỉ còn tác dụng đẻ 1.279 cụm không tên không ai xin. Spec §2 cấm bịa cụm cho câu lẻ, rồi §6 lại bịa cho
+chuỗi clone → mâu thuẫn nội bộ mà tao không tự soi ra.
+
+→ **Bài học:** khi thêm một lớp fallback, phải quay lại hỏi *"cái gì vừa trở thành thừa?"*. Fallback mới
+âm thầm rút hết lý do tồn tại của bước trước đó mà không có lỗi nào báo.
+
+**Đã làm:**
+- `202608141314_go_backfill_cum.sql` — xoá cụm mang **vân tay backfill** (`ten is null` VÀ mọi câu trong
+  cụm cùng một khoá cũ) nên cụm do NGƯỜI tạo luôn sống sót; chạy lại vô hại. FK `on delete set null` tự
+  đưa câu về "chưa phân cụm". Kiểm sau xoá: 0 câu mồ côi cụm.
+  Trước khi xoá đã đo: 0 cụm có tên · 0 cụm gom thêm câu · 0 cạnh tiền đề ⇒ không mất công của ai.
+  Sau: **0 cụm cả Đại lẫn KHTN**, mọi câu về hàng đợi.
+- UI theo yêu cầu CEO: **3 tab** (Cụm bài · **Chưa phân cụm** · Toàn bộ kho) + **gán 2 CHIỀU**
+  (bài→cụm: dropdown trên từng dòng · cụm→bài: nút "＋ Thêm bài" mở picker có ô tìm) + nút
+  "＋ Cụm mới" tạo cụm RỖNG đặt tên trước.
+
+**⚠ VA CHẠM 2 PHIÊN (ghi để nhớ):** có phiên Claude khác làm song song **trong cùng working tree**
+(`tien_to_ma_theo_mon`: đổi mã dạng sang tiền tố T1/T2/T3/K). `npm run migrate` của phiên này **áp luôn
+migration đang treo của họ** — chạy OK, nhưng đó là áp hộ thứ mình không viết. May là migration của họ
+CÓ biết bảng cụm và sửa FK `dai_cum_bai`/`khtn_cum_bai`/`*_dang_tien_de` thành `on update cascade`, nên
+mã dạng đổi `09010201` → `T103010101` mà cụm không gãy.
+→ **Luật rút ra: trước khi `npm run migrate`, chạy `--status` xem có file treo của người khác không.**

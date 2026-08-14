@@ -135,18 +135,22 @@ Mỗi bảng cạnh 2 hàm, mảng `duong` chống lặp vô hạn — **copy đ
 
 ---
 
-## 3. Backfill (chạy trong cùng migration)
+## 3. KHÔNG backfill — cụm là thủ công 100%
 
-**Nguyên tắc: ngày 0 hành vi phải KHÔNG ĐỔI một ly.** Migration đổi *cách lưu*, không đổi *kết quả*.
+**Chốt (Thùy 14/08):** *cụm là thủ công — người tạo cụm, đặt tên, rồi mới gán bài vào.* Hệ **không**
+tự sinh cụm nào, kể cả từ các chuỗi gốc-clone.
 
-1. Với mỗi câu gốc **có ít nhất 1 clone còn sống** → tạo 1 cụm trong dạng của nó, `ten = NULL`,
-   `thu_tu` = số thứ tự trong dạng. Gán `ma_cum` cho gốc **và toàn bộ clone của nó**.
-   → Đại ~1.270 cụm · KHTN ~10 cụm.
-2. Câu lẻ (không clone, không phải clone) → **`ma_cum` để NULL**. Không đẻ cụm. (§2)
-3. Câu đã `xoa_at` (kho rác) → bỏ qua hoàn toàn.
+Migration đầu (`202608131918`) có backfill 1.279 cụm Đại + 10 KHTN từ chuỗi clone; đã **gỡ sạch** bằng
+`202608141314_go_backfill_cum.sql`. Hai lý do:
 
-Sau backfill, `ma_cum ?? ma_cau` **bằng đúng** `parent_ma_cau ?? ma_cau` cho mọi câu ⇒ mã đề và builder
-chạy y như trước khi migrate. Chỉ khi người bắt đầu **gộp cụm** thì hành vi mới đổi (§5).
+1. **Sai nguyên tắc.** Hệ tự khẳng định "đây là một cụm" thay cho người — đúng cái §2 cấm khi nói về
+   câu lẻ, rồi vi phạm ngay với chuỗi clone.
+2. **Thừa.** Lý do duy nhất để backfill là giữ hành vi mã đề — nhưng khoá tiêu thụ là
+   `ma_cum ?? parent_ma_cau ?? ma_cau`, **tầng `parent_ma_cau` ở giữa đã tự giữ nguyên hành vi cũ**.
+   Cụm rỗng hoàn toàn thì `cumKey` rơi xuống đúng chuỗi gốc-clone như trước khi có tính năng.
+
+⇒ Trạng thái xuất phát: **0 cụm ở mọi dạng, mọi câu nằm ở tab "Chưa phân cụm"**, mã đề + tài liệu chạy
+y hệt trước migration. Hành vi chỉ đổi từ bài gốc đầu tiên mà người gom vào chung một cụm (§5).
 
 ---
 
