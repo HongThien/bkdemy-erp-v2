@@ -5,8 +5,10 @@ import {
   buildOcrGocPrompt, parseGocJson, buildCloneFromGocPrompt, parseVariantsJson, GOC_SCHEMA, VARIANTS_SCHEMA,
   buildBatchPrompt, parseBatchJson, parseStructuredText, saveCauBatch, callGeminiJson,
   CLONE_SCHEMA, BATCH_SCHEMA, callGeminiRich, buildIngestPrompt, parseIngestJson, INGEST_SCHEMA,
-  uploadKhoImage, LOAI_CAU, type CauHoi, type MapRow,
+  uploadKhoImage, LOAI_CAU, CUM_TBL, type CauHoi, type MapRow,
 } from '../../lib/kho/api'
+import CumBaiTab from './CumBaiTab'
+import TienDeBox from './TienDeBox'
 import { fileToCanvases, canvasToJpegBase64, cropCanvasBox } from '../../lib/pdfRender'
 import PdfCropper from '../../components/PdfCropper'
 import { ImgInsertBar, insertImageAtCursor } from '../../components/ImgInsertBar'
@@ -27,24 +29,27 @@ const loaiLabel = (v: string) => LOAI_CAU.find((x) => x.value === v)?.label ?? v
 const ta = `${inp} min-h-[72px] resize-y leading-relaxed`
 const sel = 'h-[34px] rounded-md border border-slate-300 bg-white px-2 text-[13px] outline-none focus:border-indigo-500'
 
-export default function DangHub({ d, config, chuan, onClose, onEditDang, onDeleteDang, onChanged }: {
+export default function DangHub({ d, config, chuan, allDang, onClose, onEditDang, onDeleteDang, onChanged }: {
   d: MapRow; config: BranchConfig; chuan?: number
+  allDang?: MapRow[]              // để chọn TIỀN ĐỀ dạng↔dạng (cùng nhánh)
   onClose: () => void; onEditDang: () => void; onDeleteDang: () => void; onChanged: () => void
 }) {
   const hasCau = !!config.cauTbl                 // nhánh có quản lý câu (Đại/KHTN); Hình chưa → placeholder
   const cauTbl = config.cauTbl ?? 'dai_cau_hoi'  // bảng câu theo môn
+  const coCum = !!CUM_TBL[cauTbl]                // nhánh đã có CỤM BÀI (Đại/KHTN); hgt chưa → chỉ kho phẳng
   const [caus, setCaus] = useState<CauHoi[]>([])
   const [loading, setLoading] = useState(hasCau)
   const [err, setErr] = useState<string | null>(null)
   const [cauModal, setCauModal] = useState<null | { editing: CauHoi }>(null)
   const [importMode, setImportMode] = useState<'clone' | 'batch' | null>(null)
-  const [filterGoc, setFilterGoc] = useState<'all' | 'goc'>('all')
+  const [tab, setTab] = useState<'cum' | 'kho'>('cum')
+  const [moTienDe, setMoTienDe] = useState(false)
   const tone = mucDoTone(d.mucDo)
   // Câu GỐC = mọi câu KHÔNG do AI sinh (nguon ≠ 'clone'). Biến thể AI = nguon 'clone'.
   const laGoc = (c: CauHoi) => c.nguon !== 'clone'
   const gocCount = caus.filter(laGoc).length
-  const shown = filterGoc === 'goc' ? caus.filter(laGoc) : caus
-  const filterBtn = (on: boolean) => `h-7 rounded-full px-3.5 text-[12px] font-semibold transition ${on ? 'bg-slate-800 text-white' : 'bg-white text-slate-500 ring-1 ring-slate-200 hover:text-slate-800'}`
+  const shown = caus
+  const tabBtn = (on: boolean) => `h-7 rounded-full px-3.5 text-[12px] font-semibold transition ${on ? 'bg-slate-800 text-white' : 'bg-white text-slate-500 ring-1 ring-slate-200 hover:text-slate-800'}`
 
   async function reload() {
     if (!hasCau) return
@@ -79,6 +84,12 @@ export default function DangHub({ d, config, chuan, onClose, onEditDang, onDelet
             </div>
           </div>
           <div className="flex shrink-0 items-center gap-1.5">
+            {coCum && allDang && (
+              <button onClick={() => setMoTienDe((v) => !v)}
+                className={`rounded-md border px-3 py-1.5 text-[13px] font-medium ${moTienDe ? 'border-indigo-300 bg-indigo-50 text-indigo-700' : 'border-slate-200 text-slate-600 hover:border-indigo-300 hover:text-indigo-700'}`}>
+                🔗 Tiền đề dạng
+              </button>
+            )}
             <button onClick={onEditDang} className="rounded-md border border-slate-200 px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-indigo-300 hover:text-indigo-700">Sửa dạng</button>
             <button onClick={onDeleteDang} className="rounded-md border border-slate-200 px-3 py-1.5 text-[13px] font-medium text-slate-500 hover:border-rose-300 hover:text-rose-600">Xoá</button>
             <button onClick={onClose} className="ml-1 flex h-8 w-8 items-center justify-center rounded-md text-slate-400 hover:bg-slate-100">✕</button>
@@ -109,22 +120,30 @@ export default function DangHub({ d, config, chuan, onClose, onEditDang, onDelet
                 </div>
               )}
 
-              {!loading && !err && caus.length > 0 && (
-                <div className="mb-4 flex items-center gap-1.5">
-                  <button onClick={() => setFilterGoc('all')} className={filterBtn(filterGoc === 'all')}>Tất cả <span className="opacity-60">{caus.length}</span></button>
-                  <button onClick={() => setFilterGoc('goc')} className={filterBtn(filterGoc === 'goc')}>Câu gốc <span className="opacity-60">{gocCount}</span></button>
-                  <span className="ml-1 text-[12px] text-slate-400">{caus.length - gocCount} biến thể AI</span>
+              {moTienDe && allDang && (
+                <div className="mb-4">
+                  <TienDeBox nut={d.leafMa} tang="dang" cauTbl={cauTbl} nhan="dạng"
+                    ungVien={allDang.map((r) => ({ ma: r.leafMa, ten: `${r.t2Ten} › ${r.leafTen}` }))} />
                 </div>
               )}
 
-              {loading ? <p className="text-sm text-slate-400">Đang tải…</p>
+              {!loading && !err && coCum && (
+                <div className="mb-4 flex items-center gap-1.5">
+                  <button onClick={() => setTab('cum')} className={tabBtn(tab === 'cum')}>Cụm bài</button>
+                  <button onClick={() => setTab('kho')} className={tabBtn(tab === 'kho')}>Toàn bộ kho <span className="opacity-60">{caus.length}</span></button>
+                  <span className="ml-1 text-[12px] text-slate-400">{gocCount} gốc · {caus.length - gocCount} biến thể AI</span>
+                </div>
+              )}
+
+              {!loading && !err && coCum && tab === 'cum' && caus.length > 0 ? (
+                <CumBaiTab maDang={d.leafMa} caus={caus} cauTbl={cauTbl}
+                  onEditCau={(c) => setCauModal({ editing: c })} onChanged={reload} />
+              ) : loading ? <p className="text-sm text-slate-400">Đang tải…</p>
                 : err ? <p className="text-sm text-rose-600">Lỗi: {err}</p>
                 : caus.length === 0 ? (
                   <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">
                     Chưa có câu nào. <b>Clone biến thể</b> (sinh từ 1 bài mẫu) hoặc <b>Nhập chuỗi câu</b> (cả file câu có sẵn).
                   </div>
-                ) : shown.length === 0 ? (
-                  <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">Không có câu gốc nào trong dạng này (tất cả là biến thể AI).</div>
                 ) : (
                   <ul className="grid grid-cols-1 gap-3 lg:grid-cols-2 2xl:grid-cols-3">
                     {shown.map((c, i) => (

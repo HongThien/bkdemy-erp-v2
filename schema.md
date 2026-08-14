@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-127 bảng · 0 view · 0 enum · 11 trigger · 31 function
+133 bảng · 0 view · 0 enum · 11 trigger · 39 function
 
 ## _migrations
 
@@ -465,6 +465,7 @@
 | clone_method | text | Y |  |  |  |
 | nguon_giai | text |  | 'nguoi'::text |  |  |
 | xoa_at | timestamp with time zone | Y |  |  |  |
+| ma_cum | text | Y |  | FK→dai_cum_bai.ma_cum |  |
 
 ## dai_chuyen_de_ly_thuyet
 
@@ -476,6 +477,24 @@
 | ten_file | text | Y |  |  |  |
 | cap_nhat_at | timestamp with time zone |  | now() |  |  |
 | khong_can | boolean |  | false |  |  |
+
+## dai_cum_bai
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma_cum | text |  | ('DCUM'::text \|\| lpad((nextval('dai_cum_seq'::regclass))::text, 5, '0'::text)) | PK |  |
+| ma_dang | text |  |  | FK→dai_ban_do.ma_dang |  |
+| ten | text | Y |  |  |  |
+| thu_tu | smallint |  | 1 |  |  |
+| ghi_chu | text | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
+## dai_cum_tien_de
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma_cum | text |  |  | PK FK→dai_cum_bai.ma_cum |  |
+| tien_de_ma_cum | text |  |  | PK FK→dai_cum_bai.ma_cum |  |
 
 ## dai_dang_ly_thuyet
 
@@ -493,6 +512,13 @@
 |---|---|---|---|---|---|
 | ma_dang | text |  |  | PK FK→dai_ban_do.ma_dang |  |
 | id_thuoc_tinh | text |  |  | PK FK→dai_danh_muc_thuoc_tinh.id |  |
+
+## dai_dang_tien_de
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma_dang | text |  |  | PK FK→dai_ban_do.ma_dang |  |
+| tien_de_ma_dang | text |  |  | PK FK→dai_ban_do.ma_dang |  |
 
 ## dai_danh_muc_bo_de
 
@@ -1193,6 +1219,7 @@
 | clone_method | text | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | xoa_at | timestamp with time zone | Y |  |  |  |
+| ma_cum | text | Y |  | FK→khtn_cum_bai.ma_cum |  |
 
 ## khtn_chuyen_de_ly_thuyet
 
@@ -1205,6 +1232,24 @@
 | khong_can | boolean |  | false |  |  |
 | cap_nhat_at | timestamp with time zone |  | now() |  |  |
 
+## khtn_cum_bai
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma_cum | text |  | ('KCUM'::text \|\| lpad((nextval('khtn_cum_seq'::regclass))::text, 5, '0'::text)) | PK |  |
+| ma_dang | text |  |  | FK→khtn_ban_do.ma_dang |  |
+| ten | text | Y |  |  |  |
+| thu_tu | smallint |  | 1 |  |  |
+| ghi_chu | text | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
+## khtn_cum_tien_de
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma_cum | text |  |  | PK FK→khtn_cum_bai.ma_cum |  |
+| tien_de_ma_cum | text |  |  | PK FK→khtn_cum_bai.ma_cum |  |
+
 ## khtn_dang_ly_thuyet
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -1214,6 +1259,13 @@
 | file_url | text | Y |  |  |  |
 | ten_file | text | Y |  |  |  |
 | cap_nhat_at | timestamp with time zone |  | now() |  |  |
+
+## khtn_dang_tien_de
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma_dang | text |  |  | PK FK→khtn_ban_do.ma_dang |  |
+| tien_de_ma_dang | text |  |  | PK FK→khtn_ban_do.ma_dang |  |
 
 ## ky_thi
 
@@ -1800,6 +1852,10 @@
 ## Functions
 
 - `count_cau_by_dang(p_tbl text)` → jsonb
+- `dai_cum_hau_due(goc text)` → TABLE(ma_cum text, do_sau integer)
+- `dai_cum_tien_de_bao_dong(goc text)` → TABLE(ma_cum text, do_sau integer)
+- `dai_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
+- `dai_dang_tien_de_bao_dong(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `et_de(p_bai_test uuid)` → jsonb
 - `et_nop(p_bai_lam uuid)` → jsonb
 - `giaoviec_housekeeping()` → void
@@ -1811,6 +1867,10 @@
 - `increment_qaa_hit(p_id uuid)` → void
 - `jwt_email()` → text
 - `jwt_uid()` → uuid
+- `khtn_cum_hau_due(goc text)` → TABLE(ma_cum text, do_sau integer)
+- `khtn_cum_tien_de_bao_dong(goc text)` → TABLE(ma_cum text, do_sau integer)
+- `khtn_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
+- `khtn_dang_tien_de_bao_dong(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `la_thanh_vien()` → boolean
 - `log_bao_loi()` → trigger
 - `log_ca_test()` → trigger
@@ -1852,6 +1912,8 @@
 | buoi_danh_gia_dang | buoi_danh_gia_dang_diem_check | `CHECK ((diem = ANY (ARRAY[(0)::numeric, 0.5, (1)::numeric])))` |
 | ca_test | ca_test_thoi_luong_phut_check | `CHECK ((thoi_luong_phut = ANY (ARRAY[45, 60, 75, 90, 120])))` |
 | dai_ban_do | dai_ban_do_muc_do_check | `CHECK (((muc_do >= 1) AND (muc_do <= 5)))` |
+| dai_cum_tien_de | dai_cum_tien_de_check | `CHECK ((ma_cum <> tien_de_ma_cum))` |
+| dai_dang_tien_de | dai_dang_tien_de_check | `CHECK ((ma_dang <> tien_de_ma_dang))` |
 | hinh_mo_hinh | hinh_mo_hinh_cap_mo_hinh_check | `CHECK (((cap_mo_hinh >= 1) AND (cap_mo_hinh <= 4)))` |
 | hinh_mo_hinh_cha | hinh_mo_hinh_cha_check | `CHECK ((mo_hinh_id <> cha_id))` |
 | hoc_phi_phat_sinh | hoc_phi_phat_sinh_dung_loai | `CHECK ((((loai = 'lop'::text) AND (lop_id IS NOT NULL) AND (hoc_sinh_id IS NULL)) OR ((loai = 'ca_nhan'::text) AND (hoc_sinh_id IS NOT NULL) AND (lop_id IS NULL))))` |
@@ -1859,6 +1921,8 @@
 | hs_level_log | hs_level_log_level_chot_check | `CHECK (((level_chot >= 0) AND (level_chot <= 3)))` |
 | hs_level_log | hs_level_log_level_cu_check | `CHECK (((level_cu >= 0) AND (level_cu <= 3)))` |
 | hs_level_log | hs_level_log_level_may_de_xuat_check | `CHECK (((level_may_de_xuat >= 0) AND (level_may_de_xuat <= 3)))` |
+| khtn_cum_tien_de | khtn_cum_tien_de_check | `CHECK ((ma_cum <> tien_de_ma_cum))` |
+| khtn_dang_tien_de | khtn_dang_tien_de_check | `CHECK ((ma_dang <> tien_de_ma_dang))` |
 | ky_thi | ky_thi_he_so_check | `CHECK ((he_so = ANY (ARRAY[1, 2])))` |
 | muc_nang_luc | muc_nang_luc_muc_check | `CHECK (((muc >= 1) AND (muc <= 3)))` |
 | phan_cong_ca | phan_cong_ca_thu_check | `CHECK (((thu >= 2) AND (thu <= 8)))` |

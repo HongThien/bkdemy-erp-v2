@@ -4613,3 +4613,58 @@ Chỉ còn CHẶN duy nhất: **ai CHẤM bài test**.
   modal (Detail, Mẹ Detail, Tách task con cả 2 kiểu chia) không lỗi console, KHÔNG submit ghi đè data
   thật. Chưa test nhánh submit thật (nghiệm thu/huỷ/chuyển/lưu mẹ/tạo con) — cần CEO tự bấm thử hoặc
   dựng data `ZTEST_` riêng nếu muốn Claude tự chạy hết luồng ghi.
+
+---
+
+## 2026-08-14 — ⭐ CỤM BÀI (tầng dưới của Dạng) + TIỀN ĐỀ 2 tầng · nhánh `feat/cum-bai`
+
+**Vấn đề CEO nêu:** kho có 2 luồng vào (clone từ bài gốc · nhập tài liệu ngoài). Khái niệm "họ" không có
+object riêng, chỉ suy từ `parent_ma_cau ?? ma_cau` ⇒ bài nhập lẻ không có chỗ khai "tao tương đương bài
+kia", và **2 CÂU GỐC tương đương vẫn bị coi là 2 họ** nên mã đề không dám hoán đổi, tài liệu thì lấy cả
+hai vào một đề mà không thấy là lặp.
+
+**Phản biện đã chốt (sparring):**
+- Model KHÔNG sai — thiếu *thao tác gộp* + *chỗ cất lời xác nhận*. Không đập tầng.
+- Gốc/clone = trục NGUỒN GỐC; cụm = trục TƯƠNG ĐƯƠNG. **Hai cột song song**, cấm nhét "cùng cụm" vào
+  `parent_ma_cau` (nói dối về nguồn gốc).
+- Công bằng trong cụm: **team học thuật chịu** (CEO) → bỏ ý phân hạng "cụm chặt/gom tay" + cờ vàng.
+- Tên: nhánh Hình đã dùng "họ mô hình" với nghĩa NGƯỢC (cụm nối bằng tiền đề) ⇒ Đại/KHTN gọi **"Cụm bài"**,
+  Hình **giữ nguyên không sửa dòng nào**. Chữ "cụm" lấy từ chính miệng CEO.
+- Tiền đề: làm **cả 2 tầng** (dạng↔dạng, cụm↔cụm). RANH GIỚI: **KP đo vẫn là DẠNG** — tiền đề tầng cụm
+  chỉ dùng cho thứ tự dạy + builder, CẤM chui vào công thức mastery.
+- Phạm vi: **Đại + KHTN** (hgt cùng shape, thêm sau — hiện 0 câu lẻ). Gom **tay**, tên cụm người đặt.
+
+**Số liệu thật lúc làm:** Đại 12.256 câu / 9.6k clone / 2.893 "họ" / **1.587 câu lẻ rải trong 123/325 dạng
+(dạng nặng nhất 120 câu)** · KHTN 224/234 họ là câu lẻ · hgt 0 câu lẻ. → gán từng câu bằng dropdown là
+không dùng được ⇒ UI phải **chọn nhiều → gom**.
+
+**Đã làm:**
+- `spec-cum-bai.md` (spec đầy đủ) · migration `202608131918_cum_bai.sql`:
+  `dai_cum_bai`/`khtn_cum_bai` · cột `ma_cum` (nullable) · 4 bảng cạnh tiền đề · 8 hàm bao đóng/hậu duệ
+  (soi gương `hinh_mo_hinh_hau_due`) · RLS `la_thanh_vien()` · backfill · **guard bất biến tự rollback**.
+- `cumKey(c) = ma_cum ?? parent_ma_cau ?? ma_cau` (api.ts) → dùng ở `made.ts` (`rootOf`) và
+  `tailieu.ts` (`nguonCuaCau`). Sửa lại comment bất biến ở made.ts (trước ghi "cùng `parent_ma_cau`").
+- UI: `CumBaiTab.tsx` (danh sách cụm · toggle Gốc|Clone · rổ "Chưa phân cụm" · chọn nhiều → gom / thêm
+  vào cụm / gỡ / gộp cụm / đổi tên) · `TienDeBox.tsx` (dùng chung 2 tầng) · `DangHub` đổi bộ lọc
+  "Câu gốc" thành 2 tab **Cụm bài | Toàn bộ kho** + nút "🔗 Tiền đề dạng".
+
+**SAI & SỬA (đáng nhớ):**
+1. **Backfill bản đầu lọc `goc.xoa_at is null`** → bỏ sót **17 nhóm mồ côi** ở Đại (câu gốc đã vào kho rác
+   nhưng 78 clone còn sống). 78 câu tụt về "chưa phân cụm" ⇒ vỡ 17 khối thành 78 khối lẻ ⇒ mã đề mất
+   quyền hoán đổi giữa chúng. **Guard §7 bắt (2954 khối mới vs 2893 khối cũ) và rollback cả migration.**
+   → Sửa: gom theo **NHÓM khoá cũ** `coalesce(parent_ma_cau, ma_cau)` có ≥2 câu sống, không quan tâm gốc
+   còn sống hay không. *Bài học: gốc chết KHÔNG làm các clone hết tương đương với nhau.*
+   *Bài học 2: migration đổi cách lưu thì PHẢI có câu kiểm "phân hoạch mới ≡ phân hoạch cũ" ngay trong
+   transaction — nếu không, lệch này hỏng ÂM THẦM, chỉ lộ khi ai đó soi 3 mã đề của một buổi.*
+2. **`cumKey` để 3 tầng** (`ma_cum ?? parent_ma_cau ?? ma_cau`) chứ không 2: tầng giữa là lưới an toàn cho
+   clone sinh ra trong lúc code chưa deploy kịp gán `ma_cum`, và cho nhánh `hgt` (không có cột `ma_cum`
+   → `undefined` rơi xuống đúng hành vi cũ).
+3. Kho **đang chạy live** lúc migrate (12.161 → 12.256 câu trong lúc làm). Mọi số đo phải đọc lại tại thời
+   điểm chạy, đừng tin số của lượt query trước.
+
+**Kiểm:** `tsc --noEmit` sạch · `npm run build` OK · 11 phép thử vòng đời cụm + tiền đề chạy trong 1
+transaction rồi **ROLLBACK** (tạo/gán/gộp/xoá cụm · cascade cạnh tiền đề · CHECK tự-trỏ · hậu duệ &
+bao đóng · xoá cụm ⇒ câu về rổ không mất) — prod không còn dấu vết. **CHƯA E2E trên app** (cần CEO login).
+
+**Sau migrate:** Đại 1.279 cụm · 10.642 câu đã có cụm · **1.614 câu ở rổ chưa phân cụm (124 dạng)**.
+KHTN 10 cụm · 224 câu ở rổ. Đó là việc gom tay tồn đọng, không phải lỗi.

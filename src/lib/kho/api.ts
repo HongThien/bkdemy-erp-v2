@@ -71,8 +71,19 @@ export type CauHoi = {
   nguon_giai: string            // 'nguoi' (tin) | 'ai' (AI giải/clone — cần duyệt)
   parent_ma_cau: string | null
   clone_method: string | null
+  ma_cum: string | null         // CỤM BÀI = lớp tương đương (thay được cho nhau ở mã đề). null = CHƯA phân cụm.
   created_at?: string
 }
+
+// ── CỤM BÀI (spec-cum-bai.md) ─────────────────────────────────────
+// Trục TƯƠNG ĐƯƠNG, độc lập với trục NGUỒN GỐC (`nguon`/`parent_ma_cau`/`nguon_giai`).
+// 1 cụm chứa được NHIỀU câu gốc — cụm ≠ chuỗi gốc-clone.
+// ⭐ Khoá cụm dùng ở MỌI chỗ tiêu thụ = `ma_cum ?? parent_ma_cau ?? ma_cau`:
+//   - `ma_cum`        → người đã xác nhận tương đương (thắng tuyệt đối)
+//   - `parent_ma_cau` → lưới an toàn: clone sinh ra mà chưa kịp gán cụm vẫn dính với gốc của nó
+//   - `ma_cau`        → câu chưa phân cụm thì tự là cụm của chính nó (hành vi y như trước khi có cụm)
+export const cumKey = (c: Pick<CauHoi, 'ma_cum' | 'parent_ma_cau' | 'ma_cau'>): string =>
+  c.ma_cum ?? c.parent_ma_cau ?? c.ma_cau
 
 // ── KHO RÁC (mig 0111) ────────────────────────────────────────────
 // Xoá câu = CHUYỂN VÀO RÁC (`xoa_at`), không xoá cứng. Lý do: `tai_lieu_cau` giữ `ma_cau` dạng text
@@ -95,6 +106,7 @@ type CauInput = {
   dap_an: string | null; loi_giai: string | null; lua_chon?: string[] | null; menh_de?: MenhDe[] | null
   anh_de?: string | null; anh_dap_an?: string | null
   nguon?: string; nguon_giai?: string; parent_ma_cau?: string | null; clone_method?: string | null
+  ma_cum?: string | null
 }
 export async function createCau(input: CauInput, tbl = 'dai_cau_hoi'): Promise<CauHoi> {
   const { data, error } = await supabase.from(tbl).insert(input).select().single()
@@ -112,6 +124,115 @@ export async function deleteCau(ma_cau: string, tbl = 'dai_cau_hoi'): Promise<vo
   const { error } = await supabase.from(tbl)
     .update({ xoa_at: new Date().toISOString() })
     .eq('ma_cau', ma_cau).is(CHUA_XOA, null)
+  if (error) throw error
+}
+
+// ══ CỤM BÀI + TIỀN ĐỀ (spec-cum-bai.md) ═══════════════════════════════════════
+// ⚠ ĐỪNG LẪN với `deleteDaiCum`/`deleteCum` đã có ở BranchConfig — "cụm" ở ĐÓ nghĩa là *một nhóm node
+//   cây* (chủ đề/chuyên đề) đem xoá cả mảng. Mọi thứ của CỤM BÀI đều có hậu tố `CumBai` để grep sạch.
+export type CumBai = { ma_cum: string; ma_dang: string; ten: string | null; thu_tu: number; ghi_chu: string | null }
+export const tenCum = (c: CumBai) => c.ten?.trim() || `Cụm ${c.thu_tu}`   // chưa đặt tên → suy từ thứ tự
+
+// Bảng cụm theo bảng câu. undefined = nhánh CHƯA có cụm (hgt/hình) → UI ẩn tab Cụm.
+export const CUM_TBL: Record<string, string> = { dai_cau_hoi: 'dai_cum_bai', khtn_cau_hoi: 'khtn_cum_bai' }
+// Bảng cạnh tiền đề theo bảng câu: [dạng↔dạng, cụm↔cụm]
+export const TIEN_DE_TBL: Record<string, { dang: string; cum: string }> = {
+  dai_cau_hoi: { dang: 'dai_dang_tien_de', cum: 'dai_cum_tien_de' },
+  khtn_cau_hoi: { dang: 'khtn_dang_tien_de', cum: 'khtn_cum_tien_de' },
+}
+// Hàm bao đóng ở Postgres theo bảng câu (dùng chặn chu trình + sắp topo)
+const RPC_HAU_DUE: Record<string, { dang: string; cum: string }> = {
+  dai_cau_hoi: { dang: 'dai_dang_hau_due', cum: 'dai_cum_hau_due' },
+  khtn_cau_hoi: { dang: 'khtn_dang_hau_due', cum: 'khtn_cum_hau_due' },
+}
+
+export async function listCumBai(maDang: string, cauTbl = 'dai_cau_hoi'): Promise<CumBai[]> {
+  const tbl = CUM_TBL[cauTbl]; if (!tbl) return []
+  const { data, error } = await supabase.from(tbl).select('*').eq('ma_dang', maDang).order('thu_tu').limit(LIMIT)
+  if (error) throw error
+  return (data ?? []) as CumBai[]
+}
+// Tạo cụm + (tuỳ chọn) gán ngay lô câu vừa chọn. thu_tu = kế tiếp trong dạng.
+export async function createCumBai(a: { maDang: string; ten?: string | null; maCaus?: string[] }, cauTbl = 'dai_cau_hoi'): Promise<CumBai> {
+  const tbl = CUM_TBL[cauTbl]; if (!tbl) throw new Error('Nhánh này chưa có cụm bài.')
+  const hienCo = await listCumBai(a.maDang, cauTbl)
+  const thu_tu = Math.max(0, ...hienCo.map((c) => c.thu_tu)) + 1
+  const { data, error } = await supabase.from(tbl)
+    .insert({ ma_dang: a.maDang, ten: a.ten?.trim() || null, thu_tu }).select().single()
+  if (error) throw error
+  const cum = data as CumBai
+  if (a.maCaus?.length) await ganCumBai(a.maCaus, cum.ma_cum, cauTbl)
+  return cum
+}
+export async function renameCumBai(maCum: string, ten: string | null, cauTbl = 'dai_cau_hoi'): Promise<void> {
+  const tbl = CUM_TBL[cauTbl]; if (!tbl) return
+  const { error } = await supabase.from(tbl).update({ ten: ten?.trim() || null }).eq('ma_cum', maCum)
+  if (error) throw error
+}
+// Xoá cụm → FK `on delete set null` đẩy MỌI câu của cụm về rổ "chưa phân cụm". KHÔNG mất câu nào.
+export async function deleteCumBai(maCum: string, cauTbl = 'dai_cau_hoi'): Promise<void> {
+  const tbl = CUM_TBL[cauTbl]; if (!tbl) return
+  const { error } = await supabase.from(tbl).delete().eq('ma_cum', maCum)
+  if (error) throw error
+}
+// Gán lô câu vào cụm (maCum = null ⇒ GỠ khỏi cụm, về rổ chưa phân cụm).
+// Clone đi theo gốc: gán/gỡ một câu gốc thì mọi clone `parent_ma_cau = câu đó` đi cùng — clone luôn
+// tương đương gốc của nó nên không có ca nào clone ở lại cụm cũ mà đúng.
+export async function ganCumBai(maCaus: string[], maCum: string | null, cauTbl = 'dai_cau_hoi'): Promise<number> {
+  if (!maCaus.length) return 0
+  const { data: con } = await supabase.from(cauTbl).select('ma_cau').in('parent_ma_cau', maCaus).is(CHUA_XOA, null).limit(LIMIT)
+  const tatCa = [...new Set([...maCaus, ...((con ?? []) as { ma_cau: string }[]).map((c) => c.ma_cau)])]
+  const { error } = await supabase.from(cauTbl).update({ ma_cum: maCum }).in('ma_cau', tatCa)
+  if (error) throw error
+  return tatCa.length
+}
+// Gộp cụm: mọi câu của `nguon` chuyển sang `dich`, rồi xoá cụm nguồn. Tên/tiền đề của cụm ĐÍCH giữ nguyên.
+export async function gopCumBai(nguon: string, dich: string, cauTbl = 'dai_cau_hoi'): Promise<void> {
+  if (nguon === dich) return
+  const { error } = await supabase.from(cauTbl).update({ ma_cum: dich }).eq('ma_cum', nguon)
+  if (error) throw error
+  await deleteCumBai(nguon, cauTbl)
+}
+
+// ── Tiền đề — dùng chung 2 tầng (tang: 'dang' | 'cum') ──
+export type Tang = 'dang' | 'cum'
+const cotTienDe = (tang: Tang) => (tang === 'dang' ? { nut: 'ma_dang', td: 'tien_de_ma_dang' } : { nut: 'ma_cum', td: 'tien_de_ma_cum' })
+
+// Trả về: tiền đề TRỰC TIẾP của nút (phải học trước) + nút phụ thuộc trực tiếp vào nó.
+export async function listTienDe(nut: string, tang: Tang, cauTbl = 'dai_cau_hoi'): Promise<{ tienDe: string[]; phuThuoc: string[] }> {
+  const tbl = TIEN_DE_TBL[cauTbl]?.[tang]; if (!tbl) return { tienDe: [], phuThuoc: [] }
+  const c = cotTienDe(tang)
+  const [a, b] = await Promise.all([
+    supabase.from(tbl).select(c.td).eq(c.nut, nut).limit(LIMIT),
+    supabase.from(tbl).select(c.nut).eq(c.td, nut).limit(LIMIT),
+  ])
+  if (a.error) throw a.error
+  if (b.error) throw b.error
+  return {
+    tienDe: (a.data ?? []).map((r: any) => r[c.td] as string),
+    phuThuoc: (b.data ?? []).map((r: any) => r[c.nut] as string),
+  }
+}
+// Thêm cạnh `tienDe → nut`. CHẶN CHU TRÌNH bằng hàm hậu duệ ở Postgres: nếu `tienDe` đã nằm trong tập
+// hậu duệ của `nut` thì nối vào là tạo vòng ⇒ từ chối. (DB chỉ chặn được tự-trỏ bằng CHECK.)
+export async function themTienDe(nut: string, tienDe: string, tang: Tang, cauTbl = 'dai_cau_hoi'): Promise<void> {
+  const tbl = TIEN_DE_TBL[cauTbl]?.[tang]; if (!tbl) throw new Error('Nhánh này chưa có tiền đề.')
+  if (nut === tienDe) throw new Error('Không tự làm tiền đề của chính nó.')
+  const rpc = RPC_HAU_DUE[cauTbl][tang]
+  const { data, error: eR } = await supabase.rpc(rpc, { goc: nut })
+  if (eR) throw eR
+  const key = tang === 'dang' ? 'ma_dang' : 'ma_cum'
+  if ((data ?? []).some((r: any) => r[key] === tienDe)) {
+    throw new Error(`Nối cái này tạo VÒNG: ${tienDe} vốn đã phụ thuộc (trực tiếp hoặc gián tiếp) vào ${nut}.`)
+  }
+  const c = cotTienDe(tang)
+  const { error } = await supabase.from(tbl).insert({ [c.nut]: nut, [c.td]: tienDe } as any)
+  if (error) throw error
+}
+export async function xoaTienDe(nut: string, tienDe: string, tang: Tang, cauTbl = 'dai_cau_hoi'): Promise<void> {
+  const tbl = TIEN_DE_TBL[cauTbl]?.[tang]; if (!tbl) return
+  const c = cotTienDe(tang)
+  const { error } = await supabase.from(tbl).delete().eq(c.nut, nut).eq(c.td, tienDe)
   if (error) throw error
 }
 
@@ -449,8 +570,10 @@ export function parseVariantsJson(text: string): CauNoiDung[] {
   try { obj = lenientJsonParse(t) } catch (e: any) { throw new Error('JSON không hợp lệ: ' + e.message) }
   return (Array.isArray(obj.variants) ? obj.variants : []).filter((v: any) => v?.de_bai).map(normCau)
 }
+// maCum: cụm mà bài gốc thuộc về (người chọn lúc nhập). Bộ clone sinh ra THỪA KẾ y hệt cụm đó —
+// clone luôn tương đương với gốc của nó nên không có lý do để nằm cụm khác.
 export async function saveCloneBatch(a: {
-  dangChinh: string; loaiCau: string; goc: CauNoiDung; variants: CauNoiDung[]
+  dangChinh: string; loaiCau: string; goc: CauNoiDung; variants: CauNoiDung[]; maCum?: string | null
 }, tbl = 'dai_cau_hoi'): Promise<{ goc: string; soClone: number }> {
   const start = await nextCauSeq(a.dangChinh, tbl)
   const g = await createCau({
@@ -459,6 +582,7 @@ export async function saveCloneBatch(a: {
     noi_dung: a.goc.noi_dung, dap_an: a.goc.dap_an, loi_giai: a.goc.loi_giai, lua_chon: a.goc.lua_chon ?? null,
     anh_de: a.goc.anh_de ?? null, anh_dap_an: a.goc.anh_dap_an ?? null, nguon: 'le',
     nguon_giai: a.goc.nguon_giai ?? 'nguoi', // gốc = người ra đề (tin)
+    ma_cum: a.maCum ?? null,
   }, tbl)
   if (a.variants.length) {
     const rows = a.variants.map((v, i) => ({
@@ -467,6 +591,7 @@ export async function saveCloneBatch(a: {
       noi_dung: v.noi_dung, dap_an: v.dap_an, loi_giai: v.loi_giai, lua_chon: v.lua_chon ?? null,
       anh_de: v.anh_de ?? null, anh_dap_an: v.anh_dap_an ?? null,
       nguon: 'clone', nguon_giai: 'ai', parent_ma_cau: g.ma_cau, clone_method: 'manual_gemini', // biến thể = AI giải
+      ma_cum: a.maCum ?? null,
     }))
     const { error } = await supabase.from(tbl).insert(rows)
     if (error) throw error

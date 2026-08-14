@@ -1,18 +1,22 @@
-// made.ts — sinh 3 MÃ ĐỀ (đề gốc + đề 2 & 3). Mỗi câu GỐC → biến thể KHÁC CÙNG HỌ CÂU GỐC (parent_ma_cau
+// made.ts — sinh 3 MÃ ĐỀ (đề gốc + đề 2 & 3). Mỗi câu GỐC → biến thể KHÁC CÙNG CỤM BÀI (`cumKey`
 // chung) + cùng FORM in. Neo theo CÂU GỐC (key = ma_cau gốc, KHÔNG theo vị trí). DÙNG CHUNG ET (1 lớp+ngày)
 // và MT (mẫu nhiều phần) — TÁCH khỏi ETScreen để MT tái dùng NGUYÊN LOGIC. Lệch một bản là 3 đề đụng câu nhau (bug ÂM THẦM).
 import { etFormOf, canBeETForm, type CauHinh, type ETForm } from './tailieu'
-import { listCauByDang, type CauHoi } from './kho/api'
+import { cumKey, listCauByDang, type CauHoi } from './kho/api'
 
 export type BaseItem = { maDang: string; maCau: string }
 
 // Sinh đề 2/3 PURE: base = câu GỐC (đúng thứ tự), baseCh = cấu hình hiện tại. Trả cau_hinh mới (etMaDe +
 // etFormByCau bổ sung form cho câu biến thể) + toàn bộ câu đã nạp (để cache/preview). cauCache = câu đã
 // có sẵn ở màn soạn (fallback khi pool chưa chứa câu gốc).
-// ⭐ BẤT BIẾN (Thùy): mọi câu ở MỌI mã đề của 1 vị trí PHẢI CÙNG HỌ CÂU GỐC (parent_ma_cau chung) với câu
-// gốc — tức biến thể SONG SONG, KHÔNG chỉ tình cờ cùng dạng. Ưu tiên biến thể KHÁC (chưa dùng) cùng họ+form;
-// nếu họ KHÔNG đủ biến thể (vd chỉ có gốc + 1 clone) thì CHO PHÉP TRÙNG TRONG HỌ — dùng lại câu gốc / biến
-// thể cùng họ, KHÔNG nhảy sang bài gốc khác, KHÔNG để TRỐNG. Nhờ vậy picks luôn được lấp (không còn null).
+// ⭐ BẤT BIẾN (Thùy): mọi câu ở MỌI mã đề của 1 vị trí PHẢI CÙNG **CỤM BÀI** (`cumKey` chung) với câu gốc
+// — tức bài THAY THẾ ĐƯỢC, KHÔNG chỉ tình cờ cùng dạng. Ưu tiên bài KHÁC (chưa dùng) cùng cụm+form; nếu
+// cụm KHÔNG đủ bài (vd chỉ có gốc + 1 clone) thì CHO PHÉP TRÙNG TRONG CỤM — dùng lại câu gốc / bài cùng
+// cụm, KHÔNG nhảy sang cụm khác, KHÔNG để TRỐNG. Nhờ vậy picks luôn được lấp (không còn null).
+// ⚠ ĐỔI 13/08 (spec-cum-bai.md): trước đây bất biến này là "cùng `parent_ma_cau`" — tức chỉ gộp được
+// một chuỗi gốc-clone. Giờ 1 cụm chứa ĐƯỢC NHIỀU CÂU GỐC (người xác nhận tương đương), nên vị trí của
+// câu gốc A hoàn toàn có thể rút clone của gốc B nếu A và B đã được gom chung cụm — đó là chủ ý.
+// Câu CHƯA phân cụm thì `cumKey` tự lùi về chuỗi gốc-clone ⇒ hành vi y hệt trước khi có cụm.
 export async function buildMaDe(
   base: BaseItem[],
   baseCh: CauHinh,
@@ -26,14 +30,14 @@ export async function buildMaDe(
   const etFormByCau: Record<string, string> = { ...(baseCh.etFormByCau ?? {}) }
   const etMaDe: Record<string, (string | null)[]> = {}
   const used = new Set<string>(base.map((b) => b.maCau))   // ưu tiên: đề 2/3 khác MỌI câu gốc (khi còn đủ câu)
-  const rootOf = (c: CauHoi) => c.parent_ma_cau ?? c.ma_cau   // câu GỐC của họ (câu gốc tự trỏ chính nó)
+  const rootOf = (c: CauHoi) => cumKey(c)   // CỤM BÀI của câu (chưa phân cụm → chuỗi gốc-clone → chính nó)
   for (const b of base) {
     const baseCau = byMa.get(b.maCau) ?? cauCache[b.maCau]
     const form: ETForm = baseCau ? etFormOf(baseCau, baseCh) : 'tra_loi_ngan'
-    const root = baseCau ? rootOf(baseCau) : b.maCau           // họ câu gốc của vị trí này
-    // Ứng viên = câu CÙNG HỌ CÂU GỐC (parent_ma_cau chung) + in được cùng form. KHÔNG lấy sang bài gốc
-    // KHÁC dù cùng dạng — đó chính là chỗ gây "loạn": biến thể phải song song với câu gốc (cùng cấu trúc),
-    // không chỉ tình cờ cùng dạng. Dạng vẫn tự khớp vì biến thể luôn cùng dang_chinh với gốc.
+    const root = baseCau ? rootOf(baseCau) : b.maCau           // cụm bài của vị trí này
+    // Ứng viên = câu CÙNG CỤM BÀI + in được cùng form. KHÔNG lấy sang cụm KHÁC dù cùng dạng — đó chính
+    // là chỗ gây "loạn": bài thay thế phải TƯƠNG ĐƯƠNG câu gốc, không chỉ tình cờ cùng dạng.
+    // Dạng vẫn tự khớp vì cụm nằm gọn trong 1 dạng.
     const candidates = (pools[b.maDang] ?? []).filter((c) => rootOf(c) === root && canBeETForm(c, form))
     const picks: (string | null)[] = []
     for (let v = 0; v < 2; v++) {

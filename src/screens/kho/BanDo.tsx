@@ -335,7 +335,7 @@ export default function BanDo({ config, khoi }: { config: BranchConfig; khoi: st
           onSaved={async () => { setLtT2Modal(null); await reload() }} />
       )}
       {hub && (
-        <DangHub d={hub} config={config} chuan={config.chuan}
+        <DangHub d={hub} config={config} chuan={config.chuan} allDang={rows}
           onClose={() => setHub(null)}
           onEditDang={() => { const h = hub; setHub(null); setModal({ editing: h }) }}
           onDeleteDang={() => { const h = hub; setHub(null); onDelete(h) }}
