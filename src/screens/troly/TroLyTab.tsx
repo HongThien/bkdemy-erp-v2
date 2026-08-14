@@ -429,6 +429,16 @@ function KhoiBu({ d, onDen }: { d: AnhChupBu | null; onDen: () => void }) {
           <ul className="mt-1.5 list-disc space-y-0.5 pl-4 text-slate-400">
             {d.khongBiet.map((k, i) => <li key={i}>{k}</li>)}
             {d.buoiRong > 0 && <li>{d.buoiRong} buổi bù không có HS nào — nhiều khả năng là rác, đã bỏ khỏi mục ①.</li>}
+            {/* Sự thật lịch sử: nêu một lần ở đây cho tra được, KHÔNG đẩy lên nhận định khi
+                nó đã ngừng xảy ra — nhắc việc không còn xảy ra là cách nhanh nhất để người
+                dùng học rằng danh sách này không đáng đọc. */}
+            {d.dongKhong.coDe > 0 && (
+              <li>
+                {d.dongKhong.coDe} buổi bù từng bị chốt xong mà không chấm dòng nào (dữ liệu đo mất luôn)
+                {d.dongKhong.ganDay === 0 ? ' — đã ngừng xảy ra, gần đây không còn ca nào' : ` — CÒN đang xảy ra: ${d.dongKhong.ganDay} ca trong 14 ngày qua`}.
+                {d.dongKhong.khongDe > 0 && ` Ngoài ra ${d.dongKhong.khongDe} buổi đóng mà không chấm vì buổi mẹ chưa soạn ET — cái này bình thường.`}
+              </li>
+            )}
           </ul>
         )}
       </div>
