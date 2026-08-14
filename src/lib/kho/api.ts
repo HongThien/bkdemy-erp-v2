@@ -444,11 +444,15 @@ const stripEmbeddedOpts = (s: string): string => {
   const t = s.replace(/\n\s*A\s*[.):][\s\S]*$/, '').trimEnd()
   return t.trim() ? t : s
 }
+// Có nhà (đã thấy ở DeepSeek, KHÔNG phải lần nào cũng) escape lố `\n` thành HAI KÝ TỰ backslash+n
+// ⇒ parse xong ra chữ "\n" nằm giữa lời giải thay vì xuống dòng, in ra thấy rác. Chỉ sửa khi chuỗi
+// KHÔNG có xuống dòng thật (có rồi thì `\n` còn lại nhiều khả năng là LaTeX, đừng đụng vào).
+const suaXuongDongLo = (s: string) => (s.includes('\n') ? s : s.replace(/\\n/g, '\n'))
 const normCau = (x: any): CauNoiDung => {
   const lua_chon = Array.isArray(x.lua_chon) && x.lua_chon.length ? x.lua_chon.map((o: any) => String(o)) : null
-  let noi_dung = stripYCon(stripCauLabel(String(x.de_bai ?? x.noi_dung ?? '').trim()))
+  let noi_dung = suaXuongDongLo(stripYCon(stripCauLabel(String(x.de_bai ?? x.noi_dung ?? '').trim())))
   if (lua_chon) noi_dung = stripEmbeddedOpts(noi_dung) // câu trắc nghiệm: đề KHÔNG chứa 4 đáp án
-  const loi_giai = x.loi_giai != null && String(x.loi_giai).trim() ? stripYCon(String(x.loi_giai).trim()) : null
+  const loi_giai = x.loi_giai != null && String(x.loi_giai).trim() ? suaXuongDongLo(stripYCon(String(x.loi_giai).trim())) : null
   return {
     noi_dung,
     dap_an: x.dap_an != null && String(x.dap_an).trim() ? String(x.dap_an).trim() : null,
@@ -784,8 +788,9 @@ async function callDeepSeekJson(prompt: string, model: string): Promise<string> 
 // `dangerouslyAllowBrowser` = thừa nhận key nằm ở client (xem cảnh báo đầu mục).
 // Suy luận: để adaptive — clone toán là GENERATION, cần nghĩ; Opus 5 mặc định đã bật.
 async function callClaudeJson(prompt: string, model: string): Promise<string> {
-  const key = import.meta.env.VITE_ANTHROPIC_KEY as string | undefined
-  if (!key) throw new Error('Chưa có VITE_ANTHROPIC_KEY trong .env.local → chọn nhà khác hoặc thêm key.')
+  // Nhận cả 2 tên biến — .env.local đang dùng VITE_ANTHROPIC_API_KEY.
+  const key = (import.meta.env.VITE_ANTHROPIC_API_KEY ?? import.meta.env.VITE_ANTHROPIC_KEY) as string | undefined
+  if (!key) throw new Error('Chưa có VITE_ANTHROPIC_API_KEY trong .env.local → chọn nhà khác hoặc thêm key.')
   const { default: Anthropic } = await import('@anthropic-ai/sdk')
   const client = new Anthropic({ apiKey: key, dangerouslyAllowBrowser: true })
   const res = await client.messages.create({
@@ -1024,7 +1029,7 @@ export function parseKhoIngestJson(text: string): KhoIngestCau[] {
     let loai = String(x.loai_cau ?? 'tu_luan').trim() as LoaiCau
     if (!LOAI_HOP_LE.has(loai)) loai = Array.isArray(x.menh_de) && x.menh_de.length ? 'dung_sai' : Array.isArray(x.lua_chon) && x.lua_chon.length ? 'trac_nghiem' : 'tu_luan'
     const lua_chon = Array.isArray(x.lua_chon) && x.lua_chon.length ? x.lua_chon.map(String) : null
-    let noi_dung = stripYCon(stripCauLabel(String(x.de_bai ?? x.noi_dung ?? '').trim()))
+    let noi_dung = suaXuongDongLo(stripYCon(stripCauLabel(String(x.de_bai ?? x.noi_dung ?? '').trim())))
     if (loai === 'trac_nghiem' && lua_chon) noi_dung = stripEmbeddedOpts(noi_dung)
     const menh_de = loai === 'dung_sai' && Array.isArray(x.menh_de)
       ? x.menh_de.slice(0, 4).map((m: any): KhoIngestMenhDe => ({ noi_dung: String(m.noi_dung ?? '').trim(), dap_an: String(m.dap_an ?? 'D').trim().toUpperCase().startsWith('S') ? 'S' : 'D', loi_giai: String(m.loi_giai ?? '').trim() || null })).filter((m: KhoIngestMenhDe) => m.noi_dung)
@@ -1122,7 +1127,7 @@ export function parseDeThiIngestJson(text: string): { meta: Partial<DeThiIngestM
     // lời giải vào cuối mảng lua_chon (thành "phương án thứ 5") — .slice(0,4) chặn tận gốc, giống cách
     // menh_de đúng/sai đã cắt cứng ở đây từ trước.
     const lua_chon = Array.isArray(x.lua_chon) && x.lua_chon.length ? x.lua_chon.slice(0, 4).map(String) : null
-    let noi_dung = stripYCon(stripCauLabel(String(x.de_bai ?? x.noi_dung ?? '').trim()))
+    let noi_dung = suaXuongDongLo(stripYCon(stripCauLabel(String(x.de_bai ?? x.noi_dung ?? '').trim())))
     if (loai === 'trac_nghiem' && lua_chon) noi_dung = stripEmbeddedOpts(noi_dung)
     const menh_de = loai === 'dung_sai' && Array.isArray(x.menh_de)
       ? x.menh_de.slice(0, 4).map((m: any): KhoIngestMenhDe => ({ noi_dung: String(m.noi_dung ?? '').trim(), dap_an: String(m.dap_an ?? 'D').trim().toUpperCase().startsWith('S') ? 'S' : 'D', loi_giai: String(m.loi_giai ?? '').trim() || null })).filter((m: KhoIngestMenhDe) => m.noi_dung)
