@@ -4929,3 +4929,58 @@ liệu vẫn chung 1 DB Supabase): mở Sửa → gõ "TEST góc D = 65 độ" �
 thêm) → preview live ghép đúng "Cho tứ giác ABCD; TEST góc D = 65 độ" → Lưu → card node + panel detail
 + nhãn đều đổi đúng ("ĐỀ — GIẢ THIẾT (MÔ HÌNH + RIÊNG)") → mở lại Sửa, xoá trắng ô riêng → Lưu →
 xác nhận textarea rỗng lại (dọn sạch dữ liệu test, không để lại vết trên BT.025 thật).
+
+---
+
+## 2026-08-14 — ⭐⭐ IN GIÁO TRÌNH: trang trắng / mất & lặp nội dung / dạng mới nhảy trang (3 vòng sai rồi mới ra gốc)
+
+**Thùy báo (3 lần, mỗi lần lộ 1 lớp):** (1) GT 8S1 14/08 "cách 1 trang" · (2) "thay vì lỗi trang 2 giờ
+lỗi mẹ trang 1" · (3) "dạng 1 mới hết nửa trang 2 thì dạng 2 nhảy sang trang mới".
+
+**Bối cảnh vì sao TRƯỚC KHÔNG BỊ:** masthead giáo trình (`.gtbk-mh`) mới thêm **08-08** (commit
+`3f771d8` redesign header BK). Nó chiếm ~198px đầu buổi → đẩy card đầu vào thế **buộc phải xé qua 2
+trang** — chỗ xé đó mới là chỗ hỏng. Bỏ masthead đi thì hết bug ngay (7 trang sạch) → chứng minh
+masthead chỉ là **điều kiện kích hoạt**, không phải thủ phạm.
+
+**3 lần vá SAI (ghi lại để đừng đạp lại):**
+1. `16c771d` bỏ `break-after:avoid` ở masthead — đoán "avoid chồng avoid". Sai, không đổi gì.
+2. `bef992b` ép `.gtbk-mh{break-after:page}` (masthead chiếm riêng 1 trang) — HẾT trang trắng thật,
+   nhưng chỉ **đổi chỗ lãng phí**: trang 1 gần trống. Thùy bác đúng: "lỗi mẹ trang 1 rồi".
+3. `2b2662b` bỏ `<div>` bọc nhóm card → `<Fragment>` — **đúng 1 phần** (hết trắng + hết lặp), nhưng
+   tôi **báo xong ẩu**: dữ liệu ngay trước mắt (trang 2 chỉ 292 ký tự) đã cho thấy còn lỗi mà không nhận ra.
+
+**Đã tự loại trừ bằng render THẬT (sửa → dựng lại → xem, không đoán CSS):** `overflow:hidden` ·
+`min-height` · pseudo trang trí `:after` · `break-inside/after` ở `.gtbk-mh` + `.gtbk-card-head` +
+`.pv-box-label` · nền/viền/bo góc `.pv-box-lt` · chờ `document.fonts.ready` — **bỏ từng cái đều KHÔNG
+hết bug**. Ép `.gtbk-card{break-inside:avoid}` hoặc `.pv-box-lt{break-inside:avoid}` còn **TỆ HƠN**
+(mất hẳn nội dung / 11 trang rải rác trang gần trống).
+
+**GỐC THẬT (đo được):** paged.js ngắt **giữa 2 khối anh-em ruột** thì đúng; ngắt **vào trong lòng 1
+khối, sâu ≥2 tầng** thì **bỏ phí nốt phần trang còn lại** (phần tử kế tiếp nhảy trang mới) — và ở ca
+nặng thì dựng dở → trắng 1 trang → dựng lại từ đầu (lặp/mất nội dung thật). Thẻ `<div>` bọc thừa cũng
+tính là 1 tầng.
+
+**FIX CHỐT (`a30bfe8`):**
+- `.pv-blk{break-inside:avoid}` + `LyThuyetBody` **CHẺ khối dài thành nhiều khối ngắn** (theo dòng,
+  khối ≤ `LT_BLK_MAX`=3 dòng giữ nguyên) → cấm xé trong khối nhưng vẫn đủ chỗ ngắt hợp lệ.
+  `.pv-blk-keep{break-after:avoid}` cho dòng đầu (nhãn "Ví dụ N." không mồ côi cuối trang).
+- `.pv-math span.katex-text{display:inline}` (scope `span`, không để trần `.katex-text`) — MathText trả
+  `<div>` chứa `.mline` BLOCK khi nhiều dòng; ép inline lên div = block-trong-inline → đo sai (8→7 trang).
+- Giữ `<Fragment>` của `2b2662b`; **GỠ** `break-after:page` của `bef992b` (không còn cần).
+
+**Đo GT 8S1 14/08:** trước 8 trang (99/**10**/97/95/85/72/82/34%) → sau **6 trang** (96/91/96/85/96/85%).
+Trang 2 giờ chứa cuối dạng 1 + TRỌN dạng 2 + đầu dạng 3. Không mất/lặp (đối chiếu text từng trang +
+quét mã dạng trùng). **GT 7S2 · BTVN · ET · MT đo lại GIỐNG HỆT baseline** (trang trắng của MT là chừa
+mặt lẻ in 2 mặt, có sẵn từ trước).
+
+**CÔNG CỤ (đồ nghề nội bộ, không phải cho Thùy):** script Node dựng headless qua **đúng pipeline
+`worker/index.mjs`** (Puppeteer + serve `dist/` + chờ `window.__pvState==='ready'`) → PDF trong ~4s,
+**không treo** — trong khi bấm 🖨 In trong app / browser-tool của phiên đều treo (tab không compositing,
+paged.js đo layout chờ vô hạn; watchdog 30s có sẵn từ DEVLOG 07-11 là để cứu đúng ca này). Kèm đo
+**% diện tích từng trang thực dùng** + quét mã dạng trùng → bắt được "trang chỉ dùng 10%" mà nhìn ảnh
+không thấy. Script để TẠM rồi xoá (Thùy chốt: "cái đấy m dùng chứ t dùng làm gì"). **Quy ước từ nay:
+sửa lỗi in xong thì GỬI THẲNG FILE PDF cho Thùy xem, không bắt chạy lệnh / không báo cáo %.**
+
+**SỰ CỐ ĐÃ GÂY:** chạy `taskkill` nhắm server tạm của mình (cổng 5199) nhưng kill nhầm **PID cổng 5183
+= dev server của phiên khác/của Thùy**. Bài học: `taskkill` phải đối chiếu PID↔cổng NGAY TRƯỚC khi kill,
+đừng tin PID nhớ từ lệnh trước.
