@@ -976,6 +976,15 @@ const GT_BK_CSS = `
 .gtbk-pill{flex:none;font-family:${GT_SANS};font-size:8pt;color:#0e806f;font-weight:900;letter-spacing:.04em;text-transform:uppercase;background:#e8f8f3;border:1px solid #c9eee3;border-radius:99px;padding:.9mm 2.2mm;white-space:nowrap;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .gtbk-card-body{padding:2.4mm 3.4mm 2.8mm}
 .gtbk-card-body .pv-cau:first-child{margin-top:2px}
+/* ⭐ .pv-cau mặc định break-inside:avoid (PrintView.tsx) — ET/BTVN/MT đã override break-inside:auto
+   riêng (.pv-et/.pv-btvn/.pv-mt .pv-cau) NHƯNG giáo trình (card .gtbk-card-body) thì CHƯA, nên vẫn dính
+   đúng lỗi cũ: câu không đủ chỗ cuối trang bị đẩy nguyên khối sang trang sau → bỏ trống cuối trang, và
+   paged.js từng ĐÁNH RƠI LUÔN câu đó (không phải chỉ đẩy trang) khi avoid + không đủ chỗ — Thùy báo ảnh
+   "GT 7S2 14/08" mất hẳn Câu 1 của dạng T107010506 (chỉ còn Câu 2 ở trang sau, Câu 1 biến mất). Xem
+   DEVLOG 07-11 — cùng cơ chế "khối atomic quá cao" đã sinh bug này cho ET/BTVN/MT.
+   .pv-math:first-child break-after:avoid vẫn giữ (không mồ côi "Câu N." đứng 1 mình cuối trang, đề rơi sau). */
+.gtbk-card-body .pv-cau{break-inside:auto}
+.gtbk-card-body .pv-cau .pv-math:first-child{break-after:avoid}
 `
 
 // @page + dải gradient/footer cho giáo trình BK. `sc` = selector container (vd '.pv-scope-7 ') để 2 pseudo
