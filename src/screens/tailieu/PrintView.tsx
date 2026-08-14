@@ -248,23 +248,34 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly,
       setRenderErr('Dựng trang quá lâu (>30s) — đóng rồi thử lại.'); setRendering(false)
       onRenderErr?.('Dựng trang quá lâu (>30s)')
     }, 30000)
-    new Previewer().preview(html, [cssUrl], container)
-      .then((flow: { total?: number }) => {
-        if (settled) return
-        settled = true; clearTimeout(watchdog)
-        if (cancelled) { container.style.display = 'none'; return } // stale (deps đã đổi) → ẩn, không đụng state
-        Array.from(dst.children).forEach((c) => { if (c !== container) (c as HTMLElement).style.display = 'none' })
-        activeContainerRef.current = container
-        setPages(flow?.total ?? 0); setRendering(false)
-        onReady?.()
-      })
-      .catch((e: unknown) => {
-        if (settled) return
-        settled = true; clearTimeout(watchdog)
-        container.style.display = 'none'
-        if (!cancelled) { setRenderErr(e instanceof Error ? e.message : String(e)); setRendering(false); onRenderErr?.(e instanceof Error ? e.message : String(e)) }
-      })
-      .finally(() => URL.revokeObjectURL(cssUrl))
+    // ⭐ Chờ FONT (KaTeX + Times + Noto Sans) sẵn sàng TRƯỚC khi paged.js đo layout — thiếu bước này,
+    // paged.js đo chiều cao từng khối bằng font FALLBACK (chưa tải xong), rồi font thật swap vào SAU
+    // (FOUT) làm nội dung đổi chiều cao trong khi trang đã chốt xong theo số đo cũ → 1 khối bị đo/dựng
+    // HAI LẦN LỆCH NHAU, sinh đúng bug Thùy báo (GT 8S1 14/08): card đầu buổi render DỞ ở trang 1, trang
+    // 2 TRẮNG HOÀN TOÀN, rồi render LẠI TỪ ĐẦU y hệt ở trang 3. Đã có sẵn cho nhánh html2canvas
+    // (uploadPagesAsLink, PrintView.tsx ~99) nhưng CHƯA áp cho Previewer chính — đây mới là đường
+    // NGƯỜI DÙNG THẤY khi bấm 🖨 In (nhánh kia chỉ chạy khi bấm 🔗 Lấy link).
+    ;(async () => {
+      try { await (document as Document & { fonts?: { ready?: Promise<unknown> } }).fonts?.ready } catch { /* */ }
+      if (settled || cancelled) return
+      new Previewer().preview(html, [cssUrl], container)
+        .then((flow: { total?: number }) => {
+          if (settled) return
+          settled = true; clearTimeout(watchdog)
+          if (cancelled) { container.style.display = 'none'; return } // stale (deps đã đổi) → ẩn, không đụng state
+          Array.from(dst.children).forEach((c) => { if (c !== container) (c as HTMLElement).style.display = 'none' })
+          activeContainerRef.current = container
+          setPages(flow?.total ?? 0); setRendering(false)
+          onReady?.()
+        })
+        .catch((e: unknown) => {
+          if (settled) return
+          settled = true; clearTimeout(watchdog)
+          container.style.display = 'none'
+          if (!cancelled) { setRenderErr(e instanceof Error ? e.message : String(e)); setRendering(false); onRenderErr?.(e instanceof Error ? e.message : String(e)) }
+        })
+        .finally(() => URL.revokeObjectURL(cssUrl))
+    })()
     return () => { cancelled = true; clearTimeout(watchdog) }
   }, [full, gv, scope, lopTen, onlyBuoiId, perHS, roster, ngayNop])
 
@@ -944,13 +955,19 @@ const GT_SANS = "'Noto Sans','Segoe UI',Arial,sans-serif"
 const GT_GRAD = 'linear-gradient(90deg,#1997d4 0%,#18a889 34%,#f0a63b 66%,#e83483 100%)'
 const GT_BK_CSS = `
 /* Masthead buổi (đầu mỗi buổi): khung gradient bo góc + logo thật + pill + tiêu đề + Lớp/Ngày + huy hiệu tròn. */
-/* KHÔNG break-after:avoid (đã bỏ — Thùy báo GT 8S1 "cách 1 trang": masthead break-inside:avoid + card
-   đầu tiên break-after:avoid CHỒNG lên nhau ngay đầu buổi, đủ cao là paged.js đẩy cả 2 sang trang sau —
-   rồi tự nó vẫn không vừa nên chèn thêm 1 trang trắng "dọn chỗ" trước khi render lại được. Cùng cơ chế
-   avoid-chồng-avoid đã gây bug mất câu ở .pv-cau (xem comment .gtbk-card-body .pv-cau bên dưới) — chỉ khác
-   layer. Bỏ break-after ở masthead, GIỮ break-inside (masthead tự nó không bị xé ngang) là đủ; card đầu
-   tiên có thể rơi xuống trang sau BÌNH THƯỜNG (flow tự nhiên) thay vì bị ép dính chặt vào masthead. */
-.gtbk-mh{position:relative;overflow:hidden;margin:2mm 0 5mm;min-height:40mm;padding:5mm 6mm;border:1px solid #dbe7f4;border-radius:5mm;background:linear-gradient(112deg,#f5fbff 0%,#f8fbff 42%,#fff7fb 100%);break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+/* ⭐ break-after:page BẮT BUỘC (Thùy báo GT 8S1 14/08 "cách 1 trang" — verify bằng render thật, không phải
+   đoán CSS): khi card đầu buổi ĐỦ CAO để "có thể vừa, có thể không" lọt nốt phần còn lại của trang 1 sau
+   masthead, paged.js RA QUYẾT ĐỊNH SAI — dựng DỞ card đó trên trang 1 (cắt ngang, không phải do CSS ép),
+   để TRẮNG HẲN trang 2, rồi RENDER LẠI TỪ ĐẦU y hệt card đó (đủ, không cắt) ở trang 3. Đã tự tay loại trừ:
+   không phải overflow:hidden (bỏ thử vẫn y hệt), không phải font chưa tải xong (đã thêm chờ
+   document.fonts.ready, vẫn y hệt), không phải break-after:avoid chồng nhau ở .gtbk-card-head/.pv-box-label
+   (bỏ thử vẫn y hệt) — tức là bug THẬT của paged.js khi phải "ước lượng" 1 khối cao sát ranh giới trang,
+   không phải hệ quả 1 rule CSS cụ thể nào sửa được. Ép break-after:page xoá bỏ hẳn tình huống "ước lượng"
+   đó (masthead LUÔN đứng 1 mình 1 trang, card đầu LUÔN bắt đầu trang mới, không còn cửa nào để đoán sai).
+   Đổi lại tốn thêm ~1 trang mỗi buổi giáo trình — chấp nhận được (in 1 bản/buổi, không phải theo đầu HS).
+   ⚠ KHÔNG áp cho BTVN (in theo TỪNG HS, tốn giấy gấp đôi cả lớp) — xem override .gtbk-btvn-head .gtbk-mh
+   bên dưới, phiếu BTVN dính bug này thì phải quay lại đào tiếp, chưa có bằng chứng nên chưa đụng. */
+.gtbk-mh{position:relative;overflow:hidden;margin:2mm 0 5mm;min-height:40mm;padding:5mm 6mm;border:1px solid #dbe7f4;border-radius:5mm;background:linear-gradient(112deg,#f5fbff 0%,#f8fbff 42%,#fff7fb 100%);break-inside:avoid;break-after:page;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .gtbk-mh:before{content:"";position:absolute;left:0;top:0;bottom:0;width:2.3mm;background:linear-gradient(180deg,#1997d4 0%,#18a889 36%,#f0a63b 68%,#e83483 100%);-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .gtbk-mh:after{content:"";position:absolute;right:-10mm;top:-16mm;width:62mm;height:62mm;border-radius:50%;border:9mm solid rgba(25,151,212,.055);-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .gtbk-mh-grid{position:absolute;right:33mm;top:4mm;width:43mm;height:29mm;opacity:.16;background-image:radial-gradient(#53739c 1px,transparent 1px);background-size:5px 5px;transform:rotate(-5deg);z-index:0}
@@ -969,7 +986,11 @@ const GT_BK_CSS = `
 .gtbk-mh-nobadge .gtbk-mh-main{width:100%}
 /* Đầu phiếu BTVN = masthead + hàng ô Họ tên · Lớp · Điểm (tái dùng .pv-bkh-* trong BK_CSS). */
 .gtbk-btvn-head{break-inside:avoid;margin-bottom:12px}
-.gtbk-btvn-head .gtbk-mh{margin:2mm 0 3mm}
+/* BTVN: masthead trong .gtbk-btvn-head KHÔNG lấy break-after:page của .gtbk-mh (bên dưới) — phiếu BTVN in
+   RIÊNG TỪNG HS, ép thêm 1 trang chỉ để chứa masthead = NHÂN ĐÔI giấy cho MỌI HS trong lớp, phí quá nhiều
+   so với 1 buổi giáo trình in 1 bản. Bug trắng-trang/mất-nội-dung chỉ thấy ở giáo trình (masthead đứng 1
+   mình đầu buổi + card đầu ngay sau) — BTVN chưa báo, giữ hành vi cũ (dính liền) cho tới khi có bằng chứng. */
+.gtbk-btvn-head .gtbk-mh{margin:2mm 0 3mm;break-after:avoid}
 .gtbk-btvn-head .pv-bkh-student{margin:0}
 /* Card mỗi dạng — KHÔNG atomic (dạng dài phải CHẢY nối tiếp qua trang, không bỏ trống nhảy trang).
    ⭐ TUYỆT ĐỐI không overflow:hidden ở đây: paged.js coi box overflow:hidden là KHÔNG tách được → nguyên

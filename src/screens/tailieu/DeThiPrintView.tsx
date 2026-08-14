@@ -48,23 +48,30 @@ export default function DeThiPrintView({ id, onClose, headless, linkOnly, onFail
       setDlErr('Dựng trang quá lâu (>30s) — đóng rồi thử lại.'); setRendering(false)
       onRenderErr?.('Dựng trang quá lâu (>30s)')
     }, 30000)
-    new Previewer().preview(html, [cssUrl], container)
-      .then((flow: { total?: number }) => {
-        if (settled) return
-        settled = true; clearTimeout(watchdog)
-        if (cancelled) { container.style.display = 'none'; return }
-        Array.from(dst.children).forEach((c) => { if (c !== container) (c as HTMLElement).style.display = 'none' })
-        activeContainerRef.current = container
-        setPages(flow?.total ?? 0); setRendering(false)
-        onReady?.()
-      })
-      .catch((e: unknown) => {
-        if (settled) return
-        settled = true; clearTimeout(watchdog)
-        container.style.display = 'none'
-        if (!cancelled) { setDlErr('Dựng trang lỗi: ' + (e instanceof Error ? e.message : String(e))); setRendering(false); onRenderErr?.(e instanceof Error ? e.message : String(e)) }
-      })
-      .finally(() => URL.revokeObjectURL(cssUrl))
+    // Chờ font sẵn sàng TRƯỚC khi đo layout — xem PrintView.tsx (fix cùng đợt): thiếu bước này paged.js
+    // đo bằng font fallback rồi font thật swap vào sau làm 1 khối bị đo/dựng 2 lần lệch nhau → trang
+    // trắng + nội dung nhân đôi. Đồng bộ với PrintView.tsx/ETPrintView.tsx/MTPrintView.tsx (cùng lớp bug).
+    ;(async () => {
+      try { await (document as Document & { fonts?: { ready?: Promise<unknown> } }).fonts?.ready } catch { /* */ }
+      if (settled || cancelled) return
+      new Previewer().preview(html, [cssUrl], container)
+        .then((flow: { total?: number }) => {
+          if (settled) return
+          settled = true; clearTimeout(watchdog)
+          if (cancelled) { container.style.display = 'none'; return }
+          Array.from(dst.children).forEach((c) => { if (c !== container) (c as HTMLElement).style.display = 'none' })
+          activeContainerRef.current = container
+          setPages(flow?.total ?? 0); setRendering(false)
+          onReady?.()
+        })
+        .catch((e: unknown) => {
+          if (settled) return
+          settled = true; clearTimeout(watchdog)
+          container.style.display = 'none'
+          if (!cancelled) { setDlErr('Dựng trang lỗi: ' + (e instanceof Error ? e.message : String(e))); setRendering(false); onRenderErr?.(e instanceof Error ? e.message : String(e)) }
+        })
+        .finally(() => URL.revokeObjectURL(cssUrl))
+    })()
     return () => { cancelled = true; clearTimeout(watchdog) }
   }, [full, gv])
 
