@@ -527,10 +527,26 @@ function BuoiBlock({ buoi, gv, scope, lt = true, docTitle, ltCd, tenCd, linesByC
 }
 
 // Render nội dung lý thuyết thành các KHỐI (tách bởi dòng trống) — mỗi khối không bị xé ngang trang.
+// ⭐ Khối DÀI còn được chẻ tiếp theo TỪNG DÒNG. Lý do KHÔNG phải thẩm mỹ mà là né bug paged.js: ngắt trang
+// GIỮA hai .pv-blk (anh em ruột) thì chạy đúng, nhưng ngắt TRONG lòng 1 .pv-blk (sâu 2 tầng, giữa các
+// .mline) thì paged.js bỏ phí nốt phần trang còn lại — dạng kế tiếp nhảy hẳn trang mới (Thùy báo 8S1).
+// Vậy nên: cấm xé trong khối (.pv-blk break-inside:avoid) + chẻ khối dài thành nhiều khối NGẮN để vẫn có
+// đủ chỗ ngắt hợp lệ → trang vừa đầy vừa không phí. Khối ngắn (≤ LT_BLK_MAX dòng) giữ nguyên để 1 Ví dụ
+// ngắn không bị xé rời khỏi nhãn của nó. Dòng đầu khối dài dính dòng sau nhờ .pv-blk-keep (break-after:avoid).
+const LT_BLK_MAX = 3
 function LyThuyetBody({ text }: { text: string }) {
   const blocks = text.split(/\n[ \t]*\n/).map((b) => b.trim()).filter(Boolean)
-  if (blocks.length <= 1) return <div className="pv-math"><MathText>{text}</MathText></div>
-  return <>{blocks.map((b, i) => <div key={i} className="pv-blk pv-math"><MathText>{b}</MathText></div>)}</>
+  if (blocks.length <= 1 && blocks[0] && blocks[0].split('\n').length <= LT_BLK_MAX) {
+    return <div className="pv-math"><MathText>{text}</MathText></div>
+  }
+  const out: { html: string; keep: boolean }[] = []
+  for (const b of blocks) {
+    const lines = b.split('\n').map((l) => l.trim()).filter(Boolean)
+    if (lines.length <= LT_BLK_MAX) { out.push({ html: b, keep: false }); continue }
+    // chẻ theo dòng; dòng ĐẦU của khối giữ dính dòng kế (nhãn "Ví dụ N." không mồ côi cuối trang)
+    lines.forEach((l, i) => out.push({ html: l, keep: i === 0 }))
+  }
+  return <>{out.map((o, i) => <div key={i} className={`pv-blk pv-math${o.keep ? ' pv-blk-keep' : ''}`}><MathText>{o.html}</MathText></div>)}</>
 }
 
 function LtBlock({ title, lt, big }: { title: string; lt?: { noi_dung: string; file_url: string | null; ten_file: string | null } | null; big?: boolean }) {
@@ -944,12 +960,26 @@ const CONTENT_CSS = `
 .pv-bt-score-lbl{background:var(--pv-accent,#E91E8C);color:#fff;font-weight:800;font-size:12.5px;letter-spacing:2px;text-align:center;padding:4px 0}
 .pv-bt-score-box{flex:1;min-height:20mm}
 .pv-filelink{display:inline-block;margin-top:6px;color:#2D9CDB}
-.pv-math .katex-text{display:inline}
+/* span.katex-text CHỨ KHÔNG PHẢI .katex-text: MathText trả <span> khi 1 dòng, <div> (chứa các .mline
+   BLOCK) khi NHIỀU dòng. Ép display:inline lên CẢ <div> nhiều dòng tạo cảnh "block nằm trong inline" —
+   trình duyệt phải đẻ anonymous box, paged.js xé trang ngay chỗ đó thì đo sai → tài liệu phình thêm trang.
+   Giới hạn inline cho đúng <span> 1 dòng: GT 8S1 từ 8 trang xuống 7 mà nội dung không đổi. */
+.pv-math span.katex-text{display:inline}
 .pv-rh,.pv-rf{display:none}
 /* Ngắt trang: tiêu đề/nhãn KHÔNG mồ côi cuối trang; mỗi khối lý thuyết không bị xé ngang */
 .pv-h-lt,.pv-h-dang,.pv-h-btvn,.pv-h-bt,.pv-box-label{break-after:avoid}
 .pv-sec{break-inside:auto}
-.pv-blk{break-inside:auto;margin:0 0 5px}
+/* ⭐ break-inside:avoid (KHÔNG phải auto) — mỗi khối lý thuyết (1 Ví dụ, tách nhau bởi dòng trống) giữ
+   NGUYÊN VẸN 1 trang. Đây KHÔNG chỉ là thẩm mỹ: nếu để auto, paged.js xé được khối ra giữa trang, mà
+   HỄ xé trúng trong hộp lý thuyết (.pv-box-lt) thì phần trang CÒN LẠI bị bỏ phí — dạng kế tiếp KHÔNG chịu
+   xuống nằm cùng trang mà nhảy hẳn trang mới (Thùy báo: "dạng 1 mới hết nửa trang 2, dạng 2 nhảy trang").
+   Đo thật (GT 8S1): auto → trang 2 chỉ dùng 10%; avoid → trang 2 dùng 95%, dạng 1 và dạng 2 nằm CHUNG trang.
+   Đã loại trừ: không phải do nền/viền/bo góc .pv-box-lt (bỏ hết vẫn y hệt), không phải break rule ở
+   .gtbk-card-head — là giới hạn của paged.js khi nối tiếp phần bị xé. Đánh đổi: 1 Ví dụ dài quá chỗ trống
+   cuối trang sẽ dời NGUYÊN sang trang sau (trang trước hụt ~nửa) — chấp nhận, đổi lấy không phí cả trang. */
+.pv-blk{break-inside:avoid;margin:0 0 5px}
+/* dòng ĐẦU của khối bị chẻ (nhãn "Ví dụ N.") không được đứng lẻ cuối trang — xem LyThuyetBody */
+.pv-blk-keep{break-after:avoid}
 .pv-blk:last-child{margin-bottom:0}
 .pv-box-lt .mline{break-inside:avoid}
 `
