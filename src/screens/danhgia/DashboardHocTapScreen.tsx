@@ -11,6 +11,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import SearchSelect, { type Opt } from '../../components/SearchSelect'
 import { supabase } from '../../lib/supabase'
+import { maChuyenDeCua } from '../../lib/kho/api'
 import { listCandidatesLop, duyetLevel, getLevelLog, cuaSoHienTai, taoAiJob, getAiJob, listAiJobs, tienCuaLuot, MODEL_CHON, MODEL_MAC_DINH, type Candidate, type LevelLogRow, type AiJob } from '../../lib/danhgia'
 
 // ⚠ HAI THANG LEVEL KHÁC NGHĨA — KHÔNG dùng chung nhãn (spec §4.1 vs §4.2).
@@ -417,7 +418,7 @@ function ChiTietModal({ c, onDong, onXong }: { c: Candidate; onDong: () => void;
         <Khoi ten="Chi tiết dạng có thay đổi">
           {nhomDoi.size === 0 ? <p className="text-[12px] text-slate-400">Không dạng nào đổi mức giữa 2 cửa sổ.</p> : [...nhomDoi.entries()].map(([cd, ds]) => (
             <div key={cd} className="mb-3 last:mb-0">
-              <div className="mb-1 text-[13px] font-semibold text-slate-700">{ds[0].ma_dang.slice(0, 6)} <span className="font-normal text-slate-400">{cd}</span></div>
+              <div className="mb-1 text-[13px] font-semibold text-slate-700">{maChuyenDeCua(ds[0].ma_dang)} <span className="font-normal text-slate-400">{cd}</span></div>
               <table className="w-full text-[13px] tabular-nums">
                 <thead><tr className="text-left text-[11px] text-slate-400">
                   <th className="font-normal">Dạng</th><th className="w-[110px] font-normal">Trước</th><th className="w-[110px] font-normal">Hiện tại</th><th className="w-[60px] text-right font-normal">Delta</th>

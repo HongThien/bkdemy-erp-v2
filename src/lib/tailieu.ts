@@ -1,6 +1,6 @@
 // Data-layer "Làm tài liệu" (giáo trình…). Tài liệu = THAM CHIẾU vào kho; resolver kéo nội dung sống khi render.
 import { supabase } from './supabase'
-import { listCauByDang, listDaiMap, listKhtnMap, listHgtMap, type CauHoi, type MapRow } from './kho/api'
+import { cumKey, listCauByDang, listDaiMap, listKhtnMap, listHgtMap, type CauHoi, type MapRow } from './kho/api'
 
 const LIMIT = 10000
 
@@ -211,11 +211,14 @@ export async function cauUsage(maCaus: string[]): Promise<Map<string, number>> {
 // So sánh ưu tiên: ÍT DÙNG nhất trước, rồi câu GỐC ('le') trước clone.
 const cmpUsageLe = (u: Map<string, number>) => (a: CauHoi, b: CauHoi) =>
   (u.get(a.ma_cau) ?? 0) - (u.get(b.ma_cau) ?? 0) || (a.nguon === 'le' ? 0 : 1) - (b.nguon === 'le' ? 0 : 1)
-// "Nguồn bài" của 1 câu = câu GỐC nó bám vào (chính nó nếu là gốc 'le', hoặc parent_ma_cau nếu là clone AI).
-// 1 dạng có thể có NHIỀU nguồn (nhiều đề gốc khác nhau, mỗi gốc sinh ra N clone) — gộp phẳng theo loại_cau
-// rồi lấy N câu đầu (như cũ) sẽ dồn hết vào 1-2 nguồn có nhiều clone nhất. Round-robin qua nguồn thay vào đó
-// (Thùy chốt 07-11): mỗi nguồn góp 1 câu xoay vòng cho đến đủ N — không nguồn nào bị bỏ quên.
-const nguonCuaCau = (c: CauHoi): string => c.parent_ma_cau ?? c.ma_cau
+// "Nguồn bài" của 1 câu = CỤM BÀI của nó (`cumKey`: cụm người gán → chuỗi gốc-clone → chính nó).
+// 1 dạng có thể có NHIỀU cụm — gộp phẳng theo loại_cau rồi lấy N câu đầu (như cũ) sẽ dồn hết vào 1-2 cụm
+// nhiều bài nhất. Round-robin qua cụm thay vào đó (Thùy chốt 07-11): mỗi cụm góp 1 câu xoay vòng cho đến
+// đủ N — không cụm nào bị bỏ quên.
+// ⚠ ĐỔI 13/08 (spec-cum-bai.md): khoá trước là `parent_ma_cau ?? ma_cau` ⇒ HAI CÂU GỐC TƯƠNG ĐƯƠNG vẫn
+// bị coi là 2 nguồn khác nhau nên lọt CHUNG một tài liệu — lặp nội dung mà hệ không thấy. Gom cụm xong
+// là bịt lỗ đó. Đánh đổi: dạng ít cụm thì vòng lặp quay lại cụm cũ — đúng sự thật, kho chỉ có ngần ấy bài.
+const nguonCuaCau = (c: CauHoi): string => cumKey(c)
 function pickRoundRobinByNguon(pool: CauHoi[], n: number, u: Map<string, number>): CauHoi[] {
   const byNguon = new Map<string, CauHoi[]>()
   for (const c of pool) { const k = nguonCuaCau(c); (byNguon.get(k) ?? byNguon.set(k, []).get(k)!).push(c) }

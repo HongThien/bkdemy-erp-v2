@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import {
   listLopBac, groupMap, suggestT1Ma, suggestT2Ma, suggestLeafMa, uploadKhoFile, uploadKhoImage,
+  KHO_TIEN_TO, soThuTuCua,
   callGeminiJson, buildLyThuyetPrompt, parseLyThuyetJson, LYTHUYET_SCHEMA,
   callGeminiRich, buildTheoryIngestPrompt, parseTheoryIngest, THEORY_SCHEMA,
   type MapRow, type Tier1Node, type Tier2Node, type LopBac, type LyThuyet,
@@ -207,7 +208,7 @@ export default function BanDo({ config, khoi }: { config: BranchConfig; khoi: st
                       className="absolute right-[68px] top-[14px] z-10 flex h-7 w-7 items-center justify-center rounded-md text-slate-300 opacity-0 transition hover:bg-rose-50 hover:text-rose-600 group-hover:opacity-100">✕</button>
                     <div className="flex items-start gap-4">
                       <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-violet-500 text-lg font-bold text-white shadow-sm shadow-indigo-500/30">
-                        {node.t2Ma.slice(4)}
+                        {soThuTuCua(node.t2Ma, 4)}
                       </div>
                       <div className="min-w-0 flex-1 pt-0.5">
                         <div className="text-[17px] font-semibold leading-snug text-slate-800 pr-12">{node.t2Ten}</div>
@@ -335,7 +336,7 @@ export default function BanDo({ config, khoi }: { config: BranchConfig; khoi: st
           onSaved={async () => { setLtT2Modal(null); await reload() }} />
       )}
       {hub && (
-        <DangHub d={hub} config={config} chuan={config.chuan}
+        <DangHub d={hub} config={config} chuan={config.chuan} allDang={rows}
           onClose={() => setHub(null)}
           onEditDang={() => { const h = hub; setHub(null); setModal({ editing: h }) }}
           onDeleteDang={() => { const h = hub; setHub(null); onDelete(h) }}
@@ -690,7 +691,7 @@ function ThemNode({ config, khoi, tree, lopBac, prefill, onClose, onSaved }: {
   const [error, setError] = useState<string | null>(null)
 
   const pickedT1 = t1Mode === 'pick' ? tree.find((c) => c.t1Ma === t1Ma) ?? null : null
-  const t1Code = t1Mode === 'pick' ? t1Ma : suggestT1Ma(khoi, tree)
+  const t1Code = t1Mode === 'pick' ? t1Ma : suggestT1Ma(khoi, tree, KHO_TIEN_TO[config.key])
   const t1Ten = t1Mode === 'pick' ? pickedT1?.t1Ten ?? '' : t1TenNew
   const pickedT2 = t2Mode === 'pick' ? pickedT1?.tier2s.find((x) => x.t2Ma === t2Ma) ?? null : null
   const t2Code = t2Mode === 'pick' ? t2Ma : suggestT2Ma(t1Code, pickedT1)

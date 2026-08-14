@@ -4613,3 +4613,170 @@ Chỉ còn CHẶN duy nhất: **ai CHẤM bài test**.
   modal (Detail, Mẹ Detail, Tách task con cả 2 kiểu chia) không lỗi console, KHÔNG submit ghi đè data
   thật. Chưa test nhánh submit thật (nghiệm thu/huỷ/chuyển/lưu mẹ/tạo con) — cần CEO tự bấm thử hoặc
   dựng data `ZTEST_` riêng nếu muốn Claude tự chạy hết luồng ghi.
+
+---
+
+## 2026-08-14 — ⭐ CỤM BÀI (tầng dưới của Dạng) + TIỀN ĐỀ 2 tầng · nhánh `feat/cum-bai`
+
+**Vấn đề CEO nêu:** kho có 2 luồng vào (clone từ bài gốc · nhập tài liệu ngoài). Khái niệm "họ" không có
+object riêng, chỉ suy từ `parent_ma_cau ?? ma_cau` ⇒ bài nhập lẻ không có chỗ khai "tao tương đương bài
+kia", và **2 CÂU GỐC tương đương vẫn bị coi là 2 họ** nên mã đề không dám hoán đổi, tài liệu thì lấy cả
+hai vào một đề mà không thấy là lặp.
+
+**Phản biện đã chốt (sparring):**
+- Model KHÔNG sai — thiếu *thao tác gộp* + *chỗ cất lời xác nhận*. Không đập tầng.
+- Gốc/clone = trục NGUỒN GỐC; cụm = trục TƯƠNG ĐƯƠNG. **Hai cột song song**, cấm nhét "cùng cụm" vào
+  `parent_ma_cau` (nói dối về nguồn gốc).
+- Công bằng trong cụm: **team học thuật chịu** (CEO) → bỏ ý phân hạng "cụm chặt/gom tay" + cờ vàng.
+- Tên: nhánh Hình đã dùng "họ mô hình" với nghĩa NGƯỢC (cụm nối bằng tiền đề) ⇒ Đại/KHTN gọi **"Cụm bài"**,
+  Hình **giữ nguyên không sửa dòng nào**. Chữ "cụm" lấy từ chính miệng CEO.
+- Tiền đề: làm **cả 2 tầng** (dạng↔dạng, cụm↔cụm). RANH GIỚI: **KP đo vẫn là DẠNG** — tiền đề tầng cụm
+  chỉ dùng cho thứ tự dạy + builder, CẤM chui vào công thức mastery.
+- Phạm vi: **Đại + KHTN** (hgt cùng shape, thêm sau — hiện 0 câu lẻ). Gom **tay**, tên cụm người đặt.
+
+**Số liệu thật lúc làm:** Đại 12.256 câu / 9.6k clone / 2.893 "họ" / **1.587 câu lẻ rải trong 123/325 dạng
+(dạng nặng nhất 120 câu)** · KHTN 224/234 họ là câu lẻ · hgt 0 câu lẻ. → gán từng câu bằng dropdown là
+không dùng được ⇒ UI phải **chọn nhiều → gom**.
+
+**Đã làm:**
+- `spec-cum-bai.md` (spec đầy đủ) · migration `202608131918_cum_bai.sql`:
+  `dai_cum_bai`/`khtn_cum_bai` · cột `ma_cum` (nullable) · 4 bảng cạnh tiền đề · 8 hàm bao đóng/hậu duệ
+  (soi gương `hinh_mo_hinh_hau_due`) · RLS `la_thanh_vien()` · backfill · **guard bất biến tự rollback**.
+- `cumKey(c) = ma_cum ?? parent_ma_cau ?? ma_cau` (api.ts) → dùng ở `made.ts` (`rootOf`) và
+  `tailieu.ts` (`nguonCuaCau`). Sửa lại comment bất biến ở made.ts (trước ghi "cùng `parent_ma_cau`").
+- UI: `CumBaiTab.tsx` (danh sách cụm · toggle Gốc|Clone · rổ "Chưa phân cụm" · chọn nhiều → gom / thêm
+  vào cụm / gỡ / gộp cụm / đổi tên) · `TienDeBox.tsx` (dùng chung 2 tầng) · `DangHub` đổi bộ lọc
+  "Câu gốc" thành 2 tab **Cụm bài | Toàn bộ kho** + nút "🔗 Tiền đề dạng".
+
+**SAI & SỬA (đáng nhớ):**
+1. **Backfill bản đầu lọc `goc.xoa_at is null`** → bỏ sót **17 nhóm mồ côi** ở Đại (câu gốc đã vào kho rác
+   nhưng 78 clone còn sống). 78 câu tụt về "chưa phân cụm" ⇒ vỡ 17 khối thành 78 khối lẻ ⇒ mã đề mất
+   quyền hoán đổi giữa chúng. **Guard §7 bắt (2954 khối mới vs 2893 khối cũ) và rollback cả migration.**
+   → Sửa: gom theo **NHÓM khoá cũ** `coalesce(parent_ma_cau, ma_cau)` có ≥2 câu sống, không quan tâm gốc
+   còn sống hay không. *Bài học: gốc chết KHÔNG làm các clone hết tương đương với nhau.*
+   *Bài học 2: migration đổi cách lưu thì PHẢI có câu kiểm "phân hoạch mới ≡ phân hoạch cũ" ngay trong
+   transaction — nếu không, lệch này hỏng ÂM THẦM, chỉ lộ khi ai đó soi 3 mã đề của một buổi.*
+2. **`cumKey` để 3 tầng** (`ma_cum ?? parent_ma_cau ?? ma_cau`) chứ không 2: tầng giữa là lưới an toàn cho
+   clone sinh ra trong lúc code chưa deploy kịp gán `ma_cum`, và cho nhánh `hgt` (không có cột `ma_cum`
+   → `undefined` rơi xuống đúng hành vi cũ).
+3. Kho **đang chạy live** lúc migrate (12.161 → 12.256 câu trong lúc làm). Mọi số đo phải đọc lại tại thời
+   điểm chạy, đừng tin số của lượt query trước.
+
+**Kiểm:** `tsc --noEmit` sạch · `npm run build` OK · 11 phép thử vòng đời cụm + tiền đề chạy trong 1
+transaction rồi **ROLLBACK** (tạo/gán/gộp/xoá cụm · cascade cạnh tiền đề · CHECK tự-trỏ · hậu duệ &
+bao đóng · xoá cụm ⇒ câu về rổ không mất) — prod không còn dấu vết. **CHƯA E2E trên app** (cần CEO login).
+
+**Sau migrate:** Đại 1.279 cụm · 10.642 câu đã có cụm · **1.614 câu ở rổ chưa phân cụm (124 dạng)**.
+KHTN 10 cụm · 224 câu ở rổ. Đó là việc gom tay tồn đọng, không phải lỗi.
+
+## 2026-08-14 (tiếp) — Gỡ backfill cụm: CỤM LÀ THỦ CÔNG 100% · 3 tab · gán 2 chiều
+
+**CEO bắt lỗi:** *"T bảo cụm là thủ công cơ mà. Người dùng phải đặt tên cụm rồi mới gán các câu vào chứ,
+sao m lại đi phân cụm rồi"*. Đúng — và tệ hơn: **backfill đó THỪA**, do chính tao làm nó thành thừa.
+Lý do ban đầu backfill là giữ hành vi mã đề; nhưng giữa chừng tao đổi khoá thành
+`ma_cum ?? parent_ma_cau ?? ma_cau` — **tầng giữa đã tự giữ hành vi cũ**. Từ lúc thêm tầng đó, backfill
+chỉ còn tác dụng đẻ 1.279 cụm không tên không ai xin. Spec §2 cấm bịa cụm cho câu lẻ, rồi §6 lại bịa cho
+chuỗi clone → mâu thuẫn nội bộ mà tao không tự soi ra.
+
+→ **Bài học:** khi thêm một lớp fallback, phải quay lại hỏi *"cái gì vừa trở thành thừa?"*. Fallback mới
+âm thầm rút hết lý do tồn tại của bước trước đó mà không có lỗi nào báo.
+
+**Đã làm:**
+- `202608141314_go_backfill_cum.sql` — xoá cụm mang **vân tay backfill** (`ten is null` VÀ mọi câu trong
+  cụm cùng một khoá cũ) nên cụm do NGƯỜI tạo luôn sống sót; chạy lại vô hại. FK `on delete set null` tự
+  đưa câu về "chưa phân cụm". Kiểm sau xoá: 0 câu mồ côi cụm.
+  Trước khi xoá đã đo: 0 cụm có tên · 0 cụm gom thêm câu · 0 cạnh tiền đề ⇒ không mất công của ai.
+  Sau: **0 cụm cả Đại lẫn KHTN**, mọi câu về hàng đợi.
+- UI theo yêu cầu CEO: **3 tab** (Cụm bài · **Chưa phân cụm** · Toàn bộ kho) + **gán 2 CHIỀU**
+  (bài→cụm: dropdown trên từng dòng · cụm→bài: nút "＋ Thêm bài" mở picker có ô tìm) + nút
+  "＋ Cụm mới" tạo cụm RỖNG đặt tên trước.
+
+**⚠ VA CHẠM 2 PHIÊN (ghi để nhớ):** có phiên Claude khác làm song song **trong cùng working tree**
+(`tien_to_ma_theo_mon`: đổi mã dạng sang tiền tố T1/T2/T3/K). `npm run migrate` của phiên này **áp luôn
+migration đang treo của họ** — chạy OK, nhưng đó là áp hộ thứ mình không viết. May là migration của họ
+CÓ biết bảng cụm và sửa FK `dai_cum_bai`/`khtn_cum_bai`/`*_dang_tien_de` thành `on update cascade`, nên
+mã dạng đổi `09010201` → `T103010101` mà cụm không gãy.
+→ **Luật rút ra: trước khi `npm run migrate`, chạy `--status` xem có file treo của người khác không.**
+
+## 2026-08-14 (tiếp) — Tiền tố mã theo MÔN/NHÁNH: T1 Đại · T2 Hình · T3 Giải tích · K KHTN
+
+**CEO bắt lỗi:** *"mã dạng bài của KHTN và Toán trùng nhau. T tưởng đã bảo m phải fix rồi."* — đúng, và
+nghiêm trọng hơn tao tưởng lúc đầu.
+
+**Bug:** mã dạng là mã VỊ TRÍ thuần số (`khối2+chủđề2+chuyênđề2+dạng2`) nên MỌI kho sinh cùng một dải mã.
+Đo được trên DB thật: Đại∩KHTN **62** · Đại∩Hình **48** · KHTN∩Hình 9 · KHTN∩GT 7 · Đại∩GT 3 · Hình∩GT 1.
+Mã CÂU cũng trùng (Đại∩KHTN 4 · KHTN∩GT 22). Mà đo lường (`buoi_danh_gia_dang`, `gami_session_problems`,
+`bt_grades`…) lưu `ma_dang` là **text trần KHÔNG nhãn môn** ⇒ ô (HS × dạng) của 2 môn gộp âm thầm.
+
+**Đính chính quan trọng cho chính tao:** lúc đầu tao báo "1066 dòng đang trộn". SAI mức độ — 1066 là số
+dòng *mang mã nhập nhằng*, còn KHTN mới có ~22 dòng đo thật. Hỏng **chưa xảy ra diện rộng**, nhưng là
+súng đã lên đạn: lớp KHTN chạy thật là gộp ngay. Phải phân biệt "đã hỏng" vs "sẽ hỏng".
+
+**2 phát hiện chỉ lòi ra khi dò GIÁ TRỊ thay vì đọc tên cột / default:**
+1. **`hinh_ban_do` KHÔNG dùng `HD00001`** như default cột ghi — 0/87 dòng dùng nó, cả 87 là mã vị trí
+   8 số, và trùng Đại 48 mã. Tao đã suýt kết luận "kho Hình an toàn, để dành T2" từ đọc `schema.md`.
+   → **Default của cột không nói lên dữ liệu thật** (họ hàng với §2.1 "cột text không nói tập giá trị").
+2. Ngược lại, `ma_dang_hinh` **không được cột nào khác tham chiếu** (kiểm `information_schema`) — nhánh
+   Hình nối vào đo bằng `hinh_y_id` (uuid). Nên T2 phải bị LOẠI khỏi tập ứng viên khi backfill text trần;
+   để nó trong đó làm kẹt 563 dòng Đại vốn phân giải được.
+
+**Fix:** `202608141259_tien_to_ma_theo_mon.sql` — mỗi kho một tiền tố, mã tự mang danh tính môn/nhánh.
+Idempotent nhờ bất biến: mã CŨ luôn bắt đầu bằng CHỮ SỐ, mã MỚI luôn bằng CHỮ CÁI (`~ '^[0-9]'` làm guard).
+
+**Phân giải 30k dòng text trần — nhân chứng, không đoán:**
+- Nguyên tắc: mỗi nhân chứng chỉ **THU HẸP** tập ứng viên; chỉ kết luận khi còn ĐÚNG MỘT. Giao rỗng
+  (2 nhân chứng mâu thuẫn) ⇒ bỏ cả lượt, để nguyên.
+- Nhân chứng: ① `ma_cau` (Đại∩GT = 0 ⇒ sạch cho Đại↔Giải tích) ② mã chỉ có ở 1 kho ③ `lop.mon` /
+  `tai_lieu.mon`+`nhanh` ④ mốc thời gian — kho `hgt_` sinh **10/08/2026**, câu đầu 11/08 ⇒ dòng đo trước
+  10/08 KHÔNG THỂ là Giải tích.
+- 1044 dòng `mon = NULL` (buổi BÙ, `lop_id` null) phân giải qua `buoi_hoc_hs.bu_cho_buoi_id` → buổi gốc →
+  lớp. 100% ra Toán, không dòng nào phải đoán.
+
+**Bug tao tự tạo rồi tự sửa (đáng nhớ nhất):** bản đầu hàm phân giải **return sớm** ở nhân chứng mã câu —
+"ra 1 kho thì chốt, không thì bỏ cuộc". 103 dòng Hình giải tích rơi hết, vì mã câu của chúng trùng KHTN
+(`{K,T3}`) nên bị coi là "không kết luận được", trong khi chỉ cần giao với `mon='Toán'` là ra ngay `T3`.
+→ **Bài học: short-circuit từng nhân chứng ≠ giao các nhân chứng.** Cái đầu vứt thông tin, cái sau dùng hết.
+
+**Bẫy kỹ thuật đã cắn (ghi để khỏi cắn lại):**
+- Self-FK `parent_ma_cau` **không dùng được `ON UPDATE CASCADE`** khi đổi hàng loạt PK cùng bảng — cascade
+  sửa parent của dòng chưa tới lượt ⇒ vi phạm giữa chừng. Phải gỡ FK → đổi cả 2 cột trong MỘT câu → gắn lại.
+- Postgres **cấm `LATERAL` tham chiếu bảng đích của `UPDATE`**. Dùng `FROM (subquery đọc chính bảng đó)`.
+- Hàm phân giải tra bảng mapping có PK `(kho, loai, ma_cu)` ⇒ tra theo `(loai, ma_cu)` không dùng được PK
+  ⇒ seq scan 13k dòng × 30k lần = treo >2 phút. **Thêm index là bắt buộc, không phải tối ưu.**
+- 12/17 FK trỏ vào các bảng kho **thiếu `ON UPDATE CASCADE`** ⇒ phải nới TRƯỚC khi đổi PK.
+
+**Kết quả (dry-run rollback rồi verify lại trên DB sau khi áp — số khớp y hệt):**
+0 mã trùng giữa mọi cặp kho · 0 dòng còn mã cũ · 0 mồ côi · số dòng mọi bảng không đổi ·
+0 dòng khớp >1 kho. Phân bổ: `gami_session_problems` T1=8281 · T3=63 · K=8 · `tai_lieu_phan` T1=4664 ·
+T3=64 · K=12 · `bai_test_cau` T1=479 · K=14.
+
+**Code:** tiền tố dài KHÁC NHAU (K=1, T1/T2/T3=2) ⇒ **cấm cắt mã bằng chỉ số tuyệt đối**. Thêm
+`tachTienTo` / `maChuDeCua` / `maChuyenDeCua` / `soThuTuCua` vào `lib/kho/api.ts`, mọi phép cắt đi qua đó
+(`maxOrd` — nếu quên thì số thứ tự đọc sai và mã mới ĐÈ mã đang có), + `KHO_TIEN_TO` keyed theo
+`BranchConfig.key`. Sửa 2 chỗ cắt cứng: `BanDo.tsx` `.slice(4)`, `DashboardHocTapScreen.tsx` `.slice(0,6)`.
+
+**⚠ VA CHẠM 2 PHIÊN (đối chiếu ghi chép của phiên kia):** migration này **không do tao bấm áp** — phiên
+kia chạy `npm run migrate` lúc 13:14 và quét luôn file đang treo của tao. Kết quả đúng (đã verify bằng
+dữ liệu, không tin sổ `_migrations`), nhưng bước "CEO duyệt dry-run rồi mới áp" đã bị nhảy qua.
+→ **Luật cho tao: file migration chưa được duyệt thì ĐỪNG để nằm trong `supabase/migrations/`** — giữ ở
+scratchpad, chỉ chuyển vào khi đã có cái gật. Thư mục migrations là hàng đợi CHUNG của mọi phiên.
+
+**Nối tiếp — `202608141452_tien_to_ma_chu_de.sql` (CEO gật sau khi xem dry-run):**
+Migration đầu mới gắn tiền tố cho mã DẠNG + mã CÂU, nhưng mã dạng được **sinh bằng cách nối**
+`chủ đề → chuyên đề → dạng`. Để 2 tầng trên trần số thì (a) chúng VẪN trùng — chủ đề Đại∩KHTN 12,
+chuyên đề 25 — và (b) bộ sinh mã đẻ dữ liệu lẫn lộn: chủ đề mới ra `T10803` nằm cạnh `0801` cũ.
+→ **Bài học: đổi khoá thì phải đổi CẢ CHUỖI sinh ra nó, không đổi mỗi tầng cuối.** Tầng cuối trông
+đúng ngay, nhưng lần TẠO MỚI tiếp theo mới lộ ra là hỏng.
+
+Sau: `T10801 → T1080101 → T108010101` · `K0801 → K080101 → K08010101` · `T20401 → T2040101 → T204010102`.
+Kiểm bất biến NGAY TRONG transaction (`raise exception` nếu lệch): *mã dạng phải bắt đầu bằng mã chuyên
+đề, chuyên đề bắt đầu bằng mã chủ đề*. Kết quả: 0 trùng · 0 lệch chuỗi · 0 lý thuyết chuyên đề mồ côi.
+
+**Verify mức ỨNG DỤNG (không chỉ đếm cột):** chạy đúng phép join app dùng — HS nhiều dữ liệu nhất
+(Lê Kim Anh 9C1, 41 dòng đo/21 dạng) ra tên dạng **41/41**; ô (HS × dạng) còn mơ hồ giữa 2 môn: **0**;
+câu trong tài liệu còn tìm được trong kho: Toán 22.573/22.574 · KHTN 53/53 · Giải tích 223/223.
+
+**1 câu mất KHÔNG phải do migration:** `tai_lieu_cau` có 1 dòng trỏ `DC000012` — mã kiểu seq CŨ
+(`'DC'||nextval`), không tồn tại trong `dai_cau_hoi`, tài liệu từ 18/06. Bắt đầu bằng CHỮ nên guard
+`~ '^[0-9]'` không đụng tới. Là rác có sẵn, đúng ca §2 "tham chiếu bằng TEXT không FK ⇒ rụng im lặng".
+Kho vẫn còn 7 câu mã `DC…` — di sản trước khi chuyển sang mã vị trí. Chưa xử, ghi lại để dọn sau.
