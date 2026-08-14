@@ -11,7 +11,9 @@ export type CanBuItem = { id: string; hoc_sinh_id: string; ho_ten: string; ma_hs
 // nhau, 07-07 phát hiện thiếu nhãn môn gây nhầm lẫn khi nhiều môn cùng chạy). bu_cho = "buổi gốc · ngày"
 // (nội dung buổi học HS đang bù cho) — Thùy 07-07: PHẢI hiện, trước đây có data nhưng chưa render ra UI.
 export type CaBoTroHS = { hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; diem_danh: string | null; lop_bu: string; mon: string; khoi: string | null; bu_cho: string }
-export type CaBoTro = { id: string; ngay: string; gio_bat_dau: string | null; phong: string | null; trang_thai: string; et_dong_at: string | null; danh_gia_xong_at: string | null; nguoi_day: string | null; nguoi_day_tg: string | null; hs: CaBoTroHS[] }
+// hs = HS CÒN nằm ở buổi bù này. hsVang = em đã tích vắng ⇒ lần nghỉ gốc đã quay về "Cần bù",
+// em KHÔNG còn là việc của buổi này nữa (giữ lại để hiển thị vết, không tính vào sĩ số).
+export type CaBoTro = { id: string; ngay: string; gio_bat_dau: string | null; phong: string | null; trang_thai: string; et_dong_at: string | null; danh_gia_xong_at: string | null; nguoi_day: string | null; nguoi_day_tg: string | null; hs: CaBoTroHS[]; hsVang: CaBoTroHS[] }
 
 // ⭐ MỘT LẦN XẾP BÙ CHỈ "GIẢI QUYẾT" LẦN NGHỈ KHI NÓ THẬT SỰ DIỄN RA (sửa 12/08).
 //
@@ -105,26 +107,52 @@ export async function listLanNghiCanXep(): Promise<LanNghi[]> {
     .sort((a, b) => b.tuoiNgay - a.tuoiNgay)
 }
 
-// L2 (done=false) / L3 (done=true): ca bổ trợ (buổi bù) + danh sách HS.
-export async function listCaBoTro(done: boolean): Promise<CaBoTro[]> {
+// ⭐ TÍCH VẮNG Ở BUỔI BÙ = EM RỜI BUỔI ĐÓ, KHÔNG PHẢI "vẫn ở đây nhưng vắng" (sửa 14/08).
+//
+// `listLanNghiCanXep` đã trả lần nghỉ về "Cần bù" từ 12/08, nhưng tab "Đã xếp" vẫn đếm và vẫn
+// vẽ đúng em đó ⇒ cùng một HS hiện ở HAI chỗ, người xếp không biết tin chỗ nào (CEO 14/08).
+// Nặng hơn: buổi bù 1 HS mà em vắng thì `coMat = 0`, nút "Xác nhận ET"/"Hoàn thành đánh giá"
+// KHÔNG hiện ⇒ hai mốc không bao giờ đóng được ⇒ card nằm lì ở "Đã xếp" VĨNH VIỄN. Đo lúc sửa:
+// 4/20 buổi ở tab này là loại kẹt đó (và cả 4 đều toàn-bộ-HS-vắng).
+//
+// Luật: HS vắng ⇒ ra khỏi `hs` (sĩ số + chip + bộ lọc đều theo `hs`), giữ ở `hsVang` để còn thấy vết.
+// Buổi KHÔNG còn ai (`hs` rỗng) mà có người vắng ⇒ "đã trả về Cần bù": biến khỏi Đã xếp/Hoàn thành,
+// gom vào `listCaBoTroTraVe()` — vẫn mở được để sửa nhầm (bấm lại "Có mặt") hoặc huỷ buổi cho sạch.
+// KHÔNG xoá âm thầm — đó là điểm khác với buổi 0-HS-từ-đầu (chưa ai bị vắng): loại đó vẫn nằm
+// trong `listCaBoTro` như cũ, chỉ không vẽ ra card (màn lọc `hs.some(...)`) — hành vi cũ, không đụng.
+const laVang = (d: string | null) => d === 'vang' || d === 'vang_phep'
+
+type CaBoTroFull = CaBoTro & { xong: boolean; daTraVe: boolean }
+async function taiCaBoTro(): Promise<CaBoTroFull[]> {
   const { data: buois } = await supabase.from('buoi_hoc')
     .select('id, ngay, gio_bat_dau, phong, trang_thai, et_dong_at, danh_gia_xong_at, nguoi_day, nguoi_day_tg')
     .eq('loai', 'bu').neq('trang_thai', 'huy').order('ngay', { ascending: false }).limit(LIMIT)
-  const filt = (buois ?? []).filter((b: any) => { const xong = !!b.et_dong_at && !!b.danh_gia_xong_at; return done ? xong : !xong })
-  if (!filt.length) return []
-  const ids = filt.map((b: any) => b.id)
+  if (!(buois ?? []).length) return []
+  const ids = (buois ?? []).map((b: any) => b.id)
   const { data: hs } = await supabase.from('buoi_hoc_hs')
     .select('buoi_hoc_id, hoc_sinh_id, diem_danh, hoc_sinh:hoc_sinh_id(ho_ten, ma_hs), bu_cho:bu_cho_buoi_id(ngay, lop:lop_id(ten_lop, mon, khoi))')
     .in('buoi_hoc_id', ids).limit(LIMIT)
   const by: Record<string, any[]> = {}
   for (const r of hs ?? []) (by[(r as any).buoi_hoc_id] ??= []).push(r)
-  return filt.map((b: any) => ({
-    ...b, hs: (by[b.id] ?? []).map((r: any) => ({
+  return (buois ?? []).map((b: any) => {
+    const ros: CaBoTroHS[] = (by[b.id] ?? []).map((r: any) => ({
       hoc_sinh_id: r.hoc_sinh_id, ho_ten: r.hoc_sinh?.ho_ten ?? '?', ma_hs: r.hoc_sinh?.ma_hs ?? null,
       diem_danh: r.diem_danh, lop_bu: r.bu_cho?.lop?.ten_lop ?? '', mon: r.bu_cho?.lop?.mon ?? '', khoi: r.bu_cho?.lop?.khoi ?? null,
       bu_cho: r.bu_cho ? `${r.bu_cho.lop?.ten_lop ?? ''} · ${r.bu_cho.ngay}` : '',
-    })),
-  }))
+    }))
+    const hsVang = ros.filter((r) => laVang(r.diem_danh))
+    const con = ros.filter((r) => !laVang(r.diem_danh))
+    return { ...b, hs: con, hsVang, xong: !!b.et_dong_at && !!b.danh_gia_xong_at, daTraVe: !con.length && hsVang.length > 0 }
+  })
+}
+
+// L2 (done=false) / L3 (done=true): ca bổ trợ (buổi bù) + danh sách HS còn ở buổi.
+export async function listCaBoTro(done: boolean): Promise<CaBoTro[]> {
+  return (await taiCaBoTro()).filter((c) => !c.daTraVe && (done ? c.xong : !c.xong))
+}
+// Buổi bù mà MỌI HS đã vắng — lần nghỉ của họ đã về "Cần bù", buổi này chỉ còn là vỏ cần dọn.
+export async function listCaBoTroTraVe(): Promise<CaBoTro[]> {
+  return (await taiCaBoTro()).filter((c) => c.daTraVe)
 }
 
 export async function listKhongBu(): Promise<{ id: string; absId: string; loai: string; ly_do: string | null; ho_ten: string; ma_hs: string | null; info: string }[]> {
@@ -168,16 +196,60 @@ export const buoiBuSapToi = () => listCaBoTro(false) // cho "chọn buổi bù c
 
 // Thông tin per-HS (mã HS · lớp gốc+môn · nội dung buổi đang bù cho) của 1 buổi bù CỤ THỂ — dùng ở
 // BuoiBuDetail (mở từ "Việc của tôi" chỉ có buoiId, KHÔNG có sẵn CaBoTro đầy đủ như màn Bổ trợ Bù).
-export async function getBuoiBuHsInfo(buoiId: string): Promise<Record<string, { ma_hs: string | null; lop_bu: string; mon: string; bu_cho: string }>> {
+export type BuoiBuHsInfo = { ma_hs: string | null; lop_bu: string; mon: string; bu_cho: string; buoi_me_id: string | null }
+export async function getBuoiBuHsInfo(buoiId: string): Promise<Record<string, BuoiBuHsInfo>> {
   const { data } = await supabase.from('buoi_hoc_hs')
-    .select('hoc_sinh_id, hoc_sinh:hoc_sinh_id(ma_hs), bu_cho:bu_cho_buoi_id(ngay, lop:lop_id(ten_lop, mon))')
+    .select('hoc_sinh_id, bu_cho_buoi_id, hoc_sinh:hoc_sinh_id(ma_hs), bu_cho:bu_cho_buoi_id(ngay, lop:lop_id(ten_lop, mon))')
     .eq('buoi_hoc_id', buoiId).limit(LIMIT)
-  const out: Record<string, { ma_hs: string | null; lop_bu: string; mon: string; bu_cho: string }> = {}
+  const out: Record<string, BuoiBuHsInfo> = {}
   for (const r of (data ?? []) as any[]) {
     out[r.hoc_sinh_id] = {
       ma_hs: r.hoc_sinh?.ma_hs ?? null, lop_bu: r.bu_cho?.lop?.ten_lop ?? '', mon: r.bu_cho?.lop?.mon ?? '',
       bu_cho: r.bu_cho ? `${r.bu_cho.lop?.ten_lop ?? ''} · ${r.bu_cho.ngay}` : '',
+      buoi_me_id: r.bu_cho_buoi_id ?? null,
     }
+  }
+  return out
+}
+
+// ⭐ GIÁO TRÌNH · BTVN · ET CỦA BUỔI MẸ, ngay trong buổi bù (CEO 14/08: "để nhân sự khỏi lục kho tài liệu").
+//
+// Buổi bù gom HS TỪ NHIỀU lớp/ngày khác nhau ⇒ tài liệu là chuyện CỦA TỪNG EM, không phải của buổi bù:
+// mỗi em học lại đúng nội dung buổi em đã nghỉ. Vì vậy tra theo `bu_cho_buoi_id` của từng dòng roster.
+//
+// ⚠ Tài liệu vận hành KHÔNG có FK về `buoi_hoc` — nó bám (lop_id, ngay) (xem `tailieu.ts`, cùng đường
+// mà loadETForBuoi/getBTVNByBuoi/getGiaoTrinhBuoiDoc đang đi). PostgREST không lọc được theo CẶP cột,
+// nên lấy rộng theo 2 tập rồi ghép đúng cặp ở JS — lọc thiếu một vế sẽ kéo nhầm tài liệu lớp khác
+// cùng ngày, mà sai kiểu đó trông vẫn "có tài liệu" nên rất khó phát hiện.
+export type DocBuoi = { id: string; loai: 'giao_trinh_buoi' | 'btvn' | 'et'; ten: string; file_url: string | null }
+const LOAI_DOC_BUOI: DocBuoi['loai'][] = ['giao_trinh_buoi', 'btvn', 'et'] // thứ tự hiển thị = thứ tự dùng
+export async function taiLieuCuaBuoiMe(buoiMeIds: string[]): Promise<Record<string, DocBuoi[]>> {
+  const ids = [...new Set(buoiMeIds.filter(Boolean))]
+  if (!ids.length) return {}
+  const { data: bs } = await supabase.from('buoi_hoc').select('id, lop_id, ngay').in('id', ids).limit(LIMIT)
+  const buois = ((bs ?? []) as any[]).filter((b) => b.lop_id && b.ngay)
+  if (!buois.length) return {}
+  // `order created_at desc` + giữ bản ĐẦU cho mỗi (lớp|ngày|loại): unique doc vận hành có thể còn sót
+  // bản trùng từ thời trước, và cả hệ đã thống nhất "lỡ trùng thì lấy bản mới nhất, đừng throw cả màn"
+  // (getBTVNByBuoi/getGiaoTrinhBuoiDoc, tailieu.ts).
+  const { data: tls } = await supabase.from('tai_lieu').select('id, loai, ten, file_url, lop_id, ngay')
+    .in('loai', LOAI_DOC_BUOI).in('lop_id', [...new Set(buois.map((b) => b.lop_id))])
+    .in('ngay', [...new Set(buois.map((b) => ngayVN(b.ngay)))])
+    .order('created_at', { ascending: false }).limit(LIMIT)
+  const theoCap = new Map<string, DocBuoi[]>()
+  const daCo = new Set<string>()
+  for (const t of (tls ?? []) as any[]) {
+    const cap = `${t.lop_id}|${ngayVN(t.ngay)}`
+    if (daCo.has(`${cap}|${t.loai}`)) continue
+    daCo.add(`${cap}|${t.loai}`)
+    const ds = theoCap.get(cap) ?? []
+    ds.push({ id: t.id, loai: t.loai, ten: t.ten, file_url: t.file_url ?? null })
+    theoCap.set(cap, ds)
+  }
+  const out: Record<string, DocBuoi[]> = {}
+  for (const b of buois) {
+    const ds = theoCap.get(`${b.lop_id}|${ngayVN(b.ngay)}`) ?? []
+    out[b.id] = [...ds].sort((x, y) => LOAI_DOC_BUOI.indexOf(x.loai) - LOAI_DOC_BUOI.indexOf(y.loai))
   }
   return out
 }
@@ -210,9 +282,10 @@ export async function ensureBuoiBuETProblems(makeupId: string): Promise<void> {
 }
 
 export async function demTabBoTro(): Promise<Record<string, number>> {
-  const [l1, l2, l3] = await Promise.all([listCanBu(), listCaBoTro(false), listCaBoTro(true)])
+  const [l1, cas] = await Promise.all([listCanBu(), taiCaBoTro()])
   const { count } = await supabase.from('bang_khong_bu').select('id', { count: 'exact', head: true })
-  return { canbu: l1.length, daxep: l2.length, xong: l3.length, khongbu: count ?? 0 }
+  const song = cas.filter((c) => !c.daTraVe)
+  return { canbu: l1.length, daxep: song.filter((c) => !c.xong).length, xong: song.filter((c) => c.xong).length, khongbu: count ?? 0 }
 }
 
 // ════════════════════════════════════════════════════════════════════════════

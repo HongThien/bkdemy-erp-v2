@@ -1802,16 +1802,29 @@ function DanhGiaTab({ buoiId, roster, dangOpts, buoi, onChange }: { buoiId: stri
   async function saveND(txt: string) { try { await setNoiDungBuoi(buoiId, { noi_dung_buoi: txt.trim() || null }); onChange() } catch (e: any) { alert(e.message ?? String(e)) } }
   async function saveMT(txt: string) { try { await setNoiDungBuoi(buoiId, { mo_ta: txt.trim() || null }); onChange() } catch (e: any) { alert(e.message ?? String(e)) } }
 
+  // Đã điền = HS có nhận xét không rỗng HOẶC ≥1 ô chấm dạng (cùng công thức `danhGiaTienDo` ở gami.ts).
+  const daDien = coMat.filter((r) => { const d = data[r.hoc_sinh_id]; return !!d && (!!(d.nhan_xet ?? '').trim() || Object.keys(d.diemTheoDang).length > 0) }).length
+
   if (loading) return <p className="text-[13px] text-slate-400">Đang tải…</p>
   if (coMat.length === 0) return <p className="text-[12px] text-slate-400">Chưa có HS nào điểm danh “có mặt” — điểm danh trước.</p>
 
   return (
     <div>
-      <div className="mb-2 flex items-center gap-2">
+      <div className="mb-2 flex flex-wrap items-center gap-2">
         {xong
           ? <><span className="rounded-md bg-emerald-50 px-2.5 py-1 text-[13px] font-medium text-emerald-700">✓ Đã hoàn thành đánh giá</span>
               <button onClick={async () => { await moLaiDanhGia(buoiId); onChange() }} className="rounded-md border border-amber-300 px-2.5 py-1 text-[12px] font-medium text-amber-700 hover:bg-amber-50">↩ Mở lại để sửa</button></>
-          : <button onClick={async () => { await dongDanhGia(buoiId); onChange() }} className="rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-indigo-500">✓ Hoàn thành đánh giá</button>}
+          : <>
+              <button onClick={async () => { await dongDanhGia(buoiId); onChange() }} className="rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-indigo-500">✓ Hoàn thành đánh giá</button>
+              {/* Điền xong ≠ đã chốt: chừng nào chưa bấm nút thì MỌI chỗ khác (Việc của tôi, trợ lý,
+                  dashboard) vẫn đọc buổi này là "chưa đánh giá" — công đã làm thành vô hình (CEO 14/08).
+                  Nói thẳng ngay cạnh nút, thay vì để người làm tự đoán. */}
+              {daDien > 0 && (
+                <span className={`text-[12px] font-medium ${daDien >= coMat.length ? 'text-amber-600' : 'text-slate-400'}`}>
+                  đã điền {daDien}/{coMat.length} HS{daDien >= coMat.length ? ' — chưa chốt thì hệ vẫn tính là CHƯA đánh giá' : ''}
+                </span>
+              )}
+            </>}
       </div>
       {/* Nội dung buổi học + Mô tả — CẤP BUỔI (chung cả lớp, không riêng từng HS), Thùy 07-19. */}
       <div className="mb-3 grid grid-cols-1 gap-3 sm:grid-cols-2">

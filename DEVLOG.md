@@ -4780,3 +4780,87 @@ câu trong tài liệu còn tìm được trong kho: Toán 22.573/22.574 · KHTN
 (`'DC'||nextval`), không tồn tại trong `dai_cau_hoi`, tài liệu từ 18/06. Bắt đầu bằng CHỮ nên guard
 `~ '^[0-9]'` không đụng tới. Là rác có sẵn, đúng ca §2 "tham chiếu bằng TEXT không FK ⇒ rụng im lặng".
 Kho vẫn còn 7 câu mã `DC…` — di sản trước khi chuyển sang mã vị trí. Chưa xử, ghi lại để dọn sau.
+
+## 2026-08-14 (tiếp) — Bổ trợ bù: vắng buổi bù phải BIẾN KHỎI "Đã xếp" · đánh giá đã điền mà chưa chốt thì phải NÓI RA
+
+**CEO nêu 2 việc:**
+① *"Xếp bổ trợ bù, HS không đến, nhân sự tích vắng — hệ vẫn hiện ở chỗ Đã xếp. Đáng lẽ quay lại Cần bù và biến mất ở Đã xếp."*
+② *"Có trường hợp trợ giảng đã đánh giá nhưng trên hệ thống vẫn chưa hiện đánh giá của buổi học."*
+
+### ① Vắng buổi bù — nửa sau của fix 12/08 bị bỏ quên
+Fix 12/08 mới làm **một chiều**: `listLanNghiCanXep` trả lần nghỉ về "Cần bù" khi em vắng buổi bù.
+Chiều còn lại KHÔNG ai đụng: `listCaBoTro` vẫn lấy nguyên roster ⇒ đúng em đó vẫn được đếm + vẽ chip ở
+tab "Đã xếp" ⇒ **một HS hiện ở HAI tab**, người xếp không biết tin chỗ nào. Nặng hơn: buổi bù 1 HS mà em
+vắng thì `coMat = 0` ⇒ nút "Xác nhận ET" / "Hoàn thành đánh giá" **không hiện** ⇒ 2 mốc không bao giờ
+đóng được ⇒ card **kẹt vĩnh viễn** ở "Đã xếp". Đo lúc sửa: **4/20 buổi ở tab này là loại kẹt đó**, và cả
+4 đều toàn-bộ-HS-vắng (1 HS/buổi).
+
+**Sửa (`src/lib/botro.ts`, `BoTroScreen.tsx`):** gom về 1 hàm `taiCaBoTro()` tính sẵn `hs` (còn ở buổi) /
+`hsVang` / `xong` / `daTraVe`. HS vắng ra khỏi `hs` ⇒ sĩ số, chip, bộ lọc khối/tên, đếm tab đều theo
+người CÒN ở buổi. Buổi không còn ai mà có người vắng = `daTraVe` ⇒ **rời khỏi Đã xếp/Hoàn thành**, gom
+vào `listCaBoTroTraVe()` — hiện thành một dòng gập ở cuối tab Đã xếp ("4 buổi bù đã trả HS về Cần bù").
+- **Không xoá âm thầm:** buổi đó vẫn mở được để **sửa nhầm** (bấm lại "Có mặt") hoặc **huỷ cho sạch**.
+  Biến mất hẳn = mất luôn đường sửa khi người tích nhầm — đúng lớp bug "bỏ qua âm thầm" đang chống.
+- Card có cả HS còn lẫn HS vắng thì hiện thêm dòng đỏ *"Vắng → đã về Cần bù: <tên>"*, không im lặng bớt người.
+- **Không đụng** buổi 0-HS-từ-đầu (chưa ai bị vắng): giữ nguyên hành vi cũ.
+
+Verify trên app (data thật): tab Đã xếp 20 → **16 card, không card nào còn HS vắng**; 4 buổi kia nằm
+trong dòng gập; 3 em (Nguyễn Anh Văn · Nguyễn Đặng Danh Ngọc · Tố Uyên) có mặt ở "Cần bù" với nhãn
+**XẾP LẠI · Vắng buổi bù**. Khớp 2 chiều.
+
+### ② "Đã đánh giá mà hệ chưa hiện" — cả hệ chỉ đọc MỘT cờ nhị phân
+Truy ra: **mọi** chỗ (Việc của tôi · trợ lý · dashboard vận hành · Kết quả học tập) đều đọc đúng một cột
+`danh_gia_xong_at` = "đã bấm nút Hoàn thành hay chưa". Buổi điền nhận xét/chấm dạng cho ĐỦ HS mà quên bấm
+nút thì hiện **y hệt buổi trắng tinh** — công đã làm thành vô hình. Đo trên DB: **8 buổi đã qua có dữ liệu
+đánh giá thật mà cờ vẫn NULL** (9A2 18/07 đủ **13/13** HS chấm dạng · 5T1 19/07 đủ 6/6 cả nhận xét lẫn dạng).
+
+**Sửa:** thêm `danhGiaTienDo(buoiIds)` (gami.ts) — derive từ **dòng thật** (nhận xét không rỗng HOẶC ≥1 ô
+chấm dạng) trên mẫu số HS `co_mat`. Hiện ở 3 chỗ: card "Đánh giá" trong Việc của tôi (*"đã điền 5/6"*),
+tab Đánh giá của buổi thường, và footer buổi bù — điền đủ mà chưa chốt thì tô hổ phách kèm câu
+*"chưa chốt thì hệ vẫn tính là CHƯA đánh giá"*.
+- **CỐ Ý không tự đóng mốc hộ người:** `danh_gia_xong_at` là tuyên bố của người phụ trách (§4 mốc
+  người-tự-chốt); tự set = bịa chữ ký. Chỉ làm "chưa xong" nói rõ **chưa xong ở đâu**.
+- Verify: mở 9A2 18/07 → tab Đánh giá hiện *"đã điền 13/13 HS — chưa chốt thì hệ vẫn tính là CHƯA đánh giá"*.
+
+**⚠ CÒN MỘT VIỆC CHỜ CEO QUYẾT (không tự sửa):** với buổi **thường**, `TASKS_BY_VAI` chỉ giao
+"Đánh giá sau buổi" cho **gv** — **tg (trợ giảng) KHÔNG có task đánh giá nào**. Trong khi buổi **bù** và
+buổi **đuổi** thì TA lại là người đánh giá (Thùy chốt 07-26). Nếu thực tế TA cũng đánh giá buổi thường
+thì bảng vai↔khâu đang lệch với đời thật, và đó là quyết định của CEO chứ không phải sửa kỹ thuật.
+
+## 2026-08-14 (tiếp) — Tài liệu buổi mẹ NGAY TRONG buổi bù · nhãn người-nhận-việc ở bổ trợ
+
+**CEO chốt + yêu cầu:**
+① *"Người nào được xếp bổ trợ thì người đó đánh giá mới đúng."*
+② *"Cực kì quan trọng: trong card bổ trợ bù có luôn giáo trình, BTVN và ET của buổi đấy, để nhân sự khỏi lục lại kho tài liệu."*
+
+### ① Nhãn form đang MÔ TẢ SAI luồng việc thật
+Engine (`getMyTasks`) route **cả chấm ET lẫn đánh giá** về `nguoi_day_tg` — người dạy buổi bổ trợ — chỉ
+rơi về `nguoi_day` (GV) khi ô kia trống (đúng luật CEO vừa chốt, và đúng quyết định 07-26). **Nhưng form
+xếp bù lại ghi "GV (đánh giá)" và "TA (chấm ET)"** ⇒ người điền tưởng GV sẽ đánh giá, trong khi việc đã
+sang TA. Không phải bug engine — là **nhãn nói ngược với hành vi**, loại sai âm thầm nhất vì không ai
+thấy lỗi, chỉ thấy "việc không về đúng người".
+→ Đổi ở `XepModal` (BoTroScreen) + `SuaBuoiModal` (dùng chung bù/đuổi): ô người-dạy-bổ-trợ **lên trước**
+và có dấu `*`, GV lùi sau, kèm câu *"Chấm ET + đánh giá về người dạy bổ trợ; bỏ trống ô đó thì việc rơi
+sang GV"*. Không đụng engine — engine vốn đã đúng luật.
+
+### ② Giáo trình · BTVN · ET của buổi mẹ, ngay trong buổi bù
+Người dạy bù cần đúng 3 thứ của buổi em đã nghỉ, trước đây phải nhớ lớp + ngày rồi sang Kho tài liệu tự
+lọc — mà **mỗi em một bộ khác nhau** (buổi bù gom nhiều lớp/ngày), nên càng đông em càng dễ lấy nhầm.
+- `taiLieuCuaBuoiMe(buoiMeIds)` (botro.ts): tra theo `bu_cho_buoi_id` của TỪNG dòng roster.
+  **⚠ Tài liệu vận hành không có FK về `buoi_hoc`** — nó bám `(lop_id, ngay)` (cùng đường
+  `loadETForBuoi`/`getBTVNByBuoi`/`getGiaoTrinhBuoiDoc` đang đi). PostgREST không lọc được theo CẶP cột
+  ⇒ lấy rộng theo 2 tập rồi **ghép đúng cặp ở JS**; lọc thiếu một vế sẽ kéo tài liệu **lớp khác cùng
+  ngày** — sai kiểu đó trông vẫn "có tài liệu" nên rất khó phát hiện. Trùng (lớp|ngày|loại) → lấy bản mới
+  nhất, đúng quy ước đã có ở `tailieu.ts` ("lỡ trùng thì lấy bản mới nhất, đừng throw cả màn").
+- UI: hàng chip trong card từng HS — mỗi loại có **🖨 In** (tái dùng `PrintView`/`ETPrintView` của Kho,
+  KHÔNG dựng bản in thứ hai) và **🔗 Link** (copy PDF `file_url`, có thì mới hiện).
+- **Loại thiếu vẫn hiện nhãn xám "chưa có"**: im lặng bỏ đi thì người dạy tưởng mình tìm thiếu; nói ra
+  thì biết buổi đó thật sự chưa soạn — hai chuyện khác hẳn.
+- Verify: buổi bù 16/08 (HS bù cho 7A1 · 07/08) hiện đủ 3; bấm In ra đúng *"Lớp 7A1 · Ngày 07/08/2026"*
+  và ET *"Đề kiểm tra cuối giờ lớp 7A1"*. Buổi bù 25/08 (bù cho 12B1 · 24/07) hiện "chưa có" cả 3 — khớp
+  query thô (lớp+ngày đó chưa có tài liệu nào), không phải lỗi tra.
+
+### Vá kèm — 400 im lặng mỗi lần mở buổi bù
+`getBuoi` gọi `phan_cong_lop.eq('lop_id', <null>)` khi buổi KHÔNG có lớp (bù/đuổi) ⇒ PostgREST gửi chuỗi
+`"null"` cho cột uuid ⇒ **400 `invalid input syntax for type uuid`** mỗi lần mở. Không vỡ gì (kết quả
+undefined → `gv_chinh_id: null`) nên sống lâu trong console. Guard: không có lớp thì không hỏi GV chính.

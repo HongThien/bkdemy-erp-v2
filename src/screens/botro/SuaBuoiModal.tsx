@@ -6,7 +6,11 @@ import SearchSelect from '../../components/SearchSelect'
 
 const inp = 'w-full rounded-lg border border-slate-300 px-3 py-2 text-[14px] outline-none focus:border-indigo-400'
 
-export default function SuaBuoiModal({ buoi, taLabel = 'TA', onClose, onSaved }: {
+// ⭐ NHÃN PHẢI NÓI ĐÚNG AI NHẬN VIỆC (CEO 14/08: "người nào được xếp bổ trợ thì người đó đánh giá").
+// Engine việc (`getMyTasks`, gami.ts) route CẢ chấm ET LẪN đánh giá về `nguoi_day_tg` — người dạy buổi
+// bổ trợ — chỉ rơi về `nguoi_day` (GV) khi ô kia bỏ trống. Nhãn cũ ghi "GV (đánh giá)" / "TA (chấm ET)"
+// là mô tả SAI luồng thật: người điền tưởng GV sẽ đánh giá, trong khi việc đã sang TA.
+export default function SuaBuoiModal({ buoi, taLabel = 'Người dạy bổ trợ', onClose, onSaved }: {
   buoi: { id: string; ngay: string | null; gio_bat_dau: string | null; phong: string | null; nguoi_day: string | null; nguoi_day_tg: string | null }
   taLabel?: string; onClose: () => void; onSaved: () => void
 }) {
@@ -36,9 +40,10 @@ export default function SuaBuoiModal({ buoi, taLabel = 'TA', onClose, onSaved }:
             <div><label className="mb-1 block text-[13px] font-medium text-slate-600">Phòng</label><input className={inp} value={phong} onChange={(e) => setPhong(e.target.value)} /></div>
           </div>
           <div className="grid grid-cols-2 gap-3">
+            <div><label className="mb-1 block text-[13px] font-medium text-slate-600">{taLabel} *</label><SearchSelect value={ta} onChange={setTa} options={opts} placeholder={`Chọn ${taLabel.toLowerCase()}…`} /></div>
             <div><label className="mb-1 block text-[13px] font-medium text-slate-600">GV</label><SearchSelect value={gv} onChange={setGv} options={opts} placeholder="Chọn GV…" /></div>
-            <div><label className="mb-1 block text-[13px] font-medium text-slate-600">{taLabel}</label><SearchSelect value={ta} onChange={setTa} options={opts} placeholder={`Chọn ${taLabel}…`} /></div>
           </div>
+          <p className="text-[12px] text-slate-400">Chấm ET + đánh giá về <b>{taLabel.toLowerCase()}</b>; bỏ trống ô đó thì việc rơi sang GV.</p>
         </div>
         <div className="mt-4 flex justify-end gap-2">
           <button onClick={onClose} className="rounded-lg border border-slate-200 px-4 py-2 text-[14px] text-slate-600 hover:bg-slate-50">Huỷ</button>
