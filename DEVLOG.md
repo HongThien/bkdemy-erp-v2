@@ -4864,3 +4864,26 @@ lọc — mà **mỗi em một bộ khác nhau** (buổi bù gom nhiều lớp/n
 `getBuoi` gọi `phan_cong_lop.eq('lop_id', <null>)` khi buổi KHÔNG có lớp (bù/đuổi) ⇒ PostgREST gửi chuỗi
 `"null"` cho cột uuid ⇒ **400 `invalid input syntax for type uuid`** mỗi lần mở. Không vỡ gì (kết quả
 undefined → `gv_chinh_id: null`) nên sống lâu trong console. Guard: không có lớp thì không hỏi GV chính.
+
+## 2026-08-14 (tiếp) — Người bổ trợ hiện + chọn NGAY trên card buổi bù
+
+CEO: *"Chính xác thì ai bổ trợ người đó bù → trong card bổ trợ bù để thông tin chọn người bổ trợ đi.
+Hiện cho cả GV và TA của ca bù."*
+
+Card buổi bù trước giờ **không hiện ai dạy** — dữ liệu có sẵn (`nguoi_day`/`nguoi_day_tg` nằm trong
+`CaBoTro` từ đầu) nhưng chưa bao giờ render, muốn biết phải mở modal "Sửa buổi". Mà người bổ trợ chính
+là người nhận cả chấm ET lẫn đánh giá ⇒ đó là thông tin quan trọng NHẤT của card, không phải thứ giấu
+sau một nút sửa.
+
+- `taiCaBoTro` embed tên: `gv:nguoi_day(ho_ten)` / `ta:nguoi_day_tg(ho_ten)`. **Phải đặt tên cột** —
+  `buoi_hoc` có 2 FK cùng trỏ `nhan_su`, để PostgREST tự đoán là rỗng âm thầm (cùng bẫy đã dính với
+  `buoi_hoc_hs` → `buoi_hoc`).
+- Card hiện `🧑‍🏫 Bổ trợ: <tên>` + `GV: <tên>`; **chưa chọn ⇒ chip ĐỎ "⚠ Chưa chọn người bổ trợ"** (bỏ
+  trống thì việc rơi về GV, hoặc mồ côi nếu GV cũng trống — phải nhìn thấy ngay chứ không im lặng).
+- Bấm chip = đổi người **tại chỗ** (SearchSelect inline → `updateBuoiMeta`), `stopPropagation` để không
+  mở nhầm màn chi tiết. Tab "Hoàn thành" thì chỉ xem.
+- Verify: 15 card hiện đủ tên; mở picker không nhảy vào detail; chọn lại **đúng người cũ** (cố ý — DB
+  thật, không đổi phân công của ai) → lưu + refresh, 0 lỗi mạng.
+
+**Quan sát khi verify:** giữa phiên, tab Đã xếp 18→17 và Hoàn thành 150→151 — có người trong team vừa
+đóng một buổi bù lúc đang test. Nhớ: đây là DB THẬT đang chạy, không phải sandbox.

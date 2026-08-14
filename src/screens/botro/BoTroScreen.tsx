@@ -8,7 +8,7 @@ import {
 } from '../../lib/botro'
 import PrintView from '../tailieu/PrintView'
 import ETPrintView from '../tailieu/ETPrintView'
-import { getRoster, getBuoi, diemDanh, huyBuoi, xoaHSKhoiBuoi, listProblems, gradeET, deleteGrade, listGrades, closePhase, getDanhGia, setDanhGiaDang, setNhanXet, getDangTen, dongDanhGia, moLaiDanhGia, type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type ETResult } from '../../lib/gami'
+import { getRoster, getBuoi, diemDanh, huyBuoi, xoaHSKhoiBuoi, listProblems, gradeET, deleteGrade, listGrades, closePhase, getDanhGia, setDanhGiaDang, setNhanXet, getDangTen, dongDanhGia, moLaiDanhGia, updateBuoiMeta, type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type ETResult } from '../../lib/gami'
 import SuaBuoiModal from './SuaBuoiModal'
 import { listNhanSu, type NhanSu } from '../../lib/nhansu'
 import { homNayVN } from '../../lib/tuan'
@@ -40,6 +40,8 @@ export default function BoTroScreen() {
   const [khoiFilter, setKhoiFilter] = useState<string | null>(null)
   const [q, setQ] = useState('')
   const showFilter = tab !== 'khongbu'
+  const [nss, setNss] = useState<NhanSu[]>([])
+  const nsOpts = useMemo(() => nss.map((n) => ({ id: n.id, label: n.ho_ten, sub: n.ma_ns ?? undefined })), [nss])
 
   async function reloadCounts() { try { setCounts(await demTabBoTro()) } catch { /* */ } }
   async function reload() {
@@ -52,10 +54,14 @@ export default function BoTroScreen() {
     } catch { /* */ } finally { setLoading(false) }
   }
   useEffect(() => { reload() }, [tab]) // eslint-disable-line
-  useEffect(() => { reloadCounts() }, [])
+  useEffect(() => { reloadCounts(); listNhanSu().then(setNss).catch(() => {}) }, [])
   const refresh = async () => { await reload(); await reloadCounts() }
 
   async function onKhongXep(item: CanBuItem) { try { await ghiKhongBu(item.id, 'khong_xep_duoc'); await refresh() } catch (e: any) { alert(e.message ?? String(e)) } }
+  // Đổi người bổ trợ NGAY trên card (không bắt mở modal Sửa buổi) — người này nhận cả chấm ET lẫn đánh giá.
+  async function onDoiNguoiBoTro(caId: string, nhanSuId: string | null) {
+    try { await updateBuoiMeta(caId, { nguoi_day_tg: nhanSuId }); await refresh() } catch (e: any) { alert(e.message ?? String(e)) }
+  }
 
   // canbu = card 1 HS (lọc trực tiếp). daxep/xong = card 1 BUỔI (nhiều HS/ca) → giữ ca nếu CÓ ÍT NHẤT 1 HS
   // khớp cả 2 filter (tìm học sinh trong ca gộp nhiều em). Đặt TRƯỚC early-return detail (rules-of-hooks).
@@ -180,7 +186,9 @@ export default function BoTroScreen() {
                 : casShown.length === 0 ? <Empty t="Không có buổi nào khớp bộ lọc." /> : (
                 <div className="grid gap-3 [grid-template-columns:repeat(auto-fill,minmax(320px,1fr))]">
                   {casShown.map((ca) => (
-                    <CaCard key={ca.id} ca={ca} onOpen={() => setDetail({ ca, readOnly: tab === 'xong' })} onSua={tab === 'xong' ? undefined : () => setSuaBuoi(ca)} />
+                    <CaCard key={ca.id} ca={ca} nsOpts={nsOpts} onOpen={() => setDetail({ ca, readOnly: tab === 'xong' })}
+                      onSua={tab === 'xong' ? undefined : () => setSuaBuoi(ca)}
+                      onDoiNguoi={tab === 'xong' ? undefined : (id) => onDoiNguoiBoTro(ca.id, id)} />
                   ))}
                 </div>
               )}
@@ -196,7 +204,10 @@ export default function BoTroScreen() {
                   </button>
                   {moTraVe && (
                     <div className="grid gap-3 border-t border-slate-100 p-4 [grid-template-columns:repeat(auto-fill,minmax(320px,1fr))]">
-                      {traVe.map((ca) => <CaCard key={ca.id} ca={ca} traVe onOpen={() => setDetail({ ca, readOnly: false })} onSua={() => setSuaBuoi(ca)} />)}
+                      {traVe.map((ca) => (
+                        <CaCard key={ca.id} ca={ca} traVe nsOpts={nsOpts} onOpen={() => setDetail({ ca, readOnly: false })}
+                          onSua={() => setSuaBuoi(ca)} onDoiNguoi={(id) => onDoiNguoiBoTro(ca.id, id)} />
+                      ))}
                     </div>
                   )}
                 </div>
@@ -217,18 +228,39 @@ const Empty = ({ t }: { t: string }) => <div className="rounded-2xl border borde
 // Card 1 buổi bù. Sĩ số + chip HS chỉ đếm em CÒN ở buổi (`ca.hs`); em đã tích vắng nằm ở
 // `ca.hsVang` và chỉ hiện thành một dòng nhỏ — vì lần nghỉ của em đã quay về "Cần bù",
 // đếm em vào đây nữa là cùng một người xuất hiện ở hai tab (bug CEO nêu 14/08).
-function CaCard({ ca, traVe = false, onOpen, onSua }: { ca: CaBoTro; traVe?: boolean; onOpen: () => void; onSua?: () => void }) {
+function CaCard({ ca, traVe = false, nsOpts, onOpen, onSua, onDoiNguoi }: {
+  ca: CaBoTro; traVe?: boolean; nsOpts: { id: string; label: string; sub?: string }[]
+  onOpen: () => void; onSua?: () => void; onDoiNguoi?: (nhanSuId: string | null) => void
+}) {
   const hsShown = ca.hs.slice(0, 6)
   const tenHsShown = tenHienThiDs(hsShown.map((h) => h.ho_ten)) // trùng tên trong 6 người hiện ra → bung đủ
   const tenVang = tenHienThiDs(ca.hsVang.map((h) => h.ho_ten))
+  const [doiNguoi, setDoiNguoi] = useState(false)
   return (
     <div role="button" onClick={onOpen} className={`cursor-pointer rounded-2xl border-l-4 bg-white p-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md ${traVe ? 'border-l-slate-300' : 'border-l-violet-400'}`}>
       <div className="flex items-center gap-2">
         <span className="text-[15px] font-semibold text-slate-800">Buổi bù · {ddmm(ca.ngay)}</span>
         <span className={`ml-auto rounded-full px-2 py-0.5 text-[11px] font-medium ${traVe ? 'bg-slate-100 text-slate-500' : 'bg-violet-100 text-violet-700'}`}>{ca.hs.length} HS</span>
-        {onSua && <button onClick={(e) => { e.stopPropagation(); onSua() }} title="Sửa buổi (ngày/giờ/phòng/GV/TA)" className="rounded border border-slate-200 px-1.5 py-0.5 text-[12px] text-slate-400 hover:border-indigo-300 hover:text-indigo-700">✎</button>}
+        {onSua && <button onClick={(e) => { e.stopPropagation(); onSua() }} title="Sửa buổi (ngày/giờ/phòng/người bổ trợ/GV)" className="rounded border border-slate-200 px-1.5 py-0.5 text-[12px] text-slate-400 hover:border-indigo-300 hover:text-indigo-700">✎</button>}
       </div>
       <div className="mt-1 text-[12px] text-slate-500">{ca.gio_bat_dau?.slice(0, 5) || '—'}{ca.phong ? ` · ${ca.phong}` : ''}</div>
+      {/* ⭐ NGƯỜI BỔ TRỢ HIỆN NGAY TRÊN CARD + đổi tại chỗ (CEO 14/08: "ai bổ trợ người đó bù/đánh giá"
+          — nên chọn người phải nằm ở đây, không bắt mở modal Sửa buổi mới thấy). Chưa chọn ⇒ báo đỏ:
+          buổi bù không có người bổ trợ thì việc chấm ET + đánh giá rơi về GV, hoặc mồ côi nếu cũng trống. */}
+      <div className="mt-1.5 flex flex-wrap items-center gap-1.5 text-[11px]" onClick={(e) => e.stopPropagation()}>
+        {doiNguoi && onDoiNguoi ? (
+          <div className="w-full max-w-[260px]">
+            <SearchSelect value={ca.nguoi_day_tg} options={nsOpts} placeholder="Chọn người bổ trợ…"
+              onChange={(v) => { setDoiNguoi(false); onDoiNguoi(v) }} />
+          </div>
+        ) : (
+          <button disabled={!onDoiNguoi} onClick={() => setDoiNguoi(true)}
+            className={`rounded-full px-2 py-0.5 font-medium ${ca.ta_ten ? 'bg-indigo-50 text-indigo-700 hover:bg-indigo-100' : 'bg-rose-50 text-rose-600 hover:bg-rose-100'} disabled:hover:bg-inherit`}>
+            {ca.ta_ten ? `🧑‍🏫 Bổ trợ: ${tenNganHS(ca.ta_ten)}` : '⚠ Chưa chọn người bổ trợ'}{onDoiNguoi ? ' ✎' : ''}
+          </button>
+        )}
+        <span className="text-slate-400">GV: {ca.gv_ten ? tenNganHS(ca.gv_ten) : '—'}</span>
+      </div>
       {hsShown.length > 0 && (
         <div className="mt-2 flex flex-wrap gap-1">{hsShown.map((h, i) => (
           <span key={h.hoc_sinh_id} className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] text-slate-600">
