@@ -4971,3 +4971,37 @@ xác nhận textarea rỗng lại (dọn sạch dữ liệu test, không để l
 - **CÒN:** mảng của Lộc (bù · yếu · test đầu vào) chưa ráp · `nhansu_hieusuat` chưa làm · gate "ai
   thấy mảng nào" chưa có (worker bypass RLS ⇒ phải chặn ở code dựng context) · test đầu vào vẫn
   chặn ở "ai chấm", CEO sẽ mở context riêng xử lý.
+
+## 2026-08-14 (tiếp) — ⭐ Làm lại màn trợ lý: CHIA KHU THEO MODULE, bỏ liệt kê
+
+- **CEO chửi đúng (gửi kèm ảnh màn):** *"t đã bảo là màn hình trợ lý phải chia khu ra cho dễ view.
+  Ngoài ra báo số tổng quan chứ liệt kê 100 trường hợp cho chó đọc à. Hiện ra những thứ như t viết
+  ví dụ bên trên, KO phải cái trợ lý hiện tại của m. Xoá đi làm lại đi. Trợ lý có nhiều module
+  riêng, và báo cáo phải theo từng module chứ"*.
+  Ảnh cho thấy khối "Đang nợ — 103" đổ ra 103 dòng liên tiếp. Đúng thế thật.
+- **⭐ SAI GỐC, không phải sai hiển thị:** khối "Hôm nay 4 rổ" + "Việc cần quyết" là di sản của
+  đời trợ lý-cho-MỘT-người (trục "việc của tôi"). Đã chốt đổi sang trục MẢNG từ đầu phiên, nhưng
+  Claude **chỉ THÊM module mới mà không GỠ khối cũ** ⇒ màn thành hai thế giới chồng nhau, và cái
+  cũ (dài nhất) nằm trên cùng. Bài học: đổi trục thì phải gỡ cái của trục cũ, thêm mà không gỡ =
+  người dùng gặp cái cũ trước.
+- **Xoá (đã liệt kê trước với CEO):** component `HomNay` (4 rổ nợ/hạn-hôm-nay/dự-kiến/không-hạn) +
+  section "Việc cần quyết" (danh sách dài kèm 3 nút mỗi dòng). **Giữ** tầng đọc `viecHomNay`/
+  `nhacViecHomNay` trong lib — khung chat vẫn ăn dữ liệu đó, chỉ không đổ ra màn nữa.
+- **Màn mới = LƯỚI MODULE**, mỗi module một khu, khuôn chung `Khu` (tên · MỘT dòng số tổng quan ·
+  nút sang màn chuyên môn · phần đáng nhìn cắt ngắn có nói còn bao nhiêu):
+  Vận hành buổi học · Bổ trợ bù · Bổ trợ đuổi · Bổ trợ yếu · Kiểm tra đầu vào · Việc của riêng bạn.
+- **`Việc của riêng bạn` = ĐÚNG MỘT DÒNG SỐ.** Chính chỗ đẻ ra 103 dòng. Màn "Việc của tôi" đã tồn
+  tại để xem chi tiết — trợ lý nói con số rồi chỉ đường, không chép lại danh sách của màn khác.
+- **`src/lib/troly-modules.ts`** (mới): `mangYeu()` + `mangTestDauVao()`. Cả hai là mảng ĐANG HỞ,
+  và chỗ hở mới là thứ đáng báo — nói thẳng kèm số, không im (người tưởng ổn) cũng không vờ như
+  đang theo dõi (người tưởng có ai đang xử).
+- **Verify (dev server worktree, cổng 5190):**
+  · Vận hành: hôm qua 9 buổi — đủ 7K1/9C1 · 7 lớp chưa đánh giá · ET sạch 100% · BTVN 3/3 đã ghi nhận.
+  · Bổ trợ bù: 1 dòng số (103 cần xếp · 8 quá hạn · 4 phải xếp lại · 11 buổi sắp tới, 3 hôm nay)
+    rồi mới tới mục nhỏ, mỗi mục cap 5 kèm "…và N nữa".
+  · Bổ trợ đuổi: 9 đợt mở · **1 đợt** chậm hơn bình thường (ngưỡng rút từ 34 đợt đã hoàn thành).
+  · Bổ trợ yếu: "24 cảnh báo chảy vào hư không, cũ nhất 25 ngày · 12 HS · nhiều cờ nhất Luyện Minh
+    Đăng (11)" — đúng luật "chưa có thì báo chưa có".
+  tsc + vite build sạch.
+- **CÒN:** `nhansu_hieusuat` của Trang chưa làm · gate "ai thấy module nào" chưa có (hiện mọi người
+  thấy hết) · test đầu vào vẫn chặn ở "ai chấm".
