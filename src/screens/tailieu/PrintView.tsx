@@ -944,7 +944,13 @@ const GT_SANS = "'Noto Sans','Segoe UI',Arial,sans-serif"
 const GT_GRAD = 'linear-gradient(90deg,#1997d4 0%,#18a889 34%,#f0a63b 66%,#e83483 100%)'
 const GT_BK_CSS = `
 /* Masthead buổi (đầu mỗi buổi): khung gradient bo góc + logo thật + pill + tiêu đề + Lớp/Ngày + huy hiệu tròn. */
-.gtbk-mh{position:relative;overflow:hidden;margin:2mm 0 5mm;min-height:40mm;padding:5mm 6mm;border:1px solid #dbe7f4;border-radius:5mm;background:linear-gradient(112deg,#f5fbff 0%,#f8fbff 42%,#fff7fb 100%);break-inside:avoid;break-after:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+/* KHÔNG break-after:avoid (đã bỏ — Thùy báo GT 8S1 "cách 1 trang": masthead break-inside:avoid + card
+   đầu tiên break-after:avoid CHỒNG lên nhau ngay đầu buổi, đủ cao là paged.js đẩy cả 2 sang trang sau —
+   rồi tự nó vẫn không vừa nên chèn thêm 1 trang trắng "dọn chỗ" trước khi render lại được. Cùng cơ chế
+   avoid-chồng-avoid đã gây bug mất câu ở .pv-cau (xem comment .gtbk-card-body .pv-cau bên dưới) — chỉ khác
+   layer. Bỏ break-after ở masthead, GIỮ break-inside (masthead tự nó không bị xé ngang) là đủ; card đầu
+   tiên có thể rơi xuống trang sau BÌNH THƯỜNG (flow tự nhiên) thay vì bị ép dính chặt vào masthead. */
+.gtbk-mh{position:relative;overflow:hidden;margin:2mm 0 5mm;min-height:40mm;padding:5mm 6mm;border:1px solid #dbe7f4;border-radius:5mm;background:linear-gradient(112deg,#f5fbff 0%,#f8fbff 42%,#fff7fb 100%);break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .gtbk-mh:before{content:"";position:absolute;left:0;top:0;bottom:0;width:2.3mm;background:linear-gradient(180deg,#1997d4 0%,#18a889 36%,#f0a63b 68%,#e83483 100%);-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .gtbk-mh:after{content:"";position:absolute;right:-10mm;top:-16mm;width:62mm;height:62mm;border-radius:50%;border:9mm solid rgba(25,151,212,.055);-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .gtbk-mh-grid{position:absolute;right:33mm;top:4mm;width:43mm;height:29mm;opacity:.16;background-image:radial-gradient(#53739c 1px,transparent 1px);background-size:5px 5px;transform:rotate(-5deg);z-index:0}
