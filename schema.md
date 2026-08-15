@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-134 bảng · 0 view · 0 enum · 11 trigger · 39 function
+134 bảng · 0 view · 0 enum · 11 trigger · 41 function
 
 ## _migrations
 
@@ -372,6 +372,8 @@
 | nhan_xet | jsonb | Y |  |  |  |
 | tai_lieu_id | uuid | Y |  | FK→tai_lieu.id |  |
 | bai_da_cham_url | text | Y |  |  |  |
+| nguoi_cham_id | uuid | Y |  | FK→nhan_su.id |  |
+| nguoi_tra_bai_id | uuid | Y |  | FK→nhan_su.id |  |
 
 ## ca_test_cau
 
@@ -1862,6 +1864,8 @@
 
 ## Functions
 
+- `co_chuc_nang(p_chuc_nang text)` → boolean
+- `co_quyen_ghi(p_chuc_nang text)` → boolean
 - `count_cau_by_dang(p_tbl text)` → jsonb
 - `dai_cum_hau_due(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `dai_cum_tien_de_bao_dong(goc text)` → TABLE(ma_cum text, do_sau integer)
