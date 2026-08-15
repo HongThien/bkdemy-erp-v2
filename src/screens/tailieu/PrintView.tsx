@@ -1,4 +1,4 @@
-import { Children, useEffect, useRef, useState, type CSSProperties } from 'react'
+import { Children, Fragment, useEffect, useRef, useState, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
 import { getTaiLieuFull, setTaiLieuFileUrl, DEFAULT_BTVN_LINES, kieuCols, type TaiLieuFull, type PhanResolved } from '../../lib/tailieu'
@@ -502,13 +502,22 @@ function BuoiBlock({ buoi, gv, scope, lt = true, docTitle, ltCd, tenCd, linesByC
           {num && <div className="gtbk-mh-badge"><small>Buổi</small><strong>{num}</strong></div>}
         </div>
       )}
+      {/* ⭐ Fragment, KHÔNG PHẢI <div> — đây là GỐC bug "chèn trang trắng + lặp nội dung" (Thùy báo GT 8S1
+          14/08, verify bằng render thật): <div> bọc nhóm tạo thêm 1 lớp BOX LỒNG chứa TOÀN BỘ card của nhóm.
+          paged.js xé được từng card, nhưng xé lớp box bọc-tất-cả này thì hỏng: nó dựng DỞ card đầu ở trang 1,
+          để TRẮNG HẲN trang 2, rồi dựng LẠI TỪ ĐẦU card đó ở trang 3 (mất/lặp nội dung thật, không chỉ xấu).
+          Bỏ lớp box đó đi (Fragment không sinh thẻ DOM) → nội dung chảy đúng như mong đợi: hết trang 1 thì
+          sang trang 2, không trang trắng, không lặp. Đã tự tay loại trừ mọi nghi phạm CSS khác: overflow:hidden,
+          min-height, pseudo trang trí, break-inside/after ở masthead + card-head + box-label, nền/viền của
+          .pv-box-lt, chờ document.fonts.ready — bỏ từng cái đều KHÔNG hết bug; bỏ <div> này thì hết ngay.
+          ⚠ ĐỪNG đổi ngược về <div> để "gom nhóm cho gọn" — bug quay lại y hệt. */}
       {groups.map((g, gi) => (
-        <div key={gi}>
+        <Fragment key={gi}>
           {/* 1 chuyên đề: chỉ "Lý thuyết" (tên chuyên đề ĐÃ ở dải buổi → khỏi lặp). Nhiều chuyên đề: ghi tên để phân biệt.
               Ẩn cả khối chuyên đề nếu MỌI dạng trong nhóm đều tắt hien_lt (vd buổi chỉ ôn dạng cũ). */}
           {lt && g.dangs.some((d) => d.hien_lt !== false) && <LtBlock title={groups.length > 1 ? `Lý thuyết chuyên đề: ${tenCd[g.cd] ?? ''}` : 'Lý thuyết'} lt={ltCd[g.cd]} big />}
           {g.dangs.map((d) => <DangBlock key={d.id} p={d} gv={gv} lt={lt} colByCau={colByCau} />)}
-        </div>
+        </Fragment>
       ))}
       {scope === 'all' && (buoi.btvns.some((b) => b.caus.length) || buoi.ontaps.some((b) => b.caus.length)) && (
         <BtvnSheet btvns={buoi.btvns} ontaps={buoi.ontaps} gv={gv} docTitle={docTitle} buoiTitle={buoi.title} linesByCau={linesByCau} colByCau={colByCau} />
@@ -518,10 +527,26 @@ function BuoiBlock({ buoi, gv, scope, lt = true, docTitle, ltCd, tenCd, linesByC
 }
 
 // Render nội dung lý thuyết thành các KHỐI (tách bởi dòng trống) — mỗi khối không bị xé ngang trang.
+// ⭐ Khối DÀI còn được chẻ tiếp theo TỪNG DÒNG. Lý do KHÔNG phải thẩm mỹ mà là né bug paged.js: ngắt trang
+// GIỮA hai .pv-blk (anh em ruột) thì chạy đúng, nhưng ngắt TRONG lòng 1 .pv-blk (sâu 2 tầng, giữa các
+// .mline) thì paged.js bỏ phí nốt phần trang còn lại — dạng kế tiếp nhảy hẳn trang mới (Thùy báo 8S1).
+// Vậy nên: cấm xé trong khối (.pv-blk break-inside:avoid) + chẻ khối dài thành nhiều khối NGẮN để vẫn có
+// đủ chỗ ngắt hợp lệ → trang vừa đầy vừa không phí. Khối ngắn (≤ LT_BLK_MAX dòng) giữ nguyên để 1 Ví dụ
+// ngắn không bị xé rời khỏi nhãn của nó. Dòng đầu khối dài dính dòng sau nhờ .pv-blk-keep (break-after:avoid).
+const LT_BLK_MAX = 3
 function LyThuyetBody({ text }: { text: string }) {
   const blocks = text.split(/\n[ \t]*\n/).map((b) => b.trim()).filter(Boolean)
-  if (blocks.length <= 1) return <div className="pv-math"><MathText>{text}</MathText></div>
-  return <>{blocks.map((b, i) => <div key={i} className="pv-blk pv-math"><MathText>{b}</MathText></div>)}</>
+  if (blocks.length <= 1 && blocks[0] && blocks[0].split('\n').length <= LT_BLK_MAX) {
+    return <div className="pv-math"><MathText>{text}</MathText></div>
+  }
+  const out: { html: string; keep: boolean }[] = []
+  for (const b of blocks) {
+    const lines = b.split('\n').map((l) => l.trim()).filter(Boolean)
+    if (lines.length <= LT_BLK_MAX) { out.push({ html: b, keep: false }); continue }
+    // chẻ theo dòng; dòng ĐẦU của khối giữ dính dòng kế (nhãn "Ví dụ N." không mồ côi cuối trang)
+    lines.forEach((l, i) => out.push({ html: l, keep: i === 0 }))
+  }
+  return <>{out.map((o, i) => <div key={i} className={`pv-blk pv-math${o.keep ? ' pv-blk-keep' : ''}`}><MathText>{o.html}</MathText></div>)}</>
 }
 
 function LtBlock({ title, lt, big }: { title: string; lt?: { noi_dung: string; file_url: string | null; ten_file: string | null } | null; big?: boolean }) {
@@ -935,12 +960,26 @@ const CONTENT_CSS = `
 .pv-bt-score-lbl{background:var(--pv-accent,#E91E8C);color:#fff;font-weight:800;font-size:12.5px;letter-spacing:2px;text-align:center;padding:4px 0}
 .pv-bt-score-box{flex:1;min-height:20mm}
 .pv-filelink{display:inline-block;margin-top:6px;color:#2D9CDB}
-.pv-math .katex-text{display:inline}
+/* span.katex-text CHỨ KHÔNG PHẢI .katex-text: MathText trả <span> khi 1 dòng, <div> (chứa các .mline
+   BLOCK) khi NHIỀU dòng. Ép display:inline lên CẢ <div> nhiều dòng tạo cảnh "block nằm trong inline" —
+   trình duyệt phải đẻ anonymous box, paged.js xé trang ngay chỗ đó thì đo sai → tài liệu phình thêm trang.
+   Giới hạn inline cho đúng <span> 1 dòng: GT 8S1 từ 8 trang xuống 7 mà nội dung không đổi. */
+.pv-math span.katex-text{display:inline}
 .pv-rh,.pv-rf{display:none}
 /* Ngắt trang: tiêu đề/nhãn KHÔNG mồ côi cuối trang; mỗi khối lý thuyết không bị xé ngang */
 .pv-h-lt,.pv-h-dang,.pv-h-btvn,.pv-h-bt,.pv-box-label{break-after:avoid}
 .pv-sec{break-inside:auto}
-.pv-blk{break-inside:auto;margin:0 0 5px}
+/* ⭐ break-inside:avoid (KHÔNG phải auto) — mỗi khối lý thuyết (1 Ví dụ, tách nhau bởi dòng trống) giữ
+   NGUYÊN VẸN 1 trang. Đây KHÔNG chỉ là thẩm mỹ: nếu để auto, paged.js xé được khối ra giữa trang, mà
+   HỄ xé trúng trong hộp lý thuyết (.pv-box-lt) thì phần trang CÒN LẠI bị bỏ phí — dạng kế tiếp KHÔNG chịu
+   xuống nằm cùng trang mà nhảy hẳn trang mới (Thùy báo: "dạng 1 mới hết nửa trang 2, dạng 2 nhảy trang").
+   Đo thật (GT 8S1): auto → trang 2 chỉ dùng 10%; avoid → trang 2 dùng 95%, dạng 1 và dạng 2 nằm CHUNG trang.
+   Đã loại trừ: không phải do nền/viền/bo góc .pv-box-lt (bỏ hết vẫn y hệt), không phải break rule ở
+   .gtbk-card-head — là giới hạn của paged.js khi nối tiếp phần bị xé. Đánh đổi: 1 Ví dụ dài quá chỗ trống
+   cuối trang sẽ dời NGUYÊN sang trang sau (trang trước hụt ~nửa) — chấp nhận, đổi lấy không phí cả trang. */
+.pv-blk{break-inside:avoid;margin:0 0 5px}
+/* dòng ĐẦU của khối bị chẻ (nhãn "Ví dụ N.") không được đứng lẻ cuối trang — xem LyThuyetBody */
+.pv-blk-keep{break-after:avoid}
 .pv-blk:last-child{margin-bottom:0}
 .pv-box-lt .mline{break-inside:avoid}
 `
@@ -954,20 +993,10 @@ const CONTENT_CSS = `
 const GT_SANS = "'Noto Sans','Segoe UI',Arial,sans-serif"
 const GT_GRAD = 'linear-gradient(90deg,#1997d4 0%,#18a889 34%,#f0a63b 66%,#e83483 100%)'
 const GT_BK_CSS = `
-/* Masthead buổi (đầu mỗi buổi): khung gradient bo góc + logo thật + pill + tiêu đề + Lớp/Ngày + huy hiệu tròn. */
-/* ⭐ break-after:page BẮT BUỘC (Thùy báo GT 8S1 14/08 "cách 1 trang" — verify bằng render thật, không phải
-   đoán CSS): khi card đầu buổi ĐỦ CAO để "có thể vừa, có thể không" lọt nốt phần còn lại của trang 1 sau
-   masthead, paged.js RA QUYẾT ĐỊNH SAI — dựng DỞ card đó trên trang 1 (cắt ngang, không phải do CSS ép),
-   để TRẮNG HẲN trang 2, rồi RENDER LẠI TỪ ĐẦU y hệt card đó (đủ, không cắt) ở trang 3. Đã tự tay loại trừ:
-   không phải overflow:hidden (bỏ thử vẫn y hệt), không phải font chưa tải xong (đã thêm chờ
-   document.fonts.ready, vẫn y hệt), không phải break-after:avoid chồng nhau ở .gtbk-card-head/.pv-box-label
-   (bỏ thử vẫn y hệt) — tức là bug THẬT của paged.js khi phải "ước lượng" 1 khối cao sát ranh giới trang,
-   không phải hệ quả 1 rule CSS cụ thể nào sửa được. Ép break-after:page xoá bỏ hẳn tình huống "ước lượng"
-   đó (masthead LUÔN đứng 1 mình 1 trang, card đầu LUÔN bắt đầu trang mới, không còn cửa nào để đoán sai).
-   Đổi lại tốn thêm ~1 trang mỗi buổi giáo trình — chấp nhận được (in 1 bản/buổi, không phải theo đầu HS).
-   ⚠ KHÔNG áp cho BTVN (in theo TỪNG HS, tốn giấy gấp đôi cả lớp) — xem override .gtbk-btvn-head .gtbk-mh
-   bên dưới, phiếu BTVN dính bug này thì phải quay lại đào tiếp, chưa có bằng chứng nên chưa đụng. */
-.gtbk-mh{position:relative;overflow:hidden;margin:2mm 0 5mm;min-height:40mm;padding:5mm 6mm;border:1px solid #dbe7f4;border-radius:5mm;background:linear-gradient(112deg,#f5fbff 0%,#f8fbff 42%,#fff7fb 100%);break-inside:avoid;break-after:page;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+/* Masthead buổi (đầu mỗi buổi): khung gradient bo góc + logo thật + pill + tiêu đề + Lớp/Ngày + huy hiệu tròn.
+   ⚠ ĐỪNG thêm break-after:page/avoid vào đây để "chữa" bug trắng trang — đã thử, chỉ đổi chỗ lãng phí chứ
+   không sửa gốc (gốc nằm ở thẻ <div> bọc nhóm card trong BuoiBlock, xem comment ở đó). */
+.gtbk-mh{position:relative;overflow:hidden;margin:2mm 0 5mm;min-height:40mm;padding:5mm 6mm;border:1px solid #dbe7f4;border-radius:5mm;background:linear-gradient(112deg,#f5fbff 0%,#f8fbff 42%,#fff7fb 100%);break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .gtbk-mh:before{content:"";position:absolute;left:0;top:0;bottom:0;width:2.3mm;background:linear-gradient(180deg,#1997d4 0%,#18a889 36%,#f0a63b 68%,#e83483 100%);-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .gtbk-mh:after{content:"";position:absolute;right:-10mm;top:-16mm;width:62mm;height:62mm;border-radius:50%;border:9mm solid rgba(25,151,212,.055);-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .gtbk-mh-grid{position:absolute;right:33mm;top:4mm;width:43mm;height:29mm;opacity:.16;background-image:radial-gradient(#53739c 1px,transparent 1px);background-size:5px 5px;transform:rotate(-5deg);z-index:0}

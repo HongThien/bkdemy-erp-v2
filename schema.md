@@ -372,6 +372,8 @@
 | nhan_xet | jsonb | Y |  |  |  |
 | tai_lieu_id | uuid | Y |  | FK→tai_lieu.id |  |
 | bai_da_cham_url | text | Y |  |  |  |
+| nguoi_cham_id | uuid | Y |  | FK→nhan_su.id |  |
+| nguoi_tra_bai_id | uuid | Y |  | FK→nhan_su.id |  |
 
 ## ca_test_cau
 
