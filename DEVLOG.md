@@ -5036,3 +5036,41 @@ xác nhận textarea rỗng lại (dọn sạch dữ liệu test, không để l
   đụng luật đóng phase đang chạy thật.
 - Ghi nhận thêm: `closePhase` CHO đóng phase rỗng (chỉ không tính Elo) ⇒ không ai kẹt vĩnh viễn,
   nhưng gỡ 16 chuỗi bằng tay là bấm xác nhận rỗng hàng chục lần — việc vặt vô nghĩa.
+
+## 2026-08-15 — ⭐⭐ SIẾT QUYỀN DB: thu hẹp FDW + khoá nhóm TIỀN (2 migration, CHỜ CEO chạy)
+
+- **Bối cảnh:** CEO chốt hướng "mỗi luồng nhập liệu một app, ERP thành nơi ĐỌC vận hành" ⇒ tới lúc
+  bàn quyền DB. Đo hiện trạng: **128 policy là cổng nhị phân `la_thanh_vien()`** (là nhân sự thì
+  thấy hết) · **29 policy `true`** · chỉ **6 bảng** lọc theo dòng thật, và cả 6 đều của HS/PH.
+  ⇒ Hôm nay một TA bất kỳ đọc được toàn bộ học phí, công thức phí, bảng lương, thông tin phụ huynh.
+- **⚠ TAO BÁO SAI MỘT LẦN, ĐÃ SỬA:** ban đầu gọi `fdw_bkdemy_web_read` là "mở toang, không cần đăng
+  nhập" — SAI, vì quên đọc cột `roles`: nó chỉ áp cho role riêng `fdw_bkdemy_web`. **Bài học: policy
+  có BỐN chiều (table · cmd · roles · qual); đọc thiếu một chiều là kết luận sai hẳn về mức phơi nhiễm.**
+- **⭐ Nhưng soi kỹ lại lộ chuyện lớn hơn:** role `fdw_bkdemy_web` được cấp SELECT trên **30 bảng**,
+  trong khi `bkdemy-web` chỉ khai báo **4 foreign table** (`erp_lop` · `erp_muc_hoc_phi` · `erp_nhan_su`
+  · `erp_phan_cong_lop`, dựng view `erp_fdw_live_gv_gia`). Grep toàn repo web: KHÔNG chỗ nào chạm
+  `hoa_don`. ⇒ **26 bảng cấp thừa**, gồm hoá đơn (234) · dòng thu (686) · phụ huynh · điểm · nhận xét
+  gửi PH · kho câu hỏi · **đề kèm đáp án test online**. CEO xác nhận: *"web có liên quan gì đến hoá đơn
+  tiền đâu, tối đa chỉ có mức tiền học thôi"*.
+- **⚠ POLICY và GRANT là HAI CỔNG ĐỘC LẬP** — và ở đây chúng LỆCH nhau thật: `bao_cao_ph` có GRANT
+  nhưng KHÔNG có policy. Gỡ mỗi policy thì bảng đó lọt lưới hoàn toàn. Migration gỡ CẢ HAI tầng.
+- **`202608151030_fdw_web_thu_hep.sql`** — 30 → 4 bảng. Kèm kiểm chốt: nếu lỡ sứt quyền của 4 bảng
+  web đang dùng thì `raise exception`, không cho migration đi qua.
+- **`202608151045_siet_quyen_nhom_tien.sql`** — 8 bảng tiền: xoá policy `*_member_all`, thay bằng
+  policy đọc **chính bảng phân quyền đang chạy** (`vai_tro_chuc_nang.chuc_nang='hocphi'`).
+  ⭐ KHÔNG hardcode 3 người (nghịch luật "quyền bám GHẾ") — và kiểm trước thì bảng phân quyền **đã
+  mô tả đúng nhóm CEO nói**: NS001 Thùy · NS002 Thuỳ Trang · NS003 Lộc có `hocphi`, **không ai khác**.
+  ⇒ UI và DB nói cùng một luật; thêm người thứ tư = tick ở màn Phân quyền, không cần migration.
+  Tách `co_chuc_nang()` (đọc) và `co_quyen_ghi()` (ghi, loại `chi_xem`) — tái dùng cột `chi_xem` sẵn có.
+- **⚠ VÌ SAO PHẢI XOÁ chứ không thêm:** policy Postgres cộng dồn kiểu **HOẶC**. Để `*_member_all`
+  nằm đó thì mọi policy chặt thêm vào đều vô nghĩa. Đây là chỗ dễ tưởng đã siết mà thực ra chưa.
+- **Kiểm trước khi xoá quyền GHI:** chỉ **NS005 (tài khoản admin) và NS003 (Lộc)** từng tạo hoá đơn
+  (160 và 74) — cả hai đều còn quyền sau khi siết ⇒ không gãy việc của ai.
+- **`scripts/check-quyen-tien.mjs`** — chạy TRƯỚC/SAU rồi so. ⚠ Không giả lập được bằng
+  `set local role authenticated`: `claude_build` không có quyền đó, và bản thân nó SỞ HỮU bảng nên
+  chủ sở hữu vốn bỏ qua RLS. Thay bằng: nhét `request.jwt.claims` đúng người rồi gọi thẳng hàm quyết
+  định. **Kiểm này chứng minh CỔNG đúng, KHÔNG thay được một lượt bấm thật trên app.**
+  Chạy trước migration: cổng CŨ = `true` với **cả 6 người** (đúng hiện trạng phơi nhiễm) · cổng MỚI =
+  đúng NS001/NS002/NS003/NS005, chặn NS008/NS014. ✅
+- **CHƯA ÁP.** Chuỗi kết nối GHI cố ý không nằm trên đĩa (CLAUDE.md §2.1) ⇒ CEO tự chạy. DB đang có
+  người dùng thật; migration này đổi quyền đọc/ghi chứ không đụng dữ liệu, nhưng sai là màn trắng im lặng.
