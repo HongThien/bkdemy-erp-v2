@@ -132,6 +132,10 @@ export async function deleteCau(ma_cau: string, tbl = 'dai_cau_hoi'): Promise<vo
 //   cây* (chủ đề/chuyên đề) đem xoá cả mảng. Mọi thứ của CỤM BÀI đều có hậu tố `CumBai` để grep sạch.
 export type CumBai = { ma_cum: string; ma_dang: string; ten: string | null; thu_tu: number; ghi_chu: string | null }
 export const tenCum = (c: CumBai) => c.ten?.trim() || `Cụm ${c.thu_tu}`   // chưa đặt tên → suy từ thứ tự
+// Nhánh có cụm bài chưa? hgt_cau_hoi CHƯA có cột `ma_cum` (spec-cum-bai.md: để sau).
+// ⚠ Ghi `ma_cum` vào bảng chưa có cột = PostgREST trả "Could not find the 'ma_cum' column ... in the
+//   schema cache" và CHẾT CẢ LƯỢT LƯU. Mọi insert dính cụm phải đi qua cờ này.
+export const coCumBai = (cauTbl: string) => !!CUM_TBL[cauTbl]
 
 // Bảng cụm theo bảng câu. undefined = nhánh CHƯA có cụm (hgt/hình) → UI ẩn tab Cụm.
 export const CUM_TBL: Record<string, string> = { dai_cau_hoi: 'dai_cum_bai', khtn_cau_hoi: 'khtn_cum_bai' }
@@ -586,7 +590,7 @@ export async function saveCloneBatch(a: {
     noi_dung: a.goc.noi_dung, dap_an: a.goc.dap_an, loi_giai: a.goc.loi_giai, lua_chon: a.goc.lua_chon ?? null,
     anh_de: a.goc.anh_de ?? null, anh_dap_an: a.goc.anh_dap_an ?? null, nguon: 'le',
     nguon_giai: a.goc.nguon_giai ?? 'nguoi', // gốc = người ra đề (tin)
-    ma_cum: a.maCum ?? null,
+    ...(coCumBai(tbl) ? { ma_cum: a.maCum ?? null } : {}),
   }, tbl)
   if (a.variants.length) {
     const rows = a.variants.map((v, i) => ({
@@ -595,7 +599,7 @@ export async function saveCloneBatch(a: {
       noi_dung: v.noi_dung, dap_an: v.dap_an, loi_giai: v.loi_giai, lua_chon: v.lua_chon ?? null,
       anh_de: v.anh_de ?? null, anh_dap_an: v.anh_dap_an ?? null,
       nguon: 'clone', nguon_giai: 'ai', parent_ma_cau: g.ma_cau, clone_method: 'manual_gemini', // biến thể = AI giải
-      ma_cum: a.maCum ?? null,
+      ...(coCumBai(tbl) ? { ma_cum: a.maCum ?? null } : {}),
     }))
     const { error } = await supabase.from(tbl).insert(rows)
     if (error) throw error
@@ -617,7 +621,7 @@ export async function saveCloneVariants(a: {
     noi_dung: v.noi_dung, dap_an: v.dap_an, loi_giai: v.loi_giai, lua_chon: v.lua_chon ?? null,
     anh_de: v.anh_de ?? null, anh_dap_an: v.anh_dap_an ?? null,
     nguon: 'clone', nguon_giai: 'ai', parent_ma_cau: a.goc.ma_cau, clone_method: 'manual_gemini',
-    ma_cum: a.goc.ma_cum ?? null,
+    ...(coCumBai(tbl) ? { ma_cum: a.goc.ma_cum ?? null } : {}),
   }))
   const { error } = await supabase.from(tbl).insert(rows)
   if (error) throw error
