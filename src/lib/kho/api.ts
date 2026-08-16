@@ -138,16 +138,18 @@ export const tenCum = (c: CumBai) => c.ten?.trim() || `Cụm ${c.thu_tu}`   // c
 export const coCumBai = (cauTbl: string) => !!CUM_TBL[cauTbl]
 
 // Bảng cụm theo bảng câu. undefined = nhánh CHƯA có cụm (hgt/hình) → UI ẩn tab Cụm.
-export const CUM_TBL: Record<string, string> = { dai_cau_hoi: 'dai_cum_bai', khtn_cau_hoi: 'khtn_cum_bai' }
+export const CUM_TBL: Record<string, string> = { dai_cau_hoi: 'dai_cum_bai', khtn_cau_hoi: 'khtn_cum_bai', hgt_cau_hoi: 'hgt_cum_bai' }
 // Bảng cạnh tiền đề theo bảng câu: [dạng↔dạng, cụm↔cụm]
 export const TIEN_DE_TBL: Record<string, { dang: string; cum: string }> = {
   dai_cau_hoi: { dang: 'dai_dang_tien_de', cum: 'dai_cum_tien_de' },
   khtn_cau_hoi: { dang: 'khtn_dang_tien_de', cum: 'khtn_cum_tien_de' },
+  hgt_cau_hoi: { dang: 'hgt_dang_tien_de', cum: 'hgt_cum_tien_de' },
 }
 // Hàm bao đóng ở Postgres theo bảng câu (dùng chặn chu trình + sắp topo)
 const RPC_HAU_DUE: Record<string, { dang: string; cum: string }> = {
   dai_cau_hoi: { dang: 'dai_dang_hau_due', cum: 'dai_cum_hau_due' },
   khtn_cau_hoi: { dang: 'khtn_dang_hau_due', cum: 'khtn_cum_hau_due' },
+  hgt_cau_hoi: { dang: 'hgt_dang_hau_due', cum: 'hgt_cum_hau_due' },
 }
 
 export async function listCumBai(maDang: string, cauTbl = 'dai_cau_hoi'): Promise<CumBai[]> {

@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-134 bảng · 0 view · 0 enum · 11 trigger · 41 function
+137 bảng · 0 view · 0 enum · 11 trigger · 45 function
 
 ## _migrations
 
@@ -701,6 +701,7 @@
 | clone_method | text | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | xoa_at | timestamp with time zone | Y |  |  |  |
+| ma_cum | text | Y |  | FK→hgt_cum_bai.ma_cum |  |
 
 ## hgt_chuyen_de_ly_thuyet
 
@@ -713,6 +714,24 @@
 | khong_can | boolean |  | false |  |  |
 | cap_nhat_at | timestamp with time zone |  | now() |  |  |
 
+## hgt_cum_bai
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma_cum | text |  | ('GCUM'::text \|\| lpad((nextval('hgt_cum_seq'::regclass))::text, 5, '0'::text)) | PK |  |
+| ma_dang | text |  |  | FK→hgt_ban_do.ma_dang |  |
+| ten | text | Y |  |  |  |
+| thu_tu | smallint |  | 1 |  |  |
+| ghi_chu | text | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
+## hgt_cum_tien_de
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma_cum | text |  |  | PK FK→hgt_cum_bai.ma_cum |  |
+| tien_de_ma_cum | text |  |  | PK FK→hgt_cum_bai.ma_cum |  |
+
 ## hgt_dang_ly_thuyet
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -722,6 +741,13 @@
 | file_url | text | Y |  |  |  |
 | ten_file | text | Y |  |  |  |
 | cap_nhat_at | timestamp with time zone |  | now() |  |  |
+
+## hgt_dang_tien_de
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma_dang | text |  |  | PK FK→hgt_ban_do.ma_dang |  |
+| tien_de_ma_dang | text |  |  | PK FK→hgt_ban_do.ma_dang |  |
 
 ## hinh_bai
 
@@ -1875,6 +1901,10 @@
 - `et_de(p_bai_test uuid)` → jsonb
 - `et_nop(p_bai_lam uuid)` → jsonb
 - `giaoviec_housekeeping()` → void
+- `hgt_cum_hau_due(goc text)` → TABLE(ma_cum text, do_sau integer)
+- `hgt_cum_tien_de_bao_dong(goc text)` → TABLE(ma_cum text, do_sau integer)
+- `hgt_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
+- `hgt_dang_tien_de_bao_dong(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `hinh_bao_dong_tien_de(goc uuid)` → TABLE(id uuid, do_sau integer)
 - `hinh_mo_hinh_hau_due(goc uuid)` → TABLE(id uuid, do_sau integer)
 - `hinh_mo_hinh_to_tien(nut uuid)` → TABLE(id uuid, do_sau integer)
@@ -1931,6 +1961,8 @@
 | dai_ban_do | dai_ban_do_muc_do_check | `CHECK (((muc_do >= 1) AND (muc_do <= 5)))` |
 | dai_cum_tien_de | dai_cum_tien_de_check | `CHECK ((ma_cum <> tien_de_ma_cum))` |
 | dai_dang_tien_de | dai_dang_tien_de_check | `CHECK ((ma_dang <> tien_de_ma_dang))` |
+| hgt_cum_tien_de | hgt_cum_tien_de_check | `CHECK ((ma_cum <> tien_de_ma_cum))` |
+| hgt_dang_tien_de | hgt_dang_tien_de_check | `CHECK ((ma_dang <> tien_de_ma_dang))` |
 | hinh_mo_hinh | hinh_mo_hinh_cap_mo_hinh_check | `CHECK (((cap_mo_hinh >= 1) AND (cap_mo_hinh <= 4)))` |
 | hinh_mo_hinh_cha | hinh_mo_hinh_cha_check | `CHECK ((mo_hinh_id <> cha_id))` |
 | hoc_phi_phat_sinh | hoc_phi_phat_sinh_dung_loai | `CHECK ((((loai = 'lop'::text) AND (lop_id IS NOT NULL) AND (hoc_sinh_id IS NULL)) OR ((loai = 'ca_nhan'::text) AND (hoc_sinh_id IS NOT NULL) AND (lop_id IS NULL))))` |
