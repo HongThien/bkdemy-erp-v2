@@ -783,17 +783,46 @@ async function markClosed(buoiId: string, dongCol: string, loai: string, otherCl
 //   verdict per-dạng {0/0.5/1} (= phép đo summative, feed mastery) + nhận xét định tính + % hoàn thành
 //   buổi (mig 0101, Thùy 07-16 — ước lượng thô để PH/GV định lượng nhanh, KHÔNG phải phép đo mastery).
 export type DanhGiaDiem = 0 | 0.5 | 1
-export type DanhGiaHS = { hoc_sinh_id: string; nhan_xet: string | null; hoanThanhPct: number | null; muc: number | null; diemTheoDang: Record<string, DanhGiaDiem> }
+export type DanhGiaHS = { hoc_sinh_id: string; nhan_xet: string | null; hoanThanhPct: number | null; muc: number | null; mucMa: string | null; diemTheoDang: Record<string, DanhGiaDiem> }
 // Mốc % (LEGACY — buổi cũ đã chấm; UI mới dùng Mức).
 export const HOAN_THANH_PCT_OPTS = Array.from({ length: 21 }, (_, i) => 100 - i * 5)
-// Mức chấm buổi (định tính, GV nhập tay) — 5 cao → 1 thấp.
-export const MUC_OPTS = [5, 4, 3, 2, 1] as const
-export const MUC_LABELS: Record<number, string> = {
+
+// ── Mức chấm buổi (định tính, GV nhập tay) — 5 cao → 1 thấp ──────────
+// MỘT mức có NHIỀU nhãn (CEO 16/08): cùng "Mức 4" nhưng "theo kịp bài" ≠ "tốt nhưng chậm"
+// ≠ "khá tốt nhưng còn sai sót". Số mức nói ĐỘ, mã nhãn nói VÌ SAO.
+// DB lưu `muc_ma` (danh tính) + `muc` (độ, để xếp/so sánh); câu chữ ở đây, sửa được.
+// ⚠ Thêm mã mới PHẢI kèm migration nới `buoi_danh_gia_muc_ma_chk` (CLAUDE.md §2.1).
+export type MucItem = { ma: string; muc: number; nhan: string }
+export const MUC_CATALOG: readonly MucItem[] = [
+  { ma: '5a', muc: 5, nhan: 'Con làm đúng bài và làm nhanh.' },
+  { ma: '4a', muc: 4, nhan: 'Con theo kịp bài học, hoàn thành được yêu cầu đưa ra.' },
+  { ma: '4b', muc: 4, nhan: 'Con làm bài tốt nhưng tốc độ chưa nhanh.' },
+  { ma: '4c', muc: 4, nhan: 'Con làm bài khá tốt nhưng vẫn còn sai sót.' },
+  { ma: '3a', muc: 3, nhan: 'Con bị quên kiến thức. Khi được nhắc lại thì làm bài tốt.' },
+  { ma: '3b', muc: 3, nhan: 'Con làm được bài nhưng con làm rất chậm.' },
+  { ma: '3c', muc: 3, nhan: 'Con làm được bài nhưng chưa được hoàn thiện, còn rất hay sai sót.' },
+  { ma: '3d', muc: 3, nhan: 'Con đang gặp khó khăn với tốc độ học của lớp. Một số phần con còn chưa theo kịp.' },
+  { ma: '2a', muc: 2, nhan: 'Không tự làm được, cần hướng dẫn.' },
+  { ma: '2b', muc: 2, nhan: 'Con đang chưa theo kịp tốc độ học của lớp. Nhiều kiến thức con chưa được học.' },
+  { ma: '1a', muc: 1, nhan: 'Chưa tư duy được cách làm bài.' },
+]
+export const MUC_OPTS = [5, 4, 3, 2, 1] as const // thứ tự NHÓM khi hiển thị
+export const mucItem = (ma: string | null | undefined) => MUC_CATALOG.find((m) => m.ma === ma) ?? null
+// Nhãn CŨ (1 nhãn / mức, dùng tới 16/08). 321 dòng mức 3/4 trong DB mang nghĩa theo bộ này và
+// `muc_ma` = null. KHÔNG xoá khỏi code: xoá thì lịch sử hiện "Mức 4" trống nghĩa — hoặc tệ hơn,
+// bị đọc bằng nhãn MỚI (CLAUDE.md §2: cấm xoá cứng bên được tham chiếu bằng text).
+export const MUC_NHAN_CU: Record<number, string> = {
   5: 'Làm đúng bài, làm nhanh',
   4: 'Làm đúng bài, chưa nhanh hoặc còn sai sót ít',
   3: 'Làm bài không ổn định, sai nhiều',
   2: 'Không tự làm được, cần hướng dẫn',
   1: 'Chưa tư duy được cách làm bài',
+}
+// Nhãn để HIỂN THỊ 1 dòng đánh giá: ưu tiên mã mới, không có thì rơi về nhãn cũ theo số mức.
+export function nhanMuc(muc: number | null, mucMa: string | null): string | null {
+  const it = mucItem(mucMa)
+  if (it) return it.nhan
+  return muc == null ? null : (MUC_NHAN_CU[muc] ?? null)
 }
 
 // Dạng buổi này dạy (distinct ma_dang của bài ingame, bỏ null)
@@ -805,14 +834,14 @@ export async function dangCuaBuoi(buoiId: string): Promise<string[]> {
 
 export async function getDanhGia(buoiId: string): Promise<Record<string, DanhGiaHS>> {
   const [nx, dg] = await Promise.all([
-    supabase.from('buoi_danh_gia').select('hoc_sinh_id, nhan_xet, hoan_thanh_pct, muc').eq('buoi_hoc_id', buoiId).limit(LIMIT),
+    supabase.from('buoi_danh_gia').select('hoc_sinh_id, nhan_xet, hoan_thanh_pct, muc, muc_ma').eq('buoi_hoc_id', buoiId).limit(LIMIT),
     supabase.from('buoi_danh_gia_dang').select('hoc_sinh_id, ma_dang, diem').eq('buoi_hoc_id', buoiId).limit(LIMIT),
   ])
   if (nx.error) throw nx.error
   if (dg.error) throw dg.error
   const out: Record<string, DanhGiaHS> = {}
-  const ensure = (id: string) => (out[id] ??= { hoc_sinh_id: id, nhan_xet: null, hoanThanhPct: null, muc: null, diemTheoDang: {} })
-  for (const r of (nx.data ?? []) as any[]) { const e = ensure(r.hoc_sinh_id); e.nhan_xet = r.nhan_xet; e.hoanThanhPct = r.hoan_thanh_pct ?? null; e.muc = r.muc ?? null }
+  const ensure = (id: string) => (out[id] ??= { hoc_sinh_id: id, nhan_xet: null, hoanThanhPct: null, muc: null, mucMa: null, diemTheoDang: {} })
+  for (const r of (nx.data ?? []) as any[]) { const e = ensure(r.hoc_sinh_id); e.nhan_xet = r.nhan_xet; e.hoanThanhPct = r.hoan_thanh_pct ?? null; e.muc = r.muc ?? null; e.mucMa = r.muc_ma ?? null }
   for (const r of (dg.data ?? []) as any[]) ensure(r.hoc_sinh_id).diemTheoDang[r.ma_dang] = Number(r.diem) as DanhGiaDiem
   return out
 }
@@ -1267,6 +1296,7 @@ export async function getDiemHS(hocSinhId: string): Promise<DiemHS> {
 // vì 1 trường rỗng, phải tra trường KIA còn dữ liệu không (xoá nhầm mất field còn lại — anti-NULL: chỉ
 // xoá dòng khi CẢ 2 đều rỗng).
 // buoi_danh_gia mang các trường ĐỘC LẬP (nhan_xet + hoan_thanh_pct[legacy] + muc) — chỉ xoá dòng khi CẢ 3 rỗng.
+// `muc_ma` đi KÈM `muc` (CHECK ở DB: có mã ⇒ có mức) nên kiểm `muc` là đủ, không cần kiểm riêng.
 async function getDanhGiaRow(buoiId: string, hsId: string): Promise<{ nhan_xet: string | null; hoan_thanh_pct: number | null; muc: number | null } | null> {
   const { data, error } = await supabase.from('buoi_danh_gia').select('nhan_xet, hoan_thanh_pct, muc').match({ buoi_hoc_id: buoiId, hoc_sinh_id: hsId }).maybeSingle()
   if (error) throw error
@@ -1285,16 +1315,19 @@ export async function setNhanXet(buoiId: string, hsId: string, nhanXet: string):
     { onConflict: 'buoi_hoc_id,hoc_sinh_id' })
   if (error) throw error
 }
-// Mức chấm buổi (1..5, GV nhập tay) — null = xoá lựa chọn (chưa chấm, không phải mức 0).
-export async function setMuc(buoiId: string, hsId: string, muc: number | null): Promise<void> {
+// Mức chấm buổi — GV chọn 1 NHÃN (mã trong MUC_CATALOG); số mức suy từ nhãn, không nhập rời
+// (2 chiều rời nhau là mở đường cho '4b' đi kèm muc=3). null = xoá lựa chọn (chưa chấm, ≠ mức 0).
+export async function setMuc(buoiId: string, hsId: string, ma: string | null): Promise<void> {
+  const it = mucItem(ma)
+  if (ma != null && !it) throw new Error(`Mã mức không hợp lệ: ${ma}`)
   const { data: { user } } = await supabase.auth.getUser()
   const cur = await getDanhGiaRow(buoiId, hsId)
-  if (muc == null && !cur?.nhan_xet?.trim() && cur?.hoan_thanh_pct == null) { // cả 3 rỗng → xoá dòng
+  if (!it && !cur?.nhan_xet?.trim() && cur?.hoan_thanh_pct == null) { // cả 3 rỗng → xoá dòng
     const { error } = await supabase.from('buoi_danh_gia').delete().match({ buoi_hoc_id: buoiId, hoc_sinh_id: hsId })
     if (error) throw error; return
   }
   const { error } = await supabase.from('buoi_danh_gia').upsert(
-    { buoi_hoc_id: buoiId, hoc_sinh_id: hsId, muc, graded_by: user?.id ?? null, updated_at: new Date().toISOString() },
+    { buoi_hoc_id: buoiId, hoc_sinh_id: hsId, muc: it?.muc ?? null, muc_ma: it?.ma ?? null, graded_by: user?.id ?? null, updated_at: new Date().toISOString() },
     { onConflict: 'buoi_hoc_id,hoc_sinh_id' })
   if (error) throw error
 }
