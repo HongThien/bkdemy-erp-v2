@@ -7,7 +7,7 @@ import {
   loadETForBuoi, syncDocProblems, xepLuoiTheoDe, gradeET, deleteGrade, reopenPhase,
   loadBTVNForBuoi, syncBTVNProblems, getBtvnKetQua, setBtvnKetQua, listCanhBao, themCanhBao, xoaCanhBao, closeBTVN, reopenBTVN,
   type BtvnKQ, type CanhBao, type BtvnTrangThai, type BtvnThaiDo,
-  getDanhGia, setDanhGiaDang, setNhanXet, setMuc, MUC_OPTS, MUC_LABELS, dongDanhGia, moLaiDanhGia, setNoiDungBuoi,
+  getDanhGia, setDanhGiaDang, setNhanXet, setMuc, MUC_OPTS, MUC_CATALOG, nhanMuc, dongDanhGia, moLaiDanhGia, setNoiDungBuoi,
   loadLiveTestForBuoi, getDangTen, loadMTForBuoi, syncMTProblems, getBangEloExp,
   type BuoiAo, type BuoiTim, type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type Phase, type DiemDanh, type DanhGiaHS, type DanhGiaDiem, type TabKey, type ETResult, type LuoiSync, type EloExpRow,
 } from '../../lib/gami'
@@ -1789,14 +1789,16 @@ function DanhGiaTab({ buoiId, roster, dangOpts, buoi, onChange }: { buoiId: stri
 
   async function setDiem(hsId: string, maDang: string, cur: DanhGiaDiem | undefined, val: DanhGiaDiem) {
     const next: DanhGiaDiem | null = cur === val ? null : val // bấm lại = bỏ chọn (về chưa-đánh-giá)
-    setData((d) => { const hs = d[hsId] ?? { hoc_sinh_id: hsId, nhan_xet: null, hoanThanhPct: null, muc: null, diemTheoDang: {} }; const dd = { ...hs.diemTheoDang }; if (next === null) delete dd[maDang]; else dd[maDang] = next; return { ...d, [hsId]: { ...hs, diemTheoDang: dd } } })
+    setData((d) => { const hs = d[hsId] ?? { hoc_sinh_id: hsId, nhan_xet: null, hoanThanhPct: null, muc: null, mucMa: null, diemTheoDang: {} }; const dd = { ...hs.diemTheoDang }; if (next === null) delete dd[maDang]; else dd[maDang] = next; return { ...d, [hsId]: { ...hs, diemTheoDang: dd } } })
     try { await setDanhGiaDang(buoiId, hsId, maDang, next) } catch (e: any) { alert(e.message ?? String(e)); reload() }
   }
   async function saveNX(hsId: string, txt: string) { try { await setNhanXet(buoiId, hsId, txt) } catch (e: any) { alert(e.message ?? String(e)) } }
+  // v = MÃ nhãn ('4b'…) hoặc '' = bỏ chọn. Số mức suy từ mã ở lib, UI không tự tính.
   async function saveMuc(hsId: string, v: string) {
-    const muc = v === '' ? null : Number(v)
-    setData((d) => { const hs = d[hsId] ?? { hoc_sinh_id: hsId, nhan_xet: null, hoanThanhPct: null, muc: null, diemTheoDang: {} }; return { ...d, [hsId]: { ...hs, muc } } })
-    try { await setMuc(buoiId, hsId, muc) } catch (e: any) { alert(e.message ?? String(e)); reload() }
+    const ma = v === '' ? null : v
+    const muc = ma ? Number(ma[0]) : null
+    setData((d) => { const hs = d[hsId] ?? { hoc_sinh_id: hsId, nhan_xet: null, hoanThanhPct: null, muc: null, mucMa: null, diemTheoDang: {} }; return { ...d, [hsId]: { ...hs, muc, mucMa: ma } } })
+    try { await setMuc(buoiId, hsId, ma) } catch (e: any) { alert(e.message ?? String(e)); reload() }
   }
   // Nội dung buổi học (hiện trên ảnh gửi PH) + Mô tả (nội bộ) — CẤP BUỔI, không riêng từng HS. Chuỗi rỗng → null (anti-NULL: "chưa nhập").
   async function saveND(txt: string) { try { await setNoiDungBuoi(buoiId, { noi_dung_buoi: txt.trim() || null }); onChange() } catch (e: any) { alert(e.message ?? String(e)) } }
@@ -1881,10 +1883,22 @@ function DanhGiaTab({ buoiId, roster, dangOpts, buoi, onChange }: { buoiId: stri
                     )
                   })}
                   <td className="border border-slate-200 px-3 py-2">
-                    <select value={hs?.muc ?? ''} onChange={(e) => saveMuc(hsId, e.target.value)} disabled={xong} title={hs?.muc ? MUC_LABELS[hs.muc] : undefined}
-                      className="h-8 w-40 rounded-md border border-slate-200 px-1.5 text-[12px] disabled:bg-slate-50 disabled:text-slate-500">
+                    {/* Buổi chấm bằng bộ nhãn CŨ: có `muc` nhưng chưa có mã → giữ nguyên option riêng
+                        (đánh dấu "nhãn cũ") thay vì im lặng đọc nó bằng nhãn mới. Chọn nhãn mới = ghi đè. */}
+                    <select value={hs?.mucMa ?? (hs?.muc ? `cu-${hs.muc}` : '')} onChange={(e) => saveMuc(hsId, e.target.value)} disabled={xong}
+                      title={nhanMuc(hs?.muc ?? null, hs?.mucMa ?? null) ?? undefined}
+                      className="h-8 w-56 rounded-md border border-slate-200 px-1.5 text-[12px] disabled:bg-slate-50 disabled:text-slate-500">
                       <option value="">— chưa chọn —</option>
-                      {MUC_OPTS.map((m) => <option key={m} value={m} title={MUC_LABELS[m]}>Mức {m} · {MUC_LABELS[m]}</option>)}
+                      {!hs?.mucMa && hs?.muc != null && (
+                        <option value={`cu-${hs.muc}`} disabled>Mức {hs.muc} · {nhanMuc(hs.muc, null)} (nhãn cũ)</option>
+                      )}
+                      {MUC_OPTS.map((m) => (
+                        <optgroup key={m} label={`Mức ${m}`}>
+                          {MUC_CATALOG.filter((it) => it.muc === m).map((it) => (
+                            <option key={it.ma} value={it.ma} title={it.nhan}>{it.nhan}</option>
+                          ))}
+                        </optgroup>
+                      ))}
                     </select>
                   </td>
                   <td className="border border-slate-200 px-3 py-2">
