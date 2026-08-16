@@ -802,9 +802,9 @@ export const MUC_CATALOG: readonly MucItem[] = [
   { ma: '3b', muc: 3, nhan: 'Con làm được bài nhưng con làm rất chậm.' },
   { ma: '3c', muc: 3, nhan: 'Con làm được bài nhưng chưa được hoàn thiện, còn rất hay sai sót.' },
   { ma: '3d', muc: 3, nhan: 'Con đang gặp khó khăn với tốc độ học của lớp. Một số phần con còn chưa theo kịp.' },
-  { ma: '2a', muc: 2, nhan: 'Không tự làm được, cần hướng dẫn.' },
+  { ma: '2a', muc: 2, nhan: 'Con chưa tự làm được bài, còn cần thầy cô hướng dẫn.' },
   { ma: '2b', muc: 2, nhan: 'Con đang chưa theo kịp tốc độ học của lớp. Nhiều kiến thức con chưa được học.' },
-  { ma: '1a', muc: 1, nhan: 'Chưa tư duy được cách làm bài.' },
+  { ma: '1a', muc: 1, nhan: 'Con chưa hiểu được nội dung bài học.' },
 ]
 export const MUC_OPTS = [5, 4, 3, 2, 1] as const // thứ tự NHÓM khi hiển thị
 export const mucItem = (ma: string | null | undefined) => MUC_CATALOG.find((m) => m.ma === ma) ?? null
