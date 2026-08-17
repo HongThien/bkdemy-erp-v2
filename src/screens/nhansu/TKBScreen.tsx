@@ -35,7 +35,8 @@ const hhmm = (t: string) => t.slice(0, 5)
 const toMin = (t: string) => Number(t.slice(0, 2)) * 60 + Number(t.slice(3, 5))
 const today = () => new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Ho_Chi_Minh' })
 
-// Khung lớn cố định của 1 ngày (lo/hi = phút; ca thuộc khung nếu giờ BẮT ĐẦU ∈ [lo, hi)).
+// Khung lớn cố định của 1 ngày (lo/hi = phút; ca thuộc khung nếu [gio_bat_dau, gio_ket_thuc) CHỒNG LẤN [lo, hi) —
+// ca dài vắt qua nhiều khung thì hiện lại ở MỌI khung nó chiếm, để phòng luôn rõ ở từng khung).
 // macDinh = giờ gợi ý khi xếp ca mới từ khung này. an = ẩn khi rỗng (giờ trưa).
 type Band = { ten: string; lo: number; hi: number; macDinh: [string, string]; an?: boolean }
 const BANDS: Band[] = [
@@ -69,14 +70,14 @@ export default function TKBScreen() {
   }
   useEffect(() => { reload() }, [])
 
-  // KHUNG LỚN CANONICAL (Thùy chốt): ngày chia ~7 khung cố định; ca xếp vào khung theo GIỜ BẮT ĐẦU
-  // (bỏ qua giờ kết thúc — biên khung trùng giờ vào ca nên không có ca vắt khung).
+  // KHUNG LỚN CANONICAL (Thùy chốt): ngày chia ~7 khung cố định; ca xếp vào MỌI khung nó CHỒNG LẤN
+  // theo [gio_bat_dau, gio_ket_thuc) (ca dài vắt 2+ khung → lặp lại ở từng khung, phòng luôn rõ).
   // Khung 12–14 gần như không dùng → tự ẩn khi rỗng (có ca thì tự hiện lại).
   // Lọc theo môn (toggle). monsCo = các môn có ca thật → dựng toggle bar.
   const monsCo = [...new Set(slots.map((s) => s.lop?.mon).filter(Boolean) as string[])].sort()
   const view = mon === 'all' ? slots : slots.filter((s) => s.lop?.mon === mon)
   const slotsInBand = (band: Band, thu: number) =>
-    view.filter((s) => s.thu === thu && toMin(s.gio_bat_dau) >= band.lo && toMin(s.gio_bat_dau) < band.hi)
+    view.filter((s) => s.thu === thu && toMin(s.gio_bat_dau) < band.hi && toMin(s.gio_ket_thuc) > band.lo)
       .sort((a, b) => toMin(a.gio_bat_dau) - toMin(b.gio_bat_dau))
   const bands = BANDS.filter((b) => !b.an || THU_COLS.some((t) => slotsInBand(b, t).length > 0))
 
@@ -190,7 +191,7 @@ const monHex = (m?: string) => (m && MON_HEX[m]) || { bd: '#cbd5e1', bg: '#f8faf
 // Chụp ảnh TKB = bảng INLINE-HEX trong popup sạch → html2canvas (CDN) → clipboard (paste Zalo). Đúng pattern V1.
 function TkbAnh({ view, mon, onClose }: { view: TKBSlot[]; mon: string; onClose: () => void }) {
   const cardRef = useRef<HTMLDivElement>(null)
-  const inBand = (b: Band, thu: number) => view.filter((s) => s.thu === thu && toMin(s.gio_bat_dau) >= b.lo && toMin(s.gio_bat_dau) < b.hi).sort((a, b2) => toMin(a.gio_bat_dau) - toMin(b2.gio_bat_dau))
+  const inBand = (b: Band, thu: number) => view.filter((s) => s.thu === thu && toMin(s.gio_bat_dau) < b.hi && toMin(s.gio_ket_thuc) > b.lo).sort((a, b2) => toMin(a.gio_bat_dau) - toMin(b2.gio_bat_dau))
   const bands = BANDS.filter((b) => !b.an || THU_COLS.some((t) => inBand(b, t).length > 0))
   const tieu_de = `Thời khóa biểu${mon !== 'all' ? ` · ${mon}` : ''}`
 
