@@ -5178,3 +5178,45 @@ sang bảng đo mà không để lại khoá nguồn nghĩa là **về sau khôn
 
 **Hệ quả:** câu backfill `deadline` cho dòng cũ thành vô nghĩa — không còn dòng nào. Luật deadline áp
 từ test phát hành mới trở đi. Màn HS giờ 3 ô đều "Chưa có bài".
+
+---
+
+## 2026-08-17 (tiếp) — HẠN NỘP test online (mig 202608171359)
+
+**Luật (Thùy chốt):** `et` = 12:00 hôm sau · `btvn` = **23:59 NGÀY TRƯỚC buổi học kế tiếp** (Thùy sửa
+tại chỗ từ "24h trước buổi kế" sang mốc-ngày cho chuẩn) · `giao_trinh` = **hết buổi hôm đó** (CTO đề
+xuất, CEO không bác) · `de_thi` = NULL, staff tự đặt. **Quá hạn thì HIỆN, không ẩn** (Thùy: *"hiện quá
+hạn thôi"*) — ẩn đi thì HS không biết mình bỏ lỡ.
+
+**⭐ KHÔNG có job đóng test.** "Hết hạn" = SUY từ `deadline < now()` (`daHetHan()` trong testonline.ts).
+Lý do: cron lật `trang_thai` là đẻ state chờ (CLAUDE.md §4) và **drift được** — job chết một đêm là cả
+hệ sai. Suy động thì sửa luật xong lịch sử tự đúng theo, không phải dọn dữ liệu. `trang_thai='dong'`
+giữ nguyên ý nghĩa **staff đóng TAY** (có actor) — và bài đóng tay thì biến mất khỏi app, khác với
+quá-hạn (vẫn hiện, khoá).
+
+**⚠ NGUỒN "buổi học tiếp theo" = `thoi_khoa_bieu`, KHÔNG phải `buoi_hoc`.** Kiểm DB 17/08: `buoi_hoc`
+có **497 dòng, TẤT CẢ đều quá khứ** (15/06 → 16/08), **không một dòng tương lai nào** — buổi được tạo
+khi nó diễn ra, không sinh trước. Viết hàm dựa vào `buoi_hoc` là luôn trả NULL mà không ai nhận ra.
+Quy ước `thu` của TKB: **CN=8, T2..T7=2..7** (khớp `gami.ts`/`opsvanhanh.ts`); TKB có cửa sổ
+`hieu_luc_tu`/`hieu_luc_den` và **nhiều dòng chồng nhau cho cùng lớp** ⇒ bắt buộc lọc theo hiệu lực.
+
+**2 hàm SQL (giờ VN tính ở Postgres, CLAUDE.md §2):**
+- `buoi_ke_tiep(lop, tu_ngay) → date` — quét tối đa 60 ngày; không thấy → **NULL, không đoán**.
+- `han_nop_bai_test(lop, ngay, loai) → timestamptz` — dispatch theo luật trên.
+
+`btvn` mà `buoi_ke_tiep` NULL (lớp hết TKB hiệu lực) ⇒ deadline NULL ⇒ `phatHanhTest` trả `canhBao` và
+màn Kho **in cảnh báo cho staff**: "bài sẽ KHÔNG tự hết hạn". Im lặng ở đây chính là cách 32 test tháng
+7 mở vĩnh viễn mà không ai biết.
+
+**Verify DB** (lớp cấp 3 thật, buổi 17/08 = thứ 2): et → 18/08 12:00 đều nhau · btvn → 17/08 hoặc 18/08
+23:59 tuỳ TKB từng lớp · giao_trinh vào ngày lớp CÓ học → đúng `gio_ket_thuc` từng lớp (21:00 · 17:30 ·
+17:00 · 21:30) · lớp không còn TKB (3A1/9V1/7V1) → NULL đúng như thiết kế.
+
+**Verify UI** (375×812, HS0004, 2 bài BTVN tạm rồi xoá): bài còn hạn → "⏳ Hạn 17/08 23:59 · còn 9h 52p",
+nút mở được. Bài quá hạn → nhãn đỏ "quá hạn", "quá hạn 8 ngày 14h", **nút `disabled`**, chữ "Đã đóng —
+không nộp được nữa". Badge ngoài màn chính đếm **1** (chỉ bài còn làm được) trong khi danh sách hiện
+đủ **2** — badge mà đếm cả thứ không bấm được thì thành nhiễu. Dọn sạch 2 dòng tạm sau khi soi.
+
+**⚠ CÒN HỞ — deadline mới chặn ở UI, DB CHƯA chặn.** `traLoiCau`/`luuDapAnET` vẫn ghi được qua API sau
+hạn vì RLS không biết gì về `deadline`. Với HS bình thường thì nút disabled là đủ, nhưng đây là lỗ thật
+và phải bịt bằng policy/trigger trước khi ET online tính vào mastery.

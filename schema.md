@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-137 bảng · 0 view · 0 enum · 11 trigger · 45 function
+140 bảng · 0 view · 0 enum · 12 trigger · 48 function
 
 ## _migrations
 
@@ -1041,6 +1041,36 @@
 | actor | uuid | Y |  |  |  |
 | ts | timestamp with time zone |  | now() |  |  |
 
+## hoat_dong_phong
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| phong_id | uuid |  |  | FK→phong.id |  |
+| ngay | date |  |  |  |  |
+| gio_bat_dau | time without time zone |  |  |  |  |
+| gio_ket_thuc | time without time zone |  |  |  |  |
+| loai | text |  |  |  | `hop_noi_bo` · `hoc_tap_ngoai_lich` · `viec_khac` |
+| tieu_de | text |  |  |  |  |
+| mon | text | Y |  |  |  |
+| ghi_chu | text | Y |  |  |  |
+| nguoi_tao_id | uuid | Y |  | FK→nhan_su.id |  |
+| trang_thai | text |  | 'xac_nhan'::text |  | `xac_nhan` · `huy` |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
+## hoat_dong_phong_log
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| hoat_dong_phong_id | uuid | Y |  |  |  |
+| hanh_dong | text |  |  |  |  |
+| truoc | jsonb | Y |  |  |  |
+| sau | jsonb |  |  |  |  |
+| actor | uuid | Y |  |  |  |
+| ts | timestamp with time zone |  | now() |  |  |
+
 ## hoc_phi_cong_thuc
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -1491,6 +1521,19 @@
 | hieu_luc_den | date | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 
+## phong
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| ma_phong | text |  |  |  |  |
+| ten_phong | text |  |  |  |  |
+| suc_chua | integer | Y |  |  |  |
+| thu_tu | integer |  |  |  |  |
+| dang_hoat_dong | boolean |  | true |  |  |
+| ghi_chu | text | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
 ## phu_huynh
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -1882,6 +1925,7 @@
 | dai_cau_hoi | trg_log_kho_cau_dai | AFTER | DELETE/UPDATE | log_kho_cau |
 | hgt_cau_hoi | trg_log_kho_cau_hgt | AFTER | DELETE/UPDATE | log_kho_cau |
 | hoa_don | trg_log_hoa_don | AFTER | INSERT/UPDATE | log_hoa_don |
+| hoat_dong_phong | trg_log_hoat_dong_phong | AFTER | INSERT/UPDATE | log_hoat_dong_phong |
 | hoc_sinh | trg_hs_nghi_tu_roi_lop | AFTER | UPDATE | hs_nghi_tu_roi_lop |
 | hoc_sinh | trg_log_he_so_hoc_phi | AFTER | UPDATE | log_he_so_hoc_phi |
 | hoc_sinh_lop | trg_log_hoc_sinh_lop | AFTER | INSERT/UPDATE | log_hoc_sinh_lop |
@@ -1891,6 +1935,7 @@
 
 ## Functions
 
+- `buoi_ke_tiep(p_lop uuid, p_tu date)` → date
 - `co_chuc_nang(p_chuc_nang text)` → boolean
 - `co_quyen_ghi(p_chuc_nang text)` → boolean
 - `count_cau_by_dang(p_tbl text)` → jsonb
@@ -1901,6 +1946,7 @@
 - `et_de(p_bai_test uuid)` → jsonb
 - `et_nop(p_bai_lam uuid)` → jsonb
 - `giaoviec_housekeeping()` → void
+- `han_nop_bai_test(p_lop uuid, p_ngay date, p_loai text)` → timestamp with time zone
 - `hgt_cum_hau_due(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `hgt_cum_tien_de_bao_dong(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `hgt_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
@@ -1922,6 +1968,7 @@
 - `log_ca_test()` → trigger
 - `log_he_so_hoc_phi()` → trigger
 - `log_hoa_don()` → trigger
+- `log_hoat_dong_phong()` → trigger
 - `log_hoc_sinh_lop()` → trigger
 - `log_kho_cau()` → trigger
 - `log_ung_vien()` → trigger

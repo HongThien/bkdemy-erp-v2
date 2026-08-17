@@ -42,7 +42,14 @@ export async function getBaiTestByDoc(nguonTaiLieuId: string, lopId: string, nga
   return ((data as BaiTest[])?.[0]) ?? null
 }
 
-export type PhatHanhKetQua = { baiTest: BaiTest; added: number; skipped: { ma_cau: string; warn: string }[] }
+export type PhatHanhKetQua = { baiTest: BaiTest; added: number; skipped: { ma_cau: string; warn: string }[]; canhBao?: string | null }
+
+// Hết hạn = SUY từ deadline, không có job đóng test (CLAUDE.md §4 — đừng đẻ state chờ).
+// `trang_thai='dong'` dành riêng cho staff đóng TAY (có actor). deadline null = không hạn.
+export function daHetHan(t: { deadline: string | null; trang_thai?: string }, now = Date.now()): boolean {
+  if (t.trang_thai === 'dong') return true
+  return !!t.deadline && new Date(t.deadline).getTime() <= now
+}
 
 // Doc loai → (câu resolver · loai bai_test · nhãn). ET/đề-thi=THI (giấu key); BTVN/giáo trình=tham khảo reveal-ngay.
 const DOC_MAP: Record<string, { getCaus: (id: string) => Promise<CauHoi[]>; testLoai: TestLoai; ten: string }> = {
@@ -98,14 +105,26 @@ export async function phatHanhTest(taiLieuId: string, override?: { lopId: string
   }
   if (!rows.length) throw new Error(`Không có câu hợp lệ để phát hành${skipped.length ? ` (${skipped.length} câu bị bỏ qua)` : ''}.`)
 
+  // Hạn nộp tính Ở POSTGRES (mig 202608171359 — luật theo loại, giờ VN, đọc thoi_khoa_bieu).
+  // NULL hợp lệ cho de_thi; NULL cho btvn = KHÔNG tìm ra buổi kế ⇒ phải báo người, đừng đoán.
+  const { data: hanNop, error: eH } = await supabase.rpc('han_nop_bai_test',
+    { p_lop: lopId, p_ngay: ngay, p_loai: map.testLoai })
+  if (eH) throw eH
+  const deadline = (hanNop as string | null) ?? null
+
   const { data: bt, error: e1 } = await supabase.from('bai_test').insert({
     nguon_tai_lieu_id: doc.id, lop_id: lopId, ngay, loai: map.testLoai, mon: doc.mon, so_cau: rows.length,
+    deadline,
   }).select().single()
   if (e1) throw e1
   const baiTest = bt as BaiTest
   const { error: e2 } = await supabase.from('bai_test_cau').insert(rows.map((r) => ({ ...r, bai_test_id: baiTest.id })))
   if (e2) throw e2
-  return { baiTest, added: rows.length, skipped }
+  // Cảnh báo (không chặn): btvn không có hạn ⇒ bài mở vĩnh viễn, staff cần biết để xử tay.
+  const canhBao = !deadline && map.testLoai === 'btvn'
+    ? 'Không tính được hạn nộp: lớp chưa có thời khoá biểu hiệu lực nên không xác định được buổi kế tiếp. Bài sẽ KHÔNG tự hết hạn.'
+    : null
+  return { baiTest, added: rows.length, skipped, canhBao }
 }
 /** @deprecated dùng phatHanhTest */
 export const phatHanhBTVN = phatHanhTest

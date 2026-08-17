@@ -9,9 +9,10 @@ import { supabase } from '../../lib/supabase'
 import { MathText } from '../kho/ui'
 import {
   listBaiTestCuaHS, getBaiTestFull, moBaiLam, traLoiCau, baoSai, nopBai, chuCaiChon, chiSoCuaChu,
-  getETDe, luuDapAnET, nopET, getETDapAnDaLuu, xemGoiY,
+  getETDe, luuDapAnET, nopET, getETDapAnDaLuu, xemGoiY, daHetHan,
   type BaiTestCuaHS, type BaiTestFull, type BaiLamCau, type ETCauDe, type ETReveal,
 } from '../../lib/testonline'
+import { mucDeadline, nhanConLai } from '../../lib/tuan'
 import { seededPerm, seededShuffleWithOrig } from '../../lib/shuffle'
 import DoiMatKhau from './DoiMatKhau'
 
@@ -91,7 +92,10 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
         {KHU.map((k) => {
           const sapCo = !k.loai
           const ds = sapCo ? [] : cuaKhu(k.id)
-          const nChuaLam = ds.filter((t) => !xongCua(t)).length
+          // Badge = việc CÒN LÀM ĐƯỢC. Bài quá hạn vẫn hiện trong danh sách (Thùy: "hiện quá hạn
+          // thôi") nhưng không đếm vào badge — badge mà đếm cả thứ không bấm được thì thành nhiễu.
+          const nChuaLam = ds.filter((t) => !xongCua(t) && !daHetHan(t)).length
+          const nQuaHan = ds.filter((t) => !xongCua(t) && daHetHan(t)).length
           return (
             <button key={k.id} disabled={sapCo} onClick={() => { setKhu(k.id); setTab('chua') }}
               className={`relative flex aspect-square flex-col justify-between rounded-2xl border p-3.5 text-left transition ${
@@ -99,8 +103,11 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
               <span className={`text-2xl ${sapCo ? 'opacity-40' : ''}`}>{k.icon}</span>
               <span>
                 <span className={`block text-[15px] font-semibold ${sapCo ? 'text-slate-400' : 'text-slate-900'}`}>{k.ten}</span>
-                <span className="mt-0.5 block text-[12.5px] text-slate-400">
-                  {sapCo ? 'Sắp có' : tests === null ? '…' : nChuaLam > 0 ? `${nChuaLam} bài chưa làm` : ds.length ? 'Xong hết rồi' : 'Chưa có bài'}
+                <span className={`mt-0.5 block text-[12.5px] ${nChuaLam === 0 && nQuaHan > 0 ? 'text-rose-500' : 'text-slate-400'}`}>
+                  {sapCo ? 'Sắp có' : tests === null ? '…'
+                    : nChuaLam > 0 ? `${nChuaLam} bài chưa làm`
+                    : nQuaHan > 0 ? `${nQuaHan} bài quá hạn`
+                    : ds.length ? 'Xong hết rồi' : 'Chưa có bài'}
                 </span>
               </span>
               {nChuaLam > 0 && (
@@ -150,20 +157,36 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
           const lam = t.bai_lam
           const daNop = xongCua(t)
           const laThi = THI_LOAI.has(t.loai)
+          // Quá hạn mà CHƯA nộp → khoá, không mở được nữa. Đã nộp rồi thì vẫn xem lại được.
+          const hetHan = daHetHan(t)
+          const khoa = hetHan && !daNop
+          const dlMs = t.deadline ? new Date(t.deadline).getTime() : null
+          const muc = mucDeadline(dlMs)
           return (
-            <button key={t.id} onClick={() => setActive(t)}
-              className={`rounded-2xl border bg-white p-4 text-left transition active:scale-[0.99] ${laThi ? 'border-violet-200' : 'border-slate-200'}`}>
+            <button key={t.id} disabled={khoa} onClick={() => setActive(t)}
+              className={`rounded-2xl border p-4 text-left transition ${
+                khoa ? 'border-slate-200 bg-slate-100' : `bg-white active:scale-[0.99] ${laThi ? 'border-violet-200' : 'border-slate-200'}`}`}>
               <div className="flex items-center justify-between">
-                <span className="text-[15px] font-semibold text-slate-900">
+                <span className={`text-[15px] font-semibold ${khoa ? 'text-slate-500' : 'text-slate-900'}`}>
                   {laThi && <span className="mr-1.5 rounded bg-violet-100 px-1.5 py-0.5 text-[11px] font-semibold text-violet-700">THI</span>}
                   {LOAI_TEN[t.loai] ?? 'Bài'} {t.mon} · {t.lop_ten}
                 </span>
-                <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${daNop ? 'bg-emerald-50 text-emerald-700' : lam ? 'bg-amber-50 text-amber-700' : 'bg-indigo-50 text-indigo-700'}`}>
-                  {daNop ? '✓ hoàn thành' : lam ? 'đang làm' : 'mới'}
+                <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${
+                  daNop ? 'bg-emerald-50 text-emerald-700' : khoa ? 'bg-rose-50 text-rose-700'
+                  : lam ? 'bg-amber-50 text-amber-700' : 'bg-indigo-50 text-indigo-700'}`}>
+                  {daNop ? '✓ hoàn thành' : khoa ? 'quá hạn' : lam ? 'đang làm' : 'mới'}
                 </span>
               </div>
               <p className="mt-1 text-[13px] text-slate-500">Buổi {fmtNgay(t.ngay)} · {t.so_cau} câu{laThi ? ' · nộp 1 lần' : ''}</p>
-              <p className="mt-2 text-[13px] font-medium text-indigo-600">{daNop ? 'Xem lại' : lam ? 'Tiếp tục' : 'Bắt đầu'} →</p>
+              {dlMs !== null && !daNop && (
+                <p className={`mt-1 text-[12.5px] font-medium ${
+                  muc === 'qua_han' ? 'text-rose-600' : muc === 'sat' ? 'text-orange-600' : muc === 'gan' ? 'text-amber-600' : 'text-slate-400'}`}>
+                  ⏳ Hạn {fmtHan(t.deadline!)} · {nhanConLai(dlMs)}
+                </p>
+              )}
+              <p className={`mt-2 text-[13px] font-medium ${khoa ? 'text-slate-400' : 'text-indigo-600'}`}>
+                {khoa ? 'Đã đóng — không nộp được nữa' : `${daNop ? 'Xem lại' : lam ? 'Tiếp tục' : 'Bắt đầu'} →`}
+              </p>
             </button>
           )
         })}
@@ -554,5 +577,11 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
 }
 
 function fmtNgay(d: string): string { const [y, m, dd] = d.split('-'); return `${dd}/${m}/${y}` }
+// Hạn nộp = timestamptz → hiển thị GIỜ VN (đừng để trình duyệt tự đoán múi giờ).
+function fmtHan(iso: string): string {
+  const vn = new Date(new Date(iso).getTime() + 7 * 3600000)
+  const p = (n: number) => String(n).padStart(2, '0')
+  return `${p(vn.getUTCDate())}/${p(vn.getUTCMonth() + 1)} ${p(vn.getUTCHours())}:${p(vn.getUTCMinutes())}`
+}
 // Bỏ nhãn "A." / "B." đầu lựa chọn (kho lưu "B. nội dung"; phần tử [0] thường mất nhãn).
 function stripLabel(s: string): string { return s.replace(/^\s*[A-F][.)]\s*/, '') }
