@@ -5022,3 +5022,299 @@ sửa lỗi in xong thì GỬI THẲNG FILE PDF cho Thùy xem, không bắt ch�
 **SỰ CỐ ĐÃ GÂY:** chạy `taskkill` nhắm server tạm của mình (cổng 5199) nhưng kill nhầm **PID cổng 5183
 = dev server của phiên khác/của Thùy**. Bài học: `taskkill` phải đối chiếu PID↔cổng NGAY TRƯỚC khi kill,
 đừng tin PID nhớ từ lệnh trước.
+
+---
+
+## 2026-08-17 — Bài tập online: chốt mô hình TÀI KHOẢN theo cấp · buộc HS cấp 3 đổi mật khẩu
+
+**Bối cảnh.** Rà lại luồng test online (đã build 07-04, spec `spec-test-online.md`): code đủ 3 tầng,
+ET chế độ thi chấm server-side, xáo câu — nhưng **dữ liệu nói là chưa ai dùng thật**: 32 test phát
+hành, **27 không HS nào mở**, 9 HS từng mở, 2 bài nộp, lần nộp cuối 04/07 (đúng ngày build demo).
+
+**CEO phân khúc lại (17/08):**
+- **Cấp 1** (khối 3–5T, 59 HS) — không có điện thoại riêng, thi tự luận ⇒ online chỉ là **tự luyện**.
+  Dùng **chung tài khoản với bố mẹ**.
+- **Cấp 2** (khối 6–9, 215 HS) — chưa phù hợp, để sau.
+- **Cấp 3** (khối 10–12, **41 HS**, 7 lớp, 1 môn) — có điện thoại riêng, thi trắc nghiệm ⇒ online là
+  **bài tập CHÍNH** (trên lớp + về nhà + luyện tập).
+
+**⭐ QUYẾT ĐỊNH — mô hình tài khoản:**
+
+| | Cấp 1 | Cấp 3 |
+|---|---|---|
+| Tài khoản HS | có, PH giữ mật khẩu | có, HS tự giữ |
+| Buộc đổi mật khẩu | không | **CÓ** |
+| Deeplink từ app PH sang TK học sinh | **có** | **KHÔNG** |
+| Bài online | tham khảo | vào mastery |
+
+- **"Chung tài khoản" = PH giữ mật khẩu của con, KHÔNG phải làm bài trong app PH.** App PH là
+  **project Supabase KHÁC** (`nhidbaxb…` vs ERP `osrvycil…`), đọc ERP qua FDW **chỉ SELECT** ⇒ cho PH
+  làm bài trong app PH nghĩa là mở đường GHI xuyên project. Không làm. Nút chỉ là **deeplink** sang
+  màn đăng nhập ERP.
+- App PH chỉ có `ERP_SUPABASE_ANON_KEY` (không có service role ERP) ⇒ **không thể tạo phiên đăng nhập
+  hộ** ⇒ SSO ngầm là bất khả với key hiện có. Deeplink + PH tự gõ mật khẩu là đúng mức.
+- **Cấp 3 bỏ deeplink khớp với việc buộc đổi mật khẩu**: HS đổi xong thì PH không biết ⇒ nút tự vô
+  hiệu. Không cần luật riêng chặn theo khối. PH cấp 3 **vẫn xem được kết quả** con qua app PH — cắt
+  đường *đăng nhập*, không cắt đường *nhìn*.
+- **KHÔNG thêm cột "hoàn cảnh làm bài".** CTO đề xuất cột/câu-hỏi "tự làm hay có PH hỗ trợ" → **CEO bác:
+  "mỗi bài có loại bài riêng chứ cần gì hỏi"**. Độ tin suy từ `(loai bài × cấp)`, là thứ TÍNH ĐƯỢC.
+  Bài học: trước khi thêm cột đo, hỏi "cột nào đang có đã trả lời câu này chưa?".
+
+**Đã build (worktree `bkdemy-erp-v2-lambai`, nhánh `feat/hs-lam-bai-dien-thoai`):**
+- `src/screens/hocsinh/DoiMatKhau.tsx` — 1 component, 2 đường: cổng BẮT BUỘC lúc đăng nhập +
+  nút 🔑 tự đổi trong `HocSinhApp`. **Chặn đặt mật khẩu mới trùng mã HS** (không có cái này thì màn
+  đổi thành thủ tục: HS gõ lại mã HS là xong, lỗ vẫn nguyên).
+- `App.tsx` — cờ `user_metadata.must_change_password` chặn TRƯỚC `HocSinhApp`. **Dùng lại pattern app
+  PH** (`bkdemy-ph-app/app/actions/auth.ts`): mật khẩu + cờ đi CHUNG một `updateUser` ⇒ không có khe hở
+  "đổi xong mà cờ còn treo".
+- `scripts/hs_buoc_doi_mk.mjs` — gắn/gỡ cờ, mặc định khối 10/11/12, dry-run mặc định, `--bo` để gỡ.
+  Idempotent: HS đã tự đổi (cờ = false) thì KHÔNG gắn lại.
+
+**Đã áp lên DB thật (CEO duyệt):** provision 6 TK cấp 3 còn thiếu (HS0643/0648/0649/0650/0682/0694)
+→ gắn cờ **41/41 HS cấp 3**. Chạy lại dry-run: `0 ghi · 41 bỏ qua` (idempotent OK).
+
+**Verify live** (`localhost:5193`, viewport 375×812): HS0004 đăng nhập PIN mặc định → **bị chặn ở
+"Đặt mật khẩu riêng"**, không vào được app. Validate: <6 ký tự · trùng mã HS · 2 ô lệch → nút Lưu
+disabled đúng cả 3 ca. `tsc` sạch, console không lỗi.
+
+**Bẫy tự cắn khi test bằng javascript_tool:** click đổi tab (`setMode`) rồi fill+submit TRONG CÙNG một
+block JS ⇒ handler `submit` vẫn đọc `mode` của render CŨ ('staff') → login fail, mà thông báo lỗi hiện
+ra lại là bản 'hs' (setErr chạy sau khi đã re-render) ⇒ trông y hệt "sai mật khẩu thật". Phải tách
+mỗi thao tác React thành một lời gọi riêng để nó kịp re-render.
+
+**CÒN (bài tập online, xếp theo ưu tiên):**
+1. `deadline`/`khoa_reveal`/`dong_at` **trống 100%**, không code nào set/đọc ⇒ test phát hành xong là
+   **mở vĩnh viễn** (HS0004 hôm nay vẫn thấy bài 11/07 ở tab "Chưa làm").
+2. Task "Duyệt báo sai" trong `getMyTasks` (spec §9) — chưa có.
+3. Nút "Chấm lại câu N / lớp Y" khi KEY sai cả lớp (spec §7) — chưa có.
+4. Deeplink app PH → TK học sinh (CHỈ cấp 1).
+
+---
+
+## 2026-08-17 (tiếp) — App HS: màn chính 6 ô · spec Tự luyện + Thông tin học tập
+
+**Màn chính (Thùy chốt, mockup duyệt trước theo spec §8).** Bỏ danh sách phẳng "Bài tập về nhà";
+thay bằng: thông tin cá nhân (tên · mã HS · lớp · môn) + **6 ô vuông, 2 CỘT** (Thùy: *"màn hình điện
+thoại là dọc mà"* — bản 3 cột đầu tiên bị bác).
+
+3 ô chạy được — **nối thẳng với tài liệu trên lớp**, mỗi ô = 1 loại doc phát hành từ Kho, KHÔNG thêm
+gì ở tầng dữ liệu, chỉ tách danh sách cũ thành 3 cửa (giữ nguyên 2 tab Chưa làm / Hoàn thành):
+
+| Ô | `bai_test.loai` | Doc nguồn |
+|---|---|---|
+| Bài tập trên lớp | `giao_trinh` | Giáo trình buổi (phần bài luyện) |
+| ET | `et` | ET |
+| BTVN | `btvn` | BTVN |
+
+3 ô nét đứt "Sắp có": Tự luyện · Thông tin học tập · Làm đề thi thử.
+
+**⭐ SPEC — TỰ LUYỆN (Thùy 17/08, chưa build):**
+- Hệ **TỰ SINH** bài dựa trên **các dạng HS đang yếu**. Mỗi lượt **10 câu**.
+- **ĐẾM THẲNG vào mastery dạng — tính là 1 lần đánh giá.**
+- ⚠ **RỦI RO CTO NÊU, CEO CHƯA CHỐT CÁCH XỬ:** BTVN cũng làm ở nhà, không giám sát, và chính sách hiện
+  hành là **KHÔNG vào mastery** (chỉ tham khảo). Tự luyện cũng ở nhà, không giám sát, nhưng LẠI đếm ⇒
+  hai luật ngược nhau cho cùng một hoàn cảnh. Nặng hơn: tự luyện lấy câu ĐÚNG dạng HS yếu, và loại
+  non-thi thì **lộ đáp án + lời giải ngay sau mỗi câu** ⇒ vòng lặp *làm → đọc lời giải → luyện lại dạng
+  đó → giờ đúng* lật ô yếu thành đạt mà không có bằng chứng độc lập nào. Mastery đo "đã luyện nhiều"
+  chứ không đo "biết làm".
+- **Đề xuất CTO (giữ nguyên quyết định ĐẾM, chỉ làm cho nó trung thực):** ① loại mới
+  `bai_test.loai='tu_luyen'` để mastery **phân biệt được kênh đo** (CLAUDE.md §5 vốn đã đòi "mastery kèm
+  độ tin") — đạt-qua-ET-giám-sát ≠ đạt-qua-tự-luyện; ② không lấy lại câu HS vừa làm gần đây (đã có sẵn
+  cơ chế chống trùng câu scope buổi, tái dùng).
+
+**⭐ SPEC — THÔNG TIN HỌC TẬP (Thùy 17/08, chưa build):**
+- Các **dạng đang yếu**.
+- **% hoàn thành (Đ – C – S)** theo **dạng** và theo **chuyên đề**.
+- **Xếp hạng trong lớp / trong khối.**
+
+**Đề thi trường/sở — đính chính.** CTO nói "v2 đã có, gần xong"; CEO bác "v1 mới có". Kiểm DB thì ở
+giữa: **code CÓ trên main** (commit `8ab449d`, `BKDEMY_DETHI_SPEC.md`, `dethi.ts`, `DeThiScreen`, mig
+0073 đã áp) nhưng **dữ liệu gần như không có** — `tai_lieu` loại `de_thi` đúng **1 dòng** ("THPT Lê
+Chẩn", 13/07), `bai_test` loại `de_thi` = **0**, chưa từng phát hành cho HS. Nhìn từ vận hành thì CEO
+đúng. Bài học lặp lại CLAUDE.md §2.1: **code tồn tại ≠ tính năng tồn tại**; phải `count(*)` trước khi
+gọi một mảng là "đã có". CEO cho biết sắp nhập nhiều đề trường/sở ⇒ ô "Làm đề thi thử" giữ chỗ sẵn.
+
+**Verify live** (`localhost:5193`, 375×812, HS0004): màn chính hiện đúng "Bài tập trên lớp 1 · ET 2 ·
+BTVN chưa có bài" khớp DB; bấm "Bài tập trên lớp" ra đúng 1 bài `giao_trinh` (18 câu, 19/07), bấm ET ra
+đúng 2 bài `et` — lọc không rò chéo. Nút ‹ quay lại chạy. `tsc` sạch.
+
+**Quy trình khi test:** phải tạm gỡ cờ `must_change_password` của HS0004 mới qua được cổng đổi mật
+khẩu, xong **reset lại về mặc định** (`_reset_hs_ve_mac_dinh.mjs`) — đã xác nhận lại 41/41 vẫn gắn cờ.
+
+---
+
+## 2026-08-17 (tiếp) — ⚠ XOÁ TOÀN BỘ dữ liệu test online (CEO chốt, làm lại từ đầu)
+
+**Quyết định CEO:** *"Xoá hết đi. Chỉ tính từ ngày xác nhận hệ thống sẽ hoàn thành thôi."* → làm sạch
+để mốc đo bắt đầu từ lúc hệ chạy thật, không lẫn data thử tháng 7.
+
+**Đã liệt kê trước khi xoá** (đúng "Luật xoá" CLAUDE.md — liệt kê → nói vì sao → chờ gật rõ ràng).
+CEO xác nhận "Xoá toàn bộ" ⇒ gồm cả `question_accepted_answers` (CTO đề nghị giữ, CEO bác).
+
+**ĐÃ XOÁ** (1 transaction: `delete from bai_test` cascade + `delete from question_accepted_answers`):
+
+| Bảng | Trước | Sau |
+|---|---|---|
+| bai_test | 32 (16 et · 9 giao_trinh · 7 btvn) | 0 |
+| bai_test_cau | 493 | 0 |
+| bai_lam | 15 (2 đã nộp · 13 dở) | 0 |
+| bai_lam_cau | 20 | 0 |
+| bai_test_report | 2 | 0 |
+| bai_lam_goi_y | 0 | 0 |
+| question_accepted_answers | 2 | 0 |
+
+Dữ liệu HS mất: 9 em có bản ghi, 3 em từng trả lời câu (HS0267 18 câu · HS0037 1 · HS0068 1).
+
+**⚠ `gami_grades` CỐ Ý KHÔNG ĐỤNG.** Bảng đo lường nối bằng `buoi_hoc_id`+`problem_id`, **không có
+cột nào trỏ về `bai_lam`** ⇒ không phân biệt được dòng sinh từ ET online với dòng chấm giấy. Xoá mù ở
+đó = xoá luôn phép đo thật. Nếu 2 bài nộp của HS0267 (12A1, buổi 02/07 + 04/07) từng sync sang thì mấy
+dòng đó **vẫn nằm lại và trông y hệt điểm ET thường**. Muốn dọn phải nhắm đúng 2 buổi đó — chưa làm,
+chờ CEO quyết riêng.
+
+**Bài học ghi lại:** `bai_lam_cau` → `gami_grades` là **đường một chiều không dấu vết**. Sync verdict
+sang bảng đo mà không để lại khoá nguồn nghĩa là **về sau không rút lại được, cũng không kiểm chứng
+được**. Nếu nối lại ET online vào mastery thì lần này phải có cột nguồn (`bai_lam_cau_id` hoặc tương
+đương) — đúng nguyên tắc CLAUDE.md §2 "danh tính bám khoá tự nhiên".
+
+**Hệ quả:** câu backfill `deadline` cho dòng cũ thành vô nghĩa — không còn dòng nào. Luật deadline áp
+từ test phát hành mới trở đi. Màn HS giờ 3 ô đều "Chưa có bài".
+
+---
+
+## 2026-08-17 (tiếp) — HẠN NỘP test online (mig 202608171359)
+
+**Luật (Thùy chốt):** `et` = 12:00 hôm sau · `btvn` = **23:59 NGÀY TRƯỚC buổi học kế tiếp** (Thùy sửa
+tại chỗ từ "24h trước buổi kế" sang mốc-ngày cho chuẩn) · `giao_trinh` = **hết buổi hôm đó** (CTO đề
+xuất, CEO không bác) · `de_thi` = NULL, staff tự đặt. **Quá hạn thì HIỆN, không ẩn** (Thùy: *"hiện quá
+hạn thôi"*) — ẩn đi thì HS không biết mình bỏ lỡ.
+
+**⭐ KHÔNG có job đóng test.** "Hết hạn" = SUY từ `deadline < now()` (`daHetHan()` trong testonline.ts).
+Lý do: cron lật `trang_thai` là đẻ state chờ (CLAUDE.md §4) và **drift được** — job chết một đêm là cả
+hệ sai. Suy động thì sửa luật xong lịch sử tự đúng theo, không phải dọn dữ liệu. `trang_thai='dong'`
+giữ nguyên ý nghĩa **staff đóng TAY** (có actor) — và bài đóng tay thì biến mất khỏi app, khác với
+quá-hạn (vẫn hiện, khoá).
+
+**⚠ NGUỒN "buổi học tiếp theo" = `thoi_khoa_bieu`, KHÔNG phải `buoi_hoc`.** Kiểm DB 17/08: `buoi_hoc`
+có **497 dòng, TẤT CẢ đều quá khứ** (15/06 → 16/08), **không một dòng tương lai nào** — buổi được tạo
+khi nó diễn ra, không sinh trước. Viết hàm dựa vào `buoi_hoc` là luôn trả NULL mà không ai nhận ra.
+Quy ước `thu` của TKB: **CN=8, T2..T7=2..7** (khớp `gami.ts`/`opsvanhanh.ts`); TKB có cửa sổ
+`hieu_luc_tu`/`hieu_luc_den` và **nhiều dòng chồng nhau cho cùng lớp** ⇒ bắt buộc lọc theo hiệu lực.
+
+**2 hàm SQL (giờ VN tính ở Postgres, CLAUDE.md §2):**
+- `buoi_ke_tiep(lop, tu_ngay) → date` — quét tối đa 60 ngày; không thấy → **NULL, không đoán**.
+- `han_nop_bai_test(lop, ngay, loai) → timestamptz` — dispatch theo luật trên.
+
+`btvn` mà `buoi_ke_tiep` NULL (lớp hết TKB hiệu lực) ⇒ deadline NULL ⇒ `phatHanhTest` trả `canhBao` và
+màn Kho **in cảnh báo cho staff**: "bài sẽ KHÔNG tự hết hạn". Im lặng ở đây chính là cách 32 test tháng
+7 mở vĩnh viễn mà không ai biết.
+
+**Verify DB** (lớp cấp 3 thật, buổi 17/08 = thứ 2): et → 18/08 12:00 đều nhau · btvn → 17/08 hoặc 18/08
+23:59 tuỳ TKB từng lớp · giao_trinh vào ngày lớp CÓ học → đúng `gio_ket_thuc` từng lớp (21:00 · 17:30 ·
+17:00 · 21:30) · lớp không còn TKB (3A1/9V1/7V1) → NULL đúng như thiết kế.
+
+**Verify UI** (375×812, HS0004, 2 bài BTVN tạm rồi xoá): bài còn hạn → "⏳ Hạn 17/08 23:59 · còn 9h 52p",
+nút mở được. Bài quá hạn → nhãn đỏ "quá hạn", "quá hạn 8 ngày 14h", **nút `disabled`**, chữ "Đã đóng —
+không nộp được nữa". Badge ngoài màn chính đếm **1** (chỉ bài còn làm được) trong khi danh sách hiện
+đủ **2** — badge mà đếm cả thứ không bấm được thì thành nhiễu. Dọn sạch 2 dòng tạm sau khi soi.
+
+**⚠ CÒN HỞ — deadline mới chặn ở UI, DB CHƯA chặn.** `traLoiCau`/`luuDapAnET` vẫn ghi được qua API sau
+hạn vì RLS không biết gì về `deadline`. Với HS bình thường thì nút disabled là đủ, nhưng đây là lỗ thật
+và phải bịt bằng policy/trigger trước khi ET online tính vào mastery. → **ĐÃ BỊT, xem mục kế tiếp.**
+
+---
+
+## 2026-08-17 (tiếp) — Siết ghi sau hạn ở tầng DB (mig 202608171419)
+
+**Lỗ:** policy HS trên `bai_lam`/`bai_lam_cau` là `for all` với điều kiện DUY NHẤT "đúng HS của mình"
+⇒ nút disabled ở app là **rào duy nhất**. Gọi thẳng PostgREST bằng anon key là sửa được đáp án sau hạn.
+Không chấp nhận được khi ET online sắp tính vào mastery: điểm đã chốt mà vẫn sửa được thì phép đo vô nghĩa.
+
+**Cách bịt:** hàm `bai_test_con_han(uuid)` (security definer — không phụ thuộc HS có đọc được `bai_test`
+hay không) + **tách policy `for all` thành SELECT / INSERT / UPDATE riêng**, gắn điều kiện còn-hạn vào
+hai đường GHI. **ĐỌC giữ nguyên tự do** — HS phải xem lại bài cũ được, chặn nhầm chỗ này là hỏng tính
+năng chứ không phải tăng an toàn.
+
+- KHÔNG đụng policy staff (`la_thanh_vien`): chấm lại / duyệt báo sai / backfill cache phải chạy được
+  sau hạn — đó là việc của người, có actor.
+- `et_nop` là SECURITY DEFINER + chủ bảng bỏ qua RLS ⇒ chấm lúc nộp vẫn chạy nguyên.
+
+**⚠ BỎ LUÔN QUYỀN XOÁ CỦA HS — lỗ có sẵn, phát hiện khi rà policy.** Policy `for all` cũ cho HS **xoá**
+`bai_lam`/`bai_lam_cau` của mình bất cứ lúc nào, tức xoá được chính phép đo của mình. Đã grep: không
+code nào trong app làm việc đó ⇒ bỏ không mất chức năng. Bản mới không khai policy DELETE cho HS.
+
+**Verify bằng client HS THẬT** (`_diag_han_rls.mjs` — anon key + signIn hs0004, đúng đường app đi), **7/7 đạt**:
+
+| Ca | Kỳ vọng | Kết quả |
+|---|---|---|
+| Test còn hạn: mở bài · trả lời câu | ghi được | ✔ ✔ |
+| Test quá hạn: mở bài · trả lời câu | bị chặn | ✔ ✔ (`violates row-level security policy`) |
+| Sửa đáp án sau khi test hết hạn | bị chặn | ✔ 0 dòng sửa được |
+| HS xoá phép đo của mình | bị chặn | ✔ 0 dòng xoá được |
+| HS đọc lại bài quá hạn | VẪN đọc được | ✔ |
+
+**Smoke test luồng thật trên app** (không chỉ tin diag): dựng 1 BTVN còn hạn 2 câu cho 11B1 → HS0004
+mở bài (⇒ `moBaiLam` qua được RLS mới) → chọn đáp án → Xác nhận → "🎉 Đúng hết!" + lời giải → đối chiếu
+DB có `bai_lam_cau{verdict:'correct', diem:1, cham_boi:'exact'}`. Xáo đáp án vẫn chạy (5 hiện ở vị trí
+B). Dọn sạch sau khi soi; `bai_test` về 0, HS0004 về mặc định, 41/41 vẫn gắn cờ.
+
+---
+
+## 2026-08-17 (tiếp) — Xử lý câu SAI ĐÁP ÁN: chấm lại cả lớp + task Duyệt báo sai (mig 202608171532)
+
+Hai việc cuối của spec test-online (§7 chấm lại · §9 task duyệt báo sai). Cả hai đều phục vụ MỘT
+tình huống: **đáp án sai thì xử thế nào**.
+
+**⭐ HAI ĐƯỜNG KHÁC NHAU, ĐỪNG TRỘN** — đây là điểm dễ làm sai nhất:
+
+| | Key ĐÚNG, HS viết cách khác | KEY SAI |
+|---|---|---|
+| Ví dụ | key "5", HS ghi "5.0" | key ghi 'C' nhưng đáp án đúng là 'B' |
+| Ảnh hưởng | 1 vài HS | CẢ LỚP |
+| Cách xử | thêm vào `question_accepted_answers` + backfill | sửa `dap_an_key` + chấm lại |
+| Tab | 🚩 HS báo sai | ⚠ Nghi sai đáp án |
+
+Nhét đáp-án-đúng vào cache khi KEY SAI thì kho vẫn sai và **lần phát hành sau lại sai tiếp** — chữa
+triệu chứng, không chữa gốc.
+
+**Phát hiện key sai = TỈ LỆ SAI CAO** (`listCauNghiSaiKey`, ngưỡng ≥3 HS trả lời và ≥70% sai, mọi loại
+câu). Cả lớp cùng sai một câu thì nghi đáp án trước, nghi HS sau. Xếp theo tỉ lệ sai giảm dần.
+
+**`suaKeyVaChamLai(cauId, keyMoi, lyDo)`:**
+- Scope **CỨNG theo `bai_test_cau_id`** — KHÔNG lan sang test khác dù cùng `ma_cau`. Mỗi lần phát hành
+  là một phép đo riêng; sửa nhầm sang test cũ = ghi đè điểm đã chốt.
+- Ghi key mới TRƯỚC, chấm lại SAU: nếu chết giữa chừng thì key vẫn đúng cho lần sau, và **thiếu dòng
+  log** ⇒ nhìn là biết "đã sửa key nhưng chưa chấm lại xong".
+- Chấm bằng ĐÚNG engine thuần HS đã dùng (`gradeTracNghiem`/`gradeDungSai`/`gradeTraLoiNgan` + tầng
+  cache TLN), không chép lại công thức.
+- **KHÔNG cần resync đo lường** — verify `pg_proc`: `et_nop` KHÔNG nhắc `gami_grades`, không trigger
+  nào trên bai_lam/bai_lam_cau, và `mastery.ts` đọc THẲNG `bai_lam_cau` làm nguồn đo. Sửa verdict là
+  mastery tự đúng. *(Đính chính mục "xoá dữ liệu" sáng nay: lúc đó tôi ghi "không rõ 2 bài nộp của
+  HS0267 có sync sang gami_grades không" — giờ kiểm được: KHÔNG có đường sync nào cả, nên 20 dòng
+  gami_grades của em ấy là chấm giấy, xoá bai_test không mất gì của mastery.)*
+- Vết: bảng mới `bai_test_cham_lai_log` (key cũ/mới · so_bai · sai→đúng · đúng→sai · lý do · người).
+  RLS **chỉ staff** — HS đọc được là biết đáp án.
+
+**Task "Duyệt báo sai" (§9):** thêm `TabKey='baosai'`, pure-derive — report `moi` TỒN TẠI ⇒ task, duyệt
+xong tự biến mất, không cờ done nào phải dọn. Gom 1 task / (lớp × buổi) để 20 HS cùng báo 1 câu không
+vỡ list. Route cho **TG** của lớp. Bấm vào đi tới màn Duyệt chấm, KHÔNG mở BuoiDetail (mở buổi thì
+chẳng có tab nào tương ứng).
+
+**Kèm theo — BỎ task "Chấm ET" khi buổi đó đã có ET online** (§9). Điều kiện theo **TỪNG BUỔI**
+(lớp+ngày có `bai_test` loại `et`), KHÔNG bỏ đại trà: ET giấy vẫn là đường chính, bỏ hết thì TG mất
+task chấm thật.
+
+`TabKey` mở rộng làm **tsc bắt đúng 5 chỗ** phải cập nhật (2 `doneAtTab`, `TASK_TAB_LABEL`, 2 chỗ gọi
+`TaskCard`) — union type ở đây đóng vai trò y như CHECK constraint ở DB. `baosai` CỐ Ý không vào
+`TASK_TABS` (danh sách khâu đo hiệu suất theo buổi): nó là hàng đợi phát sinh, không gắn buổi, đưa vào
+là đẻ mẫu số giả.
+
+**Verify live** (dựng kịch bản `SMOKE-KEYSAI` cho 11B1 rồi xoá): câu TN key ghi nhầm 'C' trong khi cả
+6 HS chọn B → tab Nghi-sai-đáp-án hiện đúng **"Câu 1 · 100% sai (6/6) · Đáp án: C"**, câu TLN 1/6 sai
+(17%) đúng là KHÔNG bị nêu. Bấm sửa C→B: confirm in đúng before/after, kết quả **"6 bài — Sai→Đúng 6 ·
+Đúng→Sai 0"**. Đối chiếu DB: `dap_an_key`='B' · 6/6 verdict `correct` diem 1 · sổ log có đủ key cũ/mới
++ lý do + người + giờ. Tab HS-báo-sai vẫn chạy song song (hiện đúng "5.0" của HS + ý kiến).
+
+**⚠ Task 'baosai' mới verify ở tầng DB, CHƯA verify qua UI người thật.** Tài khoản admin không có
+`phan_cong_lop` nên `getMyTasks` trả rỗng. Query mirror đúng logic cho ra: báo sai của 11B1 → **Trần
+Hoàng Đạt (TG)**, 1 việc. Cần một phiên đăng nhập bằng TK của TG để xác nhận card hiện đúng và bấm vào
+ra đúng màn Duyệt chấm.

@@ -68,7 +68,12 @@ export default function KhoTaiLieuScreen() {
     setPhBusy(r.id)
     try {
       const kq = await phatHanhTest(r.id)
-      setPhRes({ ok: true, msg: `Đã phát hành ${kq.added} câu cho học sinh làm online.`, skipped: kq.skipped })
+      // Hạn nộp tự tính theo loại (mig 202608171359). Không tính được thì PHẢI nói ra —
+      // im lặng nghĩa là bài mở vĩnh viễn mà không ai biết (đúng bug 32 test cũ của tháng 7).
+      const han = kq.baiTest.deadline
+        ? ` Hạn nộp: ${new Date(kq.baiTest.deadline).toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })}.`
+        : ''
+      setPhRes({ ok: true, msg: `Đã phát hành ${kq.added} câu cho học sinh làm online.${han}${kq.canhBao ? ` ⚠ ${kq.canhBao}` : ''}`, skipped: kq.skipped })
     } catch (e: any) {
       setPhRes({ ok: false, msg: e?.message ?? String(e) })
     } finally { setPhBusy(null) }

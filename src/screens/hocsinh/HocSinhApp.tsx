@@ -9,10 +9,12 @@ import { supabase } from '../../lib/supabase'
 import { MathText } from '../kho/ui'
 import {
   listBaiTestCuaHS, getBaiTestFull, moBaiLam, traLoiCau, baoSai, nopBai, chuCaiChon, chiSoCuaChu,
-  getETDe, luuDapAnET, nopET, getETDapAnDaLuu, xemGoiY,
+  getETDe, luuDapAnET, nopET, getETDapAnDaLuu, xemGoiY, daHetHan,
   type BaiTestCuaHS, type BaiTestFull, type BaiLamCau, type ETCauDe, type ETReveal,
 } from '../../lib/testonline'
+import { mucDeadline, nhanConLai } from '../../lib/tuan'
 import { seededPerm, seededShuffleWithOrig } from '../../lib/shuffle'
+import DoiMatKhau from './DoiMatKhau'
 
 type Chon = number | string | (string | null)[] | null // TN=index · TLN=chuỗi · ĐS=mảng 'D'/'S'
 type CauState = { chon: Chon; kq: { verdict: string; key: unknown; baiLamCauId: string } | null; baoRoi?: boolean }
@@ -22,12 +24,34 @@ const LOAI_TEN: Record<string, string> = { btvn: 'BTVN', et: 'ET', giao_trinh: '
 // Chế độ THI (giấu đáp án tới khi nộp, chấm server, chỉ tính lần nộp đầu) — ET và đề thi trường/sở đều vậy.
 const THI_LOAI = new Set(['et', 'de_thi'])
 
-export default function HocSinhApp({ hocSinhId, hoTen }: { hocSinhId: string; hoTen: string }) {
+// ── MÀN CHÍNH = 6 Ô VUÔNG (Thùy chốt 17/08) ─────────────────────────────────
+// 3 ô đầu nối THẲNG với tài liệu trên lớp: mỗi ô = 1 loại doc phát hành từ Kho
+// (giáo trình buổi → giao_trinh · ET → et · BTVN → btvn). Không thêm gì ở tầng dữ
+// liệu — chỉ tách danh sách phẳng cũ thành 3 cửa.
+// 3 ô sau CHƯA build (spec đã có, xem spec-test-online.md §12): tự luyện (hệ tự sinh
+// 10 câu theo dạng yếu, ĐẾM vào mastery) · thông tin học tập (dạng yếu + %Đ-C-S theo
+// dạng/chuyên đề + xếp hạng lớp/khối) · làm đề thi thử (đề trường/sở, sắp nhập nhiều).
+// 2 CỘT — màn điện thoại dọc (Thùy: "màn hình điện thoại là dọc mà").
+type KhuId = 'giao_trinh' | 'et' | 'btvn' | 'tu_luyen' | 'thong_tin' | 'de_thi_thu'
+const KHU: { id: KhuId; ten: string; icon: string; loai?: string }[] = [
+  { id: 'giao_trinh', ten: 'Bài tập trên lớp', icon: '📓', loai: 'giao_trinh' },
+  { id: 'et', ten: 'ET', icon: '📋', loai: 'et' },
+  { id: 'btvn', ten: 'BTVN', icon: '🏠', loai: 'btvn' },
+  { id: 'tu_luyen', ten: 'Tự luyện', icon: '🎯' },
+  { id: 'thong_tin', ten: 'Thông tin học tập', icon: '📈' },
+  { id: 'de_thi_thu', ten: 'Làm đề thi thử', icon: '📄' },
+]
+
+export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: string; hoTen: string; maHS: string }) {
   const [tests, setTests] = useState<BaiTestCuaHS[] | null>(null)
   const [active, setActive] = useState<BaiTestCuaHS | null>(null)
   const [tab, setTab] = useState<'chua' | 'xong'>('chua')
+  const [doiMK, setDoiMK] = useState(false)
+  const [khu, setKhu] = useState<KhuId | null>(null) // null = màn chính 6 ô
 
   useEffect(() => { listBaiTestCuaHS().then(setTests).catch(() => setTests([])) }, [])
+
+  if (doiMK) return <DoiMatKhau maHS={maHS} batBuoc={false} onXong={() => setDoiMK(false)} />
 
   if (active) {
     const back = () => { setActive(null); listBaiTestCuaHS().then(setTests) }
@@ -37,21 +61,79 @@ export default function HocSinhApp({ hocSinhId, hoTen }: { hocSinhId: string; ho
   }
 
   const xongCua = (t: BaiTestCuaHS) => t.bai_lam?.trang_thai === 'da_nop'
-  const nChua = tests?.filter((t) => !xongCua(t)).length ?? 0
-  const nXong = tests?.filter(xongCua).length ?? 0
-  const shown = (tests ?? []).filter((t) => (tab === 'xong' ? xongCua(t) : !xongCua(t)))
+  const cuaKhu = (id: KhuId) => {
+    const loai = KHU.find((k) => k.id === id)?.loai
+    return loai ? (tests ?? []).filter((t) => t.loai === loai) : []
+  }
+  // Danh tính hiển thị: lấy từ chính test HS thấy (đã qua RLS) — không query thêm bảng nào.
+  const lopMon = tests?.[0] ? `${tests[0].lop_ten} · ${tests[0].mon}` : null
+
+  const dinhDanh = (
+    <div className="flex items-center gap-3 py-4">
+      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-[15px] font-semibold text-indigo-700">
+        {hoTen.trim().split(/\s+/).slice(-2).map((w) => w[0]).join('').toUpperCase()}
+      </div>
+      <div className="min-w-0 flex-1">
+        <p className="truncate text-[15px] font-semibold text-slate-900">{hoTen}</p>
+        <p className="truncate text-[13px] text-slate-500">{maHS.toUpperCase()}{lopMon ? ` · ${lopMon}` : ''}</p>
+      </div>
+      <button onClick={() => setDoiMK(true)} title="Đổi mật khẩu"
+        className="rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-[13px] text-slate-500">🔑</button>
+      <button onClick={() => supabase.auth.signOut()}
+        className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-[13px] text-slate-500">Thoát</button>
+    </div>
+  )
+
+  // ── MÀN CHÍNH: 6 ô vuông, 2 cột ───────────────────────────────────────────
+  if (!khu) return (
+    <div className="mx-auto min-h-screen max-w-md bg-slate-50 px-4 pb-10">
+      {dinhDanh}
+      <div className="grid grid-cols-2 gap-3">
+        {KHU.map((k) => {
+          const sapCo = !k.loai
+          const ds = sapCo ? [] : cuaKhu(k.id)
+          // Badge = việc CÒN LÀM ĐƯỢC. Bài quá hạn vẫn hiện trong danh sách (Thùy: "hiện quá hạn
+          // thôi") nhưng không đếm vào badge — badge mà đếm cả thứ không bấm được thì thành nhiễu.
+          const nChuaLam = ds.filter((t) => !xongCua(t) && !daHetHan(t)).length
+          const nQuaHan = ds.filter((t) => !xongCua(t) && daHetHan(t)).length
+          return (
+            <button key={k.id} disabled={sapCo} onClick={() => { setKhu(k.id); setTab('chua') }}
+              className={`relative flex aspect-square flex-col justify-between rounded-2xl border p-3.5 text-left transition ${
+                sapCo ? 'border-dashed border-slate-300 bg-slate-100' : 'border-slate-200 bg-white active:scale-[0.98]'}`}>
+              <span className={`text-2xl ${sapCo ? 'opacity-40' : ''}`}>{k.icon}</span>
+              <span>
+                <span className={`block text-[15px] font-semibold ${sapCo ? 'text-slate-400' : 'text-slate-900'}`}>{k.ten}</span>
+                <span className={`mt-0.5 block text-[12.5px] ${nChuaLam === 0 && nQuaHan > 0 ? 'text-rose-500' : 'text-slate-400'}`}>
+                  {sapCo ? 'Sắp có' : tests === null ? '…'
+                    : nChuaLam > 0 ? `${nChuaLam} bài chưa làm`
+                    : nQuaHan > 0 ? `${nQuaHan} bài quá hạn`
+                    : ds.length ? 'Xong hết rồi' : 'Chưa có bài'}
+                </span>
+              </span>
+              {nChuaLam > 0 && (
+                <span className="absolute right-3 top-3 flex h-5 min-w-5 items-center justify-center rounded-full bg-rose-500 px-1.5 text-[12px] font-semibold text-white">{nChuaLam}</span>
+              )}
+            </button>
+          )
+        })}
+      </div>
+    </div>
+  )
+
+  // ── DANH SÁCH 1 KHU ───────────────────────────────────────────────────────
+  const dsKhu = cuaKhu(khu)
+  const nChua = dsKhu.filter((t) => !xongCua(t)).length
+  const nXong = dsKhu.filter(xongCua).length
+  const shown = dsKhu.filter((t) => (tab === 'xong' ? xongCua(t) : !xongCua(t)))
+  const tenKhu = KHU.find((k) => k.id === khu)?.ten ?? ''
 
   return (
     <div className="mx-auto min-h-screen max-w-md bg-slate-50 px-4 pb-10">
-      <div className="flex items-center justify-between py-4">
-        <div>
-          <p className="text-[13px] text-slate-400">Xin chào</p>
-          <p className="text-lg font-semibold text-slate-900">{hoTen} 👋</p>
-        </div>
-        <button onClick={() => supabase.auth.signOut()} className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-[13px] text-slate-500">Thoát</button>
+      <div className="flex items-center gap-2 py-4">
+        <button onClick={() => setKhu(null)}
+          className="rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-[13px] text-slate-500">‹</button>
+        <p className="text-lg font-semibold text-slate-900">{tenKhu}</p>
       </div>
-
-      <h2 className="mb-3 text-[13px] font-semibold uppercase tracking-wide text-slate-400">Bài tập về nhà</h2>
 
       <div className="mb-4 grid grid-cols-2 gap-1 rounded-xl bg-slate-200/70 p-1">
         {([['chua', 'Chưa làm', nChua], ['xong', 'Hoàn thành', nXong]] as const).map(([k, label, n]) => (
@@ -67,7 +149,7 @@ export default function HocSinhApp({ hocSinhId, hoTen }: { hocSinhId: string; ho
         <div className="rounded-2xl border border-slate-200 bg-white p-8 text-center">
           <p className="text-3xl">{tab === 'xong' ? '📭' : '🎉'}</p>
           <p className="mt-2 text-sm font-medium text-slate-700">{tab === 'xong' ? 'Chưa hoàn thành bài nào' : 'Không có bài nào cần làm'}</p>
-          <p className="mt-1 text-[13px] text-slate-400">{tab === 'xong' ? 'Làm xong bài sẽ chuyển sang đây.' : 'Khi thầy cô giao BTVN, bài sẽ hiện ở đây.'}</p>
+          <p className="mt-1 text-[13px] text-slate-400">{tab === 'xong' ? 'Làm xong bài sẽ chuyển sang đây.' : `Khi thầy cô giao ${tenKhu.toLowerCase()}, bài sẽ hiện ở đây.`}</p>
         </div>
       )}
       <div className="flex flex-col gap-3">
@@ -75,20 +157,36 @@ export default function HocSinhApp({ hocSinhId, hoTen }: { hocSinhId: string; ho
           const lam = t.bai_lam
           const daNop = xongCua(t)
           const laThi = THI_LOAI.has(t.loai)
+          // Quá hạn mà CHƯA nộp → khoá, không mở được nữa. Đã nộp rồi thì vẫn xem lại được.
+          const hetHan = daHetHan(t)
+          const khoa = hetHan && !daNop
+          const dlMs = t.deadline ? new Date(t.deadline).getTime() : null
+          const muc = mucDeadline(dlMs)
           return (
-            <button key={t.id} onClick={() => setActive(t)}
-              className={`rounded-2xl border bg-white p-4 text-left transition active:scale-[0.99] ${laThi ? 'border-violet-200' : 'border-slate-200'}`}>
+            <button key={t.id} disabled={khoa} onClick={() => setActive(t)}
+              className={`rounded-2xl border p-4 text-left transition ${
+                khoa ? 'border-slate-200 bg-slate-100' : `bg-white active:scale-[0.99] ${laThi ? 'border-violet-200' : 'border-slate-200'}`}`}>
               <div className="flex items-center justify-between">
-                <span className="text-[15px] font-semibold text-slate-900">
+                <span className={`text-[15px] font-semibold ${khoa ? 'text-slate-500' : 'text-slate-900'}`}>
                   {laThi && <span className="mr-1.5 rounded bg-violet-100 px-1.5 py-0.5 text-[11px] font-semibold text-violet-700">THI</span>}
                   {LOAI_TEN[t.loai] ?? 'Bài'} {t.mon} · {t.lop_ten}
                 </span>
-                <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${daNop ? 'bg-emerald-50 text-emerald-700' : lam ? 'bg-amber-50 text-amber-700' : 'bg-indigo-50 text-indigo-700'}`}>
-                  {daNop ? '✓ hoàn thành' : lam ? 'đang làm' : 'mới'}
+                <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${
+                  daNop ? 'bg-emerald-50 text-emerald-700' : khoa ? 'bg-rose-50 text-rose-700'
+                  : lam ? 'bg-amber-50 text-amber-700' : 'bg-indigo-50 text-indigo-700'}`}>
+                  {daNop ? '✓ hoàn thành' : khoa ? 'quá hạn' : lam ? 'đang làm' : 'mới'}
                 </span>
               </div>
               <p className="mt-1 text-[13px] text-slate-500">Buổi {fmtNgay(t.ngay)} · {t.so_cau} câu{laThi ? ' · nộp 1 lần' : ''}</p>
-              <p className="mt-2 text-[13px] font-medium text-indigo-600">{daNop ? 'Xem lại' : lam ? 'Tiếp tục' : 'Bắt đầu'} →</p>
+              {dlMs !== null && !daNop && (
+                <p className={`mt-1 text-[12.5px] font-medium ${
+                  muc === 'qua_han' ? 'text-rose-600' : muc === 'sat' ? 'text-orange-600' : muc === 'gan' ? 'text-amber-600' : 'text-slate-400'}`}>
+                  ⏳ Hạn {fmtHan(t.deadline!)} · {nhanConLai(dlMs)}
+                </p>
+              )}
+              <p className={`mt-2 text-[13px] font-medium ${khoa ? 'text-slate-400' : 'text-indigo-600'}`}>
+                {khoa ? 'Đã đóng — không nộp được nữa' : `${daNop ? 'Xem lại' : lam ? 'Tiếp tục' : 'Bắt đầu'} →`}
+              </p>
             </button>
           )
         })}
@@ -479,5 +577,11 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
 }
 
 function fmtNgay(d: string): string { const [y, m, dd] = d.split('-'); return `${dd}/${m}/${y}` }
+// Hạn nộp = timestamptz → hiển thị GIỜ VN (đừng để trình duyệt tự đoán múi giờ).
+function fmtHan(iso: string): string {
+  const vn = new Date(new Date(iso).getTime() + 7 * 3600000)
+  const p = (n: number) => String(n).padStart(2, '0')
+  return `${p(vn.getUTCDate())}/${p(vn.getUTCMonth() + 1)} ${p(vn.getUTCHours())}:${p(vn.getUTCMinutes())}`
+}
 // Bỏ nhãn "A." / "B." đầu lựa chọn (kho lưu "B. nội dung"; phần tử [0] thường mất nhãn).
 function stripLabel(s: string): string { return s.replace(/^\s*[A-F][.)]\s*/, '') }
