@@ -72,7 +72,17 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
   const dangLa = L.dang.filter((d) => d.cap === 'dang' || (d.cap === 'loai_ch' && !L.dang.some((x) => x.cha_id === d.id)))
   const maCap = useMemo(() => api.maPhanCapMap(L), [L])
   const giaThietMoHinh = api.giaThietDayDu(L, moHinhId)
-  const giaThietFull = gtThayThe ? (gtRieng.trim() || giaThietMoHinh) : [giaThietMoHinh, gtRieng.trim()].filter(Boolean).join('; ')
+  // ⭐ Nền kế thừa THẬT (Thùy 17/08): bài có tiền đề thì kế thừa giả thiết của tiền đề CHÍNH (cấp cao nhất
+  // trong `tienDe` đang chọn — CÙNG quy tắc `chaKeThua()` mà SoanTaiLieu/HinhPrintView dùng lúc IN), không
+  // phải mô hình. Trước đây ô xem trước này LUÔN gọi `giaThietDayDu(mô hình)` — sai với cái đã in ra thật,
+  // khiến người sửa bài KHÔNG THẤY tiền đề tác động, tưởng vẫn kế thừa mô hình dù đã gắn tiền đề.
+  // Không có tiền đề nào (mảng `tienDe` rỗng) → nền vẫn là mô hình (đúng hành vi khi không có "bài trước").
+  const chaKeThuaChinh = useMemo(() => {
+    const bts = tienDe.map((id) => L.baiToan.find((b) => b.id === id)).filter(Boolean) as BaiToan[]
+    return bts.sort((a, b) => b.cap - a.cap || b.ma.localeCompare(a.ma))[0] ?? null
+  }, [tienDe, L])
+  const giaThietNen = chaKeThuaChinh ? api.giaThietBaiToan(L, chaKeThuaChinh.id) : giaThietMoHinh
+  const giaThietFull = gtThayThe ? (gtRieng.trim() || giaThietNen) : [giaThietNen, gtRieng.trim()].filter(Boolean).join('; ')
   const anhMoHinh = api.anhCauHinhCua(L, moHinhId)
   // Hình ĐỀ BÀI đang hiệu lực (node có hình riêng thì lấy nó, không thì mượn mô hình) — làm mặc định cho bước giải.
   const anhDeHienTai = dungHinhRieng && anhRieng ? anhRieng : anhMoHinh
@@ -161,10 +171,12 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
 
             <div className={`rounded-lg border px-3 py-2.5 ${gtThayThe ? 'border-slate-200 bg-slate-50/60' : 'border-teal-200 bg-teal-50/60'}`}>
               <div className={`mb-1 text-[10.5px] font-semibold uppercase tracking-wide ${gtThayThe ? 'text-slate-400' : 'text-teal-700'}`}>
-                {gtThayThe ? 'Giả thiết của mô hình (tham chiếu — bài này sẽ THAY bằng câu riêng)' : 'Giả thiết đầy đủ của mô hình (kế thừa)'}
+                {gtThayThe
+                  ? `Giả thiết ${chaKeThuaChinh ? `của tiền đề ${chaKeThuaChinh.ma}` : 'của mô hình'} (tham chiếu — bài này sẽ THAY bằng câu riêng)`
+                  : `Giả thiết đầy đủ ${chaKeThuaChinh ? `kế thừa từ tiền đề ${chaKeThuaChinh.ma}` : 'của mô hình'} (kế thừa)`}
               </div>
               <div className="text-[13px] leading-relaxed text-slate-700">
-                {giaThietMoHinh ? <MathText>{giaThietMoHinh}</MathText> : <span className="text-slate-400">mô hình chưa có giả thiết</span>}
+                {giaThietNen ? <MathText>{giaThietNen}</MathText> : <span className="text-slate-400">{chaKeThuaChinh ? 'tiền đề chưa có giả thiết' : 'mô hình chưa có giả thiết'}</span>}
               </div>
             </div>
 
