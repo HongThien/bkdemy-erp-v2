@@ -24,6 +24,8 @@ import { useStore } from '../../store/useStore'
 
 const tienVN = (n: number) => Math.round(n).toLocaleString('vi-VN') + 'đ'
 const LOAI_LABEL: Record<string, string> = { hoc_phi: 'Học phí', hoc_duoi: 'Học đuổi', hoc_lieu: 'Học liệu', phat_sinh: 'Phát sinh', no_ky_truoc: 'Nợ kỳ trước', giam_gioi_thieu: 'Giảm giới thiệu' }
+const TT_HS_RANK: Record<string, number> = { dang_hoc: 0, bao_luu: 1, nghi: 2 } // đang học lên đầu picker
+const TT_HS_NHAN: Record<string, string> = { nghi: '⚠ đã nghỉ', bao_luu: '⏸ bảo lưu' } // nhãn cho HS không còn học
 
 // Chọn kỳ (tháng) — thay input[type=month] (Safari/Mac hiện "July 2026" khó chịu). Nút ‹ › + nhãn VN.
 // value/onChange giữ nguyên format 'YYYY-MM-01' như setKy cũ → thay tại chỗ, không đụng logic tab.
@@ -978,7 +980,8 @@ function PhatSinhTab() {
 
   async function reload() { setLoading(true); try { setRows(await listPhatSinhTheoKy(ky)) } finally { setLoading(false) } }
   useEffect(() => { reload() }, [ky]) // eslint-disable-line
-  useEffect(() => { listLop().then((l) => setLops(l.filter((x) => x.trang_thai === 'dang_hoc'))); listHocSinh().then((h) => setHocSinhs(h.filter((x) => x.trang_thai === 'dang_hoc'))) }, [])
+  // HS: gồm CẢ đã nghỉ / bảo lưu (Thùy — cần tính phát sinh cho HS đã nghỉ), đang học xếp lên đầu.
+  useEffect(() => { listLop().then((l) => setLops(l.filter((x) => x.trang_thai === 'dang_hoc'))); listHocSinh().then((h) => setHocSinhs([...h].sort((a, b) => ((TT_HS_RANK[a.trang_thai] ?? 9) - (TT_HS_RANK[b.trang_thai] ?? 9)) || a.ho_ten.localeCompare(b.ho_ten, 'vi')))) }, [])
 
   async function them() {
     if (!targetId || !moTa.trim() || !soTien) return
@@ -1009,7 +1012,7 @@ function PhatSinhTab() {
           <label className="mb-1 block text-[11px] font-medium uppercase tracking-wide text-slate-500">{loai === 'lop' ? 'Lớp' : 'Học sinh'}</label>
           {loai === 'lop'
             ? <SearchSelect value={targetId} onChange={setTargetId} placeholder="Chọn lớp…" options={lops.map((l) => ({ id: l.id, label: l.ten_lop, sub: l.mon }))} />
-            : <SearchSelect value={targetId} onChange={setTargetId} placeholder="Chọn học sinh…" options={hocSinhs.map((h) => ({ id: h.id, label: h.ho_ten, sub: h.ma_hs ?? undefined }))} />}
+            : <SearchSelect value={targetId} onChange={setTargetId} placeholder="Chọn học sinh…" options={hocSinhs.map((h) => ({ id: h.id, label: h.ho_ten, sub: [h.ma_hs, TT_HS_NHAN[h.trang_thai]].filter(Boolean).join(' · ') || undefined }))} />}
         </div>
         <Field2 label="Mô tả"><input value={moTa} onChange={(e) => setMoTa(e.target.value)} placeholder="vd: Phí dã ngoại" className={`${inp} w-44`} /></Field2>
         <Field2 label="Số tiền"><input value={soTien} onChange={(e) => setSoTien(e.target.value)} placeholder="200000" className={`${inp} w-32`} /></Field2>
