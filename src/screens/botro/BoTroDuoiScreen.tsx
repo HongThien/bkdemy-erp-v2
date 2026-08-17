@@ -14,6 +14,7 @@ import { getRoster, getBuoi, huyBuoi, xoaHSKhoiBuoi, diemDanh, getDanhGia, setNh
 import SuaBuoiModal from './SuaBuoiModal'
 import { DangPicker } from '../tailieu/TaiLieuBuilder'
 import { listNhanSu, type NhanSu } from '../../lib/nhansu'
+import { listPhong, type Phong } from '../../lib/phong'
 import { listMucHocDuoi, type MucHocDuoi } from '../../lib/hocphi'
 import { homNayVN } from '../../lib/tuan'
 import SearchSelect, { norm } from '../../components/SearchSelect'
@@ -472,6 +473,7 @@ function XepDuoiModal({ item, onClose, onDone }: { item: DotDuoi; onClose: () =>
   const [ta, setTa] = useState<string | null>(null)
   const [pickId, setPickId] = useState<string | null>(null)
   const [nss, setNss] = useState<NhanSu[]>([])
+  const [phongs, setPhongs] = useState<Phong[]>([])
   const [mucDuoi, setMucDuoi2] = useState<MucHocDuoi[]>([])
   const [mucId, setMucId] = useState<string | null>(null)
   const [sapToi, setSapToi] = useState<CaDuoi[]>([])
@@ -479,9 +481,11 @@ function XepDuoiModal({ item, onClose, onDone }: { item: DotDuoi; onClose: () =>
   useEffect(() => {
     listNhanSu().then(setNss).catch(() => {}); buoiDuoiSapToi().then(setSapToi).catch(() => {})
     listMucHocDuoi().then(setMucDuoi2).catch(() => {})
+    listPhong(true).then(setPhongs).catch(() => {})
     goiYBuoiDuoi(item.lop_id).then((g) => { setGv(g.gv_id); setTa(g.ta_id) }).catch(() => {})
   }, [item.lop_id]) // eslint-disable-line
   const nsOpts = useMemo(() => nss.map((n) => ({ id: n.id, label: n.ho_ten, sub: n.ma_ns })), [nss])
+  const phongOpts = useMemo(() => phongs.map((p) => ({ id: p.ma_phong, label: p.ten_phong })), [phongs])
   const setRow = (i: number, patch: Partial<{ ngay: string; gio: string; phong: string }>) => setRows((rs) => rs.map((r, j) => (j === i ? { ...r, ...patch } : r)))
   async function go() {
     setBusy(true)
@@ -520,7 +524,7 @@ function XepDuoiModal({ item, onClose, onDone }: { item: DotDuoi; onClose: () =>
                 <span className="w-14 pb-2 text-[12px] font-medium text-slate-400">Buổi {item.daXep + i + 1}</span>
                 <div className="flex-1"><label className="mb-1 block text-[12px] font-medium text-slate-500">Ngày *</label><input type="date" className={inputCls} value={r.ngay} onChange={(e) => setRow(i, { ngay: e.target.value })} /></div>
                 <div className="w-32"><label className="mb-1 block text-[12px] font-medium text-slate-500">Giờ</label><input type="time" className={inputCls} value={r.gio} onChange={(e) => setRow(i, { gio: e.target.value })} /></div>
-                <div className="w-28"><label className="mb-1 block text-[12px] font-medium text-slate-500">Phòng</label><input className={inputCls} value={r.phong} onChange={(e) => setRow(i, { phong: e.target.value })} /></div>
+                <div className="w-40"><label className="mb-1 block text-[12px] font-medium text-slate-500">Phòng</label><SearchSelect value={r.phong || null} onChange={(v) => setRow(i, { phong: v ?? '' })} options={phongOpts} placeholder="Chọn phòng…" /></div>
                 {rows.length > 1 && <button onClick={() => setRows((rs) => rs.filter((_, j) => j !== i))} className="pb-2.5 text-[13px] text-slate-300 hover:text-rose-600">✕</button>}
               </div>
             ))}

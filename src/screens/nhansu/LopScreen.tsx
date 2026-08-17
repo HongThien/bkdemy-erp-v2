@@ -11,6 +11,7 @@ import {
 import { Shell, Field, inp, Seg, Actions, BacChip } from '../kho/ui'
 import SearchSelect from '../../components/SearchSelect'
 import { listMucHocPhi, listMucHocLieu, type MucHocPhi, type MucHocLieu } from '../../lib/hocphi'
+import { listPhong, type Phong } from '../../lib/phong'
 
 const BAC_OPTS = ['S', 'A', 'B', 'C'] as const
 
@@ -290,6 +291,9 @@ function TkbBox({ lopId, tkb, onChange }: { lopId: string; tkb: ThoiKhoaBieu[]; 
   const [tu, setTu] = useState('18:00')
   const [den, setDen] = useState('20:00')
   const [phong, setPhong] = useState('')
+  const [phongs, setPhongs] = useState<Phong[]>([])
+  useEffect(() => { listPhong(true).then(setPhongs).catch(() => {}) }, [])
+  const phongOpts = phongs.map((p) => ({ id: p.ma_phong, label: p.ten_phong }))
   async function add() {
     try { await addTKB({ lop_id: lopId, thu, gio_bat_dau: tu, gio_ket_thuc: den, phong: phong.trim() || null, hieu_luc_tu: today(), hieu_luc_den: null }); setPhong(''); onChange() }
     catch (e: any) { alert(e.message ?? String(e)) }
@@ -313,7 +317,7 @@ function TkbBox({ lopId, tkb, onChange }: { lopId: string; tkb: ThoiKhoaBieu[]; 
         </select>
         <input type="time" value={tu} onChange={(e) => setTu(e.target.value)} className="rounded border border-slate-300 px-2 py-1.5 text-[13px]" />
         <input type="time" value={den} onChange={(e) => setDen(e.target.value)} className="rounded border border-slate-300 px-2 py-1.5 text-[13px]" />
-        <input value={phong} onChange={(e) => setPhong(e.target.value)} placeholder="phòng" className="w-20 rounded border border-slate-300 px-2 py-1.5 text-[13px]" />
+        <SearchSelect value={phong || null} onChange={(v) => setPhong(v ?? '')} options={phongOpts} placeholder="Phòng…" className="w-32" />
         <button onClick={add} className="rounded-md bg-indigo-600 px-2.5 py-1.5 text-[12px] font-medium text-white hover:bg-indigo-500">Thêm</button>
       </div>
     </div>

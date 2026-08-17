@@ -1,25 +1,25 @@
 import { useEffect, useRef, useState } from 'react'
 import { listAllTKB, listLop, addTKB, dongTKB, suaHieuLucTKB, type TKBSlot, type Lop } from '../../lib/nhansu'
+import { listPhong } from '../../lib/phong'
 import SearchSelect from '../../components/SearchSelect'
 import { Shell, Field, inp } from '../kho/ui'
 
 const THU_COLS = [2, 3, 4, 5, 6, 7, 8]
 const THU_LABEL: Record<number, string> = { 2: 'Thứ 2', 3: 'Thứ 3', 4: 'Thứ 4', 5: 'Thứ 5', 6: 'Thứ 6', 7: 'Thứ 7', 8: 'CN' }
-// 6 phòng vị trí CỐ ĐỊNH trong ô ca: 3 cột × 2 hàng (P101 P102 P201 / P202 P301 P302)
-const ROOMS = ['P101', 'P102', 'P201', 'P202', 'P301', 'P302']
 const MON_TONE: Record<string, string> = { 'Toán': 'border-indigo-400 bg-indigo-50 text-indigo-900', 'Văn': 'border-rose-400 bg-rose-50 text-rose-900', 'Anh': 'border-emerald-400 bg-emerald-50 text-emerald-900', 'KHTN': 'border-amber-400 bg-amber-50 text-amber-900' }
 const monTone = (mon?: string) => (mon && MON_TONE[mon]) || 'border-slate-300 bg-slate-50 text-slate-700'
 
-// Xếp các ca của 1 ô (khung × thứ) vào lưới 6 phòng mà KHÔNG ĐƯỢC MẤT ca nào.
+// Xếp các ca của 1 ô (khung × thứ) vào lưới vị trí phòng (từ danh mục `phong`, KHÔNG hard-code nữa —
+// xem src/lib/phong.ts) mà KHÔNG ĐƯỢC MẤT ca nào.
 // Bug cũ: mỗi vị trí phòng dùng `cell.find(phòng khớp)` → 2 ca cùng phòng, hoặc nhiều ca `phong = NULL`
 // (thực tế 50/76 ca chưa gán phòng) chỉ hiện được 1 ca, phần còn lại BIẾN MẤT im lặng.
 // Nay: ① ca có phòng thật → về đúng vị trí · ② ca còn lại (NULL / phòng lạ / trùng chỗ) lấp các vị trí trống
-// theo thứ tự giờ · ③ vẫn dư (>6 ca/ô) → trả `du` để vẽ thêm dưới lưới. Tổng ca vẽ ra luôn = tổng ca có.
-function xepCa(cell: TKBSlot[]): { o: (TKBSlot | null)[]; du: TKBSlot[] } {
-  const o: (TKBSlot | null)[] = ROOMS.map(() => null)
+// theo thứ tự giờ · ③ vẫn dư (>rooms ca/ô) → trả `du` để vẽ thêm dưới lưới. Tổng ca vẽ ra luôn = tổng ca có.
+function xepCa(cell: TKBSlot[], rooms: string[]): { o: (TKBSlot | null)[]; du: TKBSlot[] } {
+  const o: (TKBSlot | null)[] = rooms.map(() => null)
   const conLai: TKBSlot[] = []
   for (const s of cell) {
-    const i = ROOMS.indexOf(s.phong ?? '')
+    const i = rooms.indexOf(s.phong ?? '')
     if (i >= 0 && !o[i]) o[i] = s
     else conLai.push(s)
   }
@@ -54,6 +54,7 @@ const BANDS: Band[] = [
 export default function TKBScreen() {
   const [slots, setSlots] = useState<TKBSlot[]>([])
   const [dsLop, setDsLop] = useState<Lop[]>([])
+  const [rooms, setRooms] = useState<string[]>([]) // ma_phong theo thu_tu, nguồn danh mục `phong`
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
   const [sel, setSel] = useState<TKBSlot | null>(null)
@@ -63,7 +64,7 @@ export default function TKBScreen() {
 
   async function reload() {
     setLoading(true); setErr(null)
-    try { const [s, l] = await Promise.all([listAllTKB(), listLop()]); setSlots(s); setDsLop(l) }
+    try { const [s, l, p] = await Promise.all([listAllTKB(), listLop(), listPhong()]); setSlots(s); setDsLop(l); setRooms(p.map((x) => x.ma_phong)) }
     catch (e: any) { setErr(e.message ?? String(e)) } finally { setLoading(false) }
   }
   useEffect(() => { reload() }, [])
@@ -113,12 +114,12 @@ export default function TKBScreen() {
                       <div className="text-[10px] leading-tight text-slate-400">{band.ten.split('\n')[1]}</div>
                     </td>
                     {THU_COLS.map((thu) => {
-                      const { o, du } = xepCa(slotsInBand(band, thu))
+                      const { o, du } = xepCa(slotsInBand(band, thu), rooms)
                       return (
                         <td key={thu} className="rounded-md bg-white p-1 align-middle">
-                          {/* lưới phòng 3 cột × 2 hàng CỐ ĐỊNH — ô trống hiện mờ, click xếp ca vào đúng phòng */}
+                          {/* lưới vị trí phòng theo danh mục (thứ tự thu_tu) — ô trống hiện mờ, click xếp ca vào đúng phòng */}
                           <div className="grid grid-cols-3 grid-rows-2 gap-1">
-                            {ROOMS.map((phong, i) => {
+                            {rooms.map((phong, i) => {
                               const s = o[i]
                               return s ? (
                                 <button key={phong} onClick={() => setSel(s)}
@@ -164,7 +165,7 @@ export default function TKBScreen() {
       </div>
 
       {sel && <SlotModal s={sel} onClose={() => setSel(null)} onChanged={() => { setSel(null); reload() }} />}
-      {adding && <AddModal thu={adding.thu} tu={adding.tu} den={adding.den} dsLop={dsLop} onClose={() => setAdding(null)} onAdded={() => { setAdding(null); reload() }} />}
+      {adding && <AddModal thu={adding.thu} tu={adding.tu} den={adding.den} dsLop={dsLop} rooms={rooms} onClose={() => setAdding(null)} onAdded={() => { setAdding(null); reload() }} />}
       {anh && <TkbAnh view={view} mon={mon} onClose={() => setAnh(false)} />}
     </div>
   )
@@ -286,11 +287,11 @@ function SlotModal({ s, onClose, onChanged }: { s: TKBSlot; onClose: () => void;
   )
 }
 
-function AddModal({ thu, tu, den, dsLop, onClose, onAdded }: { thu: number; tu: string; den: string; dsLop: Lop[]; onClose: () => void; onAdded: () => void }) {
+function AddModal({ thu, tu, den, dsLop, rooms, onClose, onAdded }: { thu: number; tu: string; den: string; dsLop: Lop[]; rooms: string[]; onClose: () => void; onAdded: () => void }) {
   const [lopId, setLopId] = useState('')
   const [gioTu, setGioTu] = useState(tu)
   const [gioDen, setGioDen] = useState(den)
-  const [phong, setPhong] = useState(ROOMS[0])
+  const [phong, setPhong] = useState(rooms[0] ?? '')
   const [hieuLucTu, setHieuLucTu] = useState(today())
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -308,7 +309,7 @@ function AddModal({ thu, tu, den, dsLop, onClose, onAdded }: { thu: number; tu: 
       </Field>
       <Field label="Phòng">
         <div className="flex gap-1.5">
-          {ROOMS.map((p) => (
+          {rooms.map((p) => (
             <button key={p} type="button" onClick={() => setPhong(p)}
               className={`h-9 flex-1 rounded-lg border text-[13px] font-semibold transition ${phong === p ? 'border-indigo-600 bg-indigo-600 text-white' : 'border-slate-200 text-slate-600 hover:border-indigo-300'}`}>{p}</button>
           ))}

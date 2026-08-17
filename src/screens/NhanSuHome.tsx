@@ -43,6 +43,7 @@ import PhanQuyenScreen from './phanquyen/PhanQuyenScreen'
 import BaoLoiScreen from './baoloi/BaoLoiScreen'
 import OpsReportScreen from './vanhanhops/OpsReportScreen'
 import PrepScreen from './vanhanhops/PrepScreen'
+import PhongHocScreen from './phonghoc/PhongHocScreen'
 import PhanCongOpsScreen from './vanhanhops/PhanCongOpsScreen'
 import ScanDaChamScreen from './vanhanhops/ScanDaChamScreen'
 import TuyenSinhScreen from './tuyensinh/TuyenSinhScreen'
@@ -597,6 +598,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'baoloi' ? <BaoLoiScreen />
       : staffLeaf === 'ops_report' ? <OpsReportScreen />
       : staffLeaf === 'prep' ? <PrepScreen />
+      : staffLeaf === 'phong_hoc' ? <PhongHocScreen />
       : staffLeaf === 'phancong_ops' ? <PhanCongOpsScreen />
       // "Scan bài đã chấm" (test đầu vào) — Thùy 07-19 lần 2: "không cần tab riêng, chỉ cần derive task
       // cho Ops" → KHÔNG nằm trong bar tab TestDauVaoScreen/sidebar, chỉ vào được qua card derive dưới đây.

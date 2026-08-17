@@ -5022,3 +5022,167 @@ sửa lỗi in xong thì GỬI THẲNG FILE PDF cho Thùy xem, không bắt ch�
 **SỰ CỐ ĐÃ GÂY:** chạy `taskkill` nhắm server tạm của mình (cổng 5199) nhưng kill nhầm **PID cổng 5183
 = dev server của phiên khác/của Thùy**. Bài học: `taskkill` phải đối chiếu PID↔cổng NGAY TRƯỚC khi kill,
 đừng tin PID nhớ từ lệnh trước.
+
+---
+
+## 2026-08-17 — Quản lý phòng học (mới, worktree `feat/phong-hoc`)
+
+**Nghiệp vụ (Thùy chốt):** kiểu khách sạn — biết phòng nào giờ nào có ai dùng, tránh trùng. 3 nguồn
+chiếm phòng: học chính (TKB) · bổ trợ (bù/yếu/đuổi) · phát sinh (họp nội bộ/học tập ngoài lịch/việc
+khác — dọn/sửa phòng cũng coi là 1 hoạt động chiếm phòng, KHÔNG cần cơ chế khoá riêng). Quyết định:
+bảng danh mục phòng thật (thay hard-code `ROOMS` cũ trong TKBScreen) · trùng phòng = CẢNH BÁO MỀM, vẫn
+cho lưu nếu người xác nhận (không chặn cứng).
+
+**Migration `202608171357_phong_va_hoat_dong_phong.sql`:** bảng `phong` (danh mục, seed 6 phòng
+P101..P302 đúng thứ tự cũ) + bảng `hoat_dong_phong` (nguồn phát sinh, FK `phong_id` sạch — KHÔNG đổi
+`buoi_hoc.phong`/`thoi_khoa_bieu.phong` sang FK, 2 cột đó tiếp tục lưu `ma_phong` text, join qua
+`phong.ma_phong` ở client) + `hoat_dong_phong_log` + trigger `log_hoat_dong_phong()` (mẫu y hệt
+`0028_ghidanh_log.sql`/`0080_giaoviec.sql`) — verify sống: tạo 1 hoạt động test → log ghi `tao`, huỷ →
+log ghi `huy` đúng `truoc/sau` jsonb.
+
+**`src/lib/phong.ts`:** `lichPhongNgay(ngay)` gộp 3 nguồn — `buoi_hoc` (loai thuong/bu/bo_tro_yeu/
+bo_tro_duoi, trang_thai≠huy) LÀ NGUỒN CHÍNH cho chính khóa/bổ trợ; `thoi_khoa_bieu` chỉ dùng LÀM
+FALLBACK cho lớp CHƯA có `buoi_hoc` (xác nhận qua `gami.ts:moBuoi` — buổi `thuong` tạo LAZY lúc mở, nên
+hầu hết ngày tương lai chỉ có TKB, chưa có buổi thật) — loại lớp đã có buổi thật khỏi TKB để không đếm
+đôi. `kiemTraTrungPhong` = overlap giờ trong cùng phòng+ngày, loại chính activity đang sửa (`boQuaRefId`).
+
+**UI `src/screens/phonghoc/`:** hub 2 tab (`PhongHocScreen` — mẫu y hệt `TestDauVaoScreen`: 1 leaf,
+tab bên trong) — `LichPhongScreen` (lưới phòng × danh sách khối bận trong ngày, click ô trống → mở
+`PhatSinhModal`) + `PhongScreen` (CRUD danh mục, "Đóng phòng" = set `dang_hoat_dong=false`, KHÔNG xoá —
+`ma_phong` không FK nên xoá cứng sẽ rụng im lặng ở buoi_hoc/TKB cũ). Leaf mới `phong_hoc` trong
+`fixtures.ts` nhóm "Vận hành", cạnh `prep`.
+
+**Dọn 4 điểm nhập phòng free-text cũ → `SearchSelect` nguồn `listPhong()`** (để mọi nguồn cùng tham
+chiếu 1 danh mục, chống-trùng mới match chính xác): `TKBScreen.tsx` (bỏ hằng `ROOMS`, `xepCa` nhận
+`rooms` làm tham số) · `SuaBuoiModal.tsx` · `BoTroScreen.tsx` (`XepModal`) · `BoTroDuoiScreen.tsx`
+(`XepDuoiModal`, dạng nhiều-dòng) · và phát hiện thêm 1 chỗ ngoài kế hoạch ban đầu: `LopScreen.tsx`
+(`TkbBox` — thêm ca TKB ngay trong màn chi tiết Lớp) cũng ghi `thoi_khoa_bieu.phong` tự do, sửa luôn.
+
+**Verify E2E (Chrome, admin, DB thật):** Lịch phòng hiện đúng TKB hôm nay (P101 2 ca, P202 1 ca) → "+
+Phát sinh" P101 18:30–19:00 trùng ca 18:00–19:30 → popup cảnh báo đúng danh sách trùng → "Vẫn lưu" →
+lưu thành công, hiện trên lưới → click card → mở sửa đúng data → "Huỷ hoạt động" → biến mất khỏi lịch
+(soft, còn trong log) → TKBScreen sau khi đổi nguồn `ROOMS` vẫn render y hệt cũ (85 ca/tuần, đúng vị
+trí phòng). Dọn data test qua script tạm (xoá thẳng — hoạt động phát sinh không phải dữ liệu HS/tài
+chính nên không cần qua Dashboard SQL Editor như quy ước `ma_hs`).
+
+**Việc CEO cần làm tiếp (ngoài phạm vi build):** cấp quyền leaf `phong_hoc` cho role không-founder qua
+màn Phân quyền nếu muốn OPS/GV thường dùng được (mặc định chỉ Founder/`laAdmin` thấy leaf mới).
+
+**Phát hiện ngoài lề (đã spawn task riêng, chưa sửa):** `opsvanhanh.ts` có `DANH_SACH_PHONG` hard-code
+KHÁC cho prep_phong (7 phòng, KHÔNG tiền tố "P", có "303" không nằm trong 6 phòng vừa seed vào danh mục
+`phong`). Chưa động vào — cần CEO xác nhận phòng 303 có thật trước khi hợp nhất nguồn.
+
+### Bổ sung cùng ngày — Tổng quan tuần (heatmap theo yêu cầu Thùy)
+
+Thêm tab 2 **"Tổng quan tuần"** (`TongQuanTuanScreen.tsx`) trong `PhongHocScreen` — kiểu TKB: cột to =
+1 ngày (7 cột Thứ 2→CN, có ngày thật dd/mm chứ không phải mẫu tuần như TKB gốc), mỗi ngày chia 3 buổi
+Sáng/Chiều/Tối (**tái dùng `CA_TRUC_DEF`/`CA_TRUC_LIST` có sẵn trong `opsvanhanh.ts`** — 08:00–12:00 /
+14:00–18:00 / 18:00–21:30, đúng nguồn chuẩn ca đã dùng cho prep_phong/phân công ops, KHÔNG bịa khung giờ
+mới), ẩn/hiện được từng buổi (pill toggle, mặc định hiện cả 3) để thu gọn màn hình. Mỗi buổi = lưới
+`grid-cols-3` × N phòng (hiện tại 6 phòng → tự ra 3×2; sẽ tự thành 3×3 nếu sau này danh mục có 9 phòng —
+KHÔNG hard-code số hàng). Mỗi phòng 1 màu cố định xoay vòng bảng 9 màu (`PALETTE`), ô tô màu nếu phòng có
+hoạt động overlap khung giờ buổi đó (dùng lại logic overlap của `kiemTraTrungPhong`), để trống/viền chấm
+nếu không. Chỉ xem — không sửa/thêm tại đây (trỏ sang tab Lịch phòng).
+
+**Verify:** đọc computed style qua `javascript_tool` (không chỉ đọc text) — xác nhận đúng: Thứ 2 hôm nay
+buổi Tối P101 tô `rgb(99,102,241)` (indigo, đúng màu #0 trong palette) với tooltip liệt kê đúng 2 lớp
+TKB (7S2+8S1), P202 tô amber đúng 1 lớp (7A1), 4 phòng còn lại trong suốt (`rgba(0,0,0,0)`) = trống —
+khớp 100% dữ liệu Lịch phòng đã verify trước đó. Toggle ẩn Sáng+Chiều → chỉ còn khối Tối, đúng yêu cầu
+"thu gọn màn hình". Chuyển tuần trước (‹ Tuần) → load lại đúng data tuần 10/08–16/08.
+
+**Sửa ngay sau đó (Thùy: "sáng chiều tối là lọc to, chiều dọc phải REAL theo từng khung giờ"):** thiết
+kế ban đầu gộp phẳng cả buổi (1 ô = "có dùng đâu đó trong 4 tiếng") SAI Ý — quản trị phòng phải theo
+từng khung giờ cụ thể. Sửa: **export `BANDS`/`Band` từ `TKBScreen.tsx`** (source-of-truth khung giờ THẬT
+đang dùng cho lưới TKB — 7:30-10:00/10:00-12:00/12:00-14:00(tự ẩn khi rỗng)/14:00-16:00/16:00-18:00/
+18:00-19:30/19:30-21:30), TongQuanTuanScreen đổi trục dọc từ 3 buổi phẳng → **7 khung giờ thật**, phân
+loại 1 ca vào đúng khung theo giờ BẮT ĐẦU (∈[lo,hi)) — **giống hệt quy tắc `slotsInBand` của TKBScreen**,
+không tự bịa luật overlap riêng. Sáng/Chiều/Tối giờ CHỈ còn là filter gộp nhóm khung (map cứng
+`BAND_BUOI` theo index, khung trưa xếp tạm nhóm Chiều) để ẩn/hiện, không còn là đơn vị dữ liệu.
+
+**Verify lại:** P101 tối nay giờ tách đúng 2 HÀNG riêng (18:00–19:30 = 7S2, 19:30–21:30 = 8S1) thay vì
+gộp chung 1 ô như bản cũ; P202 (7A1, 19:30–21:00) đúng hàng 19:30–21:30. Khung trưa 12:00–14:00 tự ẩn
+(tuần này không có ca nào rơi vào) — đúng hành vi `an:true` gốc của TKB. Toggle Sáng+Chiều tắt → chỉ còn
+đúng 2 hàng khung tối, không còn hàng buổi gộp.
+
+**Sửa lần 2 (Thùy: "ca bổ trợ chỉ 1 tiếng, trục vẫn phải 1 tiếng — trừ từ 18h khác đi, trước 18h để
+1 tiếng"):** khung của TKBScreen (2-3 tiếng/khung, hợp với ca CHÍNH KHÓA dài cỡ đó) vẫn quá thô cho bổ
+trợ — 2 ca bổ trợ 1 tiếng KHÔNG trùng giờ (vd 8:15–9:00 và 9:15–10:00) bị tô chung 1 ô như thể trùng
+nhau. Tách hẳn khỏi `BANDS` của TKBScreen (bỏ luôn export vừa thêm ở lần sửa trước, không ai import nữa
+nên revert cho sạch) — định nghĩa `OVERVIEW_BANDS` RIÊNG cho `TongQuanTuanScreen`: **trước 18h chia
+THEO GIỜ** (7:00–8:00 catch-all, rồi 8-9/9-10/10-11/11-12/12-13(ẩn)/13-14(ẩn)/14-15/15-16/16-17/17-18 —
+11 khung), **từ 18h giữ nguyên 2 khung chính khóa tối cũ** (18:00–19:30/19:30–21:30, catch-all tới hết
+ngày) vì bản thân ca tối vốn đã dài cỡ đó, không cần chẻ. `BAND_BUOI` (map khung→buổi cho filter
+Sáng/Chiều/Tối) cập nhật theo 13 khung mới.
+
+**Verify lại (tạo 2 hoạt động phát sinh test P102, cùng ngày, KHÔNG trùng giờ: 8:15–9:00 và 9:15–10:00):**
+đọc computed title qua `javascript_tool` — xác nhận đúng 2 HÀNG riêng ("8:00–9:00" và "9:00–10:00"),
+không còn gộp vào 1 ô "7:30–10:00" như bản khung-TKB. Ca tối (18:00–19:30/19:30–21:30) vẫn đúng như cũ.
+Dọn data test qua script tạm (xoá thẳng, không phải data HS/tài chính).
+
+**Sửa lần 3, cùng ngày (Thùy pivot mạnh — 3 phản hồi liền, gộp làm 1 lần sửa):**
+1. *"Lật thiết kế: mỗi phòng là 1 cột nhỏ"* — bỏ hẳn lưới 3×3-gộp-trong-1-ô, chuyển sang **mỗi phòng =
+   1 cột dọc riêng** trong cụm cột của ngày đó (header 2 tầng: hàng 1 = tên ngày `colSpan` qua hết số
+   phòng, hàng 2 = mã từng phòng). Theo dõi 1 phòng xuống theo khung giờ giờ đọc thẳng 1 cột, không phải
+   soi ô nhỏ trong lưới.
+2. *"1 giờ là khúc to, 30 phút là khúc nhỏ, mỗi ca chiếm 1 khúc thời gian"* — thay hẳn cách chia khung
+   lần 2 (hourly trước 18h + 2 khung tối cố định) bằng **30 phút ĐỀU suốt ngày** (`buildBands()`, 7:00→
+   21:30, khung đầu/cuối vẫn catch-all 2 đầu ngày). Đổi luôn `trongKhung` từ so KHOẢNG THỜI GIAN CHỒNG
+   LẤN khung (không chỉ giờ bắt đầu) — bug đã lộ ngay từ câu hỏi của Thùy ("8h–9h30 hiện sao, 1 nửa à"):
+   trước đó chỉ so `gio_bat_dau ∈ [lo,hi)` nên ca dài hơn 1 khung BIẾN MẤT ở khung sau nó lấn qua. Giờ
+   overlap thật (`kt > b.lo && bd < b.hi`) → ca tô ĐỦ mọi khung 30p nó chồng lên, dừng đúng lúc ca kết
+   thúc. Nhóm buổi (Sáng/Chiều/Tối) đổi từ mảng tay `BAND_BUOI` cố định sang hàm `buoiOfBand()` suy theo
+   mốc `CA_TRUC_DEF` (linh hoạt theo số khung, không phải sửa tay khi đổi granularity). Viền đậm đầu mỗi
+   khung ":00" (`dauGio`) để mắt vẫn phân biệt được "1 giờ" dù trục là 30p.
+3. *"Không hiện full cả tuần, chỉ hiện số ngày vừa màn — chắc 4 ngày — có nút next/prev"* — bỏ khái
+   niệm "tuần" (Thứ 2→CN cố định) hẳn, đổi sang **cửa sổ N ngày trượt** (`SO_NGAY_HIEN=4`), `‹`/`›` nhảy
+   đúng N ngày, "Hôm nay" reset về hôm nay làm ngày đầu cửa sổ. Đổi luôn nhãn tab `PhongHocScreen.tsx`
+   "Tổng quan tuần" → **"Tổng quan phòng"** (không còn đúng nghĩa "tuần" nữa).
+
+**Verify lại lần 3:** dựng lại data thật hôm nay — lớp 7S2 (18:00–19:30) tô ĐÚNG 3 khung 30p liên tiếp
+(18:00/18:30/19:00) rồi NGỪNG đúng lúc 19:30 khi 8S1 bắt đầu (không lấn/không hụt); 8S1 (19:30–21:30) và
+7A1 (19:30–21:00, phòng khác) tô song song từ 19:30, 7A1 tự dừng ở khung 21:00 (đúng giờ kết) trong khi
+8S1 vẫn tô tiếp tới 21:30 — chứng minh boundary chính xác tới từng khung 30p, không còn lỗi "biến mất
+nửa chừng". Cụm ngày mặc định hiện 17/08–20/08 (4 ngày từ hôm nay), bấm `›` nhảy đúng sang 21/08–24/08.
+
+**Sửa lần 4, cùng ngày (Thùy: "ý đúng rồi nhưng visual không nên tách ô 30p — ca 90p (3 ô) phải LIỀN
+thành 1 ô to"):** đúng — lúc đó mỗi khung 30p vẫn là 1 `<td>` riêng dù overlap-check đã đúng, nên 1 ca
+90p vẫn hiện 3 ô vuông xếp chồng (đúng dữ liệu, sai cảm nhận thị giác). Sửa bằng CƠ CHẾ BẢNG HTML CHUẨN
+(`rowSpan`), không phải CSS vá: thêm bước gộp — với mỗi (ngày × phòng), duyệt các khung ĐANG HIỂN THỊ
+theo thứ tự, khung nào CÓ hoạt động (so `ref_id`, không phải chỉ "có dùng") mà GIỐNG HỆT tập hoạt động ở
+khung liền trước → gộp cùng 1 ô, ngắt gộp ngay khi tập hoạt động đổi (ca khác bắt đầu) hoặc hết ca. Ô
+gộp render `<td rowSpan={n}>` DUY NHẤT ở khung bắt đầu; các khung bị nó phủ **không render `<td>` nào**
+(đúng luật bảng HTML — hàng sau bỏ hẳn cột đã bị rowSpan từ hàng trước choán, không phải ẩn bằng CSS).
+Khung TRỐNG cố tình KHÔNG gộp (giữ lưới ô rời để không mất cảm giác "khung giờ" ở chỗ không có gì).
+
+**Verify lại lần 4:** đọc `td.rowSpan` qua `javascript_tool` (không chỉ đọc màu) — xác nhận đúng: 7S2
+(18:00–19:30, 90p = 3 khung) ra 1 `<td rowSpan="3">` DUY NHẤT; 8S1 (19:30–21:30, 120p = 4 khung) ra
+`rowSpan="4">`; 7A1 (19:30–21:00, 90p) ra `rowSpan="3">`. Đếm số `<td>`/hàng cũng khớp: hàng bị phủ mất
+đúng số ô = số cột đang có ca dài hơn 1 khung tại thời điểm đó (không riêng P101, các lớp tối ở ngày
+khác cũng gộp đúng tương tự) — không còn 1 ca nào bị vẽ thành nhiều ô rời rạc.
+
+**Sửa lần 5, cùng ngày — Thùy gửi ẢNH CHỤP MÀN HÌNH THẬT, bắt lỗi mà lần 4 không thấy:** `rowSpan` đúng
+(đã verify DOM ở lần 4) nhưng THỊ GIÁC vẫn sai — ô màu chỉ hiện như 1 viên bo tròn nhỏ nổi ở ĐẦU khối,
+phần còn lại của khối (dù `<td>` đã đúng `rowSpan`) vẫn TRỐNG/trắng, viền lưới các cột khác vẫn cắt
+ngang qua. Gốc: đang tô màu qua 1 `<div>` CON bên trong `<td>` bằng class `h-full` (`height:100%`) —
+percentage-height của con phụ thuộc `<td>` cha "đã có chiều cao xác định" đúng NGỮ CẢNH CSS, nhưng với
+bảng `border-collapse:separate` + nhiều `<td>` khác trong CÙNG hàng có chiều cao khác nhau (do cũng đang
+rowSpan lệch nhịp), trình duyệt không luôn resolve `height:100%` của con đúng như kỳ vọng — kết quả:
+div con co về chiều cao tối thiểu (`min-h-[14px]`), NHÌN như 1 chip nhỏ dù `<td>` cha đã đúng kích thước
+(chính vì vậy lần 4 verify bằng `td.rowSpan` KHÔNG bắt được — con số đúng nhưng RENDER sai, phải nhìn
+ảnh mới lộ). **Bài học: verify DOM property (`rowSpan`) không thay được verify HÌNH ẢNH THẬT khi bug nằm
+ở tầng CSS layout/paint, không nằm ở dữ liệu/cấu trúc.**
+
+**Fix gốc rễ:** bỏ hẳn `<div>` con — tô `background-color` THẲNG lên `<td>` (đã có `rowSpan`, đã có đúng
+chiều cao thật sau layout, không cần suy percentage-height qua tầng nào nữa). Ô ranh giới ngày (viền
+trái đậm phân cụm) đã thử thêm nhưng BỎ vì đụng độ: `margin` không có tác dụng trên `display:table-cell`
+(bị trình duyệt bỏ qua), còn `padding-left` vẫn bị `background-color` (mặc định `background-clip:
+border-box`) tô xuyên qua nên không tạo khoảng trống thật; `border-l` riêng lại tranh cùng thuộc tính
+`border` với viền `dashed` của ô trống (2 utility Tailwind cùng set `border-*` trên 1 phần tử, thứ tự
+thắng trong CSS không đảm bảo) — bỏ hẳn, dựa vào header 2 tầng (colSpan theo ngày) + border-spacing giữa
+cột là đủ phân cụm, không cố thêm hiệu ứng viền dễ vỡ.
+
+**Verify lại lần 5 (ĐÚNG THỨ verify lần 4 thiếu — đo HÌNH HỌC THẬT, không chỉ đọc property):**
+`getBoundingClientRect().height` của từng `<td>` màu so với chiều cao 1 hàng trống làm mốc (~23px/hàng)
+— khối `rowSpan=3` đo ra ~60–65px (≈3 hàng), `rowSpan=4` đo ra ~83px (≈4 hàng), đúng tỷ lệ. Vì màu giờ
+nằm thẳng trên `<td>` (không qua con), `<td>` đo được bao nhiêu thì màu phủ đúng bấy nhiêu — không còn
+đường nào để bug "viên nhỏ nổi giữa ô trắng" quay lại.
