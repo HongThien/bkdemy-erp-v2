@@ -5022,3 +5022,69 @@ sửa lỗi in xong thì GỬI THẲNG FILE PDF cho Thùy xem, không bắt ch�
 **SỰ CỐ ĐÃ GÂY:** chạy `taskkill` nhắm server tạm của mình (cổng 5199) nhưng kill nhầm **PID cổng 5183
 = dev server của phiên khác/của Thùy**. Bài học: `taskkill` phải đối chiếu PID↔cổng NGAY TRƯỚC khi kill,
 đừng tin PID nhớ từ lệnh trước.
+
+---
+
+## 2026-08-17 — Bài tập online: chốt mô hình TÀI KHOẢN theo cấp · buộc HS cấp 3 đổi mật khẩu
+
+**Bối cảnh.** Rà lại luồng test online (đã build 07-04, spec `spec-test-online.md`): code đủ 3 tầng,
+ET chế độ thi chấm server-side, xáo câu — nhưng **dữ liệu nói là chưa ai dùng thật**: 32 test phát
+hành, **27 không HS nào mở**, 9 HS từng mở, 2 bài nộp, lần nộp cuối 04/07 (đúng ngày build demo).
+
+**CEO phân khúc lại (17/08):**
+- **Cấp 1** (khối 3–5T, 59 HS) — không có điện thoại riêng, thi tự luận ⇒ online chỉ là **tự luyện**.
+  Dùng **chung tài khoản với bố mẹ**.
+- **Cấp 2** (khối 6–9, 215 HS) — chưa phù hợp, để sau.
+- **Cấp 3** (khối 10–12, **41 HS**, 7 lớp, 1 môn) — có điện thoại riêng, thi trắc nghiệm ⇒ online là
+  **bài tập CHÍNH** (trên lớp + về nhà + luyện tập).
+
+**⭐ QUYẾT ĐỊNH — mô hình tài khoản:**
+
+| | Cấp 1 | Cấp 3 |
+|---|---|---|
+| Tài khoản HS | có, PH giữ mật khẩu | có, HS tự giữ |
+| Buộc đổi mật khẩu | không | **CÓ** |
+| Deeplink từ app PH sang TK học sinh | **có** | **KHÔNG** |
+| Bài online | tham khảo | vào mastery |
+
+- **"Chung tài khoản" = PH giữ mật khẩu của con, KHÔNG phải làm bài trong app PH.** App PH là
+  **project Supabase KHÁC** (`nhidbaxb…` vs ERP `osrvycil…`), đọc ERP qua FDW **chỉ SELECT** ⇒ cho PH
+  làm bài trong app PH nghĩa là mở đường GHI xuyên project. Không làm. Nút chỉ là **deeplink** sang
+  màn đăng nhập ERP.
+- App PH chỉ có `ERP_SUPABASE_ANON_KEY` (không có service role ERP) ⇒ **không thể tạo phiên đăng nhập
+  hộ** ⇒ SSO ngầm là bất khả với key hiện có. Deeplink + PH tự gõ mật khẩu là đúng mức.
+- **Cấp 3 bỏ deeplink khớp với việc buộc đổi mật khẩu**: HS đổi xong thì PH không biết ⇒ nút tự vô
+  hiệu. Không cần luật riêng chặn theo khối. PH cấp 3 **vẫn xem được kết quả** con qua app PH — cắt
+  đường *đăng nhập*, không cắt đường *nhìn*.
+- **KHÔNG thêm cột "hoàn cảnh làm bài".** CTO đề xuất cột/câu-hỏi "tự làm hay có PH hỗ trợ" → **CEO bác:
+  "mỗi bài có loại bài riêng chứ cần gì hỏi"**. Độ tin suy từ `(loai bài × cấp)`, là thứ TÍNH ĐƯỢC.
+  Bài học: trước khi thêm cột đo, hỏi "cột nào đang có đã trả lời câu này chưa?".
+
+**Đã build (worktree `bkdemy-erp-v2-lambai`, nhánh `feat/hs-lam-bai-dien-thoai`):**
+- `src/screens/hocsinh/DoiMatKhau.tsx` — 1 component, 2 đường: cổng BẮT BUỘC lúc đăng nhập +
+  nút 🔑 tự đổi trong `HocSinhApp`. **Chặn đặt mật khẩu mới trùng mã HS** (không có cái này thì màn
+  đổi thành thủ tục: HS gõ lại mã HS là xong, lỗ vẫn nguyên).
+- `App.tsx` — cờ `user_metadata.must_change_password` chặn TRƯỚC `HocSinhApp`. **Dùng lại pattern app
+  PH** (`bkdemy-ph-app/app/actions/auth.ts`): mật khẩu + cờ đi CHUNG một `updateUser` ⇒ không có khe hở
+  "đổi xong mà cờ còn treo".
+- `scripts/hs_buoc_doi_mk.mjs` — gắn/gỡ cờ, mặc định khối 10/11/12, dry-run mặc định, `--bo` để gỡ.
+  Idempotent: HS đã tự đổi (cờ = false) thì KHÔNG gắn lại.
+
+**Đã áp lên DB thật (CEO duyệt):** provision 6 TK cấp 3 còn thiếu (HS0643/0648/0649/0650/0682/0694)
+→ gắn cờ **41/41 HS cấp 3**. Chạy lại dry-run: `0 ghi · 41 bỏ qua` (idempotent OK).
+
+**Verify live** (`localhost:5193`, viewport 375×812): HS0004 đăng nhập PIN mặc định → **bị chặn ở
+"Đặt mật khẩu riêng"**, không vào được app. Validate: <6 ký tự · trùng mã HS · 2 ô lệch → nút Lưu
+disabled đúng cả 3 ca. `tsc` sạch, console không lỗi.
+
+**Bẫy tự cắn khi test bằng javascript_tool:** click đổi tab (`setMode`) rồi fill+submit TRONG CÙNG một
+block JS ⇒ handler `submit` vẫn đọc `mode` của render CŨ ('staff') → login fail, mà thông báo lỗi hiện
+ra lại là bản 'hs' (setErr chạy sau khi đã re-render) ⇒ trông y hệt "sai mật khẩu thật". Phải tách
+mỗi thao tác React thành một lời gọi riêng để nó kịp re-render.
+
+**CÒN (bài tập online, xếp theo ưu tiên):**
+1. `deadline`/`khoa_reveal`/`dong_at` **trống 100%**, không code nào set/đọc ⇒ test phát hành xong là
+   **mở vĩnh viễn** (HS0004 hôm nay vẫn thấy bài 11/07 ở tab "Chưa làm").
+2. Task "Duyệt báo sai" trong `getMyTasks` (spec §9) — chưa có.
+3. Nút "Chấm lại câu N / lớp Y" khi KEY sai cả lớp (spec §7) — chưa có.
+4. Deeplink app PH → TK học sinh (CHỈ cấp 1).

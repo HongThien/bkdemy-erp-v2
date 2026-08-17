@@ -13,6 +13,7 @@ import {
   type BaiTestCuaHS, type BaiTestFull, type BaiLamCau, type ETCauDe, type ETReveal,
 } from '../../lib/testonline'
 import { seededPerm, seededShuffleWithOrig } from '../../lib/shuffle'
+import DoiMatKhau from './DoiMatKhau'
 
 type Chon = number | string | (string | null)[] | null // TN=index · TLN=chuỗi · ĐS=mảng 'D'/'S'
 type CauState = { chon: Chon; kq: { verdict: string; key: unknown; baiLamCauId: string } | null; baoRoi?: boolean }
@@ -22,12 +23,15 @@ const LOAI_TEN: Record<string, string> = { btvn: 'BTVN', et: 'ET', giao_trinh: '
 // Chế độ THI (giấu đáp án tới khi nộp, chấm server, chỉ tính lần nộp đầu) — ET và đề thi trường/sở đều vậy.
 const THI_LOAI = new Set(['et', 'de_thi'])
 
-export default function HocSinhApp({ hocSinhId, hoTen }: { hocSinhId: string; hoTen: string }) {
+export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: string; hoTen: string; maHS: string }) {
   const [tests, setTests] = useState<BaiTestCuaHS[] | null>(null)
   const [active, setActive] = useState<BaiTestCuaHS | null>(null)
   const [tab, setTab] = useState<'chua' | 'xong'>('chua')
+  const [doiMK, setDoiMK] = useState(false)
 
   useEffect(() => { listBaiTestCuaHS().then(setTests).catch(() => setTests([])) }, [])
+
+  if (doiMK) return <DoiMatKhau maHS={maHS} batBuoc={false} onXong={() => setDoiMK(false)} />
 
   if (active) {
     const back = () => { setActive(null); listBaiTestCuaHS().then(setTests) }
@@ -48,7 +52,11 @@ export default function HocSinhApp({ hocSinhId, hoTen }: { hocSinhId: string; ho
           <p className="text-[13px] text-slate-400">Xin chào</p>
           <p className="text-lg font-semibold text-slate-900">{hoTen} 👋</p>
         </div>
-        <button onClick={() => supabase.auth.signOut()} className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-[13px] text-slate-500">Thoát</button>
+        <div className="flex items-center gap-1.5">
+          <button onClick={() => setDoiMK(true)} title="Đổi mật khẩu"
+            className="rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-[13px] text-slate-500">🔑</button>
+          <button onClick={() => supabase.auth.signOut()} className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-[13px] text-slate-500">Thoát</button>
+        </div>
       </div>
 
       <h2 className="mb-3 text-[13px] font-semibold uppercase tracking-wide text-slate-400">Bài tập về nhà</h2>
