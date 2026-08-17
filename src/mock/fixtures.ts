@@ -87,6 +87,7 @@ export const adminLeaves: AdminLeaf[] = [
   // + Phân công ca trực (spine). ET (Story 4) GÁC LẠI, không có leaf ở đây.
   { id: 'ops_report',  nhom: 'Vận hành',  ten: 'Report & Báo tan',             founderOnly: false },
   { id: 'prep',        nhom: 'Vận hành',  ten: 'Chuẩn bị phòng',               founderOnly: false },
+  { id: 'phong_hoc',   nhom: 'Vận hành',  ten: 'Quản lý phòng học',            founderOnly: false }, // lịch phòng gộp TKB+bổ trợ+phát sinh, chống trùng
   { id: 'phancong_ops',nhom: 'Vận hành',  ten: 'Phân công Ops',               founderOnly: false },
   // Test đầu vào (BKDEMY_TESTDAUVAO_SPEC_DETAIL.md, 07-07/08) — module RIÊNG, TÁCH khỏi `tuyensinh`
   // (Thùy 07-08: Tuyển sinh = quản lý level HS; test đầu vào = 4 story vận hành điểm danh→chấm→nhận

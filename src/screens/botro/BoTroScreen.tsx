@@ -11,6 +11,7 @@ import ETPrintView from '../tailieu/ETPrintView'
 import { getRoster, getBuoi, diemDanh, huyBuoi, xoaHSKhoiBuoi, listProblems, gradeET, deleteGrade, listGrades, closePhase, getDanhGia, setDanhGiaDang, setNhanXet, getDangTen, dongDanhGia, moLaiDanhGia, updateBuoiMeta, type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type ETResult } from '../../lib/gami'
 import SuaBuoiModal from './SuaBuoiModal'
 import { listNhanSu, type NhanSu } from '../../lib/nhansu'
+import { listPhong, type Phong } from '../../lib/phong'
 import { homNayVN } from '../../lib/tuan'
 import SearchSelect, { norm } from '../../components/SearchSelect'
 import { tenNganHS, tenHienThiDs } from '../../lib/hoten'
@@ -343,14 +344,17 @@ function XepModal({ item, onClose, onDone }: { item: CanBuItem; onClose: () => v
   const [ta, setTa] = useState<string | null>(null)
   const [pickId, setPickId] = useState<string | null>(null)
   const [nss, setNss] = useState<NhanSu[]>([])
+  const [phongs, setPhongs] = useState<Phong[]>([])
   const [sapToi, setSapToi] = useState<CaBoTro[]>([])
   const [busy, setBusy] = useState(false)
   useEffect(() => {
     listNhanSu().then(setNss).catch(() => {}); buoiBuSapToi().then(setSapToi).catch(() => {})
+    listPhong(true).then(setPhongs).catch(() => {})
     // Mặc định lấy từ LỚP của buổi nghỉ: TA (người bổ trợ mặc định) + GV + giờ + phòng.
     goiYBuoiBu(item.buoi_me_id).then((g) => { setTa(g.ta_id); setGv(g.gv_id); if (g.gio) setGio(String(g.gio).slice(0, 5)); if (g.phong) setPhong(g.phong) }).catch(() => {})
   }, [item.buoi_me_id]) // eslint-disable-line
   const nsOpts = useMemo(() => nss.map((n) => ({ id: n.id, label: n.ho_ten, sub: n.ma_ns })), [nss])
+  const phongOpts = useMemo(() => phongs.map((p) => ({ id: p.ma_phong, label: p.ten_phong })), [phongs])
   async function go() {
     setBusy(true)
     try {
@@ -375,7 +379,7 @@ function XepModal({ item, onClose, onDone }: { item: CanBuItem; onClose: () => v
           <div className="grid grid-cols-3 gap-3">
             <div><label className="mb-1 block text-[13px] font-medium text-slate-600">Ngày *</label><input type="date" className={inputCls} value={ngay} onChange={(e) => setNgay(e.target.value)} /></div>
             <div><label className="mb-1 block text-[13px] font-medium text-slate-600">Giờ</label><input type="time" className={inputCls} value={gio} onChange={(e) => setGio(e.target.value)} /></div>
-            <div><label className="mb-1 block text-[13px] font-medium text-slate-600">Phòng</label><input className={inputCls} value={phong} onChange={(e) => setPhong(e.target.value)} /></div>
+            <div><label className="mb-1 block text-[13px] font-medium text-slate-600">Phòng</label><SearchSelect value={phong || null} onChange={(v) => setPhong(v ?? '')} options={phongOpts} placeholder="Chọn phòng…" /></div>
           </div>
           {/* Nhãn theo ĐÚNG người nhận việc — xem ghi chú đầu SuaBuoiModal.tsx. */}
           <div className="grid grid-cols-2 gap-3">
