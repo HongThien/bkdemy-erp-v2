@@ -5088,3 +5088,55 @@ mỗi thao tác React thành một lời gọi riêng để nó kịp re-render.
 2. Task "Duyệt báo sai" trong `getMyTasks` (spec §9) — chưa có.
 3. Nút "Chấm lại câu N / lớp Y" khi KEY sai cả lớp (spec §7) — chưa có.
 4. Deeplink app PH → TK học sinh (CHỈ cấp 1).
+
+---
+
+## 2026-08-17 (tiếp) — App HS: màn chính 6 ô · spec Tự luyện + Thông tin học tập
+
+**Màn chính (Thùy chốt, mockup duyệt trước theo spec §8).** Bỏ danh sách phẳng "Bài tập về nhà";
+thay bằng: thông tin cá nhân (tên · mã HS · lớp · môn) + **6 ô vuông, 2 CỘT** (Thùy: *"màn hình điện
+thoại là dọc mà"* — bản 3 cột đầu tiên bị bác).
+
+3 ô chạy được — **nối thẳng với tài liệu trên lớp**, mỗi ô = 1 loại doc phát hành từ Kho, KHÔNG thêm
+gì ở tầng dữ liệu, chỉ tách danh sách cũ thành 3 cửa (giữ nguyên 2 tab Chưa làm / Hoàn thành):
+
+| Ô | `bai_test.loai` | Doc nguồn |
+|---|---|---|
+| Bài tập trên lớp | `giao_trinh` | Giáo trình buổi (phần bài luyện) |
+| ET | `et` | ET |
+| BTVN | `btvn` | BTVN |
+
+3 ô nét đứt "Sắp có": Tự luyện · Thông tin học tập · Làm đề thi thử.
+
+**⭐ SPEC — TỰ LUYỆN (Thùy 17/08, chưa build):**
+- Hệ **TỰ SINH** bài dựa trên **các dạng HS đang yếu**. Mỗi lượt **10 câu**.
+- **ĐẾM THẲNG vào mastery dạng — tính là 1 lần đánh giá.**
+- ⚠ **RỦI RO CTO NÊU, CEO CHƯA CHỐT CÁCH XỬ:** BTVN cũng làm ở nhà, không giám sát, và chính sách hiện
+  hành là **KHÔNG vào mastery** (chỉ tham khảo). Tự luyện cũng ở nhà, không giám sát, nhưng LẠI đếm ⇒
+  hai luật ngược nhau cho cùng một hoàn cảnh. Nặng hơn: tự luyện lấy câu ĐÚNG dạng HS yếu, và loại
+  non-thi thì **lộ đáp án + lời giải ngay sau mỗi câu** ⇒ vòng lặp *làm → đọc lời giải → luyện lại dạng
+  đó → giờ đúng* lật ô yếu thành đạt mà không có bằng chứng độc lập nào. Mastery đo "đã luyện nhiều"
+  chứ không đo "biết làm".
+- **Đề xuất CTO (giữ nguyên quyết định ĐẾM, chỉ làm cho nó trung thực):** ① loại mới
+  `bai_test.loai='tu_luyen'` để mastery **phân biệt được kênh đo** (CLAUDE.md §5 vốn đã đòi "mastery kèm
+  độ tin") — đạt-qua-ET-giám-sát ≠ đạt-qua-tự-luyện; ② không lấy lại câu HS vừa làm gần đây (đã có sẵn
+  cơ chế chống trùng câu scope buổi, tái dùng).
+
+**⭐ SPEC — THÔNG TIN HỌC TẬP (Thùy 17/08, chưa build):**
+- Các **dạng đang yếu**.
+- **% hoàn thành (Đ – C – S)** theo **dạng** và theo **chuyên đề**.
+- **Xếp hạng trong lớp / trong khối.**
+
+**Đề thi trường/sở — đính chính.** CTO nói "v2 đã có, gần xong"; CEO bác "v1 mới có". Kiểm DB thì ở
+giữa: **code CÓ trên main** (commit `8ab449d`, `BKDEMY_DETHI_SPEC.md`, `dethi.ts`, `DeThiScreen`, mig
+0073 đã áp) nhưng **dữ liệu gần như không có** — `tai_lieu` loại `de_thi` đúng **1 dòng** ("THPT Lê
+Chẩn", 13/07), `bai_test` loại `de_thi` = **0**, chưa từng phát hành cho HS. Nhìn từ vận hành thì CEO
+đúng. Bài học lặp lại CLAUDE.md §2.1: **code tồn tại ≠ tính năng tồn tại**; phải `count(*)` trước khi
+gọi một mảng là "đã có". CEO cho biết sắp nhập nhiều đề trường/sở ⇒ ô "Làm đề thi thử" giữ chỗ sẵn.
+
+**Verify live** (`localhost:5193`, 375×812, HS0004): màn chính hiện đúng "Bài tập trên lớp 1 · ET 2 ·
+BTVN chưa có bài" khớp DB; bấm "Bài tập trên lớp" ra đúng 1 bài `giao_trinh` (18 câu, 19/07), bấm ET ra
+đúng 2 bài `et` — lọc không rò chéo. Nút ‹ quay lại chạy. `tsc` sạch.
+
+**Quy trình khi test:** phải tạm gỡ cờ `must_change_password` của HS0004 mới qua được cổng đổi mật
+khẩu, xong **reset lại về mặc định** (`_reset_hs_ve_mac_dinh.mjs`) — đã xác nhận lại 41/41 vẫn gắn cờ.
