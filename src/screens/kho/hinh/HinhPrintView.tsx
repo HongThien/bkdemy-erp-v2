@@ -200,8 +200,11 @@ function Noi({ ban, gv }: { ban: BanIn; gv: boolean }) {
               {/* Hình / ô-vẽ FLOAT phải → đề + câu hỏi chảy SÁT bên trái, không bị đẩy xuống dưới hình.
                   Chi tiết 3 trạng thái ở khối ngay dưới. */}
               {/* 3 TRẠNG THÁI (Thùy 17/08):
-                  'hien'    → in hình (không có ảnh thì chừa ô vẽ — hình học vốn hay bắt HS tự vẽ)
-                  'o_trong' → ô vẽ cho HS; bản GV vẫn hiện hình để đối chiếu
+                  'hien'    → in hình NẾU kho có ảnh. Kho KHÔNG có ảnh ⇒ không có hình, chấm hết — KHÔNG
+                              tự suy ra ô vẽ (Thùy 17/08 lần 2: "bài nào trong kho mà ko có hình nghĩa là
+                              'Không có hình' luôn, ko cần để trống để vẽ". Ô vẽ là lựa chọn CHỦ ĐỘNG của
+                              người soạn — chỉ 'o_trong' mới có, không phải hệ quả của thiếu ảnh.)
+                  'o_trong' → CHỦ ĐỘNG ẩn hình, chừa ô vẽ cho HS; bản GV vẫn hiện hình để đối chiếu.
                   'khong'   → KHÔNG hình, KHÔNG ô — kể cả khi kho có ảnh. */}
               {(() => {
                 const cd = m.cheDo ?? 'hien'
@@ -211,9 +214,7 @@ function Noi({ ban, gv }: { ban: BanIn; gv: boolean }) {
                     ? <div className="hp-fig-r"><img src={m.anhDe} alt="" /></div>
                     : <div className="hp-draw-r"><span>Vẽ hình</span></div>
                 }
-                return m.anhDe
-                  ? <div className="hp-fig-r"><img src={m.anhDe} alt="" /></div>
-                  : <div className="hp-draw-r"><span>Vẽ hình</span></div>
+                return m.anhDe ? <div className="hp-fig-r"><img src={m.anhDe} alt="" /></div> : null
               })()}
               <div className="hp-txt-flow"><MathText>{m.deBai}</MathText></div>
               {/* ⭐ 08-09 (Thùy chốt): dòng kẻ gán theo CẢ BÀI (chuỗi ghép a,b,c = 1 bài), nên đề a,b,c
@@ -241,7 +242,11 @@ function Noi({ ban, gv }: { ban: BanIn; gv: boolean }) {
                       </div>
                     ))}
                     <MathText>{y.loiGiai ?? '—'}</MathText>
-                    {y.anh && <div className="hp-fig-r"><img src={y.anh} alt="" /></div>}
+                    {/* Chỉ hiện hình ở KHU GIẢI khi nó là hình RIÊNG của lời giải (khác hình đề đã hiện
+                        ở trên) — Thùy 17/08: "bài nào ko có hình riêng thì đáp án ko cần hiện hình nữa,
+                        dùng hình đề bài là được". Nhiều nơi build YIn fallback y.anh = anh của đề khi
+                        cách giải không có anh_loi_giai riêng ⇒ y.anh trùng hệt m.anhDe ⇒ lặp hình 2 lần. */}
+                    {y.anh && y.anh !== m.anhDe && <div className="hp-fig-r"><img src={y.anh} alt="" /></div>}
                   </div>
                 </div>
               ))}</div>
