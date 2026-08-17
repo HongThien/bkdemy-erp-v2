@@ -164,7 +164,7 @@ export default function TKBScreen() {
           )}
       </div>
 
-      {sel && <SlotModal s={sel} onClose={() => setSel(null)} onChanged={() => { setSel(null); reload() }} />}
+      {sel && <SlotModal s={sel} rooms={rooms} slots={slots} onClose={() => setSel(null)} onChanged={() => { setSel(null); reload() }} />}
       {adding && <AddModal thu={adding.thu} tu={adding.tu} den={adding.den} dsLop={dsLop} rooms={rooms} onClose={() => setAdding(null)} onAdded={() => { setAdding(null); reload() }} />}
       {anh && <TkbAnh view={view} mon={mon} onClose={() => setAnh(false)} />}
     </div>
@@ -262,24 +262,44 @@ function TkbAnh({ view, mon, onClose }: { view: TKBSlot[]; mon: string; onClose:
   )
 }
 
-function SlotModal({ s, onClose, onChanged }: { s: TKBSlot; onClose: () => void; onChanged: () => void }) {
+function SlotModal({ s, rooms, slots, onClose, onChanged }: { s: TKBSlot; rooms: string[]; slots: TKBSlot[]; onClose: () => void; onChanged: () => void }) {
   const [busy, setBusy] = useState(false)
   const [hieuLucTu, setHieuLucTu] = useState(s.hieu_luc_tu)
+  const [phong, setPhong] = useState(s.phong ?? '')
   const [error, setError] = useState<string | null>(null)
+
+  // Trùng phòng = ca khác (còn hiệu lực) cùng thứ, phòng vừa chọn, khung giờ chồng lấn — giữ đúng bản chất
+  // "categorical" của lưới TKB (§ xepCa), chỉ so trong phạm vi TKB mẫu (không đụng buổi thực tế đã mở).
+  const trung = phong
+    ? slots.find((o) => o.id !== s.id && o.thu === s.thu && (o.phong ?? '') === phong
+        && toMin(o.gio_bat_dau) < toMin(s.gio_ket_thuc) && toMin(s.gio_bat_dau) < toMin(o.gio_ket_thuc))
+    : undefined
+
+  const changed = hieuLucTu !== s.hieu_luc_tu || phong !== (s.phong ?? '')
+
   return (
     <Shell title={`${s.lop?.ten_lop ?? '?'} · ${THU_LABEL[s.thu]} ${hhmm(s.gio_bat_dau)}–${hhmm(s.gio_ket_thuc)}`} onClose={onClose}>
-      <p className="mb-3 text-sm text-slate-600">Môn {s.lop?.mon ?? '—'} · phòng <b>{s.phong ?? '—'}</b></p>
+      <p className="mb-3 text-sm text-slate-600">Môn {s.lop?.mon ?? '—'}</p>
+      <Field label="Phòng">
+        <div className="flex flex-wrap gap-1.5">
+          {rooms.map((p) => (
+            <button key={p} type="button" onClick={() => setPhong(p)}
+              className={`h-9 flex-1 rounded-lg border text-[13px] font-semibold transition ${phong === p ? 'border-indigo-600 bg-indigo-600 text-white' : 'border-slate-200 text-slate-600 hover:border-indigo-300'}`}>{p}</button>
+          ))}
+        </div>
+      </Field>
+      {trung && <p className="mb-3 text-[12px] text-rose-600">Trùng phòng: {trung.lop?.ten_lop ?? '?'} · {hhmm(trung.gio_bat_dau)}–{hhmm(trung.gio_ket_thuc)} cùng {THU_LABEL[s.thu]}.</p>}
       <Field label="Hiệu lực từ (ngày khai giảng / bắt đầu áp khung này)">
         <input type="date" value={hieuLucTu} onChange={(e) => setHieuLucTu(e.target.value)} className={inp} />
       </Field>
-      <p className="mb-3 text-[12px] text-slate-400">Trước ngày này hệ thống KHÔNG sinh buổi học cho ca — đây là "công tắc khai giảng". Đổi giờ/phòng = ngừng ca này rồi xếp ca mới (giữ vết).</p>
+      <p className="mb-3 text-[12px] text-slate-400">Trước ngày này hệ thống KHÔNG sinh buổi học cho ca — đây là "công tắc khai giảng". Đổi giờ = ngừng ca này rồi xếp ca mới (giữ vết); đổi phòng sửa được trực tiếp ở đây.</p>
       {error && <p className="mb-2 text-xs text-rose-600">{error}</p>}
       <div className="flex items-center justify-between">
         <button disabled={busy} onClick={async () => { if (!confirm('Ngừng ca này từ hôm nay?')) return; setBusy(true); try { await dongTKB(s.id, today()); onChanged() } catch (e: any) { setError(e.message); setBusy(false) } }}
           className="rounded-md border border-rose-200 px-3 py-1.5 text-sm font-medium text-rose-600 hover:bg-rose-50 disabled:opacity-40">Ngừng ca này</button>
         <div className="flex gap-2">
           <button onClick={onClose} className="rounded-md px-3 py-1.5 text-sm text-slate-500 hover:bg-slate-100">Huỷ</button>
-          <button disabled={busy || hieuLucTu === s.hieu_luc_tu} onClick={async () => { setBusy(true); try { await suaHieuLucTKB(s.id, { hieu_luc_tu: hieuLucTu }); onChanged() } catch (e: any) { setError(e.message); setBusy(false) } }}
+          <button disabled={busy || !changed || !!trung} onClick={async () => { setBusy(true); try { await suaHieuLucTKB(s.id, { hieu_luc_tu: hieuLucTu, phong: phong || null }); onChanged() } catch (e: any) { setError(e.message); setBusy(false) } }}
             className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">{busy ? 'Đang lưu…' : 'Lưu'}</button>
         </div>
       </div>

@@ -565,8 +565,8 @@ export async function addTKB(p: Omit<ThoiKhoaBieu, 'id'>): Promise<void> {
   const { error } = await supabase.from('thoi_khoa_bieu').insert(p)
   if (error) throw error
 }
-// Chỉnh hiệu lực slot (hieu_luc_tu = ngày khai giảng / bắt đầu áp; hieu_luc_den = ngừng).
-export async function suaHieuLucTKB(id: string, patch: { hieu_luc_tu?: string; hieu_luc_den?: string | null }): Promise<void> {
+// Chỉnh hiệu lực slot (hieu_luc_tu = ngày khai giảng / bắt đầu áp; hieu_luc_den = ngừng) và/hoặc đổi phòng tại chỗ.
+export async function suaHieuLucTKB(id: string, patch: { hieu_luc_tu?: string; hieu_luc_den?: string | null; phong?: string | null }): Promise<void> {
   const { error } = await supabase.from('thoi_khoa_bieu').update(patch).eq('id', id)
   if (error) throw error
 }
