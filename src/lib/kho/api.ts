@@ -906,7 +906,15 @@ export async function callGeminiRich(prompt: string, opts?: { model?: string; fi
 }
 
 // Câu suy ra từ ingest 1 trang: text fields + cờ có hình + bbox hình (Gemini format [ymin,xmin,ymax,xmax] 0–1000).
-export type IngestCau = { noi_dung: string; dap_an: string | null; loi_giai: string | null; lua_chon: string[] | null; coHinh: boolean; box: [number, number, number, number] | null }
+// ⭐ HAI bbox riêng — ĐỀ và ĐÁP ÁN (Thùy 17/08: "đang không phân biệt được hình ở đề hay đáp án. Giữa đề
+// và đáp án sẽ có 1 ranh giới là từ Giải/Lời giải/Bài giải — sau đó là đáp án, trước đó là đề"). TRƯỚC đây
+// chỉ có 1 cặp co_hinh/box_hinh ⇒ hình đáp án (nếu có) bị gộp lẫn vào box đề hoặc mất, và ingest luôn đổ
+// thẳng vào anh_de — anh_dap_an luôn null bất kể trang có hình ở phần lời giải hay không.
+export type IngestCau = {
+  noi_dung: string; dap_an: string | null; loi_giai: string | null; lua_chon: string[] | null
+  coHinhDe: boolean; boxDe: [number, number, number, number] | null
+  coHinhDapAn: boolean; boxDapAn: [number, number, number, number] | null
+}
 // Schema ép Gemini xuất JSON đúng cấu trúc (Type enum UPPERCASE theo proto). required tối thiểu = de_bai.
 export const INGEST_SCHEMA = {
   type: 'OBJECT',
@@ -918,7 +926,8 @@ export const INGEST_SCHEMA = {
         properties: {
           de_bai: { type: 'STRING' }, dap_an: { type: 'STRING' }, loi_giai: { type: 'STRING' },
           lua_chon: { type: 'ARRAY', items: { type: 'STRING' } },
-          co_hinh: { type: 'BOOLEAN' }, box_hinh: { type: 'ARRAY', items: { type: 'NUMBER' } },
+          co_hinh_de: { type: 'BOOLEAN' }, box_hinh_de: { type: 'ARRAY', items: { type: 'NUMBER' } },
+          co_hinh_dap_an: { type: 'BOOLEAN' }, box_hinh_dap_an: { type: 'ARRAY', items: { type: 'NUMBER' } },
         },
         required: ['de_bai'],
       },
@@ -932,12 +941,13 @@ export function buildIngestPrompt(a: { tenDang?: string; loaiCau?: string; giaiA
     'Đây là ẢNH 1 TRANG tài liệu toán. TÁCH thành từng CÂU HỎI theo thứ tự xuất hiện (mỗi bài = 1 câu, KHÔNG tách ý a/b/c).',
     a.tenDang ? `Gợi ý: các câu thường cùng dạng "${a.tenDang}".` : '',
     `Mỗi câu gồm: ${f.spec}.`,
-    '⚠ MỖI câu thêm 2 trường HÌNH: "co_hinh" (true nếu câu có HÌNH VẼ/SƠ ĐỒ/ĐỒ THỊ cần giữ làm ảnh — KHÔNG tính bảng số) và "box_hinh" = [ymin,xmin,ymax,xmax] toạ độ CHUẨN HOÁ 0–1000 của vùng hình (ôm TRỌN hình, chừa lề nhỏ) — CHỈ trả khi co_hinh=true, nếu không thì box_hinh=null.',
-    'BẢNG số liệu → viết bằng LaTeX $\\begin{array}{…}…\\end{array}$ trong de_bai (KHÔNG coi là hình).',
+    '⚠ RANH GIỚI ĐỀ / ĐÁP ÁN của một câu = dòng chữ "Giải:" / "Lời giải:" / "Bài giải:" (hoặc tương đương). Hình xuất hiện TRƯỚC dòng đó (kể cả không có dòng đó — cả câu chỉ có đề) = HÌNH ĐỀ. Hình xuất hiện SAU dòng đó = HÌNH ĐÁP ÁN. Một câu có thể có CẢ HAI, chỉ một, hoặc không hình nào — đừng gộp 2 hình khác vị trí vào chung 1 box.',
+    '⚠ MỖI câu thêm 4 trường HÌNH: "co_hinh_de"/"box_hinh_de" cho hình Ở ĐỀ (trước ranh giới), "co_hinh_dap_an"/"box_hinh_dap_an" cho hình Ở ĐÁP ÁN (sau ranh giới). box = [ymin,xmin,ymax,xmax] toạ độ CHUẨN HOÁ 0–1000 của vùng hình (ôm TRỌN hình đó, chừa lề nhỏ) — chỉ HÌNH VẼ/SƠ ĐỒ/ĐỒ THỊ (KHÔNG tính bảng số). Không có hình phía đó → co_hinh_* = false, box_hinh_* = null.',
+    'BẢNG số liệu → viết bằng LaTeX $\\begin{array}{…}…\\end{array}$ trong de_bai/loi_giai (KHÔNG coi là hình).',
     giaiRule(a.giaiAI),
     f.ruleDapAn,
     FMT_RULES,
-    'Trả JSON: { "cau": [ { "de_bai":"…", "dap_an":"…", "loi_giai":"…", "lua_chon":["…"], "co_hinh": false, "box_hinh": null } ] }',
+    'Trả JSON: { "cau": [ { "de_bai":"…", "dap_an":"…", "loi_giai":"…", "lua_chon":["…"], "co_hinh_de": false, "box_hinh_de": null, "co_hinh_dap_an": false, "box_hinh_dap_an": null } ] }',
   ].filter(Boolean).join('\n')
 }
 export function parseIngestJson(text: string): IngestCau[] {
@@ -945,13 +955,15 @@ export function parseIngestJson(text: string): IngestCau[] {
   let obj: any; try { obj = lenientJsonParse(t) } catch (e: any) { throw new Error('JSON không hợp lệ: ' + e.message) }
   const arr = Array.isArray(obj) ? obj : (obj.cau ?? obj.cau_hoi ?? [])
   if (!Array.isArray(arr)) throw new Error('Cần JSON dạng { "cau": [ … ] }.')
+  const box4 = (v: any): [number, number, number, number] | null =>
+    Array.isArray(v) && v.length === 4 ? (v.map(Number) as [number, number, number, number]) : null
   return arr.filter((x: any) => x?.de_bai || x?.noi_dung).map((x: any) => ({
     noi_dung: String(x.de_bai ?? x.noi_dung ?? '').trim(),
     dap_an: x.dap_an != null && String(x.dap_an).trim() ? String(x.dap_an).trim() : null,
     loi_giai: x.loi_giai != null && String(x.loi_giai).trim() ? String(x.loi_giai).trim() : null,
     lua_chon: Array.isArray(x.lua_chon) && x.lua_chon.length ? x.lua_chon.map(String) : null,
-    coHinh: !!x.co_hinh,
-    box: Array.isArray(x.box_hinh) && x.box_hinh.length === 4 ? (x.box_hinh.map(Number) as [number, number, number, number]) : null,
+    coHinhDe: !!x.co_hinh_de, boxDe: box4(x.box_hinh_de),
+    coHinhDapAn: !!x.co_hinh_dap_an, boxDapAn: box4(x.box_hinh_dap_an),
   }))
 }
 

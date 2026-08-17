@@ -389,9 +389,12 @@ function AiImportModal({ mode, dangChinh, tenDang, cauTbl, presetGoc, onClose, o
         for (const c of await fileToCanvases(f.mimeType, f.dataBase64)) {
           const { text } = await callGeminiRich(buildIngestPrompt({ tenDang, loaiCau: loai, giaiAI }), { model, schema: INGEST_SCHEMA, think: giaiAI ? 8192 : 0, files: [{ mimeType: 'image/jpeg', dataBase64: canvasToJpegBase64(c) }] })
           for (const cau of parseIngestJson(text)) {
-            let anhDe: string | null = null
-            if (cau.coHinh && cau.box) { const blob = await (await fetch(cropCanvasBox(c, cau.box))).blob(); anhDe = await uploadKhoImage(new File([blob], 'fig.png', { type: 'image/png' })) }
-            acc.push({ noi_dung: cau.noi_dung, dap_an: cau.dap_an ?? '', loi_giai: cau.loi_giai ?? '', luaChon: cau.lua_chon ?? null, anhDe, anhDapAn: null, nguonGiai: giaiAI ? 'ai' : 'nguoi', approved: true, isGoc: false })
+            // Hình ĐỀ và hình ĐÁP ÁN giờ là 2 box RIÊNG do AI tự phân theo ranh giới "Giải/Lời giải/Bài
+            // giải" (xem prompt ở buildIngestPrompt) — không còn gộp mọi hình phát hiện được vào anh_de.
+            let anhDe: string | null = null, anhDapAn: string | null = null
+            if (cau.coHinhDe && cau.boxDe) { const blob = await (await fetch(cropCanvasBox(c, cau.boxDe))).blob(); anhDe = await uploadKhoImage(new File([blob], 'fig-de.png', { type: 'image/png' })) }
+            if (cau.coHinhDapAn && cau.boxDapAn) { const blob = await (await fetch(cropCanvasBox(c, cau.boxDapAn))).blob(); anhDapAn = await uploadKhoImage(new File([blob], 'fig-dap-an.png', { type: 'image/png' })) }
+            acc.push({ noi_dung: cau.noi_dung, dap_an: cau.dap_an ?? '', loi_giai: cau.loi_giai ?? '', luaChon: cau.lua_chon ?? null, anhDe, anhDapAn, nguonGiai: giaiAI ? 'ai' : 'nguoi', approved: true, isGoc: false })
           }
         }
       }
