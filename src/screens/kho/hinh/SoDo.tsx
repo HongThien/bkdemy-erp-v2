@@ -117,12 +117,41 @@ function ViewBaiToan({ L, ho, nodes: nodesHo, chon, setChon, onSua, onTaoKeTiep,
   const hubOffset = scope === 'mh' ? MH_W + GAP : 0
   const { cots, pos, cao, rong } = useMemo(() => {
     const caps = [...new Set(nodes.map((n) => n.cap))].sort((a, b) => a - b)
-    const cots = caps.map((c) => ({ cap: c, ns: nodes.filter((n) => n.cap === c).sort((a, b) => a.ma.localeCompare(b.ma)) }))
+    const cots = caps.map((c) => ({ cap: c, ns: nodes.filter((n) => n.cap === c) }))
+    // ⭐ 17/08 (Thùy): "các bài trong cùng 1 chuỗi phải nằm ngang nhau chứ đừng chéo lung tung" — trước
+    // đây mỗi cột (cấp) tự sort riêng theo `ma`, không biết gì tới quan hệ tiền đề ⇒ 2 node nối dây tiền
+    // đề hoàn toàn có thể rơi vào HÀNG khác nhau, dây chạy chéo lên/xuống.
+    // Giờ: node kế thừa HÀNG của tiền đề CHÍNH của nó (tiền đề cấp cao nhất — cùng luật chọn "cha kế thừa"
+    // dùng khi suy giả thiết/hình, xem chaKeThua() trong hinh.ts) nếu hàng đó còn trống ở cột này ⇒ dây nối
+    // luôn nằm NGANG. Một tiền đề rẽ nhiều nhánh (nhiều con) thì chỉ 1 con thẳng hàng với cha, các con còn
+    // lại rơi xuống hàng trống gần nhất. Node KHÔNG có tiền đề (mở đầu chuỗi mới) lấy hàng trống tiếp theo.
+    const rowOf = new Map<string, number>()
+    let nextRow = 0
+    cots.forEach((col) => {
+      const used = new Set<number>()
+      const coCha: { n: BaiToan; row: number }[] = []
+      const khongCha: BaiToan[] = []
+      col.ns.forEach((n) => {
+        const chas = api.tienDeCua(L, n.id).map((id) => L.baiToan.find((b) => b.id === id)).filter(Boolean) as BaiToan[]
+        const chaChinh = chas.sort((a, b) => b.cap - a.cap || b.ma.localeCompare(a.ma))[0]
+        const r = chaChinh ? rowOf.get(chaChinh.id) : undefined
+        if (r != null) coCha.push({ n, row: r }); else khongCha.push(n)
+      })
+      coCha.sort((a, b) => a.row - b.row).forEach(({ n, row }) => {
+        while (used.has(row)) row++
+        used.add(row); rowOf.set(n.id, row); nextRow = Math.max(nextRow, row + 1)
+      })
+      khongCha.sort((a, b) => a.ma.localeCompare(b.ma)).forEach((n) => {
+        let row = nextRow
+        while (used.has(row)) row++
+        used.add(row); rowOf.set(n.id, row); nextRow = row + 1
+      })
+    })
     const pos = new Map<string, { x: number; y: number }>()
-    cots.forEach((col, i) => col.ns.forEach((n, j) => pos.set(n.id, { x: hubOffset + i * (COL_W + GAP), y: j * (NODE_H + ROW_GAP) })))
-    const cao = Math.max(scope === 'mh' ? MH_H : 120, ...cots.map((c) => c.ns.length * (NODE_H + ROW_GAP)))
+    cots.forEach((col, i) => col.ns.forEach((n) => pos.set(n.id, { x: hubOffset + i * (COL_W + GAP), y: rowOf.get(n.id)! * (NODE_H + ROW_GAP) })))
+    const cao = Math.max(scope === 'mh' ? MH_H : 120, nextRow * (NODE_H + ROW_GAP))
     return { cots, pos, cao, rong: Math.max(600, hubOffset + cots.length * (COL_W + GAP) - GAP) }
-  }, [nodes, hubOffset, scope])
+  }, [nodes, hubOffset, scope, L])
   const hubY = Math.max(0, (cao - MH_H) / 2)
 
   // Cạnh = tiền đề (theo cách mặc định). Xuyên mô hình ⇒ nét đứt teal (§4 M1) — CHỈ vẽ được khi CẢ HAI
