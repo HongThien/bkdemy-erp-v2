@@ -872,7 +872,9 @@ export async function setDanhGiaDang(buoiId: string, hsId: string, maDang: strin
 // ── VIỆC CỦA TÔI (task-derive cho GV/TG) ──────────────────────────
 // Pure-derive (§4): buổi đang mở của lớp tôi phụ trách → task theo vai (KHÔNG đẻ row task).
 //   GV → đánh giá sau buổi + chấm bài trên lớp · TG → chấm bài trên lớp + chấm ET.
-export type TabKey = 'diemdanh' | 'danhgia' | 'ingame' | 'et' | 'btvn' | 'mt'
+// 'baosai' = duyệt HS báo sai ở test online — KHÔNG phải khâu của buổi như 5 tab kia:
+// nó mở màn "Duyệt chấm online", không mở BuoiDetail (xem TaskCard ở NhanSuHome).
+export type TabKey = 'diemdanh' | 'danhgia' | 'ingame' | 'et' | 'btvn' | 'mt' | 'baosai'
 // deadline (Thùy chốt): chấm bài + đánh giá = 23h59 ngày buổi · ET = 12h trưa hôm sau · BTVN = 2h TRƯỚC ca học tiếp theo của lớp · MT = 23h59 ngày thi (giống chấm bài).
 export type MyTask = { buoiId: string; lopId: string; lop: string; ngay: string; vai: 'gv' | 'tg'; tab: TabKey; label: string; done: boolean; doneAt: string | null; deadline: number | null; loai?: 'bu' | 'bo_tro_duoi' }
 // Export: trợ lý cần ĐÚNG bảng vai→khâu này để dựng rổ "dự kiến hôm nay" cho buổi CHƯA MỞ
@@ -927,9 +929,19 @@ export async function getMyTasks(): Promise<MyTask[]> {
     }
     return null
   }
+  // ⭐ ET ONLINE = auto-chấm ⇒ BỎ task "Chấm ET" của buổi đó (spec test-online §9).
+  // Điều kiện theo TỪNG BUỔI (lớp+ngày có `bai_test` loại 'et'), KHÔNG bỏ đại trà: ET giấy
+  // vẫn là đường chính, bỏ hết là TG mất task chấm thật.
+  const etOnlineKeys = new Set<string>()
+  {
+    const { data: etTests } = await supabase.from('bai_test')
+      .select('lop_id, ngay').eq('loai', 'et').in('lop_id', lopIds).limit(LIMIT)
+    for (const t of (etTests ?? []) as any[]) etOnlineKeys.add(`${t.lop_id}|${t.ngay}`)
+  }
+
   const out: MyTask[] = []
   for (const b of (buois ?? []) as any[]) {
-    const doneAtTab: Record<TabKey, string | null> = { diemdanh: null, ingame: b.ingame_dong_at, danhgia: b.danh_gia_xong_at, et: b.et_dong_at, btvn: b.btvn_dong_at, mt: b.mt_dong_at }
+    const doneAtTab: Record<TabKey, string | null> = { diemdanh: null, ingame: b.ingame_dong_at, danhgia: b.danh_gia_xong_at, et: b.et_dong_at, btvn: b.btvn_dong_at, mt: b.mt_dong_at, baosai: null }
     const deadlineOf = (tab: TabKey): number | null => {
       if (tab === 'ingame' || tab === 'danhgia' || tab === 'mt') return vnInstant(b.ngay, '23:59')
       if (tab === 'et') return vnInstant(congNgay(b.ngay, 1), '12:00')
@@ -942,6 +954,8 @@ export async function getMyTasks(): Promise<MyTask[]> {
       if (!roles.has(vai)) continue
       for (const t of TASKS_BY_VAI[vai]) {
         if (seen.has(t.tab)) continue
+        // Buổi này đã phát hành ET online ⇒ máy chấm rồi, không còn việc chấm tay.
+        if (t.tab === 'et' && etOnlineKeys.has(`${b.lop_id}|${b.ngay}`)) { seen.add(t.tab); continue }
         seen.add(t.tab)
         out.push({ buoiId: b.id, lopId: b.lop_id, lop: b.lop?.ten_lop ?? '?', ngay: b.ngay, vai, tab: t.tab, label: t.label, done: !!doneAtTab[t.tab], doneAt: doneAtTab[t.tab], deadline: deadlineOf(t.tab) })
       }
@@ -952,6 +966,40 @@ export async function getMyTasks(): Promise<MyTask[]> {
       }
     }
   }
+  // ── DUYỆT BÁO SAI test online (spec test-online §9) — THAY cho task "Chấm ET" đã bỏ ở trên.
+  // Pure-derive đúng nghĩa: report `moi` TỒN TẠI ⇒ task; duyệt xong (dung/sai) là task tự biến
+  // mất, không có cờ done nào phải dọn. Gom về 1 task / (lớp × buổi) để không vỡ list khi 1 câu
+  // bị 20 HS cùng báo.
+  // ⚠ PostgREST không filter được quan hệ LỒNG (CLAUDE.md §2) — bảng report nhỏ nên tải hết
+  // rồi lọc client theo lớp của tôi, đừng cố nhét filter vào select lồng 3 tầng.
+  {
+    const tgLops = new Set([...rolesByLop.entries()].filter(([, r]) => r.has('tg')).map(([id]) => id))
+    if (tgLops.size) {
+      const { data: reps } = await supabase.from('bai_test_report')
+        .select('created_at, blc:bai_lam_cau_id(cau:bai_test_cau_id(test:bai_test_id(lop_id, ngay)))')
+        .eq('trang_thai', 'moi').limit(LIMIT)
+      // gom theo lớp|ngày → đếm + report cũ nhất (để tính deadline)
+      const gom = new Map<string, { n: number; sinh: number }>()
+      for (const r of (reps ?? []) as any[]) {
+        const t = r.blc?.cau?.test
+        if (!t?.lop_id || !tgLops.has(t.lop_id)) continue
+        const k = `${t.lop_id}|${t.ngay}`
+        const cu = gom.get(k) ?? { n: 0, sinh: Number.POSITIVE_INFINITY }
+        gom.set(k, { n: cu.n + 1, sinh: Math.min(cu.sinh, new Date(r.created_at).getTime()) })
+      }
+      for (const [k, v] of gom) {
+        const [lopId, ngay] = k.split('|')
+        const b = (buois ?? []).find((x: any) => x.lop_id === lopId && x.ngay === ngay) as any
+        out.push({
+          buoiId: b?.id ?? '', lopId, lop: b?.lop?.ten_lop ?? '?', ngay, vai: 'tg', tab: 'baosai',
+          label: `Duyệt báo sai (${v.n})`,
+          done: false, doneAt: null,
+          deadline: Number.isFinite(v.sinh) ? v.sinh + 24 * 3600000 : null, // 24h từ báo sai đầu tiên
+        })
+      }
+    }
+  }
+
   // ── BUỔI BÙ (loai='bu'): TA đứng lớp (nguoi_day_tg) LÀM CẢ chấm ET LẪN đánh giá. Buổi bù do TA chạy
   // (người bổ trợ mặc định); màn BuoiBuDetail gộp CẢ ET lẫn đánh giá + 2 nút đóng vào 1 chỗ → ai mở buổi
   // làm cả hai. GV KHÔNG nhận task ở buổi bù (Thùy chốt 07-26). KHÔNG qua phan_cong_lop, KHÔNG Elo.
@@ -1055,7 +1103,7 @@ export async function listAllStaffTasks(tu: string, den: string): Promise<StaffT
   }
   const out: StaffTaskRow[] = []
   for (const b of (buois ?? []) as any[]) {
-    const doneAtTab: Record<TabKey, string | null> = { diemdanh: null, ingame: b.ingame_dong_at, danhgia: b.danh_gia_xong_at, et: b.et_dong_at, btvn: b.btvn_dong_at, mt: b.mt_dong_at }
+    const doneAtTab: Record<TabKey, string | null> = { diemdanh: null, ingame: b.ingame_dong_at, danhgia: b.danh_gia_xong_at, et: b.et_dong_at, btvn: b.btvn_dong_at, mt: b.mt_dong_at, baosai: null }
     const deadlineOf = (tab: TabKey): number | null => {
       if (tab === 'ingame' || tab === 'danhgia' || tab === 'mt') return vnInstant(b.ngay, '23:59')
       if (tab === 'et') return vnInstant(congNgay(b.ngay, 1), '12:00')

@@ -8,6 +8,7 @@ import { listTLNSai, listAcceptedAnswers, chapNhanDapAn, tuChoiReports, type TLN
 import { smartNormalize } from '../../gami/testgrade'
 import { MathText } from '../kho/ui'
 import { tenHienThiDs } from '../../lib/hoten'
+import ChamLaiKeyPanel from './ChamLaiKeyPanel'
 
 type AnsGroup = { norm: string; raw: string; rows: TLNSaiRow[]; repsMoi: { id: string }[] }
 type CauGroup = { key: string; maCau: string | null; noiDung: string | null; dapAnKey: string; loiGiai: string | null; answers: AnsGroup[]; repsMoi: number }
@@ -20,7 +21,7 @@ export default function DuyetChamScreen() {
   const [accepted, setAccepted] = useState<Map<string, string[]>>(new Map())
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
-  const [filter, setFilter] = useState<'baosai' | 'all'>('baosai')
+  const [filter, setFilter] = useState<'baosai' | 'all' | 'keysai'>('baosai')
   const [busy, setBusy] = useState<string | null>(null) // norm key đang xử lý
   const [flash, setFlash] = useState<string | null>(null)
 
@@ -80,17 +81,22 @@ export default function DuyetChamScreen() {
   return (
     <div className="flex h-full min-h-0 flex-col bg-[#f5f5f7]">
       <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 bg-white px-6 py-2.5">
-        <span className="mr-2 text-sm font-semibold text-slate-900">Duyệt chấm online — trả lời ngắn</span>
+        <span className="mr-2 text-sm font-semibold text-slate-900">Duyệt chấm online</span>
         <button onClick={() => setFilter('baosai')} className={tab(filter === 'baosai')}>🚩 HS báo sai{totalRepsMoi ? ` (${totalRepsMoi})` : ''}</button>
         <button onClick={() => setFilter('all')} className={tab(filter === 'all')}>Tất cả câu bị chấm sai ({groups.length})</button>
+        {/* Đường THỨ HAI, đừng lẫn với hai tab trên: trên = key đúng/HS viết khác · đây = KEY SAI. */}
+        <button onClick={() => setFilter('keysai')} className={tab(filter === 'keysai')}>⚠ Nghi sai đáp án — chấm lại</button>
         <button onClick={reload} className="rounded-md border border-slate-300 px-2.5 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-400">↻ Tải lại</button>
-        <span className="ml-auto text-[12px] text-slate-400">Chấp nhận đúng = thêm vào bộ đáp án (lần sau tự đúng) + sửa mọi bài làm trùng.</span>
+        <span className="ml-auto text-[12px] text-slate-400">
+          {filter === 'keysai' ? 'Cả lớp cùng sai 1 câu ⇒ nghi ĐÁP ÁN sai trước, nghi HS sau.' : 'Chấp nhận đúng = thêm vào bộ đáp án (lần sau tự đúng) + sửa mọi bài làm trùng.'}
+        </span>
       </div>
 
       <div className="min-h-0 flex-1 overflow-auto p-6">
         {flash && <div className="mb-3 rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-[13px] text-emerald-700">{flash}</div>}
         {err && <div className="mb-3 rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[13px] text-rose-600">Lỗi: {err}</div>}
-        {loading ? <p className="text-sm text-slate-400">Đang tải…</p>
+        {filter === 'keysai' ? <ChamLaiKeyPanel />
+          : loading ? <p className="text-sm text-slate-400">Đang tải…</p>
           : shown.length === 0 ? (
             <div className="rounded-xl border border-dashed border-slate-300 bg-white py-14 text-center text-sm text-slate-400">
               {filter === 'baosai' ? 'Không có báo sai nào đang chờ duyệt. 🎉' : 'Không có câu trả lời ngắn nào đang bị chấm sai.'}
