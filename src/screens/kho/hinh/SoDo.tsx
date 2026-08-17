@@ -511,7 +511,7 @@ function FormBienThe({ L, baiToanId, v, goc, onClose, onDone }: {
     } catch (e: any) { setLoi(e.message ?? String(e)); setSaving(false) }
   }
   return createPortal(
-    <div className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-900/50 p-3 sm:p-6" onClick={onClose}>
+    <div className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-900/50 p-3 sm:p-6" onClick={(e) => e.stopPropagation()}>
       <div className="flex max-h-[88vh] w-[92vw] max-w-2xl flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center gap-3 border-b border-slate-200 px-5 py-3">
           <h3 className="text-[15px] font-semibold text-slate-900">{v ? 'Sửa biến thể' : 'Thêm biến thể'}</h3>
@@ -661,7 +661,7 @@ function ChuoiDoiDinhPopup({ L, chuoi, onClose, onDone }: {
     } catch (e: any) { setLoi(e.message ?? String(e)); setBusy(false) }
   }
   return createPortal(
-    <div className="fixed inset-0 z-[70] flex items-center justify-center bg-slate-900/50 p-3 sm:p-6" onClick={onClose}>
+    <div className="fixed inset-0 z-[70] flex items-center justify-center bg-slate-900/50 p-3 sm:p-6" onClick={(e) => e.stopPropagation()}>
       <div className="flex max-h-[85vh] w-[92vw] max-w-lg flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center gap-2 border-b border-slate-200 px-5 py-3">
           <h3 className="text-[15px] font-semibold text-slate-900">🔗 Đổi đỉnh cả chuỗi</h3>

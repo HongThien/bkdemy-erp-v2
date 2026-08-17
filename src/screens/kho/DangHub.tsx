@@ -218,8 +218,11 @@ export function CauModal({ editing, cauTbl, onClose, onSaved }: { editing: CauHo
       onSaved()
     } catch (e: any) { setError(e.message ?? String(e)); setSaving(false) }
   }
+  // stopPropagation ở CHÍNH backdrop này (không chỉ hộp trắng bên trong) — CauModal KHÔNG dùng createPortal
+  // nên nằm LỒNG trong backdrop của DangHub hub (vẫn cố ý giữ click-ra-ngoài-đóng vì là popup xem). Thiếu
+  // dòng này thì click ra ngoài CauModal nổi bong bóng lên đóng luôn cả hub.
   return (
-    <div className="fixed inset-0 z-[60] bg-slate-900/50 backdrop-blur-sm" onClick={onClose}>
+    <div className="fixed inset-0 z-[60] bg-slate-900/50 backdrop-blur-sm" onClick={(e) => e.stopPropagation()}>
       <div className="absolute inset-x-[6%] inset-y-8 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center gap-3 border-b border-slate-200 px-6 py-3.5">
           <h3 className="text-base font-semibold text-slate-900">Sửa câu</h3>
@@ -451,7 +454,7 @@ function AiImportModal({ mode, dangChinh, tenDang, cauTbl, presetGoc, onClose, o
   const bIdx = items.length ? Math.min(vi, items.length - 1) : 0 // câu đang xem (batch), clamp khi xoá/gộp
 
   return (
-    <div className="fixed inset-0 z-[60] bg-slate-900/50 backdrop-blur-sm" onClick={onClose}>
+    <div className="fixed inset-0 z-[60] bg-slate-900/50 backdrop-blur-sm" onClick={(e) => e.stopPropagation()}>
       <div className="absolute inset-4 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center gap-4 border-b border-slate-200 px-6 py-3.5">
           <h3 className="text-base font-semibold text-slate-900">

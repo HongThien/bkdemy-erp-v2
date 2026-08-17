@@ -141,7 +141,7 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, tienDe
   const toggleVan = (id: string) => setVanIds((s) => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n })
 
   return createPortal(
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-3 sm:p-6" onClick={onClose}>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-3 sm:p-6" onClick={(e) => e.stopPropagation()}>
       <div className="flex h-[92vh] w-[95vw] max-w-6xl flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
         {/* Header */}
         <div className="flex items-center gap-3 border-b border-slate-200 px-5 py-3">

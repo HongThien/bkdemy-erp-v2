@@ -150,7 +150,7 @@ function DungSaiImportModal({ dangChinh, tbl, dangOpts, onClose, onSaved }: {
   }
 
   return (
-    <div className="fixed inset-0 z-[80] flex items-center justify-center bg-slate-900/40 p-4" onClick={onClose}>
+    <div className="fixed inset-0 z-[80] flex items-center justify-center bg-slate-900/40 p-4" onClick={(e) => e.stopPropagation()}>
       <div className="flex max-h-[94vh] w-full max-w-[960px] flex-col rounded-2xl bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center gap-3 border-b border-slate-200 px-5 py-3">
           <span className="text-[16px] font-semibold text-slate-800">Nhập câu Đúng/Sai từ PDF/ảnh (AI)</span>
@@ -245,7 +245,7 @@ export function DungSaiModal({ cau, dangChinhMoi, tbl, dangOpts, onClose, onSave
   }
 
   return (
-    <div className="fixed inset-0 z-[80] flex items-center justify-center bg-slate-900/40 p-4" onClick={onClose}>
+    <div className="fixed inset-0 z-[80] flex items-center justify-center bg-slate-900/40 p-4" onClick={(e) => e.stopPropagation()}>
       <div className="flex max-h-[92vh] w-full max-w-[860px] flex-col rounded-2xl bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center gap-3 border-b border-slate-200 px-5 py-3">
           <span className="text-[16px] font-semibold text-slate-800">{edit ? 'Sửa câu Đúng/Sai' : 'Thêm câu Đúng/Sai'}</span>

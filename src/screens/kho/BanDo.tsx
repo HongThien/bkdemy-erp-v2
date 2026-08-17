@@ -572,7 +572,7 @@ export function LyThuyetModal({ ma, ten, current, api, allowKhongCan, onClose, o
   const sel = 'h-[34px] rounded-md border border-slate-300 bg-white px-2 text-[13px] outline-none focus:border-indigo-500'
 
   return (
-    <div className="fixed inset-0 z-[60] bg-slate-900/50 backdrop-blur-sm" onClick={onClose}>
+    <div className="fixed inset-0 z-[60] bg-slate-900/50 backdrop-blur-sm" onClick={(e) => e.stopPropagation()}>
       <div className="absolute inset-4 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
         {/* Header: hàng tiêu đề + hàng công cụ AI (tách 2 hàng cho khỏi chen) */}
         <div className="border-b border-slate-200 px-6 py-3">

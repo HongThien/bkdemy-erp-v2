@@ -138,11 +138,20 @@ export const Code = ({ children }: { children: ReactNode }) => (
   <span className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[12px] text-slate-600">{children}</span>
 )
 
+// ⭐ 17/08 (Thùy): form nhập liệu KHÔNG được đóng khi lỡ tay click ra ngoài (mất data đang gõ) — chỉ đóng
+// qua nút ✕ tường minh. Popup XEM/CHỌN (không có ô nhập) thì giữ click-ra-ngoài như cũ, không đụng ở đây.
+// ⚠ stopPropagation ở CHÍNH backdrop này, không chỉ hộp trắng bên trong — Shell hay được mở LỒNG bên
+// trong 1 popup xem khác (vd DetailBaiToan) mà KHÔNG qua createPortal riêng; React bubble sự kiện theo
+// CÂY REACT chứ không theo cây DOM (kể cả khi có portal), nên thiếu dòng này thì click ra ngoài Shell vẫn
+// nổi bong bóng lên tới onClick={onClose} của popup cha, đóng nhầm luôn cả 2 lớp.
 export function Shell({ title, onClose, children }: { title: string; onClose: () => void; children: ReactNode }) {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/30 p-4 backdrop-blur-sm" onClick={onClose}>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/30 p-4 backdrop-blur-sm" onClick={(e) => e.stopPropagation()}>
       <div className="max-h-[88vh] w-[680px] max-w-[94vw] overflow-y-auto rounded-2xl border border-slate-200 bg-white p-7 shadow-2xl" onClick={(e) => e.stopPropagation()}>
-        <h3 className="mb-5 text-base font-semibold text-slate-900">{title}</h3>
+        <div className="mb-5 flex items-center gap-3">
+          <h3 className="text-base font-semibold text-slate-900">{title}</h3>
+          <button onClick={onClose} className="ml-auto flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-slate-400 hover:bg-slate-100">✕</button>
+        </div>
         {children}
       </div>
     </div>
