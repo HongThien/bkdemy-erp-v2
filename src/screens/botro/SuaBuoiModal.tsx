@@ -2,6 +2,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { updateBuoiMeta } from '../../lib/gami'
 import { listNhanSu, type NhanSu } from '../../lib/nhansu'
+import { listPhong, type Phong } from '../../lib/phong'
 import SearchSelect from '../../components/SearchSelect'
 
 const inp = 'w-full rounded-lg border border-slate-300 px-3 py-2 text-[14px] outline-none focus:border-indigo-400'
@@ -20,9 +21,12 @@ export default function SuaBuoiModal({ buoi, taLabel = 'Người dạy bổ tr�
   const [gv, setGv] = useState<string | null>(buoi.nguoi_day ?? null)
   const [ta, setTa] = useState<string | null>(buoi.nguoi_day_tg ?? null)
   const [nss, setNss] = useState<NhanSu[]>([])
+  const [phongs, setPhongs] = useState<Phong[]>([])
   const [busy, setBusy] = useState(false)
   useEffect(() => { listNhanSu().then(setNss).catch(() => {}) }, [])
+  useEffect(() => { listPhong(true).then(setPhongs).catch(() => {}) }, [])
   const opts = useMemo(() => nss.map((n) => ({ id: n.id, label: n.ho_ten, sub: n.ma_ns })), [nss])
+  const phongOpts = useMemo(() => phongs.map((p) => ({ id: p.ma_phong, label: p.ten_phong })), [phongs])
   async function save() {
     if (!ngay) { alert('Chọn ngày'); return }
     setBusy(true)
@@ -37,7 +41,7 @@ export default function SuaBuoiModal({ buoi, taLabel = 'Người dạy bổ tr�
           <div className="grid grid-cols-3 gap-3">
             <div><label className="mb-1 block text-[13px] font-medium text-slate-600">Ngày *</label><input type="date" className={inp} value={ngay} onChange={(e) => setNgay(e.target.value)} /></div>
             <div><label className="mb-1 block text-[13px] font-medium text-slate-600">Giờ</label><input type="time" className={inp} value={gio} onChange={(e) => setGio(e.target.value)} /></div>
-            <div><label className="mb-1 block text-[13px] font-medium text-slate-600">Phòng</label><input className={inp} value={phong} onChange={(e) => setPhong(e.target.value)} /></div>
+            <div><label className="mb-1 block text-[13px] font-medium text-slate-600">Phòng</label><SearchSelect value={phong || null} onChange={(v) => setPhong(v ?? '')} options={phongOpts} placeholder="Chọn phòng…" /></div>
           </div>
           <div className="grid grid-cols-2 gap-3">
             <div><label className="mb-1 block text-[13px] font-medium text-slate-600">{taLabel} *</label><SearchSelect value={ta} onChange={setTa} options={opts} placeholder={`Chọn ${taLabel.toLowerCase()}…`} /></div>
