@@ -11,7 +11,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import * as api from '../../../lib/kho/api'
 import * as gt from '../../../lib/kho/hinhGiaoTrinh'
-import type { GiaoTrinh, GtBuoi, GtBai, TrichStateHinh } from '../../../lib/kho/hinhGiaoTrinh'
+import type { GiaoTrinh, GtBuoi, GtBai, TrichStateHinh, CheDoHinh } from '../../../lib/kho/hinhGiaoTrinh'
 import type { Luoi } from '../../../lib/kho/hinh'
 import type { PickItem } from '../../../store/useStore'
 import { listLop, type Lop } from '../../../lib/nhansu'
@@ -44,17 +44,17 @@ export async function resolveBanIn(L: Luoi, tieuBuoi: string, bais: GtBai[], pha
   for (const b of list) {
     if (b.loai === 'chuan') {
       const node = L.baiToan.find((x) => x.id === b.ref_id); if (!node) continue
-      mucs.push(mucGhep(L, { key: b.id, phan: b.phan, kind: 'ghep', luaId: null, nodeIds: [node.id] }, b.an_de, dong(b)))
+      mucs.push(mucGhep(L, { key: b.id, phan: b.phan, kind: 'ghep', luaId: null, nodeIds: [node.id] }, (b.hinh_che_do ?? (b.an_de ? 'o_trong' : 'hien')), dong(b)))
     } else if (b.loai === 'bienthe') {
       const v = btMap.get(b.ref_id!); if (!v) continue
-      mucs.push(mucBienThe(L, v, b.an_de, dong(b)))
+      mucs.push(mucBienThe(L, v, (b.hinh_che_do ?? (b.an_de ? 'o_trong' : 'hien')), dong(b)))
     } else if (b.loai === 'y') {
       const yb = yMap.get(b.ref_id!); if (!yb) continue
-      mucs.push(mucY(L, yb, b.an_de, dong(b)))
+      mucs.push(mucY(L, yb, (b.hinh_che_do ?? (b.an_de ? 'o_trong' : 'hien')), dong(b)))
     } else if (b.loai === 'ghep') {
       const sig = `${b.lua_id ?? 'chuan'}|${[...b.ghep_node_ids].sort().join(',')}`; if (seenGhep.has(sig)) continue; seenGhep.add(sig)
-      if (b.lua_id) { const vs = await api.bienTheCuaLua(b.lua_id); mucs.push(mucGhepLua(L, b.ghep_node_ids, vs, b.an_de, dong(b))) }
-      else mucs.push(mucGhep(L, { key: b.id, phan: b.phan, kind: 'ghep', luaId: b.lua_id, nodeIds: b.ghep_node_ids }, b.an_de, dong(b)))
+      if (b.lua_id) { const vs = await api.bienTheCuaLua(b.lua_id); mucs.push(mucGhepLua(L, b.ghep_node_ids, vs, (b.hinh_che_do ?? (b.an_de ? 'o_trong' : 'hien')), dong(b))) }
+      else mucs.push(mucGhep(L, { key: b.id, phan: b.phan, kind: 'ghep', luaId: b.lua_id, nodeIds: b.ghep_node_ids }, (b.hinh_che_do ?? (b.an_de ? 'o_trong' : 'hien')), dong(b)))
     }
   }
   return { tieuDe: `${tieuBuoi} — ${phan === 'lop' ? 'Trên lớp' : 'Về nhà (BTVN)'}`, phuDe: `${mucs.length} mục`, mucs }
@@ -219,7 +219,7 @@ function BuoiCardHinh({ L, buoi, no, onDeleted, onPreview }: {
   // Nội dung LUÔN hiện inline (khuôn DangCard Đại — KHÔNG gấp/mở, tránh lặp lỗi "tự chế thêm bước Thùy
   // không nhờ": người vào buổi phải thấy NGAY phần chọn mô hình + chọn bài, không phải bấm ▸ tìm ra).
   const [dem, setDem] = useState<{ lop: number; nha: number } | null>(null)
-  const [nhap, setNhap] = useState<{ picks: PickItem[]; anDe: string[]; soDong: Record<string, number> } | null>(null)
+  const [nhap, setNhap] = useState<{ picks: PickItem[]; cheDo: Record<string, CheDoHinh>; soDong: Record<string, number> } | null>(null)
   const [tieuDe, setTieuDe] = useState(buoi.tieu_de ?? '')
   const [saved, setSaved] = useState(false)
   const markSaved = () => { setSaved(true); setTimeout(() => setSaved(false), 1500) }
@@ -231,7 +231,7 @@ function BuoiCardHinh({ L, buoi, no, onDeleted, onPreview }: {
     })
   }, [buoi.id])
 
-  async function saveNow(patch: Partial<{ picks: PickItem[]; anDe: string[]; soDong: Record<string, number> }>) {
+  async function saveNow(patch: Partial<{ picks: PickItem[]; cheDo: Record<string, CheDoHinh>; soDong: Record<string, number> }>) {
     if (!nhap) return
     const next = { ...nhap, ...patch }
     setNhap(next)
@@ -254,7 +254,7 @@ function BuoiCardHinh({ L, buoi, no, onDeleted, onPreview }: {
   async function xem(phan: 'lop' | 'nha') {
     const n = nhap ?? await gt.loadBuoiPicks(buoi.id)
     if (!nhap) setNhap(n)
-    onPreview(await banInTheoMoHinh(tieuDe || `Buổi ${no}`, phan, n.picks, L, n.anDe, n.soDong))
+    onPreview(await banInTheoMoHinh(tieuDe || `Buổi ${no}`, phan, n.picks, L, n.cheDo, n.soDong))
   }
 
   return (
@@ -274,8 +274,8 @@ function BuoiCardHinh({ L, buoi, no, onDeleted, onPreview }: {
       </div>
       <div className="p-3">
         {!nhap ? <div className="p-4 text-[12.5px] text-slate-400">Đang tải…</div> : (
-          <BuoiPickEditor L={L} picks={nhap.picks} anDe={nhap.anDe} soDong={nhap.soDong}
-            onChangePicks={(picks) => saveNow({ picks })} onChangeAnDe={(anDe) => saveNow({ anDe })} onChangeSoDong={(soDong) => saveNow({ soDong })} />
+          <BuoiPickEditor L={L} picks={nhap.picks} cheDo={nhap.cheDo} soDong={nhap.soDong}
+            onChangePicks={(picks) => saveNow({ picks })} onChangeCheDo={(cheDo) => saveNow({ cheDo })} onChangeSoDong={(soDong) => saveNow({ soDong })} />
         )}
       </div>
     </div>

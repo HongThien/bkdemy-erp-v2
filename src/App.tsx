@@ -7,6 +7,7 @@ import NhanSuHome from './screens/NhanSuHome'
 import Login from './auth/Login'
 import GeminiMeterBadge from './components/GeminiMeterBadge'
 import HocSinhApp from './screens/hocsinh/HocSinhApp'
+import DoiMatKhau from './screens/hocsinh/DoiMatKhau'
 import { getMyHocSinhId } from './lib/testonline'
 import { useIsMobile } from './hooks/useIsMobile'
 
@@ -40,11 +41,20 @@ export default function App() {
   if (!session) return <Login />
   if (hsId === undefined) return <div className="flex min-h-screen items-center justify-center text-sm text-slate-400">Đang tải…</div>
   // App HS = trải nghiệm ĐIỆN THOẠI riêng → huỷ zoom #root (mật độ desktop staff) về net 1.0.
-  if (hsId) return (
-    <div style={{ zoom: 'var(--app-unz)' }}>
-      <HocSinhApp hocSinhId={hsId} hoTen={(session.user.user_metadata?.ho_ten as string) || 'bạn'} />
-    </div>
-  )
+  if (hsId) {
+    // Cổng đổi mật khẩu: PIN provision = chính mã HS ⇒ đoán được ⇒ bài làm không quy được
+    // về đúng một người. Chặn TRƯỚC khi vào app, không cho làm bài khi mật khẩu còn mặc định.
+    // Cờ do script `hs_buoc_doi_mk.mjs` gắn (hiện chỉ cấp 3 — nơi bài online là phép đo chính).
+    const phaiDoiMK = session.user.user_metadata?.must_change_password === true
+    const maHS = (session.user.email ?? '').split('@')[0]
+    return (
+      <div style={{ zoom: 'var(--app-unz)' }}>
+        {phaiDoiMK
+          ? <DoiMatKhau maHS={maHS} batBuoc onXong={() => supabase.auth.getSession().then(({ data }) => setSession(data.session))} />
+          : <HocSinhApp hocSinhId={hsId} hoTen={(session.user.user_metadata?.ho_ten as string) || 'bạn'} maHS={maHS} />}
+      </div>
+    )
+  }
   if (quyen === null) return <div className="flex min-h-screen items-center justify-center text-sm text-slate-400">Đang tải quyền…</div>
 
   const shell = (
