@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-140 bảng · 0 view · 0 enum · 12 trigger · 49 function
+141 bảng · 0 view · 0 enum · 12 trigger · 49 function
 
 ## _migrations
 
@@ -98,6 +98,21 @@
 | anh_dap_an | text | Y |  |  |  |
 | ma_dang | text | Y |  |  |  |
 | ly_thuyet | text | Y |  |  |  |
+
+## bai_test_cham_lai_log
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| bai_test_cau_id | uuid |  |  | FK→bai_test_cau.id |  |
+| key_cu | jsonb | Y |  |  |  |
+| key_moi | jsonb | Y |  |  |  |
+| so_bai | integer |  | 0 |  |  |
+| sai_thanh_dung | integer |  | 0 |  |  |
+| dung_thanh_sai | integer |  | 0 |  |  |
+| ly_do | text | Y |  |  |  |
+| nguoi | uuid | Y |  |  |  |
+| tao_at | timestamp with time zone |  | now() |  |  |
 
 ## bai_test_report
 
@@ -923,6 +938,7 @@
 | thu_tu | integer |  | 0 |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | so_dong | integer | Y |  |  |  |
+| hinh_che_do | text |  | 'hien'::text |  | `hien` · `o_trong` · `khong` |
 
 ## hinh_gt_buoi
 

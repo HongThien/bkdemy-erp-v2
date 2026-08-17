@@ -5256,3 +5256,65 @@ code nào trong app làm việc đó ⇒ bỏ không mất chức năng. Bản m
 mở bài (⇒ `moBaiLam` qua được RLS mới) → chọn đáp án → Xác nhận → "🎉 Đúng hết!" + lời giải → đối chiếu
 DB có `bai_lam_cau{verdict:'correct', diem:1, cham_boi:'exact'}`. Xáo đáp án vẫn chạy (5 hiện ở vị trí
 B). Dọn sạch sau khi soi; `bai_test` về 0, HS0004 về mặc định, 41/41 vẫn gắn cờ.
+
+---
+
+## 2026-08-17 (tiếp) — Xử lý câu SAI ĐÁP ÁN: chấm lại cả lớp + task Duyệt báo sai (mig 202608171532)
+
+Hai việc cuối của spec test-online (§7 chấm lại · §9 task duyệt báo sai). Cả hai đều phục vụ MỘT
+tình huống: **đáp án sai thì xử thế nào**.
+
+**⭐ HAI ĐƯỜNG KHÁC NHAU, ĐỪNG TRỘN** — đây là điểm dễ làm sai nhất:
+
+| | Key ĐÚNG, HS viết cách khác | KEY SAI |
+|---|---|---|
+| Ví dụ | key "5", HS ghi "5.0" | key ghi 'C' nhưng đáp án đúng là 'B' |
+| Ảnh hưởng | 1 vài HS | CẢ LỚP |
+| Cách xử | thêm vào `question_accepted_answers` + backfill | sửa `dap_an_key` + chấm lại |
+| Tab | 🚩 HS báo sai | ⚠ Nghi sai đáp án |
+
+Nhét đáp-án-đúng vào cache khi KEY SAI thì kho vẫn sai và **lần phát hành sau lại sai tiếp** — chữa
+triệu chứng, không chữa gốc.
+
+**Phát hiện key sai = TỈ LỆ SAI CAO** (`listCauNghiSaiKey`, ngưỡng ≥3 HS trả lời và ≥70% sai, mọi loại
+câu). Cả lớp cùng sai một câu thì nghi đáp án trước, nghi HS sau. Xếp theo tỉ lệ sai giảm dần.
+
+**`suaKeyVaChamLai(cauId, keyMoi, lyDo)`:**
+- Scope **CỨNG theo `bai_test_cau_id`** — KHÔNG lan sang test khác dù cùng `ma_cau`. Mỗi lần phát hành
+  là một phép đo riêng; sửa nhầm sang test cũ = ghi đè điểm đã chốt.
+- Ghi key mới TRƯỚC, chấm lại SAU: nếu chết giữa chừng thì key vẫn đúng cho lần sau, và **thiếu dòng
+  log** ⇒ nhìn là biết "đã sửa key nhưng chưa chấm lại xong".
+- Chấm bằng ĐÚNG engine thuần HS đã dùng (`gradeTracNghiem`/`gradeDungSai`/`gradeTraLoiNgan` + tầng
+  cache TLN), không chép lại công thức.
+- **KHÔNG cần resync đo lường** — verify `pg_proc`: `et_nop` KHÔNG nhắc `gami_grades`, không trigger
+  nào trên bai_lam/bai_lam_cau, và `mastery.ts` đọc THẲNG `bai_lam_cau` làm nguồn đo. Sửa verdict là
+  mastery tự đúng. *(Đính chính mục "xoá dữ liệu" sáng nay: lúc đó tôi ghi "không rõ 2 bài nộp của
+  HS0267 có sync sang gami_grades không" — giờ kiểm được: KHÔNG có đường sync nào cả, nên 20 dòng
+  gami_grades của em ấy là chấm giấy, xoá bai_test không mất gì của mastery.)*
+- Vết: bảng mới `bai_test_cham_lai_log` (key cũ/mới · so_bai · sai→đúng · đúng→sai · lý do · người).
+  RLS **chỉ staff** — HS đọc được là biết đáp án.
+
+**Task "Duyệt báo sai" (§9):** thêm `TabKey='baosai'`, pure-derive — report `moi` TỒN TẠI ⇒ task, duyệt
+xong tự biến mất, không cờ done nào phải dọn. Gom 1 task / (lớp × buổi) để 20 HS cùng báo 1 câu không
+vỡ list. Route cho **TG** của lớp. Bấm vào đi tới màn Duyệt chấm, KHÔNG mở BuoiDetail (mở buổi thì
+chẳng có tab nào tương ứng).
+
+**Kèm theo — BỎ task "Chấm ET" khi buổi đó đã có ET online** (§9). Điều kiện theo **TỪNG BUỔI**
+(lớp+ngày có `bai_test` loại `et`), KHÔNG bỏ đại trà: ET giấy vẫn là đường chính, bỏ hết thì TG mất
+task chấm thật.
+
+`TabKey` mở rộng làm **tsc bắt đúng 5 chỗ** phải cập nhật (2 `doneAtTab`, `TASK_TAB_LABEL`, 2 chỗ gọi
+`TaskCard`) — union type ở đây đóng vai trò y như CHECK constraint ở DB. `baosai` CỐ Ý không vào
+`TASK_TABS` (danh sách khâu đo hiệu suất theo buổi): nó là hàng đợi phát sinh, không gắn buổi, đưa vào
+là đẻ mẫu số giả.
+
+**Verify live** (dựng kịch bản `SMOKE-KEYSAI` cho 11B1 rồi xoá): câu TN key ghi nhầm 'C' trong khi cả
+6 HS chọn B → tab Nghi-sai-đáp-án hiện đúng **"Câu 1 · 100% sai (6/6) · Đáp án: C"**, câu TLN 1/6 sai
+(17%) đúng là KHÔNG bị nêu. Bấm sửa C→B: confirm in đúng before/after, kết quả **"6 bài — Sai→Đúng 6 ·
+Đúng→Sai 0"**. Đối chiếu DB: `dap_an_key`='B' · 6/6 verdict `correct` diem 1 · sổ log có đủ key cũ/mới
++ lý do + người + giờ. Tab HS-báo-sai vẫn chạy song song (hiện đúng "5.0" của HS + ý kiến).
+
+**⚠ Task 'baosai' mới verify ở tầng DB, CHƯA verify qua UI người thật.** Tài khoản admin không có
+`phan_cong_lop` nên `getMyTasks` trả rỗng. Query mirror đúng logic cho ra: báo sai của 11B1 → **Trần
+Hoàng Đạt (TG)**, 1 việc. Cần một phiên đăng nhập bằng TK của TG để xác nhận card hiện đúng và bấm vào
+ra đúng màn Duyệt chấm.
