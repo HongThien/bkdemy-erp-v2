@@ -187,26 +187,35 @@ function Noi({ ban, gv }: { ban: BanIn; gv: boolean }) {
               </div>
             )}
           <div className="hp-de">
-            <div className="hp-de-h">Bài {soDe}.</div>
-            {/* Hình / ô-vẽ FLOAT phải → đề + câu hỏi chảy SÁT bên trái, không bị đẩy xuống dưới hình.
-                anDe (ẩn hình): bản HS chừa ô vẽ; bản GV vẫn hiện hình để đối chiếu. */}
-            {m.anDe
-              ? (gv && m.anhDe
-                ? <div className="hp-fig-r"><img src={m.anhDe} alt="" /></div>
-                : <div className="hp-draw-r"><span>Vẽ hình</span></div>)
-              : (m.anhDe && <div className="hp-fig-r"><img src={m.anhDe} alt="" /></div>)}
-            <div className="hp-txt-flow"><MathText>{m.deBai}</MathText></div>
-            {/* ⭐ 08-09 (Thùy chốt): dòng kẻ gán theo CẢ BÀI (chuỗi ghép a,b,c = 1 bài), nên đề a,b,c
-                phải in LIỀN KHỐI trước, RỒI MỚI đến phần giải chung — không xen kẽ "a - giải a - b -
-                giải b" như trước (đọc rối, và HS phải đợi giải xong ý này mới thấy đề ý sau). */}
-            {m.ys.map((y, j) => (
-              <div key={j} className="hp-y hp-txt-flow">
-                {y.nhan && <b>{y.nhan}) </b>}<MathText>{y.giaThietPhu ? `${y.giaThietPhu}. ${y.noiDung}` : y.noiDung}</MathText>
-                {y.ghiChu && <span className="hp-tag">{y.ghiChu}</span>}
-              </div>
-            ))}
+            {/* ⭐ 16/08 (Thùy): ĐỀ và ĐÁP ÁN là HAI KHU RIÊNG — hình của đề ngang với đề, hình của lời
+                giải ngang với lời giải. Trước đây cả bài là MỘT dòng chảy: hình đề `float:right` còn
+                đứng đó thì hộp `.hp-giai` (có viền + nền) trượt xuống DƯỚI hình, rồi hình lời giải lại
+                float vào chỗ đã bị chiếm ⇒ bố cục loạn, hình như hiện 2 lần lệch nhau.
+                `.hp-khoi{display:flow-root}` cho mỗi khu tự chứa float của mình.
+                ⚠ Dùng `flow-root`, KHÔNG dùng `overflow:hidden` — overflow ẩn trong paged.js CẮT nội
+                dung ở chỗ sang trang (bẫy đã ghi trong DEVLOG), còn flow-root vẫn cho ngắt trang bình thường. */}
+            <div className="hp-khoi hp-khoi-de">
+              <div className="hp-de-h">Bài {soDe}.</div>
+              {/* Hình / ô-vẽ FLOAT phải → đề + câu hỏi chảy SÁT bên trái, không bị đẩy xuống dưới hình.
+                  anDe (ẩn hình): bản HS chừa ô vẽ; bản GV vẫn hiện hình để đối chiếu. */}
+              {m.anDe
+                ? (gv && m.anhDe
+                  ? <div className="hp-fig-r"><img src={m.anhDe} alt="" /></div>
+                  : <div className="hp-draw-r"><span>Vẽ hình</span></div>)
+                : (m.anhDe && <div className="hp-fig-r"><img src={m.anhDe} alt="" /></div>)}
+              <div className="hp-txt-flow"><MathText>{m.deBai}</MathText></div>
+              {/* ⭐ 08-09 (Thùy chốt): dòng kẻ gán theo CẢ BÀI (chuỗi ghép a,b,c = 1 bài), nên đề a,b,c
+                  phải in LIỀN KHỐI trước, RỒI MỚI đến phần giải chung — không xen kẽ "a - giải a - b -
+                  giải b" như trước (đọc rối, và HS phải đợi giải xong ý này mới thấy đề ý sau). */}
+              {m.ys.map((y, j) => (
+                <div key={j} className="hp-y hp-txt-flow">
+                  {y.nhan && <b>{y.nhan}) </b>}<MathText>{y.giaThietPhu ? `${y.giaThietPhu}. ${y.noiDung}` : y.noiDung}</MathText>
+                  {y.ghiChu && <span className="hp-tag">{y.ghiChu}</span>}
+                </div>
+              ))}
+            </div>
             {gv
-              ? m.ys.map((y, j) => (
+              ? <div className="hp-khoi hp-khoi-giai">{m.ys.map((y, j) => (
                 <div key={`giai-${j}`} className="hp-y">
                   <div className="hp-giai">
                     {y.nhan && <b>{y.nhan}) </b>}
@@ -223,7 +232,7 @@ function Noi({ ban, gv }: { ban: BanIn; gv: boolean }) {
                     {y.anh && <div className="hp-fig-r"><img src={y.anh} alt="" /></div>}
                   </div>
                 </div>
-              ))
+              ))}</div>
               // Bản HS: MỘT khối dòng kẻ chung cho cả bài (không phải 1 khối/ý — đúng "gán dòng theo cả
               // bài"), cao theo soDong đã chỉnh ở builder (ApplyDongChuoi, khuôn Đại "cả dạng" chứ không
               // theo từng ý). soDong=0 → không kẻ (đề tự luận không cần viết, vd đã ẩn hình cho HS vẽ).
@@ -260,6 +269,10 @@ const HINH_CSS = `
 .hp-nhac-t{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#6b7280;font-weight:700;margin-bottom:4px}
 .hp-nhac-i{font-size:15px;color:#374151;margin:2px 0}
 .hp-de{margin:0 0 8px;break-inside:auto}
+/* Mỗi KHU (đề · lời giải) tự chứa float của mình ⇒ hình luôn ngang với phần văn bản của chính nó.
+   flow-root chứ KHÔNG overflow:hidden — overflow ẩn cắt nội dung khi paged.js sang trang. */
+.hp-khoi{display:flow-root}
+.hp-khoi-giai{margin-top:5px}
 .hp-de-h{font-weight:800;color:#134e4a;font-size:18px;margin:4px 0 3px;break-after:avoid}
 /* Đề + câu hỏi CHẢY sát bên trái · hình/ô-vẽ FLOAT phải (câu hỏi nằm ngay sau đề, không đợi hết chiều cao hình) */
 .hp-txt-flow{font-size:17px}
@@ -279,7 +292,8 @@ const HINH_CSS = `
 .hp-y{margin:4px 0 0}
 .hp-ma{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#94a3b8}
 .hp-tag{display:inline-block;background:#faeeda;border:1px solid #ef9f27;color:#854f0b;border-radius:10px;padding:0 7px;font-size:11.5px;margin-left:5px;vertical-align:middle}
-.hp-giai{font-size:16px;color:#374151;background:#fbfcff;border:1px solid #e5e9f0;border-radius:7px;padding:7px 10px;margin-top:4px}
+/* flow-root: hình của lời giải (float) phải nằm TRONG hộp có viền, không tràn ra ngoài khi lời giải ngắn. */
+.hp-giai{display:flow-root;font-size:16px;color:#374151;background:#fbfcff;border:1px solid #e5e9f0;border-radius:7px;padding:7px 10px;margin-top:4px}
 .hp-bac{font-size:12px;color:#8a5a12;background:#fffaf1;border-radius:5px;padding:3px 7px;margin-bottom:5px}
 .hp-buoc{margin:0 0 5px;padding-left:9px;border-left:2px solid #cdd6e4}
 .hp-buoc b{color:#0f766e}
