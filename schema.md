@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-141 bảng · 0 view · 0 enum · 12 trigger · 49 function
+141 bảng · 0 view · 0 enum · 13 trigger · 50 function
 
 ## _migrations
 
@@ -786,7 +786,7 @@
 |---|---|---|---|---|---|
 | id | uuid |  | gen_random_uuid() | PK |  |
 | mon | text |  | 'Toán'::text |  |  |
-| ma | text |  | ('BT.'::text \|\| lpad((nextval('hinh_baitoan_seq'::regclass))::text, 3, '0'::text)) |  |  |
+| ma | text |  |  |  |  |
 | phat_bieu | text |  |  |  |  |
 | mo_hinh_id | uuid |  |  | FK→hinh_mo_hinh.id |  |
 | cap | smallint |  |  |  |  |
@@ -1940,6 +1940,7 @@
 | ca_test | trg_log_ca_test | AFTER | INSERT/UPDATE | log_ca_test |
 | dai_cau_hoi | trg_log_kho_cau_dai | AFTER | DELETE/UPDATE | log_kho_cau |
 | hgt_cau_hoi | trg_log_kho_cau_hgt | AFTER | DELETE/UPDATE | log_kho_cau |
+| hinh_baitoan | hinh_baitoan_gen_ma_trg | BEFORE | INSERT | hinh_baitoan_gen_ma |
 | hoa_don | trg_log_hoa_don | AFTER | INSERT/UPDATE | log_hoa_don |
 | hoat_dong_phong | trg_log_hoat_dong_phong | AFTER | INSERT/UPDATE | log_hoat_dong_phong |
 | hoc_sinh | trg_hs_nghi_tu_roi_lop | AFTER | UPDATE | hs_nghi_tu_roi_lop |
@@ -1968,6 +1969,7 @@
 - `hgt_cum_tien_de_bao_dong(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `hgt_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `hgt_dang_tien_de_bao_dong(goc text)` → TABLE(ma_dang text, do_sau integer)
+- `hinh_baitoan_gen_ma()` → trigger
 - `hinh_bao_dong_tien_de(goc uuid)` → TABLE(id uuid, do_sau integer)
 - `hinh_mo_hinh_hau_due(goc uuid)` → TABLE(id uuid, do_sau integer)
 - `hinh_mo_hinh_to_tien(nut uuid)` → TABLE(id uuid, do_sau integer)
