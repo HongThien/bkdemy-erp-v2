@@ -36,7 +36,7 @@ export default function SoDo({ L, khoi, hoId, di, reload, moTaNode, nodeId }: {
   const [view, setView] = useState<'bt' | 'mh'>('bt')
   const [chonBt, setChonBt] = useState<string | null>(nodeId ?? null)
   const [chonMh, setChonMh] = useState<string | null>(null)
-  const [formBt, setFormBt] = useState<{ sua?: BaiToan; goi?: string } | null>(moTaNode ? { goi: moTaNode } : null)
+  const [formBt, setFormBt] = useState<{ sua?: BaiToan; goi?: string; moHinhId?: string; tienDeId?: string } | null>(moTaNode ? { goi: moTaNode } : null)
   const [formMh, setFormMh] = useState<{ sua?: MoHinh; cha?: string } | null>(null)
 
   const trongHo = useMemo(() => (ho ? api.moHinhCuaHo(L, ho.id) : new Set<string>()), [L, ho])
@@ -69,19 +69,21 @@ export default function SoDo({ L, khoi, hoId, di, reload, moTaNode, nodeId }: {
       </div>
 
       {view === 'bt'
-        ? <ViewBaiToan L={L} ho={ho} nodes={nodes} chon={chonBt} setChon={setChonBt} onSua={(b) => setFormBt({ sua: b })} reload={reload} />
+        ? <ViewBaiToan L={L} ho={ho} nodes={nodes} chon={chonBt} setChon={setChonBt} onSua={(b) => setFormBt({ sua: b })}
+            onTaoKeTiep={(b) => setFormBt({ moHinhId: b.mo_hinh_id, tienDeId: b.id })} reload={reload} />
         : <ViewMoHinh L={L} ho={ho} trongHo={trongHo} chon={chonMh ?? ho.id} setChon={setChonMh} onSua={(m) => setFormMh({ sua: m })} onThemCon={(id) => setFormMh({ cha: id })} reload={reload} />}
 
-      {formBt && <FormBaiToan L={L} moHinhMacDinh={chonMh ?? ho.id} sua={formBt.sua} phatBieuGoi={formBt.goi}
-        onClose={() => setFormBt(null)} onDone={reload} />}
+      {formBt && <FormBaiToan L={L} moHinhMacDinh={formBt.moHinhId ?? chonMh ?? ho.id} sua={formBt.sua} phatBieuGoi={formBt.goi}
+        tienDeMacDinh={formBt.tienDeId} onClose={() => setFormBt(null)} onDone={reload} />}
       {formMh && <FormMoHinh L={L} khoiMacDinh={khoi} chaMacDinh={formMh.cha} sua={formMh.sua} onClose={() => setFormMh(null)} onDone={reload} />}
     </>
   )
 }
 
 // ══════════════════ VIEW BÀI TOÁN — cột = CẤP (toggle: Toàn họ / Theo mô hình) ══════════════════
-function ViewBaiToan({ L, ho, nodes: nodesHo, chon, setChon, onSua, reload }: {
+function ViewBaiToan({ L, ho, nodes: nodesHo, chon, setChon, onSua, onTaoKeTiep, reload }: {
   L: Luoi; ho: MoHinh; nodes: BaiToan[]; chon: string | null; setChon: (id: string | null) => void; onSua: (b: BaiToan) => void
+  onTaoKeTiep: (b: BaiToan) => void
   reload: () => Promise<void>
 }) {
   const maCap = useMemo(() => api.maPhanCapMap(L), [L])
@@ -267,7 +269,7 @@ function ViewBaiToan({ L, ho, nodes: nodesHo, chon, setChon, onSua, reload }: {
             )}
         </div>
 
-      {bt && <DetailBaiToan L={L} bt={bt} onSua={() => onSua(bt)} onChon={setChon} onClose={() => setChon(null)} reload={reload} />}
+      {bt && <DetailBaiToan L={L} bt={bt} onSua={() => onSua(bt)} onTaoKeTiep={() => onTaoKeTiep(bt)} onChon={setChon} onClose={() => setChon(null)} reload={reload} />}
     </>
   )
 }
@@ -297,8 +299,8 @@ function doiDiem(text: string, map: Record<string, string>): string {
 
 // Bấm một node → POPUP TO (80% màn hình, createPortal thoát zoom §707) hiển thị ĐẦY ĐỦ bài toán:
 // trái = đề (giả thiết mượn) + câu hỏi + hình to · phải = meta + cách giải/tiền đề + đáp án + ý thực tế.
-function DetailBaiToan({ L, bt, onSua, onChon, onClose, reload }: {
-  L: Luoi; bt: BaiToan; onSua: () => void; onChon: (id: string) => void; onClose: () => void; reload: () => Promise<void>
+function DetailBaiToan({ L, bt, onSua, onTaoKeTiep, onChon, onClose, reload }: {
+  L: Luoi; bt: BaiToan; onSua: () => void; onTaoKeTiep: () => void; onChon: (id: string) => void; onClose: () => void; reload: () => Promise<void>
 }) {
   const maCap = useMemo(() => api.maPhanCapMap(L), [L])
   const mh = L.moHinh.find((m) => m.id === bt.mo_hinh_id)
@@ -325,7 +327,10 @@ function DetailBaiToan({ L, bt, onSua, onChon, onClose, reload }: {
           <span className="rounded-md bg-slate-100 px-2 py-0.5 text-[16px] font-medium text-slate-600">cấp {bt.cap}{mucDo ? ` · độ khó ${mucDo}` : ''}</span>
           {mh && <Tag ton="mh" big>◇ {maCap.get(mh.id) ?? mh.ma} · {tron(mh.ten)}</Tag>}
           {cachMd?.dang_id && <Tag ton="dg" big>{api.tenDangDayDu(L, cachMd.dang_id)}</Tag>}
-          <Btn onClick={onSua} className="ml-auto h-8 px-2.5">✎ Sửa</Btn>
+          {/* Đẻ bài kế tiếp NGAY TỪ bài đang xem — ghim đúng nó làm tiền đề chính, không qua đường vòng
+              "cấp cao nhất trong mô hình" của nodeTruoc() (Thùy 17/08: "1 bài đẻ ra bài sau của nó"). */}
+          <Btn onClick={onTaoKeTiep} className="ml-auto h-8 px-2.5">＋ Bài kế tiếp</Btn>
+          <Btn onClick={onSua} className="h-8 px-2.5">✎ Sửa</Btn>
           <Btn onClick={async () => {
             if (!confirm(`Xoá bài toán ${bt.ma}?`)) return
             try { await api.deleteBaiToan(bt.id); onClose(); await reload() } catch (e: any) { alert(e.message) }

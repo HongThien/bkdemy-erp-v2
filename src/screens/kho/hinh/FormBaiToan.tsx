@@ -18,11 +18,13 @@ import type { BaiToan, Luoi } from '../../../lib/kho/hinh'
 import { MathText, inp } from '../ui'
 import { AnhInput, Btn, Cap, Fig, IngestBaiButton, Ma, OcrButton, tron } from './hinhUi'
 
-export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClose, onDone }: {
+export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, tienDeMacDinh, onClose, onDone }: {
   L: Luoi
   moHinhMacDinh?: string | null
   sua?: BaiToan
   phatBieuGoi?: string          // mô tả từ hàng chờ điền sẵn (M5 → M2)
+  tienDeMacDinh?: string        // "+ Tạo bài kế tiếp" từ 1 node cụ thể — ghim ĐÚNG node đó làm tiền đề
+                                 // chính, thay vì để nodeTruoc() đoán theo cấp cao nhất trong mô hình.
   onClose: () => void
   onDone: () => Promise<void>
 }) {
@@ -53,6 +55,7 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
   // làm tiền đề CHÍNH. Người thêm/bớt tự do sau.
   const [tienDe, setTienDe] = useState<string[]>(() => {
     if (cachCu) return api.tienDeCuaCach(L, cachCu.id)
+    if (tienDeMacDinh) return [tienDeMacDinh]
     const truoc = api.nodeTruoc(L, sua?.mo_hinh_id ?? moHinhMacDinh ?? '')
     return truoc ? [truoc.id] : []
   })
