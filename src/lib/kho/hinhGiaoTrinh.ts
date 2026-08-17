@@ -16,10 +16,23 @@ export type GtBuoi = {
 export type GtBai = {
   id: string; buoi_id: string; phan: 'lop' | 'nha'; loai: 'chuan' | 'bienthe' | 'y' | 'ghep'
   ref_id: string | null; ghep_node_ids: string[]; lua_id: string | null; an_de: boolean; so_dong: number | null; thu_tu: number
+  hinh_che_do: CheDoHinh
 }
+/** 3 trạng thái HÌNH VẼ của một bài trên phiếu (Thùy 17/08 — trước chỉ có cờ `an_de` 2 trạng thái):
+ *   'hien'    — in hình vẽ
+ *   'o_trong' — không in hình, chừa KHUNG TRỐNG cho HS tự vẽ  (= an_de cũ)
+ *   'khong'   — không hình, không khung. MỚI: trước đây không diễn đạt được. */
+export type CheDoHinh = 'hien' | 'o_trong' | 'khong'
+export const CHE_DO_HINH: { ma: CheDoHinh; nhan: string; icon: string; goi: string }[] = [
+  { ma: 'hien', nhan: 'Hiện hình', icon: '🖼', goi: 'Đang IN hình vẽ. Bấm để chuyển sang chừa ô trống.' },
+  { ma: 'o_trong', nhan: 'Ô trống', icon: '✏️', goi: 'Đang chừa Ô TRỐNG cho HS tự vẽ. Bấm để bỏ hẳn hình.' },
+  { ma: 'khong', nhan: 'Không hình', icon: '🚫', goi: 'KHÔNG hình, KHÔNG ô trống. Bấm để quay lại hiện hình.' },
+]
+/** Bấm 1 nút xoay vòng hien → o_trong → khong → hien (gọn hơn 3 nút trên mỗi dòng bài). */
+export const cheDoKe = (c: CheDoHinh): CheDoHinh => (c === 'hien' ? 'o_trong' : c === 'o_trong' ? 'khong' : 'hien')
 // Hình chiếu của nháp "Theo mô hình" cần để lưu 1 buổi — 1 DANH SÁCH pick thống nhất (§08-08 "1 chuỗi
 // ghép lại cũng là 1 bài"), thay cho sel+ghep tách rời trước đây.
-export type NhapBuoi = { picks: PickItem[]; anDe: string[]; soDong: Record<string, number> }
+export type NhapBuoi = { picks: PickItem[]; cheDo: Record<string, CheDoHinh>; soDong: Record<string, number> }
 
 // ══════════════ MASTER GIÁO TRÌNH ══════════════
 export async function listGiaoTrinh(khoi?: string, mon = 'Toán'): Promise<GiaoTrinh[]> {
@@ -76,14 +89,17 @@ export async function listGtBai(buoiId: string): Promise<GtBai[]> {
 }
 /** Lưu NHÁP "Theo mô hình" thành bài của buổi (REPLACE toàn bộ bài của buổi). */
 export async function saveBuoiSelection(buoiId: string, nhap: NhapBuoi): Promise<void> {
-  const an = new Set(nhap.anDe)
+  const cheDoCua = (k: string): CheDoHinh => nhap.cheDo[k] ?? 'hien'
   const seen = new Set<string>()   // khử pick trùng (cùng phiếu + cùng bản + cùng bộ node) → DB không tích luỹ lặp
   const rows: Omit<GtBai, 'id'>[] = []
   let thu = 0
   for (const p of nhap.picks) {
     const sig = p.kind === 'ghep' ? `${p.phan}|ghep|${p.luaId ?? ''}|${[...p.nodeIds].sort().join(',')}` : `${p.phan}|${p.kind}|${p.kind === 'bienthe' ? p.bienTheId : p.yId}`
     if (seen.has(sig)) continue; seen.add(sig)
-    const base = { buoi_id: buoiId, phan: p.phan, an_de: an.has(p.key), so_dong: nhap.soDong[p.key] ?? null, thu_tu: thu++ }
+    // GHI CẢ HAI: `an_de` (cột cũ, suy ra) để mọi đường code chưa đổi còn chạy đúng · `hinh_che_do` là
+    // nguồn thật. Khi nào chắc không còn ai đọc `an_de` thì mới bàn chuyện xoá (luật xoá).
+    const cd = cheDoCua(p.key)
+    const base = { buoi_id: buoiId, phan: p.phan, an_de: cd !== 'hien', hinh_che_do: cd, so_dong: nhap.soDong[p.key] ?? null, thu_tu: thu++ }
     if (p.kind === 'ghep') rows.push({ ...base, loai: 'ghep', ref_id: null, ghep_node_ids: p.nodeIds, lua_id: p.luaId })
     else if (p.kind === 'bienthe') rows.push({ ...base, loai: 'bienthe', ref_id: p.bienTheId, ghep_node_ids: [], lua_id: null })
     else rows.push({ ...base, loai: 'y', ref_id: p.yId, ghep_node_ids: [], lua_id: null })
@@ -128,16 +144,17 @@ export async function loadBuoiPicks(buoiId: string): Promise<NhapBuoi> {
     getBienTheByIds(bais.filter((b) => b.loai === 'bienthe').map((b) => b.ref_id!).filter(Boolean)),
     getYFull(bais.filter((b) => b.loai === 'y').map((b) => b.ref_id!).filter(Boolean)),
   ])
-  const picks: PickItem[] = []; const anDe: string[] = []; const soDong: Record<string, number> = {}
+  const picks: PickItem[] = []; const cheDo: Record<string, CheDoHinh> = {}; const soDong: Record<string, number> = {}
   for (const b of bais) {
-    if (b.an_de) anDe.push(b.id)
+    // Ưu tiên cột mới; dòng cũ chưa kịp backfill thì suy từ `an_de` như trước.
+    cheDo[b.id] = b.hinh_che_do ?? (b.an_de ? 'o_trong' : 'hien')
     if (b.so_dong != null) soDong[b.id] = b.so_dong
     if (b.loai === 'chuan' && b.ref_id) picks.push({ key: b.id, phan: b.phan, kind: 'ghep', luaId: null, nodeIds: [b.ref_id] })
     else if (b.loai === 'bienthe' && b.ref_id) { const v = btMap.get(b.ref_id); if (v) picks.push({ key: b.id, phan: b.phan, kind: 'bienthe', bienTheId: b.ref_id, nodeIds: [v.baitoan_id] }) }
     else if (b.loai === 'y' && b.ref_id) { const yb = yMap.get(b.ref_id); if (yb?.y.baitoan_id) picks.push({ key: b.id, phan: b.phan, kind: 'y', yId: b.ref_id, nodeIds: [yb.y.baitoan_id] }) }
     else if (b.loai === 'ghep') picks.push({ key: b.id, phan: b.phan, kind: 'ghep', luaId: b.lua_id, nodeIds: b.ghep_node_ids })
   }
-  return { picks, anDe, soDong }
+  return { picks, cheDo, soDong }
 }
 
 // ══════════════ GÁN LỚP (snapshot) ══════════════
@@ -157,7 +174,7 @@ export async function ganLopSnapshot(masterBuoiId: string, lopId: string, ngay: 
   if (e1) throw e1
   const buoiLopId = (nb as { id: string }).id
   if (bais.length) {
-    const rows = bais.map((b) => ({ buoi_id: buoiLopId, phan: b.phan, loai: b.loai, ref_id: b.ref_id, ghep_node_ids: b.ghep_node_ids, lua_id: b.lua_id, an_de: b.an_de, so_dong: b.so_dong, thu_tu: b.thu_tu }))
+    const rows = bais.map((b) => ({ buoi_id: buoiLopId, phan: b.phan, loai: b.loai, ref_id: b.ref_id, ghep_node_ids: b.ghep_node_ids, lua_id: b.lua_id, an_de: b.an_de, hinh_che_do: b.hinh_che_do, so_dong: b.so_dong, thu_tu: b.thu_tu }))
     const { error: e2 } = await supabase.from('hinh_gt_bai').insert(rows)
     if (e2) throw e2
   }

@@ -13,6 +13,7 @@ import { MathText } from '../ui'
 import { Btn, Cap, Empty, Fig, Ma, Panel, Seg, Sol, Tag, inpCls, tron } from './hinhUi'
 import { useStore, SOAN_HINH_DEFAULT, type SoanHinhDraft, type PickItem } from '../../../store/useStore'
 import * as gt from '../../../lib/kho/hinhGiaoTrinh'
+import { CHE_DO_HINH, cheDoKe, type CheDoHinh } from '../../../lib/kho/hinhGiaoTrinh'
 
 // Nháp soạn tài liệu theo khối (store, RAM) — giữ lựa chọn khi rời/quay lại màn (như etDraft).
 // Trả slice của 1 chế độ + hàm patch (merge nông). Set→mảng, Map→record: component tự đổi qua lại.
@@ -384,13 +385,13 @@ function dedupePicks(arr: PickItem[]): PickItem[] {
 
 // ── ⭐ 08-08 "chuyển nhà": editor NỘI DUNG 1 buổi giáo trình — dùng TẠI CHỖ trong cây buổi của
 // GiaoTrinhScreen (khuôn TaiLieuBuilder Đại: mỗi buổi tự chứa content, KHÔNG còn "dựng rồi lưu popup"
-// tách rời). Props-driven, KHÔNG giữ nháp riêng — caller sở hữu state (picks/anDe/soDong của 1 buổi cụ
+// tách rời). Props-driven, KHÔNG giữ nháp riêng — caller sở hữu state (picks/cheDo/soDong của 1 buổi cụ
 // thể) + tự autosave (khuôn `markSaved()` của TaiLieuBuilder — mỗi thao tác ghi DB ngay, không nút Lưu). ──
-export function BuoiPickEditor({ L, picks, anDe, soDong, onChangePicks, onChangeAnDe, onChangeSoDong }: {
+export function BuoiPickEditor({ L, picks, cheDo, soDong, onChangePicks, onChangeCheDo, onChangeSoDong }: {
   L: Luoi
-  picks: PickItem[]; anDe: string[]; soDong: Record<string, number>
+  picks: PickItem[]; cheDo: Record<string, CheDoHinh>; soDong: Record<string, number>
   onChangePicks: (picks: PickItem[]) => void
-  onChangeAnDe: (anDe: string[]) => void
+  onChangeCheDo: (cheDo: Record<string, CheDoHinh>) => void
   onChangeSoDong: (soDong: Record<string, number>) => void
 }) {
   const maCap = useMemo(() => api.maPhanCapMap(L), [L])
@@ -436,7 +437,8 @@ export function BuoiPickEditor({ L, picks, anDe, soDong, onChangePicks, onChange
     const ids = new Set(chuoi.map((b) => b.id))
     onChangePicks([...picks.filter((p) => !(p.phan === phan && p.nodeIds.every((id) => ids.has(id)))), ...news])
   }
-  const toggleAnDe = (key: string) => onChangeAnDe(anDe.includes(key) ? anDe.filter((k) => k !== key) : [...anDe, key])
+  // 1 nút xoay vòng 3 trạng thái (hien → o_trong → khong) — gọn hơn 3 nút trên mỗi dòng bài.
+  const xoayCheDo = (key: string) => onChangeCheDo({ ...cheDo, [key]: cheDoKe(cheDo[key] ?? 'hien') })
   // Áp 1 số dòng cho NHIỀU bài 1 lượt (cả chuỗi) — thay setSoDongOne cũ (per-ý, Thùy: không cần nữa).
   const setSoDongChuoi = (keys: string[], n: number) => {
     const m = { ...soDong }
@@ -488,8 +490,8 @@ export function BuoiPickEditor({ L, picks, anDe, soDong, onChangePicks, onChange
         {!nodes.length
           ? <Empty icon="◇">Kho khối này chưa có node nào. Tạo node ở <b>Sơ đồ</b> trước.</Empty>
           : components.map((comp) => (
-              <ChuoiRow key={comp.map((b) => b.id).join(',')} L={L} chuoi={comp} picks={picks} anDe={anDe} soDong={soDong}
-                onAdd={addPick} onUpdate={updatePick} onRemove={removePick} onToggleAnDe={toggleAnDe} onSetSoDongChuoi={setSoDongChuoi}
+              <ChuoiRow key={comp.map((b) => b.id).join(',')} L={L} chuoi={comp} picks={picks} cheDo={cheDo} soDong={soDong}
+                onAdd={addPick} onUpdate={updatePick} onRemove={removePick} onXoayCheDo={xoayCheDo} onSetSoDongChuoi={setSoDongChuoi}
                 onGoiY={(phan, n) => goiY(comp, phan, n)} />
             ))}
       </div>
@@ -516,8 +518,8 @@ export function BuoiPickEditor({ L, picks, anDe, soDong, onChangePicks, onChange
 
 /** ⭐ 08-08: MỌI pick (đề chuẩn/lứa/biến thể/ý thật) của MỘT phiếu → bản in — 1 cơ chế cho mọi cỡ chuỗi.
  *  Export — dùng bởi GiaoTrinhScreen ("👁 Xem buổi" / "🖨 In") ngoài chỗ gọi nội bộ cũ. */
-export async function banInTheoMoHinh(tieuDe: string, phan: 'lop' | 'nha', picks: PickItem[], L: Luoi, anDe: string[], soDong: Record<string, number>): Promise<BanIn> {
-  const an = new Set(anDe)
+export async function banInTheoMoHinh(tieuDe: string, phan: 'lop' | 'nha', picks: PickItem[], L: Luoi, cheDo: Record<string, CheDoHinh>, soDong: Record<string, number>): Promise<BanIn> {
+  const cd = (k: string): CheDoHinh => cheDo[k] ?? 'hien'
   const dong = (key: string) => (phan === 'nha' ? (soDong[key] ?? DONG_BTVN) : soDong[key] ?? 0)   // BTVN mặc định DONG_BTVN; trên lớp KHÔNG kẻ dòng (bài sát nhau)
   const ps = dedupePicks(picks.filter((p) => p.phan === phan))
   const [btMap, yMap] = await Promise.all([
@@ -526,10 +528,10 @@ export async function banInTheoMoHinh(tieuDe: string, phan: 'lop' | 'nha', picks
   ])
   const mucs: MucIn[] = []
   for (const p of ps) {
-    if (p.kind === 'bienthe') { const v = btMap.get(p.bienTheId); if (v) mucs.push(mucBienThe(L, v, an.has(p.key), dong(p.key))) }
-    else if (p.kind === 'y') { const yb = yMap.get(p.yId); if (yb) mucs.push(mucY(L, yb, an.has(p.key), dong(p.key))) }
-    else if (p.luaId) { const vs = await api.bienTheCuaLua(p.luaId); mucs.push(mucGhepLua(L, p.nodeIds, vs, an.has(p.key), dong(p.key))) }
-    else mucs.push(mucGhep(L, p, an.has(p.key), dong(p.key)))
+    if (p.kind === 'bienthe') { const v = btMap.get(p.bienTheId); if (v) mucs.push(mucBienThe(L, v, cd(p.key), dong(p.key))) }
+    else if (p.kind === 'y') { const yb = yMap.get(p.yId); if (yb) mucs.push(mucY(L, yb, cd(p.key), dong(p.key))) }
+    else if (p.luaId) { const vs = await api.bienTheCuaLua(p.luaId); mucs.push(mucGhepLua(L, p.nodeIds, vs, cd(p.key), dong(p.key))) }
+    else mucs.push(mucGhep(L, p, cd(p.key), dong(p.key)))
   }
   // ⭐ 08-10 (Thùy: "lý thuyết in ở phiếu bài tập trên lớp giống bên đại"): CHỈ resolve cho phan='lop' —
   // khuôn Đại (LT chuyên đề chỉ hiện ở buổi trên lớp, KHÔNG lặp lại ở phiếu BTVN riêng).
@@ -550,7 +552,7 @@ export async function banInTheoMoHinh(tieuDe: string, phan: 'lop' | 'nha', picks
   return { tieuDe: `Buổi học — ${tieuDe}`, phuDe: `${mucs.length} mục`, mucs, moHinhLyThuyet }
 }
 /** Ghép chuỗi (đề chuẩn) → 1 bài a,b,c: giả thiết + hình của node SÂU NHẤT chung; ý a,b,c = câu hỏi + lời giải từng node. */
-export function mucGhep(L: Luoi, g: Extract<PickItem, { kind: 'ghep' }>, anDe: boolean, soDong?: number | null): MucIn {
+export function mucGhep(L: Luoi, g: Extract<PickItem, { kind: 'ghep' }>, cheDo: CheDoHinh, soDong?: number | null): MucIn {
   const khung = api.noDapAn(L, g.nodeIds)             // ý = node tick; buocNodes = node ẩn nở; gtPhuKeo = van
   const nodes = khung.map((k) => k.node)
   let deep = nodes[0]; let dS = -1
@@ -569,7 +571,7 @@ export function mucGhep(L: Luoi, g: Extract<PickItem, { kind: 'ghep' }>, anDe: b
     }
   })
   const anhDe = api.anhCuaBaiToan(L, deep.id)
-  return { kieu: 'de', deBai: api.giaThietBaiToan(L, deep.id), anhDe, ma: nodes.map((b) => b.ma).join('+'), ys, anDe: anDe || !anhDe, soDong: soDong ?? null, moHinhId: deep.mo_hinh_id }
+  return { kieu: 'de', deBai: api.giaThietBaiToan(L, deep.id), anhDe, ma: nodes.map((b) => b.ma).join('+'), ys, cheDo, soDong: soDong ?? null, moHinhId: deep.mo_hinh_id }
 }
 // Tách đề biến thể: cắt ở "Chứng minh" → giả thiết (chung cả chuỗi) + câu hỏi (ý). Giả thiết các câu trong chuỗi giống nhau.
 function tachDe(deBai: string): { giaThiet: string; cauHoi: string } {
@@ -578,7 +580,7 @@ function tachDe(deBai: string): { giaThiet: string; cauHoi: string } {
   return { giaThiet: deBai.slice(0, i).replace(/[.,;\s]+$/, '').trim(), cauHoi: deBai.slice(i).trim() }
 }
 /** Ghép 1 LỨA (đổi đỉnh) → a,b,c: giả thiết CHUNG (từ câu sâu nhất) + ý = câu hỏi từng câu (từ biến thể của lứa). */
-export function mucGhepLua(L: Luoi, nodeIds: string[], bienThes: BienThe[], anDe: boolean, soDong?: number | null): MucIn {
+export function mucGhepLua(L: Luoi, nodeIds: string[], bienThes: BienThe[], cheDo: CheDoHinh, soDong?: number | null): MucIn {
   const byNode = new Map(bienThes.map((v) => [v.baitoan_id, v]))
   // Cấu trúc ẩn/bước theo tiền-đề ĐÓNG BĂNG của lứa (ổn định khi đề-chuẩn đổi về sau); lứa CŨ (chưa có
   // tien_de_ids) → về derive live như trước để không mất bước decomposition.
@@ -604,18 +606,18 @@ export function mucGhepLua(L: Luoi, nodeIds: string[], bienThes: BienThe[], anDe
     }
   })
   const anhDe = deepV?.anh ?? api.anhCuaBaiToan(L, deep.id)
-  return { kieu: 'de', deBai: giaThiet, anhDe, ma: nodes.map((b) => b.ma).join('+'), ys, anDe: anDe || !anhDe, soDong: soDong ?? null, moHinhId: deep.mo_hinh_id }
+  return { kieu: 'de', deBai: giaThiet, anhDe, ma: nodes.map((b) => b.ma).join('+'), ys, cheDo, soDong: soDong ?? null, moHinhId: deep.mo_hinh_id }
 }
 /** Biến thể riêng lẻ (đổi số/đổi tên) của MỘT node — không tiền đề nên không có bước ẩn để nở. */
-export function mucBienThe(L: Luoi, v: BienThe, anDe: boolean, soDong?: number | null): MucIn {
+export function mucBienThe(L: Luoi, v: BienThe, cheDo: CheDoHinh, soDong?: number | null): MucIn {
   const node = L.baiToan.find((x) => x.id === v.baitoan_id)
-  return { kieu: 'de', ma: node?.ma ?? null, deBai: v.de_bai, anhDe: v.anh, ys: [{ nhan: '', noiDung: '', loiGiai: v.loi_giai, anh: v.anh_loi_giai ?? v.anh, ma: node?.ma, cap: node?.cap }], anDe: anDe || !v.anh, soDong: soDong ?? null, moHinhId: node?.mo_hinh_id ?? null }
+  return { kieu: 'de', ma: node?.ma ?? null, deBai: v.de_bai, anhDe: v.anh, ys: [{ nhan: '', noiDung: '', loiGiai: v.loi_giai, anh: v.anh_loi_giai ?? v.anh, ma: node?.ma, cap: node?.cap }], cheDo, soDong: soDong ?? null, moHinhId: node?.mo_hinh_id ?? null }
 }
 /** Ý thật (đã chấm, từ đo lường) trỏ vào MỘT node — dùng làm bài luyện. */
-export function mucY(L: Luoi, yb: { y: Y; bai: Bai }, anDe: boolean, soDong?: number | null): MucIn {
+export function mucY(L: Luoi, yb: { y: Y; bai: Bai }, cheDo: CheDoHinh, soDong?: number | null): MucIn {
   const da = api.dapAnHaiBac(L, yb.y)
   const node = yb.y.baitoan_id ? L.baiToan.find((x) => x.id === yb.y.baitoan_id) : null
-  return { kieu: 'de', ma: yb.bai.ma_bai, deBai: yb.bai.de_bai, anhDe: yb.bai.anh_de, ys: [{ nhan: yb.y.nhan_hien_thi ?? String.fromCharCode(96 + yb.y.thu_tu), noiDung: yb.y.noi_dung, loiGiai: da.loiGiai, anh: da.anh, bacThamChieu: da.bac === 'tham_chieu', ma: yb.y.ma_y }], anDe: anDe || !yb.bai.anh_de, soDong: soDong ?? null, moHinhId: node?.mo_hinh_id ?? null }
+  return { kieu: 'de', ma: yb.bai.ma_bai, deBai: yb.bai.de_bai, anhDe: yb.bai.anh_de, ys: [{ nhan: yb.y.nhan_hien_thi ?? String.fromCharCode(96 + yb.y.thu_tu), noiDung: yb.y.noi_dung, loiGiai: da.loiGiai, anh: da.anh, bacThamChieu: da.bac === 'tham_chieu', ma: yb.y.ma_y }], cheDo, soDong: soDong ?? null, moHinhId: node?.mo_hinh_id ?? null }
 }
 
 // ── ⭐ 08-08 (Thùy chốt: "1 chuỗi ghép lại cũng là 1 bài") — 1 BẢN của 1 chuỗi (mọi cỡ, kể cả 1 node):
@@ -667,10 +669,10 @@ async function goiYChuoi(chuoi: BaiToan[], phan: 'lop' | 'nha', n: number): Prom
 // phụ) nữa. Số dòng chỉnh 1 LẦN CHO CẢ CHUỖI (áp hết mọi bài Về nhà đang có của chuỗi này), KHÔNG theo
 // từng ý riêng — khuôn `ApplyLinesAll` Đại (gõ số → Enter/blur ghi đè hết, vẫn thêm bài mới sau đó bình
 // thường với số dòng vừa áp làm giá trị chung).
-function ChuoiRow({ L, chuoi, picks, anDe, soDong, onAdd, onUpdate, onRemove, onToggleAnDe, onSetSoDongChuoi, onGoiY }: {
-  L: Luoi; chuoi: BaiToan[]; picks: PickItem[]; anDe: string[]; soDong: Record<string, number>
+function ChuoiRow({ L, chuoi, picks, cheDo, soDong, onAdd, onUpdate, onRemove, onXoayCheDo, onSetSoDongChuoi, onGoiY }: {
+  L: Luoi; chuoi: BaiToan[]; picks: PickItem[]; cheDo: Record<string, CheDoHinh>; soDong: Record<string, number>
   onAdd: (p: PickItem) => void; onUpdate: (key: string, p: PickItem) => void; onRemove: (key: string) => void
-  onToggleAnDe: (key: string) => void; onSetSoDongChuoi: (keys: string[], n: number) => void
+  onXoayCheDo: (key: string) => void; onSetSoDongChuoi: (keys: string[], n: number) => void
   onGoiY: (phan: 'lop' | 'nha', n: number) => void
 }) {
   const chuoiIds = useMemo(() => new Set(chuoi.map((b) => b.id)), [chuoi])
@@ -706,15 +708,15 @@ function ChuoiRow({ L, chuoi, picks, anDe, soDong, onAdd, onUpdate, onRemove, on
                 ? <div className="mt-1.5 text-[11.5px] italic text-slate-400">Chưa có bài — bấm <b>↻ Gợi ý</b> hoặc <b>＋ Thêm bài</b>.</div>
                 : <ol className="mt-1.5 space-y-1">
                   {ds.map((p, i) => {
-                    const an = anDe.includes(p.key)
+                    const cd = CHE_DO_HINH.find((x) => x.ma === (cheDo[p.key] ?? 'hien'))!
                     return (
                       <li key={p.key} className="flex items-center gap-2 rounded-md border border-slate-100 bg-white/70 px-2 py-1 text-[12px]">
                         <span className="w-4 shrink-0 text-right text-[11px] text-slate-300">{i + 1}</span>
                         <span className="shrink-0 rounded bg-slate-100 px-1.5 text-[10px] font-medium text-slate-600">{nhanBan(p)}</span>
                         <span className="min-w-0 flex-1 truncate text-slate-700">{p.nodeIds.map((id) => L.baiToan.find((b) => b.id === id)?.ma).filter(Boolean).join(' · ')}</span>
                         {!laLop && <span className="shrink-0 text-[10px] text-slate-400">{soDong[p.key] ?? DONG_BTVN} dòng</span>}
-                        <button onClick={() => onToggleAnDe(p.key)} title={an ? 'Đang ẩn hình — HS tự vẽ. Bấm để hiện.' : 'Đang hiện hình. Bấm để ẩn (HS tự vẽ).'}
-                          className={`shrink-0 rounded px-1 text-[11px] ${an ? 'text-amber-600' : 'text-slate-400 hover:text-slate-700'}`}>{an ? '✏️' : '🖼'}</button>
+                        <button onClick={() => onXoayCheDo(p.key)} title={cd.goi}
+                          className={`shrink-0 rounded px-1 text-[11px] ${cd.ma === 'hien' ? 'text-slate-400 hover:text-slate-700' : cd.ma === 'o_trong' ? 'text-amber-600' : 'text-rose-500'}`}>{cd.icon}</button>
                         <button onClick={() => setOpen({ phan, editKey: p.key })} className="shrink-0 text-slate-400 hover:text-indigo-600" title="Sửa">✎</button>
                         <button onClick={() => onRemove(p.key)} className="shrink-0 text-slate-400 hover:text-rose-600" title="Bỏ bài này">✕</button>
                       </li>

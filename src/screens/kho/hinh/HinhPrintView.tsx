@@ -14,6 +14,7 @@ import { Fragment, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
 import { MathText } from '../ui'
+import { type CheDoHinh } from '../../../lib/kho/hinhGiaoTrinh'
 import { CHROME_CSS, buildPagedCss, printWithFilename, safeFileName } from '../../tailieu/PrintView'
 
 // ── Model bản in ──────────────────────────────────────────────────
@@ -34,8 +35,8 @@ export type YIn = {
 export type MucIn =
   | { kieu: 'chuong'; tieuDe: string; moTa?: string | null }
   | { kieu: 'nhac_lai'; items: { ma: string; phatBieu: string; cap: number }[] }
-  | { kieu: 'de'; deBai: string; anhDe?: string | null; nguon?: string | null; ma?: string | null; ys: YIn[]; anDe?: boolean; soDong?: number | null; moHinhId?: string | null }
-  //   anDe = ẨN hình đề → Ô VẼ cho HS. soDong = số dòng kẻ mỗi ý trên bản HS (BTVN chỉnh được).
+  | { kieu: 'de'; deBai: string; anhDe?: string | null; nguon?: string | null; ma?: string | null; ys: YIn[]; cheDo?: CheDoHinh; soDong?: number | null; moHinhId?: string | null }
+  //   cheDo = 3 trạng thái hình (hien / o_trong / khong). soDong = số dòng kẻ mỗi ý trên bản HS.
   //   moHinhId = mô hình của node sâu nhất — để gom lý thuyết mô hình 1 lần/nhóm khi in (xem `Noi()`).
 
 export type BanIn = {
@@ -197,12 +198,23 @@ function Noi({ ban, gv }: { ban: BanIn; gv: boolean }) {
             <div className="hp-khoi hp-khoi-de">
               <div className="hp-de-h">Bài {soDe}.</div>
               {/* Hình / ô-vẽ FLOAT phải → đề + câu hỏi chảy SÁT bên trái, không bị đẩy xuống dưới hình.
-                  anDe (ẩn hình): bản HS chừa ô vẽ; bản GV vẫn hiện hình để đối chiếu. */}
-              {m.anDe
-                ? (gv && m.anhDe
+                  Chi tiết 3 trạng thái ở khối ngay dưới. */}
+              {/* 3 TRẠNG THÁI (Thùy 17/08):
+                  'hien'    → in hình (không có ảnh thì chừa ô vẽ — hình học vốn hay bắt HS tự vẽ)
+                  'o_trong' → ô vẽ cho HS; bản GV vẫn hiện hình để đối chiếu
+                  'khong'   → KHÔNG hình, KHÔNG ô — kể cả khi kho có ảnh. */}
+              {(() => {
+                const cd = m.cheDo ?? 'hien'
+                if (cd === 'khong') return null
+                if (cd === 'o_trong') {
+                  return gv && m.anhDe
+                    ? <div className="hp-fig-r"><img src={m.anhDe} alt="" /></div>
+                    : <div className="hp-draw-r"><span>Vẽ hình</span></div>
+                }
+                return m.anhDe
                   ? <div className="hp-fig-r"><img src={m.anhDe} alt="" /></div>
-                  : <div className="hp-draw-r"><span>Vẽ hình</span></div>)
-                : (m.anhDe && <div className="hp-fig-r"><img src={m.anhDe} alt="" /></div>)}
+                  : <div className="hp-draw-r"><span>Vẽ hình</span></div>
+              })()}
               <div className="hp-txt-flow"><MathText>{m.deBai}</MathText></div>
               {/* ⭐ 08-09 (Thùy chốt): dòng kẻ gán theo CẢ BÀI (chuỗi ghép a,b,c = 1 bài), nên đề a,b,c
                   phải in LIỀN KHỐI trước, RỒI MỚI đến phần giải chung — không xen kẽ "a - giải a - b -
