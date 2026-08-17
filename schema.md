@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-140 bảng · 0 view · 0 enum · 12 trigger · 48 function
+140 bảng · 0 view · 0 enum · 12 trigger · 49 function
 
 ## _migrations
 
@@ -1935,6 +1935,7 @@
 
 ## Functions
 
+- `bai_test_con_han(p_bai_test uuid)` → boolean
 - `buoi_ke_tiep(p_lop uuid, p_tu date)` → date
 - `co_chuc_nang(p_chuc_nang text)` → boolean
 - `co_quyen_ghi(p_chuc_nang text)` → boolean

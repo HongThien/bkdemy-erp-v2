@@ -5219,4 +5219,40 @@ không nộp được nữa". Badge ngoài màn chính đếm **1** (chỉ bài 
 
 **⚠ CÒN HỞ — deadline mới chặn ở UI, DB CHƯA chặn.** `traLoiCau`/`luuDapAnET` vẫn ghi được qua API sau
 hạn vì RLS không biết gì về `deadline`. Với HS bình thường thì nút disabled là đủ, nhưng đây là lỗ thật
-và phải bịt bằng policy/trigger trước khi ET online tính vào mastery.
+và phải bịt bằng policy/trigger trước khi ET online tính vào mastery. → **ĐÃ BỊT, xem mục kế tiếp.**
+
+---
+
+## 2026-08-17 (tiếp) — Siết ghi sau hạn ở tầng DB (mig 202608171419)
+
+**Lỗ:** policy HS trên `bai_lam`/`bai_lam_cau` là `for all` với điều kiện DUY NHẤT "đúng HS của mình"
+⇒ nút disabled ở app là **rào duy nhất**. Gọi thẳng PostgREST bằng anon key là sửa được đáp án sau hạn.
+Không chấp nhận được khi ET online sắp tính vào mastery: điểm đã chốt mà vẫn sửa được thì phép đo vô nghĩa.
+
+**Cách bịt:** hàm `bai_test_con_han(uuid)` (security definer — không phụ thuộc HS có đọc được `bai_test`
+hay không) + **tách policy `for all` thành SELECT / INSERT / UPDATE riêng**, gắn điều kiện còn-hạn vào
+hai đường GHI. **ĐỌC giữ nguyên tự do** — HS phải xem lại bài cũ được, chặn nhầm chỗ này là hỏng tính
+năng chứ không phải tăng an toàn.
+
+- KHÔNG đụng policy staff (`la_thanh_vien`): chấm lại / duyệt báo sai / backfill cache phải chạy được
+  sau hạn — đó là việc của người, có actor.
+- `et_nop` là SECURITY DEFINER + chủ bảng bỏ qua RLS ⇒ chấm lúc nộp vẫn chạy nguyên.
+
+**⚠ BỎ LUÔN QUYỀN XOÁ CỦA HS — lỗ có sẵn, phát hiện khi rà policy.** Policy `for all` cũ cho HS **xoá**
+`bai_lam`/`bai_lam_cau` của mình bất cứ lúc nào, tức xoá được chính phép đo của mình. Đã grep: không
+code nào trong app làm việc đó ⇒ bỏ không mất chức năng. Bản mới không khai policy DELETE cho HS.
+
+**Verify bằng client HS THẬT** (`_diag_han_rls.mjs` — anon key + signIn hs0004, đúng đường app đi), **7/7 đạt**:
+
+| Ca | Kỳ vọng | Kết quả |
+|---|---|---|
+| Test còn hạn: mở bài · trả lời câu | ghi được | ✔ ✔ |
+| Test quá hạn: mở bài · trả lời câu | bị chặn | ✔ ✔ (`violates row-level security policy`) |
+| Sửa đáp án sau khi test hết hạn | bị chặn | ✔ 0 dòng sửa được |
+| HS xoá phép đo của mình | bị chặn | ✔ 0 dòng xoá được |
+| HS đọc lại bài quá hạn | VẪN đọc được | ✔ |
+
+**Smoke test luồng thật trên app** (không chỉ tin diag): dựng 1 BTVN còn hạn 2 câu cho 11B1 → HS0004
+mở bài (⇒ `moBaiLam` qua được RLS mới) → chọn đáp án → Xác nhận → "🎉 Đúng hết!" + lời giải → đối chiếu
+DB có `bai_lam_cau{verdict:'correct', diem:1, cham_boi:'exact'}`. Xáo đáp án vẫn chạy (5 hiện ở vị trí
+B). Dọn sạch sau khi soi; `bai_test` về 0, HS0004 về mặc định, 41/41 vẫn gắn cờ.
