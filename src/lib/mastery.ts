@@ -186,11 +186,11 @@ export type TongQuanHS = {
     mtCoBan: number | null; mtNangCao: number | null
   }
 }
-export async function getTongQuanHS(hocSinhId: string, mon: string): Promise<TongQuanHS> {
+export async function getTongQuanHS(hocSinhId: string, mon: string, opts?: { ym?: string }): Promise<TongQuanHS> {
   const K = khoCuaMon(mon)
   const [{ data: grades }, { data: dt }, online, btGradeEvals] = await Promise.all([
     supabase.from('gami_grades').select('result, graded_at, prob:problem_id(phase, ma_dang)').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
-    supabase.from('diem_thi').select('diem, diem_co_ban, diem_nang_cao, ky_thi:ky_thi_id(loai, mon)').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
+    supabase.from('diem_thi').select('diem, diem_co_ban, diem_nang_cao, ky_thi:ky_thi_id(loai, mon, ngay, buoi:buoi_hoc_id(ngay))').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
     fetchOnlineEvals(hocSinhId),
     fetchBTEvals(hocSinhId),
   ])
@@ -200,6 +200,29 @@ export async function getTongQuanHS(hocSinhId: string, mon: string): Promise<Ton
   const seasonMs = Date.parse(seasonStartUtc(seasonOf(new Date(now + 7 * 3600_000).toISOString().slice(0, 10))))
   const inRecent = (t: number) => t >= cut1 && t >= seasonMs
   const inPrior = (t: number) => t >= cut2 && t < cut1 && t >= seasonMs
+
+  // opts.ym ('YYYY-MM', 08-17): khi có → ①②③ "hiện tại" (không phải trend) CHỈ tính trên đo/điểm trong
+  // ĐÚNG tháng đó — Report PH theo tháng cần "của tháng này", không phải suy động all-time. KHÔNG đổi hành
+  // vi mặc định: nơi gọi không kèm opts (Kết quả học tập) vẫn suy động từ MỌI lần đo như cũ. Trend (30 ngày
+  // gần/trước) đứng NGOÀI phạm vi này — luôn tính trên toàn bộ lịch sử, không lọc theo ym (xem dưới).
+  let monthFromMs: number | null = null, monthToMs = 0, monthFromDate = '', monthToDate = ''
+  // MT (Thùy 08-17): kỳ MT "của tháng M" thường tổ chức CUỐI tháng M hoặc ĐẦU tháng M+1 (không gọn trong
+  // 1 tháng lịch như ET/BTVN) → quét riêng NGÀY 25/M → NGÀY 10/(M+1), không dùng monthFrom/To ở trên.
+  let mtFromMs: number | null = null, mtToMs = 0, mtFromDate = '', mtToDate = ''
+  if (opts?.ym) {
+    const [Y, M] = opts.ym.split('-').map(Number)
+    monthFromMs = Date.UTC(Y, M - 1, 1, -7, 0, 0)
+    monthToMs = M === 12 ? Date.UTC(Y + 1, 0, 1, -7, 0, 0) : Date.UTC(Y, M, 1, -7, 0, 0)
+    monthFromDate = `${opts.ym}-01`
+    monthToDate = M === 12 ? `${Y + 1}-01-01` : `${Y}-${String(M + 1).padStart(2, '0')}-01`
+    const nextY = M === 12 ? Y + 1 : Y, nextM = M === 12 ? 1 : M + 1
+    mtFromMs = Date.UTC(Y, M - 1, 25, -7, 0, 0)
+    mtToMs = Date.UTC(nextY, nextM - 1, 11, -7, 0, 0) // < ngày 11 = qua hết mùng 10
+    mtFromDate = `${opts.ym}-25`
+    mtToDate = `${nextY}-${String(nextM).padStart(2, '0')}-11`
+  }
+  const inMonth = (t: number) => monthFromMs == null || (t >= monthFromMs && t < monthToMs)
+  const inMtWindow = (t: number) => mtFromMs == null || (t >= mtFromMs && t < mtToMs)
 
   // Raw theo NGUỒN (et/btvn/mt) — bucket cơ bản/nâng cao SAU khi có muc_do (chung 1 vòng lặp, đối xứng 3 nguồn).
   type Raw = { ma: string | null; value: number; t: string }
@@ -227,7 +250,23 @@ export async function getTongQuanHS(hocSinhId: string, mon: string): Promise<Ton
   for (const b of btvnRows) pushHT(byDangBottom, b.ma, { value: b.value, t: b.t, src: 'btvn' })
   for (const b of btGradeEvals) { if (b.mon && b.mon !== mon) continue; pushHT(byDangBottom, b.ma_dang, { value: b.value, t: b.t, src: 'bt' }) }
 
-  const maList = Object.keys(byDangBottom) // ⊇ byDangTop (bottom = top + btvn + bt)
+  // byDang*Cur = bản LỌC theo opts.ym (nếu có), dùng cho ① "hiện tại" (htTop/htBottom) bên dưới. byDangTop/
+  // byDangBottom GỐC (all-time, ngay trên) giữ nguyên cho maList/valid/mucDoMap (metadata dạng — không cần
+  // lọc thời gian) VÀ cho trend (30 ngày gần/trước, dùng byDangTop trực tiếp).
+  let byDangTopCur = byDangTop, byDangBottomCur = byDangBottom
+  let etRowsCur = etRows, mtRowsCur = mtRows, btvnRowsCur = btvnRows
+  if (monthFromMs != null) {
+    const inMonthRow = (r: Raw) => inMonth(Date.parse(r.t))
+    // mtRowsCur dùng inMtWindow (25/M→10/M+1), KHÔNG dùng inMonth — xem comment "MT" ở khai báo mtFromMs.
+    etRowsCur = etRows.filter(inMonthRow); mtRowsCur = mtRows.filter((r) => inMtWindow(Date.parse(r.t))); btvnRowsCur = btvnRows.filter(inMonthRow)
+    byDangTopCur = {}; byDangBottomCur = {}
+    for (const e of etRowsCur) { const ev: DangEval = { value: e.value, t: e.t, src: 'et' }; pushHT(byDangTopCur, e.ma, ev); pushHT(byDangBottomCur, e.ma, ev) }
+    for (const m of mtRowsCur) { const ev: DangEval = { value: m.value, t: m.t, src: 'mt' }; pushHT(byDangTopCur, m.ma, ev); pushHT(byDangBottomCur, m.ma, ev) }
+    for (const b of btvnRowsCur) pushHT(byDangBottomCur, b.ma, { value: b.value, t: b.t, src: 'btvn' })
+    for (const b of btGradeEvals) { if (b.mon && b.mon !== mon) continue; if (!inMonth(Date.parse(b.t))) continue; pushHT(byDangBottomCur, b.ma_dang, { value: b.value, t: b.t, src: 'bt' }) }
+  }
+
+  const maList = Object.keys(byDangBottom) // ⊇ byDangTop (bottom = top + btvn + bt) — all-time, xem comment trên
   let valid = new Set<string>()
   const mucDoMap = new Map<string, number>()
   if (maList.length) {
@@ -253,10 +292,10 @@ export async function getTongQuanHS(hocSinhId: string, mon: string): Promise<Ton
     return { dat: d, can_luyen: c, yeu: y, total: t, pct: pctRaw ?? 0, pctRaw }
   }
   const toBucket = (b: ReturnType<typeof compPct>): BucketPct => ({ dat: b.dat, can_luyen: b.can_luyen, yeu: b.yeu, total: b.total, pct: b.pct })
-  const htTop = compPct(byDangTop), htTopR = compPct(byDangTop, undefined, inRecent), htTopP = compPct(byDangTop, undefined, inPrior)
-  const htBottom = compPct(byDangBottom)
-  const htTopDaiCB = compPct(byDangTop, laCoBan), htBottomDaiCB = compPct(byDangBottom, laCoBan)
-  const htTopDaiNC = compPct(byDangTop, laNangCao), htBottomDaiNC = compPct(byDangBottom, laNangCao)
+  const htTop = compPct(byDangTopCur), htTopR = compPct(byDangTop, undefined, inRecent), htTopP = compPct(byDangTop, undefined, inPrior)
+  const htBottom = compPct(byDangBottomCur)
+  const htTopDaiCB = compPct(byDangTopCur, laCoBan), htBottomDaiCB = compPct(byDangBottomCur, laCoBan)
+  const htTopDaiNC = compPct(byDangTopCur, laNangCao), htBottomDaiNC = compPct(byDangBottomCur, laNangCao)
 
   // ② %ET/%BTVN/%MT cơ bản/nâng cao — bucket theo muc_do dạng của CÂU, gộp đại/hình (Thùy: "ko cần phân
   // biệt đại hình"). Câu không rõ muc_do (dạng không thuộc bản đồ môn này) → bỏ, đối xứng cả 3 nguồn.
@@ -275,9 +314,9 @@ export async function getTongQuanHS(hocSinhId: string, mon: string): Promise<Ton
     const rp = r.n ? Math.round((r.s / r.n) * 100) : null, pp = p.n ? Math.round((p.s / p.n) * 100) : null
     return rp != null && pp != null ? rp - pp : null
   }
-  const etCB = actBucket(etRows, undefined, laCoBan), etNC = actBucket(etRows, undefined, laNangCao)
-  const btvnCB = actBucket(btvnRows, undefined, laCoBan), btvnNC = actBucket(btvnRows, undefined, laNangCao)
-  const mtCB = actBucket(mtRows, undefined, laCoBan), mtNC = actBucket(mtRows, undefined, laNangCao)
+  const etCB = actBucket(etRowsCur, undefined, laCoBan), etNC = actBucket(etRowsCur, undefined, laNangCao)
+  const btvnCB = actBucket(btvnRowsCur, undefined, laCoBan), btvnNC = actBucket(btvnRowsCur, undefined, laNangCao)
+  const mtCB = actBucket(mtRowsCur, undefined, laCoBan), mtNC = actBucket(mtRowsCur, undefined, laNangCao)
   const etCBr = actBucket(etRows, inRecent, laCoBan), etCBp = actBucket(etRows, inPrior, laCoBan)
   const etNCr = actBucket(etRows, inRecent, laNangCao), etNCp = actBucket(etRows, inPrior, laNangCao)
   const btvnCBr = actBucket(btvnRows, inRecent, laCoBan), btvnCBp = actBucket(btvnRows, inPrior, laCoBan)
@@ -292,8 +331,18 @@ export async function getTongQuanHS(hocSinhId: string, mon: string): Promise<Ton
   let mtCoBanSum = 0, mtCoBanN = 0, mtNangCaoSum = 0, mtNangCaoN = 0
   for (const r of (dt ?? []) as any[]) {
     const k = r.ky_thi; if (!k || (k.mon && k.mon !== mon)) continue
-    if (k.loai === 'truong') { if (r.diem != null) { trSum += Number(r.diem); trN++ } }
-    else if (k.loai === 'mt_sat_hach') {
+    // opts.ym: lọc theo NGÀY THI (ky_thi.ngay) — kỳ thi thiếu ngay (nullable) thì BỎ khi đang xem theo
+    // tháng (§1.5 "thiếu data = không có dòng", không đoán tháng cho nó). 'truong' theo lịch tháng thường
+    // (monthFrom/To); 'mt_sat_hach' theo cửa sổ MT riêng 25/M→10/M+1 (mtFrom/To, xem comment khai báo).
+    if (k.loai === 'truong') {
+      if (monthFromMs != null && (!k.ngay || k.ngay < monthFromDate || k.ngay >= monthToDate)) continue
+      if (r.diem != null) { trSum += Number(r.diem); trN++ }
+    } else if (k.loai === 'mt_sat_hach') {
+      // ky_thi.ngay THỰC TẾ luôn NULL cho MT (kỳ MT gắn buoi_hoc_id, không tự nhập ngày riêng — kiểm tra
+      // DB thật 08-17: 20/20 bản ghi mt_sat_hach có ngay=null, buoi_hoc_id đủ 20/20) → fallback sang NGÀY
+      // CỦA BUỔI qua buoi_hoc_id khi ngay trống.
+      const ngayMT = k.ngay ?? k.buoi?.ngay ?? null
+      if (mtFromMs != null && (!ngayMT || ngayMT < mtFromDate || ngayMT >= mtToDate)) continue
       if (r.diem != null) { mtDiemSum += Number(r.diem); mtDiemN++ }
       if (r.diem_co_ban != null) { mtCoBanSum += Number(r.diem_co_ban); mtCoBanN++ }
       if (r.diem_nang_cao != null) { mtNangCaoSum += Number(r.diem_nang_cao); mtNangCaoN++ }

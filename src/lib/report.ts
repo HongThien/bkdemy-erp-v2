@@ -1,5 +1,6 @@
 // Report tháng cho PHỤ HUYNH — data-layer. Số liệu SUY ĐỘNG (bảng theo buổi ET/BTVN); nhận xét GV lưu ở bao_cao_ph.
 // Phần "tổng quan" (hoàn thành cơ bản/nâng cao, ET/BTVN/MT %) tái dùng getTongQuanHS (mastery.ts) — không lặp ở đây.
+// Gọi KÈM opts.ym (08-17) để tổng quan chỉ tính trên đúng tháng report đang xem, khớp bảng buổi bên dưới.
 import { supabase } from './supabase'
 
 const LIMIT = 10000
