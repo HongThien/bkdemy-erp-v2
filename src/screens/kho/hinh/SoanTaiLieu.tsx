@@ -7,7 +7,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { createPortal } from 'react-dom'
 import * as api from '../../../lib/kho/api'
-import type { Bai, BaiToan, BienThe, Luoi, Y } from '../../../lib/kho/hinh'
+import type { Bai, BaiToan, BienThe, Luoi, MoHinh, Y } from '../../../lib/kho/hinh'
 import HinhPrintView, { type BanIn, type MucIn, type YIn } from './HinhPrintView'
 import { MathText } from '../ui'
 import { Btn, Cap, Empty, Fig, Ma, Panel, Seg, Sol, Tag, inpCls, tron } from './hinhUi'
@@ -397,17 +397,34 @@ export function BuoiPickEditor({ L, picks, cheDo, soDong, onChangePicks, onChang
   const maCap = useMemo(() => api.maPhanCapMap(L), [L])
   // Lọc mô hình chỉ để TÌM node dễ hơn (state cục bộ, không lưu) — KHÔNG đụng picks đã có: 1 buổi có thể
   // trộn node từ NHIỀU mô hình khác nhau, đổi bộ lọc không được xoá nội dung đã chọn.
-  const [mainId, setMainId] = useState('')
+  // ⭐ 17/08 (Thùy): "làm giáo trình hình có thể chọn nhiều mô hình" — TRƯỚC "Mô hình chính" là <select>
+  // đơn (1 mainId), nên 2 mô hình KHÔNG cùng cây cha-con (vd "Tam giác" và "Tứ giác" độc lập) không lọc
+  // gộp cùng lúc được, phải đổi filter qua lại nhiều lần. Đổi mainId (string) → mainIds (Set) — chọn được
+  // NHIỀU mô hình chính cùng lúc, vệ tinh gộp từ TẤT CẢ mô hình chính đang chọn.
+  const [mainIds, setMainIds] = useState<Set<string>>(new Set())
   const [satIds, setSatIds] = useState<Set<string>>(new Set())
 
-  const vetinh = useMemo(() => (mainId
-    ? api.conCua(L, mainId).map((id) => L.moHinh.find((m) => m.id === id)!).filter((m) => m && api.conCua(L, m.id).length === 0)
-    : []), [L, mainId])
-  const modelIds = useMemo(() => (mainId ? [mainId, ...satIds] : []), [mainId, satIds])
-  const nodes = useMemo(() => (mainId ? L.baiToan.filter((b) => modelIds.includes(b.mo_hinh_id)) : L.baiToan.slice())
-    .sort((a, b) => a.cap - b.cap || a.ma.localeCompare(b.ma)), [L, mainId, modelIds])
+  const vetinh = useMemo(() => {
+    const seen = new Set<string>()
+    const out: MoHinh[] = []
+    for (const id of mainIds) for (const cid of api.conCua(L, id)) {
+      if (seen.has(cid)) continue
+      const m = L.moHinh.find((x) => x.id === cid)
+      if (m && api.conCua(L, m.id).length === 0) { seen.add(cid); out.push(m) }
+    }
+    return out.sort((a, b) => a.ma.localeCompare(b.ma))
+  }, [L, mainIds])
+  // Mô hình chính bị bỏ chọn → vệ tinh của nó không còn hiện checkbox nữa; dọn satIds theo, không để
+  // filter "ma" âm thầm còn hiệu lực dù ô tick đã biến mất khỏi màn hình.
+  useEffect(() => {
+    const okIds = new Set(vetinh.map((v) => v.id))
+    setSatIds((s) => { const n = new Set([...s].filter((id) => okIds.has(id))); return n.size === s.size ? s : n })
+  }, [vetinh])
+  const modelIds = useMemo(() => [...mainIds, ...satIds], [mainIds, satIds])
+  const nodes = useMemo(() => (modelIds.length ? L.baiToan.filter((b) => modelIds.includes(b.mo_hinh_id)) : L.baiToan.slice())
+    .sort((a, b) => a.cap - b.cap || a.ma.localeCompare(b.ma)), [L, modelIds])
 
-  const chonMain = (id: string) => { setMainId(id); setSatIds(new Set()) }
+  const toggleMain = (id: string) => setMainIds((s) => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n })
   const toggleSat = (id: string) => setSatIds((s) => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n })
 
   const addPick = (p: PickItem) => onChangePicks([...picks, p])
@@ -460,18 +477,20 @@ export function BuoiPickEditor({ L, picks, cheDo, soDong, onChangePicks, onChang
     // 1 dòng/bài. Cột GIỮA (chuỗi + chọn bài) là nơi thao tác chính — RỘNG NHẤT, không bị 2 cột kia bóp lại.
     <div className="grid items-start gap-3 xl:grid-cols-[190px_minmax(0,1fr)_200px]">
       <Panel label="Lọc mô hình (mục lục)">
-        <div className="mb-1 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Mô hình chính</div>
-        <select className={inpCls} value={mainId} onChange={(e) => chonMain(e.target.value)}>
-          <option value="">— tất cả (không lọc) —</option>
+        <div className="mb-1 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Mô hình chính · chọn được nhiều</div>
+        <div className="max-h-56 overflow-y-auto pr-0.5">
           {L.moHinh.slice().sort((a, b) => (maCap.get(a.id) ?? '').localeCompare(maCap.get(b.id) ?? '')).map((m) => (
-            <option key={m.id} value={m.id}>{maCap.get(m.id) ?? '?'} · {tron(m.ten).slice(0, 42)}</option>
+            <label key={m.id} className="mb-1 flex cursor-pointer items-center gap-2 rounded-lg border border-dashed border-teal-200 bg-teal-50/40 px-2 py-1.5 text-[12px] text-slate-700 hover:bg-teal-50">
+              <input type="checkbox" checked={mainIds.has(m.id)} onChange={() => toggleMain(m.id)} />
+              <Ma>{maCap.get(m.id) ?? '?'}</Ma><span className="min-w-0 flex-1 truncate"><MathText>{tron(m.ten).slice(0, 42)}</MathText></span>
+            </label>
           ))}
-        </select>
-        {mainId && (
+        </div>
+        {mainIds.size > 0 && (
           <div className="mt-3">
             <div className="mb-1 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Mô hình vệ tinh · {vetinh.length}</div>
             {vetinh.length === 0
-              ? <div className="text-[11.5px] text-slate-400">— mô hình này không có vệ tinh (lá) —</div>
+              ? <div className="text-[11.5px] text-slate-400">— (các) mô hình này không có vệ tinh (lá) —</div>
               : vetinh.map((v) => (
                 <label key={v.id} className="mb-1 flex cursor-pointer items-center gap-2 rounded-lg border border-dashed border-indigo-200 bg-indigo-50/40 px-2 py-1.5 text-[12px] text-slate-700 hover:bg-indigo-50">
                   <input type="checkbox" checked={satIds.has(v.id)} onChange={() => toggleSat(v.id)} />
@@ -484,8 +503,8 @@ export function BuoiPickEditor({ L, picks, cheDo, soDong, onChangePicks, onChang
 
       <div className="min-w-0">
         <div className="mb-2 flex items-center gap-2 text-[11px] text-slate-400">
-          <span>{mainId ? 'Đang lọc theo mô hình chính' : 'Tất cả chuỗi trong kho'} · <b className="text-slate-600">{components.length}</b> chuỗi</span>
-          {mainId && <button onClick={() => { setMainId(''); setSatIds(new Set()) }} className="rounded border border-slate-300 px-1.5 py-0.5 text-slate-500 hover:bg-slate-50">✕ Bỏ lọc</button>}
+          <span>{mainIds.size ? `Đang lọc theo ${mainIds.size} mô hình chính` : 'Tất cả chuỗi trong kho'} · <b className="text-slate-600">{components.length}</b> chuỗi</span>
+          {mainIds.size > 0 && <button onClick={() => { setMainIds(new Set()); setSatIds(new Set()) }} className="rounded border border-slate-300 px-1.5 py-0.5 text-slate-500 hover:bg-slate-50">✕ Bỏ lọc</button>}
         </div>
         {!nodes.length
           ? <Empty icon="◇">Kho khối này chưa có node nào. Tạo node ở <b>Sơ đồ</b> trước.</Empty>
