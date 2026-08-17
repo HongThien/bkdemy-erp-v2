@@ -5140,3 +5140,41 @@ BTVN chưa có bài" khớp DB; bấm "Bài tập trên lớp" ra đúng 1 bài 
 
 **Quy trình khi test:** phải tạm gỡ cờ `must_change_password` của HS0004 mới qua được cổng đổi mật
 khẩu, xong **reset lại về mặc định** (`_reset_hs_ve_mac_dinh.mjs`) — đã xác nhận lại 41/41 vẫn gắn cờ.
+
+---
+
+## 2026-08-17 (tiếp) — ⚠ XOÁ TOÀN BỘ dữ liệu test online (CEO chốt, làm lại từ đầu)
+
+**Quyết định CEO:** *"Xoá hết đi. Chỉ tính từ ngày xác nhận hệ thống sẽ hoàn thành thôi."* → làm sạch
+để mốc đo bắt đầu từ lúc hệ chạy thật, không lẫn data thử tháng 7.
+
+**Đã liệt kê trước khi xoá** (đúng "Luật xoá" CLAUDE.md — liệt kê → nói vì sao → chờ gật rõ ràng).
+CEO xác nhận "Xoá toàn bộ" ⇒ gồm cả `question_accepted_answers` (CTO đề nghị giữ, CEO bác).
+
+**ĐÃ XOÁ** (1 transaction: `delete from bai_test` cascade + `delete from question_accepted_answers`):
+
+| Bảng | Trước | Sau |
+|---|---|---|
+| bai_test | 32 (16 et · 9 giao_trinh · 7 btvn) | 0 |
+| bai_test_cau | 493 | 0 |
+| bai_lam | 15 (2 đã nộp · 13 dở) | 0 |
+| bai_lam_cau | 20 | 0 |
+| bai_test_report | 2 | 0 |
+| bai_lam_goi_y | 0 | 0 |
+| question_accepted_answers | 2 | 0 |
+
+Dữ liệu HS mất: 9 em có bản ghi, 3 em từng trả lời câu (HS0267 18 câu · HS0037 1 · HS0068 1).
+
+**⚠ `gami_grades` CỐ Ý KHÔNG ĐỤNG.** Bảng đo lường nối bằng `buoi_hoc_id`+`problem_id`, **không có
+cột nào trỏ về `bai_lam`** ⇒ không phân biệt được dòng sinh từ ET online với dòng chấm giấy. Xoá mù ở
+đó = xoá luôn phép đo thật. Nếu 2 bài nộp của HS0267 (12A1, buổi 02/07 + 04/07) từng sync sang thì mấy
+dòng đó **vẫn nằm lại và trông y hệt điểm ET thường**. Muốn dọn phải nhắm đúng 2 buổi đó — chưa làm,
+chờ CEO quyết riêng.
+
+**Bài học ghi lại:** `bai_lam_cau` → `gami_grades` là **đường một chiều không dấu vết**. Sync verdict
+sang bảng đo mà không để lại khoá nguồn nghĩa là **về sau không rút lại được, cũng không kiểm chứng
+được**. Nếu nối lại ET online vào mastery thì lần này phải có cột nguồn (`bai_lam_cau_id` hoặc tương
+đương) — đúng nguyên tắc CLAUDE.md §2 "danh tính bám khoá tự nhiên".
+
+**Hệ quả:** câu backfill `deadline` cho dòng cũ thành vô nghĩa — không còn dòng nào. Luật deadline áp
+từ test phát hành mới trở đi. Màn HS giờ 3 ô đều "Chưa có bài".
