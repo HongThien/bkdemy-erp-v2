@@ -146,6 +146,42 @@ function BaNut({ dangMoGac, onLam, onHuy, onGac, onMoGac, nho }: {
   )
 }
 
+// ── THANH TOGGLE chọn module — thay cho 6 card xếp chồng phải cuộn dài (CEO 18/08:
+// "1 click dễ hơn là 1 kéo"). Mỗi pill có SỐ BÁO ĐỘNG riêng để vẫn glance được mà chưa cần bấm.
+const TABS = [
+  { key: 'vanhanh', ten: 'Vận hành' },
+  { key: 'bu', ten: 'Bổ trợ bù' },
+  { key: 'duoi', ten: 'Bổ trợ đuổi' },
+  { key: 'yeu', ten: 'Bổ trợ yếu' },
+  { key: 'test', ten: 'Kiểm tra đầu vào' },
+  { key: 'toi', ten: 'Việc của bạn' },
+] as const
+type TabKey = typeof TABS[number]['key']
+
+function ThanhTab({ tab, setTab, badge }: { tab: TabKey; setTab: (t: TabKey) => void; badge: Record<TabKey, number> }) {
+  return (
+    <div className="mb-3 flex flex-wrap gap-1.5">
+      {TABS.map((t) => {
+        const dang = tab === t.key
+        const so = badge[t.key]
+        return (
+          <button key={t.key} onClick={() => setTab(t.key)}
+            className={`flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-[13px] font-medium transition-colors ${
+              dang ? 'border-indigo-500 bg-indigo-600 text-white' : 'border-slate-300 bg-white text-slate-600 hover:bg-slate-50'
+            }`}>
+            {t.ten}
+            {so > 0 && (
+              <span className={`rounded-full px-1.5 text-[11px] font-semibold tabular-nums ${
+                dang ? 'bg-white/25 text-white' : 'bg-rose-100 text-rose-700'
+              }`}>{so}</span>
+            )}
+          </button>
+        )
+      })}
+    </div>
+  )
+}
+
 export default function TroLyTab() {
   const [nhanDinh, setNhanDinh] = useState<NhanDinh[] | null>(null)
   const [bu, setBu] = useState<AnhChupBu | null>(null)
@@ -154,6 +190,7 @@ export default function TroLyTab() {
   const [test, setTest] = useState<MangTest | null>(null)
   const [duoi, setDuoi] = useState<AnhChupDuoi | null>(null)
   const [toi, setToi] = useState<BangNhac | null>(null)
+  const [tab, setTab] = useState<TabKey>('vanhanh')
   const setStaffLeaf = useStore((s) => s.setStaffLeaf)
   const [loi, setLoi] = useState<string | null>(null)
   const [moGac, setMoGac] = useState<string | null>(null)
@@ -180,21 +217,20 @@ export default function TroLyTab() {
 
   if (loi) return <div className="mx-auto max-w-[1000px] rounded-2xl border border-rose-200 bg-rose-50 p-4 text-[13px] text-rose-700">Lỗi: {loi}</div>
 
+  // Số báo động trên từng pill — MỘT số đại diện đúng con số headline của khu đó (không suy lại,
+  // đọc thẳng field trùng với dòng "tóm tắt" trong Khu tương ứng để 2 nơi không bao giờ lệch nhau).
+  const badge: Record<TabKey, number> = {
+    vanhanh: vh?.noTuan.length ?? 0,
+    bu: bu?.canXep.tong ?? 0,
+    duoi: duoi ? duoi.ca.filter((c) => c.muc !== 'binh_thuong').length : 0,
+    yeu: yeu?.soCanhBao ?? 0,
+    test: test?.ket.length ?? 0,
+    toi: toi?.can.length ?? 0,
+  }
+
   return (
     <div className="mx-auto max-w-[1000px] pb-8">
       <Chat />
-
-      {/* ⭐ MỖI MODULE = MỘT KHU, báo SỐ TỔNG QUAN + đúng thứ cần hành động.
-          CEO 14/08: "màn hình trợ lý phải chia khu ra cho dễ view" + "báo số tổng quan chứ
-          liệt kê 100 trường hợp cho chó đọc à". Khối "việc của tôi" đời cũ đổ ra 103 dòng —
-          BỎ HẲN, giờ còn đúng một dòng số + chỉ đường sang màn đã có. Danh sách chi tiết là
-          việc của MÀN CHUYÊN MÔN; trợ lý chỉ nói con số và chỗ đáng nhìn. */}
-      <KhoiVanHanh d={vh} />
-      <KhoiBu d={bu} onDen={() => setStaffLeaf('botro')} />
-      <KhoiDuoi d={duoi} onDen={() => setStaffLeaf('botro_duoi')} />
-      <KhoiYeu d={yeu} />
-      <KhoiTest d={test} onDen={() => setStaffLeaf('tuyensinh')} />
-      <KhoiViecToi d={toi} />
 
       {nhanDinh && nhanDinh.length > 0 && (
         <div className="mb-4">
@@ -217,6 +253,17 @@ export default function TroLyTab() {
           </div>
         </div>
       )}
+
+      {/* ⭐ THANH TAB thay cho 6 card xếp chồng phải cuộn dài (CEO 18/08: "1 click dễ hơn là
+          1 kéo"). Mỗi module vẫn báo SỐ TỔNG QUAN + đúng thứ cần hành động (CEO 14/08) —
+          chỉ khác cách CHUYỂN giữa các module: bấm tab thay vì cuộn qua từng card. */}
+      <ThanhTab tab={tab} setTab={setTab} badge={badge} />
+      {tab === 'vanhanh' && <KhoiVanHanh d={vh} />}
+      {tab === 'bu' && <KhoiBu d={bu} onDen={() => setStaffLeaf('botro')} />}
+      {tab === 'duoi' && <KhoiDuoi d={duoi} onDen={() => setStaffLeaf('botro_duoi')} />}
+      {tab === 'yeu' && <KhoiYeu d={yeu} />}
+      {tab === 'test' && <KhoiTest d={test} onDen={() => setStaffLeaf('tuyensinh')} />}
+      {tab === 'toi' && <KhoiViecToi d={toi} />}
     </div>
   )
 }
