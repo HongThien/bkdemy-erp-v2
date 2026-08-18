@@ -5718,3 +5718,69 @@ copy được cái gì bảng CÓ cột — ảnh đề rụng ÂM THẦM ngay l
   câu gốc) → cả 2 đường (BTVN select thẳng · ET qua RPC) đều load ảnh thật (`naturalWidth=3165,
   complete=true`). Dọn sạch sau khi soi — xác nhận `0` dòng `SMOKE-*` còn sót; 1 dòng `bai_test` còn
   lại (mon='Toán', giao_trinh, 18/08) là **dữ liệu thật do ai đó vừa phát hành**, không đụng tới.
+
+---
+
+## 2026-08-18 (tiếp) — ET online tôn trọng 3 MÃ ĐỀ theo từng HS (mig 202608181719)
+
+**Thùy hỏi:** *"ET có 3 mã đều theo từng học sinh, thì lúc phát hành có phát hành được không"* → điều
+tra ra: phát hành ĐƯỢC (không lỗi) nhưng SAI — `phatHanhTest` chỉ gọi `getETCaus()` (phần `custom` =
+mã GỐC), hoàn toàn không biết `cau_hinh.etMaDe` (3 bộ câu) hay `hsMaDe` (gán riêng từng HS → mã đề, để
+HS cạnh nhau không trùng đề — made.ts). **Mọi HS online nhận CÙNG nội dung câu**, chỉ khác thứ tự hiển
+thị — đúng cái 3 mã đề sinh ra để chống. Thùy xác nhận cần làm ĐÚNG, không chỉ cảnh báo: *"Có cách nào
+để học sinh làm theo mã được phân công đâu"*.
+
+**Quy mô xác nhận trước khi làm:** 90 tài liệu ET đã có `hsMaDe`, 102 đã có `etMaDe` đủ — không hiếm.
+Grep xác nhận `hsMaDe`/`etMaDe` CHỈ dùng ở ETScreen/made.ts — BTVN/giáo trình/đề thi trường-sở không có
+khái niệm này, nên phạm vi sửa CHỈ cần chạm nhánh `loai='et'`.
+
+**Thiết kế:**
+- `bai_test_cau.bien_the` (smallint, default 1) — 1 vị trí (`thu_tu`) có tới 3 dòng khi ET đủ mã đề;
+  đa số doc (không mã đề) vẫn 1 dòng, hành vi y hệt trước. Không có unique constraint theo (thu_tu),
+  đúng pattern sẵn có (order do app kiểm soát, không phải DB).
+- `bai_lam.bien_the` — **ĐÔNG CỨNG lúc mở bài lần đầu** (upsert `ignoreDuplicates` hiện có tự bảo toàn):
+  sửa `hsMaDe` sau khi HS đã mở bài KHÔNG đổi bài đang làm — đúng nguyên tắc "snapshot 1 chiều" của
+  spec-test-online.
+- **RPC `resolve_bien_the(p_bai_test)`** — SECURITY DEFINER, đọc `tai_lieu.cau_hinh->hsMaDe` bằng
+  `my_hoc_sinh_id()` NỘI BỘ (không nhận `hoc_sinh_id` làm tham số) → HS không dò được mã đề của bạn
+  khác qua RPC này. **Bắt buộc phải RPC**, không đọc thẳng client: verify lại — HS SELECT `tai_lieu` →
+  **0 dòng, KHÔNG lỗi** (RLS chặn êm, đúng bẫy CLAUDE.md §2.1 "0 dòng không phải bằng chứng"). Đọc thẳng
+  client sẽ luôn ra mặc định 1 mà tưởng "chưa gán", không phải "bị chặn".
+- **`et_de` RPC đổi sang `plpgsql`**: đọc `bai_lam.bien_the` (ĐÃ CHỐT, không tự suy lại từ hsMaDe ở đây
+  — tránh 2 nơi tính ra 2 kết quả nếu hsMaDe đổi sau khi đã mở bài) rồi lọc `bc.bien_the = v_bien_the`.
+  Chưa có `bai_lam` (chưa từng mở) → mặc định 1.
+- **`phatHanhTest`**: tách phần snapshot-1-câu thành hàm `snap()` dùng lại cho cả 3 mã đề. `maDeReady`
+  (made.ts) đủ 3 mã → nạp thêm câu biến thể qua `fetchCausByMa` (đã có sẵn, dùng nguyên — cùng hàm
+  ETPrintView dùng để in), snapshot CÙNG `thu_tu` với câu gốc, khác `bien_the`. Thiếu câu biến thể ở 1
+  vị trí (hiếm, made.ts lệch) → chỉ bỏ RIÊNG mã đề đó ở vị trí đó (list `skipped`), KHÔNG chặn cả lượt
+  phát hành — phát hành sai lặng lẽ mới là điều tệ hơn.
+- **`LamET` (HocSinhApp.tsx) đổi THỨ TỰ gọi:** `moBaiLam` PHẢI chạy TRƯỚC `getETDe` — code cũ gọi song
+  song trong 1 mảng `[await A, await B]` mà thực chất A chạy xong mới tới B (đánh giá trái→phải), nên
+  vốn dĩ ĐÃ là `getETDe` trước `moBaiLam` — SAI thứ tự cần cho `et_de` mới (nó đọc `bai_lam.bien_the`,
+  phải có `bai_lam` trước).
+
+**Verify — KHÔNG viết lại logic song song, gọi ĐÚNG hàm thật qua `vite-node`:** dựng 1 `tai_lieu` ET
+throwaway (dạng `T104010101`, mượn 3 câu thật từ kho — chỉ đọc) với `etMaDe` đủ 3 mã + `hsMaDe` gán
+HS0004 → mã 2, đăng nhập staff thật (`admin@gmail.com`), gọi thẳng `phatHanhTest()` export từ
+`testonline.ts`. Kết quả:
+```
+bai_test_cau: bien_the 1→câu gốc · 2→câu V2 · 3→câu V3 (đúng thu_tu=1 cho cả 3)
+HS0004 (đã gán mã 2): resolve_bien_the → 2
+et_de trả về: ĐÚNG nội dung câu V2 ("...5 nghìn, 1 trăm và 8 chục") — KHÔNG phải câu gốc
+```
+
+**⚠ Bẫy dính khi verify — cùng đúng loại CLAUDE.md cảnh báo:** lần chạy ĐẦU dùng `ngay` = hôm qua
+(17/08) cho doc throwaway → `et_de` trả về câu GỐC dù `resolve_bien_the` đã đúng 2, tưởng bug logic.
+Thật ra: hạn ET (`ngay+1` 12:00) đã trôi qua lúc test (giờ máy chủ THẬT 18/08 **17:27**, hạn là 18/08
+12:00) → tính năng "siết ghi sau hạn" (mig 202608171419, xây sáng cùng ngày) **chặn ĐÚNG** việc tạo
+`bai_lam`, `et_de` không tìm thấy bản ghi nên mặc định về mã 1. Không phải bug — bài test tự đá vào
+tính năng khác vừa xây trong CHÍNH phiên này. Sửa `ngay` sang hôm nay là qua. **Bài học: khi 1 verify
+"sai" ngay sau khi vừa build xong 1 tính năng KHÁC trong cùng phiên, nghi tính năng đó trước khi nghi
+logic mới.**
+
+Dọn sạch: `bai_test`/`tai_lieu` throwaway xoá hết (cascade), xác nhận `count=0`. HS0004 không bị đụng
+(41/41 vẫn gắn cờ must_change_password).
+
+**CÒN LẠI (ngoài phạm vi hôm nay):** UI staff (`ETScreen`) chưa cảnh báo khi "Phát hành online" một ET
+CHƯA đủ 3 mã đề dù `hsMaDe` đã gán sẵn (HS sẽ tự rơi về mã 1, đúng thiết kế `coalesce` — không sai,
+nhưng staff có thể tưởng đã gán đúng). Cân nhắc thêm dòng cảnh báo ở nút phát hành nếu CEO thấy cần.

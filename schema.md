@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-141 bảng · 0 view · 0 enum · 13 trigger · 50 function
+141 bảng · 0 view · 0 enum · 13 trigger · 51 function
 
 ## _migrations
 
@@ -38,6 +38,7 @@
 | trang_thai | text |  | 'dang_lam'::text |  | `dang_lam` · `da_nop` |
 | bat_dau_at | timestamp with time zone |  | now() |  |  |
 | nop_at | timestamp with time zone | Y |  |  |  |
+| bien_the | smallint |  | 1 |  |  |
 
 ## bai_lam_cau
 
@@ -99,6 +100,7 @@
 | ma_dang | text | Y |  |  |  |
 | ly_thuyet | text | Y |  |  |  |
 | anh_de | text | Y |  |  |  |
+| bien_the | smallint |  | 1 |  |  |
 
 ## bai_test_cham_lai_log
 
@@ -2001,6 +2003,7 @@
 - `postgres_fdw_get_connections(OUT server_name text, OUT valid boolean)` → SETOF record
 - `postgres_fdw_handler()` → fdw_handler
 - `postgres_fdw_validator(text[], oid)` → void
+- `resolve_bien_the(p_bai_test uuid)` → smallint
 - `self_link_account()` → uuid
 - `tln_cache_check(p_ma_cau text, p_norm text)` → boolean
 - `tln_norm(t text)` → text

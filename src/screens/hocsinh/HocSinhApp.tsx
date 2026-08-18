@@ -440,7 +440,10 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
 
   useEffect(() => {
     (async () => {
-      const [d, bl] = [await getETDe(test.id), await moBaiLam(test.id, hocSinhId)]
+      // moBaiLam TRƯỚC getETDe: bien_the (mã đề gán riêng HS) chốt lúc mở slot, et_de đọc đúng
+      // bien_the đó để trả đề. Đảo thứ tự là et_de luôn mặc định mã 1 (bai_lam chưa kịp tồn tại).
+      const bl = await moBaiLam(test.id, hocSinhId)
+      const d = await getETDe(test.id)
       setDe(d); setBaiLamId(bl.id)
       setAns(await getETDapAnDaLuu(bl.id) as Record<string, Chon>)
       if (bl.trang_thai === 'da_nop') { const rev = await nopET(bl.id); setReveal(Object.fromEntries(rev.map((r) => [r.bai_test_cau_id, r]))) }
