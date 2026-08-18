@@ -1,4 +1,5 @@
-// REPORT PHỤ HUYNH (tháng) — leaf riêng. Chọn MÔN → LỚP → HS (giống Kết quả học tập) → tháng.
+// REPORT PHỤ HUYNH (tháng) — leaf riêng. Chọn MÔN → LỚP → cột trái hiện cả lớp, click chọn thẳng HS
+// (giống "Kết quả học tập" — KHÔNG dùng dropdown tìm HS) → tháng.
 // Bố cục: DỮ LIỆU bên TRÁI (bảng theo buổi + tổng quan mastery) · NHẬN XÉT bên PHẢI (3 ô + thanh mức kết luận).
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
@@ -6,6 +7,7 @@ import SearchSelect, { type Opt } from '../../components/SearchSelect'
 import { listLop, listHSCuaLop } from '../../lib/nhansu'
 import { getTongQuanHS, type TongQuanHS } from '../../lib/mastery'
 import { getReportBuoiHS, getBaoCaoPH, upsertBaoCaoPH, getGVChinhLop, BC_EMPTY, type ReportBuoiRow, type BaoCaoPH } from '../../lib/report'
+import { tenHienThiDs } from '../../lib/hoten'
 
 const MON_CO_KHO = ['Toán', 'KHTN']
 // Thang 5 cho skill bar (GV tự chọn). index 0..4 ↔ mức 1..5.
@@ -40,33 +42,38 @@ const CHI_SO: { key: 'cs_thai_do' | 'cs_tap_trung' | 'cs_tiep_thu' | 'cs_tu_duy'
 // màu mức 1..5: 1-2 đỏ, 3 cam, 4 xanh nhạt, 5 xanh đậm (khớp app PH).
 const mucBg = (i: number) => i <= 2 ? 'bg-rose-500' : i === 3 ? 'bg-amber-500' : i === 4 ? 'bg-green-400' : 'bg-emerald-600'
 
+type RosterHS = { id: string; ho_ten: string; ma_hs: string | null; anh_url: string | null }
+
 export default function ReportPHScreen() {
   const [mon, setMon] = useState('Toán')
   const [lopId, setLopId] = useState<string | null>(null)
   const [lopOpts, setLopOpts] = useState<Opt[]>([])
   const [hsId, setHsId] = useState<string | null>(null)
-  const [hsOpts, setHsOpts] = useState<Opt[]>([])
+  const [roster, setRoster] = useState<RosterHS[]>([])
   const [ym, setYm] = useState(curYM())
 
   useEffect(() => {
     setLopId(null); setHsId(null)
     listLop().then((ls) => setLopOpts(ls.filter((l: any) => l.mon === mon).map((l: any) => ({ id: l.id, label: l.ten_lop, sub: l.khoi ? `K${l.khoi}` : undefined })))).catch(() => setLopOpts([]))
   }, [mon])
+  // Đổi lớp → nạp CẢ DANH SÁCH (cột trái, click chọn thẳng — giống "Kết quả học tập"), khỏi phải gõ dropdown.
   useEffect(() => {
-    setHsId(null); setHsOpts([])
+    setHsId(null); setRoster([])
     if (!lopId) return
-    listHSCuaLop(lopId).then((rows: any[]) => setHsOpts(rows.map((r) => r.hoc_sinh).filter(Boolean).sort((a: any, b: any) => String(a.ho_ten).localeCompare(String(b.ho_ten), 'vi')).map((h: any) => ({ id: h.id, label: h.ho_ten, sub: h.ma_hs ?? undefined })))).catch(() => setHsOpts([]))
+    listHSCuaLop(lopId).then((rows: any[]) => setRoster(rows.map((r) => r.hoc_sinh).filter(Boolean)
+      .sort((a: any, b: any) => String(a.ho_ten).localeCompare(String(b.ho_ten), 'vi'))
+      .map((h: any) => ({ id: h.id, ho_ten: h.ho_ten, ma_hs: h.ma_hs ?? null, anh_url: h.anh_url ?? null })))).catch(() => setRoster([]))
   }, [lopId])
 
   const monBtn = (on: boolean) => `h-7 rounded-md px-3 text-[13px] font-semibold transition ${on ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`
   const [yy, mm] = ym.split('-')
+  const hs = roster.find((r) => r.id === hsId) ?? null
   return (
     <div className="flex h-full min-w-0 flex-col bg-[#fafafb]">
       <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 bg-white px-6 py-2.5">
         <span className="mr-2 text-sm font-semibold text-slate-900">Report phụ huynh</span>
         {MON_CO_KHO.map((m) => <button key={m} onClick={() => setMon(m)} className={monBtn(mon === m)}>{m}</button>)}
         <div className="ml-2 w-44"><SearchSelect value={lopId} onChange={setLopId} options={lopOpts} placeholder="Chọn lớp…" /></div>
-        <div className="w-60"><SearchSelect value={hsId} onChange={setHsId} options={hsOpts} placeholder={lopId ? 'Chọn học sinh…' : 'Chọn lớp trước'} avatars /></div>
         <div className="ml-2 flex items-center gap-0.5 rounded-md ring-1 ring-slate-200">
           <button onClick={() => setYm(shiftYM(ym, -1))} className="h-7 rounded-l-md px-2 text-slate-500 hover:bg-slate-100" title="Tháng trước">‹</button>
           <span className="min-w-[92px] text-center text-[13px] font-semibold tabular-nums text-slate-700">Tháng {Number(mm)}/{yy}</span>
@@ -74,15 +81,42 @@ export default function ReportPHScreen() {
         </div>
       </div>
       <div className="min-h-0 flex-1 overflow-auto p-6">
-        {!hsId ? (
-          <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Chọn lớp rồi chọn học sinh để xem report.</div>
-        ) : <ReportBody key={hsId + mon + ym} hsId={hsId} mon={mon} ym={ym} lopId={lopId} hsName={hsOpts.find((o) => o.id === hsId)?.label ?? ''} lopTen={lopOpts.find((o) => o.id === lopId)?.label ?? ''} />}
+        {!lopId ? (
+          <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Chọn lớp để xem danh sách học sinh.</div>
+        ) : (
+          <div className="flex gap-4">
+            {/* CỘT TRÁI: danh sách cả lớp, click chọn thẳng — giống "Kết quả học tập" */}
+            <aside className="w-56 shrink-0">
+              <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
+                <div className="border-b border-slate-200 bg-slate-50 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wide text-slate-500">{roster.length} học sinh</div>
+                <div className="max-h-[75vh] overflow-auto">
+                  {(() => { const tenHT = tenHienThiDs(roster.map((r) => r.ho_ten)); return roster.map((r, i) => (
+                    <button key={r.id} onClick={() => setHsId(r.id)} title={r.ho_ten}
+                      className={`flex w-full items-center gap-2 px-3 py-1.5 text-left text-[13px] ${r.id === hsId ? 'bg-indigo-50 font-semibold text-indigo-700' : 'text-slate-700 hover:bg-slate-50'}`}>
+                      {r.anh_url
+                        ? <img src={r.anh_url} alt="" className="h-6 w-6 shrink-0 rounded-full object-cover" />
+                        : <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-[10px] font-semibold text-indigo-600">{r.ho_ten.trim().split(/\s+/).pop()?.[0]?.toUpperCase() ?? '?'}</span>}
+                      <span className="truncate">{tenHT[i]}</span>
+                    </button>
+                  )) })()}
+                  {roster.length === 0 && <p className="px-3 py-2 text-[12px] text-slate-500">Lớp trống.</p>}
+                </div>
+              </div>
+            </aside>
+            {/* CỘT PHẢI: report của HS đang chọn */}
+            <div className="min-w-0 flex-1">
+              {!hs ? (
+                <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Chọn học sinh ở cột trái để xem report.</div>
+              ) : <ReportBody key={hs.id + mon + ym} hsId={hs.id} mon={mon} ym={ym} lopId={lopId} hsName={hs.ho_ten} hsImg={hs.anh_url} lopTen={lopOpts.find((o) => o.id === lopId)?.label ?? ''} />}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   )
 }
 
-function ReportBody({ hsId, mon, ym, lopId, hsName, lopTen }: { hsId: string; mon: string; ym: string; lopId: string | null; hsName: string; lopTen: string }) {
+function ReportBody({ hsId, mon, ym, lopId, hsName, hsImg, lopTen }: { hsId: string; mon: string; ym: string; lopId: string | null; hsName: string; hsImg: string | null; lopTen: string }) {
   const [rows, setRows] = useState<ReportBuoiRow[] | null>(null)
   const [tq, setTq] = useState<TongQuanHS | null>(null)
   const [gvName, setGvName] = useState<string | null>(null)
@@ -90,7 +124,7 @@ function ReportBody({ hsId, mon, ym, lopId, hsName, lopTen }: { hsId: string; mo
   const [anh, setAnh] = useState(false)
   useEffect(() => {
     setLoading(true)
-    Promise.all([getReportBuoiHS(hsId, mon, ym), getTongQuanHS(hsId, mon)])
+    Promise.all([getReportBuoiHS(hsId, mon, ym), getTongQuanHS(hsId, mon, { ym })])
       .then(([r, t]) => { setRows(r); setTq(t) }).catch(() => { setRows([]); setTq(null) }).finally(() => setLoading(false))
   }, [hsId, mon, ym])
   useEffect(() => { setGvName(null); if (lopId) getGVChinhLop(lopId).then(setGvName).catch(() => {}) }, [lopId])
@@ -101,7 +135,7 @@ function ReportBody({ hsId, mon, ym, lopId, hsName, lopTen }: { hsId: string; mo
     <div className="mb-3 flex justify-end">
       <button onClick={() => setAnh(true)} className="rounded-lg bg-indigo-600 px-3.5 py-1.5 text-[13px] font-semibold text-white shadow-sm hover:bg-indigo-500">📸 Ảnh gửi phụ huynh</button>
     </div>
-    {anh && tq && <PhAnhModal hsId={hsId} mon={mon} ym={ym} hsName={hsName} lopTen={lopTen} gvName={gvName} tq={tq} missCount={missCount} onClose={() => setAnh(false)} />}
+    {anh && tq && <PhAnhModal hsId={hsId} mon={mon} ym={ym} hsName={hsName} hsImg={hsImg} lopTen={lopTen} gvName={gvName} tq={tq} missCount={missCount} onClose={() => setAnh(false)} />}
     <div className="grid gap-5 xl:grid-cols-[1fr_400px]">
       {/* ── TRÁI: SỐ LIỆU ── */}
       <div className="space-y-5">
@@ -163,7 +197,28 @@ function NumCol({ label, pct, big }: { label: string; pct: number | null; big?: 
     </div>
   )
 }
-function ActCard({ icon, ten, cb, nc, warn }: { icon: string; ten: string; cb: Bucket; nc: Bucket; warn?: string }) {
+// Điểm THẬT nhập tay (thang 10, qua ky_thi/diem_thi) — KHÁC %hoạt động ở NumCol (đúng câu/tổng câu).
+// Cố ý không dùng pctCls (màu theo ngưỡng %0-100) cho số 0-10 — dễ đọc sai (vd điểm 8 mà tô đỏ như %8).
+function DiemRow({ tong, cb, nc, truong }: { tong: number | null; cb: number | null; nc: number | null; truong?: number | null }) {
+  const col = (label: string, v: number | null, big?: boolean) => (
+    <div className="flex-1 px-3 text-center first:pl-0">
+      <div className="text-[10px] font-semibold uppercase tracking-wide text-slate-400">{label}</div>
+      <div className={`font-extrabold tabular-nums text-slate-700 ${big ? 'text-[20px]' : 'text-[15px]'}`}>{v == null ? '—' : v}</div>
+    </div>
+  )
+  return (
+    <div className="mt-2.5 rounded-lg bg-slate-50 px-1 py-2">
+      <div className="mb-1 px-3 text-[10px] font-semibold uppercase tracking-wide text-slate-400">Điểm MT (thang 10, nhập tay)</div>
+      <div className="flex divide-x divide-slate-200">
+        {col('Tổng', tong, true)}
+        {col('Cơ bản', cb)}
+        {col('Nâng cao', nc)}
+      </div>
+      {truong != null && <div className="mt-1.5 px-3 text-[11px] text-slate-500">Điểm thi trường: <b className="text-slate-700">{truong}</b></div>}
+    </div>
+  )
+}
+function ActCard({ icon, ten, cb, nc, warn, diem }: { icon: string; ten: string; cb: Bucket; nc: Bucket; warn?: string; diem?: { tong: number | null; cb: number | null; nc: number | null; truong?: number | null } }) {
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
       <div className="mb-3 text-[14px] font-bold text-slate-700">{icon} {ten}</div>
@@ -172,6 +227,7 @@ function ActCard({ icon, ten, cb, nc, warn }: { icon: string; ten: string; cb: B
         <NumCol label="Cơ bản" pct={cb.pct} />
         <NumCol label="Nâng cao" pct={nc.pct} />
       </div>
+      {diem && <DiemRow tong={diem.tong} cb={diem.cb} nc={diem.nc} truong={diem.truong} />}
       {warn && <div className="mt-2.5 rounded-lg bg-amber-50 px-2.5 py-1.5 text-[11px] font-medium text-amber-700">⚠ {warn}</div>}
     </div>
   )
@@ -191,7 +247,8 @@ function TongQuanCards({ tq, missCount }: { tq: TongQuanHS; missCount: number })
       </div>
       <ActCard icon="📝" ten="Test cuối giờ (ET)" cb={a.etCoBan} nc={a.etNangCao} />
       <ActCard icon="🏠" ten="Bài tập về nhà" cb={a.btvnCoBan} nc={a.btvnNangCao} warn={missCount > 0 ? `Chưa hoàn thành BTVN ${missCount} lần trong tháng này` : undefined} />
-      <ActCard icon="📅" ten="Test tháng (MT)" cb={a.mtCoBan} nc={a.mtNangCao} warn={tq.diem.mt.tb != null ? `Điểm MT trung bình: ${tq.diem.mt.tb} · Điểm trường: ${tq.diem.truong.tb ?? '—'}` : undefined} />
+      <ActCard icon="📅" ten="Test tháng (MT)" cb={a.mtCoBan} nc={a.mtNangCao}
+        diem={{ tong: tq.diem.mt.tb, cb: tq.diem.mt.coBan, nc: tq.diem.mt.nangCao, truong: tq.diem.truong.tb }} />
     </div>
   )
 }
@@ -347,7 +404,7 @@ const MUC_HEX: Record<string, { bg: string; fg: string; emoji: string; label: st
 const s10 = (pct: number | null) => pct == null ? '—' : (pct / 10).toFixed(1)
 const hexPct = (pct: number | null) => pct == null ? '#cbd5e1' : pct >= 80 ? '#059669' : pct >= 50 ? '#d97706' : '#e11d48'
 
-function PhAnhModal({ hsId, mon, ym, hsName, lopTen, gvName, tq, missCount, onClose }: { hsId: string; mon: string; ym: string; hsName: string; lopTen: string; gvName: string | null; tq: TongQuanHS; missCount: number; onClose: () => void }) {
+function PhAnhModal({ hsId, mon, ym, hsName, hsImg, lopTen, gvName, tq, missCount, onClose }: { hsId: string; mon: string; ym: string; hsName: string; hsImg: string | null; lopTen: string; gvName: string | null; tq: TongQuanHS; missCount: number; onClose: () => void }) {
   const [bc, setBc] = useState<BaoCaoPH>({ ...BC_EMPTY })
   const cardRef = useRef<HTMLDivElement>(null)
   useEffect(() => { getBaoCaoPH(hsId, mon, ym).then(setBc).catch(() => {}) }, [hsId, mon, ym])
@@ -429,7 +486,11 @@ function PhAnhModal({ hsId, mon, ym, hsName, lopTen, gvName, tq, missCount, onCl
               <span style={{ fontSize: 11, fontWeight: 800, padding: '7px 10px', borderRadius: 999, background: 'rgba(255,255,255,.14)', border: '1px solid rgba(255,255,255,.22)' }}>THÁNG {ym.split('-')[1]}/{ym.split('-')[0]}</span>
             </div>
             <div style={{ position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: '54px 1fr', gap: 13, alignItems: 'center' }}>
-              <div style={{ width: 54, height: 54, borderRadius: 18, display: 'grid', placeItems: 'center', fontSize: 22, fontWeight: 900, background: 'linear-gradient(145deg,#fff,#dce9ff)', color: '#315fdd', border: '3px solid rgba(255,255,255,.28)' }}>{hsName.trim().slice(-1) || '?'}</div>
+              <div style={{ width: 54, height: 54, borderRadius: 18, overflow: 'hidden', display: 'grid', placeItems: 'center', background: 'linear-gradient(145deg,#fff,#dce9ff)', border: '3px solid rgba(255,255,255,.28)' }}>
+                {hsImg
+                  ? <img src={hsImg} alt="" crossOrigin="anonymous" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  : <svg width={26} height={26} viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4.2" fill="#315fdd" fillOpacity=".55" /><path d="M4 20.5c0-4.4 3.6-7.2 8-7.2s8 2.8 8 7.2" stroke="#315fdd" strokeOpacity=".55" strokeWidth="2.2" strokeLinecap="round" /></svg>}
+              </div>
               <div><div style={{ fontSize: 20, fontWeight: 900, lineHeight: 1.12, letterSpacing: -.25 }}>{hsName}</div>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, fontSize: 11, color: '#e9f2ff', marginTop: 6 }}><span>Lớp {lopTen}</span><span>· Môn {mon}</span>{gvName ? <span>· GV {gvName}</span> : null}</div>
               </div>
