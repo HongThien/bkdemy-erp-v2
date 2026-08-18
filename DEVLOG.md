@@ -5318,3 +5318,48 @@ là đẻ mẫu số giả.
 `phan_cong_lop` nên `getMyTasks` trả rỗng. Query mirror đúng logic cho ra: báo sai của 11B1 → **Trần
 Hoàng Đạt (TG)**, 1 việc. Cần một phiên đăng nhập bằng TK của TG để xác nhận card hiện đúng và bấm vào
 ra đúng màn Duyệt chấm.
+
+---
+
+## 2026-08-18 — Xáo câu chỉ TRONG 1 dạng (không xáo toàn bộ thứ tự)
+
+**Sửa (Thùy 18/08): "Không trộn toàn bộ thứ tự. Chỉ trộn các câu trong 1 dạng thôi."**
+
+Code cũ (`seededPerm(n, seed)` áp thẳng lên cả đề) xáo **TOÀN BỘ n câu với nhau**, không phân biệt
+dạng — phá mất thứ tự sư phạm (dạng dễ trước/khó sau, dạng liên quan đặt gần nhau) mà người soạn đã
+cố ý xếp trong giáo trình.
+
+**`seededPermByDang` (shuffle.ts)** — GIỮ NGUYÊN vị trí khối của từng dạng, CHỈ xáo vị trí giữa các câu
+CÙNG dạng: nhóm câu theo `ma_dang`, với mỗi nhóm chỉ hoán vị NỘI BỘ nhóm đó (vị trí ngoài nhóm không
+đổi). Câu KHÔNG rõ dạng (đề thi bóc từ nguồn ngoài, chưa gắn dạng) → nhóm riêng 1 câu = không xáo
+(§1.5 "thà bỏ trống": không có dạng thì không có căn cứ gộp chung với câu không-có-dạng khác).
+
+Áp cho cả 2 luồng làm bài (`LamBai`=BTVN/giáo trình, `LamET`=ET/đề thi) — thay `seededPerm(...).map(...)`
+bằng `seededPermByDang(...).map(...)`, giữ nguyên seed (ổn định theo HS×bài, khác giữa các HS).
+
+---
+
+## 2026-08-18 (tiếp) — FIX: ảnh ĐỀ mất khi phát hành online (mig 202608181557)
+
+**Lỗi (Thùy báo):** câu hỏi phát hành online không hiện được hình.
+
+**Gốc — thiếu CỘT, không phải bug hiển thị.** `bai_test_cau` (snapshot lúc phát hành) từ đầu chỉ có
+`anh_dap_an` (ảnh lời giải), **THIẾU HẲN `anh_de`** (ảnh đề) dù kho (`CauHoi`) có cả hai. `phatHanhTest`
+copy được cái gì bảng CÓ cột — ảnh đề rụng ÂM THẦM ngay lúc snapshot, không phải lỗi ở màn HS.
+
+**Quy mô thật:** kiểm DB — **875 câu trong kho có `anh_de`**. Không phải ca hiếm.
+
+**Fix:**
+- `alter table bai_test_cau add column anh_de text`.
+- `phatHanhTest` (testonline.ts): thêm `anh_de: c.anh_de ?? null` vào snapshot.
+- `et_de` RPC (chế độ THI — giấu key/lời giải): thêm `anh_de` vào payload. **Ảnh đề KHÔNG phải đáp
+  án** — HS phải thấy nó trong lúc làm (đề giấy khó đọc chữ ảnh chụp chính là lý do có test online),
+  nên xếp cùng nhóm `noi_dung`/`lua_chon`, không lọc như `dap_an_key`/`loi_giai`/`anh_dap_an`.
+- `BaiTestCau`/`ETCauDe` (TS types) + render `<img>` ngay dưới `noi_dung` ở CẢ `LamBai` lẫn `LamET`.
+
+**Verify:**
+- `et_de` RPC gọi thật qua client HS0004 (anon key) → `anh_de` có trong payload trả về.
+- Browser thật (375×812, HS0004): dựng BTVN + ET với câu mượn `anh_de` THẬT từ kho (chỉ đọc, không sửa
+  câu gốc) → cả 2 đường (BTVN select thẳng · ET qua RPC) đều load ảnh thật (`naturalWidth=3165,
+  complete=true`). Dọn sạch sau khi soi — xác nhận `0` dòng `SMOKE-*` còn sót; 1 dòng `bai_test` còn
+  lại (mon='Toán', giao_trinh, 18/08) là **dữ liệu thật do ai đó vừa phát hành**, không đụng tới.
