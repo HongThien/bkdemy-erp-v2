@@ -452,7 +452,16 @@ export function BuoiPickEditor({ L, picks, cheDo, soDong, onChangePicks, onChang
     const news = await goiYChuoi(chuoi, phan, n)
     if (news.length < n) alert(`Chuỗi này chỉ có ${news.length} bản khác nhau — lấy đủ ${news.length}.`)
     const ids = new Set(chuoi.map((b) => b.id))
+    const cuCuaPhan = picks.filter((p) => p.phan === phan && p.nodeIds.every((id) => ids.has(id)))
     onChangePicks([...picks.filter((p) => !(p.phan === phan && p.nodeIds.every((id) => ids.has(id)))), ...news])
+    // ⭐ 17/08 (Thùy: "chỉnh số dòng ... hiển thị dòng không đúng"): goiYChuoi() sinh key MỚI HOÀN TOÀN
+    // mỗi lần — bấm lại "↻ Gợi ý" cho chuỗi đã áp "dòng kẻ (cả chuỗi)" thì bài mới không có trong `soDong`,
+    // âm thầm rơi về mặc định cứng DONG_BTVN thay vì giữ số đã chỉnh. Kế thừa từ bài cũ sắp bị thay (nếu
+    // có) — cùng gốc + cùng cách sửa với "+ Thêm bài" ở ChuoiRow.
+    if (phan === 'nha' && cuCuaPhan.length) {
+      const ke = soDong[cuCuaPhan[cuCuaPhan.length - 1].key] ?? DONG_BTVN
+      onChangeSoDong({ ...soDong, ...Object.fromEntries(news.map((p) => [p.key, ke])) })
+    }
   }
   // 1 nút xoay vòng 3 trạng thái (hien → o_trong → khong) — gọn hơn 3 nút trên mỗi dòng bài.
   const xoayCheDo = (key: string) => onChangeCheDo({ ...cheDo, [key]: cheDoKe(cheDo[key] ?? 'hien') })
@@ -749,8 +758,22 @@ function ChuoiRow({ L, chuoi, picks, cheDo, soDong, onAdd, onUpdate, onRemove, o
       {open && <ChonChuoiPopup L={L} phan={open.phan} chuoi={chuoi} editing={open.editKey ? picks.find((p) => p.key === open.editKey) : undefined}
         onClose={() => setOpen(null)}
         onConfirm={(ban, nodeIds) => {
-          if (open.editKey) onUpdate(open.editKey, { key: open.editKey, phan: open.phan, nodeIds, ...ban } as PickItem)
-          else onAdd({ key: crypto.randomUUID(), phan: open.phan, nodeIds, ...ban } as PickItem)
+          if (open.editKey) {
+            onUpdate(open.editKey, { key: open.editKey, phan: open.phan, nodeIds, ...ban } as PickItem)
+          } else {
+            const key = crypto.randomUUID()
+            onAdd({ key, phan: open.phan, nodeIds, ...ban } as PickItem)
+            // ⭐ 17/08 (Thùy: "chỉnh số dòng ... hiển thị dòng không đúng cái đã chọn"): bài MỚI thêm vào
+            // "Về nhà" phải kế thừa số dòng CHUNG hiện tại của chuỗi (bài liền trước) — trước đây key mới
+            // không có trong `soDong` nên mọi nơi đọc đều rơi về mặc định cứng DONG_BTVN=6, kể cả khi
+            // chuỗi đã áp "dòng kẻ (cả chuỗi)" ra một số khác từ trước. Comment cũ ở setSoDongChuoi
+            // ("bài mới thêm sau vẫn dùng mặc định chung") mô tả đúng Ý ĐỊNH nhưng code KHÔNG làm việc
+            // đó — đây mới là chỗ thật sự phải ghi.
+            if (open.phan === 'nha') {
+              const ds = picksOf('nha')
+              if (ds.length) onSetSoDongChuoi([key], soDong[ds[ds.length - 1].key] ?? DONG_BTVN)
+            }
+          }
           setOpen(null)
         }} />}
     </div>

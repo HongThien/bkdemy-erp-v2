@@ -15,7 +15,7 @@ import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
 import { MathText } from '../ui'
 import { type CheDoHinh } from '../../../lib/kho/hinhGiaoTrinh'
-import { CHROME_CSS, buildPagedCss, printWithFilename, safeFileName } from '../../tailieu/PrintView'
+import { CHROME_CSS, buildPagedCss, gtPageCss, printWithFilename, safeFileName } from '../../tailieu/PrintView'
 
 // ── Model bản in ──────────────────────────────────────────────────
 // Một BƯỚC con = node ẨN nở vào lời giải một ý (bản GV). Đứng TRƯỚC lời giải chính, sắp cap↑.
@@ -71,13 +71,16 @@ export default function HinhPrintView({ ban, onClose }: { ban: BanIn; onClose: (
     //  dữ liệu có sẵn trong tay nên đụng ngay.)
     const src = srcRef.current, dst = dstRef.current
     const hoan = setTimeout(() => {
-    // ⭐ header: 'none' — BỎ HẲN dải sóng chạy TRÊN MỖI TRANG (khuôn Đại 08-03 "Bỏ hẳn dải header ở mọi
-    // bản in"; Hình trước giờ CHƯA áp, ch={} rỗng ⇒ pageChrome() mặc định head=true, dải sóng vẫn chạy
-    // song song với masthead nội dung mới — 2 header cùng lúc, đúng cái Thùy chỉ ra "vẫn còn header cũ").
-    // Giữ footer (số trang + liên hệ) — Đại cũng giữ.
-    const css = buildPagedCss({ ten: ban.tieuDe, khoi: '' }, { header: 'none' }, '#0f766e', {
-      footerText: 'BK Academy        Tel : 0963.209.309        Địa chỉ : 17A10 KĐT Geleximco',
-    }) + HINH_CSS
+    // ⭐ header/footer: 'none' cho CẢ HAI — BỎ HẲN dải sóng cũ (khuôn Đại 08-03, rồi 08-08 bỏ luôn cả
+    // footer sóng). Trước đây chỉ header='none', footer vẫn gọi qua buildPagedCss({footerText}) ⇒
+    // pageChrome() vẽ dải sóng cong + logo chip CŨ ở đáy trang — sống sót qua đợt bỏ header vì tưởng
+    // "giữ footer, Đại cũng giữ", nhưng Đại đã đổi footer sang gtPageCss (dải gradient THẲNG mảnh 3-4mm
+    // trên/dưới trang qua pseudo-element + số trang/liên hệ qua @page margin box, KHÔNG còn sóng) từ
+    // 08-08 — comment cũ ở đây lạc hậu, Thùy chỉ ra 17/08 "vẫn còn footer cũ" đúng y hệt vụ header hôm
+    // trước. Dùng thẳng gtPageCss (đã export) thay vì chép lại CSS — cùng 1 nguồn, Hình tự động khớp
+    // Đại nếu sau này đổi màu/kiểu dải, không phải sửa 2 nơi.
+    const css = buildPagedCss({ ten: ban.tieuDe, khoi: '' }, { header: 'none', footer: 'none' }, '#0f766e')
+      + gtPageCss('') + HINH_CSS
     const cssUrl = URL.createObjectURL(new Blob([css], { type: 'text/css' }))
     const html = src.innerHTML
     // Cùng cách chống race của PrintView: mỗi run một container riêng, resolve xong mới ẨN container
@@ -251,9 +254,19 @@ function Noi({ ban, gv }: { ban: BanIn; gv: boolean }) {
                 </div>
               ))}</div>
               // Bản HS: MỘT khối dòng kẻ chung cho cả bài (không phải 1 khối/ý — đúng "gán dòng theo cả
-              // bài"), cao theo soDong đã chỉnh ở builder (ApplyDongChuoi, khuôn Đại "cả dạng" chứ không
-              // theo từng ý). soDong=0 → không kẻ (đề tự luận không cần viết, vd đã ẩn hình cho HS vẽ).
-              : m.soDong !== 0 && <div className="hp-ke" style={m.soDong ? { height: `${Math.max(1, m.soDong) * 7.7}mm` } : undefined} />}
+              // bài"), số dòng theo soDong đã chỉnh ở builder (ApplyDongChuoi, khuôn Đại "cả dạng" chứ
+              // không theo từng ý), mặc định 3 dòng khi chưa chỉnh. soDong=0 → không kẻ (đề tự luận
+              // không cần viết, vd đã ẩn hình cho HS vẽ).
+              // ⭐ 17/08 (Thùy): "dòng kẻ lúc đậm lúc nhạt" — 1 div nền `repeating-linear-gradient` cao cả
+              // khối bị rasterize print ra không đều (mép dải lặp lại rơi giữa 2 pixel-print thì mờ, rơi
+              // đúng biên thì đậm). Đổi sang TỪNG DÒNG 1 div `border-bottom` riêng — đúng kỹ thuật Đại
+              // đang dùng cho BTVN (`.pv-wline`, PrintView.tsx) — border là 1 nét browser vẽ y hệt nhau
+              // mỗi dòng, không phụ thuộc rasterize gradient.
+              : m.soDong !== 0 && (
+                <div className="hp-ke">
+                  {Array.from({ length: m.soDong ? Math.max(1, m.soDong) : 3 }).map((_, i) => <div key={i} className="hp-wline" />)}
+                </div>
+              )}
             <div style={{ clear: 'both' }} />
           </div>
           </Fragment>
@@ -314,6 +327,8 @@ const HINH_CSS = `
 .hp-bac{font-size:12px;color:#8a5a12;background:#fffaf1;border-radius:5px;padding:3px 7px;margin-bottom:5px}
 .hp-buoc{margin:0 0 5px;padding-left:9px;border-left:2px solid #cdd6e4}
 .hp-buoc b{color:#0f766e}
-/* bản HS: chỗ trống có DÒNG KẺ để viết — line rõ (0.3mm, xám vừa), mỗi 7.7mm 1 dòng */
-.hp-ke{height:23.1mm;margin-top:3px;background-image:repeating-linear-gradient(to bottom,transparent 0 7.4mm,#9aa7b5 7.4mm 7.7mm)}
+/* bản HS: chỗ trống có DÒNG KẺ để viết — mỗi dòng 1 div border-bottom riêng (khuôn .pv-wline của Đại,
+   PrintView.tsx) — KHÔNG dùng repeating-linear-gradient nữa (rasterize print ra đậm/nhạt không đều). */
+.hp-ke{margin-top:3px}
+.hp-wline{height:7.7mm;border-bottom:1px dotted #9aa6b2}
 `
