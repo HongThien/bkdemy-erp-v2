@@ -80,6 +80,7 @@
 | created_by | uuid | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | so_cau | integer |  | 0 |  |  |
+| co_nhieu_ma_de | boolean |  | false |  |  |
 
 ## bai_test_cau
 

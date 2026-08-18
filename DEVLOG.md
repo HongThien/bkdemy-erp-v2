@@ -5429,3 +5429,37 @@ Dọn sạch: `bai_test`/`tai_lieu` throwaway xoá hết (cascade), xác nhận 
 **CÒN LẠI (ngoài phạm vi hôm nay):** UI staff (`ETScreen`) chưa cảnh báo khi "Phát hành online" một ET
 CHƯA đủ 3 mã đề dù `hsMaDe` đã gán sẵn (HS sẽ tự rơi về mã 1, đúng thiết kế `coalesce` — không sai,
 nhưng staff có thể tưởng đã gán đúng). Cân nhắc thêm dòng cảnh báo ở nút phát hành nếu CEO thấy cần.
+
+---
+
+## 2026-08-18 (tiếp) — Có mã đề rồi thì KHÔNG xáo thứ tự câu nữa (mig 202608181747)
+
+**Thùy chốt ngay sau khi xong 3-mã-đề:** *"Nếu có nhiều mã đề thì ko cần phải đảo thứ tự câu nữa nhé."*
+Đúng — mục đích xáo `thu_tu` (`seededPermByDang`) là chống-liếc-bài khi mọi HS CÙNG nội dung câu. Test
+đã có 3 mã đề khác nội dung thì HS cạnh nhau vốn không so được câu-1-với-câu-1 nữa; xáo thêm là thừa.
+
+**`bai_test.co_nhieu_ma_de`** — ghi NGAY LÚC PHÁT HÀNH (snapshot 1 chiều, không suy động lại lúc HS mở
+bài): `true` CHỈ khi thực sự có ≥1 câu biến thể snapshot THÀNH CÔNG (không phải chỉ "GV đã bấm sinh" —
+`maDeReady` đúng mà thiếu câu biến thể ở đúng vị trí nào đó thì vị trí đó vẫn `false` về bản chất, cờ
+này lấy theo TOÀN BÀI nên chỉ cần ≥1 câu lọt qua là true). `LamET` đọc cờ: `true` → dùng thẳng `de`
+(đã `order by thu_tu` sẵn từ SQL) — KHÔNG gọi `seededPermByDang` nữa.
+
+**⚠ Bắt được + tự sửa 1 bug PHÁT SINH khi thêm cờ này (chưa kịp lộ ra ngoài):** biến `rows.length` dùng
+làm `bai_test.so_cau` (hiển thị "X câu" cho HS) đo ĐÚNG khi 1 vị trí = 1 dòng, nhưng sau khi thêm vòng
+lặp snapshot mã 2/3, `rows` phình ra chứa CẢ 3 biến thể/vị trí — `so_cau` sẽ thành ~3× số câu thật (2
+vị trí × 3 mã đề = báo "6 câu" trong khi HS chỉ làm 2). Fix: chốt `soCauMotDe = rows.length` NGAY SAU
+vòng lặp câu gốc, TRƯỚC khi cộng thêm biến thể — dùng biến này cho `so_cau`, không dùng `rows.length`
+cuối hàm nữa. Bắt được nhờ viết ca verify RÕ RÀNG kỳ vọng con số (không chỉ "chạy không lỗi").
+
+**Verify bằng `vite-node` gọi thẳng `phatHanhTest` thật, 2 ca:**
+```
+① CÓ mã đề (2 vị trí × 3 mã, gán HS0004→mã2):
+   bai_test_cau tạo ra 6 dòng (đủ 3 biến thể × 2 vị trí) — ĐÚNG (lưu đủ cả 3 mã)
+   so_cau = 2 (KHÔNG phải 6) — ĐÚNG (số câu 1 HS làm)
+   co_nhieu_ma_de = true — ĐÚNG
+   et_de (HS0004) trả 2 câu, thu_tu=[1,2] đúng thứ tự gốc — ĐÚNG
+
+② KHÔNG có etMaDe (ET bình thường, đối chứng — đảm bảo không phá luồng cũ):
+   so_cau = 2, co_nhieu_ma_de = false — ĐÚNG cả hai
+```
+Dọn sạch cả 2 ca sau khi soi (`count=0`). HS0004 không bị đụng (41/41 vẫn gắn cờ đổi mật khẩu).

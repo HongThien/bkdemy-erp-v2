@@ -451,7 +451,13 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
   }, [test.id, hocSinhId])
   useEffect(() => { setGoiY(false) }, [idx])
   // Xáo THỨ TỰ CÂU theo (HS×bài) — cùng cơ chế LamBai (xem ghi chú ở đó): chỉ xáo trong cùng 1 dạng.
-  const caus = useMemo(() => (de ? seededPermByDang(de, `${hocSinhId}:${test.id}:q`).map((i) => de[i]) : []), [de, hocSinhId, test.id])
+  // Test có ĐỦ 3 MÃ ĐỀ (test.co_nhieu_ma_de) → GIỮ NGUYÊN thứ tự thu_tu, KHÔNG xáo nữa (Thùy 18/08:
+  // "có nhiều mã đề thì không cần đảo thứ tự câu nữa" — mã đề đã khác nội dung, tự phân biệt HS rồi,
+  // xáo thêm thứ tự là thừa). et_de đã `order by bc.thu_tu` sẵn nên dùng thẳng `de`.
+  const caus = useMemo(() => {
+    if (!de) return []
+    return test.co_nhieu_ma_de ? de : seededPermByDang(de, `${hocSinhId}:${test.id}:q`).map((i) => de[i])
+  }, [de, hocSinhId, test.id, test.co_nhieu_ma_de])
 
   if (!de) return <div className="flex min-h-screen items-center justify-center text-sm text-slate-400">Đang tải đề…</div>
   const total = caus.length
