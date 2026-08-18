@@ -5526,3 +5526,150 @@ sau khi nối xuyên suốt DB-select→type→state→UI ở cả 2 luồng bù
 `gio_ket_thuc` — field mới chỉ áp cho buổi tạo/sửa TỪ GIỜ. Muốn buổi cũ hiện trong Lịch phòng thì cần
 người có liên quan mở Sửa và điền tay (không tự backfill đoán giờ — đúng luật "thà bỏ trống còn hơn
 đánh sai").
+
+---
+
+## 2026-08-14 — ⭐ Worktree `feat/troly-ai`: chốt trục MẢNG + khai module VẬN HÀNH BUỔI HỌC
+
+- **CEO chốt bản chất:** *"vẫn là m đi xây bộ tổng hợp dữ liệu và thông báo cho từng module:
+  bổ trợ bù, bổ trợ đuổi, bổ trợ yếu, kiểm tra đầu vào, vận hành buổi học"* + *"vận hành buổi học
+  đang chạy đầy đủ nhất nên làm đầu tiên"*. Đặt trong tab 🤖 Trợ lý, không đẻ lá mới.
+- **⭐ ĐỔI TRỤC (lý do CỨNG, không phải thẩm mỹ):** trợ lý cũ đọc `getMyTasks()` = task theo lớp
+  được phân công. **Lộc (NS003) có 0 phân công lớp ⇒ mở ra TRẮNG.** Và "lớp nào còn thiếu" của
+  Trang là việc của NGƯỜI KHÁC. ⇒ trục = **MẢNG PHỤ TRÁCH**, "việc của tôi" tụt xuống thành MỘT
+  mảng. Thêm người = gán mảng. (Loại hardcode-3-tài-khoản vì nghịch luật "quyền bám GHẾ"; loại
+  đi-theo-cây-ghế vì có người giữ 6 ghế ⇒ phạm vi rộng ngoài ý muốn.) → `SPEC-troly-nhansu.md`.
+- **⚠ Suýt build nhầm người:** hệ có HAI người tên Trang — NS002 Phạm Thị Thùy Trang (Trưởng khối
+  THCS · Quản lý trợ giảng · 14 lớp) và NS009 Hoàng Thị Quỳnh Trang (QLHT · 6 lớp). Mô tả của CEO
+  khớp cả hai theo hai kiểu. Hỏi → **NS002**. Ghi vào spec để phiên sau khỏi đoán.
+- **⭐⭐ NHỊP — CEO đảo cả hai phương án Claude đưa ra, và đảo đúng.** Claude hỏi "BTVN nhắc theo
+  ngày hay sau buổi kế"; CEO trả lời bằng cách đặt lại vấn đề: *"Báo cáo những thứ ĐÁNG LẼ PHẢI
+  XẢY RA: theo lịch hôm nay lớp ABC phải nộp nhưng hệ thống mới chỉ ghi nhận lớp A"*.
+  ⇒ Nghĩa vụ suy từ **LỊCH**, không phải từ "hôm qua còn sót gì". Tổng quát cho mọi khâu.
+  Số đỡ lưng (60 ngày): **ET đóng ngay trong ngày 244/339 ca (72%)** + 43 ca sau 1 ngày ⇒ hỏi sáng
+  hôm sau là đúng nhịp. **BTVN đóng sau 2–6 ngày** (chấm ở buổi kế — thiết kế), đóng trong vòng
+  1 ngày chỉ **2/250 ca** ⇒ hỏi theo ngày là **sai 100%**: sáng nào danh sách cũng đủ mặt mọi lớp,
+  kể cả lớp đang làm chuẩn. Danh sách lúc nào cũng đầy = không ai đọc nữa.
+- **⭐ CEO ĐẢO luật đánh giá:** 12/08 chốt "đánh giá KHÔNG bắt buộc"; 14/08 chốt **BẮT BUỘC, đòi
+  như ET**. Đã ghi đè dòng cũ trong spec (để nguyên hai dòng mâu thuẫn là phiên sau đọc nhầm).
+  Claude nêu trước hệ quả: hôm qua 7/9 lớp chưa đánh giá, 30 ngày 100/310 buổi ⇒ danh sách sẽ dài;
+  CEO chọn đòi hết, KHÔNG kẻ đường ngày như luật 48h của bù — cố ý.
+- **`src/lib/troly-vanhanh.ts` + `KhoiVanHanh`** — viết ra thành CÂU chứ không phải bảng (CEO hình
+  dung ra thành câu). Ba khâu ba nhịp, cố ý KHÔNG gộp: ① hôm qua = ET + đánh giá · ② BTVN = đến hạn
+  theo lịch HÔM NAY · ③ từ đầu tuần = nợ tích luỹ.
+  Nợ BTVN ở ③ có guard `>= 2 ngày` — buổi hôm qua chưa tới hạn, đưa vào là lặp đúng cái sai nhịp.
+- **Verify trên dev server CỦA WORKTREE** (cổng 5190) — số khớp oracle SQL chạy cùng lúc:
+  hôm qua 13/08 · 9 buổi · đủ: 7K1, 9C1 · chưa đánh giá 7 lớp · **ET sạch 100%** (6/6 lớp có đề đều
+  chốt) · không đòi ET ở 12A1/8A2/8B1 (không có đề — nêu riêng, không trộn vào "thiếu") ·
+  BTVN đến hạn hôm nay 3 lớp, **cả 3 đã ghi nhận** · từ đầu tuần 26 lớp nợ (ET 5 · BTVN 9 · đánh giá 19).
+- **⚠ BẪY HẠ TẦNG — suýt verify nhầm cây:** `preview_start` resolve launch config từ thư mục CHA
+  (`BKERP/.claude/`), **không theo cwd** ⇒ lệnh "dev" luôn chạy CÂY CHÍNH dù đang đứng trong
+  worktree. Phát hiện bằng cách `fetch('/src/.../TroLyTab.tsx')` qua dev server rồi tìm đoạn code
+  mới: không có. Đã thêm config **"troly" cổng 5190** trỏ đúng worktree.
+  **Luật: làm trong worktree thì việc ĐẦU TIÊN là chứng minh dev server đang phục vụ đúng cây.**
+- **CÒN:** mảng của Lộc (bù · yếu · test đầu vào) chưa ráp · `nhansu_hieusuat` chưa làm · gate "ai
+  thấy mảng nào" chưa có (worker bypass RLS ⇒ phải chặn ở code dựng context) · test đầu vào vẫn
+  chặn ở "ai chấm", CEO sẽ mở context riêng xử lý.
+
+## 2026-08-14 (tiếp) — ⭐ Làm lại màn trợ lý: CHIA KHU THEO MODULE, bỏ liệt kê
+
+- **CEO chửi đúng (gửi kèm ảnh màn):** *"t đã bảo là màn hình trợ lý phải chia khu ra cho dễ view.
+  Ngoài ra báo số tổng quan chứ liệt kê 100 trường hợp cho chó đọc à. Hiện ra những thứ như t viết
+  ví dụ bên trên, KO phải cái trợ lý hiện tại của m. Xoá đi làm lại đi. Trợ lý có nhiều module
+  riêng, và báo cáo phải theo từng module chứ"*.
+  Ảnh cho thấy khối "Đang nợ — 103" đổ ra 103 dòng liên tiếp. Đúng thế thật.
+- **⭐ SAI GỐC, không phải sai hiển thị:** khối "Hôm nay 4 rổ" + "Việc cần quyết" là di sản của
+  đời trợ lý-cho-MỘT-người (trục "việc của tôi"). Đã chốt đổi sang trục MẢNG từ đầu phiên, nhưng
+  Claude **chỉ THÊM module mới mà không GỠ khối cũ** ⇒ màn thành hai thế giới chồng nhau, và cái
+  cũ (dài nhất) nằm trên cùng. Bài học: đổi trục thì phải gỡ cái của trục cũ, thêm mà không gỡ =
+  người dùng gặp cái cũ trước.
+- **Xoá (đã liệt kê trước với CEO):** component `HomNay` (4 rổ nợ/hạn-hôm-nay/dự-kiến/không-hạn) +
+  section "Việc cần quyết" (danh sách dài kèm 3 nút mỗi dòng). **Giữ** tầng đọc `viecHomNay`/
+  `nhacViecHomNay` trong lib — khung chat vẫn ăn dữ liệu đó, chỉ không đổ ra màn nữa.
+- **Màn mới = LƯỚI MODULE**, mỗi module một khu, khuôn chung `Khu` (tên · MỘT dòng số tổng quan ·
+  nút sang màn chuyên môn · phần đáng nhìn cắt ngắn có nói còn bao nhiêu):
+  Vận hành buổi học · Bổ trợ bù · Bổ trợ đuổi · Bổ trợ yếu · Kiểm tra đầu vào · Việc của riêng bạn.
+- **`Việc của riêng bạn` = ĐÚNG MỘT DÒNG SỐ.** Chính chỗ đẻ ra 103 dòng. Màn "Việc của tôi" đã tồn
+  tại để xem chi tiết — trợ lý nói con số rồi chỉ đường, không chép lại danh sách của màn khác.
+- **`src/lib/troly-modules.ts`** (mới): `mangYeu()` + `mangTestDauVao()`. Cả hai là mảng ĐANG HỞ,
+  và chỗ hở mới là thứ đáng báo — nói thẳng kèm số, không im (người tưởng ổn) cũng không vờ như
+  đang theo dõi (người tưởng có ai đang xử).
+- **Verify (dev server worktree, cổng 5190):**
+  · Vận hành: hôm qua 9 buổi — đủ 7K1/9C1 · 7 lớp chưa đánh giá · ET sạch 100% · BTVN 3/3 đã ghi nhận.
+  · Bổ trợ bù: 1 dòng số (103 cần xếp · 8 quá hạn · 4 phải xếp lại · 11 buổi sắp tới, 3 hôm nay)
+    rồi mới tới mục nhỏ, mỗi mục cap 5 kèm "…và N nữa".
+  · Bổ trợ đuổi: 9 đợt mở · **1 đợt** chậm hơn bình thường (ngưỡng rút từ 34 đợt đã hoàn thành).
+  · Bổ trợ yếu: "24 cảnh báo chảy vào hư không, cũ nhất 25 ngày · 12 HS · nhiều cờ nhất Luyện Minh
+    Đăng (11)" — đúng luật "chưa có thì báo chưa có".
+  tsc + vite build sạch.
+- **CÒN:** `nhansu_hieusuat` của Trang chưa làm · gate "ai thấy module nào" chưa có (hiện mọi người
+  thấy hết) · test đầu vào vẫn chặn ở "ai chấm".
+
+## 2026-08-14 (tiếp) — ⭐ "Lớp nào THẬT SỰ chạy ET/BTVN" suy từ hành vi, không bắt ai tick
+
+- **CEO:** *"Tất cả các lớp m vừa báo là thực tế chưa chạy ET, vì nhiều lý do khác nhau. M bỏ qua
+  cái này. Những lớp thực sự chạy là những lớp còn lại. m chỉ care các lớp đã chạy rồi đi"*.
+- **⭐ TÍN HIỆU BIMODAL — xác nhận lại lần 2 (DEVLOG 12/08 từng ghi, nay đo lại vẫn đúng).**
+  Tỉ lệ buổi CÓ ĐỀ ET theo lớp, 60 ngày: **27 lớp ở 70–100%** (5A1/5A2/6A1/6S2 100% · 9B1 92% ·
+  9A2 88% · 9S1/9C1 87%) · **14 lớp ở 0–29%** (12C1/8S0/8K1/9K2 0% · 12B1 4% · TOÀN BỘ Tiếng Anh,
+  Văn) · **đúng 1 lớp ở giữa** (8B2 43%). Khoảng trống **43% → 74%** đủ rộng ⇒ ngưỡng 60% có dữ
+  liệu đỡ lưng, không phải bịa. `phanLoaiLopTheoKhau()` trong `troly-vanhanh.ts`.
+  ⇒ **Cờ must-exist theo lớp KHÔNG cần người khai** — thứ 12/08 tưởng phải ngồi tick 46 lớp thì
+  hành vi đã tự nói ra. Nhưng chỉ nói được vì có ĐỦ MẪU: lớp <4 buổi mặc định coi như CÓ chạy
+  (thà hỏi thừa một lớp mới còn hơn im lặng cả tháng — đúng lỗi bỏ-qua-âm-thầm).
+- **⭐ TÍN HIỆU MỚI, trước đây bị NUỐT: "lớp chạy ET mà buổi này thiếu đề".** Bản trước gộp mọi
+  buổi-không-có-đề vào một câu "không có đề nên không đòi" ⇒ lớp chạy ET đều 85% mà quên gán đề
+  một buổi thì hệ cũng im. Nay tách hai ca trông giống hệt nhau:
+  · **8A2, 8B1** — chạy ET 83–85% mà buổi 13/08 không có đề ⇒ **nghi quên gán, đáng hỏi**.
+  · **12A1, 7K1** — thực tế không chạy ET ⇒ bỏ qua, không phải việc.
+  Đây chính là "đánh đổi đã biết" ghi trong SPEC §2 ("luật này bỏ sót lớp đáng lẽ phải có ET mà
+  chưa ai soạn đề") — giờ hết bỏ sót.
+- **Số sau khi lọc:** nợ BTVN tuần 9 → 8 lớp · tổng lớp nợ 26 → 25. Nợ đánh giá giữ 19 (CEO chốt
+  đánh giá bắt buộc MỌI buổi thường, không lọc theo lớp).
+- **⚠ ĐÍNH CHÍNH bản thân (khoá thứ tự ET):** trước đó Claude đề nghị BỎ khoá vì nó chặn 16 lớp.
+  CEO bác đúng: khoá là **công cụ quản trị** — chặn thì TA leo thang lên leader, đó là quy trình
+  chứ không phải nhược điểm. Claude đã đánh giá nó như ma sát UX mà không hỏi nó tồn tại để làm gì.
+  **Nhưng đo ra thì phần lớn buổi gây chặn lại là buổi KHÔNG có đề ET** (12B1 chặn 23 buổi vì lỗ
+  17/06 vốn không có đề) ⇒ khoá đang hỏi *"cột null không"* thay vì *"còn nợ ET không"*. Với bộ
+  phân loại mới, điều kiện đúng nằm sẵn trong tay. **CHƯA sửa `closePhase`** — chờ CEO chốt vì nó
+  đụng luật đóng phase đang chạy thật.
+- Ghi nhận thêm: `closePhase` CHO đóng phase rỗng (chỉ không tính Elo) ⇒ không ai kẹt vĩnh viễn,
+  nhưng gỡ 16 chuỗi bằng tay là bấm xác nhận rỗng hàng chục lần — việc vặt vô nghĩa.
+
+## 2026-08-15 — ⭐⭐ SIẾT QUYỀN DB: thu hẹp FDW + khoá nhóm TIỀN (2 migration, CHỜ CEO chạy)
+
+- **Bối cảnh:** CEO chốt hướng "mỗi luồng nhập liệu một app, ERP thành nơi ĐỌC vận hành" ⇒ tới lúc
+  bàn quyền DB. Đo hiện trạng: **128 policy là cổng nhị phân `la_thanh_vien()`** (là nhân sự thì
+  thấy hết) · **29 policy `true`** · chỉ **6 bảng** lọc theo dòng thật, và cả 6 đều của HS/PH.
+  ⇒ Hôm nay một TA bất kỳ đọc được toàn bộ học phí, công thức phí, bảng lương, thông tin phụ huynh.
+- **⚠ TAO BÁO SAI MỘT LẦN, ĐÃ SỬA:** ban đầu gọi `fdw_bkdemy_web_read` là "mở toang, không cần đăng
+  nhập" — SAI, vì quên đọc cột `roles`: nó chỉ áp cho role riêng `fdw_bkdemy_web`. **Bài học: policy
+  có BỐN chiều (table · cmd · roles · qual); đọc thiếu một chiều là kết luận sai hẳn về mức phơi nhiễm.**
+- **⭐ Nhưng soi kỹ lại lộ chuyện lớn hơn:** role `fdw_bkdemy_web` được cấp SELECT trên **30 bảng**,
+  trong khi `bkdemy-web` chỉ khai báo **4 foreign table** (`erp_lop` · `erp_muc_hoc_phi` · `erp_nhan_su`
+  · `erp_phan_cong_lop`, dựng view `erp_fdw_live_gv_gia`). Grep toàn repo web: KHÔNG chỗ nào chạm
+  `hoa_don`. ⇒ **26 bảng cấp thừa**, gồm hoá đơn (234) · dòng thu (686) · phụ huynh · điểm · nhận xét
+  gửi PH · kho câu hỏi · **đề kèm đáp án test online**. CEO xác nhận: *"web có liên quan gì đến hoá đơn
+  tiền đâu, tối đa chỉ có mức tiền học thôi"*.
+- **⚠ POLICY và GRANT là HAI CỔNG ĐỘC LẬP** — và ở đây chúng LỆCH nhau thật: `bao_cao_ph` có GRANT
+  nhưng KHÔNG có policy. Gỡ mỗi policy thì bảng đó lọt lưới hoàn toàn. Migration gỡ CẢ HAI tầng.
+- **`202608151030_fdw_web_thu_hep.sql`** — 30 → 4 bảng. Kèm kiểm chốt: nếu lỡ sứt quyền của 4 bảng
+  web đang dùng thì `raise exception`, không cho migration đi qua.
+- **`202608151045_siet_quyen_nhom_tien.sql`** — 8 bảng tiền: xoá policy `*_member_all`, thay bằng
+  policy đọc **chính bảng phân quyền đang chạy** (`vai_tro_chuc_nang.chuc_nang='hocphi'`).
+  ⭐ KHÔNG hardcode 3 người (nghịch luật "quyền bám GHẾ") — và kiểm trước thì bảng phân quyền **đã
+  mô tả đúng nhóm CEO nói**: NS001 Thùy · NS002 Thuỳ Trang · NS003 Lộc có `hocphi`, **không ai khác**.
+  ⇒ UI và DB nói cùng một luật; thêm người thứ tư = tick ở màn Phân quyền, không cần migration.
+  Tách `co_chuc_nang()` (đọc) và `co_quyen_ghi()` (ghi, loại `chi_xem`) — tái dùng cột `chi_xem` sẵn có.
+- **⚠ VÌ SAO PHẢI XOÁ chứ không thêm:** policy Postgres cộng dồn kiểu **HOẶC**. Để `*_member_all`
+  nằm đó thì mọi policy chặt thêm vào đều vô nghĩa. Đây là chỗ dễ tưởng đã siết mà thực ra chưa.
+- **Kiểm trước khi xoá quyền GHI:** chỉ **NS005 (tài khoản admin) và NS003 (Lộc)** từng tạo hoá đơn
+  (160 và 74) — cả hai đều còn quyền sau khi siết ⇒ không gãy việc của ai.
+- **`scripts/check-quyen-tien.mjs`** — chạy TRƯỚC/SAU rồi so. ⚠ Không giả lập được bằng
+  `set local role authenticated`: `claude_build` không có quyền đó, và bản thân nó SỞ HỮU bảng nên
+  chủ sở hữu vốn bỏ qua RLS. Thay bằng: nhét `request.jwt.claims` đúng người rồi gọi thẳng hàm quyết
+  định. **Kiểm này chứng minh CỔNG đúng, KHÔNG thay được một lượt bấm thật trên app.**
+  Chạy trước migration: cổng CŨ = `true` với **cả 6 người** (đúng hiện trạng phơi nhiễm) · cổng MỚI =
+  đúng NS001/NS002/NS003/NS005, chặn NS008/NS014. ✅
+- **CHƯA ÁP.** Chuỗi kết nối GHI cố ý không nằm trên đĩa (CLAUDE.md §2.1) ⇒ CEO tự chạy. DB đang có
+  người dùng thật; migration này đổi quyền đọc/ghi chứ không đụng dữ liệu, nhưng sai là màn trắng im lặng.

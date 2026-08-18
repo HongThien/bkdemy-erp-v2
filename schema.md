@@ -243,6 +243,7 @@
 | ket_qua | text | Y |  |  | `dat` · `mot_phan` · `chua_dat` · `bo` |
 | dong_boi | uuid | Y |  | FK→nhan_su.id |  |
 | ghi_chu_dong | text | Y |  |  |  |
+| case_truoc_id | uuid | Y |  | FK→bo_tro_yeu.id |  |
 
 ## bo_tro_yeu_dang
 

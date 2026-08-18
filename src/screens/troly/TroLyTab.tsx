@@ -18,11 +18,13 @@
 // ============================================================================
 import { useEffect, useRef, useState } from 'react'
 import {
-  nhacViecHomNay, ghiQuyetDinh, nhanDinhHeThong, ghiQuyetDinhNhanDinh,
-  hoiTroLy, docDap, viecHomNay,
-  type BangHomNay, type BangNhac, type LuotHoi, type NhanDinh, type QuyetDinh, type ViecGom, type ViecNhac,
+  nhacViecHomNay, nhanDinhHeThong, ghiQuyetDinhNhanDinh, anhChupChuoiDuoi,
+  hoiTroLy, docDap,
+  type BangNhac, type LuotHoi, type NhanDinh, type QuyetDinh, type AnhChupDuoi,
 } from '../../lib/troly'
-import { anhChupBoTroBu, NGAY_AP_HAN_48H, type AnhChupBu } from '../../lib/botro'
+import { mangYeu, mangTestDauVao, type MangYeu, type MangTest } from '../../lib/troly-modules'
+import { anhChupBoTroBu, type AnhChupBu } from '../../lib/botro'
+import { baoCaoVanHanh, type BaoCaoVanHanh } from '../../lib/troly-vanhanh'
 import { useStore } from '../../store/useStore'
 
 // ── KHUNG CHAT ──────────────────────────────────────────────────────────────
@@ -145,49 +147,55 @@ function BaNut({ dangMoGac, onLam, onHuy, onGac, onMoGac, nho }: {
 }
 
 export default function TroLyTab() {
-  const [homNay, setHomNay] = useState<BangHomNay | null>(null)
-  const [bang, setBang] = useState<BangNhac | null>(null)
   const [nhanDinh, setNhanDinh] = useState<NhanDinh[] | null>(null)
   const [bu, setBu] = useState<AnhChupBu | null>(null)
+  const [vh, setVh] = useState<BaoCaoVanHanh | null>(null)
+  const [yeu, setYeu] = useState<MangYeu | null>(null)
+  const [test, setTest] = useState<MangTest | null>(null)
+  const [duoi, setDuoi] = useState<AnhChupDuoi | null>(null)
+  const [toi, setToi] = useState<BangNhac | null>(null)
   const setStaffLeaf = useStore((s) => s.setStaffLeaf)
   const [loi, setLoi] = useState<string | null>(null)
   const [moGac, setMoGac] = useState<string | null>(null)
 
+  // Mỗi mảng tự chịu lỗi riêng — một mảng hỏng KHÔNG được kéo sập cả màn.
   const tai = () => {
     setLoi(null)
-    viecHomNay().then(setHomNay).catch((e) => setLoi(e?.message ?? String(e)))
-    nhacViecHomNay().then(setBang).catch((e) => setLoi(e?.message ?? String(e)))
-    // Bổ trợ bù load TRƯỚC rồi mới tới nhận định: nhận định về bù ăn CHÍNH snapshot này,
-    // không query lại — hai nguồn thì hai con số, và người sẽ thấy chúng chỏi nhau ngay
-    // trên cùng một màn hình. Bù hỏng thì KHÔNG kéo sập tab, nhận định vẫn chạy phần còn lại.
+    baoCaoVanHanh().then(setVh).catch(() => setVh(null))
+    mangYeu().then(setYeu).catch(() => setYeu(null))
+    mangTestDauVao().then(setTest).catch(() => setTest(null))
+    anhChupChuoiDuoi().then(setDuoi).catch(() => setDuoi(null))
+    nhacViecHomNay().then(setToi).catch(() => setToi(null))
     anhChupBoTroBu().catch(() => null).then((d) => {
       setBu(d)
-      return nhanDinhHeThong(d).then(setNhanDinh)
-    }).catch((e) => setLoi(e?.message ?? String(e)))
+      return nhanDinhHeThong(d).then(setNhanDinh).catch(() => setNhanDinh(null))
+    })
   }
   useEffect(tai, [])
 
-  const khoa = (v: ViecNhac) => `${v.buoiId}|${v.tab}`
-
-  async function quyetViec(v: ViecNhac, qd: QuyetDinh, gacDen?: string) {
-    try { await ghiQuyetDinh(v.buoiId, v.tab, qd, gacDen); setMoGac(null); tai() }
-    catch (e: any) { setLoi(e?.message ?? String(e)) }
-  }
   async function quyetNhanDinh(n: NhanDinh, qd: QuyetDinh, gacDen?: string) {
     try { await ghiQuyetDinhNhanDinh(n.ma, qd, gacDen); setMoGac(null); tai() }
     catch (e: any) { setLoi(e?.message ?? String(e)) }
   }
 
-  if (loi) return <div className="mx-auto max-w-[900px] rounded-2xl border border-rose-200 bg-rose-50 p-4 text-[13px] text-rose-700">Lỗi: {loi}</div>
-  if (!bang) return <div className="p-8 text-sm text-slate-400">Đang tải…</div>
+  if (loi) return <div className="mx-auto max-w-[1000px] rounded-2xl border border-rose-200 bg-rose-50 p-4 text-[13px] text-rose-700">Lỗi: {loi}</div>
 
   return (
-    <div className="mx-auto max-w-[900px]">
-      <HomNay d={homNay} />
-      <KhoiBu d={bu} onDen={() => setStaffLeaf('botro')} />
+    <div className="mx-auto max-w-[1000px] pb-8">
       <Chat />
 
-      {/* ── TẦNG 2: trợ lý thấy gì ─────────────────────────────────────────── */}
+      {/* ⭐ MỖI MODULE = MỘT KHU, báo SỐ TỔNG QUAN + đúng thứ cần hành động.
+          CEO 14/08: "màn hình trợ lý phải chia khu ra cho dễ view" + "báo số tổng quan chứ
+          liệt kê 100 trường hợp cho chó đọc à". Khối "việc của tôi" đời cũ đổ ra 103 dòng —
+          BỎ HẲN, giờ còn đúng một dòng số + chỉ đường sang màn đã có. Danh sách chi tiết là
+          việc của MÀN CHUYÊN MÔN; trợ lý chỉ nói con số và chỗ đáng nhìn. */}
+      <KhoiVanHanh d={vh} />
+      <KhoiBu d={bu} onDen={() => setStaffLeaf('botro')} />
+      <KhoiDuoi d={duoi} onDen={() => setStaffLeaf('botro_duoi')} />
+      <KhoiYeu d={yeu} />
+      <KhoiTest d={test} onDen={() => setStaffLeaf('tuyensinh')} />
+      <KhoiViecToi d={toi} />
+
       {nhanDinh && nhanDinh.length > 0 && (
         <div className="mb-4">
           <div className="mb-2 text-[14px] font-semibold text-slate-800">🤖 Trợ lý thấy gì</div>
@@ -195,14 +203,13 @@ export default function TroLyTab() {
             {nhanDinh.map((n) => (
               <div key={n.ma} className="rounded-2xl border border-amber-200 bg-amber-50/50 p-4">
                 <div className="text-[14px] font-semibold text-slate-800">{n.tieuDe}</div>
-                {/* Số liệu SỐNG, tính lại mỗi lần mở — nguồn của nhận định (doc §4 "truy nguồn"). */}
                 <div className="mt-1 font-mono text-[12px] text-amber-800">{n.so}</div>
                 <p className="mt-1.5 text-[12.5px] leading-relaxed text-slate-700">{n.dienGiai}</p>
                 <p className="mt-1 text-[12.5px] leading-relaxed text-slate-500">→ {n.goiY}</p>
                 <div className="mt-2.5 flex items-center gap-2">
-                  <BaNut nho dangMoGac={moGac === `nd:${n.ma}`}
+                  <BaNut nho dangMoGac={moGac === ('nd:' + n.ma)}
                     onLam={() => quyetNhanDinh(n, 'lam')} onHuy={() => quyetNhanDinh(n, 'huy')}
-                    onMoGac={() => setMoGac(`nd:${n.ma}`)} onGac={(den) => quyetNhanDinh(n, 'gac', den)} />
+                    onMoGac={() => setMoGac('nd:' + n.ma)} onGac={(den) => quyetNhanDinh(n, 'gac', den)} />
                   {n.quyetDinh === 'lam' && <span className="text-[12px] font-medium text-emerald-700">✓ đã nhận là cần sửa</span>}
                 </div>
               </div>
@@ -210,228 +217,289 @@ export default function TroLyTab() {
           </div>
         </div>
       )}
-
-      {/* ── TẦNG 1: việc hôm nay ───────────────────────────────────────────── */}
-      <div className="mb-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-        <span className="text-[14px] font-semibold text-slate-800">Việc cần quyết — {bang.can.length}</span>
-        <span className="text-[12px] text-slate-500">
-          đã huỷ {bang.soHuy} · đang gác {bang.soGacChuaToi}
-          {bang.gacHomNay > 0 && <span className="ml-1 font-medium text-amber-700">· ⏰ {bang.gacHomNay} vừa quay lại</span>}
-        </span>
-      </div>
-      {/* Cắt mà không nói = người đọc hiểu thành toàn bộ. Luôn khai phạm vi. */}
-      <p className="mb-2.5 text-[12px] leading-relaxed text-slate-500">{bang.phamVi}</p>
-
-      {bang.can.length === 0 ? (
-        <div className="rounded-2xl border border-slate-200 bg-white p-8 text-center text-[13px] text-slate-500">
-          Hôm nay không có việc nào cần quyết.
-        </div>
-      ) : (
-        <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-          {bang.can.map((v) => (
-            <div key={khoa(v)} className="flex flex-wrap items-center gap-x-3 gap-y-2 border-b border-slate-100 px-4 py-2.5 last:border-0">
-              <span className="w-[62px] shrink-0 text-[13px] font-semibold text-slate-800">{v.lop}</span>
-              <span className="w-[52px] shrink-0 text-[12px] text-slate-500">{v.ngay.slice(5)}</span>
-              <span className={`w-[54px] shrink-0 text-right text-[12px] font-medium ${v.quaHan ? 'text-rose-600' : 'text-slate-600'}`}>
-                {v.tuoiNgay}n{v.quaHan ? ' ⚠' : ''}
-              </span>
-              <span className="min-w-[130px] flex-1 text-[13px] text-slate-700">{v.nhan}</span>
-              <BaNut nho dangMoGac={moGac === khoa(v)}
-                onLam={() => quyetViec(v, 'lam')} onHuy={() => quyetViec(v, 'huy')}
-                onMoGac={() => setMoGac(khoa(v))} onGac={(den) => quyetViec(v, 'gac', den)} />
-            </div>
-          ))}
-        </div>
-      )}
     </div>
   )
 }
 
-// ── HÔM NAY — BA RỔ + rổ "không có hạn" (CEO chốt 12/08 lượt 2) ─────────────
-//   *"Phải báo việc đang NỢ, việc đang CẦN HOÀN THÀNH, và việc DỰ KIẾN sẽ phải làm trong
-//    hôm nay mới có cái nhìn đầy đủ chứ."*
-//   *"Bản chất của việc hàng ngày chính là 'Việc của tôi', nhưng đầy đủ hơn và có nhận định.
-//    Thay vì t phải đi click khắp nơi thì t chỉ còn click 1 chỗ."*
-//
-// Bản trước rút nợ cũ thành MỘT CON SỐ (hiểu đúng ý "đừng trộn lẫn" nhưng làm sai cách: giấu
-// đi). Nay tách rổ — vẫn thấy đủ, vẫn không lẫn. Mỗi dòng ghi rõ NHÓM để biết việc đến từ đâu,
-// vì giờ bảng này gom 8 nguồn chứ không riêng việc buổi.
-function Dong({ v }: { v: ViecGom }) {
-  return (
-    <div className="flex flex-wrap items-baseline gap-x-2.5 gap-y-0.5 py-0.5 text-[13px]">
-      {/* Mốc bên trái: giờ hạn nếu có, không thì số ngày. Cột cố định để mắt lướt dọc được. */}
-      <span className={`w-[52px] shrink-0 text-right text-[12px] font-medium tabular-nums ${v.quaGio || (v.coHan && v.soNgay > 0) ? 'text-rose-600' : 'text-slate-500'}`}>
-        {v.hanLuc ?? (v.soNgay > 0 ? `${v.soNgay} ngày` : '—')}
-      </span>
-      <span className="shrink-0 rounded bg-slate-100 px-1.5 py-px text-[11px] font-medium text-slate-500">{v.nhomTen}</span>
-      <span className="font-medium text-slate-800">{v.nhan}</span>
-      <span className="text-[12px] text-slate-500">{v.boiCanh}</span>
-      {v.dangDo && <span className="rounded-full bg-sky-50 px-1.5 py-px text-[11px] font-medium text-sky-700">đang dở</span>}
-      {v.quaGio && v.soNgay === 0 && <span className="text-[11.5px] font-medium text-rose-600">quá giờ</span>}
-    </div>
-  )
-}
-
-function Ro({ ten, mo_ta, ds, rong, mau }: {
-  ten: string; mo_ta?: string; ds: ViecGom[]; rong: string; mau: string
+// ── Khung chung cho mọi module: tên khu + MỘT dòng số tổng quan + phần đáng nhìn ──
+function Khu({ ten, tomTat, onDen, tenNut, children }: {
+  ten: string; tomTat: string; onDen?: () => void; tenNut?: string; children?: any
 }) {
   return (
-    <div className="mt-3">
-      <div className={`text-[13px] font-semibold ${mau}`}>{ten} — {ds.length}</div>
-      {mo_ta && <p className="text-[11.5px] leading-relaxed text-slate-400">{mo_ta}</p>}
-      {/* §6 "được phép báo hôm nay không có gì" — im lặng đúng cũng là một câu trả lời. */}
-      {ds.length === 0 ? <div className="mt-0.5 text-[13px] text-slate-400">{rong}</div>
-        : <div className="mt-1">{ds.map((v) => <Dong key={v.khoa} v={v} />)}</div>}
-    </div>
-  )
-}
-
-function HomNay({ d }: { d: BangHomNay | null }) {
-  const [xemNguon, setXemNguon] = useState(false)
-  if (!d) return null
-  const tong = d.no.length + d.hanHomNay.length + d.duKien.length + d.khongHan.length
-  return (
-    <div className="mb-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+    <div className="mb-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
       <div className="flex flex-wrap items-baseline gap-x-3">
-        <span className="text-[15px] font-semibold text-slate-800">{d.thu}, {d.ngay.slice(8)}/{d.ngay.slice(5, 7)}</span>
-        <span className="text-[12.5px] text-slate-500">{tong} việc đang thuộc về bạn{d.soDangDo > 0 && <> · {d.soDangDo} đang dở</>}</span>
+        <span className="text-[15px] font-semibold text-slate-800">{ten}</span>
+        {onDen && <button onClick={onDen} className="text-[12.5px] font-medium text-indigo-600 hover:underline">{tenNut ?? 'mở màn ›'}</button>}
       </div>
-
-      {/* Thứ tự cố ý: NỢ trước — món đắt nhất là món để lâu, không phải món đến hạn hôm nay. */}
-      <Ro ten="Đang nợ" mau="text-rose-700" ds={d.no} rong="Không nợ việc nào. "
-        mo_ta="Hạn đã qua mà chưa đóng. Sắp theo trễ nhiều nhất trước." />
-      <Ro ten="Phải hoàn thành hôm nay" mau="text-slate-700" ds={d.hanHomNay} rong="Không có việc nào đến hạn hôm nay."
-        mo_ta="Hạn rơi đúng hôm nay." />
-      <Ro ten="Dự kiến sẽ phải làm hôm nay" mau="text-slate-700" ds={d.duKien} rong="Hôm nay không có việc nào sắp phát sinh."
-        mo_ta="Việc phát sinh trong hôm nay, hạn chưa tới — gồm cả buổi hôm nay CHƯA MỞ (chưa có task nào tồn tại để mà nhắc)." />
-      <Ro ten="Không có hạn — vẫn đang chờ bạn" mau="text-amber-700" ds={d.khongHan} rong="Không có việc nào kiểu này."
-        mo_ta="Hệ không đặt hạn cho mấy việc này nên chúng không tự nổi lên chỗ nào. Sắp theo nằm lâu nhất trước." />
-
-      <div className="mt-3 border-t border-slate-100 pt-2 text-[11.5px] leading-relaxed text-slate-500">
-        {d.phamVi}{' '}
-        <button onClick={() => setXemNguon((x) => !x)} className="font-medium text-indigo-600 hover:underline">
-          {xemNguon ? 'ẩn nguồn' : 'gom từ đâu?'}
-        </button>
-        {xemNguon && (
-          <ul className="mt-1.5 list-disc space-y-0.5 pl-4 text-slate-500">
-            {d.nguonDaQuet.map((n, i) => <li key={i}>{n}</li>)}
-            {/* Khai giới hạn ngay cạnh danh sách nguồn — người đọc thấy "đủ 8 nguồn" dễ tưởng
-                là đủ mọi thứ, mà mấy chỗ hệ mù thì vẫn mù. */}
-            {d.khongBiet.map((k, i) => <li key={`kb${i}`} className="text-slate-400">Chưa biết: {k}</li>)}
-          </ul>
-        )}
-      </div>
+      <div className="mt-1 text-[13px] leading-relaxed text-slate-600">{tomTat}</div>
+      {children}
     </div>
   )
 }
 
-// ── BỔ TRỢ BÙ — 5 thứ CEO cần nhìn mỗi ngày (chốt 12/08) ────────────────────
-// Story cụ thể đầu tiên được khai đầy đủ vào trợ lý. Mọi số do `anhChupBoTroBu()` tính,
-// tất định, đối chiếu được bằng `scripts/_diag_botro_bu.mjs`.
-//
-// Mục ⑤ cố ý CHỈ hiện số + nút nhảy màn (CEO: "cái này nhiều nên ko cần detail, cần số
-// lượng và deeplink để đến chỗ xếp bù") — 141 dòng đổ vào đây là dìm chết 4 mục kia.
-function KhoiBu({ d, onDen }: { d: AnhChupBu | null; onDen: () => void }) {
-  const [moNguon, setMoNguon] = useState(false)
+// ── BỔ TRỢ ĐUỔI ────────────────────────────────────────────────────────────
+// Chỉ nêu ca VƯỢT ngưỡng rút từ chính cohort đã hoàn thành. Ca nằm trong p50 là nhịp bình
+// thường — lôi ra là nhiễu (đo lúc dựng: 4/8 ca đáng nhắc, 4 ca kia hoàn toàn bình thường).
+function KhoiDuoi({ d, onDen }: { d: AnhChupDuoi | null; onDen: () => void }) {
   if (!d) return null
-  const { canXep } = d
+  const dangLo = d.ca.filter((c) => c.muc !== 'binh_thuong')
+  const tt = d.tongDangMo + ' đợt đang mở · ' + dangLo.length + ' đợt chậm hơn bình thường'
+    + (d.nguong.soCaMau ? ' (ngưỡng rút từ ' + d.nguong.soCaMau + ' đợt đã hoàn thành: p75 ' + d.nguong.p75 + ' ngày, lâu nhất ' + d.nguong.toiDa + ' ngày)' : '')
+  return (
+    <Khu ten="Bổ trợ đuổi" onDen={onDen} tomTat={tt}>
+      {dangLo.length > 0 && (
+        <div className="mt-1.5 space-y-0.5">
+          {dangLo.slice(0, 6).map((c) => (
+            <div key={c.caseId} className="flex flex-wrap items-baseline gap-x-2.5 text-[13px]">
+              <span className="w-[52px] shrink-0 text-right text-[12px] font-medium tabular-nums text-rose-600">{c.tuoiNgay} ngày</span>
+              <span className="font-medium text-slate-800">{c.ho_ten}</span>
+              <span className="text-[12px] text-slate-500">{c.lop} · {c.choKhau}</span>
+            </div>
+          ))}
+          {dangLo.length > 6 && <div className="text-[12px] text-slate-400">…và {dangLo.length - 6} đợt nữa — xem ở màn Bổ trợ.</div>}
+        </div>
+      )}
+    </Khu>
+  )
+}
+
+// ── BỔ TRỢ YẾU ─────────────────────────────────────────────────────────────
+function KhoiYeu({ d }: { d: MangYeu | null }) {
+  if (!d) return null
+  return (
+    <Khu ten="Bổ trợ yếu" tomTat={d.thongDiep}>
+      {d.soCanhBao > 0 && (
+        <div className="mt-1 text-[12.5px] text-slate-500">
+          {d.soHS} học sinh bị gắn cờ
+          {d.moiNhat && <> · cờ mới nhất {d.moiNhat.slice(8)}/{d.moiNhat.slice(5, 7)}</>}
+          {d.topHS.length > 0 && <> · nhiều cờ nhất: {d.topHS.map((h) => h.ho_ten + ' (' + h.soLan + ')').join(', ')}</>}
+        </div>
+      )}
+    </Khu>
+  )
+}
+
+// ── KIỂM TRA ĐẦU VÀO ───────────────────────────────────────────────────────
+function KhoiTest({ d, onDen }: { d: MangTest | null; onDen: () => void }) {
+  if (!d) return null
+  const tt = d.tong + ' ca · đã test ' + d.daTest + ' · đã scan ' + d.daScan
+    + ' · đã chấm ' + d.daCham + ' · đã trả ' + d.daTra + '. ' + d.thongDiep
+  return (
+    <Khu ten="Kiểm tra đầu vào" onDen={onDen} tenNut="mở màn Tuyển sinh ›" tomTat={tt}>
+      {d.ket.length > 0 && (
+        <div className="mt-1.5 space-y-0.5">
+          {d.ket.slice(0, 6).map((k, i) => (
+            <div key={i} className="flex flex-wrap items-baseline gap-x-2.5 text-[13px]">
+              <span className="w-[52px] shrink-0 text-right text-[12px] font-medium tabular-nums text-rose-600">{k.tuoiNgay} ngày</span>
+              <span className="font-medium text-slate-800">{k.ho_ten}</span>
+              <span className="text-[12px] text-slate-500">{k.khoi ? 'khối ' + k.khoi + ' · ' : ''}{k.mon} · {k.khau}</span>
+            </div>
+          ))}
+        </div>
+      )}
+    </Khu>
+  )
+}
+
+// ── VIỆC CỦA RIÊNG BẠN — CHỈ SỐ, KHÔNG liệt kê ─────────────────────────────
+// Đây đúng là chỗ bản cũ đổ ra 103 dòng. Màn "Việc của tôi" đã có sẵn để xem chi tiết;
+// nhiệm vụ của trợ lý là nói CON SỐ rồi chỉ đường, không chép lại cả danh sách.
+function KhoiViecToi({ d }: { d: BangNhac | null }) {
+  if (!d) return null
+  const quaHan = d.can.filter((v) => v.quaHan).length
+  const tt = d.can.length + ' việc chưa xong'
+    + (quaHan ? ' · ' + quaHan + ' đã quá hạn' : '')
+    + (d.soHuy ? ' · ' + d.soHuy + ' đã bỏ' : '')
+    + (d.soGacChuaToi ? ' · ' + d.soGacChuaToi + ' đang gác' : '')
+    + '. Danh sách chi tiết ở tab Vận hành / Phát triển.'
+  return <Khu ten="Việc của riêng bạn" tomTat={tt} />
+}
+
+// ── BỔ TRỢ BÙ ──────────────────────────────────────────────────────────────
+// 5 thứ Lộc cần mỗi ngày (chốt 12/08). Bản đầu liệt kê hết mọi mục ⇒ CEO 14/08:
+// *"báo số tổng quan chứ liệt kê 100 trường hợp cho chó đọc à"*. Nay: MỘT dòng số, rồi
+// chỉ bày ra thứ CẦN TAY NGƯỜI hôm nay, cắt ngắn có nói rõ còn bao nhiêu.
+const CAP = 5
+
+function DongCa({ trai, chinh, phu, mauTrai }: { trai: string; chinh: string; phu: string; mauTrai?: string }) {
+  return (
+    <div className="flex flex-wrap items-baseline gap-x-2.5 text-[13px]">
+      <span className={`w-[62px] shrink-0 text-right text-[12px] font-medium tabular-nums ${mauTrai ?? 'text-slate-500'}`}>{trai}</span>
+      <span className="font-medium text-slate-800">{chinh}</span>
+      <span className="text-[12px] text-slate-500">{phu}</span>
+    </div>
+  )
+}
+
+function MucNho({ ten, so, children }: { ten: string; so: number; children?: any }) {
+  if (!so) return null
+  return (
+    <div className="mt-2">
+      <div className="text-[12.5px] font-semibold text-slate-700">{ten} — {so}</div>
+      <div className="mt-0.5 space-y-0.5">{children}</div>
+    </div>
+  )
+}
+
+function KhoiBu({ d, onDen }: { d: AnhChupBu | null; onDen: () => void }) {
+  if (!d) return null
+  const homNay = d.sapToi.filter((b) => b.conMayNgay === 0)
+  const tt = `${d.canXep.tong} lượt cần xếp (${d.canXep.quaHan} quá hạn 48h, ${d.canXep.tonDongCu} tồn đọng cũ)`
+    + ` · ${d.phaiXepLai.length} ca phải xếp lại · ${d.sapToi.length} buổi sắp tới`
+    + (homNay.length ? ` (${homNay.length} hôm nay)` : '')
+    + ` · ${d.chuaFillDu.length} buổi học xong chưa fill đủ`
+  return (
+    <Khu ten="Bổ trợ bù" onDen={onDen} tenNut="đi xếp bù ›" tomTat={tt}>
+      {/* Buổi bù HÔM NAY — thứ Lộc cần "kiểm tra xác nhận" trong ngày */}
+      <MucNho ten="Buổi bù hôm nay" so={homNay.length}>
+        {homNay.map((b) => (
+          <DongCa key={b.buoiId} trai={b.gio ?? '—'} chinh={b.hs.map((h) => h.ho_ten).join(', ') || 'chưa có HS'}
+            phu={(b.phong ? b.phong + ' · ' : '') + b.hs.map((h) => h.bu_cho).filter(Boolean).join(' · ')} />
+        ))}
+      </MucNho>
+
+      {/* Đã xếp mà trượt — chỗ trước đây rơi im lặng, phải nêu tên */}
+      <MucNho ten="Đã xếp mà trượt, phải xếp lại" so={d.phaiXepLai.length}>
+        {d.phaiXepLai.slice(0, CAP).map((l) => (
+          <DongCa key={l.id} trai={`${l.tuoiNgay} ngày`} mauTrai="text-rose-600" chinh={l.ho_ten}
+            phu={`${l.lop} · ${l.lyDoQuayLai === 'vang_buoi_bu' ? 'vắng buổi bù' : 'buổi bù bị huỷ'}`} />
+        ))}
+        {d.phaiXepLai.length > CAP && <div className="text-[12px] text-slate-400">…và {d.phaiXepLai.length - CAP} ca nữa.</div>}
+      </MucNho>
+
+      <MucNho ten="Học xong nhưng hồ sơ còn khuyết" so={d.chuaFillDu.length}>
+        {d.chuaFillDu.slice(0, CAP).map((b) => (
+          <DongCa key={b.buoiId} trai={`${b.tuoiNgay} ngày`} mauTrai="text-rose-600"
+            chinh={`${b.ngay.slice(8)}/${b.ngay.slice(5, 7)}`} phu={b.thieu.join(' · ')} />
+        ))}
+        {d.chuaFillDu.length > CAP && <div className="text-[12px] text-slate-400">…và {d.chuaFillDu.length - CAP} buổi nữa.</div>}
+      </MucNho>
+
+      <MucNho ten="Quá hạn xếp bù (48h)" so={d.quaHan.length}>
+        {d.quaHan.slice(0, CAP).map((l) => (
+          <DongCa key={l.id} trai={`${l.tuoiNgay} ngày`} mauTrai="text-rose-600" chinh={l.ho_ten} phu={l.lop} />
+        ))}
+        {d.quaHan.length > CAP && <div className="text-[12px] text-slate-400">…và {d.quaHan.length - CAP} lượt nữa.</div>}
+      </MucNho>
+
+      {/* Sự thật lịch sử, để tra chứ không nhắc hằng ngày (xem lib/botro.ts) */}
+      {d.dongKhong.coDe > 0 && d.dongKhong.ganDay > 0 && (
+        <div className="mt-2 text-[12px] text-rose-700">
+          ⚠ {d.dongKhong.ganDay} buổi bù trong 14 ngày qua bị chốt xong mà không chấm dòng nào.
+        </div>
+      )}
+    </Khu>
+  )
+}
+
+// ── MẢNG "VẬN HÀNH BUỔI HỌC" — bộ đầu tiên được khai đầy đủ (spec §4.5) ─────
+// CEO hình dung ra thành CÂU chứ không phải bảng: *"Ngày hôm qua các lớp XYZ đã hoàn thành
+// điền dữ liệu, lớp ABC còn thiếu ET…"* → đọc xong là biết đi nhắc ai. Nên khối này viết
+// thành câu tiếng Việt, chỉ rơi xuống dạng danh sách khi số lớp nhiều.
+//
+// ⚠ Ba khâu BA NHỊP KHÁC NHAU, cố ý không gộp một chỗ (spec §2.1):
+//   ET + đánh giá = của buổi hôm qua · BTVN = đến hạn theo LỊCH HÔM NAY (chấm ở buổi kế).
+const nốiLớp = (ds: string[]) => ds.join(', ')
+
+function DongCau({ nhan, lops, mau }: { nhan: string; lops: string[]; mau: string }) {
+  if (!lops.length) return null
+  return (
+    <div className="mt-1 text-[13px] leading-relaxed">
+      <span className={`font-semibold ${mau}`}>{nhan}</span>{' '}
+      <span className="text-slate-700">{nốiLớp(lops)}</span>
+      <span className="text-[12px] text-slate-400"> ({lops.length})</span>
+    </div>
+  )
+}
+
+function KhoiVanHanh({ d }: { d: BaoCaoVanHanh | null }) {
+  const [moTuan, setMoTuan] = useState(false)
+  if (!d) return null
+  const q = d.buoiHomQua
+  const du = q.filter((b) => b.du).map((b) => b.lop)
+  const thieuET = q.filter((b) => b.lopChayET && b.coDeET && !b.etXong).map((b) => b.lop)
+  const thieuDG = q.filter((b) => !b.dgXong).map((b) => b.lop)
+  // Lớp không có đề ET: nêu RIÊNG, không trộn vào "thiếu" — chúng không nợ gì cả. Nêu ra để
+  // người đọc không tưởng hệ bỏ sót (§ "cắt mà không nói = đọc thành toàn bộ").
+  const thieuDe = q.filter((b) => b.thieuDe).map((b) => b.lop)
+  const khongChayET = q.filter((b) => !b.lopChayET).map((b) => b.lop)
+  const btvnThieu = d.btvn.filter((b) => !b.daGhiNhan)
+  const btvnXong = d.btvn.filter((b) => b.daGhiNhan)
+
   return (
     <div className="mb-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-      <div className="mb-1 flex flex-wrap items-baseline gap-x-3">
-        <span className="text-[15px] font-semibold text-slate-800">Bổ trợ bù</span>
-        <button onClick={onDen} className="text-[12.5px] font-medium text-indigo-600 hover:underline">mở màn Bổ trợ ›</button>
+      <div className="text-[15px] font-semibold text-slate-800">Vận hành buổi học</div>
+
+      {/* ① HÔM QUA — ET + đánh giá */}
+      <div className="mt-2.5 text-[13px] font-semibold text-slate-700">
+        Hôm qua {d.homQua.slice(8)}/{d.homQua.slice(5, 7)} — {q.length} buổi
       </div>
-
-      {/* ① đã học xong mà hồ sơ còn khuyết */}
-      <div className="mt-3 text-[13px] font-semibold text-slate-700">① Đã học bù xong mà chưa fill đủ — {d.chuaFillDu.length}</div>
-      {d.chuaFillDu.length === 0 ? <div className="mt-0.5 text-[13px] text-slate-400">Không buổi nào thiếu hồ sơ.</div> : (
-        <div className="mt-1 space-y-1">
-          {d.chuaFillDu.map((b) => (
-            <div key={b.buoiId} className="flex flex-wrap items-baseline gap-x-2.5 text-[13px]">
-              <span className="w-[52px] shrink-0 text-right text-[12px] font-medium tabular-nums text-rose-600">{b.tuoiNgay} ngày</span>
-              <span className="font-medium text-slate-800">{b.ngay.slice(8)}/{b.ngay.slice(5, 7)}{b.gio ? ` · ${b.gio}` : ''}</span>
-              <span className="text-[12px] text-slate-500">{b.hs.join(', ')}</span>
-              <span className="text-[12px] text-amber-700">{b.thieu.join(' · ')}</span>
+      {q.length === 0 ? <div className="mt-0.5 text-[13px] text-slate-400">Không có buổi nào.</div> : (
+        <>
+          <DongCau nhan="Đã đủ dữ liệu:" lops={du} mau="text-emerald-700" />
+          <DongCau nhan="Còn thiếu ET:" lops={thieuET} mau="text-rose-700" />
+          <DongCau nhan="Chưa điền đánh giá:" lops={thieuDG} mau="text-rose-700" />
+          {du.length === q.length && <div className="mt-1 text-[13px] text-emerald-700">Tất cả các lớp đã hoàn thành.</div>}
+          {/* ⭐ TÁCH HAI CA TRÔNG GIỐNG NHAU: lớp KHÔNG chạy ET (bỏ qua, không phải việc) vs
+              lớp CÓ chạy mà buổi này thiếu đề (đáng hỏi — nhiều khả năng quên gán). Bản trước
+              gộp cả hai vào một câu "không có đề nên không đòi" ⇒ nuốt mất tín hiệu thứ hai. */}
+          <DongCau nhan="Lớp chạy ET nhưng buổi này CHƯA có đề — kiểm tra xem có quên gán không:"
+            lops={thieuDe} mau="text-amber-700" />
+          {khongChayET.length > 0 && (
+            <div className="mt-1 text-[11.5px] leading-relaxed text-slate-400">
+              Bỏ qua ET ở {nốiLớp(khongChayET)} — mấy lớp này thực tế không chạy ET (suy từ 60 ngày gần nhất).
             </div>
-          ))}
-        </div>
+          )}
+        </>
       )}
 
-      {/* ② sắp tới — chỉ để nhìn, hệ chưa có chỗ ghi "đã xác nhận" (CEO chốt không thêm cột) */}
-      <div className="mt-3 text-[13px] font-semibold text-slate-700">② Sắp đến lịch bù — {d.sapToi.length}</div>
-      {d.sapToi.length === 0 ? <div className="mt-0.5 text-[13px] text-slate-400">Không có buổi bù nào sắp tới.</div> : (
-        <div className="mt-1 space-y-1">
-          {d.sapToi.map((b) => (
-            <div key={b.buoiId} className="flex flex-wrap items-baseline gap-x-2.5 text-[13px]">
-              <span className="w-[52px] shrink-0 text-right text-[12px] font-medium text-slate-500">
-                {b.conMayNgay === 0 ? 'hôm nay' : `+${b.conMayNgay} ngày`}
-              </span>
-              <span className="font-medium text-slate-800">{b.ngay.slice(8)}/{b.ngay.slice(5, 7)}{b.gio ? ` · ${b.gio}` : ''}{b.phong ? ` · ${b.phong}` : ''}</span>
-              <span className="text-[12px] text-slate-600">
-                {b.hs.map((h) => `${h.ho_ten}${h.bu_cho ? ` (bù ${h.bu_cho})` : ''}`).join(' · ') || 'chưa có HS nào'}
-              </span>
+      {/* ② BTVN — đến hạn theo LỊCH HÔM NAY, không phải "hôm qua chưa có" */}
+      <div className="mt-3 text-[13px] font-semibold text-slate-700">BTVN đến hạn hôm nay — {d.btvn.length} lớp</div>
+      <p className="text-[11.5px] leading-relaxed text-slate-400">
+        Lớp có ca hôm nay ⇒ BTVN của buổi trước phải được chấm trong buổi này.
+      </p>
+      {d.btvn.length === 0 ? <div className="mt-0.5 text-[13px] text-slate-400">Hôm nay không lớp nào tới hạn BTVN.</div> : (
+        <>
+          {btvnThieu.length > 0 && (
+            <div className="mt-1 text-[13px] leading-relaxed">
+              <span className="font-semibold text-rose-700">Chưa ghi nhận:</span>{' '}
+              <span className="text-slate-700">{btvnThieu.map((b) => `${b.lop} (buổi ${b.buoiTruoc.slice(8)}/${b.buoiTruoc.slice(5, 7)})`).join(', ')}</span>
             </div>
-          ))}
-        </div>
+          )}
+          <DongCau nhan="Đã ghi nhận:" lops={btvnXong.map((b) => b.lop)} mau="text-emerald-700" />
+        </>
       )}
 
-      {/* ③ trượt buổi bù — đây là chỗ trước đây rơi im lặng */}
-      <div className="mt-3 text-[13px] font-semibold text-rose-700">③ Đã xếp mà trượt, phải xếp lại — {d.phaiXepLai.length}</div>
-      {d.phaiXepLai.length === 0 ? <div className="mt-0.5 text-[13px] text-slate-400">Không có ca nào.</div> : (
-        <div className="mt-1 space-y-1">
-          {d.phaiXepLai.map((l) => (
-            <div key={l.id} className="flex flex-wrap items-baseline gap-x-2.5 text-[13px]">
-              <span className="w-[52px] shrink-0 text-right text-[12px] font-medium tabular-nums text-rose-600">{l.tuoiNgay} ngày</span>
-              <span className="font-medium text-slate-800">{l.ho_ten}</span>
-              <span className="text-[12px] text-slate-500">{l.lop} · nghỉ {l.ngay.slice(8)}/{l.ngay.slice(5, 7)}</span>
-              <span className="rounded-full bg-rose-50 px-1.5 py-px text-[11px] font-medium text-rose-700">
-                {l.lyDoQuayLai === 'vang_buoi_bu' ? 'vắng buổi bù' : 'buổi bù bị huỷ'}
-              </span>
-              {l.soLanDaXep > 1 && <span className="text-[11.5px] font-medium text-rose-600">đã xếp {l.soLanDaXep} lần</span>}
-            </div>
-          ))}
-        </div>
-      )}
-
-      {/* ④ quá hạn 48h — chỉ tính từ đường ngày, xem ghi chú nguồn ở dưới */}
-      <div className="mt-3 text-[13px] font-semibold text-slate-700">④ Quá hạn xếp bù (48h) — {d.quaHan.length}</div>
-      {d.quaHan.length === 0 ? <div className="mt-0.5 text-[13px] text-slate-400">Chưa lượt nào quá hạn.</div> : (
-        <div className="mt-1 space-y-1">
-          {d.quaHan.map((l) => (
-            <div key={l.id} className="flex flex-wrap items-baseline gap-x-2.5 text-[13px]">
-              <span className="w-[52px] shrink-0 text-right text-[12px] font-medium tabular-nums text-rose-600">{l.tuoiNgay} ngày</span>
-              <span className="font-medium text-slate-800">{l.ho_ten}</span>
-              <span className="text-[12px] text-slate-500">{l.lop} · nghỉ {l.ngay.slice(8)}/{l.ngay.slice(5, 7)}</span>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {/* ⑤ số lượng + deeplink, KHÔNG liệt kê */}
-      <div className="mt-3 rounded-xl bg-slate-50 px-3 py-2">
-        <div className="flex flex-wrap items-baseline gap-x-2.5">
-          <span className="text-[13px] font-semibold text-slate-700">⑤ Đang cần xếp bù</span>
-          <span className="text-[20px] font-semibold tabular-nums text-indigo-600">{canXep.tong}</span>
-          <button onClick={onDen} className="text-[12.5px] font-medium text-indigo-600 hover:underline">đi xếp bù ›</button>
-        </div>
-        <div className="mt-0.5 text-[12px] text-slate-500">
-          {canXep.trongHan} còn trong hạn 48h · {canXep.quaHan} quá hạn · <b>{canXep.tonDongCu}</b> tồn đọng cũ (nghỉ trước {NGAY_AP_HAN_48H}, chưa chịu luật)
-          {canXep.cuNhat && <> · cũ nhất {canXep.cuNhat.slice(8)}/{canXep.cuNhat.slice(5, 7)}</>}
-        </div>
-      </div>
-
-      <div className="mt-2.5 border-t border-slate-100 pt-2 text-[11.5px] leading-relaxed text-slate-500">
-        {d.phamVi}{' '}
-        <button onClick={() => setMoNguon((x) => !x)} className="font-medium text-indigo-600 hover:underline">
-          {moNguon ? 'ẩn' : 'hệ chưa biết gì?'}
-        </button>
-        {moNguon && (
-          <ul className="mt-1.5 list-disc space-y-0.5 pl-4 text-slate-400">
-            {d.khongBiet.map((k, i) => <li key={i}>{k}</li>)}
-            {d.buoiRong > 0 && <li>{d.buoiRong} buổi bù không có HS nào — nhiều khả năng là rác, đã bỏ khỏi mục ①.</li>}
-          </ul>
+      {/* ③ TỪ ĐẦU TUẦN — nợ tích luỹ */}
+      <div className="mt-3 flex flex-wrap items-baseline gap-x-2">
+        <span className="text-[13px] font-semibold text-slate-700">Từ đầu tuần ({d.tuNgay.slice(8)}/{d.tuNgay.slice(5, 7)}) — {d.noTuan.length} lớp còn nợ</span>
+        {d.noTuan.length > 0 && (
+          <button onClick={() => setMoTuan((x) => !x)} className="text-[12px] font-medium text-indigo-600 hover:underline">
+            {moTuan ? 'thu gọn' : 'xem chi tiết'}
+          </button>
         )}
       </div>
+      {d.noTuan.length === 0 ? <div className="mt-0.5 text-[13px] text-slate-400">Không lớp nào nợ dữ liệu trong tuần.</div> : moTuan ? (
+        <div className="mt-1 space-y-0.5">
+          {d.noTuan.map((o) => (
+            <div key={o.lop} className="flex flex-wrap items-baseline gap-x-2.5 text-[13px]">
+              <span className="w-[56px] shrink-0 font-semibold text-slate-800">{o.lop}</span>
+              {o.noET > 0 && <span className="text-rose-700">ET {o.noET}</span>}
+              {o.noBTVN > 0 && <span className="text-rose-700">BTVN {o.noBTVN}</span>}
+              {o.noDanhGia > 0 && <span className="text-amber-700">đánh giá {o.noDanhGia}</span>}
+              <span className="text-[12px] text-slate-400">/ {o.soBuoi} buổi</span>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="mt-1 text-[13px] leading-relaxed">
+          <DongCau nhan="Nợ ET:" lops={d.noTuan.filter((o) => o.noET).map((o) => o.lop)} mau="text-rose-700" />
+          <DongCau nhan="Nợ BTVN:" lops={d.noTuan.filter((o) => o.noBTVN).map((o) => o.lop)} mau="text-rose-700" />
+          <DongCau nhan="Nợ đánh giá:" lops={d.noTuan.filter((o) => o.noDanhGia).map((o) => o.lop)} mau="text-amber-700" />
+        </div>
+      )}
+
+      <div className="mt-2.5 border-t border-slate-100 pt-2 text-[11.5px] leading-relaxed text-slate-500">{d.phamVi}</div>
     </div>
   )
 }
