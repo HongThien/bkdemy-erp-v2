@@ -18,7 +18,7 @@ export type TestLoai = 'et' | 'btvn' | 'giao_trinh' | 'de_thi'
 export type BaiTest = {
   id: string; nguon_tai_lieu_id: string | null; lop_id: string; ngay: string
   loai: TestLoai; mon: string; trang_thai: 'mo' | 'dong'; so_cau: number
-  deadline: string | null; khoa_reveal: boolean; created_at: string
+  deadline: string | null; khoa_reveal: boolean; co_nhieu_ma_de: boolean; created_at: string
 }
 export type BaiTestCau = {
   id: string; bai_test_id: string; thu_tu: number; bien_the: number; ma_cau: string | null; loai_cau: string
@@ -116,11 +116,19 @@ export async function phatHanhTest(taiLieuId: string, override?: { lopId: string
     if (row) rows.push(row)
   }
   if (!rows.length) throw new Error(`Không có câu hợp lệ để phát hành${skipped.length ? ` (${skipped.length} câu bị bỏ qua)` : ''}.`)
+  const soCauMotDe = rows.length // số câu MỖI HS thấy — chốt TRƯỚC khi cộng thêm câu mã 2/3 (rows.length
+  // sau đó phình ra gấp ~3 để LƯU đủ cả 3 mã đề, không phải số câu 1 HS làm).
 
   // ⭐ 3 MÃ ĐỀ (chỉ ET — hsMaDe/etMaDe là cơ chế riêng của ETScreen/made.ts, BTVN/giáo trình/đề thi
   // trường-sở không dùng). GV đã "Sinh mã đề" ĐỦ (maDeReady) → snapshot LUÔN cả câu mã 2/3, cùng
   // `thu_tu` với câu gốc tương ứng (khác `bien_the`). Chưa sinh/chưa đủ → CHỈ 1 biến thể như cũ —
   // không suy đoán câu thay thế (§1.5 "thà bỏ trống"), tự khớp `bai_test_cau_bien_the` default 1.
+  // true khi test này THẬT SỰ có ≥2 mã đề khác nội dung (không chỉ "GV đã bấm sinh" — phải có ÍT NHẤT
+  // 1 câu biến thể snapshot thành công). App đọc cờ này để QUYẾT ĐỊNH CÓ XÁO THỨ TỰ CÂU HAY KHÔNG
+  // (Thùy 18/08: "có nhiều mã đề thì không cần đảo thứ tự câu nữa" — mã đề đã tự phân biệt HS,
+  // xáo thêm thứ tự là thừa). Ghi vào `bai_test` NGAY LÚC PHÁT HÀNH — snapshot 1 chiều, HS mở bài
+  // sau không tự suy lại (GV sửa mã đề lúc nào cũng không ảnh hưởng bài đã phát).
+  let nhieuMaDe = false
   if (map.testLoai === 'et') {
     const ch = doc.cau_hinh ?? {}
     const base: BaseItem[] = caus.map((c) => ({ maDang: c.dang_chinh, maCau: c.ma_cau }))
@@ -142,7 +150,7 @@ export async function phatHanhTest(taiLieuId: string, override?: { lopId: string
           if (!cauV) { skipped.push({ ma_cau: maCauV ?? `(vị trí ${tt})`, warn: `thiếu câu mã đề ${v + 2}` }); continue }
           const { row, warn } = snap(cauV, tt, v + 2)
           if (warn) skipped.push(warn)
-          if (row) rows.push(row)
+          if (row) { rows.push(row); nhieuMaDe = true }
         }
       }
     }
@@ -156,8 +164,8 @@ export async function phatHanhTest(taiLieuId: string, override?: { lopId: string
   const deadline = (hanNop as string | null) ?? null
 
   const { data: bt, error: e1 } = await supabase.from('bai_test').insert({
-    nguon_tai_lieu_id: doc.id, lop_id: lopId, ngay, loai: map.testLoai, mon: doc.mon, so_cau: rows.length,
-    deadline,
+    nguon_tai_lieu_id: doc.id, lop_id: lopId, ngay, loai: map.testLoai, mon: doc.mon, so_cau: soCauMotDe,
+    deadline, co_nhieu_ma_de: nhieuMaDe,
   }).select().single()
   if (e1) throw e1
   const baiTest = bt as BaiTest
