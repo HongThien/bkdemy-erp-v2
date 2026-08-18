@@ -30,6 +30,25 @@ export function printWithFilename(filename: string) {
   window.addEventListener('afterprint', restore)
   window.print()
 }
+// ⭐ 08-18 (Thùy báo "ET 12A1 trang 2 trắng"): paged.js thỉnh thoảng DỰNG DỞ giữa chừng 1 trang rồi bỏ
+// trống, dựng lại đúng ở trang sau (lỗi ENGINE — đo thật bằng Chrome headless + đếm trang: đổi break-inside/
+// CSS grid/ảnh ở header và câu KHÔNG ăn thua, trang trắng vẫn y nguyên vị trí, không phải do 1 rule CSS cụ
+// thể của ta). KHÁC với trang trắng CUỐI mỗi mã đề/phiếu (`.pv-de-recto{break-before:right}`, cố ý — canh
+// mã đề/phiếu sau bắt đầu ở trang lẻ để in 2 mặt không dính nhau, Thùy xác nhận "chuẩn"). Sửa bằng dọn HẬU
+// KỲ sau khi paged.js dựng xong: xoá trang trắng nào KHÔNG PHẢI đệm hợp lệ trước 1 khối mới — phân biệt
+// bằng trang SAU nó có mở đầu phiếu (`.pv-bkh`) mới hay không. Trang trắng cuối cùng (không có trang sau
+// để so) luôn GIỮ. Dùng chung ET + MT (cùng `.pv-bkh`/`.pv-de-recto`/paged.js — cùng lớp bug).
+export function pruneGhostBlankPages(container: HTMLElement) {
+  const pages = Array.from(container.querySelectorAll<HTMLElement>('.pagedjs_page'))
+  for (let i = 0; i < pages.length; i++) {
+    const p = pages[i]
+    if ((p.textContent ?? '').trim()) continue          // có nội dung thật — không đụng
+    const next = pages[i + 1]
+    if (!next) continue                                  // trắng CUỐI CÙNG — đệm hợp lệ (canh in 2 mặt), giữ
+    if (next.querySelector('.pv-bkh')) continue          // ngay trước khối mới — đệm hợp lệ, giữ
+    p.remove()                                            // còn lại = paged.js dựng dở giữa chừng — xoá
+  }
+}
 // ⭐ 07-12 tiếp 6 — QUYẾT ĐỊNH KIẾN TRÚC: sau 3 LẦN sửa header/footer bằng html2canvas (override CSS
 // `!important`, xoá rule CSSOM có chờ load, opacity:0 + gate selector `:not(.pv-no-chrome)`) ĐỀU
 // THẤT BẠI qua verify THẬT trên máy Thùy (không phải giả lập) — chữ vẫn nhân đôi y hệt mỗi lần. Thùy:

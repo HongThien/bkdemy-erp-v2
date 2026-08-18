@@ -12,7 +12,7 @@ import { fetchCausByMa } from '../../lib/ontap'
 import { BK_CSS, BK_PAGE_CSS } from './bkPrint'
 import type { CauHoi } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
-import { cauItemParts, CauFlow, OptGrid, GvAnswer, splitStem, questionOnlyContent, TLNTable, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChrome, printWithFilename } from './PrintView'
+import { cauItemParts, CauFlow, OptGrid, GvAnswer, splitStem, questionOnlyContent, TLNTable, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChrome, printWithFilename, pruneGhostBlankPages } from './PrintView'
 
 const DEFAULT_TL_LINES = 4
 const DEFAULT_TLN_LINES = 2
@@ -103,9 +103,10 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
           if (settled) return
           settled = true; clearTimeout(watchdog)
           if (cancelled) { container.style.display = 'none'; return }
+          pruneGhostBlankPages(container)
           Array.from(dst.children).forEach((c) => { if (c !== container) (c as HTMLElement).style.display = 'none' })
           activeContainerRef.current = container
-          setPages(flow?.total ?? 0); setRendering(false)
+          setPages(container.querySelectorAll('.pagedjs_page').length || (flow?.total ?? 0)); setRendering(false)
           onReady?.()
         })
         .catch((e: unknown) => {
