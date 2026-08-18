@@ -21,7 +21,8 @@ export type BaiTest = {
 export type BaiTestCau = {
   id: string; bai_test_id: string; thu_tu: number; ma_cau: string | null; loai_cau: string
   noi_dung: string | null; lua_chon: string[] | null; menh_de: unknown; dap_an_key: unknown
-  loi_giai: string | null; anh_dap_an: string | null; ma_dang: string | null; ly_thuyet: string | null; diem: number
+  loi_giai: string | null; anh_de: string | null; anh_dap_an: string | null
+  ma_dang: string | null; ly_thuyet: string | null; diem: number
 }
 export type BaiLam = { id: string; bai_test_id: string; hoc_sinh_id: string; trang_thai: 'dang_lam' | 'da_nop'; nop_at: string | null }
 export type BaiLamCau = { id: string; bai_lam_id: string; bai_test_cau_id: string; dap_an_hs: unknown; verdict: string | null; diem: number | null; cham_boi: string | null }
@@ -99,7 +100,7 @@ export async function phatHanhTest(taiLieuId: string, override?: { lopId: string
       bai_test_id: '', thu_tu: ++thu_tu, ma_cau: c.ma_cau, loai_cau: effLoai,
       noi_dung: c.noi_dung ?? null, lua_chon: (c.lua_chon as string[] | null) ?? null,
       menh_de: c.menh_de ?? null, dap_an_key: k.key,
-      loi_giai: c.loi_giai ?? null, anh_dap_an: c.anh_dap_an ?? null,
+      loi_giai: c.loi_giai ?? null, anh_de: c.anh_de ?? null, anh_dap_an: c.anh_dap_an ?? null,
       ma_dang: c.dang_chinh ?? null, ly_thuyet: ltMap.get(c.dang_chinh) ?? null, diem: 1,
     })
   }
@@ -245,7 +246,7 @@ export async function traLoiCau(baiLamId: string, cau: BaiTestCau, dapAnHs: unkn
 
 // ── ET chế độ THI (giấu key) ─────────────────────────────────────────────────
 // Đề ET đã LỌC key (rpc security-definer). Câu: id/thu_tu/loai_cau/noi_dung/lua_chon/menh_de(chỉ noi_dung)/ma_dang/ly_thuyet/diem.
-export type ETCauDe = { id: string; thu_tu: number; loai_cau: string; noi_dung: string | null; lua_chon: string[] | null; menh_de: { noi_dung: string }[] | null; ma_dang: string | null; ly_thuyet: string | null; diem: number }
+export type ETCauDe = { id: string; thu_tu: number; loai_cau: string; noi_dung: string | null; lua_chon: string[] | null; anh_de: string | null; menh_de: { noi_dung: string }[] | null; ma_dang: string | null; ly_thuyet: string | null; diem: number }
 export async function getETDe(baiTestId: string): Promise<ETCauDe[]> {
   const { data, error } = await supabase.rpc('et_de', { p_bai_test: baiTestId })
   if (error) throw error

@@ -98,6 +98,7 @@
 | anh_dap_an | text | Y |  |  |  |
 | ma_dang | text | Y |  |  |  |
 | ly_thuyet | text | Y |  |  |  |
+| anh_de | text | Y |  |  |  |
 
 ## bai_test_cham_lai_log
 

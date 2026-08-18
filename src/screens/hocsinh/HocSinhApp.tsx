@@ -13,7 +13,7 @@ import {
   type BaiTestCuaHS, type BaiTestFull, type BaiLamCau, type ETCauDe, type ETReveal,
 } from '../../lib/testonline'
 import { mucDeadline, nhanConLai } from '../../lib/tuan'
-import { seededPerm, seededShuffleWithOrig } from '../../lib/shuffle'
+import { seededShuffleWithOrig, seededPermByDang } from '../../lib/shuffle'
 import DoiMatKhau from './DoiMatKhau'
 
 type Chon = number | string | (string | null)[] | null // TN=index · TLN=chuỗi · ĐS=mảng 'D'/'S'
@@ -229,8 +229,9 @@ function LamBai({ baiTestId, hocSinhId, onXong }: { baiTestId: string; hocSinhId
   }, [st, full, baiLamId, nopped])
 
   // Xáo THỨ TỰ CÂU theo (HS×bài) — ổn định (mở lại vẫn thấy đúng thứ tự cũ), khác nhau giữa các HS
-  // (chống liếc bài). Chấm/khôi phục vẫn khớp `cau.id`, không phụ thuộc vị trí → an toàn tuyệt đối.
-  const caus = useMemo(() => (full ? seededPerm(full.caus.length, `${hocSinhId}:${baiTestId}:q`).map((i) => full.caus[i]) : []), [full, hocSinhId, baiTestId])
+  // (chống liếc bài). CHỈ xáo câu TRONG CÙNG 1 DẠNG, giữ nguyên khối/thứ tự các dạng (xem shuffle.ts).
+  // Chấm/khôi phục vẫn khớp `cau.id`, không phụ thuộc vị trí → an toàn tuyệt đối.
+  const caus = useMemo(() => (full ? seededPermByDang(full.caus, `${hocSinhId}:${baiTestId}:q`).map((i) => full.caus[i]) : []), [full, hocSinhId, baiTestId])
 
   if (!full) return <div className="flex min-h-screen items-center justify-center text-sm text-slate-400">Đang tải bài…</div>
   const total = caus.length
@@ -329,6 +330,7 @@ function LamBai({ baiTestId, hocSinhId, onXong }: { baiTestId: string; hocSinhId
             </div>
           )}
           {cau.noi_dung && <div className="mb-3 text-[15px] leading-relaxed text-slate-800"><MathText>{cau.noi_dung}</MathText></div>}
+          {cau.anh_de && <img src={cau.anh_de} alt="đề" className="mb-3 max-h-80 rounded-lg border border-slate-200" />}
 
           {laTN ? (
             <div className="flex flex-col gap-2.5">
@@ -445,8 +447,8 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
     })().catch(console.error)
   }, [test.id, hocSinhId])
   useEffect(() => { setGoiY(false) }, [idx])
-  // Xáo THỨ TỰ CÂU theo (HS×bài) — cùng cơ chế LamBai (xem ghi chú ở đó).
-  const caus = useMemo(() => (de ? seededPerm(de.length, `${hocSinhId}:${test.id}:q`).map((i) => de[i]) : []), [de, hocSinhId, test.id])
+  // Xáo THỨ TỰ CÂU theo (HS×bài) — cùng cơ chế LamBai (xem ghi chú ở đó): chỉ xáo trong cùng 1 dạng.
+  const caus = useMemo(() => (de ? seededPermByDang(de, `${hocSinhId}:${test.id}:q`).map((i) => de[i]) : []), [de, hocSinhId, test.id])
 
   if (!de) return <div className="flex min-h-screen items-center justify-center text-sm text-slate-400">Đang tải đề…</div>
   const total = caus.length
@@ -497,6 +499,7 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
           </div>
           {goiY && cau.ly_thuyet && <div className="mb-3 rounded-xl border border-amber-200 bg-amber-50/60 p-3 text-[14px] leading-relaxed text-slate-700"><MathText>{cau.ly_thuyet}</MathText></div>}
           {cau.noi_dung && <div className="mb-3 text-[15px] leading-relaxed text-slate-800"><MathText>{cau.noi_dung}</MathText></div>}
+          {cau.anh_de && <img src={cau.anh_de} alt="đề" className="mb-3 max-h-80 rounded-lg border border-slate-200" />}
 
           {laTN ? (
             <div className="flex flex-col gap-2.5">
