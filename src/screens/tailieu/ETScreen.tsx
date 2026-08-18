@@ -5,7 +5,7 @@
 // ET nối buổi qua (lớp+ngày); tab Chấm ET (buổi học) tự load câu qua getETByBuoi.
 import { useEffect, useMemo, useRef, useState } from 'react'
 import {
-  createET, updateET, getTaiLieuFull, setETCaus, suggestCauForDang, khoCuaMon, getETByBuoi,
+  createET, updateET, getTaiLieuFull, setETCaus, suggestCauForDang, suggestNForDang, khoCuaMon, getETByBuoi,
   maET, ET_FORMS, etFormOf, sortETCaus, type ETDoc, type CauHinh, type ETForm as ETFormKind, type TaiLieuFull,
 } from '../../lib/tailieu'
 import { buildMaDe as buildMaDeLib, oTrongMaDe, usedMoiDe as usedMoiDeLib, setVarInCh } from '../../lib/made'
@@ -48,6 +48,13 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
   const [cau, setCau] = useState<Record<string, CauHoi>>(() => (draft0?.cau as Record<string, CauHoi>) ?? {}) // cache để preview
   const [dangOpts, setDangOpts] = useState<{ ma_dang: string; ten_dang: string; ten_chuyen_de: string }[]>([])
   const [ch, setCh] = useState<CauHinh>(() => (draft0?.ch as CauHinh) ?? {})
+  // ── Thêm nhanh theo dạng + số câu (ET cấp 3 — trắc nghiệm nhiều câu, click từng dòng rất mệt).
+  // planRows = kế hoạch "dạng nào bao nhiêu câu" (vd Dạng 1: 5 · Dạng 2: 6 · Dạng 3: 3), sinh 1 lượt →
+  // đổ thẳng vào `rows` (đè các hàng trống mặc định, giữ nguyên hàng đã có câu).
+  const [planOpen, setPlanOpen] = useState(false)
+  const [planRows, setPlanRows] = useState<{ maDang: string | null; soCau: number }[]>([{ maDang: null, soCau: 5 }])
+  const [planDangModal, setPlanDangModal] = useState<number | null>(null)
+  const [bulkBusy, setBulkBusy] = useState(false)
   const [picker, setPicker] = useState<{ idx: number; maDang: string } | null>(null)
   const [varPicker, setVarPicker] = useState<{ baseMaCau: string; v: number; maDang: string; form: ETFormKind } | null>(null)
   const [dangModal, setDangModal] = useState<number | null>(null)
@@ -170,6 +177,31 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
   }
   const themCau = () => setRows((rs) => [...rs, { maDang: null, maCau: null }])
   const xoaRow = (idx: number) => setRows((rs) => rs.filter((_, i) => i !== idx))
+  // Sinh hàng loạt theo kế hoạch (planRows): mỗi dạng lấy N câu ÍT DÙNG NHẤT trong 1 lượt (suggestNForDang,
+  // không lặp suggestCauForDang từng câu — tránh N round-trip). `usedNow` cộng dồn XUYÊN các dạng trong
+  // CÙNG 1 lượt sinh (không chỉ trong nội bộ 1 dạng) để câu không trùng nhau giữa các dạng khác nhau.
+  const themDongKeHoach = () => setPlanRows((rs) => [...rs, { maDang: null, soCau: 5 }])
+  const xoaDongKeHoach = (i: number) => setPlanRows((rs) => rs.filter((_, j) => j !== i))
+  async function sinhTheoKeHoach() {
+    const plans = planRows.filter((p) => p.maDang && p.soCau > 0)
+    if (!plans.length) return
+    setBulkBusy(true)
+    try {
+      const usedNow = new Set(rows.map((r) => r.maCau).filter(Boolean) as string[])
+      const newRows: Row[] = []
+      const thieu: string[] = []
+      for (const p of plans) {
+        const maDang = p.maDang!
+        await ensureCache(maDang)
+        const picked = await suggestNForDang(maDang, p.soCau, usedNow, cauTbl)
+        picked.forEach((m) => { usedNow.add(m); newRows.push({ maDang, maCau: m }) })
+        if (picked.length < p.soCau) thieu.push(`${tenDang(maDang)}: chỉ được ${picked.length}/${p.soCau} câu (kho không đủ câu chưa dùng)`)
+      }
+      setRows((rs) => { const conNoiDung = rs.filter((r) => r.maDang || r.maCau); return [...conNoiDung, ...newRows] })
+      setPlanRows([{ maDang: null, soCau: 5 }])
+      if (thieu.length) alert(`Thiếu câu ở 1 vài dạng (đã dùng hết trong kho hoặc đã dùng hết trong đề):\n${thieu.join('\n')}`)
+    } finally { setBulkBusy(false) }
+  }
   const setLines = (maCau: string, n: number) => setCh((c) => ({ ...c, btvnLinesByCau: { ...(c.btvnLinesByCau ?? {}), [maCau]: n } }))
   const setForm = (maCau: string, f: ETFormKind) => setCh((c) => ({ ...c, etFormByCau: { ...(c.etFormByCau ?? {}), [maCau]: f } }))
   // ── CHẾ ĐỘ CỘT khi in — RIÊNG TỪNG CÂU (Thùy): tag số cột trên mỗi câu; câu tag cột LIỀN NHAU tự xếp
@@ -322,6 +354,42 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
           {flash && <div className="mb-3 rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-[13px] font-medium text-emerald-700">✓ {flash}</div>}
           {err && <div className="mb-3 rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[13px] text-rose-600">{err}</div>}
           <p className="mb-3 text-[12px] text-slate-400">Mỗi câu chọn 1 dạng → hệ gợi ý câu <b>ít dùng nhất</b> (đổi được). Câu không trùng nhau trong đề.{!khoi && <span className="text-amber-600"> Chọn <b>lớp</b> trước để chọn dạng.</span>}</p>
+          {khoi && (
+            <div className="mb-3 rounded-xl border border-indigo-100 bg-indigo-50/40 p-3">
+              <button onClick={() => setPlanOpen((v) => !v)} className="flex items-center gap-1.5 text-[13px] font-semibold text-indigo-700">
+                ⚡ Thêm nhanh theo dạng — nhiều câu 1 lúc <span className="text-[11px] text-indigo-400">{planOpen ? '▲ thu gọn' : '▼ mở'}</span>
+              </button>
+              {!planOpen && <p className="mt-1 text-[11px] text-slate-400">Hợp cho ET cấp 3 (trắc nghiệm nhiều câu): gõ dạng + số câu, hệ tự gợi ý cả loạt câu ít-dùng-nhất, không cần bấm từng dòng.</p>}
+              {planOpen && (
+                <div className="mt-2 space-y-1.5">
+                  {planRows.map((p, i) => (
+                    <div key={i} className="flex items-center gap-2">
+                      <button onClick={() => setPlanDangModal(i)} className="w-56 shrink-0 rounded-md border border-slate-300 bg-white px-2.5 py-1.5 text-left text-[13px] hover:border-indigo-400">
+                        {p.maDang ? <span className="text-slate-700">{tenDang(p.maDang)}</span> : <span className="text-indigo-500">+ chọn dạng…</span>}
+                      </button>
+                      <span className="text-[12px] text-slate-400">×</span>
+                      <input type="number" min={1} max={50} value={p.soCau}
+                        onChange={(e) => setPlanRows((rs) => rs.map((x, j) => (j === i ? { ...x, soCau: Math.max(1, Math.min(50, +e.target.value || 1)) } : x)))}
+                        className="h-8 w-16 rounded border border-slate-300 px-1 text-center text-[13px]" />
+                      <span className="text-[12px] text-slate-400">câu</span>
+                      {planRows.length > 1 && <button onClick={() => xoaDongKeHoach(i)} title="Bỏ dòng" className="text-[13px] text-slate-300 hover:text-rose-600">✕</button>}
+                    </div>
+                  ))}
+                  <div className="flex items-center gap-2 pt-1">
+                    <button onClick={themDongKeHoach} className="rounded-md border border-dashed border-indigo-300 px-2.5 py-1 text-[12px] font-medium text-indigo-600 hover:bg-indigo-50">+ thêm dạng khác</button>
+                    <button onClick={sinhTheoKeHoach} disabled={bulkBusy || !planRows.some((p) => p.maDang && p.soCau > 0)}
+                      className="ml-auto rounded-md bg-indigo-600 px-3 py-1.5 text-[12px] font-medium text-white hover:bg-indigo-500 disabled:opacity-40">
+                      {bulkBusy ? 'Đang sinh…' : `⚡ Sinh ${planRows.reduce((s, p) => s + (p.maDang ? p.soCau : 0), 0)} câu`}
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+          {planDangModal !== null && (
+            <DangPickerOne khoi={khoi} mon={mon} nhanh={nhanh} onClose={() => setPlanDangModal(null)}
+              onPick={(ma) => { const i = planDangModal; setPlanDangModal(null); setPlanRows((rs) => rs.map((x, j) => (j === i ? { ...x, maDang: ma } : x))) }} />
+          )}
           {soCau > 0 && (() => { const t = oTrong().length; const gen = !!(ch.etMaDe && Object.keys(ch.etMaDe).length)
             return (
               <div className="mb-3 flex flex-wrap items-center gap-2 rounded-lg border border-violet-100 bg-violet-50/40 px-3 py-2">

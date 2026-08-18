@@ -246,6 +246,15 @@ export async function suggestCauForDang(maDang: string, exclude: Set<string>, ca
   const u = await cauUsage(caus.map((c) => c.ma_cau))
   return [...caus].sort(cmpUsageLe(u))[0].ma_cau
 }
+// N câu gợi ý cho 1 dạng trong 1 lượt (ET cấp 3 — trắc nghiệm nhiều câu, thêm nhanh theo dạng+số lượng
+// thay vì gọi suggestCauForDang từng câu một). Cùng luật ít-dùng-nhất + loại trừ `exclude`, chỉ khác là
+// trả về tối đa n mã câu thay vì 1. Thiếu câu trong kho → trả về ít hơn n (caller tự cảnh báo).
+export async function suggestNForDang(maDang: string, n: number, exclude: Set<string>, cauTbl = 'dai_cau_hoi'): Promise<string[]> {
+  const caus = (await listCauByDang(maDang, cauTbl)).filter((c) => !exclude.has(c.ma_cau))
+  if (!caus.length) return []
+  const u = await cauUsage(caus.map((c) => c.ma_cau))
+  return [...caus].sort(cmpUsageLe(u)).slice(0, n).map((c) => c.ma_cau)
+}
 // Số câu luyện mặc định mỗi dạng (theo loại) — dùng khi thêm chuyên đề + làm default cho ô nhập.
 export const DEFAULT_LUYEN_COUNTS: Record<string, number> = { trac_nghiem: 3, tra_loi_ngan: 2, tu_luan: 1 }
 // Gợi ý câu theo SỐ LƯỢNG mỗi loại: { trac_nghiem: 3, tra_loi_ngan: 2, tu_luan: 1 } → ưu tiên gốc.
