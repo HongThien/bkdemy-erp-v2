@@ -7,10 +7,12 @@
 // Chạy:  node worker/troly.mjs
 // Env (.env.local, gitignored):
 //   VITE_SUPABASE_URL · SUPABASE_SERVICE_ROLE
-//   TROLY_PROVIDER = anthropic | moonshot        (mặc định moonshot nếu có key moonshot)
+//   TROLY_PROVIDER = anthropic | moonshot | deepseek   (mặc định: deepseek nếu có key deepseek,
+//                                                        rồi tới moonshot, cuối cùng anthropic)
 //   TROLY_MODEL    = tên model của nhà đó
-//   ANTHROPIC_API_KEY  và/hoặc  MOONSHOT_API_KEY
+//   ANTHROPIC_API_KEY  và/hoặc  MOONSHOT_API_KEY  và/hoặc  DEEPSEEK_API_KEY
 //   MOONSHOT_BASE_URL  (mặc định https://api.moonshot.ai/v1 — bản .cn dùng https://api.moonshot.cn/v1)
+//   DEEPSEEK_BASE_URL  (mặc định https://api.deepseek.com/v1)
 //   ⚠ KHÔNG key nào được mang tiền tố VITE_ — `VITE_*` bị Vite nhúng thẳng vào bundle
 //     browser, key lộ = người lạ đốt tiền (DEVLOG "vụ 920k").
 //
@@ -40,8 +42,10 @@ if (!SB_URL || !SB_SERVICE) { console.error('Thiếu VITE_SUPABASE_URL / SUPABAS
 
 const KEY_ANTHROPIC = env('ANTHROPIC_API_KEY')
 const KEY_MOONSHOT = env('MOONSHOT_API_KEY')
-const PROVIDER = env('TROLY_PROVIDER') ?? (KEY_MOONSHOT ? 'moonshot' : 'anthropic')
+const KEY_DEEPSEEK = env('DEEPSEEK_API_KEY')
+const PROVIDER = env('TROLY_PROVIDER') ?? (KEY_DEEPSEEK ? 'deepseek' : KEY_MOONSHOT ? 'moonshot' : 'anthropic')
 const MOONSHOT_BASE = env('MOONSHOT_BASE_URL') ?? 'https://api.moonshot.ai/v1'
+const DEEPSEEK_BASE = env('DEEPSEEK_BASE_URL') ?? 'https://api.deepseek.com/v1'
 
 // Giá USD / 1 triệu token. ⚠ SỐ NÀY PHẢI TỰ KIỂM lại ở trang giá của từng nhà trước khi tin —
 // giá đổi liên tục và Claude KHÔNG có nguồn cập nhật. Model không có trong bảng vẫn gọi được,
@@ -51,40 +55,51 @@ const GIA = {
   'claude-sonnet-5': { vao: 2, ra: 10 },
   'claude-haiku-4-5': { vao: 1, ra: 5 },
   'claude-opus-4-8': { vao: 5, ra: 25 },
+  'deepseek-chat': { vao: 0.27, ra: 1.10 },      // ⚠ TỰ KIỂM lại ở platform.deepseek.com/api-docs/pricing trước khi tin
+  'deepseek-reasoner': { vao: 0.55, ra: 2.19 },  // ⚠ TỰ KIỂM lại — reasoner sinh chain-of-thought, ra tốn hơn hẳn
 }
 const USD_VND = 26_000
 
-const MODEL = env('TROLY_MODEL') ?? (PROVIDER === 'moonshot' ? 'kimi-k2-turbo-preview' : 'claude-sonnet-5')
+const MODEL = env('TROLY_MODEL') ?? (PROVIDER === 'moonshot' ? 'kimi-k2-turbo-preview' : PROVIDER === 'deepseek' ? 'deepseek-chat' : 'claude-sonnet-5')
 const svc = createClient(SB_URL, SB_SERVICE)
 
-// ── ADAPTER: hai nhà, một giao diện ─────────────────────────────────────────
-// Moonshot dùng giao thức TƯƠNG THÍCH OpenAI ⇒ gọi thẳng bằng fetch, không thêm SDK.
+// ── ADAPTER: ba nhà, một giao diện ──────────────────────────────────────────
+// Moonshot VÀ DeepSeek đều dùng giao thức TƯƠNG THÍCH OpenAI ⇒ gọi thẳng bằng fetch qua
+// CÙNG MỘT hàm dùng chung, chỉ khác base URL/key/tên nhà (để log lỗi rõ ai từ chối).
 // Giữ adapter MỎNG: chỉ nhận {system, messages, maxTokens} → trả {text, usage}. Mọi thứ
 // riêng của từng nhà (thinking, cache_control...) cố ý KHÔNG dùng — có thì bản so sánh
 // không còn công bằng, mà mục đích lúc này là SO.
+async function goiOpenAICompatible({ base, key, nha, system, messages, maxTokens }) {
+  const res = await fetch(`${base}/chat/completions`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json', authorization: `Bearer ${key}` },
+    body: JSON.stringify({
+      model: MODEL, max_tokens: maxTokens, temperature: 0.3,
+      messages: [{ role: 'system', content: system }, ...messages],
+    }),
+  })
+  const j = await res.json().catch(() => null)
+  if (!res.ok) {
+    const msg = j?.error?.message ?? `HTTP ${res.status}`
+    // 401/404 = sai key hoặc sai tên model ⇒ thử lại chắc chắn hỏng y hệt.
+    throw Object.assign(new Error(`${nha} từ chối: ${msg}`), { khongThuLai: res.status === 401 || res.status === 404 })
+  }
+  const ch = j?.choices?.[0]
+  if (ch?.finish_reason === 'length') throw new Error('Câu trả lời bị cắt giữa chừng (chạm trần token) — hỏi ngắn lại hoặc nâng trần.')
+  return {
+    text: ch?.message?.content ?? '',
+    usage: { input_tokens: j?.usage?.prompt_tokens ?? null, output_tokens: j?.usage?.completion_tokens ?? null },
+  }
+}
+
 async function goiModel({ system, messages, maxTokens }) {
   if (PROVIDER === 'moonshot') {
     if (!KEY_MOONSHOT) throw Object.assign(new Error('Thiếu MOONSHOT_API_KEY trong .env.local'), { khongThuLai: true })
-    const res = await fetch(`${MOONSHOT_BASE}/chat/completions`, {
-      method: 'POST',
-      headers: { 'content-type': 'application/json', authorization: `Bearer ${KEY_MOONSHOT}` },
-      body: JSON.stringify({
-        model: MODEL, max_tokens: maxTokens, temperature: 0.3,
-        messages: [{ role: 'system', content: system }, ...messages],
-      }),
-    })
-    const j = await res.json().catch(() => null)
-    if (!res.ok) {
-      const msg = j?.error?.message ?? `HTTP ${res.status}`
-      // 401/404 = sai key hoặc sai tên model ⇒ thử lại chắc chắn hỏng y hệt.
-      throw Object.assign(new Error(`Moonshot từ chối: ${msg}`), { khongThuLai: res.status === 401 || res.status === 404 })
-    }
-    const ch = j?.choices?.[0]
-    if (ch?.finish_reason === 'length') throw new Error('Câu trả lời bị cắt giữa chừng (chạm trần token) — hỏi ngắn lại hoặc nâng trần.')
-    return {
-      text: ch?.message?.content ?? '',
-      usage: { input_tokens: j?.usage?.prompt_tokens ?? null, output_tokens: j?.usage?.completion_tokens ?? null },
-    }
+    return goiOpenAICompatible({ base: MOONSHOT_BASE, key: KEY_MOONSHOT, nha: 'Moonshot', system, messages, maxTokens })
+  }
+  if (PROVIDER === 'deepseek') {
+    if (!KEY_DEEPSEEK) throw Object.assign(new Error('Thiếu DEEPSEEK_API_KEY trong .env.local'), { khongThuLai: true })
+    return goiOpenAICompatible({ base: DEEPSEEK_BASE, key: KEY_DEEPSEEK, nha: 'DeepSeek', system, messages, maxTokens })
   }
 
   if (!KEY_ANTHROPIC) throw Object.assign(new Error('Thiếu ANTHROPIC_API_KEY trong .env.local'), { khongThuLai: true })
@@ -180,6 +195,10 @@ async function kiemKey() {
       if (!KEY_MOONSHOT) throw new Error('Thiếu MOONSHOT_API_KEY trong .env.local')
       const r = await fetch(`${MOONSHOT_BASE}/models`, { headers: { authorization: `Bearer ${KEY_MOONSHOT}` } })
       if (!r.ok) throw new Error(`Moonshot từ chối key (HTTP ${r.status})`)
+    } else if (PROVIDER === 'deepseek') {
+      if (!KEY_DEEPSEEK) throw new Error('Thiếu DEEPSEEK_API_KEY trong .env.local')
+      const r = await fetch(`${DEEPSEEK_BASE}/models`, { headers: { authorization: `Bearer ${KEY_DEEPSEEK}` } })
+      if (!r.ok) throw new Error(`DeepSeek từ chối key (HTTP ${r.status})`)
     } else {
       if (!KEY_ANTHROPIC) throw new Error('Thiếu ANTHROPIC_API_KEY trong .env.local')
       const { default: Anthropic } = await import('@anthropic-ai/sdk')

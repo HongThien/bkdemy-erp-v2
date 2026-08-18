@@ -149,6 +149,7 @@ function BaNut({ dangMoGac, onLam, onHuy, onGac, onMoGac, nho }: {
 // ── THANH TOGGLE chọn module — thay cho 6 card xếp chồng phải cuộn dài (CEO 18/08:
 // "1 click dễ hơn là 1 kéo"). Mỗi pill có SỐ BÁO ĐỘNG riêng để vẫn glance được mà chưa cần bấm.
 const TABS = [
+  { key: 'nhandinh', ten: 'Trợ lý thấy gì' },
   { key: 'vanhanh', ten: 'Vận hành' },
   { key: 'bu', ten: 'Bổ trợ bù' },
   { key: 'duoi', ten: 'Bổ trợ đuổi' },
@@ -190,7 +191,7 @@ export default function TroLyTab() {
   const [test, setTest] = useState<MangTest | null>(null)
   const [duoi, setDuoi] = useState<AnhChupDuoi | null>(null)
   const [toi, setToi] = useState<BangNhac | null>(null)
-  const [tab, setTab] = useState<TabKey>('vanhanh')
+  const [tab, setTab] = useState<TabKey>('nhandinh')
   const setStaffLeaf = useStore((s) => s.setStaffLeaf)
   const [loi, setLoi] = useState<string | null>(null)
   const [moGac, setMoGac] = useState<string | null>(null)
@@ -220,6 +221,7 @@ export default function TroLyTab() {
   // Số báo động trên từng pill — MỘT số đại diện đúng con số headline của khu đó (không suy lại,
   // đọc thẳng field trùng với dòng "tóm tắt" trong Khu tương ứng để 2 nơi không bao giờ lệch nhau).
   const badge: Record<TabKey, number> = {
+    nhandinh: nhanDinh?.length ?? 0,
     vanhanh: vh?.noTuan.length ?? 0,
     bu: bu?.canXep.tong ?? 0,
     duoi: duoi ? duoi.ca.filter((c) => c.muc !== 'binh_thuong').length : 0,
@@ -232,9 +234,14 @@ export default function TroLyTab() {
     <div className="mx-auto max-w-[1000px] pb-8">
       <Chat />
 
-      {nhanDinh && nhanDinh.length > 0 && (
-        <div className="mb-4">
-          <div className="mb-2 text-[14px] font-semibold text-slate-800">🤖 Trợ lý thấy gì</div>
+      {/* ⭐ THANH TAB thay cho 6 card xếp chồng phải cuộn dài (CEO 18/08: "1 click dễ hơn là
+          1 kéo"). Mỗi module vẫn báo SỐ TỔNG QUAN + đúng thứ cần hành động (CEO 14/08) —
+          chỉ khác cách CHUYỂN giữa các module: bấm tab thay vì cuộn qua từng card.
+          "Trợ lý thấy gì" giờ CŨNG là 1 tab, và là tab MẶC ĐỊNH (CEO 18/08) — đây là thứ
+          hệ thống chủ động nêu ra (khác 5 tab kia là số vận hành đo được), nên đứng đầu. */}
+      <ThanhTab tab={tab} setTab={setTab} badge={badge} />
+      {tab === 'nhandinh' && (
+        nhanDinh && nhanDinh.length > 0 ? (
           <div className="space-y-2.5">
             {nhanDinh.map((n) => (
               <div key={n.ma} className="rounded-2xl border border-amber-200 bg-amber-50/50 p-4">
@@ -251,13 +258,12 @@ export default function TroLyTab() {
               </div>
             ))}
           </div>
-        </div>
+        ) : (
+          <div className="rounded-2xl border border-slate-200 bg-white p-4 text-[13px] text-slate-500">
+            Không có gì bất thường ở cấp hệ thống lúc này.
+          </div>
+        )
       )}
-
-      {/* ⭐ THANH TAB thay cho 6 card xếp chồng phải cuộn dài (CEO 18/08: "1 click dễ hơn là
-          1 kéo"). Mỗi module vẫn báo SỐ TỔNG QUAN + đúng thứ cần hành động (CEO 14/08) —
-          chỉ khác cách CHUYỂN giữa các module: bấm tab thay vì cuộn qua từng card. */}
-      <ThanhTab tab={tab} setTab={setTab} badge={badge} />
       {tab === 'vanhanh' && <KhoiVanHanh d={vh} />}
       {tab === 'bu' && <KhoiBu d={bu} onDen={() => setStaffLeaf('botro')} />}
       {tab === 'duoi' && <KhoiDuoi d={duoi} onDen={() => setStaffLeaf('botro_duoi')} />}
