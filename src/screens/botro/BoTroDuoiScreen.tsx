@@ -464,11 +464,18 @@ function ThemHSModal({ onClose, onDone }: { onClose: () => void; onDone: () => v
 // Xếp lịch cho ĐỢT — BATCH (Thùy 07-13: "thực tế xếp lịch thường xếp toàn bộ luôn"): tạo NHIỀU buổi
 // 1 lần (mặc định đủ số còn thiếu của kế hoạch), GV/TA/giá dùng chung. Vẫn giữ mode "chọn buổi có sẵn"
 // (gộp em này vào ca đã có của em khác — 1 ca đuổi gộp nhiều HS như cũ).
+// +60 phút cho giờ dạng "HH:MM" — gợi ý mặc định giờ kết thúc (bổ trợ thường ~1 tiếng), sửa được trước khi lưu.
+function cong60(hhmm: string): string {
+  const [h, m] = hhmm.split(':').map(Number)
+  const t = (h * 60 + m + 60) % 1440
+  return `${String(Math.floor(t / 60)).padStart(2, '0')}:${String(t % 60).padStart(2, '0')}`
+}
+
 function XepDuoiModal({ item, onClose, onDone }: { item: DotDuoi; onClose: () => void; onDone: () => void }) {
   const [mode, setMode] = useState<'moi' | 'cosan'>('moi')
   const conThieu = item.so_buoi_du_kien != null ? Math.max(1, item.so_buoi_du_kien - item.daXep) : 1
-  const [rows, setRows] = useState<{ ngay: string; gio: string; phong: string }[]>(
-    Array.from({ length: conThieu }, () => ({ ngay: homNayVN(), gio: '', phong: '' })))
+  const [rows, setRows] = useState<{ ngay: string; gio: string; gioKetThuc: string; phong: string }[]>(
+    Array.from({ length: conThieu }, () => ({ ngay: homNayVN(), gio: '', gioKetThuc: '', phong: '' })))
   const [gv, setGv] = useState<string | null>(null)
   const [ta, setTa] = useState<string | null>(null)
   const [pickId, setPickId] = useState<string | null>(null)
@@ -486,14 +493,14 @@ function XepDuoiModal({ item, onClose, onDone }: { item: DotDuoi; onClose: () =>
   }, [item.lop_id]) // eslint-disable-line
   const nsOpts = useMemo(() => nss.map((n) => ({ id: n.id, label: n.ho_ten, sub: n.ma_ns })), [nss])
   const phongOpts = useMemo(() => phongs.map((p) => ({ id: p.ma_phong, label: p.ten_phong })), [phongs])
-  const setRow = (i: number, patch: Partial<{ ngay: string; gio: string; phong: string }>) => setRows((rs) => rs.map((r, j) => (j === i ? { ...r, ...patch } : r)))
+  const setRow = (i: number, patch: Partial<{ ngay: string; gio: string; gioKetThuc: string; phong: string }>) => setRows((rs) => rs.map((r, j) => (j === i ? { ...r, ...patch } : r)))
   async function go() {
     setBusy(true)
     try {
       if (mode === 'moi') {
         if (rows.some((r) => !r.ngay)) { alert('Mỗi buổi phải có ngày'); setBusy(false); return }
         for (const r of rows) {
-          const buoiId = await taoBuoiDuoi({ ngay: r.ngay, gio_bat_dau: r.gio || null, phong: r.phong || null, nguoi_day: gv, nguoi_day_tg: ta, muc_hoc_duoi_id: mucId })
+          const buoiId = await taoBuoiDuoi({ ngay: r.ngay, gio_bat_dau: r.gio || null, gio_ket_thuc: r.gioKetThuc || null, phong: r.phong || null, nguoi_day: gv, nguoi_day_tg: ta, muc_hoc_duoi_id: mucId })
           await themHSVaoBuoiDuoi(buoiId, [{ hoc_sinh_id: item.hoc_sinh_id, caseId: item.caseId }])
         }
       } else {
@@ -523,12 +530,13 @@ function XepDuoiModal({ item, onClose, onDone }: { item: DotDuoi; onClose: () =>
               <div key={i} className="flex items-end gap-2">
                 <span className="w-14 pb-2 text-[12px] font-medium text-slate-400">Buổi {item.daXep + i + 1}</span>
                 <div className="flex-1"><label className="mb-1 block text-[12px] font-medium text-slate-500">Ngày *</label><input type="date" className={inputCls} value={r.ngay} onChange={(e) => setRow(i, { ngay: e.target.value })} /></div>
-                <div className="w-32"><label className="mb-1 block text-[12px] font-medium text-slate-500">Giờ</label><input type="time" className={inputCls} value={r.gio} onChange={(e) => setRow(i, { gio: e.target.value })} /></div>
+                <div className="w-28"><label className="mb-1 block text-[12px] font-medium text-slate-500">Giờ BĐ</label><input type="time" className={inputCls} value={r.gio} onChange={(e) => setRow(i, { gio: e.target.value, gioKetThuc: r.gioKetThuc || (e.target.value ? cong60(e.target.value) : '') })} /></div>
+                <div className="w-28"><label className="mb-1 block text-[12px] font-medium text-slate-500">Giờ KT</label><input type="time" className={inputCls} value={r.gioKetThuc} onChange={(e) => setRow(i, { gioKetThuc: e.target.value })} /></div>
                 <div className="w-40"><label className="mb-1 block text-[12px] font-medium text-slate-500">Phòng</label><SearchSelect value={r.phong || null} onChange={(v) => setRow(i, { phong: v ?? '' })} options={phongOpts} placeholder="Chọn phòng…" /></div>
                 {rows.length > 1 && <button onClick={() => setRows((rs) => rs.filter((_, j) => j !== i))} className="pb-2.5 text-[13px] text-slate-300 hover:text-rose-600">✕</button>}
               </div>
             ))}
-            <button onClick={() => setRows((rs) => [...rs, { ngay: rs[rs.length - 1]?.ngay ?? homNayVN(), gio: rs[rs.length - 1]?.gio ?? '', phong: rs[rs.length - 1]?.phong ?? '' }])}
+            <button onClick={() => setRows((rs) => [...rs, { ngay: rs[rs.length - 1]?.ngay ?? homNayVN(), gio: rs[rs.length - 1]?.gio ?? '', gioKetThuc: rs[rs.length - 1]?.gioKetThuc ?? '', phong: rs[rs.length - 1]?.phong ?? '' }])}
               className="rounded-lg border border-dashed border-slate-300 px-3 py-1.5 text-[13px] text-slate-500 hover:border-indigo-400 hover:text-indigo-600">+ Thêm buổi</button>
           </div>
           <div className="grid grid-cols-2 gap-3">
@@ -579,7 +587,7 @@ export function BuoiDuoiDetail({ buoiId, readOnly = false, onClose }: { buoiId: 
   const [nx, setNx] = useState<Record<string, string>>({})
   const [busy, setBusy] = useState(false)
   const [sua, setSua] = useState(false)
-  const [meta, setMeta] = useState<{ ngay: string; gio_bat_dau: string | null; phong: string | null; nguoi_day: string | null; nguoi_day_tg: string | null }>({ ngay: '', gio_bat_dau: null, phong: null, nguoi_day: null, nguoi_day_tg: null })
+  const [meta, setMeta] = useState<{ ngay: string; gio_bat_dau: string | null; gio_ket_thuc: string | null; phong: string | null; nguoi_day: string | null; nguoi_day_tg: string | null }>({ ngay: '', gio_bat_dau: null, gio_ket_thuc: null, phong: null, nguoi_day: null, nguoi_day_tg: null })
   const [dgXong, setDgXong] = useState(false)
   const [mucDuoi, setMucDuoi2] = useState<MucHocDuoi[]>([])
   const [mucId, setMucId] = useState<string | null>(null)
@@ -593,7 +601,7 @@ export function BuoiDuoiDetail({ buoiId, readOnly = false, onClose }: { buoiId: 
     const [b, r, dg, hi, dc] = await Promise.all([getBuoi(buoiId), getRoster(buoiId), getDanhGia(buoiId), getBuoiDuoiHsInfo(buoiId), getDangCuaBuoiDuoi(buoiId)])
     setDangByCase(dc)
     if (b) {
-      setMeta({ ngay: (b as any).ngay, gio_bat_dau: (b as any).gio_bat_dau, phong: (b as any).phong, nguoi_day: (b as any).nguoi_day, nguoi_day_tg: (b as any).nguoi_day_tg })
+      setMeta({ ngay: (b as any).ngay, gio_bat_dau: (b as any).gio_bat_dau, gio_ket_thuc: (b as any).gio_ket_thuc, phong: (b as any).phong, nguoi_day: (b as any).nguoi_day, nguoi_day_tg: (b as any).nguoi_day_tg })
       setMucId((b as any).muc_hoc_duoi_id ?? null); setDgXong(!!(b as any).danh_gia_xong_at)
     }
     setRoster(r); setHsInfo(hi)

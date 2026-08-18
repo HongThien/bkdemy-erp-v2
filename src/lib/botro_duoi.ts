@@ -12,7 +12,7 @@ const LIMIT = 10000
 
 export type CanDuoiItem = { caseId: string; hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; lop_id: string | null; lop: string; mon: string; nguon: string; ly_do: string | null }
 export type CaDuoiHS = { hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; diem_danh: string | null; caseId: string | null; lop: string; mon: string; khoi: string | null }
-export type CaDuoi = { id: string; ngay: string; gio_bat_dau: string | null; phong: string | null; trang_thai: string; danh_gia_xong_at: string | null; nguoi_day: string | null; nguoi_day_tg: string | null; muc_hoc_duoi_id: string | null; hs: CaDuoiHS[] }
+export type CaDuoi = { id: string; ngay: string; gio_bat_dau: string | null; gio_ket_thuc: string | null; phong: string | null; trang_thai: string; danh_gia_xong_at: string | null; nguoi_day: string | null; nguoi_day_tg: string | null; muc_hoc_duoi_id: string | null; hs: CaDuoiHS[] }
 
 // 1 buổi trong đợt (view theo-đợt — dùng ở card detail; click mở BuoiDuoiDetail readOnly như cũ).
 // nhanXet = nhận xét GV cho HS của đợt ở buổi này; dangDay = mã dạng đã dạy Ở BUỔI NÀY (day_buoi_id khớp).
@@ -155,7 +155,7 @@ export async function setDangDay(dangRowId: string, buoiId: string | null): Prom
 // Đã xếp (done=false) / Hoàn thành (done=true): buổi đuổi + HS. "xong buổi" = danh_gia_xong_at có.
 export async function listCaDuoi(done: boolean): Promise<CaDuoi[]> {
   const { data: buois } = await supabase.from('buoi_hoc')
-    .select('id, ngay, gio_bat_dau, phong, trang_thai, danh_gia_xong_at, nguoi_day, nguoi_day_tg, muc_hoc_duoi_id')
+    .select('id, ngay, gio_bat_dau, gio_ket_thuc, phong, trang_thai, danh_gia_xong_at, nguoi_day, nguoi_day_tg, muc_hoc_duoi_id')
     .eq('loai', 'bo_tro_duoi').neq('trang_thai', 'huy').order('ngay', { ascending: false }).limit(LIMIT)
   const filt = (buois ?? []).filter((b: any) => (done ? !!b.danh_gia_xong_at : !b.danh_gia_xong_at))
   if (!filt.length) return []
@@ -187,10 +187,10 @@ export async function getBuoiDuoiHsInfo(buoiId: string): Promise<Record<string, 
 
 // Tạo buổi đuổi mới (loai='bo_tro_duoi', không lop_id; ngày/giờ/phòng/GV/TA/mức học đuổi).
 // Mức học đuổi gắn theo CA (KHÔNG theo lớp gốc) — mỗi ca có thể khác giá (Thùy 07-05).
-export async function taoBuoiDuoi(input: { ngay: string; gio_bat_dau?: string | null; phong?: string | null; nguoi_day?: string | null; nguoi_day_tg?: string | null; muc_hoc_duoi_id?: string | null }): Promise<string> {
+export async function taoBuoiDuoi(input: { ngay: string; gio_bat_dau?: string | null; gio_ket_thuc?: string | null; phong?: string | null; nguoi_day?: string | null; nguoi_day_tg?: string | null; muc_hoc_duoi_id?: string | null }): Promise<string> {
   const { data: { user } } = await supabase.auth.getUser()
   const { data, error } = await supabase.from('buoi_hoc').insert({
-    loai: 'bo_tro_duoi', lop_id: null, ngay: input.ngay, gio_bat_dau: input.gio_bat_dau ?? null,
+    loai: 'bo_tro_duoi', lop_id: null, ngay: input.ngay, gio_bat_dau: input.gio_bat_dau ?? null, gio_ket_thuc: input.gio_ket_thuc ?? null,
     phong: input.phong ?? null, nguoi_day: input.nguoi_day ?? null, nguoi_day_tg: input.nguoi_day_tg ?? null,
     muc_hoc_duoi_id: input.muc_hoc_duoi_id ?? null, trang_thai: 'mo', created_by: user?.id ?? null,
   }).select('id').single()

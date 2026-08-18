@@ -5482,3 +5482,47 @@ là đẻ mẫu số giả.
 `phan_cong_lop` nên `getMyTasks` trả rỗng. Query mirror đúng logic cho ra: báo sai của 11B1 → **Trần
 Hoàng Đạt (TG)**, 1 việc. Cần một phiên đăng nhập bằng TK của TG để xác nhận card hiện đúng và bấm vào
 ra đúng màn Duyệt chấm.
+
+---
+
+## 2026-08-18 — Bổ trợ bù/đuổi THIẾU giờ kết thúc → vô hình trong Quản lý phòng học (fix gốc)
+
+**Thùy hỏi sau khi merge Quản lý phòng học: "bổ trợ bù/đuổi đã ăn dữ liệu vào đây chưa?"** Kiểm bằng
+query DB thật (không đoán): chính khóa luôn đủ giờ (TKB `gio_ket_thuc` NOT NULL). Nhưng **100% buổi bổ
+trợ bù sắp tới đã gán phòng (13/13) và bổ trợ đuổi (2/2) THIẾU `gio_ket_thuc`** (null hết) — `lichPhongNgay()`
+đúng chủ đích bỏ qua buổi thiếu giờ (tránh hiện sai), nên gần như toàn bộ bổ trợ **vô hình** trong Lịch
+phòng/Tổng quan phòng dù đã có phòng thật.
+
+**Gốc:** KHÔNG phải lỗi nhập liệu — form tạo/sửa buổi bù-đuổi **chưa từng có ô "Giờ kết thúc"**, dù cột
+DB nullable sẵn sàng nhận và `updateBuoiMeta`/`taoBuoiBu` (gami.ts, botro.ts) đã có tham số `gio_ket_thuc`
+trong signature từ trước (chỉ UI không truyền); riêng `taoBuoiDuoi` (botro_duoi.ts) còn thiếu cả tham số.
+Phát hiện phụ: vài buổi cũ có `phong` sai định dạng (`202`/`p202`/`303`/`111`, thiếu tiền tố "P" hoặc
+phòng không tồn tại trong danh mục) — không sửa data trực tiếp (đúng luật xoá/sửa data thật phải hỏi
+trước), việc này sẽ TỰ hết khi ai đó sửa lại buổi qua ô chọn phòng mới (đã ràng buộc theo danh mục `phong`
+từ đợt build Quản lý phòng học — chọn sai sẽ hiện "chưa chọn" thay vì giữ giá trị bẩn).
+
+**Fix (4 file, xuyên suốt DB→type→UI):**
+- `src/lib/botro_duoi.ts`: thêm `gio_ket_thuc?: string | null` vào signature + insert của `taoBuoiDuoi`
+  (trước đây hàm còn chưa nhận tham số này, khác `taoBuoiBu`/`updateBuoiMeta`).
+- `src/lib/botro.ts`: thêm `gio_ket_thuc` vào type `CaBoTro` + câu `.select()` của `taiCaBoTro()` (nguồn
+  chung cho `listCaBoTro`/`listCaBoTroTraVe`) — thiếu ở CẢ select DB lẫn type, không chỉ UI.
+- `src/lib/botro_duoi.ts`: tương tự cho type `CaDuoi` + select của `listCaDuoi`.
+- `src/screens/botro/BoTroDuoiScreen.tsx`: state `meta` (BuoiDuoiDetail) thêm `gio_ket_thuc` — dữ liệu
+  DB đã có sẵn qua `getBuoi()` (select `*`) nhưng bị RỚT ở bước gán `setMeta(...)`, không phải thiếu ở
+  nguồn.
+- `src/screens/botro/BoTroScreen.tsx` (`XepModal`) · `BoTroDuoiScreen.tsx` (`XepDuoiModal`, dạng nhiều
+  dòng) · `SuaBuoiModal.tsx` (dùng chung sửa bù+đuổi): thêm ô "Giờ kết thúc" cạnh "Giờ bắt đầu" (đổi
+  grid-cols-3→4 hoặc thêm cột trong dòng). **Auto-điền +60 phút** khi gõ giờ bắt đầu (hàm `cong60()`,
+  gợi ý theo đúng độ dài ca bổ trợ thường ~1 tiếng — Thùy xác nhận trước đó) nhưng vẫn sửa được, KHÔNG
+  tự ý ghi đè khi đã có giá trị.
+
+**Verify sống trên account thật (`daothuybk@gmail.com`, KHÔNG tạo/sửa data thật):** mở "Xếp bổ trợ" (Bù)
+→ field "Giờ kết thúc" xuất hiện, tự điền 09:00→10:00 đúng logic. Mở "+ Xếp lịch" (Đuổi, dạng nhiều
+dòng) → gõ "15:00" vào Giờ BĐ dòng 1 → Giờ KT tự nhảy "16:00" đúng, các dòng khác không bị ảnh hưởng.
+Đóng cả 2 modal bằng Huỷ (không lưu gì) — chỉ xem UI, không đụng data production. `tsc --noEmit` sạch
+sau khi nối xuyên suốt DB-select→type→state→UI ở cả 2 luồng bù/đuổi.
+
+**Còn treo (không tự làm, cần Thùy xác nhận):** 13 buổi bù + 2 buổi đuổi CŨ đã có phòng nhưng vẫn thiếu
+`gio_ket_thuc` — field mới chỉ áp cho buổi tạo/sửa TỪ GIỜ. Muốn buổi cũ hiện trong Lịch phòng thì cần
+người có liên quan mở Sửa và điền tay (không tự backfill đoán giờ — đúng luật "thà bỏ trống còn hơn
+đánh sai").
