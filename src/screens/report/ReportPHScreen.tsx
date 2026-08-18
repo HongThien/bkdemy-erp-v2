@@ -1,4 +1,5 @@
-// REPORT PHỤ HUYNH (tháng) — leaf riêng. Chọn MÔN → LỚP → HS (giống Kết quả học tập) → tháng.
+// REPORT PHỤ HUYNH (tháng) — leaf riêng. Chọn MÔN → LỚP → cột trái hiện cả lớp, click chọn thẳng HS
+// (giống "Kết quả học tập" — KHÔNG dùng dropdown tìm HS) → tháng.
 // Bố cục: DỮ LIỆU bên TRÁI (bảng theo buổi + tổng quan mastery) · NHẬN XÉT bên PHẢI (3 ô + thanh mức kết luận).
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
@@ -6,6 +7,7 @@ import SearchSelect, { type Opt } from '../../components/SearchSelect'
 import { listLop, listHSCuaLop } from '../../lib/nhansu'
 import { getTongQuanHS, type TongQuanHS } from '../../lib/mastery'
 import { getReportBuoiHS, getBaoCaoPH, upsertBaoCaoPH, getGVChinhLop, BC_EMPTY, type ReportBuoiRow, type BaoCaoPH } from '../../lib/report'
+import { tenHienThiDs } from '../../lib/hoten'
 
 const MON_CO_KHO = ['Toán', 'KHTN']
 // Thang 5 cho skill bar (GV tự chọn). index 0..4 ↔ mức 1..5.
@@ -40,33 +42,38 @@ const CHI_SO: { key: 'cs_thai_do' | 'cs_tap_trung' | 'cs_tiep_thu' | 'cs_tu_duy'
 // màu mức 1..5: 1-2 đỏ, 3 cam, 4 xanh nhạt, 5 xanh đậm (khớp app PH).
 const mucBg = (i: number) => i <= 2 ? 'bg-rose-500' : i === 3 ? 'bg-amber-500' : i === 4 ? 'bg-green-400' : 'bg-emerald-600'
 
+type RosterHS = { id: string; ho_ten: string; ma_hs: string | null; anh_url: string | null }
+
 export default function ReportPHScreen() {
   const [mon, setMon] = useState('Toán')
   const [lopId, setLopId] = useState<string | null>(null)
   const [lopOpts, setLopOpts] = useState<Opt[]>([])
   const [hsId, setHsId] = useState<string | null>(null)
-  const [hsOpts, setHsOpts] = useState<Opt[]>([])
+  const [roster, setRoster] = useState<RosterHS[]>([])
   const [ym, setYm] = useState(curYM())
 
   useEffect(() => {
     setLopId(null); setHsId(null)
     listLop().then((ls) => setLopOpts(ls.filter((l: any) => l.mon === mon).map((l: any) => ({ id: l.id, label: l.ten_lop, sub: l.khoi ? `K${l.khoi}` : undefined })))).catch(() => setLopOpts([]))
   }, [mon])
+  // Đổi lớp → nạp CẢ DANH SÁCH (cột trái, click chọn thẳng — giống "Kết quả học tập"), khỏi phải gõ dropdown.
   useEffect(() => {
-    setHsId(null); setHsOpts([])
+    setHsId(null); setRoster([])
     if (!lopId) return
-    listHSCuaLop(lopId).then((rows: any[]) => setHsOpts(rows.map((r) => r.hoc_sinh).filter(Boolean).sort((a: any, b: any) => String(a.ho_ten).localeCompare(String(b.ho_ten), 'vi')).map((h: any) => ({ id: h.id, label: h.ho_ten, sub: h.ma_hs ?? undefined, img: h.anh_url ?? undefined })))).catch(() => setHsOpts([]))
+    listHSCuaLop(lopId).then((rows: any[]) => setRoster(rows.map((r) => r.hoc_sinh).filter(Boolean)
+      .sort((a: any, b: any) => String(a.ho_ten).localeCompare(String(b.ho_ten), 'vi'))
+      .map((h: any) => ({ id: h.id, ho_ten: h.ho_ten, ma_hs: h.ma_hs ?? null, anh_url: h.anh_url ?? null })))).catch(() => setRoster([]))
   }, [lopId])
 
   const monBtn = (on: boolean) => `h-7 rounded-md px-3 text-[13px] font-semibold transition ${on ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`
   const [yy, mm] = ym.split('-')
+  const hs = roster.find((r) => r.id === hsId) ?? null
   return (
     <div className="flex h-full min-w-0 flex-col bg-[#fafafb]">
       <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 bg-white px-6 py-2.5">
         <span className="mr-2 text-sm font-semibold text-slate-900">Report phụ huynh</span>
         {MON_CO_KHO.map((m) => <button key={m} onClick={() => setMon(m)} className={monBtn(mon === m)}>{m}</button>)}
         <div className="ml-2 w-44"><SearchSelect value={lopId} onChange={setLopId} options={lopOpts} placeholder="Chọn lớp…" /></div>
-        <div className="w-60"><SearchSelect value={hsId} onChange={setHsId} options={hsOpts} placeholder={lopId ? 'Chọn học sinh…' : 'Chọn lớp trước'} avatars /></div>
         <div className="ml-2 flex items-center gap-0.5 rounded-md ring-1 ring-slate-200">
           <button onClick={() => setYm(shiftYM(ym, -1))} className="h-7 rounded-l-md px-2 text-slate-500 hover:bg-slate-100" title="Tháng trước">‹</button>
           <span className="min-w-[92px] text-center text-[13px] font-semibold tabular-nums text-slate-700">Tháng {Number(mm)}/{yy}</span>
@@ -74,9 +81,36 @@ export default function ReportPHScreen() {
         </div>
       </div>
       <div className="min-h-0 flex-1 overflow-auto p-6">
-        {!hsId ? (
-          <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Chọn lớp rồi chọn học sinh để xem report.</div>
-        ) : <ReportBody key={hsId + mon + ym} hsId={hsId} mon={mon} ym={ym} lopId={lopId} hsName={hsOpts.find((o) => o.id === hsId)?.label ?? ''} hsImg={hsOpts.find((o) => o.id === hsId)?.img ?? null} lopTen={lopOpts.find((o) => o.id === lopId)?.label ?? ''} />}
+        {!lopId ? (
+          <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Chọn lớp để xem danh sách học sinh.</div>
+        ) : (
+          <div className="flex gap-4">
+            {/* CỘT TRÁI: danh sách cả lớp, click chọn thẳng — giống "Kết quả học tập" */}
+            <aside className="w-56 shrink-0">
+              <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
+                <div className="border-b border-slate-200 bg-slate-50 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wide text-slate-500">{roster.length} học sinh</div>
+                <div className="max-h-[75vh] overflow-auto">
+                  {(() => { const tenHT = tenHienThiDs(roster.map((r) => r.ho_ten)); return roster.map((r, i) => (
+                    <button key={r.id} onClick={() => setHsId(r.id)} title={r.ho_ten}
+                      className={`flex w-full items-center gap-2 px-3 py-1.5 text-left text-[13px] ${r.id === hsId ? 'bg-indigo-50 font-semibold text-indigo-700' : 'text-slate-700 hover:bg-slate-50'}`}>
+                      {r.anh_url
+                        ? <img src={r.anh_url} alt="" className="h-6 w-6 shrink-0 rounded-full object-cover" />
+                        : <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-[10px] font-semibold text-indigo-600">{r.ho_ten.trim().split(/\s+/).pop()?.[0]?.toUpperCase() ?? '?'}</span>}
+                      <span className="truncate">{tenHT[i]}</span>
+                    </button>
+                  )) })()}
+                  {roster.length === 0 && <p className="px-3 py-2 text-[12px] text-slate-500">Lớp trống.</p>}
+                </div>
+              </div>
+            </aside>
+            {/* CỘT PHẢI: report của HS đang chọn */}
+            <div className="min-w-0 flex-1">
+              {!hs ? (
+                <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Chọn học sinh ở cột trái để xem report.</div>
+              ) : <ReportBody key={hs.id + mon + ym} hsId={hs.id} mon={mon} ym={ym} lopId={lopId} hsName={hs.ho_ten} hsImg={hs.anh_url} lopTen={lopOpts.find((o) => o.id === lopId)?.label ?? ''} />}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   )
