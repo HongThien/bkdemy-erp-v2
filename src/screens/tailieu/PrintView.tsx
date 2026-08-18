@@ -1046,7 +1046,7 @@ const GT_BK_CSS = `
 // @page + dải gradient/footer cho giáo trình BK. `sc` = selector container (vd '.pv-scope-7 ') để 2 pseudo
 // dải chỉ sơn lên trang TRONG container render này (không rò sang render khác — xem comment scope ở effect).
 // @page (margin + số trang + liên hệ) buộc phải toàn cục như buildPagedCss; render đang xem là <style> sau cùng.
-const gtPageCss = (sc: string) => `
+export const gtPageCss = (sc: string) => `
 @page{
   margin:11mm 13mm 15mm;
   @bottom-center{content:"BK Academy   ·   Tel: 0963.209.309   ·   17A10 KĐT Geleximco";font-family:${GT_SANS};color:#6a7a93;font-weight:700;font-size:8pt;vertical-align:middle}
