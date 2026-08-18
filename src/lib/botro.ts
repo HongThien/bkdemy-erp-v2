@@ -13,7 +13,7 @@ export type CanBuItem = { id: string; hoc_sinh_id: string; ho_ten: string; ma_hs
 export type CaBoTroHS = { hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; diem_danh: string | null; lop_bu: string; mon: string; khoi: string | null; bu_cho: string }
 // hs = HS CÒN nằm ở buổi bù này. hsVang = em đã tích vắng ⇒ lần nghỉ gốc đã quay về "Cần bù",
 // em KHÔNG còn là việc của buổi này nữa (giữ lại để hiển thị vết, không tính vào sĩ số).
-export type CaBoTro = { id: string; ngay: string; gio_bat_dau: string | null; phong: string | null; trang_thai: string; et_dong_at: string | null; danh_gia_xong_at: string | null; nguoi_day: string | null; nguoi_day_tg: string | null; gv_ten: string | null; ta_ten: string | null; hs: CaBoTroHS[]; hsVang: CaBoTroHS[] }
+export type CaBoTro = { id: string; ngay: string; gio_bat_dau: string | null; gio_ket_thuc: string | null; phong: string | null; trang_thai: string; et_dong_at: string | null; danh_gia_xong_at: string | null; nguoi_day: string | null; nguoi_day_tg: string | null; gv_ten: string | null; ta_ten: string | null; hs: CaBoTroHS[]; hsVang: CaBoTroHS[] }
 
 // ⭐ MỘT LẦN XẾP BÙ CHỈ "GIẢI QUYẾT" LẦN NGHỈ KHI NÓ THẬT SỰ DIỄN RA (sửa 12/08).
 //
@@ -127,7 +127,7 @@ async function taiCaBoTro(): Promise<CaBoTroFull[]> {
   // Tên GV/TA embed thẳng — buoi_hoc có HAI FK về nhan_su nên PHẢI đặt tên cột (`gv:nguoi_day`),
   // để PostgREST tự đoán là nhập nhằng rồi rỗng âm thầm (HANDOFF §"nhiều FK cùng đích").
   const { data: buois } = await supabase.from('buoi_hoc')
-    .select('id, ngay, gio_bat_dau, phong, trang_thai, et_dong_at, danh_gia_xong_at, nguoi_day, nguoi_day_tg, gv:nguoi_day(ho_ten), ta:nguoi_day_tg(ho_ten)')
+    .select('id, ngay, gio_bat_dau, gio_ket_thuc, phong, trang_thai, et_dong_at, danh_gia_xong_at, nguoi_day, nguoi_day_tg, gv:nguoi_day(ho_ten), ta:nguoi_day_tg(ho_ten)')
     .eq('loai', 'bu').neq('trang_thai', 'huy').order('ngay', { ascending: false }).limit(LIMIT)
   if (!(buois ?? []).length) return []
   const ids = (buois ?? []).map((b: any) => b.id)
