@@ -167,11 +167,16 @@ function GiaoTrinhBuilderHinh({ L, khoi, giaoTrinhId, onClose, onPreview }: {
   const [trichOpen, setTrichOpen] = useState(false)
   const [saved, setSaved] = useState(false)
   const markSaved = () => { setSaved(true); setTimeout(() => setSaved(false), 1500) }
+  // ⭐ 17/08 (Thùy): trước xếp CHỒNG hết mọi buổi trong 1 trang dài — kéo lên kéo xuống mệt khi giáo trình
+  // nhiều buổi. Giờ dropdown chọn ĐÚNG 1 buổi, chỉ buổi đó hiện nội dung (nhẹ hơn nhiều — mỗi buổi không
+  // còn phải tải/giữ state của mọi buổi khác cùng lúc).
+  const [activeId, setActiveId] = useState<string | null>(null)
 
   const nap = useCallback(async () => {
     const [all, bs] = await Promise.all([gt.listGiaoTrinh(khoi), gt.listBuoiMaster(giaoTrinhId)])
     const found = all.find((x) => x.id === giaoTrinhId) ?? null
     setG(found); if (found) setTen(found.ten); setBuois(bs)
+    setActiveId((cur) => (cur && bs.some((b) => b.id === cur)) ? cur : (bs[0]?.id ?? null))
   }, [khoi, giaoTrinhId])
   useEffect(() => { nap() }, [nap])
 
@@ -181,9 +186,11 @@ function GiaoTrinhBuilderHinh({ L, khoi, giaoTrinhId, onClose, onPreview }: {
     setG({ ...g, ten: ten.trim() }); markSaved()
   }
   async function themBuoi() {
-    await gt.createBuoiMaster(giaoTrinhId, { thu_tu: buois.length })
+    const b = await gt.createBuoiMaster(giaoTrinhId, { thu_tu: buois.length })
     await nap()
+    setActiveId(b.id)   // buổi vừa thêm hiện ngay, khỏi phải tự tìm trong dropdown
   }
+  const activeIdx = buois.findIndex((b) => b.id === activeId)
 
   if (!g) return <div className="p-8 text-sm text-slate-400">Đang tải…</div>
   return (
@@ -196,16 +203,24 @@ function GiaoTrinhBuilderHinh({ L, khoi, giaoTrinhId, onClose, onPreview }: {
         <span className={`rounded-md px-2 py-0.5 text-[11px] font-medium transition ${saved ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-400'}`}>{saved ? '✓ Đã lưu' : '↻ Tự động lưu'}</span>
         <Btn className="ml-auto border-violet-300 text-violet-700" onClick={() => setTrichOpen(true)}>⬇ Trích xuất / Gán lớp</Btn>
       </div>
+      <div className="mb-3 flex items-center gap-2">
+        <select value={activeId ?? ''} onChange={(e) => setActiveId(e.target.value || null)} disabled={!buois.length}
+          className="h-9 min-w-[220px] rounded-md border border-slate-300 bg-white px-2.5 text-[13px] font-medium text-slate-700 outline-none focus:border-indigo-400 disabled:bg-slate-50 disabled:text-slate-400">
+          {!buois.length
+            ? <option value="">— chưa có buổi —</option>
+            : buois.map((b, i) => <option key={b.id} value={b.id}>{b.tieu_de || `Buổi ${i + 1}`}</option>)}
+        </select>
+        {buois.length > 0 && <span className="text-[12px] text-slate-400">{activeIdx + 1}/{buois.length}</span>}
+        <button onClick={themBuoi} className="rounded-md border-2 border-dashed border-indigo-200 bg-indigo-50/40 px-3 py-1.5 text-[13px] font-medium text-indigo-700 transition hover:bg-indigo-50">+ Thêm buổi</button>
+      </div>
       <div className="min-h-0 flex-1 overflow-auto">
-        {/* KHÔNG max-w như Đại (860px cho khối Bài-luyện+BTVN hẹp) — mỗi buổi Hình là 3 CỘT (lọc mô
-            hình/chuỗi/tóm tắt), cần rộng hết cỡ khung mới đủ chỗ, bó hẹp là bóp chết cột giữa. */}
-        <div className="space-y-2 pb-6">
-          {buois.length === 0 && <div className="rounded-xl border border-dashed border-slate-300 bg-white p-6 text-center text-[13px] text-slate-400">Chưa có buổi nào. Bấm "+ Thêm buổi" để bắt đầu.</div>}
-          {buois.map((b, i) => (
-            <BuoiCardHinh key={b.id} L={L} buoi={b} no={i + 1} onDeleted={nap} onPreview={onPreview} />
-          ))}
-          <button onClick={themBuoi} className="w-full rounded-xl border-2 border-dashed border-indigo-200 bg-indigo-50/40 py-3 text-[14px] font-medium text-indigo-700 transition hover:bg-indigo-50">+ Thêm buổi</button>
-        </div>
+        {/* KHÔNG max-w như Đại (860px cho khối Bài-luyện+BTVN hẹp) — mỗi buổi Hình là 2 CỘT (lọc mô
+            hình/chuỗi), cần rộng hết cỡ khung mới đủ chỗ, bó hẹp là bóp chết cột giữa. */}
+        {buois.length === 0
+          ? <div className="rounded-xl border border-dashed border-slate-300 bg-white p-6 text-center text-[13px] text-slate-400">Chưa có buổi nào. Bấm "+ Thêm buổi" để bắt đầu.</div>
+          : activeId && (
+            <BuoiCardHinh key={activeId} L={L} buoi={buois[activeIdx]} no={activeIdx + 1} onDeleted={nap} onPreview={onPreview} />
+          )}
       </div>
       {trichOpen && <TrichPanelHinh khoi={khoi} buois={buois} onClose={() => setTrichOpen(false)} />}
     </div>
@@ -259,7 +274,9 @@ function BuoiCardHinh({ L, buoi, no, onDeleted, onPreview }: {
 
   return (
     <div className="mb-2 rounded-xl border border-slate-200 bg-white">
-      <div className="flex items-center gap-2 rounded-t-xl border-b border-slate-100 bg-indigo-50/50 px-4 py-2.5">
+      {/* ⭐ 17/08 (Thùy): "freeze header — giờ cứ phải kéo lên kéo xuống mệt". sticky top-0 trong khung
+          cuộn của GiaoTrinhBuilderHinh — nền ĐẶC (bỏ /50) để nội dung cuộn qua không lộ bóng chữ. */}
+      <div className="sticky top-0 z-10 flex items-center gap-2 rounded-t-xl border-b border-slate-200 bg-indigo-50 px-4 py-2.5">
         <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-teal-500 text-[11.5px] font-bold text-white">{no}</span>
         <input value={tieuDe} onChange={(e) => setTieuDe(e.target.value)} onBlur={saveTen}
           placeholder={`Buổi ${no}`}
