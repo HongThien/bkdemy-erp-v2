@@ -30,7 +30,9 @@ const SB_ANON = process.env.VITE_SUPABASE_KEY // anon key — công khai, KHÔNG
 const KEY_ANTHROPIC = process.env.ANTHROPIC_API_KEY
 const KEY_MOONSHOT = process.env.MOONSHOT_API_KEY
 const KEY_DEEPSEEK = process.env.DEEPSEEK_API_KEY
-const PROVIDER = process.env.TROLY_PROVIDER ?? (KEY_DEEPSEEK ? 'deepseek' : KEY_MOONSHOT ? 'moonshot' : 'anthropic')
+// .trim().toLowerCase() — gõ "DeepSeek"/"Deepseek" trên Vercel vẫn nhận đúng, không âm thầm
+// rớt xuống Anthropic (đã dính thật 19/08: TROLY_PROVIDER lệch hoa/thường → báo nhầm "thiếu ANTHROPIC_API_KEY").
+const PROVIDER = process.env.TROLY_PROVIDER?.trim().toLowerCase() || (KEY_DEEPSEEK ? 'deepseek' : KEY_MOONSHOT ? 'moonshot' : 'anthropic')
 const MOONSHOT_BASE = process.env.MOONSHOT_BASE_URL ?? 'https://api.moonshot.ai/v1'
 const DEEPSEEK_BASE = process.env.DEEPSEEK_BASE_URL ?? 'https://api.deepseek.com/v1'
 

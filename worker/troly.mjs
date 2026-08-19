@@ -44,7 +44,8 @@ if (!SB_URL || !SB_SERVICE) { console.error('Thiếu VITE_SUPABASE_URL / SUPABAS
 const KEY_ANTHROPIC = env('ANTHROPIC_API_KEY')
 const KEY_MOONSHOT = env('MOONSHOT_API_KEY')
 const KEY_DEEPSEEK = env('DEEPSEEK_API_KEY')
-const PROVIDER = env('TROLY_PROVIDER') ?? (KEY_DEEPSEEK ? 'deepseek' : KEY_MOONSHOT ? 'moonshot' : 'anthropic')
+// .trim().toLowerCase() — gõ "DeepSeek"/"Deepseek" vẫn nhận đúng, không âm thầm rớt xuống Anthropic.
+const PROVIDER = env('TROLY_PROVIDER')?.trim().toLowerCase() || (KEY_DEEPSEEK ? 'deepseek' : KEY_MOONSHOT ? 'moonshot' : 'anthropic')
 const MOONSHOT_BASE = env('MOONSHOT_BASE_URL') ?? 'https://api.moonshot.ai/v1'
 const DEEPSEEK_BASE = env('DEEPSEEK_BASE_URL') ?? 'https://api.deepseek.com/v1'
 
