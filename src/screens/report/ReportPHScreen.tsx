@@ -6,9 +6,8 @@ import { createPortal } from 'react-dom'
 import SearchSelect, { type Opt } from '../../components/SearchSelect'
 import { listLop, listHSCuaLop } from '../../lib/nhansu'
 import { getTongQuanHS, type TongQuanHS } from '../../lib/mastery'
-import { getReportBuoiHS, getBaoCaoPH, upsertBaoCaoPH, getGVChinhLop, BC_EMPTY, type ReportBuoiRow, type BaoCaoPH } from '../../lib/report'
+import { getReportBuoiHS, getBaoCaoPH, upsertBaoCaoPH, getGVChinhLop, getKhoiRankDiemMT, BC_EMPTY, type ReportBuoiRow, type BaoCaoPH, type KhoiRankMT } from '../../lib/report'
 import { tenHienThiDs } from '../../lib/hoten'
-import { getKhoiRank, type KhoiRank } from '../../lib/gami'
 
 const MON_CO_KHO = ['Toán', 'KHTN']
 // Thang 5 cho skill bar (GV tự chọn). index 0..4 ↔ mức 1..5.
@@ -415,10 +414,10 @@ const hexPct = (pct: number | null) => pct == null ? '#cbd5e1' : pct >= 80 ? '#0
 
 function PhAnhModal({ hsId, mon, ym, hsName, hsImg, lopTen, gvName, tq, missCount, onClose }: { hsId: string; mon: string; ym: string; hsName: string; hsImg: string | null; lopTen: string; gvName: string | null; tq: TongQuanHS; missCount: number; onClose: () => void }) {
   const [bc, setBc] = useState<BaoCaoPH>({ ...BC_EMPTY })
-  const [khoiRank, setKhoiRank] = useState<KhoiRank | null>(null)
+  const [khoiRank, setKhoiRank] = useState<KhoiRankMT | null>(null)
   const cardRef = useRef<HTMLDivElement>(null)
   useEffect(() => { getBaoCaoPH(hsId, mon, ym).then(setBc).catch(() => {}) }, [hsId, mon, ym])
-  useEffect(() => { setKhoiRank(null); getKhoiRank(hsId, mon).then(setKhoiRank).catch(() => {}) }, [hsId, mon])
+  useEffect(() => { setKhoiRank(null); getKhoiRankDiemMT(hsId, mon, ym).then(setKhoiRank).catch(() => {}) }, [hsId, mon, ym])
 
   function handleCopy() {
     const el = cardRef.current; if (!el) return

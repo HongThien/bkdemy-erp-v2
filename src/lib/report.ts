@@ -97,3 +97,34 @@ export async function upsertBaoCaoPH(hocSinhId: string, mon: string, thang: stri
     { onConflict: 'hoc_sinh_id,mon,thang' })
   if (error) throw error
 }
+
+// Hạng TRONG KHỐI theo ĐIỂM MT TỔNG của đúng tháng report (Thùy 08-19, thay bản Elo trước đó — Elo là
+// thi đấu tích luỹ cả mùa, không phải "của tháng này"). ky_thi.khoi có sẵn (mỗi lớp 1 ky_thi/đợt MT, cùng
+// khối gộp lại) — cửa sổ ngày = 25/tháng→10/tháng sau, ĐÚNG logic getTongQuanHS (MT hay tổ chức cuối/đầu
+// tháng), đọc qua buoi_hoc.ngay vì ky_thi.ngay thực tế luôn NULL cho MT (xem comment ở mastery.ts).
+export type KhoiRankMT = { rankNow: number; rankTotal: number; khoi: string }
+export async function getKhoiRankDiemMT(hocSinhId: string, mon: string, ym: string): Promise<KhoiRankMT | null> {
+  const { data: hs } = await supabase.from('hoc_sinh').select('khoi').eq('id', hocSinhId).maybeSingle()
+  const khoi = (hs as any)?.khoi as string | null
+  if (!khoi) return null
+  const [Y, M] = ym.split('-').map(Number)
+  const nextY = M === 12 ? Y + 1 : Y, nextM = M === 12 ? 1 : M + 1
+  const mtFromDate = `${ym}-25`
+  const mtToDate = `${nextY}-${String(nextM).padStart(2, '0')}-11` // < ngày 11 = qua hết mùng 10
+  const { data: kts } = await supabase.from('ky_thi').select('id, buoi:buoi_hoc_id(ngay)')
+    .eq('loai', 'mt_sat_hach').eq('mon', mon).eq('khoi', khoi).limit(LIMIT)
+  const ktIds = ((kts ?? []) as any[]).filter((k) => { const d = k.buoi?.ngay; return d && d >= mtFromDate && d < mtToDate }).map((k) => k.id)
+  if (!ktIds.length) return null
+  const { data: dt } = await supabase.from('diem_thi').select('hoc_sinh_id, diem').in('ky_thi_id', ktIds).limit(LIMIT)
+  const sums = new Map<string, { sum: number; n: number }>()
+  for (const r of (dt ?? []) as any[]) {
+    if (r.diem == null) continue
+    const a = sums.get(r.hoc_sinh_id) ?? { sum: 0, n: 0 }; a.sum += Number(r.diem); a.n++; sums.set(r.hoc_sinh_id, a)
+  }
+  const mine = sums.get(hocSinhId)
+  if (!mine) return null // HS không có điểm MT trong cửa sổ tháng này → không xếp hạng được
+  const myAvg = mine.sum / mine.n
+  const allAvg = [...sums.values()].map((a) => a.sum / a.n)
+  const rankNow = 1 + allAvg.filter((x) => x > myAvg).length
+  return { rankNow, rankTotal: allAvg.length, khoi }
+}
