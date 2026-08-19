@@ -19,13 +19,19 @@ const TD_LABEL: Record<string, string> = { nghiem_tuc: 'Nghiêm túc', chua_het_
 const TD_CLS: Record<string, string> = { nghiem_tuc: 'text-emerald-700', chua_het_suc: 'text-amber-700', chua_nghiem_tuc: 'text-rose-700', chong_doi: 'text-rose-800 font-bold' }
 const pctCls = (p: number | null) => p == null ? 'text-slate-300' : p >= 80 ? 'text-emerald-700' : p >= 50 ? 'text-amber-700' : 'text-rose-700'
 const fmtNgay = (iso: string) => { const d = new Date(iso + 'T00:00:00'); return isNaN(+d) ? iso : d.toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit' }) }
-// Thanh mức kết luận (5 bậc, tốt → cần lưu ý)
+// Thanh mức kết luận (7 bậc, Thùy 08-19): trộn 2 trục CÓ CHỦ ĐÍCH — mức tuyệt đối (rất tốt/đạt yêu cầu)
+// ưu tiên cao nhất; "đang tiến bộ" (xu hướng) chen lên TRÊN 2 mức "cần cải thiện/gặp vấn đề" vì với PH,
+// tin "con đang tiến bộ" quan trọng hơn xu hướng ổn định ở mức thấp — giấu cái ít quan trọng hơn để thông
+// điệp rõ ràng nhất (bố mẹ đọc xong phải biết ngay có cần lo hay không). 2 cặp cần-cải-thiện/gặp-vấn-đề
+// tách theo TRỤC (thái độ ≠ kiến thức&kĩ năng) — CÙNG màu trong mỗi cặp, không xếp trục nào nặng hơn.
 export const KET_LUAN_MUC = [
-  { key: 'vuot_bac', label: 'Con đang tiến bộ', emoji: '🚀', dot: 'bg-emerald-500', sel: 'bg-emerald-600 text-white ring-emerald-600' },
-  { key: 'tien_bo', label: 'Con đang xu hướng đi lên', emoji: '📈', dot: 'bg-green-400', sel: 'bg-green-500 text-white ring-green-500' },
-  { key: 'on_dinh', label: 'Con đang ổn định', emoji: '⚖️', dot: 'bg-sky-400', sel: 'bg-sky-500 text-white ring-sky-500' },
-  { key: 'di_xuong', label: 'Con đang chưa ổn định', emoji: '📉', dot: 'bg-amber-400', sel: 'bg-amber-500 text-white ring-amber-500' },
-  { key: 'can_ho_tro', label: 'Con đang có xu hướng đi xuống', emoji: '🆘', dot: 'bg-rose-400', sel: 'bg-rose-500 text-white ring-rose-500' },
+  { key: 'rat_tot', label: 'Con học rất tốt', emoji: '🌟', dot: 'bg-emerald-500', sel: 'bg-emerald-600 text-white ring-emerald-600' },
+  { key: 'dat_yeu_cau', label: 'Con đạt yêu cầu', emoji: '✅', dot: 'bg-green-400', sel: 'bg-green-500 text-white ring-green-500' },
+  { key: 'tien_bo', label: 'Con đang tiến bộ', emoji: '📈', dot: 'bg-sky-400', sel: 'bg-sky-500 text-white ring-sky-500' },
+  { key: 'cai_thien_thai_do', label: 'Con cần cải thiện thái độ học tập', emoji: '⚠️', dot: 'bg-amber-400', sel: 'bg-amber-500 text-white ring-amber-500' },
+  { key: 'cai_thien_kien_thuc', label: 'Con cần cải thiện kiến thức và kĩ năng', emoji: '⚠️', dot: 'bg-amber-400', sel: 'bg-amber-500 text-white ring-amber-500' },
+  { key: 'van_de_thai_do', label: 'Con gặp vấn đề về thái độ học tập', emoji: '🆘', dot: 'bg-rose-500', sel: 'bg-rose-600 text-white ring-rose-600' },
+  { key: 'van_de_kien_thuc', label: 'Con gặp vấn đề về kiến thức và kĩ năng', emoji: '🆘', dot: 'bg-rose-500', sel: 'bg-rose-600 text-white ring-rose-600' },
 ] as const
 
 // Band năng lực GV chọn (cao → thấp). 7 chỉ số phát triển (mức 1..5).
@@ -395,11 +401,13 @@ function NhanXet({ hsId, mon, ym }: { hsId: string; mon: string; ym: string }) {
 
 // ── ẢNH GỬI PHỤ HUYNH — thẻ inline-hex (né oklch Tailwind v4), layout kiểu tab Kết quả app PH ──
 const MUC_HEX: Record<string, { bg: string; fg: string; emoji: string; label: string }> = {
-  vuot_bac: { bg: '#ecfdf5', fg: '#047857', emoji: '🚀', label: 'Con đang tiến bộ' },
-  tien_bo: { bg: '#f0fdf4', fg: '#15803d', emoji: '📈', label: 'Con đang xu hướng đi lên' },
-  on_dinh: { bg: '#f0f9ff', fg: '#0369a1', emoji: '⚖️', label: 'Con đang ổn định' },
-  di_xuong: { bg: '#fffbeb', fg: '#b45309', emoji: '📉', label: 'Con đang chưa ổn định' },
-  can_ho_tro: { bg: '#fff1f2', fg: '#be123c', emoji: '🆘', label: 'Con đang có xu hướng đi xuống' },
+  rat_tot: { bg: '#ecfdf5', fg: '#047857', emoji: '🌟', label: 'Con học rất tốt' },
+  dat_yeu_cau: { bg: '#f0fdf4', fg: '#15803d', emoji: '✅', label: 'Con đạt yêu cầu' },
+  tien_bo: { bg: '#f0f9ff', fg: '#0369a1', emoji: '📈', label: 'Con đang tiến bộ' },
+  cai_thien_thai_do: { bg: '#fffbeb', fg: '#b45309', emoji: '⚠️', label: 'Con cần cải thiện thái độ học tập' },
+  cai_thien_kien_thuc: { bg: '#fffbeb', fg: '#b45309', emoji: '⚠️', label: 'Con cần cải thiện kiến thức và kĩ năng' },
+  van_de_thai_do: { bg: '#fff1f2', fg: '#be123c', emoji: '🆘', label: 'Con gặp vấn đề về thái độ học tập' },
+  van_de_kien_thuc: { bg: '#fff1f2', fg: '#be123c', emoji: '🆘', label: 'Con gặp vấn đề về kiến thức và kĩ năng' },
 }
 const s10 = (pct: number | null) => pct == null ? '—' : (pct / 10).toFixed(1)
 const hexPct = (pct: number | null) => pct == null ? '#cbd5e1' : pct >= 80 ? '#059669' : pct >= 50 ? '#d97706' : '#e11d48'
