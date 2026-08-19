@@ -16,10 +16,10 @@
 //   `scripts/check-troly.mjs`. Model CHỈ đọc bảng đó rồi trò chuyện — không tự tính, không
 //   tự đổi trạng thái gì. Hai tầng dưới chạy được cả khi worker tắt.
 // ============================================================================
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   nhacViecHomNay, nhanDinhHeThong, ghiQuyetDinhNhanDinh, anhChupChuoiDuoi,
-  hoiTroLy, docDap,
+  hoiTroLy,
   type BangNhac, type LuotHoi, type NhanDinh, type QuyetDinh, type AnhChupDuoi,
 } from '../../lib/troly'
 import { mangYeu, mangTestDauVao, type MangYeu, type MangTest } from '../../lib/troly-modules'
@@ -153,7 +153,9 @@ function KetQuaView({ k }: { k: KetQuaCongCu }) {
 // CEO 12/08: *"trợ lý đưa ra 1 đống thứ. t cần trao đổi với nó như đang trao đổi với m.
 // chứ hệ thống đưa ra thì khác gì dashboard và việc của tôi nhỉ"*. Đúng — danh sách là
 // dashboard; thứ biến nó thành trợ lý là HỎI ĐƯỢC.
-// Client ghi job → `worker/troly.mjs` quét mỗi 3s → ghi câu trả lời. Key model ở SERVER.
+// Gọi thẳng `api/troly.mjs` (serverless function Vercel) — ĐỒNG BỘ, không còn ghi job rồi
+// chờ worker polling (CEO 19/08: worker đứng-một-mình-24/7 không hợp hạ tầng đang có). Key
+// model vẫn CHỈ nằm ở server (biến môi trường Vercel), y hệt ranh giới cũ.
 const GOI_Y = ['Hôm nay nên bắt đầu từ đâu?', 'Cái nào bỏ được?', 'Có gì bất thường không?']
 
 type LuotHienThi = LuotHoi & { ketQua?: KetQuaCongCu }
@@ -164,48 +166,23 @@ function Chat() {
   const [hoi, setHoi] = useState('')
   const [dangCho, setDangCho] = useState(false)
   const [loi, setLoi] = useState<string | null>(null)
-  const [canhBao, setCanhBao] = useState<string | null>(null)
-  const dungLai = useRef(false)
-  // ⚠ PHẢI reset về false trong THÂN effect, không chỉ set true ở cleanup.
-  //   <StrictMode> (bật ở main.tsx) chạy mount → unmount → mount lại ở dev. Cleanup của lần
-  //   unmount giả đặt cờ = true, mà không có dòng reset thì cờ ĐỨNG NGUYÊN true mãi ⇒ vòng
-  //   chờ `!dungLai.current` không chạy nổi một vòng ⇒ không bao giờ đọc kết quả, không bao
-  //   giờ tắt trạng thái chờ → giao diện "đơ" ở "Đang đọc dữ liệu…" dù server đã trả lời xong.
-  //   (Dính thật 12/08: job done trong 14s, UI treo vô hạn.)
-  useEffect(() => { dungLai.current = false; return () => { dungLai.current = true } }, [])
 
   async function gui(cauHoi: string) {
     const q = cauHoi.trim()
     if (!q || dangCho) return
-    setHoi(''); setLoi(null); setCanhBao(null); setDangCho(true)
+    setHoi(''); setLoi(null); setDangCho(true)
     try {
-      const id = await hoiTroLy(phien, q, luot)
-      // Chờ worker. Không dùng realtime cho đơn giản — hỏi–đáp vài lượt/ngày, poll là đủ.
-      for (let i = 0; i < 120 && !dungLai.current; i++) {
-        await new Promise((r) => setTimeout(r, 1500))
-        const d = await docDap(id)
-        if (d?.trang_thai === 'done') {
-          if (d.cong_cu) {
-            // Model chọn công cụ tra cứu thay vì trả lời văn bản — CHẠY Ở ĐÂY (client, session
-            // thật của người hỏi) chứ không phải ở worker (xem troly-tracuu.ts đầu file).
-            const ketQua = await chayCongCu(d.cong_cu, d.tham_so).catch((e): KetQuaCongCu => ({ loai: 'loi', thongDiep: e?.message ?? String(e) }))
-            setLuot((l) => [...l, { hoi: q, dap: '(đã tra cứu và hiển thị kết quả bên dưới)', ketQua }])
-          } else {
-            setLuot((l) => [...l, { hoi: q, dap: d.tra_loi ?? '' }])
-          }
-          setDangCho(false); return
-        }
-        if (d?.trang_thai === 'failed') { setLoi(d.error ?? 'Không trả lời được.'); setDangCho(false); return }
-        // Vẫn 'pending' sau ~9s = KHÔNG AI NHẶT JOB ⇒ worker chưa bật. Phân biệt hẳn với
-        // "worker chạy nhưng lỗi" — hai ca này cần hai hành động khác nhau, mà nếu chỉ
-        // hiện "đang chờ" thì người dùng ngồi đoán (đã dính 12/08: job failed ngay trong
-        // 0 giây mà vẫn tưởng là nó đang nghĩ lâu).
-        if (i === 6 && d?.trang_thai === 'pending') {
-          setCanhBao('Worker chưa nhặt job — nhiều khả năng chưa bật. Chạy `npm run worker:troly` ở một cửa sổ terminal riêng.')
-        }
+      const d = await hoiTroLy(phien, q, luot)
+      if (d.congCu) {
+        // Model chọn công cụ tra cứu thay vì trả lời văn bản — CHẠY Ở ĐÂY (client, session
+        // thật của người hỏi) chứ không phải ở server (xem troly-tracuu.ts đầu file).
+        const ketQua = await chayCongCu(d.congCu, d.thamSo).catch((e): KetQuaCongCu => ({ loai: 'loi', thongDiep: e?.message ?? String(e) }))
+        setLuot((l) => [...l, { hoi: q, dap: '(đã tra cứu và hiển thị kết quả bên dưới)', ketQua }])
+      } else {
+        setLuot((l) => [...l, { hoi: q, dap: d.traLoi ?? '' }])
       }
-      if (!dungLai.current) { setLoi('Quá lâu không có trả lời. Xem log của `npm run worker:troly`.'); setDangCho(false) }
-    } catch (e: any) { setLoi(e?.message ?? String(e)); setDangCho(false) }
+    } catch (e: any) { setLoi(e?.message ?? String(e)) }
+    finally { setDangCho(false) }
   }
 
   return (
@@ -234,7 +211,6 @@ function Chat() {
         </div>
       )}
       {dangCho && <div className="mt-2.5 text-[13px] text-slate-400">Đang đọc dữ liệu…</div>}
-      {canhBao && <div className="mt-2.5 rounded-lg bg-amber-50 px-3 py-2 text-[12.5px] text-amber-800">{canhBao}</div>}
       {loi && <div className="mt-2.5 rounded-lg border border-rose-300 bg-rose-50 px-3 py-2 text-[12.5px] font-medium text-rose-700">⚠ {loi}</div>}
       <form onSubmit={(e) => { e.preventDefault(); gui(hoi) }} className="mt-3 flex gap-2">
         <input value={hoi} onChange={(e) => setHoi(e.target.value)} disabled={dangCho}

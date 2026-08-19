@@ -647,28 +647,22 @@ export async function boiCanhChoHoi(): Promise<BoiCanhTroLy> {
 }
 
 export type LuotHoi = { hoi: string; dap: string }
-export type PhienDap = {
-  id: string; trang_thai: 'pending' | 'processing' | 'done' | 'failed'; tra_loi: string | null; error: string | null; usage: any; model: string | null
-  cong_cu: string | null; tham_so: any // model chọn công cụ tra cứu thay vì trả lời văn bản (Phần 1 — Query, xem troly-tracuu.ts)
-}
+export type DapTroLy = { traLoi: string | null; congCu: string | null; thamSo: any }
 
-// Ghi job → `worker/troly.mjs` quét mỗi 5s. Key Anthropic Ở SERVER, không vào bundle browser.
-export async function hoiTroLy(phien: string, cauHoi: string, lichSu: LuotHoi[]): Promise<string> {
+// Gọi thẳng serverless function `api/troly.mjs` (Vercel) — KHÔNG còn ghi job rồi chờ worker
+// polling nữa (CEO 19/08: worker đứng-một-mình-24/7 không hợp hạ tầng đang có). Key AI vẫn
+// CHỈ nằm ở server (biến môi trường Vercel), y hệt ranh giới cũ — chỉ đổi CÁCH gọi.
+export async function hoiTroLy(phien: string, cauHoi: string, lichSu: LuotHoi[]): Promise<DapTroLy> {
   const boiCanh = await boiCanhChoHoi()
   const { data: au } = await supabase.auth.getUser()
-  const { data, error } = await supabase.from('troly_hoi_dap').insert({
-    phien, cau_hoi: cauHoi.trim(), boi_canh: boiCanh,
-    lich_su: lichSu.slice(-6), // giữ 6 lượt gần nhất — đủ mạch, không phình token vô hạn
-    nguoi: au.user?.id ?? null,
-  }).select('id').single()
-  if (error) throw error
-  return (data as any).id
-}
-
-export async function docDap(id: string): Promise<PhienDap | null> {
-  const { data } = await supabase.from('troly_hoi_dap')
-    .select('id, trang_thai, tra_loi, error, usage, model, cong_cu, tham_so').eq('id', id).maybeSingle()
-  return (data as any) ?? null
+  const res = await fetch('/api/troly', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ phien, cauHoi: cauHoi.trim(), boiCanh, lichSu: lichSu.slice(-6), nguoi: au.user?.id ?? null }),
+  })
+  const j = await res.json().catch(() => null)
+  if (!res.ok) throw new Error(j?.error ?? `Lỗi máy chủ (HTTP ${res.status}).`)
+  return { traLoi: j?.traLoi ?? null, congCu: j?.congCu ?? null, thamSo: j?.thamSo ?? null }
 }
 
 // ════════════════════════════════════════════════════════════════════════════
