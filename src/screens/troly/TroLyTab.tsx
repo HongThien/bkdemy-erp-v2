@@ -219,9 +219,10 @@ function Chat() {
         <button type="submit" disabled={dangCho || !hoi.trim()}
           className="rounded-lg bg-indigo-600 px-4 py-2 text-[13px] font-medium text-white disabled:opacity-40">Hỏi</button>
       </form>
-      {/* Nói thẳng giới hạn: model CHỈ đọc bảng dưới, không tự tính, không biết gì ngoài đó. */}
+      {/* Nói thẳng giới hạn (tư vấn) + phạm vi tra cứu (query) — 2 việc khác hẳn nhau, CEO 18/08. */}
       <p className="mt-2 text-[11.5px] leading-relaxed text-slate-400">
-        Trợ lý chỉ đọc đúng bảng số ở dưới — không tự tính, không biết gì ngoài phạm vi đó. Hỏi ngoài thì nó sẽ nói là không có.
+        Nhận định/gợi ý: trợ lý chỉ đọc đúng bảng số ở dưới — không tự tính, không biết gì ngoài phạm vi đó, hỏi ngoài thì nó nói là không có.
+        Tra cứu 1 người/lớp cụ thể (học tập, BTVN, MT, học phí, tình trạng làm việc) thì hỏi thẳng tên — vd "học phí của Nguyễn Văn A tháng 7".
       </p>
     </div>
   )
