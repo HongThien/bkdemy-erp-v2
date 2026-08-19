@@ -277,9 +277,19 @@ function NhanXet({ hsId, mon, ym }: { hsId: string; mon: string; ym: string }) {
     try { await upsertBaoCaoPH(hsId, mon, ym, patch); setSaved(tag); setTimeout(() => setSaved((s) => (s === tag ? null : s)), 1500) } catch { /* ignore */ }
   }
   const box = 'w-full resize-y rounded-lg border border-slate-200 bg-slate-50/50 px-2.5 py-2 text-[13px] leading-relaxed focus:border-indigo-300 focus:bg-white focus:outline-none'
+  const locked = val.cong_bo_at != null // đã công bố → khoá sửa (bấm "Mở lại để sửa" mới chỉnh được)
+  const congBoLabel = val.cong_bo_at ? new Date(val.cong_bo_at).toLocaleString('vi-VN', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) : ''
   return (
     <div>
       <h3 className="mb-2 text-[13px] font-semibold uppercase tracking-wider text-slate-500">Nhận xét của giáo viên</h3>
+      {/* CỔNG CÔNG BỐ: nháp → PH không thấy; chốt → lên app. Khoá sửa khi đã công bố. */}
+      <div className={`mb-2 flex items-center justify-between gap-2 rounded-xl px-3 py-2 text-[12px] ring-1 ${locked ? 'bg-emerald-50 text-emerald-800 ring-emerald-200' : 'bg-amber-50 text-amber-800 ring-amber-200'}`}>
+        <span className="font-semibold">{locked ? `✓ Đã công bố${congBoLabel ? ' · ' + congBoLabel : ''} — phụ huynh đang xem` : '● Nháp — phụ huynh CHƯA thấy báo cáo này'}</span>
+        {locked
+          ? <button onClick={() => save({ cong_bo_at: null }, 'congbo')} className="shrink-0 rounded-lg border border-emerald-300 bg-white px-2.5 py-1 font-semibold text-emerald-700 hover:bg-emerald-100">Mở lại để sửa</button>
+          : <button onClick={() => { if (confirm('Chốt & công bố báo cáo tháng này? Phụ huynh sẽ thấy ngay trên app.')) save({ cong_bo_at: new Date().toISOString() }, 'congbo') }} className="shrink-0 rounded-lg bg-emerald-600 px-3 py-1 font-bold text-white shadow-sm hover:bg-emerald-500">Chốt &amp; công bố</button>}
+      </div>
+      <fieldset disabled={locked} className={locked ? 'opacity-60' : ''} style={{ border: 'none', margin: 0, padding: 0, minInlineSize: 'auto' }}>
       <div className="space-y-3">
         {/* NĂNG LỰC: band (GV chọn) + điểm + sai số */}
         <div className="rounded-xl border border-indigo-200 bg-indigo-50/40 p-3 shadow-sm">
@@ -394,7 +404,8 @@ function NhanXet({ hsId, mon, ym }: { hsId: string; mon: string; ym: string }) {
           <textarea defaultValue={val.muc_tieu ?? ''} onBlur={(e) => save({ muc_tieu: e.target.value.trim() || null }, 'muc_tieu')} placeholder="Định hướng / mục tiêu cụ thể tháng tới…" rows={2} className={box} />
         </div>
       </div>
-      <p className="mt-2 text-[11px] text-slate-400">Tự lưu khi rời ô / chọn mức. {mon} · tháng {Number(ym.split('-')[1])}/{ym.split('-')[0]}.</p>
+      </fieldset>
+      <p className="mt-2 text-[11px] text-slate-400">{locked ? 'Đã công bố — bấm “Mở lại để sửa” nếu cần chỉnh.' : 'Tự lưu khi rời ô / chọn mức. Bấm “Chốt & công bố” để phụ huynh thấy.'} {mon} · tháng {Number(ym.split('-')[1])}/{ym.split('-')[0]}.</p>
     </div>
   )
 }
