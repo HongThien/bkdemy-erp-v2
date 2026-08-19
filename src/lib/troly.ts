@@ -652,13 +652,22 @@ export type DapTroLy = { traLoi: string | null; congCu: string | null; thamSo: a
 // Gọi thẳng serverless function `api/troly.mjs` (Vercel) — KHÔNG còn ghi job rồi chờ worker
 // polling nữa (CEO 19/08: worker đứng-một-mình-24/7 không hợp hạ tầng đang có). Key AI vẫn
 // CHỈ nằm ở server (biến môi trường Vercel), y hệt ranh giới cũ — chỉ đổi CÁCH gọi.
+//
+// ⭐ KHÔNG cần SUPABASE_SERVICE_ROLE cho ghi log (CEO 19/08 hỏi "đặt ở đây có rủi ro gì
+// không" — đúng, key service-role bỏ qua MỌI RLS, không cần tới khi việc ghi log này vốn
+// đã được `troly_hoi_dap`'s policy cho phép qua chính quyền người hỏi). Gửi kèm access
+// token của phiên đăng nhập hiện tại → server dùng ĐÚNG token đó để ghi, bị RLS lọc y hệt
+// mọi thao tác khác trong app — không có secret mạnh nào cần thêm trên Vercel.
 export async function hoiTroLy(phien: string, cauHoi: string, lichSu: LuotHoi[]): Promise<DapTroLy> {
   const boiCanh = await boiCanhChoHoi()
-  const { data: au } = await supabase.auth.getUser()
+  const { data: { session } } = await supabase.auth.getSession()
   const res = await fetch('/api/troly', {
     method: 'POST',
-    headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({ phien, cauHoi: cauHoi.trim(), boiCanh, lichSu: lichSu.slice(-6), nguoi: au.user?.id ?? null }),
+    headers: {
+      'content-type': 'application/json',
+      ...(session?.access_token ? { authorization: `Bearer ${session.access_token}` } : {}),
+    },
+    body: JSON.stringify({ phien, cauHoi: cauHoi.trim(), boiCanh, lichSu: lichSu.slice(-6) }),
   })
   const j = await res.json().catch(() => null)
   if (!res.ok) throw new Error(j?.error ?? `Lỗi máy chủ (HTTP ${res.status}).`)

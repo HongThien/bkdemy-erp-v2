@@ -8,10 +8,14 @@
 // bundle browser (đúng bài học "vụ 920k"). Không còn tiến trình polling nào phải bật tay/24-7 —
 // function này CHỈ chạy khi có request, do CHÍNH lần deploy Vercel đang có, không thêm hạ tầng.
 //
-// Cần khai trên Vercel (Project Settings → Environment Variables), TÊN Y HỆT worker cũ:
-//   VITE_SUPABASE_URL · SUPABASE_SERVICE_ROLE
+// Cần khai trên Vercel (Project Settings → Environment Variables):
 //   ANTHROPIC_API_KEY và/hoặc MOONSHOT_API_KEY và/hoặc DEEPSEEK_API_KEY
 //   TROLY_PROVIDER / TROLY_MODEL / MOONSHOT_BASE_URL / DEEPSEEK_BASE_URL (tuỳ chọn)
+// ⭐ KHÔNG cần SUPABASE_SERVICE_ROLE (CEO 19/08 hỏi đúng: "đặt ở đây có rủi ro gì không" —
+//   có, key đó bỏ qua MỌI RLS). Ghi log CHỈ dùng VITE_SUPABASE_URL/VITE_SUPABASE_KEY —
+//   cả hai đã CÔNG KHAI sẵn trong bundle browser (client đọc y hệt), không phải secret mới —
+//   kèm token đăng nhập THẬT của người hỏi (forward qua header Authorization) nên vẫn bị RLS
+//   lọc đúng như mọi thao tác khác trong app, không mở thêm đường nào bỏ qua quyền.
 //
 // ⚠ Test cục bộ qua `npm run dev` (Vite) KHÔNG chạy được file này — Vite dev server không phục
 // vụ /api. Muốn test tay trước khi đẩy thì dùng `vercel dev` (Vercel CLI), hoặc đẩy thẳng lên
@@ -22,7 +26,7 @@ import { SYSTEM, GIOI_HAN } from '../worker/troly_prompt.mjs'
 import { TROLY_TOOLS } from '../src/lib/troly-tools.mjs'
 
 const SB_URL = process.env.VITE_SUPABASE_URL
-const SB_SERVICE = process.env.SUPABASE_SERVICE_ROLE
+const SB_ANON = process.env.VITE_SUPABASE_KEY // anon key — công khai, KHÔNG phải secret (đã có sẵn trong bundle browser)
 const KEY_ANTHROPIC = process.env.ANTHROPIC_API_KEY
 const KEY_MOONSHOT = process.env.MOONSHOT_API_KEY
 const KEY_DEEPSEEK = process.env.DEEPSEEK_API_KEY
@@ -98,12 +102,19 @@ function tien(usage) {
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' })
-  if (!SB_URL || !SB_SERVICE) return res.status(500).json({ error: 'Server thiếu cấu hình Supabase (VITE_SUPABASE_URL/SUPABASE_SERVICE_ROLE trên Vercel).' })
+  if (!SB_URL || !SB_ANON) return res.status(500).json({ error: 'Server thiếu cấu hình Supabase (VITE_SUPABASE_URL/VITE_SUPABASE_KEY trên Vercel).' })
 
-  const { phien, cauHoi, boiCanh, lichSu, nguoi } = req.body ?? {}
+  // ⭐ Client theo ĐÚNG token của người hỏi (forward nguyên header) — mọi request PostgREST
+  // qua client này bị RLS lọc y hệt họ tự thao tác trên app, KHÔNG bỏ qua quyền của ai.
+  const authHeader = req.headers.authorization
+  if (!authHeader) return res.status(401).json({ error: 'Thiếu đăng nhập — mở lại trang rồi thử lại.' })
+  const svc = createClient(SB_URL, SB_ANON, { global: { headers: { Authorization: authHeader } } })
+  const { data: { user }, error: eUser } = await svc.auth.getUser(authHeader.replace(/^Bearer\s+/i, ''))
+  if (eUser || !user) return res.status(401).json({ error: 'Phiên đăng nhập hết hạn — mở lại trang rồi thử lại.' })
+
+  const { phien, cauHoi, boiCanh, lichSu } = req.body ?? {}
   if (!cauHoi || !boiCanh) return res.status(400).json({ error: 'Thiếu cauHoi/boiCanh.' })
 
-  const svc = createClient(SB_URL, SB_SERVICE)
   const lichSuCat = (lichSu ?? []).slice(-6) // giữ 6 lượt gần nhất — đủ mạch, không phình token vô hạn
   const messages = []
   for (const l of lichSuCat) { messages.push({ role: 'user', content: l.hoi }); messages.push({ role: 'assistant', content: l.dap }) }
@@ -123,7 +134,7 @@ export default async function handler(req, res) {
     // Ghi log (boi_canh giữ nguyên để truy lại "vì sao lúc đó nói thế" — xem migration gốc).
     await svc.from('troly_hoi_dap').insert({
       phien, cau_hoi: cauHoi.trim(), boi_canh: boiCanh, lich_su: lichSuCat,
-      trang_thai: 'done', usage: ket.usage, model: `${PROVIDER}/${MODEL}`, nguoi: nguoi ?? null, done_at: new Date().toISOString(),
+      trang_thai: 'done', usage: ket.usage, model: `${PROVIDER}/${MODEL}`, nguoi: user.id, done_at: new Date().toISOString(),
       ...(ket.type === 'tool' ? { cong_cu: ket.name, tham_so: ket.args } : { tra_loi: ket.text }),
     })
 
@@ -132,7 +143,7 @@ export default async function handler(req, res) {
     const thongDiep = e?.message ?? String(e)
     await svc.from('troly_hoi_dap').insert({
       phien, cau_hoi: cauHoi.trim(), boi_canh: boiCanh, lich_su: lichSuCat,
-      trang_thai: 'failed', error: thongDiep, nguoi: nguoi ?? null, done_at: new Date().toISOString(),
+      trang_thai: 'failed', error: thongDiep, nguoi: user.id, done_at: new Date().toISOString(),
     }).then(() => {}, () => {}) // log lỗi cũng có thể lỗi (vd mất kết nối) — đừng để nó che mất lỗi gốc
     return res.status(502).json({ error: thongDiep })
   }
