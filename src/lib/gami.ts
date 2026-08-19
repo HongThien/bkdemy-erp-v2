@@ -496,6 +496,22 @@ export async function gradeET(p: { buoiId: string; problemId: string; hocSinhId:
   if (error) throw error
 }
 
+// Tích hàng loạt: 1 HS × TOÀN BỘ câu = cùng 1 verdict, MỘT lần upsert (thay vì N lần gọi gradeET).
+// Ca dùng (CEO 16/08): đề 60 câu, HS đúng 59 — tích "Tất cả Đ" 1 phát, xong sửa riêng câu sai. Không
+// suy đoán mã lỗi (loi=[]) cho mọi ô: GV mở ô cần sửa gắn lỗi sau, đúng luật §1.5 "thà bỏ trống hơn
+// đánh sai" — bulk verdict là quyết định thật của GV, còn LOẠI lỗi cụ thể thì không.
+export async function gradeETBulk(p: { buoiId: string; hocSinhId: string; problemIds: string[]; result: ETResult }): Promise<void> {
+  if (!p.problemIds.length) return
+  const points = problemPoints({ result: p.result, presentation: 'clean', speed: 'normal' })
+  const { data: { user } } = await supabase.auth.getUser()
+  const rows = p.problemIds.map((problemId) => ({
+    buoi_hoc_id: p.buoiId, problem_id: problemId, hoc_sinh_id: p.hocSinhId,
+    result: p.result, presentation: 'clean', speed: 'normal', points, loi: [] as string[], graded_by: user?.id ?? null,
+  }))
+  const { error } = await supabase.from('gami_grades').upsert(rows, { onConflict: 'problem_id,hoc_sinh_id' })
+  if (error) throw error
+}
+
 // Bỏ chấm 1 ô (HS × bài): xoá dòng grade (anti-NULL: chưa đo = không có dòng). Dùng khi click lại mức đang chọn.
 export async function deleteGrade(problemId: string, hocSinhId: string): Promise<void> {
   const { error } = await supabase.from('gami_grades').delete().match({ problem_id: problemId, hoc_sinh_id: hocSinhId })
