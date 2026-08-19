@@ -29,6 +29,7 @@ import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { createClient } from '@supabase/supabase-js'
 import { SYSTEM, GIOI_HAN } from './troly_prompt.mjs'
+import { TROLY_TOOLS } from '../src/lib/troly-tools.mjs'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const POLL_MS = 3000            // chat thì độ trễ cảm nhận được — quét dày hơn danhgia (5s)
@@ -63,12 +64,20 @@ const USD_VND = 26_000
 const MODEL = env('TROLY_MODEL') ?? (PROVIDER === 'moonshot' ? 'kimi-k2-turbo-preview' : PROVIDER === 'deepseek' ? 'deepseek-chat' : 'claude-sonnet-5')
 const svc = createClient(SB_URL, SB_SERVICE)
 
+// ── CÔNG CỤ TRA CỨU ("Phần 1 — Query", CEO 18/08) ───────────────────────────
+// Model CHỈ chọn tên công cụ + điền tham số THÔ — KHÔNG tự query DB (worker chạy service-role,
+// bỏ qua RLS; để nó tự trả data là xuyên thẳng qua công siết quyền vừa làm). Client (browser,
+// session thật người hỏi) mới là nơi THỰC SỰ chạy query — xem src/lib/troly-tracuu.ts.
+const ANTHROPIC_TOOLS = TROLY_TOOLS.map((t) => ({ name: t.name, description: t.mo_ta, input_schema: t.tham_so }))
+const OPENAI_TOOLS = TROLY_TOOLS.map((t) => ({ type: 'function', function: { name: t.name, description: t.mo_ta, parameters: t.tham_so } }))
+
 // ── ADAPTER: ba nhà, một giao diện ──────────────────────────────────────────
 // Moonshot VÀ DeepSeek đều dùng giao thức TƯƠNG THÍCH OpenAI ⇒ gọi thẳng bằng fetch qua
 // CÙNG MỘT hàm dùng chung, chỉ khác base URL/key/tên nhà (để log lỗi rõ ai từ chối).
-// Giữ adapter MỎNG: chỉ nhận {system, messages, maxTokens} → trả {text, usage}. Mọi thứ
-// riêng của từng nhà (thinking, cache_control...) cố ý KHÔNG dùng — có thì bản so sánh
-// không còn công bằng, mà mục đích lúc này là SO.
+// Giữ adapter MỎNG: chỉ nhận {system, messages, maxTokens} → trả DẠNG THỐNG NHẤT
+// { type:'text', text, usage } hoặc { type:'tool', name, args, usage }. Mọi thứ riêng của
+// từng nhà (thinking, cache_control...) cố ý KHÔNG dùng — có thì bản so sánh không còn
+// công bằng, mà mục đích lúc này là SO.
 async function goiOpenAICompatible({ base, key, nha, system, messages, maxTokens }) {
   const res = await fetch(`${base}/chat/completions`, {
     method: 'POST',
@@ -76,6 +85,7 @@ async function goiOpenAICompatible({ base, key, nha, system, messages, maxTokens
     body: JSON.stringify({
       model: MODEL, max_tokens: maxTokens, temperature: 0.3,
       messages: [{ role: 'system', content: system }, ...messages],
+      tools: OPENAI_TOOLS, tool_choice: 'auto',
     }),
   })
   const j = await res.json().catch(() => null)
@@ -86,10 +96,14 @@ async function goiOpenAICompatible({ base, key, nha, system, messages, maxTokens
   }
   const ch = j?.choices?.[0]
   if (ch?.finish_reason === 'length') throw new Error('Câu trả lời bị cắt giữa chừng (chạm trần token) — hỏi ngắn lại hoặc nâng trần.')
-  return {
-    text: ch?.message?.content ?? '',
-    usage: { input_tokens: j?.usage?.prompt_tokens ?? null, output_tokens: j?.usage?.completion_tokens ?? null },
+  const usage = { input_tokens: j?.usage?.prompt_tokens ?? null, output_tokens: j?.usage?.completion_tokens ?? null }
+  const tc = ch?.message?.tool_calls?.[0]
+  if (tc) {
+    let args = {}
+    try { args = JSON.parse(tc.function.arguments || '{}') } catch { /* model trả JSON hỏng → coi như không tham số, client sẽ tự báo thiếu */ }
+    return { type: 'tool', name: tc.function.name, args, usage }
   }
+  return { type: 'text', text: ch?.message?.content ?? '', usage }
 }
 
 async function goiModel({ system, messages, maxTokens }) {
@@ -105,12 +119,16 @@ async function goiModel({ system, messages, maxTokens }) {
   if (!KEY_ANTHROPIC) throw Object.assign(new Error('Thiếu ANTHROPIC_API_KEY trong .env.local'), { khongThuLai: true })
   const { default: Anthropic } = await import('@anthropic-ai/sdk')
   const claude = new Anthropic({ apiKey: KEY_ANTHROPIC })
-  const res = await claude.messages.create({ model: MODEL, max_tokens: maxTokens, system, messages })
+  const res = await claude.messages.create({ model: MODEL, max_tokens: maxTokens, system, messages, tools: ANTHROPIC_TOOLS })
   if (res.stop_reason === 'refusal') throw Object.assign(new Error('Model từ chối trả lời.'), { khongThuLai: true })
   if (res.stop_reason === 'max_tokens') throw new Error('Câu trả lời bị cắt giữa chừng (chạm trần token).')
+  const usage = { input_tokens: res.usage?.input_tokens ?? null, output_tokens: res.usage?.output_tokens ?? null }
+  const toolUse = res.content.find((b) => b.type === 'tool_use')
+  if (toolUse) return { type: 'tool', name: toolUse.name, args: toolUse.input ?? {}, usage }
   return {
+    type: 'text',
     text: res.content.filter((b) => b.type === 'text').map((b) => b.text).join('\n').trim(),
-    usage: { input_tokens: res.usage?.input_tokens ?? null, output_tokens: res.usage?.output_tokens ?? null },
+    usage,
   }
 }
 
@@ -136,12 +154,13 @@ ${JSON.stringify(job.boi_canh, null, 1)}
 CÂU HỎI: ${job.cau_hoi}`,
   })
 
-  const { text, usage } = await goiModel({ system: SYSTEM, messages, maxTokens: GIOI_HAN.maxTokensMacDinh })
-  if (!text.trim()) throw new Error('Model trả về rỗng.')
-  const d = tien(usage)
-  console.log(`[troly]   ${PROVIDER}/${MODEL} · vào ${usage.input_tokens ?? '?'} · ra ${usage.output_tokens ?? '?'}`
+  const ket = await goiModel({ system: SYSTEM, messages, maxTokens: GIOI_HAN.maxTokensMacDinh })
+  if (ket.type === 'text' && !ket.text.trim()) throw new Error('Model trả về rỗng.')
+  const d = tien(ket.usage)
+  const nhanLog = ket.type === 'tool' ? `công cụ "${ket.name}"` : 'văn bản'
+  console.log(`[troly]   ${PROVIDER}/${MODEL} · ${nhanLog} · vào ${ket.usage.input_tokens ?? '?'} · ra ${ket.usage.output_tokens ?? '?'}`
     + (d != null ? ` · ~${d.toLocaleString('vi-VN')} đ` : ' · (chưa có giá trong bảng — không ước được tiền)'))
-  return { text, usage }
+  return ket
 }
 
 async function chay() {
@@ -153,9 +172,12 @@ async function chay() {
   await svc.from('troly_hoi_dap').update({ trang_thai: 'processing' }).eq('id', job.id)
   console.log(`[troly] job ${job.id.slice(0, 8)} · "${String(job.cau_hoi).slice(0, 60)}"`)
   try {
-    const { text, usage } = await traLoi(job)
+    const ket = await traLoi(job)
+    // type='tool': KHÔNG ghi tra_loi — client thấy cong_cu có giá trị sẽ tự chạy hàm data-layer
+    // và tự hiện kết quả (worker không được đụng data, xem chú thích đầu file).
     await svc.from('troly_hoi_dap').update({
-      trang_thai: 'done', tra_loi: text, usage, model: `${PROVIDER}/${MODEL}`, done_at: new Date().toISOString(),
+      trang_thai: 'done', usage: ket.usage, model: `${PROVIDER}/${MODEL}`, done_at: new Date().toISOString(),
+      ...(ket.type === 'tool' ? { cong_cu: ket.name, tham_so: ket.args } : { tra_loi: ket.text }),
     }).eq('id', job.id)
   } catch (e) {
     // ⚠ PHẢI ghi lại `so_lan` khi trả job về 'pending'. Không ghi thì điều kiện bỏ cuộc

@@ -25,7 +25,97 @@ import {
 import { mangYeu, mangTestDauVao, type MangYeu, type MangTest } from '../../lib/troly-modules'
 import { anhChupBoTroBu, type AnhChupBu } from '../../lib/botro'
 import { baoCaoVanHanh, type BaoCaoVanHanh } from '../../lib/troly-vanhanh'
+import { chayCongCu, type KetQuaCongCu } from '../../lib/troly-tracuu'
 import { useStore } from '../../store/useStore'
+
+const tienVN2 = (n: number) => Math.round(n).toLocaleString('vi-VN') + 'đ'
+
+// ── HIỂN THỊ KẾT QUẢ "Phần 1 — Query" (CEO 18/08) — client tự chạy, model không đụng data ──
+function KetQuaView({ k }: { k: KetQuaCongCu }) {
+  if (k.loai === 'loi') return <div className="rounded-lg bg-amber-50 px-3 py-2 text-[12.5px] text-amber-800">{k.thongDiep}</div>
+  if (k.loai === 'hoc_tap') {
+    const d = k.data
+    return (
+      <div className="rounded-lg border border-slate-200 bg-slate-50 p-3 text-[12.5px]">
+        <div className="font-semibold text-slate-800">{k.hoTen}{k.maHs ? ` (${k.maHs})` : ''} · {k.mon}</div>
+        <div className="mt-1.5 grid grid-cols-2 gap-x-4 gap-y-1 text-slate-600">
+          <div>Hoàn thành (ET+MT): <b className="text-slate-800">{d.hoanThanh.toanBo.etMt.pct}%</b></div>
+          <div>Hoàn thành (gồm BTVN): <b className="text-slate-800">{d.hoanThanh.toanBo.coBTVN.pct}%</b></div>
+          <div>ET cơ bản/nâng cao: {d.hoatDong.etCoBan.pct ?? '—'}% / {d.hoatDong.etNangCao.pct ?? '—'}%</div>
+          <div>BTVN cơ bản/nâng cao: {d.hoatDong.btvnCoBan.pct ?? '—'}% / {d.hoatDong.btvnNangCao.pct ?? '—'}%</div>
+          <div>MT cơ bản/nâng cao: {d.hoatDong.mtCoBan.pct ?? '—'}% / {d.hoatDong.mtNangCao.pct ?? '—'}%</div>
+          <div>Điểm MT TB: {d.diem.mt.tb ?? '—'} ({d.diem.mt.n} lần)</div>
+        </div>
+      </div>
+    )
+  }
+  if (k.loai === 'btvn_mt') {
+    const { buois, students, cells } = k.data
+    const nhanTrang = (s: string) => s === 'vang' ? 'vắng' : s === 'khong_lam' ? 'không làm' : s === 'none' ? '—' : ''
+    return (
+      <div className="overflow-x-auto rounded-lg border border-slate-200">
+        <div className="border-b border-slate-200 bg-slate-50 px-3 py-1.5 text-[12.5px] font-semibold text-slate-700">
+          {k.tenLop} · {k.phase === 'mt' ? 'MT' : 'BTVN'} · {k.thang}
+        </div>
+        <table className="w-full text-[12px]">
+          <thead><tr className="border-b border-slate-200 bg-white text-slate-500">
+            <th className="px-2 py-1 text-left font-medium">HS</th>
+            {buois.map((b) => <th key={b.id} className="px-2 py-1 text-right font-medium tabular-nums">{b.ngay.slice(8)}/{b.ngay.slice(5, 7)}</th>)}
+          </tr></thead>
+          <tbody>
+            {students.map((s) => (
+              <tr key={s.id} className="border-b border-slate-100 last:border-0">
+                <td className="px-2 py-1 text-slate-800">{s.ho_ten}</td>
+                {buois.map((b) => {
+                  const c = cells[`${s.id}:${b.id}`]
+                  return (
+                    <td key={b.id} className={`px-2 py-1 text-right tabular-nums ${c?.status === 'vang' || c?.status === 'khong_lam' ? 'text-rose-600' : 'text-slate-700'}`}>
+                      {c?.pct != null ? `${c.pct}%` : nhanTrang(c?.status ?? 'none')}
+                    </td>
+                  )
+                })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    )
+  }
+  if (k.loai === 'hoc_phi') {
+    const d = k.data
+    return (
+      <div className="rounded-lg border border-slate-200 bg-slate-50 p-3 text-[12.5px]">
+        <div className="font-semibold text-slate-800">{k.hoTen} · học phí tháng {k.thang}</div>
+        <div className="mt-1.5 space-y-0.5">
+          {d.dong.map((dg, i) => (
+            <div key={i} className="flex justify-between text-slate-600">
+              <span>{dg.mo_ta ?? dg.loai}</span><span className="tabular-nums text-slate-800">{tienVN2(dg.thanh_tien)}</span>
+            </div>
+          ))}
+        </div>
+        <div className="mt-1.5 flex justify-between border-t border-slate-200 pt-1.5 font-semibold text-slate-800">
+          <span>Tổng</span><span className="tabular-nums">{tienVN2(d.tongTien)}</span>
+        </div>
+        {d.soDuNoTruoc !== 0 && <div className="mt-0.5 text-[12px] text-slate-500">Dư nợ kỳ trước: {tienVN2(d.soDuNoTruoc)}</div>}
+      </div>
+    )
+  }
+  // nhan_vien
+  const d = k.data
+  return (
+    <div className="rounded-lg border border-slate-200 bg-slate-50 p-3 text-[12.5px]">
+      <div className="font-semibold text-slate-800">{k.hoTen} · tháng {k.thang}</div>
+      <div className="mt-1.5 grid grid-cols-2 gap-x-4 gap-y-1 text-slate-600">
+        <div>Hiệu suất: <b className="text-slate-800">{d.hieuSuat != null ? `${d.hieuSuat}%` : 'chưa có việc nào'}</b></div>
+        <div>Sản lượng: {d.sanLuong}</div>
+        <div>Việc đạt: {d.soViecDat}</div>
+        <div>Việc trả lại: {d.soViecTraLai}</div>
+        {d.trungBinhTienDo != null && <div>TB tiến độ: {d.trungBinhTienDo}</div>}
+        {d.trungBinhChatLuong != null && <div>TB chất lượng: {d.trungBinhChatLuong}</div>}
+      </div>
+    </div>
+  )
+}
 
 // ── KHUNG CHAT ──────────────────────────────────────────────────────────────
 // CEO 12/08: *"trợ lý đưa ra 1 đống thứ. t cần trao đổi với nó như đang trao đổi với m.
@@ -34,9 +124,11 @@ import { useStore } from '../../store/useStore'
 // Client ghi job → `worker/troly.mjs` quét mỗi 3s → ghi câu trả lời. Key model ở SERVER.
 const GOI_Y = ['Hôm nay nên bắt đầu từ đâu?', 'Cái nào bỏ được?', 'Có gì bất thường không?']
 
+type LuotHienThi = LuotHoi & { ketQua?: KetQuaCongCu }
+
 function Chat() {
   const [phien] = useState(() => crypto.randomUUID())
-  const [luot, setLuot] = useState<LuotHoi[]>([])
+  const [luot, setLuot] = useState<LuotHienThi[]>([])
   const [hoi, setHoi] = useState('')
   const [dangCho, setDangCho] = useState(false)
   const [loi, setLoi] = useState<string | null>(null)
@@ -60,7 +152,17 @@ function Chat() {
       for (let i = 0; i < 120 && !dungLai.current; i++) {
         await new Promise((r) => setTimeout(r, 1500))
         const d = await docDap(id)
-        if (d?.trang_thai === 'done') { setLuot((l) => [...l, { hoi: q, dap: d.tra_loi ?? '' }]); setDangCho(false); return }
+        if (d?.trang_thai === 'done') {
+          if (d.cong_cu) {
+            // Model chọn công cụ tra cứu thay vì trả lời văn bản — CHẠY Ở ĐÂY (client, session
+            // thật của người hỏi) chứ không phải ở worker (xem troly-tracuu.ts đầu file).
+            const ketQua = await chayCongCu(d.cong_cu, d.tham_so).catch((e): KetQuaCongCu => ({ loai: 'loi', thongDiep: e?.message ?? String(e) }))
+            setLuot((l) => [...l, { hoi: q, dap: '(đã tra cứu và hiển thị kết quả bên dưới)', ketQua }])
+          } else {
+            setLuot((l) => [...l, { hoi: q, dap: d.tra_loi ?? '' }])
+          }
+          setDangCho(false); return
+        }
         if (d?.trang_thai === 'failed') { setLoi(d.error ?? 'Không trả lời được.'); setDangCho(false); return }
         // Vẫn 'pending' sau ~9s = KHÔNG AI NHẶT JOB ⇒ worker chưa bật. Phân biệt hẳn với
         // "worker chạy nhưng lỗi" — hai ca này cần hai hành động khác nhau, mà nếu chỉ
@@ -90,7 +192,11 @@ function Chat() {
           {luot.map((l, i) => (
             <div key={i}>
               <div className="text-[13px] font-medium text-indigo-700">{l.hoi}</div>
-              <div className="mt-1 whitespace-pre-wrap text-[13px] leading-relaxed text-slate-700">{l.dap}</div>
+              {l.ketQua ? (
+                <div className="mt-1.5"><KetQuaView k={l.ketQua} /></div>
+              ) : (
+                <div className="mt-1 whitespace-pre-wrap text-[13px] leading-relaxed text-slate-700">{l.dap}</div>
+              )}
             </div>
           ))}
         </div>

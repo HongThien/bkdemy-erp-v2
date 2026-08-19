@@ -647,7 +647,10 @@ export async function boiCanhChoHoi(): Promise<BoiCanhTroLy> {
 }
 
 export type LuotHoi = { hoi: string; dap: string }
-export type PhienDap = { id: string; trang_thai: 'pending' | 'processing' | 'done' | 'failed'; tra_loi: string | null; error: string | null; usage: any; model: string | null }
+export type PhienDap = {
+  id: string; trang_thai: 'pending' | 'processing' | 'done' | 'failed'; tra_loi: string | null; error: string | null; usage: any; model: string | null
+  cong_cu: string | null; tham_so: any // model chọn công cụ tra cứu thay vì trả lời văn bản (Phần 1 — Query, xem troly-tracuu.ts)
+}
 
 // Ghi job → `worker/troly.mjs` quét mỗi 5s. Key Anthropic Ở SERVER, không vào bundle browser.
 export async function hoiTroLy(phien: string, cauHoi: string, lichSu: LuotHoi[]): Promise<string> {
@@ -664,7 +667,7 @@ export async function hoiTroLy(phien: string, cauHoi: string, lichSu: LuotHoi[])
 
 export async function docDap(id: string): Promise<PhienDap | null> {
   const { data } = await supabase.from('troly_hoi_dap')
-    .select('id, trang_thai, tra_loi, error, usage, model').eq('id', id).maybeSingle()
+    .select('id, trang_thai, tra_loi, error, usage, model, cong_cu, tham_so').eq('id', id).maybeSingle()
   return (data as any) ?? null
 }
 
