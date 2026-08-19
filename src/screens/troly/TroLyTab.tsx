@@ -31,13 +31,22 @@ import { useStore } from '../../store/useStore'
 const tienVN2 = (n: number) => Math.round(n).toLocaleString('vi-VN') + 'đ'
 
 // ── HIỂN THỊ KẾT QUẢ "Phần 1 — Query" (CEO 18/08) — client tự chạy, model không đụng data ──
+// ⭐ CHIỀU THỜI GIAN (CEO 19/08): 3 loại kết quả (btvn_mt/hoc_phi/nhan_vien) mang MẢNG theo
+// tháng — hỏi 1 tháng thì mảng có 1 phần tử, hỏi khoảng thì lặp khối. Hỏi quá 12 tháng bị
+// CẮT — luôn nói rõ, không âm thầm trả thiếu (CLAUDE.md "không silent cap").
+function CanhBaoDaCat({ daCat }: { daCat: boolean }) {
+  if (!daCat) return null
+  return <div className="mt-1 text-[11.5px] text-amber-700">⚠ Khoảng hỏi dài hơn 12 tháng — chỉ lấy 12 tháng đầu, hỏi lại khoảng hẹp hơn nếu cần phần còn thiếu.</div>
+}
+
 function KetQuaView({ k }: { k: KetQuaCongCu }) {
   if (k.loai === 'loi') return <div className="rounded-lg bg-amber-50 px-3 py-2 text-[12.5px] text-amber-800">{k.thongDiep}</div>
+
   if (k.loai === 'hoc_tap') {
     const d = k.data
     return (
       <div className="rounded-lg border border-slate-200 bg-slate-50 p-3 text-[12.5px]">
-        <div className="font-semibold text-slate-800">{k.hoTen}{k.maHs ? ` (${k.maHs})` : ''} · {k.mon}</div>
+        <div className="font-semibold text-slate-800">{k.hoTen}{k.maHs ? ` (${k.maHs})` : ''} · {k.mon}{k.thang ? ` · tháng ${k.thang}` : ' · toàn bộ lịch sử'}</div>
         <div className="mt-1.5 grid grid-cols-2 gap-x-4 gap-y-1 text-slate-600">
           <div>Hoàn thành (ET+MT): <b className="text-slate-800">{d.hoanThanh.toanBo.etMt.pct}%</b></div>
           <div>Hoàn thành (gồm BTVN): <b className="text-slate-800">{d.hoanThanh.toanBo.coBTVN.pct}%</b></div>
@@ -49,70 +58,93 @@ function KetQuaView({ k }: { k: KetQuaCongCu }) {
       </div>
     )
   }
+
   if (k.loai === 'btvn_mt') {
-    const { buois, students, cells } = k.data
     const nhanTrang = (s: string) => s === 'vang' ? 'vắng' : s === 'khong_lam' ? 'không làm' : s === 'none' ? '—' : ''
     return (
-      <div className="overflow-x-auto rounded-lg border border-slate-200">
-        <div className="border-b border-slate-200 bg-slate-50 px-3 py-1.5 text-[12.5px] font-semibold text-slate-700">
-          {k.tenLop} · {k.phase === 'mt' ? 'MT' : 'BTVN'} · {k.thang}
-        </div>
-        <table className="w-full text-[12px]">
-          <thead><tr className="border-b border-slate-200 bg-white text-slate-500">
-            <th className="px-2 py-1 text-left font-medium">HS</th>
-            {buois.map((b) => <th key={b.id} className="px-2 py-1 text-right font-medium tabular-nums">{b.ngay.slice(8)}/{b.ngay.slice(5, 7)}</th>)}
-          </tr></thead>
-          <tbody>
-            {students.map((s) => (
-              <tr key={s.id} className="border-b border-slate-100 last:border-0">
-                <td className="px-2 py-1 text-slate-800">{s.ho_ten}</td>
-                {buois.map((b) => {
-                  const c = cells[`${s.id}:${b.id}`]
-                  return (
-                    <td key={b.id} className={`px-2 py-1 text-right tabular-nums ${c?.status === 'vang' || c?.status === 'khong_lam' ? 'text-rose-600' : 'text-slate-700'}`}>
-                      {c?.pct != null ? `${c.pct}%` : nhanTrang(c?.status ?? 'none')}
-                    </td>
-                  )
-                })}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    )
-  }
-  if (k.loai === 'hoc_phi') {
-    const d = k.data
-    return (
-      <div className="rounded-lg border border-slate-200 bg-slate-50 p-3 text-[12.5px]">
-        <div className="font-semibold text-slate-800">{k.hoTen} · học phí tháng {k.thang}</div>
-        <div className="mt-1.5 space-y-0.5">
-          {d.dong.map((dg, i) => (
-            <div key={i} className="flex justify-between text-slate-600">
-              <span>{dg.mo_ta ?? dg.loai}</span><span className="tabular-nums text-slate-800">{tienVN2(dg.thanh_tien)}</span>
+      <div className="space-y-2">
+        {k.data.map(({ thang, matrix: { buois, students, cells } }) => (
+          <div key={thang} className="overflow-x-auto rounded-lg border border-slate-200">
+            <div className="border-b border-slate-200 bg-slate-50 px-3 py-1.5 text-[12.5px] font-semibold text-slate-700">
+              {k.tenLop} · {k.phase === 'mt' ? 'MT' : 'BTVN'} · {thang}
             </div>
-          ))}
-        </div>
-        <div className="mt-1.5 flex justify-between border-t border-slate-200 pt-1.5 font-semibold text-slate-800">
-          <span>Tổng</span><span className="tabular-nums">{tienVN2(d.tongTien)}</span>
-        </div>
-        {d.soDuNoTruoc !== 0 && <div className="mt-0.5 text-[12px] text-slate-500">Dư nợ kỳ trước: {tienVN2(d.soDuNoTruoc)}</div>}
+            {buois.length === 0 ? (
+              <div className="px-3 py-2 text-[12px] text-slate-400">Không có buổi nào tháng này.</div>
+            ) : (
+              <table className="w-full text-[12px]">
+                <thead><tr className="border-b border-slate-200 bg-white text-slate-500">
+                  <th className="px-2 py-1 text-left font-medium">HS</th>
+                  {buois.map((b) => <th key={b.id} className="px-2 py-1 text-right font-medium tabular-nums">{b.ngay.slice(8)}/{b.ngay.slice(5, 7)}</th>)}
+                </tr></thead>
+                <tbody>
+                  {students.map((s) => (
+                    <tr key={s.id} className="border-b border-slate-100 last:border-0">
+                      <td className="px-2 py-1 text-slate-800">{s.ho_ten}</td>
+                      {buois.map((b) => {
+                        const c = cells[`${s.id}:${b.id}`]
+                        return (
+                          <td key={b.id} className={`px-2 py-1 text-right tabular-nums ${c?.status === 'vang' || c?.status === 'khong_lam' ? 'text-rose-600' : 'text-slate-700'}`}>
+                            {c?.pct != null ? `${c.pct}%` : nhanTrang(c?.status ?? 'none')}
+                          </td>
+                        )
+                      })}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
+          </div>
+        ))}
+        <CanhBaoDaCat daCat={k.daCat} />
       </div>
     )
   }
-  // nhan_vien
-  const d = k.data
-  return (
-    <div className="rounded-lg border border-slate-200 bg-slate-50 p-3 text-[12.5px]">
-      <div className="font-semibold text-slate-800">{k.hoTen} · tháng {k.thang}</div>
-      <div className="mt-1.5 grid grid-cols-2 gap-x-4 gap-y-1 text-slate-600">
-        <div>Hiệu suất: <b className="text-slate-800">{d.hieuSuat != null ? `${d.hieuSuat}%` : 'chưa có việc nào'}</b></div>
-        <div>Sản lượng: {d.sanLuong}</div>
-        <div>Việc đạt: {d.soViecDat}</div>
-        <div>Việc trả lại: {d.soViecTraLai}</div>
-        {d.trungBinhTienDo != null && <div>TB tiến độ: {d.trungBinhTienDo}</div>}
-        {d.trungBinhChatLuong != null && <div>TB chất lượng: {d.trungBinhChatLuong}</div>}
+
+  if (k.loai === 'hoc_phi') {
+    return (
+      <div className="space-y-2">
+        {k.data.map(({ thang, phieu: d }) => (
+          <div key={thang} className="rounded-lg border border-slate-200 bg-slate-50 p-3 text-[12.5px]">
+            <div className="font-semibold text-slate-800">{k.hoTen} · học phí tháng {thang}</div>
+            {d.dong.length === 0 ? (
+              <div className="mt-1 text-[12px] text-slate-400">Không có khoản nào tháng này.</div>
+            ) : (
+              <div className="mt-1.5 space-y-0.5">
+                {d.dong.map((dg, i) => (
+                  <div key={i} className="flex justify-between text-slate-600">
+                    <span>{dg.mo_ta ?? dg.loai}</span><span className="tabular-nums text-slate-800">{tienVN2(dg.thanh_tien)}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+            <div className="mt-1.5 flex justify-between border-t border-slate-200 pt-1.5 font-semibold text-slate-800">
+              <span>Tổng</span><span className="tabular-nums">{tienVN2(d.tongTien)}</span>
+            </div>
+            {d.soDuNoTruoc !== 0 && <div className="mt-0.5 text-[12px] text-slate-500">Dư nợ kỳ trước: {tienVN2(d.soDuNoTruoc)}</div>}
+          </div>
+        ))}
+        <CanhBaoDaCat daCat={k.daCat} />
       </div>
+    )
+  }
+
+  // nhan_vien
+  return (
+    <div className="space-y-2">
+      {k.data.map(({ thang, hieuSuat: d }) => (
+        <div key={thang} className="rounded-lg border border-slate-200 bg-slate-50 p-3 text-[12.5px]">
+          <div className="font-semibold text-slate-800">{k.hoTen} · tháng {thang}</div>
+          <div className="mt-1.5 grid grid-cols-2 gap-x-4 gap-y-1 text-slate-600">
+            <div>Hiệu suất: <b className="text-slate-800">{d.hieuSuat != null ? `${d.hieuSuat}%` : 'chưa có việc nào'}</b></div>
+            <div>Sản lượng: {d.sanLuong}</div>
+            <div>Việc đạt: {d.soViecDat}</div>
+            <div>Việc trả lại: {d.soViecTraLai}</div>
+            {d.trungBinhTienDo != null && <div>TB tiến độ: {d.trungBinhTienDo}</div>}
+            {d.trungBinhChatLuong != null && <div>TB chất lượng: {d.trungBinhChatLuong}</div>}
+          </div>
+        </div>
+      ))}
+      <CanhBaoDaCat daCat={k.daCat} />
     </div>
   )
 }
