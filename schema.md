@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-141 bảng · 0 view · 0 enum · 13 trigger · 51 function
+142 bảng · 0 view · 0 enum · 14 trigger · 52 function
 
 ## _migrations
 
@@ -168,6 +168,7 @@
 | cs_ky_nang | smallint | Y |  |  |  |
 | cs_van_dung | smallint | Y |  |  |  |
 | cs_vuot_kho | smallint | Y |  |  |  |
+| cong_bo_at | timestamp with time zone | Y |  |  |  |
 
 ## bao_loi
 
@@ -1727,6 +1728,8 @@
 | nguoi | uuid | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | done_at | timestamp with time zone | Y |  |  |  |
+| cong_cu | text | Y |  |  |  |
+| tham_so | jsonb | Y |  |  |  |
 
 ## troly_nhan_dinh
 
@@ -1893,6 +1896,17 @@
 | task_me_id | uuid | Y |  | FK→viec.id |  |
 | nghiem_thu_nguon | text | Y |  |  | `nguoi` · `tu_dong` |
 
+## viec_cap_nhat
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| viec_id | uuid |  |  | FK→viec.id |  |
+| nguoi_id | uuid |  |  | FK→nhan_su.id |  |
+| noi_dung | text |  |  |  |  |
+| tien_do_bao_cao | numeric | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
 ## viec_log
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -1953,6 +1967,7 @@
 | hoc_sinh_lop | trg_log_hoc_sinh_lop | AFTER | INSERT/UPDATE | log_hoc_sinh_lop |
 | khtn_cau_hoi | trg_log_kho_cau_khtn | AFTER | DELETE/UPDATE | log_kho_cau |
 | ung_vien | trg_log_ung_vien | AFTER | INSERT/UPDATE | log_ung_vien |
+| viec | trg_giaoviec_auto_dong_task_me | AFTER | UPDATE | giaoviec_auto_dong_task_me |
 | viec | trg_log_viec | AFTER | INSERT/UPDATE | log_viec |
 
 ## Functions
@@ -1968,6 +1983,7 @@
 - `dai_dang_tien_de_bao_dong(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `et_de(p_bai_test uuid)` → jsonb
 - `et_nop(p_bai_lam uuid)` → jsonb
+- `giaoviec_auto_dong_task_me()` → trigger
 - `giaoviec_housekeeping()` → void
 - `han_nop_bai_test(p_lop uuid, p_ngay date, p_loai text)` → timestamp with time zone
 - `hgt_cum_hau_due(goc text)` → TABLE(ma_cum text, do_sau integer)
@@ -2050,6 +2066,7 @@
 | thoi_khoa_bieu | thoi_khoa_bieu_thu_check | `CHECK (((thu >= 2) AND (thu <= 8)))` |
 | troly_nhan_dinh | troly_nhan_dinh_gac_ck | `CHECK (((quyet_dinh = 'gac'::text) = (gac_den IS NOT NULL)))` |
 | troly_ra_soat | troly_ra_soat_gac_ck | `CHECK (((ket_luan = 'gac'::text) = (gac_den IS NOT NULL)))` |
+| viec_cap_nhat | viec_cap_nhat_tien_do_bao_cao_check | `CHECK (((tien_do_bao_cao IS NULL) OR ((tien_do_bao_cao >= (0)::numeric) AND (tien_do_bao_cao <= (100)::numeric))))` |
 | y_tuong | y_tuong_co_check | `CHECK ((co = ANY (ARRAY[1, 2, 3, 5, 8])))` |
 | y_tuong | y_tuong_gia_tri_check | `CHECK ((gia_tri = ANY (ARRAY[1, 2, 3, 5, 8])))` |
 
