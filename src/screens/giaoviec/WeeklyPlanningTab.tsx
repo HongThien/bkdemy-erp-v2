@@ -7,7 +7,7 @@
 import { useEffect, useState } from 'react'
 import {
   chayHousekeeping, listWeeklyPlanning, suaViec, duyetGiaHan, holdViec, boHold,
-  holdQuaHan, type ViecFull,
+  holdQuaHan, listCapNhat, type ViecFull, type CapNhatViec,
 } from '../../lib/giaoviec'
 import { kyTuanHienTai, kyTuanCuaNgay, nhanKyTuan } from '../../lib/giaoviec-config'
 import { CX_INPUT, CX_BTN, CX_BTN_GHOST, Badge, VIEC_TT, Empty, ErrBar, Modal, Field, NguoiChip, DeadlineChip, fmtNgay } from './ui'
@@ -44,11 +44,13 @@ export default function WeeklyPlanningTab() {
 
   const conByMe = new Map<string, ViecFull[]>()
   for (const v of rows) if (v.task_me_id) { const a = conByMe.get(v.task_me_id) ?? []; a.push(v); conByMe.set(v.task_me_id, a) }
-  // Task mẹ = mọi root CHƯA gán trực tiếp (nguoi_lam_id null) — dù đã có con hay chưa, LUÔN
-  // hiện dưới dạng cụm (kể cả 0 con) để "+ Tách task con" luôn có mặt, lặp lại được vô hạn.
-  const parents = rows.filter((v) => !v.task_me_id && v.nguoi_lam_id === null)
-  // Root ĐÃ gán trực tiếp (từ "+ Việc phát sinh") = task lẻ đơn giản, không cần cụm mẹ/con.
-  const standalone = rows.filter((v) => !v.task_me_id && v.nguoi_lam_id !== null)
+  // Task mẹ = root CHƯA gán trực tiếp (nguoi_lam_id null, nhánh Backlog→Weekly cũ — LUÔN hiện
+  // cụm kể cả 0 con để "+ Tách task con" luôn có mặt) HOẶC root ĐÃ CÓ CON (story 08-18: task
+  // to giao thẳng 1 người + deadline như task thường — CHÍNH người đó tự tách con từ "Việc của
+  // tôi"; ngay khi có con đầu tiên nó tự thành cụm ở đây, kể cả vẫn còn nguoi_lam_id riêng).
+  const parents = rows.filter((v) => !v.task_me_id && (v.nguoi_lam_id === null || !!v.so_con))
+  // Root có người làm mà CHƯA tách con nào = task lẻ đơn giản, không cần cụm mẹ/con.
+  const standalone = rows.filter((v) => !v.task_me_id && v.nguoi_lam_id !== null && !v.so_con)
 
   function tachConPrefill(me: ViecFull): GiaoPrefill {
     return {
@@ -82,7 +84,10 @@ export default function WeeklyPlanningTab() {
                   <span className="rounded bg-slate-800 px-1.5 py-0.5 text-[10px] font-semibold text-white shrink-0">MẸ</span>
                   <span className="min-w-0 flex-1 truncate font-semibold text-slate-800">{me.tieu_de}</span>
                   {me.y_tuong_tieu_de && <span className="rounded bg-indigo-50 px-1.5 py-0.5 text-[10px] text-indigo-700 shrink-0">từ backlog</span>}
+                  {/* Mẹ CÓ người làm riêng (story 08-18: giao thẳng 1 người trước khi tách con) — mẹ ownerless cũ (Backlog→Weekly) không hiện chip này. */}
+                  {me.nguoi_lam_id && <NguoiChip ten={me.nguoi_lam_ten} />}
                   <DeadlineChip deadline={me.deadline} />
+                  {me.trang_thai === 'dat' && <Badge map={VIEC_TT} k="dat" />}
                   <span className="w-20 shrink-0 text-right text-[12px] font-semibold text-slate-600">{cons.length ? `${dat}/${cons.length} đạt` : 'chưa có con'}</span>
                 </button>
                 <div className="mt-2 space-y-1.5 border-l-2 border-slate-100 pl-3">
@@ -169,6 +174,7 @@ function TaskDetailModal({ v, busy, onClose, onNghiemThu, onHold, onBoHold, onHu
         <Row k="Bằng chứng" val={v.evidence ? <a href={v.evidence} target="_blank" rel="noreferrer" className="text-indigo-600 underline break-all">{v.evidence}</a> : '—'} />
         {v.phan_tram !== null && <Row k="Kết quả" val={`${v.phan_tram}% (tiến độ ${v.tien_do} · chất lượng ${v.chat_luong})`} />}
         {v.ghi_chu_nghiem_thu && <Row k="Ghi chú" val={v.ghi_chu_nghiem_thu} />}
+        {!['dat', 'huy', 'chuyen'].includes(v.trang_thai) && <CapNhatXem viecId={v.id} />}
 
         <div className="mt-3 flex flex-wrap items-center gap-1.5 border-t border-slate-100 pt-3">
           {v.gia_han_xin_deadline && <>
@@ -195,6 +201,26 @@ function TaskDetailModal({ v, busy, onClose, onNghiemThu, onHold, onBoHold, onHu
   )
 }
 
+// XEM cập nhật tiến độ (story 08-18) — READ-ONLY cho leader, tường thuật do người làm tự ghi
+// trong lúc làm (khác v.tien_do — điểm máy chấm lúc nghiệm thu). Nạp lười khi mở Detail.
+function CapNhatXem({ viecId }: { viecId: string }) {
+  const [ds, setDs] = useState<CapNhatViec[] | null>(null)
+  useEffect(() => { listCapNhat(viecId).then(setDs).catch(() => setDs([])) }, [viecId])
+  if (ds === null) return <div className="text-[12px] text-slate-400">Đang tải cập nhật…</div>
+  if (!ds.length) return null
+  return (
+    <div className="mt-1 space-y-1 rounded-lg bg-slate-50 p-2.5">
+      <div className="text-[11px] font-semibold text-slate-500">📝 Cập nhật từ người làm</div>
+      {ds.map((c) => (
+        <div key={c.id} className="text-[12px]">
+          <span className="text-slate-400">{fmtNgay(c.created_at)}{c.tien_do_bao_cao != null && <> · {c.tien_do_bao_cao}%</>}</span>
+          <span className="ml-1.5 text-slate-700">{c.noi_dung}</span>
+        </div>
+      ))}
+    </div>
+  )
+}
+
 // DETAIL + SỬA task mẹ (container) — mục tiêu/output/deadline ở đây sẽ được các con
 // "theo scope" kế thừa. Mẹ KHÔNG có PIC/khối lượng/trạng thái riêng (con mới là đơn vị làm).
 function MeDetailModal({ v, soCon, onClose, onTachCon, onSaved }: {
@@ -216,10 +242,17 @@ function MeDetailModal({ v, soCon, onClose, onTachCon, onSaved }: {
   return (
     <Modal title={`Task mẹ — ${v.tieu_de}`} onClose={onClose} wide>
       <div className="space-y-2">
-        <p className="text-[12px] text-slate-500">Container — không tự làm, gồm {soCon} task con. Mục tiêu/output ở đây là CHUẨN CHUNG mà con "theo scope" sẽ kế thừa.</p>
+        <p className="text-[12px] text-slate-500">
+          {v.nguoi_lam_id
+            ? 'Giao cho 1 người + đã tách con — trạng thái TỰ đóng khi 100% con đạt, không có nút hoàn thành riêng.'
+            : 'Container — không tự làm, gồm ' + soCon + ' task con.'} Mục tiêu/output ở đây là CHUẨN CHUNG mà con "theo scope" sẽ kế thừa.
+        </p>
         {v.y_tuong_tieu_de && <p className="text-[11px] text-indigo-600">Từ backlog: {v.y_tuong_tieu_de}</p>}
         {!sua ? (
           <>
+            {v.nguoi_lam_id && <Row k="Người làm" val={<NguoiChip ten={v.nguoi_lam_ten} />} />}
+            {v.nguoi_lam_id && <Row k="Trạng thái" val={<Badge map={VIEC_TT} k={v.trang_thai} />} />}
+            {v.trang_thai === 'dat' && <Row k="Kết quả" val={`${v.phan_tram}% (tiến độ ${v.tien_do} · chất lượng ${v.chat_luong})`} />}
             <Row k="Mục tiêu" val={v.muc_tieu} />
             <Row k="Output" val={v.output} />
             <Row k="Deadline" val={fmtNgay(v.deadline)} />

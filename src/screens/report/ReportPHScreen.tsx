@@ -6,7 +6,7 @@ import { createPortal } from 'react-dom'
 import SearchSelect, { type Opt } from '../../components/SearchSelect'
 import { listLop, listHSCuaLop } from '../../lib/nhansu'
 import { getTongQuanHS, type TongQuanHS } from '../../lib/mastery'
-import { getReportBuoiHS, getBaoCaoPH, upsertBaoCaoPH, getGVChinhLop, BC_EMPTY, type ReportBuoiRow, type BaoCaoPH } from '../../lib/report'
+import { getReportBuoiHS, getBaoCaoPH, upsertBaoCaoPH, getGVChinhLop, getKhoiRankDiemMT, BC_EMPTY, type ReportBuoiRow, type BaoCaoPH, type KhoiRankMT } from '../../lib/report'
 import { tenHienThiDs } from '../../lib/hoten'
 
 const MON_CO_KHO = ['Toán', 'KHTN']
@@ -19,13 +19,19 @@ const TD_LABEL: Record<string, string> = { nghiem_tuc: 'Nghiêm túc', chua_het_
 const TD_CLS: Record<string, string> = { nghiem_tuc: 'text-emerald-700', chua_het_suc: 'text-amber-700', chua_nghiem_tuc: 'text-rose-700', chong_doi: 'text-rose-800 font-bold' }
 const pctCls = (p: number | null) => p == null ? 'text-slate-300' : p >= 80 ? 'text-emerald-700' : p >= 50 ? 'text-amber-700' : 'text-rose-700'
 const fmtNgay = (iso: string) => { const d = new Date(iso + 'T00:00:00'); return isNaN(+d) ? iso : d.toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit' }) }
-// Thanh mức kết luận (5 bậc, tốt → cần lưu ý)
+// Thanh mức kết luận (7 bậc, Thùy 08-19): trộn 2 trục CÓ CHỦ ĐÍCH — mức tuyệt đối (rất tốt/đạt yêu cầu)
+// ưu tiên cao nhất; "đang tiến bộ" (xu hướng) chen lên TRÊN 2 mức "cần cải thiện/gặp vấn đề" vì với PH,
+// tin "con đang tiến bộ" quan trọng hơn xu hướng ổn định ở mức thấp — giấu cái ít quan trọng hơn để thông
+// điệp rõ ràng nhất (bố mẹ đọc xong phải biết ngay có cần lo hay không). 2 cặp cần-cải-thiện/gặp-vấn-đề
+// tách theo TRỤC (thái độ ≠ kiến thức&kĩ năng) — CÙNG màu trong mỗi cặp, không xếp trục nào nặng hơn.
 export const KET_LUAN_MUC = [
-  { key: 'vuot_bac', label: 'Tiến bộ vượt bậc', emoji: '🚀', dot: 'bg-emerald-500', sel: 'bg-emerald-600 text-white ring-emerald-600' },
-  { key: 'tien_bo', label: 'Con đang tiến bộ', emoji: '📈', dot: 'bg-green-400', sel: 'bg-green-500 text-white ring-green-500' },
-  { key: 'on_dinh', label: 'Con đang ổn định', emoji: '⚖️', dot: 'bg-sky-400', sel: 'bg-sky-500 text-white ring-sky-500' },
-  { key: 'di_xuong', label: 'Con đang đi xuống', emoji: '📉', dot: 'bg-amber-400', sel: 'bg-amber-500 text-white ring-amber-500' },
-  { key: 'can_ho_tro', label: 'Con đang cần hỗ trợ', emoji: '🆘', dot: 'bg-rose-400', sel: 'bg-rose-500 text-white ring-rose-500' },
+  { key: 'rat_tot', label: 'Con học rất tốt', emoji: '🌟', dot: 'bg-emerald-500', sel: 'bg-emerald-600 text-white ring-emerald-600' },
+  { key: 'dat_yeu_cau', label: 'Con đạt yêu cầu', emoji: '✅', dot: 'bg-green-400', sel: 'bg-green-500 text-white ring-green-500' },
+  { key: 'tien_bo', label: 'Con đang tiến bộ', emoji: '📈', dot: 'bg-sky-400', sel: 'bg-sky-500 text-white ring-sky-500' },
+  { key: 'cai_thien_thai_do', label: 'Con cần cải thiện thái độ học tập', emoji: '⚠️', dot: 'bg-amber-400', sel: 'bg-amber-500 text-white ring-amber-500' },
+  { key: 'cai_thien_kien_thuc', label: 'Con cần cải thiện kiến thức và kĩ năng', emoji: '⚠️', dot: 'bg-amber-400', sel: 'bg-amber-500 text-white ring-amber-500' },
+  { key: 'van_de_thai_do', label: 'Con gặp vấn đề về thái độ học tập', emoji: '🆘', dot: 'bg-rose-500', sel: 'bg-rose-600 text-white ring-rose-600' },
+  { key: 'van_de_kien_thuc', label: 'Con gặp vấn đề về kiến thức và kĩ năng', emoji: '🆘', dot: 'bg-rose-500', sel: 'bg-rose-600 text-white ring-rose-600' },
 ] as const
 
 // Band năng lực GV chọn (cao → thấp). 7 chỉ số phát triển (mức 1..5).
@@ -271,9 +277,19 @@ function NhanXet({ hsId, mon, ym }: { hsId: string; mon: string; ym: string }) {
     try { await upsertBaoCaoPH(hsId, mon, ym, patch); setSaved(tag); setTimeout(() => setSaved((s) => (s === tag ? null : s)), 1500) } catch { /* ignore */ }
   }
   const box = 'w-full resize-y rounded-lg border border-slate-200 bg-slate-50/50 px-2.5 py-2 text-[13px] leading-relaxed focus:border-indigo-300 focus:bg-white focus:outline-none'
+  const locked = val.cong_bo_at != null // đã công bố → khoá sửa (bấm "Mở lại để sửa" mới chỉnh được)
+  const congBoLabel = val.cong_bo_at ? new Date(val.cong_bo_at).toLocaleString('vi-VN', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) : ''
   return (
     <div>
       <h3 className="mb-2 text-[13px] font-semibold uppercase tracking-wider text-slate-500">Nhận xét của giáo viên</h3>
+      {/* CỔNG CÔNG BỐ: nháp → PH không thấy; chốt → lên app. Khoá sửa khi đã công bố. */}
+      <div className={`mb-2 flex items-center justify-between gap-2 rounded-xl px-3 py-2 text-[12px] ring-1 ${locked ? 'bg-emerald-50 text-emerald-800 ring-emerald-200' : 'bg-amber-50 text-amber-800 ring-amber-200'}`}>
+        <span className="font-semibold">{locked ? `✓ Đã công bố${congBoLabel ? ' · ' + congBoLabel : ''} — phụ huynh đang xem` : '● Nháp — phụ huynh CHƯA thấy báo cáo này'}</span>
+        {locked
+          ? <button onClick={() => save({ cong_bo_at: null }, 'congbo')} className="shrink-0 rounded-lg border border-emerald-300 bg-white px-2.5 py-1 font-semibold text-emerald-700 hover:bg-emerald-100">Mở lại để sửa</button>
+          : <button onClick={() => { if (confirm('Chốt & công bố báo cáo tháng này? Phụ huynh sẽ thấy ngay trên app.')) save({ cong_bo_at: new Date().toISOString() }, 'congbo') }} className="shrink-0 rounded-lg bg-emerald-600 px-3 py-1 font-bold text-white shadow-sm hover:bg-emerald-500">Chốt &amp; công bố</button>}
+      </div>
+      <fieldset disabled={locked} className={locked ? 'opacity-60' : ''} style={{ border: 'none', margin: 0, padding: 0, minInlineSize: 'auto' }}>
       <div className="space-y-3">
         {/* NĂNG LỰC: band (GV chọn) + điểm + sai số */}
         <div className="rounded-xl border border-indigo-200 bg-indigo-50/40 p-3 shadow-sm">
@@ -388,26 +404,31 @@ function NhanXet({ hsId, mon, ym }: { hsId: string; mon: string; ym: string }) {
           <textarea defaultValue={val.muc_tieu ?? ''} onBlur={(e) => save({ muc_tieu: e.target.value.trim() || null }, 'muc_tieu')} placeholder="Định hướng / mục tiêu cụ thể tháng tới…" rows={2} className={box} />
         </div>
       </div>
-      <p className="mt-2 text-[11px] text-slate-400">Tự lưu khi rời ô / chọn mức. {mon} · tháng {Number(ym.split('-')[1])}/{ym.split('-')[0]}.</p>
+      </fieldset>
+      <p className="mt-2 text-[11px] text-slate-400">{locked ? 'Đã công bố — bấm “Mở lại để sửa” nếu cần chỉnh.' : 'Tự lưu khi rời ô / chọn mức. Bấm “Chốt & công bố” để phụ huynh thấy.'} {mon} · tháng {Number(ym.split('-')[1])}/{ym.split('-')[0]}.</p>
     </div>
   )
 }
 
 // ── ẢNH GỬI PHỤ HUYNH — thẻ inline-hex (né oklch Tailwind v4), layout kiểu tab Kết quả app PH ──
 const MUC_HEX: Record<string, { bg: string; fg: string; emoji: string; label: string }> = {
-  vuot_bac: { bg: '#ecfdf5', fg: '#047857', emoji: '🚀', label: 'Tiến bộ vượt bậc' },
-  tien_bo: { bg: '#f0fdf4', fg: '#15803d', emoji: '📈', label: 'Con đang tiến bộ' },
-  on_dinh: { bg: '#f0f9ff', fg: '#0369a1', emoji: '⚖️', label: 'Con đang ổn định' },
-  di_xuong: { bg: '#fffbeb', fg: '#b45309', emoji: '📉', label: 'Con đang đi xuống' },
-  can_ho_tro: { bg: '#fff1f2', fg: '#be123c', emoji: '🆘', label: 'Con đang cần hỗ trợ' },
+  rat_tot: { bg: '#ecfdf5', fg: '#047857', emoji: '🌟', label: 'Con học rất tốt' },
+  dat_yeu_cau: { bg: '#f0fdf4', fg: '#15803d', emoji: '✅', label: 'Con đạt yêu cầu' },
+  tien_bo: { bg: '#f0f9ff', fg: '#0369a1', emoji: '📈', label: 'Con đang tiến bộ' },
+  cai_thien_thai_do: { bg: '#fffbeb', fg: '#b45309', emoji: '⚠️', label: 'Con cần cải thiện thái độ học tập' },
+  cai_thien_kien_thuc: { bg: '#fffbeb', fg: '#b45309', emoji: '⚠️', label: 'Con cần cải thiện kiến thức và kĩ năng' },
+  van_de_thai_do: { bg: '#fff1f2', fg: '#be123c', emoji: '🆘', label: 'Con gặp vấn đề về thái độ học tập' },
+  van_de_kien_thuc: { bg: '#fff1f2', fg: '#be123c', emoji: '🆘', label: 'Con gặp vấn đề về kiến thức và kĩ năng' },
 }
 const s10 = (pct: number | null) => pct == null ? '—' : (pct / 10).toFixed(1)
 const hexPct = (pct: number | null) => pct == null ? '#cbd5e1' : pct >= 80 ? '#059669' : pct >= 50 ? '#d97706' : '#e11d48'
 
 function PhAnhModal({ hsId, mon, ym, hsName, hsImg, lopTen, gvName, tq, missCount, onClose }: { hsId: string; mon: string; ym: string; hsName: string; hsImg: string | null; lopTen: string; gvName: string | null; tq: TongQuanHS; missCount: number; onClose: () => void }) {
   const [bc, setBc] = useState<BaoCaoPH>({ ...BC_EMPTY })
+  const [khoiRank, setKhoiRank] = useState<KhoiRankMT | null>(null)
   const cardRef = useRef<HTMLDivElement>(null)
   useEffect(() => { getBaoCaoPH(hsId, mon, ym).then(setBc).catch(() => {}) }, [hsId, mon, ym])
+  useEffect(() => { setKhoiRank(null); getKhoiRankDiemMT(hsId, mon, ym).then(setKhoiRank).catch(() => {}) }, [hsId, mon, ym])
 
   function handleCopy() {
     const el = cardRef.current; if (!el) return
@@ -427,9 +448,11 @@ function PhAnhModal({ hsId, mon, ym, hsName, hsImg, lopTen, gvName, tq, missCoun
 
   const muc = bc.ket_luan_muc ? MUC_HEX[bc.ket_luan_muc] : null
   const a = tq.hoatDong, hh = tq.hoanThanh.toanBo.etMt
-  const progress = hh.pct
   const trendV = tq.trend.hoanThanhToanBo
-  const ringHex = progress == null ? '#94a3b8' : progress >= 80 ? '#12a875' : progress >= 50 ? '#e29a23' : '#e45858'
+  // Vòng tròn HẠNG TRONG KHỐI (Thùy 08-19, thay cho %hoàn thành gây confuse PH) — % fill = percentile
+  // rank trong khối (hạng 1 → fill đầy), số hiện GIỮA vòng là hạng THẬT #N, không phải %.
+  const rankPct = khoiRank ? Math.round(((khoiRank.rankTotal - khoiRank.rankNow) / Math.max(1, khoiRank.rankTotal - 1)) * 100) : null
+  const ringHex = rankPct == null ? '#94a3b8' : rankPct >= 80 ? '#12a875' : rankPct >= 50 ? '#e29a23' : '#e45858'
   const RC = 2 * Math.PI * 32
   // Skill bar THANG 5 (GV chọn) + text nhận xét kèm tag.
   const bar5 = (label: string, lvl: number | null, hx: string, text: string | null) => (
@@ -454,6 +477,20 @@ function PhAnhModal({ hsId, mon, ym, hsName, hsImg, lopTen, gvName, tq, missCoun
     <div style={{ display: 'grid', gridTemplateColumns: '1.25fr .6fr .6fr .6fr', gap: 6, alignItems: 'center', minHeight: 46, borderTop: first ? 'none' : '1px dashed #e9edf4' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 10.5, fontWeight: 800, color: '#15233b' }}><span style={{ width: 9, height: 9, borderRadius: 5, background: hx, boxShadow: `0 0 0 4px ${hx}22` }} />{ten}</div>
       {cell('Tổng', tongPct(cb, nc), 16)}{cell('Cơ bản', cb.pct, 15)}{cell('Nâng cao', nc.pct, 15)}
+    </div>
+  )
+  // MT: dùng ĐIỂM THẬT (thang 10, nhập tay) — KHÁC assessRow ở trên (%đúng câu). MT nhập riêng qua
+  // ky_thi/diem_thi, không suy từ Đ/C/S như ET/BTVN nên KHÔNG quy đổi s10(%) nữa.
+  // Chỉ TỔNG mới đủ điều kiện tô màu ngưỡng (đúng thang 10 thật). Cơ bản/Nâng cao là 2 CỘT ĐIỂM RIÊNG,
+  // thang điểm KHÁC NHAU (vd cơ bản max 9đ, nâng cao max 1đ — nâng cao không bắt buộc) → số THẤP tuyệt
+  // đối ở nâng cao là BÌNH THƯỜNG, không phải yếu kém. Tô đỏ/xanh theo ngưỡng 0-10 ở đây là SAI, gây hiểu
+  // lầm cho phụ huynh (Thùy 08-19). Để màu trung tính, không so ngưỡng.
+  const hexDiem = (v: number | null) => v == null ? '#cbd5e1' : v >= 8 ? '#059669' : v >= 5 ? '#d97706' : '#e11d48'
+  const cellDiem = (lb: string, v: number | null, sz: number, colored?: boolean) => <div><span style={{ fontSize: 7.5, color: '#94a3b8', display: 'block' }}>{lb}</span><span style={{ fontSize: sz, fontWeight: 900, color: colored ? hexDiem(v) : v == null ? '#cbd5e1' : '#15233b' }}>{v == null ? '—' : v}</span></div>
+  const assessRowDiem = (ten: string, hx: string, tong: number | null, cb: number | null, nc: number | null) => (
+    <div style={{ display: 'grid', gridTemplateColumns: '1.25fr .6fr .6fr .6fr', gap: 6, alignItems: 'center', minHeight: 46, borderTop: '1px dashed #e9edf4' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 10.5, fontWeight: 800, color: '#15233b' }}><span style={{ width: 9, height: 9, borderRadius: 5, background: hx, boxShadow: `0 0 0 4px ${hx}22` }} />{ten}</div>
+      {cellDiem('Tổng', tong, 16, true)}{cellDiem('Cơ bản', cb, 15)}{cellDiem('Nâng cao', nc, 15)}
     </div>
   )
   return createPortal(
@@ -502,9 +539,9 @@ function PhAnhModal({ hsId, mon, ym, hsName, hsImg, lopTen, gvName, tq, missCoun
             <div style={{ background: '#fff', border: '1px solid #e8edf5', borderRadius: 20, boxShadow: '0 7px 18px rgba(35,63,104,.055)', padding: 14, display: 'grid', gridTemplateColumns: '85px 1fr', gap: 13, alignItems: 'center', marginBottom: 10 }}>
               <svg width={80} height={80} viewBox="0 0 80 80">
                 <circle cx={40} cy={40} r={32} fill="none" stroke="#e9f3ef" strokeWidth={9} />
-                <circle cx={40} cy={40} r={32} fill="none" stroke={ringHex} strokeWidth={9} strokeDasharray={RC} strokeDashoffset={RC * (1 - (progress ?? 0) / 100)} strokeLinecap="round" transform="rotate(-90 40 40)" />
-                <text x={40} y={39} textAnchor="middle" fontSize={18} fontWeight={800} fill={ringHex}>{progress == null ? '—' : progress + '%'}</text>
-                <text x={40} y={51} textAnchor="middle" fontSize={7} fontWeight={700} fill="#94a3b8">HOÀN THÀNH</text>
+                <circle cx={40} cy={40} r={32} fill="none" stroke={ringHex} strokeWidth={9} strokeDasharray={RC} strokeDashoffset={RC * (1 - (rankPct ?? 0) / 100)} strokeLinecap="round" transform="rotate(-90 40 40)" />
+                <text x={40} y={37} textAnchor="middle" fontSize={16} fontWeight={800} fill={ringHex}>{khoiRank ? `#${khoiRank.rankNow}` : '—'}</text>
+                <text x={40} y={49} textAnchor="middle" fontSize={7} fontWeight={700} fill="#94a3b8">{khoiRank ? `/${khoiRank.rankTotal} KHỐI ${khoiRank.khoi}` : 'HẠNG TRONG KHỐI'}</text>
               </svg>
               <div>
                 <div style={{ fontSize: 10, color: '#315fdd', fontWeight: 900, textTransform: 'uppercase', letterSpacing: .7 }}>Xu hướng tháng này</div>
@@ -532,7 +569,7 @@ function PhAnhModal({ hsId, mon, ym, hsName, hsImg, lopTen, gvName, tq, missCoun
               </div>
               {assessRow('Test cuối giờ', '#315fdd', a.etCoBan, a.etNangCao, true)}
               {assessRow('Bài tập về nhà', '#12a875', a.btvnCoBan, a.btvnNangCao)}
-              {assessRow('Test tháng', '#e29a23', a.mtCoBan, a.mtNangCao)}
+              {assessRowDiem('Test tháng (MT)', '#e29a23', tq.diem.mt.tb, tq.diem.mt.coBan, tq.diem.mt.nangCao)}
               {missCount > 0 ? <div style={{ fontSize: 9.5, color: '#da7d00', marginTop: 6 }}>⚠ Chưa hoàn thành BTVN {missCount} lần trong tháng</div> : null}
             </div>
             {/* MỤC TIÊU */}

@@ -4,7 +4,7 @@ import { createPortal } from 'react-dom'
 import {
   buoiAoCuaNgay, timBuoiTheoLop, moBuoi, getBuoi, huyBuoi, huyBuoiCuaNgay, setNguoiDay,
   getRoster, diemDanh, markBaoDen, xoaHSKhoiBuoi, dongBoSiSo, listProblems, addProblem, setProblemDang, ensureProblems, listGrades, gradeMuc, closePhase,
-  loadETForBuoi, syncDocProblems, xepLuoiTheoDe, gradeET, deleteGrade, reopenPhase,
+  loadETForBuoi, syncDocProblems, xepLuoiTheoDe, gradeET, gradeETBulk, deleteGrade, reopenPhase,
   loadBTVNForBuoi, syncBTVNProblems, getBtvnKetQua, setBtvnKetQua, listCanhBao, themCanhBao, xoaCanhBao, closeBTVN, reopenBTVN,
   type BtvnKQ, type CanhBao, type BtvnTrangThai, type BtvnThaiDo,
   getDanhGia, setDanhGiaDang, setNhanXet, setMuc, MUC_OPTS, MUC_CATALOG, nhanMuc, dongDanhGia, moLaiDanhGia, setNoiDungBuoi,
@@ -830,6 +830,21 @@ const ET_KQ: { v: ETResult; lbl: string; idle: string; sel: string }[] = [
 ]
 const ET_LOI = ['E01', 'E02', 'E03', 'E04', 'E05', 'E06']
 
+// Tích hàng loạt CẢ HÀNG (1 HS × mọi câu = cùng 1 verdict) — ca "đề 60 câu, đúng 59: tích Tất cả Đ
+// 1 phát, sửa riêng câu sai" (CEO 16/08). Đặt cạnh tên HS, tách biệt hẳn lưới Đ/C/S từng ô để khỏi
+// bấm nhầm bulk khi đang chấm từng câu.
+function BulkRowKQ({ onPick, disabled }: { onPick: (result: ETResult) => void; disabled?: boolean }) {
+  return (
+    <div className="mt-0.5 flex items-center gap-1">
+      <span className="text-[10px] text-slate-400">Tất cả</span>
+      {ET_KQ.map((k) => (
+        <button key={k.v} onClick={() => onPick(k.v)} disabled={disabled} title={`Tích ${k.lbl} cho cả hàng — sửa riêng ô lệch sau`}
+          className={`h-4 w-4 rounded border text-[9px] font-bold leading-none transition disabled:cursor-not-allowed disabled:opacity-40 ${k.idle}`}>{k.lbl}</button>
+      ))}
+    </div>
+  )
+}
+
 function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string; roster: BuoiHocHS[]; buoi: BuoiHoc; dangOpts: DangOpt[]; onChange: () => void }) {
   const [probs, setProbs] = useState<Problem[]>([])
   const [grades, setGrades] = useState<Grade[]>([])
@@ -875,6 +890,16 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
       else { await gradeET({ buoiId, problemId: pid, hocSinhId: hsId, result, loi: cur }); setEditing({ problemId: pid, hsId }) } // C/S → mở bảng lỗi
       await reloadP()
     } catch (e: any) { alert(e.message ?? String(e)) }
+  }
+  async function bulkRow(hsId: string, result: ETResult) {
+    if (!probs.length) return
+    const daCham = probs.filter((p) => gradeOf(p.id, hsId)).length
+    if (daCham > 0) {
+      const lbl = ET_KQ.find((k) => k.v === result)?.lbl
+      if (!confirm(`HS này đã có ${daCham}/${probs.length} câu được chấm — GHI ĐÈ toàn bộ ${probs.length} câu thành "${lbl}"?`)) return
+    }
+    try { await gradeETBulk({ buoiId, hocSinhId: hsId, problemIds: probs.map((p) => p.id), result }); setEditing(null); await reloadP() }
+    catch (e: any) { alert(e.message ?? String(e)) }
   }
   async function toggleLoi(pid: string, hsId: string, code: string) {
     const g = gradeOf(pid, hsId); if (!g) return
@@ -931,7 +956,7 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
   return (
     <div className="flex h-full flex-col">
       <div className="mb-3 flex items-center gap-2">
-        <span className="text-[12px] text-slate-400">{probs.length} câu (từ ET) · {coMat.length} HS · 1 click <b className="text-emerald-600">Đ</b>/<b className="text-amber-600">C</b>/<b className="text-rose-600">S</b> — C/S mở ô lỗi.</span>
+        <span className="text-[12px] text-slate-400">{probs.length} câu (từ ET) · {coMat.length} HS · 1 click <b className="text-emerald-600">Đ</b>/<b className="text-amber-600">C</b>/<b className="text-rose-600">S</b> — C/S mở ô lỗi · <b>Tất cả</b> cạnh tên = tích cả hàng, sửa riêng ô lệch.</span>
         <div className="ml-auto flex items-center gap-2">
           <button onClick={() => setAnhPH(true)} title="Tạo ảnh kết quả ET (dọc) để chụp gửi phụ huynh" className="rounded-md border border-slate-300 px-2.5 py-1.5 text-[12px] font-medium text-slate-600 hover:border-indigo-400">📷 Ảnh gửi PH</button>
           {dongCol ? (
@@ -998,7 +1023,10 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
           <tbody>
             {coMat.map((r, i) => (
               <tr key={r.id}>
-                <td className="sticky left-0 z-10 whitespace-nowrap border border-slate-200 bg-white px-3 py-1 text-left align-middle font-medium text-slate-800">{tenHT[i]}</td>
+                <td className="sticky left-0 z-10 whitespace-nowrap border border-slate-200 bg-white px-3 py-1 text-left align-top font-medium text-slate-800">
+                  {tenHT[i]}
+                  <BulkRowKQ onPick={(result) => bulkRow(r.hoc_sinh_id, result)} disabled={!!dongCol} />
+                </td>
                 {probs.map((p) => {
                   const g = gradeOf(p.id, r.hoc_sinh_id)
                   const isEditing = editing?.problemId === p.id && editing?.hsId === r.hoc_sinh_id
@@ -1430,6 +1458,16 @@ function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: Buo
     try { if (g?.result === result) await deleteGrade(pid, hsId); else await gradeET({ buoiId, problemId: pid, hocSinhId: hsId, result, loi: [] }); await reloadP() }
     catch (e: any) { alert(e.message ?? String(e)) }
   }
+  async function bulkRow(hsId: string, result: ETResult) {
+    if (!probs.length) return
+    const daCham = probs.filter((p) => gradeOf(p.id, hsId)).length
+    if (daCham > 0) {
+      const lbl = ET_KQ.find((k) => k.v === result)?.lbl
+      if (!confirm(`HS này đã có ${daCham}/${probs.length} câu được chấm — GHI ĐÈ toàn bộ ${probs.length} câu thành "${lbl}"?`)) return
+    }
+    try { await gradeETBulk({ buoiId, hocSinhId: hsId, problemIds: probs.map((p) => p.id), result }); await reloadP() }
+    catch (e: any) { alert(e.message ?? String(e)) }
+  }
   async function dong() {
     if (closing) return
     if (!confirm('Đóng chấm MT? Sẽ tính Elo (K=60) + EXP. Mở lại được nếu cần sửa.')) return
@@ -1449,7 +1487,7 @@ function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: Buo
   return (
     <div className="flex h-full flex-col">
       <div className="mb-3 flex items-center gap-2">
-        <span className="text-[12px] text-slate-400">{probs.length} câu ({phans.length} phần) · {coMat.length} HS · 1 click <b className="text-emerald-600">Đ</b>/<b className="text-amber-600">C</b>/<b className="text-rose-600">S</b>.</span>
+        <span className="text-[12px] text-slate-400">{probs.length} câu ({phans.length} phần) · {coMat.length} HS · 1 click <b className="text-emerald-600">Đ</b>/<b className="text-amber-600">C</b>/<b className="text-rose-600">S</b> · <b>Tất cả</b> cạnh tên = tích cả hàng, sửa riêng ô lệch.</span>
         <div className="ml-auto flex items-center gap-2">
           <button onClick={() => setDiemMTOpen((v) => !v)} className={`rounded-md border px-3 py-1.5 text-[13px] font-medium ${diemMTOpen ? 'border-violet-400 bg-violet-100 text-violet-800' : 'border-violet-300 bg-violet-50 text-violet-700 hover:bg-violet-100'}`}>🔢 Điểm MT</button>
           {dongCol ? (
@@ -1490,7 +1528,10 @@ function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: Buo
           <tbody>
             {coMat.map((r, i) => (
               <tr key={r.id}>
-                <td className="sticky left-0 z-10 whitespace-nowrap border border-slate-200 bg-white px-3 py-1 text-left align-middle font-medium text-slate-800">{tenHT[i]}</td>
+                <td className="sticky left-0 z-10 whitespace-nowrap border border-slate-200 bg-white px-3 py-1 text-left align-top font-medium text-slate-800">
+                  {tenHT[i]}
+                  <BulkRowKQ onPick={(result) => bulkRow(r.hoc_sinh_id, result)} disabled={!!dongCol} />
+                </td>
                 {probs.map((p) => {
                   const g = gradeOf(p.id, r.hoc_sinh_id)
                   return (
@@ -1634,6 +1675,16 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
     try { if (g?.result === result) await deleteGrade(pid, hsId); else await gradeET({ buoiId, problemId: pid, hocSinhId: hsId, result, loi: [] }); await reloadP() }
     catch (e: any) { alert(e.message ?? String(e)) }
   }
+  async function bulkRow(hsId: string, result: ETResult) {
+    if (!probs.length) return
+    const daCham = probs.filter((p) => gradeOf(p.id, hsId)).length
+    if (daCham > 0) {
+      const lbl = ET_KQ.find((k) => k.v === result)?.lbl
+      if (!confirm(`HS này đã có ${daCham}/${probs.length} câu được chấm — GHI ĐÈ toàn bộ ${probs.length} câu thành "${lbl}"?`)) return
+    }
+    try { await gradeETBulk({ buoiId, hocSinhId: hsId, problemIds: probs.map((p) => p.id), result }); await reloadP() }
+    catch (e: any) { alert(e.message ?? String(e)) }
+  }
   async function setKQField(hsId: string, patch: Partial<BtvnKQ>) {
     setKq((m) => { const base = m[hsId] ?? { trang_thai_nop: null, thai_do: null }; return { ...m, [hsId]: { ...base, ...patch } } })
     try { await setBtvnKetQua(buoiId, hsId, patch) } catch (e: any) { alert(e.message ?? String(e)); reloadKq() }
@@ -1654,7 +1705,7 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
   return (
     <div className="flex h-full flex-col">
       <div className="mb-3 flex items-center gap-2">
-        <span className="text-[12px] text-slate-400">{probs.length} câu (từ BTVN) · {coMat.length} HS · chấm <b className="text-emerald-600">Đ</b>/<b className="text-amber-600">C</b>/<b className="text-rose-600">S</b> (tham khảo) · 🚨 báo động kém dạng.</span>
+        <span className="text-[12px] text-slate-400">{probs.length} câu (từ BTVN) · {coMat.length} HS · chấm <b className="text-emerald-600">Đ</b>/<b className="text-amber-600">C</b>/<b className="text-rose-600">S</b> (tham khảo) · <b>Tất cả</b> cạnh tên = tích cả hàng, sửa riêng ô lệch · 🚨 báo động kém dạng.</span>
         {dong ? (
           <div className="ml-auto flex items-center gap-2">
             <span className="rounded-md bg-emerald-50 px-2.5 py-1 text-[13px] font-medium text-emerald-700">✓ BTVN đã đóng — đã thưởng EXP hoàn thành.</span>
@@ -1693,6 +1744,7 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
                       </select>
                       <button onClick={() => setAlertFor(r.hoc_sinh_id)} disabled={!dangBuoi.length || dong} className="shrink-0 rounded border border-rose-200 px-1.5 py-1 text-[12px] text-rose-600 hover:bg-rose-50 disabled:opacity-40" title="Báo động: HS kém 1 dạng">🚨</button>
                     </div>
+                    <BulkRowKQ onPick={(result) => bulkRow(r.hoc_sinh_id, result)} disabled={dong || !probs.length} />
                     {cbOf(r.hoc_sinh_id).length > 0 && (
                       <div className="mt-1 flex flex-wrap items-center gap-1 pl-[2px]">
                         {cbOf(r.hoc_sinh_id).map((c) => (
