@@ -470,12 +470,16 @@ function PhAnhModal({ hsId, mon, ym, hsName, hsImg, lopTen, gvName, tq, missCoun
   )
   // MT: dùng ĐIỂM THẬT (thang 10, nhập tay) — KHÁC assessRow ở trên (%đúng câu). MT nhập riêng qua
   // ky_thi/diem_thi, không suy từ Đ/C/S như ET/BTVN nên KHÔNG quy đổi s10(%) nữa.
+  // Chỉ TỔNG mới đủ điều kiện tô màu ngưỡng (đúng thang 10 thật). Cơ bản/Nâng cao là 2 CỘT ĐIỂM RIÊNG,
+  // thang điểm KHÁC NHAU (vd cơ bản max 9đ, nâng cao max 1đ — nâng cao không bắt buộc) → số THẤP tuyệt
+  // đối ở nâng cao là BÌNH THƯỜNG, không phải yếu kém. Tô đỏ/xanh theo ngưỡng 0-10 ở đây là SAI, gây hiểu
+  // lầm cho phụ huynh (Thùy 08-19). Để màu trung tính, không so ngưỡng.
   const hexDiem = (v: number | null) => v == null ? '#cbd5e1' : v >= 8 ? '#059669' : v >= 5 ? '#d97706' : '#e11d48'
-  const cellDiem = (lb: string, v: number | null, sz: number) => <div><span style={{ fontSize: 7.5, color: '#94a3b8', display: 'block' }}>{lb}</span><span style={{ fontSize: sz, fontWeight: 900, color: hexDiem(v) }}>{v == null ? '—' : v}</span></div>
+  const cellDiem = (lb: string, v: number | null, sz: number, colored?: boolean) => <div><span style={{ fontSize: 7.5, color: '#94a3b8', display: 'block' }}>{lb}</span><span style={{ fontSize: sz, fontWeight: 900, color: colored ? hexDiem(v) : v == null ? '#cbd5e1' : '#15233b' }}>{v == null ? '—' : v}</span></div>
   const assessRowDiem = (ten: string, hx: string, tong: number | null, cb: number | null, nc: number | null) => (
     <div style={{ display: 'grid', gridTemplateColumns: '1.25fr .6fr .6fr .6fr', gap: 6, alignItems: 'center', minHeight: 46, borderTop: '1px dashed #e9edf4' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 10.5, fontWeight: 800, color: '#15233b' }}><span style={{ width: 9, height: 9, borderRadius: 5, background: hx, boxShadow: `0 0 0 4px ${hx}22` }} />{ten}</div>
-      {cellDiem('Tổng', tong, 16)}{cellDiem('Cơ bản', cb, 15)}{cellDiem('Nâng cao', nc, 15)}
+      {cellDiem('Tổng', tong, 16, true)}{cellDiem('Cơ bản', cb, 15)}{cellDiem('Nâng cao', nc, 15)}
     </div>
   )
   return createPortal(
