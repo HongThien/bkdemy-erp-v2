@@ -19,7 +19,12 @@ const UNI: [RegExp, string][] = [
 const uni = (t: string) => { let s = t; for (const [re, u] of UNI) s = s.replace(re, u); return s }
 const tex = (s: string, display: boolean) => {
   // \frac hiển thị bé (scriptstyle khi inline) → đổi sang \dfrac cho phân số to, đẹp.
-  const fixed = s.replace(/\\frac(?![a-zA-Z])/g, '\\dfrac')
+  // \vec{AB} (vector 2 điểm) → mũi tên KHÔNG giãn hết bề rộng, chỉ phủ đúng 1 ký hiệu (đúng chuẩn LaTeX
+  // của \vec) → nhìn như chỉ phủ mỗi chữ cuối. Vector 2 điểm (AB, PN, PM…) phải dùng \overrightarrow mới
+  // giãn đúng; \vec{u}/\vec{n} (1 ký hiệu) vẫn đúng, GIỮ NGUYÊN. Tự sửa theo độ dài nội dung trong ngoặc.
+  const fixed = s
+    .replace(/\\frac(?![a-zA-Z])/g, '\\dfrac')
+    .replace(/\\vec\s*\{([A-Za-z][A-Za-z0-9']*)\}/g, (m, arg: string) => (arg.length >= 2 ? `\\overrightarrow{${arg}}` : m))
   try { return katex.renderToString(fixed, { displayMode: display, throwOnError: false, output: 'html' }) }
   catch { return esc(s) }
 }

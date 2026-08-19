@@ -8,7 +8,7 @@ import { type CauHoi } from '../../lib/kho/api'
 import { saveOnTapConfig, appendOnTapToBtvnDoc, fetchCausByMa, fetchTenDangByMa, type OnTapConfig } from '../../lib/ontap'
 import { useStore } from '../../store/useStore'
 import OnTapEditor from '../../components/OnTapEditor'
-import { cauItemParts, CauColumns, CHROME_CSS } from './PrintView'
+import { cauItemParts, CauColumns, CauFlow, CHROME_CSS } from './PrintView'
 
 export default function OnTapConfirmScreen({ masterId, buoiId, tenBuoi, lopId, tenLop, ngay, khoi, mon, nhanh, regularBtvn, onClose, onConfirmed }: {
   masterId: string; buoiId: string; tenBuoi: string; lopId: string; tenLop: string; ngay: string; khoi: string; mon: string; nhanh?: string | null
@@ -19,7 +19,7 @@ export default function OnTapConfirmScreen({ masterId, buoiId, tenBuoi, lopId, t
   const [config, setConfig] = useState<OnTapConfig | null>(null)
   const [gv, setGv] = useState(false)
   const [busy, setBusy] = useState(false)
-  const [ontapPreview, setOntapPreview] = useState<{ ten_dang: string; caus: CauHoi[]; linesByCau: Record<string, number> }[]>([])
+  const [ontapPreview, setOntapPreview] = useState<{ ten_dang: string; caus: CauHoi[]; linesByCau: Record<string, number>; colByCau: Record<string, number> }[]>([])
   const cauTbl = khoCuaMon(mon, nhanh).cauTbl
 
   // Preview khối ôn tập — resolve NỘI DUNG câu + tên dạng từ config (đang sống ở state, chưa lưu DB) để
@@ -34,7 +34,7 @@ export default function OnTapConfirmScreen({ masterId, buoiId, tenBuoi, lopId, t
         ...config.dangs.map((d) => fetchCausByMa(d.ma_caus, cauTbl)),
       ])
       if (!alive) return
-      setOntapPreview(config.dangs.map((d, i) => ({ ten_dang: tenMap.get(d.ma_dang) ?? d.ma_dang, caus: causLists[i], linesByCau: d.linesByCau ?? {} })))
+      setOntapPreview(config.dangs.map((d, i) => ({ ten_dang: tenMap.get(d.ma_dang) ?? d.ma_dang, caus: causLists[i], linesByCau: d.linesByCau ?? {}, colByCau: d.colByCau ?? {} })))
     })()
     return () => { alive = false }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -102,7 +102,7 @@ export default function OnTapConfirmScreen({ masterId, buoiId, tenBuoi, lopId, t
                   {ontapPreview.map((d, i) => (
                     <div key={i} className="pv-sec">
                       <h2 className="pv-h-dang">{d.ten_dang}</h2>
-                      <CauColumns cols={1} parts={d.caus.map((c) => { bno += 1; return { key: c.ma_cau, ...cauItemParts({ no: bno, c, gv, lines: gv ? 0 : (d.linesByCau[c.ma_cau] ?? DEFAULT_BTVN_LINES) }) } })} />
+                      <CauFlow items={d.caus.map((c) => { bno += 1; return { key: c.ma_cau, cols: d.colByCau[c.ma_cau] ?? 1, ...cauItemParts({ no: bno, c, gv, lines: gv ? 0 : (d.linesByCau[c.ma_cau] ?? DEFAULT_BTVN_LINES) }) } })} />
                     </div>
                   ))}
                 </div>
