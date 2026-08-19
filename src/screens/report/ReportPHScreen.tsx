@@ -21,11 +21,11 @@ const pctCls = (p: number | null) => p == null ? 'text-slate-300' : p >= 80 ? 't
 const fmtNgay = (iso: string) => { const d = new Date(iso + 'T00:00:00'); return isNaN(+d) ? iso : d.toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit' }) }
 // Thanh mức kết luận (5 bậc, tốt → cần lưu ý)
 export const KET_LUAN_MUC = [
-  { key: 'vuot_bac', label: 'Tiến bộ vượt bậc', emoji: '🚀', dot: 'bg-emerald-500', sel: 'bg-emerald-600 text-white ring-emerald-600' },
-  { key: 'tien_bo', label: 'Con đang tiến bộ', emoji: '📈', dot: 'bg-green-400', sel: 'bg-green-500 text-white ring-green-500' },
+  { key: 'vuot_bac', label: 'Con đang tiến bộ', emoji: '🚀', dot: 'bg-emerald-500', sel: 'bg-emerald-600 text-white ring-emerald-600' },
+  { key: 'tien_bo', label: 'Con đang xu hướng đi lên', emoji: '📈', dot: 'bg-green-400', sel: 'bg-green-500 text-white ring-green-500' },
   { key: 'on_dinh', label: 'Con đang ổn định', emoji: '⚖️', dot: 'bg-sky-400', sel: 'bg-sky-500 text-white ring-sky-500' },
-  { key: 'di_xuong', label: 'Con đang đi xuống', emoji: '📉', dot: 'bg-amber-400', sel: 'bg-amber-500 text-white ring-amber-500' },
-  { key: 'can_ho_tro', label: 'Con đang cần hỗ trợ', emoji: '🆘', dot: 'bg-rose-400', sel: 'bg-rose-500 text-white ring-rose-500' },
+  { key: 'di_xuong', label: 'Con đang chưa ổn định', emoji: '📉', dot: 'bg-amber-400', sel: 'bg-amber-500 text-white ring-amber-500' },
+  { key: 'can_ho_tro', label: 'Con đang có xu hướng đi xuống', emoji: '🆘', dot: 'bg-rose-400', sel: 'bg-rose-500 text-white ring-rose-500' },
 ] as const
 
 // Band năng lực GV chọn (cao → thấp). 7 chỉ số phát triển (mức 1..5).
@@ -395,11 +395,11 @@ function NhanXet({ hsId, mon, ym }: { hsId: string; mon: string; ym: string }) {
 
 // ── ẢNH GỬI PHỤ HUYNH — thẻ inline-hex (né oklch Tailwind v4), layout kiểu tab Kết quả app PH ──
 const MUC_HEX: Record<string, { bg: string; fg: string; emoji: string; label: string }> = {
-  vuot_bac: { bg: '#ecfdf5', fg: '#047857', emoji: '🚀', label: 'Tiến bộ vượt bậc' },
-  tien_bo: { bg: '#f0fdf4', fg: '#15803d', emoji: '📈', label: 'Con đang tiến bộ' },
+  vuot_bac: { bg: '#ecfdf5', fg: '#047857', emoji: '🚀', label: 'Con đang tiến bộ' },
+  tien_bo: { bg: '#f0fdf4', fg: '#15803d', emoji: '📈', label: 'Con đang xu hướng đi lên' },
   on_dinh: { bg: '#f0f9ff', fg: '#0369a1', emoji: '⚖️', label: 'Con đang ổn định' },
-  di_xuong: { bg: '#fffbeb', fg: '#b45309', emoji: '📉', label: 'Con đang đi xuống' },
-  can_ho_tro: { bg: '#fff1f2', fg: '#be123c', emoji: '🆘', label: 'Con đang cần hỗ trợ' },
+  di_xuong: { bg: '#fffbeb', fg: '#b45309', emoji: '📉', label: 'Con đang chưa ổn định' },
+  can_ho_tro: { bg: '#fff1f2', fg: '#be123c', emoji: '🆘', label: 'Con đang có xu hướng đi xuống' },
 }
 const s10 = (pct: number | null) => pct == null ? '—' : (pct / 10).toFixed(1)
 const hexPct = (pct: number | null) => pct == null ? '#cbd5e1' : pct >= 80 ? '#059669' : pct >= 50 ? '#d97706' : '#e11d48'
