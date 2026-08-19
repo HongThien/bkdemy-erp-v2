@@ -1454,6 +1454,23 @@ export async function getThanhTich(hocSinhId: string): Promise<ThanhTich> {
   return { season, seasonLabel: seasonLabel(season), mons }
 }
 
+// Hạng Elo TRONG KHỐI (khác getThanhTich.rankNow = hạng trên TOÀN MÔN) — Thùy 08-19: dùng cho Report PH,
+// "% hoàn thành bản đồ" gây confuse phụ huynh, đổi sang hạng dễ hiểu hơn. hoc_sinh.khoi là nguồn khối
+// (KHÔNG qua lop.khoi — 1 HS có thể đổi lớp trong khối, khoi trên hồ sơ HS mới là khoá đúng).
+export type KhoiRank = { rankNow: number; rankTotal: number; khoi: string }
+export async function getKhoiRank(hocSinhId: string, mon: string): Promise<KhoiRank | null> {
+  const [{ data: hs }, { data: myElo }] = await Promise.all([
+    supabase.from('hoc_sinh').select('khoi').eq('id', hocSinhId).maybeSingle(),
+    supabase.from('gami_elo').select('elo').eq('hoc_sinh_id', hocSinhId).eq('mon', mon).maybeSingle(),
+  ])
+  const khoi = (hs as any)?.khoi as string | null
+  if (!khoi || !myElo) return null // chưa xếp khối, hoặc chưa có Elo môn này (chưa thi đấu) → không xếp hạng được
+  const { data: rows } = await supabase.from('gami_elo').select('elo, hoc_sinh:hoc_sinh_id(khoi)').eq('mon', mon).limit(LIMIT)
+  const inKhoi = ((rows ?? []) as any[]).filter((r) => r.hoc_sinh?.khoi === khoi)
+  const rankNow = 1 + inKhoi.filter((r) => Number(r.elo) > Number((myElo as any).elo)).length
+  return { rankNow, rankTotal: inKhoi.length, khoi }
+}
+
 // ── BẢNG ELO + EXP tháng của cả roster (đầu buổi chiếu cho HS xem) — PURE-DERIVE, 2 query batch. ──
 // ELO = mốc HIỆN TẠI (gami_elo, thiếu dòng → 1000). EXP tháng = Σ ledger tháng này (đúng bộ lọc
 // getLevelXu: loại legacy rank_*/btvn, chỉ tính exp_thang/attend_floor của THÁNG hiện tại). Scope MÔN.
