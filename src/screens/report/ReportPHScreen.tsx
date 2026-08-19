@@ -8,6 +8,7 @@ import { listLop, listHSCuaLop } from '../../lib/nhansu'
 import { getTongQuanHS, type TongQuanHS } from '../../lib/mastery'
 import { getReportBuoiHS, getBaoCaoPH, upsertBaoCaoPH, getGVChinhLop, BC_EMPTY, type ReportBuoiRow, type BaoCaoPH } from '../../lib/report'
 import { tenHienThiDs } from '../../lib/hoten'
+import { getKhoiRank, type KhoiRank } from '../../lib/gami'
 
 const MON_CO_KHO = ['Toán', 'KHTN']
 // Thang 5 cho skill bar (GV tự chọn). index 0..4 ↔ mức 1..5.
@@ -414,8 +415,10 @@ const hexPct = (pct: number | null) => pct == null ? '#cbd5e1' : pct >= 80 ? '#0
 
 function PhAnhModal({ hsId, mon, ym, hsName, hsImg, lopTen, gvName, tq, missCount, onClose }: { hsId: string; mon: string; ym: string; hsName: string; hsImg: string | null; lopTen: string; gvName: string | null; tq: TongQuanHS; missCount: number; onClose: () => void }) {
   const [bc, setBc] = useState<BaoCaoPH>({ ...BC_EMPTY })
+  const [khoiRank, setKhoiRank] = useState<KhoiRank | null>(null)
   const cardRef = useRef<HTMLDivElement>(null)
   useEffect(() => { getBaoCaoPH(hsId, mon, ym).then(setBc).catch(() => {}) }, [hsId, mon, ym])
+  useEffect(() => { setKhoiRank(null); getKhoiRank(hsId, mon).then(setKhoiRank).catch(() => {}) }, [hsId, mon])
 
   function handleCopy() {
     const el = cardRef.current; if (!el) return
@@ -435,9 +438,11 @@ function PhAnhModal({ hsId, mon, ym, hsName, hsImg, lopTen, gvName, tq, missCoun
 
   const muc = bc.ket_luan_muc ? MUC_HEX[bc.ket_luan_muc] : null
   const a = tq.hoatDong, hh = tq.hoanThanh.toanBo.etMt
-  const progress = hh.pct
   const trendV = tq.trend.hoanThanhToanBo
-  const ringHex = progress == null ? '#94a3b8' : progress >= 80 ? '#12a875' : progress >= 50 ? '#e29a23' : '#e45858'
+  // Vòng tròn HẠNG TRONG KHỐI (Thùy 08-19, thay cho %hoàn thành gây confuse PH) — % fill = percentile
+  // rank trong khối (hạng 1 → fill đầy), số hiện GIỮA vòng là hạng THẬT #N, không phải %.
+  const rankPct = khoiRank ? Math.round(((khoiRank.rankTotal - khoiRank.rankNow) / Math.max(1, khoiRank.rankTotal - 1)) * 100) : null
+  const ringHex = rankPct == null ? '#94a3b8' : rankPct >= 80 ? '#12a875' : rankPct >= 50 ? '#e29a23' : '#e45858'
   const RC = 2 * Math.PI * 32
   // Skill bar THANG 5 (GV chọn) + text nhận xét kèm tag.
   const bar5 = (label: string, lvl: number | null, hx: string, text: string | null) => (
@@ -520,9 +525,9 @@ function PhAnhModal({ hsId, mon, ym, hsName, hsImg, lopTen, gvName, tq, missCoun
             <div style={{ background: '#fff', border: '1px solid #e8edf5', borderRadius: 20, boxShadow: '0 7px 18px rgba(35,63,104,.055)', padding: 14, display: 'grid', gridTemplateColumns: '85px 1fr', gap: 13, alignItems: 'center', marginBottom: 10 }}>
               <svg width={80} height={80} viewBox="0 0 80 80">
                 <circle cx={40} cy={40} r={32} fill="none" stroke="#e9f3ef" strokeWidth={9} />
-                <circle cx={40} cy={40} r={32} fill="none" stroke={ringHex} strokeWidth={9} strokeDasharray={RC} strokeDashoffset={RC * (1 - (progress ?? 0) / 100)} strokeLinecap="round" transform="rotate(-90 40 40)" />
-                <text x={40} y={39} textAnchor="middle" fontSize={18} fontWeight={800} fill={ringHex}>{progress == null ? '—' : progress + '%'}</text>
-                <text x={40} y={51} textAnchor="middle" fontSize={7} fontWeight={700} fill="#94a3b8">HOÀN THÀNH</text>
+                <circle cx={40} cy={40} r={32} fill="none" stroke={ringHex} strokeWidth={9} strokeDasharray={RC} strokeDashoffset={RC * (1 - (rankPct ?? 0) / 100)} strokeLinecap="round" transform="rotate(-90 40 40)" />
+                <text x={40} y={37} textAnchor="middle" fontSize={16} fontWeight={800} fill={ringHex}>{khoiRank ? `#${khoiRank.rankNow}` : '—'}</text>
+                <text x={40} y={49} textAnchor="middle" fontSize={7} fontWeight={700} fill="#94a3b8">{khoiRank ? `/${khoiRank.rankTotal} KHỐI ${khoiRank.khoi}` : 'HẠNG TRONG KHỐI'}</text>
               </svg>
               <div>
                 <div style={{ fontSize: 10, color: '#315fdd', fontWeight: 900, textTransform: 'uppercase', letterSpacing: .7 }}>Xu hướng tháng này</div>
