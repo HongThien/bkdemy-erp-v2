@@ -456,6 +456,16 @@ function PhAnhModal({ hsId, mon, ym, hsName, hsImg, lopTen, gvName, tq, missCoun
       {cell('Tổng', tongPct(cb, nc), 16)}{cell('Cơ bản', cb.pct, 15)}{cell('Nâng cao', nc.pct, 15)}
     </div>
   )
+  // MT: dùng ĐIỂM THẬT (thang 10, nhập tay) — KHÁC assessRow ở trên (%đúng câu). MT nhập riêng qua
+  // ky_thi/diem_thi, không suy từ Đ/C/S như ET/BTVN nên KHÔNG quy đổi s10(%) nữa.
+  const hexDiem = (v: number | null) => v == null ? '#cbd5e1' : v >= 8 ? '#059669' : v >= 5 ? '#d97706' : '#e11d48'
+  const cellDiem = (lb: string, v: number | null, sz: number) => <div><span style={{ fontSize: 7.5, color: '#94a3b8', display: 'block' }}>{lb}</span><span style={{ fontSize: sz, fontWeight: 900, color: hexDiem(v) }}>{v == null ? '—' : v}</span></div>
+  const assessRowDiem = (ten: string, hx: string, tong: number | null, cb: number | null, nc: number | null) => (
+    <div style={{ display: 'grid', gridTemplateColumns: '1.25fr .6fr .6fr .6fr', gap: 6, alignItems: 'center', minHeight: 46, borderTop: '1px dashed #e9edf4' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 10.5, fontWeight: 800, color: '#15233b' }}><span style={{ width: 9, height: 9, borderRadius: 5, background: hx, boxShadow: `0 0 0 4px ${hx}22` }} />{ten}</div>
+      {cellDiem('Tổng', tong, 16)}{cellDiem('Cơ bản', cb, 15)}{cellDiem('Nâng cao', nc, 15)}
+    </div>
+  )
   return createPortal(
     <div className="fixed inset-0 z-[90] flex flex-col bg-slate-900/70" onClick={onClose}>
       <div className="flex items-center gap-3 border-b border-slate-700 bg-slate-800 px-4 py-2.5 text-white" onClick={(e) => e.stopPropagation()}>
@@ -532,7 +542,7 @@ function PhAnhModal({ hsId, mon, ym, hsName, hsImg, lopTen, gvName, tq, missCoun
               </div>
               {assessRow('Test cuối giờ', '#315fdd', a.etCoBan, a.etNangCao, true)}
               {assessRow('Bài tập về nhà', '#12a875', a.btvnCoBan, a.btvnNangCao)}
-              {assessRow('Test tháng', '#e29a23', a.mtCoBan, a.mtNangCao)}
+              {assessRowDiem('Test tháng (MT)', '#e29a23', tq.diem.mt.tb, tq.diem.mt.coBan, tq.diem.mt.nangCao)}
               {missCount > 0 ? <div style={{ fontSize: 9.5, color: '#da7d00', marginTop: 6 }}>⚠ Chưa hoàn thành BTVN {missCount} lần trong tháng</div> : null}
             </div>
             {/* MỤC TIÊU */}
