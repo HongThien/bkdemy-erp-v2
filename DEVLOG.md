@@ -6066,3 +6066,50 @@ cổng 1/2), dựng data test tốn nhiều bước ngoài phạm vi yêu cầu 
 "không node nào có biến thể ⇒ về `nodes[0]`", `deepestOf` giữ đúng chữ ký `(ns: BaiToan[]) => BaiToan`
 để không đổi call site khác) — tự tin đúng nhưng CHƯA click-through trực tiếp thấy kết quả cuối, ghi rõ
 ở đây để không nhận vơ là đã verify UI đầy đủ.
+
+## 2026-08-20 (tiếp) — Builder giáo trình Hình: panel xem trước SỐNG bên phải + badge cảnh báo trùng bài
+
+**Yêu cầu (Thùy, verbatim):**
+"1. Nút chuyển lên xuống giữa các bài. bài nào ở trên hiện trước bài nào ở dưới hiện sau
+2. Preview bài đó. Bên trái là thông số builder. Bên phải là preview bài đó luôn (Đề + hình vẽ). Thay vì
+   là cái mắt phải click vào thì hiện luôn. Không gian còn thừa khá nhiều
+3. Ngoài ra còn lỗi builder khi t vào xem thì nó ko save cái cũ t đã chọn. Vào builder buổi 2 lớp 8A ,
+   builder hiện 2 câu nhưng preview chỉ hiện 1 (1 là do t chọn từ trước nhưng ko hiểu sao builder vẫn
+   hiện 2)
+4. Fix nhanh nào"
+
+**Xác định đúng màn:** "builder của hình" = `BuoiPickEditor` (`SoanTaiLieu.tsx`, export dùng bởi
+`GiaoTrinhScreen.tsx` → `BuoiCardHinh`) — nơi soạn nội dung TỪNG BUỔI của 1 giáo trình Hình cho 1 lớp cụ
+thể (đúng khớp "builder buổi 2 lớp 8A"). Điểm 1 (nút ▲▼ đổi thứ tự) đã có sẵn từ 17/08 trong `ChuoiRow`
+— KHÔNG phải chưa có; đọc lại ý Thùy thì đây là 1 cụm mô tả CHUNG cho panel preview mới (nút ↑↓ ĐIỀU
+HƯỚNG giữa các bài trong panel xem, đi đúng THỨ TỰ mà ▲▼ đã sắp — không phải yêu cầu thêm 1 bộ nút đổi
+thứ tự khác).
+
+**Điểm 3 — root cause tìm được, KHÔNG PHẢI bug persistence:** `banInTheoMoHinh` (dùng chung cho preview
+"👁/📘 Xem" LẪN xuất PDF thật) gọi `dedupePicks()` — khử pick TRÙNG chữ ký (cùng bản `kind/luaId/
+bienTheId/yId` + cùng bộ `nodeIds`) trước khi ghép `mucs`. `ChuoiRow`'s danh sách builder (`picksOf`)
+KHÔNG khử — hiện ĐỦ mọi pick kể cả pick trùng. ⇒ builder đếm 2, preview/PDF chỉ ra 1 — ĐÚNG như Thùy tả,
+không phải lỗi lưu/tải (`gt.loadBuoiPicks`/`saveBuoiSelection` đọc-ghi đúng, `nhap.picks` builder và
+preview dùng CHUNG 1 mảng in-memory, xác nhận qua `xem()` trong GiaoTrinhScreen.tsx).
+
+**Làm (`SoanTaiLieu.tsx`):**
+- Tách `pickSig(p)` khỏi `dedupePicks` (logic y hệt, giờ dùng lại được ở 2 nơi).
+- `ChuoiRow`: tính `dupKeys` (Set các key SẼ bị `dedupePicks` loại lúc in, đúng thuật toán/thứ tự gốc) —
+  gắn badge "⚠ trùng" đỏ ngay trên dòng bài, tooltip giải thích rõ "chỉ giữ dòng xuất hiện TRƯỚC, dòng
+  này KHÔNG in ra" + gợi ý bấm ✕/✎. Builder giờ LỘ RA sự lệch số thay vì âm thầm khác preview.
+- Bỏ hẳn modal `XemBaiPopup` (che màn hình, phải Đóng mới soạn tiếp) → `PreviewPane` — panel SỐNG, cột
+  thứ 3 của `BuoiPickEditor` (`xl:grid-cols-[190px_minmax(0,1fr)_360px]`, `xl:sticky xl:top-3`), tái
+  dùng NGUYÊN resolver `mucGhep/mucGhepLua/mucBienThe/mucY` (khuôn print thật — WYSIWYG, không tính lại
+  gì riêng). `BuoiPickEditor` giữ state `xem: {list, index}` — 👁 mỗi dòng gọi `onXem(ds, i)` (`ds` =
+  đúng danh sách top-to-bottom của `ChuoiRow` đó, thứ tự = thứ tự in) → panel đổi nội dung TẠI CHỖ, nút
+  ↑/↓ chỉ đổi `index` trong `list` đã truyền, khỏi tính lại "bài trước/sau" từ đầu.
+- Auto-chọn bài ĐẦU TIÊN tìm thấy khi mở buổi lần đầu (hoặc bài đang xem bị xoá/đổi) — dùng luôn không
+  gian panel phải thay vì để trống, đúng ý "không gian còn thừa khá nhiều".
+
+**Verify:** tsc sạch · `npx vite build` sạch. Live (dev server, Giáo trình 8A, Khối 8, Buổi 2 thật — đúng
+kịch bản Thùy tả): panel "👁 XEM TRƯỚC" tự hiện ngay khi mở buổi (không cần bấm gì), auto-chọn BT.08.047
+"1/1"; bấm 👁 ở dòng chuỗi BT.08.048+BT.08.049 → panel đổi đúng nội dung 2 ý a)/b); bấm 👁 ở biến thể 1
+của BT.08.047 (Về nhà, 2 bài) → panel "1/2" → bấm ↓ → "2/2", đề đổi đúng sang biến thể khác (góc B=4D
+thay vì A=3C) — nav hoạt động đúng. KHÔNG bắt được ca "⚠ trùng" thật trong Buổi 2/Giáo trình 8A hiện tại
+(không có pick trùng chữ ký ở đây) — logic đã đối chiếu kỹ đúng thuật toán `dedupePicks`, để tự lộ khi
+gặp buổi thật có trùng.

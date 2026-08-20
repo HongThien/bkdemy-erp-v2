@@ -373,12 +373,18 @@ function banInOnTap(L: Luoi, chon: { y: Y; bai: Bai; bt: BaiToan }[]): BanIn {
 // Một buổi đi NHIỀU chuỗi (mỗi chuỗi = 1 dạng, kể cả chuỗi 1 câu). Mỗi chuỗi × phiếu = 1 DANH SÁCH pick
 // (đề chuẩn / lứa / biến thể / ý thật), N + Gợi ý hoặc thêm tay từng bài → xuất 2 phiếu. In nhẹ, không lưu DB.
 const DONG_BTVN = 6   // số dòng kẻ mặc định mỗi ý ở phiếu Về nhà (chỉnh được per bài)
-// Khử pick TRÙNG: cùng phiếu + cùng bản (kind/luaId/bienTheId/yId) + cùng bộ node → chỉ giữ phần tử ĐẦU.
+// Chữ ký 1 pick = cùng phiếu + cùng bản (kind/luaId/bienTheId/yId) + cùng bộ node. 2 pick TRÙNG chữ ký
+// in ra Y HỆT NHAU — chỉ giữ phần tử ĐẦU khi ghép bản in (dùng chung bởi dedupePicks + badge cảnh báo
+// trùng trong ChuoiRow, Thùy 08-20: "builder hiện 2 câu nhưng preview chỉ hiện 1" — builder phải LỘ RÕ
+// pick nào sẽ bị loại lúc in, không âm thầm khác số với preview).
+function pickSig(p: PickItem): string {
+  const banSig = p.kind === 'ghep' ? `ghep|${p.luaId ?? ''}` : p.kind === 'bienthe' ? `bienthe|${p.bienTheId}` : `y|${p.yId}`
+  return `${p.phan}|${banSig}|${[...p.nodeIds].sort().join(',')}`
+}
 function dedupePicks(arr: PickItem[]): PickItem[] {
   const seen = new Set<string>()
   return arr.filter((p) => {
-    const banSig = p.kind === 'ghep' ? `ghep|${p.luaId ?? ''}` : p.kind === 'bienthe' ? `bienthe|${p.bienTheId}` : `y|${p.yId}`
-    const sig = `${p.phan}|${banSig}|${[...p.nodeIds].sort().join(',')}`
+    const sig = pickSig(p)
     if (seen.has(sig)) return false; seen.add(sig); return true
   })
 }
@@ -470,13 +476,33 @@ export function BuoiPickEditor({ L, picks, cheDo, soDong, onChangePicks, onChang
     return comps
   }, [nodes, L])
 
+  // ⭐ 08-20 (Thùy: "bên phải preview luôn, thay vì cái mắt phải click"): panel xem trước SỐNG bên cột phải
+  // — thay 👁 mở popup che màn hình bằng panel LUÔN HIỆN, dùng đúng khoảng trống thừa bên phải. `xem` giữ
+  // CẢ danh sách anh em (đúng `ds` mà dòng 👁 đang bấm tới, thứ tự TRÊN→DƯỚI = thứ tự in) + vị trí hiện
+  // tại → nút ↑↓ chỉ việc đổi index, khỏi tính lại "bài trước/sau" từ đầu.
+  const [xem, setXem] = useState<{ list: PickItem[]; index: number } | null>(null)
+  const xemPick = xem ? xem.list[xem.index] : null
+  // Bài đang xem bị xoá/đổi (key không còn trong `picks`) → tự chọn bài khác thay vì để panel treo nội
+  // dung cũ đã mất. Chưa chọn gì bao giờ (mở buổi lần đầu) → tự chọn bài ĐẦU TIÊN tìm thấy — khỏi để
+  // panel trống phí không gian ngay từ đầu.
+  useEffect(() => {
+    if (xemPick && picks.some((p) => p.key === xemPick.key)) return
+    for (const comp of components) {
+      const ids = new Set(comp.map((b) => b.id))
+      for (const phan of ['lop', 'nha'] as const) {
+        const ds = picks.filter((p) => p.phan === phan && p.nodeIds.length > 0 && p.nodeIds.every((id) => ids.has(id)))
+        if (ds.length) { setXem({ list: ds, index: 0 }); return }
+      }
+    }
+    setXem(null)
+  }, [components, picks]) // eslint-disable-line react-hooks/exhaustive-deps
+
   return (
-    // ⭐ 17/08 (Thùy: "bỏ cái màn ở bên góc phải đi, t chả thấy có ý nghĩa gì") — panel "Tóm tắt" (cột thứ
-    // 3) đã bỏ: đổi thứ tự giờ nằm NGAY trong ChuoiRow (▲▼ mỗi dòng), tổng số bài Lớp/Nhà đã có sẵn ở
-    // header BuoiCardHinh ("📘 X · 📝 Y") — không mất thông tin, chỉ bớt 1 cột thừa.
-    // Lọc mô hình = MỤC LỤC (khuôn StructureTree Đại) — BÉ, chỉ để tìm nhanh. Cột phải là nơi thao tác
-    // chính — RỘNG NHẤT, không bị cột trái bóp lại.
-    <div className="grid items-start gap-3 xl:grid-cols-[190px_minmax(0,1fr)]">
+    // ⭐ 17/08 (Thùy: "bỏ cái màn ở bên góc phải đi, t chả thấy có ý nghĩa gì") — panel "Tóm tắt" cũ đã bỏ.
+    // ⭐ 08-20 (Thùy: "bên phải preview luôn"): cột phải MỚI không phải "Tóm tắt" cũ — là panel XEM TRƯỚC
+    // sống (đề + hình), thay hẳn popup 👁. Lọc mô hình = MỤC LỤC, BÉ, chỉ để tìm nhanh; cột giữa (danh
+    // sách chuỗi/bài) vẫn rộng nhất — panel xem trước ăn vào phần không gian trống bên phải trước đây bỏ.
+    <div className="grid items-start gap-3 xl:grid-cols-[190px_minmax(0,1fr)_360px]">
       <Panel label="Lọc mô hình (mục lục)">
         <div className="mb-1 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Mô hình chính · chọn được nhiều</div>
         <div className="max-h-56 overflow-y-auto pr-0.5">
@@ -512,8 +538,14 @@ export function BuoiPickEditor({ L, picks, cheDo, soDong, onChangePicks, onChang
           : components.map((comp) => (
               <ChuoiRow key={comp.map((b) => b.id).join(',')} L={L} chuoi={comp} picks={picks} cheDo={cheDo} soDong={soDong}
                 onAdd={addPick} onUpdate={updatePick} onRemove={removePick} onSwap={swapPicks} onXoayCheDo={xoayCheDo} onSetSoDongChuoi={setSoDongChuoi}
-                onGoiY={(phan, n) => goiY(comp, phan, n)} />
+                onGoiY={(phan, n) => goiY(comp, phan, n)} onXem={(list, index) => setXem({ list, index })} />
             ))}
+      </div>
+
+      <div className="xl:sticky xl:top-3">
+        <PreviewPane L={L} xem={xem}
+          onNav={(dir) => setXem((s) => (s ? { list: s.list, index: Math.max(0, Math.min(s.list.length - 1, s.index + dir)) } : s))}
+          onClose={() => setXem(null)} />
       </div>
     </div>
   )
@@ -683,19 +715,28 @@ async function goiYChuoi(chuoi: BaiToan[], phan: 'lop' | 'nha', n: number): Prom
 // đã bỏ 17/08). Số dòng chỉnh 1 LẦN CHO CẢ CHUỖI (áp hết mọi bài Về nhà đang có của chuỗi này), KHÔNG theo
 // từng ý riêng — khuôn `ApplyLinesAll` Đại (gõ số → Enter/blur ghi đè hết, vẫn thêm bài mới sau đó bình
 // thường với số dòng vừa áp làm giá trị chung).
-function ChuoiRow({ L, chuoi, picks, cheDo, soDong, onAdd, onUpdate, onRemove, onSwap, onXoayCheDo, onSetSoDongChuoi, onGoiY }: {
+function ChuoiRow({ L, chuoi, picks, cheDo, soDong, onAdd, onUpdate, onRemove, onSwap, onXoayCheDo, onSetSoDongChuoi, onGoiY, onXem }: {
   L: Luoi; chuoi: BaiToan[]; picks: PickItem[]; cheDo: Record<string, CheDoHinh>; soDong: Record<string, number>
   onAdd: (p: PickItem) => void; onUpdate: (key: string, p: PickItem) => void; onRemove: (key: string) => void
   onSwap: (keyA: string, keyB: string) => void
   onXoayCheDo: (key: string) => void; onSetSoDongChuoi: (keys: string[], n: number) => void
   onGoiY: (phan: 'lop' | 'nha', n: number) => void
+  onXem: (list: PickItem[], index: number) => void
 }) {
   const chuoiIds = useMemo(() => new Set(chuoi.map((b) => b.id)), [chuoi])
   const [open, setOpen] = useState<{ phan: 'lop' | 'nha'; editKey?: string } | null>(null)
-  const [xemP, setXemP] = useState<PickItem | null>(null)
   const [nInput, setNInput] = useState<{ lop: number; nha: number }>({ lop: 2, nha: 2 })
   const picksOf = (phan: 'lop' | 'nha') => picks.filter((p) => p.phan === phan && p.nodeIds.length > 0 && p.nodeIds.every((id) => chuoiIds.has(id)))
   const nhanBan = (p: PickItem) => p.kind === 'ghep' ? (p.luaId ? 'Lứa (đổi đỉnh)' : 'Đề chuẩn') : p.kind === 'bienthe' ? 'Biến thể' : 'Ý thật'
+  // ⭐ 08-20 (Thùy: "builder hiện 2 câu nhưng preview chỉ hiện 1"): banInTheoMoHinh khử pick TRÙNG chữ ký
+  // (cùng bản + cùng node) lúc IN — builder trước đây không lộ điều này, số bài hiện ra khác số bài in
+  // ra mà không ai biết vì sao. Tính trước TẤT CẢ pick sẽ bị khử (đúng thuật toán dedupePicks — pick ĐẦU
+  // theo thứ tự `picks` giữ lại, các pick SAU cùng chữ ký bị loại) → gắn badge cảnh báo ngay trên dòng đó.
+  const dupKeys = useMemo(() => {
+    const seen = new Set<string>(); const dup = new Set<string>()
+    for (const p of picks) { const sig = pickSig(p); if (seen.has(sig)) dup.add(p.key); else seen.add(sig) }
+    return dup
+  }, [picks])
   return (
     <div className={`mb-2 rounded-xl border p-3 ${chuoi.length > 1 ? 'border-violet-200 bg-violet-50/30' : 'border-slate-200 bg-white'}`}>
       <div className={`mb-1 text-[11px] font-semibold uppercase tracking-wide ${chuoi.length > 1 ? 'text-violet-700' : 'text-slate-500'}`}>
@@ -737,10 +778,11 @@ function ChuoiRow({ L, chuoi, picks, cheDo, soDong, onAdd, onUpdate, onRemove, o
                         <span className="w-4 shrink-0 text-right text-[11px] text-slate-300">{i + 1}</span>
                         <span className="shrink-0 rounded bg-slate-100 px-1.5 text-[10px] font-medium text-slate-600">{nhanBan(p)}</span>
                         <span className="min-w-0 flex-1 truncate text-slate-700">{p.nodeIds.map((id) => L.baiToan.find((b) => b.id === id)?.ma).filter(Boolean).join(' · ')}</span>
+                        {dupKeys.has(p.key) && <span className="shrink-0 rounded bg-rose-100 px-1.5 text-[10px] font-semibold text-rose-600" title="Trùng bản + trùng bài với 1 dòng khác trong buổi — lúc in/xem chỉ giữ dòng XUẤT HIỆN TRƯỚC, dòng này sẽ KHÔNG in ra. Bấm ✕ bỏ hoặc ✎ đổi sang bài khác.">⚠ trùng</span>}
                         {!laLop && <span className="shrink-0 text-[10px] text-slate-400">{soDong[p.key] ?? DONG_BTVN} dòng</span>}
                         <button onClick={() => onXoayCheDo(p.key)} title={cd.goi}
                           className={`shrink-0 rounded px-1 text-[11px] ${cd.ma === 'hien' ? 'text-slate-400 hover:text-slate-700' : cd.ma === 'o_trong' ? 'text-amber-600' : 'text-rose-500'}`}>{cd.icon}</button>
-                        <button onClick={() => setXemP(p)} className="shrink-0 text-slate-400 hover:text-teal-600" title="Xem bài này">👁</button>
+                        <button onClick={() => onXem(ds, i)} className="shrink-0 text-slate-400 hover:text-teal-600" title="Xem bài này ở panel bên phải">👁</button>
                         <button onClick={() => setOpen({ phan, editKey: p.key })} className="shrink-0 text-slate-400 hover:text-indigo-600" title="Đổi sang bài khác">✎</button>
                         <button onClick={() => onRemove(p.key)} className="shrink-0 text-slate-400 hover:text-rose-600" title="Bỏ bài này">✕</button>
                       </li>
@@ -775,7 +817,6 @@ function ChuoiRow({ L, chuoi, picks, cheDo, soDong, onAdd, onUpdate, onRemove, o
           }
           setOpen(null)
         }} />}
-      {xemP && <XemBaiPopup L={L} p={xemP} onClose={() => setXemP(null)} />}
     </div>
   )
 }
@@ -794,15 +835,22 @@ function ApplyDongChuoi({ soBai, onApply }: { soBai: number; onApply: (n: number
   )
 }
 type DeMuc = Extract<MucIn, { kieu: 'de' }>
-// ⭐ 17/08 (Thùy): "nút xem bài — hiện riêng bài đã chọn". Trước đây MUỐN xem lại nội dung 1 bài đã pick
-// thì chỉ có "✎ Sửa" — mở LUÔN lưới thay-bản (nhầm mục đích: xem ≠ đổi). Tách riêng: nút này CHỈ đọc,
-// dùng lại đúng resolver mucGhep/mucGhepLua/mucBienThe/mucY (khuôn print thật — WYSIWYG với bản in, không
-// tự tính lại giả thiết/hình riêng ở đây).
-function XemBaiPopup({ L, p, onClose }: { L: Luoi; p: PickItem; onClose: () => void }) {
+// ⭐ 08-20 (Thùy: "bên phải preview luôn, thay vì cái mắt phải click vào — không gian còn thừa khá
+// nhiều"). Trước đây "👁 Xem bài" (nút này gõ ban đầu 17/08) mở POPUP che màn hình, đọc xong phải đóng
+// mới soạn tiếp. Giờ panel SỐNG NGAY cột phải của BuoiPickEditor — bấm 👁 ở dòng nào, panel đổi nội dung
+// tại chỗ, khỏi che gì cả; nút ↑↓ chuyển bài TRONG DANH SÁCH đang xem (thứ tự TRÊN→DƯỚI = thứ tự IN,
+// đúng cùng danh sách nút ▲▼ đổi thứ tự trên mỗi dòng đang thao tác). Vẫn dùng lại NGUYÊN resolver
+// mucGhep/mucGhepLua/mucBienThe/mucY (khuôn print thật — WYSIWYG với bản in, không tự tính lại gì ở đây).
+function PreviewPane({ L, xem, onNav, onClose }: {
+  L: Luoi; xem: { list: PickItem[]; index: number } | null; onNav: (dir: -1 | 1) => void; onClose: () => void
+}) {
+  const p = xem ? xem.list[xem.index] : null
   const [muc, setMuc] = useState<DeMuc | null>(null)
   const [loi, setLoi] = useState<string | null>(null)
   useEffect(() => {
+    if (!p) { setMuc(null); setLoi(null); return }
     let alive = true
+    setMuc(null); setLoi(null)
     ;(async () => {
       try {
         let m: MucIn | null = null
@@ -825,33 +873,38 @@ function XemBaiPopup({ L, p, onClose }: { L: Luoi; p: PickItem; onClose: () => v
     })()
     return () => { alive = false }
   }, [p, L])
-  return createPortal(
-    <div className="fixed inset-0 z-[80] flex items-center justify-center bg-slate-900/50 p-3 sm:p-6" onClick={onClose}>
-      <div className="flex max-h-[85vh] w-[92vw] max-w-2xl flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
-        <div className="flex items-center gap-2 border-b border-slate-200 px-5 py-3">
-          <h3 className="text-[15px] font-semibold text-slate-900">👁 Xem bài</h3>
-          {muc?.ma && <Ma>{muc.ma}</Ma>}
-          <button onClick={onClose} className="ml-auto rounded-lg border border-slate-300 px-3 py-1.5 text-[13px] text-slate-600 hover:bg-slate-50">Đóng</button>
-        </div>
-        <div className="min-h-0 flex-1 overflow-y-auto p-4">
+  return (
+    <Panel label="👁 Xem trước — đề + hình vẽ">
+      {!xem || !p ? (
+        <div className="py-8 text-center text-[12.5px] leading-relaxed text-slate-400">Bấm 👁 ở 1 bài trong danh sách bên trái để xem đề + hình ngay tại đây.</div>
+      ) : (
+        <>
+          <div className="mb-2.5 flex items-center gap-1.5">
+            <button onClick={() => onNav(-1)} disabled={xem.index === 0} title="Bài trước (ở TRÊN trong danh sách)"
+              className="rounded-md border border-slate-200 px-2 py-1 text-[12px] text-slate-500 hover:border-indigo-300 hover:text-indigo-600 disabled:opacity-25">↑</button>
+            <button onClick={() => onNav(1)} disabled={xem.index === xem.list.length - 1} title="Bài sau (ở DƯỚI trong danh sách)"
+              className="rounded-md border border-slate-200 px-2 py-1 text-[12px] text-slate-500 hover:border-indigo-300 hover:text-indigo-600 disabled:opacity-25">↓</button>
+            <span className="text-[11px] text-slate-400">{xem.index + 1}/{xem.list.length}</span>
+            {muc?.ma && <Ma>{muc.ma}</Ma>}
+            <button onClick={onClose} className="ml-auto text-[11px] text-slate-400 hover:text-rose-600">Ẩn panel</button>
+          </div>
           {loi ? <div className="rounded-lg bg-rose-50 px-3 py-2 text-[13px] text-rose-700">{loi}</div>
             : !muc ? <div className="text-[13px] text-slate-400">Đang tải…</div>
             : (
               <>
-                {muc.anhDe && <div className="mb-3 h-40 overflow-hidden rounded-lg border border-slate-100 bg-slate-50"><img src={muc.anhDe} alt="" className="h-full w-full object-contain" /></div>}
-                <div className="text-[14px] leading-relaxed text-slate-700"><MathText>{muc.deBai}</MathText></div>
+                <Fig src={muc.anhDe} h="h-44" />
+                <div className="mt-2.5 text-[13.5px] leading-relaxed text-slate-700"><MathText>{muc.deBai}</MathText></div>
                 {muc.ys.map((y, i) => (
-                  <div key={i} className="mt-2 flex gap-1.5 text-[14px] leading-relaxed text-slate-700">
+                  <div key={i} className="mt-1.5 flex gap-1.5 text-[13.5px] leading-relaxed text-slate-700">
                     {muc.ys.length > 1 && y.nhan && <b className="shrink-0">{y.nhan})</b>}
                     <span className="min-w-0"><MathText>{y.giaThietPhu ? `${y.giaThietPhu}. ${y.noiDung}` : y.noiDung}</MathText></span>
                   </div>
                 ))}
               </>
             )}
-        </div>
-      </div>
-    </div>,
-    document.body,
+        </>
+      )}
+    </Panel>
   )
 }
 // Popup 2 BƯỚC cho MỘT chuỗi: (1) chọn BẢN — đề chuẩn/lứa (≥2 node) hoặc biến thể/ý thật riêng lẻ (1 node).
