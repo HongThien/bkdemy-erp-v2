@@ -34,7 +34,17 @@ export default function NhapKhoScreen() {
   )
 }
 
-const MONS: { key: KhoMon; label: string }[] = [{ key: 'toan', label: 'Toán' }, { key: 'khtn', label: 'KHTN' }]
+// ⭐ 17/08 (Thùy: "chưa có gán dạng từ Hình giải tích") — `key` (KhoMon, quyết định bảng dai_*/khtn_*/
+// hgt_* qua khoTbls) và `gate` (nhãn MÔN để so quyền `allowedMons`, khớp MON_LIST trong lib/mon.ts) PHẢI
+// TÁCH RIÊNG: Hình giải tích là 1 NHÁNH của môn "Toán" (không phải môn riêng trong nhan_su_mon — khuôn
+// KhoScreen.tsx: tab Đại số/Hình học/Hình giải tích đều gate quyền bằng "Toán"), gộp làm 1 như trước
+// (dùng thẳng label để so quyền) sẽ khiến nút Hình giải tích không bao giờ hiện được (không nhãn "Hình
+// giải tích" nào trong MON_LIST để khớp).
+const MONS: { key: KhoMon; label: string; gate: string }[] = [
+  { key: 'toan', label: 'Đại số', gate: 'Toán' },
+  { key: 'hgt', label: 'Hình giải tích', gate: 'Toán' },
+  { key: 'khtn', label: 'KHTN', gate: 'KHTN' },
+]
 const CONF_NGUONG = 0.7
 const LOAI_LABEL: Record<string, string> = { trac_nghiem: 'Trắc nghiệm', dung_sai: 'Đúng / sai', tra_loi_ngan: 'Tự luận / trả lời ngắn', tu_luan: 'Tự luận / trả lời ngắn' }
 const readB64 = (f: File) => new Promise<string>((res, rej) => { const r = new FileReader(); r.onload = () => res(String(r.result).split(',')[1]); r.onerror = rej; r.readAsDataURL(f) })
@@ -56,7 +66,7 @@ type RItem = {
 
 function NhapChuyenDe() {
   const { allowedMons, isAll } = useMonScope()  // scope④ (admin/Ops/Media/Marketing = tất cả)
-  const allowed = MONS.filter((m) => isAll || allowedMons.includes(m.label)).map((m) => m.key)
+  const allowed = MONS.filter((m) => isAll || allowedMons.includes(m.gate)).map((m) => m.key)
   const [mon, setMon] = useState<KhoMon>('toan')
   useEffect(() => { if (allowed.length && !allowed.includes(mon)) setMon(allowed[0]) }, [allowed.join(',')]) // eslint-disable-line
 

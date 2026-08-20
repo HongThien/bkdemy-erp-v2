@@ -701,6 +701,7 @@
 | muc_do | smallint |  |  |  |  |
 | bac_toi_thieu | text |  |  | FK→lop_bac.ma |  |
 | created_at | timestamp with time zone |  | now() |  |  |
+| mo_ta_ngan | text | Y |  |  |  |
 
 ## hgt_cau_hoi
 
