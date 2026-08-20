@@ -125,6 +125,7 @@ export default function WeeklyPlanningTab() {
           onHuy={() => { setHuyModal(detail); setDetail(null) }}
           onChuyen={() => { setChuyenModal(detail); setDetail(null) }}
           onDuyetGH={(dongY) => act(() => duyetGiaHan(detail.id, dongY), detail.id).then(() => setDetail(null))}
+          onTachCon={!detail.task_me_id ? () => { setGiaoPrefill(tachConPrefill(detail)); setDetail(null) } : undefined}
         />
       )}
       {nghiemModal && <NghiemThuModal v={nghiemModal} onClose={() => setNghiemModal(null)} onDone={() => { setNghiemModal(null); reload() }} />}
@@ -152,10 +153,10 @@ function TaskCard({ v, onClick }: { v: ViecFull; onClick: () => void }) {
   )
 }
 
-function TaskDetailModal({ v, busy, onClose, onNghiemThu, onHold, onBoHold, onHuy, onChuyen, onDuyetGH }: {
+function TaskDetailModal({ v, busy, onClose, onNghiemThu, onHold, onBoHold, onHuy, onChuyen, onDuyetGH, onTachCon }: {
   v: ViecFull; busy: boolean; onClose: () => void
   onNghiemThu: () => void; onHold: () => void; onBoHold: () => void; onHuy: () => void; onChuyen: () => void
-  onDuyetGH: (dongY: boolean) => void
+  onDuyetGH: (dongY: boolean) => void; onTachCon?: () => void
 }) {
   const Row = ({ k, val }: { k: string; val: React.ReactNode }) => (
     <div className="flex gap-2 text-[13px]"><span className="w-28 shrink-0 text-slate-400">{k}</span><span className="text-slate-700">{val || '—'}</span></div>
@@ -195,7 +196,12 @@ function TaskDetailModal({ v, busy, onClose, onNghiemThu, onHold, onBoHold, onHu
             </>
           )}
         </div>
-        <div className="flex justify-end pt-1"><button onClick={onClose} className={CX_BTN_GHOST}>Đóng</button></div>
+        <div className="flex justify-between pt-1">
+          {onTachCon
+            ? <button onClick={onTachCon} className="rounded-md border border-indigo-300 px-2.5 py-1.5 text-[12px] font-medium text-indigo-600 hover:bg-indigo-50">+ Tách task con</button>
+            : <span />}
+          <button onClick={onClose} className={CX_BTN_GHOST}>Đóng</button>
+        </div>
       </div>
     </Modal>
   )
