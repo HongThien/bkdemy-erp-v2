@@ -2,14 +2,14 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-> ## ⚠️ ĐIỂM MÙ ĐỌC DỮ LIỆU — `3` BẢNG
-> Role `claude_build` **không sở hữu** và **không có `bypassrls`** với: `hinh_giao_trinh` · `hinh_gt_bai` · `hinh_gt_buoi`
+> ## ⚠️ ĐIỂM MÙ ĐỌC DỮ LIỆU — `4` BẢNG
+> Role `claude_build` **không sở hữu** và **không có `bypassrls`** với: `hinh_giao_trinh` · `hinh_gt_bai` · `hinh_gt_buoi` · `qlht_smoke_test`
 > Các bảng này bật RLS với policy `to authenticated`, nên `SELECT` từ script/CLI trả **0 dòng,
 > im lặng, không lỗi**. ⚠ **"0 dòng" ở đây KHÔNG phải bằng chứng bảng rỗng** — muốn biết số thật
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-141 bảng · 0 view · 0 enum · 13 trigger · 51 function
+144 bảng · 0 view · 0 enum · 14 trigger · 59 function
 
 ## _migrations
 
@@ -70,7 +70,7 @@
 | nguon_tai_lieu_id | uuid | Y |  | FK→tai_lieu.id |  |
 | lop_id | uuid |  |  | FK→lop.id |  |
 | ngay | date |  |  |  |  |
-| loai | text |  |  |  | `et` · `btvn` · `giao_trinh` · `de_thi` |
+| loai | text |  |  |  | `et` · `btvn` · `giao_trinh` · `de_thi` · `tu_luyen` |
 | mon | text |  | 'Toán'::text |  |  |
 | trang_thai | text |  | 'mo'::text |  | `mo` · `dong` |
 | mo_at | timestamp with time zone |  | now() |  |  |
@@ -81,6 +81,7 @@
 | created_at | timestamp with time zone |  | now() |  |  |
 | so_cau | integer |  | 0 |  |  |
 | co_nhieu_ma_de | boolean |  | false |  |  |
+| hoc_sinh_id | uuid | Y |  | FK→hoc_sinh.id |  |
 
 ## bai_test_cau
 
@@ -168,6 +169,7 @@
 | cs_ky_nang | smallint | Y |  |  |  |
 | cs_van_dung | smallint | Y |  |  |  |
 | cs_vuot_kho | smallint | Y |  |  |  |
+| cong_bo_at | timestamp with time zone | Y |  |  |  |
 
 ## bao_loi
 
@@ -700,6 +702,7 @@
 | muc_do | smallint |  |  |  |  |
 | bac_toi_thieu | text |  |  | FK→lop_bac.ma |  |
 | created_at | timestamp with time zone |  | now() |  |  |
+| mo_ta_ngan | text | Y |  |  |  |
 
 ## hgt_cau_hoi
 
@@ -1588,6 +1591,15 @@
 | leader_chot_at | timestamp with time zone | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 
+## qlht_smoke_test
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| nguoi_tao | uuid |  |  | FK→nhan_su.id |  |
+| noi_dung | text |  |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
 ## question_accepted_answers
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -1727,6 +1739,8 @@
 | nguoi | uuid | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | done_at | timestamp with time zone | Y |  |  |  |
+| cong_cu | text | Y |  |  |  |
+| tham_so | jsonb | Y |  |  |  |
 
 ## troly_nhan_dinh
 
@@ -1752,6 +1766,19 @@
 | created_at | timestamp with time zone |  | now() |  |  |
 | ket_luan_goc | text | Y |  |  |  |
 | gac_den | date | Y |  |  |  |
+
+## tu_luyen_dang_lan
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |  |
+| mon | text |  |  |  |  |
+| ma_dang | text |  |  |  |  |
+| lan_thu | integer |  |  |  |  |
+| ma_cau | text |  |  |  |  |
+| bai_test_id | uuid |  |  | FK→bai_test.id |  |
+| tao_at | timestamp with time zone |  | now() |  |  |
 
 ## ung_vien
 
@@ -1893,6 +1920,17 @@
 | task_me_id | uuid | Y |  | FK→viec.id |  |
 | nghiem_thu_nguon | text | Y |  |  | `nguoi` · `tu_dong` |
 
+## viec_cap_nhat
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| viec_id | uuid |  |  | FK→viec.id |  |
+| nguoi_id | uuid |  |  | FK→nhan_su.id |  |
+| noi_dung | text |  |  |  |  |
+| tien_do_bao_cao | numeric | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
 ## viec_log
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -1953,21 +1991,27 @@
 | hoc_sinh_lop | trg_log_hoc_sinh_lop | AFTER | INSERT/UPDATE | log_hoc_sinh_lop |
 | khtn_cau_hoi | trg_log_kho_cau_khtn | AFTER | DELETE/UPDATE | log_kho_cau |
 | ung_vien | trg_log_ung_vien | AFTER | INSERT/UPDATE | log_ung_vien |
+| viec | trg_giaoviec_auto_dong_task_me | AFTER | UPDATE | giaoviec_auto_dong_task_me |
 | viec | trg_log_viec | AFTER | INSERT/UPDATE | log_viec |
 
 ## Functions
 
+- `_kho_ban_do_tbl(p_mon text, p_nhanh text DEFAULT NULL::text)` → text
+- `_kho_cau_tbl(p_mon text, p_nhanh text DEFAULT NULL::text)` → text
+- `_kho_lt_tbl(p_mon text, p_nhanh text DEFAULT NULL::text)` → text
 - `bai_test_con_han(p_bai_test uuid)` → boolean
 - `buoi_ke_tiep(p_lop uuid, p_tu date)` → date
 - `co_chuc_nang(p_chuc_nang text)` → boolean
 - `co_quyen_ghi(p_chuc_nang text)` → boolean
 - `count_cau_by_dang(p_tbl text)` → jsonb
+- `current_nhan_su_id()` → uuid
 - `dai_cum_hau_due(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `dai_cum_tien_de_bao_dong(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `dai_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `dai_dang_tien_de_bao_dong(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `et_de(p_bai_test uuid)` → jsonb
 - `et_nop(p_bai_lam uuid)` → jsonb
+- `giaoviec_auto_dong_task_me()` → trigger
 - `giaoviec_housekeeping()` → void
 - `han_nop_bai_test(p_lop uuid, p_ngay date, p_loai text)` → timestamp with time zone
 - `hgt_cum_hau_due(goc text)` → TABLE(ma_cum text, do_sau integer)
@@ -1978,6 +2022,8 @@
 - `hinh_bao_dong_tien_de(goc uuid)` → TABLE(id uuid, do_sau integer)
 - `hinh_mo_hinh_hau_due(goc uuid)` → TABLE(id uuid, do_sau integer)
 - `hinh_mo_hinh_to_tien(nut uuid)` → TABLE(id uuid, do_sau integer)
+- `hs_dang_evals(p_mon text, p_nhanh text DEFAULT NULL::text)` → jsonb
+- `hs_mon_cua_toi()` → text[]
 - `hs_nghi_tu_roi_lop()` → trigger
 - `hs_o_lop(p_lop uuid)` → boolean
 - `increment_qaa_hit(p_id uuid)` → void
@@ -2008,6 +2054,7 @@
 - `self_link_account()` → uuid
 - `tln_cache_check(p_ma_cau text, p_norm text)` → boolean
 - `tln_norm(t text)` → text
+- `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 
 ## Checks khác (không phải dạng enum)
 
@@ -2050,6 +2097,7 @@
 | thoi_khoa_bieu | thoi_khoa_bieu_thu_check | `CHECK (((thu >= 2) AND (thu <= 8)))` |
 | troly_nhan_dinh | troly_nhan_dinh_gac_ck | `CHECK (((quyet_dinh = 'gac'::text) = (gac_den IS NOT NULL)))` |
 | troly_ra_soat | troly_ra_soat_gac_ck | `CHECK (((ket_luan = 'gac'::text) = (gac_den IS NOT NULL)))` |
+| viec_cap_nhat | viec_cap_nhat_tien_do_bao_cao_check | `CHECK (((tien_do_bao_cao IS NULL) OR ((tien_do_bao_cao >= (0)::numeric) AND (tien_do_bao_cao <= (100)::numeric))))` |
 | y_tuong | y_tuong_co_check | `CHECK ((co = ANY (ARRAY[1, 2, 3, 5, 8])))` |
 | y_tuong | y_tuong_gia_tri_check | `CHECK ((gia_tri = ANY (ARRAY[1, 2, 3, 5, 8])))` |
 
