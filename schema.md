@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-144 bảng · 0 view · 0 enum · 14 trigger · 59 function
+144 bảng · 0 view · 0 enum · 14 trigger · 60 function
 
 ## _migrations
 
@@ -2022,6 +2022,7 @@
 - `hinh_bao_dong_tien_de(goc uuid)` → TABLE(id uuid, do_sau integer)
 - `hinh_mo_hinh_hau_due(goc uuid)` → TABLE(id uuid, do_sau integer)
 - `hinh_mo_hinh_to_tien(nut uuid)` → TABLE(id uuid, do_sau integer)
+- `hs_cap1_cua_toi()` → boolean
 - `hs_dang_evals(p_mon text, p_nhanh text DEFAULT NULL::text)` → jsonb
 - `hs_mon_cua_toi()` → text[]
 - `hs_nghi_tu_roi_lop()` → trigger

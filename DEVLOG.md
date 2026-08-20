@@ -5977,3 +5977,42 @@ lớp 5A1/Toán) và cho HS0004 (khối 11, cấp 3) — cùng 1 `ma_dang` thậ
 - `npx tsc --noEmit` sạch trước verify.
 
 Kết quả: `mastery.ts` giờ phân biệt đúng tu_luyen theo cấp — khớp yêu cầu CEO 18-20/08.
+
+## 2026-08-20 (tiếp) — ẨN 3 ô ET/BTVN/Bài tập trên lớp cho cấp 1 (mig 202608201407)
+
+CEO chốt: "app của HS cấp 1 bỏ 3 cục BTTL BTVN và ET đi ko hiện" — đúng theo spec gốc 17/08 ("cấp 1
+ko có làm ET, BTVN hay BTTL trên điện thoại. Chỉ có tự luyện") nhưng màn chính trước giờ hiện đủ 6 ô
+cho MỌI cấp (3 ô ET/BTVN/BTTL chỉ rỗng — "Chưa có bài" — chứ không ẩn), gây nhiễu cho HS cấp 1.
+
+**Vấn đề kỹ thuật:** cần biết HS đang đăng nhập có phải cấp 1 hay không để ẩn đúng 3 ô, nhưng
+`hoc_sinh` staff-only — HS tự đọc dòng CỦA MÌNH cũng ra **0 dòng, không lỗi** (verify: HS0004 SELECT
+hoc_sinh → `[]`, đúng bẫy CLAUDE.md §2.1 "0 dòng không phải bằng chứng bảng rỗng"). Cùng lý do đã
+khiến `monCuaHS()` phải đi qua RPC hôm nay — giờ thêm 1 RPC tương tự cho "cấp".
+
+**Sửa:**
+- Migration `202608201407_hs_cap1_cua_toi.sql` — RPC `hs_cap1_cua_toi()` (SECURITY DEFINER, scope
+  `my_hoc_sinh_id()`), trả `boolean`. Danh sách khối cấp 1 = ĐÚNG `CAP1_KHOI` đã dùng ở `mastery.ts`
+  (`'3','4','4T','5','5T'`) — không bịa lại, chỉ 1 biên giới HS-facing cần fact này nên không đáng
+  tách bảng dùng chung 2 phía (staff-side đã bypass RLS, không cần RPC).
+- `src/lib/tuluyen.ts` — thêm `laCap1HS()` gọi RPC trên, cùng khuôn với `monCuaHS()` sẵn có.
+- `src/screens/hocsinh/HocSinhApp.tsx` — thêm state `cap1` (null = chưa biết, chờ trước khi vẽ lưới
+  ô — tránh nháy 6→3 ô), fetch qua `useEffect` song song với `tests`. Thêm `KHU_AN_CAP1` (set 3 id ô
+  cần ẩn) và lọc `KHU.filter(k => !(cap1 && KHU_AN_CAP1.has(k.id)))` trước khi `.map()` vẽ lưới.
+  KHÔNG đụng gì ở tầng dữ liệu — 3 ô đó với cấp 1 vốn đã luôn rỗng (`cuaKhu()` không có `bai_test`
+  loại giao_trinh/et/btvn nào cho cấp 1), ẩn chỉ bớt nhiễu UI.
+
+**Verify:** `npx tsc --noEmit` sạch. Test RPC end-to-end qua chính client HS thật (không admin) —
+đăng nhập HS0602 (khối 5, cấp 1, có 203 dòng `gami_grades` thật) → `hs_cap1_cua_toi()` trả `true` ·
+`hs_dang_evals`/`tu_luyen_sinh` vẫn chạy đúng bình thường (dọn bài test vừa sinh ra ngay sau test).
+Browser thật (localhost, mobile 375×812): phát hiện dev server đang chạy trỏ vào worktree `main`
+(không phải `bkdemy-erp-v2-lambai` đang sửa) — code mới CHƯA lên tới trình duyệt cho tới khi merge.
+Ghi vào devlog TRƯỚC khi merge; verify browser thật SAU merge tiếp ở mục dưới (nếu có).
+
+**Tiện thể trả lời câu hỏi thứ 2 của CEO — "sao cục tự luyện chưa dùng dc à":** Tự luyện KHÔNG phải ô
+"Sắp có" — đã build và verify xong từ sớm hôm nay (xem mục "TỰ LUYỆN: xây engine" ở trên). Kiểm lại
+lần nữa cho chắc: 52/59 HS cấp 1 đang học đã có ≥1 dòng đo thật (`gami_grades`/`bt_grades`) để tự
+luyện rút dạng; test end-to-end qua chính client HS0602 thật (không phải HS0004 hay data giả) chạy
+trơn tru toàn bộ chuỗi `hs_dang_evals` → chọn dạng → `tu_luyen_sinh`. 7/59 HS cấp 1 CHƯA có dòng đo
+nào (chưa học buổi nào có chấm) — nhóm này bấm vào sẽ thấy đúng thông báo "Chưa có dữ liệu học tập
+để tự luyện — học vài buổi trên lớp rồi quay lại nhé" (§1.5 "thà bỏ trống còn hơn đánh sai": không
+suy đoán dạng để luyện khi chưa có gì đo được), KHÔNG phải lỗi — là hành vi đúng cho HS thật sự mới.
