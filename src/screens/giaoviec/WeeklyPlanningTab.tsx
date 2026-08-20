@@ -6,11 +6,11 @@
 // (mục tiêu/output/người giao + các nút hold/chuyển/huỷ/nghiệm thu) — card mặt ngoài gọn.
 import { useEffect, useState } from 'react'
 import {
-  chayHousekeeping, listWeeklyPlanning, suaViec, duyetGiaHan, holdViec, boHold,
-  holdQuaHan, listCapNhat, type ViecFull, type CapNhatViec,
+  chayHousekeeping, listWeeklyPlanning, suaViec, ganNguoiLam, duyetGiaHan, holdViec, boHold,
+  holdQuaHan, listCapNhat, listNguoiDuocGiao, type ViecFull, type CapNhatViec, type NguoiDuocGiao,
 } from '../../lib/giaoviec'
 import { kyTuanHienTai, kyTuanCuaNgay, nhanKyTuan } from '../../lib/giaoviec-config'
-import { CX_INPUT, CX_BTN, CX_BTN_GHOST, Badge, VIEC_TT, Empty, ErrBar, Modal, Field, NguoiChip, DeadlineChip, fmtNgay } from './ui'
+import { CX_INPUT, CX_BTN, CX_BTN_GHOST, Badge, VIEC_TT, Empty, ErrBar, Modal, Field, NguoiChip, NguoiPicker, DeadlineChip, fmtNgay } from './ui'
 import { NghiemThuModal, HuyModal, ChuyenModal } from './TaskActions'
 import GiaoViecModal, { type GiaoPrefill } from './GiaoViecModal'
 
@@ -229,11 +229,21 @@ function MeDetailModal({ v, soCon, onClose, onTachCon, onSaved }: {
   const [sua, setSua] = useState(false)
   const [mt, setMt] = useState(v.muc_tieu ?? ''); const [out, setOut] = useState(v.output ?? ''); const [dl, setDl] = useState(v.deadline ?? '')
   const [saving, setSaving] = useState(false); const [err, setErr] = useState<string | null>(null)
+  const [nguoi, setNguoi] = useState<NguoiDuocGiao[]>([])
+  const [nguoiLamId, setNguoiLamId] = useState('')
+  const [ganBusy, setGanBusy] = useState(false)
+  useEffect(() => { if (!v.nguoi_lam_id) listNguoiDuocGiao().then(setNguoi).catch(() => {}) }, [v.id, v.nguoi_lam_id])
 
   async function luu() {
     setSaving(true); setErr(null)
     try { await suaViec(v.id, { muc_tieu: mt.trim() || undefined, output: out.trim() || undefined, deadline: dl || null }); setSua(false); onSaved() }
     catch (e: any) { setErr(e?.message ?? String(e)) } finally { setSaving(false) }
+  }
+  async function ganNguoi() {
+    if (!nguoiLamId) return
+    setGanBusy(true); setErr(null)
+    try { await ganNguoiLam(v.id, nguoiLamId); onSaved() }
+    catch (e: any) { setErr(e?.message ?? String(e)) } finally { setGanBusy(false) }
   }
   const Row = ({ k, val }: { k: string; val: React.ReactNode }) => (
     <div className="flex gap-2 text-[13px]"><span className="w-24 shrink-0 text-slate-400">{k}</span><span className="text-slate-700">{val || '—'}</span></div>
@@ -244,10 +254,24 @@ function MeDetailModal({ v, soCon, onClose, onTachCon, onSaved }: {
       <div className="space-y-2">
         <p className="text-[12px] text-slate-500">
           {v.nguoi_lam_id
-            ? 'Giao cho 1 người + đã tách con — trạng thái TỰ đóng khi 100% con đạt, không có nút hoàn thành riêng.'
+            ? (soCon > 0
+              ? 'Giao cho 1 người + đã tách con — trạng thái TỰ đóng khi 100% con đạt, không có nút hoàn thành riêng.'
+              : 'Đã giao cho 1 người, chưa tách con nào — vẫn là task bình thường (xem ở "Việc của tôi").')
             : 'Container — không tự làm, gồm ' + soCon + ' task con.'} Mục tiêu/output ở đây là CHUẨN CHUNG mà con "theo scope" sẽ kế thừa.
         </p>
         {v.y_tuong_tieu_de && <p className="text-[11px] text-indigo-600">Từ backlog: {v.y_tuong_tieu_de}</p>}
+        {err && !sua && <div className="rounded-lg bg-rose-50 px-3 py-2 text-[12px] text-rose-600">{err}</div>}
+        {!v.nguoi_lam_id && (
+          <div className="rounded-xl border border-indigo-200 bg-indigo-50/50 p-2.5">
+            <div className="mb-1.5 text-[12px] font-medium text-indigo-700">Giao thẳng task này cho 1 người (rồi người đó tự tách con)</div>
+            {!nguoi.length ? <span className="text-[12px] text-slate-400">Bạn chưa quản lý ai trong cây tổ chức (chỉ tự giao cho mình).</span> : (
+              <>
+                <NguoiPicker nguoi={nguoi} value={nguoiLamId} onChange={setNguoiLamId} />
+                <div className="mt-1.5 flex justify-end"><button disabled={!nguoiLamId || ganBusy} onClick={ganNguoi} className={CX_BTN}>{ganBusy ? 'Đang gán…' : 'Gán người làm'}</button></div>
+              </>
+            )}
+          </div>
+        )}
         {!sua ? (
           <>
             {v.nguoi_lam_id && <Row k="Người làm" val={<NguoiChip ten={v.nguoi_lam_ten} />} />}
