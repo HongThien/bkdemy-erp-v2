@@ -276,6 +276,15 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly,
     // NGƯỜI DÙNG THẤY khi bấm 🖨 In (nhánh kia chỉ chạy khi bấm 🔗 Lấy link).
     ;(async () => {
       try { await (document as Document & { fonts?: { ready?: Promise<unknown> } }).fonts?.ready } catch { /* */ }
+      // ⭐ 08-19 (Thùy báo "BTVN 4A1 trống trang 1"): CÙNG LỚP BUG với font ở comment trên, nhưng cho ẢNH
+      // (logo masthead .gtbk-mh-logo, ảnh câu…) — chưa decode xong lúc paged.js đo lần đầu → masthead đo
+      // SAI chiều cao (ảnh coi như 0/khác cỡ thật) → card kế tiếp bị tính hụt chỗ, đẩy hẳn sang trang sau dù
+      // đo lại (final paint) thì masthead co đúng cỡ, để lại khoảng trắng đúng bằng phần hụt đó. fonts.ready
+      // không bao giờ chờ ảnh — phải tự đợi riêng.
+      try {
+        const imgs = [...(srcRef.current?.querySelectorAll('img') ?? [])]
+        await Promise.all(imgs.map((img) => img.complete ? Promise.resolve() : img.decode().catch(() => new Promise((res) => { img.onload = img.onerror = res }))))
+      } catch { /* */ }
       if (settled || cancelled) return
       new Previewer().preview(html, [cssUrl], container)
         .then((flow: { total?: number }) => {
@@ -502,6 +511,14 @@ function BuoiBlock({ buoi, gv, scope, lt = true, docTitle, ltCd, tenCd, linesByC
   const { num, heading } = parseBuoiTitle(buoi.title || '')
   const sub = [lopTen && `Lớp ${lopTen}`, ngayPhat && `Ngày ${ngayPhat}`].filter(Boolean).join('  ·  ')
   const logoUrl = location.origin + '/Logo.png' // logo THẬT của trung tâm (không dùng ô vuông placeholder mockup)
+  const btvnHere = scope === 'all' && (buoi.btvns.some((b) => b.caus.length) || buoi.ontaps.some((b) => b.caus.length))
+  // ⭐ 08-19 (Thùy báo "BTVN 4A1 trống trang 1"): doc BTVN THUẦN (không title, không dạng — buildBuois
+  // dựng buổi 'implicit') thì `.pv-buoi` bọc ngoài KHÔNG thêm gì (không masthead, groups rỗng) — chỉ còn
+  // 1 tầng lồng THỪA quanh BtvnSheet (chính nó đã có `.pv-btvn{break-before:page}` lo phân trang rồi).
+  // Y HỆT lớp bug "Fragment thay div/section thừa" đã dính ở groups.map dưới (xem comment): tầng lồng thừa
+  // làm paged.js dựng dở — vẽ xong masthead của BtvnSheet rồi bỏ TRẮNG hết phần trang còn lại, card đầu
+  // nhảy hẳn sang trang sau dù còn thừa chỗ. Bỏ `.pv-buoi` khi thuần BTVN → BtvnSheet tự lo phân trang, hết 1 tầng.
+  if (!buoi.title && groups.length === 0) return btvnHere ? <BtvnSheet btvns={buoi.btvns} ontaps={buoi.ontaps} gv={gv} docTitle={docTitle} buoiTitle={buoi.title} linesByCau={linesByCau} colByCau={colByCau} /> : null
   return (
     <section className="pv-buoi gtbk">
       {buoi.title && (
@@ -538,7 +555,7 @@ function BuoiBlock({ buoi, gv, scope, lt = true, docTitle, ltCd, tenCd, linesByC
           {g.dangs.map((d) => <DangBlock key={d.id} p={d} gv={gv} lt={lt} colByCau={colByCau} />)}
         </Fragment>
       ))}
-      {scope === 'all' && (buoi.btvns.some((b) => b.caus.length) || buoi.ontaps.some((b) => b.caus.length)) && (
+      {btvnHere && (
         <BtvnSheet btvns={buoi.btvns} ontaps={buoi.ontaps} gv={gv} docTitle={docTitle} buoiTitle={buoi.title} linesByCau={linesByCau} colByCau={colByCau} />
       )}
     </section>

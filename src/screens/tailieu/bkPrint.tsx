@@ -15,7 +15,12 @@ export const BK_CSS = `
 .pv-bkh-hero{padding:4px 22px 14px;text-align:center}
 .pv-bkh-title{margin:0;color:var(--navy);font-size:25px;font-weight:820;line-height:1.08;letter-spacing:-.03em}
 .pv-bkh-divider{width:60px;height:4px;margin:11px auto 0;border-radius:99px;background:linear-gradient(90deg,var(--blue),var(--gold))}
-.pv-bkh-student{display:grid;grid-template-columns:1.55fr .7fr .75fr;margin:0 16px 11px;overflow:hidden;border:1.5px solid var(--line);border-radius:15px;background:#f8faff}
+/* ⭐ 08-19 (Thùy báo "BTVN 4A1 trống trang 1"): overflow:hidden ở đây khớp đúng anti-pattern đã ghi nhận
+   trong PrintView.tsx (".gtbk-card": "TUYỆT ĐỐI không overflow:hidden — paged.js coi box overflow:hidden
+   là KHÔNG tách được"). Box này nằm ngay trong đầu phiếu (break-inside:avoid), đứng trước card đầu tiên —
+   bỏ overflow:hidden để không góp phần vào cùng lớp bug "card đầu nhảy hẳn sang trang sau dù còn thừa
+   chỗ". Bo góc vẫn giữ nguyên qua border-radius (không cần overflow:hidden để clip gì thêm ở đây). */
+.pv-bkh-student{display:grid;grid-template-columns:1.55fr .7fr .75fr;margin:0 16px 11px;border:1.5px solid var(--line);border-radius:15px;background:#f8faff}
 .pv-bkh-field{position:relative;padding:11px 16px;min-height:56px;display:flex;flex-direction:column;justify-content:center;gap:5px}
 .pv-bkh-field:not(:last-child)::after{content:"";position:absolute;top:13px;right:0;bottom:13px;width:1.5px;background:var(--line)}
 .pv-bkh-flbl{color:#24324b;font-size:10px;font-weight:800;letter-spacing:.07em;text-transform:uppercase}
