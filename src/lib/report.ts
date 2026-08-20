@@ -102,11 +102,20 @@ export async function upsertBaoCaoPH(hocSinhId: string, mon: string, thang: stri
 // thi đấu tích luỹ cả mùa, không phải "của tháng này"). ky_thi.khoi có sẵn (mỗi lớp 1 ky_thi/đợt MT, cùng
 // khối gộp lại) — cửa sổ ngày = 25/tháng→10/tháng sau, ĐÚNG logic getTongQuanHS (MT hay tổ chức cuối/đầu
 // tháng), đọc qua buoi_hoc.ngay vì ky_thi.ngay thực tế luôn NULL cho MT (xem comment ở mastery.ts).
+// ⚠ NGOẠI LỆ CÓ CHỦ ĐÍCH so §5 CLAUDE.md ("chưa-đo ≠ 0"): Thùy 08-19 chốt RIÊNG cho bảng xếp hạng này —
+// HS đang học môn+khối mà CHƯA có điểm MT trong cửa sổ → tính 0đ để rank đủ TOÀN BỘ roster (không loại
+// khỏi mẫu số như mastery bình thường). Chỉ áp cho xếp hạng — không áp cho ô "Điểm MT" hiển thị (vẫn "—").
 export type KhoiRankMT = { rankNow: number; rankTotal: number; khoi: string }
 export async function getKhoiRankDiemMT(hocSinhId: string, mon: string, ym: string): Promise<KhoiRankMT | null> {
   const { data: hs } = await supabase.from('hoc_sinh').select('khoi').eq('id', hocSinhId).maybeSingle()
   const khoi = (hs as any)?.khoi as string | null
   if (!khoi) return null
+  // Roster = TOÀN BỘ HS đang học ĐÚNG môn+khối này (kể cả chưa có điểm MT) — mẫu số của bảng xếp hạng.
+  const { data: gd } = await supabase.from('hoc_sinh_lop')
+    .select('hoc_sinh_id, lop:lop_id!inner(mon, khoi)').eq('trang_thai', 'dang_hoc').eq('lop.mon', mon).eq('lop.khoi', khoi).limit(LIMIT)
+  const rosterIds = [...new Set(((gd ?? []) as any[]).map((r) => r.hoc_sinh_id as string))]
+  if (!rosterIds.includes(hocSinhId)) return null // HS không đang học đúng môn này ở khối → không có peer để xếp
+
   const [Y, M] = ym.split('-').map(Number)
   const nextY = M === 12 ? Y + 1 : Y, nextM = M === 12 ? 1 : M + 1
   const mtFromDate = `${ym}-25`
@@ -114,17 +123,18 @@ export async function getKhoiRankDiemMT(hocSinhId: string, mon: string, ym: stri
   const { data: kts } = await supabase.from('ky_thi').select('id, buoi:buoi_hoc_id(ngay)')
     .eq('loai', 'mt_sat_hach').eq('mon', mon).eq('khoi', khoi).limit(LIMIT)
   const ktIds = ((kts ?? []) as any[]).filter((k) => { const d = k.buoi?.ngay; return d && d >= mtFromDate && d < mtToDate }).map((k) => k.id)
-  if (!ktIds.length) return null
-  const { data: dt } = await supabase.from('diem_thi').select('hoc_sinh_id, diem').in('ky_thi_id', ktIds).limit(LIMIT)
+
   const sums = new Map<string, { sum: number; n: number }>()
-  for (const r of (dt ?? []) as any[]) {
-    if (r.diem == null) continue
-    const a = sums.get(r.hoc_sinh_id) ?? { sum: 0, n: 0 }; a.sum += Number(r.diem); a.n++; sums.set(r.hoc_sinh_id, a)
+  if (ktIds.length) {
+    const { data: dt } = await supabase.from('diem_thi').select('hoc_sinh_id, diem').in('ky_thi_id', ktIds).limit(LIMIT)
+    for (const r of (dt ?? []) as any[]) {
+      if (r.diem == null) continue
+      const a = sums.get(r.hoc_sinh_id) ?? { sum: 0, n: 0 }; a.sum += Number(r.diem); a.n++; sums.set(r.hoc_sinh_id, a)
+    }
   }
-  const mine = sums.get(hocSinhId)
-  if (!mine) return null // HS không có điểm MT trong cửa sổ tháng này → không xếp hạng được
-  const myAvg = mine.sum / mine.n
-  const allAvg = [...sums.values()].map((a) => a.sum / a.n)
+  const scoreOf = (id: string) => { const s = sums.get(id); return s ? s.sum / s.n : 0 } // chưa có điểm → 0
+  const myAvg = scoreOf(hocSinhId)
+  const allAvg = rosterIds.map(scoreOf)
   const rankNow = 1 + allAvg.filter((x) => x > myAvg).length
   return { rankNow, rankTotal: allAvg.length, khoi }
 }
