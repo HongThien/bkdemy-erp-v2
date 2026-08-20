@@ -6016,3 +6016,53 @@ trơn tru toàn bộ chuỗi `hs_dang_evals` → chọn dạng → `tu_luyen_sin
 nào (chưa học buổi nào có chấm) — nhóm này bấm vào sẽ thấy đúng thông báo "Chưa có dữ liệu học tập
 để tự luyện — học vài buổi trên lớp rồi quay lại nhé" (§1.5 "thà bỏ trống còn hơn đánh sai": không
 suy đoán dạng để luyện khi chưa có gì đo được), KHÔNG phải lỗi — là hành vi đúng cho HS thật sự mới.
+
+## 2026-08-20 — Chuỗi soạn tài liệu: giả thiết chung chọn theo XA NHẤT (cấp), không phải mô hình sâu nhất
+
+**Yêu cầu (Thùy, verbatim):** "Trong 1 chuỗi , nếu các giải thiết giống nhau thì ko nói. nếu giả thiết
+khác nhau thì chọn giải thiết của bài xa nhất trong chuỗi" — bối cảnh: từ hôm 08-14 bài toán có thể
+mang giả thiết RIÊNG (`gia_thiet_rieng`/`gt_thay_the`); một session khác (commit `2bbe3e3`, 17/08) còn
+nới sâu hơn — `giaThietBaiToan()` giờ đệ quy kế thừa theo TIỀN ĐỀ CHÍNH gần nhất (không còn thuần suy
+từ mô hình). Hệ quả: nhiều node trong CÙNG một chuỗi (a,b,c... ghép thành 1 mục để in) có thể có
+`giaThietBaiToan()` khác nhau — trong khi 4 chỗ chọn "giả thiết chung của chuỗi" ở `SoanTaiLieu.tsx`
+(`mucGhep`, `mucGhepLua`, `versions`/`deepestOf`, `deBaiChung`) vẫn đang chọn theo **mô hình sâu nhất**
+(`doSauTrongHo(mo_hinh_id)`) — SAI TRỤC: đó là trục GIẢ THIẾT (cây mô hình), còn chuỗi nằm trên trục
+SUY LUẬN (cấp). Giả định cũ "mô hình sâu nhất ⇒ đủ giả thiết nhất" chỉ đúng khi bài toán còn 100% mượn
+mô hình (đơn điệu theo cây) — giờ không còn chắc nữa.
+
+**Làm:** `src/screens/kho/hinh/SoanTaiLieu.tsx` — thêm hàm `xaNhatTrongChuoi(ns)`: chọn node có **cấp
+cao nhất** trong tập truyền vào (cấp = trục suy luận = đúng nghĩa "xa nhất trong chuỗi", node đích cuối
+chuỗi chứng minh). Thay 4 chỗ `doSauTrongHo(mo_hinh_id)` bằng hàm này: `mucGhep` (đề chuẩn ghép),
+`mucGhepLua` (ghép 1 lứa, giữ đúng logic fallback "chỉ xét node có biến thể của lứa, rỗng thì về
+`nodes[0]`"), `deepestOf` trong `versions` (bản Đề chuẩn gốc + từng Lứa), `deBaiChung` (phiếu tick xem
+trước). Không tạo nhánh rẽ "giống/khác nhau" tách riêng — theo đúng lý Thùy nói: nếu giả thiết mọi node
+giống nhau thì XA NHẤT cũng ra y hệt giá trị đó (đằng nào chọn ai cũng vậy), không cần rẽ nhánh code
+riêng cho ca "giống nhau". `doSauTrongHo`/`moHinhSauNhat` các chỗ khác (TaiLieuChuan.tsx, cột-cấp SoDo,
+badge "khác mô hình"…) giữ nguyên — đó là bối cảnh MÔ HÌNH thật (không phải chọn giả thiết 1 bài đại
+diện cho chuỗi), sửa vào đó là sai chỗ.
+
+**⚠ PHÁT HIỆN PHỤ (khi soi lại) — dữ liệu test dính lại 6 ngày trên node THẬT:** lúc verify tính năng
+"giả thiết riêng" hôm 08-14, tôi gõ text test "TEST góc D = 65 độ (verify only)" vào `gia_thiet_rieng`
+của **BT.08.025 thật** (họ Tứ giác K8), tưởng đã xoá sạch bằng thao tác Sửa→xoá trắng→Lưu ngay hôm đó
+và log verify "đã dọn sạch". Hôm nay soi lại (chuẩn bị test tính năng chuỗi) mới phát hiện `gia_thiet_
+rieng` của BT.08.025 **VẪN CÒN** đúng chuỗi text test đó — thao tác Sửa/Lưu hôm 08-14 không thật sự
+persist (có thể do click sai toạ độ ref sau khi DOM re-render, hoặc `computer` type/key không target
+đúng textarea — không xác định được nguyên nhân chính xác, không cố suy đoán quá 1 dòng). Đã dùng
+`form_input` (set value trực tiếp, không qua keystroke giả lập) để xoá thật + `Lưu`, xác nhận lại bằng
+`document.querySelectorAll('textarea')[...].value` qua JS (không tin read_page/placeholder — placeholder
+hiện cả khi field CÓ giá trị) VÀ bằng full page reload + đọc lại `innerText` của node card. BT.08.025
+giờ đúng "Cho tứ giác ABCD", sạch.
+- **Bài học:** sau bước "Lưu" khi test trên data thật, PHẢI verify lại bằng cách đọc GIÁ TRỊ THẬT (DOM
+  `.value` qua JS, hoặc reload trang + đọc lại), KHÔNG được tin `read_page` một mình — nhãn hiển thị
+  của `read_page` cho textarea/textbox lấy TỪ `placeholder`, không phản ánh value hiện tại, nên "trông
+  giống rỗng" không phải bằng chứng đã xoá.
+
+**Verify:** tsc sạch · `npx vite build` sạch. Live: mở được Sơ đồ/K8/Tứ giác (dev server, session khác
+đang chạy song song cùng máy nhưng khác port lần này nên không đụng nhau), xác nhận card + JS query
+DOM đúng sau khi dọn data test. KHÔNG dựng được ví dụ chuỗi thật có giả thiết LỆCH giữa các node để soi
+trực tiếp UI kết quả "xa nhất" — K8 hiện "Kho chính"/"Tài liệu chuẩn" đang trống (0 bài đã gán node qua
+cổng 1/2), dựng data test tốn nhiều bước ngoài phạm vi yêu cầu và có rủi ro lặp lại sự cố dọn-không-sạch
+ở trên nếu làm vội. Đã đọc kỹ code 3 lần đối chiếu logic cũ (giữ nguyên các fallback: `mucGhepLua`'s
+"không node nào có biến thể ⇒ về `nodes[0]`", `deepestOf` giữ đúng chữ ký `(ns: BaiToan[]) => BaiToan`
+để không đổi call site khác) — tự tin đúng nhưng CHƯA click-through trực tiếp thấy kết quả cuối, ghi rõ
+ở đây để không nhận vơ là đã verify UI đầy đủ.

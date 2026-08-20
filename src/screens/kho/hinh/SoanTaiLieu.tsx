@@ -554,12 +554,23 @@ export async function banInTheoMoHinh(tieuDe: string, phan: 'lop' | 'nha', picks
   }
   return { tieuDe: `Buổi học — ${tieuDe}`, phuDe: `${mucs.length} mục`, mucs, moHinhLyThuyet }
 }
-/** Ghép chuỗi (đề chuẩn) → 1 bài a,b,c: giả thiết + hình của node SÂU NHẤT chung; ý a,b,c = câu hỏi + lời giải từng node. */
+/** ⭐ Bài XA NHẤT trong 1 chuỗi (Thùy 08-20) — chọn giả thiết CHUNG của chuỗi theo CẤP (trục suy luận),
+ *  KHÔNG phải độ sâu mô hình (trục giả thiết — khác trục hẳn, dùng `doSauTrongHo` là sai chỗ). Từ khi
+ *  `giaThietBaiToan()` có thể lệch giữa các node (giả thiết riêng / kế thừa tổ tiên gần nhất — không
+ *  còn đơn điệu theo cây mô hình), "mô hình sâu nhất" hết còn nghĩa là "đủ giả thiết nhất". Giả thiết
+ *  mọi node trong chuỗi GIỐNG NHAU thì chọn ai cũng ra cùng 1 kết quả — không cần rẽ nhánh riêng, tự
+ *  đúng. Cấp cao nhất = node XA NHẤT (đích cuối chuỗi chứng minh) — do kế thừa tổ tiên gần nhất, node
+ *  này thường đã "gánh" hết giả thiết riêng của các node đứng trước nó trong chuỗi. */
+function xaNhatTrongChuoi(ns: BaiToan[]): BaiToan | null {
+  let xa: BaiToan | null = null
+  for (const n of ns) if (!xa || n.cap > xa.cap) xa = n
+  return xa
+}
+/** Ghép chuỗi (đề chuẩn) → 1 bài a,b,c: giả thiết + hình của node XA NHẤT chung; ý a,b,c = câu hỏi + lời giải từng node. */
 export function mucGhep(L: Luoi, g: Extract<PickItem, { kind: 'ghep' }>, cheDo: CheDoHinh, soDong?: number | null): MucIn {
   const khung = api.noDapAn(L, g.nodeIds)             // ý = node tick; buocNodes = node ẩn nở; gtPhuKeo = van
   const nodes = khung.map((k) => k.node)
-  let deep = nodes[0]; let dS = -1
-  for (const bt of nodes) { const d = api.doSauTrongHo(L, bt.mo_hinh_id); if (d > dS) { dS = d; deep = bt } }
+  const deep = xaNhatTrongChuoi(nodes) ?? nodes[0]
   const ys: YIn[] = khung.map((k, i) => {
     const c = api.cachMacDinh(L, k.node.id)
     const gtPhu = [k.node.gia_thiet_phu?.trim(), ...k.gtPhuKeo].filter(Boolean).join('; ') || null
@@ -582,7 +593,7 @@ function tachDe(deBai: string): { giaThiet: string; cauHoi: string } {
   if (i < 0) return { giaThiet: '', cauHoi: deBai.trim() }
   return { giaThiet: deBai.slice(0, i).replace(/[.,;\s]+$/, '').trim(), cauHoi: deBai.slice(i).trim() }
 }
-/** Ghép 1 LỨA (đổi đỉnh) → a,b,c: giả thiết CHUNG (từ câu sâu nhất) + ý = câu hỏi từng câu (từ biến thể của lứa). */
+/** Ghép 1 LỨA (đổi đỉnh) → a,b,c: giả thiết CHUNG (từ câu xa nhất) + ý = câu hỏi từng câu (từ biến thể của lứa). */
 export function mucGhepLua(L: Luoi, nodeIds: string[], bienThes: BienThe[], cheDo: CheDoHinh, soDong?: number | null): MucIn {
   const byNode = new Map(bienThes.map((v) => [v.baitoan_id, v]))
   // Cấu trúc ẩn/bước theo tiền-đề ĐÓNG BĂNG của lứa (ổn định khi đề-chuẩn đổi về sau); lứa CŨ (chưa có
@@ -590,8 +601,8 @@ export function mucGhepLua(L: Luoi, nodeIds: string[], bienThes: BienThe[], cheD
   const coDongBang = bienThes.some((v) => v.tien_de_ids.length > 0)
   const khung = coDongBang ? api.noDapAnLua(L, bienThes, nodeIds) : api.noDapAn(L, nodeIds)
   const nodes = khung.map((k) => k.node)
-  let deep = nodes[0]; let dS = -1
-  for (const bt of nodes) { if (!byNode.has(bt.id)) continue; const d = api.doSauTrongHo(L, bt.mo_hinh_id); if (d > dS) { dS = d; deep = bt } }
+  const coV = nodes.filter((n) => byNode.has(n.id))
+  const deep = (coV.length ? xaNhatTrongChuoi(coV) : null) ?? nodes[0]
   const deepV = byNode.get(deep.id)
   const giaThiet = deepV ? tachDe(deepV.de_bai).giaThiet : api.giaThietBaiToan(L, deep.id)
   const ys: YIn[] = khung.map((k, i) => {
@@ -861,7 +872,7 @@ function ChonChuoiPopup({ L, phan, chuoi, editing, daChonList, onClose, onConfir
   }, [chuoi]) // eslint-disable-line react-hooks/exhaustive-deps
   const nhan = phan === 'lop' ? 'Trên lớp' : 'Về nhà'
   const nodesSorted = useMemo(() => [...chuoi].sort((a, b) => a.cap - b.cap || a.ma.localeCompare(b.ma)), [chuoi])
-  const deepestOf = (ns: BaiToan[]) => { let d = ns[0], s = -1; for (const b of ns) { const x = api.doSauTrongHo(L, b.mo_hinh_id); if (x > s) { s = x; d = b } } return d }
+  const deepestOf = (ns: BaiToan[]) => xaNhatTrongChuoi(ns) ?? ns[0]
   // Các BẢN của chuỗi KÈM nội dung để VIEW (giả thiết chung + câu từng bản + hình — Thùy 17/08: "click
   // vào thêm bài phải hiện cả hình vẽ", trước chỉ có chữ, khó phân biệt biến thể đổi đỉnh khác nhau sao).
   const versions = useMemo(() => {
@@ -1012,8 +1023,7 @@ function CayTickPopup({ L, phan, chuoi, luaOpts = [{ luaId: null, label: 'Đề 
     }))
   }, [chon, L])
   const deBaiChung = useMemo(() => {
-    let deep: BaiToan | null = null, dS = -1
-    for (const b of chuoi) if (chon.has(b.id)) { const d = api.doSauTrongHo(L, b.mo_hinh_id); if (d > dS) { dS = d; deep = b } }
+    const deep = xaNhatTrongChuoi(chuoi.filter((b) => chon.has(b.id)))
     return deep ? api.giaThietBaiToan(L, deep.id) : ''
   }, [chon, chuoi, L])
 
