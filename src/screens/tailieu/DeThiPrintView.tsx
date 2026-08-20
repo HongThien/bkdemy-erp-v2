@@ -28,7 +28,11 @@ export default function DeThiPrintView({ id, onClose, headless, linkOnly, onFail
     if (!full || !srcRef.current || !dstRef.current) return
     let cancelled = false
     setRendering(true)
-    const ch = full.taiLieu.cau_hinh ?? {}
+    // ⭐ 08-19 (Thùy: "bỏ hẳn header footer cũ khỏi TẤT CẢ tài liệu" — Đề thi bị sót khỏi đợt 08-08,
+    // xem PrintView.tsx/ETPrintView.tsx/MTPrintView.tsx cùng dòng comment): dải sóng cũ (logo + "Tên·Khối")
+    // vẫn hiện vì `ch` truyền thẳng cau_hinh chưa ép 'none'. Ép cứng như mọi loại tài liệu khác.
+    const ch0 = full.taiLieu.cau_hinh ?? {}
+    const ch = { ...ch0, header: 'none' as const, footer: 'none' as const }
     const css = buildPagedCss(full.taiLieu, ch, ch.mau || '#2D9CDB') + DETHI_CSS
     const cssUrl = URL.createObjectURL(new Blob([css], { type: 'text/css' }))
     const html = srcRef.current.innerHTML
@@ -82,7 +86,8 @@ export default function DeThiPrintView({ id, onClose, headless, linkOnly, onFail
   async function layLink(): Promise<boolean> {
     if (!activeContainerRef.current || !full) return false
     setDl(true); setDlErr(null)
-    try { await uploadPagesAsLink(activeContainerRef.current, printFileName(), pageChrome(full.taiLieu, full.taiLieu.cau_hinh ?? {}), full.taiLieu.id); return true }
+    const chChrome = { ...(full.taiLieu.cau_hinh ?? {}), header: 'none' as const, footer: 'none' as const }
+    try { await uploadPagesAsLink(activeContainerRef.current, printFileName(), pageChrome(full.taiLieu, chChrome), full.taiLieu.id); return true }
     catch (e) { setDlErr('Lấy link lỗi: ' + (e instanceof Error ? e.message : String(e))); return false }
     finally { setDl(false) }
   }

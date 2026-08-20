@@ -380,6 +380,17 @@ export async function suaViec(id: string, patch: { tieu_de?: string; muc_tieu?: 
   if (error) throw error
 }
 
+// GÁN NGƯỜI LÀM cho task MẸ chưa có ai (story 08-18 "phân cấp") — CHỈ gán lần đầu
+// (nguoi_lam_id đang null). Đổi người sau khi ĐÃ có chủ là hành động khác (chuyenNguoi §4.5),
+// không dùng hàm này — tránh lẫn "giao lần đầu" với "chuyển", 2 việc có luật ghi-vết khác nhau.
+export async function ganNguoiLam(id: string, nguoiLamId: string): Promise<void> {
+  const { data: v, error: e0 } = await supabase.from('viec').select('nguoi_lam_id').eq('id', id).single()
+  if (e0) throw e0
+  if ((v as any).nguoi_lam_id) throw new Error('Task này đã có người làm — dùng nút "Chuyển" để đổi người.')
+  const { error } = await supabase.from('viec').update({ nguoi_lam_id: nguoiLamId }).eq('id', id)
+  if (error) throw error
+}
+
 // ════════════════════════════════════════════════════════════════════════════
 // 5.5) CẬP NHẬT TIẾN ĐỘ trong lúc làm (story 08-18) — TƯỜNG THUẬT của người làm,
 // KHÁC viec.tien_do (điểm 0-100 máy tính lúc nghiệm thu). Append-only, nhiều dòng
