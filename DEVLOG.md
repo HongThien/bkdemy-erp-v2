@@ -5818,3 +5818,115 @@ cuối hàm nữa. Bắt được nhờ viết ca verify RÕ RÀNG kỳ vọng c
    so_cau = 2, co_nhieu_ma_de = false — ĐÚNG cả hai
 ```
 Dọn sạch cả 2 ca sau khi soi (`count=0`). HS0004 không bị đụng (41/41 vẫn gắn cờ đổi mật khẩu).
+
+---
+
+## 2026-08-20 — TỰ LUYỆN: xây engine (mig 202608201111 + 202608201118)
+
+**Spec Thùy (18-20/08):** V1 có tính năng gần giống (đọc code trước khi build — xem tóm tắt dưới) —
+mỗi ngày hệ tự sinh 10 câu: 40% ngẫu nhiên trong dạng ĐÃ HỌC (toàn bộ từ đầu) + 60% trong dạng đang
+YẾU. Làm thêm được, tối đa 30 câu/ngày. **Cấp 1: tính vào mastery hệ số 1** (PH kèm nên đủ nghiêm
+túc, không có kênh nào khác để đối chiếu). **Cấp 3: chỉ gộp ở mastery-view của HS**, không vào mastery
+trung tâm (đã chốt hôm 17/08, giữ nguyên). Chống lặp: 1 câu ở dạng X ra lần N thì lần TIẾP THEO của
+dạng X phải là lần N+10 mới lặp lại; kho hết câu thì chấp nhận lặp sớm hơn.
+
+**⭐ Đọc V1 trước khi thiết kế (Thùy yêu cầu) — 2 tính năng V1 có, KHÔNG cái nào khớp đặc tả:**
+- "Daily Practice" (`TabDailyPractice.jsx`, chỉ lớp 5T): UI ghi "10 câu/ngày theo dạng yếu" nhưng
+  **thuật toán thật nằm ở RPC `generate_daily_practice` KHÔNG version-control** (tạo tay qua Supabase
+  Dashboard) — không đọc được, không audit được. Không giới hạn 30 câu/ngày ở client.
+- "🎯 Tự luyện" (`PHPage.jsx generateTuLuyenBai`, PH bấm tay): code đầy đủ nhưng chỉ **5 câu/lần**
+  (không phải 10), **bấm tay** (không tự động), ngưỡng yếu hardcode `tyLe<0.7`/90 ngày, **không giới
+  hạn số lần/ngày**, và có lỗ tránh-lặp (`filtered[0]||cands[0]` — hết ứng viên thì lặp câu VỪA làm).
+- Bài học rút ra, áp cho bản V2: **thuật toán PHẢI nằm trong migration (version-controlled)**, không
+  tạo tay trên Dashboard; **không hardcode API key** (V1 hardcode Gemini key thẳng trong source).
+
+**Vì sao KHÔNG port công thức mastery sang SQL:** Thùy chốt "dùng mastery có sẵn của V2" —
+`masteryOfDang` (gami/mastery.js) là NGUỒN DUY NHẤT. Verify HS KHÔNG đọc được `dai_cau_hoi` lẫn
+`gami_grades` trực tiếp (RLS chặn — đúng bẫy CLAUDE.md §2.1 "0 dòng không phải bằng chứng"; `gami_grades`
+còn TIMEOUT thay vì 0 dòng, dấu hiệu policy nặng). Nên **tách 2 RPC theo đúng ranh giới nhạy cảm**:
+- `hs_dang_evals(mon)` — SECURITY DEFINER, trả DỮ LIỆU THÔ (điểm đúng/sai CỦA CHÍNH HS — không nhạy
+  cảm, chính là thứ "Thông tin học tập" sẽ hiện sau này). Client tự chạy `masteryOfDang` y hệt bản TS
+  đang dùng ở mastery.ts — ZERO công thức thứ hai, không có nguy cơ lệch dần.
+- `tu_luyen_sinh(mon, dangs[])` — SECURITY DEFINER, HS đã chọn xong DẠNG (ở client) → server mới chọn
+  CÂU + snapshot (kho câu hỏi staff-only, phải chạm ở đây).
+
+**Kiến trúc — tái dùng NGUYÊN `bai_test/bai_test_cau/bai_lam/bai_lam_cau`:** mastery.ts đã đọc
+`bai_lam_cau` làm nguồn đo chung, KHÔNG cần sửa gì để nhận thêm tu_luyen (câu trả lời tự luyện tự
+động "có mặt" trong measurement, chỉ còn phần TRỌNG SỐ theo cấp là việc RIÊNG, xem "CÒN LẠI"). Khác
+biệt duy nhất: ET/BTVN dùng CHUNG 1 test cho cả lớp (1 lop_id×1 ngày); tu_luyen là bài CÁ NHÂN HOÁ
+(1 hoc_sinh_id×1 ngày) → thêm `bai_test.hoc_sinh_id` (NULL cho loại khác) thay vì tách bảng riêng.
+RLS `bai_test`/`bai_test_cau` viết lại: tu_luyen scope theo `hoc_sinh_id = my_hoc_sinh_id()`, KHÔNG
+theo `lop_id` (nhiều HS trong 1 lớp, mỗi em 1 bài — RLS cũ theo lớp sẽ lộ chéo). `bai_lam`/`bai_lam_cau`
+policy sẵn có đã đúng (scope thẳng hoc_sinh_id, không qua lớp) — không cần sửa.
+
+**Sổ chống lặp `tu_luyen_dang_lan`** (hoc_sinh_id, mon, ma_dang, lan_thu, ma_cau) — RPC exclude câu
+xuất hiện trong 9 lần gần nhất CỦA CHÍNH dạng đó (`lan_thu > N-10`); hết ứng viên → fallback KHÔNG
+exclude (chấp nhận lặp, đúng chốt). Chỉ chọn câu **hỗ trợ chấm online** (TN/ĐS/TLN có đáp án) — tự bắt
+được 1 lỗi lúc viết: cột `dap_an` KHÔNG áp dụng cho `dung_sai` (đáp án nằm trong `menh_de`), lọc
+`dap_an is not null` chung cho mọi loại sẽ loại hết câu ĐS — sửa thành điều kiện theo TỪNG loại.
+
+**⭐ 2 lỗi race tự bắt trước khi verify (đúng bài học cũ "ensure* slot phải unique"):**
+1. Thiếu ngoặc `()` quanh OR trong SQL WHERE — AND/OR không tự nhóm theo ý định, khiến điều kiện lọc
+   loại-câu "ăn mất" điều kiện chống-lặp phía sau (2 câu SQL, sửa cả hai).
+2. Lượt gọi ĐẦU trong ngày (chưa có `bai_test` để `FOR UPDATE` khoá dòng) — 2 request gần-đồng-thời
+   có thể cùng INSERT, tạo 2 dòng trùng. Thêm **unique index** (`hoc_sinh_id,mon,ngay) where loai=
+   'tu_luyen'`) + bọc INSERT trong exception handler (`unique_violation` → re-SELECT FOR UPDATE, tiếp
+   tục như đường APPEND).
+
+**RPC phụ `hs_mon_cua_toi()`** (migration riêng, VÌ file trước đã ÁP LÊN DB — sửa file đã áp là DB/repo
+lệch nhau, đúng luật CLAUDE.md §2.1, nên viết migration MỚI thay vì sửa): app trước giờ chỉ suy `mon`
+GIÁN TIẾP từ `tests[0]?.mon` (bài online HS đang có) — HS cấp 1 (chỉ tự luyện, KHÔNG ET/BTVN online)
+sẽ ra rỗng theo đường đó. `hoc_sinh_lop`/`lop` cũng staff-only (verify: HS SELECT → 0 dòng, không lỗi)
+nên cần RPC riêng đọc thẳng.
+
+**UI — tái dùng NGUYÊN `LamBai` cho phần LÀM BÀI** (chọn/chấm/lời giải/reveal-ngay), không viết lại:
+thêm 2 prop TUỲ CHỌN `doneCaption`/`doneExtra` vào màn kết quả có sẵn (mặc định giữ nguyên câu chữ
+BTVN cũ — backward-compatible tuyệt đối). `LamTuLuyen` (component mới) chỉ lo "hôm nay có bài chưa,
+chưa thì sinh, sinh thêm khi bấm" rồi render `<LamBai key={baiTestId+so_cau} .../>` — đổi `key` sau
+mỗi "làm thêm" ép LamBai REMOUNT, tự fetch lại đủ câu mới (đơn giản hơn nhiều so với tự quản state
+mở-rộng-mảng-câu-đang-hiển-thị). Ô "Tự luyện" ở màn chính đổi từ `sapCo` (disabled) sang `direct`
+(bấm thẳng vào LamTuLuyen, KHÔNG qua màn danh-sách-nhiều-bài dùng chung ET/BTVN — tự luyện là 1 PHIÊN
+đang tiếp diễn trong ngày, không phải danh sách bài đã phát theo ngày, không hợp mô hình list+tab).
+
+**⚠ BUG THẬT bắt được lúc verify trên browser (không phải giả định) — StrictMode double-effect:**
+Lần chạy đầu ra **"1/19"** thay vì "1/10". Điều tra: `useEffect(() => { taiHomNay() }, [])` KHÔNG có
+guard → React 18 StrictMode (dev) chạy effect 2 LẦN → lượt gọi thứ 2 đọc "chưa có bài hôm nay" TRƯỚC
+khi lượt 1 kịp ghi (race) → sinh THÊM 10 câu nữa đè lên. **Unique index chặn được việc tạo 2 DÒNG
+bai_test riêng biệt** (đúng thiết kế), nhưng RPC tự APPEND khi đụng unique nên KHÔNG chặn được việc
+sinh THỪA câu — 20 câu dự kiến nhưng ra 19 (1 dạng trong 20 lượt rút không còn câu hợp lệ, bị bỏ qua
+đúng logic §1.5). Fix: `useRef` guard (đúng bài học đã ghi sẵn trong CLAUDE.md "ensure* slot →
+StrictMode chạy effect 2 lần" — dính đúng ca đã cảnh báo trước). Dọn dữ liệu lỗi, verify lại → đúng
+"1/10".
+
+**Verify đầy đủ trên browser thật (HS0004), theo đúng thứ tự, không tin RPC/tsc suông:**
+1. `hs_dang_evals` qua HS0004 thật → 275 dòng eval, 34 dạng đã học.
+2. `tu_luyen_sinh` qua `vite-node` gọi RPC trực tiếp (10 dạng lặp lại cố ý để stress-test chống lặp):
+   lượt 1→10 câu · lượt 2→20 (không trùng câu giữa 2 lượt CÙNG dạng) · lượt 3→30 (đúng trần) · lượt
+   4→**bị chặn đúng thông báo**. Sổ `tu_luyen_dang_lan` ghi lan_thu tăng liên tục, khớp số lần mỗi dạng
+   xuất hiện trong 3 lượt.
+3. Trên UI thật (375×812): sinh đúng 10 câu (sau khi fix bug ①) → trả lời 1 câu THẬT qua click (chọn
+   sai) → chấm sai đúng + lời giải hiện đúng công thức. Hoàn tất 10 câu → màn kết quả hiện đúng
+   `doneCaption` ("Hôm nay đã làm 10/30 câu") + nút "Làm thêm 10 câu" → bấm → remount → **"1/20"**,
+   câu 1 vẫn giữ nguyên trạng thái đã làm (reveal đúng, không mất state) → đối chiếu DB: `so_cau=20`,
+   `bai_test_cau` thật = 20 dòng.
+4. Dọn sạch toàn bộ dữ liệu test (`bai_test`+`tu_luyen_dang_lan`), HS0004 trả về mặc định.
+
+**Bất ngờ phát hiện lúc dọn — tính năng "buộc đổi mật khẩu" (xây sáng 17/08) ĐANG CHẠY THẬT ngoài
+production:** dry-run cho thấy **5/41 HS cấp 3 đã TỰ ĐỔI mật khẩu thật** (must_change_password=false
+do chính các em đặt, không phải em gán) + phát hiện **1 HS mới ghi danh cấp 3 sau thời điểm gắn cờ**
+(HS0700, khối 10) — gắn cờ nốt cho em này để giữ bất biến 100%.
+
+**⚠⚠ CÒN LẠI — QUAN TRỌNG, CHƯA LÀM: mastery CHƯA phân biệt tu_luyen với btvn.** `mastery.ts`
+(`fetchOnlineEvals`) hiện chỉ tách 2 nhánh theo `THI_LOAI` (et/de_thi → src='et', MỌI loại còn lại
+→ src='btvn') — nghĩa là câu trả lời tự luyện đang bị TÍNH NHƯ BTVN (weight=1, mặc định KHÔNG vào
+mastery trung tâm, chỉ gộp khi bật `includeBTVN`). Với CẤP 3 thì đây tình cờ ĐÚNG hành vi mong muốn
+(tu_luyen chỉ gộp view, giống btvn). Nhưng **CẤP 1 cần tu_luyen vào mastery TRUNG TÂM hệ số 1** —
+việc này CHƯA ĐƯỢC LÀM. Cần: dạy `fetchOnlineEvals` tách RIÊNG `src='tu_luyen'` (khỏi 'btvn'), rồi
+sửa default `phases` của `getMasteryHS`/`loadMasteryCells` theo CẤP của HS (khối 3-5T → luôn gồm
+`tu_luyen`; khối 10-12 → KHÔNG, giống btvn hiện tại). **CỐ Ý chưa làm trong lượt này** — đây là thay
+đổi vào module LÕI (`mastery.ts`), ảnh hưởng nhiều màn khác (Thông tin học tập/Dashboard/rollup lớp),
+rủi ro cao nếu làm vội cuối phiên dài. Việc riêng cho lượt sau.
+
+**CÒN LẠI khác:** header màn chính (`lopMon`) vẫn suy từ `tests[0]?.mon` — HS cấp 1 (chỉ tự luyện,
+0 `bai_test` loại et/btvn/giao_trinh) sẽ không hiện tên lớp/môn ở đầu màn (không hỏng, chỉ thiếu hiển
+thị). `monCuaHS()` mới có sẵn — có thể dùng lại cho chỗ này khi làm màn cấp 1.

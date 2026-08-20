@@ -14,9 +14,9 @@ import { extractKey, gradeTracNghiem, gradeTraLoiNgan, gradeDungSai, smartNormal
 const LIMIT = 1000
 const SUPPORTED = new Set(['trac_nghiem', 'dung_sai', 'tra_loi_ngan']) // auto-chấm được
 
-export type TestLoai = 'et' | 'btvn' | 'giao_trinh' | 'de_thi'
+export type TestLoai = 'et' | 'btvn' | 'giao_trinh' | 'de_thi' | 'tu_luyen'
 export type BaiTest = {
-  id: string; nguon_tai_lieu_id: string | null; lop_id: string; ngay: string
+  id: string; nguon_tai_lieu_id: string | null; lop_id: string; hoc_sinh_id: string | null; ngay: string
   loai: TestLoai; mon: string; trang_thai: 'mo' | 'dong'; so_cau: number
   deadline: string | null; khoa_reveal: boolean; co_nhieu_ma_de: boolean; created_at: string
 }

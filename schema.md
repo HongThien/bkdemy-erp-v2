@@ -2,14 +2,14 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-> ## ⚠️ ĐIỂM MÙ ĐỌC DỮ LIỆU — `3` BẢNG
-> Role `claude_build` **không sở hữu** và **không có `bypassrls`** với: `hinh_giao_trinh` · `hinh_gt_bai` · `hinh_gt_buoi`
+> ## ⚠️ ĐIỂM MÙ ĐỌC DỮ LIỆU — `4` BẢNG
+> Role `claude_build` **không sở hữu** và **không có `bypassrls`** với: `hinh_giao_trinh` · `hinh_gt_bai` · `hinh_gt_buoi` · `qlht_smoke_test`
 > Các bảng này bật RLS với policy `to authenticated`, nên `SELECT` từ script/CLI trả **0 dòng,
 > im lặng, không lỗi**. ⚠ **"0 dòng" ở đây KHÔNG phải bằng chứng bảng rỗng** — muốn biết số thật
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-142 bảng · 0 view · 0 enum · 14 trigger · 52 function
+144 bảng · 0 view · 0 enum · 14 trigger · 59 function
 
 ## _migrations
 
@@ -70,7 +70,7 @@
 | nguon_tai_lieu_id | uuid | Y |  | FK→tai_lieu.id |  |
 | lop_id | uuid |  |  | FK→lop.id |  |
 | ngay | date |  |  |  |  |
-| loai | text |  |  |  | `et` · `btvn` · `giao_trinh` · `de_thi` |
+| loai | text |  |  |  | `et` · `btvn` · `giao_trinh` · `de_thi` · `tu_luyen` |
 | mon | text |  | 'Toán'::text |  |  |
 | trang_thai | text |  | 'mo'::text |  | `mo` · `dong` |
 | mo_at | timestamp with time zone |  | now() |  |  |
@@ -81,6 +81,7 @@
 | created_at | timestamp with time zone |  | now() |  |  |
 | so_cau | integer |  | 0 |  |  |
 | co_nhieu_ma_de | boolean |  | false |  |  |
+| hoc_sinh_id | uuid | Y |  | FK→hoc_sinh.id |  |
 
 ## bai_test_cau
 
@@ -1590,6 +1591,15 @@
 | leader_chot_at | timestamp with time zone | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 
+## qlht_smoke_test
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| nguoi_tao | uuid |  |  | FK→nhan_su.id |  |
+| noi_dung | text |  |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
 ## question_accepted_answers
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -1756,6 +1766,19 @@
 | created_at | timestamp with time zone |  | now() |  |  |
 | ket_luan_goc | text | Y |  |  |  |
 | gac_den | date | Y |  |  |  |
+
+## tu_luyen_dang_lan
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |  |
+| mon | text |  |  |  |  |
+| ma_dang | text |  |  |  |  |
+| lan_thu | integer |  |  |  |  |
+| ma_cau | text |  |  |  |  |
+| bai_test_id | uuid |  |  | FK→bai_test.id |  |
+| tao_at | timestamp with time zone |  | now() |  |  |
 
 ## ung_vien
 
@@ -1973,11 +1996,15 @@
 
 ## Functions
 
+- `_kho_ban_do_tbl(p_mon text, p_nhanh text DEFAULT NULL::text)` → text
+- `_kho_cau_tbl(p_mon text, p_nhanh text DEFAULT NULL::text)` → text
+- `_kho_lt_tbl(p_mon text, p_nhanh text DEFAULT NULL::text)` → text
 - `bai_test_con_han(p_bai_test uuid)` → boolean
 - `buoi_ke_tiep(p_lop uuid, p_tu date)` → date
 - `co_chuc_nang(p_chuc_nang text)` → boolean
 - `co_quyen_ghi(p_chuc_nang text)` → boolean
 - `count_cau_by_dang(p_tbl text)` → jsonb
+- `current_nhan_su_id()` → uuid
 - `dai_cum_hau_due(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `dai_cum_tien_de_bao_dong(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `dai_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
@@ -1995,6 +2022,8 @@
 - `hinh_bao_dong_tien_de(goc uuid)` → TABLE(id uuid, do_sau integer)
 - `hinh_mo_hinh_hau_due(goc uuid)` → TABLE(id uuid, do_sau integer)
 - `hinh_mo_hinh_to_tien(nut uuid)` → TABLE(id uuid, do_sau integer)
+- `hs_dang_evals(p_mon text, p_nhanh text DEFAULT NULL::text)` → jsonb
+- `hs_mon_cua_toi()` → text[]
 - `hs_nghi_tu_roi_lop()` → trigger
 - `hs_o_lop(p_lop uuid)` → boolean
 - `increment_qaa_hit(p_id uuid)` → void
@@ -2025,6 +2054,7 @@
 - `self_link_account()` → uuid
 - `tln_cache_check(p_ma_cau text, p_norm text)` → boolean
 - `tln_norm(t text)` → text
+- `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 
 ## Checks khác (không phải dạng enum)
 
