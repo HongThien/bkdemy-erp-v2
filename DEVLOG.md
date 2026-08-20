@@ -5575,3 +5575,50 @@ rủi ro cao nếu làm vội cuối phiên dài. Việc riêng cho lượt sau.
 **CÒN LẠI khác:** header màn chính (`lopMon`) vẫn suy từ `tests[0]?.mon` — HS cấp 1 (chỉ tự luyện,
 0 `bai_test` loại et/btvn/giao_trinh) sẽ không hiện tên lớp/môn ở đầu màn (không hỏng, chỉ thiếu hiển
 thị). `monCuaHS()` mới có sẵn — có thể dùng lại cho chỗ này khi làm màn cấp 1.
+
+## 2026-08-20 (tiếp) — mastery.ts: tu_luyen tách nguồn riêng, vào TRUNG TÂM theo CẤP
+
+Làm nốt việc đã cố ý hoãn ở mục trên ("Làm luôn đi" — CEO chốt tiếp tục ngay).
+
+**Vấn đề:** `fetchOnlineEvals` chỉ tách 2 nhánh theo `THI_LOAI` nên tu_luyen bị tính LẪN vào 'btvn'
+(weight=1, mặc định không vào mastery trung tâm) — tình cờ đúng cho cấp 3 nhưng SAI cho cấp 1 (cần
+vào trung tâm hệ số 1, vì tự luyện là kênh đo DUY NHẤT của cấp 1 — không có ET/BTVN online đối chiếu,
+và PH kèm nên đủ nghiêm túc để tin).
+
+**Sửa:**
+- `src/gami/mastery.js` — `MASTERY_CONFIG.WEIGHT` thêm `tu_luyen: 1` (cùng hệ số btvn/bt — khác nhau
+  là CÓ/KHÔNG vào mastery trung tâm mặc định, không phải trọng số khi ĐÃ vào).
+- `src/lib/mastery.ts`:
+  - Thêm `EvalSrc` gồm `'tu_luyen'`, `SRC_LABEL.tu_luyen = 'TL'`.
+  - `fetchOnlineEvals`: tách riêng `src = loai === 'tu_luyen' ? 'tu_luyen' : (laThi ? 'et' : 'btvn')`
+    (trước: tu_luyen rơi vào nhánh 'btvn' cùng nhánh else).
+  - Thêm `CAP1_KHOI = {'3','4','4T','5','5T'}` + `laCap1(khoi)` — đúng bảng khối đã dùng lúc chốt mô
+    hình tài khoản cấp 1 (17/08).
+  - `getMasteryHS(hocSinhId, mon, opts)`: query thêm `hoc_sinh.khoi`, default `phases` (khi KHÔNG bật
+    `includeBTVN`) rẽ theo cấp — cấp 1 → `['et','mt','tu_luyen']`, cấp 3 → `['et','mt']` (giữ nguyên
+    hành vi cũ). Bật `includeBTVN` thì luôn gồm đủ `['et','mt','bt','btvn','tu_luyen']` cho mọi cấp
+    (gộp-view không phân biệt cấp).
+  - `getTongQuanHS`: query thêm `hoc_sinh.khoi`; tách `tuLuyenRows` riêng khỏi `btvnRows`; cấp 1 thì
+    tu_luyen được đẩy vào CẢ `byDangTop` (ảnh hưởng mức thành thạo hiển thị) lẫn `byDangBottom`; cấp 3
+    thì tu_luyen chỉ vào `byDangBottom` (đúng vị trí cũ của 'btvn' — chỉ tham khảo). **Cố ý KHÔNG đụng
+    `hoatDong`** (cột %ET/%BTVN/%MT hoạt động) — tu_luyen không cộng vào `actBucket`, tránh tự ý thêm
+    cột dashboard thứ 4 ngoài phạm vi được giao.
+  - `loadMasteryCells` (rollup lớp/khối/hệ, dùng cho staff): thêm `cap1Set` (suy từ `hoc_sinh.khoi` đã
+    có sẵn trong query gốc, không cần query thêm) — 1 dòng eval nguồn tu_luyen chỉ được cộng vào rollup
+    khi (`includeBTVN` bật) HOẶC (HS đó là cấp 1 và toggle tắt), khớp đúng logic của `getMasteryHS`.
+- Xác nhận bằng grep: `getMasteryHS`/`loadMasteryCells`/`getTongQuanHS` chỉ được gọi từ màn STAFF
+  (`KetQuaScreen`, `ReportPHScreen`, `BTScreen`) — query thêm `hoc_sinh.khoi` không vướng RLS (staff
+  bypass RLS, không như phía HS).
+
+**Verify bằng `vite-node` gọi thẳng hàm thật (không suy từ tsc/code review):** dựng 1 dòng
+`bai_test`(loại='tu_luyen')+`bai_test_cau`+`bai_lam`+`bai_lam_cau` giả cho HS0602 (khối 5, cấp 1,
+lớp 5A1/Toán) và cho HS0004 (khối 11, cấp 3) — cùng 1 `ma_dang` thật, verdict='correct'.
+- HS0602: `getMasteryHS(id, 'Toán')` (KHÔNG bật includeBTVN) → dạng test **CÓ** trong kết quả, nguồn
+  `['tu_luyen']` → **đúng**, cấp 1 vào mastery trung tâm mặc định.
+- HS0004: `getMasteryHS(id, 'Toán')` mặc định → dạng test **KHÔNG** có (tu_luyen là nguồn DUY NHẤT
+  của dạng này nên vắng mặt hoàn toàn nếu bị loại đúng) → **đúng**. Bật `{includeBTVN: true}` → dạng
+  xuất hiện lại với nguồn `['tu_luyen']` → **đúng**, gộp-view vẫn thấy được.
+- Dọn sạch toàn bộ dữ liệu test sau khi verify (script tự xoá ở cuối, có log xác nhận).
+- `npx tsc --noEmit` sạch trước verify.
+
+Kết quả: `mastery.ts` giờ phân biệt đúng tu_luyen theo cấp — khớp yêu cầu CEO 18-20/08.
