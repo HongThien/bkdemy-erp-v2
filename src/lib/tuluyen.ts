@@ -88,3 +88,11 @@ export async function monCuaHS(): Promise<string | null> {
   if (error) throw error
   return (data as string[] | null)?.[0] ?? null
 }
+
+// Cấp 1 hay không — màn chính app HS cần ẨN 3 ô ET/BTVN/Bài tập trên lớp cho cấp 1 (Thùy: chỉ có
+// Tự luyện trên điện thoại). `hoc_sinh` staff-only nên đọc qua RPC, cùng lý do với monCuaHS() trên.
+export async function laCap1HS(): Promise<boolean> {
+  const { data, error } = await supabase.rpc('hs_cap1_cua_toi')
+  if (error) throw error
+  return !!data
+}

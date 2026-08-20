@@ -14,7 +14,7 @@ import {
 } from '../../lib/testonline'
 import { mucDeadline, nhanConLai } from '../../lib/tuan'
 import { seededShuffleWithOrig, seededPermByDang } from '../../lib/shuffle'
-import { timTuLuyenHomNay, sinhTuLuyen, monCuaHS, TU_LUYEN_TRAN_NGAY, TU_LUYEN_SO_CAU_MOI_LUOT } from '../../lib/tuluyen'
+import { timTuLuyenHomNay, sinhTuLuyen, monCuaHS, laCap1HS, TU_LUYEN_TRAN_NGAY, TU_LUYEN_SO_CAU_MOI_LUOT } from '../../lib/tuluyen'
 import DoiMatKhau from './DoiMatKhau'
 
 type Chon = number | string | (string | null)[] | null // TN=index · TLN=chuỗi · ĐS=mảng 'D'/'S'
@@ -33,6 +33,10 @@ const THI_LOAI = new Set(['et', 'de_thi'])
 // 10 câu theo dạng yếu, ĐẾM vào mastery) · thông tin học tập (dạng yếu + %Đ-C-S theo
 // dạng/chuyên đề + xếp hạng lớp/khối) · làm đề thi thử (đề trường/sở, sắp nhập nhiều).
 // 2 CỘT — màn điện thoại dọc (Thùy: "màn hình điện thoại là dọc mà").
+// ⭐ CẤP 1 (Thùy 20/08): "cấp 1 ko có làm ET, BTVN hay BTTL trên điện thoại. Chỉ có tự luyện" — 3 ô
+// đầu ẨN HẲN (không phải "Sắp có") cho cấp 1, KHÔNG đổi gì ở tầng dữ liệu (cấp 1 vốn không có
+// bai_test loại giao_trinh/et/btvn nào — cuaKhu() các ô đó luôn rỗng, ẩn chỉ là bớt nhiễu UI).
+const KHU_AN_CAP1 = new Set<KhuId>(['giao_trinh', 'et', 'btvn'])
 type KhuId = 'giao_trinh' | 'et' | 'btvn' | 'tu_luyen' | 'thong_tin' | 'de_thi_thu'
 // direct = ô này KHÔNG đi qua màn "danh sách nhiều bài" (setKhu+tab) — bấm vào thẳng 1 màn riêng.
 // Tự luyện là 1 PHIÊN đang-tiếp-diễn trong ngày (không phải danh sách bài đã phát hành theo ngày
@@ -53,8 +57,10 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [doiMK, setDoiMK] = useState(false)
   const [khu, setKhu] = useState<KhuId | null>(null) // null = màn chính 6 ô
   const [tuLuyenMo, setTuLuyenMo] = useState(false)
+  const [cap1, setCap1] = useState<boolean | null>(null) // null = chưa biết — chờ trước khi vẽ lưới ô
 
   useEffect(() => { listBaiTestCuaHS().then(setTests).catch(() => setTests([])) }, [])
+  useEffect(() => { laCap1HS().then(setCap1).catch(() => setCap1(false)) }, [])
 
   if (doiMK) return <DoiMatKhau maHS={maHS} batBuoc={false} onXong={() => setDoiMK(false)} />
 
@@ -91,12 +97,13 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     </div>
   )
 
-  // ── MÀN CHÍNH: 6 ô vuông, 2 cột ───────────────────────────────────────────
+  // ── MÀN CHÍNH: 6 ô vuông (3 với cấp 1), 2 cột ─────────────────────────────
+  if (!khu && cap1 === null) return <div className="flex min-h-screen items-center justify-center text-sm text-slate-400">Đang tải…</div>
   if (!khu) return (
     <div className="mx-auto min-h-screen max-w-md bg-slate-50 px-4 pb-10">
       {dinhDanh}
       <div className="grid grid-cols-2 gap-3">
-        {KHU.map((k) => {
+        {KHU.filter((k) => !(cap1 && KHU_AN_CAP1.has(k.id))).map((k) => {
           const sapCo = !k.loai && !k.direct
           const ds = k.loai ? cuaKhu(k.id) : []
           // Badge = việc CÒN LÀM ĐƯỢC. Bài quá hạn vẫn hiện trong danh sách (Thùy: "hiện quá hạn
