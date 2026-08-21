@@ -127,4 +127,5 @@ export const adminLeaves: AdminLeaf[] = [
   { id: 'db_taichinh', nhom: 'Dashboard', ten: 'Tài chính',                   founderOnly: true },
   { id: 'db_chatluong',nhom: 'Dashboard', ten: 'Chất lượng vận hành',         founderOnly: true },
   { id: 'db_phdangnhap',nhom: 'Dashboard', ten: 'Đăng nhập Phụ huynh',        founderOnly: true }, // bộ đo PH đã/chưa đăng nhập Cổng PH + reset MK (core team)
+  { id: 'db_xemapp',   nhom: 'Dashboard', ten: 'Xem app phụ huynh',          founderOnly: true }, // chọn HS → nhúng app PH của em (chế độ xem admin) để kiểm tra
 ]

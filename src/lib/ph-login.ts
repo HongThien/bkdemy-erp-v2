@@ -41,8 +41,8 @@ export async function resetPhPassword(phu_huynh_id: string): Promise<{ ok: boole
   return j
 }
 
-// "Xem app như phụ huynh": xin token có hạn (chỉ staff) → mở link app PH ở tab mới (read-only).
-export async function openPreviewApp(phu_huynh_id: string): Promise<void> {
+// "Xem app như phụ huynh": xin token có hạn (chỉ staff) → URL app PH read-only (nhúng iframe / mở tab).
+export async function getPreviewUrl(phu_huynh_id: string): Promise<string> {
   const res = await fetch(`${PH_BASE}/api/admin/preview-token`, {
     method: 'POST',
     headers: { ...(await authHeaders()), 'content-type': 'application/json' },
@@ -50,5 +50,10 @@ export async function openPreviewApp(phu_huynh_id: string): Promise<void> {
   })
   const j = await res.json().catch(() => ({}))
   if (!res.ok || !j.path) throw new Error(j.error || `Lỗi (${res.status}).`)
-  window.open(`${PH_BASE}${j.path}`, '_blank', 'noopener')
+  return `${PH_BASE}${j.path}`
+}
+
+// Mở app PH ở tab mới (shortcut).
+export async function openPreviewApp(phu_huynh_id: string): Promise<void> {
+  window.open(await getPreviewUrl(phu_huynh_id), '_blank', 'noopener')
 }
