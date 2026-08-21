@@ -148,7 +148,7 @@ export default function HinhPrintView({ ban, onClose, perHS }: { ban: BanIn; onC
 // ETPrintView) thay cho masthead thường — mã đề đã gán hiện thành nhãn, đánh số Bài 1.. RIÊNG từng phiếu
 // (không cộng dồn xuyên các HS). Nội dung mucs của mỗi HS đã được resolve theo mã đề TRƯỚC khi vào đây
 // (ETScreen.tsx) — component này không biết "mã đề" là gì, chỉ vẽ mucs được đưa.
-export type HinhPerHS = { hoTen: string; maDe: number; mucs: MucIn[] }
+export type HinhPerHS = { hoTen: string; lopTen?: string; maDe: number; mucs: MucIn[] }
 
 function Noi({ ban, gv, perHS }: { ban: BanIn; gv: boolean; perHS?: HinhPerHS[] }) {
   const logoUrl = location.origin + '/Logo.png'
@@ -167,6 +167,7 @@ function Noi({ ban, gv, perHS }: { ban: BanIn; gv: boolean; perHS?: HinhPerHS[] 
               {!gv && (
                 <div className="pv-bkh-student">
                   <div className="pv-bkh-field"><div className="pv-bkh-flbl">Họ và tên học sinh</div><div className="pv-bkh-fval">{hs.hoTen || ' '}</div></div>
+                  <div className="pv-bkh-field"><div className="pv-bkh-flbl">Lớp</div><div className="pv-bkh-fval">{hs.lopTen || ' '}</div></div>
                   <div className="pv-bkh-field"><div className="pv-bkh-flbl">Mã đề</div><div className="pv-bkh-fval">{hs.maDe}</div></div>
                 </div>
               )}

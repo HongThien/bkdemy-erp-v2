@@ -171,7 +171,7 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
     const byMaDe: Record<number, HinhBanIn> = { 1: base, 2: v2, 3: v3 }
     setHinhClassPrint({
       ban: base,
-      mucs: list.map((hs) => { const md = hinhHsMaDe[hs.id] ?? 1; return { hoTen: hs.ho_ten, maDe: md, mucs: (byMaDe[md] ?? base).mucs } }),
+      mucs: list.map((hs) => { const md = hinhHsMaDe[hs.id] ?? 1; return { hoTen: hs.ho_ten, lopTen: lop?.ten_lop, maDe: md, mucs: (byMaDe[md] ?? base).mucs } }),
     })
   }
 
