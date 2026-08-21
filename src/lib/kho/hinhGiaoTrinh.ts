@@ -304,11 +304,24 @@ export async function goBuoiLop(buoiLopId: string, lopId: string): Promise<void>
 }
 
 // ══════════════ ⭐ HIỆN CHUNG Ở KHO TÀI LIỆU (bảng tổng, cùng Đại — KHÔNG gộp bảng, chỉ liệt kê chung) ══
+// ⭐ 21/08 (Thùy: "đối xử giống hết như đại số... 2 file riêng, 1 file Giáo trình tức trên lớp, 1 file
+// BTVN, ở cùng chỗ kho tài liệu — chứ không phải tách riêng 1 tab"): khuôn `trichXuatBuoi` của Đại —
+// 1 buổi giáo trình Đại tách thành 2 `tai_lieu` ĐỘC LẬP (loai='giao_trinh_buoi' và loai='btvn'), MỖI cái
+// 1 dòng riêng trong Kho tài liệu. Hình KHÔNG tách bảng (data vẫn 1 dòng `hinh_gt_buoi`, 2 phan chỉ là
+// nhãn trên từng `hinh_gt_bai` — xem saveBuoiSelectionPhan) nhưng PHẢI chiếu ra 2 DÒNG riêng ở đây, mỗi
+// dòng 1 `phan`, tên "GT .../ BTVN ..." — để CẢM GIÁC + thao tác (In/Xoá) giống hệt Đại, dù tầng dưới
+// vẫn chung 1 hàng thật (không đẻ thêm bảng — CLAUDE.md §1.6 "mỗi nhánh tự cấu trúc" áp cho khác NHÁNH,
+// không bắt buộc tách vật lý trong CÙNG nhánh). Buổi CHƯA có bài ở 1 phan nào thì KHÔNG hiện dòng đó
+// (khuôn Đại: btvn doc chỉ tạo "nếu btvnPhans.length").
 export type HinhKhoRow = {
-  id: string; ten: string; khoi: string; mon: string
+  id: string        // buoiId + '::' + phan — khoá HIỂN THỊ (React key), KHÔNG dùng để query
+  buoiId: string     // id hinh_gt_buoi THẬT — dùng cho mọi thao tác (in/xoá)
+  phan: 'lop' | 'nha'
+  ten: string; khoi: string; mon: string
   loai: 'hinh_giao_trinh' | 'hinh_giao_trinh_buoi'   // 'hinh_giao_trinh'=buổi MASTER (phát triển) · 'hinh_giao_trinh_buoi'=bản LỚP (vận hành)
   lop_id: string | null; ngay: string | null; created_at: string
 }
+const PHAN_NHAN_KHO: Record<'lop' | 'nha', string> = { lop: 'GT', nha: 'BTVN' }
 /** Mọi buổi Hình (master + gán lớp) → hình chiếu liệt kê chung với `tai_lieu` ở Kho tài liệu bảng-tổng.
  *  KHÔNG đụng bảng `tai_lieu` — Hình vẫn 100% bảng riêng (Thùy chốt "2 giáo trình riêng, không gộp"),
  *  hàm này chỉ SUY dữ liệu hiển thị tương thích để 1 màn liệt kê được cả 2 nguồn. */
@@ -325,14 +338,34 @@ export async function listAllBuoiHinh(): Promise<HinhKhoRow[]> {
     const m = masterBuoiId ? byId.get(masterBuoiId) : null
     return m?.giao_trinh_id ? (gtMap.get(m.giao_trinh_id) ?? null) : null
   }
+  const buoiIds = rows.map((r) => r.id)
+  const { data: bais, error: e3 } = buoiIds.length
+    ? await supabase.from('hinh_gt_bai').select('buoi_id, phan').in('buoi_id', buoiIds).in('phan', ['lop', 'nha']).limit(LIMIT)
+    : { data: [] as { buoi_id: string; phan: string }[], error: null }
+  if (e3) throw e3
+  const phansOfBuoi = new Map<string, Set<string>>()
+  for (const b of (bais ?? []) as { buoi_id: string; phan: string }[]) {
+    const s = phansOfBuoi.get(b.buoi_id) ?? new Set<string>(); s.add(b.phan); phansOfBuoi.set(b.buoi_id, s)
+  }
   const out: HinhKhoRow[] = []
   for (const r of rows) {
-    if (r.giao_trinh_id) {
-      const g = gtMap.get(r.giao_trinh_id); if (!g) continue
-      out.push({ id: r.id, ten: `${g.ten} — ${r.tieu_de || 'Buổi'}`, khoi: g.khoi, mon: g.mon, loai: 'hinh_giao_trinh', lop_id: null, ngay: null, created_at: r.created_at })
-    } else if (r.lop_id) {
-      const g = gtOfMasterBuoi(r.nguon_buoi_id); if (!g) continue
-      out.push({ id: r.id, ten: `${g.ten} — ${r.tieu_de || 'Buổi'}`, khoi: g.khoi, mon: g.mon, loai: 'hinh_giao_trinh_buoi', lop_id: r.lop_id, ngay: r.ngay, created_at: r.created_at })
+    const phans = phansOfBuoi.get(r.id)
+    if (!phans || !phans.size) continue
+    let g: { id: string; ten: string; khoi: string; mon: string } | null = null
+    let loai: 'hinh_giao_trinh' | 'hinh_giao_trinh_buoi' | null = null
+    if (r.giao_trinh_id) { g = gtMap.get(r.giao_trinh_id) ?? null; loai = 'hinh_giao_trinh' }
+    else if (r.lop_id) { g = gtOfMasterBuoi(r.nguon_buoi_id); loai = 'hinh_giao_trinh_buoi' }
+    if (!g || !loai) continue
+    for (const phan of ['lop', 'nha'] as const) {
+      if (!phans.has(phan)) continue
+      out.push({
+        id: `${r.id}::${phan}`, buoiId: r.id, phan,
+        ten: `${PHAN_NHAN_KHO[phan]} ${g.ten} — ${r.tieu_de || 'Buổi'}`,
+        khoi: g.khoi, mon: g.mon, loai,
+        lop_id: loai === 'hinh_giao_trinh_buoi' ? r.lop_id : null,
+        ngay: loai === 'hinh_giao_trinh_buoi' ? r.ngay : null,
+        created_at: r.created_at,
+      })
     }
   }
   return out

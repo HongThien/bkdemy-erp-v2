@@ -9,7 +9,7 @@ import { useStore } from '../../store/useStore'
 import { useMonScope } from '../../lib/mon'
 // ⭐ Hình: liệt kê CHUNG bảng này (KHÔNG gộp bảng — Thùy chốt "2 giáo trình riêng") + in/xoá dịch đúng
 // pipeline riêng của Hình (loadLuoi + resolveBanIn + HinhPrintView, khác hẳn PrintView id-based của Đại).
-import { listAllBuoiHinh, listGtBai as listGtBaiHinh, deleteBuoi as deleteBuoiHinh, goBuoiLop as goBuoiLopHinh, type HinhKhoRow } from '../../lib/kho/hinhGiaoTrinh'
+import { listAllBuoiHinh, listGtBai as listGtBaiHinh, saveBuoiSelectionPhan as saveBuoiSelectionPhanHinh, type HinhKhoRow } from '../../lib/kho/hinhGiaoTrinh'
 import { resolveBanIn as resolveBanInHinh } from '../kho/hinh/GiaoTrinhScreen'
 import { loadLuoi } from '../../lib/kho/hinh'
 import HinhPrintView, { type BanIn as HinhBanIn } from '../kho/hinh/HinhPrintView'
@@ -95,16 +95,20 @@ export default function KhoTaiLieuScreen() {
   }
   useEffect(() => { reload() }, []) // eslint-disable-line
 
-  // In 1 phiếu Hình (Trên lớp/Về nhà) — cần loadLuoi(khoi) trước (Hình không id-based như Đại).
+  // In 1 phiếu Hình (GT/BTVN — mỗi dòng trong bảng giờ đã CHỈ 1 phan, xem listAllBuoiHinh) — cần
+  // loadLuoi(khoi) trước (Hình không id-based như Đại).
   const [hinhBan, setHinhBan] = useState<HinhBanIn | null>(null)
-  async function inHinh(r: HinhKhoRow, phan: 'lop' | 'nha') {
-    try { const L = await loadLuoi(r.khoi); setHinhBan(await resolveBanInHinh(L, r.ten, await listGtBaiHinh(r.id), phan)) }
+  async function inHinh(r: HinhKhoRow) {
+    try { const L = await loadLuoi(r.khoi); setHinhBan(await resolveBanInHinh(L, r.ten, await listGtBaiHinh(r.buoiId), r.phan)) }
     catch (e: any) { alert(e.message ?? String(e)) }
   }
+  // Xoá 1 dòng (GT hoặc BTVN) = XOÁ ĐÚNG PHAN đó khỏi buổi (saveBuoiSelectionPhan với picks rỗng) —
+  // KHÔNG đụng phan còn lại (khác Đại: 2 tai_lieu ĐỘC LẬP nên xoá 1 cái không ảnh hưởng cái kia; ở đây
+  // 2 dòng CHIA SẺ 1 hinh_gt_buoi thật, xoá cả buổi sẽ mất luôn phan kia — sai). Buổi trống cả 2 phan thì
+  // tự nhiên KHÔNG còn dòng nào ở đây nữa (listAllBuoiHinh chỉ chiếu phan CÓ bài) — không cần dọn thêm.
   async function xoaHinh(r: HinhKhoRow) {
     if (!confirm(`Xoá "${r.ten}"?`)) return
-    if (r.loai === 'hinh_giao_trinh_buoi' && r.lop_id) await goBuoiLopHinh(r.id, r.lop_id)
-    else await deleteBuoiHinh(r.id)
+    await saveBuoiSelectionPhanHinh(r.buoiId, r.phan, { picks: [], cheDo: {}, soDong: {} })
     reload()
   }
 
@@ -267,17 +271,18 @@ export default function KhoTaiLieuScreen() {
                         </button>
                         )}
                       </td>
-                      <td className="whitespace-nowrap px-3"><span className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] font-medium text-slate-600">{loaiTen(r.loai)}</span></td>
+                      <td className="whitespace-nowrap px-3"><span className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] font-medium text-slate-600">{r.nguon === 'hinh' ? (r.phan === 'nha' ? 'BTVN' : 'Giáo trình') : loaiTen(r.loai)}</span></td>
                       <td className="whitespace-nowrap px-3 text-slate-500">{r.khoi || '—'}</td>
                       <td className="whitespace-nowrap px-3 text-slate-500">{r.lop_id && r.ngay ? `${lopTen(r.lop_id)} · ${fmt(r.ngay)}` : (r.loai === 'et' || r.loai === 'mt' || r.loai === 'hinh_giao_trinh' ? <span className="text-violet-500">mẫu</span> : '—')}</td>
                       <td className="whitespace-nowrap px-3 text-slate-500">{fmt(r.created_at)}</td>
                       <td className="whitespace-nowrap px-3 py-2">
                         {r.nguon === 'hinh' ? (
                           // Hình: sửa TẠI CHỖ ở màn Giáo trình (Kho/Hình học) — không sửa/nhân bản/link từ đây
-                          // (không có hạ tầng gen-link tĩnh cho Hình, in luôn LIVE qua HinhPrintView).
+                          // (không có hạ tầng gen-link tĩnh cho Hình, in luôn LIVE qua HinhPrintView). Mỗi
+                          // dòng giờ CHỈ 1 phan (xem listAllBuoiHinh) → 1 nút In duy nhất, khớp Đại (mỗi
+                          // tai_lieu tự in đúng nội dung của nó, không có 2 nút in gộp trên 1 dòng).
                           <div className="flex justify-end gap-1.5">
-                            <button onClick={() => inHinh(r, 'lop')} className="shrink-0 rounded-md bg-indigo-600 px-2.5 py-1 text-[12px] font-medium text-white hover:bg-indigo-500">📘 In Lớp</button>
-                            <button onClick={() => inHinh(r, 'nha')} className="shrink-0 rounded-md border border-indigo-300 px-2.5 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-50">📝 In Nhà</button>
+                            <button onClick={() => inHinh(r)} className="shrink-0 rounded-md bg-indigo-600 px-2.5 py-1 text-[12px] font-medium text-white hover:bg-indigo-500">🖨 In</button>
                             <button onClick={() => xoaHinh(r)} className="shrink-0 rounded-md border border-slate-200 px-2.5 py-1 text-[12px] text-slate-400 hover:border-rose-300 hover:text-rose-600">Xoá</button>
                           </div>
                         ) : (
