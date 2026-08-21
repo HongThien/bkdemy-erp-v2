@@ -5661,3 +5661,65 @@ trơn tru toàn bộ chuỗi `hs_dang_evals` → chọn dạng → `tu_luyen_sin
 nào (chưa học buổi nào có chấm) — nhóm này bấm vào sẽ thấy đúng thông báo "Chưa có dữ liệu học tập
 để tự luyện — học vài buổi trên lớp rồi quay lại nhé" (§1.5 "thà bỏ trống còn hơn đánh sai": không
 suy đoán dạng để luyện khi chưa có gì đo được), KHÔNG phải lỗi — là hành vi đúng cho HS thật sự mới.
+
+## 2026-08-21 — App HS: redesign UI giống app PH · Thông tin học tập thật · Bảng xếp hạng 5T
+
+CEO chốt 3 việc cùng lúc: (1) "UI xấu quá. Làm UI giống như app phụ huynh đi", (2) "Thông tin học
+tập hiện các dạng bài mà nó yếu (giống app phụ huynh)", (3) "Thêm 1 tính năng về bảng xếp hạng, xếp
+hạng các bạn 5T về Thành tích làm bài tập tự luyện ở nhà".
+
+**① Redesign — port ĐÚNG token màu app PH, không đoán.** App PH thật là repo riêng
+`bkdemy-ph-app` (Next.js, KHÔNG nằm trong bkdemy-erp-v2 — xem [[ph-app-parent-portal]]). Đọc thẳng
+`bkdemy-ph-app/app/globals.css` lấy ĐÚNG bảng màu `:root` (brand #1077be xanh dương logo BK, ios-bg
+#f2f2f7, label #1c1c1e/#8a8a8e, green/orange/red trạng thái, ink #4a4a4e cho khối "báo cáo trang
+trọng"). Port sang Tailwind v4 `@theme` trong `src/index.css` (`--color-brand`, `--color-ios`,
+`--color-ph-label`, `--color-ph-green/orange/red/ink`…) → dùng dạng utility class (`bg-brand`,
+`text-ph-label-2`…) thay vì lặp hex khắp `HocSinhApp.tsx` — KHÔNG viết CSS file riêng port nguyên
+class PH (`.scard`/`.row`…) để tránh trùng tên với class Tailwind sẵn có (`.group` là marker
+`group-hover` của Tailwind — port nguyên class PH sẽ đè vỡ mọi chỗ khác dùng `group-hover`).
+Áp toàn bộ `HocSinhApp.tsx`: bỏ border card → shadow-sm (đúng phong cách PH card không viền), nền
+`bg-slate-50` → `bg-ios`, mọi accent `indigo-*` → `brand`, đúng/sai/cảnh báo `emerald/amber/rose` →
+`ph-green/ph-orange/ph-red`, avatar đổi từ nền phẳng sang gradient brand→brand-2 (giống `.avatar` PH).
+ET (chế độ THI) đổi từ tím `violet` sang tông `ph-ink` (giống PH dùng gradient ink cho "báo cáo cả
+lớp trang trọng" — hợp ngữ cảnh bài thi hơn màu tím tùy tiện cũ).
+
+**② Thông tin học tập — CÓ THẬT, không còn "Sắp có".** `tuluyen.ts::layDangHocTap(mon)` — gọi lại
+ĐÚNG `hs_dang_evals` (đã có sẵn cho Tự luyện) rồi chạy `masteryOfDang` (pure, KHÔNG bịa công thức
+mới) theo dạng, trả về danh sách dạng + đếm đạt/cần luyện/yếu. Migration `202608211041` mở rộng
+`hs_dang_evals` (CREATE OR REPLACE — file gốc 202608201111 đã áp, không sửa trực tiếp) thêm
+`ten_dang`/`ten_chuyen_de`/`muc_do` từ đúng bảng `dai_ban_do`/tương đương ĐÃ join sẵn trong RPC (không
+cần round-trip tra tên riêng). Nhân tiện sửa 1 lỗ hổng nhất quán: nhánh `bai_lam_cau` của RPC trước
+đó gộp `tu_luyen` LẪN vào `src='btvn'` (giống lỗi đã sửa bên `mastery.ts` hôm 20/08) — giờ tách riêng
+`src='tu_luyen'` cho ĐÚNG, dù về mặt SỐ (weight=1 cả hai) không đổi kết quả — chỉ là data-hygiene.
+Màn hiện: card "Tỉ lệ thành thạo kiến thức" (%+đếm 3 mức, giống card PH "Kết quả") + list "Dạng cần
+chú ý" (chỉ hiện yếu/cần luyện — ẨN đạt, ≤10 dạng ưu tiên yếu nhất, ĐÚNG hành vi PH app).
+
+**③ Bảng xếp hạng — riêng khối 5T, chỉ số = số câu ĐÚNG tự luyện cộng dồn.** Quyết định chỉ số: CEO
+nói "thành tích làm bài tập tự luyện ở nhà" không kèm công thức cụ thể — chọn **số câu ĐÚNG cộng
+dồn (all-time)** vì (a) đơn giản nhất để hiểu với HS tiểu học, (b) không cần chuẩn hoá theo số lần
+làm (như "%đúng") — vốn dễ bị lợi dụng bằng cách làm ít câu dễ ăn 100%, (c) tính năng Tự luyện mới
+ra hôm nay nên "all-time" = "từ đầu mùa" hiện tại, chưa cần lọc mùa riêng — sẽ tính lại nếu CEO muốn
+season-scope sau. Migration thêm `hs_khoi_cua_toi()` (khối thô — khác `hs_cap1_cua_toi` trả boolean,
+cần giá trị thô để lọc đúng khối '5T') + `hs_xep_hang_tu_luyen(p_khoi)` (SECURITY DEFINER, đếm
+`verdict='correct'` trong `bai_lam_cau` join `bai_test.loai='tu_luyen'`, gom theo HS). Model bảo mật
+GIỐNG "báo cáo cả lớp" ET đã có sẵn ở app PH (hiện tên+điểm mọi bạn cùng lớp) — không nhạy hơn tính
+năng đã tồn tại. HS chưa làm tự luyện lần nào → KHÔNG có dòng (INNER JOIN tự loại, §1.5 "thiếu data
+= không có dòng" — tránh hiện "0 điểm" gây tủi cho em chưa làm). Ô "Bảng xếp hạng" trên màn chính chỉ
+hiện với khối 5T (`KHU_CHI_5T`, đọc khối qua `khoiCuaHS()`), ẩn với mọi khối khác.
+
+**Verify RPC bằng client HS thật (không admin), có dọn dữ liệu test:**
+- `hs_khoi_cua_toi()` qua HS0602 → `"5"` đúng.
+- `hs_dang_evals` mở rộng → 203 dòng, có kèm `ten_dang`/`ten_chuyen_de`/`muc_do`; src xuất hiện đúng
+  `et`/`btvn` (HS0602 chưa có tu_luyen thật trong data — nhánh `tu_luyen` verify riêng bằng cách dựng
+  1 lần tự luyện giả, xem mục dưới).
+- `hs_xep_hang_tu_luyen('5T')` qua HS0602 (khối 5, KHÔNG phải 5T) → `[]` đúng (chưa ai khối 5T làm
+  tự luyện thật). Dựng end-to-end thật: đăng nhập HS0642 (khối 5T thật), sinh 2 câu tự luyện qua
+  ĐÚNG RPC `tu_luyen_sinh`, chấm ĐÚNG (verdict=correct) qua service (test nhanh, không qua UI click)
+  → gọi lại `hs_xep_hang_tu_luyen('5T')` → thấy `{ma_hs:"HS0642", ho_ten:"Hồ Hà Chi", so_cau_dung:2,
+  la_toi:true}` — đúng cả số lẫn cờ `la_toi`. Dọn sạch toàn bộ (`bai_test`+`bai_test_cau`+`bai_lam`+
+  `bai_lam_cau`) ngay sau test.
+- `npx tsc --noEmit` sạch (1 lỗi kiểu `muc_do`/`tin` — `masteryOfDang` trả `.js` không có kiểu
+  literal chặt, ép kiểu `as DangHocTap['muc'|'tin']` tại điểm dựng object, không đụng công thức).
+
+Verify UI thật trên browser (mobile 375×812) sau khi merge vào `main` — ghi tiếp ở mục dưới nếu cần
+sửa gì sau khi nhìn thấy render thật.
