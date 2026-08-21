@@ -304,21 +304,22 @@ export async function goBuoiLop(buoiLopId: string, lopId: string): Promise<void>
 }
 
 // ══════════════ ⭐ HIỆN CHUNG Ở KHO TÀI LIỆU (bảng tổng, cùng Đại — KHÔNG gộp bảng, chỉ liệt kê chung) ══
-// ⭐ 21/08 (Thùy: "đối xử giống hết như đại số... 2 file riêng, 1 file Giáo trình tức trên lớp, 1 file
-// BTVN, ở cùng chỗ kho tài liệu — chứ không phải tách riêng 1 tab"): khuôn `trichXuatBuoi` của Đại —
-// 1 buổi giáo trình Đại tách thành 2 `tai_lieu` ĐỘC LẬP (loai='giao_trinh_buoi' và loai='btvn'), MỖI cái
-// 1 dòng riêng trong Kho tài liệu. Hình KHÔNG tách bảng (data vẫn 1 dòng `hinh_gt_buoi`, 2 phan chỉ là
-// nhãn trên từng `hinh_gt_bai` — xem saveBuoiSelectionPhan) nhưng PHẢI chiếu ra 2 DÒNG riêng ở đây, mỗi
-// dòng 1 `phan`, tên "GT .../ BTVN ..." — để CẢM GIÁC + thao tác (In/Xoá) giống hệt Đại, dù tầng dưới
-// vẫn chung 1 hàng thật (không đẻ thêm bảng — CLAUDE.md §1.6 "mỗi nhánh tự cấu trúc" áp cho khác NHÁNH,
-// không bắt buộc tách vật lý trong CÙNG nhánh). Buổi CHƯA có bài ở 1 phan nào thì KHÔNG hiện dòng đó
-// (khuôn Đại: btvn doc chỉ tạo "nếu btvnPhans.length").
+// ⭐ 21/08 (Thùy: "đối xử giống hết như đại số... 2 file riêng ở cùng chỗ kho tài liệu — chứ không phải
+// tách riêng 1 tab", rồi "vẫn thấy Hình riêng không chung ở tab Tất cả mà cứ ở tab Giáo trình Hình"):
+// LẦN 1 chỉ tách DÒNG hiển thị nhưng vẫn giữ `loai` riêng ('hinh_giao_trinh*') → tab LỌC vẫn tách khỏi
+// tab "Giáo trình"/"BTVN" của Đại. Sửa dứt điểm: dùng THẲNG `loai` CHUNG với Đại ('giao_trinh' ·
+// 'giao_trinh_buoi' · 'btvn') để 2 nguồn rơi vào ĐÚNG 1 tab lọc — không tự đẻ 3 nhãn loại riêng cho Hình.
+// Khuôn `trichXuatBuoi`: MASTER (chưa gán lớp) là 1 tài liệu GỘP (Đại cũng vậy — 'giao_trinh' KHÔNG tách
+// dạng/btvn, chỉ tách lúc trích xuất cho 1 buổi thật) → `phan=null`, 1 dòng, cả 2 nút In. Buổi ĐÃ GÁN LỚP
+// (session thật) mới tách 2 DÒNG theo `phan` — vẫn 1 `hinh_gt_buoi` thật dưới tầng data (không đẻ bảng
+// mới, CLAUDE.md §1.6 áp cho khác NHÁNH chứ không bắt tách vật lý trong CÙNG nhánh khi không cần).
+// Buổi CHƯA có bài ở 1 phan nào thì KHÔNG hiện dòng đó (khuôn Đại: btvn doc chỉ tạo "nếu btvnPhans.length").
 export type HinhKhoRow = {
-  id: string        // buoiId + '::' + phan — khoá HIỂN THỊ (React key), KHÔNG dùng để query
-  buoiId: string     // id hinh_gt_buoi THẬT — dùng cho mọi thao tác (in/xoá)
-  phan: 'lop' | 'nha'
+  id: string           // buoiId, hoặc buoiId + '::' + phan khi đã tách dòng — khoá HIỂN THỊ, KHÔNG dùng để query
+  buoiId: string        // id hinh_gt_buoi THẬT — dùng cho mọi thao tác (in/xoá)
+  phan: 'lop' | 'nha' | null   // null = buổi MASTER (1 dòng gộp, chưa gán lớp)
   ten: string; khoi: string; mon: string
-  loai: 'hinh_giao_trinh' | 'hinh_giao_trinh_buoi'   // 'hinh_giao_trinh'=buổi MASTER (phát triển) · 'hinh_giao_trinh_buoi'=bản LỚP (vận hành)
+  loai: 'giao_trinh' | 'giao_trinh_buoi' | 'btvn'   // ⭐ CHUNG vocabulary với tai_lieu.loai (Đại) — để gộp tab lọc
   lop_id: string | null; ngay: string | null; created_at: string
 }
 const PHAN_NHAN_KHO: Record<'lop' | 'nha', string> = { lop: 'GT', nha: 'BTVN' }
@@ -351,21 +352,26 @@ export async function listAllBuoiHinh(): Promise<HinhKhoRow[]> {
   for (const r of rows) {
     const phans = phansOfBuoi.get(r.id)
     if (!phans || !phans.size) continue
-    let g: { id: string; ten: string; khoi: string; mon: string } | null = null
-    let loai: 'hinh_giao_trinh' | 'hinh_giao_trinh_buoi' | null = null
-    if (r.giao_trinh_id) { g = gtMap.get(r.giao_trinh_id) ?? null; loai = 'hinh_giao_trinh' }
-    else if (r.lop_id) { g = gtOfMasterBuoi(r.nguon_buoi_id); loai = 'hinh_giao_trinh_buoi' }
-    if (!g || !loai) continue
-    for (const phan of ['lop', 'nha'] as const) {
-      if (!phans.has(phan)) continue
+    if (r.giao_trinh_id) {
+      // MASTER — 1 dòng gộp, khớp Đại (master 'giao_trinh' không tách dạng/btvn).
+      const g = gtMap.get(r.giao_trinh_id); if (!g) continue
       out.push({
-        id: `${r.id}::${phan}`, buoiId: r.id, phan,
-        ten: `${PHAN_NHAN_KHO[phan]} ${g.ten} — ${r.tieu_de || 'Buổi'}`,
-        khoi: g.khoi, mon: g.mon, loai,
-        lop_id: loai === 'hinh_giao_trinh_buoi' ? r.lop_id : null,
-        ngay: loai === 'hinh_giao_trinh_buoi' ? r.ngay : null,
-        created_at: r.created_at,
+        id: r.id, buoiId: r.id, phan: null,
+        ten: `${g.ten} — ${r.tieu_de || 'Buổi'}`, khoi: g.khoi, mon: g.mon, loai: 'giao_trinh',
+        lop_id: null, ngay: null, created_at: r.created_at,
       })
+    } else if (r.lop_id) {
+      // Buổi ĐÃ GÁN LỚP — tách 1 dòng / phan có bài, loai chung vocabulary Đại.
+      const g = gtOfMasterBuoi(r.nguon_buoi_id); if (!g) continue
+      for (const phan of ['lop', 'nha'] as const) {
+        if (!phans.has(phan)) continue
+        out.push({
+          id: `${r.id}::${phan}`, buoiId: r.id, phan,
+          ten: `${PHAN_NHAN_KHO[phan]} ${g.ten} — ${r.tieu_de || 'Buổi'}`,
+          khoi: g.khoi, mon: g.mon, loai: phan === 'lop' ? 'giao_trinh_buoi' : 'btvn',
+          lop_id: r.lop_id, ngay: r.ngay, created_at: r.created_at,
+        })
+      }
     }
   }
   return out
