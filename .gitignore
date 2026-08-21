@@ -21,3 +21,4 @@ _design_thanhtich/
 # scratch output của scripts/test-dethi-ingest.ts (self-test CLI) — PDF mẫu tải về + ảnh cắt test
 scripts/tmp/
 scripts/out-crops/
+.vercel
