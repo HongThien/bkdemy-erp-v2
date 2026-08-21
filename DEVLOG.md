@@ -6231,5 +6231,14 @@ dạng — 2 trục khác nhau), sắp mới→cũ, kèm nhãn nguồn (`SRC_LAB
   (ph-v3-extra.css:327-338): nền xám phẳng `#F7F8FB`, chấm tròn màu theo mức, tag pill bên phải.
 
 **Verify:** `npx tsc --noEmit` sạch (1 lỗi biến `khoi` không dùng ở scope cha sau khi dời fetch khối
-vào trong `BangXepHang` — xoá state thừa, không phải bug logic). Verify browser thật (localhost,
-mobile) — ghi tiếp ngay dưới sau khi merge + nhìn kết quả render thật.
+vào trong `BangXepHang` — xoá state thừa, không phải bug logic). Verify browser thật SAU merge (đúng
+`main`, đọc computed style qua JS thay vì screenshot — pane không render frame trong môi trường này):
+- `studentCard`: `background-color: white`, `border-radius: 24px`, `box-shadow: rgba(28,38,61,.07)
+  0 8px 24px` — khớp CHÍNH XÁC `--shadow` thật. Avatar: `border-radius: 18px` (squircle, không tròn),
+  gradient `rgb(8,127,198)→rgb(18,103,213)` = đúng `#087FC6→#1267D5`.
+- Nền trang: `rgb(243,245,250)` = đúng `#F3F5FA`.
+- HS0602 (khối 5) → "Thông tin học tập": 93% · 25 đạt/4 cần luyện/0 yếu · 4 dạng "Cần chú ý", MỖI dạng
+  có ĐÚNG hàng "5 lần gần nhất" (✓/◐/✗ + nguồn ET/BTVN + ngày dd/mm, thứ tự mới→cũ) — đúng yêu cầu ③.
+- HS0602 (khối 5) → "Bảng xếp hạng": sub-title hiện ĐÚNG "...các bạn khối 5" (không còn hardcode
+  '5T') → đúng yêu cầu ②, trạng thái rỗng đúng thật (chưa ai khối 5 làm tự luyện).
+- Đăng xuất sạch sau verify, không để lại session dở trên tab dùng chung.
