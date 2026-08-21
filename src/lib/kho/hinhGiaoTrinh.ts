@@ -15,7 +15,7 @@ export type GtBuoi = {
   lop_id: string | null; ngay: string | null; stt_lop: number | null; nguon_buoi_id: string | null  // set = bản LỚP (snapshot)
 }
 export type GtBai = {
-  id: string; buoi_id: string; phan: 'lop' | 'nha'; loai: 'chuan' | 'bienthe' | 'y' | 'ghep'
+  id: string; buoi_id: string; phan: 'lop' | 'nha' | 'et'; loai: 'chuan' | 'bienthe' | 'y' | 'ghep'
   ref_id: string | null; ghep_node_ids: string[]; lua_id: string | null; an_de: boolean; so_dong: number | null; thu_tu: number
   hinh_che_do: CheDoHinh
 }
@@ -156,6 +156,52 @@ export async function loadBuoiPicks(buoiId: string): Promise<NhapBuoi> {
     else if (b.loai === 'ghep') picks.push({ key: b.id, phan: b.phan, kind: 'ghep', luaId: b.lua_id, nodeIds: b.ghep_node_ids })
   }
   return { picks, cheDo, soDong }
+}
+
+// ══════════════ ET Hình (mô hình) — Thùy 21/08 ══════════════
+// ET là tài liệu ĐỘC LẬP với giáo trình (như Đại: `trichXuatBuoi` không hề đụng tới ET) — nhưng dùng
+// CHUNG bảng hinh_gt_bai/hinh_gt_buoi qua nhãn `phan='et'` riêng, KHÔNG lẫn với 'lop'/'nha' của giáo
+// trình (nếu buổi đó đã có giáo trình gán). 1 buổi = 1 hinh_gt_buoi (khớp lop_id+ngay); ET không có
+// khái niệm "master" nên tạo/tìm THẲNG (khác `ganLopSnapshot` — không snapshot từ đâu cả).
+/** Buổi Hình (lớp+ngày) — tìm hoặc tạo trực tiếp, KHÔNG qua master/snapshot. Dùng cho ET (và các đường
+ *  không-giáo-trình khác sau này). Nếu buổi đó ĐÃ có giáo trình gán (từ `ganLopSnapshot`) thì trả về
+ *  ĐÚNG hinh_gt_buoi đó — ET và giáo trình chia sẻ 1 buổi, tách nhau bằng `phan`. */
+export async function ensureHinhGtBuoiForBuoi(lopId: string, ngay: string): Promise<string> {
+  const { data: existing, error: e0 } = await supabase.from('hinh_gt_buoi').select('id').eq('lop_id', lopId).eq('ngay', ngay).order('created_at', { ascending: false }).limit(1)
+  if (e0) throw e0
+  const found = (existing as { id: string }[])?.[0]
+  if (found) return found.id
+  const { data: u } = await supabase.auth.getUser()
+  const { data, error } = await supabase.from('hinh_gt_buoi').insert({ lop_id: lopId, ngay, thu_tu: 0, created_by: u.user?.id ?? null }).select('id').single()
+  if (error) throw error
+  return (data as { id: string }).id
+}
+/** Lưu NHÁP CHỈ 1 `phan` — REPLACE riêng phan đó, KHÔNG đụng phan khác của cùng buổi (khác
+ *  `saveBuoiSelection` gốc REPLACE CẢ buổi — không dùng được khi buổi này CÒN giáo trình 'lop'/'nha'). */
+export async function saveBuoiSelectionPhan(buoiId: string, phan: 'lop' | 'nha' | 'et', nhap: NhapBuoi): Promise<void> {
+  const cheDoCua = (k: string): CheDoHinh => nhap.cheDo[k] ?? 'hien'
+  const seen = new Set<string>()
+  const rows: Omit<GtBai, 'id'>[] = []
+  let thu = 0
+  for (const p of nhap.picks) {
+    if (p.phan !== phan) continue
+    const sig = p.kind === 'ghep' ? `ghep|${p.luaId ?? ''}|${[...p.nodeIds].sort().join(',')}` : `${p.kind}|${p.kind === 'bienthe' ? p.bienTheId : p.yId}`
+    if (seen.has(sig)) continue; seen.add(sig)
+    const cd = cheDoCua(p.key)
+    const base = { buoi_id: buoiId, phan, an_de: cd !== 'hien', hinh_che_do: cd, so_dong: nhap.soDong[p.key] ?? null, thu_tu: thu++ }
+    if (p.kind === 'ghep') rows.push({ ...base, loai: 'ghep', ref_id: null, ghep_node_ids: p.nodeIds, lua_id: p.luaId })
+    else if (p.kind === 'bienthe') rows.push({ ...base, loai: 'bienthe', ref_id: p.bienTheId, ghep_node_ids: [], lua_id: null })
+    else rows.push({ ...base, loai: 'y', ref_id: p.yId, ghep_node_ids: [], lua_id: null })
+  }
+  const { error: e1 } = await supabase.from('hinh_gt_bai').delete().eq('buoi_id', buoiId).eq('phan', phan)
+  if (e1) throw e1
+  if (rows.length) { const { error: e2 } = await supabase.from('hinh_gt_bai').insert(rows); if (e2) throw e2 }
+  await supabase.from('hinh_gt_buoi').update({ updated_at: new Date().toISOString() }).eq('id', buoiId)
+}
+/** Bài CHỈ 1 phan của buổi → NhapBuoi (ET Hình mở lại sửa — không load lẫn 'lop'/'nha'). */
+export async function loadBuoiPicksPhan(buoiId: string, phan: 'lop' | 'nha' | 'et'): Promise<NhapBuoi> {
+  const full = await loadBuoiPicks(buoiId)
+  return { picks: full.picks.filter((p) => p.phan === phan), cheDo: full.cheDo, soDong: full.soDong }
 }
 
 // ══════════════ GÁN LỚP (snapshot) ══════════════
@@ -324,7 +370,7 @@ export async function flattenGtBaiToDapAn(L: Luoi, bais: GtBai[]): Promise<HinhD
 /** Buổi (giáo trình Hình, lớp+ngày) khớp `phan` cần chấm — null nếu buổi chưa gán giáo trình Hình nào.
  *  Khớp qua `hinh_gt_buoi.lop_id/ngay` (KHÔNG FK buoi_hoc — cùng nguyên lý ET/BTVN Đại, buổi có thể ẢO
  *  lúc gán). order+limit(1) thay vì .single(): lỡ trùng thì lấy bản mới nhất, đừng throw cả tab chấm. */
-export async function loadHinhForBuoi(buoiId: string, phan: 'lop' | 'nha'): Promise<{ gtBuoiId: string | null; dapAn: HinhDapAn[] }> {
+export async function loadHinhForBuoi(buoiId: string, phan: 'lop' | 'nha' | 'et'): Promise<{ gtBuoiId: string | null; dapAn: HinhDapAn[] }> {
   const { data: b, error } = await supabase.from('buoi_hoc').select('lop_id, ngay, lop:lop_id(khoi)').eq('id', buoiId).single()
   if (error) throw error
   const lopId = (b as any).lop_id as string | null

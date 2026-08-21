@@ -875,6 +875,8 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
       // Sync CHỦ ĐỘNG mỗi lần mở tab — lưới tự bám đề. Phase đã đóng thì chỉ báo, không sửa lén.
       // Đại + Hình (mô hình) TUẦN TỰ (không Promise.all) — cả 2 chia sẻ slot problem_no của cùng
       // (buổi,phase); chạy song song thì cả 2 đọc "curAll" TRƯỚC khi bên kia ghi → cấp trùng số.
+      // Hình đọc từ tài liệu ET Hình RIÊNG (builder trong ETScreen, phan='et') — KHÔNG phải giáo trình
+      // (21/08: sửa lại sau khi nhầm mượn nội dung 'lop' giáo trình cho ET — 2 thứ khác nhau).
       const s = await syncDocProblems(buoiId, 'et', caus, !!buoi.et_dong_at)
       const { dapAn: hinhDapAn } = await loadHinhForBuoiPhase(buoiId, 'et')
       const sh = await syncHinhProblems(buoiId, 'et', hinhDapAn, !!buoi.et_dong_at)
@@ -1462,6 +1464,8 @@ function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: Buo
     try {
       const { mtId, phans: ps, caus: c } = await loadMTForBuoi(buoiId)
       // Lưới MT cũng bám đề qua ma_cau (chung syncDocProblems với ET) — xem ghi chú bug 07-21.
+      // ⚠ 21/08: Hình từng nối MT qua nội dung 'lop' giáo trình — SAI cùng lý do ET (gỡ, xem comment ET
+      // tab), chờ builder ET/MT Hình đúng nguồn.
       if (!mtId) { setMtMissing(true); setPhans([]) } else { setMtMissing(false); await syncMTProblems(buoiId, c, !!buoi.mt_dong_at); setPhans(ps) }
       await reloadP()
     } catch { setMtMissing(true); setPhans([]) } finally { setLoading(false) }

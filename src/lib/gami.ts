@@ -562,10 +562,12 @@ export async function syncHinhProblems(buoiId: string, phase: 'et' | 'mt' | 'btv
     .filter(Boolean) as Problem[]
   return { probs: [...theoDe, ...moCoi.map((m) => m.problem)], moCoi, khongRoRang: null, doiCauTruc: false }
 }
-/** Buổi có giáo trình Hình gán cho (lớp, ngày) này không, và đáp án theo `phase` cần chấm.
- *  nha→btvn · lop→et/mt (xem ghi chú trên `syncHinhProblems`). */
-export async function loadHinhForBuoiPhase(buoiId: string, phase: 'et' | 'mt' | 'btvn'): Promise<{ gtBuoiId: string | null; dapAn: HinhDapAn[] }> {
-  return loadHinhForBuoi(buoiId, phase === 'btvn' ? 'nha' : 'lop')
+/** Đáp án Hình cần chấm cho `phase` này — nha→btvn (giáo trình, snapshot qua `ganLopSnapshot`) ·
+ *  et→et (tài liệu ET Hình RIÊNG, builder trong ETScreen — KHÔNG phải giáo trình, xem
+ *  `ensureHinhGtBuoiForBuoi`/`saveBuoiSelectionPhan`, Thùy 21/08 chỉnh lại sau khi CTO nhầm lẫn 1 lần).
+ *  MT chưa có nguồn (chưa build — MT Hình sẽ bàn sau khi ET xong). */
+export async function loadHinhForBuoiPhase(buoiId: string, phase: 'et' | 'btvn'): Promise<{ gtBuoiId: string | null; dapAn: HinhDapAn[] }> {
+  return loadHinhForBuoi(buoiId, phase === 'btvn' ? 'nha' : 'et')
 }
 export async function listGrades(buoiId: string): Promise<Grade[]> {
   const { data, error } = await supabase.from('gami_grades').select('*').eq('buoi_hoc_id', buoiId).limit(LIMIT)
