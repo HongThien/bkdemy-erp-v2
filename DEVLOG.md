@@ -5781,3 +5781,71 @@ dạng — 2 trục khác nhau), sắp mới→cũ, kèm nhãn nguồn (`SRC_LAB
 **Verify:** `npx tsc --noEmit` sạch (1 lỗi biến `khoi` không dùng ở scope cha sau khi dời fetch khối
 vào trong `BangXepHang` — xoá state thừa, không phải bug logic). Verify browser thật (localhost,
 mobile) — ghi tiếp ngay dưới sau khi merge + nhìn kết quả render thật.
+
+## 2026-08-21 (tiếp) — CHẤM TLN BẰNG AI (vòng 2): dựng xong, BLOCK ở hạ tầng pg_net — cần Thùy bật Dashboard
+
+CEO chốt mô hình V1 (3 vòng: key → AI khi lệch key → thêm DB nếu AI xác nhận đúng), sửa lại theo
+2 ý: (1) CHỈ trả lời ngắn, (2) MỌI lần AI chấm phải ghi log, (3) thêm-vào-DB PHẢI người duyệt
+(không tự động — đúng nguyên tắc CLAUDE.md §5 "AI gợi ý → người confirm").
+
+**Grounding trước khi code (Explore agent):** vòng 1 (chấm key) + vòng 3 (cache + backfill,
+`question_accepted_answers`/`chapNhanDapAn`) **ĐÃ XÂY XONG SẴN** trong V2 — cột `ai_reason`/`source`
+đã có sẵn trong schema, chỉ chưa ai nối AI vào. Việc thật cần làm nhỏ hơn nhiều so với "3 vòng từ
+đầu" — chỉ thiếu đúng vòng 2 (gọi AI).
+
+**⚠ Phát hiện an ninh trước khi code:** `VITE_DEEPSEEK_KEY` hiện gọi THẲNG từ client (`kho/api.ts`) —
+đã có sẵn cảnh báo trong code "trước khi deploy public phải qua proxy". App đang tính deploy công
+khai `hs.bkacademy.edu.vn` (bàn ở mục trên) → PHẢI gọi AI từ server, không lộ key qua devtools.
+
+**Thiết kế (migration `202608211153_cham_tln_ai.sql`):**
+- Gọi DeepSeek **TỪ TRONG POSTGRES** qua `pg_net` (RPC `hs_cham_tln_ai`) — dùng lại đúng pattern
+  SECURITY DEFINER RPC cả phiên, KHÔNG cần dựng Edge Function/hosting mới.
+- Secret: định dùng Supabase Vault (đã cài `supabase_vault@0.3.1`) nhưng role `claude_build`
+  **KHÔNG có quyền `usage` schema `vault`** (verify: "permission denied for schema vault") — cần
+  Thùy tự bật qua Dashboard nếu muốn Vault chuẩn. TẠM: bảng `_app_secrets` riêng, KHÔNG grant
+  anon/authenticated, RLS bật không policy nào (chủ bảng bypass RLS mặc định) → chỉ RPC đọc được,
+  PostgREST không chọc vào được. Nạp key thật bằng script 1 lần đọc từ `.env.local` (KHÔNG commit
+  giá trị thật), xoá script ngay sau khi nạp.
+- `bai_test_report` thêm cột `nguon` (`hs_bao_sai` mặc định · `ai_de_xuat` mới) — AI xác nhận đúng
+  → CHỈ tạo 1 dòng report chờ duyệt (KHÔNG tự ghi `question_accepted_answers`/sửa `bai_lam_cau`) —
+  dòng này TỰ NỔI lên màn "Duyệt chấm online" có sẵn (đọc `bai_test_report` trang_thai='moi'), GV
+  bấm "✓ Chấp nhận đúng" (`chapNhanDapAn`, KHÔNG sửa) mới thật sự ghi + backfill — đúng yêu cầu
+  "phải được duyệt".
+- Bảng `tln_ai_cham_log` — ghi MỌI lần gọi AI (cả khi AI nói vẫn sai, cả khi lỗi API) — đúng yêu
+  cầu "mọi lần AI chốt lệch với key đều cần ghi log". RLS staff-only (`tai_khoan.nhan_su_id is not
+  null` — KHÔNG dùng `nhan_su`/`auth.uid()` trực tiếp, xem bug ①).
+- `testonline.ts::traLoiCau` — sau khi key+cache đều KHÔNG khớp (còn 'wrong'), gọi RPC trên KHÔNG
+  chờ (fire-and-forget, IIFE async nuốt lỗi) — giữ nguyên "chấm tức thì", AI chạy nền.
+- `DuyetChamScreen.tsx` — badge tách riêng 🚩 HS báo sai / 🤖 AI đề xuất theo `nguon`.
+
+**2 bug tự bắt được lúc verify (không phải Thùy báo):**
+① `auth.uid()` dùng trực tiếp trong policy mới → `permission denied for schema auth` (role
+`claude_build` không có usage schema `auth`) — search thấy `my_hoc_sinh_id()` sẵn có đã né bằng
+`public.jwt_uid()` (đọc `request.jwt.claims` thẳng, không qua schema `auth`) — sửa theo đúng pattern
+đó, KHÔNG phải phát minh mới.
+② `net.http_post(...)` trả THẲNG `bigint` (request_id), không phải bảng — viết nhầm
+`select id into x from net.http_post(...)` như hàm trả bảng → `column "id" does not exist`. Dò
+`pg_attribute` ra đúng cấu trúc `net.http_collect_response()` trả `(status, message, response)` với
+`response` lồng `(status_code, headers, body)` — sửa cho khớp. 2 migration `_fix_pgnet` +
+`_timeout` (CREATE OR REPLACE đè — KHÔNG sửa file `202608211153` đã áp, đúng CLAUDE.md §2.1).
+
+**⛔⛔ BLOCK Ở HẠ TẦNG — CẦN THÙY: pg_net background worker CHƯA CHẠY.** Test thật (dò tận gốc bằng
+`net.check_worker_is_up()`) → `"the pg_net background worker is not up"`. Đây là ca đã biết của
+Supabase: bật `pg_net` bằng `create extension` qua SQL Editor/kết nối trực tiếp KHÔNG đủ — worker
+nền cần đăng ký lúc Postgres KHỞI ĐỘNG (`shared_preload_libraries`), chỉ Supabase Dashboard mới làm
+được (bật công tắc pg_net ở Database → Extensions sẽ tự restart đúng cách). Thử `net.wake()`/
+`net.worker_restart()` qua SQL — chạy "thành công" nhưng worker vẫn báo "not up" (xác nhận đây là
+hạ tầng, không phải cấu hình sửa được bằng SQL). Queue request test đi vào `net.http_request_queue`
+nhưng không ai xử lý → `net.http_collect_response(..., false)` treo VÔ HẠN (test 1 lần treo >2 phút
+mới phải Ctrl-C, kết nối `claude_build` không có statement_timeout nên không tự huỷ).
+
+**Việc còn lại — CẦN THÙY bật `pg_net` qua Supabase Dashboard (Database → Extensions → pg_net →
+bật). Sau đó chỉ cần verify lại (đã có sẵn script mẫu, xoá tạm sau lần trước) — code/migration/UI
+đã xong hết, không cần sửa gì thêm nếu worker chạy đúng.** Cũng nên canh: `hs_cham_tln_ai` chạy
+dưới role `authenticated` có `statement_timeout=8s` (cấu hình sẵn của project) — đã hạ
+`timeout_milliseconds` DeepSeek xuống 6000ms để có dư; nếu vẫn hay timeout sau khi worker chạy đúng
+thì cân nhắc tách 2 bước (queue nhanh trả về ngay + xử lý async thật sự) — CHƯA cần làm nếu 6s đủ.
+
+Chưa merge `main` — chưa verify được end-to-end (đang chờ Thùy bật pg_net). Code an toàn để merge
+sớm nếu muốn (degrade sạch: lỗi bị nuốt, HS không thấy gì khác, chỉ chưa có tác dụng AI-chấm) nhưng
+theo đúng kỷ luật cả phiên — không merge cái chưa verify thật.

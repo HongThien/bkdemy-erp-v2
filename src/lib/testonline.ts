@@ -295,7 +295,14 @@ export async function traLoiCau(baiLamId: string, cau: BaiTestCau, dapAnHs: unkn
     verdict: g.verdict, diem, cham_boi: g.cham_boi, cham_at: new Date().toISOString(),
   }, { onConflict: 'bai_lam_id,bai_test_cau_id' }).select('id').single()
   if (error) throw error
-  return { verdict: g.verdict, cham_boi: g.cham_boi, key: cau.dap_an_key, baiLamCauId: (data as { id: string }).id }
+  const baiLamCauId = (data as { id: string }).id
+  // Vòng 2 (Thùy 21/08): key+cache đều KHÔNG khớp → hỏi AI NỀN, KHÔNG chờ (giữ "chấm tức thì").
+  // HS thấy 'wrong' ngay; nếu AI xác nhận đúng thì tự tạo báo cáo chờ GV duyệt (KHÔNG tự sửa
+  // điểm — xem chi tiết + lý do trong migration 202608211153_cham_tln_ai.sql).
+  if (cau.loai_cau === 'tra_loi_ngan' && g.verdict === 'wrong') {
+    void (async () => { try { await supabase.rpc('hs_cham_tln_ai', { p_bai_lam_cau_id: baiLamCauId }) } catch { /* nền — không chặn HS */ } })()
+  }
+  return { verdict: g.verdict, cham_boi: g.cham_boi, key: cau.dap_an_key, baiLamCauId }
 }
 
 // ── ET chế độ THI (giấu key) ─────────────────────────────────────────────────
@@ -356,7 +363,7 @@ export type TLNSaiRow = {
   hocSinh: { id: string; ho_ten: string; ma_hs: string | null }
   test: { loai: string; ngay: string; lopTen: string }
   cau: { id: string; ma_cau: string | null; noi_dung: string | null; dapAnKey: string; loi_giai: string | null }
-  reports: { id: string; y_kien: string | null; trang_thai: string }[]
+  reports: { id: string; y_kien: string | null; trang_thai: string; nguon: 'hs_bao_sai' | 'ai_de_xuat' }[]
 }
 
 // Mọi câu TLN đang verdict='wrong' (mọi test) + report của chúng (join client — bảng report nhỏ).
@@ -367,11 +374,11 @@ export async function listTLNSai(): Promise<TLNSaiRow[]> {
     .order('cham_at', { ascending: false }).limit(LIMIT)
   if (error) throw error
   const rows = (data ?? []) as any[]
-  const { data: reps } = await supabase.from('bai_test_report').select('id, bai_lam_cau_id, y_kien, trang_thai').limit(LIMIT)
-  const repMap = new Map<string, { id: string; y_kien: string | null; trang_thai: string }[]>()
+  const { data: reps } = await supabase.from('bai_test_report').select('id, bai_lam_cau_id, y_kien, trang_thai, nguon').limit(LIMIT)
+  const repMap = new Map<string, { id: string; y_kien: string | null; trang_thai: string; nguon: 'hs_bao_sai' | 'ai_de_xuat' }[]>()
   for (const r of (reps ?? []) as any[]) {
     const arr = repMap.get(r.bai_lam_cau_id) ?? []
-    arr.push({ id: r.id, y_kien: r.y_kien, trang_thai: r.trang_thai })
+    arr.push({ id: r.id, y_kien: r.y_kien, trang_thai: r.trang_thai, nguon: r.nguon ?? 'hs_bao_sai' })
     repMap.set(r.bai_lam_cau_id, arr)
   }
   return rows.map((r) => ({

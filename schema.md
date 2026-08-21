@@ -9,7 +9,15 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-144 bảng · 0 view · 0 enum · 14 trigger · 62 function
+146 bảng · 0 view · 0 enum · 14 trigger · 63 function
+
+## _app_secrets
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| name | text |  |  | PK |  |
+| value | text |  |  |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
 
 ## _migrations
 
@@ -131,6 +139,7 @@
 | duyet_boi | uuid | Y |  |  |  |
 | duyet_at | timestamp with time zone | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
+| nguon | text |  | 'hs_bao_sai'::text |  | `hs_bao_sai` · `ai_de_xuat` |
 
 ## bang_khong_bu
 
@@ -687,6 +696,9 @@
 | ma_cau | text | Y |  |  |  |
 | hinh_y_id | uuid | Y |  | FK→hinh_y.id |  |
 | ngu_canh_luot | text | Y |  |  | `mo_hinh` · `dang` · `luyen_de` |
+| hinh_baitoan_id | uuid | Y |  | FK→hinh_baitoan.id |  |
+| hinh_bien_the_id | uuid | Y |  | FK→hinh_baitoan_bien_the.id |  |
+| hinh_nhan | text | Y |  |  |  |
 
 ## hgt_ban_do
 
@@ -1376,6 +1388,8 @@
 | mua | text | Y |  |  |  |
 | buoi_hoc_id | uuid | Y |  | FK→buoi_hoc.id |  |
 | created_at | timestamp with time zone |  | now() |  |  |
+| khung_co_ban | numeric | Y |  |  |  |
+| khung_nang_cao | numeric | Y |  |  |  |
 
 ## linkgen_jobs
 
@@ -1721,6 +1735,22 @@
 | hieu_luc_den | date | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 
+## tln_ai_cham_log
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| bai_lam_cau_id | uuid |  |  | FK→bai_lam_cau.id |  |
+| hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |  |
+| ma_cau | text | Y |  |  |  |
+| dap_an_key | text | Y |  |  |  |
+| dap_an_hs | text | Y |  |  |  |
+| equivalent | boolean | Y |  |  |  |
+| reason | text | Y |  |  |  |
+| model | text |  | 'deepseek-chat'::text |  |  |
+| loi | text | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
 ## troly_hoi_dap
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -2023,6 +2053,7 @@
 - `hinh_mo_hinh_hau_due(goc uuid)` → TABLE(id uuid, do_sau integer)
 - `hinh_mo_hinh_to_tien(nut uuid)` → TABLE(id uuid, do_sau integer)
 - `hs_cap1_cua_toi()` → boolean
+- `hs_cham_tln_ai(p_bai_lam_cau_id uuid)` → jsonb
 - `hs_dang_evals(p_mon text, p_nhanh text DEFAULT NULL::text)` → jsonb
 - `hs_khoi_cua_toi()` → text
 - `hs_mon_cua_toi()` → text[]
