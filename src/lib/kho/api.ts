@@ -1685,6 +1685,62 @@ export async function doiDinhChuoiHinh(cau: { ma: string; de: string; loiGiai: s
   return arr.map((x: any) => ({ de_bai: String(x.de_bai ?? x.deBai ?? '').trim(), loi_giai: String(x.loi_giai ?? x.loiGiai ?? '').trim() }))
 }
 
+// ── NHẬP LỨA ĐÃ CLONE SẴN (ảnh/PDF) — Thùy 08-20: "hệ thống chưa clone được 1 chuỗi hoàn chỉnh, t tự
+// clone bên ngoài, muốn NHẬP lại + tự khớp vào chuỗi gốc". Khác doiDinhChuoiHinh (AI TỰ SINH text, chỉ đổi
+// tên điểm) — đây là NGƯỜI đã tự làm ra bản clone thật (đổi số/đổi hình/đổi gì cũng được), AI CHỈ ĐỌC +
+// KHỚP từng ý vào ĐÚNG bài gốc trong chuỗi (không tự bịa nội dung) — khuôn ingest, không phải sinh.
+// Khớp theo "ma" (khoá tự nhiên) — không theo VỊ TRÍ/thứ tự in (CLAUDE.md §2 "danh tính bám khoá tự
+// nhiên"): bản clone có thể thiếu/thừa/đảo thứ tự so với chuỗi gốc, AI phải tự đối chiếu NỘI DUNG.
+export const INGEST_LUA_CHUOI_ITEM_SCHEMA = { type: 'OBJECT', properties: {
+  khop_voi_ma: { type: 'STRING', description: 'Mã bài GỐC (lấy NGUYÊN trong ngoặc [ ] ở danh sách đối chiếu) mà Ý NÀY khớp nội dung/logic/vị trí trong chuỗi nhất.' },
+  de_bai: { type: 'STRING', description: 'Đề ĐẦY ĐỦ của riêng ý này — GHÉP giả thiết dùng chung (đã đổi số/đổi tên theo bản clone) + câu hỏi riêng của ý, đừng chỉ chép câu hỏi trơ thiếu giả thiết.' },
+  loi_giai: { type: 'STRING' },
+}, required: ['khop_voi_ma', 'de_bai'] }
+export const INGEST_LUA_CHUOI_SCHEMA = { type: 'OBJECT', properties: {
+  y: { type: 'ARRAY', items: INGEST_LUA_CHUOI_ITEM_SCHEMA },
+  co_hinh: { type: 'BOOLEAN' },
+  box_hinh: { type: 'ARRAY', items: { type: 'NUMBER' }, description: '[ymin,xmin,ymax,xmax] toạ độ CHUẨN HOÁ 0-1000 ôm trọn HÌNH VẼ dùng chung cho cả chuỗi (thường chỉ 1 hình ở đầu) — chỉ điền khi co_hinh=true.' },
+  trang_hinh: { type: 'NUMBER', description: 'Số thứ tự ảnh/trang (đếm từ 0) chứa hình đó — chỉ điền khi co_hinh=true.' },
+}, required: ['y'] }
+export function buildIngestLuaChuoiPrompt(chuoiGoc: { ma: string; phat_bieu: string }[]): string {
+  const list = chuoiGoc.map((c) => `[${c.ma}] ${c.phat_bieu}`).join('\n')
+  return [
+    'Ảnh/PDF dưới là MỘT CHUỖI bài toán hình học đã được CLONE (đổi số/đổi tên điểm/vẽ lại…) từ một chuỗi',
+    'GỐC cho bên dưới — thường trình bày dạng: 1 hình vẽ + 1 giả thiết CHUNG, rồi các ý a), b), c)… nối',
+    'tiếp nhau (ý sau dùng kết quả ý trước), có thể kèm lời giải từng ý.',
+    '',
+    `CHUỖI GỐC (${chuoiGoc.length} bài — CHỈ dùng để KHỚP nội dung/logic, đây KHÔNG phải đề trong ảnh):`,
+    list,
+    '',
+    'NHIỆM VỤ: tách ảnh/PDF thành từng Ý, mỗi ý khớp với ĐÚNG 1 bài gốc ở trên qua "khop_voi_ma":',
+    '- Khớp theo LOGIC/NỘI DUNG/VỊ TRÍ trong chuỗi (ý đầu thường ≈ bài đầu chuỗi, ý dùng kết quả ý trước ≈',
+    '  bài có tiền đề là bài trước nó…) — KHÔNG máy móc theo đúng thứ tự in nếu nội dung cho thấy khác.',
+    '- Ảnh/PDF có thể clone THIẾU vài bài gốc hoặc THỪA ý ngoài chuỗi — cứ trả đúng những gì đọc được,',
+    '  ĐỪNG bịa ý cho đủ số, ĐỪNG gán ép một ý vào bài không khớp.',
+    'QUY TẮC chép chữ (mỗi "de_bai"/"loi_giai"):',
+    '- Ký hiệu/công thức DÙNG LaTeX trong $...$; phân số \\\\dfrac. Giữ xuống dòng thật; mỗi bước 1 dòng.',
+    '- Có HÌNH VẼ HÌNH HỌC dùng chung cho cả chuỗi (thường vẽ 1 lần ở đầu): "co_hinh"=true + "box_hinh"',
+    '  ôm sát hình + "trang_hinh" = ảnh/trang thứ mấy (đếm từ 0) chứa nó. Không có → "co_hinh"=false.',
+    '- Trong JSON: lệnh LaTeX PHẢI double backslash; CHỈ trả JSON.',
+    'Trả về JSON: { "y": [ { "khop_voi_ma":"...", "de_bai":"...", "loi_giai":"..." } ], "co_hinh":false, "box_hinh":null, "trang_hinh":null }',
+  ].join('\n')
+}
+export async function ingestLuaChuoiHinh(files: GeminiFile[], chuoiGoc: { ma: string; phat_bieu: string }[]): Promise<{
+  y: { khop_voi_ma: string; de_bai: string; loi_giai: string }[]
+  co_hinh: boolean; box_hinh: [number, number, number, number] | null; trang_hinh: number
+}> {
+  const raw = await callGeminiJson(buildIngestLuaChuoiPrompt(chuoiGoc), { schema: INGEST_LUA_CHUOI_SCHEMA, files })
+  let t = raw.trim(); const fence = t.match(/```(?:json)?\s*([\s\S]*?)```/i); if (fence) t = fence[1].trim()
+  const obj = lenientJsonParse(t)
+  const box = Array.isArray(obj.box_hinh) && obj.box_hinh.length === 4 ? (obj.box_hinh.map(Number) as [number, number, number, number]) : null
+  const y = (Array.isArray(obj.y) ? obj.y : []).map((x: any) => ({
+    khop_voi_ma: String(x.khop_voi_ma ?? x.khopVoiMa ?? '').trim(),
+    de_bai: String(x.de_bai ?? x.deBai ?? '').trim(),
+    loi_giai: String(x.loi_giai ?? x.loiGiai ?? '').trim(),
+  })).filter((x: any) => x.khop_voi_ma && x.de_bai)
+  return { y, co_hinh: !!obj.co_hinh && !!box, box_hinh: box, trang_hinh: Number(obj.trang_hinh ?? 0) || 0 }
+}
+
 // ── Lý thuyết đi kèm dạng Đại (1-1) + chuẩn completeness ──────────
 export const CHUAN_SO_CAU = 50 // chuẩn kho: mỗi dạng ≥ 50 câu (sàn SỐ LƯỢNG, chỉnh 1 chỗ)
 // noi_dung = nội dung lý thuyết (text + LaTeX); file_url/ten_file = đính kèm; khong_can = đánh dấu "không cần" (chỉ chuyên đề)

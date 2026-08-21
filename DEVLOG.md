@@ -6503,3 +6503,45 @@ xác nhận ghi-đè hiện đúng "...+ hình vẽ hiện tại..." — CHỈ x
 (môi trường sandbox tự ép confirm() trả `false`) nên chưa thấy trực tiếp bước `setAnh` áp dụng lên ô Hình
 — logic bước đó chỉ 1 dòng (`if (anhMoi) setAnh(anhMoi)`), cùng khuôn 2 dòng `setDeBai`/`setLoiGiai` đã
 chạy đúng nhiều lần trước đó, tự tin đúng nhưng ghi rõ để không nhận vơ đã thấy tận mắt bước cuối.
+
+## 2026-08-20 (tiếp) — Kho Hình: nhập LỨA đã clone sẵn (ảnh/PDF) → AI tự khớp vào chuỗi gốc
+
+**Yêu cầu (Thùy, verbatim, hỏi lại câu cũ):** "Hệ thống hiện tại chưa clone được 1 bài dạng chuỗi câu
+hoàn chỉnh. T sẽ clone 1 chuỗi câu đó ở bên ngoài. T muốn hệ thống có chức năng nhập clone chuỗi câu, tức
+là t sẽ chọn chuỗi câu và gửi file pdf đã clone của chuỗi đó. Sau đó hệ thống tự khớp nội dung vào các
+chuỗi." — CTO trả lời khả thi (khớp sẵn model `lua_id`/`saveLuaBienThe` đã có cho "🔗 Đổi đỉnh cả chuỗi"),
+Thùy chốt "Bắt tay luôn đi".
+
+**Khác `ChuoiDoiDinhPopup` (đã có):** cái cũ AI TỰ SINH text (chỉ đổi tên điểm, giữ nguyên số/logic/hình
+gốc) — không phải "clone hoàn chỉnh". Cái mới: NGƯỜI đã tự clone thật (đổi số/hình/cách hỏi/gì cũng
+được) ở NGOÀI, AI ở đây CHỈ ĐỌC + KHỚP, không tự sinh chữ.
+
+**Làm:**
+- `src/lib/kho/api.ts` — `INGEST_LUA_CHUOI_SCHEMA`/`buildIngestLuaChuoiPrompt`/`ingestLuaChuoiHinh`: đưa
+  DANH SÁCH chuỗi gốc (mã + phát biểu) vào prompt làm ngữ cảnh đối chiếu; AI trả mỗi ý kèm `khop_voi_ma`
+  — khớp theo NỘI DUNG/LOGIC (khoá tự nhiên = mã bài, CLAUDE.md §2 "danh tính bám khoá tự nhiên, không
+  vị trí"), KHÔNG giả định thứ tự in khớp thứ tự chuỗi (clone có thể thiếu/thừa/đảo ý). Tái dùng NGUYÊN
+  co_hinh/box_hinh/trang_hinh (khuôn `ingestBaiHinh` vừa làm) — 1 hình dùng chung cho cả lứa (đúng thực
+  tế: 1 chuỗi thường vẽ 1 hình, các ý sau dùng lại).
+- `hinhUi.tsx` — export `fileToBase64` (trước private) để dùng lại ở SoDo.tsx, khỏi chép lại hàm.
+- `SoDo.tsx` — component mới `NhapCloneLuaPopup`, nút "📥 Nhập lứa đã clone (PDF)…" đặt cạnh "🔗 Đổi đỉnh
+  cả chuỗi…" (cùng điều kiện `chuoi.length > 1`, chỉ hiện khi TẠO biến thể mới, không hiện lúc sửa).
+  Luồng: up file → render canvas DPI cao → gửi Gemini → khớp ý↔mã (giữ ý ĐẦU khớp mỗi mã trùng, không
+  im lặng rơi mất — ý lạc/trùng gom vào khối "chưa khớp" cho soát tay, §1.5 "thà bỏ trống còn hơn đánh
+  sai") → cắt+upload hình chung → **bước REVIEW bắt buộc**: mỗi bài trong chuỗi hiện ô đề+lời giải AI
+  khớp được (SỬA TAY được), bài chưa khớp tô vàng cảnh báo rõ — KHÔNG tự lưu thẳng (Principle 6 "AI gợi
+  ý → người xác nhận", CLAUDE.md §5) → "Lưu lứa" gọi thẳng `saveLuaBienThe` đã có, cho phép lứa THIẾU
+  (bỏ qua bài chưa khớp) — `saveLuaBienThe` vốn không đòi đủ N phần tử, tự lọc tiền đề còn trong lứa.
+
+**Verify:** tsc sạch · `npx vite build` sạch. Live end-to-end THẬT (dev server, "+ Thêm biến thể" của
+BT.08.030 → mở đúng chuỗi 2 câu BT.08.030→BT.08.031): dựng ảnh test bằng canvas — 1 tứ giác ĐỔI HẲN TÊN
+ĐIỂM (M,N,P,Q thay vì A,B,C,D, cố ý để test khớp THEO NỘI DUNG chứ không phải khớp chữ) + giả thiết chung
++ 2 ý a)/b) — dispatch vào đúng input (soát kỹ vì popup có 2 input file cùng accept, ban đầu dispatch
+nhầm vào input của "Up cả bài" bên ngoài, phát hiện qua console log gọi nhầm hàm `ingestBaiHinh` thay vì
+lứa) → console xác nhận gọi Gemini THẬT (`in:821 out:247`) → UI báo "Khớp được 2/2 bài" — ý a) khớp ĐÚNG
+BT.08.030 (câu "góc CDx = góc CBA" ↔ câu hỏi tương ứng dạng góc), ý b) khớp ĐÚNG BT.08.031 (câu "tia phân
+giác") — dù tên điểm hoàn toàn khác gốc, xác nhận khớp THEO LOGIC không phải so chữ/vị trí → hình cắt tự
+động, ảnh upload thật lên bucket `kho-anh`, load được (`naturalWidth=582`) → đóng popup KHÔNG lưu (tránh
+tạo lứa test trên BT.08.030/031 thật). Giữa chừng dính 1 nhiễu: log HMR lỗi hàng loạt trên nhiều file
+không liên quan (phiên khác đang sửa song song) — kiểm lại `tsc --noEmit` + `git status` xác nhận code
+3 file của mình vẫn sạch, không phải lỗi từ thay đổi này.

@@ -161,7 +161,7 @@ export const tron = (s: string) => {
 
 export const inpCls = 'w-full rounded-lg border border-slate-300 px-2.5 py-1.5 text-[13px] outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20'
 
-const fileToBase64 = (f: File): Promise<string> =>
+export const fileToBase64 = (f: File): Promise<string> =>
   new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(String(r.result).split(',')[1] ?? ''); r.onerror = rej; r.readAsDataURL(f) })
 
 /** Nút "dán ảnh đề có công thức → AI dịch ra text + LaTeX". Đặt cạnh MỌI ô nhập đề/ý/giả thiết.

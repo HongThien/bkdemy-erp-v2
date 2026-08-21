@@ -12,11 +12,12 @@ import { createPortal } from 'react-dom'
 import * as api from '../../../lib/kho/api'
 import type { BaiToan, BienThe, Luoi, MoHinh, Y, Bai } from '../../../lib/kho/hinh'
 import { MathText } from '../ui'
-import { AnhInput, Btn, Cap, Chip, Empty, Fig, FieldCard, IngestBaiButton, KV, Ma, MaPill, OcrButton, Panel, Seg, Sol, Tag, inpCls, tron } from './hinhUi'
+import { AnhInput, Btn, Cap, Chip, Empty, Fig, FieldCard, IngestBaiButton, KV, Ma, MaPill, OcrButton, Panel, Seg, Sol, Tag, fileToBase64, inpCls, tron } from './hinhUi'
 import { FormMoHinh } from './Ho'
 import FormBaiToan from './FormBaiToan'
 import type { Nhay } from './KhoHinhScreen'
 import { LyThuyetModal } from '../BanDo'
+import { fileToCanvases, canvasToJpegBase64, cropCanvasBox } from '../../../lib/pdfRender'
 
 /** Dải cấp gọn: 4–4 đọc thừa, chỉ in 4. */
 export const dai = (ns: number[]) => (Math.min(...ns) === Math.max(...ns) ? String(ns[0]) : `${Math.min(...ns)}–${Math.max(...ns)}`)
@@ -489,6 +490,7 @@ function FormBienThe({ L, baiToanId, v, goc, onClose, onDone }: {
 }) {
   const [kieu, setKieu] = useState<BienThe['kieu']>(v?.kieu ?? 'doi_dinh')
   const [chuoiOpen, setChuoiOpen] = useState(false)
+  const [cloneLuaOpen, setCloneLuaOpen] = useState(false)
   // Chuỗi LIÊN THÔNG của node (đi tiền đề cả 2 chiều) → click node nào cũng ra cả chuỗi. Chỉ khi TẠO MỚI.
   const chuoi = useMemo(() => (v ? [] : api.chuoiKetNoi(L, baiToanId)), [L, baiToanId, v])
   // Mới → điền sẵn từ bài gốc (giống y). Sửa → giữ nội dung đã lưu.
@@ -576,10 +578,15 @@ function FormBienThe({ L, baiToanId, v, goc, onClose, onDone }: {
                 <div className="rounded-lg border border-violet-300 bg-violet-50/60 p-2.5">
                   <Lbl>🔗 Bài này nằm trong chuỗi {chuoi.length} câu (nối tiền đề)</Lbl>
                   <p className="text-[11.5px] leading-snug text-slate-600">Đổi đỉnh <b>cả chuỗi</b> bằng <b>một bộ điểm</b> → tạo một <b>lứa</b> khớp để ghép a,b,c sau. (Chỉ đổi riêng bài này thì dùng các ô dưới.)</p>
-                  <Btn kind="pri" className="mt-1.5 h-8 px-3 text-[12px]" onClick={() => setChuoiOpen(true)}>🔗 Đổi đỉnh cả chuỗi…</Btn>
+                  <div className="mt-1.5 flex flex-wrap gap-1.5">
+                    <Btn kind="pri" className="h-8 px-3 text-[12px]" onClick={() => setChuoiOpen(true)}>🔗 Đổi đỉnh cả chuỗi…</Btn>
+                    <Btn className="h-8 px-3 text-[12px]" onClick={() => setCloneLuaOpen(true)}>📥 Nhập lứa đã clone (PDF)…</Btn>
+                  </div>
+                  <p className="mt-1 text-[11px] leading-snug text-slate-500">Đã tự clone chuỗi này ở ngoài (đổi số/hình…)? Up file clone lên, AI tự khớp từng ý vào đúng bài trong chuỗi.</p>
                 </div>
               )}
               {chuoiOpen && <ChuoiDoiDinhPopup L={L} chuoi={chuoi} onClose={() => setChuoiOpen(false)} onDone={onDone} />}
+              {cloneLuaOpen && <NhapCloneLuaPopup L={L} chuoi={chuoi} onClose={() => setCloneLuaOpen(false)} onDone={onDone} />}
               <div className="rounded-lg border border-indigo-200 bg-indigo-50/40 p-2.5">
                 <Lbl>Thay điểm (thủ công) — gõ ánh xạ, tự thay trong $…$</Lbl>
                 <div className="flex gap-2">
@@ -726,6 +733,152 @@ function ChuoiDoiDinhPopup({ L, chuoi, onClose, onDone }: {
           <div className="ml-auto flex gap-2">
             <button onClick={onClose} className="rounded-lg px-3 py-2 text-[13px] text-slate-500 hover:bg-slate-100">Huỷ</button>
             <Btn kind="pri" disabled={busy || !selected.length} onClick={sinh}>{busy ? '⏳ Đang sinh…' : `Sinh lứa (${selected.length} câu)`}</Btn>
+          </div>
+        </div>
+      </div>
+    </div>,
+    document.body,
+  )
+}
+
+// Popup NHẬP LỨA ĐÃ CLONE SẴN (ảnh/PDF) — Thùy 08-20: hệ thống chưa tự SINH được 1 chuỗi clone hoàn
+// chỉnh (chỉ đổi được tên điểm qua ChuoiDoiDinhPopup) — người tự clone chuỗi ở NGOÀI (đổi số/hình/gì
+// cũng được) rồi NHẬP lại đây. AI CHỈ ĐỌC + KHỚP từng ý vào đúng bài gốc theo NỘI DUNG (khoá = mã bài,
+// không phải vị trí/thứ tự in — CLAUDE.md §2), không tự sinh chữ. Soát/sửa tay được TRƯỚC khi lưu thành
+// 1 lứa (saveLuaBienThe — khuôn NGUYÊN ChuoiDoiDinhPopup, chỉ khác nguồn nội dung).
+function NhapCloneLuaPopup({ L, chuoi, onClose, onDone }: {
+  L: Luoi; chuoi: BaiToan[]; onClose: () => void; onDone: () => Promise<void>
+}) {
+  const [busy, setBusy] = useState(false)
+  const [loi, setLoi] = useState<string | null>(null)
+  const [daBoc, setDaBoc] = useState(false)
+  const [anhLua, setAnhLua] = useState<string | null>(null)
+  const [gan, setGan] = useState<Record<string, { deBai: string; loiGiai: string }>>({})
+  const [khongKhop, setKhongKhop] = useState<{ khop_voi_ma: string; de_bai: string; loi_giai: string }[]>([])
+
+  const boc = async (files: File[]) => {
+    const fs = files.filter((f) => f.type.startsWith('image/') || f.type === 'application/pdf')
+    if (!fs.length) { setLoi('Chọn ảnh hoặc PDF của bản clone trước.'); return }
+    setBusy(true); setLoi(null)
+    try {
+      const perFile = await Promise.all(fs.map(async (f) => fileToCanvases(f.type, await fileToBase64(f))))
+      const canvases = perFile.flat()
+      const gf = canvases.map((c) => ({ mimeType: 'image/jpeg', dataBase64: canvasToJpegBase64(c) }))
+      const r = await api.ingestLuaChuoiHinh(gf, chuoi.map((b) => ({ ma: b.ma, phat_bieu: b.phat_bieu })))
+      // Khớp theo MÃ (khoá tự nhiên) — ý ĐẦU TIÊN khớp 1 mã thì giữ; ý sau trùng mã hoặc mã lạ → "chưa khớp",
+      // KHÔNG rơi mất im lặng (§1.5 "thà bỏ trống còn hơn đánh sai" — người tự soát ở bước review).
+      const maToId = new Map(chuoi.map((b) => [b.ma, b.id]))
+      const daDung = new Set<string>()
+      const ganMoi: Record<string, { deBai: string; loiGiai: string }> = {}
+      const conLai: typeof r.y = []
+      for (const y of r.y) {
+        const bid = maToId.get(y.khop_voi_ma)
+        if (bid && !daDung.has(bid)) { daDung.add(bid); ganMoi[bid] = { deBai: y.de_bai, loiGiai: y.loi_giai } }
+        else conLai.push(y)
+      }
+      setGan(ganMoi); setKhongKhop(conLai)
+      if (r.co_hinh && r.box_hinh && canvases[r.trang_hinh]) {
+        try {
+          const blob = await (await fetch(cropCanvasBox(canvases[r.trang_hinh], r.box_hinh))).blob()
+          setAnhLua(await api.uploadKhoImage(new File([blob], 'hinh-lua.png', { type: 'image/png' })))
+        } catch { /* cắt/upload hình lỗi → bỏ hình, vẫn giữ đề/lời giải đã khớp được */ }
+      }
+      setDaBoc(true)
+    } catch (e: any) { setLoi(e.message ?? String(e)) } finally { setBusy(false) }
+  }
+
+  const suaO = (id: string, patch: Partial<{ deBai: string; loiGiai: string }>) =>
+    setGan((s) => ({ ...s, [id]: { deBai: s[id]?.deBai ?? '', loiGiai: s[id]?.loiGiai ?? '', ...patch } }))
+
+  const soKhop = chuoi.filter((b) => gan[b.id]?.deBai.trim()).length
+
+  const luu = async () => {
+    const selIds = new Set(chuoi.map((b) => b.id))
+    const items = chuoi.filter((b) => gan[b.id]?.deBai.trim()).map((b) => ({
+      baitoan_id: b.id, de_bai: gan[b.id].deBai.trim(), anh: anhLua ?? api.anhCuaBaiToan(L, b.id),
+      loi_giai: gan[b.id].loiGiai.trim() || null, anh_loi_giai: api.cachMacDinh(L, b.id)?.anh_loi_giai ?? null,
+      tienDeBaiToanIds: api.tienDeCua(L, b.id).filter((id) => selIds.has(id)),
+    }))
+    if (!items.length) { setLoi('Chưa có bài nào khớp được nội dung — chưa có gì để lưu.'); return }
+    setBusy(true); setLoi(null)
+    try {
+      await api.saveLuaBienThe(items)
+      alert(`Đã tạo lứa ${items.length}/${chuoi.length} biến thể từ bản clone.${items.length < chuoi.length ? ` Còn ${chuoi.length - items.length} bài chưa khớp được, chưa có biến thể trong lứa này.` : ''}`)
+      await onDone()
+    } catch (e: any) { setLoi(e.message ?? String(e)); setBusy(false) }
+  }
+
+  return createPortal(
+    <div className="fixed inset-0 z-[70] flex items-center justify-center bg-slate-900/50 p-3 sm:p-6" onClick={(e) => e.stopPropagation()}>
+      <div className="flex max-h-[88vh] w-[94vw] max-w-3xl flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <div className="flex items-center gap-2 border-b border-slate-200 px-5 py-3">
+          <h3 className="text-[15px] font-semibold text-slate-900">📥 Nhập lứa đã clone</h3>
+          <span className="text-[12px] text-slate-400">{chuoi.length} bài trong chuỗi</span>
+          <button onClick={onClose} className="ml-auto rounded-lg border border-slate-300 px-3 py-1.5 text-[13px] text-slate-600 hover:bg-slate-50">Đóng</button>
+        </div>
+        <div className="min-h-0 flex-1 space-y-3 overflow-y-auto p-4">
+          {!daBoc ? (
+            <>
+              <p className="text-[12.5px] leading-snug text-slate-600">
+                Đã tự clone chuỗi {chuoi.length} bài này ở bên ngoài (đổi số/đổi hình/đổi cách hỏi…)? Up file
+                clone lên — AI đọc rồi tự khớp từng ý vào ĐÚNG bài gốc trong chuỗi theo nội dung, không theo
+                thứ tự in cứng. Soát lại được ở bước sau, trước khi lưu.
+              </p>
+              <div className="rounded-lg border border-slate-200 bg-slate-50/60 p-2.5">
+                <div className="mb-1 text-[10.5px] font-semibold uppercase tracking-wide text-slate-500">Chuỗi gốc (để đối chiếu)</div>
+                <ol className="space-y-0.5 text-[12px] text-slate-600">
+                  {chuoi.map((b, i) => <li key={b.id}>{i + 1}. <Ma>{b.ma}</Ma> <MathText>{b.phat_bieu}</MathText></li>)}
+                </ol>
+              </div>
+              <label className={`inline-flex h-9 cursor-pointer items-center rounded-lg border px-3 text-[13px] font-medium transition ${busy ? 'border-slate-200 text-slate-400' : 'border-indigo-300 bg-indigo-50 text-indigo-700 hover:bg-indigo-100'}`}>
+                {busy ? '⏳ AI đang đọc + khớp…' : '🪄 Chọn file clone (ảnh/PDF, nhiều trang được)'}
+                <input type="file" accept="image/*,application/pdf" multiple className="hidden" disabled={busy}
+                  onChange={(e) => boc(Array.from(e.target.files ?? []))} />
+              </label>
+              {loi && <div className="rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[12.5px] text-rose-700">{loi}</div>}
+            </>
+          ) : (
+            <>
+              <div className="rounded-lg border border-emerald-200 bg-emerald-50/60 px-3 py-2 text-[12.5px] text-emerald-800">
+                Khớp được <b>{soKhop}/{chuoi.length}</b> bài. Soát lại từng ô dưới trước khi lưu — sửa tay được.
+              </div>
+              <div>
+                <div className="mb-1 text-[10.5px] font-semibold uppercase tracking-wide text-slate-500">Hình dùng chung cho cả lứa</div>
+                <Fig src={anhLua} cap={anhLua ? 'Cắt tự động từ bản clone' : 'Không nhận diện được hình — up tay sau khi lưu cũng được'} h="h-36" />
+              </div>
+              {chuoi.map((b, i) => {
+                const o = gan[b.id]
+                const khop = !!o?.deBai.trim()
+                return (
+                  <div key={b.id} className={`rounded-lg border p-2.5 ${khop ? 'border-slate-200' : 'border-amber-300 bg-amber-50/50'}`}>
+                    <div className="mb-1 flex items-center gap-1.5">
+                      <span className="text-[10px] text-slate-400">câu {i + 1}</span><Ma>{b.ma}</Ma><Cap cap={b.cap} />
+                      <span className="min-w-0 flex-1 truncate text-[11.5px] text-slate-500"><MathText>{b.phat_bieu}</MathText></span>
+                      {!khop && <span className="shrink-0 text-[10.5px] font-medium text-amber-700">chưa khớp — điền tay hoặc bỏ qua</span>}
+                    </div>
+                    <textarea className={`${inpCls} h-16`} value={o?.deBai ?? ''} onChange={(e) => suaO(b.id, { deBai: e.target.value })} placeholder="Đề (giả thiết + câu hỏi) của bài này trong bản clone…" />
+                    <textarea className={`${inpCls} mt-1.5 h-14`} value={o?.loiGiai ?? ''} onChange={(e) => suaO(b.id, { loiGiai: e.target.value })} placeholder="Lời giải (không bắt buộc)…" />
+                  </div>
+                )
+              })}
+              {khongKhop.length > 0 && (
+                <div className="rounded-lg border border-slate-200 bg-slate-50/60 p-2.5">
+                  <div className="mb-1 text-[10.5px] font-semibold uppercase tracking-wide text-slate-500">{khongKhop.length} ý AI đọc được nhưng KHÔNG khớp bài nào trong chuỗi (copy tay vào ô đúng ở trên nếu cần)</div>
+                  {khongKhop.map((y, i) => (
+                    <div key={i} className="mb-1 rounded border border-slate-200 bg-white px-2 py-1.5 text-[12px] text-slate-600">
+                      <span className="text-[10.5px] text-slate-400">gán nhầm mã "{y.khop_voi_ma}" · </span><MathText>{y.de_bai}</MathText>
+                    </div>
+                  ))}
+                </div>
+              )}
+              {loi && <div className="rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[12.5px] text-rose-700">{loi}</div>}
+            </>
+          )}
+        </div>
+        <div className="flex items-center gap-3 border-t border-slate-200 px-5 py-3">
+          <div className="ml-auto flex gap-2">
+            <button onClick={onClose} className="rounded-lg px-3 py-2 text-[13px] text-slate-500 hover:bg-slate-100">Huỷ</button>
+            {daBoc && <Btn kind="pri" disabled={busy || !soKhop} onClick={luu}>{busy ? '⏳ Đang lưu…' : `Lưu lứa (${soKhop} bài)`}</Btn>}
           </div>
         </div>
       </div>
