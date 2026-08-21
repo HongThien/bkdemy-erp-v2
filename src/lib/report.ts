@@ -71,14 +71,15 @@ export type BaoCaoPH = {
   nl_band: string | null; nl_diem: number | null; nl_sai_so: number | null
   cs_thai_do: number | null; cs_tap_trung: number | null; cs_tiep_thu: number | null; cs_tu_duy: number | null; cs_ky_nang: number | null; cs_van_dung: number | null; cs_vuot_kho: number | null
   cong_bo_at: string | null // NULL = nháp (PH không thấy); NOT NULL = đã chốt & công bố
+  anh_bao_cao_url: string | null // URL ảnh snapshot chụp lúc chốt (app hiện ở Hồ sơ học tập)
 }
 export const BC_EMPTY: BaoCaoPH = {
   thai_do: null, kien_thuc_ky_nang: null, ket_luan: null, ket_luan_muc: null, muc_tieu: null, muc_kien_thuc: null, muc_thai_do: null,
   nl_band: null, nl_diem: null, nl_sai_so: null,
   cs_thai_do: null, cs_tap_trung: null, cs_tiep_thu: null, cs_tu_duy: null, cs_ky_nang: null, cs_van_dung: null, cs_vuot_kho: null,
-  cong_bo_at: null,
+  cong_bo_at: null, anh_bao_cao_url: null,
 }
-const BC_COLS = 'thai_do, kien_thuc_ky_nang, ket_luan, ket_luan_muc, muc_tieu, muc_kien_thuc, muc_thai_do, nl_band, nl_diem, nl_sai_so, cs_thai_do, cs_tap_trung, cs_tiep_thu, cs_tu_duy, cs_ky_nang, cs_van_dung, cs_vuot_kho, cong_bo_at'
+const BC_COLS = 'thai_do, kien_thuc_ky_nang, ket_luan, ket_luan_muc, muc_tieu, muc_kien_thuc, muc_thai_do, nl_band, nl_diem, nl_sai_so, cs_thai_do, cs_tap_trung, cs_tiep_thu, cs_tu_duy, cs_ky_nang, cs_van_dung, cs_vuot_kho, cong_bo_at, anh_bao_cao_url'
 export async function getBaoCaoPH(hocSinhId: string, mon: string, thang: string): Promise<BaoCaoPH> {
   const { data, error } = await supabase.from('bao_cao_ph').select(BC_COLS)
     .eq('hoc_sinh_id', hocSinhId).eq('mon', mon).eq('thang', thang).maybeSingle()

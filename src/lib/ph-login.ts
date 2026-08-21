@@ -57,3 +57,15 @@ export async function getPreviewUrl(phu_huynh_id: string): Promise<string> {
 export async function openPreviewApp(phu_huynh_id: string): Promise<void> {
   window.open(await getPreviewUrl(phu_huynh_id), '_blank', 'noopener')
 }
+
+// Upload ảnh báo cáo tháng (snapshot lúc chốt) → trả URL public để lưu vào bao_cao_ph.
+export async function uploadReportImage(key: string, dataUrl: string): Promise<string> {
+  const res = await fetch(`${PH_BASE}/api/admin/report-image`, {
+    method: 'POST',
+    headers: { ...(await authHeaders()), 'content-type': 'application/json' },
+    body: JSON.stringify({ key, dataUrl }),
+  })
+  const j = await res.json().catch(() => ({}))
+  if (!res.ok || !j.url) throw new Error(j.error || `Lỗi (${res.status}).`)
+  return j.url
+}
