@@ -562,7 +562,7 @@ export function BuoiPickEditor({ L, picks, cheDo, soDong, onChangePicks, onChang
 
 /** ⭐ 08-08: MỌI pick (đề chuẩn/lứa/biến thể/ý thật) của MỘT phiếu → bản in — 1 cơ chế cho mọi cỡ chuỗi.
  *  Export — dùng bởi GiaoTrinhScreen ("👁 Xem buổi" / "🖨 In") ngoài chỗ gọi nội bộ cũ. */
-export async function banInTheoMoHinh(tieuDe: string, phan: 'lop' | 'nha', picks: PickItem[], L: Luoi, cheDo: Record<string, CheDoHinh>, soDong: Record<string, number>): Promise<BanIn> {
+export async function banInTheoMoHinh(tieuDe: string, phan: 'lop' | 'nha' | 'et' | 'mt', picks: PickItem[], L: Luoi, cheDo: Record<string, CheDoHinh>, soDong: Record<string, number>): Promise<BanIn> {
   const cd = (k: string): CheDoHinh => cheDo[k] ?? 'hien'
   const dong = (key: string) => (phan === 'nha' ? (soDong[key] ?? DONG_BTVN) : soDong[key] ?? 0)   // BTVN mặc định DONG_BTVN; trên lớp KHÔNG kẻ dòng (bài sát nhau)
   const ps = dedupePicks(picks.filter((p) => p.phan === phan))
@@ -678,14 +678,21 @@ export function mucY(L: Luoi, yb: { y: Y; bai: Bai }, cheDo: CheDoHinh, soDong?:
 // ── ⭐ 08-08 (Thùy chốt: "1 chuỗi ghép lại cũng là 1 bài") — 1 BẢN của 1 chuỗi (mọi cỡ, kể cả 1 node):
 // đề chuẩn / lứa (chuỗi ≥2 node) / biến thể + ý thật riêng lẻ (chuỗi 1 node, không nhóm lứa được). ──
 export type Ban = { kind: 'ghep'; luaId: string | null } | { kind: 'bienthe'; bienTheId: string } | { kind: 'y'; yId: string }
-function sameBan(p: PickItem, ban: Ban): boolean {
+export function sameBan(p: PickItem, ban: Ban): boolean {
   if (p.kind !== ban.kind) return false
   if (p.kind === 'ghep' && ban.kind === 'ghep') return p.luaId === ban.luaId
   if (p.kind === 'bienthe' && ban.kind === 'bienthe') return p.bienTheId === ban.bienTheId
   if (p.kind === 'y' && ban.kind === 'y') return p.yId === ban.yId
   return false
 }
-async function banOptionsOfChuoi(chuoi: BaiToan[]): Promise<{ ban: Ban; label: string }[]> {
+function sameBanBan(a: Ban, b: Ban): boolean {
+  if (a.kind !== b.kind) return false
+  if (a.kind === 'ghep' && b.kind === 'ghep') return a.luaId === b.luaId
+  if (a.kind === 'bienthe' && b.kind === 'bienthe') return a.bienTheId === b.bienTheId
+  if (a.kind === 'y' && b.kind === 'y') return a.yId === b.yId
+  return false
+}
+export async function banOptionsOfChuoi(chuoi: BaiToan[]): Promise<{ ban: Ban; label: string }[]> {
   const out: { ban: Ban; label: string }[] = [{ ban: { kind: 'ghep', luaId: null }, label: 'Đề chuẩn (gốc)' }]
   if (chuoi.length >= 2) {
     const lists = await Promise.all(chuoi.map((b) => api.listBienThe(b.id)))
@@ -703,8 +710,8 @@ async function banOptionsOfChuoi(chuoi: BaiToan[]): Promise<{ ban: Ban; label: s
 /** ⭐ Gợi ý N: tự chọn N pick cho (chuỗi,phan), mỗi pick BẢN KHÁC NHAU — ưu tiên ÍT DÙNG NHẤT (least-used,
  *  khuôn cauUsage Đại). Mặc định tick TOÀN BỘ chuỗi (Thùy: "đương nhiên hệ thống đưa full chuỗi"; sửa
  *  từng bài sau bằng ✎). Trả ÍT hơn N nếu kho chưa đủ bản khác nhau — caller tự báo. */
-async function goiYChuoi(chuoi: BaiToan[], phan: 'lop' | 'nha' | 'et' | 'mt', n: number): Promise<PickItem[]> {
-  const opts = await banOptionsOfChuoi(chuoi)
+/** Xếp `opts` theo usage ÍT DÙNG NHẤT trước (dùng chung cho goiYChuoi + goiYMaDeChoBai). */
+async function rankBanOptions(opts: { ban: Ban; label: string }[], chuoi: BaiToan[]): Promise<{ ban: Ban; label: string }[]> {
   const luaIds = opts.filter((o): o is { ban: { kind: 'ghep'; luaId: string }; label: string } => o.ban.kind === 'ghep' && !!o.ban.luaId).map((o) => o.ban.luaId)
   const bienTheIds = opts.filter((o): o is { ban: { kind: 'bienthe'; bienTheId: string }; label: string } => o.ban.kind === 'bienthe').map((o) => o.ban.bienTheId)
   const yIds = opts.filter((o): o is { ban: { kind: 'y'; yId: string }; label: string } => o.ban.kind === 'y').map((o) => o.ban.yId)
@@ -713,9 +720,23 @@ async function goiYChuoi(chuoi: BaiToan[], phan: 'lop' | 'nha' | 'et' | 'mt', n:
   const usageOf = (o: { ban: Ban }) => o.ban.kind === 'ghep'
     ? (o.ban.luaId ? (usage.lua.get(o.ban.luaId) ?? 0) : Math.max(0, ...chuanNodeIds.map((id) => usage.chuan.get(id) ?? 0)))
     : o.ban.kind === 'bienthe' ? (usage.bienthe.get(o.ban.bienTheId) ?? 0) : (usage.y.get(o.ban.yId) ?? 0)
-  const sorted = [...opts].sort((a, b) => usageOf(a) - usageOf(b))
+  return [...opts].sort((a, b) => usageOf(a) - usageOf(b))
+}
+async function goiYChuoi(chuoi: BaiToan[], phan: 'lop' | 'nha' | 'et' | 'mt', n: number): Promise<PickItem[]> {
+  const opts = await banOptionsOfChuoi(chuoi)
+  const sorted = await rankBanOptions(opts, chuoi)
   const nodeIds = chuoi.map((b) => b.id)
   return sorted.slice(0, n).map((o) => ({ key: crypto.randomUUID(), phan, nodeIds, ...o.ban } as PickItem))
+}
+// ── ⭐ MÃ ĐỀ 2/3 cho ET Hình (Thùy 21/08, "làm đầy đủ giống Đại"): KHÔNG phải AI đổi đỉnh sinh mới —
+// Thùy chốt "biến thể của Hình là cùng node là được". Tức mã đề 2/3 = BẢN KHÁC đã CÓ SẴN trong kho của
+// cùng chuỗi/node (y hệt goiYChuoi ở trên) — chỉ khác là loại bản GỐC đã chọn ra khỏi pool trước khi
+// xếp hạng (goiYChuoi lấy từ đầu opts, ở đây phải loại gốc vì gốc là do GV tự chọn, không phải hệ tự sinh). ──
+/** N bản KHÁC bản GỐC đã chọn cho 1 bài — ưu tiên ÍT DÙNG NHẤT. Trả ÍT hơn N nếu kho chưa đủ bản khác —
+ *  caller tự báo thiếu (khuôn "thiếu câu cùng dạng" của Đại — KHÔNG tự sinh AI để lấp). */
+export async function goiYMaDeChoBai(chuoi: BaiToan[], gocBan: Ban, n: number): Promise<{ ban: Ban; label: string }[]> {
+  const opts = (await banOptionsOfChuoi(chuoi)).filter((o) => !sameBanBan(o.ban, gocBan))
+  return (await rankBanOptions(opts, chuoi)).slice(0, n)
 }
 
 // ── Một CHUỖI (= 1 DẠNG, cùng logic tiền đề) — hiện 1 lần, kể cả chuỗi 1 câu (câu lẻ = chuỗi 1 node,

@@ -976,6 +976,7 @@
 | created_by | uuid | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
+| cau_hinh | jsonb |  | '{}'::jsonb |  |  |
 
 ## hinh_mo_hinh
 

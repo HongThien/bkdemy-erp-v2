@@ -20,9 +20,13 @@ import SearchSelect from '../../components/SearchSelect'
 import DangPickerOne from '../../components/DangPickerOne'
 import BuoiNgaySelect from '../../components/BuoiNgaySelect'
 import { useStore, type PickItem } from '../../store/useStore'
-import { BuoiPickEditor } from '../kho/hinh/SoanTaiLieu'
-import { loadLuoi, type Luoi } from '../../lib/kho/hinh'
-import { ensureHinhGtBuoiForBuoi, loadBuoiPicksPhan, saveBuoiSelectionPhan, type CheDoHinh } from '../../lib/kho/hinhGiaoTrinh'
+import { BuoiPickEditor, banInTheoMoHinh, goiYMaDeChoBai, type Ban } from '../kho/hinh/SoanTaiLieu'
+import { loadLuoi, chuoiKetNoi, type Luoi } from '../../lib/kho/hinh'
+import {
+  ensureHinhGtBuoiForBuoi, loadBuoiPicksPhan, saveBuoiSelectionPhan, getHinhCauHinh, patchHinhCauHinh,
+  chuoiSig, applyBanToPick, type CheDoHinh, type HinhBanRef,
+} from '../../lib/kho/hinhGiaoTrinh'
+import HinhPrintView, { type HinhPerHS, type BanIn as HinhBanIn } from '../kho/hinh/HinhPrintView'
 
 const loaiLabel = (v: string) => LOAI_CAU.find((x) => x.value === v)?.label ?? v
 const DEFAULT_ROWS = 5
@@ -87,6 +91,15 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
   const [hinhCheDo, setHinhCheDo] = useState<Record<string, CheDoHinh>>({})
   const [hinhSoDong, setHinhSoDong] = useState<Record<string, number>>({})
   const [hinhLoading, setHinhLoading] = useState(false)
+  // ── 3 MÃ ĐỀ + gán theo HS (Thùy 21/08, "làm đầy đủ giống Đại"): KHÔNG phải AI đổi đỉnh sinh mới —
+  // Thùy chốt "biến thể Hình là cùng node là được". Mã đề 2/3 = BẢN KHÁC đã CÓ SẴN trong kho của cùng
+  // chuỗi/node (goiYMaDeChoBai, ít-dùng-nhất trước — y hệt cơ chế "câu khác cùng dạng" của Đại). Sống
+  // trong state y hệt `ch.etMaDe`/`ch.hsMaDe` của Đại — chỉ FLUSH xuống DB lúc luuHinh()/in (không
+  // autosave riêng), khớp UX "Lưu ET" hiện có.
+  const [hinhMaDe, setHinhMaDe] = useState<Record<string, [HinhBanRef | null, HinhBanRef | null]>>({})
+  const [hinhHsMaDe, setHinhHsMaDe] = useState<Record<string, number>>({})
+  const [hinhMaDeBusy, setHinhMaDeBusy] = useState(false)
+  const [hinhClassPrint, setHinhClassPrint] = useState<{ mucs: HinhPerHS[]; ban: HinhBanIn } | null>(null)
   useEffect(() => {
     if (nhanh !== 'hinh' || !khoi) { setHinhL(null); return }
     let alive = true
@@ -94,16 +107,17 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
     return () => { alive = false }
   }, [nhanh, khoi])
   useEffect(() => {
-    if (nhanh !== 'hinh' || !lopId || !ngay) { setHinhBuoiId(null); setHinhPicks([]); setHinhCheDo({}); setHinhSoDong({}); return }
+    if (nhanh !== 'hinh' || !lopId || !ngay) { setHinhBuoiId(null); setHinhPicks([]); setHinhCheDo({}); setHinhSoDong({}); setHinhMaDe({}); setHinhHsMaDe({}); return }
     let alive = true
     setHinhLoading(true)
     ;(async () => {
       const id = await ensureHinhGtBuoiForBuoi(lopId, ngay)
       if (!alive) return
       setHinhBuoiId(id)
-      const nhap = await loadBuoiPicksPhan(id, 'et')
+      const [nhap, ch2] = await Promise.all([loadBuoiPicksPhan(id, 'et'), getHinhCauHinh(id, 'et')])
       if (!alive) return
       setHinhPicks(nhap.picks); setHinhCheDo(nhap.cheDo); setHinhSoDong(nhap.soDong)
+      setHinhMaDe(ch2.maDe ?? {}); setHinhHsMaDe(ch2.hsMaDe ?? {})
     })().catch((e) => { if (alive) setErr(e?.message ?? String(e)) }).finally(() => { if (alive) setHinhLoading(false) })
     return () => { alive = false }
   }, [nhanh, lopId, ngay])
@@ -115,9 +129,50 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
     try {
       const id = hinhBuoiId ?? await ensureHinhGtBuoiForBuoi(lop.id, ngay)
       await saveBuoiSelectionPhan(id, 'et', { picks: hinhPicks, cheDo: hinhCheDo, soDong: hinhSoDong })
+      await patchHinhCauHinh(id, 'et', { maDe: hinhMaDe, hsMaDe: hinhHsMaDe })
       setHinhBuoiId(id)
       setFlash('Đã lưu ET (Hình) — nội dung sẽ tự hiện ở tab Chấm ET của buổi.')
     } catch (e: any) { setErr(e.message ?? String(e)) } finally { setBusy(false) }
+  }
+  /** Sinh mã đề 2/3 cho MỌI bài đang chọn — bản KHÁC đã có sẵn trong kho (không AI sinh mới), ưu tiên
+   *  ít-dùng-nhất. Giữ mã đề CŨ của bài chưa đổi nội dung (không sinh lại tràn lan mỗi lần bấm). */
+  async function sinhMaDeHinh() {
+    if (!hinhL || !hinhPicks.length) return
+    setHinhMaDeBusy(true)
+    try {
+      const next = { ...hinhMaDe }
+      const thieu: string[] = []
+      for (const p of hinhPicks) {
+        const sig = chuoiSig(p.nodeIds)
+        const chuoi = chuoiKetNoi(hinhL, p.nodeIds[0])
+        const gocBan: Ban = p.kind === 'ghep' ? { kind: 'ghep', luaId: p.luaId } : p.kind === 'bienthe' ? { kind: 'bienthe', bienTheId: p.bienTheId } : { kind: 'y', yId: p.yId }
+        const opts = await goiYMaDeChoBai(chuoi, gocBan, 2)
+        next[sig] = [opts[0]?.ban ?? null, opts[1]?.ban ?? null]
+        if (opts.length < 2) thieu.push(chuoi.map((b) => b.ma).join('+'))
+      }
+      setHinhMaDe(next)
+      if (thieu.length) alert(`Kho chưa đủ 2 bản khác cho ${thieu.length} bài (chỉ đếm biến thể CÙNG node, không tự sinh AI):\n${thieu.join('\n')}`)
+    } finally { setHinhMaDeBusy(false) }
+  }
+  const hinhTrong = () => hinhPicks.filter((p) => { const m = hinhMaDe[chuoiSig(p.nodeIds)]; return !m || !m[0] || !m[1] }).length
+  const hinhDeReady = () => hinhPicks.length > 0 && hinhTrong() === 0
+  /** Dựng đủ 3 bản (gốc + mã đề 2/3) rồi in theo danh sách HS đã gán — TỰ LƯU trước (khuôn persistET của
+   *  Đại: "bấm in cả lớp phải tự lưu, khỏi lưu-riêng rồi mới in được"). */
+  async function inTheoHSHinh(list: { id: string; ho_ten: string }[]) {
+    if (!hinhL || !hinhPicks.length) return
+    await luuHinh()
+    const tieuDe = lop && ngay ? `ET Hình ${lop.ten_lop} · ${ngay.split('-').reverse().join('/')}` : 'ET Hình'
+    const picksCho = (v: 0 | 1) => hinhPicks.map((p) => { const alt = hinhMaDe[chuoiSig(p.nodeIds)]?.[v]; return alt ? applyBanToPick(p, alt) : p })
+    const [base, v2, v3] = await Promise.all([
+      banInTheoMoHinh(tieuDe, 'et', hinhPicks, hinhL, hinhCheDo, hinhSoDong),
+      banInTheoMoHinh(tieuDe, 'et', picksCho(0), hinhL, hinhCheDo, hinhSoDong),
+      banInTheoMoHinh(tieuDe, 'et', picksCho(1), hinhL, hinhCheDo, hinhSoDong),
+    ])
+    const byMaDe: Record<number, HinhBanIn> = { 1: base, 2: v2, 3: v3 }
+    setHinhClassPrint({
+      ban: base,
+      mucs: list.map((hs) => { const md = hinhHsMaDe[hs.id] ?? 1; return { hoTen: hs.ho_ten, maDe: md, mucs: (byMaDe[md] ?? base).mucs } }),
+    })
   }
 
   // Nạp toàn bộ nội dung 1 ET (câu gốc + 3 mã đề + cấu hình) vào form. Dùng CHUNG cho: (a) sửa từ Kho
@@ -395,6 +450,7 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
         {lop && ngay && <span className="font-mono text-[11px] text-violet-500">{maET(lop.ten_lop, ngay)}</span>}
         <span className="ml-auto text-[12px] text-slate-400">{soCau} {laHinh ? 'bài' : 'câu'}</span>
         {!laHinh && soCau > 0 && <button onClick={() => setPrinting(true)} className="rounded-md border border-slate-300 px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-indigo-400">🖨 Xem / In (3 mã đề)</button>}
+        {laHinh && soCau > 0 && <button onClick={() => inTheoHSHinh(roster)} className="rounded-md border border-slate-300 px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-indigo-400">🖨 Xem / In (3 mã đề)</button>}
         <button onClick={laHinh ? luuHinh : luu} disabled={busy || !lop || !ngay || !soCau} className="rounded-md bg-indigo-600 px-4 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">{busy ? 'Đang lưu…' : '💾 Lưu ET'}</button>
       </div>
 
@@ -409,8 +465,19 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
               {hinhLoading || !hinhL ? (
                 <p className="text-[12px] text-slate-400">{lopId && ngay ? 'Đang tải kho Hình…' : 'Chọn lớp + ngày để bắt đầu chọn bài.'}</p>
               ) : (
-                <BuoiPickEditor L={hinhL} picks={hinhPicks} cheDo={hinhCheDo} soDong={hinhSoDong}
-                  onChangePicks={setHinhPicks} onChangeCheDo={setHinhCheDo} onChangeSoDong={setHinhSoDong} phans={['et']} />
+                <>
+                  {hinhPicks.length > 0 && (
+                    <div className="mb-3 flex flex-wrap items-center gap-2 rounded-lg border border-violet-100 bg-violet-50/40 px-3 py-2">
+                      <span className="text-[12px] font-semibold text-violet-700">🧩 3 mã đề</span>
+                      <span className="text-[11px] text-slate-500">Đề gốc = các bài trên; đề 2 &amp; 3 = BẢN KHÁC đã có sẵn trong kho (biến thể cùng node) — không AI sinh mới.</span>
+                      <button onClick={sinhMaDeHinh} disabled={hinhMaDeBusy} className="ml-auto rounded-md border border-violet-300 bg-white px-2.5 py-1 text-[11px] font-medium text-violet-700 hover:bg-violet-100 disabled:opacity-50">{hinhMaDeBusy ? '⏳ Đang sinh…' : `🎲 ${Object.keys(hinhMaDe).length ? 'Sinh lại' : 'Sinh'} đề 2 & 3`}</button>
+                      {hinhTrong() ? <span className="rounded bg-rose-50 px-2 py-0.5 text-[11px] font-medium text-rose-600">{hinhTrong()} bài thiếu bản khác (kho chưa đủ biến thể)</span>
+                        : hinhDeReady() ? <span className="rounded bg-emerald-50 px-2 py-0.5 text-[11px] font-medium text-emerald-600">✓ đủ 3 mã đề</span> : null}
+                    </div>
+                  )}
+                  <BuoiPickEditor L={hinhL} picks={hinhPicks} cheDo={hinhCheDo} soDong={hinhSoDong}
+                    onChangePicks={setHinhPicks} onChangeCheDo={setHinhCheDo} onChangeSoDong={setHinhSoDong} phans={['et']} />
+                </>
               )}
             </div>
           ) : (<>
@@ -544,7 +611,41 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
         </div>
       </div>
       {/* Bảng gán mã đề theo HS — làm ngay khi soạn (có câu). Học bù: bấm 🖨 in lại phiếu 1 HS.
-          KHÔNG áp cho Hình (chưa có khái niệm mã đề/gán HS ở builder này). */}
+          Hình dùng panel RIÊNG bên dưới (state khác hẳn — hinhMaDe/hinhHsMaDe, không chung ch.hsMaDe). */}
+      {laHinh && soCau > 0 && (
+        <div className="w-80 shrink-0 overflow-auto border-l border-slate-200 bg-white p-4">
+          <div className="mb-2 text-[13px] font-semibold text-slate-800">👥 Gán mã đề theo HS</div>
+          {!hinhDeReady() ? (
+            <p className="text-[12px] italic text-slate-400">Bấm <b>🎲 Sinh đề 2 &amp; 3</b> (đủ 3 mã đề, không còn bài thiếu) rồi gán mã đề cho từng HS ở đây.</p>
+          ) : roster.length === 0 ? (
+            <p className="text-[12px] italic text-slate-400">Chưa có HS <b>điểm danh có mặt</b> cho buổi này. Điểm danh xong (có mặt) sẽ hiện danh sách.</p>
+          ) : (
+            <>
+              <div className="mb-2 flex items-center gap-2">
+                <button onClick={() => setHinhHsMaDe(Object.fromEntries(roster.map((hs, i) => [hs.id, (i % 3) + 1])))} className="rounded-md border border-violet-300 bg-white px-2.5 py-1 text-[11px] font-medium text-violet-700 hover:bg-violet-100">🎲 Rải tự động</button>
+                <button onClick={() => inTheoHSHinh(roster)} className="ml-auto rounded-md bg-indigo-600 px-2.5 py-1 text-[11px] font-medium text-white hover:bg-indigo-500">🖨 Xem &amp; In cả lớp</button>
+              </div>
+              <ol className="space-y-1">
+                {roster.map((hs) => { const cur = hinhHsMaDe[hs.id]
+                  return (
+                    <li key={hs.id} className="flex items-center gap-2 rounded-md border border-slate-100 px-2 py-1.5">
+                      <span className="min-w-0 flex-1 truncate text-[12px] text-slate-700" title={hs.ma_hs ?? ''}>{hs.ho_ten}</span>
+                      <div className="flex gap-0.5">
+                        {[1, 2, 3].map((n) => (
+                          <button key={n} onClick={() => setHinhHsMaDe((s) => ({ ...s, [hs.id]: n }))} title={`Mã đề ${n}`}
+                            className={`h-6 w-6 rounded text-[12px] font-bold ${cur === n ? 'bg-violet-600 text-white' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}>{n}</button>
+                        ))}
+                      </div>
+                      <button onClick={() => inTheoHSHinh([hs])} title="In lại phiếu HS này (học bù)" className="shrink-0 text-[13px] text-slate-400 hover:text-indigo-600">🖨</button>
+                    </li>
+                  )
+                })}
+              </ol>
+              <p className="mt-2 text-[11px] text-slate-400">Rải tự động = xoay vòng 1·2·3 theo thứ tự (HS cạnh nhau khác mã). Gán xong bấm <b>Lưu ET</b> để dùng lại khi học bù.</p>
+            </>
+          )}
+        </div>
+      )}
       {!laHinh && soCau > 0 && (
         <div className="w-80 shrink-0 overflow-auto border-l border-slate-200 bg-white p-4">
           <div className="mb-2 text-[13px] font-semibold text-slate-800">👥 Gán mã đề theo HS</div>
@@ -583,6 +684,7 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
 
       {printing && <ETPrintView id={savedId ?? et?.id ?? 'preview'} fullOverride={previewFull} varCauOverride={cau} onClose={() => setPrinting(false)} />}
       {classPrint && <ETPrintView id={savedId ?? et?.id ?? 'preview'} fullOverride={previewFull} varCauOverride={cau} perHS={classPrint} onClose={() => setClassPrint(null)} />}
+      {hinhClassPrint && <HinhPrintView ban={hinhClassPrint.ban} perHS={hinhClassPrint.mucs} onClose={() => setHinhClassPrint(null)} />}
       {dangModal !== null && <DangPickerOne khoi={khoi} mon={mon} nhanh={nhanh} onClose={() => setDangModal(null)}
         onPick={(ma) => { const i = dangModal; setDangModal(null); pickDang(i, ma) }} />}
       {picker && <KhoPicker maDangs={[picker.maDang]} cauTbl={cauTbl} selected={rows[picker.idx].maCau ? [rows[picker.idx].maCau!] : []} onClose={() => setPicker(null)}
