@@ -933,7 +933,11 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
   if (loading) return <p className="text-[12px] text-slate-400">Đang tải ET…</p>
   if (etMissing) return (
     <div className="flex flex-col gap-3">
-      <p className="text-[13px] text-slate-400">Chưa có ET cho buổi này (khớp <b className="text-slate-600">lớp + ngày</b>). Nếu buổi CÓ ET: vào <b className="text-slate-600">Làm tài liệu → ET</b> tạo đúng lớp + ngày rồi quay lại. Nếu buổi <b className="text-slate-600">KHÔNG có ET</b>: xác nhận đóng để hết treo ở “Việc của tôi”.</p>
+      <div className="flex items-center gap-2">
+        <p className="text-[13px] text-slate-400">Chưa có ET cho buổi này (khớp <b className="text-slate-600">lớp + ngày</b>). Nếu buổi CÓ ET: vào <b className="text-slate-600">Làm tài liệu → ET</b> tạo đúng lớp + ngày rồi quay lại. Nếu buổi <b className="text-slate-600">KHÔNG có ET</b>: xác nhận đóng để hết treo ở “Việc của tôi”.</p>
+        {/* Không có ET vẫn cần gửi PH được (vd nhận xét/mức buổi) — ảnh tự báo "không có ET", không chặn nút (CEO 21/08). */}
+        <button onClick={() => setAnhPH(true)} title="Tạo ảnh báo cáo (dọc) để chụp gửi phụ huynh — buổi này không có ET" className="ml-auto shrink-0 rounded-md border border-slate-300 px-2.5 py-1.5 text-[12px] font-medium text-slate-600 hover:border-indigo-400">📷 Ảnh gửi PH</button>
+      </div>
       <div className="flex items-center gap-2">
         {dongCol ? (
           <>
@@ -944,6 +948,7 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
           <button onClick={dongKhongET} disabled={closing} className="rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-indigo-500 disabled:opacity-40">{closing ? 'Đang lưu…' : '✓ Không có ET — đóng'}</button>
         )}
       </div>
+      {anhPH && <EtAnhGuiPH buoiId={buoiId} coMat={coMat} probs={probs} gradeOf={gradeOf} buoi={buoi} etMissing onClose={() => setAnhPH(false)} />}
     </div>
   )
   if (coMat.length === 0) return <p className="text-[12px] text-slate-400">Chưa có HS nào điểm danh “có mặt” — điểm danh trước khi chấm.</p>
@@ -1105,8 +1110,8 @@ function Badge({ hex, letter, size }: { hex: string; letter: string; size: numbe
     </svg>
   )
 }
-function EtAnhGuiPH({ buoiId, coMat, probs, gradeOf, buoi, onClose }: {
-  buoiId: string; coMat: BuoiHocHS[]; probs: Problem[]; gradeOf: (pid: string, hsid: string) => Grade | undefined; buoi: BuoiHoc; onClose: () => void
+function EtAnhGuiPH({ buoiId, coMat, probs, gradeOf, buoi, etMissing = false, onClose }: {
+  buoiId: string; coMat: BuoiHocHS[]; probs: Problem[]; gradeOf: (pid: string, hsid: string) => Grade | undefined; buoi: BuoiHoc; etMissing?: boolean; onClose: () => void
 }) {
   const cardRef = useRef<HTMLDivElement>(null)
   // Đánh giá sau buổi (nhận xét + % hoàn thành) — Thùy 07-16: hiện thêm trên ảnh gửi PH, NHƯNG chỉ khi
@@ -1149,6 +1154,8 @@ function EtAnhGuiPH({ buoiId, coMat, probs, gradeOf, buoi, onClose }: {
   const KQ_MIN_W = 120
   const KQ_W = Math.max(ITEM_W * KQ_COLS, KQ_MIN_W)
   const cardW = Math.max(420, NAME_W + KQ_W + (coNhanXet ? NX_W : 0) + (coHoanThanh ? HT_W : 0) + 32)
+  // Buổi không có ET (etMissing) — cột "Test Cuối giờ" đổi thành 1 dòng báo, KHÔNG hiện lưới badge trống
+  // (probs rỗng → grid 0 ô, nhìn như cột trống-vô-nghĩa nếu cứ vẽ như buổi có ET, CEO 21/08).
   // COPY ảnh — ĐÚNG pattern V1 (TabSatHach.handleCopy / openReportPopup, chạy production ổn định):
   // MỞ POPUP chứa HTML phiếu + nút "Copy ảnh" NGAY TRONG popup. Bấm Copy trong popup = user-gesture trong
   // context popup → html2canvas (CDN) + clipboard.write chạy ngon (paste Zalo); fallback tải file CHỈ khi clipboard bị chặn.
@@ -1245,6 +1252,7 @@ async function copyImg(){
             </div>
           </div>
           {/* Mô tả — nội bộ (GV/TA), nằm NGOÀI banner, chữ nhỏ. Chỉ hiện nếu có nhập. */}
+          {etMissing && <div style={{ padding: '8px 20px', fontSize: 11.5, color: '#8a5a3f', background: '#fdf3ea', borderBottom: '1px solid #e8c27e' }}>⚠️ Buổi này không có ET.</div>}
           {!!buoi.mo_ta?.trim() && <div style={{ padding: '8px 20px', fontSize: 11.5, color: '#5b6b78', background: '#f7f4ee', borderBottom: '1px solid #e7ddc9' }}>{buoi.mo_ta}</div>}
           <div style={{ padding: '12px 16px' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
@@ -1273,24 +1281,29 @@ async function copyImg(){
                         <div>{tenHT[i].short}</div>
                         {tenHT[i].phanBiet && <div style={{ fontSize: 10.5, fontWeight: 400, color: '#8a94a3' }}>({tenHT[i].phanBiet})</div>}
                       </td>
-                      {/* Test Cuối giờ = grid, số cột = KQ_COLS (≤5 câu 1 dòng, ≥6 câu chia đôi 2 dòng). */}
+                      {/* Test Cuối giờ = grid, số cột = KQ_COLS (≤5 câu 1 dòng, ≥6 câu chia đôi 2 dòng).
+                          Buổi không có ET (etMissing) → báo rõ thay vì vẽ lưới trống-vô-nghĩa. */}
                       <td style={{ padding: '6px 4px', verticalAlign: 'top' }}>
-                        <div style={{ display: 'grid', gridTemplateColumns: `repeat(${KQ_COLS}, ${ITEM_W}px)`, rowGap: 4 }}>
-                          {probs.map((p) => {
-                            const kq = gradeOf(p.id, r.hoc_sinh_id)?.result
-                            const v = kq ? ET_KQ_PH[kq] : null
-                            return (
-                              <div key={p.id} style={{ display: 'flex', justifyContent: 'center' }}>
-                                {v
-                                  // Badge = SVG (circle + text dominant-baseline=central) → html2canvas render qua engine trình duyệt = căn tâm pixel-perfect.
-                                  // (line-height/nudge KHÔNG chắc ăn: html2canvas đặt baseline lệch + bỏ qua position:relative inline.)
-                                  // Thu nhỏ 24→18 (Thùy 07-19: "giảm diện tích cho đỡ chật").
-                                  ? <Badge hex={v.hex} letter={v.l} size={18} />
-                                  : <span style={{ color: '#c9bfa6' }}>–</span>}
-                              </div>
-                            )
-                          })}
-                        </div>
+                        {etMissing ? (
+                          <div style={{ textAlign: 'center', color: '#c9bfa6' }}>–</div>
+                        ) : (
+                          <div style={{ display: 'grid', gridTemplateColumns: `repeat(${KQ_COLS}, ${ITEM_W}px)`, rowGap: 4 }}>
+                            {probs.map((p) => {
+                              const kq = gradeOf(p.id, r.hoc_sinh_id)?.result
+                              const v = kq ? ET_KQ_PH[kq] : null
+                              return (
+                                <div key={p.id} style={{ display: 'flex', justifyContent: 'center' }}>
+                                  {v
+                                    // Badge = SVG (circle + text dominant-baseline=central) → html2canvas render qua engine trình duyệt = căn tâm pixel-perfect.
+                                    // (line-height/nudge KHÔNG chắc ăn: html2canvas đặt baseline lệch + bỏ qua position:relative inline.)
+                                    // Thu nhỏ 24→18 (Thùy 07-19: "giảm diện tích cho đỡ chật").
+                                    ? <Badge hex={v.hex} letter={v.l} size={18} />
+                                    : <span style={{ color: '#c9bfa6' }}>–</span>}
+                                </div>
+                              )
+                            })}
+                          </div>
+                        )}
                       </td>
                       {coNhanXet && (
                         <td style={{ padding: '6px 4px', textAlign: 'left', verticalAlign: 'top', color: '#5b6b78', fontSize: 12, whiteSpace: 'normal', wordBreak: 'break-word', width: NX_W }}>
@@ -1311,15 +1324,18 @@ async function copyImg(){
             {/* 2 khối tách RÕ bằng viền mỏng thay vì nền đậm (Thùy 07-19 lần 3: "background dậm quá,
                 chuyển về trắng cho sáng, chỉ cần đậm hơn 1 tẹo hoặc viền mỏng") — nền gần trắng, chỉ
                 khác nhau ở màu VIỀN để vẫn phân biệt được 2 loại thông tin, không nặng mắt. */}
-            <div style={{ marginTop: 12, borderRadius: 10, background: '#fdfcfa', border: '1px solid #e7ddc9', padding: '10px 12px', fontSize: 12.5, color: '#5b6b78' }}>
-              {Object.values(ET_KQ_PH).map((v) => (
-                <span key={v.l} style={{ display: 'inline-block', marginRight: 14, whiteSpace: 'nowrap', verticalAlign: 'middle' }}>
-                  <Badge hex={v.hex} letter={v.l} size={14} /><span style={{ marginLeft: 5 }}>{v.mo_ta}</span>
-                </span>
-              ))}
-              {/* Chú thích % hoàn thành (Thùy 07-19 lần 2: đổi câu mẫu số cụ thể "80%..." cho dễ hiểu hơn câu định nghĩa chung chung) — chỉ hiện khi có ít nhất 1 HS có %. */}
-              {coHoanThanh && <div style={{ marginTop: 4, lineHeight: 1.5 }}>Mức buổi: 5 = làm đúng &amp; nhanh · 4 = đúng, chưa nhanh/sai ít · 3 = không ổn định, sai nhiều · 2 = cần hướng dẫn · 1 = chưa tư duy được cách làm.</div>}
-            </div>
+            {(!etMissing || coHoanThanh) && (
+              <div style={{ marginTop: 12, borderRadius: 10, background: '#fdfcfa', border: '1px solid #e7ddc9', padding: '10px 12px', fontSize: 12.5, color: '#5b6b78' }}>
+                {/* Chú thích Đ/C/S vô nghĩa khi buổi không có ET — ẩn, chỉ giữ chú thích Mức buổi nếu có. */}
+                {!etMissing && Object.values(ET_KQ_PH).map((v) => (
+                  <span key={v.l} style={{ display: 'inline-block', marginRight: 14, whiteSpace: 'nowrap', verticalAlign: 'middle' }}>
+                    <Badge hex={v.hex} letter={v.l} size={14} /><span style={{ marginLeft: 5 }}>{v.mo_ta}</span>
+                  </span>
+                ))}
+                {/* Chú thích % hoàn thành (Thùy 07-19 lần 2: đổi câu mẫu số cụ thể "80%..." cho dễ hiểu hơn câu định nghĩa chung chung) — chỉ hiện khi có ít nhất 1 HS có %. */}
+                {coHoanThanh && <div style={{ marginTop: !etMissing ? 4 : 0, lineHeight: 1.5 }}>Mức buổi: 5 = làm đúng &amp; nhanh · 4 = đúng, chưa nhanh/sai ít · 3 = không ổn định, sai nhiều · 2 = cần hướng dẫn · 1 = chưa tư duy được cách làm.</div>}
+              </div>
+            )}
             {/* Câu kết luận nhắc làm lại/chép lại đáp án (Thùy 07-19) — CHỈ hiện nếu có ≥1 HS có câu C/S.
                 Thêm nhãn "Việc cần làm" (Thùy 07-19 lần 2) — phân biệt rõ với khối chú thích phía trên,
                 không chỉ khác màu nền mà còn khác Ý NGHĨA (đây là hành động, không phải giải thích ký hiệu). */}
