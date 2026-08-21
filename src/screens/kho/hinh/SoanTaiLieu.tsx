@@ -401,23 +401,53 @@ const PHAN_META: Record<'lop' | 'nha' | 'et' | 'mt', { nhan: string; icon: strin
 // GiaoTrinhScreen (khuôn TaiLieuBuilder Đại: mỗi buổi tự chứa content, KHÔNG còn "dựng rồi lưu popup"
 // tách rời). Props-driven, KHÔNG giữ nháp riêng — caller sở hữu state (picks/cheDo/soDong của 1 buổi cụ
 // thể) + tự autosave (khuôn `markSaved()` của TaiLieuBuilder — mỗi thao tác ghi DB ngay, không nút Lưu). ──
-export function BuoiPickEditor({ L, picks, cheDo, soDong, onChangePicks, onChangeCheDo, onChangeSoDong, phans = ['lop', 'nha'] }: {
+export function BuoiPickEditor({ L, picks, cheDo, soDong, onChangePicks, onChangeCheDo, onChangeSoDong, phans = ['lop', 'nha'], filterKey }: {
   L: Luoi
   picks: PickItem[]; cheDo: Record<string, CheDoHinh>; soDong: Record<string, number>
   onChangePicks: (picks: PickItem[]) => void
   onChangeCheDo: (cheDo: Record<string, CheDoHinh>) => void
   onChangeSoDong: (soDong: Record<string, number>) => void
   phans?: ('lop' | 'nha' | 'et' | 'mt')[]   // mặc định giáo trình (2 tab) — ET Hình (ETScreen) truyền ['et'] (1 tab, không lop/nha)
+  // Khoá nhớ bộ lọc mô hình xuyên rời/quay lại màn (vd buổi.id) — KHÔNG truyền = chỉ nhớ trong phiên
+  // component như trước (Thùy 08-21: "mở lại buổi 2 ... phải lưu lại những gì đã setup").
+  filterKey?: string
 }) {
   const maCap = useMemo(() => api.maPhanCapMap(L), [L])
-  // Lọc mô hình chỉ để TÌM node dễ hơn (state cục bộ, không lưu) — KHÔNG đụng picks đã có: 1 buổi có thể
-  // trộn node từ NHIỀU mô hình khác nhau, đổi bộ lọc không được xoá nội dung đã chọn.
+  // Lọc mô hình chỉ để TÌM node dễ hơn (KHÔNG phải nội dung buổi — picks đã lưu DB riêng) — KHÔNG đụng
+  // picks đã có: 1 buổi có thể trộn node từ NHIỀU mô hình khác nhau, đổi bộ lọc không được xoá nội dung
+  // đã chọn.
   // ⭐ 17/08 (Thùy): "làm giáo trình hình có thể chọn nhiều mô hình" — TRƯỚC "Mô hình chính" là <select>
   // đơn (1 mainId), nên 2 mô hình KHÔNG cùng cây cha-con (vd "Tam giác" và "Tứ giác" độc lập) không lọc
   // gộp cùng lúc được, phải đổi filter qua lại nhiều lần. Đổi mainId (string) → mainIds (Set) — chọn được
   // NHIỀU mô hình chính cùng lúc, vệ tinh gộp từ TẤT CẢ mô hình chính đang chọn.
-  const [mainIds, setMainIds] = useState<Set<string>>(new Set())
-  const [satIds, setSatIds] = useState<Set<string>>(new Set())
+  // ⭐ 08-21: có `filterKey` → nhớ lựa chọn này trong store (RAM, giữ khi rời/quay lại màn — xem
+  // `buoiMoHinhLoc`); không có → state cục bộ như trước (2 call site chưa cần: BuoiHocScreen/ETScreen).
+  const savedFilter = useStore((s) => (filterKey ? s.buoiMoHinhLoc[filterKey] : undefined))
+  const setSavedFilter = useStore((s) => s.setBuoiMoHinhLoc)
+  const [mainIdsLocal, setMainIdsLocal] = useState<Set<string>>(new Set())
+  const [satIdsLocal, setSatIdsLocal] = useState<Set<string>>(new Set())
+  // ⚠ memo hoá theo mảng gốc trong store (KHÔNG new Set() thẳng trong thân render) — mảng đó chỉ đổi
+  // identity khi NỘI DUNG thật sự đổi (Zustand set() mới), Set() trần thì đổi identity MỌI lần render →
+  // vetinh (useMemo phụ [mainIds]) tính lại mọi lần → effect dọn satIds (phụ [vetinh]) bắn lại mọi lần →
+  // gọi setSatIds → set() store → re-render → lặp vô hạn ("Maximum update depth exceeded", dính thật lúc
+  // verify sống — Thùy chưa báo, tự bắt được).
+  const mainIdsSaved = useMemo(() => new Set(savedFilter?.mainIds ?? []), [savedFilter?.mainIds])
+  const satIdsSaved = useMemo(() => new Set(savedFilter?.satIds ?? []), [savedFilter?.satIds])
+  const mainIds = filterKey ? mainIdsSaved : mainIdsLocal
+  const satIds = filterKey ? satIdsSaved : satIdsLocal
+  const samSet = (a: Set<string>, b: Set<string>) => a.size === b.size && [...a].every((x) => b.has(x))
+  const setMainIds = (u: Set<string> | ((prev: Set<string>) => Set<string>)) => {
+    if (!filterKey) return setMainIdsLocal(u)
+    const next = typeof u === 'function' ? u(mainIdsSaved) : u
+    if (samSet(next, mainIdsSaved)) return   // no-op — KHÔNG gọi set() để tránh vòng lặp trên
+    setSavedFilter(filterKey, (cur) => ({ ...cur, mainIds: [...next] }))
+  }
+  const setSatIds = (u: Set<string> | ((prev: Set<string>) => Set<string>)) => {
+    if (!filterKey) return setSatIdsLocal(u)
+    const next = typeof u === 'function' ? u(satIdsSaved) : u
+    if (samSet(next, satIdsSaved)) return
+    setSavedFilter(filterKey, (cur) => ({ ...cur, satIds: [...next] }))
+  }
 
   const vetinh = useMemo(() => {
     const seen = new Set<string>()
@@ -593,7 +623,7 @@ export async function banInTheoMoHinh(tieuDe: string, phan: 'lop' | 'nha', picks
       }
     }
   }
-  return { tieuDe: `Buổi học — ${tieuDe}`, phuDe: `${mucs.length} mục`, mucs, moHinhLyThuyet }
+  return { tieuDe, phuDe: `${mucs.length} mục`, mucs, moHinhLyThuyet }
 }
 /** ⭐ Bài XA NHẤT trong 1 chuỗi (Thùy 08-20) — chọn giả thiết CHUNG của chuỗi theo CẤP (trục suy luận),
  *  KHÔNG phải độ sâu mô hình (trục giả thiết — khác trục hẳn, dùng `doSauTrongHo` là sai chỗ). Từ khi

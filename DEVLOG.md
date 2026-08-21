@@ -6603,3 +6603,52 @@ trước fix, còn "Chứng minh Chứng minh:" lặp đôi) vẫn còn nguyên 
 sai vĩnh viễn từ bug trước đó, KHÔNG tự sửa lại được** (không đoán/ghi đè dữ liệu thật, CLAUDE.md §1.5)
 — cần Thùy xác nhận có muốn dọn tay các biến thể lứa cũ dạng này không. Mở tiếp "📥 Nhập lứa đã clone"
 — popup mở sạch, không lỗi, hiện đúng "CHUỖI GỐC (ĐỂ ĐỐI CHIẾU)" không chèn chữ thừa.
+
+## 2026-08-21 (tiếp) — Giáo trình Hình: bỏ chữ "Buổi học —" ở header BTVN + NHỚ bộ lọc mô hình khi rời/quay lại màn
+
+**Yêu cầu (Thùy, kèm ảnh header "BK ACADEMY / Buổi học — Buổi 2: Hai đường thẳng song song", verbatim):**
+"1. header btvn bỏ cái chữ Buổi học đi / 2. quan trọng là khi t mở lại buổi 2 thì nó phải lưu lại nhwungx
+gì t setup : mô hình nào đã chọn thì vẫn phải chọn như thế chứ sao lại bắt chọn lại từ đầu"
+
+**Lỗi 1 — header thừa chữ:** `banInTheoMoHinh()` (`SoanTaiLieu.tsx`) build `tieuDe: \`Buổi học — ${tieuDe}\``
+— tiêu đề buổi (Thùy tự đặt, vd "Buổi 2: Hai đường thẳng song song") bị cộng thêm tiền tố cứng. Bỏ hẳn,
+trả thẳng `tieuDe`.
+
+**Lỗi 2 — bộ lọc mô hình mất khi rời màn:** `BuoiPickEditor` (component dùng chung dựng nội dung 1 buổi
+Giáo trình Hình) có 2 tầng chọn: "Mô hình chính/vệ tinh" (CHỈ để LỌC danh sách chuỗi cho dễ tìm, comment
+cũ ghi rõ "state cục bộ, không lưu") và "picks" (nội dung THẬT của buổi — đề/bài đã chọn, đã lưu DB qua
+`saveBuoiSelection` từ trước, KHÔNG mất). Cái mất là tầng LỌC — `useState<Set>` sống trong component, mở
+lại màn Giáo trình (unmount/remount `GiaoTrinhScreen`) là về rỗng, phải tick lại mô hình từ đầu mỗi lần —
+đúng điều Thùy mô tả.
+
+**Vì sao KHÔNG lưu DB (`hinh_gt_buoi`):** bảng này (cùng `hinh_giao_trinh`/`hinh_gt_bai`) thuộc nhóm
+"điểm mù" đã ghi ở CLAUDE.md §2.1 — tạo tay qua SQL Editor, chủ `postgres`, role `claude_build` (migrate)
+không sở hữu → không tự ALTER thêm cột được. Cột `mo_hinh_chinh_id` có sẵn trên bảng cũng lệch thiết kế
+hiện tại (chỉ 1 id, trong khi UI 17/08 đã đổi sang CHỌN NHIỀU mô hình chính) và không hề được đọc/ghi ở
+đâu — bỏ luôn hướng tận dụng cột này.
+
+**Sửa — theo ĐÚNG khuôn đã có (`soanHinh` draft, "giữ khi rời/quay lại màn" — `useStore.ts`):**
+- `useStore.ts` — thêm `buoiMoHinhLoc: Record<string, {mainIds, satIds}>` + `setBuoiMoHinhLoc(key, updater)`
+  — RAM (Zustand, KHÔNG persist qua `partialize` — F5 mới mất, đúng tinh thần `soanHinh` đã có).
+- `SoanTaiLieu.tsx` (`BuoiPickEditor`) — thêm prop tuỳ chọn `filterKey?: string`: có → đọc/ghi
+  `mainIds`/`satIds` qua store (khoá = `filterKey`, ở đây truyền `buoi.id`); không có → `useState` cục bộ
+  như cũ (2 call site khác — `BuoiHocScreen`/`ETScreen` — CHƯA đụng, giữ nguyên hành vi, tránh sửa lan
+  ngoài phạm vi Thùy báo).
+- `GiaoTrinhScreen.tsx` — truyền `filterKey={buoi.id}` ở đúng chỗ gọi `BuoiPickEditor` trong `BuoiCardHinh`.
+
+**Bug PHỤ tự bắt được lúc verify sống (không phải Thùy báo) — "Maximum update depth exceeded", màn
+TRẮNG XOÁ khi mở buổi:** bản đầu build `mainIds`/`satIds` bằng `new Set(savedFilter?.mainIds ?? [])`
+THẲNG trong thân render — mỗi lần render ra 1 object Set MỚI (khác identity dù cùng nội dung) → `vetinh`
+(`useMemo` phụ `[mainIds]`) tính lại mọi lần → effect dọn `satIds` (phụ `[vetinh]`) bắn lại mọi lần → gọi
+`setSatIds` → Zustand `set()` tạo state mới → re-render → lặp lại từ đầu, vô hạn. Sửa: memo hoá
+`mainIds`/`satIds` bằng `useMemo` khoá theo MẢNG GỐC trong store (chỉ đổi identity khi nội dung THẬT sự
+đổi) + thêm bailout so nội dung (`samSet`) trong `setMainIds`/`setSatIds` — trùng nội dung thì KHÔNG gọi
+`set()` (khuôn y hệt cách `useState` tự bailout khi trả về cùng reference, phải tự làm tay vì Zustand
+không tự so sánh cấu trúc).
+
+**Verify:** tsc sạch · `npx vite build` sạch. Live THẬT trên dev server: Giáo trình (Hình) → Khối 8 →
+"Giáo trình 8A" → Buổi 1 → tick mô hình chính "Tứ giác" → panel hiện đúng "MÔ HÌNH VỆ TINH · 4" + "Đang
+lọc theo 1 mô hình chính" → rời hẳn màn (bấm "Việc của tôi", `GiaoTrinhScreen` unmount thật) → quay lại
+đúng đường (Giáo trình (Hình) → Giáo trình 8A → Buổi 1) → **bộ lọc còn nguyên y hệt**, không phải tick
+lại. Mở "📘 Xem" (bản in) → header hiện đúng "Buổi 1 : Tứ giác" (không còn "Buổi học —"), "7 mục", nội
+dung Bài 1→7 đúng thứ tự, không sai lệch.
