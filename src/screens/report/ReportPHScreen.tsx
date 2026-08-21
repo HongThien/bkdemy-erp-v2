@@ -451,8 +451,8 @@ function PhAnhModal({ hsId, mon, ym, lopId, hsName, hsImg, lopTen, gvName, tq, m
     const pct = r ? Math.round(((r.rankTotal - r.rankNow) / Math.max(1, r.rankTotal - 1)) * 100) : null
     const hx = pct == null ? '#94a3b8' : pct >= 80 ? '#12a875' : pct >= 50 ? '#e29a23' : '#e45858'
     return (
-      <div style={{ textAlign: 'center' }}>
-        <svg width={74} height={74} viewBox="0 0 74 74">
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+        <svg width={74} height={74} viewBox="0 0 74 74" style={{ display: 'block' }}>
           <circle cx={37} cy={37} r={25} fill="none" stroke="#e9f3ef" strokeWidth={8} />
           <circle cx={37} cy={37} r={25} fill="none" stroke={hx} strokeWidth={8} strokeDasharray={RC2} strokeDashoffset={RC2 * (1 - (pct ?? 0) / 100)} strokeLinecap="round" transform="rotate(-90 37 37)" />
           <text x={37} y={34} textAnchor="middle" fontSize={14} fontWeight={800} fill={hx}>{r ? `#${r.rankNow}` : '—'}</text>
@@ -558,7 +558,7 @@ function PhAnhModal({ hsId, mon, ym, lopId, hsName, hsImg, lopTen, gvName, tq, m
                 <span style={{ width: 31, height: 31, borderRadius: 11, display: 'grid', placeItems: 'center', background: '#eef0ff', fontSize: 14 }}>🏆</span>
                 <div><div style={{ fontSize: 13, fontWeight: 800, color: '#15233b' }}>Xếp hạng Test tháng này</div><div style={{ fontSize: 9, color: '#70809b' }}>Theo điểm Test tháng</div></div>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 4 }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 4, justifyItems: 'center' }}>
                 {rankRing('Lớp', lopTen, lopRank)}
                 {rankRing('Hệ', heRank ? `${heRank.khoi}${heRank.he}` : '—', heRank)}
                 {rankRing('Khối', khoiRank ? khoiRank.khoi : '—', khoiRank)}
