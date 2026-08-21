@@ -2,7 +2,8 @@
 // 1 buổi = bản LƯU của nháp "Theo mô hình" (sel/ghep/anDe → hinh_gt_bai). Gán lớp = SNAPSHOT (copy bài).
 // Nội dung bài lưu STRUCTURED: mỗi bài 1 dòng (phan/loai/ref/an_de); resolve nội dung sống khi in (cần Luoi).
 import { supabase } from '../supabase'
-import type { Bai, BienThe, Y } from './hinh'
+import type { Bai, BienThe, Y, Luoi } from './hinh'
+import { loadLuoi, noDapAn } from './hinh'
 import type { PickItem } from '../../store/useStore'
 
 const LIMIT = 10000
@@ -273,4 +274,69 @@ export async function getYFull(ids: string[]): Promise<Map<string, { y: Y; bai: 
   const m = new Map<string, { y: Y; bai: Bai }>()
   for (const y of yArr) { const bai = mb.get(y.bai_id); if (bai) m.set(y.id, { y, bai }) }
   return m
+}
+
+// ══════════════ ⭐ RESOLVE ĐỂ CHẤM (ET/BTVN/MT) — Thùy 21/08, "đánh giá Hình" ═══════════════
+// Khác resolve-để-in ở trên (ra text/ảnh cho PDF): ở đây chỉ cần dừng lại tầng NODE (`hinh_baitoan.id`)
+// — đơn vị chân lý mastery Hình. Đơn vị chấm = 1 NODE cụ thể trong pick (không gộp cả chuỗi thành 1 ô —
+// Thùy chốt "chấm theo từng node", nếu gộp thì luật "không tính mô hình con" vô nghĩa vì không tách
+// được ý nào thuộc node nào). Tái dùng ĐÚNG bộ khung `noDapAn`/`ys` mà `mucGhep` dùng để in — không suy
+// diễn lại logic chuỗi (1 nguồn sự thật, khớp 1-1 với thứ tự "a) b) c)" hiện trên phiếu HS).
+export type HinhDapAn = {
+  hinhBaitoanId: string
+  hinhBienTheId: string | null
+  hinhYId: string | null
+  nhan: string   // "5" hoặc "5C" — snapshot lúc sync (mig 202608211127), KHÔNG tính lại khi hiển thị
+}
+/** Làm phẳng bài của 1 buổi (đã lọc theo `phan`) → 1 dòng/NODE, đúng thứ tự in.
+ *  Nhãn = số Bài (thứ tự pick trong buổi, 1-indexed) + CHỮ HOA nếu bài đó > 2 ý (Thùy chốt 21/08;
+ *  ≤2 ý thì số trơn, đỡ rối cho GV khi đa số bài chỉ có 1 ý). */
+export async function flattenGtBaiToDapAn(L: Luoi, bais: GtBai[]): Promise<HinhDapAn[]> {
+  const [btMap, yMap] = await Promise.all([
+    getBienTheByIds(bais.filter((b) => b.loai === 'bienthe').map((b) => b.ref_id!).filter(Boolean)),
+    getYFull(bais.filter((b) => b.loai === 'y').map((b) => b.ref_id!).filter(Boolean)),
+  ])
+  const out: HinhDapAn[] = []
+  let baiSo = 0
+  for (const b of bais) {
+    baiSo++
+    if (b.loai === 'ghep' || b.loai === 'chuan') {
+      const nodeIds = b.loai === 'chuan' ? (b.ref_id ? [b.ref_id] : []) : b.ghep_node_ids
+      if (!nodeIds.length) { baiSo--; continue }
+      const khung = noDapAn(L, nodeIds)   // ĐÚNG khung mucGhep dùng — thứ tự = thứ tự "a) b) c)" khi in
+      const chu = khung.length > 2
+      khung.forEach((k, i) => out.push({
+        hinhBaitoanId: k.node.id, hinhBienTheId: null, hinhYId: null,
+        nhan: chu ? `${baiSo}${String.fromCharCode(65 + i)}` : String(baiSo),
+      }))
+    } else if (b.loai === 'bienthe' && b.ref_id) {
+      const v = btMap.get(b.ref_id)
+      if (v) out.push({ hinhBaitoanId: v.baitoan_id, hinhBienTheId: v.id, hinhYId: null, nhan: String(baiSo) })
+      else baiSo--
+    } else if (b.loai === 'y' && b.ref_id) {
+      const yb = yMap.get(b.ref_id)
+      if (yb?.y.baitoan_id) out.push({ hinhBaitoanId: yb.y.baitoan_id, hinhBienTheId: null, hinhYId: b.ref_id, nhan: String(baiSo) })
+      else baiSo--
+    } else baiSo--
+  }
+  return out
+}
+/** Buổi (giáo trình Hình, lớp+ngày) khớp `phan` cần chấm — null nếu buổi chưa gán giáo trình Hình nào.
+ *  Khớp qua `hinh_gt_buoi.lop_id/ngay` (KHÔNG FK buoi_hoc — cùng nguyên lý ET/BTVN Đại, buổi có thể ẢO
+ *  lúc gán). order+limit(1) thay vì .single(): lỡ trùng thì lấy bản mới nhất, đừng throw cả tab chấm. */
+export async function loadHinhForBuoi(buoiId: string, phan: 'lop' | 'nha'): Promise<{ gtBuoiId: string | null; dapAn: HinhDapAn[] }> {
+  const { data: b, error } = await supabase.from('buoi_hoc').select('lop_id, ngay, lop:lop_id(khoi)').eq('id', buoiId).single()
+  if (error) throw error
+  const lopId = (b as any).lop_id as string | null
+  const ngay = (b as any).ngay as string
+  const khoi = (b as any).lop?.khoi as string | null
+  if (!lopId) return { gtBuoiId: null, dapAn: [] }
+  const { data: gtbs, error: e2 } = await supabase.from('hinh_gt_buoi').select('id').eq('lop_id', lopId).eq('ngay', ngay).order('created_at', { ascending: false }).limit(1)
+  if (e2) throw e2
+  const gtBuoiId = ((gtbs as { id: string }[])?.[0])?.id ?? null
+  if (!gtBuoiId) return { gtBuoiId: null, dapAn: [] }
+  const bais = (await listGtBai(gtBuoiId)).filter((x) => x.phan === phan)
+  if (!bais.length) return { gtBuoiId, dapAn: [] }
+  const L = await loadLuoi(khoi ?? undefined)
+  return { gtBuoiId, dapAn: await flattenGtBaiToDapAn(L, bais) }
 }

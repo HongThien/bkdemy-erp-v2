@@ -9,6 +9,7 @@ import {
   type BtvnKQ, type CanhBao, type BtvnTrangThai, type BtvnThaiDo,
   getDanhGia, setDanhGiaDang, setNhanXet, setMuc, MUC_OPTS, MUC_CATALOG, nhanMuc, dongDanhGia, moLaiDanhGia, setNoiDungBuoi,
   loadLiveTestForBuoi, getDangTen, loadMTForBuoi, syncMTProblems, getBangEloExp,
+  loadHinhForBuoiPhase, syncHinhProblems,
   type BuoiAo, type BuoiTim, type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type Phase, type DiemDanh, type DanhGiaHS, type DanhGiaDiem, type TabKey, type ETResult, type LuoiSync, type EloExpRow,
 } from '../../lib/gami'
 import { getLiveSnapshot, type BaiTest, type BaiTestCau, type BaiLam, type LiveAnswer } from '../../lib/testonline'
@@ -871,11 +872,19 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
     try {
       const { etId, caus } = await loadETForBuoi(buoiId)
       causRef.current = caus
-      if (!etId) { setEtMissing(true); setEtCaus([]); setSync(null); await reloadP(); return }
-      setEtMissing(false); setEtCaus(caus)
       // Sync CHỦ ĐỘNG mỗi lần mở tab — lưới tự bám đề. Phase đã đóng thì chỉ báo, không sửa lén.
+      // Đại + Hình (mô hình) TUẦN TỰ (không Promise.all) — cả 2 chia sẻ slot problem_no của cùng
+      // (buổi,phase); chạy song song thì cả 2 đọc "curAll" TRƯỚC khi bên kia ghi → cấp trùng số.
       const s = await syncDocProblems(buoiId, 'et', caus, !!buoi.et_dong_at)
-      setSync(s); setProbs(s.probs)
+      const { dapAn: hinhDapAn } = await loadHinhForBuoiPhase(buoiId, 'et')
+      const sh = await syncHinhProblems(buoiId, 'et', hinhDapAn, !!buoi.et_dong_at)
+      if (!etId && !hinhDapAn.length) { setEtMissing(true); setEtCaus([]); setSync(null); await reloadP(); return }
+      setEtMissing(false); setEtCaus(caus)
+      const merged: LuoiSync = {
+        probs: [...s.probs, ...sh.probs], moCoi: [...s.moCoi, ...sh.moCoi],
+        khongRoRang: s.khongRoRang ?? sh.khongRoRang, doiCauTruc: s.doiCauTruc || sh.doiCauTruc,
+      }
+      setSync(merged); setProbs(merged.probs)
       setGrades(await listGrades(buoiId))
     } catch { setEtMissing(true); setEtCaus([]); setSync(null) } finally { setLoading(false) }
   })() }, [buoiId]) // eslint-disable-line
@@ -1008,12 +1017,18 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
               {probs.map((p, idx) => {
                 const c = cauOf(p)
                 const moCoi = moCoiIds.has(p.id)
+                const hinh = !!p.hinh_baitoan_id
                 return (
-                  <th key={p.id} className={`sticky top-0 z-10 w-[150px] border border-slate-200 px-2 py-1.5 text-center align-top ${moCoi ? 'bg-rose-50' : 'bg-slate-100'}`}>
+                  <th key={p.id} className={`sticky top-0 z-10 w-[150px] border border-slate-200 px-2 py-1.5 text-center align-top ${moCoi ? 'bg-rose-50' : hinh ? 'bg-violet-50' : 'bg-slate-100'}`}>
                     {/* Số câu = VỊ TRÍ TRONG ĐỀ (probs đã xếp theo đề), KHÔNG phải problem_no —
-                        problem_no giờ chỉ là slot nội bộ, có thể thủng số sau khi bỏ/thêm câu. */}
-                    <div className="text-[12px] font-bold text-slate-700">{moCoi ? 'Ngoài đề' : `Câu ${idx + 1}`}</div>
-                    <div className="mx-auto max-w-[140px] truncate text-[11px] font-medium normal-case text-violet-600" title={tenDang(p.ma_dang)}>{tenDang(p.ma_dang)}</div>
+                        problem_no giờ chỉ là slot nội bộ, có thể thủng số sau khi bỏ/thêm câu.
+                        Hình (mô hình): nhãn = "Bài{chữ}" đối chiếu phiếu giấy HS (Thùy 21/08, vd "5C"). */}
+                    <div className="text-[12px] font-bold text-slate-700">{moCoi ? 'Ngoài đề' : hinh ? `Bài ${p.hinh_nhan}` : `Câu ${idx + 1}`}</div>
+                    {hinh ? (
+                      <div className="mx-auto max-w-[140px] truncate text-[11px] font-medium normal-case text-violet-600">Hình (mô hình)</div>
+                    ) : (
+                      <div className="mx-auto max-w-[140px] truncate text-[11px] font-medium normal-case text-violet-600" title={tenDang(p.ma_dang)}>{tenDang(p.ma_dang)}</div>
+                    )}
                     {c && <button onClick={() => setPreview(c)} className="mt-1 rounded border border-slate-200 px-1.5 py-0.5 text-[10px] font-normal normal-case text-slate-400 hover:border-indigo-300 hover:text-indigo-600">ⓘ đề</button>}
                   </th>
                 )
@@ -1663,8 +1678,11 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
     setLoading(true)
     try {
       const { btvnId, caus } = await loadBTVNForBuoi(buoiId)
-      if (!btvnId) setMissing(true)
-      else { setMissing(false); await syncBTVNProblems(buoiId, caus, !!buoi.btvn_dong_at) }
+      // TUẦN TỰ (không Promise.all) — Đại + Hình chia sẻ slot problem_no của cùng (buổi,'btvn').
+      if (btvnId) await syncBTVNProblems(buoiId, caus, !!buoi.btvn_dong_at)
+      const { dapAn: hinhDapAn } = await loadHinhForBuoiPhase(buoiId, 'btvn')
+      if (hinhDapAn.length) await syncHinhProblems(buoiId, 'btvn', hinhDapAn, !!buoi.btvn_dong_at)
+      setMissing(!btvnId && !hinhDapAn.length)
       await reloadP(); await reloadKq()
     } catch { setMissing(true) } finally { setLoading(false) }
   })() }, [buoiId]) // eslint-disable-line
@@ -1720,12 +1738,15 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
           <thead>
             <tr className="bg-slate-100">
               <th className="sticky left-0 top-0 z-30 min-w-[430px] border border-slate-200 bg-slate-100 px-3 py-2 text-left text-[12px] font-semibold text-slate-700">Học sinh · Nộp · Thái độ</th>
-              {probs.map((p) => (
-                <th key={p.id} className="sticky top-0 z-10 min-w-[120px] border border-slate-200 bg-slate-100 px-2 py-1.5 text-center align-top">
-                  <div className="text-[12px] font-bold text-slate-700">Câu {p.problem_no}</div>
-                  <div className="mx-auto max-w-[150px] truncate text-[11px] font-medium normal-case text-violet-600" title={tenDang(p.ma_dang)}>{tenDang(p.ma_dang)}</div>
-                </th>
-              ))}
+              {probs.map((p) => {
+                const hinh = !!p.hinh_baitoan_id
+                return (
+                  <th key={p.id} className={`sticky top-0 z-10 min-w-[120px] border border-slate-200 px-2 py-1.5 text-center align-top ${hinh ? 'bg-violet-50' : 'bg-slate-100'}`}>
+                    <div className="text-[12px] font-bold text-slate-700">{hinh ? `Bài ${p.hinh_nhan}` : `Câu ${p.problem_no}`}</div>
+                    <div className="mx-auto max-w-[150px] truncate text-[11px] font-medium normal-case text-violet-600" title={hinh ? 'Hình (mô hình)' : tenDang(p.ma_dang)}>{hinh ? 'Hình (mô hình)' : tenDang(p.ma_dang)}</div>
+                  </th>
+                )
+              })}
             </tr>
           </thead>
           <tbody>

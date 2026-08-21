@@ -6,7 +6,7 @@
 // đo khách quan per-câu như et/mt/btvn/bt. Trọng số — xem MASTERY_CONFIG.WEIGHT (gami/mastery.js): mt=3
 // (chuẩn nhất) · et=2 · btvn/bt=1 (tự luyện).
 import { supabase } from './supabase'
-import { masteryOfDang, RESULT_VALUE, MASTERY_CONFIG } from '../gami/mastery.js'
+import { masteryOfDang, RESULT_VALUE, MASTERY_CONFIG, MASTERY_CONFIG_HINH } from '../gami/mastery.js'
 import { seasonOf, seasonStartUtc } from '../gami/season.js'
 import { khoCuaMon } from './tailieu'
 
@@ -156,6 +156,70 @@ export async function getMasteryHS(
     })
   }
   // Sort: YẾU trước, rồi MỚI đánh giá lên đầu (như V1: dạng cần chú ý nhất trên cùng).
+  const rank = { yeu: 0, can_luyen: 1, dat: 2 } as const
+  out.sort((a, b) => {
+    const ra = a.mastery ? rank[a.mastery.muc] : 3
+    const rb = b.mastery ? rank[b.mastery.muc] : 3
+    if (ra !== rb) return ra - rb
+    return Date.parse(b.evals[0]?.t ?? '0') - Date.parse(a.evals[0]?.t ?? '0')
+  })
+  return out
+}
+
+// ── MASTERY HÌNH (mô hình) — Thùy chốt 21/08: KP = `hinh_baitoan_id` (mô hình TỐI THIỂU node gắn),
+// KHÔNG phải dạng. "Mỗi mô hình đo qua bài TRỰC TIẾP gắn nó, không tính mô hình con" — vì mỗi bài toán
+// chỉ gắn ĐÚNG 1 node (spec-kho-hinh-v3 luật 6), việc "không tính con" tự đúng: group theo
+// hinh_baitoan_id không bao giờ lẫn quan sát của node khác, không cần lọc DAG cha/con gì thêm.
+// Dạng (`hinh_dang`, gắn ở cách giải)/bổ đề chỉ là VIEW PHỤ tương lai — KHÔNG vào công thức này.
+// Nguồn đo: CHỈ `gami_grades` trong buổi (et/mt/btvn qua `syncHinhProblems`) — Hình mô hình CHƯA có
+// kênh test-online/tự luyện (ETScreen builder chỉ hỗ trợ Đại/Hình giải tích, không có nhánh mô hình).
+export type HinhMastery = {
+  hinh_baitoan_id: string
+  ma: string           // hinh_baitoan.ma (vd "BT.08.047")
+  ten_mo_hinh: string  // tên mô hình chứa node
+  cap: number
+  mastery: Mastery | null
+  evals: DangEval[]
+}
+export async function getHinhMasteryHS(hocSinhId: string, opts?: { includeBTVN?: boolean; days?: number }): Promise<HinhMastery[]> {
+  const phases: EvalSrc[] = opts?.includeBTVN ? ['et', 'mt', 'btvn'] : ['et', 'mt']
+  const sinceIso = opts?.days ? new Date(Date.now() - opts.days * 86400_000).toISOString() : null
+  let gq = supabase.from('gami_grades').select('result, graded_at, prob:problem_id(phase, hinh_baitoan_id)').eq('hoc_sinh_id', hocSinhId).limit(LIMIT)
+  if (sinceIso) gq = gq.gte('graded_at', sinceIso)
+  const { data: grades, error } = await gq
+  if (error) throw error
+
+  const byNode: Record<string, DangEval[]> = {}
+  const push = (id: string | null | undefined, ev: DangEval) => { if (!id) return; (byNode[id] ??= []).push(ev) }
+  for (const g of (grades ?? []) as any[]) {
+    const p = g.prob // to-one embed
+    if (!p || !p.hinh_baitoan_id) continue
+    if (!phases.includes(p.phase as EvalSrc)) continue
+    const val = RESULT_VALUE[g.result as keyof typeof RESULT_VALUE]
+    if (val === undefined) continue
+    push(p.hinh_baitoan_id, { value: val, t: g.graded_at, src: p.phase as EvalSrc })
+  }
+  const nodeIds = Object.keys(byNode)
+  if (!nodeIds.length) return []
+
+  const { data: bts } = await supabase.from('hinh_baitoan').select('id, ma, cap, mo_hinh_id').in('id', nodeIds).limit(LIMIT)
+  const btArr = (bts ?? []) as { id: string; ma: string; cap: number; mo_hinh_id: string }[]
+  const mhIds = [...new Set(btArr.map((b) => b.mo_hinh_id))]
+  const { data: mhs } = await supabase.from('hinh_mo_hinh').select('id, ten').in('id', mhIds).limit(LIMIT)
+  const mhMap = new Map(((mhs ?? []) as { id: string; ten: string }[]).map((m) => [m.id, m.ten]))
+  const btMap = new Map(btArr.map((b) => [b.id, b]))
+
+  const out: HinhMastery[] = []
+  for (const id of nodeIds) {
+    const info = btMap.get(id)
+    if (!info) continue // node bị xoá khỏi kho sau khi đo → bỏ (tham chiếu text/uuid không FK cứng ở đây thì giữ, có FK thì đã rụng tự nhiên)
+    const evals = byNode[id].sort((a, b) => Date.parse(b.t) - Date.parse(a.t))
+    out.push({
+      hinh_baitoan_id: id, ma: info.ma, ten_mo_hinh: mhMap.get(info.mo_hinh_id) ?? '', cap: info.cap,
+      mastery: masteryOfDang(evals, MASTERY_CONFIG_HINH) as Mastery | null,
+      evals,
+    })
+  }
   const rank = { yeu: 0, can_luyen: 1, dat: 2 } as const
   out.sort((a, b) => {
     const ra = a.mastery ? rank[a.mastery.muc] : 3

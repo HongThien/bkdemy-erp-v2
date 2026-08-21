@@ -687,6 +687,9 @@
 | ma_cau | text | Y |  |  |  |
 | hinh_y_id | uuid | Y |  | FK→hinh_y.id |  |
 | ngu_canh_luot | text | Y |  |  | `mo_hinh` · `dang` · `luyen_de` |
+| hinh_baitoan_id | uuid | Y |  | FK→hinh_baitoan.id |  |
+| hinh_bien_the_id | uuid | Y |  | FK→hinh_baitoan_bien_the.id |  |
+| hinh_nhan | text | Y |  |  |  |
 
 ## hgt_ban_do
 

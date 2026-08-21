@@ -6242,3 +6242,69 @@ vào trong `BangXepHang` — xoá state thừa, không phải bug logic). Verify
 - HS0602 (khối 5) → "Bảng xếp hạng": sub-title hiện ĐÚNG "...các bạn khối 5" (không còn hardcode
   '5T') → đúng yêu cầu ②, trạng thái rỗng đúng thật (chưa ai khối 5 làm tự luyện).
 - Đăng xuất sạch sau verify, không để lại session dở trên tab dùng chung.
+
+## 2026-08-21 — Đánh giá (mastery) Hình học: nối giáo trình Hình → ET/BTVN, engine mô hình
+
+**Yêu cầu (Thùy, chốt qua sparring):**
+"Đại/Giải tích đánh giá qua dạng, Hình không có dạng — Hình đánh giá qua Mô hình. Mỗi mô hình đo qua
+bài trực tiếp thuộc nó, KHÔNG tính mô hình con. Vẫn cùng logic Đại (ET/BTVN/MT). Kiến trúc phải giống
+khung Đại — Đại hoàn chỉnh rồi, Hình chỉ khác khái niệm riêng (mô hình/tiền đề/chuỗi), luồng gốc giống
+nhau. Chấm theo TỪNG NODE (không gộp chuỗi). Cần nhãn đối chiếu phiếu giấy: "Bài 5 ý c" → "5C", hơn 2 ý
+mới có chữ. WINDOW đo giảm 3 (Đại 5, vì bài Hình dài hơn) — TIN_CAO/TIN_TB scale theo (3/2)."
+
+**Phát hiện quan trọng lúc research (agent Explore, trước khi code):** Hình (mô hình, `SoDo.tsx`/
+`SoanTaiLieu.tsx`) hiện KHÔNG có bất kỳ đường chấm điểm nào — builder giáo trình 100% chỉ để in PDF,
+0 chỗ chạm `gami_session_problems`/`hoc_sinh_id`. Hook cũ (`hinh_y_id`+`ngu_canh_luot`, mig 07-24) chỉ
+phủ 1/3 loại pick và 0 UI gọi. "Hình giải tích" (`nhanh='hinh_gt'`) là hệ KHÁC (dạng-based, đã wire ET/
+BTVN như Đại) — không liên quan việc này, dễ nhầm vì cùng chữ "Hình".
+
+**Làm:**
+- **Migration `202608211127_gami_hinh_mo_hinh_hook.sql`**: `gami_session_problems` thêm `hinh_baitoan_id`
+  (FK, khoá tự nhiên mastery), `hinh_bien_the_id` (FK, biết đúng đề biến thể đã ra — mastery vẫn gộp về
+  node gốc qua `hinh_baitoan_id`), `hinh_nhan` (text, snapshot nhãn "5C" lúc sync). KHÔNG đụng/xoá
+  `hinh_y_id`/`ngu_canh_luot` cũ (Luật xoá — chỉ thêm).
+- **`src/lib/kho/hinhGiaoTrinh.ts`**: `flattenGtBaiToDapAn(L, bais)` — làm phẳng pick giáo trình (ghep/
+  bienthe/y) → 1 dòng/NODE, TÁI DÙNG đúng `noDapAn`/khung mà `mucGhep` dùng để in (1 nguồn sự thật, nhãn
+  chữ a/b/c... khớp 1-1 "a) b) c)" trên phiếu). `loadHinhForBuoi(buoiId, phan)` — tra `hinh_gt_buoi` qua
+  (lop_id,ngay) của buổi (không FK buổi, giống ET/BTVN Đại).
+- **`src/lib/gami.ts`**: `syncHinhProblems()` — bản sao `syncDocProblems` (Đại) NHƯNG khoá tự nhiên là
+  NODE (`hinh_baitoan_id`[+`hinh_bien_the_id`/`hinh_y_id`]) thay vì `ma_cau`. ⚠ **Fix domain-partition**:
+  Đại+Hình CHIA SẺ bảng `gami_session_problems`+cột `problem_no` cho cùng (buổi,phase) — sửa cả
+  `syncDocProblems` LẪN `syncHinhProblems` để mỗi hàm CHỈ diff/xoá phần CỦA MÌNH (lọc theo có/không
+  `hinh_baitoan_id`) nhưng CẤP SỐ `problem_no` mới theo max TOÀN BẢNG (`noTiep()`) — nếu không, bên kia
+  sẽ bị đọc nhầm thành "mồ côi" rồi XOÁ, hoặc 2 bên cấp trùng problem_no đụng unique constraint. Gọi
+  TUẦN TỰ (không `Promise.all`) ở UI — song song thì cả 2 đọc "trước khi ghi" của nhau, vẫn đụng số.
+  `loadHinhForBuoiPhase(buoiId, phase)`: nha→btvn (rõ) · lop→et (mặc định) — **MT chưa có cơ chế gán
+  riêng cho Hình** (Đại có `tai_lieu loai='mt_buoi'`, Hình chưa), tạm map lop→cả et/mt dùng CHUNG nội
+  dung — cần Thùy xác nhận, CHƯA nối tab MT trong UI (xem "CHƯA LÀM").
+- **`src/screens/gami/BuoiHocScreen.tsx`**: tab ET + BTVN — sync Đại rồi Hình TUẦN TỰ, merge `LuoiSync`,
+  hiện cột Hình với nhãn "Bài {hinh_nhan}" (nền tím phân biệt) thay vì "Câu N"/tên dạng.
+- **`src/gami/mastery.js`**: `MASTERY_CONFIG_HINH` = `{...MASTERY_CONFIG, WINDOW:3, TIN_CAO:3, TIN_TB:2}`
+  — `masteryOfDang` vốn đã nhận `cfg` tham số, KHÔNG cần sửa engine, chỉ thêm config song song.
+- **`src/lib/mastery.ts`**: `getHinhMasteryHS(hocSinhId, opts)` — mirror `getMasteryHS` nhưng group theo
+  `hinh_baitoan_id` (không phải `ma_dang`), nguồn CHỈ `gami_grades` (Hình mô hình chưa có kênh test-
+  online/tự luyện). "Không tính mô hình con" tự đúng — mỗi bài toán chỉ gắn ĐÚNG 1 node (luật spec-kho-
+  hinh-v3 §2.6), group theo node không bao giờ lẫn quan sát node khác, không cần lọc DAG cha/con.
+- **`src/screens/ketqua/KetQuaScreen.tsx`**: `DangBaiTab` gọi thêm `getHinhMasteryHS`, `hinhToDangShape()`
+  hình chiếu qua `DangMastery` để TÁI DÙNG NGUYÊN `DangSection`/`DangRow` (không bịa UI riêng) — 2 bảng
+  phụ "Hình học — Cơ bản/Nâng cao" hết placeholder tĩnh, bucket theo `cap` CLIP 1-5 (XẤP XỈ `mucDoTuCap`
+  thật — thật cần biết cách giải có bổ đề, CHƯA join, sai số nhỏ ở biên cap≈3).
+
+**CHƯA LÀM (cố ý cắt phạm vi, không phải quên):**
+- Tab **MT** trong `BuoiHocScreen.tsx` chưa nối Hình (cấu trúc "Phần I/II" của MT là khái niệm Đại, Hình
+  không có — cần Thùy chốt Hình có "đợt MT" riêng hay dùng chung nội dung `lop` trước khi vẽ UI).
+  `syncHinhProblems`/`loadHinhForBuoiPhase` đã hỗ trợ `phase='mt'` ở tầng lib, chỉ chưa gọi từ `MTTab`.
+- `TongQuanTab` (① % hoàn thành bản đồ kiến thức) vẫn giữ placeholder tĩnh cho Hình — cần denominator
+  "tổng số mô hình phải đo" (canonical count theo khối) chưa định nghĩa, khác việc DangBaiTab (chỉ liệt
+  kê cái ĐÃ đo, không cần tổng).
+- Bucket cơ bản/nâng cao Hình dùng `cap` xấp xỉ, chưa gọi `mucDoTuCap(cap, coBoDe)` thật (cần join
+  `hinh_cach_giai`/`hinh_cach_bo_de` theo node — bỏ qua cho gọn lần đầu).
+- Bổ đề (`hinh_bo_de`) — chưa làm gì thêm (Thùy: "chỉ là view phụ tương lai", không việc gì lúc này).
+- CHƯA test bằng data thật (chưa có buổi thật nào gán giáo trình Hình + chấm ET/BTVN qua đường mới) —
+  chỉ verify được tsc/build/module-transform sạch, KHÔNG phải hành vi runtime với data thật.
+
+**Verify:** `npx tsc --noEmit` sạch · `npx vite build` sạch · mọi module sửa (gami.ts, hinhGiaoTrinh.ts,
+mastery.ts, mastery.js, BuoiHocScreen.tsx, KetQuaScreen.tsx) transform qua dev server (curl 200, không
+lỗi import/cycle). KHÔNG click-through được UI thật (không có buổi thật đã gán giáo trình Hình sẵn để
+soi — dựng data test tốn nhiều bước ngoài phạm vi phiên này, và rủi ro lặp bẫy "dọn-không-sạch" đã từng
+dính trên node THẬT nếu làm vội, xem mục 2026-08-20 phía trên).
