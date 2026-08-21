@@ -389,7 +389,8 @@ function dedupePicks(arr: PickItem[]): PickItem[] {
   })
 }
 // Nhãn/màu theo phan — 'et'/'mt' thêm 21/08 (Thùy: builder ET/MT Hình tái dùng NGUYÊN cơ chế pick này,
-// không phải giáo trình — 1 tab duy nhất, không "Trên lớp"/"Về nhà"). 'nha' vẫn là phan DUY NHẤT có "dòng kẻ".
+// không phải giáo trình — 1 tab duy nhất, không "Trên lớp"/"Về nhà"). "Dòng kẻ" áp cho 'nha' VÀ 'et'
+// (đề in ra giấy, HS viết tay cả hai) — 'lop'/'mt' KHÔNG kẻ dòng (trên lớp bài sát nhau; MT chấm khác kênh).
 const PHAN_META: Record<'lop' | 'nha' | 'et' | 'mt', { nhan: string; icon: string; border: string; bg: string; text: string }> = {
   lop: { nhan: 'Trên lớp', icon: '📘', border: 'border-sky-200', bg: 'bg-sky-50/40', text: 'text-sky-700' },
   nha: { nhan: 'Về nhà', icon: '📝', border: 'border-orange-200', bg: 'bg-orange-50/40', text: 'text-orange-600' },
@@ -564,7 +565,7 @@ export function BuoiPickEditor({ L, picks, cheDo, soDong, onChangePicks, onChang
  *  Export — dùng bởi GiaoTrinhScreen ("👁 Xem buổi" / "🖨 In") ngoài chỗ gọi nội bộ cũ. */
 export async function banInTheoMoHinh(tieuDe: string, phan: 'lop' | 'nha' | 'et' | 'mt', picks: PickItem[], L: Luoi, cheDo: Record<string, CheDoHinh>, soDong: Record<string, number>): Promise<BanIn> {
   const cd = (k: string): CheDoHinh => cheDo[k] ?? 'hien'
-  const dong = (key: string) => (phan === 'nha' ? (soDong[key] ?? DONG_BTVN) : soDong[key] ?? 0)   // BTVN mặc định DONG_BTVN; trên lớp KHÔNG kẻ dòng (bài sát nhau)
+  const dong = (key: string) => (phan === 'nha' || phan === 'et' ? (soDong[key] ?? DONG_BTVN) : soDong[key] ?? 0)   // BTVN/ET mặc định DONG_BTVN (viết tay); trên lớp KHÔNG kẻ dòng (bài sát nhau)
   const ps = dedupePicks(picks.filter((p) => p.phan === phan))
   const [btMap, yMap] = await Promise.all([
     gt.getBienTheByIds(ps.filter((p): p is Extract<PickItem, { kind: 'bienthe' }> => p.kind === 'bienthe').map((p) => p.bienTheId)),
@@ -789,7 +790,7 @@ function ChuoiRow({ L, chuoi, picks, cheDo, soDong, phans, onAdd, onUpdate, onRe
                   <Btn className="h-6 px-2 text-[11px]" onClick={() => onGoiY(phan, nInput[phan])}>↻ Gợi ý</Btn>
                 </span>
                 <Btn className="h-6 px-2 text-[11px] border-violet-300 text-violet-700" onClick={() => setOpen({ phan })}>＋ Thêm bài</Btn>
-                {phan === 'nha' && <ApplyDongChuoi soBai={ds.length} onApply={(n) => onSetSoDongChuoi(ds.map((d) => d.key), n)} />}
+                {(phan === 'nha' || phan === 'et') && <ApplyDongChuoi soBai={ds.length} onApply={(n) => onSetSoDongChuoi(ds.map((d) => d.key), n)} />}
                 <span className="ml-auto text-[11px] text-slate-400">{ds.length} bài</span>
               </div>
               {ds.length === 0
@@ -810,7 +811,7 @@ function ChuoiRow({ L, chuoi, picks, cheDo, soDong, phans, onAdd, onUpdate, onRe
                         <span className="shrink-0 rounded bg-slate-100 px-1.5 text-[10px] font-medium text-slate-600">{nhanBan(p)}</span>
                         <span className="min-w-0 flex-1 truncate text-slate-700">{p.nodeIds.map((id) => L.baiToan.find((b) => b.id === id)?.ma).filter(Boolean).join(' · ')}</span>
                         {dupKeys.has(p.key) && <span className="shrink-0 rounded bg-rose-100 px-1.5 text-[10px] font-semibold text-rose-600" title="Trùng bản + trùng bài với 1 dòng khác trong buổi — lúc in/xem chỉ giữ dòng XUẤT HIỆN TRƯỚC, dòng này sẽ KHÔNG in ra. Bấm ✕ bỏ hoặc ✎ đổi sang bài khác.">⚠ trùng</span>}
-                        {phan === 'nha' && <span className="shrink-0 text-[10px] text-slate-400">{soDong[p.key] ?? DONG_BTVN} dòng</span>}
+                        {(phan === 'nha' || phan === 'et') && <span className="shrink-0 text-[10px] text-slate-400">{soDong[p.key] ?? DONG_BTVN} dòng</span>}
                         <button onClick={() => onXoayCheDo(p.key)} title={cd.goi}
                           className={`shrink-0 rounded px-1 text-[11px] ${cd.ma === 'hien' ? 'text-slate-400 hover:text-slate-700' : cd.ma === 'o_trong' ? 'text-amber-600' : 'text-rose-500'}`}>{cd.icon}</button>
                         <button onClick={() => onXem(ds, i)} className="shrink-0 text-slate-400 hover:text-teal-600" title="Xem bài này ở panel bên phải">👁</button>
@@ -840,9 +841,10 @@ function ChuoiRow({ L, chuoi, picks, cheDo, soDong, phans, onAdd, onUpdate, onRe
             // không có trong `soDong` nên mọi nơi đọc đều rơi về mặc định cứng DONG_BTVN=6, kể cả khi
             // chuỗi đã áp "dòng kẻ (cả chuỗi)" ra một số khác từ trước. Comment cũ ở setSoDongChuoi
             // ("bài mới thêm sau vẫn dùng mặc định chung") mô tả đúng Ý ĐỊNH nhưng code KHÔNG làm việc
-            // đó — đây mới là chỗ thật sự phải ghi.
-            if (open.phan === 'nha') {
-              const ds = picksOf('nha')
+            // đó — đây mới là chỗ thật sự phải ghi. (ET Hình dùng chung cơ chế — Thùy 21/08: "chưa lưu
+            // được số dòng" vì trước đây UI dòng kẻ CHỈ có ở 'nha', ET không có gì để chỉnh cả.)
+            if (open.phan === 'nha' || open.phan === 'et') {
+              const ds = picksOf(open.phan)
               if (ds.length) onSetSoDongChuoi([key], soDong[ds[ds.length - 1].key] ?? DONG_BTVN)
             }
           }
