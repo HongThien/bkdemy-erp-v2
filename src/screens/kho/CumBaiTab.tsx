@@ -279,6 +279,16 @@ function PickerBaiModal({ cum, ungVien, hienClone, cloneCuaGoc, onClose, onThem 
     ? ungVien.filter((c) => c.noi_dung.toLowerCase().includes(tim.trim().toLowerCase()) || c.ma_cau.toLowerCase().includes(tim.trim().toLowerCase()))
     : ungVien
   const toggle = (ma: string) => setPick((s) => { const n = new Set(s); n.has(ma) ? n.delete(ma) : n.add(ma); return n })
+  // ⭐ 20/08 (Thùy): "chọn tất cả" — áp cho danh sách ĐANG THẤY (sau tìm), không phải toàn bộ ứng viên
+  // chưa phân cụm — tìm để lọc rồi chọn hết đúng cái vừa lọc mới hợp lý, không phải chọn nhầm sang bài
+  // đã bị ẩn bởi ô tìm.
+  const daChonHetLoc = loc.length > 0 && loc.every((c) => pick.has(c.ma_cau))
+  const toggleAll = () => setPick((s) => {
+    const n = new Set(s)
+    if (daChonHetLoc) loc.forEach((c) => n.delete(c.ma_cau))
+    else loc.forEach((c) => n.add(c.ma_cau))
+    return n
+  })
 
   return (
     <div className="fixed inset-0 z-[70] bg-slate-900/50 backdrop-blur-sm" onClick={onClose}>
@@ -291,12 +301,18 @@ function PickerBaiModal({ cum, ungVien, hienClone, cloneCuaGoc, onClose, onThem 
         </div>
         <div className="min-h-0 flex-1 overflow-auto p-4">
           {loc.length === 0 ? <p className="py-10 text-center text-sm text-slate-400">Không có bài nào khớp.</p> : (
-            <ul className="space-y-1.5">
-              {loc.map((g) => (
-                <CauDong key={g.ma_cau} c={g} clones={hienClone ? cloneCuaGoc(g.ma_cau) : []}
-                  chon={pick.has(g.ma_cau)} onChon={() => toggle(g.ma_cau)} onEdit={() => toggle(g.ma_cau)} />
-              ))}
-            </ul>
+            <>
+              <label className="mb-1.5 flex cursor-pointer items-center gap-1.5 text-[12.5px] font-medium text-slate-500">
+                <input type="checkbox" checked={daChonHetLoc} onChange={toggleAll} />
+                Chọn tất cả{tim.trim() ? ` (${loc.length} bài khớp tìm)` : ` (${loc.length} bài)`}
+              </label>
+              <ul className="space-y-1.5">
+                {loc.map((g) => (
+                  <CauDong key={g.ma_cau} c={g} clones={hienClone ? cloneCuaGoc(g.ma_cau) : []}
+                    chon={pick.has(g.ma_cau)} onChon={() => toggle(g.ma_cau)} onEdit={() => toggle(g.ma_cau)} />
+                ))}
+              </ul>
+            </>
           )}
         </div>
         <div className="flex items-center justify-end gap-2 border-t border-slate-200 px-5 py-3.5">
