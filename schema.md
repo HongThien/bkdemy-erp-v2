@@ -1379,6 +1379,8 @@
 | mua | text | Y |  |  |  |
 | buoi_hoc_id | uuid | Y |  | FK→buoi_hoc.id |  |
 | created_at | timestamp with time zone |  | now() |  |  |
+| khung_co_ban | numeric | Y |  |  |  |
+| khung_nang_cao | numeric | Y |  |  |  |
 
 ## linkgen_jobs
 
