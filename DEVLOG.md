@@ -5849,3 +5849,54 @@ thì cân nhắc tách 2 bước (queue nhanh trả về ngay + xử lý async t
 Chưa merge `main` — chưa verify được end-to-end (đang chờ Thùy bật pg_net). Code an toàn để merge
 sớm nếu muốn (degrade sạch: lỗi bị nuốt, HS không thấy gì khác, chỉ chưa có tác dụng AI-chấm) nhưng
 theo đúng kỷ luật cả phiên — không merge cái chưa verify thật.
+
+## 2026-08-21 (tiếp) — Tách bundle riêng cho hs.bkacademy.edu.vn (webapp/PWA, KHÔNG tách repo/DB)
+
+CEO chốt (2 lượt): "t đang nghĩ tách nó thành 1 subpage của BK như PH... hs.bkacademy.edu... làm nó
+thành webapp như phapp" → "t cần học sinh đăng nhập vào app rồi làm bài... hướng làm như nào cho
+tiện m đề xuất đi" → sau khi CTO đề xuất (giữ monorepo, KHÔNG tách repo/DB như PH — PH phải tách vì
+vốn khác hệ/DB từ đầu, HS đã sẵn RLS đúng trong CHÍNH Supabase ERP) → CEO đồng ý → nhắc lại làm nốt.
+
+**Kiến trúc: build entry RIÊNG, KHÔNG tách repo/DB.**
+- `hs.html` + `src/main-hs.tsx` — entry mới, KHÔNG import `./App` (staff) — render thẳng `AppHS`.
+- `src/AppHS.tsx` — copy CHÍNH XÁC nhánh HS của `App.tsx` (session→hsId→must_change_password→
+  HocSinhApp/DoiMatKhau), bỏ hết import staff (`NhanSuHome`/`TopBar`/`useStore`/`phanquyen`…) + bỏ
+  luôn nhánh `#pvjob` (in PDF, chỉ worker server dùng) + bỏ `fitZoom` (mật độ desktop staff, HS vốn
+  đã net 1.0). Thêm nhánh mới: tài khoản KHÔNG phải HS (vd staff gõ nhầm domain) → chỉ có nút đăng
+  xuất, domain này CHỈ dành HS.
+- `src/auth/Login.tsx` thêm prop `hsOnly` (mặc định `false`, KHÔNG đổi hành vi app chính) — ẩn tab
+  "Nhân sự", khoá cứng mode='hs', đổi tiêu đề "BK Academy · Đăng nhập học sinh".
+- `vite.config.hs.ts` — build RIÊNG (`npm run build:hs`) → `dist-hs/`, entry `hs.html`. Verify thật
+  bundle NHẸ HƠN HẲN: HS-only 676KB JS (gzip 196KB) vs app đầy đủ 4.66MB JS (gzip 1.27MB) — ~7×,
+  đúng lý do tách (domain public không cần kéo theo code Kho/Giáo trình/admin nội bộ).
+- PWA: cài `vite-plugin-pwa` (chưa có sẵn trong repo, thêm mới). Icon: cắt từ `public/Logo.png`
+  (wordmark BK Academy có sẵn) — dò bounding-box thật bằng `@napi-rs/canvas` (đã có sẵn cho worker
+  PDF, không thêm dep mới) qua 3 lần thử (2 lần đầu cắt CỤT icon do ước lượng sai vùng quét — lần 3
+  dò khoảng-trắng-dài-nhất giữa icon và chữ mới ra đúng ranh giới) → `public/icon-192.png` +
+  `icon-512.png`, nền trắng, đệm 10%. Manifest: `standalone`, theme `#087fc6` (đúng brand app PH).
+
+**1 bug tự bắt lúc verify:** build ra `dist-hs/hs.html` (đúng tên nguồn) nhưng mọi static host (kể
+cả `vite preview` lúc test local) mặc định phục vụ `index.html` cho `/` → Service Worker + asset
+404 khi mở domain gốc. Thêm plugin nhỏ (`closeBundle` hook) đổi tên `hs.html`→`index.html` NGAY
+TRONG `dist-hs/` sau build — nguồn giữ tên rõ nghĩa (khỏi lẫn với `index.html` app chính cùng thư
+mục gốc), output đúng chuẩn host tĩnh cần.
+
+**Verify:** `npx tsc --noEmit` sạch cả 2 phía · `npm run build` (app chính) VẪN chạy bình thường
+(không đụng gì) · `npm run build:hs` sạch, service worker + manifest sinh đúng (32 entries precache).
+Browser thật: mở `dist-hs` qua `vite preview` — màn hình CHỈ có form "Mã học sinh/Mã PIN" (không có
+tab Nhân sự) → đăng nhập HS0602 thật → `AppHS` render đúng `HocSinhApp` với data thật (tên, mã HS,
+4 ô cấp 1) → bấm Thoát → quay lại đúng màn login sạch. **Đăng ký Service Worker báo lỗi trong môi
+trường browser pane tự động** (đã dò: file `sw.js` tải đúng 200/`content-type: text/javascript`,
+`navigator.serviceWorker` tồn tại, `isSecureContext=true` — nhiều khả năng là giới hạn của trình
+duyệt sandbox dùng để test, KHÔNG phải lỗi build) — cần verify lại bằng trình duyệt thật (điện thoại
+thật) sau khi deploy lên domain thật, đó mới là môi trường có ý nghĩa để test "cài ra màn hình chính".
+
+**CÒN LẠI — CẦN THÙY (ngoài khả năng CLI/SQL của mình):**
+1. Domain `hs.bkacademy.edu.vn` — mua/trỏ DNS (CNAME, giống `ph.` trước đây ở Mắt Bão).
+2. Deploy `dist-hs/` — 1 Vercel project MỚI, CÙNG repo GitHub, build command `npm run build:hs`,
+   output `dist-hs`, gắn domain trên. KHÔNG động app chính (build command mặc định `npm run build`
+   vẫn y nguyên, 2 project độc lập cùng nguồn).
+3. Sau khi deploy: thử cài PWA thật trên điện thoại (Safari/Chrome) — xác nhận icon/tên hiện đúng.
+
+Chưa commit — đợi xác nhận hướng trước khi merge (an toàn để merge ngay nếu muốn: chỉ thêm file
+mới + 1 prop optional trên Login.tsx, không đổi hành vi app chính).
