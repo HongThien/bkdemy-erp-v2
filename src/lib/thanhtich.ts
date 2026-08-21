@@ -11,7 +11,7 @@ const vnTodayStr = () => { const v = vnNow(); return `${v.getUTCFullYear()}-${St
 const monthStartUtcISO = () => { const v = vnNow(); return new Date(Date.UTC(v.getUTCFullYear(), v.getUTCMonth(), 1, -7, 0, 0)).toISOString() }
 
 export type Verdict = 'dat' | 'gan_dat' | 'khong_dat'
-export type KyThi = { id: string; ten: string; loai: string; he_so: number; dot: string | null; ngay: string | null; mon: string | null; khoi: string | null; mua: string | null; buoi_hoc_id: string | null }
+export type KyThi = { id: string; ten: string; loai: string; he_so: number; dot: string | null; ngay: string | null; mon: string | null; khoi: string | null; mua: string | null; buoi_hoc_id: string | null; khung_co_ban?: number | null; khung_nang_cao?: number | null }
 export type DiemThi = { ky_thi_id: string; hoc_sinh_id: string; diem: number | null; band_luc_thi: string | null; verdict: Verdict; vuot_band: boolean; diem_co_ban?: number | null; diem_nang_cao?: number | null; full_diem?: boolean }
 
 // Điểm MT (BK sát hạch) = ĐIỂM CƠ BẢN + ĐIỂM NÂNG CAO (GV nhập thẳng). Trần: tổng ≥ 10 → 9.75.
@@ -104,6 +104,13 @@ export async function upsertDiemThi(d: { kyThiId: string; hocSinhId: string; die
       diem_co_ban: d.coBan ?? null, diem_nang_cao: d.nangCao ?? null, full_diem: d.full ?? false,
       graded_by: user?.id ?? null, updated_at: new Date().toISOString() },
     { onConflict: 'ky_thi_id,hoc_sinh_id' })
+  if (error) throw error
+}
+
+// Khung điểm (tối đa) của CẢ ĐỀ — 1 khung dùng chung cho mọi HS trong buổi (CEO 21/08), khác
+// diem_co_ban/diem_nang_cao ở diem_thi (điểm HS ĐẠT ĐƯỢC, riêng từng HS). null = chưa nhập khung.
+export async function setKhungMT(kyThiId: string, khungCoBan: number | null, khungNangCao: number | null): Promise<void> {
+  const { error } = await supabase.from('ky_thi').update({ khung_co_ban: khungCoBan, khung_nang_cao: khungNangCao }).eq('id', kyThiId)
   if (error) throw error
 }
 
