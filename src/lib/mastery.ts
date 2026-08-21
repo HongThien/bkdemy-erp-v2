@@ -230,6 +230,28 @@ export async function getHinhMasteryHS(hocSinhId: string, opts?: { includeBTVN?:
   return out
 }
 
+// % hoàn thành bản đồ Hình (mô hình) — CÙNG công thức compPct của Đại nhưng đo trên node ĐÃ CÓ đánh
+// giá (Thùy 21/08: "giống đại mà nhỉ, đo trên những mô hình đã có đánh giá" — không cần denominator
+// canonical, total = số node đã đo, giống hệt Đại không đếm trên toàn bộ dai_ban_do). Bucket cơ bản/
+// nâng cao theo `cap` (xấp xỉ mucDoTuCap — xem ghi chú hinhToDangShape ở KetQuaScreen.tsx).
+function bucketHinhMastery(rows: HinhMastery[], predMuc?: (cap: number) => boolean): BucketPct {
+  let d = 0, c = 0, y = 0, t = 0
+  for (const r of rows) {
+    if (predMuc && !predMuc(r.cap)) continue
+    if (!r.mastery) continue
+    t++; if (r.mastery.muc === 'dat') d++; else if (r.mastery.muc === 'can_luyen') c++; else y++
+  }
+  return { dat: d, can_luyen: c, yeu: y, total: t, pct: t ? Math.round(((d + c * 0.5) / t) * 100) : 0 }
+}
+async function getHinhHoanThanh(hocSinhId: string): Promise<{ coBan: HoanThanhCard; nangCao: HoanThanhCard }> {
+  const [etMt, coBTVN] = await Promise.all([getHinhMasteryHS(hocSinhId), getHinhMasteryHS(hocSinhId, { includeBTVN: true })])
+  const laCoBan = (cap: number) => cap <= 3, laNangCao = (cap: number) => cap > 3
+  return {
+    coBan: { etMt: bucketHinhMastery(etMt, laCoBan), coBTVN: bucketHinhMastery(coBTVN, laCoBan) },
+    nangCao: { etMt: bucketHinhMastery(etMt, laNangCao), coBTVN: bucketHinhMastery(coBTVN, laNangCao) },
+  }
+}
+
 // ── TỔNG QUAN 1 HS — 3 VÙNG tách bạch (Thùy 07-14):
 //   ① hoanThanh — % hoàn thành bản đồ kiến thức, MỖI card 2 nửa (Thùy 07-14): "etMt" = chỉ ET+MT (test có
 //     giám sát) · "coBTVN" = etMt + BTVN + Bổ trợ (thêm nguồn tự luyện) — so 2 số cùng lúc để soi ĐỘ ĐÁNG
@@ -245,7 +267,7 @@ export type BucketPct = { dat: number; can_luyen: number; yeu: number; total: nu
 export type HoanThanhCard = { etMt: BucketPct; coBTVN: BucketPct }
 export type ActPct = { pct: number | null; n: number }
 export type TongQuanHS = {
-  hoanThanh: { toanBo: HoanThanhCard; daiCoBan: HoanThanhCard; daiNangCao: HoanThanhCard }
+  hoanThanh: { toanBo: HoanThanhCard; daiCoBan: HoanThanhCard; daiNangCao: HoanThanhCard; hinhCoBan: HoanThanhCard; hinhNangCao: HoanThanhCard }
   hoatDong: {
     etCoBan: ActPct; etNangCao: ActPct
     btvnCoBan: ActPct; btvnNangCao: ActPct
@@ -266,13 +288,16 @@ export type TongQuanHS = {
 }
 export async function getTongQuanHS(hocSinhId: string, mon: string, opts?: { ym?: string }): Promise<TongQuanHS> {
   const K = khoCuaMon(mon)
-  const [{ data: grades }, { data: dt }, online, btGradeEvals, { data: hsRow }] = await Promise.all([
+  const [{ data: grades }, { data: dt }, online, btGradeEvals, { data: hsRow }, hinhHT] = await Promise.all([
     supabase.from('gami_grades').select('result, graded_at, prob:problem_id(phase, ma_dang)').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
     supabase.from('diem_thi').select('diem, diem_co_ban, diem_nang_cao, ky_thi:ky_thi_id(loai, mon, ngay, buoi:buoi_hoc_id(ngay))').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
     fetchOnlineEvals(hocSinhId),
     fetchBTEvals(hocSinhId),
     supabase.from('hoc_sinh').select('khoi').eq('id', hocSinhId).single(),
+    mon === 'Toán' ? getHinhHoanThanh(hocSinhId) : Promise.resolve(null),
   ])
+  const rong: BucketPct = { dat: 0, can_luyen: 0, yeu: 0, total: 0, pct: 0 }
+  const hoanThanhHinh = hinhHT ?? { coBan: { etMt: rong, coBTVN: rong }, nangCao: { etMt: rong, coBTVN: rong } }
   const cap1 = laCap1(hsRow?.khoi)
   const now = Date.now(), D30 = 30 * 86400_000, cut1 = now - D30, cut2 = now - 2 * D30
   // SÀN MÙA: dữ liệu trước ngày khai mùa (1/7) = tháng 6 "chưa chính thức" → KHÔNG tính vào trend,
@@ -445,6 +470,7 @@ export async function getTongQuanHS(hocSinhId: string, mon: string, opts?: { ym?
       toanBo: { etMt: toBucket(htTop), coBTVN: toBucket(htBottom) },
       daiCoBan: { etMt: toBucket(htTopDaiCB), coBTVN: toBucket(htBottomDaiCB) },
       daiNangCao: { etMt: toBucket(htTopDaiNC), coBTVN: toBucket(htBottomDaiNC) },
+      hinhCoBan: hoanThanhHinh.coBan, hinhNangCao: hoanThanhHinh.nangCao,
     },
     hoatDong: {
       etCoBan: pctOf(etCB), etNangCao: pctOf(etNC),
