@@ -949,7 +949,7 @@
 |---|---|---|---|---|---|
 | id | uuid |  | gen_random_uuid() | PK |  |
 | buoi_id | uuid |  |  | FK→hinh_gt_buoi.id |  |
-| phan | text |  |  |  | `lop` · `nha` |
+| phan | text |  |  |  | `lop` · `nha` · `et` · `mt` |
 | loai | text |  |  |  | `chuan` · `bienthe` · `y` · `ghep` |
 | ref_id | uuid | Y |  |  |  |
 | ghep_node_ids | uuid[] |  | '{}'::uuid[] |  |  |

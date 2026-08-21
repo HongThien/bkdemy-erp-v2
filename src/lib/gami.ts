@@ -562,10 +562,13 @@ export async function syncHinhProblems(buoiId: string, phase: 'et' | 'mt' | 'btv
     .filter(Boolean) as Problem[]
   return { probs: [...theoDe, ...moCoi.map((m) => m.problem)], moCoi, khongRoRang: null, doiCauTruc: false }
 }
-/** Buổi có giáo trình Hình gán cho (lớp, ngày) này không, và đáp án theo `phase` cần chấm.
- *  nha→btvn · lop→et/mt (xem ghi chú trên `syncHinhProblems`). */
+/** Đáp án Hình cần chấm cho `phase` này — nha→btvn (giáo trình, snapshot qua `ganLopSnapshot`) ·
+ *  et→et · mt→mt (2 cái sau là tài liệu RIÊNG, KHÔNG phải giáo trình — xem
+ *  `ensureHinhGtBuoiForBuoi`/`saveBuoiSelectionPhan`). MT Hình KHÔNG có master (khác Đại) — chọn
+ *  trực tiếp mỗi buổi, ngay trong tab MT (Thùy 21/08: "MT là 1 thực thể — Đại Hình chỉ là 1 phần
+ *  của nó", không phải 2 tài liệu tách rời — gộp ở lớp CHẤM, giống hệt ET/BTVN). */
 export async function loadHinhForBuoiPhase(buoiId: string, phase: 'et' | 'mt' | 'btvn'): Promise<{ gtBuoiId: string | null; dapAn: HinhDapAn[] }> {
-  return loadHinhForBuoi(buoiId, phase === 'btvn' ? 'nha' : 'lop')
+  return loadHinhForBuoi(buoiId, phase === 'btvn' ? 'nha' : phase)
 }
 export async function listGrades(buoiId: string): Promise<Grade[]> {
   const { data, error } = await supabase.from('gami_grades').select('*').eq('buoi_hoc_id', buoiId).limit(LIMIT)

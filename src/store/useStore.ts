@@ -24,7 +24,7 @@ export type EtDraft = {
 // PICK: chọn 1 BẢN (đề chuẩn / lứa / biến thể riêng / ý thật) + 1 tập TICK (ý), thêm vào phiếu. Bấm lặp lại
 // để có N bài từ CÙNG 1 chuỗi (khác bản mỗi lần) — KHÔNG còn khái niệm "node lẻ multipick" tách riêng.
 export type PickItem = {
-  key: string; phan: 'lop' | 'nha'
+  key: string; phan: 'lop' | 'nha' | 'et' | 'mt'   // 'et'/'mt' = pick cho builder ET/MT Hình (Thùy 21/08) — không phải giáo trình
   nodeIds: string[]   // tập TICK (ý). kind bienthe/y luôn đúng 1 phần tử (không tiền đề để nở).
 } & (
   | { kind: 'ghep'; luaId: string | null }   // đề chuẩn (luaId=null) hoặc lứa — mọi cỡ chuỗi kể cả 1 node

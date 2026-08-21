@@ -19,7 +19,10 @@ import ETPrintView from './ETPrintView'
 import SearchSelect from '../../components/SearchSelect'
 import DangPickerOne from '../../components/DangPickerOne'
 import BuoiNgaySelect from '../../components/BuoiNgaySelect'
-import { useStore } from '../../store/useStore'
+import { useStore, type PickItem } from '../../store/useStore'
+import { BuoiPickEditor } from '../kho/hinh/SoanTaiLieu'
+import { loadLuoi, type Luoi } from '../../lib/kho/hinh'
+import { ensureHinhGtBuoiForBuoi, loadBuoiPicksPhan, saveBuoiSelectionPhan, type CheDoHinh } from '../../lib/kho/hinhGiaoTrinh'
 
 const loaiLabel = (v: string) => LOAI_CAU.find((x) => x.value === v)?.label ?? v
 const DEFAULT_ROWS = 5
@@ -73,6 +76,50 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
   const cauTbl = khoCuaMon(mon, nhanh).cauTbl
   const tenDang = (md: string | null) => dangOpts.find((d) => d.ma_dang === md)?.ten_dang ?? md ?? ''
 
+  // ── Hình (mô hình, Thùy 21/08) — builder ET RIÊNG, tái dùng NGUYÊN `BuoiPickEditor` (đúng cơ chế pick
+  // của giáo trình Hình, KHÔNG phải giáo trình) với `phans=['et']` (1 tab, không lop/nha). Lưu vào
+  // `hinh_gt_bai(phan='et')` của 1 `hinh_gt_buoi` khớp (lớp,ngày) — khác hẳn tầng lưu Đại/hgt (`tai_lieu`),
+  // cùng UX ETScreen (gán lớp+ngày, Lưu ET). `editing` (sửa ET Đại/hgt đã lưu) KHÔNG áp cho Hình — nhánh
+  // Hình chỉ có ở form TẠO MỚI (xem toggle bar: ẩn khi editing, giống Đại/hgt).
+  const [hinhL, setHinhL] = useState<Luoi | null>(null)
+  const [hinhBuoiId, setHinhBuoiId] = useState<string | null>(null)
+  const [hinhPicks, setHinhPicks] = useState<PickItem[]>([])
+  const [hinhCheDo, setHinhCheDo] = useState<Record<string, CheDoHinh>>({})
+  const [hinhSoDong, setHinhSoDong] = useState<Record<string, number>>({})
+  const [hinhLoading, setHinhLoading] = useState(false)
+  useEffect(() => {
+    if (nhanh !== 'hinh' || !khoi) { setHinhL(null); return }
+    let alive = true
+    loadLuoi(khoi).then((L) => { if (alive) setHinhL(L) }).catch(() => { if (alive) setHinhL(null) })
+    return () => { alive = false }
+  }, [nhanh, khoi])
+  useEffect(() => {
+    if (nhanh !== 'hinh' || !lopId || !ngay) { setHinhBuoiId(null); setHinhPicks([]); setHinhCheDo({}); setHinhSoDong({}); return }
+    let alive = true
+    setHinhLoading(true)
+    ;(async () => {
+      const id = await ensureHinhGtBuoiForBuoi(lopId, ngay)
+      if (!alive) return
+      setHinhBuoiId(id)
+      const nhap = await loadBuoiPicksPhan(id, 'et')
+      if (!alive) return
+      setHinhPicks(nhap.picks); setHinhCheDo(nhap.cheDo); setHinhSoDong(nhap.soDong)
+    })().catch((e) => { if (alive) setErr(e?.message ?? String(e)) }).finally(() => { if (alive) setHinhLoading(false) })
+    return () => { alive = false }
+  }, [nhanh, lopId, ngay])
+  async function luuHinh() {
+    if (!lop) { setErr('Chọn lớp.'); return }
+    if (!ngay) { setErr('Chọn ngày buổi học.'); return }
+    if (!hinhPicks.length) { setErr('ET cần ít nhất 1 bài.'); return }
+    setBusy(true); setErr(null)
+    try {
+      const id = hinhBuoiId ?? await ensureHinhGtBuoiForBuoi(lop.id, ngay)
+      await saveBuoiSelectionPhan(id, 'et', { picks: hinhPicks, cheDo: hinhCheDo, soDong: hinhSoDong })
+      setHinhBuoiId(id)
+      setFlash('Đã lưu ET (Hình) — nội dung sẽ tự hiện ở tab Chấm ET của buổi.')
+    } catch (e: any) { setErr(e.message ?? String(e)) } finally { setBusy(false) }
+  }
+
   // Nạp toàn bộ nội dung 1 ET (câu gốc + 3 mã đề + cấu hình) vào form. Dùng CHUNG cho: (a) sửa từ Kho
   // (et prop), (b) auto-load ET có sẵn khi tạo mới chọn trúng (lớp+ngày). KHÔNG set savedId/flash ở đây —
   // caller tự quyết (sửa vs auto-load khác nhau).
@@ -110,6 +157,7 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
   const autoRef = useRef<string>('')
   useEffect(() => {
     if (et) return                                   // sửa từ Kho → không auto
+    if (nhanh === 'hinh') return                      // Hình tự nạp riêng (effect khác) — đừng lẫn nhánh Đại/hgt vào
     if (!lopId || !ngay) return
     const key = lopId + '|' + ngay
     if (autoRef.current === key) return
@@ -321,7 +369,8 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
   }
 
   if (loading) return <div className="p-8 text-sm text-slate-400">Đang tải…</div>
-  const soCau = rows.filter((r) => r.maCau).length
+  const laHinh = nhanh === 'hinh'
+  const soCau = laHinh ? hinhPicks.length : rows.filter((r) => r.maCau).length
 
   return (
     <div className="flex h-full flex-col bg-[#fafafb]">
@@ -337,22 +386,34 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
           <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5" title={editing ? 'Nhánh cố định khi sửa ET đã lưu' : 'Chọn nhánh trước khi soạn câu'}>
             <button onClick={() => chonNhanh(null)} disabled={editing} className={`rounded-md px-3 py-1 text-[13px] font-medium transition disabled:cursor-not-allowed disabled:opacity-60 ${nhanh === null ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>Đại số</button>
             <button onClick={() => chonNhanh('hinh_gt')} disabled={editing} className={`rounded-md px-3 py-1 text-[13px] font-medium transition disabled:cursor-not-allowed disabled:opacity-60 ${nhanh === 'hinh_gt' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>Hình giải tích</button>
+            <button onClick={() => chonNhanh('hinh')} disabled={editing} className={`rounded-md px-3 py-1 text-[13px] font-medium transition disabled:cursor-not-allowed disabled:opacity-60 ${laHinh ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>Hình</button>
           </div>
         )}
         <div className="flex items-center gap-1.5 text-[12px] text-slate-500">Ngày
           <BuoiNgaySelect lopId={lopId} value={ngay} onChange={setNgay} defaultToday />
         </div>
         {lop && ngay && <span className="font-mono text-[11px] text-violet-500">{maET(lop.ten_lop, ngay)}</span>}
-        <span className="ml-auto text-[12px] text-slate-400">{soCau} câu</span>
-        {soCau > 0 && <button onClick={() => setPrinting(true)} className="rounded-md border border-slate-300 px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-indigo-400">🖨 Xem / In (3 mã đề)</button>}
-        <button onClick={luu} disabled={busy || !lop || !ngay || !soCau} className="rounded-md bg-indigo-600 px-4 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">{busy ? 'Đang lưu…' : '💾 Lưu ET'}</button>
+        <span className="ml-auto text-[12px] text-slate-400">{soCau} {laHinh ? 'bài' : 'câu'}</span>
+        {!laHinh && soCau > 0 && <button onClick={() => setPrinting(true)} className="rounded-md border border-slate-300 px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-indigo-400">🖨 Xem / In (3 mã đề)</button>}
+        <button onClick={laHinh ? luuHinh : luu} disabled={busy || !lop || !ngay || !soCau} className="rounded-md bg-indigo-600 px-4 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">{busy ? 'Đang lưu…' : '💾 Lưu ET'}</button>
       </div>
 
       <div className="min-h-0 flex flex-1 overflow-hidden">
       <div className="min-h-0 flex-1 overflow-auto p-5">
-        <div className="mx-auto max-w-[820px]">
+        <div className={laHinh ? 'mx-auto max-w-none' : 'mx-auto max-w-[820px]'}>
           {flash && <div className="mb-3 rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-[13px] font-medium text-emerald-700">✓ {flash}</div>}
           {err && <div className="mb-3 rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[13px] text-rose-600">{err}</div>}
+          {laHinh ? (
+            <div className="max-w-none">
+              <p className="mb-3 text-[12px] text-slate-400">Chọn bài (chuỗi/biến thể/ý thật) cho ET — <b>đúng cơ chế</b> pick của giáo trình Hình, không phải soạn câu rời.{(!lopId || !ngay) && <span className="text-amber-600"> Chọn <b>lớp + ngày</b> trước.</span>}</p>
+              {hinhLoading || !hinhL ? (
+                <p className="text-[12px] text-slate-400">{lopId && ngay ? 'Đang tải kho Hình…' : 'Chọn lớp + ngày để bắt đầu chọn bài.'}</p>
+              ) : (
+                <BuoiPickEditor L={hinhL} picks={hinhPicks} cheDo={hinhCheDo} soDong={hinhSoDong}
+                  onChangePicks={setHinhPicks} onChangeCheDo={setHinhCheDo} onChangeSoDong={setHinhSoDong} phans={['et']} />
+              )}
+            </div>
+          ) : (<>
           <p className="mb-3 text-[12px] text-slate-400">Mỗi câu chọn 1 dạng → hệ gợi ý câu <b>ít dùng nhất</b> (đổi được). Câu không trùng nhau trong đề.{!khoi && <span className="text-amber-600"> Chọn <b>lớp</b> trước để chọn dạng.</span>}</p>
           {khoi && (
             <div className="mb-3 rounded-xl border border-indigo-100 bg-indigo-50/40 p-3">
@@ -479,10 +540,12 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
             })}
           </div>
           <button onClick={themCau} className="mt-3 w-full rounded-xl border-2 border-dashed border-violet-200 bg-violet-50/40 py-2.5 text-[14px] font-medium text-violet-700 transition hover:bg-violet-50">+ Thêm câu</button>
+          </>)}
         </div>
       </div>
-      {/* Bảng gán mã đề theo HS — làm ngay khi soạn (có câu). Học bù: bấm 🖨 in lại phiếu 1 HS. */}
-      {soCau > 0 && (
+      {/* Bảng gán mã đề theo HS — làm ngay khi soạn (có câu). Học bù: bấm 🖨 in lại phiếu 1 HS.
+          KHÔNG áp cho Hình (chưa có khái niệm mã đề/gán HS ở builder này). */}
+      {!laHinh && soCau > 0 && (
         <div className="w-80 shrink-0 overflow-auto border-l border-slate-200 bg-white p-4">
           <div className="mb-2 text-[13px] font-semibold text-slate-800">👥 Gán mã đề theo HS</div>
           {!deReady ? (
