@@ -13,8 +13,10 @@ const DEV_ACCOUNTS: { ten: string; email: string; pw: string }[] = import.meta.e
 // HS đăng nhập bằng mã HS + PIN → email tổng hợp <ma_hs>@hs.bkdemy.local (mig 0063).
 const HS_DOMAIN = 'hs.bkdemy.local'
 
-export default function Login() {
-  const [mode, setMode] = useState<'staff' | 'hs'>('staff')
+// hsOnly = true khi chạy trong bundle riêng hs.bkacademy.edu.vn (main-hs.tsx) — ẩn hẳn tab
+// "Nhân sự" (HS không cần thấy, và bundle đó vốn không import gì thuộc màn staff).
+export default function Login({ hsOnly = false }: { hsOnly?: boolean } = {}) {
+  const [mode, setMode] = useState<'staff' | 'hs'>(hsOnly ? 'hs' : 'staff')
   const [email, setEmail] = useState('')
   const [maHS, setMaHS] = useState('')
   const [pw, setPw] = useState('')
@@ -40,17 +42,19 @@ export default function Login() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-slate-50 px-4">
       <form onSubmit={submit} className="w-[380px] rounded-2xl border border-slate-200 bg-white p-7 shadow-sm">
-        <h1 className="text-lg font-semibold text-slate-900">BKdemy ERP</h1>
-        <p className="mb-4 text-sm text-slate-400">Đăng nhập để tiếp tục</p>
+        <h1 className="text-lg font-semibold text-slate-900">{hsOnly ? 'BK Academy' : 'BKdemy ERP'}</h1>
+        <p className="mb-4 text-sm text-slate-400">{hsOnly ? 'Đăng nhập học sinh' : 'Đăng nhập để tiếp tục'}</p>
 
-        <div className="mb-5 grid grid-cols-2 gap-1 rounded-lg bg-slate-100 p-1">
-          {(['staff', 'hs'] as const).map((m) => (
-            <button key={m} type="button" onClick={() => { setMode(m); setErr(null) }}
-              className={`rounded-md py-1.5 text-[13px] font-medium transition ${mode === m ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>
-              {m === 'staff' ? 'Nhân sự' : 'Học sinh'}
-            </button>
-          ))}
-        </div>
+        {!hsOnly && (
+          <div className="mb-5 grid grid-cols-2 gap-1 rounded-lg bg-slate-100 p-1">
+            {(['staff', 'hs'] as const).map((m) => (
+              <button key={m} type="button" onClick={() => { setMode(m); setErr(null) }}
+                className={`rounded-md py-1.5 text-[13px] font-medium transition ${mode === m ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>
+                {m === 'staff' ? 'Nhân sự' : 'Học sinh'}
+              </button>
+            ))}
+          </div>
+        )}
 
         {mode === 'staff' ? (
           <>

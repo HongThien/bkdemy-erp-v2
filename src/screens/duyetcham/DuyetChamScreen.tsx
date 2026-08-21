@@ -10,7 +10,8 @@ import { MathText } from '../kho/ui'
 import { tenHienThiDs } from '../../lib/hoten'
 import ChamLaiKeyPanel from './ChamLaiKeyPanel'
 
-type AnsGroup = { norm: string; raw: string; rows: TLNSaiRow[]; repsMoi: { id: string }[] }
+type RepMoi = { id: string; nguon: 'hs_bao_sai' | 'ai_de_xuat' }
+type AnsGroup = { norm: string; raw: string; rows: TLNSaiRow[]; repsMoi: RepMoi[] }
 type CauGroup = { key: string; maCau: string | null; noiDung: string | null; dapAnKey: string; loiGiai: string | null; answers: AnsGroup[]; repsMoi: number }
 
 const fmtNgay = (iso: string) => { const [y, m, d] = iso.split('-'); return `${d}/${m}/${y}` }
@@ -46,7 +47,7 @@ export default function DuyetChamScreen() {
       let a = g.answers.find((x) => x.norm === norm)
       if (!a) { a = { norm, raw: r.dapAnHs, rows: [], repsMoi: [] }; g.answers.push(a) }
       a.rows.push(r)
-      for (const rep of r.reports) if (rep.trang_thai === 'moi') { a.repsMoi.push({ id: rep.id }); g.repsMoi++ }
+      for (const rep of r.reports) if (rep.trang_thai === 'moi') { a.repsMoi.push({ id: rep.id, nguon: rep.nguon }); g.repsMoi++ }
     }
     const out = [...byCau.values()]
     for (const g of out) g.answers.sort((x, y) => y.repsMoi.length - x.repsMoi.length || y.rows.length - x.rows.length)
@@ -121,7 +122,9 @@ export default function DuyetChamScreen() {
                   <div className="divide-y divide-slate-100">
                     {(filter === 'baosai' ? g.answers.filter((a) => a.repsMoi.length > 0) : g.answers).map((a) => {
                       const k = g.key + a.norm
-                      const yKiens = a.rows.flatMap((r) => r.reports.filter((x) => x.trang_thai === 'moi' && x.y_kien).map((x) => x.y_kien!))
+                      const yKienCua = (nguon: RepMoi['nguon']) => a.rows.flatMap((r) => r.reports.filter((x) => x.trang_thai === 'moi' && x.nguon === nguon && x.y_kien).map((x) => x.y_kien!))[0]
+                      const nHsBaoSai = a.repsMoi.filter((r) => r.nguon === 'hs_bao_sai').length
+                      const nAiDeXuat = a.repsMoi.filter((r) => r.nguon === 'ai_de_xuat').length
                       return (
                         <div key={a.norm} className="flex flex-wrap items-center gap-3 px-5 py-2.5">
                           <span className="rounded-lg bg-slate-100 px-2.5 py-1 font-mono text-[14px] font-semibold text-slate-800">{a.raw}</span>
@@ -129,7 +132,8 @@ export default function DuyetChamScreen() {
                             {a.rows.length} HS: {tenHienThiDs(a.rows.slice(0, 6).map((r) => r.hocSinh.ho_ten)).join(', ')}{a.rows.length > 6 ? '…' : ''}
                             {' · '}{[...new Set(a.rows.map((r) => `${r.test.lopTen} ${LOAI_LABEL[r.test.loai] ?? r.test.loai} ${fmtNgay(r.test.ngay)}`))].slice(0, 3).join(' · ')}
                           </span>
-                          {a.repsMoi.length > 0 && <span className="rounded-full bg-rose-50 px-2 py-0.5 text-[11px] font-semibold text-rose-600">🚩 {yKiens[0] ?? 'Em nghĩ mình đúng'}</span>}
+                          {nHsBaoSai > 0 && <span className="rounded-full bg-rose-50 px-2 py-0.5 text-[11px] font-semibold text-rose-600">🚩 {yKienCua('hs_bao_sai') ?? 'Em nghĩ mình đúng'}</span>}
+                          {nAiDeXuat > 0 && <span className="rounded-full bg-violet-50 px-2 py-0.5 text-[11px] font-semibold text-violet-700" title="AI (DeepSeek) tự đề xuất khi thấy đáp án lệch key nhưng có thể đúng bản chất — cần GV soát trước khi duyệt">🤖 AI đề xuất{nAiDeXuat > 1 ? ` (×${nAiDeXuat})` : ''}: {yKienCua('ai_de_xuat') ?? '—'}</span>}
                           <span className="ml-auto flex shrink-0 gap-2">
                             <button disabled={busy === k || !g.maCau} onClick={() => onChapNhan(g, a)}
                               title={g.maCau ? 'Đáp án này ĐÚNG — thêm vào bộ đáp án + sửa mọi bài làm trùng' : 'Câu không còn mã kho — không backfill được'}

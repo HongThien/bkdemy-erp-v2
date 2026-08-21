@@ -6,6 +6,7 @@
 # Node
 node_modules/
 dist/
+dist-hs/
 build/
 .DS_Store
 *.log

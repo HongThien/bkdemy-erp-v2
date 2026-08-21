@@ -6342,3 +6342,122 @@ dính trên node THẬT nếu làm vội, xem mục 2026-08-20 phía trên).
 - Vẫn CHƯA test bằng data thật (đúng như Thùy nói: "chưa build xong thì đương nhiên chưa có dữ liệu").
 
 **Verify:** `npx tsc --noEmit` sạch · `npx vite build` sạch.
+
+## 2026-08-21 (tiếp) — CHẤM TLN BẰNG AI (vòng 2): dựng xong, BLOCK ở hạ tầng pg_net — cần Thùy bật Dashboard
+
+CEO chốt mô hình V1 (3 vòng: key → AI khi lệch key → thêm DB nếu AI xác nhận đúng), sửa lại theo
+2 ý: (1) CHỈ trả lời ngắn, (2) MỌI lần AI chấm phải ghi log, (3) thêm-vào-DB PHẢI người duyệt
+(không tự động — đúng nguyên tắc CLAUDE.md §5 "AI gợi ý → người confirm").
+
+**Grounding trước khi code (Explore agent):** vòng 1 (chấm key) + vòng 3 (cache + backfill,
+`question_accepted_answers`/`chapNhanDapAn`) **ĐÃ XÂY XONG SẴN** trong V2 — cột `ai_reason`/`source`
+đã có sẵn trong schema, chỉ chưa ai nối AI vào. Việc thật cần làm nhỏ hơn nhiều so với "3 vòng từ
+đầu" — chỉ thiếu đúng vòng 2 (gọi AI).
+
+**⚠ Phát hiện an ninh trước khi code:** `VITE_DEEPSEEK_KEY` hiện gọi THẲNG từ client (`kho/api.ts`) —
+đã có sẵn cảnh báo trong code "trước khi deploy public phải qua proxy". App đang tính deploy công
+khai `hs.bkacademy.edu.vn` (bàn ở mục trên) → PHẢI gọi AI từ server, không lộ key qua devtools.
+
+**Thiết kế (migration `202608211153_cham_tln_ai.sql`):**
+- Gọi DeepSeek **TỪ TRONG POSTGRES** qua `pg_net` (RPC `hs_cham_tln_ai`) — dùng lại đúng pattern
+  SECURITY DEFINER RPC cả phiên, KHÔNG cần dựng Edge Function/hosting mới.
+- Secret: định dùng Supabase Vault (đã cài `supabase_vault@0.3.1`) nhưng role `claude_build`
+  **KHÔNG có quyền `usage` schema `vault`** (verify: "permission denied for schema vault") — cần
+  Thùy tự bật qua Dashboard nếu muốn Vault chuẩn. TẠM: bảng `_app_secrets` riêng, KHÔNG grant
+  anon/authenticated, RLS bật không policy nào (chủ bảng bypass RLS mặc định) → chỉ RPC đọc được,
+  PostgREST không chọc vào được. Nạp key thật bằng script 1 lần đọc từ `.env.local` (KHÔNG commit
+  giá trị thật), xoá script ngay sau khi nạp.
+- `bai_test_report` thêm cột `nguon` (`hs_bao_sai` mặc định · `ai_de_xuat` mới) — AI xác nhận đúng
+  → CHỈ tạo 1 dòng report chờ duyệt (KHÔNG tự ghi `question_accepted_answers`/sửa `bai_lam_cau`) —
+  dòng này TỰ NỔI lên màn "Duyệt chấm online" có sẵn (đọc `bai_test_report` trang_thai='moi'), GV
+  bấm "✓ Chấp nhận đúng" (`chapNhanDapAn`, KHÔNG sửa) mới thật sự ghi + backfill — đúng yêu cầu
+  "phải được duyệt".
+- Bảng `tln_ai_cham_log` — ghi MỌI lần gọi AI (cả khi AI nói vẫn sai, cả khi lỗi API) — đúng yêu
+  cầu "mọi lần AI chốt lệch với key đều cần ghi log". RLS staff-only (`tai_khoan.nhan_su_id is not
+  null` — KHÔNG dùng `nhan_su`/`auth.uid()` trực tiếp, xem bug ①).
+- `testonline.ts::traLoiCau` — sau khi key+cache đều KHÔNG khớp (còn 'wrong'), gọi RPC trên KHÔNG
+  chờ (fire-and-forget, IIFE async nuốt lỗi) — giữ nguyên "chấm tức thì", AI chạy nền.
+- `DuyetChamScreen.tsx` — badge tách riêng 🚩 HS báo sai / 🤖 AI đề xuất theo `nguon`.
+
+**2 bug tự bắt được lúc verify (không phải Thùy báo):**
+① `auth.uid()` dùng trực tiếp trong policy mới → `permission denied for schema auth` (role
+`claude_build` không có usage schema `auth`) — search thấy `my_hoc_sinh_id()` sẵn có đã né bằng
+`public.jwt_uid()` (đọc `request.jwt.claims` thẳng, không qua schema `auth`) — sửa theo đúng pattern
+đó, KHÔNG phải phát minh mới.
+② `net.http_post(...)` trả THẲNG `bigint` (request_id), không phải bảng — viết nhầm
+`select id into x from net.http_post(...)` như hàm trả bảng → `column "id" does not exist`. Dò
+`pg_attribute` ra đúng cấu trúc `net.http_collect_response()` trả `(status, message, response)` với
+`response` lồng `(status_code, headers, body)` — sửa cho khớp. 2 migration `_fix_pgnet` +
+`_timeout` (CREATE OR REPLACE đè — KHÔNG sửa file `202608211153` đã áp, đúng CLAUDE.md §2.1).
+
+**⛔⛔ BLOCK Ở HẠ TẦNG — CẦN THÙY: pg_net background worker CHƯA CHẠY.** Test thật (dò tận gốc bằng
+`net.check_worker_is_up()`) → `"the pg_net background worker is not up"`. Đây là ca đã biết của
+Supabase: bật `pg_net` bằng `create extension` qua SQL Editor/kết nối trực tiếp KHÔNG đủ — worker
+nền cần đăng ký lúc Postgres KHỞI ĐỘNG (`shared_preload_libraries`), chỉ Supabase Dashboard mới làm
+được (bật công tắc pg_net ở Database → Extensions sẽ tự restart đúng cách). Thử `net.wake()`/
+`net.worker_restart()` qua SQL — chạy "thành công" nhưng worker vẫn báo "not up" (xác nhận đây là
+hạ tầng, không phải cấu hình sửa được bằng SQL). Queue request test đi vào `net.http_request_queue`
+nhưng không ai xử lý → `net.http_collect_response(..., false)` treo VÔ HẠN (test 1 lần treo >2 phút
+mới phải Ctrl-C, kết nối `claude_build` không có statement_timeout nên không tự huỷ).
+
+**Việc còn lại — CẦN THÙY bật `pg_net` qua Supabase Dashboard (Database → Extensions → pg_net →
+bật). Sau đó chỉ cần verify lại (đã có sẵn script mẫu, xoá tạm sau lần trước) — code/migration/UI
+đã xong hết, không cần sửa gì thêm nếu worker chạy đúng.** Cũng nên canh: `hs_cham_tln_ai` chạy
+dưới role `authenticated` có `statement_timeout=8s` (cấu hình sẵn của project) — đã hạ
+`timeout_milliseconds` DeepSeek xuống 6000ms để có dư; nếu vẫn hay timeout sau khi worker chạy đúng
+thì cân nhắc tách 2 bước (queue nhanh trả về ngay + xử lý async thật sự) — CHƯA cần làm nếu 6s đủ.
+
+Chưa merge `main` — chưa verify được end-to-end (đang chờ Thùy bật pg_net). Code an toàn để merge
+sớm nếu muốn (degrade sạch: lỗi bị nuốt, HS không thấy gì khác, chỉ chưa có tác dụng AI-chấm) nhưng
+theo đúng kỷ luật cả phiên — không merge cái chưa verify thật.
+
+## 2026-08-21 (tiếp) — Tách bundle riêng cho hs.bkacademy.edu.vn (webapp/PWA, KHÔNG tách repo/DB)
+
+CEO chốt (2 lượt): "t đang nghĩ tách nó thành 1 subpage của BK như PH... hs.bkacademy.edu... làm nó
+thành webapp như phapp" → "t cần học sinh đăng nhập vào app rồi làm bài... hướng làm như nào cho
+tiện m đề xuất đi" → sau khi CTO đề xuất (giữ monorepo, KHÔNG tách repo/DB như PH — PH phải tách vì
+vốn khác hệ/DB từ đầu, HS đã sẵn RLS đúng trong CHÍNH Supabase ERP) → CEO đồng ý → nhắc lại làm nốt.
+
+**Kiến trúc: build entry RIÊNG, KHÔNG tách repo/DB.**
+- `hs.html` + `src/main-hs.tsx` — entry mới, KHÔNG import `./App` (staff) — render thẳng `AppHS`.
+- `src/AppHS.tsx` — copy CHÍNH XÁC nhánh HS của `App.tsx` (session→hsId→must_change_password→
+  HocSinhApp/DoiMatKhau), bỏ hết import staff (`NhanSuHome`/`TopBar`/`useStore`/`phanquyen`…) + bỏ
+  luôn nhánh `#pvjob` (in PDF, chỉ worker server dùng) + bỏ `fitZoom` (mật độ desktop staff, HS vốn
+  đã net 1.0). Thêm nhánh mới: tài khoản KHÔNG phải HS (vd staff gõ nhầm domain) → chỉ có nút đăng
+  xuất, domain này CHỈ dành HS.
+- `src/auth/Login.tsx` thêm prop `hsOnly` (mặc định `false`, KHÔNG đổi hành vi app chính) — ẩn tab
+  "Nhân sự", khoá cứng mode='hs', đổi tiêu đề "BK Academy · Đăng nhập học sinh".
+- `vite.config.hs.ts` — build RIÊNG (`npm run build:hs`) → `dist-hs/`, entry `hs.html`. Verify thật
+  bundle NHẸ HƠN HẲN: HS-only 676KB JS (gzip 196KB) vs app đầy đủ 4.66MB JS (gzip 1.27MB) — ~7×,
+  đúng lý do tách (domain public không cần kéo theo code Kho/Giáo trình/admin nội bộ).
+- PWA: cài `vite-plugin-pwa` (chưa có sẵn trong repo, thêm mới). Icon: cắt từ `public/Logo.png`
+  (wordmark BK Academy có sẵn) — dò bounding-box thật bằng `@napi-rs/canvas` (đã có sẵn cho worker
+  PDF, không thêm dep mới) qua 3 lần thử (2 lần đầu cắt CỤT icon do ước lượng sai vùng quét — lần 3
+  dò khoảng-trắng-dài-nhất giữa icon và chữ mới ra đúng ranh giới) → `public/icon-192.png` +
+  `icon-512.png`, nền trắng, đệm 10%. Manifest: `standalone`, theme `#087fc6` (đúng brand app PH).
+
+**1 bug tự bắt lúc verify:** build ra `dist-hs/hs.html` (đúng tên nguồn) nhưng mọi static host (kể
+cả `vite preview` lúc test local) mặc định phục vụ `index.html` cho `/` → Service Worker + asset
+404 khi mở domain gốc. Thêm plugin nhỏ (`closeBundle` hook) đổi tên `hs.html`→`index.html` NGAY
+TRONG `dist-hs/` sau build — nguồn giữ tên rõ nghĩa (khỏi lẫn với `index.html` app chính cùng thư
+mục gốc), output đúng chuẩn host tĩnh cần.
+
+**Verify:** `npx tsc --noEmit` sạch cả 2 phía · `npm run build` (app chính) VẪN chạy bình thường
+(không đụng gì) · `npm run build:hs` sạch, service worker + manifest sinh đúng (32 entries precache).
+Browser thật: mở `dist-hs` qua `vite preview` — màn hình CHỈ có form "Mã học sinh/Mã PIN" (không có
+tab Nhân sự) → đăng nhập HS0602 thật → `AppHS` render đúng `HocSinhApp` với data thật (tên, mã HS,
+4 ô cấp 1) → bấm Thoát → quay lại đúng màn login sạch. **Đăng ký Service Worker báo lỗi trong môi
+trường browser pane tự động** (đã dò: file `sw.js` tải đúng 200/`content-type: text/javascript`,
+`navigator.serviceWorker` tồn tại, `isSecureContext=true` — nhiều khả năng là giới hạn của trình
+duyệt sandbox dùng để test, KHÔNG phải lỗi build) — cần verify lại bằng trình duyệt thật (điện thoại
+thật) sau khi deploy lên domain thật, đó mới là môi trường có ý nghĩa để test "cài ra màn hình chính".
+
+**CÒN LẠI — CẦN THÙY (ngoài khả năng CLI/SQL của mình):**
+1. Domain `hs.bkacademy.edu.vn` — mua/trỏ DNS (CNAME, giống `ph.` trước đây ở Mắt Bão).
+2. Deploy `dist-hs/` — 1 Vercel project MỚI, CÙNG repo GitHub, build command `npm run build:hs`,
+   output `dist-hs`, gắn domain trên. KHÔNG động app chính (build command mặc định `npm run build`
+   vẫn y nguyên, 2 project độc lập cùng nguồn).
+3. Sau khi deploy: thử cài PWA thật trên điện thoại (Safari/Chrome) — xác nhận icon/tên hiện đúng.
+
+Chưa commit — đợi xác nhận hướng trước khi merge (an toàn để merge ngay nếu muốn: chỉ thêm file
+mới + 1 prop optional trên Login.tsx, không đổi hành vi app chính).
