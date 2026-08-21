@@ -1,21 +1,20 @@
 @import "tailwindcss";
 
-/* Bảng màu app Phụ huynh (Thùy 21/08: "làm UI giống app phụ huynh") — ĐÚNG token
-   bkdemy-ph-app/app/globals.css (:root), port sang Tailwind v4 @theme để dùng dạng
-   utility class (bg-brand, text-ph-label…) thay vì lặp lại hex khắp nơi. Dùng cho
-   HocSinhApp (màn HS trên điện thoại) — không đụng bảng màu slate/indigo mặc định
-   Tailwind các màn khác đang dùng. */
+/* Bảng màu app Phụ huynh (Thùy 21/08: "làm UI giống app phụ huynh") — port sang Tailwind v4 @theme.
+   ⚠ Lần đầu port NHẦM `bkdemy-ph-app/app/globals.css` (:root) — file đó CHẾT, grep xác nhận 0 chỗ
+   dùng trong PhApp.tsx. Bảng ĐANG CHẠY THẬT = `bkdemy-ph-app/app/ph-v3.css` (`.pv3{ --bg:... }`),
+   port lại ĐÚNG từ đây (Thùy: "vẫn xấu quá" — đúng vì port nhầm nguồn chết). Dùng cho HocSinhApp
+   (màn HS trên điện thoại) — không đụng bảng màu slate/indigo mặc định Tailwind các màn khác. */
 @theme {
-  --color-brand: #1077be;
-  --color-brand-2: #0b5c97;
-  --color-ios: #f2f2f7;
-  --color-ph-label: #1c1c1e;
-  --color-ph-label-2: #8a8a8e;
-  --color-ph-green: #2faf57;
-  --color-ph-orange: #f7941e;
-  --color-ph-red: #ff3b30;
-  --color-ph-ink: #4a4a4e;
-  --color-ph-ink-2: #616168;
+  --color-brand: #087fc6;
+  --color-brand-2: #1267d5;
+  --color-ios: #f3f5fa;
+  --color-ph-label: #171a22;
+  --color-ph-label-2: #858a96;
+  --color-ph-green: #26af60;
+  --color-ph-orange: #ff9418;
+  --color-ph-red: #e64040;
+  --color-ph-purple: #7656d8;
 }
 
 /* Công thức KaTeX cỡ bằng chữ thường.
