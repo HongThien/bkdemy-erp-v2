@@ -12,7 +12,13 @@ import { khoCuaMon } from './tailieu'
 
 const LIMIT = 10000
 
-export type EvalSrc = 'ingame' | 'et' | 'mt' | 'dg' | 'btvn' | 'bt'
+export type EvalSrc = 'ingame' | 'et' | 'mt' | 'dg' | 'btvn' | 'bt' | 'tu_luyen'
+
+// Cấp 1 = khối tiểu học (Thùy 17-20/08, phân khúc test-online): tự luyện KHÔNG có kênh nào khác để
+// đối chiếu (không ET/BTVN online như cấp 3) ⇒ tính THẲNG vào mastery TRUNG TÂM, không qua toggle
+// includeBTVN như btvn/bt. Danh sách khối = ĐÚNG bảng đã dùng lúc chốt mô hình tài khoản (DEVLOG 17/08).
+const CAP1_KHOI = new Set(['3', '4', '4T', '5', '5T'])
+function laCap1(khoi: string | null | undefined): boolean { return !!khoi && CAP1_KHOI.has(khoi) }
 export type DangEval = { value: number; t: string; src: EvalSrc } // value 0|0.5|1 · t = ISO · src = nguồn
 export type Mastery = { score: number; n: number; muc: 'dat' | 'can_luyen' | 'yeu'; tin: 'cao' | 'tb' | 'thap' }
 export type DangMastery = {
@@ -31,10 +37,13 @@ export const bucketMucDo = (md: number | null | undefined): 'co_ban' | 'nang_cao
 // Nhãn nguồn cho UI (IG/DG giữ lại cho Lịch sử hoạt động/badge cũ — KHÔNG còn xuất hiện trong mastery
 // evals nữa, xem lý do loại ở đầu file). MT = kỳ thi lớn, chấm Đ/C/S per câu GIỐNG ET (giám sát) → LUÔN
 // vào mastery. BTVN/BT (tự luyện) qua toggle includeBTVN — CẢ 2 cùng gate chung 1 toggle (Thùy 07-15).
-export const SRC_LABEL: Record<EvalSrc, string> = { ingame: 'IG', et: 'ET', mt: 'MT', dg: 'ĐG', btvn: 'BTVN', bt: 'BT' }
+// TU_LUYEN (tự luyện online, 18-20/08) — CẤP 1 luôn vào (không qua toggle), CẤP 3 qua toggle như btvn.
+export const SRC_LABEL: Record<EvalSrc, string> = { ingame: 'IG', et: 'ET', mt: 'MT', dg: 'ĐG', btvn: 'BTVN', bt: 'BT', tu_luyen: 'TL' }
 
 // ── NGUỒN ĐO ONLINE (test online 07-04): bai_lam_cau (verdict ≠ null) = phép đo ──
 // ET + ĐỀ THI online → src 'et' (thi có giám sát, VÀO mastery — cùng chế độ THI, xem THI_LOAI HocSinhApp).
+// TỰ LUYỆN (18-20/08) → src RIÊNG 'tu_luyen' — TÁCH khỏi 'btvn' vì trọng số VÀO-mastery-trung-tâm-mặc-định
+// khác nhau theo cấp (xem laCap1 ở trên), dù cùng WEIGHT tính điểm (=1, gami/mastery.js).
 // BTVN + giáo-trình online → src 'btvn' (tham khảo — chỉ vào khi bật toggle, đúng chính sách BTVN).
 // Duyệt lại (manual/cache) sửa verdict tại chỗ → mastery tự đúng theo (suy động, không sync).
 const THI_LOAI = new Set(['et', 'de_thi'])
@@ -56,9 +65,10 @@ async function fetchOnlineEvals(hs: string | string[], sinceIso?: string | null)
     const laThi = THI_LOAI.has(loai)
     // Chế độ THI chỉ tính khi ĐÃ NỘP (verdict chỉ sinh lúc et_nop, nhưng belt-and-suspenders với backfill duyệt).
     if (laThi && r.lam.trang_thai !== 'da_nop') continue
+    const src: EvalSrc = laThi ? 'et' : loai === 'tu_luyen' ? 'tu_luyen' : 'btvn'
     out.push({
       hoc_sinh_id: r.lam.hoc_sinh_id, ma_dang: r.cau?.ma_dang ?? null,
-      value: val, t: r.cham_at, src: laThi ? 'et' : 'btvn', mon: r.lam.test?.mon ?? '',
+      value: val, t: r.cham_at, src, mon: r.lam.test?.mon ?? '',
     })
   }
   return out
@@ -83,8 +93,10 @@ async function fetchBTEvals(hs: string | string[], sinceIso?: string | null): Pr
 }
 
 // Gom các lần đo của 1 HS (trong 1 MÔN) theo dạng → mastery + timeline.
-// opts.includeBTVN: gộp cả phase='btvn' + 'bt' (mặc định KHÔNG — tự luyện tham khảo, không vào mastery;
-// toggle để Thùy soi — Thùy 07-15: BT/BTVN cùng gate 1 toggle, KHÔNG còn "bt luôn vào" như trước).
+// opts.includeBTVN: gộp cả phase='btvn' + 'bt' + 'tu_luyen' (mặc định KHÔNG — tự luyện tham khảo,
+// không vào mastery; toggle để Thùy soi — Thùy 07-15: BT/BTVN cùng gate 1 toggle, KHÔNG còn "bt luôn
+// vào" như trước). NGOẠI LỆ: HS CẤP 1 (khối 3/4/4T/5/5T) → 'tu_luyen' LUÔN vào dù toggle tắt (Thùy
+// 18-20/08: "không có kênh nào khác để đối chiếu" — cấp 1 không ET/BTVN online như cấp 3).
 // ingame (chấm bài trên lớp) + dg (đánh giá GV) KHÔNG còn vào mastery (dg "phụ thuộc cảm giác" — Thùy 07-15).
 // opts.days: chỉ lấy đo trong N ngày gần nhất (30/60/90). Bỏ trống = tất cả.
 export async function getMasteryHS(
@@ -93,7 +105,9 @@ export async function getMasteryHS(
   opts?: { includeBTVN?: boolean; days?: number },
 ): Promise<DangMastery[]> {
   const K = khoCuaMon(mon) // banDoTbl theo môn → scope dạng đúng môn (bỏ dạng môn khác)
-  const phases: EvalSrc[] = opts?.includeBTVN ? ['et', 'mt', 'bt', 'btvn'] : ['et', 'mt']
+  const { data: hsRow } = await supabase.from('hoc_sinh').select('khoi').eq('id', hocSinhId).single()
+  const phases: EvalSrc[] = opts?.includeBTVN ? ['et', 'mt', 'bt', 'btvn', 'tu_luyen']
+    : laCap1(hsRow?.khoi) ? ['et', 'mt', 'tu_luyen'] : ['et', 'mt']
   const sinceIso = opts?.days ? new Date(Date.now() - opts.days * 86400_000).toISOString() : null // boundary INSTANT (được phép, §windowing)
 
   // grades của HS, EMBED thẳng problem (phase, ma_dang) — FK problem_id→gami_session_problems ĐƠN, sạch
@@ -188,12 +202,14 @@ export type TongQuanHS = {
 }
 export async function getTongQuanHS(hocSinhId: string, mon: string, opts?: { ym?: string }): Promise<TongQuanHS> {
   const K = khoCuaMon(mon)
-  const [{ data: grades }, { data: dt }, online, btGradeEvals] = await Promise.all([
+  const [{ data: grades }, { data: dt }, online, btGradeEvals, { data: hsRow }] = await Promise.all([
     supabase.from('gami_grades').select('result, graded_at, prob:problem_id(phase, ma_dang)').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
     supabase.from('diem_thi').select('diem, diem_co_ban, diem_nang_cao, ky_thi:ky_thi_id(loai, mon, ngay, buoi:buoi_hoc_id(ngay))').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
     fetchOnlineEvals(hocSinhId),
     fetchBTEvals(hocSinhId),
+    supabase.from('hoc_sinh').select('khoi').eq('id', hocSinhId).single(),
   ])
+  const cap1 = laCap1(hsRow?.khoi)
   const now = Date.now(), D30 = 30 * 86400_000, cut1 = now - D30, cut2 = now - 2 * D30
   // SÀN MÙA: dữ liệu trước ngày khai mùa (1/7) = tháng 6 "chưa chính thức" → KHÔNG tính vào trend,
   // KHÔNG làm mốc so sánh (Thùy chốt). Nếu cửa sổ "kỳ trước" rơi hết vào trước mùa → prior rỗng → trend null.
@@ -224,9 +240,11 @@ export async function getTongQuanHS(hocSinhId: string, mon: string, opts?: { ym?
   const inMonth = (t: number) => monthFromMs == null || (t >= monthFromMs && t < monthToMs)
   const inMtWindow = (t: number) => mtFromMs == null || (t >= mtFromMs && t < mtToMs)
 
-  // Raw theo NGUỒN (et/btvn/mt) — bucket cơ bản/nâng cao SAU khi có muc_do (chung 1 vòng lặp, đối xứng 3 nguồn).
+  // Raw theo NGUỒN (et/btvn/mt/tu_luyen) — bucket cơ bản/nâng cao SAU khi có muc_do (chung 1 vòng lặp).
+  // tu_luyen TÁCH riêng khỏi btvn (khác chỗ được vào byDangTop hay không — xem dưới) dù cả 2 KHÔNG
+  // đụng tới hoatDong (%ET/%BTVN/%MT hiện tại) — đó là 3 cột CỐ ĐỊNH, ngoài phạm vi việc hôm nay.
   type Raw = { ma: string | null; value: number; t: string }
-  const etRows: Raw[] = [], btvnRows: Raw[] = [], mtRows: Raw[] = []
+  const etRows: Raw[] = [], btvnRows: Raw[] = [], mtRows: Raw[] = [], tuLuyenRows: Raw[] = []
   for (const g of (grades ?? []) as any[]) {
     const p = g.prob; if (!p) continue
     const v = RESULT_VALUE[g.result as keyof typeof RESULT_VALUE]; if (v === undefined) continue
@@ -238,16 +256,24 @@ export async function getTongQuanHS(hocSinhId: string, mon: string, opts?: { ym?
   for (const o of online) {
     if (o.mon && o.mon !== mon) continue
     if (o.src === 'et') etRows.push({ ma: o.ma_dang, value: o.value, t: o.t })
+    else if (o.src === 'tu_luyen') tuLuyenRows.push({ ma: o.ma_dang, value: o.value, t: o.t })
     else btvnRows.push({ ma: o.ma_dang, value: o.value, t: o.t })
   }
 
-  // ① 2 bản đồ dạng: byDangTop = CHỈ et+mt · byDangBottom = top + btvn + bt (Bổ trợ) — Thùy 07-14: "trên
-  // là chỉ ETMT, dưới là có thêm BTVN, Bổ trợ". KHÔNG gồm ingame/đánh giá GV (khác "Dạng bài" full-nguồn).
+  // ① 2 bản đồ dạng: byDangTop = CHỈ et+mt (+tu_luyen NẾU cấp 1) · byDangBottom = top + btvn + bt +
+  // tu_luyen (Bổ trợ) — Thùy 07-14: "trên là chỉ ETMT, dưới là có thêm BTVN, Bổ trợ". KHÔNG gồm
+  // ingame/đánh giá GV (khác "Dạng bài" full-nguồn). tu_luyen LUÔN vào bottom (gộp-view, mọi cấp);
+  // CHỈ vào top khi cấp 1 (Thùy 18-20/08: không có kênh nào khác để đối chiếu cho cấp 1).
   const byDangTop: Record<string, DangEval[]> = {}, byDangBottom: Record<string, DangEval[]> = {}
   const pushHT = (map: Record<string, DangEval[]>, ma: string | null, ev: DangEval) => { if (ma) (map[ma] ??= []).push(ev) }
   for (const e of etRows) { const ev: DangEval = { value: e.value, t: e.t, src: 'et' }; pushHT(byDangTop, e.ma, ev); pushHT(byDangBottom, e.ma, ev) }
   for (const m of mtRows) { const ev: DangEval = { value: m.value, t: m.t, src: 'mt' }; pushHT(byDangTop, m.ma, ev); pushHT(byDangBottom, m.ma, ev) }
   for (const b of btvnRows) pushHT(byDangBottom, b.ma, { value: b.value, t: b.t, src: 'btvn' })
+  for (const tl of tuLuyenRows) {
+    const ev: DangEval = { value: tl.value, t: tl.t, src: 'tu_luyen' }
+    pushHT(byDangBottom, tl.ma, ev)
+    if (cap1) pushHT(byDangTop, tl.ma, ev)
+  }
   for (const b of btGradeEvals) { if (b.mon && b.mon !== mon) continue; pushHT(byDangBottom, b.ma_dang, { value: b.value, t: b.t, src: 'bt' }) }
 
   // byDang*Cur = bản LỌC theo opts.ym (nếu có), dùng cho ① "hiện tại" (htTop/htBottom) bên dưới. byDangTop/
@@ -399,18 +425,25 @@ export async function loadMasteryCells(opts: RollupScope): Promise<CellBundle> {
   const empty: CellBundle = { hsMap: new Map(), hsIds: [], byHS: new Map(), dangInfo: new Map() }
   const K = khoCuaMon(opts.mon)
   // Thùy 07-15: LOẠI ingame + đánh giá GV khỏi mastery (xem comment đầu file) — đối xứng với getMasteryHS.
-  const phases: EvalSrc[] = opts.includeBTVN ? ['et', 'mt', 'bt', 'btvn'] : ['et', 'mt']
+  // tu_luyen (18-20/08): includeBTVN=true → vào cho MỌI HS (gộp-view) — thêm ngay ở đây. includeBTVN=false
+  // → chỉ cấp 1 (cap1Set dưới), xử RIÊNG per-HS ở vòng lặp add() vì phases là danh sách DÙNG CHUNG cả batch.
+  const phases: EvalSrc[] = opts.includeBTVN ? ['et', 'mt', 'bt', 'btvn', 'tu_luyen'] : ['et', 'mt']
 
-  // 1) HS trong phạm vi (lớp / khối / HỆ-band × môn), đang học.
+  // 1) HS trong phạm vi (lớp / khối / HỆ-band × môn), đang học. +khoi để biết cấp 1 (tu_luyen trung tâm).
   let sq
-  if (opts.lopId) sq = supabase.from('hoc_sinh_lop').select('hoc_sinh:hoc_sinh_id(id, ho_ten, ma_hs), lop:lop_id(ten_lop)').eq('lop_id', opts.lopId).eq('trang_thai', 'dang_hoc').limit(LIMIT)
-  else if (opts.khoi) sq = supabase.from('hoc_sinh_lop').select('hoc_sinh:hoc_sinh_id(id, ho_ten, ma_hs), lop:lop_id!inner(ten_lop, khoi, mon)').eq('trang_thai', 'dang_hoc').eq('lop.khoi', opts.khoi).eq('lop.mon', opts.mon).limit(LIMIT)
-  else if (opts.he) sq = supabase.from('hoc_sinh_lop').select('hoc_sinh:hoc_sinh_id(id, ho_ten, ma_hs), lop:lop_id!inner(ten_lop, mon), muc:muc_nang_luc_id!inner(bac)').eq('trang_thai', 'dang_hoc').eq('lop.mon', opts.mon).eq('muc.bac', opts.he).limit(LIMIT)
+  if (opts.lopId) sq = supabase.from('hoc_sinh_lop').select('hoc_sinh:hoc_sinh_id(id, ho_ten, ma_hs, khoi), lop:lop_id(ten_lop)').eq('lop_id', opts.lopId).eq('trang_thai', 'dang_hoc').limit(LIMIT)
+  else if (opts.khoi) sq = supabase.from('hoc_sinh_lop').select('hoc_sinh:hoc_sinh_id(id, ho_ten, ma_hs, khoi), lop:lop_id!inner(ten_lop, khoi, mon)').eq('trang_thai', 'dang_hoc').eq('lop.khoi', opts.khoi).eq('lop.mon', opts.mon).limit(LIMIT)
+  else if (opts.he) sq = supabase.from('hoc_sinh_lop').select('hoc_sinh:hoc_sinh_id(id, ho_ten, ma_hs, khoi), lop:lop_id!inner(ten_lop, mon), muc:muc_nang_luc_id!inner(bac)').eq('trang_thai', 'dang_hoc').eq('lop.mon', opts.mon).eq('muc.bac', opts.he).limit(LIMIT)
   else return empty
   const { data: sd, error: se } = await sq
   if (se) throw se
   const hsMap = new Map<string, { ho_ten: string; ma_hs: string | null; lop: string | null }>()
-  for (const r of (sd ?? []) as any[]) { const h = r.hoc_sinh; if (h && !hsMap.has(h.id)) hsMap.set(h.id, { ho_ten: h.ho_ten, ma_hs: h.ma_hs, lop: r.lop?.ten_lop ?? null }) }
+  const cap1Set = new Set<string>()
+  for (const r of (sd ?? []) as any[]) {
+    const h = r.hoc_sinh; if (!h) continue
+    if (!hsMap.has(h.id)) hsMap.set(h.id, { ho_ten: h.ho_ten, ma_hs: h.ma_hs, lop: r.lop?.ten_lop ?? null })
+    if (laCap1(h.khoi)) cap1Set.add(h.id)
+  }
   const hsIds = [...hsMap.keys()]
   if (hsIds.length === 0) return { ...empty, hsMap }
 
@@ -433,7 +466,12 @@ export async function loadMasteryCells(opts: RollupScope): Promise<CellBundle> {
     const val = RESULT_VALUE[g.result as keyof typeof RESULT_VALUE]; if (val === undefined) continue
     add(g.hoc_sinh_id, p.ma_dang, { value: val, t: g.graded_at, src: p.phase as EvalSrc })
   }
-  for (const o of online) if (phases.includes(o.src)) add(o.hoc_sinh_id, o.ma_dang, { value: o.value, t: o.t, src: o.src })
+  for (const o of online) {
+    // tu_luyen: đã ở trong `phases` khi includeBTVN=true (mọi HS) — nhánh sau chỉ cần cho ca
+    // includeBTVN=false + đúng HS đó là cấp 1 (per-HS, không thể nhét vào `phases` dùng chung batch).
+    const okTuLuyen = o.src === 'tu_luyen' && !opts.includeBTVN && cap1Set.has(o.hoc_sinh_id)
+    if (phases.includes(o.src) || okTuLuyen) add(o.hoc_sinh_id, o.ma_dang, { value: o.value, t: o.t, src: o.src })
+  }
   if (phases.includes('bt')) for (const b of bt) add(b.hoc_sinh_id, b.ma_dang, { value: b.value, t: b.t, src: 'bt' })
 
   // 3) tên dạng + độ khó + scope MÔN (banDo của môn → chỉ giữ dạng hợp lệ).

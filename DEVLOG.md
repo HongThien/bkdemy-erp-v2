@@ -5818,3 +5818,298 @@ cuối hàm nữa. Bắt được nhờ viết ca verify RÕ RÀNG kỳ vọng c
    so_cau = 2, co_nhieu_ma_de = false — ĐÚNG cả hai
 ```
 Dọn sạch cả 2 ca sau khi soi (`count=0`). HS0004 không bị đụng (41/41 vẫn gắn cờ đổi mật khẩu).
+
+---
+
+## 2026-08-20 — TỰ LUYỆN: xây engine (mig 202608201111 + 202608201118)
+
+**Spec Thùy (18-20/08):** V1 có tính năng gần giống (đọc code trước khi build — xem tóm tắt dưới) —
+mỗi ngày hệ tự sinh 10 câu: 40% ngẫu nhiên trong dạng ĐÃ HỌC (toàn bộ từ đầu) + 60% trong dạng đang
+YẾU. Làm thêm được, tối đa 30 câu/ngày. **Cấp 1: tính vào mastery hệ số 1** (PH kèm nên đủ nghiêm
+túc, không có kênh nào khác để đối chiếu). **Cấp 3: chỉ gộp ở mastery-view của HS**, không vào mastery
+trung tâm (đã chốt hôm 17/08, giữ nguyên). Chống lặp: 1 câu ở dạng X ra lần N thì lần TIẾP THEO của
+dạng X phải là lần N+10 mới lặp lại; kho hết câu thì chấp nhận lặp sớm hơn.
+
+**⭐ Đọc V1 trước khi thiết kế (Thùy yêu cầu) — 2 tính năng V1 có, KHÔNG cái nào khớp đặc tả:**
+- "Daily Practice" (`TabDailyPractice.jsx`, chỉ lớp 5T): UI ghi "10 câu/ngày theo dạng yếu" nhưng
+  **thuật toán thật nằm ở RPC `generate_daily_practice` KHÔNG version-control** (tạo tay qua Supabase
+  Dashboard) — không đọc được, không audit được. Không giới hạn 30 câu/ngày ở client.
+- "🎯 Tự luyện" (`PHPage.jsx generateTuLuyenBai`, PH bấm tay): code đầy đủ nhưng chỉ **5 câu/lần**
+  (không phải 10), **bấm tay** (không tự động), ngưỡng yếu hardcode `tyLe<0.7`/90 ngày, **không giới
+  hạn số lần/ngày**, và có lỗ tránh-lặp (`filtered[0]||cands[0]` — hết ứng viên thì lặp câu VỪA làm).
+- Bài học rút ra, áp cho bản V2: **thuật toán PHẢI nằm trong migration (version-controlled)**, không
+  tạo tay trên Dashboard; **không hardcode API key** (V1 hardcode Gemini key thẳng trong source).
+
+**Vì sao KHÔNG port công thức mastery sang SQL:** Thùy chốt "dùng mastery có sẵn của V2" —
+`masteryOfDang` (gami/mastery.js) là NGUỒN DUY NHẤT. Verify HS KHÔNG đọc được `dai_cau_hoi` lẫn
+`gami_grades` trực tiếp (RLS chặn — đúng bẫy CLAUDE.md §2.1 "0 dòng không phải bằng chứng"; `gami_grades`
+còn TIMEOUT thay vì 0 dòng, dấu hiệu policy nặng). Nên **tách 2 RPC theo đúng ranh giới nhạy cảm**:
+- `hs_dang_evals(mon)` — SECURITY DEFINER, trả DỮ LIỆU THÔ (điểm đúng/sai CỦA CHÍNH HS — không nhạy
+  cảm, chính là thứ "Thông tin học tập" sẽ hiện sau này). Client tự chạy `masteryOfDang` y hệt bản TS
+  đang dùng ở mastery.ts — ZERO công thức thứ hai, không có nguy cơ lệch dần.
+- `tu_luyen_sinh(mon, dangs[])` — SECURITY DEFINER, HS đã chọn xong DẠNG (ở client) → server mới chọn
+  CÂU + snapshot (kho câu hỏi staff-only, phải chạm ở đây).
+
+**Kiến trúc — tái dùng NGUYÊN `bai_test/bai_test_cau/bai_lam/bai_lam_cau`:** mastery.ts đã đọc
+`bai_lam_cau` làm nguồn đo chung, KHÔNG cần sửa gì để nhận thêm tu_luyen (câu trả lời tự luyện tự
+động "có mặt" trong measurement, chỉ còn phần TRỌNG SỐ theo cấp là việc RIÊNG, xem "CÒN LẠI"). Khác
+biệt duy nhất: ET/BTVN dùng CHUNG 1 test cho cả lớp (1 lop_id×1 ngày); tu_luyen là bài CÁ NHÂN HOÁ
+(1 hoc_sinh_id×1 ngày) → thêm `bai_test.hoc_sinh_id` (NULL cho loại khác) thay vì tách bảng riêng.
+RLS `bai_test`/`bai_test_cau` viết lại: tu_luyen scope theo `hoc_sinh_id = my_hoc_sinh_id()`, KHÔNG
+theo `lop_id` (nhiều HS trong 1 lớp, mỗi em 1 bài — RLS cũ theo lớp sẽ lộ chéo). `bai_lam`/`bai_lam_cau`
+policy sẵn có đã đúng (scope thẳng hoc_sinh_id, không qua lớp) — không cần sửa.
+
+**Sổ chống lặp `tu_luyen_dang_lan`** (hoc_sinh_id, mon, ma_dang, lan_thu, ma_cau) — RPC exclude câu
+xuất hiện trong 9 lần gần nhất CỦA CHÍNH dạng đó (`lan_thu > N-10`); hết ứng viên → fallback KHÔNG
+exclude (chấp nhận lặp, đúng chốt). Chỉ chọn câu **hỗ trợ chấm online** (TN/ĐS/TLN có đáp án) — tự bắt
+được 1 lỗi lúc viết: cột `dap_an` KHÔNG áp dụng cho `dung_sai` (đáp án nằm trong `menh_de`), lọc
+`dap_an is not null` chung cho mọi loại sẽ loại hết câu ĐS — sửa thành điều kiện theo TỪNG loại.
+
+**⭐ 2 lỗi race tự bắt trước khi verify (đúng bài học cũ "ensure* slot phải unique"):**
+1. Thiếu ngoặc `()` quanh OR trong SQL WHERE — AND/OR không tự nhóm theo ý định, khiến điều kiện lọc
+   loại-câu "ăn mất" điều kiện chống-lặp phía sau (2 câu SQL, sửa cả hai).
+2. Lượt gọi ĐẦU trong ngày (chưa có `bai_test` để `FOR UPDATE` khoá dòng) — 2 request gần-đồng-thời
+   có thể cùng INSERT, tạo 2 dòng trùng. Thêm **unique index** (`hoc_sinh_id,mon,ngay) where loai=
+   'tu_luyen'`) + bọc INSERT trong exception handler (`unique_violation` → re-SELECT FOR UPDATE, tiếp
+   tục như đường APPEND).
+
+**RPC phụ `hs_mon_cua_toi()`** (migration riêng, VÌ file trước đã ÁP LÊN DB — sửa file đã áp là DB/repo
+lệch nhau, đúng luật CLAUDE.md §2.1, nên viết migration MỚI thay vì sửa): app trước giờ chỉ suy `mon`
+GIÁN TIẾP từ `tests[0]?.mon` (bài online HS đang có) — HS cấp 1 (chỉ tự luyện, KHÔNG ET/BTVN online)
+sẽ ra rỗng theo đường đó. `hoc_sinh_lop`/`lop` cũng staff-only (verify: HS SELECT → 0 dòng, không lỗi)
+nên cần RPC riêng đọc thẳng.
+
+**UI — tái dùng NGUYÊN `LamBai` cho phần LÀM BÀI** (chọn/chấm/lời giải/reveal-ngay), không viết lại:
+thêm 2 prop TUỲ CHỌN `doneCaption`/`doneExtra` vào màn kết quả có sẵn (mặc định giữ nguyên câu chữ
+BTVN cũ — backward-compatible tuyệt đối). `LamTuLuyen` (component mới) chỉ lo "hôm nay có bài chưa,
+chưa thì sinh, sinh thêm khi bấm" rồi render `<LamBai key={baiTestId+so_cau} .../>` — đổi `key` sau
+mỗi "làm thêm" ép LamBai REMOUNT, tự fetch lại đủ câu mới (đơn giản hơn nhiều so với tự quản state
+mở-rộng-mảng-câu-đang-hiển-thị). Ô "Tự luyện" ở màn chính đổi từ `sapCo` (disabled) sang `direct`
+(bấm thẳng vào LamTuLuyen, KHÔNG qua màn danh-sách-nhiều-bài dùng chung ET/BTVN — tự luyện là 1 PHIÊN
+đang tiếp diễn trong ngày, không phải danh sách bài đã phát theo ngày, không hợp mô hình list+tab).
+
+**⚠ BUG THẬT bắt được lúc verify trên browser (không phải giả định) — StrictMode double-effect:**
+Lần chạy đầu ra **"1/19"** thay vì "1/10". Điều tra: `useEffect(() => { taiHomNay() }, [])` KHÔNG có
+guard → React 18 StrictMode (dev) chạy effect 2 LẦN → lượt gọi thứ 2 đọc "chưa có bài hôm nay" TRƯỚC
+khi lượt 1 kịp ghi (race) → sinh THÊM 10 câu nữa đè lên. **Unique index chặn được việc tạo 2 DÒNG
+bai_test riêng biệt** (đúng thiết kế), nhưng RPC tự APPEND khi đụng unique nên KHÔNG chặn được việc
+sinh THỪA câu — 20 câu dự kiến nhưng ra 19 (1 dạng trong 20 lượt rút không còn câu hợp lệ, bị bỏ qua
+đúng logic §1.5). Fix: `useRef` guard (đúng bài học đã ghi sẵn trong CLAUDE.md "ensure* slot →
+StrictMode chạy effect 2 lần" — dính đúng ca đã cảnh báo trước). Dọn dữ liệu lỗi, verify lại → đúng
+"1/10".
+
+**Verify đầy đủ trên browser thật (HS0004), theo đúng thứ tự, không tin RPC/tsc suông:**
+1. `hs_dang_evals` qua HS0004 thật → 275 dòng eval, 34 dạng đã học.
+2. `tu_luyen_sinh` qua `vite-node` gọi RPC trực tiếp (10 dạng lặp lại cố ý để stress-test chống lặp):
+   lượt 1→10 câu · lượt 2→20 (không trùng câu giữa 2 lượt CÙNG dạng) · lượt 3→30 (đúng trần) · lượt
+   4→**bị chặn đúng thông báo**. Sổ `tu_luyen_dang_lan` ghi lan_thu tăng liên tục, khớp số lần mỗi dạng
+   xuất hiện trong 3 lượt.
+3. Trên UI thật (375×812): sinh đúng 10 câu (sau khi fix bug ①) → trả lời 1 câu THẬT qua click (chọn
+   sai) → chấm sai đúng + lời giải hiện đúng công thức. Hoàn tất 10 câu → màn kết quả hiện đúng
+   `doneCaption` ("Hôm nay đã làm 10/30 câu") + nút "Làm thêm 10 câu" → bấm → remount → **"1/20"**,
+   câu 1 vẫn giữ nguyên trạng thái đã làm (reveal đúng, không mất state) → đối chiếu DB: `so_cau=20`,
+   `bai_test_cau` thật = 20 dòng.
+4. Dọn sạch toàn bộ dữ liệu test (`bai_test`+`tu_luyen_dang_lan`), HS0004 trả về mặc định.
+
+**Bất ngờ phát hiện lúc dọn — tính năng "buộc đổi mật khẩu" (xây sáng 17/08) ĐANG CHẠY THẬT ngoài
+production:** dry-run cho thấy **5/41 HS cấp 3 đã TỰ ĐỔI mật khẩu thật** (must_change_password=false
+do chính các em đặt, không phải em gán) + phát hiện **1 HS mới ghi danh cấp 3 sau thời điểm gắn cờ**
+(HS0700, khối 10) — gắn cờ nốt cho em này để giữ bất biến 100%.
+
+**⚠⚠ CÒN LẠI — QUAN TRỌNG, CHƯA LÀM: mastery CHƯA phân biệt tu_luyen với btvn.** `mastery.ts`
+(`fetchOnlineEvals`) hiện chỉ tách 2 nhánh theo `THI_LOAI` (et/de_thi → src='et', MỌI loại còn lại
+→ src='btvn') — nghĩa là câu trả lời tự luyện đang bị TÍNH NHƯ BTVN (weight=1, mặc định KHÔNG vào
+mastery trung tâm, chỉ gộp khi bật `includeBTVN`). Với CẤP 3 thì đây tình cờ ĐÚNG hành vi mong muốn
+(tu_luyen chỉ gộp view, giống btvn). Nhưng **CẤP 1 cần tu_luyen vào mastery TRUNG TÂM hệ số 1** —
+việc này CHƯA ĐƯỢC LÀM. Cần: dạy `fetchOnlineEvals` tách RIÊNG `src='tu_luyen'` (khỏi 'btvn'), rồi
+sửa default `phases` của `getMasteryHS`/`loadMasteryCells` theo CẤP của HS (khối 3-5T → luôn gồm
+`tu_luyen`; khối 10-12 → KHÔNG, giống btvn hiện tại). **CỐ Ý chưa làm trong lượt này** — đây là thay
+đổi vào module LÕI (`mastery.ts`), ảnh hưởng nhiều màn khác (Thông tin học tập/Dashboard/rollup lớp),
+rủi ro cao nếu làm vội cuối phiên dài. Việc riêng cho lượt sau.
+
+**CÒN LẠI khác:** header màn chính (`lopMon`) vẫn suy từ `tests[0]?.mon` — HS cấp 1 (chỉ tự luyện,
+0 `bai_test` loại et/btvn/giao_trinh) sẽ không hiện tên lớp/môn ở đầu màn (không hỏng, chỉ thiếu hiển
+thị). `monCuaHS()` mới có sẵn — có thể dùng lại cho chỗ này khi làm màn cấp 1.
+
+## 2026-08-20 (tiếp) — mastery.ts: tu_luyen tách nguồn riêng, vào TRUNG TÂM theo CẤP
+
+Làm nốt việc đã cố ý hoãn ở mục trên ("Làm luôn đi" — CEO chốt tiếp tục ngay).
+
+**Vấn đề:** `fetchOnlineEvals` chỉ tách 2 nhánh theo `THI_LOAI` nên tu_luyen bị tính LẪN vào 'btvn'
+(weight=1, mặc định không vào mastery trung tâm) — tình cờ đúng cho cấp 3 nhưng SAI cho cấp 1 (cần
+vào trung tâm hệ số 1, vì tự luyện là kênh đo DUY NHẤT của cấp 1 — không có ET/BTVN online đối chiếu,
+và PH kèm nên đủ nghiêm túc để tin).
+
+**Sửa:**
+- `src/gami/mastery.js` — `MASTERY_CONFIG.WEIGHT` thêm `tu_luyen: 1` (cùng hệ số btvn/bt — khác nhau
+  là CÓ/KHÔNG vào mastery trung tâm mặc định, không phải trọng số khi ĐÃ vào).
+- `src/lib/mastery.ts`:
+  - Thêm `EvalSrc` gồm `'tu_luyen'`, `SRC_LABEL.tu_luyen = 'TL'`.
+  - `fetchOnlineEvals`: tách riêng `src = loai === 'tu_luyen' ? 'tu_luyen' : (laThi ? 'et' : 'btvn')`
+    (trước: tu_luyen rơi vào nhánh 'btvn' cùng nhánh else).
+  - Thêm `CAP1_KHOI = {'3','4','4T','5','5T'}` + `laCap1(khoi)` — đúng bảng khối đã dùng lúc chốt mô
+    hình tài khoản cấp 1 (17/08).
+  - `getMasteryHS(hocSinhId, mon, opts)`: query thêm `hoc_sinh.khoi`, default `phases` (khi KHÔNG bật
+    `includeBTVN`) rẽ theo cấp — cấp 1 → `['et','mt','tu_luyen']`, cấp 3 → `['et','mt']` (giữ nguyên
+    hành vi cũ). Bật `includeBTVN` thì luôn gồm đủ `['et','mt','bt','btvn','tu_luyen']` cho mọi cấp
+    (gộp-view không phân biệt cấp).
+  - `getTongQuanHS`: query thêm `hoc_sinh.khoi`; tách `tuLuyenRows` riêng khỏi `btvnRows`; cấp 1 thì
+    tu_luyen được đẩy vào CẢ `byDangTop` (ảnh hưởng mức thành thạo hiển thị) lẫn `byDangBottom`; cấp 3
+    thì tu_luyen chỉ vào `byDangBottom` (đúng vị trí cũ của 'btvn' — chỉ tham khảo). **Cố ý KHÔNG đụng
+    `hoatDong`** (cột %ET/%BTVN/%MT hoạt động) — tu_luyen không cộng vào `actBucket`, tránh tự ý thêm
+    cột dashboard thứ 4 ngoài phạm vi được giao.
+  - `loadMasteryCells` (rollup lớp/khối/hệ, dùng cho staff): thêm `cap1Set` (suy từ `hoc_sinh.khoi` đã
+    có sẵn trong query gốc, không cần query thêm) — 1 dòng eval nguồn tu_luyen chỉ được cộng vào rollup
+    khi (`includeBTVN` bật) HOẶC (HS đó là cấp 1 và toggle tắt), khớp đúng logic của `getMasteryHS`.
+- Xác nhận bằng grep: `getMasteryHS`/`loadMasteryCells`/`getTongQuanHS` chỉ được gọi từ màn STAFF
+  (`KetQuaScreen`, `ReportPHScreen`, `BTScreen`) — query thêm `hoc_sinh.khoi` không vướng RLS (staff
+  bypass RLS, không như phía HS).
+
+**Verify bằng `vite-node` gọi thẳng hàm thật (không suy từ tsc/code review):** dựng 1 dòng
+`bai_test`(loại='tu_luyen')+`bai_test_cau`+`bai_lam`+`bai_lam_cau` giả cho HS0602 (khối 5, cấp 1,
+lớp 5A1/Toán) và cho HS0004 (khối 11, cấp 3) — cùng 1 `ma_dang` thật, verdict='correct'.
+- HS0602: `getMasteryHS(id, 'Toán')` (KHÔNG bật includeBTVN) → dạng test **CÓ** trong kết quả, nguồn
+  `['tu_luyen']` → **đúng**, cấp 1 vào mastery trung tâm mặc định.
+- HS0004: `getMasteryHS(id, 'Toán')` mặc định → dạng test **KHÔNG** có (tu_luyen là nguồn DUY NHẤT
+  của dạng này nên vắng mặt hoàn toàn nếu bị loại đúng) → **đúng**. Bật `{includeBTVN: true}` → dạng
+  xuất hiện lại với nguồn `['tu_luyen']` → **đúng**, gộp-view vẫn thấy được.
+- Dọn sạch toàn bộ dữ liệu test sau khi verify (script tự xoá ở cuối, có log xác nhận).
+- `npx tsc --noEmit` sạch trước verify.
+
+Kết quả: `mastery.ts` giờ phân biệt đúng tu_luyen theo cấp — khớp yêu cầu CEO 18-20/08.
+
+## 2026-08-20 (tiếp) — ẨN 3 ô ET/BTVN/Bài tập trên lớp cho cấp 1 (mig 202608201407)
+
+CEO chốt: "app của HS cấp 1 bỏ 3 cục BTTL BTVN và ET đi ko hiện" — đúng theo spec gốc 17/08 ("cấp 1
+ko có làm ET, BTVN hay BTTL trên điện thoại. Chỉ có tự luyện") nhưng màn chính trước giờ hiện đủ 6 ô
+cho MỌI cấp (3 ô ET/BTVN/BTTL chỉ rỗng — "Chưa có bài" — chứ không ẩn), gây nhiễu cho HS cấp 1.
+
+**Vấn đề kỹ thuật:** cần biết HS đang đăng nhập có phải cấp 1 hay không để ẩn đúng 3 ô, nhưng
+`hoc_sinh` staff-only — HS tự đọc dòng CỦA MÌNH cũng ra **0 dòng, không lỗi** (verify: HS0004 SELECT
+hoc_sinh → `[]`, đúng bẫy CLAUDE.md §2.1 "0 dòng không phải bằng chứng bảng rỗng"). Cùng lý do đã
+khiến `monCuaHS()` phải đi qua RPC hôm nay — giờ thêm 1 RPC tương tự cho "cấp".
+
+**Sửa:**
+- Migration `202608201407_hs_cap1_cua_toi.sql` — RPC `hs_cap1_cua_toi()` (SECURITY DEFINER, scope
+  `my_hoc_sinh_id()`), trả `boolean`. Danh sách khối cấp 1 = ĐÚNG `CAP1_KHOI` đã dùng ở `mastery.ts`
+  (`'3','4','4T','5','5T'`) — không bịa lại, chỉ 1 biên giới HS-facing cần fact này nên không đáng
+  tách bảng dùng chung 2 phía (staff-side đã bypass RLS, không cần RPC).
+- `src/lib/tuluyen.ts` — thêm `laCap1HS()` gọi RPC trên, cùng khuôn với `monCuaHS()` sẵn có.
+- `src/screens/hocsinh/HocSinhApp.tsx` — thêm state `cap1` (null = chưa biết, chờ trước khi vẽ lưới
+  ô — tránh nháy 6→3 ô), fetch qua `useEffect` song song với `tests`. Thêm `KHU_AN_CAP1` (set 3 id ô
+  cần ẩn) và lọc `KHU.filter(k => !(cap1 && KHU_AN_CAP1.has(k.id)))` trước khi `.map()` vẽ lưới.
+  KHÔNG đụng gì ở tầng dữ liệu — 3 ô đó với cấp 1 vốn đã luôn rỗng (`cuaKhu()` không có `bai_test`
+  loại giao_trinh/et/btvn nào cho cấp 1), ẩn chỉ bớt nhiễu UI.
+
+**Verify:** `npx tsc --noEmit` sạch. Test RPC end-to-end qua chính client HS thật (không admin) —
+đăng nhập HS0602 (khối 5, cấp 1, có 203 dòng `gami_grades` thật) → `hs_cap1_cua_toi()` trả `true` ·
+`hs_dang_evals`/`tu_luyen_sinh` vẫn chạy đúng bình thường (dọn bài test vừa sinh ra ngay sau test).
+Browser thật (localhost, mobile 375×812): phát hiện dev server đang chạy trỏ vào worktree `main`
+(không phải `bkdemy-erp-v2-lambai` đang sửa) — code mới CHƯA lên tới trình duyệt cho tới khi merge.
+Ghi vào devlog TRƯỚC khi merge; verify browser thật SAU merge tiếp ở mục dưới (nếu có).
+
+**Tiện thể trả lời câu hỏi thứ 2 của CEO — "sao cục tự luyện chưa dùng dc à":** Tự luyện KHÔNG phải ô
+"Sắp có" — đã build và verify xong từ sớm hôm nay (xem mục "TỰ LUYỆN: xây engine" ở trên). Kiểm lại
+lần nữa cho chắc: 52/59 HS cấp 1 đang học đã có ≥1 dòng đo thật (`gami_grades`/`bt_grades`) để tự
+luyện rút dạng; test end-to-end qua chính client HS0602 thật (không phải HS0004 hay data giả) chạy
+trơn tru toàn bộ chuỗi `hs_dang_evals` → chọn dạng → `tu_luyen_sinh`. 7/59 HS cấp 1 CHƯA có dòng đo
+nào (chưa học buổi nào có chấm) — nhóm này bấm vào sẽ thấy đúng thông báo "Chưa có dữ liệu học tập
+để tự luyện — học vài buổi trên lớp rồi quay lại nhé" (§1.5 "thà bỏ trống còn hơn đánh sai": không
+suy đoán dạng để luyện khi chưa có gì đo được), KHÔNG phải lỗi — là hành vi đúng cho HS thật sự mới.
+
+## 2026-08-20 — Chuỗi soạn tài liệu: giả thiết chung chọn theo XA NHẤT (cấp), không phải mô hình sâu nhất
+
+**Yêu cầu (Thùy, verbatim):** "Trong 1 chuỗi , nếu các giải thiết giống nhau thì ko nói. nếu giả thiết
+khác nhau thì chọn giải thiết của bài xa nhất trong chuỗi" — bối cảnh: từ hôm 08-14 bài toán có thể
+mang giả thiết RIÊNG (`gia_thiet_rieng`/`gt_thay_the`); một session khác (commit `2bbe3e3`, 17/08) còn
+nới sâu hơn — `giaThietBaiToan()` giờ đệ quy kế thừa theo TIỀN ĐỀ CHÍNH gần nhất (không còn thuần suy
+từ mô hình). Hệ quả: nhiều node trong CÙNG một chuỗi (a,b,c... ghép thành 1 mục để in) có thể có
+`giaThietBaiToan()` khác nhau — trong khi 4 chỗ chọn "giả thiết chung của chuỗi" ở `SoanTaiLieu.tsx`
+(`mucGhep`, `mucGhepLua`, `versions`/`deepestOf`, `deBaiChung`) vẫn đang chọn theo **mô hình sâu nhất**
+(`doSauTrongHo(mo_hinh_id)`) — SAI TRỤC: đó là trục GIẢ THIẾT (cây mô hình), còn chuỗi nằm trên trục
+SUY LUẬN (cấp). Giả định cũ "mô hình sâu nhất ⇒ đủ giả thiết nhất" chỉ đúng khi bài toán còn 100% mượn
+mô hình (đơn điệu theo cây) — giờ không còn chắc nữa.
+
+**Làm:** `src/screens/kho/hinh/SoanTaiLieu.tsx` — thêm hàm `xaNhatTrongChuoi(ns)`: chọn node có **cấp
+cao nhất** trong tập truyền vào (cấp = trục suy luận = đúng nghĩa "xa nhất trong chuỗi", node đích cuối
+chuỗi chứng minh). Thay 4 chỗ `doSauTrongHo(mo_hinh_id)` bằng hàm này: `mucGhep` (đề chuẩn ghép),
+`mucGhepLua` (ghép 1 lứa, giữ đúng logic fallback "chỉ xét node có biến thể của lứa, rỗng thì về
+`nodes[0]`"), `deepestOf` trong `versions` (bản Đề chuẩn gốc + từng Lứa), `deBaiChung` (phiếu tick xem
+trước). Không tạo nhánh rẽ "giống/khác nhau" tách riêng — theo đúng lý Thùy nói: nếu giả thiết mọi node
+giống nhau thì XA NHẤT cũng ra y hệt giá trị đó (đằng nào chọn ai cũng vậy), không cần rẽ nhánh code
+riêng cho ca "giống nhau". `doSauTrongHo`/`moHinhSauNhat` các chỗ khác (TaiLieuChuan.tsx, cột-cấp SoDo,
+badge "khác mô hình"…) giữ nguyên — đó là bối cảnh MÔ HÌNH thật (không phải chọn giả thiết 1 bài đại
+diện cho chuỗi), sửa vào đó là sai chỗ.
+
+**⚠ PHÁT HIỆN PHỤ (khi soi lại) — dữ liệu test dính lại 6 ngày trên node THẬT:** lúc verify tính năng
+"giả thiết riêng" hôm 08-14, tôi gõ text test "TEST góc D = 65 độ (verify only)" vào `gia_thiet_rieng`
+của **BT.08.025 thật** (họ Tứ giác K8), tưởng đã xoá sạch bằng thao tác Sửa→xoá trắng→Lưu ngay hôm đó
+và log verify "đã dọn sạch". Hôm nay soi lại (chuẩn bị test tính năng chuỗi) mới phát hiện `gia_thiet_
+rieng` của BT.08.025 **VẪN CÒN** đúng chuỗi text test đó — thao tác Sửa/Lưu hôm 08-14 không thật sự
+persist (có thể do click sai toạ độ ref sau khi DOM re-render, hoặc `computer` type/key không target
+đúng textarea — không xác định được nguyên nhân chính xác, không cố suy đoán quá 1 dòng). Đã dùng
+`form_input` (set value trực tiếp, không qua keystroke giả lập) để xoá thật + `Lưu`, xác nhận lại bằng
+`document.querySelectorAll('textarea')[...].value` qua JS (không tin read_page/placeholder — placeholder
+hiện cả khi field CÓ giá trị) VÀ bằng full page reload + đọc lại `innerText` của node card. BT.08.025
+giờ đúng "Cho tứ giác ABCD", sạch.
+- **Bài học:** sau bước "Lưu" khi test trên data thật, PHẢI verify lại bằng cách đọc GIÁ TRỊ THẬT (DOM
+  `.value` qua JS, hoặc reload trang + đọc lại), KHÔNG được tin `read_page` một mình — nhãn hiển thị
+  của `read_page` cho textarea/textbox lấy TỪ `placeholder`, không phản ánh value hiện tại, nên "trông
+  giống rỗng" không phải bằng chứng đã xoá.
+
+**Verify:** tsc sạch · `npx vite build` sạch. Live: mở được Sơ đồ/K8/Tứ giác (dev server, session khác
+đang chạy song song cùng máy nhưng khác port lần này nên không đụng nhau), xác nhận card + JS query
+DOM đúng sau khi dọn data test. KHÔNG dựng được ví dụ chuỗi thật có giả thiết LỆCH giữa các node để soi
+trực tiếp UI kết quả "xa nhất" — K8 hiện "Kho chính"/"Tài liệu chuẩn" đang trống (0 bài đã gán node qua
+cổng 1/2), dựng data test tốn nhiều bước ngoài phạm vi yêu cầu và có rủi ro lặp lại sự cố dọn-không-sạch
+ở trên nếu làm vội. Đã đọc kỹ code 3 lần đối chiếu logic cũ (giữ nguyên các fallback: `mucGhepLua`'s
+"không node nào có biến thể ⇒ về `nodes[0]`", `deepestOf` giữ đúng chữ ký `(ns: BaiToan[]) => BaiToan`
+để không đổi call site khác) — tự tin đúng nhưng CHƯA click-through trực tiếp thấy kết quả cuối, ghi rõ
+ở đây để không nhận vơ là đã verify UI đầy đủ.
+
+## 2026-08-20 (tiếp) — Builder giáo trình Hình: panel xem trước SỐNG bên phải + badge cảnh báo trùng bài
+
+**Yêu cầu (Thùy, verbatim):**
+"1. Nút chuyển lên xuống giữa các bài. bài nào ở trên hiện trước bài nào ở dưới hiện sau
+2. Preview bài đó. Bên trái là thông số builder. Bên phải là preview bài đó luôn (Đề + hình vẽ). Thay vì
+   là cái mắt phải click vào thì hiện luôn. Không gian còn thừa khá nhiều
+3. Ngoài ra còn lỗi builder khi t vào xem thì nó ko save cái cũ t đã chọn. Vào builder buổi 2 lớp 8A ,
+   builder hiện 2 câu nhưng preview chỉ hiện 1 (1 là do t chọn từ trước nhưng ko hiểu sao builder vẫn
+   hiện 2)
+4. Fix nhanh nào"
+
+**Xác định đúng màn:** "builder của hình" = `BuoiPickEditor` (`SoanTaiLieu.tsx`, export dùng bởi
+`GiaoTrinhScreen.tsx` → `BuoiCardHinh`) — nơi soạn nội dung TỪNG BUỔI của 1 giáo trình Hình cho 1 lớp cụ
+thể (đúng khớp "builder buổi 2 lớp 8A"). Điểm 1 (nút ▲▼ đổi thứ tự) đã có sẵn từ 17/08 trong `ChuoiRow`
+— KHÔNG phải chưa có; đọc lại ý Thùy thì đây là 1 cụm mô tả CHUNG cho panel preview mới (nút ↑↓ ĐIỀU
+HƯỚNG giữa các bài trong panel xem, đi đúng THỨ TỰ mà ▲▼ đã sắp — không phải yêu cầu thêm 1 bộ nút đổi
+thứ tự khác).
+
+**Điểm 3 — root cause tìm được, KHÔNG PHẢI bug persistence:** `banInTheoMoHinh` (dùng chung cho preview
+"👁/📘 Xem" LẪN xuất PDF thật) gọi `dedupePicks()` — khử pick TRÙNG chữ ký (cùng bản `kind/luaId/
+bienTheId/yId` + cùng bộ `nodeIds`) trước khi ghép `mucs`. `ChuoiRow`'s danh sách builder (`picksOf`)
+KHÔNG khử — hiện ĐỦ mọi pick kể cả pick trùng. ⇒ builder đếm 2, preview/PDF chỉ ra 1 — ĐÚNG như Thùy tả,
+không phải lỗi lưu/tải (`gt.loadBuoiPicks`/`saveBuoiSelection` đọc-ghi đúng, `nhap.picks` builder và
+preview dùng CHUNG 1 mảng in-memory, xác nhận qua `xem()` trong GiaoTrinhScreen.tsx).
+
+**Làm (`SoanTaiLieu.tsx`):**
+- Tách `pickSig(p)` khỏi `dedupePicks` (logic y hệt, giờ dùng lại được ở 2 nơi).
+- `ChuoiRow`: tính `dupKeys` (Set các key SẼ bị `dedupePicks` loại lúc in, đúng thuật toán/thứ tự gốc) —
+  gắn badge "⚠ trùng" đỏ ngay trên dòng bài, tooltip giải thích rõ "chỉ giữ dòng xuất hiện TRƯỚC, dòng
+  này KHÔNG in ra" + gợi ý bấm ✕/✎. Builder giờ LỘ RA sự lệch số thay vì âm thầm khác preview.
+- Bỏ hẳn modal `XemBaiPopup` (che màn hình, phải Đóng mới soạn tiếp) → `PreviewPane` — panel SỐNG, cột
+  thứ 3 của `BuoiPickEditor` (`xl:grid-cols-[190px_minmax(0,1fr)_360px]`, `xl:sticky xl:top-3`), tái
+  dùng NGUYÊN resolver `mucGhep/mucGhepLua/mucBienThe/mucY` (khuôn print thật — WYSIWYG, không tính lại
+  gì riêng). `BuoiPickEditor` giữ state `xem: {list, index}` — 👁 mỗi dòng gọi `onXem(ds, i)` (`ds` =
+  đúng danh sách top-to-bottom của `ChuoiRow` đó, thứ tự = thứ tự in) → panel đổi nội dung TẠI CHỖ, nút
+  ↑/↓ chỉ đổi `index` trong `list` đã truyền, khỏi tính lại "bài trước/sau" từ đầu.
+- Auto-chọn bài ĐẦU TIÊN tìm thấy khi mở buổi lần đầu (hoặc bài đang xem bị xoá/đổi) — dùng luôn không
+  gian panel phải thay vì để trống, đúng ý "không gian còn thừa khá nhiều".
+
+**Verify:** tsc sạch · `npx vite build` sạch. Live (dev server, Giáo trình 8A, Khối 8, Buổi 2 thật — đúng
+kịch bản Thùy tả): panel "👁 XEM TRƯỚC" tự hiện ngay khi mở buổi (không cần bấm gì), auto-chọn BT.08.047
+"1/1"; bấm 👁 ở dòng chuỗi BT.08.048+BT.08.049 → panel đổi đúng nội dung 2 ý a)/b); bấm 👁 ở biến thể 1
+của BT.08.047 (Về nhà, 2 bài) → panel "1/2" → bấm ↓ → "2/2", đề đổi đúng sang biến thể khác (góc B=4D
+thay vì A=3C) — nav hoạt động đúng. KHÔNG bắt được ca "⚠ trùng" thật trong Buổi 2/Giáo trình 8A hiện tại
+(không có pick trùng chữ ký ở đây) — logic đã đối chiếu kỹ đúng thuật toán `dedupePicks`, để tự lộ khi
+gặp buổi thật có trùng.

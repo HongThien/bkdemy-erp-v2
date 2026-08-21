@@ -19,7 +19,10 @@ export const MASTERY_CONFIG = {
   CAN_LUYEN: 0.5, // 0.5 ≤ score < 0.8 (tổng 2.5–3.5) → cần luyện · < 0.5 (tổng <2.5) → yếu
   TIN_CAO: 5, // n ≥ 5 lần đo → tin cao
   TIN_TB: 3, // 3–4 → tin trung bình · ≤ 2 → tin thấp (§5: thiếu data = ĐỘ TIN thấp, KHÁC mastery thấp)
-  WEIGHT: { ingame: 2, et: 2, dg: 2, mt: 3, btvn: 1, bt: 1 }, // nguồn không có trong bảng (hoặc thiếu src) → weight 1
+  // tu_luyen = hệ số 1 (Thùy 18-20/08, cho HS cấp 1 — PH kèm nên đủ nghiêm túc, không có kênh nào
+  // khác để đối chiếu). CÙNG hệ số btvn/bt — khác nhau là chỗ có/không vào mastery TRUNG TÂM mặc
+  // định, không phải trọng số khi ĐÃ vào (xem mastery.ts: cấp 1 luôn gồm, cấp 3 chỉ gộp qua toggle).
+  WEIGHT: { ingame: 2, et: 2, dg: 2, mt: 3, btvn: 1, bt: 1, tu_luyen: 1 }, // nguồn không có trong bảng (hoặc thiếu src) → weight 1
 }
 
 // grade.result / đánh-giá → giá trị đo 0..1.

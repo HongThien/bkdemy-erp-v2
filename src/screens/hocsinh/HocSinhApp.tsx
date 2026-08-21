@@ -4,7 +4,7 @@
 //   → hiện đáp án + lời giải chi tiết của câu → "Câu tiếp". BTVN reveal ngay, làm lại tới hạn.
 // Skin = plain-clean; game (Fredoka/mascot/gradient) làm phiên design sau.
 // ============================================================================
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { supabase } from '../../lib/supabase'
 import { MathText } from '../kho/ui'
 import {
@@ -14,6 +14,7 @@ import {
 } from '../../lib/testonline'
 import { mucDeadline, nhanConLai } from '../../lib/tuan'
 import { seededShuffleWithOrig, seededPermByDang } from '../../lib/shuffle'
+import { timTuLuyenHomNay, sinhTuLuyen, monCuaHS, laCap1HS, TU_LUYEN_TRAN_NGAY, TU_LUYEN_SO_CAU_MOI_LUOT } from '../../lib/tuluyen'
 import DoiMatKhau from './DoiMatKhau'
 
 type Chon = number | string | (string | null)[] | null // TN=index · TLN=chuỗi · ĐS=mảng 'D'/'S'
@@ -32,12 +33,19 @@ const THI_LOAI = new Set(['et', 'de_thi'])
 // 10 câu theo dạng yếu, ĐẾM vào mastery) · thông tin học tập (dạng yếu + %Đ-C-S theo
 // dạng/chuyên đề + xếp hạng lớp/khối) · làm đề thi thử (đề trường/sở, sắp nhập nhiều).
 // 2 CỘT — màn điện thoại dọc (Thùy: "màn hình điện thoại là dọc mà").
+// ⭐ CẤP 1 (Thùy 20/08): "cấp 1 ko có làm ET, BTVN hay BTTL trên điện thoại. Chỉ có tự luyện" — 3 ô
+// đầu ẨN HẲN (không phải "Sắp có") cho cấp 1, KHÔNG đổi gì ở tầng dữ liệu (cấp 1 vốn không có
+// bai_test loại giao_trinh/et/btvn nào — cuaKhu() các ô đó luôn rỗng, ẩn chỉ là bớt nhiễu UI).
+const KHU_AN_CAP1 = new Set<KhuId>(['giao_trinh', 'et', 'btvn'])
 type KhuId = 'giao_trinh' | 'et' | 'btvn' | 'tu_luyen' | 'thong_tin' | 'de_thi_thu'
-const KHU: { id: KhuId; ten: string; icon: string; loai?: string }[] = [
+// direct = ô này KHÔNG đi qua màn "danh sách nhiều bài" (setKhu+tab) — bấm vào thẳng 1 màn riêng.
+// Tự luyện là 1 PHIÊN đang-tiếp-diễn trong ngày (không phải danh sách bài đã phát hành theo ngày
+// như ET/BTVN), nên không hợp mô hình list+tab dùng chung — LamTuLuyen tự lo "hôm nay có bài chưa".
+const KHU: { id: KhuId; ten: string; icon: string; loai?: string; direct?: boolean }[] = [
   { id: 'giao_trinh', ten: 'Bài tập trên lớp', icon: '📓', loai: 'giao_trinh' },
   { id: 'et', ten: 'ET', icon: '📋', loai: 'et' },
   { id: 'btvn', ten: 'BTVN', icon: '🏠', loai: 'btvn' },
-  { id: 'tu_luyen', ten: 'Tự luyện', icon: '🎯' },
+  { id: 'tu_luyen', ten: 'Tự luyện', icon: '🎯', direct: true },
   { id: 'thong_tin', ten: 'Thông tin học tập', icon: '📈' },
   { id: 'de_thi_thu', ten: 'Làm đề thi thử', icon: '📄' },
 ]
@@ -48,10 +56,15 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [tab, setTab] = useState<'chua' | 'xong'>('chua')
   const [doiMK, setDoiMK] = useState(false)
   const [khu, setKhu] = useState<KhuId | null>(null) // null = màn chính 6 ô
+  const [tuLuyenMo, setTuLuyenMo] = useState(false)
+  const [cap1, setCap1] = useState<boolean | null>(null) // null = chưa biết — chờ trước khi vẽ lưới ô
 
   useEffect(() => { listBaiTestCuaHS().then(setTests).catch(() => setTests([])) }, [])
+  useEffect(() => { laCap1HS().then(setCap1).catch(() => setCap1(false)) }, [])
 
   if (doiMK) return <DoiMatKhau maHS={maHS} batBuoc={false} onXong={() => setDoiMK(false)} />
+
+  if (tuLuyenMo) return <LamTuLuyen hocSinhId={hocSinhId} onXong={() => setTuLuyenMo(false)} />
 
   if (active) {
     const back = () => { setActive(null); listBaiTestCuaHS().then(setTests) }
@@ -84,27 +97,29 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     </div>
   )
 
-  // ── MÀN CHÍNH: 6 ô vuông, 2 cột ───────────────────────────────────────────
+  // ── MÀN CHÍNH: 6 ô vuông (3 với cấp 1), 2 cột ─────────────────────────────
+  if (!khu && cap1 === null) return <div className="flex min-h-screen items-center justify-center text-sm text-slate-400">Đang tải…</div>
   if (!khu) return (
     <div className="mx-auto min-h-screen max-w-md bg-slate-50 px-4 pb-10">
       {dinhDanh}
       <div className="grid grid-cols-2 gap-3">
-        {KHU.map((k) => {
-          const sapCo = !k.loai
-          const ds = sapCo ? [] : cuaKhu(k.id)
+        {KHU.filter((k) => !(cap1 && KHU_AN_CAP1.has(k.id))).map((k) => {
+          const sapCo = !k.loai && !k.direct
+          const ds = k.loai ? cuaKhu(k.id) : []
           // Badge = việc CÒN LÀM ĐƯỢC. Bài quá hạn vẫn hiện trong danh sách (Thùy: "hiện quá hạn
           // thôi") nhưng không đếm vào badge — badge mà đếm cả thứ không bấm được thì thành nhiễu.
           const nChuaLam = ds.filter((t) => !xongCua(t) && !daHetHan(t)).length
           const nQuaHan = ds.filter((t) => !xongCua(t) && daHetHan(t)).length
+          const onClick = sapCo ? undefined : k.direct ? () => setTuLuyenMo(true) : () => { setKhu(k.id); setTab('chua') }
           return (
-            <button key={k.id} disabled={sapCo} onClick={() => { setKhu(k.id); setTab('chua') }}
+            <button key={k.id} disabled={sapCo} onClick={onClick}
               className={`relative flex aspect-square flex-col justify-between rounded-2xl border p-3.5 text-left transition ${
                 sapCo ? 'border-dashed border-slate-300 bg-slate-100' : 'border-slate-200 bg-white active:scale-[0.98]'}`}>
               <span className={`text-2xl ${sapCo ? 'opacity-40' : ''}`}>{k.icon}</span>
               <span>
                 <span className={`block text-[15px] font-semibold ${sapCo ? 'text-slate-400' : 'text-slate-900'}`}>{k.ten}</span>
                 <span className={`mt-0.5 block text-[12.5px] ${nChuaLam === 0 && nQuaHan > 0 ? 'text-rose-500' : 'text-slate-400'}`}>
-                  {sapCo ? 'Sắp có' : tests === null ? '…'
+                  {sapCo ? 'Sắp có' : k.direct ? 'Luyện theo dạng yếu' : tests === null ? '…'
                     : nChuaLam > 0 ? `${nChuaLam} bài chưa làm`
                     : nQuaHan > 0 ? `${nQuaHan} bài quá hạn`
                     : ds.length ? 'Xong hết rồi' : 'Chưa có bài'}
@@ -195,7 +210,13 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   )
 }
 
-function LamBai({ baiTestId, hocSinhId, onXong }: { baiTestId: string; hocSinhId: string; onXong: () => void }) {
+// doneCaption/doneExtra: TUỲ CHỌN, mặc định giữ NGUYÊN hành vi BTVN/giáo trình cũ — chỉ Tự luyện
+// (LamTuLuyen) truyền vào để đổi câu chữ (không có "hạn nộp"/"thầy cô" như BTVN) + chèn nút "Làm
+// thêm 10 câu" vào đúng màn kết quả có sẵn, thay vì tự vẽ lại toàn bộ màn done.
+function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra }: {
+  baiTestId: string; hocSinhId: string; onXong: () => void
+  doneCaption?: string; doneExtra?: React.ReactNode
+}) {
   const [full, setFull] = useState<BaiTestFull | null>(null)
   const [baiLamId, setBaiLamId] = useState<string | null>(null)
   const [idx, setIdx] = useState(0)
@@ -287,8 +308,9 @@ function LamBai({ baiTestId, hocSinhId, onXong }: { baiTestId: string; hocSinhId
       <div className="mx-auto flex min-h-screen max-w-md flex-col items-center justify-center bg-slate-50 px-6 text-center">
         <div className="flex h-20 w-20 items-center justify-center rounded-full bg-emerald-50 text-4xl">🏆</div>
         <p className="mt-4 text-2xl font-bold text-slate-900">{dung} / {total} đúng</p>
-        <p className="mt-1 text-[13px] text-slate-500">Làm lại được tới hạn nộp. Kết quả gửi thầy cô tham khảo.</p>
+        <p className="mt-1 text-[13px] text-slate-500">{doneCaption ?? 'Làm lại được tới hạn nộp. Kết quả gửi thầy cô tham khảo.'}</p>
         <button onClick={onXong} className="mt-6 rounded-xl bg-indigo-600 px-6 py-3 text-sm font-medium text-white">Về danh sách</button>
+        {doneExtra}
       </div>
     )
   }
@@ -424,6 +446,77 @@ function LamBai({ baiTestId, hocSinhId, onXong }: { baiTestId: string; hocSinhId
         )}
       </div>
     </div>
+  )
+}
+
+// ── TỰ LUYỆN: bọc NGOÀI LamBai — chỉ lo "hôm nay đã có bài chưa, chưa thì sinh 10 câu, sinh thêm
+// khi bấm" — phần LÀM BÀI (chọn/chấm/lời giải/reveal-ngay) DÙNG NGUYÊN LamBai, không viết lại.
+// key={baiTestId+so_cau} → mỗi lần "làm thêm" đổi key ⇒ LamBai REMOUNT, tự fetch lại đủ câu mới.
+function LamTuLuyen({ hocSinhId, onXong }: { hocSinhId: string; onXong: () => void }) {
+  const [state, setState] = useState<'dang_tai' | 'san_sang' | 'trong' | 'loi'>('dang_tai')
+  const [mon, setMon] = useState<string | null>(null)
+  const [baiTestId, setBaiTestId] = useState<string | null>(null)
+  const [soCau, setSoCau] = useState(0)
+  const [busy, setBusy] = useState(false)
+  const [err, setErr] = useState<string | null>(null)
+  // Guard StrictMode chạy effect 2 lần (bài học CLAUDE.md §"ensure* slot"): thiếu cái này thì lượt
+  // gọi thứ 2 cũng thấy "chưa có bài hôm nay" (đọc trước khi lượt 1 kịp ghi) → sinh THÊM 10 câu nữa
+  // đè lên — đã dính thật lúc verify (19 câu thay vì 10). unique index chặn được 2 DÒNG bai_test
+  // riêng biệt, nhưng RPC tự APPEND khi đụng unique nên không chặn được việc sinh THỪA câu.
+  const daGoi = useRef(false)
+
+  async function taiHomNay() {
+    setState('dang_tai'); setErr(null)
+    try {
+      const m = await monCuaHS()
+      if (!m) { setState('trong'); setErr('Chưa xác định được môn học của em — báo thầy cô nhé.'); return }
+      setMon(m)
+      const co = await timTuLuyenHomNay(m)
+      if (co) { setBaiTestId(co.baiTestId); setSoCau(co.soCau); setState('san_sang'); return }
+      const kq = await sinhTuLuyen(m)
+      setBaiTestId(kq.baiTestId); setSoCau(kq.tong); setState('san_sang')
+    } catch (e: any) { setErr(e?.message ?? String(e)); setState('trong') }
+  }
+  useEffect(() => { if (daGoi.current) return; daGoi.current = true; taiHomNay() }, []) // eslint-disable-line
+
+  async function lamThem() {
+    if (!mon || soCau >= TU_LUYEN_TRAN_NGAY) return
+    setBusy(true); setErr(null)
+    try {
+      const con = Math.min(TU_LUYEN_SO_CAU_MOI_LUOT, TU_LUYEN_TRAN_NGAY - soCau)
+      const kq = await sinhTuLuyen(mon, con)
+      setBaiTestId(kq.baiTestId); setSoCau(kq.tong)
+    } catch (e: any) { setErr(e?.message ?? String(e)) } finally { setBusy(false) }
+  }
+
+  if (state === 'dang_tai') return <div className="flex min-h-screen items-center justify-center text-sm text-slate-400">Đang chuẩn bị bài…</div>
+  if (state === 'trong' || !baiTestId || !mon) return (
+    <div className="mx-auto flex min-h-screen max-w-md flex-col items-center justify-center bg-slate-50 px-6 text-center">
+      <p className="text-3xl">🌱</p>
+      <p className="mt-3 text-[15px] font-medium text-slate-700">{err ?? 'Chưa có dữ liệu học tập để tự luyện.'}</p>
+      <p className="mt-1 text-[13px] text-slate-400">Học vài buổi trên lớp rồi quay lại nhé.</p>
+      <button onClick={onXong} className="mt-6 rounded-xl border border-slate-200 bg-white px-6 py-3 text-sm font-medium text-slate-600">Về trang chính</button>
+    </div>
+  )
+
+  const conLai = TU_LUYEN_TRAN_NGAY - soCau
+  return (
+    <LamBai
+      key={baiTestId + ':' + soCau}
+      baiTestId={baiTestId}
+      hocSinhId={hocSinhId}
+      onXong={onXong}
+      doneCaption={`Hôm nay đã làm ${soCau}/${TU_LUYEN_TRAN_NGAY} câu.`}
+      doneExtra={conLai > 0 ? (
+        <div className="mt-3 w-full">
+          {err && <p className="mb-2 text-[12.5px] text-rose-600">{err}</p>}
+          <button onClick={lamThem} disabled={busy}
+            className="w-full rounded-xl border border-indigo-200 bg-indigo-50 px-6 py-3 text-sm font-medium text-indigo-700 disabled:opacity-40">
+            {busy ? 'Đang tạo thêm…' : `Làm thêm ${Math.min(TU_LUYEN_SO_CAU_MOI_LUOT, conLai)} câu`}
+          </button>
+        </div>
+      ) : <p className="mt-3 text-[13px] text-slate-400">Đã đạt tối đa {TU_LUYEN_TRAN_NGAY} câu hôm nay — hẹn mai luyện tiếp!</p>}
+    />
   )
 }
 
