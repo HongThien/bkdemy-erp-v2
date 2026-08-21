@@ -163,7 +163,7 @@ export async function getLopRankDiemMT(hocSinhId: string, lopId: string, mon: st
 // Hạng TRONG HỆ (lop.bac — band S/A/B/C… GV chọn khi xếp lớp, vd "lớp 7A1" → hệ "A") — Thùy 08-19: 3 hạng
 // lớp/hệ/khối là 3 phạm vi LỒNG NHAU tăng dần (lớp ⊂ hệ ⊂ khối), NHƯNG hệ vẫn giới hạn trong ĐÚNG khối
 // (đề MT khác nhau theo khối — không thể so điểm hệ A khối 7 với hệ A khối 9, khác đề).
-export type HeRankMT = { rankNow: number; rankTotal: number; he: string }
+export type HeRankMT = { rankNow: number; rankTotal: number; he: string; khoi: string }
 export async function getHeRankDiemMT(hocSinhId: string, mon: string, ym: string): Promise<HeRankMT | null> {
   const { data: lopHS } = await supabase.from('hoc_sinh_lop')
     .select('lop:lop_id!inner(khoi, bac, mon)').eq('hoc_sinh_id', hocSinhId).eq('trang_thai', 'dang_hoc').eq('lop.mon', mon).maybeSingle()
@@ -179,5 +179,5 @@ export async function getHeRankDiemMT(hocSinhId: string, mon: string, ym: string
     .eq('loai', 'mt_sat_hach').eq('mon', mon).eq('khoi', khoi).limit(LIMIT)
   const ktIds = ((kts ?? []) as any[]).filter((k) => { const d = k.buoi?.ngay; return d && d >= from && d < to }).map((k) => k.id)
   const r = await rankByDiemMT(hocSinhId, rosterIds, ktIds)
-  return r ? { ...r, he } : null
+  return r ? { ...r, he, khoi } : null
 }

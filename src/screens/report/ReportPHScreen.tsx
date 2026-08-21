@@ -454,20 +454,26 @@ function PhAnhModal({ hsId, mon, ym, lopId, hsName, hsImg, lopTen, gvName, tq, m
   const a = tq.hoatDong, hh = tq.hoanThanh.toanBo.etMt
   const trendV = tq.trend.hoanThanhToanBo
   // 3 HẠNG (Thùy 08-19, thay cho %hoàn thành gây confuse PH) — LỚP ⊂ HỆ ⊂ KHỐI (phạm vi lồng nhau tăng
-  // dần), NGANG NHAU về hiển thị (Thùy: "3 cái rank này ngang nhau"), tách RIÊNG khỏi khối "xu hướng"
-  // (chữ + trend %) — không nhét chung 1 hàng như bản trước. Dùng chung style statusC (3 ô ngang có sẵn).
-  const rankHex = (r: { rankNow: number; rankTotal: number } | null) => {
-    if (!r) return '#94a3b8'
-    const pct = Math.round(((r.rankTotal - r.rankNow) / Math.max(1, r.rankTotal - 1)) * 100)
-    return pct >= 80 ? '#12a875' : pct >= 50 ? '#e29a23' : '#e45858'
+  // dần), NGANG NHAU về hiển thị, tách RIÊNG khỏi khối "xu hướng" (chữ + trend %). Thùy 08-21: đổi lại
+  // dạng VÒNG TRÒN (không phải ô chữ nhật) — 3 vòng nhỏ cạnh nhau, mỗi vòng ghi rõ giá trị cụ thể (vd
+  // "Lớp 9A1" thay vì chỉ "Lớp") vì PH không tự suy ra lớp/hệ/khối của con từ nhãn chung chung.
+  const RC2 = 2 * Math.PI * 25
+  const rankRing = (top: string, sub: string, r: { rankNow: number; rankTotal: number } | null) => {
+    const pct = r ? Math.round(((r.rankTotal - r.rankNow) / Math.max(1, r.rankTotal - 1)) * 100) : null
+    const hx = pct == null ? '#94a3b8' : pct >= 80 ? '#12a875' : pct >= 50 ? '#e29a23' : '#e45858'
+    return (
+      <div style={{ textAlign: 'center' }}>
+        <svg width={74} height={74} viewBox="0 0 74 74">
+          <circle cx={37} cy={37} r={25} fill="none" stroke="#e9f3ef" strokeWidth={8} />
+          <circle cx={37} cy={37} r={25} fill="none" stroke={hx} strokeWidth={8} strokeDasharray={RC2} strokeDashoffset={RC2 * (1 - (pct ?? 0) / 100)} strokeLinecap="round" transform="rotate(-90 37 37)" />
+          <text x={37} y={34} textAnchor="middle" fontSize={14} fontWeight={800} fill={hx}>{r ? `#${r.rankNow}` : '—'}</text>
+          <text x={37} y={46} textAnchor="middle" fontSize={7} fontWeight={700} fill="#94a3b8">{r ? `/${r.rankTotal}` : ''}</text>
+        </svg>
+        <div style={{ fontSize: 9.5, fontWeight: 800, color: '#5a6a83', marginTop: 3 }}>{top}</div>
+        <div style={{ fontSize: 8, fontWeight: 700, color: '#94a3b8' }}>{sub}</div>
+      </div>
+    )
   }
-  const rankBox = (label: string, r: { rankNow: number; rankTotal: number } | null) => (
-    <div style={{ padding: '10px 6px 9px', textAlign: 'center', background: '#fff', border: '1px solid #e8edf5', borderRadius: 15 }}>
-      <b style={{ display: 'block', fontSize: 17, color: rankHex(r), lineHeight: 1 }}>{r ? `#${r.rankNow}` : '—'}</b>
-      <small style={{ display: 'block', fontSize: 7.5, color: '#a0aabd', fontWeight: 800, letterSpacing: .3, marginTop: 3 }}>{r ? `/${r.rankTotal}` : 'chưa có dữ liệu'}</small>
-      <small style={{ display: 'block', fontSize: 9, color: '#5a6a83', fontWeight: 800, lineHeight: 1.15, marginTop: 1 }}>{label}</small>
-    </div>
-  )
   // Skill bar THANG 5 (GV chọn) + text nhận xét kèm tag.
   const bar5 = (label: string, lvl: number | null, hx: string, text: string | null) => (
     <div style={{ background: '#f7f9fd', border: '1px solid #edf1f7', borderRadius: 13, padding: '10px 11px', marginTop: 8 }}>
@@ -555,14 +561,18 @@ function PhAnhModal({ hsId, mon, ym, lopId, hsName, hsImg, lopTen, gvName, tq, m
               <div style={{ fontSize: 16, fontWeight: 800, margin: '4px 0', color: '#15233b', letterSpacing: -.15 }}>{muc ? `${muc.emoji} ${muc.label}` : 'Kết quả học tập tháng'}</div>
               {trendV != null && trendV !== 0 ? <span style={{ display: 'inline-flex', gap: 5, alignItems: 'center', fontSize: 10, fontWeight: 900, color: trendV > 0 ? '#12a875' : '#e45858', background: trendV > 0 ? '#ecfbf5' : '#fdecec', padding: '6px 8px', borderRadius: 999 }}>{trendV > 0 ? '↗' : '↘'} {trendV > 0 ? 'Tăng' : 'Giảm'} {Math.abs(trendV)}% so với kỳ trước</span> : null}
             </div>
-            {/* XẾP HẠNG ĐIỂM MT — 3 phạm vi ngang nhau: Lớp · Hệ · Khối (Thùy 08-19) */}
+            {/* XẾP HẠNG TEST THÁNG — 3 phạm vi ngang nhau: Lớp · Hệ · Khối (Thùy 08-19/21). "MT" → "Test
+                tháng" (PH không hiểu viết tắt MT). Mỗi vòng ghi giá trị CỤ THỂ (vd "Lớp 9A1") thay vì chỉ
+                nhãn chung "Lớp" — PH không tự suy ra lớp/hệ/khối của con. */}
             <div style={{ background: '#fff', border: '1px solid #e8edf5', borderRadius: 20, padding: '13px 14px 10px', marginBottom: 10, boxShadow: '0 7px 18px rgba(35,63,104,.055)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 9, marginBottom: 8 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 9, marginBottom: 10 }}>
                 <span style={{ width: 31, height: 31, borderRadius: 11, display: 'grid', placeItems: 'center', background: '#eef0ff', fontSize: 14 }}>🏆</span>
-                <div><div style={{ fontSize: 13, fontWeight: 800, color: '#15233b' }}>Xếp hạng Điểm MT tháng này</div><div style={{ fontSize: 9, color: '#70809b' }}>Lớp {lopTen} · Hệ {heRank?.he ?? '—'} · Khối {khoiRank?.khoi ?? '—'}</div></div>
+                <div><div style={{ fontSize: 13, fontWeight: 800, color: '#15233b' }}>Xếp hạng Test tháng này</div><div style={{ fontSize: 9, color: '#70809b' }}>Theo điểm Test tháng</div></div>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 7 }}>
-                {rankBox('Lớp', lopRank)}{rankBox('Hệ', heRank)}{rankBox('Khối', khoiRank)}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 4 }}>
+                {rankRing('Lớp', lopTen, lopRank)}
+                {rankRing('Hệ', heRank ? `${heRank.khoi}${heRank.he}` : '—', heRank)}
+                {rankRing('Khối', khoiRank ? khoiRank.khoi : '—', khoiRank)}
               </div>
             </div>
             {/* NHẬN XÉT GV + skill bars (thang 5) + text kèm tag */}
@@ -585,7 +595,7 @@ function PhAnhModal({ hsId, mon, ym, lopId, hsName, hsImg, lopTen, gvName, tq, m
               </div>
               {assessRow('Test cuối giờ', '#315fdd', a.etCoBan, a.etNangCao, true)}
               {assessRow('Bài tập về nhà', '#12a875', a.btvnCoBan, a.btvnNangCao)}
-              {assessRowDiem('Test tháng (MT)', '#e29a23', tq.diem.mt.tb, tq.diem.mt.coBan, tq.diem.mt.nangCao)}
+              {assessRowDiem('Test tháng', '#e29a23', tq.diem.mt.tb, tq.diem.mt.coBan, tq.diem.mt.nangCao)}
               {missCount > 0 ? <div style={{ fontSize: 9.5, color: '#da7d00', marginTop: 6 }}>⚠ Chưa hoàn thành BTVN {missCount} lần trong tháng</div> : null}
             </div>
             {/* MỤC TIÊU */}
