@@ -82,13 +82,18 @@ export default function TaiLieuChuan({ L, khoi }: { L: Luoi; khoi: string }) {
                   <div className="rounded-lg border border-slate-200 bg-white p-3 text-[12.5px] leading-relaxed text-slate-700">
                     {mhSau && <MathText>{api.giaThietDayDu(L, mhSau.id)}</MathText>}
                     <div className="mt-2 space-y-1">
-                      {c.nodeIds.filter((id) => nodeCoY.has(id)).map((id, i) => {
-                        const n = L.baiToan.find((b) => b.id === id)!
-                        // Câu hỏi lấy PHÁT BIỂU, không lấy `de_bai_chuan`: đề chuẩn của từng node
-                        // đã gói sẵn giả thiết riêng ⇒ ghép lại thì lặp "Cho △ABC nhọn…" ở mọi câu.
-                        // Giả thiết đứng MỘT LẦN ở đầu, lấy từ mô hình sâu nhất chuỗi chạm tới.
-                        return <div key={id}><b>{String.fromCharCode(97 + i)})</b> Chứng minh <MathText>{n.phat_bieu}</MathText></div>
-                      })}
+                      {(() => {
+                        const ds = c.nodeIds.filter((id) => nodeCoY.has(id))
+                        return ds.map((id, i) => {
+                          const n = L.baiToan.find((b) => b.id === id)!
+                          // Câu hỏi lấy PHÁT BIỂU NGUYÊN VĂN, không lấy `de_bai_chuan`: đề chuẩn của
+                          // từng node đã gói sẵn giả thiết riêng ⇒ ghép lại thì lặp "Cho △ABC nhọn…" ở
+                          // mọi câu. Giả thiết đứng MỘT LẦN ở đầu, lấy từ mô hình sâu nhất chuỗi chạm
+                          // tới. Nhãn a)/b) CHỈ khi ≥2 câu (Thùy 08-20: "chỉ chuỗi mới có abc"); không
+                          // tự thêm chữ "Chứng minh" — phát biểu hiện đúng như đã nhập.
+                          return <div key={id}>{ds.length > 1 && <b>{String.fromCharCode(97 + i)}) </b>}<MathText>{n.phat_bieu}</MathText></div>
+                        })
+                      })()}
                     </div>
                   </div>
                   <Fig src={mhSau ? api.anhCauHinhCua(L, mhSau.id) : null} cap="Hình chuẩn — mô hình sâu nhất chuỗi chạm tới" />
@@ -132,6 +137,9 @@ export default function TaiLieuChuan({ L, khoi }: { L: Luoi; khoi: string }) {
  *  câu hỏi = node có ý thật, bước trung gian gắn nhãn "không có trong đề". */
 function banInChuan(L: Luoi, nodeIds: string[], nodeCoY: Set<string>, soBai: number): BanIn {
   const mhSau = api.moHinhSauNhat(L, nodeIds)
+  // Nhãn a)/b) CHỈ khi thật sự ≥2 câu TRONG ĐỀ (Thùy 08-20: "chỉ chuỗi mới có abc thôi") — đếm trước,
+  // không gán mù cho từng node rồi mới biết tổng.
+  const soTrongDe = nodeIds.filter((id) => nodeCoY.has(id)).length
   let i = 0
   return {
     tieuDe: 'Tài liệu chuẩn — bài tương đương',
@@ -147,8 +155,8 @@ function banInChuan(L: Luoi, nodeIds: string[], nodeCoY: Set<string>, soBai: num
         const cach = api.cachMacDinh(L, id)
         const trongDe = nodeCoY.has(id)
         return {
-          nhan: trongDe ? String.fromCharCode(97 + i++) : '',
-          noiDung: `Chứng minh ${n.phat_bieu}`,
+          nhan: trongDe && soTrongDe > 1 ? String.fromCharCode(97 + i++) : '',
+          noiDung: n.phat_bieu,
           loiGiai: cach?.loi_giai,
           anh: cach?.anh_loi_giai ?? api.anhCuaBaiToan(L, n.id),
           ghiChu: trongDe ? null : 'không có trong đề',

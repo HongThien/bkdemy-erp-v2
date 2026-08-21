@@ -202,7 +202,7 @@ function banInBuoi(L: Luoi, khuc: ReturnType<typeof api.tinhKhuc>, trong: BaiToa
     // Đề = giả thiết đầy đủ của mô hình (mượn) + câu hỏi. Hình của node: riêng nếu có, mặc định mượn mô hình.
     mucs.push({
       kieu: 'de',
-      deBai: [api.giaThietBaiToan(L, n.id), `Chứng minh ${n.phat_bieu}`].filter(Boolean).join('. '),
+      deBai: [api.giaThietBaiToan(L, n.id), n.phat_bieu].filter(Boolean).join('. '),
       anhDe: api.anhCuaBaiToan(L, n.id),
       ma: n.ma,
       ys: [{ nhan: '', noiDung: '', loiGiai: c?.loi_giai, anh: c?.anh_loi_giai ?? api.anhCuaBaiToan(L, n.id), ma: n.ma, cap: n.cap }],
@@ -616,7 +616,9 @@ export function mucGhep(L: Luoi, g: Extract<PickItem, { kind: 'ghep' }>, cheDo: 
     const c = api.cachMacDinh(L, k.node.id)
     const gtPhu = [k.node.gia_thiet_phu?.trim(), ...k.gtPhuKeo].filter(Boolean).join('; ') || null
     return {
-      nhan: String.fromCharCode(97 + i), noiDung: `Chứng minh ${k.node.phat_bieu}`,
+      // Nhãn a)/b)/c) CHỈ khi thật sự ghép NHIỀU ý (chuỗi) — Thùy 08-20: "chỉ chuỗi mới có abc thôi",
+      // 1 ý riêng lẻ không tự gắn chữ gì. Câu hỏi lấy NGUYÊN `phat_bieu` — không tự thêm "Chứng minh".
+      nhan: khung.length > 1 ? String.fromCharCode(97 + i) : '', noiDung: k.node.phat_bieu,
       giaThietPhu: gtPhu, loiGiai: c?.loi_giai ?? null, anh: c?.anh_loi_giai ?? null,
       buoc: k.buocNodes.map((n) => {
         const cc = api.cachMacDinh(L, n.id)
@@ -628,11 +630,29 @@ export function mucGhep(L: Luoi, g: Extract<PickItem, { kind: 'ghep' }>, cheDo: 
   const anhDe = api.anhCuaBaiToan(L, deep.id)
   return { kieu: 'de', deBai: api.giaThietBaiToan(L, deep.id), anhDe, ma: nodes.map((b) => b.ma).join('+'), ys, cheDo, soDong: soDong ?? null, moHinhId: deep.mo_hinh_id }
 }
-// Tách đề biến thể: cắt ở "Chứng minh" → giả thiết (chung cả chuỗi) + câu hỏi (ý). Giả thiết các câu trong chuỗi giống nhau.
-function tachDe(deBai: string): { giaThiet: string; cauHoi: string } {
-  const i = deBai.lastIndexOf('Chứng minh')
-  if (i < 0) return { giaThiet: '', cauHoi: deBai.trim() }
-  return { giaThiet: deBai.slice(0, i).replace(/[.,;\s]+$/, '').trim(), cauHoi: deBai.slice(i).trim() }
+// ⭐ 08-20 (Thùy: "hệ thống không được tự sinh ra cái gì hết" — kể cả chữ "Chứng minh" dùng làm MỐC KỸ
+// THUẬT để cắt ngược giả thiết/câu hỏi từ 1 cột `de_bai` gộp chung). Giờ giả thiết+câu hỏi được GHÉP bằng
+// `ghepDeBai` với 1 ký tự điều khiển ẩn do CHÍNH client chèn (không nhờ AI "nhớ giữ" — AI chỉ trả 2 phần
+// tách sẵn, xem doiDinhChuoiHinh/ingestLuaChuoiHinh) → `tachDe` chỉ cần dò lại đúng ký tự đó, không phải
+// đoán chữ. Vẫn dò "Chứng minh" làm PHƯƠNG ÁN LÙI cho lứa đã lưu TRƯỚC 08-20 (dữ liệu cũ, không tự sửa
+// lại được — mất phương án lùi này thì giả thiết của lứa cũ biến mất khỏi bản in).
+const GT_CAUHOI_SEP = '␞'
+export function ghepDeBai(giaThiet: string, cauHoi: string): string {
+  return [giaThiet.trim(), cauHoi.trim()].filter(Boolean).join(GT_CAUHOI_SEP)
+}
+export function tachDe(deBai: string): { giaThiet: string; cauHoi: string } {
+  const i = deBai.indexOf(GT_CAUHOI_SEP)
+  if (i >= 0) return { giaThiet: deBai.slice(0, i).trim(), cauHoi: deBai.slice(i + 1).trim() }
+  // Lứa lưu TRƯỚC 08-20 (nối bằng chữ "Chứng minh") — dò tiếp cho dữ liệu cũ.
+  const j = deBai.lastIndexOf('Chứng minh')
+  if (j < 0) return { giaThiet: '', cauHoi: deBai.trim() }
+  return { giaThiet: deBai.slice(0, j).replace(/[.,;\s]+$/, '').trim(), cauHoi: deBai.slice(j).trim() }
+}
+// Hiển thị RAW một de_bai bất kỳ (biến thể thường KHÔNG lứa, không cần tách giả thiết/câu hỏi riêng) —
+// chỉ thay ký tự điều khiển ẩn bằng dấu ngắt đọc được. KHÔNG dùng `tachDe` ở đây: fallback dò chữ
+// "Chứng minh" của nó dành riêng cho lứa cũ, áp lên đề thường (gõ tay) có thể xẻ nhầm giữa câu.
+export function deBaiHienThi(deBai: string): string {
+  return deBai.split(GT_CAUHOI_SEP).map((s) => s.trim()).filter(Boolean).join('. ')
 }
 /** Ghép 1 LỨA (đổi đỉnh) → a,b,c: giả thiết CHUNG (từ câu xa nhất) + ý = câu hỏi từng câu (từ biến thể của lứa). */
 export function mucGhepLua(L: Luoi, nodeIds: string[], bienThes: BienThe[], cheDo: CheDoHinh, soDong?: number | null): MucIn {
@@ -650,8 +670,10 @@ export function mucGhepLua(L: Luoi, nodeIds: string[], bienThes: BienThe[], cheD
     const v = byNode.get(k.node.id)
     const gtPhu = [k.node.gia_thiet_phu?.trim(), ...k.gtPhuKeo].filter(Boolean).join('; ') || null
     return {
-      nhan: String.fromCharCode(97 + i),
-      noiDung: v ? tachDe(v.de_bai).cauHoi : `Chứng minh ${k.node.phat_bieu}`,
+      // Nhãn a)/b)/c) CHỈ khi thật sự ghép NHIỀU ý — xem mucGhep. Câu hỏi lấy NGUYÊN VĂN (biến thể đã
+      // lưu → tách qua tachDe; chưa có biến thể → `phat_bieu` gốc) — không tự thêm "Chứng minh".
+      nhan: khung.length > 1 ? String.fromCharCode(97 + i) : '',
+      noiDung: v ? tachDe(v.de_bai).cauHoi : k.node.phat_bieu,
       giaThietPhu: gtPhu, loiGiai: v?.loi_giai ?? null, anh: v?.anh_loi_giai ?? null,
       buoc: k.buocNodes.map((n) => {
         const bv = byNode.get(n.id); const cc = api.cachMacDinh(L, n.id)

@@ -6545,3 +6545,61 @@ giác") — dù tên điểm hoàn toàn khác gốc, xác nhận khớp THEO LO
 tạo lứa test trên BT.08.030/031 thật). Giữa chừng dính 1 nhiễu: log HMR lỗi hàng loạt trên nhiều file
 không liên quan (phiên khác đang sửa song song) — kiểm lại `tsc --noEmit` + `git status` xác nhận code
 3 file của mình vẫn sạch, không phải lỗi từ thay đổi này.
+
+## 2026-08-21 — Kho Hình: BỎ tự chèn "Chứng minh" + "a)/b)/c)" — hiển thị đúng y nguyên đã nhập
+
+**Lỗi 1 (Thùy, kèm ảnh chụp màn hình, verbatim):** "có 1 lỗi khác : sao hệ thống lại tự đẻ ra chữ Chứng
+minh ở câu hỏi vậy. t nhập như nào thì hiện thị như thế, ko được phép tự sinh ra cái gì hết"
+
+**Lỗi 2, hỏi thêm giữa chừng (Thùy, verbatim):** "Cả cái abc nữa. ko được tự chèn. Chỉ chuỗi mới có abc
+thôi"
+
+**Nguyên nhân 1 — "Chứng minh":** 3 chỗ (2 trong `SoDo.tsx`, 1 trong `TaiLieuChuan.tsx`) build câu hỏi
+hiển thị/in bằng literal `` `Chứng minh ${bt.phat_bieu}` `` — giả định SAI "mọi bài toán Hình đều dạng
+chứng minh". Sai ngay với bài "Tính số đo các góc" (BT.08.025/027/033…) — 2 chữ "Chứng minh" chình ình
+trước 1 câu hỏi vốn là "Tính".
+
+**Nguyên nhân 2 — "a)/b)/c)":** `mucGhep`/`mucGhepLua` (`SoanTaiLieu.tsx`) gán `nhan: String.fromCharCode
+(97+i)` VÔ ĐIỀU KIỆN theo index, không xét tổng số ý — 1 bài toán LẺ (không phải chuỗi) vẫn bị gắn "a)"
+trước câu hỏi, dù chỉ có đúng 1 ý.
+
+**Bẫy ẩn phát hiện giữa chừng — không thể xoá "Chứng minh " ở MỌI chỗ theo kiểu tìm-thay-thế mù:**
+`tachDe()` (cơ chế cũ của lứa "đổi đỉnh cả chuỗi") tách 1 cột DB gộp `de_bai` (giả thiết+câu hỏi chung 1
+string) ngược lại thành 2 phần bằng cách DÒ CHỮ "Chứng minh" làm mốc cắt. Bỏ chữ đó ở chỗ AI SINH RA lứa
+(`ChuoiDoiDinhPopup`, và `NhapCloneLuaPopup` mới làm hôm qua) mà không sửa `tachDe` → mốc cắt biến mất →
+lứa hiển thị sai (mất giả thiết, hoặc lặp nội dung).
+
+**Sửa tận gốc, không vá ngọn:**
+- `api.ts` — thiết kế lại 2 schema AI (`HINH_CHUOI_ITEM_SCHEMA`, `INGEST_LUA_CHUOI_ITEM_SCHEMA`): AI
+  PHẢI trả `giai_thiet`/`cau_hoi` TÁCH SẴN 2 field riêng (dặn thẳng trong description: "GIỮ NGUYÊN VĂN
+  cách hỏi gốc, không tự thêm chữ Chứng minh nếu gốc không có") — không còn NỐI-rồi-CẮT-NGƯỢC, khỏi cần
+  đoán chữ nào là mốc.
+- `SoanTaiLieu.tsx` — thêm cặp hàm client-control: `ghepDeBai(giaThiet, cauHoi)` nối bằng 1 ký tự điều
+  khiển ẩn `␞` (U+241E, do CLIENT tự chèn, không nhờ AI "nhớ giữ"); `tachDe` đổi thành dò ký tự đó
+  TRƯỚC, chỉ dò lùi chữ "Chứng minh" làm PHƯƠNG ÁN LÙI cho lứa đã lưu TRƯỚC 08-20 (dữ liệu cũ không tự
+  sửa lại được — bỏ phương án lùi này thì giả thiết của lứa cũ biến mất khỏi bản in).
+  `mucGhep`/`mucGhepLua`: `nhan: khung.length > 1 ? String.fromCharCode(97+i) : ''` — nhãn chỉ gán khi
+  THẬT SỰ ≥2 ý, không còn vô điều kiện.
+- `SoDo.tsx` — bỏ 2 chỗ hardcode "Chứng minh "; `ChuoiDoiDinhPopup`/`NhapCloneLuaPopup` giờ gọi AI/nhận
+  input với giả thiết+câu hỏi TÁCH RIÊNG, ghép lại bằng `ghepDeBai` đúng lúc lưu.
+- `TaiLieuChuan.tsx` — bỏ hardcode "Chứng minh "; đếm `soTrongDe` (số node THẬT SỰ có trong đề) TRƯỚC,
+  nhãn a)/b) chỉ gán khi `soTrongDe > 1`.
+
+**Bug PHỤ tự phát hiện lúc verify sống (không phải Thùy báo) — ký tự `␞` LỘ RA MÀN HÌNH:** card "biến
+thể" trong popup chi tiết bài toán (`SoDo.tsx` dòng 453, danh sách chung cho MỌI kiểu biến thể) render
+thẳng `v.de_bai` RAW — với biến thể tạo từ lứa (đã gộp bằng `␞`), ký tự điều khiển hiện nguyên si ra
+UI. `tachDe` không dùng được ở đây (fallback dò chữ "Chứng minh" của nó CHỈ đúng cho lứa cũ — áp lên
+biến thể thường gõ tay có chữ "Chứng minh" ở giữa câu sẽ xẻ nhầm). Thêm hàm riêng `deBaiHienThi()`
+(`SoanTaiLieu.tsx`) — chỉ thay `␞` bằng ". " cho hiển thị chung, không đụng logic dò-chữ của `tachDe`.
+Áp cho cả card hiển thị lẫn giá trị khởi tạo ô sửa (✎) của `FormBienThe`.
+
+**Verify:** tsc sạch · `npx vite build` sạch. Live THẬT trên dev server: mở lại chuỗi BT.08.030→031
+(Tứ giác K8) → "🔗 Đổi đỉnh cả chuỗi…" → tick cả 2 câu → "Sinh lứa (2 câu)" → gọi Gemini THẬT
+(`7.148 tok`, `≈346₫`) → biến thể MỚI của BT.08.030 hiện sạch: "Cho tứ giác MNPQ có... Qy là tia đối của
+tia QM. Chứng minh: ∠PQy=∠PNM" — giữ "Chứng minh:" vì câu hỏi GỐC của BT.08.030 vốn dĩ đã viết "Chứng
+minh: ..." (không phải hệ thống tự thêm — đối chiếu: các bài KHÁC trong cùng sơ đồ như BT.08.025/027
+("Tính góc D?", không có chữ "Chứng minh") hiện đúng y nguyên, KHÔNG bị chèn thêm). Biến thể CŨ (tạo
+trước fix, còn "Chứng minh Chứng minh:" lặp đôi) vẫn còn nguyên trong DB — đây là **dữ liệu cũ đã lưu
+sai vĩnh viễn từ bug trước đó, KHÔNG tự sửa lại được** (không đoán/ghi đè dữ liệu thật, CLAUDE.md §1.5)
+— cần Thùy xác nhận có muốn dọn tay các biến thể lứa cũ dạng này không. Mở tiếp "📥 Nhập lứa đã clone"
+— popup mở sạch, không lỗi, hiện đúng "CHUỖI GỐC (ĐỂ ĐỐI CHIẾU)" không chèn chữ thừa.

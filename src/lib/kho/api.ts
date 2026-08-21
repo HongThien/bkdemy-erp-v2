@@ -1654,16 +1654,27 @@ export async function doiDinhHinh(goc: { de: string; loiGiai: string | null }, g
 // ── ĐỔI ĐỈNH CẢ CHUỖI (một LỨA) — N bài nối tiền đề, đổi đỉnh bằng ĐÚNG MỘT map điểm cho cả chuỗi ──
 // Vì cả chuỗi CHUNG một hình: điểm A ở câu 1 và câu 3 phải đổi thành CÙNG một tên. Đổi từng câu riêng =
 // mỗi câu một bộ điểm → ghép a,b,c vô nghĩa. Gộp 1 call để AI chốt 1 map dùng chung.
-export const HINH_CHUOI_SCHEMA = { type: 'OBJECT', properties: { cau: { type: 'ARRAY', items: HINH_BAI_SCHEMA } }, required: ['cau'] }
-export function buildDoiDinhChuoiPrompt(cau: { ma: string; de: string; loiGiai: string }[], ghiChu?: string): string {
-  const list = cau.map((c, i) => [`--- Câu ${i + 1} (${c.ma}) ---`, `de_bai: ${c.de}`, `loi_giai: ${c.loiGiai || '(tự giải theo phương pháp chuẩn)'}`].join('\n')).join('\n\n')
+// ⭐ 08-20 (Thùy: "sao hệ thống tự đẻ ra chữ Chứng minh vậy, t nhập/AI trả gì thì hiện đúng thế, không
+// được tự sinh"): TRƯỚC gộp giả thiết+câu hỏi vào 1 field "de_bai" rồi lúc hiển thị lứa lại DÒ chữ
+// "Chứng minh" để cắt ngược ra 2 phần (`tachDe`) — hỏng ngay khi câu hỏi gốc không có chữ đó (vd "Tính
+// …") hoặc AI không tự thêm lại. Đổi hẳn: AI trả "giai_thiet"/"cau_hoi" TÁCH RIÊNG — không phải NỐI rồi
+// CẮT NGƯỢC, khỏi cần đoán mốc chữ nào cả. Client tự ghép lại bằng `ghepDeBai` (SoanTaiLieu.tsx, mốc kỹ
+// thuật do CLIENT chèn — không nhờ AI "nhớ giữ").
+export const HINH_CHUOI_ITEM_SCHEMA = { type: 'OBJECT', properties: {
+  giai_thiet: { type: 'STRING', description: 'CHỈ phần giả thiết (không kèm câu hỏi) sau khi đổi đỉnh — để trống nếu câu này không có giả thiết riêng.' },
+  cau_hoi: { type: 'STRING', description: 'CHỈ phần câu hỏi/yêu cầu sau khi đổi đỉnh — GIỮ NGUYÊN VĂN cách hỏi gốc (không tự thêm chữ "Chứng minh" hay bất kỳ chữ nào khác nếu gốc không có), không kèm giả thiết.' },
+  loi_giai: { type: 'STRING' },
+}, required: ['cau_hoi'] }
+export const HINH_CHUOI_SCHEMA = { type: 'OBJECT', properties: { cau: { type: 'ARRAY', items: HINH_CHUOI_ITEM_SCHEMA } }, required: ['cau'] }
+export function buildDoiDinhChuoiPrompt(cau: { ma: string; giaThiet: string; cauHoi: string; loiGiai: string }[], ghiChu?: string): string {
+  const list = cau.map((c, i) => [`--- Câu ${i + 1} (${c.ma}) ---`, `giai_thiet: ${c.giaThiet || '(không có riêng)'}`, `cau_hoi: ${c.cauHoi}`, `loi_giai: ${c.loiGiai || '(tự giải theo phương pháp chuẩn)'}`].join('\n')).join('\n\n')
   return [
     'Bạn là chuyên gia ra đề toán HÌNH HỌC THCS.',
-    `Dưới đây là ${cau.length} bài toán NỐI TIẾP trong MỘT chuỗi — CÙNG một hình, ý sau dùng kết quả ý trước:`,
+    `Dưới đây là ${cau.length} bài toán NỐI TIẾP trong MỘT chuỗi — CÙNG một hình, ý sau dùng kết quả ý trước. Mỗi câu đã tách sẵn "giai_thiet" (giả thiết riêng, có thể trống) và "cau_hoi" (yêu cầu):`,
     '',
     list,
     '',
-    `NHIỆM VỤ: Sinh biến thể "ĐỔI ĐỈNH" cho CẢ ${cau.length} câu — GIỮ NGUYÊN số liệu, cấu hình hình, logic; CHỈ đổi TÊN các điểm.`,
+    `NHIỆM VỤ: Sinh biến thể "ĐỔI ĐỈNH" cho CẢ ${cau.length} câu — GIỮ NGUYÊN số liệu, cấu hình hình, logic; CHỈ đổi TÊN các điểm. Trả riêng "giai_thiet"/"cau_hoi" đã đổi tên — ĐỪNG gộp chung, ĐỪNG tự thêm/bớt chữ nào ngoài việc đổi tên điểm (câu hỏi gốc viết sao thì giữ nguyên cách viết đó, kể cả không có chữ "Chứng minh").`,
     '',
     `⚠ RÀNG BUỘC QUAN TRỌNG NHẤT — MỘT BỘ ĐIỂM DUY NHẤT cho cả ${cau.length} câu:`,
     '- Chọn MỘT map đổi tên điểm (vd $A,B,C,H \\to M,N,P,K$) rồi áp Y HỆT cho MỌI câu. Điểm $A$ ở câu 1 và câu 3 PHẢI đổi thành CÙNG một tên. TUYỆT ĐỐI KHÔNG mỗi câu một bộ điểm khác nhau.',
@@ -1674,15 +1685,19 @@ export function buildDoiDinhChuoiPrompt(cau: { ma: string; de: string; loiGiai: 
     '',
     FMT_RULES,
     '',
-    `Trả về JSON: { "cau": [ ĐÚNG ${cau.length} phần tử dạng { "de_bai": "...", "loi_giai": "..." } ] }`,
+    `Trả về JSON: { "cau": [ ĐÚNG ${cau.length} phần tử dạng { "giai_thiet": "...", "cau_hoi": "...", "loi_giai": "..." } ] }`,
   ].filter(Boolean).join('\n')
 }
-export async function doiDinhChuoiHinh(cau: { ma: string; de: string; loiGiai: string }[], ghiChu?: string): Promise<{ de_bai: string; loi_giai: string }[]> {
+export async function doiDinhChuoiHinh(cau: { ma: string; giaThiet: string; cauHoi: string; loiGiai: string }[], ghiChu?: string): Promise<{ giai_thiet: string; cau_hoi: string; loi_giai: string }[]> {
   const raw = await callGeminiJson(buildDoiDinhChuoiPrompt(cau, ghiChu?.trim() || undefined), { model: 'gemini-2.5-flash', think: 8192, schema: HINH_CHUOI_SCHEMA })
   let t = raw.trim(); const fence = t.match(/```(?:json)?\s*([\s\S]*?)```/i); if (fence) t = fence[1].trim()
   const obj = lenientJsonParse(t)
   const arr = Array.isArray(obj.cau) ? obj.cau : []
-  return arr.map((x: any) => ({ de_bai: String(x.de_bai ?? x.deBai ?? '').trim(), loi_giai: String(x.loi_giai ?? x.loiGiai ?? '').trim() }))
+  return arr.map((x: any) => ({
+    giai_thiet: String(x.giai_thiet ?? x.giaThiet ?? '').trim(),
+    cau_hoi: String(x.cau_hoi ?? x.cauHoi ?? '').trim(),
+    loi_giai: String(x.loi_giai ?? x.loiGiai ?? '').trim(),
+  }))
 }
 
 // ── NHẬP LỨA ĐÃ CLONE SẴN (ảnh/PDF) — Thùy 08-20: "hệ thống chưa clone được 1 chuỗi hoàn chỉnh, t tự
@@ -1691,11 +1706,14 @@ export async function doiDinhChuoiHinh(cau: { ma: string; de: string; loiGiai: s
 // KHỚP từng ý vào ĐÚNG bài gốc trong chuỗi (không tự bịa nội dung) — khuôn ingest, không phải sinh.
 // Khớp theo "ma" (khoá tự nhiên) — không theo VỊ TRÍ/thứ tự in (CLAUDE.md §2 "danh tính bám khoá tự
 // nhiên"): bản clone có thể thiếu/thừa/đảo thứ tự so với chuỗi gốc, AI phải tự đối chiếu NỘI DUNG.
+// ⭐ 08-20 (Thùy: "không được tự sinh ra cái gì hết"): "giai_thiet"/"cau_hoi" TÁCH RIÊNG, KHÔNG gộp vào
+// 1 "de_bai" rồi cắt ngược bằng mốc chữ (xem lý do y hệt ở doiDinhChuoiHinh phía trên).
 export const INGEST_LUA_CHUOI_ITEM_SCHEMA = { type: 'OBJECT', properties: {
   khop_voi_ma: { type: 'STRING', description: 'Mã bài GỐC (lấy NGUYÊN trong ngoặc [ ] ở danh sách đối chiếu) mà Ý NÀY khớp nội dung/logic/vị trí trong chuỗi nhất.' },
-  de_bai: { type: 'STRING', description: 'Đề ĐẦY ĐỦ của riêng ý này — GHÉP giả thiết dùng chung (đã đổi số/đổi tên theo bản clone) + câu hỏi riêng của ý, đừng chỉ chép câu hỏi trơ thiếu giả thiết.' },
+  giai_thiet: { type: 'STRING', description: 'CHỈ phần giả thiết dùng chung (đã đổi số/đổi tên theo bản clone) — không kèm câu hỏi.' },
+  cau_hoi: { type: 'STRING', description: 'CHỈ phần câu hỏi/yêu cầu riêng của ý này — CHÉP NGUYÊN VĂN cách hỏi trong ảnh (không tự thêm chữ "Chứng minh" hay chữ nào khác nếu ảnh không viết vậy), không kèm giả thiết.' },
   loi_giai: { type: 'STRING' },
-}, required: ['khop_voi_ma', 'de_bai'] }
+}, required: ['khop_voi_ma', 'cau_hoi'] }
 export const INGEST_LUA_CHUOI_SCHEMA = { type: 'OBJECT', properties: {
   y: { type: 'ARRAY', items: INGEST_LUA_CHUOI_ITEM_SCHEMA },
   co_hinh: { type: 'BOOLEAN' },
@@ -1717,16 +1735,18 @@ export function buildIngestLuaChuoiPrompt(chuoiGoc: { ma: string; phat_bieu: str
     '  bài có tiền đề là bài trước nó…) — KHÔNG máy móc theo đúng thứ tự in nếu nội dung cho thấy khác.',
     '- Ảnh/PDF có thể clone THIẾU vài bài gốc hoặc THỪA ý ngoài chuỗi — cứ trả đúng những gì đọc được,',
     '  ĐỪNG bịa ý cho đủ số, ĐỪNG gán ép một ý vào bài không khớp.',
-    'QUY TẮC chép chữ (mỗi "de_bai"/"loi_giai"):',
+    'QUY TẮC chép chữ (mỗi "giai_thiet"/"cau_hoi"/"loi_giai"):',
+    '- Chép NGUYÊN VĂN — GIỮ đúng câu chữ ảnh viết, KHÔNG thêm/bớt/diễn giải lại (kể cả không thêm chữ',
+    '  "Chứng minh"/"Tính"… nếu ảnh không có sẵn chữ đó ở đầu câu hỏi).',
     '- Ký hiệu/công thức DÙNG LaTeX trong $...$; phân số \\\\dfrac. Giữ xuống dòng thật; mỗi bước 1 dòng.',
     '- Có HÌNH VẼ HÌNH HỌC dùng chung cho cả chuỗi (thường vẽ 1 lần ở đầu): "co_hinh"=true + "box_hinh"',
     '  ôm sát hình + "trang_hinh" = ảnh/trang thứ mấy (đếm từ 0) chứa nó. Không có → "co_hinh"=false.',
     '- Trong JSON: lệnh LaTeX PHẢI double backslash; CHỈ trả JSON.',
-    'Trả về JSON: { "y": [ { "khop_voi_ma":"...", "de_bai":"...", "loi_giai":"..." } ], "co_hinh":false, "box_hinh":null, "trang_hinh":null }',
+    'Trả về JSON: { "y": [ { "khop_voi_ma":"...", "giai_thiet":"...", "cau_hoi":"...", "loi_giai":"..." } ], "co_hinh":false, "box_hinh":null, "trang_hinh":null }',
   ].join('\n')
 }
 export async function ingestLuaChuoiHinh(files: GeminiFile[], chuoiGoc: { ma: string; phat_bieu: string }[]): Promise<{
-  y: { khop_voi_ma: string; de_bai: string; loi_giai: string }[]
+  y: { khop_voi_ma: string; giai_thiet: string; cau_hoi: string; loi_giai: string }[]
   co_hinh: boolean; box_hinh: [number, number, number, number] | null; trang_hinh: number
 }> {
   const raw = await callGeminiJson(buildIngestLuaChuoiPrompt(chuoiGoc), { schema: INGEST_LUA_CHUOI_SCHEMA, files })
@@ -1735,9 +1755,10 @@ export async function ingestLuaChuoiHinh(files: GeminiFile[], chuoiGoc: { ma: st
   const box = Array.isArray(obj.box_hinh) && obj.box_hinh.length === 4 ? (obj.box_hinh.map(Number) as [number, number, number, number]) : null
   const y = (Array.isArray(obj.y) ? obj.y : []).map((x: any) => ({
     khop_voi_ma: String(x.khop_voi_ma ?? x.khopVoiMa ?? '').trim(),
-    de_bai: String(x.de_bai ?? x.deBai ?? '').trim(),
+    giai_thiet: String(x.giai_thiet ?? x.giaThiet ?? '').trim(),
+    cau_hoi: String(x.cau_hoi ?? x.cauHoi ?? '').trim(),
     loi_giai: String(x.loi_giai ?? x.loiGiai ?? '').trim(),
-  })).filter((x: any) => x.khop_voi_ma && x.de_bai)
+  })).filter((x: any) => x.khop_voi_ma && x.cau_hoi)
   return { y, co_hinh: !!obj.co_hinh && !!box, box_hinh: box, trang_hinh: Number(obj.trang_hinh ?? 0) || 0 }
 }
 

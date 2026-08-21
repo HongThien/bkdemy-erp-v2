@@ -18,6 +18,7 @@ import FormBaiToan from './FormBaiToan'
 import type { Nhay } from './KhoHinhScreen'
 import { LyThuyetModal } from '../BanDo'
 import { fileToCanvases, canvasToJpegBase64, cropCanvasBox } from '../../../lib/pdfRender'
+import { deBaiHienThi, ghepDeBai } from './SoanTaiLieu'
 
 /** Dải cấp gọn: 4–4 đọc thừa, chỉ in 4. */
 export const dai = (ns: number[]) => (Math.min(...ns) === Math.max(...ns) ? String(ns[0]) : `${Math.min(...ns)}–${Math.max(...ns)}`)
@@ -379,7 +380,7 @@ function DetailBaiToan({ L, bt, onSua, onTaoKeTiep, onChon, onClose, reload }: {
             </p>
             <FieldCard ton="mh" big><MathText>{api.giaThietBaiToan(L, bt.id)}</MathText></FieldCard>
             <p className="text-[16px] font-semibold uppercase tracking-wide text-slate-400">Câu hỏi</p>
-            <FieldCard ton="bt" big><MathText>{`Chứng minh ${bt.phat_bieu}`}</MathText></FieldCard>
+            <FieldCard ton="bt" big><MathText>{bt.phat_bieu}</MathText></FieldCard>
             <p className="text-[16px] font-semibold uppercase tracking-wide text-slate-400">Hình</p>
             <Fig src={api.anhCuaBaiToan(L, bt.id)} h="h-80"
               cap={api.anhCuaBaiToan(L, bt.id) ? (bt.anh_chuan ? 'Hình riêng của bài toán' : 'Hình cấu hình (mượn của mô hình)') : undefined} />
@@ -449,7 +450,7 @@ function DetailBaiToan({ L, bt, onSua, onTaoKeTiep, onChon, onClose, reload }: {
                       try { await api.deleteBienThe(v.id); await napBt() } catch (e: any) { alert(e.message) }
                     }}>🗑</Btn>
                   </div>
-                  {v.de_bai && <div className="text-[15px] leading-relaxed text-slate-700"><MathText>{v.de_bai}</MathText></div>}
+                  {v.de_bai && <div className="text-[15px] leading-relaxed text-slate-700"><MathText>{deBaiHienThi(v.de_bai)}</MathText></div>}
                   {v.anh && <img src={v.anh} alt="" className="mt-1 max-h-44 rounded border border-slate-100 bg-white object-contain" />}
                   {v.loi_giai && <div className="mt-1 rounded bg-white/70 p-1.5 text-[14px] leading-relaxed text-slate-600"><MathText>{v.loi_giai}</MathText></div>}
                 </div>
@@ -470,7 +471,7 @@ function DetailBaiToan({ L, bt, onSua, onTaoKeTiep, onChon, onClose, reload }: {
     </div>
     {formBt && <FormBienThe L={L} baiToanId={bt.id} v={formBt.v}
       goc={{
-        de: [api.giaThietBaiToan(L, bt.id), `Chứng minh ${bt.phat_bieu}`].filter(Boolean).join('. '),
+        de: [api.giaThietBaiToan(L, bt.id), bt.phat_bieu].filter(Boolean).join('. '),
         anh: api.anhCuaBaiToan(L, bt.id),
         loiGiai: cachMd?.loi_giai ?? null,
         anhLoiGiai: cachMd?.anh_loi_giai ?? null,
@@ -494,7 +495,7 @@ function FormBienThe({ L, baiToanId, v, goc, onClose, onDone }: {
   // Chuỗi LIÊN THÔNG của node (đi tiền đề cả 2 chiều) → click node nào cũng ra cả chuỗi. Chỉ khi TẠO MỚI.
   const chuoi = useMemo(() => (v ? [] : api.chuoiKetNoi(L, baiToanId)), [L, baiToanId, v])
   // Mới → điền sẵn từ bài gốc (giống y). Sửa → giữ nội dung đã lưu.
-  const [deBai, setDeBai] = useState(v?.de_bai ?? goc.de)
+  const [deBai, setDeBai] = useState(v?.de_bai ? deBaiHienThi(v.de_bai) : goc.de)
   const [anh, setAnh] = useState<string | null>(v?.anh ?? goc.anh)
   const [loiGiai, setLoiGiai] = useState(v?.loi_giai ?? goc.loiGiai ?? '')
   const [anhGiai, setAnhGiai] = useState<string | null>(v?.anh_loi_giai ?? goc.anhLoiGiai)
@@ -679,16 +680,19 @@ function ChuoiDoiDinhPopup({ L, chuoi, onClose, onDone }: {
     if (!selected.length) { setLoi('Chọn ít nhất 1 câu.'); return }
     setBusy(true); setLoi(null)
     try {
+      // Giả thiết + câu hỏi gửi AI TÁCH RIÊNG (không nối "Chứng minh" — Thùy 08-20: không tự sinh chữ),
+      // AI trả lại cũng tách riêng → ghép lại bằng `ghepDeBai` (mốc kỹ thuật do client tự chèn).
       const cau = selected.map((bt) => ({
         ma: bt.ma,
-        de: [api.giaThietBaiToan(L, bt.id), `Chứng minh ${bt.phat_bieu}`].filter(Boolean).join('. '),
+        giaThiet: api.giaThietBaiToan(L, bt.id),
+        cauHoi: bt.phat_bieu,
         loiGiai: api.cachMacDinh(L, bt.id)?.loi_giai ?? '',
       }))
       const res = await api.doiDinhChuoiHinh(cau, ghiChu)
       if (res.length !== selected.length) throw new Error(`AI trả ${res.length}/${selected.length} câu — thử lại hoặc bớt câu.`)
       const selIds = new Set(selected.map((b) => b.id))
       const items = selected.map((bt, i) => ({
-        baitoan_id: bt.id, de_bai: res[i].de_bai, anh: api.anhCuaBaiToan(L, bt.id),
+        baitoan_id: bt.id, de_bai: ghepDeBai(res[i].giai_thiet, res[i].cau_hoi), anh: api.anhCuaBaiToan(L, bt.id),
         loi_giai: res[i].loi_giai || null, anh_loi_giai: api.cachMacDinh(L, bt.id)?.anh_loi_giai ?? null,
         // Tiền đề bài-tầng ĐÓNG BĂNG: node-tiền-đề TRỰC TIẾP của bt mà CŨNG nằm trong lứa (đã tick).
         tienDeBaiToanIds: api.tienDeCua(L, bt.id).filter((id) => selIds.has(id)),
@@ -753,8 +757,10 @@ function NhapCloneLuaPopup({ L, chuoi, onClose, onDone }: {
   const [loi, setLoi] = useState<string | null>(null)
   const [daBoc, setDaBoc] = useState(false)
   const [anhLua, setAnhLua] = useState<string | null>(null)
-  const [gan, setGan] = useState<Record<string, { deBai: string; loiGiai: string }>>({})
-  const [khongKhop, setKhongKhop] = useState<{ khop_voi_ma: string; de_bai: string; loi_giai: string }[]>([])
+  // Giả thiết + câu hỏi giữ TÁCH RIÊNG (không nối "Chứng minh" — Thùy 08-20: không tự sinh chữ) — ghép
+  // lại bằng `ghepDeBai` (mốc kỹ thuật client tự chèn) đúng lúc lưu, không phải trước đó.
+  const [gan, setGan] = useState<Record<string, { giaThiet: string; cauHoi: string; loiGiai: string }>>({})
+  const [khongKhop, setKhongKhop] = useState<{ khop_voi_ma: string; giai_thiet: string; cau_hoi: string; loi_giai: string }[]>([])
 
   const boc = async (files: File[]) => {
     const fs = files.filter((f) => f.type.startsWith('image/') || f.type === 'application/pdf')
@@ -769,11 +775,11 @@ function NhapCloneLuaPopup({ L, chuoi, onClose, onDone }: {
       // KHÔNG rơi mất im lặng (§1.5 "thà bỏ trống còn hơn đánh sai" — người tự soát ở bước review).
       const maToId = new Map(chuoi.map((b) => [b.ma, b.id]))
       const daDung = new Set<string>()
-      const ganMoi: Record<string, { deBai: string; loiGiai: string }> = {}
+      const ganMoi: Record<string, { giaThiet: string; cauHoi: string; loiGiai: string }> = {}
       const conLai: typeof r.y = []
       for (const y of r.y) {
         const bid = maToId.get(y.khop_voi_ma)
-        if (bid && !daDung.has(bid)) { daDung.add(bid); ganMoi[bid] = { deBai: y.de_bai, loiGiai: y.loi_giai } }
+        if (bid && !daDung.has(bid)) { daDung.add(bid); ganMoi[bid] = { giaThiet: y.giai_thiet, cauHoi: y.cau_hoi, loiGiai: y.loi_giai } }
         else conLai.push(y)
       }
       setGan(ganMoi); setKhongKhop(conLai)
@@ -787,15 +793,15 @@ function NhapCloneLuaPopup({ L, chuoi, onClose, onDone }: {
     } catch (e: any) { setLoi(e.message ?? String(e)) } finally { setBusy(false) }
   }
 
-  const suaO = (id: string, patch: Partial<{ deBai: string; loiGiai: string }>) =>
-    setGan((s) => ({ ...s, [id]: { deBai: s[id]?.deBai ?? '', loiGiai: s[id]?.loiGiai ?? '', ...patch } }))
+  const suaO = (id: string, patch: Partial<{ giaThiet: string; cauHoi: string; loiGiai: string }>) =>
+    setGan((s) => ({ ...s, [id]: { giaThiet: s[id]?.giaThiet ?? '', cauHoi: s[id]?.cauHoi ?? '', loiGiai: s[id]?.loiGiai ?? '', ...patch } }))
 
-  const soKhop = chuoi.filter((b) => gan[b.id]?.deBai.trim()).length
+  const soKhop = chuoi.filter((b) => gan[b.id]?.cauHoi.trim()).length
 
   const luu = async () => {
     const selIds = new Set(chuoi.map((b) => b.id))
-    const items = chuoi.filter((b) => gan[b.id]?.deBai.trim()).map((b) => ({
-      baitoan_id: b.id, de_bai: gan[b.id].deBai.trim(), anh: anhLua ?? api.anhCuaBaiToan(L, b.id),
+    const items = chuoi.filter((b) => gan[b.id]?.cauHoi.trim()).map((b) => ({
+      baitoan_id: b.id, de_bai: ghepDeBai(gan[b.id].giaThiet, gan[b.id].cauHoi), anh: anhLua ?? api.anhCuaBaiToan(L, b.id),
       loi_giai: gan[b.id].loiGiai.trim() || null, anh_loi_giai: api.cachMacDinh(L, b.id)?.anh_loi_giai ?? null,
       tienDeBaiToanIds: api.tienDeCua(L, b.id).filter((id) => selIds.has(id)),
     }))
@@ -848,7 +854,7 @@ function NhapCloneLuaPopup({ L, chuoi, onClose, onDone }: {
               </div>
               {chuoi.map((b, i) => {
                 const o = gan[b.id]
-                const khop = !!o?.deBai.trim()
+                const khop = !!o?.cauHoi.trim()
                 return (
                   <div key={b.id} className={`rounded-lg border p-2.5 ${khop ? 'border-slate-200' : 'border-amber-300 bg-amber-50/50'}`}>
                     <div className="mb-1 flex items-center gap-1.5">
@@ -856,7 +862,8 @@ function NhapCloneLuaPopup({ L, chuoi, onClose, onDone }: {
                       <span className="min-w-0 flex-1 truncate text-[11.5px] text-slate-500"><MathText>{b.phat_bieu}</MathText></span>
                       {!khop && <span className="shrink-0 text-[10.5px] font-medium text-amber-700">chưa khớp — điền tay hoặc bỏ qua</span>}
                     </div>
-                    <textarea className={`${inpCls} h-16`} value={o?.deBai ?? ''} onChange={(e) => suaO(b.id, { deBai: e.target.value })} placeholder="Đề (giả thiết + câu hỏi) của bài này trong bản clone…" />
+                    <textarea className={`${inpCls} h-12`} value={o?.giaThiet ?? ''} onChange={(e) => suaO(b.id, { giaThiet: e.target.value })} placeholder="Giả thiết dùng chung (nếu bản clone có)…" />
+                    <textarea className={`${inpCls} mt-1.5 h-14`} value={o?.cauHoi ?? ''} onChange={(e) => suaO(b.id, { cauHoi: e.target.value })} placeholder="Câu hỏi riêng của bài này trong bản clone…" />
                     <textarea className={`${inpCls} mt-1.5 h-14`} value={o?.loiGiai ?? ''} onChange={(e) => suaO(b.id, { loiGiai: e.target.value })} placeholder="Lời giải (không bắt buộc)…" />
                   </div>
                 )
@@ -866,7 +873,7 @@ function NhapCloneLuaPopup({ L, chuoi, onClose, onDone }: {
                   <div className="mb-1 text-[10.5px] font-semibold uppercase tracking-wide text-slate-500">{khongKhop.length} ý AI đọc được nhưng KHÔNG khớp bài nào trong chuỗi (copy tay vào ô đúng ở trên nếu cần)</div>
                   {khongKhop.map((y, i) => (
                     <div key={i} className="mb-1 rounded border border-slate-200 bg-white px-2 py-1.5 text-[12px] text-slate-600">
-                      <span className="text-[10.5px] text-slate-400">gán nhầm mã "{y.khop_voi_ma}" · </span><MathText>{y.de_bai}</MathText>
+                      <span className="text-[10.5px] text-slate-400">gán nhầm mã "{y.khop_voi_ma}" · </span><MathText>{[y.giai_thiet, y.cau_hoi].filter(Boolean).join(' — ')}</MathText>
                     </div>
                   ))}
                 </div>
