@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-144 bảng · 0 view · 0 enum · 14 trigger · 60 function
+144 bảng · 0 view · 0 enum · 14 trigger · 62 function
 
 ## _migrations
 
@@ -687,6 +687,9 @@
 | ma_cau | text | Y |  |  |  |
 | hinh_y_id | uuid | Y |  | FK→hinh_y.id |  |
 | ngu_canh_luot | text | Y |  |  | `mo_hinh` · `dang` · `luyen_de` |
+| hinh_baitoan_id | uuid | Y |  | FK→hinh_baitoan.id |  |
+| hinh_bien_the_id | uuid | Y |  | FK→hinh_baitoan_bien_the.id |  |
+| hinh_nhan | text | Y |  |  |  |
 
 ## hgt_ban_do
 
@@ -2024,9 +2027,11 @@
 - `hinh_mo_hinh_to_tien(nut uuid)` → TABLE(id uuid, do_sau integer)
 - `hs_cap1_cua_toi()` → boolean
 - `hs_dang_evals(p_mon text, p_nhanh text DEFAULT NULL::text)` → jsonb
+- `hs_khoi_cua_toi()` → text
 - `hs_mon_cua_toi()` → text[]
 - `hs_nghi_tu_roi_lop()` → trigger
 - `hs_o_lop(p_lop uuid)` → boolean
+- `hs_xep_hang_tu_luyen(p_khoi text)` → jsonb
 - `increment_qaa_hit(p_id uuid)` → void
 - `jwt_email()` → text
 - `jwt_uid()` → uuid
