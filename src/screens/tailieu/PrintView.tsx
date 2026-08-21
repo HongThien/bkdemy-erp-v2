@@ -810,7 +810,13 @@ export function cauItemParts({ no, c, gv, lines = 0 }: { no: number; c: CauHoi; 
       )}
       {gv && <GvAnswer c={c} />}
     </>),
-    lines: (lines > 0 && !hasOpts && !grid && !md && !gv) ? lines : 0,
+    // ⭐ 08-19 (Thùy báo "sinh dòng không đúng setup builder", KHTN + Đại, builder lẫn ET): `grid` là suy
+    // đoán TEXT (splitLabeled bắt "a)/b)/c)..." trong đề) — vốn để nhận diện Ý CON gọn (đáp án ngắn, không
+    // cần dòng kẻ). Nhưng câu kho `tu_luan` là NHÃN NGƯỜI GÁN, rõ ràng hơn hẳn suy đoán text — 1 câu tự
+    // luận có đề bắt đầu bằng "a) ... b) ... c) ..." (nhiều ý cần viết ra, không phải đáp án ngắn nhúng)
+    // vẫn bị `grid` cướp quyền, ép lines=0 dù GV đã gõ số dòng hẳn hoi trong builder. Tự luận LUÔN cần chỗ
+    // viết bất kể đề có dạng ý con hay không — không để suy đoán text đè lên nhãn tự luận tường minh.
+    lines: (lines > 0 && !hasOpts && (!grid || c.loai_cau === 'tu_luan') && !md && !gv) ? lines : 0,
     hasImg: !!c.anh_de,
   }
 }
