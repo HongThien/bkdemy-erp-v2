@@ -74,6 +74,39 @@ export default function ReportPHScreen() {
       .map((h: any) => ({ id: h.id, ho_ten: h.ho_ten, ma_hs: h.ma_hs ?? null, anh_url: h.anh_url ?? null })))).catch(() => setRoster([]))
   }, [lopId])
 
+  // Chốt CẢ LỚP: chụp ảnh + công bố từng HS (HS chưa nhập nội dung tự bỏ qua). Chạy trong trình duyệt.
+  const [bulk, setBulk] = useState<{ done: number; total: number; cur: string; published: number; skipped: number; failed: number; running: boolean } | null>(null)
+  async function bulkCongBoLop() {
+    if (!lopId || !roster.length) return
+    const lopTen = lopOpts.find((o) => o.id === lopId)?.label ?? ''
+    if (!confirm(`Chốt & công bố báo cáo tháng ${Number(ym.split('-')[1])}/${ym.split('-')[0]} cho CẢ LỚP ${lopTen} (${roster.length} HS)?\nHS chưa nhập nội dung sẽ tự bỏ qua. Việc này chụp ảnh từng em nên mất vài phút — đừng đóng tab.`)) return
+    const gvName = await getGVChinhLop(lopId).catch(() => null)
+    let published = 0, skipped = 0, failed = 0
+    setBulk({ done: 0, total: roster.length, cur: '', published, skipped, failed, running: true })
+    for (let i = 0; i < roster.length; i++) {
+      const h = roster[i]
+      setBulk({ done: i, total: roster.length, cur: h.ho_ten, published, skipped, failed, running: true })
+      try {
+        const bc = await getBaoCaoPH(h.id, mon, ym)
+        const hasContent = !!(bc.nl_band || bc.ket_luan || bc.ket_luan_muc || bc.muc_tieu || bc.thai_do || bc.kien_thuc_ky_nang || bc.muc_kien_thuc || bc.muc_thai_do
+          || [bc.cs_thai_do, bc.cs_tap_trung, bc.cs_tiep_thu, bc.cs_tu_duy, bc.cs_ky_nang, bc.cs_van_dung, bc.cs_vuot_kho].some((x) => x != null))
+        if (!hasContent) { skipped++; continue }
+        const [rows, tq, khoiRank, lopRank, heRank] = await Promise.all([
+          getReportBuoiHS(h.id, mon, ym),
+          getTongQuanHS(h.id, mon, { ym }),
+          getKhoiRankDiemMT(h.id, mon, ym),
+          getLopRankDiemMT(h.id, lopId, mon, ym),
+          getHeRankDiemMT(h.id, mon, ym),
+        ])
+        const missCount = rows.filter((r) => r.btvnTrangThai === 'khong_lam' || r.btvnTrangThai === 'xin_phep').length
+        const url = await renderCardToUrl({ hsName: h.ho_ten, hsImg: h.anh_url, lopTen, mon, ym, gvName, tq, missCount, bc, khoiRank, lopRank, heRank }, `${h.id}_${ym}`)
+        await upsertBaoCaoPH(h.id, mon, ym, { cong_bo_at: new Date().toISOString(), anh_bao_cao_url: url })
+        published++
+      } catch { failed++ }
+    }
+    setBulk({ done: roster.length, total: roster.length, cur: '', published, skipped, failed, running: false })
+  }
+
   const monBtn = (on: boolean) => `h-7 rounded-md px-3 text-[13px] font-semibold transition ${on ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`
   const [yy, mm] = ym.split('-')
   const hs = roster.find((r) => r.id === hsId) ?? null
@@ -88,6 +121,7 @@ export default function ReportPHScreen() {
           <span className="min-w-[92px] text-center text-[13px] font-semibold tabular-nums text-slate-700">Tháng {Number(mm)}/{yy}</span>
           <button onClick={() => setYm(shiftYM(ym, +1))} className="h-7 rounded-r-md px-2 text-slate-500 hover:bg-slate-100" title="Tháng sau">›</button>
         </div>
+        {roster.length > 0 && <button disabled={!!bulk?.running} onClick={() => void bulkCongBoLop()} title="Chụp ảnh + công bố báo cáo cho cả lớp" className="ml-auto rounded-md bg-emerald-600 px-3 py-1.5 text-[13px] font-semibold text-white shadow-sm hover:bg-emerald-500 disabled:opacity-50">✓ Chốt cả lớp ({roster.length})</button>}
       </div>
       <div className="min-h-0 flex-1 overflow-auto p-6">
         {!lopId ? (
@@ -121,6 +155,19 @@ export default function ReportPHScreen() {
           </div>
         )}
       </div>
+      {bulk && (
+        <div className="fixed inset-0 z-[80] flex items-center justify-center bg-slate-900/50 p-4">
+          <div className="w-[380px] max-w-[95vw] rounded-2xl bg-white p-5 shadow-2xl">
+            <div className="mb-2 text-[15px] font-bold text-slate-800">{bulk.running ? 'Đang chốt cả lớp…' : '✓ Đã xong'}</div>
+            <div className="mb-2 h-2 w-full overflow-hidden rounded-full bg-slate-100"><div className="h-full bg-emerald-500 transition-all" style={{ width: `${Math.round((bulk.done / Math.max(1, bulk.total)) * 100)}%` }} /></div>
+            <div className="text-[13px] text-slate-600">{bulk.done}/{bulk.total} học sinh{bulk.running && bulk.cur ? ` · đang xử lý: ${bulk.cur}` : ''}</div>
+            <div className="mt-1 text-[12px] text-slate-500">✓ Công bố {bulk.published} · ⏭ bỏ qua {bulk.skipped} (chưa nhập){bulk.failed ? ` · ⚠ lỗi ${bulk.failed}` : ''}</div>
+            {bulk.running
+              ? <p className="mt-3 text-[11px] text-amber-600">Đang chụp ảnh từng em — vui lòng đừng đóng/chuyển tab.</p>
+              : <button onClick={() => setBulk(null)} className="mt-4 w-full rounded-lg bg-slate-800 py-2 text-sm font-semibold text-white hover:bg-slate-700">Đóng</button>}
+          </div>
+        </div>
+      )}
     </div>
   )
 }
