@@ -16,7 +16,7 @@ import { Previewer } from 'pagedjs'
 import { MathText } from '../ui'
 import { type CheDoHinh } from '../../../lib/kho/hinhGiaoTrinh'
 import { CHROME_CSS, buildPagedCss, gtPageCss, printWithFilename, safeFileName } from '../../tailieu/PrintView'
-import { BK_CSS, BK_PAGE_CSS } from '../../tailieu/bkPrint'
+import { BK_CSS, BK_PAGE_CSS, ETHeaderBK } from '../../tailieu/bkPrint'
 
 // ── Model bản in ──────────────────────────────────────────────────
 // Một BƯỚC con = node ẨN nở vào lời giải một ý (bản GV). Đứng TRƯỚC lời giải chính, sắp cap↑.
@@ -48,6 +48,10 @@ export type BanIn = {
   // ⭐ 08-10 (Thùy: "lý thuyết in ở phiếu bài tập trên lớp giống bên đại"): lý thuyết CỦA MÔ HÌNH, resolve
   // sẵn ở banInTheoMoHinh (CHỈ phan='lop' — khuôn Đại: LT chỉ hiện ở buổi trên lớp, không lặp lại ở BTVN).
   moHinhLyThuyet?: Record<string, { ten: string; noiDung: string }>
+  // ⭐ 21/08 — chỉ dùng khi in perHS (ET): lớp + ngày hiện ở ETHeaderBK (pill góc phải + ô "Lớp"),
+  // KHÔNG nhét vào `tieuDe`. Các đường gọi khác (giáo trình/ôn tập) không cần set 2 field này.
+  lop?: string
+  ngay?: string
 }
 
 export default function HinhPrintView({ ban, onClose, perHS }: { ban: BanIn; onClose: () => void; perHS?: HinhPerHS[] }) {
@@ -148,30 +152,21 @@ export default function HinhPrintView({ ban, onClose, perHS }: { ban: BanIn; onC
 // ETPrintView) thay cho masthead thường — mã đề đã gán hiện thành nhãn, đánh số Bài 1.. RIÊNG từng phiếu
 // (không cộng dồn xuyên các HS). Nội dung mucs của mỗi HS đã được resolve theo mã đề TRƯỚC khi vào đây
 // (ETScreen.tsx) — component này không biết "mã đề" là gì, chỉ vẽ mucs được đưa.
-export type HinhPerHS = { hoTen: string; lopTen?: string; maDe: number; mucs: MucIn[] }
+export type HinhPerHS = { hoTen: string; maDe: number; mucs: MucIn[] }
 
 function Noi({ ban, gv, perHS }: { ban: BanIn; gv: boolean; perHS?: HinhPerHS[] }) {
   const logoUrl = location.origin + '/Logo.png'
   if (perHS) {
+    // ⭐ Thùy 21/08 ("làm giống bên Đại số đi, cứ sáng tạo thêm làm gì"): dùng ĐÚNG `ETHeaderBK` của ET
+    // Đại — không tự vẽ header riêng cho Hình. Tiêu đề = "Đề kiểm tra cuối giờ lớp {lớp}" y hệt Đại,
+    // KHÔNG chữ "Hình"/"Buổi học". Ngày lên pill góc phải (prop `ngay` của ETHeaderBK), không nhét vào tiêu đề.
+    const title = `Đề kiểm tra cuối giờ lớp ${ban.lop ?? ''}`
     return (
       <div>
         {perHS.map((hs, hi) => (
           <div key={hi} className="pv-de-recto">
-            <div className="pv-bkh">
-              <div className="pv-bkh-top">
-                <div className="pv-bkh-brand"><img className="pv-bkh-logo" src={logoUrl} alt="BK Academy" /></div>
-                <div className="pv-bkh-label">ET Hình{gv ? ` · Mã đề ${hs.maDe} · Đáp án` : ` · Mã đề ${hs.maDe}`}</div>
-                <div className="pv-bkh-meta" />
-              </div>
-              <div className="pv-bkh-hero"><h1 className="pv-bkh-title">{ban.tieuDe}</h1><div className="pv-bkh-divider" /></div>
-              {!gv && (
-                <div className="pv-bkh-student">
-                  <div className="pv-bkh-field"><div className="pv-bkh-flbl">Họ và tên học sinh</div><div className="pv-bkh-fval">{hs.hoTen || ' '}</div></div>
-                  <div className="pv-bkh-field"><div className="pv-bkh-flbl">Lớp</div><div className="pv-bkh-fval">{hs.lopTen || ' '}</div></div>
-                  <div className="pv-bkh-field"><div className="pv-bkh-flbl">Mã đề</div><div className="pv-bkh-fval">{hs.maDe}</div></div>
-                </div>
-              )}
-            </div>
+            <ETHeaderBK title={title} ngay={ban.ngay ?? ''} lop={ban.lop ?? ''} made={String(hs.maDe)}
+              hoTen={hs.hoTen} soCau={hs.mucs.filter((m) => m.kieu === 'de').length} gv={gv} />
             <MucsBlock mucs={hs.mucs} gv={gv} moHinhLyThuyet={ban.moHinhLyThuyet} />
           </div>
         ))}

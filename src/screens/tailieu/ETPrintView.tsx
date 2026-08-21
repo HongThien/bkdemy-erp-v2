@@ -9,7 +9,7 @@ import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
 import { getTaiLieuFull, etGroupOf, etFormOf, khoCuaMon, type ETGroup, type TaiLieuFull, type CauHinh } from '../../lib/tailieu'
 import { fetchCausByMa } from '../../lib/ontap'
-import { BK_CSS, BK_PAGE_CSS } from './bkPrint'
+import { BK_CSS, BK_PAGE_CSS, ETHeaderBK } from './bkPrint'
 import type { CauHoi } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
 import { cauItemParts, CauFlow, OptGrid, GvAnswer, splitStem, questionOnlyContent, TLNTable, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChrome, printWithFilename, pruneGhostBlankPages } from './PrintView'
@@ -298,53 +298,7 @@ function ETDoc({ ten, caus, ch, gv, badge, hoTen }: { ten: string; caus: CauHoi[
   )
 }
 
-// Đầu phiếu KIỂU BK (thiết kế mới, Thùy 07-31 — theo mockup BK Academy). Thương hiệu + nhãn "Bài test cuối
-// giờ" + thời gian 10 phút + ngày; tiêu đề; bảng HS (Họ tên · Lớp · Mã đề); lưới "Đánh giá từng câu" Đ/C/S,
-// số ô = SỐ CÂU của đề. Bản GV bỏ bảng HS + lưới chấm.
-function ETHeaderBK({ title, ngay, lop, made, hoTen, soCau, gv }: {
-  title: string; ngay: string; lop: string; made: string; hoTen?: string; soCau: number; gv: boolean
-}) {
-  return (
-    <div className="pv-bkh">
-      <div className="pv-bkh-top">
-        <div className="pv-bkh-brand">
-          <img className="pv-bkh-logo" src={location.origin + '/Logo.png'} alt="BK ACADEMY" />
-        </div>
-        {/* Bản GV ẩn bảng HS (chứa Mã đề) → gắn Mã đề vào NHÃN để đáp án vẫn biết của mã đề nào. */}
-        <div className="pv-bkh-label">Bài test cuối giờ{gv ? (made ? ` · Mã đề ${made} · Đáp án` : ' · Đáp án') : ''}</div>
-        <div className="pv-bkh-meta">
-          <div className="pv-bkh-pill"><span>Thời gian</span><strong>10 phút</strong></div>
-          <div className="pv-bkh-pill"><span>Ngày</span><strong>{ngay}</strong></div>
-        </div>
-      </div>
-      <div className="pv-bkh-hero">
-        <h1 className="pv-bkh-title">{title}</h1>
-        <div className="pv-bkh-divider" />
-      </div>
-      {!gv && (
-        <div className="pv-bkh-student">
-          <div className="pv-bkh-field"><div className="pv-bkh-flbl">Họ và tên học sinh</div><div className="pv-bkh-fval">{hoTen || ' '}</div></div>
-          <div className="pv-bkh-field"><div className="pv-bkh-flbl">Lớp</div><div className="pv-bkh-fval">{lop}</div></div>
-          <div className="pv-bkh-field"><div className="pv-bkh-flbl">Mã đề</div><div className="pv-bkh-fval">{made || ' '}</div></div>
-        </div>
-      )}
-      {!gv && (
-        <div className="pv-bkh-assess">
-          <div className="pv-bkh-ahead"><div className="pv-bkh-atitle">Đánh giá từng câu</div><div className="pv-bkh-anote">Trợ giảng tích Đ / C / S cho mỗi câu</div></div>
-          <div className="pv-bkh-grid">
-            {Array.from({ length: soCau }, (_, i) => (
-              <div key={i} className="pv-bkh-qcard">
-                <div className="pv-bkh-qno">Câu {i + 1}</div>
-                <div className="pv-bkh-status">{['Đ', 'C', 'S'].map((s) => <span key={s} className="pv-bkh-circle">{s}</span>)}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
-  )
-}
-
+// ETHeaderBK — đã chuyển sang bkPrint.tsx (dùng chung ET Đại + ET Hình).
 const ET_CSS = `
 /* Header 2 CỘT có VẠCH NGĂN giữa (viền phải cột trái). TRÁI = họ tên HS (tên to). PHẢI = tên đề · ngày ·
    mã đề, căn CHÍNH GIỮA cột 2. 2 cột CĂN TRÊN (lề trên ngang nhau). Chữ TÍM (accent) đồng bộ cả file. */

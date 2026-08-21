@@ -161,17 +161,20 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
   async function inTheoHSHinh(list: { id: string; ho_ten: string }[]) {
     if (!hinhL || !hinhPicks.length) return
     await luuHinh()
+    // tieuDe = nhãn NỘI BỘ (thanh công cụ + tên file tải) — KHÔNG phải tiêu đề in trên giấy (ETHeaderBK
+    // tự dựng "Đề kiểm tra cuối giờ lớp X", xem HinhPrintView.tsx). Lớp/ngày IN thật lấy từ meta dưới.
     const tieuDe = lop && ngay ? `ET Hình ${lop.ten_lop} · ${ngay.split('-').reverse().join('/')}` : 'ET Hình'
+    const meta = { lop: lop?.ten_lop, ngay: ngay ? ngay.split('-').reverse().join('/') : '' }
     const picksCho = (v: 0 | 1) => hinhPicks.map((p) => { const alt = hinhMaDe[chuoiSig(p.nodeIds)]?.[v]; return alt ? applyBanToPick(p, alt) : p })
     const [base, v2, v3] = await Promise.all([
       banInTheoMoHinh(tieuDe, 'et', hinhPicks, hinhL, hinhCheDo, hinhSoDong),
       banInTheoMoHinh(tieuDe, 'et', picksCho(0), hinhL, hinhCheDo, hinhSoDong),
       banInTheoMoHinh(tieuDe, 'et', picksCho(1), hinhL, hinhCheDo, hinhSoDong),
     ])
-    const byMaDe: Record<number, HinhBanIn> = { 1: base, 2: v2, 3: v3 }
+    const byMaDe: Record<number, HinhBanIn> = { 1: { ...base, ...meta }, 2: { ...v2, ...meta }, 3: { ...v3, ...meta } }
     setHinhClassPrint({
-      ban: base,
-      mucs: list.map((hs) => { const md = hinhHsMaDe[hs.id] ?? 1; return { hoTen: hs.ho_ten, lopTen: lop?.ten_lop, maDe: md, mucs: (byMaDe[md] ?? base).mucs } }),
+      ban: byMaDe[1],
+      mucs: list.map((hs) => { const md = hinhHsMaDe[hs.id] ?? 1; return { hoTen: hs.ho_ten, maDe: md, mucs: (byMaDe[md] ?? byMaDe[1]).mucs } }),
     })
   }
 
