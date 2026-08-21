@@ -6175,3 +6175,61 @@ hiện với khối 5T (`KHU_CHI_5T`, đọc khối qua `khoiCuaHS()`), ẩn v�
 
 Verify UI thật trên browser (mobile 375×812) sau khi merge vào `main` — ghi tiếp ở mục dưới nếu cần
 sửa gì sau khi nhìn thấy render thật.
+
+## 2026-08-21 (tiếp) — Sửa lại UI: PORT NHẦM bảng màu chết + header giống PH + xếp hạng mọi khối tiểu học + 5 lần gần nhất
+
+CEO chốt sau khi xem bản trước: "1. Bố cục vẫn xấu quá. Các header làm giống bên app phụ huynh đi
+2. À ko phải chỉ 5T. Hiện cho các khối tiểu học 3. Chỗ thông tin học tập, t muốn cập nhật luôn cái
+đánh giá từng câu giống trên Kết quả học tập ở ERP... Hiện 5 lần gần nhất".
+
+**⚠⚠ ROOT CAUSE của mục ①: port NHẦM stylesheet CHẾT.** Bản trước đọc `bkdemy-ph-app/app/globals.css`
+(`:root`) — nhưng grep xác nhận file này **0 chỗ dùng** trong `PhApp.tsx` thật (comment ngay đầu file
+"port từ mockup đã duyệt" — di sản, chưa xoá). App PH THẬT chạy bằng `ph-v3.css` + `ph-v3-extra.css`
+(`.pv3{...}`, "Design system v3 — springboard + drill-down"), token màu KHÁC HẲN: `--bg:#F3F5FA`
+(không phải #F2F2F7) · `--text:#171A22` · `--muted:#858A96` · `--blue:#087FC6` (không phải #1077BE)
+· bo góc RẤT lớn (card 21-24px, icon "squircle" 13-18px — KHÔNG BAO GIỜ tròn hoàn toàn) · shadow mềm
+`0 8px 24px rgba(28,38,61,.07)` (không phải `shadow-sm` Tailwind mặc định, nhạt hơn nhiều). Dùng
+Explore agent đọc LẠI đúng `ph-v3.css`/`ph-v3-extra.css` + cách `PhApp.tsx` dùng chúng (không đoán
+qua tên class) trước khi sửa — bài học: lần sau đụng "giống app X", luôn xác nhận file CSS đang
+IMPORT THẬT (`grep` component thật dùng class nào), không tin comment/tên file nghe hợp lý nhất.
+
+**① Header + bố cục — port lại ĐÚNG:**
+- `src/index.css` `@theme`: đổi toàn bộ token sang giá trị `ph-v3.css` thật (`--color-brand:#087fc6`,
+  `--color-ios:#f3f5fa`, `--color-ph-label:#171a22`, `--color-ph-label-2:#858a96`, thêm
+  `--color-ph-purple:#7656d8` — bỏ hẳn `ph-ink`/`ph-ink-2` bịa ra ở bản trước, ĐÂU CÓ trong hệ thật).
+- Thêm component `Head` DÙNG CHUNG (ĐÚNG `.pageHead` ph-v3.css:65-67): nút back squircle 40×40 nổi
+  TRÊN NỀN TRANG (không phải thanh trắng riêng như bản trước), title 21px bold, sub 12px xám — áp cho
+  cả 3 sub-màn (Danh sách 1 khu, Thông tin học tập, Bảng xếp hạng).
+- Màn chính: đổi từ 1 thanh header dẹt sang ĐÚNG 2 tầng của PH thật — hàng icon-button (🔑/Thoát) nổi
+  riêng ở trên, rồi `.studentCard` (ph-v3.css:39-41): card trắng bo 24px, avatar SQUIRCLE 56×56 bo
+  18px (KHÔNG tròn — khác bản trước dùng `rounded-full`), tên 19px bold.
+- Lưới ô ĐÚNG `.function` (ph-v3.css:59-62): mỗi ô 1 MÀU RIÊNG (icon squircle nền xanh/tím/cam/xanh lá
+  nhạt theo `MAU_BG`, giống PH có `.blue/.green/.orange/.purple`) — bản trước mọi ô cùng 1 xám phẳng,
+  đơn điệu, đúng là "xấu" như CEO nói.
+- Danh sách 1 khu, Thông tin học tập, Bảng xếp hạng: card bo 21-22px + `SHADOW` (đúng `--shadow` PH),
+  tab chọn "Chưa làm/Hoàn thành" đổi màu chữ active sang `text-brand` (giống `.tabs a.active`).
+
+**② Bảng xếp hạng — mọi khối tiểu học, KHÔNG chỉ 5T:** `KHU_CHI_5T` → `KHU_CHI_CAP1` (điều kiện ẩn/hiện
+đổi từ `khoi !== '5T'` sang `!cap1` — tái dùng ĐÚNG boolean `cap1` đã có). `BangXepHang` tự đọc
+`khoiCuaHS()` của CHÍNH mình rồi gọi `xepHangTuLuyen(khoi)` — KHÔNG hardcode `'5T'` nữa (RPC
+`hs_xep_hang_tu_luyen(p_khoi)` vốn đã tổng quát từ đầu, không cần sửa DB) — mỗi em xếp hạng với ĐÚNG
+khối của mình (khối 3 không lẫn khối 5), sub-title header hiện động `"...các bạn khối {khoi}"`. Card
+xếp hạng đổi sang ĐÚNG `.classTable`/`.row`/`.rank`/`.score` (ph-v3.css:85-90) — bảng xếp hạng lớp có
+sẵn trong PH thật, không phải dựng kiểu mới.
+
+**③ Thông tin học tập — "5 lần gần nhất" giống Kết quả học tập ERP:** Đọc ĐÚNG `Slot`/`DangRow` của
+`KetQuaScreen.tsx` (staff) qua Explore agent trước khi làm — pattern: ✓ đạt (value≥1, xanh) · ◐ nửa
+(value>0, cam) · ✗ sai (value=0, đỏ), MÀU THEO GIÁ TRỊ TỪNG LẦN ĐO (KHÔNG phải theo mức `muc` của cả
+dạng — 2 trục khác nhau), sắp mới→cũ, kèm nhãn nguồn (`SRC_LABEL`) + ngày ngắn dưới mỗi chấm.
+- `tuluyen.ts::layDangHocTap`: mỗi `DangHocTap` thêm `recent: RecentEval[]` — TOP 5 (không phải 10
+  như bản staff — CEO nói rõ "Hiện 5 lần gần nhất") lấy từ CHÍNH mảng evals đã fetch (không round-trip
+  RPC thêm lần nào), sort `Date.parse` mới→cũ, `.slice(0,5)`. Export thêm `SRC_LABEL` (ĐÚNG bảng nhãn
+  `mastery.ts` dùng, không bịa nhãn khác — chỉ bớt `ingame`/`dg` vì `hs_dang_evals` không bao giờ trả
+  2 nguồn đó).
+- `HocSinhApp.tsx`: component `LanDo` (đặt tên khác `Slot` staff cho rõ ngữ cảnh HS, cùng logic hệt),
+  gắn dưới mỗi hàng dạng trong "Dạng cần chú ý" — hàng dạng đổi sang ĐÚNG `.dangList`/`.dangRow`
+  (ph-v3-extra.css:327-338): nền xám phẳng `#F7F8FB`, chấm tròn màu theo mức, tag pill bên phải.
+
+**Verify:** `npx tsc --noEmit` sạch (1 lỗi biến `khoi` không dùng ở scope cha sau khi dời fetch khối
+vào trong `BangXepHang` — xoá state thừa, không phải bug logic). Verify browser thật (localhost,
+mobile) — ghi tiếp ngay dưới sau khi merge + nhìn kết quả render thật.

@@ -16,7 +16,7 @@ import { mucDeadline, nhanConLai } from '../../lib/tuan'
 import { seededShuffleWithOrig, seededPermByDang } from '../../lib/shuffle'
 import {
   timTuLuyenHomNay, sinhTuLuyen, monCuaHS, laCap1HS, khoiCuaHS, layDangHocTap, xepHangTuLuyen,
-  TU_LUYEN_TRAN_NGAY, TU_LUYEN_SO_CAU_MOI_LUOT, type DangHocTap, type XepHangRow,
+  TU_LUYEN_TRAN_NGAY, TU_LUYEN_SO_CAU_MOI_LUOT, SRC_LABEL, type DangHocTap, type RecentEval, type XepHangRow,
 } from '../../lib/tuluyen'
 import DoiMatKhau from './DoiMatKhau'
 
@@ -40,21 +40,41 @@ const THI_LOAI = new Set(['et', 'de_thi'])
 // đầu ẨN HẲN (không phải "Sắp có") cho cấp 1, KHÔNG đổi gì ở tầng dữ liệu (cấp 1 vốn không có
 // bai_test loại giao_trinh/et/btvn nào — cuaKhu() các ô đó luôn rỗng, ẩn chỉ là bớt nhiễu UI).
 const KHU_AN_CAP1 = new Set<KhuId>(['giao_trinh', 'et', 'btvn'])
-// Bảng xếp hạng (Thùy 21/08: "xếp hạng các bạn 5T") — riêng khối 5T, ẩn với mọi khối khác.
-const KHU_CHI_5T = new Set<KhuId>(['xep_hang'])
+// Bảng xếp hạng (Thùy 21/08: "ko phải chỉ 5T. Hiện cho các khối tiểu học") — mọi khối cấp 1, MỖI
+// EM xếp hạng với ĐÚNG khối của mình (BangXepHang tự đọc khoiCuaHS(), không hardcode '5T' nữa).
+const KHU_CHI_CAP1 = new Set<KhuId>(['xep_hang'])
 type KhuId = 'giao_trinh' | 'et' | 'btvn' | 'tu_luyen' | 'thong_tin' | 'de_thi_thu' | 'xep_hang'
 // direct = ô này KHÔNG đi qua màn "danh sách nhiều bài" (setKhu+tab) — bấm vào thẳng 1 màn riêng.
 // Tự luyện là 1 PHIÊN đang-tiếp-diễn trong ngày (không phải danh sách bài đã phát hành theo ngày
 // như ET/BTVN), nên không hợp mô hình list+tab dùng chung — mỗi màn direct tự lo dữ liệu riêng.
-const KHU: { id: KhuId; ten: string; icon: string; loai?: string; direct?: boolean }[] = [
-  { id: 'giao_trinh', ten: 'Bài tập trên lớp', icon: '📓', loai: 'giao_trinh' },
-  { id: 'et', ten: 'ET', icon: '📋', loai: 'et' },
-  { id: 'btvn', ten: 'BTVN', icon: '🏠', loai: 'btvn' },
-  { id: 'tu_luyen', ten: 'Tự luyện', icon: '🎯', direct: true },
-  { id: 'thong_tin', ten: 'Thông tin học tập', icon: '📈', direct: true },
-  { id: 'xep_hang', ten: 'Bảng xếp hạng', icon: '🏆', direct: true },
-  { id: 'de_thi_thu', ten: 'Làm đề thi thử', icon: '📄' },
+// mau = màu nền ô icon (Thùy: giống app PH — mỗi ô 1 màu, đúng ".function .blue/.green/..." trong
+// bkdemy-ph-app/app/ph-v3.css, KHÔNG phải xám phẳng đơn điệu như bản trước).
+const KHU: { id: KhuId; ten: string; icon: string; loai?: string; direct?: boolean; mau: string }[] = [
+  { id: 'giao_trinh', ten: 'Bài tập trên lớp', icon: '📓', loai: 'giao_trinh', mau: 'brand' },
+  { id: 'et', ten: 'ET', icon: '📋', loai: 'et', mau: 'ph-purple' },
+  { id: 'btvn', ten: 'BTVN', icon: '🏠', loai: 'btvn', mau: 'ph-orange' },
+  { id: 'tu_luyen', ten: 'Tự luyện', icon: '🎯', direct: true, mau: 'ph-green' },
+  { id: 'thong_tin', ten: 'Thông tin học tập', icon: '📈', direct: true, mau: 'brand' },
+  { id: 'xep_hang', ten: 'Bảng xếp hạng', icon: '🏆', direct: true, mau: 'ph-orange' },
+  { id: 'de_thi_thu', ten: 'Làm đề thi thử', icon: '📄', mau: 'ph-purple' },
 ]
+// Tailwind quét class TĨNH trong nguồn — không ghép chuỗi `bg-${mau}/10` (mất class). Liệt kê đủ.
+const MAU_BG: Record<string, string> = { brand: 'bg-brand/10', 'ph-purple': 'bg-ph-purple/10', 'ph-orange': 'bg-ph-orange/10', 'ph-green': 'bg-ph-green/10' }
+const SHADOW = 'shadow-[0_8px_24px_rgba(28,38,61,0.07)]' // ĐÚNG --shadow của bkdemy-ph-app/app/ph-v3.css
+
+// Header sub-màn (Thùy: "làm header giống app phụ huynh") — ĐÚNG `.pageHead` (ph-v3.css:65-67):
+// nút back vuông-tròn (squircle, KHÔNG tròn) nổi trên nền trang (không phải thanh trắng riêng).
+function Head({ title, sub, onBack }: { title: string; sub?: string; onBack: () => void }) {
+  return (
+    <div className="sticky top-0 z-10 -mx-4 flex items-center gap-3 bg-ios px-4 pb-3 pt-[calc(12px+env(safe-area-inset-top))]">
+      <button onClick={onBack} className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-[13px] bg-white text-[20px] text-ph-label-2 ${SHADOW}`}>‹</button>
+      <div className="min-w-0">
+        <h1 className="text-[21px] font-bold leading-tight tracking-tight text-ph-label">{title}</h1>
+        {sub && <p className="mt-0.5 text-[12px] text-ph-label-2">{sub}</p>}
+      </div>
+    </div>
+  )
+}
 
 export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: string; hoTen: string; maHS: string }) {
   const [tests, setTests] = useState<BaiTestCuaHS[] | null>(null)
@@ -64,11 +84,9 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [khu, setKhu] = useState<KhuId | null>(null) // null = màn chính, có ô
   const [direct, setDirect] = useState<'tu_luyen' | 'thong_tin' | 'xep_hang' | null>(null)
   const [cap1, setCap1] = useState<boolean | null>(null) // null = chưa biết — chờ trước khi vẽ lưới ô
-  const [khoi, setKhoi] = useState<string | null>(null)
 
   useEffect(() => { listBaiTestCuaHS().then(setTests).catch(() => setTests([])) }, [])
   useEffect(() => { laCap1HS().then(setCap1).catch(() => setCap1(false)) }, [])
-  useEffect(() => { khoiCuaHS().then(setKhoi).catch(() => setKhoi(null)) }, [])
 
   if (doiMK) return <DoiMatKhau maHS={maHS} batBuoc={false} onXong={() => setDoiMK(false)} />
 
@@ -93,29 +111,28 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
 
   const CHU_DUOI: Partial<Record<KhuId, string>> = { tu_luyen: 'Luyện theo dạng yếu', thong_tin: 'Dạng đang yếu', xep_hang: 'Thi đua tự luyện' }
 
-  const dinhDanh = (
-    <div className="flex items-center gap-3 px-4 pb-2 pt-[calc(8px+env(safe-area-inset-top))]">
-      <div className="flex h-[42px] w-[42px] shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand to-brand-2 text-[15px] font-semibold text-white">
-        {hoTen.trim().split(/\s+/).slice(-2).map((w) => w[0]).join('').toUpperCase()}
-      </div>
-      <div className="min-w-0 flex-1">
-        <p className="truncate text-[16px] font-semibold tracking-tight text-ph-label">{hoTen}</p>
-        <p className="truncate text-[12.5px] text-ph-label-2">{maHS.toUpperCase()}{lopMon ? ` · ${lopMon}` : ''}</p>
-      </div>
-      <button onClick={() => setDoiMK(true)} title="Đổi mật khẩu"
-        className="rounded-full bg-black/[0.04] px-2.5 py-1.5 text-[13px] text-ph-label-2">🔑</button>
-      <button onClick={() => supabase.auth.signOut()}
-        className="rounded-full bg-black/[0.04] px-3 py-1.5 text-[13px] text-ph-label-2">Thoát</button>
-    </div>
-  )
-
   // ── MÀN CHÍNH: ô vuông (theo cấp/khối), 2 cột ─────────────────────────────
   if (!khu && cap1 === null) return <div className="flex min-h-screen items-center justify-center bg-ios text-sm text-ph-label-2">Đang tải…</div>
   if (!khu) return (
-    <div className="mx-auto min-h-screen max-w-md bg-ios pb-10">
-      <div className="sticky top-0 z-10 border-b border-black/[0.06] bg-white/90 backdrop-blur">{dinhDanh}</div>
-      <div className="grid grid-cols-2 gap-3 px-4 pt-4">
-        {KHU.filter((k) => !(cap1 && KHU_AN_CAP1.has(k.id)) && !(KHU_CHI_5T.has(k.id) && khoi !== '5T')).map((k) => {
+    <div className="mx-auto min-h-screen max-w-md bg-ios px-4 pb-10 pt-[calc(14px+env(safe-area-inset-top))]">
+      {/* Hàng nút phụ (đổi MK/thoát) — ĐÚNG ".top" (ph-v3.css): icon-button vuông-tròn nổi trên nền trang */}
+      <div className="mb-3 flex items-center justify-end gap-2">
+        <button onClick={() => setDoiMK(true)} title="Đổi mật khẩu" className={`flex h-[42px] w-[42px] items-center justify-center rounded-[14px] bg-white text-[16px] ${SHADOW}`}>🔑</button>
+        <button onClick={() => supabase.auth.signOut()} className={`flex h-[42px] items-center justify-center rounded-[14px] bg-white px-3.5 text-[13px] font-semibold text-ph-label-2 ${SHADOW}`}>Thoát</button>
+      </div>
+      {/* Danh tính — ĐÚNG ".studentCard" (ph-v3.css): card trắng bo 24px, avatar SQUIRCLE (không tròn) */}
+      <div className={`flex items-center gap-3 rounded-[24px] bg-white p-3.5 ${SHADOW}`}>
+        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-[18px] bg-gradient-to-br from-brand to-brand-2 text-[22px] font-bold text-white">
+          {hoTen.trim().split(/\s+/).slice(-2).map((w) => w[0]).join('').toUpperCase()}
+        </div>
+        <div className="min-w-0 flex-1">
+          <p className="truncate text-[19px] font-bold tracking-tight text-ph-label">{hoTen}</p>
+          <p className="mt-1 truncate text-[13px] text-ph-label-2">{maHS.toUpperCase()}{lopMon ? ` · ${lopMon}` : ''}</p>
+        </div>
+      </div>
+
+      <div className="mt-5 grid grid-cols-2 gap-3">
+        {KHU.filter((k) => !(cap1 && KHU_AN_CAP1.has(k.id)) && !(KHU_CHI_CAP1.has(k.id) && !cap1)).map((k) => {
           const sapCo = !k.loai && !k.direct
           const ds = k.loai ? cuaKhu(k.id) : []
           // Badge = việc CÒN LÀM ĐƯỢC. Bài quá hạn vẫn hiện trong danh sách (Thùy: "hiện quá hạn
@@ -125,12 +142,12 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
           const onClick = sapCo ? undefined : k.direct ? () => setDirect(k.id as 'tu_luyen' | 'thong_tin' | 'xep_hang') : () => { setKhu(k.id); setTab('chua') }
           return (
             <button key={k.id} disabled={sapCo} onClick={onClick}
-              className={`relative flex aspect-square flex-col justify-between rounded-2xl p-3.5 text-left transition ${
-                sapCo ? 'bg-black/[0.03]' : 'bg-white shadow-sm active:scale-[0.98]'}`}>
-              <span className={`flex h-9 w-9 items-center justify-center rounded-full text-[18px] ${sapCo ? 'opacity-30' : 'bg-black/[0.04]'}`}>{k.icon}</span>
+              className={`relative flex min-h-[132px] flex-col justify-between rounded-[22px] p-4 text-left transition ${
+                sapCo ? 'bg-black/[0.03]' : `bg-white active:scale-[0.98] ${SHADOW}`}`}>
+              <span className={`flex h-11 w-11 items-center justify-center rounded-[15px] text-[21px] ${sapCo ? 'bg-black/[0.05] opacity-40' : MAU_BG[k.mau]}`}>{k.icon}</span>
               <span>
-                <span className={`block text-[15px] font-semibold tracking-tight ${sapCo ? 'text-ph-label-2/70' : 'text-ph-label'}`}>{k.ten}</span>
-                <span className={`mt-0.5 block text-[12px] ${nChuaLam === 0 && nQuaHan > 0 ? 'text-ph-red' : 'text-ph-label-2'}`}>
+                <span className={`block text-[15px] font-bold tracking-tight ${sapCo ? 'text-ph-label-2/70' : 'text-ph-label'}`}>{k.ten}</span>
+                <span className={`mt-1 block text-[11px] leading-snug ${nChuaLam === 0 && nQuaHan > 0 ? 'text-ph-red' : 'text-ph-label-2'}`}>
                   {sapCo ? 'Sắp có' : k.direct ? CHU_DUOI[k.id] : tests === null ? '…'
                     : nChuaLam > 0 ? `${nChuaLam} bài chưa làm`
                     : nQuaHan > 0 ? `${nQuaHan} bài quá hạn`
@@ -138,7 +155,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
                 </span>
               </span>
               {nChuaLam > 0 && (
-                <span className="absolute right-3 top-3 flex h-5 min-w-5 items-center justify-center rounded-full bg-ph-red px-1.5 text-[12px] font-semibold text-white">{nChuaLam}</span>
+                <span className="absolute right-3 top-3 flex h-6 min-w-6 items-center justify-center rounded-full bg-ph-red px-1.5 text-[12px] font-bold text-white shadow-[0_4px_12px_rgba(230,64,64,0.38)]">{nChuaLam}</span>
               )}
             </button>
           )
@@ -155,30 +172,27 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const tenKhu = KHU.find((k) => k.id === khu)?.ten ?? ''
 
   return (
-    <div className="mx-auto min-h-screen max-w-md bg-ios pb-10">
-      <div className="flex items-center gap-2 px-4 pb-2 pt-[calc(8px+env(safe-area-inset-top))]">
-        <button onClick={() => setKhu(null)} className="rounded-full bg-black/[0.04] px-2.5 py-1.5 text-[13px] text-ph-label-2">‹</button>
-        <p className="text-[19px] font-bold tracking-tight text-ph-label">{tenKhu}</p>
-      </div>
+    <div className="mx-auto min-h-screen max-w-md bg-ios px-4 pb-10">
+      <Head title={tenKhu} onBack={() => setKhu(null)} />
 
-      <div className="mx-4 mb-4 mt-2 grid grid-cols-2 gap-1 rounded-xl bg-black/[0.05] p-1">
+      <div className="mb-4 mt-3 grid grid-cols-2 gap-1 rounded-[15px] bg-black/[0.05] p-1">
         {([['chua', 'Chưa làm', nChua], ['xong', 'Hoàn thành', nXong]] as const).map(([k, label, n]) => (
           <button key={k} onClick={() => setTab(k)}
-            className={`rounded-lg py-2 text-[14px] font-medium transition ${tab === k ? 'bg-white text-ph-label shadow-sm' : 'text-ph-label-2'}`}>
-            {label} {n > 0 && <span className="text-[12px] text-ph-label-2">({n})</span>}
+            className={`rounded-xl py-2.5 text-[13px] font-bold transition ${tab === k ? `bg-white text-brand ${SHADOW}` : 'text-ph-label-2'}`}>
+            {label} {n > 0 && <span className="text-[12px] font-medium text-ph-label-2">({n})</span>}
           </button>
         ))}
       </div>
 
       {tests === null && <p className="py-10 text-center text-sm text-ph-label-2">Đang tải…</p>}
       {tests && shown.length === 0 && (
-        <div className="mx-4 rounded-2xl bg-white p-8 text-center shadow-sm">
+        <div className={`rounded-[21px] bg-white p-8 text-center ${SHADOW}`}>
           <p className="text-3xl">{tab === 'xong' ? '📭' : '🎉'}</p>
           <p className="mt-2 text-sm font-medium text-ph-label">{tab === 'xong' ? 'Chưa hoàn thành bài nào' : 'Không có bài nào cần làm'}</p>
           <p className="mt-1 text-[13px] text-ph-label-2">{tab === 'xong' ? 'Làm xong bài sẽ chuyển sang đây.' : `Khi thầy cô giao ${tenKhu.toLowerCase()}, bài sẽ hiện ở đây.`}</p>
         </div>
       )}
-      <div className="mx-4 flex flex-col gap-3">
+      <div className="flex flex-col gap-3">
         {shown.map((t) => {
           const lam = t.bai_lam
           const daNop = xongCua(t)
@@ -190,10 +204,10 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
           const muc = mucDeadline(dlMs)
           return (
             <button key={t.id} disabled={khoa} onClick={() => setActive(t)}
-              className={`rounded-2xl p-4 text-left transition ${khoa ? 'bg-black/[0.03]' : 'bg-white shadow-sm active:scale-[0.99]'}`}>
+              className={`rounded-[21px] p-4 text-left transition ${khoa ? 'bg-black/[0.03]' : `bg-white active:scale-[0.99] ${SHADOW}`}`}>
               <div className="flex items-center justify-between">
                 <span className={`text-[15px] font-semibold ${khoa ? 'text-ph-label-2' : 'text-ph-label'}`}>
-                  {laThi && <span className="mr-1.5 rounded bg-ph-ink/10 px-1.5 py-0.5 text-[11px] font-semibold text-ph-ink">THI</span>}
+                  {laThi && <span className="mr-1.5 rounded bg-ph-purple/10 px-1.5 py-0.5 text-[11px] font-semibold text-ph-purple">THI</span>}
                   {LOAI_TEN[t.loai] ?? 'Bài'} {t.mon} · {t.lop_ten}
                 </span>
                 <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${
@@ -557,51 +571,67 @@ function ThongTinHocTap({ onXong }: { onXong: () => void }) {
   const canChuY = data ? data.dangs.filter((d) => d.muc !== 'dat').slice(0, 10) : []
 
   return (
-    <div className="mx-auto min-h-screen max-w-md bg-ios pb-10">
-      <div className="flex items-center gap-2 px-4 pb-2 pt-[calc(8px+env(safe-area-inset-top))]">
-        <button onClick={onXong} className="rounded-full bg-black/[0.04] px-2.5 py-1.5 text-[13px] text-ph-label-2">‹</button>
-        <p className="text-[19px] font-bold tracking-tight text-ph-label">Thông tin học tập</p>
-      </div>
+    <div className="mx-auto min-h-screen max-w-md bg-ios px-4 pb-10">
+      <Head title="Thông tin học tập" onBack={onXong} />
 
       {state === 'trong' ? (
-        <div className="mx-4 mt-2 rounded-2xl bg-white p-8 text-center shadow-sm">
+        <div className={`mt-3 rounded-[21px] bg-white p-8 text-center ${SHADOW}`}>
           <p className="text-3xl">🌱</p>
           <p className="mt-2 text-[15px] font-medium text-ph-label">Chưa có dữ liệu học tập</p>
           <p className="mt-1 text-[13px] text-ph-label-2">Học vài buổi trên lớp hoặc làm Tự luyện rồi quay lại nhé.</p>
         </div>
       ) : (
         <>
-          <div className="mx-4 mt-2 rounded-2xl bg-white p-4 shadow-sm">
-            <p className="text-[13px] font-semibold text-ph-label-2">Tỉ lệ thành thạo kiến thức</p>
-            <div className="mt-1 flex items-baseline gap-1">
-              <span className="text-[36px] font-bold leading-none tracking-tight text-ph-label">{tiLe}</span>
-              <span className="text-[17px] font-semibold text-ph-label-2">%</span>
+          {/* ĐÚNG ".card"+".summary"+".sum" (ph-v3.css) — hero % + 3 ô đạt/cần luyện/yếu */}
+          <div className={`mt-3 rounded-[22px] bg-white p-4 ${SHADOW}`}>
+            <h3 className="text-[15px] font-bold text-ph-label">Tỉ lệ thành thạo kiến thức</h3>
+            <div className="mt-1.5 flex items-baseline gap-1">
+              <span className="text-[38px] font-extrabold leading-none tracking-tight text-ph-label">{tiLe}</span>
+              <span className="text-[17px] font-bold text-ph-label-2">%</span>
             </div>
-            <div className="mt-3 flex gap-4 border-t border-black/[0.06] pt-3 text-[12.5px] text-ph-label-2">
-              <span><b className="font-semibold text-ph-green">{data!.dat}</b> đạt</span>
-              <span><b className="font-semibold text-ph-orange">{data!.canLuyen}</b> cần luyện</span>
-              <span><b className="font-semibold text-ph-red">{data!.yeu}</b> yếu</span>
+            <div className="mt-3.5 grid grid-cols-3 gap-2.5">
+              <div className="rounded-[14px] bg-[#f7f8fb] p-2.5 text-center">
+                <b className="block text-[17px] font-extrabold text-ph-green">{data!.dat}</b>
+                <span className="text-[9px] font-bold uppercase tracking-wide text-ph-label-2">Đạt</span>
+              </div>
+              <div className="rounded-[14px] bg-[#f7f8fb] p-2.5 text-center">
+                <b className="block text-[17px] font-extrabold text-ph-orange">{data!.canLuyen}</b>
+                <span className="text-[9px] font-bold uppercase tracking-wide text-ph-label-2">Cần luyện</span>
+              </div>
+              <div className="rounded-[14px] bg-[#f7f8fb] p-2.5 text-center">
+                <b className="block text-[17px] font-extrabold text-ph-red">{data!.yeu}</b>
+                <span className="text-[9px] font-bold uppercase tracking-wide text-ph-label-2">Yếu</span>
+              </div>
             </div>
           </div>
 
-          <p className="mx-5 mb-1.5 mt-5 text-[12.5px] font-medium uppercase tracking-wide text-ph-label-2">Dạng cần chú ý</p>
+          <p className="ml-0.5 mb-2 mt-5 text-[12px] font-black uppercase tracking-wide text-[#596376]">Dạng cần chú ý</p>
           {canChuY.length === 0 ? (
-            <div className="mx-4 rounded-2xl bg-white p-6 text-center shadow-sm">
+            <div className={`rounded-[21px] bg-white p-6 text-center ${SHADOW}`}>
               <p className="text-[15px] font-medium text-ph-label">🎉 Không có dạng nào yếu</p>
               <p className="mt-1 text-[13px] text-ph-label-2">Tất cả dạng đã học đều đạt.</p>
             </div>
           ) : (
-            <div className="mx-4 overflow-hidden rounded-2xl bg-white shadow-sm">
-              {canChuY.map((d, i) => (
-                <div key={d.ma_dang} className={`flex items-center gap-3 px-4 py-3 ${i > 0 ? 'border-t border-black/[0.06]' : ''}`}>
-                  <div className="min-w-0 flex-1">
-                    <p className="truncate text-[14.5px] font-medium text-ph-label">{d.ten_dang}</p>
-                    {d.ten_chuyen_de && <p className="truncate text-[12px] text-ph-label-2">{d.ten_chuyen_de}</p>}
+            // ĐÚNG ".dangList"+".dangRow" (ph-v3-extra.css) — nền xám phẳng #F7F8FB, KHÔNG card viền
+            <div className="grid gap-2.5">
+              {canChuY.map((d) => (
+                <div key={d.ma_dang} className="rounded-[13px] bg-[#f7f8fb] p-3">
+                  <div className="flex items-center gap-2.5">
+                    <span className={`h-[9px] w-[9px] shrink-0 rounded-full ${d.muc === 'yeu' ? 'bg-ph-red' : 'bg-ph-orange'}`} />
+                    <div className="min-w-0 flex-1">
+                      <p className="truncate text-[12.5px] font-bold text-[#3b4250]">{d.ten_dang}</p>
+                      {d.ten_chuyen_de && <p className="truncate text-[10.5px] text-ph-label-2">{d.ten_chuyen_de}</p>}
+                    </div>
+                    <span className={`shrink-0 rounded-full px-2 py-1 text-[10px] font-black ${
+                      d.muc === 'yeu' ? 'bg-ph-red/10 text-ph-red' : 'bg-ph-orange/10 text-ph-orange'}`}>
+                      {d.muc === 'yeu' ? 'Yếu' : 'Cần luyện'}
+                    </span>
                   </div>
-                  <span className={`shrink-0 rounded-full px-2.5 py-1 text-[11.5px] font-semibold ${
-                    d.muc === 'yeu' ? 'bg-ph-red/10 text-ph-red' : 'bg-ph-orange/10 text-ph-orange'}`}>
-                    {d.muc === 'yeu' ? 'Yếu' : 'Cần luyện'}
-                  </span>
+                  {/* Thùy 21/08: "đánh giá từng câu giống Kết quả học tập ERP — 5 lần gần nhất" */}
+                  <div className="mt-2.5 flex gap-1 border-t border-black/[0.06] pt-2.5">
+                    {d.recent.length === 0 && <span className="text-[10.5px] text-ph-label-2">Chưa có lần đo nào</span>}
+                    {d.recent.map((e, i) => <LanDo key={i} e={e} />)}
+                  </div>
                 </div>
               ))}
             </div>
@@ -612,46 +642,58 @@ function ThongTinHocTap({ onXong }: { onXong: () => void }) {
   )
 }
 
-// ── BẢNG XẾP HẠNG (Thùy 21/08: "xếp hạng các bạn 5T về thành tích làm tự luyện ở nhà") — riêng
-// khối 5T (KHU_CHI_5T lọc ở màn chính), chỉ số = số câu ĐÚNG cộng dồn trong Tự luyện.
+// 1 lần đo trong "5 lần gần nhất" — ĐÚNG pattern Slot của KetQuaScreen.tsx (staff, mastery.ts):
+// ✓ đạt (value≥1) · ◐ nửa (value>0) · ✗ sai (value=0). Màu theo GIÁ TRỊ lần đó, không phải mức dạng.
+function LanDo({ e }: { e: RecentEval }) {
+  const icon = e.value >= 1 ? '✓' : e.value > 0 ? '◐' : '✗'
+  const cls = e.value >= 1 ? 'bg-ph-green/15 text-ph-green' : e.value > 0 ? 'bg-ph-orange/15 text-ph-orange' : 'bg-ph-red/15 text-ph-red'
+  return (
+    <div className="flex flex-1 flex-col items-center gap-0.5" title={`${SRC_LABEL[e.src]} · ${fmtShort(e.t)}`}>
+      <span className={`flex h-6 w-6 items-center justify-center rounded-full text-[11px] font-bold ${cls}`}>{icon}</span>
+      <span className="text-[8px] font-bold leading-none text-ph-label-2">{SRC_LABEL[e.src]}</span>
+      <span className="text-[7.5px] font-medium leading-none text-ph-label-2/70">{fmtShort(e.t)}</span>
+    </div>
+  )
+}
+
+// ── BẢNG XẾP HẠNG (Thùy 21/08, sửa lại: "ko phải chỉ 5T. Hiện cho các khối tiểu học") — MỖI EM
+// xếp hạng với ĐÚNG khối của mình (không hardcode '5T' nữa) — visibility lọc ở màn chính (cap1).
 function BangXepHang({ onXong }: { onXong: () => void }) {
+  const [khoi, setKhoi] = useState<string | null>(null)
   const [rows, setRows] = useState<XepHangRow[] | null>(null)
   const daGoi = useRef(false)
   useEffect(() => {
     if (daGoi.current) return
     daGoi.current = true
-    xepHangTuLuyen('5T').then(setRows).catch(() => setRows([]))
+    ;(async () => {
+      const k = await khoiCuaHS()
+      setKhoi(k)
+      if (!k) { setRows([]); return }
+      setRows(await xepHangTuLuyen(k))
+    })().catch(() => setRows([]))
   }, [])
 
   if (rows === null) return <div className="flex min-h-screen items-center justify-center bg-ios text-sm text-ph-label-2">Đang tải…</div>
 
   return (
-    <div className="mx-auto min-h-screen max-w-md bg-ios pb-10">
-      <div className="flex items-center gap-2 px-4 pb-2 pt-[calc(8px+env(safe-area-inset-top))]">
-        <button onClick={onXong} className="rounded-full bg-black/[0.04] px-2.5 py-1.5 text-[13px] text-ph-label-2">‹</button>
-        <p className="text-[19px] font-bold tracking-tight text-ph-label">Bảng xếp hạng</p>
-      </div>
-      <p className="mx-5 mb-3 mt-1 text-[12.5px] text-ph-label-2">Số câu làm ĐÚNG trong Tự luyện · các bạn khối 5T</p>
+    <div className="mx-auto min-h-screen max-w-md bg-ios px-4 pb-10">
+      <Head title="Bảng xếp hạng" sub={khoi ? `Số câu làm ĐÚNG tự luyện · các bạn khối ${khoi}` : undefined} onBack={onXong} />
 
       {rows.length === 0 ? (
-        <div className="mx-4 rounded-2xl bg-white p-8 text-center shadow-sm">
+        <div className={`mt-3 rounded-[21px] bg-white p-8 text-center ${SHADOW}`}>
           <p className="text-3xl">🏆</p>
           <p className="mt-2 text-[15px] font-medium text-ph-label">Chưa có ai làm Tự luyện</p>
           <p className="mt-1 text-[13px] text-ph-label-2">Làm bài đầu tiên để dẫn đầu bảng xếp hạng!</p>
         </div>
       ) : (
-        <div className="mx-4 overflow-hidden rounded-2xl bg-white shadow-sm">
+        // ĐÚNG ".classTable"+".row"+".rank"+".score" (ph-v3.css) — bảng xếp hạng cả lớp có sẵn
+        <div className={`mt-3 overflow-hidden rounded-[21px] bg-white ${SHADOW}`}>
           {rows.map((r, i) => (
-            <div key={r.ma_hs} className={`flex items-center gap-3 px-4 py-3 ${i > 0 ? 'border-t border-black/[0.06]' : ''} ${r.la_toi ? 'bg-brand/[0.06]' : ''}`}>
-              <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[13px] font-bold ${
-                i === 0 ? 'bg-ph-orange text-white' : i === 1 ? 'bg-ph-label-2 text-white' : i === 2 ? 'bg-[#c77e4a] text-white' : 'bg-black/[0.05] text-ph-label-2'}`}>{i + 1}</span>
-              <div className="min-w-0 flex-1">
-                <p className="truncate text-[14.5px] font-medium text-ph-label">
-                  {r.ho_ten}
-                  {r.la_toi && <span className="ml-1.5 rounded bg-brand px-1.5 py-0.5 text-[10px] font-bold uppercase text-white">Bạn</span>}
-                </p>
-              </div>
-              <span className="shrink-0 text-[16px] font-bold tabular-nums text-brand">{r.so_cau_dung}</span>
+            <div key={r.ma_hs} className={`grid grid-cols-[30px_1fr_50px] items-center gap-2.5 px-3.5 py-3 text-[12px] ${i > 0 ? 'border-t border-black/[0.06]' : ''} ${r.la_toi ? 'bg-brand/10' : ''}`}>
+              <span className={`flex h-[27px] w-[27px] items-center justify-center rounded-[9px] text-[12px] font-black ${
+                r.la_toi ? 'bg-brand text-white' : i === 0 ? 'bg-ph-orange text-white' : i === 1 ? 'bg-ph-label-2 text-white' : i === 2 ? 'bg-[#c77e4a] text-white' : 'bg-[#f0f2f6] text-ph-label'}`}>{i + 1}</span>
+              <p className={`min-w-0 truncate text-[13px] font-bold ${r.la_toi ? 'text-brand' : 'text-ph-label'}`}>{r.ho_ten}{r.la_toi ? ' (Bạn)' : ''}</p>
+              <span className={`rounded-full px-2 py-1 text-center text-[12px] font-black ${r.la_toi ? 'bg-brand text-white' : 'bg-ph-green/10 text-ph-green'}`}>{r.so_cau_dung}</span>
             </div>
           ))}
         </div>
@@ -726,12 +768,12 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
     <div className="mx-auto flex h-screen max-w-md flex-col bg-ios">
       <div className="flex items-center gap-3 px-4 py-3">
         <button onClick={onXong} className="text-ph-label-2">✕</button>
-        <div className="h-2 flex-1 overflow-hidden rounded-full bg-ph-ink/15">
-          <div className="h-full bg-ph-ink transition-all" style={{ width: `${((idx + 1) / total) * 100}%` }} />
+        <div className="h-2 flex-1 overflow-hidden rounded-full bg-ph-purple/15">
+          <div className="h-full bg-ph-purple transition-all" style={{ width: `${((idx + 1) / total) * 100}%` }} />
         </div>
         <span className="text-[12px] text-ph-label-2">{idx + 1}/{total}</span>
       </div>
-      {!daNop && <p className="px-4 pb-1 text-center text-[12px] text-ph-ink">📝 Bài THI · nộp xong mới hiện đáp án · đã trả lời {daTraLoi}/{total}</p>}
+      {!daNop && <p className="px-4 pb-1 text-center text-[12px] text-ph-purple">📝 Bài THI · nộp xong mới hiện đáp án · đã trả lời {daTraLoi}/{total}</p>}
 
       <div className="flex-1 overflow-y-auto px-4 pb-4">
         <div className="rounded-2xl bg-white p-4 shadow-sm">
@@ -751,8 +793,8 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
                 const chonSai = daNop && chon && !laDapAn
                 return (
                   <button key={orig} onClick={() => luu(cau.id, orig)} disabled={daNop}
-                    className={`flex items-start gap-3 rounded-xl border p-3 text-left text-[15px] ${laDapAn ? 'border-ph-green/40 bg-ph-green/10' : chonSai ? 'border-ph-red/40 bg-ph-red/10' : chon ? 'border-ph-ink bg-ph-ink/[0.06]' : 'border-black/[0.08]'}`}>
-                    <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[13px] font-semibold ${laDapAn ? 'bg-ph-green text-white' : chonSai ? 'bg-ph-red text-white' : chon ? 'bg-ph-ink text-white' : 'bg-black/[0.05] text-ph-label-2'}`}>{chuCaiChon(dispI)}</span>
+                    className={`flex items-start gap-3 rounded-xl border p-3 text-left text-[15px] ${laDapAn ? 'border-ph-green/40 bg-ph-green/10' : chonSai ? 'border-ph-red/40 bg-ph-red/10' : chon ? 'border-ph-purple bg-ph-purple/[0.06]' : 'border-black/[0.08]'}`}>
+                    <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[13px] font-semibold ${laDapAn ? 'bg-ph-green text-white' : chonSai ? 'bg-ph-red text-white' : chon ? 'bg-ph-purple text-white' : 'bg-black/[0.05] text-ph-label-2'}`}>{chuCaiChon(dispI)}</span>
                     <span className="flex-1 pt-0.5"><MathText>{stripLabel(opt)}</MathText></span>
                   </button>
                 )
@@ -772,7 +814,7 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
                         const dung = daNop && v === key
                         const sai = daNop && on && v !== key
                         return <button key={v} onClick={() => { const cur = (ans[cau.id] as (string | null)[]) ?? (cau.menh_de ?? []).map(() => null); const next = [...cur]; next[orig] = v; luu(cau.id, next) }} disabled={daNop}
-                          className={`flex-1 rounded-lg border py-1.5 text-[13px] font-medium ${dung ? 'border-ph-green/40 bg-ph-green/10 text-ph-green' : sai ? 'border-ph-red/40 bg-ph-red/10 text-ph-red' : on ? 'border-ph-ink bg-ph-ink/[0.06] text-ph-ink' : 'border-black/[0.08] text-ph-label-2'}`}>{v === 'D' ? 'Đúng' : 'Sai'}</button>
+                          className={`flex-1 rounded-lg border py-1.5 text-[13px] font-medium ${dung ? 'border-ph-green/40 bg-ph-green/10 text-ph-green' : sai ? 'border-ph-red/40 bg-ph-red/10 text-ph-red' : on ? 'border-ph-purple bg-ph-purple/[0.06] text-ph-purple' : 'border-black/[0.08] text-ph-label-2'}`}>{v === 'D' ? 'Đúng' : 'Sai'}</button>
                       })}
                     </div>
                     {daNop && menhDeReveal[orig]?.loi_giai && <div className="mt-2 border-t border-black/[0.06] pt-1.5 text-[13px] text-ph-label-2"><MathText>{menhDeReveal[orig].loi_giai as string}</MathText></div>}
@@ -782,7 +824,7 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
             </div>
           ) : (
             <input value={(ans[cau.id] as string) ?? ''} onChange={(e) => setAns((s) => ({ ...s, [cau.id]: e.target.value }))} onBlur={(e) => luu(cau.id, e.target.value)} disabled={daNop}
-              placeholder="Nhập đáp án…" className="w-full rounded-xl border border-black/[0.1] px-4 py-3 text-[15px] outline-none focus:border-ph-ink disabled:bg-black/[0.03]" />
+              placeholder="Nhập đáp án…" className="w-full rounded-xl border border-black/[0.1] px-4 py-3 text-[15px] outline-none focus:border-ph-purple disabled:bg-black/[0.03]" />
           )}
 
           {daNop && (
@@ -799,9 +841,9 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
       <div className="flex items-center gap-2 border-t border-black/[0.06] bg-white p-3">
         {idx > 0 && <button onClick={() => setIdx((i) => i - 1)} className="rounded-xl bg-black/[0.04] px-4 py-3 text-sm text-ph-label-2">‹</button>}
         {idx + 1 < total
-          ? <button onClick={() => setIdx((i) => i + 1)} className="flex-1 rounded-xl bg-ph-ink py-3 text-sm font-medium text-white">Câu tiếp →</button>
+          ? <button onClick={() => setIdx((i) => i + 1)} className="flex-1 rounded-xl bg-ph-purple py-3 text-sm font-medium text-white">Câu tiếp →</button>
           : daNop
-            ? <button onClick={onXong} className="flex-1 rounded-xl bg-ph-ink py-3 text-sm font-medium text-white">Xong</button>
+            ? <button onClick={onXong} className="flex-1 rounded-xl bg-ph-purple py-3 text-sm font-medium text-white">Xong</button>
             : <button onClick={() => setConfNop(true)} className="flex-1 rounded-xl bg-ph-green py-3 text-sm font-medium text-white">Nộp bài</button>}
       </div>
 
@@ -830,3 +872,9 @@ function fmtHan(iso: string): string {
 }
 // Bỏ nhãn "A." / "B." đầu lựa chọn (kho lưu "B. nội dung"; phần tử [0] thường mất nhãn).
 function stripLabel(s: string): string { return s.replace(/^\s*[A-F][.)]\s*/, '') }
+// Ngày ngắn dd/mm cho "5 lần gần nhất" (giờ VN, không dùng toISOString() — CLAUDE.md §2 cấm).
+function fmtShort(iso: string): string {
+  const vn = new Date(new Date(iso).getTime() + 7 * 3600000)
+  const p = (n: number) => String(n).padStart(2, '0')
+  return `${p(vn.getUTCDate())}/${p(vn.getUTCMonth() + 1)}`
+}
