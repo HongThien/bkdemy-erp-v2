@@ -204,6 +204,45 @@ export async function loadBuoiPicksPhan(buoiId: string, phan: 'lop' | 'nha' | 'e
   return { picks: full.picks.filter((p) => p.phan === phan), cheDo: full.cheDo, soDong: full.soDong }
 }
 
+// ══════════════ ⭐ MÃ ĐỀ ET Hình (Thùy 21/08, "làm đầy đủ giống Đại") ══════════════
+// Khuôn `tai_lieu.cau_hinh` của Đại (JSON lỏng trên tài liệu) — nhưng hinh_gt_bai KHÔNG có khái niệm
+// "tài liệu" riêng (buổi = tài liệu), nên đặt trên `hinh_gt_buoi.cau_hinh`, khoá NGOÀI theo `phan`
+// ('et'/'mt'…) để không lẫn giữa các phan chung 1 buổi, khoá TRONG theo chữ ký NODE (KHÔNG theo id dòng
+// hinh_gt_bai — CLAUDE.md §2 "danh tính bám khoá tự nhiên": saveBuoiSelectionPhan XOÁ-rồi-CHÈN LẠI mọi
+// dòng mỗi lần lưu nên id dòng không sống sót qua 1 lần sửa; nodeIds của 1 chuỗi thì có).
+// Mã đề 2/3 = BẢN KHÁC đã CÓ SẴN trong kho (Thùy chốt "biến thể Hình là cùng node là được" — KHÔNG phải
+// AI đổi đỉnh sinh mới) — xem `goiYMaDeChoBai` (SoanTaiLieu.tsx).
+export type HinhBanRef = { kind: 'ghep'; luaId: string | null } | { kind: 'bienthe'; bienTheId: string } | { kind: 'y'; yId: string }
+export type HinhCauHinhPhan = {
+  // khoá = chuoiSig(nodeIds) của bài. null = kho CHƯA đủ bản khác cho ô đó (khuôn "ô TRỐNG" của Đại).
+  maDe?: Record<string, [HinhBanRef | null, HinhBanRef | null]>
+  hsMaDe?: Record<string, number>                    // hocSinhId -> 1 | 2 | 3
+}
+export type HinhCauHinh = Record<string, HinhCauHinhPhan>   // khoá ngoài = phan
+export const chuoiSig = (nodeIds: string[]): string => [...nodeIds].sort().join(',')
+export async function getHinhCauHinh(buoiId: string, phan: string): Promise<HinhCauHinhPhan> {
+  const { data, error } = await supabase.from('hinh_gt_buoi').select('cau_hinh').eq('id', buoiId).single()
+  if (error) throw error
+  const all = ((data as any)?.cau_hinh ?? {}) as HinhCauHinh
+  return all[phan] ?? {}
+}
+export async function patchHinhCauHinh(buoiId: string, phan: string, patch: Partial<HinhCauHinhPhan>): Promise<void> {
+  const { data, error } = await supabase.from('hinh_gt_buoi').select('cau_hinh').eq('id', buoiId).single()
+  if (error) throw error
+  const all = ((data as any)?.cau_hinh ?? {}) as HinhCauHinh
+  const next: HinhCauHinh = { ...all, [phan]: { ...(all[phan] ?? {}), ...patch } }
+  const { error: e2 } = await supabase.from('hinh_gt_buoi').update({ cau_hinh: next, updated_at: new Date().toISOString() }).eq('id', buoiId)
+  if (e2) throw e2
+}
+/** Đổi 1 PickItem sang BẢN khác (mã đề 2/3) — GIỮ NGUYÊN key/phan/nodeIds, chỉ thay kind+ref. Dùng lúc
+ *  in: dựng lại `picks` cho mã đề 2/3 rồi đưa qua `banInTheoMoHinh` như bình thường (SoanTaiLieu.tsx). */
+export function applyBanToPick(p: PickItem, ban: HinhBanRef): PickItem {
+  const base = { key: p.key, phan: p.phan, nodeIds: p.nodeIds }
+  if (ban.kind === 'ghep') return { ...base, kind: 'ghep', luaId: ban.luaId }
+  if (ban.kind === 'bienthe') return { ...base, kind: 'bienthe', bienTheId: ban.bienTheId }
+  return { ...base, kind: 'y', yId: ban.yId }
+}
+
 // ══════════════ GÁN LỚP (snapshot) ══════════════
 /** Gán 1 buổi MASTER cho (lớp, ngày): tạo buổi-kiểu-lớp mới + COPY bài (đóng băng). Trả id buổi lớp.
  *  ⭐ Re-gán (Gán lại) cùng (lớp,ngày) → THAY THẾ buổi cũ tại ngày đó (khuôn `trichXuatBuoi` Đại: 1

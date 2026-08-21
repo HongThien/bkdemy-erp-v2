@@ -16,6 +16,7 @@ import { Previewer } from 'pagedjs'
 import { MathText } from '../ui'
 import { type CheDoHinh } from '../../../lib/kho/hinhGiaoTrinh'
 import { CHROME_CSS, buildPagedCss, gtPageCss, printWithFilename, safeFileName } from '../../tailieu/PrintView'
+import { BK_CSS, BK_PAGE_CSS } from '../../tailieu/bkPrint'
 
 // ── Model bản in ──────────────────────────────────────────────────
 // Một BƯỚC con = node ẨN nở vào lời giải một ý (bản GV). Đứng TRƯỚC lời giải chính, sắp cap↑.
@@ -49,7 +50,7 @@ export type BanIn = {
   moHinhLyThuyet?: Record<string, { ten: string; noiDung: string }>
 }
 
-export default function HinhPrintView({ ban, onClose }: { ban: BanIn; onClose: () => void }) {
+export default function HinhPrintView({ ban, onClose, perHS }: { ban: BanIn; onClose: () => void; perHS?: HinhPerHS[] }) {
   const [gv, setGv] = useState(false)      // bản GV = kèm lời giải + hình đáp án
   const [pages, setPages] = useState(0)
   const [rendering, setRendering] = useState(true)
@@ -80,7 +81,7 @@ export default function HinhPrintView({ ban, onClose }: { ban: BanIn; onClose: (
     // trước. Dùng thẳng gtPageCss (đã export) thay vì chép lại CSS — cùng 1 nguồn, Hình tự động khớp
     // Đại nếu sau này đổi màu/kiểu dải, không phải sửa 2 nơi.
     const css = buildPagedCss({ ten: ban.tieuDe, khoi: '' }, { header: 'none', footer: 'none' }, '#0f766e')
-      + gtPageCss('') + HINH_CSS
+      + gtPageCss('') + HINH_CSS + (perHS ? BK_CSS + BK_PAGE_CSS : '')
     const cssUrl = URL.createObjectURL(new Blob([css], { type: 'text/css' }))
     const html = src.innerHTML
     // Cùng cách chống race của PrintView: mỗi run một container riêng, resolve xong mới ẨN container
@@ -110,7 +111,7 @@ export default function HinhPrintView({ ban, onClose }: { ban: BanIn; onClose: (
       .finally(() => URL.revokeObjectURL(cssUrl))
     }, 0)
     return () => { cancelled = true; clearTimeout(hoan); if (watchdog) clearTimeout(watchdog) }
-  }, [ban, gv])
+  }, [ban, gv, perHS])
 
   return createPortal(
     <div className="pv-overlay fixed inset-0 z-[60] bg-slate-900/40">
@@ -134,7 +135,7 @@ export default function HinhPrintView({ ban, onClose }: { ban: BanIn; onClose: (
       {loi && <div className="no-print bg-rose-50 px-4 py-2 text-[12.5px] text-rose-700">{loi}</div>}
 
       {/* nguồn ẩn — paged.js đọc innerHTML từ đây rồi tự phân trang */}
-      <div className="pv-src" ref={srcRef}><Noi ban={ban} gv={gv} /></div>
+      <div className="pv-src" ref={srcRef}><Noi ban={ban} gv={gv} perHS={perHS} /></div>
       <div className="pv-scroll h-[calc(100vh-42px)] overflow-y-auto bg-slate-200 p-5">
         <div className="pv-pages" ref={dstRef} />
       </div>
@@ -143,16 +144,46 @@ export default function HinhPrintView({ ban, onClose }: { ban: BanIn; onClose: (
   )
 }
 
-function Noi({ ban, gv }: { ban: BanIn; gv: boolean }) {
-  let soDe = 0
-  let moHinhLtDaHien = ''  // gom LT mô hình 1 lần/nhóm liền nhau (khuôn Đại: LT chuyên đề hiện 1 lần)
-  // Masthead — khuôn "mới nhất" bên Đại (gtbk-mh, commit redesign BK 08-08): khung gradient bo góc +
-  // vạch trái cầu vồng + logo thật + tiêu đề. Namespace RIÊNG `hpmh-*` (không đụng `.gtbk-*` của Đại —
-  // PrintView.tsx đang sửa dở phiên khác). BỎ huy hiệu tròn "Buổi N" của Đại: Hình không có số buổi tách
-  // bạch sẵn ở MỌI nơi gọi (Kho tài liệu chỉ có tên ghép sẵn) — snapshot đơn giản hoá, xem DEVLOG.
+// ⭐ Per-HS (Thùy 21/08, "làm đầy đủ giống Đại"): mỗi HS 1 phiếu, đầu phiếu kiểu BK (pv-bkh, khuôn
+// ETPrintView) thay cho masthead thường — mã đề đã gán hiện thành nhãn, đánh số Bài 1.. RIÊNG từng phiếu
+// (không cộng dồn xuyên các HS). Nội dung mucs của mỗi HS đã được resolve theo mã đề TRƯỚC khi vào đây
+// (ETScreen.tsx) — component này không biết "mã đề" là gì, chỉ vẽ mucs được đưa.
+export type HinhPerHS = { hoTen: string; lopTen?: string; maDe: number; mucs: MucIn[] }
+
+function Noi({ ban, gv, perHS }: { ban: BanIn; gv: boolean; perHS?: HinhPerHS[] }) {
   const logoUrl = location.origin + '/Logo.png'
+  if (perHS) {
+    return (
+      <div>
+        {perHS.map((hs, hi) => (
+          <div key={hi} className="pv-de-recto">
+            <div className="pv-bkh">
+              <div className="pv-bkh-top">
+                <div className="pv-bkh-brand"><img className="pv-bkh-logo" src={logoUrl} alt="BK Academy" /></div>
+                <div className="pv-bkh-label">ET Hình{gv ? ` · Mã đề ${hs.maDe} · Đáp án` : ` · Mã đề ${hs.maDe}`}</div>
+                <div className="pv-bkh-meta" />
+              </div>
+              <div className="pv-bkh-hero"><h1 className="pv-bkh-title">{ban.tieuDe}</h1><div className="pv-bkh-divider" /></div>
+              {!gv && (
+                <div className="pv-bkh-student">
+                  <div className="pv-bkh-field"><div className="pv-bkh-flbl">Họ và tên học sinh</div><div className="pv-bkh-fval">{hs.hoTen || ' '}</div></div>
+                  <div className="pv-bkh-field"><div className="pv-bkh-flbl">Lớp</div><div className="pv-bkh-fval">{hs.lopTen || ' '}</div></div>
+                  <div className="pv-bkh-field"><div className="pv-bkh-flbl">Mã đề</div><div className="pv-bkh-fval">{hs.maDe}</div></div>
+                </div>
+              )}
+            </div>
+            <MucsBlock mucs={hs.mucs} gv={gv} moHinhLyThuyet={ban.moHinhLyThuyet} />
+          </div>
+        ))}
+      </div>
+    )
+  }
   return (
     <div>
+      {/* Masthead — khuôn "mới nhất" bên Đại (gtbk-mh, commit redesign BK 08-08): khung gradient bo góc +
+          vạch trái cầu vồng + logo thật + tiêu đề. Namespace RIÊNG `hpmh-*` (không đụng `.gtbk-*` của Đại —
+          PrintView.tsx đang sửa dở phiên khác). BỎ huy hiệu tròn "Buổi N" của Đại: Hình không có số buổi
+          tách bạch sẵn ở MỌI nơi gọi (Kho tài liệu chỉ có tên ghép sẵn) — snapshot đơn giản hoá, xem DEVLOG. */}
       <div className="hpmh">
         <div className="hpmh-grid" />
         <div className="hpmh-brand"><img className="hpmh-logo" src={logoUrl} alt="BK Academy" /></div>
@@ -160,8 +191,19 @@ function Noi({ ban, gv }: { ban: BanIn; gv: boolean }) {
         {ban.phuDe && <div className="hpmh-sub">{ban.phuDe}</div>}
       </div>
       {ban.ghiChuDau && <div className="hp-note">{ban.ghiChuDau}</div>}
+      <MucsBlock mucs={ban.mucs} gv={gv} moHinhLyThuyet={ban.moHinhLyThuyet} />
+    </div>
+  )
+}
 
-      {ban.mucs.map((m, i) => {
+/** Render danh sách MucIn — tách khỏi `Noi` để dùng lại được cho CẢ bản gộp (1 khối) LẪN mỗi phiếu perHS
+ *  (đánh số "Bài N" RIÊNG từng lần gọi — `soDe`/`moHinhLtDaHien` là biến cục bộ, không rò giữa các lần gọi). */
+function MucsBlock({ mucs, gv, moHinhLyThuyet }: { mucs: MucIn[]; gv: boolean; moHinhLyThuyet?: BanIn['moHinhLyThuyet'] }) {
+  let soDe = 0
+  let moHinhLtDaHien = ''  // gom LT mô hình 1 lần/nhóm liền nhau (khuôn Đại: LT chuyên đề hiện 1 lần)
+  return (
+    <>
+      {mucs.map((m, i) => {
         if (m.kieu === 'chuong') return (
           <div key={i} className="hp-chuong">
             <div className="hp-chuong-t">{m.tieuDe}</div>
@@ -179,7 +221,7 @@ function Noi({ ban, gv }: { ban: BanIn; gv: boolean }) {
         soDe++
         // LT mô hình — hiện MỘT LẦN ngay trước bài đầu tiên của mỗi nhóm mô hình liền nhau (chỉ có data
         // khi banInTheoMoHinh dựng cho phan='lop' — bản BTVN không kèm, khuôn Đại "LT chỉ ở trên lớp").
-        const ltMh = m.moHinhId ? ban.moHinhLyThuyet?.[m.moHinhId] : null
+        const ltMh = m.moHinhId ? moHinhLyThuyet?.[m.moHinhId] : null
         const hienLt = !!ltMh && m.moHinhId !== moHinhLtDaHien
         if (hienLt) moHinhLtDaHien = m.moHinhId!
         return (
@@ -272,7 +314,7 @@ function Noi({ ban, gv }: { ban: BanIn; gv: boolean }) {
           </Fragment>
         )
       })}
-    </div>
+    </>
   )
 }
 
