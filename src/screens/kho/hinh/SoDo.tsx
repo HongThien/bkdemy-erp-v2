@@ -551,12 +551,14 @@ function FormBienThe({ L, baiToanId, v, goc, onClose, onDone }: {
           {/* Up cả bài (ảnh/PDF) → AI tách ĐỀ + LỜI GIẢI, khỏi điền tay từng ô (như ingest bên Đại). */}
           <div className="rounded-lg border border-indigo-200 bg-indigo-50/40 p-2.5">
             <Lbl>Up cả bài → AI tự tách (đỡ điền tay)</Lbl>
-            <IngestBaiButton onResult={({ de_bai, loi_giai }) => {
-              if ((deBai.trim() || loiGiai.trim()) && !confirm('Ghi đè đề + lời giải hiện tại bằng bản AI tách?')) return
+            <IngestBaiButton onResult={({ de_bai, loi_giai, anh: anhMoi }) => {
+              const doiHinh = anhMoi && anhMoi !== anh
+              if ((deBai.trim() || loiGiai.trim() || doiHinh) && !confirm(`Ghi đè đề + lời giải${doiHinh ? ' + hình vẽ' : ''} hiện tại bằng bản AI tách?`)) return
               if (de_bai) setDeBai(de_bai)
               if (loi_giai) setLoiGiai(loi_giai)
+              if (anhMoi) setAnh(anhMoi)
             }} />
-            <p className="mt-1 text-[11px] leading-snug text-slate-500">AI đọc ảnh/PDF (nhiều trang được) → đổ <b>đề</b> + <b>lời giải</b> vào 2 ô dưới. Chỉ lấy chữ; <b>hình bạn tự upload</b>. Xong nhớ soát lại.</p>
+            <p className="mt-1 text-[11px] leading-snug text-slate-500">AI đọc ảnh/PDF (nhiều trang được) → đổ <b>đề</b> + <b>lời giải</b> vào 2 ô dưới, tự nhận diện + cắt <b>hình vẽ</b> (nếu có). Xong nhớ soát lại.</p>
           </div>
           <div>
             <Lbl>Kiểu biến thể</Lbl>

@@ -1535,29 +1535,43 @@ export async function ocrDeTuAnh(file: { mimeType: string; dataBase64: string })
   return parseLyThuyetJson(raw)
 }
 
-// ── Ingest CẢ BÀI Hình (ảnh/PDF) → tách ĐỀ + LỜI GIẢI ────────────
-// Up nguyên 1 bài rồi AI tách 2 phần, thay vì điền tay từng ô. CHỈ lấy CHỮ; HÌNH bỏ qua (người tự vẽ).
-export const HINH_BAI_SCHEMA = { type: 'OBJECT', properties: { de_bai: { type: 'STRING' }, loi_giai: { type: 'STRING' } }, required: ['de_bai'] }
+// ── Ingest CẢ BÀI Hình (ảnh/PDF) → tách ĐỀ + LỜI GIẢI + HÌNH VẼ ────────────
+// Up nguyên 1 bài rồi AI tách, thay vì điền tay từng ô. CHỮ (đề/lời giải) do Gemini đọc; HÌNH VẼ hình học
+// AI KHÔNG vẽ lại được nhưng NHẬN DIỆN + KHOANH VÙNG được (box_hinh) — khuôn NGUYÊN pattern
+// co_hinh/box_hinh đã chạy ổn ở kho Đại (buildKhoIngestPrompt/INGEST_KHO_SCHEMA) — caller (hinhUi.tsx
+// IngestBaiButton) tự CẮT ảnh từ canvas DPI cao bằng bbox này (cropCanvasBox, không qua AI vẽ).
+// ⭐ 08-20 (Thùy: "hệ thống tự nhận diện được Hình vẽ luôn — module này bên Đại có rồi"): thêm co_hinh/
+// box_hinh/trang_hinh — trang_hinh vì 1 bài Hình có thể up NHIỀU trang/ảnh (khác Đại ingest-per-trang).
+export const HINH_BAI_SCHEMA = { type: 'OBJECT', properties: {
+  de_bai: { type: 'STRING' }, loi_giai: { type: 'STRING' },
+  co_hinh: { type: 'BOOLEAN' },
+  box_hinh: { type: 'ARRAY', items: { type: 'NUMBER' }, description: '[ymin,xmin,ymax,xmax] toạ độ CHUẨN HOÁ 0-1000 ôm trọn HÌNH VẼ HÌNH HỌC trên ảnh/trang chứa nó — chỉ điền khi co_hinh=true.' },
+  trang_hinh: { type: 'NUMBER', description: 'Số thứ tự ảnh/trang (đếm từ 0, theo đúng thứ tự file được đưa vào) chứa hình vẽ đó — chỉ điền khi co_hinh=true.' },
+}, required: ['de_bai'] }
 export function buildIngestBaiHinhPrompt(): string {
   return [
-    'Ảnh/PDF dưới là MỘT BÀI TOÁN HÌNH HỌC hoàn chỉnh (gồm ĐỀ, có thể kèm LỜI GIẢI).',
-    'TÁCH thành 2 phần, chép NGUYÊN VĂN phần CHỮ — GIỮ đúng câu chữ, KHÔNG tóm tắt, KHÔNG thêm bớt:',
+    'Ảnh/PDF dưới là MỘT BÀI TOÁN HÌNH HỌC hoàn chỉnh (gồm ĐỀ, có thể kèm LỜI GIẢI, có thể nhiều trang/ảnh).',
+    'TÁCH thành các phần, chép NGUYÊN VĂN phần CHỮ — GIỮ đúng câu chữ, KHÔNG tóm tắt, KHÔNG thêm bớt:',
     '- "de_bai": toàn bộ ĐỀ (giả thiết + câu hỏi/yêu cầu). Đề nhiều ý (a, b, c) giữ đủ.',
     '- "loi_giai": toàn bộ LỜI GIẢI / chứng minh nếu có; KHÔNG có thì để "".',
     'QUY TẮC:',
     '- Ký hiệu/công thức DÙNG LaTeX trong $...$ — vd $\\triangle ABC$, $\\angle BAC=90^\\circ$, $AB^2=BH\\cdot BC$, $\\perp$, $\\parallel$. Phân số \\\\dfrac.',
     '- Giữ xuống dòng bằng xuống dòng thật; mỗi ý/bước một dòng.',
-    '- Có HÌNH VẼ thì BỎ QUA (đừng mô tả, đừng vẽ lại) — chỉ lấy CHỮ.',
-    '- Nhiều trang/ảnh: gộp theo đúng thứ tự.',
+    '- Có HÌNH VẼ HÌNH HỌC (tam giác/tứ giác/đường tròn/hình không gian…) thì ĐỪNG chép chữ mô tả hình, ĐỪNG vẽ lại — chỉ đánh dấu vị trí: "co_hinh"=true + "box_hinh"=[ymin,xmin,ymax,xmax] toạ độ CHUẨN HOÁ 0-1000 ôm SÁT hình vẽ đó (không ôm chữ đề xung quanh) + "trang_hinh" = ảnh/trang thứ mấy (đếm từ 0) chứa nó. Nhiều hình trong 1 bài (đề + lời giải đều có hình) thì chỉ lấy hình CỦA ĐỀ BÀI (hình đầu tiên, dùng để hiểu giả thiết). Không có hình nào → "co_hinh"=false, bỏ qua "box_hinh"/"trang_hinh".',
+    '- Nhiều trang/ảnh: gộp CHỮ theo đúng thứ tự.',
     '- Trong JSON: lệnh LaTeX PHẢI double backslash ("\\\\triangle", "\\\\perp", "\\\\cdot", "\\\\dfrac"); CHỈ trả JSON.',
-    'Trả về JSON: { "de_bai": "...", "loi_giai": "..." }',
+    'Trả về JSON: { "de_bai": "...", "loi_giai": "...", "co_hinh": false, "box_hinh": null, "trang_hinh": null }',
   ].join('\n')
 }
-export async function ingestBaiHinh(files: GeminiFile[]): Promise<{ de_bai: string; loi_giai: string }> {
+export async function ingestBaiHinh(files: GeminiFile[]): Promise<{ de_bai: string; loi_giai: string; co_hinh: boolean; box_hinh: [number, number, number, number] | null; trang_hinh: number }> {
   const raw = await callGeminiJson(buildIngestBaiHinhPrompt(), { schema: HINH_BAI_SCHEMA, files })
   let t = raw.trim(); const fence = t.match(/```(?:json)?\s*([\s\S]*?)```/i); if (fence) t = fence[1].trim()
   const obj = lenientJsonParse(t)
-  return { de_bai: String(obj.de_bai ?? obj.deBai ?? '').trim(), loi_giai: String(obj.loi_giai ?? obj.loiGiai ?? '').trim() }
+  const box = Array.isArray(obj.box_hinh) && obj.box_hinh.length === 4 ? (obj.box_hinh.map(Number) as [number, number, number, number]) : null
+  return {
+    de_bai: String(obj.de_bai ?? obj.deBai ?? '').trim(), loi_giai: String(obj.loi_giai ?? obj.loiGiai ?? '').trim(),
+    co_hinh: !!obj.co_hinh && !!box, box_hinh: box, trang_hinh: Number(obj.trang_hinh ?? 0) || 0,
+  }
 }
 
 // ── SINH BIẾN THỂ HÌNH (đổi số) — clone TỪ TEXT bài gốc, giống engine clone bên Đại (buildCloneFromGocPrompt) ──

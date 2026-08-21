@@ -4,6 +4,7 @@
 import { useState, type ReactNode } from 'react'
 import { MathText, readClipboardImageFile } from '../ui'
 import { uploadKhoImage, ocrDeTuAnh, ingestBaiHinh } from '../../../lib/kho/api'
+import { fileToCanvases, canvasToJpegBase64, cropCanvasBox } from '../../../lib/pdfRender'
 
 export type Ton = 'mh' | 'bt' | 'dg' | 'bd' | 'gh'
 
@@ -188,9 +189,15 @@ export function OcrButton({ onText, nhan = '📋 Ảnh → AI dịch' }: { onTex
   )
 }
 
-/** Up NGUYÊN 1 bài (ảnh/PDF, nhiều trang) → AI tách ĐỀ + LỜI GIẢI, đổ vào form (khỏi điền tay từng ô).
- *  CHỈ lấy chữ; hình người tự vẽ/update. */
-export function IngestBaiButton({ onResult, nhan = '🪄 Up bài (ảnh/PDF) → tự tách' }: { onResult: (r: { de_bai: string; loi_giai: string }) => void; nhan?: string }) {
+/** Up NGUYÊN 1 bài (ảnh/PDF, nhiều trang) → AI tách ĐỀ + LỜI GIẢI + tự NHẬN DIỆN + CẮT hình vẽ, đổ vào
+ *  form (khỏi điền tay từng ô). ⭐ 08-20 (Thùy: "hệ thống tự nhận diện được Hình vẽ luôn, bên Đại có
+ *  rồi") — khuôn NGUYÊN pattern bbox của Đại (NhapKhoScreen `boc()`): render DPI cao bằng
+ *  `fileToCanvases` (giữ canvas NÉT để cắt), gửi Gemini bản DOWNSCALE (`canvasToJpegBase64`, đỡ token —
+ *  bbox chuẩn hoá 0-1000 nên không phụ thuộc tỉ lệ gửi), AI trả `box_hinh` + `trang_hinh` → cắt THẬT từ
+ *  canvas gốc bằng `cropCanvasBox`, upload qua `uploadKhoImage` (CÙNG bucket `kho-anh` field hình vẫn
+ *  dùng khi người tự chọn ảnh) → trả thêm `anh` cho caller. AI không vẽ lại hình được — chỉ khoanh vùng
+ *  + cắt PIXEL THẬT từ ảnh nguồn, không phải hình do AI tưởng tượng. */
+export function IngestBaiButton({ onResult, nhan = '🪄 Up bài (ảnh/PDF) → tự tách' }: { onResult: (r: { de_bai: string; loi_giai: string; anh: string | null }) => void; nhan?: string }) {
   const [busy, setBusy] = useState(false)
   const [err, setErr] = useState<string | null>(null)
   const chay = async (files: File[]) => {
@@ -198,8 +205,18 @@ export function IngestBaiButton({ onResult, nhan = '🪄 Up bài (ảnh/PDF) →
     if (!fs.length) { setErr('Chọn ảnh hoặc PDF của bài trước.'); return }
     setBusy(true); setErr(null)
     try {
-      const gf = await Promise.all(fs.map(async (f) => ({ mimeType: f.type, dataBase64: await fileToBase64(f) })))
-      onResult(await ingestBaiHinh(gf))
+      const perFile = await Promise.all(fs.map(async (f) => fileToCanvases(f.type, await fileToBase64(f))))
+      const canvases = perFile.flat()
+      const gf = canvases.map((c) => ({ mimeType: 'image/jpeg', dataBase64: canvasToJpegBase64(c) }))
+      const r = await ingestBaiHinh(gf)
+      let anh: string | null = null
+      if (r.co_hinh && r.box_hinh && canvases[r.trang_hinh]) {
+        try {
+          const blob = await (await fetch(cropCanvasBox(canvases[r.trang_hinh], r.box_hinh))).blob()
+          anh = await uploadKhoImage(new File([blob], 'hinh-ve.png', { type: 'image/png' }))
+        } catch { /* cắt/upload lỗi → bỏ hình, vẫn giữ đề + lời giải AI tách được */ }
+      }
+      onResult({ de_bai: r.de_bai, loi_giai: r.loi_giai, anh })
     } catch (e: any) { setErr(e?.message ?? String(e)) } finally { setBusy(false) }
   }
   return (

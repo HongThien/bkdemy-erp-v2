@@ -6461,3 +6461,45 @@ thật) sau khi deploy lên domain thật, đó mới là môi trường có ý 
 
 Chưa commit — đợi xác nhận hướng trước khi merge (an toàn để merge ngay nếu muốn: chỉ thêm file
 mới + 1 prop optional trên Login.tsx, không đổi hành vi app chính).
+
+## 2026-08-20 (tiếp) — Kho Hình: "Up bài → AI tự tách" giờ tự nhận diện + cắt HÌNH VẼ luôn
+
+**Yêu cầu (Thùy, verbatim):** "Trong vần tạo biến thể hình học. KHi chọn dán ảnh hoặc pdf, hiện tại hệ
+thống nhận diện được đề và đáp án. T muốn hệ thống tự nhận diện được Hình vẽ luôn. module này đã dùng
+nhiều lần, m check ở bên đại số có rồi đấy"
+
+**Đối chiếu bên Đại (đã có, khuôn lại y hệt):** `NhapKhoScreen.tsx` hàm `boc()` — render PDF/ảnh ra
+canvas DPI cao (`fileToCanvases`, 400dpi, giữ nét để cắt), gửi Gemini bản DOWNSCALE JPEG
+(`canvasToJpegBase64`, đỡ token — bbox chuẩn hoá 0-1000 nên độc lập tỉ lệ gửi), AI trả thêm `co_hinh` +
+`box_hinh` (schema `INGEST_KHO_SCHEMA`) → cắt THẬT bằng `cropCanvasBox` từ canvas gốc (không phải AI vẽ
+lại) → `uploadKhoImage` → gắn `anh_de`. 3 hàm dùng chung `src/lib/pdfRender.ts`.
+
+**Bên Hình trước đây (`ingestBaiHinh`/`IngestBaiButton`):** model cũ CHỦ ĐỘNG dặn AI "Có HÌNH VẼ thì BỎ
+QUA — chỉ lấy CHỮ" (đúng thời điểm đó: AI không vẽ lại được hình hình học nên coi luôn là việc người
+tự làm) — và gửi thẳng file gốc (base64 nguyên, không qua canvas) nên dù có muốn cũng không cắt được
+(không giữ ảnh nguồn để cắt).
+
+**Làm — mirror ĐÚNG pattern Đại, không chế cơ chế mới:**
+- `src/lib/kho/api.ts` — `HINH_BAI_SCHEMA` thêm `co_hinh`/`box_hinh`; thêm `trang_hinh` (khác Đại: 1 bài
+  Hình có thể up NHIỀU trang/ảnh cho 1 bài duy nhất, không phải ingest-per-trang như Đại, nên cần biết
+  hình nằm ở trang/ảnh thứ mấy). `buildIngestBaiHinhPrompt()` đổi hẳn chỉ dẫn — không còn "bỏ qua hình"
+  mà "khoanh vùng bbox hình, ưu tiên hình CỦA ĐỀ nếu có cả hình đề lẫn hình lời giải". `ingestBaiHinh()`
+  parse thêm box/trang, trả `co_hinh` (đã AND với box hợp lệ, an toàn nếu AI quên gửi box dù báo có hình).
+- `src/screens/kho/hinh/hinhUi.tsx` (`IngestBaiButton`) — đổi hẳn từ gửi file gốc (base64 thô) sang
+  `fileToCanvases` → giữ canvas NÉT + gửi Gemini bản downscale → có `box_hinh`+`trang_hinh` thì
+  `cropCanvasBox` cắt THẬT từ canvas gốc + `uploadKhoImage` (CÙNG bucket `kho-anh` mà `AnhInput` dùng
+  khi người tự chọn ảnh) → trả thêm `anh` cho caller qua `onResult`.
+- `src/screens/kho/hinh/SoDo.tsx` (`FormBienThe` — ĐÚNG màn "tạo biến thể" Thùy nhắc) + `FormBaiToan.tsx`
+  — nhận thêm `anh` từ `onResult`, gọi `setAnh`/`setDungHinhRieng(true)+setAnhRieng` khi có hình khác
+  hình đang có; confirm ghi-đè (đã có sẵn cho đề/lời giải) giờ liệt kê thêm "+ hình vẽ" khi hình sẽ đổi.
+
+**Verify:** tsc sạch · `npx vite build` sạch. Live end-to-end THẬT (dev server, mở "+ Thêm biến thể" của
+BT.08.025 — Tứ giác K8): dựng ảnh test bằng canvas (tam giác vuông vẽ nét + chữ "Cho tam giac ABC vuong
+tai A, AB=3, AC=4. Tinh BC" tách biệt hẳn phần chữ và phần hình) → dispatch vào input file thật của nút
+"Up bài (ảnh/PDF) → tự tách" → console log xác nhận gọi Gemini THẬT thành công (`in:779 out:111`) → dialog
+xác nhận ghi-đè hiện đúng "...+ hình vẽ hiện tại..." — CHỈ xảy ra khi `anhMoi` (kết quả cắt+upload) khác
+`null` VÀ khác hình đang có, tức chuỗi cắt-từ-canvas-DPI-cao → upload `kho-anh` đã chạy thành công thật
+(không phải giả lập) — không có console error nào trong suốt luồng. KHÔNG bấm xuyên được dialog xác nhận
+(môi trường sandbox tự ép confirm() trả `false`) nên chưa thấy trực tiếp bước `setAnh` áp dụng lên ô Hình
+— logic bước đó chỉ 1 dòng (`if (anhMoi) setAnh(anhMoi)`), cùng khuôn 2 dòng `setDeBai`/`setLoiGiai` đã
+chạy đúng nhiều lần trước đó, tự tin đúng nhưng ghi rõ để không nhận vơ đã thấy tận mắt bước cuối.

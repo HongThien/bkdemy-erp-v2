@@ -154,13 +154,15 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, tienDe
         <div className="border-b border-slate-200 bg-indigo-50/40 px-5 py-2.5">
           <div className="flex flex-wrap items-center gap-2">
             <span className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">✨ Up cả bài (ảnh/PDF) → AI tách đề + lời giải</span>
-            <div className="ml-auto"><IngestBaiButton onResult={({ de_bai, loi_giai }) => {
-              if ((phatBieu.trim() || loiGiai.trim()) && !confirm('Ghi đè câu hỏi + lời giải hiện tại bằng bản AI tách?')) return
+            <div className="ml-auto"><IngestBaiButton onResult={({ de_bai, loi_giai, anh: anhMoi }) => {
+              const doiHinh = anhMoi && anhMoi !== anhRieng
+              if ((phatBieu.trim() || loiGiai.trim() || doiHinh) && !confirm(`Ghi đè câu hỏi + lời giải${doiHinh ? ' + hình vẽ' : ''} hiện tại bằng bản AI tách?`)) return
               if (de_bai) setPhatBieu(de_bai)
               if (loi_giai) setLoiGiai(loi_giai)
+              if (anhMoi) { setDungHinhRieng(true); setAnhRieng(anhMoi) }
             }} /></div>
           </div>
-          <p className="mt-1 text-[11px] leading-snug text-slate-500">AI đọc ảnh/PDF (nhiều trang được) → đổ <b>đề</b> vào ô Câu hỏi + <b>lời giải</b> vào ô Lời giải. <b>Hình vẽ vẫn dán tay</b> như cũ. Giả thiết đã mượn của mô hình — nếu bản tách lặp lại giả thiết ở đầu câu hỏi, xoá bớt phần đó rồi soát lại.</p>
+          <p className="mt-1 text-[11px] leading-snug text-slate-500">AI đọc ảnh/PDF (nhiều trang được) → đổ <b>đề</b> vào ô Câu hỏi + <b>lời giải</b> vào ô Lời giải, tự nhận diện + cắt <b>hình vẽ</b> (nếu có, bật "hình riêng" luôn — bỏ tick nếu muốn mượn hình mô hình). Giả thiết đã mượn của mô hình — nếu bản tách lặp lại giả thiết ở đầu câu hỏi, xoá bớt phần đó rồi soát lại.</p>
         </div>
 
         {/* Thân — 2 cột */}
