@@ -171,10 +171,9 @@ function TongQuanTab({ hsId, mon }: { hsId: string; mon: string }) {
   if (loading) return <p className="text-sm text-slate-500">Đang tính…</p>
   if (!d) return <p className="text-sm text-slate-500">Không tải được.</p>
   const laToan = mon === 'Toán'
-  const hinhPlaceholder = 'Hình học chưa có dữ liệu đo — nhánh này chưa được xây kho câu hỏi/gắn ET-MT-BTVN.'
   return (
     <div className="space-y-6">
-      {/* ① HOÀN THÀNH BẢN ĐỒ KIẾN THỨC — toàn bộ + Đại/Hình × cơ bản/nâng cao (Hình placeholder). */}
+      {/* ① HOÀN THÀNH BẢN ĐỒ KIẾN THỨC — toàn bộ + Đại/Hình × cơ bản/nâng cao. */}
       <div>
         <h3 className="mb-2 text-[12px] font-semibold uppercase tracking-wider text-slate-500">① Hoàn thành bản đồ kiến thức</h3>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-5">
@@ -183,8 +182,8 @@ function TongQuanTab({ hsId, mon }: { hsId: string; mon: string }) {
             <>
               <HoanThanhCard label="Đại số — Cơ bản (1-3)" card={d.hoanThanh.daiCoBan} />
               <HoanThanhCard label="Đại số — Nâng cao (4-5)" card={d.hoanThanh.daiNangCao} />
-              <HoanThanhPlaceholder label="Hình học — Cơ bản (1-3)" msg={hinhPlaceholder} />
-              <HoanThanhPlaceholder label="Hình học — Nâng cao (4-5)" msg={hinhPlaceholder} />
+              <HoanThanhCard label="Hình học — Cơ bản" card={d.hoanThanh.hinhCoBan} />
+              <HoanThanhCard label="Hình học — Nâng cao" card={d.hoanThanh.hinhNangCao} />
             </>
           )}
         </div>
@@ -261,14 +260,6 @@ function HoanThanhHalf({ b, sizeCls, trend, suffix, emptyMsg }: { b: BucketPct; 
         </div>
       ) : <div className="mt-0.5 text-[11px] text-slate-400">{emptyMsg}</div>}
     </div>
-  )
-}
-function HoanThanhPlaceholder({ label, msg }: { label: string; msg: string }) {
-  return (
-    <StatCard label={label} muted>
-      <div className="text-2xl font-bold text-slate-300">—</div>
-      <div className="mt-0.5 text-[11px] text-slate-500">{msg}</div>
-    </StatCard>
   )
 }
 // Card GỌN cho vùng ② (Thùy 07-15: "nhỏ card lại, 1 dòng ngang hiện đủ 6 card") — w cố định, padding hẹp.

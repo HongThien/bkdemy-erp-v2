@@ -1462,7 +1462,14 @@ function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: Buo
     try {
       const { mtId, phans: ps, caus: c } = await loadMTForBuoi(buoiId)
       // Lưới MT cũng bám đề qua ma_cau (chung syncDocProblems với ET) — xem ghi chú bug 07-21.
-      if (!mtId) { setMtMissing(true); setPhans([]) } else { setMtMissing(false); await syncMTProblems(buoiId, c, !!buoi.mt_dong_at); setPhans(ps) }
+      if (mtId) await syncMTProblems(buoiId, c, !!buoi.mt_dong_at)
+      setPhans(ps)
+      // Hình (mô hình): dùng CHUNG nội dung 'lop' của ET (Hình chưa có cơ chế gán đợt-MT riêng như
+      // Đại's tai_lieu loai='mt_buoi' — Thùy 21/08 chưa chốt tách riêng). TUẦN TỰ sau MT Đại — chia sẻ
+      // slot problem_no cùng (buổi,'mt'), xem ghi chú domain-partition ở syncHinhProblems (gami.ts).
+      const { dapAn: hinhDapAn } = await loadHinhForBuoiPhase(buoiId, 'mt')
+      if (hinhDapAn.length) await syncHinhProblems(buoiId, 'mt', hinhDapAn, !!buoi.mt_dong_at)
+      setMtMissing(!mtId && !hinhDapAn.length)
       await reloadP()
     } catch { setMtMissing(true); setPhans([]) } finally { setLoading(false) }
   })() }, [buoiId]) // eslint-disable-line
@@ -1498,6 +1505,9 @@ function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: Buo
 
   const tenDangOf = (md: string | null) => (md ? dangTenMT[md] ?? md : '—')
   const cauOf = (idx: number) => caus[idx] ?? null
+  // Hình (mô hình) luôn xếp SAU câu Đại (problem_no cấp lớn hơn — xem noTiep() trong syncHinhProblems),
+  // nên chỉ cần đếm để vẽ 1 nhóm "Phần Hình" cuối hàng nhóm, không cần chen giữa các Phần Đại.
+  const hinhCount = probs.filter((p) => p.hinh_baitoan_id).length
 
   return (
     <div className="flex h-full flex-col">
@@ -1525,15 +1535,19 @@ function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: Buo
               {phans.map((ph, pi) => (
                 <th key={pi} colSpan={ph.caus.length} className="sticky top-0 z-10 border border-slate-200 bg-violet-50 px-2 py-1 text-center text-[12px] font-bold text-violet-700">{ph.tieuDe}</th>
               ))}
+              {hinhCount > 0 && (
+                <th colSpan={hinhCount} className="sticky top-0 z-10 border border-slate-200 bg-violet-100 px-2 py-1 text-center text-[12px] font-bold text-violet-700">Hình (mô hình)</th>
+              )}
             </tr>
             <tr className="bg-slate-100">
               <th className="sticky left-0 top-0 z-30 whitespace-nowrap border border-slate-200 bg-slate-100 px-4 py-1.5 text-left text-[12px] font-semibold text-slate-700">Học sinh</th>
               {probs.map((p, idx) => {
                 const c = cauOf(idx)
+                const hinh = !!p.hinh_baitoan_id
                 return (
-                  <th key={p.id} className="sticky top-0 z-10 w-[130px] border border-slate-200 bg-slate-100 px-2 py-1.5 text-center align-top">
-                    <div className="text-[12px] font-bold text-slate-700">Câu {p.problem_no}</div>
-                    <div className="mx-auto max-w-[120px] truncate text-[11px] font-medium normal-case text-violet-600" title={tenDangOf(p.ma_dang)}>{tenDangOf(p.ma_dang)}</div>
+                  <th key={p.id} className={`sticky top-0 z-10 w-[130px] border border-slate-200 px-2 py-1.5 text-center align-top ${hinh ? 'bg-violet-50' : 'bg-slate-100'}`}>
+                    <div className="text-[12px] font-bold text-slate-700">{hinh ? `Bài ${p.hinh_nhan}` : `Câu ${p.problem_no}`}</div>
+                    <div className="mx-auto max-w-[120px] truncate text-[11px] font-medium normal-case text-violet-600" title={hinh ? 'Hình (mô hình)' : tenDangOf(p.ma_dang)}>{hinh ? 'Hình (mô hình)' : tenDangOf(p.ma_dang)}</div>
                     {c && <button onClick={() => setPreview(c)} className="mt-1 rounded border border-slate-200 px-1.5 py-0.5 text-[10px] font-normal normal-case text-slate-400 hover:border-indigo-300 hover:text-indigo-600">ⓘ đề</button>}
                   </th>
                 )

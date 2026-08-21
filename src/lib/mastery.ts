@@ -245,7 +245,9 @@ export type BucketPct = { dat: number; can_luyen: number; yeu: number; total: nu
 export type HoanThanhCard = { etMt: BucketPct; coBTVN: BucketPct }
 export type ActPct = { pct: number | null; n: number }
 export type TongQuanHS = {
-  hoanThanh: { toanBo: HoanThanhCard; daiCoBan: HoanThanhCard; daiNangCao: HoanThanhCard }
+  // hinhCoBan/hinhNangCao (Thùy 21/08: "giống đại, đo trên những mô hình đã có đánh giá" — CÙNG công
+  // thức compPct, không cần denominator canonical riêng) — bucket theo `cap` CLIP 1-5, xem getHinhMasteryHS.
+  hoanThanh: { toanBo: HoanThanhCard; daiCoBan: HoanThanhCard; daiNangCao: HoanThanhCard; hinhCoBan: HoanThanhCard; hinhNangCao: HoanThanhCard }
   hoatDong: {
     etCoBan: ActPct; etNangCao: ActPct
     btvnCoBan: ActPct; btvnNangCao: ActPct
@@ -267,7 +269,7 @@ export type TongQuanHS = {
 export async function getTongQuanHS(hocSinhId: string, mon: string, opts?: { ym?: string }): Promise<TongQuanHS> {
   const K = khoCuaMon(mon)
   const [{ data: grades }, { data: dt }, online, btGradeEvals, { data: hsRow }] = await Promise.all([
-    supabase.from('gami_grades').select('result, graded_at, prob:problem_id(phase, ma_dang)').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
+    supabase.from('gami_grades').select('result, graded_at, prob:problem_id(phase, ma_dang, hinh_baitoan_id)').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
     supabase.from('diem_thi').select('diem, diem_co_ban, diem_nang_cao, ky_thi:ky_thi_id(loai, mon, ngay, buoi:buoi_hoc_id(ngay))').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
     fetchOnlineEvals(hocSinhId),
     fetchBTEvals(hocSinhId),
@@ -387,6 +389,60 @@ export async function getTongQuanHS(hocSinhId: string, mon: string, opts?: { ym?
   const htTopDaiCB = compPct(byDangTopCur, laCoBan), htBottomDaiCB = compPct(byDangBottomCur, laCoBan)
   const htTopDaiNC = compPct(byDangTopCur, laNangCao), htBottomDaiNC = compPct(byDangBottomCur, laNangCao)
 
+  // ①-Hình (Thùy 21/08: "giống đại, đo trên những mô hình đã có đánh giá" — CÙNG công thức compPct,
+  // KHÔNG cần denominator canonical). KP = hinh_baitoan_id, nguồn CHỈ et/mt/btvn (Hình mô hình chưa có
+  // tự luyện/bt online — xem getHinhMasteryHS). Bucket cơ bản/nâng cao theo `cap` CLIP 1-5 (xấp xỉ
+  // mucDoTuCap thật — như DangBaiTab, chưa join hinh_cach_giai/hinh_cach_bo_de).
+  type RawH = { id: string | null; value: number; t: string }
+  const hEtRows: RawH[] = [], hMtRows: RawH[] = [], hBtvnRows: RawH[] = []
+  for (const g of (grades ?? []) as any[]) {
+    const p = g.prob; if (!p || !p.hinh_baitoan_id) continue
+    const v = RESULT_VALUE[g.result as keyof typeof RESULT_VALUE]; if (v === undefined) continue
+    if (p.phase === 'et') hEtRows.push({ id: p.hinh_baitoan_id, value: v, t: g.graded_at })
+    else if (p.phase === 'mt') hMtRows.push({ id: p.hinh_baitoan_id, value: v, t: g.graded_at })
+    else if (p.phase === 'btvn') hBtvnRows.push({ id: p.hinh_baitoan_id, value: v, t: g.graded_at })
+  }
+  const hinhTop: Record<string, DangEval[]> = {}, hinhBottom: Record<string, DangEval[]> = {}
+  const pushHinh = (map: Record<string, DangEval[]>, id: string | null, ev: DangEval) => { if (id) (map[id] ??= []).push(ev) }
+  for (const e of hEtRows) { const ev: DangEval = { value: e.value, t: e.t, src: 'et' }; pushHinh(hinhTop, e.id, ev); pushHinh(hinhBottom, e.id, ev) }
+  for (const m of hMtRows) { const ev: DangEval = { value: m.value, t: m.t, src: 'mt' }; pushHinh(hinhTop, m.id, ev); pushHinh(hinhBottom, m.id, ev) }
+  for (const b of hBtvnRows) pushHinh(hinhBottom, b.id, { value: b.value, t: b.t, src: 'btvn' })
+
+  let hinhTopCur = hinhTop, hinhBottomCur = hinhBottom
+  if (monthFromMs != null) {
+    const inMonthRow = (r: RawH) => inMonth(Date.parse(r.t))
+    const hEtCur = hEtRows.filter(inMonthRow), hMtCur = hMtRows.filter((r) => inMtWindow(Date.parse(r.t))), hBtvnCur = hBtvnRows.filter(inMonthRow)
+    hinhTopCur = {}; hinhBottomCur = {}
+    for (const e of hEtCur) { const ev: DangEval = { value: e.value, t: e.t, src: 'et' }; pushHinh(hinhTopCur, e.id, ev); pushHinh(hinhBottomCur, e.id, ev) }
+    for (const m of hMtCur) { const ev: DangEval = { value: m.value, t: m.t, src: 'mt' }; pushHinh(hinhTopCur, m.id, ev); pushHinh(hinhBottomCur, m.id, ev) }
+    for (const b of hBtvnCur) pushHinh(hinhBottomCur, b.id, { value: b.value, t: b.t, src: 'btvn' })
+  }
+
+  const hinhIdList = Object.keys(hinhBottom)
+  const hinhValid = new Set<string>()
+  const hinhCapMap = new Map<string, number>()
+  if (hinhIdList.length) {
+    const hb = ((await supabase.from('hinh_baitoan').select('id, cap').in('id', hinhIdList).limit(LIMIT)).data ?? []) as { id: string; cap: number }[]
+    for (const x of hb) { hinhValid.add(x.id); if (x.cap != null) hinhCapMap.set(x.id, Math.min(5, Math.max(1, x.cap))) }
+  }
+  const hinhLaCoBan = (cap: number | null) => bucketMucDo(cap) === 'co_ban'
+  const hinhLaNangCao = (cap: number | null) => bucketMucDo(cap) === 'nang_cao'
+  const compPctHinh = (map: Record<string, DangEval[]>, predMuc?: (cap: number | null) => boolean): BucketPct & { pctRaw: number | null } => {
+    let d = 0, c = 0, y = 0, t = 0
+    for (const id of Object.keys(map)) {
+      if (!hinhValid.has(id)) continue
+      if (predMuc && !predMuc(hinhCapMap.get(id) ?? null)) continue
+      const evs = map[id]
+      if (!evs.length) continue
+      const r = masteryOfDang(evs, MASTERY_CONFIG_HINH); if (!r) continue
+      t++; if (r.muc === 'dat') d++; else if (r.muc === 'can_luyen') c++; else y++
+    }
+    const pctRaw = t ? Math.round(((d + c * 0.5) / t) * 100) : null
+    return { dat: d, can_luyen: c, yeu: y, total: t, pct: pctRaw ?? 0, pctRaw }
+  }
+  const htTopHinhCB = compPctHinh(hinhTopCur, hinhLaCoBan), htBottomHinhCB = compPctHinh(hinhBottomCur, hinhLaCoBan)
+  const htTopHinhNC = compPctHinh(hinhTopCur, hinhLaNangCao), htBottomHinhNC = compPctHinh(hinhBottomCur, hinhLaNangCao)
+
   // ② %ET/%BTVN/%MT cơ bản/nâng cao — bucket theo muc_do dạng của CÂU, gộp đại/hình (Thùy: "ko cần phân
   // biệt đại hình"). Câu không rõ muc_do (dạng không thuộc bản đồ môn này) → bỏ, đối xứng cả 3 nguồn.
   const actBucket = (rows: Raw[], predTime?: (t: number) => boolean, predMuc?: (md: number | null) => boolean) => {
@@ -445,6 +501,8 @@ export async function getTongQuanHS(hocSinhId: string, mon: string, opts?: { ym?
       toanBo: { etMt: toBucket(htTop), coBTVN: toBucket(htBottom) },
       daiCoBan: { etMt: toBucket(htTopDaiCB), coBTVN: toBucket(htBottomDaiCB) },
       daiNangCao: { etMt: toBucket(htTopDaiNC), coBTVN: toBucket(htBottomDaiNC) },
+      hinhCoBan: { etMt: toBucket(htTopHinhCB), coBTVN: toBucket(htBottomHinhCB) },
+      hinhNangCao: { etMt: toBucket(htTopHinhNC), coBTVN: toBucket(htBottomHinhNC) },
     },
     hoatDong: {
       etCoBan: pctOf(etCB), etNangCao: pctOf(etNC),

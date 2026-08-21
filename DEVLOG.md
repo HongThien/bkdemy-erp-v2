@@ -6308,3 +6308,37 @@ mastery.ts, mastery.js, BuoiHocScreen.tsx, KetQuaScreen.tsx) transform qua dev s
 lỗi import/cycle). KHÔNG click-through được UI thật (không có buổi thật đã gán giáo trình Hình sẵn để
 soi — dựng data test tốn nhiều bước ngoài phạm vi phiên này, và rủi ro lặp bẫy "dọn-không-sạch" đã từng
 dính trên node THẬT nếu làm vội, xem mục 2026-08-20 phía trên).
+
+## 2026-08-21 (tiếp) — Đánh giá Hình học: nối tab MT + card "Hoàn thành" Hình ở Tổng quan
+
+**Thùy trả lời 2 điểm mở (chốt qua sparring):**
+- **MT:** đồng ý hướng "toggle chọn bản đồ lúc chọn câu" (3 tab Đại/Hình giải tích/Hình mô hình — ET
+  cũng định làm vậy) THAY VÌ cấu trúc cứng "2 Phần = Đại/Hình". Đây là hướng cho tầng SOẠN đề MT/ET
+  (chưa làm ở lần này — cần riêng 1 lượt đọc `mt.ts`/màn soạn MT + `ETScreen.tsx` mới đủ hiểu để sửa
+  đúng chỗ). Việc closable ngay là tầng CHẤM (MTTab) — Hình vẫn tự động vào MT qua nội dung 'lop' đã
+  gán sẵn (giống ET), không cần người chọn gì thêm ở màn chấm.
+- **① % hoàn thành Hình (Tổng quan):** "giống đại, đo trên những mô hình đã có đánh giá" — xác nhận
+  công thức `compPct` của Đại (tally trên tập ĐÃ ĐO, KHÔNG cần denominator canonical) áp thẳng cho Hình
+  — bỏ blocker "chưa định nghĩa denominator" đã nêu trước, không phải vấn đề thật.
+
+**Làm:**
+- **`BuoiHocScreen.tsx` MTTab**: nối Hình giống ET/BTVN — `loadHinhForBuoiPhase(buoiId,'mt')` +
+  `syncHinhProblems` TUẦN TỰ sau MT Đại (chia sẻ `problem_no`, xem ghi chú domain-partition ở
+  `syncHinhProblems`). Thêm 1 group-header "Hình (mô hình)" (colSpan = số ô Hình) cạnh các group Phần
+  Đại sẵn có — Hình LUÔN xếp SAU (problem_no lớn hơn qua `noTiep()`), không cần logic chen giữa. Cột
+  Hình hiện "Bài {hinh_nhan}" như ET/BTVN.
+- **`src/lib/mastery.ts` `getTongQuanHS`**: thêm khối tính Hình song song khối Đại đang có — `hEtRows/
+  hMtRows/hBtvnRows` (group theo `hinh_baitoan_id` thay `ma_dang`) → `compPctHinh` (bản sao `compPct`,
+  bucket theo `cap` CLIP 1-5 thay `muc_do`, dùng `MASTERY_CONFIG_HINH`) → 2 card mới `hinhCoBan`/
+  `hinhNangCao` trong `TongQuanHS.hoanThanh`. Thêm `hinh_baitoan_id` vào embed `gami_grades` gốc (1
+  query, không round-trip thêm).
+- **`KetQuaScreen.tsx` TongQuanTab**: 2 card Hình hết placeholder — dùng `HoanThanhCard` y hệt Đại. Xoá
+  hẳn `HoanThanhPlaceholder` (hết chỗ dùng — component chết, không giữ lại "phòng khi cần").
+
+**CHƯA LÀM (còn mở, khác với "cố ý cắt" — đây là hướng lớn Thùy vừa mở ra, cần lượt riêng):**
+- Toggle 3-tab (Đại/Hình giải tích/Hình mô hình) ở màn SOẠN câu cho ET/MT — Thùy xác nhận đây là hướng
+  đúng nhưng CHƯA build, cần đọc kỹ `TaiLieuBuilder.tsx`/`ETScreen.tsx`/`mt.ts` (soạn đề) trước khi động
+  — khác hẳn phạm vi "nối Hình vào tầng CHẤM" đã xong hôm nay.
+- Vẫn CHƯA test bằng data thật (đúng như Thùy nói: "chưa build xong thì đương nhiên chưa có dữ liệu").
+
+**Verify:** `npx tsc --noEmit` sạch · `npx vite build` sạch.
