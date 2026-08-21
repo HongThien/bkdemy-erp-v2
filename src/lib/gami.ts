@@ -627,7 +627,10 @@ export async function recomputeExpThang(lopId: string, ym: string): Promise<{ hs
   return { hs: rows.length, tong: rows.reduce((s, r) => s + r.amount, 0) }
 }
 
-// Đóng BTVN: chỉ CHỐT trạng thái buổi → recompute EXP tháng (idempotent). KHÔNG Elo, KHÔNG gate hoàn-tất.
+// Đóng BTVN: CHỐT trạng thái buổi → recompute EXP tháng (idempotent). KHÔNG Elo.
+// ⚠ CEO 21/08: TRƯỚC đây "KHÔNG gate hoàn-tất" — cố tình, vì BTVN buổi thường thường đóng ở BUỔI SAU (deadline
+// = trước ca kế tiếp), nên nếu bắt buộc mới "Hoàn tất" thì buổi treo "chưa xong" cả tuần dù trong-buổi đã xong
+// sạch. CEO xác nhận muốn đổi: "Hoàn tất" giờ ĐÚNG NGHĨA ĐEN — đủ cả 4 — chấp nhận đánh đổi buổi treo lâu hơn.
 export async function closeBTVN(buoiId: string): Promise<{ already?: boolean; thuong: number }> {
   const { data: b, error } = await supabase.from('buoi_hoc').select('btvn_dong_at, lop_id, ngay').eq('id', buoiId).single()
   if (error) throw error
@@ -636,11 +639,13 @@ export async function closeBTVN(buoiId: string): Promise<{ already?: boolean; th
   if (claim.error) throw claim.error
   if (!claim.data?.length) return { already: true, thuong: 0 }
   const res = await recomputeExpThang((b as any).lop_id, String((b as any).ngay).slice(0, 7))
+  await recomputeHoanTat(buoiId)
   return { thuong: res.hs }
 }
 export async function reopenBTVN(buoiId: string): Promise<void> {
   const { data: b } = await supabase.from('buoi_hoc').select('lop_id, ngay').eq('id', buoiId).maybeSingle()
-  await supabase.from('buoi_hoc').update({ btvn_dong_at: null, updated_at: new Date().toISOString() }).eq('id', buoiId)
+  // .neq trang_thai 'huy': cùng lý do như moLaiDanhGia — không un-huỷ buổi qua đường mở lại BTVN.
+  await supabase.from('buoi_hoc').update({ btvn_dong_at: null, trang_thai: 'mo', updated_at: new Date().toISOString() }).eq('id', buoiId).neq('trang_thai', 'huy')
   if (b && (b as any).lop_id) await recomputeExpThang((b as any).lop_id, String((b as any).ngay).slice(0, 7))
 }
 
@@ -787,11 +792,27 @@ export async function closePhase(buoiId: string, phase: Phase): Promise<{ alread
   if (phase === 'et' && b.loai === 'thuong' && b.lop_id) { try { await recomputeExpThang(b.lop_id, String(b.ngay).slice(0, 7)) } catch (e) { console.error('recomputeExpThang lỗi sau đóng ET:', e) } }
   return { reveal }
 }
-async function markClosed(buoiId: string, dongCol: string, loai: string, otherClosed: boolean): Promise<void> {
+async function markClosed(buoiId: string, dongCol: string, loai: string, _otherClosed: boolean): Promise<void> {
   const patch: Record<string, unknown> = { [dongCol]: new Date().toISOString(), updated_at: new Date().toISOString() }
-  // bù/mt = 1 phase → đóng là hoàn tất. buổi thường = hoàn tất khi CẢ ingame & et đã đóng (phase kia đã đóng từ trước).
-  if (loai !== 'thuong' || otherClosed) patch.trang_thai = 'hoan_tat'
+  // bù/mt/... = 1 phase → đóng là hoàn tất luôn (không có đánh giá/BTVN riêng để chờ).
+  if (loai !== 'thuong') patch.trang_thai = 'hoan_tat'
   await supabase.from('buoi_hoc').update(patch).eq('id', buoiId)
+  // Buổi thường: KHÔNG tự set ở đây — trang_thai suy theo CẢ 4 việc (đọc fresh, gồm patch vừa ghi ở trên).
+  if (loai === 'thuong') await recomputeHoanTat(buoiId)
+}
+
+// Buổi THƯỜNG "hoàn tất" = ingame + ET + Đánh giá sau buổi + BTVN đều đã đóng (+ MT nếu buổi có gán).
+// CEO 21/08: trước đây chỉ xét ingame+ET(+MT) — nhãn xanh "Hoàn tất" ở màn Buổi học nói dối phần Đánh
+// giá/BTVN còn thiếu (task engine "Việc của tôi" vẫn nhắc đúng, độc lập cột này, nhưng không ai để ý
+// sang đó khi đã thấy nhãn xanh). Gọi lại mỗi khi 1 trong 4 việc đổi trạng thái (đóng HOẶC mở lại).
+async function recomputeHoanTat(buoiId: string): Promise<void> {
+  const { data: b } = await supabase.from('buoi_hoc')
+    .select('trang_thai, ingame_dong_at, et_dong_at, danh_gia_xong_at, btvn_dong_at, mt_dong_at').eq('id', buoiId).maybeSingle()
+  if (!b || (b as any).trang_thai === 'huy') return
+  const hasMT = !!(await supabase.from('gami_session_problems').select('id', { count: 'exact', head: true }).eq('buoi_hoc_id', buoiId).eq('phase', 'mt')).count
+  const du = !!(b as any).ingame_dong_at && !!(b as any).et_dong_at && !!(b as any).danh_gia_xong_at && !!(b as any).btvn_dong_at && (!hasMT || !!(b as any).mt_dong_at)
+  const next = du ? 'hoan_tat' : 'mo'
+  if ((b as any).trang_thai !== next) await supabase.from('buoi_hoc').update({ trang_thai: next, updated_at: new Date().toISOString() }).eq('id', buoiId)
 }
 
 // ── ĐÁNH GIÁ SAU BUỔI (GV) ────────────────────────────────────────
@@ -863,12 +884,16 @@ export async function getDanhGia(buoiId: string): Promise<Record<string, DanhGia
 }
 
 // Mốc HOÀN THÀNH đánh giá sau buổi (task định tính — không có Elo/đóng phase). Bấm nút → set; mở lại → null.
+// Đóng/mở đều có thể đổi trang_thai "Hoàn tất" của buổi thường (xem recomputeHoanTat) — mở lại thì LUÔN
+// rớt về 'mo' (thiếu đánh giá là chắc chắn chưa đủ 4, không cần đọc lại 3 việc kia để biết).
 export async function dongDanhGia(buoiId: string): Promise<void> {
   const { error } = await supabase.from('buoi_hoc').update({ danh_gia_xong_at: new Date().toISOString(), updated_at: new Date().toISOString() }).eq('id', buoiId)
   if (error) throw error
+  await recomputeHoanTat(buoiId)
 }
 export async function moLaiDanhGia(buoiId: string): Promise<void> {
-  const { error } = await supabase.from('buoi_hoc').update({ danh_gia_xong_at: null, updated_at: new Date().toISOString() }).eq('id', buoiId)
+  // .neq trang_thai 'huy': buổi đã huỷ không hiện tab này (UI chặn), nhưng đừng để 1 lời gọi lạc đường un-huỷ nó.
+  const { error } = await supabase.from('buoi_hoc').update({ danh_gia_xong_at: null, trang_thai: 'mo', updated_at: new Date().toISOString() }).eq('id', buoiId).neq('trang_thai', 'huy')
   if (error) throw error
 }
 
