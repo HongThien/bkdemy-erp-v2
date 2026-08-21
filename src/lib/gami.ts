@@ -563,11 +563,12 @@ export async function syncHinhProblems(buoiId: string, phase: 'et' | 'mt' | 'btv
   return { probs: [...theoDe, ...moCoi.map((m) => m.problem)], moCoi, khongRoRang: null, doiCauTruc: false }
 }
 /** Đáp án Hình cần chấm cho `phase` này — nha→btvn (giáo trình, snapshot qua `ganLopSnapshot`) ·
- *  et→et (tài liệu ET Hình RIÊNG, builder trong ETScreen — KHÔNG phải giáo trình, xem
- *  `ensureHinhGtBuoiForBuoi`/`saveBuoiSelectionPhan`, Thùy 21/08 chỉnh lại sau khi CTO nhầm lẫn 1 lần).
- *  MT chưa có nguồn (chưa build — MT Hình sẽ bàn sau khi ET xong). */
-export async function loadHinhForBuoiPhase(buoiId: string, phase: 'et' | 'btvn'): Promise<{ gtBuoiId: string | null; dapAn: HinhDapAn[] }> {
-  return loadHinhForBuoi(buoiId, phase === 'btvn' ? 'nha' : 'et')
+ *  et→et · mt→mt (2 cái sau là tài liệu RIÊNG, KHÔNG phải giáo trình — xem
+ *  `ensureHinhGtBuoiForBuoi`/`saveBuoiSelectionPhan`). MT Hình KHÔNG có master (khác Đại) — chọn
+ *  trực tiếp mỗi buổi, ngay trong tab MT (Thùy 21/08: "MT là 1 thực thể — Đại Hình chỉ là 1 phần
+ *  của nó", không phải 2 tài liệu tách rời — gộp ở lớp CHẤM, giống hệt ET/BTVN). */
+export async function loadHinhForBuoiPhase(buoiId: string, phase: 'et' | 'mt' | 'btvn'): Promise<{ gtBuoiId: string | null; dapAn: HinhDapAn[] }> {
+  return loadHinhForBuoi(buoiId, phase === 'btvn' ? 'nha' : phase)
 }
 export async function listGrades(buoiId: string): Promise<Grade[]> {
   const { data, error } = await supabase.from('gami_grades').select('*').eq('buoi_hoc_id', buoiId).limit(LIMIT)

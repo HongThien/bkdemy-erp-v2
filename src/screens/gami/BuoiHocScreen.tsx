@@ -20,6 +20,10 @@ import TruocBuoiTab from './TruocBuoiTab'
 import { listDaiDang, type CauHoi } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
 import SearchSelect from '../../components/SearchSelect'
+import { BuoiPickEditor } from '../kho/hinh/SoanTaiLieu'
+import { loadLuoi, type Luoi } from '../../lib/kho/hinh'
+import { ensureHinhGtBuoiForBuoi, saveBuoiSelectionPhan, loadBuoiPicksPhan, type CheDoHinh } from '../../lib/kho/hinhGiaoTrinh'
+import type { PickItem } from '../../store/useStore'
 import { NGU_CANH_LUOT, setNguCanhLuotBuoi, type NguCanhLuot } from '../../lib/kho/hinh'
 import DangPickerOne from '../../components/DangPickerOne'
 import { useIsMobile } from '../../hooks/useIsMobile'
@@ -1438,7 +1442,7 @@ function LiveTab({ buoiId, roster }: { buoiId: string; roster: BuoiHocHS[] }) {
 // ── CHẤM MT (kỳ thi lớn) — CÙNG buổi, CÙNG roster/điểm danh với các tab khác (Thùy 07-08: "phải
 // hiện trong buổi học giống như chấm ET"). GIỮ cấu trúc PHẦN (Phần I/II…) đúng file MT đã gán —
 // KHÔNG làm phẳng câu. Đóng phase = Elo K=60 (cột riêng `mt_dong_at`, KHÔNG đụng ingame_dong_at).
-function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: BuoiHocHS[]; buoi: BuoiHoc & { lop?: { mon: string; ten_lop?: string; khoi?: string | null } }; onChange: () => void }) {
+function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: BuoiHocHS[]; buoi: BuoiHoc & { lop_id?: string | null; lop?: { mon: string; ten_lop?: string; khoi?: string | null } }; onChange: () => void }) {
   const [probs, setProbs] = useState<Problem[]>([])
   const [grades, setGrades] = useState<Grade[]>([])
   const [phans, setPhans] = useState<MTPhanCaus[]>([])
@@ -1453,6 +1457,19 @@ function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: Buo
   const dongCol = buoi.mt_dong_at
   const caus = phans.flatMap((p) => p.caus)
 
+  // ── Hình (mô hình) — Thùy 21/08: "MT là 1 thực thể, Đại Hình chỉ là 1 phần của nó" — KHÔNG phải
+  // tài liệu tách rời như ET (ET chọn 1 nhánh cho CẢ tài liệu). Hình phía MT KHÔNG có master (khác
+  // Đại) — chọn trực tiếp NGAY TRONG tab này, autosave mỗi lần đổi pick (khuôn giáo trình, không nút
+  // Lưu riêng — khác ET vì đây là màn CHẤM, không phải màn SOẠN). Lazy: chỉ tải Luoi khi mở panel.
+  const [hinhOpen, setHinhOpen] = useState(false)
+  const [hinhL, setHinhL] = useState<Luoi | null>(null)
+  const [hinhBuoiId, setHinhBuoiId] = useState<string | null>(null)
+  const [hinhPicks, setHinhPicks] = useState<PickItem[]>([])
+  const [hinhCheDo, setHinhCheDo] = useState<Record<string, CheDoHinh>>({})
+  const [hinhSoDong, setHinhSoDong] = useState<Record<string, number>>({})
+  const [hinhSaving, setHinhSaving] = useState(false)
+  const khoi = buoi.lop?.khoi ?? ''
+
   async function reloadP() {
     const [p, g] = await Promise.all([listProblems(buoiId, 'mt'), listGrades(buoiId)])
     setProbs(p); setGrades(g)
@@ -1464,12 +1481,40 @@ function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: Buo
     try {
       const { mtId, phans: ps, caus: c } = await loadMTForBuoi(buoiId)
       // Lưới MT cũng bám đề qua ma_cau (chung syncDocProblems với ET) — xem ghi chú bug 07-21.
-      // ⚠ 21/08: Hình từng nối MT qua nội dung 'lop' giáo trình — SAI cùng lý do ET (gỡ, xem comment ET
-      // tab), chờ builder ET/MT Hình đúng nguồn.
-      if (!mtId) { setMtMissing(true); setPhans([]) } else { setMtMissing(false); await syncMTProblems(buoiId, c, !!buoi.mt_dong_at); setPhans(ps) }
+      // Hình đọc từ tài liệu MT Hình RIÊNG (không phải giáo trình — 21/08 sửa lại sau khi nhầm 1 lần),
+      // TUẦN TỰ sau Đại — chia sẻ slot problem_no cùng (buổi,'mt').
+      if (mtId) await syncMTProblems(buoiId, c, !!buoi.mt_dong_at)
+      setPhans(ps)
+      const { dapAn: hinhDapAn } = await loadHinhForBuoiPhase(buoiId, 'mt')
+      if (hinhDapAn.length) await syncHinhProblems(buoiId, 'mt', hinhDapAn, !!buoi.mt_dong_at)
+      setMtMissing(!mtId && !hinhDapAn.length)
       await reloadP()
     } catch { setMtMissing(true); setPhans([]) } finally { setLoading(false) }
   })() }, [buoiId]) // eslint-disable-line
+  useEffect(() => {
+    if (!hinhOpen || !buoi.lop_id || hinhL) return
+    let alive = true
+    ;(async () => {
+      const [L, id] = await Promise.all([loadLuoi(khoi || undefined), ensureHinhGtBuoiForBuoi(buoi.lop_id!, buoi.ngay)])
+      if (!alive) return
+      setHinhL(L); setHinhBuoiId(id)
+      const nhap = await loadBuoiPicksPhan(id, 'mt')
+      if (alive) { setHinhPicks(nhap.picks); setHinhCheDo(nhap.cheDo); setHinhSoDong(nhap.soDong) }
+    })()
+    return () => { alive = false }
+  }, [hinhOpen]) // eslint-disable-line
+  async function luuHinhPicks(picks: PickItem[], cheDo: Record<string, CheDoHinh>, soDong: Record<string, number>) {
+    setHinhPicks(picks); setHinhCheDo(cheDo); setHinhSoDong(soDong)
+    if (!hinhBuoiId) return
+    setHinhSaving(true)
+    try {
+      await saveBuoiSelectionPhan(hinhBuoiId, 'mt', { picks, cheDo, soDong })
+      const { dapAn } = await loadHinhForBuoiPhase(buoiId, 'mt')
+      await syncHinhProblems(buoiId, 'mt', dapAn, !!buoi.mt_dong_at)
+      setMtMissing(false)
+      await reloadP()
+    } finally { setHinhSaving(false) }
+  }
 
   const gradeOf = (pid: string, hsid: string) => grades.find((g) => g.problem_id === pid && g.hoc_sinh_id === hsid)
   async function pickKQ(pid: string, hsId: string, result: ETResult) {
@@ -1497,17 +1542,18 @@ function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: Buo
   async function moLai() { await reopenPhase(buoiId, 'mt'); onChange() }
 
   if (loading) return <p className="text-[12px] text-slate-400">Đang tải MT…</p>
-  if (mtMissing) return <p className="text-[13px] text-slate-400">Chưa có MT gán cho buổi này (khớp <b className="text-slate-600">lớp + ngày</b>). Vào <b className="text-slate-600">Làm tài liệu → MT</b> gán vào buổi này.</p>
   if (coMat.length === 0) return <p className="text-[12px] text-slate-400">Chưa có HS nào điểm danh "có mặt" — điểm danh trước khi chấm.</p>
 
   const tenDangOf = (md: string | null) => (md ? dangTenMT[md] ?? md : '—')
   const cauOf = (idx: number) => caus[idx] ?? null
+  const hinhCount = probs.filter((p) => p.hinh_baitoan_id).length
 
   return (
     <div className="flex h-full flex-col">
       <div className="mb-3 flex items-center gap-2">
-        <span className="text-[12px] text-slate-400">{probs.length} câu ({phans.length} phần) · {coMat.length} HS · 1 click <b className="text-emerald-600">Đ</b>/<b className="text-amber-600">C</b>/<b className="text-rose-600">S</b> · <b>Tất cả</b> cạnh tên = tích cả hàng, sửa riêng ô lệch.</span>
+        <span className="text-[12px] text-slate-400">{probs.length} câu ({phans.length} phần Đại{hinhCount ? ` + ${hinhCount} bài Hình` : ''}) · {coMat.length} HS · 1 click <b className="text-emerald-600">Đ</b>/<b className="text-amber-600">C</b>/<b className="text-rose-600">S</b> · <b>Tất cả</b> cạnh tên = tích cả hàng, sửa riêng ô lệch.</span>
         <div className="ml-auto flex items-center gap-2">
+          <button onClick={() => setHinhOpen((v) => !v)} className={`rounded-md border px-3 py-1.5 text-[13px] font-medium ${hinhOpen ? 'border-amber-400 bg-amber-100 text-amber-800' : 'border-amber-300 bg-amber-50 text-amber-700 hover:bg-amber-100'}`}>🏆 + Bài Hình{hinhSaving ? '…' : ''}</button>
           <button onClick={() => setDiemMTOpen((v) => !v)} className={`rounded-md border px-3 py-1.5 text-[13px] font-medium ${diemMTOpen ? 'border-violet-400 bg-violet-100 text-violet-800' : 'border-violet-300 bg-violet-50 text-violet-700 hover:bg-violet-100'}`}>🔢 Điểm MT</button>
           {dongCol ? (
             <>
@@ -1520,24 +1566,44 @@ function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: Buo
         </div>
       </div>
       {diemMTOpen && <DiemMTPanel buoiId={buoiId} buoi={buoi} coMat={coMat} tenHT={tenHT} />}
+      {hinhOpen && (
+        <div className="mb-3 rounded-xl border border-amber-200 bg-amber-50/40 p-3">
+          {!hinhL ? (
+            <p className="text-[12px] text-slate-400">Đang tải kho Hình…</p>
+          ) : (
+            <BuoiPickEditor L={hinhL} picks={hinhPicks} cheDo={hinhCheDo} soDong={hinhSoDong}
+              onChangePicks={(p) => luuHinhPicks(p, hinhCheDo, hinhSoDong)}
+              onChangeCheDo={(c) => luuHinhPicks(hinhPicks, c, hinhSoDong)}
+              onChangeSoDong={(s) => luuHinhPicks(hinhPicks, hinhCheDo, s)} phans={['mt']} />
+          )}
+        </div>
+      )}
+      {mtMissing && !probs.length ? (
+        <p className="text-[13px] text-slate-400">Chưa có MT Đại gán cho buổi này (khớp <b className="text-slate-600">lớp + ngày</b> — vào <b className="text-slate-600">Làm tài liệu → MT</b> gán) và chưa có bài Hình nào — bấm <b className="text-amber-700">🏆 + Bài Hình</b> ở trên để bắt đầu, hoặc gán MT Đại trước.</p>
+      ) : (
       <div className="min-h-0 flex-1 overflow-auto rounded-xl border border-slate-200">
         <table className="w-auto border-collapse text-sm">
           <thead>
-            {/* Hàng nhóm PHẦN — đúng cấu trúc file MT đã gán (Phần I/II…), KHÔNG làm phẳng câu. */}
+            {/* Hàng nhóm PHẦN — đúng cấu trúc file MT đã gán (Phần I/II…), KHÔNG làm phẳng câu.
+                Hình xếp SAU câu Đại (problem_no cấp lớn hơn — xem noTiep() trong syncHinhProblems). */}
             <tr className="bg-violet-50">
               <th className="sticky left-0 top-0 z-30 border border-slate-200 bg-violet-50" />
               {phans.map((ph, pi) => (
                 <th key={pi} colSpan={ph.caus.length} className="sticky top-0 z-10 border border-slate-200 bg-violet-50 px-2 py-1 text-center text-[12px] font-bold text-violet-700">{ph.tieuDe}</th>
               ))}
+              {hinhCount > 0 && (
+                <th colSpan={hinhCount} className="sticky top-0 z-10 border border-slate-200 bg-amber-100 px-2 py-1 text-center text-[12px] font-bold text-amber-700">🏆 Hình (mô hình)</th>
+              )}
             </tr>
             <tr className="bg-slate-100">
               <th className="sticky left-0 top-0 z-30 whitespace-nowrap border border-slate-200 bg-slate-100 px-4 py-1.5 text-left text-[12px] font-semibold text-slate-700">Học sinh</th>
               {probs.map((p, idx) => {
-                const c = cauOf(idx)
+                const hinh = !!p.hinh_baitoan_id
+                const c = hinh ? null : cauOf(idx)
                 return (
-                  <th key={p.id} className="sticky top-0 z-10 w-[130px] border border-slate-200 bg-slate-100 px-2 py-1.5 text-center align-top">
-                    <div className="text-[12px] font-bold text-slate-700">Câu {p.problem_no}</div>
-                    <div className="mx-auto max-w-[120px] truncate text-[11px] font-medium normal-case text-violet-600" title={tenDangOf(p.ma_dang)}>{tenDangOf(p.ma_dang)}</div>
+                  <th key={p.id} className={`sticky top-0 z-10 w-[130px] border border-slate-200 px-2 py-1.5 text-center align-top ${hinh ? 'bg-amber-50' : 'bg-slate-100'}`}>
+                    <div className="text-[12px] font-bold text-slate-700">{hinh ? `Bài ${p.hinh_nhan}` : `Câu ${p.problem_no}`}</div>
+                    <div className="mx-auto max-w-[120px] truncate text-[11px] font-medium normal-case text-violet-600" title={hinh ? 'Hình (mô hình)' : tenDangOf(p.ma_dang)}>{hinh ? 'Hình (mô hình)' : tenDangOf(p.ma_dang)}</div>
                     {c && <button onClick={() => setPreview(c)} className="mt-1 rounded border border-slate-200 px-1.5 py-0.5 text-[10px] font-normal normal-case text-slate-400 hover:border-indigo-300 hover:text-indigo-600">ⓘ đề</button>}
                   </th>
                 )
@@ -1569,6 +1635,7 @@ function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: Buo
           </tbody>
         </table>
       </div>
+      )}
       {preview && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-4" onClick={() => setPreview(null)}>
           <div className="max-h-[80vh] w-[640px] max-w-full overflow-auto rounded-2xl border border-slate-200 bg-white p-5 shadow-2xl" onClick={(e) => e.stopPropagation()}>

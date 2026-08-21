@@ -15,7 +15,7 @@ export type GtBuoi = {
   lop_id: string | null; ngay: string | null; stt_lop: number | null; nguon_buoi_id: string | null  // set = bản LỚP (snapshot)
 }
 export type GtBai = {
-  id: string; buoi_id: string; phan: 'lop' | 'nha' | 'et'; loai: 'chuan' | 'bienthe' | 'y' | 'ghep'
+  id: string; buoi_id: string; phan: 'lop' | 'nha' | 'et' | 'mt'; loai: 'chuan' | 'bienthe' | 'y' | 'ghep'
   ref_id: string | null; ghep_node_ids: string[]; lua_id: string | null; an_de: boolean; so_dong: number | null; thu_tu: number
   hinh_che_do: CheDoHinh
 }
@@ -178,7 +178,7 @@ export async function ensureHinhGtBuoiForBuoi(lopId: string, ngay: string): Prom
 }
 /** Lưu NHÁP CHỈ 1 `phan` — REPLACE riêng phan đó, KHÔNG đụng phan khác của cùng buổi (khác
  *  `saveBuoiSelection` gốc REPLACE CẢ buổi — không dùng được khi buổi này CÒN giáo trình 'lop'/'nha'). */
-export async function saveBuoiSelectionPhan(buoiId: string, phan: 'lop' | 'nha' | 'et', nhap: NhapBuoi): Promise<void> {
+export async function saveBuoiSelectionPhan(buoiId: string, phan: 'lop' | 'nha' | 'et' | 'mt', nhap: NhapBuoi): Promise<void> {
   const cheDoCua = (k: string): CheDoHinh => nhap.cheDo[k] ?? 'hien'
   const seen = new Set<string>()
   const rows: Omit<GtBai, 'id'>[] = []
@@ -199,7 +199,7 @@ export async function saveBuoiSelectionPhan(buoiId: string, phan: 'lop' | 'nha' 
   await supabase.from('hinh_gt_buoi').update({ updated_at: new Date().toISOString() }).eq('id', buoiId)
 }
 /** Bài CHỈ 1 phan của buổi → NhapBuoi (ET Hình mở lại sửa — không load lẫn 'lop'/'nha'). */
-export async function loadBuoiPicksPhan(buoiId: string, phan: 'lop' | 'nha' | 'et'): Promise<NhapBuoi> {
+export async function loadBuoiPicksPhan(buoiId: string, phan: 'lop' | 'nha' | 'et' | 'mt'): Promise<NhapBuoi> {
   const full = await loadBuoiPicks(buoiId)
   return { picks: full.picks.filter((p) => p.phan === phan), cheDo: full.cheDo, soDong: full.soDong }
 }
@@ -370,7 +370,7 @@ export async function flattenGtBaiToDapAn(L: Luoi, bais: GtBai[]): Promise<HinhD
 /** Buổi (giáo trình Hình, lớp+ngày) khớp `phan` cần chấm — null nếu buổi chưa gán giáo trình Hình nào.
  *  Khớp qua `hinh_gt_buoi.lop_id/ngay` (KHÔNG FK buoi_hoc — cùng nguyên lý ET/BTVN Đại, buổi có thể ẢO
  *  lúc gán). order+limit(1) thay vì .single(): lỡ trùng thì lấy bản mới nhất, đừng throw cả tab chấm. */
-export async function loadHinhForBuoi(buoiId: string, phan: 'lop' | 'nha' | 'et'): Promise<{ gtBuoiId: string | null; dapAn: HinhDapAn[] }> {
+export async function loadHinhForBuoi(buoiId: string, phan: 'lop' | 'nha' | 'et' | 'mt'): Promise<{ gtBuoiId: string | null; dapAn: HinhDapAn[] }> {
   const { data: b, error } = await supabase.from('buoi_hoc').select('lop_id, ngay, lop:lop_id(khoi)').eq('id', buoiId).single()
   if (error) throw error
   const lopId = (b as any).lop_id as string | null

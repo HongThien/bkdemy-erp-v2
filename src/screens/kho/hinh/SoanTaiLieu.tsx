@@ -388,12 +388,13 @@ function dedupePicks(arr: PickItem[]): PickItem[] {
     if (seen.has(sig)) return false; seen.add(sig); return true
   })
 }
-// Nhãn/màu theo phan — 'et' thêm 21/08 (Thùy: builder ET Hình tái dùng NGUYÊN cơ chế pick này, không
-// phải giáo trình — 1 tab duy nhất, không "Trên lớp"/"Về nhà"). 'nha' vẫn là phan DUY NHẤT có "dòng kẻ".
-const PHAN_META: Record<'lop' | 'nha' | 'et', { nhan: string; icon: string; border: string; bg: string; text: string }> = {
+// Nhãn/màu theo phan — 'et'/'mt' thêm 21/08 (Thùy: builder ET/MT Hình tái dùng NGUYÊN cơ chế pick này,
+// không phải giáo trình — 1 tab duy nhất, không "Trên lớp"/"Về nhà"). 'nha' vẫn là phan DUY NHẤT có "dòng kẻ".
+const PHAN_META: Record<'lop' | 'nha' | 'et' | 'mt', { nhan: string; icon: string; border: string; bg: string; text: string }> = {
   lop: { nhan: 'Trên lớp', icon: '📘', border: 'border-sky-200', bg: 'bg-sky-50/40', text: 'text-sky-700' },
   nha: { nhan: 'Về nhà', icon: '📝', border: 'border-orange-200', bg: 'bg-orange-50/40', text: 'text-orange-600' },
   et: { nhan: 'ET', icon: '📄', border: 'border-violet-200', bg: 'bg-violet-50/40', text: 'text-violet-700' },
+  mt: { nhan: 'MT (phần Hình)', icon: '🏆', border: 'border-amber-200', bg: 'bg-amber-50/40', text: 'text-amber-700' },
 }
 
 // ── ⭐ 08-08 "chuyển nhà": editor NỘI DUNG 1 buổi giáo trình — dùng TẠI CHỖ trong cây buổi của
@@ -406,7 +407,7 @@ export function BuoiPickEditor({ L, picks, cheDo, soDong, onChangePicks, onChang
   onChangePicks: (picks: PickItem[]) => void
   onChangeCheDo: (cheDo: Record<string, CheDoHinh>) => void
   onChangeSoDong: (soDong: Record<string, number>) => void
-  phans?: ('lop' | 'nha' | 'et')[]   // mặc định giáo trình (2 tab) — ET Hình (ETScreen) truyền ['et'] (1 tab, không lop/nha)
+  phans?: ('lop' | 'nha' | 'et' | 'mt')[]   // mặc định giáo trình (2 tab) — ET Hình (ETScreen) truyền ['et'] (1 tab, không lop/nha)
 }) {
   const maCap = useMemo(() => api.maPhanCapMap(L), [L])
   // Lọc mô hình chỉ để TÌM node dễ hơn (state cục bộ, không lưu) — KHÔNG đụng picks đã có: 1 buổi có thể
@@ -454,7 +455,7 @@ export function BuoiPickEditor({ L, picks, cheDo, soDong, onChangePicks, onChang
     const next = [...picks];[next[iFull], next[jFull]] = [next[jFull], next[iFull]]
     onChangePicks(next)
   }
-  const goiY = async (chuoi: BaiToan[], phan: 'lop' | 'nha' | 'et', n: number) => {
+  const goiY = async (chuoi: BaiToan[], phan: 'lop' | 'nha' | 'et' | 'mt', n: number) => {
     const news = await goiYChuoi(chuoi, phan, n)
     if (news.length < n) alert(`Chuỗi này chỉ có ${news.length} bản khác nhau — lấy đủ ${news.length}.`)
     const ids = new Set(chuoi.map((b) => b.id))
@@ -702,7 +703,7 @@ async function banOptionsOfChuoi(chuoi: BaiToan[]): Promise<{ ban: Ban; label: s
 /** ⭐ Gợi ý N: tự chọn N pick cho (chuỗi,phan), mỗi pick BẢN KHÁC NHAU — ưu tiên ÍT DÙNG NHẤT (least-used,
  *  khuôn cauUsage Đại). Mặc định tick TOÀN BỘ chuỗi (Thùy: "đương nhiên hệ thống đưa full chuỗi"; sửa
  *  từng bài sau bằng ✎). Trả ÍT hơn N nếu kho chưa đủ bản khác nhau — caller tự báo. */
-async function goiYChuoi(chuoi: BaiToan[], phan: 'lop' | 'nha' | 'et', n: number): Promise<PickItem[]> {
+async function goiYChuoi(chuoi: BaiToan[], phan: 'lop' | 'nha' | 'et' | 'mt', n: number): Promise<PickItem[]> {
   const opts = await banOptionsOfChuoi(chuoi)
   const luaIds = opts.filter((o): o is { ban: { kind: 'ghep'; luaId: string }; label: string } => o.ban.kind === 'ghep' && !!o.ban.luaId).map((o) => o.ban.luaId)
   const bienTheIds = opts.filter((o): o is { ban: { kind: 'bienthe'; bienTheId: string }; label: string } => o.ban.kind === 'bienthe').map((o) => o.ban.bienTheId)
@@ -725,17 +726,17 @@ async function goiYChuoi(chuoi: BaiToan[], phan: 'lop' | 'nha' | 'et', n: number
 // thường với số dòng vừa áp làm giá trị chung).
 function ChuoiRow({ L, chuoi, picks, cheDo, soDong, phans, onAdd, onUpdate, onRemove, onSwap, onXoayCheDo, onSetSoDongChuoi, onGoiY, onXem }: {
   L: Luoi; chuoi: BaiToan[]; picks: PickItem[]; cheDo: Record<string, CheDoHinh>; soDong: Record<string, number>
-  phans: ('lop' | 'nha' | 'et')[]
+  phans: ('lop' | 'nha' | 'et' | 'mt')[]
   onAdd: (p: PickItem) => void; onUpdate: (key: string, p: PickItem) => void; onRemove: (key: string) => void
   onSwap: (keyA: string, keyB: string) => void
   onXoayCheDo: (key: string) => void; onSetSoDongChuoi: (keys: string[], n: number) => void
-  onGoiY: (phan: 'lop' | 'nha' | 'et', n: number) => void
+  onGoiY: (phan: 'lop' | 'nha' | 'et' | 'mt', n: number) => void
   onXem: (list: PickItem[], index: number) => void
 }) {
   const chuoiIds = useMemo(() => new Set(chuoi.map((b) => b.id)), [chuoi])
-  const [open, setOpen] = useState<{ phan: 'lop' | 'nha' | 'et'; editKey?: string } | null>(null)
-  const [nInput, setNInput] = useState<Record<string, number>>({ lop: 2, nha: 2, et: 2 })
-  const picksOf = (phan: 'lop' | 'nha' | 'et') => picks.filter((p) => p.phan === phan && p.nodeIds.length > 0 && p.nodeIds.every((id) => chuoiIds.has(id)))
+  const [open, setOpen] = useState<{ phan: 'lop' | 'nha' | 'et' | 'mt'; editKey?: string } | null>(null)
+  const [nInput, setNInput] = useState<Record<string, number>>({ lop: 2, nha: 2, et: 2, mt: 2 })
+  const picksOf = (phan: 'lop' | 'nha' | 'et' | 'mt') => picks.filter((p) => p.phan === phan && p.nodeIds.length > 0 && p.nodeIds.every((id) => chuoiIds.has(id)))
   const nhanBan = (p: PickItem) => p.kind === 'ghep' ? (p.luaId ? 'Lứa (đổi đỉnh)' : 'Đề chuẩn') : p.kind === 'bienthe' ? 'Biến thể' : 'Ý thật'
   // ⭐ 08-20 (Thùy: "builder hiện 2 câu nhưng preview chỉ hiện 1"): banInTheoMoHinh khử pick TRÙNG chữ ký
   // (cùng bản + cùng node) lúc IN — builder trước đây không lộ điều này, số bài hiện ra khác số bài in
@@ -919,7 +920,7 @@ function PreviewPane({ L, xem, onNav, onClose }: {
 // Popup 2 BƯỚC cho MỘT chuỗi: (1) chọn BẢN — đề chuẩn/lứa (≥2 node) hoặc biến thể/ý thật riêng lẻ (1 node).
 // (2) CHỈ chuỗi ≥2 node mới sang cây tick ý; chuỗi 1 node CONFIRM THẲNG (không tiền đề, không gì để nở/ẩn).
 function ChonChuoiPopup({ L, phan, chuoi, editing, daChonList, onClose, onConfirm }: {
-  L: Luoi; phan: 'lop' | 'nha' | 'et'; chuoi: BaiToan[]; editing?: PickItem; daChonList?: PickItem[]
+  L: Luoi; phan: 'lop' | 'nha' | 'et' | 'mt'; chuoi: BaiToan[]; editing?: PickItem; daChonList?: PickItem[]
   onClose: () => void; onConfirm: (ban: Ban, nodeIds: string[]) => void
 }) {
   const lai1 = chuoi.length === 1
@@ -1031,7 +1032,7 @@ function ChonChuoiPopup({ L, phan, chuoi, editing, daChonList, onClose, onConfir
 // Popup CÂY tick: chuỗi/cây node hội tụ vẽ NGANG (dữ kiện trái → bổ đề → đích phải). Tick node = ý được
 // HỎI; node bỏ tick = ẩn → nở thành BƯỚC trong đáp án (§ docs/spec-kho-hinh-soan-chuoi). Xem trước sống.
 function CayTickPopup({ L, phan, chuoi, luaOpts = [{ luaId: null, label: 'Đề chuẩn (gốc)' }], initChon, initLua = null, onBack, onClose, onConfirm }: {
-  L: Luoi; phan: 'lop' | 'nha' | 'et'; chuoi: BaiToan[]
+  L: Luoi; phan: 'lop' | 'nha' | 'et' | 'mt'; chuoi: BaiToan[]
   luaOpts?: { luaId: string | null; label: string }[]; initChon?: string[]; initLua?: string | null
   onBack?: () => void; onClose: () => void; onConfirm: (luaId: string | null, nodeIds: string[]) => void
 }) {
