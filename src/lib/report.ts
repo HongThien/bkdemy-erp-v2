@@ -100,32 +100,21 @@ export async function upsertBaoCaoPH(hocSinhId: string, mon: string, thang: stri
   if (error) throw error
 }
 
-// Hạng TRONG KHỐI theo ĐIỂM MT TỔNG của đúng tháng report (Thùy 08-19, thay bản Elo trước đó — Elo là
-// thi đấu tích luỹ cả mùa, không phải "của tháng này"). ky_thi.khoi có sẵn (mỗi lớp 1 ky_thi/đợt MT, cùng
-// khối gộp lại) — cửa sổ ngày = 25/tháng→10/tháng sau, ĐÚNG logic getTongQuanHS (MT hay tổ chức cuối/đầu
-// tháng), đọc qua buoi_hoc.ngay vì ky_thi.ngay thực tế luôn NULL cho MT (xem comment ở mastery.ts).
+// Hạng theo ĐIỂM MT TỔNG của đúng tháng report (Thùy 08-19, thay bản Elo trước đó — Elo là thi đấu tích
+// luỹ cả mùa, không phải "của tháng này"). Dùng chung cho cả 2 phạm vi KHỐI và LỚP (Thùy 08-19: thêm
+// hạng-trong-lớp bên cạnh hạng-trong-khối) — logic tính hạng giống hệt, chỉ khác ROSTER (ai là peer).
+// Cửa sổ ngày = 25/tháng→10/tháng sau, ĐÚNG logic getTongQuanHS (MT hay tổ chức cuối/đầu tháng), đọc qua
+// buoi_hoc.ngay vì ky_thi.ngay thực tế luôn NULL cho MT (xem comment ở mastery.ts).
 // ⚠ NGOẠI LỆ CÓ CHỦ ĐÍCH so §5 CLAUDE.md ("chưa-đo ≠ 0"): Thùy 08-19 chốt RIÊNG cho bảng xếp hạng này —
-// HS đang học môn+khối mà CHƯA có điểm MT trong cửa sổ → tính 0đ để rank đủ TOÀN BỘ roster (không loại
-// khỏi mẫu số như mastery bình thường). Chỉ áp cho xếp hạng — không áp cho ô "Điểm MT" hiển thị (vẫn "—").
-export type KhoiRankMT = { rankNow: number; rankTotal: number; khoi: string }
-export async function getKhoiRankDiemMT(hocSinhId: string, mon: string, ym: string): Promise<KhoiRankMT | null> {
-  const { data: hs } = await supabase.from('hoc_sinh').select('khoi').eq('id', hocSinhId).maybeSingle()
-  const khoi = (hs as any)?.khoi as string | null
-  if (!khoi) return null
-  // Roster = TOÀN BỘ HS đang học ĐÚNG môn+khối này (kể cả chưa có điểm MT) — mẫu số của bảng xếp hạng.
-  const { data: gd } = await supabase.from('hoc_sinh_lop')
-    .select('hoc_sinh_id, lop:lop_id!inner(mon, khoi)').eq('trang_thai', 'dang_hoc').eq('lop.mon', mon).eq('lop.khoi', khoi).limit(LIMIT)
-  const rosterIds = [...new Set(((gd ?? []) as any[]).map((r) => r.hoc_sinh_id as string))]
-  if (!rosterIds.includes(hocSinhId)) return null // HS không đang học đúng môn này ở khối → không có peer để xếp
-
+// HS đang học mà CHƯA có điểm MT trong cửa sổ → tính 0đ để rank đủ TOÀN BỘ roster (không loại khỏi mẫu
+// số như mastery bình thường). Chỉ áp cho xếp hạng — không áp cho ô "Điểm MT" hiển thị (vẫn "—").
+function mtWindow(ym: string): { from: string; to: string } {
   const [Y, M] = ym.split('-').map(Number)
   const nextY = M === 12 ? Y + 1 : Y, nextM = M === 12 ? 1 : M + 1
-  const mtFromDate = `${ym}-25`
-  const mtToDate = `${nextY}-${String(nextM).padStart(2, '0')}-11` // < ngày 11 = qua hết mùng 10
-  const { data: kts } = await supabase.from('ky_thi').select('id, buoi:buoi_hoc_id(ngay)')
-    .eq('loai', 'mt_sat_hach').eq('mon', mon).eq('khoi', khoi).limit(LIMIT)
-  const ktIds = ((kts ?? []) as any[]).filter((k) => { const d = k.buoi?.ngay; return d && d >= mtFromDate && d < mtToDate }).map((k) => k.id)
-
+  return { from: `${ym}-25`, to: `${nextY}-${String(nextM).padStart(2, '0')}-11` } // < ngày 11 = qua hết mùng 10
+}
+async function rankByDiemMT(hocSinhId: string, rosterIds: string[], ktIds: string[]): Promise<{ rankNow: number; rankTotal: number } | null> {
+  if (!rosterIds.includes(hocSinhId)) return null // HS không thuộc roster (đã rời lớp/môn…) → không có peer để xếp
   const sums = new Map<string, { sum: number; n: number }>()
   if (ktIds.length) {
     const { data: dt } = await supabase.from('diem_thi').select('hoc_sinh_id, diem').in('ky_thi_id', ktIds).limit(LIMIT)
@@ -137,6 +126,58 @@ export async function getKhoiRankDiemMT(hocSinhId: string, mon: string, ym: stri
   const scoreOf = (id: string) => { const s = sums.get(id); return s ? s.sum / s.n : 0 } // chưa có điểm → 0
   const myAvg = scoreOf(hocSinhId)
   const allAvg = rosterIds.map(scoreOf)
-  const rankNow = 1 + allAvg.filter((x) => x > myAvg).length
-  return { rankNow, rankTotal: allAvg.length, khoi }
+  return { rankNow: 1 + allAvg.filter((x) => x > myAvg).length, rankTotal: allAvg.length }
+}
+
+export type KhoiRankMT = { rankNow: number; rankTotal: number; khoi: string }
+export async function getKhoiRankDiemMT(hocSinhId: string, mon: string, ym: string): Promise<KhoiRankMT | null> {
+  const { data: hs } = await supabase.from('hoc_sinh').select('khoi').eq('id', hocSinhId).maybeSingle()
+  const khoi = (hs as any)?.khoi as string | null
+  if (!khoi) return null
+  // Roster = TOÀN BỘ HS đang học ĐÚNG môn+khối này (kể cả chưa có điểm MT) — mẫu số của bảng xếp hạng.
+  const { data: gd } = await supabase.from('hoc_sinh_lop')
+    .select('hoc_sinh_id, lop:lop_id!inner(mon, khoi)').eq('trang_thai', 'dang_hoc').eq('lop.mon', mon).eq('lop.khoi', khoi).limit(LIMIT)
+  const rosterIds = [...new Set(((gd ?? []) as any[]).map((r) => r.hoc_sinh_id as string))]
+  const { from, to } = mtWindow(ym)
+  const { data: kts } = await supabase.from('ky_thi').select('id, buoi:buoi_hoc_id(ngay)')
+    .eq('loai', 'mt_sat_hach').eq('mon', mon).eq('khoi', khoi).limit(LIMIT)
+  const ktIds = ((kts ?? []) as any[]).filter((k) => { const d = k.buoi?.ngay; return d && d >= from && d < to }).map((k) => k.id)
+  const r = await rankByDiemMT(hocSinhId, rosterIds, ktIds)
+  return r ? { ...r, khoi } : null
+}
+
+export type LopRankMT = { rankNow: number; rankTotal: number }
+export async function getLopRankDiemMT(hocSinhId: string, lopId: string, mon: string, ym: string): Promise<LopRankMT | null> {
+  // Roster = TOÀN BỘ HS đang học ĐÚNG lớp này (kể cả chưa có điểm MT) — mẫu số của bảng xếp hạng.
+  const { data: gd } = await supabase.from('hoc_sinh_lop').select('hoc_sinh_id').eq('lop_id', lopId).eq('trang_thai', 'dang_hoc').limit(LIMIT)
+  const rosterIds = [...new Set(((gd ?? []) as any[]).map((r) => r.hoc_sinh_id as string))]
+  const { from, to } = mtWindow(ym)
+  // ky_thi KHÔNG có lop_id trực tiếp — mỗi lớp 1 kỳ MT/đợt, tìm qua buoi_hoc_id!inner (bắt buộc để lọc
+  // được embed lồng, xem CLAUDE.md §2 "PostgREST không filter được quan hệ lồng" — !inner mở khoá filter).
+  const { data: kts } = await supabase.from('ky_thi').select('id, buoi:buoi_hoc_id!inner(ngay, lop_id)')
+    .eq('loai', 'mt_sat_hach').eq('mon', mon).eq('buoi.lop_id', lopId).limit(LIMIT)
+  const ktIds = ((kts ?? []) as any[]).filter((k) => { const d = k.buoi?.ngay; return d && d >= from && d < to }).map((k) => k.id)
+  return rankByDiemMT(hocSinhId, rosterIds, ktIds)
+}
+
+// Hạng TRONG HỆ (lop.bac — band S/A/B/C… GV chọn khi xếp lớp, vd "lớp 7A1" → hệ "A") — Thùy 08-19: 3 hạng
+// lớp/hệ/khối là 3 phạm vi LỒNG NHAU tăng dần (lớp ⊂ hệ ⊂ khối), NHƯNG hệ vẫn giới hạn trong ĐÚNG khối
+// (đề MT khác nhau theo khối — không thể so điểm hệ A khối 7 với hệ A khối 9, khác đề).
+export type HeRankMT = { rankNow: number; rankTotal: number; he: string }
+export async function getHeRankDiemMT(hocSinhId: string, mon: string, ym: string): Promise<HeRankMT | null> {
+  const { data: lopHS } = await supabase.from('hoc_sinh_lop')
+    .select('lop:lop_id!inner(khoi, bac, mon)').eq('hoc_sinh_id', hocSinhId).eq('trang_thai', 'dang_hoc').eq('lop.mon', mon).maybeSingle()
+  const khoi = (lopHS as any)?.lop?.khoi as string | null
+  const he = (lopHS as any)?.lop?.bac as string | null
+  if (!khoi || !he) return null
+  // Roster = TOÀN BỘ HS đang học ĐÚNG môn+khối+hệ này (kể cả chưa có điểm MT).
+  const { data: gd } = await supabase.from('hoc_sinh_lop')
+    .select('hoc_sinh_id, lop:lop_id!inner(mon, khoi, bac)').eq('trang_thai', 'dang_hoc').eq('lop.mon', mon).eq('lop.khoi', khoi).eq('lop.bac', he).limit(LIMIT)
+  const rosterIds = [...new Set(((gd ?? []) as any[]).map((r) => r.hoc_sinh_id as string))]
+  const { from, to } = mtWindow(ym)
+  const { data: kts } = await supabase.from('ky_thi').select('id, buoi:buoi_hoc_id(ngay)')
+    .eq('loai', 'mt_sat_hach').eq('mon', mon).eq('khoi', khoi).limit(LIMIT)
+  const ktIds = ((kts ?? []) as any[]).filter((k) => { const d = k.buoi?.ngay; return d && d >= from && d < to }).map((k) => k.id)
+  const r = await rankByDiemMT(hocSinhId, rosterIds, ktIds)
+  return r ? { ...r, he } : null
 }
