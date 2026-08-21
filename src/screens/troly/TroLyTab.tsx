@@ -337,7 +337,7 @@ export default function TroLyTab() {
   // đọc thẳng field trùng với dòng "tóm tắt" trong Khu tương ứng để 2 nơi không bao giờ lệch nhau).
   const badge: Record<TabKey, number> = {
     nhandinh: nhanDinh?.length ?? 0,
-    vanhanh: vh?.noTuan.length ?? 0,
+    vanhanh: vh?.chuaDong.length ?? 0, // số lớp tồn đọng (④) — bao quát hơn "nợ tuần này" (③)
     bu: bu?.canXep.tong ?? 0,
     duoi: duoi ? duoi.ca.filter((c) => c.muc !== 'binh_thuong').length : 0,
     yeu: yeu?.soCanhBao ?? 0,
@@ -582,6 +582,7 @@ function DongCau({ nhan, lops, mau }: { nhan: string; lops: string[]; mau: strin
 
 function KhoiVanHanh({ d }: { d: BaoCaoVanHanh | null }) {
   const [moTuan, setMoTuan] = useState(false)
+  const [moTonDong, setMoTonDong] = useState(false)
   if (!d) return null
   const q = d.buoiHomQua
   const du = q.filter((b) => b.du).map((b) => b.lop)
@@ -665,6 +666,35 @@ function KhoiVanHanh({ d }: { d: BaoCaoVanHanh | null }) {
           <DongCau nhan="Nợ BTVN:" lops={d.noTuan.filter((o) => o.noBTVN).map((o) => o.lop)} mau="text-rose-700" />
           <DongCau nhan="Nợ đánh giá:" lops={d.noTuan.filter((o) => o.noDanhGia).map((o) => o.lop)} mau="text-amber-700" />
         </div>
+      )}
+
+      {/* ④ TỒN ĐỌNG — buổi chưa đóng, quét rộng hơn hẳn ③ (CEO 19/08) */}
+      <div className="mt-3 flex flex-wrap items-baseline gap-x-2">
+        <span className="text-[13px] font-semibold text-slate-700">
+          Tồn đọng chưa đóng ({d.cuaSoChuaDong} ngày gần nhất) — {d.chuaDong.reduce((s, o) => s + o.soBuoi, 0)} buổi / {d.chuaDong.length} lớp
+        </span>
+        {d.chuaDong.length > 0 && (
+          <button onClick={() => setMoTonDong((x) => !x)} className="text-[12px] font-medium text-indigo-600 hover:underline">
+            {moTonDong ? 'thu gọn' : 'xem chi tiết'}
+          </button>
+        )}
+      </div>
+      <p className="text-[11.5px] leading-relaxed text-slate-400">
+        Buổi thiếu ET (lớp bắt buộc) hoặc chưa điền đánh giá — không tính BTVN (xem mục ②/③, nhịp khác).
+      </p>
+      {d.chuaDong.length === 0 ? <div className="mt-0.5 text-[13px] text-slate-400">Không có buổi nào tồn đọng trong {d.cuaSoChuaDong} ngày qua.</div> : moTonDong ? (
+        <div className="mt-1 space-y-0.5">
+          {d.chuaDong.map((o) => (
+            <div key={o.lop} className="flex flex-wrap items-baseline gap-x-2.5 text-[13px]">
+              <span className="w-[56px] shrink-0 font-semibold text-slate-800">{o.lop}</span>
+              <span className="text-[12px] text-slate-500">{o.mon}</span>
+              <span className="text-rose-700">{o.soBuoi} buổi chưa đóng</span>
+              <span className="text-[12px] text-slate-400">· cũ nhất {o.tuoiNgayCuNhat} ngày ({o.cuNhat.slice(8)}/{o.cuNhat.slice(5, 7)})</span>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <DongCau nhan="Lớp còn tồn đọng:" lops={d.chuaDong.map((o) => o.lop)} mau="text-rose-700" />
       )}
 
       <div className="mt-2.5 border-t border-slate-100 pt-2 text-[11.5px] leading-relaxed text-slate-500">{d.phamVi}</div>
