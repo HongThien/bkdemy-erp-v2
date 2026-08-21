@@ -3,7 +3,7 @@
 // Dữ liệu login nằm ở project bkdemy-ph (auth.users) → gọi endpoint ph-app, xác thực bằng
 // chính JWT staff ERP (ph-app verify qua Supabase ERP). ERP chỉ đọc, không giữ secret.
 import { useEffect, useMemo, useState } from 'react'
-import { fetchPhLogins, resetPhPassword, type PhLoginRow as Row, type PhLoginSummary as Summary } from '../../lib/ph-login'
+import { fetchPhLogins, resetPhPassword, openPreviewApp, type PhLoginRow as Row, type PhLoginSummary as Summary } from '../../lib/ph-login'
 import { supabase } from '../../lib/supabase'
 
 type TrangThai = 'chua' | 'chua_doi' | 'da_dung'
@@ -99,6 +99,15 @@ export default function PhDangNhapScreen() {
     }
   }
 
+  async function openPreview(r: Row) {
+    try {
+      await openPreviewApp(r.phu_huynh_id)
+    } catch (e) {
+      setToast('⚠️ ' + (e as Error).message)
+      setTimeout(() => setToast(null), 4000)
+    }
+  }
+
   const shown = useMemo(() => {
     const kw = q.trim().toLowerCase()
     return rows.filter((r) => {
@@ -179,13 +188,19 @@ export default function PhDangNhapScreen() {
                     <td className="px-4 py-3 text-slate-600">{r.so_dien_thoai}</td>
                     <td className="px-4 py-3"><span className={`inline-block rounded-full px-2.5 py-1 text-xs font-semibold ring-1 ${TT_UI[tt].cls}`}>{TT_UI[tt].ten}</span></td>
                     <td className="px-4 py-3 text-slate-500">{fmtNgay(r.last_sign_in_at)}</td>
-                    <td className="px-4 py-3 text-right">
-                      {r.has_account ? (
-                        <button disabled={resetting === r.phu_huynh_id} onClick={() => void doReset(r)}
-                          className="rounded-lg border border-slate-300 px-2.5 py-1.5 text-xs font-medium text-slate-600 hover:border-rose-400 hover:text-rose-600 disabled:opacity-40">
-                          {resetting === r.phu_huynh_id ? 'Đang reset…' : 'Reset về 123456'}
+                    <td className="px-4 py-3">
+                      <div className="flex items-center justify-end gap-2">
+                        <button onClick={() => void openPreview(r)}
+                          className="rounded-lg border border-indigo-300 px-2.5 py-1.5 text-xs font-medium text-indigo-600 hover:bg-indigo-50">
+                          👁 Xem app
                         </button>
-                      ) : <span className="text-xs text-slate-300">chưa có tài khoản</span>}
+                        {r.has_account ? (
+                          <button disabled={resetting === r.phu_huynh_id} onClick={() => void doReset(r)}
+                            className="rounded-lg border border-slate-300 px-2.5 py-1.5 text-xs font-medium text-slate-600 hover:border-rose-400 hover:text-rose-600 disabled:opacity-40">
+                            {resetting === r.phu_huynh_id ? 'Đang reset…' : 'Reset về 123456'}
+                          </button>
+                        ) : <span className="text-xs text-slate-300">chưa có tài khoản</span>}
+                      </div>
                     </td>
                   </tr>
                 )

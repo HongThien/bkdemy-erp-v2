@@ -40,3 +40,15 @@ export async function resetPhPassword(phu_huynh_id: string): Promise<{ ok: boole
   if (!res.ok) throw new Error(j.error || `Lỗi (${res.status}).`)
   return j
 }
+
+// "Xem app như phụ huynh": xin token có hạn (chỉ staff) → mở link app PH ở tab mới (read-only).
+export async function openPreviewApp(phu_huynh_id: string): Promise<void> {
+  const res = await fetch(`${PH_BASE}/api/admin/preview-token`, {
+    method: 'POST',
+    headers: { ...(await authHeaders()), 'content-type': 'application/json' },
+    body: JSON.stringify({ phu_huynh_id }),
+  })
+  const j = await res.json().catch(() => ({}))
+  if (!res.ok || !j.path) throw new Error(j.error || `Lỗi (${res.status}).`)
+  window.open(`${PH_BASE}${j.path}`, '_blank', 'noopener')
+}
