@@ -114,50 +114,35 @@ function mtWindow(ym: string): { from: string; to: string } {
   const nextY = M === 12 ? Y + 1 : Y, nextM = M === 12 ? 1 : M + 1
   return { from: `${ym}-25`, to: `${nextY}-${String(nextM).padStart(2, '0')}-11` } // < ngày 11 = qua hết mùng 10
 }
-// ⚠ BÀI HỌC (Thùy 08-21, dính thật với Trần Thị Vân Khánh): điểm MT của 1 HS chỉ được tính nếu kỳ MT đó
-// thuộc ĐÚNG LỚP HIỆN TẠI của em — KHÔNG được gộp theo "có mặt trong tập ktIds" chung chung. Bản trước
-// gộp sums theo hoc_sinh_id trên MỘT rổ ktIds rộng (nhiều lớp) — HS vừa đổi lớp/hệ mà còn dòng diem_thi
-// ở lớp CŨ (thuộc lớp khác trong cùng rổ ktIds) bị tính NHẦM điểm lớp cũ vào hạng lớp/hệ/khối MỚI. Sửa
-// tận gốc: mỗi roster item mang theo lopId CỦA CHÍNH EM; mỗi kỳ MT mang theo lopId đã tổ chức nó; chỉ
-// cộng điểm khi 2 lopId khớp nhau — bất kể phạm vi (lớp/hệ/khối) rộng đến đâu, luôn đúng NGƯỜI-ĐÚNG-LỚP.
-// Đảm bảo bất biến: hạng lớp ⊆ hạng hệ ⊆ hạng khối (roster tăng dần) → số hạng chỉ có thể BẰNG hoặc TỆ
-// hơn khi phạm vi mở rộng, không bao giờ tốt hơn (nếu thấy ngược lại = còn bug, soi lại chỗ này trước).
-type RosterItem = { id: string; lopId: string }
-async function rankByDiemMT(hocSinhId: string, roster: RosterItem[], examLop: Map<string, string>): Promise<{ rankNow: number; rankTotal: number } | null> {
-  if (!roster.some((r) => r.id === hocSinhId)) return null // HS không thuộc roster (đã rời lớp/môn…) → không có peer để xếp
-  const lopOfHS = new Map(roster.map((r) => [r.id, r.lopId]))
+// ⚠ CHỐT (Thùy 08-21, sau 2 lần sửa hụt với Trần Thị Vân Khánh & Phan Bảo Nhi): điểm MT là CỦA EM, ĐI
+// THEO EM — thi ở lớp nào không quan trọng, đề chung nên điểm nào cũng dùng được. Cái ĐỔI theo phạm vi
+// (lớp/hệ/khối) chỉ là ROSTER — ai được đem ra so sánh — KHÔNG PHẢI cách tính điểm của từng em. Vậy: điểm
+// của 1 HS = TRUNG BÌNH mọi diem_thi (mt_sat_hach, đúng môn, đúng cửa sổ tháng) của CHÍNH em, bất kể kỳ
+// thi đó tổ chức ở lớp/hệ nào. (2 bản sửa trước đều SAI vì cố khớp lớp/hệ của kỳ thi với lớp/hệ hiện tại
+// của em — đúng hướng "chống lẫn điểm" nhưng SAI chỗ áp dụng: đúng ra không cần khớp gì cả.)
+async function rankByDiemMT(hocSinhId: string, rosterIds: string[], mon: string, ym: string): Promise<{ rankNow: number; rankTotal: number } | null> {
+  if (!rosterIds.includes(hocSinhId)) return null // HS không thuộc roster (đã rời lớp/môn…) → không có peer để xếp
+  const { from, to } = mtWindow(ym)
+  // ky_thi.ngay thực tế luôn NULL cho MT (xem comment ở mastery.ts) → lấy ngày qua buoi_hoc.ngay.
+  const { data: dt } = await supabase.from('diem_thi')
+    .select('hoc_sinh_id, diem, ky_thi:ky_thi_id!inner(loai, mon, buoi:buoi_hoc_id(ngay))')
+    .in('hoc_sinh_id', rosterIds).eq('ky_thi.loai', 'mt_sat_hach').eq('ky_thi.mon', mon).limit(LIMIT)
   const sums = new Map<string, { sum: number; n: number }>()
-  const ktIds = [...examLop.keys()]
-  if (ktIds.length) {
-    const { data: dt } = await supabase.from('diem_thi').select('hoc_sinh_id, diem, ky_thi_id').in('ky_thi_id', ktIds).limit(LIMIT)
-    for (const r of (dt ?? []) as any[]) {
-      if (r.diem == null) continue
-      if (examLop.get(r.ky_thi_id) !== lopOfHS.get(r.hoc_sinh_id)) continue // kỳ MT của LỚP KHÁC lớp hiện tại của em → bỏ
-      const a = sums.get(r.hoc_sinh_id) ?? { sum: 0, n: 0 }; a.sum += Number(r.diem); a.n++; sums.set(r.hoc_sinh_id, a)
-    }
+  for (const r of (dt ?? []) as any[]) {
+    if (r.diem == null) continue
+    const d = r.ky_thi?.buoi?.ngay
+    if (!d || d < from || d >= to) continue
+    const a = sums.get(r.hoc_sinh_id) ?? { sum: 0, n: 0 }; a.sum += Number(r.diem); a.n++; sums.set(r.hoc_sinh_id, a)
   }
   const scoreOf = (id: string) => { const s = sums.get(id); return s ? s.sum / s.n : 0 } // chưa có điểm → 0
   const myAvg = scoreOf(hocSinhId)
-  const allAvg = roster.map((r) => scoreOf(r.id))
+  const allAvg = rosterIds.map(scoreOf)
   return { rankNow: 1 + allAvg.filter((x) => x > myAvg).length, rankTotal: allAvg.length }
 }
-// Roster (đang học đúng scope) + examLop (kỳ MT trong cửa sổ, gắn lopId tổ chức) cho 1 tập lop_id.
-async function loadRosterVaExamLop(lopIds: string[], mon: string, ym: string): Promise<{ roster: RosterItem[]; examLop: Map<string, string> }> {
-  if (!lopIds.length) return { roster: [], examLop: new Map() }
-  const lopIdSet = new Set(lopIds)
-  const { data: gd } = await supabase.from('hoc_sinh_lop').select('hoc_sinh_id, lop_id').eq('trang_thai', 'dang_hoc').in('lop_id', lopIds).limit(LIMIT)
-  const roster = [...new Map(((gd ?? []) as any[]).map((r) => [r.hoc_sinh_id as string, { id: r.hoc_sinh_id as string, lopId: r.lop_id as string }])).values()]
-  const { from, to } = mtWindow(ym)
-  // Lọc buoi.lop_id Ở CLIENT (không .in() trên quan hệ lồng — CLAUDE.md §2 "PostgREST không filter được
-  // quan hệ lồng"): fetch theo mon (đã hẹp), rồi lọc lopIdSet + cửa sổ ngày trong JS.
-  const { data: kts } = await supabase.from('ky_thi').select('id, buoi:buoi_hoc_id(ngay, lop_id)')
-    .eq('loai', 'mt_sat_hach').eq('mon', mon).limit(LIMIT)
-  const examLop = new Map<string, string>()
-  for (const k of (kts ?? []) as any[]) {
-    const d = k.buoi?.ngay, lid = k.buoi?.lop_id
-    if (d && d >= from && d < to && lid && lopIdSet.has(lid)) examLop.set(k.id, lid)
-  }
-  return { roster, examLop }
+async function loadRosterIds(lopIds: string[]): Promise<string[]> {
+  if (!lopIds.length) return []
+  const { data: gd } = await supabase.from('hoc_sinh_lop').select('hoc_sinh_id').eq('trang_thai', 'dang_hoc').in('lop_id', lopIds).limit(LIMIT)
+  return [...new Set(((gd ?? []) as any[]).map((r) => r.hoc_sinh_id as string))]
 }
 
 export type KhoiRankMT = { rankNow: number; rankTotal: number; khoi: string }
@@ -166,21 +151,19 @@ export async function getKhoiRankDiemMT(hocSinhId: string, mon: string, ym: stri
   const khoi = (hs as any)?.khoi as string | null
   if (!khoi) return null
   const { data: lops } = await supabase.from('lop').select('id').eq('mon', mon).eq('khoi', khoi).limit(LIMIT)
-  const lopIds = ((lops ?? []) as any[]).map((l) => l.id as string)
-  const { roster, examLop } = await loadRosterVaExamLop(lopIds, mon, ym)
-  const r = await rankByDiemMT(hocSinhId, roster, examLop)
+  const rosterIds = await loadRosterIds(((lops ?? []) as any[]).map((l) => l.id as string))
+  const r = await rankByDiemMT(hocSinhId, rosterIds, mon, ym)
   return r ? { ...r, khoi } : null
 }
 
 export type LopRankMT = { rankNow: number; rankTotal: number }
 export async function getLopRankDiemMT(hocSinhId: string, lopId: string, mon: string, ym: string): Promise<LopRankMT | null> {
-  const { roster, examLop } = await loadRosterVaExamLop([lopId], mon, ym)
-  return rankByDiemMT(hocSinhId, roster, examLop)
+  const rosterIds = await loadRosterIds([lopId])
+  return rankByDiemMT(hocSinhId, rosterIds, mon, ym)
 }
 
-// Hạng TRONG HỆ (lop.bac — band S/A/B/C… GV chọn khi xếp lớp, vd "lớp 7A1" → hệ "A") — Thùy 08-19: 3 hạng
-// lớp/hệ/khối là 3 phạm vi LỒNG NHAU tăng dần (lớp ⊂ hệ ⊂ khối), NHƯNG hệ vẫn giới hạn trong ĐÚNG khối
-// (đề MT khác nhau theo khối — không thể so điểm hệ A khối 7 với hệ A khối 9, khác đề).
+// Hạng TRONG HỆ (lop.bac — band S/A/B/C… GV chọn khi xếp lớp, vd "lớp 7A1" → hệ "A") — 3 hạng lớp/hệ/khối
+// là 3 phạm vi LỒNG NHAU tăng dần (lớp ⊂ hệ ⊂ khối) — chỉ khác ROSTER, cách tính điểm từng em GIỐNG HỆT.
 export type HeRankMT = { rankNow: number; rankTotal: number; he: string; khoi: string }
 export async function getHeRankDiemMT(hocSinhId: string, mon: string, ym: string): Promise<HeRankMT | null> {
   const { data: lopHS } = await supabase.from('hoc_sinh_lop')
@@ -189,8 +172,7 @@ export async function getHeRankDiemMT(hocSinhId: string, mon: string, ym: string
   const he = (lopHS as any)?.lop?.bac as string | null
   if (!khoi || !he) return null
   const { data: lops } = await supabase.from('lop').select('id').eq('mon', mon).eq('khoi', khoi).eq('bac', he).limit(LIMIT)
-  const lopIds = ((lops ?? []) as any[]).map((l) => l.id as string)
-  const { roster, examLop } = await loadRosterVaExamLop(lopIds, mon, ym)
-  const r = await rankByDiemMT(hocSinhId, roster, examLop)
+  const rosterIds = await loadRosterIds(((lops ?? []) as any[]).map((l) => l.id as string))
+  const r = await rankByDiemMT(hocSinhId, rosterIds, mon, ym)
   return r ? { ...r, he, khoi } : null
 }
