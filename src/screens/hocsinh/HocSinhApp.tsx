@@ -90,64 +90,67 @@ const BOX_CAP1: BoxCap1[] = [
   { id: 'su_kien', ten: 'Sự kiện học tập', mo_ta: 'Các cuộc thi, thử thách và hoạt động học tập theo từng thời điểm.', icon: '🎉', grad: 'from-[#fff1de] to-[#fffaf1]', sapCo: true },
   { id: 'huy_hieu', ten: 'Huy hiệu', mo_ta: 'Xem các huy hiệu, thành tích và mốc học tập đã đạt được.', icon: '🏆', grad: 'from-[#ffedf5] to-[#fff8fb]', sapCo: true },
 ]
-// Thùy 21/08: "quá to... cho bé lại" rồi "t có bảo giảm chữ đâu, vẫn phải cuộn" — LỖI THẬT không
-// phải cỡ chữ: lưới 6 ô vẫn có breakpoint rớt xuống 1-2 cột (`md:`/`lg:`) cho phòng mobile — mà màn
-// này CHỈ dành máy tính/iPad (Thùy đã chốt từ đầu "đừng làm UI cho điện thoại"), rớt cột thì DÙ chữ
-// bé cỡ nào 6 ô xếp 3-4 hàng vẫn tràn dọc. Fix ĐÚNG gốc: khoá CỐ ĐỊNH 3 cột (bỏ hẳn nhánh mobile),
-// 6 ô LUÔN đúng 2 hàng → chiều cao luôn có giới hạn thật, `h-screen`+`flex-1` mới phát huy tác dụng.
-// (Thùy báo tiếp: deploy thật VẪN cuộn dù đã khoá 3 cột — dò ra `h-dvh` không được hỗ trợ đúng
-// trong 1 số trình duyệt/engine, khung ngoài tự phình theo NỘI DUNG thay vì khoá theo viewport.
-// Đổi sang `h-screen` [100vh] — hỗ trợ rộng hơn hẳn `dvh` [unit mới, ~2023+], an toàn hơn cho máy
-// tính trường học có thể chạy trình duyệt cũ.)
-// Cỡ chữ trả về mức đọc thoải mái (không phải bản đã ép nhỏ tiếp — Thùy không yêu cầu chữ bé đi).
+// Thùy 22/08 gửi thẳng file mockup tỉ lệ đúng ý (`BK_Academy_Student_Desktop.html`) sau khi bản
+// trước "hộp quá to chữ quá nhỏ". Port lại ĐÚNG số đo từ file đó (hero 2 cột kèm art bên phải, hộp
+// min-h 208px/icon 58px/tiêu đề 21px/mô tả 13px/pad 24px/gap 18px) thay vì tự đoán tiếp lần 3.
+// Bỏ khoá `h-screen overflow-hidden` — mockup gốc của Thùy vốn là trang cuộn tự nhiên theo nội dung
+// (không ép vừa 1 màn hình), thân trang cao hơn viewport 13-14" thì cuộn nhẹ là đúng theo THIẾT KẾ
+// gốc, không phải bug — khác hẳn bug 21/08 (cuộn do zoom 1.15 lỗi, xem main-hs.tsx).
 function HomeCap1({ hoTen, maHS, onOpen }: { hoTen: string; maHS: string; onOpen: (d: 'tu_luyen' | 'thong_tin' | 'xep_hang') => void }) {
   const initials = hoTen.trim().split(/\s+/).slice(-2).map((w) => w[0]).join('').toUpperCase()
   return (
-    <div className="flex h-screen flex-col overflow-hidden" style={{ background: 'radial-gradient(circle at 85% 5%, rgba(115,87,245,.10), transparent 24rem), radial-gradient(circle at 8% 25%, rgba(47,128,237,.08), transparent 22rem), #f4f7fb' }}>
-      <div className="mx-auto flex w-full max-w-[1440px] min-h-0 flex-1 flex-col px-4 py-3">
+    <div className="min-h-screen" style={{ background: 'radial-gradient(circle at 85% 5%, rgba(115,87,245,.10), transparent 24rem), radial-gradient(circle at 8% 25%, rgba(47,128,237,.08), transparent 22rem), #f4f7fb' }}>
+      <div className="mx-auto w-full max-w-[1560px] px-8 py-6">
         {/* Topbar */}
-        <div className="mb-3 flex shrink-0 items-center justify-between gap-2">
-          <div className="flex items-center gap-2.5">
-            <img src="/Logo.png" alt="BK Academy" className="h-7 w-auto" />
-            <span className="rounded-full border border-[#e8edf5] bg-white/90 px-3 py-1 text-[12px] font-bold text-[#576073] shadow-[0_6px_16px_rgba(31,47,79,0.06)]">📚 App học tập cho học sinh</span>
+        <div className="mb-[18px] flex items-center justify-between gap-4">
+          <div className="flex items-center gap-3.5">
+            <img src="/Logo.png" alt="BK Academy" className="h-9 w-auto" />
+            <span className="rounded-full border border-[#e8edf5] bg-white/90 px-3.5 py-2 text-[13px] font-bold text-[#576073] shadow-[0_6px_16px_rgba(31,47,79,0.06)]">📚 App học tập cho học sinh</span>
           </div>
-          <div className="flex min-w-0 items-center gap-2 rounded-[14px] bg-white py-1.5 pl-1.5 pr-3 shadow-[0_6px_16px_rgba(31,47,79,0.06)]">
-            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[11px] bg-gradient-to-br from-[#2486df] to-[#745bf0] text-[12px] font-black text-white">{initials}</div>
+          <div className="flex min-w-[250px] items-center gap-3 rounded-[18px] bg-white py-2 pl-2 pr-3 shadow-[0_6px_16px_rgba(31,47,79,0.06)]">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[14px] bg-gradient-to-br from-[#2486df] to-[#745bf0] text-[13px] font-black text-white">{initials}</div>
             <div className="min-w-0 leading-tight">
-              <p className="truncate text-[13px] font-bold text-[#171a2b]">{hoTen}</p>
+              <p className="truncate text-[14px] font-bold text-[#171a2b]">{hoTen}</p>
               <p className="truncate text-[11px] text-[#7b8499]">{maHS.toUpperCase()}</p>
             </div>
           </div>
         </div>
 
-        {/* Hero */}
-        <section className="relative shrink-0 overflow-hidden rounded-[20px] px-5 py-3.5 shadow-[0_8px_20px_rgba(31,47,79,0.08)]" style={{ background: 'linear-gradient(120deg, rgba(255,255,255,.35), rgba(255,255,255,.06)), linear-gradient(120deg, #ece9ff 0%, #e4f1ff 50%, #dff8ff 100%)' }}>
-          <div className="relative z-[1] flex items-center justify-between gap-3">
-            <div>
-              <p className="m-0 text-[12px] font-extrabold text-[#6c7386]">Xin chào,</p>
-              <h1 className="m-0 text-[24px] font-black tracking-tight text-[#171a2b]">{hoTen}! 👋</h1>
-              <p className="mt-0.5 text-[13px] leading-snug text-[#5e667b]">Hôm nay tiếp tục chinh phục những dạng bài còn yếu nhé!</p>
-            </div>
-            <div className="text-[42px] leading-none">🚀</div>
+        {/* Hero — 2 cột (chữ trái, art phải) đúng theo mockup, không còn CTA "Tiếp tục học/Xem lịch"
+            vì backend chưa có tính năng đó — giữ tỉ lệ khối, bỏ nút giả không có chức năng thật. */}
+        <section className="relative grid min-h-[190px] grid-cols-[minmax(0,1fr)_310px] items-center gap-3 overflow-hidden rounded-[30px] px-9 py-7 shadow-[0_16px_40px_rgba(31,47,79,0.08)]" style={{ background: 'linear-gradient(120deg, rgba(255,255,255,.35), rgba(255,255,255,.06)), linear-gradient(120deg, #ece9ff 0%, #e4f1ff 50%, #dff8ff 100%)' }}>
+          <div className="pointer-events-none absolute -right-[140px] -top-[210px] h-[420px] w-[420px] rounded-full bg-white/50" />
+          <div className="relative z-[1]">
+            <p className="m-0 text-[14px] font-extrabold text-[#6c7386]">Xin chào,</p>
+            <h1 className="m-0 text-[40px] font-black leading-tight tracking-[-1.4px] text-[#171a2b]">{hoTen}! 👋</h1>
+            <p className="mt-2.5 max-w-[560px] text-[15px] leading-[1.6] text-[#5e667b]">Chọn một nội dung bên dưới để bắt đầu học. Hôm nay tiếp tục chinh phục những dạng bài còn yếu nhé!</p>
+          </div>
+          <div className="relative z-[1] flex min-h-[140px] items-center justify-center">
+            <div className="text-[100px] leading-none [filter:drop-shadow(0_18px_18px_rgba(51,70,110,.16))] [transform:rotate(6deg)]">🚀</div>
           </div>
         </section>
 
-        {/* Lưới 6 ô — CỐ ĐỊNH 3 cột (không rớt xuống mobile), luôn đúng 2 hàng, chiếm hết phần còn lại */}
-        <section className="mt-3 flex min-h-0 flex-1 flex-col">
-          <h2 className="m-0 shrink-0 text-[15px] font-extrabold tracking-tight text-[#171a2b]">Học tập tại BK Academy</h2>
-          <div className="mt-2 grid min-h-0 flex-1 grid-cols-3 gap-3">
+        {/* Lưới 6 ô — số đo port thẳng từ mockup: min-h 208px, icon 58px/30px, tiêu đề 21px, mô tả 13px */}
+        <section className="mt-5">
+          <div className="mb-3.5 flex items-end justify-between gap-3">
+            <div>
+              <h2 className="m-0 text-[22px] font-extrabold tracking-[-0.4px] text-[#171a2b]">Khu vực học tập</h2>
+              <p className="m-0 mt-1 text-[13px] text-[#7b8499]">6 chức năng chính của học sinh.</p>
+            </div>
+          </div>
+          <div className="grid grid-cols-3 gap-[18px]">
             {BOX_CAP1.map((b) => {
               const sapCo = 'sapCo' in b && b.sapCo
               return (
                 <button key={b.id} disabled={sapCo} onClick={() => !sapCo && onOpen(b.id as 'tu_luyen' | 'thong_tin' | 'xep_hang')}
-                  className={`group relative flex flex-col items-start rounded-[20px] border border-white/70 bg-gradient-to-br p-4 text-left shadow-[0_8px_20px_rgba(31,47,79,0.08)] transition ${b.grad} ${sapCo ? 'opacity-60' : 'hover:-translate-y-0.5 hover:shadow-[0_10px_22px_rgba(31,47,79,0.12)]'}`}>
-                  <div className="mb-2.5 flex h-10 w-10 items-center justify-center rounded-[13px] bg-white/70 text-[20px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.5)]">{b.icon}</div>
-                  <h3 className="m-0 mb-1 text-[16px] font-extrabold text-[#171a2b]">{b.ten}</h3>
-                  <p className="m-0 max-w-[90%] text-[12.5px] leading-snug text-[#616b7f]">{b.mo_ta}</p>
+                  className={`group relative flex min-h-[208px] flex-col items-start rounded-[26px] border border-white/76 bg-gradient-to-br p-6 text-left shadow-[0_16px_40px_rgba(31,47,79,0.08)] transition ${b.grad} ${sapCo ? 'opacity-60' : 'hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(31,47,79,0.12)]'}`}>
+                  <div className="mb-[18px] flex h-[58px] w-[58px] items-center justify-center rounded-[18px] bg-white/72 text-[30px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.5)]">{b.icon}</div>
+                  <h3 className="m-0 mb-2 text-[21px] font-extrabold text-[#171a2b]">{b.ten}</h3>
+                  <p className="m-0 max-w-[88%] text-[13px] leading-[1.55] text-[#626c80]">{b.mo_ta}</p>
                   {sapCo ? (
-                    <span className="absolute bottom-3 right-3 rounded-full bg-white/80 px-2.5 py-0.5 text-[10.5px] font-bold text-[#7b8499]">Sắp có</span>
+                    <span className="absolute bottom-[17px] right-[17px] rounded-full bg-white/80 px-2.5 py-1 text-[11px] font-bold text-[#7b8499]">Sắp có</span>
                   ) : (
-                    <span className="absolute bottom-3 right-3 flex h-7 w-7 items-center justify-center rounded-[10px] bg-white/78 text-[13px] font-black text-[#171a2b] group-hover:translate-x-0.5 transition">→</span>
+                    <span className="absolute bottom-[17px] right-[17px] flex h-[38px] w-[38px] items-center justify-center rounded-[13px] bg-white/78 text-[14px] font-black text-[#171a2b] transition group-hover:translate-x-0.5">→</span>
                   )}
                 </button>
               )
@@ -156,9 +159,9 @@ function HomeCap1({ hoTen, maHS, onOpen }: { hoTen: string; maHS: string; onOpen
         </section>
 
         {/* Footer */}
-        <footer className="mt-3 flex shrink-0 items-center justify-between gap-2 rounded-[16px] px-5 py-2.5 text-white shadow-[0_8px_18px_rgba(101,73,234,0.24)]" style={{ background: 'linear-gradient(135deg, #6549ea, #8368f7)' }}>
-          <strong className="text-[14px] tracking-wide">BK ACADEMY</strong>
-          <span className="text-[12px] opacity-90">Học tập là hành trình, kiên trì là chìa khóa! ✨</span>
+        <footer className="mt-6 flex min-h-[76px] items-center justify-between gap-3.5 rounded-[24px] px-6 py-5 text-white shadow-[0_16px_36px_rgba(101,73,234,0.24)]" style={{ background: 'linear-gradient(135deg, #6549ea, #8368f7)' }}>
+          <strong className="text-[18px] tracking-wide">BK ACADEMY</strong>
+          <span className="text-[13px] opacity-90">Học tập là hành trình, kiên trì là chìa khóa! ✨</span>
         </footer>
       </div>
     </div>
@@ -179,8 +182,8 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
 
   if (doiMK) return <DoiMatKhau maHS={maHS} batBuoc={false} onXong={() => setDoiMK(false)} />
 
-  if (direct === 'tu_luyen') return <LamTuLuyen hocSinhId={hocSinhId} onXong={() => setDirect(null)} />
-  if (direct === 'thong_tin') return <ThongTinHocTap onXong={() => setDirect(null)} />
+  if (direct === 'tu_luyen') return <LamTuLuyen hocSinhId={hocSinhId} onXong={() => setDirect(null)} desktop={!!cap1} />
+  if (direct === 'thong_tin') return <ThongTinHocTap onXong={() => setDirect(null)} desktop={!!cap1} />
   if (direct === 'xep_hang') return <BangXepHang onXong={() => setDirect(null)} />
 
   if (active) {
@@ -330,9 +333,14 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
 // doneCaption/doneExtra: TUỲ CHỌN, mặc định giữ NGUYÊN hành vi BTVN/giáo trình cũ — chỉ Tự luyện
 // (LamTuLuyen) truyền vào để đổi câu chữ (không có "hạn nộp"/"thầy cô" như BTVN) + chèn nút "Làm
 // thêm 10 câu" vào đúng màn kết quả có sẵn, thay vì tự vẽ lại toàn bộ màn done.
-function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra }: {
+// desktop: TUỲ CHỌN, mặc định false = giữ NGUYÊN khung điện thoại cũ (cấp 3 vẫn dùng — BTVN/ET/giáo
+// trình trên `active`). Cấp 1 (Thùy 22/08: "phần làm bài bên trong cũng phải đổi, ko để giao diện
+// điện thoại nữa") truyền desktop=true qua LamTuLuyen. CHỈ đổi KHUNG NGOÀI (bề rộng/nền/bo góc/cỡ nút)
+// — toàn bộ logic chọn/chấm/hiển thị câu (TN/ĐS/TLN) dùng CHUNG 1 JSX (`trongTam`), không tách 2 bản
+// để tránh lệch hành vi giữa desktop/mobile theo thời gian.
+function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop }: {
   baiTestId: string; hocSinhId: string; onXong: () => void
-  doneCaption?: string; doneExtra?: React.ReactNode
+  doneCaption?: string; doneExtra?: React.ReactNode; desktop?: boolean
 }) {
   const [full, setFull] = useState<BaiTestFull | null>(null)
   const [baiLamId, setBaiLamId] = useState<string | null>(null)
@@ -371,7 +379,7 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra }: {
   // Chấm/khôi phục vẫn khớp `cau.id`, không phụ thuộc vị trí → an toàn tuyệt đối.
   const caus = useMemo(() => (full ? seededPermByDang(full.caus, `${hocSinhId}:${baiTestId}:q`).map((i) => full.caus[i]) : []), [full, hocSinhId, baiTestId])
 
-  if (!full) return <div className="flex min-h-screen items-center justify-center bg-ios text-sm text-ph-label-2">Đang tải bài…</div>
+  if (!full) return <div className={`flex min-h-screen items-center justify-center text-sm text-ph-label-2 ${desktop ? 'bg-[#f4f7fb]' : 'bg-ios'}`}>Đang tải bài…</div>
   const total = caus.length
   const daXongHet = caus.every((c) => st[c.id]?.kq)
   const cau = caus[idx]
@@ -422,11 +430,13 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra }: {
   if (idx >= total) {
     const dung = caus.filter((c) => st[c.id]?.kq?.verdict === 'correct').length
     return (
-      <div className="mx-auto flex min-h-screen max-w-md flex-col items-center justify-center bg-ios px-6 text-center">
-        <div className="flex h-20 w-20 items-center justify-center rounded-full bg-ph-green/10 text-4xl">🏆</div>
-        <p className="mt-4 text-2xl font-bold tracking-tight text-ph-label">{dung} / {total} đúng</p>
+      <div className={desktop
+        ? 'flex min-h-screen flex-col items-center justify-center bg-[#f4f7fb] px-6 text-center'
+        : 'mx-auto flex min-h-screen max-w-md flex-col items-center justify-center bg-ios px-6 text-center'}>
+        <div className={`flex items-center justify-center rounded-full bg-ph-green/10 ${desktop ? 'h-24 w-24 text-5xl' : 'h-20 w-20 text-4xl'}`}>🏆</div>
+        <p className={`mt-4 font-bold tracking-tight text-ph-label ${desktop ? 'text-3xl' : 'text-2xl'}`}>{dung} / {total} đúng</p>
         <p className="mt-1 text-[13px] text-ph-label-2">{doneCaption ?? 'Làm lại được tới hạn nộp. Kết quả gửi thầy cô tham khảo.'}</p>
-        <button onClick={onXong} className="mt-6 rounded-xl bg-brand px-6 py-3 text-sm font-medium text-white">Về danh sách</button>
+        <button onClick={onXong} className={`mt-6 rounded-xl bg-brand font-medium text-white ${desktop ? 'px-8 py-3.5 text-[15px] shadow-[0_10px_24px_rgba(115,87,245,.22)]' : 'px-6 py-3 text-sm'}`}>Về danh sách</button>
         {doneExtra}
       </div>
     )
@@ -436,18 +446,18 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra }: {
   const boxCls = vd === 'correct' ? 'bg-ph-green/10' : vd === 'partial' ? 'bg-ph-orange/10' : 'bg-ph-red/10'
   const txtCls = vd === 'correct' ? 'text-ph-green' : vd === 'partial' ? 'text-ph-orange' : 'text-ph-red'
   const dsDung = laDS && daCham ? chonArr.filter((x, i) => x != null && String(x).toUpperCase() === String(keyDS[i]).toUpperCase()).length : 0
-  return (
-    <div className="mx-auto flex h-screen max-w-md flex-col bg-ios">
-      <div className="flex items-center gap-3 px-4 py-3">
-        <button onClick={onXong} className="text-ph-label-2">✕</button>
-        <div className="h-2 flex-1 overflow-hidden rounded-full bg-black/[0.08]">
+  const trongTam = (
+    <>
+      <div className={desktop ? 'mb-5 flex items-center gap-4' : 'flex items-center gap-3 px-4 py-3'}>
+        <button onClick={onXong} className={desktop ? 'flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-[#576073] shadow-[0_6px_16px_rgba(31,47,79,0.06)]' : 'text-ph-label-2'}>✕</button>
+        <div className={desktop ? 'h-2.5 flex-1 overflow-hidden rounded-full bg-black/[0.06]' : 'h-2 flex-1 overflow-hidden rounded-full bg-black/[0.08]'}>
           <div className="h-full bg-brand transition-all" style={{ width: `${((idx + 1) / total) * 100}%` }} />
         </div>
-        <span className="text-[12px] text-ph-label-2">{idx + 1}/{total}</span>
+        <span className={desktop ? 'text-[13px] font-semibold text-[#7b8499]' : 'text-[12px] text-ph-label-2'}>{idx + 1}/{total}</span>
       </div>
 
-      <div className="flex-1 overflow-y-auto px-4 pb-4">
-        <div className="rounded-2xl bg-white p-4 shadow-sm">
+      <div className={desktop ? '' : 'flex-1 overflow-y-auto px-4 pb-4'}>
+        <div className={desktop ? 'rounded-[26px] bg-white p-8 shadow-[0_16px_40px_rgba(31,47,79,0.08)]' : 'rounded-2xl bg-white p-4 shadow-sm'}>
           <div className="mb-2 flex items-center justify-between">
             <p className="text-[13px] font-semibold text-ph-label-2">Câu {idx + 1}</p>
             {cau.ly_thuyet && (
@@ -548,28 +558,41 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra }: {
         </div>
       </div>
 
-      <div className="flex items-center gap-2 border-t border-black/[0.06] bg-white p-3">
-        {idx > 0 && <button onClick={() => setIdx((i) => i - 1)} className="rounded-xl bg-black/[0.04] px-4 py-3 text-sm text-ph-label-2">‹</button>}
+      <div className={desktop ? 'mt-5 flex items-center gap-3' : 'flex items-center gap-2 border-t border-black/[0.06] bg-white p-3'}>
+        {idx > 0 && (
+          <button onClick={() => setIdx((i) => i - 1)}
+            className={desktop ? 'rounded-2xl bg-white px-6 py-3.5 text-[15px] font-medium text-[#576073] shadow-[0_6px_16px_rgba(31,47,79,0.06)]' : 'rounded-xl bg-black/[0.04] px-4 py-3 text-sm text-ph-label-2'}>
+            {desktop ? '‹ Câu trước' : '‹'}
+          </button>
+        )}
         {!daCham ? (
           <button onClick={xacNhan} disabled={busy || !daDu}
-            className="flex-1 rounded-xl bg-brand py-3 text-sm font-medium text-white disabled:opacity-40">
+            className={desktop ? 'flex-1 rounded-2xl bg-brand py-3.5 text-[15px] font-semibold text-white shadow-[0_10px_24px_rgba(115,87,245,.22)] disabled:opacity-40' : 'flex-1 rounded-xl bg-brand py-3 text-sm font-medium text-white disabled:opacity-40'}>
             {busy ? 'Đang chấm…' : 'Xác nhận'}
           </button>
         ) : (
           <button onClick={() => setIdx((i) => i + 1)}
-            className="flex-1 rounded-xl bg-brand py-3 text-sm font-medium text-white">
+            className={desktop ? 'flex-1 rounded-2xl bg-brand py-3.5 text-[15px] font-semibold text-white shadow-[0_10px_24px_rgba(115,87,245,.22)]' : 'flex-1 rounded-xl bg-brand py-3 text-sm font-medium text-white'}>
             {idx + 1 < total ? 'Câu tiếp →' : (daXongHet ? 'Xem kết quả →' : 'Câu tiếp →')}
           </button>
         )}
       </div>
+    </>
+  )
+
+  return desktop ? (
+    <div className="min-h-screen bg-[#f4f7fb] px-8 py-6">
+      <div className="mx-auto max-w-3xl">{trongTam}</div>
     </div>
+  ) : (
+    <div className="mx-auto flex h-screen max-w-md flex-col bg-ios">{trongTam}</div>
   )
 }
 
 // ── TỰ LUYỆN: bọc NGOÀI LamBai — chỉ lo "hôm nay đã có bài chưa, chưa thì sinh 10 câu, sinh thêm
 // khi bấm" — phần LÀM BÀI (chọn/chấm/lời giải/reveal-ngay) DÙNG NGUYÊN LamBai, không viết lại.
 // key={baiTestId+so_cau} → mỗi lần "làm thêm" đổi key ⇒ LamBai REMOUNT, tự fetch lại đủ câu mới.
-function LamTuLuyen({ hocSinhId, onXong }: { hocSinhId: string; onXong: () => void }) {
+function LamTuLuyen({ hocSinhId, onXong, desktop }: { hocSinhId: string; onXong: () => void; desktop?: boolean }) {
   const [state, setState] = useState<'dang_tai' | 'san_sang' | 'trong' | 'loi'>('dang_tai')
   const [mon, setMon] = useState<string | null>(null)
   const [baiTestId, setBaiTestId] = useState<string | null>(null)
@@ -606,13 +629,15 @@ function LamTuLuyen({ hocSinhId, onXong }: { hocSinhId: string; onXong: () => vo
     } catch (e: any) { setErr(e?.message ?? String(e)) } finally { setBusy(false) }
   }
 
-  if (state === 'dang_tai') return <div className="flex min-h-screen items-center justify-center bg-ios text-sm text-ph-label-2">Đang chuẩn bị bài…</div>
+  if (state === 'dang_tai') return <div className={`flex min-h-screen items-center justify-center text-sm text-ph-label-2 ${desktop ? 'bg-[#f4f7fb]' : 'bg-ios'}`}>Đang chuẩn bị bài…</div>
   if (state === 'trong' || !baiTestId || !mon) return (
-    <div className="mx-auto flex min-h-screen max-w-md flex-col items-center justify-center bg-ios px-6 text-center">
+    <div className={desktop
+      ? 'flex min-h-screen flex-col items-center justify-center bg-[#f4f7fb] px-6 text-center'
+      : 'mx-auto flex min-h-screen max-w-md flex-col items-center justify-center bg-ios px-6 text-center'}>
       <p className="text-3xl">🌱</p>
       <p className="mt-3 text-[15px] font-medium text-ph-label">{err ?? 'Chưa có dữ liệu học tập để tự luyện.'}</p>
       <p className="mt-1 text-[13px] text-ph-label-2">Học vài buổi trên lớp rồi quay lại nhé.</p>
-      <button onClick={onXong} className="mt-6 rounded-xl bg-white px-6 py-3 text-sm font-medium text-ph-label-2 shadow-sm">Về trang chính</button>
+      <button onClick={onXong} className={`mt-6 rounded-xl bg-white font-medium text-ph-label-2 shadow-sm ${desktop ? 'px-8 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`}>Về trang chính</button>
     </div>
   )
 
@@ -623,12 +648,13 @@ function LamTuLuyen({ hocSinhId, onXong }: { hocSinhId: string; onXong: () => vo
       baiTestId={baiTestId}
       hocSinhId={hocSinhId}
       onXong={onXong}
+      desktop={desktop}
       doneCaption={`Hôm nay đã làm ${soCau}/${TU_LUYEN_TRAN_NGAY} câu.`}
       doneExtra={conLai > 0 ? (
-        <div className="mt-3 w-full">
+        <div className={`mt-3 w-full ${desktop ? 'max-w-sm' : ''}`}>
           {err && <p className="mb-2 text-[12.5px] text-ph-red">{err}</p>}
           <button onClick={lamThem} disabled={busy}
-            className="w-full rounded-xl bg-brand/10 px-6 py-3 text-sm font-medium text-brand disabled:opacity-40">
+            className={`w-full rounded-xl bg-brand/10 font-medium text-brand disabled:opacity-40 ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`}>
             {busy ? 'Đang tạo thêm…' : `Làm thêm ${Math.min(TU_LUYEN_SO_CAU_MOI_LUOT, conLai)} câu`}
           </button>
         </div>
@@ -640,7 +666,9 @@ function LamTuLuyen({ hocSinhId, onXong }: { hocSinhId: string; onXong: () => vo
 // ── THÔNG TIN HỌC TẬP (Thùy 21/08: "giống app phụ huynh") — mirror card "Tỉ lệ thành thạo kiến
 // thức" + list dạng yếu/cần luyện của app PH (Kết quả tab), dựng từ ĐÚNG masteryOfDang qua
 // layDangHocTap() — không có công thức thứ hai nào.
-function ThongTinHocTap({ onXong }: { onXong: () => void }) {
+// desktop: TUỲ CHỌN (Thùy 22/08) — chỉ đổi khung ngoài (header/bề rộng/lưới 2 cột), số liệu/logic
+// vẫn NGUYÊN layDangHocTap() — cấp 3 (mobile, từ ô "Thông tin học tập" cũ) không truyền → giữ y hệt.
+function ThongTinHocTap({ onXong, desktop }: { onXong: () => void; desktop?: boolean }) {
   const [state, setState] = useState<'dang_tai' | 'san_sang' | 'trong'>('dang_tai')
   const [data, setData] = useState<{ dangs: DangHocTap[]; dat: number; canLuyen: number; yeu: number } | null>(null)
   const daGoi = useRef(false)
@@ -657,15 +685,20 @@ function ThongTinHocTap({ onXong }: { onXong: () => void }) {
     })().catch(() => setState('trong'))
   }, [])
 
-  if (state === 'dang_tai') return <div className="flex min-h-screen items-center justify-center bg-ios text-sm text-ph-label-2">Đang tải…</div>
+  if (state === 'dang_tai') return <div className={`flex min-h-screen items-center justify-center text-sm text-ph-label-2 ${desktop ? 'bg-[#f4f7fb]' : 'bg-ios'}`}>Đang tải…</div>
 
   const tong = data ? data.dat + data.canLuyen + data.yeu : 0
   const tiLe = data && tong > 0 ? Math.round(((data.dat + data.canLuyen * 0.5) / tong) * 100) : 0
   const canChuY = data ? data.dangs.filter((d) => d.muc !== 'dat').slice(0, 10) : []
 
   return (
-    <div className="mx-auto min-h-screen max-w-md bg-ios px-4 pb-10">
-      <Head title="Thông tin học tập" onBack={onXong} />
+    <div className={desktop ? 'mx-auto min-h-screen max-w-3xl bg-[#f4f7fb] px-8 py-6' : 'mx-auto min-h-screen max-w-md bg-ios px-4 pb-10'}>
+      {desktop ? (
+        <div className="mb-5 flex items-center gap-4">
+          <button onClick={onXong} className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-[18px] text-[#576073] shadow-[0_6px_16px_rgba(31,47,79,0.06)]">‹</button>
+          <h1 className="text-[26px] font-black tracking-tight text-[#171a2b]">Thông tin học tập</h1>
+        </div>
+      ) : <Head title="Thông tin học tập" onBack={onXong} />}
 
       {state === 'trong' ? (
         <div className={`mt-3 rounded-[21px] bg-white p-8 text-center ${SHADOW}`}>
@@ -676,23 +709,23 @@ function ThongTinHocTap({ onXong }: { onXong: () => void }) {
       ) : (
         <>
           {/* ĐÚNG ".card"+".summary"+".sum" (ph-v3.css) — hero % + 3 ô đạt/cần luyện/yếu */}
-          <div className={`mt-3 rounded-[22px] bg-white p-4 ${SHADOW}`}>
-            <h3 className="text-[15px] font-bold text-ph-label">Tỉ lệ thành thạo kiến thức</h3>
+          <div className={`mt-3 rounded-[22px] bg-white ${SHADOW} ${desktop ? 'p-7' : 'p-4'}`}>
+            <h3 className={`font-bold text-ph-label ${desktop ? 'text-[18px]' : 'text-[15px]'}`}>Tỉ lệ thành thạo kiến thức</h3>
             <div className="mt-1.5 flex items-baseline gap-1">
-              <span className="text-[38px] font-extrabold leading-none tracking-tight text-ph-label">{tiLe}</span>
-              <span className="text-[17px] font-bold text-ph-label-2">%</span>
+              <span className={`font-extrabold leading-none tracking-tight text-ph-label ${desktop ? 'text-[52px]' : 'text-[38px]'}`}>{tiLe}</span>
+              <span className={`font-bold text-ph-label-2 ${desktop ? 'text-[20px]' : 'text-[17px]'}`}>%</span>
             </div>
-            <div className="mt-3.5 grid grid-cols-3 gap-2.5">
-              <div className="rounded-[14px] bg-[#f7f8fb] p-2.5 text-center">
-                <b className="block text-[17px] font-extrabold text-ph-green">{data!.dat}</b>
+            <div className={`mt-3.5 grid grid-cols-3 ${desktop ? 'gap-4' : 'gap-2.5'}`}>
+              <div className={`rounded-[14px] bg-[#f7f8fb] text-center ${desktop ? 'p-4' : 'p-2.5'}`}>
+                <b className={`block font-extrabold text-ph-green ${desktop ? 'text-[22px]' : 'text-[17px]'}`}>{data!.dat}</b>
                 <span className="text-[9px] font-bold uppercase tracking-wide text-ph-label-2">Đạt</span>
               </div>
-              <div className="rounded-[14px] bg-[#f7f8fb] p-2.5 text-center">
-                <b className="block text-[17px] font-extrabold text-ph-orange">{data!.canLuyen}</b>
+              <div className={`rounded-[14px] bg-[#f7f8fb] text-center ${desktop ? 'p-4' : 'p-2.5'}`}>
+                <b className={`block font-extrabold text-ph-orange ${desktop ? 'text-[22px]' : 'text-[17px]'}`}>{data!.canLuyen}</b>
                 <span className="text-[9px] font-bold uppercase tracking-wide text-ph-label-2">Cần luyện</span>
               </div>
-              <div className="rounded-[14px] bg-[#f7f8fb] p-2.5 text-center">
-                <b className="block text-[17px] font-extrabold text-ph-red">{data!.yeu}</b>
+              <div className={`rounded-[14px] bg-[#f7f8fb] text-center ${desktop ? 'p-4' : 'p-2.5'}`}>
+                <b className={`block font-extrabold text-ph-red ${desktop ? 'text-[22px]' : 'text-[17px]'}`}>{data!.yeu}</b>
                 <span className="text-[9px] font-bold uppercase tracking-wide text-ph-label-2">Yếu</span>
               </div>
             </div>
@@ -705,8 +738,9 @@ function ThongTinHocTap({ onXong }: { onXong: () => void }) {
               <p className="mt-1 text-[13px] text-ph-label-2">Tất cả dạng đã học đều đạt.</p>
             </div>
           ) : (
-            // ĐÚNG ".dangList"+".dangRow" (ph-v3-extra.css) — nền xám phẳng #F7F8FB, KHÔNG card viền
-            <div className="grid gap-2.5">
+            // ĐÚNG ".dangList"+".dangRow" (ph-v3.css) — nền xám phẳng #F7F8FB, KHÔNG card viền.
+            // Desktop: 2 cột (bề rộng thừa, 1 cột dài lê thê nhìn rất mobile).
+            <div className={desktop ? 'grid grid-cols-2 gap-3' : 'grid gap-2.5'}>
               {canChuY.map((d) => (
                 <div key={d.ma_dang} className="rounded-[13px] bg-[#f7f8fb] p-3">
                   <div className="flex items-center gap-2.5">
@@ -751,6 +785,8 @@ function LanDo({ e }: { e: RecentEval }) {
 
 // ── BẢNG XẾP HẠNG (Thùy 21/08, sửa lại: "ko phải chỉ 5T. Hiện cho các khối tiểu học") — MỖI EM
 // xếp hạng với ĐÚNG khối của mình (không hardcode '5T' nữa) — visibility lọc ở màn chính (cap1).
+// Chỉ vào được từ HomeCap1 (ô "Bảng xếp hạng" cap1-exclusive, xem KHU_CHI_CAP1) → đổi khung DESKTOP
+// LUÔN, không cần prop `desktop` như LamBai/ThongTinHocTap (không có đường vào từ cấp 3 mobile).
 function BangXepHang({ onXong }: { onXong: () => void }) {
   const [khoi, setKhoi] = useState<string | null>(null)
   const [rows, setRows] = useState<XepHangRow[] | null>(null)
@@ -766,11 +802,17 @@ function BangXepHang({ onXong }: { onXong: () => void }) {
     })().catch(() => setRows([]))
   }, [])
 
-  if (rows === null) return <div className="flex min-h-screen items-center justify-center bg-ios text-sm text-ph-label-2">Đang tải…</div>
+  if (rows === null) return <div className="flex min-h-screen items-center justify-center bg-[#f4f7fb] text-sm text-ph-label-2">Đang tải…</div>
 
   return (
-    <div className="mx-auto min-h-screen max-w-md bg-ios px-4 pb-10">
-      <Head title="Bảng xếp hạng" sub={khoi ? `Số câu làm ĐÚNG tự luyện · các bạn khối ${khoi}` : undefined} onBack={onXong} />
+    <div className="mx-auto min-h-screen max-w-2xl bg-[#f4f7fb] px-8 py-6">
+      <div className="mb-5 flex items-center gap-4">
+        <button onClick={onXong} className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-[18px] text-[#576073] shadow-[0_6px_16px_rgba(31,47,79,0.06)]">‹</button>
+        <div className="min-w-0">
+          <h1 className="text-[26px] font-black tracking-tight text-[#171a2b]">Bảng xếp hạng</h1>
+          {khoi && <p className="mt-0.5 text-[13px] text-[#7b8499]">Số câu làm ĐÚNG tự luyện · các bạn khối {khoi}</p>}
+        </div>
+      </div>
 
       {rows.length === 0 ? (
         <div className={`mt-3 rounded-[21px] bg-white p-8 text-center ${SHADOW}`}>
@@ -780,13 +822,13 @@ function BangXepHang({ onXong }: { onXong: () => void }) {
         </div>
       ) : (
         // ĐÚNG ".classTable"+".row"+".rank"+".score" (ph-v3.css) — bảng xếp hạng cả lớp có sẵn
-        <div className={`mt-3 overflow-hidden rounded-[21px] bg-white ${SHADOW}`}>
+        <div className={`overflow-hidden rounded-[24px] bg-white ${SHADOW}`}>
           {rows.map((r, i) => (
-            <div key={r.ma_hs} className={`grid grid-cols-[30px_1fr_50px] items-center gap-2.5 px-3.5 py-3 text-[12px] ${i > 0 ? 'border-t border-black/[0.06]' : ''} ${r.la_toi ? 'bg-brand/10' : ''}`}>
-              <span className={`flex h-[27px] w-[27px] items-center justify-center rounded-[9px] text-[12px] font-black ${
+            <div key={r.ma_hs} className={`grid grid-cols-[42px_1fr_64px] items-center gap-3.5 px-5 py-4 text-[14px] ${i > 0 ? 'border-t border-black/[0.06]' : ''} ${r.la_toi ? 'bg-brand/10' : ''}`}>
+              <span className={`flex h-9 w-9 items-center justify-center rounded-[11px] text-[14px] font-black ${
                 r.la_toi ? 'bg-brand text-white' : i === 0 ? 'bg-ph-orange text-white' : i === 1 ? 'bg-ph-label-2 text-white' : i === 2 ? 'bg-[#c77e4a] text-white' : 'bg-[#f0f2f6] text-ph-label'}`}>{i + 1}</span>
-              <p className={`min-w-0 truncate text-[13px] font-bold ${r.la_toi ? 'text-brand' : 'text-ph-label'}`}>{r.ho_ten}{r.la_toi ? ' (Bạn)' : ''}</p>
-              <span className={`rounded-full px-2 py-1 text-center text-[12px] font-black ${r.la_toi ? 'bg-brand text-white' : 'bg-ph-green/10 text-ph-green'}`}>{r.so_cau_dung}</span>
+              <p className={`min-w-0 truncate font-bold ${r.la_toi ? 'text-brand' : 'text-ph-label'}`}>{r.ho_ten}{r.la_toi ? ' (Bạn)' : ''}</p>
+              <span className={`rounded-full px-2.5 py-1.5 text-center text-[13px] font-black ${r.la_toi ? 'bg-brand text-white' : 'bg-ph-green/10 text-ph-green'}`}>{r.so_cau_dung}</span>
             </div>
           ))}
         </div>
