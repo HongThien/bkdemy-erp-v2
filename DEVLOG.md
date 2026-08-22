@@ -6709,3 +6709,21 @@ tím... đủ cả 6). Bấm **Tự luyện** → vào đúng `LamTuLuyen`, load
 tập** → đúng data thật (92%, 26 đạt/5 cần luyện/0 yếu, 5 dạng cần chú ý kèm "5 lần gần nhất"). Bấm
 **Bảng xếp hạng** → đúng trạng thái rỗng thật (chưa ai khối 5 làm tự luyện hôm nay). Resize mobile
 (375px) → `grid-template-columns` co về 1 cột — responsive đúng. Dọn server tạm sau verify.
+
+## 2026-08-21 (tiếp) — Màn cấp 1 "6 Boxes": bé lại — hết cuộn dọc
+
+**Thùy, verbatim:** "Quá to rồi. Màn hình chính phải ko bị kéo lên kéo xuống chứ m phóng to 1 cách
+vô lý thế để làm gì. Cho bé lại đi." — bản trước bám font-size/padding Y NGUYÊN theo mockup HTML
+(vốn thiết kế cho canvas rất rộng, không giới hạn viewport) nên tràn màn hình thật, phải cuộn dọc.
+
+**Sửa:** đổi khung ngoài `min-h-screen` (cao theo NỘI DUNG, tràn thì cuộn) → `h-dvh overflow-hidden
+flex flex-col` (KHOÁ đúng 1 viewport, không bao giờ cuộn). Lưới 6 ô đổi `min-h-[176px]` (cứng, đẩy
+tràn) → `flex-1` (co giãn lấp đúng phần còn lại). Giảm ĐỀU font/padding/gap toàn màn (~40-45%): hero
+`p-7`→`px-4 py-3`, h1 42px→20px, rocket 80px→36px; ô `p-5`→`p-3.5`, icon 52px→34px, tên 19px→14px,
+mô tả 13px→11px; topbar/footer tương tự. Bỏ 1 dòng phụ ("6 khu vực chính...") dưới tiêu đề lưới để
+có thêm chỗ — không đụng bố cục/màu/chức năng, chỉ tỉ lệ.
+
+**Verify:** `npx tsc --noEmit` sạch. Browser thật (1280×720): `document.documentElement.scrollHeight`
+= `window.innerHeight` = **720px CHÍNH XÁC** (`hasVerticalScroll: false`) — hết cuộn hẳn. Cả 6 ô vẫn
+đọc đủ chữ, không ô nào bị cắt nội dung (`scrollHeight` mỗi ô < chiều cao thật hiển thị). Bấm lại
+**Tự luyện** — vẫn vào đúng, không hỏng gì trong đợt sửa tỉ lệ này.
