@@ -94,12 +94,16 @@ const BOX_CAP1: BoxCap1[] = [
 // phải cỡ chữ: lưới 6 ô vẫn có breakpoint rớt xuống 1-2 cột (`md:`/`lg:`) cho phòng mobile — mà màn
 // này CHỈ dành máy tính/iPad (Thùy đã chốt từ đầu "đừng làm UI cho điện thoại"), rớt cột thì DÙ chữ
 // bé cỡ nào 6 ô xếp 3-4 hàng vẫn tràn dọc. Fix ĐÚNG gốc: khoá CỐ ĐỊNH 3 cột (bỏ hẳn nhánh mobile),
-// 6 ô LUÔN đúng 2 hàng → chiều cao luôn có giới hạn thật, `h-dvh`+`flex-1` mới phát huy tác dụng.
+// 6 ô LUÔN đúng 2 hàng → chiều cao luôn có giới hạn thật, `h-screen`+`flex-1` mới phát huy tác dụng.
+// (Thùy báo tiếp: deploy thật VẪN cuộn dù đã khoá 3 cột — dò ra `h-dvh` không được hỗ trợ đúng
+// trong 1 số trình duyệt/engine, khung ngoài tự phình theo NỘI DUNG thay vì khoá theo viewport.
+// Đổi sang `h-screen` [100vh] — hỗ trợ rộng hơn hẳn `dvh` [unit mới, ~2023+], an toàn hơn cho máy
+// tính trường học có thể chạy trình duyệt cũ.)
 // Cỡ chữ trả về mức đọc thoải mái (không phải bản đã ép nhỏ tiếp — Thùy không yêu cầu chữ bé đi).
 function HomeCap1({ hoTen, maHS, onOpen }: { hoTen: string; maHS: string; onOpen: (d: 'tu_luyen' | 'thong_tin' | 'xep_hang') => void }) {
   const initials = hoTen.trim().split(/\s+/).slice(-2).map((w) => w[0]).join('').toUpperCase()
   return (
-    <div className="flex h-dvh flex-col overflow-hidden" style={{ background: 'radial-gradient(circle at 85% 5%, rgba(115,87,245,.10), transparent 24rem), radial-gradient(circle at 8% 25%, rgba(47,128,237,.08), transparent 22rem), #f4f7fb' }}>
+    <div className="flex h-screen flex-col overflow-hidden" style={{ background: 'radial-gradient(circle at 85% 5%, rgba(115,87,245,.10), transparent 24rem), radial-gradient(circle at 8% 25%, rgba(47,128,237,.08), transparent 22rem), #f4f7fb' }}>
       <div className="mx-auto flex w-full max-w-[1440px] min-h-0 flex-1 flex-col px-4 py-3">
         {/* Topbar */}
         <div className="mb-3 flex shrink-0 items-center justify-between gap-2">
