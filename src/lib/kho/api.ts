@@ -127,6 +127,21 @@ export async function deleteCau(ma_cau: string, tbl = 'dai_cau_hoi'): Promise<vo
   if (error) throw error
 }
 
+// Tìm 1 câu THEO ma_cau xuyên suốt CẢ 3 bảng kho — dùng cho Duyệt chấm "Sửa trong Kho": chỗ gọi chỉ
+// có `ma_cau` (text, KHÔNG FK — CLAUDE.md §2 "tham chiếu bằng TEXT"), không biết trước câu thuộc
+// nhánh nào. Đã kiểm DB thật: `dai_cau_hoi` không có chữ cái đầu, `khtn_cau_hoi` bắt đầu 'K',
+// `hgt_cau_hoi` bắt đầu 'T' — nhưng đó KHÔNG phải quy ước chính thức (không có ràng buộc nào ép),
+// nên dò TỪNG bảng thay vì đoán theo tiền tố. Trả `null` nếu không thấy ở bảng nào (câu đã bị xoá
+// cứng ngoài luồng kho rác, hoặc `ma_cau` không còn đúng — báo rõ ở nơi gọi, không giả định).
+export async function findCauInKho(ma_cau: string): Promise<{ cau: CauHoi; cauTbl: string } | null> {
+  for (const cauTbl of Object.keys(CUM_TBL)) {
+    const { data, error } = await supabase.from(cauTbl).select('*').eq('ma_cau', ma_cau).maybeSingle()
+    if (error) throw error
+    if (data) return { cau: data as CauHoi, cauTbl }
+  }
+  return null
+}
+
 // ══ CỤM BÀI + TIỀN ĐỀ (spec-cum-bai.md) ═══════════════════════════════════════
 // ⚠ ĐỪNG LẪN với `deleteDaiCum`/`deleteCum` đã có ở BranchConfig — "cụm" ở ĐÓ nghĩa là *một nhóm node
 //   cây* (chủ đề/chuyên đề) đem xoá cả mảng. Mọi thứ của CỤM BÀI đều có hậu tố `CumBai` để grep sạch.
