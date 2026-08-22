@@ -6068,3 +6068,39 @@ production không serve `/src/*.ts` raw) → `--app-z`=`1`, `root zoom`=`1`, `sc
 verify 1 bundle tách riêng** (`--config vite.config.hs.ts`), không dùng lệnh `vite` mặc định rồi tin
 kết quả áp cho bundle khác — 3 lần sửa trước đều đúng về mặt code (h-screen/3-cột) nhưng KHÔNG PHẢI
 gốc vấn đề, chỉ vì chưa từng thực sự chạy qua đường build sẽ deploy.
+
+## 2026-08-22 — Màn cấp 1 "6 Boxes": port tỉ lệ từ mockup Thùy gửi + đổi khung "làm bài" sang desktop
+
+**Thùy sau khi hết cuộn (22/08):** "các hộp ở màn hình quá to còn chữ trong hộp quá nhỏ, cân đối lại
+đi. Tỉ lệ không đẹp tý nào hết" → rồi gửi thẳng file `BK_Academy_Student_Desktop.html` kèm "desktop
+tỉ lệ nó kiểu như này này" — quyết định KHÔNG tự đoán cỡ lần 3 nữa, port THẲNG số đo từ file Thùy gửi.
+
+**`HomeCap1` (HocSinhApp.tsx):** hero đổi sang bố cục 2 cột (chữ trái, art 🚀 phải, `grid-template-
+columns: minmax(0,1fr) 310px`, `min-h-[190px]`) — bỏ 2 nút CTA "Tiếp tục học/Xem lịch" trong mockup vì
+backend chưa có 2 tính năng đó (không dựng nút giả không chức năng thật). Thêm tiêu đề section "Khu
+vực học tập". Lưới 6 ô port ĐÚNG số đo mockup: `min-h-[208px]`, icon 58px/30px, tiêu đề 21px, mô tả
+13px, pad 24px (`p-6`), gap 18px. **Bỏ khoá `h-screen overflow-hidden`** (khác 4 lần sửa trước) — đổi
+sang `min-h-screen` cuộn tự nhiên, vì mockup GỐC của Thùy vốn không ép vừa 1 màn hình (`.page` không
+giới hạn chiều cao) — đo thật sau khi port: **943px nội dung ở viewport 1280×800/1366×768 → cuộn nhẹ
+~140-175px**; 1920×1080 vừa khít không cuộn. Đây LÀ tỉ lệ Thùy gửi, không phải bug — báo lại để Thùy
+xác nhận có chấp nhận cuộn nhẹ trên laptop 13-14" hay muốn ép chặt hơn nữa.
+
+**"Làm bài bên trong cũng phải đổi, ko để giao diện điện thoại nữa":** thêm prop `desktop?: boolean`
+cho `LamBai`/`LamTuLuyen`/`ThongTinHocTap` (mặc định `false`/không truyền = giữ NGUYÊN khung điện
+thoại cũ — cấp 3 vẫn dùng `LamBai` cho BTVN/ET/giáo trình qua `active`, và `LamTuLuyen`/`ThongTinHocTap`
+qua ô lưới mobile cũ, `tu_luyen`/`thong_tin` KHÔNG cap1-exclusive). `LamBai` giữ NGUYÊN 1 khối JSX nội
+dung câu hỏi (`trongTam` — TN/ĐS/TLN/chấm/lời giải) dùng chung cho cả 2 khung, chỉ đổi vỏ ngoài (bề
+rộng/nền/bo góc/cỡ nút) theo `desktop` — tránh tách 2 bản logic dễ lệch nhau về sau. `BangXepHang` đổi
+khung DESKTOP LUÔN (không cần prop) vì chỉ vào được từ `HomeCap1` (cap1-exclusive, xem `KHU_CHI_CAP1`).
+Dispatch ở `HocSinhApp`: `desktop={!!cap1}` cho `LamTuLuyen`/`ThongTinHocTap`.
+
+**Verify:** `tsc --noEmit` sạch, `npm run build:hs` sạch. Không có tài khoản HS test nào biết mật khẩu
+hiện tại trong phiên này (script reset mật khẩu `_reset_hs_ve_mac_dinh.mjs --write` bị auto-mode
+classifier chặn — sửa mật khẩu tài khoản thật, đúng nên chặn) → verify qua **cổng preview tạm** (export
+`HomeCap1`/`LamBai`/`ThongTinHocTap`/`BangXepHang` + nhánh `?preview=` trong `AppHS.tsx`, KHÔNG đụng
+DB/auth) render trực tiếp qua `vite preview --config vite.config.hs.ts`, đo bằng JS thật trong browser
+(không đoán): grid 6 ô đúng 3×417px đều nhau, không tràn ngang; `scrollHeight` khớp tính toán tay ở cả
+3 kích thước. Xong thì **revert sạch cổng preview tạm** (bỏ `export`, trả `AppHS.tsx` về nguyên bản) —
+không phải code sẽ deploy. `LamBai` desktop chưa verify được bằng mắt (cần `baiTestId` thật, preview
+giả không có data) — tin vào cùng pattern class đã verify đúng ở `HomeCap1`/`ThongTinHocTap`, Thùy nên
+tự bấm thử "Tự luyện" 1 lần trên `hs.bkacademy.edu.vn` sau khi deploy để chốt.
