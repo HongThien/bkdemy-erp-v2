@@ -9,6 +9,7 @@ import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
 import { getTaiLieuFull, etGroupOf, etFormOf, khoCuaMon, type ETGroup, type TaiLieuFull, type CauHinh } from '../../lib/tailieu'
 import { fetchCausByMa } from '../../lib/ontap'
+import { hsCoMatCuaBuoi } from '../../lib/gami'
 import { BK_CSS, BK_PAGE_CSS, ETHeaderBK } from './bkPrint'
 import type { CauHoi } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
@@ -23,8 +24,10 @@ const DEFAULT_TLN_LINES = 2
 // onReady/onRenderErr (07-12, đời 2 server-gen): PrintJobPage (trang worker mở qua Puppeteer) cần biết
 // paged.js dựng XONG hay LỖI để bấm nút "in ra PDF" đúng lúc — component tự bắn tín hiệu, worker không
 // phải đoán mò qua DOM.
-// perHS: in theo HÌNH THỨC MỖI HS 1 PHIẾU — mã đề đã gán + họ tên in sẵn (gán ở ETScreen, cau_hinh.hsMaDe).
-// Không truyền → in 3 mã đề tổng quát như cũ (ô tên trống).
+// perHS: in theo HÌNH THỨC MỖI HS 1 PHIẾU — mã đề đã gán + họ tên in sẵn (cau_hinh.hsMaDe). Truyền TỪ NGOÀI
+// (ETScreen, đang soạn nháp) hoặc TỰ NẠP bên trong khi mở từ Kho tài liệu (nút "🖨 Cả lớp" ở thanh trên,
+// giống hệt "🖨 Cả lớp" của BTVN ở PrintView.tsx — không còn phải vào ETScreen mới in cả lớp được nữa).
+// Không perHS/không bật "Cả lớp" → in 3 mã đề tổng quát như cũ (ô tên trống).
 // fullOverride/varCauOverride: render từ dữ liệu ĐANG SOẠN (in-memory) thay vì đọc bản đã lưu — cho phép
 // PREVIEW ngay trong màn tạo ET, chưa cần lưu (Thùy 07-31).
 export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, onReady, onRenderErr, perHS, fullOverride, varCauOverride }: { id: string; onClose: () => void; headless?: boolean; linkOnly?: boolean; onFail?: () => void; onReady?: () => void; onRenderErr?: (msg: string) => void; perHS?: { id: string; ho_ten: string; maDe: number }[]; fullOverride?: TaiLieuFull; varCauOverride?: Record<string, CauHoi> }) {
@@ -44,6 +47,26 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
   // dựng trang TRƯỚC khi có câu 2/3 (không thì đề 2/3 in RỖNG rồi headless tự in mất).
   const [varCau, setVarCau] = useState<Record<string, CauHoi>>({})
   const [varReady, setVarReady] = useState(false)
+  // ⭐ "🖨 Cả lớp" TỰ ĐỨNG trong preview (giống PrintView.tsx của BTVN) — không cần vào ETScreen để bấm
+  // "In cả lớp" nữa: mở thẳng từ Kho tài liệu, nạp HS có mặt của (lop_id, ngay) của CHÍNH doc, mã đề lấy
+  // từ cau_hinh.hsMaDe đã lưu (mặc định mã 1 nếu HS chưa gán). Chỉ tự nạp khi `perHS` KHÔNG được truyền
+  // từ ngoài (ETScreen tự quản roster riêng lúc đang soạn nháp — tránh 2 nguồn roster đá nhau).
+  const [perHSOn, setPerHSOn] = useState(false)
+  const [roster, setRoster] = useState<{ id: string; ho_ten: string; ma_hs: string | null }[]>([])
+  useEffect(() => {
+    if (perHS) { setRoster([]); return }
+    const tl = full?.taiLieu as { lop_id?: string | null; ngay?: string | null } | undefined
+    if (!tl?.lop_id || !tl.ngay) { setRoster([]); return }
+    let alive = true
+    hsCoMatCuaBuoi(tl.lop_id, tl.ngay).then((r) => { if (alive) setRoster(r) }).catch(() => { if (alive) setRoster([]) })
+    return () => { alive = false }
+  }, [full, perHS])
+  const effPerHS = perHS ?? ((perHSOn && roster.length) ? roster.map((hs) => ({ id: hs.id, ho_ten: hs.ho_ten, maDe: full?.taiLieu.cau_hinh?.hsMaDe?.[hs.id] ?? 1 })) : undefined)
+  // Khoá ỔN ĐỊNH cho dependency của effect dựng trang bên dưới: roster TỰ ĐỔI THAM CHIẾU ngay khi nạp
+  // xong (dù đang ở "Bản trống", perHSOn=false) — nếu effect dựng trang phụ thuộc thẳng `roster` sẽ dựng
+  // lại LẦN 2 vô ích ngay lúc roster vừa về (paged.js vốn đã nặng, 2 lượt dựng chồng lên nhau dễ vượt
+  // watchdog 30s). Chỉ đổi khi TẬP HS thực sự đổi VÀ đang ở chế độ Cả lớp.
+  const perHSDepKey = perHSOn ? roster.map((r) => r.id).join(',') : ''
   useEffect(() => { if (fullOverride) { setFull(fullOverride); return } getTaiLieuFull(id).then(setFull).catch((e) => setErr(e.message ?? String(e))) }, [id, fullOverride])
   useEffect(() => {
     if (!full) return
@@ -118,7 +141,7 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
         .finally(() => URL.revokeObjectURL(cssUrl))
     })()
     return () => { cancelled = true; clearTimeout(watchdog) }
-  }, [full, gv, varReady])
+  }, [full, gv, varReady, perHSOn, perHSDepKey])
 
   const seg = (on: boolean) => `rounded-md px-3 py-1 text-[13px] font-medium transition ${on ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`
   const printFileName = () => `${full?.taiLieu.ten ?? ''}${gv ? ' - Bản GV' : ''}`
@@ -153,7 +176,7 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
   if (headless) return createPortal(
     <>
       <div style={{ position: 'fixed', top: 0, left: 0, zIndex: 88, width: '210mm', background: '#fff' }}><div ref={dstRef} className="pv-pages" /></div>
-      <div ref={srcRef} className="pv-src" aria-hidden>{full && <ETAllDe full={full} gv={gv} varCau={varCau} perHS={perHS} />}</div>
+      <div ref={srcRef} className="pv-src" aria-hidden>{full && <ETAllDe full={full} gv={gv} varCau={varCau} perHS={effPerHS} />}</div>
       <div className="no-print fixed inset-0 z-[95] flex items-center justify-center bg-white">
         <div className="rounded-xl border border-slate-200 bg-white px-6 py-4 text-sm font-medium text-slate-700 shadow-xl">
           {dlErr ? <span className="text-rose-600">{dlErr}</span> : linkOnly ? <>⏳ Đang lấy link…</> : <>⏳ Đang chuẩn bị in{pages ? ` (${pages} trang)` : ''}…</>}
@@ -172,6 +195,13 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
           <button onClick={() => setGv(false)} className={seg(!gv)}>Bản học sinh</button>
           <button onClick={() => setGv(true)} className={seg(gv)}>Bản giáo viên</button>
         </div>
+        {/* Không hiện khi ETScreen truyền perHS từ ngoài (đang soạn nháp, tự quản roster riêng). */}
+        {!perHS && (
+          <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5" title={roster.length ? `${roster.length} HS có mặt — in mỗi HS 1 phiếu, tên + mã đề sẵn` : 'Chưa điểm danh có mặt (hoặc ET chưa gắn lớp/buổi) → chỉ in bản trống'}>
+            <button onClick={() => setPerHSOn(false)} className={seg(!perHSOn)}>Bản trống</button>
+            <button onClick={() => setPerHSOn(true)} disabled={!roster.length} className={`${seg(perHSOn)} disabled:opacity-40`}>🖨 Cả lớp{roster.length ? ` (${roster.length})` : ''}</button>
+          </div>
+        )}
         <span className="text-[12px] text-slate-400">{rendering ? 'đang dựng trang…' : `${pages} trang`}</span>
         {dlErr && <span className="text-[12px] text-rose-600">{dlErr}</span>}
         <div className="ml-auto flex gap-2">
@@ -184,7 +214,7 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
           : !full ? <p className="text-center text-slate-400">Đang tải…</p>
           : <div ref={dstRef} className="pv-pages" />}
       </div>
-      <div ref={srcRef} className="pv-src" aria-hidden>{full && <ETAllDe full={full} gv={gv} varCau={varCau} perHS={perHS} />}</div>
+      <div ref={srcRef} className="pv-src" aria-hidden>{full && <ETAllDe full={full} gv={gv} varCau={varCau} perHS={effPerHS} />}</div>
       <style>{CHROME_CSS}</style>
     </div>,
     document.body,
