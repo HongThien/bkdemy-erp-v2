@@ -90,58 +90,60 @@ const BOX_CAP1: BoxCap1[] = [
   { id: 'su_kien', ten: 'Sự kiện học tập', mo_ta: 'Các cuộc thi, thử thách và hoạt động học tập theo từng thời điểm.', icon: '🎉', grad: 'from-[#fff1de] to-[#fffaf1]', sapCo: true },
   { id: 'huy_hieu', ten: 'Huy hiệu', mo_ta: 'Xem các huy hiệu, thành tích và mốc học tập đã đạt được.', icon: '🏆', grad: 'from-[#ffedf5] to-[#fff8fb]', sapCo: true },
 ]
-// Thùy 21/08: "quá to... phóng to vô lý, cho bé lại" — màn TRƯỚC bám font-size/padding y nguyên
-// mockup (thiết kế cho canvas rất rộng) nên tràn viewport thật, phải cuộn. Bản này ép NGUYÊN màn
-// vào đúng 1 viewport (`h-dvh overflow-hidden flex flex-col`, lưới ô `flex-1` tự co giãn theo chiều
-// cao còn lại thay vì `min-h` cứng) + giảm đều font/padding/gap toàn bộ — không đổi bố cục/màu.
+// Thùy 21/08: "quá to... cho bé lại" rồi "t có bảo giảm chữ đâu, vẫn phải cuộn" — LỖI THẬT không
+// phải cỡ chữ: lưới 6 ô vẫn có breakpoint rớt xuống 1-2 cột (`md:`/`lg:`) cho phòng mobile — mà màn
+// này CHỈ dành máy tính/iPad (Thùy đã chốt từ đầu "đừng làm UI cho điện thoại"), rớt cột thì DÙ chữ
+// bé cỡ nào 6 ô xếp 3-4 hàng vẫn tràn dọc. Fix ĐÚNG gốc: khoá CỐ ĐỊNH 3 cột (bỏ hẳn nhánh mobile),
+// 6 ô LUÔN đúng 2 hàng → chiều cao luôn có giới hạn thật, `h-dvh`+`flex-1` mới phát huy tác dụng.
+// Cỡ chữ trả về mức đọc thoải mái (không phải bản đã ép nhỏ tiếp — Thùy không yêu cầu chữ bé đi).
 function HomeCap1({ hoTen, maHS, onOpen }: { hoTen: string; maHS: string; onOpen: (d: 'tu_luyen' | 'thong_tin' | 'xep_hang') => void }) {
   const initials = hoTen.trim().split(/\s+/).slice(-2).map((w) => w[0]).join('').toUpperCase()
   return (
     <div className="flex h-dvh flex-col overflow-hidden" style={{ background: 'radial-gradient(circle at 85% 5%, rgba(115,87,245,.10), transparent 24rem), radial-gradient(circle at 8% 25%, rgba(47,128,237,.08), transparent 22rem), #f4f7fb' }}>
-      <div className="mx-auto flex w-full max-w-[1440px] min-h-0 flex-1 flex-col px-3 py-3 sm:px-5">
+      <div className="mx-auto flex w-full max-w-[1440px] min-h-0 flex-1 flex-col px-4 py-3">
         {/* Topbar */}
-        <div className="mb-2.5 flex shrink-0 flex-wrap items-center justify-between gap-2">
-          <div className="flex items-center gap-2">
-            <img src="/Logo.png" alt="BK Academy" className="h-6 w-auto" />
-            <span className="hidden rounded-full border border-[#e8edf5] bg-white/90 px-2.5 py-1 text-[11px] font-bold text-[#576073] shadow-[0_6px_16px_rgba(31,47,79,0.06)] sm:inline-block">📚 App học tập cho học sinh</span>
+        <div className="mb-3 flex shrink-0 items-center justify-between gap-2">
+          <div className="flex items-center gap-2.5">
+            <img src="/Logo.png" alt="BK Academy" className="h-7 w-auto" />
+            <span className="rounded-full border border-[#e8edf5] bg-white/90 px-3 py-1 text-[12px] font-bold text-[#576073] shadow-[0_6px_16px_rgba(31,47,79,0.06)]">📚 App học tập cho học sinh</span>
           </div>
-          <div className="flex min-w-0 items-center gap-2 rounded-[14px] bg-white py-1.5 pl-1.5 pr-2.5 shadow-[0_6px_16px_rgba(31,47,79,0.06)]">
-            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-[10px] bg-gradient-to-br from-[#2486df] to-[#745bf0] text-[11px] font-black text-white">{initials}</div>
+          <div className="flex min-w-0 items-center gap-2 rounded-[14px] bg-white py-1.5 pl-1.5 pr-3 shadow-[0_6px_16px_rgba(31,47,79,0.06)]">
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[11px] bg-gradient-to-br from-[#2486df] to-[#745bf0] text-[12px] font-black text-white">{initials}</div>
             <div className="min-w-0 leading-tight">
-              <p className="truncate text-[12px] font-bold text-[#171a2b]">{hoTen}</p>
-              <p className="truncate text-[10px] text-[#7b8499]">{maHS.toUpperCase()}</p>
+              <p className="truncate text-[13px] font-bold text-[#171a2b]">{hoTen}</p>
+              <p className="truncate text-[11px] text-[#7b8499]">{maHS.toUpperCase()}</p>
             </div>
           </div>
         </div>
 
         {/* Hero */}
-        <section className="relative shrink-0 overflow-hidden rounded-[18px] px-4 py-3 shadow-[0_8px_20px_rgba(31,47,79,0.08)]" style={{ background: 'linear-gradient(120deg, rgba(255,255,255,.35), rgba(255,255,255,.06)), linear-gradient(120deg, #ece9ff 0%, #e4f1ff 50%, #dff8ff 100%)' }}>
-          <div className="relative z-[1] flex flex-wrap items-center justify-between gap-2">
-            <div className="max-w-[650px]">
-              <p className="m-0 text-[11px] font-extrabold text-[#6c7386]">Xin chào,</p>
-              <h1 className="m-0 text-[20px] font-black tracking-tight text-[#171a2b]">{hoTen}! 👋</h1>
-              <p className="mt-0.5 text-[12px] leading-snug text-[#5e667b]">Hôm nay tiếp tục chinh phục những dạng bài còn yếu nhé!</p>
+        <section className="relative shrink-0 overflow-hidden rounded-[20px] px-5 py-3.5 shadow-[0_8px_20px_rgba(31,47,79,0.08)]" style={{ background: 'linear-gradient(120deg, rgba(255,255,255,.35), rgba(255,255,255,.06)), linear-gradient(120deg, #ece9ff 0%, #e4f1ff 50%, #dff8ff 100%)' }}>
+          <div className="relative z-[1] flex items-center justify-between gap-3">
+            <div>
+              <p className="m-0 text-[12px] font-extrabold text-[#6c7386]">Xin chào,</p>
+              <h1 className="m-0 text-[24px] font-black tracking-tight text-[#171a2b]">{hoTen}! 👋</h1>
+              <p className="mt-0.5 text-[13px] leading-snug text-[#5e667b]">Hôm nay tiếp tục chinh phục những dạng bài còn yếu nhé!</p>
             </div>
-            <div className="text-[36px] leading-none">🚀</div>
+            <div className="text-[42px] leading-none">🚀</div>
           </div>
         </section>
 
-        {/* Lưới 6 ô — chiếm hết chiều cao còn lại, KHÔNG cuộn */}
-        <section className="mt-2.5 flex min-h-0 flex-1 flex-col">
-          <h2 className="m-0 shrink-0 text-[14px] font-extrabold tracking-tight text-[#171a2b]">Học tập tại BK Academy</h2>
-          <div className="mt-2 grid min-h-0 flex-1 grid-cols-1 gap-2.5 md:grid-cols-2 lg:grid-cols-3">
+        {/* Lưới 6 ô — CỐ ĐỊNH 3 cột (không rớt xuống mobile), luôn đúng 2 hàng, chiếm hết phần còn lại */}
+        <section className="mt-3 flex min-h-0 flex-1 flex-col">
+          <h2 className="m-0 shrink-0 text-[15px] font-extrabold tracking-tight text-[#171a2b]">Học tập tại BK Academy</h2>
+          <div className="mt-2 grid min-h-0 flex-1 grid-cols-3 gap-3">
             {BOX_CAP1.map((b) => {
               const sapCo = 'sapCo' in b && b.sapCo
               return (
                 <button key={b.id} disabled={sapCo} onClick={() => !sapCo && onOpen(b.id as 'tu_luyen' | 'thong_tin' | 'xep_hang')}
-                  className={`group relative flex flex-col items-start rounded-[18px] border border-white/70 bg-gradient-to-br p-3.5 text-left shadow-[0_8px_20px_rgba(31,47,79,0.08)] transition ${b.grad} ${sapCo ? 'opacity-60' : 'hover:-translate-y-0.5 hover:shadow-[0_10px_22px_rgba(31,47,79,0.12)]'}`}>
-                  <div className="mb-2 flex h-[34px] w-[34px] items-center justify-center rounded-[12px] bg-white/70 text-[17px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.5)]">{b.icon}</div>
-                  <h3 className="m-0 mb-1 text-[14px] font-extrabold text-[#171a2b]">{b.ten}</h3>
-                  <p className="m-0 max-w-[90%] text-[11px] leading-snug text-[#616b7f]">{b.mo_ta}</p>
+                  className={`group relative flex flex-col items-start rounded-[20px] border border-white/70 bg-gradient-to-br p-4 text-left shadow-[0_8px_20px_rgba(31,47,79,0.08)] transition ${b.grad} ${sapCo ? 'opacity-60' : 'hover:-translate-y-0.5 hover:shadow-[0_10px_22px_rgba(31,47,79,0.12)]'}`}>
+                  <div className="mb-2.5 flex h-10 w-10 items-center justify-center rounded-[13px] bg-white/70 text-[20px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.5)]">{b.icon}</div>
+                  <h3 className="m-0 mb-1 text-[16px] font-extrabold text-[#171a2b]">{b.ten}</h3>
+                  <p className="m-0 max-w-[90%] text-[12.5px] leading-snug text-[#616b7f]">{b.mo_ta}</p>
                   {sapCo ? (
-                    <span className="absolute bottom-2.5 right-2.5 rounded-full bg-white/80 px-2 py-0.5 text-[9.5px] font-bold text-[#7b8499]">Sắp có</span>
+                    <span className="absolute bottom-3 right-3 rounded-full bg-white/80 px-2.5 py-0.5 text-[10.5px] font-bold text-[#7b8499]">Sắp có</span>
                   ) : (
-                    <span className="absolute bottom-2.5 right-2.5 flex h-6 w-6 items-center justify-center rounded-[9px] bg-white/78 text-[12px] font-black text-[#171a2b] group-hover:translate-x-0.5 transition">→</span>
+                    <span className="absolute bottom-3 right-3 flex h-7 w-7 items-center justify-center rounded-[10px] bg-white/78 text-[13px] font-black text-[#171a2b] group-hover:translate-x-0.5 transition">→</span>
                   )}
                 </button>
               )
@@ -150,9 +152,9 @@ function HomeCap1({ hoTen, maHS, onOpen }: { hoTen: string; maHS: string; onOpen
         </section>
 
         {/* Footer */}
-        <footer className="mt-2.5 flex shrink-0 flex-wrap items-center justify-between gap-2 rounded-[14px] px-4 py-2 text-white shadow-[0_8px_18px_rgba(101,73,234,0.24)]" style={{ background: 'linear-gradient(135deg, #6549ea, #8368f7)' }}>
-          <strong className="text-[13px] tracking-wide">BK ACADEMY</strong>
-          <span className="text-[11px] opacity-90">Học tập là hành trình, kiên trì là chìa khóa! ✨</span>
+        <footer className="mt-3 flex shrink-0 items-center justify-between gap-2 rounded-[16px] px-5 py-2.5 text-white shadow-[0_8px_18px_rgba(101,73,234,0.24)]" style={{ background: 'linear-gradient(135deg, #6549ea, #8368f7)' }}>
+          <strong className="text-[14px] tracking-wide">BK ACADEMY</strong>
+          <span className="text-[12px] opacity-90">Học tập là hành trình, kiên trì là chìa khóa! ✨</span>
         </footer>
       </div>
     </div>
