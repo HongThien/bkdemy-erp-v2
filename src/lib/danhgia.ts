@@ -69,6 +69,8 @@ export type StatSheetHS = {
   dangs: DangStat[]
   chuyenDes: ChuyenDeStat[]
   soLop: SoLopBai[]         // so với TB lớp theo TỪNG BÀI giám sát (≤8 bài gần nhất) — vùng 3 popup
+  soLopKem: SoLopBai[]      // ⑤ so lớp GỘP ET+MT+BTVN (Thùy 08-17: càng nhiều nguồn càng tốt) — KHÁC soLop, xem lý do ở nơi tính
+  coSoLopKem: boolean       // ⑤ ≥2/3 trong 3 bài gần nhất (gộp) dưới 80% TB lớp bài đó
   thaiDo: { thai_do: string; t: string }[]
   coChuongDo: boolean       // ③ TA bấm lúc chấm BTVN
   coLoTienQuyet: boolean    // ④ GV báo hổng kiến thức NỀN
@@ -237,6 +239,26 @@ export async function getStatSheetLop(lopId: string): Promise<StatSheetHS[]> {
     return { buoi_hoc_id: id, t: b.t, cuaSo: cuaSoCua(b.t), means }
   })
 
+  // ── SO LỚP KÊNH ⑤ (Thùy 08-17) — CÙNG PHÉP TÍNH TRÊN, KHÔNG LOẠI BTVN ───────────────
+  // `soLop` ở trên loại BTVN vì dùng để XẾP HẠNG (không giám sát ⇒ không công bằng để so hạng).
+  // Kênh ⑤ KHÔNG xếp hạng công khai, chỉ là 1 tín hiệu dò yếu — "càng nhiều nguồn tham khảo càng
+  // tốt" (Thùy 08-17) nên gộp cả ET+MT+BTVN. 2 phép tính tách hẳn, không đụng `soLop`/vùng 3 popup
+  // đang chạy thật. Dùng lại `doRows` đã nạp sẵn — không thêm query.
+  const buoiMapKem = new Map<string, { t: string; perHS: Map<string, { sum: number; count: number }> }>()
+  for (const r of doRows) {
+    if (!r.buoi_hoc_id) continue
+    let b = buoiMapKem.get(r.buoi_hoc_id)
+    if (!b) { b = { t: r.t, perHS: new Map() }; buoiMapKem.set(r.buoi_hoc_id, b) }
+    if (Date.parse(r.t) > Date.parse(b.t)) b.t = r.t
+    const hh = b.perHS.get(r.hoc_sinh_id) ?? { sum: 0, count: 0 }
+    hh.sum += r.value; hh.count++; b.perHS.set(r.hoc_sinh_id, hh)
+  }
+  const buoiTinhKem = [...buoiMapKem.entries()].map(([id, b]) => {
+    const means = new Map<string, number>()
+    for (const [hs, s] of b.perHS) means.set(hs, s.sum / s.count)
+    return { buoi_hoc_id: id, t: b.t, cuaSo: cuaSoCua(b.t), means }
+  })
+
   // Mốc cắt cho cột "TRƯỚC" = hết cửa sổ liền trước cửa sổ hiện tại (1 lần, dùng chung mọi dạng).
   const cutTruoc = cuoiCuaSo(cuaSoTruoc(cuaSoCua(Date.now())))
 
@@ -326,6 +348,30 @@ export async function getStatSheetLop(lopId: string): Promise<StatSheetHS[]> {
       })
       .reverse()
 
+    // Kênh ⑤: cùng công thức trên `buoiTinhKem` (gộp BTVN). Gate n≥3 (nhất quán GATE_N toàn hệ):
+    // < 3 bài tổng thì chưa đủ để kết luận, coSoLopKem giữ false.
+    const soLopKem: SoLopBai[] = buoiTinhKem
+      .filter((b) => b.means.has(hsId))
+      .sort((a, b) => Date.parse(b.t) - Date.parse(a.t))
+      .slice(0, 8)
+      .map((b) => {
+        const vals = [...b.means.values()]
+        const diemHS = b.means.get(hsId)!
+        const tbLop = vals.reduce((x, y) => x + y, 0) / vals.length
+        const hang = vals.filter((v) => v > diemHS + 1e-9).length + 1
+        return { buoi_hoc_id: b.buoi_hoc_id, t: b.t, cuaSo: b.cuaSo, diemHS, tbLop, hang, siSo: vals.length }
+      })
+      .reverse()
+    // Thùy 08-18: so TRUNG BÌNH, không so từng bài riêng lẻ — mỗi ET chỉ 3-4 câu nên biên độ dao
+    // động 1 bài rất lớn (1 câu sai lệch hẳn %). Gộp điểm HS và điểm lớp qua 3 bài rồi mới so 1 lần
+    // — mượt nhiễu ngẫu nhiên của từng bài, giữ đúng gate n≥3 (đủ độ tin).
+    const gan3Kem = soLopKem.slice(-3)
+    const coSoLopKem = gan3Kem.length >= 3 && (() => {
+      const tbHS = gan3Kem.reduce((s, b) => s + b.diemHS, 0) / gan3Kem.length
+      const tbLop = gan3Kem.reduce((s, b) => s + b.tbLop, 0) / gan3Kem.length
+      return tbHS < tbLop * 0.8
+    })()
+
     const td = thaiDoRows.filter((r) => r.hoc_sinh_id === hsId).map((r) => ({ thai_do: r.thai_do, t: r.t }))
     const cb = canhBao.filter((r) => r.hoc_sinh_id === hsId)
     const coChuongDo = cb.some((r) => r.nguon === 'btvn' || r.nguon === 'chuong_do')
@@ -335,9 +381,9 @@ export async function getStatSheetLop(lopId: string): Promise<StatSheetHS[]> {
     out.push({
       hoc_sinh_id: hsId, ho_ten: hsMap.get(hsId)!, mon,
       levelKienThuc: lv?.kien_thuc ?? 0, levelThaiDo: lv?.thai_do ?? 0,
-      dangs, chuyenDes, soLop, thaiDo: td, coChuongDo, coLoTienQuyet,
+      dangs, chuyenDes, soLop, soLopKem, coSoLopKem, thaiDo: td, coChuongDo, coLoTienQuyet,
       deXuatKienThuc: deXuatLevelKienThuc({
-        levelHienTai: lv?.kien_thuc ?? 0, dangs, coChuongDo, coLoTienQuyet, bayGio: Date.now(),
+        levelHienTai: lv?.kien_thuc ?? 0, dangs, coChuongDo, coLoTienQuyet, coSoLopKem, bayGio: Date.now(),
       }), // `dangs` đã mang `daMo` → engine áp đúng luật trễ 2 mốc
       deXuatThaiDo: deXuatLevelThaiDo(td),
     })
@@ -356,7 +402,7 @@ function push<T>(m: Map<string, T[]>, k: string, v: T) { const a = m.get(k) ?? [
 // trả về `kenh[]` để thấy vì sao HS này lọt vào, và chỉ dùng `uuTien` để XẾP THỨ TỰ đọc.
 export type Candidate = {
   hoc_sinh_id: string; ho_ten: string; mon: string
-  kenh: ('trend' | 'thai_do' | 'chuong_do' | 'tien_quyet')[]
+  kenh: ('trend' | 'thai_do' | 'chuong_do' | 'tien_quyet' | 'so_lop')[]
   uuTien: number            // càng cao càng đọc trước — CHỈ để sắp xếp, không phải "mức độ nặng"
   trongDigest: boolean      // lọt digest tuần này (uuTien ≥ NGUONG_DIGEST) — xem ghi chú dưới
   lyDo: string[]
@@ -388,6 +434,19 @@ export async function listCandidatesLop(lopId: string): Promise<Candidate[]> {
       }
       for (const c of docAm) lyDo.push(`${c.ten_chuyen_de}: vượt-TB-lớp dốc âm ${c.docAm} nhịp liên tiếp`)
       uuTien += tut.length * 10 + docAm.length * 15
+    }
+
+    // ⑤ SO TB LỚP (Thùy 08-17, sửa 08-18) — điểm ET+MT+BTVN gộp, TRUNG BÌNH 3 bài gần nhất dưới
+    // 80% TRUNG BÌNH lớp 3 bài đó (so trung bình-với-trung bình, KHÔNG so từng bài lẻ — mỗi ET chỉ
+    // 3-4 câu nên 1 bài dao động rất lớn, so lẻ dễ bắt nhầm ngày xui). Tín hiệu MỀM (khác ③④ nhảy
+    // thẳng L2+): chỉ giúp lọt vào diện L1 khi diện dạng còn rỗng, xem `deXuatLevelKienThuc`.
+    if (s.coSoLopKem) {
+      kenh.push('so_lop')
+      const gan3 = s.soLopKem.slice(-3)
+      const tbHS = gan3.reduce((sum, b) => sum + b.diemHS, 0) / gan3.length
+      const tbLop = gan3.reduce((sum, b) => sum + b.tbLop, 0) / gan3.length
+      lyDo.push(`⑤ so lớp: TB ${Math.round((tbHS / tbLop) * 100)}% TB lớp (trung bình 3 bài ET/MT/BTVN gần nhất, không so từng bài lẻ)`)
+      uuTien += 12
     }
 
     // ② THÁI ĐỘ — leading, độc lập ①. Chuẩn TUYỆT ĐỐI (dưới Nghiêm túc là tín hiệu).
@@ -647,4 +706,27 @@ export async function listAiJobs(lopId: string, limit = 8): Promise<AiJob[]> {
     .select('id, trang_thai, ket_qua, usage, model, model_chon, error, created_at, done_at')
     .eq('lop_id', lopId).order('created_at', { ascending: false }).limit(limit)
   return (data ?? []) as any
+}
+
+// ── DETAIL — "soi" (Thùy 08-18): lịch sử làm bài của CHUYÊN ĐỀ, giống detail dạng bài (loại bài ·
+// ngày · trạng thái DCS). ChuyenDeStat.chuoi chỉ có điểm GỘP theo cửa sổ, không đủ để soi từng lần
+// làm — hàm này nạp riêng, gọi LƯỜI lúc người bấm mở detail (không load sẵn cho mọi chuyên đề).
+export type LanLamChuyenDe = { ma_dang: string; ten_dang: string; nguon: string; ngay: string; result: string }
+export async function getLichSuChuyenDe(hocSinhId: string, maChuyenDe: string, mon: string): Promise<LanLamChuyenDe[]> {
+  const K = khoCuaMon(mon)
+  const { data: dangs, error: eD } = await supabase.from(K.banDoTbl).select('ma_dang, ten_dang').eq('ma_chuyen_de', maChuyenDe).limit(LIMIT)
+  if (eD) throw eD
+  const rows = (dangs ?? []) as { ma_dang: string; ten_dang: string }[]
+  if (!rows.length) return []
+  const tenMap = new Map(rows.map((d) => [d.ma_dang, d.ten_dang]))
+  const maDangSet = new Set(rows.map((d) => d.ma_dang))
+
+  const { data: grades, error: eG } = await supabase.from('gami_grades')
+    .select('result, graded_at, prob:problem_id(ma_dang, phase)').eq('hoc_sinh_id', hocSinhId).limit(LIMIT)
+  if (eG) throw eG
+  return ((grades ?? []) as any[])
+    .filter((g) => g.prob?.ma_dang && maDangSet.has(g.prob.ma_dang))
+    .map((g) => ({ ma_dang: g.prob.ma_dang, ten_dang: tenMap.get(g.prob.ma_dang) ?? g.prob.ma_dang, nguon: g.prob.phase, ngay: g.graded_at, result: g.result }))
+    .sort((a, b) => Date.parse(b.ngay) - Date.parse(a.ngay))
+    .slice(0, 10)
 }

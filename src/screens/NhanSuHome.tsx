@@ -52,10 +52,15 @@ import BoTroDuoiScreen from './botro/BoTroDuoiScreen'
 import ChatLuongVanHanhScreen from './dashboard/ChatLuongVanHanhScreen'
 import PhDangNhapScreen from './dashboard/PhDangNhapScreen'
 import DashboardHocTapScreen from './danhgia/DashboardHocTapScreen'
+import DuyetBoTroYeuScreen from './danhgia/DuyetBoTroYeuScreen'
+import NoiDungBoTroYeuScreen from './danhgia/NoiDungBoTroYeuScreen'
+import TrangThaiCaBoTroScreen from './danhgia/TrangThaiCaBoTroScreen'
+import DanhGiaCaBoTroScreen from './danhgia/DanhGiaCaBoTroScreen'
+import XepLichBoTroYeuScreen from './danhgia/XepLichBoTroYeuScreen'
 
 // tg thấy thêm tab 'mt' (chấm MT nếu buổi có gán — tự ẩn/hiện rỗng như ET nếu chưa có).
 const tabsCuaVai = (vai: 'gv' | 'tg'): TabKey[] => (vai === 'gv' ? ['danhgia', 'ingame'] : ['ingame', 'et', 'mt'])
-type OpenBuoi = { id: string; tabs: TabKey[]; initialTab: TabKey; canManage: boolean; loai?: 'bu' | 'bo_tro_duoi' }
+type OpenBuoi = { id: string; tabs: TabKey[]; initialTab: TabKey; canManage: boolean; loai?: 'bu' | 'bo_tro_duoi' | 'bo_tro_yeu' }
 type TienDo = { tong: number; daDanh: number }
 
 // Badge deadline — dải NÓNG→NGUỘI dạng pill MỀM (hợp tông Apple, không khối đỏ đặc): đỏ→cam→hổ phách→xanh.
@@ -498,6 +503,10 @@ export default function NhanSuHome({ user }: { user: User }) {
 
   useEffect(() => { getMyScope().then(setScope).finally(() => setLoading(false)) }, [])
 
+  // ⚠ bo_tro_yeu CHƯA có detail riêng (khác bù/đuổi) — rơi vào nhánh BuoiDetail chung tạm thời.
+  // BuoiDetail vốn cho buổi lớp thường (lop_id có giá trị); bo_tro_yeu giống bù ở chỗ lop_id=null
+  // (1 buổi = 1 HS, không gắn lớp) nên CHƯA CHẮC render đúng — cần 1 BuoiBoTroYeuDetail riêng
+  // (hiện tiến độ dạng + tick day_at, giống BuoiDuoiDetail) trước khi đưa vào vận hành thật.
   if (openBuoi) return openBuoi.loai === 'bu'
     ? <BuoiBuDetail buoiId={openBuoi.id} onClose={() => setOpenBuoi(null)} />
     : openBuoi.loai === 'bo_tro_duoi'
@@ -576,6 +585,11 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'db_chatluong' ? <ChatLuongVanHanhScreen />
       : staffLeaf === 'db_phdangnhap' ? <PhDangNhapScreen />
       : staffLeaf === 'db_hoctap' ? <DashboardHocTapScreen />
+      : (staffLeaf === 'botroyeu' || staffLeaf === 'botroyeu:duyet') ? <DuyetBoTroYeuScreen />
+      : staffLeaf === 'botroyeu:noidung' ? <NoiDungBoTroYeuScreen />
+      : staffLeaf === 'botroyeu:trangthai' ? <TrangThaiCaBoTroScreen />
+      : staffLeaf === 'botroyeu:danhgia' ? <DanhGiaCaBoTroScreen />
+      : staffLeaf === 'xep_by' ? <XepLichBoTroYeuScreen />
       : staffLeaf === 'ns' ? <NhanSuScreen />
       : staffLeaf === 'phancong' ? <PhanCongScreen />
       : staffLeaf === 'tkb' ? <TKBScreen />

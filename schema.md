@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-137 bảng · 0 view · 0 enum · 11 trigger · 45 function
+141 bảng · 0 view · 0 enum · 13 trigger · 50 function
 
 ## _migrations
 
@@ -98,6 +98,21 @@
 | anh_dap_an | text | Y |  |  |  |
 | ma_dang | text | Y |  |  |  |
 | ly_thuyet | text | Y |  |  |  |
+
+## bai_test_cham_lai_log
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| bai_test_cau_id | uuid |  |  | FK→bai_test_cau.id |  |
+| key_cu | jsonb | Y |  |  |  |
+| key_moi | jsonb | Y |  |  |  |
+| so_bai | integer |  | 0 |  |  |
+| sai_thanh_dung | integer |  | 0 |  |  |
+| dung_thanh_sai | integer |  | 0 |  |  |
+| ly_do | text | Y |  |  |  |
+| nguoi | uuid | Y |  |  |  |
+| tao_at | timestamp with time zone |  | now() |  |  |
 
 ## bai_test_report
 
@@ -228,6 +243,7 @@
 | ket_qua | text | Y |  |  | `dat` · `mot_phan` · `chua_dat` · `bo` |
 | dong_boi | uuid | Y |  | FK→nhan_su.id |  |
 | ghi_chu_dong | text | Y |  |  |  |
+| case_truoc_id | uuid | Y |  | FK→bo_tro_yeu.id |  |
 
 ## bo_tro_yeu_dang
 
@@ -771,7 +787,7 @@
 |---|---|---|---|---|---|
 | id | uuid |  | gen_random_uuid() | PK |  |
 | mon | text |  | 'Toán'::text |  |  |
-| ma | text |  | ('BT.'::text \|\| lpad((nextval('hinh_baitoan_seq'::regclass))::text, 3, '0'::text)) |  |  |
+| ma | text |  |  |  |  |
 | phat_bieu | text |  |  |  |  |
 | mo_hinh_id | uuid |  |  | FK→hinh_mo_hinh.id |  |
 | cap | smallint |  |  |  |  |
@@ -923,6 +939,7 @@
 | thu_tu | integer |  | 0 |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | so_dong | integer | Y |  |  |  |
+| hinh_che_do | text |  | 'hien'::text |  | `hien` · `o_trong` · `khong` |
 
 ## hinh_gt_buoi
 
@@ -1035,6 +1052,36 @@
 |---|---|---|---|---|---|
 | id | uuid |  | gen_random_uuid() | PK |  |
 | hoa_don_id | uuid |  |  | FK→hoa_don.id |  |
+| hanh_dong | text |  |  |  |  |
+| truoc | jsonb | Y |  |  |  |
+| sau | jsonb |  |  |  |  |
+| actor | uuid | Y |  |  |  |
+| ts | timestamp with time zone |  | now() |  |  |
+
+## hoat_dong_phong
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| phong_id | uuid |  |  | FK→phong.id |  |
+| ngay | date |  |  |  |  |
+| gio_bat_dau | time without time zone |  |  |  |  |
+| gio_ket_thuc | time without time zone |  |  |  |  |
+| loai | text |  |  |  | `hop_noi_bo` · `hoc_tap_ngoai_lich` · `viec_khac` |
+| tieu_de | text |  |  |  |  |
+| mon | text | Y |  |  |  |
+| ghi_chu | text | Y |  |  |  |
+| nguoi_tao_id | uuid | Y |  | FK→nhan_su.id |  |
+| trang_thai | text |  | 'xac_nhan'::text |  | `xac_nhan` · `huy` |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
+## hoat_dong_phong_log
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| hoat_dong_phong_id | uuid | Y |  |  |  |
 | hanh_dong | text |  |  |  |  |
 | truoc | jsonb | Y |  |  |  |
 | sau | jsonb |  |  |  |  |
@@ -1491,6 +1538,19 @@
 | hieu_luc_den | date | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 
+## phong
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| ma_phong | text |  |  |  |  |
+| ten_phong | text |  |  |  |  |
+| suc_chua | integer | Y |  |  |  |
+| thu_tu | integer |  |  |  |  |
+| dang_hoat_dong | boolean |  | true |  |  |
+| ghi_chu | text | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
 ## phu_huynh
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -1881,7 +1941,9 @@
 | ca_test | trg_log_ca_test | AFTER | INSERT/UPDATE | log_ca_test |
 | dai_cau_hoi | trg_log_kho_cau_dai | AFTER | DELETE/UPDATE | log_kho_cau |
 | hgt_cau_hoi | trg_log_kho_cau_hgt | AFTER | DELETE/UPDATE | log_kho_cau |
+| hinh_baitoan | hinh_baitoan_gen_ma_trg | BEFORE | INSERT | hinh_baitoan_gen_ma |
 | hoa_don | trg_log_hoa_don | AFTER | INSERT/UPDATE | log_hoa_don |
+| hoat_dong_phong | trg_log_hoat_dong_phong | AFTER | INSERT/UPDATE | log_hoat_dong_phong |
 | hoc_sinh | trg_hs_nghi_tu_roi_lop | AFTER | UPDATE | hs_nghi_tu_roi_lop |
 | hoc_sinh | trg_log_he_so_hoc_phi | AFTER | UPDATE | log_he_so_hoc_phi |
 | hoc_sinh_lop | trg_log_hoc_sinh_lop | AFTER | INSERT/UPDATE | log_hoc_sinh_lop |
@@ -1891,6 +1953,8 @@
 
 ## Functions
 
+- `bai_test_con_han(p_bai_test uuid)` → boolean
+- `buoi_ke_tiep(p_lop uuid, p_tu date)` → date
 - `co_chuc_nang(p_chuc_nang text)` → boolean
 - `co_quyen_ghi(p_chuc_nang text)` → boolean
 - `count_cau_by_dang(p_tbl text)` → jsonb
@@ -1901,10 +1965,12 @@
 - `et_de(p_bai_test uuid)` → jsonb
 - `et_nop(p_bai_lam uuid)` → jsonb
 - `giaoviec_housekeeping()` → void
+- `han_nop_bai_test(p_lop uuid, p_ngay date, p_loai text)` → timestamp with time zone
 - `hgt_cum_hau_due(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `hgt_cum_tien_de_bao_dong(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `hgt_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `hgt_dang_tien_de_bao_dong(goc text)` → TABLE(ma_dang text, do_sau integer)
+- `hinh_baitoan_gen_ma()` → trigger
 - `hinh_bao_dong_tien_de(goc uuid)` → TABLE(id uuid, do_sau integer)
 - `hinh_mo_hinh_hau_due(goc uuid)` → TABLE(id uuid, do_sau integer)
 - `hinh_mo_hinh_to_tien(nut uuid)` → TABLE(id uuid, do_sau integer)
@@ -1922,6 +1988,7 @@
 - `log_ca_test()` → trigger
 - `log_he_so_hoc_phi()` → trigger
 - `log_hoa_don()` → trigger
+- `log_hoat_dong_phong()` → trigger
 - `log_hoc_sinh_lop()` → trigger
 - `log_kho_cau()` → trigger
 - `log_ung_vien()` → trigger

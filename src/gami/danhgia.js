@@ -236,7 +236,7 @@ export function lenRoiRot(retests, moc = DANHGIA_CONFIG.MOC) {
 //   bayGio: ms (test bơm vào cho tất định)
 export function deXuatLevelKienThuc(input) {
   const cfg = DANHGIA_CONFIG
-  const { levelHienTai = 0, dangs = [], coChuongDo = false, coLoTienQuyet = false, nhipOnLienTiep = 0, bayGio = 0 } = input
+  const { levelHienTai = 0, dangs = [], coChuongDo = false, coLoTienQuyet = false, coSoLopKem = false, nhipOnLienTiep = 0, bayGio = 0 } = input
   const lyDo = []
 
   // ⭐ DIỆN dùng 2 MỐC LỆCH NHAU (trễ — xem DANHGIA_CONFIG.MOC):
@@ -272,28 +272,38 @@ export function deXuatLevelKienThuc(input) {
     return ket(Math.min(levelHienTai + 1, 3), lyDo, { dien, yeuThieuDo, canLuyen, btvnChe })
   }
 
-  // Diện RỖNG → đề xuất XUỐNG. L1 = 1 nhịp đủ (lỗ nông) · L2/L3 = phải 2 nhịp (lỗ sâu, kiểm độ
-  // BỀN của "hiểu bài", chống hiểu-giả/nhớ-tạm) → ổn lần đầu chỉ về L1.
-  if (dien.length === 0) {
+  // ⑤ SO TB LỚP (Thùy 08-17) — so điểm TỔNG ET/BTVN với TB lớp CÙNG bài (KHÔNG phải theo dạng/
+  //   chuyên đề, 2 cái đó đã có ngưỡng tuyệt đối riêng ở trên). Input `coSoLopKem` do lớp gọi
+  //   (`src/lib/danhgia.ts`) tính sẵn: điểm < TB lớp × 0.8, ≥2/3 bài ET/BTVN gần nhất (3 bài gần
+  //   nhất) — nhất quán gate độ tin n≥3 toàn hệ. Đây là tín hiệu BỔ SUNG độc lập với diện dạng cụ
+  //   thể: "1 trong 2 (diện dạng HOẶC so-lớp) chạm là đủ để coi còn vấn đề, không cần cả hai."
+  const conVanDe = dien.length > 0 || coSoLopKem
+
+  // Diện+so-lớp RỖNG → đề xuất XUỐNG. 2 nhịp diện-rỗng liên tiếp (bất kỳ level nào, kể cả L2/L3)
+  // → về THẲNG L0 (Thùy 08-17: bỏ điểm dừng L1 — case đóng dứt điểm sau đúng 2 mốc đo, không lửng
+  // lơ thêm 1 vòng). L1 vẫn chỉ cần 1 nhịp (lỗ nông).
+  if (!conVanDe) {
     if (levelHienTai === 0) return ket(0, ['diện yếu rỗng'], { dien, yeuThieuDo, canLuyen, btvnChe })
     if (levelHienTai === 1) {
       lyDo.push('diện yếu RỖNG, 1 nhịp retest ổn (lỗ nông → đủ)')
       return ket(0, lyDo, { dien, yeuThieuDo, canLuyen, btvnChe })
     }
     if (nhipOnLienTiep >= 2) {
-      lyDo.push('diện yếu RỖNG 2 nhịp liên tiếp (đã kiểm độ bền)')
-      return ket(1, lyDo, { dien, yeuThieuDo, canLuyen, btvnChe })
+      lyDo.push('diện yếu RỖNG 2 nhịp liên tiếp (đã kiểm độ bền) — về thẳng L0')
+      return ket(0, lyDo, { dien, yeuThieuDo, canLuyen, btvnChe })
     }
-    lyDo.push('diện yếu RỖNG 1 nhịp — L2/L3 cần 2 nhịp, buổi sau retest lại mới hạ')
+    lyDo.push('diện yếu RỖNG 1 nhịp — cần 2 nhịp liên tiếp mới hạ')
     return ket(levelHienTai, lyDo, { dien, yeuThieuDo, canLuyen, btvnChe })
   }
 
-  // Còn diện, chưa có tín hiệu "không work" → L0 lên L1; đang ở L1+ thì GIỮ, xử nốt.
+  // Còn diện hoặc còn so-lớp kém, chưa có tín hiệu "không work" → L0 lên L1; đang ở L1+ thì GIỮ, xử nốt.
   if (levelHienTai === 0) {
-    lyDo.push(`${dien.length} dạng yếu (<0.5, đủ ${cfg.GATE_N} lần đo)`)
+    if (dien.length > 0) lyDo.push(`${dien.length} dạng yếu (<0.5, đủ ${cfg.GATE_N} lần đo)`)
+    if (coSoLopKem) lyDo.push('⑤ điểm ET/BTVN tổng dưới 80% TB lớp (≥2/3 bài gần nhất)')
     return ket(1, lyDo, { dien, yeuThieuDo, canLuyen, btvnChe })
   }
-  lyDo.push(`còn ${dien.length} dạng trong diện, đang xử`)
+  if (dien.length > 0) lyDo.push(`còn ${dien.length} dạng trong diện, đang xử`)
+  if (coSoLopKem) lyDo.push('⑤ vẫn dưới 80% TB lớp')
   return ket(levelHienTai, lyDo, { dien, yeuThieuDo, canLuyen, btvnChe })
 }
 

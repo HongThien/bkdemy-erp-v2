@@ -874,7 +874,7 @@ export async function setDanhGiaDang(buoiId: string, hsId: string, maDang: strin
 //   GV → đánh giá sau buổi + chấm bài trên lớp · TG → chấm bài trên lớp + chấm ET.
 export type TabKey = 'diemdanh' | 'danhgia' | 'ingame' | 'et' | 'btvn' | 'mt'
 // deadline (Thùy chốt): chấm bài + đánh giá = 23h59 ngày buổi · ET = 12h trưa hôm sau · BTVN = 2h TRƯỚC ca học tiếp theo của lớp · MT = 23h59 ngày thi (giống chấm bài).
-export type MyTask = { buoiId: string; lopId: string; lop: string; ngay: string; vai: 'gv' | 'tg'; tab: TabKey; label: string; done: boolean; doneAt: string | null; deadline: number | null; loai?: 'bu' | 'bo_tro_duoi' }
+export type MyTask = { buoiId: string; lopId: string; lop: string; ngay: string; vai: 'gv' | 'tg'; tab: TabKey; label: string; done: boolean; doneAt: string | null; deadline: number | null; loai?: 'bu' | 'bo_tro_duoi' | 'bo_tro_yeu' }
 // Export: trợ lý cần ĐÚNG bảng vai→khâu này để dựng rổ "dự kiến hôm nay" cho buổi CHƯA MỞ
 // (chưa có dòng buoi_hoc ⇒ chưa có task để đọc). Chép lại một bản thứ hai ở troly.ts là đẻ
 // hai nguồn sự thật rồi lệch — thêm khâu ở đây mà quên bên kia thì rổ dự kiến thiếu âm thầm.
@@ -988,6 +988,30 @@ export async function getMyTasks(): Promise<MyTask[]> {
     const vaiBu: 'gv' | 'tg' = b.nguoi_day_tg ? 'tg' : 'gv' // nhãn vai theo slot owner thật (fallback GV khi thiếu TA)
     out.push({ buoiId: b.id, lopId: '', lop: 'Buổi bù', ngay: b.ngay, vai: vaiBu, tab: 'et', label: 'Chấm ET (bù)', done: !!b.et_dong_at, doneAt: b.et_dong_at, deadline: vnInstant(congNgay(b.ngay, 1), '12:00'), loai: 'bu' })
     out.push({ buoiId: b.id, lopId: '', lop: 'Buổi bù', ngay: b.ngay, vai: vaiBu, tab: 'danhgia', label: 'Đánh giá buổi bù', done: !!b.danh_gia_xong_at, doneAt: b.danh_gia_xong_at, deadline: vnInstant(b.ngay, '23:59'), loai: 'bu' })
+  }
+  // ── BUỔI BỔ TRỢ YẾU (loai='bo_tro_yeu'): TA/GV cao cấp đứng lớp (nguoi_day_tg) làm CẢ chấm ET LẪN
+  // đánh giá, ĐỐI XỨNG buổi bù (khác đuổi — đuổi không đo mastery nên không có ET). 1 buổi = 1 HS,
+  // không gom nhiều em như buổi bù (PLAN-botro-yeu.md §0 mục 4). Cùng luật "0 HS có mặt = không sinh
+  // task" như buổi bù (N/A, không phải "chưa xong") — xem bug 07-16 ở khối BUỔI BÙ phía trên.
+  const { data: by } = await supabase.from('buoi_hoc')
+    .select('id, ngay, nguoi_day, nguoi_day_tg, et_dong_at, danh_gia_xong_at').eq('loai', 'bo_tro_yeu').neq('trang_thai', 'huy')
+    .or(`nguoi_day.eq.${myId},nguoi_day_tg.eq.${myId}`).limit(LIMIT)
+  const byMine = ((by ?? []) as any[]).filter((b) => (b.nguoi_day_tg ?? b.nguoi_day) === myId)
+  const byIds = byMine.map((b) => b.id)
+  const coMatCountBy = new Map<string, number>()
+  const chuaDDBy = new Map<string, number>()
+  if (byIds.length) {
+    const { data: byRoster } = await supabase.from('buoi_hoc_hs').select('buoi_hoc_id, diem_danh').in('buoi_hoc_id', byIds).limit(LIMIT)
+    for (const r of (byRoster ?? []) as any[]) {
+      if (r.diem_danh === 'co_mat') coMatCountBy.set(r.buoi_hoc_id, (coMatCountBy.get(r.buoi_hoc_id) ?? 0) + 1)
+      else if (r.diem_danh == null) chuaDDBy.set(r.buoi_hoc_id, (chuaDDBy.get(r.buoi_hoc_id) ?? 0) + 1)
+    }
+  }
+  for (const b of byMine) {
+    if ((coMatCountBy.get(b.id) ?? 0) === 0 && (chuaDDBy.get(b.id) ?? 0) === 0) continue
+    const vaiBy: 'gv' | 'tg' = b.nguoi_day_tg ? 'tg' : 'gv'
+    out.push({ buoiId: b.id, lopId: '', lop: 'Bổ trợ yếu', ngay: b.ngay, vai: vaiBy, tab: 'et', label: 'Chấm ET (bổ trợ yếu)', done: !!b.et_dong_at, doneAt: b.et_dong_at, deadline: vnInstant(congNgay(b.ngay, 1), '12:00'), loai: 'bo_tro_yeu' })
+    out.push({ buoiId: b.id, lopId: '', lop: 'Bổ trợ yếu', ngay: b.ngay, vai: vaiBy, tab: 'danhgia', label: 'Đánh giá bổ trợ yếu', done: !!b.danh_gia_xong_at, doneAt: b.danh_gia_xong_at, deadline: vnInstant(b.ngay, '23:59'), loai: 'bo_tro_yeu' })
   }
   // ── BUỔI ĐUỔI (loai='bo_tro_duoi'): TA đứng lớp (nguoi_day_tg) nhận xét + tick "dạng đã dạy" ở
   // BuoiDuoiDetail. Buổi đuổi do TA chạy như buổi bù (Thùy chốt 07-26 — nhất quán với buổi bù); GV

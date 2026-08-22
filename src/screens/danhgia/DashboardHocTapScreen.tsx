@@ -12,15 +12,20 @@ import { useEffect, useMemo, useState } from 'react'
 import SearchSelect, { type Opt } from '../../components/SearchSelect'
 import { supabase } from '../../lib/supabase'
 import { maChuyenDeCua } from '../../lib/kho/api'
-import { listCandidatesLop, duyetLevel, getLevelLog, cuaSoHienTai, taoAiJob, getAiJob, listAiJobs, tienCuaLuot, MODEL_CHON, MODEL_MAC_DINH, type Candidate, type LevelLogRow, type AiJob } from '../../lib/danhgia'
+import { listCandidatesLop, duyetLevel, getLevelLog, cuaSoHienTai, taoAiJob, getAiJob, listAiJobs, tienCuaLuot, getLichSuChuyenDe, MODEL_CHON, MODEL_MAC_DINH, type Candidate, type LevelLogRow, type AiJob, type LanLamChuyenDe } from '../../lib/danhgia'
+import { moHoacGopCaseBoTroYeu, type NguonBoTroYeu } from '../../lib/botro_yeu'
 
 // ⚠ HAI THANG LEVEL KHÁC NGHĨA — KHÔNG dùng chung nhãn (spec §4.1 vs §4.2).
-// Kiến thức: L1 để ý · L2 bổ trợ riêng · L3 vượt quy trình (team học thuật).
-// Thái độ  : L1 nhắc HS · L2 nhắc PHỤ HUYNH. (Đã suýt sai: thái độ L2 hiện "Cần bổ trợ"
-// → nhân viên đọc xong sẽ đi xếp buổi bổ trợ trong khi việc phải làm là gọi phụ huynh.)
+// Kiến thức: L0 = bình thường HOẶC "cần theo dõi" (Thùy 08-18: "cần để ý" gộp về L0 — "theo dõi"
+//   đã có khu riêng "Dưới ngưỡng" ở trên, không cần tách thành 1 mức) · L1 = bổ trợ mức 1 (trước/
+//   sau giờ, TA) · L2 = bổ trợ mức 2 (buổi riêng, TA) · L3 = bổ trợ mức 2 đổi người (buổi riêng,
+//   GV cao cấp). L1-L3 đều MỞ CASE `bo_tro_yeu` (xem `luu()` ở `DuyetKhoi`, gọi `botro_yeu.ts`).
+// Thái độ  : L1 nhắc HS · L2 nhắc PHỤ HUYNH — KHÔNG mở case (PLAN-botro-yeu.md §0 mục 10). (Đã
+//   suýt sai: thái độ L2 hiện "Cần bổ trợ" → nhân viên đọc xong sẽ đi xếp buổi bổ trợ trong khi
+//   việc phải làm là gọi phụ huynh — giữ 2 nhãn tách biệt để không lặp lại.)
 const CLS = ['bg-slate-100 text-slate-600 ring-slate-200', 'bg-amber-50 text-amber-700 ring-amber-200',
   'bg-orange-50 text-orange-700 ring-orange-200', 'bg-rose-50 text-rose-700 ring-rose-200']
-const TEN_KT = ['Bình thường', 'Cần để ý', 'Cần bổ trợ', 'Vượt quy trình']
+const TEN_KT = ['Bình thường', 'Bổ trợ mức 1 · sau giờ', 'Bổ trợ mức 2 · TA riêng', 'Bổ trợ mức 2 · GV cao cấp']
 const TEN_TD = ['Bình thường', 'Nhắc học sinh', 'Nhắc phụ huynh', 'Nhắc phụ huynh']
 const lvUI = (lv: number, loai: 'kien_thuc' | 'thai_do') =>
   ({ ten: `L${lv} · ${(loai === 'thai_do' ? TEN_TD : TEN_KT)[lv]}`, cls: CLS[lv] })
@@ -324,22 +329,43 @@ function CandCard({ c, onMo }: { c: Candidate; onMo: () => void }) {
 }
 
 // ── Modal chi tiết + DUYỆT ────────────────────────────────────────────────────
-function ChiTietModal({ c, onDong, onXong }: { c: Candidate; onDong: () => void; onXong: () => void }) {
+// Export cho `DuyetBoTroYeuScreen.tsx` tái dùng NGUYÊN khối "vì sao cần lưu ý" (Thùy 08-18: card
+// duyệt bổ trợ thiếu hẳn context, cần y hệt info của modal Dashboard, không phải bản rút gọn).
+// `children` = chỗ chèn khối Duyệt (Vùng 4) — mỗi nơi gọi cần widget khác nhau (Dashboard: cả kiến
+// thức lẫn thái độ; Duyệt bổ trợ: chỉ kiến thức) nên để caller tự quyết, không cứng trong này.
+export function CandidateDetailBody({ c, children }: { c: Candidate; children?: React.ReactNode }) {
   const [log, setLog] = useState<LevelLogRow[]>([])
   useEffect(() => { getLevelLog(c.hoc_sinh_id, c.mon).then(setLog) }, [c.hoc_sinh_id, c.mon])
+
+  // Detail lười (Thùy 08-18): "soi" chuyên đề = lịch sử làm bài; "soi" thái độ = danh sách buổi.
+  // Chỉ 1 khối mở tại 1 thời điểm (đơn giản UI) — mở khối khác thì đóng khối cũ.
+  const [moChiTiet, setMoChiTiet] = useState<string | null>(null) // 'thaido' | `cd:${ma_chuyen_de}` | null
+  const [lichSuCd, setLichSuCd] = useState<Record<string, LanLamChuyenDe[]>>({})
+  const [dangTaiCd, setDangTaiCd] = useState<string | null>(null)
+  async function toggleCd(ma: string) {
+    const key = `cd:${ma}`
+    if (moChiTiet === key) { setMoChiTiet(null); return }
+    setMoChiTiet(key)
+    if (!lichSuCd[ma]) {
+      setDangTaiCd(ma)
+      try { const rows = await getLichSuChuyenDe(c.hoc_sinh_id, ma, c.mon); setLichSuCd((m) => ({ ...m, [ma]: rows })) }
+      finally { setDangTaiCd(null) }
+    }
+  }
 
   const dangs = c.sheet.dangs
   // Vùng 1: dạng đổi MỨC giữa 2 cửa sổ (cần có `mucTruoc` mới so được).
   const doiMuc = dangs.filter((d) => d.mucTruoc && d.mucTruoc !== d.muc)
   const tut = doiMuc.filter((d) => MUC_RANK[d.muc] < MUC_RANK[d.mucTruoc!])
   const len = doiMuc.filter((d) => MUC_RANK[d.muc] > MUC_RANK[d.mucTruoc!])
-  // Điểm chuyên đề: 2 cửa sổ có điểm gần nhất (mã đủ, không cần tên — Thùy 07-25).
+  // Điểm chuyên đề: 2 cửa sổ có điểm gần nhất. Thùy 08-18: hiện lại TÊN (07-25 từng bỏ, giờ cần
+  // đọc nhanh không phải tra mã) + cho soi detail (lịch sử làm bài của chuyên đề đó).
   const cdDelta = c.sheet.chuyenDes.map((cd) => {
     const pts = cd.chuoi.filter((p) => p.score != null)
     if (pts.length < 2) return null
     const tu = pts[pts.length - 2].score!, den = pts[pts.length - 1].score!
-    return { ma: cd.ma_chuyen_de, tu, den, delta: den - tu }
-  }).filter(Boolean) as { ma: string; tu: number; den: number; delta: number }[]
+    return { ma: cd.ma_chuyen_de, ten: cd.ten_chuyen_de, tu, den, delta: den - tu }
+  }).filter(Boolean) as { ma: string; ten: string; tu: number; den: number; delta: number }[]
   // Vùng 3: dạng CÓ thay đổi điểm (gồm "mới" nếu đáng chú ý) — nhóm theo chuyên đề.
   const doiDang = dangs.filter((d) => d.scoreTruoc == null ? (d.trongDien || d.muc !== 'dat') : Math.abs(d.score - d.scoreTruoc) > 0.005)
   const nhomDoi = new Map<string, typeof dangs>()
@@ -348,16 +374,7 @@ function ChiTietModal({ c, onDong, onXong }: { c: Candidate; onDong: () => void;
   const dienYen = dangs.filter((d) => d.trongDien && !doiDang.includes(d))
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center overflow-auto bg-slate-900/40 p-8" onClick={onDong}>
-      <div className="w-full max-w-[900px] rounded-2xl bg-white p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
-        <div className="mb-4 flex items-center justify-between">
-          <div>
-            <h3 className="text-[18px] font-bold text-slate-800">{c.ho_ten}</h3>
-            <p className="text-[12px] text-slate-500">{c.mon} · kỳ {cuaSoHienTai()}</p>
-          </div>
-          <button onClick={onDong} className="rounded-lg px-3 py-1.5 text-slate-400 hover:bg-slate-100">✕</button>
-        </div>
-
+    <>
         {/* ── VÙNG 1 — Vì sao cần lưu ý (tổng quan ngắn gọn) ─────────────────────── */}
         <Khoi ten="Vì sao cần lưu ý">
           <table className="w-full text-[13px]">
@@ -368,14 +385,66 @@ function ChiTietModal({ c, onDong, onXong }: { c: Candidate; onDong: () => void;
               </tr>
               <tr className="border-t border-slate-100">
                 <td className="py-1.5 align-top text-slate-500">Thái độ</td>
-                <td className="py-1.5 text-slate-700">{thaiDoTomTat(c.sheet.thaiDo)}</td>
+                <td className="py-1.5 text-slate-700">
+                  <div className="flex items-center gap-2">
+                    <span>{thaiDoTomTat(c.sheet.thaiDo)}</span>
+                    {c.sheet.thaiDo.length > 0 && (
+                      <button onClick={() => setMoChiTiet((v) => v === 'thaido' ? null : 'thaido')}
+                        className="text-[11px] font-semibold text-indigo-600 hover:underline">
+                        {moChiTiet === 'thaido' ? 'ẩn' : 'soi buổi'}
+                      </button>
+                    )}
+                  </div>
+                  {moChiTiet === 'thaido' && (
+                    <ul className="mt-1.5 space-y-0.5 rounded-lg bg-slate-50 p-2 text-[12px]">
+                      {c.sheet.thaiDo.map((t, i) => (
+                        <li key={i} className="flex justify-between">
+                          <span className="text-slate-400">{new Date(t.t).toLocaleDateString('vi-VN')}</span>
+                          <span className={t.thai_do === 'nghiem_tuc' ? 'text-slate-600' : 'font-semibold text-amber-700'}>{t.thai_do}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </td>
               </tr>
               <tr className="border-t border-slate-100">
                 <td className="py-1.5 align-top text-slate-500">Điểm chuyên đề</td>
                 <td className="py-1.5 tabular-nums">
                   {cdDelta.length === 0 ? <span className="text-slate-400">chưa đủ 2 cửa sổ để so</span> : cdDelta.map((x) => (
                     <div key={x.ma} className="leading-relaxed">
-                      <span className="text-slate-400">{x.ma}</span> {x.tu.toFixed(2)} → {x.den.toFixed(2)} <span className={deltaCls(x.delta)}>({x.delta >= 0 ? '+' : ''}{x.delta.toFixed(2)})</span>
+                      <div className="flex items-center gap-2">
+                        <span className="font-medium text-slate-700">{x.ten}</span>
+                        <span className="text-[11px] text-slate-400">{x.ma}</span>
+                        {x.tu.toFixed(2)} → {x.den.toFixed(2)} <span className={deltaCls(x.delta)}>({x.delta >= 0 ? '+' : ''}{x.delta.toFixed(2)})</span>
+                        <button onClick={() => toggleCd(x.ma)} className="text-[11px] font-semibold text-indigo-600 hover:underline">
+                          {moChiTiet === `cd:${x.ma}` ? 'ẩn' : 'soi lịch sử'}
+                        </button>
+                      </div>
+                      {moChiTiet === `cd:${x.ma}` && (
+                        dangTaiCd === x.ma ? <p className="mt-1 text-[11px] text-slate-400">Đang tải…</p> : (
+                          <table className="mt-1.5 w-full rounded-lg bg-slate-50 text-[12px] normal-case">
+                            <thead><tr className="text-left text-[10px] uppercase text-slate-400">
+                              <th className="px-2 py-1 font-normal">Dạng</th><th className="px-2 py-1 font-normal">Loại bài</th><th className="px-2 py-1 font-normal">Ngày</th><th className="px-2 py-1 text-right font-normal">DCS</th>
+                            </tr></thead>
+                            <tbody>
+                              {(lichSuCd[x.ma] ?? []).length === 0 ? (
+                                <tr><td colSpan={4} className="px-2 py-1.5 text-slate-400">Chưa có lần làm nào.</td></tr>
+                              ) : (lichSuCd[x.ma] ?? []).map((l, i) => (
+                                <tr key={i} className="border-t border-white">
+                                  <td className="px-2 py-1 text-slate-600">{l.ten_dang}</td>
+                                  <td className="px-2 py-1 text-slate-500">{l.nguon}</td>
+                                  <td className="px-2 py-1 text-slate-400">{new Date(l.ngay).toLocaleDateString('vi-VN')}</td>
+                                  <td className="px-2 py-1 text-right font-bold">
+                                    <span className={l.result === 'correct' ? 'text-emerald-600' : l.result === 'partial' ? 'text-amber-600' : 'text-rose-600'}>
+                                      {l.result === 'correct' ? 'Đ' : l.result === 'partial' ? 'C' : 'S'}
+                                    </span>
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        )
+                      )}
                     </div>
                   ))}
                 </td>
@@ -455,11 +524,8 @@ function ChiTietModal({ c, onDong, onXong }: { c: Candidate; onDong: () => void;
           )}
         </Khoi>
 
-        {/* ── VÙNG 4 — Duyệt (máy đề xuất, người quyết) ──────────────────────────── */}
-        <div className="grid gap-4 md:grid-cols-2">
-          <DuyetKhoi c={c} loai="kien_thuc" ten="Level kiến thức" hienTai={c.sheet.levelKienThuc} deXuat={c.deXuatKienThuc} onXong={onXong} />
-          <DuyetKhoi c={c} loai="thai_do" ten="Level thái độ" hienTai={c.sheet.levelThaiDo} deXuat={c.deXuatThaiDo} onXong={onXong} />
-        </div>
+        {/* ── VÙNG 4 — Duyệt (máy đề xuất, người quyết) — caller tự chọn widget qua children ── */}
+        {children}
 
         <Khoi ten={`Lịch sử duyệt (${log.length})`}>
           {log.length === 0 ? <p className="text-[12px] text-slate-400">Chưa có lượt duyệt nào.</p> : (
@@ -475,6 +541,29 @@ function ChiTietModal({ c, onDong, onXong }: { c: Candidate; onDong: () => void;
             </ul>
           )}
         </Khoi>
+    </>
+  )
+}
+
+// Modal chrome (header/close/overlay) — nội dung THẬT nằm ở `CandidateDetailBody` (tái dùng ở
+// DuyetBoTroYeuScreen.tsx). Tách để không lặp code chrome/nội dung.
+function ChiTietModal({ c, onDong, onXong }: { c: Candidate; onDong: () => void; onXong: () => void }) {
+  return (
+    <div className="fixed inset-0 z-50 flex items-start justify-center overflow-auto bg-slate-900/40 p-8" onClick={onDong}>
+      <div className="w-full max-w-[900px] rounded-2xl bg-white p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
+        <div className="mb-4 flex items-center justify-between">
+          <div>
+            <h3 className="text-[18px] font-bold text-slate-800">{c.ho_ten}</h3>
+            <p className="text-[12px] text-slate-500">{c.mon} · kỳ {cuaSoHienTai()}</p>
+          </div>
+          <button onClick={onDong} className="rounded-lg px-3 py-1.5 text-slate-400 hover:bg-slate-100">✕</button>
+        </div>
+        <CandidateDetailBody c={c}>
+          <div className="grid gap-4 md:grid-cols-2">
+            <DuyetKhoi c={c} loai="kien_thuc" ten="Level kiến thức" hienTai={c.sheet.levelKienThuc} deXuat={c.deXuatKienThuc} onXong={onXong} />
+            <DuyetKhoi c={c} loai="thai_do" ten="Level thái độ" hienTai={c.sheet.levelThaiDo} deXuat={c.deXuatThaiDo} onXong={onXong} />
+          </div>
+        </CandidateDetailBody>
       </div>
     </div>
   )
@@ -509,7 +598,9 @@ function goiDoiMuc(ds: { muc: 'dat' | 'can_luyen' | 'yeu'; mucTruoc: 'dat' | 'ca
 }
 
 // Người duyệt: mặc định = đề xuất của máy, sửa được. Ghi log CẢ HAI VẾ ⇒ delta tự lộ.
-function DuyetKhoi({ c, loai, ten, hienTai, deXuat, onXong }: {
+// Export cho `DuyetBoTroYeuScreen.tsx` tái dùng nguyên logic duyệt + mở case (Thùy 08-18: tách
+// "Duyệt bổ trợ" thành 1 tab riêng, KHÔNG viết lại — DRY, tránh 2 đường mở case lệch nhau).
+export function DuyetKhoi({ c, loai, ten, hienTai, deXuat, onXong }: {
   c: Candidate; loai: 'kien_thuc' | 'thai_do'; ten: string; hienTai: number; deXuat: any; onXong: () => void
 }) {
   const [chot, setChot] = useState<number>(deXuat.deXuat)
@@ -525,6 +616,18 @@ function DuyetKhoi({ c, loai, ten, hienTai, deXuat, onXong }: {
         lyDoMay: { lyDo: deXuat.lyDo, bangChung: deXuat.bangChung, kenh: c.kenh, uuTien: c.uuTien },
         lyDoNguoi: lyDo.trim() || null,
       })
+      // Kiến thức L1-L3 = đang bổ trợ → mở/gộp case `bo_tro_yeu` (PLAN-botro-yeu.md §0 mục 10:
+      // thái độ KHÔNG BAO GIỜ mở case). Gọi cả khi `chot === hienTai` ("giữ nguyên & ghi log") vì
+      // `dien` (dạng yếu) có thể đã lớn thêm từ lần duyệt trước — gộp dạng mới, không bỏ sót.
+      if (loai === 'kien_thuc' && chot >= 1) {
+        const nguon: NguonBoTroYeu = c.kenh.includes('chuong_do') ? 'chuong_do'
+          : c.kenh.includes('tien_quyet') ? 'gv_tien_quyet' : 'ai_de_xuat'
+        await moHoacGopCaseBoTroYeu({
+          hocSinhId: c.hoc_sinh_id, mon: c.mon,
+          maDangs: (deXuat.bangChung?.dien as string[] | undefined) ?? [],
+          nguon, lyDo: lyDo.trim() || deXuat.lyDo.join('; ') || null,
+        })
+      }
       onXong()
     } finally { setBusy(false) }
   }
