@@ -109,6 +109,11 @@ export async function saveBuoiSelection(buoiId: string, nhap: NhapBuoi): Promise
   if (e1) throw e1
   if (rows.length) { const { error: e2 } = await supabase.from('hinh_gt_bai').insert(rows); if (e2) throw e2 }
   await supabase.from('hinh_gt_buoi').update({ updated_at: new Date().toISOString() }).eq('id', buoiId)
+  // ⭐ 22/08: nội dung đổi → link PDF cũ (nếu có) đã lỗi thời, xếp lại hàng gen — cho MỌI phan CÓ bài sau
+  // khi lưu (phan trống thì listAllBuoiHinh không chiếu dòng nào, khỏi tốn job). saveBuoiSelection chỉ
+  // dùng cho buổi MASTER (phans lop+nha cùng lúc) nên xét cả hai, không như saveBuoiSelectionPhan (1 phan).
+  const phansConBai = new Set(rows.map((r) => r.phan))
+  for (const phan of ['lop', 'nha'] as const) if (phansConBai.has(phan)) await enqueueHinhLinkGenJob(buoiId, phan)
 }
 // ── ⭐ Chống lạm dụng BẢN (least-used, 08-08 §Kho Hình soạn): đếm số lần mỗi bản đã dùng xuyên MỌI buổi
 // (master + lớp) → Gợi ý N ưu tiên bản ÍT DÙNG NHẤT (khuôn cauUsage của Đại, tailieu.ts). ──
@@ -197,6 +202,9 @@ export async function saveBuoiSelectionPhan(buoiId: string, phan: 'lop' | 'nha' 
   if (e1) throw e1
   if (rows.length) { const { error: e2 } = await supabase.from('hinh_gt_bai').insert(rows); if (e2) throw e2 }
   await supabase.from('hinh_gt_buoi').update({ updated_at: new Date().toISOString() }).eq('id', buoiId)
+  // ⭐ 22/08: chỉ 'lop'/'nha' có link PDF tĩnh trong Kho tài liệu (ET/MT không — xem listAllBuoiHinh);
+  // KHÔNG enqueue khi rows rỗng (phan vừa bị xoá trắng — không còn dòng nào để in nữa).
+  if ((phan === 'lop' || phan === 'nha') && rows.length) await enqueueHinhLinkGenJob(buoiId, phan)
 }
 /** Bài CHỈ 1 phan của buổi → NhapBuoi (ET Hình mở lại sửa — không load lẫn 'lop'/'nha'). */
 export async function loadBuoiPicksPhan(buoiId: string, phan: 'lop' | 'nha' | 'et' | 'mt'): Promise<NhapBuoi> {
@@ -321,6 +329,7 @@ export type HinhKhoRow = {
   ten: string; khoi: string; mon: string
   loai: 'giao_trinh' | 'giao_trinh_buoi' | 'btvn'   // ⭐ CHUNG vocabulary với tai_lieu.loai (Đại) — để gộp tab lọc
   lop_id: string | null; ngay: string | null; created_at: string
+  file_url: string | null   // ⭐ 22/08 — link PDF tĩnh (worker gen), null = chưa gen/đang gen. Master (phan=null) không có.
 }
 const PHAN_NHAN_KHO: Record<'lop' | 'nha', string> = { lop: 'GT', nha: 'BTVN' }
 /** Mọi buổi Hình (master + gán lớp) → hình chiếu liệt kê chung với `tai_lieu` ở Kho tài liệu bảng-tổng.
@@ -329,11 +338,11 @@ const PHAN_NHAN_KHO: Record<'lop' | 'nha', string> = { lop: 'GT', nha: 'BTVN' }
 export async function listAllBuoiHinh(): Promise<HinhKhoRow[]> {
   const [{ data: gts, error: e1 }, { data: buois, error: e2 }] = await Promise.all([
     supabase.from('hinh_giao_trinh').select('id, ten, khoi, mon').limit(LIMIT),
-    supabase.from('hinh_gt_buoi').select('id, tieu_de, giao_trinh_id, lop_id, ngay, nguon_buoi_id, created_at').limit(LIMIT),
+    supabase.from('hinh_gt_buoi').select('id, tieu_de, giao_trinh_id, lop_id, ngay, nguon_buoi_id, created_at, file_urls').limit(LIMIT),
   ])
   if (e1) throw e1; if (e2) throw e2
   const gtMap = new Map(((gts ?? []) as { id: string; ten: string; khoi: string; mon: string }[]).map((g) => [g.id, g]))
-  const rows = (buois ?? []) as { id: string; tieu_de: string | null; giao_trinh_id: string | null; lop_id: string | null; ngay: string | null; nguon_buoi_id: string | null; created_at: string }[]
+  const rows = (buois ?? []) as { id: string; tieu_de: string | null; giao_trinh_id: string | null; lop_id: string | null; ngay: string | null; nguon_buoi_id: string | null; created_at: string; file_urls: Record<string, string> | null }[]
   const byId = new Map(rows.map((r) => [r.id, r]))
   const gtOfMasterBuoi = (masterBuoiId: string | null) => {
     const m = masterBuoiId ? byId.get(masterBuoiId) : null
@@ -368,7 +377,7 @@ export async function listAllBuoiHinh(): Promise<HinhKhoRow[]> {
       out.push({
         id: r.id, buoiId: r.id, phan: null,
         ten: `${g.ten} — ${r.tieu_de || 'Buổi'}`, khoi: g.khoi, mon: g.mon, loai: 'giao_trinh',
-        lop_id: null, ngay: null, created_at: r.created_at,
+        lop_id: null, ngay: null, created_at: r.created_at, file_url: null,
       })
     } else if (r.lop_id) {
       // Buổi ĐÃ GÁN LỚP — tách 1 dòng / phan có bài, loai chung vocabulary Đại, tên đúng công thức
@@ -384,11 +393,48 @@ export async function listAllBuoiHinh(): Promise<HinhKhoRow[]> {
           khoi: g.khoi, mon: g.mon,
           loai: phan === 'lop' ? 'giao_trinh_buoi' : 'btvn',
           lop_id: r.lop_id, ngay: r.ngay, created_at: r.created_at,
+          file_url: r.file_urls?.[phan] ?? null,
         })
       }
     }
   }
   return out
+}
+
+// ══════════════ ⭐ GEN-LINK PDF TĨNH cho Hình (22/08) — khuôn linkgen_jobs của Đại ══════════════
+// Bảng riêng `hinh_linkgen_jobs` (khoá (buoi_id,phan), KHÔNG FK — xem migration) — worker (worker/index.mjs)
+// poll bảng này SAU KHI linkgen_jobs (Đại) rỗng, ghi kết quả vào hinh_gt_buoi.file_urls[phan].
+export type HinhLinkGenJob = { buoi_id: string; phan: 'lop' | 'nha'; status: 'pending' | 'processing' | 'done' | 'failed'; attempt: number; error: string | null }
+export async function listHinhLinkGenJobs(): Promise<HinhLinkGenJob[]> {
+  const { data, error } = await supabase.from('hinh_linkgen_jobs').select('*').neq('status', 'done').limit(2000)
+  if (error) throw error
+  return (data ?? []) as HinhLinkGenJob[]
+}
+/** Xếp hàng gen lại link — fire-and-forget (khuôn enqueueLinkGenJob của Đại, lib/linkgen.ts): PK = (buoi_id,
+ *  phan) nên re-enqueue là ghi đè idempotent, không tích luỹ job trùng. */
+export async function enqueueHinhLinkGenJob(buoiId: string, phan: 'lop' | 'nha'): Promise<void> {
+  await supabase.from('hinh_linkgen_jobs').upsert(
+    { buoi_id: buoiId, phan, status: 'pending', attempt: 0, error: null, updated_at: new Date().toISOString() },
+    { onConflict: 'buoi_id,phan' },
+  )
+}
+/** Meta 1 buổi (khối/tên giáo trình/lớp+ngày nếu đã gán) — dùng để dựng title/khoi khi in mà chỉ có
+ *  buoiId trong tay (PrintJobPage.tsx, worker gen-link). Khuôn hệt phần resolve trong listAllBuoiHinh
+ *  nhưng cho ĐÚNG 1 buổi thay vì liệt kê hàng loạt. */
+export async function getHinhBuoiMeta(buoiId: string): Promise<{ khoi: string; tenGiaoTrinh: string; lopId: string | null; tenLop: string | null; ngay: string | null; tieuDe: string | null } | null> {
+  const { data: b, error } = await supabase.from('hinh_gt_buoi').select('giao_trinh_id, lop_id, ngay, nguon_buoi_id, tieu_de').eq('id', buoiId).single()
+  if (error) throw error
+  const buoi = b as { giao_trinh_id: string | null; lop_id: string | null; ngay: string | null; nguon_buoi_id: string | null; tieu_de: string | null }
+  const gtId = buoi.giao_trinh_id ?? (buoi.nguon_buoi_id
+    ? ((await supabase.from('hinh_gt_buoi').select('giao_trinh_id').eq('id', buoi.nguon_buoi_id).single()).data as { giao_trinh_id: string | null } | null)?.giao_trinh_id ?? null
+    : null)
+  if (!gtId) return null
+  const { data: gt, error: e2 } = await supabase.from('hinh_giao_trinh').select('ten, khoi').eq('id', gtId).single()
+  if (e2) throw e2
+  const g = gt as { ten: string; khoi: string }
+  let tenLop: string | null = null
+  if (buoi.lop_id) { const { data: l } = await supabase.from('lop').select('ten_lop').eq('id', buoi.lop_id).single(); tenLop = (l as { ten_lop: string } | null)?.ten_lop ?? null }
+  return { khoi: g.khoi, tenGiaoTrinh: g.ten, lopId: buoi.lop_id, tenLop, ngay: buoi.ngay, tieuDe: buoi.tieu_de }
 }
 
 // ══════════════ RESOLVE nội dung bài (để in) — fetch biến thể / ý theo id ══════════════

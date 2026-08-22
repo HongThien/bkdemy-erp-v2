@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-147 bảng · 0 view · 0 enum · 14 trigger · 63 function
+148 bảng · 0 view · 0 enum · 14 trigger · 63 function
 
 ## _app_secrets
 
@@ -179,6 +179,7 @@
 | cs_van_dung | smallint | Y |  |  |  |
 | cs_vuot_kho | smallint | Y |  |  |  |
 | cong_bo_at | timestamp with time zone | Y |  |  |  |
+| anh_bao_cao_url | text | Y |  |  |  |
 
 ## bao_loi
 
@@ -977,6 +978,19 @@
 | created_at | timestamp with time zone |  | now() |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
 | cau_hinh | jsonb |  | '{}'::jsonb |  |  |
+| file_urls | jsonb |  | '{}'::jsonb |  |  |
+
+## hinh_linkgen_jobs
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| buoi_id | uuid |  |  | PK |  |
+| phan | text |  |  | PK | `lop` · `nha` |
+| status | text |  | 'pending'::text |  | `pending` · `processing` · `done` · `failed` |
+| attempt | integer |  | 0 |  |  |
+| error | text | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
 
 ## hinh_mo_hinh
 

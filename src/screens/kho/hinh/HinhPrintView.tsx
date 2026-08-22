@@ -54,7 +54,15 @@ export type BanIn = {
   ngay?: string
 }
 
-export default function HinhPrintView({ ban, onClose, perHS }: { ban: BanIn; onClose: () => void; perHS?: HinhPerHS[] }) {
+// ⭐ 22/08 (Thùy: "làm nốt cho giống Đại — In nhanh"): `headless` = khuôn PrintView.tsx của Đại — ẩn
+// toolbar, dựng xong TỰ gọi window.print() (native, không upload gì), đóng khi hộp thoại in đóng
+// (`afterprint`). `onReady`/`onRenderErr` = tín hiệu cho worker gen-link PDF (PrintJobPage.tsx bridge
+// sang `window.__pvState`) — KHÔNG kèm headless (worker chụp bản preview bình thường qua page.pdf(),
+// toolbar tự ẩn nhờ class `no-print` sẵn có, đúng cách Đại làm — xem worker/index.mjs processHinhJob()).
+export default function HinhPrintView({ ban, onClose, perHS, headless, onReady, onRenderErr }: {
+  ban: BanIn; onClose: () => void; perHS?: HinhPerHS[]
+  headless?: boolean; onReady?: () => void; onRenderErr?: (msg: string) => void
+}) {
   const [gv, setGv] = useState(false)      // bản GV = kèm lời giải + hình đáp án
   const [pages, setPages] = useState(0)
   const [rendering, setRendering] = useState(true)
@@ -96,7 +104,8 @@ export default function HinhPrintView({ ban, onClose, perHS }: { ban: BanIn; onC
     watchdog = setTimeout(() => {
       if (settled || cancelled) return
       settled = true; container.style.display = 'none'
-      setLoi('Dựng trang quá lâu (>30s) — đóng rồi thử lại.'); setRendering(false)
+      const msg = 'Dựng trang quá lâu (>30s) — đóng rồi thử lại.'
+      setLoi(msg); setRendering(false); onRenderErr?.(msg)
     }, 30000)
     new Previewer().preview(html, [cssUrl], container)
       .then((flow: { total?: number }) => {
@@ -105,17 +114,51 @@ export default function HinhPrintView({ ban, onClose, perHS }: { ban: BanIn; onC
         if (cancelled) { container.style.display = 'none'; return }
         Array.from(dst.children).forEach((c) => { if (c !== container) (c as HTMLElement).style.display = 'none' })
         activeRef.current = container
-        setPages(flow?.total ?? 0); setRendering(false)
+        setPages(flow?.total ?? 0); setRendering(false); onReady?.()
       })
       .catch((e: unknown) => {
         if (settled) return
         settled = true; clearTimeout(watchdog); container.style.display = 'none'
-        if (!cancelled) { setLoi(e instanceof Error ? e.message : String(e)); setRendering(false) }
+        if (!cancelled) { const msg = e instanceof Error ? e.message : String(e); setLoi(msg); setRendering(false); onRenderErr?.(msg) }
       })
       .finally(() => URL.revokeObjectURL(cssUrl))
     }, 0)
     return () => { cancelled = true; clearTimeout(hoan); if (watchdog) clearTimeout(watchdog) }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ban, gv, perHS])
+
+  // "In nhanh" (headless) — dựng xong TỰ gọi window.print() sau đệm 350ms (phòng render 2-pass), đóng
+  // khi hộp thoại in đóng. Khuôn PrintView.tsx của Đại (headless KHÔNG linkOnly).
+  const daTuIn = useRef(false)
+  useEffect(() => {
+    if (!headless || daTuIn.current || rendering || loi) return
+    daTuIn.current = true
+    const t = setTimeout(() => printWithFilename(safeFileName(`${ban.tieuDe}${gv ? ' - GV' : ''}`)), 350)
+    return () => clearTimeout(t)
+  }, [headless, rendering, loi, ban, gv])
+  useEffect(() => {
+    if (!headless) return
+    const onAfter = () => onClose()
+    window.addEventListener('afterprint', onAfter)
+    return () => window.removeEventListener('afterprint', onAfter)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [headless])
+
+  if (headless) return createPortal(
+    <>
+      <div className="pv-src" ref={srcRef} aria-hidden><Noi ban={ban} gv={gv} perHS={perHS} /></div>
+      <div style={{ position: 'fixed', top: 0, left: 0, zIndex: 88, width: '210mm', background: '#fff' }}><div ref={dstRef} className="pv-pages" /></div>
+      {/* no-print: chỉ hiện trên màn hình, @media print tự ẩn khi window.print() mở — không lọt vào PDF/giấy. */}
+      <div className="no-print fixed inset-0 z-[95] flex items-center justify-center bg-white">
+        <div className="rounded-xl border border-slate-200 bg-white px-6 py-4 text-sm font-medium text-slate-700 shadow-xl">
+          {loi ? <span className="text-rose-600">{loi}</span> : <>⏳ Đang chuẩn bị in{pages ? ` (${pages} trang)` : ''}…</>}
+          {loi && <button onClick={onClose} className="ml-3 rounded border border-slate-300 px-2.5 py-1 text-xs text-slate-600">Đóng</button>}
+        </div>
+      </div>
+      <style>{CHROME_CSS}</style>
+    </>,
+    document.body,
+  )
 
   return createPortal(
     <div className="pv-overlay fixed inset-0 z-[60] bg-slate-900/40">
