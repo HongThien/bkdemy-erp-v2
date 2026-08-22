@@ -4,12 +4,14 @@
 import { useEffect, useState } from 'react'
 import {
   listViecCuaToi, listTaskCon, listCapNhat, themCapNhat, tinhHieuSuatThang,
-  batDauLam, banHoanThanh, guiLaiNghiemThu, xinGiaHan,
+  batDauLam, banHoanThanh, guiLaiNghiemThu, xinGiaHan, holdViec, boHold, duyetGiaHan,
   type ViecFull, type HieuSuatKy, type CapNhatViec,
 } from '../../lib/giaoviec'
 import { thangCuaKyTuan, kyTuanHienTai } from '../../lib/giaoviec-config'
 import { CX_INPUT, CX_BTN, CX_BTN_GHOST, Badge, VIEC_TT, Section, Empty, ErrBar, Stat, Modal, Field, fmtNgay } from './ui'
 import GiaoViecModal, { type GiaoPrefill } from './GiaoViecModal'
+import { TaskDetailModal } from './WeeklyPlanningTab'
+import { NghiemThuModal, HuyModal, ChuyenModal } from './TaskActions'
 
 export default function VietCuaToiTab({ nhanSuId }: { nhanSuId: string }) {
   const [rows, setRows] = useState<ViecFull[]>([])
@@ -19,6 +21,14 @@ export default function VietCuaToiTab({ nhanSuId }: { nhanSuId: string }) {
   const [htModal, setHtModal] = useState<ViecFull | null>(null)
   const [ghModal, setGhModal] = useState<ViecFull | null>(null)
   const [giaoPrefill, setGiaoPrefill] = useState<GiaoPrefill | null>(null)
+  // Quản lý TASK CON (story: nhân sự toàn quyền sửa/nghiệm thu/hold/chuyển/huỷ con của mình,
+  // không cần vào màn admin "Tạo & giao việc phát triển" — màn đó nhiều nhân sự không có quyền vào).
+  const [conDetail, setConDetail] = useState<ViecFull | null>(null)
+  const [conNghiem, setConNghiem] = useState<ViecFull | null>(null)
+  const [conHuy, setConHuy] = useState<ViecFull | null>(null)
+  const [conChuyen, setConChuyen] = useState<ViecFull | null>(null)
+  const [conBusy, setConBusy] = useState<string | null>(null)
+  const [conVersion, setConVersion] = useState(0)   // bump → mọi ConCumSection đang mở tự tải lại
   const thang = thangCuaKyTuan(kyTuanHienTai())
 
   async function reload() {
@@ -30,6 +40,12 @@ export default function VietCuaToiTab({ nhanSuId }: { nhanSuId: string }) {
 
   async function act(fn: () => Promise<void>, id: string) {
     setBusy(id); try { await fn(); await reload() } catch (e: any) { setErr(e?.message ?? String(e)) } finally { setBusy(null) }
+  }
+  async function actCon(fn: () => Promise<void>, id: string) {
+    setConBusy(id)
+    try { await fn(); setConVersion((n) => n + 1); await reload() }
+    catch (e: any) { setErr(e?.message ?? String(e)) }
+    finally { setConBusy(null) }
   }
 
   const dangLam = rows.filter((r) => ['moi_giao', 'dang_lam', 'cho_nghiem_thu', 'tra_lai'].includes(r.trang_thai))
@@ -64,7 +80,7 @@ export default function VietCuaToiTab({ nhanSuId }: { nhanSuId: string }) {
             {!dangLam.length ? <Empty>Không có việc phát triển nào đang chờ.</Empty> : dangLam.map((v) => {
               const coCon = !v.task_me_id && !!v.so_con    // đã có con → trạng thái tự đóng theo con, ẩn nút thao tác tay
               return (
-                <MyTaskCard key={v.id} v={v}>
+                <MyTaskCard key={v.id} v={v} conVersion={conVersion} onOpenCon={setConDetail}>
                   {!coCon && v.trang_thai === 'moi_giao' && <button disabled={busy === v.id} onClick={() => act(() => batDauLam(v.id), v.id)} className={CX_BTN}>Bắt đầu làm</button>}
                   {!coCon && v.trang_thai === 'dang_lam' && <>
                     <button disabled={busy === v.id} onClick={() => setHtModal(v)} className={CX_BTN}>✓ Hoàn thành</button>
@@ -79,7 +95,7 @@ export default function VietCuaToiTab({ nhanSuId }: { nhanSuId: string }) {
             })}
           </Section>
           <Section title={`Đã đóng (${daDong.length})`}>
-            {!daDong.length ? <Empty>Chưa có việc nào đóng.</Empty> : daDong.map((v) => <MyTaskCard key={v.id} v={v} />)}
+            {!daDong.length ? <Empty>Chưa có việc nào đóng.</Empty> : daDong.map((v) => <MyTaskCard key={v.id} v={v} conVersion={conVersion} onOpenCon={setConDetail} />)}
           </Section>
         </>
       )}
@@ -89,12 +105,31 @@ export default function VietCuaToiTab({ nhanSuId }: { nhanSuId: string }) {
         onDone={(ev) => act(() => (htModal.trang_thai === 'tra_lai' ? guiLaiNghiemThu(htModal.id, ev) : banHoanThanh(htModal.id, ev)), htModal.id).then(() => setHtModal(null))} />}
       {ghModal && <GiaHanModal v={ghModal} onClose={() => setGhModal(null)}
         onDone={(dl, ly) => act(() => xinGiaHan(ghModal.id, dl, ly), ghModal.id).then(() => setGhModal(null))} />}
-      {giaoPrefill && <GiaoViecModal prefill={giaoPrefill} onClose={() => setGiaoPrefill(null)} onDone={() => { setGiaoPrefill(null); reload() }} />}
+      {giaoPrefill && <GiaoViecModal prefill={giaoPrefill} onClose={() => setGiaoPrefill(null)} onDone={() => { setGiaoPrefill(null); setConVersion((n) => n + 1); reload() }} />}
+      {conDetail && (
+        <TaskDetailModal
+          v={conDetail}
+          busy={conBusy === conDetail.id}
+          onClose={() => setConDetail(null)}
+          onNghiemThu={() => { setConNghiem(conDetail); setConDetail(null) }}
+          onHold={() => actCon(() => holdViec(conDetail.id), conDetail.id).then(() => setConDetail(null))}
+          onBoHold={() => actCon(() => boHold(conDetail.id), conDetail.id).then(() => setConDetail(null))}
+          onHuy={() => { setConHuy(conDetail); setConDetail(null) }}
+          onChuyen={() => { setConChuyen(conDetail); setConDetail(null) }}
+          onDuyetGH={(dongY) => actCon(() => duyetGiaHan(conDetail.id, dongY), conDetail.id).then(() => setConDetail(null))}
+          onSaved={() => { setConVersion((n) => n + 1); reload() }}
+        />
+      )}
+      {conNghiem && <NghiemThuModal v={conNghiem} onClose={() => setConNghiem(null)} onDone={() => { setConNghiem(null); setConVersion((n) => n + 1); reload() }} />}
+      {conHuy && <HuyModal v={conHuy} onClose={() => setConHuy(null)} onDone={() => { setConHuy(null); setConVersion((n) => n + 1); reload() }} />}
+      {conChuyen && <ChuyenModal v={conChuyen} onClose={() => setConChuyen(null)} onDone={() => { setConChuyen(null); setConVersion((n) => n + 1); reload() }} />}
     </div>
   )
 }
 
-function MyTaskCard({ v, children }: { v: ViecFull; children?: React.ReactNode }) {
+function MyTaskCard({ v, conVersion, onOpenCon, children }: {
+  v: ViecFull; conVersion?: number; onOpenCon?: (c: ViecFull) => void; children?: React.ReactNode
+}) {
   const coCon = !v.task_me_id && !!v.so_con
   return (
     <div className="rounded-2xl bg-white p-4 shadow-sm">
@@ -107,11 +142,13 @@ function MyTaskCard({ v, children }: { v: ViecFull; children?: React.ReactNode }
           </div>
           <div className="mt-0.5 text-[12px] text-slate-500">
             Giao bởi {v.nguoi_giao_ten} · KL {v.khoi_luong}{v.deadline && <> · hạn {fmtNgay(v.deadline)}</>}
-            {v.output && <> · output: {v.output}</>}
           </div>
+          {/* Đọc đầy đủ thông tin leader viết lúc giao — trước đây chỉ hiện output, thiếu mục tiêu. */}
+          {v.muc_tieu && <div className="mt-0.5 text-[12px] text-slate-600">🎯 {v.muc_tieu}</div>}
+          {v.output && <div className="mt-0.5 text-[12px] text-slate-600">📦 Output cần nộp: {v.output}</div>}
           {v.trang_thai === 'tra_lai' && v.ghi_chu_nghiem_thu && <div className="mt-1 rounded-lg bg-rose-50 px-2.5 py-1.5 text-[12px] text-rose-600">Bị trả lại: {v.ghi_chu_nghiem_thu}</div>}
           {v.trang_thai === 'dat' && <div className="mt-1 text-[11px] text-slate-400">Tiến độ {v.tien_do} · Chất lượng {v.chat_luong}</div>}
-          {coCon && <ConCumSection v={v} />}
+          {coCon && <ConCumSection v={v} refreshKey={conVersion ?? 0} onOpenCon={onOpenCon!} />}
           {!coCon && !['dat', 'huy', 'chuyen'].includes(v.trang_thai) && <CapNhatSection v={v} />}
         </div>
         {children && <div className="flex shrink-0 items-center gap-1.5">{children}</div>}
@@ -121,31 +158,30 @@ function MyTaskCard({ v, children }: { v: ViecFull; children?: React.ReactNode }
 }
 
 // Cụm task con (story 08-18): đếm sẵn có trong v.so_con/so_con_dat (decorateViec); danh sách
-// từng con CHỈ fetch khi bấm xem — con giao cho người khác nên KHÔNG nằm trong listViecCuaToi.
-function ConCumSection({ v }: { v: ViecFull }) {
+// từng con fetch khi bấm xem, tải lại khi refreshKey đổi (sau mọi hành động sửa/nghiệm thu/
+// hold/chuyển/huỷ trên 1 con nào đó — con giao người khác nên KHÔNG nằm trong listViecCuaToi).
+// Click 1 dòng con → mở TaskDetailModal đầy đủ: người tạo task mẹ TOÀN QUYỀN quản lý con,
+// không cần vào màn admin (nhiều nhân sự không có quyền vào màn đó).
+function ConCumSection({ v, refreshKey, onOpenCon }: { v: ViecFull; refreshKey: number; onOpenCon: (c: ViecFull) => void }) {
   const [mo, setMo] = useState(false)
   const [con, setCon] = useState<ViecFull[] | null>(null)
   const [dangTai, setDangTai] = useState(false)
-  async function toggle() {
-    if (mo) { setMo(false); return }
-    setMo(true)
-    if (!con) { setDangTai(true); try { setCon(await listTaskCon(v.id)) } finally { setDangTai(false) } }
-  }
+  useEffect(() => { if (mo) { setDangTai(true); listTaskCon(v.id).then(setCon).finally(() => setDangTai(false)) } }, [mo, v.id, refreshKey])
   return (
     <div className="mt-1.5">
-      <button onClick={toggle} className="text-[12px] font-medium text-indigo-600 hover:underline">
+      <button onClick={() => setMo((x) => !x)} className="text-[12px] font-medium text-indigo-600 hover:underline">
         {v.trang_thai === 'dat' ? '✓ ' : ''}Đã tách {v.so_con} task con · {v.so_con_dat}/{v.so_con} đạt {mo ? '▲' : '▼'}
       </button>
       {mo && (
         <div className="mt-1.5 space-y-1 border-l-2 border-slate-100 pl-3">
           {dangTai ? <div className="text-[12px] text-slate-400">Đang tải…</div> :
             (con ?? []).map((c) => (
-              <div key={c.id} className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[12px]">
+              <button key={c.id} onClick={() => onOpenCon(c)} className="flex w-full flex-wrap items-center gap-x-2 gap-y-0.5 rounded-md px-1.5 py-1 text-left text-[12px] hover:bg-slate-50">
                 <span className="text-slate-700">{c.tieu_de}</span>
                 <span className="text-slate-400">· {c.nguoi_lam_ten ?? 'chưa gán'}</span>
                 <Badge map={VIEC_TT} k={c.trang_thai} />
                 {c.deadline && <span className="text-slate-400">hạn {fmtNgay(c.deadline)}</span>}
-              </div>
+              </button>
             ))}
         </div>
       )}
