@@ -1,6 +1,5 @@
 // Entry RIÊNG cho bundle hs.bkacademy.edu.vn — KHÔNG import ./App (kéo theo toàn bộ màn staff),
-// KHÔNG có nhánh in-PDF (#pvjob, chỉ worker server dùng), KHÔNG chạy fitZoom (mật độ desktop staff
-// — HS app vốn đã net 1.0, build này không cần zoom gì cả).
+// KHÔNG có nhánh in-PDF (#pvjob, chỉ worker server dùng), KHÔNG chạy fitZoom (mật độ desktop staff).
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import AppHS from './AppHS'
@@ -9,6 +8,18 @@ import 'katex/dist/katex.min.css'
 import { initErrorBuffer } from './lib/errorBuffer'
 
 initErrorBuffer()
+
+// ⚠ BUG THẬT gây "trang chủ cuộn dọc" dù đã khoá h-screen (Thùy 21/08, verify trên production):
+// `index.css` có `:root { --app-z: 1.15 }` (mặc định — comment gốc ghi rõ "Fallback nếu JS chưa
+// chạy") + `#root { zoom: var(--app-z) }` ÁP DỤNG VÔ ĐIỀU KIỆN cho MỌI bundle import file này. App
+// staff (`main.tsx`) chạy `fitZoom()` ghi đè `--app-z` theo bề rộng màn NGAY khi load — bundle này
+// (`main-hs.tsx`) không chạy fitZoom nên "fallback" 1.15 tồn tại VĨNH VIỄN → `#root` zoom 115% suốt
+// — đo thật: 720px viewport × 1.15 = 828px, khớp CHÍNH XÁC độ tràn đã đo trên production. Test cục
+// bộ trước đó "pass" là vì lỡ tay chạy qua `index.html`/`main.tsx` (app staff, có fitZoom + có dòng
+// `style={{zoom:'var(--app-unz)'}}` undo riêng cho nhánh HS trong `App.tsx`) — KHÔNG PHẢI qua đúng
+// `hs.html`/`main-hs.tsx` deploy thật. Ghi đè thẳng `--app-z=1` ở ĐÂY (ưu tiên hơn `:root` nhờ inline
+// style) — bundle HS không cần "mật độ desktop" của staff, luôn net 1.0.
+document.documentElement.style.setProperty('--app-z', '1')
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
