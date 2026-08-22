@@ -5975,3 +5975,28 @@ có thêm chỗ — không đụng bố cục/màu/chức năng, chỉ tỉ lệ
 = `window.innerHeight` = **720px CHÍNH XÁC** (`hasVerticalScroll: false`) — hết cuộn hẳn. Cả 6 ô vẫn
 đọc đủ chữ, không ô nào bị cắt nội dung (`scrollHeight` mỗi ô < chiều cao thật hiển thị). Bấm lại
 **Tự luyện** — vẫn vào đúng, không hỏng gì trong đợt sửa tỉ lệ này.
+
+## 2026-08-21 (tiếp) — Sửa LẦN 2: gốc thật là lưới rớt cột, không phải cỡ chữ
+
+**Thùy, verbatim (bực):** "mẹ. t có bảo giảm chữ đâu. vẫn đề là ngay trang chủ đã phải cuộn màn hình,
+m tính size kiểu gì vậy" — sửa lần 1 SAI HƯỚNG: chỉ co font/padding, không đụng NGUYÊN NHÂN THẬT.
+
+**Gốc thật:** lưới 6 ô vẫn giữ breakpoint `grid-cols-1 md:grid-cols-2 lg:grid-cols-3` — "phòng hờ"
+mobile dù Thùy đã chốt ngay từ đầu buổi ("cấp 1 dùng máy tính/ipad, đừng làm UI điện thoại"). Cửa sổ
+hẹp hơn ngưỡng `lg` (1024px) là rớt xuống 1-2 cột → 6 ô xếp 3-4 HÀNG → DÙ CHỮ BÉ CỠ NÀO cũng tràn dọc,
+vì vấn đề là SỐ HÀNG chứ không phải kích thước từng chữ. Sửa lần 1 co chữ nên "có vẻ đỡ" ở đúng 1 cỡ
+màn hình test (1280×720, đủ rộng để vẫn lên 3 cột) nhưng KHÔNG sửa được gốc — hẹp hơn 1 chút là lại
+cuộn y như cũ, và tự ý co chữ dù không ai yêu cầu.
+
+**Sửa đúng gốc:** bỏ hẳn `md:`/`lg:`, khoá **CỐ ĐỊNH `grid-cols-3`** — đúng vì màn này CHỈ dành máy
+tính/iPad (đã chốt), không cần lối thoát mobile. 6 ô LUÔN đúng 2 hàng bất kể cửa sổ rộng bao nhiêu
+(trong khoảng máy tính/iPad) → chiều cao có giới hạn THẬT, `h-dvh`+`flex-1` mới có ý nghĩa. Đồng thời
+**trả cỡ chữ về mức đọc thoải mái** (không phải bản ép nhỏ ở sửa lần 1 — Thùy không yêu cầu chữ bé).
+
+**Verify (3 kích thước thật, không chỉ 1 như lần trước):** browser thật, đăng nhập HS0602 —
+- 1024×768 (laptop/iPad nhỏ nhất còn hợp lý): `scrollHeight`=768=`innerHeight`, 3 cột, KHÔNG cuộn.
+- 1280×800: `scrollHeight`=800=`innerHeight`, KHÔNG cuộn.
+- 1366×768 (laptop phổ biến nhất VN): `scrollHeight`=768=`innerHeight`, 3 cột, KHÔNG cuộn.
+Cả 6 ô vẫn đọc đủ chữ ở cỡ chữ ĐÃ TRẢ VỀ THOẢI MÁI (16px tên ô, 12.5px mô tả — không phải bản ép nhỏ
+9.5-14px của sửa lần 1). Bài học: lần sau gặp "vẫn cuộn dù đã co nhỏ" — nghi cấu trúc lưới/breakpoint
+TRƯỚC, đừng lặp lại hướng "co thêm chữ".
