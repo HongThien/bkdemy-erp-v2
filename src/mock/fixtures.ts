@@ -80,9 +80,10 @@ export const adminLeaves: AdminLeaf[] = [
   { id: 'hs',          nhom: 'Vận hành',  ten: 'Học sinh',                     founderOnly: false },
   { id: 'lop',         nhom: 'Vận hành',  ten: 'Lớp',                          founderOnly: false },
   { id: 'tuyensinh',   nhom: 'Vận hành',  ten: 'Tuyển sinh',                   founderOnly: false }, // quản lý LEVEL học sinh L5-L8, KHÔNG chứa hoạt động test
-  // Bổ trợ = 5 loại bù/yếu/đuổi/định-kỳ/ôn-thi (giờ có Bù + Đuổi).
+  // Bổ trợ = 5 loại bù/yếu/đuổi/định-kỳ/ôn-thi (giờ có Bù + Đuổi + Yếu).
   { id: 'botro',       nhom: 'Vận hành',  ten: 'Bù',                           founderOnly: false },
   { id: 'botro_duoi',  nhom: 'Vận hành',  ten: 'Đuổi',                         founderOnly: false },
+  { id: 'xep_by',      nhom: 'Vận hành',  ten: 'Xếp bổ trợ yếu',               founderOnly: false }, // OPS chốt giờ/phòng/người dạy case đã duyệt+chọn dạng (PLAN-botro-yeu.md bước 6)
   // Vận hành Ops (BKDEMY_OPS_SPEC_DETAIL.md, 07-06): Report/Báo tan (Story 1+2) + Prep phòng (Story 3)
   // + Phân công ca trực (spine). ET (Story 4) GÁC LẠI, không có leaf ở đây.
   { id: 'ops_report',  nhom: 'Vận hành',  ten: 'Report & Báo tan',             founderOnly: false },
@@ -109,6 +110,7 @@ export const adminLeaves: AdminLeaf[] = [
   { id: 'ketqua',      nhom: 'Quản lý chất lượng', ten: 'Kết quả học tập',    founderOnly: false }, // mastery (HS × dạng) suy động
   { id: 'duyetcham',   nhom: 'Quản lý chất lượng', ten: 'Duyệt chấm online',  founderOnly: false }, // review trả-lời-ngắn: chấp nhận đáp án + backfill
   { id: 'db_hoctap',   nhom: 'Quản lý chất lượng', ten: 'Dashboard học tập',  founderOnly: false }, // phát hiện → đề xuất → NGƯỜI duyệt (spec-danhgia-hoctap)
+  { id: 'botroyeu',    nhom: 'Quản lý chất lượng', ten: 'Bổ trợ yếu',        founderOnly: false }, // Thùy 08-18: lá riêng, 4 tab con (duyệt/nội dung/trạng thái/đánh giá) — xem BOTROYEU_CHILDREN
   { id: 'report_ph',   nhom: 'Quản lý chất lượng', ten: 'Report phụ huynh',   founderOnly: false }, // report tháng gửi PH: số liệu HS + nhận xét GV
 
   // ── CORE TEAM: nhân sự/tổ chức/vận hành nội bộ ──
