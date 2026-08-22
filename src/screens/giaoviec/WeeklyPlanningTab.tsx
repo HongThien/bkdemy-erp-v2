@@ -126,6 +126,7 @@ export default function WeeklyPlanningTab() {
           onChuyen={() => { setChuyenModal(detail); setDetail(null) }}
           onDuyetGH={(dongY) => act(() => duyetGiaHan(detail.id, dongY), detail.id).then(() => setDetail(null))}
           onTachCon={!detail.task_me_id ? () => { setGiaoPrefill(tachConPrefill(detail)); setDetail(null) } : undefined}
+          onSaved={reload}
         />
       )}
       {nghiemModal && <NghiemThuModal v={nghiemModal} onClose={() => setNghiemModal(null)} onDone={() => { setNghiemModal(null); reload() }} />}
@@ -153,28 +154,57 @@ function TaskCard({ v, onClick }: { v: ViecFull; onClick: () => void }) {
   )
 }
 
-function TaskDetailModal({ v, busy, onClose, onNghiemThu, onHold, onBoHold, onHuy, onChuyen, onDuyetGH, onTachCon }: {
+export function TaskDetailModal({ v, busy, onClose, onNghiemThu, onHold, onBoHold, onHuy, onChuyen, onDuyetGH, onTachCon, onSaved }: {
   v: ViecFull; busy: boolean; onClose: () => void
   onNghiemThu: () => void; onHold: () => void; onBoHold: () => void; onHuy: () => void; onChuyen: () => void
-  onDuyetGH: (dongY: boolean) => void; onTachCon?: () => void
+  onDuyetGH: (dongY: boolean) => void; onTachCon?: () => void; onSaved: () => void
 }) {
+  const [sua, setSua] = useState(false)
+  const [tieuDe, setTieuDe] = useState(v.tieu_de)
+  const [mt, setMt] = useState(v.muc_tieu ?? ''); const [out, setOut] = useState(v.output ?? ''); const [dl, setDl] = useState(v.deadline ?? '')
+  const [saving, setSaving] = useState(false); const [errSua, setErrSua] = useState<string | null>(null)
+  async function luu() {
+    setSaving(true); setErrSua(null)
+    try {
+      await suaViec(v.id, { tieu_de: tieuDe.trim() || undefined, muc_tieu: mt.trim() || undefined, output: out.trim() || undefined, deadline: dl || null })
+      setSua(false); onSaved()
+    } catch (e: any) { setErrSua(e?.message ?? String(e)) } finally { setSaving(false) }
+  }
   const Row = ({ k, val }: { k: string; val: React.ReactNode }) => (
     <div className="flex gap-2 text-[13px]"><span className="w-28 shrink-0 text-slate-400">{k}</span><span className="text-slate-700">{val || '—'}</span></div>
   )
   return (
     <Modal title={v.tieu_de} onClose={onClose}>
       <div className="space-y-1.5">
-        <Row k="Trạng thái" val={<Badge map={VIEC_TT} k={v.trang_thai} />} />
-        <Row k="Người làm" val={v.nguoi_lam_ten} />
-        <Row k="Người giao" val={v.nguoi_giao_ten} />
-        <Row k="Khối lượng" val={v.khoi_luong} />
-        <Row k="Mục tiêu" val={v.muc_tieu} />
-        <Row k="Output" val={v.output} />
-        <Row k="Deadline" val={<>{fmtNgay(v.deadline)}{v.deadline_goc && v.deadline !== v.deadline_goc && <span className="ml-1 text-[11px] text-slate-400">(gốc {fmtNgay(v.deadline_goc)})</span>}</>} />
-        <Row k="Gia hạn / Trả lại" val={`${v.so_lan_gia_han}× / ${v.so_lan_tra_lai}×`} />
-        <Row k="Bằng chứng" val={v.evidence ? <a href={v.evidence} target="_blank" rel="noreferrer" className="text-indigo-600 underline break-all">{v.evidence}</a> : '—'} />
-        {v.phan_tram !== null && <Row k="Kết quả" val={`${v.phan_tram}% (tiến độ ${v.tien_do} · chất lượng ${v.chat_luong})`} />}
-        {v.ghi_chu_nghiem_thu && <Row k="Ghi chú" val={v.ghi_chu_nghiem_thu} />}
+        {!sua ? (
+          <>
+            <Row k="Trạng thái" val={<Badge map={VIEC_TT} k={v.trang_thai} />} />
+            <Row k="Người làm" val={v.nguoi_lam_ten} />
+            <Row k="Người giao" val={v.nguoi_giao_ten} />
+            <Row k="Khối lượng" val={v.khoi_luong} />
+            <Row k="Mục tiêu" val={v.muc_tieu} />
+            <Row k="Output" val={v.output} />
+            <Row k="Deadline" val={<>{fmtNgay(v.deadline)}{v.deadline_goc && v.deadline !== v.deadline_goc && <span className="ml-1 text-[11px] text-slate-400">(gốc {fmtNgay(v.deadline_goc)})</span>}</>} />
+            <Row k="Gia hạn / Trả lại" val={`${v.so_lan_gia_han}× / ${v.so_lan_tra_lai}×`} />
+            <Row k="Bằng chứng" val={v.evidence ? <a href={v.evidence} target="_blank" rel="noreferrer" className="text-indigo-600 underline break-all">{v.evidence}</a> : '—'} />
+            {v.phan_tram !== null && <Row k="Kết quả" val={`${v.phan_tram}% (tiến độ ${v.tien_do} · chất lượng ${v.chat_luong})`} />}
+            {v.ghi_chu_nghiem_thu && <Row k="Ghi chú" val={v.ghi_chu_nghiem_thu} />}
+            {!['dat', 'huy', 'chuyen'].includes(v.trang_thai) && (
+              <div className="flex justify-end"><button onClick={() => setSua(true)} className={CX_BTN_GHOST}>Sửa tiêu đề/mục tiêu/output/deadline</button></div>
+            )}
+          </>
+        ) : (
+          <div className="space-y-2">
+            <Field label="Tiêu đề"><input value={tieuDe} onChange={(e) => setTieuDe(e.target.value)} className={CX_INPUT} /></Field>
+            <div className="grid grid-cols-2 gap-2">
+              <Field label="Mục tiêu"><input value={mt} onChange={(e) => setMt(e.target.value)} className={CX_INPUT} /></Field>
+              <Field label="Output"><input value={out} onChange={(e) => setOut(e.target.value)} className={CX_INPUT} /></Field>
+            </div>
+            <Field label="Deadline"><input type="date" value={dl} onChange={(e) => setDl(e.target.value)} className={CX_INPUT} /></Field>
+            {errSua && <div className="rounded-lg bg-rose-50 px-3 py-2 text-[12px] text-rose-600">{errSua}</div>}
+            <div className="flex justify-end gap-2"><button onClick={() => setSua(false)} className={CX_BTN_GHOST}>Thôi</button><button disabled={saving} onClick={luu} className={CX_BTN}>{saving ? '…' : 'Lưu'}</button></div>
+          </div>
+        )}
         {!['dat', 'huy', 'chuyen'].includes(v.trang_thai) && <CapNhatXem viecId={v.id} />}
 
         <div className="mt-3 flex flex-wrap items-center gap-1.5 border-t border-slate-100 pt-3">
