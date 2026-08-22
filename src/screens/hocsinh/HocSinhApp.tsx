@@ -76,6 +76,86 @@ function Head({ title, sub, onBack }: { title: string; sub?: string; onBack: () 
   )
 }
 
+// ── MÀN CHÍNH CẤP 1 — desktop/iPad-first (Thùy 21/08, theo mockup HTML "BK_Academy_Student_App_
+// 6_Boxes") — 6 ô: 3 ô CÓ data thật (Tự luyện/Thông tin học tập/Bảng xếp hạng) bấm được, 3 ô CHƯA
+// có backend (Bài tập được giao/Sự kiện học tập/Huy hiệu) hiện "Sắp có", KHÔNG bấm được — tránh
+// hứa tính năng chưa tồn tại. Bảng màu RIÊNG (không phải bảng ph-* dùng cho cấp 3 — mockup này là
+// hướng thiết kế khác hẳn, tươi/nhiều màu hơn, không cố match app PH nữa).
+type BoxCap1 = { id: 'tu_luyen' | 'thong_tin' | 'xep_hang'; ten: string; mo_ta: string; icon: string; grad: string } | { id: string; ten: string; mo_ta: string; icon: string; grad: string; sapCo: true }
+const BOX_CAP1: BoxCap1[] = [
+  { id: 'tu_luyen', ten: 'Tự luyện', mo_ta: 'Luyện theo dạng bài còn yếu hoặc chủ động chọn nội dung muốn ôn tập.', icon: '🎯', grad: 'from-[#f0e9ff] to-[#faf8ff]' },
+  { id: 'bai_tap_giao', ten: 'Bài tập được giao', mo_ta: 'Làm các bài tập giáo viên giao thêm cho cá nhân hoặc cả lớp.', icon: '📋', grad: 'from-[#e8f4ff] to-[#f7fbff]', sapCo: true },
+  { id: 'thong_tin', ten: 'Thông tin học tập', mo_ta: 'Xem kết quả gần nhất, dạng đang yếu, nhận xét và gợi ý ôn tập.', icon: '📘', grad: 'from-[#e9f9ff] to-[#f6fdff]' },
+  { id: 'xep_hang', ten: 'Bảng xếp hạng', mo_ta: 'Theo dõi thứ hạng và tạo động lực thi đua cùng các bạn.', icon: '🏅', grad: 'from-[#e7f9f1] to-[#f5fffb]' },
+  { id: 'su_kien', ten: 'Sự kiện học tập', mo_ta: 'Các cuộc thi, thử thách và hoạt động học tập theo từng thời điểm.', icon: '🎉', grad: 'from-[#fff1de] to-[#fffaf1]', sapCo: true },
+  { id: 'huy_hieu', ten: 'Huy hiệu', mo_ta: 'Xem các huy hiệu, thành tích và mốc học tập đã đạt được.', icon: '🏆', grad: 'from-[#ffedf5] to-[#fff8fb]', sapCo: true },
+]
+function HomeCap1({ hoTen, maHS, onOpen }: { hoTen: string; maHS: string; onOpen: (d: 'tu_luyen' | 'thong_tin' | 'xep_hang') => void }) {
+  const initials = hoTen.trim().split(/\s+/).slice(-2).map((w) => w[0]).join('').toUpperCase()
+  return (
+    <div className="min-h-screen" style={{ background: 'radial-gradient(circle at 85% 5%, rgba(115,87,245,.10), transparent 24rem), radial-gradient(circle at 8% 25%, rgba(47,128,237,.08), transparent 22rem), #f4f7fb' }}>
+      <div className="mx-auto max-w-[1440px] px-4 pb-9 pt-6 sm:px-7">
+        {/* Topbar */}
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <img src="/Logo.png" alt="BK Academy" className="h-8 w-auto" />
+            <span className="hidden rounded-full border border-[#e8edf5] bg-white/90 px-3.5 py-1.5 text-[13px] font-bold text-[#576073] shadow-[0_10px_26px_rgba(31,47,79,0.06)] sm:inline-block">📚 App học tập cho học sinh</span>
+          </div>
+          <div className="flex min-w-0 items-center gap-3 rounded-[18px] bg-white py-2 pl-2 pr-3 shadow-[0_10px_26px_rgba(31,47,79,0.06)]">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[14px] bg-gradient-to-br from-[#2486df] to-[#745bf0] text-[14px] font-black text-white">{initials}</div>
+            <div className="min-w-0 leading-tight">
+              <p className="truncate text-[14px] font-bold text-[#171a2b]">{hoTen}</p>
+              <p className="truncate text-[11px] text-[#7b8499]">{maHS.toUpperCase()}</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Hero */}
+        <section className="relative overflow-hidden rounded-[30px] p-7 shadow-[0_16px_40px_rgba(31,47,79,0.08)]" style={{ background: 'linear-gradient(120deg, rgba(255,255,255,.35), rgba(255,255,255,.06)), linear-gradient(120deg, #ece9ff 0%, #e4f1ff 50%, #dff8ff 100%)' }}>
+          <div className="relative z-[1] flex flex-wrap items-center justify-between gap-4">
+            <div className="max-w-[650px]">
+              <p className="mb-1 font-extrabold text-[#6c7386]">Xin chào,</p>
+              <h1 className="m-0 text-[clamp(28px,3.3vw,42px)] font-black tracking-tight text-[#171a2b]">{hoTen}! 👋</h1>
+              <p className="mt-2.5 text-[15px] leading-relaxed text-[#5e667b]">Hôm nay tiếp tục chinh phục những dạng bài còn yếu nhé!</p>
+            </div>
+            <div className="text-[80px] leading-none">🚀</div>
+          </div>
+        </section>
+
+        {/* Lưới 6 ô */}
+        <section className="mt-6">
+          <h2 className="m-0 text-[20px] font-extrabold tracking-tight text-[#171a2b]">Học tập tại BK Academy</h2>
+          <p className="mt-1 text-[13px] text-[#7b8499]">6 khu vực chính để em thao tác nhanh ngay từ màn hình đầu.</p>
+          <div className="mt-3.5 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {BOX_CAP1.map((b) => {
+              const sapCo = 'sapCo' in b && b.sapCo
+              return (
+                <button key={b.id} disabled={sapCo} onClick={() => !sapCo && onOpen(b.id as 'tu_luyen' | 'thong_tin' | 'xep_hang')}
+                  className={`group relative flex min-h-[176px] flex-col items-start rounded-[26px] border border-white/70 bg-gradient-to-br p-5 text-left shadow-[0_16px_40px_rgba(31,47,79,0.08)] transition ${b.grad} ${sapCo ? 'opacity-60' : 'hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(31,47,79,0.12)]'}`}>
+                  <div className="mb-4 flex h-[52px] w-[52px] items-center justify-center rounded-[18px] bg-white/70 text-[27px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.5)]">{b.icon}</div>
+                  <h3 className="m-0 mb-1.5 text-[19px] font-extrabold text-[#171a2b]">{b.ten}</h3>
+                  <p className="m-0 max-w-[88%] text-[13px] leading-relaxed text-[#616b7f]">{b.mo_ta}</p>
+                  {sapCo ? (
+                    <span className="absolute bottom-4 right-4 rounded-full bg-white/80 px-2.5 py-1 text-[11px] font-bold text-[#7b8499]">Sắp có</span>
+                  ) : (
+                    <span className="absolute bottom-4 right-4 flex h-9 w-9 items-center justify-center rounded-[13px] bg-white/78 text-[16px] font-black text-[#171a2b] group-hover:translate-x-0.5 transition">→</span>
+                  )}
+                </button>
+              )
+            })}
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="mt-6 flex flex-wrap items-center justify-between gap-3 rounded-[24px] px-6 py-5 text-white shadow-[0_16px_36px_rgba(101,73,234,0.24)]" style={{ background: 'linear-gradient(135deg, #6549ea, #8368f7)' }}>
+          <strong className="text-[18px] tracking-wide">BK ACADEMY</strong>
+          <span className="text-[13px] opacity-90">Học tập là hành trình, kiên trì là chìa khóa! ✨</span>
+        </footer>
+      </div>
+    </div>
+  )
+}
+
 export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: string; hoTen: string; maHS: string }) {
   const [tests, setTests] = useState<BaiTestCuaHS[] | null>(null)
   const [active, setActive] = useState<BaiTestCuaHS | null>(null)
@@ -113,6 +193,10 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
 
   // ── MÀN CHÍNH: ô vuông (theo cấp/khối), 2 cột ─────────────────────────────
   if (!khu && cap1 === null) return <div className="flex min-h-screen items-center justify-center bg-ios text-sm text-ph-label-2">Đang tải…</div>
+  // Cấp 1 (Thùy 21/08: "học sinh làm ở nhà trên máy tính/iPad, không phải điện thoại") — màn RIÊNG
+  // desktop/iPad-first theo mockup HTML CEO gửi, KHÔNG dùng lưới mobile-first bên dưới (cấp 3 vẫn
+  // giữ nguyên màn cũ — CEO xác nhận "cấp 3 chưa dùng màn này", bàn sau).
+  if (!khu && cap1) return <HomeCap1 hoTen={hoTen} maHS={maHS} onOpen={(d) => setDirect(d)} />
   if (!khu) return (
     <div className="mx-auto min-h-screen max-w-md bg-ios px-4 pb-10 pt-[calc(14px+env(safe-area-inset-top))]">
       {/* Hàng nút phụ (đổi MK/thoát) — ĐÚNG ".top" (ph-v3.css): icon-button vuông-tròn nổi trên nền trang */}
