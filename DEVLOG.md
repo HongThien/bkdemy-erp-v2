@@ -6000,3 +6000,34 @@ tính/iPad (đã chốt), không cần lối thoát mobile. 6 ô LUÔN đúng 2 
 Cả 6 ô vẫn đọc đủ chữ ở cỡ chữ ĐÃ TRẢ VỀ THOẢI MÁI (16px tên ô, 12.5px mô tả — không phải bản ép nhỏ
 9.5-14px của sửa lần 1). Bài học: lần sau gặp "vẫn cuộn dù đã co nhỏ" — nghi cấu trúc lưới/breakpoint
 TRƯỚC, đừng lặp lại hướng "co thêm chữ".
+
+## 2026-08-21 (tiếp) — Sửa LẦN 3: `h-dvh` không được hỗ trợ đúng → đổi `h-screen`
+
+**Thùy test THẬT trên `hs.bkacademy.edu.vn` (deploy production), verbatim:** "T đang phải kéo lên
+xuống trên desktop. m fix kiểu gì đấy" — 2 lần sửa trước verify PASS trên dev server local nhưng vẫn
+cuộn trên bản đã deploy thật.
+
+**Dò tận gốc (không đoán):** mở thẳng `https://hs.bkacademy.edu.vn/` qua Browser pane, xác nhận
+ĐÚNG bản mới nhất đã lên (grep bundle JS: có `grid-cols-3 gap-3` cố định, có `h-dvh`, KHÔNG còn
+`md:grid-cols-2`/`lg:grid-cols-3` cũ — loại trừ khả năng "Vercel chưa deploy"). Đăng nhập thật qua
+form (không phải gọi thẳng supabase như lúc dev) → đo: `document.documentElement.scrollHeight` =
+**828px** trong khi `window.innerHeight` = **720px** — dò xuống từng lớp bằng `getBoundingClientRect()`
+thì chính DIV NGOÀI CÙNG (`.h-dvh`) đã cao **828px chứ không phải 720px** — tức đơn vị CSS `dvh`
+(dynamic viewport height) không được tính đúng trong môi trường render đó, khung tự phình theo NỘI
+DUNG (giống `height:auto`) thay vì khoá theo viewport thật. `dvh` là đơn vị khá MỚI (~2023+), rủi ro
+thật cho máy tính trường học có thể chạy trình duyệt cũ hơn — không phải lỗi riêng của môi trường
+test, mà là lựa chọn CSS chưa đủ AN TOÀN ngay từ đầu (2 lần verify trước "PASS" là vì đúng lúc đó nội
+dung tình cờ vừa khít, không phải vì `h-dvh` hoạt động đúng).
+
+**Sửa:** `h-dvh` → **`h-screen`** (`100vh`, hỗ trợ RỘNG hơn hẳn `dvh`, đủ an toàn cho desktop/iPad —
+màn này không có thanh địa chỉ mobile thu giãn nên không cần bản `dvh` "động" theo browser chrome).
+
+**Verify lại (browser thật, cùng cách đo đã lộ bug ở trên — đo TRỰC TIẾP chiều cao div ngoài cùng,
+không chỉ tin `hasScroll`):** `.h-screen` div cao ĐÚNG 720px (khớp `window.innerHeight`), 1280×720 →
+`scrollHeight`=720, KHÔNG cuộn. 1366×768 → `scrollHeight`=768, KHÔNG cuộn. Nội dung vẫn đọc đủ 6 ô.
+Bài học: 2 lần trước chỉ đo `scrollHeight === innerHeight` ở NGOÀI CÙNG (đúng nhưng chưa đủ) — lần
+này đo thêm chiều cao THẬT của phần tử có class khoá kích thước, phát hiện panel MOCK không khớp
+CSS-unit THẬT đang chạy. Deploy thật (Vercel) là bằng chứng cuối cùng, dev/browser-pane test có thể
+"pass giả" nếu unit CSS không tương thích môi trường — từ nay ưu tiên đơn vị CÓ hỗ trợ rộng hơn khi
+không thật sự cần tính năng riêng của đơn vị mới (`dvh` chỉ đáng dùng khi cần né thanh địa chỉ mobile
+co giãn — không áp dụng cho màn desktop/iPad-only này).
