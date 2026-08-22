@@ -348,12 +348,22 @@ export async function listAllBuoiHinh(): Promise<HinhKhoRow[]> {
   for (const b of (bais ?? []) as { buoi_id: string; phan: string }[]) {
     const s = phansOfBuoi.get(b.buoi_id) ?? new Set<string>(); s.add(b.phan); phansOfBuoi.set(b.buoi_id, s)
   }
+  // ⭐ 21/08 (Thùy: tìm "8A1" không ra vì tên dòng Hình trước ghi theo TÊN GIÁO TRÌNH ("Giáo trình 8A"),
+  // không có mã LỚP/NGÀY như Đại ("GT 8A1 20/08/2026 · ...") — search theo lớp thì KHÔNG BAO GIỜ khớp,
+  // trông y hệt "không có". Nạp thêm tên lớp, ghép tên ĐÚNG công thức `tenDocBuoi` của Đại (tailieu.ts).
+  const lopIds = [...new Set(rows.map((r) => r.lop_id).filter((x): x is string => !!x))]
+  const { data: lops, error: e4 } = lopIds.length
+    ? await supabase.from('lop').select('id, ten_lop').in('id', lopIds).limit(LIMIT)
+    : { data: [] as { id: string; ten_lop: string }[], error: null }
+  if (e4) throw e4
+  const lopTenMap = new Map(((lops ?? []) as { id: string; ten_lop: string }[]).map((l) => [l.id, l.ten_lop]))
   const out: HinhKhoRow[] = []
   for (const r of rows) {
     const phans = phansOfBuoi.get(r.id)
     if (!phans || !phans.size) continue
     if (r.giao_trinh_id) {
-      // MASTER — 1 dòng gộp, khớp Đại (master 'giao_trinh' không tách dạng/btvn).
+      // MASTER — 1 dòng gộp, khớp Đại (master 'giao_trinh' không tách dạng/btvn). Chưa gán lớp → không
+      // có mã lớp/ngày để ghép tên, dùng tên giáo trình (đúng bản chất "mẫu", khớp cột "Gắn buổi"='mẫu').
       const g = gtMap.get(r.giao_trinh_id); if (!g) continue
       out.push({
         id: r.id, buoiId: r.id, phan: null,
@@ -361,14 +371,18 @@ export async function listAllBuoiHinh(): Promise<HinhKhoRow[]> {
         lop_id: null, ngay: null, created_at: r.created_at,
       })
     } else if (r.lop_id) {
-      // Buổi ĐÃ GÁN LỚP — tách 1 dòng / phan có bài, loai chung vocabulary Đại.
+      // Buổi ĐÃ GÁN LỚP — tách 1 dòng / phan có bài, loai chung vocabulary Đại, tên đúng công thức
+      // tenDocBuoi Đại (mã lớp + ngày dd/mm/yyyy) để search theo lớp/ngày ra kết quả như Đại.
       const g = gtOfMasterBuoi(r.nguon_buoi_id); if (!g) continue
+      const tenLop = lopTenMap.get(r.lop_id) ?? '?'
+      const ngayFmt = r.ngay ? r.ngay.split('-').reverse().join('/') : '?'
       for (const phan of ['lop', 'nha'] as const) {
         if (!phans.has(phan)) continue
         out.push({
           id: `${r.id}::${phan}`, buoiId: r.id, phan,
-          ten: `${PHAN_NHAN_KHO[phan]} ${g.ten} — ${r.tieu_de || 'Buổi'}`,
-          khoi: g.khoi, mon: g.mon, loai: phan === 'lop' ? 'giao_trinh_buoi' : 'btvn',
+          ten: `${PHAN_NHAN_KHO[phan]} ${tenLop} ${ngayFmt} · ${r.tieu_de || 'Buổi'}`,
+          khoi: g.khoi, mon: g.mon,
+          loai: phan === 'lop' ? 'giao_trinh_buoi' : 'btvn',
           lop_id: r.lop_id, ngay: r.ngay, created_at: r.created_at,
         })
       }

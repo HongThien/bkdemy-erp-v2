@@ -84,9 +84,15 @@ export default function KhoTaiLieuScreen() {
 
   // Fetch CẢ 2 nguồn (Đại + Hình) — tách khỏi `reload()` để lượt refresh NGẦM (poll job xong, dưới) không
   // phải bật `loading` (xoá bảng ra "Đang tải…" giữa lúc Thùy đang lướt — đúng bug từng sửa 07-12).
+  // ⭐ 21/08 (Thùy: "8A1 20/8 tài liệu hình ko thấy đâu luôn" — data CÓ THẬT, chỉ là NỐI 2 mảng rồi
+  // không sort lại: Đại (đã sort created_at desc từ listAllTaiLieu) đứng TRƯỚC, Hình bị dồn hết XUỐNG
+  // CUỐI bất kể ngày tạo — dòng Hình mới nhất bị chôn dưới hàng trăm dòng Đại cũ hơn). Sort LẠI TOÀN BỘ
+  // sau khi gộp, cùng 1 tiêu chí created_at desc cho cả 2 nguồn — mới thật sự là "1 danh sách chung".
   async function fetchAllRows(): Promise<Row[]> {
     const [d, h] = await Promise.all([listAllTaiLieu(), listAllBuoiHinh()])
-    return [...(d as TaiLieu[]).map((r) => ({ ...r, nguon: 'dai' as const })), ...h.map((r) => ({ ...r, nguon: 'hinh' as const }))]
+    const all = [...(d as TaiLieu[]).map((r) => ({ ...r, nguon: 'dai' as const })), ...h.map((r) => ({ ...r, nguon: 'hinh' as const }))]
+    all.sort((a, b) => (b.created_at ?? '').localeCompare(a.created_at ?? ''))
+    return all
   }
   async function reload() {
     setLoading(true)
