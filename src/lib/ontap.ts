@@ -129,7 +129,12 @@ export async function goiYOnTap(nguonId: string, buoiId: string, lopId: string, 
 }
 
 // ── CRUD config (spec §4.2) — sống ở bảng riêng để SỐNG SÓT re-trích (trichXuatBuoi xoá-rồi-tạo doc BTVN) ──
-export type OnTapDangConfig = { ma_dang: string; ma_caus: string[]; linesByCau?: Record<string, number> } // ma_caus ≤ CAP_CAU_MOI_DANG
+// ⭐ 08-18 (Thùy: "phải là 1 phần setup đầy đủ như builder — 2 phần riêng"): `nguon` phân biệt 2 khối UI —
+// 'de_xuat' = engine goiYOnTap sinh ra (vẫn cap CAP_DANG/CAP_CAU_MOI_DANG) · 'tu_chon' = GV tự thêm dạng +
+// tự gõ số lượng theo loại câu (KHÔNG cap, y hệt DangCard của Bài luyện/BTVN). Thiếu `nguon` (config cũ
+// trước bản này) → coi là 'de_xuat' (an toàn, không đổi hành vi cũ). `colByCau` mới — trước chỉ có
+// `linesByCau` (chỉnh dòng), giờ thêm chỉnh cột giống builder — merge vào cau_hinh.colByCau lúc append.
+export type OnTapDangConfig = { ma_dang: string; ma_caus: string[]; linesByCau?: Record<string, number>; colByCau?: Record<string, number>; nguon?: 'de_xuat' | 'tu_chon' }
 export type OnTapConfig = { dangs: OnTapDangConfig[]; skipped: boolean }
 
 export async function getOnTapConfig(nguonId: string, nguonBuoi: string, lopId: string): Promise<OnTapConfig | null> {
@@ -171,6 +176,7 @@ export async function appendOnTapToBtvnDoc(btvnDocId: string, nguonId: string, n
   const { data: doc } = await supabase.from('tai_lieu').select('cau_hinh').eq('id', btvnDocId).single()
   const chHienCo = ((doc as any)?.cau_hinh ?? {}) as CauHinh
   const linesMerge: Record<string, number> = { ...(chHienCo.btvnLinesByCau ?? {}) }
+  const colMerge: Record<string, number> = { ...(chHienCo.colByCau ?? {}) }
   const matChet: string[] = []
   let added = 0
   for (const d of config.dangs) {
@@ -185,8 +191,9 @@ export async function appendOnTapToBtvnDoc(btvnDocId: string, nguonId: string, n
     await supabase.from('tai_lieu_cau').insert(maCauSong.map((ma_cau, i) => ({ phan_id: phan.id, ma_cau, thu_tu: i })))
     added++
     if (d.linesByCau) for (const [ma, n] of Object.entries(d.linesByCau)) if (conSong.has(ma)) linesMerge[ma] = n
+    if (d.colByCau) for (const [ma, n] of Object.entries(d.colByCau)) if (conSong.has(ma)) colMerge[ma] = n
   }
-  if (added) await supabase.from('tai_lieu').update({ cau_hinh: { ...chHienCo, btvnLinesByCau: linesMerge } }).eq('id', btvnDocId)
+  if (added) await supabase.from('tai_lieu').update({ cau_hinh: { ...chHienCo, btvnLinesByCau: linesMerge, colByCau: colMerge } }).eq('id', btvnDocId)
   return { added, matChet }
 }
 

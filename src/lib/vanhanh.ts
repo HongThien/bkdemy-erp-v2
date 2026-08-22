@@ -67,8 +67,11 @@ export async function layChiTietTasks(rows: StaffTaskRow[]): Promise<TaskDetail[
   })
 }
 
+// 'baosai' CỐ Ý không nằm trong TASK_TABS: đây là danh sách khâu ĐO HIỆU SUẤT theo buổi
+// (đúng hạn/chậm). Duyệt báo sai là hàng đợi phát sinh, không gắn buổi, không có "phải làm
+// mỗi buổi" ⇒ đưa vào đây là đẻ mẫu số giả (buổi nào không có báo sai cũng bị tính thiếu).
 export const TASK_TABS: TabKey[] = ['danhgia', 'ingame', 'et', 'btvn', 'mt']
-export const TASK_TAB_LABEL: Record<TabKey, string> = { diemdanh: 'Điểm danh', danhgia: 'Đánh giá sau buổi', ingame: 'Chấm bài trên lớp', et: 'Chấm ET', btvn: 'Chấm BTVN', mt: 'Chấm MT' }
+export const TASK_TAB_LABEL: Record<TabKey, string> = { diemdanh: 'Điểm danh', danhgia: 'Đánh giá sau buổi', ingame: 'Chấm bài trên lớp', et: 'Chấm ET', btvn: 'Chấm BTVN', mt: 'Chấm MT', baosai: 'Duyệt báo sai' }
 
 // Hiệu suất KHÔNG PHẢI trung bình cộng — Tiến độ là LÕI PHẠT: Đúng hạn=0 phạt, Chậm 1/2/3 = trừ
 // 10/20/30% (đúng khớp 100−tienDo vì TIEN_DO_TIERS đã là 100/90/80/70). Hiệu suất = Chất lượng −

@@ -15,7 +15,12 @@ export const BK_CSS = `
 .pv-bkh-hero{padding:4px 22px 14px;text-align:center}
 .pv-bkh-title{margin:0;color:var(--navy);font-size:25px;font-weight:820;line-height:1.08;letter-spacing:-.03em}
 .pv-bkh-divider{width:60px;height:4px;margin:11px auto 0;border-radius:99px;background:linear-gradient(90deg,var(--blue),var(--gold))}
-.pv-bkh-student{display:grid;grid-template-columns:1.55fr .7fr .75fr;margin:0 16px 11px;overflow:hidden;border:1.5px solid var(--line);border-radius:15px;background:#f8faff}
+/* ⭐ 08-19 (Thùy báo "BTVN 4A1 trống trang 1"): overflow:hidden ở đây khớp đúng anti-pattern đã ghi nhận
+   trong PrintView.tsx (".gtbk-card": "TUYỆT ĐỐI không overflow:hidden — paged.js coi box overflow:hidden
+   là KHÔNG tách được"). Box này nằm ngay trong đầu phiếu (break-inside:avoid), đứng trước card đầu tiên —
+   bỏ overflow:hidden để không góp phần vào cùng lớp bug "card đầu nhảy hẳn sang trang sau dù còn thừa
+   chỗ". Bo góc vẫn giữ nguyên qua border-radius (không cần overflow:hidden để clip gì thêm ở đây). */
+.pv-bkh-student{display:grid;grid-template-columns:1.55fr .7fr .75fr;margin:0 16px 11px;border:1.5px solid var(--line);border-radius:15px;background:#f8faff}
 .pv-bkh-field{position:relative;padding:11px 16px;min-height:56px;display:flex;flex-direction:column;justify-content:center;gap:5px}
 .pv-bkh-field:not(:last-child)::after{content:"";position:absolute;top:13px;right:0;bottom:13px;width:1.5px;background:var(--line)}
 .pv-bkh-flbl{color:#24324b;font-size:10px;font-weight:800;letter-spacing:.07em;text-transform:uppercase}
@@ -44,6 +49,55 @@ export const BK_PAGE_CSS = `
 .pv-de-recto{break-before:right}
 .pagedjs_pagebox::after{content:"CLB Toán học BK Academy      ·      0963.209.309      ·      Số 17A10 KĐT Geleximco";position:absolute;left:10mm;right:10mm;bottom:4mm;height:9mm;display:flex;align-items:center;justify-content:center;border:1.5px solid #c2cbdb;border-radius:11px;background:#fff;color:#172033;font-weight:800;font-size:11.5px;white-space:pre;z-index:2;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 `
+
+// Đầu phiếu KIỂU BK (thiết kế mới, Thùy 07-31 — theo mockup BK Academy). Thương hiệu + nhãn "Bài test cuối
+// giờ" + thời gian 10 phút + ngày; tiêu đề; bảng HS (Họ tên · Lớp · Mã đề); lưới "Đánh giá từng câu" Đ/C/S,
+// số ô = SỐ CÂU của đề. Bản GV bỏ bảng HS + lưới chấm. DÙNG CHUNG ET Đại (ETPrintView) + ET Hình
+// (HinhPrintView, Thùy 21/08: "làm giống bên Đại số đi, cứ sáng tạo thêm làm gì" — 1 component, không
+// tự vẽ header riêng cho Hình).
+export function ETHeaderBK({ title, ngay, lop, made, hoTen, soCau, gv }: {
+  title: string; ngay: string; lop: string; made: string; hoTen?: string; soCau: number; gv: boolean
+}) {
+  return (
+    <div className="pv-bkh">
+      <div className="pv-bkh-top">
+        <div className="pv-bkh-brand">
+          <img className="pv-bkh-logo" src={location.origin + '/Logo.png'} alt="BK ACADEMY" />
+        </div>
+        {/* Bản GV ẩn bảng HS (chứa Mã đề) → gắn Mã đề vào NHÃN để đáp án vẫn biết của mã đề nào. */}
+        <div className="pv-bkh-label">Bài test cuối giờ{gv ? (made ? ` · Mã đề ${made} · Đáp án` : ' · Đáp án') : ''}</div>
+        <div className="pv-bkh-meta">
+          <div className="pv-bkh-pill"><span>Thời gian</span><strong>10 phút</strong></div>
+          <div className="pv-bkh-pill"><span>Ngày</span><strong>{ngay}</strong></div>
+        </div>
+      </div>
+      <div className="pv-bkh-hero">
+        <h1 className="pv-bkh-title">{title}</h1>
+        <div className="pv-bkh-divider" />
+      </div>
+      {!gv && (
+        <div className="pv-bkh-student">
+          <div className="pv-bkh-field"><div className="pv-bkh-flbl">Họ và tên học sinh</div><div className="pv-bkh-fval">{hoTen || ' '}</div></div>
+          <div className="pv-bkh-field"><div className="pv-bkh-flbl">Lớp</div><div className="pv-bkh-fval">{lop}</div></div>
+          <div className="pv-bkh-field"><div className="pv-bkh-flbl">Mã đề</div><div className="pv-bkh-fval">{made || ' '}</div></div>
+        </div>
+      )}
+      {!gv && (
+        <div className="pv-bkh-assess">
+          <div className="pv-bkh-ahead"><div className="pv-bkh-atitle">Đánh giá từng câu</div><div className="pv-bkh-anote">Trợ giảng tích Đ / C / S cho mỗi câu</div></div>
+          <div className="pv-bkh-grid">
+            {Array.from({ length: soCau }, (_, i) => (
+              <div key={i} className="pv-bkh-qcard">
+                <div className="pv-bkh-qno">Câu {i + 1}</div>
+                <div className="pv-bkh-status">{['Đ', 'C', 'S'].map((s) => <span key={s} className="pv-bkh-circle">{s}</span>)}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
 
 // Đầu phiếu BTVN — KIỂU GIÁO TRÌNH (masthead 08-08): khung gradient bo góc + logo thật + pill "BTVN"
 // (+ "Đáp án" bản GV) + tiêu đề = tên buổi + dòng phụ (Lớp · Ngày phát · Hạn nộp). Dưới masthead là hàng ô

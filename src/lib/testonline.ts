@@ -6,24 +6,27 @@
 import { supabase } from './supabase'
 import { getBTVNCaus, getETCaus, getGiaoTrinhBuoiCaus, khoCuaMon } from './tailieu'
 import { getDeThiCaus } from './dethi'
+import { fetchCausByMa } from './ontap'
+import { maDeReady, type BaseItem } from './made'
 import type { CauHoi } from './kho/api'
 import { extractKey, gradeTracNghiem, gradeTraLoiNgan, gradeDungSai, smartNormalize, LETTERS } from '../gami/testgrade'
 
 const LIMIT = 1000
 const SUPPORTED = new Set(['trac_nghiem', 'dung_sai', 'tra_loi_ngan']) // auto-chấm được
 
-export type TestLoai = 'et' | 'btvn' | 'giao_trinh' | 'de_thi'
+export type TestLoai = 'et' | 'btvn' | 'giao_trinh' | 'de_thi' | 'tu_luyen'
 export type BaiTest = {
-  id: string; nguon_tai_lieu_id: string | null; lop_id: string; ngay: string
+  id: string; nguon_tai_lieu_id: string | null; lop_id: string; hoc_sinh_id: string | null; ngay: string
   loai: TestLoai; mon: string; trang_thai: 'mo' | 'dong'; so_cau: number
-  deadline: string | null; khoa_reveal: boolean; created_at: string
+  deadline: string | null; khoa_reveal: boolean; co_nhieu_ma_de: boolean; created_at: string
 }
 export type BaiTestCau = {
-  id: string; bai_test_id: string; thu_tu: number; ma_cau: string | null; loai_cau: string
+  id: string; bai_test_id: string; thu_tu: number; bien_the: number; ma_cau: string | null; loai_cau: string
   noi_dung: string | null; lua_chon: string[] | null; menh_de: unknown; dap_an_key: unknown
-  loi_giai: string | null; anh_dap_an: string | null; ma_dang: string | null; ly_thuyet: string | null; diem: number
+  loi_giai: string | null; anh_de: string | null; anh_dap_an: string | null
+  ma_dang: string | null; ly_thuyet: string | null; diem: number
 }
-export type BaiLam = { id: string; bai_test_id: string; hoc_sinh_id: string; trang_thai: 'dang_lam' | 'da_nop'; nop_at: string | null }
+export type BaiLam = { id: string; bai_test_id: string; hoc_sinh_id: string; trang_thai: 'dang_lam' | 'da_nop'; nop_at: string | null; bien_the: number }
 export type BaiLamCau = { id: string; bai_lam_id: string; bai_test_cau_id: string; dap_an_hs: unknown; verdict: string | null; diem: number | null; cham_boi: string | null }
 
 // HS bấm "💡 Gợi ý" → ghi vết (idempotent — chỉ cần biết ĐÃ xem, không đếm số lần). GV dùng ở màn Xem live.
@@ -42,7 +45,14 @@ export async function getBaiTestByDoc(nguonTaiLieuId: string, lopId: string, nga
   return ((data as BaiTest[])?.[0]) ?? null
 }
 
-export type PhatHanhKetQua = { baiTest: BaiTest; added: number; skipped: { ma_cau: string; warn: string }[] }
+export type PhatHanhKetQua = { baiTest: BaiTest; added: number; skipped: { ma_cau: string; warn: string }[]; canhBao?: string | null }
+
+// Hết hạn = SUY từ deadline, không có job đóng test (CLAUDE.md §4 — đừng đẻ state chờ).
+// `trang_thai='dong'` dành riêng cho staff đóng TAY (có actor). deadline null = không hạn.
+export function daHetHan(t: { deadline: string | null; trang_thai?: string }, now = Date.now()): boolean {
+  if (t.trang_thai === 'dong') return true
+  return !!t.deadline && new Date(t.deadline).getTime() <= now
+}
 
 // Doc loai → (câu resolver · loai bai_test · nhãn). ET/đề-thi=THI (giấu key); BTVN/giáo trình=tham khảo reveal-ngay.
 const DOC_MAP: Record<string, { getCaus: (id: string) => Promise<CauHoi[]>; testLoai: TestLoai; ten: string }> = {
@@ -57,9 +67,9 @@ export const PHAT_HANH_DUOC = new Set(Object.keys(DOC_MAP))
 // Đề thi KHÔNG tự bám lớp+ngày (đề dùng lại cho nhiều lớp/lần) → `override` bắt buộc cho loại này;
 // các loại còn lại lấy lop_id/ngay sẵn có trên doc (như trước, override optional).
 export async function phatHanhTest(taiLieuId: string, override?: { lopId: string; ngay: string }): Promise<PhatHanhKetQua> {
-  const { data: tl, error: e0 } = await supabase.from('tai_lieu').select('id, lop_id, ngay, mon, loai').eq('id', taiLieuId).single()
+  const { data: tl, error: e0 } = await supabase.from('tai_lieu').select('id, lop_id, ngay, mon, nhanh, loai, cau_hinh').eq('id', taiLieuId).single()
   if (e0) throw e0
-  const doc = tl as { id: string; lop_id: string | null; ngay: string | null; mon: string; loai: string }
+  const doc = tl as { id: string; lop_id: string | null; ngay: string | null; mon: string; nhanh: string | null; loai: string; cau_hinh: any }
   const map = DOC_MAP[doc.loai]
   if (!map) throw new Error('Chỉ phát hành online được BTVN, ET, giáo trình buổi hoặc đề thi.')
   const lopId = override?.lopId ?? doc.lop_id
@@ -81,31 +91,91 @@ export async function phatHanhTest(taiLieuId: string, override?: { lopId: string
   const skipped: { ma_cau: string; warn: string }[] = []
   const rows: Omit<BaiTestCau, 'id'>[] = []
   let thu_tu = 0
-  for (const c of caus) {
-    // Tự luận CÓ đáp án ngắn (dap_an) → rút gọn thành trả-lời-ngắn CHỈ ở snapshot online (kho/in giấy giữ nguyên
-    // tự luận đủ lời giải) — spec đề thi §8.1: v1 chỉ chấm đáp án CUỐI, không chấm bước.
+  // Snapshot 1 câu THẬT ở 1 vị trí+biến thể — dùng lại cho cả mã gốc lẫn mã đề 2/3 (câu khác nhau,
+  // cùng cấu trúc). effLoai giữ chung cho mọi biến thể của 1 vị trí (đều cùng dạng câu hỏi khi được
+  // sinh bởi buildMaDe — made.ts ép canBeETForm khớp form câu gốc).
+  const snap = (c: CauHoi, tt: number, bienThe: number): { row: Omit<BaiTestCau, 'id'> | null; warn?: { ma_cau: string; warn: string } } => {
     const effLoai = c.loai_cau === 'tu_luan' && c.dap_an?.trim() ? 'tra_loi_ngan' : c.loai_cau
-    if (!SUPPORTED.has(effLoai)) { skipped.push({ ma_cau: c.ma_cau, warn: `loại "${c.loai_cau}" chưa hỗ trợ online` }); continue }
+    if (!SUPPORTED.has(effLoai)) return { row: null, warn: { ma_cau: c.ma_cau, warn: `loại "${c.loai_cau}" chưa hỗ trợ online` } }
     const k = extractKey({ ...c, loai_cau: effLoai })
-    if (!k.ok) { skipped.push({ ma_cau: c.ma_cau, warn: k.warn! }); continue }
-    rows.push({
-      bai_test_id: '', thu_tu: ++thu_tu, ma_cau: c.ma_cau, loai_cau: effLoai,
-      noi_dung: c.noi_dung ?? null, lua_chon: (c.lua_chon as string[] | null) ?? null,
-      menh_de: c.menh_de ?? null, dap_an_key: k.key,
-      loi_giai: c.loi_giai ?? null, anh_dap_an: c.anh_dap_an ?? null,
-      ma_dang: c.dang_chinh ?? null, ly_thuyet: ltMap.get(c.dang_chinh) ?? null, diem: 1,
-    })
+    if (!k.ok) return { row: null, warn: { ma_cau: c.ma_cau, warn: k.warn! } }
+    return {
+      row: {
+        bai_test_id: '', thu_tu: tt, bien_the: bienThe, ma_cau: c.ma_cau, loai_cau: effLoai,
+        noi_dung: c.noi_dung ?? null, lua_chon: (c.lua_chon as string[] | null) ?? null,
+        menh_de: c.menh_de ?? null, dap_an_key: k.key,
+        loi_giai: c.loi_giai ?? null, anh_de: c.anh_de ?? null, anh_dap_an: c.anh_dap_an ?? null,
+        ma_dang: c.dang_chinh ?? null, ly_thuyet: ltMap.get(c.dang_chinh) ?? null, diem: 1,
+      },
+    }
+  }
+  for (const c of caus) {
+    ++thu_tu
+    const { row, warn } = snap(c, thu_tu, 1)
+    if (warn) skipped.push(warn)
+    if (row) rows.push(row)
   }
   if (!rows.length) throw new Error(`Không có câu hợp lệ để phát hành${skipped.length ? ` (${skipped.length} câu bị bỏ qua)` : ''}.`)
+  const soCauMotDe = rows.length // số câu MỖI HS thấy — chốt TRƯỚC khi cộng thêm câu mã 2/3 (rows.length
+  // sau đó phình ra gấp ~3 để LƯU đủ cả 3 mã đề, không phải số câu 1 HS làm).
+
+  // ⭐ 3 MÃ ĐỀ (chỉ ET — hsMaDe/etMaDe là cơ chế riêng của ETScreen/made.ts, BTVN/giáo trình/đề thi
+  // trường-sở không dùng). GV đã "Sinh mã đề" ĐỦ (maDeReady) → snapshot LUÔN cả câu mã 2/3, cùng
+  // `thu_tu` với câu gốc tương ứng (khác `bien_the`). Chưa sinh/chưa đủ → CHỈ 1 biến thể như cũ —
+  // không suy đoán câu thay thế (§1.5 "thà bỏ trống"), tự khớp `bai_test_cau_bien_the` default 1.
+  // true khi test này THẬT SỰ có ≥2 mã đề khác nội dung (không chỉ "GV đã bấm sinh" — phải có ÍT NHẤT
+  // 1 câu biến thể snapshot thành công). App đọc cờ này để QUYẾT ĐỊNH CÓ XÁO THỨ TỰ CÂU HAY KHÔNG
+  // (Thùy 18/08: "có nhiều mã đề thì không cần đảo thứ tự câu nữa" — mã đề đã tự phân biệt HS,
+  // xáo thêm thứ tự là thừa). Ghi vào `bai_test` NGAY LÚC PHÁT HÀNH — snapshot 1 chiều, HS mở bài
+  // sau không tự suy lại (GV sửa mã đề lúc nào cũng không ảnh hưởng bài đã phát).
+  let nhieuMaDe = false
+  if (map.testLoai === 'et') {
+    const ch = doc.cau_hinh ?? {}
+    const base: BaseItem[] = caus.map((c) => ({ maDang: c.dang_chinh, maCau: c.ma_cau }))
+    if (maDeReady(base, ch)) {
+      const maCauByThuTu = new Map(caus.map((c, i) => [i + 1, c.ma_cau]))
+      const needMa = new Set<string>()
+      for (const arr of Object.values(ch.etMaDe ?? {}) as (string | null)[][]) for (const m of arr) if (m) needMa.add(m)
+      const varCaus = await fetchCausByMa([...needMa], khoCuaMon(doc.mon, doc.nhanh).cauTbl)
+      const varByMa = new Map(varCaus.map((c) => [c.ma_cau, c]))
+      for (let tt = 1; tt <= caus.length; tt++) {
+        const baseMaCau = maCauByThuTu.get(tt)
+        const variants = baseMaCau ? ch.etMaDe?.[baseMaCau] : null
+        if (!variants) continue
+        for (let v = 0; v < 2; v++) {
+          const maCauV = variants[v]
+          const cauV = maCauV ? varByMa.get(maCauV) : null
+          // Thiếu câu biến thể (hiếm — dữ liệu made.ts lệch) → BỎ RIÊNG mã đề đó ở vị trí này, KHÔNG
+          // chặn cả lượt phát hành: HS lỡ bị gán mã 2/3 sẽ thấy thiếu câu (rõ ràng hơn phát hành sai lặng lẽ).
+          if (!cauV) { skipped.push({ ma_cau: maCauV ?? `(vị trí ${tt})`, warn: `thiếu câu mã đề ${v + 2}` }); continue }
+          const { row, warn } = snap(cauV, tt, v + 2)
+          if (warn) skipped.push(warn)
+          if (row) { rows.push(row); nhieuMaDe = true }
+        }
+      }
+    }
+  }
+
+  // Hạn nộp tính Ở POSTGRES (mig 202608171359 — luật theo loại, giờ VN, đọc thoi_khoa_bieu).
+  // NULL hợp lệ cho de_thi; NULL cho btvn = KHÔNG tìm ra buổi kế ⇒ phải báo người, đừng đoán.
+  const { data: hanNop, error: eH } = await supabase.rpc('han_nop_bai_test',
+    { p_lop: lopId, p_ngay: ngay, p_loai: map.testLoai })
+  if (eH) throw eH
+  const deadline = (hanNop as string | null) ?? null
 
   const { data: bt, error: e1 } = await supabase.from('bai_test').insert({
-    nguon_tai_lieu_id: doc.id, lop_id: lopId, ngay, loai: map.testLoai, mon: doc.mon, so_cau: rows.length,
+    nguon_tai_lieu_id: doc.id, lop_id: lopId, ngay, loai: map.testLoai, mon: doc.mon, so_cau: soCauMotDe,
+    deadline, co_nhieu_ma_de: nhieuMaDe,
   }).select().single()
   if (e1) throw e1
   const baiTest = bt as BaiTest
   const { error: e2 } = await supabase.from('bai_test_cau').insert(rows.map((r) => ({ ...r, bai_test_id: baiTest.id })))
   if (e2) throw e2
-  return { baiTest, added: rows.length, skipped }
+  // Cảnh báo (không chặn): btvn không có hạn ⇒ bài mở vĩnh viễn, staff cần biết để xử tay.
+  const canhBao = !deadline && map.testLoai === 'btvn'
+    ? 'Không tính được hạn nộp: lớp chưa có thời khoá biểu hiệu lực nên không xác định được buổi kế tiếp. Bài sẽ KHÔNG tự hết hạn.'
+    : null
+  return { baiTest, added: rows.length, skipped, canhBao }
 }
 /** @deprecated dùng phatHanhTest */
 export const phatHanhBTVN = phatHanhTest
@@ -191,8 +261,12 @@ export async function getLiveSnapshot(baiTestId: string): Promise<LiveSnapshot> 
 
 // HS mở bài → tạo SLOT bai_lam (idempotent — StrictMode/đua). Cần hoc_sinh_id (RLS chặn HS khác).
 export async function moBaiLam(baiTestId: string, hocSinhId: string): Promise<BaiLam> {
+  // Mã đề (1/2/3, ET có gán riêng HS chống liếc) — ĐÔNG CỨNG lúc mở lần đầu (upsert ignoreDuplicates
+  // dưới không đè bản đã có). RPC vì `tai_lieu` staff-only (HS SELECT thẳng → 0 dòng, không lỗi —
+  // đã verify; đọc thẳng client sẽ luôn ra mặc định 1 mà không ai biết là RLS chặn, không phải "chưa gán").
+  const { data: bienThe } = await supabase.rpc('resolve_bien_the', { p_bai_test: baiTestId })
   const { error } = await supabase.from('bai_lam')
-    .upsert({ bai_test_id: baiTestId, hoc_sinh_id: hocSinhId }, { onConflict: 'bai_test_id,hoc_sinh_id', ignoreDuplicates: true })
+    .upsert({ bai_test_id: baiTestId, hoc_sinh_id: hocSinhId, bien_the: bienThe ?? 1 }, { onConflict: 'bai_test_id,hoc_sinh_id', ignoreDuplicates: true })
   if (error) throw error
   const { data, error: e2 } = await supabase.from('bai_lam').select('*').eq('bai_test_id', baiTestId).eq('hoc_sinh_id', hocSinhId).single()
   if (e2) throw e2
@@ -221,12 +295,19 @@ export async function traLoiCau(baiLamId: string, cau: BaiTestCau, dapAnHs: unkn
     verdict: g.verdict, diem, cham_boi: g.cham_boi, cham_at: new Date().toISOString(),
   }, { onConflict: 'bai_lam_id,bai_test_cau_id' }).select('id').single()
   if (error) throw error
-  return { verdict: g.verdict, cham_boi: g.cham_boi, key: cau.dap_an_key, baiLamCauId: (data as { id: string }).id }
+  const baiLamCauId = (data as { id: string }).id
+  // Vòng 2 (Thùy 21/08): key+cache đều KHÔNG khớp → hỏi AI NỀN, KHÔNG chờ (giữ "chấm tức thì").
+  // HS thấy 'wrong' ngay; nếu AI xác nhận đúng thì tự tạo báo cáo chờ GV duyệt (KHÔNG tự sửa
+  // điểm — xem chi tiết + lý do trong migration 202608211153_cham_tln_ai.sql).
+  if (cau.loai_cau === 'tra_loi_ngan' && g.verdict === 'wrong') {
+    void (async () => { try { await supabase.rpc('hs_cham_tln_ai', { p_bai_lam_cau_id: baiLamCauId }) } catch { /* nền — không chặn HS */ } })()
+  }
+  return { verdict: g.verdict, cham_boi: g.cham_boi, key: cau.dap_an_key, baiLamCauId }
 }
 
 // ── ET chế độ THI (giấu key) ─────────────────────────────────────────────────
 // Đề ET đã LỌC key (rpc security-definer). Câu: id/thu_tu/loai_cau/noi_dung/lua_chon/menh_de(chỉ noi_dung)/ma_dang/ly_thuyet/diem.
-export type ETCauDe = { id: string; thu_tu: number; loai_cau: string; noi_dung: string | null; lua_chon: string[] | null; menh_de: { noi_dung: string }[] | null; ma_dang: string | null; ly_thuyet: string | null; diem: number }
+export type ETCauDe = { id: string; thu_tu: number; loai_cau: string; noi_dung: string | null; lua_chon: string[] | null; anh_de: string | null; menh_de: { noi_dung: string }[] | null; ma_dang: string | null; ly_thuyet: string | null; diem: number }
 export async function getETDe(baiTestId: string): Promise<ETCauDe[]> {
   const { data, error } = await supabase.rpc('et_de', { p_bai_test: baiTestId })
   if (error) throw error
@@ -282,7 +363,7 @@ export type TLNSaiRow = {
   hocSinh: { id: string; ho_ten: string; ma_hs: string | null }
   test: { loai: string; ngay: string; lopTen: string }
   cau: { id: string; ma_cau: string | null; noi_dung: string | null; dapAnKey: string; loi_giai: string | null }
-  reports: { id: string; y_kien: string | null; trang_thai: string }[]
+  reports: { id: string; y_kien: string | null; trang_thai: string; nguon: 'hs_bao_sai' | 'ai_de_xuat' }[]
 }
 
 // Mọi câu TLN đang verdict='wrong' (mọi test) + report của chúng (join client — bảng report nhỏ).
@@ -293,11 +374,11 @@ export async function listTLNSai(): Promise<TLNSaiRow[]> {
     .order('cham_at', { ascending: false }).limit(LIMIT)
   if (error) throw error
   const rows = (data ?? []) as any[]
-  const { data: reps } = await supabase.from('bai_test_report').select('id, bai_lam_cau_id, y_kien, trang_thai').limit(LIMIT)
-  const repMap = new Map<string, { id: string; y_kien: string | null; trang_thai: string }[]>()
+  const { data: reps } = await supabase.from('bai_test_report').select('id, bai_lam_cau_id, y_kien, trang_thai, nguon').limit(LIMIT)
+  const repMap = new Map<string, { id: string; y_kien: string | null; trang_thai: string; nguon: 'hs_bao_sai' | 'ai_de_xuat' }[]>()
   for (const r of (reps ?? []) as any[]) {
     const arr = repMap.get(r.bai_lam_cau_id) ?? []
-    arr.push({ id: r.id, y_kien: r.y_kien, trang_thai: r.trang_thai })
+    arr.push({ id: r.id, y_kien: r.y_kien, trang_thai: r.trang_thai, nguon: r.nguon ?? 'hs_bao_sai' })
     repMap.set(r.bai_lam_cau_id, arr)
   }
   return rows.map((r) => ({
@@ -359,6 +440,117 @@ export async function chapNhanDapAn(maCau: string, dapAnRaw: string): Promise<{ 
     .update({ trang_thai: 'dung', duyet_boi: uid, duyet_at: new Date().toISOString() })
     .in('bai_lam_cau_id', targets.map((t) => t.id)).eq('trang_thai', 'moi')
   return { backfilled: targets.length }
+}
+
+// ══ SỬA KEY SAI + CHẤM LẠI CẢ LỚP (spec §7) ═══════════════════════════════════
+// KHÁC hẳn luồng accepted-answer ở trên. Trên kia = "key ĐÚNG, HS viết cách khác cũng
+// đúng" → nới bộ đáp án. Dưới này = "KEY SAI" → cả lớp bị chấm oan, phải sửa key rồi
+// chấm lại. Hai đường không được trộn: nhét đáp án đúng vào cache khi key sai thì kho
+// vẫn sai và lần phát hành sau lại sai tiếp.
+
+export type CauNghiSaiKey = {
+  cauId: string; baiTestId: string; thuTu: number; loaiCau: string
+  maCau: string | null; noiDung: string | null; dapAnKey: unknown
+  test: { loai: string; ngay: string; lopTen: string; mon: string }
+  daTraLoi: number; sai: number; tiLeSai: number
+  lanChamLai: number
+}
+
+// Câu mà TỈ LỆ SAI CAO — dấu hiệu key sai (cả lớp cùng sai 1 câu thì nghi key trước, nghi HS sau).
+// Ngưỡng mặc định: ≥3 HS đã trả lời và ≥70% sai. Trả mọi loại câu (key sai không riêng TLN).
+export async function listCauNghiSaiKey(nguongTiLe = 0.7, toiThieuHS = 3): Promise<CauNghiSaiKey[]> {
+  const { data, error } = await supabase.from('bai_lam_cau')
+    .select('verdict, cau:bai_test_cau_id!inner(id, bai_test_id, thu_tu, loai_cau, ma_cau, noi_dung, dap_an_key, test:bai_test_id(loai, ngay, mon, lop:lop_id(ten_lop)))')
+    .not('verdict', 'is', null).limit(LIMIT)
+  if (error) throw error
+  const byCau = new Map<string, CauNghiSaiKey>()
+  for (const r of (data ?? []) as any[]) {
+    const c = r.cau
+    if (!c) continue
+    let g = byCau.get(c.id)
+    if (!g) {
+      g = {
+        cauId: c.id, baiTestId: c.bai_test_id, thuTu: c.thu_tu, loaiCau: c.loai_cau,
+        maCau: c.ma_cau ?? null, noiDung: c.noi_dung ?? null, dapAnKey: c.dap_an_key,
+        test: { loai: c.test?.loai ?? '?', ngay: c.test?.ngay ?? '', lopTen: c.test?.lop?.ten_lop ?? '?', mon: c.test?.mon ?? '' },
+        daTraLoi: 0, sai: 0, tiLeSai: 0, lanChamLai: 0,
+      }
+      byCau.set(c.id, g)
+    }
+    g.daTraLoi++
+    if (r.verdict === 'wrong') g.sai++
+  }
+  const out = [...byCau.values()]
+    .map((g) => ({ ...g, tiLeSai: g.daTraLoi ? g.sai / g.daTraLoi : 0 }))
+    .filter((g) => g.daTraLoi >= toiThieuHS && g.tiLeSai >= nguongTiLe)
+  if (!out.length) return []
+  // Đã chấm lại lần nào chưa (hiện lên UI để không chấm lại chồng chéo mà không biết).
+  const { data: logs } = await supabase.from('bai_test_cham_lai_log')
+    .select('bai_test_cau_id').in('bai_test_cau_id', out.map((g) => g.cauId)).limit(LIMIT)
+  for (const l of (logs ?? []) as any[]) {
+    const g = out.find((x) => x.cauId === l.bai_test_cau_id)
+    if (g) g.lanChamLai++
+  }
+  return out.sort((a, b) => b.tiLeSai - a.tiLeSai || b.daTraLoi - a.daTraLoi)
+}
+
+export type ChamLaiKetQua = { soBai: number; saiThanhDung: number; dungThanhSai: number; khongDoi: number }
+
+// Sửa `dap_an_key` của 1 câu SNAPSHOT rồi chấm lại MỌI bài làm của ĐÚNG câu đó.
+// Scope CỨNG theo bai_test_cau_id (spec §7) — không lan sang test khác dù cùng ma_cau:
+// mỗi lần phát hành là một phép đo riêng, sửa nhầm sang test cũ là ghi đè điểm đã chốt.
+// Mastery đọc bai_lam_cau LIVE ⇒ tự đúng theo, KHÔNG resync gì (et_nop không ghi gami_grades).
+export async function suaKeyVaChamLai(baiTestCauId: string, keyMoi: unknown, lyDo: string): Promise<ChamLaiKetQua> {
+  const { data: cauRow, error: e0 } = await supabase.from('bai_test_cau')
+    .select('id, loai_cau, dap_an_key, diem, ma_cau').eq('id', baiTestCauId).single()
+  if (e0) throw e0
+  const cau = cauRow as { id: string; loai_cau: string; dap_an_key: unknown; diem: number; ma_cau: string | null }
+  const keyCu = cau.dap_an_key
+
+  const { data: blcRows, error: e1 } = await supabase.from('bai_lam_cau')
+    .select('id, dap_an_hs, verdict').eq('bai_test_cau_id', baiTestCauId).limit(LIMIT)
+  if (e1) throw e1
+  const rows = (blcRows ?? []) as { id: string; dap_an_hs: unknown; verdict: string | null }[]
+
+  // ① Ghi key mới TRƯỚC — nếu bước chấm lại chết giữa chừng thì key vẫn đúng cho lần sau,
+  //    và log ở ③ sẽ không có ⇒ nhìn là biết "đã sửa key nhưng chưa chấm lại xong".
+  const { error: e2 } = await supabase.from('bai_test_cau').update({ dap_an_key: keyMoi as any }).eq('id', baiTestCauId)
+  if (e2) throw e2
+
+  // ② Chấm lại từng bài bằng ĐÚNG engine thuần đang dùng lúc HS làm (không chép lại công thức).
+  const kq: ChamLaiKetQua = { soBai: rows.length, saiThanhDung: 0, dungThanhSai: 0, khongDoi: 0 }
+  for (const r of rows) {
+    let g: { verdict: string; cham_boi: string; diemTho?: number } = cau.loai_cau === 'trac_nghiem'
+      ? gradeTracNghiem(r.dap_an_hs as number, keyMoi as string)
+      : cau.loai_cau === 'dung_sai'
+        ? gradeDungSai(r.dap_an_hs as string[], keyMoi as string[])
+        : gradeTraLoiNgan(r.dap_an_hs as string, keyMoi as string)
+    if (cau.loai_cau === 'tra_loi_ngan' && g.verdict === 'wrong' && cau.ma_cau) {
+      const { data: hit } = await supabase.rpc('tln_cache_check', { p_ma_cau: cau.ma_cau, p_norm: smartNormalize(r.dap_an_hs as string) })
+      if (hit === true) g = { verdict: 'correct', cham_boi: 'cache' }
+    }
+    const diem = g.diemTho != null ? g.diemTho * cau.diem
+      : g.verdict === 'correct' ? cau.diem : g.verdict === 'partial' ? cau.diem * 0.5 : 0
+    const { error } = await supabase.from('bai_lam_cau')
+      .update({ verdict: g.verdict, diem, cham_boi: g.cham_boi, cham_at: new Date().toISOString() })
+      .eq('id', r.id)
+    if (error) throw error
+    const cuDung = r.verdict === 'correct'
+    const moiDung = g.verdict === 'correct'
+    if (!cuDung && moiDung) kq.saiThanhDung++
+    else if (cuDung && !moiDung) kq.dungThanhSai++
+    else kq.khongDoi++
+  }
+
+  // ③ Vết (spec §7 — "in before/after + log")
+  const uid = (await supabase.auth.getUser()).data.user?.id ?? null
+  const { error: e3 } = await supabase.from('bai_test_cham_lai_log').insert({
+    bai_test_cau_id: baiTestCauId, key_cu: keyCu as any, key_moi: keyMoi as any,
+    so_bai: kq.soBai, sai_thanh_dung: kq.saiThanhDung, dung_thanh_sai: kq.dungThanhSai,
+    ly_do: lyDo || null, nguoi: uid,
+  })
+  if (e3) throw e3
+  return kq
 }
 
 // TA giữ nguyên "HS sai" cho các report của 1 đáp án (đóng 🚩, verdict giữ wrong).

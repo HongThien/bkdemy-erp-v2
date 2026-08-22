@@ -30,6 +30,25 @@ export function printWithFilename(filename: string) {
   window.addEventListener('afterprint', restore)
   window.print()
 }
+// ⭐ 08-18 (Thùy báo "ET 12A1 trang 2 trắng"): paged.js thỉnh thoảng DỰNG DỞ giữa chừng 1 trang rồi bỏ
+// trống, dựng lại đúng ở trang sau (lỗi ENGINE — đo thật bằng Chrome headless + đếm trang: đổi break-inside/
+// CSS grid/ảnh ở header và câu KHÔNG ăn thua, trang trắng vẫn y nguyên vị trí, không phải do 1 rule CSS cụ
+// thể của ta). KHÁC với trang trắng CUỐI mỗi mã đề/phiếu (`.pv-de-recto{break-before:right}`, cố ý — canh
+// mã đề/phiếu sau bắt đầu ở trang lẻ để in 2 mặt không dính nhau, Thùy xác nhận "chuẩn"). Sửa bằng dọn HẬU
+// KỲ sau khi paged.js dựng xong: xoá trang trắng nào KHÔNG PHẢI đệm hợp lệ trước 1 khối mới — phân biệt
+// bằng trang SAU nó có mở đầu phiếu (`.pv-bkh`) mới hay không. Trang trắng cuối cùng (không có trang sau
+// để so) luôn GIỮ. Dùng chung ET + MT (cùng `.pv-bkh`/`.pv-de-recto`/paged.js — cùng lớp bug).
+export function pruneGhostBlankPages(container: HTMLElement) {
+  const pages = Array.from(container.querySelectorAll<HTMLElement>('.pagedjs_page'))
+  for (let i = 0; i < pages.length; i++) {
+    const p = pages[i]
+    if ((p.textContent ?? '').trim()) continue          // có nội dung thật — không đụng
+    const next = pages[i + 1]
+    if (!next) continue                                  // trắng CUỐI CÙNG — đệm hợp lệ (canh in 2 mặt), giữ
+    if (next.querySelector('.pv-bkh')) continue          // ngay trước khối mới — đệm hợp lệ, giữ
+    p.remove()                                            // còn lại = paged.js dựng dở giữa chừng — xoá
+  }
+}
 // ⭐ 07-12 tiếp 6 — QUYẾT ĐỊNH KIẾN TRÚC: sau 3 LẦN sửa header/footer bằng html2canvas (override CSS
 // `!important`, xoá rule CSSOM có chờ load, opacity:0 + gate selector `:not(.pv-no-chrome)`) ĐỀU
 // THẤT BẠI qua verify THẬT trên máy Thùy (không phải giả lập) — chữ vẫn nhân đôi y hệt mỗi lần. Thùy:
@@ -257,6 +276,15 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly,
     // NGƯỜI DÙNG THẤY khi bấm 🖨 In (nhánh kia chỉ chạy khi bấm 🔗 Lấy link).
     ;(async () => {
       try { await (document as Document & { fonts?: { ready?: Promise<unknown> } }).fonts?.ready } catch { /* */ }
+      // ⭐ 08-19 (Thùy báo "BTVN 4A1 trống trang 1"): CÙNG LỚP BUG với font ở comment trên, nhưng cho ẢNH
+      // (logo masthead .gtbk-mh-logo, ảnh câu…) — chưa decode xong lúc paged.js đo lần đầu → masthead đo
+      // SAI chiều cao (ảnh coi như 0/khác cỡ thật) → card kế tiếp bị tính hụt chỗ, đẩy hẳn sang trang sau dù
+      // đo lại (final paint) thì masthead co đúng cỡ, để lại khoảng trắng đúng bằng phần hụt đó. fonts.ready
+      // không bao giờ chờ ảnh — phải tự đợi riêng.
+      try {
+        const imgs = [...(srcRef.current?.querySelectorAll('img') ?? [])]
+        await Promise.all(imgs.map((img) => img.complete ? Promise.resolve() : img.decode().catch(() => new Promise((res) => { img.onload = img.onerror = res }))))
+      } catch { /* */ }
       if (settled || cancelled) return
       new Previewer().preview(html, [cssUrl], container)
         .then((flow: { total?: number }) => {
@@ -483,6 +511,14 @@ function BuoiBlock({ buoi, gv, scope, lt = true, docTitle, ltCd, tenCd, linesByC
   const { num, heading } = parseBuoiTitle(buoi.title || '')
   const sub = [lopTen && `Lớp ${lopTen}`, ngayPhat && `Ngày ${ngayPhat}`].filter(Boolean).join('  ·  ')
   const logoUrl = location.origin + '/Logo.png' // logo THẬT của trung tâm (không dùng ô vuông placeholder mockup)
+  const btvnHere = scope === 'all' && (buoi.btvns.some((b) => b.caus.length) || buoi.ontaps.some((b) => b.caus.length))
+  // ⭐ 08-19 (Thùy báo "BTVN 4A1 trống trang 1"): doc BTVN THUẦN (không title, không dạng — buildBuois
+  // dựng buổi 'implicit') thì `.pv-buoi` bọc ngoài KHÔNG thêm gì (không masthead, groups rỗng) — chỉ còn
+  // 1 tầng lồng THỪA quanh BtvnSheet (chính nó đã có `.pv-btvn{break-before:page}` lo phân trang rồi).
+  // Y HỆT lớp bug "Fragment thay div/section thừa" đã dính ở groups.map dưới (xem comment): tầng lồng thừa
+  // làm paged.js dựng dở — vẽ xong masthead của BtvnSheet rồi bỏ TRẮNG hết phần trang còn lại, card đầu
+  // nhảy hẳn sang trang sau dù còn thừa chỗ. Bỏ `.pv-buoi` khi thuần BTVN → BtvnSheet tự lo phân trang, hết 1 tầng.
+  if (!buoi.title && groups.length === 0) return btvnHere ? <BtvnSheet btvns={buoi.btvns} ontaps={buoi.ontaps} gv={gv} docTitle={docTitle} buoiTitle={buoi.title} linesByCau={linesByCau} colByCau={colByCau} /> : null
   return (
     <section className="pv-buoi gtbk">
       {buoi.title && (
@@ -519,7 +555,7 @@ function BuoiBlock({ buoi, gv, scope, lt = true, docTitle, ltCd, tenCd, linesByC
           {g.dangs.map((d) => <DangBlock key={d.id} p={d} gv={gv} lt={lt} colByCau={colByCau} />)}
         </Fragment>
       ))}
-      {scope === 'all' && (buoi.btvns.some((b) => b.caus.length) || buoi.ontaps.some((b) => b.caus.length)) && (
+      {btvnHere && (
         <BtvnSheet btvns={buoi.btvns} ontaps={buoi.ontaps} gv={gv} docTitle={docTitle} buoiTitle={buoi.title} linesByCau={linesByCau} colByCau={colByCau} />
       )}
     </section>
@@ -774,7 +810,13 @@ export function cauItemParts({ no, c, gv, lines = 0 }: { no: number; c: CauHoi; 
       )}
       {gv && <GvAnswer c={c} />}
     </>),
-    lines: (lines > 0 && !hasOpts && !grid && !md && !gv) ? lines : 0,
+    // ⭐ 08-19 (Thùy báo "sinh dòng không đúng setup builder", KHTN + Đại, builder lẫn ET): `grid` là suy
+    // đoán TEXT (splitLabeled bắt "a)/b)/c)..." trong đề) — vốn để nhận diện Ý CON gọn (đáp án ngắn, không
+    // cần dòng kẻ). Nhưng câu kho `tu_luan` là NHÃN NGƯỜI GÁN, rõ ràng hơn hẳn suy đoán text — 1 câu tự
+    // luận có đề bắt đầu bằng "a) ... b) ... c) ..." (nhiều ý cần viết ra, không phải đáp án ngắn nhúng)
+    // vẫn bị `grid` cướp quyền, ép lines=0 dù GV đã gõ số dòng hẳn hoi trong builder. Tự luận LUÔN cần chỗ
+    // viết bất kể đề có dạng ý con hay không — không để suy đoán text đè lên nhãn tự luận tường minh.
+    lines: (lines > 0 && !hasOpts && (!grid || c.loai_cau === 'tu_luan') && !md && !gv) ? lines : 0,
     hasImg: !!c.anh_de,
   }
 }
@@ -1046,7 +1088,7 @@ const GT_BK_CSS = `
 // @page + dải gradient/footer cho giáo trình BK. `sc` = selector container (vd '.pv-scope-7 ') để 2 pseudo
 // dải chỉ sơn lên trang TRONG container render này (không rò sang render khác — xem comment scope ở effect).
 // @page (margin + số trang + liên hệ) buộc phải toàn cục như buildPagedCss; render đang xem là <style> sau cùng.
-const gtPageCss = (sc: string) => `
+export const gtPageCss = (sc: string) => `
 @page{
   margin:11mm 13mm 15mm;
   @bottom-center{content:"BK Academy   ·   Tel: 0963.209.309   ·   17A10 KĐT Geleximco";font-family:${GT_SANS};color:#6a7a93;font-weight:700;font-size:8pt;vertical-align:middle}

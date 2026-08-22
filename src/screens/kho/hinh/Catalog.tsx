@@ -7,7 +7,7 @@ import { useEffect, useMemo, useState } from 'react'
 import * as api from '../../../lib/kho/api'
 import type { Luoi } from '../../../lib/kho/hinh'
 import { MathText, Shell, Field, Actions, inp } from '../ui'
-import { Btn, Cap, Empty, Ma, Panel, Sol, Tag, inpCls } from './hinhUi'
+import { Btn, Cap, Empty, Ma, OcrButton, Panel, Sol, Tag, inpCls } from './hinhUi'
 import { LyThuyetModal } from '../BanDo'
 
 // Lý thuyết đã có hay chưa → chấm tròn nhỏ trước tên dạng (như % ở Đại, nhưng gọn).
@@ -294,6 +294,7 @@ function FormBoDe({ L, khoi, id, onClose, onDone }: { L: Luoi; khoi: string; id?
       <Field label="Phát biểu (text + LaTeX $…$)">
         <textarea className={`${inp} h-24`} value={pb} onChange={(e) => setPb(e.target.value)}
           placeholder="$\\triangle ABC$ vuông tại $A$, đường cao $AH$: $AB^2 = BH \\cdot BC$" />
+        <div className="mt-1.5"><OcrButton onText={setPb} /></div>
       </Field>
       <Actions onClose={onClose} disabled={!ten.trim() || saving} saving={saving} label={cu ? 'Lưu' : 'Tạo'}
         onSave={async () => {

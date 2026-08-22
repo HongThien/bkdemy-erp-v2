@@ -11,7 +11,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import * as api from '../../../lib/kho/api'
 import * as gt from '../../../lib/kho/hinhGiaoTrinh'
-import type { GiaoTrinh, GtBuoi, GtBai, TrichStateHinh } from '../../../lib/kho/hinhGiaoTrinh'
+import type { GiaoTrinh, GtBuoi, GtBai, TrichStateHinh, CheDoHinh } from '../../../lib/kho/hinhGiaoTrinh'
 import type { Luoi } from '../../../lib/kho/hinh'
 import type { PickItem } from '../../../store/useStore'
 import { listLop, type Lop } from '../../../lib/nhansu'
@@ -44,17 +44,17 @@ export async function resolveBanIn(L: Luoi, tieuBuoi: string, bais: GtBai[], pha
   for (const b of list) {
     if (b.loai === 'chuan') {
       const node = L.baiToan.find((x) => x.id === b.ref_id); if (!node) continue
-      mucs.push(mucGhep(L, { key: b.id, phan: b.phan, kind: 'ghep', luaId: null, nodeIds: [node.id] }, b.an_de, dong(b)))
+      mucs.push(mucGhep(L, { key: b.id, phan: b.phan, kind: 'ghep', luaId: null, nodeIds: [node.id] }, (b.hinh_che_do ?? (b.an_de ? 'o_trong' : 'hien')), dong(b)))
     } else if (b.loai === 'bienthe') {
       const v = btMap.get(b.ref_id!); if (!v) continue
-      mucs.push(mucBienThe(L, v, b.an_de, dong(b)))
+      mucs.push(mucBienThe(L, v, (b.hinh_che_do ?? (b.an_de ? 'o_trong' : 'hien')), dong(b)))
     } else if (b.loai === 'y') {
       const yb = yMap.get(b.ref_id!); if (!yb) continue
-      mucs.push(mucY(L, yb, b.an_de, dong(b)))
+      mucs.push(mucY(L, yb, (b.hinh_che_do ?? (b.an_de ? 'o_trong' : 'hien')), dong(b)))
     } else if (b.loai === 'ghep') {
       const sig = `${b.lua_id ?? 'chuan'}|${[...b.ghep_node_ids].sort().join(',')}`; if (seenGhep.has(sig)) continue; seenGhep.add(sig)
-      if (b.lua_id) { const vs = await api.bienTheCuaLua(b.lua_id); mucs.push(mucGhepLua(L, b.ghep_node_ids, vs, b.an_de, dong(b))) }
-      else mucs.push(mucGhep(L, { key: b.id, phan: b.phan, kind: 'ghep', luaId: b.lua_id, nodeIds: b.ghep_node_ids }, b.an_de, dong(b)))
+      if (b.lua_id) { const vs = await api.bienTheCuaLua(b.lua_id); mucs.push(mucGhepLua(L, b.ghep_node_ids, vs, (b.hinh_che_do ?? (b.an_de ? 'o_trong' : 'hien')), dong(b))) }
+      else mucs.push(mucGhep(L, { key: b.id, phan: b.phan, kind: 'ghep', luaId: b.lua_id, nodeIds: b.ghep_node_ids }, (b.hinh_che_do ?? (b.an_de ? 'o_trong' : 'hien')), dong(b)))
     }
   }
   return { tieuDe: `${tieuBuoi} — ${phan === 'lop' ? 'Trên lớp' : 'Về nhà (BTVN)'}`, phuDe: `${mucs.length} mục`, mucs }
@@ -63,17 +63,24 @@ export async function resolveBanIn(L: Luoi, tieuBuoi: string, bais: GtBai[], pha
 export default function GiaoTrinhScreen({ L, khoi }: { L: Luoi; khoi: string }) {
   const [tab, setTab] = useState<'master' | 'lop'>('master')
   const [inBan, setInBan] = useState<BanIn | null>(null)
+  // ⭐ 17/08 (Thùy: "header toàn thông tin thừa, chiếm rất nhiều không gian") — `openId` (giáo trình đang
+  // mở full-screen) NÂNG lên đây (trước ở trong Master) để ẨN HẲN hàng tiêu đề "Giáo trình · Khối X" +
+  // toggle Master/Theo-lớp khi đang ở trong 1 giáo trình cụ thể — hàng đó thừa lúc này (đã có "← Thư viện"
+  // + tên giáo trình ngay trong builder, "Khối X" cũng đã hiện ở thanh chọn khối phía trên).
+  const [openId, setOpenId] = useState<string | null>(null)
   // Bản ĐÃ LƯU (snapshot lớp / xem nhanh từ id buổi) — TheoLop dùng đường này.
   const inBuoi = useCallback(async (tieu: string, buoiId: string, phan: 'lop' | 'nha') => {
     try { setInBan(await resolveBanIn(L, tieu, await gt.listGtBai(buoiId), phan)) } catch (e: any) { alert(e.message ?? String(e)) }
   }, [L])
   return (
     <>
-      <div className="mb-3 flex items-center justify-between gap-3">
-        <h1 className="text-[19px] font-semibold text-slate-900">Giáo trình <span className="text-slate-400">· Khối {khoi}</span></h1>
-        <Seg value={tab} onChange={setTab} options={[{ v: 'master', label: '▤ Master — soạn' }, { v: 'lop', label: '◷ Theo lớp — đã gán' }]} />
-      </div>
-      {tab === 'master' ? <Master L={L} khoi={khoi} onPreview={setInBan} /> : <TheoLop khoi={khoi} onIn={inBuoi} />}
+      {!openId && (
+        <div className="mb-3 flex items-center justify-between gap-3">
+          <h1 className="text-[19px] font-semibold text-slate-900">Giáo trình <span className="text-slate-400">· Khối {khoi}</span></h1>
+          <Seg value={tab} onChange={setTab} options={[{ v: 'master', label: '▤ Master — soạn' }, { v: 'lop', label: '◷ Theo lớp — đã gán' }]} />
+        </div>
+      )}
+      {tab === 'master' ? <Master L={L} khoi={khoi} onPreview={setInBan} openId={openId} setOpenId={setOpenId} /> : <TheoLop khoi={khoi} onIn={inBuoi} />}
       {inBan && <HinhPrintView ban={inBan} onClose={() => setInBan(null)} />}
     </>
   )
@@ -82,13 +89,15 @@ export default function GiaoTrinhScreen({ L, khoi }: { L: Luoi; khoi: string }) 
 // ══════════════ MASTER — THƯ VIỆN dạng thẻ + modal Tạo (khuôn TaiLieuScreen Đại, ĐÚNG Y — Thùy chốt
 // "sao không làm giống Đại"). Mở 1 giáo trình = ĐIỀU HƯỚNG FULL-SCREEN vào GiaoTrinhBuilderHinh (không
 // còn split-pane sidebar+panel như bản trước — khuôn TaiLieuScreen: card "Mở/Xuất" → TaiLieuBuilder). ══
-function Master({ L, khoi, onPreview }: { L: Luoi; khoi: string; onPreview: (ban: BanIn) => void }) {
+function Master({ L, khoi, onPreview, openId, setOpenId }: {
+  L: Luoi; khoi: string; onPreview: (ban: BanIn) => void
+  openId: string | null; setOpenId: (id: string | null) => void   // nâng lên GiaoTrinhScreen — xem comment ở đó
+}) {
   const [gts, setGts] = useState<GiaoTrinh[]>([])
   const [loading, setLoading] = useState(true)
   const [q, setQ] = useState('')
   const [sort, setSort] = useState<'moi' | 'ten'>('moi')
   const [creating, setCreating] = useState(false)
-  const [openId, setOpenId] = useState<string | null>(null)   // giáo trình đang MỞ (builder full-screen)
 
   const nap = useCallback(async () => { setLoading(true); try { setGts(await gt.listGiaoTrinh(khoi)) } finally { setLoading(false) } }, [khoi])
   useEffect(() => { nap() }, [nap])
@@ -167,11 +176,16 @@ function GiaoTrinhBuilderHinh({ L, khoi, giaoTrinhId, onClose, onPreview }: {
   const [trichOpen, setTrichOpen] = useState(false)
   const [saved, setSaved] = useState(false)
   const markSaved = () => { setSaved(true); setTimeout(() => setSaved(false), 1500) }
+  // ⭐ 17/08 (Thùy): trước xếp CHỒNG hết mọi buổi trong 1 trang dài — kéo lên kéo xuống mệt khi giáo trình
+  // nhiều buổi. Giờ dropdown chọn ĐÚNG 1 buổi, chỉ buổi đó hiện nội dung (nhẹ hơn nhiều — mỗi buổi không
+  // còn phải tải/giữ state của mọi buổi khác cùng lúc).
+  const [activeId, setActiveId] = useState<string | null>(null)
 
   const nap = useCallback(async () => {
     const [all, bs] = await Promise.all([gt.listGiaoTrinh(khoi), gt.listBuoiMaster(giaoTrinhId)])
     const found = all.find((x) => x.id === giaoTrinhId) ?? null
     setG(found); if (found) setTen(found.ten); setBuois(bs)
+    setActiveId((cur) => (cur && bs.some((b) => b.id === cur)) ? cur : (bs[0]?.id ?? null))
   }, [khoi, giaoTrinhId])
   useEffect(() => { nap() }, [nap])
 
@@ -181,31 +195,41 @@ function GiaoTrinhBuilderHinh({ L, khoi, giaoTrinhId, onClose, onPreview }: {
     setG({ ...g, ten: ten.trim() }); markSaved()
   }
   async function themBuoi() {
-    await gt.createBuoiMaster(giaoTrinhId, { thu_tu: buois.length })
+    const b = await gt.createBuoiMaster(giaoTrinhId, { thu_tu: buois.length })
     await nap()
+    setActiveId(b.id)   // buổi vừa thêm hiện ngay, khỏi phải tự tìm trong dropdown
   }
+  const activeIdx = buois.findIndex((b) => b.id === activeId)
 
   if (!g) return <div className="p-8 text-sm text-slate-400">Đang tải…</div>
   return (
     <div className="flex h-full flex-col">
-      <div className="mb-3 flex items-center gap-3 border-b border-slate-200 pb-3">
-        <button onClick={onClose} className="text-[13px] font-medium text-slate-400 hover:text-indigo-600">← Thư viện</button>
+      {/* ⭐ 17/08 (Thùy: "header toàn thông tin thừa... thu nhỏ lại nhỏ nhất có thể") — gộp 2 hàng cũ
+          (tên+khối+lưu+gán lớp / chọn buổi+thêm buổi) thành 1 hàng. Bỏ nhãn "Khối X" (đã thấy ở thanh
+          chọn khối phía trên, khỏi lặp) và rút gọn nhãn nút. */}
+      <div className="mb-2 flex items-center gap-2 border-b border-slate-200 pb-2">
+        <button onClick={onClose} className="shrink-0 text-[13px] font-medium text-slate-400 hover:text-indigo-600">←</button>
         <input value={ten} onChange={(e) => setTen(e.target.value)} onBlur={saveTen}
-          className="h-9 max-w-[420px] flex-1 rounded-md border border-transparent bg-transparent px-1.5 text-[16px] font-semibold text-slate-900 outline-none hover:border-slate-200 focus:border-indigo-400 focus:bg-white" />
-        <span className="text-[12px] text-slate-400">Khối {khoi}</span>
-        <span className={`rounded-md px-2 py-0.5 text-[11px] font-medium transition ${saved ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-400'}`}>{saved ? '✓ Đã lưu' : '↻ Tự động lưu'}</span>
-        <Btn className="ml-auto border-violet-300 text-violet-700" onClick={() => setTrichOpen(true)}>⬇ Trích xuất / Gán lớp</Btn>
+          className="h-8 w-[180px] shrink-0 rounded-md border border-transparent bg-transparent px-1.5 text-[14px] font-semibold text-slate-900 outline-none hover:border-slate-200 focus:border-indigo-400 focus:bg-white" />
+        <select value={activeId ?? ''} onChange={(e) => setActiveId(e.target.value || null)} disabled={!buois.length}
+          className="h-8 min-w-[160px] rounded-md border border-slate-300 bg-white px-2 text-[13px] font-medium text-slate-700 outline-none focus:border-indigo-400 disabled:bg-slate-50 disabled:text-slate-400">
+          {!buois.length
+            ? <option value="">— chưa có buổi —</option>
+            : buois.map((b, i) => <option key={b.id} value={b.id}>{b.tieu_de || `Buổi ${i + 1}`}</option>)}
+        </select>
+        {buois.length > 0 && <span className="shrink-0 text-[11px] text-slate-400">{activeIdx + 1}/{buois.length}</span>}
+        <button onClick={themBuoi} className="shrink-0 rounded-md border-2 border-dashed border-indigo-200 bg-indigo-50/40 px-2 py-1 text-[12px] font-medium text-indigo-700 transition hover:bg-indigo-50">+ Buổi</button>
+        <span className={`shrink-0 rounded-md px-1.5 py-0.5 text-[10.5px] font-medium transition ${saved ? 'bg-emerald-50 text-emerald-700' : 'text-slate-300'}`}>{saved ? '✓ Đã lưu' : '↻'}</span>
+        <Btn className="ml-auto h-8 shrink-0 border-violet-300 px-2.5 text-[12px] text-violet-700" onClick={() => setTrichOpen(true)}>⬇ Gán lớp</Btn>
       </div>
       <div className="min-h-0 flex-1 overflow-auto">
-        {/* KHÔNG max-w như Đại (860px cho khối Bài-luyện+BTVN hẹp) — mỗi buổi Hình là 3 CỘT (lọc mô
-            hình/chuỗi/tóm tắt), cần rộng hết cỡ khung mới đủ chỗ, bó hẹp là bóp chết cột giữa. */}
-        <div className="space-y-2 pb-6">
-          {buois.length === 0 && <div className="rounded-xl border border-dashed border-slate-300 bg-white p-6 text-center text-[13px] text-slate-400">Chưa có buổi nào. Bấm "+ Thêm buổi" để bắt đầu.</div>}
-          {buois.map((b, i) => (
-            <BuoiCardHinh key={b.id} L={L} buoi={b} no={i + 1} onDeleted={nap} onPreview={onPreview} />
-          ))}
-          <button onClick={themBuoi} className="w-full rounded-xl border-2 border-dashed border-indigo-200 bg-indigo-50/40 py-3 text-[14px] font-medium text-indigo-700 transition hover:bg-indigo-50">+ Thêm buổi</button>
-        </div>
+        {/* KHÔNG max-w như Đại (860px cho khối Bài-luyện+BTVN hẹp) — mỗi buổi Hình là 2 CỘT (lọc mô
+            hình/chuỗi), cần rộng hết cỡ khung mới đủ chỗ, bó hẹp là bóp chết cột giữa. */}
+        {buois.length === 0
+          ? <div className="rounded-xl border border-dashed border-slate-300 bg-white p-6 text-center text-[13px] text-slate-400">Chưa có buổi nào. Bấm "+ Thêm buổi" để bắt đầu.</div>
+          : activeId && (
+            <BuoiCardHinh key={activeId} L={L} buoi={buois[activeIdx]} no={activeIdx + 1} onDeleted={nap} onPreview={onPreview} />
+          )}
       </div>
       {trichOpen && <TrichPanelHinh khoi={khoi} buois={buois} onClose={() => setTrichOpen(false)} />}
     </div>
@@ -219,7 +243,7 @@ function BuoiCardHinh({ L, buoi, no, onDeleted, onPreview }: {
   // Nội dung LUÔN hiện inline (khuôn DangCard Đại — KHÔNG gấp/mở, tránh lặp lỗi "tự chế thêm bước Thùy
   // không nhờ": người vào buổi phải thấy NGAY phần chọn mô hình + chọn bài, không phải bấm ▸ tìm ra).
   const [dem, setDem] = useState<{ lop: number; nha: number } | null>(null)
-  const [nhap, setNhap] = useState<{ picks: PickItem[]; anDe: string[]; soDong: Record<string, number> } | null>(null)
+  const [nhap, setNhap] = useState<{ picks: PickItem[]; cheDo: Record<string, CheDoHinh>; soDong: Record<string, number> } | null>(null)
   const [tieuDe, setTieuDe] = useState(buoi.tieu_de ?? '')
   const [saved, setSaved] = useState(false)
   const markSaved = () => { setSaved(true); setTimeout(() => setSaved(false), 1500) }
@@ -231,7 +255,7 @@ function BuoiCardHinh({ L, buoi, no, onDeleted, onPreview }: {
     })
   }, [buoi.id])
 
-  async function saveNow(patch: Partial<{ picks: PickItem[]; anDe: string[]; soDong: Record<string, number> }>) {
+  async function saveNow(patch: Partial<{ picks: PickItem[]; cheDo: Record<string, CheDoHinh>; soDong: Record<string, number> }>) {
     if (!nhap) return
     const next = { ...nhap, ...patch }
     setNhap(next)
@@ -254,28 +278,31 @@ function BuoiCardHinh({ L, buoi, no, onDeleted, onPreview }: {
   async function xem(phan: 'lop' | 'nha') {
     const n = nhap ?? await gt.loadBuoiPicks(buoi.id)
     if (!nhap) setNhap(n)
-    onPreview(await banInTheoMoHinh(tieuDe || `Buổi ${no}`, phan, n.picks, L, n.anDe, n.soDong))
+    onPreview(await banInTheoMoHinh(tieuDe || `Buổi ${no}`, phan, n.picks, L, n.cheDo, n.soDong))
   }
 
   return (
     <div className="mb-2 rounded-xl border border-slate-200 bg-white">
-      <div className="flex items-center gap-2 rounded-t-xl border-b border-slate-100 bg-indigo-50/50 px-4 py-2.5">
-        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-teal-500 text-[11.5px] font-bold text-white">{no}</span>
+      {/* ⭐ 17/08 (Thùy): "freeze header — giờ cứ phải kéo lên kéo xuống mệt". sticky top-0 trong khung
+          cuộn của GiaoTrinhBuilderHinh — nền ĐẶC (bỏ /50) để nội dung cuộn qua không lộ bóng chữ. */}
+      {/* ⭐ 17/08 (Thùy): bỏ huy hiệu số tròn ("Buổi N") — dropdown ngay phía trên đã hiện đúng buổi đang
+          xem, lặp lại số ở đây là thừa. Giữ ô tên (còn dùng để ĐẶT TÊN buổi, khác placeholder "Buổi N"). */}
+      <div className="sticky top-0 z-10 flex items-center gap-2 rounded-t-xl border-b border-slate-200 bg-indigo-50 px-3 py-1.5">
         <input value={tieuDe} onChange={(e) => setTieuDe(e.target.value)} onBlur={saveTen}
           placeholder={`Buổi ${no}`}
-          className="w-[220px] rounded-md border border-transparent bg-transparent px-1.5 py-1 text-[14px] font-bold text-indigo-800 outline-none hover:border-slate-200 focus:border-indigo-400 focus:bg-white" />
-        {dem && <span className="text-[11.5px] text-slate-400">📘 {dem.lop} · 📝 {dem.nha}</span>}
-        <span className={`rounded-md px-1.5 py-0.5 text-[10.5px] font-medium transition ${saved ? 'bg-emerald-50 text-emerald-700' : 'text-slate-300'}`}>{saved ? '✓ Đã lưu' : '↻ Tự động lưu'}</span>
+          className="w-[180px] rounded-md border border-transparent bg-transparent px-1.5 py-0.5 text-[13px] font-bold text-indigo-800 outline-none hover:border-slate-200 focus:border-indigo-400 focus:bg-white" />
+        {dem && <span className="text-[11px] text-slate-400">📘{dem.lop} · 📝{dem.nha}</span>}
+        <span className={`rounded-md px-1.5 py-0.5 text-[10px] font-medium transition ${saved ? 'bg-emerald-50 text-emerald-700' : 'text-slate-300'}`}>{saved ? '✓' : '↻'}</span>
         <div className="ml-auto flex gap-1.5">
-          <Btn className="h-7 px-2 text-[12px]" onClick={() => xem('lop')}>📘 Xem</Btn>
-          <Btn className="h-7 px-2 text-[12px]" onClick={() => xem('nha')}>📝 Xem</Btn>
-          <button onClick={xoa} title="Xoá buổi" className="rounded border border-slate-200 px-1.5 py-1 text-[12px] text-slate-400 hover:border-rose-300 hover:text-rose-600">✕</button>
+          <Btn className="h-6 px-2 text-[11px]" onClick={() => xem('lop')}>📘 Xem</Btn>
+          <Btn className="h-6 px-2 text-[11px]" onClick={() => xem('nha')}>📝 Xem</Btn>
+          <button onClick={xoa} title="Xoá buổi" className="rounded border border-slate-200 px-1.5 py-0.5 text-[11px] text-slate-400 hover:border-rose-300 hover:text-rose-600">✕</button>
         </div>
       </div>
       <div className="p-3">
         {!nhap ? <div className="p-4 text-[12.5px] text-slate-400">Đang tải…</div> : (
-          <BuoiPickEditor L={L} picks={nhap.picks} anDe={nhap.anDe} soDong={nhap.soDong}
-            onChangePicks={(picks) => saveNow({ picks })} onChangeAnDe={(anDe) => saveNow({ anDe })} onChangeSoDong={(soDong) => saveNow({ soDong })} />
+          <BuoiPickEditor L={L} picks={nhap.picks} cheDo={nhap.cheDo} soDong={nhap.soDong} filterKey={buoi.id}
+            onChangePicks={(picks) => saveNow({ picks })} onChangeCheDo={(cheDo) => saveNow({ cheDo })} onChangeSoDong={(soDong) => saveNow({ soDong })} />
         )}
       </div>
     </div>

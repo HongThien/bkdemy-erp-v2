@@ -450,12 +450,18 @@ function nhanDinhBu(d: AnhChupBu): NhanDinh[] {
     goiY: 'Chọn một mốc: xử hết trong vài đợt, hoặc chốt là quá cũ rồi và đánh dấu không cần bù hàng loạt. Để lơ lửng là tệ nhất — số cứ to dần mà không nói lên điều gì.',
     quyetDinh: null, gacDen: null,
   })
-  if (d.dongKhong > 0) ra.push({
+  // ⭐ CHỈ nêu khi chuyện CÒN ĐANG xảy ra. Đo 14/08: 47 buổi "có đề mà không chấm" dồn hết
+  //   vào tháng 6 → 26/07 (riêng tuần 20/07 là 20/34 buổi); hai tuần gần nhất 24/24 buổi đều
+  //   có chấm. Tức nó đã TỰ DỪNG. Gộp thành một con số rồi nhắc mỗi sáng là nhắc một việc
+  //   không còn xảy ra — người sẽ học được rằng danh sách này không đáng đọc.
+  //   (Bản trước đúng là làm vậy, và còn khuyên "nói lại với người chấm" — sai địa chỉ lẫn
+  //   sai thì: chuyện của tháng trước, người chấm hiện tại không liên quan.)
+  if (d.dongKhong.ganDay > 0) ra.push({
     ma: 'bu_dong_khong',
-    tieuDe: 'Có buổi bù được chốt xong mà không có lấy một dòng chấm nào',
-    so: `${d.dongKhong} buổi đã đóng đủ ET + đánh giá nhưng 0 dòng chấm/đánh giá cho HS có mặt`,
-    dienGiai: 'Bấm đóng là một chuyện, có dữ liệu đo hay không là chuyện khác. Mấy buổi này tính là hoàn thành trong mọi thống kê nhưng không đóng góp gì cho mastery của HS.',
-    goiY: 'Xem thử vài buổi: nếu do buổi mẹ không có ET thì đó là chuyện bình thường, còn nếu do bấm cho xong thì phải nói lại với người chấm.',
+    tieuDe: 'Buổi bù được chốt xong mà không có lấy một dòng chấm nào',
+    so: `${d.dongKhong.ganDay} buổi trong 14 ngày qua (tổng từ trước tới nay ${d.dongKhong.coDe})${d.dongKhong.moiNhat ? ` · gần nhất ${d.dongKhong.moiNhat}` : ''}`,
+    dienGiai: 'Buổi có đề ET hẳn hoi nhưng không ai chấm, vẫn bấm đóng đủ hai mốc. Nó tính là hoàn thành trong mọi thống kê mà không đóng góp gì cho mastery của HS — và dữ liệu đo của buổi đó mất luôn, không lấy lại được.',
+    goiY: 'Mở vài buổi gần nhất xem người chấm vướng ở đâu. Nếu là thói quen bấm cho xong thì chặn ở nút đóng sẽ rẻ hơn nhắc.',
     quyetDinh: null, gacDen: null,
   })
   return ra
@@ -570,7 +576,12 @@ export type BoiCanhTroLy = {
   // "em nào phải xếp lại" mà bảng chỉ có con số thì model đúng luật sẽ phải trả lời là
   // không biết, và người hỏi thấy trợ lý vô dụng dù dữ liệu nằm ngay đó.
   boTroBu: {
-    tomTat: { chuaFillDu: number; sapToi: number; phaiXepLai: number; quaHan: number; canXep: number; tonDongCu: number; khongXepDuoc: number }
+    tomTat: {
+      chuaFillDu: number; sapToi: number; phaiXepLai: number; quaHan: number; canXep: number; tonDongCu: number; khongXepDuoc: number
+      // "đóng khống": coDe = có đề mà không chấm (mất dữ liệu đo thật) · khongCoDe = buổi mẹ
+      // chưa soạn ET nên không có gì để chấm (bình thường) · ganDay = còn xảy ra trong 21 ngày.
+      dongKhongCoDe: number; dongKhongGanDay: number; dongKhongKhongCoDe: number
+    }
     phaiXepLai: { ho_ten: string; lop: string; ngayNghi: string; tuoi: number; vi: string; soLanDaXep: number }[]
     sapToi: { ngay: string; gio: string | null; phong: string | null; hs: string[] }[]
     chuaFillDu: { ngay: string; tuoi: number; thieu: string[]; hs: string[] }[]
@@ -612,6 +623,8 @@ export async function boiCanhChoHoi(): Promise<BoiCanhTroLy> {
       tomTat: {
         chuaFillDu: bu.chuaFillDu.length, sapToi: bu.sapToi.length, phaiXepLai: bu.phaiXepLai.length,
         quaHan: bu.quaHan.length, canXep: bu.canXep.tong, tonDongCu: bu.canXep.tonDongCu, khongXepDuoc: bu.khongXepDuoc,
+        // Giữ cả số LỊCH SỬ lẫn số GẦN ĐÂY: hỏi tới thì trả lời được, nhưng không nhắc hằng ngày.
+        dongKhongCoDe: bu.dongKhong.coDe, dongKhongGanDay: bu.dongKhong.ganDay, dongKhongKhongCoDe: bu.dongKhong.khongDe,
       },
       phaiXepLai: bu.phaiXepLai.map((l) => ({
         ho_ten: l.ho_ten, lop: l.lop, ngayNghi: l.ngay, tuoi: l.tuoiNgay,
@@ -634,25 +647,31 @@ export async function boiCanhChoHoi(): Promise<BoiCanhTroLy> {
 }
 
 export type LuotHoi = { hoi: string; dap: string }
-export type PhienDap = { id: string; trang_thai: 'pending' | 'processing' | 'done' | 'failed'; tra_loi: string | null; error: string | null; usage: any; model: string | null }
+export type DapTroLy = { traLoi: string | null; congCu: string | null; thamSo: any }
 
-// Ghi job → `worker/troly.mjs` quét mỗi 5s. Key Anthropic Ở SERVER, không vào bundle browser.
-export async function hoiTroLy(phien: string, cauHoi: string, lichSu: LuotHoi[]): Promise<string> {
+// Gọi thẳng serverless function `api/troly.mjs` (Vercel) — KHÔNG còn ghi job rồi chờ worker
+// polling nữa (CEO 19/08: worker đứng-một-mình-24/7 không hợp hạ tầng đang có). Key AI vẫn
+// CHỈ nằm ở server (biến môi trường Vercel), y hệt ranh giới cũ — chỉ đổi CÁCH gọi.
+//
+// ⭐ KHÔNG cần SUPABASE_SERVICE_ROLE cho ghi log (CEO 19/08 hỏi "đặt ở đây có rủi ro gì
+// không" — đúng, key service-role bỏ qua MỌI RLS, không cần tới khi việc ghi log này vốn
+// đã được `troly_hoi_dap`'s policy cho phép qua chính quyền người hỏi). Gửi kèm access
+// token của phiên đăng nhập hiện tại → server dùng ĐÚNG token đó để ghi, bị RLS lọc y hệt
+// mọi thao tác khác trong app — không có secret mạnh nào cần thêm trên Vercel.
+export async function hoiTroLy(phien: string, cauHoi: string, lichSu: LuotHoi[]): Promise<DapTroLy> {
   const boiCanh = await boiCanhChoHoi()
-  const { data: au } = await supabase.auth.getUser()
-  const { data, error } = await supabase.from('troly_hoi_dap').insert({
-    phien, cau_hoi: cauHoi.trim(), boi_canh: boiCanh,
-    lich_su: lichSu.slice(-6), // giữ 6 lượt gần nhất — đủ mạch, không phình token vô hạn
-    nguoi: au.user?.id ?? null,
-  }).select('id').single()
-  if (error) throw error
-  return (data as any).id
-}
-
-export async function docDap(id: string): Promise<PhienDap | null> {
-  const { data } = await supabase.from('troly_hoi_dap')
-    .select('id, trang_thai, tra_loi, error, usage, model').eq('id', id).maybeSingle()
-  return (data as any) ?? null
+  const { data: { session } } = await supabase.auth.getSession()
+  const res = await fetch('/api/troly', {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      ...(session?.access_token ? { authorization: `Bearer ${session.access_token}` } : {}),
+    },
+    body: JSON.stringify({ phien, cauHoi: cauHoi.trim(), boiCanh, lichSu: lichSu.slice(-6) }),
+  })
+  const j = await res.json().catch(() => null)
+  if (!res.ok) throw new Error(j?.error ?? `Lỗi máy chủ (HTTP ${res.status}).`)
+  return { traLoi: j?.traLoi ?? null, congCu: j?.congCu ?? null, thamSo: j?.thamSo ?? null }
 }
 
 // ════════════════════════════════════════════════════════════════════════════

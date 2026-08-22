@@ -8,8 +8,10 @@ import { listTLNSai, listAcceptedAnswers, chapNhanDapAn, tuChoiReports, type TLN
 import { smartNormalize } from '../../gami/testgrade'
 import { MathText } from '../kho/ui'
 import { tenHienThiDs } from '../../lib/hoten'
+import ChamLaiKeyPanel from './ChamLaiKeyPanel'
 
-type AnsGroup = { norm: string; raw: string; rows: TLNSaiRow[]; repsMoi: { id: string }[] }
+type RepMoi = { id: string; nguon: 'hs_bao_sai' | 'ai_de_xuat' }
+type AnsGroup = { norm: string; raw: string; rows: TLNSaiRow[]; repsMoi: RepMoi[] }
 type CauGroup = { key: string; maCau: string | null; noiDung: string | null; dapAnKey: string; loiGiai: string | null; answers: AnsGroup[]; repsMoi: number }
 
 const fmtNgay = (iso: string) => { const [y, m, d] = iso.split('-'); return `${d}/${m}/${y}` }
@@ -20,7 +22,7 @@ export default function DuyetChamScreen() {
   const [accepted, setAccepted] = useState<Map<string, string[]>>(new Map())
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
-  const [filter, setFilter] = useState<'baosai' | 'all'>('baosai')
+  const [filter, setFilter] = useState<'baosai' | 'all' | 'keysai'>('baosai')
   const [busy, setBusy] = useState<string | null>(null) // norm key đang xử lý
   const [flash, setFlash] = useState<string | null>(null)
 
@@ -45,7 +47,7 @@ export default function DuyetChamScreen() {
       let a = g.answers.find((x) => x.norm === norm)
       if (!a) { a = { norm, raw: r.dapAnHs, rows: [], repsMoi: [] }; g.answers.push(a) }
       a.rows.push(r)
-      for (const rep of r.reports) if (rep.trang_thai === 'moi') { a.repsMoi.push({ id: rep.id }); g.repsMoi++ }
+      for (const rep of r.reports) if (rep.trang_thai === 'moi') { a.repsMoi.push({ id: rep.id, nguon: rep.nguon }); g.repsMoi++ }
     }
     const out = [...byCau.values()]
     for (const g of out) g.answers.sort((x, y) => y.repsMoi.length - x.repsMoi.length || y.rows.length - x.rows.length)
@@ -80,17 +82,22 @@ export default function DuyetChamScreen() {
   return (
     <div className="flex h-full min-h-0 flex-col bg-[#f5f5f7]">
       <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 bg-white px-6 py-2.5">
-        <span className="mr-2 text-sm font-semibold text-slate-900">Duyệt chấm online — trả lời ngắn</span>
+        <span className="mr-2 text-sm font-semibold text-slate-900">Duyệt chấm online</span>
         <button onClick={() => setFilter('baosai')} className={tab(filter === 'baosai')}>🚩 HS báo sai{totalRepsMoi ? ` (${totalRepsMoi})` : ''}</button>
         <button onClick={() => setFilter('all')} className={tab(filter === 'all')}>Tất cả câu bị chấm sai ({groups.length})</button>
+        {/* Đường THỨ HAI, đừng lẫn với hai tab trên: trên = key đúng/HS viết khác · đây = KEY SAI. */}
+        <button onClick={() => setFilter('keysai')} className={tab(filter === 'keysai')}>⚠ Nghi sai đáp án — chấm lại</button>
         <button onClick={reload} className="rounded-md border border-slate-300 px-2.5 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-400">↻ Tải lại</button>
-        <span className="ml-auto text-[12px] text-slate-400">Chấp nhận đúng = thêm vào bộ đáp án (lần sau tự đúng) + sửa mọi bài làm trùng.</span>
+        <span className="ml-auto text-[12px] text-slate-400">
+          {filter === 'keysai' ? 'Cả lớp cùng sai 1 câu ⇒ nghi ĐÁP ÁN sai trước, nghi HS sau.' : 'Chấp nhận đúng = thêm vào bộ đáp án (lần sau tự đúng) + sửa mọi bài làm trùng.'}
+        </span>
       </div>
 
       <div className="min-h-0 flex-1 overflow-auto p-6">
         {flash && <div className="mb-3 rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-[13px] text-emerald-700">{flash}</div>}
         {err && <div className="mb-3 rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[13px] text-rose-600">Lỗi: {err}</div>}
-        {loading ? <p className="text-sm text-slate-400">Đang tải…</p>
+        {filter === 'keysai' ? <ChamLaiKeyPanel />
+          : loading ? <p className="text-sm text-slate-400">Đang tải…</p>
           : shown.length === 0 ? (
             <div className="rounded-xl border border-dashed border-slate-300 bg-white py-14 text-center text-sm text-slate-400">
               {filter === 'baosai' ? 'Không có báo sai nào đang chờ duyệt. 🎉' : 'Không có câu trả lời ngắn nào đang bị chấm sai.'}
@@ -115,7 +122,9 @@ export default function DuyetChamScreen() {
                   <div className="divide-y divide-slate-100">
                     {(filter === 'baosai' ? g.answers.filter((a) => a.repsMoi.length > 0) : g.answers).map((a) => {
                       const k = g.key + a.norm
-                      const yKiens = a.rows.flatMap((r) => r.reports.filter((x) => x.trang_thai === 'moi' && x.y_kien).map((x) => x.y_kien!))
+                      const yKienCua = (nguon: RepMoi['nguon']) => a.rows.flatMap((r) => r.reports.filter((x) => x.trang_thai === 'moi' && x.nguon === nguon && x.y_kien).map((x) => x.y_kien!))[0]
+                      const nHsBaoSai = a.repsMoi.filter((r) => r.nguon === 'hs_bao_sai').length
+                      const nAiDeXuat = a.repsMoi.filter((r) => r.nguon === 'ai_de_xuat').length
                       return (
                         <div key={a.norm} className="flex flex-wrap items-center gap-3 px-5 py-2.5">
                           <span className="rounded-lg bg-slate-100 px-2.5 py-1 font-mono text-[14px] font-semibold text-slate-800">{a.raw}</span>
@@ -123,7 +132,8 @@ export default function DuyetChamScreen() {
                             {a.rows.length} HS: {tenHienThiDs(a.rows.slice(0, 6).map((r) => r.hocSinh.ho_ten)).join(', ')}{a.rows.length > 6 ? '…' : ''}
                             {' · '}{[...new Set(a.rows.map((r) => `${r.test.lopTen} ${LOAI_LABEL[r.test.loai] ?? r.test.loai} ${fmtNgay(r.test.ngay)}`))].slice(0, 3).join(' · ')}
                           </span>
-                          {a.repsMoi.length > 0 && <span className="rounded-full bg-rose-50 px-2 py-0.5 text-[11px] font-semibold text-rose-600">🚩 {yKiens[0] ?? 'Em nghĩ mình đúng'}</span>}
+                          {nHsBaoSai > 0 && <span className="rounded-full bg-rose-50 px-2 py-0.5 text-[11px] font-semibold text-rose-600">🚩 {yKienCua('hs_bao_sai') ?? 'Em nghĩ mình đúng'}</span>}
+                          {nAiDeXuat > 0 && <span className="rounded-full bg-violet-50 px-2 py-0.5 text-[11px] font-semibold text-violet-700" title="AI (DeepSeek) tự đề xuất khi thấy đáp án lệch key nhưng có thể đúng bản chất — cần GV soát trước khi duyệt">🤖 AI đề xuất{nAiDeXuat > 1 ? ` (×${nAiDeXuat})` : ''}: {yKienCua('ai_de_xuat') ?? '—'}</span>}
                           <span className="ml-auto flex shrink-0 gap-2">
                             <button disabled={busy === k || !g.maCau} onClick={() => onChapNhan(g, a)}
                               title={g.maCau ? 'Đáp án này ĐÚNG — thêm vào bộ đáp án + sửa mọi bài làm trùng' : 'Câu không còn mã kho — không backfill được'}

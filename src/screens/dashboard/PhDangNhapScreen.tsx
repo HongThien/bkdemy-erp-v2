@@ -3,7 +3,8 @@
 // Dữ liệu login nằm ở project bkdemy-ph (auth.users) → gọi endpoint ph-app, xác thực bằng
 // chính JWT staff ERP (ph-app verify qua Supabase ERP). ERP chỉ đọc, không giữ secret.
 import { useEffect, useMemo, useState } from 'react'
-import { fetchPhLogins, resetPhPassword, type PhLoginRow as Row, type PhLoginSummary as Summary } from '../../lib/ph-login'
+import { fetchPhLogins, resetPhPassword, openPreviewApp, type PhLoginRow as Row, type PhLoginSummary as Summary } from '../../lib/ph-login'
+import { supabase } from '../../lib/supabase'
 
 type TrangThai = 'chua' | 'chua_doi' | 'da_dung'
 function trangThaiOf(r: Row): TrangThai {
@@ -60,6 +61,7 @@ export default function PhDangNhapScreen() {
   const [filter, setFilter] = useState<'all' | 'chua' | 'da'>('all')
   const [resetting, setResetting] = useState<string | null>(null)
   const [toast, setToast] = useState<string | null>(null)
+  const [conByPh, setConByPh] = useState<Record<string, string[]>>({}) // phu_huynh_id → tên các con (từ DB ERP)
 
   async function load() {
     setLoading(true); setErr(null)
@@ -67,6 +69,13 @@ export default function PhDangNhapScreen() {
       const j = await fetchPhLogins()
       setRows(j.parents ?? [])
       setSummary(j.summary ?? null)
+      // Tên con lấy từ chính DB ERP (hoc_sinh) — 1 query, gom theo phụ huynh. Để hiện kèm + search.
+      const { data: hs } = await supabase.from('hoc_sinh').select('ho_ten, phu_huynh_id').not('phu_huynh_id', 'is', null).limit(10000)
+      const m: Record<string, string[]> = {}
+      for (const h of (hs ?? []) as { ho_ten: string; phu_huynh_id: string }[]) {
+        if (h.phu_huynh_id) (m[h.phu_huynh_id] ??= []).push(h.ho_ten)
+      }
+      setConByPh(m)
     } catch (e) {
       setErr((e as Error).message)
     } finally {
@@ -90,6 +99,15 @@ export default function PhDangNhapScreen() {
     }
   }
 
+  async function openPreview(r: Row) {
+    try {
+      await openPreviewApp(r.phu_huynh_id)
+    } catch (e) {
+      setToast('⚠️ ' + (e as Error).message)
+      setTimeout(() => setToast(null), 4000)
+    }
+  }
+
   const shown = useMemo(() => {
     const kw = q.trim().toLowerCase()
     return rows.filter((r) => {
@@ -97,9 +115,10 @@ export default function PhDangNhapScreen() {
       if (filter === 'chua' && tt !== 'chua') return false
       if (filter === 'da' && tt === 'chua') return false
       if (!kw) return true
-      return (r.ho_ten || '').toLowerCase().includes(kw) || (r.so_dien_thoai || '').includes(kw)
+      const con = (conByPh[r.phu_huynh_id] ?? []).join(' ').toLowerCase()
+      return (r.ho_ten || '').toLowerCase().includes(kw) || (r.so_dien_thoai || '').includes(kw) || con.includes(kw)
     })
-  }, [rows, q, filter])
+  }, [rows, q, filter, conByPh])
 
   const pct = summary && summary.total ? Math.round((summary.loggedIn / summary.total) * 100) : 0
   const chuaCount = summary ? summary.total - summary.loggedIn : 0
@@ -131,7 +150,7 @@ export default function PhDangNhapScreen() {
         )}
 
         <div className="mb-3 flex flex-wrap items-center gap-2">
-          <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm tên hoặc SĐT…"
+          <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm tên con / phụ huynh / SĐT…"
             className="w-64 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none focus:border-indigo-400" />
           <div className="flex overflow-hidden rounded-lg ring-1 ring-slate-200">
             {([['all', 'Tất cả'], ['chua', 'Chưa đăng nhập'], ['da', 'Đã đăng nhập']] as const).map(([k, t]) => (
@@ -162,17 +181,26 @@ export default function PhDangNhapScreen() {
                 const tt = trangThaiOf(r)
                 return (
                   <tr key={r.phu_huynh_id} className="border-b border-slate-50 last:border-0 hover:bg-slate-50/60">
-                    <td className="px-4 py-3 font-medium text-slate-800">{r.ho_ten || '—'}</td>
+                    <td className="px-4 py-3">
+                      <div className="font-medium text-slate-800">{r.ho_ten || '—'}</div>
+                      {(conByPh[r.phu_huynh_id]?.length ?? 0) > 0 && <div className="mt-0.5 text-xs text-slate-400">Con: {conByPh[r.phu_huynh_id].join(', ')}</div>}
+                    </td>
                     <td className="px-4 py-3 text-slate-600">{r.so_dien_thoai}</td>
                     <td className="px-4 py-3"><span className={`inline-block rounded-full px-2.5 py-1 text-xs font-semibold ring-1 ${TT_UI[tt].cls}`}>{TT_UI[tt].ten}</span></td>
                     <td className="px-4 py-3 text-slate-500">{fmtNgay(r.last_sign_in_at)}</td>
-                    <td className="px-4 py-3 text-right">
-                      {r.has_account ? (
-                        <button disabled={resetting === r.phu_huynh_id} onClick={() => void doReset(r)}
-                          className="rounded-lg border border-slate-300 px-2.5 py-1.5 text-xs font-medium text-slate-600 hover:border-rose-400 hover:text-rose-600 disabled:opacity-40">
-                          {resetting === r.phu_huynh_id ? 'Đang reset…' : 'Reset về 123456'}
+                    <td className="px-4 py-3">
+                      <div className="flex items-center justify-end gap-2">
+                        <button onClick={() => void openPreview(r)}
+                          className="rounded-lg border border-indigo-300 px-2.5 py-1.5 text-xs font-medium text-indigo-600 hover:bg-indigo-50">
+                          👁 Xem app
                         </button>
-                      ) : <span className="text-xs text-slate-300">chưa có tài khoản</span>}
+                        {r.has_account ? (
+                          <button disabled={resetting === r.phu_huynh_id} onClick={() => void doReset(r)}
+                            className="rounded-lg border border-slate-300 px-2.5 py-1.5 text-xs font-medium text-slate-600 hover:border-rose-400 hover:text-rose-600 disabled:opacity-40">
+                            {resetting === r.phu_huynh_id ? 'Đang reset…' : 'Reset về 123456'}
+                          </button>
+                        ) : <span className="text-xs text-slate-300">chưa có tài khoản</span>}
+                      </div>
                     </td>
                   </tr>
                 )

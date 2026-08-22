@@ -239,6 +239,16 @@ export async function xacNhanTuan(yTuongIds: string[], kyTuan?: string): Promise
   }
 }
 
+// TASK CON của 1 task mẹ cụ thể (§4-6, story 08-18 "phân cấp"). Dùng ở VIỆC CỦA TÔI khi
+// chính người được giao task to tự tách con — khác listWeeklyPlanning (cả tuần, mọi cụm),
+// ở đây chỉ cần đúng 1 cụm nên query thẳng theo task_me_id, không cần lọc theo ky_tuan.
+export async function listTaskCon(taskMeId: string): Promise<ViecFull[]> {
+  const { data, error } = await supabase.from('viec').select('*').eq('task_me_id', taskMeId)
+    .order('created_at', { ascending: true }).limit(LIMIT)
+  if (error) throw error
+  return decorateViec((data ?? []) as Viec[])
+}
+
 // WEEKLY PLANNING (story §4): mọi task của tuần (mẹ + con + lẻ). UI gom cụm theo task_me_id.
 export async function listWeeklyPlanning(kyTuan: string): Promise<ViecFull[]> {
   const { data, error } = await supabase.from('viec').select('*').eq('ky_tuan', kyTuan)
@@ -367,6 +377,48 @@ export async function chuyenNguoi(id: string, nguoiMoiId: string, phanTramGhiNha
 // Leader sửa thông tin (§4.4) — KHÔNG đổi người (chuyển người là hành động riêng §4.5).
 export async function suaViec(id: string, patch: { tieu_de?: string; muc_tieu?: string; output?: string; deadline?: string | null; khoi_luong?: number }): Promise<void> {
   const { error } = await supabase.from('viec').update(patch).eq('id', id)
+  if (error) throw error
+}
+
+// GÁN NGƯỜI LÀM cho task MẸ chưa có ai (story 08-18 "phân cấp") — CHỈ gán lần đầu
+// (nguoi_lam_id đang null). Đổi người sau khi ĐÃ có chủ là hành động khác (chuyenNguoi §4.5),
+// không dùng hàm này — tránh lẫn "giao lần đầu" với "chuyển", 2 việc có luật ghi-vết khác nhau.
+export async function ganNguoiLam(id: string, nguoiLamId: string): Promise<void> {
+  const { data: v, error: e0 } = await supabase.from('viec').select('nguoi_lam_id').eq('id', id).single()
+  if (e0) throw e0
+  if ((v as any).nguoi_lam_id) throw new Error('Task này đã có người làm — dùng nút "Chuyển" để đổi người.')
+  const { error } = await supabase.from('viec').update({ nguoi_lam_id: nguoiLamId }).eq('id', id)
+  if (error) throw error
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+// 5.5) CẬP NHẬT TIẾN ĐỘ trong lúc làm (story 08-18) — TƯỜNG THUẬT của người làm,
+// KHÁC viec.tien_do (điểm 0-100 máy tính lúc nghiệm thu). Append-only, nhiều dòng
+// theo thời gian — không sửa/xoá dòng cũ (đúng CLAUDE §2 "vết thời gian bất biến").
+// ════════════════════════════════════════════════════════════════════════════
+export type CapNhatViec = {
+  id: string; viec_id: string; nguoi_id: string; noi_dung: string
+  tien_do_bao_cao: number | null; created_at: string; nguoi_ten?: string
+}
+export async function listCapNhat(viecId: string): Promise<CapNhatViec[]> {
+  const { data, error } = await supabase.from('viec_cap_nhat').select('*').eq('viec_id', viecId)
+    .order('created_at', { ascending: false }).limit(LIMIT)
+  if (error) throw error
+  const rows = (data ?? []) as CapNhatViec[]
+  const nsMap = await nhanSuTenMap(rows.map((r) => r.nguoi_id))
+  return rows.map((r) => ({ ...r, nguoi_ten: nsMap.get(r.nguoi_id) ?? '?' }))
+}
+// CHỈ người đang làm (nguoi_lam_id) được tự báo cáo tiến độ việc của mình.
+export async function themCapNhat(viecId: string, p: { noiDung: string; tienDoBaoCao?: number | null }): Promise<void> {
+  if (!p.noiDung.trim()) throw new Error('Nội dung cập nhật không được trống.')
+  const me = await myNhanSuId()
+  const { data: v, error: e0 } = await supabase.from('viec').select('nguoi_lam_id').eq('id', viecId).single()
+  if (e0) throw e0
+  if ((v as any).nguoi_lam_id !== me) throw new Error('Chỉ người đang làm việc này mới tự cập nhật được.')
+  const { error } = await supabase.from('viec_cap_nhat').insert({
+    viec_id: viecId, nguoi_id: me, noi_dung: p.noiDung.trim(),
+    tien_do_bao_cao: p.tienDoBaoCao ?? null,
+  })
   if (error) throw error
 }
 

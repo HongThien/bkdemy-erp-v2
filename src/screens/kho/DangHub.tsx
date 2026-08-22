@@ -218,8 +218,11 @@ export function CauModal({ editing, cauTbl, onClose, onSaved }: { editing: CauHo
       onSaved()
     } catch (e: any) { setError(e.message ?? String(e)); setSaving(false) }
   }
+  // stopPropagation ở CHÍNH backdrop này (không chỉ hộp trắng bên trong) — CauModal KHÔNG dùng createPortal
+  // nên nằm LỒNG trong backdrop của DangHub hub (vẫn cố ý giữ click-ra-ngoài-đóng vì là popup xem). Thiếu
+  // dòng này thì click ra ngoài CauModal nổi bong bóng lên đóng luôn cả hub.
   return (
-    <div className="fixed inset-0 z-[60] bg-slate-900/50 backdrop-blur-sm" onClick={onClose}>
+    <div className="fixed inset-0 z-[60] bg-slate-900/50 backdrop-blur-sm" onClick={(e) => e.stopPropagation()}>
       <div className="absolute inset-x-[6%] inset-y-8 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center gap-3 border-b border-slate-200 px-6 py-3.5">
           <h3 className="text-base font-semibold text-slate-900">Sửa câu</h3>
@@ -389,9 +392,12 @@ function AiImportModal({ mode, dangChinh, tenDang, cauTbl, presetGoc, onClose, o
         for (const c of await fileToCanvases(f.mimeType, f.dataBase64)) {
           const { text } = await callGeminiRich(buildIngestPrompt({ tenDang, loaiCau: loai, giaiAI }), { model, schema: INGEST_SCHEMA, think: giaiAI ? 8192 : 0, files: [{ mimeType: 'image/jpeg', dataBase64: canvasToJpegBase64(c) }] })
           for (const cau of parseIngestJson(text)) {
-            let anhDe: string | null = null
-            if (cau.coHinh && cau.box) { const blob = await (await fetch(cropCanvasBox(c, cau.box))).blob(); anhDe = await uploadKhoImage(new File([blob], 'fig.png', { type: 'image/png' })) }
-            acc.push({ noi_dung: cau.noi_dung, dap_an: cau.dap_an ?? '', loi_giai: cau.loi_giai ?? '', luaChon: cau.lua_chon ?? null, anhDe, anhDapAn: null, nguonGiai: giaiAI ? 'ai' : 'nguoi', approved: true, isGoc: false })
+            // Hình ĐỀ và hình ĐÁP ÁN giờ là 2 box RIÊNG do AI tự phân theo ranh giới "Giải/Lời giải/Bài
+            // giải" (xem prompt ở buildIngestPrompt) — không còn gộp mọi hình phát hiện được vào anh_de.
+            let anhDe: string | null = null, anhDapAn: string | null = null
+            if (cau.coHinhDe && cau.boxDe) { const blob = await (await fetch(cropCanvasBox(c, cau.boxDe))).blob(); anhDe = await uploadKhoImage(new File([blob], 'fig-de.png', { type: 'image/png' })) }
+            if (cau.coHinhDapAn && cau.boxDapAn) { const blob = await (await fetch(cropCanvasBox(c, cau.boxDapAn))).blob(); anhDapAn = await uploadKhoImage(new File([blob], 'fig-dap-an.png', { type: 'image/png' })) }
+            acc.push({ noi_dung: cau.noi_dung, dap_an: cau.dap_an ?? '', loi_giai: cau.loi_giai ?? '', luaChon: cau.lua_chon ?? null, anhDe, anhDapAn, nguonGiai: giaiAI ? 'ai' : 'nguoi', approved: true, isGoc: false })
           }
         }
       }
@@ -448,7 +454,7 @@ function AiImportModal({ mode, dangChinh, tenDang, cauTbl, presetGoc, onClose, o
   const bIdx = items.length ? Math.min(vi, items.length - 1) : 0 // câu đang xem (batch), clamp khi xoá/gộp
 
   return (
-    <div className="fixed inset-0 z-[60] bg-slate-900/50 backdrop-blur-sm" onClick={onClose}>
+    <div className="fixed inset-0 z-[60] bg-slate-900/50 backdrop-blur-sm" onClick={(e) => e.stopPropagation()}>
       <div className="absolute inset-4 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center gap-4 border-b border-slate-200 px-6 py-3.5">
           <h3 className="text-base font-semibold text-slate-900">

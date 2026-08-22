@@ -195,10 +195,15 @@ export function anhCauHinhCua(L: Luoi, moHinhId: string): string | null {
 /** ⭐ Hình HIỆN DÙNG của một BÀI TOÁN con = hình RIÊNG của nó (`anh_chuan`) nếu có, KHÔNG thì mượn hình
  *  cấu hình của mô hình. (Thùy: cùng mô hình KHÔNG có nghĩa hình vẽ giống hệt — node được đặt hình riêng;
  *  mặc định `anh_chuan` null = dùng chung hình mô hình.) */
-export function anhCuaBaiToan(L: Luoi, baiToanId: string): string | null {
+/** Hình của bài toán — CÙNG LUẬT với giả thiết (Thùy 17/08: "kế thừa giả thiết, hình vẽ của bài toán 1"):
+ *  của nó → hình bài CHA (tiền đề gần nhất, đệ quy) → cấu hình mô hình khi không có bài đứng trước. */
+export function anhCuaBaiToan(L: Luoi, baiToanId: string, daTham: Set<string> = new Set()): string | null {
   const bt = L.baiToan.find((b) => b.id === baiToanId)
-  if (!bt) return null
-  return bt.anh_chuan ?? anhCauHinhCua(L, bt.mo_hinh_id)
+  if (!bt || daTham.has(baiToanId)) return null
+  daTham.add(baiToanId)
+  if (bt.anh_chuan) return bt.anh_chuan
+  const cha = chaKeThua(L, baiToanId, daTham)
+  return (cha ? anhCuaBaiToan(L, cha.id, daTham) : null) ?? anhCauHinhCua(L, bt.mo_hinh_id)
 }
 /** "Bài toán phía trước" — gợi ý làm TIỀN ĐỀ CHÍNH khi tạo node mới trong một mô hình: node cấp cao
  *  nhất đã có trong mô hình đó (hoặc tổ tiên gần nhất có node). */
@@ -216,11 +221,33 @@ export function nodeTruoc(L: Luoi, moHinhId: string): BaiToan | null {
  *   • CỘNG THÊM (mặc định): full = giả thiết mô hình + `gia_thiet_rieng` (nếu có).
  *   • THAY THẾ (`gt_thay_the=true`): full = `gia_thiet_rieng` — bỏ qua hẳn giả thiết mô hình, node tự
  *     đứng độc lập. Quan hệ node→mô hình (`mo_hinh_id`) KHÔNG đổi — vẫn xác định context/cây/tiền đề. */
-export function giaThietBaiToan(L: Luoi, baiToanId: string): string {
+/** "Cha" để kế thừa = TIỀN ĐỀ của cách mặc định (Thùy 17/08: "tiền đề chính là bài 2 sinh ra từ bài 1").
+ *  Nhiều tiền đề → CẤP CAO NHẤT trước (cụ thể nhất), rồi tới mã cho ổn định — cùng thứ tự `nodeTruoc()`
+ *  để "bài phía trước" và "cha kế thừa" không nói hai chuyện khác nhau. */
+function chaKeThua(L: Luoi, baiToanId: string, daTham: Set<string>): BaiToan | null {
+  const bts = tienDeCua(L, baiToanId)
+    .filter((id) => !daTham.has(id))
+    .map((id) => L.baiToan.find((b) => b.id === id))
+    .filter(Boolean) as BaiToan[]
+  return bts.sort((a, b) => b.cap - a.cap || b.ma.localeCompare(a.ma))[0] ?? null
+}
+export function giaThietBaiToan(L: Luoi, baiToanId: string, daTham: Set<string> = new Set()): string {
   const bt = L.baiToan.find((b) => b.id === baiToanId)
-  if (!bt) return ''
+  if (!bt || daTham.has(baiToanId)) return ''
+  daTham.add(baiToanId)
   if (bt.gt_thay_the) return bt.gia_thiet_rieng?.trim() ?? ''
-  return [giaThietDayDu(L, bt.mo_hinh_id), bt.gia_thiet_rieng?.trim()].filter(Boolean).join('; ')
+  // ⭐ 17/08 (Thùy) — KẾ THỪA TỔ TIÊN GẦN NHẤT. Tiền đề CHÍNH LÀ "bài mà bài này sinh ra từ" (muốn
+  // giải bài 2 phải giải bài 1), nên nguồn mặc định là giả thiết của bài CHA, không phải mô hình.
+  // Không có bài toán đứng trước ⇒ mô hình là tổ tiên, y hành vi cũ. Vẫn là MẶC ĐỊNH: người soạn sửa
+  // `gia_thiet_rieng` hoặc bật `gt_thay_the` để đè — "khoá lỏng", đúng chữ Thùy dùng.
+  //
+  // ⚠ CỐ Ý KHÔNG hợp thêm giả thiết mô hình vào. Tao có thử (mô hình ∪ cha) để khỏi mất chữ, nhưng
+  // Thùy chốt KHÔNG: giả thiết của cha ĐÁNG LẼ đã đủ cho con: chỗ nào con nghèo hơn mô hình là chỗ
+  // DỮ LIỆU NHẬP THIẾU, và hợp lại thì che lỗi đó vĩnh viễn — không ai còn thấy mà sửa.
+  // Ba chỗ đang lộ ra khi đổi luật (BT.032 · BT.040 · BT.045) là việc sửa DỮ LIỆU, không phải sửa code.
+  const cha = chaKeThua(L, baiToanId, daTham)
+  const nen = cha ? giaThietBaiToan(L, cha.id, daTham) : giaThietDayDu(L, bt.mo_hinh_id)
+  return [nen, bt.gia_thiet_rieng?.trim()].filter(Boolean).join('; ')
 }
 /** Đề bài chuẩn của một node = giả thiết đầy đủ của bài toán (mượn mô hình, + riêng nếu có) + câu hỏi
  *  (`phat_bieu`) + hình của node (riêng nếu có, mặc định mượn của mô hình). KHÔNG lưu. */

@@ -43,6 +43,7 @@ import PhanQuyenScreen from './phanquyen/PhanQuyenScreen'
 import BaoLoiScreen from './baoloi/BaoLoiScreen'
 import OpsReportScreen from './vanhanhops/OpsReportScreen'
 import PrepScreen from './vanhanhops/PrepScreen'
+import PhongHocScreen from './phonghoc/PhongHocScreen'
 import PhanCongOpsScreen from './vanhanhops/PhanCongOpsScreen'
 import ScanDaChamScreen from './vanhanhops/ScanDaChamScreen'
 import TuyenSinhScreen from './tuyensinh/TuyenSinhScreen'
@@ -51,6 +52,7 @@ import BoTroScreen from './botro/BoTroScreen'
 import BoTroDuoiScreen from './botro/BoTroDuoiScreen'
 import ChatLuongVanHanhScreen from './dashboard/ChatLuongVanHanhScreen'
 import PhDangNhapScreen from './dashboard/PhDangNhapScreen'
+import XemAppScreen from './dashboard/XemAppScreen'
 import DashboardHocTapScreen from './danhgia/DashboardHocTapScreen'
 import DuyetBoTroYeuScreen from './danhgia/DuyetBoTroYeuScreen'
 import NoiDungBoTroYeuScreen from './danhgia/NoiDungBoTroYeuScreen'
@@ -84,6 +86,7 @@ const TASK_STYLE: Record<TabKey, { icon: string; accent: string }> = {
   btvn: { icon: '📒', accent: 'border-l-amber-400' },
   danhgia: { icon: '⭐', accent: 'border-l-rose-400' },
   mt: { icon: '🏆', accent: 'border-l-fuchsia-400' },
+  baosai: { icon: '🚩', accent: 'border-l-rose-500' },
 }
 // Loại việc cho filter chip — THEO VAI (Thùy 07-06: "Ops không có chấm bài như TA, phải hiện đúng
 // việc của ops"): Ops thấy Điểm danh/Report/Báo tan/Chuẩn bị phòng · GV/TA thấy Chấm bài/ET/BTVN/Đánh
@@ -134,10 +137,14 @@ function OpsBuoiCard({ ba, ngay, td, done, onOpen }: { ba: BuoiAo; ngay: string;
   )
 }
 
-function TaskCard({ t, now, done, dg, onOpenBuoi }: { t: MyTask; now: number; done?: boolean; dg?: { tong: number; daDanh: number }; onOpenBuoi: (o: OpenBuoi) => void }) {
+function TaskCard({ t, now, done, dg, onOpenBuoi, onGoLeaf }: { t: MyTask; now: number; done?: boolean; dg?: { tong: number; daDanh: number }; onOpenBuoi: (o: OpenBuoi) => void; onGoLeaf: (leaf: string) => void }) {
   const st = TASK_STYLE[t.tab]
   const base = done ? 'border-l-emerald-500 bg-emerald-50' : `${st.accent} bg-white`
-  const onClick = () => onOpenBuoi({ id: t.buoiId, tabs: tabsCuaVai(t.vai), initialTab: t.tab, canManage: false, loai: t.loai })
+  // 'baosai' KHÔNG phải khâu của buổi — nó là hàng đợi duyệt của test online ⇒ đi tới màn
+  // "Duyệt chấm online", không mở BuoiDetail (mở buổi thì chẳng có tab nào tương ứng).
+  const onClick = () => (t.tab === 'baosai'
+    ? onGoLeaf('duyetcham')
+    : onOpenBuoi({ id: t.buoiId, tabs: tabsCuaVai(t.vai), initialTab: t.tab, canManage: false, loai: t.loai }))
   // Đánh giá đã điền dở/đủ mà chưa bấm Hoàn thành: nói ra số. Điền ĐỦ mà chưa chốt là ca hay gặp
   // nhất (người làm tưởng xong rồi) → tô hổ phách để phân biệt hẳn với buổi chưa ai đụng.
   const duDien = !!dg && dg.tong > 0 && dg.daDanh >= dg.tong
@@ -390,7 +397,7 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
                 return (
                   <DayRow key={ngay} ngay={ngay} today={ngay === homNay} isFuture={isFuture} onToggle={() => toggleXem(ngay)}>
                     {g.ops.map((ba) => <OpsBuoiCard key={ba.lop.id + ba.ngay} ba={ba} ngay={ba.ngay} td={ba.buoi ? tienDo[ba.buoi.id] : undefined} onOpen={onOpenBuoi} />)}
-                    {g.tasks.map((t) => <TaskCard key={t.buoiId + t.tab} t={t} now={now} dg={t.tab === 'danhgia' ? dgTienDo[t.buoiId] : undefined} onOpenBuoi={onOpenBuoi} />)}
+                    {g.tasks.map((t) => <TaskCard key={t.buoiId + t.tab} t={t} now={now} dg={t.tab === 'danhgia' ? dgTienDo[t.buoiId] : undefined} onOpenBuoi={onOpenBuoi} onGoLeaf={setStaffLeaf} />)}
                     {g.opsExtra.map((t) => <OpsExtraCard key={t.tkbId + t.tab} t={t} now={now} onGoLeaf={setStaffLeaf} />)}
                     {g.prep.map((t) => <PrepTaskCard key={t.phong + t.luot + t.ngay} t={t} now={now} onGoLeaf={setStaffLeaf} />)}
                   </DayRow>
@@ -443,7 +450,7 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
             ) : (
               <>
                 <div className="mt-2 grid gap-1.5 [grid-template-columns:repeat(auto-fill,minmax(220px,1fr))]">
-                  {doneHistory.slice(0, doneShown).map((t) => <TaskCard key={t.buoiId + t.tab} t={t} now={now} done onOpenBuoi={onOpenBuoi} />)}
+                  {doneHistory.slice(0, doneShown).map((t) => <TaskCard key={t.buoiId + t.tab} t={t} now={now} done onOpenBuoi={onOpenBuoi} onGoLeaf={setStaffLeaf} />)}
                 </div>
                 {doneHistory.length > doneShown && (
                   <button onClick={() => setDoneShown((n) => n + 20)} className="mt-2 rounded-md border border-slate-200 px-3 py-1.5 text-[12px] font-medium text-slate-600 hover:border-indigo-300">Mở thêm ({doneHistory.length - doneShown})</button>
@@ -584,6 +591,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'giaoviec' ? <GiaoViecScreen />
       : staffLeaf === 'db_chatluong' ? <ChatLuongVanHanhScreen />
       : staffLeaf === 'db_phdangnhap' ? <PhDangNhapScreen />
+      : staffLeaf === 'db_xemapp' ? <XemAppScreen />
       : staffLeaf === 'db_hoctap' ? <DashboardHocTapScreen />
       : (staffLeaf === 'botroyeu' || staffLeaf === 'botroyeu:duyet') ? <DuyetBoTroYeuScreen />
       : staffLeaf === 'botroyeu:noidung' ? <NoiDungBoTroYeuScreen />
@@ -611,6 +619,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'baoloi' ? <BaoLoiScreen />
       : staffLeaf === 'ops_report' ? <OpsReportScreen />
       : staffLeaf === 'prep' ? <PrepScreen />
+      : staffLeaf === 'phong_hoc' ? <PhongHocScreen />
       : staffLeaf === 'phancong_ops' ? <PhanCongOpsScreen />
       // "Scan bài đã chấm" (test đầu vào) — Thùy 07-19 lần 2: "không cần tab riêng, chỉ cần derive task
       // cho Ops" → KHÔNG nằm trong bar tab TestDauVaoScreen/sidebar, chỉ vào được qua card derive dưới đây.
