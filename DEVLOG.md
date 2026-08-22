@@ -6652,3 +6652,60 @@ lọc theo 1 mô hình chính" → rời hẳn màn (bấm "Việc của tôi", 
 đúng đường (Giáo trình (Hình) → Giáo trình 8A → Buổi 1) → **bộ lọc còn nguyên y hệt**, không phải tick
 lại. Mở "📘 Xem" (bản in) → header hiện đúng "Buổi 1 : Tứ giác" (không còn "Buổi học —"), "7 mục", nội
 dung Bài 1→7 đúng thứ tự, không sai lệch.
+
+## 2026-08-21 (tiếp) — Màn chính CẤP 1 theo mockup desktop/iPad "6 Boxes" (CEO gửi HTML)
+
+**Bàn trước, không code** (CEO: "chỉ bàn thôi nhé. ko code") — brainstorm dài về mockup gamified
+đầy màu (sidebar + 4 thẻ + tiến độ 4 môn + BK Point + nhiệm vụ sắp tới), CTO phản biện 4 điểm
+(trùng nav sidebar/thẻ · tiến độ 4 môn mâu thuẫn cấu trúc KHTN 1-môn-nhiều-nhánh · % vô nghĩa nếu
+không rõ công thức · BK Point là gì). CEO chốt qua nhiều vòng: bỏ sidebar (đơn giản hết ở màn) · bỏ
+tiến độ · thêm khái niệm MỚI "Sự kiện học tập" (GV giao luyện tập thêm CHO 1 HS yếu cụ thể — khác
+BTVN thường vốn luôn gắn buổi — + cuộc thi, gộp full-width carousel) · đổi "nhiệm vụ sắp tới" (nhắc
+hạn nộp) → "Thông tin học tập" + "Huy hiệu" (bỏ hẳn nhắc hạn — "PH nhắc chứ học sinh ko tự vào").
+
+**Kiểm tra grounding (trước khi hứa gì)** — CEO hỏi thẳng "đã link được hết với ERP hiện tại chưa":
+- ✅ Thông tin học tập, Tự luyện: xong thật, đã verify data thật hôm nay.
+- ⚠️ Huy hiệu/Elo/EXP/chuỗi đi học (`gami.ts::getThanhTich`/`chuoiDiHoc`/`listThanhTich`): CÔNG THỨC
+  có sẵn nhưng 100% đang STAFF-ONLY (`screens/gami/BangThanhTich.tsx` — GV xem, không phải HS tự
+  xem) — y hệt bẫy RLS đã dính cả ngày, cần RPC HS-safe MỚI, không phải chỉ "gắn UI vào cái có sẵn".
+- ⚠️ Bảng xếp hạng: CÓ 2 hệ khác nhau — `listGamiBangTong` (Elo tổng, cũng staff-only, cần RPC mới)
+  vs `xepHangTuLuyen` (đã HS-safe, nhưng chỉ tính câu-đúng-tự-luyện, chỉ cấp 1) — không tự nhiên
+  khớp nhau, cần chốt dùng cái nào.
+- ❌ Luyện thêm GV giao + Cuộc thi: 0 data, 0 khái niệm trong DB — CEO xác nhận "chưa có, sau này
+  dựng" (không phải hôm nay).
+- BK Point: CEO chốt = Xu + EXP (không phải tầng kinh tế mới). Grep xác nhận EXP có thật
+  (`gami_exp_ledger`) nhưng **Xu KHÔNG tồn tại trong DB v2** — CLAUDE.md chỉ nhắc như khái niệm SẼ
+  có ("ví xu (wallet tổng)"), chưa ai dựng bảng. Treo lại, không phải việc hôm nay.
+
+**CEO gửi mockup HTML thật** (`BK_Academy_Student_App_6_Boxes.html`, desktop/iPad-first, KHÔNG
+sidebar, đúng bảng màu tươi purple/blue/cyan/green/orange/pink — bảng màu HOÀN TOÀN KHÁC bảng
+`ph-*` dùng cho màn cấp 1 cũ sáng nay, vì đây là hướng thiết kế MỚI, không cố "giống app PH" nữa) +
+chốt "Mấy cái chưa sẵn để lại. Làm mấy cái đã có trước đi" → hỏi rõ 1 điểm cấu trúc trước khi code
+(ET/BTVN cấp 3 đi đâu trong lưới 6 ô mới — mockup dùng chính HS0440 khối 4T làm ví dụ, tức VỐN ĐÃ
+không có ET/BTVN vì là cấp 1) → CEO chốt: **"Cấp 3 chưa dùng màn này"** — bản 6-ô CHỈ áp cho cấp 1,
+cấp 3 giữ NGUYÊN màn cũ (mobile PH-style, không đụng). CEO cũng xác nhận không cần tách 2 màn
+mobile/desktop riêng — 1 layout responsive (đúng breakpoint có sẵn trong file mockup) là đủ.
+
+**Làm — `HocSinhApp.tsx`:**
+- Component `HomeCap1` MỚI — chỉ render khi `cap1 === true` (nhánh riêng, chèn TRƯỚC nhánh cấp 3 cũ,
+  KHÔNG đụng gì code cấp 3). Bảng màu riêng (arbitrary hex Tailwind, KHÔNG dùng `ph-*`/`MAU_BG` cũ).
+- 6 ô ĐÚNG mockup: **Tự luyện** (tím, bấm được → `LamTuLuyen` đã có) · **Bài tập được giao** (xanh
+  dương, "Sắp có" — CEO xác nhận chưa dựng) · **Thông tin học tập** (cyan, bấm được → `ThongTinHocTap`
+  đã có) · **Bảng xếp hạng** (xanh lá, bấm được → `BangXepHang` đã có — dùng ĐÚNG bản `xepHangTuLuyen`
+  hiện có, KHÔNG chờ RPC Elo mới) · **Sự kiện học tập** (cam, "Sắp có") · **Huy hiệu** (hồng, "Sắp có")
+  — 3 ô "Sắp có" `disabled`, KHÔNG hứa tính năng chưa tồn tại (đúng luật §1.5 "thà bỏ trống hơn đánh
+  sai" áp cho UI, không chỉ data).
+- Topbar (logo `/Logo.png` có sẵn + chip, avatar/tên/mã HS) + hero (chào tên, KHÔNG có 2 nút hành
+  động giả "Tiếp tục học"/"Xem lịch" như mockup gốc — không có backend cho "bài đang học gần nhất"
+  hay "lịch hôm nay", bỏ luôn thay vì giả vờ) + lưới 6 ô + footer — bám sát HTML CEO gửi (đọc lại
+  từng giá trị màu/gradient/bo góc/shadow từ file, KHÔNG áng chừng).
+- Responsive: `grid-cols-1 md:grid-cols-2 lg:grid-cols-3` — khớp breakpoint gốc mockup (desktop 3
+  cột → tablet 2 → mobile 1), 1 component DUY NHẤT, không tách 2 màn.
+
+**Verify:** `npx tsc --noEmit` sạch. Browser thật (desktop viewport, dev server riêng port 5190 —
+server chung của session khác đang chiếm port cũ): đăng nhập HS0602 (cấp 1, khối 5) → đúng 6 ô,
+đối chiếu màu từng ô qua `getComputedStyle` khớp CHÍNH XÁC hex mockup (`rgb(240,233,255)`=`#f0e9ff`
+tím... đủ cả 6). Bấm **Tự luyện** → vào đúng `LamTuLuyen`, load 7 câu thật. Bấm **Thông tin học
+tập** → đúng data thật (92%, 26 đạt/5 cần luyện/0 yếu, 5 dạng cần chú ý kèm "5 lần gần nhất"). Bấm
+**Bảng xếp hạng** → đúng trạng thái rỗng thật (chưa ai khối 5 làm tự luyện hôm nay). Resize mobile
+(375px) → `grid-template-columns` co về 1 cột — responsive đúng. Dọn server tạm sau verify.
