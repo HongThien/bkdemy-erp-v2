@@ -308,33 +308,37 @@ export default function KhoTaiLieuScreen() {
                       <td className="whitespace-nowrap px-3 text-slate-500">{fmt(r.created_at)}</td>
                       <td className="whitespace-nowrap px-3 py-2">
                         {r.nguon === 'hinh' ? (
-                          // ⭐ 22/08 (Thùy: "làm nốt cho giống Đại"): dòng ĐÃ TÁCH theo phan (buổi gán lớp)
-                          // giờ đủ ✎ Sửa (mở HinhSuaModal tại chỗ) · 🖨 In (preview) · 🖨 In nhanh (headless,
-                          // window.print() thẳng) · 🔗 Copy link (worker gen nền, hinh_linkgen_jobs) · Xoá.
-                          // Dòng MASTER (r.phan===null, chưa gán lớp, 1 dòng gộp cả 2 phan) giữ set gọn hơn —
-                          // không link-gen (không phải "1 tài liệu" theo nghĩa Đại, chỉ là bản nháp/mẫu).
-                          <div className="flex justify-end gap-1.5">
+                          // ⭐ 22/08 (Thùy: "t thấy giáo trình 7A vẫn còn in lớp in nhà là sao, m fix mỗi lớp
+                          // 8 à??"): dòng MASTER (r.phan===null, chưa gán lớp) đại diện 2 tài liệu (Lớp/Nhà)
+                          // gộp 1 dòng — Đại không phân biệt master/đã-tách, giờ Hình cũng đủ bộ nút cho CẢ
+                          // 2 phan (file_url_lop/file_url_nha riêng). Dòng ĐÃ TÁCH (buổi gán lớp) chỉ có
+                          // đúng 1 phan của chính nó, dùng file_url chung.
+                          <div className="flex flex-wrap justify-end gap-1.5">
                             <button onClick={() => setHinhSua(r)} className="shrink-0 rounded-md border border-slate-200 px-2.5 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-300">✎ Sửa</button>
-                            {r.phan === null ? (<>
-                              <button onClick={() => inHinh(r, 'lop')} className="shrink-0 rounded-md bg-indigo-600 px-2.5 py-1 text-[12px] font-medium text-white hover:bg-indigo-500">📘 In Lớp</button>
-                              <button onClick={() => inHinh(r, 'nha')} className="shrink-0 rounded-md border border-indigo-300 px-2.5 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-50">📝 In Nhà</button>
-                            </>) : (<>
-                              <button onClick={() => inHinh(r, r.phan as 'lop' | 'nha')} className="shrink-0 rounded-md bg-indigo-600 px-2.5 py-1 text-[12px] font-medium text-white hover:bg-indigo-500">🖨 In</button>
-                              <button onClick={() => inNhanhHinh(r, r.phan as 'lop' | 'nha')} className="shrink-0 rounded-md border border-indigo-300 px-2.5 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-50">🖨 In nhanh</button>
-                              {r.file_url ? (
-                                <button onClick={() => copyLink(r.file_url!, r.id)} title={r.file_url} className="shrink-0 rounded-md border border-sky-300 px-2.5 py-1 text-[12px] font-medium text-sky-700 hover:bg-sky-50">
-                                  {copiedId === r.id ? '✓ Đã copy' : '🔗 Copy link'}
-                                </button>
-                              ) : hinhLinkJobs.some((j) => j.buoi_id === r.buoiId && j.phan === r.phan && (j.status === 'pending' || j.status === 'processing')) ? (
-                                <span className="shrink-0 px-1 text-[12px] text-sky-500">⏳ đang tạo…</span>
-                              ) : hinhLinkJobs.some((j) => j.buoi_id === r.buoiId && j.phan === r.phan && j.status === 'failed') ? (
-                                <span className="shrink-0 px-1 text-[12px] text-rose-500" title={'Lỗi: ' + (hinhLinkJobs.find((j) => j.buoi_id === r.buoiId && j.phan === r.phan)?.error ?? '?')}>⚠ lỗi, bấm ↻</span>
-                              ) : (
-                                <span className="shrink-0 px-1 text-[12px] text-slate-300" title="Chưa có link">— chưa có link</span>
-                              )}
-                              <button onClick={() => enqueueHinhLinkGenJob(r.buoiId, r.phan as 'lop' | 'nha').then(() => setHinhLinkJobs((s) => [...s.filter((j) => !(j.buoi_id === r.buoiId && j.phan === r.phan)), { buoi_id: r.buoiId, phan: r.phan as 'lop' | 'nha', status: 'pending', attempt: 0, error: null }]))}
-                                title="Tạo lại link" className="shrink-0 rounded-md border border-slate-200 px-2 py-1 text-[12px] text-slate-400 hover:border-sky-300 hover:text-sky-600">↻</button>
-                            </>)}
+                            {(r.phan === null ? (['lop', 'nha'] as const) : [r.phan as 'lop' | 'nha']).map((phan) => {
+                              const url = r.phan === null ? (phan === 'lop' ? r.file_url_lop : r.file_url_nha) : r.file_url
+                              const nhan = r.phan === null ? (phan === 'lop' ? '📘' : '📝') : '🖨'
+                              return (
+                                <div key={phan} className="flex shrink-0 items-center gap-1.5 rounded-md border border-slate-100 bg-slate-50/60 px-1.5 py-0.5">
+                                  {r.phan === null && <span className="text-[11px] font-medium text-slate-400">{phan === 'lop' ? 'Lớp' : 'Nhà'}</span>}
+                                  <button onClick={() => inHinh(r, phan)} className="shrink-0 rounded-md bg-indigo-600 px-2 py-1 text-[12px] font-medium text-white hover:bg-indigo-500">{nhan} In</button>
+                                  <button onClick={() => inNhanhHinh(r, phan)} className="shrink-0 rounded-md border border-indigo-300 px-2 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-50">In nhanh</button>
+                                  {url ? (
+                                    <button onClick={() => copyLink(url, r.id + ':' + phan)} title={url} className="shrink-0 rounded-md border border-sky-300 px-2 py-1 text-[12px] font-medium text-sky-700 hover:bg-sky-50">
+                                      {copiedId === r.id + ':' + phan ? '✓ Đã copy' : '🔗 Copy link'}
+                                    </button>
+                                  ) : hinhLinkJobs.some((j) => j.buoi_id === r.buoiId && j.phan === phan && (j.status === 'pending' || j.status === 'processing')) ? (
+                                    <span className="shrink-0 px-1 text-[12px] text-sky-500">⏳ đang tạo…</span>
+                                  ) : hinhLinkJobs.some((j) => j.buoi_id === r.buoiId && j.phan === phan && j.status === 'failed') ? (
+                                    <span className="shrink-0 px-1 text-[12px] text-rose-500" title={'Lỗi: ' + (hinhLinkJobs.find((j) => j.buoi_id === r.buoiId && j.phan === phan)?.error ?? '?')}>⚠ lỗi, bấm ↻</span>
+                                  ) : (
+                                    <span className="shrink-0 px-1 text-[12px] text-slate-300" title="Chưa có link">— chưa có link</span>
+                                  )}
+                                  <button onClick={() => enqueueHinhLinkGenJob(r.buoiId, phan).then(() => setHinhLinkJobs((s) => [...s.filter((j) => !(j.buoi_id === r.buoiId && j.phan === phan)), { buoi_id: r.buoiId, phan, status: 'pending', attempt: 0, error: null }]))}
+                                    title="Tạo lại link" className="shrink-0 rounded-md border border-slate-200 px-2 py-1 text-[12px] text-slate-400 hover:border-sky-300 hover:text-sky-600">↻</button>
+                                </div>
+                              )
+                            })}
                             <button onClick={() => xoaHinh(r)} className="shrink-0 rounded-md border border-slate-200 px-2.5 py-1 text-[12px] text-slate-400 hover:border-rose-300 hover:text-rose-600">Xoá</button>
                           </div>
                         ) : (

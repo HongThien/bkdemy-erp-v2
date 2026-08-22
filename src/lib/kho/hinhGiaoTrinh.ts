@@ -329,7 +329,13 @@ export type HinhKhoRow = {
   ten: string; khoi: string; mon: string
   loai: 'giao_trinh' | 'giao_trinh_buoi' | 'btvn'   // ⭐ CHUNG vocabulary với tai_lieu.loai (Đại) — để gộp tab lọc
   lop_id: string | null; ngay: string | null; created_at: string
-  file_url: string | null   // ⭐ 22/08 — link PDF tĩnh (worker gen), null = chưa gen/đang gen. Master (phan=null) không có.
+  // ⭐ 22/08 — link PDF tĩnh (worker gen), null = chưa gen/đang gen. Dòng ĐÃ TÁCH (phan!==null) chỉ dùng
+  // `file_url` (đúng phan của chính dòng đó). Dòng MASTER (phan===null, 1 dòng gộp cả 2 phan — vẫn có
+  // 2 nút In Lớp/In Nhà) dùng `file_url_lop`/`file_url_nha` riêng, `file_url` luôn null ở dòng này —
+  // KHÔNG có "1 link duy nhất" cho 1 dòng gộp 2 nội dung khác nhau.
+  file_url: string | null
+  file_url_lop: string | null
+  file_url_nha: string | null
 }
 const PHAN_NHAN_KHO: Record<'lop' | 'nha', string> = { lop: 'GT', nha: 'BTVN' }
 /** Mọi buổi Hình (master + gán lớp) → hình chiếu liệt kê chung với `tai_lieu` ở Kho tài liệu bảng-tổng.
@@ -378,6 +384,7 @@ export async function listAllBuoiHinh(): Promise<HinhKhoRow[]> {
         id: r.id, buoiId: r.id, phan: null,
         ten: `${g.ten} — ${r.tieu_de || 'Buổi'}`, khoi: g.khoi, mon: g.mon, loai: 'giao_trinh',
         lop_id: null, ngay: null, created_at: r.created_at, file_url: null,
+        file_url_lop: r.file_urls?.lop ?? null, file_url_nha: r.file_urls?.nha ?? null,
       })
     } else if (r.lop_id) {
       // Buổi ĐÃ GÁN LỚP — tách 1 dòng / phan có bài, loai chung vocabulary Đại, tên đúng công thức
@@ -393,7 +400,7 @@ export async function listAllBuoiHinh(): Promise<HinhKhoRow[]> {
           khoi: g.khoi, mon: g.mon,
           loai: phan === 'lop' ? 'giao_trinh_buoi' : 'btvn',
           lop_id: r.lop_id, ngay: r.ngay, created_at: r.created_at,
-          file_url: r.file_urls?.[phan] ?? null,
+          file_url: r.file_urls?.[phan] ?? null, file_url_lop: null, file_url_nha: null,
         })
       }
     }
