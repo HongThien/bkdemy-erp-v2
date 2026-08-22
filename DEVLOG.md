@@ -6031,3 +6031,40 @@ CSS-unit THẬT đang chạy. Deploy thật (Vercel) là bằng chứng cuối c
 "pass giả" nếu unit CSS không tương thích môi trường — từ nay ưu tiên đơn vị CÓ hỗ trợ rộng hơn khi
 không thật sự cần tính năng riêng của đơn vị mới (`dvh` chỉ đáng dùng khi cần né thanh địa chỉ mobile
 co giãn — không áp dụng cho màn desktop/iPad-only này).
+
+## 2026-08-21 (tiếp) — Sửa LẦN 4 (gốc THẬT): tự test qua NHẦM bundle 3 lần liền
+
+**Deploy lại bản `h-screen`, Thùy chưa kịp báo tiếp — tự kiểm tra lại theo lịch hẹn (ScheduleWakeup)
+trên đúng `hs.bkacademy.edu.vn` production** vì "2 lần trước verify local PASS mà vẫn hỏng thật" nên
+không dám tin verify cũ nữa. Vẫn **cuộn y hệt** (`scrollHeight`=828, `innerHeight`=720 — CHƯA ĐỔI GÌ
+dù đã đổi `h-screen`) — dò kỹ hơn: `getComputedStyle` của `.h-screen` báo `height: 720px` ĐÚNG (CSS
+áp đúng), nhưng `getBoundingClientRect().height` = 828px — 2 phép đo lệch nhau trên CÙNG 1 phần tử,
+chỉ giải thích được bằng **transform/zoom hậu-layout**. Kiểm `document.getElementById('root')` →
+`getComputedStyle(...).zoom` = **1.15** — đúng100% × 1.15 = 828 (khớp tuyệt đối con số đã đo).
+
+**GỐC THẬT (đã tồn tại từ lúc dựng bundle riêng, 3 lần sửa trước đều KHÔNG chạm tới):** `index.css`
+có `:root { --app-z: 1.15 }` (fallback, comment gốc ghi rõ "nếu JS chưa chạy") + `#root { zoom:
+var(--app-z) }` áp DỤNG VÔ ĐIỀU KIỆN cho MỌI bundle import file này (cả app staff lẫn app HS riêng
+đều dùng chung `index.css`). App staff (`main.tsx`) chạy `fitZoom()` ghi đè `--app-z` theo bề rộng
+màn NGAY khi load; bundle HS (`main-hs.tsx`, dựng lúc tách `hs.bkacademy.edu.vn`) **cố ý bỏ fitZoom**
+(đúng — "mật độ desktop staff, HS không cần") nhưng QUÊN rằng bỏ fitZoom = giá trị FALLBACK 1.15
+tồn tại VĨNH VIỄN, không có gì ghi đè về 1 — `#root` zoom 115% suốt, không liên quan gì `h-dvh`/
+`h-screen`/lưới-cột đã sửa ở 3 lần trước.
+
+**Vì sao 3 lần verify trước "PASS" giả:** cả 3 lần đều chạy `npx vite --port XXXX` KHÔNG chỉ định
+`--config` → mặc định phục vụ `index.html`/`main.tsx` (APP STAFF), không phải `hs.html`/`main-hs.tsx`
+(bundle THẬT deploy lên `hs.bkacademy.edu.vn`). App staff CÓ sẵn dòng undo riêng cho nhánh HS
+(`App.tsx`: `<div style={{zoom:'var(--app-unz)'}}>` bọc `HocSinhApp`) nên test qua đường đó luôn ra
+đúng — sai KHÔNG PHẢI vì môi trường test giả, mà vì **test nhầm bundle** suốt 3 lần liền.
+
+**Sửa:** `main-hs.tsx` — `document.documentElement.style.setProperty('--app-z', '1')` NGAY trước
+`createRoot(...).render(...)` — ghi đè fallback 1.15 về 1 (inline style thắng `:root{}` theo cascade
+bình thường), không đụng `index.css`/app staff (giữ nguyên `fitZoom` + zoom-undo của App.tsx).
+
+**Verify ĐÚNG bundle lần này** (`npm run build:hs` → `vite preview --config vite.config.hs.ts`,
+KHÔNG phải `npx vite` trần): đăng nhập thật qua FORM (không gọi thẳng supabase như trước — bundle
+production không serve `/src/*.ts` raw) → `--app-z`=`1`, `root zoom`=`1`, `scrollHeight`=`innerHeight`
+ở CẢ 1280×720 VÀ 1366×768 — hết cuộn thật. Bài học ghi riêng: **luôn build+preview ĐÚNG config khi
+verify 1 bundle tách riêng** (`--config vite.config.hs.ts`), không dùng lệnh `vite` mặc định rồi tin
+kết quả áp cho bundle khác — 3 lần sửa trước đều đúng về mặt code (h-screen/3-cột) nhưng KHÔNG PHẢI
+gốc vấn đề, chỉ vì chưa từng thực sự chạy qua đường build sẽ deploy.
