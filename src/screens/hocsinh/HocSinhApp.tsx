@@ -107,12 +107,20 @@ function HomeCap1({ hoTen, maHS, onOpen }: { hoTen: string; maHS: string; onOpen
             <img src="/Logo.png" alt="BK Academy" className="h-9 w-auto" />
             <span className="rounded-full border border-[#e8edf5] bg-white/90 px-3.5 py-2 text-[13px] font-bold text-[#576073] shadow-[0_6px_16px_rgba(31,47,79,0.06)]">📚 App học tập cho học sinh</span>
           </div>
-          <div className="flex min-w-[250px] items-center gap-3 rounded-[18px] bg-white py-2 pl-2 pr-3 shadow-[0_6px_16px_rgba(31,47,79,0.06)]">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[14px] bg-gradient-to-br from-[#2486df] to-[#745bf0] text-[13px] font-black text-white">{initials}</div>
-            <div className="min-w-0 leading-tight">
-              <p className="truncate text-[14px] font-bold text-[#171a2b]">{hoTen}</p>
-              <p className="truncate text-[11px] text-[#7b8499]">{maHS.toUpperCase()}</p>
+          <div className="flex items-center gap-2.5">
+            <div className="flex min-w-[220px] items-center gap-3 rounded-[18px] bg-white py-2 pl-2 pr-3 shadow-[0_6px_16px_rgba(31,47,79,0.06)]">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[14px] bg-gradient-to-br from-[#2486df] to-[#745bf0] text-[13px] font-black text-white">{initials}</div>
+              <div className="min-w-0 leading-tight">
+                <p className="truncate text-[14px] font-bold text-[#171a2b]">{hoTen}</p>
+                <p className="truncate text-[11px] text-[#7b8499]">{maHS.toUpperCase()}</p>
+              </div>
             </div>
+            {/* Thoát (Thùy 22/08: "ko thấy nút đăng xuất") — mockup gốc chỉ vẽ mũi tên dropdown chưa
+                nối chức năng, thêm nút Thoát riêng, ĐÚNG style icon-button cấp 3 (squircle nổi). */}
+            <button onClick={() => supabase.auth.signOut()} title="Đăng xuất"
+              className="flex h-10 shrink-0 items-center justify-center rounded-[14px] bg-white px-3.5 text-[13px] font-bold text-[#576073] shadow-[0_6px_16px_rgba(31,47,79,0.06)]">
+              Thoát
+            </button>
           </div>
         </div>
 

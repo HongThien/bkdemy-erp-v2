@@ -6104,3 +6104,17 @@ DB/auth) render trực tiếp qua `vite preview --config vite.config.hs.ts`, đo
 không phải code sẽ deploy. `LamBai` desktop chưa verify được bằng mắt (cần `baiTestId` thật, preview
 giả không có data) — tin vào cùng pattern class đã verify đúng ở `HomeCap1`/`ThongTinHocTap`, Thùy nên
 tự bấm thử "Tự luyện" 1 lần trên `hs.bkacademy.edu.vn` sau khi deploy để chốt.
+
+**Merge + deploy (22/08):** merge nhánh vào `main`, push — verify THẬT trên `hs.bkacademy.edu.vn` bằng
+session HS0602 còn đăng nhập sẵn trong browser: bundle mới lên đúng (asset hash đổi, phải gỡ Service
+Worker cache cũ mới thấy — lặp lại đúng bài học 21/08), `scrollHeight`=943px khớp y hệt đo local ở
+1280×800, mở "Tự luyện" (LamBai desktop) với data thật → card rộng 768px (khung desktop mới), không
+còn dải 448px kiểu điện thoại.
+
+**Thùy phát hiện: "t ko thấy nút đăng xuất tài khoản"** — ĐÚNG, `HomeCap1` port từ mockup vốn chỉ vẽ
+mũi tên dropdown cạnh avatar (chưa nối chức năng gì, y hệt file gốc Thùy gửi), không có nút Thoát nào
+— cấp 3 (màn lưới cũ) có sẵn nút "Thoát" riêng nhưng `HomeCap1` không tái dùng nhánh đó. Thêm nút
+"Thoát" cạnh khối tên/avatar trong topbar, gọi thẳng `supabase.auth.signOut()` (đã import sẵn ở đầu
+file) — ĐÚNG style icon-button squircle nổi dùng chung toàn màn. Verify qua cổng preview tạm (export
+`HomeCap1` + nhánh `?preview=` ở `AppHS.tsx`, revert sạch sau khi thấy nút "Thoát" render đúng) —
+không đăng nhập thật lần này (không cần, thuần thêm 1 nút UI, không đụng logic nào khác).
