@@ -6938,3 +6938,122 @@ theo yêu cầu MỚI NHẤT (giống hệt bản gán) vì đây là chỉ đ�
 (`useMemo` gate theo `khoaThuTuGoc`), đúng chỗ agent xác định, không đụng luồng gán/phát hành (vốn đã
 đúng). Merge + deploy ngay do đang chặn buổi thật — chưa kịp test end-to-end qua tài khoản HS thật của
 1 lớp có giáo trình phát hành, Thùy tự mở lại 10A1 xác nhận sau khi deploy.
+
+## 2026-08-23 — Audit + siết logic candidate "Duyệt bổ trợ": OR→≥2/4, fix bug recency chuyên đề
+
+**Khởi nguồn:** Thùy chỉ ra ca cụ thể "Nguyễn Hải Minh Châu 8S1" lọt vào "Duyệt bổ trợ" dù học tốt
+(so TB lớp toàn ngang/trên trung bình, thái độ sạch, không dạng yếu) — chỉ vì kênh ① trend bắt được
+1 chuyên đề tụt nhẹ đạt(1.00)→cần luyện(0.83), Δ=0.17, không hề kéo theo đổi đề xuất level (vẫn
+L0→L0). Đo thật 300 HS Toán/36 lớp lúc đó: **217/300 = 72,3%** roster lọt vào hàng đợi — quá tải,
+kênh trend đóng góp nhiều nhất (158/217).
+
+**Thùy chốt hướng: bỏ hẳn kênh trend "nhẹ" hiện tại, thay bằng 4 tín hiệu dữ liệu RÕ RÀNG, target
+~30% roster:**
+1. Chuyên đề tụt **QUA NGƯỠNG bucket** (đạt→cần luyện HOẶC cần luyện→yếu, pha 2 so chính mình) — "qua
+   ngưỡng là cần đưa vào", không cần delta lớn (bàn nhiều vòng, chốt KHÔNG siết biên độ riêng).
+2. **% dạng yếu** / tổng dạng đã đo > mốc (quét 10/15/20% để chọn).
+3. **ET-only**: TB **4 buổi** ET gần nhất < 90% TB lớp cùng 4 buổi (average-vs-average, KHÔNG gộp MT/
+   BTVN như kênh ⑤ cũ) — Thùy chốt "trung bình dưới ngưỡng thôi, xét 4 buổi gần nhất".
+4. **MT-only**: bài MT **gần nhất** (gate n≥1, KHÔNG đòi n≥3 như dạng) < 90% TB lớp bài đó — Thùy:
+   "MT là test tháng, 1 tháng 1 lần nhưng là bài quan trọng. Khung nào có MT thì dựa MT là chính".
+   Đo thật: MT rất thưa (TB 0,73 bài/HS, 0% HS có ≥3 bài MT) — gate n≥3 sẽ vô hiệu hoá kênh này hoàn
+   toàn, đúng như lo ngại ban đầu, nên giữ n≥1.
+- Báo động ③④ (chuông đỏ TA / lỗ tiên quyết GV) **giữ nguyên, không đổi** — flag cứng của người.
+
+**BUG THẬT tìm ra giữa chừng, đã FIX vào code (`src/lib/danhgia.ts`, hàm `getStatSheetLop`):** kênh ①
+(chuyên đề pha 2) lấy "2 mốc gần nhất CÓ DATA" làm truoc/sau, KHÔNG ràng buộc mốc "sau" phải là cửa sổ
+HIỆN TẠI — nếu 1 chuyên đề lâu rồi chưa đo lại (vd từ tháng 7), hệ vẫn dùng dữ liệu cũ đó để kết luận
+"đang tụt" HÔM NAY. Đo thật: chỉ 27,4% số lần "tụt" đang dùng đúng cửa sổ hiện tại (`2026-08-B`), còn
+lại dùng `2026-08-A`/`2026-07-B`/thậm chí `2026-07-A`. Đây là biến thể của lỗi CLAUDE.md §5 "chưa-đo ≠
+yếu" — ở đây là **"chưa-đo-LẠI ≠ đang-tụt"**. **Đã fix**: `chamPha2` giờ CHỈ tính khi cửa sổ "sau" là
+cửa sổ hiện tại hoặc liền trước (`cuaSoHienTaiVal`/`cuaSoTruoc(cuaSoHienTaiVal)` tính 1 lần đầu hàm,
+so sánh trước khi gọi `chamPha2`). `tsc` sạch, `verify_danhgia.mjs` 77/77 pass (fix nằm ở service
+layer, không đụng pure engine). Fix KHÔNG đổi nhiều % tổng (kênh 1 riêng: 46,7%→41,7%) vì đa số hits
+vốn đã nằm trong 2 cửa sổ gần nhất — nhưng là fix ĐÚNG về nguyên tắc, độc lập với bài toán %.
+
+**Calibrate từng kênh + kết hợp (300 HS Toán, nhiều lần chạy trên data SỐNG nên số dao động ±5-8 điểm
+%, không phải lỗi tính — có người đang chấm/nhập điểm song song lúc t đo):**
+- Kênh 1 một mình (chỉ qua ngưỡng, chưa thêm gì): 35-47% tuỳ lần chạy.
+- Test thêm điều kiện phụ **"VÀ delta > X"**: 0.1 gần như không đổi gì (131→128, chỉ loại vài ca sát
+  biên như 0,83→0,75). Quét 0→0,3: delta>0,2 cho ra ~31% (riêng kênh 1) — **Thùy chốt KHÔNG thêm điều
+  kiện delta này** (giữ đúng "qua ngưỡng là đủ", chấp nhận % kênh 1 riêng cao).
+- Kênh 2 quét mốc: >10%→~28% · >15%→~16-18% · >20%→~11-12%.
+- Kênh 3 (ET): ~217-228/300 đủ dữ liệu (≥4 buổi ET) — trong đó dính ~13-14% toàn roster.
+- Kênh 4 (MT): chỉ ~33-44% roster CÓ bài MT nào (đúng dự đoán độ thưa) — trong đó dính ~7-10% toàn
+  roster.
+- **Kết hợp kiểu OR (1-trong-4/5 là đủ) luôn ra 49-58%** dù chỉnh ngưỡng kênh nào — không nhạy tham
+  số, vì bản chất toán học của phép hợp (union) với nhiều kênh mỗi kênh đã ở mức 10-40%.
+- **Đổi logic kết hợp sang "≥2-trong-4 kênh HOẶC báo động ③④"** mới thực sự nhạy và về gần mục tiêu:
+  phân bố đúng-N-tín-hiệu (mốc kênh2=15%): {0 tín hiệu: 51%, đúng 1: 27%, đúng 2: 12%, đúng 3: 8%, đúng
+  4: 2%}. Tổng "≥2 HOẶC báo động": **kênh2=15% → 80/300 = 26,7%** · **kênh2=10% → 91/300 = 30,3%**
+  (chạm rất sát mục tiêu 30% ban đầu của Thùy).
+
+**Phân tích CẶP (Jaccard overlap, kênh2=10%) để hiểu độ độc lập giữa các kênh** — dữ liệu 1 lần chạy,
+n kênh1=87·kênh2=81·kênh3=45·kênh4=34: K1×K2 Jaccard 28,2% (2 kênh lớn nhất, trùng nhiều nhất về số
+tuyệt đối nhưng vẫn ~90 HS chỉ dính đúng 1/2) · K3×K4 Jaccard 17,9% (**độc lập nhất** — 2 nguồn đo
+tách biệt thật) · **K2×K4: 76,5% số HS dính kênh 4 (MT) CŨNG đã dính kênh 2** — MT đóng góp giá trị
+riêng RẤT ÍT (đa số ca nó bắt được đã bị kênh 1/2 bắt trước), nhưng vẫn giữ vì logic ≥2 cần nó làm
+"phiếu bầu" thứ 2 cho những ca kênh khác chưa đủ mạnh.
+
+**CHỐT TẠM (chưa code vào `listCandidatesLop`/`DuyetBoTroYeuScreen`, Thùy sẽ tự review học sinh cụ
+thể trước khi wire logic thật):**
+```
+Báo động ③④ (chuông đỏ/lỗ tiên quyết) → vào ngay, không điều kiện.
+4 kênh dữ liệu, cần ≥2/4 cùng chạm:
+  1. Chuyên đề tụt qua ngưỡng bucket (đạt→cần luyện / cần luyện→yếu), pha 2, KHÔNG thêm điều
+     kiện delta. Recency đã fix (sau = cửa sổ hiện tại hoặc liền trước) — LUÔN áp dụng, không
+     phải tham số để bàn thêm.
+  2. % dạng yếu / tổng dạng đã đo > 10%.
+  3. ET-only: TB 4 buổi ET gần nhất < 90% TB lớp cùng 4 buổi.
+  4. MT-only: bài MT gần nhất (n≥1) < 90% TB lớp bài đó.
+Kết hợp: (≥2 trong 4 kênh) HOẶC báo động ③④.
+Đo thật gần nhất: 91/300 = 30,3% roster Toán.
+```
+Scripts calibrate để lại trong `scripts/_diag_*.ts` (không xoá, dùng `npx vite-node scripts/
+_diag_calib_final.ts` để chạy lại đo % bất kỳ lúc nào cần kiểm tra tiếp — có sẵn cross-tab từng cặp
+kênh). Việc còn lại: Thùy review thủ công vài ca cụ thể xem logic ≥2/4 có bắt đúng người không, rồi
+mới viết vào `deXuatLevelKienThuc`/`listCandidatesLop`/`DuyetBoTroYeuScreen` thật.
+
+## 2026-08-23 (tiếp) — Wire logic ≥2/4 vào code thật, bắt thêm 1 bug lúc code (doiLevel bypass)
+
+Thùy chốt "kênh 2 = 10%" + "ghi devlog" xong yêu cầu "merge đi để t review học sinh thật" → code
+logic đã chốt ở trên vào thẳng `listCandidatesLop`/`getStatSheetLop` (`src/lib/danhgia.ts`) và
+`bucketOfScore`/`BUCKET_RANK` export (`src/gami/danhgia.js`), KHÔNG chỉ dừng ở script mô phỏng.
+
+**Thêm vào `getStatSheetLop`:** `coSoLopET`/`coSoLopMT` (2 field MỚI trên `StatSheetHS`) — tách
+riêng khỏi `soLopKem`/`coSoLopKem` cũ (kênh ⑤ gộp ET+MT+BTVN, 80%, 3-bài) vì `coSoLopKem` VẪN đang
+nuôi `deXuatLevelKienThuc` (máy đề xuất LEVEL) — không đụng, giữ nguyên hành vi cũ ở đó. 2 field mới
+chỉ phục vụ candidate-list: `coSoLopET` = TB 4 buổi ET gần nhất <90% TB lớp (gate n≥4 buổi),
+`coSoLopMT` = bài MT GẦN NHẤT (gate n≥1) <90% TB lớp.
+
+**Viết lại `listCandidatesLop`:** kênh ① đổi từ "bất kỳ tụt nào" (`cham.huong==='lui'`) sang "tụt
+QUA NGƯỠNG bucket" (dùng `bucketOfScore`+`BUCKET_RANK` mới export từ `gami/danhgia.js`). Kênh ⑤ cũ
+tách 2: `so_lop_et`/`so_lop_mt`. Thêm kênh MỚI `pct_yeu` (%dạng yếu/tổng dạng đã đo >10%). Điều kiện
+lọt vào ĐỔI HẲN: từ "1 trong N kênh là đủ" sang "≥2/4 kênh dữ liệu HOẶC báo động ③④".
+
+**BUG THẬT bắt được lúc verify bằng `listCandidatesLop` THẬT (không phải script mô phỏng nữa):** số
+đo ra 145/300 = 48,3% cho "Duyệt bổ trợ" — CAO HƠN HẲN 30,3% đã calibrate bằng script riêng. Truy
+ra: code cũ giữ `doiLevel` (đề xuất level từ `deXuatLevelKienThuc` khác level hiện tại) làm ĐIỀU
+KIỆN LỌT VÀO ĐỘC LẬP, y hệt logic cũ — mà `deXuatLevelKienThuc` vẫn dùng `dien`/`coSoLopKem` CŨ
+(lỏng, chưa siết) làm input, nên `doiLevel` fires y hệt tần suất cũ, mở LẠI đúng cái cửa mà cả buổi
+tính toán vừa đóng — **63/300 HS lọt vào CHỈ vì `doiLevel`, không đủ ≥2/4, không báo động** (đo
+bằng `_diag_debug_gap.ts`). Bài học: siết 1 tầng (candidate-list) mà quên tầng khác (level-engine
+input cũ) vẫn đang rò vào qua đường tắt — số liệu calibrate bằng script RIÊNG không tự động đúng khi
+wire vào code thật nếu code thật còn đường vào khác không có trong script mô phỏng.
+
+**Fix:** phân biệt "MỞ case MỚI" (phải qua ≥2/4, đây là chỗ đã lỏng) vs "case ĐÃ MỞ cần xử tiếp"
+(`levelKienThuc > 0` VÀ đề xuất khác — không qua ≥2/4, vì đây không phải phát-hiện-mới mà là quản lý
+case đang chạy, ẩn đi sẽ kẹt case không ai thấy để đóng). Đổi tên logic thành `caseDangMoCanXu`, gộp
+vào `duTinHieuKienThuc` — field MỚI export thẳng trên `Candidate` để UI dùng trực tiếp, KHÔNG suy
+luận lại từ `kenh` (bug PHỤ thứ 2 bắt được cùng lúc: `DuyetBoTroYeuScreen.tsx` cũ lọc bằng
+`kenh.some(k => k !== 'thai_do')` — sai vì giờ 1 kênh riêng lẻ VẪN được push vào `kenh` để hiện lý
+do dù chưa đủ ≥2/4, nên check "có kênh nào khác thái độ" không còn đồng nghĩa "đủ tín hiệu" nữa).
+
+**Số liệu sau khi fix cả 2 bug (1 lần chạy, snapshot đồng nhất):** Dashboard (gồm thái độ) 167/300 =
+55,7% · "Duyệt bổ trợ" (`duTinHieuKienThuc`) 95/300 = **31,7%** — khớp sát mục tiêu ~30% đã calibrate.
+Breakdown: 84 vào vì ≥2/4 kênh · 11 vì báo động · 0 vì case-đang-mở · 0 không giải thích được.
+
+**Verify:** `tsc --noEmit` sạch · `verify_danhgia.mjs` 77/77 pass · live qua dev server thật (port
+5210, đăng nhập admin thật) — "Duyệt bổ trợ" hiện **"66 ca"** (Toán, tất cả khối — trước đây badge
+này từng hiện "209 ca" ở phiên làm UI cùng ngày) · "Dashboard học tập" (consumer thứ 2 của cùng
+`listCandidatesLop`) vẫn render đúng, không lỗi console ở cả 2 màn.
