@@ -9,6 +9,8 @@ import { smartNormalize } from '../../gami/testgrade'
 import { MathText } from '../kho/ui'
 import { tenHienThiDs } from '../../lib/hoten'
 import ChamLaiKeyPanel from './ChamLaiKeyPanel'
+import { findCauInKho, type CauHoi } from '../../lib/kho/api'
+import { CauModal } from '../kho/DangHub'
 
 type RepMoi = { id: string; nguon: 'hs_bao_sai' | 'ai_de_xuat' }
 type AnsGroup = { norm: string; raw: string; rows: TLNSaiRow[]; repsMoi: RepMoi[] }
@@ -25,6 +27,8 @@ export default function DuyetChamScreen() {
   const [filter, setFilter] = useState<'baosai' | 'all' | 'keysai'>('baosai')
   const [busy, setBusy] = useState<string | null>(null) // norm key đang xử lý
   const [flash, setFlash] = useState<string | null>(null)
+  const [suaKhoBusy, setSuaKhoBusy] = useState<string | null>(null) // maCau đang dò trong Kho
+  const [suaKho, setSuaKho] = useState<{ cau: CauHoi; cauTbl: string } | null>(null)
 
   async function reload() {
     setLoading(true); setErr(null)
@@ -77,6 +81,19 @@ export default function DuyetChamScreen() {
     } catch (e: any) { setErr(e?.message ?? String(e)) } finally { setBusy(null) }
   }
 
+  // "Sửa trong Kho" — sửa câu GỐC (áp dụng đề PHÁT SAU này), TÁCH BIỆT khỏi "Chấp nhận đúng" (chỉ xử
+  // lý lượt HS đang xem). Thùy chốt 22/08: không gộp 2 hành động, không tự re-chấm lượt đang báo sai.
+  async function onSuaKho(g: CauGroup) {
+    if (!g.maCau) return
+    setSuaKhoBusy(g.key)
+    try {
+      const found = await findCauInKho(g.maCau)
+      if (!found) { setErr(`Không tìm thấy câu ${g.maCau} trong Kho — có thể đã bị xoá.`); return }
+      if ((found.cau as any).xoa_at) { setErr(`Câu ${g.maCau} đã bị xoá khỏi Kho — không sửa được ở đây.`); return }
+      setSuaKho(found)
+    } catch (e: any) { setErr(e?.message ?? String(e)) } finally { setSuaKhoBusy(null) }
+  }
+
   const tab = (on: boolean) => `h-7 rounded-md px-2.5 text-xs font-semibold transition ${on ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`
 
   return (
@@ -115,6 +132,11 @@ export default function DuyetChamScreen() {
                         <span key={i} className="rounded-full bg-sky-50 px-2 py-0.5 text-sky-700 ring-1 ring-sky-200">cũng đúng: {s}</span>
                       ))}
                       {g.repsMoi > 0 && <span className="rounded-full bg-rose-50 px-2 py-0.5 font-semibold text-rose-600 ring-1 ring-rose-200">🚩 {g.repsMoi} báo sai</span>}
+                      <button disabled={!g.maCau || suaKhoBusy === g.key} onClick={() => onSuaKho(g)}
+                        title="Sửa câu GỐC trong Kho — chỉ áp dụng cho đề phát SAU này, không đụng lượt đang xem"
+                        className="ml-auto rounded-lg border border-slate-300 bg-white px-2.5 py-1 text-[12px] font-semibold text-slate-600 transition hover:border-indigo-300 hover:text-indigo-700 disabled:opacity-40">
+                        {suaKhoBusy === g.key ? 'Đang mở…' : '✏️ Sửa trong Kho'}
+                      </button>
                     </div>
                     <div className="text-[14px] leading-relaxed text-slate-800"><MathText>{g.noiDung}</MathText></div>
                   </div>
@@ -156,6 +178,11 @@ export default function DuyetChamScreen() {
             </div>
           )}
       </div>
+
+      {suaKho && (
+        <CauModal editing={suaKho.cau} cauTbl={suaKho.cauTbl} onClose={() => setSuaKho(null)}
+          onSaved={() => { setSuaKho(null); setFlash('Đã cập nhật câu trong Kho — áp dụng cho đề phát SAU này, không đụng lượt đang báo sai.') }} />
+      )}
     </div>
   )
 }

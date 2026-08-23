@@ -6870,3 +6870,39 @@ mũi tên dropdown cạnh avatar (chưa nối chức năng gì, y hệt file g�
 file) — ĐÚNG style icon-button squircle nổi dùng chung toàn màn. Verify qua cổng preview tạm (export
 `HomeCap1` + nhánh `?preview=` ở `AppHS.tsx`, revert sạch sau khi thấy nút "Thoát" render đúng) —
 không đăng nhập thật lần này (không cần, thuần thêm 1 nút UI, không đụng logic nào khác).
+
+## 2026-08-22 — Duyệt chấm online: nút "Sửa trong Kho" (bàn trước, chốt xong mới code)
+
+**Thùy:** khi HS làm bài báo về Duyệt chấm, muốn bấm vào xem TOÀN BỘ câu hỏi/đáp án đúng bản trong
+Kho và sửa luôn tại đó, tự cập nhật Kho. Bàn trước khi code — 2 điểm chốt:
+1. Sửa Kho chỉ ảnh hưởng **đề phát SAU này** (snapshot `bai_test_cau` bất biến, đúng nguyên tắc sẵn
+   có) — lượt báo sai ĐANG XEM vẫn xử lý thủ công tách biệt bằng "Chấp nhận đúng"/"Vẫn sai" như cũ,
+   KHÔNG gộp 2 hành động làm 1.
+2. Hỏi thêm "có logic bổ sung đáp án đúng (kiểu 3200 vs 3 200) để lần sau khỏi báo lỗi không" — trả
+   lời: **ĐÃ CÓ SẴN**, không cần xây: `gradeTraLoiNgan`→`smartCheckTLN` (testgrade.js) tự chuẩn hoá
+   khoảng trắng/đơn vị/số thập phân trước khi so key (nên "3200"/"3 200" đã khớp từ vòng 1); ca không
+   chuẩn-hoá-gộp-được thì nút "Chấp nhận đúng" đang có sẵn ghi vào `question_accepted_answers`,
+   `traLoiCau` (testonline.ts:286-289) check cache này (`tln_cache_check` RPC, cũng qua `smartNormalize`)
+   TRƯỚC khi trả 'wrong' — nên bài sau tự đúng ngay, không cần duyệt lại. Không code gì thêm cho ý 2.
+
+**Code ý 1** — `src/lib/kho/api.ts`: thêm `findCauInKho(ma_cau)` — dò **CẢ 3 bảng** kho câu hỏi
+(`dai_cau_hoi`/`khtn_cau_hoi`/`hgt_cau_hoi`, lấy tên từ `CUM_TBL` có sẵn, không hard-code list mới)
+thay vì đoán bảng theo tiền tố `ma_cau` — **đã kiểm DB thật và tiền tố KHÔNG đáng tin**: mẫu đầu tưởng
+`dai_cau_hoi` toàn số/`khtn` bắt đầu 'K'/`hgt` bắt đầu 'T', nhưng dò trên 5 câu TLN đang sai THẬT thì
+`dai_cau_hoi` cũng có mã bắt đầu `T14T...` — đúng bài học CLAUDE.md "không suy luận từ mẫu nhỏ, dò
+DB thật". `bai_test_cau.ma_cau` là text KHÔNG FK (đúng cảnh báo CLAUDE.md §2) nên trả `null` rõ ràng
+nếu không thấy ở bảng nào (câu đã mất/mã sai) thay vì giả định.
+
+**Wiring** `DuyetChamScreen.tsx`: thêm nút "✏️ Sửa trong Kho" ở header mỗi nhóm câu (KHÔNG phải mỗi
+đáp án — sửa Kho là ở cấp CÂU) → `onSuaKho` gọi `findCauInKho`, chặn nếu không thấy hoặc `xoa_at`
+đã set (câu đã bị xoá khỏi Kho — không sửa "hồi sinh" ngầm ở đây), rồi mở thẳng **`CauModal`** (export
+từ `kho/DangHub.tsx`, TÁI DÙNG y nguyên form sửa câu đã có — không vẽ form mới) với `cauTbl` đúng vừa
+resolve. `onSaved` chỉ đóng modal + flash — không reload danh sách báo sai (Kho đổi không ảnh hưởng gì
+tới các dòng đang hiện, đúng chốt ý 1).
+
+**Verify:** `tsc --noEmit` sạch cả 2 lần sửa (api.ts + DuyetChamScreen.tsx), `npm run build` (bundle
+staff mặc định) sạch. Test màn Duyệt chấm cần đăng nhập staff thật — không có tài khoản trong phiên
+này (giống hạn chế HS trước đó, không tự ý reset mật khẩu ai) — verify thay bằng: query DB thật lấy
+5 câu TLN đang bị chấm sai thật, chạy đúng logic `findCauInKho` (dò 3 bảng) bằng tay → khớp đúng cả
+5/5, đúng nội dung/đáp án khớp bản snapshot. Thùy nên tự bấm thử 1 lần trên ERP thật để chốt UI/UX
+(vị trí nút, modal mở đúng câu) trước khi coi là xong hẳn.
