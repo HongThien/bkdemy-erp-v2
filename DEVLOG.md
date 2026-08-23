@@ -6154,3 +6154,35 @@ này (giống hạn chế HS trước đó, không tự ý reset mật khẩu ai
 5 câu TLN đang bị chấm sai thật, chạy đúng logic `findCauInKho` (dò 3 bảng) bằng tay → khớp đúng cả
 5/5, đúng nội dung/đáp án khớp bản snapshot. Thùy nên tự bấm thử 1 lần trên ERP thật để chốt UI/UX
 (vị trí nút, modal mở đúng câu) trước khi coi là xong hẳn.
+
+## 2026-08-22 — BUG KHẨN: giáo trình phát hành "đổi câu và thứ tự" — cấp 3, lớp 10A1
+
+**Thùy báo (đang chặn buổi thật):** "phát hành tài liệu thì nó phải giống hệt lúc gán chứ sao lại tự
+ý đổi câu và thứ tự... vừa phát hành giáo trình 10A1 thấy không giống."
+
+**Điều tra (Explore agent, không đoán):** DATA hoàn toàn ĐÚNG — `trichXuatBuoi`/`copyPhanInto`
+(tailieu.ts:500-504,593-634, hàm "gán") copy THẲNG `ma_cau`+`thu_tu` từ tài liệu gốc, KHÔNG phải
+query-tiêu-chí-rồi-suy-lại. `phatHanhTest` (testonline.ts:69-179) ghi `bai_test_cau` ĐÚNG y nguyên
+thứ tự đó (vòng `for` tăng dần `thu_tu`, không xáo). **Gốc bug nằm ở màn HIỂN THỊ phía học sinh**:
+`LamBai` (HocSinhApp.tsx — dùng chung cho `giao_trinh`+`btvn`, khác `LamET` dùng riêng cho `et`/`de_thi`)
+LUÔN xáo thứ tự câu (`seededPermByDang`) + thứ tự đáp án (`seededShuffleWithOrig`) theo seed
+(HS×bài), KHÔNG có cờ tắt nào — đây là tính năng CHỐNG LIẾC BÀI Thùy tự yêu cầu từ 05/07 ("2 HS ngồi
+cạnh nhau không được thấy giống hệt"). `LamET` đã được thêm ngoại lệ 18/08 (commit `08b8321`, "có mã
+đề rồi thì không xáo nữa" — dựa vào `test.co_nhieu_ma_de`) nhưng ngoại lệ đó CHƯA BAO GIỜ áp dụng cho
+`LamBai`/giáo trình. **Không phải regression — là 1 khoảng chưa đồng bộ giữa 2 luồng từ đầu.**
+
+**Fix (`HocSinhApp.tsx`, hàm `LamBai`):** thêm `khoaThuTuGoc = full?.baiTest.loai === 'giao_trinh'` —
+khi đúng, cả xáo câu (`caus`) LẪN xáo đáp án hiển thị (`optsShown`/`menhOrder`) đều BỎ QUA, dùng thẳng
+thứ tự gốc từ `full.caus`/`cau.lua_chon`/`menhDe`. **CHỈ áp cho `giao_trinh`** — `btvn`/`tu_luyen` vẫn
+xáo như cũ (đúng nghĩa đen câu Thùy chỉ nhắc "giáo trình"; BTVN làm ở nhà mỗi em 1 giờ khác nhau nên lo
+ngại liếc bài gốc 05/07 vẫn còn hợp lý — CHƯA tự ý tắt luôn cho BTVN, cần Thùy xác nhận riêng nếu muốn).
+
+**⚠ Đánh đổi cần Thùy biết:** tắt xáo cho giáo trình = quay lại đúng tình huống 05/07 Thùy từng lo
+("2 HS ngồi cạnh liếc bài giống hệt nhau") — vì giáo trình vốn không có cơ chế mã-đề như ET. Ưu tiên
+theo yêu cầu MỚI NHẤT (giống hệt bản gán) vì đây là chỉ đạo rõ ràng, khẩn, đang chặn buổi thật — nhưng
+đây là đánh đổi thật, không phải free lunch, nói rõ để Thùy cân nhắc nếu sau này thấy liếc bài lại.
+
+**Verify:** `tsc --noEmit` + `npm run build` (staff) + `npm run build:hs` đều sạch. Đổi trong hàm thuần
+(`useMemo` gate theo `khoaThuTuGoc`), đúng chỗ agent xác định, không đụng luồng gán/phát hành (vốn đã
+đúng). Merge + deploy ngay do đang chặn buổi thật — chưa kịp test end-to-end qua tài khoản HS thật của
+1 lớp có giáo trình phát hành, Thùy tự mở lại 10A1 xác nhận sau khi deploy.

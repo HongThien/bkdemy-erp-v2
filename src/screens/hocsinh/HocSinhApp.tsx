@@ -385,7 +385,17 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
   // Xáo THỨ TỰ CÂU theo (HS×bài) — ổn định (mở lại vẫn thấy đúng thứ tự cũ), khác nhau giữa các HS
   // (chống liếc bài). CHỈ xáo câu TRONG CÙNG 1 DẠNG, giữ nguyên khối/thứ tự các dạng (xem shuffle.ts).
   // Chấm/khôi phục vẫn khớp `cau.id`, không phụ thuộc vị trí → an toàn tuyệt đối.
-  const caus = useMemo(() => (full ? seededPermByDang(full.caus, `${hocSinhId}:${baiTestId}:q`).map((i) => full.caus[i]) : []), [full, hocSinhId, baiTestId])
+  // ⚠ Thùy 22/08: "giáo trình phát hành phải giống HỆT lúc gán — sao lại tự đổi câu và thứ tự".
+  // Xáo trên vốn để chống-liếc-bài cho ET/BTVN — GIÁO TRÌNH không có khái niệm "liếc bài" (cả lớp học
+  // CHUNG 1 tài liệu in/chiếu, thứ tự phải khớp bản GV đang cầm) nên PHẢI khoá y hệt `full.caus` (đã
+  // đúng thứ tự gán từ `trichXuatBuoi`/`copyPhanInto`, xem tailieu.ts). Cùng nguyên tắc đã áp cho ET
+  // khi có ≥2 mã đề (LamET: `test.co_nhieu_ma_de` → bỏ xáo, commit 08b8321) — giáo trình luôn bỏ xáo.
+  const khoaThuTuGoc = full?.baiTest.loai === 'giao_trinh'
+  const caus = useMemo(() => {
+    if (!full) return []
+    if (khoaThuTuGoc) return full.caus
+    return seededPermByDang(full.caus, `${hocSinhId}:${baiTestId}:q`).map((i) => full.caus[i])
+  }, [full, khoaThuTuGoc, hocSinhId, baiTestId])
 
   if (!full) return <div className={`flex min-h-screen items-center justify-center text-sm text-ph-label-2 ${desktop ? 'bg-[#f4f7fb]' : 'bg-ios'}`}>Đang tải bài…</div>
   const total = caus.length
@@ -400,9 +410,14 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
   const chonArr: (string | null)[] = laDS ? ((cs?.chon as (string | null)[]) ?? menhDe.map(() => null)) : []
   // Xáo THỨ TỰ ĐÁP ÁN hiển thị (TN 4 phương án · ĐS 4 mệnh đề) theo (HS×bài×câu) — orig = chỉ số GỐC
   // dùng để ghi state/so đáp án đúng; dispI = vị trí hiển thị (chỉ để đặt nhãn A/B/C/D · a/b/c/d).
-  const optsShown = laTN && cau ? seededShuffleWithOrig(cau.lua_chon ?? [], `${hocSinhId}:${baiTestId}:${cau.id}:opt`) : []
+  // Giáo trình khoá NGUYÊN thứ tự (xem `khoaThuTuGoc` ở trên) — cùng lý do, cả lớp chung 1 tài liệu.
+  const optsShown = laTN && cau
+    ? (khoaThuTuGoc ? (cau.lua_chon ?? []).map((item, orig) => ({ item, orig })) : seededShuffleWithOrig(cau.lua_chon ?? [], `${hocSinhId}:${baiTestId}:${cau.id}:opt`))
+    : []
   const correctOrigTN = laTN && daCham && cau ? chiSoCuaChu(cau.dap_an_key) : -1
-  const menhOrder = laDS && cau ? seededShuffleWithOrig(menhDe, `${hocSinhId}:${baiTestId}:${cau.id}:ds`) : []
+  const menhOrder = laDS && cau
+    ? (khoaThuTuGoc ? menhDe.map((item, orig) => ({ item, orig })) : seededShuffleWithOrig(menhDe, `${hocSinhId}:${baiTestId}:${cau.id}:ds`))
+    : []
   // Đã chọn đủ để Xác nhận? TN=đã chọn 1 · TLN=nhập khác rỗng · ĐS=đủ 4 ý.
   const daDu = laTN ? typeof cs?.chon === 'number'
     : laDS ? (chonArr.length === menhDe.length && menhDe.length > 0 && chonArr.every((x) => x != null))
