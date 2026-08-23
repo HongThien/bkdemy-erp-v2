@@ -2,14 +2,14 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-> ## ⚠️ ĐIỂM MÙ ĐỌC DỮ LIỆU — `4` BẢNG
-> Role `claude_build` **không sở hữu** và **không có `bypassrls`** với: `hinh_giao_trinh` · `hinh_gt_bai` · `hinh_gt_buoi` · `qlht_smoke_test`
+> ## ⚠️ ĐIỂM MÙ ĐỌC DỮ LIỆU — `11` BẢNG
+> Role `claude_build` **không sở hữu** và **không có `bypassrls`** với: `giai_thuong` · `giai_thuong_lop_thang` · `hinh_giao_trinh` · `hinh_gt_bai` · `hinh_gt_buoi` · `qlht_doi_qua` · `qlht_qua` · `qlht_qua_nhap` · `qlht_qua_order` · `qlht_smoke_test` · `qlht_xu_ledger`
 > Các bảng này bật RLS với policy `to authenticated`, nên `SELECT` từ script/CLI trả **0 dòng,
 > im lặng, không lỗi**. ⚠ **"0 dòng" ở đây KHÔNG phải bằng chứng bảng rỗng** — muốn biết số thật
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-148 bảng · 0 view · 0 enum · 14 trigger · 63 function
+155 bảng · 2 view · 0 enum · 15 trigger · 73 function
 
 ## _app_secrets
 
@@ -701,6 +701,29 @@
 | hinh_bien_the_id | uuid | Y |  | FK→hinh_baitoan_bien_the.id |  |
 | hinh_nhan | text | Y |  |  |  |
 
+## giai_thuong
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| thang | date |  |  |  |  |
+| lop_id | uuid |  |  | FK→lop.id |  |
+| mon | text |  |  |  |  |
+| hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |  |
+| loai_giai | text |  |  |  | `xuat_sac` · `tien_bo` · `cham_chi` |
+| duyet_boi | uuid |  |  | FK→nhan_su.id |  |
+| duyet_at | timestamp with time zone |  | now() |  |  |
+| cong_bo_at | timestamp with time zone | Y |  |  |  |
+
+## giai_thuong_lop_thang
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| lop_id | uuid |  |  | PK FK→lop.id |  |
+| thang | date |  |  | PK |  |
+| hoan_thanh_at | timestamp with time zone | Y |  |  |  |
+| hoan_thanh_boi | uuid | Y |  | FK→nhan_su.id |  |
+
 ## hgt_ban_do
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -985,7 +1008,7 @@
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | buoi_id | uuid |  |  | PK |  |
-| phan | text |  |  | PK | `lop` · `nha` |
+| phan | text |  |  | PK | `lop` · `nha` · `et` |
 | status | text |  | 'pending'::text |  | `pending` · `processing` · `done` · `failed` |
 | attempt | integer |  | 0 |  |  |
 | error | text | Y |  |  |  |
@@ -1629,6 +1652,58 @@
 | leader_chot_at | timestamp with time zone | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 
+## qlht_doi_qua
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |  |
+| qua_id | uuid |  |  | FK→qlht_qua.id |  |
+| so_luong | integer |  | 1 |  |  |
+| xu_tru | integer |  |  |  |  |
+| trang_thai | text |  | 'cho_giao'::text |  | `cho_giao` · `da_giao` · `huy` |
+| nguoi_tao | uuid |  |  | FK→nhan_su.id |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
+## qlht_qua
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| ten | text |  |  |  |  |
+| gia_xu | integer |  |  |  |  |
+| anh_url | text | Y |  |  |  |
+| mo_ta | text | Y |  |  |  |
+| dang_ban | boolean |  | true |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
+## qlht_qua_nhap
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| qua_id | uuid |  |  | FK→qlht_qua.id |  |
+| so_luong | integer |  |  |  |  |
+| nguoi_tao | uuid |  |  | FK→nhan_su.id |  |
+| ghi_chu | text | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
+## qlht_qua_order
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |  |
+| mo_ta | text |  |  |  |  |
+| link_tham_khao | text | Y |  |  |  |
+| gia_xu | integer | Y |  |  |  |
+| trang_thai | text |  | 'cho_duyet'::text |  | `cho_duyet` · `da_duyet` · `da_ve` · `da_giao` · `tu_choi` · `huy` |
+| ghi_chu | text | Y |  |  |  |
+| nguoi_tao | uuid |  |  | FK→nhan_su.id |  |
+| nguoi_duyet | uuid | Y |  | FK→nhan_su.id |  |
+| duyet_luc | timestamp with time zone | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
 ## qlht_smoke_test
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -1636,6 +1711,20 @@
 | id | uuid |  | gen_random_uuid() | PK |  |
 | nguoi_tao | uuid |  |  | FK→nhan_su.id |  |
 | noi_dung | text |  |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
+## qlht_xu_ledger
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |  |
+| amount | integer |  |  |  |  |
+| loai | text |  |  |  | `cong_tay` · `tru_tay` · `doi_qua` · `hoan` |
+| ly_do | text | Y |  |  |  |
+| ref_id | uuid | Y |  |  |  |
+| ref_loai | text | Y |  |  | `doi_qua` · `order` |
+| nguoi_tao | uuid |  |  | FK→nhan_su.id |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 
 ## question_accepted_answers
@@ -2029,6 +2118,73 @@
 | ngay_vao_backlog | date | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 
+## Views
+
+> BỀ MẶT trợ lý AI đọc. Đổi cột ở đây = ĐỔI HỢP ĐỒNG ⇒ phải sửa prompt kèm.
+
+### qlht_v_so_du_xu
+
+| cột | kiểu |
+|---|---|
+| hoc_sinh_id | uuid |
+| ho_ten | text |
+| exp_total | bigint |
+| xu_kiem | integer |
+| xu_dieu_chinh | bigint |
+| so_du | bigint |
+
+```sql
+SELECT hs.id AS hoc_sinh_id,
+    hs.ho_ten,
+    COALESCE(e.exp_total, 0::bigint) AS exp_total,
+    floor(COALESCE(e.exp_total, 0::bigint)::numeric / 10.0)::integer AS xu_kiem,
+    COALESCE(l.dieu_chinh, 0::bigint) AS xu_dieu_chinh,
+    floor(COALESCE(e.exp_total, 0::bigint)::numeric / 10.0)::integer + COALESCE(l.dieu_chinh, 0::bigint) AS so_du
+   FROM hoc_sinh hs
+     LEFT JOIN ( SELECT gami_exp_ledger.hoc_sinh_id,
+            sum(gami_exp_ledger.amount) AS exp_total
+           FROM gami_exp_ledger
+          GROUP BY gami_exp_ledger.hoc_sinh_id) e ON e.hoc_sinh_id = hs.id
+     LEFT JOIN ( SELECT qlht_xu_ledger.hoc_sinh_id,
+            sum(qlht_xu_ledger.amount) AS dieu_chinh
+           FROM qlht_xu_ledger
+          GROUP BY qlht_xu_ledger.hoc_sinh_id) l ON l.hoc_sinh_id = hs.id
+  WHERE current_nhan_su_id() IS NOT NULL;
+```
+
+### qlht_v_ton_qua
+
+| cột | kiểu |
+|---|---|
+| qua_id | uuid |
+| ten | text |
+| gia_xu | integer |
+| anh_url | text |
+| mo_ta | text |
+| dang_ban | boolean |
+| ton | bigint |
+
+```sql
+SELECT q.id AS qua_id,
+    q.ten,
+    q.gia_xu,
+    q.anh_url,
+    q.mo_ta,
+    q.dang_ban,
+    COALESCE(n.nhap, 0::bigint) - COALESCE(d.giao, 0::bigint) AS ton
+   FROM qlht_qua q
+     LEFT JOIN ( SELECT qlht_qua_nhap.qua_id,
+            sum(qlht_qua_nhap.so_luong) AS nhap
+           FROM qlht_qua_nhap
+          GROUP BY qlht_qua_nhap.qua_id) n ON n.qua_id = q.id
+     LEFT JOIN ( SELECT qlht_doi_qua.qua_id,
+            sum(qlht_doi_qua.so_luong) AS giao
+           FROM qlht_doi_qua
+          WHERE qlht_doi_qua.trang_thai <> 'huy'::text
+          GROUP BY qlht_doi_qua.qua_id) d ON d.qua_id = q.id
+  WHERE current_nhan_su_id() IS NOT NULL;
+```
+
 ## Triggers
 
 | bảng | trigger | timing | event | function |
@@ -2036,6 +2192,7 @@
 | bao_loi | trg_log_bao_loi | BEFORE | UPDATE | log_bao_loi |
 | ca_test | trg_log_ca_test | AFTER | INSERT/UPDATE | log_ca_test |
 | dai_cau_hoi | trg_log_kho_cau_dai | AFTER | DELETE/UPDATE | log_kho_cau |
+| giai_thuong | trg_giai_thuong_check_slot | BEFORE | INSERT | giai_thuong_check_slot |
 | hgt_cau_hoi | trg_log_kho_cau_hgt | AFTER | DELETE/UPDATE | log_kho_cau |
 | hinh_baitoan | hinh_baitoan_gen_ma_trg | BEFORE | INSERT | hinh_baitoan_gen_ma |
 | hoa_don | trg_log_hoa_don | AFTER | INSERT/UPDATE | log_hoa_don |
@@ -2065,6 +2222,7 @@
 - `dai_dang_tien_de_bao_dong(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `et_de(p_bai_test uuid)` → jsonb
 - `et_nop(p_bai_lam uuid)` → jsonb
+- `giai_thuong_check_slot()` → trigger
 - `giaoviec_auto_dong_task_me()` → trigger
 - `giaoviec_housekeeping()` → void
 - `han_nop_bai_test(p_lop uuid, p_ngay date, p_loai text)` → timestamp with time zone
@@ -2108,6 +2266,15 @@
 - `postgres_fdw_get_connections(OUT server_name text, OUT valid boolean)` → SETOF record
 - `postgres_fdw_handler()` → fdw_handler
 - `postgres_fdw_validator(text[], oid)` → void
+- `qlht_dieu_chinh_xu(p_hoc_sinh_id uuid, p_amount integer, p_ly_do text)` → TABLE(so_du_moi integer)
+- `qlht_doi_qua_moi(p_hoc_sinh_id uuid, p_qua_id uuid, p_so_luong integer DEFAULT 1)` → TABLE(doi_qua_id uuid, so_du_moi integer)
+- `qlht_order_duyet(p_order_id uuid, p_gia_xu integer)` → TABLE(so_du_moi integer)
+- `qlht_order_huy(p_order_id uuid, p_ly_do text)` → void
+- `qlht_order_tao(p_hoc_sinh_id uuid, p_mo_ta text, p_link text DEFAULT NULL::text)` → uuid
+- `qlht_qua_doi_trang_thai(p_qua_id uuid, p_dang_ban boolean)` → void
+- `qlht_qua_nhap_kho(p_qua_id uuid, p_so_luong integer, p_ghi_chu text DEFAULT NULL::text)` → TABLE(ton_moi integer)
+- `qlht_qua_sua(p_qua_id uuid, p_ten text, p_gia_xu integer, p_anh_url text DEFAULT NULL::text, p_mo_ta text DEFAULT NULL::text)` → void
+- `qlht_qua_them(p_ten text, p_gia_xu integer, p_anh_url text DEFAULT NULL::text, p_mo_ta text DEFAULT NULL::text)` → uuid
 - `resolve_bien_the(p_bai_test uuid)` → smallint
 - `self_link_account()` → uuid
 - `tln_cache_check(p_ma_cau text, p_norm text)` → boolean
@@ -2152,6 +2319,10 @@
 | ky_thi | ky_thi_he_so_check | `CHECK ((he_so = ANY (ARRAY[1, 2])))` |
 | muc_nang_luc | muc_nang_luc_muc_check | `CHECK (((muc >= 1) AND (muc <= 3)))` |
 | phan_cong_ca | phan_cong_ca_thu_check | `CHECK (((thu >= 2) AND (thu <= 8)))` |
+| qlht_doi_qua | qlht_doi_qua_so_luong_check | `CHECK ((so_luong > 0))` |
+| qlht_qua | qlht_qua_gia_xu_check | `CHECK ((gia_xu > 0))` |
+| qlht_qua_order | qlht_qua_order_gia_xu_check | `CHECK ((gia_xu > 0))` |
+| qlht_xu_ledger | qlht_xu_ledger_amount_check | `CHECK ((amount <> 0))` |
 | thoi_khoa_bieu | thoi_khoa_bieu_thu_check | `CHECK (((thu >= 2) AND (thu <= 8)))` |
 | troly_nhan_dinh | troly_nhan_dinh_gac_ck | `CHECK (((quyet_dinh = 'gac'::text) = (gac_den IS NOT NULL)))` |
 | troly_ra_soat | troly_ra_soat_gac_ck | `CHECK (((ket_luan = 'gac'::text) = (gac_den IS NOT NULL)))` |

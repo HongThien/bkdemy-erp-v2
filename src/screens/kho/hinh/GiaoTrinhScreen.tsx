@@ -21,7 +21,7 @@ import { Btn, Empty, Ma, Seg, tron, inpCls } from './hinhUi'
 import { Shell, Field, inp } from '../ui'
 import SearchSelect from '../../../components/SearchSelect'
 import BuoiNgaySelect from '../../../components/BuoiNgaySelect'
-import HinhPrintView, { type BanIn, type MucIn } from './HinhPrintView'
+import HinhPrintView, { type BanIn, type MucIn, type HinhPerHS } from './HinhPrintView'
 import { mucGhep, mucGhepLua, mucBienThe, mucY, BuoiPickEditor, banInTheoMoHinh } from './SoanTaiLieu'
 
 // Ngày giờ VN (CLAUDE.md §2: không toISOString) — hiển thị "dd/mm/yyyy". Khuôn TaiLieuScreen (Đại).
@@ -58,6 +58,34 @@ export async function resolveBanIn(L: Luoi, tieuBuoi: string, bais: GtBai[], pha
     }
   }
   return { tieuDe: `${tieuBuoi} — ${phan === 'lop' ? 'Trên lớp' : 'Về nhà (BTVN)'}`, phuDe: `${mucs.length} mục`, mucs }
+}
+
+// ── Resolve bài ET ĐÃ LƯU của 1 buổi → 3 "mã đề" (BẢN TRỐNG, không theo HS cụ thể) — dùng cho worker
+// gen-link (PrintJobPage.tsx) và "In nhanh"/"In" mở TỪ KHO (khác ETScreen: ở đó in "Cả lớp" theo ĐÚNG
+// roster có mặt + mã đề đã gán per-HS; ở Kho chỉ có buoiId trong tay, không có ngữ cảnh buổi-đang-điểm-
+// danh nào — Đại cũng vậy: Copy link của ET Đại luôn là bản trống 3 mã đề, không phải bản có tên HS,
+// xem PrintJobPage.tsx không truyền `perHS` cho ETPrintView). Tái dùng ĐÚNG cơ chế perHS của HinhPrintView
+// (hoTen rỗng) thay vì thêm nhánh render mới — "mỗi mã đề 1 phiếu, đầu phiếu BK" vốn đã là những gì
+// perHS vẽ, chỉ khác chỗ hoTen để trống cho HS tự viết tay (giống ETHeaderBK khi không có hoTen).
+export async function resolveEtBansHinh(L: Luoi, buoiId: string, tenLop: string, ngayFmt: string): Promise<{ ban: BanIn; perHS: HinhPerHS[] }> {
+  const { picks, cheDo, soDong } = await gt.loadBuoiPicksPhan(buoiId, 'et')
+  const ch = await gt.getHinhCauHinh(buoiId, 'et')
+  const maDe = ch.maDe ?? {}
+  const picksCho = (v: 0 | 1) => picks.map((p) => { const alt = maDe[gt.chuoiSig(p.nodeIds)]?.[v]; return alt ? gt.applyBanToPick(p, alt) : p })
+  const tieuDe = `ET Hình ${tenLop} · ${ngayFmt}`
+  const [base, v2, v3] = await Promise.all([
+    banInTheoMoHinh(tieuDe, 'et', picks, L, cheDo, soDong),
+    banInTheoMoHinh(tieuDe, 'et', picksCho(0), L, cheDo, soDong),
+    banInTheoMoHinh(tieuDe, 'et', picksCho(1), L, cheDo, soDong),
+  ])
+  return {
+    ban: { ...base, lop: tenLop, ngay: ngayFmt },
+    perHS: [
+      { hoTen: '', maDe: 1, mucs: base.mucs },
+      { hoTen: '', maDe: 2, mucs: v2.mucs },
+      { hoTen: '', maDe: 3, mucs: v3.mucs },
+    ],
+  }
 }
 
 export default function GiaoTrinhScreen({ L, khoi }: { L: Luoi; khoi: string }) {
