@@ -42,9 +42,11 @@ export default function DuyetBoTroYeuScreen() {
         const cs = await listCandidatesLop(l.id).catch(() => [])
         return cs.map((c): CandLop => ({ ...c, ten_lop: l.ten_lop }))
       }))
-      // Chỉ giữ candidate có TÍN HIỆU KIẾN THỨC — loại candidate CHỈ có kênh thái độ (không mở case ở đây).
-      const flat = per.flat().filter((c) =>
-        c.deXuatKienThuc.deXuat >= 1 || c.sheet.levelKienThuc >= 1 || c.kenh.some((k) => k !== 'thai_do'))
+      // Chỉ giữ candidate có TÍN HIỆU KIẾN THỨC đủ mạnh (Thùy 08-23: ≥2/4 kênh dữ liệu HOẶC báo
+      // động HOẶC case đang mở cần xử — xem `duTinHieuKienThuc` ở listCandidatesLop). KHÔNG suy
+      // luận lại từ `kenh` (bug đã bắt: 1 kênh riêng lẻ vẫn push vào `kenh` để hiện lý do dù chưa
+      // đủ ≥2/4, nên `kenh.some(k => k !== 'thai_do')` từng lọt sai candidate chỉ có 1 kênh yếu).
+      const flat = per.flat().filter((c) => c.duTinHieuKienThuc)
       flat.sort((a, b) => b.uuTien - a.uuTien)
       setCands(flat)
     } finally { setLoading(false) }
