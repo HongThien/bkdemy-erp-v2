@@ -1034,7 +1034,9 @@ const CONTENT_CSS = `
 // Font tiêu đề/card = sans (Noto Sans) tách khỏi phần câu (Times) cho ra chất "sách in".
 const GT_SANS = "'Noto Sans','Segoe UI',Arial,sans-serif"
 const GT_GRAD = 'linear-gradient(90deg,#1997d4 0%,#18a889 34%,#f0a63b 66%,#e83483 100%)'
-const GT_BK_CSS = `
+// ⭐ 24/08 — export: Hình BTVN dùng CHUNG masthead .gtbk-mh* này qua BtvnBkHead (bkPrint.tsx), khớp yêu
+// cầu "header BTVN Hình phải đúng chuẩn Đại" — không tự vẽ CSS riêng, chỉ nạp thêm CSS này khi cần.
+export const GT_BK_CSS = `
 /* Masthead buổi (đầu mỗi buổi): khung gradient bo góc + logo thật + pill + tiêu đề + Lớp/Ngày + huy hiệu tròn.
    ⚠ ĐỪNG thêm break-after:page/avoid vào đây để "chữa" bug trắng trang — đã thử, chỉ đổi chỗ lãng phí chứ
    không sửa gốc (gốc nằm ở thẻ <div> bọc nhóm card trong BuoiBlock, xem comment ở đó). */

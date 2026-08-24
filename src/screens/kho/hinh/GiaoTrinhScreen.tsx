@@ -54,7 +54,25 @@ export async function resolveBanIn(L: Luoi, tieuBuoi: string, bais: GtBai[], pha
     else if (b.loai === 'y' && b.ref_id) { const yb = yMap.get(b.ref_id); if (yb?.y.baitoan_id) picks.push({ key: b.id, phan: b.phan, kind: 'y', yId: b.ref_id, nodeIds: [yb.y.baitoan_id] }) }
     else if (b.loai === 'ghep') picks.push({ key: b.id, phan: b.phan, kind: 'ghep', luaId: b.lua_id, nodeIds: b.ghep_node_ids })
   }
-  return banInTheoMoHinh(`${tieuBuoi} — ${phan === 'lop' ? 'Trên lớp' : 'Về nhà (BTVN)'}`, phan, picks, L, cheDo, soDong)
+  const ban = await banInTheoMoHinh(`${tieuBuoi} — ${phan === 'lop' ? 'Trên lớp' : 'Về nhà (BTVN)'}`, phan, picks, L, cheDo, soDong)
+  if (phan !== 'nha') return ban
+  // ⭐ 24/08 (Thùy: "header BTVN linh tinh, làm giống hệt form Đại đi") — BTVN dùng BtvnBkHead (HinhPrintView
+  // gate qua `laBtvn`): Lớp/Ngày phát/Hạn nộp CÓ CẤU TRÚC (khuôn PrintView.tsx: "ngày nộp = buổi TKB kế
+  // tiếp − 1 ngày"), tiêu đề = tiêu đề buổi TRẦN (`tieuBai`, khác `tieuDe` — tên file đầy đủ vẫn giữ nguyên
+  // cho toolbar/tải về). getHinhBuoiMeta cho SẴN tenLop/ngay/tieuDe của buổi trong 1 lượt gọi.
+  const buoiId = bais[0]?.buoi_id
+  const meta = buoiId ? await gt.getHinhBuoiMeta(buoiId).catch(() => null) : null
+  if (!meta?.ngay) return { ...ban, laBtvn: true }
+  const ngayPhat = meta.ngay.split('-').reverse().join('/')
+  let ngayNop = ''
+  if (meta.lopId) {
+    try {
+      const list2 = await ngayBuoiHopLeCuaLop(meta.lopId, meta.ngay, congNgay(meta.ngay, 120))
+      const next = list2.map((x) => x.ngay).find((d) => d > meta.ngay!)
+      ngayNop = next ? congNgay(next, -1).split('-').reverse().join('/') : ''
+    } catch { /* thiếu TKB — bỏ trống hạn nộp, không chặn in */ }
+  }
+  return { ...ban, laBtvn: true, tieuBai: meta.tieuDe || undefined, lop: meta.tenLop ?? '', ngay: ngayPhat, ngayNop }
 }
 
 // ── Resolve bài ET ĐÃ LƯU của 1 buổi → 3 "mã đề" (BẢN TRỐNG, không theo HS cụ thể) — dùng cho worker
