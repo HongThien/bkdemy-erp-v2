@@ -998,14 +998,22 @@ function ViewMoHinh({ L, ho, trongHo, chon, setChon, onSua, onThemCon, reload }:
                 const p = pos.get(m.id)!
                 const n = L.baiToan.filter((b) => b.mo_hinh_id === m.id)
                 const caps = n.map((b) => b.cap)
+                // ⭐ 24/08 (Thùy: "chỗ nhập lý thuyết làm như bên Đại số" — Đại: lưới lá thấy trạng thái +
+                // bấm vào là sửa NGAY, không phải chọn node trước rồi mới thấy ở sidebar). Icon 📖 NGAY
+                // TRÊN card — bấm là mở LyThuyetModal luôn (stopPropagation, không chọn node/không đổi sidebar).
+                const coLtM = !!(moLtMap[m.id]?.noi_dung?.trim() || moLtMap[m.id]?.file_url)
                 return (
-                  <button key={m.id} onClick={() => setChon(m.id)} style={{ left: p.x, top: p.y, width: MH_W, height: MH_H }}
-                    className={`absolute flex flex-col overflow-hidden rounded-xl border-[1.5px] border-teal-300 bg-white text-left transition ${
+                  <div key={m.id} onClick={() => setChon(m.id)} role="button" tabIndex={0} style={{ left: p.x, top: p.y, width: MH_W, height: MH_H }}
+                    className={`absolute flex cursor-pointer flex-col overflow-hidden rounded-xl border-[1.5px] border-teal-300 bg-white text-left transition ${
                       chon === m.id ? 'ring-[3px] ring-teal-300/50' : 'hover:shadow-sm'}`}>
-                    <div className="h-24 shrink-0 border-b border-slate-100 bg-slate-50/50">
+                    <div className="relative h-24 shrink-0 border-b border-slate-100 bg-slate-50/50">
                       {api.anhCauHinhCua(L, m.id)
                         ? <img src={api.anhCauHinhCua(L, m.id)!} alt="" className="h-full w-full bg-white object-contain" />
                         : <div className="flex h-full items-center justify-center text-[10.5px] text-slate-300">chưa có hình</div>}
+                      <button onClick={(e) => { e.stopPropagation(); setMoLtModal({ id: m.id, ten: m.ten }) }}
+                        title={coLtM ? 'Đã có lý thuyết — bấm để sửa' : 'Chưa có lý thuyết — bấm để soạn'}
+                        className={`absolute right-1 top-1 flex h-6 w-6 items-center justify-center rounded-md border bg-white/90 text-[12px] shadow-sm ${
+                          coLtM ? 'border-violet-300 text-violet-600' : 'border-slate-300 text-slate-400'}`}>📖</button>
                     </div>
                     <div className="flex min-h-0 flex-1 flex-col gap-1 px-2.5 py-2">
                       <div className="flex items-center gap-1.5">
@@ -1018,19 +1026,24 @@ function ViewMoHinh({ L, ho, trongHo, chon, setChon, onSua, onThemCon, reload }:
                         {caps.length > 0 && <Chip>cấp {dai(caps)}</Chip>}
                       </div>
                     </div>
-                  </button>
+                  </div>
                 )
               })}
-              {/* VỆ TINH — card rút gọn (mã + tên), click mở tâm–bài toán như hub (RadialEco panel phải). */}
+              {/* VỆ TINH — card rút gọn (mã + tên), click mở tâm–bài toán như hub (RadialEco panel phải).
+                  Chấm 📖 nhỏ (không đủ chỗ cho icon riêng như hub) — bấm vào chấm mới mở soạn lý thuyết. */}
               {[...satPos.entries()].map(([id, p]) => {
                 const m = L.moHinh.find((x) => x.id === id); if (!m) return null
+                const coLtM = !!(moLtMap[id]?.noi_dung?.trim() || moLtMap[id]?.file_url)
                 return (
-                  <button key={id} onClick={() => setChon(id)} style={{ left: p.x, top: p.y, width: SAT_W, height: SAT_H }}
-                    className={`absolute flex items-center gap-1.5 rounded-lg border border-dashed border-indigo-300 bg-indigo-50/50 px-2 text-left transition hover:bg-indigo-50 ${
+                  <div key={id} onClick={() => setChon(id)} role="button" tabIndex={0} style={{ left: p.x, top: p.y, width: SAT_W, height: SAT_H }}
+                    className={`absolute flex cursor-pointer items-center gap-1.5 rounded-lg border border-dashed border-indigo-300 bg-indigo-50/50 px-2 text-left transition hover:bg-indigo-50 ${
                       chon === id ? 'ring-2 ring-indigo-300/60' : ''}`}>
                     <MaPill code={maCap.get(id) ?? '?'} size="sm" />
                     <span className="min-w-0 flex-1 truncate text-[11.5px] font-medium text-slate-700"><MathText>{m.ten}</MathText></span>
-                  </button>
+                    <button onClick={(e) => { e.stopPropagation(); setMoLtModal({ id, ten: m.ten }) }}
+                      title={coLtM ? 'Đã có lý thuyết — bấm để sửa' : 'Chưa có lý thuyết — bấm để soạn'}
+                      className={`shrink-0 rounded px-1 text-[10px] ${coLtM ? 'text-violet-500' : 'text-slate-300'}`}>📖</button>
+                  </div>
                 )
               })}
             </div>
