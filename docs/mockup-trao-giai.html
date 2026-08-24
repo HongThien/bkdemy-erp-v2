@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>BK Academy - Trao giải tháng (chốt theo lớp)</title>
+<style>
+:root{
+  --bg:#f4f7fb;
+  --panel:#ffffff;
+  --text:#1d2733;
+  --muted:#748091;
+  --line:#e5eaf0;
+  --primary:#2563eb;
+  --primary-soft:#eef4ff;
+  --success:#17945e;
+  --success-soft:#e9f8f0;
+  --gold:#d89b17;
+  --gold-soft:#fff8e6;
+  --purple:#7c5ce7;
+  --purple-soft:#f3efff;
+  --orange:#e07a16;
+  --orange-soft:#fff4e8;
+  --danger:#d94f4f;
+  --danger-soft:#ffecec;
+  --slate:#475569;
+  --slate-soft:#eef2f7;
+  --shadow:0 8px 28px rgba(28,45,72,.08);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+.app{min-height:100vh}
+.topbar{
+  height:72px;
+  background:#fff;
+  border-bottom:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 28px;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800}
+.logo{
+  width:38px;height:38px;border-radius:10px;
+  display:grid;grid-template-columns:1fr 1fr;gap:3px;padding:4px;background:#fff;
+  box-shadow:0 0 0 1px #dfe5ec inset;
+}
+.logo i:nth-child(1){background:#2563eb;border-radius:3px}
+.logo i:nth-child(2){background:#f59e0b;border-radius:3px}
+.logo i:nth-child(3){background:#16a34a;border-radius:3px}
+.logo i:nth-child(4){background:#ef4444;border-radius:3px}
+.brand small{display:block;color:var(--muted);font-weight:600;font-size:11px;letter-spacing:.08em}
+.top-actions{display:flex;align-items:center;gap:10px}
+.btn{
+  border:1px solid var(--line);background:#fff;border-radius:10px;padding:10px 14px;
+  font-weight:700;color:#334155;cursor:pointer
+}
+.btn.primary{background:var(--primary);color:#fff;border-color:var(--primary)}
+.main{max-width:1540px;margin:0 auto;padding:28px}
+.header{
+  display:flex;align-items:flex-start;justify-content:space-between;gap:24px;margin-bottom:20px
+}
+.header h1{font-size:28px;margin:0 0 8px}
+.header p{margin:0;color:var(--muted);line-height:1.55}
+.filters{display:flex;gap:10px;flex-wrap:wrap}
+select,input{
+  font:inherit;border:1px solid var(--line);border-radius:10px;background:#fff;
+  padding:10px 12px;color:#334155;outline:none
+}
+.summary{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin:18px 0 24px
+}
+.stat{
+  background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;
+  box-shadow:0 4px 16px rgba(28,45,72,.04)
+}
+.stat .label{color:var(--muted);font-size:13px;font-weight:650}
+.stat .value{font-size:25px;font-weight:850;margin-top:5px}
+.progress{
+  height:7px;background:#edf1f5;border-radius:999px;margin-top:11px;overflow:hidden
+}
+.progress span{display:block;height:100%;background:var(--primary);border-radius:999px}
+.toolbar{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px
+}
+.tabs{display:flex;background:#e9eef5;border-radius:10px;padding:4px}
+.tab{padding:8px 13px;border-radius:8px;color:#667085;font-weight:750;cursor:pointer}
+.tab.active{background:#fff;color:#1f2937;box-shadow:0 2px 7px rgba(30,41,59,.07)}
+.search{min-width:290px}
+.class-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.class-card{
+  background:var(--panel);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden;
+  transition:.2s ease;
+}
+.class-card.completed{
+  border-color:#cfe7d8;
+  box-shadow:0 8px 28px rgba(23,148,94,.08);
+}
+.class-head{
+  padding:18px 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px
+}
+.class-title{display:flex;align-items:center;gap:12px}
+.class-badge{
+  width:44px;height:44px;border-radius:12px;background:var(--primary-soft);color:var(--primary);
+  display:flex;align-items:center;justify-content:center;font-weight:900
+}
+.class-meta h3{margin:0;font-size:18px}
+.class-meta div{margin-top:4px;color:var(--muted);font-size:13px}
+.class-statuses{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.status{
+  border-radius:999px;padding:8px 11px;font-size:12px;font-weight:800;
+  background:var(--success-soft);color:var(--success)
+}
+.status.partial{background:var(--orange-soft);color:var(--orange)}
+.status.none{background:var(--danger-soft);color:var(--danger)}
+.status.locked{background:var(--slate-soft);color:var(--slate)}
+.card-body{padding:18px}
+.award{
+  border:1px solid var(--line);border-radius:14px;padding:15px;margin-bottom:13px
+}
+.award:last-child{margin-bottom:0}
+.award-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:11px}
+.award-name{display:flex;align-items:center;gap:9px;font-weight:850}
+.icon{
+  width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px
+}
+.gold .icon{background:var(--gold-soft)}
+.purple .icon{background:var(--purple-soft)}
+.green .icon{background:var(--success-soft)}
+.rule{color:var(--muted);font-size:12px;max-width:420px;line-height:1.45}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.slots.two{grid-template-columns:repeat(2,1fr)}
+.slots.one{grid-template-columns:1fr}
+.slot{
+  border:1px solid var(--line);border-radius:12px;padding:10px;background:#fbfcfe;
+  transition:.18s ease;
+}
+.slot.confirmed{
+  border-color:#bfe7d0;
+  background:#f6fcf8;
+  box-shadow:inset 0 0 0 1px rgba(23,148,94,.06);
+}
+.slot.locked{
+  opacity:.78;
+}
+.slot-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.rank{font-size:12px;font-weight:850;color:#64748b}
+.auto{font-size:11px;color:var(--primary);background:var(--primary-soft);padding:4px 6px;border-radius:999px;font-weight:800}
+.person-select{
+  width:100%;padding:9px;border-radius:9px;border:1px solid #dfe5ec;background:#fff;font-size:13px;font-weight:700
+}
+.metrics{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
+.metric{
+  font-size:10.5px;color:#566174;background:#eef2f6;border-radius:999px;padding:4px 6px;font-weight:700
+}
+.metric.strong{background:#eaf8f1;color:#178a59}
+.metric.up{background:#f2edff;color:#7255d6}
+.confirm-row{
+  margin-top:10px;
+  display:flex;justify-content:space-between;align-items:center;gap:10px;
+}
+.confirm-left{
+  display:flex;align-items:center;gap:8px;font-size:12px;font-weight:750;color:#334155;
+}
+.confirm-left input[type="checkbox"]{
+  width:16px;height:16px;accent-color:#17945e;cursor:pointer;
+}
+.state-badge{
+  font-size:11px;font-weight:850;border-radius:999px;padding:5px 8px
+}
+.state-badge.pending{background:var(--orange-soft);color:var(--orange)}
+.state-badge.confirmed{background:var(--success-soft);color:var(--success)}
+.card-footer{
+  display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:#fafbfc;border-top:1px solid var(--line);gap:12px
+}
+.mini-summary{display:flex;gap:12px;color:#697586;font-size:12px;flex-wrap:wrap}
+.footer-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.link{color:var(--primary);font-weight:800;font-size:12px;cursor:pointer}
+.class-complete-btn{
+  border:none;border-radius:10px;padding:10px 14px;font-weight:800;cursor:pointer;
+  background:var(--success);color:#fff
+}
+.class-complete-btn.secondary{
+  background:#fff;color:#334155;border:1px solid var(--line)
+}
+.legend{
+  margin-top:22px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;
+  display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap
+}
+.legend strong{min-width:145px}
+.legend div{font-size:12px;color:#64748b;line-height:1.55;max-width:360px}
+.notice{
+  margin-top:16px;background:#fff;border:1px dashed #c7d3e0;border-radius:14px;padding:14px 16px;
+  color:#5f6b7a;font-size:13px;line-height:1.6
+}
+.notice b{color:#1d2733}
+@media(max-width:1250px){
+  .summary{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:1050px){
+  .class-grid{grid-template-columns:1fr}
+  .summary{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:720px){
+  .main{padding:16px}
+  .header{flex-direction:column}
+  .summary{grid-template-columns:1fr 1fr}
+  .slots,.slots.two{grid-template-columns:1fr}
+  .toolbar{align-items:stretch;flex-direction:column}
+  .search{min-width:0;width:100%}
+  .class-head,.card-footer{align-items:flex-start;flex-direction:column}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="topbar">
+    <div class="brand">
+      <div class="logo"><i></i><i></i><i></i><i></i></div>
+      <div>BK ACADEMY <small>STUDENT RECOGNITION</small></div>
+    </div>
+    <div class="top-actions">
+      <button class="btn">Xuất danh sách chính thức</button>
+      <button class="btn primary">Chốt kết quả tháng</button>
+    </div>
+  </div>
+
+  <main class="main">
+    <div class="header">
+      <div>
+        <h1>Trao giải học sinh</h1>
+        <p>Quy trình gồm 2 bước: <b>xác nhận từng học sinh</b> → <b>hoàn thành lớp</b>. Khi lớp đã hoàn thành, dữ liệu của lớp đó được xem như đã chốt xong.</p>
+      </div>
+      <div class="filters">
+        <select><option>Tháng 08/2026</option><option>Tháng 07/2026</option></select>
+        <select><option>Tất cả khối</option><option>Khối 6</option><option>Khối 7</option><option>Khối 8</option><option>Khối 9</option></select>
+      </div>
+    </div>
+
+    <section class="summary">
+      <div class="stat">
+        <div class="label">Lớp cần trao giải</div>
+        <div class="value" id="sumClasses">0</div>
+        <div class="progress"><span style="width:100%"></span></div>
+      </div>
+      <div class="stat">
+        <div class="label">Lớp đã duyệt đủ 6 slot</div>
+        <div class="value" id="sumApproved">0 / 0</div>
+        <div class="progress"><span id="progressApproved" style="width:0%"></span></div>
+      </div>
+      <div class="stat">
+        <div class="label">Học sinh được trao chính thức</div>
+        <div class="value" id="sumConfirmed">0</div>
+        <div class="progress"><span id="progressConfirmed" style="width:0%"></span></div>
+      </div>
+      <div class="stat">
+        <div class="label">Slot chờ giáo viên duyệt</div>
+        <div class="value" id="sumPending">0</div>
+        <div class="progress"><span id="progressPending" style="width:0%"></span></div>
+      </div>
+      <div class="stat">
+        <div class="label">Lớp đã hoàn thành/chốt</div>
+        <div class="value" id="sumCompleted">0</div>
+        <div class="progress"><span id="progressCompleted" style="width:0%"></span></div>
+      </div>
+    </section>
+
+    <div class="toolbar">
+      <div class="tabs">
+        <div class="tab active">Tất cả lớp</div>
+        <div class="tab">Chưa hoàn thành</div>
+        <div class="tab">Đã hoàn thành</div>
+      </div>
+      <input class="search" placeholder="Tìm lớp hoặc học sinh..."/>
+    </div>
+
+    <section class="class-grid" id="classGrid"></section>
+
+    <div class="legend">
+      <strong>Logic đề xuất</strong>
+      <div><b>Xuất sắc:</b> xếp theo điểm MT giảm dần → nếu bằng MT thì so ET → nếu vẫn bằng thì so BTVN.</div>
+      <div><b>Tiến bộ:</b> ưu tiên mức tăng thứ hạng trong lớp và % tăng điểm trung bình so với đầu tháng.</div>
+      <div><b>Chăm chỉ:</b> ưu tiên học sinh hoàn thành đủ BTVN; nếu cùng mức hoàn thành thì chọn người có điểm BTVN trung bình cao hơn.</div>
+    </div>
+
+    <div class="notice">
+      <b>Logic trạng thái đề xuất:</b>
+      <br>• <b>Đã xác nhận</b> = slot đã được duyệt trao thưởng.
+      <br>• <b>Hoàn thành lớp</b> = lớp đã chốt xong, không sửa nữa.
+      <br>• Khi bấm <b>Hoàn thành lớp</b>, các dropdown và ô xác nhận của lớp sẽ bị khóa.
+    </div>
+  </main>
+</div>
+
+<script>
+const classes = [
+  {
+    name:"8S1", students:18, completed:false,
+    excellent:[
+      {name:"Nguyễn Hải Minh Châu", mt:9.7, et:9.5, hw:9.4, confirmed:true},
+      {name:"Trần Thị Vân Khánh", mt:9.6, et:9.4, hw:9.2, confirmed:true},
+      {name:"Phạm Minh Anh", mt:9.4, et:9.5, hw:9.0, confirmed:false}
+    ],
+    improve:[
+      {name:"Lê Gia Huy", rank:"+7 bậc", delta:"+18% điểm", confirmed:false},
+      {name:"Đỗ Quỳnh Anh", rank:"+5 bậc", delta:"+15% điểm", confirmed:false}
+    ],
+    diligence:[
+      {name:"Hoàng Anh Khoa", homework:"100% BTVN", score:"TB 9.6", confirmed:true}
+    ]
+  },
+  {
+    name:"7A1", students:21, completed:false,
+    excellent:[
+      {name:"Nguyễn Minh Đức", mt:9.3, et:9.1, hw:9.0, confirmed:true},
+      {name:"Hải Anh", mt:9.2, et:9.2, hw:8.9, confirmed:false},
+      {name:"Trần Bảo Ngọc", mt:9.1, et:9.0, hw:9.1, confirmed:false}
+    ],
+    improve:[
+      {name:"Phạm Khánh Linh", rank:"+8 bậc", delta:"+21% điểm", confirmed:false},
+      {name:"Ngô Nhật Mai", rank:"+4 bậc", delta:"+13% điểm", confirmed:false}
+    ],
+    diligence:[
+      {name:"Ngô Nhật Nam", homework:"100% BTVN", score:"TB 9.3", confirmed:true}
+    ]
+  },
+  {
+    name:"9B2", students:19, completed:true,
+    excellent:[
+      {name:"Lê Đức Anh", mt:9.5, et:9.3, hw:9.2, confirmed:true},
+      {name:"Nguyễn Bảo Ngọc", mt:9.4, et:9.2, hw:9.4, confirmed:true},
+      {name:"Phan Tuấn Kiệt", mt:9.2, et:9.4, hw:9.1, confirmed:true}
+    ],
+    improve:[
+      {name:"Đặng Mai Trang", rank:"+6 bậc", delta:"+17% điểm", confirmed:true},
+      {name:"Vũ Hoàng Long", rank:"+4 bậc", delta:"+14% điểm", confirmed:true}
+    ],
+    diligence:[
+      {name:"Nguyễn Thu Hà", homework:"100% BTVN", score:"TB 9.7", confirmed:true}
+    ]
+  },
+  {
+    name:"6A1", students:20, completed:false,
+    excellent:[
+      {name:"Bùi Minh Khang", mt:9.1, et:9.0, hw:8.9, confirmed:false},
+      {name:"Nguyễn An Nhiên", mt:8.9, et:9.1, hw:9.0, confirmed:false},
+      {name:"Trần Nhật Minh", mt:8.8, et:8.9, hw:8.8, confirmed:false}
+    ],
+    improve:[
+      {name:"Trần Gia Bảo", rank:"+9 bậc", delta:"+24% điểm", confirmed:false},
+      {name:"Lê Hà My", rank:"+6 bậc", delta:"+16% điểm", confirmed:false}
+    ],
+    diligence:[
+      {name:"Nguyễn Phương Linh", homework:"100% BTVN", score:"TB 9.1", confirmed:false}
+    ]
+  }
+];
+
+const allNames = [
+  "Nguyễn Hải Minh Châu","Trần Thị Vân Khánh","Phạm Minh Anh","Lê Gia Huy","Đỗ Quỳnh Anh",
+  "Hải Anh","Nguyễn Minh Đức","Trần Bảo Ngọc","Phạm Khánh Linh","Ngô Nhật Nam","Ngô Nhật Mai",
+  "Lê Đức Anh","Nguyễn Bảo Ngọc","Phan Tuấn Kiệt","Đặng Mai Trang","Vũ Hoàng Long","Nguyễn Thu Hà",
+  "Bùi Minh Khang","Nguyễn An Nhiên","Trần Gia Bảo","Lê Hà My","Nguyễn Phương Linh","Hoàng Anh Khoa","Trần Nhật Minh"
+];
+
+function options(selected){
+  return [`<option>${selected}</option>`, ...allNames.filter(n=>n!==selected).map(n=>`<option>${n}</option>`)].join("");
+}
+function metric(text, cls=""){ return text ? `<span class="metric ${cls}">${text}</span>` : ""; }
+
+function createSlot(slotTitle, p, detailHtml){
+  return `
+    <div class="slot ${p.confirmed ? 'confirmed' : ''}">
+      <div class="slot-top">
+        <span class="rank">${slotTitle}</span>
+        <span class="auto">Đề xuất</span>
+      </div>
+      <select class="person-select">${options(p.name)}</select>
+      <div class="metrics">${detailHtml}</div>
+      <div class="confirm-row">
+        <label class="confirm-left">
+          <input type="checkbox" class="confirm-checkbox" ${p.confirmed ? 'checked' : ''}/>
+          Xác nhận trao giải
+        </label>
+        <span class="state-badge ${p.confirmed ? 'confirmed' : 'pending'}">${p.confirmed ? 'Đã xác nhận' : 'Chờ duyệt'}</span>
+      </div>
+    </div>
+  `;
+}
+
+function awardBlock(type, data){
+  if(type==="excellent"){
+    return `<div class="award gold">
+      <div class="award-head">
+        <div><div class="award-name"><span class="icon">🏆</span> Xuất sắc · 3 slot</div></div>
+        <div class="rule">MT ↓ → ET ↓ → BTVN ↓</div>
+      </div>
+      <div class="slots">
+        ${data.map((p,i)=>createSlot(`TOP ${i+1}`, p, `${metric("MT " + p.mt,"strong")}${metric("ET " + p.et)}${metric("BTVN " + p.hw)}`)).join("")}
+      </div>
+    </div>`;
+  }
+  if(type==="improve"){
+    return `<div class="award purple">
+      <div class="award-head">
+        <div><div class="award-name"><span class="icon">📈</span> Tiến bộ · 2 slot</div></div>
+        <div class="rule">Tăng thứ hạng + % tăng điểm trong tháng</div>
+      </div>
+      <div class="slots two">
+        ${data.map((p,i)=>createSlot(`SLOT ${i+1}`, p, `${metric(p.rank,"up")}${metric(p.delta,"up")}`)).join("")}
+      </div>
+    </div>`;
+  }
+  return `<div class="award green">
+    <div class="award-head">
+      <div><div class="award-name"><span class="icon">✅</span> Chăm chỉ · 1 slot</div></div>
+      <div class="rule">Đủ BTVN → điểm BTVN trung bình cao nhất</div>
+    </div>
+    <div class="slots one">
+      ${data.map((p)=>createSlot(`CHĂM CHỈ`, p, `${metric(p.homework,"strong")}${metric(p.score)}`)).join("")}
+    </div>
+  </div>`;
+}
+
+function render(){
+  document.getElementById("classGrid").innerHTML = classes.map(c => `
+    <article class="class-card ${c.completed ? 'completed' : ''}" data-class="${c.name}" data-completed="${c.completed ? 'true' : 'false'}">
+      <div class="class-head">
+        <div class="class-title">
+          <div class="class-badge">${c.name}</div>
+          <div class="class-meta">
+            <h3>Lớp ${c.name}</h3>
+            <div>${c.students} học sinh · 6 slot trao giải</div>
+          </div>
+        </div>
+        <div class="class-statuses">
+          <span class="status approval-status">Đang tính...</span>
+          <span class="status locked complete-status">Đang tính...</span>
+        </div>
+      </div>
+      <div class="card-body">
+        ${awardBlock("excellent",c.excellent)}
+        ${awardBlock("improve",c.improve)}
+        ${awardBlock("diligence",c.diligence)}
+      </div>
+      <div class="card-footer">
+        <div class="mini-summary">
+          <span>🏆 3 Xuất sắc</span>
+          <span>📈 2 Tiến bộ</span>
+          <span>✅ 1 Chăm chỉ</span>
+          <span class="confirmed-count">Đã xác nhận 0/6</span>
+        </div>
+        <div class="footer-actions">
+          <span class="link">Xem bảng xếp hạng lớp →</span>
+          <button class="class-complete-btn">Hoàn thành lớp</button>
+        </div>
+      </div>
+    </article>
+  `).join("");
+
+  bindCheckboxEvents();
+  bindCompleteEvents();
+  document.querySelectorAll('.class-card').forEach(card=>{
+    updateClassCard(card);
+    applyCompletedState(card);
+  });
+  updateSummary();
+}
+
+function bindCheckboxEvents(){
+  document.querySelectorAll('.confirm-checkbox').forEach(cb=>{
+    cb.addEventListener('change', ()=>{
+      const slot = cb.closest('.slot');
+      const badge = slot.querySelector('.state-badge');
+      slot.classList.toggle('confirmed', cb.checked);
+      badge.className = 'state-badge ' + (cb.checked ? 'confirmed' : 'pending');
+      badge.textContent = cb.checked ? 'Đã xác nhận' : 'Chờ duyệt';
+      updateClassCard(cb.closest('.class-card'));
+      updateSummary();
+    });
+  });
+}
+
+function bindCompleteEvents(){
+  document.querySelectorAll('.class-complete-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const card = btn.closest('.class-card');
+      const isCompleted = card.dataset.completed === 'true';
+
+      if(!isCompleted){
+        const total = card.querySelectorAll('.confirm-checkbox').length;
+        const confirmed = card.querySelectorAll('.confirm-checkbox:checked').length;
+        if(confirmed < total){
+          const ok = confirm(`Lớp này mới xác nhận ${confirmed}/${total} slot. Bạn vẫn muốn hoàn thành lớp này chứ?`);
+          if(!ok) return;
+        }
+        card.dataset.completed = 'true';
+      }else{
+        card.dataset.completed = 'false';
+      }
+
+      applyCompletedState(card);
+      updateSummary();
+    });
+  });
+}
+
+function updateClassCard(card){
+  const total = card.querySelectorAll('.confirm-checkbox').length;
+  const confirmed = card.querySelectorAll('.confirm-checkbox:checked').length;
+  const statusEl = card.querySelector('.approval-status');
+  const footerCount = card.querySelector('.confirmed-count');
+  footerCount.textContent = `Đã xác nhận ${confirmed}/${total}`;
+
+  if(confirmed === 0){
+    statusEl.className = 'status approval-status none';
+    statusEl.textContent = 'Chưa xác nhận';
+  }else if(confirmed < total){
+    statusEl.className = 'status approval-status partial';
+    statusEl.textContent = `Đã duyệt ${confirmed}/${total}`;
+  }else{
+    statusEl.className = 'status approval-status';
+    statusEl.textContent = 'Đã duyệt đủ 6/6';
+  }
+}
+
+function applyCompletedState(card){
+  const completed = card.dataset.completed === 'true';
+  const btn = card.querySelector('.class-complete-btn');
+  const status = card.querySelector('.complete-status');
+  const inputs = card.querySelectorAll('.person-select, .confirm-checkbox');
+  const slots = card.querySelectorAll('.slot');
+
+  card.classList.toggle('completed', completed);
+  slots.forEach(slot=>slot.classList.toggle('locked', completed));
+
+  inputs.forEach(el=>el.disabled = completed);
+
+  if(completed){
+    btn.textContent = 'Mở lại lớp';
+    btn.classList.add('secondary');
+    status.textContent = 'Đã hoàn thành';
+    status.className = 'status complete-status';
+    status.style.background = 'var(--success-soft)';
+    status.style.color = 'var(--success)';
+  }else{
+    btn.textContent = 'Hoàn thành lớp';
+    btn.classList.remove('secondary');
+    status.textContent = 'Chưa hoàn thành';
+    status.className = 'status complete-status locked';
+    status.style.background = 'var(--slate-soft)';
+    status.style.color = 'var(--slate)';
+  }
+}
+
+function updateSummary(){
+  const cards = [...document.querySelectorAll('.class-card')];
+  const totalClasses = cards.length;
+  const totalSlots = document.querySelectorAll('.confirm-checkbox').length;
+  const confirmedSlots = document.querySelectorAll('.confirm-checkbox:checked').length;
+  const pendingSlots = totalSlots - confirmedSlots;
+  const approvedClasses = cards.filter(card=>{
+    const total = card.querySelectorAll('.confirm-checkbox').length;
+    const confirmed = card.querySelectorAll('.confirm-checkbox:checked').length;
+    return total === confirmed;
+  }).length;
+  const completedClasses = cards.filter(card=>card.dataset.completed === 'true').length;
+
+  document.getElementById('sumClasses').textContent = totalClasses;
+  document.getElementById('sumApproved').textContent = `${approvedClasses} / ${totalClasses}`;
+  document.getElementById('sumConfirmed').textContent = confirmedSlots;
+  document.getElementById('sumPending').textContent = pendingSlots;
+  document.getElementById('sumCompleted').textContent = completedClasses;
+
+  document.getElementById('progressApproved').style.width = (approvedClasses/totalClasses*100) + '%';
+  document.getElementById('progressConfirmed').style.width = (confirmedSlots/totalSlots*100) + '%';
+  document.getElementById('progressPending').style.width = (pendingSlots/totalSlots*100) + '%';
+  document.getElementById('progressCompleted').style.width = (completedClasses/totalClasses*100) + '%';
+}
+
+render();
+</script>
+</body>
+</html>

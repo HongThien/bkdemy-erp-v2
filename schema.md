@@ -2,14 +2,14 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-> ## ⚠️ ĐIỂM MÙ ĐỌC DỮ LIỆU — `4` BẢNG
-> Role `claude_build` **không sở hữu** và **không có `bypassrls`** với: `hinh_giao_trinh` · `hinh_gt_bai` · `hinh_gt_buoi` · `qlht_smoke_test`
+> ## ⚠️ ĐIỂM MÙ ĐỌC DỮ LIỆU — `6` BẢNG
+> Role `claude_build` **không sở hữu** và **không có `bypassrls`** với: `giai_thuong` · `giai_thuong_lop_thang` · `hinh_giao_trinh` · `hinh_gt_bai` · `hinh_gt_buoi` · `qlht_smoke_test`
 > Các bảng này bật RLS với policy `to authenticated`, nên `SELECT` từ script/CLI trả **0 dòng,
 > im lặng, không lỗi**. ⚠ **"0 dòng" ở đây KHÔNG phải bằng chứng bảng rỗng** — muốn biết số thật
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-148 bảng · 0 view · 0 enum · 14 trigger · 63 function
+150 bảng · 0 view · 0 enum · 15 trigger · 64 function
 
 ## _app_secrets
 
@@ -700,6 +700,29 @@
 | hinh_baitoan_id | uuid | Y |  | FK→hinh_baitoan.id |  |
 | hinh_bien_the_id | uuid | Y |  | FK→hinh_baitoan_bien_the.id |  |
 | hinh_nhan | text | Y |  |  |  |
+
+## giai_thuong
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| thang | date |  |  |  |  |
+| lop_id | uuid |  |  | FK→lop.id |  |
+| mon | text |  |  |  |  |
+| hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |  |
+| loai_giai | text |  |  |  | `xuat_sac` · `tien_bo` · `cham_chi` |
+| duyet_boi | uuid |  |  | FK→nhan_su.id |  |
+| duyet_at | timestamp with time zone |  | now() |  |  |
+| cong_bo_at | timestamp with time zone | Y |  |  |  |
+
+## giai_thuong_lop_thang
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| lop_id | uuid |  |  | PK FK→lop.id |  |
+| thang | date |  |  | PK |  |
+| hoan_thanh_at | timestamp with time zone | Y |  |  |  |
+| hoan_thanh_boi | uuid | Y |  | FK→nhan_su.id |  |
 
 ## hgt_ban_do
 
@@ -2036,6 +2059,7 @@
 | bao_loi | trg_log_bao_loi | BEFORE | UPDATE | log_bao_loi |
 | ca_test | trg_log_ca_test | AFTER | INSERT/UPDATE | log_ca_test |
 | dai_cau_hoi | trg_log_kho_cau_dai | AFTER | DELETE/UPDATE | log_kho_cau |
+| giai_thuong | trg_giai_thuong_check_slot | BEFORE | INSERT | giai_thuong_check_slot |
 | hgt_cau_hoi | trg_log_kho_cau_hgt | AFTER | DELETE/UPDATE | log_kho_cau |
 | hinh_baitoan | hinh_baitoan_gen_ma_trg | BEFORE | INSERT | hinh_baitoan_gen_ma |
 | hoa_don | trg_log_hoa_don | AFTER | INSERT/UPDATE | log_hoa_don |
@@ -2065,6 +2089,7 @@
 - `dai_dang_tien_de_bao_dong(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `et_de(p_bai_test uuid)` → jsonb
 - `et_nop(p_bai_lam uuid)` → jsonb
+- `giai_thuong_check_slot()` → trigger
 - `giaoviec_auto_dong_task_me()` → trigger
 - `giaoviec_housekeeping()` → void
 - `han_nop_bai_test(p_lop uuid, p_ngay date, p_loai text)` → timestamp with time zone
