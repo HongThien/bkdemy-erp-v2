@@ -6,7 +6,6 @@
 // Hằng số/công thức: giaoviec-config.ts (§4.8). UI KHÔNG gọi supabase trực tiếp.
 // ============================================================================
 import { supabase } from './supabase'
-import { getMyScope } from './nhansu'
 import {
   GV, tinhTienDo, tinhChatLuong, gopPhanTram,
   todayVN, kyTuanHienTai, thangCuaKyTuan, soNgayLech,
@@ -135,19 +134,21 @@ export function ideaQuaHanTriage(created_at: string): boolean {
 }
 
 // ════════════════════════════════════════════════════════════════════════════
-// 3) AI GIAO ĐƯỢC CHO AI — reuse span-of-control (getMyScope), §5
+// 3) AI GIAO ĐƯỢC CHO AI — toàn bộ nhân sự đang làm, org-wide (§5, chốt 08-13)
 // ════════════════════════════════════════════════════════════════════════════
 export type NguoiDuocGiao = { nhan_su_id: string; ho_ten: string; ma_ns?: string }
+// Ai giao được cho ai (§0 spec: data ORG-WIDE, phi-học-tập — KHÔNG chia theo môn/team).
+// Trước đây lọc qua span-of-control (getMyScope, dựng cho task-scope VẬN HÀNH theo lớp/môn)
+// → GV môn không đứng dưới ai trong cây đó (vd Phạm Ngọc — KHTN) bị lọt khỏi danh sách dù việc
+// phát triển không hề phân theo môn. CEO chốt 08-13: bỏ lọc, cho chọn TOÀN BỘ nhân sự đang làm.
 export async function listNguoiDuocGiao(): Promise<NguoiDuocGiao[]> {
-  const scope = await getMyScope()
-  if (!scope) return []
-  const seen = new Map<string, NguoiDuocGiao>()
-  // Tự nhận việc = tự-giao cho mình (§5).
-  seen.set(scope.nhanSu.id, { nhan_su_id: scope.nhanSu.id, ho_ten: scope.nhanSu.ho_ten + ' (tôi)', ma_ns: (scope.nhanSu as any).ma_ns })
-  for (const r of [...scope.giamSatTrucTiep, ...scope.giamSatSau]) {
-    if (!seen.has(r.nhan_su_id)) seen.set(r.nhan_su_id, { nhan_su_id: r.nhan_su_id, ho_ten: r.ho_ten, ma_ns: r.ma_ns })
-  }
-  return [...seen.values()]
+  const me = await myNhanSuId()
+  const { data, error } = await supabase.from('nhan_su').select('id, ho_ten, ma_ns').eq('trang_thai', 'dang_lam').order('ho_ten').limit(LIMIT)
+  if (error) throw error
+  return ((data ?? []) as any[]).map((n) => ({
+    nhan_su_id: n.id, ma_ns: n.ma_ns,
+    ho_ten: n.id === me ? `${n.ho_ten} (tôi)` : n.ho_ten,
+  }))
 }
 
 // ════════════════════════════════════════════════════════════════════════════
