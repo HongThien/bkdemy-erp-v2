@@ -414,6 +414,13 @@ export function BuoiPickEditor({ L, picks, cheDo, soDong, onChangePicks, onChang
   filterKey?: string
 }) {
   const maCap = useMemo(() => api.maPhanCapMap(L), [L])
+  // ⭐ 23/08 (Thùy: "phần Hình cũng cần có lý thuyết như bên Đại lúc làm giáo trình") — lý thuyết mô hình
+  // đã TỰ ĐỘNG in kèm ở phiếu Trên lớp từ 08-10 (banInTheoMoHinh), nhưng lúc SOẠN không thấy/không biết
+  // mô hình nào có/thiếu — phải đợi bấm In mới rõ. Nạp 1 LẦN, gắn badge "có/chưa có lý thuyết" cạnh mỗi
+  // bài (chỉ phan='lop' — khớp đúng điều kiện banInTheoMoHinh áp dụng lý thuyết). Chỉ HIỂN THỊ trạng
+  // thái, chưa cho tắt/bật hay sửa tại đây (Thùy chọn đúng phạm vi này, không mở rộng thêm).
+  const [lyThuyetMap, setLyThuyetMap] = useState<Record<string, { noi_dung: string }>>({})
+  useEffect(() => { if (phans.includes('lop')) api.hinhMoHinhLyThuyet.list().then(setLyThuyetMap).catch(() => {}) }, [phans.includes('lop')]) // eslint-disable-line
   // Lọc mô hình chỉ để TÌM node dễ hơn (KHÔNG phải nội dung buổi — picks đã lưu DB riêng) — KHÔNG đụng
   // picks đã có: 1 buổi có thể trộn node từ NHIỀU mô hình khác nhau, đổi bộ lọc không được xoá nội dung
   // đã chọn.
@@ -576,7 +583,7 @@ export function BuoiPickEditor({ L, picks, cheDo, soDong, onChangePicks, onChang
         {!nodes.length
           ? <Empty icon="◇">Kho khối này chưa có node nào. Tạo node ở <b>Sơ đồ</b> trước.</Empty>
           : components.map((comp) => (
-              <ChuoiRow key={comp.map((b) => b.id).join(',')} L={L} chuoi={comp} picks={picks} cheDo={cheDo} soDong={soDong} phans={phans}
+              <ChuoiRow key={comp.map((b) => b.id).join(',')} L={L} chuoi={comp} picks={picks} cheDo={cheDo} soDong={soDong} phans={phans} lyThuyetMap={lyThuyetMap}
                 onAdd={addPick} onUpdate={updatePick} onRemove={removePick} onSwap={swapPicks} onXoayCheDo={xoayCheDo} onSetSoDongChuoi={setSoDongChuoi}
                 onGoiY={(phan, n) => goiY(comp, phan, n)} onXem={(list, index) => setXem({ list, index })} />
             ))}
@@ -798,15 +805,22 @@ export async function goiYMaDeChoBai(chuoi: BaiToan[], gocBan: Ban, n: number): 
 // đã bỏ 17/08). Số dòng chỉnh 1 LẦN CHO CẢ CHUỖI (áp hết mọi bài Về nhà đang có của chuỗi này), KHÔNG theo
 // từng ý riêng — khuôn `ApplyLinesAll` Đại (gõ số → Enter/blur ghi đè hết, vẫn thêm bài mới sau đó bình
 // thường với số dòng vừa áp làm giá trị chung).
-function ChuoiRow({ L, chuoi, picks, cheDo, soDong, phans, onAdd, onUpdate, onRemove, onSwap, onXoayCheDo, onSetSoDongChuoi, onGoiY, onXem }: {
+function ChuoiRow({ L, chuoi, picks, cheDo, soDong, phans, lyThuyetMap, onAdd, onUpdate, onRemove, onSwap, onXoayCheDo, onSetSoDongChuoi, onGoiY, onXem }: {
   L: Luoi; chuoi: BaiToan[]; picks: PickItem[]; cheDo: Record<string, CheDoHinh>; soDong: Record<string, number>
   phans: ('lop' | 'nha' | 'et' | 'mt')[]
+  lyThuyetMap?: Record<string, { noi_dung: string }>
   onAdd: (p: PickItem) => void; onUpdate: (key: string, p: PickItem) => void; onRemove: (key: string) => void
   onSwap: (keyA: string, keyB: string) => void
   onXoayCheDo: (key: string) => void; onSetSoDongChuoi: (keys: string[], n: number) => void
   onGoiY: (phan: 'lop' | 'nha' | 'et' | 'mt', n: number) => void
   onXem: (list: PickItem[], index: number) => void
 }) {
+  // ⭐ 23/08 — mô hình XA NHẤT của pick (khớp cách banInTheoMoHinh/mucGhep chọn mô hình để gắn lý thuyết)
+  // → tra lyThuyetMap. Chỉ badge cho phan='lop' (đúng đk banInTheoMoHinh áp lý thuyết).
+  const moHinhCuaPick = (p: PickItem): string | null => {
+    const nodes = p.nodeIds.map((id) => L.baiToan.find((b) => b.id === id)).filter((b): b is BaiToan => !!b)
+    return (xaNhatTrongChuoi(nodes) ?? nodes[0])?.mo_hinh_id ?? null
+  }
   const chuoiIds = useMemo(() => new Set(chuoi.map((b) => b.id)), [chuoi])
   const [open, setOpen] = useState<{ phan: 'lop' | 'nha' | 'et' | 'mt'; editKey?: string } | null>(null)
   const [nInput, setNInput] = useState<Record<string, number>>({ lop: 2, nha: 2, et: 2, mt: 2 })
@@ -863,6 +877,18 @@ function ChuoiRow({ L, chuoi, picks, cheDo, soDong, phans, onAdd, onUpdate, onRe
                         <span className="shrink-0 rounded bg-slate-100 px-1.5 text-[10px] font-medium text-slate-600">{nhanBan(p)}</span>
                         <span className="min-w-0 flex-1 truncate text-slate-700">{p.nodeIds.map((id) => L.baiToan.find((b) => b.id === id)?.ma).filter(Boolean).join(' · ')}</span>
                         {dupKeys.has(p.key) && <span className="shrink-0 rounded bg-rose-100 px-1.5 text-[10px] font-semibold text-rose-600" title="Trùng bản + trùng bài với 1 dòng khác trong buổi — lúc in/xem chỉ giữ dòng XUẤT HIỆN TRƯỚC, dòng này sẽ KHÔNG in ra. Bấm ✕ bỏ hoặc ✎ đổi sang bài khác.">⚠ trùng</span>}
+                        {/* ⭐ 23/08 — chỉ 'lop' được banInTheoMoHinh gắn lý thuyết lúc in; badge PHẢN ÁNH ĐÚNG
+                            đk đó, không hiện lạc ở 'nha'/'et'/'mt' (nơi lý thuyết không bao giờ in ra). */}
+                        {phan === 'lop' && lyThuyetMap && (() => {
+                          const mid = moHinhCuaPick(p)
+                          const co = !!mid && !!lyThuyetMap[mid]?.noi_dung?.trim()
+                          return (
+                            <span className={`shrink-0 rounded px-1.5 text-[10px] font-medium ${co ? 'bg-sky-50 text-sky-600' : 'bg-slate-50 text-slate-400'}`}
+                              title={co ? 'Mô hình này có lý thuyết — tự in kèm ở phiếu Trên lớp' : 'Mô hình này CHƯA có lý thuyết — phiếu Trên lớp sẽ không có khung lý thuyết'}>
+                              {co ? '📖 có lý thuyết' : '📖 chưa có lý thuyết'}
+                            </span>
+                          )
+                        })()}
                         {(phan === 'nha' || phan === 'et') && <span className="shrink-0 text-[10px] text-slate-400">{soDong[p.key] ?? DONG_BTVN} dòng</span>}
                         <button onClick={() => onXoayCheDo(p.key)} title={cd.goi}
                           className={`shrink-0 rounded px-1 text-[11px] ${cd.ma === 'hien' ? 'text-slate-400 hover:text-slate-700' : cd.ma === 'o_trong' ? 'text-amber-600' : 'text-rose-500'}`}>{cd.icon}</button>
