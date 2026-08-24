@@ -624,9 +624,24 @@ export async function banInTheoMoHinh(tieuDe: string, phan: 'lop' | 'nha' | 'et'
       const map = await api.hinhMoHinhLyThuyet.list()
       moHinhLyThuyet = {}
       for (const id of moHinhIds) {
-        const noiDung = map[id]?.noi_dung?.trim()
-        if (!noiDung) continue
-        const ten = L.moHinh.find((m) => m.id === id)?.ten ?? ''
+        // ⭐ 24/08 (Thùy: "lúc làm tài liệu không thấy lý thuyết hiện" — soạn lý thuyết ở mô hình CHA
+        // dùng chung cho cả họ, vd "Hình thang", nhưng bài toán CHỌN lại thuộc mô hình CON, vd "Hình
+        // thang cân" — tra ĐÚNG id con không ra gì. Khuôn Đại (lý thuyết chuyên đề dùng chung mọi dạng
+        // con): leo lên CHA ĐẦU TIÊN (api.chaCua[0] — cùng quy ước "bố" khi kế thừa giả thiết) tới khi
+        // gặp mô hình có lý thuyết hoặc hết tổ tiên. Con có lý thuyết RIÊNG thì ưu tiên con (vòng lặp
+        // dừng ngay ở id gốc, không leo lên khi đã có).
+        let cur: string | null = id
+        const seen = new Set<string>()
+        let noiDung: string | undefined
+        let tuId: string | null = null
+        while (cur && !seen.has(cur)) {
+          seen.add(cur)
+          const nd = map[cur]?.noi_dung?.trim()
+          if (nd) { noiDung = nd; tuId = cur; break }
+          cur = api.chaCua(L, cur)[0] ?? null
+        }
+        if (!noiDung || !tuId) continue
+        const ten = L.moHinh.find((m) => m.id === tuId)?.ten ?? ''
         moHinhLyThuyet[id] = { ten, noiDung }
       }
     }

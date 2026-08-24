@@ -9,7 +9,6 @@
 //   đủ ngay lúc soạn) — nên không có bước "+ BTVN / Ôn tập" riêng.
 // In: bài buổi (chuan/bienthe/y/ghep) → BanIn → HinhPrintView (2 phiếu: Trên lớp / Về nhà).
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import * as api from '../../../lib/kho/api'
 import * as gt from '../../../lib/kho/hinhGiaoTrinh'
 import type { GiaoTrinh, GtBuoi, GtBai, TrichStateHinh, CheDoHinh } from '../../../lib/kho/hinhGiaoTrinh'
 import type { Luoi } from '../../../lib/kho/hinh'
@@ -21,8 +20,8 @@ import { Btn, Empty, Ma, Seg, tron, inpCls } from './hinhUi'
 import { Shell, Field, inp } from '../ui'
 import SearchSelect from '../../../components/SearchSelect'
 import BuoiNgaySelect from '../../../components/BuoiNgaySelect'
-import HinhPrintView, { type BanIn, type MucIn, type HinhPerHS } from './HinhPrintView'
-import { mucGhep, mucGhepLua, mucBienThe, mucY, BuoiPickEditor, banInTheoMoHinh } from './SoanTaiLieu'
+import HinhPrintView, { type BanIn, type HinhPerHS } from './HinhPrintView'
+import { BuoiPickEditor, banInTheoMoHinh } from './SoanTaiLieu'
 
 // Ngày giờ VN (CLAUDE.md §2: không toISOString) — hiển thị "dd/mm/yyyy". Khuôn TaiLieuScreen (Đại).
 function fmtNgay(iso?: string): string {
@@ -30,34 +29,32 @@ function fmtNgay(iso?: string): string {
   return new Date(iso).toLocaleDateString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', day: '2-digit', month: '2-digit', year: 'numeric' })
 }
 
-// ── Resolve bài ĐÃ LƯU của một buổi (master hoặc bản lớp) → BanIn cho 1 phiếu (lop/nha). Dùng CHUNG
-// resolver với builder sống (mucGhep/mucGhepLua/mucBienThe/mucY) — 1 nguồn, hết lệch preview↔bản lưu. ──
+// ── Resolve bài ĐÃ LƯU của một buổi (master hoặc bản lớp) → BanIn cho 1 phiếu (lop/nha).
+// ⭐ 24/08 (Thùy: "lúc làm tài liệu không thấy lý thuyết hiện ở phiếu trên lớp") — bug gốc: hàm này TỰ
+// build mucs qua mucGhep/mucBienThe/mucY thẳng, KHÔNG đi qua banInTheoMoHinh (SoanTaiLieu.tsx) nên
+// KHÔNG BAO GIỜ gắn lý thuyết — dù chính banInTheoMoHinh đã làm đúng việc này từ 08-10, chỉ có ĐƯỜNG
+// NÀY (Kho tài liệu 🖨 In/In nhanh/Copy link + worker gen-link, xem PrintJobPage.tsx) không đi qua nó,
+// nên lý thuyết chỉ hiện khi soạn/xem trước trong SoanTaiLieu chứ không hiện khi in thật. Giờ: build
+// PickItem[]/cheDo/soDong từ GtBai[] (khuôn loadBuoiPicks trong hinhGiaoTrinh.ts) rồi GIAO HẲN cho
+// banInTheoMoHinh — 1 nguồn build mục DUY NHẤT, hết lệch soạn↔in, lý thuyết tự động có ở MỌI đường in.
 export async function resolveBanIn(L: Luoi, tieuBuoi: string, bais: GtBai[], phan: 'lop' | 'nha'): Promise<BanIn> {
   const list = bais.filter((b) => b.phan === phan).sort((a, b) => a.thu_tu - b.thu_tu)
   const [btMap, yMap] = await Promise.all([
     gt.getBienTheByIds(list.filter((b) => b.loai === 'bienthe').map((b) => b.ref_id!).filter(Boolean)),
     gt.getYFull(list.filter((b) => b.loai === 'y').map((b) => b.ref_id!).filter(Boolean)),
   ])
-  const dong = (b: GtBai) => (phan === 'nha' ? (b.so_dong ?? 6) : (b.so_dong ?? 0))   // BTVN mặc định 6; trên lớp không kẻ dòng
-  const seenGhep = new Set<string>()   // khử bài ghép trùng (cùng bản + cùng bộ node)
-  const mucs: MucIn[] = []
+  const picks: PickItem[] = []
+  const cheDo: Record<string, CheDoHinh> = {}
+  const soDong: Record<string, number> = {}
   for (const b of list) {
-    if (b.loai === 'chuan') {
-      const node = L.baiToan.find((x) => x.id === b.ref_id); if (!node) continue
-      mucs.push(mucGhep(L, { key: b.id, phan: b.phan, kind: 'ghep', luaId: null, nodeIds: [node.id] }, (b.hinh_che_do ?? (b.an_de ? 'o_trong' : 'hien')), dong(b)))
-    } else if (b.loai === 'bienthe') {
-      const v = btMap.get(b.ref_id!); if (!v) continue
-      mucs.push(mucBienThe(L, v, (b.hinh_che_do ?? (b.an_de ? 'o_trong' : 'hien')), dong(b)))
-    } else if (b.loai === 'y') {
-      const yb = yMap.get(b.ref_id!); if (!yb) continue
-      mucs.push(mucY(L, yb, (b.hinh_che_do ?? (b.an_de ? 'o_trong' : 'hien')), dong(b)))
-    } else if (b.loai === 'ghep') {
-      const sig = `${b.lua_id ?? 'chuan'}|${[...b.ghep_node_ids].sort().join(',')}`; if (seenGhep.has(sig)) continue; seenGhep.add(sig)
-      if (b.lua_id) { const vs = await api.bienTheCuaLua(b.lua_id); mucs.push(mucGhepLua(L, b.ghep_node_ids, vs, (b.hinh_che_do ?? (b.an_de ? 'o_trong' : 'hien')), dong(b))) }
-      else mucs.push(mucGhep(L, { key: b.id, phan: b.phan, kind: 'ghep', luaId: b.lua_id, nodeIds: b.ghep_node_ids }, (b.hinh_che_do ?? (b.an_de ? 'o_trong' : 'hien')), dong(b)))
-    }
+    cheDo[b.id] = b.hinh_che_do ?? (b.an_de ? 'o_trong' : 'hien')
+    if (b.so_dong != null) soDong[b.id] = b.so_dong
+    if (b.loai === 'chuan' && b.ref_id) picks.push({ key: b.id, phan: b.phan, kind: 'ghep', luaId: null, nodeIds: [b.ref_id] })
+    else if (b.loai === 'bienthe' && b.ref_id) { const v = btMap.get(b.ref_id); if (v) picks.push({ key: b.id, phan: b.phan, kind: 'bienthe', bienTheId: b.ref_id, nodeIds: [v.baitoan_id] }) }
+    else if (b.loai === 'y' && b.ref_id) { const yb = yMap.get(b.ref_id); if (yb?.y.baitoan_id) picks.push({ key: b.id, phan: b.phan, kind: 'y', yId: b.ref_id, nodeIds: [yb.y.baitoan_id] }) }
+    else if (b.loai === 'ghep') picks.push({ key: b.id, phan: b.phan, kind: 'ghep', luaId: b.lua_id, nodeIds: b.ghep_node_ids })
   }
-  return { tieuDe: `${tieuBuoi} — ${phan === 'lop' ? 'Trên lớp' : 'Về nhà (BTVN)'}`, phuDe: `${mucs.length} mục`, mucs }
+  return banInTheoMoHinh(`${tieuBuoi} — ${phan === 'lop' ? 'Trên lớp' : 'Về nhà (BTVN)'}`, phan, picks, L, cheDo, soDong)
 }
 
 // ── Resolve bài ET ĐÃ LƯU của 1 buổi → 3 "mã đề" (BẢN TRỐNG, không theo HS cụ thể) — dùng cho worker
