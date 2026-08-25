@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-155 bảng · 2 view · 0 enum · 15 trigger · 73 function
+155 bảng · 2 view · 0 enum · 15 trigger · 75 function
 
 ## _app_secrets
 
@@ -510,6 +510,9 @@
 | nguon_giai | text |  | 'nguoi'::text |  |  |
 | xoa_at | timestamp with time zone | Y |  |  |  |
 | ma_cum | text | Y |  | FK→dai_cum_bai.ma_cum |  |
+| da_duyet | boolean |  | false |  |  |
+| duyet_boi | uuid | Y |  | FK→nhan_su.id |  |
+| duyet_at | timestamp with time zone | Y |  |  |  |
 
 ## dai_chuyen_de_ly_thuyet
 
@@ -761,6 +764,9 @@
 | created_at | timestamp with time zone |  | now() |  |  |
 | xoa_at | timestamp with time zone | Y |  |  |  |
 | ma_cum | text | Y |  | FK→hgt_cum_bai.ma_cum |  |
+| da_duyet | boolean |  | false |  |  |
+| duyet_boi | uuid | Y |  | FK→nhan_su.id |  |
+| duyet_at | timestamp with time zone | Y |  |  |  |
 
 ## hgt_chuyen_de_ly_thuyet
 
@@ -1364,6 +1370,9 @@
 | created_at | timestamp with time zone |  | now() |  |  |
 | xoa_at | timestamp with time zone | Y |  |  |  |
 | ma_cum | text | Y |  | FK→khtn_cum_bai.ma_cum |  |
+| da_duyet | boolean |  | false |  |  |
+| duyet_boi | uuid | Y |  | FK→nhan_su.id |  |
+| duyet_at | timestamp with time zone | Y |  |  |  |
 
 ## khtn_chuyen_de_ly_thuyet
 
@@ -1687,6 +1696,10 @@
 | nguoi_tao | uuid |  |  | FK→nhan_su.id |  |
 | ghi_chu | text | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
+| trang_thai | text |  | 'cho_vao_kho'::text |  | `cho_vao_kho` · `da_vao_kho` · `huy` |
+| so_luong_thuc | integer | Y |  |  |  |
+| nguoi_xac_nhan | uuid | Y |  | FK→nhan_su.id |  |
+| xac_nhan_luc | timestamp with time zone | Y |  |  |  |
 
 ## qlht_qua_order
 
@@ -2174,8 +2187,9 @@ SELECT q.id AS qua_id,
     COALESCE(n.nhap, 0::bigint) - COALESCE(d.giao, 0::bigint) AS ton
    FROM qlht_qua q
      LEFT JOIN ( SELECT qlht_qua_nhap.qua_id,
-            sum(qlht_qua_nhap.so_luong) AS nhap
+            sum(COALESCE(qlht_qua_nhap.so_luong_thuc, qlht_qua_nhap.so_luong)) AS nhap
            FROM qlht_qua_nhap
+          WHERE qlht_qua_nhap.trang_thai = 'da_vao_kho'::text
           GROUP BY qlht_qua_nhap.qua_id) n ON n.qua_id = q.id
      LEFT JOIN ( SELECT qlht_doi_qua.qua_id,
             sum(qlht_doi_qua.so_luong) AS giao
@@ -2268,11 +2282,13 @@ SELECT q.id AS qua_id,
 - `postgres_fdw_validator(text[], oid)` → void
 - `qlht_dieu_chinh_xu(p_hoc_sinh_id uuid, p_amount integer, p_ly_do text)` → TABLE(so_du_moi integer)
 - `qlht_doi_qua_moi(p_hoc_sinh_id uuid, p_qua_id uuid, p_so_luong integer DEFAULT 1)` → TABLE(doi_qua_id uuid, so_du_moi integer)
+- `qlht_nhap_huy(p_nhap_id uuid, p_ly_do text DEFAULT NULL::text)` → void
+- `qlht_nhap_xac_nhan(p_nhap_id uuid, p_so_luong_thuc integer DEFAULT NULL::integer)` → TABLE(ton_moi integer)
 - `qlht_order_duyet(p_order_id uuid, p_gia_xu integer)` → TABLE(so_du_moi integer)
 - `qlht_order_huy(p_order_id uuid, p_ly_do text)` → void
 - `qlht_order_tao(p_hoc_sinh_id uuid, p_mo_ta text, p_link text DEFAULT NULL::text)` → uuid
 - `qlht_qua_doi_trang_thai(p_qua_id uuid, p_dang_ban boolean)` → void
-- `qlht_qua_nhap_kho(p_qua_id uuid, p_so_luong integer, p_ghi_chu text DEFAULT NULL::text)` → TABLE(ton_moi integer)
+- `qlht_qua_nhap_kho(p_qua_id uuid, p_so_luong integer, p_ghi_chu text DEFAULT NULL::text)` → TABLE(nhap_id uuid, trang_thai_moi text)
 - `qlht_qua_sua(p_qua_id uuid, p_ten text, p_gia_xu integer, p_anh_url text DEFAULT NULL::text, p_mo_ta text DEFAULT NULL::text)` → void
 - `qlht_qua_them(p_ten text, p_gia_xu integer, p_anh_url text DEFAULT NULL::text, p_mo_ta text DEFAULT NULL::text)` → uuid
 - `resolve_bien_the(p_bai_test uuid)` → smallint
