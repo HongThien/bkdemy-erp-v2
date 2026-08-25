@@ -72,6 +72,11 @@ export type CauHoi = {
   parent_ma_cau: string | null
   clone_method: string | null
   ma_cum: string | null         // CỤM BÀI = lớp tương đương (thay được cho nhau ở mã đề). null = CHƯA phân cụm.
+  // ⭐ 20/08 (Thùy: "kho có rất nhiều câu, câu xịn câu không, cần nhãn chất lượng — đã/chưa kiểm duyệt.
+  // Clone xong phải có người check"). Mặc định false — câu MỚI (clone/nhập) luôn vào hàng chờ duyệt.
+  da_duyet: boolean
+  duyet_boi: string | null      // nhan_su.id — ai duyệt (ghi vết, không chỉ 1 cờ boolean trơ)
+  duyet_at: string | null
   created_at?: string
 }
 
@@ -124,6 +129,22 @@ export async function deleteCau(ma_cau: string, tbl = 'dai_cau_hoi'): Promise<vo
   const { error } = await supabase.from(tbl)
     .update({ xoa_at: new Date().toISOString() })
     .eq('ma_cau', ma_cau).is(CHUA_XOA, null)
+  if (error) throw error
+}
+// ⭐ Kiểm duyệt nội dung (Thùy 20/08) — GHI VẾT ai + lúc nào (khuôn duyet_boi/duyet_at đã dùng ở
+// bai_test_report/hoc_phi_xet_duyet…), không chỉ 1 cờ boolean trơ. Bỏ duyệt = về lại "chưa duyệt", KHÔNG
+// giữ lịch sử ai đã từng duyệt (đơn giản hoá — cần audit sâu hơn thì có kho_cau_log/trigger sau).
+export async function duyetCau(ma_cau: string, tbl = 'dai_cau_hoi'): Promise<void> {
+  const { data: u } = await supabase.auth.getUser()
+  const { error } = await supabase.from(tbl)
+    .update({ da_duyet: true, duyet_boi: u.user?.id ?? null, duyet_at: new Date().toISOString() })
+    .eq('ma_cau', ma_cau)
+  if (error) throw error
+}
+export async function boDuyetCau(ma_cau: string, tbl = 'dai_cau_hoi'): Promise<void> {
+  const { error } = await supabase.from(tbl)
+    .update({ da_duyet: false, duyet_boi: null, duyet_at: null })
+    .eq('ma_cau', ma_cau)
   if (error) throw error
 }
 
