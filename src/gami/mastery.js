@@ -25,6 +25,12 @@ export const MASTERY_CONFIG = {
   WEIGHT: { ingame: 2, et: 2, dg: 2, mt: 3, btvn: 1, bt: 1, tu_luyen: 1 }, // nguồn không có trong bảng (hoặc thiếu src) → weight 1
 }
 
+// ⭐ Hình (mô hình) — Thùy chốt 21/08: KP = mô hình (`hinh_baitoan_id`), không phải dạng. Bài Hình
+// dài hơn Đại (ít lần đo/node tự nhiên) → WINDOW 3 thay vì 5; TIN_CAO/TIN_TB scale THEO CÙNG TỈ LỆ
+// (3/2, giữ ~60%/40% của 5/3 bên Đại) để không mọi node Hình mãi "tin thấp" — DAT/CAN_LUYEN/WEIGHT
+// giữ nguyên (chưa có lý do đổi ngưỡng đạt/nguồn riêng cho Hình).
+export const MASTERY_CONFIG_HINH = { ...MASTERY_CONFIG, WINDOW: 3, TIN_CAO: 3, TIN_TB: 2 }
+
 // grade.result / đánh-giá → giá trị đo 0..1.
 export const RESULT_VALUE = { correct: 1, partial: 0.5, wrong: 0 }
 

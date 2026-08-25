@@ -71,14 +71,15 @@ export type BaoCaoPH = {
   nl_band: string | null; nl_diem: number | null; nl_sai_so: number | null
   cs_thai_do: number | null; cs_tap_trung: number | null; cs_tiep_thu: number | null; cs_tu_duy: number | null; cs_ky_nang: number | null; cs_van_dung: number | null; cs_vuot_kho: number | null
   cong_bo_at: string | null // NULL = nháp (PH không thấy); NOT NULL = đã chốt & công bố
+  anh_bao_cao_url: string | null // URL ảnh snapshot chụp lúc chốt (app hiện ở Hồ sơ học tập)
 }
 export const BC_EMPTY: BaoCaoPH = {
   thai_do: null, kien_thuc_ky_nang: null, ket_luan: null, ket_luan_muc: null, muc_tieu: null, muc_kien_thuc: null, muc_thai_do: null,
   nl_band: null, nl_diem: null, nl_sai_so: null,
   cs_thai_do: null, cs_tap_trung: null, cs_tiep_thu: null, cs_tu_duy: null, cs_ky_nang: null, cs_van_dung: null, cs_vuot_kho: null,
-  cong_bo_at: null,
+  cong_bo_at: null, anh_bao_cao_url: null,
 }
-const BC_COLS = 'thai_do, kien_thuc_ky_nang, ket_luan, ket_luan_muc, muc_tieu, muc_kien_thuc, muc_thai_do, nl_band, nl_diem, nl_sai_so, cs_thai_do, cs_tap_trung, cs_tiep_thu, cs_tu_duy, cs_ky_nang, cs_van_dung, cs_vuot_kho, cong_bo_at'
+const BC_COLS = 'thai_do, kien_thuc_ky_nang, ket_luan, ket_luan_muc, muc_tieu, muc_kien_thuc, muc_thai_do, nl_band, nl_diem, nl_sai_so, cs_thai_do, cs_tap_trung, cs_tiep_thu, cs_tu_duy, cs_ky_nang, cs_van_dung, cs_vuot_kho, cong_bo_at, anh_bao_cao_url'
 export async function getBaoCaoPH(hocSinhId: string, mon: string, thang: string): Promise<BaoCaoPH> {
   const { data, error } = await supabase.from('bao_cao_ph').select(BC_COLS)
     .eq('hoc_sinh_id', hocSinhId).eq('mon', mon).eq('thang', thang).maybeSingle()
@@ -100,43 +101,78 @@ export async function upsertBaoCaoPH(hocSinhId: string, mon: string, thang: stri
   if (error) throw error
 }
 
-// Hạng TRONG KHỐI theo ĐIỂM MT TỔNG của đúng tháng report (Thùy 08-19, thay bản Elo trước đó — Elo là
-// thi đấu tích luỹ cả mùa, không phải "của tháng này"). ky_thi.khoi có sẵn (mỗi lớp 1 ky_thi/đợt MT, cùng
-// khối gộp lại) — cửa sổ ngày = 25/tháng→10/tháng sau, ĐÚNG logic getTongQuanHS (MT hay tổ chức cuối/đầu
-// tháng), đọc qua buoi_hoc.ngay vì ky_thi.ngay thực tế luôn NULL cho MT (xem comment ở mastery.ts).
+// Hạng theo ĐIỂM MT TỔNG của đúng tháng report (Thùy 08-19, thay bản Elo trước đó — Elo là thi đấu tích
+// luỹ cả mùa, không phải "của tháng này"). Dùng chung cho cả 2 phạm vi KHỐI và LỚP (Thùy 08-19: thêm
+// hạng-trong-lớp bên cạnh hạng-trong-khối) — logic tính hạng giống hệt, chỉ khác ROSTER (ai là peer).
+// Cửa sổ ngày = 25/tháng→10/tháng sau, ĐÚNG logic getTongQuanHS (MT hay tổ chức cuối/đầu tháng), đọc qua
+// buoi_hoc.ngay vì ky_thi.ngay thực tế luôn NULL cho MT (xem comment ở mastery.ts).
 // ⚠ NGOẠI LỆ CÓ CHỦ ĐÍCH so §5 CLAUDE.md ("chưa-đo ≠ 0"): Thùy 08-19 chốt RIÊNG cho bảng xếp hạng này —
-// HS đang học môn+khối mà CHƯA có điểm MT trong cửa sổ → tính 0đ để rank đủ TOÀN BỘ roster (không loại
-// khỏi mẫu số như mastery bình thường). Chỉ áp cho xếp hạng — không áp cho ô "Điểm MT" hiển thị (vẫn "—").
+// HS đang học mà CHƯA có điểm MT trong cửa sổ → tính 0đ để rank đủ TOÀN BỘ roster (không loại khỏi mẫu
+// số như mastery bình thường). Chỉ áp cho xếp hạng — không áp cho ô "Điểm MT" hiển thị (vẫn "—").
+function mtWindow(ym: string): { from: string; to: string } {
+  const [Y, M] = ym.split('-').map(Number)
+  const nextY = M === 12 ? Y + 1 : Y, nextM = M === 12 ? 1 : M + 1
+  return { from: `${ym}-25`, to: `${nextY}-${String(nextM).padStart(2, '0')}-11` } // < ngày 11 = qua hết mùng 10
+}
+// ⚠ CHỐT (Thùy 08-21, sau 2 lần sửa hụt với Trần Thị Vân Khánh & Phan Bảo Nhi): điểm MT là CỦA EM, ĐI
+// THEO EM — thi ở lớp nào không quan trọng, đề chung nên điểm nào cũng dùng được. Cái ĐỔI theo phạm vi
+// (lớp/hệ/khối) chỉ là ROSTER — ai được đem ra so sánh — KHÔNG PHẢI cách tính điểm của từng em. Vậy: điểm
+// của 1 HS = TRUNG BÌNH mọi diem_thi (mt_sat_hach, đúng môn, đúng cửa sổ tháng) của CHÍNH em, bất kể kỳ
+// thi đó tổ chức ở lớp/hệ nào. (2 bản sửa trước đều SAI vì cố khớp lớp/hệ của kỳ thi với lớp/hệ hiện tại
+// của em — đúng hướng "chống lẫn điểm" nhưng SAI chỗ áp dụng: đúng ra không cần khớp gì cả.)
+async function rankByDiemMT(hocSinhId: string, rosterIds: string[], mon: string, ym: string): Promise<{ rankNow: number; rankTotal: number } | null> {
+  if (!rosterIds.includes(hocSinhId)) return null // HS không thuộc roster (đã rời lớp/môn…) → không có peer để xếp
+  const { from, to } = mtWindow(ym)
+  // ky_thi.ngay thực tế luôn NULL cho MT (xem comment ở mastery.ts) → lấy ngày qua buoi_hoc.ngay.
+  const { data: dt } = await supabase.from('diem_thi')
+    .select('hoc_sinh_id, diem, ky_thi:ky_thi_id!inner(loai, mon, buoi:buoi_hoc_id(ngay))')
+    .in('hoc_sinh_id', rosterIds).eq('ky_thi.loai', 'mt_sat_hach').eq('ky_thi.mon', mon).limit(LIMIT)
+  const sums = new Map<string, { sum: number; n: number }>()
+  for (const r of (dt ?? []) as any[]) {
+    if (r.diem == null) continue
+    const d = r.ky_thi?.buoi?.ngay
+    if (!d || d < from || d >= to) continue
+    const a = sums.get(r.hoc_sinh_id) ?? { sum: 0, n: 0 }; a.sum += Number(r.diem); a.n++; sums.set(r.hoc_sinh_id, a)
+  }
+  const scoreOf = (id: string) => { const s = sums.get(id); return s ? s.sum / s.n : 0 } // chưa có điểm → 0
+  const myAvg = scoreOf(hocSinhId)
+  const allAvg = rosterIds.map(scoreOf)
+  return { rankNow: 1 + allAvg.filter((x) => x > myAvg).length, rankTotal: allAvg.length }
+}
+async function loadRosterIds(lopIds: string[]): Promise<string[]> {
+  if (!lopIds.length) return []
+  const { data: gd } = await supabase.from('hoc_sinh_lop').select('hoc_sinh_id').eq('trang_thai', 'dang_hoc').in('lop_id', lopIds).limit(LIMIT)
+  return [...new Set(((gd ?? []) as any[]).map((r) => r.hoc_sinh_id as string))]
+}
+
 export type KhoiRankMT = { rankNow: number; rankTotal: number; khoi: string }
 export async function getKhoiRankDiemMT(hocSinhId: string, mon: string, ym: string): Promise<KhoiRankMT | null> {
   const { data: hs } = await supabase.from('hoc_sinh').select('khoi').eq('id', hocSinhId).maybeSingle()
   const khoi = (hs as any)?.khoi as string | null
   if (!khoi) return null
-  // Roster = TOÀN BỘ HS đang học ĐÚNG môn+khối này (kể cả chưa có điểm MT) — mẫu số của bảng xếp hạng.
-  const { data: gd } = await supabase.from('hoc_sinh_lop')
-    .select('hoc_sinh_id, lop:lop_id!inner(mon, khoi)').eq('trang_thai', 'dang_hoc').eq('lop.mon', mon).eq('lop.khoi', khoi).limit(LIMIT)
-  const rosterIds = [...new Set(((gd ?? []) as any[]).map((r) => r.hoc_sinh_id as string))]
-  if (!rosterIds.includes(hocSinhId)) return null // HS không đang học đúng môn này ở khối → không có peer để xếp
+  const { data: lops } = await supabase.from('lop').select('id').eq('mon', mon).eq('khoi', khoi).limit(LIMIT)
+  const rosterIds = await loadRosterIds(((lops ?? []) as any[]).map((l) => l.id as string))
+  const r = await rankByDiemMT(hocSinhId, rosterIds, mon, ym)
+  return r ? { ...r, khoi } : null
+}
 
-  const [Y, M] = ym.split('-').map(Number)
-  const nextY = M === 12 ? Y + 1 : Y, nextM = M === 12 ? 1 : M + 1
-  const mtFromDate = `${ym}-25`
-  const mtToDate = `${nextY}-${String(nextM).padStart(2, '0')}-11` // < ngày 11 = qua hết mùng 10
-  const { data: kts } = await supabase.from('ky_thi').select('id, buoi:buoi_hoc_id(ngay)')
-    .eq('loai', 'mt_sat_hach').eq('mon', mon).eq('khoi', khoi).limit(LIMIT)
-  const ktIds = ((kts ?? []) as any[]).filter((k) => { const d = k.buoi?.ngay; return d && d >= mtFromDate && d < mtToDate }).map((k) => k.id)
+export type LopRankMT = { rankNow: number; rankTotal: number }
+export async function getLopRankDiemMT(hocSinhId: string, lopId: string, mon: string, ym: string): Promise<LopRankMT | null> {
+  const rosterIds = await loadRosterIds([lopId])
+  return rankByDiemMT(hocSinhId, rosterIds, mon, ym)
+}
 
-  const sums = new Map<string, { sum: number; n: number }>()
-  if (ktIds.length) {
-    const { data: dt } = await supabase.from('diem_thi').select('hoc_sinh_id, diem').in('ky_thi_id', ktIds).limit(LIMIT)
-    for (const r of (dt ?? []) as any[]) {
-      if (r.diem == null) continue
-      const a = sums.get(r.hoc_sinh_id) ?? { sum: 0, n: 0 }; a.sum += Number(r.diem); a.n++; sums.set(r.hoc_sinh_id, a)
-    }
-  }
-  const scoreOf = (id: string) => { const s = sums.get(id); return s ? s.sum / s.n : 0 } // chưa có điểm → 0
-  const myAvg = scoreOf(hocSinhId)
-  const allAvg = rosterIds.map(scoreOf)
-  const rankNow = 1 + allAvg.filter((x) => x > myAvg).length
-  return { rankNow, rankTotal: allAvg.length, khoi }
+// Hạng TRONG HỆ (lop.bac — band S/A/B/C… GV chọn khi xếp lớp, vd "lớp 7A1" → hệ "A") — 3 hạng lớp/hệ/khối
+// là 3 phạm vi LỒNG NHAU tăng dần (lớp ⊂ hệ ⊂ khối) — chỉ khác ROSTER, cách tính điểm từng em GIỐNG HỆT.
+export type HeRankMT = { rankNow: number; rankTotal: number; he: string; khoi: string }
+export async function getHeRankDiemMT(hocSinhId: string, mon: string, ym: string): Promise<HeRankMT | null> {
+  const { data: lopHS } = await supabase.from('hoc_sinh_lop')
+    .select('lop:lop_id!inner(khoi, bac, mon)').eq('hoc_sinh_id', hocSinhId).eq('trang_thai', 'dang_hoc').eq('lop.mon', mon).maybeSingle()
+  const khoi = (lopHS as any)?.lop?.khoi as string | null
+  const he = (lopHS as any)?.lop?.bac as string | null
+  if (!khoi || !he) return null
+  const { data: lops } = await supabase.from('lop').select('id').eq('mon', mon).eq('khoi', khoi).eq('bac', he).limit(LIMIT)
+  const rosterIds = await loadRosterIds(((lops ?? []) as any[]).map((l) => l.id as string))
+  const r = await rankByDiemMT(hocSinhId, rosterIds, mon, ym)
+  return r ? { ...r, he, khoi } : null
 }

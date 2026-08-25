@@ -6113,3 +6113,947 @@ của BT.08.047 (Về nhà, 2 bài) → panel "1/2" → bấm ↓ → "2/2", đ�
 thay vì A=3C) — nav hoạt động đúng. KHÔNG bắt được ca "⚠ trùng" thật trong Buổi 2/Giáo trình 8A hiện tại
 (không có pick trùng chữ ký ở đây) — logic đã đối chiếu kỹ đúng thuật toán `dedupePicks`, để tự lộ khi
 gặp buổi thật có trùng.
+
+## 2026-08-21 — App HS: redesign UI giống app PH · Thông tin học tập thật · Bảng xếp hạng 5T
+
+CEO chốt 3 việc cùng lúc: (1) "UI xấu quá. Làm UI giống như app phụ huynh đi", (2) "Thông tin học
+tập hiện các dạng bài mà nó yếu (giống app phụ huynh)", (3) "Thêm 1 tính năng về bảng xếp hạng, xếp
+hạng các bạn 5T về Thành tích làm bài tập tự luyện ở nhà".
+
+**① Redesign — port ĐÚNG token màu app PH, không đoán.** App PH thật là repo riêng
+`bkdemy-ph-app` (Next.js, KHÔNG nằm trong bkdemy-erp-v2 — xem [[ph-app-parent-portal]]). Đọc thẳng
+`bkdemy-ph-app/app/globals.css` lấy ĐÚNG bảng màu `:root` (brand #1077be xanh dương logo BK, ios-bg
+#f2f2f7, label #1c1c1e/#8a8a8e, green/orange/red trạng thái, ink #4a4a4e cho khối "báo cáo trang
+trọng"). Port sang Tailwind v4 `@theme` trong `src/index.css` (`--color-brand`, `--color-ios`,
+`--color-ph-label`, `--color-ph-green/orange/red/ink`…) → dùng dạng utility class (`bg-brand`,
+`text-ph-label-2`…) thay vì lặp hex khắp `HocSinhApp.tsx` — KHÔNG viết CSS file riêng port nguyên
+class PH (`.scard`/`.row`…) để tránh trùng tên với class Tailwind sẵn có (`.group` là marker
+`group-hover` của Tailwind — port nguyên class PH sẽ đè vỡ mọi chỗ khác dùng `group-hover`).
+Áp toàn bộ `HocSinhApp.tsx`: bỏ border card → shadow-sm (đúng phong cách PH card không viền), nền
+`bg-slate-50` → `bg-ios`, mọi accent `indigo-*` → `brand`, đúng/sai/cảnh báo `emerald/amber/rose` →
+`ph-green/ph-orange/ph-red`, avatar đổi từ nền phẳng sang gradient brand→brand-2 (giống `.avatar` PH).
+ET (chế độ THI) đổi từ tím `violet` sang tông `ph-ink` (giống PH dùng gradient ink cho "báo cáo cả
+lớp trang trọng" — hợp ngữ cảnh bài thi hơn màu tím tùy tiện cũ).
+
+**② Thông tin học tập — CÓ THẬT, không còn "Sắp có".** `tuluyen.ts::layDangHocTap(mon)` — gọi lại
+ĐÚNG `hs_dang_evals` (đã có sẵn cho Tự luyện) rồi chạy `masteryOfDang` (pure, KHÔNG bịa công thức
+mới) theo dạng, trả về danh sách dạng + đếm đạt/cần luyện/yếu. Migration `202608211041` mở rộng
+`hs_dang_evals` (CREATE OR REPLACE — file gốc 202608201111 đã áp, không sửa trực tiếp) thêm
+`ten_dang`/`ten_chuyen_de`/`muc_do` từ đúng bảng `dai_ban_do`/tương đương ĐÃ join sẵn trong RPC (không
+cần round-trip tra tên riêng). Nhân tiện sửa 1 lỗ hổng nhất quán: nhánh `bai_lam_cau` của RPC trước
+đó gộp `tu_luyen` LẪN vào `src='btvn'` (giống lỗi đã sửa bên `mastery.ts` hôm 20/08) — giờ tách riêng
+`src='tu_luyen'` cho ĐÚNG, dù về mặt SỐ (weight=1 cả hai) không đổi kết quả — chỉ là data-hygiene.
+Màn hiện: card "Tỉ lệ thành thạo kiến thức" (%+đếm 3 mức, giống card PH "Kết quả") + list "Dạng cần
+chú ý" (chỉ hiện yếu/cần luyện — ẨN đạt, ≤10 dạng ưu tiên yếu nhất, ĐÚNG hành vi PH app).
+
+**③ Bảng xếp hạng — riêng khối 5T, chỉ số = số câu ĐÚNG tự luyện cộng dồn.** Quyết định chỉ số: CEO
+nói "thành tích làm bài tập tự luyện ở nhà" không kèm công thức cụ thể — chọn **số câu ĐÚNG cộng
+dồn (all-time)** vì (a) đơn giản nhất để hiểu với HS tiểu học, (b) không cần chuẩn hoá theo số lần
+làm (như "%đúng") — vốn dễ bị lợi dụng bằng cách làm ít câu dễ ăn 100%, (c) tính năng Tự luyện mới
+ra hôm nay nên "all-time" = "từ đầu mùa" hiện tại, chưa cần lọc mùa riêng — sẽ tính lại nếu CEO muốn
+season-scope sau. Migration thêm `hs_khoi_cua_toi()` (khối thô — khác `hs_cap1_cua_toi` trả boolean,
+cần giá trị thô để lọc đúng khối '5T') + `hs_xep_hang_tu_luyen(p_khoi)` (SECURITY DEFINER, đếm
+`verdict='correct'` trong `bai_lam_cau` join `bai_test.loai='tu_luyen'`, gom theo HS). Model bảo mật
+GIỐNG "báo cáo cả lớp" ET đã có sẵn ở app PH (hiện tên+điểm mọi bạn cùng lớp) — không nhạy hơn tính
+năng đã tồn tại. HS chưa làm tự luyện lần nào → KHÔNG có dòng (INNER JOIN tự loại, §1.5 "thiếu data
+= không có dòng" — tránh hiện "0 điểm" gây tủi cho em chưa làm). Ô "Bảng xếp hạng" trên màn chính chỉ
+hiện với khối 5T (`KHU_CHI_5T`, đọc khối qua `khoiCuaHS()`), ẩn với mọi khối khác.
+
+**Verify RPC bằng client HS thật (không admin), có dọn dữ liệu test:**
+- `hs_khoi_cua_toi()` qua HS0602 → `"5"` đúng.
+- `hs_dang_evals` mở rộng → 203 dòng, có kèm `ten_dang`/`ten_chuyen_de`/`muc_do`; src xuất hiện đúng
+  `et`/`btvn` (HS0602 chưa có tu_luyen thật trong data — nhánh `tu_luyen` verify riêng bằng cách dựng
+  1 lần tự luyện giả, xem mục dưới).
+- `hs_xep_hang_tu_luyen('5T')` qua HS0602 (khối 5, KHÔNG phải 5T) → `[]` đúng (chưa ai khối 5T làm
+  tự luyện thật). Dựng end-to-end thật: đăng nhập HS0642 (khối 5T thật), sinh 2 câu tự luyện qua
+  ĐÚNG RPC `tu_luyen_sinh`, chấm ĐÚNG (verdict=correct) qua service (test nhanh, không qua UI click)
+  → gọi lại `hs_xep_hang_tu_luyen('5T')` → thấy `{ma_hs:"HS0642", ho_ten:"Hồ Hà Chi", so_cau_dung:2,
+  la_toi:true}` — đúng cả số lẫn cờ `la_toi`. Dọn sạch toàn bộ (`bai_test`+`bai_test_cau`+`bai_lam`+
+  `bai_lam_cau`) ngay sau test.
+- `npx tsc --noEmit` sạch (1 lỗi kiểu `muc_do`/`tin` — `masteryOfDang` trả `.js` không có kiểu
+  literal chặt, ép kiểu `as DangHocTap['muc'|'tin']` tại điểm dựng object, không đụng công thức).
+
+Verify UI thật trên browser (mobile 375×812) sau khi merge vào `main` — ghi tiếp ở mục dưới nếu cần
+sửa gì sau khi nhìn thấy render thật.
+
+## 2026-08-21 (tiếp) — Sửa lại UI: PORT NHẦM bảng màu chết + header giống PH + xếp hạng mọi khối tiểu học + 5 lần gần nhất
+
+CEO chốt sau khi xem bản trước: "1. Bố cục vẫn xấu quá. Các header làm giống bên app phụ huynh đi
+2. À ko phải chỉ 5T. Hiện cho các khối tiểu học 3. Chỗ thông tin học tập, t muốn cập nhật luôn cái
+đánh giá từng câu giống trên Kết quả học tập ở ERP... Hiện 5 lần gần nhất".
+
+**⚠⚠ ROOT CAUSE của mục ①: port NHẦM stylesheet CHẾT.** Bản trước đọc `bkdemy-ph-app/app/globals.css`
+(`:root`) — nhưng grep xác nhận file này **0 chỗ dùng** trong `PhApp.tsx` thật (comment ngay đầu file
+"port từ mockup đã duyệt" — di sản, chưa xoá). App PH THẬT chạy bằng `ph-v3.css` + `ph-v3-extra.css`
+(`.pv3{...}`, "Design system v3 — springboard + drill-down"), token màu KHÁC HẲN: `--bg:#F3F5FA`
+(không phải #F2F2F7) · `--text:#171A22` · `--muted:#858A96` · `--blue:#087FC6` (không phải #1077BE)
+· bo góc RẤT lớn (card 21-24px, icon "squircle" 13-18px — KHÔNG BAO GIỜ tròn hoàn toàn) · shadow mềm
+`0 8px 24px rgba(28,38,61,.07)` (không phải `shadow-sm` Tailwind mặc định, nhạt hơn nhiều). Dùng
+Explore agent đọc LẠI đúng `ph-v3.css`/`ph-v3-extra.css` + cách `PhApp.tsx` dùng chúng (không đoán
+qua tên class) trước khi sửa — bài học: lần sau đụng "giống app X", luôn xác nhận file CSS đang
+IMPORT THẬT (`grep` component thật dùng class nào), không tin comment/tên file nghe hợp lý nhất.
+
+**① Header + bố cục — port lại ĐÚNG:**
+- `src/index.css` `@theme`: đổi toàn bộ token sang giá trị `ph-v3.css` thật (`--color-brand:#087fc6`,
+  `--color-ios:#f3f5fa`, `--color-ph-label:#171a22`, `--color-ph-label-2:#858a96`, thêm
+  `--color-ph-purple:#7656d8` — bỏ hẳn `ph-ink`/`ph-ink-2` bịa ra ở bản trước, ĐÂU CÓ trong hệ thật).
+- Thêm component `Head` DÙNG CHUNG (ĐÚNG `.pageHead` ph-v3.css:65-67): nút back squircle 40×40 nổi
+  TRÊN NỀN TRANG (không phải thanh trắng riêng như bản trước), title 21px bold, sub 12px xám — áp cho
+  cả 3 sub-màn (Danh sách 1 khu, Thông tin học tập, Bảng xếp hạng).
+- Màn chính: đổi từ 1 thanh header dẹt sang ĐÚNG 2 tầng của PH thật — hàng icon-button (🔑/Thoát) nổi
+  riêng ở trên, rồi `.studentCard` (ph-v3.css:39-41): card trắng bo 24px, avatar SQUIRCLE 56×56 bo
+  18px (KHÔNG tròn — khác bản trước dùng `rounded-full`), tên 19px bold.
+- Lưới ô ĐÚNG `.function` (ph-v3.css:59-62): mỗi ô 1 MÀU RIÊNG (icon squircle nền xanh/tím/cam/xanh lá
+  nhạt theo `MAU_BG`, giống PH có `.blue/.green/.orange/.purple`) — bản trước mọi ô cùng 1 xám phẳng,
+  đơn điệu, đúng là "xấu" như CEO nói.
+- Danh sách 1 khu, Thông tin học tập, Bảng xếp hạng: card bo 21-22px + `SHADOW` (đúng `--shadow` PH),
+  tab chọn "Chưa làm/Hoàn thành" đổi màu chữ active sang `text-brand` (giống `.tabs a.active`).
+
+**② Bảng xếp hạng — mọi khối tiểu học, KHÔNG chỉ 5T:** `KHU_CHI_5T` → `KHU_CHI_CAP1` (điều kiện ẩn/hiện
+đổi từ `khoi !== '5T'` sang `!cap1` — tái dùng ĐÚNG boolean `cap1` đã có). `BangXepHang` tự đọc
+`khoiCuaHS()` của CHÍNH mình rồi gọi `xepHangTuLuyen(khoi)` — KHÔNG hardcode `'5T'` nữa (RPC
+`hs_xep_hang_tu_luyen(p_khoi)` vốn đã tổng quát từ đầu, không cần sửa DB) — mỗi em xếp hạng với ĐÚNG
+khối của mình (khối 3 không lẫn khối 5), sub-title header hiện động `"...các bạn khối {khoi}"`. Card
+xếp hạng đổi sang ĐÚNG `.classTable`/`.row`/`.rank`/`.score` (ph-v3.css:85-90) — bảng xếp hạng lớp có
+sẵn trong PH thật, không phải dựng kiểu mới.
+
+**③ Thông tin học tập — "5 lần gần nhất" giống Kết quả học tập ERP:** Đọc ĐÚNG `Slot`/`DangRow` của
+`KetQuaScreen.tsx` (staff) qua Explore agent trước khi làm — pattern: ✓ đạt (value≥1, xanh) · ◐ nửa
+(value>0, cam) · ✗ sai (value=0, đỏ), MÀU THEO GIÁ TRỊ TỪNG LẦN ĐO (KHÔNG phải theo mức `muc` của cả
+dạng — 2 trục khác nhau), sắp mới→cũ, kèm nhãn nguồn (`SRC_LABEL`) + ngày ngắn dưới mỗi chấm.
+- `tuluyen.ts::layDangHocTap`: mỗi `DangHocTap` thêm `recent: RecentEval[]` — TOP 5 (không phải 10
+  như bản staff — CEO nói rõ "Hiện 5 lần gần nhất") lấy từ CHÍNH mảng evals đã fetch (không round-trip
+  RPC thêm lần nào), sort `Date.parse` mới→cũ, `.slice(0,5)`. Export thêm `SRC_LABEL` (ĐÚNG bảng nhãn
+  `mastery.ts` dùng, không bịa nhãn khác — chỉ bớt `ingame`/`dg` vì `hs_dang_evals` không bao giờ trả
+  2 nguồn đó).
+- `HocSinhApp.tsx`: component `LanDo` (đặt tên khác `Slot` staff cho rõ ngữ cảnh HS, cùng logic hệt),
+  gắn dưới mỗi hàng dạng trong "Dạng cần chú ý" — hàng dạng đổi sang ĐÚNG `.dangList`/`.dangRow`
+  (ph-v3-extra.css:327-338): nền xám phẳng `#F7F8FB`, chấm tròn màu theo mức, tag pill bên phải.
+
+**Verify:** `npx tsc --noEmit` sạch (1 lỗi biến `khoi` không dùng ở scope cha sau khi dời fetch khối
+vào trong `BangXepHang` — xoá state thừa, không phải bug logic). Verify browser thật SAU merge (đúng
+`main`, đọc computed style qua JS thay vì screenshot — pane không render frame trong môi trường này):
+- `studentCard`: `background-color: white`, `border-radius: 24px`, `box-shadow: rgba(28,38,61,.07)
+  0 8px 24px` — khớp CHÍNH XÁC `--shadow` thật. Avatar: `border-radius: 18px` (squircle, không tròn),
+  gradient `rgb(8,127,198)→rgb(18,103,213)` = đúng `#087FC6→#1267D5`.
+- Nền trang: `rgb(243,245,250)` = đúng `#F3F5FA`.
+- HS0602 (khối 5) → "Thông tin học tập": 93% · 25 đạt/4 cần luyện/0 yếu · 4 dạng "Cần chú ý", MỖI dạng
+  có ĐÚNG hàng "5 lần gần nhất" (✓/◐/✗ + nguồn ET/BTVN + ngày dd/mm, thứ tự mới→cũ) — đúng yêu cầu ③.
+- HS0602 (khối 5) → "Bảng xếp hạng": sub-title hiện ĐÚNG "...các bạn khối 5" (không còn hardcode
+  '5T') → đúng yêu cầu ②, trạng thái rỗng đúng thật (chưa ai khối 5 làm tự luyện).
+- Đăng xuất sạch sau verify, không để lại session dở trên tab dùng chung.
+
+## 2026-08-21 — Đánh giá (mastery) Hình học: nối giáo trình Hình → ET/BTVN, engine mô hình
+
+**Yêu cầu (Thùy, chốt qua sparring):**
+"Đại/Giải tích đánh giá qua dạng, Hình không có dạng — Hình đánh giá qua Mô hình. Mỗi mô hình đo qua
+bài trực tiếp thuộc nó, KHÔNG tính mô hình con. Vẫn cùng logic Đại (ET/BTVN/MT). Kiến trúc phải giống
+khung Đại — Đại hoàn chỉnh rồi, Hình chỉ khác khái niệm riêng (mô hình/tiền đề/chuỗi), luồng gốc giống
+nhau. Chấm theo TỪNG NODE (không gộp chuỗi). Cần nhãn đối chiếu phiếu giấy: "Bài 5 ý c" → "5C", hơn 2 ý
+mới có chữ. WINDOW đo giảm 3 (Đại 5, vì bài Hình dài hơn) — TIN_CAO/TIN_TB scale theo (3/2)."
+
+**Phát hiện quan trọng lúc research (agent Explore, trước khi code):** Hình (mô hình, `SoDo.tsx`/
+`SoanTaiLieu.tsx`) hiện KHÔNG có bất kỳ đường chấm điểm nào — builder giáo trình 100% chỉ để in PDF,
+0 chỗ chạm `gami_session_problems`/`hoc_sinh_id`. Hook cũ (`hinh_y_id`+`ngu_canh_luot`, mig 07-24) chỉ
+phủ 1/3 loại pick và 0 UI gọi. "Hình giải tích" (`nhanh='hinh_gt'`) là hệ KHÁC (dạng-based, đã wire ET/
+BTVN như Đại) — không liên quan việc này, dễ nhầm vì cùng chữ "Hình".
+
+**Làm:**
+- **Migration `202608211127_gami_hinh_mo_hinh_hook.sql`**: `gami_session_problems` thêm `hinh_baitoan_id`
+  (FK, khoá tự nhiên mastery), `hinh_bien_the_id` (FK, biết đúng đề biến thể đã ra — mastery vẫn gộp về
+  node gốc qua `hinh_baitoan_id`), `hinh_nhan` (text, snapshot nhãn "5C" lúc sync). KHÔNG đụng/xoá
+  `hinh_y_id`/`ngu_canh_luot` cũ (Luật xoá — chỉ thêm).
+- **`src/lib/kho/hinhGiaoTrinh.ts`**: `flattenGtBaiToDapAn(L, bais)` — làm phẳng pick giáo trình (ghep/
+  bienthe/y) → 1 dòng/NODE, TÁI DÙNG đúng `noDapAn`/khung mà `mucGhep` dùng để in (1 nguồn sự thật, nhãn
+  chữ a/b/c... khớp 1-1 "a) b) c)" trên phiếu). `loadHinhForBuoi(buoiId, phan)` — tra `hinh_gt_buoi` qua
+  (lop_id,ngay) của buổi (không FK buổi, giống ET/BTVN Đại).
+- **`src/lib/gami.ts`**: `syncHinhProblems()` — bản sao `syncDocProblems` (Đại) NHƯNG khoá tự nhiên là
+  NODE (`hinh_baitoan_id`[+`hinh_bien_the_id`/`hinh_y_id`]) thay vì `ma_cau`. ⚠ **Fix domain-partition**:
+  Đại+Hình CHIA SẺ bảng `gami_session_problems`+cột `problem_no` cho cùng (buổi,phase) — sửa cả
+  `syncDocProblems` LẪN `syncHinhProblems` để mỗi hàm CHỈ diff/xoá phần CỦA MÌNH (lọc theo có/không
+  `hinh_baitoan_id`) nhưng CẤP SỐ `problem_no` mới theo max TOÀN BẢNG (`noTiep()`) — nếu không, bên kia
+  sẽ bị đọc nhầm thành "mồ côi" rồi XOÁ, hoặc 2 bên cấp trùng problem_no đụng unique constraint. Gọi
+  TUẦN TỰ (không `Promise.all`) ở UI — song song thì cả 2 đọc "trước khi ghi" của nhau, vẫn đụng số.
+  `loadHinhForBuoiPhase(buoiId, phase)`: nha→btvn (rõ) · lop→et (mặc định) — **MT chưa có cơ chế gán
+  riêng cho Hình** (Đại có `tai_lieu loai='mt_buoi'`, Hình chưa), tạm map lop→cả et/mt dùng CHUNG nội
+  dung — cần Thùy xác nhận, CHƯA nối tab MT trong UI (xem "CHƯA LÀM").
+- **`src/screens/gami/BuoiHocScreen.tsx`**: tab ET + BTVN — sync Đại rồi Hình TUẦN TỰ, merge `LuoiSync`,
+  hiện cột Hình với nhãn "Bài {hinh_nhan}" (nền tím phân biệt) thay vì "Câu N"/tên dạng.
+- **`src/gami/mastery.js`**: `MASTERY_CONFIG_HINH` = `{...MASTERY_CONFIG, WINDOW:3, TIN_CAO:3, TIN_TB:2}`
+  — `masteryOfDang` vốn đã nhận `cfg` tham số, KHÔNG cần sửa engine, chỉ thêm config song song.
+- **`src/lib/mastery.ts`**: `getHinhMasteryHS(hocSinhId, opts)` — mirror `getMasteryHS` nhưng group theo
+  `hinh_baitoan_id` (không phải `ma_dang`), nguồn CHỈ `gami_grades` (Hình mô hình chưa có kênh test-
+  online/tự luyện). "Không tính mô hình con" tự đúng — mỗi bài toán chỉ gắn ĐÚNG 1 node (luật spec-kho-
+  hinh-v3 §2.6), group theo node không bao giờ lẫn quan sát node khác, không cần lọc DAG cha/con.
+- **`src/screens/ketqua/KetQuaScreen.tsx`**: `DangBaiTab` gọi thêm `getHinhMasteryHS`, `hinhToDangShape()`
+  hình chiếu qua `DangMastery` để TÁI DÙNG NGUYÊN `DangSection`/`DangRow` (không bịa UI riêng) — 2 bảng
+  phụ "Hình học — Cơ bản/Nâng cao" hết placeholder tĩnh, bucket theo `cap` CLIP 1-5 (XẤP XỈ `mucDoTuCap`
+  thật — thật cần biết cách giải có bổ đề, CHƯA join, sai số nhỏ ở biên cap≈3).
+
+**CHƯA LÀM (cố ý cắt phạm vi, không phải quên):**
+- Tab **MT** trong `BuoiHocScreen.tsx` chưa nối Hình (cấu trúc "Phần I/II" của MT là khái niệm Đại, Hình
+  không có — cần Thùy chốt Hình có "đợt MT" riêng hay dùng chung nội dung `lop` trước khi vẽ UI).
+  `syncHinhProblems`/`loadHinhForBuoiPhase` đã hỗ trợ `phase='mt'` ở tầng lib, chỉ chưa gọi từ `MTTab`.
+- `TongQuanTab` (① % hoàn thành bản đồ kiến thức) vẫn giữ placeholder tĩnh cho Hình — cần denominator
+  "tổng số mô hình phải đo" (canonical count theo khối) chưa định nghĩa, khác việc DangBaiTab (chỉ liệt
+  kê cái ĐÃ đo, không cần tổng).
+- Bucket cơ bản/nâng cao Hình dùng `cap` xấp xỉ, chưa gọi `mucDoTuCap(cap, coBoDe)` thật (cần join
+  `hinh_cach_giai`/`hinh_cach_bo_de` theo node — bỏ qua cho gọn lần đầu).
+- Bổ đề (`hinh_bo_de`) — chưa làm gì thêm (Thùy: "chỉ là view phụ tương lai", không việc gì lúc này).
+- CHƯA test bằng data thật (chưa có buổi thật nào gán giáo trình Hình + chấm ET/BTVN qua đường mới) —
+  chỉ verify được tsc/build/module-transform sạch, KHÔNG phải hành vi runtime với data thật.
+
+**Verify:** `npx tsc --noEmit` sạch · `npx vite build` sạch · mọi module sửa (gami.ts, hinhGiaoTrinh.ts,
+mastery.ts, mastery.js, BuoiHocScreen.tsx, KetQuaScreen.tsx) transform qua dev server (curl 200, không
+lỗi import/cycle). KHÔNG click-through được UI thật (không có buổi thật đã gán giáo trình Hình sẵn để
+soi — dựng data test tốn nhiều bước ngoài phạm vi phiên này, và rủi ro lặp bẫy "dọn-không-sạch" đã từng
+dính trên node THẬT nếu làm vội, xem mục 2026-08-20 phía trên).
+
+## 2026-08-21 (tiếp) — Đánh giá Hình học: nối tab MT + card "Hoàn thành" Hình ở Tổng quan
+
+**Thùy trả lời 2 điểm mở (chốt qua sparring):**
+- **MT:** đồng ý hướng "toggle chọn bản đồ lúc chọn câu" (3 tab Đại/Hình giải tích/Hình mô hình — ET
+  cũng định làm vậy) THAY VÌ cấu trúc cứng "2 Phần = Đại/Hình". Đây là hướng cho tầng SOẠN đề MT/ET
+  (chưa làm ở lần này — cần riêng 1 lượt đọc `mt.ts`/màn soạn MT + `ETScreen.tsx` mới đủ hiểu để sửa
+  đúng chỗ). Việc closable ngay là tầng CHẤM (MTTab) — Hình vẫn tự động vào MT qua nội dung 'lop' đã
+  gán sẵn (giống ET), không cần người chọn gì thêm ở màn chấm.
+- **① % hoàn thành Hình (Tổng quan):** "giống đại, đo trên những mô hình đã có đánh giá" — xác nhận
+  công thức `compPct` của Đại (tally trên tập ĐÃ ĐO, KHÔNG cần denominator canonical) áp thẳng cho Hình
+  — bỏ blocker "chưa định nghĩa denominator" đã nêu trước, không phải vấn đề thật.
+
+**Làm:**
+- **`BuoiHocScreen.tsx` MTTab**: nối Hình giống ET/BTVN — `loadHinhForBuoiPhase(buoiId,'mt')` +
+  `syncHinhProblems` TUẦN TỰ sau MT Đại (chia sẻ `problem_no`, xem ghi chú domain-partition ở
+  `syncHinhProblems`). Thêm 1 group-header "Hình (mô hình)" (colSpan = số ô Hình) cạnh các group Phần
+  Đại sẵn có — Hình LUÔN xếp SAU (problem_no lớn hơn qua `noTiep()`), không cần logic chen giữa. Cột
+  Hình hiện "Bài {hinh_nhan}" như ET/BTVN.
+- **`src/lib/mastery.ts` `getTongQuanHS`**: thêm khối tính Hình song song khối Đại đang có — `hEtRows/
+  hMtRows/hBtvnRows` (group theo `hinh_baitoan_id` thay `ma_dang`) → `compPctHinh` (bản sao `compPct`,
+  bucket theo `cap` CLIP 1-5 thay `muc_do`, dùng `MASTERY_CONFIG_HINH`) → 2 card mới `hinhCoBan`/
+  `hinhNangCao` trong `TongQuanHS.hoanThanh`. Thêm `hinh_baitoan_id` vào embed `gami_grades` gốc (1
+  query, không round-trip thêm).
+- **`KetQuaScreen.tsx` TongQuanTab**: 2 card Hình hết placeholder — dùng `HoanThanhCard` y hệt Đại. Xoá
+  hẳn `HoanThanhPlaceholder` (hết chỗ dùng — component chết, không giữ lại "phòng khi cần").
+
+**CHƯA LÀM (còn mở, khác với "cố ý cắt" — đây là hướng lớn Thùy vừa mở ra, cần lượt riêng):**
+- Toggle 3-tab (Đại/Hình giải tích/Hình mô hình) ở màn SOẠN câu cho ET/MT — Thùy xác nhận đây là hướng
+  đúng nhưng CHƯA build, cần đọc kỹ `TaiLieuBuilder.tsx`/`ETScreen.tsx`/`mt.ts` (soạn đề) trước khi động
+  — khác hẳn phạm vi "nối Hình vào tầng CHẤM" đã xong hôm nay.
+- Vẫn CHƯA test bằng data thật (đúng như Thùy nói: "chưa build xong thì đương nhiên chưa có dữ liệu").
+
+**Verify:** `npx tsc --noEmit` sạch · `npx vite build` sạch.
+
+## 2026-08-21 (tiếp) — CHẤM TLN BẰNG AI (vòng 2): dựng xong, BLOCK ở hạ tầng pg_net — cần Thùy bật Dashboard
+
+CEO chốt mô hình V1 (3 vòng: key → AI khi lệch key → thêm DB nếu AI xác nhận đúng), sửa lại theo
+2 ý: (1) CHỈ trả lời ngắn, (2) MỌI lần AI chấm phải ghi log, (3) thêm-vào-DB PHẢI người duyệt
+(không tự động — đúng nguyên tắc CLAUDE.md §5 "AI gợi ý → người confirm").
+
+**Grounding trước khi code (Explore agent):** vòng 1 (chấm key) + vòng 3 (cache + backfill,
+`question_accepted_answers`/`chapNhanDapAn`) **ĐÃ XÂY XONG SẴN** trong V2 — cột `ai_reason`/`source`
+đã có sẵn trong schema, chỉ chưa ai nối AI vào. Việc thật cần làm nhỏ hơn nhiều so với "3 vòng từ
+đầu" — chỉ thiếu đúng vòng 2 (gọi AI).
+
+**⚠ Phát hiện an ninh trước khi code:** `VITE_DEEPSEEK_KEY` hiện gọi THẲNG từ client (`kho/api.ts`) —
+đã có sẵn cảnh báo trong code "trước khi deploy public phải qua proxy". App đang tính deploy công
+khai `hs.bkacademy.edu.vn` (bàn ở mục trên) → PHẢI gọi AI từ server, không lộ key qua devtools.
+
+**Thiết kế (migration `202608211153_cham_tln_ai.sql`):**
+- Gọi DeepSeek **TỪ TRONG POSTGRES** qua `pg_net` (RPC `hs_cham_tln_ai`) — dùng lại đúng pattern
+  SECURITY DEFINER RPC cả phiên, KHÔNG cần dựng Edge Function/hosting mới.
+- Secret: định dùng Supabase Vault (đã cài `supabase_vault@0.3.1`) nhưng role `claude_build`
+  **KHÔNG có quyền `usage` schema `vault`** (verify: "permission denied for schema vault") — cần
+  Thùy tự bật qua Dashboard nếu muốn Vault chuẩn. TẠM: bảng `_app_secrets` riêng, KHÔNG grant
+  anon/authenticated, RLS bật không policy nào (chủ bảng bypass RLS mặc định) → chỉ RPC đọc được,
+  PostgREST không chọc vào được. Nạp key thật bằng script 1 lần đọc từ `.env.local` (KHÔNG commit
+  giá trị thật), xoá script ngay sau khi nạp.
+- `bai_test_report` thêm cột `nguon` (`hs_bao_sai` mặc định · `ai_de_xuat` mới) — AI xác nhận đúng
+  → CHỈ tạo 1 dòng report chờ duyệt (KHÔNG tự ghi `question_accepted_answers`/sửa `bai_lam_cau`) —
+  dòng này TỰ NỔI lên màn "Duyệt chấm online" có sẵn (đọc `bai_test_report` trang_thai='moi'), GV
+  bấm "✓ Chấp nhận đúng" (`chapNhanDapAn`, KHÔNG sửa) mới thật sự ghi + backfill — đúng yêu cầu
+  "phải được duyệt".
+- Bảng `tln_ai_cham_log` — ghi MỌI lần gọi AI (cả khi AI nói vẫn sai, cả khi lỗi API) — đúng yêu
+  cầu "mọi lần AI chốt lệch với key đều cần ghi log". RLS staff-only (`tai_khoan.nhan_su_id is not
+  null` — KHÔNG dùng `nhan_su`/`auth.uid()` trực tiếp, xem bug ①).
+- `testonline.ts::traLoiCau` — sau khi key+cache đều KHÔNG khớp (còn 'wrong'), gọi RPC trên KHÔNG
+  chờ (fire-and-forget, IIFE async nuốt lỗi) — giữ nguyên "chấm tức thì", AI chạy nền.
+- `DuyetChamScreen.tsx` — badge tách riêng 🚩 HS báo sai / 🤖 AI đề xuất theo `nguon`.
+
+**2 bug tự bắt được lúc verify (không phải Thùy báo):**
+① `auth.uid()` dùng trực tiếp trong policy mới → `permission denied for schema auth` (role
+`claude_build` không có usage schema `auth`) — search thấy `my_hoc_sinh_id()` sẵn có đã né bằng
+`public.jwt_uid()` (đọc `request.jwt.claims` thẳng, không qua schema `auth`) — sửa theo đúng pattern
+đó, KHÔNG phải phát minh mới.
+② `net.http_post(...)` trả THẲNG `bigint` (request_id), không phải bảng — viết nhầm
+`select id into x from net.http_post(...)` như hàm trả bảng → `column "id" does not exist`. Dò
+`pg_attribute` ra đúng cấu trúc `net.http_collect_response()` trả `(status, message, response)` với
+`response` lồng `(status_code, headers, body)` — sửa cho khớp. 2 migration `_fix_pgnet` +
+`_timeout` (CREATE OR REPLACE đè — KHÔNG sửa file `202608211153` đã áp, đúng CLAUDE.md §2.1).
+
+**⛔⛔ BLOCK Ở HẠ TẦNG — CẦN THÙY: pg_net background worker CHƯA CHẠY.** Test thật (dò tận gốc bằng
+`net.check_worker_is_up()`) → `"the pg_net background worker is not up"`. Đây là ca đã biết của
+Supabase: bật `pg_net` bằng `create extension` qua SQL Editor/kết nối trực tiếp KHÔNG đủ — worker
+nền cần đăng ký lúc Postgres KHỞI ĐỘNG (`shared_preload_libraries`), chỉ Supabase Dashboard mới làm
+được (bật công tắc pg_net ở Database → Extensions sẽ tự restart đúng cách). Thử `net.wake()`/
+`net.worker_restart()` qua SQL — chạy "thành công" nhưng worker vẫn báo "not up" (xác nhận đây là
+hạ tầng, không phải cấu hình sửa được bằng SQL). Queue request test đi vào `net.http_request_queue`
+nhưng không ai xử lý → `net.http_collect_response(..., false)` treo VÔ HẠN (test 1 lần treo >2 phút
+mới phải Ctrl-C, kết nối `claude_build` không có statement_timeout nên không tự huỷ).
+
+**Việc còn lại — CẦN THÙY bật `pg_net` qua Supabase Dashboard (Database → Extensions → pg_net →
+bật). Sau đó chỉ cần verify lại (đã có sẵn script mẫu, xoá tạm sau lần trước) — code/migration/UI
+đã xong hết, không cần sửa gì thêm nếu worker chạy đúng.** Cũng nên canh: `hs_cham_tln_ai` chạy
+dưới role `authenticated` có `statement_timeout=8s` (cấu hình sẵn của project) — đã hạ
+`timeout_milliseconds` DeepSeek xuống 6000ms để có dư; nếu vẫn hay timeout sau khi worker chạy đúng
+thì cân nhắc tách 2 bước (queue nhanh trả về ngay + xử lý async thật sự) — CHƯA cần làm nếu 6s đủ.
+
+Chưa merge `main` — chưa verify được end-to-end (đang chờ Thùy bật pg_net). Code an toàn để merge
+sớm nếu muốn (degrade sạch: lỗi bị nuốt, HS không thấy gì khác, chỉ chưa có tác dụng AI-chấm) nhưng
+theo đúng kỷ luật cả phiên — không merge cái chưa verify thật.
+
+## 2026-08-21 (tiếp) — Tách bundle riêng cho hs.bkacademy.edu.vn (webapp/PWA, KHÔNG tách repo/DB)
+
+CEO chốt (2 lượt): "t đang nghĩ tách nó thành 1 subpage của BK như PH... hs.bkacademy.edu... làm nó
+thành webapp như phapp" → "t cần học sinh đăng nhập vào app rồi làm bài... hướng làm như nào cho
+tiện m đề xuất đi" → sau khi CTO đề xuất (giữ monorepo, KHÔNG tách repo/DB như PH — PH phải tách vì
+vốn khác hệ/DB từ đầu, HS đã sẵn RLS đúng trong CHÍNH Supabase ERP) → CEO đồng ý → nhắc lại làm nốt.
+
+**Kiến trúc: build entry RIÊNG, KHÔNG tách repo/DB.**
+- `hs.html` + `src/main-hs.tsx` — entry mới, KHÔNG import `./App` (staff) — render thẳng `AppHS`.
+- `src/AppHS.tsx` — copy CHÍNH XÁC nhánh HS của `App.tsx` (session→hsId→must_change_password→
+  HocSinhApp/DoiMatKhau), bỏ hết import staff (`NhanSuHome`/`TopBar`/`useStore`/`phanquyen`…) + bỏ
+  luôn nhánh `#pvjob` (in PDF, chỉ worker server dùng) + bỏ `fitZoom` (mật độ desktop staff, HS vốn
+  đã net 1.0). Thêm nhánh mới: tài khoản KHÔNG phải HS (vd staff gõ nhầm domain) → chỉ có nút đăng
+  xuất, domain này CHỈ dành HS.
+- `src/auth/Login.tsx` thêm prop `hsOnly` (mặc định `false`, KHÔNG đổi hành vi app chính) — ẩn tab
+  "Nhân sự", khoá cứng mode='hs', đổi tiêu đề "BK Academy · Đăng nhập học sinh".
+- `vite.config.hs.ts` — build RIÊNG (`npm run build:hs`) → `dist-hs/`, entry `hs.html`. Verify thật
+  bundle NHẸ HƠN HẲN: HS-only 676KB JS (gzip 196KB) vs app đầy đủ 4.66MB JS (gzip 1.27MB) — ~7×,
+  đúng lý do tách (domain public không cần kéo theo code Kho/Giáo trình/admin nội bộ).
+- PWA: cài `vite-plugin-pwa` (chưa có sẵn trong repo, thêm mới). Icon: cắt từ `public/Logo.png`
+  (wordmark BK Academy có sẵn) — dò bounding-box thật bằng `@napi-rs/canvas` (đã có sẵn cho worker
+  PDF, không thêm dep mới) qua 3 lần thử (2 lần đầu cắt CỤT icon do ước lượng sai vùng quét — lần 3
+  dò khoảng-trắng-dài-nhất giữa icon và chữ mới ra đúng ranh giới) → `public/icon-192.png` +
+  `icon-512.png`, nền trắng, đệm 10%. Manifest: `standalone`, theme `#087fc6` (đúng brand app PH).
+
+**1 bug tự bắt lúc verify:** build ra `dist-hs/hs.html` (đúng tên nguồn) nhưng mọi static host (kể
+cả `vite preview` lúc test local) mặc định phục vụ `index.html` cho `/` → Service Worker + asset
+404 khi mở domain gốc. Thêm plugin nhỏ (`closeBundle` hook) đổi tên `hs.html`→`index.html` NGAY
+TRONG `dist-hs/` sau build — nguồn giữ tên rõ nghĩa (khỏi lẫn với `index.html` app chính cùng thư
+mục gốc), output đúng chuẩn host tĩnh cần.
+
+**Verify:** `npx tsc --noEmit` sạch cả 2 phía · `npm run build` (app chính) VẪN chạy bình thường
+(không đụng gì) · `npm run build:hs` sạch, service worker + manifest sinh đúng (32 entries precache).
+Browser thật: mở `dist-hs` qua `vite preview` — màn hình CHỈ có form "Mã học sinh/Mã PIN" (không có
+tab Nhân sự) → đăng nhập HS0602 thật → `AppHS` render đúng `HocSinhApp` với data thật (tên, mã HS,
+4 ô cấp 1) → bấm Thoát → quay lại đúng màn login sạch. **Đăng ký Service Worker báo lỗi trong môi
+trường browser pane tự động** (đã dò: file `sw.js` tải đúng 200/`content-type: text/javascript`,
+`navigator.serviceWorker` tồn tại, `isSecureContext=true` — nhiều khả năng là giới hạn của trình
+duyệt sandbox dùng để test, KHÔNG phải lỗi build) — cần verify lại bằng trình duyệt thật (điện thoại
+thật) sau khi deploy lên domain thật, đó mới là môi trường có ý nghĩa để test "cài ra màn hình chính".
+
+**CÒN LẠI — CẦN THÙY (ngoài khả năng CLI/SQL của mình):**
+1. Domain `hs.bkacademy.edu.vn` — mua/trỏ DNS (CNAME, giống `ph.` trước đây ở Mắt Bão).
+2. Deploy `dist-hs/` — 1 Vercel project MỚI, CÙNG repo GitHub, build command `npm run build:hs`,
+   output `dist-hs`, gắn domain trên. KHÔNG động app chính (build command mặc định `npm run build`
+   vẫn y nguyên, 2 project độc lập cùng nguồn).
+3. Sau khi deploy: thử cài PWA thật trên điện thoại (Safari/Chrome) — xác nhận icon/tên hiện đúng.
+
+Chưa commit — đợi xác nhận hướng trước khi merge (an toàn để merge ngay nếu muốn: chỉ thêm file
+mới + 1 prop optional trên Login.tsx, không đổi hành vi app chính).
+
+## 2026-08-20 (tiếp) — Kho Hình: "Up bài → AI tự tách" giờ tự nhận diện + cắt HÌNH VẼ luôn
+
+**Yêu cầu (Thùy, verbatim):** "Trong vần tạo biến thể hình học. KHi chọn dán ảnh hoặc pdf, hiện tại hệ
+thống nhận diện được đề và đáp án. T muốn hệ thống tự nhận diện được Hình vẽ luôn. module này đã dùng
+nhiều lần, m check ở bên đại số có rồi đấy"
+
+**Đối chiếu bên Đại (đã có, khuôn lại y hệt):** `NhapKhoScreen.tsx` hàm `boc()` — render PDF/ảnh ra
+canvas DPI cao (`fileToCanvases`, 400dpi, giữ nét để cắt), gửi Gemini bản DOWNSCALE JPEG
+(`canvasToJpegBase64`, đỡ token — bbox chuẩn hoá 0-1000 nên độc lập tỉ lệ gửi), AI trả thêm `co_hinh` +
+`box_hinh` (schema `INGEST_KHO_SCHEMA`) → cắt THẬT bằng `cropCanvasBox` từ canvas gốc (không phải AI vẽ
+lại) → `uploadKhoImage` → gắn `anh_de`. 3 hàm dùng chung `src/lib/pdfRender.ts`.
+
+**Bên Hình trước đây (`ingestBaiHinh`/`IngestBaiButton`):** model cũ CHỦ ĐỘNG dặn AI "Có HÌNH VẼ thì BỎ
+QUA — chỉ lấy CHỮ" (đúng thời điểm đó: AI không vẽ lại được hình hình học nên coi luôn là việc người
+tự làm) — và gửi thẳng file gốc (base64 nguyên, không qua canvas) nên dù có muốn cũng không cắt được
+(không giữ ảnh nguồn để cắt).
+
+**Làm — mirror ĐÚNG pattern Đại, không chế cơ chế mới:**
+- `src/lib/kho/api.ts` — `HINH_BAI_SCHEMA` thêm `co_hinh`/`box_hinh`; thêm `trang_hinh` (khác Đại: 1 bài
+  Hình có thể up NHIỀU trang/ảnh cho 1 bài duy nhất, không phải ingest-per-trang như Đại, nên cần biết
+  hình nằm ở trang/ảnh thứ mấy). `buildIngestBaiHinhPrompt()` đổi hẳn chỉ dẫn — không còn "bỏ qua hình"
+  mà "khoanh vùng bbox hình, ưu tiên hình CỦA ĐỀ nếu có cả hình đề lẫn hình lời giải". `ingestBaiHinh()`
+  parse thêm box/trang, trả `co_hinh` (đã AND với box hợp lệ, an toàn nếu AI quên gửi box dù báo có hình).
+- `src/screens/kho/hinh/hinhUi.tsx` (`IngestBaiButton`) — đổi hẳn từ gửi file gốc (base64 thô) sang
+  `fileToCanvases` → giữ canvas NÉT + gửi Gemini bản downscale → có `box_hinh`+`trang_hinh` thì
+  `cropCanvasBox` cắt THẬT từ canvas gốc + `uploadKhoImage` (CÙNG bucket `kho-anh` mà `AnhInput` dùng
+  khi người tự chọn ảnh) → trả thêm `anh` cho caller qua `onResult`.
+- `src/screens/kho/hinh/SoDo.tsx` (`FormBienThe` — ĐÚNG màn "tạo biến thể" Thùy nhắc) + `FormBaiToan.tsx`
+  — nhận thêm `anh` từ `onResult`, gọi `setAnh`/`setDungHinhRieng(true)+setAnhRieng` khi có hình khác
+  hình đang có; confirm ghi-đè (đã có sẵn cho đề/lời giải) giờ liệt kê thêm "+ hình vẽ" khi hình sẽ đổi.
+
+**Verify:** tsc sạch · `npx vite build` sạch. Live end-to-end THẬT (dev server, mở "+ Thêm biến thể" của
+BT.08.025 — Tứ giác K8): dựng ảnh test bằng canvas (tam giác vuông vẽ nét + chữ "Cho tam giac ABC vuong
+tai A, AB=3, AC=4. Tinh BC" tách biệt hẳn phần chữ và phần hình) → dispatch vào input file thật của nút
+"Up bài (ảnh/PDF) → tự tách" → console log xác nhận gọi Gemini THẬT thành công (`in:779 out:111`) → dialog
+xác nhận ghi-đè hiện đúng "...+ hình vẽ hiện tại..." — CHỈ xảy ra khi `anhMoi` (kết quả cắt+upload) khác
+`null` VÀ khác hình đang có, tức chuỗi cắt-từ-canvas-DPI-cao → upload `kho-anh` đã chạy thành công thật
+(không phải giả lập) — không có console error nào trong suốt luồng. KHÔNG bấm xuyên được dialog xác nhận
+(môi trường sandbox tự ép confirm() trả `false`) nên chưa thấy trực tiếp bước `setAnh` áp dụng lên ô Hình
+— logic bước đó chỉ 1 dòng (`if (anhMoi) setAnh(anhMoi)`), cùng khuôn 2 dòng `setDeBai`/`setLoiGiai` đã
+chạy đúng nhiều lần trước đó, tự tin đúng nhưng ghi rõ để không nhận vơ đã thấy tận mắt bước cuối.
+
+## 2026-08-20 (tiếp) — Kho Hình: nhập LỨA đã clone sẵn (ảnh/PDF) → AI tự khớp vào chuỗi gốc
+
+**Yêu cầu (Thùy, verbatim, hỏi lại câu cũ):** "Hệ thống hiện tại chưa clone được 1 bài dạng chuỗi câu
+hoàn chỉnh. T sẽ clone 1 chuỗi câu đó ở bên ngoài. T muốn hệ thống có chức năng nhập clone chuỗi câu, tức
+là t sẽ chọn chuỗi câu và gửi file pdf đã clone của chuỗi đó. Sau đó hệ thống tự khớp nội dung vào các
+chuỗi." — CTO trả lời khả thi (khớp sẵn model `lua_id`/`saveLuaBienThe` đã có cho "🔗 Đổi đỉnh cả chuỗi"),
+Thùy chốt "Bắt tay luôn đi".
+
+**Khác `ChuoiDoiDinhPopup` (đã có):** cái cũ AI TỰ SINH text (chỉ đổi tên điểm, giữ nguyên số/logic/hình
+gốc) — không phải "clone hoàn chỉnh". Cái mới: NGƯỜI đã tự clone thật (đổi số/hình/cách hỏi/gì cũng
+được) ở NGOÀI, AI ở đây CHỈ ĐỌC + KHỚP, không tự sinh chữ.
+
+**Làm:**
+- `src/lib/kho/api.ts` — `INGEST_LUA_CHUOI_SCHEMA`/`buildIngestLuaChuoiPrompt`/`ingestLuaChuoiHinh`: đưa
+  DANH SÁCH chuỗi gốc (mã + phát biểu) vào prompt làm ngữ cảnh đối chiếu; AI trả mỗi ý kèm `khop_voi_ma`
+  — khớp theo NỘI DUNG/LOGIC (khoá tự nhiên = mã bài, CLAUDE.md §2 "danh tính bám khoá tự nhiên, không
+  vị trí"), KHÔNG giả định thứ tự in khớp thứ tự chuỗi (clone có thể thiếu/thừa/đảo ý). Tái dùng NGUYÊN
+  co_hinh/box_hinh/trang_hinh (khuôn `ingestBaiHinh` vừa làm) — 1 hình dùng chung cho cả lứa (đúng thực
+  tế: 1 chuỗi thường vẽ 1 hình, các ý sau dùng lại).
+- `hinhUi.tsx` — export `fileToBase64` (trước private) để dùng lại ở SoDo.tsx, khỏi chép lại hàm.
+- `SoDo.tsx` — component mới `NhapCloneLuaPopup`, nút "📥 Nhập lứa đã clone (PDF)…" đặt cạnh "🔗 Đổi đỉnh
+  cả chuỗi…" (cùng điều kiện `chuoi.length > 1`, chỉ hiện khi TẠO biến thể mới, không hiện lúc sửa).
+  Luồng: up file → render canvas DPI cao → gửi Gemini → khớp ý↔mã (giữ ý ĐẦU khớp mỗi mã trùng, không
+  im lặng rơi mất — ý lạc/trùng gom vào khối "chưa khớp" cho soát tay, §1.5 "thà bỏ trống còn hơn đánh
+  sai") → cắt+upload hình chung → **bước REVIEW bắt buộc**: mỗi bài trong chuỗi hiện ô đề+lời giải AI
+  khớp được (SỬA TAY được), bài chưa khớp tô vàng cảnh báo rõ — KHÔNG tự lưu thẳng (Principle 6 "AI gợi
+  ý → người xác nhận", CLAUDE.md §5) → "Lưu lứa" gọi thẳng `saveLuaBienThe` đã có, cho phép lứa THIẾU
+  (bỏ qua bài chưa khớp) — `saveLuaBienThe` vốn không đòi đủ N phần tử, tự lọc tiền đề còn trong lứa.
+
+**Verify:** tsc sạch · `npx vite build` sạch. Live end-to-end THẬT (dev server, "+ Thêm biến thể" của
+BT.08.030 → mở đúng chuỗi 2 câu BT.08.030→BT.08.031): dựng ảnh test bằng canvas — 1 tứ giác ĐỔI HẲN TÊN
+ĐIỂM (M,N,P,Q thay vì A,B,C,D, cố ý để test khớp THEO NỘI DUNG chứ không phải khớp chữ) + giả thiết chung
++ 2 ý a)/b) — dispatch vào đúng input (soát kỹ vì popup có 2 input file cùng accept, ban đầu dispatch
+nhầm vào input của "Up cả bài" bên ngoài, phát hiện qua console log gọi nhầm hàm `ingestBaiHinh` thay vì
+lứa) → console xác nhận gọi Gemini THẬT (`in:821 out:247`) → UI báo "Khớp được 2/2 bài" — ý a) khớp ĐÚNG
+BT.08.030 (câu "góc CDx = góc CBA" ↔ câu hỏi tương ứng dạng góc), ý b) khớp ĐÚNG BT.08.031 (câu "tia phân
+giác") — dù tên điểm hoàn toàn khác gốc, xác nhận khớp THEO LOGIC không phải so chữ/vị trí → hình cắt tự
+động, ảnh upload thật lên bucket `kho-anh`, load được (`naturalWidth=582`) → đóng popup KHÔNG lưu (tránh
+tạo lứa test trên BT.08.030/031 thật). Giữa chừng dính 1 nhiễu: log HMR lỗi hàng loạt trên nhiều file
+không liên quan (phiên khác đang sửa song song) — kiểm lại `tsc --noEmit` + `git status` xác nhận code
+3 file của mình vẫn sạch, không phải lỗi từ thay đổi này.
+
+## 2026-08-21 — Kho Hình: BỎ tự chèn "Chứng minh" + "a)/b)/c)" — hiển thị đúng y nguyên đã nhập
+
+**Lỗi 1 (Thùy, kèm ảnh chụp màn hình, verbatim):** "có 1 lỗi khác : sao hệ thống lại tự đẻ ra chữ Chứng
+minh ở câu hỏi vậy. t nhập như nào thì hiện thị như thế, ko được phép tự sinh ra cái gì hết"
+
+**Lỗi 2, hỏi thêm giữa chừng (Thùy, verbatim):** "Cả cái abc nữa. ko được tự chèn. Chỉ chuỗi mới có abc
+thôi"
+
+**Nguyên nhân 1 — "Chứng minh":** 3 chỗ (2 trong `SoDo.tsx`, 1 trong `TaiLieuChuan.tsx`) build câu hỏi
+hiển thị/in bằng literal `` `Chứng minh ${bt.phat_bieu}` `` — giả định SAI "mọi bài toán Hình đều dạng
+chứng minh". Sai ngay với bài "Tính số đo các góc" (BT.08.025/027/033…) — 2 chữ "Chứng minh" chình ình
+trước 1 câu hỏi vốn là "Tính".
+
+**Nguyên nhân 2 — "a)/b)/c)":** `mucGhep`/`mucGhepLua` (`SoanTaiLieu.tsx`) gán `nhan: String.fromCharCode
+(97+i)` VÔ ĐIỀU KIỆN theo index, không xét tổng số ý — 1 bài toán LẺ (không phải chuỗi) vẫn bị gắn "a)"
+trước câu hỏi, dù chỉ có đúng 1 ý.
+
+**Bẫy ẩn phát hiện giữa chừng — không thể xoá "Chứng minh " ở MỌI chỗ theo kiểu tìm-thay-thế mù:**
+`tachDe()` (cơ chế cũ của lứa "đổi đỉnh cả chuỗi") tách 1 cột DB gộp `de_bai` (giả thiết+câu hỏi chung 1
+string) ngược lại thành 2 phần bằng cách DÒ CHỮ "Chứng minh" làm mốc cắt. Bỏ chữ đó ở chỗ AI SINH RA lứa
+(`ChuoiDoiDinhPopup`, và `NhapCloneLuaPopup` mới làm hôm qua) mà không sửa `tachDe` → mốc cắt biến mất →
+lứa hiển thị sai (mất giả thiết, hoặc lặp nội dung).
+
+**Sửa tận gốc, không vá ngọn:**
+- `api.ts` — thiết kế lại 2 schema AI (`HINH_CHUOI_ITEM_SCHEMA`, `INGEST_LUA_CHUOI_ITEM_SCHEMA`): AI
+  PHẢI trả `giai_thiet`/`cau_hoi` TÁCH SẴN 2 field riêng (dặn thẳng trong description: "GIỮ NGUYÊN VĂN
+  cách hỏi gốc, không tự thêm chữ Chứng minh nếu gốc không có") — không còn NỐI-rồi-CẮT-NGƯỢC, khỏi cần
+  đoán chữ nào là mốc.
+- `SoanTaiLieu.tsx` — thêm cặp hàm client-control: `ghepDeBai(giaThiet, cauHoi)` nối bằng 1 ký tự điều
+  khiển ẩn `␞` (U+241E, do CLIENT tự chèn, không nhờ AI "nhớ giữ"); `tachDe` đổi thành dò ký tự đó
+  TRƯỚC, chỉ dò lùi chữ "Chứng minh" làm PHƯƠNG ÁN LÙI cho lứa đã lưu TRƯỚC 08-20 (dữ liệu cũ không tự
+  sửa lại được — bỏ phương án lùi này thì giả thiết của lứa cũ biến mất khỏi bản in).
+  `mucGhep`/`mucGhepLua`: `nhan: khung.length > 1 ? String.fromCharCode(97+i) : ''` — nhãn chỉ gán khi
+  THẬT SỰ ≥2 ý, không còn vô điều kiện.
+- `SoDo.tsx` — bỏ 2 chỗ hardcode "Chứng minh "; `ChuoiDoiDinhPopup`/`NhapCloneLuaPopup` giờ gọi AI/nhận
+  input với giả thiết+câu hỏi TÁCH RIÊNG, ghép lại bằng `ghepDeBai` đúng lúc lưu.
+- `TaiLieuChuan.tsx` — bỏ hardcode "Chứng minh "; đếm `soTrongDe` (số node THẬT SỰ có trong đề) TRƯỚC,
+  nhãn a)/b) chỉ gán khi `soTrongDe > 1`.
+
+**Bug PHỤ tự phát hiện lúc verify sống (không phải Thùy báo) — ký tự `␞` LỘ RA MÀN HÌNH:** card "biến
+thể" trong popup chi tiết bài toán (`SoDo.tsx` dòng 453, danh sách chung cho MỌI kiểu biến thể) render
+thẳng `v.de_bai` RAW — với biến thể tạo từ lứa (đã gộp bằng `␞`), ký tự điều khiển hiện nguyên si ra
+UI. `tachDe` không dùng được ở đây (fallback dò chữ "Chứng minh" của nó CHỈ đúng cho lứa cũ — áp lên
+biến thể thường gõ tay có chữ "Chứng minh" ở giữa câu sẽ xẻ nhầm). Thêm hàm riêng `deBaiHienThi()`
+(`SoanTaiLieu.tsx`) — chỉ thay `␞` bằng ". " cho hiển thị chung, không đụng logic dò-chữ của `tachDe`.
+Áp cho cả card hiển thị lẫn giá trị khởi tạo ô sửa (✎) của `FormBienThe`.
+
+**Verify:** tsc sạch · `npx vite build` sạch. Live THẬT trên dev server: mở lại chuỗi BT.08.030→031
+(Tứ giác K8) → "🔗 Đổi đỉnh cả chuỗi…" → tick cả 2 câu → "Sinh lứa (2 câu)" → gọi Gemini THẬT
+(`7.148 tok`, `≈346₫`) → biến thể MỚI của BT.08.030 hiện sạch: "Cho tứ giác MNPQ có... Qy là tia đối của
+tia QM. Chứng minh: ∠PQy=∠PNM" — giữ "Chứng minh:" vì câu hỏi GỐC của BT.08.030 vốn dĩ đã viết "Chứng
+minh: ..." (không phải hệ thống tự thêm — đối chiếu: các bài KHÁC trong cùng sơ đồ như BT.08.025/027
+("Tính góc D?", không có chữ "Chứng minh") hiện đúng y nguyên, KHÔNG bị chèn thêm). Biến thể CŨ (tạo
+trước fix, còn "Chứng minh Chứng minh:" lặp đôi) vẫn còn nguyên trong DB — đây là **dữ liệu cũ đã lưu
+sai vĩnh viễn từ bug trước đó, KHÔNG tự sửa lại được** (không đoán/ghi đè dữ liệu thật, CLAUDE.md §1.5)
+— cần Thùy xác nhận có muốn dọn tay các biến thể lứa cũ dạng này không. Mở tiếp "📥 Nhập lứa đã clone"
+— popup mở sạch, không lỗi, hiện đúng "CHUỖI GỐC (ĐỂ ĐỐI CHIẾU)" không chèn chữ thừa.
+
+## 2026-08-21 (tiếp) — Giáo trình Hình: bỏ chữ "Buổi học —" ở header BTVN + NHỚ bộ lọc mô hình khi rời/quay lại màn
+
+**Yêu cầu (Thùy, kèm ảnh header "BK ACADEMY / Buổi học — Buổi 2: Hai đường thẳng song song", verbatim):**
+"1. header btvn bỏ cái chữ Buổi học đi / 2. quan trọng là khi t mở lại buổi 2 thì nó phải lưu lại nhwungx
+gì t setup : mô hình nào đã chọn thì vẫn phải chọn như thế chứ sao lại bắt chọn lại từ đầu"
+
+**Lỗi 1 — header thừa chữ:** `banInTheoMoHinh()` (`SoanTaiLieu.tsx`) build `tieuDe: \`Buổi học — ${tieuDe}\``
+— tiêu đề buổi (Thùy tự đặt, vd "Buổi 2: Hai đường thẳng song song") bị cộng thêm tiền tố cứng. Bỏ hẳn,
+trả thẳng `tieuDe`.
+
+**Lỗi 2 — bộ lọc mô hình mất khi rời màn:** `BuoiPickEditor` (component dùng chung dựng nội dung 1 buổi
+Giáo trình Hình) có 2 tầng chọn: "Mô hình chính/vệ tinh" (CHỈ để LỌC danh sách chuỗi cho dễ tìm, comment
+cũ ghi rõ "state cục bộ, không lưu") và "picks" (nội dung THẬT của buổi — đề/bài đã chọn, đã lưu DB qua
+`saveBuoiSelection` từ trước, KHÔNG mất). Cái mất là tầng LỌC — `useState<Set>` sống trong component, mở
+lại màn Giáo trình (unmount/remount `GiaoTrinhScreen`) là về rỗng, phải tick lại mô hình từ đầu mỗi lần —
+đúng điều Thùy mô tả.
+
+**Vì sao KHÔNG lưu DB (`hinh_gt_buoi`):** bảng này (cùng `hinh_giao_trinh`/`hinh_gt_bai`) thuộc nhóm
+"điểm mù" đã ghi ở CLAUDE.md §2.1 — tạo tay qua SQL Editor, chủ `postgres`, role `claude_build` (migrate)
+không sở hữu → không tự ALTER thêm cột được. Cột `mo_hinh_chinh_id` có sẵn trên bảng cũng lệch thiết kế
+hiện tại (chỉ 1 id, trong khi UI 17/08 đã đổi sang CHỌN NHIỀU mô hình chính) và không hề được đọc/ghi ở
+đâu — bỏ luôn hướng tận dụng cột này.
+
+**Sửa — theo ĐÚNG khuôn đã có (`soanHinh` draft, "giữ khi rời/quay lại màn" — `useStore.ts`):**
+- `useStore.ts` — thêm `buoiMoHinhLoc: Record<string, {mainIds, satIds}>` + `setBuoiMoHinhLoc(key, updater)`
+  — RAM (Zustand, KHÔNG persist qua `partialize` — F5 mới mất, đúng tinh thần `soanHinh` đã có).
+- `SoanTaiLieu.tsx` (`BuoiPickEditor`) — thêm prop tuỳ chọn `filterKey?: string`: có → đọc/ghi
+  `mainIds`/`satIds` qua store (khoá = `filterKey`, ở đây truyền `buoi.id`); không có → `useState` cục bộ
+  như cũ (2 call site khác — `BuoiHocScreen`/`ETScreen` — CHƯA đụng, giữ nguyên hành vi, tránh sửa lan
+  ngoài phạm vi Thùy báo).
+- `GiaoTrinhScreen.tsx` — truyền `filterKey={buoi.id}` ở đúng chỗ gọi `BuoiPickEditor` trong `BuoiCardHinh`.
+
+**Bug PHỤ tự bắt được lúc verify sống (không phải Thùy báo) — "Maximum update depth exceeded", màn
+TRẮNG XOÁ khi mở buổi:** bản đầu build `mainIds`/`satIds` bằng `new Set(savedFilter?.mainIds ?? [])`
+THẲNG trong thân render — mỗi lần render ra 1 object Set MỚI (khác identity dù cùng nội dung) → `vetinh`
+(`useMemo` phụ `[mainIds]`) tính lại mọi lần → effect dọn `satIds` (phụ `[vetinh]`) bắn lại mọi lần → gọi
+`setSatIds` → Zustand `set()` tạo state mới → re-render → lặp lại từ đầu, vô hạn. Sửa: memo hoá
+`mainIds`/`satIds` bằng `useMemo` khoá theo MẢNG GỐC trong store (chỉ đổi identity khi nội dung THẬT sự
+đổi) + thêm bailout so nội dung (`samSet`) trong `setMainIds`/`setSatIds` — trùng nội dung thì KHÔNG gọi
+`set()` (khuôn y hệt cách `useState` tự bailout khi trả về cùng reference, phải tự làm tay vì Zustand
+không tự so sánh cấu trúc).
+
+**Verify:** tsc sạch · `npx vite build` sạch. Live THẬT trên dev server: Giáo trình (Hình) → Khối 8 →
+"Giáo trình 8A" → Buổi 1 → tick mô hình chính "Tứ giác" → panel hiện đúng "MÔ HÌNH VỆ TINH · 4" + "Đang
+lọc theo 1 mô hình chính" → rời hẳn màn (bấm "Việc của tôi", `GiaoTrinhScreen` unmount thật) → quay lại
+đúng đường (Giáo trình (Hình) → Giáo trình 8A → Buổi 1) → **bộ lọc còn nguyên y hệt**, không phải tick
+lại. Mở "📘 Xem" (bản in) → header hiện đúng "Buổi 1 : Tứ giác" (không còn "Buổi học —"), "7 mục", nội
+dung Bài 1→7 đúng thứ tự, không sai lệch.
+
+## 2026-08-21 (tiếp) — Màn chính CẤP 1 theo mockup desktop/iPad "6 Boxes" (CEO gửi HTML)
+
+**Bàn trước, không code** (CEO: "chỉ bàn thôi nhé. ko code") — brainstorm dài về mockup gamified
+đầy màu (sidebar + 4 thẻ + tiến độ 4 môn + BK Point + nhiệm vụ sắp tới), CTO phản biện 4 điểm
+(trùng nav sidebar/thẻ · tiến độ 4 môn mâu thuẫn cấu trúc KHTN 1-môn-nhiều-nhánh · % vô nghĩa nếu
+không rõ công thức · BK Point là gì). CEO chốt qua nhiều vòng: bỏ sidebar (đơn giản hết ở màn) · bỏ
+tiến độ · thêm khái niệm MỚI "Sự kiện học tập" (GV giao luyện tập thêm CHO 1 HS yếu cụ thể — khác
+BTVN thường vốn luôn gắn buổi — + cuộc thi, gộp full-width carousel) · đổi "nhiệm vụ sắp tới" (nhắc
+hạn nộp) → "Thông tin học tập" + "Huy hiệu" (bỏ hẳn nhắc hạn — "PH nhắc chứ học sinh ko tự vào").
+
+**Kiểm tra grounding (trước khi hứa gì)** — CEO hỏi thẳng "đã link được hết với ERP hiện tại chưa":
+- ✅ Thông tin học tập, Tự luyện: xong thật, đã verify data thật hôm nay.
+- ⚠️ Huy hiệu/Elo/EXP/chuỗi đi học (`gami.ts::getThanhTich`/`chuoiDiHoc`/`listThanhTich`): CÔNG THỨC
+  có sẵn nhưng 100% đang STAFF-ONLY (`screens/gami/BangThanhTich.tsx` — GV xem, không phải HS tự
+  xem) — y hệt bẫy RLS đã dính cả ngày, cần RPC HS-safe MỚI, không phải chỉ "gắn UI vào cái có sẵn".
+- ⚠️ Bảng xếp hạng: CÓ 2 hệ khác nhau — `listGamiBangTong` (Elo tổng, cũng staff-only, cần RPC mới)
+  vs `xepHangTuLuyen` (đã HS-safe, nhưng chỉ tính câu-đúng-tự-luyện, chỉ cấp 1) — không tự nhiên
+  khớp nhau, cần chốt dùng cái nào.
+- ❌ Luyện thêm GV giao + Cuộc thi: 0 data, 0 khái niệm trong DB — CEO xác nhận "chưa có, sau này
+  dựng" (không phải hôm nay).
+- BK Point: CEO chốt = Xu + EXP (không phải tầng kinh tế mới). Grep xác nhận EXP có thật
+  (`gami_exp_ledger`) nhưng **Xu KHÔNG tồn tại trong DB v2** — CLAUDE.md chỉ nhắc như khái niệm SẼ
+  có ("ví xu (wallet tổng)"), chưa ai dựng bảng. Treo lại, không phải việc hôm nay.
+
+**CEO gửi mockup HTML thật** (`BK_Academy_Student_App_6_Boxes.html`, desktop/iPad-first, KHÔNG
+sidebar, đúng bảng màu tươi purple/blue/cyan/green/orange/pink — bảng màu HOÀN TOÀN KHÁC bảng
+`ph-*` dùng cho màn cấp 1 cũ sáng nay, vì đây là hướng thiết kế MỚI, không cố "giống app PH" nữa) +
+chốt "Mấy cái chưa sẵn để lại. Làm mấy cái đã có trước đi" → hỏi rõ 1 điểm cấu trúc trước khi code
+(ET/BTVN cấp 3 đi đâu trong lưới 6 ô mới — mockup dùng chính HS0440 khối 4T làm ví dụ, tức VỐN ĐÃ
+không có ET/BTVN vì là cấp 1) → CEO chốt: **"Cấp 3 chưa dùng màn này"** — bản 6-ô CHỈ áp cho cấp 1,
+cấp 3 giữ NGUYÊN màn cũ (mobile PH-style, không đụng). CEO cũng xác nhận không cần tách 2 màn
+mobile/desktop riêng — 1 layout responsive (đúng breakpoint có sẵn trong file mockup) là đủ.
+
+**Làm — `HocSinhApp.tsx`:**
+- Component `HomeCap1` MỚI — chỉ render khi `cap1 === true` (nhánh riêng, chèn TRƯỚC nhánh cấp 3 cũ,
+  KHÔNG đụng gì code cấp 3). Bảng màu riêng (arbitrary hex Tailwind, KHÔNG dùng `ph-*`/`MAU_BG` cũ).
+- 6 ô ĐÚNG mockup: **Tự luyện** (tím, bấm được → `LamTuLuyen` đã có) · **Bài tập được giao** (xanh
+  dương, "Sắp có" — CEO xác nhận chưa dựng) · **Thông tin học tập** (cyan, bấm được → `ThongTinHocTap`
+  đã có) · **Bảng xếp hạng** (xanh lá, bấm được → `BangXepHang` đã có — dùng ĐÚNG bản `xepHangTuLuyen`
+  hiện có, KHÔNG chờ RPC Elo mới) · **Sự kiện học tập** (cam, "Sắp có") · **Huy hiệu** (hồng, "Sắp có")
+  — 3 ô "Sắp có" `disabled`, KHÔNG hứa tính năng chưa tồn tại (đúng luật §1.5 "thà bỏ trống hơn đánh
+  sai" áp cho UI, không chỉ data).
+- Topbar (logo `/Logo.png` có sẵn + chip, avatar/tên/mã HS) + hero (chào tên, KHÔNG có 2 nút hành
+  động giả "Tiếp tục học"/"Xem lịch" như mockup gốc — không có backend cho "bài đang học gần nhất"
+  hay "lịch hôm nay", bỏ luôn thay vì giả vờ) + lưới 6 ô + footer — bám sát HTML CEO gửi (đọc lại
+  từng giá trị màu/gradient/bo góc/shadow từ file, KHÔNG áng chừng).
+- Responsive: `grid-cols-1 md:grid-cols-2 lg:grid-cols-3` — khớp breakpoint gốc mockup (desktop 3
+  cột → tablet 2 → mobile 1), 1 component DUY NHẤT, không tách 2 màn.
+
+**Verify:** `npx tsc --noEmit` sạch. Browser thật (desktop viewport, dev server riêng port 5190 —
+server chung của session khác đang chiếm port cũ): đăng nhập HS0602 (cấp 1, khối 5) → đúng 6 ô,
+đối chiếu màu từng ô qua `getComputedStyle` khớp CHÍNH XÁC hex mockup (`rgb(240,233,255)`=`#f0e9ff`
+tím... đủ cả 6). Bấm **Tự luyện** → vào đúng `LamTuLuyen`, load 7 câu thật. Bấm **Thông tin học
+tập** → đúng data thật (92%, 26 đạt/5 cần luyện/0 yếu, 5 dạng cần chú ý kèm "5 lần gần nhất"). Bấm
+**Bảng xếp hạng** → đúng trạng thái rỗng thật (chưa ai khối 5 làm tự luyện hôm nay). Resize mobile
+(375px) → `grid-template-columns` co về 1 cột — responsive đúng. Dọn server tạm sau verify.
+
+## 2026-08-21 (tiếp) — Màn cấp 1 "6 Boxes": bé lại — hết cuộn dọc
+
+**Thùy, verbatim:** "Quá to rồi. Màn hình chính phải ko bị kéo lên kéo xuống chứ m phóng to 1 cách
+vô lý thế để làm gì. Cho bé lại đi." — bản trước bám font-size/padding Y NGUYÊN theo mockup HTML
+(vốn thiết kế cho canvas rất rộng, không giới hạn viewport) nên tràn màn hình thật, phải cuộn dọc.
+
+**Sửa:** đổi khung ngoài `min-h-screen` (cao theo NỘI DUNG, tràn thì cuộn) → `h-dvh overflow-hidden
+flex flex-col` (KHOÁ đúng 1 viewport, không bao giờ cuộn). Lưới 6 ô đổi `min-h-[176px]` (cứng, đẩy
+tràn) → `flex-1` (co giãn lấp đúng phần còn lại). Giảm ĐỀU font/padding/gap toàn màn (~40-45%): hero
+`p-7`→`px-4 py-3`, h1 42px→20px, rocket 80px→36px; ô `p-5`→`p-3.5`, icon 52px→34px, tên 19px→14px,
+mô tả 13px→11px; topbar/footer tương tự. Bỏ 1 dòng phụ ("6 khu vực chính...") dưới tiêu đề lưới để
+có thêm chỗ — không đụng bố cục/màu/chức năng, chỉ tỉ lệ.
+
+**Verify:** `npx tsc --noEmit` sạch. Browser thật (1280×720): `document.documentElement.scrollHeight`
+= `window.innerHeight` = **720px CHÍNH XÁC** (`hasVerticalScroll: false`) — hết cuộn hẳn. Cả 6 ô vẫn
+đọc đủ chữ, không ô nào bị cắt nội dung (`scrollHeight` mỗi ô < chiều cao thật hiển thị). Bấm lại
+**Tự luyện** — vẫn vào đúng, không hỏng gì trong đợt sửa tỉ lệ này.
+
+## 2026-08-21 (tiếp) — Sửa LẦN 2: gốc thật là lưới rớt cột, không phải cỡ chữ
+
+**Thùy, verbatim (bực):** "mẹ. t có bảo giảm chữ đâu. vẫn đề là ngay trang chủ đã phải cuộn màn hình,
+m tính size kiểu gì vậy" — sửa lần 1 SAI HƯỚNG: chỉ co font/padding, không đụng NGUYÊN NHÂN THẬT.
+
+**Gốc thật:** lưới 6 ô vẫn giữ breakpoint `grid-cols-1 md:grid-cols-2 lg:grid-cols-3` — "phòng hờ"
+mobile dù Thùy đã chốt ngay từ đầu buổi ("cấp 1 dùng máy tính/ipad, đừng làm UI điện thoại"). Cửa sổ
+hẹp hơn ngưỡng `lg` (1024px) là rớt xuống 1-2 cột → 6 ô xếp 3-4 HÀNG → DÙ CHỮ BÉ CỠ NÀO cũng tràn dọc,
+vì vấn đề là SỐ HÀNG chứ không phải kích thước từng chữ. Sửa lần 1 co chữ nên "có vẻ đỡ" ở đúng 1 cỡ
+màn hình test (1280×720, đủ rộng để vẫn lên 3 cột) nhưng KHÔNG sửa được gốc — hẹp hơn 1 chút là lại
+cuộn y như cũ, và tự ý co chữ dù không ai yêu cầu.
+
+**Sửa đúng gốc:** bỏ hẳn `md:`/`lg:`, khoá **CỐ ĐỊNH `grid-cols-3`** — đúng vì màn này CHỈ dành máy
+tính/iPad (đã chốt), không cần lối thoát mobile. 6 ô LUÔN đúng 2 hàng bất kể cửa sổ rộng bao nhiêu
+(trong khoảng máy tính/iPad) → chiều cao có giới hạn THẬT, `h-dvh`+`flex-1` mới có ý nghĩa. Đồng thời
+**trả cỡ chữ về mức đọc thoải mái** (không phải bản ép nhỏ ở sửa lần 1 — Thùy không yêu cầu chữ bé).
+
+**Verify (3 kích thước thật, không chỉ 1 như lần trước):** browser thật, đăng nhập HS0602 —
+- 1024×768 (laptop/iPad nhỏ nhất còn hợp lý): `scrollHeight`=768=`innerHeight`, 3 cột, KHÔNG cuộn.
+- 1280×800: `scrollHeight`=800=`innerHeight`, KHÔNG cuộn.
+- 1366×768 (laptop phổ biến nhất VN): `scrollHeight`=768=`innerHeight`, 3 cột, KHÔNG cuộn.
+Cả 6 ô vẫn đọc đủ chữ ở cỡ chữ ĐÃ TRẢ VỀ THOẢI MÁI (16px tên ô, 12.5px mô tả — không phải bản ép nhỏ
+9.5-14px của sửa lần 1). Bài học: lần sau gặp "vẫn cuộn dù đã co nhỏ" — nghi cấu trúc lưới/breakpoint
+TRƯỚC, đừng lặp lại hướng "co thêm chữ".
+
+## 2026-08-21 (tiếp) — Sửa LẦN 3: `h-dvh` không được hỗ trợ đúng → đổi `h-screen`
+
+**Thùy test THẬT trên `hs.bkacademy.edu.vn` (deploy production), verbatim:** "T đang phải kéo lên
+xuống trên desktop. m fix kiểu gì đấy" — 2 lần sửa trước verify PASS trên dev server local nhưng vẫn
+cuộn trên bản đã deploy thật.
+
+**Dò tận gốc (không đoán):** mở thẳng `https://hs.bkacademy.edu.vn/` qua Browser pane, xác nhận
+ĐÚNG bản mới nhất đã lên (grep bundle JS: có `grid-cols-3 gap-3` cố định, có `h-dvh`, KHÔNG còn
+`md:grid-cols-2`/`lg:grid-cols-3` cũ — loại trừ khả năng "Vercel chưa deploy"). Đăng nhập thật qua
+form (không phải gọi thẳng supabase như lúc dev) → đo: `document.documentElement.scrollHeight` =
+**828px** trong khi `window.innerHeight` = **720px** — dò xuống từng lớp bằng `getBoundingClientRect()`
+thì chính DIV NGOÀI CÙNG (`.h-dvh`) đã cao **828px chứ không phải 720px** — tức đơn vị CSS `dvh`
+(dynamic viewport height) không được tính đúng trong môi trường render đó, khung tự phình theo NỘI
+DUNG (giống `height:auto`) thay vì khoá theo viewport thật. `dvh` là đơn vị khá MỚI (~2023+), rủi ro
+thật cho máy tính trường học có thể chạy trình duyệt cũ hơn — không phải lỗi riêng của môi trường
+test, mà là lựa chọn CSS chưa đủ AN TOÀN ngay từ đầu (2 lần verify trước "PASS" là vì đúng lúc đó nội
+dung tình cờ vừa khít, không phải vì `h-dvh` hoạt động đúng).
+
+**Sửa:** `h-dvh` → **`h-screen`** (`100vh`, hỗ trợ RỘNG hơn hẳn `dvh`, đủ an toàn cho desktop/iPad —
+màn này không có thanh địa chỉ mobile thu giãn nên không cần bản `dvh` "động" theo browser chrome).
+
+**Verify lại (browser thật, cùng cách đo đã lộ bug ở trên — đo TRỰC TIẾP chiều cao div ngoài cùng,
+không chỉ tin `hasScroll`):** `.h-screen` div cao ĐÚNG 720px (khớp `window.innerHeight`), 1280×720 →
+`scrollHeight`=720, KHÔNG cuộn. 1366×768 → `scrollHeight`=768, KHÔNG cuộn. Nội dung vẫn đọc đủ 6 ô.
+Bài học: 2 lần trước chỉ đo `scrollHeight === innerHeight` ở NGOÀI CÙNG (đúng nhưng chưa đủ) — lần
+này đo thêm chiều cao THẬT của phần tử có class khoá kích thước, phát hiện panel MOCK không khớp
+CSS-unit THẬT đang chạy. Deploy thật (Vercel) là bằng chứng cuối cùng, dev/browser-pane test có thể
+"pass giả" nếu unit CSS không tương thích môi trường — từ nay ưu tiên đơn vị CÓ hỗ trợ rộng hơn khi
+không thật sự cần tính năng riêng của đơn vị mới (`dvh` chỉ đáng dùng khi cần né thanh địa chỉ mobile
+co giãn — không áp dụng cho màn desktop/iPad-only này).
+
+## 2026-08-21 (tiếp) — Sửa LẦN 4 (gốc THẬT): tự test qua NHẦM bundle 3 lần liền
+
+**Deploy lại bản `h-screen`, Thùy chưa kịp báo tiếp — tự kiểm tra lại theo lịch hẹn (ScheduleWakeup)
+trên đúng `hs.bkacademy.edu.vn` production** vì "2 lần trước verify local PASS mà vẫn hỏng thật" nên
+không dám tin verify cũ nữa. Vẫn **cuộn y hệt** (`scrollHeight`=828, `innerHeight`=720 — CHƯA ĐỔI GÌ
+dù đã đổi `h-screen`) — dò kỹ hơn: `getComputedStyle` của `.h-screen` báo `height: 720px` ĐÚNG (CSS
+áp đúng), nhưng `getBoundingClientRect().height` = 828px — 2 phép đo lệch nhau trên CÙNG 1 phần tử,
+chỉ giải thích được bằng **transform/zoom hậu-layout**. Kiểm `document.getElementById('root')` →
+`getComputedStyle(...).zoom` = **1.15** — đúng100% × 1.15 = 828 (khớp tuyệt đối con số đã đo).
+
+**GỐC THẬT (đã tồn tại từ lúc dựng bundle riêng, 3 lần sửa trước đều KHÔNG chạm tới):** `index.css`
+có `:root { --app-z: 1.15 }` (fallback, comment gốc ghi rõ "nếu JS chưa chạy") + `#root { zoom:
+var(--app-z) }` áp DỤNG VÔ ĐIỀU KIỆN cho MỌI bundle import file này (cả app staff lẫn app HS riêng
+đều dùng chung `index.css`). App staff (`main.tsx`) chạy `fitZoom()` ghi đè `--app-z` theo bề rộng
+màn NGAY khi load; bundle HS (`main-hs.tsx`, dựng lúc tách `hs.bkacademy.edu.vn`) **cố ý bỏ fitZoom**
+(đúng — "mật độ desktop staff, HS không cần") nhưng QUÊN rằng bỏ fitZoom = giá trị FALLBACK 1.15
+tồn tại VĨNH VIỄN, không có gì ghi đè về 1 — `#root` zoom 115% suốt, không liên quan gì `h-dvh`/
+`h-screen`/lưới-cột đã sửa ở 3 lần trước.
+
+**Vì sao 3 lần verify trước "PASS" giả:** cả 3 lần đều chạy `npx vite --port XXXX` KHÔNG chỉ định
+`--config` → mặc định phục vụ `index.html`/`main.tsx` (APP STAFF), không phải `hs.html`/`main-hs.tsx`
+(bundle THẬT deploy lên `hs.bkacademy.edu.vn`). App staff CÓ sẵn dòng undo riêng cho nhánh HS
+(`App.tsx`: `<div style={{zoom:'var(--app-unz)'}}>` bọc `HocSinhApp`) nên test qua đường đó luôn ra
+đúng — sai KHÔNG PHẢI vì môi trường test giả, mà vì **test nhầm bundle** suốt 3 lần liền.
+
+**Sửa:** `main-hs.tsx` — `document.documentElement.style.setProperty('--app-z', '1')` NGAY trước
+`createRoot(...).render(...)` — ghi đè fallback 1.15 về 1 (inline style thắng `:root{}` theo cascade
+bình thường), không đụng `index.css`/app staff (giữ nguyên `fitZoom` + zoom-undo của App.tsx).
+
+**Verify ĐÚNG bundle lần này** (`npm run build:hs` → `vite preview --config vite.config.hs.ts`,
+KHÔNG phải `npx vite` trần): đăng nhập thật qua FORM (không gọi thẳng supabase như trước — bundle
+production không serve `/src/*.ts` raw) → `--app-z`=`1`, `root zoom`=`1`, `scrollHeight`=`innerHeight`
+ở CẢ 1280×720 VÀ 1366×768 — hết cuộn thật. Bài học ghi riêng: **luôn build+preview ĐÚNG config khi
+verify 1 bundle tách riêng** (`--config vite.config.hs.ts`), không dùng lệnh `vite` mặc định rồi tin
+kết quả áp cho bundle khác — 3 lần sửa trước đều đúng về mặt code (h-screen/3-cột) nhưng KHÔNG PHẢI
+gốc vấn đề, chỉ vì chưa từng thực sự chạy qua đường build sẽ deploy.
+
+## 2026-08-22 — Màn cấp 1 "6 Boxes": port tỉ lệ từ mockup Thùy gửi + đổi khung "làm bài" sang desktop
+
+**Thùy sau khi hết cuộn (22/08):** "các hộp ở màn hình quá to còn chữ trong hộp quá nhỏ, cân đối lại
+đi. Tỉ lệ không đẹp tý nào hết" → rồi gửi thẳng file `BK_Academy_Student_Desktop.html` kèm "desktop
+tỉ lệ nó kiểu như này này" — quyết định KHÔNG tự đoán cỡ lần 3 nữa, port THẲNG số đo từ file Thùy gửi.
+
+**`HomeCap1` (HocSinhApp.tsx):** hero đổi sang bố cục 2 cột (chữ trái, art 🚀 phải, `grid-template-
+columns: minmax(0,1fr) 310px`, `min-h-[190px]`) — bỏ 2 nút CTA "Tiếp tục học/Xem lịch" trong mockup vì
+backend chưa có 2 tính năng đó (không dựng nút giả không chức năng thật). Thêm tiêu đề section "Khu
+vực học tập". Lưới 6 ô port ĐÚNG số đo mockup: `min-h-[208px]`, icon 58px/30px, tiêu đề 21px, mô tả
+13px, pad 24px (`p-6`), gap 18px. **Bỏ khoá `h-screen overflow-hidden`** (khác 4 lần sửa trước) — đổi
+sang `min-h-screen` cuộn tự nhiên, vì mockup GỐC của Thùy vốn không ép vừa 1 màn hình (`.page` không
+giới hạn chiều cao) — đo thật sau khi port: **943px nội dung ở viewport 1280×800/1366×768 → cuộn nhẹ
+~140-175px**; 1920×1080 vừa khít không cuộn. Đây LÀ tỉ lệ Thùy gửi, không phải bug — báo lại để Thùy
+xác nhận có chấp nhận cuộn nhẹ trên laptop 13-14" hay muốn ép chặt hơn nữa.
+
+**"Làm bài bên trong cũng phải đổi, ko để giao diện điện thoại nữa":** thêm prop `desktop?: boolean`
+cho `LamBai`/`LamTuLuyen`/`ThongTinHocTap` (mặc định `false`/không truyền = giữ NGUYÊN khung điện
+thoại cũ — cấp 3 vẫn dùng `LamBai` cho BTVN/ET/giáo trình qua `active`, và `LamTuLuyen`/`ThongTinHocTap`
+qua ô lưới mobile cũ, `tu_luyen`/`thong_tin` KHÔNG cap1-exclusive). `LamBai` giữ NGUYÊN 1 khối JSX nội
+dung câu hỏi (`trongTam` — TN/ĐS/TLN/chấm/lời giải) dùng chung cho cả 2 khung, chỉ đổi vỏ ngoài (bề
+rộng/nền/bo góc/cỡ nút) theo `desktop` — tránh tách 2 bản logic dễ lệch nhau về sau. `BangXepHang` đổi
+khung DESKTOP LUÔN (không cần prop) vì chỉ vào được từ `HomeCap1` (cap1-exclusive, xem `KHU_CHI_CAP1`).
+Dispatch ở `HocSinhApp`: `desktop={!!cap1}` cho `LamTuLuyen`/`ThongTinHocTap`.
+
+**Verify:** `tsc --noEmit` sạch, `npm run build:hs` sạch. Không có tài khoản HS test nào biết mật khẩu
+hiện tại trong phiên này (script reset mật khẩu `_reset_hs_ve_mac_dinh.mjs --write` bị auto-mode
+classifier chặn — sửa mật khẩu tài khoản thật, đúng nên chặn) → verify qua **cổng preview tạm** (export
+`HomeCap1`/`LamBai`/`ThongTinHocTap`/`BangXepHang` + nhánh `?preview=` trong `AppHS.tsx`, KHÔNG đụng
+DB/auth) render trực tiếp qua `vite preview --config vite.config.hs.ts`, đo bằng JS thật trong browser
+(không đoán): grid 6 ô đúng 3×417px đều nhau, không tràn ngang; `scrollHeight` khớp tính toán tay ở cả
+3 kích thước. Xong thì **revert sạch cổng preview tạm** (bỏ `export`, trả `AppHS.tsx` về nguyên bản) —
+không phải code sẽ deploy. `LamBai` desktop chưa verify được bằng mắt (cần `baiTestId` thật, preview
+giả không có data) — tin vào cùng pattern class đã verify đúng ở `HomeCap1`/`ThongTinHocTap`, Thùy nên
+tự bấm thử "Tự luyện" 1 lần trên `hs.bkacademy.edu.vn` sau khi deploy để chốt.
+
+**Merge + deploy (22/08):** merge nhánh vào `main`, push — verify THẬT trên `hs.bkacademy.edu.vn` bằng
+session HS0602 còn đăng nhập sẵn trong browser: bundle mới lên đúng (asset hash đổi, phải gỡ Service
+Worker cache cũ mới thấy — lặp lại đúng bài học 21/08), `scrollHeight`=943px khớp y hệt đo local ở
+1280×800, mở "Tự luyện" (LamBai desktop) với data thật → card rộng 768px (khung desktop mới), không
+còn dải 448px kiểu điện thoại.
+
+**Thùy phát hiện: "t ko thấy nút đăng xuất tài khoản"** — ĐÚNG, `HomeCap1` port từ mockup vốn chỉ vẽ
+mũi tên dropdown cạnh avatar (chưa nối chức năng gì, y hệt file gốc Thùy gửi), không có nút Thoát nào
+— cấp 3 (màn lưới cũ) có sẵn nút "Thoát" riêng nhưng `HomeCap1` không tái dùng nhánh đó. Thêm nút
+"Thoát" cạnh khối tên/avatar trong topbar, gọi thẳng `supabase.auth.signOut()` (đã import sẵn ở đầu
+file) — ĐÚNG style icon-button squircle nổi dùng chung toàn màn. Verify qua cổng preview tạm (export
+`HomeCap1` + nhánh `?preview=` ở `AppHS.tsx`, revert sạch sau khi thấy nút "Thoát" render đúng) —
+không đăng nhập thật lần này (không cần, thuần thêm 1 nút UI, không đụng logic nào khác).
+
+## 2026-08-22 — Duyệt chấm online: nút "Sửa trong Kho" (bàn trước, chốt xong mới code)
+
+**Thùy:** khi HS làm bài báo về Duyệt chấm, muốn bấm vào xem TOÀN BỘ câu hỏi/đáp án đúng bản trong
+Kho và sửa luôn tại đó, tự cập nhật Kho. Bàn trước khi code — 2 điểm chốt:
+1. Sửa Kho chỉ ảnh hưởng **đề phát SAU này** (snapshot `bai_test_cau` bất biến, đúng nguyên tắc sẵn
+   có) — lượt báo sai ĐANG XEM vẫn xử lý thủ công tách biệt bằng "Chấp nhận đúng"/"Vẫn sai" như cũ,
+   KHÔNG gộp 2 hành động làm 1.
+2. Hỏi thêm "có logic bổ sung đáp án đúng (kiểu 3200 vs 3 200) để lần sau khỏi báo lỗi không" — trả
+   lời: **ĐÃ CÓ SẴN**, không cần xây: `gradeTraLoiNgan`→`smartCheckTLN` (testgrade.js) tự chuẩn hoá
+   khoảng trắng/đơn vị/số thập phân trước khi so key (nên "3200"/"3 200" đã khớp từ vòng 1); ca không
+   chuẩn-hoá-gộp-được thì nút "Chấp nhận đúng" đang có sẵn ghi vào `question_accepted_answers`,
+   `traLoiCau` (testonline.ts:286-289) check cache này (`tln_cache_check` RPC, cũng qua `smartNormalize`)
+   TRƯỚC khi trả 'wrong' — nên bài sau tự đúng ngay, không cần duyệt lại. Không code gì thêm cho ý 2.
+
+**Code ý 1** — `src/lib/kho/api.ts`: thêm `findCauInKho(ma_cau)` — dò **CẢ 3 bảng** kho câu hỏi
+(`dai_cau_hoi`/`khtn_cau_hoi`/`hgt_cau_hoi`, lấy tên từ `CUM_TBL` có sẵn, không hard-code list mới)
+thay vì đoán bảng theo tiền tố `ma_cau` — **đã kiểm DB thật và tiền tố KHÔNG đáng tin**: mẫu đầu tưởng
+`dai_cau_hoi` toàn số/`khtn` bắt đầu 'K'/`hgt` bắt đầu 'T', nhưng dò trên 5 câu TLN đang sai THẬT thì
+`dai_cau_hoi` cũng có mã bắt đầu `T14T...` — đúng bài học CLAUDE.md "không suy luận từ mẫu nhỏ, dò
+DB thật". `bai_test_cau.ma_cau` là text KHÔNG FK (đúng cảnh báo CLAUDE.md §2) nên trả `null` rõ ràng
+nếu không thấy ở bảng nào (câu đã mất/mã sai) thay vì giả định.
+
+**Wiring** `DuyetChamScreen.tsx`: thêm nút "✏️ Sửa trong Kho" ở header mỗi nhóm câu (KHÔNG phải mỗi
+đáp án — sửa Kho là ở cấp CÂU) → `onSuaKho` gọi `findCauInKho`, chặn nếu không thấy hoặc `xoa_at`
+đã set (câu đã bị xoá khỏi Kho — không sửa "hồi sinh" ngầm ở đây), rồi mở thẳng **`CauModal`** (export
+từ `kho/DangHub.tsx`, TÁI DÙNG y nguyên form sửa câu đã có — không vẽ form mới) với `cauTbl` đúng vừa
+resolve. `onSaved` chỉ đóng modal + flash — không reload danh sách báo sai (Kho đổi không ảnh hưởng gì
+tới các dòng đang hiện, đúng chốt ý 1).
+
+**Verify:** `tsc --noEmit` sạch cả 2 lần sửa (api.ts + DuyetChamScreen.tsx), `npm run build` (bundle
+staff mặc định) sạch. Test màn Duyệt chấm cần đăng nhập staff thật — không có tài khoản trong phiên
+này (giống hạn chế HS trước đó, không tự ý reset mật khẩu ai) — verify thay bằng: query DB thật lấy
+5 câu TLN đang bị chấm sai thật, chạy đúng logic `findCauInKho` (dò 3 bảng) bằng tay → khớp đúng cả
+5/5, đúng nội dung/đáp án khớp bản snapshot. Thùy nên tự bấm thử 1 lần trên ERP thật để chốt UI/UX
+(vị trí nút, modal mở đúng câu) trước khi coi là xong hẳn.
+
+## 2026-08-22 — BUG KHẨN: giáo trình phát hành "đổi câu và thứ tự" — cấp 3, lớp 10A1
+
+**Thùy báo (đang chặn buổi thật):** "phát hành tài liệu thì nó phải giống hệt lúc gán chứ sao lại tự
+ý đổi câu và thứ tự... vừa phát hành giáo trình 10A1 thấy không giống."
+
+**Điều tra (Explore agent, không đoán):** DATA hoàn toàn ĐÚNG — `trichXuatBuoi`/`copyPhanInto`
+(tailieu.ts:500-504,593-634, hàm "gán") copy THẲNG `ma_cau`+`thu_tu` từ tài liệu gốc, KHÔNG phải
+query-tiêu-chí-rồi-suy-lại. `phatHanhTest` (testonline.ts:69-179) ghi `bai_test_cau` ĐÚNG y nguyên
+thứ tự đó (vòng `for` tăng dần `thu_tu`, không xáo). **Gốc bug nằm ở màn HIỂN THỊ phía học sinh**:
+`LamBai` (HocSinhApp.tsx — dùng chung cho `giao_trinh`+`btvn`, khác `LamET` dùng riêng cho `et`/`de_thi`)
+LUÔN xáo thứ tự câu (`seededPermByDang`) + thứ tự đáp án (`seededShuffleWithOrig`) theo seed
+(HS×bài), KHÔNG có cờ tắt nào — đây là tính năng CHỐNG LIẾC BÀI Thùy tự yêu cầu từ 05/07 ("2 HS ngồi
+cạnh nhau không được thấy giống hệt"). `LamET` đã được thêm ngoại lệ 18/08 (commit `08b8321`, "có mã
+đề rồi thì không xáo nữa" — dựa vào `test.co_nhieu_ma_de`) nhưng ngoại lệ đó CHƯA BAO GIỜ áp dụng cho
+`LamBai`/giáo trình. **Không phải regression — là 1 khoảng chưa đồng bộ giữa 2 luồng từ đầu.**
+
+**Fix (`HocSinhApp.tsx`, hàm `LamBai`):** thêm `khoaThuTuGoc = full?.baiTest.loai === 'giao_trinh'` —
+khi đúng, cả xáo câu (`caus`) LẪN xáo đáp án hiển thị (`optsShown`/`menhOrder`) đều BỎ QUA, dùng thẳng
+thứ tự gốc từ `full.caus`/`cau.lua_chon`/`menhDe`. **CHỈ áp cho `giao_trinh`** — `btvn`/`tu_luyen` vẫn
+xáo như cũ (đúng nghĩa đen câu Thùy chỉ nhắc "giáo trình"; BTVN làm ở nhà mỗi em 1 giờ khác nhau nên lo
+ngại liếc bài gốc 05/07 vẫn còn hợp lý — CHƯA tự ý tắt luôn cho BTVN, cần Thùy xác nhận riêng nếu muốn).
+
+**⚠ Đánh đổi cần Thùy biết:** tắt xáo cho giáo trình = quay lại đúng tình huống 05/07 Thùy từng lo
+("2 HS ngồi cạnh liếc bài giống hệt nhau") — vì giáo trình vốn không có cơ chế mã-đề như ET. Ưu tiên
+theo yêu cầu MỚI NHẤT (giống hệt bản gán) vì đây là chỉ đạo rõ ràng, khẩn, đang chặn buổi thật — nhưng
+đây là đánh đổi thật, không phải free lunch, nói rõ để Thùy cân nhắc nếu sau này thấy liếc bài lại.
+
+**Verify:** `tsc --noEmit` + `npm run build` (staff) + `npm run build:hs` đều sạch. Đổi trong hàm thuần
+(`useMemo` gate theo `khoaThuTuGoc`), đúng chỗ agent xác định, không đụng luồng gán/phát hành (vốn đã
+đúng). Merge + deploy ngay do đang chặn buổi thật — chưa kịp test end-to-end qua tài khoản HS thật của
+1 lớp có giáo trình phát hành, Thùy tự mở lại 10A1 xác nhận sau khi deploy.
+
+## 2026-08-23 — Audit + siết logic candidate "Duyệt bổ trợ": OR→≥2/4, fix bug recency chuyên đề
+
+**Khởi nguồn:** Thùy chỉ ra ca cụ thể "Nguyễn Hải Minh Châu 8S1" lọt vào "Duyệt bổ trợ" dù học tốt
+(so TB lớp toàn ngang/trên trung bình, thái độ sạch, không dạng yếu) — chỉ vì kênh ① trend bắt được
+1 chuyên đề tụt nhẹ đạt(1.00)→cần luyện(0.83), Δ=0.17, không hề kéo theo đổi đề xuất level (vẫn
+L0→L0). Đo thật 300 HS Toán/36 lớp lúc đó: **217/300 = 72,3%** roster lọt vào hàng đợi — quá tải,
+kênh trend đóng góp nhiều nhất (158/217).
+
+**Thùy chốt hướng: bỏ hẳn kênh trend "nhẹ" hiện tại, thay bằng 4 tín hiệu dữ liệu RÕ RÀNG, target
+~30% roster:**
+1. Chuyên đề tụt **QUA NGƯỠNG bucket** (đạt→cần luyện HOẶC cần luyện→yếu, pha 2 so chính mình) — "qua
+   ngưỡng là cần đưa vào", không cần delta lớn (bàn nhiều vòng, chốt KHÔNG siết biên độ riêng).
+2. **% dạng yếu** / tổng dạng đã đo > mốc (quét 10/15/20% để chọn).
+3. **ET-only**: TB **4 buổi** ET gần nhất < 90% TB lớp cùng 4 buổi (average-vs-average, KHÔNG gộp MT/
+   BTVN như kênh ⑤ cũ) — Thùy chốt "trung bình dưới ngưỡng thôi, xét 4 buổi gần nhất".
+4. **MT-only**: bài MT **gần nhất** (gate n≥1, KHÔNG đòi n≥3 như dạng) < 90% TB lớp bài đó — Thùy:
+   "MT là test tháng, 1 tháng 1 lần nhưng là bài quan trọng. Khung nào có MT thì dựa MT là chính".
+   Đo thật: MT rất thưa (TB 0,73 bài/HS, 0% HS có ≥3 bài MT) — gate n≥3 sẽ vô hiệu hoá kênh này hoàn
+   toàn, đúng như lo ngại ban đầu, nên giữ n≥1.
+- Báo động ③④ (chuông đỏ TA / lỗ tiên quyết GV) **giữ nguyên, không đổi** — flag cứng của người.
+
+**BUG THẬT tìm ra giữa chừng, đã FIX vào code (`src/lib/danhgia.ts`, hàm `getStatSheetLop`):** kênh ①
+(chuyên đề pha 2) lấy "2 mốc gần nhất CÓ DATA" làm truoc/sau, KHÔNG ràng buộc mốc "sau" phải là cửa sổ
+HIỆN TẠI — nếu 1 chuyên đề lâu rồi chưa đo lại (vd từ tháng 7), hệ vẫn dùng dữ liệu cũ đó để kết luận
+"đang tụt" HÔM NAY. Đo thật: chỉ 27,4% số lần "tụt" đang dùng đúng cửa sổ hiện tại (`2026-08-B`), còn
+lại dùng `2026-08-A`/`2026-07-B`/thậm chí `2026-07-A`. Đây là biến thể của lỗi CLAUDE.md §5 "chưa-đo ≠
+yếu" — ở đây là **"chưa-đo-LẠI ≠ đang-tụt"**. **Đã fix**: `chamPha2` giờ CHỈ tính khi cửa sổ "sau" là
+cửa sổ hiện tại hoặc liền trước (`cuaSoHienTaiVal`/`cuaSoTruoc(cuaSoHienTaiVal)` tính 1 lần đầu hàm,
+so sánh trước khi gọi `chamPha2`). `tsc` sạch, `verify_danhgia.mjs` 77/77 pass (fix nằm ở service
+layer, không đụng pure engine). Fix KHÔNG đổi nhiều % tổng (kênh 1 riêng: 46,7%→41,7%) vì đa số hits
+vốn đã nằm trong 2 cửa sổ gần nhất — nhưng là fix ĐÚNG về nguyên tắc, độc lập với bài toán %.
+
+**Calibrate từng kênh + kết hợp (300 HS Toán, nhiều lần chạy trên data SỐNG nên số dao động ±5-8 điểm
+%, không phải lỗi tính — có người đang chấm/nhập điểm song song lúc t đo):**
+- Kênh 1 một mình (chỉ qua ngưỡng, chưa thêm gì): 35-47% tuỳ lần chạy.
+- Test thêm điều kiện phụ **"VÀ delta > X"**: 0.1 gần như không đổi gì (131→128, chỉ loại vài ca sát
+  biên như 0,83→0,75). Quét 0→0,3: delta>0,2 cho ra ~31% (riêng kênh 1) — **Thùy chốt KHÔNG thêm điều
+  kiện delta này** (giữ đúng "qua ngưỡng là đủ", chấp nhận % kênh 1 riêng cao).
+- Kênh 2 quét mốc: >10%→~28% · >15%→~16-18% · >20%→~11-12%.
+- Kênh 3 (ET): ~217-228/300 đủ dữ liệu (≥4 buổi ET) — trong đó dính ~13-14% toàn roster.
+- Kênh 4 (MT): chỉ ~33-44% roster CÓ bài MT nào (đúng dự đoán độ thưa) — trong đó dính ~7-10% toàn
+  roster.
+- **Kết hợp kiểu OR (1-trong-4/5 là đủ) luôn ra 49-58%** dù chỉnh ngưỡng kênh nào — không nhạy tham
+  số, vì bản chất toán học của phép hợp (union) với nhiều kênh mỗi kênh đã ở mức 10-40%.
+- **Đổi logic kết hợp sang "≥2-trong-4 kênh HOẶC báo động ③④"** mới thực sự nhạy và về gần mục tiêu:
+  phân bố đúng-N-tín-hiệu (mốc kênh2=15%): {0 tín hiệu: 51%, đúng 1: 27%, đúng 2: 12%, đúng 3: 8%, đúng
+  4: 2%}. Tổng "≥2 HOẶC báo động": **kênh2=15% → 80/300 = 26,7%** · **kênh2=10% → 91/300 = 30,3%**
+  (chạm rất sát mục tiêu 30% ban đầu của Thùy).
+
+**Phân tích CẶP (Jaccard overlap, kênh2=10%) để hiểu độ độc lập giữa các kênh** — dữ liệu 1 lần chạy,
+n kênh1=87·kênh2=81·kênh3=45·kênh4=34: K1×K2 Jaccard 28,2% (2 kênh lớn nhất, trùng nhiều nhất về số
+tuyệt đối nhưng vẫn ~90 HS chỉ dính đúng 1/2) · K3×K4 Jaccard 17,9% (**độc lập nhất** — 2 nguồn đo
+tách biệt thật) · **K2×K4: 76,5% số HS dính kênh 4 (MT) CŨNG đã dính kênh 2** — MT đóng góp giá trị
+riêng RẤT ÍT (đa số ca nó bắt được đã bị kênh 1/2 bắt trước), nhưng vẫn giữ vì logic ≥2 cần nó làm
+"phiếu bầu" thứ 2 cho những ca kênh khác chưa đủ mạnh.
+
+**CHỐT TẠM (chưa code vào `listCandidatesLop`/`DuyetBoTroYeuScreen`, Thùy sẽ tự review học sinh cụ
+thể trước khi wire logic thật):**
+```
+Báo động ③④ (chuông đỏ/lỗ tiên quyết) → vào ngay, không điều kiện.
+4 kênh dữ liệu, cần ≥2/4 cùng chạm:
+  1. Chuyên đề tụt qua ngưỡng bucket (đạt→cần luyện / cần luyện→yếu), pha 2, KHÔNG thêm điều
+     kiện delta. Recency đã fix (sau = cửa sổ hiện tại hoặc liền trước) — LUÔN áp dụng, không
+     phải tham số để bàn thêm.
+  2. % dạng yếu / tổng dạng đã đo > 10%.
+  3. ET-only: TB 4 buổi ET gần nhất < 90% TB lớp cùng 4 buổi.
+  4. MT-only: bài MT gần nhất (n≥1) < 90% TB lớp bài đó.
+Kết hợp: (≥2 trong 4 kênh) HOẶC báo động ③④.
+Đo thật gần nhất: 91/300 = 30,3% roster Toán.
+```
+Scripts calibrate để lại trong `scripts/_diag_*.ts` (không xoá, dùng `npx vite-node scripts/
+_diag_calib_final.ts` để chạy lại đo % bất kỳ lúc nào cần kiểm tra tiếp — có sẵn cross-tab từng cặp
+kênh). Việc còn lại: Thùy review thủ công vài ca cụ thể xem logic ≥2/4 có bắt đúng người không, rồi
+mới viết vào `deXuatLevelKienThuc`/`listCandidatesLop`/`DuyetBoTroYeuScreen` thật.
+
+## 2026-08-23 (tiếp) — Wire logic ≥2/4 vào code thật, bắt thêm 1 bug lúc code (doiLevel bypass)
+
+Thùy chốt "kênh 2 = 10%" + "ghi devlog" xong yêu cầu "merge đi để t review học sinh thật" → code
+logic đã chốt ở trên vào thẳng `listCandidatesLop`/`getStatSheetLop` (`src/lib/danhgia.ts`) và
+`bucketOfScore`/`BUCKET_RANK` export (`src/gami/danhgia.js`), KHÔNG chỉ dừng ở script mô phỏng.
+
+**Thêm vào `getStatSheetLop`:** `coSoLopET`/`coSoLopMT` (2 field MỚI trên `StatSheetHS`) — tách
+riêng khỏi `soLopKem`/`coSoLopKem` cũ (kênh ⑤ gộp ET+MT+BTVN, 80%, 3-bài) vì `coSoLopKem` VẪN đang
+nuôi `deXuatLevelKienThuc` (máy đề xuất LEVEL) — không đụng, giữ nguyên hành vi cũ ở đó. 2 field mới
+chỉ phục vụ candidate-list: `coSoLopET` = TB 4 buổi ET gần nhất <90% TB lớp (gate n≥4 buổi),
+`coSoLopMT` = bài MT GẦN NHẤT (gate n≥1) <90% TB lớp.
+
+**Viết lại `listCandidatesLop`:** kênh ① đổi từ "bất kỳ tụt nào" (`cham.huong==='lui'`) sang "tụt
+QUA NGƯỠNG bucket" (dùng `bucketOfScore`+`BUCKET_RANK` mới export từ `gami/danhgia.js`). Kênh ⑤ cũ
+tách 2: `so_lop_et`/`so_lop_mt`. Thêm kênh MỚI `pct_yeu` (%dạng yếu/tổng dạng đã đo >10%). Điều kiện
+lọt vào ĐỔI HẲN: từ "1 trong N kênh là đủ" sang "≥2/4 kênh dữ liệu HOẶC báo động ③④".
+
+**BUG THẬT bắt được lúc verify bằng `listCandidatesLop` THẬT (không phải script mô phỏng nữa):** số
+đo ra 145/300 = 48,3% cho "Duyệt bổ trợ" — CAO HƠN HẲN 30,3% đã calibrate bằng script riêng. Truy
+ra: code cũ giữ `doiLevel` (đề xuất level từ `deXuatLevelKienThuc` khác level hiện tại) làm ĐIỀU
+KIỆN LỌT VÀO ĐỘC LẬP, y hệt logic cũ — mà `deXuatLevelKienThuc` vẫn dùng `dien`/`coSoLopKem` CŨ
+(lỏng, chưa siết) làm input, nên `doiLevel` fires y hệt tần suất cũ, mở LẠI đúng cái cửa mà cả buổi
+tính toán vừa đóng — **63/300 HS lọt vào CHỈ vì `doiLevel`, không đủ ≥2/4, không báo động** (đo
+bằng `_diag_debug_gap.ts`). Bài học: siết 1 tầng (candidate-list) mà quên tầng khác (level-engine
+input cũ) vẫn đang rò vào qua đường tắt — số liệu calibrate bằng script RIÊNG không tự động đúng khi
+wire vào code thật nếu code thật còn đường vào khác không có trong script mô phỏng.
+
+**Fix:** phân biệt "MỞ case MỚI" (phải qua ≥2/4, đây là chỗ đã lỏng) vs "case ĐÃ MỞ cần xử tiếp"
+(`levelKienThuc > 0` VÀ đề xuất khác — không qua ≥2/4, vì đây không phải phát-hiện-mới mà là quản lý
+case đang chạy, ẩn đi sẽ kẹt case không ai thấy để đóng). Đổi tên logic thành `caseDangMoCanXu`, gộp
+vào `duTinHieuKienThuc` — field MỚI export thẳng trên `Candidate` để UI dùng trực tiếp, KHÔNG suy
+luận lại từ `kenh` (bug PHỤ thứ 2 bắt được cùng lúc: `DuyetBoTroYeuScreen.tsx` cũ lọc bằng
+`kenh.some(k => k !== 'thai_do')` — sai vì giờ 1 kênh riêng lẻ VẪN được push vào `kenh` để hiện lý
+do dù chưa đủ ≥2/4, nên check "có kênh nào khác thái độ" không còn đồng nghĩa "đủ tín hiệu" nữa).
+
+**Số liệu sau khi fix cả 2 bug (1 lần chạy, snapshot đồng nhất):** Dashboard (gồm thái độ) 167/300 =
+55,7% · "Duyệt bổ trợ" (`duTinHieuKienThuc`) 95/300 = **31,7%** — khớp sát mục tiêu ~30% đã calibrate.
+Breakdown: 84 vào vì ≥2/4 kênh · 11 vì báo động · 0 vì case-đang-mở · 0 không giải thích được.
+
+**Verify:** `tsc --noEmit` sạch · `verify_danhgia.mjs` 77/77 pass · live qua dev server thật (port
+5210, đăng nhập admin thật) — "Duyệt bổ trợ" hiện **"66 ca"** (Toán, tất cả khối — trước đây badge
+này từng hiện "209 ca" ở phiên làm UI cùng ngày) · "Dashboard học tập" (consumer thứ 2 của cùng
+`listCandidatesLop`) vẫn render đúng, không lỗi console ở cả 2 màn.

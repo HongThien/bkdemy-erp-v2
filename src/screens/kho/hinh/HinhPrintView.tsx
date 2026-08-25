@@ -15,7 +15,8 @@ import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
 import { MathText } from '../ui'
 import { type CheDoHinh } from '../../../lib/kho/hinhGiaoTrinh'
-import { CHROME_CSS, buildPagedCss, gtPageCss, printWithFilename, safeFileName } from '../../tailieu/PrintView'
+import { CHROME_CSS, buildPagedCss, gtPageCss, printWithFilename, safeFileName, GT_BK_CSS } from '../../tailieu/PrintView'
+import { BK_CSS, BK_PAGE_CSS, ETHeaderBK, BtvnBkHead } from '../../tailieu/bkPrint'
 
 // ── Model bản in ──────────────────────────────────────────────────
 // Một BƯỚC con = node ẨN nở vào lời giải một ý (bản GV). Đứng TRƯỚC lời giải chính, sắp cap↑.
@@ -47,9 +48,30 @@ export type BanIn = {
   // ⭐ 08-10 (Thùy: "lý thuyết in ở phiếu bài tập trên lớp giống bên đại"): lý thuyết CỦA MÔ HÌNH, resolve
   // sẵn ở banInTheoMoHinh (CHỈ phan='lop' — khuôn Đại: LT chỉ hiện ở buổi trên lớp, không lặp lại ở BTVN).
   moHinhLyThuyet?: Record<string, { ten: string; noiDung: string }>
+  // ⭐ 21/08 — chỉ dùng khi in perHS (ET): lớp + ngày hiện ở ETHeaderBK (pill góc phải + ô "Lớp"),
+  // KHÔNG nhét vào `tieuDe`. Các đường gọi khác (giáo trình/ôn tập) không cần set 2 field này.
+  lop?: string
+  ngay?: string
+  // ⭐ 24/08 (Thùy: "header BTVN linh tinh, làm giống hệt form Đại đi") — bản "Về nhà" dùng ĐÚNG
+  // BtvnBkHead của Đại (masthead .gtbk-mh* + ô Họ tên/Lớp/Điểm) thay vì masthead `hpmh` chung, và
+  // Lớp/Ngày phát/Hạn nộp lên PILL CÓ CẤU TRÚC (như Đại) — KHÔNG nhét chung vào `tieuDe` nữa.
+  // `tieuBai` = tiêu đề buổi TRẦN (vd "Buổi 2 : Hình thang"), khác `tieuDe` (tên file đầy đủ dùng ở
+  // toolbar/tải về, vd "BTVN 8B1 27/08/2026 · Buổi 2 : Hình thang") — Đại cũng tách 2 field y hệt vậy
+  // (docTitle vs buoiTitle, xem PrintView.tsx).
+  laBtvn?: boolean
+  tieuBai?: string
+  ngayNop?: string
 }
 
-export default function HinhPrintView({ ban, onClose }: { ban: BanIn; onClose: () => void }) {
+// ⭐ 22/08 (Thùy: "làm nốt cho giống Đại — In nhanh"): `headless` = khuôn PrintView.tsx của Đại — ẩn
+// toolbar, dựng xong TỰ gọi window.print() (native, không upload gì), đóng khi hộp thoại in đóng
+// (`afterprint`). `onReady`/`onRenderErr` = tín hiệu cho worker gen-link PDF (PrintJobPage.tsx bridge
+// sang `window.__pvState`) — KHÔNG kèm headless (worker chụp bản preview bình thường qua page.pdf(),
+// toolbar tự ẩn nhờ class `no-print` sẵn có, đúng cách Đại làm — xem worker/index.mjs processHinhJob()).
+export default function HinhPrintView({ ban, onClose, perHS, headless, onReady, onRenderErr }: {
+  ban: BanIn; onClose: () => void; perHS?: HinhPerHS[]
+  headless?: boolean; onReady?: () => void; onRenderErr?: (msg: string) => void
+}) {
   const [gv, setGv] = useState(false)      // bản GV = kèm lời giải + hình đáp án
   const [pages, setPages] = useState(0)
   const [rendering, setRendering] = useState(true)
@@ -80,7 +102,7 @@ export default function HinhPrintView({ ban, onClose }: { ban: BanIn; onClose: (
     // trước. Dùng thẳng gtPageCss (đã export) thay vì chép lại CSS — cùng 1 nguồn, Hình tự động khớp
     // Đại nếu sau này đổi màu/kiểu dải, không phải sửa 2 nơi.
     const css = buildPagedCss({ ten: ban.tieuDe, khoi: '' }, { header: 'none', footer: 'none' }, '#0f766e')
-      + gtPageCss('') + HINH_CSS
+      + gtPageCss('') + HINH_CSS + (perHS ? BK_CSS + BK_PAGE_CSS : '') + (ban.laBtvn ? BK_CSS + GT_BK_CSS : '')
     const cssUrl = URL.createObjectURL(new Blob([css], { type: 'text/css' }))
     const html = src.innerHTML
     // Cùng cách chống race của PrintView: mỗi run một container riêng, resolve xong mới ẨN container
@@ -91,7 +113,8 @@ export default function HinhPrintView({ ban, onClose }: { ban: BanIn; onClose: (
     watchdog = setTimeout(() => {
       if (settled || cancelled) return
       settled = true; container.style.display = 'none'
-      setLoi('Dựng trang quá lâu (>30s) — đóng rồi thử lại.'); setRendering(false)
+      const msg = 'Dựng trang quá lâu (>30s) — đóng rồi thử lại.'
+      setLoi(msg); setRendering(false); onRenderErr?.(msg)
     }, 30000)
     new Previewer().preview(html, [cssUrl], container)
       .then((flow: { total?: number }) => {
@@ -100,17 +123,51 @@ export default function HinhPrintView({ ban, onClose }: { ban: BanIn; onClose: (
         if (cancelled) { container.style.display = 'none'; return }
         Array.from(dst.children).forEach((c) => { if (c !== container) (c as HTMLElement).style.display = 'none' })
         activeRef.current = container
-        setPages(flow?.total ?? 0); setRendering(false)
+        setPages(flow?.total ?? 0); setRendering(false); onReady?.()
       })
       .catch((e: unknown) => {
         if (settled) return
         settled = true; clearTimeout(watchdog); container.style.display = 'none'
-        if (!cancelled) { setLoi(e instanceof Error ? e.message : String(e)); setRendering(false) }
+        if (!cancelled) { const msg = e instanceof Error ? e.message : String(e); setLoi(msg); setRendering(false); onRenderErr?.(msg) }
       })
       .finally(() => URL.revokeObjectURL(cssUrl))
     }, 0)
     return () => { cancelled = true; clearTimeout(hoan); if (watchdog) clearTimeout(watchdog) }
-  }, [ban, gv])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ban, gv, perHS])
+
+  // "In nhanh" (headless) — dựng xong TỰ gọi window.print() sau đệm 350ms (phòng render 2-pass), đóng
+  // khi hộp thoại in đóng. Khuôn PrintView.tsx của Đại (headless KHÔNG linkOnly).
+  const daTuIn = useRef(false)
+  useEffect(() => {
+    if (!headless || daTuIn.current || rendering || loi) return
+    daTuIn.current = true
+    const t = setTimeout(() => printWithFilename(safeFileName(`${ban.tieuDe}${gv ? ' - GV' : ''}`)), 350)
+    return () => clearTimeout(t)
+  }, [headless, rendering, loi, ban, gv])
+  useEffect(() => {
+    if (!headless) return
+    const onAfter = () => onClose()
+    window.addEventListener('afterprint', onAfter)
+    return () => window.removeEventListener('afterprint', onAfter)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [headless])
+
+  if (headless) return createPortal(
+    <>
+      <div className="pv-src" ref={srcRef} aria-hidden><Noi ban={ban} gv={gv} perHS={perHS} /></div>
+      <div style={{ position: 'fixed', top: 0, left: 0, zIndex: 88, width: '210mm', background: '#fff' }}><div ref={dstRef} className="pv-pages" /></div>
+      {/* no-print: chỉ hiện trên màn hình, @media print tự ẩn khi window.print() mở — không lọt vào PDF/giấy. */}
+      <div className="no-print fixed inset-0 z-[95] flex items-center justify-center bg-white">
+        <div className="rounded-xl border border-slate-200 bg-white px-6 py-4 text-sm font-medium text-slate-700 shadow-xl">
+          {loi ? <span className="text-rose-600">{loi}</span> : <>⏳ Đang chuẩn bị in{pages ? ` (${pages} trang)` : ''}…</>}
+          {loi && <button onClick={onClose} className="ml-3 rounded border border-slate-300 px-2.5 py-1 text-xs text-slate-600">Đóng</button>}
+        </div>
+      </div>
+      <style>{CHROME_CSS}</style>
+    </>,
+    document.body,
+  )
 
   return createPortal(
     <div className="pv-overlay fixed inset-0 z-[60] bg-slate-900/40">
@@ -134,7 +191,7 @@ export default function HinhPrintView({ ban, onClose }: { ban: BanIn; onClose: (
       {loi && <div className="no-print bg-rose-50 px-4 py-2 text-[12.5px] text-rose-700">{loi}</div>}
 
       {/* nguồn ẩn — paged.js đọc innerHTML từ đây rồi tự phân trang */}
-      <div className="pv-src" ref={srcRef}><Noi ban={ban} gv={gv} /></div>
+      <div className="pv-src" ref={srcRef}><Noi ban={ban} gv={gv} perHS={perHS} /></div>
       <div className="pv-scroll h-[calc(100vh-42px)] overflow-y-auto bg-slate-200 p-5">
         <div className="pv-pages" ref={dstRef} />
       </div>
@@ -143,16 +200,50 @@ export default function HinhPrintView({ ban, onClose }: { ban: BanIn; onClose: (
   )
 }
 
-function Noi({ ban, gv }: { ban: BanIn; gv: boolean }) {
-  let soDe = 0
-  let moHinhLtDaHien = ''  // gom LT mô hình 1 lần/nhóm liền nhau (khuôn Đại: LT chuyên đề hiện 1 lần)
-  // Masthead — khuôn "mới nhất" bên Đại (gtbk-mh, commit redesign BK 08-08): khung gradient bo góc +
-  // vạch trái cầu vồng + logo thật + tiêu đề. Namespace RIÊNG `hpmh-*` (không đụng `.gtbk-*` của Đại —
-  // PrintView.tsx đang sửa dở phiên khác). BỎ huy hiệu tròn "Buổi N" của Đại: Hình không có số buổi tách
-  // bạch sẵn ở MỌI nơi gọi (Kho tài liệu chỉ có tên ghép sẵn) — snapshot đơn giản hoá, xem DEVLOG.
+// ⭐ Per-HS (Thùy 21/08, "làm đầy đủ giống Đại"): mỗi HS 1 phiếu, đầu phiếu kiểu BK (pv-bkh, khuôn
+// ETPrintView) thay cho masthead thường — mã đề đã gán hiện thành nhãn, đánh số Bài 1.. RIÊNG từng phiếu
+// (không cộng dồn xuyên các HS). Nội dung mucs của mỗi HS đã được resolve theo mã đề TRƯỚC khi vào đây
+// (ETScreen.tsx) — component này không biết "mã đề" là gì, chỉ vẽ mucs được đưa.
+export type HinhPerHS = { hoTen: string; maDe: number; mucs: MucIn[] }
+
+function Noi({ ban, gv, perHS }: { ban: BanIn; gv: boolean; perHS?: HinhPerHS[] }) {
   const logoUrl = location.origin + '/Logo.png'
+  if (perHS) {
+    // ⭐ Thùy 21/08 ("làm giống bên Đại số đi, cứ sáng tạo thêm làm gì"): dùng ĐÚNG `ETHeaderBK` của ET
+    // Đại — không tự vẽ header riêng cho Hình. Tiêu đề = "Đề kiểm tra cuối giờ lớp {lớp}" y hệt Đại,
+    // KHÔNG chữ "Hình"/"Buổi học". Ngày lên pill góc phải (prop `ngay` của ETHeaderBK), không nhét vào tiêu đề.
+    const title = `Đề kiểm tra cuối giờ lớp ${ban.lop ?? ''}`
+    return (
+      <div>
+        {perHS.map((hs, hi) => (
+          <div key={hi} className="pv-de-recto">
+            <ETHeaderBK title={title} ngay={ban.ngay ?? ''} lop={ban.lop ?? ''} made={String(hs.maDe)}
+              hoTen={hs.hoTen} soCau={hs.mucs.filter((m) => m.kieu === 'de').length} gv={gv} />
+            <MucsBlock mucs={hs.mucs} gv={gv} moHinhLyThuyet={ban.moHinhLyThuyet} />
+          </div>
+        ))}
+      </div>
+    )
+  }
+  if (ban.laBtvn) {
+    // ⭐ 24/08 (Thùy: "header BTVN linh tinh, làm giống hệt form Đại đi") — BtvnBkHead ĐÚNG như Đại:
+    // masthead .gtbk-mh (pill "BTVN" + tiêu đề buổi TRẦN, không nhét lớp/ngày vào) + Lớp/Ngày phát/Hạn
+    // nộp trên dòng sub CÓ CẤU TRÚC + hàng ô Họ tên/Lớp/Điểm cho HS điền tay (bản GV ẩn hàng ô này).
+    return (
+      <div>
+        <BtvnBkHead buoiTitle={ban.tieuBai || ban.tieuDe} ngayPhat={ban.ngay ?? ''} ngayNop={ban.ngayNop ?? ''} lopTen={ban.lop ?? ''} gv={gv} />
+        {ban.ghiChuDau && <div className="hp-note">{ban.ghiChuDau}</div>}
+        <MucsBlock mucs={ban.mucs} gv={gv} moHinhLyThuyet={ban.moHinhLyThuyet} />
+      </div>
+    )
+  }
   return (
     <div>
+      {/* Masthead — khuôn "mới nhất" bên Đại (gtbk-mh, commit redesign BK 08-08): khung gradient bo góc +
+          vạch trái cầu vồng + logo thật + tiêu đề. Namespace RIÊNG `hpmh-*` (không đụng `.gtbk-*` của Đại).
+          BỎ huy hiệu tròn "Buổi N" của Đại: Hình không có số buổi tách bạch sẵn ở MỌI nơi gọi (Kho tài
+          liệu chỉ có tên ghép sẵn) — snapshot đơn giản hoá, xem DEVLOG. Dùng cho giáo trình 'lop'/ôn tập —
+          BTVN ('nha') đã tách nhánh riêng ở trên. */}
       <div className="hpmh">
         <div className="hpmh-grid" />
         <div className="hpmh-brand"><img className="hpmh-logo" src={logoUrl} alt="BK Academy" /></div>
@@ -160,8 +251,19 @@ function Noi({ ban, gv }: { ban: BanIn; gv: boolean }) {
         {ban.phuDe && <div className="hpmh-sub">{ban.phuDe}</div>}
       </div>
       {ban.ghiChuDau && <div className="hp-note">{ban.ghiChuDau}</div>}
+      <MucsBlock mucs={ban.mucs} gv={gv} moHinhLyThuyet={ban.moHinhLyThuyet} />
+    </div>
+  )
+}
 
-      {ban.mucs.map((m, i) => {
+/** Render danh sách MucIn — tách khỏi `Noi` để dùng lại được cho CẢ bản gộp (1 khối) LẪN mỗi phiếu perHS
+ *  (đánh số "Bài N" RIÊNG từng lần gọi — `soDe`/`moHinhLtDaHien` là biến cục bộ, không rò giữa các lần gọi). */
+function MucsBlock({ mucs, gv, moHinhLyThuyet }: { mucs: MucIn[]; gv: boolean; moHinhLyThuyet?: BanIn['moHinhLyThuyet'] }) {
+  let soDe = 0
+  let moHinhLtDaHien = ''  // gom LT mô hình 1 lần/nhóm liền nhau (khuôn Đại: LT chuyên đề hiện 1 lần)
+  return (
+    <>
+      {mucs.map((m, i) => {
         if (m.kieu === 'chuong') return (
           <div key={i} className="hp-chuong">
             <div className="hp-chuong-t">{m.tieuDe}</div>
@@ -179,7 +281,7 @@ function Noi({ ban, gv }: { ban: BanIn; gv: boolean }) {
         soDe++
         // LT mô hình — hiện MỘT LẦN ngay trước bài đầu tiên của mỗi nhóm mô hình liền nhau (chỉ có data
         // khi banInTheoMoHinh dựng cho phan='lop' — bản BTVN không kèm, khuôn Đại "LT chỉ ở trên lớp").
-        const ltMh = m.moHinhId ? ban.moHinhLyThuyet?.[m.moHinhId] : null
+        const ltMh = m.moHinhId ? moHinhLyThuyet?.[m.moHinhId] : null
         const hienLt = !!ltMh && m.moHinhId !== moHinhLtDaHien
         if (hienLt) moHinhLtDaHien = m.moHinhId!
         return (
@@ -272,7 +374,7 @@ function Noi({ ban, gv }: { ban: BanIn; gv: boolean }) {
           </Fragment>
         )
       })}
-    </div>
+    </>
   )
 }
 

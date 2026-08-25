@@ -810,7 +810,13 @@ export function cauItemParts({ no, c, gv, lines = 0 }: { no: number; c: CauHoi; 
       )}
       {gv && <GvAnswer c={c} />}
     </>),
-    lines: (lines > 0 && !hasOpts && !grid && !md && !gv) ? lines : 0,
+    // ⭐ 08-19 (Thùy báo "sinh dòng không đúng setup builder", KHTN + Đại, builder lẫn ET): `grid` là suy
+    // đoán TEXT (splitLabeled bắt "a)/b)/c)..." trong đề) — vốn để nhận diện Ý CON gọn (đáp án ngắn, không
+    // cần dòng kẻ). Nhưng câu kho `tu_luan` là NHÃN NGƯỜI GÁN, rõ ràng hơn hẳn suy đoán text — 1 câu tự
+    // luận có đề bắt đầu bằng "a) ... b) ... c) ..." (nhiều ý cần viết ra, không phải đáp án ngắn nhúng)
+    // vẫn bị `grid` cướp quyền, ép lines=0 dù GV đã gõ số dòng hẳn hoi trong builder. Tự luận LUÔN cần chỗ
+    // viết bất kể đề có dạng ý con hay không — không để suy đoán text đè lên nhãn tự luận tường minh.
+    lines: (lines > 0 && !hasOpts && (!grid || c.loai_cau === 'tu_luan') && !md && !gv) ? lines : 0,
     hasImg: !!c.anh_de,
   }
 }
@@ -1028,7 +1034,9 @@ const CONTENT_CSS = `
 // Font tiêu đề/card = sans (Noto Sans) tách khỏi phần câu (Times) cho ra chất "sách in".
 const GT_SANS = "'Noto Sans','Segoe UI',Arial,sans-serif"
 const GT_GRAD = 'linear-gradient(90deg,#1997d4 0%,#18a889 34%,#f0a63b 66%,#e83483 100%)'
-const GT_BK_CSS = `
+// ⭐ 24/08 — export: Hình BTVN dùng CHUNG masthead .gtbk-mh* này qua BtvnBkHead (bkPrint.tsx), khớp yêu
+// cầu "header BTVN Hình phải đúng chuẩn Đại" — không tự vẽ CSS riêng, chỉ nạp thêm CSS này khi cần.
+export const GT_BK_CSS = `
 /* Masthead buổi (đầu mỗi buổi): khung gradient bo góc + logo thật + pill + tiêu đề + Lớp/Ngày + huy hiệu tròn.
    ⚠ ĐỪNG thêm break-after:page/avoid vào đây để "chữa" bug trắng trang — đã thử, chỉ đổi chỗ lãng phí chứ
    không sửa gốc (gốc nằm ở thẻ <div> bọc nhóm card trong BuoiBlock, xem comment ở đó). */

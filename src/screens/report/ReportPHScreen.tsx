@@ -1,12 +1,15 @@
 // REPORT PHỤ HUYNH (tháng) — leaf riêng. Chọn MÔN → LỚP → cột trái hiện cả lớp, click chọn thẳng HS
 // (giống "Kết quả học tập" — KHÔNG dùng dropdown tìm HS) → tháng.
 // Bố cục: DỮ LIỆU bên TRÁI (bảng theo buổi + tổng quan mastery) · NHẬN XÉT bên PHẢI (3 ô + thanh mức kết luận).
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, forwardRef } from 'react'
 import { createPortal } from 'react-dom'
+import { createRoot } from 'react-dom/client'
+import html2canvas from 'html2canvas'
 import SearchSelect, { type Opt } from '../../components/SearchSelect'
 import { listLop, listHSCuaLop } from '../../lib/nhansu'
 import { getTongQuanHS, type TongQuanHS } from '../../lib/mastery'
-import { getReportBuoiHS, getBaoCaoPH, upsertBaoCaoPH, getGVChinhLop, getKhoiRankDiemMT, BC_EMPTY, type ReportBuoiRow, type BaoCaoPH, type KhoiRankMT } from '../../lib/report'
+import { getReportBuoiHS, getBaoCaoPH, upsertBaoCaoPH, getGVChinhLop, getKhoiRankDiemMT, getLopRankDiemMT, getHeRankDiemMT, BC_EMPTY, type ReportBuoiRow, type BaoCaoPH, type KhoiRankMT, type LopRankMT, type HeRankMT } from '../../lib/report'
+import { uploadReportImage } from '../../lib/ph-login'
 import { tenHienThiDs } from '../../lib/hoten'
 
 const MON_CO_KHO = ['Toán', 'KHTN']
@@ -71,6 +74,39 @@ export default function ReportPHScreen() {
       .map((h: any) => ({ id: h.id, ho_ten: h.ho_ten, ma_hs: h.ma_hs ?? null, anh_url: h.anh_url ?? null })))).catch(() => setRoster([]))
   }, [lopId])
 
+  // Chốt CẢ LỚP: chụp ảnh + công bố từng HS (HS chưa nhập nội dung tự bỏ qua). Chạy trong trình duyệt.
+  const [bulk, setBulk] = useState<{ done: number; total: number; cur: string; published: number; skipped: number; failed: number; running: boolean } | null>(null)
+  async function bulkCongBoLop() {
+    if (!lopId || !roster.length) return
+    const lopTen = lopOpts.find((o) => o.id === lopId)?.label ?? ''
+    if (!confirm(`Chốt & công bố báo cáo tháng ${Number(ym.split('-')[1])}/${ym.split('-')[0]} cho CẢ LỚP ${lopTen} (${roster.length} HS)?\nHS chưa nhập nội dung sẽ tự bỏ qua. Việc này chụp ảnh từng em nên mất vài phút — đừng đóng tab.`)) return
+    const gvName = await getGVChinhLop(lopId).catch(() => null)
+    let published = 0, skipped = 0, failed = 0
+    setBulk({ done: 0, total: roster.length, cur: '', published, skipped, failed, running: true })
+    for (let i = 0; i < roster.length; i++) {
+      const h = roster[i]
+      setBulk({ done: i, total: roster.length, cur: h.ho_ten, published, skipped, failed, running: true })
+      try {
+        const bc = await getBaoCaoPH(h.id, mon, ym)
+        const hasContent = !!(bc.nl_band || bc.ket_luan || bc.ket_luan_muc || bc.muc_tieu || bc.thai_do || bc.kien_thuc_ky_nang || bc.muc_kien_thuc || bc.muc_thai_do
+          || [bc.cs_thai_do, bc.cs_tap_trung, bc.cs_tiep_thu, bc.cs_tu_duy, bc.cs_ky_nang, bc.cs_van_dung, bc.cs_vuot_kho].some((x) => x != null))
+        if (!hasContent) { skipped++; continue }
+        const [rows, tq, khoiRank, lopRank, heRank] = await Promise.all([
+          getReportBuoiHS(h.id, mon, ym),
+          getTongQuanHS(h.id, mon, { ym }),
+          getKhoiRankDiemMT(h.id, mon, ym),
+          getLopRankDiemMT(h.id, lopId, mon, ym),
+          getHeRankDiemMT(h.id, mon, ym),
+        ])
+        const missCount = rows.filter((r) => r.btvnTrangThai === 'khong_lam' || r.btvnTrangThai === 'xin_phep').length
+        const url = await renderCardToUrl({ hsName: h.ho_ten, hsImg: h.anh_url, lopTen, mon, ym, gvName, tq, missCount, bc, khoiRank, lopRank, heRank }, `${h.id}_${ym}`)
+        await upsertBaoCaoPH(h.id, mon, ym, { cong_bo_at: new Date().toISOString(), anh_bao_cao_url: url })
+        published++
+      } catch { failed++ }
+    }
+    setBulk({ done: roster.length, total: roster.length, cur: '', published, skipped, failed, running: false })
+  }
+
   const monBtn = (on: boolean) => `h-7 rounded-md px-3 text-[13px] font-semibold transition ${on ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`
   const [yy, mm] = ym.split('-')
   const hs = roster.find((r) => r.id === hsId) ?? null
@@ -85,6 +121,7 @@ export default function ReportPHScreen() {
           <span className="min-w-[92px] text-center text-[13px] font-semibold tabular-nums text-slate-700">Tháng {Number(mm)}/{yy}</span>
           <button onClick={() => setYm(shiftYM(ym, +1))} className="h-7 rounded-r-md px-2 text-slate-500 hover:bg-slate-100" title="Tháng sau">›</button>
         </div>
+        {roster.length > 0 && <button disabled={!!bulk?.running} onClick={() => void bulkCongBoLop()} title="Chụp ảnh + công bố báo cáo cho cả lớp" className="ml-auto rounded-md bg-emerald-600 px-3 py-1.5 text-[13px] font-semibold text-white shadow-sm hover:bg-emerald-500 disabled:opacity-50">✓ Chốt cả lớp ({roster.length})</button>}
       </div>
       <div className="min-h-0 flex-1 overflow-auto p-6">
         {!lopId ? (
@@ -118,6 +155,19 @@ export default function ReportPHScreen() {
           </div>
         )}
       </div>
+      {bulk && (
+        <div className="fixed inset-0 z-[80] flex items-center justify-center bg-slate-900/50 p-4">
+          <div className="w-[380px] max-w-[95vw] rounded-2xl bg-white p-5 shadow-2xl">
+            <div className="mb-2 text-[15px] font-bold text-slate-800">{bulk.running ? 'Đang chốt cả lớp…' : '✓ Đã xong'}</div>
+            <div className="mb-2 h-2 w-full overflow-hidden rounded-full bg-slate-100"><div className="h-full bg-emerald-500 transition-all" style={{ width: `${Math.round((bulk.done / Math.max(1, bulk.total)) * 100)}%` }} /></div>
+            <div className="text-[13px] text-slate-600">{bulk.done}/{bulk.total} học sinh{bulk.running && bulk.cur ? ` · đang xử lý: ${bulk.cur}` : ''}</div>
+            <div className="mt-1 text-[12px] text-slate-500">✓ Công bố {bulk.published} · ⏭ bỏ qua {bulk.skipped} (chưa nhập){bulk.failed ? ` · ⚠ lỗi ${bulk.failed}` : ''}</div>
+            {bulk.running
+              ? <p className="mt-3 text-[11px] text-amber-600">Đang chụp ảnh từng em — vui lòng đừng đóng/chuyển tab.</p>
+              : <button onClick={() => setBulk(null)} className="mt-4 w-full rounded-lg bg-slate-800 py-2 text-sm font-semibold text-white hover:bg-slate-700">Đóng</button>}
+          </div>
+        </div>
+      )}
     </div>
   )
 }
@@ -136,12 +186,23 @@ function ReportBody({ hsId, mon, ym, lopId, hsName, hsImg, lopTen }: { hsId: str
   useEffect(() => { setGvName(null); if (lopId) getGVChinhLop(lopId).then(setGvName).catch(() => {}) }, [lopId])
   if (loading) return <p className="text-sm text-slate-500">Đang tải…</p>
   const missCount = (rows ?? []).filter((r) => r.btvnTrangThai === 'khong_lam' || r.btvnTrangThai === 'xin_phep').length
+  // Chụp ảnh báo cáo (snapshot) lúc GV chốt → lưu storage → trả URL để gắn vào bao_cao_ph.
+  async function captureReport(): Promise<string | null> {
+    if (!tq) return null
+    const [bc, khoiRank, lopRank, heRank] = await Promise.all([
+      getBaoCaoPH(hsId, mon, ym),
+      getKhoiRankDiemMT(hsId, mon, ym),
+      lopId ? getLopRankDiemMT(hsId, lopId, mon, ym) : Promise.resolve(null),
+      getHeRankDiemMT(hsId, mon, ym),
+    ])
+    return renderCardToUrl({ hsName, hsImg, lopTen, mon, ym, gvName, tq, missCount, bc, khoiRank, lopRank, heRank }, `${hsId}_${ym}`)
+  }
   return (
     <>
     <div className="mb-3 flex justify-end">
       <button onClick={() => setAnh(true)} className="rounded-lg bg-indigo-600 px-3.5 py-1.5 text-[13px] font-semibold text-white shadow-sm hover:bg-indigo-500">📸 Ảnh gửi phụ huynh</button>
     </div>
-    {anh && tq && <PhAnhModal hsId={hsId} mon={mon} ym={ym} hsName={hsName} hsImg={hsImg} lopTen={lopTen} gvName={gvName} tq={tq} missCount={missCount} onClose={() => setAnh(false)} />}
+    {anh && tq && <PhAnhModal hsId={hsId} mon={mon} ym={ym} lopId={lopId} hsName={hsName} hsImg={hsImg} lopTen={lopTen} gvName={gvName} tq={tq} missCount={missCount} onClose={() => setAnh(false)} />}
     <div className="grid gap-5 xl:grid-cols-[1fr_400px]">
       {/* ── TRÁI: SỐ LIỆU ── */}
       <div className="space-y-5">
@@ -166,7 +227,7 @@ function ReportBody({ hsId, mon, ym, lopId, hsName, hsImg, lopTen }: { hsId: str
         </div>
       </div>
       {/* ── PHẢI: NHẬN XÉT ── */}
-      <div className="xl:sticky xl:top-0 xl:self-start"><NhanXet hsId={hsId} mon={mon} ym={ym} /></div>
+      <div className="xl:sticky xl:top-0 xl:self-start"><NhanXet hsId={hsId} mon={mon} ym={ym} onCapture={captureReport} /></div>
     </div>
     </>
   )
@@ -263,7 +324,7 @@ const NX_FIELDS: { key: 'thai_do' | 'kien_thuc_ky_nang'; mucKey: 'muc_thai_do' |
   { key: 'kien_thuc_ky_nang', mucKey: 'muc_kien_thuc', label: 'Kiến thức & Kĩ năng', ph: 'Mức nắm kiến thức, kĩ năng làm bài, mạnh/yếu…', hx: 'bg-indigo-500' },
   { key: 'thai_do', mucKey: 'muc_thai_do', label: 'Thái độ học tập', ph: 'Thái độ, chuyên cần, tinh thần học tập trong tháng…', hx: 'bg-emerald-500' },
 ]
-function NhanXet({ hsId, mon, ym }: { hsId: string; mon: string; ym: string }) {
+function NhanXet({ hsId, mon, ym, onCapture }: { hsId: string; mon: string; ym: string; onCapture: () => Promise<string | null> }) {
   const [val, setVal] = useState<BaoCaoPH>({ ...BC_EMPTY })
   const [prev, setPrev] = useState<BaoCaoPH>({ ...BC_EMPTY })
   const [saved, setSaved] = useState<string | null>(null)
@@ -279,6 +340,17 @@ function NhanXet({ hsId, mon, ym }: { hsId: string; mon: string; ym: string }) {
   const box = 'w-full resize-y rounded-lg border border-slate-200 bg-slate-50/50 px-2.5 py-2 text-[13px] leading-relaxed focus:border-indigo-300 focus:bg-white focus:outline-none'
   const locked = val.cong_bo_at != null // đã công bố → khoá sửa (bấm "Mở lại để sửa" mới chỉnh được)
   const congBoLabel = val.cong_bo_at ? new Date(val.cong_bo_at).toLocaleString('vi-VN', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) : ''
+  const [capturing, setCapturing] = useState(false)
+  // Chốt = chụp ảnh báo cáo (snapshot) + công bố (cong_bo_at + URL ảnh) trong 1 nhịp.
+  async function doCongBo() {
+    if (!confirm('Chốt & công bố báo cáo tháng này? Phụ huynh sẽ thấy ảnh báo cáo ngay trên app.')) return
+    setCapturing(true)
+    let anhUrl: string | null = null
+    try { anhUrl = await onCapture() } catch { anhUrl = null }
+    await save({ cong_bo_at: new Date().toISOString(), anh_bao_cao_url: anhUrl }, 'congbo')
+    setCapturing(false)
+    if (!anhUrl) alert('Đã công bố, nhưng CHƯA tạo được ảnh báo cáo. Bấm "Mở lại để sửa" rồi Chốt lại để thử tạo ảnh.')
+  }
   return (
     <div>
       <h3 className="mb-2 text-[13px] font-semibold uppercase tracking-wider text-slate-500">Nhận xét của giáo viên</h3>
@@ -287,7 +359,7 @@ function NhanXet({ hsId, mon, ym }: { hsId: string; mon: string; ym: string }) {
         <span className="font-semibold">{locked ? `✓ Đã công bố${congBoLabel ? ' · ' + congBoLabel : ''} — phụ huynh đang xem` : '● Nháp — phụ huynh CHƯA thấy báo cáo này'}</span>
         {locked
           ? <button onClick={() => save({ cong_bo_at: null }, 'congbo')} className="shrink-0 rounded-lg border border-emerald-300 bg-white px-2.5 py-1 font-semibold text-emerald-700 hover:bg-emerald-100">Mở lại để sửa</button>
-          : <button onClick={() => { if (confirm('Chốt & công bố báo cáo tháng này? Phụ huynh sẽ thấy ngay trên app.')) save({ cong_bo_at: new Date().toISOString() }, 'congbo') }} className="shrink-0 rounded-lg bg-emerald-600 px-3 py-1 font-bold text-white shadow-sm hover:bg-emerald-500">Chốt &amp; công bố</button>}
+          : <button disabled={capturing} onClick={() => void doCongBo()} className="shrink-0 rounded-lg bg-emerald-600 px-3 py-1 font-bold text-white shadow-sm hover:bg-emerald-500 disabled:opacity-60">{capturing ? 'Đang tạo ảnh…' : 'Chốt & công bố'}</button>}
       </div>
       <fieldset disabled={locked} className={locked ? 'opacity-60' : ''} style={{ border: 'none', margin: 0, padding: 0, minInlineSize: 'auto' }}>
       <div className="space-y-3">
@@ -423,38 +495,35 @@ const MUC_HEX: Record<string, { bg: string; fg: string; emoji: string; label: st
 const s10 = (pct: number | null) => pct == null ? '—' : (pct / 10).toFixed(1)
 const hexPct = (pct: number | null) => pct == null ? '#cbd5e1' : pct >= 80 ? '#059669' : pct >= 50 ? '#d97706' : '#e11d48'
 
-function PhAnhModal({ hsId, mon, ym, hsName, hsImg, lopTen, gvName, tq, missCount, onClose }: { hsId: string; mon: string; ym: string; hsName: string; hsImg: string | null; lopTen: string; gvName: string | null; tq: TongQuanHS; missCount: number; onClose: () => void }) {
-  const [bc, setBc] = useState<BaoCaoPH>({ ...BC_EMPTY })
-  const [khoiRank, setKhoiRank] = useState<KhoiRankMT | null>(null)
-  const cardRef = useRef<HTMLDivElement>(null)
-  useEffect(() => { getBaoCaoPH(hsId, mon, ym).then(setBc).catch(() => {}) }, [hsId, mon, ym])
-  useEffect(() => { setKhoiRank(null); getKhoiRankDiemMT(hsId, mon, ym).then(setKhoiRank).catch(() => {}) }, [hsId, mon, ym])
-
-  function handleCopy() {
-    const el = cardRef.current; if (!el) return
-    const cardHTML = el.outerHTML
-    const fname = `Report_${hsName.replace(/\s+/g, '')}_${ym}.png`
-    const html = '<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">'
-      + '<title>Report ' + hsName + '</title><scr' + 'ipt src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></scr' + 'ipt>'
-      + '<style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif;background:#f1f5f9;padding:12px;display:flex;flex-direction:column;align-items:center}'
-      + '.btn{width:100%;max-width:400px;padding:11px;border:none;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;background:#16a34a;color:#fff;margin-bottom:10px}.btn:hover{opacity:.9}'
-      + '#msg{font-size:12px;color:#16a34a;margin-top:6px;min-height:18px}#c{background:#fff;border-radius:18px;overflow:hidden}</style></head><body>'
-      + '<button class="btn" onclick="cp()">📋 Copy ảnh (paste vào Zalo)</button><div id="c">' + cardHTML + '</div><p id="msg"></p>'
-      + '<scr' + 'ipt>async function cp(){var m=document.getElementById("msg");m.textContent="⏳ Đang xử lý...";try{var n=document.getElementById("c");var cv=await html2canvas(n,{scale:2,backgroundColor:"#ffffff",useCORS:true,logging:false,width:n.scrollWidth,height:n.scrollHeight});cv.toBlob(async function(b){try{await navigator.clipboard.write([new ClipboardItem({"image/png":b})]);m.textContent="✅ Đã copy! Ctrl+V vào Zalo.";}catch(e){var u=URL.createObjectURL(b);var a=document.createElement("a");a.href=u;a.download=' + JSON.stringify(fname) + ';a.click();URL.revokeObjectURL(u);m.textContent="✅ Đã tải ảnh!";}},"image/png");}catch(e){m.textContent="Lỗi: "+e.message;}}</scr' + 'ipt></body></html>'
-    const p = window.open('', '_blank', 'width=460,height=900,scrollbars=yes')
-    if (!p) { alert('Trình duyệt chặn popup. Bật "Allow pop-ups" cho site này.'); return }
-    p.document.write(html); p.document.close()
-  }
-
+// ── CARD BÁO CÁO (dùng chung: modal "Ảnh gửi PH" + chụp tự động lúc chốt) ──
+type ReportCardProps = {
+  hsName: string; hsImg: string | null; lopTen: string; mon: string; ym: string; gvName: string | null;
+  tq: TongQuanHS; missCount: number; bc: BaoCaoPH;
+  khoiRank: KhoiRankMT | null; lopRank: LopRankMT | null; heRank: HeRankMT | null;
+}
+const ReportCardView = forwardRef<HTMLDivElement, ReportCardProps>(function ReportCardView(
+  { hsName, hsImg, lopTen, mon, ym, gvName, tq, missCount, bc, khoiRank, lopRank, heRank }, ref,
+) {
   const muc = bc.ket_luan_muc ? MUC_HEX[bc.ket_luan_muc] : null
   const a = tq.hoatDong, hh = tq.hoanThanh.toanBo.etMt
   const trendV = tq.trend.hoanThanhToanBo
-  // Vòng tròn HẠNG TRONG KHỐI (Thùy 08-19, thay cho %hoàn thành gây confuse PH) — % fill = percentile
-  // rank trong khối (hạng 1 → fill đầy), số hiện GIỮA vòng là hạng THẬT #N, không phải %.
-  const rankPct = khoiRank ? Math.round(((khoiRank.rankTotal - khoiRank.rankNow) / Math.max(1, khoiRank.rankTotal - 1)) * 100) : null
-  const ringHex = rankPct == null ? '#94a3b8' : rankPct >= 80 ? '#12a875' : rankPct >= 50 ? '#e29a23' : '#e45858'
-  const RC = 2 * Math.PI * 32
-  // Skill bar THANG 5 (GV chọn) + text nhận xét kèm tag.
+  const RC2 = 2 * Math.PI * 25
+  const rankRing = (top: string, sub: string, r: { rankNow: number; rankTotal: number } | null) => {
+    const pct = r ? Math.round(((r.rankTotal - r.rankNow) / Math.max(1, r.rankTotal - 1)) * 100) : null
+    const hx = pct == null ? '#94a3b8' : pct >= 80 ? '#12a875' : pct >= 50 ? '#e29a23' : '#e45858'
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+        <svg width={74} height={74} viewBox="0 0 74 74" style={{ display: 'block' }}>
+          <circle cx={37} cy={37} r={25} fill="none" stroke="#e9f3ef" strokeWidth={8} />
+          <circle cx={37} cy={37} r={25} fill="none" stroke={hx} strokeWidth={8} strokeDasharray={RC2} strokeDashoffset={RC2 * (1 - (pct ?? 0) / 100)} strokeLinecap="round" transform="rotate(-90 37 37)" />
+          <text x={37} y={34} textAnchor="middle" fontSize={14} fontWeight={800} fill={hx}>{r ? `#${r.rankNow}` : '—'}</text>
+          <text x={37} y={46} textAnchor="middle" fontSize={7} fontWeight={700} fill="#94a3b8">{r ? `/${r.rankTotal}` : ''}</text>
+        </svg>
+        <div style={{ fontSize: 9.5, fontWeight: 800, color: '#5a6a83', marginTop: 3 }}>{top}</div>
+        <div style={{ fontSize: 8, fontWeight: 700, color: '#94a3b8' }}>{sub}</div>
+      </div>
+    )
+  }
   const bar5 = (label: string, lvl: number | null, hx: string, text: string | null) => (
     <div style={{ background: '#f7f9fd', border: '1px solid #edf1f7', borderRadius: 13, padding: '10px 11px', marginTop: 8 }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 7 }}>
@@ -479,12 +548,6 @@ function PhAnhModal({ hsId, mon, ym, hsName, hsImg, lopTen, gvName, tq, missCoun
       {cell('Tổng', tongPct(cb, nc), 16)}{cell('Cơ bản', cb.pct, 15)}{cell('Nâng cao', nc.pct, 15)}
     </div>
   )
-  // MT: dùng ĐIỂM THẬT (thang 10, nhập tay) — KHÁC assessRow ở trên (%đúng câu). MT nhập riêng qua
-  // ky_thi/diem_thi, không suy từ Đ/C/S như ET/BTVN nên KHÔNG quy đổi s10(%) nữa.
-  // Chỉ TỔNG mới đủ điều kiện tô màu ngưỡng (đúng thang 10 thật). Cơ bản/Nâng cao là 2 CỘT ĐIỂM RIÊNG,
-  // thang điểm KHÁC NHAU (vd cơ bản max 9đ, nâng cao max 1đ — nâng cao không bắt buộc) → số THẤP tuyệt
-  // đối ở nâng cao là BÌNH THƯỜNG, không phải yếu kém. Tô đỏ/xanh theo ngưỡng 0-10 ở đây là SAI, gây hiểu
-  // lầm cho phụ huynh (Thùy 08-19). Để màu trung tính, không so ngưỡng.
   const hexDiem = (v: number | null) => v == null ? '#cbd5e1' : v >= 8 ? '#059669' : v >= 5 ? '#d97706' : '#e11d48'
   const cellDiem = (lb: string, v: number | null, sz: number, colored?: boolean) => <div><span style={{ fontSize: 7.5, color: '#94a3b8', display: 'block' }}>{lb}</span><span style={{ fontSize: sz, fontWeight: 900, color: colored ? hexDiem(v) : v == null ? '#cbd5e1' : '#15233b' }}>{v == null ? '—' : v}</span></div>
   const assessRowDiem = (ten: string, hx: string, tong: number | null, cb: number | null, nc: number | null) => (
@@ -493,6 +556,127 @@ function PhAnhModal({ hsId, mon, ym, hsName, hsImg, lopTen, gvName, tq, missCoun
       {cellDiem('Tổng', tong, 16, true)}{cellDiem('Cơ bản', cb, 15)}{cellDiem('Nâng cao', nc, 15)}
     </div>
   )
+  return (
+    <div ref={ref} style={{ width: 390, margin: '0 auto', background: '#f8fbff', borderRadius: 28, overflow: 'hidden', fontFamily: "-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif", boxShadow: '0 20px 55px rgba(26,52,95,.16)', border: '1px solid rgba(255,255,255,.8)' }}>
+      {/* HERO */}
+      <div style={{ position: 'relative', minHeight: 172, padding: '21px 21px 24px', color: '#fff', background: 'radial-gradient(circle at 92% 18%, rgba(78,215,219,.5), transparent 27%), radial-gradient(circle at 18% -10%, rgba(132,151,255,.7), transparent 34%), linear-gradient(135deg,#12315f 0%,#2451b9 60%,#2c77d8 100%)', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', width: 185, height: 185, right: -88, bottom: -125, border: '28px solid rgba(255,255,255,.08)', borderRadius: '50%' }} />
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'relative', zIndex: 1, marginBottom: 18 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 9, fontWeight: 900, letterSpacing: .5, fontSize: 13 }}>
+            <svg width={32} height={32} viewBox="0 0 36 36" style={{ display: 'block' }}>
+              <rect x="1" y="1" width="15" height="15" rx="4.5" fill="#e5389a" />
+              <text x="8.5" y="13" textAnchor="middle" fontSize="12" fontWeight="900" fill="#fff" fontFamily="Arial,Helvetica,sans-serif">B</text>
+              <rect x="20" y="1" width="15" height="15" rx="6" fill="#f7941e" />
+              <text x="27.5" y="13" textAnchor="middle" fontSize="12" fontWeight="900" fill="#fff" fontFamily="Arial,Helvetica,sans-serif">K</text>
+              <path d="M8.5 19.5 L16.2 34 L0.8 34 Z" fill="#2bb6d6" />
+              <text x="8.5" y="33" textAnchor="middle" fontSize="9" fontWeight="900" fill="#fff" fontFamily="Arial,Helvetica,sans-serif">+</text>
+              <circle cx="27.5" cy="27.5" r="7.6" fill="#7ac143" />
+              <text x="27.5" y="31.4" textAnchor="middle" fontSize="12" fontWeight="900" fill="#fff" fontFamily="Arial,Helvetica,sans-serif">−</text>
+            </svg>
+            <span>BK ACADEMY</span>
+          </div>
+          <span style={{ fontSize: 11, fontWeight: 800, padding: '7px 10px', borderRadius: 999, background: 'rgba(255,255,255,.14)', border: '1px solid rgba(255,255,255,.22)' }}>THÁNG {ym.split('-')[1]}/{ym.split('-')[0]}</span>
+        </div>
+        <div style={{ position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: '54px 1fr', gap: 13, alignItems: 'center' }}>
+          <div style={{ width: 54, height: 54, borderRadius: 18, overflow: 'hidden', display: 'grid', placeItems: 'center', background: 'linear-gradient(145deg,#fff,#dce9ff)', border: '3px solid rgba(255,255,255,.28)' }}>
+            {hsImg
+              ? <img src={hsImg} alt="" crossOrigin="anonymous" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              : <svg width={26} height={26} viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4.2" fill="#315fdd" fillOpacity=".55" /><path d="M4 20.5c0-4.4 3.6-7.2 8-7.2s8 2.8 8 7.2" stroke="#315fdd" strokeOpacity=".55" strokeWidth="2.2" strokeLinecap="round" /></svg>}
+          </div>
+          <div><div style={{ fontSize: 20, fontWeight: 900, lineHeight: 1.12, letterSpacing: -.25 }}>{hsName}</div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, fontSize: 11, color: '#e9f2ff', marginTop: 6 }}><span>Lớp {lopTen}</span><span>· Môn {mon}</span>{gvName ? <span>· GV {gvName}</span> : null}</div>
+          </div>
+        </div>
+      </div>
+      {/* BODY */}
+      <div style={{ padding: '0 13px 14px', marginTop: -13, position: 'relative', zIndex: 2 }}>
+        <div style={{ background: '#fff', border: '1px solid #e8edf5', borderRadius: 20, boxShadow: '0 7px 18px rgba(35,63,104,.055)', padding: 14, marginBottom: 10 }}>
+          <div style={{ fontSize: 10, color: '#315fdd', fontWeight: 900, textTransform: 'uppercase', letterSpacing: .7 }}>Xu hướng tháng này</div>
+          <div style={{ fontSize: 16, fontWeight: 800, margin: '4px 0', color: '#15233b', letterSpacing: -.15 }}>{muc ? `${muc.emoji} ${muc.label}` : 'Kết quả học tập tháng'}</div>
+          {trendV != null && trendV !== 0 ? <span style={{ display: 'inline-flex', gap: 5, alignItems: 'center', fontSize: 10, fontWeight: 900, color: trendV > 0 ? '#12a875' : '#e45858', background: trendV > 0 ? '#ecfbf5' : '#fdecec', padding: '6px 8px', borderRadius: 999 }}>{trendV > 0 ? '↗' : '↘'} {trendV > 0 ? 'Tăng' : 'Giảm'} {Math.abs(trendV)}% so với kỳ trước</span> : null}
+        </div>
+        <div style={{ background: '#fff', border: '1px solid #e8edf5', borderRadius: 20, padding: '13px 14px 10px', marginBottom: 10, boxShadow: '0 7px 18px rgba(35,63,104,.055)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 9, marginBottom: 10 }}>
+            <span style={{ width: 31, height: 31, borderRadius: 11, display: 'grid', placeItems: 'center', background: '#eef0ff', fontSize: 14 }}>🏆</span>
+            <div><div style={{ fontSize: 13, fontWeight: 800, color: '#15233b' }}>Xếp hạng Test tháng này</div><div style={{ fontSize: 9, color: '#70809b' }}>Theo điểm Test tháng</div></div>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 4, justifyItems: 'center' }}>
+            {rankRing('Lớp', lopTen, lopRank)}
+            {rankRing('Hệ', heRank ? `${heRank.khoi}${heRank.he}` : '—', heRank)}
+            {rankRing('Khối', khoiRank ? khoiRank.khoi : '—', khoiRank)}
+          </div>
+        </div>
+        {(bc.ket_luan || bc.thai_do || bc.kien_thuc_ky_nang || bc.muc_kien_thuc || bc.muc_thai_do) ? <div style={{ background: '#fff', border: '1px solid #e8edf5', borderRadius: 20, padding: 14, marginBottom: 10, boxShadow: '0 7px 18px rgba(35,63,104,.055)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 9, marginBottom: 10 }}>
+            <span style={{ width: 31, height: 31, borderRadius: 11, display: 'grid', placeItems: 'center', background: '#eef0ff', fontSize: 15 }}>✦</span>
+            <div><div style={{ fontSize: 13, fontWeight: 800, color: '#15233b' }}>Nhận xét của giáo viên</div><div style={{ fontSize: 9, color: '#70809b' }}>{gvName ? `GV ${gvName}` : 'Đánh giá cá nhân theo quá trình học'}</div></div>
+          </div>
+          {bc.ket_luan ? <p style={{ fontSize: 11, lineHeight: 1.48, color: '#42516a', margin: '0 0 4px', whiteSpace: 'pre-wrap' }}>{bc.ket_luan}</p> : null}
+          {bar5('Kiến thức & kỹ năng', bc.muc_kien_thuc, '#315fdd', bc.kien_thuc_ky_nang)}
+          {bar5('Thái độ học tập', bc.muc_thai_do, '#12a875', bc.thai_do)}
+        </div> : null}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 7, marginBottom: 10 }}>{statusC(hh.dat, 'Đạt yêu cầu', '#12a875')}{statusC(hh.can_luyen, 'Cần luyện tập', '#e29a23')}{statusC(hh.yeu, 'Còn yếu', '#e45858')}</div>
+        <div style={{ background: '#fff', border: '1px solid #e8edf5', borderRadius: 20, padding: '13px 14px 10px', marginBottom: 10, boxShadow: '0 7px 18px rgba(35,63,104,.055)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 9, marginBottom: 8 }}>
+            <span style={{ width: 31, height: 31, borderRadius: 11, display: 'grid', placeItems: 'center', background: '#eef0ff', fontSize: 14 }}>📊</span>
+            <div><div style={{ fontSize: 13, fontWeight: 800, color: '#15233b' }}>Kết quả đánh giá trong tháng</div><div style={{ fontSize: 9, color: '#70809b' }}>Thang điểm 10</div></div>
+          </div>
+          {assessRow('Test cuối giờ', '#315fdd', a.etCoBan, a.etNangCao, true)}
+          {assessRow('Bài tập về nhà', '#12a875', a.btvnCoBan, a.btvnNangCao)}
+          {assessRowDiem('Test tháng', '#e29a23', tq.diem.mt.tb, tq.diem.mt.coBan, tq.diem.mt.nangCao)}
+          {missCount > 0 ? <div style={{ fontSize: 9.5, color: '#da7d00', marginTop: 6 }}>⚠ Chưa hoàn thành BTVN {missCount} lần trong tháng</div> : null}
+        </div>
+        {bc.muc_tieu ? <div style={{ display: 'grid', gridTemplateColumns: '36px 1fr', gap: 10, alignItems: 'center', background: 'linear-gradient(135deg,#fff9e9,#fff)', border: '1px solid #f3e7bf', borderRadius: 20, padding: '12px 13px', marginBottom: 10 }}>
+          <div style={{ width: 36, height: 36, borderRadius: 13, display: 'grid', placeItems: 'center', background: '#fff0bd', fontSize: 17 }}>🎯</div>
+          <div><b style={{ fontSize: 11, display: 'block', marginBottom: 3 }}>Mục tiêu tháng tới</b><p style={{ fontSize: 9.5, lineHeight: 1.4, color: '#776844', margin: 0, whiteSpace: 'pre-wrap' }}>{bc.muc_tieu}</p></div>
+        </div> : null}
+        <p style={{ textAlign: 'center', color: '#8c99ad', fontSize: 8.5, margin: '10px 0 1px' }}>BK Academy · Đồng hành cùng tiến bộ của con mỗi ngày</p>
+      </div>
+    </div>
+  )
+})
+
+// Chụp card ra ảnh PNG (render off-screen) + upload → URL. Dùng khi GV bấm Chốt.
+async function renderCardToUrl(props: ReportCardProps, key: string): Promise<string> {
+  const holder = document.createElement('div')
+  holder.style.cssText = 'position:fixed;left:-99999px;top:0;z-index:-1'
+  document.body.appendChild(holder)
+  const root = createRoot(holder)
+  root.render(<ReportCardView {...props} />)
+  await new Promise((r) => setTimeout(r, 650)) // chờ render + ảnh avatar
+  const node = holder.firstElementChild as HTMLElement
+  const canvas = await html2canvas(node, { scale: 2, backgroundColor: '#f8fbff', useCORS: true, logging: false, width: node.scrollWidth, height: node.scrollHeight })
+  root.unmount(); holder.remove()
+  return uploadReportImage(key, canvas.toDataURL('image/png'))
+}
+
+function PhAnhModal({ hsId, mon, ym, lopId, hsName, hsImg, lopTen, gvName, tq, missCount, onClose }: { hsId: string; mon: string; ym: string; lopId: string | null; hsName: string; hsImg: string | null; lopTen: string; gvName: string | null; tq: TongQuanHS; missCount: number; onClose: () => void }) {
+  const [bc, setBc] = useState<BaoCaoPH>({ ...BC_EMPTY })
+  const [khoiRank, setKhoiRank] = useState<KhoiRankMT | null>(null)
+  const [lopRank, setLopRank] = useState<LopRankMT | null>(null)
+  const [heRank, setHeRank] = useState<HeRankMT | null>(null)
+  const cardRef = useRef<HTMLDivElement>(null)
+  useEffect(() => { getBaoCaoPH(hsId, mon, ym).then(setBc).catch(() => {}) }, [hsId, mon, ym])
+  useEffect(() => { setKhoiRank(null); getKhoiRankDiemMT(hsId, mon, ym).then(setKhoiRank).catch(() => {}) }, [hsId, mon, ym])
+  useEffect(() => { setLopRank(null); if (lopId) getLopRankDiemMT(hsId, lopId, mon, ym).then(setLopRank).catch(() => {}) }, [hsId, lopId, mon, ym])
+  useEffect(() => { setHeRank(null); getHeRankDiemMT(hsId, mon, ym).then(setHeRank).catch(() => {}) }, [hsId, mon, ym])
+
+  function handleCopy() {
+    const el = cardRef.current; if (!el) return
+    const cardHTML = el.outerHTML
+    const fname = `Report_${hsName.replace(/\s+/g, '')}_${ym}.png`
+    const html = '<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">'
+      + '<title>Report ' + hsName + '</title><scr' + 'ipt src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></scr' + 'ipt>'
+      + '<style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif;background:#f1f5f9;padding:12px;display:flex;flex-direction:column;align-items:center}'
+      + '.btn{width:100%;max-width:400px;padding:11px;border:none;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;background:#16a34a;color:#fff;margin-bottom:10px}.btn:hover{opacity:.9}'
+      + '#msg{font-size:12px;color:#16a34a;margin-top:6px;min-height:18px}#c{background:#fff;border-radius:18px;overflow:hidden}</style></head><body>'
+      + '<button class="btn" onclick="cp()">📋 Copy ảnh (paste vào Zalo)</button><div id="c">' + cardHTML + '</div><p id="msg"></p>'
+      + '<scr' + 'ipt>async function cp(){var m=document.getElementById("msg");m.textContent="⏳ Đang xử lý...";try{var n=document.getElementById("c");var cv=await html2canvas(n,{scale:2,backgroundColor:"#ffffff",useCORS:true,logging:false,width:n.scrollWidth,height:n.scrollHeight});cv.toBlob(async function(b){try{await navigator.clipboard.write([new ClipboardItem({"image/png":b})]);m.textContent="✅ Đã copy! Ctrl+V vào Zalo.";}catch(e){var u=URL.createObjectURL(b);var a=document.createElement("a");a.href=u;a.download=' + JSON.stringify(fname) + ';a.click();URL.revokeObjectURL(u);m.textContent="✅ Đã tải ảnh!";}},"image/png");}catch(e){m.textContent="Lỗi: "+e.message;}}</scr' + 'ipt></body></html>'
+    const p = window.open('', '_blank', 'width=460,height=900,scrollbars=yes')
+    if (!p) { alert('Trình duyệt chặn popup. Bật "Allow pop-ups" cho site này.'); return }
+    p.document.write(html); p.document.close()
+  }
+
   return createPortal(
     <div className="fixed inset-0 z-[90] flex flex-col bg-slate-900/70" onClick={onClose}>
       <div className="flex items-center gap-3 border-b border-slate-700 bg-slate-800 px-4 py-2.5 text-white" onClick={(e) => e.stopPropagation()}>
@@ -501,85 +685,7 @@ function PhAnhModal({ hsId, mon, ym, hsName, hsImg, lopTen, gvName, tq, missCoun
         <button onClick={onClose} className="rounded-md border border-slate-500 px-3 py-1 text-sm hover:bg-slate-700">Đóng</button>
       </div>
       <div className="min-h-0 flex-1 overflow-auto p-4" onClick={(e) => e.stopPropagation()}>
-        <div ref={cardRef} style={{ width: 390, margin: '0 auto', background: '#f8fbff', borderRadius: 28, overflow: 'hidden', fontFamily: "-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif", boxShadow: '0 20px 55px rgba(26,52,95,.16)', border: '1px solid rgba(255,255,255,.8)' }}>
-          {/* HERO */}
-          <div style={{ position: 'relative', minHeight: 172, padding: '21px 21px 24px', color: '#fff', background: 'radial-gradient(circle at 92% 18%, rgba(78,215,219,.5), transparent 27%), radial-gradient(circle at 18% -10%, rgba(132,151,255,.7), transparent 34%), linear-gradient(135deg,#12315f 0%,#2451b9 60%,#2c77d8 100%)', overflow: 'hidden' }}>
-            <div style={{ position: 'absolute', width: 185, height: 185, right: -88, bottom: -125, border: '28px solid rgba(255,255,255,.08)', borderRadius: '50%' }} />
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'relative', zIndex: 1, marginBottom: 18 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 9, fontWeight: 900, letterSpacing: .5, fontSize: 13 }}>
-                {/* Logo BK: B hồng · K cam · tam giác + xanh · tròn − lục */}
-                <svg width={32} height={32} viewBox="0 0 36 36" style={{ display: 'block' }}>
-                  <rect x="1" y="1" width="15" height="15" rx="4.5" fill="#e5389a" />
-                  <text x="8.5" y="13" textAnchor="middle" fontSize="12" fontWeight="900" fill="#fff" fontFamily="Arial,Helvetica,sans-serif">B</text>
-                  <rect x="20" y="1" width="15" height="15" rx="6" fill="#f7941e" />
-                  <text x="27.5" y="13" textAnchor="middle" fontSize="12" fontWeight="900" fill="#fff" fontFamily="Arial,Helvetica,sans-serif">K</text>
-                  <path d="M8.5 19.5 L16.2 34 L0.8 34 Z" fill="#2bb6d6" />
-                  <text x="8.5" y="33" textAnchor="middle" fontSize="9" fontWeight="900" fill="#fff" fontFamily="Arial,Helvetica,sans-serif">+</text>
-                  <circle cx="27.5" cy="27.5" r="7.6" fill="#7ac143" />
-                  <text x="27.5" y="31.4" textAnchor="middle" fontSize="12" fontWeight="900" fill="#fff" fontFamily="Arial,Helvetica,sans-serif">−</text>
-                </svg>
-                <span>BK ACADEMY</span>
-              </div>
-              <span style={{ fontSize: 11, fontWeight: 800, padding: '7px 10px', borderRadius: 999, background: 'rgba(255,255,255,.14)', border: '1px solid rgba(255,255,255,.22)' }}>THÁNG {ym.split('-')[1]}/{ym.split('-')[0]}</span>
-            </div>
-            <div style={{ position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: '54px 1fr', gap: 13, alignItems: 'center' }}>
-              <div style={{ width: 54, height: 54, borderRadius: 18, overflow: 'hidden', display: 'grid', placeItems: 'center', background: 'linear-gradient(145deg,#fff,#dce9ff)', border: '3px solid rgba(255,255,255,.28)' }}>
-                {hsImg
-                  ? <img src={hsImg} alt="" crossOrigin="anonymous" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                  : <svg width={26} height={26} viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4.2" fill="#315fdd" fillOpacity=".55" /><path d="M4 20.5c0-4.4 3.6-7.2 8-7.2s8 2.8 8 7.2" stroke="#315fdd" strokeOpacity=".55" strokeWidth="2.2" strokeLinecap="round" /></svg>}
-              </div>
-              <div><div style={{ fontSize: 20, fontWeight: 900, lineHeight: 1.12, letterSpacing: -.25 }}>{hsName}</div>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, fontSize: 11, color: '#e9f2ff', marginTop: 6 }}><span>Lớp {lopTen}</span><span>· Môn {mon}</span>{gvName ? <span>· GV {gvName}</span> : null}</div>
-              </div>
-            </div>
-          </div>
-          {/* BODY */}
-          <div style={{ padding: '0 13px 14px', marginTop: -13, position: 'relative', zIndex: 2 }}>
-            {/* PROGRESS + xu hướng */}
-            <div style={{ background: '#fff', border: '1px solid #e8edf5', borderRadius: 20, boxShadow: '0 7px 18px rgba(35,63,104,.055)', padding: 14, display: 'grid', gridTemplateColumns: '85px 1fr', gap: 13, alignItems: 'center', marginBottom: 10 }}>
-              <svg width={80} height={80} viewBox="0 0 80 80">
-                <circle cx={40} cy={40} r={32} fill="none" stroke="#e9f3ef" strokeWidth={9} />
-                <circle cx={40} cy={40} r={32} fill="none" stroke={ringHex} strokeWidth={9} strokeDasharray={RC} strokeDashoffset={RC * (1 - (rankPct ?? 0) / 100)} strokeLinecap="round" transform="rotate(-90 40 40)" />
-                <text x={40} y={37} textAnchor="middle" fontSize={16} fontWeight={800} fill={ringHex}>{khoiRank ? `#${khoiRank.rankNow}` : '—'}</text>
-                <text x={40} y={49} textAnchor="middle" fontSize={7} fontWeight={700} fill="#94a3b8">{khoiRank ? `/${khoiRank.rankTotal} KHỐI ${khoiRank.khoi}` : 'HẠNG TRONG KHỐI'}</text>
-              </svg>
-              <div>
-                <div style={{ fontSize: 10, color: '#315fdd', fontWeight: 900, textTransform: 'uppercase', letterSpacing: .7 }}>Xu hướng tháng này</div>
-                <div style={{ fontSize: 16, fontWeight: 800, margin: '4px 0', color: '#15233b', letterSpacing: -.15 }}>{muc ? `${muc.emoji} ${muc.label}` : 'Kết quả học tập tháng'}</div>
-                {trendV != null && trendV !== 0 ? <span style={{ display: 'inline-flex', gap: 5, alignItems: 'center', fontSize: 10, fontWeight: 900, color: trendV > 0 ? '#12a875' : '#e45858', background: trendV > 0 ? '#ecfbf5' : '#fdecec', padding: '6px 8px', borderRadius: 999 }}>{trendV > 0 ? '↗' : '↘'} {trendV > 0 ? 'Tăng' : 'Giảm'} {Math.abs(trendV)}% so với kỳ trước</span> : null}
-              </div>
-            </div>
-            {/* NHẬN XÉT GV + skill bars (thang 5) + text kèm tag */}
-            {(bc.ket_luan || bc.thai_do || bc.kien_thuc_ky_nang || bc.muc_kien_thuc || bc.muc_thai_do) ? <div style={{ background: '#fff', border: '1px solid #e8edf5', borderRadius: 20, padding: 14, marginBottom: 10, boxShadow: '0 7px 18px rgba(35,63,104,.055)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 9, marginBottom: 10 }}>
-                <span style={{ width: 31, height: 31, borderRadius: 11, display: 'grid', placeItems: 'center', background: '#eef0ff', fontSize: 15 }}>✦</span>
-                <div><div style={{ fontSize: 13, fontWeight: 800, color: '#15233b' }}>Nhận xét của giáo viên</div><div style={{ fontSize: 9, color: '#70809b' }}>{gvName ? `GV ${gvName}` : 'Đánh giá cá nhân theo quá trình học'}</div></div>
-              </div>
-              {bc.ket_luan ? <p style={{ fontSize: 11, lineHeight: 1.48, color: '#42516a', margin: '0 0 4px', whiteSpace: 'pre-wrap' }}>{bc.ket_luan}</p> : null}
-              {bar5('Kiến thức & kỹ năng', bc.muc_kien_thuc, '#315fdd', bc.kien_thuc_ky_nang)}
-              {bar5('Thái độ học tập', bc.muc_thai_do, '#12a875', bc.thai_do)}
-            </div> : null}
-            {/* STATUS */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 7, marginBottom: 10 }}>{statusC(hh.dat, 'Đạt yêu cầu', '#12a875')}{statusC(hh.can_luyen, 'Cần luyện tập', '#e29a23')}{statusC(hh.yeu, 'Còn yếu', '#e45858')}</div>
-            {/* ĐÁNH GIÁ */}
-            <div style={{ background: '#fff', border: '1px solid #e8edf5', borderRadius: 20, padding: '13px 14px 10px', marginBottom: 10, boxShadow: '0 7px 18px rgba(35,63,104,.055)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 9, marginBottom: 8 }}>
-                <span style={{ width: 31, height: 31, borderRadius: 11, display: 'grid', placeItems: 'center', background: '#eef0ff', fontSize: 14 }}>📊</span>
-                <div><div style={{ fontSize: 13, fontWeight: 800, color: '#15233b' }}>Kết quả đánh giá trong tháng</div><div style={{ fontSize: 9, color: '#70809b' }}>Thang điểm 10</div></div>
-              </div>
-              {assessRow('Test cuối giờ', '#315fdd', a.etCoBan, a.etNangCao, true)}
-              {assessRow('Bài tập về nhà', '#12a875', a.btvnCoBan, a.btvnNangCao)}
-              {assessRowDiem('Test tháng (MT)', '#e29a23', tq.diem.mt.tb, tq.diem.mt.coBan, tq.diem.mt.nangCao)}
-              {missCount > 0 ? <div style={{ fontSize: 9.5, color: '#da7d00', marginTop: 6 }}>⚠ Chưa hoàn thành BTVN {missCount} lần trong tháng</div> : null}
-            </div>
-            {/* MỤC TIÊU */}
-            {bc.muc_tieu ? <div style={{ display: 'grid', gridTemplateColumns: '36px 1fr', gap: 10, alignItems: 'center', background: 'linear-gradient(135deg,#fff9e9,#fff)', border: '1px solid #f3e7bf', borderRadius: 20, padding: '12px 13px', marginBottom: 10 }}>
-              <div style={{ width: 36, height: 36, borderRadius: 13, display: 'grid', placeItems: 'center', background: '#fff0bd', fontSize: 17 }}>🎯</div>
-              <div><b style={{ fontSize: 11, display: 'block', marginBottom: 3 }}>Mục tiêu tháng tới</b><p style={{ fontSize: 9.5, lineHeight: 1.4, color: '#776844', margin: 0, whiteSpace: 'pre-wrap' }}>{bc.muc_tieu}</p></div>
-            </div> : null}
-            <p style={{ textAlign: 'center', color: '#8c99ad', fontSize: 8.5, margin: '10px 0 1px' }}>BK Academy · Đồng hành cùng tiến bộ của con mỗi ngày</p>
-          </div>
-        </div>
+        <ReportCardView ref={cardRef} hsName={hsName} hsImg={hsImg} lopTen={lopTen} mon={mon} ym={ym} gvName={gvName} tq={tq} missCount={missCount} bc={bc} khoiRank={khoiRank} lopRank={lopRank} heRank={heRank} />
       </div>
     </div>,
     document.body,

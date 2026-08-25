@@ -148,6 +148,21 @@ export async function boDuyetCau(ma_cau: string, tbl = 'dai_cau_hoi'): Promise<v
   if (error) throw error
 }
 
+// Tìm 1 câu THEO ma_cau xuyên suốt CẢ 3 bảng kho — dùng cho Duyệt chấm "Sửa trong Kho": chỗ gọi chỉ
+// có `ma_cau` (text, KHÔNG FK — CLAUDE.md §2 "tham chiếu bằng TEXT"), không biết trước câu thuộc
+// nhánh nào. Đã kiểm DB thật: `dai_cau_hoi` không có chữ cái đầu, `khtn_cau_hoi` bắt đầu 'K',
+// `hgt_cau_hoi` bắt đầu 'T' — nhưng đó KHÔNG phải quy ước chính thức (không có ràng buộc nào ép),
+// nên dò TỪNG bảng thay vì đoán theo tiền tố. Trả `null` nếu không thấy ở bảng nào (câu đã bị xoá
+// cứng ngoài luồng kho rác, hoặc `ma_cau` không còn đúng — báo rõ ở nơi gọi, không giả định).
+export async function findCauInKho(ma_cau: string): Promise<{ cau: CauHoi; cauTbl: string } | null> {
+  for (const cauTbl of Object.keys(CUM_TBL)) {
+    const { data, error } = await supabase.from(cauTbl).select('*').eq('ma_cau', ma_cau).maybeSingle()
+    if (error) throw error
+    if (data) return { cau: data as CauHoi, cauTbl }
+  }
+  return null
+}
+
 // ══ CỤM BÀI + TIỀN ĐỀ (spec-cum-bai.md) ═══════════════════════════════════════
 // ⚠ ĐỪNG LẪN với `deleteDaiCum`/`deleteCum` đã có ở BranchConfig — "cụm" ở ĐÓ nghĩa là *một nhóm node
 //   cây* (chủ đề/chuyên đề) đem xoá cả mảng. Mọi thứ của CỤM BÀI đều có hậu tố `CumBai` để grep sạch.
@@ -1556,29 +1571,43 @@ export async function ocrDeTuAnh(file: { mimeType: string; dataBase64: string })
   return parseLyThuyetJson(raw)
 }
 
-// ── Ingest CẢ BÀI Hình (ảnh/PDF) → tách ĐỀ + LỜI GIẢI ────────────
-// Up nguyên 1 bài rồi AI tách 2 phần, thay vì điền tay từng ô. CHỈ lấy CHỮ; HÌNH bỏ qua (người tự vẽ).
-export const HINH_BAI_SCHEMA = { type: 'OBJECT', properties: { de_bai: { type: 'STRING' }, loi_giai: { type: 'STRING' } }, required: ['de_bai'] }
+// ── Ingest CẢ BÀI Hình (ảnh/PDF) → tách ĐỀ + LỜI GIẢI + HÌNH VẼ ────────────
+// Up nguyên 1 bài rồi AI tách, thay vì điền tay từng ô. CHỮ (đề/lời giải) do Gemini đọc; HÌNH VẼ hình học
+// AI KHÔNG vẽ lại được nhưng NHẬN DIỆN + KHOANH VÙNG được (box_hinh) — khuôn NGUYÊN pattern
+// co_hinh/box_hinh đã chạy ổn ở kho Đại (buildKhoIngestPrompt/INGEST_KHO_SCHEMA) — caller (hinhUi.tsx
+// IngestBaiButton) tự CẮT ảnh từ canvas DPI cao bằng bbox này (cropCanvasBox, không qua AI vẽ).
+// ⭐ 08-20 (Thùy: "hệ thống tự nhận diện được Hình vẽ luôn — module này bên Đại có rồi"): thêm co_hinh/
+// box_hinh/trang_hinh — trang_hinh vì 1 bài Hình có thể up NHIỀU trang/ảnh (khác Đại ingest-per-trang).
+export const HINH_BAI_SCHEMA = { type: 'OBJECT', properties: {
+  de_bai: { type: 'STRING' }, loi_giai: { type: 'STRING' },
+  co_hinh: { type: 'BOOLEAN' },
+  box_hinh: { type: 'ARRAY', items: { type: 'NUMBER' }, description: '[ymin,xmin,ymax,xmax] toạ độ CHUẨN HOÁ 0-1000 ôm trọn HÌNH VẼ HÌNH HỌC trên ảnh/trang chứa nó — chỉ điền khi co_hinh=true.' },
+  trang_hinh: { type: 'NUMBER', description: 'Số thứ tự ảnh/trang (đếm từ 0, theo đúng thứ tự file được đưa vào) chứa hình vẽ đó — chỉ điền khi co_hinh=true.' },
+}, required: ['de_bai'] }
 export function buildIngestBaiHinhPrompt(): string {
   return [
-    'Ảnh/PDF dưới là MỘT BÀI TOÁN HÌNH HỌC hoàn chỉnh (gồm ĐỀ, có thể kèm LỜI GIẢI).',
-    'TÁCH thành 2 phần, chép NGUYÊN VĂN phần CHỮ — GIỮ đúng câu chữ, KHÔNG tóm tắt, KHÔNG thêm bớt:',
+    'Ảnh/PDF dưới là MỘT BÀI TOÁN HÌNH HỌC hoàn chỉnh (gồm ĐỀ, có thể kèm LỜI GIẢI, có thể nhiều trang/ảnh).',
+    'TÁCH thành các phần, chép NGUYÊN VĂN phần CHỮ — GIỮ đúng câu chữ, KHÔNG tóm tắt, KHÔNG thêm bớt:',
     '- "de_bai": toàn bộ ĐỀ (giả thiết + câu hỏi/yêu cầu). Đề nhiều ý (a, b, c) giữ đủ.',
     '- "loi_giai": toàn bộ LỜI GIẢI / chứng minh nếu có; KHÔNG có thì để "".',
     'QUY TẮC:',
     '- Ký hiệu/công thức DÙNG LaTeX trong $...$ — vd $\\triangle ABC$, $\\angle BAC=90^\\circ$, $AB^2=BH\\cdot BC$, $\\perp$, $\\parallel$. Phân số \\\\dfrac.',
     '- Giữ xuống dòng bằng xuống dòng thật; mỗi ý/bước một dòng.',
-    '- Có HÌNH VẼ thì BỎ QUA (đừng mô tả, đừng vẽ lại) — chỉ lấy CHỮ.',
-    '- Nhiều trang/ảnh: gộp theo đúng thứ tự.',
+    '- Có HÌNH VẼ HÌNH HỌC (tam giác/tứ giác/đường tròn/hình không gian…) thì ĐỪNG chép chữ mô tả hình, ĐỪNG vẽ lại — chỉ đánh dấu vị trí: "co_hinh"=true + "box_hinh"=[ymin,xmin,ymax,xmax] toạ độ CHUẨN HOÁ 0-1000 ôm SÁT hình vẽ đó (không ôm chữ đề xung quanh) + "trang_hinh" = ảnh/trang thứ mấy (đếm từ 0) chứa nó. Nhiều hình trong 1 bài (đề + lời giải đều có hình) thì chỉ lấy hình CỦA ĐỀ BÀI (hình đầu tiên, dùng để hiểu giả thiết). Không có hình nào → "co_hinh"=false, bỏ qua "box_hinh"/"trang_hinh".',
+    '- Nhiều trang/ảnh: gộp CHỮ theo đúng thứ tự.',
     '- Trong JSON: lệnh LaTeX PHẢI double backslash ("\\\\triangle", "\\\\perp", "\\\\cdot", "\\\\dfrac"); CHỈ trả JSON.',
-    'Trả về JSON: { "de_bai": "...", "loi_giai": "..." }',
+    'Trả về JSON: { "de_bai": "...", "loi_giai": "...", "co_hinh": false, "box_hinh": null, "trang_hinh": null }',
   ].join('\n')
 }
-export async function ingestBaiHinh(files: GeminiFile[]): Promise<{ de_bai: string; loi_giai: string }> {
+export async function ingestBaiHinh(files: GeminiFile[]): Promise<{ de_bai: string; loi_giai: string; co_hinh: boolean; box_hinh: [number, number, number, number] | null; trang_hinh: number }> {
   const raw = await callGeminiJson(buildIngestBaiHinhPrompt(), { schema: HINH_BAI_SCHEMA, files })
   let t = raw.trim(); const fence = t.match(/```(?:json)?\s*([\s\S]*?)```/i); if (fence) t = fence[1].trim()
   const obj = lenientJsonParse(t)
-  return { de_bai: String(obj.de_bai ?? obj.deBai ?? '').trim(), loi_giai: String(obj.loi_giai ?? obj.loiGiai ?? '').trim() }
+  const box = Array.isArray(obj.box_hinh) && obj.box_hinh.length === 4 ? (obj.box_hinh.map(Number) as [number, number, number, number]) : null
+  return {
+    de_bai: String(obj.de_bai ?? obj.deBai ?? '').trim(), loi_giai: String(obj.loi_giai ?? obj.loiGiai ?? '').trim(),
+    co_hinh: !!obj.co_hinh && !!box, box_hinh: box, trang_hinh: Number(obj.trang_hinh ?? 0) || 0,
+  }
 }
 
 // ── SINH BIẾN THỂ HÌNH (đổi số) — clone TỪ TEXT bài gốc, giống engine clone bên Đại (buildCloneFromGocPrompt) ──
@@ -1661,16 +1690,27 @@ export async function doiDinhHinh(goc: { de: string; loiGiai: string | null }, g
 // ── ĐỔI ĐỈNH CẢ CHUỖI (một LỨA) — N bài nối tiền đề, đổi đỉnh bằng ĐÚNG MỘT map điểm cho cả chuỗi ──
 // Vì cả chuỗi CHUNG một hình: điểm A ở câu 1 và câu 3 phải đổi thành CÙNG một tên. Đổi từng câu riêng =
 // mỗi câu một bộ điểm → ghép a,b,c vô nghĩa. Gộp 1 call để AI chốt 1 map dùng chung.
-export const HINH_CHUOI_SCHEMA = { type: 'OBJECT', properties: { cau: { type: 'ARRAY', items: HINH_BAI_SCHEMA } }, required: ['cau'] }
-export function buildDoiDinhChuoiPrompt(cau: { ma: string; de: string; loiGiai: string }[], ghiChu?: string): string {
-  const list = cau.map((c, i) => [`--- Câu ${i + 1} (${c.ma}) ---`, `de_bai: ${c.de}`, `loi_giai: ${c.loiGiai || '(tự giải theo phương pháp chuẩn)'}`].join('\n')).join('\n\n')
+// ⭐ 08-20 (Thùy: "sao hệ thống tự đẻ ra chữ Chứng minh vậy, t nhập/AI trả gì thì hiện đúng thế, không
+// được tự sinh"): TRƯỚC gộp giả thiết+câu hỏi vào 1 field "de_bai" rồi lúc hiển thị lứa lại DÒ chữ
+// "Chứng minh" để cắt ngược ra 2 phần (`tachDe`) — hỏng ngay khi câu hỏi gốc không có chữ đó (vd "Tính
+// …") hoặc AI không tự thêm lại. Đổi hẳn: AI trả "giai_thiet"/"cau_hoi" TÁCH RIÊNG — không phải NỐI rồi
+// CẮT NGƯỢC, khỏi cần đoán mốc chữ nào cả. Client tự ghép lại bằng `ghepDeBai` (SoanTaiLieu.tsx, mốc kỹ
+// thuật do CLIENT chèn — không nhờ AI "nhớ giữ").
+export const HINH_CHUOI_ITEM_SCHEMA = { type: 'OBJECT', properties: {
+  giai_thiet: { type: 'STRING', description: 'CHỈ phần giả thiết (không kèm câu hỏi) sau khi đổi đỉnh — để trống nếu câu này không có giả thiết riêng.' },
+  cau_hoi: { type: 'STRING', description: 'CHỈ phần câu hỏi/yêu cầu sau khi đổi đỉnh — GIỮ NGUYÊN VĂN cách hỏi gốc (không tự thêm chữ "Chứng minh" hay bất kỳ chữ nào khác nếu gốc không có), không kèm giả thiết.' },
+  loi_giai: { type: 'STRING' },
+}, required: ['cau_hoi'] }
+export const HINH_CHUOI_SCHEMA = { type: 'OBJECT', properties: { cau: { type: 'ARRAY', items: HINH_CHUOI_ITEM_SCHEMA } }, required: ['cau'] }
+export function buildDoiDinhChuoiPrompt(cau: { ma: string; giaThiet: string; cauHoi: string; loiGiai: string }[], ghiChu?: string): string {
+  const list = cau.map((c, i) => [`--- Câu ${i + 1} (${c.ma}) ---`, `giai_thiet: ${c.giaThiet || '(không có riêng)'}`, `cau_hoi: ${c.cauHoi}`, `loi_giai: ${c.loiGiai || '(tự giải theo phương pháp chuẩn)'}`].join('\n')).join('\n\n')
   return [
     'Bạn là chuyên gia ra đề toán HÌNH HỌC THCS.',
-    `Dưới đây là ${cau.length} bài toán NỐI TIẾP trong MỘT chuỗi — CÙNG một hình, ý sau dùng kết quả ý trước:`,
+    `Dưới đây là ${cau.length} bài toán NỐI TIẾP trong MỘT chuỗi — CÙNG một hình, ý sau dùng kết quả ý trước. Mỗi câu đã tách sẵn "giai_thiet" (giả thiết riêng, có thể trống) và "cau_hoi" (yêu cầu):`,
     '',
     list,
     '',
-    `NHIỆM VỤ: Sinh biến thể "ĐỔI ĐỈNH" cho CẢ ${cau.length} câu — GIỮ NGUYÊN số liệu, cấu hình hình, logic; CHỈ đổi TÊN các điểm.`,
+    `NHIỆM VỤ: Sinh biến thể "ĐỔI ĐỈNH" cho CẢ ${cau.length} câu — GIỮ NGUYÊN số liệu, cấu hình hình, logic; CHỈ đổi TÊN các điểm. Trả riêng "giai_thiet"/"cau_hoi" đã đổi tên — ĐỪNG gộp chung, ĐỪNG tự thêm/bớt chữ nào ngoài việc đổi tên điểm (câu hỏi gốc viết sao thì giữ nguyên cách viết đó, kể cả không có chữ "Chứng minh").`,
     '',
     `⚠ RÀNG BUỘC QUAN TRỌNG NHẤT — MỘT BỘ ĐIỂM DUY NHẤT cho cả ${cau.length} câu:`,
     '- Chọn MỘT map đổi tên điểm (vd $A,B,C,H \\to M,N,P,K$) rồi áp Y HỆT cho MỌI câu. Điểm $A$ ở câu 1 và câu 3 PHẢI đổi thành CÙNG một tên. TUYỆT ĐỐI KHÔNG mỗi câu một bộ điểm khác nhau.',
@@ -1681,15 +1721,81 @@ export function buildDoiDinhChuoiPrompt(cau: { ma: string; de: string; loiGiai: 
     '',
     FMT_RULES,
     '',
-    `Trả về JSON: { "cau": [ ĐÚNG ${cau.length} phần tử dạng { "de_bai": "...", "loi_giai": "..." } ] }`,
+    `Trả về JSON: { "cau": [ ĐÚNG ${cau.length} phần tử dạng { "giai_thiet": "...", "cau_hoi": "...", "loi_giai": "..." } ] }`,
   ].filter(Boolean).join('\n')
 }
-export async function doiDinhChuoiHinh(cau: { ma: string; de: string; loiGiai: string }[], ghiChu?: string): Promise<{ de_bai: string; loi_giai: string }[]> {
+export async function doiDinhChuoiHinh(cau: { ma: string; giaThiet: string; cauHoi: string; loiGiai: string }[], ghiChu?: string): Promise<{ giai_thiet: string; cau_hoi: string; loi_giai: string }[]> {
   const raw = await callGeminiJson(buildDoiDinhChuoiPrompt(cau, ghiChu?.trim() || undefined), { model: 'gemini-2.5-flash', think: 8192, schema: HINH_CHUOI_SCHEMA })
   let t = raw.trim(); const fence = t.match(/```(?:json)?\s*([\s\S]*?)```/i); if (fence) t = fence[1].trim()
   const obj = lenientJsonParse(t)
   const arr = Array.isArray(obj.cau) ? obj.cau : []
-  return arr.map((x: any) => ({ de_bai: String(x.de_bai ?? x.deBai ?? '').trim(), loi_giai: String(x.loi_giai ?? x.loiGiai ?? '').trim() }))
+  return arr.map((x: any) => ({
+    giai_thiet: String(x.giai_thiet ?? x.giaThiet ?? '').trim(),
+    cau_hoi: String(x.cau_hoi ?? x.cauHoi ?? '').trim(),
+    loi_giai: String(x.loi_giai ?? x.loiGiai ?? '').trim(),
+  }))
+}
+
+// ── NHẬP LỨA ĐÃ CLONE SẴN (ảnh/PDF) — Thùy 08-20: "hệ thống chưa clone được 1 chuỗi hoàn chỉnh, t tự
+// clone bên ngoài, muốn NHẬP lại + tự khớp vào chuỗi gốc". Khác doiDinhChuoiHinh (AI TỰ SINH text, chỉ đổi
+// tên điểm) — đây là NGƯỜI đã tự làm ra bản clone thật (đổi số/đổi hình/đổi gì cũng được), AI CHỈ ĐỌC +
+// KHỚP từng ý vào ĐÚNG bài gốc trong chuỗi (không tự bịa nội dung) — khuôn ingest, không phải sinh.
+// Khớp theo "ma" (khoá tự nhiên) — không theo VỊ TRÍ/thứ tự in (CLAUDE.md §2 "danh tính bám khoá tự
+// nhiên"): bản clone có thể thiếu/thừa/đảo thứ tự so với chuỗi gốc, AI phải tự đối chiếu NỘI DUNG.
+// ⭐ 08-20 (Thùy: "không được tự sinh ra cái gì hết"): "giai_thiet"/"cau_hoi" TÁCH RIÊNG, KHÔNG gộp vào
+// 1 "de_bai" rồi cắt ngược bằng mốc chữ (xem lý do y hệt ở doiDinhChuoiHinh phía trên).
+export const INGEST_LUA_CHUOI_ITEM_SCHEMA = { type: 'OBJECT', properties: {
+  khop_voi_ma: { type: 'STRING', description: 'Mã bài GỐC (lấy NGUYÊN trong ngoặc [ ] ở danh sách đối chiếu) mà Ý NÀY khớp nội dung/logic/vị trí trong chuỗi nhất.' },
+  giai_thiet: { type: 'STRING', description: 'CHỈ phần giả thiết dùng chung (đã đổi số/đổi tên theo bản clone) — không kèm câu hỏi.' },
+  cau_hoi: { type: 'STRING', description: 'CHỈ phần câu hỏi/yêu cầu riêng của ý này — CHÉP NGUYÊN VĂN cách hỏi trong ảnh (không tự thêm chữ "Chứng minh" hay chữ nào khác nếu ảnh không viết vậy), không kèm giả thiết.' },
+  loi_giai: { type: 'STRING' },
+}, required: ['khop_voi_ma', 'cau_hoi'] }
+export const INGEST_LUA_CHUOI_SCHEMA = { type: 'OBJECT', properties: {
+  y: { type: 'ARRAY', items: INGEST_LUA_CHUOI_ITEM_SCHEMA },
+  co_hinh: { type: 'BOOLEAN' },
+  box_hinh: { type: 'ARRAY', items: { type: 'NUMBER' }, description: '[ymin,xmin,ymax,xmax] toạ độ CHUẨN HOÁ 0-1000 ôm trọn HÌNH VẼ dùng chung cho cả chuỗi (thường chỉ 1 hình ở đầu) — chỉ điền khi co_hinh=true.' },
+  trang_hinh: { type: 'NUMBER', description: 'Số thứ tự ảnh/trang (đếm từ 0) chứa hình đó — chỉ điền khi co_hinh=true.' },
+}, required: ['y'] }
+export function buildIngestLuaChuoiPrompt(chuoiGoc: { ma: string; phat_bieu: string }[]): string {
+  const list = chuoiGoc.map((c) => `[${c.ma}] ${c.phat_bieu}`).join('\n')
+  return [
+    'Ảnh/PDF dưới là MỘT CHUỖI bài toán hình học đã được CLONE (đổi số/đổi tên điểm/vẽ lại…) từ một chuỗi',
+    'GỐC cho bên dưới — thường trình bày dạng: 1 hình vẽ + 1 giả thiết CHUNG, rồi các ý a), b), c)… nối',
+    'tiếp nhau (ý sau dùng kết quả ý trước), có thể kèm lời giải từng ý.',
+    '',
+    `CHUỖI GỐC (${chuoiGoc.length} bài — CHỈ dùng để KHỚP nội dung/logic, đây KHÔNG phải đề trong ảnh):`,
+    list,
+    '',
+    'NHIỆM VỤ: tách ảnh/PDF thành từng Ý, mỗi ý khớp với ĐÚNG 1 bài gốc ở trên qua "khop_voi_ma":',
+    '- Khớp theo LOGIC/NỘI DUNG/VỊ TRÍ trong chuỗi (ý đầu thường ≈ bài đầu chuỗi, ý dùng kết quả ý trước ≈',
+    '  bài có tiền đề là bài trước nó…) — KHÔNG máy móc theo đúng thứ tự in nếu nội dung cho thấy khác.',
+    '- Ảnh/PDF có thể clone THIẾU vài bài gốc hoặc THỪA ý ngoài chuỗi — cứ trả đúng những gì đọc được,',
+    '  ĐỪNG bịa ý cho đủ số, ĐỪNG gán ép một ý vào bài không khớp.',
+    'QUY TẮC chép chữ (mỗi "giai_thiet"/"cau_hoi"/"loi_giai"):',
+    '- Chép NGUYÊN VĂN — GIỮ đúng câu chữ ảnh viết, KHÔNG thêm/bớt/diễn giải lại (kể cả không thêm chữ',
+    '  "Chứng minh"/"Tính"… nếu ảnh không có sẵn chữ đó ở đầu câu hỏi).',
+    '- Ký hiệu/công thức DÙNG LaTeX trong $...$; phân số \\\\dfrac. Giữ xuống dòng thật; mỗi bước 1 dòng.',
+    '- Có HÌNH VẼ HÌNH HỌC dùng chung cho cả chuỗi (thường vẽ 1 lần ở đầu): "co_hinh"=true + "box_hinh"',
+    '  ôm sát hình + "trang_hinh" = ảnh/trang thứ mấy (đếm từ 0) chứa nó. Không có → "co_hinh"=false.',
+    '- Trong JSON: lệnh LaTeX PHẢI double backslash; CHỈ trả JSON.',
+    'Trả về JSON: { "y": [ { "khop_voi_ma":"...", "giai_thiet":"...", "cau_hoi":"...", "loi_giai":"..." } ], "co_hinh":false, "box_hinh":null, "trang_hinh":null }',
+  ].join('\n')
+}
+export async function ingestLuaChuoiHinh(files: GeminiFile[], chuoiGoc: { ma: string; phat_bieu: string }[]): Promise<{
+  y: { khop_voi_ma: string; giai_thiet: string; cau_hoi: string; loi_giai: string }[]
+  co_hinh: boolean; box_hinh: [number, number, number, number] | null; trang_hinh: number
+}> {
+  const raw = await callGeminiJson(buildIngestLuaChuoiPrompt(chuoiGoc), { schema: INGEST_LUA_CHUOI_SCHEMA, files })
+  let t = raw.trim(); const fence = t.match(/```(?:json)?\s*([\s\S]*?)```/i); if (fence) t = fence[1].trim()
+  const obj = lenientJsonParse(t)
+  const box = Array.isArray(obj.box_hinh) && obj.box_hinh.length === 4 ? (obj.box_hinh.map(Number) as [number, number, number, number]) : null
+  const y = (Array.isArray(obj.y) ? obj.y : []).map((x: any) => ({
+    khop_voi_ma: String(x.khop_voi_ma ?? x.khopVoiMa ?? '').trim(),
+    giai_thiet: String(x.giai_thiet ?? x.giaThiet ?? '').trim(),
+    cau_hoi: String(x.cau_hoi ?? x.cauHoi ?? '').trim(),
+    loi_giai: String(x.loi_giai ?? x.loiGiai ?? '').trim(),
+  })).filter((x: any) => x.khop_voi_ma && x.cau_hoi)
+  return { y, co_hinh: !!obj.co_hinh && !!box, box_hinh: box, trang_hinh: Number(obj.trang_hinh ?? 0) || 0 }
 }
 
 // ── Lý thuyết đi kèm dạng Đại (1-1) + chuẩn completeness ──────────

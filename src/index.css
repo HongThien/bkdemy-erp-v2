@@ -1,5 +1,22 @@
 @import "tailwindcss";
 
+/* Bảng màu app Phụ huynh (Thùy 21/08: "làm UI giống app phụ huynh") — port sang Tailwind v4 @theme.
+   ⚠ Lần đầu port NHẦM `bkdemy-ph-app/app/globals.css` (:root) — file đó CHẾT, grep xác nhận 0 chỗ
+   dùng trong PhApp.tsx. Bảng ĐANG CHẠY THẬT = `bkdemy-ph-app/app/ph-v3.css` (`.pv3{ --bg:... }`),
+   port lại ĐÚNG từ đây (Thùy: "vẫn xấu quá" — đúng vì port nhầm nguồn chết). Dùng cho HocSinhApp
+   (màn HS trên điện thoại) — không đụng bảng màu slate/indigo mặc định Tailwind các màn khác. */
+@theme {
+  --color-brand: #087fc6;
+  --color-brand-2: #1267d5;
+  --color-ios: #f3f5fa;
+  --color-ph-label: #171a22;
+  --color-ph-label-2: #858a96;
+  --color-ph-green: #26af60;
+  --color-ph-orange: #ff9418;
+  --color-ph-red: #e64040;
+  --color-ph-purple: #7656d8;
+}
+
 /* Công thức KaTeX cỡ bằng chữ thường.
    ⚠ !important: katex.min.css (import SAU index.css ở main.tsx) đặt `.katex{font-size:1.21em}` — cùng
    độ ưu tiên nên cái sau thắng, làm mọi công thức inline (kể cả $ABC$) to hơn chữ thường 21%. */

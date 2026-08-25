@@ -55,6 +55,12 @@ const dauTuan = (ngay: string): string => {
 const CUA_SO_PHAN_LOAI = 60
 const NGUONG_CHAY = 0.6
 const MAU_TOI_THIEU = 4
+// Cửa sổ quét TỒN ĐỌNG "buổi chưa đóng" (CEO 19/08) — RỘNG HƠN hẳn "từ đầu tuần" (mục ③,
+// chỉ vài ngày) vì mục đích khác nhau: ③ là nhắc việc HÔM NAY, đây là lộ TỒN ĐỌNG THẬT đã
+// rơi khỏi mọi báo cáo theo tuần. Không quét vô hạn (bảng phình, chậm) — 90 ngày ~1 kỳ,
+// đủ để bắt buổi bị bỏ quên lâu mà không làm chậm màn hình. Số ngày IN RA CHO NGƯỜI ĐỌC
+// (cuaSoChuaDong) — không âm thầm cắt, ai cần xa hơn thì biết cần hỏi trực tiếp DB.
+const CUA_SO_TON_DONG = 90
 
 export type KhauLop = { chay: boolean; tyLe: number; soBuoi: number; duMau: boolean }
 export type PhanLoaiLop = Map<string, { et: KhauLop; btvn: KhauLop }>
@@ -94,12 +100,15 @@ export type BtvnDenHan = {
   lop: string; mon: string; buoiTruoc: string; treNgay: number; daGhiNhan: boolean
 }
 export type NoTuanLop = { lop: string; noET: number; noBTVN: number; noDanhGia: number; soBuoi: number }
+export type LopChuaDong = { lop: string; mon: string; soBuoi: number; cuNhat: string; tuoiNgayCuNhat: number }
 
 export type BaoCaoVanHanh = {
   ngay: string; homQua: string; tuNgay: string
   buoiHomQua: BuoiHomQua[]
   btvn: BtvnDenHan[]        // lớp CÓ CA HÔM NAY ⇒ BTVN buổi trước đến hạn
   noTuan: NoTuanLop[]
+  chuaDong: LopChuaDong[]   // TỒN ĐỌNG (khác noTuan — noTuan chỉ tính từ đầu tuần)
+  cuaSoChuaDong: number     // số ngày quét cho chuaDong — CHO T thấy phạm vi, không silent cap
   phamVi: string
   khongBiet: string[]
 }
@@ -131,12 +140,16 @@ export async function baoCaoVanHanh(): Promise<BaoCaoVanHanh> {
 
   // Quét từ đầu tuần (hoặc sớm hơn nếu hôm qua rơi trước đầu tuần — sáng thứ Hai).
   const tuQuet = tuNgay < homQua ? tuNgay : homQua
-  const [ds, aoHomNay, phanLoai] = await Promise.all([
-    buoiKemHienVat(tuQuet, homQua),
+  // Cửa sổ RỘNG cho mục ④ tồn đọng (CUA_SO_TON_DONG) — LUÔN bao trùm tuQuet ở trên (90 ngày ≫
+  // vài ngày đầu tuần) nên fetch 1 LẦN rồi lọc lại cho ① và ③, khỏi query trùng.
+  const tuTonDong = congNgay(homNay, -CUA_SO_TON_DONG)
+  const [dsRong, aoHomNay, phanLoai] = await Promise.all([
+    buoiKemHienVat(tuTonDong, homQua),
     // Lớp nào HÔM NAY có ca — nguồn của nghĩa vụ BTVN (chấm ở buổi kế).
     buoiAoCuaNgay(homNay).catch(() => []),
     phanLoaiLopTheoKhau(),
   ])
+  const ds = dsRong.filter((b) => b.ngay >= tuQuet)
   const chayET = (lopId: string) => phanLoai.get(lopId)?.et.chay ?? true
   const chayBTVN = (lopId: string) => phanLoai.get(lopId)?.btvn.chay ?? true
 
@@ -196,17 +209,39 @@ export async function baoCaoVanHanh(): Promise<BaoCaoVanHanh> {
     .filter((o) => o.noET || o.noBTVN || o.noDanhGia)
     .sort((a, b) => (b.noET + b.noBTVN + b.noDanhGia) - (a.noET + a.noBTVN + a.noDanhGia) || a.lop.localeCompare(b.lop))
 
+  // ── ④ TỒN ĐỌNG (CUA_SO_TON_DONG ngày): buổi CHƯA ĐÓNG — cùng luật "đủ" với mục ①
+  // (ET nếu bắt buộc + có đề thì phải xong, VÀ đánh giá phải xong) nhưng KHÔNG bó riêng "hôm
+  // qua" hay "tuần này" — lộ ra buổi bị bỏ quên LÂU đã rơi khỏi 2 báo cáo trên (CEO 19/08:
+  // "bao nhiêu buổi của lớp nào chưa đóng, tức dữ liệu buổi đấy chưa đầy đủ").
+  const gomDong = new Map<string, { lop: string; mon: string; soBuoi: number; cuNhat: string }>()
+  for (const b of dsRong) {
+    const lopChayET = chayET(b.lop_id)
+    const du = (!lopChayET || !b.coDeET || !!b.et_dong_at) && !!b.danh_gia_xong_at
+    if (du) continue
+    const ten = b.lop?.ten_lop ?? '?'
+    const o = gomDong.get(ten) ?? { lop: ten, mon: b.lop?.mon ?? '', soBuoi: 0, cuNhat: b.ngay }
+    o.soBuoi++
+    if (b.ngay < o.cuNhat) o.cuNhat = b.ngay
+    gomDong.set(ten, o)
+  }
+  const chuaDong: LopChuaDong[] = [...gomDong.values()]
+    .map((o) => ({ ...o, tuoiNgayCuNhat: lechNgay(o.cuNhat, homNay) }))
+    .sort((a, b) => b.soBuoi - a.soBuoi || a.lop.localeCompare(b.lop))
+
   return {
     ngay: homNay, homQua, tuNgay,
-    buoiHomQua, btvn, noTuan,
+    buoiHomQua, btvn, noTuan, chuaDong, cuaSoChuaDong: CUA_SO_TON_DONG,
     phamVi: `Buổi thường TOÀN HỆ. Hôm qua ${homQua}: ${buoiHomQua.length} buổi. `
-      + `Nợ tính từ đầu tuần ${tuNgay}. CHỈ tính lớp thật sự chạy khâu đó — suy từ 60 ngày gần nhất `
+      + `Nợ tính từ đầu tuần ${tuNgay}. Tồn đọng "chưa đóng" quét ${CUA_SO_TON_DONG} ngày gần nhất `
+      + `(${tuTonDong} → ${homQua}) — buổi cũ hơn KHÔNG nằm trong con số này, tự hỏi DB nếu cần xa hơn. `
+      + `CHỈ tính lớp thật sự chạy khâu đó — suy từ 60 ngày gần nhất `
       + `(≥60% buổi có đề/doc thì coi là có chạy). Lớp không chạy ET/BTVN bị bỏ hẳn khỏi mọi con số. `
       + `Đánh giá đòi ở MỌI buổi thường.`,
     khongBiet: [
       'Lớp "có chạy ET/BTVN hay không" là SUY từ 60 ngày gần nhất, không phải ai đó khai. Lớp mới mở dưới 4 buổi thì mặc định coi như có chạy (thà hỏi thừa còn hơn im).',
       'Không biết ai là người phải fill từng khâu; báo cáo dừng ở mức LỚP, việc gán người là của người đọc.',
       'BTVN của buổi hôm qua chưa tới hạn (chấm ở buổi kế) nên cố ý không nằm trong mục "hôm qua".',
+      'Mục "tồn đọng chưa đóng" (④) chỉ xét ET + đánh giá của CHÍNH buổi đó — cố ý KHÔNG gộp nợ BTVN (nhịp khác hẳn, chấm ở buổi kế, xem mục ②/③) để khỏi trộn 2 loại nghĩa vụ khác nhịp vào 1 con số.',
     ],
   }
 }

@@ -12,11 +12,13 @@ import { createPortal } from 'react-dom'
 import * as api from '../../../lib/kho/api'
 import type { BaiToan, BienThe, Luoi, MoHinh, Y, Bai } from '../../../lib/kho/hinh'
 import { MathText } from '../ui'
-import { AnhInput, Btn, Cap, Chip, Empty, Fig, FieldCard, IngestBaiButton, KV, Ma, MaPill, OcrButton, Panel, Seg, Sol, Tag, inpCls, tron } from './hinhUi'
+import { AnhInput, Btn, Cap, Chip, Empty, Fig, FieldCard, IngestBaiButton, KV, Ma, MaPill, OcrButton, Panel, Seg, Sol, Tag, fileToBase64, inpCls, tron } from './hinhUi'
 import { FormMoHinh } from './Ho'
 import FormBaiToan from './FormBaiToan'
 import type { Nhay } from './KhoHinhScreen'
 import { LyThuyetModal } from '../BanDo'
+import { fileToCanvases, canvasToJpegBase64, cropCanvasBox } from '../../../lib/pdfRender'
+import { deBaiHienThi, ghepDeBai } from './SoanTaiLieu'
 
 /** Dải cấp gọn: 4–4 đọc thừa, chỉ in 4. */
 export const dai = (ns: number[]) => (Math.min(...ns) === Math.max(...ns) ? String(ns[0]) : `${Math.min(...ns)}–${Math.max(...ns)}`)
@@ -44,6 +46,14 @@ export default function SoDo({ L, khoi, hoId, di, reload, moTaNode, nodeId }: {
 
   useEffect(() => { if (nodeId) { setChonBt(nodeId); setView('bt') } }, [nodeId])
 
+  // ⭐ 24/08 (Thùy báo "vẫn không thấy có lý thuyết"): icon 📖 trước chỉ gắn ở View mô hình — nhưng màn
+  // luôn MỞ MẶC ĐỊNH ở View bài toán (`view` khởi tạo 'bt', dòng trên), nên không toggle tay thì không
+  // bao giờ thấy. Nâng state lên NGAY ĐÂY (cha chung của cả 2 view) để gắn icon ở CẢ HAI, không chỉ 1.
+  const [moLtMap, setMoLtMap] = useState<Record<string, { noi_dung: string; file_url: string | null; ten_file: string | null }>>({})
+  const [moLtModal, setMoLtModal] = useState<{ id: string; ten: string } | null>(null)
+  const napMoLt = () => api.hinhMoHinhLyThuyet.list().then(setMoLtMap).catch(() => { /* */ })
+  useEffect(() => { napMoLt() }, [])
+
   if (!ho) return <Empty>Chưa có họ mô hình nào — tạo ở màn <b>Chọn họ mô hình</b> trước. Lưới trước, gán sau.</Empty>
 
   return (
@@ -70,21 +80,29 @@ export default function SoDo({ L, khoi, hoId, di, reload, moTaNode, nodeId }: {
 
       {view === 'bt'
         ? <ViewBaiToan L={L} ho={ho} nodes={nodes} chon={chonBt} setChon={setChonBt} onSua={(b) => setFormBt({ sua: b })}
-            onTaoKeTiep={(b) => setFormBt({ moHinhId: b.mo_hinh_id, tienDeId: b.id })} reload={reload} />
-        : <ViewMoHinh L={L} ho={ho} trongHo={trongHo} chon={chonMh ?? ho.id} setChon={setChonMh} onSua={(m) => setFormMh({ sua: m })} onThemCon={(id) => setFormMh({ cha: id })} reload={reload} />}
+            onTaoKeTiep={(b) => setFormBt({ moHinhId: b.mo_hinh_id, tienDeId: b.id })} reload={reload}
+            moLtMap={moLtMap} onOpenLt={(id, ten) => setMoLtModal({ id, ten })} />
+        : <ViewMoHinh L={L} ho={ho} trongHo={trongHo} chon={chonMh ?? ho.id} setChon={setChonMh} onSua={(m) => setFormMh({ sua: m })} onThemCon={(id) => setFormMh({ cha: id })} reload={reload}
+            moLtMap={moLtMap} onOpenLt={(id, ten) => setMoLtModal({ id, ten })} />}
 
       {formBt && <FormBaiToan L={L} moHinhMacDinh={formBt.moHinhId ?? chonMh ?? ho.id} sua={formBt.sua} phatBieuGoi={formBt.goi}
         tienDeMacDinh={formBt.tienDeId} onClose={() => setFormBt(null)} onDone={reload} />}
       {formMh && <FormMoHinh L={L} khoiMacDinh={khoi} chaMacDinh={formMh.cha} sua={formMh.sua} onClose={() => setFormMh(null)} onDone={reload} />}
+      {moLtModal && (
+        <LyThuyetModal ma={moLtModal.id} ten={moLtModal.ten} current={moLtMap[moLtModal.id] as any} api={api.hinhMoHinhLyThuyet as any}
+          onClose={() => setMoLtModal(null)} onSaved={() => { setMoLtModal(null); napMoLt() }} />
+      )}
     </>
   )
 }
 
 // ══════════════════ VIEW BÀI TOÁN — cột = CẤP (toggle: Toàn họ / Theo mô hình) ══════════════════
-function ViewBaiToan({ L, ho, nodes: nodesHo, chon, setChon, onSua, onTaoKeTiep, reload }: {
+function ViewBaiToan({ L, ho, nodes: nodesHo, chon, setChon, onSua, onTaoKeTiep, reload, moLtMap, onOpenLt }: {
   L: Luoi; ho: MoHinh; nodes: BaiToan[]; chon: string | null; setChon: (id: string | null) => void; onSua: (b: BaiToan) => void
   onTaoKeTiep: (b: BaiToan) => void
   reload: () => Promise<void>
+  moLtMap: Record<string, { noi_dung: string; file_url: string | null }>
+  onOpenLt: (id: string, ten: string) => void
 }) {
   const maCap = useMemo(() => api.maPhanCapMap(L), [L])
   const trongHo = useMemo(() => api.moHinhCuaHo(L, ho.id), [L, ho])
@@ -266,18 +284,28 @@ function ViewBaiToan({ L, ho, nodes: nodesHo, chon, setChon, onSua, onTaoKeTiep,
                     const p = pos.get(n.id)!
                     const khac = api.doSauTrongHo(L, n.mo_hinh_id) > sauMoc   // node cần THÊM giả thiết
                     const mh = L.moHinh.find((m) => m.id === n.mo_hinh_id)
+                    // ⭐ 24/08 — icon 📖 lý thuyết CỦA MÔ HÌNH node này thuộc về (không phải của node) — đây
+                    // là view MẶC ĐỊNH khi mở Sơ đồ nên gắn ở đây, không chỉ ở View mô hình (Thùy: "vẫn
+                    // không thấy có lý thuyết" — trước đó phải tự bấm toggle "◇ View mô hình" mới thấy).
+                    const coLtM = !!mh && !!(moLtMap[mh.id]?.noi_dung?.trim() || moLtMap[mh.id]?.file_url)
                     return (
-                      <button key={n.id} onClick={() => setChon(n.id)}
+                      <div key={n.id} onClick={() => setChon(n.id)} role="button" tabIndex={0}
                         style={{ left: p.x, top: p.y, width: COL_W, height: NODE_H }}
                         title="Bấm để xem đầy đủ đề · hình · đáp án"
-                        className={`absolute flex flex-col overflow-hidden rounded-lg border bg-white text-left leading-tight transition ${
+                        className={`absolute flex cursor-pointer flex-col overflow-hidden rounded-lg border bg-white text-left leading-tight transition ${
                           khac ? 'border-teal-300 bg-teal-50/40' : 'border-blue-300'
                         } ${chon === n.id ? 'shadow-md ring-2 ring-blue-400/40' : 'hover:shadow-sm'}`}>
                         {/* Hình to full-width trên đầu (như card mô hình). Node có hình riêng thì lấy nó, không thì mượn mô hình. */}
-                        <div className="h-24 shrink-0 border-b border-slate-100 bg-slate-50/50">
+                        <div className="relative h-24 shrink-0 border-b border-slate-100 bg-slate-50/50">
                           {api.anhCuaBaiToan(L, n.id)
                             ? <img src={api.anhCuaBaiToan(L, n.id)!} alt="" className="h-full w-full bg-white object-contain" />
                             : <div className="flex h-full items-center justify-center text-[10.5px] text-slate-300">chưa có hình</div>}
+                          {mh && (
+                            <button onClick={(e) => { e.stopPropagation(); onOpenLt(mh.id, mh.ten) }}
+                              title={coLtM ? 'Lý thuyết mô hình này — đã có, bấm để sửa' : 'Lý thuyết mô hình này — chưa có, bấm để soạn'}
+                              className={`absolute right-1 top-1 flex h-6 w-6 items-center justify-center rounded-md border bg-white/90 text-[12px] shadow-sm ${
+                                coLtM ? 'border-violet-300 text-violet-600' : 'border-slate-300 text-slate-400'}`}>📖</button>
+                          )}
                         </div>
                         {/* Câu hỏi = nội dung chính · giả thiết (mượn mô hình) = context phụ · cấp/mã. */}
                         <div className="flex min-h-0 flex-1 flex-col gap-1 px-2 py-1.5">
@@ -290,7 +318,7 @@ function ViewBaiToan({ L, ho, nodes: nodesHo, chon, setChon, onSua, onTaoKeTiep,
                             {teDeAnDi.has(n.id) && <span className="ml-auto shrink-0 text-[12px] font-bold text-amber-600" title="Còn tiền đề ở mô hình khác — không vẽ được dây, mở bài toán để xem đủ">↗</span>}
                           </div>
                         </div>
-                      </button>
+                      </div>
                     )
                   })}
                 </div>
@@ -378,7 +406,7 @@ function DetailBaiToan({ L, bt, onSua, onTaoKeTiep, onChon, onClose, reload }: {
             </p>
             <FieldCard ton="mh" big><MathText>{api.giaThietBaiToan(L, bt.id)}</MathText></FieldCard>
             <p className="text-[16px] font-semibold uppercase tracking-wide text-slate-400">Câu hỏi</p>
-            <FieldCard ton="bt" big><MathText>{`Chứng minh ${bt.phat_bieu}`}</MathText></FieldCard>
+            <FieldCard ton="bt" big><MathText>{bt.phat_bieu}</MathText></FieldCard>
             <p className="text-[16px] font-semibold uppercase tracking-wide text-slate-400">Hình</p>
             <Fig src={api.anhCuaBaiToan(L, bt.id)} h="h-80"
               cap={api.anhCuaBaiToan(L, bt.id) ? (bt.anh_chuan ? 'Hình riêng của bài toán' : 'Hình cấu hình (mượn của mô hình)') : undefined} />
@@ -448,7 +476,7 @@ function DetailBaiToan({ L, bt, onSua, onTaoKeTiep, onChon, onClose, reload }: {
                       try { await api.deleteBienThe(v.id); await napBt() } catch (e: any) { alert(e.message) }
                     }}>🗑</Btn>
                   </div>
-                  {v.de_bai && <div className="text-[15px] leading-relaxed text-slate-700"><MathText>{v.de_bai}</MathText></div>}
+                  {v.de_bai && <div className="text-[15px] leading-relaxed text-slate-700"><MathText>{deBaiHienThi(v.de_bai)}</MathText></div>}
                   {v.anh && <img src={v.anh} alt="" className="mt-1 max-h-44 rounded border border-slate-100 bg-white object-contain" />}
                   {v.loi_giai && <div className="mt-1 rounded bg-white/70 p-1.5 text-[14px] leading-relaxed text-slate-600"><MathText>{v.loi_giai}</MathText></div>}
                 </div>
@@ -469,7 +497,7 @@ function DetailBaiToan({ L, bt, onSua, onTaoKeTiep, onChon, onClose, reload }: {
     </div>
     {formBt && <FormBienThe L={L} baiToanId={bt.id} v={formBt.v}
       goc={{
-        de: [api.giaThietBaiToan(L, bt.id), `Chứng minh ${bt.phat_bieu}`].filter(Boolean).join('. '),
+        de: [api.giaThietBaiToan(L, bt.id), bt.phat_bieu].filter(Boolean).join('. '),
         anh: api.anhCuaBaiToan(L, bt.id),
         loiGiai: cachMd?.loi_giai ?? null,
         anhLoiGiai: cachMd?.anh_loi_giai ?? null,
@@ -489,10 +517,11 @@ function FormBienThe({ L, baiToanId, v, goc, onClose, onDone }: {
 }) {
   const [kieu, setKieu] = useState<BienThe['kieu']>(v?.kieu ?? 'doi_dinh')
   const [chuoiOpen, setChuoiOpen] = useState(false)
+  const [cloneLuaOpen, setCloneLuaOpen] = useState(false)
   // Chuỗi LIÊN THÔNG của node (đi tiền đề cả 2 chiều) → click node nào cũng ra cả chuỗi. Chỉ khi TẠO MỚI.
   const chuoi = useMemo(() => (v ? [] : api.chuoiKetNoi(L, baiToanId)), [L, baiToanId, v])
   // Mới → điền sẵn từ bài gốc (giống y). Sửa → giữ nội dung đã lưu.
-  const [deBai, setDeBai] = useState(v?.de_bai ?? goc.de)
+  const [deBai, setDeBai] = useState(v?.de_bai ? deBaiHienThi(v.de_bai) : goc.de)
   const [anh, setAnh] = useState<string | null>(v?.anh ?? goc.anh)
   const [loiGiai, setLoiGiai] = useState(v?.loi_giai ?? goc.loiGiai ?? '')
   const [anhGiai, setAnhGiai] = useState<string | null>(v?.anh_loi_giai ?? goc.anhLoiGiai)
@@ -551,12 +580,14 @@ function FormBienThe({ L, baiToanId, v, goc, onClose, onDone }: {
           {/* Up cả bài (ảnh/PDF) → AI tách ĐỀ + LỜI GIẢI, khỏi điền tay từng ô (như ingest bên Đại). */}
           <div className="rounded-lg border border-indigo-200 bg-indigo-50/40 p-2.5">
             <Lbl>Up cả bài → AI tự tách (đỡ điền tay)</Lbl>
-            <IngestBaiButton onResult={({ de_bai, loi_giai }) => {
-              if ((deBai.trim() || loiGiai.trim()) && !confirm('Ghi đè đề + lời giải hiện tại bằng bản AI tách?')) return
+            <IngestBaiButton onResult={({ de_bai, loi_giai, anh: anhMoi }) => {
+              const doiHinh = anhMoi && anhMoi !== anh
+              if ((deBai.trim() || loiGiai.trim() || doiHinh) && !confirm(`Ghi đè đề + lời giải${doiHinh ? ' + hình vẽ' : ''} hiện tại bằng bản AI tách?`)) return
               if (de_bai) setDeBai(de_bai)
               if (loi_giai) setLoiGiai(loi_giai)
+              if (anhMoi) setAnh(anhMoi)
             }} />
-            <p className="mt-1 text-[11px] leading-snug text-slate-500">AI đọc ảnh/PDF (nhiều trang được) → đổ <b>đề</b> + <b>lời giải</b> vào 2 ô dưới. Chỉ lấy chữ; <b>hình bạn tự upload</b>. Xong nhớ soát lại.</p>
+            <p className="mt-1 text-[11px] leading-snug text-slate-500">AI đọc ảnh/PDF (nhiều trang được) → đổ <b>đề</b> + <b>lời giải</b> vào 2 ô dưới, tự nhận diện + cắt <b>hình vẽ</b> (nếu có). Xong nhớ soát lại.</p>
           </div>
           <div>
             <Lbl>Kiểu biến thể</Lbl>
@@ -574,10 +605,15 @@ function FormBienThe({ L, baiToanId, v, goc, onClose, onDone }: {
                 <div className="rounded-lg border border-violet-300 bg-violet-50/60 p-2.5">
                   <Lbl>🔗 Bài này nằm trong chuỗi {chuoi.length} câu (nối tiền đề)</Lbl>
                   <p className="text-[11.5px] leading-snug text-slate-600">Đổi đỉnh <b>cả chuỗi</b> bằng <b>một bộ điểm</b> → tạo một <b>lứa</b> khớp để ghép a,b,c sau. (Chỉ đổi riêng bài này thì dùng các ô dưới.)</p>
-                  <Btn kind="pri" className="mt-1.5 h-8 px-3 text-[12px]" onClick={() => setChuoiOpen(true)}>🔗 Đổi đỉnh cả chuỗi…</Btn>
+                  <div className="mt-1.5 flex flex-wrap gap-1.5">
+                    <Btn kind="pri" className="h-8 px-3 text-[12px]" onClick={() => setChuoiOpen(true)}>🔗 Đổi đỉnh cả chuỗi…</Btn>
+                    <Btn className="h-8 px-3 text-[12px]" onClick={() => setCloneLuaOpen(true)}>📥 Nhập lứa đã clone (PDF)…</Btn>
+                  </div>
+                  <p className="mt-1 text-[11px] leading-snug text-slate-500">Đã tự clone chuỗi này ở ngoài (đổi số/hình…)? Up file clone lên, AI tự khớp từng ý vào đúng bài trong chuỗi.</p>
                 </div>
               )}
               {chuoiOpen && <ChuoiDoiDinhPopup L={L} chuoi={chuoi} onClose={() => setChuoiOpen(false)} onDone={onDone} />}
+              {cloneLuaOpen && <NhapCloneLuaPopup L={L} chuoi={chuoi} onClose={() => setCloneLuaOpen(false)} onDone={onDone} />}
               <div className="rounded-lg border border-indigo-200 bg-indigo-50/40 p-2.5">
                 <Lbl>Thay điểm (thủ công) — gõ ánh xạ, tự thay trong $…$</Lbl>
                 <div className="flex gap-2">
@@ -670,16 +706,19 @@ function ChuoiDoiDinhPopup({ L, chuoi, onClose, onDone }: {
     if (!selected.length) { setLoi('Chọn ít nhất 1 câu.'); return }
     setBusy(true); setLoi(null)
     try {
+      // Giả thiết + câu hỏi gửi AI TÁCH RIÊNG (không nối "Chứng minh" — Thùy 08-20: không tự sinh chữ),
+      // AI trả lại cũng tách riêng → ghép lại bằng `ghepDeBai` (mốc kỹ thuật do client tự chèn).
       const cau = selected.map((bt) => ({
         ma: bt.ma,
-        de: [api.giaThietBaiToan(L, bt.id), `Chứng minh ${bt.phat_bieu}`].filter(Boolean).join('. '),
+        giaThiet: api.giaThietBaiToan(L, bt.id),
+        cauHoi: bt.phat_bieu,
         loiGiai: api.cachMacDinh(L, bt.id)?.loi_giai ?? '',
       }))
       const res = await api.doiDinhChuoiHinh(cau, ghiChu)
       if (res.length !== selected.length) throw new Error(`AI trả ${res.length}/${selected.length} câu — thử lại hoặc bớt câu.`)
       const selIds = new Set(selected.map((b) => b.id))
       const items = selected.map((bt, i) => ({
-        baitoan_id: bt.id, de_bai: res[i].de_bai, anh: api.anhCuaBaiToan(L, bt.id),
+        baitoan_id: bt.id, de_bai: ghepDeBai(res[i].giai_thiet, res[i].cau_hoi), anh: api.anhCuaBaiToan(L, bt.id),
         loi_giai: res[i].loi_giai || null, anh_loi_giai: api.cachMacDinh(L, bt.id)?.anh_loi_giai ?? null,
         // Tiền đề bài-tầng ĐÓNG BĂNG: node-tiền-đề TRỰC TIẾP của bt mà CŨNG nằm trong lứa (đã tick).
         tienDeBaiToanIds: api.tienDeCua(L, bt.id).filter((id) => selIds.has(id)),
@@ -732,10 +771,161 @@ function ChuoiDoiDinhPopup({ L, chuoi, onClose, onDone }: {
   )
 }
 
+// Popup NHẬP LỨA ĐÃ CLONE SẴN (ảnh/PDF) — Thùy 08-20: hệ thống chưa tự SINH được 1 chuỗi clone hoàn
+// chỉnh (chỉ đổi được tên điểm qua ChuoiDoiDinhPopup) — người tự clone chuỗi ở NGOÀI (đổi số/hình/gì
+// cũng được) rồi NHẬP lại đây. AI CHỈ ĐỌC + KHỚP từng ý vào đúng bài gốc theo NỘI DUNG (khoá = mã bài,
+// không phải vị trí/thứ tự in — CLAUDE.md §2), không tự sinh chữ. Soát/sửa tay được TRƯỚC khi lưu thành
+// 1 lứa (saveLuaBienThe — khuôn NGUYÊN ChuoiDoiDinhPopup, chỉ khác nguồn nội dung).
+function NhapCloneLuaPopup({ L, chuoi, onClose, onDone }: {
+  L: Luoi; chuoi: BaiToan[]; onClose: () => void; onDone: () => Promise<void>
+}) {
+  const [busy, setBusy] = useState(false)
+  const [loi, setLoi] = useState<string | null>(null)
+  const [daBoc, setDaBoc] = useState(false)
+  const [anhLua, setAnhLua] = useState<string | null>(null)
+  // Giả thiết + câu hỏi giữ TÁCH RIÊNG (không nối "Chứng minh" — Thùy 08-20: không tự sinh chữ) — ghép
+  // lại bằng `ghepDeBai` (mốc kỹ thuật client tự chèn) đúng lúc lưu, không phải trước đó.
+  const [gan, setGan] = useState<Record<string, { giaThiet: string; cauHoi: string; loiGiai: string }>>({})
+  const [khongKhop, setKhongKhop] = useState<{ khop_voi_ma: string; giai_thiet: string; cau_hoi: string; loi_giai: string }[]>([])
+
+  const boc = async (files: File[]) => {
+    const fs = files.filter((f) => f.type.startsWith('image/') || f.type === 'application/pdf')
+    if (!fs.length) { setLoi('Chọn ảnh hoặc PDF của bản clone trước.'); return }
+    setBusy(true); setLoi(null)
+    try {
+      const perFile = await Promise.all(fs.map(async (f) => fileToCanvases(f.type, await fileToBase64(f))))
+      const canvases = perFile.flat()
+      const gf = canvases.map((c) => ({ mimeType: 'image/jpeg', dataBase64: canvasToJpegBase64(c) }))
+      const r = await api.ingestLuaChuoiHinh(gf, chuoi.map((b) => ({ ma: b.ma, phat_bieu: b.phat_bieu })))
+      // Khớp theo MÃ (khoá tự nhiên) — ý ĐẦU TIÊN khớp 1 mã thì giữ; ý sau trùng mã hoặc mã lạ → "chưa khớp",
+      // KHÔNG rơi mất im lặng (§1.5 "thà bỏ trống còn hơn đánh sai" — người tự soát ở bước review).
+      const maToId = new Map(chuoi.map((b) => [b.ma, b.id]))
+      const daDung = new Set<string>()
+      const ganMoi: Record<string, { giaThiet: string; cauHoi: string; loiGiai: string }> = {}
+      const conLai: typeof r.y = []
+      for (const y of r.y) {
+        const bid = maToId.get(y.khop_voi_ma)
+        if (bid && !daDung.has(bid)) { daDung.add(bid); ganMoi[bid] = { giaThiet: y.giai_thiet, cauHoi: y.cau_hoi, loiGiai: y.loi_giai } }
+        else conLai.push(y)
+      }
+      setGan(ganMoi); setKhongKhop(conLai)
+      if (r.co_hinh && r.box_hinh && canvases[r.trang_hinh]) {
+        try {
+          const blob = await (await fetch(cropCanvasBox(canvases[r.trang_hinh], r.box_hinh))).blob()
+          setAnhLua(await api.uploadKhoImage(new File([blob], 'hinh-lua.png', { type: 'image/png' })))
+        } catch { /* cắt/upload hình lỗi → bỏ hình, vẫn giữ đề/lời giải đã khớp được */ }
+      }
+      setDaBoc(true)
+    } catch (e: any) { setLoi(e.message ?? String(e)) } finally { setBusy(false) }
+  }
+
+  const suaO = (id: string, patch: Partial<{ giaThiet: string; cauHoi: string; loiGiai: string }>) =>
+    setGan((s) => ({ ...s, [id]: { giaThiet: s[id]?.giaThiet ?? '', cauHoi: s[id]?.cauHoi ?? '', loiGiai: s[id]?.loiGiai ?? '', ...patch } }))
+
+  const soKhop = chuoi.filter((b) => gan[b.id]?.cauHoi.trim()).length
+
+  const luu = async () => {
+    const selIds = new Set(chuoi.map((b) => b.id))
+    const items = chuoi.filter((b) => gan[b.id]?.cauHoi.trim()).map((b) => ({
+      baitoan_id: b.id, de_bai: ghepDeBai(gan[b.id].giaThiet, gan[b.id].cauHoi), anh: anhLua ?? api.anhCuaBaiToan(L, b.id),
+      loi_giai: gan[b.id].loiGiai.trim() || null, anh_loi_giai: api.cachMacDinh(L, b.id)?.anh_loi_giai ?? null,
+      tienDeBaiToanIds: api.tienDeCua(L, b.id).filter((id) => selIds.has(id)),
+    }))
+    if (!items.length) { setLoi('Chưa có bài nào khớp được nội dung — chưa có gì để lưu.'); return }
+    setBusy(true); setLoi(null)
+    try {
+      await api.saveLuaBienThe(items)
+      alert(`Đã tạo lứa ${items.length}/${chuoi.length} biến thể từ bản clone.${items.length < chuoi.length ? ` Còn ${chuoi.length - items.length} bài chưa khớp được, chưa có biến thể trong lứa này.` : ''}`)
+      await onDone()
+    } catch (e: any) { setLoi(e.message ?? String(e)); setBusy(false) }
+  }
+
+  return createPortal(
+    <div className="fixed inset-0 z-[70] flex items-center justify-center bg-slate-900/50 p-3 sm:p-6" onClick={(e) => e.stopPropagation()}>
+      <div className="flex max-h-[88vh] w-[94vw] max-w-3xl flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <div className="flex items-center gap-2 border-b border-slate-200 px-5 py-3">
+          <h3 className="text-[15px] font-semibold text-slate-900">📥 Nhập lứa đã clone</h3>
+          <span className="text-[12px] text-slate-400">{chuoi.length} bài trong chuỗi</span>
+          <button onClick={onClose} className="ml-auto rounded-lg border border-slate-300 px-3 py-1.5 text-[13px] text-slate-600 hover:bg-slate-50">Đóng</button>
+        </div>
+        <div className="min-h-0 flex-1 space-y-3 overflow-y-auto p-4">
+          {!daBoc ? (
+            <>
+              <p className="text-[12.5px] leading-snug text-slate-600">
+                Đã tự clone chuỗi {chuoi.length} bài này ở bên ngoài (đổi số/đổi hình/đổi cách hỏi…)? Up file
+                clone lên — AI đọc rồi tự khớp từng ý vào ĐÚNG bài gốc trong chuỗi theo nội dung, không theo
+                thứ tự in cứng. Soát lại được ở bước sau, trước khi lưu.
+              </p>
+              <div className="rounded-lg border border-slate-200 bg-slate-50/60 p-2.5">
+                <div className="mb-1 text-[10.5px] font-semibold uppercase tracking-wide text-slate-500">Chuỗi gốc (để đối chiếu)</div>
+                <ol className="space-y-0.5 text-[12px] text-slate-600">
+                  {chuoi.map((b, i) => <li key={b.id}>{i + 1}. <Ma>{b.ma}</Ma> <MathText>{b.phat_bieu}</MathText></li>)}
+                </ol>
+              </div>
+              <label className={`inline-flex h-9 cursor-pointer items-center rounded-lg border px-3 text-[13px] font-medium transition ${busy ? 'border-slate-200 text-slate-400' : 'border-indigo-300 bg-indigo-50 text-indigo-700 hover:bg-indigo-100'}`}>
+                {busy ? '⏳ AI đang đọc + khớp…' : '🪄 Chọn file clone (ảnh/PDF, nhiều trang được)'}
+                <input type="file" accept="image/*,application/pdf" multiple className="hidden" disabled={busy}
+                  onChange={(e) => boc(Array.from(e.target.files ?? []))} />
+              </label>
+              {loi && <div className="rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[12.5px] text-rose-700">{loi}</div>}
+            </>
+          ) : (
+            <>
+              <div className="rounded-lg border border-emerald-200 bg-emerald-50/60 px-3 py-2 text-[12.5px] text-emerald-800">
+                Khớp được <b>{soKhop}/{chuoi.length}</b> bài. Soát lại từng ô dưới trước khi lưu — sửa tay được.
+              </div>
+              <div>
+                <div className="mb-1 text-[10.5px] font-semibold uppercase tracking-wide text-slate-500">Hình dùng chung cho cả lứa</div>
+                <Fig src={anhLua} cap={anhLua ? 'Cắt tự động từ bản clone' : 'Không nhận diện được hình — up tay sau khi lưu cũng được'} h="h-36" />
+              </div>
+              {chuoi.map((b, i) => {
+                const o = gan[b.id]
+                const khop = !!o?.cauHoi.trim()
+                return (
+                  <div key={b.id} className={`rounded-lg border p-2.5 ${khop ? 'border-slate-200' : 'border-amber-300 bg-amber-50/50'}`}>
+                    <div className="mb-1 flex items-center gap-1.5">
+                      <span className="text-[10px] text-slate-400">câu {i + 1}</span><Ma>{b.ma}</Ma><Cap cap={b.cap} />
+                      <span className="min-w-0 flex-1 truncate text-[11.5px] text-slate-500"><MathText>{b.phat_bieu}</MathText></span>
+                      {!khop && <span className="shrink-0 text-[10.5px] font-medium text-amber-700">chưa khớp — điền tay hoặc bỏ qua</span>}
+                    </div>
+                    <textarea className={`${inpCls} h-12`} value={o?.giaThiet ?? ''} onChange={(e) => suaO(b.id, { giaThiet: e.target.value })} placeholder="Giả thiết dùng chung (nếu bản clone có)…" />
+                    <textarea className={`${inpCls} mt-1.5 h-14`} value={o?.cauHoi ?? ''} onChange={(e) => suaO(b.id, { cauHoi: e.target.value })} placeholder="Câu hỏi riêng của bài này trong bản clone…" />
+                    <textarea className={`${inpCls} mt-1.5 h-14`} value={o?.loiGiai ?? ''} onChange={(e) => suaO(b.id, { loiGiai: e.target.value })} placeholder="Lời giải (không bắt buộc)…" />
+                  </div>
+                )
+              })}
+              {khongKhop.length > 0 && (
+                <div className="rounded-lg border border-slate-200 bg-slate-50/60 p-2.5">
+                  <div className="mb-1 text-[10.5px] font-semibold uppercase tracking-wide text-slate-500">{khongKhop.length} ý AI đọc được nhưng KHÔNG khớp bài nào trong chuỗi (copy tay vào ô đúng ở trên nếu cần)</div>
+                  {khongKhop.map((y, i) => (
+                    <div key={i} className="mb-1 rounded border border-slate-200 bg-white px-2 py-1.5 text-[12px] text-slate-600">
+                      <span className="text-[10.5px] text-slate-400">gán nhầm mã "{y.khop_voi_ma}" · </span><MathText>{[y.giai_thiet, y.cau_hoi].filter(Boolean).join(' — ')}</MathText>
+                    </div>
+                  ))}
+                </div>
+              )}
+              {loi && <div className="rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[12.5px] text-rose-700">{loi}</div>}
+            </>
+          )}
+        </div>
+        <div className="flex items-center gap-3 border-t border-slate-200 px-5 py-3">
+          <div className="ml-auto flex gap-2">
+            <button onClick={onClose} className="rounded-lg px-3 py-2 text-[13px] text-slate-500 hover:bg-slate-100">Huỷ</button>
+            {daBoc && <Btn kind="pri" disabled={busy || !soKhop} onClick={luu}>{busy ? '⏳ Đang lưu…' : `Lưu lứa (${soKhop} bài)`}</Btn>}
+          </div>
+        </div>
+      </div>
+    </div>,
+    document.body,
+  )
+}
+
 // ══════════════════ VIEW MÔ HÌNH — cột = TẦNG ══════════════════
-function ViewMoHinh({ L, ho, trongHo, chon, setChon, onSua, onThemCon, reload }: {
+function ViewMoHinh({ L, ho, trongHo, chon, setChon, onSua, onThemCon, reload, moLtMap, onOpenLt }: {
   L: Luoi; ho: MoHinh; trongHo: Set<string>; chon: string; setChon: (id: string) => void
   onSua: (m: MoHinh) => void; onThemCon: (id: string) => void; reload: () => Promise<void>
+  moLtMap: Record<string, { noi_dung: string; file_url: string | null }>
+  onOpenLt: (id: string, ten: string) => void
 }) {
   // Tầng = chỉ node CÓ nhánh con (hub) + gốc họ. Node LÁ = vệ tinh, KHÔNG chiếm cột — treo dưới bố.
   // (Thùy 08-07) Mọi tổ tiên của hub đều là hub ⇒ tầng hub = độ sâu (như cũ); chỉ lá là đổi.
@@ -782,12 +972,8 @@ function ViewMoHinh({ L, ho, trongHo, chon, setChon, onSua, onThemCon, reload }:
   const theoCap = new Map<number, BaiToan[]>()
   for (const b of lt.rieng) { const a = theoCap.get(b.cap) ?? []; a.push(b); theoCap.set(b.cap, a) }
 
-  // Lý thuyết NỘI DUNG của mô hình (khác `lt` ở trên — đó là tập bài toán). Tái dùng NGUYÊN
-  // LyThuyetModal (gõ tay hoặc ảnh/PDF → AI bóc LaTeX), khuôn hệt bổ đề (Catalog.tsx MBoDe).
-  const [moLtMap, setMoLtMap] = useState<Record<string, { noi_dung: string; file_url: string | null; ten_file: string | null }>>({})
-  const [moLtModal, setMoLtModal] = useState<{ id: string; ten: string } | null>(null)
-  const napMoLt = () => api.hinhMoHinhLyThuyet.list().then(setMoLtMap).catch(() => { /* */ })
-  useEffect(() => { napMoLt() }, [])
+  // Lý thuyết NỘI DUNG của mô hình (khác `lt` ở trên — đó là tập bài toán). moLtMap/onOpenLt nhận từ
+  // cha SoDo (dùng chung với ViewBaiToan — icon 📖 giờ có ở CẢ HAI view, không chỉ view này).
   const coMoLt = !!(moLtMap[mh.id]?.noi_dung?.trim() || moLtMap[mh.id]?.file_url)
 
   return (
@@ -836,14 +1022,22 @@ function ViewMoHinh({ L, ho, trongHo, chon, setChon, onSua, onThemCon, reload }:
                 const p = pos.get(m.id)!
                 const n = L.baiToan.filter((b) => b.mo_hinh_id === m.id)
                 const caps = n.map((b) => b.cap)
+                // ⭐ 24/08 (Thùy: "chỗ nhập lý thuyết làm như bên Đại số" — Đại: lưới lá thấy trạng thái +
+                // bấm vào là sửa NGAY, không phải chọn node trước rồi mới thấy ở sidebar). Icon 📖 NGAY
+                // TRÊN card — bấm là mở LyThuyetModal luôn (stopPropagation, không chọn node/không đổi sidebar).
+                const coLtM = !!(moLtMap[m.id]?.noi_dung?.trim() || moLtMap[m.id]?.file_url)
                 return (
-                  <button key={m.id} onClick={() => setChon(m.id)} style={{ left: p.x, top: p.y, width: MH_W, height: MH_H }}
-                    className={`absolute flex flex-col overflow-hidden rounded-xl border-[1.5px] border-teal-300 bg-white text-left transition ${
+                  <div key={m.id} onClick={() => setChon(m.id)} role="button" tabIndex={0} style={{ left: p.x, top: p.y, width: MH_W, height: MH_H }}
+                    className={`absolute flex cursor-pointer flex-col overflow-hidden rounded-xl border-[1.5px] border-teal-300 bg-white text-left transition ${
                       chon === m.id ? 'ring-[3px] ring-teal-300/50' : 'hover:shadow-sm'}`}>
-                    <div className="h-24 shrink-0 border-b border-slate-100 bg-slate-50/50">
+                    <div className="relative h-24 shrink-0 border-b border-slate-100 bg-slate-50/50">
                       {api.anhCauHinhCua(L, m.id)
                         ? <img src={api.anhCauHinhCua(L, m.id)!} alt="" className="h-full w-full bg-white object-contain" />
                         : <div className="flex h-full items-center justify-center text-[10.5px] text-slate-300">chưa có hình</div>}
+                      <button onClick={(e) => { e.stopPropagation(); onOpenLt(m.id, m.ten) }}
+                        title={coLtM ? 'Đã có lý thuyết — bấm để sửa' : 'Chưa có lý thuyết — bấm để soạn'}
+                        className={`absolute right-1 top-1 flex h-6 w-6 items-center justify-center rounded-md border bg-white/90 text-[12px] shadow-sm ${
+                          coLtM ? 'border-violet-300 text-violet-600' : 'border-slate-300 text-slate-400'}`}>📖</button>
                     </div>
                     <div className="flex min-h-0 flex-1 flex-col gap-1 px-2.5 py-2">
                       <div className="flex items-center gap-1.5">
@@ -856,19 +1050,24 @@ function ViewMoHinh({ L, ho, trongHo, chon, setChon, onSua, onThemCon, reload }:
                         {caps.length > 0 && <Chip>cấp {dai(caps)}</Chip>}
                       </div>
                     </div>
-                  </button>
+                  </div>
                 )
               })}
-              {/* VỆ TINH — card rút gọn (mã + tên), click mở tâm–bài toán như hub (RadialEco panel phải). */}
+              {/* VỆ TINH — card rút gọn (mã + tên), click mở tâm–bài toán như hub (RadialEco panel phải).
+                  Chấm 📖 nhỏ (không đủ chỗ cho icon riêng như hub) — bấm vào chấm mới mở soạn lý thuyết. */}
               {[...satPos.entries()].map(([id, p]) => {
                 const m = L.moHinh.find((x) => x.id === id); if (!m) return null
+                const coLtM = !!(moLtMap[id]?.noi_dung?.trim() || moLtMap[id]?.file_url)
                 return (
-                  <button key={id} onClick={() => setChon(id)} style={{ left: p.x, top: p.y, width: SAT_W, height: SAT_H }}
-                    className={`absolute flex items-center gap-1.5 rounded-lg border border-dashed border-indigo-300 bg-indigo-50/50 px-2 text-left transition hover:bg-indigo-50 ${
+                  <div key={id} onClick={() => setChon(id)} role="button" tabIndex={0} style={{ left: p.x, top: p.y, width: SAT_W, height: SAT_H }}
+                    className={`absolute flex cursor-pointer items-center gap-1.5 rounded-lg border border-dashed border-indigo-300 bg-indigo-50/50 px-2 text-left transition hover:bg-indigo-50 ${
                       chon === id ? 'ring-2 ring-indigo-300/60' : ''}`}>
                     <MaPill code={maCap.get(id) ?? '?'} size="sm" />
                     <span className="min-w-0 flex-1 truncate text-[11.5px] font-medium text-slate-700"><MathText>{m.ten}</MathText></span>
-                  </button>
+                    <button onClick={(e) => { e.stopPropagation(); onOpenLt(id, m.ten) }}
+                      title={coLtM ? 'Đã có lý thuyết — bấm để sửa' : 'Chưa có lý thuyết — bấm để soạn'}
+                      className={`shrink-0 rounded px-1 text-[10px] ${coLtM ? 'text-violet-500' : 'text-slate-300'}`}>📖</button>
+                  </div>
                 )
               })}
             </div>
@@ -900,7 +1099,7 @@ function ViewMoHinh({ L, ho, trongHo, chon, setChon, onSua, onThemCon, reload }:
           <div className="mt-1.5 rounded-lg border border-violet-200 bg-violet-50/50 px-2.5 py-2">
             <div className="flex items-center gap-2">
               <span className="text-[11px] font-semibold uppercase tracking-wide text-violet-700">Lý thuyết</span>
-              <Btn className="ml-auto h-6 px-2 text-[11px]" onClick={() => setMoLtModal({ id: mh.id, ten: mh.ten })}>
+              <Btn className="ml-auto h-6 px-2 text-[11px]" onClick={() => onOpenLt(mh.id, mh.ten)}>
                 {coMoLt ? '✎ Sửa' : '＋ Soạn'}
               </Btn>
             </div>
@@ -929,10 +1128,6 @@ function ViewMoHinh({ L, ho, trongHo, chon, setChon, onSua, onThemCon, reload }:
           )}
         </Panel>
       </div>
-      {moLtModal && (
-        <LyThuyetModal ma={moLtModal.id} ten={moLtModal.ten} current={moLtMap[moLtModal.id] as any} api={api.hinhMoHinhLyThuyet as any}
-          onClose={() => setMoLtModal(null)} onSaved={() => { setMoLtModal(null); napMoLt() }} />
-      )}
     </>
   )
 }

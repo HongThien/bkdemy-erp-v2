@@ -3,7 +3,7 @@
 // Dữ liệu login nằm ở project bkdemy-ph (auth.users) → gọi endpoint ph-app, xác thực bằng
 // chính JWT staff ERP (ph-app verify qua Supabase ERP). ERP chỉ đọc, không giữ secret.
 import { useEffect, useMemo, useState } from 'react'
-import { fetchPhLogins, resetPhPassword, type PhLoginRow as Row, type PhLoginSummary as Summary } from '../../lib/ph-login'
+import { fetchPhLogins, resetPhPassword, openPreviewApp, type PhLoginRow as Row, type PhLoginSummary as Summary } from '../../lib/ph-login'
 import { supabase } from '../../lib/supabase'
 
 type TrangThai = 'chua' | 'chua_doi' | 'da_dung'
@@ -66,16 +66,27 @@ export default function PhDangNhapScreen() {
   async function load() {
     setLoading(true); setErr(null)
     try {
-      const j = await fetchPhLogins()
-      setRows(j.parents ?? [])
-      setSummary(j.summary ?? null)
-      // Tên con lấy từ chính DB ERP (hoc_sinh) — 1 query, gom theo phụ huynh. Để hiện kèm + search.
-      const { data: hs } = await supabase.from('hoc_sinh').select('ho_ten, phu_huynh_id').not('phu_huynh_id', 'is', null).limit(10000)
+      const [j, hsRes] = await Promise.all([
+        fetchPhLogins(),
+        // Tên con lấy từ chính DB ERP (hoc_sinh) — 1 query, gom theo phụ huynh. Để hiện kèm + search.
+        supabase.from('hoc_sinh').select('ho_ten, phu_huynh_id, trang_thai').not('phu_huynh_id', 'is', null).limit(10000),
+      ])
+      if (hsRes.error) throw hsRes.error
+      // Chỉ tính con ĐANG HỌC — PH có con đã nghỉ/bảo lưu/tốt nghiệp (hết con đang học) thì loại
+      // khỏi bộ đo, không hiện trong danh sách.
       const m: Record<string, string[]> = {}
-      for (const h of (hs ?? []) as { ho_ten: string; phu_huynh_id: string }[]) {
-        if (h.phu_huynh_id) (m[h.phu_huynh_id] ??= []).push(h.ho_ten)
+      for (const h of (hsRes.data ?? []) as { ho_ten: string; phu_huynh_id: string; trang_thai: string }[]) {
+        if (h.phu_huynh_id && h.trang_thai === 'dang_hoc') (m[h.phu_huynh_id] ??= []).push(h.ho_ten)
       }
       setConByPh(m)
+      const activeRows = (j.parents ?? []).filter((r) => (m[r.phu_huynh_id]?.length ?? 0) > 0)
+      setRows(activeRows)
+      setSummary({
+        total: activeRows.length,
+        hasAccount: activeRows.filter((r) => r.has_account).length,
+        loggedIn: activeRows.filter((r) => r.last_sign_in_at).length,
+        changedPw: activeRows.filter((r) => r.has_account && !r.must_change_password).length,
+      })
     } catch (e) {
       setErr((e as Error).message)
     } finally {
@@ -95,6 +106,15 @@ export default function PhDangNhapScreen() {
       setToast('⚠️ ' + (e as Error).message)
     } finally {
       setResetting(null)
+      setTimeout(() => setToast(null), 4000)
+    }
+  }
+
+  async function openPreview(r: Row) {
+    try {
+      await openPreviewApp(r.phu_huynh_id)
+    } catch (e) {
+      setToast('⚠️ ' + (e as Error).message)
       setTimeout(() => setToast(null), 4000)
     }
   }
@@ -179,13 +199,19 @@ export default function PhDangNhapScreen() {
                     <td className="px-4 py-3 text-slate-600">{r.so_dien_thoai}</td>
                     <td className="px-4 py-3"><span className={`inline-block rounded-full px-2.5 py-1 text-xs font-semibold ring-1 ${TT_UI[tt].cls}`}>{TT_UI[tt].ten}</span></td>
                     <td className="px-4 py-3 text-slate-500">{fmtNgay(r.last_sign_in_at)}</td>
-                    <td className="px-4 py-3 text-right">
-                      {r.has_account ? (
-                        <button disabled={resetting === r.phu_huynh_id} onClick={() => void doReset(r)}
-                          className="rounded-lg border border-slate-300 px-2.5 py-1.5 text-xs font-medium text-slate-600 hover:border-rose-400 hover:text-rose-600 disabled:opacity-40">
-                          {resetting === r.phu_huynh_id ? 'Đang reset…' : 'Reset về 123456'}
+                    <td className="px-4 py-3">
+                      <div className="flex items-center justify-end gap-2">
+                        <button onClick={() => void openPreview(r)}
+                          className="rounded-lg border border-indigo-300 px-2.5 py-1.5 text-xs font-medium text-indigo-600 hover:bg-indigo-50">
+                          👁 Xem app
                         </button>
-                      ) : <span className="text-xs text-slate-300">chưa có tài khoản</span>}
+                        {r.has_account ? (
+                          <button disabled={resetting === r.phu_huynh_id} onClick={() => void doReset(r)}
+                            className="rounded-lg border border-slate-300 px-2.5 py-1.5 text-xs font-medium text-slate-600 hover:border-rose-400 hover:text-rose-600 disabled:opacity-40">
+                            {resetting === r.phu_huynh_id ? 'Đang reset…' : 'Reset về 123456'}
+                          </button>
+                        ) : <span className="text-xs text-slate-300">chưa có tài khoản</span>}
+                      </div>
                     </td>
                   </tr>
                 )

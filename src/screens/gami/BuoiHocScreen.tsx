@@ -9,16 +9,21 @@ import {
   type BtvnKQ, type CanhBao, type BtvnTrangThai, type BtvnThaiDo,
   getDanhGia, setDanhGiaDang, setNhanXet, setMuc, MUC_OPTS, MUC_CATALOG, nhanMuc, dongDanhGia, moLaiDanhGia, setNoiDungBuoi,
   loadLiveTestForBuoi, getDangTen, loadMTForBuoi, syncMTProblems, getBangEloExp,
+  loadHinhForBuoiPhase, syncHinhProblems,
   type BuoiAo, type BuoiTim, type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type Phase, type DiemDanh, type DanhGiaHS, type DanhGiaDiem, type TabKey, type ETResult, type LuoiSync, type EloExpRow,
 } from '../../lib/gami'
 import { getLiveSnapshot, type BaiTest, type BaiTestCau, type BaiLam, type LiveAnswer } from '../../lib/testonline'
 import type { MTPhanCaus } from '../../lib/mt'
-import { getOrCreateKyThiMTChoBuoi, listDiemThiByKyThi, upsertDiemThi, tinhDiemMT, verdictTuDiem, currentMua, type KyThi, type DiemThi } from '../../lib/thanhtich'
+import { getOrCreateKyThiMTChoBuoi, listDiemThiByKyThi, upsertDiemThi, setKhungMT, tinhDiemMT, verdictTuDiem, currentMua, type KyThi, type DiemThi } from '../../lib/thanhtich'
 import { listNhanSu, type NhanSu } from '../../lib/nhansu'
 import TruocBuoiTab from './TruocBuoiTab'
 import { listDaiDang, type CauHoi } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
 import SearchSelect from '../../components/SearchSelect'
+import { BuoiPickEditor } from '../kho/hinh/SoanTaiLieu'
+import { loadLuoi, type Luoi } from '../../lib/kho/hinh'
+import { ensureHinhGtBuoiForBuoi, saveBuoiSelectionPhan, loadBuoiPicksPhan, type CheDoHinh } from '../../lib/kho/hinhGiaoTrinh'
+import type { PickItem } from '../../store/useStore'
 import { NGU_CANH_LUOT, setNguCanhLuotBuoi, type NguCanhLuot } from '../../lib/kho/hinh'
 import DangPickerOne from '../../components/DangPickerOne'
 import { useIsMobile } from '../../hooks/useIsMobile'
@@ -43,7 +48,7 @@ export default function BuoiHocScreen() {
   const [err, setErr] = useState<string | null>(null)
   // Buổi ẢO: tab "Trước buổi" phải mở được TRƯỚC khi OPS bấm "Mở buổi" (spec-truocbuoi §2.1) — không có
   // uuid nên nhận {lopId, ngay, mon} thay vì id, và KHÔNG được gọi moBuoi (không đẻ dòng buoi_hoc).
-  const [open, setOpen] = useState<{ id: string; lopId: string } | { virt: { lopId: string; tenLop: string; ngay: string; mon: string } } | null>(null)
+  const [open, setOpen] = useState<{ id: string; lopId: string; khoi: string | null } | { virt: { lopId: string; tenLop: string; ngay: string; mon: string } } | null>(null)
   const [filter, setFilter] = useState<BuoiStatus>('chua')
   // ⭐ 07-24: 2 CHẾ ĐỘ XEM, gạt qua lại — KHÔNG trộn vào nhau. "Theo ngày" là trục vận hành hằng ngày
   // (buổi ẢO của 1 ngày, suy từ TKB, có bộ đếm chưa-mở/đã-mở/đã-huỷ theo ngày đó); "Tìm lớp" lật trục
@@ -64,6 +69,10 @@ export default function BuoiHocScreen() {
   // OPS/người ngoài lớp không có việc "chấm bài như TA" — chỉ GV/TG của CHÍNH lớp đó (hoặc admin) mới
   // thấy đủ 4 tab; còn lại (OPS quản lý buổi qua leaf "Buổi học") chỉ thấy Điểm danh (đúng việc của họ).
   const myLopIds = new Set((me?.phanCong ?? []).map((pc) => pc.lop_id))
+  // Trưởng khối — sửa được ET/MT/BTVN của MỌI lớp trong khối phụ trách (không cần phân công per-lớp).
+  // Điểm danh KHÔNG mở thêm ở đây — tab đó vẫn luôn hiện, chỉ 4 tab chấm là bị khoá khi thiếu quyền.
+  const myKhoi = new Set(me?.khoiPhuTrach ?? [])
+  const coQuyenChamLop = (lopId: string, khoi: string | null) => laAdmin || myLopIds.has(lopId) || (!!khoi && myKhoi.has(khoi))
 
   async function reload() {
     setLoading(true); setErr(null)
@@ -73,7 +82,7 @@ export default function BuoiHocScreen() {
 
   if (open) {
     if ('virt' in open) return <TruocBuoiVirtualPanel v={open.virt} onClose={() => { setOpen(null); reload() }} />
-    const tabs = laAdmin || myLopIds.has(open.lopId) ? undefined : (['diemdanh'] as TabKey[])
+    const tabs = coQuyenChamLop(open.lopId, open.khoi) ? undefined : (['diemdanh'] as TabKey[])
     return <BuoiDetail id={open.id} tabs={tabs} onClose={() => { setOpen(null); reload() }} />
   }
 
@@ -103,7 +112,7 @@ export default function BuoiHocScreen() {
       </div>
 
       {mode === 'tim' ? (
-        <TimLopPanel q={q} setQ={setQ} monScope={(laAdmin || laOps || myMons.length === 0) ? null : myMons} onOpened={(id, lopId) => setOpen({ id, lopId })}
+        <TimLopPanel q={q} setQ={setQ} monScope={(laAdmin || laOps || myMons.length === 0) ? null : myMons} onOpened={(id, lopId, khoi) => setOpen({ id, lopId, khoi })}
           canTruocBuoi={(lopId) => laAdmin || myLopIds.has(lopId)}
           onOpenTruocBuoi={(v) => setOpen({ virt: v })} />
       ) : (
@@ -115,7 +124,7 @@ export default function BuoiHocScreen() {
           : (
             <div className="grid grid-cols-1 gap-3 md:grid-cols-2 2xl:grid-cols-3">
               {shown.map((b) => (
-                <BuoiCard key={b.lop.id} ba={b} ngay={ngay} onOpened={(id, lopId) => setOpen({ id, lopId })} onChanged={reload}
+                <BuoiCard key={b.lop.id} ba={b} ngay={ngay} onOpened={(id, lopId, khoi) => setOpen({ id, lopId, khoi })} onChanged={reload}
                   canTruocBuoi={laAdmin || myLopIds.has(b.lop.id)}
                   onOpenTruocBuoi={() => setOpen({ virt: { lopId: b.lop.id, tenLop: b.lop.ten_lop, ngay, mon: b.lop.mon } })} />
               ))}
@@ -131,7 +140,7 @@ export default function BuoiHocScreen() {
 // Chỉ đọc, không đụng state của chế độ "Theo ngày" — gạt qua lại không mất gì.
 type VirtDesc = { lopId: string; tenLop: string; ngay: string; mon: string }
 function TimLopPanel({ q, setQ, monScope, onOpened, canTruocBuoi, onOpenTruocBuoi }: {
-  q: string; setQ: (v: string) => void; monScope: string[] | null; onOpened: (id: string, lopId: string) => void
+  q: string; setQ: (v: string) => void; monScope: string[] | null; onOpened: (id: string, lopId: string, khoi: string | null) => void
   canTruocBuoi: (lopId: string) => boolean; onOpenTruocBuoi: (v: VirtDesc) => void
 }) {
   const [rows, setRows] = useState<BuoiTim[]>([])
@@ -179,7 +188,7 @@ function TimLopPanel({ q, setQ, monScope, onOpened, canTruocBuoi, onOpenTruocBuo
 }
 
 const LOAI_BUOI_TEN: Record<string, string> = { bu: 'Bù', bo_tro_yeu: 'Bổ trợ yếu', bo_tro_duoi: 'Bổ trợ đuổi', mt: 'MT' }
-function BuoiTimRow({ r, onOpened, canTruocBuoi, onOpenTruocBuoi }: { r: BuoiTim; onOpened: (id: string, lopId: string) => void; canTruocBuoi: boolean; onOpenTruocBuoi: () => void }) {
+function BuoiTimRow({ r, onOpened, canTruocBuoi, onOpenTruocBuoi }: { r: BuoiTim; onOpened: (id: string, lopId: string, khoi: string | null) => void; canTruocBuoi: boolean; onOpenTruocBuoi: () => void }) {
   const [busy, setBusy] = useState(false)
   const b = r.buoi
   const ngayVN = r.ngay.split('-').reverse().join('/')
@@ -187,7 +196,7 @@ function BuoiTimRow({ r, onOpened, canTruocBuoi, onOpenTruocBuoi }: { r: BuoiTim
   const gio = r.slot.gio_bat_dau ? `${r.slot.gio_bat_dau.slice(0, 5)}–${(r.slot.gio_ket_thuc ?? '').slice(0, 5)}` : ''
   async function moRoiVao() {
     setBusy(true)
-    try { const nw = await moBuoi(r.lop.id, r.ngay, r.slot as any); onOpened(nw.id, r.lop.id) }
+    try { const nw = await moBuoi(r.lop.id, r.ngay, r.slot as any); onOpened(nw.id, r.lop.id, r.lop.khoi) }
     catch (e: any) { alert(e.message ?? String(e)); setBusy(false) }
   }
   const chip = b?.trang_thai === 'huy' ? <span className="rounded bg-slate-200 px-1.5 py-0.5 text-[11px] font-medium text-slate-500">Đã hủy</span>
@@ -209,7 +218,7 @@ function BuoiTimRow({ r, onOpened, canTruocBuoi, onOpenTruocBuoi }: { r: BuoiTim
   )
   // Buổi đã có dòng → bấm cả hàng để vào. Chưa mở (ảo) → nút "Mở buổi" (không bấm nhầm cả hàng mà đẻ dòng).
   if (b && b.trang_thai !== 'huy') return (
-    <button onClick={() => onOpened(b.id, r.lop.id)} className="flex w-full items-center gap-3 rounded-lg border border-slate-200 bg-white px-3 py-2 text-left transition hover:border-indigo-400 hover:bg-indigo-50/40">
+    <button onClick={() => onOpened(b.id, r.lop.id, r.lop.khoi)} className="flex w-full items-center gap-3 rounded-lg border border-slate-200 bg-white px-3 py-2 text-left transition hover:border-indigo-400 hover:bg-indigo-50/40">
       {noiDung}
       <span className="shrink-0 text-[12px] font-medium text-indigo-600">→</span>
     </button>
@@ -227,7 +236,7 @@ function BuoiTimRow({ r, onOpened, canTruocBuoi, onOpenTruocBuoi }: { r: BuoiTim
 }
 
 function BuoiCard({ ba, ngay, onOpened, onChanged, canTruocBuoi, onOpenTruocBuoi }: {
-  ba: BuoiAo; ngay: string; onOpened: (id: string, lopId: string) => void; onChanged: () => void
+  ba: BuoiAo; ngay: string; onOpened: (id: string, lopId: string, khoi: string | null) => void; onChanged: () => void
   canTruocBuoi: boolean; onOpenTruocBuoi: () => void
 }) {
   const [busy, setBusy] = useState(false)
@@ -236,7 +245,7 @@ function BuoiCard({ ba, ngay, onOpened, onChanged, canTruocBuoi, onOpenTruocBuoi
   const gio = `${ba.slot.gio_bat_dau?.slice(0, 5)}–${ba.slot.gio_ket_thuc?.slice(0, 5)}${ba.slot.phong ? ` · ${ba.slot.phong}` : ''}`
   async function open() {
     setBusy(true)
-    try { const buoi = await moBuoi(ba.lop.id, ngay, ba.slot); onOpened(buoi.id, ba.lop.id) }
+    try { const buoi = await moBuoi(ba.lop.id, ngay, ba.slot); onOpened(buoi.id, ba.lop.id, ba.lop.khoi) }
     catch (e: any) { alert(e.message ?? String(e)); setBusy(false) }
   }
   async function huy() {
@@ -259,7 +268,7 @@ function BuoiCard({ ba, ngay, onOpened, onChanged, canTruocBuoi, onOpenTruocBuoi
 
   // Đã mở → cả CARD bấm vào để vào buổi (không cần nút riêng).
   if (st === 'mo') return (
-    <button onClick={() => onOpened(b!.id, ba.lop.id)} className="rounded-xl border border-indigo-300 bg-indigo-50/40 p-4 text-left transition hover:border-indigo-400 hover:bg-indigo-50">
+    <button onClick={() => onOpened(b!.id, ba.lop.id, ba.lop.khoi)} className="rounded-xl border border-indigo-300 bg-indigo-50/40 p-4 text-left transition hover:border-indigo-400 hover:bg-indigo-50">
       {head}
       <div className="mt-3 text-[12px] font-medium text-indigo-600">Vào chấm / điểm danh →</div>
     </button>
@@ -871,11 +880,21 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
     try {
       const { etId, caus } = await loadETForBuoi(buoiId)
       causRef.current = caus
-      if (!etId) { setEtMissing(true); setEtCaus([]); setSync(null); await reloadP(); return }
-      setEtMissing(false); setEtCaus(caus)
       // Sync CHỦ ĐỘNG mỗi lần mở tab — lưới tự bám đề. Phase đã đóng thì chỉ báo, không sửa lén.
+      // Đại + Hình (mô hình) TUẦN TỰ (không Promise.all) — cả 2 chia sẻ slot problem_no của cùng
+      // (buổi,phase); chạy song song thì cả 2 đọc "curAll" TRƯỚC khi bên kia ghi → cấp trùng số.
+      // Hình đọc từ tài liệu ET Hình RIÊNG (builder trong ETScreen, phan='et') — KHÔNG phải giáo trình
+      // (21/08: sửa lại sau khi nhầm mượn nội dung 'lop' giáo trình cho ET — 2 thứ khác nhau).
       const s = await syncDocProblems(buoiId, 'et', caus, !!buoi.et_dong_at)
-      setSync(s); setProbs(s.probs)
+      const { dapAn: hinhDapAn } = await loadHinhForBuoiPhase(buoiId, 'et')
+      const sh = await syncHinhProblems(buoiId, 'et', hinhDapAn, !!buoi.et_dong_at)
+      if (!etId && !hinhDapAn.length) { setEtMissing(true); setEtCaus([]); setSync(null); await reloadP(); return }
+      setEtMissing(false); setEtCaus(caus)
+      const merged: LuoiSync = {
+        probs: [...s.probs, ...sh.probs], moCoi: [...s.moCoi, ...sh.moCoi],
+        khongRoRang: s.khongRoRang ?? sh.khongRoRang, doiCauTruc: s.doiCauTruc || sh.doiCauTruc,
+      }
+      setSync(merged); setProbs(merged.probs)
       setGrades(await listGrades(buoiId))
     } catch { setEtMissing(true); setEtCaus([]); setSync(null) } finally { setLoading(false) }
   })() }, [buoiId]) // eslint-disable-line
@@ -933,7 +952,11 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
   if (loading) return <p className="text-[12px] text-slate-400">Đang tải ET…</p>
   if (etMissing) return (
     <div className="flex flex-col gap-3">
-      <p className="text-[13px] text-slate-400">Chưa có ET cho buổi này (khớp <b className="text-slate-600">lớp + ngày</b>). Nếu buổi CÓ ET: vào <b className="text-slate-600">Làm tài liệu → ET</b> tạo đúng lớp + ngày rồi quay lại. Nếu buổi <b className="text-slate-600">KHÔNG có ET</b>: xác nhận đóng để hết treo ở “Việc của tôi”.</p>
+      <div className="flex items-center gap-2">
+        <p className="text-[13px] text-slate-400">Chưa có ET cho buổi này (khớp <b className="text-slate-600">lớp + ngày</b>). Nếu buổi CÓ ET: vào <b className="text-slate-600">Làm tài liệu → ET</b> tạo đúng lớp + ngày rồi quay lại. Nếu buổi <b className="text-slate-600">KHÔNG có ET</b>: xác nhận đóng để hết treo ở “Việc của tôi”.</p>
+        {/* Không có ET vẫn cần gửi PH được (vd nhận xét/mức buổi) — ảnh tự báo "không có ET", không chặn nút (CEO 21/08). */}
+        <button onClick={() => setAnhPH(true)} title="Tạo ảnh báo cáo (dọc) để chụp gửi phụ huynh — buổi này không có ET" className="ml-auto shrink-0 rounded-md border border-slate-300 px-2.5 py-1.5 text-[12px] font-medium text-slate-600 hover:border-indigo-400">📷 Ảnh gửi PH</button>
+      </div>
       <div className="flex items-center gap-2">
         {dongCol ? (
           <>
@@ -944,6 +967,7 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
           <button onClick={dongKhongET} disabled={closing} className="rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-indigo-500 disabled:opacity-40">{closing ? 'Đang lưu…' : '✓ Không có ET — đóng'}</button>
         )}
       </div>
+      {anhPH && <EtAnhGuiPH buoiId={buoiId} coMat={coMat} probs={probs} gradeOf={gradeOf} buoi={buoi} etMissing onClose={() => setAnhPH(false)} />}
     </div>
   )
   if (coMat.length === 0) return <p className="text-[12px] text-slate-400">Chưa có HS nào điểm danh “có mặt” — điểm danh trước khi chấm.</p>
@@ -1008,12 +1032,18 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
               {probs.map((p, idx) => {
                 const c = cauOf(p)
                 const moCoi = moCoiIds.has(p.id)
+                const hinh = !!p.hinh_baitoan_id
                 return (
-                  <th key={p.id} className={`sticky top-0 z-10 w-[150px] border border-slate-200 px-2 py-1.5 text-center align-top ${moCoi ? 'bg-rose-50' : 'bg-slate-100'}`}>
+                  <th key={p.id} className={`sticky top-0 z-10 w-[150px] border border-slate-200 px-2 py-1.5 text-center align-top ${moCoi ? 'bg-rose-50' : hinh ? 'bg-violet-50' : 'bg-slate-100'}`}>
                     {/* Số câu = VỊ TRÍ TRONG ĐỀ (probs đã xếp theo đề), KHÔNG phải problem_no —
-                        problem_no giờ chỉ là slot nội bộ, có thể thủng số sau khi bỏ/thêm câu. */}
-                    <div className="text-[12px] font-bold text-slate-700">{moCoi ? 'Ngoài đề' : `Câu ${idx + 1}`}</div>
-                    <div className="mx-auto max-w-[140px] truncate text-[11px] font-medium normal-case text-violet-600" title={tenDang(p.ma_dang)}>{tenDang(p.ma_dang)}</div>
+                        problem_no giờ chỉ là slot nội bộ, có thể thủng số sau khi bỏ/thêm câu.
+                        Hình (mô hình): nhãn = "Bài{chữ}" đối chiếu phiếu giấy HS (Thùy 21/08, vd "5C"). */}
+                    <div className="text-[12px] font-bold text-slate-700">{moCoi ? 'Ngoài đề' : hinh ? `Bài ${p.hinh_nhan}` : `Câu ${idx + 1}`}</div>
+                    {hinh ? (
+                      <div className="mx-auto max-w-[140px] truncate text-[11px] font-medium normal-case text-violet-600">Hình (mô hình)</div>
+                    ) : (
+                      <div className="mx-auto max-w-[140px] truncate text-[11px] font-medium normal-case text-violet-600" title={tenDang(p.ma_dang)}>{tenDang(p.ma_dang)}</div>
+                    )}
                     {c && <button onClick={() => setPreview(c)} className="mt-1 rounded border border-slate-200 px-1.5 py-0.5 text-[10px] font-normal normal-case text-slate-400 hover:border-indigo-300 hover:text-indigo-600">ⓘ đề</button>}
                   </th>
                 )
@@ -1105,8 +1135,8 @@ function Badge({ hex, letter, size }: { hex: string; letter: string; size: numbe
     </svg>
   )
 }
-function EtAnhGuiPH({ buoiId, coMat, probs, gradeOf, buoi, onClose }: {
-  buoiId: string; coMat: BuoiHocHS[]; probs: Problem[]; gradeOf: (pid: string, hsid: string) => Grade | undefined; buoi: BuoiHoc; onClose: () => void
+function EtAnhGuiPH({ buoiId, coMat, probs, gradeOf, buoi, etMissing = false, onClose }: {
+  buoiId: string; coMat: BuoiHocHS[]; probs: Problem[]; gradeOf: (pid: string, hsid: string) => Grade | undefined; buoi: BuoiHoc; etMissing?: boolean; onClose: () => void
 }) {
   const cardRef = useRef<HTMLDivElement>(null)
   // Đánh giá sau buổi (nhận xét + % hoàn thành) — Thùy 07-16: hiện thêm trên ảnh gửi PH, NHƯNG chỉ khi
@@ -1149,6 +1179,8 @@ function EtAnhGuiPH({ buoiId, coMat, probs, gradeOf, buoi, onClose }: {
   const KQ_MIN_W = 120
   const KQ_W = Math.max(ITEM_W * KQ_COLS, KQ_MIN_W)
   const cardW = Math.max(420, NAME_W + KQ_W + (coNhanXet ? NX_W : 0) + (coHoanThanh ? HT_W : 0) + 32)
+  // Buổi không có ET (etMissing) — cột "Test Cuối giờ" đổi thành 1 dòng báo, KHÔNG hiện lưới badge trống
+  // (probs rỗng → grid 0 ô, nhìn như cột trống-vô-nghĩa nếu cứ vẽ như buổi có ET, CEO 21/08).
   // COPY ảnh — ĐÚNG pattern V1 (TabSatHach.handleCopy / openReportPopup, chạy production ổn định):
   // MỞ POPUP chứa HTML phiếu + nút "Copy ảnh" NGAY TRONG popup. Bấm Copy trong popup = user-gesture trong
   // context popup → html2canvas (CDN) + clipboard.write chạy ngon (paste Zalo); fallback tải file CHỈ khi clipboard bị chặn.
@@ -1245,6 +1277,7 @@ async function copyImg(){
             </div>
           </div>
           {/* Mô tả — nội bộ (GV/TA), nằm NGOÀI banner, chữ nhỏ. Chỉ hiện nếu có nhập. */}
+          {etMissing && <div style={{ padding: '8px 20px', fontSize: 11.5, color: '#8a5a3f', background: '#fdf3ea', borderBottom: '1px solid #e8c27e' }}>⚠️ Buổi này không có ET.</div>}
           {!!buoi.mo_ta?.trim() && <div style={{ padding: '8px 20px', fontSize: 11.5, color: '#5b6b78', background: '#f7f4ee', borderBottom: '1px solid #e7ddc9' }}>{buoi.mo_ta}</div>}
           <div style={{ padding: '12px 16px' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
@@ -1273,24 +1306,29 @@ async function copyImg(){
                         <div>{tenHT[i].short}</div>
                         {tenHT[i].phanBiet && <div style={{ fontSize: 10.5, fontWeight: 400, color: '#8a94a3' }}>({tenHT[i].phanBiet})</div>}
                       </td>
-                      {/* Test Cuối giờ = grid, số cột = KQ_COLS (≤5 câu 1 dòng, ≥6 câu chia đôi 2 dòng). */}
+                      {/* Test Cuối giờ = grid, số cột = KQ_COLS (≤5 câu 1 dòng, ≥6 câu chia đôi 2 dòng).
+                          Buổi không có ET (etMissing) → báo rõ thay vì vẽ lưới trống-vô-nghĩa. */}
                       <td style={{ padding: '6px 4px', verticalAlign: 'top' }}>
-                        <div style={{ display: 'grid', gridTemplateColumns: `repeat(${KQ_COLS}, ${ITEM_W}px)`, rowGap: 4 }}>
-                          {probs.map((p) => {
-                            const kq = gradeOf(p.id, r.hoc_sinh_id)?.result
-                            const v = kq ? ET_KQ_PH[kq] : null
-                            return (
-                              <div key={p.id} style={{ display: 'flex', justifyContent: 'center' }}>
-                                {v
-                                  // Badge = SVG (circle + text dominant-baseline=central) → html2canvas render qua engine trình duyệt = căn tâm pixel-perfect.
-                                  // (line-height/nudge KHÔNG chắc ăn: html2canvas đặt baseline lệch + bỏ qua position:relative inline.)
-                                  // Thu nhỏ 24→18 (Thùy 07-19: "giảm diện tích cho đỡ chật").
-                                  ? <Badge hex={v.hex} letter={v.l} size={18} />
-                                  : <span style={{ color: '#c9bfa6' }}>–</span>}
-                              </div>
-                            )
-                          })}
-                        </div>
+                        {etMissing ? (
+                          <div style={{ textAlign: 'center', color: '#c9bfa6' }}>–</div>
+                        ) : (
+                          <div style={{ display: 'grid', gridTemplateColumns: `repeat(${KQ_COLS}, ${ITEM_W}px)`, rowGap: 4 }}>
+                            {probs.map((p) => {
+                              const kq = gradeOf(p.id, r.hoc_sinh_id)?.result
+                              const v = kq ? ET_KQ_PH[kq] : null
+                              return (
+                                <div key={p.id} style={{ display: 'flex', justifyContent: 'center' }}>
+                                  {v
+                                    // Badge = SVG (circle + text dominant-baseline=central) → html2canvas render qua engine trình duyệt = căn tâm pixel-perfect.
+                                    // (line-height/nudge KHÔNG chắc ăn: html2canvas đặt baseline lệch + bỏ qua position:relative inline.)
+                                    // Thu nhỏ 24→18 (Thùy 07-19: "giảm diện tích cho đỡ chật").
+                                    ? <Badge hex={v.hex} letter={v.l} size={18} />
+                                    : <span style={{ color: '#c9bfa6' }}>–</span>}
+                                </div>
+                              )
+                            })}
+                          </div>
+                        )}
                       </td>
                       {coNhanXet && (
                         <td style={{ padding: '6px 4px', textAlign: 'left', verticalAlign: 'top', color: '#5b6b78', fontSize: 12, whiteSpace: 'normal', wordBreak: 'break-word', width: NX_W }}>
@@ -1311,15 +1349,18 @@ async function copyImg(){
             {/* 2 khối tách RÕ bằng viền mỏng thay vì nền đậm (Thùy 07-19 lần 3: "background dậm quá,
                 chuyển về trắng cho sáng, chỉ cần đậm hơn 1 tẹo hoặc viền mỏng") — nền gần trắng, chỉ
                 khác nhau ở màu VIỀN để vẫn phân biệt được 2 loại thông tin, không nặng mắt. */}
-            <div style={{ marginTop: 12, borderRadius: 10, background: '#fdfcfa', border: '1px solid #e7ddc9', padding: '10px 12px', fontSize: 12.5, color: '#5b6b78' }}>
-              {Object.values(ET_KQ_PH).map((v) => (
-                <span key={v.l} style={{ display: 'inline-block', marginRight: 14, whiteSpace: 'nowrap', verticalAlign: 'middle' }}>
-                  <Badge hex={v.hex} letter={v.l} size={14} /><span style={{ marginLeft: 5 }}>{v.mo_ta}</span>
-                </span>
-              ))}
-              {/* Chú thích % hoàn thành (Thùy 07-19 lần 2: đổi câu mẫu số cụ thể "80%..." cho dễ hiểu hơn câu định nghĩa chung chung) — chỉ hiện khi có ít nhất 1 HS có %. */}
-              {coHoanThanh && <div style={{ marginTop: 4, lineHeight: 1.5 }}>Mức buổi: 5 = làm đúng &amp; nhanh · 4 = đúng, chưa nhanh/sai ít · 3 = không ổn định, sai nhiều · 2 = cần hướng dẫn · 1 = chưa tư duy được cách làm.</div>}
-            </div>
+            {(!etMissing || coHoanThanh) && (
+              <div style={{ marginTop: 12, borderRadius: 10, background: '#fdfcfa', border: '1px solid #e7ddc9', padding: '10px 12px', fontSize: 12.5, color: '#5b6b78' }}>
+                {/* Chú thích Đ/C/S vô nghĩa khi buổi không có ET — ẩn, chỉ giữ chú thích Mức buổi nếu có. */}
+                {!etMissing && Object.values(ET_KQ_PH).map((v) => (
+                  <span key={v.l} style={{ display: 'inline-block', marginRight: 14, whiteSpace: 'nowrap', verticalAlign: 'middle' }}>
+                    <Badge hex={v.hex} letter={v.l} size={14} /><span style={{ marginLeft: 5 }}>{v.mo_ta}</span>
+                  </span>
+                ))}
+                {/* Chú thích % hoàn thành (Thùy 07-19 lần 2: đổi câu mẫu số cụ thể "80%..." cho dễ hiểu hơn câu định nghĩa chung chung) — chỉ hiện khi có ít nhất 1 HS có %. */}
+                {coHoanThanh && <div style={{ marginTop: !etMissing ? 4 : 0, lineHeight: 1.5 }}>Mức buổi: 5 = làm đúng &amp; nhanh · 4 = đúng, chưa nhanh/sai ít · 3 = không ổn định, sai nhiều · 2 = cần hướng dẫn · 1 = chưa tư duy được cách làm.</div>}
+              </div>
+            )}
             {/* Câu kết luận nhắc làm lại/chép lại đáp án (Thùy 07-19) — CHỈ hiện nếu có ≥1 HS có câu C/S.
                 Thêm nhãn "Việc cần làm" (Thùy 07-19 lần 2) — phân biệt rõ với khối chú thích phía trên,
                 không chỉ khác màu nền mà còn khác Ý NGHĨA (đây là hành động, không phải giải thích ký hiệu). */}
@@ -1421,7 +1462,7 @@ function LiveTab({ buoiId, roster }: { buoiId: string; roster: BuoiHocHS[] }) {
 // ── CHẤM MT (kỳ thi lớn) — CÙNG buổi, CÙNG roster/điểm danh với các tab khác (Thùy 07-08: "phải
 // hiện trong buổi học giống như chấm ET"). GIỮ cấu trúc PHẦN (Phần I/II…) đúng file MT đã gán —
 // KHÔNG làm phẳng câu. Đóng phase = Elo K=60 (cột riêng `mt_dong_at`, KHÔNG đụng ingame_dong_at).
-function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: BuoiHocHS[]; buoi: BuoiHoc & { lop?: { mon: string; ten_lop?: string; khoi?: string | null } }; onChange: () => void }) {
+function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: BuoiHocHS[]; buoi: BuoiHoc & { lop_id?: string | null; lop?: { mon: string; ten_lop?: string; khoi?: string | null } }; onChange: () => void }) {
   const [probs, setProbs] = useState<Problem[]>([])
   const [grades, setGrades] = useState<Grade[]>([])
   const [phans, setPhans] = useState<MTPhanCaus[]>([])
@@ -1436,6 +1477,19 @@ function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: Buo
   const dongCol = buoi.mt_dong_at
   const caus = phans.flatMap((p) => p.caus)
 
+  // ── Hình (mô hình) — Thùy 21/08: "MT là 1 thực thể, Đại Hình chỉ là 1 phần của nó" — KHÔNG phải
+  // tài liệu tách rời như ET (ET chọn 1 nhánh cho CẢ tài liệu). Hình phía MT KHÔNG có master (khác
+  // Đại) — chọn trực tiếp NGAY TRONG tab này, autosave mỗi lần đổi pick (khuôn giáo trình, không nút
+  // Lưu riêng — khác ET vì đây là màn CHẤM, không phải màn SOẠN). Lazy: chỉ tải Luoi khi mở panel.
+  const [hinhOpen, setHinhOpen] = useState(false)
+  const [hinhL, setHinhL] = useState<Luoi | null>(null)
+  const [hinhBuoiId, setHinhBuoiId] = useState<string | null>(null)
+  const [hinhPicks, setHinhPicks] = useState<PickItem[]>([])
+  const [hinhCheDo, setHinhCheDo] = useState<Record<string, CheDoHinh>>({})
+  const [hinhSoDong, setHinhSoDong] = useState<Record<string, number>>({})
+  const [hinhSaving, setHinhSaving] = useState(false)
+  const khoi = buoi.lop?.khoi ?? ''
+
   async function reloadP() {
     const [p, g] = await Promise.all([listProblems(buoiId, 'mt'), listGrades(buoiId)])
     setProbs(p); setGrades(g)
@@ -1447,10 +1501,41 @@ function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: Buo
     try {
       const { mtId, phans: ps, caus: c } = await loadMTForBuoi(buoiId)
       // Lưới MT cũng bám đề qua ma_cau (chung syncDocProblems với ET) — xem ghi chú bug 07-21.
-      if (!mtId) { setMtMissing(true); setPhans([]) } else { setMtMissing(false); await syncMTProblems(buoiId, c, !!buoi.mt_dong_at); setPhans(ps) }
+      // Hình đọc từ tài liệu MT Hình RIÊNG (không phải giáo trình — 21/08 sửa lại sau khi nhầm 1 lần:
+      // "MT là 1 thực thể, Đại Hình chỉ là 1 phần của nó" — không tách tài liệu như ET). TUẦN TỰ sau
+      // Đại — chia sẻ slot problem_no cùng (buổi,'mt'), xem ghi chú domain-partition ở syncHinhProblems.
+      if (mtId) await syncMTProblems(buoiId, c, !!buoi.mt_dong_at)
+      setPhans(ps)
+      const { dapAn: hinhDapAn } = await loadHinhForBuoiPhase(buoiId, 'mt')
+      if (hinhDapAn.length) await syncHinhProblems(buoiId, 'mt', hinhDapAn, !!buoi.mt_dong_at)
+      setMtMissing(!mtId && !hinhDapAn.length)
       await reloadP()
     } catch { setMtMissing(true); setPhans([]) } finally { setLoading(false) }
   })() }, [buoiId]) // eslint-disable-line
+  useEffect(() => {
+    if (!hinhOpen || !buoi.lop_id || hinhL) return
+    let alive = true
+    ;(async () => {
+      const [L, id] = await Promise.all([loadLuoi(khoi || undefined), ensureHinhGtBuoiForBuoi(buoi.lop_id!, buoi.ngay)])
+      if (!alive) return
+      setHinhL(L); setHinhBuoiId(id)
+      const nhap = await loadBuoiPicksPhan(id, 'mt')
+      if (alive) { setHinhPicks(nhap.picks); setHinhCheDo(nhap.cheDo); setHinhSoDong(nhap.soDong) }
+    })()
+    return () => { alive = false }
+  }, [hinhOpen]) // eslint-disable-line
+  async function luuHinhPicks(picks: PickItem[], cheDo: Record<string, CheDoHinh>, soDong: Record<string, number>) {
+    setHinhPicks(picks); setHinhCheDo(cheDo); setHinhSoDong(soDong)
+    if (!hinhBuoiId) return
+    setHinhSaving(true)
+    try {
+      await saveBuoiSelectionPhan(hinhBuoiId, 'mt', { picks, cheDo, soDong })
+      const { dapAn } = await loadHinhForBuoiPhase(buoiId, 'mt')
+      await syncHinhProblems(buoiId, 'mt', dapAn, !!buoi.mt_dong_at)
+      setMtMissing(false)
+      await reloadP()
+    } finally { setHinhSaving(false) }
+  }
 
   const gradeOf = (pid: string, hsid: string) => grades.find((g) => g.problem_id === pid && g.hoc_sinh_id === hsid)
   async function pickKQ(pid: string, hsId: string, result: ETResult) {
@@ -1478,17 +1563,20 @@ function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: Buo
   async function moLai() { await reopenPhase(buoiId, 'mt'); onChange() }
 
   if (loading) return <p className="text-[12px] text-slate-400">Đang tải MT…</p>
-  if (mtMissing) return <p className="text-[13px] text-slate-400">Chưa có MT gán cho buổi này (khớp <b className="text-slate-600">lớp + ngày</b>). Vào <b className="text-slate-600">Làm tài liệu → MT</b> gán vào buổi này.</p>
   if (coMat.length === 0) return <p className="text-[12px] text-slate-400">Chưa có HS nào điểm danh "có mặt" — điểm danh trước khi chấm.</p>
 
   const tenDangOf = (md: string | null) => (md ? dangTenMT[md] ?? md : '—')
   const cauOf = (idx: number) => caus[idx] ?? null
+  // Hình (mô hình) luôn xếp SAU câu Đại (problem_no cấp lớn hơn — xem noTiep() trong syncHinhProblems),
+  // nên chỉ cần đếm để vẽ 1 nhóm "Phần Hình" cuối hàng nhóm, không cần chen giữa các Phần Đại.
+  const hinhCount = probs.filter((p) => p.hinh_baitoan_id).length
 
   return (
     <div className="flex h-full flex-col">
       <div className="mb-3 flex items-center gap-2">
-        <span className="text-[12px] text-slate-400">{probs.length} câu ({phans.length} phần) · {coMat.length} HS · 1 click <b className="text-emerald-600">Đ</b>/<b className="text-amber-600">C</b>/<b className="text-rose-600">S</b> · <b>Tất cả</b> cạnh tên = tích cả hàng, sửa riêng ô lệch.</span>
+        <span className="text-[12px] text-slate-400">{probs.length} câu ({phans.length} phần Đại{hinhCount ? ` + ${hinhCount} bài Hình` : ''}) · {coMat.length} HS · 1 click <b className="text-emerald-600">Đ</b>/<b className="text-amber-600">C</b>/<b className="text-rose-600">S</b> · <b>Tất cả</b> cạnh tên = tích cả hàng, sửa riêng ô lệch.</span>
         <div className="ml-auto flex items-center gap-2">
+          <button onClick={() => setHinhOpen((v) => !v)} className={`rounded-md border px-3 py-1.5 text-[13px] font-medium ${hinhOpen ? 'border-amber-400 bg-amber-100 text-amber-800' : 'border-amber-300 bg-amber-50 text-amber-700 hover:bg-amber-100'}`}>🏆 + Bài Hình{hinhSaving ? '…' : ''}</button>
           <button onClick={() => setDiemMTOpen((v) => !v)} className={`rounded-md border px-3 py-1.5 text-[13px] font-medium ${diemMTOpen ? 'border-violet-400 bg-violet-100 text-violet-800' : 'border-violet-300 bg-violet-50 text-violet-700 hover:bg-violet-100'}`}>🔢 Điểm MT</button>
           {dongCol ? (
             <>
@@ -1501,24 +1589,44 @@ function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: Buo
         </div>
       </div>
       {diemMTOpen && <DiemMTPanel buoiId={buoiId} buoi={buoi} coMat={coMat} tenHT={tenHT} />}
+      {hinhOpen && (
+        <div className="mb-3 rounded-xl border border-amber-200 bg-amber-50/40 p-3">
+          {!hinhL ? (
+            <p className="text-[12px] text-slate-400">Đang tải kho Hình…</p>
+          ) : (
+            <BuoiPickEditor L={hinhL} picks={hinhPicks} cheDo={hinhCheDo} soDong={hinhSoDong}
+              onChangePicks={(p) => luuHinhPicks(p, hinhCheDo, hinhSoDong)}
+              onChangeCheDo={(c) => luuHinhPicks(hinhPicks, c, hinhSoDong)}
+              onChangeSoDong={(s) => luuHinhPicks(hinhPicks, hinhCheDo, s)} phans={['mt']} />
+          )}
+        </div>
+      )}
+      {mtMissing && !probs.length ? (
+        <p className="text-[13px] text-slate-400">Chưa có MT Đại gán cho buổi này (khớp <b className="text-slate-600">lớp + ngày</b> — vào <b className="text-slate-600">Làm tài liệu → MT</b> gán) và chưa có bài Hình nào — bấm <b className="text-amber-700">🏆 + Bài Hình</b> ở trên để bắt đầu, hoặc gán MT Đại trước.</p>
+      ) : (
       <div className="min-h-0 flex-1 overflow-auto rounded-xl border border-slate-200">
         <table className="w-auto border-collapse text-sm">
           <thead>
-            {/* Hàng nhóm PHẦN — đúng cấu trúc file MT đã gán (Phần I/II…), KHÔNG làm phẳng câu. */}
+            {/* Hàng nhóm PHẦN — đúng cấu trúc file MT đã gán (Phần I/II…), KHÔNG làm phẳng câu.
+                Hình xếp SAU câu Đại (problem_no cấp lớn hơn — xem noTiep() trong syncHinhProblems). */}
             <tr className="bg-violet-50">
               <th className="sticky left-0 top-0 z-30 border border-slate-200 bg-violet-50" />
               {phans.map((ph, pi) => (
                 <th key={pi} colSpan={ph.caus.length} className="sticky top-0 z-10 border border-slate-200 bg-violet-50 px-2 py-1 text-center text-[12px] font-bold text-violet-700">{ph.tieuDe}</th>
               ))}
+              {hinhCount > 0 && (
+                <th colSpan={hinhCount} className="sticky top-0 z-10 border border-slate-200 bg-amber-100 px-2 py-1 text-center text-[12px] font-bold text-amber-700">🏆 Hình (mô hình)</th>
+              )}
             </tr>
             <tr className="bg-slate-100">
               <th className="sticky left-0 top-0 z-30 whitespace-nowrap border border-slate-200 bg-slate-100 px-4 py-1.5 text-left text-[12px] font-semibold text-slate-700">Học sinh</th>
               {probs.map((p, idx) => {
-                const c = cauOf(idx)
+                const hinh = !!p.hinh_baitoan_id
+                const c = hinh ? null : cauOf(idx)
                 return (
-                  <th key={p.id} className="sticky top-0 z-10 w-[130px] border border-slate-200 bg-slate-100 px-2 py-1.5 text-center align-top">
-                    <div className="text-[12px] font-bold text-slate-700">Câu {p.problem_no}</div>
-                    <div className="mx-auto max-w-[120px] truncate text-[11px] font-medium normal-case text-violet-600" title={tenDangOf(p.ma_dang)}>{tenDangOf(p.ma_dang)}</div>
+                  <th key={p.id} className={`sticky top-0 z-10 w-[130px] border border-slate-200 px-2 py-1.5 text-center align-top ${hinh ? 'bg-amber-50' : 'bg-slate-100'}`}>
+                    <div className="text-[12px] font-bold text-slate-700">{hinh ? `Bài ${p.hinh_nhan}` : `Câu ${p.problem_no}`}</div>
+                    <div className="mx-auto max-w-[120px] truncate text-[11px] font-medium normal-case text-violet-600" title={hinh ? 'Hình (mô hình)' : tenDangOf(p.ma_dang)}>{hinh ? 'Hình (mô hình)' : tenDangOf(p.ma_dang)}</div>
                     {c && <button onClick={() => setPreview(c)} className="mt-1 rounded border border-slate-200 px-1.5 py-0.5 text-[10px] font-normal normal-case text-slate-400 hover:border-indigo-300 hover:text-indigo-600">ⓘ đề</button>}
                   </th>
                 )
@@ -1550,6 +1658,7 @@ function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: Buo
           </tbody>
         </table>
       </div>
+      )}
       {preview && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-4" onClick={() => setPreview(null)}>
           <div className="max-h-[80vh] w-[640px] max-w-full overflow-auto rounded-2xl border border-slate-200 bg-white p-5 shadow-2xl" onClick={(e) => e.stopPropagation()}>
@@ -1580,6 +1689,15 @@ function DiemMTPanel({ buoiId, buoi, coMat, tenHT }: { buoiId: string; buoi: Buo
       .finally(() => setLoading(false))
   }, [buoiId]) // eslint-disable-line
 
+  // Khung điểm (tối đa) của CẢ ĐỀ — 1 khung dùng chung mọi HS trong buổi (CEO 21/08), khác điểm ĐẠT
+  // được (per-HS) ở bảng dưới. Sửa khung KHÔNG đổi điểm đã chấm — chỉ đổi con số hiển thị "/khung".
+  async function saveKhung(patch: { coBan?: number | null; nangCao?: number | null }) {
+    if (!ky) return
+    const next = { khung_co_ban: patch.coBan !== undefined ? patch.coBan : ky.khung_co_ban ?? null, khung_nang_cao: patch.nangCao !== undefined ? patch.nangCao : ky.khung_nang_cao ?? null }
+    try { await setKhungMT(ky.id, next.khung_co_ban, next.khung_nang_cao); setKy({ ...ky, ...next }) }
+    catch (e: any) { alert('Lưu khung điểm lỗi: ' + (e?.message ?? String(e))) }
+  }
+
   const diemOf = (hsId: string) => diems.find((d) => d.hoc_sinh_id === hsId) ?? null
   async function save(hsId: string, p: { coBan: number | null; nangCao: number | null; full: boolean }) {
     if (!ky) return
@@ -1596,25 +1714,48 @@ function DiemMTPanel({ buoiId, buoi, coMat, tenHT }: { buoiId: string; buoi: Buo
 
   return (
     <div className="mb-3 rounded-xl border border-violet-200 bg-violet-50/40 p-3">
-      <div className="mb-2 flex items-center gap-2">
+      <div className="mb-2 flex flex-wrap items-center gap-2">
         <span className="text-[13px] font-semibold text-violet-800">Điểm MT</span>
         <span className="text-[11px] text-slate-500">Cơ bản + Nâng cao → tự tính, <b>tự lưu ngay</b> (≥10 ⇒ 9.75 · tick <b>Full</b> ⇒ 10). Đếm câu thuộc mastery, không nhập ở đây.</span>
       </div>
       {loading || !ky ? <p className="text-[12px] text-slate-400">Đang tải…</p> : (
-        <table className="w-full max-w-lg text-[13px]">
-          <thead><tr className="text-left text-[11px] uppercase tracking-wide text-slate-400">
-            <th className="py-1">Học sinh</th><th className="w-20">Cơ bản</th><th className="w-20">Nâng cao</th><th className="w-14">Full</th><th className="w-16">Điểm</th>
-          </tr></thead>
-          <tbody>
-            {coMat.map((r, i) => <DiemMTRow key={r.hoc_sinh_id} ten={tenHT[i]} init={diemOf(r.hoc_sinh_id)} onSave={(p) => save(r.hoc_sinh_id, p)} />)}
-          </tbody>
-        </table>
+        <>
+          {/* Khung điểm của ĐỀ (1 lần cho cả buổi) — để trống nếu chưa cần "1.5/2". */}
+          <KhungMTInput ky={ky} onSave={saveKhung} />
+          <table className="w-full max-w-lg text-[13px]">
+            <thead><tr className="text-left text-[11px] uppercase tracking-wide text-slate-400">
+              <th className="py-1">Học sinh</th><th className="w-24">Cơ bản</th><th className="w-24">Nâng cao</th><th className="w-14">Full</th><th className="w-16">Điểm</th>
+            </tr></thead>
+            <tbody>
+              {coMat.map((r, i) => <DiemMTRow key={r.hoc_sinh_id} ten={tenHT[i]} init={diemOf(r.hoc_sinh_id)} khungCoBan={ky.khung_co_ban ?? null} khungNangCao={ky.khung_nang_cao ?? null} onSave={(p) => save(r.hoc_sinh_id, p)} />)}
+            </tbody>
+          </table>
+        </>
       )}
     </div>
   )
 }
 
-function DiemMTRow({ ten, init, onSave }: { ten: string; init: DiemThi | null; onSave: (p: { coBan: number | null; nangCao: number | null; full: boolean }) => void }) {
+// Khung điểm (tối đa) của cả đề — 1 khung/buổi, nhập 1 lần, KHÔNG lặp lại theo từng HS.
+function KhungMTInput({ ky, onSave }: { ky: KyThi; onSave: (p: { coBan?: number | null; nangCao?: number | null }) => void }) {
+  const [coBan, setCoBan] = useState(ky.khung_co_ban != null ? String(ky.khung_co_ban) : '')
+  const [nangCao, setNangCao] = useState(ky.khung_nang_cao != null ? String(ky.khung_nang_cao) : '')
+  const num = (s: string) => (s.trim() === '' ? null : Number(s))
+  const inp = 'h-7 w-16 rounded border border-slate-300 px-2 text-[13px]'
+  return (
+    <div className="mb-2 flex items-center gap-3 rounded-lg border border-violet-100 bg-white px-3 py-1.5">
+      <span className="text-[11px] font-medium text-slate-500">Khung điểm đề (tối đa mỗi phần — để hiện dạng "1.5/2"):</span>
+      <label className="flex items-center gap-1.5 text-[12px] text-slate-600">Cơ bản
+        <input value={coBan} onChange={(e) => setCoBan(e.target.value)} onBlur={() => onSave({ coBan: num(coBan) })} inputMode="decimal" placeholder="—" className={inp} />
+      </label>
+      <label className="flex items-center gap-1.5 text-[12px] text-slate-600">Nâng cao
+        <input value={nangCao} onChange={(e) => setNangCao(e.target.value)} onBlur={() => onSave({ nangCao: num(nangCao) })} inputMode="decimal" placeholder="—" className={inp} />
+      </label>
+    </div>
+  )
+}
+
+function DiemMTRow({ ten, init, khungCoBan, khungNangCao, onSave }: { ten: string; init: DiemThi | null; khungCoBan: number | null; khungNangCao: number | null; onSave: (p: { coBan: number | null; nangCao: number | null; full: boolean }) => void }) {
   const [coBan, setCoBan] = useState(init?.diem_co_ban != null ? String(init.diem_co_ban) : '')
   const [nangCao, setNangCao] = useState(init?.diem_nang_cao != null ? String(init.diem_nang_cao) : '')
   const [full, setFull] = useState(!!init?.full_diem)
@@ -1627,8 +1768,8 @@ function DiemMTRow({ ten, init, onSave }: { ten: string; init: DiemThi | null; o
   return (
     <tr className="border-t border-violet-100">
       <td className="py-1 font-medium text-slate-700">{ten}</td>
-      <td><input value={coBan} onChange={(e) => setCoBan(e.target.value)} onBlur={() => commit()} inputMode="decimal" className={inp} /></td>
-      <td><input value={nangCao} onChange={(e) => setNangCao(e.target.value)} onBlur={() => commit()} inputMode="decimal" className={inp} /></td>
+      <td><div className="flex items-center gap-1"><input value={coBan} onChange={(e) => setCoBan(e.target.value)} onBlur={() => commit()} inputMode="decimal" className={inp} />{khungCoBan != null && <span className="text-[11px] text-slate-400">/{khungCoBan}</span>}</div></td>
+      <td><div className="flex items-center gap-1"><input value={nangCao} onChange={(e) => setNangCao(e.target.value)} onBlur={() => commit()} inputMode="decimal" className={inp} />{khungNangCao != null && <span className="text-[11px] text-slate-400">/{khungNangCao}</span>}</div></td>
       <td><input type="checkbox" checked={full} onChange={(e) => { setFull(e.target.checked); commit(e.target.checked) }} className="h-4 w-4 accent-violet-600" title="Làm trọn vẹn không sai gì = 10đ" /></td>
       <td className={`font-semibold tabular-nums ${trong() ? 'text-slate-300' : diem >= 9.75 ? 'text-emerald-700' : 'text-violet-800'}`}>{trong() ? '—' : diem}</td>
     </tr>
@@ -1663,8 +1804,11 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
     setLoading(true)
     try {
       const { btvnId, caus } = await loadBTVNForBuoi(buoiId)
-      if (!btvnId) setMissing(true)
-      else { setMissing(false); await syncBTVNProblems(buoiId, caus, !!buoi.btvn_dong_at) }
+      // TUẦN TỰ (không Promise.all) — Đại + Hình chia sẻ slot problem_no của cùng (buổi,'btvn').
+      if (btvnId) await syncBTVNProblems(buoiId, caus, !!buoi.btvn_dong_at)
+      const { dapAn: hinhDapAn } = await loadHinhForBuoiPhase(buoiId, 'btvn')
+      if (hinhDapAn.length) await syncHinhProblems(buoiId, 'btvn', hinhDapAn, !!buoi.btvn_dong_at)
+      setMissing(!btvnId && !hinhDapAn.length)
       await reloadP(); await reloadKq()
     } catch { setMissing(true) } finally { setLoading(false) }
   })() }, [buoiId]) // eslint-disable-line
@@ -1720,12 +1864,15 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
           <thead>
             <tr className="bg-slate-100">
               <th className="sticky left-0 top-0 z-30 min-w-[430px] border border-slate-200 bg-slate-100 px-3 py-2 text-left text-[12px] font-semibold text-slate-700">Học sinh · Nộp · Thái độ</th>
-              {probs.map((p) => (
-                <th key={p.id} className="sticky top-0 z-10 min-w-[120px] border border-slate-200 bg-slate-100 px-2 py-1.5 text-center align-top">
-                  <div className="text-[12px] font-bold text-slate-700">Câu {p.problem_no}</div>
-                  <div className="mx-auto max-w-[150px] truncate text-[11px] font-medium normal-case text-violet-600" title={tenDang(p.ma_dang)}>{tenDang(p.ma_dang)}</div>
-                </th>
-              ))}
+              {probs.map((p) => {
+                const hinh = !!p.hinh_baitoan_id
+                return (
+                  <th key={p.id} className={`sticky top-0 z-10 min-w-[120px] border border-slate-200 px-2 py-1.5 text-center align-top ${hinh ? 'bg-violet-50' : 'bg-slate-100'}`}>
+                    <div className="text-[12px] font-bold text-slate-700">{hinh ? `Bài ${p.hinh_nhan}` : `Câu ${p.problem_no}`}</div>
+                    <div className="mx-auto max-w-[150px] truncate text-[11px] font-medium normal-case text-violet-600" title={hinh ? 'Hình (mô hình)' : tenDang(p.ma_dang)}>{hinh ? 'Hình (mô hình)' : tenDang(p.ma_dang)}</div>
+                  </th>
+                )
+              })}
             </tr>
           </thead>
           <tbody>

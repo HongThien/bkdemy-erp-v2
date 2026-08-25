@@ -50,6 +50,55 @@ export const BK_PAGE_CSS = `
 .pagedjs_pagebox::after{content:"CLB Toán học BK Academy      ·      0963.209.309      ·      Số 17A10 KĐT Geleximco";position:absolute;left:10mm;right:10mm;bottom:4mm;height:9mm;display:flex;align-items:center;justify-content:center;border:1.5px solid #c2cbdb;border-radius:11px;background:#fff;color:#172033;font-weight:800;font-size:11.5px;white-space:pre;z-index:2;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 `
 
+// Đầu phiếu KIỂU BK (thiết kế mới, Thùy 07-31 — theo mockup BK Academy). Thương hiệu + nhãn "Bài test cuối
+// giờ" + thời gian 10 phút + ngày; tiêu đề; bảng HS (Họ tên · Lớp · Mã đề); lưới "Đánh giá từng câu" Đ/C/S,
+// số ô = SỐ CÂU của đề. Bản GV bỏ bảng HS + lưới chấm. DÙNG CHUNG ET Đại (ETPrintView) + ET Hình
+// (HinhPrintView, Thùy 21/08: "làm giống bên Đại số đi, cứ sáng tạo thêm làm gì" — 1 component, không
+// tự vẽ header riêng cho Hình).
+export function ETHeaderBK({ title, ngay, lop, made, hoTen, soCau, gv }: {
+  title: string; ngay: string; lop: string; made: string; hoTen?: string; soCau: number; gv: boolean
+}) {
+  return (
+    <div className="pv-bkh">
+      <div className="pv-bkh-top">
+        <div className="pv-bkh-brand">
+          <img className="pv-bkh-logo" src={location.origin + '/Logo.png'} alt="BK ACADEMY" />
+        </div>
+        {/* Bản GV ẩn bảng HS (chứa Mã đề) → gắn Mã đề vào NHÃN để đáp án vẫn biết của mã đề nào. */}
+        <div className="pv-bkh-label">Bài test cuối giờ{gv ? (made ? ` · Mã đề ${made} · Đáp án` : ' · Đáp án') : ''}</div>
+        <div className="pv-bkh-meta">
+          <div className="pv-bkh-pill"><span>Thời gian</span><strong>10 phút</strong></div>
+          <div className="pv-bkh-pill"><span>Ngày</span><strong>{ngay}</strong></div>
+        </div>
+      </div>
+      <div className="pv-bkh-hero">
+        <h1 className="pv-bkh-title">{title}</h1>
+        <div className="pv-bkh-divider" />
+      </div>
+      {!gv && (
+        <div className="pv-bkh-student">
+          <div className="pv-bkh-field"><div className="pv-bkh-flbl">Họ và tên học sinh</div><div className="pv-bkh-fval">{hoTen || ' '}</div></div>
+          <div className="pv-bkh-field"><div className="pv-bkh-flbl">Lớp</div><div className="pv-bkh-fval">{lop}</div></div>
+          <div className="pv-bkh-field"><div className="pv-bkh-flbl">Mã đề</div><div className="pv-bkh-fval">{made || ' '}</div></div>
+        </div>
+      )}
+      {!gv && (
+        <div className="pv-bkh-assess">
+          <div className="pv-bkh-ahead"><div className="pv-bkh-atitle">Đánh giá từng câu</div><div className="pv-bkh-anote">Trợ giảng tích Đ / C / S cho mỗi câu</div></div>
+          <div className="pv-bkh-grid">
+            {Array.from({ length: soCau }, (_, i) => (
+              <div key={i} className="pv-bkh-qcard">
+                <div className="pv-bkh-qno">Câu {i + 1}</div>
+                <div className="pv-bkh-status">{['Đ', 'C', 'S'].map((s) => <span key={s} className="pv-bkh-circle">{s}</span>)}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
 // Đầu phiếu BTVN — KIỂU GIÁO TRÌNH (masthead 08-08): khung gradient bo góc + logo thật + pill "BTVN"
 // (+ "Đáp án" bản GV) + tiêu đề = tên buổi + dòng phụ (Lớp · Ngày phát · Hạn nộp). Dưới masthead là hàng ô
 // Họ tên · Lớp · Điểm (tái dùng .pv-bkh-* trong BK_CSS). Class masthead (.gtbk-mh*) đến từ GT_BK_CSS —
