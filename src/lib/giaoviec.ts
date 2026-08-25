@@ -250,12 +250,35 @@ export async function listTaskCon(taskMeId: string): Promise<ViecFull[]> {
   return decorateViec((data ?? []) as Viec[])
 }
 
-// WEEKLY PLANNING (story §4): mọi task của tuần (mẹ + con + lẻ). UI gom cụm theo task_me_id.
+// WEEKLY PLANNING (story §4, sửa 08-18 "task mẹ kéo dài nhiều tuần"): mọi task của tuần
+// (mẹ + con + lẻ) CỘNG mọi task MỞ từ các tuần TRƯỚC còn dang dở — trước đây task neo cứng
+// vào ky_tuan lúc tạo nên hễ kéo dài sang tuần sau là "biến mất" khỏi Weekly Planning (phải
+// bấm lùi đúng tuần cũ mới thấy lại), dù người làm vẫn thấy nó bình thường ở "Việc của tôi"
+// (không lọc ky_tuan). KHÔNG đổi ky_tuan gốc (đó là tuần LẬP KẾ HOẠCH, dùng tính hiệu suất
+// tháng) — chỉ mở rộng tập kết quả ở tầng VIEW, đúng PURE-DERIVE (CLAUDE §1), không ghi đè state.
 export async function listWeeklyPlanning(kyTuan: string): Promise<ViecFull[]> {
-  const { data, error } = await supabase.from('viec').select('*').eq('ky_tuan', kyTuan)
-    .not('trang_thai', 'in', '("huy","chuyen")').order('created_at', { ascending: true }).limit(LIMIT)
-  if (error) throw error
-  return decorateViec((data ?? []) as Viec[])
+  const [tuanNay, meCuKeoDai] = await Promise.all([
+    supabase.from('viec').select('*').eq('ky_tuan', kyTuan)
+      .not('trang_thai', 'in', '("huy","chuyen")').limit(LIMIT),
+    // Root (không phải con) của tuần TRƯỚC mà vẫn còn MỞ thật sự. Mẹ chỉ 'dat' khi TOÀN BỘ
+    // con đã 'dat' (trigger giaoviec_auto_dong_task_me), nên loại 'dat' ở đây là an toàn —
+    // không có ca "mẹ dat mà còn con dở" lọt lưới.
+    supabase.from('viec').select('*').lt('ky_tuan', kyTuan).is('task_me_id', null)
+      .not('trang_thai', 'in', '("dat","huy","chuyen")').limit(LIMIT),
+  ])
+  if (tuanNay.error) throw tuanNay.error
+  if (meCuKeoDai.error) throw meCuKeoDai.error
+  const meIds = (meCuKeoDai.data ?? []).map((r: any) => r.id)
+  // Mọi con của các mẹ-cũ-kéo-dài đó — bất kể trạng thái/ky_tuan riêng (con kế thừa ky_tuan mẹ
+  // lúc tách, nhưng lấy thẳng theo task_me_id cho chắc, không dựa vào ky_tuan của con).
+  const conCuKeoDai = meIds.length
+    ? await supabase.from('viec').select('*').in('task_me_id', meIds).not('trang_thai', 'in', '("huy","chuyen")').limit(LIMIT)
+    : { data: [] as any[], error: null }
+  if (conCuKeoDai.error) throw conCuKeoDai.error
+  const gop = new Map<string, Viec>()
+  for (const v of [...(tuanNay.data ?? []), ...(meCuKeoDai.data ?? []), ...(conCuKeoDai.data ?? [])] as Viec[]) gop.set(v.id, v)
+  const rows = [...gop.values()].sort((a, b) => a.created_at.localeCompare(b.created_at))
+  return decorateViec(rows)
 }
 
 // NS bắt đầu làm (rời 'moi_giao').
