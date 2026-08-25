@@ -149,7 +149,10 @@ function MyTaskCard({ v, conVersion, onOpenCon, children }: {
           {v.trang_thai === 'tra_lai' && v.ghi_chu_nghiem_thu && <div className="mt-1 rounded-lg bg-rose-50 px-2.5 py-1.5 text-[12px] text-rose-600">Bị trả lại: {v.ghi_chu_nghiem_thu}</div>}
           {v.trang_thai === 'dat' && <div className="mt-1 text-[11px] text-slate-400">Tiến độ {v.tien_do} · Chất lượng {v.chat_luong}</div>}
           {coCon && <ConCumSection v={v} refreshKey={conVersion ?? 0} onOpenCon={onOpenCon!} />}
-          {!coCon && !['dat', 'huy', 'chuyen'].includes(v.trang_thai) && <CapNhatSection v={v} />}
+          {/* Người cầm task mẹ vẫn cần 1 chỗ cập nhật CHUNG cho cả cụm (khác cập nhật riêng
+              của từng task con, vẫn giữ nguyên như cũ) — story 08-18. Cập nhật này lên thẳng
+              bảng "Công khai" chung cả team để leader review nhanh, không phải mở từng task. */}
+          {!['dat', 'huy', 'chuyen'].includes(v.trang_thai) && <CapNhatSection v={v} laMe={coCon} />}
         </div>
         {children && <div className="flex shrink-0 items-center gap-1.5">{children}</div>}
       </div>
@@ -192,7 +195,7 @@ function ConCumSection({ v, refreshKey, onOpenCon }: { v: ViecFull; refreshKey: 
 // Cập nhật tiến độ trong lúc làm (story 08-18) — TƯỜNG THUẬT của người làm, khác hẳn
 // v.tien_do (điểm máy chấm lúc nghiệm thu). Append-only: mỗi lần gửi thêm 1 dòng mới,
 // không sửa dòng cũ — history hiện đủ để leader theo dõi cả quá trình, không chỉ bản mới nhất.
-function CapNhatSection({ v }: { v: ViecFull }) {
+function CapNhatSection({ v, laMe }: { v: ViecFull; laMe?: boolean }) {
   const [mo, setMo] = useState(false)
   const [ds, setDs] = useState<CapNhatViec[] | null>(null)
   const [dangTai, setDangTai] = useState(false)
@@ -223,13 +226,14 @@ function CapNhatSection({ v }: { v: ViecFull }) {
   return (
     <div className="mt-1.5">
       <button onClick={toggle} className="text-[12px] font-medium text-indigo-600 hover:underline">
-        📝 Cập nhật tiến độ{moiNhat?.tien_do_bao_cao != null ? ` · ${moiNhat.tien_do_bao_cao}%` : ''} {mo ? '▲' : '▼'}
+        📝 {laMe ? 'Cập nhật chung (cả cụm)' : 'Cập nhật tiến độ'}{moiNhat?.tien_do_bao_cao != null ? ` · ${moiNhat.tien_do_bao_cao}%` : ''} {mo ? '▲' : '▼'}
       </button>
       {mo && (
         <div className="mt-1.5 space-y-2 border-l-2 border-slate-100 pl-3">
+          {laMe && <p className="text-[11px] text-slate-400">Cập nhật CHUNG cho cả cụm — lên thẳng bảng "Công khai" cả team xem. Từng task con vẫn tự cập nhật riêng như cũ.</p>}
           <div className="flex flex-wrap items-end gap-2">
             <div className="min-w-[200px] flex-1">
-              <textarea value={noiDung} onChange={(e) => setNoiDung(e.target.value)} rows={2} placeholder="Hôm nay làm gì, còn vướng gì…"
+              <textarea value={noiDung} onChange={(e) => setNoiDung(e.target.value)} rows={2} placeholder={laMe ? 'Tình hình chung cả cụm hôm nay…' : 'Hôm nay làm gì, còn vướng gì…'}
                 className="w-full rounded-lg border border-slate-300 px-2.5 py-1.5 text-[12.5px] outline-none focus:border-indigo-400" />
             </div>
             <div className="flex items-center gap-1.5">

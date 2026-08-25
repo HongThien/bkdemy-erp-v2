@@ -316,6 +316,7 @@ function MeDetailModal({ v, soCon, onClose, onTachCon, onSaved }: {
             <Row k="Mục tiêu" val={v.muc_tieu} />
             <Row k="Output" val={v.output} />
             <Row k="Deadline" val={fmtNgay(v.deadline)} />
+            {v.nguoi_lam_id && !['dat', 'huy', 'chuyen'].includes(v.trang_thai) && <CapNhatXem viecId={v.id} />}
             <div className="flex justify-end gap-2 pt-1">
               <button onClick={() => setSua(true)} className={CX_BTN_GHOST}>Sửa mục tiêu/output/deadline</button>
             </div>
