@@ -431,6 +431,18 @@ export async function listCapNhat(viecId: string): Promise<CapNhatViec[]> {
   const nsMap = await nhanSuTenMap(rows.map((r) => r.nguoi_id))
   return rows.map((r) => ({ ...r, nguoi_ten: nsMap.get(r.nguoi_id) ?? '?' }))
 }
+// CẬP NHẬT MỚI NHẤT của nhiều task 1 lượt (story 08-18 "cập nhật lên bảng chung") — dùng ở
+// CongKhaiTab để CEO/leader review nhanh mà không phải click từng task. Batch 1 query, giữ
+// dòng ĐẦU TIÊN mỗi viec_id (đã order created_at desc) — không cần N+1 hay RPC riêng.
+export async function listCapNhatMoiNhat(viecIds: string[]): Promise<Map<string, CapNhatViec>> {
+  if (!viecIds.length) return new Map()
+  const { data, error } = await supabase.from('viec_cap_nhat').select('*').in('viec_id', viecIds)
+    .order('created_at', { ascending: false }).limit(LIMIT)
+  if (error) throw error
+  const map = new Map<string, CapNhatViec>()
+  for (const r of (data ?? []) as CapNhatViec[]) if (!map.has(r.viec_id)) map.set(r.viec_id, r)
+  return map
+}
 // CHỈ người đang làm (nguoi_lam_id) được tự báo cáo tiến độ việc của mình.
 export async function themCapNhat(viecId: string, p: { noiDung: string; tienDoBaoCao?: number | null }): Promise<void> {
   if (!p.noiDung.trim()) throw new Error('Nội dung cập nhật không được trống.')
