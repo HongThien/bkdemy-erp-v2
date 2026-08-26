@@ -5,7 +5,7 @@ import {
   listPhanCongByLop, addPhanCong, removePhanCong,
   listTKB, addTKB, dongTKB,
   listHSCuaLop, ghiDanh, roiLop, setBandGhiDanh, setNgayVao as setNgayVaoApi, listHSChuaCoLopMon, todayVN,
-  listNhanSu, listMucNangLuc, thongKeLop,
+  listNhanSu, listMucNangLuc, thongKeLop, listLopBac,
   type Lop, type PhanCongLop, type ThoiKhoaBieu, type HSTrongLop, type NhanSu, type HocSinh, type MucNangLuc, type LopThongKe,
 } from '../../lib/nhansu'
 import { Shell, Field, inp, Seg, Actions, BacChip } from '../kho/ui'
@@ -40,7 +40,7 @@ const bacCard = (bac: string | null) => (bac && BAC_CARD[bac]) || 'border-slate-
 const BAC_ORDER: Record<string, number> = { S: 0, A: 1, B: 2, C: 3 }
 
 // Card lớp: sĩ số · GV/TG · badge "đủ thông tin chưa" (GV chính, TG, TKB, band đủ)
-function LopCard({ l, tk, onOpen }: { l: Lop; tk?: LopThongKe; onOpen: () => void }) {
+function LopCard({ l, tk, max, onOpen }: { l: Lop; tk?: LopThongKe; max?: number | null; onOpen: () => void }) {
   const thieu: string[] = []
   if (tk) {
     if (!tk.gvChinh) thieu.push('GV chính')
@@ -57,7 +57,13 @@ function LopCard({ l, tk, onOpen }: { l: Lop; tk?: LopThongKe; onOpen: () => voi
           <div className="text-[15px] font-semibold text-slate-900">{l.ten_lop}</div>
           <div className="text-[12px] text-slate-400">khối {l.khoi}{l.co_so ? ` · ${l.co_so}` : ''}{l.bac ? ` · hệ ${l.bac}` : ''}</div>
         </div>
-        <span className="rounded-lg bg-slate-100 px-2 py-1 text-center text-[12px] font-semibold text-slate-600">{tk?.siSo ?? 0}<span className="ml-0.5 text-[10px] font-normal text-slate-400">HS</span></span>
+        {(() => {
+          const n = tk?.siSo ?? 0
+          if (max == null) return <span className="rounded-lg bg-slate-100 px-2 py-1 text-center text-[12px] font-semibold text-slate-600">{n}<span className="ml-0.5 text-[10px] font-normal text-slate-400">HS</span></span>
+          const over = n > max, full = n === max
+          const cls = over ? 'bg-rose-100 text-rose-700' : full ? 'bg-amber-100 text-amber-700' : 'bg-slate-100 text-slate-600'
+          return <span title={over ? `Vượt sĩ số tối đa (${max}/lớp)` : full ? `Đã đầy (tối đa ${max}/lớp)` : `Tối đa ${max}/lớp`} className={`shrink-0 rounded-lg px-2 py-1 text-center text-[12px] font-semibold ${cls}`}>{over ? '⚠ ' : ''}{n}<span className="text-[10px] font-normal opacity-70">/{max}</span></span>
+        })()}
       </div>
       <div className="flex flex-wrap gap-x-3 gap-y-0.5 text-[12px] text-slate-500">
         <span><span className="text-slate-400">GV:</span> {tk?.gvChinh ?? <em className="text-rose-400">chưa có</em>}{tk?.gvPhu ? `, ${tk.gvPhu}` : ''}</span>
@@ -82,10 +88,15 @@ export default function LopScreen() {
   const [creating, setCreating] = useState(false)
   const [openId, setOpenId] = useState<string | null>(null)
   const [tk, setTk] = useState<Record<string, LopThongKe>>({})
+  const [bacMax, setBacMax] = useState<Record<string, number | null>>({}) // mã bậc → sĩ số tối đa mỗi lớp (vd S=20)
 
   async function reload() {
     setLoading(true); setErr(null)
-    try { const ls = await listLop(khoi); setList(ls); setTk(await thongKeLop(ls.map((l) => l.id))) }
+    try {
+      const [ls, bacs] = await Promise.all([listLop(khoi), listLopBac()])
+      setList(ls); setTk(await thongKeLop(ls.map((l) => l.id)))
+      setBacMax(Object.fromEntries(bacs.map((b) => [b.ma, b.si_so_toi_da])))
+    }
     catch (e: any) { setErr(e.message ?? String(e)) } finally { setLoading(false) }
   }
   useEffect(() => { reload() }, [khoi]) // eslint-disable-line
@@ -124,7 +135,7 @@ export default function LopScreen() {
                     <div className="grid grid-cols-1 gap-3 md:grid-cols-2 2xl:grid-cols-3">
                       {list.filter((l) => l.mon === mon)
                         .sort((a, b) => (BAC_ORDER[a.bac ?? ''] ?? 9) - (BAC_ORDER[b.bac ?? ''] ?? 9) || a.ten_lop.localeCompare(b.ten_lop, 'vi', { numeric: true }))
-                        .map((l) => <LopCard key={l.id} l={l} tk={tk[l.id]} onOpen={() => setOpenId(l.id)} />)}
+                        .map((l) => <LopCard key={l.id} l={l} tk={tk[l.id]} max={l.bac ? bacMax[l.bac] : null} onOpen={() => setOpenId(l.id)} />)}
                     </div>
                   </section>
                 ))}
