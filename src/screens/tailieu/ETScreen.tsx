@@ -153,11 +153,16 @@ export function ETEditor({ et, onClose, presetHinh }: { et?: ETView; onClose?: (
         const chuoi = chuoiKetNoi(hinhL, p.nodeIds[0])
         const gocBan: Ban = p.kind === 'ghep' ? { kind: 'ghep', luaId: p.luaId } : p.kind === 'bienthe' ? { kind: 'bienthe', bienTheId: p.bienTheId } : { kind: 'y', yId: p.yId }
         const opts = await goiYMaDeChoBai(chuoi, gocBan, 2)
-        next[sig] = [opts[0]?.ban ?? null, opts[1]?.ban ?? null]
+        // ⭐ 24/08 (Thùy: "chốt logic là nếu ko đủ bài trong cụm thì cùng lấy bài gốc cho đề 2 đề 3" —
+        // đúng khuôn buildMaDe của Đại, made.ts: hết biến thể khác thì CHO TRÙNG TRONG CỤM, tệ nhất
+        // dùng lại chính câu gốc — KHÔNG BAO GIỜ để trống). Trước đây thiếu bước cuối này ở Hình: opts
+        // ít hơn 2 thì để `null`, mà `null` chặn VĨNH VIỄN "👥 Gán mã đề theo HS"/"🖨 Cả lớp" qua
+        // hinhDeReady() (không tự lấp lại được nữa) — sinh 3 mã đề coi như bế tắc.
+        next[sig] = [opts[0]?.ban ?? gocBan, opts[1]?.ban ?? gocBan]
         if (opts.length < 2) thieu.push(chuoi.map((b) => b.ma).join('+'))
       }
       setHinhMaDe(next)
-      if (thieu.length) alert(`Kho chưa đủ 2 bản khác cho ${thieu.length} bài (chỉ đếm biến thể CÙNG node, không tự sinh AI):\n${thieu.join('\n')}`)
+      if (thieu.length) alert(`Kho chưa đủ 2 bản khác cho ${thieu.length} bài (chỉ đếm biến thể CÙNG node, không tự sinh AI) — đã tự dùng lại bài gốc cho phần thiếu:\n${thieu.join('\n')}`)
     } finally { setHinhMaDeBusy(false) }
   }
   const hinhTrong = () => hinhPicks.filter((p) => { const m = hinhMaDe[chuoiSig(p.nodeIds)]; return !m || !m[0] || !m[1] }).length
