@@ -11,7 +11,7 @@ import { useMonScope } from '../../lib/mon'
 // pipeline riêng của Hình (loadLuoi + resolveBanIn + HinhPrintView, khác hẳn PrintView id-based của Đại).
 import {
   listAllBuoiHinh, listGtBai as listGtBaiHinh, saveBuoiSelectionPhan as saveBuoiSelectionPhanHinh,
-  loadBuoiPicksPhan as loadBuoiPicksPhanHinh,
+  loadBuoiPicksPhan as loadBuoiPicksPhanHinh, xoaPhanBuoi as xoaPhanBuoiHinh,
   listHinhLinkGenJobs, enqueueHinhLinkGenJob, type HinhKhoRow, type CheDoHinh, type HinhLinkGenJob,
 } from '../../lib/kho/hinhGiaoTrinh'
 import { resolveBanIn as resolveBanInHinh, resolveEtBansHinh } from '../kho/hinh/GiaoTrinhScreen'
@@ -148,12 +148,14 @@ export default function KhoTaiLieuScreen() {
   // BuoiPickEditor (mã đề/roster) — mở thẳng ETEditor (presetHinh).
   const [hinhSua, setHinhSua] = useState<HinhKhoRow | null>(null)
   const [editEtHinh, setEditEtHinh] = useState<{ lopId: string; ngay: string } | null>(null)
-  // Xoá: chỉ xoá ĐÚNG PHAN của dòng này (saveBuoiSelectionPhan rỗng) — KHÔNG đụng phan còn lại (2 dòng
-  // CHIA SẺ 1 hinh_gt_buoi thật, xoá cả buổi sẽ mất luôn phan kia — sai). Buổi trống cả 3 phan thì tự
-  // nhiên KHÔNG còn dòng nào ở đây nữa (listAllBuoiHinh chỉ chiếu phan CÓ bài).
+  // Xoá: chỉ xoá ĐÚNG PHAN của dòng này — KHÔNG đụng phan còn lại (2 dòng CHIA SẺ 1 hinh_gt_buoi thật,
+  // xoá cả buổi ngay sẽ mất luôn phan kia — sai). ⭐ 25/08 (Thùy: "gán nhầm buổi hình, xoá tài liệu ở kho
+  // vẫn ko gán lại được") — nhưng NẾU xoá xong buổi hết sạch mọi phan, phải dọn LUÔN cả hàng
+  // hinh_gt_buoi (xoaPhanBuoi), không để hàng rỗng đứng lại chiếm (lớp,ngày) — hàng rỗng vẫn tính "đã
+  // gán" nên gán lại giáo trình ĐÚNG cho đúng ngày đó bị né sang ngày khác.
   async function xoaHinh(r: HinhKhoRow) {
     if (!confirm(`Xoá "${r.ten}"?`)) return
-    await saveBuoiSelectionPhanHinh(r.buoiId, r.phan, { picks: [], cheDo: {}, soDong: {} })
+    await xoaPhanBuoiHinh(r.buoiId, r.phan, r.lop_id)
     reload()
   }
 

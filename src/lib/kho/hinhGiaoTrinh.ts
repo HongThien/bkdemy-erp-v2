@@ -206,6 +206,21 @@ export async function saveBuoiSelectionPhan(buoiId: string, phan: 'lop' | 'nha' 
   // Kho, xem listAllBuoiHinh). KHÔNG enqueue khi rows rỗng (phan vừa bị xoá trắng — không còn gì để in).
   if ((phan === 'lop' || phan === 'nha' || phan === 'et') && rows.length) await enqueueHinhLinkGenJob(buoiId, phan)
 }
+/** Xoá 1 phan của buổi (Kho tài liệu "Xoá") — nếu sau đó buổi KHÔNG CÒN bài ở phan nào (lop/nha/et/mt)
+ *  thì xoá LUÔN cả hinh_gt_buoi (khuôn goBuoiLop). ⭐ 25/08 (Thùy: "gán nhầm buổi hình, xoá tài liệu ở
+ *  kho vẫn ko gán lại được") — bug thật: saveBuoiSelectionPhan CHỈ xoá bài, giữ nguyên cả hàng (kể cả
+ *  `nguon_buoi_id` trỏ về giáo trình gán NHẦM) — hàng rỗng vẫn tính "đã gán ngày X" ở listTrichXuatHinh
+ *  (khoá theo nguon_buoi_id, không xét còn bài hay không) VÀ vẫn chiếm chỗ ở daGan (GiaoTrinhScreen.tsx,
+ *  liệt kê MỌI hàng của lớp, không lọc rỗng) → gán lại giáo trình ĐÚNG cho đúng ngày đó bị auto-gợi-ý
+ *  ngày khác né chỗ đã "chiếm", còn giáo trình SAI vẫn hiện "✓ Đã gán". Dọn sạch hàng rỗng thì cả hai
+ *  triệu chứng tự hết — không cần sửa gì ở tầng gán (ganLopSnapshot vốn đã đúng khi gán lại ĐÚNG ngày). */
+export async function xoaPhanBuoi(buoiId: string, phan: 'lop' | 'nha' | 'et', lopId: string | null): Promise<void> {
+  await saveBuoiSelectionPhan(buoiId, phan, { picks: [], cheDo: {}, soDong: {} })
+  const con = await listGtBai(buoiId)
+  if (con.length) return
+  if (lopId) await goBuoiLop(buoiId, lopId)
+  else await deleteBuoi(buoiId)
+}
 /** Bài CHỈ 1 phan của buổi → NhapBuoi (ET Hình mở lại sửa — không load lẫn 'lop'/'nha'). */
 export async function loadBuoiPicksPhan(buoiId: string, phan: 'lop' | 'nha' | 'et' | 'mt'): Promise<NhapBuoi> {
   const full = await loadBuoiPicks(buoiId)

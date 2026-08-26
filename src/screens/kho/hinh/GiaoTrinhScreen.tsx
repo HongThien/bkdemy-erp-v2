@@ -29,6 +29,26 @@ function fmtNgay(iso?: string): string {
   return new Date(iso).toLocaleDateString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', day: '2-digit', month: '2-digit', year: 'numeric' })
 }
 
+// ⭐ 25/08 (Thùy: "header BTVN vẫn lằng nhằng, t bảo sửa theo kiểu đại rồi mà") — lần trước chỉ gắn
+// laBtvn/tieuBai/ngayNop NGAY TRONG resolveBanIn, nhưng "📝 Xem" ở thẻ buổi Master (BuoiCardHinh.xem
+// dưới) gọi THẲNG banInTheoMoHinh, không qua resolveBanIn → bỏ sót, vẫn ra masthead cũ. Tách riêng
+// thành helper DÙNG CHUNG cho MỌI nơi dựng BanIn phan='nha' của Hình — không còn đường nào lọt nữa.
+async function attachBtvnMeta(ban: BanIn, buoiId: string | undefined, phan: 'lop' | 'nha'): Promise<BanIn> {
+  if (phan !== 'nha') return ban
+  const meta = buoiId ? await gt.getHinhBuoiMeta(buoiId).catch(() => null) : null
+  if (!meta?.ngay) return { ...ban, laBtvn: true }
+  const ngayPhat = meta.ngay.split('-').reverse().join('/')
+  let ngayNop = ''
+  if (meta.lopId) {
+    try {
+      const list2 = await ngayBuoiHopLeCuaLop(meta.lopId, meta.ngay, congNgay(meta.ngay, 120))
+      const next = list2.map((x) => x.ngay).find((d) => d > meta.ngay!)
+      ngayNop = next ? congNgay(next, -1).split('-').reverse().join('/') : ''
+    } catch { /* thiếu TKB — bỏ trống hạn nộp, không chặn in */ }
+  }
+  return { ...ban, laBtvn: true, tieuBai: meta.tieuDe || undefined, lop: meta.tenLop ?? '', ngay: ngayPhat, ngayNop }
+}
+
 // ── Resolve bài ĐÃ LƯU của một buổi (master hoặc bản lớp) → BanIn cho 1 phiếu (lop/nha).
 // ⭐ 24/08 (Thùy: "lúc làm tài liệu không thấy lý thuyết hiện ở phiếu trên lớp") — bug gốc: hàm này TỰ
 // build mucs qua mucGhep/mucBienThe/mucY thẳng, KHÔNG đi qua banInTheoMoHinh (SoanTaiLieu.tsx) nên
@@ -55,24 +75,7 @@ export async function resolveBanIn(L: Luoi, tieuBuoi: string, bais: GtBai[], pha
     else if (b.loai === 'ghep') picks.push({ key: b.id, phan: b.phan, kind: 'ghep', luaId: b.lua_id, nodeIds: b.ghep_node_ids })
   }
   const ban = await banInTheoMoHinh(`${tieuBuoi} — ${phan === 'lop' ? 'Trên lớp' : 'Về nhà (BTVN)'}`, phan, picks, L, cheDo, soDong)
-  if (phan !== 'nha') return ban
-  // ⭐ 24/08 (Thùy: "header BTVN linh tinh, làm giống hệt form Đại đi") — BTVN dùng BtvnBkHead (HinhPrintView
-  // gate qua `laBtvn`): Lớp/Ngày phát/Hạn nộp CÓ CẤU TRÚC (khuôn PrintView.tsx: "ngày nộp = buổi TKB kế
-  // tiếp − 1 ngày"), tiêu đề = tiêu đề buổi TRẦN (`tieuBai`, khác `tieuDe` — tên file đầy đủ vẫn giữ nguyên
-  // cho toolbar/tải về). getHinhBuoiMeta cho SẴN tenLop/ngay/tieuDe của buổi trong 1 lượt gọi.
-  const buoiId = bais[0]?.buoi_id
-  const meta = buoiId ? await gt.getHinhBuoiMeta(buoiId).catch(() => null) : null
-  if (!meta?.ngay) return { ...ban, laBtvn: true }
-  const ngayPhat = meta.ngay.split('-').reverse().join('/')
-  let ngayNop = ''
-  if (meta.lopId) {
-    try {
-      const list2 = await ngayBuoiHopLeCuaLop(meta.lopId, meta.ngay, congNgay(meta.ngay, 120))
-      const next = list2.map((x) => x.ngay).find((d) => d > meta.ngay!)
-      ngayNop = next ? congNgay(next, -1).split('-').reverse().join('/') : ''
-    } catch { /* thiếu TKB — bỏ trống hạn nộp, không chặn in */ }
-  }
-  return { ...ban, laBtvn: true, tieuBai: meta.tieuDe || undefined, lop: meta.tenLop ?? '', ngay: ngayPhat, ngayNop }
+  return attachBtvnMeta(ban, bais[0]?.buoi_id, phan)
 }
 
 // ── Resolve bài ET ĐÃ LƯU của 1 buổi → 3 "mã đề" (BẢN TRỐNG, không theo HS cụ thể) — dùng cho worker
@@ -321,7 +324,11 @@ function BuoiCardHinh({ L, buoi, no, onDeleted, onPreview }: {
   async function xem(phan: 'lop' | 'nha') {
     const n = nhap ?? await gt.loadBuoiPicks(buoi.id)
     if (!nhap) setNhap(n)
-    onPreview(await banInTheoMoHinh(tieuDe || `Buổi ${no}`, phan, n.picks, L, n.cheDo, n.soDong))
+    // ⭐ 25/08 — gọi thẳng banInTheoMoHinh TRƯỚC đây bỏ sót header BTVN chuẩn (attachBtvnMeta) vì không
+    // đi qua resolveBanIn. Buổi Master (chưa gán lớp) → meta.ngay null → laBtvn:true, Lớp/Ngày phát để
+    // trống (đúng bản chất "mẫu", không giả lập ngày phát/hạn nộp), vẫn đủ pill "BTVN" + ô Họ tên/Lớp/Điểm.
+    const ban = await banInTheoMoHinh(tieuDe || `Buổi ${no}`, phan, n.picks, L, n.cheDo, n.soDong)
+    onPreview(await attachBtvnMeta(ban, buoi.id, phan))
   }
 
   return (
