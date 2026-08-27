@@ -480,16 +480,32 @@ export function BuoiPickEditor({ L, picks, cheDo, soDong, onChangePicks, onChang
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterKey])
 
+  // ⭐ 27/08 (Thùy: "vệ tinh phải ở ngay dưới mô hình chính") — TRƯỚC gộp vệ tinh của MỌI mô hình chính
+  // đang chọn vào 1 khối riêng dưới cùng danh sách → chọn 2 mô hình chính là vệ tinh của cả hai trộn lẫn,
+  // không biết vệ tinh nào thuộc mô hình nào. Giờ tính riêng theo TỪNG id, render lồng ngay dưới đúng
+  // dòng mô hình chính đó (xem JSX bên dưới) — 1 vệ tinh có thể xuất hiện lặp lại dưới nhiều cha nếu nó
+  // thật sự là con của nhiều mô hình chính, đúng quan hệ dữ liệu, không phải lỗi.
+  const vetinhCuaId = useMemo(() => {
+    const map = new Map<string, MoHinh[]>()
+    for (const id of mainIds) {
+      const seen = new Set<string>()
+      const out: MoHinh[] = []
+      for (const cid of api.conCua(L, id)) {
+        if (seen.has(cid)) continue
+        const m = L.moHinh.find((x) => x.id === cid)
+        if (m && api.conCua(L, m.id).length === 0) { seen.add(cid); out.push(m) }
+      }
+      map.set(id, out.sort((a, b) => a.ma.localeCompare(b.ma)))
+    }
+    return map
+  }, [L, mainIds])
+  // Bản GỘP (dedupe) — vẫn cần cho modelIds (lọc bài) + effect dọn satIds mồ côi dưới đây.
   const vetinh = useMemo(() => {
     const seen = new Set<string>()
     const out: MoHinh[] = []
-    for (const id of mainIds) for (const cid of api.conCua(L, id)) {
-      if (seen.has(cid)) continue
-      const m = L.moHinh.find((x) => x.id === cid)
-      if (m && api.conCua(L, m.id).length === 0) { seen.add(cid); out.push(m) }
-    }
-    return out.sort((a, b) => a.ma.localeCompare(b.ma))
-  }, [L, mainIds])
+    for (const arr of vetinhCuaId.values()) for (const v of arr) { if (!seen.has(v.id)) { seen.add(v.id); out.push(v) } }
+    return out
+  }, [vetinhCuaId])
   // Mô hình chính bị bỏ chọn → vệ tinh của nó không còn hiện checkbox nữa; dọn satIds theo, không để
   // filter "ma" âm thầm còn hiệu lực dù ô tick đã biến mất khỏi màn hình.
   useEffect(() => {
@@ -603,27 +619,35 @@ export function BuoiPickEditor({ L, picks, cheDo, soDong, onChangePicks, onChang
     <div className="grid items-start gap-3 xl:grid-cols-[190px_minmax(0,1fr)_360px]">
       <Panel label="Lọc mô hình (mục lục)">
         <div className="mb-1 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Mô hình chính · chọn được nhiều</div>
-        <div className="max-h-56 overflow-y-auto pr-0.5">
-          {L.moHinh.slice().sort((a, b) => (maCap.get(a.id) ?? '').localeCompare(maCap.get(b.id) ?? '')).map((m) => (
-            <label key={m.id} className="mb-1 flex cursor-pointer items-center gap-2 rounded-lg border border-dashed border-teal-200 bg-teal-50/40 px-2 py-1.5 text-[12px] text-slate-700 hover:bg-teal-50">
-              <input type="checkbox" checked={mainIds.has(m.id)} onChange={() => toggleMain(m.id)} />
-              <Ma>{maCap.get(m.id) ?? '?'}</Ma><span className="min-w-0 flex-1 truncate"><MathText>{tron(m.ten).slice(0, 42)}</MathText></span>
-            </label>
-          ))}
-        </div>
-        {mainIds.size > 0 && (
-          <div className="mt-3">
-            <div className="mb-1 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Mô hình vệ tinh · {vetinh.length}</div>
-            {vetinh.length === 0
-              ? <div className="text-[11.5px] text-slate-400">— (các) mô hình này không có vệ tinh (lá) —</div>
-              : vetinh.map((v) => (
-                <label key={v.id} className="mb-1 flex cursor-pointer items-center gap-2 rounded-lg border border-dashed border-indigo-200 bg-indigo-50/40 px-2 py-1.5 text-[12px] text-slate-700 hover:bg-indigo-50">
-                  <input type="checkbox" checked={satIds.has(v.id)} onChange={() => toggleSat(v.id)} />
-                  <Ma>{maCap.get(v.id) ?? '?'}</Ma><span className="min-w-0 flex-1 truncate"><MathText>{v.ten}</MathText></span>
+        {/* ⭐ 27/08 (Thùy: "vệ tinh phải ở ngay dưới mô hình chính") — mỗi dòng mô hình chính, nếu đang
+            được chọn, kéo theo NGAY DƯỚI nó (thụt lề) đúng các vệ tinh của riêng nó — thay vì 1 khối vệ
+            tinh gộp chung nằm cuối, không rõ vệ tinh nào của mô hình nào. */}
+        <div className="max-h-72 overflow-y-auto pr-0.5">
+          {L.moHinh.slice().sort((a, b) => (maCap.get(a.id) ?? '').localeCompare(maCap.get(b.id) ?? '')).map((m) => {
+            const daChon = mainIds.has(m.id)
+            const conM = vetinhCuaId.get(m.id) ?? []
+            return (
+              <div key={m.id} className="mb-1">
+                <label className="flex cursor-pointer items-center gap-2 rounded-lg border border-dashed border-teal-200 bg-teal-50/40 px-2 py-1.5 text-[12px] text-slate-700 hover:bg-teal-50">
+                  <input type="checkbox" checked={daChon} onChange={() => toggleMain(m.id)} />
+                  <Ma>{maCap.get(m.id) ?? '?'}</Ma><span className="min-w-0 flex-1 truncate"><MathText>{tron(m.ten).slice(0, 42)}</MathText></span>
                 </label>
-              ))}
-          </div>
-        )}
+                {daChon && (
+                  <div className="ml-4 mt-0.5 border-l-2 border-indigo-100 pl-2">
+                    {conM.length === 0
+                      ? <div className="py-0.5 text-[11px] text-slate-400">— không có vệ tinh (lá) —</div>
+                      : conM.map((v) => (
+                        <label key={v.id} className="mb-0.5 flex cursor-pointer items-center gap-2 rounded-lg border border-dashed border-indigo-200 bg-indigo-50/40 px-2 py-1 text-[11.5px] text-slate-700 hover:bg-indigo-50">
+                          <input type="checkbox" checked={satIds.has(v.id)} onChange={() => toggleSat(v.id)} />
+                          <Ma>{maCap.get(v.id) ?? '?'}</Ma><span className="min-w-0 flex-1 truncate"><MathText>{v.ten}</MathText></span>
+                        </label>
+                      ))}
+                  </div>
+                )}
+              </div>
+            )
+          })}
+        </div>
       </Panel>
 
       <div className="min-w-0">
