@@ -130,9 +130,12 @@ export async function listHeSoHocSinh(): Promise<HocSinhHeSo[]> {
   if (e1) throw e1
   const rows = (hocSinh ?? []) as any[]
   const ids = rows.map((r) => r.id as string)
-  const heSoMap = await heSoHieuLucBatch(ids, kyHienTai()) // hệ số HIỆU LỰC tháng NÀY (effective-dated) → "hệ số hiện tại" luôn đúng
-  const hsl = await selectByIdsBatched(ids, (batch) =>
-    supabase.from('hoc_sinh_lop').select('hoc_sinh_id, lop:lop_id(mon, ten_lop)').in('hoc_sinh_id', batch).eq('trang_thai', 'dang_hoc').limit(LIMIT))
+  // 2 batch độc lập (đều chỉ cần `ids`, không cần kết quả của nhau) — chạy song song thay vì tuần tự.
+  const [heSoMap, hsl] = await Promise.all([
+    heSoHieuLucBatch(ids, kyHienTai()), // hệ số HIỆU LỰC tháng NÀY (effective-dated) → "hệ số hiện tại" luôn đúng
+    selectByIdsBatched(ids, (batch) =>
+      supabase.from('hoc_sinh_lop').select('hoc_sinh_id, lop:lop_id(mon, ten_lop)').in('hoc_sinh_id', batch).eq('trang_thai', 'dang_hoc').limit(LIMIT)),
+  ])
   const monsByHS = new Map<string, Set<string>>()
   const lopsByHS = new Map<string, string[]>()
   for (const r of (hsl ?? []) as any[]) {
@@ -178,6 +181,53 @@ export async function listHeSoHocSinh(): Promise<HocSinhHeSo[]> {
     if (lechA !== lechB) return lechA - lechB
     return a.ho_ten.localeCompare(b.ho_ten, 'vi')
   })
+}
+// Refetch DERIVED info cho ĐÚNG 1 học sinh — dùng sau khi Xác nhận/Sửa tay/Bỏ tay 1 dòng ở bảng Hệ số,
+// tránh load lại CẢ TRƯỜNG (300+ HS) chỉ để cập nhật 1 dòng (nguyên nhân lag 3-4s cũ). Vẫn tính lại từ
+// DB thật (không đoán ở client) nên tôn trọng đúng luật effective-dated ("áp dụng từ kỳ" có thể chưa
+// đổi hệ số hiển thị của kỳ hiện tại).
+export async function getHeSoHocSinh(hocSinhId: string): Promise<HocSinhHeSo | null> {
+  const { data: hs, error: e1 } = await supabase.from('hoc_sinh')
+    .select('id, ho_ten, phu_huynh_id, he_so_nguon, phu_huynh:phu_huynh_id(ho_ten)')
+    .eq('id', hocSinhId).maybeSingle()
+  if (e1) throw e1
+  if (!hs) return null
+  const r = hs as any
+  const heSoMap = await heSoHieuLucBatch([r.id], kyHienTai())
+
+  let siblings: { id: string; ho_ten: string }[] = []
+  if (r.phu_huynh_id) {
+    const { data: sibs, error: e2 } = await supabase.from('hoc_sinh').select('id, ho_ten')
+      .eq('phu_huynh_id', r.phu_huynh_id).eq('trang_thai', 'dang_hoc').neq('id', r.id).limit(LIMIT)
+    if (e2) throw e2
+    siblings = (sibs ?? []) as any[]
+  }
+  const { data: hsl, error: e3 } = await supabase.from('hoc_sinh_lop').select('hoc_sinh_id, lop:lop_id(mon, ten_lop)')
+    .in('hoc_sinh_id', [r.id, ...siblings.map((s) => s.id)]).eq('trang_thai', 'dang_hoc').limit(LIMIT)
+  if (e3) throw e3
+  const monsByHS = new Map<string, Set<string>>()
+  const lops: string[] = []
+  for (const row of (hsl ?? []) as any[]) {
+    if (!row.lop?.mon) continue
+    const s = monsByHS.get(row.hoc_sinh_id) ?? new Set<string>()
+    s.add(row.lop.mon); monsByHS.set(row.hoc_sinh_id, s)
+    if (row.hoc_sinh_id === r.id && row.lop.ten_lop) lops.push(row.lop.ten_lop)
+  }
+  const mons = [...(monsByHS.get(r.id) ?? [])]
+  const tenById = new Map(siblings.map((s) => [s.id, s.ho_ten]))
+  let anhChiEm: { ten: string; monChung: string[] } | null = null
+  for (const sib of siblings) {
+    const monChung = mons.filter((m) => monsByHS.get(sib.id)?.has(m))
+    if (monChung.length) { anhChiEm = { ten: tenById.get(sib.id) ?? '?', monChung }; break }
+  }
+  const lyDo: string[] = []
+  if (mons.length >= 2) lyDo.push(`Học ${mons.length} môn: ${mons.join(', ')}`)
+  if (anhChiEm) lyDo.push(`Có anh chị em ${anhChiEm.ten} cùng học ${anhChiEm.monChung.join(', ')}`)
+  return {
+    id: r.id, ho_ten: r.ho_ten, phu_huynh_id: r.phu_huynh_id, phu_huynh_ten: r.phu_huynh?.ho_ten ?? null,
+    mons, lops, he_so_hoc_phi: heSoMap.get(r.id) ?? 1, he_so_nguon: r.he_so_nguon,
+    heSoGoiY: tinhHeSoHocSinh(mons.length, !!anhChiEm), lyDoGoiY: lyDo.join(' · '),
+  }
 }
 // Xác nhận hệ số GỢI Ý → ghi vào cột thật (nguồn='auto').
 export async function xacNhanHeSo(hocSinhId: string, heSo: number): Promise<void> {
@@ -372,10 +422,13 @@ export async function getPhieuAo(phuHuynhId: string, ky: string): Promise<PhieuA
     const heSoCon = heSoMap.get(con.id) ?? 1
     // ghi danh CÓ HIỆU LỰC trong kỳ (đã vào trước kyEnd, chưa rời hoặc rời trong/sau kỳ).
     const { data: hslAll, error: e1 } = await supabase.from('hoc_sinh_lop')
-      .select('lop_id, ngay_vao, ngay_roi, lop:lop_id(ten_lop, muc_hoc_phi_id, muc_hoc_lieu_id)')
+      .select('lop_id, ngay_vao, ngay_roi, lop:lop_id(ten_lop, mon, muc_hoc_phi_id, muc_hoc_lieu_id)')
       .eq('hoc_sinh_id', con.id).limit(LIMIT)
     if (e1) throw e1
     const lopIdsHieuLuc: string[] = []
+    // 1 HS - 1 môn chỉ 1 lần phí tài liệu/kỳ — chuyển lớp giữa kỳ để lại 2 dòng hoc_sinh_lop hiệu lực
+    // (lớp cũ + lớp mới) cùng môn, không được tính học liệu 2 lần.
+    const monDaTinhHocLieu = new Set<string>()
     for (const enroll of (hslAll ?? []) as any[]) {
       if (enroll.ngay_vao && enroll.ngay_vao >= kyEnd) continue
       if (enroll.ngay_roi && enroll.ngay_roi < kyStart) continue
@@ -400,9 +453,13 @@ export async function getPhieuAo(phuHuynhId: string, ky: string): Promise<PhieuA
       }
       // Học liệu CHỈ tính khi tháng đó thật sự có học phí (≥1 buổi) — chưa phát sinh học phí thì
       // KHÔNG mặc định thu học liệu (Thùy 07-05).
-      if (coHocPhi && enroll.lop?.muc_hoc_lieu_id) {
+      const monEnroll = enroll.lop?.mon as string | undefined
+      if (coHocPhi && enroll.lop?.muc_hoc_lieu_id && (!monEnroll || !monDaTinhHocLieu.has(monEnroll))) {
         const mucLieu = (await supabase.from('muc_hoc_lieu').select('*').eq('id', enroll.lop.muc_hoc_lieu_id).single()).data as MucHocLieu | null
-        if (mucLieu) dong.push({ loai: 'hoc_lieu', hoc_sinh_id: con.id, hoc_sinh_ten: con.ho_ten, lop_id: enroll.lop_id, lop_ten: enroll.lop?.ten_lop, mo_ta: mucLieu.ten, so_luong: 1, don_gia: mucLieu.gia, he_so: null, thanh_tien: mucLieu.gia })
+        if (mucLieu) {
+          dong.push({ loai: 'hoc_lieu', hoc_sinh_id: con.id, hoc_sinh_ten: con.ho_ten, lop_id: enroll.lop_id, lop_ten: enroll.lop?.ten_lop, mo_ta: mucLieu.ten, so_luong: 1, don_gia: mucLieu.gia, he_so: null, thanh_tien: mucLieu.gia })
+          if (monEnroll) monDaTinhHocLieu.add(monEnroll)
+        }
       }
     }
     // Chi phí phát sinh (cá nhân + theo lớp đang học) — 1 chỗ nhập ở tab "Phát sinh" (Thùy 07-05).
