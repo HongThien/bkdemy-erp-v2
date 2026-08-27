@@ -227,6 +227,28 @@ export async function loadBuoiPicksPhan(buoiId: string, phan: 'lop' | 'nha' | 'e
   return { picks: full.picks.filter((p) => p.phan === phan), cheDo: full.cheDo, soDong: full.soDong }
 }
 
+// ══════════════ ⭐ BỘ LỌC "MÔ HÌNH" của buổi giáo trình — LƯU LẠI (Thùy 25/08) ══════════════
+// "Giáo trình hình vẫn ko lưu lại tiến trình đã chọn" — trước đây mainIds/satIds (SoanTaiLieu.tsx,
+// BuoiPickEditor) chỉ sống trong Zustand RAM (buoiMoHinhLoc) — mất khi F5/phiên mới/máy khác. Dùng
+// CHUNG cột `hinh_gt_buoi.cau_hinh` (đã có sẵn, khuôn HinhCauHinh ở trên) — thêm 1 khoá riêng
+// `moHinhLoc` KHÔNG theo phan (bộ lọc áp cho CẢ buổi, không tách lop/nha) nên không đụng namespace
+// HinhCauHinh (khoá đó luôn là 1 trong 'lop'/'nha'/'et'/'mt', không bao giờ trùng 'moHinhLoc').
+export type HinhMoHinhLoc = { mainIds: string[]; satIds: string[] }
+export async function getHinhMoHinhLoc(buoiId: string): Promise<HinhMoHinhLoc | null> {
+  const { data, error } = await supabase.from('hinh_gt_buoi').select('cau_hinh').eq('id', buoiId).single()
+  if (error) throw error
+  const all = ((data as any)?.cau_hinh ?? {}) as Record<string, unknown>
+  return (all.moHinhLoc as HinhMoHinhLoc | undefined) ?? null
+}
+export async function setHinhMoHinhLoc(buoiId: string, loc: HinhMoHinhLoc): Promise<void> {
+  const { data, error } = await supabase.from('hinh_gt_buoi').select('cau_hinh').eq('id', buoiId).single()
+  if (error) throw error
+  const all = ((data as any)?.cau_hinh ?? {}) as Record<string, unknown>
+  const next = { ...all, moHinhLoc: loc }
+  const { error: e2 } = await supabase.from('hinh_gt_buoi').update({ cau_hinh: next, updated_at: new Date().toISOString() }).eq('id', buoiId)
+  if (e2) throw e2
+}
+
 // ══════════════ ⭐ MÃ ĐỀ ET Hình (Thùy 21/08, "làm đầy đủ giống Đại") ══════════════
 // Khuôn `tai_lieu.cau_hinh` của Đại (JSON lỏng trên tài liệu) — nhưng hinh_gt_bai KHÔNG có khái niệm
 // "tài liệu" riêng (buổi = tài liệu), nên đặt trên `hinh_gt_buoi.cau_hinh`, khoá NGOÀI theo `phan`

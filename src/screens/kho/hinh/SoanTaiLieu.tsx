@@ -444,18 +444,41 @@ export function BuoiPickEditor({ L, picks, cheDo, soDong, onChangePicks, onChang
   const mainIds = filterKey ? mainIdsSaved : mainIdsLocal
   const satIds = filterKey ? satIdsSaved : satIdsLocal
   const samSet = (a: Set<string>, b: Set<string>) => a.size === b.size && [...a].every((x) => b.has(x))
+  // ⭐ 25/08 (Thùy: "giáo trình hình vẫn ko lưu lại tiến trình đã chọn") — RAM (buoiMoHinhLoc) mất khi
+  // F5/phiên mới. Ghi THÊM xuống DB (hinh_gt_buoi.cau_hinh.moHinhLoc) mỗi lần đổi — fire-and-forget,
+  // không chặn UI. Lúc mở buổi, effect dưới đọc lại DB rồi seed vào RAM store (1 nguồn hiển thị duy nhất,
+  // DB chỉ là nơi LƯU lâu dài, không phải state sống thứ 2).
   const setMainIds = (u: Set<string> | ((prev: Set<string>) => Set<string>)) => {
     if (!filterKey) return setMainIdsLocal(u)
     const next = typeof u === 'function' ? u(mainIdsSaved) : u
     if (samSet(next, mainIdsSaved)) return   // no-op — KHÔNG gọi set() để tránh vòng lặp trên
     setSavedFilter(filterKey, (cur) => ({ ...cur, mainIds: [...next] }))
+    gt.setHinhMoHinhLoc(filterKey, { mainIds: [...next], satIds: [...satIdsSaved] }).catch(() => {})
   }
   const setSatIds = (u: Set<string> | ((prev: Set<string>) => Set<string>)) => {
     if (!filterKey) return setSatIdsLocal(u)
     const next = typeof u === 'function' ? u(satIdsSaved) : u
     if (samSet(next, satIdsSaved)) return
     setSavedFilter(filterKey, (cur) => ({ ...cur, satIds: [...next] }))
+    gt.setHinhMoHinhLoc(filterKey, { mainIds: [...mainIdsSaved], satIds: [...next] }).catch(() => {})
   }
+  // ⭐ 25/08 — nạp bộ lọc đã lưu (nếu có) NGAY LÚC MỞ buổi, seed vào RAM store để mọi chỗ đọc mainIds/
+  // satIds phía trên tự khớp. Buổi HOÀN TOÀN MỚI (chưa từng lưu bộ lọc, chưa có bài nào) → bật popup bắt
+  // chọn mô hình trước khi vào builder (Thùy: "1.Tạo buổi mới 2.Chọn mô hình... 4...lưu luôn"). Buổi ĐÃ
+  // có bài từ trước lúc chưa có tính năng này thì KHÔNG ép chọn lại (backward-compat, khỏi phiền composer cũ).
+  const [chonMoHinhPopup, setChonMoHinhPopup] = useState(false)
+  useEffect(() => {
+    if (!filterKey) return
+    let alive = true
+    const picksLucMo = picks.length
+    gt.getHinhMoHinhLoc(filterKey).then((loc) => {
+      if (!alive) return
+      if (loc) setSavedFilter(filterKey, () => ({ mainIds: loc.mainIds, satIds: loc.satIds }))
+      else if (picksLucMo === 0) setChonMoHinhPopup(true)
+    }).catch(() => {})
+    return () => { alive = false }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filterKey])
 
   const vetinh = useMemo(() => {
     const seen = new Set<string>()
@@ -545,10 +568,38 @@ export function BuoiPickEditor({ L, picks, cheDo, soDong, onChangePicks, onChang
   }, [components, picks]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    // ⭐ 17/08 (Thùy: "bỏ cái màn ở bên góc phải đi, t chả thấy có ý nghĩa gì") — panel "Tóm tắt" cũ đã bỏ.
-    // ⭐ 08-20 (Thùy: "bên phải preview luôn"): cột phải MỚI không phải "Tóm tắt" cũ — là panel XEM TRƯỚC
-    // sống (đề + hình), thay hẳn popup 👁. Lọc mô hình = MỤC LỤC, BÉ, chỉ để tìm nhanh; cột giữa (danh
-    // sách chuỗi/bài) vẫn rộng nhất — panel xem trước ăn vào phần không gian trống bên phải trước đây bỏ.
+    <>
+    {/* ⭐ 25/08 (Thùy: "1.Tạo buổi mới 2.Chọn mô hình... 4...lưu luôn") — buổi MỚI, chưa từng lưu bộ lọc
+        → bắt chọn mô hình TRƯỚC khi vào builder đầy đủ, khớp đúng luồng Thùy tả. Chọn xong (đóng popup)
+        picks vẫn rỗng — builder hiện ra đã lọc sẵn, khỏi phải tự lọc lại. "Bỏ qua" = lưu bộ lọc RỖNG có
+        chủ đích (setHinhMoHinhLoc({mainIds:[],satIds:[]})) để KHÔNG hỏi lại buổi này lần sau — phân biệt
+        với "chưa từng hỏi" (null): cả hai đều "không lọc gì" nhưng chỉ cái sau mới còn bật popup lại. */}
+    {chonMoHinhPopup && (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-4">
+        <div className="max-h-[85vh] w-full max-w-md overflow-y-auto rounded-2xl border border-slate-200 bg-white p-5 shadow-2xl">
+          <h2 className="mb-1 text-[15px] font-semibold text-slate-900">Chọn mô hình cho buổi này</h2>
+          <p className="mb-3 text-[12.5px] leading-relaxed text-slate-500">Thu hẹp danh sách bài theo (các) mô hình chính — lưu lại luôn, lần sau mở buổi khỏi phải lọc lại.</p>
+          <div className="max-h-96 overflow-y-auto pr-0.5">
+            {L.moHinh.slice().sort((a, b) => (maCap.get(a.id) ?? '').localeCompare(maCap.get(b.id) ?? '')).map((m) => (
+              <label key={m.id} className="mb-1 flex cursor-pointer items-center gap-2 rounded-lg border border-dashed border-teal-200 bg-teal-50/40 px-2 py-1.5 text-[12px] text-slate-700 hover:bg-teal-50">
+                <input type="checkbox" checked={mainIds.has(m.id)} onChange={() => toggleMain(m.id)} />
+                <Ma>{maCap.get(m.id) ?? '?'}</Ma><span className="min-w-0 flex-1 truncate"><MathText>{tron(m.ten).slice(0, 42)}</MathText></span>
+              </label>
+            ))}
+          </div>
+          <div className="mt-4 flex items-center justify-between gap-2">
+            <button onClick={async () => { if (filterKey) await gt.setHinhMoHinhLoc(filterKey, { mainIds: [], satIds: [] }).catch(() => {}); setChonMoHinhPopup(false) }}
+              className="rounded-lg border border-slate-300 px-3 py-2 text-[12.5px] text-slate-500 hover:bg-slate-50">Bỏ qua, xem tất cả</button>
+            <button onClick={() => setChonMoHinhPopup(false)} disabled={mainIds.size === 0}
+              className="rounded-lg bg-indigo-600 px-4 py-2 text-[13px] font-medium text-white disabled:opacity-40">Bắt đầu soạn{mainIds.size ? ` (${mainIds.size} mô hình)` : ''}</button>
+          </div>
+        </div>
+      </div>
+    )}
+    {/* ⭐ 17/08 (Thùy: "bỏ cái màn ở bên góc phải đi, t chả thấy có ý nghĩa gì") — panel "Tóm tắt" cũ đã bỏ.
+        ⭐ 08-20 (Thùy: "bên phải preview luôn"): cột phải MỚI không phải "Tóm tắt" cũ — là panel XEM TRƯỚC
+        sống (đề + hình), thay hẳn popup 👁. Lọc mô hình = MỤC LỤC, BÉ, chỉ để tìm nhanh; cột giữa (danh
+        sách chuỗi/bài) vẫn rộng nhất — panel xem trước ăn vào phần không gian trống bên phải trước đây bỏ. */}
     <div className="grid items-start gap-3 xl:grid-cols-[190px_minmax(0,1fr)_360px]">
       <Panel label="Lọc mô hình (mục lục)">
         <div className="mb-1 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Mô hình chính · chọn được nhiều</div>
@@ -595,6 +646,7 @@ export function BuoiPickEditor({ L, picks, cheDo, soDong, onChangePicks, onChang
           onClose={() => setXem(null)} />
       </div>
     </div>
+    </>
   )
 }
 
