@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-155 bảng · 2 view · 0 enum · 15 trigger · 75 function
+157 bảng · 2 view · 0 enum · 15 trigger · 78 function
 
 ## _app_secrets
 
@@ -514,6 +514,39 @@
 | duyet_boi | uuid | Y |  | FK→nhan_su.id |  |
 | duyet_at | timestamp with time zone | Y |  |  |  |
 
+## dai_cau_hoi_clone_cho_duyet
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| yeu_cau_id | uuid | Y |  | FK→dai_cau_hoi_yeu_cau_clone.id |  |
+| dang_chinh | text |  |  |  |  |
+| loai_cau | text |  |  |  |  |
+| noi_dung | text |  |  |  |  |
+| lua_chon | jsonb | Y |  |  |  |
+| dap_an | text | Y |  |  |  |
+| loi_giai | text | Y |  |  |  |
+| parent_ma_cau | text | Y |  | FK→dai_cau_hoi.ma_cau |  |
+| clone_method | text |  | 'claude_code_batch'::text |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| duyet_boi | uuid | Y |  | FK→nhan_su.id |  |
+| duyet_at | timestamp with time zone | Y |  |  |  |
+| tu_choi_boi | uuid | Y |  | FK→nhan_su.id |  |
+| tu_choi_at | timestamp with time zone | Y |  |  |  |
+| tu_choi_ly_do | text | Y |  |  |  |
+
+## dai_cau_hoi_yeu_cau_clone
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| ma_cau_goc | text |  |  | FK→dai_cau_hoi.ma_cau |  |
+| so_bien_the | integer |  | 5 |  |  |
+| ghi_chu | text | Y |  |  |  |
+| nguoi_yeu_cau | uuid | Y |  | FK→nhan_su.id |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| xu_ly_at | timestamp with time zone | Y |  |  |  |
+
 ## dai_chuyen_de_ly_thuyet
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -867,6 +900,10 @@
 | updated_at | timestamp with time zone |  | now() |  |  |
 | lua_id | uuid | Y |  |  |  |
 | tien_de_ids | uuid[] |  | '{}'::uuid[] |  |  |
+| nguon_giai | text |  | 'nguoi'::text |  |  |
+| da_duyet | boolean |  | false |  |  |
+| duyet_boi | uuid | Y |  | FK→nhan_su.id |  |
+| duyet_at | timestamp with time zone | Y |  |  |  |
 
 ## hinh_ban_do
 
@@ -1484,6 +1521,7 @@
 | ma | text |  |  | PK |  |
 | ten | text |  |  |  |  |
 | thu_tu | smallint |  |  |  |  |
+| si_so_toi_da | smallint | Y |  |  |  |
 
 ## luong_bac
 
@@ -1546,6 +1584,7 @@
 | ma_ns | text | Y | ('NS'::text \|\| lpad((nextval('ns_seq'::regclass))::text, 3, '0'::text)) |  |  |
 | anh_url | text | Y |  |  |  |
 | la_admin_he_thong | boolean |  | false |  |  |
+| giao_dien | text |  | 'sang'::text |  | `sang` · `toi` |
 
 ## nhan_su_mon
 
@@ -2248,6 +2287,7 @@ SELECT q.id AS qua_id,
 - `hinh_bao_dong_tien_de(goc uuid)` → TABLE(id uuid, do_sau integer)
 - `hinh_mo_hinh_hau_due(goc uuid)` → TABLE(id uuid, do_sau integer)
 - `hinh_mo_hinh_to_tien(nut uuid)` → TABLE(id uuid, do_sau integer)
+- `hoc_phi_theo_mon_ky(p_ky date)` → jsonb
 - `hs_cap1_cua_toi()` → boolean
 - `hs_cham_tln_ai(p_bai_lam_cau_id uuid)` → jsonb
 - `hs_dang_evals(p_mon text, p_nhanh text DEFAULT NULL::text)` → jsonb
@@ -2281,7 +2321,9 @@ SELECT q.id AS qua_id,
 - `postgres_fdw_handler()` → fdw_handler
 - `postgres_fdw_validator(text[], oid)` → void
 - `qlht_dieu_chinh_xu(p_hoc_sinh_id uuid, p_amount integer, p_ly_do text)` → TABLE(so_du_moi integer)
+- `qlht_doi_giao_dien(p_giao_dien text)` → void
 - `qlht_doi_qua_moi(p_hoc_sinh_id uuid, p_qua_id uuid, p_so_luong integer DEFAULT 1)` → TABLE(doi_qua_id uuid, so_du_moi integer)
+- `qlht_nhan_su_doi_avatar(p_anh_url text)` → void
 - `qlht_nhap_huy(p_nhap_id uuid, p_ly_do text DEFAULT NULL::text)` → void
 - `qlht_nhap_xac_nhan(p_nhap_id uuid, p_so_luong_thuc integer DEFAULT NULL::integer)` → TABLE(ton_moi integer)
 - `qlht_order_duyet(p_order_id uuid, p_gia_xu integer)` → TABLE(so_du_moi integer)
