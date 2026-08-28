@@ -86,9 +86,14 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, tienDe
   }, [tienDe, L])
   const giaThietNen = chaKeThuaChinh ? api.giaThietBaiToan(L, chaKeThuaChinh.id) : giaThietMoHinh
   const giaThietFull = gtThayThe ? (gtRieng.trim() || giaThietNen) : [giaThietNen, gtRieng.trim()].filter(Boolean).join('; ')
-  const anhMoHinh = api.anhCauHinhCua(L, moHinhId)
-  // Hình ĐỀ BÀI đang hiệu lực (node có hình riêng thì lấy nó, không thì mượn mô hình) — làm mặc định cho bước giải.
-  const anhDeHienTai = dungHinhRieng && anhRieng ? anhRieng : anhMoHinh
+  // ⭐ FIX (Thùy 28/08: "Hình của bài node sau phải được kế thừa mặc định từ node trước") — CÙNG LUẬT với
+  // giả thiết ngay trên (chaKeThuaChinh): TRƯỚC đây nhảy thẳng lên hình MÔ HÌNH (anhCauHinhCua), bỏ qua
+  // hình RIÊNG của chính node tiền đề (anh_chuan) — node cha có vẽ hình riêng khác hình mô hình thì node
+  // con vẫn xem preview ra hình mô hình, sai với cái sẽ in ra thật (mọi nơi hiển thị khác đều dùng
+  // anhCuaBaiToan() chạy qua chaKeThua trước, xem hinh.ts:198). Không có tiền đề nào ⇒ vẫn về hình mô hình.
+  const anhNen = chaKeThuaChinh ? api.anhCuaBaiToan(L, chaKeThuaChinh.id) : api.anhCauHinhCua(L, moHinhId)
+  // Hình ĐỀ BÀI đang hiệu lực (node có hình riêng thì lấy nó, không thì kế thừa) — làm mặc định cho bước giải.
+  const anhDeHienTai = dungHinhRieng && anhRieng ? anhRieng : anhNen
 
   // Cấp gợi ý = 1 + max(cap tiền đề); không tiền đề ⇒ 1.
   const capGoi = useMemo(() => (tienDe.length ? 1 + Math.max(...tienDe.map((id) => L.baiToan.find((b) => b.id === id)?.cap ?? 0)) : 1), [tienDe, L])
@@ -234,8 +239,8 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, tienDe
                 </>
               ) : (
                 <>
-                  <Fig src={anhMoHinh} cap={anhMoHinh ? 'Hình cấu hình — mượn của mô hình' : undefined} h="h-52" />
-                  <p className="mt-1 text-[11px] text-slate-400">Mặc định dùng chung hình mô hình (sửa ở form <b>mô hình</b>). Tích ô trên để vẽ hình riêng cho bài toán này.</p>
+                  <Fig src={anhNen} cap={anhNen ? `Hình ${chaKeThuaChinh ? `kế thừa từ tiền đề ${chaKeThuaChinh.ma}` : 'cấu hình — mượn của mô hình'}` : undefined} h="h-52" />
+                  <p className="mt-1 text-[11px] text-slate-400">Mặc định {chaKeThuaChinh ? <>kế thừa hình của tiền đề <b>{chaKeThuaChinh.ma}</b> (nó không có hình riêng thì leo tiếp lên mô hình)</> : <>dùng chung hình mô hình (sửa ở form <b>mô hình</b>)</>}. Tích ô trên để vẽ hình riêng cho bài toán này.</p>
                 </>
               )}
             </div>
