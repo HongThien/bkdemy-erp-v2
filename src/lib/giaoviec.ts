@@ -6,7 +6,6 @@
 // Hằng số/công thức: giaoviec-config.ts (§4.8). UI KHÔNG gọi supabase trực tiếp.
 // ============================================================================
 import { supabase } from './supabase'
-import { getMyScope } from './nhansu'
 import {
   GV, tinhTienDo, tinhChatLuong, gopPhanTram,
   todayVN, kyTuanHienTai, thangCuaKyTuan, soNgayLech,
@@ -135,19 +134,21 @@ export function ideaQuaHanTriage(created_at: string): boolean {
 }
 
 // ════════════════════════════════════════════════════════════════════════════
-// 3) AI GIAO ĐƯỢC CHO AI — reuse span-of-control (getMyScope), §5
+// 3) AI GIAO ĐƯỢC CHO AI — toàn bộ nhân sự đang làm, org-wide (§5, chốt 08-13)
 // ════════════════════════════════════════════════════════════════════════════
 export type NguoiDuocGiao = { nhan_su_id: string; ho_ten: string; ma_ns?: string }
+// Ai giao được cho ai (§0 spec: data ORG-WIDE, phi-học-tập — KHÔNG chia theo môn/team).
+// Trước đây lọc qua span-of-control (getMyScope, dựng cho task-scope VẬN HÀNH theo lớp/môn)
+// → GV môn không đứng dưới ai trong cây đó (vd Phạm Ngọc — KHTN) bị lọt khỏi danh sách dù việc
+// phát triển không hề phân theo môn. CEO chốt 08-13: bỏ lọc, cho chọn TOÀN BỘ nhân sự đang làm.
 export async function listNguoiDuocGiao(): Promise<NguoiDuocGiao[]> {
-  const scope = await getMyScope()
-  if (!scope) return []
-  const seen = new Map<string, NguoiDuocGiao>()
-  // Tự nhận việc = tự-giao cho mình (§5).
-  seen.set(scope.nhanSu.id, { nhan_su_id: scope.nhanSu.id, ho_ten: scope.nhanSu.ho_ten + ' (tôi)', ma_ns: (scope.nhanSu as any).ma_ns })
-  for (const r of [...scope.giamSatTrucTiep, ...scope.giamSatSau]) {
-    if (!seen.has(r.nhan_su_id)) seen.set(r.nhan_su_id, { nhan_su_id: r.nhan_su_id, ho_ten: r.ho_ten, ma_ns: r.ma_ns })
-  }
-  return [...seen.values()]
+  const me = await myNhanSuId()
+  const { data, error } = await supabase.from('nhan_su').select('id, ho_ten, ma_ns').eq('trang_thai', 'dang_lam').order('ho_ten').limit(LIMIT)
+  if (error) throw error
+  return ((data ?? []) as any[]).map((n) => ({
+    nhan_su_id: n.id, ma_ns: n.ma_ns,
+    ho_ten: n.id === me ? `${n.ho_ten} (tôi)` : n.ho_ten,
+  }))
 }
 
 // ════════════════════════════════════════════════════════════════════════════
@@ -249,12 +250,35 @@ export async function listTaskCon(taskMeId: string): Promise<ViecFull[]> {
   return decorateViec((data ?? []) as Viec[])
 }
 
-// WEEKLY PLANNING (story §4): mọi task của tuần (mẹ + con + lẻ). UI gom cụm theo task_me_id.
+// WEEKLY PLANNING (story §4, sửa 08-18 "task mẹ kéo dài nhiều tuần"): mọi task của tuần
+// (mẹ + con + lẻ) CỘNG mọi task MỞ từ các tuần TRƯỚC còn dang dở — trước đây task neo cứng
+// vào ky_tuan lúc tạo nên hễ kéo dài sang tuần sau là "biến mất" khỏi Weekly Planning (phải
+// bấm lùi đúng tuần cũ mới thấy lại), dù người làm vẫn thấy nó bình thường ở "Việc của tôi"
+// (không lọc ky_tuan). KHÔNG đổi ky_tuan gốc (đó là tuần LẬP KẾ HOẠCH, dùng tính hiệu suất
+// tháng) — chỉ mở rộng tập kết quả ở tầng VIEW, đúng PURE-DERIVE (CLAUDE §1), không ghi đè state.
 export async function listWeeklyPlanning(kyTuan: string): Promise<ViecFull[]> {
-  const { data, error } = await supabase.from('viec').select('*').eq('ky_tuan', kyTuan)
-    .not('trang_thai', 'in', '("huy","chuyen")').order('created_at', { ascending: true }).limit(LIMIT)
-  if (error) throw error
-  return decorateViec((data ?? []) as Viec[])
+  const [tuanNay, meCuKeoDai] = await Promise.all([
+    supabase.from('viec').select('*').eq('ky_tuan', kyTuan)
+      .not('trang_thai', 'in', '("huy","chuyen")').limit(LIMIT),
+    // Root (không phải con) của tuần TRƯỚC mà vẫn còn MỞ thật sự. Mẹ chỉ 'dat' khi TOÀN BỘ
+    // con đã 'dat' (trigger giaoviec_auto_dong_task_me), nên loại 'dat' ở đây là an toàn —
+    // không có ca "mẹ dat mà còn con dở" lọt lưới.
+    supabase.from('viec').select('*').lt('ky_tuan', kyTuan).is('task_me_id', null)
+      .not('trang_thai', 'in', '("dat","huy","chuyen")').limit(LIMIT),
+  ])
+  if (tuanNay.error) throw tuanNay.error
+  if (meCuKeoDai.error) throw meCuKeoDai.error
+  const meIds = (meCuKeoDai.data ?? []).map((r: any) => r.id)
+  // Mọi con của các mẹ-cũ-kéo-dài đó — bất kể trạng thái/ky_tuan riêng (con kế thừa ky_tuan mẹ
+  // lúc tách, nhưng lấy thẳng theo task_me_id cho chắc, không dựa vào ky_tuan của con).
+  const conCuKeoDai = meIds.length
+    ? await supabase.from('viec').select('*').in('task_me_id', meIds).not('trang_thai', 'in', '("huy","chuyen")').limit(LIMIT)
+    : { data: [] as any[], error: null }
+  if (conCuKeoDai.error) throw conCuKeoDai.error
+  const gop = new Map<string, Viec>()
+  for (const v of [...(tuanNay.data ?? []), ...(meCuKeoDai.data ?? []), ...(conCuKeoDai.data ?? [])] as Viec[]) gop.set(v.id, v)
+  const rows = [...gop.values()].sort((a, b) => a.created_at.localeCompare(b.created_at))
+  return decorateViec(rows)
 }
 
 // NS bắt đầu làm (rời 'moi_giao').
@@ -407,6 +431,18 @@ export async function listCapNhat(viecId: string): Promise<CapNhatViec[]> {
   const rows = (data ?? []) as CapNhatViec[]
   const nsMap = await nhanSuTenMap(rows.map((r) => r.nguoi_id))
   return rows.map((r) => ({ ...r, nguoi_ten: nsMap.get(r.nguoi_id) ?? '?' }))
+}
+// CẬP NHẬT MỚI NHẤT của nhiều task 1 lượt (story 08-18 "cập nhật lên bảng chung") — dùng ở
+// CongKhaiTab để CEO/leader review nhanh mà không phải click từng task. Batch 1 query, giữ
+// dòng ĐẦU TIÊN mỗi viec_id (đã order created_at desc) — không cần N+1 hay RPC riêng.
+export async function listCapNhatMoiNhat(viecIds: string[]): Promise<Map<string, CapNhatViec>> {
+  if (!viecIds.length) return new Map()
+  const { data, error } = await supabase.from('viec_cap_nhat').select('*').in('viec_id', viecIds)
+    .order('created_at', { ascending: false }).limit(LIMIT)
+  if (error) throw error
+  const map = new Map<string, CapNhatViec>()
+  for (const r of (data ?? []) as CapNhatViec[]) if (!map.has(r.viec_id)) map.set(r.viec_id, r)
+  return map
 }
 // CHỈ người đang làm (nguoi_lam_id) được tự báo cáo tiến độ việc của mình.
 export async function themCapNhat(viecId: string, p: { noiDung: string; tienDoBaoCao?: number | null }): Promise<void> {

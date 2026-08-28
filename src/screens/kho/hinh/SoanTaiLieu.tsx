@@ -414,6 +414,13 @@ export function BuoiPickEditor({ L, picks, cheDo, soDong, onChangePicks, onChang
   filterKey?: string
 }) {
   const maCap = useMemo(() => api.maPhanCapMap(L), [L])
+  // ⭐ 23/08 (Thùy: "phần Hình cũng cần có lý thuyết như bên Đại lúc làm giáo trình") — lý thuyết mô hình
+  // đã TỰ ĐỘNG in kèm ở phiếu Trên lớp từ 08-10 (banInTheoMoHinh), nhưng lúc SOẠN không thấy/không biết
+  // mô hình nào có/thiếu — phải đợi bấm In mới rõ. Nạp 1 LẦN, gắn badge "có/chưa có lý thuyết" cạnh mỗi
+  // bài (chỉ phan='lop' — khớp đúng điều kiện banInTheoMoHinh áp dụng lý thuyết). Chỉ HIỂN THỊ trạng
+  // thái, chưa cho tắt/bật hay sửa tại đây (Thùy chọn đúng phạm vi này, không mở rộng thêm).
+  const [lyThuyetMap, setLyThuyetMap] = useState<Record<string, { noi_dung: string }>>({})
+  useEffect(() => { if (phans.includes('lop')) api.hinhMoHinhLyThuyet.list().then(setLyThuyetMap).catch(() => {}) }, [phans.includes('lop')]) // eslint-disable-line
   // Lọc mô hình chỉ để TÌM node dễ hơn (KHÔNG phải nội dung buổi — picks đã lưu DB riêng) — KHÔNG đụng
   // picks đã có: 1 buổi có thể trộn node từ NHIỀU mô hình khác nhau, đổi bộ lọc không được xoá nội dung
   // đã chọn.
@@ -437,29 +444,68 @@ export function BuoiPickEditor({ L, picks, cheDo, soDong, onChangePicks, onChang
   const mainIds = filterKey ? mainIdsSaved : mainIdsLocal
   const satIds = filterKey ? satIdsSaved : satIdsLocal
   const samSet = (a: Set<string>, b: Set<string>) => a.size === b.size && [...a].every((x) => b.has(x))
+  // ⭐ 25/08 (Thùy: "giáo trình hình vẫn ko lưu lại tiến trình đã chọn") — RAM (buoiMoHinhLoc) mất khi
+  // F5/phiên mới. Ghi THÊM xuống DB (hinh_gt_buoi.cau_hinh.moHinhLoc) mỗi lần đổi — fire-and-forget,
+  // không chặn UI. Lúc mở buổi, effect dưới đọc lại DB rồi seed vào RAM store (1 nguồn hiển thị duy nhất,
+  // DB chỉ là nơi LƯU lâu dài, không phải state sống thứ 2).
   const setMainIds = (u: Set<string> | ((prev: Set<string>) => Set<string>)) => {
     if (!filterKey) return setMainIdsLocal(u)
     const next = typeof u === 'function' ? u(mainIdsSaved) : u
     if (samSet(next, mainIdsSaved)) return   // no-op — KHÔNG gọi set() để tránh vòng lặp trên
     setSavedFilter(filterKey, (cur) => ({ ...cur, mainIds: [...next] }))
+    gt.setHinhMoHinhLoc(filterKey, { mainIds: [...next], satIds: [...satIdsSaved] }).catch(() => {})
   }
   const setSatIds = (u: Set<string> | ((prev: Set<string>) => Set<string>)) => {
     if (!filterKey) return setSatIdsLocal(u)
     const next = typeof u === 'function' ? u(satIdsSaved) : u
     if (samSet(next, satIdsSaved)) return
     setSavedFilter(filterKey, (cur) => ({ ...cur, satIds: [...next] }))
+    gt.setHinhMoHinhLoc(filterKey, { mainIds: [...mainIdsSaved], satIds: [...next] }).catch(() => {})
   }
+  // ⭐ 25/08 — nạp bộ lọc đã lưu (nếu có) NGAY LÚC MỞ buổi, seed vào RAM store để mọi chỗ đọc mainIds/
+  // satIds phía trên tự khớp. Buổi HOÀN TOÀN MỚI (chưa từng lưu bộ lọc, chưa có bài nào) → bật popup bắt
+  // chọn mô hình trước khi vào builder (Thùy: "1.Tạo buổi mới 2.Chọn mô hình... 4...lưu luôn"). Buổi ĐÃ
+  // có bài từ trước lúc chưa có tính năng này thì KHÔNG ép chọn lại (backward-compat, khỏi phiền composer cũ).
+  const [chonMoHinhPopup, setChonMoHinhPopup] = useState(false)
+  useEffect(() => {
+    if (!filterKey) return
+    let alive = true
+    const picksLucMo = picks.length
+    gt.getHinhMoHinhLoc(filterKey).then((loc) => {
+      if (!alive) return
+      if (loc) setSavedFilter(filterKey, () => ({ mainIds: loc.mainIds, satIds: loc.satIds }))
+      else if (picksLucMo === 0) setChonMoHinhPopup(true)
+    }).catch(() => {})
+    return () => { alive = false }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filterKey])
 
+  // ⭐ 27/08 (Thùy: "vệ tinh phải ở ngay dưới mô hình chính") — TRƯỚC gộp vệ tinh của MỌI mô hình chính
+  // đang chọn vào 1 khối riêng dưới cùng danh sách → chọn 2 mô hình chính là vệ tinh của cả hai trộn lẫn,
+  // không biết vệ tinh nào thuộc mô hình nào. Giờ tính riêng theo TỪNG id, render lồng ngay dưới đúng
+  // dòng mô hình chính đó (xem JSX bên dưới) — 1 vệ tinh có thể xuất hiện lặp lại dưới nhiều cha nếu nó
+  // thật sự là con của nhiều mô hình chính, đúng quan hệ dữ liệu, không phải lỗi.
+  const vetinhCuaId = useMemo(() => {
+    const map = new Map<string, MoHinh[]>()
+    for (const id of mainIds) {
+      const seen = new Set<string>()
+      const out: MoHinh[] = []
+      for (const cid of api.conCua(L, id)) {
+        if (seen.has(cid)) continue
+        const m = L.moHinh.find((x) => x.id === cid)
+        if (m && api.conCua(L, m.id).length === 0) { seen.add(cid); out.push(m) }
+      }
+      map.set(id, out.sort((a, b) => a.ma.localeCompare(b.ma)))
+    }
+    return map
+  }, [L, mainIds])
+  // Bản GỘP (dedupe) — vẫn cần cho modelIds (lọc bài) + effect dọn satIds mồ côi dưới đây.
   const vetinh = useMemo(() => {
     const seen = new Set<string>()
     const out: MoHinh[] = []
-    for (const id of mainIds) for (const cid of api.conCua(L, id)) {
-      if (seen.has(cid)) continue
-      const m = L.moHinh.find((x) => x.id === cid)
-      if (m && api.conCua(L, m.id).length === 0) { seen.add(cid); out.push(m) }
-    }
-    return out.sort((a, b) => a.ma.localeCompare(b.ma))
-  }, [L, mainIds])
+    for (const arr of vetinhCuaId.values()) for (const v of arr) { if (!seen.has(v.id)) { seen.add(v.id); out.push(v) } }
+    return out
+  }, [vetinhCuaId])
   // Mô hình chính bị bỏ chọn → vệ tinh của nó không còn hiện checkbox nữa; dọn satIds theo, không để
   // filter "ma" âm thầm còn hiệu lực dù ô tick đã biến mất khỏi màn hình.
   useEffect(() => {
@@ -538,34 +584,70 @@ export function BuoiPickEditor({ L, picks, cheDo, soDong, onChangePicks, onChang
   }, [components, picks]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    // ⭐ 17/08 (Thùy: "bỏ cái màn ở bên góc phải đi, t chả thấy có ý nghĩa gì") — panel "Tóm tắt" cũ đã bỏ.
-    // ⭐ 08-20 (Thùy: "bên phải preview luôn"): cột phải MỚI không phải "Tóm tắt" cũ — là panel XEM TRƯỚC
-    // sống (đề + hình), thay hẳn popup 👁. Lọc mô hình = MỤC LỤC, BÉ, chỉ để tìm nhanh; cột giữa (danh
-    // sách chuỗi/bài) vẫn rộng nhất — panel xem trước ăn vào phần không gian trống bên phải trước đây bỏ.
+    <>
+    {/* ⭐ 25/08 (Thùy: "1.Tạo buổi mới 2.Chọn mô hình... 4...lưu luôn") — buổi MỚI, chưa từng lưu bộ lọc
+        → bắt chọn mô hình TRƯỚC khi vào builder đầy đủ, khớp đúng luồng Thùy tả. Chọn xong (đóng popup)
+        picks vẫn rỗng — builder hiện ra đã lọc sẵn, khỏi phải tự lọc lại. "Bỏ qua" = lưu bộ lọc RỖNG có
+        chủ đích (setHinhMoHinhLoc({mainIds:[],satIds:[]})) để KHÔNG hỏi lại buổi này lần sau — phân biệt
+        với "chưa từng hỏi" (null): cả hai đều "không lọc gì" nhưng chỉ cái sau mới còn bật popup lại. */}
+    {chonMoHinhPopup && (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-4">
+        <div className="max-h-[85vh] w-full max-w-md overflow-y-auto rounded-2xl border border-slate-200 bg-white p-5 shadow-2xl">
+          <h2 className="mb-1 text-[15px] font-semibold text-slate-900">Chọn mô hình cho buổi này</h2>
+          <p className="mb-3 text-[12.5px] leading-relaxed text-slate-500">Thu hẹp danh sách bài theo (các) mô hình chính — lưu lại luôn, lần sau mở buổi khỏi phải lọc lại.</p>
+          <div className="max-h-96 overflow-y-auto pr-0.5">
+            {L.moHinh.slice().sort((a, b) => (maCap.get(a.id) ?? '').localeCompare(maCap.get(b.id) ?? '')).map((m) => (
+              <label key={m.id} className="mb-1 flex cursor-pointer items-center gap-2 rounded-lg border border-dashed border-teal-200 bg-teal-50/40 px-2 py-1.5 text-[12px] text-slate-700 hover:bg-teal-50">
+                <input type="checkbox" checked={mainIds.has(m.id)} onChange={() => toggleMain(m.id)} />
+                <Ma>{maCap.get(m.id) ?? '?'}</Ma><span className="min-w-0 flex-1 truncate"><MathText>{tron(m.ten).slice(0, 42)}</MathText></span>
+              </label>
+            ))}
+          </div>
+          <div className="mt-4 flex items-center justify-between gap-2">
+            <button onClick={async () => { if (filterKey) await gt.setHinhMoHinhLoc(filterKey, { mainIds: [], satIds: [] }).catch(() => {}); setChonMoHinhPopup(false) }}
+              className="rounded-lg border border-slate-300 px-3 py-2 text-[12.5px] text-slate-500 hover:bg-slate-50">Bỏ qua, xem tất cả</button>
+            <button onClick={() => setChonMoHinhPopup(false)} disabled={mainIds.size === 0}
+              className="rounded-lg bg-indigo-600 px-4 py-2 text-[13px] font-medium text-white disabled:opacity-40">Bắt đầu soạn{mainIds.size ? ` (${mainIds.size} mô hình)` : ''}</button>
+          </div>
+        </div>
+      </div>
+    )}
+    {/* ⭐ 17/08 (Thùy: "bỏ cái màn ở bên góc phải đi, t chả thấy có ý nghĩa gì") — panel "Tóm tắt" cũ đã bỏ.
+        ⭐ 08-20 (Thùy: "bên phải preview luôn"): cột phải MỚI không phải "Tóm tắt" cũ — là panel XEM TRƯỚC
+        sống (đề + hình), thay hẳn popup 👁. Lọc mô hình = MỤC LỤC, BÉ, chỉ để tìm nhanh; cột giữa (danh
+        sách chuỗi/bài) vẫn rộng nhất — panel xem trước ăn vào phần không gian trống bên phải trước đây bỏ. */}
     <div className="grid items-start gap-3 xl:grid-cols-[190px_minmax(0,1fr)_360px]">
       <Panel label="Lọc mô hình (mục lục)">
         <div className="mb-1 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Mô hình chính · chọn được nhiều</div>
-        <div className="max-h-56 overflow-y-auto pr-0.5">
-          {L.moHinh.slice().sort((a, b) => (maCap.get(a.id) ?? '').localeCompare(maCap.get(b.id) ?? '')).map((m) => (
-            <label key={m.id} className="mb-1 flex cursor-pointer items-center gap-2 rounded-lg border border-dashed border-teal-200 bg-teal-50/40 px-2 py-1.5 text-[12px] text-slate-700 hover:bg-teal-50">
-              <input type="checkbox" checked={mainIds.has(m.id)} onChange={() => toggleMain(m.id)} />
-              <Ma>{maCap.get(m.id) ?? '?'}</Ma><span className="min-w-0 flex-1 truncate"><MathText>{tron(m.ten).slice(0, 42)}</MathText></span>
-            </label>
-          ))}
-        </div>
-        {mainIds.size > 0 && (
-          <div className="mt-3">
-            <div className="mb-1 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Mô hình vệ tinh · {vetinh.length}</div>
-            {vetinh.length === 0
-              ? <div className="text-[11.5px] text-slate-400">— (các) mô hình này không có vệ tinh (lá) —</div>
-              : vetinh.map((v) => (
-                <label key={v.id} className="mb-1 flex cursor-pointer items-center gap-2 rounded-lg border border-dashed border-indigo-200 bg-indigo-50/40 px-2 py-1.5 text-[12px] text-slate-700 hover:bg-indigo-50">
-                  <input type="checkbox" checked={satIds.has(v.id)} onChange={() => toggleSat(v.id)} />
-                  <Ma>{maCap.get(v.id) ?? '?'}</Ma><span className="min-w-0 flex-1 truncate"><MathText>{v.ten}</MathText></span>
+        {/* ⭐ 27/08 (Thùy: "vệ tinh phải ở ngay dưới mô hình chính") — mỗi dòng mô hình chính, nếu đang
+            được chọn, kéo theo NGAY DƯỚI nó (thụt lề) đúng các vệ tinh của riêng nó — thay vì 1 khối vệ
+            tinh gộp chung nằm cuối, không rõ vệ tinh nào của mô hình nào. */}
+        <div className="max-h-72 overflow-y-auto pr-0.5">
+          {L.moHinh.slice().sort((a, b) => (maCap.get(a.id) ?? '').localeCompare(maCap.get(b.id) ?? '')).map((m) => {
+            const daChon = mainIds.has(m.id)
+            const conM = vetinhCuaId.get(m.id) ?? []
+            return (
+              <div key={m.id} className="mb-1">
+                <label className="flex cursor-pointer items-center gap-2 rounded-lg border border-dashed border-teal-200 bg-teal-50/40 px-2 py-1.5 text-[12px] text-slate-700 hover:bg-teal-50">
+                  <input type="checkbox" checked={daChon} onChange={() => toggleMain(m.id)} />
+                  <Ma>{maCap.get(m.id) ?? '?'}</Ma><span className="min-w-0 flex-1 truncate"><MathText>{tron(m.ten).slice(0, 42)}</MathText></span>
                 </label>
-              ))}
-          </div>
-        )}
+                {daChon && (
+                  <div className="ml-4 mt-0.5 border-l-2 border-indigo-100 pl-2">
+                    {conM.length === 0
+                      ? <div className="py-0.5 text-[11px] text-slate-400">— không có vệ tinh (lá) —</div>
+                      : conM.map((v) => (
+                        <label key={v.id} className="mb-0.5 flex cursor-pointer items-center gap-2 rounded-lg border border-dashed border-indigo-200 bg-indigo-50/40 px-2 py-1 text-[11.5px] text-slate-700 hover:bg-indigo-50">
+                          <input type="checkbox" checked={satIds.has(v.id)} onChange={() => toggleSat(v.id)} />
+                          <Ma>{maCap.get(v.id) ?? '?'}</Ma><span className="min-w-0 flex-1 truncate"><MathText>{v.ten}</MathText></span>
+                        </label>
+                      ))}
+                  </div>
+                )}
+              </div>
+            )
+          })}
+        </div>
       </Panel>
 
       <div className="min-w-0">
@@ -576,7 +658,7 @@ export function BuoiPickEditor({ L, picks, cheDo, soDong, onChangePicks, onChang
         {!nodes.length
           ? <Empty icon="◇">Kho khối này chưa có node nào. Tạo node ở <b>Sơ đồ</b> trước.</Empty>
           : components.map((comp) => (
-              <ChuoiRow key={comp.map((b) => b.id).join(',')} L={L} chuoi={comp} picks={picks} cheDo={cheDo} soDong={soDong} phans={phans}
+              <ChuoiRow key={comp.map((b) => b.id).join(',')} L={L} chuoi={comp} picks={picks} cheDo={cheDo} soDong={soDong} phans={phans} lyThuyetMap={lyThuyetMap}
                 onAdd={addPick} onUpdate={updatePick} onRemove={removePick} onSwap={swapPicks} onXoayCheDo={xoayCheDo} onSetSoDongChuoi={setSoDongChuoi}
                 onGoiY={(phan, n) => goiY(comp, phan, n)} onXem={(list, index) => setXem({ list, index })} />
             ))}
@@ -588,6 +670,7 @@ export function BuoiPickEditor({ L, picks, cheDo, soDong, onChangePicks, onChang
           onClose={() => setXem(null)} />
       </div>
     </div>
+    </>
   )
 }
 
@@ -617,9 +700,24 @@ export async function banInTheoMoHinh(tieuDe: string, phan: 'lop' | 'nha' | 'et'
       const map = await api.hinhMoHinhLyThuyet.list()
       moHinhLyThuyet = {}
       for (const id of moHinhIds) {
-        const noiDung = map[id]?.noi_dung?.trim()
-        if (!noiDung) continue
-        const ten = L.moHinh.find((m) => m.id === id)?.ten ?? ''
+        // ⭐ 24/08 (Thùy: "lúc làm tài liệu không thấy lý thuyết hiện" — soạn lý thuyết ở mô hình CHA
+        // dùng chung cho cả họ, vd "Hình thang", nhưng bài toán CHỌN lại thuộc mô hình CON, vd "Hình
+        // thang cân" — tra ĐÚNG id con không ra gì. Khuôn Đại (lý thuyết chuyên đề dùng chung mọi dạng
+        // con): leo lên CHA ĐẦU TIÊN (api.chaCua[0] — cùng quy ước "bố" khi kế thừa giả thiết) tới khi
+        // gặp mô hình có lý thuyết hoặc hết tổ tiên. Con có lý thuyết RIÊNG thì ưu tiên con (vòng lặp
+        // dừng ngay ở id gốc, không leo lên khi đã có).
+        let cur: string | null = id
+        const seen = new Set<string>()
+        let noiDung: string | undefined
+        let tuId: string | null = null
+        while (cur && !seen.has(cur)) {
+          seen.add(cur)
+          const nd = map[cur]?.noi_dung?.trim()
+          if (nd) { noiDung = nd; tuId = cur; break }
+          cur = api.chaCua(L, cur)[0] ?? null
+        }
+        if (!noiDung || !tuId) continue
+        const ten = L.moHinh.find((m) => m.id === tuId)?.ten ?? ''
         moHinhLyThuyet[id] = { ten, noiDung }
       }
     }
@@ -798,15 +896,22 @@ export async function goiYMaDeChoBai(chuoi: BaiToan[], gocBan: Ban, n: number): 
 // đã bỏ 17/08). Số dòng chỉnh 1 LẦN CHO CẢ CHUỖI (áp hết mọi bài Về nhà đang có của chuỗi này), KHÔNG theo
 // từng ý riêng — khuôn `ApplyLinesAll` Đại (gõ số → Enter/blur ghi đè hết, vẫn thêm bài mới sau đó bình
 // thường với số dòng vừa áp làm giá trị chung).
-function ChuoiRow({ L, chuoi, picks, cheDo, soDong, phans, onAdd, onUpdate, onRemove, onSwap, onXoayCheDo, onSetSoDongChuoi, onGoiY, onXem }: {
+function ChuoiRow({ L, chuoi, picks, cheDo, soDong, phans, lyThuyetMap, onAdd, onUpdate, onRemove, onSwap, onXoayCheDo, onSetSoDongChuoi, onGoiY, onXem }: {
   L: Luoi; chuoi: BaiToan[]; picks: PickItem[]; cheDo: Record<string, CheDoHinh>; soDong: Record<string, number>
   phans: ('lop' | 'nha' | 'et' | 'mt')[]
+  lyThuyetMap?: Record<string, { noi_dung: string }>
   onAdd: (p: PickItem) => void; onUpdate: (key: string, p: PickItem) => void; onRemove: (key: string) => void
   onSwap: (keyA: string, keyB: string) => void
   onXoayCheDo: (key: string) => void; onSetSoDongChuoi: (keys: string[], n: number) => void
   onGoiY: (phan: 'lop' | 'nha' | 'et' | 'mt', n: number) => void
   onXem: (list: PickItem[], index: number) => void
 }) {
+  // ⭐ 23/08 — mô hình XA NHẤT của pick (khớp cách banInTheoMoHinh/mucGhep chọn mô hình để gắn lý thuyết)
+  // → tra lyThuyetMap. Chỉ badge cho phan='lop' (đúng đk banInTheoMoHinh áp lý thuyết).
+  const moHinhCuaPick = (p: PickItem): string | null => {
+    const nodes = p.nodeIds.map((id) => L.baiToan.find((b) => b.id === id)).filter((b): b is BaiToan => !!b)
+    return (xaNhatTrongChuoi(nodes) ?? nodes[0])?.mo_hinh_id ?? null
+  }
   const chuoiIds = useMemo(() => new Set(chuoi.map((b) => b.id)), [chuoi])
   const [open, setOpen] = useState<{ phan: 'lop' | 'nha' | 'et' | 'mt'; editKey?: string } | null>(null)
   const [nInput, setNInput] = useState<Record<string, number>>({ lop: 2, nha: 2, et: 2, mt: 2 })
@@ -863,6 +968,18 @@ function ChuoiRow({ L, chuoi, picks, cheDo, soDong, phans, onAdd, onUpdate, onRe
                         <span className="shrink-0 rounded bg-slate-100 px-1.5 text-[10px] font-medium text-slate-600">{nhanBan(p)}</span>
                         <span className="min-w-0 flex-1 truncate text-slate-700">{p.nodeIds.map((id) => L.baiToan.find((b) => b.id === id)?.ma).filter(Boolean).join(' · ')}</span>
                         {dupKeys.has(p.key) && <span className="shrink-0 rounded bg-rose-100 px-1.5 text-[10px] font-semibold text-rose-600" title="Trùng bản + trùng bài với 1 dòng khác trong buổi — lúc in/xem chỉ giữ dòng XUẤT HIỆN TRƯỚC, dòng này sẽ KHÔNG in ra. Bấm ✕ bỏ hoặc ✎ đổi sang bài khác.">⚠ trùng</span>}
+                        {/* ⭐ 23/08 — chỉ 'lop' được banInTheoMoHinh gắn lý thuyết lúc in; badge PHẢN ÁNH ĐÚNG
+                            đk đó, không hiện lạc ở 'nha'/'et'/'mt' (nơi lý thuyết không bao giờ in ra). */}
+                        {phan === 'lop' && lyThuyetMap && (() => {
+                          const mid = moHinhCuaPick(p)
+                          const co = !!mid && !!lyThuyetMap[mid]?.noi_dung?.trim()
+                          return (
+                            <span className={`shrink-0 rounded px-1.5 text-[10px] font-medium ${co ? 'bg-sky-50 text-sky-600' : 'bg-slate-50 text-slate-400'}`}
+                              title={co ? 'Mô hình này có lý thuyết — tự in kèm ở phiếu Trên lớp' : 'Mô hình này CHƯA có lý thuyết — phiếu Trên lớp sẽ không có khung lý thuyết'}>
+                              {co ? '📖 có lý thuyết' : '📖 chưa có lý thuyết'}
+                            </span>
+                          )
+                        })()}
                         {(phan === 'nha' || phan === 'et') && <span className="shrink-0 text-[10px] text-slate-400">{soDong[p.key] ?? DONG_BTVN} dòng</span>}
                         <button onClick={() => onXoayCheDo(p.key)} title={cd.goi}
                           className={`shrink-0 rounded px-1 text-[11px] ${cd.ma === 'hien' ? 'text-slate-400 hover:text-slate-700' : cd.ma === 'o_trong' ? 'text-amber-600' : 'text-rose-500'}`}>{cd.icon}</button>

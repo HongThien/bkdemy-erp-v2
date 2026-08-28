@@ -73,9 +73,11 @@ export type CauHoi = {
   clone_method: string | null
   ma_cum: string | null         // CỤM BÀI = lớp tương đương (thay được cho nhau ở mã đề). null = CHƯA phân cụm.
   xoa_at?: string | null        // kho rác — NULL = còn sống
-  da_duyet?: boolean            // nhãn hậu kiểm chất lượng (26/08, migration bando) — KHÔNG chặn dùng, chỉ badge
-  duyet_boi?: string | null
-  duyet_at?: string | null
+  // ⭐ 20/08 (Thùy: "kho có rất nhiều câu, câu xịn câu không, cần nhãn chất lượng — đã/chưa kiểm duyệt.
+  // Clone xong phải có người check"). Mặc định false — câu MỚI (clone/nhập) luôn vào hàng chờ duyệt.
+  da_duyet: boolean
+  duyet_boi: string | null      // nhan_su.id — ai duyệt (ghi vết, không chỉ 1 cờ boolean trơ)
+  duyet_at: string | null
   created_at?: string
 }
 
@@ -129,6 +131,37 @@ export async function deleteCau(ma_cau: string, tbl = 'dai_cau_hoi'): Promise<vo
     .update({ xoa_at: new Date().toISOString() })
     .eq('ma_cau', ma_cau).is(CHUA_XOA, null)
   if (error) throw error
+}
+// ⭐ Kiểm duyệt nội dung (Thùy 20/08) — GHI VẾT ai + lúc nào (khuôn duyet_boi/duyet_at đã dùng ở
+// bai_test_report/hoc_phi_xet_duyet…), không chỉ 1 cờ boolean trơ. Bỏ duyệt = về lại "chưa duyệt", KHÔNG
+// giữ lịch sử ai đã từng duyệt (đơn giản hoá — cần audit sâu hơn thì có kho_cau_log/trigger sau).
+export async function duyetCau(ma_cau: string, tbl = 'dai_cau_hoi'): Promise<void> {
+  const { data: u } = await supabase.auth.getUser()
+  const { error } = await supabase.from(tbl)
+    .update({ da_duyet: true, duyet_boi: u.user?.id ?? null, duyet_at: new Date().toISOString() })
+    .eq('ma_cau', ma_cau)
+  if (error) throw error
+}
+export async function boDuyetCau(ma_cau: string, tbl = 'dai_cau_hoi'): Promise<void> {
+  const { error } = await supabase.from(tbl)
+    .update({ da_duyet: false, duyet_boi: null, duyet_at: null })
+    .eq('ma_cau', ma_cau)
+  if (error) throw error
+}
+
+// Tìm 1 câu THEO ma_cau xuyên suốt CẢ 3 bảng kho — dùng cho Duyệt chấm "Sửa trong Kho": chỗ gọi chỉ
+// có `ma_cau` (text, KHÔNG FK — CLAUDE.md §2 "tham chiếu bằng TEXT"), không biết trước câu thuộc
+// nhánh nào. Đã kiểm DB thật: `dai_cau_hoi` không có chữ cái đầu, `khtn_cau_hoi` bắt đầu 'K',
+// `hgt_cau_hoi` bắt đầu 'T' — nhưng đó KHÔNG phải quy ước chính thức (không có ràng buộc nào ép),
+// nên dò TỪNG bảng thay vì đoán theo tiền tố. Trả `null` nếu không thấy ở bảng nào (câu đã bị xoá
+// cứng ngoài luồng kho rác, hoặc `ma_cau` không còn đúng — báo rõ ở nơi gọi, không giả định).
+export async function findCauInKho(ma_cau: string): Promise<{ cau: CauHoi; cauTbl: string } | null> {
+  for (const cauTbl of Object.keys(CUM_TBL)) {
+    const { data, error } = await supabase.from(cauTbl).select('*').eq('ma_cau', ma_cau).maybeSingle()
+    if (error) throw error
+    if (data) return { cau: data as CauHoi, cauTbl }
+  }
+  return null
 }
 
 // ══ CỤM BÀI + TIỀN ĐỀ (spec-cum-bai.md) ═══════════════════════════════════════

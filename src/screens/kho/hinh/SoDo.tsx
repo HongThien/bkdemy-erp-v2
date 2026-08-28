@@ -46,6 +46,14 @@ export default function SoDo({ L, khoi, hoId, di, reload, moTaNode, nodeId }: {
 
   useEffect(() => { if (nodeId) { setChonBt(nodeId); setView('bt') } }, [nodeId])
 
+  // ⭐ 24/08 (Thùy báo "vẫn không thấy có lý thuyết"): icon 📖 trước chỉ gắn ở View mô hình — nhưng màn
+  // luôn MỞ MẶC ĐỊNH ở View bài toán (`view` khởi tạo 'bt', dòng trên), nên không toggle tay thì không
+  // bao giờ thấy. Nâng state lên NGAY ĐÂY (cha chung của cả 2 view) để gắn icon ở CẢ HAI, không chỉ 1.
+  const [moLtMap, setMoLtMap] = useState<Record<string, { noi_dung: string; file_url: string | null; ten_file: string | null }>>({})
+  const [moLtModal, setMoLtModal] = useState<{ id: string; ten: string } | null>(null)
+  const napMoLt = () => api.hinhMoHinhLyThuyet.list().then(setMoLtMap).catch(() => { /* */ })
+  useEffect(() => { napMoLt() }, [])
+
   if (!ho) return <Empty>Chưa có họ mô hình nào — tạo ở màn <b>Chọn họ mô hình</b> trước. Lưới trước, gán sau.</Empty>
 
   return (
@@ -72,21 +80,29 @@ export default function SoDo({ L, khoi, hoId, di, reload, moTaNode, nodeId }: {
 
       {view === 'bt'
         ? <ViewBaiToan L={L} ho={ho} nodes={nodes} chon={chonBt} setChon={setChonBt} onSua={(b) => setFormBt({ sua: b })}
-            onTaoKeTiep={(b) => setFormBt({ moHinhId: b.mo_hinh_id, tienDeId: b.id })} reload={reload} />
-        : <ViewMoHinh L={L} ho={ho} trongHo={trongHo} chon={chonMh ?? ho.id} setChon={setChonMh} onSua={(m) => setFormMh({ sua: m })} onThemCon={(id) => setFormMh({ cha: id })} reload={reload} />}
+            onTaoKeTiep={(b) => setFormBt({ moHinhId: b.mo_hinh_id, tienDeId: b.id })} reload={reload}
+            moLtMap={moLtMap} onOpenLt={(id, ten) => setMoLtModal({ id, ten })} />
+        : <ViewMoHinh L={L} ho={ho} trongHo={trongHo} chon={chonMh ?? ho.id} setChon={setChonMh} onSua={(m) => setFormMh({ sua: m })} onThemCon={(id) => setFormMh({ cha: id })} reload={reload}
+            moLtMap={moLtMap} onOpenLt={(id, ten) => setMoLtModal({ id, ten })} />}
 
       {formBt && <FormBaiToan L={L} moHinhMacDinh={formBt.moHinhId ?? chonMh ?? ho.id} sua={formBt.sua} phatBieuGoi={formBt.goi}
         tienDeMacDinh={formBt.tienDeId} onClose={() => setFormBt(null)} onDone={reload} />}
       {formMh && <FormMoHinh L={L} khoiMacDinh={khoi} chaMacDinh={formMh.cha} sua={formMh.sua} onClose={() => setFormMh(null)} onDone={reload} />}
+      {moLtModal && (
+        <LyThuyetModal ma={moLtModal.id} ten={moLtModal.ten} current={moLtMap[moLtModal.id] as any} api={api.hinhMoHinhLyThuyet as any}
+          onClose={() => setMoLtModal(null)} onSaved={() => { setMoLtModal(null); napMoLt() }} />
+      )}
     </>
   )
 }
 
 // ══════════════════ VIEW BÀI TOÁN — cột = CẤP (toggle: Toàn họ / Theo mô hình) ══════════════════
-function ViewBaiToan({ L, ho, nodes: nodesHo, chon, setChon, onSua, onTaoKeTiep, reload }: {
+function ViewBaiToan({ L, ho, nodes: nodesHo, chon, setChon, onSua, onTaoKeTiep, reload, moLtMap, onOpenLt }: {
   L: Luoi; ho: MoHinh; nodes: BaiToan[]; chon: string | null; setChon: (id: string | null) => void; onSua: (b: BaiToan) => void
   onTaoKeTiep: (b: BaiToan) => void
   reload: () => Promise<void>
+  moLtMap: Record<string, { noi_dung: string; file_url: string | null }>
+  onOpenLt: (id: string, ten: string) => void
 }) {
   const maCap = useMemo(() => api.maPhanCapMap(L), [L])
   const trongHo = useMemo(() => api.moHinhCuaHo(L, ho.id), [L, ho])
@@ -268,18 +284,28 @@ function ViewBaiToan({ L, ho, nodes: nodesHo, chon, setChon, onSua, onTaoKeTiep,
                     const p = pos.get(n.id)!
                     const khac = api.doSauTrongHo(L, n.mo_hinh_id) > sauMoc   // node cần THÊM giả thiết
                     const mh = L.moHinh.find((m) => m.id === n.mo_hinh_id)
+                    // ⭐ 24/08 — icon 📖 lý thuyết CỦA MÔ HÌNH node này thuộc về (không phải của node) — đây
+                    // là view MẶC ĐỊNH khi mở Sơ đồ nên gắn ở đây, không chỉ ở View mô hình (Thùy: "vẫn
+                    // không thấy có lý thuyết" — trước đó phải tự bấm toggle "◇ View mô hình" mới thấy).
+                    const coLtM = !!mh && !!(moLtMap[mh.id]?.noi_dung?.trim() || moLtMap[mh.id]?.file_url)
                     return (
-                      <button key={n.id} onClick={() => setChon(n.id)}
+                      <div key={n.id} onClick={() => setChon(n.id)} role="button" tabIndex={0}
                         style={{ left: p.x, top: p.y, width: COL_W, height: NODE_H }}
                         title="Bấm để xem đầy đủ đề · hình · đáp án"
-                        className={`absolute flex flex-col overflow-hidden rounded-lg border bg-white text-left leading-tight transition ${
+                        className={`absolute flex cursor-pointer flex-col overflow-hidden rounded-lg border bg-white text-left leading-tight transition ${
                           khac ? 'border-teal-300 bg-teal-50/40' : 'border-blue-300'
                         } ${chon === n.id ? 'shadow-md ring-2 ring-blue-400/40' : 'hover:shadow-sm'}`}>
                         {/* Hình to full-width trên đầu (như card mô hình). Node có hình riêng thì lấy nó, không thì mượn mô hình. */}
-                        <div className="h-24 shrink-0 border-b border-slate-100 bg-slate-50/50">
+                        <div className="relative h-24 shrink-0 border-b border-slate-100 bg-slate-50/50">
                           {api.anhCuaBaiToan(L, n.id)
                             ? <img src={api.anhCuaBaiToan(L, n.id)!} alt="" className="h-full w-full bg-white object-contain" />
                             : <div className="flex h-full items-center justify-center text-[10.5px] text-slate-300">chưa có hình</div>}
+                          {mh && (
+                            <button onClick={(e) => { e.stopPropagation(); onOpenLt(mh.id, mh.ten) }}
+                              title={coLtM ? 'Lý thuyết mô hình này — đã có, bấm để sửa' : 'Lý thuyết mô hình này — chưa có, bấm để soạn'}
+                              className={`absolute right-1 top-1 flex h-6 w-6 items-center justify-center rounded-md border bg-white/90 text-[12px] shadow-sm ${
+                                coLtM ? 'border-violet-300 text-violet-600' : 'border-slate-300 text-slate-400'}`}>📖</button>
+                          )}
                         </div>
                         {/* Câu hỏi = nội dung chính · giả thiết (mượn mô hình) = context phụ · cấp/mã. */}
                         <div className="flex min-h-0 flex-1 flex-col gap-1 px-2 py-1.5">
@@ -292,7 +318,7 @@ function ViewBaiToan({ L, ho, nodes: nodesHo, chon, setChon, onSua, onTaoKeTiep,
                             {teDeAnDi.has(n.id) && <span className="ml-auto shrink-0 text-[12px] font-bold text-amber-600" title="Còn tiền đề ở mô hình khác — không vẽ được dây, mở bài toán để xem đủ">↗</span>}
                           </div>
                         </div>
-                      </button>
+                      </div>
                     )
                   })}
                 </div>
@@ -895,9 +921,11 @@ function NhapCloneLuaPopup({ L, chuoi, onClose, onDone }: {
 }
 
 // ══════════════════ VIEW MÔ HÌNH — cột = TẦNG ══════════════════
-function ViewMoHinh({ L, ho, trongHo, chon, setChon, onSua, onThemCon, reload }: {
+function ViewMoHinh({ L, ho, trongHo, chon, setChon, onSua, onThemCon, reload, moLtMap, onOpenLt }: {
   L: Luoi; ho: MoHinh; trongHo: Set<string>; chon: string; setChon: (id: string) => void
   onSua: (m: MoHinh) => void; onThemCon: (id: string) => void; reload: () => Promise<void>
+  moLtMap: Record<string, { noi_dung: string; file_url: string | null }>
+  onOpenLt: (id: string, ten: string) => void
 }) {
   // Tầng = chỉ node CÓ nhánh con (hub) + gốc họ. Node LÁ = vệ tinh, KHÔNG chiếm cột — treo dưới bố.
   // (Thùy 08-07) Mọi tổ tiên của hub đều là hub ⇒ tầng hub = độ sâu (như cũ); chỉ lá là đổi.
@@ -944,12 +972,8 @@ function ViewMoHinh({ L, ho, trongHo, chon, setChon, onSua, onThemCon, reload }:
   const theoCap = new Map<number, BaiToan[]>()
   for (const b of lt.rieng) { const a = theoCap.get(b.cap) ?? []; a.push(b); theoCap.set(b.cap, a) }
 
-  // Lý thuyết NỘI DUNG của mô hình (khác `lt` ở trên — đó là tập bài toán). Tái dùng NGUYÊN
-  // LyThuyetModal (gõ tay hoặc ảnh/PDF → AI bóc LaTeX), khuôn hệt bổ đề (Catalog.tsx MBoDe).
-  const [moLtMap, setMoLtMap] = useState<Record<string, { noi_dung: string; file_url: string | null; ten_file: string | null }>>({})
-  const [moLtModal, setMoLtModal] = useState<{ id: string; ten: string } | null>(null)
-  const napMoLt = () => api.hinhMoHinhLyThuyet.list().then(setMoLtMap).catch(() => { /* */ })
-  useEffect(() => { napMoLt() }, [])
+  // Lý thuyết NỘI DUNG của mô hình (khác `lt` ở trên — đó là tập bài toán). moLtMap/onOpenLt nhận từ
+  // cha SoDo (dùng chung với ViewBaiToan — icon 📖 giờ có ở CẢ HAI view, không chỉ view này).
   const coMoLt = !!(moLtMap[mh.id]?.noi_dung?.trim() || moLtMap[mh.id]?.file_url)
 
   return (
@@ -998,14 +1022,22 @@ function ViewMoHinh({ L, ho, trongHo, chon, setChon, onSua, onThemCon, reload }:
                 const p = pos.get(m.id)!
                 const n = L.baiToan.filter((b) => b.mo_hinh_id === m.id)
                 const caps = n.map((b) => b.cap)
+                // ⭐ 24/08 (Thùy: "chỗ nhập lý thuyết làm như bên Đại số" — Đại: lưới lá thấy trạng thái +
+                // bấm vào là sửa NGAY, không phải chọn node trước rồi mới thấy ở sidebar). Icon 📖 NGAY
+                // TRÊN card — bấm là mở LyThuyetModal luôn (stopPropagation, không chọn node/không đổi sidebar).
+                const coLtM = !!(moLtMap[m.id]?.noi_dung?.trim() || moLtMap[m.id]?.file_url)
                 return (
-                  <button key={m.id} onClick={() => setChon(m.id)} style={{ left: p.x, top: p.y, width: MH_W, height: MH_H }}
-                    className={`absolute flex flex-col overflow-hidden rounded-xl border-[1.5px] border-teal-300 bg-white text-left transition ${
+                  <div key={m.id} onClick={() => setChon(m.id)} role="button" tabIndex={0} style={{ left: p.x, top: p.y, width: MH_W, height: MH_H }}
+                    className={`absolute flex cursor-pointer flex-col overflow-hidden rounded-xl border-[1.5px] border-teal-300 bg-white text-left transition ${
                       chon === m.id ? 'ring-[3px] ring-teal-300/50' : 'hover:shadow-sm'}`}>
-                    <div className="h-24 shrink-0 border-b border-slate-100 bg-slate-50/50">
+                    <div className="relative h-24 shrink-0 border-b border-slate-100 bg-slate-50/50">
                       {api.anhCauHinhCua(L, m.id)
                         ? <img src={api.anhCauHinhCua(L, m.id)!} alt="" className="h-full w-full bg-white object-contain" />
                         : <div className="flex h-full items-center justify-center text-[10.5px] text-slate-300">chưa có hình</div>}
+                      <button onClick={(e) => { e.stopPropagation(); onOpenLt(m.id, m.ten) }}
+                        title={coLtM ? 'Đã có lý thuyết — bấm để sửa' : 'Chưa có lý thuyết — bấm để soạn'}
+                        className={`absolute right-1 top-1 flex h-6 w-6 items-center justify-center rounded-md border bg-white/90 text-[12px] shadow-sm ${
+                          coLtM ? 'border-violet-300 text-violet-600' : 'border-slate-300 text-slate-400'}`}>📖</button>
                     </div>
                     <div className="flex min-h-0 flex-1 flex-col gap-1 px-2.5 py-2">
                       <div className="flex items-center gap-1.5">
@@ -1018,19 +1050,24 @@ function ViewMoHinh({ L, ho, trongHo, chon, setChon, onSua, onThemCon, reload }:
                         {caps.length > 0 && <Chip>cấp {dai(caps)}</Chip>}
                       </div>
                     </div>
-                  </button>
+                  </div>
                 )
               })}
-              {/* VỆ TINH — card rút gọn (mã + tên), click mở tâm–bài toán như hub (RadialEco panel phải). */}
+              {/* VỆ TINH — card rút gọn (mã + tên), click mở tâm–bài toán như hub (RadialEco panel phải).
+                  Chấm 📖 nhỏ (không đủ chỗ cho icon riêng như hub) — bấm vào chấm mới mở soạn lý thuyết. */}
               {[...satPos.entries()].map(([id, p]) => {
                 const m = L.moHinh.find((x) => x.id === id); if (!m) return null
+                const coLtM = !!(moLtMap[id]?.noi_dung?.trim() || moLtMap[id]?.file_url)
                 return (
-                  <button key={id} onClick={() => setChon(id)} style={{ left: p.x, top: p.y, width: SAT_W, height: SAT_H }}
-                    className={`absolute flex items-center gap-1.5 rounded-lg border border-dashed border-indigo-300 bg-indigo-50/50 px-2 text-left transition hover:bg-indigo-50 ${
+                  <div key={id} onClick={() => setChon(id)} role="button" tabIndex={0} style={{ left: p.x, top: p.y, width: SAT_W, height: SAT_H }}
+                    className={`absolute flex cursor-pointer items-center gap-1.5 rounded-lg border border-dashed border-indigo-300 bg-indigo-50/50 px-2 text-left transition hover:bg-indigo-50 ${
                       chon === id ? 'ring-2 ring-indigo-300/60' : ''}`}>
                     <MaPill code={maCap.get(id) ?? '?'} size="sm" />
                     <span className="min-w-0 flex-1 truncate text-[11.5px] font-medium text-slate-700"><MathText>{m.ten}</MathText></span>
-                  </button>
+                    <button onClick={(e) => { e.stopPropagation(); onOpenLt(id, m.ten) }}
+                      title={coLtM ? 'Đã có lý thuyết — bấm để sửa' : 'Chưa có lý thuyết — bấm để soạn'}
+                      className={`shrink-0 rounded px-1 text-[10px] ${coLtM ? 'text-violet-500' : 'text-slate-300'}`}>📖</button>
+                  </div>
                 )
               })}
             </div>
@@ -1062,7 +1099,7 @@ function ViewMoHinh({ L, ho, trongHo, chon, setChon, onSua, onThemCon, reload }:
           <div className="mt-1.5 rounded-lg border border-violet-200 bg-violet-50/50 px-2.5 py-2">
             <div className="flex items-center gap-2">
               <span className="text-[11px] font-semibold uppercase tracking-wide text-violet-700">Lý thuyết</span>
-              <Btn className="ml-auto h-6 px-2 text-[11px]" onClick={() => setMoLtModal({ id: mh.id, ten: mh.ten })}>
+              <Btn className="ml-auto h-6 px-2 text-[11px]" onClick={() => onOpenLt(mh.id, mh.ten)}>
                 {coMoLt ? '✎ Sửa' : '＋ Soạn'}
               </Btn>
             </div>
@@ -1091,10 +1128,6 @@ function ViewMoHinh({ L, ho, trongHo, chon, setChon, onSua, onThemCon, reload }:
           )}
         </Panel>
       </div>
-      {moLtModal && (
-        <LyThuyetModal ma={moLtModal.id} ten={moLtModal.ten} current={moLtMap[moLtModal.id] as any} api={api.hinhMoHinhLyThuyet as any}
-          onClose={() => setMoLtModal(null)} onSaved={() => { setMoLtModal(null); napMoLt() }} />
-      )}
     </>
   )
 }

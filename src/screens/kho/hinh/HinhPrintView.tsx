@@ -15,8 +15,8 @@ import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
 import { MathText } from '../ui'
 import { type CheDoHinh } from '../../../lib/kho/hinhGiaoTrinh'
-import { CHROME_CSS, buildPagedCss, gtPageCss, printWithFilename, safeFileName } from '../../tailieu/PrintView'
-import { BK_CSS, BK_PAGE_CSS, ETHeaderBK } from '../../tailieu/bkPrint'
+import { CHROME_CSS, buildPagedCss, gtPageCss, printWithFilename, safeFileName, GT_BK_CSS } from '../../tailieu/PrintView'
+import { BK_CSS, BK_PAGE_CSS, ETHeaderBK, BtvnBkHead } from '../../tailieu/bkPrint'
 
 // ── Model bản in ──────────────────────────────────────────────────
 // Một BƯỚC con = node ẨN nở vào lời giải một ý (bản GV). Đứng TRƯỚC lời giải chính, sắp cap↑.
@@ -52,6 +52,15 @@ export type BanIn = {
   // KHÔNG nhét vào `tieuDe`. Các đường gọi khác (giáo trình/ôn tập) không cần set 2 field này.
   lop?: string
   ngay?: string
+  // ⭐ 24/08 (Thùy: "header BTVN linh tinh, làm giống hệt form Đại đi") — bản "Về nhà" dùng ĐÚNG
+  // BtvnBkHead của Đại (masthead .gtbk-mh* + ô Họ tên/Lớp/Điểm) thay vì masthead `hpmh` chung, và
+  // Lớp/Ngày phát/Hạn nộp lên PILL CÓ CẤU TRÚC (như Đại) — KHÔNG nhét chung vào `tieuDe` nữa.
+  // `tieuBai` = tiêu đề buổi TRẦN (vd "Buổi 2 : Hình thang"), khác `tieuDe` (tên file đầy đủ dùng ở
+  // toolbar/tải về, vd "BTVN 8B1 27/08/2026 · Buổi 2 : Hình thang") — Đại cũng tách 2 field y hệt vậy
+  // (docTitle vs buoiTitle, xem PrintView.tsx).
+  laBtvn?: boolean
+  tieuBai?: string
+  ngayNop?: string
 }
 
 // ⭐ 22/08 (Thùy: "làm nốt cho giống Đại — In nhanh"): `headless` = khuôn PrintView.tsx của Đại — ẩn
@@ -93,7 +102,7 @@ export default function HinhPrintView({ ban, onClose, perHS, headless, onReady, 
     // trước. Dùng thẳng gtPageCss (đã export) thay vì chép lại CSS — cùng 1 nguồn, Hình tự động khớp
     // Đại nếu sau này đổi màu/kiểu dải, không phải sửa 2 nơi.
     const css = buildPagedCss({ ten: ban.tieuDe, khoi: '' }, { header: 'none', footer: 'none' }, '#0f766e')
-      + gtPageCss('') + HINH_CSS + (perHS ? BK_CSS + BK_PAGE_CSS : '')
+      + gtPageCss('') + HINH_CSS + (perHS ? BK_CSS + BK_PAGE_CSS : '') + (ban.laBtvn ? BK_CSS + GT_BK_CSS : '')
     const cssUrl = URL.createObjectURL(new Blob([css], { type: 'text/css' }))
     const html = src.innerHTML
     // Cùng cách chống race của PrintView: mỗi run một container riêng, resolve xong mới ẨN container
@@ -216,12 +225,25 @@ function Noi({ ban, gv, perHS }: { ban: BanIn; gv: boolean; perHS?: HinhPerHS[] 
       </div>
     )
   }
+  if (ban.laBtvn) {
+    // ⭐ 24/08 (Thùy: "header BTVN linh tinh, làm giống hệt form Đại đi") — BtvnBkHead ĐÚNG như Đại:
+    // masthead .gtbk-mh (pill "BTVN" + tiêu đề buổi TRẦN, không nhét lớp/ngày vào) + Lớp/Ngày phát/Hạn
+    // nộp trên dòng sub CÓ CẤU TRÚC + hàng ô Họ tên/Lớp/Điểm cho HS điền tay (bản GV ẩn hàng ô này).
+    return (
+      <div>
+        <BtvnBkHead buoiTitle={ban.tieuBai || ban.tieuDe} ngayPhat={ban.ngay ?? ''} ngayNop={ban.ngayNop ?? ''} lopTen={ban.lop ?? ''} gv={gv} />
+        {ban.ghiChuDau && <div className="hp-note">{ban.ghiChuDau}</div>}
+        <MucsBlock mucs={ban.mucs} gv={gv} moHinhLyThuyet={ban.moHinhLyThuyet} />
+      </div>
+    )
+  }
   return (
     <div>
       {/* Masthead — khuôn "mới nhất" bên Đại (gtbk-mh, commit redesign BK 08-08): khung gradient bo góc +
-          vạch trái cầu vồng + logo thật + tiêu đề. Namespace RIÊNG `hpmh-*` (không đụng `.gtbk-*` của Đại —
-          PrintView.tsx đang sửa dở phiên khác). BỎ huy hiệu tròn "Buổi N" của Đại: Hình không có số buổi
-          tách bạch sẵn ở MỌI nơi gọi (Kho tài liệu chỉ có tên ghép sẵn) — snapshot đơn giản hoá, xem DEVLOG. */}
+          vạch trái cầu vồng + logo thật + tiêu đề. Namespace RIÊNG `hpmh-*` (không đụng `.gtbk-*` của Đại).
+          BỎ huy hiệu tròn "Buổi N" của Đại: Hình không có số buổi tách bạch sẵn ở MỌI nơi gọi (Kho tài
+          liệu chỉ có tên ghép sẵn) — snapshot đơn giản hoá, xem DEVLOG. Dùng cho giáo trình 'lop'/ôn tập —
+          BTVN ('nha') đã tách nhánh riêng ở trên. */}
       <div className="hpmh">
         <div className="hpmh-grid" />
         <div className="hpmh-brand"><img className="hpmh-logo" src={logoUrl} alt="BK Academy" /></div>

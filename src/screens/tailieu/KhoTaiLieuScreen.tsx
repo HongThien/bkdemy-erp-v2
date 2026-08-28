@@ -11,13 +11,13 @@ import { useMonScope } from '../../lib/mon'
 // pipeline riêng của Hình (loadLuoi + resolveBanIn + HinhPrintView, khác hẳn PrintView id-based của Đại).
 import {
   listAllBuoiHinh, listGtBai as listGtBaiHinh, saveBuoiSelectionPhan as saveBuoiSelectionPhanHinh,
-  saveBuoiSelection as saveBuoiSelectionHinh, loadBuoiPicks as loadBuoiPicksHinh, loadBuoiPicksPhan as loadBuoiPicksPhanHinh,
-  deleteBuoi as deleteBuoiHinh, listHinhLinkGenJobs, enqueueHinhLinkGenJob, type HinhKhoRow, type CheDoHinh, type HinhLinkGenJob,
+  loadBuoiPicksPhan as loadBuoiPicksPhanHinh, xoaPhanBuoi as xoaPhanBuoiHinh,
+  listHinhLinkGenJobs, enqueueHinhLinkGenJob, type HinhKhoRow, type CheDoHinh, type HinhLinkGenJob,
 } from '../../lib/kho/hinhGiaoTrinh'
-import { resolveBanIn as resolveBanInHinh } from '../kho/hinh/GiaoTrinhScreen'
+import { resolveBanIn as resolveBanInHinh, resolveEtBansHinh } from '../kho/hinh/GiaoTrinhScreen'
 import { BuoiPickEditor as BuoiPickEditorHinh } from '../kho/hinh/SoanTaiLieu'
 import { loadLuoi, type Luoi } from '../../lib/kho/hinh'
-import HinhPrintView, { type BanIn as HinhBanIn } from '../kho/hinh/HinhPrintView'
+import HinhPrintView, { type BanIn as HinhBanIn, type HinhPerHS } from '../kho/hinh/HinhPrintView'
 import type { PickItem } from '../../store/useStore'
 import PrintView from './PrintView'
 import ETPrintView from './ETPrintView'
@@ -111,32 +111,51 @@ export default function KhoTaiLieuScreen() {
   }
   useEffect(() => { reload() }, []) // eslint-disable-line
 
-  // In 1 phiếu Hình — buổi MASTER (r.phan===null, 1 dòng gộp) cần chọn Lớp/Nhà; buổi ĐÃ GÁN LỚP (dòng đã
-  // tách theo phan, xem listAllBuoiHinh) thì in đúng phan của chính dòng đó. Cần loadLuoi(khoi) trước
-  // (Hình không id-based như Đại).
+  // In 1 phiếu Hình — mọi dòng ở Kho đều ĐÃ GÁN LỚP (xem listAllBuoiHinh), in đúng phan của chính dòng
+  // đó. Cần loadLuoi(khoi) trước (Hình không id-based như Đại).
   const [hinhBan, setHinhBan] = useState<HinhBanIn | null>(null)
-  async function inHinh(r: HinhKhoRow, phan: 'lop' | 'nha') {
-    try { const L = await loadLuoi(r.khoi); setHinhBan(await resolveBanInHinh(L, r.ten, await listGtBaiHinh(r.buoiId), phan)) }
-    catch (e: any) { alert(e.message ?? String(e)) }
+  // ⭐ 23/08 — ET (khác lop/nha): không phải 1 phiếu, mà 3 "mã đề" bản trống (khuôn Đại: Copy link ET
+  // luôn là bản trống, không theo HS cụ thể — xem resolveEtBansHinh). Tái dùng CƠ CHẾ perHS sẵn có của
+  // HinhPrintView (hoTen rỗng) thay vì thêm chế độ render mới.
+  const [hinhBanPerHS, setHinhBanPerHS] = useState<HinhPerHS[] | undefined>(undefined)
+  async function inHinh(r: HinhKhoRow, phan: 'lop' | 'nha' | 'et') {
+    try {
+      const L = await loadLuoi(r.khoi)
+      if (phan === 'et') {
+        const { ban, perHS } = await resolveEtBansHinh(L, r.buoiId, lopTen(r.lop_id), r.ngay ? r.ngay.split('-').reverse().join('/') : '')
+        setHinhBan(ban); setHinhBanPerHS(perHS)
+      } else {
+        setHinhBan(await resolveBanInHinh(L, r.ten, await listGtBaiHinh(r.buoiId), phan)); setHinhBanPerHS(undefined)
+      }
+    } catch (e: any) { alert(e.message ?? String(e)) }
   }
   // "🖨 In nhanh" Hình — khuôn `dlDoc` của Đại: mở HinhPrintView ở chế độ headless (dựng xong TỰ mở hộp
   // thoại in native, không preview). Cần resolveBanIn giống inHinh, chỉ khác nơi render (headless không preview).
   const [hinhDl, setHinhDl] = useState<HinhBanIn | null>(null)
-  async function inNhanhHinh(r: HinhKhoRow, phan: 'lop' | 'nha') {
-    try { const L = await loadLuoi(r.khoi); setHinhDl(await resolveBanInHinh(L, r.ten, await listGtBaiHinh(r.buoiId), phan)) }
-    catch (e: any) { alert(e.message ?? String(e)) }
+  const [hinhDlPerHS, setHinhDlPerHS] = useState<HinhPerHS[] | undefined>(undefined)
+  async function inNhanhHinh(r: HinhKhoRow, phan: 'lop' | 'nha' | 'et') {
+    try {
+      const L = await loadLuoi(r.khoi)
+      if (phan === 'et') {
+        const { ban, perHS } = await resolveEtBansHinh(L, r.buoiId, lopTen(r.lop_id), r.ngay ? r.ngay.split('-').reverse().join('/') : '')
+        setHinhDl(ban); setHinhDlPerHS(perHS)
+      } else {
+        setHinhDl(await resolveBanInHinh(L, r.ten, await listGtBaiHinh(r.buoiId), phan)); setHinhDlPerHS(undefined)
+      }
+    } catch (e: any) { alert(e.message ?? String(e)) }
   }
-  // "✎ Sửa" Hình — mở modal HinhSuaModal (scoped theo r.phan, hoặc cả 2 phan nếu là dòng MASTER).
+  // "✎ Sửa" Hình — mở modal HinhSuaModal (scoped theo r.phan). Dòng ET: KHÔNG có nội dung phù hợp
+  // BuoiPickEditor (mã đề/roster) — mở thẳng ETEditor (presetHinh).
   const [hinhSua, setHinhSua] = useState<HinhKhoRow | null>(null)
-  // Xoá: buổi MASTER (phan===null, 1 dòng gộp) = xoá NGUYÊN buổi (khớp hành vi cũ, khớp Đại xoá cả
-  // giáo trình master). Dòng ĐÃ TÁCH theo phan (buổi gán lớp) = chỉ xoá ĐÚNG PHAN đó (saveBuoiSelectionPhan
-  // rỗng) — KHÔNG đụng phan còn lại (khác Đại: 2 tai_lieu ĐỘC LẬP nên xoá 1 cái không ảnh hưởng cái kia;
-  // ở đây 2 dòng CHIA SẺ 1 hinh_gt_buoi thật, xoá cả buổi sẽ mất luôn phan kia — sai). Buổi trống cả 2
-  // phan thì tự nhiên KHÔNG còn dòng nào ở đây nữa (listAllBuoiHinh chỉ chiếu phan CÓ bài).
+  const [editEtHinh, setEditEtHinh] = useState<{ lopId: string; ngay: string } | null>(null)
+  // Xoá: chỉ xoá ĐÚNG PHAN của dòng này — KHÔNG đụng phan còn lại (2 dòng CHIA SẺ 1 hinh_gt_buoi thật,
+  // xoá cả buổi ngay sẽ mất luôn phan kia — sai). ⭐ 25/08 (Thùy: "gán nhầm buổi hình, xoá tài liệu ở kho
+  // vẫn ko gán lại được") — nhưng NẾU xoá xong buổi hết sạch mọi phan, phải dọn LUÔN cả hàng
+  // hinh_gt_buoi (xoaPhanBuoi), không để hàng rỗng đứng lại chiếm (lớp,ngày) — hàng rỗng vẫn tính "đã
+  // gán" nên gán lại giáo trình ĐÚNG cho đúng ngày đó bị né sang ngày khác.
   async function xoaHinh(r: HinhKhoRow) {
     if (!confirm(`Xoá "${r.ten}"?`)) return
-    if (r.phan === null) await deleteBuoiHinh(r.buoiId)
-    else await saveBuoiSelectionPhanHinh(r.buoiId, r.phan, { picks: [], cheDo: {}, soDong: {} })
+    await xoaPhanBuoiHinh(r.buoiId, r.phan, r.lop_id)
     reload()
   }
 
@@ -245,6 +264,7 @@ export default function KhoTaiLieuScreen() {
   // "← ..."/"← Kho tài liệu" của mỗi editor tự enqueueLinkGen trước khi gọi onClose) — không cần lặp
   // lại ở đây nữa (07-12, dọn theo pivot gen-tại-lúc-sửa).
   if (editEt) return <ETEditor et={editEt} onClose={() => { setEditEt(null); reload() }} />
+  if (editEtHinh) return <ETEditor presetHinh={editEtHinh} onClose={() => { setEditEtHinh(null); reload() }} />
   if (editGt) return <TaiLieuBuilder id={editGt} onClose={() => { setEditGt(null); reload() }} />
   if (editDeThi) return <DeThiEditor id={editDeThi} onClose={() => { setEditDeThi(null); reload() }} />
   if (editMT) return <MTEditor id={editMT} onClose={() => { setEditMT(null); reload() }} />
@@ -308,37 +328,30 @@ export default function KhoTaiLieuScreen() {
                       <td className="whitespace-nowrap px-3 text-slate-500">{fmt(r.created_at)}</td>
                       <td className="whitespace-nowrap px-3 py-2">
                         {r.nguon === 'hinh' ? (
-                          // ⭐ 22/08 (Thùy: "t thấy giáo trình 7A vẫn còn in lớp in nhà là sao, m fix mỗi lớp
-                          // 8 à??"): dòng MASTER (r.phan===null, chưa gán lớp) đại diện 2 tài liệu (Lớp/Nhà)
-                          // gộp 1 dòng — Đại không phân biệt master/đã-tách, giờ Hình cũng đủ bộ nút cho CẢ
-                          // 2 phan (file_url_lop/file_url_nha riêng). Dòng ĐÃ TÁCH (buổi gán lớp) chỉ có
-                          // đúng 1 phan của chính nó, dùng file_url chung.
-                          <div className="flex flex-wrap justify-end gap-1.5">
-                            <button onClick={() => setHinhSua(r)} className="shrink-0 rounded-md border border-slate-200 px-2.5 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-300">✎ Sửa</button>
-                            {(r.phan === null ? (['lop', 'nha'] as const) : [r.phan as 'lop' | 'nha']).map((phan) => {
-                              const url = r.phan === null ? (phan === 'lop' ? r.file_url_lop : r.file_url_nha) : r.file_url
-                              const nhan = r.phan === null ? (phan === 'lop' ? '📘' : '📝') : '🖨'
-                              return (
-                                <div key={phan} className="flex shrink-0 items-center gap-1.5 rounded-md border border-slate-100 bg-slate-50/60 px-1.5 py-0.5">
-                                  {r.phan === null && <span className="text-[11px] font-medium text-slate-400">{phan === 'lop' ? 'Lớp' : 'Nhà'}</span>}
-                                  <button onClick={() => inHinh(r, phan)} className="shrink-0 rounded-md bg-indigo-600 px-2 py-1 text-[12px] font-medium text-white hover:bg-indigo-500">{nhan} In</button>
-                                  <button onClick={() => inNhanhHinh(r, phan)} className="shrink-0 rounded-md border border-indigo-300 px-2 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-50">In nhanh</button>
-                                  {url ? (
-                                    <button onClick={() => copyLink(url, r.id + ':' + phan)} title={url} className="shrink-0 rounded-md border border-sky-300 px-2 py-1 text-[12px] font-medium text-sky-700 hover:bg-sky-50">
-                                      {copiedId === r.id + ':' + phan ? '✓ Đã copy' : '🔗 Copy link'}
-                                    </button>
-                                  ) : hinhLinkJobs.some((j) => j.buoi_id === r.buoiId && j.phan === phan && (j.status === 'pending' || j.status === 'processing')) ? (
-                                    <span className="shrink-0 px-1 text-[12px] text-sky-500">⏳ đang tạo…</span>
-                                  ) : hinhLinkJobs.some((j) => j.buoi_id === r.buoiId && j.phan === phan && j.status === 'failed') ? (
-                                    <span className="shrink-0 px-1 text-[12px] text-rose-500" title={'Lỗi: ' + (hinhLinkJobs.find((j) => j.buoi_id === r.buoiId && j.phan === phan)?.error ?? '?')}>⚠ lỗi, bấm ↻</span>
-                                  ) : (
-                                    <span className="shrink-0 px-1 text-[12px] text-slate-300" title="Chưa có link">— chưa có link</span>
-                                  )}
-                                  <button onClick={() => enqueueHinhLinkGenJob(r.buoiId, phan).then(() => setHinhLinkJobs((s) => [...s.filter((j) => !(j.buoi_id === r.buoiId && j.phan === phan)), { buoi_id: r.buoiId, phan, status: 'pending', attempt: 0, error: null }]))}
-                                    title="Tạo lại link" className="shrink-0 rounded-md border border-slate-200 px-2 py-1 text-[12px] text-slate-400 hover:border-sky-300 hover:text-sky-600">↻</button>
-                                </div>
-                              )
-                            })}
+                          // ⭐ 24/08 (Thùy: "cái có cái không lộn xộn, chức năng giống nhau phải thẳng nhau" +
+                          // "giáo trình hình ko xuất hiện ở kho, khi nào gán lớp mới hiện"): MASTER (chưa gán
+                          // lớp) không còn lên Kho nữa (xem listAllBuoiHinh) — mọi dòng Hình ở đây giờ LUÔN
+                          // đã tách theo đúng 1 phan, layout PHẲNG 1 hàng y hệt Đại, không còn nhánh 2-phan-
+                          // gộp-1-dòng (nguồn gốc layout lệch) nữa.
+                          <div className="flex justify-end gap-1.5">
+                            {/* ET (r.phan==='et') không có nội dung hợp với HinhSuaModal (mã đề/roster riêng,
+                                không phải picks đơn thuần) → Sửa mở thẳng ETEditor (presetHinh, y hệt "Sửa" ET Đại). */}
+                            <button onClick={() => r.phan === 'et' ? setEditEtHinh({ lopId: r.lop_id!, ngay: r.ngay! }) : setHinhSua(r)} className="shrink-0 rounded-md border border-slate-200 px-2.5 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-300">✎ Sửa</button>
+                            <button onClick={() => inHinh(r, r.phan)} className="shrink-0 rounded-md bg-indigo-600 px-2.5 py-1 text-[12px] font-medium text-white hover:bg-indigo-500">🖨 In</button>
+                            <button onClick={() => inNhanhHinh(r, r.phan)} className="shrink-0 rounded-md border border-indigo-300 px-2.5 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-50">In nhanh</button>
+                            {r.file_url ? (
+                              <button onClick={() => copyLink(r.file_url!, r.id)} title={r.file_url} className="shrink-0 rounded-md border border-sky-300 px-2.5 py-1 text-[12px] font-medium text-sky-700 hover:bg-sky-50">
+                                {copiedId === r.id ? '✓ Đã copy' : '🔗 Copy link'}
+                              </button>
+                            ) : hinhLinkJobs.some((j) => j.buoi_id === r.buoiId && j.phan === r.phan && (j.status === 'pending' || j.status === 'processing')) ? (
+                              <span className="shrink-0 px-1 text-[12px] text-sky-500">⏳ đang tạo…</span>
+                            ) : hinhLinkJobs.some((j) => j.buoi_id === r.buoiId && j.phan === r.phan && j.status === 'failed') ? (
+                              <span className="shrink-0 px-1 text-[12px] text-rose-500" title={'Lỗi: ' + (hinhLinkJobs.find((j) => j.buoi_id === r.buoiId && j.phan === r.phan)?.error ?? '?')}>⚠ lỗi, bấm ↻</span>
+                            ) : (
+                              <span className="shrink-0 px-1 text-[12px] text-slate-300" title="Chưa có link">— chưa có link</span>
+                            )}
+                            <button onClick={() => enqueueHinhLinkGenJob(r.buoiId, r.phan).then(() => setHinhLinkJobs((s) => [...s.filter((j) => !(j.buoi_id === r.buoiId && j.phan === r.phan)), { buoi_id: r.buoiId, phan: r.phan, status: 'pending', attempt: 0, error: null }]))}
+                              title="Tạo lại link" className="shrink-0 rounded-md border border-slate-200 px-2 py-1 text-[12px] text-slate-400 hover:border-sky-300 hover:text-sky-600">↻</button>
                             <button onClick={() => xoaHinh(r)} className="shrink-0 rounded-md border border-slate-200 px-2.5 py-1 text-[12px] text-slate-400 hover:border-rose-300 hover:text-rose-600">Xoá</button>
                           </div>
                         ) : (
@@ -400,8 +413,8 @@ export default function KhoTaiLieuScreen() {
         ? <MTPrintView id={print.id} onClose={() => { setPrint(null); reload() }} />
         : <PrintView id={print.id} onClose={() => { setPrint(null); reload() }} />)}
 
-      {hinhBan && <HinhPrintView ban={hinhBan} onClose={() => setHinhBan(null)} />}
-      {hinhDl && <HinhPrintView ban={hinhDl} headless onClose={() => setHinhDl(null)} />}
+      {hinhBan && <HinhPrintView ban={hinhBan} perHS={hinhBanPerHS} onClose={() => { setHinhBan(null); setHinhBanPerHS(undefined) }} />}
+      {hinhDl && <HinhPrintView ban={hinhDl} perHS={hinhDlPerHS} headless onClose={() => { setHinhDl(null); setHinhDlPerHS(undefined) }} />}
       {hinhSua && <HinhSuaModal row={hinhSua} onClose={() => { setHinhSua(null); reload() }} />}
 
       {/* "🖨 In nhanh" từ hàng (headless: dựng ẩn → mở hộp thoại in NATIVE → đóng khi hộp thoại đóng),
@@ -514,11 +527,10 @@ function OnTapModal({ doc, onClose, onSaved }: { doc: DaiRow; onClose: () => voi
 }
 
 // ⭐ 22/08 (Thùy: "làm nốt cho giống Đại — Sửa tại chỗ"): "✎ Sửa" cho Hình, mở NGAY từ Kho tài liệu —
-// KHÔNG cần đi qua cây Khối→Giáo trình→Buổi của màn Giáo trình Hình. Tái dùng ĐÚNG `BuoiPickEditor` (đã
-// có sẵn cơ chế `phans` để scope 1 hoặc nhiều phan — xem SoanTaiLieu.tsx) + autosave từng thao tác (khuôn
-// GiaoTrinhScreen: KHÔNG nút "Lưu" riêng, mỗi đổi ghi DB ngay). Dòng đã tách theo phan (r.phan!==null) →
-// sửa ĐÚNG phan đó; dòng MASTER (r.phan===null, chưa gán lớp) → sửa CẢ hai phan cùng lúc (khớp cách
-// GiaoTrinhScreen tự làm, vì master vốn không tách 2 tài liệu).
+// KHÔNG cần đi qua cây Khối→Giáo trình→Buổi của màn Giáo trình Hình. Tái dùng ĐÚNG `BuoiPickEditor`
+// (SoanTaiLieu.tsx) + autosave từng thao tác (khuôn GiaoTrinhScreen: KHÔNG nút "Lưu" riêng, mỗi đổi ghi
+// DB ngay). Mọi dòng ở Kho đều ĐÃ TÁCH theo 1 phan (xem listAllBuoiHinh) — sửa đúng phan đó, không đụng
+// phan khác.
 function HinhSuaModal({ row, onClose }: { row: HinhKhoRow; onClose: () => void }) {
   const [L, setL] = useState<Luoi | null>(null)
   const [picks, setPicks] = useState<PickItem[]>([])
@@ -526,26 +538,20 @@ function HinhSuaModal({ row, onClose }: { row: HinhKhoRow; onClose: () => void }
   const [soDong, setSoDong] = useState<Record<string, number>>({})
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
-  const phans = row.phan ? [row.phan] : (['lop', 'nha'] as const)
+  const phans = [row.phan]
   useEffect(() => {
     let alive = true
     ;(async () => {
-      const [Lv, nhap] = await Promise.all([
-        loadLuoi(row.khoi),
-        row.phan ? loadBuoiPicksPhanHinh(row.buoiId, row.phan) : loadBuoiPicksHinh(row.buoiId),
-      ])
+      const [Lv, nhap] = await Promise.all([loadLuoi(row.khoi), loadBuoiPicksPhanHinh(row.buoiId, row.phan)])
       if (!alive) return
       setL(Lv); setPicks(nhap.picks); setCheDo(nhap.cheDo); setSoDong(nhap.soDong)
     })().catch((e) => { if (alive) setErr(e.message ?? String(e)) }).finally(() => { if (alive) setLoading(false) })
     return () => { alive = false }
   }, [row.buoiId, row.phan, row.khoi])
-  // Ghi ngay xuống DB mỗi lần đổi — 1 phan thì saveBuoiSelectionPhan (không đụng phan kia), master (2
-  // phan) thì saveBuoiSelection (thay CẢ buổi — đúng vì đang sửa cả 2 phan cùng lúc, không phan nào bị bỏ sót).
+  // Ghi ngay xuống DB mỗi lần đổi — saveBuoiSelectionPhan (không đụng phan kia của cùng buổi).
   const luu = async (p: PickItem[], c: Record<string, CheDoHinh>, s: Record<string, number>) => {
-    try {
-      if (row.phan) await saveBuoiSelectionPhanHinh(row.buoiId, row.phan, { picks: p, cheDo: c, soDong: s })
-      else await saveBuoiSelectionHinh(row.buoiId, { picks: p, cheDo: c, soDong: s })
-    } catch (e: any) { setErr(e.message ?? String(e)) }
+    try { await saveBuoiSelectionPhanHinh(row.buoiId, row.phan, { picks: p, cheDo: c, soDong: s }) }
+    catch (e: any) { setErr(e.message ?? String(e)) }
   }
   return (
     <div className="fixed inset-0 z-50 flex flex-col bg-white">
