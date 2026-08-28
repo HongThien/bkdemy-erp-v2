@@ -6,6 +6,7 @@ import {
   buildBatchPrompt, parseBatchJson, parseStructuredText, saveCauBatch, callGeminiJson,
   CLONE_SCHEMA, BATCH_SCHEMA, callGeminiRich, buildIngestPrompt, parseIngestJson, INGEST_SCHEMA,
   uploadKhoImage, LOAI_CAU, CUM_TBL, callAiClone, saveCloneVariants, AI_MODELS,
+  createYeuCauClone,
   type CauHoi, type MapRow,
 } from '../../lib/kho/api'
 import CumBaiTab from './CumBaiTab'
@@ -13,6 +14,7 @@ import TienDeBox from './TienDeBox'
 import { fileToCanvases, canvasToJpegBase64, cropCanvasBox } from '../../lib/pdfRender'
 import PdfCropper from '../../components/PdfCropper'
 import { ImgInsertBar, insertImageAtCursor } from '../../components/ImgInsertBar'
+import { myNhanSuId } from '../../lib/giaoviec'
 
 const SAMPLE_TEXT = `Câu 1.
 Đề bài: Tìm số tự nhiên nhỏ nhất chia hết cho cả 3 và 5.
@@ -382,6 +384,18 @@ function AiImportModal({ mode, dangChinh, tenDang, cauTbl, presetGoc, onClose, o
       if (!variants.length) setError('AI không sinh được biến thể nào — thử lại hoặc sửa bài gốc.')
     } catch (e: any) { setError(e.message ?? String(e)) } finally { setBusy(false) }
   }
+  // Hàng đợi (26/08) — thay vì gọi API ngay, đưa yêu cầu vào hàng đợi cho Claude Code xử lý sau
+  // (quota subscription, không tốn API). Chỉ áp dụng khi clone TỪ 1 câu có sẵn (presetGoc) — câu
+  // "gốc" phải đã tồn tại thật trong dai_cau_hoi để hàng đợi FK vào đúng.
+  async function queueClone() {
+    if (!presetGoc) return
+    setBusy(true); setError(null)
+    try {
+      const nguoiYeuCau = await myNhanSuId()
+      await createYeuCauClone({ maCauGoc: presetGoc.ma_cau, soBienThe, ghiChu: ghiChu.trim(), nguoiYeuCau })
+      onSaved()
+    } catch (e: any) { setError(e.message ?? String(e)); setBusy(false) }
+  }
   // NHẬP CHUỖI CÂU từ ảnh/PDF = nhập chuỗi câu + PHÂN TÍCH HÌNH: render trang DPI cao → AI tách câu + bbox hình
   // → cắt hình gắn anh_de → vào ĐÚNG màn preview từng câu (CauEditor) như nhập chuỗi câu. Đa trang gộp hết.
   async function runAutoIngest() {
@@ -630,7 +644,12 @@ function AiImportModal({ mode, dangChinh, tenDang, cauTbl, presetGoc, onClose, o
                     <span className="text-3xl">✍️</span>
                     <span className="mt-2 text-sm font-semibold text-slate-600">Sửa &amp; chốt bài gốc bên trái</span>
                     <span className="mt-0.5 text-[12px] text-slate-400">chuẩn rồi bấm nút dưới để sinh <b>{soBienThe}</b> biến thể theo đúng bài gốc.</span>
-                    <button onClick={runCloneFromGoc} disabled={busy} className="mt-3 rounded-md bg-indigo-600 px-4 py-2 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">{busy ? '⏳ Đang clone…' : '② Clone theo bài gốc'}</button>
+                    <div className="mt-3 flex gap-2">
+                      <button onClick={runCloneFromGoc} disabled={busy} className="rounded-md bg-indigo-600 px-4 py-2 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">{busy ? '⏳ Đang clone…' : '② Clone ngay (API)'}</button>
+                      {presetGoc && (
+                        <button onClick={queueClone} disabled={busy} title="Không gọi API ngay — Claude Code xử lý theo lô sau, rẻ hơn, kết quả vào Chờ duyệt" className="rounded-md border border-violet-300 bg-violet-50 px-4 py-2 text-[13px] font-medium text-violet-700 shadow-sm hover:bg-violet-100 disabled:opacity-40">{busy ? '⏳…' : '📥 Đưa vào hàng đợi'}</button>
+                      )}
+                    </div>
                   </div>
                 ) : (
                   <button onClick={() => setShowVariants(true)} className="flex min-h-0 flex-1 flex-col items-center justify-center rounded-xl border-2 border-dashed border-indigo-200 bg-indigo-50/40 text-indigo-700 transition hover:bg-indigo-50">

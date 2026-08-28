@@ -32,6 +32,7 @@ import ThanhTichScreen from './gami/ThanhTichScreen'
 import KetQuaScreen from './ketqua/KetQuaScreen'
 import ReportPHScreen from './report/ReportPHScreen'
 import DuyetChamScreen from './duyetcham/DuyetChamScreen'
+import DuyetLoiGiaiScreen from './duyetloigiai/DuyetLoiGiaiScreen'
 import HocPhiScreen from './hocphi/HocPhiScreen'
 import GiaoViecScreen from './giaoviec/GiaoViecScreen'
 import VietCuaToiTab from './giaoviec/VietCuaToiTab'
@@ -614,6 +615,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'ketqua' ? <KetQuaScreen />
       : staffLeaf === 'report_ph' ? <ReportPHScreen />
       : staffLeaf === 'duyetcham' ? <DuyetChamScreen />
+      : staffLeaf === 'duyetloigiai' ? <DuyetLoiGiaiScreen />
       : staffLeaf === 'quanlylevel' ? <QuanLyLevelScreen />
       : staffLeaf === 'phanquyen' ? <PhanQuyenScreen />
       : staffLeaf === 'baoloi' ? <BaoLoiScreen />

@@ -1066,3 +1066,64 @@ export const hinhMoHinhLyThuyet = {
     if (error) throw error
   },
 }
+
+// ══════════════════ GIẢI BIẾN THỂ BẰNG AI (27/08 — Story 2, song song với Đại) ══════════════════
+// Biến thể (đổi số/đổi đỉnh) thiếu loi_giai — mẫu tham khảo = cách giải MẶC ĐỊNH của đúng bài toán
+// gốc sinh ra biến thể đó (sát hơn cả "cùng dạng" bên Đại, vì đây chính là bài toán nó bắt nguồn).
+// KHÔNG xử lý bài toán chưa có cách giải nào (không có mẫu để bám — bài toán khác, khó hơn, để riêng).
+export type BienTheChuaGiai = { id: string; baitoan_id: string; de_bai: string; kieu: string }
+export async function listBienTheChuaGiai(khoi?: string): Promise<BienTheChuaGiai[]> {
+  let q = supabase.from('hinh_baitoan_bien_the').select('id, baitoan_id, de_bai, kieu, hinh_baitoan!inner(mo_hinh_id, hinh_mo_hinh!inner(khoi))').is('loi_giai', null).limit(LIMIT)
+  if (khoi) q = q.eq('hinh_baitoan.hinh_mo_hinh.khoi', khoi)
+  const { data, error } = await q
+  if (error) throw error
+  return (data ?? []).map((r: any) => ({ id: r.id, baitoan_id: r.baitoan_id, de_bai: r.de_bai, kieu: r.kieu }))
+}
+// Mẫu tham khảo: cách giải mặc định của bài toán gốc. null = chưa có cách giải nào — bỏ qua, không giải.
+export async function layCachMacDinhBaiToan(baitoanId: string): Promise<CachGiai | null> {
+  const { data, error } = await supabase.from('hinh_cach_giai').select('*').eq('baitoan_id', baitoanId).limit(LIMIT)
+  if (error) throw error
+  const ds = (data ?? []) as CachGiai[]
+  if (!ds.length) return null
+  return ds.find((c) => c.la_mac_dinh) ?? ds.slice().sort((a, b) => a.thu_tu - b.thu_tu)[0]
+}
+export async function giaiBienTheAI(id: string, loiGiai: string): Promise<void> {
+  const { error } = await supabase.from('hinh_baitoan_bien_the').update({ loi_giai: loiGiai, nguon_giai: 'ai', giai_method: 'claude_code' }).eq('id', id)
+  if (error) throw error
+}
+
+// Cho màn "Duyệt lời giải AI" gộp (xem api.ts listCauChoDuyetLoiGiai cho Đại/KHTN/HGT) — Hình
+// bảng khác hẳn (bien_the, không phải cau_hoi) nên hàm riêng, KHÔNG ép vào registry chung.
+// chiMoi: true = chỉ lời giải MỚI (giai_method='claude_code') · false/undefined = backlog cũ.
+export type BienTheChoDuyetLoiGiai = { id: string; khoi: string; deBai: string; loiGiai: string }
+export async function listBienTheChoDuyetLoiGiai(khoi?: string, chiMoi?: boolean): Promise<BienTheChoDuyetLoiGiai[]> {
+  let q = supabase.from('hinh_baitoan_bien_the')
+    .select('id, de_bai, loi_giai, hinh_baitoan!inner(hinh_mo_hinh!inner(khoi))')
+    .eq('nguon_giai', 'ai').eq('da_duyet', false).limit(LIMIT)
+  q = chiMoi ? q.eq('giai_method', 'claude_code') : q.is('giai_method', null)
+  if (khoi) q = q.eq('hinh_baitoan.hinh_mo_hinh.khoi', khoi)
+  const { data, error } = await q
+  if (error) throw error
+  return (data ?? []).map((r: any) => ({ id: r.id, khoi: r.hinh_baitoan?.hinh_mo_hinh?.khoi ?? '', deBai: r.de_bai, loiGiai: r.loi_giai ?? '' }))
+}
+export async function duyetLoiGiaiBienThe(id: string, nguoiDuyet: string): Promise<void> {
+  const { error } = await supabase.from('hinh_baitoan_bien_the').update({ da_duyet: true, duyet_boi: nguoiDuyet, duyet_at: new Date().toISOString() }).eq('id', id)
+  if (error) throw error
+}
+
+// Cách giải của BÀI TOÁN GỐC (khác biến thể — tầng trên, xem migration 202608271400).
+export type CachGiaiChoDuyetLoiGiai = { id: string; khoi: string; deBai: string; loiGiai: string }
+export async function listCachGiaiChoDuyetLoiGiai(khoi?: string, chiMoi?: boolean): Promise<CachGiaiChoDuyetLoiGiai[]> {
+  let q = supabase.from('hinh_cach_giai')
+    .select('id, loi_giai, hinh_baitoan!baitoan_id!inner(phat_bieu, hinh_mo_hinh!inner(khoi))')
+    .eq('nguon_giai', 'ai').eq('da_duyet', false).limit(LIMIT)
+  q = chiMoi ? q.eq('giai_method', 'claude_code') : q.is('giai_method', null)
+  if (khoi) q = q.eq('hinh_baitoan.hinh_mo_hinh.khoi', khoi)
+  const { data, error } = await q
+  if (error) throw error
+  return (data ?? []).map((r: any) => ({ id: r.id, khoi: r.hinh_baitoan?.hinh_mo_hinh?.khoi ?? '', deBai: r.hinh_baitoan?.phat_bieu ?? '', loiGiai: r.loi_giai ?? '' }))
+}
+export async function duyetLoiGiaiCachGiai(id: string, nguoiDuyet: string): Promise<void> {
+  const { error } = await supabase.from('hinh_cach_giai').update({ da_duyet: true, duyet_boi: nguoiDuyet, duyet_at: new Date().toISOString() }).eq('id', id)
+  if (error) throw error
+}
