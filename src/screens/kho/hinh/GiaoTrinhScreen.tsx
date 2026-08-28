@@ -14,7 +14,7 @@ import type { GiaoTrinh, GtBuoi, GtBai, TrichStateHinh, CheDoHinh } from '../../
 import type { Luoi } from '../../../lib/kho/hinh'
 import type { PickItem } from '../../../store/useStore'
 import { listLop, type Lop } from '../../../lib/nhansu'
-import { ngayBuoiHopLeCuaLop } from '../../../lib/gami'
+import { ngayBuoiHopLeCuaLop, hsCoMatCuaBuoi } from '../../../lib/gami'
 import { homNayVN, congNgay, ddmmVN, thuCuaNgay } from '../../../lib/tuan'
 import { Btn, Empty, Ma, Seg, tron, inpCls } from './hinhUi'
 import { Shell, Field, inp } from '../ui'
@@ -33,20 +33,24 @@ function fmtNgay(iso?: string): string {
 // laBtvn/tieuBai/ngayNop NGAY TRONG resolveBanIn, nhưng "📝 Xem" ở thẻ buổi Master (BuoiCardHinh.xem
 // dưới) gọi THẲNG banInTheoMoHinh, không qua resolveBanIn → bỏ sót, vẫn ra masthead cũ. Tách riêng
 // thành helper DÙNG CHUNG cho MỌI nơi dựng BanIn phan='nha' của Hình — không còn đường nào lọt nữa.
+// ⭐ 28/08 (Thùy: "chưa có chế độ in cả lớp theo tên học sinh giống Đại số à") — gắn thêm `roster` (HS có
+// mặt buổi này) CÙNG hàm `hsCoMatCuaBuoi` Đại dùng — HinhPrintView tự có toggle "Cả lớp (N)" khi có data.
 async function attachBtvnMeta(ban: BanIn, buoiId: string | undefined, phan: 'lop' | 'nha'): Promise<BanIn> {
   if (phan !== 'nha') return ban
   const meta = buoiId ? await gt.getHinhBuoiMeta(buoiId).catch(() => null) : null
   if (!meta?.ngay) return { ...ban, laBtvn: true }
   const ngayPhat = meta.ngay.split('-').reverse().join('/')
   let ngayNop = ''
+  let roster: { id: string; ho_ten: string }[] = []
   if (meta.lopId) {
     try {
       const list2 = await ngayBuoiHopLeCuaLop(meta.lopId, meta.ngay, congNgay(meta.ngay, 120))
       const next = list2.map((x) => x.ngay).find((d) => d > meta.ngay!)
       ngayNop = next ? congNgay(next, -1).split('-').reverse().join('/') : ''
     } catch { /* thiếu TKB — bỏ trống hạn nộp, không chặn in */ }
+    try { roster = await hsCoMatCuaBuoi(meta.lopId, meta.ngay) } catch { /* chưa điểm danh — không chặn in, chỉ mất nút "Cả lớp" */ }
   }
-  return { ...ban, laBtvn: true, tieuBai: meta.tieuDe || undefined, lop: meta.tenLop ?? '', ngay: ngayPhat, ngayNop }
+  return { ...ban, laBtvn: true, tieuBai: meta.tieuDe || undefined, lop: meta.tenLop ?? '', ngay: ngayPhat, ngayNop, roster }
 }
 
 // ── Resolve bài ĐÃ LƯU của một buổi (master hoặc bản lớp) → BanIn cho 1 phiếu (lop/nha).

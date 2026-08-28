@@ -61,6 +61,11 @@ export type BanIn = {
   laBtvn?: boolean
   tieuBai?: string
   ngayNop?: string
+  // ⭐ 28/08 (Thùy: "Bài tập Hình chưa có chế độ in cả lớp theo tên học sinh giống Đại số à") — HS có mặt
+  // buổi này (khớp lop_id+ngay), gắn ở attachBtvnMeta (GiaoTrinhScreen.tsx), CÙNG hàm `hsCoMatCuaBuoi`
+  // Đại dùng. Chỉ có ý nghĩa khi laBtvn — giáo trình 'lop'/ET không cần roster ở đây (ET dùng `perHS` prop
+  // riêng vì mỗi HS có mã đề/mucs KHÁC NHAU, còn BTVN "Cả lớp" mọi HS CHUNG 1 mucs, chỉ khác tên trên đầu phiếu).
+  roster?: { id: string; ho_ten: string }[]
 }
 
 // ⭐ 22/08 (Thùy: "làm nốt cho giống Đại — In nhanh"): `headless` = khuôn PrintView.tsx của Đại — ẩn
@@ -73,6 +78,10 @@ export default function HinhPrintView({ ban, onClose, perHS, headless, onReady, 
   headless?: boolean; onReady?: () => void; onRenderErr?: (msg: string) => void
 }) {
   const [gv, setGv] = useState(false)      // bản GV = kèm lời giải + hình đáp án
+  // ⭐ 28/08 (Thùy: "chưa có chế độ in cả lớp theo tên học sinh giống Đại") — BTVN "Cả lớp": mọi HS chung
+  // 1 mucs, chỉ khác tên đầu phiếu — khuôn `perHS` của Đại (PrintView.tsx `scope==='btvn'` toggle), tách
+  // TÊN state riêng vì `perHS` (prop) đã có nghĩa khác ở đây (mã đề ET, mỗi HS mucs KHÁC nhau).
+  const [perHSBtvn, setPerHSBtvn] = useState(false)
   const [pages, setPages] = useState(0)
   const [rendering, setRendering] = useState(true)
   const [loi, setLoi] = useState<string | null>(null)
@@ -134,7 +143,7 @@ export default function HinhPrintView({ ban, onClose, perHS, headless, onReady, 
     }, 0)
     return () => { cancelled = true; clearTimeout(hoan); if (watchdog) clearTimeout(watchdog) }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ban, gv, perHS])
+  }, [ban, gv, perHS, perHSBtvn])
 
   // "In nhanh" (headless) — dựng xong TỰ gọi window.print() sau đệm 350ms (phòng render 2-pass), đóng
   // khi hộp thoại in đóng. Khuôn PrintView.tsx của Đại (headless KHÔNG linkOnly).
@@ -155,7 +164,7 @@ export default function HinhPrintView({ ban, onClose, perHS, headless, onReady, 
 
   if (headless) return createPortal(
     <>
-      <div className="pv-src" ref={srcRef} aria-hidden><Noi ban={ban} gv={gv} perHS={perHS} /></div>
+      <div className="pv-src" ref={srcRef} aria-hidden><Noi ban={ban} gv={gv} perHS={perHS} perHSBtvn={perHSBtvn} /></div>
       <div style={{ position: 'fixed', top: 0, left: 0, zIndex: 88, width: '210mm', background: '#fff' }}><div ref={dstRef} className="pv-pages" /></div>
       {/* no-print: chỉ hiện trên màn hình, @media print tự ẩn khi window.print() mở — không lọt vào PDF/giấy. */}
       <div className="no-print fixed inset-0 z-[95] flex items-center justify-center bg-white">
@@ -183,6 +192,19 @@ export default function HinhPrintView({ ban, onClose, perHS, headless, onReady, 
             </button>
           ))}
         </div>
+        {/* ⭐ 28/08 (Thùy: "chưa có chế độ in cả lớp theo tên học sinh giống Đại") — khuôn ĐÚNG toggle
+            "Bản trống"/"🖨 Cả lớp (N)" của Đại (PrintView.tsx, scope==='btvn'), chỉ hiện cho BTVN — giáo
+            trình 'lop'/ET không có khái niệm "cả lớp theo tên" (ET đã có mã đề riêng per-HS rồi). */}
+        {ban.laBtvn && (
+          <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5"
+            title={ban.roster?.length ? `${ban.roster.length} HS có mặt — in mỗi HS 1 phiếu, tên sẵn` : 'Chưa điểm danh có mặt → chỉ in bản trống'}>
+            <button onClick={() => setPerHSBtvn(false)} className={`rounded-md px-3 py-1 text-[12.5px] font-medium transition ${!perHSBtvn ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>Bản trống</button>
+            <button onClick={() => setPerHSBtvn(true)} disabled={!ban.roster?.length}
+              className={`rounded-md px-3 py-1 text-[12.5px] font-medium transition disabled:opacity-40 ${perHSBtvn ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>
+              🖨 Cả lớp{ban.roster?.length ? ` (${ban.roster.length})` : ''}
+            </button>
+          </div>
+        )}
         <span className="text-[12px] text-slate-400">{rendering ? 'đang dựng trang…' : `${pages} trang`}</span>
         <button disabled={rendering || !!loi} onClick={() => printWithFilename(safeFileName(`${ban.tieuDe}${gv ? ' - GV' : ''}`))}
           className="ml-auto rounded-lg bg-teal-600 px-3 py-1.5 text-[13px] font-medium text-white disabled:bg-slate-300">⎙ In / Lưu PDF</button>
@@ -191,7 +213,7 @@ export default function HinhPrintView({ ban, onClose, perHS, headless, onReady, 
       {loi && <div className="no-print bg-rose-50 px-4 py-2 text-[12.5px] text-rose-700">{loi}</div>}
 
       {/* nguồn ẩn — paged.js đọc innerHTML từ đây rồi tự phân trang */}
-      <div className="pv-src" ref={srcRef}><Noi ban={ban} gv={gv} perHS={perHS} /></div>
+      <div className="pv-src" ref={srcRef}><Noi ban={ban} gv={gv} perHS={perHS} perHSBtvn={perHSBtvn} /></div>
       <div className="pv-scroll h-[calc(100vh-42px)] overflow-y-auto bg-slate-200 p-5">
         <div className="pv-pages" ref={dstRef} />
       </div>
@@ -206,7 +228,7 @@ export default function HinhPrintView({ ban, onClose, perHS, headless, onReady, 
 // (ETScreen.tsx) — component này không biết "mã đề" là gì, chỉ vẽ mucs được đưa.
 export type HinhPerHS = { hoTen: string; maDe: number; mucs: MucIn[] }
 
-function Noi({ ban, gv, perHS }: { ban: BanIn; gv: boolean; perHS?: HinhPerHS[] }) {
+function Noi({ ban, gv, perHS, perHSBtvn }: { ban: BanIn; gv: boolean; perHS?: HinhPerHS[]; perHSBtvn?: boolean }) {
   const logoUrl = location.origin + '/Logo.png'
   if (perHS) {
     // ⭐ Thùy 21/08 ("làm giống bên Đại số đi, cứ sáng tạo thêm làm gì"): dùng ĐÚNG `ETHeaderBK` của ET
@@ -229,6 +251,23 @@ function Noi({ ban, gv, perHS }: { ban: BanIn; gv: boolean; perHS?: HinhPerHS[] 
     // ⭐ 24/08 (Thùy: "header BTVN linh tinh, làm giống hệt form Đại đi") — BtvnBkHead ĐÚNG như Đại:
     // masthead .gtbk-mh (pill "BTVN" + tiêu đề buổi TRẦN, không nhét lớp/ngày vào) + Lớp/Ngày phát/Hạn
     // nộp trên dòng sub CÓ CẤU TRÚC + hàng ô Họ tên/Lớp/Điểm cho HS điền tay (bản GV ẩn hàng ô này).
+    // ⭐ 28/08 (Thùy: "chưa có chế độ in cả lớp theo tên học sinh giống Đại số à") — "Cả lớp": mọi HS
+    // CHUNG 1 `ban.mucs` (khác ET, mỗi HS mucs riêng vì mã đề đổi) — chỉ lặp lại phiếu N lần, đổi TÊN ở
+    // đầu mỗi phiếu. `.hp-hs-recto` (trừ phiếu đầu) = ngắt sang trang LẺ, khuôn `.pv-hs-recto` của Đại
+    // (in 2 mặt không dính phiếu HS này sang HS khác).
+    if (perHSBtvn && ban.roster?.length) {
+      return (
+        <div>
+          {ban.roster.map((hs, hi) => (
+            <div key={hs.id} className={hi > 0 ? 'hp-hs-recto' : undefined}>
+              <BtvnBkHead buoiTitle={ban.tieuBai || ban.tieuDe} ngayPhat={ban.ngay ?? ''} ngayNop={ban.ngayNop ?? ''} lopTen={ban.lop ?? ''} hoTen={hs.ho_ten} gv={gv} />
+              {ban.ghiChuDau && <div className="hp-note">{ban.ghiChuDau}</div>}
+              <MucsBlock mucs={ban.mucs} gv={gv} moHinhLyThuyet={ban.moHinhLyThuyet} />
+            </div>
+          ))}
+        </div>
+      )
+    }
     return (
       <div>
         <BtvnBkHead buoiTitle={ban.tieuBai || ban.tieuDe} ngayPhat={ban.ngay ?? ''} ngayNop={ban.ngayNop ?? ''} lopTen={ban.lop ?? ''} gv={gv} />
@@ -391,6 +430,8 @@ const HINH_CSS = `
 .hpmh-title{position:relative;z-index:3;margin:0;font-family:${HP_SANS};font-size:21pt;line-height:1.1;letter-spacing:-.03em;color:#142744;font-weight:900}
 .hpmh-sub{position:relative;z-index:3;margin-top:1.8mm;font-family:${HP_SANS};font-size:9.6pt;color:#6a7a93;font-weight:600}
 .hp-note{background:#fffaf1;border:1px solid #f0c987;border-radius:8px;padding:8px 11px;font-size:14px;color:#8a5a12;margin-bottom:12px}
+/* "Cả lớp" BTVN — mỗi phiếu HS (trừ phiếu đầu) ngắt sang trang LẺ, khuôn .pv-hs-recto của Đại (PrintView.tsx). */
+.hp-hs-recto{break-before:right}
 /* Lý thuyết mô hình — khuôn .pv-box-lt/.pv-box-label của Đại (PrintView.tsx), namespace hp-*. */
 .hp-box-lt{background:#eff7fd;border:1px solid #cfe6f5;border-radius:9px;padding:11px 13px;margin-bottom:10px;break-inside:avoid}
 .hp-box-lt-t{font-size:15px;font-weight:800;text-transform:uppercase;color:#2D9CDB;letter-spacing:.3px;margin-bottom:5px;break-after:avoid}
