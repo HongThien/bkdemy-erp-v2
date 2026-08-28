@@ -410,8 +410,11 @@ const HINH_CSS = `
 .hp-txt-flow{font-size:17px}
 .hp-fig-r{float:right;width:36%;margin:0 0 3px 5mm;box-sizing:border-box}
 .hp-fig-r img{width:100%;max-height:50mm;object-fit:contain;border:1px solid #e2e8f0;border-radius:6px;background:#fff}
-.hp-draw-r{float:right;width:40%;height:58mm;margin:0 0 3px 5mm;box-sizing:border-box;border:1px dashed #94a3b8;border-radius:6px;background:#fff;position:relative}
-.hp-draw-r span{position:absolute;top:4px;left:6px;font-size:10px;color:#94a3b8;text-transform:uppercase;letter-spacing:.05em}
+/* ⭐ Ô TRỐNG vẽ hình (Thùy 28/08: "to hơn 1 chút và có chia lưới ô vuông mờ mờ để HS vẽ hình cho dễ") —
+   to hơn (40%×58mm → 46%×68mm) + lưới ô vuông 5mm mờ (giống giấy kẻ ly) làm nền, không đụng khung/nhãn. */
+.hp-draw-r{float:right;width:46%;height:68mm;margin:0 0 3px 5mm;box-sizing:border-box;border:1px dashed #94a3b8;border-radius:6px;background:#fff;position:relative;
+  background-image:linear-gradient(#eef1f6 1px,transparent 1px),linear-gradient(90deg,#eef1f6 1px,transparent 1px);background-size:5mm 5mm}
+.hp-draw-r span{position:absolute;top:4px;left:6px;font-size:10px;color:#94a3b8;text-transform:uppercase;letter-spacing:.05em;background:#fff;padding:0 3px}
 /* văn bản trái · hình phải: inline-block thay vì flex/grid — paged.js đo layout grid không đáng tin (DEVLOG 07-05) */
 .hp-row{font-size:0;break-inside:avoid}
 .hp-txt{display:inline-block;vertical-align:top;width:66%;font-size:17px;padding-right:4mm;box-sizing:border-box}
