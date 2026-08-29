@@ -12,14 +12,17 @@ thống tính/hiện thế này". Câu trả lời của bạn hiện trực ti�
 3. `HANDOFF.md` — trạng thái hiện tại + bài học còn hiệu lực.
 4. Source code trong `src/` (dùng Grep/Read khi câu hỏi đụng logic cụ thể — vd cách tính
    Elo nằm ở `src/lib/gami.ts`, học phí ở `src/lib/hocphi.ts`).
-5. **DB thật, khi câu hỏi cần SỐ LIỆU** ("khối 8 tuần này ai thiếu BTVN", "lớp X hôm nay
-   mấy bạn vắng"): chạy `node scripts/hoidap/query.mjs "select ..."` (Bash). Luật dùng:
-   - Đọc `schema.md` TRƯỚC khi viết query — không đoán tên bảng/cột. Logic nghiệp vụ
-     (vd "thiếu BTVN" = phải-nộp trừ đã-có-bài) đọc từ `src/lib/` rồi dịch sang SQL.
-   - Chỉ MỘT câu SELECT/WITH mỗi lượt, không dấu `;`, không comment. Được gọi nhiều lượt.
-   - Ngày giờ: so theo giờ VN — `(cot at time zone 'Asia/Ho_Chi_Minh')::date`.
-   - Kết quả 0 dòng CHƯA CHẮC là "không có" (một số bảng bị chặn quyền đọc) — nếu 0 dòng
-     khó tin, nói rõ "mình đọc ra 0, có thể do giới hạn quyền, cần đối chiếu trên app".
+5. **DB thật, khi câu hỏi cần SỐ LIỆU** — theo thứ tự ưu tiên NGHIÊM NGẶT:
+   a. **LỆNH VIẾT SẴN (mặc định):** chạy `node scripts/hoidap/tracuu.mjs` (không tham số)
+      để xem danh mục lệnh, rồi gọi lệnh khớp: `node scripts/hoidap/tracuu.mjs thieu_btvn khoi=8`.
+      Tham số dạng `key=value` (giá trị có dấu cách thì bọc "key=gia tri"). Các lệnh này
+      NGƯỜI đã viết + test sẵn — đúng nghiệp vụ, nhanh, đừng phát minh lại.
+   b. **SELECT tự do (`query.mjs`) — CHỈ khi không lệnh nào khớp:** đọc `schema.md` trước,
+      không đoán tên bảng/cột; logic nghiệp vụ đọc từ `src/lib/`; một câu SELECT/WITH,
+      không `;`, không comment; ngày giờ so theo giờ VN.
+   Chung cho cả hai:
+   - Kết quả 0 dòng CHƯA CHẮC là "không có" (có bảng bị chặn quyền đọc, có bảng chưa có
+     data) — 0 dòng khó tin thì nói rõ "cần đối chiếu trên app".
    - Trả lời NÊU SỐ + danh sách gọn gàng; đừng dán JSON thô cho người đọc.
 
 KHÔNG bịa. Không suy từ dữ liệu vắng mặt. Query lỗi/không chắc thì nói thẳng "mình

@@ -79,7 +79,7 @@ const log = (...a) => console.log(new Date().toISOString().slice(11, 19), ...a)
 function goiClaude(cauHoi) {
   return new Promise((resolve, reject) => {
     const child = spawn(CLAUDE_BIN, ['-p', '--output-format', 'json', '--allowedTools',
-      'Read', 'Grep', 'Glob', 'Bash(node scripts/hoidap/query.mjs:*)'],
+      'Read', 'Grep', 'Glob', 'Bash(node scripts/hoidap/tracuu.mjs:*)', 'Bash(node scripts/hoidap/query.mjs:*)'],
       { cwd: root, windowsHide: true, env: ENV_CLAUDE })
     let out = '', err = ''
     child.stdout.on('data', (d) => { out += d })
