@@ -371,6 +371,15 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
         init[cauId] = { chon: (r as BaiLamCau).dap_an_hs as number | string, kq: { verdict: (r as BaiLamCau).verdict ?? 'wrong', key: c?.dap_an_key, baiLamCauId: (r as BaiLamCau).id } }
       }
       setSt(init)
+      // TIẾN TRÌNH (Thùy 29/08: "vào toàn bắt bật lại từ câu 1"): mở lại bài dở → nhảy thẳng câu
+      // CHƯA làm đầu tiên; xong hết → vào thẳng màn kết quả (tự luyện: nơi có nút "Làm thêm").
+      // Vị trí KHÔNG cần lưu đâu cả — suy từ f.daLam (bai_lam_cau) theo ĐÚNG thứ tự hiển thị đã xáo
+      // seeded (tính lại y hệt useMemo `caus` dưới — seed ổn định nên 2 nơi cho cùng 1 hoán vị).
+      if (Object.keys(f.daLam).length > 0) {
+        const order = f.baiTest.loai === 'giao_trinh' ? f.caus : seededPermByDang(f.caus, `${hocSinhId}:${baiTestId}:q`).map((i) => f.caus[i])
+        const dau = order.findIndex((c) => !f.daLam[c.id])
+        setIdx(dau === -1 ? order.length : dau)
+      }
     })().catch(console.error)
   }, [baiTestId, hocSinhId])
 

@@ -7072,3 +7072,7 @@ này từng hiện "209 ca" ở phiên làm UI cùng ngày) · "Dashboard học 
 - Fix: `main-hs.tsx` đăng ký qua `virtual:pwa-register` `registerSW({ immediate: true })` — module này lắng nghe 'activated' (isUpdate) → tự `window.location.reload()`. Plugin thấy import virtual module thì tự thôi inject registerSW.js. Thêm `/// <reference types="vite-plugin-pwa/client" />` vào vite-env.d.ts.
 - Máy này thiếu node_modules mới (vite-plugin-pwa thêm từ máy khác 21/08) → `npm install` sync theo lock.
 - ⚠ Bản cũ trên máy HS KHÔNG có listener reload → vẫn cần 1 chu kỳ tắt-hẳn-app + mở lại (x2) để sang bản có fix; TỪ ĐÓ về sau update tự reload, không dặn HS nữa.
+
+**TIẾN TRÌNH LÀM BÀI (Thùy: "cần lưu lại tiến trình của từng đứa — giờ vào toàn bắt bật lại từ câu 1"):**
+- Đáp án từng câu VỐN đã lưu (bai_lam_cau → f.daLam khôi phục reveal) — thiếu mỗi VỊ TRÍ: `idx` LamBai luôn khởi tạo 0, mở lại phải bấm "Câu tiếp" xuyên các câu đã làm; tự luyện xong 10 câu muốn "Làm thêm" cũng phải lướt 10 câu cũ.
+- Fix trong effect load LamBai: có daLam → tính lại ĐÚNG thứ tự hiển thị (seededPermByDang cùng seed với useMemo `caus` — seed ổn định nên 2 nơi cùng 1 hoán vị; giáo trình giữ nguyên thứ tự gốc) → `setIdx` câu chưa-làm đầu tiên, xong hết → thẳng màn kết quả. KHÔNG lưu idx ở đâu — pure-derive từ dữ liệu có thật. Áp chung LamBai (tự luyện + BTVN + giáo trình); ET (LamET) luồng riêng có đồng hồ, không đụng.
