@@ -5,7 +5,7 @@
 // đông cứng + snapshot. Người-trong-vòng-lặp ở chỗ tiền nhạy cảm — KHÔNG auto-giảm.
 // ============================================================================
 import { supabase } from './supabase'
-import { tinhHeSoHocSinh, thanhTienHocPhi, thanhTienHocDuoi, deXuatCongThuc, thanhTienHocChinh } from '../gami/hocphi.js'
+import { tinhHeSoHocSinh, thanhTienHocPhi, thanhTienHocDuoi, deXuatCongThuc } from '../gami/hocphi.js'
 
 const LIMIT = 2000
 
@@ -35,30 +35,6 @@ async function selectByIdsBatched<T>(
     const { data, error } = await fetchBatch(batch)
     if (error) throw error
     out.push(...(data ?? []))
-  }
-  return out
-}
-
-// Đọc HẾT điểm danh theo (buổi × HS) qua PHÂN TRANG — chống .limit() cắt cụt khi tập > LIMIT.
-// .order() ổn định (cặp buoi_hoc_id+hoc_sinh_id là duy nhất cho buổi lớp) để .range() không lệch trang.
-// PAGE < LIMIT server (đã biết ≥2000 vì .limit(2000) cũ trả đủ 2000) → an toàn. Dừng khi trang cuối < PAGE.
-// Cả buoiIds lẫn hsIds đều CHIA LÔ (ID_BATCH) trước khi vào `.in()` — 2 mảng lớn nhân nhau từng là
-// nguồn cơn URL-quá-dài ở trên. Chia lô đúng PARTITION (không chồng/không sót) nên gộp kết quả an toàn.
-async function fetchAllBhh(buoiIds: string[], hsIds: string[]) {
-  const PAGE = 1000
-  const out: { hoc_sinh_id: string; buoi_hoc_id: string; diem_danh: string | null }[] = []
-  for (const buoiBatch of chunkArr(buoiIds, ID_BATCH)) {
-    for (const hsBatch of chunkArr(hsIds, ID_BATCH)) {
-      for (let from = 0; ; from += PAGE) {
-        const { data, error } = await supabase.from('buoi_hoc_hs')
-          .select('hoc_sinh_id, buoi_hoc_id, diem_danh')
-          .in('buoi_hoc_id', buoiBatch).in('hoc_sinh_id', hsBatch)
-          .order('buoi_hoc_id').order('hoc_sinh_id').range(from, from + PAGE - 1)
-        if (error) throw error
-        out.push(...((data ?? []) as any[]))
-        if (!data || data.length < PAGE) break
-      }
-    }
   }
   return out
 }
@@ -130,9 +106,12 @@ export async function listHeSoHocSinh(): Promise<HocSinhHeSo[]> {
   if (e1) throw e1
   const rows = (hocSinh ?? []) as any[]
   const ids = rows.map((r) => r.id as string)
-  const heSoMap = await heSoHieuLucBatch(ids, kyHienTai()) // hệ số HIỆU LỰC tháng NÀY (effective-dated) → "hệ số hiện tại" luôn đúng
-  const hsl = await selectByIdsBatched(ids, (batch) =>
-    supabase.from('hoc_sinh_lop').select('hoc_sinh_id, lop:lop_id(mon, ten_lop)').in('hoc_sinh_id', batch).eq('trang_thai', 'dang_hoc').limit(LIMIT))
+  // 2 batch độc lập (đều chỉ cần `ids`, không cần kết quả của nhau) — chạy song song thay vì tuần tự.
+  const [heSoMap, hsl] = await Promise.all([
+    heSoHieuLucBatch(ids, kyHienTai()), // hệ số HIỆU LỰC tháng NÀY (effective-dated) → "hệ số hiện tại" luôn đúng
+    selectByIdsBatched(ids, (batch) =>
+      supabase.from('hoc_sinh_lop').select('hoc_sinh_id, lop:lop_id(mon, ten_lop)').in('hoc_sinh_id', batch).eq('trang_thai', 'dang_hoc').limit(LIMIT)),
+  ])
   const monsByHS = new Map<string, Set<string>>()
   const lopsByHS = new Map<string, string[]>()
   for (const r of (hsl ?? []) as any[]) {
@@ -178,6 +157,53 @@ export async function listHeSoHocSinh(): Promise<HocSinhHeSo[]> {
     if (lechA !== lechB) return lechA - lechB
     return a.ho_ten.localeCompare(b.ho_ten, 'vi')
   })
+}
+// Refetch DERIVED info cho ĐÚNG 1 học sinh — dùng sau khi Xác nhận/Sửa tay/Bỏ tay 1 dòng ở bảng Hệ số,
+// tránh load lại CẢ TRƯỜNG (300+ HS) chỉ để cập nhật 1 dòng (nguyên nhân lag 3-4s cũ). Vẫn tính lại từ
+// DB thật (không đoán ở client) nên tôn trọng đúng luật effective-dated ("áp dụng từ kỳ" có thể chưa
+// đổi hệ số hiển thị của kỳ hiện tại).
+export async function getHeSoHocSinh(hocSinhId: string): Promise<HocSinhHeSo | null> {
+  const { data: hs, error: e1 } = await supabase.from('hoc_sinh')
+    .select('id, ho_ten, phu_huynh_id, he_so_nguon, phu_huynh:phu_huynh_id(ho_ten)')
+    .eq('id', hocSinhId).maybeSingle()
+  if (e1) throw e1
+  if (!hs) return null
+  const r = hs as any
+  const heSoMap = await heSoHieuLucBatch([r.id], kyHienTai())
+
+  let siblings: { id: string; ho_ten: string }[] = []
+  if (r.phu_huynh_id) {
+    const { data: sibs, error: e2 } = await supabase.from('hoc_sinh').select('id, ho_ten')
+      .eq('phu_huynh_id', r.phu_huynh_id).eq('trang_thai', 'dang_hoc').neq('id', r.id).limit(LIMIT)
+    if (e2) throw e2
+    siblings = (sibs ?? []) as any[]
+  }
+  const { data: hsl, error: e3 } = await supabase.from('hoc_sinh_lop').select('hoc_sinh_id, lop:lop_id(mon, ten_lop)')
+    .in('hoc_sinh_id', [r.id, ...siblings.map((s) => s.id)]).eq('trang_thai', 'dang_hoc').limit(LIMIT)
+  if (e3) throw e3
+  const monsByHS = new Map<string, Set<string>>()
+  const lops: string[] = []
+  for (const row of (hsl ?? []) as any[]) {
+    if (!row.lop?.mon) continue
+    const s = monsByHS.get(row.hoc_sinh_id) ?? new Set<string>()
+    s.add(row.lop.mon); monsByHS.set(row.hoc_sinh_id, s)
+    if (row.hoc_sinh_id === r.id && row.lop.ten_lop) lops.push(row.lop.ten_lop)
+  }
+  const mons = [...(monsByHS.get(r.id) ?? [])]
+  const tenById = new Map(siblings.map((s) => [s.id, s.ho_ten]))
+  let anhChiEm: { ten: string; monChung: string[] } | null = null
+  for (const sib of siblings) {
+    const monChung = mons.filter((m) => monsByHS.get(sib.id)?.has(m))
+    if (monChung.length) { anhChiEm = { ten: tenById.get(sib.id) ?? '?', monChung }; break }
+  }
+  const lyDo: string[] = []
+  if (mons.length >= 2) lyDo.push(`Học ${mons.length} môn: ${mons.join(', ')}`)
+  if (anhChiEm) lyDo.push(`Có anh chị em ${anhChiEm.ten} cùng học ${anhChiEm.monChung.join(', ')}`)
+  return {
+    id: r.id, ho_ten: r.ho_ten, phu_huynh_id: r.phu_huynh_id, phu_huynh_ten: r.phu_huynh?.ho_ten ?? null,
+    mons, lops, he_so_hoc_phi: heSoMap.get(r.id) ?? 1, he_so_nguon: r.he_so_nguon,
+    heSoGoiY: tinhHeSoHocSinh(mons.length, !!anhChiEm), lyDoGoiY: lyDo.join(' · '),
+  }
 }
 // Xác nhận hệ số GỢI Ý → ghi vào cột thật (nguồn='auto').
 export async function xacNhanHeSo(hocSinhId: string, heSo: number): Promise<void> {
@@ -372,10 +398,13 @@ export async function getPhieuAo(phuHuynhId: string, ky: string): Promise<PhieuA
     const heSoCon = heSoMap.get(con.id) ?? 1
     // ghi danh CÓ HIỆU LỰC trong kỳ (đã vào trước kyEnd, chưa rời hoặc rời trong/sau kỳ).
     const { data: hslAll, error: e1 } = await supabase.from('hoc_sinh_lop')
-      .select('lop_id, ngay_vao, ngay_roi, lop:lop_id(ten_lop, muc_hoc_phi_id, muc_hoc_lieu_id)')
+      .select('lop_id, ngay_vao, ngay_roi, lop:lop_id(ten_lop, mon, muc_hoc_phi_id, muc_hoc_lieu_id)')
       .eq('hoc_sinh_id', con.id).limit(LIMIT)
     if (e1) throw e1
     const lopIdsHieuLuc: string[] = []
+    // 1 HS - 1 môn chỉ 1 lần phí tài liệu/kỳ — chuyển lớp giữa kỳ để lại 2 dòng hoc_sinh_lop hiệu lực
+    // (lớp cũ + lớp mới) cùng môn, không được tính học liệu 2 lần.
+    const monDaTinhHocLieu = new Set<string>()
     for (const enroll of (hslAll ?? []) as any[]) {
       if (enroll.ngay_vao && enroll.ngay_vao >= kyEnd) continue
       if (enroll.ngay_roi && enroll.ngay_roi < kyStart) continue
@@ -400,9 +429,13 @@ export async function getPhieuAo(phuHuynhId: string, ky: string): Promise<PhieuA
       }
       // Học liệu CHỈ tính khi tháng đó thật sự có học phí (≥1 buổi) — chưa phát sinh học phí thì
       // KHÔNG mặc định thu học liệu (Thùy 07-05).
-      if (coHocPhi && enroll.lop?.muc_hoc_lieu_id) {
+      const monEnroll = enroll.lop?.mon as string | undefined
+      if (coHocPhi && enroll.lop?.muc_hoc_lieu_id && (!monEnroll || !monDaTinhHocLieu.has(monEnroll))) {
         const mucLieu = (await supabase.from('muc_hoc_lieu').select('*').eq('id', enroll.lop.muc_hoc_lieu_id).single()).data as MucHocLieu | null
-        if (mucLieu) dong.push({ loai: 'hoc_lieu', hoc_sinh_id: con.id, hoc_sinh_ten: con.ho_ten, lop_id: enroll.lop_id, lop_ten: enroll.lop?.ten_lop, mo_ta: mucLieu.ten, so_luong: 1, don_gia: mucLieu.gia, he_so: null, thanh_tien: mucLieu.gia })
+        if (mucLieu) {
+          dong.push({ loai: 'hoc_lieu', hoc_sinh_id: con.id, hoc_sinh_ten: con.ho_ten, lop_id: enroll.lop_id, lop_ten: enroll.lop?.ten_lop, mo_ta: mucLieu.ten, so_luong: 1, don_gia: mucLieu.gia, he_so: null, thanh_tien: mucLieu.gia })
+          if (monEnroll) monDaTinhHocLieu.add(monEnroll)
+        }
       }
     }
     // Chi phí phát sinh (cá nhân + theo lớp đang học) — 1 chỗ nhập ở tab "Phát sinh" (Thùy 07-05).
@@ -1074,145 +1107,25 @@ export type DongTheoMonV2 = {
   hocLieuTen: string | null
   ngayDiHoc: string[]; ngayNghi: string[]; ngayBu: string[]; ngayDuoi: string[]
 }
-// HS cần tính học phí một kỳ = HS có GHI DANH overlap kỳ — KHÔNG lọc theo trang_thai hiện tại của HS.
-// HS nghỉ GIỮA tháng vẫn phát sinh phí cho các buổi đã học (§4 pure-derive: dựa ghi danh + buổi, KHÔNG
-// dựa snapshot trạng thái). Lọc thô ở DB "chưa rời TRƯỚC đầu kỳ"; cận trên (ngay_vao) để JS window lọc.
-async function hsIdsCoGhiDanhKy(ky: string): Promise<string[]> {
-  const { kyStart } = kyRange(ky)
-  const { data, error } = await supabase.from('hoc_sinh_lop')
-    .select('hoc_sinh_id').or(`ngay_roi.is.null,ngay_roi.gte.${kyStart}`).limit(LIMIT)
-  if (error) throw error
-  return [...new Set((data ?? []).map((r: any) => r.hoc_sinh_id as string))]
-}
-
+// Toàn bộ join/tính (bù theo buổi gốc, CT1/CT2, hệ số hiệu lực, dedupe học liệu theo môn) chạy TRONG
+// Postgres qua RPC `hoc_phi_theo_mon_ky` (migration 202608271637) — client chỉ gọi + map tên cột.
+// Trước đây hàm này kéo hết hoc_sinh_lop/buoi_hoc/buoi_hoc_hs toàn trường về rồi tự chia lô 60 + join
+// bằng vòng lặp TUẦN TỰ (đo thật: >2 phút cho 319 HS, scale gần bậc 2 theo sĩ số). Đã parity-test so
+// với bản JS cũ trên toàn bộ 426 dòng thật + đối chiếu chéo getPhieuAo cho các ca bù/đuổi/CT2/multi-môn.
 export async function listHocPhiTheoMonV2(ky: string): Promise<DongTheoMonV2[]> {
-  const { kyStart, kyEnd } = kyRange(ky)
-  const hsIds = await hsIdsCoGhiDanhKy(ky) // gồm cả HS đã nghỉ giữa tháng — window ngay_vao/ngay_roi lọc phần overlap
-  if (!hsIds.length) return []
-  const { data: hsRows, error: e0 } = await supabase.from('hoc_sinh')
-    .select('id, ho_ten, ma_hs, he_so_hoc_phi').in('id', hsIds).order('ho_ten').limit(LIMIT)
-  if (e0) throw e0
-  const hsById = new Map((hsRows ?? []).map((r: any) => [r.id, r]))
-  const heSoMap = await heSoHieuLucBatch(hsIds, ky) // ⭐ hệ số HIỆU LỰC theo kỳ (effective-dated, Cách 2)
-
-  const [hsl, ctRows] = await Promise.all([
-    selectByIdsBatched(hsIds, (batch) =>
-      supabase.from('hoc_sinh_lop').select('hoc_sinh_id, lop_id, ngay_vao, ngay_roi, lop:lop_id(ten_lop, mon, muc_hoc_phi_id, muc_hoc_lieu_id)').in('hoc_sinh_id', batch).limit(LIMIT)),
-    supabase.from('hoc_phi_cong_thuc').select('hoc_sinh_id, lop_id, cong_thuc').eq('ky', ky).limit(LIMIT)
-      .then(({ data, error }) => { if (error) throw error; return data ?? [] }),
-  ])
-  const ctChonMap = new Map((ctRows as any[]).map((r) => [`${r.hoc_sinh_id}|${r.lop_id}`, r.cong_thuc as CongThuc]))
-
-  const lopIds = [...new Set(hsl.map((r: any) => r.lop_id).filter(Boolean))]
-  const buoiRows = lopIds.length
-    ? await selectByIdsBatched(lopIds, (batch) =>
-        supabase.from('buoi_hoc').select('id, lop_id, ngay').in('lop_id', batch).neq('loai', 'bu').in('trang_thai', ['mo', 'hoan_tat']).gte('ngay', kyStart).lt('ngay', kyEnd).limit(LIMIT))
-    : []
-  const buoiByLop = new Map<string, { id: string; ngay: string }[]>()
-  const lopOfBuoi = new Map<string, string>()
-  for (const b of buoiRows as any[]) {
-    const a = buoiByLop.get(b.lop_id) ?? []; a.push(b); buoiByLop.set(b.lop_id, a)
-    lopOfBuoi.set(b.id, b.lop_id)
-  }
-  // điểm danh của MỌI buổi lớp trong kỳ — PHÂN TRANG, KHÔNG .limit(LIMIT) 1 phát.
-  // ⚠ Bug thật (08-01): toàn trường ~2500 dòng > LIMIT 2000 → .limit cắt cụt, PostgREST trả
-  // 2000 dòng đầu (thứ tự không đảm bảo) → HS rớt ngoài lát cắt bị đọc THIẾU điểm danh →
-  // nghỉ/đi-học đếm sai (vd Bùi Minh Hải 9B1: vắng 3 buổi mà hiện "nghỉ 1"), kéo theo tiền CT2 sai.
-  const allBuoiIds = (buoiRows ?? []).map((b: any) => b.id)
-  const ddMap = new Map<string, string | null>() // `${hs}|${buoi}` -> diem_danh
-  if (allBuoiIds.length) {
-    const bhh = await fetchAllBhh(allBuoiIds, hsIds)
-    for (const r of bhh) ddMap.set(`${r.hoc_sinh_id}|${r.buoi_hoc_id}`, r.diem_danh)
-  }
-  // BÙ (tính học phí CT2) — NGUỒN DUY NHẤT buByGocKy (theo tháng buổi GỐC · gồm đã xếp/huỷ · dedupe theo gốc).
-  const buByHSLop = await buByGocKy(hsIds, kyStart, kyEnd)
-  // ĐUỔI: buổi loai='bo_tro_duoi' HS có mặt trong kỳ — gắn về LỚP của case (bo_tro_duoi.lop_id).
-  const bhhDuoi = await selectByIdsBatched(hsIds, (batch) =>
-    supabase.from('buoi_hoc_hs')
-      .select('hoc_sinh_id, bo_tro_duoi_id, buoi:buoi_hoc_id!inner(ngay, loai, muc_hoc_duoi_id)')
-      .in('hoc_sinh_id', batch).eq('diem_danh', 'co_mat').eq('buoi.loai', 'bo_tro_duoi').gte('buoi.ngay', kyStart).lt('buoi.ngay', kyEnd).limit(LIMIT))
-  const duoiCaseIds = [...new Set((bhhDuoi as any[]).map((r) => r.bo_tro_duoi_id).filter(Boolean))]
-  const lopOfCase = new Map<string, string | null>()
-  if (duoiCaseIds.length) {
-    const { data: cases } = await supabase.from('bo_tro_duoi').select('id, lop_id').in('id', duoiCaseIds).limit(LIMIT)
-    for (const c of (cases ?? []) as any[]) lopOfCase.set(c.id, c.lop_id)
-  }
-  const mucDuoiIds = [...new Set(((bhhDuoi ?? []) as any[]).map((r) => r.buoi?.muc_hoc_duoi_id).filter(Boolean))]
-  const { data: mucDuoiRows } = mucDuoiIds.length ? await supabase.from('muc_hoc_duoi').select('*').in('id', mucDuoiIds).limit(LIMIT) : { data: [] as MucHocDuoi[] }
-  const giaDuoiById = new Map(((mucDuoiRows ?? []) as MucHocDuoi[]).map((m) => [m.id, m.gia]))
-  const duoiByHSLop = new Map<string, { ngay: string; gia: number }[]>() // `${hs}|${lop}` (lop có thể '' nếu case không gắn lớp)
-  for (const r of (bhhDuoi ?? []) as any[]) {
-    const lopId = (r.bo_tro_duoi_id ? lopOfCase.get(r.bo_tro_duoi_id) : null) ?? ''
-    const key = `${r.hoc_sinh_id}|${lopId}`
-    const a = duoiByHSLop.get(key) ?? []
-    a.push({ ngay: r.buoi.ngay, gia: r.buoi.muc_hoc_duoi_id ? (giaDuoiById.get(r.buoi.muc_hoc_duoi_id) ?? 0) : 0 })
-    duoiByHSLop.set(key, a)
-  }
-
-  const mucPhiIds = [...new Set((hsl ?? []).map((r: any) => r.lop?.muc_hoc_phi_id).filter(Boolean))]
-  const mucLieuIds2 = [...new Set((hsl ?? []).map((r: any) => r.lop?.muc_hoc_lieu_id).filter(Boolean))]
-  const [{ data: mucPhiRows2 }, { data: mucLieuRows2 }] = await Promise.all([
-    mucPhiIds.length ? supabase.from('muc_hoc_phi').select('*').in('id', mucPhiIds).limit(LIMIT) : Promise.resolve({ data: [] as MucHocPhi[] }),
-    mucLieuIds2.length ? supabase.from('muc_hoc_lieu').select('*').in('id', mucLieuIds2).limit(LIMIT) : Promise.resolve({ data: [] as MucHocLieu[] }),
-  ])
-  const mucPhiById2 = new Map(((mucPhiRows2 ?? []) as MucHocPhi[]).map((m) => [m.id, m]))
-  const mucLieuById2 = new Map(((mucLieuRows2 ?? []) as MucHocLieu[]).map((m) => [m.id, m]))
-
-  const out: DongTheoMonV2[] = []
-  const dungLopKeys = new Set<string>()
-  for (const enroll of (hsl ?? []) as any[]) {
-    if (enroll.ngay_vao && enroll.ngay_vao >= kyEnd) continue
-    if (enroll.ngay_roi && enroll.ngay_roi < kyStart) continue
-    const hs = hsById.get(enroll.hoc_sinh_id); if (!hs) continue
-    const muc = enroll.lop?.muc_hoc_phi_id ? mucPhiById2.get(enroll.lop.muc_hoc_phi_id) : null
-    const inWindow = (ngay: string) => (!enroll.ngay_vao || ngay >= enroll.ngay_vao) && (!enroll.ngay_roi || ngay <= enroll.ngay_roi)
-    const buois = (buoiByLop.get(enroll.lop_id) ?? []).filter((b) => inWindow(b.ngay)).sort((a, b) => a.ngay.localeCompare(b.ngay))
-    const key = `${enroll.hoc_sinh_id}|${enroll.lop_id}`
-    dungLopKeys.add(key)
-    const ngayDiHoc: string[] = []; const ngayNghi: string[] = []
-    for (const b of buois) {
-      const dd = ddMap.get(`${enroll.hoc_sinh_id}|${b.id}`)
-      if (dd === 'co_mat') ngayDiHoc.push(b.ngay)
-      else if (dd === 'vang' || dd === 'vang_phep') ngayNghi.push(b.ngay)
-    }
-    const { soBuoiBu, soBuoiBuDaHoc, soBuoiBuDaXep, ngayBu } = tachBu(buByHSLop.get(key))
-    const duoi = (duoiByHSLop.get(key) ?? []).sort((a, b) => a.ngay.localeCompare(b.ngay))
-    const soBuoiLop = buois.length
-    if (soBuoiLop <= 0 && !duoi.length) continue // kỳ này không có gì với lớp này
-    const heSo = heSoMap.get(enroll.hoc_sinh_id) ?? 1 // hệ số hiệu lực của kỳ (effective-dated)
-    const donGia = muc?.don_gia_buoi ?? 0
-    const congThucDeXuat = deXuatCongThuc(ngayNghi.length, soBuoiLop) as CongThuc
-    const congThucChon = ctChonMap.get(key) ?? null
-    const ct = congThucChon ?? congThucDeXuat
-    const tienHocChinh = donGia > 0 && soBuoiLop > 0 ? thanhTienHocChinh(ct, { soBuoiLop, soBuoiDiHoc: ngayDiHoc.length, soBuoiBu }, donGia, heSo) : 0
-    const tienDuoi = duoi.reduce((s, d) => s + d.gia, 0)
-    const mucLieu = tienHocChinh > 0 && enroll.lop?.muc_hoc_lieu_id ? mucLieuById2.get(enroll.lop.muc_hoc_lieu_id) : null
-    const tienHocLieu = mucLieu?.gia ?? 0
-    out.push({
-      hoc_sinh_id: enroll.hoc_sinh_id, hoc_sinh_ten: hs.ho_ten, ma_hs: hs.ma_hs ?? null,
-      lop_id: enroll.lop_id, lop_ten: enroll.lop?.ten_lop ?? '', mon: enroll.lop?.mon ?? '',
-      soBuoiLop, soBuoiNghi: ngayNghi.length, soBuoiDiHoc: ngayDiHoc.length, soBuoiBu, soBuoiBuDaHoc, soBuoiBuDaXep, soBuoiDuoi: duoi.length,
-      donGia, heSo, congThucDeXuat, congThucChon,
-      tienHocChinh, tienDuoi, tienHocLieu, thanhTien: tienHocChinh + tienDuoi + tienHocLieu,
-      hocLieuTen: mucLieu?.ten ?? null,
-      ngayDiHoc, ngayNghi, ngayBu, ngayDuoi: duoi.map((d) => d.ngay),
-    })
-  }
-  // Đuổi có case KHÔNG khớp dòng lớp nào (case không gắn lớp / HS đã rời lớp) → dòng riêng chỉ-đuổi.
-  for (const [key, duoi] of duoiByHSLop) {
-    if (dungLopKeys.has(key)) continue
-    const [hocSinhId] = key.split('|')
-    const hs = hsById.get(hocSinhId); if (!hs) continue
-    const tienDuoi = duoi.reduce((s, d) => s + d.gia, 0)
-    out.push({
-      hoc_sinh_id: hocSinhId, hoc_sinh_ten: hs.ho_ten, ma_hs: hs.ma_hs ?? null,
-      lop_id: '', lop_ten: '—', mon: 'Học đuổi',
-      soBuoiLop: 0, soBuoiNghi: 0, soBuoiDiHoc: 0, soBuoiBu: 0, soBuoiBuDaHoc: 0, soBuoiBuDaXep: 0, soBuoiDuoi: duoi.length,
-      donGia: 0, heSo: 1, congThucDeXuat: 'ct1', congThucChon: null,
-      tienHocChinh: 0, tienDuoi, tienHocLieu: 0, thanhTien: tienDuoi,
-      hocLieuTen: null, ngayDiHoc: [], ngayNghi: [], ngayBu: [], ngayDuoi: duoi.map((d) => d.ngay),
-    })
-  }
+  const { data, error } = await supabase.rpc('hoc_phi_theo_mon_ky', { p_ky: ky })
+  if (error) throw error
+  const out: DongTheoMonV2[] = ((data ?? []) as any[]).map((r) => ({
+    hoc_sinh_id: r.hoc_sinh_id, hoc_sinh_ten: r.hoc_sinh_ten, ma_hs: r.ma_hs ?? null,
+    lop_id: r.lop_id ?? '', lop_ten: r.ten_lop ?? '', mon: r.mon ?? '',
+    soBuoiLop: r.so_buoi_lop, soBuoiNghi: r.so_buoi_nghi, soBuoiDiHoc: r.so_buoi_di_hoc,
+    soBuoiBu: r.so_buoi_bu, soBuoiBuDaHoc: r.so_buoi_bu_da_hoc, soBuoiBuDaXep: r.so_buoi_bu_da_xep, soBuoiDuoi: r.so_buoi_duoi,
+    donGia: Number(r.don_gia), heSo: Number(r.he_so),
+    congThucDeXuat: r.cong_thuc_de_xuat, congThucChon: r.cong_thuc_chon,
+    tienHocChinh: Number(r.tien_hoc_chinh), tienDuoi: Number(r.tien_duoi), tienHocLieu: Number(r.tien_hoc_lieu), thanhTien: Number(r.thanh_tien),
+    hocLieuTen: r.hoc_lieu_ten ?? null,
+    ngayDiHoc: r.ngay_di_hoc ?? [], ngayNghi: r.ngay_nghi ?? [], ngayBu: r.ngay_bu ?? [], ngayDuoi: r.ngay_duoi ?? [],
+  }))
   return out.sort((a, b) => a.hoc_sinh_ten.localeCompare(b.hoc_sinh_ten, 'vi') || a.mon.localeCompare(b.mon, 'vi'))
 }
 // Chọn công thức TAY cho 1 HS×lớp×kỳ (ct=null → xoá dòng = quay về theo đề xuất của hệ).
