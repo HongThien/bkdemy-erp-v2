@@ -103,8 +103,30 @@ export async function updateGayHoatDong(id: string, patch: Partial<Pick<GayHoatD
 // 2) QUÉT GẬY TỰ ĐỘNG — đẻ đề xuất 'cho'. Idempotent: ref_key UNIQUE vĩnh viễn
 //    (1 việc trễ = đề xuất đúng 1 lần, kể cả quét lại mỗi lần mở màn).
 //    Chỉ soi deadline RƠI TRONG THÁNG NÀY (tháng cũ đã chốt sổ, không truy hồi).
+//    ⭐ 1 VIỆC TRỄ = 1 NGƯỜI (Thùy 29/08): listAllStaffTasks đẻ task cho MỌI
+//    người được phân lớp (leader khối kèm nhiều lớp cũng dính) → lọc về đúng
+//    NGƯỜI PHỤ TRÁCH CHÍNH theo phan_cong_lop.la_chinh. Không xác định được
+//    chính chủ (≥2 ứng viên, không ai la_chinh) → BỎ TRỐNG, không đánh bừa
+//    (CLAUDE §1.5 "thà bỏ trống còn hơn đánh sai").
+//    ⭐ nhan_su.mien_gay = true → quét tự động bỏ qua (gậy thủ công vẫn đánh được).
 // ════════════════════════════════════════════════════════════════════════════
 type DeXuatMoi = Omit<GayDeXuat, 'id' | 'trang_thai' | 'so_gay' | 'nguoi_quyet' | 'quyet_at' | 'ly_do_bo_qua' | 'ledger_id' | 'created_at'>
+type PhanCongRow = { nhan_su_id: string; lop_id: string; vai_tro: 'gv' | 'tg'; la_chinh: boolean }
+
+// Người phụ trách CHÍNH của 1 khâu trong 1 lớp — danhgia: GV · chấm (ingame/et/btvn/mt):
+// TG, riêng ingame lớp KHÔNG có TG thì về GV. 1 ứng viên → người đó; nhiều ứng viên →
+// người la_chinh duy nhất; vẫn nhập nhằng → null (không đánh ai).
+export function nguoiPhuTrach(pcs: PhanCongRow[], tab: string): string | null {
+  const chon = (vai: 'gv' | 'tg'): string | null => {
+    const cands = pcs.filter((p) => p.vai_tro === vai)
+    if (cands.length === 1) return cands[0].nhan_su_id
+    const chinh = cands.filter((p) => p.la_chinh)
+    return chinh.length === 1 ? chinh[0].nhan_su_id : null
+  }
+  if (tab === 'danhgia') return chon('gv')
+  if (tab === 'ingame') return pcs.some((p) => p.vai_tro === 'tg') ? chon('tg') : chon('gv')
+  return chon('tg') // et / btvn / mt
+}
 
 export async function quetGayTuDong(): Promise<number> {
   const today = homNayVN()
@@ -113,12 +135,26 @@ export async function quetGayTuDong(): Promise<number> {
   const now = Date.now()
   const props: DeXuatMoi[] = []
 
+  const [{ data: mienRows }, { data: pcAll }] = await Promise.all([
+    supabase.from('nhan_su').select('id').eq('mien_gay', true).limit(LIMIT),
+    supabase.from('phan_cong_lop').select('nhan_su_id, lop_id, vai_tro, la_chinh').limit(LIMIT),
+  ])
+  const mien = new Set(((mienRows ?? []) as any[]).map((r) => r.id))
+  const pcByLop = new Map<string, PhanCongRow[]>()
+  for (const p of (pcAll ?? []) as PhanCongRow[]) {
+    if (!pcByLop.has(p.lop_id)) pcByLop.set(p.lop_id, [])
+    pcByLop.get(p.lop_id)!.push(p)
+  }
+
   // ── (a) Việc VẬN HÀNH (chấm bài/đánh giá/ET/BTVN/MT) — tái dùng đúng invariant
   // listAllStaffTasks, KHÔNG tính lại deadline. Lùi 7 ngày để bắt buổi cuối tháng
   // trước có deadline lấn sang tháng này (vd ET trưa hôm sau).
   const rows = await listAllStaffTasks(congNgay(monthStart, -7), today)
   for (const r of rows) {
     if (r.deadline == null || r.deadline < monthStartMs) continue
+    // chỉ tính cho NGƯỜI PHỤ TRÁCH CHÍNH của khâu này — task của người khác bỏ qua
+    if (nguoiPhuTrach(pcByLop.get(r.lopId) ?? [], r.tab) !== r.nhan_su_id) continue
+    if (mien.has(r.nhan_su_id)) continue
     let tre = 0
     if (r.done && r.doneAt) tre = new Date(r.doneAt).getTime() - r.deadline
     else if (!r.done) tre = now - r.deadline
@@ -141,6 +177,7 @@ export async function quetGayTuDong(): Promise<number> {
     .limit(LIMIT)
   if (error) throw error
   for (const v of (viecs ?? []) as any[]) {
+    if (mien.has(v.nguoi_lam_id)) continue
     // ngày nộp thật: ngay_nop (đã duyệt đạt) hoặc ngày VN của hoan_thanh_at (đang chờ nghiệm thu)
     const nop: string | null = v.ngay_nop ?? (v.hoan_thanh_at ? new Date(new Date(v.hoan_thanh_at).getTime() + 7 * 3600000).toISOString().slice(0, 10) : null)
     let treNgay = 0
@@ -294,6 +331,18 @@ export async function listChotThang(ky: string): Promise<GayChotThangFull[]> {
   return rows
     .map((r) => ({ ...r, ns_ten: nsMap.get(r.nhan_su_id) ?? '?', nguoi_chot_ten: nsMap.get(r.nguoi_chot) ?? '?' }))
     .sort((a, b) => b.so_gay_chot - a.so_gay_chot)
+}
+
+// ── MIỄN GẬY TỰ ĐỘNG (nhan_su.mien_gay) — CEO bật/tắt qua UI Danh mục ────────
+export type NsMienGay = { id: string; ho_ten: string; ma_ns: string | null }
+export async function listMienGay(): Promise<NsMienGay[]> {
+  const { data, error } = await supabase.from('nhan_su').select('id, ho_ten, ma_ns').eq('mien_gay', true).order('ho_ten').limit(LIMIT)
+  if (error) throw error
+  return (data ?? []) as NsMienGay[]
+}
+export async function setMienGay(nhanSuId: string, mien: boolean): Promise<void> {
+  const { error } = await supabase.from('nhan_su').update({ mien_gay: mien }).eq('id', nhanSuId)
+  if (error) throw error
 }
 
 // Đếm đề xuất đang chờ (badge tab). Không quét — chỉ đọc.

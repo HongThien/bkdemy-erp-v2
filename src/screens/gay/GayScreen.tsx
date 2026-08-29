@@ -16,8 +16,8 @@ import {
   GAY_DON_GIA, MA_LOI_CHAM_DEADLINE, kyHienTai, nhanKy,
   listGayLoi, createGayLoi, updateGayLoi, listGayHoatDong, createGayHoatDong, updateGayHoatDong,
   quetGayTuDong, listDeXuat, chotDeXuat, boQuaDeXuat,
-  danhGayThuCong, goGay, thuHoiGay, bangGay, chotThang, listChotThang,
-  type GayLoi, type GayHoatDong, type GayDeXuatFull, type BangGayRow, type GayChotThangFull,
+  danhGayThuCong, goGay, thuHoiGay, bangGay, chotThang, listChotThang, listMienGay, setMienGay,
+  type GayLoi, type GayHoatDong, type GayDeXuatFull, type BangGayRow, type GayChotThangFull, type NsMienGay,
 } from '../../lib/gay'
 
 type Tab = 'bang' | 'dexuat' | 'danhgo' | 'danhmuc' | 'chot'
@@ -217,13 +217,16 @@ function FragmentRow({ r, i, mo, onMo, canAct, trongPhamVi, thuHoiId, setThuHoiI
 
 // ════════════════════════════════════════════════════════════════════════════
 // TAB 2 — ĐỀ XUẤT gậy tự động: mở tab là QUÉT (lazy, idempotent) rồi liệt kê 'cho'.
-// Leader chỉ thao tác được người TRONG PHẠM VI mình; người ngoài phạm vi chỉ xem.
+// CÔNG KHAI CHI TIẾT cho MỌI NGƯỜI xem & phản biện (Thùy 29/08) — gom theo người,
+// xoè ra thấy từng việc trễ. Nút hành động chỉ hiện với leader đúng phạm vi.
 // ════════════════════════════════════════════════════════════════════════════
 function DeXuatTab({ lois, canAct, laAdmin, scopeIds, meId, onBao }: {
   lois: GayLoi[]; canAct: boolean; laAdmin: boolean; scopeIds: Set<string>; meId: string; onBao: (ok: boolean, msg: string) => void
 }) {
   const [dxs, setDxs] = useState<GayDeXuatFull[]>([])
   const [loading, setLoading] = useState(true)
+  const [moNs, setMoNs] = useState<string | null>(null)
+  const [locNs, setLocNs] = useState('')
   const [soGayById, setSoGayById] = useState<Record<string, number>>({})
   const [loiById, setLoiById] = useState<Record<string, string>>({})
   const [boQuaId, setBoQuaId] = useState<string | null>(null)
@@ -240,8 +243,15 @@ function DeXuatTab({ lois, canAct, laAdmin, scopeIds, meId, onBao }: {
   }
   useEffect(() => { load() }, [])
 
-  // leader thấy người dưới quyền + CHÍNH MÌNH (chỉ xem); admin thấy hết
-  const hien = dxs.filter((d) => laAdmin || scopeIds.has(d.nhan_su_id) || d.nhan_su_id === meId)
+  // Gom theo người (nhiều nhất lên đầu) — mặc định mở sẵn người đang lọc / chính mình
+  const nhom = useMemo(() => {
+    const by = new Map<string, GayDeXuatFull[]>()
+    for (const d of dxs) { if (!by.has(d.nhan_su_id)) by.set(d.nhan_su_id, []); by.get(d.nhan_su_id)!.push(d) }
+    return [...by.entries()]
+      .map(([nsId, items]) => ({ nsId, ten: items[0].ns_ten ?? '?', items: items.sort((a, b) => (b.tre_phut ?? 0) - (a.tre_phut ?? 0)) }))
+      .sort((a, b) => b.items.length - a.items.length)
+  }, [dxs])
+  const nhomHien = locNs ? nhom.filter((n) => n.nsId === locNs) : nhom
 
   const lamChot = async (d: GayDeXuatFull) => {
     try {
@@ -261,42 +271,63 @@ function DeXuatTab({ lois, canAct, laAdmin, scopeIds, meId, onBao }: {
 
   return (
     <div className="rounded-2xl bg-white p-5 shadow-sm">
-      <div className="mb-3 flex items-center gap-2">
+      <div className="mb-3 flex flex-wrap items-center gap-2">
         <span className="rounded-full border border-amber-200 bg-amber-50 px-2.5 py-0.5 text-xs font-medium text-amber-700">⚠ Máy đề xuất — người chốt. Chưa chốt = chưa thành gậy.</span>
-        <button className={btnGhost + ' ml-auto'} onClick={load}>↻ Quét lại</button>
+        <span className="text-xs text-slate-400">Danh sách công khai để mọi người kiểm tra & phản biện — thấy sai thì báo leader bỏ qua kèm lý do.</span>
+        <div className="ml-auto flex items-center gap-1.5">
+          <select className={inputCls + ' !py-1 text-xs'} value={locNs} onChange={(e) => { setLocNs(e.target.value); setMoNs(e.target.value || null) }}>
+            <option value="">Tất cả ({dxs.length})</option>
+            {nhom.map((n) => <option key={n.nsId} value={n.nsId}>{n.ten} ({n.items.length})</option>)}
+          </select>
+          <button className={btnGhost} onClick={load}>↻ Quét lại</button>
+        </div>
       </div>
-      {loading ? <p className="text-sm text-slate-400">Đang quét deadline ERP…</p> : !hien.length ? (
+      {loading ? <p className="text-sm text-slate-400">Đang quét deadline ERP…</p> : !nhomHien.length ? (
         <p className="text-sm text-slate-400">Không có đề xuất nào chờ xử lý.</p>
-      ) : hien.map((d) => {
-        const duocLam = canAct && (laAdmin || scopeIds.has(d.nhan_su_id))
+      ) : nhomHien.map((n) => {
+        const mo = moNs === n.nsId
+        const duocLam = canAct && (laAdmin || scopeIds.has(n.nsId))
         return (
-          <div key={d.id} className="mt-2 flex flex-wrap items-center gap-3 rounded-xl border border-slate-100 border-l-4 border-l-amber-400 bg-white px-4 py-3 shadow-sm">
-            <div className="min-w-[220px] flex-1">
-              <p className="text-sm font-semibold text-slate-800">{d.ns_ten}</p>
-              <p className="mt-0.5 text-sm text-slate-600">{d.mo_ta}</p>
-              <p className="mt-0.5 text-xs text-slate-400">
-                {d.nguon === 'vanhanh' ? 'Vận hành' : 'Giao việc'} · hạn {ddmmhh(d.deadline_at)} · <span className="font-medium text-red-600">trễ {nhanTre(d.tre_phut)}</span>
-              </p>
-            </div>
-            {duocLam ? (
-              boQuaId === d.id ? (
-                <div className="flex items-center gap-1.5">
-                  <input className={inputCls} style={{ width: 200 }} placeholder="lý do bỏ qua (bắt buộc)…" value={boQuaLyDo} onChange={(e) => setBoQuaLyDo(e.target.value)} autoFocus />
-                  <button className={btnPrimary} disabled={!boQuaLyDo.trim()} onClick={() => lamBoQua(d)}>Xác nhận bỏ qua</button>
-                  <button className={btnGhost} onClick={() => { setBoQuaId(null); setBoQuaLyDo('') }}>Huỷ</button>
-                </div>
-              ) : (
-                <div className="flex items-center gap-1.5">
-                  <select className={inputCls} value={loiById[d.id] ?? loiChamDeadline} onChange={(e) => setLoiById((p) => ({ ...p, [d.id]: e.target.value }))}>
-                    {lois.map((l) => <option key={l.id} value={l.id}>{l.ten}</option>)}
-                  </select>
-                  <input className={inputCls + ' text-center'} type="number" min={1} style={{ width: 58 }}
-                    value={soGayById[d.id] ?? d.so_gay} onChange={(e) => setSoGayById((p) => ({ ...p, [d.id]: Math.max(1, Number(e.target.value) || 1) }))} />
-                  <button className={btnDanger} onClick={() => lamChot(d)}>Đánh gậy</button>
-                  <button className={btnGhost} onClick={() => { setBoQuaId(d.id); setBoQuaLyDo('') }}>Bỏ qua</button>
-                </div>
-              )
-            ) : <span className="text-xs font-medium text-slate-400">Chờ leader xử lý</span>}
+          <div key={n.nsId} className="mt-2 overflow-hidden rounded-xl border border-slate-100 shadow-sm">
+            <button className="flex w-full items-center gap-3 bg-white px-4 py-3 text-left transition hover:bg-slate-50/70" onClick={() => setMoNs(mo ? null : n.nsId)}>
+              <span className="text-sm font-semibold text-slate-800">{n.ten}</span>
+              {n.nsId === meId && <span className="rounded-full bg-indigo-50 px-1.5 py-0.5 text-[10px] font-semibold text-indigo-600">bạn</span>}
+              <span className={pill('amber')}>{n.items.length} việc trễ</span>
+              <span className="ml-auto text-xs font-medium text-indigo-500">{mo ? 'Đóng ▲' : 'Chi tiết ▼'}</span>
+            </button>
+            {mo && (
+              <div className="border-t border-slate-100 bg-slate-50/60 px-3 py-2">
+                {n.items.map((d) => (
+                  <div key={d.id} className="mt-1.5 flex flex-wrap items-center gap-3 rounded-lg border-l-2 border-l-amber-400 bg-white px-3 py-2 shadow-sm">
+                    <div className="min-w-[220px] flex-1">
+                      <p className="text-sm text-slate-700">{d.mo_ta}</p>
+                      <p className="mt-0.5 text-xs text-slate-400">
+                        {d.nguon === 'vanhanh' ? 'Vận hành' : 'Giao việc'} · hạn {ddmmhh(d.deadline_at)} · <span className="font-medium text-red-600">trễ {nhanTre(d.tre_phut)}</span>
+                      </p>
+                    </div>
+                    {duocLam ? (
+                      boQuaId === d.id ? (
+                        <div className="flex items-center gap-1.5">
+                          <input className={inputCls + ' !py-1 !text-xs'} style={{ width: 190 }} placeholder="lý do bỏ qua (bắt buộc)…" value={boQuaLyDo} onChange={(e) => setBoQuaLyDo(e.target.value)} autoFocus />
+                          <button className={btnPrimary + ' !px-2 !py-1 !text-xs'} disabled={!boQuaLyDo.trim()} onClick={() => lamBoQua(d)}>Xác nhận</button>
+                          <button className={btnGhost + ' !px-2 !py-1 !text-xs'} onClick={() => { setBoQuaId(null); setBoQuaLyDo('') }}>Huỷ</button>
+                        </div>
+                      ) : (
+                        <div className="flex items-center gap-1.5">
+                          <select className={inputCls + ' !py-1 !text-xs'} value={loiById[d.id] ?? loiChamDeadline} onChange={(e) => setLoiById((p) => ({ ...p, [d.id]: e.target.value }))}>
+                            {lois.map((l) => <option key={l.id} value={l.id}>{l.ten}</option>)}
+                          </select>
+                          <input className={inputCls + ' !py-1 !text-xs text-center'} type="number" min={1} style={{ width: 52 }}
+                            value={soGayById[d.id] ?? d.so_gay} onChange={(e) => setSoGayById((p) => ({ ...p, [d.id]: Math.max(1, Number(e.target.value) || 1) }))} />
+                          <button className={btnDanger + ' !px-2 !py-1 !text-xs'} onClick={() => lamChot(d)}>Đánh gậy</button>
+                          <button className={btnGhost + ' !px-2 !py-1 !text-xs'} onClick={() => { setBoQuaId(d.id); setBoQuaLyDo('') }}>Bỏ qua</button>
+                        </div>
+                      )
+                    ) : <span className="text-[11px] font-medium text-slate-400">Chờ leader</span>}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         )
       })}
@@ -381,6 +412,43 @@ function DanhMucTab({ lois, hds, reload, onBao }: {
       <PanelDanhMuc tieuDe="Hoạt động gỡ gậy" tone="text-emerald-600" items={hds}
         onAdd={async (p) => { await createGayHoatDong(p); await reload() }}
         onUpdate={async (id, patch) => { await updateGayHoatDong(id, patch); await reload() }} onBao={onBao} />
+      <PanelMienGay onBao={onBao} />
+    </div>
+  )
+}
+
+// Miễn gậy TỰ ĐỘNG (nhan_su.mien_gay) — người khối lượng đặc thù (CEO chốt 29/08:
+// Thùy + Phạm Thị Thùy Trang). Chỉ miễn phần máy quét; gậy thủ công vẫn đánh được.
+function PanelMienGay({ onBao }: { onBao: (ok: boolean, msg: string) => void }) {
+  const [mien, setMien] = useState<NsMienGay[]>([])
+  const [nsAll, setNsAll] = useState<NhanSu[]>([])
+  const [themId, setThemId] = useState('')
+  const load = () => { listMienGay().then(setMien).catch(() => setMien([])) }
+  useEffect(() => { load(); listNhanSu().then((l) => setNsAll(l.filter((n) => n.trang_thai === 'dang_lam'))).catch(() => setNsAll([])) }, [])
+
+  const doi = async (nsId: string, m: boolean) => {
+    try { await setMienGay(nsId, m); onBao(true, m ? 'Đã miễn gậy tự động.' : 'Đã bỏ miễn — quét lại sẽ tính người này.'); setThemId(''); load() }
+    catch (e: any) { onBao(false, String(e.message ?? e)) }
+  }
+  const mienIds = new Set(mien.map((m) => m.id))
+
+  return (
+    <div className="rounded-2xl bg-white p-5 shadow-sm">
+      <p className="mb-1 text-sm font-semibold text-slate-700">Miễn gậy tự động</p>
+      <p className="mb-3 text-xs text-slate-400">Máy quét deadline bỏ qua những người này (khối lượng việc đặc thù). Gậy thủ công vẫn đánh bình thường.</p>
+      {!mien.length ? <p className="text-sm text-slate-400">Chưa miễn ai.</p> : mien.map((m) => (
+        <div key={m.id} className="flex items-center gap-2 border-b border-slate-50 py-2 text-sm text-slate-700">
+          <span className="flex-1">{m.ho_ten}{m.ma_ns ? <span className="ml-1.5 text-xs text-slate-400">({m.ma_ns})</span> : null}</span>
+          <button className={btnGhost + ' !px-2 !py-1 !text-xs'} onClick={() => doi(m.id, false)}>Bỏ miễn</button>
+        </div>
+      ))}
+      <div className="mt-3 flex gap-2">
+        <select className={inputCls + ' flex-1'} value={themId} onChange={(e) => setThemId(e.target.value)}>
+          <option value="">— chọn nhân sự để miễn —</option>
+          {nsAll.filter((n) => !mienIds.has(n.id)).map((n) => <option key={n.id} value={n.id}>{n.ho_ten}{n.ma_ns ? ` (${n.ma_ns})` : ''}</option>)}
+        </select>
+        <button className={btnPrimary} disabled={!themId} onClick={() => doi(themId, true)}>+ Miễn</button>
+      </div>
     </div>
   )
 }

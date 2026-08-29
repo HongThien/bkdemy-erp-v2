@@ -1709,6 +1709,7 @@
 | anh_url | text | Y |  |  |  |
 | la_admin_he_thong | boolean |  | false |  |  |
 | giao_dien | text |  | 'sang'::text |  | `sang` · `toi` |
+| mien_gay | boolean |  | false |  |  |
 
 ## nhan_su_mon
 
