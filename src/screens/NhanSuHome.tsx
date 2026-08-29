@@ -39,6 +39,7 @@ import VietCuaToiTab from './giaoviec/VietCuaToiTab'
 import CongKhaiTab from './giaoviec/CongKhaiTab'
 import TroLyTab from './troly/TroLyTab'
 import HoiDapTab from './hoidap/HoiDapTab'
+import { hoiDapDuocDung } from '../lib/hoidap'
 import { listDotChoDuyetDuoi } from '../lib/botro_duoi'
 import QuanLyLevelScreen from './gami/QuanLyLevelScreen'
 import PhanQuyenScreen from './phanquyen/PhanQuyenScreen'
@@ -225,7 +226,11 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
   // MỌI role, trong khi lượt này chỉ 1 người dùng. Tab thì bỏ đi cũng sạch.
   // 'hoidap' = tab HỎI HỆ THỐNG (bot Claude Code đọc repo trả lời "vì sao/quy trình") —
   // screens/hoidap/HoiDapTab.tsx. Cùng lý do KHÔNG đẻ leaf như 'rasoat' ngay trên.
+  // Pilot TẠM THỜI 3 người (CEO 29/08): tab chỉ hiện khi DB gật (hoi_dap_duoc_dung) —
+  // ẩn UI là lịch sự, rào thật nằm ở RLS (migration 202608291205).
   const [view, setView] = useState<'vanhanh' | 'phattrien' | 'rasoat' | 'hoidap'>('vanhanh')
+  const [duocHoiDap, setDuocHoiDap] = useState(false)
+  useEffect(() => { hoiDapDuocDung().then(setDuocHoiDap).catch(() => setDuocHoiDap(false)) }, [])
   // Phát triển: mặc định CẢ TEAM (kế hoạch tuần công khai — Thùy chốt 08-13: team bé, làm
   // gương, không có rủi ro tâm lý) — option bên cạnh để thu hẹp về chỉ việc của mình.
   const [phatTrienXem, setPhatTrienXem] = useState<'team' | 'toi'>('team')
@@ -351,7 +356,7 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
         {/* TOGGLE Vận hành / Phát triển — thay cho filter loại việc (CEO chốt 07-31). Số task trực quan,
             không cần lọc; Phát triển tách hẳn sang view riêng cho rộng rãi. */}
         <div className="inline-flex rounded-full bg-slate-100 p-0.5">
-          {([['vanhanh', '🛠 Vận hành'], ['phattrien', '🚀 Phát triển'], ['rasoat', '🤖 Trợ lý'], ['hoidap', '💬 Hỏi hệ thống']] as const).map(([k, ten]) => (
+          {([['vanhanh', '🛠 Vận hành'], ['phattrien', '🚀 Phát triển'], ['rasoat', '🤖 Trợ lý'], ...(duocHoiDap ? [['hoidap', '💬 Hỏi hệ thống']] : [])] as ['vanhanh' | 'phattrien' | 'rasoat' | 'hoidap', string][]).map(([k, ten]) => (
             <button key={k} onClick={() => setView(k)}
               className={`rounded-full px-4 py-1.5 text-[13px] font-semibold transition ${view === k ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>{ten}</button>
           ))}
