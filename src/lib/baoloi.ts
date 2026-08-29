@@ -2,8 +2,10 @@
 import { supabase } from './supabase'
 
 export type TrangThaiBaoLoi = 'moi' | 'cho_fix' | 'tu_choi' | 'tu_lam' | 'da_fix' | 'xong' | 'tra_lai'
+export type LoaiBaoLoi = 'bug' | 'yeu_cau'
 export type BaoLoi = {
   id: string
+  loai: LoaiBaoLoi
   mo_ta: string
   route: string | null
   context: Record<string, unknown> | null
@@ -27,6 +29,16 @@ export async function createBaoLoi(input: { mo_ta: string; route?: string | null
   const { error } = await supabase.from('bao_loi').insert({
     mo_ta: input.mo_ta, route: input.route ?? null, context: input.context ?? null,
     anh_url: input.anh_url ?? null, created_by: user?.id ?? null,
+  })
+  if (error) throw error
+}
+
+// Order tính năng (Thùy) — vào thẳng cho_fix: chính người duyệt tạo ra nó, khỏi qua cổng 2.
+export async function createOrderTinhNang(moTa: string, route?: string | null): Promise<void> {
+  const { data: { user } } = await supabase.auth.getUser()
+  const { error } = await supabase.from('bao_loi').insert({
+    loai: 'yeu_cau', mo_ta: moTa, route: route ?? null,
+    trang_thai: 'cho_fix', created_by: user?.id ?? null,
   })
   if (error) throw error
 }

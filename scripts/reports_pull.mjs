@@ -15,12 +15,13 @@ const c = new pg.Client({ connectionString: url })
 await c.connect()
 try {
   const { rows } = await c.query(
-    `select id, created_at, route, mo_ta, context from bao_loi where trang_thai = 'cho_fix' order by created_at asc`)
+    `select id, loai, created_at, route, mo_ta, context from bao_loi where trang_thai = 'cho_fix' order by created_at asc`)
   if (!rows.length) { console.log('(không có report nào ở trạng thái cho_fix)'); process.exit(0) }
   console.log(`# ${rows.length} report ĐÃ DUYỆT cho-fix\n`)
   for (const r of rows) {
     const ctx = r.context ?? {}
     console.log(`## ${r.id}`)
+    console.log(`- loại: ${r.loai === 'yeu_cau' ? 'YÊU CẦU tính năng (Thùy order)' : 'BUG (nhân sự báo)'}`)
     console.log(`- ngày: ${r.created_at?.toISOString?.() ?? r.created_at}`)
     console.log(`- màn (leaf): ${r.route ?? '—'}`)
     console.log(`- người báo: ${ctx.nguoi ?? ctx.email ?? '?'}`)
