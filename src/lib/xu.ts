@@ -51,18 +51,30 @@ async function expThangPerHsMon(ym: string): Promise<Map<string, number>> {
 // ── PREVIEW CHỐT: mỗi (HS×môn) có EXP HOẶC đã có dòng chốt tháng đó — kèm chênh lệch nếu đã chốt ──
 export type ChotRow = {
   hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; mon: string
+  khoi: string | null; tenLop: string | null    // lớp ĐANG HỌC của đúng môn dòng này (filter khối/lớp)
   exp: number; xu: number                       // theo data + thang HIỆN TẠI
   daChot: boolean; xuDaPhat: number; expLucChot: number | null; chotAt: string | null
   lech: number                                  // xu − xuDaPhat (0 = khớp; ≠0 → cần chốt lại)
+  phatSinh: number                              // Σ cộng/trừ TAY của HS trong tháng (per HS, KHÔNG per môn — luồng riêng khỏi xu EXP)
 }
 export async function previewChotXu(ym: string): Promise<{ rows: ChotRow[]; bacs: BacXu[] }> {
-  const [expMap, bacs, chotR, hsR] = await Promise.all([
+  const [Y, M] = ym.split('-').map(Number)
+  const mStart = new Date(Date.UTC(Y, M - 1, 1, -7, 0, 0)).toISOString()
+  const mEnd = new Date(Date.UTC(Y, M, 1, -7, 0, 0)).toISOString()
+  const [expMap, bacs, chotR, hsR, gdR, psR] = await Promise.all([
     expThangPerHsMon(ym), listBacXu(),
     supabase.from('qlht_xu_ledger').select('hoc_sinh_id, mon, loai, amount, exp_snapshot, created_at').eq('thang', ym).in('loai', ['chot_thang', 'chot_lai']).limit(LIMIT),
-    supabase.from('hoc_sinh').select('id, ho_ten, ma_hs').limit(LIMIT),
+    supabase.from('hoc_sinh').select('id, ho_ten, ma_hs, khoi').limit(LIMIT),
+    supabase.from('hoc_sinh_lop').select('hoc_sinh_id, lop:lop_id(mon, khoi, ten_lop)').eq('trang_thai', 'dang_hoc').limit(LIMIT),
+    // Xu PHÁT SINH tháng = cộng/trừ tay (loai cong_tay/tru_tay) — luồng NGƯỜI QUYẾT, tách khỏi chốt EXP.
+    supabase.from('qlht_xu_ledger').select('hoc_sinh_id, amount').in('loai', ['cong_tay', 'tru_tay']).gte('created_at', mStart).lt('created_at', mEnd).limit(LIMIT),
   ])
   if (chotR.error) throw chotR.error
   const hsName = new Map(((hsR.data ?? []) as any[]).map((h) => [h.id, h]))
+  const lopMap = new Map<string, { khoi: string | null; ten_lop: string | null }>()
+  for (const r of ((gdR.data ?? []) as any[])) if (r.lop?.mon) lopMap.set(r.hoc_sinh_id + '|' + r.lop.mon, { khoi: r.lop.khoi ?? null, ten_lop: r.lop.ten_lop ?? null })
+  const psMap = new Map<string, number>()
+  for (const r of ((psR.data ?? []) as any[])) psMap.set(r.hoc_sinh_id, (psMap.get(r.hoc_sinh_id) ?? 0) + Number(r.amount))
   // gom dòng chốt đã có per (HS×môn): xu cộng dồn (gốc + các lần chốt lại), exp_snapshot lấy dòng MỚI NHẤT
   const daChot = new Map<string, { xu: number; exp: number | null; at: string }>()
   for (const r of ((chotR.data ?? []) as any[]).sort((a, b) => (a.created_at < b.created_at ? -1 : 1))) {
@@ -78,10 +90,12 @@ export async function previewChotXu(ym: string): Promise<{ rows: ChotRow[]; bacs
     const xu = xuForExp(exp, bacs)
     const c = daChot.get(k)
     if (exp <= 0 && !c) continue
+    const l = lopMap.get(k)
     rows.push({
       hoc_sinh_id: hs, ho_ten: hsName.get(hs)?.ho_ten ?? '?', ma_hs: hsName.get(hs)?.ma_hs ?? null, mon,
+      khoi: l?.khoi ?? hsName.get(hs)?.khoi ?? null, tenLop: l?.ten_lop ?? null,
       exp, xu, daChot: !!c, xuDaPhat: c?.xu ?? 0, expLucChot: c?.exp ?? null, chotAt: c?.at ?? null,
-      lech: xu - (c?.xu ?? 0),
+      lech: xu - (c?.xu ?? 0), phatSinh: psMap.get(hs) ?? 0,
     })
   }
   rows.sort((a, b) => a.mon.localeCompare(b.mon) || b.exp - a.exp)

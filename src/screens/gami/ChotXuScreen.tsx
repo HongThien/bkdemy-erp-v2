@@ -19,6 +19,9 @@ function listThang(): string[] {
   return out.reverse()
 }
 
+// So khớp tên không dấu (gõ "lam anh" vẫn ra "Lâm Anh")
+const khongDau = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D').toLowerCase()
+
 export default function ChotXuScreen() {
   const thangs = useMemo(listThang, [])
   const [ym, setYm] = useState(thangs[0])
@@ -27,6 +30,9 @@ export default function ChotXuScreen() {
   const [vi, setVi] = useState<Map<string, number>>(new Map())
   const [busy, setBusy] = useState(false)
   const [msg, setMsg] = useState<string | null>(null)
+  const [khoiF, setKhoiF] = useState('')   // filter khối ('' = tất cả)
+  const [lopF, setLopF] = useState('')     // filter lớp
+  const [search, setSearch] = useState('') // tìm tên/mã HS
 
   const load = () => {
     setRows(null); setMsg(null)
@@ -36,8 +42,15 @@ export default function ChotXuScreen() {
   }
   useEffect(load, [ym])
 
+  // NÚT CHỐT tính trên TOÀN BỘ tháng (không theo filter — filter chỉ để xem); bảng hiển thị thì lọc.
   const chuaChot = (rows ?? []).filter((r) => !r.daChot && r.xu > 0)
   const lech = (rows ?? []).filter((r) => r.daChot && r.lech !== 0)
+  const khois = useMemo(() => [...new Set((rows ?? []).map((r) => r.khoi).filter(Boolean))].sort() as string[], [rows])
+  const lops = useMemo(() => [...new Set((rows ?? []).filter((r) => !khoiF || r.khoi === khoiF).map((r) => r.tenLop).filter(Boolean))].sort() as string[], [rows, khoiF])
+  const hienThi = useMemo(() => (rows ?? []).filter((r) =>
+    (!khoiF || r.khoi === khoiF) && (!lopF || r.tenLop === lopF) &&
+    (!search.trim() || khongDau(r.ho_ten).includes(khongDau(search.trim())) || (r.ma_hs ?? '').toLowerCase().includes(search.trim().toLowerCase()))
+  ), [rows, khoiF, lopF, search])
   const onChot = async () => {
     if (busy) return
     setBusy(true); setMsg(null)
@@ -66,40 +79,71 @@ export default function ChotXuScreen() {
       <p className="text-[12px] text-slate-400">
         Quy đổi TỪNG MÔN theo bảng mốc bên phải (giữa 2 mốc lấy mốc dưới) rồi cộng ví chung. Chốt xong là đóng băng —
         nếu EXP tháng đã chốt thay đổi (nhập trễ/sửa điểm), bảng hiện cột lệch và nút chuyển thành "Chốt lại" ghi dòng điều chỉnh ±.
+        "Phát sinh" = xu thưởng/phạt TAY trong tháng (luồng riêng, không dính chốt EXP). Nút chốt luôn chốt CẢ THÁNG — filter chỉ để xem.
       </p>
+      <div className="flex flex-wrap items-center gap-2">
+        <select value={khoiF} onChange={(e) => { setKhoiF(e.target.value); setLopF('') }} className="h-8 rounded-lg border border-slate-300 px-2 text-[13px]">
+          <option value="">Mọi khối</option>
+          {khois.map((k) => <option key={k} value={k}>Khối {k}</option>)}
+        </select>
+        <select value={lopF} onChange={(e) => setLopF(e.target.value)} className="h-8 rounded-lg border border-slate-300 px-2 text-[13px]">
+          <option value="">Mọi lớp</option>
+          {lops.map((l) => <option key={l} value={l}>{l}</option>)}
+        </select>
+        <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Tìm tên / mã HS…"
+          className="h-8 w-56 rounded-lg border border-slate-300 px-2.5 text-[13px]" />
+        {(khoiF || lopF || search) && (
+          <button onClick={() => { setKhoiF(''); setLopF(''); setSearch('') }} className="text-[12px] text-slate-400 hover:text-slate-600">✕ bỏ lọc</button>
+        )}
+        <span className="ml-auto text-[12px] text-slate-400">{hienThi.length}/{rows?.length ?? 0} dòng</span>
+      </div>
       <div className="flex min-h-0 flex-1 gap-5">
         <div className="min-w-0 flex-1 overflow-auto rounded-xl border border-slate-200">
-          {!rows ? <div className="p-6 text-sm text-slate-400">Đang tải…</div> : rows.length === 0 ? <div className="p-6 text-sm text-slate-400">Không có EXP tháng này.</div> : (
+          {!rows ? <div className="p-6 text-sm text-slate-400">Đang tải…</div> : rows.length === 0 ? <div className="p-6 text-sm text-slate-400">Không có EXP tháng này.</div>
+          : hienThi.length === 0 ? <div className="p-6 text-sm text-slate-400">Không dòng nào khớp bộ lọc.</div> : (
             <table className="w-full border-collapse text-[13px]">
               <thead className="sticky top-0 bg-slate-50 text-left text-[12px] uppercase tracking-wide text-slate-500">
                 <tr>
-                  <th className="px-3 py-2">Học sinh</th><th className="px-3 py-2">Môn</th>
+                  <th className="px-3 py-2">Học sinh</th><th className="px-3 py-2">Lớp</th><th className="px-3 py-2">Môn</th>
                   <th className="px-3 py-2 text-right">EXP tháng</th><th className="px-3 py-2 text-right">Xu theo thang</th>
                   <th className="px-3 py-2 text-right">Đã phát</th><th className="px-3 py-2 text-right">Lệch</th>
-                  <th className="px-3 py-2 text-right">Ví hiện tại</th>
+                  <th className="px-3 py-2 text-right">Phát sinh</th><th className="px-3 py-2 text-right">Ví hiện tại</th>
                 </tr>
               </thead>
               <tbody>
-                {rows.map((r, i) => (
-                  <tr key={i} className={`border-t border-slate-100 ${r.daChot && r.lech !== 0 ? 'bg-amber-50/60' : ''}`}>
-                    <td className="px-3 py-1.5">{r.ho_ten}<span className="ml-1 text-[11px] text-slate-400">{r.ma_hs ?? ''}</span></td>
-                    <td className="px-3 py-1.5"><span className="rounded bg-slate-100 px-1.5 text-[11px] text-slate-600">{r.mon || '—'}</span></td>
-                    <td className="px-3 py-1.5 text-right tabular-nums">{r.exp.toLocaleString('vi-VN')}</td>
-                    <td className="px-3 py-1.5 text-right font-semibold tabular-nums text-indigo-700">{r.xu}</td>
-                    <td className="px-3 py-1.5 text-right tabular-nums text-slate-500">{r.daChot ? r.xuDaPhat : '—'}</td>
-                    <td className={`px-3 py-1.5 text-right font-semibold tabular-nums ${!r.daChot ? 'text-slate-300' : r.lech === 0 ? 'text-slate-300' : r.lech > 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
-                      {!r.daChot || r.lech === 0 ? '—' : (r.lech > 0 ? '+' : '') + r.lech}</td>
-                    <td className="px-3 py-1.5 text-right tabular-nums text-amber-700">{(vi.get(r.hoc_sinh_id) ?? 0).toLocaleString('vi-VN')}</td>
-                  </tr>
-                ))}
+                {(() => {
+                  // Phát sinh/Ví là số PER HS (không per môn) — chỉ in ở dòng ĐẦU của mỗi HS để khỏi trùng khi cộng mắt.
+                  const seen = new Set<string>()
+                  return hienThi.map((r, i) => {
+                    const first = !seen.has(r.hoc_sinh_id); if (first) seen.add(r.hoc_sinh_id)
+                    return (
+                      <tr key={i} className={`border-t border-slate-100 ${r.daChot && r.lech !== 0 ? 'bg-amber-50/60' : ''}`}>
+                        <td className="px-3 py-1.5">{r.ho_ten}<span className="ml-1 text-[11px] text-slate-400">{r.ma_hs ?? ''}</span></td>
+                        <td className="px-3 py-1.5 text-[12px] text-slate-500">{r.tenLop ?? '—'}</td>
+                        <td className="px-3 py-1.5"><span className="rounded bg-slate-100 px-1.5 text-[11px] text-slate-600">{r.mon || '—'}</span></td>
+                        <td className="px-3 py-1.5 text-right tabular-nums">{r.exp.toLocaleString('vi-VN')}</td>
+                        <td className="px-3 py-1.5 text-right font-semibold tabular-nums text-indigo-700">{r.xu}</td>
+                        <td className="px-3 py-1.5 text-right tabular-nums text-slate-500">{r.daChot ? r.xuDaPhat : '—'}</td>
+                        <td className={`px-3 py-1.5 text-right font-semibold tabular-nums ${!r.daChot ? 'text-slate-300' : r.lech === 0 ? 'text-slate-300' : r.lech > 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
+                          {!r.daChot || r.lech === 0 ? '—' : (r.lech > 0 ? '+' : '') + r.lech}</td>
+                        <td className={`px-3 py-1.5 text-right tabular-nums ${!first || r.phatSinh === 0 ? 'text-slate-300' : r.phatSinh > 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
+                          {first && r.phatSinh !== 0 ? (r.phatSinh > 0 ? '+' : '') + r.phatSinh : '—'}</td>
+                        <td className={`px-3 py-1.5 text-right tabular-nums text-amber-700 ${first ? '' : 'opacity-30'}`}>{(vi.get(r.hoc_sinh_id) ?? 0).toLocaleString('vi-VN')}</td>
+                      </tr>
+                    )
+                  })
+                })()}
               </tbody>
               <tfoot className="border-t border-slate-200 bg-slate-50 font-semibold">
                 <tr>
-                  <td className="px-3 py-2" colSpan={2}>Tổng ({rows.length} dòng HS×môn)</td>
-                  <td className="px-3 py-2 text-right tabular-nums">{rows.reduce((s, r) => s + r.exp, 0).toLocaleString('vi-VN')}</td>
-                  <td className="px-3 py-2 text-right tabular-nums text-indigo-700">{rows.reduce((s, r) => s + r.xu, 0).toLocaleString('vi-VN')}</td>
-                  <td className="px-3 py-2 text-right tabular-nums text-slate-500">{rows.reduce((s, r) => s + r.xuDaPhat, 0).toLocaleString('vi-VN')}</td>
-                  <td className="px-3 py-2" colSpan={2} />
+                  <td className="px-3 py-2" colSpan={3}>Tổng lọc ({hienThi.length} dòng · {new Set(hienThi.map((r) => r.hoc_sinh_id)).size} HS)</td>
+                  <td className="px-3 py-2 text-right tabular-nums">{hienThi.reduce((s, r) => s + r.exp, 0).toLocaleString('vi-VN')}</td>
+                  <td className="px-3 py-2 text-right tabular-nums text-indigo-700">{hienThi.reduce((s, r) => s + r.xu, 0).toLocaleString('vi-VN')}</td>
+                  <td className="px-3 py-2 text-right tabular-nums text-slate-500">{hienThi.reduce((s, r) => s + r.xuDaPhat, 0).toLocaleString('vi-VN')}</td>
+                  <td className="px-3 py-2" />
+                  {/* Phát sinh cộng PER HS (Set) — cộng theo dòng sẽ đếm trùng HS học 2 môn */}
+                  <td className="px-3 py-2 text-right tabular-nums">{(() => { const s = new Set<string>(); let t = 0; for (const r of hienThi) if (!s.has(r.hoc_sinh_id)) { s.add(r.hoc_sinh_id); t += r.phatSinh } return (t > 0 ? '+' : '') + t.toLocaleString('vi-VN') })()}</td>
+                  <td className="px-3 py-2" />
                 </tr>
               </tfoot>
             </table>
