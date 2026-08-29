@@ -1,7 +1,7 @@
-// Màn "Báo lỗi" (auto-report Pha 1) — Thùy DUYỆT cổng 2: report nào cho AI fix / từ chối / để tự làm.
-// Queue + lọc trạng thái + xem context/ảnh + đổi trạng thái. (Bước 3-4 sẽ nối luồng fix sau.)
+// Màn "Báo lỗi" (auto-report) — Thùy DUYỆT cổng 2: report nào cho AI fix / từ chối / để tự làm.
+// Queue + lọc trạng thái + xem context/ảnh + đổi trạng thái + ORDER tính năng (vào thẳng cho_fix).
 import { useEffect, useMemo, useState } from 'react'
-import { listBaoLoi, setTrangThaiBaoLoi, deleteBaoLoi, type BaoLoi, type TrangThaiBaoLoi } from '../../lib/baoloi'
+import { listBaoLoi, setTrangThaiBaoLoi, deleteBaoLoi, createOrderTinhNang, type BaoLoi, type TrangThaiBaoLoi } from '../../lib/baoloi'
 
 const TT: Record<TrangThaiBaoLoi, { l: string; cls: string }> = {
   moi: { l: 'Mới', cls: 'bg-amber-100 text-amber-700' },
@@ -24,6 +24,10 @@ export default function BaoLoiScreen() {
   const [err, setErr] = useState<string | null>(null)
   const [filter, setFilter] = useState<'all' | TrangThaiBaoLoi>('all')
   const [openId, setOpenId] = useState<string | null>(null)
+  const [orderOpen, setOrderOpen] = useState(false)
+  const [orderMoTa, setOrderMoTa] = useState('')
+  const [orderRoute, setOrderRoute] = useState('')
+  const [orderSaving, setOrderSaving] = useState(false)
 
   async function reload() { setLoading(true); setErr(null); try { setRows(await listBaoLoi()) } catch (e: any) { setErr(e?.message ?? String(e)) } finally { setLoading(false) } }
   useEffect(() => { reload() }, [])
@@ -43,8 +47,31 @@ export default function BaoLoiScreen() {
         <span className="mr-2 text-sm font-semibold text-slate-900">Quản lý báo lỗi</span>
         {FILTERS.map((f) => <button key={f.v} onClick={() => setFilter(f.v)} className={tab(filter === f.v)}>{f.l}{f.v !== 'all' && dem(f.v as TrangThaiBaoLoi) ? ` (${dem(f.v as TrangThaiBaoLoi)})` : ''}</button>)}
         <button onClick={reload} className="rounded-md border border-slate-300 px-2.5 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-400">↻ Tải lại</button>
+        <button onClick={() => setOrderOpen(true)} className="rounded-md bg-violet-600 px-2.5 py-1 text-[12px] font-semibold text-white hover:bg-violet-500">➕ Order tính năng</button>
         <span className="ml-auto text-[12px] text-slate-400">Tổng {rows.length} · Cổng 2: duyệt report nào cho AI fix tự động.</span>
       </div>
+
+      {orderOpen && (
+        <div className="border-b border-violet-200 bg-violet-50/60 px-6 py-3">
+          <div className="mx-auto max-w-[760px]">
+            <div className="mb-1 text-[13px] font-semibold text-violet-800">Order tính năng — vào thẳng hàng đợi "Cho fix" (không qua duyệt)</div>
+            <textarea value={orderMoTa} onChange={(e) => setOrderMoTa(e.target.value)} rows={3} autoFocus
+              placeholder="Mô tả tính năng muốn có: làm gì, ở màn nào, nhìn/hoạt động ra sao. Càng kỹ AI làm càng đúng ý."
+              className="w-full rounded-lg border border-violet-200 bg-white px-3 py-2 text-[13px] text-slate-800 outline-none focus:border-violet-400" />
+            <div className="mt-2 flex items-center gap-2">
+              <input value={orderRoute} onChange={(e) => setOrderRoute(e.target.value)} placeholder="Màn liên quan (leaf, tuỳ chọn — vd: baoloi, kho, hocphi)"
+                className="w-72 rounded-lg border border-violet-200 bg-white px-3 py-1.5 text-[12px] font-mono text-slate-700 outline-none focus:border-violet-400" />
+              <button disabled={orderSaving || !orderMoTa.trim()} onClick={async () => {
+                setOrderSaving(true)
+                try { await createOrderTinhNang(orderMoTa.trim(), orderRoute.trim() || null); setOrderMoTa(''); setOrderRoute(''); setOrderOpen(false); reload() }
+                catch (e: any) { alert('Lỗi tạo order: ' + (e?.message ?? e)) }
+                finally { setOrderSaving(false) }
+              }} className="rounded-md bg-violet-600 px-3 py-1.5 text-[12px] font-semibold text-white hover:bg-violet-500 disabled:opacity-40">{orderSaving ? 'Đang lưu…' : 'Tạo order'}</button>
+              <button onClick={() => setOrderOpen(false)} className="rounded-md border border-slate-300 px-3 py-1.5 text-[12px] text-slate-500 hover:border-slate-400">Huỷ</button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className="min-h-0 flex-1 overflow-auto p-6">
         {err && <div className="mb-3 rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[13px] text-rose-600">Lỗi tải danh sách: {err}</div>}
@@ -59,6 +86,7 @@ export default function BaoLoiScreen() {
                   <div key={r.id} className="rounded-xl border border-slate-200 bg-white">
                     <button onClick={() => setOpenId(expand ? null : r.id)} className="flex w-full items-start gap-3 px-4 py-3 text-left">
                       <span className={`mt-0.5 shrink-0 rounded-full px-2 py-0.5 text-[11px] font-semibold ${TT[r.trang_thai].cls}`}>{TT[r.trang_thai].l}</span>
+                      {r.loai === 'yeu_cau' && <span className="mt-0.5 shrink-0 rounded-full bg-violet-100 px-2 py-0.5 text-[11px] font-semibold text-violet-700">Yêu cầu</span>}
                       <div className="min-w-0 flex-1">
                         <div className="truncate text-[14px] font-medium text-slate-800">{r.mo_ta}</div>
                         <div className="mt-0.5 text-[11px] text-slate-400">{ctx.nguoi ?? ctx.email ?? '?'} · màn <b className="font-mono text-slate-500">{r.route ?? '—'}</b> · {fmt(r.created_at)}</div>
