@@ -583,21 +583,12 @@ export async function listHocPhiTheoHocSinhVaMon(ky: string): Promise<DongHocSin
 // = Σ(hoá đơn ĐÃ CHỐT) − Σ(đã thu), group theo PH. >0 = còn nợ.
 // Nợ CHI TIẾT theo PH: khởi tạo (điền tay `phu_huynh.no_khoi_tao`) + hệ thống (Σ hoá đơn chốt − đã thu).
 async function noChiTietTheoPH(): Promise<Map<string, { khoiTao: number; heThong: number }>> {
+  // §2.0 (30/08): Σ ở DB — fn_hocphi_no_theo_ph (mig 202608300306), parity tổng nợ khớp
+  // kiểm chéo độc lập. Client chỉ đổ về Map cho các reader cũ.
+  const { data, error } = await supabase.rpc('fn_hocphi_no_theo_ph')
+  if (error) throw error
   const m = new Map<string, { khoiTao: number; heThong: number }>()
-  const get = (id: string) => { let x = m.get(id); if (!x) { x = { khoiTao: 0, heThong: 0 }; m.set(id, x) } return x }
-  const { data: phs, error: e0 } = await supabase.from('phu_huynh').select('id, no_khoi_tao').gt('no_khoi_tao', 0).limit(LIMIT)
-  if (e0) throw e0
-  for (const p of (phs ?? []) as any[]) get(p.id).khoiTao = Number(p.no_khoi_tao)
-  const { data: hds, error: e1 } = await supabase.from('hoa_don').select('id, phu_huynh_id, tong_tien').not('dong_at', 'is', null).limit(LIMIT)
-  if (e1) throw e1
-  const hdPh = new Map<string, string>()
-  for (const h of (hds ?? []) as any[]) { get(h.phu_huynh_id).heThong += Number(h.tong_tien); hdPh.set(h.id, h.phu_huynh_id) }
-  const hdIds = [...hdPh.keys()]
-  if (hdIds.length) {
-    const { data: tts, error: e2 } = await supabase.from('thanh_toan').select('hoa_don_id, so_tien').in('hoa_don_id', hdIds).limit(LIMIT)
-    if (e2) throw e2
-    for (const t of (tts ?? []) as any[]) { const ph = hdPh.get(t.hoa_don_id); if (ph) get(ph).heThong -= Number(t.so_tien) }
-  }
+  for (const r of (data ?? []) as any[]) m.set(r.phu_huynh_id, { khoiTao: Number(r.no_khoi_tao), heThong: Number(r.no_he_thong) })
   return m
 }
 // Tổng nợ (khởi tạo + hệ thống) theo PH — dùng cho list "Học phí tổng" + tính "nợ kỳ trước" trên phiếu.
@@ -659,41 +650,21 @@ export async function listTinDung(): Promise<(TinDung & { phu_huynh_ten: string 
 }
 // Tín dụng CÒN LẠI theo PH cho kỳ (batch): Σ cấp (hieu_luc_tu ≤ ky) − Σ ĐÃ TRỪ (dòng giam_gioi_thieu ở hoá đơn CHỐT).
 export async function tinDungConLaiBatch(phIds: string[], ky: string): Promise<Map<string, number>> {
+  // §2.0 (30/08): Σ cấp − Σ đã trừ + sàn 0 tính ở DB (fn_hocphi_tin_dung_con_lai).
   const out = new Map<string, number>()
   if (!phIds.length) return out
-  const { data: tds, error: e1 } = await supabase.from('hoc_phi_tin_dung').select('phu_huynh_id, so_tien').in('phu_huynh_id', phIds).lte('hieu_luc_tu', ky).limit(LIMIT)
-  if (e1) throw e1
-  for (const t of (tds ?? []) as any[]) out.set(t.phu_huynh_id, (out.get(t.phu_huynh_id) ?? 0) + Number(t.so_tien))
-  if (out.size) {
-    // ĐÃ TRỪ = Σ |giam_gioi_thieu| ở hoá đơn ĐÃ CHỐT của PH (dòng âm → cộng trị tuyệt đối).
-    const { data: hds } = await supabase.from('hoa_don').select('id, phu_huynh_id').in('phu_huynh_id', [...out.keys()]).not('dong_at', 'is', null).limit(LIMIT)
-    const hdPh = new Map(((hds ?? []) as any[]).map((h) => [h.id, h.phu_huynh_id]))
-    const hdIds = [...hdPh.keys()]
-    if (hdIds.length) {
-      const { data: dd } = await supabase.from('hoa_don_dong').select('hoa_don_id, thanh_tien').eq('loai', 'giam_gioi_thieu').in('hoa_don_id', hdIds).limit(LIMIT)
-      for (const d of (dd ?? []) as any[]) { const ph = hdPh.get(d.hoa_don_id); if (ph) out.set(ph, (out.get(ph) ?? 0) - Math.abs(Number(d.thanh_tien))) }
-    }
-  }
-  for (const [k, v] of out) out.set(k, Math.max(0, v)) // còn lại ≥ 0
+  const { data, error } = await supabase.rpc('fn_hocphi_tin_dung_con_lai', { p_phs: phIds, p_ky: `${ky.slice(0, 10)}` })
+  if (error) throw error
+  for (const r of (data ?? []) as any[]) out.set(r.phu_huynh_id, Number(r.con_lai))
   return out
 }
 
 // ── CHỐT KỲ (Ảo→Thật, atomic claim — §7/§266) ───────────────────────────────
 export async function tinhSoDuNo(phuHuynhId: string): Promise<number> {
-  // Nợ khởi tạo (điền tay) tự cộng vào "nợ kỳ trước" trên phiếu (Thùy 08-01).
-  const { data: ph } = await supabase.from('phu_huynh').select('no_khoi_tao').eq('id', phuHuynhId).maybeSingle()
-  const khoiTao = Number((ph as { no_khoi_tao?: number } | null)?.no_khoi_tao ?? 0)
-  const { data: hds, error: e1 } = await supabase.from('hoa_don').select('id, tong_tien').eq('phu_huynh_id', phuHuynhId).not('dong_at', 'is', null).limit(LIMIT)
-  if (e1) throw e1
-  const hdIds = (hds ?? []).map((h) => h.id)
-  const tongHoaDon = (hds ?? []).reduce((s, h) => s + Number(h.tong_tien), 0)
-  let tongDaThu = 0
-  if (hdIds.length) {
-    const { data: tt, error: e2 } = await supabase.from('thanh_toan').select('so_tien').in('hoa_don_id', hdIds).limit(LIMIT)
-    if (e2) throw e2
-    tongDaThu = (tt ?? []).reduce((s, t) => s + Number(t.so_tien), 0)
-  }
-  return khoiTao + tongHoaDon - tongDaThu
+  // §2.0 (30/08): nợ khởi tạo + Σ hoá đơn chốt − Σ đã thu — tính ở DB (fn_hocphi_so_du_no).
+  const { data, error } = await supabase.rpc('fn_hocphi_so_du_no', { p_ph: phuHuynhId })
+  if (error) throw error
+  return Number(data ?? 0)
 }
 
 // HUỶ CHỐT (sửa học phí sau chốt, Thùy 08-01): đưa PH về phiếu ẢO — xoá hoá đơn + dòng + thanh toán + log
