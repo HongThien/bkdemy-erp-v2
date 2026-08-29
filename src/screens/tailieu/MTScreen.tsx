@@ -5,7 +5,7 @@
 // Phạm vi hiện tại: soạn + gán buổi. Chấm MT trong buổi (Đ/C/S, đóng phase, Elo K=60) = lượt sau.
 import { useEffect, useState } from 'react'
 import { useStore } from '../../store/useStore'
-import { useMonScope } from '../../lib/mon'
+import { useMonScope } from '../../hooks/useMonScope'
 import {
   listMT, createMT, renameMT, deleteMT, addPhanMT, ganMTVaoBuoi, listGanMT,
   type MTGanRow,

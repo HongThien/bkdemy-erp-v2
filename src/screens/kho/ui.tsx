@@ -103,16 +103,9 @@ export function MathText({ children, className, prefix }: { children: string | n
 
 export const inp = 'w-full rounded-md border border-slate-300 px-2.5 py-1.5 text-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20'
 
-// Đọc ẢNH từ clipboard (nút "📋 Dán") — dùng Async Clipboard API (cần https/localhost). Không có ảnh → null.
-export async function readClipboardImageFile(): Promise<File | null> {
-  if (!navigator.clipboard?.read) throw new Error('Trình duyệt không hỗ trợ đọc clipboard')
-  const items = await navigator.clipboard.read()
-  for (const it of items) {
-    const type = it.types.find((t) => t.startsWith('image/'))
-    if (type) { const blob = await it.getType(type); return new File([blob], `clipboard.${type.split('/')[1] || 'png'}`, { type }) }
-  }
-  return null
-}
+// readClipboardImageFile ĐÃ DỜI sang src/lib/clipboard.ts (app OPS cần nó mà không cần katex của file
+// này) — re-export giữ nguyên mọi chỗ import cũ.
+export { readClipboardImageFile } from '../../lib/clipboard'
 
 // Bậc lớp = ô vuông 1 chữ, MÀU ĐẶC riêng từng bậc (S/A/B/C đều có màu, không xám).
 export function BacChip({ bac, size = 'md' }: { bac: string; size?: 'sm' | 'md' }) {

@@ -6,7 +6,7 @@ import { phatHanhTest, PHAT_HANH_DUOC } from '../../lib/testonline'
 import { listLinkGenJobs, type LinkGenJobRow } from '../../lib/linkgen'
 import { listLop, type Lop } from '../../lib/nhansu'
 import { useStore } from '../../store/useStore'
-import { useMonScope } from '../../lib/mon'
+import { useMonScope } from '../../hooks/useMonScope'
 // ⭐ Hình: liệt kê CHUNG bảng này (KHÔNG gộp bảng — Thùy chốt "2 giáo trình riêng") + in/xoá dịch đúng
 // pipeline riêng của Hình (loadLuoi + resolveBanIn + HinhPrintView, khác hẳn PrintView id-based của Đại).
 import {
