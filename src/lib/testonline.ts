@@ -408,38 +408,12 @@ export async function listAcceptedAnswers(maCaus: string[]): Promise<Map<string,
 // ③ resolve report 'moi' của các dòng đó → 'dung'. Trả số bài đã sửa.
 // Mastery đọc bai_lam_cau LIVE (suy động) → tự đúng theo, không phải sync gì thêm.
 export async function chapNhanDapAn(maCau: string, dapAnRaw: string): Promise<{ backfilled: number }> {
-  const norm = smartNormalize(dapAnRaw)
-  if (!norm) throw new Error('Đáp án rỗng sau chuẩn hoá — không chấp nhận được.')
-  // ① cache (idempotent — unique ma_cau+answer_normalized)
-  const { error: e1 } = await supabase.from('question_accepted_answers')
-    .upsert({ ma_cau: maCau, answer_normalized: norm, answer_raw: dapAnRaw, source: 'manual' },
-      { onConflict: 'ma_cau,answer_normalized', ignoreDuplicates: true })
-  if (e1) throw e1
-  // ② backfill: mọi dòng wrong cùng câu → lọc client theo normalize (smartNormalize là JS, DB không có)
-  const { data: wrongs, error: e2 } = await supabase.from('bai_lam_cau')
-    .select('id, dap_an_hs, cau:bai_test_cau_id!inner(ma_cau, diem)')
-    .eq('verdict', 'wrong').eq('cau.ma_cau', maCau).limit(LIMIT)
-  if (e2) throw e2
-  const targets = ((wrongs ?? []) as any[]).filter((r) => smartNormalize(String(r.dap_an_hs ?? '')) === norm)
-  if (!targets.length) return { backfilled: 0 }
-  // update theo nhóm diem (thường đồng nhất =1) — verdict correct, đường 'manual' (người duyệt)
-  const byDiem = new Map<number, string[]>()
-  for (const t of targets) {
-    const d = Number(t.cau?.diem ?? 1)
-    const arr = byDiem.get(d) ?? []; arr.push(t.id); byDiem.set(d, arr)
-  }
-  for (const [d, ids] of byDiem) {
-    const { error } = await supabase.from('bai_lam_cau')
-      .update({ verdict: 'correct', diem: d, cham_boi: 'manual', cham_at: new Date().toISOString() })
-      .in('id', ids)
-    if (error) throw error
-  }
-  // ③ resolve report của các dòng vừa sửa
-  const uid = (await supabase.auth.getUser()).data.user?.id ?? null
-  await supabase.from('bai_test_report')
-    .update({ trang_thai: 'dung', duyet_boi: uid, duyet_at: new Date().toISOString() })
-    .in('bai_lam_cau_id', targets.map((t) => t.id)).eq('trang_thai', 'moi')
-  return { backfilled: targets.length }
+  // §2.0 (30/08): cache + backfill + resolve report trong MỘT transaction ở DB
+  // (fn_chap_nhan_dap_an — mig 202608300251/0254). Chuẩn hoá = fn_tln_normalize, đã parity
+  // 615/615 với smartNormalize JS sau khi vá bug unicode ở CẢ hai phía.
+  const { data, error } = await supabase.rpc('fn_chap_nhan_dap_an', { p_ma_cau: maCau, p_dap_an_raw: dapAnRaw })
+  if (error) throw error
+  return { backfilled: Number((data as any)?.backfilled ?? 0) }
 }
 
 // ══ SỬA KEY SAI + CHẤM LẠI CẢ LỚP (spec §7) ═══════════════════════════════════
