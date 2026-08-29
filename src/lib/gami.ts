@@ -709,7 +709,7 @@ export const EXP_SOURCES = [...EXP_NOTE_SOURCES, 'attend_floor']
 // Ledger chi tiết (08-29) đẩy các query EXP diện-rộng qua ngưỡng này → HS bị cắt hiện "0 EXP" (bug
 // Lâm Anh 6S2 08-29). Mọi chỗ đọc ledger có thể >1000 dòng PHẢI phân trang qua đây; `order` bắt buộc
 // (range không order = trang không ổn định, dòng trùng/sót).
-async function pagedLedger(build: (q: any) => any): Promise<any[]> {
+export async function pagedLedger(build: (q: any) => any): Promise<any[]> {
   const PAGE = 1000, out: any[] = []
   for (let from = 0; from < 200000; from += PAGE) {
     const { data, error } = await build(supabase.from('gami_exp_ledger')).order('id').range(from, from + PAGE - 1)
