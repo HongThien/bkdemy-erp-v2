@@ -2,7 +2,7 @@
 // 1 người làm full luồng 1 phiên → giữ ở client-state (KHÔNG draft table). Duyệt TỪNG câu chiếm màn.
 // Hiển thị PREVIEW-FIRST (render công thức); bấm ✎ Sửa mới ra code LaTeX.
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { useMonScope } from '../../lib/mon'
+import { useMonScope } from '../../hooks/useMonScope'
 import { fileToCanvases, canvasToJpegBase64, cropCanvasBox } from '../../lib/pdfRender'
 import { MathText, inp, readClipboardImageFile } from '../kho/ui'
 import { CauEditor, type ReviewItem } from '../kho/DangHub'

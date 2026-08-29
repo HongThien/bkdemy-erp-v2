@@ -4,7 +4,7 @@ import {
   listOpsChoDuyet, duyetOpsHangLoat, deXuatTienDoOps, hieuSuatOpsOf, OPS_TASK_LABEL,
   type OpsTask, type OpsChoDuyet,
 } from '../../lib/opsvanhanh'
-import { readClipboardImageFile } from '../kho/ui'
+import { readClipboardImageFile } from '../../lib/clipboard'
 import { tuanCuaNgay, khoangTuan, homNayVN, nhanTuan, mucDeadline, thuCuaNgay, ddmmVN } from '../../lib/tuan'
 import { useIsMobile } from '../../hooks/useIsMobile'
 import ImgZoom from '../../components/ImgZoom'

@@ -22,3 +22,6 @@ _design_thanhtich/
 scripts/tmp/
 scripts/out-crops/
 .vercel
+
+# build output app OPS (như dist/dist-hs)
+dist-ops/
