@@ -1,7 +1,7 @@
 // Data-layer THÀNH TÍCH (seam) — Level (Σ điểm sát hạch) · Xu (lương tháng) · catalog · điểm thi.
 // Level/Xu = SUY ĐỘNG từ event (diem_thi / gami_exp_ledger). UI chỉ gọi qua đây.
 import { supabase } from './supabase'
-import { EXP_SOURCES } from './gami'
+import { EXP_NOTE_SOURCES } from './gami'
 import { LEVEL } from '../gami/config.js'
 import { seasonOf } from '../gami/season.js'
 
@@ -40,19 +40,20 @@ export type LevelXu = { mua: string; level: number; levelMax: number; xu: number
 export async function getLevelXu(hocSinhId: string, mon: string): Promise<LevelXu> {
   const mua = seasonOf(vnTodayStr())
   const ym = vnTodayStr().slice(0, 7) // tháng VN hiện tại 'YYYY-MM' = tháng EXP thuộc về
-  const [dt, exp, bac] = await Promise.all([
+  const [dt, exp, expFloor, bac] = await Promise.all([
     supabase.from('diem_thi').select('verdict, ky_thi:ky_thi_id(he_so, mon, mua)').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
     // ⚠ EXP THÁNG key theo `note`=ym, KHÔNG theo created_at: recompute có thể chạy ở tháng khác (reset đầu mùa
     // recompute tháng cũ ĐÚNG NGÀY 1 tháng mới) → dòng note tháng trước có created_at tháng này sẽ lọt window
-    // created_at. Nguồn note-keyed (exp_et/exp_btvn/exp_btvn_thang + exp_thang legacy) lọc note===ym;
-    // attend_floor (bù, no note, sinh 1 lần) lọc created_at. Vẫn loại legacy rank_*/btvn.
-    supabase.from('gami_exp_ledger').select('amount, source, note, created_at').eq('hoc_sinh_id', hocSinhId).eq('mon', mon).in('source', EXP_SOURCES).limit(LIMIT),
+    // created_at. Nguồn note-keyed (exp_et/exp_btvn/exp_btvn_thang + exp_thang legacy) lọc note===ym
+    // NGAY TRÊN SERVER — ledger chi tiết cả mùa 1 HS có thể chạm cap 1000 dòng PostgREST, 1 tháng thì luôn nhỏ.
+    supabase.from('gami_exp_ledger').select('amount, source, note, created_at').eq('hoc_sinh_id', hocSinhId).eq('mon', mon).in('source', EXP_NOTE_SOURCES).eq('note', ym).limit(LIMIT),
+    // attend_floor (bù, no note, sinh 1 lần) lọc created_at ≥ đầu tháng.
+    supabase.from('gami_exp_ledger').select('amount, created_at').eq('hoc_sinh_id', hocSinhId).eq('mon', mon).eq('source', 'attend_floor').gte('created_at', monthStartUtcISO()).limit(LIMIT),
     supabase.from('luong_bac').select('min_exp, xu').order('min_exp', { ascending: true }).limit(LIMIT),
   ])
   let level = 0
   for (const r of (dt.data ?? []) as any[]) { const k = r.ky_thi; if (k && k.mon === mon && k.mua === mua) level += verdictPoint(r.verdict, k.he_so) }
-  const monthStart = monthStartUtcISO()
-  const expThang = ((exp.data ?? []) as any[]).reduce((s, x) => s + ((x.source === 'attend_floor' ? x.created_at >= monthStart : x.note === ym) ? Number(x.amount) : 0), 0)
+  const expThang = [...((exp.data ?? []) as any[]), ...((expFloor.data ?? []) as any[])].reduce((s, x) => s + Number(x.amount), 0)
   const bacs = (bac.data ?? []) as LuongBac[]
   let xu = 0, xuKe: number | null = null, expKeMoc: number | null = null
   for (let i = 0; i < bacs.length; i++) {

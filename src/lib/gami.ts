@@ -705,6 +705,22 @@ async function fetchBtvnAcc(buoiIds: string[]): Promise<Map<string, number[]>> {
 export const EXP_NOTE_SOURCES = ['exp_thang', 'exp_et', 'exp_btvn', 'exp_btvn_thang']
 export const EXP_SOURCES = [...EXP_NOTE_SOURCES, 'attend_floor']
 
+// ⚠ PostgREST cắt cứng 1000 dòng/response — `.limit(10000)` KHÔNG vượt được (đã ghi ở fetchBtvnAcc).
+// Ledger chi tiết (08-29) đẩy các query EXP diện-rộng qua ngưỡng này → HS bị cắt hiện "0 EXP" (bug
+// Lâm Anh 6S2 08-29). Mọi chỗ đọc ledger có thể >1000 dòng PHẢI phân trang qua đây; `order` bắt buộc
+// (range không order = trang không ổn định, dòng trùng/sót).
+async function pagedLedger(build: (q: any) => any): Promise<any[]> {
+  const PAGE = 1000, out: any[] = []
+  for (let from = 0; from < 200000; from += PAGE) {
+    const { data, error } = await build(supabase.from('gami_exp_ledger')).order('id').range(from, from + PAGE - 1)
+    if (error) throw error
+    const rows = (data ?? []) as any[]
+    out.push(...rows)
+    if (rows.length < PAGE) break
+  }
+  return out
+}
+
 // Tính lại EXP THÁNG cho 1 lớp (idempotent). Thay MỌI EXP của (lớp×tháng): xoá per-buổi cũ (ref_buoi trong
 // tháng: rank_*/btvn/exp_et/exp_btvn) + dòng tháng cũ (exp_thang/exp_btvn_thang) → chèn dòng CHI TIẾT.
 // KHÔNG đụng bù/bổ trợ (buổi loai≠'thuong', attend_floor).
@@ -1474,10 +1490,10 @@ export async function listGamiBangTong(mon?: string): Promise<DiemRow[]> {
   const muaStart = seasonStartUtc(seasonOf(nowVn))
   const startY = Number(seasonOf(nowVn).split('-')[0])
   const startYm = `${startY}-${String(SEASON.START_MONTH).padStart(2, '0')}`, nextStartYm = `${startY + 1}-${String(SEASON.START_MONTH).padStart(2, '0')}`
-  const { data: exp } = await supabase.from('gami_exp_ledger').select('hoc_sinh_id, mon, amount, source, note, created_at')
-    .in('source', EXP_SOURCES).limit(LIMIT)
+  // Ledger chi tiết = vài nghìn dòng/mùa (>cap 1000) → PHẢI pagedLedger, không .limit() trần.
+  const exp = await pagedLedger((q) => q.select('hoc_sinh_id, mon, amount, source, note, created_at').in('source', EXP_SOURCES))
   const expMap = new Map<string, number>()
-  for (const r of (exp ?? []) as any[]) {
+  for (const r of exp as any[]) {
     const keep = r.source === 'attend_floor' ? r.created_at >= muaStart : (r.note >= startYm && r.note < nextStartYm)
     if (keep) { const k = r.hoc_sinh_id + '|' + (r.mon ?? ''); expMap.set(k, (expMap.get(k) ?? 0) + Number(r.amount)) }
   }
@@ -1521,11 +1537,13 @@ export type ExpRow = { source: string; amount: number; mon: string | null; creat
 export type DiemHS = { elo: { mon: string; elo: number; sessions: number; exp: number }[]; hist: EloHist[]; exp: ExpRow[] }
 // Hồ sơ điểm 1 HS: Elo per môn (+EXP môn) · lịch sử Elo (timeline) · dòng EXP.
 export async function getDiemHS(hocSinhId: string): Promise<DiemHS> {
-  const [eloR, histR, expR] = await Promise.all([
+  // exp: 1 HS ledger chi tiết cả mùa ~vài trăm dòng, cuối mùa CÓ THỂ >1000 (cap PostgREST) → pagedLedger.
+  const [eloR, histR, expRows] = await Promise.all([
     supabase.from('gami_elo').select('mon, elo, sessions_played').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
     supabase.from('gami_elo_history').select('buoi_hoc_id, phase, mon, elo_before, delta, elo_after, created_at, buoi:buoi_hoc_id(ngay, lop:lop_id(ten_lop))').eq('hoc_sinh_id', hocSinhId).order('created_at', { ascending: false }).limit(LIMIT),
-    supabase.from('gami_exp_ledger').select('source, amount, mon, created_at, buoi:ref_buoi_hoc_id(ngay, lop:lop_id(ten_lop))').eq('hoc_sinh_id', hocSinhId).order('created_at', { ascending: false }).limit(LIMIT),
+    pagedLedger((q) => q.select('source, amount, mon, created_at, buoi:ref_buoi_hoc_id(ngay, lop:lop_id(ten_lop))').eq('hoc_sinh_id', hocSinhId)),
   ])
+  const expR = { data: [...expRows].sort((a: any, b: any) => (a.created_at < b.created_at ? 1 : -1)) }
   const expByMon = new Map<string, number>()
   for (const r of (expR.data ?? []) as any[]) expByMon.set(r.mon ?? '', (expByMon.get(r.mon ?? '') ?? 0) + Number(r.amount))
   return {
@@ -1648,17 +1666,19 @@ export async function getBangEloExp(hocSinhIds: string[], mon: string): Promise<
   const v = new Date(Date.now() + 7 * 3600 * 1000)
   const ym = `${v.getUTCFullYear()}-${String(v.getUTCMonth() + 1).padStart(2, '0')}`
   const monthStart = new Date(Date.UTC(v.getUTCFullYear(), v.getUTCMonth(), 1, -7, 0, 0)).toISOString()
-  const [eloR, expR] = await Promise.all([
+  // Lọc THÁNG ngay trên server (note=ym / attend_floor theo created_at) — ledger chi tiết cả mùa của 1 lớp
+  // có thể >1000 dòng (cap PostgREST), còn 1 THÁNG 1 lớp thì luôn nhỏ → khỏi phân trang.
+  const [eloR, expNoteR, expFloorR] = await Promise.all([
     supabase.from('gami_elo').select('hoc_sinh_id, elo').eq('mon', mon).in('hoc_sinh_id', ids).limit(LIMIT),
-    supabase.from('gami_exp_ledger').select('hoc_sinh_id, amount, source, note, created_at')
-      .eq('mon', mon).in('hoc_sinh_id', ids).in('source', EXP_SOURCES).limit(LIMIT),
+    supabase.from('gami_exp_ledger').select('hoc_sinh_id, amount')
+      .eq('mon', mon).in('hoc_sinh_id', ids).in('source', EXP_NOTE_SOURCES).eq('note', ym).limit(LIMIT),
+    supabase.from('gami_exp_ledger').select('hoc_sinh_id, amount')
+      .eq('mon', mon).in('hoc_sinh_id', ids).eq('source', 'attend_floor').gte('created_at', monthStart).limit(LIMIT),
   ])
   const eloMap = new Map(((eloR.data ?? []) as any[]).map((e) => [e.hoc_sinh_id, Number(e.elo)]))
   const expMap = new Map<string, number>()
-  for (const r of (expR.data ?? []) as any[]) {
-    const keep = r.source === 'attend_floor' ? r.created_at >= monthStart : r.note === ym // attend_floor: theo created_at
-    if (keep) expMap.set(r.hoc_sinh_id, (expMap.get(r.hoc_sinh_id) ?? 0) + Number(r.amount))
-  }
+  for (const r of [...(expNoteR.data ?? []), ...(expFloorR.data ?? [])] as any[])
+    expMap.set(r.hoc_sinh_id, (expMap.get(r.hoc_sinh_id) ?? 0) + Number(r.amount))
   return ids.map((id) => ({ hoc_sinh_id: id, elo: eloMap.get(id) ?? 1000, expThang: expMap.get(id) ?? 0 }))
 }
 
