@@ -16,7 +16,7 @@ import { mucDeadline, nhanConLai } from '../../lib/tuan'
 import { seededShuffleWithOrig, seededPermByDang } from '../../lib/shuffle'
 import {
   timTuLuyenHomNay, sinhTuLuyen, monCuaHS, laCap1HS, khoiCuaHS, layDangHocTap, xepHangTuLuyen,
-  TU_LUYEN_TRAN_NGAY, TU_LUYEN_SO_CAU_MOI_LUOT, SRC_LABEL, type DangHocTap, type RecentEval, type XepHangRow,
+  TU_LUYEN_SO_CAU_MOI_LUOT, SRC_LABEL, type DangHocTap, type RecentEval, type XepHangRow,
 } from '../../lib/tuluyen'
 import DoiMatKhau from './DoiMatKhau'
 
@@ -643,11 +643,10 @@ function LamTuLuyen({ hocSinhId, onXong, desktop }: { hocSinhId: string; onXong:
   useEffect(() => { if (daGoi.current) return; daGoi.current = true; taiHomNay() }, []) // eslint-disable-line
 
   async function lamThem() {
-    if (!mon || soCau >= TU_LUYEN_TRAN_NGAY) return
+    if (!mon) return
     setBusy(true); setErr(null)
     try {
-      const con = Math.min(TU_LUYEN_SO_CAU_MOI_LUOT, TU_LUYEN_TRAN_NGAY - soCau)
-      const kq = await sinhTuLuyen(mon, con)
+      const kq = await sinhTuLuyen(mon)
       setBaiTestId(kq.baiTestId); setSoCau(kq.tong)
     } catch (e: any) { setErr(e?.message ?? String(e)) } finally { setBusy(false) }
   }
@@ -664,7 +663,6 @@ function LamTuLuyen({ hocSinhId, onXong, desktop }: { hocSinhId: string; onXong:
     </div>
   )
 
-  const conLai = TU_LUYEN_TRAN_NGAY - soCau
   return (
     <LamBai
       key={baiTestId + ':' + soCau}
@@ -672,16 +670,16 @@ function LamTuLuyen({ hocSinhId, onXong, desktop }: { hocSinhId: string; onXong:
       hocSinhId={hocSinhId}
       onXong={onXong}
       desktop={desktop}
-      doneCaption={`Hôm nay đã làm ${soCau}/${TU_LUYEN_TRAN_NGAY} câu.`}
-      doneExtra={conLai > 0 ? (
+      doneCaption={`Hôm nay đã làm ${soCau} câu.`}
+      doneExtra={
         <div className={`mt-3 w-full ${desktop ? 'max-w-sm' : ''}`}>
           {err && <p className="mb-2 text-[12.5px] text-ph-red">{err}</p>}
           <button onClick={lamThem} disabled={busy}
             className={`w-full rounded-xl bg-brand/10 font-medium text-brand disabled:opacity-40 ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`}>
-            {busy ? 'Đang tạo thêm…' : `Làm thêm ${Math.min(TU_LUYEN_SO_CAU_MOI_LUOT, conLai)} câu`}
+            {busy ? 'Đang tạo thêm…' : `Làm thêm ${TU_LUYEN_SO_CAU_MOI_LUOT} câu`}
           </button>
         </div>
-      ) : <p className="mt-3 text-[13px] text-ph-label-2">Đã đạt tối đa {TU_LUYEN_TRAN_NGAY} câu hôm nay — hẹn mai luyện tiếp!</p>}
+      }
     />
   )
 }

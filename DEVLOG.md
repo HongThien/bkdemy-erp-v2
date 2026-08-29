@@ -7057,3 +7057,12 @@ Breakdown: 84 vào vì ≥2/4 kênh · 11 vì báo động · 0 vì case-đang-m
 5210, đăng nhập admin thật) — "Duyệt bổ trợ" hiện **"66 ca"** (Toán, tất cả khối — trước đây badge
 này từng hiện "209 ca" ở phiên làm UI cùng ngày) · "Dashboard học tập" (consumer thứ 2 của cùng
 `listCandidatesLop`) vẫn render đúng, không lỗi console ở cả 2 màn.
+
+---
+
+## 2026-08-29
+
+**TỰ LUYỆN — BỎ TRẦN 30 CÂU/NGÀY (Thùy 29/08: "bỏ giới hạn 30 câu 1 ngày, tự luyện vô hạn, mỗi lần tự luyện đưa 10 câu"):**
+- Mỗi lượt vẫn sinh đúng 10 câu (SO_CAU_MOI_LUOT giữ nguyên) — chỉ bỏ trần cộng dồn 30/ngày.
+- **Mig 202608291122** `tu_luyen_bo_tran_ngay`: replace `tu_luyen_sinh` — bỏ 3 chỗ chặn trần (check `v_them > 30` lúc tạo bài + 2 check `v_so_cau_cu + v_them > 30` đường APPEND/đường thua race). **GIỮ `for update`** — khoá giờ không để giữ trần mà để 2 lượt "làm thêm" gần-đồng-thời tuần tự hoá `thu_tu`/`so_cau` (không giẫm nhau). Đã áp + `npm run schema` + verify prosrc live DB: hết dấu vết trần, còn for update.
+- Client `tuluyen.ts`: bỏ `TRAN_NGAY`/`TU_LUYEN_TRAN_NGAY`. UI `HocSinhApp.tsx` (LamTuLuyen): nút "Làm thêm 10 câu" hiện VÔ ĐIỀU KIỆN ở màn xong bài (trước ẩn khi chạm trần), caption "Hôm nay đã làm N câu" (bỏ "/30"), bỏ dòng "Đã đạt tối đa 30 câu hôm nay". ✓ tsc sạch.

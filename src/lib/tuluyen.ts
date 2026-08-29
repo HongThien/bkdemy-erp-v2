@@ -1,6 +1,7 @@
 // ============================================================================
-// tuluyen.ts — TỰ LUYỆN (Thùy 18-20/08): mỗi ngày HS mở → hệ tự sinh 10 câu, làm thêm được
-// tối đa 30/ngày. 40% ngẫu nhiên trong dạng ĐÃ HỌC · 60% trong dạng đang YẾU.
+// tuluyen.ts — TỰ LUYỆN (Thùy 18-20/08, bỏ trần 29/08): mỗi ngày HS mở → hệ tự sinh 10 câu,
+// "làm thêm" VÔ HẠN mỗi lượt 10 câu (Thùy 29/08 bỏ trần 30/ngày — migration 202608291122).
+// 40% ngẫu nhiên trong dạng ĐÃ HỌC · 60% trong dạng đang YẾU.
 //
 // KIẾN TRÚC: tái dùng NGUYÊN bai_test/bai_test_cau/bai_lam/bai_lam_cau (loai='tu_luyen',
 // bai_test.hoc_sinh_id set — bài CÁ NHÂN, khác ET/BTVN dùng chung cả lớp). Chọn CÂU + snapshot
@@ -14,7 +15,6 @@ import { supabase } from './supabase'
 import { masteryOfDang, MASTERY_CONFIG } from '../gami/mastery.js'
 
 const SO_CAU_MOI_LUOT = 10
-const TRAN_NGAY = 30
 
 export type TuLuyenHomNay = { baiTestId: string; soCau: number; daNop: boolean }
 
@@ -66,7 +66,7 @@ export function chonDangTuLuyen(evals: RawEval[], soCau = SO_CAU_MOI_LUOT): stri
 
 export type SinhTuLuyenKetQua = { baiTestId: string; them: number; tong: number }
 
-// Sinh 1 đợt câu (mặc định 10, "làm thêm" cũng gọi lại đúng hàm này) — RPC tự cộng dồn/chặn trần.
+// Sinh 1 đợt câu (mặc định 10, "làm thêm" cũng gọi lại đúng hàm này) — RPC tự cộng dồn.
 export async function sinhTuLuyen(mon: string, soCau = SO_CAU_MOI_LUOT): Promise<SinhTuLuyenKetQua> {
   const { data: evals, error: e1 } = await supabase.rpc('hs_dang_evals', { p_mon: mon })
   if (e1) throw e1
@@ -77,7 +77,6 @@ export async function sinhTuLuyen(mon: string, soCau = SO_CAU_MOI_LUOT): Promise
   return { baiTestId: data.bai_test_id, them: data.them, tong: data.tong }
 }
 
-export const TU_LUYEN_TRAN_NGAY = TRAN_NGAY
 export const TU_LUYEN_SO_CAU_MOI_LUOT = SO_CAU_MOI_LUOT
 
 // Môn HS đang học — cần đọc THẲNG qua RPC vì `lop`/`hoc_sinh_lop` staff-only (verify: HS SELECT
