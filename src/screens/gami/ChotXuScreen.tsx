@@ -57,9 +57,11 @@ export default function ChotXuScreen() {
         </select>
         <button onClick={onChot} disabled={busy || !rows || (chuaChot.length === 0 && lech.length === 0)}
           className="h-9 rounded-lg bg-indigo-600 px-4 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700 disabled:cursor-not-allowed disabled:bg-slate-300">
-          {busy ? 'Đang chốt…' : chuaChot.length > 0 ? `Chốt tháng ${Number(ym.slice(5))} (${chuaChot.length} dòng)` : lech.length > 0 ? `Chốt lại — ghi ${lech.length} điều chỉnh ±` : 'Đã chốt đủ'}
+          {busy ? 'Đang chốt…' : chuaChot.length > 0 ? `Chốt tháng ${Number(ym.slice(5))} (${chuaChot.length} dòng)` : lech.length > 0 ? `Chốt lại — ghi ${lech.length} điều chỉnh ±`
+            // Phân biệt 2 lý do nút tắt: mốc chưa ra xu (việc của CEO: chỉnh mốc) ≠ đã chốt thật sự.
+            : (rows ?? []).some((r) => r.exp > 0 && !r.daChot) ? 'Mốc hiện tại ra 0 xu — chỉnh mốc bên phải' : 'Đã chốt đủ'}
         </button>
-        {msg && <span className="text-[13px] font-medium text-emerald-700">{msg}</span>}
+        {msg && <span className={`text-[13px] font-medium ${msg.startsWith('Lỗi') ? 'text-rose-600' : 'text-emerald-700'}`}>{msg}</span>}
       </div>
       <p className="text-[12px] text-slate-400">
         Quy đổi TỪNG MÔN theo bảng mốc bên phải (giữa 2 mốc lấy mốc dưới) rồi cộng ví chung. Chốt xong là đóng băng —
