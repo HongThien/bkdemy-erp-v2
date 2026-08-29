@@ -131,29 +131,40 @@ function HomTay({ profile, onGo, coQuyen, onThoat }: { profile: MyProfile; onGo:
   const opsCanLam = opsTasks.filter((t) => !t.done)
   const prepCanLam = preps.filter((p) => !p.done)
 
+  const nsAnh = profile.nhanSu.anh_url
   return (
     <div>
-      {/* hero tím: chào + tiến độ ngày */}
-      <div className="bg-indigo-600 px-4 pb-5" style={{ paddingTop: 'max(0.75rem, env(safe-area-inset-top))' }}>
-        <div className="mx-auto max-w-[760px]">
-          <div className="flex items-center gap-2">
-            <span className="text-[12px] font-bold uppercase tracking-wide text-indigo-200">BK Vận hành</span>
-            <button onClick={onThoat} className="ml-auto rounded-lg px-2 py-1 text-[12px] text-indigo-200 active:bg-indigo-500">Thoát</button>
+      {/* top bar trắng gọn: avatar + tên + thoát (hero "tảng màu đặc" cũ Thùy chê 30/08 — đổi sang
+          kiểu app PH/HS: bar trắng + CARD gradient nổi bên dưới) */}
+      <div className="border-b border-slate-200/60 bg-white px-4 pb-2" style={{ paddingTop: 'max(0.5rem, env(safe-area-inset-top))' }}>
+        <div className="mx-auto flex max-w-[760px] items-center gap-2.5">
+          {nsAnh
+            ? <img src={nsAnh} alt="" className="h-8 w-8 rounded-full object-cover ring-1 ring-slate-200" />
+            : <span className="flex h-8 w-8 items-center justify-center rounded-full bg-indigo-100 text-[13px] font-bold text-indigo-600">{tenGoi.charAt(0).toUpperCase()}</span>}
+          <div className="min-w-0 flex-1 leading-tight">
+            <p className="truncate text-[13.5px] font-bold text-slate-800">{profile.nhanSu.ho_ten}</p>
+            <p className="text-[11px] text-slate-400">BK Vận hành</p>
           </div>
-          <div className="mt-2 flex items-center gap-3">
+          <button onClick={onThoat} className="rounded-lg px-2.5 py-1.5 text-[12px] text-slate-400 active:bg-slate-100">Thoát</button>
+        </div>
+      </div>
+
+      <div className="mx-auto max-w-[760px] px-3 pb-24 pt-3">
+        {/* card chào — gradient nổi trên nền xám, deco tròn mờ (kiểu hero app PH) */}
+        <div className="relative mb-3 overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-500 via-indigo-600 to-violet-600 p-4 shadow-md shadow-indigo-200">
+          <div className="pointer-events-none absolute -right-8 -top-10 h-32 w-32 rounded-full bg-white/10" />
+          <div className="pointer-events-none absolute -bottom-14 right-16 h-28 w-28 rounded-full bg-white/[0.07]" />
+          <div className="relative flex items-center gap-3">
             <div className="min-w-0 flex-1">
-              <p className="text-[12.5px] text-indigo-200">{thuCuaNgay(homNay)} · {ddmmVN(homNay)}</p>
-              <p className="truncate text-[21px] font-bold text-white">Chào {tenGoi} 👋</p>
-              <p className="mt-0.5 text-[13px] text-indigo-100">
-                {loading ? 'Đang tải việc hôm nay…' : tongViec === 0 ? 'Hôm nay không có việc — nghỉ ngơi thôi ☕' : conLai === 0 ? '✓ Xong hết việc hôm nay, đỉnh!' : `Còn ${conLai} việc hôm nay`}
+              <p className="text-[12.5px] font-medium text-indigo-200">{thuCuaNgay(homNay)} · {ddmmVN(homNay)}</p>
+              <p className="mt-0.5 truncate text-[21px] font-bold text-white">Chào {tenGoi} 👋</p>
+              <p className="mt-1 inline-block rounded-full bg-white/15 px-2.5 py-1 text-[12.5px] font-medium text-indigo-50">
+                {loading ? 'Đang tải việc hôm nay…' : tongViec === 0 ? 'Không có việc — nghỉ ngơi thôi ☕' : conLai === 0 ? '✓ Xong hết việc hôm nay, đỉnh!' : `Còn ${conLai} việc hôm nay`}
               </p>
             </div>
             {!loading && tongViec > 0 && <ProgressRing done={tongXong} tong={tongViec} />}
           </div>
         </div>
-      </div>
-
-      <div className="mx-auto max-w-[760px] px-3 pb-24 pt-4">
         {!loading && (
           <div className="flex flex-col gap-3">
             {coQuyen('buoihoc') && (
