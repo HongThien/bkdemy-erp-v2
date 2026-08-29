@@ -7129,3 +7129,9 @@ này từng hiện "209 ca" ở phiên làm UI cùng ngày) · "Dashboard học 
 - Bối cảnh thi công: nghỉ lễ không phát sinh hoạt động → cửa sổ an toàn để đại tu cả
   engine tiền/điểm. Nguyên tắc thi công: mỗi gốc = migration + client mỏng gọi rpc +
   **parity check số cũ (JS) = số mới (SQL) trên DB thật** trước khi cắt.
+
+**APP OPS — REDESIGN UI (Thùy 30/08 "UI quá tệ, tham khảo app giáo dục, sinh động lên"; duyệt mockup visualize trước khi code, đúng quy ước):**
+- Hướng chốt: style "app giáo dục làm việc" (ClassDojo/Classroom), NỀN SÁNG kiểu iPhone giữ nguyên. Mỗi tab 1 màu chủ đạo (Hôm nay tím indigo · Điểm danh lục emerald · Report dương blue · Prep hổ phách amber · Test tím violet). Font Be Vietnam Pro (đã load sẵn ops.html, giờ mới áp).
+- `OpsHome`: hero tím = chào theo TÊN GỌI (từ cuối ho_ten) + ngày + **vòng tiến độ SVG done/tổng** (done = ops/prep done-flag + buổi đã-mở-điểm-danh-đủ qua diemDanhTienDo); card việc = icon squircle nền màu nhạt + badge số đậm + hàng mini bg-slate-50; bottom-tab active = pill màu (⚠ Tailwind JIT: mọi class màu là literal per-tab, cấm ghép chuỗi). 3 màn tái dùng bọc `ManCon` = dải màu MỎNG không chữ (đã thử dải có tiêu đề → LẶP với header sẵn của màn, bỏ) + đệm safe-area.
+- `DiemDanhBuoi`: hero lục cả list lẫn detail. List: squircle GIỜ đổi màu theo trạng thái (đủ=lục/thiếu=amber/chưa mở=xám) + dòng đếm tổng trên hero. Detail: progress bar trên hero + GV tên-rút-gọn ngay hero; roster = **avatar HS** (anh_url, fallback 2 chữ cái đầu tên-rút-gọn nền màu hash-theo-tên, 6 tông) + **3 nút điểm danh gộp segmented pill** (nền slate-100, chọn = phồng màu Có-lục/Vắng-đỏ/Phép-amber); footer "Còn N bạn chưa điểm danh".
+- Verify preview thật (JS-drive vì pane ẩn không composite được): home/list/detail/tab Report render đúng, 9 avatar + 9 segmented đúng màu ở 12A1 28/08, console sạch; tsc + build:ops sạch (463KB).
