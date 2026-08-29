@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-165 bảng · 2 view · 0 enum · 22 trigger · 92 function
+165 bảng · 2 view · 0 enum · 22 trigger · 101 function
 
 ## _app_secrets
 
@@ -1898,12 +1898,15 @@
 | id | uuid |  | gen_random_uuid() | PK |  |
 | hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |  |
 | amount | integer |  |  |  |  |
-| loai | text |  |  |  | `cong_tay` · `tru_tay` · `doi_qua` · `hoan` |
+| loai | text |  |  |  | `cong_tay` · `tru_tay` · `doi_qua` · `hoan` · `chot_thang` · `chot_lai` |
 | ly_do | text | Y |  |  |  |
 | ref_id | uuid | Y |  |  |  |
 | ref_loai | text | Y |  |  | `doi_qua` · `order` |
 | nguoi_tao | uuid |  |  | FK→nhan_su.id |  |
 | created_at | timestamp with time zone |  | now() |  |  |
+| mon | text | Y |  |  |  |
+| thang | text | Y |  |  |  |
+| exp_snapshot | integer | Y |  |  |  |
 
 ## question_accepted_answers
 
@@ -2315,17 +2318,23 @@
 SELECT hs.id AS hoc_sinh_id,
     hs.ho_ten,
     COALESCE(e.exp_total, 0::bigint) AS exp_total,
-    floor(COALESCE(e.exp_total, 0::bigint)::numeric / 10.0)::integer AS xu_kiem,
+    COALESCE(k.xu_chot, 0::bigint)::integer AS xu_kiem,
     COALESCE(l.dieu_chinh, 0::bigint) AS xu_dieu_chinh,
-    floor(COALESCE(e.exp_total, 0::bigint)::numeric / 10.0)::integer + COALESCE(l.dieu_chinh, 0::bigint) AS so_du
+    COALESCE(k.xu_chot, 0::bigint) + COALESCE(l.dieu_chinh, 0::bigint) AS so_du
    FROM hoc_sinh hs
      LEFT JOIN ( SELECT gami_exp_ledger.hoc_sinh_id,
             sum(gami_exp_ledger.amount) AS exp_total
            FROM gami_exp_ledger
           GROUP BY gami_exp_ledger.hoc_sinh_id) e ON e.hoc_sinh_id = hs.id
      LEFT JOIN ( SELECT qlht_xu_ledger.hoc_sinh_id,
+            sum(qlht_xu_ledger.amount) AS xu_chot
+           FROM qlht_xu_ledger
+          WHERE qlht_xu_ledger.loai = ANY (ARRAY['chot_thang'::text, 'chot_lai'::text])
+          GROUP BY qlht_xu_ledger.hoc_sinh_id) k ON k.hoc_sinh_id = hs.id
+     LEFT JOIN ( SELECT qlht_xu_ledger.hoc_sinh_id,
             sum(qlht_xu_ledger.amount) AS dieu_chinh
            FROM qlht_xu_ledger
+          WHERE qlht_xu_ledger.loai = ANY (ARRAY['cong_tay'::text, 'tru_tay'::text, 'doi_qua'::text, 'hoan'::text])
           GROUP BY qlht_xu_ledger.hoc_sinh_id) l ON l.hoc_sinh_id = hs.id
   WHERE current_nhan_su_id() IS NOT NULL;
 ```
@@ -2408,14 +2417,23 @@ SELECT q.id AS qua_id,
 - `dai_dang_tien_de_bao_dong(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `et_de(p_bai_test uuid)` → jsonb
 - `et_nop(p_bai_lam uuid)` → jsonb
+- `fn_buoi_recompute_hoan_tat(p_buoi_id uuid)` → void
 - `fn_ca_test_kq_diem()` → trigger
 - `fn_diem_thi_tinh()` → trigger
+- `fn_dong_btvn(p_buoi_id uuid)` → jsonb
+- `fn_dong_phase(p_buoi_id uuid, p_phase text)` → jsonb
+- `fn_exp_btvn_bai(p_trang_thai text, p_thai_do text)` → numeric
+- `fn_exp_et_rank(p_rank integer, p_n integer)` → numeric
+- `fn_exp_for_rank(p_rank integer, p_n integer, p_bands numeric[])` → numeric
 - `fn_gay_bang(p_ky date)` → TABLE(nhan_su_id uuid, ns_ten text, so_gay_danh bigint, so_gay_go bigint, con_lai bigint, don_gia numeric, tien_phat numeric)
 - `fn_gay_chot_thang(p_ky date)` → integer
 - `fn_gv_phan_tram(p_tien_do numeric, p_chat_luong numeric)` → numeric
 - `fn_gv_tien_do(p_deadline date, p_ngay_nop date)` → numeric
 - `fn_gv_tran_chat_luong(p_so_lan_tra_lai integer)` → numeric
 - `fn_hoa_don_cap_nhat_trang_thai()` → trigger
+- `fn_jsround(x numeric)` → integer
+- `fn_mo_lai_phase(p_buoi_id uuid, p_phase text)` → void
+- `fn_recompute_exp_thang(p_lop_id uuid, p_ym text)` → jsonb
 - `fn_vh_hieu_suat(p_tien_do numeric, p_chat_luong numeric)` → numeric
 - `fn_viec_nghiem_thu_tinh()` → trigger
 - `fn_vvhd_tinh()` → trigger

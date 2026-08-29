@@ -66,7 +66,12 @@ dòng ra 4 con số) · `botro.ts:63` (2 bảng lớn nhất không filter).
       Smoke synthetic: 3 đánh/1 gỡ/1 thu hồi → 3·1·2·40k + snapshot 3 dòng, đúng người chốt. Client
       bangGay chỉ còn ghép entries hiển thị; chotThang = 1 rpc. (`quetGayTuDong` đi cùng task-engine Phase 4.)
 - [ ] Phase 1 đợt 3b: `chotKy` (RPC transactional — cần phiếu ảo SQL, gộp vào Phase 2)
-- [ ] Phase 1 đợt 4: Elo/EXP (`closePhase`/`recomputeExpThang`/`reopenPhase` — RPC transaction)
+- [x] **Phase 1 đợt 4** (mig `202608300240` + `202608300243`): engine Elo/EXP → 4 RPC transactional
+      `fn_dong_phase` / `fn_mo_lai_phase` / `fn_recompute_exp_thang` / `fn_dong_btvn` (+ fn_jsround vì
+      Math.round JS ≠ round SQL với số âm, fn_exp_*, fn_buoi_recompute_hoan_tat). Parity: 1439/1439 dòng
+      history mùa này khớp công thức delta; test vàng reopen+reclose buổi thật — mọi số Elo khớp per-HS,
+      lệch hạng CHỈ trong nhóm hoà tuyệt đối (JS cũ xếp hên xui theo thứ tự fetch — nay TẤT ĐỊNH theo
+      hoc_sinh_id), chạy lặp ra y hệt. Client gami.ts: 4 hàm thành 4 rpc, cắt ~170 dòng engine + dead code.
 - [ ] Phase 1 đợt 5: gậy (`quetGayTuDong`/`chotThang`) + `mt.ts ganMT` + testonline chấm lại
 - [ ] Phase 2 · Phase 3 · Phase 4 (xem lộ trình dưới)
 
