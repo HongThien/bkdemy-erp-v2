@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-165 bảng · 2 view · 0 enum · 22 trigger · 90 function
+165 bảng · 2 view · 0 enum · 22 trigger · 92 function
 
 ## _app_secrets
 
@@ -2410,6 +2410,8 @@ SELECT q.id AS qua_id,
 - `et_nop(p_bai_lam uuid)` → jsonb
 - `fn_ca_test_kq_diem()` → trigger
 - `fn_diem_thi_tinh()` → trigger
+- `fn_gay_bang(p_ky date)` → TABLE(nhan_su_id uuid, ns_ten text, so_gay_danh bigint, so_gay_go bigint, con_lai bigint, don_gia numeric, tien_phat numeric)
+- `fn_gay_chot_thang(p_ky date)` → integer
 - `fn_gv_phan_tram(p_tien_do numeric, p_chat_luong numeric)` → numeric
 - `fn_gv_tien_do(p_deadline date, p_ngay_nop date)` → numeric
 - `fn_gv_tran_chat_luong(p_so_lan_tra_lai integer)` → numeric

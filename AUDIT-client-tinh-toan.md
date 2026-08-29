@@ -61,7 +61,11 @@ dòng ra 4 con số) · `botro.ts:63` (2 bảng lớn nhất không filter).
       + `fn_vh_hieu_suat` + 2 trigger (`viec` nghiệm thu · `viec_van_hanh_duyet`). Parity bắt được 1 dòng
       lệch THẬT của housekeeping (viec d4e18725) — đúng bệnh công-thức-2-nơi; từ nay trigger đè mọi đường ghi.
       Client: nghiemThu gửi điểm thô, duyet* bỏ tự tính. (vh_ops_task không có cột hiệu suất — đọc-derive, sang Phase 4.)
-- [ ] Phase 1 đợt 3: `chotKy` (RPC transactional)
+- [x] **Phase 1 đợt 3** (mig `202608300232`): bảng gậy + chốt tháng → `fn_gay_bang` (đọc, đơn giá 20k
+      vào SQL) + `fn_gay_chot_thang` (RPC transactional, snapshot jsonb trong DB, nguoi_chot từ jwt).
+      Smoke synthetic: 3 đánh/1 gỡ/1 thu hồi → 3·1·2·40k + snapshot 3 dòng, đúng người chốt. Client
+      bangGay chỉ còn ghép entries hiển thị; chotThang = 1 rpc. (`quetGayTuDong` đi cùng task-engine Phase 4.)
+- [ ] Phase 1 đợt 3b: `chotKy` (RPC transactional — cần phiếu ảo SQL, gộp vào Phase 2)
 - [ ] Phase 1 đợt 4: Elo/EXP (`closePhase`/`recomputeExpThang`/`reopenPhase` — RPC transaction)
 - [ ] Phase 1 đợt 5: gậy (`quetGayTuDong`/`chotThang`) + `mt.ts ganMT` + testonline chấm lại
 - [ ] Phase 2 · Phase 3 · Phase 4 (xem lộ trình dưới)

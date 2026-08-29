@@ -273,8 +273,13 @@ export async function thuHoiGay(id: string, lyDo: string): Promise<void> {
 // 4) BẢNG GẬY THÁNG (công khai toàn công ty) — derive từ ledger, KHÔNG cache
 // ════════════════════════════════════════════════════════════════════════════
 export async function bangGay(ky: string): Promise<BangGayRow[]> {
-  const { data, error } = await supabase.from('gay_ledger').select('*').eq('ky', ky)
-    .order('created_at', { ascending: false }).limit(LIMIT)
+  // §2.0 (30/08): SỐ (đánh/gỡ/còn lại/tiền phạt) từ fn_gay_bang ở DB (mig 202608300232) —
+  // client chỉ còn GHÉP entries thô + tên để drill-down hiển thị, không cộng gậy/tiền nữa.
+  const [{ data: bang, error: eB }, { data, error }] = await Promise.all([
+    supabase.rpc('fn_gay_bang', { p_ky: ky }),
+    supabase.from('gay_ledger').select('*').eq('ky', ky).order('created_at', { ascending: false }).limit(LIMIT),
+  ])
+  if (eB) throw eB
   if (error) throw error
   const rows = (data ?? []) as GayLedger[]
   const [nsMap, lois, hds] = await Promise.all([
@@ -292,15 +297,11 @@ export async function bangGay(ky: string): Promise<BangGayRow[]> {
     if (!byNs.has(r.nhan_su_id)) byNs.set(r.nhan_su_id, [])
     byNs.get(r.nhan_su_id)!.push(full)
   }
-  const out: BangGayRow[] = []
-  for (const [nsId, entries] of byNs) {
-    const hieuLuc = entries.filter((e) => !e.thu_hoi_at)
-    const danh = hieuLuc.filter((e) => e.so_gay > 0).reduce((s, e) => s + e.so_gay, 0)
-    const go = -hieuLuc.filter((e) => e.so_gay < 0).reduce((s, e) => s + e.so_gay, 0)
-    const conLai = Math.max(0, danh - go) // gỡ dư không thành "gậy âm" để dành — sàn 0
-    out.push({ nhan_su_id: nsId, ns_ten: nsMap.get(nsId) ?? '?', soGayDanh: danh, soGayGo: go, conLai, tienPhat: conLai * GAY_DON_GIA, entries })
-  }
-  return out.sort((a, b) => b.conLai - a.conLai || b.soGayDanh - a.soGayDanh)
+  return ((bang ?? []) as any[]).map((b) => ({
+    nhan_su_id: b.nhan_su_id, ns_ten: b.ns_ten,
+    soGayDanh: Number(b.so_gay_danh), soGayGo: Number(b.so_gay_go), conLai: Number(b.con_lai),
+    tienPhat: Number(b.tien_phat), entries: byNs.get(b.nhan_su_id) ?? [],
+  }))
 }
 
 // ════════════════════════════════════════════════════════════════════════════
@@ -308,19 +309,11 @@ export async function bangGay(ky: string): Promise<BangGayRow[]> {
 //    (idempotent kiểu recomputeExpThang, có vết nguoi_chot/chot_at + gay_log)
 // ════════════════════════════════════════════════════════════════════════════
 export async function chotThang(ky: string): Promise<number> {
-  const me = await myNhanSuId()
-  const bang = await bangGay(ky)
-  const coGay = bang.filter((b) => b.soGayDanh > 0 || b.soGayGo > 0)
-  if (!coGay.length) return 0
-  const payload = coGay.map((b) => ({
-    ky, nhan_su_id: b.nhan_su_id, so_gay_danh: b.soGayDanh, so_gay_go: b.soGayGo, so_gay_chot: b.conLai,
-    don_gia: GAY_DON_GIA, tien_phat: b.tienPhat,
-    snapshot: b.entries.map((e) => ({ id: e.id, so_gay: e.so_gay, loai: e.loai, loi: e.loi_ten ?? null, hoat_dong: e.hoat_dong_ten ?? null, ly_do: e.ly_do, nguoi_tao: e.nguoi_tao_ten, created_at: e.created_at, thu_hoi_at: e.thu_hoi_at })),
-    nguoi_chot: me, chot_at: new Date().toISOString(),
-  }))
-  const { error } = await supabase.from('gay_chot_thang').upsert(payload, { onConflict: 'ky,nhan_su_id' })
+  // §2.0 (30/08): tính + snapshot + upsert trong MỘT transaction ở DB (fn_gay_chot_thang) —
+  // số tiền phạt chốt không còn phụ thuộc code browser của người bấm nút.
+  const { data, error } = await supabase.rpc('fn_gay_chot_thang', { p_ky: ky })
   if (error) throw error
-  return payload.length
+  return Number(data ?? 0)
 }
 
 export async function listChotThang(ky: string): Promise<GayChotThangFull[]> {
