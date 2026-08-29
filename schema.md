@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-159 bảng · 2 view · 0 enum · 15 trigger · 79 function
+165 bảng · 2 view · 0 enum · 17 trigger · 81 function
 
 ## _app_secrets
 
@@ -199,6 +199,7 @@
 | created_by | uuid | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
+| loai | text |  | 'bug'::text |  | `bug` · `yeu_cau` |
 
 ## bao_loi_log
 
@@ -737,6 +738,96 @@
 | hinh_baitoan_id | uuid | Y |  | FK→hinh_baitoan.id |  |
 | hinh_bien_the_id | uuid | Y |  | FK→hinh_baitoan_bien_the.id |  |
 | hinh_nhan | text | Y |  |  |  |
+
+## gay_chot_thang
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ky | date |  |  | PK |  |
+| nhan_su_id | uuid |  |  | PK FK→nhan_su.id |  |
+| so_gay_danh | integer |  |  |  |  |
+| so_gay_go | integer |  |  |  |  |
+| so_gay_chot | integer |  |  |  |  |
+| don_gia | integer |  |  |  |  |
+| tien_phat | integer |  |  |  |  |
+| snapshot | jsonb |  |  |  |  |
+| nguoi_chot | uuid |  |  | FK→nhan_su.id |  |
+| chot_at | timestamp with time zone |  | now() |  |  |
+
+## gay_de_xuat
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| nhan_su_id | uuid |  |  | FK→nhan_su.id |  |
+| nguon | text |  |  |  | `vanhanh` · `giaoviec` |
+| ref_key | text |  |  |  |  |
+| mo_ta | text |  |  |  |  |
+| deadline_at | timestamp with time zone | Y |  |  |  |
+| tre_phut | integer | Y |  |  |  |
+| trang_thai | text |  | 'cho'::text |  | `cho` · `da_danh` · `bo_qua` |
+| so_gay | integer |  | 1 |  |  |
+| nguoi_quyet | uuid | Y |  | FK→nhan_su.id |  |
+| quyet_at | timestamp with time zone | Y |  |  |  |
+| ly_do_bo_qua | text | Y |  |  |  |
+| ledger_id | uuid | Y |  | FK→gay_ledger.id |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
+## gay_hoat_dong
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| ten | text |  |  |  |  |
+| mo_ta | text | Y |  |  |  |
+| so_gay_mac_dinh | integer |  | 1 |  |  |
+| active | boolean |  | true |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
+## gay_ledger
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| nhan_su_id | uuid |  |  | FK→nhan_su.id |  |
+| ky | date |  | (date_trunc('month'::text, (now() AT TIME ZONE 'Asia/Ho_Chi_Minh'::text)))::date |  |  |
+| so_gay | integer |  |  |  |  |
+| loai | text |  |  |  | `tu_dong` · `thu_cong` · `go` |
+| loi_id | uuid | Y |  | FK→gay_loi.id |  |
+| hoat_dong_id | uuid | Y |  | FK→gay_hoat_dong.id |  |
+| ly_do | text | Y |  |  |  |
+| ref_loai | text | Y |  |  |  |
+| ref_id | text | Y |  |  |  |
+| nguoi_tao | uuid |  |  | FK→nhan_su.id |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| thu_hoi_at | timestamp with time zone | Y |  |  |  |
+| nguoi_thu_hoi | uuid | Y |  | FK→nhan_su.id |  |
+| thu_hoi_ly_do | text | Y |  |  |  |
+
+## gay_log
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| bang | text |  |  |  |  |
+| row_id | uuid |  |  |  |  |
+| hanh_dong | text |  |  |  |  |
+| truoc | jsonb | Y |  |  |  |
+| sau | jsonb |  |  |  |  |
+| actor | uuid | Y |  |  |  |
+| ts | timestamp with time zone |  | now() |  |  |
+
+## gay_loi
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| ma | text | Y |  |  |  |
+| ten | text |  |  |  |  |
+| mo_ta | text | Y |  |  |  |
+| so_gay_mac_dinh | integer |  | 1 |  |  |
+| active | boolean |  | true |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
 
 ## giai_thuong
 
@@ -1619,6 +1710,7 @@
 | anh_url | text | Y |  |  |  |
 | la_admin_he_thong | boolean |  | false |  |  |
 | giao_dien | text |  | 'sang'::text |  | `sang` · `toi` |
+| mien_gay | boolean |  | false |  |  |
 
 ## nhan_su_mon
 
@@ -2279,6 +2371,8 @@ SELECT q.id AS qua_id,
 | bao_loi | trg_log_bao_loi | BEFORE | UPDATE | log_bao_loi |
 | ca_test | trg_log_ca_test | AFTER | INSERT/UPDATE | log_ca_test |
 | dai_cau_hoi | trg_log_kho_cau_dai | AFTER | DELETE/UPDATE | log_kho_cau |
+| gay_de_xuat | trg_log_gay_de_xuat | AFTER | INSERT/UPDATE | log_gay_de_xuat |
+| gay_ledger | trg_log_gay_ledger | AFTER | INSERT/UPDATE | log_gay_ledger |
 | giai_thuong | trg_giai_thuong_check_slot | BEFORE | INSERT | giai_thuong_check_slot |
 | hgt_cau_hoi | trg_log_kho_cau_hgt | AFTER | DELETE/UPDATE | log_kho_cau |
 | hinh_baitoan | hinh_baitoan_gen_ma_trg | BEFORE | INSERT | hinh_baitoan_gen_ma |
@@ -2341,6 +2435,8 @@ SELECT q.id AS qua_id,
 - `la_thanh_vien()` → boolean
 - `log_bao_loi()` → trigger
 - `log_ca_test()` → trigger
+- `log_gay_de_xuat()` → trigger
+- `log_gay_ledger()` → trigger
 - `log_he_so_hoc_phi()` → trigger
 - `log_hoa_don()` → trigger
 - `log_hoat_dong_phong()` → trigger
@@ -2398,6 +2494,13 @@ SELECT q.id AS qua_id,
 | dai_ban_do | dai_ban_do_muc_do_check | `CHECK (((muc_do >= 1) AND (muc_do <= 5)))` |
 | dai_cum_tien_de | dai_cum_tien_de_check | `CHECK ((ma_cum <> tien_de_ma_cum))` |
 | dai_dang_tien_de | dai_dang_tien_de_check | `CHECK ((ma_dang <> tien_de_ma_dang))` |
+| gay_de_xuat | gay_de_xuat_so_gay_check | `CHECK ((so_gay > 0))` |
+| gay_hoat_dong | gay_hoat_dong_so_gay_mac_dinh_check | `CHECK ((so_gay_mac_dinh > 0))` |
+| gay_ledger | gay_ledger_danh_co_loi | `CHECK (((loai = 'go'::text) OR (loi_id IS NOT NULL)))` |
+| gay_ledger | gay_ledger_dau | `CHECK ((((loai = 'go'::text) AND (so_gay < 0)) OR ((loai <> 'go'::text) AND (so_gay > 0))))` |
+| gay_ledger | gay_ledger_go_co_hoat_dong | `CHECK (((loai <> 'go'::text) OR (hoat_dong_id IS NOT NULL)))` |
+| gay_ledger | gay_ledger_so_gay_check | `CHECK ((so_gay <> 0))` |
+| gay_loi | gay_loi_so_gay_mac_dinh_check | `CHECK ((so_gay_mac_dinh > 0))` |
 | hgt_cum_tien_de | hgt_cum_tien_de_check | `CHECK ((ma_cum <> tien_de_ma_cum))` |
 | hgt_dang_tien_de | hgt_dang_tien_de_check | `CHECK ((ma_dang <> tien_de_ma_dang))` |
 | hinh_mo_hinh | hinh_mo_hinh_cap_mo_hinh_check | `CHECK (((cap_mo_hinh >= 1) AND (cap_mo_hinh <= 4)))` |

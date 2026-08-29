@@ -1,6 +1,9 @@
-// Data-layer VÍ XU (seam) — chốt tháng EXP→xu per (HS×môn) theo bảng mốc luong_bac; ví = Σ xu_ledger
-// (suy động, không cột balance). Đóng băng sau chốt; lệch (data trễ/sửa điểm) → CHỐT LẠI ghi dòng
-// chênh lệch ± 'chot_lai' (append-only, kiểu học phí — không xoá/sửa dòng đã phát). UI chỉ gọi qua đây.
+// Data-layer CHỐT XU THÁNG (seam) — ghi vào SỔ XU CHUNG `qlht_xu_ledger` (hệ quà của Hải; BK chỉ có
+// 1 xu — Thùy chốt 08-29). Chốt tháng: EXP tháng per (HS×môn) → xu theo bảng mốc luong_bac; đóng băng;
+// lệch (data trễ/sửa điểm) → CHỐT LẠI ghi dòng chênh ± 'chot_lai' (append-only, kiểu học phí).
+// Ví/số dư đọc qua view `qlht_v_so_du_xu` (hợp đồng chung với app Hải + trợ lý AI).
+// ⚠ CẦN SQL 1 LẦN (CEO chạy tay — bảng do postgres sở hữu): scripts/sql_chot_xu_qlht.sql
+//   (thêm cột mon/thang/exp_snapshot, nới CHECK loai, policy INSERT, sửa view bỏ công thức tạm exp/10).
 import { supabase } from './supabase'
 import { pagedLedger, EXP_NOTE_SOURCES } from './gami'
 import { xuForExp } from '../gami/xu.js'
@@ -55,7 +58,7 @@ export type ChotRow = {
 export async function previewChotXu(ym: string): Promise<{ rows: ChotRow[]; bacs: BacXu[] }> {
   const [expMap, bacs, chotR, hsR] = await Promise.all([
     expThangPerHsMon(ym), listBacXu(),
-    supabase.from('xu_ledger').select('hoc_sinh_id, mon, loai, xu, exp_snapshot, created_at').eq('thang', ym).in('loai', ['chot_thang', 'chot_lai']).limit(LIMIT),
+    supabase.from('qlht_xu_ledger').select('hoc_sinh_id, mon, loai, amount, exp_snapshot, created_at').eq('thang', ym).in('loai', ['chot_thang', 'chot_lai']).limit(LIMIT),
     supabase.from('hoc_sinh').select('id, ho_ten, ma_hs').limit(LIMIT),
   ])
   if (chotR.error) throw chotR.error
@@ -65,7 +68,7 @@ export async function previewChotXu(ym: string): Promise<{ rows: ChotRow[]; bacs
   for (const r of ((chotR.data ?? []) as any[]).sort((a, b) => (a.created_at < b.created_at ? -1 : 1))) {
     const k = r.hoc_sinh_id + '|' + (r.mon ?? '')
     const cur = daChot.get(k)
-    daChot.set(k, { xu: (cur?.xu ?? 0) + Number(r.xu), exp: r.exp_snapshot ?? cur?.exp ?? null, at: r.created_at })
+    daChot.set(k, { xu: (cur?.xu ?? 0) + Number(r.amount), exp: r.exp_snapshot ?? cur?.exp ?? null, at: r.created_at })
   }
   const keys = new Set([...expMap.keys(), ...daChot.keys()])
   const rows: ChotRow[] = []
@@ -85,44 +88,36 @@ export async function previewChotXu(ym: string): Promise<{ rows: ChotRow[]; bacs
   return { rows, bacs }
 }
 
-// ── CHỐT: dòng CHƯA chốt → 'chot_thang'; dòng ĐÃ chốt mà lệch → 'chot_lai' (xu = chênh ±). Idempotent:
-// chạy lại khi không có gì đổi = 0 dòng. Unique index chặn race dòng gốc; lỗi 23505 = tab kia vừa chốt → bỏ qua.
+// ── CHỐT: dòng CHƯA chốt → 'chot_thang'; dòng ĐÃ chốt mà lệch → 'chot_lai' (amount = chênh ±). Idempotent:
+// chạy lại khi không đổi = 0 dòng. Unique index (SQL kèm) chặn race dòng gốc; 23505 = tab kia vừa chốt → bỏ qua.
+// nguoi_tao = nhan_su hiện tại (map auth.uid → tai_khoan.nhan_su_id — cùng pattern giaoviec.ts).
 export async function chotXu(ym: string): Promise<{ moi: number; dieuChinh: number; tongXu: number }> {
-  const { data: { user } } = await supabase.auth.getUser()
+  const { data: au } = await supabase.auth.getUser()
+  const { data: tk } = await supabase.from('tai_khoan').select('nhan_su_id').eq('id', au.user?.id ?? '').maybeSingle()
+  const nsId = (tk as any)?.nhan_su_id
+  if (!nsId) throw new Error('Tài khoản chưa gắn nhân sự — không ghi được sổ xu (nguoi_tao).')
   const { rows } = await previewChotXu(ym)
+  const lyDo = (r: ChotRow, lai: boolean) => `${lai ? 'Chốt lại' : 'Chốt'} xu tháng ${ym} · ${r.mon || '?'} · ${r.exp.toLocaleString('vi-VN')} EXP`
   const goc = rows.filter((r) => !r.daChot && r.xu > 0)
-    .map((r) => ({ hoc_sinh_id: r.hoc_sinh_id, loai: 'chot_thang', xu: r.xu, mon: r.mon, thang: ym, exp_snapshot: r.exp, created_by: user?.id ?? null }))
+    .map((r) => ({ hoc_sinh_id: r.hoc_sinh_id, loai: 'chot_thang', amount: r.xu, mon: r.mon, thang: ym, exp_snapshot: r.exp, ly_do: lyDo(r, false), nguoi_tao: nsId }))
   const lai = rows.filter((r) => r.daChot && r.lech !== 0)
-    .map((r) => ({ hoc_sinh_id: r.hoc_sinh_id, loai: 'chot_lai', xu: r.lech, mon: r.mon, thang: ym, exp_snapshot: r.exp, created_by: user?.id ?? null }))
+    .map((r) => ({ hoc_sinh_id: r.hoc_sinh_id, loai: 'chot_lai', amount: r.lech, mon: r.mon, thang: ym, exp_snapshot: r.exp, ly_do: lyDo(r, true), nguoi_tao: nsId }))
   for (const batch of [goc, lai]) {
     if (!batch.length) continue
-    const { error } = await supabase.from('xu_ledger').insert(batch)
+    const { error } = await supabase.from('qlht_xu_ledger').insert(batch)
     if (error && error.code !== '23505') throw error
   }
-  return { moi: goc.length, dieuChinh: lai.length, tongXu: [...goc, ...lai].reduce((s, r) => s + r.xu, 0) }
+  return { moi: goc.length, dieuChinh: lai.length, tongXu: [...goc, ...lai].reduce((s, r) => s + r.amount, 0) }
 }
 
-// ── VÍ XU (Σ ledger) ──
+// ── VÍ/SỐ DƯ XU — đọc qua view chung `qlht_v_so_du_xu` (khớp app Hải + trợ lý, 1 nguồn duy nhất) ──
 export async function getViXu(hocSinhId: string): Promise<number> {
-  const { data, error } = await supabase.from('xu_ledger').select('xu').eq('hoc_sinh_id', hocSinhId).limit(LIMIT)
+  const { data, error } = await supabase.from('qlht_v_so_du_xu').select('so_du').eq('hoc_sinh_id', hocSinhId).maybeSingle()
   if (error) throw error
-  return ((data ?? []) as any[]).reduce((s, r) => s + Number(r.xu), 0)
+  return Number((data as any)?.so_du ?? 0)
 }
-// Ví của CẢ danh sách (bảng chốt/quản trị) — đọc toàn sổ phân trang (sổ lớn dần theo tháng).
 export async function listViXu(): Promise<Map<string, number>> {
-  const rows = await pagedLedgerXu()
-  const m = new Map<string, number>()
-  for (const r of rows) m.set(r.hoc_sinh_id, (m.get(r.hoc_sinh_id) ?? 0) + Number(r.xu))
-  return m
-}
-async function pagedLedgerXu(): Promise<any[]> {
-  const PAGE = 1000, out: any[] = []
-  for (let from = 0; from < 200000; from += PAGE) {
-    const { data, error } = await supabase.from('xu_ledger').select('hoc_sinh_id, xu').order('id').range(from, from + PAGE - 1)
-    if (error) throw error
-    const rows = (data ?? []) as any[]
-    out.push(...rows)
-    if (rows.length < PAGE) break
-  }
-  return out
+  const { data, error } = await supabase.from('qlht_v_so_du_xu').select('hoc_sinh_id, so_du').limit(LIMIT)
+  if (error) throw error
+  return new Map(((data ?? []) as any[]).map((r) => [r.hoc_sinh_id, Number(r.so_du)]))
 }

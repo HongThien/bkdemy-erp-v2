@@ -51,7 +51,8 @@ export async function getLevelXu(hocSinhId: string, mon: string): Promise<LevelX
     // attend_floor (bù, no note, sinh 1 lần) lọc created_at ≥ đầu tháng.
     supabase.from('gami_exp_ledger').select('amount, created_at').eq('hoc_sinh_id', hocSinhId).eq('mon', mon).eq('source', 'attend_floor').gte('created_at', monthStartUtcISO()).limit(LIMIT),
     supabase.from('luong_bac').select('min_exp, xu').order('min_exp', { ascending: true }).limit(LIMIT),
-    supabase.from('xu_ledger').select('xu').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
+    // Ví xu = số dư từ view chung qlht_v_so_du_xu (sổ của hệ quà — BK chỉ có 1 xu, Thùy 08-29)
+    supabase.from('qlht_v_so_du_xu').select('so_du').eq('hoc_sinh_id', hocSinhId).maybeSingle(),
   ])
   let level = 0
   for (const r of (dt.data ?? []) as any[]) { const k = r.ky_thi; if (k && k.mon === mon && k.mua === mua) level += verdictPoint(r.verdict, k.he_so) }
@@ -61,7 +62,7 @@ export async function getLevelXu(hocSinhId: string, mon: string): Promise<LevelX
   for (let i = 0; i < bacs.length; i++) {
     if (expThang >= bacs[i].min_exp) { xu = bacs[i].xu; const nx = bacs[i + 1]; xuKe = nx?.xu ?? null; expKeMoc = nx?.min_exp ?? null }
   }
-  const viXu = ((viR.data ?? []) as any[]).reduce((s, r) => s + Number(r.xu), 0)
+  const viXu = Number((viR.data as any)?.so_du ?? 0)
   return { mua, level, levelMax: LEVEL.MAX, xu, viXu, expThang, xuKe, expKeMoc }
 }
 
