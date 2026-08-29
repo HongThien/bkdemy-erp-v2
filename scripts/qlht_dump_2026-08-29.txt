@@ -1,0 +1,418 @@
+
+════════════════════════════════════════════════════════════════════════════════
+CREATE OR REPLACE FUNCTION public.current_nhan_su_id()
+ RETURNS uuid
+ LANGUAGE sql
+ STABLE SECURITY DEFINER
+ SET search_path TO 'public'
+AS $function$
+  SELECT ns.id
+  FROM public.nhan_su ns
+  JOIN auth.users au ON lower(au.email) = lower(ns.email)
+  WHERE au.id = auth.uid()
+    AND ns.trang_thai = 'dang_lam'
+  LIMIT 1;
+$function$
+
+
+════════════════════════════════════════════════════════════════════════════════
+CREATE OR REPLACE FUNCTION public.giai_thuong_check_slot()
+ RETURNS trigger
+ LANGUAGE plpgsql
+AS $function$
+declare
+  max_slot int;
+  hien_co int;
+begin
+  max_slot := case new.loai_giai
+    when 'xuat_sac' then 3
+    when 'tien_bo' then 2
+    when 'cham_chi' then 1
+  end;
+  select count(*) into hien_co
+  from giai_thuong
+  where thang = new.thang and lop_id = new.lop_id and loai_giai = new.loai_giai;
+  if hien_co >= max_slot then
+    raise exception 'Lớp % tháng % đã đủ % slot "%"', new.lop_id, new.thang, max_slot, new.loai_giai;
+  end if;
+  return new;
+end;
+$function$
+
+
+════════════════════════════════════════════════════════════════════════════════
+CREATE OR REPLACE FUNCTION public.qlht_dieu_chinh_xu(p_hoc_sinh_id uuid, p_amount integer, p_ly_do text)
+ RETURNS TABLE(so_du_moi integer)
+ LANGUAGE plpgsql
+ SECURITY DEFINER
+ SET search_path TO 'public'
+AS $function$
+DECLARE v_ns uuid; v_du int;
+BEGIN
+  v_ns := current_nhan_su_id();
+  IF v_ns IS NULL THEN RAISE EXCEPTION 'Khong co quyen'; END IF;
+  IF p_amount = 0 THEN RAISE EXCEPTION 'So xu phai khac 0'; END IF;
+
+  SELECT so_du INTO v_du FROM qlht_v_so_du_xu WHERE hoc_sinh_id = p_hoc_sinh_id;
+  IF v_du IS NULL THEN RAISE EXCEPTION 'Khong tim thay hoc sinh'; END IF;
+  IF v_du + p_amount < 0 THEN
+    RAISE EXCEPTION 'So du khong du (con %, tru %)', v_du, abs(p_amount);
+  END IF;
+
+  INSERT INTO qlht_xu_ledger (hoc_sinh_id, amount, loai, ly_do, nguoi_tao)
+  VALUES (p_hoc_sinh_id, p_amount,
+          CASE WHEN p_amount > 0 THEN 'cong_tay' ELSE 'tru_tay' END,
+          p_ly_do, v_ns);
+
+  RETURN QUERY SELECT v_du + p_amount;
+END $function$
+
+
+════════════════════════════════════════════════════════════════════════════════
+CREATE OR REPLACE FUNCTION public.qlht_doi_giao_dien(p_giao_dien text)
+ RETURNS void
+ LANGUAGE plpgsql
+ SECURITY DEFINER
+ SET search_path TO 'public'
+AS $function$
+DECLARE v_ns uuid;
+BEGIN
+  v_ns := current_nhan_su_id();
+  IF v_ns IS NULL THEN RAISE EXCEPTION 'Khong co quyen'; END IF;
+  IF p_giao_dien NOT IN ('sang','toi') THEN
+    RAISE EXCEPTION 'Gia tri khong hop le';
+  END IF;
+  UPDATE nhan_su SET giao_dien = p_giao_dien WHERE id = v_ns;
+END $function$
+
+
+════════════════════════════════════════════════════════════════════════════════
+CREATE OR REPLACE FUNCTION public.qlht_doi_qua_moi(p_hoc_sinh_id uuid, p_qua_id uuid, p_so_luong integer DEFAULT 1)
+ RETURNS TABLE(doi_qua_id uuid, so_du_moi integer)
+ LANGUAGE plpgsql
+ SECURITY DEFINER
+ SET search_path TO 'public'
+AS $function$
+DECLARE v_ns uuid; v_du int; v_gia int; v_ton int; v_tong int; v_id uuid;
+BEGIN
+  v_ns := current_nhan_su_id();
+  IF v_ns IS NULL THEN RAISE EXCEPTION 'Khong co quyen'; END IF;
+
+  SELECT gia_xu, ton INTO v_gia, v_ton
+  FROM qlht_v_ton_qua WHERE qua_id = p_qua_id AND dang_ban;
+  IF v_gia IS NULL THEN RAISE EXCEPTION 'Qua khong ton tai hoac ngung ban'; END IF;
+  IF v_ton < p_so_luong THEN RAISE EXCEPTION 'Khong du ton kho (con %)', v_ton; END IF;
+
+  v_tong := v_gia * p_so_luong;
+  SELECT so_du INTO v_du FROM qlht_v_so_du_xu WHERE hoc_sinh_id = p_hoc_sinh_id;
+  IF v_du IS NULL THEN RAISE EXCEPTION 'Khong tim thay hoc sinh'; END IF;
+  IF v_du < v_tong THEN
+    RAISE EXCEPTION 'Khong du xu (can %, con %)', v_tong, v_du;
+  END IF;
+
+  INSERT INTO qlht_doi_qua (hoc_sinh_id, qua_id, so_luong, xu_tru, nguoi_tao)
+  VALUES (p_hoc_sinh_id, p_qua_id, p_so_luong, v_tong, v_ns)
+  RETURNING id INTO v_id;
+
+  INSERT INTO qlht_xu_ledger (hoc_sinh_id, amount, loai, ly_do, ref_id, ref_loai, nguoi_tao)
+  VALUES (p_hoc_sinh_id, -v_tong, 'doi_qua', 'Doi qua', v_id, 'doi_qua', v_ns);
+
+  RETURN QUERY SELECT v_id, v_du - v_tong;
+END $function$
+
+
+════════════════════════════════════════════════════════════════════════════════
+CREATE OR REPLACE FUNCTION public.qlht_nhan_su_doi_avatar(p_anh_url text)
+ RETURNS void
+ LANGUAGE plpgsql
+ SECURITY DEFINER
+ SET search_path TO 'public'
+AS $function$
+DECLARE v_ns uuid;
+BEGIN
+  v_ns := current_nhan_su_id();
+  IF v_ns IS NULL THEN
+    RAISE EXCEPTION 'Khong co quyen';
+  END IF;
+
+  UPDATE nhan_su SET anh_url = p_anh_url WHERE id = v_ns;
+END $function$
+
+
+════════════════════════════════════════════════════════════════════════════════
+CREATE OR REPLACE FUNCTION public.qlht_nhap_huy(p_nhap_id uuid, p_ly_do text DEFAULT NULL::text)
+ RETURNS void
+ LANGUAGE plpgsql
+ SECURITY DEFINER
+ SET search_path TO 'public'
+AS $function$
+DECLARE v_ns uuid; v_tt text;
+BEGIN
+  v_ns := current_nhan_su_id();
+  IF v_ns IS NULL THEN RAISE EXCEPTION 'Khong co quyen'; END IF;
+
+  SELECT trang_thai INTO v_tt FROM qlht_qua_nhap WHERE id = p_nhap_id FOR UPDATE;
+  IF v_tt IS NULL THEN RAISE EXCEPTION 'Khong tim thay phieu nhap'; END IF;
+  IF v_tt <> 'cho_vao_kho' THEN
+    RAISE EXCEPTION 'Chi huy duoc phieu dang cho (hien %)', v_tt;
+  END IF;
+
+  UPDATE qlht_qua_nhap
+     SET trang_thai = 'huy',
+         ghi_chu = COALESCE(ghi_chu,'') || ' | Huy: ' || COALESCE(p_ly_do,'')
+   WHERE id = p_nhap_id;
+END $function$
+
+
+════════════════════════════════════════════════════════════════════════════════
+CREATE OR REPLACE FUNCTION public.qlht_nhap_xac_nhan(p_nhap_id uuid, p_so_luong_thuc integer DEFAULT NULL::integer)
+ RETURNS TABLE(ton_moi integer)
+ LANGUAGE plpgsql
+ SECURITY DEFINER
+ SET search_path TO 'public'
+AS $function$
+DECLARE v_ns uuid; v_tt text; v_qua uuid; v_ton int;
+BEGIN
+  v_ns := current_nhan_su_id();
+  IF v_ns IS NULL THEN RAISE EXCEPTION 'Khong co quyen'; END IF;
+
+  SELECT trang_thai, qua_id INTO v_tt, v_qua
+  FROM qlht_qua_nhap WHERE id = p_nhap_id FOR UPDATE;
+  IF v_tt IS NULL THEN RAISE EXCEPTION 'Khong tim thay phieu nhap'; END IF;
+  IF v_tt <> 'cho_vao_kho' THEN RAISE EXCEPTION 'Phieu da o trang thai %', v_tt; END IF;
+  IF p_so_luong_thuc IS NOT NULL AND p_so_luong_thuc <= 0 THEN
+    RAISE EXCEPTION 'So luong thuc phai lon hon 0';
+  END IF;
+
+  UPDATE qlht_qua_nhap
+     SET trang_thai = 'da_vao_kho', so_luong_thuc = p_so_luong_thuc,
+         nguoi_xac_nhan = v_ns, xac_nhan_luc = now()
+   WHERE id = p_nhap_id;
+
+  SELECT ton INTO v_ton FROM qlht_v_ton_qua WHERE qua_id = v_qua;
+  RETURN QUERY SELECT v_ton;
+END $function$
+
+
+════════════════════════════════════════════════════════════════════════════════
+CREATE OR REPLACE FUNCTION public.qlht_order_duyet(p_order_id uuid, p_gia_xu integer)
+ RETURNS TABLE(so_du_moi integer)
+ LANGUAGE plpgsql
+ SECURITY DEFINER
+ SET search_path TO 'public'
+AS $function$
+DECLARE v_ns uuid; v_hs uuid; v_du int; v_tt text;
+BEGIN
+  v_ns := current_nhan_su_id();
+  IF v_ns IS NULL THEN RAISE EXCEPTION 'Khong co quyen'; END IF;
+
+  SELECT hoc_sinh_id, trang_thai INTO v_hs, v_tt
+  FROM qlht_qua_order WHERE id = p_order_id FOR UPDATE;
+  IF v_tt IS NULL THEN RAISE EXCEPTION 'Khong tim thay don'; END IF;
+  IF v_tt <> 'cho_duyet' THEN RAISE EXCEPTION 'Don da o trang thai %', v_tt; END IF;
+
+  SELECT so_du INTO v_du FROM qlht_v_so_du_xu WHERE hoc_sinh_id = v_hs;
+  IF v_du < p_gia_xu THEN
+    RAISE EXCEPTION 'Khong du xu (can %, con %)', p_gia_xu, v_du;
+  END IF;
+
+  UPDATE qlht_qua_order
+     SET gia_xu = p_gia_xu, trang_thai = 'da_duyet',
+         nguoi_duyet = v_ns, duyet_luc = now()
+   WHERE id = p_order_id;
+
+  INSERT INTO qlht_xu_ledger (hoc_sinh_id, amount, loai, ly_do, ref_id, ref_loai, nguoi_tao)
+  VALUES (v_hs, -p_gia_xu, 'doi_qua', 'Order: duyet', p_order_id, 'order', v_ns);
+
+  RETURN QUERY SELECT v_du - p_gia_xu;
+END $function$
+
+
+════════════════════════════════════════════════════════════════════════════════
+CREATE OR REPLACE FUNCTION public.qlht_order_huy(p_order_id uuid, p_ly_do text)
+ RETURNS void
+ LANGUAGE plpgsql
+ SECURITY DEFINER
+ SET search_path TO 'public'
+AS $function$
+DECLARE v_ns uuid; v_hs uuid; v_gia int; v_tt text;
+BEGIN
+  v_ns := current_nhan_su_id();
+  IF v_ns IS NULL THEN RAISE EXCEPTION 'Khong co quyen'; END IF;
+
+  SELECT hoc_sinh_id, gia_xu, trang_thai INTO v_hs, v_gia, v_tt
+  FROM qlht_qua_order WHERE id = p_order_id FOR UPDATE;
+  IF v_tt IS NULL THEN RAISE EXCEPTION 'Khong tim thay don'; END IF;
+  IF v_tt IN ('da_giao','huy','tu_choi') THEN
+    RAISE EXCEPTION 'Khong the huy don o trang thai %', v_tt;
+  END IF;
+
+  UPDATE qlht_qua_order SET trang_thai = 'huy', ghi_chu = p_ly_do WHERE id = p_order_id;
+
+  IF v_gia IS NOT NULL THEN
+    INSERT INTO qlht_xu_ledger (hoc_sinh_id, amount, loai, ly_do, ref_id, ref_loai, nguoi_tao)
+    VALUES (v_hs, v_gia, 'hoan', COALESCE(p_ly_do,'Huy order'), p_order_id, 'order', v_ns);
+  END IF;
+END $function$
+
+
+════════════════════════════════════════════════════════════════════════════════
+CREATE OR REPLACE FUNCTION public.qlht_order_tao(p_hoc_sinh_id uuid, p_mo_ta text, p_link text DEFAULT NULL::text)
+ RETURNS uuid
+ LANGUAGE plpgsql
+ SECURITY DEFINER
+ SET search_path TO 'public'
+AS $function$
+DECLARE v_ns uuid; v_id uuid;
+BEGIN
+  v_ns := current_nhan_su_id();
+  IF v_ns IS NULL THEN RAISE EXCEPTION 'Khong co quyen'; END IF;
+  INSERT INTO qlht_qua_order (hoc_sinh_id, mo_ta, link_tham_khao, nguoi_tao)
+  VALUES (p_hoc_sinh_id, p_mo_ta, p_link, v_ns) RETURNING id INTO v_id;
+  RETURN v_id;
+END $function$
+
+
+════════════════════════════════════════════════════════════════════════════════
+CREATE OR REPLACE FUNCTION public.qlht_qua_doi_trang_thai(p_qua_id uuid, p_dang_ban boolean)
+ RETURNS void
+ LANGUAGE plpgsql
+ SECURITY DEFINER
+ SET search_path TO 'public'
+AS $function$
+DECLARE v_ns uuid;
+BEGIN
+  v_ns := current_nhan_su_id();
+  IF v_ns IS NULL THEN RAISE EXCEPTION 'Khong co quyen'; END IF;
+  UPDATE qlht_qua SET dang_ban = p_dang_ban WHERE id = p_qua_id;
+  IF NOT FOUND THEN RAISE EXCEPTION 'Qua khong ton tai'; END IF;
+END $function$
+
+
+════════════════════════════════════════════════════════════════════════════════
+CREATE OR REPLACE FUNCTION public.qlht_qua_nhap_kho(p_qua_id uuid, p_so_luong integer, p_ghi_chu text DEFAULT NULL::text)
+ RETURNS TABLE(nhap_id uuid, trang_thai_moi text)
+ LANGUAGE plpgsql
+ SECURITY DEFINER
+ SET search_path TO 'public'
+AS $function$
+DECLARE v_ns uuid; v_ton int; v_tt text; v_id uuid;
+BEGIN
+  v_ns := current_nhan_su_id();
+  IF v_ns IS NULL THEN RAISE EXCEPTION 'Khong co quyen'; END IF;
+  IF p_so_luong = 0 THEN RAISE EXCEPTION 'So luong phai khac 0'; END IF;
+  IF NOT EXISTS (SELECT 1 FROM qlht_qua WHERE id = p_qua_id) THEN
+    RAISE EXCEPTION 'Qua khong ton tai';
+  END IF;
+
+  IF p_so_luong > 0 THEN
+    v_tt := 'cho_vao_kho';
+  ELSE
+    v_tt := 'da_vao_kho';
+    SELECT ton INTO v_ton FROM qlht_v_ton_qua WHERE qua_id = p_qua_id;
+    IF COALESCE(v_ton,0) + p_so_luong < 0 THEN
+      RAISE EXCEPTION 'Ton kho khong du (con %, giam %)', v_ton, abs(p_so_luong);
+    END IF;
+  END IF;
+
+  INSERT INTO qlht_qua_nhap (qua_id, so_luong, nguoi_tao, ghi_chu, trang_thai,
+                             nguoi_xac_nhan, xac_nhan_luc)
+  VALUES (p_qua_id, p_so_luong, v_ns, p_ghi_chu, v_tt,
+          CASE WHEN v_tt = 'da_vao_kho' THEN v_ns END,
+          CASE WHEN v_tt = 'da_vao_kho' THEN now() END)
+  RETURNING id INTO v_id;
+
+  RETURN QUERY SELECT v_id, v_tt;
+END $function$
+
+
+════════════════════════════════════════════════════════════════════════════════
+CREATE OR REPLACE FUNCTION public.qlht_qua_sua(p_qua_id uuid, p_ten text, p_gia_xu integer, p_anh_url text DEFAULT NULL::text, p_mo_ta text DEFAULT NULL::text)
+ RETURNS void
+ LANGUAGE plpgsql
+ SECURITY DEFINER
+ SET search_path TO 'public'
+AS $function$
+DECLARE v_ns uuid;
+BEGIN
+  v_ns := current_nhan_su_id();
+  IF v_ns IS NULL THEN RAISE EXCEPTION 'Khong co quyen'; END IF;
+  IF p_gia_xu <= 0 THEN RAISE EXCEPTION 'Gia xu phai lon hon 0'; END IF;
+  IF btrim(coalesce(p_ten,'')) = '' THEN RAISE EXCEPTION 'Ten qua khong duoc trong'; END IF;
+
+  IF EXISTS (SELECT 1 FROM qlht_qua
+              WHERE lower(btrim(ten)) = lower(btrim(p_ten)) AND id <> p_qua_id) THEN
+    RAISE EXCEPTION 'Da co qua khac ten "%" trong kho', btrim(p_ten);
+  END IF;
+
+  UPDATE qlht_qua
+     SET ten = btrim(p_ten), gia_xu = p_gia_xu,
+         anh_url = p_anh_url, mo_ta = p_mo_ta
+   WHERE id = p_qua_id;
+  IF NOT FOUND THEN RAISE EXCEPTION 'Qua khong ton tai'; END IF;
+END $function$
+
+
+════════════════════════════════════════════════════════════════════════════════
+CREATE OR REPLACE FUNCTION public.qlht_qua_them(p_ten text, p_gia_xu integer, p_anh_url text DEFAULT NULL::text, p_mo_ta text DEFAULT NULL::text)
+ RETURNS uuid
+ LANGUAGE plpgsql
+ SECURITY DEFINER
+ SET search_path TO 'public'
+AS $function$
+DECLARE v_ns uuid; v_id uuid; v_cu text;
+BEGIN
+  v_ns := current_nhan_su_id();
+  IF v_ns IS NULL THEN RAISE EXCEPTION 'Khong co quyen'; END IF;
+  IF p_gia_xu <= 0 THEN RAISE EXCEPTION 'Gia xu phai lon hon 0'; END IF;
+  IF btrim(coalesce(p_ten,'')) = '' THEN RAISE EXCEPTION 'Ten qua khong duoc trong'; END IF;
+
+  SELECT ten INTO v_cu FROM qlht_qua
+   WHERE lower(btrim(ten)) = lower(btrim(p_ten)) LIMIT 1;
+  IF v_cu IS NOT NULL THEN
+    RAISE EXCEPTION 'Da co qua ten "%" trong kho. Dung "Nhap them hang" thay vi tao qua moi.', v_cu;
+  END IF;
+
+  INSERT INTO qlht_qua (ten, gia_xu, anh_url, mo_ta, dang_ban)
+  VALUES (btrim(p_ten), p_gia_xu, p_anh_url, p_mo_ta, true)
+  RETURNING id INTO v_id;
+  RETURN v_id;
+END $function$
+
+
+════════════════════════════════════════════════════════════════════════════════
+TRIGGERS toàn DB gọi hàm qlht_/giai_thuong:
+  giai_thuong · trg_giai_thuong_check_slot → giai_thuong_check_slot()
+
+SEQUENCES/objects khác tên qlht:
+  qlht_doi_qua (r)
+  qlht_doi_qua_hoc_sinh_id_created_at_idx (i)
+  qlht_doi_qua_pkey (i)
+  qlht_doi_qua_trang_thai_idx (i)
+  qlht_qua (r)
+  qlht_qua_nhap (r)
+  qlht_qua_nhap_pkey (i)
+  qlht_qua_nhap_trang_thai_created_at_idx (i)
+  qlht_qua_order (r)
+  qlht_qua_order_hoc_sinh_id_created_at_idx (i)
+  qlht_qua_order_pkey (i)
+  qlht_qua_order_trang_thai_created_at_idx (i)
+  qlht_qua_pkey (i)
+  qlht_qua_ten_unique (i)
+  qlht_smoke_test (r)
+  qlht_smoke_test_pkey (i)
+  qlht_v_so_du_xu (v)
+  qlht_v_ton_qua (v)
+  qlht_xu_ledger (r)
+  qlht_xu_ledger_hoc_sinh_id_created_at_idx (i)
+  qlht_xu_ledger_pkey (i)
+
+GRANTS trên các bảng qlht (role nào đọc/ghi được):
+  qlht_doi_qua · claude_build: SELECT
+  qlht_qua · claude_build: SELECT
+  qlht_qua_nhap · claude_build: SELECT
+  qlht_qua_order · claude_build: SELECT
+  qlht_smoke_test · claude_build: SELECT
+  qlht_v_so_du_xu · claude_build: SELECT
+  qlht_v_ton_qua · claude_build: SELECT
+  qlht_xu_ledger · claude_build: SELECT

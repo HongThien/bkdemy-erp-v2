@@ -99,6 +99,7 @@ export const adminLeaves: AdminLeaf[] = [
   { id: 'diemso',      nhom: 'Gamification', ten: 'Điểm số (Elo/EXP)',        founderOnly: false },
   { id: 'thanhtich',   nhom: 'Gamification', ten: 'Thành tích',               founderOnly: false },
   { id: 'quanlylevel', nhom: 'Gamification', ten: 'Quản lý Level',            founderOnly: false },
+  { id: 'chotxu',      nhom: 'Gamification', ten: 'Chốt xu tháng',            founderOnly: true }, // CEO chỉnh mốc + chốt (Thùy 08-29)
 
   // ── HỌC THUẬT: kho + soạn tài liệu ──
   { id: 'bdkt',        nhom: 'Học thuật', ten: 'Bản đồ kiến thức (Kho)',      founderOnly: false },

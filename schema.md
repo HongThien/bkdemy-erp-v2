@@ -199,6 +199,7 @@
 | created_by | uuid | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
+| loai | text |  | 'bug'::text |  | `bug` · `yeu_cau` |
 
 ## bao_loi_log
 
