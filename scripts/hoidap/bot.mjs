@@ -72,11 +72,14 @@ if (KEY_API && !env('HOIDAP_DUNG_LOGIN')) ENV_CLAUDE.ANTHROPIC_API_KEY = KEY_API
 const log = (...a) => console.log(new Date().toISOString().slice(11, 19), ...a)
 
 // ── Gọi Claude Code ─────────────────────────────────────────────────────────
-// --output-format json → lấy được cả usage/model thật thay vì đoán. Tool chỉ cấp
-// Read/Grep/Glob (đọc repo) — không Bash, không Write, không Edit: xem RANH GIỚI trên.
+// --output-format json → lấy được cả usage/model thật thay vì đoán. Tool cấp:
+// Read/Grep/Glob (đọc repo) + ĐÚNG MỘT lệnh Bash là query.mjs (SELECT-only, transaction
+// read-only — xem đầu query.mjs). Vẫn không Bash tự do, không Write/Edit: RANH GIỚI trên
+// giữ nguyên — claude đọc được số liệu nhưng không có tay ghi.
 function goiClaude(cauHoi) {
   return new Promise((resolve, reject) => {
-    const child = spawn(CLAUDE_BIN, ['-p', '--output-format', 'json', '--allowedTools', 'Read', 'Grep', 'Glob'],
+    const child = spawn(CLAUDE_BIN, ['-p', '--output-format', 'json', '--allowedTools',
+      'Read', 'Grep', 'Glob', 'Bash(node scripts/hoidap/query.mjs:*)'],
       { cwd: root, windowsHide: true, env: ENV_CLAUDE })
     let out = '', err = ''
     child.stdout.on('data', (d) => { out += d })
