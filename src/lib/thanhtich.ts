@@ -15,17 +15,14 @@ export type Verdict = 'dat' | 'gan_dat' | 'khong_dat'
 export type KyThi = { id: string; ten: string; loai: string; he_so: number; dot: string | null; ngay: string | null; mon: string | null; khoi: string | null; mua: string | null; buoi_hoc_id: string | null; khung_co_ban?: number | null; khung_nang_cao?: number | null }
 export type DiemThi = { ky_thi_id: string; hoc_sinh_id: string; diem: number | null; band_luc_thi: string | null; verdict: Verdict; vuot_band: boolean; diem_co_ban?: number | null; diem_nang_cao?: number | null; full_diem?: boolean }
 
-// Điểm MT (BK sát hạch) = ĐIỂM CƠ BẢN + ĐIỂM NÂNG CAO (GV nhập thẳng). Trần: tổng ≥ 10 → 9.75.
-// "Full điểm" (tick) → 10 (chỉ cách này ra 10 — làm trọn vẹn không sai). Làm tròn 2 chữ số.
+// ⚠ §2.0 (30/08): NGUỒN CHÂN LÝ của điểm + verdict MT = trigger `tg_diem_thi_tinh` ở DB
+// (mig 202608300221) — dòng có cơ bản/nâng cao/full là DB TỰ tính khi ghi, client gửi gì
+// cũng bị đè. Hàm dưới đây CHỈ còn để PREVIEW khi đang gõ (chưa lưu); số hiển thị sau lưu
+// phải lấy từ dòng DB trả về, không phải từ hàm này. Sửa công thức → sửa TRIGGER trước.
 export function tinhDiemMT(coBan: number | null | undefined, nangCao: number | null | undefined, full: boolean): number {
   if (full) return 10
   const tong = (coBan ?? 0) + (nangCao ?? 0)
   return tong >= 10 ? 9.75 : Math.round(tong * 100) / 100
-}
-// Verdict TỰ SUY từ điểm (màn MT bỏ chọn verdict tay — cột `verdict` NOT NULL nên vẫn lưu ngầm để Level dùng).
-// Ngưỡng thang-10: đạt ≥8 · gần đạt 6.5–<8 · <6.5 không đạt.
-export function verdictTuDiem(diem: number): Verdict {
-  return diem >= 8 ? 'dat' : diem >= 6.5 ? 'gan_dat' : 'khong_dat'
 }
 export type ThanhTichLoai = { key: string; ten: string; icon: string | null; nhom: string | null; kieu: string | null; per_mon: boolean; thu_tu: number }
 export type LuongBac = { min_exp: number; xu: number }
@@ -99,15 +96,19 @@ export async function listDiemThiByKyThi(kyThiIds: string[]): Promise<DiemThi[]>
   if (error) throw error
   return (data ?? []) as DiemThi[]
 }
-// Nhập/sửa điểm thi 1 HS. verdict do staff duyệt (gợi ý theo band sau). Anti-NULL: có dòng = đã chấm.
-export async function upsertDiemThi(d: { kyThiId: string; hocSinhId: string; diem: number | null; bandLucThi: string | null; verdict: Verdict; vuotBand: boolean; coBan?: number | null; nangCao?: number | null; full?: boolean }): Promise<void> {
+// Nhập/sửa điểm thi 1 HS. Anti-NULL: có dòng = đã chấm. Trả về DÒNG DB SAU KHI GHI —
+// với đường MT (có coBan/nangCao/full) thì diem+verdict do trigger tính, client phải dùng
+// giá trị trả về này chứ không tự suy (§2.0). Đường thi trường/khảo sát: diem nhập thẳng,
+// verdict staff duyệt — trigger không đụng.
+export async function upsertDiemThi(d: { kyThiId: string; hocSinhId: string; diem: number | null; bandLucThi: string | null; verdict: Verdict; vuotBand: boolean; coBan?: number | null; nangCao?: number | null; full?: boolean }): Promise<DiemThi> {
   const { data: { user } } = await supabase.auth.getUser()
-  const { error } = await supabase.from('diem_thi').upsert(
+  const { data, error } = await supabase.from('diem_thi').upsert(
     { ky_thi_id: d.kyThiId, hoc_sinh_id: d.hocSinhId, diem: d.diem, band_luc_thi: d.bandLucThi, verdict: d.verdict, vuot_band: d.vuotBand,
       diem_co_ban: d.coBan ?? null, diem_nang_cao: d.nangCao ?? null, full_diem: d.full ?? false,
       graded_by: user?.id ?? null, updated_at: new Date().toISOString() },
-    { onConflict: 'ky_thi_id,hoc_sinh_id' })
+    { onConflict: 'ky_thi_id,hoc_sinh_id' }).select().single()
   if (error) throw error
+  return data as DiemThi
 }
 
 // Khung điểm (tối đa) của CẢ ĐỀ — 1 khung dùng chung cho mọi HS trong buổi (CEO 21/08), khác

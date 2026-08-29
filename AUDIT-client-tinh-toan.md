@@ -51,6 +51,18 @@ còn ghi "phải khớp percentile_disc của Postgres"). Hầu hết file khác
 (10k, group-having) · `troly.ts:774` (20k dòng để test exists) · `PhDangNhapScreen` (10k
 dòng ra 4 con số) · `botro.ts:63` (2 bảng lớn nhất không filter).
 
+## Tiến độ chiến dịch (cập nhật mỗi đợt)
+
+- [x] **Phase 0** — Luật §2.0 vào CLAUDE.md (30/08, `ce8cb0e`)
+- [x] **Phase 1 đợt 1/5** (mig `202608300221`): ①`chamCauTest` ②`ghiThanhToan` ③`tinhDiemMT→upsertDiemThi`
+      → 3 trigger `fn_ca_test_kq_diem` / `fn_hoa_don_cap_nhat_trang_thai` / `fn_diem_thi_tinh`.
+      Parity 0 lệch trên data thật · smoke-test rollback cả 3 · client mỏng (detest/hocphi/thanhtich/2 screen).
+- [ ] Phase 1 đợt 2: hiệu suất nghiệm thu (`nghiemThu` + `duyetMot/HangLoat` + ops — 1 fn duy nhất)
+- [ ] Phase 1 đợt 3: `chotKy` (RPC transactional)
+- [ ] Phase 1 đợt 4: Elo/EXP (`closePhase`/`recomputeExpThang`/`reopenPhase` — RPC transaction)
+- [ ] Phase 1 đợt 5: gậy (`quetGayTuDong`/`chotThang`) + `mt.ts ganMT` + testonline chấm lại
+- [ ] Phase 2 · Phase 3 · Phase 4 (xem lộ trình dưới)
+
 ## Lộ trình đề xuất (chưa làm — chờ chốt)
 
 1. **Chặn chảy máu (nhóm ①):** chuyển 15 gốc ghi-ngược thành RPC/trigger/generated column

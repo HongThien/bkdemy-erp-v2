@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-165 bảng · 2 view · 0 enum · 17 trigger · 81 function
+165 bảng · 2 view · 0 enum · 20 trigger · 84 function
 
 ## _app_secrets
 
@@ -199,6 +199,7 @@
 | created_by | uuid | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
+| loai | text |  | 'bug'::text |  | `bug` · `yeu_cau` |
 
 ## bao_loi_log
 
@@ -2369,7 +2370,9 @@ SELECT q.id AS qua_id,
 |---|---|---|---|---|
 | bao_loi | trg_log_bao_loi | BEFORE | UPDATE | log_bao_loi |
 | ca_test | trg_log_ca_test | AFTER | INSERT/UPDATE | log_ca_test |
+| ca_test_cau_kq | tg_ca_test_kq_diem | BEFORE | INSERT/UPDATE | fn_ca_test_kq_diem |
 | dai_cau_hoi | trg_log_kho_cau_dai | AFTER | DELETE/UPDATE | log_kho_cau |
+| diem_thi | tg_diem_thi_tinh | BEFORE | INSERT/UPDATE | fn_diem_thi_tinh |
 | gay_de_xuat | trg_log_gay_de_xuat | AFTER | INSERT/UPDATE | log_gay_de_xuat |
 | gay_ledger | trg_log_gay_ledger | AFTER | INSERT/UPDATE | log_gay_ledger |
 | giai_thuong | trg_giai_thuong_check_slot | BEFORE | INSERT | giai_thuong_check_slot |
@@ -2381,6 +2384,7 @@ SELECT q.id AS qua_id,
 | hoc_sinh | trg_log_he_so_hoc_phi | AFTER | UPDATE | log_he_so_hoc_phi |
 | hoc_sinh_lop | trg_log_hoc_sinh_lop | AFTER | INSERT/UPDATE | log_hoc_sinh_lop |
 | khtn_cau_hoi | trg_log_kho_cau_khtn | AFTER | DELETE/UPDATE | log_kho_cau |
+| thanh_toan | tg_thanh_toan_trang_thai | AFTER | INSERT/DELETE/UPDATE | fn_hoa_don_cap_nhat_trang_thai |
 | ung_vien | trg_log_ung_vien | AFTER | INSERT/UPDATE | log_ung_vien |
 | viec | trg_giaoviec_auto_dong_task_me | AFTER | UPDATE | giaoviec_auto_dong_task_me |
 | viec | trg_log_viec | AFTER | INSERT/UPDATE | log_viec |
@@ -2402,6 +2406,9 @@ SELECT q.id AS qua_id,
 - `dai_dang_tien_de_bao_dong(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `et_de(p_bai_test uuid)` → jsonb
 - `et_nop(p_bai_lam uuid)` → jsonb
+- `fn_ca_test_kq_diem()` → trigger
+- `fn_diem_thi_tinh()` → trigger
+- `fn_hoa_don_cap_nhat_trang_thai()` → trigger
 - `giai_thuong_check_slot()` → trigger
 - `giaoviec_auto_dong_task_me()` → trigger
 - `giaoviec_housekeeping()` → void

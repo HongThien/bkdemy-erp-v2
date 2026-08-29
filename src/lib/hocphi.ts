@@ -717,21 +717,16 @@ export async function chotKy(phuHuynhId: string, ky: string, phatSinh: { mo_ta: 
 
 // ── THANH TOÁN & NỢ (§9) ─────────────────────────────────────────────────────
 export type ThanhToan = { id: string; hoa_don_id: string; so_tien: number; ngay: string; phuong_thuc: string | null; ghi_chu: string | null; created_at?: string }
+// §2.0 (30/08): client CHỈ ghi dòng thanh toán — trạng thái phiếu (chua_thu/thu_mot_phan/
+// da_thu) do TRIGGER tg_thanh_toan_trang_thai suy từ Σ thanh_toan NGAY TRONG transaction.
+// Bản cũ đọc-cộng-suy-update ở client: 2 tab thu tiền song song là đè trạng thái của nhau.
 export async function ghiThanhToan(hoaDonId: string, soTien: number, opts?: { ngay?: string; phuongThuc?: string; ghiChu?: string }): Promise<void> {
   const { data: { user } } = await supabase.auth.getUser()
-  const { error: e1 } = await supabase.from('thanh_toan').insert({
+  const { error } = await supabase.from('thanh_toan').insert({
     hoa_don_id: hoaDonId, so_tien: soTien, ngay: opts?.ngay ?? new Date().toISOString().slice(0, 10),
     phuong_thuc: opts?.phuongThuc ?? null, ghi_chu: opts?.ghiChu ?? null, nguoi_thu: user?.id ?? null,
   })
-  if (e1) throw e1
-  // cập nhật trạng thái phiếu theo tổng đã thu.
-  const { data: hd, error: e2 } = await supabase.from('hoa_don').select('id, tong_tien').eq('id', hoaDonId).single()
-  if (e2) throw e2
-  const { data: tts, error: e3 } = await supabase.from('thanh_toan').select('so_tien').eq('hoa_don_id', hoaDonId).limit(LIMIT)
-  if (e3) throw e3
-  const daThu = (tts ?? []).reduce((s, t) => s + Number(t.so_tien), 0)
-  const tt = daThu >= Number((hd as any).tong_tien) ? 'da_thu' : daThu > 0 ? 'thu_mot_phan' : 'chua_thu'
-  await supabase.from('hoa_don').update({ trang_thai: tt }).eq('id', hoaDonId)
+  if (error) throw error
 }
 export async function listThanhToan(hoaDonId: string): Promise<ThanhToan[]> {
   const { data, error } = await supabase.from('thanh_toan').select('*').eq('hoa_don_id', hoaDonId).order('ngay', { ascending: false }).limit(LIMIT)

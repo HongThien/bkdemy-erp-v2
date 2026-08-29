@@ -14,7 +14,7 @@ import {
 } from '../../lib/gami'
 import { getLiveSnapshot, type BaiTest, type BaiTestCau, type BaiLam, type LiveAnswer } from '../../lib/testonline'
 import type { MTPhanCaus } from '../../lib/mt'
-import { getOrCreateKyThiMTChoBuoi, listDiemThiByKyThi, upsertDiemThi, setKhungMT, tinhDiemMT, verdictTuDiem, currentMua, type KyThi, type DiemThi } from '../../lib/thanhtich'
+import { getOrCreateKyThiMTChoBuoi, listDiemThiByKyThi, upsertDiemThi, setKhungMT, tinhDiemMT, currentMua, type KyThi, type DiemThi } from '../../lib/thanhtich'
 import { listNhanSu, type NhanSu } from '../../lib/nhansu'
 import TruocBuoiTab from './TruocBuoiTab'
 import { listDaiDang, type CauHoi } from '../../lib/kho/api'
@@ -1701,15 +1701,16 @@ function DiemMTPanel({ buoiId, buoi, coMat, tenHT }: { buoiId: string; buoi: Buo
   const diemOf = (hsId: string) => diems.find((d) => d.hoc_sinh_id === hsId) ?? null
   async function save(hsId: string, p: { coBan: number | null; nangCao: number | null; full: boolean }) {
     if (!ky) return
-    const diem = tinhDiemMT(p.coBan, p.nangCao, p.full)
-    const verdict = verdictTuDiem(diem)   // tự suy từ điểm (màn MT bỏ chọn verdict tay)
+    // §2.0 (30/08): diem + verdict do TRIGGER tg_diem_thi_tinh ở DB tính khi ghi — client
+    // chỉ gửi dữ kiện thô (cơ bản/nâng cao/full) và hiển thị đúng dòng DB trả về.
     // ⚠ 08-07: trước đây gọi từ onBlur KHÔNG await/try-catch → upsert lỗi là unhandled rejection, NUỐT lặng
     // (user thấy điểm hiện trên màn = state cục bộ nhưng KHÔNG vào DB, tưởng đã lưu). Giờ báo lỗi rõ + chỉ
     // cập nhật state khi lưu THẬT thành công (anti-NULL: state phản ánh đúng DB).
+    let saved: DiemThi
     try {
-      await upsertDiemThi({ kyThiId: ky.id, hocSinhId: hsId, diem, bandLucThi: null, verdict, vuotBand: false, coBan: p.coBan, nangCao: p.nangCao, full: p.full })
+      saved = await upsertDiemThi({ kyThiId: ky.id, hocSinhId: hsId, diem: null, bandLucThi: null, verdict: 'khong_dat', vuotBand: false, coBan: p.coBan, nangCao: p.nangCao, full: p.full })
     } catch (e: any) { alert('Lưu điểm MT lỗi: ' + (e?.message ?? String(e))); return }
-    setDiems((prev) => [...prev.filter((d) => d.hoc_sinh_id !== hsId), { ky_thi_id: ky.id, hoc_sinh_id: hsId, diem, band_luc_thi: null, verdict, vuot_band: false, diem_co_ban: p.coBan, diem_nang_cao: p.nangCao, full_diem: p.full }])
+    setDiems((prev) => [...prev.filter((d) => d.hoc_sinh_id !== hsId), saved])
   }
 
   return (
