@@ -57,7 +57,10 @@ dòng ra 4 con số) · `botro.ts:63` (2 bảng lớn nhất không filter).
 - [x] **Phase 1 đợt 1/5** (mig `202608300221`): ①`chamCauTest` ②`ghiThanhToan` ③`tinhDiemMT→upsertDiemThi`
       → 3 trigger `fn_ca_test_kq_diem` / `fn_hoa_don_cap_nhat_trang_thai` / `fn_diem_thi_tinh`.
       Parity 0 lệch trên data thật · smoke-test rollback cả 3 · client mỏng (detest/hocphi/thanhtich/2 screen).
-- [ ] Phase 1 đợt 2: hiệu suất nghiệm thu (`nghiemThu` + `duyetMot/HangLoat` + ops — 1 fn duy nhất)
+- [x] **Phase 1 đợt 2** (mig `202608300228`): hiệu suất nghiệm thu → `fn_gv_tien_do/tran_chat_luong/phan_tram`
+      + `fn_vh_hieu_suat` + 2 trigger (`viec` nghiệm thu · `viec_van_hanh_duyet`). Parity bắt được 1 dòng
+      lệch THẬT của housekeeping (viec d4e18725) — đúng bệnh công-thức-2-nơi; từ nay trigger đè mọi đường ghi.
+      Client: nghiemThu gửi điểm thô, duyet* bỏ tự tính. (vh_ops_task không có cột hiệu suất — đọc-derive, sang Phase 4.)
 - [ ] Phase 1 đợt 3: `chotKy` (RPC transactional)
 - [ ] Phase 1 đợt 4: Elo/EXP (`closePhase`/`recomputeExpThang`/`reopenPhase` — RPC transaction)
 - [ ] Phase 1 đợt 5: gậy (`quetGayTuDong`/`chotThang`) + `mt.ts ganMT` + testonline chấm lại

@@ -7,7 +7,7 @@
 // ============================================================================
 import { supabase } from './supabase'
 import {
-  GV, tinhTienDo, tinhChatLuong, gopPhanTram,
+  GV, // tinhTienDo/tinhChatLuong/gopPhanTram đã xuống DB (fn_gv_*, mig 202608300228 — §2.0)
   todayVN, kyTuanHienTai, thangCuaKyTuan, soNgayLech,
 } from './giaoviec-config'
 
@@ -319,7 +319,9 @@ export async function duyetGiaHan(id: string, dongY: boolean): Promise<void> {
 }
 
 // LEADER NGHIỆM THU (§4.2 một chạm). Đạt = chất lượng 100 mặc định; HẠ điểm mới bắt gõ lý do.
-// Tiến độ = MÁY tính (ngay_nop vs deadline). Chất lượng bị chặn trần theo số lần trả lại.
+// §2.0 (30/08): client gửi ĐIỂM LEADER THÔ vào chat_luong — trigger tg_viec_nghiem_thu_tinh
+// (mig 202608300228) tự áp trần trả-lại + tính tien_do/phan_tram trong DB. Công thức duy
+// nhất = fn_gv_* — hết cảnh housekeeping (SQL) và client (JS) mỗi bên một bản.
 export async function nghiemThu(id: string, p: { dat: boolean; chat_luong?: number; ly_do?: string | null }): Promise<void> {
   const { data: v, error: e0 } = await supabase.from('viec').select('*').eq('id', id).single()
   if (e0) throw e0
@@ -328,11 +330,9 @@ export async function nghiemThu(id: string, p: { dat: boolean; chat_luong?: numb
     const diemLeader = p.chat_luong ?? 100
     if (diemLeader < 100 && !p.ly_do?.trim()) throw new Error('Hạ chất lượng dưới 100 thì phải ghi lý do.')
     const ngayNop = (viec.hoan_thanh_at ? new Date(viec.hoan_thanh_at).toLocaleDateString('en-CA', { timeZone: 'Asia/Ho_Chi_Minh' }) : todayVN())
-    const tienDo = tinhTienDo(viec.deadline, ngayNop)
-    const chatLuong = tinhChatLuong(diemLeader, viec.so_lan_tra_lai)
     const { error } = await supabase.from('viec').update({
-      trang_thai: 'dat', ngay_nop: ngayNop, tien_do: tienDo, chat_luong: chatLuong,
-      phan_tram: gopPhanTram(tienDo, chatLuong), nghiem_thu_at: new Date().toISOString(),
+      trang_thai: 'dat', ngay_nop: ngayNop, chat_luong: diemLeader, // thô — DB áp trần + tính nốt
+      nghiem_thu_at: new Date().toISOString(),
       nghiem_thu_nguon: 'nguoi', // đối trọng với 'tu_dong' của giaoviec_housekeeping()
       ghi_chu_nghiem_thu: p.ly_do?.trim() || null,
     }).eq('id', id)

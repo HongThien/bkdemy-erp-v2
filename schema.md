@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-165 bảng · 2 view · 0 enum · 20 trigger · 84 function
+165 bảng · 2 view · 0 enum · 22 trigger · 90 function
 
 ## _app_secrets
 
@@ -2386,8 +2386,10 @@ SELECT q.id AS qua_id,
 | khtn_cau_hoi | trg_log_kho_cau_khtn | AFTER | DELETE/UPDATE | log_kho_cau |
 | thanh_toan | tg_thanh_toan_trang_thai | AFTER | INSERT/DELETE/UPDATE | fn_hoa_don_cap_nhat_trang_thai |
 | ung_vien | trg_log_ung_vien | AFTER | INSERT/UPDATE | log_ung_vien |
+| viec | tg_viec_nghiem_thu_tinh | BEFORE | INSERT/UPDATE | fn_viec_nghiem_thu_tinh |
 | viec | trg_giaoviec_auto_dong_task_me | AFTER | UPDATE | giaoviec_auto_dong_task_me |
 | viec | trg_log_viec | AFTER | INSERT/UPDATE | log_viec |
+| viec_van_hanh_duyet | tg_vvhd_tinh | BEFORE | INSERT/UPDATE | fn_vvhd_tinh |
 
 ## Functions
 
@@ -2408,7 +2410,13 @@ SELECT q.id AS qua_id,
 - `et_nop(p_bai_lam uuid)` → jsonb
 - `fn_ca_test_kq_diem()` → trigger
 - `fn_diem_thi_tinh()` → trigger
+- `fn_gv_phan_tram(p_tien_do numeric, p_chat_luong numeric)` → numeric
+- `fn_gv_tien_do(p_deadline date, p_ngay_nop date)` → numeric
+- `fn_gv_tran_chat_luong(p_so_lan_tra_lai integer)` → numeric
 - `fn_hoa_don_cap_nhat_trang_thai()` → trigger
+- `fn_vh_hieu_suat(p_tien_do numeric, p_chat_luong numeric)` → numeric
+- `fn_viec_nghiem_thu_tinh()` → trigger
+- `fn_vvhd_tinh()` → trigger
 - `giai_thuong_check_slot()` → trigger
 - `giaoviec_auto_dong_task_me()` → trigger
 - `giaoviec_housekeeping()` → void
