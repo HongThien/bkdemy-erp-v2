@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-159 bảng · 2 view · 0 enum · 15 trigger · 78 function
+159 bảng · 2 view · 0 enum · 15 trigger · 79 function
 
 ## _app_secrets
 
@@ -2322,6 +2322,7 @@ SELECT q.id AS qua_id,
 - `hinh_mo_hinh_hau_due(goc uuid)` → TABLE(id uuid, do_sau integer)
 - `hinh_mo_hinh_to_tien(nut uuid)` → TABLE(id uuid, do_sau integer)
 - `hoc_phi_theo_mon_ky(p_ky date)` → jsonb
+- `hoi_dap_duoc_dung()` → boolean
 - `hs_cap1_cua_toi()` → boolean
 - `hs_cham_tln_ai(p_bai_lam_cau_id uuid)` → jsonb
 - `hs_dang_evals(p_mon text, p_nhanh text DEFAULT NULL::text)` → jsonb

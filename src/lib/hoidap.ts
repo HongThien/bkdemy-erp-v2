@@ -18,6 +18,13 @@ export type HoiDap = {
   done_at: string | null
 }
 
+// Whitelist pilot (TẠM THỜI, CEO 29/08): nguồn chân lý = hàm DB hoi_dap_duoc_dung() —
+// RLS chặn thật bằng nó, đây chỉ hỏi để ẩn/hiện tab. KHÔNG hardcode danh sách ở client.
+export async function hoiDapDuocDung(): Promise<boolean> {
+  const { data, error } = await supabase.rpc('hoi_dap_duoc_dung')
+  return !error && data === true
+}
+
 export async function guiCauHoi(cauHoi: string): Promise<void> {
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) throw new Error('Chưa đăng nhập.')
