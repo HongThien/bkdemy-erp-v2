@@ -8,7 +8,7 @@ import { loadHinhForBuoi, type HinhDapAn } from './kho/hinhGiaoTrinh'
 import { getBaiTestByDoc, getBaiTestCaus, type BaiTest, type BaiTestCau } from './testonline'
 import type { CauHoi } from './kho/api'
 import { computeEloUpdate } from '../gami/elo.js'
-import { problemPoints, rankSession, etRankExp, monthlyBtvnExp } from '../gami/exp.js'
+import { problemPoints, rankSession, etRankExp, btvnBaiExp, monthlyBtvnExp } from '../gami/exp.js'
 import { ATTEND_FLOOR_EXP, SEASON } from '../gami/config.js'
 import { seasonOf, seasonLabel, seasonStartUtc } from '../gami/season.js'
 import { vnInstant, congNgay } from './tuan'
@@ -668,8 +668,17 @@ export async function xoaCanhBao(id: string): Promise<void> {
 
 // ════ EXP THÁNG (redesign 07-28, Thùy chốt) — EXP = CHĂM CHỈ, TÍNH LẠI theo (lớp × tháng) ════
 // EXP mỗi buổi (ET rank) + phần THÁNG (BTVN: base/bài × thái độ + thưởng/phạt so lớp). Tháng = Σ buổi.
-// Lưu 1 dòng ledger source='exp_thang', note=ym / (HS×môn×tháng). TỰ recompute khi buổi đổi (đóng/mở ET|BTVN).
-// Nguồn chính = recompute (idempotent) → không còn ghi rank_*/btvn per-buổi. Bù/bổ trợ vẫn 'attend_floor' riêng.
+// CHI TIẾT THEO HOẠT ĐỘNG (08-29, giống gami_elo_history — mỗi sự kiện 1 dòng, tổng tháng = Σ dòng):
+//   'exp_et'         per (HS×buổi), ref_buoi_hoc_id = buổi   — EXP hạng ET buổi đó
+//   'exp_btvn'       per (HS×buổi), ref_buoi_hoc_id = buổi   — EXP BTVN buổi đó (base×thời điểm×thái độ)
+//   'exp_btvn_thang' per (HS×lớp×tháng)                      — điều chỉnh tháng (đủ tháng/so lớp/phạt miss),
+//       CÓ THỂ ÂM; = monthlyBtvnExp.total − subtotal. ref_buoi_hoc_id = BUỔI CUỐI tháng của lớp — không phải
+//       "thuộc buổi đó" mà để dòng LỚP-SCOPED: HS chuyển lớp giữa tháng giữ điều chỉnh CẢ 2 lớp (model gộp
+//       cũ per-lớp ghi đè nhau, mất phần lớp kia), và recompute lớp nào chỉ xoá dòng lớp đó (theo ref_buoi).
+// MỌI dòng đều note=ym (tháng EXP THUỘC VỀ) — reader lọc tháng/mùa theo note, KHÔNG theo created_at.
+// Tổng (HS×tháng) = et + max(0, subtotal+bonus/phạt) — ĐÚNG BẰNG số exp_thang gộp cũ (chỉ đổi độ mịn).
+// TỰ recompute khi buổi đổi (đóng/mở ET|BTVN); idempotent. Bù/bổ trợ vẫn 'attend_floor' riêng.
+// 'exp_thang' (gộp cũ) không ghi nữa nhưng reader vẫn cộng — data cũ convert bằng scripts/recalc_exp_chitiet.mjs.
 
 // BTVN grades → độ-đúng per (hs×buổi). PHÂN TRANG: 1 lớp/tháng cũng có thể >1000 grades (PostgREST cap).
 async function fetchBtvnAcc(buoiIds: string[]): Promise<Map<string, number[]>> {
@@ -691,40 +700,61 @@ async function fetchBtvnAcc(buoiIds: string[]): Promise<Map<string, number[]>> {
   return accByHs
 }
 
+// Nguồn EXP hợp lệ khi CỘNG TỔNG: nhóm key theo note=ym (chi tiết mới + exp_thang gộp legacy) và
+// attend_floor (bù/bổ trợ, không note → lọc created_at). Reader nào cộng EXP đều dùng 2 hằng này.
+export const EXP_NOTE_SOURCES = ['exp_thang', 'exp_et', 'exp_btvn', 'exp_btvn_thang']
+export const EXP_SOURCES = [...EXP_NOTE_SOURCES, 'attend_floor']
+
 // Tính lại EXP THÁNG cho 1 lớp (idempotent). Thay MỌI EXP của (lớp×tháng): xoá per-buổi cũ (ref_buoi trong
-// tháng: rank_*/btvn) + exp_thang cũ → chèn exp_thang. KHÔNG đụng bù/bổ trợ (buổi loai≠'thuong', attend_floor).
+// tháng: rank_*/btvn/exp_et/exp_btvn) + dòng tháng cũ (exp_thang/exp_btvn_thang) → chèn dòng CHI TIẾT.
+// KHÔNG đụng bù/bổ trợ (buổi loai≠'thuong', attend_floor).
 export async function recomputeExpThang(lopId: string, ym: string): Promise<{ hs: number; tong: number }> {
   const { data: lopRow } = await supabase.from('lop').select('mon').eq('id', lopId).maybeSingle()
   const mon = (lopRow as any)?.mon ?? 'Toán'
   const [Y, M] = ym.split('-').map(Number)
   const from = `${ym}-01`, to = M === 12 ? `${Y + 1}-01-01` : `${Y}-${String(M + 1).padStart(2, '0')}-01`
-  const { data: bs } = await supabase.from('buoi_hoc').select('id').eq('lop_id', lopId).eq('loai', 'thuong').neq('trang_thai', 'huy').gte('ngay', from).lt('ngay', to).limit(LIMIT)
+  const { data: bs } = await supabase.from('buoi_hoc').select('id, ngay').eq('lop_id', lopId).eq('loai', 'thuong').neq('trang_thai', 'huy').gte('ngay', from).lt('ngay', to).order('ngay', { ascending: true }).limit(LIMIT)
   const buoiIds = ((bs ?? []) as any[]).map((b) => b.id)
+  const buoiCuoiId: string | null = buoiIds.length ? buoiIds[buoiIds.length - 1] : null   // neo dòng exp_btvn_thang (lớp-scoped)
 
-  type Acc = { et: number; bais: { trangThai: string; thaiDo: string }[]; acc: number[] }
+  type Ev = { buoiId: string; amount: number }
+  type Acc = { et: Ev[]; btvn: Ev[]; bais: { trangThai: string; thaiDo: string }[]; acc: number[] }
   const perHs = new Map<string, Acc>()
-  const ensure = (id: string) => perHs.get(id) ?? perHs.set(id, { et: 0, bais: [], acc: [] }).get(id)!
+  const ensure = (id: string) => perHs.get(id) ?? perHs.set(id, { et: [], btvn: [], bais: [], acc: [] }).get(id)!
   if (buoiIds.length) {
-    const { data: eh } = await supabase.from('gami_elo_history').select('hoc_sinh_id, rank, rank_total').eq('phase', 'et').in('buoi_hoc_id', buoiIds).limit(LIMIT)
-    for (const r of (eh ?? []) as any[]) if (r.rank != null && r.rank_total != null) ensure(r.hoc_sinh_id).et += etRankExp(r.rank, r.rank_total)
-    const { data: kq } = await supabase.from('btvn_ket_qua').select('hoc_sinh_id, trang_thai_nop, thai_do').in('buoi_hoc_id', buoiIds).limit(LIMIT)
-    for (const r of (kq ?? []) as any[]) ensure(r.hoc_sinh_id).bais.push({ trangThai: r.trang_thai_nop, thaiDo: r.thai_do })
+    const { data: eh } = await supabase.from('gami_elo_history').select('hoc_sinh_id, buoi_hoc_id, rank, rank_total').eq('phase', 'et').in('buoi_hoc_id', buoiIds).limit(LIMIT)
+    for (const r of (eh ?? []) as any[]) if (r.rank != null && r.rank_total != null) ensure(r.hoc_sinh_id).et.push({ buoiId: r.buoi_hoc_id, amount: etRankExp(r.rank, r.rank_total) })
+    const { data: kq } = await supabase.from('btvn_ket_qua').select('hoc_sinh_id, buoi_hoc_id, trang_thai_nop, thai_do').in('buoi_hoc_id', buoiIds).limit(LIMIT)
+    for (const r of (kq ?? []) as any[]) {
+      const a = ensure(r.hoc_sinh_id)
+      a.bais.push({ trangThai: r.trang_thai_nop, thaiDo: r.thai_do })
+      a.btvn.push({ buoiId: r.buoi_hoc_id, amount: btvnBaiExp(r.trang_thai_nop, r.thai_do) })
+    }
     for (const [hs, arr] of await fetchBtvnAcc(buoiIds)) ensure(hs).acc = arr
   }
   const means = [...perHs.values()].map((p) => p.acc.length ? p.acc.reduce((s, x) => s + x, 0) / p.acc.length : null).filter((x): x is number => x != null)
   const classMean = means.length ? means.reduce((s, x) => s + x, 0) / means.length : null
 
-  const rows = [] as { hoc_sinh_id: string; source: string; amount: number; mon: string; note: string }[]
+  const rows = [] as { hoc_sinh_id: string; source: string; amount: number; mon: string; note: string; ref_buoi_hoc_id?: string }[]
+  let hsCo = 0, tong = 0
   for (const [hs, p] of perHs) {
     const studentAcc = p.acc.length ? p.acc.reduce((s, x) => s + x, 0) / p.acc.length : null
-    const total = p.et + monthlyBtvnExp(p.bais, studentAcc, classMean).total   // MT = 0 (diem_thi rỗng)
-    if (total > 0) rows.push({ hoc_sinh_id: hs, source: 'exp_thang', amount: total, mon, note: ym })
+    const bt = monthlyBtvnExp(p.bais, studentAcc, classMean)                          // MT = 0 (diem_thi rỗng)
+    for (const e of p.et) rows.push({ hoc_sinh_id: hs, source: 'exp_et', amount: e.amount, mon, note: ym, ref_buoi_hoc_id: e.buoiId })
+    for (const e of p.btvn) if (e.amount > 0) rows.push({ hoc_sinh_id: hs, source: 'exp_btvn', amount: e.amount, mon, note: ym, ref_buoi_hoc_id: e.buoiId })
+    // Điều chỉnh tháng gom đủ-tháng/so-lớp/phạt-miss + kẹp sàn 0 của model → Σ dòng = tổng gộp cũ CHÍNH XÁC.
+    const dieuChinh = bt.total - bt.subtotal
+    if (dieuChinh !== 0 && buoiCuoiId) rows.push({ hoc_sinh_id: hs, source: 'exp_btvn_thang', amount: dieuChinh, mon, note: ym, ref_buoi_hoc_id: buoiCuoiId })
+    const total = p.et.reduce((s, e) => s + e.amount, 0) + bt.total
+    if (total > 0) { hsCo++; tong += total }
   }
-  if (buoiIds.length) await supabase.from('gami_exp_ledger').delete().in('ref_buoi_hoc_id', buoiIds)   // per-buổi cũ
+  // Xoá theo ref_buoi = đủ cho MỌI dòng chi tiết của lớp-tháng này (kể cả exp_btvn_thang neo buổi cuối)
+  // + legacy rank_*/btvn. Dòng lớp KHÁC (HS chuyển lớp) không bị đụng. exp_thang gộp cũ (không ref) xoá riêng.
+  if (buoiIds.length) await supabase.from('gami_exp_ledger').delete().in('ref_buoi_hoc_id', buoiIds)
   const hsList = [...perHs.keys()]
   if (hsList.length) await supabase.from('gami_exp_ledger').delete().eq('source', 'exp_thang').eq('mon', mon).eq('note', ym).in('hoc_sinh_id', hsList)
   if (rows.length) await supabase.from('gami_exp_ledger').insert(rows)
-  return { hs: rows.length, tong: rows.reduce((s, r) => s + r.amount, 0) }
+  return { hs: hsCo, tong }
 }
 
 // Đóng BTVN: CHỐT trạng thái buổi → recompute EXP tháng (idempotent). KHÔNG Elo.
@@ -755,7 +785,7 @@ export type EloBreakdown = { hoc_sinh_id: string; ho_ten: string; points: number
 export async function getEloBreakdown(buoiId: string, phase: Phase): Promise<EloBreakdown[]> {
   const [{ data: hist }, { data: expRows }] = await Promise.all([
     supabase.from('gami_elo_history').select('hoc_sinh_id, expected, actual, delta, elo_before, elo_after').eq('buoi_hoc_id', buoiId).eq('phase', phase).limit(LIMIT),
-    supabase.from('gami_exp_ledger').select('hoc_sinh_id, amount').eq('ref_buoi_hoc_id', buoiId).in('source', ['rank_' + phase, 'attend_floor']).limit(LIMIT),
+    supabase.from('gami_exp_ledger').select('hoc_sinh_id, amount').eq('ref_buoi_hoc_id', buoiId).in('source', ['rank_' + phase, 'exp_' + phase, 'attend_floor']).limit(LIMIT),
   ])
   const probs = await listProblems(buoiId, phase)
   const probIds = probs.map((p) => p.id)
@@ -1419,7 +1449,7 @@ export async function reopenPhase(buoiId: string, phase: Phase): Promise<void> {
     await supabase.from('gami_elo').update({ elo: (e as any).elo - h.delta, sessions_played: Math.max(0, ((e as any).sessions_played ?? 0) - (incSession ? 1 : 0)), updated_at: new Date().toISOString() }).eq('hoc_sinh_id', h.hoc_sinh_id).eq('mon', mon)
   }
   await supabase.from('gami_elo_history').delete().eq('buoi_hoc_id', buoiId).eq('phase', phase)
-  await supabase.from('gami_exp_ledger').delete().eq('ref_buoi_hoc_id', buoiId).in('source', ['rank_' + phase, 'attend_floor'])
+  await supabase.from('gami_exp_ledger').delete().eq('ref_buoi_hoc_id', buoiId).in('source', ['rank_' + phase, 'exp_' + phase, 'attend_floor'])
   await supabase.from('buoi_hoc').update({ [dongCol]: null, trang_thai: 'mo', updated_at: new Date().toISOString() }).eq('id', buoiId)
   // Mở lại ET buổi thường → EXP tháng đổi → tự tính lại.
   if (phase === 'et') { const { data: b } = await supabase.from('buoi_hoc').select('lop_id, ngay, loai').eq('id', buoiId).maybeSingle(); if (b && (b as any).loai === 'thuong' && (b as any).lop_id) try { await recomputeExpThang((b as any).lop_id, String((b as any).ngay).slice(0, 7)) } catch (e) { console.error('recomputeExpThang lỗi sau mở ET:', e) } }
@@ -1445,10 +1475,10 @@ export async function listGamiBangTong(mon?: string): Promise<DiemRow[]> {
   const startY = Number(seasonOf(nowVn).split('-')[0])
   const startYm = `${startY}-${String(SEASON.START_MONTH).padStart(2, '0')}`, nextStartYm = `${startY + 1}-${String(SEASON.START_MONTH).padStart(2, '0')}`
   const { data: exp } = await supabase.from('gami_exp_ledger').select('hoc_sinh_id, mon, amount, source, note, created_at')
-    .in('source', ['exp_thang', 'attend_floor']).limit(LIMIT)
+    .in('source', EXP_SOURCES).limit(LIMIT)
   const expMap = new Map<string, number>()
   for (const r of (exp ?? []) as any[]) {
-    const keep = r.source === 'exp_thang' ? (r.note >= startYm && r.note < nextStartYm) : r.created_at >= muaStart
+    const keep = r.source === 'attend_floor' ? r.created_at >= muaStart : (r.note >= startYm && r.note < nextStartYm)
     if (keep) { const k = r.hoc_sinh_id + '|' + (r.mon ?? ''); expMap.set(k, (expMap.get(k) ?? 0) + Number(r.amount)) }
   }
   // Ghi danh ĐANG HỌC → (HS × môn) ⇒ hệ + tên lớp. Lấy TOÀN BỘ rồi lọc ở client, KHÔNG `.in(hsIds)`:
@@ -1621,12 +1651,12 @@ export async function getBangEloExp(hocSinhIds: string[], mon: string): Promise<
   const [eloR, expR] = await Promise.all([
     supabase.from('gami_elo').select('hoc_sinh_id, elo').eq('mon', mon).in('hoc_sinh_id', ids).limit(LIMIT),
     supabase.from('gami_exp_ledger').select('hoc_sinh_id, amount, source, note, created_at')
-      .eq('mon', mon).in('hoc_sinh_id', ids).in('source', ['exp_thang', 'attend_floor']).limit(LIMIT),
+      .eq('mon', mon).in('hoc_sinh_id', ids).in('source', EXP_SOURCES).limit(LIMIT),
   ])
   const eloMap = new Map(((eloR.data ?? []) as any[]).map((e) => [e.hoc_sinh_id, Number(e.elo)]))
   const expMap = new Map<string, number>()
   for (const r of (expR.data ?? []) as any[]) {
-    const keep = r.source === 'exp_thang' ? r.note === ym : r.created_at >= monthStart // attend_floor: theo created_at
+    const keep = r.source === 'attend_floor' ? r.created_at >= monthStart : r.note === ym // attend_floor: theo created_at
     if (keep) expMap.set(r.hoc_sinh_id, (expMap.get(r.hoc_sinh_id) ?? 0) + Number(r.amount))
   }
   return ids.map((id) => ({ hoc_sinh_id: id, elo: eloMap.get(id) ?? 1000, expThang: expMap.get(id) ?? 0 }))
