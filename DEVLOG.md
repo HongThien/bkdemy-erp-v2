@@ -7066,3 +7066,9 @@ này từng hiện "209 ca" ở phiên làm UI cùng ngày) · "Dashboard học 
 - Mỗi lượt vẫn sinh đúng 10 câu (SO_CAU_MOI_LUOT giữ nguyên) — chỉ bỏ trần cộng dồn 30/ngày.
 - **Mig 202608291122** `tu_luyen_bo_tran_ngay`: replace `tu_luyen_sinh` — bỏ 3 chỗ chặn trần (check `v_them > 30` lúc tạo bài + 2 check `v_so_cau_cu + v_them > 30` đường APPEND/đường thua race). **GIỮ `for update`** — khoá giờ không để giữ trần mà để 2 lượt "làm thêm" gần-đồng-thời tuần tự hoá `thu_tu`/`so_cau` (không giẫm nhau). Đã áp + `npm run schema` + verify prosrc live DB: hết dấu vết trần, còn for update.
 - Client `tuluyen.ts`: bỏ `TRAN_NGAY`/`TU_LUYEN_TRAN_NGAY`. UI `HocSinhApp.tsx` (LamTuLuyen): nút "Làm thêm 10 câu" hiện VÔ ĐIỀU KIỆN ở màn xong bài (trước ẩn khi chạm trần), caption "Hôm nay đã làm N câu" (bỏ "/30"), bỏ dòng "Đã đạt tối đa 30 câu hôm nay". ✓ tsc sạch.
+
+**PWA HS KẸT BẢN CŨ (Thùy báo: HS Đào Minh Quân vào lại app vẫn thấy trần 30 câu):**
+- Server ĐÚNG bản mới (verify: sw.js production precache đúng bundle mới, headers max-age=0) — kẹt ở CLIENT: `injectRegister: 'auto'` sinh registerSW.js chỉ register suông; SW mới activate (skipWaiting+clientsClaim) nhưng trang đang mở vẫn chạy JS cũ, và PWA còn trong RAM thì "vào lại app" KHÔNG re-navigate → kẹt bản cũ vô hạn.
+- Fix: `main-hs.tsx` đăng ký qua `virtual:pwa-register` `registerSW({ immediate: true })` — module này lắng nghe 'activated' (isUpdate) → tự `window.location.reload()`. Plugin thấy import virtual module thì tự thôi inject registerSW.js. Thêm `/// <reference types="vite-plugin-pwa/client" />` vào vite-env.d.ts.
+- Máy này thiếu node_modules mới (vite-plugin-pwa thêm từ máy khác 21/08) → `npm install` sync theo lock.
+- ⚠ Bản cũ trên máy HS KHÔNG có listener reload → vẫn cần 1 chu kỳ tắt-hẳn-app + mở lại (x2) để sang bản có fix; TỪ ĐÓ về sau update tự reload, không dặn HS nữa.
