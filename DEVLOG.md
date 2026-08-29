@@ -7118,3 +7118,14 @@ này từng hiện "209 ca" ở phiên làm UI cùng ngày) · "Dashboard học 
 - Realtime chỉ bắn INSERT (reset dòng về pending phải kích quét); listener phải RESTART sau khi đổi publication.
 - **Suýt tai nạn:** merge từ checkout `bkdemy-erp-v2` trong lúc phiên khác đã chuyển nó sang `feat/app-ops` → merge nhầm vào branch của người ta (CEO reset --merge gỡ, không mất gì). **Quyết định: mọi merge main + bot chạy từ worktree `wt-bot` (đứng cố định ở main), KHÔNG đụng checkout chung.**
 - Ghi đè nhầm `scripts/_chk3.mjs` (file repo có sẵn trùng tên scratch) — đã `git checkout --` khôi phục. Scratch sau này đặt tên `_scratch_*`.
+
+## 2026-08-30 — LUẬT QUERY/TÍNH TOÁN + khởi động chiến dịch trả nợ 177 chỗ
+
+- **CEO chốt luật (sau audit 3-agent ra 177 vị trí client tự tính, 82 nặng):** "mọi query
+  hay tính toán sau này phải ở DB. Người gọi hay AI gọi thì chỉ gọi hàm sẵn thôi." → Ghi
+  thành CLAUDE.md **§2.0** (cấm reduce/đếm nghiệp vụ trong TS, cấm join-JS ra số nghiệp vụ,
+  cấm tính-rồi-ghi-DB, công thức 1 nguồn duy nhất = fn Postgres; quy ước fn_*, RPC
+  transactional, generated column, trigger). Báo cáo + lộ trình: `AUDIT-client-tinh-toan.md`.
+- Bối cảnh thi công: nghỉ lễ không phát sinh hoạt động → cửa sổ an toàn để đại tu cả
+  engine tiền/điểm. Nguyên tắc thi công: mỗi gốc = migration + client mỏng gọi rpc +
+  **parity check số cũ (JS) = số mới (SQL) trên DB thật** trước khi cắt.

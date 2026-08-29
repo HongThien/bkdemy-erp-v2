@@ -921,6 +921,13 @@ thẳng `ca_test.nguoi_cham_id`/`nguoi_tra_bai_id`, data đã sẵn, không cầ
 - ⚠ **Checkout `bkdemy-erp-v2` là SÂN CHUNG nhiều phiên Claude (hay bị đổi branch)** — merge main / chạy bot đều làm từ `wt-bot`, ĐỪNG làm từ checkout chung (29/08 đã merge nhầm vào feat/app-ops, CEO phải reset gỡ).
 - Bẫy schema đã cắn khi viết 11 lệnh (chi tiết DEVLOG 29/08): `btvn_ket_qua` dùng `trang_thai_nop` (hoan_thanh/dung_han đời cũ); lịch ngày derive từ `thoi_khoa_bieu` vì `buoi_hoc` chỉ có dòng khi ĐÃ MỞ (thu = isodow+1); Realtime chỉ bắn INSERT + listener phải restart sau khi đổi publication; policy dùng `public.jwt_uid()` không phải `auth.uid()`.
 
+### ⭐ Chiến dịch "hạ tính toán xuống DB" (mở 30/08 — ĐANG CHẠY)
+- Luật mới CLAUDE.md **§2.0** (CEO chốt 30/08): mọi query tổng hợp + tính toán nghiệp vụ
+  ở Postgres; client & AI chỉ gọi hàm sẵn (`rpc` / catalog bot). Code MỚI phải theo ngay.
+- Nợ cũ: 177 vị trí (82 nặng) — danh sách + lộ trình 4 phase trong `AUDIT-client-tinh-toan.md`.
+  Phase 1 = 15 gốc tính-rồi-ghi-ngược (tiền/điểm/hiệu suất) đang chuyển thành RPC/trigger/
+  generated; mỗi gốc có parity check số cũ=mới trên DB thật trước khi cắt sang.
+
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
 
 
