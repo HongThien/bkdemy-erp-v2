@@ -1,4 +1,4 @@
-# DEVLOG — Kho (BKdemy ERP v2) · nhật ký THÔ
+﻿# DEVLOG — Kho (BKdemy ERP v2) · nhật ký THÔ
 
 > Log thô, **append-only**, theo ngày: *làm gì / sai gì / sửa sao / quyết định gì*.
 > **KHÔNG load file này khi làm việc** — chỉ `HANDOFF.md` được đọc đầu phiên.
@@ -2076,7 +2076,6 @@ tsc sạch + build pass. ⏳ chưa soi PDF bằng mắt (bản in paged.js).
 - **⚠ Sự cố phụ trong lúc verify (đã tự sửa xong):** lần test đầu dùng nhầm chuỗi ngày ('2026-07-07' thay vì '2026-07-08' thật) do đọc lệch 1 ngày qua cách `pg` (raw client) hiển thị cột `date` dạng Date-object JSON (đúng bẫy CLAUDE.md cảnh báo — timezone). Hệ quả: dời nhầm ngày gán MT thật + tạo dư 1 buổi rác (13 HS điểm danh). Phát hiện qua đối chiếu `ngay::text` (ép kiểu text, không qua Date object) — sai lệch hiện rõ (07/08 thật vs 07/07 tưởng nhầm). Tự khắc phục: trả `ngay` bản MT về đúng 08/07, xoá buổi rác + roster, verify lại buổi thật (aca3ba90) không suy suyển. **Bài học cho CHÍNH t:** script chẩn đoán dùng `pg` thô PHẢI ép `::text` khi so ngày, đừng tin JSON.stringify của Date object — cùng đúng bẫy mà CLAUDE.md cấm trong code app, áp dụng luôn cho script tra cứu của mình.
 - **Verify cuối cùng bằng đúng hàm thật, đúng ngày thật (08/07):** `ganMTVaoBuoi` trả `buoiMoi:false` (tìm đúng buổi thật, không tạo trùng) → DB xác nhận: **chỉ còn ĐÚNG 1 dòng** mt_buoi cho (Mã 1, 9S1) — 2 bản trùng lịch sử tự dọn sạch, phans đủ cả "Phần III: Nâng cao.", **`de_test` (Đề test đầu vào Khối 9 Toán) vẫn active + hợp lệ** (không bị vỡ tham chiếu), buổi học thật (08/07, 13 HS, các cột đóng phase) không hề bị đụng.
 - tsc + build sạch.
->>>>>>> 73fc3e7 (Fix gốc: gán MT "báo thành công nhưng thiếu nội dung" — xoá-rồi-tạo silent-fail do FK, đổi sang cập-nhật-tại-chỗ)
 ### 07-14 — NHẬP ĐỀ THI: fix bóc ảnh tệ (batch nhiều trang/lệnh) + dựng tool tự test Node + tìm ra bug LỚN HƠN (câu ảo do lời giải tràn trang) — CHƯA XONG
 - **Thùy báo:** "Bóc ảnh khá tệ. Linh tinh... tỉ lệ thấp hơn nhiều so với Nhập kho. 1. Bóc hình ko đúng phạm vi 2. Bóc hình sai câu 3. Ko nhận đáp án. m phải thiết lập lại để tự test đi tự lấy kết quả chứ như thế này tệ quá."
 - **Root cause #1 (ĐÃ FIX, đã push):** `bocDeTuFile` (DeThiScreen.tsx) từ round trước gộp `BATCH_TRANG=6` trang/1 lệnh Gemini khi `coHinh=true` (fix cho bug "AI bị CẮT (JSON dở)" round trước) — nhưng gộp nhiều ẢNH vào 1 lệnh buộc AI vừa định vị bounding-box vừa gán đúng câu/ảnh (`anh_idx`) CÙNG LÚC trên nhiều ảnh, khó hơn hẳn 1-ảnh-1-lệnh mà `NhapKhoScreen` (module bóc ảnh THAM CHIẾU, tỉ lệ tốt) luôn dùng. Kéo theo cả chất lượng đáp án/loai_cau xuống, không chỉ riêng crop hình. **Fix:** `coHinh=true` → luôn batchSize=1 (1 trang/lệnh, giống hệt NhapKhoScreen); `coHinh=false` (đề thuần text) vẫn giữ batch ≤6 trang để tránh MAX_TOKENS.
@@ -7102,3 +7101,20 @@ này từng hiện "209 ca" ở phiên làm UI cùng ngày) · "Dashboard học 
 - **2 refactor gỡ dep bẩn cho bundle (ERP không đổi hành vi):** ① `readClipboardImageFile` tách `kho/ui.tsx` (import katex module-level) → `lib/clipboard.ts`, ui.tsx re-export. ② **`useMonScope` tách khỏi `lib/mon.ts` → `hooks/useMonScope.ts`** — mon.ts (MON_LIST) là hằng thuần được lib data-layer import, hook dính useStore nằm chung file làm MỌI bundle import MON_LIST ăn theo mock/fixtures (đúng ca này: OpsHome→tuyensinh→mon→useStore); 7 màn đổi đường import. PrepScreen bỏ useStore → đọc `myQuyen()` trực tiếp.
 - Verify: `tsc` sạch · build cả 3 bundle sạch — **dist-ops JS 457KB (gzip ~131KB), ~10× nhẹ hơn ERP 4.66MB** · preview thật viewport iPad 768×1024 + iPhone 390 (không tràn ngang, zoom net 1.0): login staffOnly → home → tab Điểm danh (7 buổi hôm nay; 28/08 hiện 8 buổi đã mở ✓ đủ + 1 huỷ kèm lý do) → detail 12A1 roster 9 HS đúng trạng thái màu (7 có mặt + 2 phép) → Report/Prep/Test render đúng, console sạch (chỉ Google Fonts bị sandbox chặn — máy thật không dính). CHƯA test write-path trên data thật (mở buổi/điểm danh/đóng task — chờ ca thật hoặc Thùy gật test).
 - CÒN (vòng 6 deploy): Vercel project thứ 3 (build:ops → dist-ops) + domain (đề xuất `ops.bkacademy.edu.vn`) + icon/màu riêng + kiểm role OPS đã được cấp đủ 4 leaf ở Phân quyền.
+## 2026-08-29 — Bot hỏi–đáp nhân sự (Claude Code trả lời trên ERP)
+
+**BUILD trọn trong ngày (worktree `wt-hoidap-nhansu`, branch `feat/hoidap-nhansu`, đã merge main + chạy production):**
+- Mig `202608291119`: `hoi_dap_nhan_su` (job queue khuôn troly_hoi_dap) + `hoi_dap_bot` (heartbeat 1 dòng). Client chỉ select/insert — câu trả lời CHỈ từ bot (service role). Realtime publication: claude_build thiếu quyền → guard hạ WARNING, CEO chạy tay 1 dòng SQL Editor.
+- `scripts/hoidap/bot.mjs`: 2 đường nhận job (Realtime + quét vớt/Task Scheduler `--once`), claim ATOMIC (`update…eq trang_thai=pending`), nhặt mồ côi 5'', heartbeat 60s, phân loại lỗi tạm (retry ≤2) vs cấu hình (trả job về pending + TẮT bot → heartbeat ngừng → UI báo đỏ). Câu hỏi vào claude qua STDIN, allowedTools chỉ Read/Grep/Glob + 2 lệnh Bash allowlist — KHÔNG Bash tự do/Write/Edit.
+- UI: tab thứ 4 "💬 Hỏi hệ thống" trong Việc của tôi (KHÔNG đẻ leaf — cùng lý do TroLyTab), poll 5s, chấm trạng thái bot từ heartbeat.
+- **Pilot 3 người** (mig `202608291205`): hàm `hoi_dap_duoc_dung()` = nguồn chân lý duy nhất — RLS chặn thật + client rpc cùng hàm để ẩn tab. Thùy · Phạm Thị Thùy Trang · Trần Bảo Lộc.
+- **Số liệu (CEO: "bản chất vẫn là trợ lý cũ")**: `query.mjs` SELECT tự do rào bằng `begin transaction read only` (đã test chặn cả WITH-DELETE) → rồi nâng thành **kho 11 lệnh viết sẵn** `tools.mjs` + runner `tracuu.mjs` (CEO: "AI chọn lệnh, không viết SQL — viết lại lệnh thì lâu chết"): thieu_btvn · vang_hoc · bang_elo_exp · hoc_tap_hoc_sinh · hoc_phi_no · viec_dang_treo · buoi_hom_nay · tuyen_sinh_dem · diem_et · diem_mt · bo_tro(bu/duoi/yeu). 11/11 test data thật; e2e 42s.
+
+**SAI/SỬA trong ngày:**
+- `auth.uid()` trong policy → claude_build không có usage schema auth → `public.jwt_uid()` (vết 202608211153).
+- PATH tiến trình nền không thấy `claude` → bot tự dò `%USERPROFILE%\.local\bin\claude.exe`; CLI máy này chưa login → auth mặc định ANTHROPIC_API_KEY (.env.local), daemon không chết vì login hết hạn.
+- `btvn_ket_qua.hoan_thanh/dung_han` = cột ĐỜI CŨ (toàn false/null) — tín hiệu thật `trang_thai_nop` (soi data mới lộ; bot đếm 13 thay vì 2 trước khi sửa).
+- `buoi_hoc` chỉ có dòng khi buổi ĐÃ MỞ — lịch ngày derive từ `thoi_khoa_bieu` (thu = isodow+1, 2=T2…8=CN, đã kiểm data).
+- Realtime chỉ bắn INSERT (reset dòng về pending phải kích quét); listener phải RESTART sau khi đổi publication.
+- **Suýt tai nạn:** merge từ checkout `bkdemy-erp-v2` trong lúc phiên khác đã chuyển nó sang `feat/app-ops` → merge nhầm vào branch của người ta (CEO reset --merge gỡ, không mất gì). **Quyết định: mọi merge main + bot chạy từ worktree `wt-bot` (đứng cố định ở main), KHÔNG đụng checkout chung.**
+- Ghi đè nhầm `scripts/_chk3.mjs` (file repo có sẵn trùng tên scratch) — đã `git checkout --` khôi phục. Scratch sau này đặt tên `_scratch_*`.

@@ -913,6 +913,14 @@ hàm `listNguoiChoCham`/`listNguoiChoTraBai` ở `tuyensinh.ts`). Badge tên hi�
 có màn báo cáo nào nối vào 2 cột này (Thùy có ý muốn báo theo người-được-assign) — khi làm thì join
 thẳng `ca_test.nguoi_cham_id`/`nguoi_tra_bai_id`, data đã sẵn, không cần thêm gì ở tầng data.
 
+### Bot hỏi–đáp nhân sự "💬 Hỏi hệ thống" (29/08 — chạy production)
+- **Luồng:** nhân sự hỏi trên ERP (tab thứ 4 trong Việc của tôi, KHÔNG đẻ leaf — cùng lý do TroLyTab) → job vào `hoi_dap_nhan_su` → bot **Claude Code chạy máy local** (`scripts/hoidap/bot.mjs`) claim atomic, đọc repo + tra DB, ghi `tra_loi` → UI poll 5s tự hiện. Phân vai với tab 🤖 Trợ lý: trợ lý đọc bảng sạch ngày; bot này trả lời "vì sao/quy trình" **+ số liệu** (CEO: "bản chất vẫn là trợ lý cũ, chạy bằng Claude Code").
+- **Pilot 3 người** (Thùy · Phạm Thị Thùy Trang · Trần Bảo Lộc): nguồn chân lý = hàm DB `hoi_dap_duoc_dung()` (mig `202608291205`) — RLS chặn thật, UI rpc cùng hàm để ẩn tab. Mở rộng = 1 migration mới thay hàm, KHÔNG đụng client.
+- **Số liệu theo nguyên tắc "AI chọn lệnh, không viết SQL":** kho 11 lệnh viết sẵn `scripts/hoidap/tools.mjs` (thieu_btvn · vang_hoc · bang_elo_exp · hoc_tap_hoc_sinh · hoc_phi_no · viec_dang_treo · buoi_hom_nay · tuyen_sinh_dem · diem_et · diem_mt · bo_tro bu/duoi/yeu) + runner `tracuu.mjs` (key=value, `begin transaction read only`, parameterized). SELECT tự do (`query.mjs`) = fallback; câu nào rơi vào fallback nhiều → thăng cấp thành lệnh. Thêm lệnh: entry mới trong tools.mjs + test `tracuu.mjs <lệnh> key=value` ra data thật (xem `scripts/hoidap/README.md`).
+- **Vận hành trên máy CEO (DESKTOP-EV1E49J):** listener chạy TỪ WORKTREE `wt-bot` (đứng cố định ở main) — Startup `.cmd` + Task Scheduler lưới vớt 15' đều trỏ wt-bot. Auth = `ANTHROPIC_API_KEY` (.env.local — CLI local không login; daemon dựa login CLI là chết định kỳ). Heartbeat `hoi_dap_bot` 60s → UI báo "bot mất liên lạc" khi quá 10'. Claude trong bot: allowedTools chỉ Read/Grep/Glob + 2 script tra cứu — không Bash tự do/Write/Edit; câu hỏi vào qua stdin.
+- ⚠ **Checkout `bkdemy-erp-v2` là SÂN CHUNG nhiều phiên Claude (hay bị đổi branch)** — merge main / chạy bot đều làm từ `wt-bot`, ĐỪNG làm từ checkout chung (29/08 đã merge nhầm vào feat/app-ops, CEO phải reset gỡ).
+- Bẫy schema đã cắn khi viết 11 lệnh (chi tiết DEVLOG 29/08): `btvn_ket_qua` dùng `trang_thai_nop` (hoan_thanh/dung_han đời cũ); lịch ngày derive từ `thoi_khoa_bieu` vì `buoi_hoc` chỉ có dòng khi ĐÃ MỞ (thu = isodow+1); Realtime chỉ bắn INSERT + listener phải restart sau khi đổi publication; policy dùng `public.jwt_uid()` không phải `auth.uid()`.
+
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
 
 
