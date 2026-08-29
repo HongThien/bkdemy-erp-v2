@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-157 bảng · 2 view · 0 enum · 15 trigger · 78 function
+159 bảng · 2 view · 0 enum · 15 trigger · 78 function
 
 ## _app_secrets
 
@@ -1324,6 +1324,31 @@
 | loai_key | text |  |  | PK FK→thanh_tich_loai.key |  |
 | thu_tu | integer |  | 0 |  |  |
 
+## hoi_dap_bot
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | integer |  | 1 | PK |  |
+| may | text |  |  |  |  |
+| alive_at | timestamp with time zone |  | now() |  |  |
+
+## hoi_dap_nhan_su
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| nguoi | uuid |  |  |  |  |
+| cau_hoi | text |  |  |  |  |
+| trang_thai | text |  | 'pending'::text |  | `pending` · `processing` · `done` · `failed` |
+| so_lan | integer |  | 0 |  |  |
+| tra_loi | text | Y |  |  |  |
+| error | text | Y |  |  |  |
+| model | text | Y |  |  |  |
+| usage | jsonb | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| claimed_at | timestamp with time zone | Y |  |  |  |
+| done_at | timestamp with time zone | Y |  |  |  |
+
 ## hs_level
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -2377,6 +2402,7 @@ SELECT q.id AS qua_id,
 | hinh_mo_hinh | hinh_mo_hinh_cap_mo_hinh_check | `CHECK (((cap_mo_hinh >= 1) AND (cap_mo_hinh <= 4)))` |
 | hinh_mo_hinh_cha | hinh_mo_hinh_cha_check | `CHECK ((mo_hinh_id <> cha_id))` |
 | hoc_phi_phat_sinh | hoc_phi_phat_sinh_dung_loai | `CHECK ((((loai = 'lop'::text) AND (lop_id IS NOT NULL) AND (hoc_sinh_id IS NULL)) OR ((loai = 'ca_nhan'::text) AND (hoc_sinh_id IS NOT NULL) AND (lop_id IS NULL))))` |
+| hoi_dap_bot | hoi_dap_bot_id_check | `CHECK ((id = 1))` |
 | hs_level | hs_level_level_check | `CHECK (((level >= 0) AND (level <= 3)))` |
 | hs_level_log | hs_level_log_level_chot_check | `CHECK (((level_chot >= 0) AND (level_chot <= 3)))` |
 | hs_level_log | hs_level_log_level_cu_check | `CHECK (((level_cu >= 0) AND (level_cu <= 3)))` |

@@ -32,7 +32,7 @@
 
 create table if not exists hoi_dap_nhan_su (
   id         uuid primary key default gen_random_uuid(),
-  nguoi      uuid not null,            -- ai hỏi (auth.uid) — RLS ép insert đúng mình
+  nguoi      uuid not null,            -- ai hỏi (uid từ JWT) — RLS ép insert đúng mình
   cau_hoi    text not null,
   trang_thai text not null default 'pending',
   -- Số lần bot đã thử job này. THIẾU CỘT NÀY = điều kiện bỏ cuộc không bao giờ đúng
@@ -64,9 +64,11 @@ alter table hoi_dap_nhan_su enable row level security;
 drop policy if exists hoi_dap_nhan_su_member_doc on hoi_dap_nhan_su;
 create policy hoi_dap_nhan_su_member_doc on hoi_dap_nhan_su for select to authenticated
   using (public.la_thanh_vien());
+-- jwt_uid() (public, KHÔNG auth.uid() trực tiếp) — claude_build không có usage schema auth;
+-- đúng pattern 202608211153_cham_tln_ai đã dính và chốt (đọc sub từ request.jwt.claims).
 drop policy if exists hoi_dap_nhan_su_member_hoi on hoi_dap_nhan_su;
 create policy hoi_dap_nhan_su_member_hoi on hoi_dap_nhan_su for insert to authenticated
-  with check (public.la_thanh_vien() and nguoi = auth.uid());
+  with check (public.la_thanh_vien() and nguoi = public.jwt_uid());
 grant select, insert on hoi_dap_nhan_su to authenticated;
 
 -- ── Heartbeat của bot ───────────────────────────────────────────────────────
@@ -86,8 +88,10 @@ grant select on hoi_dap_bot to authenticated;
 
 -- ── Realtime cho bot ────────────────────────────────────────────────────────
 -- Bot subscribe postgres_changes INSERT trên bảng này → trả lời trong vài giây thay
--- vì chờ chu kỳ quét. Guard: ALTER PUBLICATION ... ADD nổ lỗi nếu bảng đã là member
--- (chạy lại migration trên DB đã áp tay là dính), nên kiểm tra trước.
+-- vì chờ chu kỳ quét. Guard 2 lớp: (1) đã là member thì thôi (chạy lại không nổ);
+-- (2) publication thuộc supabase_admin — claude_build có thể KHÔNG đủ quyền ALTER ⇒
+-- bắt lỗi quyền, hạ xuống WARNING chứ không cho chết migration: Realtime chỉ là ĐƯỜNG
+-- NHANH, thiếu nó bot vẫn chạy bằng quét 5 phút; câu lệnh cần chạy tay in ngay trong warning.
 do $$
 begin
   if not exists (
@@ -96,4 +100,6 @@ begin
   ) then
     alter publication supabase_realtime add table public.hoi_dap_nhan_su;
   end if;
+exception when insufficient_privilege then
+  raise warning 'Không đủ quyền thêm hoi_dap_nhan_su vào supabase_realtime — chạy tay trong Supabase SQL Editor: alter publication supabase_realtime add table public.hoi_dap_nhan_su;';
 end $$;

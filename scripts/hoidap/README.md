@@ -12,11 +12,18 @@ Kiến trúc **2 đường nhận job** (chốt với CEO 29/08):
 
 1. Migration `202608291119_hoi_dap_nhan_su.sql` đã áp vào DB (`npm run migrate` — nhớ
    `npm run schema` + commit `schema.md` sau đó, theo CLAUDE.md §2.1).
-2. `.env.local` (gitignored) có `VITE_SUPABASE_URL` + `SUPABASE_SERVICE_ROLE`
-   (cùng file `worker/troly.mjs` đang dùng — có rồi thì thôi).
-3. `claude` CLI đã login trên máy này (gõ `claude` chạy được là được). ⚠ Login CLI
-   **hết hạn định kỳ** — bot chết vì login thì heartbeat ngừng, ERP hiện "Bot mất liên
-   lạc": mở terminal gõ `claude` login lại rồi chạy lại bot.
+2. `.env.local` (gitignored) có `VITE_SUPABASE_URL` + `SUPABASE_SERVICE_ROLE` +
+   `ANTHROPIC_API_KEY` (cùng file `worker/troly.mjs` đang dùng — có rồi thì thôi).
+3. Auth cho claude: bot **mặc định dùng `ANTHROPIC_API_KEY`** (trả tiền API per-token,
+   không bao giờ chết vì login — daemon không người trông mà dựa login CLI là dính
+   "Not logged in" định kỳ, đã dính ngay 29/08). Muốn ăn quota subscription thay vì
+   trả API: `claude /login` trên máy chạy bot + đặt `HOIDAP_DUNG_LOGIN=1` vào `.env.local`.
+4. Máy cài `claude` chỗ lạ (không phải `%USERPROFILE%\.local\bin\claude.exe`, không
+   trong PATH) thì đặt `CLAUDE_BIN=đường\dẫn\claude.exe` vào `.env.local`.
+5. Realtime (đường nhanh vài giây) cần bảng nằm trong publication — `claude_build`
+   không đủ quyền nên migration chỉ cảnh báo. Chạy 1 lần trong Supabase SQL Editor:
+   `alter publication supabase_realtime add table public.hoi_dap_nhan_su;`
+   Chưa chạy thì bot vẫn hoạt động, độ trễ tối đa = chu kỳ quét 5 phút.
 
 ## Chạy tay (thử trước khi cài lịch)
 

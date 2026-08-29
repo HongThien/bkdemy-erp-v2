@@ -27,7 +27,7 @@
 //   ĐÁNH THỨC drainQueue() — claim atomic ở DB mới là người gác cửa, nên listener
 //   và --once chạy chồng nhau vẫn không trả lời trùng.
 // ============================================================================
-import { readFileSync } from 'node:fs'
+import { readFileSync, existsSync } from 'node:fs'
 import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { spawn } from 'node:child_process'
@@ -52,6 +52,23 @@ if (!SB_URL || !SB_SERVICE) { console.error('Thiếu VITE_SUPABASE_URL / SUPABAS
 const svc = createClient(SB_URL, SB_SERVICE)
 
 const PROMPT = readFileSync(join(root, 'scripts', 'hoidap', 'PROMPT.md'), 'utf8')
+
+// Task Scheduler chạy tiến trình với PATH TỐI THIỂU — 'claude' gõ terminal thấy mà bot
+// không thấy (đã dính 29/08). Dò tận file cài mặc định; máy cài chỗ lạ thì đặt CLAUDE_BIN
+// vào .env.local trỏ thẳng .exe.
+const CLAUDE_BIN = env('CLAUDE_BIN')
+  ?? [join(process.env.USERPROFILE ?? '', '.local', 'bin', 'claude.exe')].find(existsSync)
+  ?? 'claude'
+
+// Auth cho claude: ƯU TIÊN ANTHROPIC_API_KEY từ .env.local (đã có sẵn — danhgia/troly
+// dùng chung key). Vì sao KHÔNG dựa login CLI: daemon không người trông mà login thì
+// HẾT HẠN ĐỊNH KỲ + máy này CLI chưa login bao giờ (đã dính 29/08: "Not logged in").
+// Key = không bao giờ chết vì login, đổi lại trả tiền API per-token thay vì quota
+// subscription. Muốn xài quota: `claude /login` trên máy chạy bot rồi xoá dòng dưới... là
+// KHÔNG đủ — phải bỏ key khỏi env truyền vào; đặt HOIDAP_DUNG_LOGIN=1 trong .env.local.
+const ENV_CLAUDE = { ...process.env }
+const KEY_API = env('ANTHROPIC_API_KEY')
+if (KEY_API && !env('HOIDAP_DUNG_LOGIN')) ENV_CLAUDE.ANTHROPIC_API_KEY = KEY_API
 const log = (...a) => console.log(new Date().toISOString().slice(11, 19), ...a)
 
 // ── Gọi Claude Code ─────────────────────────────────────────────────────────
@@ -59,13 +76,13 @@ const log = (...a) => console.log(new Date().toISOString().slice(11, 19), ...a)
 // Read/Grep/Glob (đọc repo) — không Bash, không Write, không Edit: xem RANH GIỚI trên.
 function goiClaude(cauHoi) {
   return new Promise((resolve, reject) => {
-    const child = spawn('claude', ['-p', '--output-format', 'json', '--allowedTools', 'Read', 'Grep', 'Glob'],
-      { cwd: root, shell: true, windowsHide: true })
+    const child = spawn(CLAUDE_BIN, ['-p', '--output-format', 'json', '--allowedTools', 'Read', 'Grep', 'Glob'],
+      { cwd: root, windowsHide: true, env: ENV_CLAUDE })
     let out = '', err = ''
     child.stdout.on('data', (d) => { out += d })
     child.stderr.on('data', (d) => { err += d })
     const timer = setTimeout(() => {
-      // shell:true ⇒ child.pid là shell trung gian — kill cả cây, không thì claude mồ côi chạy tiếp
+      // /T = kill cả cây tiến trình — claude còn đẻ con (ripgrep...), kill mỗi cha là mồ côi chạy tiếp
       if (process.platform === 'win32') spawn('taskkill', ['/pid', String(child.pid), '/T', '/F'], { windowsHide: true })
       else child.kill('SIGKILL')
       reject(new Error('timeout: claude chạy quá ' + CLAUDE_TIMEOUT_MS / 60000 + ' phút'))
