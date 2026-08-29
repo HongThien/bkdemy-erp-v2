@@ -124,6 +124,8 @@ export const adminLeaves: AdminLeaf[] = [
   { id: 'baoloi',      nhom: 'Core team', ten: 'Quản lý báo lỗi',             founderOnly: true },
   { id: 'db_tuyendung',nhom: 'Core team', ten: 'Tuyển dụng',                  founderOnly: true },
   { id: 'giaoviec',    nhom: 'Core team', ten: 'Tạo & giao việc phát triển',  founderOnly: false },
+  { id: 'gay',         nhom: 'Core team', ten: 'Gậy của BK',                  founderOnly: false }, // hệ phạt: gậy tự động (chậm deadline ERP, máy đề xuất) + thủ công; công khai toàn công ty
+
 
   // ── DASHBOARD: chỉ phục vụ CEO ra quyết định (analytics, không phải màn thao tác) ──
   { id: 'db_tongquan', nhom: 'Dashboard', ten: 'Tổng quan',                   founderOnly: false },
