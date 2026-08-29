@@ -63,6 +63,22 @@ Gỡ: `schtasks /delete /tn "BKdemy HoiDap Listener" /f` (tương tự cho Lư�
 | Câu treo `pending` mà bot "đang chạy" | Realtime rớt event | Tự hết trong ≤15' (lưới vớt); muốn ngay thì chạy `--once` |
 | Trả lời trùng/2 lần | Không xảy ra được — claim atomic `where trang_thai='pending'` | — |
 
+## Kho lệnh tra cứu (tools.mjs) — cách nuôi
+
+Nguyên tắc (CEO 29/08): **AI chọn lệnh viết sẵn, không tự viết SQL** — `tools.mjs` là
+danh mục (11 lệnh đầu: thieu_btvn · vang_hoc · bang_elo_exp · hoc_tap_hoc_sinh ·
+hoc_phi_no · viec_dang_treo · buoi_hom_nay · tuyen_sinh_dem · diem_et · diem_mt · bo_tro),
+`tracuu.mjs` là runner (read-only transaction, tham số parameterized). SELECT tự do
+(`query.mjs`) chỉ là fallback khi chưa có lệnh khớp.
+
+Thêm lệnh mới: viết 1 entry vào `tools.mjs` (khuôn có sẵn), chạy thử
+`node scripts/hoidap/tracuu.mjs <ten_lenh> key=value` ra data đúng rồi mới commit.
+Câu hỏi nào nhân sự hay hỏi mà bot phải dùng fallback → đó là ứng viên thăng cấp thành lệnh.
+
+Hai bẫy schema đã dính khi viết 11 lệnh đầu (tránh lặp): `btvn_ket_qua.hoan_thanh/dung_han`
+là cột đời cũ — tín hiệu thật là `trang_thai_nop`; `buoi_hoc` chỉ có dòng khi buổi ĐÃ MỞ —
+lịch của ngày phải derive từ `thoi_khoa_bieu` (thu = isodow+1, 2=T2…8=CN).
+
 ## Ranh giới an toàn (đừng nới)
 
 - **Claude không có tay ghi**: chỉ được `Read/Grep/Glob` (đọc repo). Mọi thao tác DB nằm

@@ -19,6 +19,9 @@ import { readFileSync } from 'node:fs'
 import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
+// DATE (oid 1082) trả string nguyên văn — tránh '2026-08-24' hiện thành '...08-23T17:00Z' (lệch UTC).
+pg.types.setTypeParser(1082, (v) => v)
+
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..')
 const env = (file, k) => {
   try { return readFileSync(join(root, file), 'utf8').match(new RegExp(`^\\s*${k}\\s*=\\s*(.+?)\\s*$`, 'm'))?.[1]?.replace(/^["']|["']$/g, '') } catch { return undefined }
