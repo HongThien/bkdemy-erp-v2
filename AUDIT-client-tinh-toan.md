@@ -76,7 +76,11 @@ dòng ra 4 con số) · `botro.ts:63` (2 bảng lớn nhất không filter).
       (cache + backfill + resolve report, 1 transaction). **Parity harness tóm bug THẬT của JS**: \b ASCII
       bóc "đơn vị" ngay trong chữ có dấu ("10 học sinh"→"10ọcsinh") — vá cả 2 phía về đặc tả unicode chung,
       chuẩn hoá lại 4 dòng cache; parity v2 = 615/615. dap_an_hs jsonb phải bóc bằng `#>>'{}'`.
-- [ ] Phase 1 đợt 5b: `suaKeyVaChamLai` (rechấm cả lớp — cần port grade 3 loại câu sang SQL) + `quetGayTuDong` (đi cùng task-engine Phase 4) + `mt.ts ganMT` (content assembly — xét lại phân loại ở Phase 4)
+- [x] **Phase 1 đợt 5b** (mig `202608300301`): `fn_sua_key_va_cham_lai` — sửa key + chấm lại cả lớp + log
+      trong 1 transaction; bộ chấm 3 loại câu port sang SQL (fn_tln_check + fn_js_parsefloat nhân bản
+      parseFloat ăn-prefix của JS; bẫy substring-trả-nhóm-ngoặc của PG). Parity regrade 983/983 verdict
+      khớp trên bài làm thật. → **PHASE 1 XONG** (còn `quetGayTuDong` đi cùng task-engine Phase 4;
+      `ganMT` xét lại phân loại Phase 4; `chotKy` thuộc Phase 2).
 - [ ] Phase 2 · Phase 3 · Phase 4 (xem lộ trình dưới)
 
 ## Lộ trình đề xuất (chưa làm — chờ chốt)
