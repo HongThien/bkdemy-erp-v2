@@ -1,7 +1,8 @@
 // ============================================================================
-// tuluyen.ts — TỰ LUYỆN (Thùy 18-20/08, bỏ trần 29/08): mỗi ngày HS mở → hệ tự sinh 10 câu,
-// "làm thêm" VÔ HẠN mỗi lượt 10 câu (Thùy 29/08 bỏ trần 30/ngày — migration 202608291122).
-// 40% ngẫu nhiên trong dạng ĐÃ HỌC · 60% trong dạng đang YẾU.
+// tuluyen.ts — TỰ LUYỆN (Thùy 18-20/08; sửa lớn 29/08): MỖI LƯỢT = 1 bai_test RIÊNG 10 câu,
+// luyện bao nhiêu lượt tuỳ em (Thùy 29/08: bỏ trần 30/ngày + "mỗi lần luyện phải độc lập" —
+// KHÔNG append cộng dồn vào 1 bài/ngày như bản đầu). Mở app: lượt hôm nay đang DỞ thì làm
+// tiếp, hết dở thì sinh lượt mới. 40% ngẫu nhiên trong dạng ĐÃ HỌC · 60% trong dạng đang YẾU.
 //
 // KIẾN TRÚC: tái dùng NGUYÊN bai_test/bai_test_cau/bai_lam/bai_lam_cau (loai='tu_luyen',
 // bai_test.hoc_sinh_id set — bài CÁ NHÂN, khác ET/BTVN dùng chung cả lớp). Chọn CÂU + snapshot
@@ -16,20 +17,29 @@ import { masteryOfDang, MASTERY_CONFIG } from '../gami/mastery.js'
 
 const SO_CAU_MOI_LUOT = 10
 
-export type TuLuyenHomNay = { baiTestId: string; soCau: number; daNop: boolean }
+export type LuotHomNay = { dangDo: { baiTestId: string } | null; tongCau: number }
 
-// Bài tự luyện CỦA HÔM NAY nếu đã có (mở lại, hoặc vừa "làm thêm" ở tab khác) — không tạo mới.
-export async function timTuLuyenHomNay(mon: string): Promise<TuLuyenHomNay | null> {
+// Các LƯỢT tự luyện hôm nay: lượt MỚI NHẤT chưa nộp (để làm tiếp thay vì sinh lượt mới đè lên
+// lượt dở) + tổng số câu đã sinh hôm nay (hiển thị động viên ở màn kết quả). Chỉ soi 20 lượt gần
+// nhất — quá đủ cho "dở", tổng câu vẫn đếm đúng qua sum so_cau của TOÀN BỘ lượt trong ngày.
+export async function luotTuLuyenHomNay(mon: string): Promise<LuotHomNay> {
   const { data: hocSinhId } = await supabase.rpc('my_hoc_sinh_id')
-  if (!hocSinhId) return null
+  if (!hocSinhId) return { dangDo: null, tongCau: 0 }
   const homNay = ngayVN()
-  const { data: bt, error } = await supabase.from('bai_test').select('id, so_cau')
-    .eq('hoc_sinh_id', hocSinhId).eq('mon', mon).eq('loai', 'tu_luyen').eq('ngay', homNay).limit(1)
+  const { data: bts, error } = await supabase.from('bai_test').select('id, so_cau')
+    .eq('hoc_sinh_id', hocSinhId).eq('mon', mon).eq('loai', 'tu_luyen').eq('ngay', homNay)
+    .order('created_at', { ascending: false }).limit(100)
   if (error) throw error
-  const row = (bt as { id: string; so_cau: number }[])?.[0]
-  if (!row) return null
-  const { data: lam } = await supabase.from('bai_lam').select('trang_thai').eq('bai_test_id', row.id).limit(1)
-  return { baiTestId: row.id, soCau: row.so_cau, daNop: (lam as { trang_thai: string }[])?.[0]?.trang_thai === 'da_nop' }
+  const rows = (bts ?? []) as { id: string; so_cau: number }[]
+  const tongCau = rows.reduce((s, r) => s + r.so_cau, 0)
+  if (!rows.length) return { dangDo: null, tongCau }
+  const gan = rows.slice(0, 20)
+  const { data: lams } = await supabase.from('bai_lam').select('bai_test_id, trang_thai')
+    .in('bai_test_id', gan.map((r) => r.id)).limit(20)
+  const daNop = new Set(((lams ?? []) as { bai_test_id: string; trang_thai: string }[])
+    .filter((l) => l.trang_thai === 'da_nop').map((l) => l.bai_test_id))
+  const dangDo = gan.find((r) => !daNop.has(r.id))
+  return { dangDo: dangDo ? { baiTestId: dangDo.id } : null, tongCau }
 }
 
 // Ngày hôm nay giờ VN dạng 'YYYY-MM-DD' — KHÔNG dùng toISOString()/new Date('...') (CLAUDE.md §2 cấm).
@@ -66,7 +76,7 @@ export function chonDangTuLuyen(evals: RawEval[], soCau = SO_CAU_MOI_LUOT): stri
 
 export type SinhTuLuyenKetQua = { baiTestId: string; them: number; tong: number }
 
-// Sinh 1 đợt câu (mặc định 10, "làm thêm" cũng gọi lại đúng hàm này) — RPC tự cộng dồn.
+// Sinh 1 LƯỢT MỚI (bai_test riêng, mặc định 10 câu) — "làm thêm" gọi lại đúng hàm này, ra lượt mới.
 export async function sinhTuLuyen(mon: string, soCau = SO_CAU_MOI_LUOT): Promise<SinhTuLuyenKetQua> {
   const { data: evals, error: e1 } = await supabase.rpc('hs_dang_evals', { p_mon: mon })
   if (e1) throw e1

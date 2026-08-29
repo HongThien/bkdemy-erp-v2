@@ -15,7 +15,7 @@ import {
 import { mucDeadline, nhanConLai } from '../../lib/tuan'
 import { seededShuffleWithOrig, seededPermByDang } from '../../lib/shuffle'
 import {
-  timTuLuyenHomNay, sinhTuLuyen, monCuaHS, laCap1HS, khoiCuaHS, layDangHocTap, xepHangTuLuyen,
+  luotTuLuyenHomNay, sinhTuLuyen, monCuaHS, laCap1HS, khoiCuaHS, layDangHocTap, xepHangTuLuyen,
   TU_LUYEN_SO_CAU_MOI_LUOT, SRC_LABEL, type DangHocTap, type RecentEval, type XepHangRow,
 } from '../../lib/tuluyen'
 import DoiMatKhau from './DoiMatKhau'
@@ -621,20 +621,20 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
   )
 }
 
-// ── TỰ LUYỆN: bọc NGOÀI LamBai — chỉ lo "hôm nay đã có bài chưa, chưa thì sinh 10 câu, sinh thêm
-// khi bấm" — phần LÀM BÀI (chọn/chấm/lời giải/reveal-ngay) DÙNG NGUYÊN LamBai, không viết lại.
-// key={baiTestId+so_cau} → mỗi lần "làm thêm" đổi key ⇒ LamBai REMOUNT, tự fetch lại đủ câu mới.
+// ── TỰ LUYỆN: bọc NGOÀI LamBai — MỖI LƯỢT = 1 bai_test RIÊNG 10 câu (Thùy 29/08: "mỗi lần luyện
+// phải độc lập", KHÔNG cộng dồn 1 bài/ngày). Mở màn: lượt hôm nay đang DỞ → làm tiếp; hết dở →
+// sinh lượt mới. "Làm thêm" = sinh lượt mới tinh. Phần LÀM BÀI dùng nguyên LamBai — key={baiTestId}
+// đổi theo từng lượt ⇒ REMOUNT, mỗi lượt chấm điểm/kết quả độc lập 10 câu của chính nó.
 function LamTuLuyen({ hocSinhId, onXong, desktop }: { hocSinhId: string; onXong: () => void; desktop?: boolean }) {
   const [state, setState] = useState<'dang_tai' | 'san_sang' | 'trong' | 'loi'>('dang_tai')
   const [mon, setMon] = useState<string | null>(null)
   const [baiTestId, setBaiTestId] = useState<string | null>(null)
-  const [soCau, setSoCau] = useState(0)
+  const [tongNgay, setTongNgay] = useState(0)
   const [busy, setBusy] = useState(false)
   const [err, setErr] = useState<string | null>(null)
   // Guard StrictMode chạy effect 2 lần (bài học CLAUDE.md §"ensure* slot"): thiếu cái này thì lượt
-  // gọi thứ 2 cũng thấy "chưa có bài hôm nay" (đọc trước khi lượt 1 kịp ghi) → sinh THÊM 10 câu nữa
-  // đè lên — đã dính thật lúc verify (19 câu thay vì 10). unique index chặn được 2 DÒNG bai_test
-  // riêng biệt, nhưng RPC tự APPEND khi đụng unique nên không chặn được việc sinh THỪA câu.
+  // gọi thứ 2 cũng thấy "không có lượt dở" (đọc trước khi lượt 1 kịp ghi) → sinh THỪA 1 lượt mồ côi.
+  // Không còn unique index 1 bài/ngày (model lượt-độc-lập) nên guard client là hàng rào duy nhất.
   const daGoi = useRef(false)
 
   async function taiHomNay() {
@@ -643,10 +643,10 @@ function LamTuLuyen({ hocSinhId, onXong, desktop }: { hocSinhId: string; onXong:
       const m = await monCuaHS()
       if (!m) { setState('trong'); setErr('Chưa xác định được môn học của em — báo thầy cô nhé.'); return }
       setMon(m)
-      const co = await timTuLuyenHomNay(m)
-      if (co) { setBaiTestId(co.baiTestId); setSoCau(co.soCau); setState('san_sang'); return }
+      const { dangDo, tongCau } = await luotTuLuyenHomNay(m)
+      if (dangDo) { setBaiTestId(dangDo.baiTestId); setTongNgay(tongCau); setState('san_sang'); return }
       const kq = await sinhTuLuyen(m)
-      setBaiTestId(kq.baiTestId); setSoCau(kq.tong); setState('san_sang')
+      setBaiTestId(kq.baiTestId); setTongNgay(tongCau + kq.them); setState('san_sang')
     } catch (e: any) { setErr(e?.message ?? String(e)); setState('trong') }
   }
   useEffect(() => { if (daGoi.current) return; daGoi.current = true; taiHomNay() }, []) // eslint-disable-line
@@ -656,7 +656,7 @@ function LamTuLuyen({ hocSinhId, onXong, desktop }: { hocSinhId: string; onXong:
     setBusy(true); setErr(null)
     try {
       const kq = await sinhTuLuyen(mon)
-      setBaiTestId(kq.baiTestId); setSoCau(kq.tong)
+      setBaiTestId(kq.baiTestId); setTongNgay((t) => t + kq.them)
     } catch (e: any) { setErr(e?.message ?? String(e)) } finally { setBusy(false) }
   }
 
@@ -674,18 +674,18 @@ function LamTuLuyen({ hocSinhId, onXong, desktop }: { hocSinhId: string; onXong:
 
   return (
     <LamBai
-      key={baiTestId + ':' + soCau}
+      key={baiTestId}
       baiTestId={baiTestId}
       hocSinhId={hocSinhId}
       onXong={onXong}
       desktop={desktop}
-      doneCaption={`Hôm nay đã làm ${soCau} câu.`}
+      doneCaption={`Hôm nay em đã luyện ${tongNgay} câu.`}
       doneExtra={
         <div className={`mt-3 w-full ${desktop ? 'max-w-sm' : ''}`}>
           {err && <p className="mb-2 text-[12.5px] text-ph-red">{err}</p>}
           <button onClick={lamThem} disabled={busy}
             className={`w-full rounded-xl bg-brand/10 font-medium text-brand disabled:opacity-40 ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`}>
-            {busy ? 'Đang tạo thêm…' : `Làm thêm ${TU_LUYEN_SO_CAU_MOI_LUOT} câu`}
+            {busy ? 'Đang tạo lượt mới…' : `Luyện lượt mới ${TU_LUYEN_SO_CAU_MOI_LUOT} câu`}
           </button>
         </div>
       }
