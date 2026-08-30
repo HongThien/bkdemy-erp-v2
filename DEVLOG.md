@@ -7265,3 +7265,33 @@ khảo, mastery vẫn 2 chế độ).
 nộp, key server-side bkdemy-ph (rào cứng, không nới FDW ghi); trả bài qua 3 view FDW gate
 `tra_at`; app TA = entry Vite thứ 4 khuôn app OPS, 4 màn (Home/BTVN/ET/ingame); chấm per-câu vẫn
 `gami_grades` + `fn_dong_btvn` — không đẻ hệ chấm thứ 2. Còn 4 câu hỏi mở nhỏ ở PLAN §8.
+
+**APP TA — BUILD VÒNG 1-5 (30/08, phiên remote, nhánh claude/teaching-assistant-app-jvdozw):**
+- CEO chốt nốt 4 câu mở: nhận xét = CHỌN TỪ LIST (không gõ) · bucket private OK · domain/màu OK ·
+  phần bkdemy-ph CEO tự làm. → build theo PLAN-app-ta.md.
+- **Migration `202608302120_btvn_nop_app_ta.sql`** (CHƯA áp — phiên remote không có credential DB):
+  `btvn_nop` (PK hs×buổi, nop_at/tra_at/nhan_xet_ma[]) + `btvn_nop_anh` (path/path_cham — bucket
+  private nên DB lưu PATH, hiển thị = signed URL; ảnh gốc immutable, trigger touch bump cha) +
+  `btvn_nhan_xet_mau` (seed 8 mẫu, active flag — kho rác) + CHECK NOT VALID vá
+  btvn_ket_qua.trang_thai_nop/thai_do + RPC: `fn_btvn_nop_tao` (security definer, revoke public,
+  grant ph_nop — đường ghi duy nhất của PH, idempotent thêm-ảnh, chặn sau tra_at) ·
+  `fn_btvn_de_xuat_trang_thai` (đề xuất đúng-hạn/muộn từ nop_at vs han_nop_bai_test) ·
+  `fn_btvn_tra_bai`/`_buoi` (guard đã-chấm-mới-trả) · `fn_dong_btvn` v2 (thêm tự trả) + 5 view FDW
+  gate tra_at (v_btvn_nop_ph/tra_anh/tra_ket_qua/tra_cau/dap_an — dispatch môn Toán/KHTN, Hình để sau).
+- **`scripts/sql_appta_role_bucket.sql`** (dán 1 lần SQL Editor): role `ph_nop` (login, no-select,
+  execute 1 fn) + bucket private `btvn-nop` + policies authenticated (KHÔNG policy delete — ảnh nộp
+  là bằng chứng). Ghi rõ trade-off: upload storage từ server bkdemy-ph phải dùng service key
+  (storage REST không nhận DB role) — chỉ trong API route nộp.
+- **App TA = entry Vite thứ 4** (ta.html/main-ta/AppTa/vite.config.ta, dist-ta, PWA teal #0d9488,
+  scripts dev:ta|build:ta|preview:ta) — khuôn app OPS y nguyên (2 bài học registerSW + --app-z).
+- **Màn:** `TaHome` (hero teal + ring tiến độ, task = getMyTasks lọc ingame/et/btvn — CÙNG derive
+  với ERP, badge 📱 đếm nộp app, nhóm theo ngày + còn-nợ, Đã xong collapse) · `ChamBuoi` (header
+  ‹ + 3 tab; IngamePanel 1-bài/màn mức 1-5 + DangPickerOne; EtPanel lưới bám đề đủ cảnh báo
+  lệch-so/lệch-dạng/mồ-côi + ô lỗi E01-06 + đóng-không-đề) · `ChamBtvn` (hợp nhất 2 đường: card
+  per-HS, HS nộp app = xấp ảnh + AnnotateModal vẽ đỏ lưu PNG path_cham + chip trạng thái đề-xuất
+  viền-đứt ← TA tick + nhận xét chips + 📤 Trả bài; HS thường = chấm tay như BtvnTab; HS vắng mà
+  có nộp vẫn hiện; 🚨 chuông đỏ giữ nguyên). Seam mới `src/lib/btvnnop.ts`.
+- **ERP `BtvnTab`**: badge 📱 N ảnh (+ đã trả) cạnh tên HS — TA chưa dùng app vẫn thấy ai nộp app.
+- **Verify:** tsc --noEmit exit 0 · build CẢ 4 bundle pass · dist-ta ~1.1M (precache 995KB, ngang
+  app OPS). CHƯA verify được: áp migration + smoke RPC (cần máy thật: npm run migrate → npm run
+  schema → commit schema.md; dán sql_appta_role_bucket.sql; e2e seed 1 lượt nộp bằng RPC rồi chấm).
