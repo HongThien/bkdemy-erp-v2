@@ -87,7 +87,12 @@ dòng ra 4 con số) · `botro.ts:63` (2 bảng lớn nhất không filter).
       parseFloat ăn-prefix của JS; bẫy substring-trả-nhóm-ngoặc của PG). Parity regrade 983/983 verdict
       khớp trên bài làm thật. → **PHASE 1 XONG** (còn `quetGayTuDong` đi cùng task-engine Phase 4;
       `ganMT` xét lại phân loại Phase 4; `chotKy` thuộc Phase 2).
-- [ ] Phase 2 · Phase 3 · Phase 4 (xem lộ trình dưới)
+- [x] **Phase 2d** (mig `202608300729`): hệ số gợi ý + hiệu lực (`fn_hocphi_he_so_goi_y` — parity
+      292/293 với hệ số đã xác nhận · `fn_hocphi_he_so_hieu_luc` DISTINCT ON thay trò dựa-thứ-tự-PostgREST)
+      + `fn_hocphi_chi_tiet_ky`/`fn_hocphi_tong_hop_ky` (cross-check 242/242 vs phiếu ảo). Xoá 3 hàm chết
+      (listHocPhiTheoHocSinhVaMon, tinhTamTinhTheoPH, selectByIdsBatched — batching hết lý do tồn tại:
+      không còn mảng UUID trên URL). → **PHASE 2 XONG** — hocphi.ts giờ là seam mỏng gọi rpc.
+- [ ] Phase 3 (mastery) · Phase 4 (quét lớn + vừa/nhẹ)
 
 ## Lộ trình đề xuất (chưa làm — chờ chốt)
 

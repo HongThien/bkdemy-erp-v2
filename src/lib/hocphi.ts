@@ -5,41 +5,14 @@
 // đông cứng + snapshot. Người-trong-vòng-lặp ở chỗ tiền nhạy cảm — KHÔNG auto-giảm.
 // ============================================================================
 import { supabase } from './supabase'
-// deXuatCongThuc/thongKeBuoiConLop/buByGocKy/getPhieuAo-cũ đã XUỐNG DB (fn_hocphi_phieu_ao
-// + hoc_phi_theo_mon_ky — §2.0). Còn lại dùng cho listHeSoHocSinh/listHocPhiTheoHocSinhVaMon (Phase 2d).
-import { tinhHeSoHocSinh, thanhTienHocPhi, thanhTienHocDuoi } from '../gami/hocphi.js'
+// §2.0 (30/08): TOÀN BỘ engine tiền đã XUỐNG DB — fn_hocphi_* + hoc_phi_theo_mon_ky.
+// src/gami/hocphi.js chỉ còn là TÀI LIỆU công thức (bản chạy = SQL); file này = seam mỏng gọi rpc.
 
 const LIMIT = 2000
 
-// ⚠ BUG THẬT (08-16, CEO báo "sai nghiêm trọng" số học phí tháng 7 trên 1 máy): nhét CẢ mảng ID
-// (300-500+ UUID) thẳng vào `.in()` trên URL GET → URL dài chục nghìn ký tự → 400 Bad Request TRÊN
-// MỘT SỐ MẠNG/PROXY (không phải mọi máy — tuỳ giới hạn URL của proxy/router giữa đường, nên lỗi
-// KHÔNG tái hiện đều, đúng bẫy CLAUDE.md §2 "Debug 400 ... URL dài"). Lỗi ném ra KHÔNG được bắt ở
-// nơi gọi (Uncaught in promise) → điểm danh/hệ số coi như rỗng cho phần lớn HS → tiền tính THIẾU
-// (đo thật: hụt ~100 triệu/tháng), không báo lỗi rõ ràng trên UI. ID_BATCH nhỏ đủ để URL luôn an
-// toàn (~60 UUID × ~39 ký tự mã hoá ≈ 2.400 ký tự/tham số, dưới MỌI giới hạn URL từng biết ≥8KB).
-const ID_BATCH = 60
-function chunkArr<T>(arr: T[], size: number): T[][] {
-  const out: T[][] = []
-  for (let i = 0; i < arr.length; i += size) out.push(arr.slice(i, i + size))
-  return out
-}
-// Gọi lại 1 query theo từng LÔ id (thay vì 1 phát nhét cả mảng vào `.in()`) — dùng cho mọi chỗ
-// `.in('hoc_sinh_id'|'lop_id', mảngToànTrường)`. Lỗi ở batch nào ném ngay, không nuốt im lặng.
-async function selectByIdsBatched<T>(
-  ids: string[],
-  fetchBatch: (batch: string[]) => PromiseLike<{ data: T[] | null; error: any }>,
-  size = ID_BATCH,
-): Promise<T[]> {
-  if (!ids.length) return []
-  const out: T[] = []
-  for (const batch of chunkArr(ids, size)) {
-    const { data, error } = await fetchBatch(batch)
-    if (error) throw error
-    out.push(...(data ?? []))
-  }
-  return out
-}
+// (selectByIdsBatched + bài học "bug 400 URL dài hụt ~100 triệu/tháng" 08-16: batching đã
+// HẾT lý do tồn tại ở file này — mọi query diện rộng chuyển vào fn Postgres qua rpc POST,
+// không còn mảng UUID nào đi trên URL. Bài học gốc vẫn ở HANDOFF ② + CLAUDE.md §2.)
 
 // ── MỨC HỌC PHÍ / HỌC ĐUỔI / HỌC LIỆU — 3 bảng ĐỘC LẬP, CÙNG quy tắc (Thùy 07-05):
 // mỗi khoản 1 bảng mức riêng, LỚP tham chiếu FK riêng từng cái (không suy công thức chéo nhau).
@@ -102,53 +75,31 @@ export type HocSinhHeSo = {
 }
 // Bulk toàn bộ HS đang học ở BK — cho bảng quản lý hệ số (không lọc theo PH, hiện hết).
 export async function listHeSoHocSinh(): Promise<HocSinhHeSo[]> {
+  // §2.0 (30/08): gợi ý (≥2 môn / anh chị em cùng môn) + hệ số hiệu lực tính ở DB
+  // (fn_hocphi_he_so_goi_y + fn_hocphi_he_so_hieu_luc — parity 292/293 với hệ số đã xác
+  // nhận nguồn auto). Client chỉ ghép chữ lý do + sort hiển thị.
   const { data: hocSinh, error: e1 } = await supabase.from('hoc_sinh')
     .select('id, ho_ten, phu_huynh_id, he_so_hoc_phi, he_so_nguon, phu_huynh:phu_huynh_id(ho_ten)')
     .eq('trang_thai', 'dang_hoc').order('ho_ten').limit(LIMIT)
   if (e1) throw e1
   const rows = (hocSinh ?? []) as any[]
   const ids = rows.map((r) => r.id as string)
-  // 2 batch độc lập (đều chỉ cần `ids`, không cần kết quả của nhau) — chạy song song thay vì tuần tự.
-  const [heSoMap, hsl] = await Promise.all([
-    heSoHieuLucBatch(ids, kyHienTai()), // hệ số HIỆU LỰC tháng NÀY (effective-dated) → "hệ số hiện tại" luôn đúng
-    selectByIdsBatched(ids, (batch) =>
-      supabase.from('hoc_sinh_lop').select('hoc_sinh_id, lop:lop_id(mon, ten_lop)').in('hoc_sinh_id', batch).eq('trang_thai', 'dang_hoc').limit(LIMIT)),
+  const [{ data: gy, error: e2 }, heSoMap] = await Promise.all([
+    supabase.rpc('fn_hocphi_he_so_goi_y'),
+    heSoHieuLucBatch(ids, kyHienTai()),
   ])
-  const monsByHS = new Map<string, Set<string>>()
-  const lopsByHS = new Map<string, string[]>()
-  for (const r of (hsl ?? []) as any[]) {
-    if (!r.lop?.mon) continue
-    const s = monsByHS.get(r.hoc_sinh_id) ?? new Set<string>()
-    s.add(r.lop.mon); monsByHS.set(r.hoc_sinh_id, s)
-    if (r.lop.ten_lop) {
-      const arr = lopsByHS.get(r.hoc_sinh_id) ?? []
-      arr.push(r.lop.ten_lop); lopsByHS.set(r.hoc_sinh_id, arr)
-    }
-  }
-  // nhóm theo PH để check "có anh chị em cùng học chung ít nhất 1 môn"
-  const bySiblingGroup = new Map<string, string[]>() // phu_huynh_id -> [hoc_sinh_id...]
-  for (const r of rows) {
-    if (!r.phu_huynh_id) continue
-    const arr = bySiblingGroup.get(r.phu_huynh_id) ?? []
-    arr.push(r.id); bySiblingGroup.set(r.phu_huynh_id, arr)
-  }
-  const tenById = new Map(rows.map((r) => [r.id as string, r.ho_ten as string]))
+  if (e2) throw e2
+  const gyMap = new Map(((gy ?? []) as any[]).map((g) => [g.hoc_sinh_id, g]))
   const out = rows.map((r) => {
-    const mons = [...(monsByHS.get(r.id) ?? [])]
-    const siblings = (r.phu_huynh_id ? bySiblingGroup.get(r.phu_huynh_id) : [])?.filter((id) => id !== r.id) ?? []
-    // anh/chị/em ĐẦU TIÊN cùng học chung ít nhất 1 môn + đúng (các) môn chung, để giải thích lý do gợi ý.
-    let anhChiEm: { ten: string; monChung: string[] } | null = null
-    for (const sid of siblings) {
-      const monChung = mons.filter((m) => monsByHS.get(sid)?.has(m))
-      if (monChung.length) { anhChiEm = { ten: tenById.get(sid) ?? '?', monChung }; break }
-    }
+    const g = gyMap.get(r.id)
+    const mons: string[] = g?.mons ?? []
     const lyDo: string[] = []
-    if (mons.length >= 2) lyDo.push(`Học ${mons.length} môn: ${mons.join(', ')}`)
-    if (anhChiEm) lyDo.push(`Có anh chị em ${anhChiEm.ten} cùng học ${anhChiEm.monChung.join(', ')}`)
+    if ((g?.so_mon ?? 0) >= 2) lyDo.push(`Học ${g.so_mon} môn: ${mons.join(', ')}`)
+    if (g?.anh_chi_em_ten) lyDo.push(`Có anh chị em ${g.anh_chi_em_ten} cùng học ${((g.mon_chung ?? []) as string[]).join(', ')}`)
     return {
       id: r.id, ho_ten: r.ho_ten, phu_huynh_id: r.phu_huynh_id, phu_huynh_ten: r.phu_huynh?.ho_ten ?? null,
-      mons, lops: lopsByHS.get(r.id) ?? [], he_so_hoc_phi: heSoMap.get(r.id) ?? 1, he_so_nguon: r.he_so_nguon,
-      heSoGoiY: tinhHeSoHocSinh(mons.length, !!anhChiEm), lyDoGoiY: lyDo.join(' · '),
+      mons, lops: (g?.lops ?? []) as string[], he_so_hoc_phi: heSoMap.get(r.id) ?? 1, he_so_nguon: r.he_so_nguon,
+      heSoGoiY: Number(g?.he_so_goi_y ?? 1), lyDoGoiY: lyDo.join(' · '),
     }
   })
   // HS lệch gợi ý (kể cả HS mới vào — vào lớp làm thay đổi gợi ý của chính nó HOẶC anh chị em) lên ĐẦU danh sách,
@@ -165,46 +116,27 @@ export async function listHeSoHocSinh(): Promise<HocSinhHeSo[]> {
 // DB thật (không đoán ở client) nên tôn trọng đúng luật effective-dated ("áp dụng từ kỳ" có thể chưa
 // đổi hệ số hiển thị của kỳ hiện tại).
 export async function getHeSoHocSinh(hocSinhId: string): Promise<HocSinhHeSo | null> {
+  // §2.0: cùng nguồn fn_hocphi_he_so_goi_y (lọc 1 HS) — không tự dò sibling ở client nữa.
   const { data: hs, error: e1 } = await supabase.from('hoc_sinh')
     .select('id, ho_ten, phu_huynh_id, he_so_nguon, phu_huynh:phu_huynh_id(ho_ten)')
     .eq('id', hocSinhId).maybeSingle()
   if (e1) throw e1
   if (!hs) return null
   const r = hs as any
-  const heSoMap = await heSoHieuLucBatch([r.id], kyHienTai())
-
-  let siblings: { id: string; ho_ten: string }[] = []
-  if (r.phu_huynh_id) {
-    const { data: sibs, error: e2 } = await supabase.from('hoc_sinh').select('id, ho_ten')
-      .eq('phu_huynh_id', r.phu_huynh_id).eq('trang_thai', 'dang_hoc').neq('id', r.id).limit(LIMIT)
-    if (e2) throw e2
-    siblings = (sibs ?? []) as any[]
-  }
-  const { data: hsl, error: e3 } = await supabase.from('hoc_sinh_lop').select('hoc_sinh_id, lop:lop_id(mon, ten_lop)')
-    .in('hoc_sinh_id', [r.id, ...siblings.map((s) => s.id)]).eq('trang_thai', 'dang_hoc').limit(LIMIT)
-  if (e3) throw e3
-  const monsByHS = new Map<string, Set<string>>()
-  const lops: string[] = []
-  for (const row of (hsl ?? []) as any[]) {
-    if (!row.lop?.mon) continue
-    const s = monsByHS.get(row.hoc_sinh_id) ?? new Set<string>()
-    s.add(row.lop.mon); monsByHS.set(row.hoc_sinh_id, s)
-    if (row.hoc_sinh_id === r.id && row.lop.ten_lop) lops.push(row.lop.ten_lop)
-  }
-  const mons = [...(monsByHS.get(r.id) ?? [])]
-  const tenById = new Map(siblings.map((s) => [s.id, s.ho_ten]))
-  let anhChiEm: { ten: string; monChung: string[] } | null = null
-  for (const sib of siblings) {
-    const monChung = mons.filter((m) => monsByHS.get(sib.id)?.has(m))
-    if (monChung.length) { anhChiEm = { ten: tenById.get(sib.id) ?? '?', monChung }; break }
-  }
+  const [{ data: gy, error: e2 }, heSoMap] = await Promise.all([
+    supabase.rpc('fn_hocphi_he_so_goi_y', { p_hs: hocSinhId }),
+    heSoHieuLucBatch([r.id], kyHienTai()),
+  ])
+  if (e2) throw e2
+  const g = ((gy ?? []) as any[])[0]
+  const mons: string[] = g?.mons ?? []
   const lyDo: string[] = []
-  if (mons.length >= 2) lyDo.push(`Học ${mons.length} môn: ${mons.join(', ')}`)
-  if (anhChiEm) lyDo.push(`Có anh chị em ${anhChiEm.ten} cùng học ${anhChiEm.monChung.join(', ')}`)
+  if ((g?.so_mon ?? 0) >= 2) lyDo.push(`Học ${g.so_mon} môn: ${mons.join(', ')}`)
+  if (g?.anh_chi_em_ten) lyDo.push(`Có anh chị em ${g.anh_chi_em_ten} cùng học ${((g.mon_chung ?? []) as string[]).join(', ')}`)
   return {
     id: r.id, ho_ten: r.ho_ten, phu_huynh_id: r.phu_huynh_id, phu_huynh_ten: r.phu_huynh?.ho_ten ?? null,
-    mons, lops, he_so_hoc_phi: heSoMap.get(r.id) ?? 1, he_so_nguon: r.he_so_nguon,
-    heSoGoiY: tinhHeSoHocSinh(mons.length, !!anhChiEm), lyDoGoiY: lyDo.join(' · '),
+    mons, lops: (g?.lops ?? []) as string[], he_so_hoc_phi: heSoMap.get(r.id) ?? 1, he_so_nguon: r.he_so_nguon,
+    heSoGoiY: Number(g?.he_so_goi_y ?? 1), lyDoGoiY: lyDo.join(' · '),
   }
 }
 // Xác nhận hệ số GỢI Ý → ghi vào cột thật (nguồn='auto').
@@ -236,14 +168,13 @@ export async function setHeSoHieuLuc(hocSinhId: string, heSo: number, hieuLucTu:
 }
 // Hệ số hiệu lực cho kỳ (BATCH) — entry hieu_luc_tu ≤ ky, MỚI NHẤT. Không có → caller dùng ?? 1.
 export async function heSoHieuLucBatch(hsIds: string[], ky: string): Promise<Map<string, number>> {
+  // §2.0 (30/08): DISTINCT ON ở DB (fn_hocphi_he_so_hieu_luc) — bản cũ dựa THỨ TỰ trả về
+  // của PostgREST (asc rồi ghi đè cuối) để chọn "mới nhất ≤ kỳ", mong manh đúng kiểu audit nêu.
   const m = new Map<string, number>()
   if (!hsIds.length) return m
-  // Chia lô theo hoc_sinh_id → mọi dòng của 1 HS luôn rơi vào ĐÚNG 1 lô, thứ tự asc trong lô vẫn giữ
-  // (order chạy trên từng batch) nên "ghi đè cuối = mới nhất ≤ ky" không đổi dù xử lý theo lô.
-  const data = await selectByIdsBatched(hsIds, (batch) =>
-    supabase.from('hoc_sinh_he_so').select('hoc_sinh_id, he_so, hieu_luc_tu')
-      .in('hoc_sinh_id', batch).lte('hieu_luc_tu', ky).order('hieu_luc_tu', { ascending: true }).limit(LIMIT))
-  for (const r of data as any[]) m.set(r.hoc_sinh_id, Number(r.he_so)) // asc → ghi cuối = mới nhất ≤ ky
+  const { data, error } = await supabase.rpc('fn_hocphi_he_so_hieu_luc', { p_hs: hsIds, p_ky: ky.slice(0, 10) })
+  if (error) throw error
+  for (const r of (data ?? []) as any[]) m.set(r.hoc_sinh_id, Number(r.he_so))
   return m
 }
 // Lịch sử hệ số của 1 HS (cho tab Hệ số hiện + chọn) — mới nhất trước.
@@ -333,104 +264,15 @@ export async function getPhieuAo(phuHuynhId: string, ky: string): Promise<PhieuA
 }
 
 
-// ── BẢNG HỌC PHÍ HS × MÔN (audit) — nền để check trước khi tin bảng theo PH (Thùy 07-05) ──
-// KHÁC getPhieuAo: bulk toàn trường (không lọc theo PH), toàn batch-query (không N+1 per HS)
-// nên KHÔNG chạy xét duyệt (nghỉ ≥30%/lệch window) — luôn hiện số buổi RAW trong window ghi danh.
-// Xem để ĐỐI CHIẾU với "Phiếu"/"Danh sách" theo PH; số cuối cùng dùng để thu tiền vẫn lấy ở đó.
-export type DongHocSinhTheoMon = {
-  hoc_sinh_id: string; hoc_sinh_ten: string; ma_hs: string | null; phu_huynh_ten: string | null
-  mon: string; lop_ten: string; so_buoi: number; don_gia: number; he_so: number; thanh_tien: number
-}
-export async function listHocPhiTheoHocSinhVaMon(ky: string): Promise<DongHocSinhTheoMon[]> {
-  const { kyStart, kyEnd } = kyRange(ky)
-  const { data: hsRows, error: e0 } = await supabase.from('hoc_sinh')
-    .select('id, ho_ten, ma_hs, he_so_hoc_phi, phu_huynh:phu_huynh_id(ho_ten)').eq('trang_thai', 'dang_hoc').order('ho_ten').limit(LIMIT)
-  if (e0) throw e0
-  const hsIds = (hsRows ?? []).map((r: any) => r.id as string)
-  if (!hsIds.length) return []
-  const hsl = await selectByIdsBatched(hsIds, (batch) =>
-    supabase.from('hoc_sinh_lop')
-      .select('hoc_sinh_id, lop_id, ngay_vao, ngay_roi, lop:lop_id(ten_lop, mon, muc_hoc_phi_id)').in('hoc_sinh_id', batch).limit(LIMIT))
-  const lopIds = [...new Set(hsl.map((r: any) => r.lop_id).filter(Boolean))]
-  const buoiRows = lopIds.length
-    ? await selectByIdsBatched(lopIds, (batch) =>
-        supabase.from('buoi_hoc').select('id, lop_id, ngay').in('lop_id', batch).neq('loai', 'bu').in('trang_thai', ['mo', 'hoan_tat']).gte('ngay', kyStart).lt('ngay', kyEnd).limit(LIMIT))
-    : []
-  const buoiByLop = new Map<string, { ngay: string }[]>()
-  for (const b of buoiRows as any[]) { const a = buoiByLop.get(b.lop_id) ?? []; a.push(b); buoiByLop.set(b.lop_id, a) }
-  const mucIds = [...new Set(hsl.map((r: any) => r.lop?.muc_hoc_phi_id).filter(Boolean))]
-  const { data: mucRows } = mucIds.length ? await supabase.from('muc_hoc_phi').select('*').in('id', mucIds).limit(LIMIT) : { data: [] as MucHocPhi[] }
-  const mucById = new Map(((mucRows ?? []) as MucHocPhi[]).map((m) => [m.id, m]))
-  const heSoById = new Map((hsRows ?? []).map((r: any) => [r.id, Number(r.he_so_hoc_phi)]))
-  const tenById = new Map((hsRows ?? []).map((r: any) => [r.id, r.ho_ten]))
-  const maHsById = new Map((hsRows ?? []).map((r: any) => [r.id, r.ma_hs ?? null]))
-  const phById = new Map((hsRows ?? []).map((r: any) => [r.id, r.phu_huynh?.ho_ten ?? null]))
-
-  const out: DongHocSinhTheoMon[] = []
-  for (const enroll of (hsl ?? []) as any[]) {
-    if (enroll.ngay_vao && enroll.ngay_vao >= kyEnd) continue
-    if (enroll.ngay_roi && enroll.ngay_roi < kyStart) continue
-    if (!enroll.lop?.muc_hoc_phi_id) continue
-    const muc = mucById.get(enroll.lop.muc_hoc_phi_id); if (!muc) continue
-    const buois = buoiByLop.get(enroll.lop_id) ?? []
-    const inWindow = (ngay: string) => (!enroll.ngay_vao || ngay >= enroll.ngay_vao) && (!enroll.ngay_roi || ngay <= enroll.ngay_roi)
-    const soBuoi = buois.filter((b) => inWindow(b.ngay)).length
-    if (soBuoi <= 0) continue
-    const heSo = heSoById.get(enroll.hoc_sinh_id) ?? 1
-    out.push({
-      hoc_sinh_id: enroll.hoc_sinh_id, hoc_sinh_ten: tenById.get(enroll.hoc_sinh_id) ?? '?', ma_hs: maHsById.get(enroll.hoc_sinh_id) ?? null,
-      phu_huynh_ten: phById.get(enroll.hoc_sinh_id) ?? null,
-      mon: enroll.lop.mon ?? '', lop_ten: enroll.lop.ten_lop ?? '', so_buoi: soBuoi, don_gia: muc.don_gia_buoi, he_so: heSo,
-      thanh_tien: thanhTienHocPhi(muc.don_gia_buoi, soBuoi, heSo),
-    })
-  }
-
-  // Học đuổi (batch, giống tinhTamTinhTheoPH) — Thùy 07-05: "chưa thấy thông tin về bổ trợ đuổi"
-  // trong bảng này, cộng vào đây làm dòng riêng "Học đuổi" (KHÔNG nhân hệ số, giá theo mức của CA).
-  const bhhDuoi = await selectByIdsBatched(hsIds, (batch) =>
-    supabase.from('buoi_hoc_hs')
-      .select('hoc_sinh_id, diem_danh, buoi:buoi_hoc_id!inner(ngay, loai, muc_hoc_duoi_id)')
-      .in('hoc_sinh_id', batch).eq('diem_danh', 'co_mat').eq('buoi.loai', 'bo_tro_duoi').gte('buoi.ngay', kyStart).lt('buoi.ngay', kyEnd).limit(LIMIT))
-  const countByHSMuc = new Map<string, number>() // `${hocSinhId}|${mucId}` -> soBuoi
-  for (const r of bhhDuoi as any[]) {
-    const mucId = r.buoi?.muc_hoc_duoi_id; if (!mucId) continue
-    const key = `${r.hoc_sinh_id}|${mucId}`
-    countByHSMuc.set(key, (countByHSMuc.get(key) ?? 0) + 1)
-  }
-  if (countByHSMuc.size) {
-    const mucDuoiIds = [...new Set([...countByHSMuc.keys()].map((k) => k.split('|')[1]))]
-    const { data: mucDuoiRows } = await supabase.from('muc_hoc_duoi').select('*').in('id', mucDuoiIds).limit(LIMIT)
-    const mucDuoiById = new Map(((mucDuoiRows ?? []) as MucHocDuoi[]).map((m) => [m.id, m]))
-    for (const [key, soBuoi] of countByHSMuc) {
-      const [hocSinhId, mucId] = key.split('|')
-      const muc = mucDuoiById.get(mucId); if (!muc) continue
-      out.push({
-        hoc_sinh_id: hocSinhId, hoc_sinh_ten: tenById.get(hocSinhId) ?? '?', ma_hs: maHsById.get(hocSinhId) ?? null,
-        phu_huynh_ten: phById.get(hocSinhId) ?? null,
-        mon: 'Học đuổi', lop_ten: '—', so_buoi: soBuoi, don_gia: muc.gia, he_so: 1,
-        thanh_tien: thanhTienHocDuoi(muc.gia, soBuoi),
-      })
-    }
-  }
-  return out.sort((a, b) => a.hoc_sinh_ten.localeCompare(b.hoc_sinh_ten, 'vi') || a.mon.localeCompare(b.mon, 'vi'))
-}
-
-// Thêm dòng PHÁT SINH tay (0..n dòng, mô tả tự do) — TRƯỚC khi chốt kỳ (phiếu chưa tồn tại → lưu client-state
-// ở UI cho tới lúc chốt, giống pattern nhập-kho — KHÔNG bảng nháp riêng). chotKy(...) nhận thêm mảng này.
-
-// Nợ (số dư) theo TỪNG PH — batch (không N+1), dùng cho list "Học phí tổng".
-// = Σ(hoá đơn ĐÃ CHỐT) − Σ(đã thu), group theo PH. >0 = còn nợ.
-// Nợ CHI TIẾT theo PH: khởi tạo (điền tay `phu_huynh.no_khoi_tao`) + hệ thống (Σ hoá đơn chốt − đã thu).
+// Nợ chi tiết theo PH — §2.0 (30/08): Σ ở DB (fn_hocphi_no_theo_ph, parity tổng nợ khớp
+// kiểm chéo độc lập). Client chỉ đổ về Map cho các reader.
 async function noChiTietTheoPH(): Promise<Map<string, { khoiTao: number; heThong: number }>> {
-  // §2.0 (30/08): Σ ở DB — fn_hocphi_no_theo_ph (mig 202608300306), parity tổng nợ khớp
-  // kiểm chéo độc lập. Client chỉ đổ về Map cho các reader cũ.
   const { data, error } = await supabase.rpc('fn_hocphi_no_theo_ph')
   if (error) throw error
   const m = new Map<string, { khoiTao: number; heThong: number }>()
   for (const r of (data ?? []) as any[]) m.set(r.phu_huynh_id, { khoiTao: Number(r.no_khoi_tao), heThong: Number(r.no_he_thong) })
   return m
 }
-// Tổng nợ (khởi tạo + hệ thống) theo PH — dùng cho list "Học phí tổng" + tính "nợ kỳ trước" trên phiếu.
 export async function soDuNoTheoPH(): Promise<Map<string, number>> {
   const out = new Map<string, number>()
   for (const [id, v] of await noChiTietTheoPH()) out.set(id, v.khoiTao + v.heThong)
@@ -644,114 +486,6 @@ export function soanThongBao(trangThai: TrangThaiTB, tenCon: string[], ky: strin
   return `Trung tâm xác nhận đã nhận đủ học phí tháng ${thang} của ${ds}. Cảm ơn quý phụ huynh đã đồng hành cùng trung tâm!`
 }
 
-// Tạm tính TÁCH RIÊNG học chính (học phí+học liệu+phát sinh) và học đuổi cho MỌI PH cùng lúc —
-// batch-query như listHocPhiTheoHocSinhVaMon (không N+1 per PH). 2 khoản này là 2 luồng billing
-// KHÁC NHAU (Thùy 07-05: "1 tab riêng Học phí bổ trợ đuổi, danh sách kia là Học phí học chính").
-// KHÔNG gồm nợ kỳ trước và phát sinh TAY nhập ngay lúc chốt (2 cái đó chỉ tính chính xác ở "Phiếu").
-async function tinhTamTinhTheoPH(ky: string): Promise<{ chinh: Map<string, number>; duoi: Map<string, number> }> {
-  const { kyStart, kyEnd } = kyRange(ky)
-  const tongByHS = new Map<string, number>()
-  const duoiByHS = new Map<string, number>()
-  const hsPhMap = new Map<string, string>() // hoc_sinh_id -> phu_huynh_id
-
-  const { data: hsRows, error: e0 } = await supabase.from('hoc_sinh').select('id, phu_huynh_id, he_so_hoc_phi').eq('trang_thai', 'dang_hoc').limit(LIMIT)
-  if (e0) throw e0
-  const hsIds = (hsRows ?? []).map((r: any) => r.id as string)
-  for (const r of (hsRows ?? []) as any[]) if (r.phu_huynh_id) hsPhMap.set(r.id, r.phu_huynh_id)
-  if (!hsIds.length) return { chinh: new Map(), duoi: new Map() }
-  const heSoById = new Map((hsRows ?? []).map((r: any) => [r.id, Number(r.he_so_hoc_phi)]))
-  const them = (hocSinhId: string, tien: number) => tongByHS.set(hocSinhId, (tongByHS.get(hocSinhId) ?? 0) + tien)
-  const themDuoi = (hocSinhId: string, tien: number) => duoiByHS.set(hocSinhId, (duoiByHS.get(hocSinhId) ?? 0) + tien)
-
-  // học phí + học liệu (batch giống listHocPhiTheoHocSinhVaMon)
-  const hsl = await selectByIdsBatched(hsIds, (batch) =>
-    supabase.from('hoc_sinh_lop')
-      .select('hoc_sinh_id, lop_id, ngay_vao, ngay_roi, lop:lop_id(muc_hoc_phi_id, muc_hoc_lieu_id)').in('hoc_sinh_id', batch).limit(LIMIT))
-  const lopIds = [...new Set(hsl.map((r: any) => r.lop_id).filter(Boolean))]
-  const buoiRows = lopIds.length
-    ? await selectByIdsBatched(lopIds, (batch) =>
-        supabase.from('buoi_hoc').select('lop_id, ngay').in('lop_id', batch).neq('loai', 'bu').in('trang_thai', ['mo', 'hoan_tat']).gte('ngay', kyStart).lt('ngay', kyEnd).limit(LIMIT))
-    : []
-  const buoiByLop = new Map<string, { ngay: string }[]>()
-  for (const b of buoiRows as any[]) { const a = buoiByLop.get(b.lop_id) ?? []; a.push(b); buoiByLop.set(b.lop_id, a) }
-  const mucPhiIds = [...new Set(hsl.map((r: any) => r.lop?.muc_hoc_phi_id).filter(Boolean))]
-  const mucLieuIds = [...new Set((hsl ?? []).map((r: any) => r.lop?.muc_hoc_lieu_id).filter(Boolean))]
-  const [{ data: mucPhiRows }, { data: mucLieuRows }] = await Promise.all([
-    mucPhiIds.length ? supabase.from('muc_hoc_phi').select('*').in('id', mucPhiIds).limit(LIMIT) : Promise.resolve({ data: [] as MucHocPhi[] }),
-    mucLieuIds.length ? supabase.from('muc_hoc_lieu').select('*').in('id', mucLieuIds).limit(LIMIT) : Promise.resolve({ data: [] as MucHocLieu[] }),
-  ])
-  const mucPhiById = new Map(((mucPhiRows ?? []) as MucHocPhi[]).map((m) => [m.id, m]))
-  const mucLieuById = new Map(((mucLieuRows ?? []) as MucHocLieu[]).map((m) => [m.id, m]))
-  const lopIdsHieuLucByHS = new Map<string, string[]>() // hoc_sinh_id -> lop_id[] (ghi danh hiệu lực trong kỳ) — cho phát sinh theo lớp
-  for (const enroll of (hsl ?? []) as any[]) {
-    if (enroll.ngay_vao && enroll.ngay_vao >= kyEnd) continue
-    if (enroll.ngay_roi && enroll.ngay_roi < kyStart) continue
-    const arr = lopIdsHieuLucByHS.get(enroll.hoc_sinh_id) ?? []; arr.push(enroll.lop_id); lopIdsHieuLucByHS.set(enroll.hoc_sinh_id, arr)
-    const heSo = heSoById.get(enroll.hoc_sinh_id) ?? 1
-    let coHocPhi = false
-    if (enroll.lop?.muc_hoc_phi_id) {
-      const muc = mucPhiById.get(enroll.lop.muc_hoc_phi_id)
-      if (muc) {
-        const inWindow = (ngay: string) => (!enroll.ngay_vao || ngay >= enroll.ngay_vao) && (!enroll.ngay_roi || ngay <= enroll.ngay_roi)
-        const soBuoi = (buoiByLop.get(enroll.lop_id) ?? []).filter((b) => inWindow(b.ngay)).length
-        if (soBuoi > 0) { coHocPhi = true; them(enroll.hoc_sinh_id, thanhTienHocPhi(muc.don_gia_buoi, soBuoi, heSo)) }
-      }
-    }
-    // Học liệu CHỈ tính khi tháng đó thật sự có học phí — chưa phát sinh học phí thì KHÔNG mặc định
-    // thu học liệu (Thùy 07-05), khớp quy tắc trong getPhieuAo.
-    if (coHocPhi && enroll.lop?.muc_hoc_lieu_id) {
-      const mucLieu = mucLieuById.get(enroll.lop.muc_hoc_lieu_id)
-      if (mucLieu) them(enroll.hoc_sinh_id, mucLieu.gia)
-    }
-  }
-
-  // học đuổi (batch): buổi loai='bo_tro_duoi', co_mat, trong kỳ — giá theo mức CỦA CA (buoi_hoc.muc_hoc_duoi_id).
-  const bhhDuoi = await selectByIdsBatched(hsIds, (batch) =>
-    supabase.from('buoi_hoc_hs')
-      .select('hoc_sinh_id, diem_danh, buoi:buoi_hoc_id!inner(ngay, loai, muc_hoc_duoi_id)')
-      .in('hoc_sinh_id', batch).eq('diem_danh', 'co_mat').eq('buoi.loai', 'bo_tro_duoi').gte('buoi.ngay', kyStart).lt('buoi.ngay', kyEnd).limit(LIMIT))
-  const countByHSMuc = new Map<string, number>() // `${hocSinhId}|${mucId}` -> soBuoi
-  for (const r of bhhDuoi as any[]) {
-    const mucId = r.buoi?.muc_hoc_duoi_id; if (!mucId) continue
-    const key = `${r.hoc_sinh_id}|${mucId}`
-    countByHSMuc.set(key, (countByHSMuc.get(key) ?? 0) + 1)
-  }
-  if (countByHSMuc.size) {
-    const mucDuoiIds = [...new Set([...countByHSMuc.keys()].map((k) => k.split('|')[1]))]
-    const { data: mucDuoiRows } = await supabase.from('muc_hoc_duoi').select('*').in('id', mucDuoiIds).limit(LIMIT)
-    const mucDuoiById = new Map(((mucDuoiRows ?? []) as MucHocDuoi[]).map((m) => [m.id, m]))
-    for (const [key, soBuoi] of countByHSMuc) {
-      const [hocSinhId, mucId] = key.split('|')
-      const muc = mucDuoiById.get(mucId); if (!muc) continue
-      themDuoi(hocSinhId, thanhTienHocDuoi(muc.gia, soBuoi))
-    }
-  }
-
-  // Chi phí phát sinh (batch, 1 query cho CẢ kỳ) — cá nhân cộng thẳng vào HS; theo lớp cộng cho MỌI
-  // HS đang ghi danh hiệu lực lớp đó trong kỳ (Thùy 07-05, khớp getPhieuAo).
-  const { data: phatSinhRows, error: e4 } = await supabase.from('hoc_phi_phat_sinh').select('loai, lop_id, hoc_sinh_id, so_tien').eq('ky', ky).limit(LIMIT)
-  if (e4) throw e4
-  for (const p of (phatSinhRows ?? []) as any[]) {
-    const soTien = Number(p.so_tien)
-    if (p.loai === 'ca_nhan' && p.hoc_sinh_id) them(p.hoc_sinh_id, soTien)
-    else if (p.loai === 'lop' && p.lop_id) {
-      for (const [hocSinhId, lopIds] of lopIdsHieuLucByHS) if (lopIds.includes(p.lop_id)) them(hocSinhId, soTien)
-    }
-  }
-
-  const chinhByPH = new Map<string, number>()
-  for (const [hocSinhId, tien] of tongByHS) {
-    const phId = hsPhMap.get(hocSinhId); if (!phId) continue
-    chinhByPH.set(phId, (chinhByPH.get(phId) ?? 0) + tien)
-  }
-  const duoiByPH = new Map<string, number>()
-  for (const [hocSinhId, tien] of duoiByHS) {
-    const phId = hsPhMap.get(hocSinhId); if (!phId) continue
-    duoiByPH.set(phId, (duoiByPH.get(phId) ?? 0) + tien)
-  }
-  return { chinh: chinhByPH, duoi: duoiByPH }
-}
-
 // ── DANH SÁCH TỔNG (bulk, cho màn quản lý + xuất ảnh/PDF thông báo PH) ──────
 // Nhẹ: dùng hoa_don đã chốt cho tiền đã CHỐT; PH CHƯA chốt hiện TẠM TÍNH (batch, không N+1 — Thùy 07-05).
 // Số tạm tính KHÔNG gồm nợ kỳ trước/phát sinh tay — số cuối cùng để thu tiền vẫn lấy ở "Phiếu" (getPhieuAo).
@@ -764,34 +498,15 @@ export type DongSoHang = {
 // Chi tiết từng dòng theo PH (BATCH, không N+1) — để card hiện ĐỦ như phiếu. Nguồn = listHocPhiTheoMonV2
 // (CT1/CT2 + bù, KHỚP getPhieuAo) + phát sinh. KHÔNG gồm nợ (nợ thêm ở listPhieuTheoKy).
 export async function listChiTietTheoPH(ky: string): Promise<Map<string, DongPhieu[]>> {
-  const rows = await listHocPhiTheoMonV2(ky)
-  const hsIds = [...new Set(rows.map((r) => r.hoc_sinh_id))]
-  const phOf = new Map<string, string>(); const tenOf = new Map<string, string>()
-  if (hsIds.length) {
-    const { data } = await supabase.from('hoc_sinh').select('id, ho_ten, phu_huynh_id').in('id', hsIds).limit(LIMIT)
-    for (const h of (data ?? []) as any[]) { if (h.phu_huynh_id) phOf.set(h.id, h.phu_huynh_id); tenOf.set(h.id, h.ho_ten) }
-  }
+  // §2.0 (30/08): dòng phiếu MỌI PH lấy từ fn_hocphi_chi_tiet_ky — cùng một nguồn số với
+  // phiếu ảo per-PH (cross-check 242/242). Client chỉ đổ về Map hiển thị.
+  const { data, error } = await supabase.rpc('fn_hocphi_chi_tiet_ky', { p_ky: ky.slice(0, 10) })
+  if (error) throw error
   const out = new Map<string, DongPhieu[]>()
-  const push = (phId: string, d: DongPhieu) => { const a = out.get(phId) ?? []; a.push(d); out.set(phId, a) }
-  for (const r of rows) {
-    const phId = phOf.get(r.hoc_sinh_id); if (!phId) continue
-    const ct = r.congThucChon ?? r.congThucDeXuat
-    const soBuoiTinh = ct === 'ct2' ? r.soBuoiDiHoc + r.soBuoiBu : r.soBuoiLop
-    if (r.tienHocChinh > 0) push(phId, { loai: 'hoc_phi', hoc_sinh_id: r.hoc_sinh_id, hoc_sinh_ten: r.hoc_sinh_ten, lop_id: r.lop_id || null, lop_ten: r.lop_ten, so_luong: soBuoiTinh, don_gia: r.donGia, he_so: r.heSo, thanh_tien: r.tienHocChinh, mo_ta: r.soBuoiBu > 0 ? `gồm ${r.soBuoiBu} bù (${r.soBuoiBuDaHoc} đã bù${r.soBuoiBuDaXep ? `, ${r.soBuoiBuDaXep} đã xếp` : ''})` : null })
-    if (r.tienHocLieu > 0) push(phId, { loai: 'hoc_lieu', hoc_sinh_id: r.hoc_sinh_id, hoc_sinh_ten: r.hoc_sinh_ten, lop_id: r.lop_id || null, lop_ten: r.lop_ten, so_luong: 1, don_gia: r.tienHocLieu, he_so: null, thanh_tien: r.tienHocLieu, mo_ta: r.hocLieuTen })
-    if (r.tienDuoi > 0) push(phId, { loai: 'hoc_duoi', hoc_sinh_id: r.hoc_sinh_id, hoc_sinh_ten: r.hoc_sinh_ten, lop_id: r.lop_id || null, lop_ten: r.lop_ten, so_luong: r.soBuoiDuoi, don_gia: null, he_so: null, thanh_tien: r.tienDuoi, mo_ta: `${r.soBuoiDuoi} buổi đuổi` })
-  }
-  const { data: psRows } = await supabase.from('hoc_phi_phat_sinh').select('loai, lop_id, hoc_sinh_id, mo_ta, so_tien').eq('ky', ky).limit(LIMIT)
-  // HS có phát sinh CÁ NHÂN nhưng KHÔNG ghi danh trong kỳ (vd đã nghỉ trước kỳ) → resolve PH+tên để không sót.
-  const psThieu = [...new Set((psRows ?? []).filter((p: any) => p.loai === 'ca_nhan' && p.hoc_sinh_id && !phOf.has(p.hoc_sinh_id)).map((p: any) => p.hoc_sinh_id as string))]
-  if (psThieu.length) {
-    const { data: mh } = await supabase.from('hoc_sinh').select('id, ho_ten, phu_huynh_id').in('id', psThieu).limit(LIMIT)
-    for (const h of (mh ?? []) as any[]) { if (h.phu_huynh_id) phOf.set(h.id, h.phu_huynh_id); tenOf.set(h.id, h.ho_ten) }
-  }
-  for (const ps of (psRows ?? []) as any[]) {
-    const so = Number(ps.so_tien)
-    if (ps.loai === 'ca_nhan' && ps.hoc_sinh_id) { const phId = phOf.get(ps.hoc_sinh_id); if (phId) push(phId, { loai: 'phat_sinh', hoc_sinh_id: ps.hoc_sinh_id, hoc_sinh_ten: tenOf.get(ps.hoc_sinh_id), lop_id: null, so_luong: null, don_gia: null, he_so: null, thanh_tien: so, mo_ta: ps.mo_ta }) }
-    else if (ps.loai === 'lop' && ps.lop_id) { for (const r of rows) if (r.lop_id === ps.lop_id) { const phId = phOf.get(r.hoc_sinh_id); if (phId) push(phId, { loai: 'phat_sinh', hoc_sinh_id: r.hoc_sinh_id, hoc_sinh_ten: r.hoc_sinh_ten, lop_id: r.lop_id || null, lop_ten: r.lop_ten, so_luong: null, don_gia: null, he_so: null, thanh_tien: so, mo_ta: ps.mo_ta }) } }
+  for (const r of (data ?? []) as any[]) {
+    const a = out.get(r.phu_huynh_id) ?? []
+    a.push({ loai: r.loai, hoc_sinh_id: r.hoc_sinh_id, hoc_sinh_ten: r.hoc_sinh_ten ?? undefined, lop_id: r.lop_id, lop_ten: r.lop_ten ?? undefined, mo_ta: r.mo_ta, so_luong: r.so_luong == null ? null : Number(r.so_luong), don_gia: r.don_gia == null ? null : Number(r.don_gia), he_so: r.he_so == null ? null : Number(r.he_so), thanh_tien: Number(r.thanh_tien) })
+    out.set(r.phu_huynh_id, a)
   }
   return out
 }
@@ -821,11 +536,15 @@ export async function listPhieuTheoKy(ky: string): Promise<DongSoHang[]> {
     for (const t of (tts ?? []) as any[]) { const ph = hdToPh.get(t.hoa_don_id); if (ph) daThuByPH.set(ph, (daThuByPH.get(ph) ?? 0) + Number(t.so_tien)) }
     for (const d of (dd ?? []) as any[]) { const ph = hdToPh.get(d.hoa_don_id); if (!ph) continue; const a = dongChotByPH.get(ph) ?? []; a.push({ loai: d.loai, hoc_sinh_id: d.hoc_sinh_id, hoc_sinh_ten: d.hoc_sinh?.ho_ten, lop_id: d.lop_id, lop_ten: d.lop?.ten_lop, mo_ta: d.mo_ta, so_luong: d.so_luong, don_gia: d.don_gia, he_so: d.he_so, thanh_tien: Number(d.thanh_tien) }); dongChotByPH.set(ph, a) }
   }
+  // §2.0: chinh/duoi per PH từ fn_hocphi_tong_hop_ky (Σ ở DB) — không reduce tiền ở client.
+  const { data: thRows, error: eTh } = await supabase.rpc('fn_hocphi_tong_hop_ky', { p_ky: ky.slice(0, 10) })
+  if (eTh) throw eTh
+  const tongHop = new Map(((thRows ?? []) as any[]).map((r) => [r.phu_huynh_id, { chinh: Number(r.tien_chinh), duoi: Number(r.tien_duoi) }]))
   const rows = phs.map((p) => {
     const hd = hdMap.get(p.id)
     const ct = chiTiet.get(p.id) ?? []
-    const chinh = ct.filter((d) => d.loai !== 'hoc_duoi').reduce((s, d) => s + d.thanh_tien, 0) // học phí + liệu + phát sinh
-    const duoi = ct.filter((d) => d.loai === 'hoc_duoi').reduce((s, d) => s + d.thanh_tien, 0)
+    const chinh = tongHop.get(p.id)?.chinh ?? 0 // học phí + liệu + phát sinh
+    const duoi = tongHop.get(p.id)?.duoi ?? 0
     const no = Math.max(0, noByPH.get(p.id) ?? 0)
     // Giảm giới thiệu: trừ vào HỌC PHÍ tháng này (chinh + đuổi), tối đa = số học phí; dư dồn sang tháng sau.
     const giam = Math.min(tinDungConLai.get(p.id) ?? 0, Math.max(0, chinh + duoi))
@@ -853,9 +572,16 @@ export async function listPhieuTheoKy(ky: string): Promise<DongSoHang[]> {
 // PH nào đang có con học đuổi trong kỳ và tổng tiền đuổi bao nhiêu, tính tạm luôn (không N+1).
 export type DongDuoiSoHang = { phu_huynh_id: string; ho_ten: string; ma_ph: string; tongTienDuoi: number }
 export async function listDuoiTheoKy(ky: string): Promise<DongDuoiSoHang[]> {
-  const [phs, tamTinh] = await Promise.all([listPhuHuynhCoConDangHoc(), tinhTamTinhTheoPH(ky)])
+  // §2.0 (30/08): tiền đuổi per PH từ fn_hocphi_tong_hop_ky — bản cũ (tinhTamTinhTheoPH)
+  // là XẤP XỈ (hệ số hiện tại + CT1); số mới = ĐÚNG số phiếu (CT2 + hệ số hiệu lực kỳ).
+  const [phs, { data: thRows, error }] = await Promise.all([
+    listPhuHuynhCoConDangHoc(),
+    supabase.rpc('fn_hocphi_tong_hop_ky', { p_ky: ky.slice(0, 10) }),
+  ])
+  if (error) throw error
+  const duoiByPH = new Map(((thRows ?? []) as any[]).map((r) => [r.phu_huynh_id, Number(r.tien_duoi)]))
   return phs
-    .map((p) => ({ phu_huynh_id: p.id, ho_ten: p.ho_ten, ma_ph: p.ma_ph, tongTienDuoi: tamTinh.duoi.get(p.id) ?? 0 }))
+    .map((p) => ({ phu_huynh_id: p.id, ho_ten: p.ho_ten, ma_ph: p.ma_ph, tongTienDuoi: duoiByPH.get(p.id) ?? 0 }))
     .filter((r) => r.tongTienDuoi > 0)
     .sort((a, b) => b.tongTienDuoi - a.tongTienDuoi)
 }

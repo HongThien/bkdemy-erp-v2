@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-165 bảng · 2 view · 0 enum · 22 trigger · 111 function
+165 bảng · 2 view · 0 enum · 22 trigger · 115 function
 
 ## _app_secrets
 
@@ -2432,11 +2432,15 @@ SELECT q.id AS qua_id,
 - `fn_gv_tien_do(p_deadline date, p_ngay_nop date)` → numeric
 - `fn_gv_tran_chat_luong(p_so_lan_tra_lai integer)` → numeric
 - `fn_hoa_don_cap_nhat_trang_thai()` → trigger
+- `fn_hocphi_chi_tiet_ky(p_ky date)` → TABLE(phu_huynh_id uuid, loai text, hoc_sinh_id uuid, hoc_sinh_ten text, lop_id uuid, lop_ten text, mo_ta text, so_luong numeric, don_gia numeric, he_so numeric, thanh_tien numeric)
 - `fn_hocphi_chot_ky(p_ph uuid, p_ky date, p_phat_sinh jsonb DEFAULT '[]'::jsonb)` → jsonb
+- `fn_hocphi_he_so_goi_y(p_hs uuid DEFAULT NULL::uuid)` → TABLE(hoc_sinh_id uuid, mons text[], lops text[], so_mon integer, anh_chi_em_ten text, mon_chung text[], he_so_goi_y numeric)
+- `fn_hocphi_he_so_hieu_luc(p_hs uuid[], p_ky date)` → TABLE(hoc_sinh_id uuid, he_so numeric)
 - `fn_hocphi_no_theo_ph()` → TABLE(phu_huynh_id uuid, no_khoi_tao numeric, no_he_thong numeric)
 - `fn_hocphi_phieu_ao(p_ph uuid, p_ky date)` → jsonb
 - `fn_hocphi_so_du_no(p_ph uuid)` → numeric
 - `fn_hocphi_tin_dung_con_lai(p_phs uuid[], p_ky date)` → TABLE(phu_huynh_id uuid, con_lai numeric)
+- `fn_hocphi_tong_hop_ky(p_ky date)` → TABLE(phu_huynh_id uuid, tien_chinh numeric, tien_duoi numeric)
 - `fn_js_parsefloat(p text)` → double precision
 - `fn_jsround(x numeric)` → integer
 - `fn_mo_lai_phase(p_buoi_id uuid, p_phase text)` → void
