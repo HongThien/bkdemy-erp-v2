@@ -32,9 +32,12 @@ on conflict (id) do update set public = false;
 drop policy if exists "btvn_nop_read"   on storage.objects;
 drop policy if exists "btvn_nop_insert" on storage.objects;
 drop policy if exists "btvn_nop_update" on storage.objects;
-create policy "btvn_nop_read"   on storage.objects for select to authenticated using (bucket_id = 'btvn-nop');
-create policy "btvn_nop_insert" on storage.objects for insert to authenticated with check (bucket_id = 'btvn-nop');
-create policy "btvn_nop_update" on storage.objects for update to authenticated using (bucket_id = 'btvn-nop');
+-- ⚠ SIẾT (audit 30/08): `authenticated` bên ERP gồm CẢ tài khoản HỌC SINH → phải gate
+-- la_thanh_vien() (staff), không thì HS đọc được ảnh bài làm của nhau. Server bkdemy-ph
+-- dùng service key nên bypass policy, không ảnh hưởng.
+create policy "btvn_nop_read"   on storage.objects for select to authenticated using (bucket_id = 'btvn-nop' and public.la_thanh_vien());
+create policy "btvn_nop_insert" on storage.objects for insert to authenticated with check (bucket_id = 'btvn-nop' and public.la_thanh_vien());
+create policy "btvn_nop_update" on storage.objects for update to authenticated using (bucket_id = 'btvn-nop' and public.la_thanh_vien());
 -- KHÔNG có policy delete: ảnh bài nộp là bằng chứng, không xoá từ app (luật xoá CLAUDE.md).
 
 -- ③ GRANT cho ph_nop (no-op nếu migration 202608302120 chưa áp — Run lại file sau migrate).
