@@ -7217,3 +7217,21 @@ này từng hiện "209 ca" ở phiên làm UI cùng ngày) · "Dashboard học 
 - **CEO đã dán bản gộp lên Supabase THẬT, chạy OK (30/08)** — DB production giờ có đủ fn_tuqua_* +
   log + view mới; cụm qlht_* đã thuộc claude_build. Còn: merge branch vào main (code app chưa deploy)
   + cấp leaf tu_qua + npm run migrate/schema ghi sổ (không gấp).
+
+**HỌC PHÍ — trạng thái thông báo tự "Đã hoàn thành" khi thu đủ (30/08, phiên remote):**
+- CEO hỏi: PH nộp tiền xong app đã báo "Đã hoàn thành" chưa? Audit: CHƯA — `hoa_don.trang_thai_tb`
+  (3 bước thông báo, mig 0079) là code chết từ khi tab Học phí tổng đổi sang card: toggle bar 3 bước
+  bị bỏ, `capNhatTrangThaiTB`/`trangThaiTBKeTiep`/`TRANG_THAI_TB_LABEL` export mà không ai import,
+  mọi hoá đơn kẹt default 'thong_bao_1' vĩnh viễn. Trigger tg_thanh_toan_trang_thai (202608300221)
+  chỉ suy `trang_thai`, không đụng `trang_thai_tb`. Tin xác nhận soanThongBao('hoan_thanh') cũng
+  chưa từng được dùng (nút "Đã báo" chỉ soạn thong_bao_1/cho_xu_ly).
+- CEO chốt: KHÔNG cần luồng gửi tin xác nhận PH — chỉ cần trạng thái tự đổi trên app.
+- Làm (branch claude/tuition-feature-check-akeri2):
+  - Mig `202608301848_hoa_don_tb_hoan_thanh_tu_dong.sql`: mở rộng fn_hoa_don_cap_nhat_trang_thai —
+    thu đủ → trang_thai_tb='hoan_thanh' cùng transaction; tụt khỏi da_thu (xoá/sửa dòng thu) mà đang
+    'hoan_thanh' → về 'cho_xu_ly' nếu đã báo lần 1, chưa báo về 'thong_bao_1'. Backfill 1 lần
+    da_thu/mien cũ → hoan_thanh. Giữ nguyên guard mien.
+  - HocPhiScreen: pill card hiện "✓ Đã hoàn thành" khi nhóm da_thu + trangThaiTB='hoan_thanh';
+    optimistic ghiThu/chốt/huỷ chốt set trangThaiTB khớp trigger (không tính gì ở client — chỉ mirror).
+- Verify: tsc --noEmit sạch. Phiên remote KHÔNG có credential DB (đúng rào §2.1) → CÒN cần máy thật:
+  `npm run migrate` → `npm run schema` + commit schema.md.

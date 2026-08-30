@@ -394,6 +394,8 @@ export async function chotKy(phuHuynhId: string, ky: string, phatSinh: { mo_ta: 
 export type ThanhToan = { id: string; hoa_don_id: string; so_tien: number; ngay: string; phuong_thuc: string | null; ghi_chu: string | null; created_at?: string }
 // §2.0 (30/08): client CHỈ ghi dòng thanh toán — trạng thái phiếu (chua_thu/thu_mot_phan/
 // da_thu) do TRIGGER tg_thanh_toan_trang_thai suy từ Σ thanh_toan NGAY TRONG transaction.
+// Trigger cũng đồng bộ trang_thai_tb: thu đủ → 'hoan_thanh' (CEO 30/08 — không cần gửi tin
+// xác nhận PH, chỉ cần app tự báo "Đã hoàn thành"); tụt khỏi da_thu → rời 'hoan_thanh'.
 // Bản cũ đọc-cộng-suy-update ở client: 2 tab thu tiền song song là đè trạng thái của nhau.
 export async function ghiThanhToan(hoaDonId: string, soTien: number, opts?: { ngay?: string; phuongThuc?: string; ghiChu?: string }): Promise<void> {
   const { data: { user } } = await supabase.auth.getUser()
@@ -458,6 +460,7 @@ export async function danhDauDaBao(hoaDonId: string): Promise<void> {
 
 // ── TRẠNG THÁI THÔNG BÁO thu học phí — 3 bước, "Xong" tự nhảy bước kế (Thùy 07-05) ──
 // Mỗi bước có sẵn nội dung copy-paste gửi PH — Nhân sự không phải nghĩ chữ, chỉ Copy → dán gửi.
+// Bước 'hoan_thanh' KHÔNG bấm tay nữa (CEO 30/08): trigger tg_thanh_toan_trang_thai tự set khi thu đủ.
 export type TrangThaiTB = 'thong_bao_1' | 'cho_xu_ly' | 'hoan_thanh'
 export const TRANG_THAI_TB_LABEL: Record<TrangThaiTB, string> = { thong_bao_1: 'Đã thông báo lần 1', cho_xu_ly: 'Chưa nộp — đang xử lý', hoan_thanh: 'Đã hoàn thành' }
 const TRANG_THAI_TB_KE_TIEP: Record<TrangThaiTB, TrangThaiTB | null> = { thong_bao_1: 'cho_xu_ly', cho_xu_ly: 'hoan_thanh', hoan_thanh: null }
