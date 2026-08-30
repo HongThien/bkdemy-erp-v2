@@ -12,17 +12,18 @@ import ImgZoom from '../../components/ImgZoom'
 const hhmm = (t: string) => t.slice(0, 5)
 const DEADLINE_TONE: Record<string, string> = { qua_han: 'text-rose-600', sat: 'text-orange-600', gan: 'text-amber-600', con_nhieu: 'text-slate-400' }
 
-export default function OpsReportScreen() {
+// chiViec: app OPS nhúng màn này CHỈ tab "Việc của tôi" (PLAN-app-ops.md §1 — Leader duyệt ở lại ERP).
+export default function OpsReportScreen({ chiViec }: { chiViec?: boolean }) {
   const [tab, setTab] = useState<'viec' | 'duyet'>('viec')
   return (
     <div className="flex h-full min-h-0 flex-col bg-[#fafafb]">
       <div className="flex items-center gap-1 border-b border-slate-200 bg-white px-6">
         <span className="mr-3 py-2.5 text-sm font-semibold text-slate-900">Report &amp; Báo tan</span>
-        {([['viec', 'Việc của tôi'], ['duyet', 'Leader duyệt']] as const).map(([k, lbl]) => (
+        {!chiViec && ([['viec', 'Việc của tôi'], ['duyet', 'Leader duyệt']] as const).map(([k, lbl]) => (
           <button key={k} onClick={() => setTab(k)} className={`-mb-px border-b-2 px-3 py-2 text-[13px] font-medium ${tab === k ? 'border-indigo-600 text-indigo-700' : 'border-transparent text-slate-500 hover:text-slate-700'}`}>{lbl}</button>
         ))}
       </div>
-      <div className="min-h-0 flex-1 overflow-auto">{tab === 'viec' ? <ViecTab /> : <DuyetTab />}</div>
+      <div className="min-h-0 flex-1 overflow-auto">{tab === 'viec' || chiViec ? <ViecTab /> : <DuyetTab />}</div>
     </div>
   )
 }

@@ -7150,3 +7150,70 @@ này từng hiện "209 ca" ở phiên làm UI cùng ngày) · "Dashboard học 
 - Phase 3 gần xong: fn_mastery_cells (PARITY VÀNG 391/391 ô vs engine JS thật, lớp 8S1) + rollup + Hình (window 3/tin 3-2) + fn_matrix_lop + fn_completion_theo_lop (vá done-GIAO-kỳ-vọng khi rà tail JS — suýt lệch ngữ nghĩa triangulation §5) + fn_rank_diem_mt (14/14). Xoá fetchGradeAgg/pagedByBuoi (quét 200k-500k dòng).
 - Bẫy mới ghi nhận: fn có guard la_thanh_vien() thì script pg trần phải set_config request.jwt.claims mới test được; substring(from pattern) của PG trả NHÓM NGOẶC ĐẦU (phải bọc cả pattern); jsonb scalar so sánh text phải #>>'{}'.
 - CÒN: getTongQuanHS · getStatSheetLop/listCandidatesLop (danhgia rule engine) · nguongTuCohort percentile · Phase 4 (68 VỪA + 27 NHẸ + quét lớn còn lại: troly 20k, listCauRac/ontap 500k, PhDangNhap, botro scan, quetGayTuDong, task-engine getMyTasks/listAllStaffTasks).
+
+**APP OPS — hoàn thiện tiếp (30/08, phiên remote, branch `claude/ops-app-completion-cpj1kc`):**
+- Rà lại code app OPS trên main vs PLAN-app-ops.md → bắt 1 điểm LỆCH PLAN: tab "Leader duyệt" vẫn lọt
+  vào app (OpsHome nhúng nguyên `OpsReportScreen` 2 tab, trong khi PLAN §1 ghi rõ Leader duyệt Ở LẠI ERP).
+  Sửa: `OpsReportScreen` thêm prop `chiViec` — app truyền `chiViec` → chỉ render tab "Việc của tôi",
+  ẩn hàng tab; ERP (NhanSuHome) không truyền → giữ nguyên 2 tab như cũ.
+- Vòng 4 (polish chạm màn Test — DiemDanhTestScreen, dùng chung ERP nên sửa kiểu "to lên vô hại"):
+  modal tạo ca đổi grid walk-in + người chấm/trả bài thành `grid-cols-1 sm:grid-cols-2` (iPhone 390 hết
+  chật, iPad dọc vẫn 2 cột); nút Huỷ/Hoàn thành modal + "+ Tạo test đầu vào" min-h-44; select đề/người
+  chấm/người trả bài + Upload bài/Hoàn tất trên card min-h-36 (trước ~28px, khó bấm ngón tay).
+- Verify: `tsc` sạch · build cả 3 bundle sạch · dist-ops JS 458.9KB (gzip ~129KB — không phình).
+- Phiên remote KHÔNG có .env → không kiểm được DB live. CÒN NGUYÊN các việc cần máy/người có quyền:
+  kiểm role OPS đã cấp đủ 4 leaf (buoihoc/ops_report/prep/test_dau_vao) ở màn Phân quyền · test
+  write-path trên data thật · vòng 6 deploy (Vercel project thứ 3 + domain ops.bkacademy.edu.vn —
+  chờ Thùy) · icon PWA riêng (chờ Thùy gật màu, theme_color đã khác HS: #4f46e5).
+
+**TỦ QUÀ — build v1 (30/08, phiên remote, tiếp tính năng Hải; Thùy chốt qua 4 câu hỏi):**
+- Chốt: màn ở APP OPS (tab "Quà", leaf mới `tu_qua`) · 2 story (đổi TẠI TỦ giao ngay · HS đặt trước
+  → duyệt trừ xu → quà về → ra tủ nhận) · HẢI DỪNG — ERP/app OPS là đầu ghi duy nhất · scope FULL
+  (đổi + order + catalog + nhập kho). Plan sống: PLAN-tuqua.md.
+- DB: `scripts/sql_tuqua_chuyen_chu.sql` (SQL tay 1 lần — chuyển owner cụm qlht_* postgres→claude_build:
+  đưa vào luồng migration + hết điểm mù CLI-0-dòng) + mig `202608300908_tu_qua_v1` (guard chặn nếu chưa
+  chuyển owner): vá 2 race audit 29/08 (khoá dòng thứ tự cố định hoc_sinh→qua→phiếu/đơn), bộ
+  fn_tuqua_* đủ đường trạng thái (da_giao/hủy-hoàn mà bản Hải bỏ dở), actor map chuẩn ERP
+  tai_khoan→nhan_su (bỏ map email), qlht_log + trigger vết chung 4 bảng, view gate la_thanh_vien()
+  thay gate email + thêm ma_hs/khoi/anh_url/trang_thai (cột cũ giữ nguyên). KHÔNG mở policy ghi —
+  ghi chỉ qua fn (giữ hard-guarantee sổ xu của Hải). 15 hàm qlht_* cũ giữ làm tham chiếu.
+- Client: lib/tuqua.ts (seam mỏng rpc + list thô) + TuQuaScreen (tab hồng, 3 mục Đổi quà/Đơn đặt/Kho,
+  touch-first) + leaf `tu_qua` vào fixtures + tab thứ 7 OpsHome (icon 🎁 pill rose literal).
+- Verify tại chỗ: tsc sạch · build 3 bundle sạch · dist-ops 492KB (+33KB). CHƯA áp DB (phiên remote
+  không .env) — thứ tự áp ở PLAN-tuqua.md §4: SQL tay → npm run migrate → npm run schema → smoke data
+  thật → CẤP leaf tu_qua cho role OPS (precedent quên cấp!).
+
+**TỦ QUÀ — verify bằng REPLICA local (30/08, tiếp; CEO "tự chạy đi" nhưng phiên remote KHÔNG có
+.env/chuỗi kết nối nào — đúng thiết kế §2.1 nên KHÔNG đụng được DB thật):**
+- Cách bù: dựng PostgreSQL 16 local trong container, tái tạo đúng VAI Supabase (postgres
+  KHÔNG-superuser có admin option trên claude_build · authenticated · app_test) + schema Hải nguyên
+  trạng (bảng owner postgres, view bản sau sql_chot_xu, policy select gate current_nhan_su_id, auth.users
+  stub) + seed (NS email khớp + NS email LỆCH + tài khoản không-nhân-sự, 2 HS, 2 quà, sổ xu).
+- BẮT 1 LỖ THẬT nhờ replica: SQL tay thiếu `grant claude_build to postgres` — Supabase postgres không
+  phải superuser, muốn `alter ... owner to claude_build` phải là MEMBER của role đích ⇒ thiếu dòng đó
+  là Thùy chạy sẽ fail. Đã thêm vào scripts/sql_tuqua_chuyen_chu.sql.
+- Kết quả: SQL tay OK (8/8 object đổi owner) · mig 202608300908 áp sạch 1 transaction (kể cả replace
+  view thêm cột — chỗ dễ vỡ nhất) · smoke A–K pass 100% (số dư/tồn khớp fn↔view · đổi-giao-hủy-hoàn ·
+  order tạo→duyệt→về→giao + hủy-hoàn + từ-chối-không-hoàn + chặn giao-khi-chưa-về · nhập phiếu
+  chờ→xác nhận số thực, xuất bắt buộc lý do, hủy phiếu · chống trùng tên · qlht_log tự đẻ ·
+  NS lệch email DÙNG ĐƯỢC hệ mới trong khi current_nhan_su_id()=null (chứng minh hệ Hải chặn oan) ·
+  tài khoản thường bị chặn cả đọc lẫn ghi) · RACE TEST 2 phiên đồng thời tiêu 1 ví 40 xu × 2 lần
+  30 xu: đúng 1 thành công, phiên 2 chờ khóa rồi "Không đủ xu (cần 30, còn 10)" — kết cục so_du 10 /
+  tồn 4 / 1 lượt đổi, KHÔNG double-spend (hàm cũ của Hải cho cả 2 qua).
+- Bẫy vặt trong lúc test: RAISE '%%' là literal (thừa tham số = lỗi compile) · smoke fail giữa chừng
+  là data đã mutate — phải reset seed rồi chạy lại từ sạch.
+- CÒN cần máy thật/Thùy (không đường vòng): dán scripts/sql_tuqua_chuyen_chu.sql vào SQL Editor →
+  npm run migrate → npm run schema → cấp leaf tu_qua ở Phân quyền → deploy build:ops.
+
+**TỦ QUÀ — bản dán-1-lần (30/08, tiếp; CEO hỏi "m không tự chạy trên Supabase luôn được à"):**
+- Trả lời thẳng: KHÔNG — phiên remote không được cấp credential nào (đúng rào §2.1 chuỗi ghi không nằm
+  trên đĩa), và bước đổi owner cần role postgres sau đăng nhập Dashboard. Không có đường vòng.
+- Bù: gộp SQL tay + migration thành `scripts/sql_tuqua_TAT_CA_MOT_LAN.sql` — Thùy DÁN 1 PHÁT trong
+  SQL Editor (điện thoại cũng được) là DB xong. Mẹo: phần migration chạy dưới `set role claude_build`
+  (postgres là member sau grant ở phần 1) → object mới thuộc claude_build y như npm run migrate;
+  migration idempotent nên sau này `npm run migrate` chạy lại vô hại, chỉ để ghi sổ _migrations.
+- Verify: dựng lại replica SẠCH (chưa đổi owner) → chạy đúng 1 file gộp dưới postgres → smoke A–K
+  pass + race test pass y hệt (1 thành công / 1 chặn "Không đủ xu").
+- **CEO đã dán bản gộp lên Supabase THẬT, chạy OK (30/08)** — DB production giờ có đủ fn_tuqua_* +
+  log + view mới; cụm qlht_* đã thuộc claude_build. Còn: merge branch vào main (code app chưa deploy)
+  + cấp leaf tu_qua + npm run migrate/schema ghi sổ (không gấp).
