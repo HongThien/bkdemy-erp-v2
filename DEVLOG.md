@@ -7150,3 +7150,18 @@ này từng hiện "209 ca" ở phiên làm UI cùng ngày) · "Dashboard học 
 - Phase 3 gần xong: fn_mastery_cells (PARITY VÀNG 391/391 ô vs engine JS thật, lớp 8S1) + rollup + Hình (window 3/tin 3-2) + fn_matrix_lop + fn_completion_theo_lop (vá done-GIAO-kỳ-vọng khi rà tail JS — suýt lệch ngữ nghĩa triangulation §5) + fn_rank_diem_mt (14/14). Xoá fetchGradeAgg/pagedByBuoi (quét 200k-500k dòng).
 - Bẫy mới ghi nhận: fn có guard la_thanh_vien() thì script pg trần phải set_config request.jwt.claims mới test được; substring(from pattern) của PG trả NHÓM NGOẶC ĐẦU (phải bọc cả pattern); jsonb scalar so sánh text phải #>>'{}'.
 - CÒN: getTongQuanHS · getStatSheetLop/listCandidatesLop (danhgia rule engine) · nguongTuCohort percentile · Phase 4 (68 VỪA + 27 NHẸ + quét lớn còn lại: troly 20k, listCauRac/ontap 500k, PhDangNhap, botro scan, quetGayTuDong, task-engine getMyTasks/listAllStaffTasks).
+
+**APP OPS — hoàn thiện tiếp (30/08, phiên remote, branch `claude/ops-app-completion-cpj1kc`):**
+- Rà lại code app OPS trên main vs PLAN-app-ops.md → bắt 1 điểm LỆCH PLAN: tab "Leader duyệt" vẫn lọt
+  vào app (OpsHome nhúng nguyên `OpsReportScreen` 2 tab, trong khi PLAN §1 ghi rõ Leader duyệt Ở LẠI ERP).
+  Sửa: `OpsReportScreen` thêm prop `chiViec` — app truyền `chiViec` → chỉ render tab "Việc của tôi",
+  ẩn hàng tab; ERP (NhanSuHome) không truyền → giữ nguyên 2 tab như cũ.
+- Vòng 4 (polish chạm màn Test — DiemDanhTestScreen, dùng chung ERP nên sửa kiểu "to lên vô hại"):
+  modal tạo ca đổi grid walk-in + người chấm/trả bài thành `grid-cols-1 sm:grid-cols-2` (iPhone 390 hết
+  chật, iPad dọc vẫn 2 cột); nút Huỷ/Hoàn thành modal + "+ Tạo test đầu vào" min-h-44; select đề/người
+  chấm/người trả bài + Upload bài/Hoàn tất trên card min-h-36 (trước ~28px, khó bấm ngón tay).
+- Verify: `tsc` sạch · build cả 3 bundle sạch · dist-ops JS 458.9KB (gzip ~129KB — không phình).
+- Phiên remote KHÔNG có .env → không kiểm được DB live. CÒN NGUYÊN các việc cần máy/người có quyền:
+  kiểm role OPS đã cấp đủ 4 leaf (buoihoc/ops_report/prep/test_dau_vao) ở màn Phân quyền · test
+  write-path trên data thật · vòng 6 deploy (Vercel project thứ 3 + domain ops.bkacademy.edu.vn —
+  chờ Thùy) · icon PWA riêng (chờ Thùy gật màu, theme_color đã khác HS: #4f46e5).

@@ -38,7 +38,7 @@ export default function OpsHome({ profile, quyen }: { profile: MyProfile; quyen:
       <div className="min-h-0 flex-1 overflow-auto">
         {tab === 'home' && <HomTay profile={profile} onGo={setTab} coQuyen={coQuyen} onThoat={() => supabase.auth.signOut()} />}
         {tab === 'diemdanh' && <DiemDanhBuoi />}
-        {tab === 'report' && <ManCon mau="bg-blue-700"><OpsReportScreen /></ManCon>}
+        {tab === 'report' && <ManCon mau="bg-blue-700"><OpsReportScreen chiViec /></ManCon>}
         {tab === 'prep' && <ManCon mau="bg-amber-600"><PrepScreen /></ManCon>}
         {tab === 'test' && <ManCon mau="bg-violet-600"><DiemDanhTestScreen /></ManCon>}
       </div>
