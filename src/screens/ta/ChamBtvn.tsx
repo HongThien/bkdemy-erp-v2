@@ -121,7 +121,7 @@ export default function ChamBtvn({ buoi, roster, tenDang, napTenDang, onChange }
         <div className="ml-auto"><DongBar dong={dong} dongLbl="Đóng BTVN" onDong={dong_} onMoLai={async () => { if (!confirm('Mở lại BTVN? EXP đã thưởng sẽ tính lại khi đóng.')) return; await reopenBTVN(buoiId); onChange() }} closing={closing} /></div>
       </div>
 
-      <div className="flex flex-col gap-2">
+      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
         {dsHS.map((r, i) => {
           const hsId = r.hoc_sinh_id
           const n = nop[hsId]
@@ -130,7 +130,7 @@ export default function ChamBtvn({ buoi, roster, tenDang, napTenDang, onChange }
           const daChamSo = probs.filter((p) => gradeOf(p.id, hsId)).length
           const mo = hsMo === hsId
           return (
-            <div key={r.id} className="overflow-hidden rounded-2xl border border-slate-200/70 bg-white shadow-sm">
+            <div key={r.id} className={`overflow-hidden rounded-2xl border border-slate-200/70 bg-white shadow-sm ${mo ? 'sm:col-span-2' : ''}`}>
               <button onClick={() => setHsMo(mo ? null : hsId)} className="flex min-h-[52px] w-full items-center gap-2 px-3 py-2 text-left active:bg-slate-50">
                 <div className="min-w-0 flex-1">
                   <p className="flex items-center gap-1.5 text-[13.5px] font-bold text-slate-800">

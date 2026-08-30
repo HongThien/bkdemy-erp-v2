@@ -63,7 +63,7 @@ export default function ChamBuoi({ view, onBack }: { view: BuoiView; onBack: () 
   return (
     <div className="flex h-[100dvh] flex-col bg-[#f5f5f7]" style={{ fontFamily: "'Be Vietnam Pro', 'Segoe UI', system-ui, sans-serif" }}>
       <div className="border-b border-slate-200/60 bg-white px-3 pb-0" style={{ paddingTop: 'max(0.5rem, env(safe-area-inset-top))' }}>
-        <div className="mx-auto max-w-[860px]">
+        <div className="mx-auto max-w-[1000px]">
           <div className="flex items-center gap-2 pb-1.5">
             <button onClick={onBack} className="rounded-lg px-2 py-1.5 text-[14px] font-semibold text-teal-700 active:bg-teal-50">‹ Việc của tôi</button>
             <div className="min-w-0 flex-1 text-center leading-tight">
@@ -82,7 +82,7 @@ export default function ChamBuoi({ view, onBack }: { view: BuoiView; onBack: () 
       </div>
 
       <div className="min-h-0 flex-1 overflow-auto">
-        <div className="mx-auto max-w-[860px] px-3 py-3 pb-10">
+        <div className="mx-auto max-w-[1000px] px-3 py-3 pb-10">
           {!buoi ? <p className="text-[13px] text-slate-400">Đang tải buổi…</p> : (
             <>
               {tab === 'ingame' && <IngamePanel buoi={buoi} roster={roster} tenDang={tenDang} napTenDang={napTenDang} onChange={reload} />}
@@ -170,7 +170,7 @@ function IngamePanel({ buoi, roster, tenDang, napTenDang, onChange }: {
           <DongBar dong={dong} dongLbl="✓ Xác nhận" onDong={dong_} onMoLai={async () => { await reopenPhase(buoiId, 'ingame'); onChange() }} closing={closing} disabled={!probs.length} />
         </div>
       </div>
-      <div className="flex flex-col gap-1.5">
+      <div className="grid grid-cols-1 gap-1.5 sm:grid-cols-2">
         {coMat.map((r, i) => {
           const g = p ? gradeOf(p.id, r.hoc_sinh_id) : undefined
           return (

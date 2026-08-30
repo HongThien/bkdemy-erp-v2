@@ -77,7 +77,7 @@ export default function TaHome({ profile, quyen }: { profile: MyProfile; quyen: 
 
       {/* bottom tab — active = pill màu (khuôn OpsHome), mỗi nghiệp vụ có bubble nợ, chừa safe-area */}
       <div className="border-t border-slate-200 bg-white" style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}>
-        <div className="mx-auto flex max-w-[760px]">
+        <div className="mx-auto flex max-w-[1000px]">
           <TabBtn active={tab === 'home'} icon="🏠" label="Hôm nay" pill="bg-slate-200/70" text="text-slate-700" no={0} onClick={() => setTab('home')} />
           {NGHIEP_VU.map((n) => (
             <TabBtn key={n.key} active={tab === n.key} icon={n.icon} label={n.label} pill={n.pill} text={n.text} no={noCua(n.key)} onClick={() => setTab(n.key)} />
@@ -103,7 +103,7 @@ function HeaderBar({ profile, sub }: { profile: MyProfile; sub: string }) {
   const tenGoi = ten.split(/\s+/).pop() || 'bạn'
   return (
     <div className="border-b border-slate-200/60 bg-white px-4 pb-2" style={{ paddingTop: 'max(0.5rem, env(safe-area-inset-top))' }}>
-      <div className="mx-auto flex max-w-[760px] items-center gap-2.5">
+      <div className="mx-auto flex max-w-[1000px] items-center gap-2.5">
         {profile.nhanSu.anh_url
           ? <img src={profile.nhanSu.anh_url} alt="" className="h-8 w-8 rounded-full object-cover ring-1 ring-slate-200" />
           : <span className="flex h-8 w-8 items-center justify-center rounded-full bg-teal-100 text-[13px] font-bold text-teal-700">{tenGoi.charAt(0).toUpperCase()}</span>}
@@ -127,7 +127,7 @@ function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now
   return (
     <div>
       <HeaderBar profile={profile} sub="BK Trợ giảng" />
-      <div className="mx-auto max-w-[760px] px-3 pb-6 pt-3">
+      <div className="mx-auto max-w-[1000px] px-3 pb-6 pt-3">
         {/* hero MỎNG: 1 dải gradient thấp, chỉ chào + tổng nợ */}
         <div className="relative mb-3 overflow-hidden rounded-2xl bg-gradient-to-r from-teal-500 to-emerald-600 px-4 py-3 shadow-sm shadow-teal-200">
           <div className="pointer-events-none absolute -right-6 -top-8 h-24 w-24 rounded-full bg-white/10" />
@@ -143,7 +143,7 @@ function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now
         </div>
 
         {!loading && coQuyen && (
-          <div className="flex flex-col gap-3">
+          <div className="grid grid-cols-1 items-start gap-3 sm:grid-cols-3">
             {NGHIEP_VU.map((n) => {
               const cua = canLam.filter((t) => t.tab === n.key)
               const xong = tasks.filter((t) => t.tab === n.key && t.done).length
@@ -203,9 +203,9 @@ function ViecTab({ nv, tasks, nopCount, now, homNay, onOpen }: {
   return (
     <div>
       <div className={`${nv.strip} px-4 pb-2`} style={{ paddingTop: 'max(0.5rem, env(safe-area-inset-top))' }}>
-        <p className="mx-auto max-w-[760px] text-[15px] font-bold text-white">{nv.icon} {nv.label} <span className="font-medium opacity-75">· {canLam.length ? `${canLam.length} buổi chờ chấm` : 'sạch nợ ✓'}</span></p>
+        <p className="mx-auto max-w-[1000px] text-[15px] font-bold text-white">{nv.icon} {nv.label} <span className="font-medium opacity-75">· {canLam.length ? `${canLam.length} buổi chờ chấm` : 'sạch nợ ✓'}</span></p>
       </div>
-      <div className="mx-auto max-w-[760px] px-3 pb-6 pt-3">
+      <div className="mx-auto max-w-[1000px] px-3 pb-6 pt-3">
         {canLam.length === 0 && <p className="rounded-2xl border border-slate-200/70 bg-white p-4 text-center text-[13px] text-slate-400">Không có buổi nào chờ chấm 🎉</p>}
         <div className="flex flex-col gap-3">
           {ngays.map((ngay) => (
@@ -213,7 +213,7 @@ function ViecTab({ nv, tasks, nopCount, now, homNay, onOpen }: {
               <p className={`mb-1.5 px-1 text-[12px] font-bold uppercase tracking-wide ${ngay < homNay ? 'text-rose-500' : 'text-slate-400'}`}>
                 {ngay < homNay ? '⚠ Còn nợ · ' : ''}{ngay === homNay ? 'Hôm nay · ' : ''}{thuCuaNgay(ngay)} · {ddmmVN(ngay)}
               </p>
-              <div className="flex flex-col gap-2">
+              <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                 {canLam.filter((t) => t.ngay === ngay).map((t) => {
                   const muc = mucDeadline(t.deadline, now)
                   const nop = t.tab === 'btvn' ? nopCount[t.buoiId] ?? 0 : 0
@@ -248,7 +248,7 @@ function ViecTab({ nv, tasks, nopCount, now, homNay, onOpen }: {
               {xemXong ? '▾' : '▸'} Đã xong ({daXong.length})
             </button>
             {xemXong && (
-              <div className="mt-1.5 flex flex-col gap-1.5">
+              <div className="mt-1.5 grid grid-cols-1 gap-1.5 sm:grid-cols-2">
                 {daXong.map((t) => (
                   <button key={t.buoiId + 'd'} onClick={() => onOpen({ buoiId: t.buoiId, tab: nv.key, lop: t.lop, ngay: t.ngay })}
                     className="flex items-center gap-2 rounded-xl bg-white/70 px-3 py-2 text-left">
