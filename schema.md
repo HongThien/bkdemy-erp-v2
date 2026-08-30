@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-165 bảng · 2 view · 0 enum · 22 trigger · 115 function
+165 bảng · 2 view · 0 enum · 22 trigger · 117 function
 
 ## _app_secrets
 
@@ -2443,6 +2443,8 @@ SELECT q.id AS qua_id,
 - `fn_hocphi_tong_hop_ky(p_ky date)` → TABLE(phu_huynh_id uuid, tien_chinh numeric, tien_duoi numeric)
 - `fn_js_parsefloat(p text)` → double precision
 - `fn_jsround(x numeric)` → integer
+- `fn_mastery_cells(p_hs uuid[], p_include_btvn boolean DEFAULT false, p_since timestamp with time zone DEFAULT NULL::timestamp with time zone, p_window integer DEFAULT 5, p_tin_cao integer DEFAULT 5, p_tin_tb integer DEFAULT 3)` → TABLE(hoc_sinh_id uuid, ma_dang text, score numeric, n bigint, muc text, tin text)
+- `fn_mastery_rollup(p_hs uuid[], p_include_btvn boolean DEFAULT false, p_since timestamp with time zone DEFAULT NULL::timestamp with time zone)` → TABLE(hoc_sinh_id uuid, dat bigint, can_luyen bigint, yeu bigint, tin_thap bigint)
 - `fn_mo_lai_phase(p_buoi_id uuid, p_phase text)` → void
 - `fn_recompute_exp_thang(p_lop_id uuid, p_ym text)` → jsonb
 - `fn_sua_key_va_cham_lai(p_bai_test_cau_id uuid, p_key jsonb, p_ly_do text)` → jsonb
