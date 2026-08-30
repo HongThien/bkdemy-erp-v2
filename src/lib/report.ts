@@ -109,11 +109,7 @@ export async function upsertBaoCaoPH(hocSinhId: string, mon: string, thang: stri
 // ⚠ NGOẠI LỆ CÓ CHỦ ĐÍCH so §5 CLAUDE.md ("chưa-đo ≠ 0"): Thùy 08-19 chốt RIÊNG cho bảng xếp hạng này —
 // HS đang học mà CHƯA có điểm MT trong cửa sổ → tính 0đ để rank đủ TOÀN BỘ roster (không loại khỏi mẫu
 // số như mastery bình thường). Chỉ áp cho xếp hạng — không áp cho ô "Điểm MT" hiển thị (vẫn "—").
-function mtWindow(ym: string): { from: string; to: string } {
-  const [Y, M] = ym.split('-').map(Number)
-  const nextY = M === 12 ? Y + 1 : Y, nextM = M === 12 ? 1 : M + 1
-  return { from: `${ym}-25`, to: `${nextY}-${String(nextM).padStart(2, '0')}-11` } // < ngày 11 = qua hết mùng 10
-}
+// (mtWindow — cửa sổ 25/tháng → hết mùng 10 tháng sau — giờ nằm TRONG fn_rank_diem_mt, §2.0.)
 // ⚠ CHỐT (Thùy 08-21, sau 2 lần sửa hụt với Trần Thị Vân Khánh & Phan Bảo Nhi): điểm MT là CỦA EM, ĐI
 // THEO EM — thi ở lớp nào không quan trọng, đề chung nên điểm nào cũng dùng được. Cái ĐỔI theo phạm vi
 // (lớp/hệ/khối) chỉ là ROSTER — ai được đem ra so sánh — KHÔNG PHẢI cách tính điểm của từng em. Vậy: điểm
