@@ -27,6 +27,7 @@ import type { PickItem } from '../../store/useStore'
 import { NGU_CANH_LUOT, setNguCanhLuotBuoi, type NguCanhLuot } from '../../lib/kho/hinh'
 import DangPickerOne from '../../components/DangPickerOne'
 import { useIsMobile } from '../../hooks/useIsMobile'
+import { listNopTheoBuoi, type BtvnNop } from '../../lib/btvnnop'
 import { tenHienThiDs, tenNganHS } from '../../lib/hoten'
 import { useStore } from '../../store/useStore'
 
@@ -1790,6 +1791,8 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
   const [missing, setMissing] = useState(false)
   const [kq, setKq] = useState<Record<string, BtvnKQ>>({})
   const [cb, setCb] = useState<CanhBao[]>([])
+  // Lượt nộp qua APP PH (📱) — TA thấy ai đã nộp app để chấm trên app TA (CEO 30/08 ④; chấm ảnh ở app TA).
+  const [nop, setNop] = useState<Record<string, BtvnNop>>({})
   const [loading, setLoading] = useState(true)
   const [closing, setClosing] = useState(false)
   const [alertFor, setAlertFor] = useState<string | null>(null) // hsId đang mở popup báo động
@@ -1800,7 +1803,7 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
   const dangBuoi = [...new Set(probs.map((p) => p.ma_dang).filter(Boolean))] as string[] // dạng có trong BTVN (cho báo động)
 
   async function reloadP() { const [p, g] = await Promise.all([listProblems(buoiId, 'btvn'), listGrades(buoiId)]); setProbs(p); setGrades(g) }
-  async function reloadKq() { setKq(await getBtvnKetQua(buoiId)); setCb(await listCanhBao(buoiId)) }
+  async function reloadKq() { setKq(await getBtvnKetQua(buoiId)); setCb(await listCanhBao(buoiId)); setNop(await listNopTheoBuoi(buoiId).catch(() => ({}))) }
   useEffect(() => { (async () => {
     setLoading(true)
     try {
@@ -1883,7 +1886,14 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
                 <tr key={r.id} className="align-top">
                   <td className="sticky left-0 z-10 border border-slate-200 bg-white px-3 py-1.5">
                     <div className="flex items-center gap-1.5">
-                      <span className="min-w-[104px] flex-1 whitespace-nowrap font-medium text-slate-800">{tenHT[i]}</span>
+                      <span className="min-w-[104px] flex-1 whitespace-nowrap font-medium text-slate-800">{tenHT[i]}
+                        {nop[r.hoc_sinh_id] && (
+                          <span className={`ml-1.5 rounded px-1.5 py-0.5 text-[10px] font-bold ${nop[r.hoc_sinh_id].tra_at ? 'bg-indigo-50 text-indigo-600' : 'bg-teal-50 text-teal-700'}`}
+                            title={`Nộp qua app lúc ${new Date(nop[r.hoc_sinh_id].nop_at).toLocaleString('vi', { timeZone: 'Asia/Ho_Chi_Minh' })} — chấm ảnh trên app TA`}>
+                            📱 {nop[r.hoc_sinh_id].anh.length} ảnh{nop[r.hoc_sinh_id].tra_at ? ' · đã trả' : ''}
+                          </span>
+                        )}
+                      </span>
                       <select value={v.trang_thai_nop ?? ''} disabled={dong} onChange={(e) => setKQField(r.hoc_sinh_id, { trang_thai_nop: e.target.value || null })} title="Trạng thái nộp" className={`h-7 w-[116px] shrink-0 rounded border px-1 text-[12px] disabled:opacity-60 ${v.trang_thai_nop ? 'border-slate-300 text-slate-700' : 'border-slate-200 text-slate-400'}`}>
                         <option value="">— Nộp —</option>{NOP_OPTS.map((o) => <option key={o.v} value={o.v}>{o.l}</option>)}
                       </select>
