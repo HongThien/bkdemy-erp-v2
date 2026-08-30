@@ -65,7 +65,13 @@ dòng ra 4 con số) · `botro.ts:63` (2 bảng lớn nhất không filter).
       vào SQL) + `fn_gay_chot_thang` (RPC transactional, snapshot jsonb trong DB, nguoi_chot từ jwt).
       Smoke synthetic: 3 đánh/1 gỡ/1 thu hồi → 3·1·2·40k + snapshot 3 dòng, đúng người chốt. Client
       bangGay chỉ còn ghép entries hiển thị; chotThang = 1 rpc. (`quetGayTuDong` đi cùng task-engine Phase 4.)
-- [ ] Phase 1 đợt 3b: `chotKy` (RPC transactional — cần phiếu ảo SQL, gộp vào Phase 2)
+- [x] **Phase 2a** — merge `fix/hocphi-heso-tailieu` (RPC `hoc_phi_theo_mon_ky` đã áp DB từ 27/08,
+      client listHocPhiTheoMonV2 dùng RPC). **Phase 2b** (mig `202608300306`): công nợ + tín dụng →
+      `fn_hocphi_no_theo_ph` / `fn_hocphi_so_du_no` / `fn_hocphi_tin_dung_con_lai` (parity tổng nợ
+      66.801.500đ khớp kiểm chéo). **Phase 2c** (mig `202608300311`): `fn_hocphi_phieu_ao` (đứng trên
+      hoc_phi_theo_mon_ky — phiếu PH & bảng HS-theo-môn cùng 1 nguồn số) + `fn_hocphi_chot_ky`
+      (1 transaction). Parity 238 hoá đơn kỳ 07: **225 khớp tuyệt đối**, 13 lệch truy được từng ca về
+      data đổi SAU chốt (bù 09/08 sau chốt 05/08...). hocphi.ts cắt ~170 dòng engine.
 - [x] **Phase 1 đợt 4** (mig `202608300240` + `202608300243`): engine Elo/EXP → 4 RPC transactional
       `fn_dong_phase` / `fn_mo_lai_phase` / `fn_recompute_exp_thang` / `fn_dong_btvn` (+ fn_jsround vì
       Math.round JS ≠ round SQL với số âm, fn_exp_*, fn_buoi_recompute_hoan_tat). Parity: 1439/1439 dòng
