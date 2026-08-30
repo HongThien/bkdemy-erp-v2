@@ -12,11 +12,12 @@ import { listCaTestDangChay, type CaTest } from '../../lib/tuyensinh'
 import { homNayVN, ddmmVN, thuCuaNgay, mucDeadline } from '../../lib/tuan'
 import { diemDanhTienDo, type BuoiAo } from '../../lib/gami'
 import DiemDanhBuoi from './DiemDanhBuoi'
+import TuQuaScreen from './TuQuaScreen'
 import OpsReportScreen from '../vanhanhops/OpsReportScreen'
 import PrepScreen from '../vanhanhops/PrepScreen'
 import DiemDanhTestScreen from '../vanhanhops/DiemDanhTestScreen'
 
-type TabKey = 'home' | 'diemdanh' | 'report' | 'prep' | 'test'
+type TabKey = 'home' | 'diemdanh' | 'report' | 'prep' | 'test' | 'tuqua'
 // Tab ↔ leaf quyền (cùng leaf-id cây Admin ERP) + bộ màu literal. home luôn hiện.
 const TABS: { key: TabKey; leaf: string | null; icon: string; label: string; pill: string; text: string }[] = [
   { key: 'home', leaf: null, icon: '🏠', label: 'Hôm nay', pill: 'bg-indigo-100', text: 'text-indigo-600' },
@@ -24,6 +25,7 @@ const TABS: { key: TabKey; leaf: string | null; icon: string; label: string; pil
   { key: 'report', leaf: 'ops_report', icon: '📨', label: 'Report', pill: 'bg-blue-100', text: 'text-blue-700' },
   { key: 'prep', leaf: 'prep', icon: '🧹', label: 'Prep', pill: 'bg-amber-100', text: 'text-amber-700' },
   { key: 'test', leaf: 'test_dau_vao', icon: '📝', label: 'Test', pill: 'bg-violet-100', text: 'text-violet-700' },
+  { key: 'tuqua', leaf: 'tu_qua', icon: '🎁', label: 'Quà', pill: 'bg-rose-100', text: 'text-rose-600' },
 ]
 
 const hhmm = (t: string | null) => (t ? t.slice(0, 5) : '—')
@@ -41,6 +43,7 @@ export default function OpsHome({ profile, quyen }: { profile: MyProfile; quyen:
         {tab === 'report' && <ManCon mau="bg-blue-700"><OpsReportScreen chiViec /></ManCon>}
         {tab === 'prep' && <ManCon mau="bg-amber-600"><PrepScreen /></ManCon>}
         {tab === 'test' && <ManCon mau="bg-violet-600"><DiemDanhTestScreen /></ManCon>}
+        {tab === 'tuqua' && <TuQuaScreen />}
       </div>
 
       {/* bottom tab bar — active = pill màu (mockup duyệt), chừa safe-area iPhone */}

@@ -94,6 +94,9 @@ export const adminLeaves: AdminLeaf[] = [
   // (Thùy 07-08: Tuyển sinh = quản lý level HS; test đầu vào = 4 story vận hành điểm danh→chấm→nhận
   // xét→trả bài). 1 leaf, 4 tab bên trong (Điểm danh/Đề/Chấm/Nhận xét) — TestDauVaoScreen.tsx.
   { id: 'test_dau_vao',nhom: 'Vận hành',  ten: 'Test đầu vào',                 founderOnly: false },
+  // Tủ quà (Thùy 30/08): đổi quà thanh toán bằng xu + order đặt trước + kho. Màn ở APP OPS (tab Quà);
+  // DB layer = mig 202608300908 (viết lại hệ qlht_* của Hải theo style ERP).
+  { id: 'tu_qua',      nhom: 'Vận hành',  ten: 'Tủ quà (đổi xu)',              founderOnly: false },
 
   // ── GAMIFICATION: Elo/EXP, thành tích, level ──
   { id: 'diemso',      nhom: 'Gamification', ten: 'Điểm số (Elo/EXP)',        founderOnly: false },
