@@ -7235,3 +7235,33 @@ này từng hiện "209 ca" ở phiên làm UI cùng ngày) · "Dashboard học 
     optimistic ghiThu/chốt/huỷ chốt set trangThaiTB khớp trigger (không tính gì ở client — chỉ mirror).
 - Verify: tsc --noEmit sạch. Phiên remote KHÔNG có credential DB (đúng rào §2.1) → CÒN cần máy thật:
   `npm run migrate` → `npm run schema` + commit schema.md.
+
+## 2026-08-30 — App TA + luồng PH nộp BTVN ảnh: bóc hiện trạng + CEO chốt 7 câu + PLAN-app-ta.md (phiên remote)
+
+**LÀM:** bóc toàn bộ việc TA trong ERP (nguồn: `TASKS_BY_VAI` gami.ts:904, `getMyTasks` 908-1098,
+`phan_cong_lop.vai_tro='tg'`, `phan_cong_khoi` trưởng khối, `nguoi_day_tg`) + rà schema 165 bảng
+cho luồng BTVN-ảnh. Kết quả phân tích + 7 câu hỏi → CEO trả lời đủ → viết `PLAN-app-ta.md`
+(khuôn PLAN-app-ops).
+
+**PHÁT HIỆN (hiện trạng, đã verify code/schema):**
+- Không có bảng nộp bài/ảnh BTVN; `bai_lam_cau` chỉ chứa đáp án gõ. Bucket + pattern upload sẵn.
+- PH KHÔNG có đường GHI vào ERP: app PH = repo `bkdemy-ph` DB riêng, chỉ đọc ERP qua FDW
+  `fdw_bkdemy_web` (đã siết còn 4 bảng, mig 202608151030). Đây là nút thắt kiến trúc chính.
+- Không có hạ tầng thông báo/push nào ở tầng DB.
+- Nợ: `btvn_ket_qua.trang_thai_nop`/`thai_do` KHÔNG có CHECK (giá trị lạ → fn_exp_btvn_bai trả 0
+  âm thầm) — PLAN vá kèm khi đụng bảng.
+- Bất đối xứng cũ còn treo (đã ghi 07-26): TA đánh giá buổi bù/đuổi/yếu nhưng không đánh giá buổi
+  thường — ngoài scope đợt này.
+
+**QUYẾT ĐỊNH (CEO chốt 30/08):** ① nộp từ APP PH (cấp 1-2 PH chụp; cấp 3 online sẵn) · ② đơn vị
+nộp = xấp ảnh per (HS×buổi) · ③ trả PH = bài chấm của TA + đáp án chi tiết kho · ④ app TA v1 ưu
+tiên việc hiện tại, BTVN-ảnh song song 2 đường, TA phải thấy ai nộp app · ⑤ song song Zalo đến
+khi PH quen · ⑥ trạng thái nộp = hệ đề xuất, TA tick tay · ⑦ tư cách đo BTVN không đổi (tham
+khảo, mastery vẫn 2 chế độ).
+
+**HƯỚNG (PLAN-app-ta.md):** ảnh + dữ liệu nộp sống trong ERP DB (chân lý runtime); bảng
+`btvn_nop` + `btvn_nop_anh` (anti-NULL: dòng chỉ ra đời khi có ảnh thật; ảnh gốc immutable,
+`url_cham` riêng); bucket private `btvn-nop`; đường ghi PH→ERP = role `ph_nop` chỉ EXECUTE 2 RPC
+nộp, key server-side bkdemy-ph (rào cứng, không nới FDW ghi); trả bài qua 3 view FDW gate
+`tra_at`; app TA = entry Vite thứ 4 khuôn app OPS, 4 màn (Home/BTVN/ET/ingame); chấm per-câu vẫn
+`gami_grades` + `fn_dong_btvn` — không đẻ hệ chấm thứ 2. Còn 4 câu hỏi mở nhỏ ở PLAN §8.
