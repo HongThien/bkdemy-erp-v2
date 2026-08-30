@@ -12,6 +12,7 @@ export type BtvnNop = {
   buoi_hoc_id: string
   nop_at: string
   tra_at: string | null
+  buoi_xac_nhan_at: string | null // null = hệ GÁN TẠM buổi, TA phải chốt trước khi trả (CEO 30/08 đêm)
   nhan_xet_ma: string[]
   anh: BtvnNopAnh[]
 }
@@ -20,7 +21,7 @@ export type NhanXetMau = { ma: string; noi_dung: string; thu_tu: number }
 // Lượt nộp của cả buổi, kèm ảnh (sort thu_tu chỉ để hiển thị — danh tính là id).
 export async function listNopTheoBuoi(buoiId: string): Promise<Record<string, BtvnNop>> {
   const [n, a] = await Promise.all([
-    supabase.from('btvn_nop').select('hoc_sinh_id,buoi_hoc_id,nop_at,tra_at,nhan_xet_ma').eq('buoi_hoc_id', buoiId).limit(1000),
+    supabase.from('btvn_nop').select('hoc_sinh_id,buoi_hoc_id,nop_at,tra_at,buoi_xac_nhan_at,nhan_xet_ma').eq('buoi_hoc_id', buoiId).limit(1000),
     supabase.from('btvn_nop_anh').select('id,hoc_sinh_id,path,path_cham,thu_tu').eq('buoi_hoc_id', buoiId).order('thu_tu').limit(5000),
   ])
   if (n.error) throw n.error
@@ -73,10 +74,31 @@ export async function setNhanXet(buoiId: string, hocSinhId: string, ma: string[]
   if (error) throw error
 }
 
-// Trả bài 1 HS (mở khoá PH xem bài chấm + đáp án). Guard "đã chấm gì đó" nằm trong fn.
+// Trả bài 1 HS (mở khoá PH xem bài chấm + đáp án). Guard "đã chấm + đã chốt buổi" nằm trong fn.
 export async function traBai(buoiId: string, hocSinhId: string): Promise<void> {
   const { error } = await supabase.rpc('fn_btvn_tra_bai', { p_hoc_sinh_id: hocSinhId, p_buoi_hoc_id: buoiId })
   if (error) throw error
+}
+
+// TA chốt "đúng buổi này" cho lượt nộp hệ gán tạm.
+export async function xacNhanBuoi(buoiId: string, hocSinhId: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_btvn_xac_nhan_buoi', { p_hoc_sinh_id: hocSinhId, p_buoi_hoc_id: buoiId })
+  if (error) throw error
+}
+
+// TA chuyển bài sang buổi khác (chọn tay = chốt luôn; đích đã có nộp thì fn tự GỘP ảnh).
+export async function chuyenBuoi(hocSinhId: string, buoiCu: string, buoiMoi: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_btvn_chuyen_buoi', { p_hoc_sinh_id: hocSinhId, p_buoi_cu: buoiCu, p_buoi_moi: buoiMoi })
+  if (error) throw error
+}
+
+// Buổi có phiếu BTVN của lớp — cho picker "chuyển buổi". Join buổi×tai_lieu không có FK
+// (bám lop+ngay) nên nằm ở DB (fn_btvn_buoi_cua_lop, §2.0), client chỉ gọi.
+export type BuoiBtvn = { id: string; ngay: string; dong: boolean }
+export async function listBuoiBtvnCuaLop(lopId: string): Promise<BuoiBtvn[]> {
+  const { data, error } = await supabase.rpc('fn_btvn_buoi_cua_lop', { p_lop_id: lopId })
+  if (error) throw error
+  return ((data ?? []) as { id: string; ngay: string; dong: boolean }[])
 }
 
 // Đếm lượt nộp app theo LÔ buổi (badge 📱 cho ERP BtvnTab + card Việc-của-tôi).

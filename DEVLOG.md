@@ -7295,3 +7295,14 @@ nộp, key server-side bkdemy-ph (rào cứng, không nới FDW ghi); trả bài
 - **Verify:** tsc --noEmit exit 0 · build CẢ 4 bundle pass · dist-ta ~1.1M (precache 995KB, ngang
   app OPS). CHƯA verify được: áp migration + smoke RPC (cần máy thật: npm run migrate → npm run
   schema → commit schema.md; dán sql_appta_role_bucket.sql; e2e seed 1 lượt nộp bằng RPC rồi chấm).
+
+**BTVN ảnh — vòng 2 (30/08 đêm, CEO chốt thêm):** ① PH nộp KHÔNG chọn buổi — hệ GÁN TẠM buổi gần
+nhất có phiếu BTVN (sau này QR định danh), TA CHỐT buổi trong màn chấm (pattern đề xuất→người
+confirm). ② Hạ tầng thông báo bên app PH ĐÃ CÓ (PH bật là nhận). ③ Test full luồng bằng HS Đào
+Minh Quân (con CEO). ④ UX màn chấm-nhập-liệu cần bàn kỹ riêng.
+Build: mig `202608302330` — btvn_nop.buoi_xac_nhan_at/boi (backfill nộp cũ = đã chốt) · FK ảnh ON
+UPDATE CASCADE · fn_btvn_nop_tao_auto (resolve buổi gần nhất, grant ph_nop) · fn_btvn_xac_nhan_buoi
+· fn_btvn_chuyen_buoi (đích trùng → GỘP ảnh, giữ nop_at sớm nhất) · fn_btvn_buoi_cua_lop (picker) ·
+tra_bai/_buoi guard buoi_xac_nhan · v_btvn_nop_ph +buoi_da_chot. App TA ChamBtvn: chip "⚠ chưa
+chốt buổi" + banner [✓ Đúng buổi này / → Buổi khác] (picker 12 buổi BTVN của lớp) + nút Trả bài
+khoá tới khi chốt. tsc + build:ta pass. DB: CEO dán bản gộp (chưa npm run migrate ghi sổ).
