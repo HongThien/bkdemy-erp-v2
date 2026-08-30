@@ -147,12 +147,14 @@ language sql stable as $$
 $$;
 grant execute on function public.fn_btvn_buoi_cua_lop(uuid) to authenticated;
 
--- View PH: thêm cờ đã-chốt-buổi (PH thấy "đã ghi nhận" ngay cả khi TA chưa chốt).
-create or replace view public.v_btvn_nop_ph as
+-- View PH: thêm cờ đã-chốt-buổi. ⚠ create-or-replace-view chỉ cho THÊM CỘT Ở CUỐI
+-- (đổi thứ tự = 42P16, đã cắn 30/08) → drop + tạo lại, cột mới đặt CUỐI, grant lại.
+drop view if exists public.v_btvn_nop_ph;
+create view public.v_btvn_nop_ph as
   select n.hoc_sinh_id, n.buoi_hoc_id, b.ngay, l.mon, l.ten_lop, n.nop_at, n.tra_at,
-         (n.buoi_xac_nhan_at is not null) as buoi_da_chot,
          (select count(*) from btvn_nop_anh a
-          where a.hoc_sinh_id = n.hoc_sinh_id and a.buoi_hoc_id = n.buoi_hoc_id) as so_anh
+          where a.hoc_sinh_id = n.hoc_sinh_id and a.buoi_hoc_id = n.buoi_hoc_id) as so_anh,
+         (n.buoi_xac_nhan_at is not null) as buoi_da_chot
   from btvn_nop n
   join buoi_hoc b on b.id = n.buoi_hoc_id
   left join lop l on l.id = b.lop_id;
