@@ -11,6 +11,7 @@ import type { MyProfile } from '../../lib/nhansu'
 import type { MyQuyen } from '../../lib/quyen'
 import { getMyTasks, type MyTask } from '../../lib/gami'
 import { demNopTheoBuois } from '../../lib/btvnnop'
+import { taDashboard, type TaDash } from '../../lib/tadash'
 import { homNayVN, ddmmVN, thuCuaNgay, mucDeadline, nhanConLai } from '../../lib/tuan'
 import ChamBuoi from './ChamBuoi'
 import DashTa from './DashTa'
@@ -44,6 +45,8 @@ export default function TaHome({ profile, quyen }: { profile: MyProfile; quyen: 
   const [tasks, setTasks] = useState<MyTask[]>([])
   const [nopCount, setNopCount] = useState<Record<string, number>>({})
   const [now, setNow] = useState(() => Date.now())
+  // tóm tắt dashboard tháng cho BOX ở trang chủ (CEO 31/08: dashboard = 1 box riêng cạnh các nghiệp vụ)
+  const [dashTom, setDashTom] = useState<TaDash | null>(null)
   const coQuyen = quyen.laAdmin || quyen.chucNang.includes('buoihoc') // cùng leaf với tab chấm bên ERP
 
   async function reload(silent = false) {
@@ -55,6 +58,7 @@ export default function TaHome({ profile, quyen }: { profile: MyProfile; quyen: 
       const btvnBuois = [...new Set(t.filter((x) => x.tab === 'btvn').map((x) => x.buoiId))]
       setNopCount(btvnBuois.length ? await demNopTheoBuois(btvnBuois).catch(() => ({})) : {})
     } finally { setLoading(false) }
+    taDashboard(homNay.slice(0, 7)).then(setDashTom).catch(() => setDashTom(null)) // best-effort, không chặn trang chủ
   }
   useEffect(() => { reload() }, []) // eslint-disable-line
   useEffect(() => { const id = setInterval(() => setNow(Date.now()), 60000); return () => clearInterval(id) }, [])
@@ -72,7 +76,7 @@ export default function TaHome({ profile, quyen }: { profile: MyProfile; quyen: 
   return (
     <div className="flex h-[100dvh] flex-col bg-[#f5f5f7]" style={{ fontFamily: "'Be Vietnam Pro', 'Segoe UI', system-ui, sans-serif" }}>
       <div className="min-h-0 flex-1 overflow-auto">
-        {tab === 'home' && <TrangChu profile={profile} homNay={homNay} loading={loading} coQuyen={coQuyen} tasks={tasks} canLam={canLam} noCua={noCua} now={now} onGo={setTab} />}
+        {tab === 'home' && <TrangChu profile={profile} homNay={homNay} loading={loading} coQuyen={coQuyen} tasks={tasks} canLam={canLam} noCua={noCua} now={now} onGo={setTab} dashTom={dashTom} />}
         {tab === 'dash' && <DashTa />}
         {tab !== 'home' && tab !== 'dash' && <ViecTab key={tab} nv={nvOf(tab)} tasks={tasks.filter((t) => t.tab === tab)} nopCount={nopCount} now={now} homNay={homNay} onOpen={setView} />}
       </div>
@@ -122,9 +126,10 @@ function HeaderBar({ profile, sub }: { profile: MyProfile; sub: string }) {
 }
 
 // ── TRANG CHỦ: hero mỏng + 3 box nghiệp vụ (bubble nợ ở góc icon, bấm box → tab list việc) ──
-function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now, onGo }: {
+function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now, onGo, dashTom }: {
   profile: MyProfile; homNay: string; loading: boolean; coQuyen: boolean
   tasks: MyTask[]; canLam: MyTask[]; noCua: (k: NvKey) => number; now: number; onGo: (t: TabKey) => void
+  dashTom: TaDash | null
 }) {
   const tenGoi = (profile.nhanSu.ho_ten ?? '').trim().split(/\s+/).pop() || 'bạn'
   const quaHan = canLam.filter((t) => mucDeadline(t.deadline, now) === 'qua_han').length
@@ -145,6 +150,9 @@ function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now
             {!loading && canLam.length > 0 && <span className="shrink-0 rounded-full bg-white/20 px-3 py-1.5 text-[15px] font-bold text-white">{canLam.length}</span>}
           </div>
         </div>
+
+        {/* BOX DASHBOARD THÁNG — 1 cái riêng đứng cùng các nghiệp vụ (CEO 31/08), full hàng + % sống */}
+        {!loading && coQuyen && <BoxDashThang d={dashTom} onGo={() => onGo('dash')} />}
 
         {!loading && coQuyen && (
           <div className="grid grid-cols-1 items-start gap-3 sm:grid-cols-3">
@@ -177,6 +185,41 @@ function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now
         )}
       </div>
     </div>
+  )
+}
+
+// Box "📈 Công việc tháng này" trên trang chủ: bar mini + % đạt chuẩn + hạng + mốc thưởng, bấm → tab dash.
+function BoxDashThang({ d, onGo }: { d: TaDash | null; onGo: () => void }) {
+  const me = d?.me ?? {}
+  const pct = me.pct ?? null
+  const moc = !!me.dat_moc_thuong
+  const coViec = (me.tong ?? 0) > 0
+  return (
+    <button onClick={onGo}
+      className={`mb-3 w-full rounded-2xl border p-3.5 text-left shadow-sm active:bg-slate-50 ${moc ? 'border-amber-300 bg-gradient-to-br from-amber-50 to-yellow-50' : 'border-slate-200/70 bg-white'}`}>
+      <div className="flex items-center gap-2.5">
+        <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-[21px] ${moc ? 'bg-amber-100' : 'bg-amber-50'}`}>📈</span>
+        <div className="min-w-0 flex-1">
+          <p className="flex items-center gap-2 text-[15px] font-bold text-slate-800">Công việc tháng này
+            {d?.rank ? <span className="rounded-full bg-teal-600 px-2 py-0.5 text-[11.5px] font-bold text-white">#{d.rank}/{d.tongTaXepHang}</span> : null}
+            {moc && <span className="rounded-full bg-amber-500 px-2 py-0.5 text-[11.5px] font-bold text-white">🎁 mốc thưởng</span>}
+          </p>
+          <p className="text-[12px] text-slate-400">
+            {!d ? 'Hiệu suất · xếp hạng · mốc thưởng 100%'
+              : !coViec ? 'Tháng này chưa có việc chấm được giao'
+              : `Đạt chuẩn ${me.dat ?? 0}/${me.den_han ?? 0} việc đến hạn${(me.khong_dat ?? 0) > 0 ? ` · lỡ ${me.khong_dat}` : ''}`}
+          </p>
+        </div>
+        {coViec && pct != null && <span className={`text-[22px] font-extrabold ${pct === 100 ? 'text-amber-600' : pct >= 80 ? 'text-teal-600' : pct >= 50 ? 'text-amber-500' : 'text-rose-500'}`}>{pct}%</span>}
+        <span className="text-slate-300">›</span>
+      </div>
+      {coViec && (
+        <div className="mt-2.5 h-2.5 overflow-hidden rounded-full bg-slate-100">
+          <div className={`h-full rounded-full ${pct === 100 ? 'bg-gradient-to-r from-amber-400 to-yellow-500' : (pct ?? 0) >= 80 ? 'bg-teal-500' : (pct ?? 0) >= 50 ? 'bg-amber-500' : 'bg-rose-500'}`}
+            style={{ width: `${pct ?? 0}%` }} />
+        </div>
+      )}
+    </button>
   )
 }
 
