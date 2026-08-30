@@ -7306,3 +7306,15 @@ UPDATE CASCADE · fn_btvn_nop_tao_auto (resolve buổi gần nhất, grant ph_no
 tra_bai/_buoi guard buoi_xac_nhan · v_btvn_nop_ph +buoi_da_chot. App TA ChamBtvn: chip "⚠ chưa
 chốt buổi" + banner [✓ Đúng buổi này / → Buổi khác] (picker 12 buổi BTVN của lớp) + nút Trả bài
 khoá tới khi chốt. tsc + build:ta pass. DB: CEO dán bản gộp (chưa npm run migrate ghi sổ).
+
+**DASHBOARD TA THÁNG + GUARD ĐÓNG + GÓP Ý (30/08 đêm, CEO chốt 4 câu):** ① bar = đạt-chuẩn/đến-hạn
+(chậm = không đạt · chất lượng duyệt <80 = không đạt — ngưỡng hằng trong fn) · ② thiếu dữ liệu CHẶN
+đóng (fn_dong_phase v4: có HS + có đề mà 0 grade → chặn; ET/MT đòi FULL lưới HS×câu; miễn: không đề,
+ET online, bù/bổ trợ · fn_dong_btvn v3: buổi có nghĩa vụ BTVN đòi mọi HS có mặt có trạng thái nộp);
+đóng→mở→đóng lại = lần cuối (cột *_dong_at vốn vậy) · ③ xếp hạng TA thấy MÌNH + TOP 3, ngưỡng ≥10
+việc đến hạn · ④ 100% + đủ 10 việc = mốc THƯỞNG TIỀN hiện trên bar.
+Build: mig `202608310120` (fn_dong_phase v4 · fn_dong_btvn v3 · fn_ta_dashboard — việc = 3 khâu ×
+buổi thường lớp phân công tg, ET online loại khỏi mẫu số, deadline: ingame hết ngày · et/btvn =
+han_nop_bai_test) + seam `lib/tadash.ts` + tab 5 "📈 Của tôi" (`DashTa`: bar mốc thưởng + 4 stat +
+hạng/top3 + list việc không đạt + chú thích luật) + nút góp ý nổi 🐞 (`GopY` — tái dùng bao_loi,
+route app_ta:*, không useStore). tsc + build:ta pass. Mig CHƯA áp (chờ CEO dán/máy thật).

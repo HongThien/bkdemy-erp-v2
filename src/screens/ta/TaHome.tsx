@@ -13,9 +13,11 @@ import { getMyTasks, type MyTask } from '../../lib/gami'
 import { demNopTheoBuois } from '../../lib/btvnnop'
 import { homNayVN, ddmmVN, thuCuaNgay, mucDeadline, nhanConLai } from '../../lib/tuan'
 import ChamBuoi from './ChamBuoi'
+import DashTa from './DashTa'
+import GopY from './GopY'
 
 type NvKey = 'ingame' | 'et' | 'btvn'
-type TabKey = 'home' | NvKey
+type TabKey = 'home' | NvKey | 'dash'
 // ⚠ Tailwind JIT: class màu là CHUỖI LITERAL per nghiệp vụ (cấm ghép chuỗi động) — bài học OpsHome.
 const NGHIEP_VU: { key: NvKey; icon: string; label: string; chip: string; pill: string; text: string; strip: string }[] = [
   { key: 'ingame', icon: '📝', label: 'Bài trên lớp', chip: 'bg-sky-50', pill: 'bg-sky-100', text: 'text-sky-700', strip: 'bg-sky-600' },
@@ -70,10 +72,11 @@ export default function TaHome({ profile, quyen }: { profile: MyProfile; quyen: 
   return (
     <div className="flex h-[100dvh] flex-col bg-[#f5f5f7]" style={{ fontFamily: "'Be Vietnam Pro', 'Segoe UI', system-ui, sans-serif" }}>
       <div className="min-h-0 flex-1 overflow-auto">
-        {tab === 'home'
-          ? <TrangChu profile={profile} homNay={homNay} loading={loading} coQuyen={coQuyen} tasks={tasks} canLam={canLam} noCua={noCua} now={now} onGo={setTab} />
-          : <ViecTab key={tab} nv={nvOf(tab)} tasks={tasks.filter((t) => t.tab === tab)} nopCount={nopCount} now={now} homNay={homNay} onOpen={setView} />}
+        {tab === 'home' && <TrangChu profile={profile} homNay={homNay} loading={loading} coQuyen={coQuyen} tasks={tasks} canLam={canLam} noCua={noCua} now={now} onGo={setTab} />}
+        {tab === 'dash' && <DashTa />}
+        {tab !== 'home' && tab !== 'dash' && <ViecTab key={tab} nv={nvOf(tab)} tasks={tasks.filter((t) => t.tab === tab)} nopCount={nopCount} now={now} homNay={homNay} onOpen={setView} />}
       </div>
+      <GopY route={tab} />
 
       {/* bottom tab — active = pill màu (khuôn OpsHome), mỗi nghiệp vụ có bubble nợ, chừa safe-area */}
       <div className="border-t border-slate-200 bg-white" style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}>
@@ -82,6 +85,7 @@ export default function TaHome({ profile, quyen }: { profile: MyProfile; quyen: 
           {NGHIEP_VU.map((n) => (
             <TabBtn key={n.key} active={tab === n.key} icon={n.icon} label={n.label} pill={n.pill} text={n.text} no={noCua(n.key)} onClick={() => setTab(n.key)} />
           ))}
+          <TabBtn active={tab === 'dash'} icon="📈" label="Của tôi" pill="bg-amber-100" text="text-amber-700" no={0} onClick={() => setTab('dash')} />
         </div>
       </div>
     </div>
