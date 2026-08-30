@@ -141,6 +141,14 @@ export async function getMasteryHS(
   const dangs = ((await supabase.from(K.banDoTbl).select('ma_dang, ten_dang, ten_chuyen_de, muc_do').in('ma_dang', maList).limit(LIMIT)).data ?? []) as { ma_dang: string; ten_dang: string; ten_chuyen_de: string; muc_do: number | null }[]
   const dangMap = new Map(dangs.map((d) => [d.ma_dang, d]))
 
+  // §2.0 (30/08): SỐ mastery từ fn_mastery_cells (parity 391/391) — evals ở đây chỉ còn là
+  // TIMELINE hiển thị (lịch sử lần đo), không phải nguồn tính.
+  const { data: cellRows, error: eCells } = await supabase.rpc('fn_mastery_cells', {
+    p_hs: [hocSinhId], p_include_btvn: !!opts?.includeBTVN, p_since: sinceIso,
+  })
+  if (eCells) throw eCells
+  const cellMap = new Map(((cellRows ?? []) as any[]).map((c) => [c.ma_dang, { score: Number(c.score), n: Number(c.n), muc: c.muc, tin: c.tin } as Mastery]))
+
   const out: DangMastery[] = []
   for (const ma of maList) {
     const info = dangMap.get(ma)
@@ -151,7 +159,7 @@ export async function getMasteryHS(
       ten_dang: info.ten_dang,
       ten_chuyen_de: info.ten_chuyen_de,
       muc_do: info.muc_do ?? null,
-      mastery: masteryOfDang(evals, MASTERY_CONFIG) as Mastery | null,
+      mastery: cellMap.get(ma) ?? null,
       evals,
     })
   }
@@ -546,10 +554,7 @@ export type RollupScope = { mon: string; lopId?: string | null; khoi?: string | 
 export async function loadMasteryCells(opts: RollupScope): Promise<CellBundle> {
   const empty: CellBundle = { hsMap: new Map(), hsIds: [], byHS: new Map(), dangInfo: new Map() }
   const K = khoCuaMon(opts.mon)
-  // Thùy 07-15: LOẠI ingame + đánh giá GV khỏi mastery (xem comment đầu file) — đối xứng với getMasteryHS.
-  // tu_luyen (18-20/08): includeBTVN=true → vào cho MỌI HS (gộp-view) — thêm ngay ở đây. includeBTVN=false
-  // → chỉ cấp 1 (cap1Set dưới), xử RIÊNG per-HS ở vòng lặp add() vì phases là danh sách DÙNG CHUNG cả batch.
-  const phases: EvalSrc[] = opts.includeBTVN ? ['et', 'mt', 'bt', 'btvn', 'tu_luyen'] : ['et', 'mt']
+  // Gate nguồn (07-15 loại ingame/dg · 18-20/08 tu_luyen cấp 1) nằm TRONG fn_mastery_cells (§2.0).
 
   // 1) HS trong phạm vi (lớp / khối / HỆ-band × môn), đang học. +khoi để biết cấp 1 (tu_luyen trung tâm).
   let sq
@@ -569,32 +574,12 @@ export async function loadMasteryCells(opts: RollupScope): Promise<CellBundle> {
   const hsIds = [...hsMap.keys()]
   if (hsIds.length === 0) return { ...empty, hsMap }
 
-  // 2) measures BULK.
-  const [{ data: grades }, online, bt] = await Promise.all([
-    supabase.from('gami_grades').select('hoc_sinh_id, result, graded_at, prob:problem_id(phase, ma_dang)').in('hoc_sinh_id', hsIds).limit(LIMIT),
-    fetchOnlineEvals(hsIds),
-    fetchBTEvals(hsIds),
-  ])
-  const evByHS = new Map<string, Map<string, DangEval[]>>()
-  const allMa = new Set<string>()
-  const add = (hsId: string, ma: string | null | undefined, ev: DangEval) => {
-    if (!ma) return
-    allMa.add(ma)
-    let m = evByHS.get(hsId); if (!m) { m = new Map(); evByHS.set(hsId, m) }
-    const arr = m.get(ma) ?? []; arr.push(ev); m.set(ma, arr)
-  }
-  for (const g of (grades ?? []) as any[]) {
-    const p = g.prob; if (!p || !p.ma_dang || !phases.includes(p.phase as EvalSrc)) continue
-    const val = RESULT_VALUE[g.result as keyof typeof RESULT_VALUE]; if (val === undefined) continue
-    add(g.hoc_sinh_id, p.ma_dang, { value: val, t: g.graded_at, src: p.phase as EvalSrc })
-  }
-  for (const o of online) {
-    // tu_luyen: đã ở trong `phases` khi includeBTVN=true (mọi HS) — nhánh sau chỉ cần cho ca
-    // includeBTVN=false + đúng HS đó là cấp 1 (per-HS, không thể nhét vào `phases` dùng chung batch).
-    const okTuLuyen = o.src === 'tu_luyen' && !opts.includeBTVN && cap1Set.has(o.hoc_sinh_id)
-    if (phases.includes(o.src) || okTuLuyen) add(o.hoc_sinh_id, o.ma_dang, { value: o.value, t: o.t, src: o.src })
-  }
-  if (phases.includes('bt')) for (const b of bt) add(b.hoc_sinh_id, b.ma_dang, { value: b.value, t: b.t, src: 'bt' })
+  // 2+4) §2.0 (30/08): mastery cell (HS × dạng) tính ở DB — fn_mastery_cells (parity 391/391
+  // với engine JS trên lớp 8S1). Gate nguồn (et/mt · toggle btvn/bt/tu_luyen · cấp-1) nằm
+  // TRONG fn — cap1Set/phases client chỉ còn ý nghĩa chú thích lịch sử.
+  const { data: cells, error: eCells } = await supabase.rpc('fn_mastery_cells', { p_hs: hsIds, p_include_btvn: !!opts.includeBTVN })
+  if (eCells) throw eCells
+  const allMa = new Set<string>(((cells ?? []) as any[]).map((c) => c.ma_dang as string))
 
   // 3) tên dạng + độ khó + scope MÔN (banDo của môn → chỉ giữ dạng hợp lệ).
   const dangInfo = new Map<string, { ten_dang: string; ten_chuyen_de: string; muc_do: number | null }>()
@@ -603,13 +588,11 @@ export async function loadMasteryCells(opts: RollupScope): Promise<CellBundle> {
     for (const x of dd) dangInfo.set(x.ma_dang, { ten_dang: x.ten_dang, ten_chuyen_de: x.ten_chuyen_de, muc_do: x.muc_do ?? null })
   }
 
-  // 4) mastery cell (HS × dạng thuộc môn).
   const byHS = new Map<string, Map<string, Mastery>>()
-  for (const hsId of hsIds) {
-    const em = evByHS.get(hsId); if (!em) continue
-    const cm = new Map<string, Mastery>()
-    for (const [ma, evals] of em) { if (!dangInfo.has(ma)) continue; const r = masteryOfDang(evals, MASTERY_CONFIG) as Mastery | null; if (r) cm.set(ma, r) }
-    if (cm.size) byHS.set(hsId, cm)
+  for (const c of (cells ?? []) as any[]) {
+    if (!dangInfo.has(c.ma_dang)) continue // dạng môn khác → bỏ (scope theo bản đồ môn, như cũ)
+    let cm = byHS.get(c.hoc_sinh_id); if (!cm) { cm = new Map(); byHS.set(c.hoc_sinh_id, cm) }
+    cm.set(c.ma_dang, { score: Number(c.score), n: Number(c.n), muc: c.muc, tin: c.tin })
   }
   return { hsMap, hsIds, byHS, dangInfo }
 }
