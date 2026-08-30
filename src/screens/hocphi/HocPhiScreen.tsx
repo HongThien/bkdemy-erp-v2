@@ -12,7 +12,7 @@ import {
   listHocPhiTheoMonV2, setCongThucHocPhi, getDiemDanhTheoLop,
   listHeSoHocSinh, getHeSoHocSinh, setHeSoHieuLuc, boManualHeSo,
   listPhatSinhTheoKy, themPhatSinhLop, themPhatSinhCaNhan, xoaPhatSinh,
-  layTenConDangHoc, soanThongBao, danhDauDaBao,
+  layTenConDangHoc, soanThongBao, danhDauDaBao, TRANG_THAI_TB_LABEL,
   type MucHocPhi, type MucHocDuoi, type MucHocLieu, type DongSoHang, type DongDuoiSoHang, type DongNo, type PHOpt, type PHNoOpt, type HocSinhHeSo, type PhatSinhEntry,
   type DongTheoMonV2, type CongThuc, type DiemDanhLop,
 } from '../../lib/hocphi'
@@ -394,12 +394,12 @@ function PhuHuynhCard({ r0, ky, onAnh, moMacDinh, onDoi }: { r0: DongSoHang; ky:
       if (!r.daChot) {
         if (!confirm(`Chốt học phí kỳ này cho ${r.ho_ten} = ${tienVN(tong)}?\nĐông cứng số này để thu tiền (sửa được sau bằng bỏ tích Chốt).`)) return
         const { hoaDonId, tongTien } = await chotKy(r.phu_huynh_id, ky, [])
-        setR({ ...r, daChot: true, hoaDonId, tongTien, trangThai: 'chua_thu', baoLan1At: null, daThuKy: 0 })
+        setR({ ...r, daChot: true, hoaDonId, tongTien, trangThai: 'chua_thu', trangThaiTB: 'thong_bao_1', baoLan1At: null, daThuKy: 0 })
       } else {
         const cb = r.daThuKy > 0 ? `\n⚠ Đã thu ${tienVN(r.daThuKy)} — huỷ sẽ xoá bản ghi thu.` : ''
         if (!confirm(`Huỷ chốt phiếu này để sửa lại?${cb}`)) return
         await huyChot(r.hoaDonId!)
-        setR({ ...r, daChot: false, hoaDonId: null, trangThai: null, baoLan1At: null, daThuKy: 0, tongTien: r.tienChinh + r.tienDuoi + r.tienNo })
+        setR({ ...r, daChot: false, hoaDonId: null, trangThai: null, trangThaiTB: null, baoLan1At: null, daThuKy: 0, tongTien: r.tienChinh + r.tienDuoi + r.tienNo })
       }
     } catch (e: any) { alert(e.message ?? String(e)) } finally { setBusy(false) }
   }
@@ -419,7 +419,8 @@ function PhuHuynhCard({ r0, ky, onAnh, moMacDinh, onDoi }: { r0: DongSoHang; ky:
     try {
       await ghiThanhToan(r.hoaDonId!, so)
       const daThuMoi = r.daThuKy + so
-      setR({ ...r, daThuKy: daThuMoi, trangThai: daThuMoi >= tong ? 'da_thu' : 'thu_mot_phan' })
+      // Khớp trigger tg_thanh_toan_trang_thai: thu đủ → trạng thái thông báo tự thành "Đã hoàn thành"
+      setR({ ...r, daThuKy: daThuMoi, trangThai: daThuMoi >= tong ? 'da_thu' : 'thu_mot_phan', trangThaiTB: daThuMoi >= tong ? 'hoan_thanh' : r.trangThaiTB })
       setShowThu(false); setThuSo('')
     } catch (e: any) { alert(e.message ?? String(e)) } finally { setBusy(false) }
   }
@@ -438,7 +439,9 @@ function PhuHuynhCard({ r0, ky, onAnh, moMacDinh, onDoi }: { r0: DongSoHang; ky:
           <div className="truncate text-[13px] font-semibold text-slate-800">{r.ho_ten} <span className="font-mono text-[10px] font-normal text-slate-400">{r.ma_ph}</span></div>
           {r.tenCon.length > 0 && <div className="truncate text-[11px] text-slate-500">{r.tenCon.join(', ')}</div>}
         </div>
-        <span className={`whitespace-nowrap rounded-full px-2 py-0.5 text-[10px] font-bold ${NHOM_MAU[nhom].pill}`}>{NHOM.find((n) => n.key === nhom)?.label}</span>
+        <span className={`whitespace-nowrap rounded-full px-2 py-0.5 text-[10px] font-bold ${NHOM_MAU[nhom].pill}`}>
+          {nhom === 'da_thu' && r.trangThaiTB === 'hoan_thanh' ? `✓ ${TRANG_THAI_TB_LABEL.hoan_thanh}` : NHOM.find((n) => n.key === nhom)?.label}
+        </span>
         <span className="whitespace-nowrap text-[15px] font-extrabold text-indigo-700">{tienVN(tong)}</span>
         <button onClick={() => setOpen((o) => !o)} className="rounded-md border border-slate-200 px-1.5 py-1 text-[11px] text-slate-500 hover:border-indigo-300">{open ? '▴' : '▾'}</button>
       </div>
