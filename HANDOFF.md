@@ -921,12 +921,27 @@ thẳng `ca_test.nguoi_cham_id`/`nguoi_tra_bai_id`, data đã sẵn, không cầ
 - ⚠ **Checkout `bkdemy-erp-v2` là SÂN CHUNG nhiều phiên Claude (hay bị đổi branch)** — merge main / chạy bot đều làm từ `wt-bot`, ĐỪNG làm từ checkout chung (29/08 đã merge nhầm vào feat/app-ops, CEO phải reset gỡ).
 - Bẫy schema đã cắn khi viết 11 lệnh (chi tiết DEVLOG 29/08): `btvn_ket_qua` dùng `trang_thai_nop` (hoan_thanh/dung_han đời cũ); lịch ngày derive từ `thoi_khoa_bieu` vì `buoi_hoc` chỉ có dòng khi ĐÃ MỞ (thu = isodow+1); Realtime chỉ bắn INSERT + listener phải restart sau khi đổi publication; policy dùng `public.jwt_uid()` không phải `auth.uid()`.
 
-### ⭐ Chiến dịch "hạ tính toán xuống DB" (mở 30/08 — ĐANG CHẠY)
-- Luật mới CLAUDE.md **§2.0** (CEO chốt 30/08): mọi query tổng hợp + tính toán nghiệp vụ
-  ở Postgres; client & AI chỉ gọi hàm sẵn (`rpc` / catalog bot). Code MỚI phải theo ngay.
-- Nợ cũ: 177 vị trí (82 nặng) — danh sách + lộ trình 4 phase trong `AUDIT-client-tinh-toan.md`.
-  Phase 1 = 15 gốc tính-rồi-ghi-ngược (tiền/điểm/hiệu suất) đang chuyển thành RPC/trigger/
-  generated; mỗi gốc có parity check số cũ=mới trên DB thật trước khi cắt sang.
+### ⭐ Chiến dịch "hạ tính toán xuống DB" — Phase 1+2 XONG · Phase 3 ~75% (đến hết 30/08)
+- Luật CLAUDE.md **§2.0** (CEO chốt 30/08): mọi query tổng hợp + tính toán nghiệp vụ ở
+  Postgres; client & AI chỉ gọi hàm sẵn (`rpc` / catalog bot). Code MỚI phải theo ngay.
+- Checklist sống = `AUDIT-client-tinh-toan.md` (tick từng đợt, migration nào, parity nào) —
+  ĐỌC FILE ĐÓ trước khi làm tiếp, đây chỉ là tóm tắt:
+  - **XONG:** Phase 1 (13/15 gốc tính-rồi-ghi-ngược → trigger/RPC: điểm chấm test, trạng thái
+    thu tiền, điểm/verdict MT, hiệu suất nghiệm thu+duyệt, gậy, NGUYÊN engine Elo/EXP, TLN
+    normalize+chấm lại) · Phase 2 (tiền 100% — hocphi.ts thành seam mỏng; phiếu & bảng cùng
+    1 nguồn số `hoc_phi_theo_mon_ky`) · Phase 3a/b/c (fn_mastery_cells parity 391/391 +
+    Hình + ma trận lớp + completion + fn_rank_diem_mt).
+  - **CÒN:** `getTongQuanHS` (mastery.ts) · `getStatSheetLop`+`listCandidatesLop` (danhgia.ts
+    — rule engine, ổ NẶNG cuối) · `nguongTuCohort` (troly.ts, percentile_disc) · Phase 4
+    (quét lớn còn lại + task-engine getMyTasks/listAllStaffTasks/quetGayTuDong + 68 VỪA + 27 NHẸ).
+- **Phương pháp bắt buộc mỗi đợt** (đã bắt được 4 bug thật nhờ nó): parity số cũ=mới trên DB
+  thật TRƯỚC khi cắt → áp migration → smoke bằng transaction ROLLBACK (giả JWT qua
+  `set_config('request.jwt.claims',...)`) → client mỏng gọi rpc → tsc+build → tick AUDIT.
+- Bẫy port JS→SQL (chi tiết DEVLOG 30/08): `Math.round` JS = floor(x+0.5) ≠ round() SQL số âm
+  (dùng `fn_jsround`) · `\b` JS là ASCII (bug thật đã vá 2 phía) · jsonb scalar bóc `#>>'{}'` ·
+  `substring(from pattern)` PG trả nhóm ngoặc đầu · tie-break xếp hạng phải TẤT ĐỊNH.
+- Thi công trong worktree `wt-bot` (đứng cố định ở main) — KHÔNG merge/chạy gì từ checkout
+  `bkdemy-erp-v2` (sân chung các phiên, hay bị đổi branch).
 
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
 
