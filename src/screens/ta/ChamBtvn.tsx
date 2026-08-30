@@ -12,7 +12,8 @@ import {
   listCanhBao, themCanhBao, xoaCanhBao,
   type BuoiHocHS, type Problem, type Grade, type ETResult, type BtvnKQ, type BtvnTrangThai, type BtvnThaiDo, type CanhBao,
 } from '../../lib/gami'
-import { listNopTheoBuoi, deXuatTrangThai, signUrls, uploadAnhCham, listNhanXetMau, setNhanXet, traBai, type BtvnNop, type BtvnNopAnh, type NhanXetMau } from '../../lib/btvnnop'
+import { listNopTheoBuoi, deXuatTrangThai, signUrls, uploadAnhCham, listNhanXetMau, setNhanXet, traBai, xacNhanBuoi, chuyenBuoi, listBuoiBtvnCuaLop, type BtvnNop, type BtvnNopAnh, type NhanXetMau, type BuoiBtvn } from '../../lib/btvnnop'
+import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import { tenHienThiDs } from '../../lib/hoten'
 import { ET_KQ, DongBar, type BuoiFull } from './ChamBuoi'
 
@@ -107,6 +108,13 @@ export default function ChamBtvn({ buoi, roster, tenDang, napTenDang, onChange }
   async function traBai_(hsId: string) {
     try { await traBai(buoiId, hsId); await reloadNop() } catch (e: any) { alert(e.message ?? String(e)) }
   }
+  // Hệ chỉ GÁN TẠM buổi khi PH nộp không định danh — TA chốt tại đây (CEO 30/08 đêm).
+  async function xacNhan_(hsId: string) {
+    try { await xacNhanBuoi(buoiId, hsId); await reloadNop() } catch (e: any) { alert(e.message ?? String(e)) }
+  }
+  async function chuyen_(hsId: string, buoiMoi: string) {
+    try { await chuyenBuoi(hsId, buoiId, buoiMoi); setHsMo(null); await reloadNop() } catch (e: any) { alert(e.message ?? String(e)) }
+  }
 
   if (loading) return <p className="text-[13px] text-slate-400">Đang tải BTVN…</p>
   if (missing && Object.keys(nop).length === 0)
@@ -141,6 +149,7 @@ export default function ChamBtvn({ buoi, roster, tenDang, napTenDang, onChange }
                     {n ? (
                       <>
                         <span className="rounded bg-teal-50 px-1.5 py-0.5 font-semibold text-teal-700">📱 {n.anh.length} ảnh</span>
+                        {!n.buoi_xac_nhan_at && <span className="rounded bg-amber-100 px-1.5 py-0.5 font-semibold text-amber-700">⚠ chưa chốt buổi</span>}
                         {dx && <span className={`rounded px-1.5 py-0.5 font-semibold ${dx.deXuat === 'nop_dung_han' ? 'bg-emerald-50 text-emerald-700' : 'bg-orange-50 text-orange-600'}`}>đề xuất: {dx.deXuat === 'nop_dung_han' ? 'đúng hạn' : 'nộp muộn'}</span>}
                         {n.tra_at ? <span className="rounded bg-indigo-50 px-1.5 py-0.5 font-semibold text-indigo-600">✓ đã trả PH</span> : null}
                       </>
@@ -153,6 +162,11 @@ export default function ChamBtvn({ buoi, roster, tenDang, napTenDang, onChange }
 
               {mo && (
                 <div className="border-t border-slate-100 px-3 py-2.5">
+                  {/* Hệ gán TẠM buổi (PH nộp không chọn buổi) → TA CHỐT trước khi trả bài */}
+                  {n && !n.buoi_xac_nhan_at && !dong && (
+                    <ChotBuoiBanner lopId={buoi.lop_id ?? ''} buoiNgay={buoi.ngay}
+                      onDungBuoi={() => xacNhan_(hsId)} onChuyen={(bm) => chuyen_(hsId, bm)} />
+                  )}
                   {/* xấp ảnh nộp qua app — bấm ảnh để VẼ ĐÁNH DẤU */}
                   {n && n.anh.length > 0 && (
                     <div className="mb-2.5 flex gap-2 overflow-x-auto pb-1">
@@ -237,7 +251,8 @@ export default function ChamBtvn({ buoi, roster, tenDang, napTenDang, onChange }
                     {n && (n.tra_at
                       ? <span className="ml-auto rounded-lg bg-indigo-50 px-2.5 py-1.5 text-[12px] font-semibold text-indigo-600">✓ Đã trả bài cho PH</span>
                       : <button onClick={() => { if (confirm('Trả bài cho PH? PH sẽ thấy ảnh bài chấm + kết quả + đáp án chi tiết.')) traBai_(hsId) }}
-                          className="ml-auto min-h-[38px] rounded-lg bg-indigo-600 px-3 text-[12.5px] font-semibold text-white active:bg-indigo-500">📤 Trả bài cho PH</button>)}
+                          disabled={!n.buoi_xac_nhan_at} title={n.buoi_xac_nhan_at ? '' : 'Chốt buổi trước đã'}
+                          className="ml-auto min-h-[38px] rounded-lg bg-indigo-600 px-3 text-[12.5px] font-semibold text-white active:bg-indigo-500 disabled:opacity-40">📤 Trả bài cho PH</button>)}
                   </div>
                 </div>
               )}
@@ -248,6 +263,44 @@ export default function ChamBtvn({ buoi, roster, tenDang, napTenDang, onChange }
 
       {veAnh && <AnnotateModal anh={veAnh} src={urls[veAnh.path_cham ?? veAnh.path]} onClose={() => setVeAnh(null)}
         onSaved={async () => { setVeAnh(null); await reloadNop() }} />}
+    </div>
+  )
+}
+
+// Banner chốt buổi: "✓ Đúng buổi này" hoặc "→ Buổi khác" (picker 12 buổi có BTVN của lớp).
+function ChotBuoiBanner({ lopId, buoiNgay, onDungBuoi, onChuyen }: {
+  lopId: string; buoiNgay: string; onDungBuoi: () => void; onChuyen: (buoiMoi: string) => void
+}) {
+  const [moPicker, setMoPicker] = useState(false)
+  const [dsBuoi, setDsBuoi] = useState<BuoiBtvn[] | null>(null)
+  async function moChuyen() {
+    setMoPicker(true)
+    if (!dsBuoi && lopId) setDsBuoi(await listBuoiBtvnCuaLop(lopId).catch(() => []))
+  }
+  return (
+    <div className="mb-2.5 rounded-xl border border-amber-300 bg-amber-50 p-2.5">
+      <p className="mb-1.5 text-[12px] font-medium text-amber-800">⚠ PH nộp không chọn buổi — hệ <b>gán tạm</b> vào buổi này. Chốt đúng buổi rồi mới trả bài được.</p>
+      <div className="flex flex-wrap gap-1.5">
+        <button onClick={onDungBuoi} className="min-h-[36px] rounded-lg bg-amber-600 px-3 text-[12.5px] font-bold text-white active:bg-amber-500">✓ Đúng buổi này</button>
+        <button onClick={moChuyen} className="min-h-[36px] rounded-lg border border-amber-400 px-3 text-[12.5px] font-semibold text-amber-800 active:bg-amber-100">→ Bài thuộc buổi khác</button>
+      </div>
+      {moPicker && (
+        <div className="fixed inset-0 z-50 flex items-end justify-center bg-slate-900/40 p-3 sm:items-center" onClick={() => setMoPicker(false)}>
+          <div className="max-h-[70dvh] w-full max-w-[440px] overflow-auto rounded-2xl bg-white p-4 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+            <p className="mb-2 text-[14px] font-bold text-slate-900">Chuyển bài sang buổi nào?</p>
+            {dsBuoi === null ? <p className="text-[12px] text-slate-400">Đang tải…</p>
+              : dsBuoi.filter((b) => b.ngay !== buoiNgay).length === 0 ? <p className="text-[12px] text-slate-400">Lớp không có buổi BTVN nào khác gần đây.</p>
+              : dsBuoi.filter((b) => b.ngay !== buoiNgay).map((b) => (
+                <button key={b.id} onClick={() => { setMoPicker(false); onChuyen(b.id) }}
+                  className="mb-1.5 flex min-h-[44px] w-full items-center gap-2 rounded-xl border border-slate-200 px-3 text-left active:bg-slate-50">
+                  <span className="text-[13.5px] font-semibold text-slate-800">{thuCuaNgay(b.ngay)} · {ddmmVN(b.ngay)}</span>
+                  {b.dong && <span className="ml-auto rounded bg-slate-100 px-1.5 py-0.5 text-[10.5px] font-semibold text-slate-500">BTVN đã đóng</span>}
+                </button>
+              ))}
+            <button onClick={() => setMoPicker(false)} className="mt-1 min-h-[40px] w-full rounded-lg text-[13px] text-slate-500">Huỷ</button>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
