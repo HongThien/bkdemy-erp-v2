@@ -25,3 +25,4 @@ scripts/out-crops/
 
 # build output app OPS (như dist/dist-hs)
 dist-ops/
+dist-ta
