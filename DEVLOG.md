@@ -7204,3 +7204,13 @@ này từng hiện "209 ca" ở phiên làm UI cùng ngày) · "Dashboard học 
   là data đã mutate — phải reset seed rồi chạy lại từ sạch.
 - CÒN cần máy thật/Thùy (không đường vòng): dán scripts/sql_tuqua_chuyen_chu.sql vào SQL Editor →
   npm run migrate → npm run schema → cấp leaf tu_qua ở Phân quyền → deploy build:ops.
+
+**TỦ QUÀ — bản dán-1-lần (30/08, tiếp; CEO hỏi "m không tự chạy trên Supabase luôn được à"):**
+- Trả lời thẳng: KHÔNG — phiên remote không được cấp credential nào (đúng rào §2.1 chuỗi ghi không nằm
+  trên đĩa), và bước đổi owner cần role postgres sau đăng nhập Dashboard. Không có đường vòng.
+- Bù: gộp SQL tay + migration thành `scripts/sql_tuqua_TAT_CA_MOT_LAN.sql` — Thùy DÁN 1 PHÁT trong
+  SQL Editor (điện thoại cũng được) là DB xong. Mẹo: phần migration chạy dưới `set role claude_build`
+  (postgres là member sau grant ở phần 1) → object mới thuộc claude_build y như npm run migrate;
+  migration idempotent nên sau này `npm run migrate` chạy lại vô hại, chỉ để ghi sổ _migrations.
+- Verify: dựng lại replica SẠCH (chưa đổi owner) → chạy đúng 1 file gộp dưới postgres → smoke A–K
+  pass + race test pass y hệt (1 thành công / 1 chặn "Không đủ xu").
