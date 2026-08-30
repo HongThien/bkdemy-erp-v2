@@ -12,6 +12,10 @@
 -- KHÔNG xoá gì, KHÔNG đổi dữ liệu, KHÔNG đổi hành vi app: policy/grant/hàm cũ của Hải giữ nguyên
 -- (15 hàm qlht_* của Hải là SECURITY DEFINER chạy dưới postgres — vẫn chạy như cũ, giữ làm tham chiếu).
 
+-- Supabase: postgres KHÔNG phải superuser — muốn gán owner mới thì phải là member của role đó.
+-- postgres tạo ra claude_build nên có ADMIN OPTION → tự grant được. Idempotent.
+grant claude_build to postgres;
+
 alter table public.qlht_qua        owner to claude_build;
 alter table public.qlht_qua_nhap   owner to claude_build;
 alter table public.qlht_doi_qua    owner to claude_build;

@@ -57,6 +57,15 @@
 
 ## 4. Thứ tự áp (máy có DB — phiên remote không có .env)
 
+> ✅ **Đã verify 30/08 trên REPLICA local (PostgreSQL 16, dựng đúng vai Supabase: postgres
+> không-superuser + claude_build + authenticated, schema Hải nguyên trạng + seed):** SQL tay chạy ngọt
+> bằng role postgres thường (đã thêm `grant claude_build to postgres` — thiếu là Supabase từ chối alter
+> owner) · migration áp sạch 1 transaction (cả replace view thêm cột) · smoke A–K pass toàn bộ
+> (đổi/giao/hủy-hoàn, order trọn vòng đời, nhập/xuất/hủy phiếu, chống trùng tên, log vết, nhân sự
+> LỆCH EMAIL dùng được — đối chứng `current_nhan_su_id()` null, tài khoản thường bị chặn cả đọc lẫn ghi)
+> · **race test 2 phiên đồng thời tiêu 1 ví: đúng 1 thành công, 1 bị chặn "Không đủ xu"** — không
+> double-spend. Trên DB thật chỉ còn đúng các bước dưới.
+
 1. Chạy tay `scripts/sql_tuqua_chuyen_chu.sql` trong Supabase SQL Editor (role postgres) —
    chuyển owner cụm `qlht_*` về `claude_build` (Hải dừng; đưa cụm này vào luồng migration + hết
    điểm mù "CLI đọc 0 dòng"). Không xoá/đổi gì khác.
