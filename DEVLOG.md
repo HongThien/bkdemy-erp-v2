@@ -7214,3 +7214,6 @@ này từng hiện "209 ca" ở phiên làm UI cùng ngày) · "Dashboard học 
   migration idempotent nên sau này `npm run migrate` chạy lại vô hại, chỉ để ghi sổ _migrations.
 - Verify: dựng lại replica SẠCH (chưa đổi owner) → chạy đúng 1 file gộp dưới postgres → smoke A–K
   pass + race test pass y hệt (1 thành công / 1 chặn "Không đủ xu").
+- **CEO đã dán bản gộp lên Supabase THẬT, chạy OK (30/08)** — DB production giờ có đủ fn_tuqua_* +
+  log + view mới; cụm qlht_* đã thuộc claude_build. Còn: merge branch vào main (code app chưa deploy)
+  + cấp leaf tu_qua + npm run migrate/schema ghi sổ (không gấp).
