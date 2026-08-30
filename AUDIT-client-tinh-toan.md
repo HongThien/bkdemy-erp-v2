@@ -92,7 +92,19 @@ dòng ra 4 con số) · `botro.ts:63` (2 bảng lớn nhất không filter).
       + `fn_hocphi_chi_tiet_ky`/`fn_hocphi_tong_hop_ky` (cross-check 242/242 vs phiếu ảo). Xoá 3 hàm chết
       (listHocPhiTheoHocSinhVaMon, tinhTamTinhTheoPH, selectByIdsBatched — batching hết lý do tồn tại:
       không còn mảng UUID trên URL). → **PHASE 2 XONG** — hocphi.ts giờ là seam mỏng gọi rpc.
-- [ ] Phase 3 (mastery) · Phase 4 (quét lớn + vừa/nhẹ)
+- [x] **Phase 3a** (mig `202608300739`): `fn_mastery_cells` + `fn_mastery_rollup` — mastery suy động
+      XUỐNG DB. Parity vàng: engine JS thật (masteryOfDang) vs fn trên lớp 8S1 = **391/391 ô khớp**
+      score/n/muc/tin. Client getMasteryHS/loadMasteryCells đọc fn (mọi reader rollup/dashboard/trước-buổi
+      ăn theo); evals chỉ còn timeline hiển thị.
+- [x] **Phase 3b** (mig `202608300747` + `202608300749`): `fn_matrix_lop` / `fn_completion_theo_lop`
+      (vá done-giao-kỳ-vọng bắt khi rà tail JS) / `fn_mastery_cells_hinh` (window 3 · tin 3/2). Xoá
+      fetchGradeAgg (quét 200k) + pagedByBuoi (500k).
+- [x] **Phase 3c** (mig `202608300743`): `fn_rank_diem_mt` — xếp hạng lớp/hệ/khối 1 câu SQL, parity
+      14/14 lớp 9A1. report.ts hết kéo điểm cả khối về browser.
+- [ ] **Phase 3 còn lại:** `getTongQuanHS` (mastery.ts — tổng quan HS đa chỉ số) · `getStatSheetLop` +
+      `listCandidatesLop` (danhgia.ts — rule engine đánh giá, ổ NẶNG cuối cùng) · `nguongTuCohort`
+      (troly.ts — percentile_disc).
+- [ ] Phase 4 (quét lớn còn lại + 68 VỪA + 27 NHẸ — theo danh sách phần trên)
 
 ## Lộ trình đề xuất (chưa làm — chờ chốt)
 
