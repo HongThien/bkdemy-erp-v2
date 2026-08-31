@@ -7352,3 +7352,45 @@ Tổng quan/Dạng bài + MT theo tháng · Lớp lưới ET/BTVN + MT tháng + 
 DB chỉ 2 việc nhỏ (fn_rank_diem_mt_lop + CHECK NOT VALID nguon); đề xuất bộ chỉ số GV 3 tầng
 A-kỷ-luật / B-chất-lượng-đánh-giá (calibration dg↔ET, precision chuông) / C-outcome
 (value-added, để sau). Chờ CEO gật 4 câu mở §8 rồi build.
+
+## 2026-08-31 (tiếp) — APP GV BUILD VÒNG 1-5: CEO chốt nốt 4 câu → build full (phiên remote)
+
+**CEO chốt nốt (31/08 phiên 2):** ① màu = "màu giáo dục, xanh — lá cây hoặc da trời" → chọn LÁ
+CÂY #16a34a (da trời #087fc6 đã thuộc app HS, teal TA) · ② phạm vi khoá theo lớp phụ trách ✓ ·
+③ chuông đỏ GHI CHÚ BẮT BUỘC ✓ · ④ dashboard: có mốc thưởng nhưng TẠM CHƯA làm ("mới làm được
+cái A, B/C còn phải nghĩ") → build tầng A ngay, không mốc/xếp hạng/chất lượng.
+
+**BUILD (nhánh claude/teacher-app-bk-cpzxbx):**
+- **Migration `202608311240_app_gv_mt_rank_dashboard_chuong.sql`** (CHƯA áp — phiên remote không
+  có credential DB, tiền lệ app TA): `fn_rank_diem_mt_lop` (batch rank MT theo khối cho cả lớp —
+  cùng luật nguyên văn fn_rank_diem_mt: điểm của em đi theo em, cửa sổ 25→10, 0đ chỉ trong xếp
+  hạng, tb trả NULL khi chưa thi) · `fn_gv_dashboard(p_ym)` tầng A (việc = 2 khâu ingame+danhgia
+  × buổi thường lớp phân công vai gv, deadline hết ngày buổi, kq dat/khong_dat/cho + list
+  khongDat — KHÔNG chất lượng/xếp hạng/mốc) · CHECK NOT VALID `canh_bao_yeu_nguon_chk`
+  in ('btvn','danhgia') (vá nợ cột text tự do).
+- **App GV = entry Vite thứ 5** (gv.html/main-gv/AppGv/vite.config.gv, dist-gv, PWA lá cây
+  #16a34a, scripts dev:gv|build:gv|preview:gv, .gitignore dist-gv, vercel.json thêm nhánh) —
+  khuôn app TA y nguyên (registerSW immediate + --app-z=1, gate 3 tầng chặn HS → profile →
+  my_quyen, leaf 'buoihoc', không import useStore/BuoiHocScreen/NhanSuHome/screens kho).
+- **Màn:** `GvHome` (5 bottom-tab: Hôm nay · Việc chấm (bubble nợ) · Học sinh · Lớp · Của tôi;
+  trang chủ = hero + box dash tầng A + 2 box nghiệp vụ; task = getMyTasks lọc vai='gv' —
+  TASKS_BY_VAI.gv có sẵn, engine 0 sửa) · `ChamBuoiGv` (2 tab: IngamePanel port từ app TA;
+  DanhGiaPanel VIẾT MỚI card-per-HS: verdict Đ/C/S per dạng + chip mức ingame tham khảo + select
+  11 nhãn MUC_CATALOG (giữ nhánh nhãn-cũ) + nhận xét + nội dung buổi/mô tả cấp buổi + 🚨 ChuongDo
+  ghi-chú-bắt-buộc nguon='danhgia' + dongDanhGia/moLaiDanhGia) · `HocSinhView` (chọn lớp gv →
+  roster → Tổng quan port getTongQuanHS (5 card hoàn thành 2-nửa + 6 chỉ số hoạt động) + MT THEO
+  THÁNG + rank khối (4 tháng, fn_rank_diem_mt_lop lấy dòng HS) + Dạng bài (getMasteryHS + Hình,
+  timeline có nguồn ĐG ghi rõ "tham khảo, không vào mastery") · `LopView` (4 sub-tab: lưới ET /
+  BTVN = getClassMatrix + cột TB client-1-dòng như ERP · MT tháng = bảng HS × 4 tháng điểm +
+  #rank/khối nhỏ · Bản đồ = getMasteryRollup thanh đạt/cần/yếu) · `DashGv` (bar tầng A + 4 stat +
+  list không đạt + box "🔜 Sắp có" nói thẳng mốc thưởng/chất lượng đang thống nhất) · `GopY`
+  (route app_gv:*).
+- **Seam:** `themCanhBao` thêm param `nguon` (default 'btvn' — chỗ gọi cũ 0 đổi) · `report.ts`
+  +`rankDiemMTLop` · `lib/gvdash.ts` mới.
+- **ERP `DanhGiaTab` (BuoiHocScreen) cũng có chuông:** nút 🚨 cạnh tên HS + chip cảnh báo
+  (xoá được) + `AlertModal` nâng cấp nhận `nguon`/`batBuocGhiChu` (BtvnTab giữ nguyên hành vi cũ).
+- **Verify:** npm install (container mới) · tsc --noEmit exit 0 · build CẢ 5 bundle pass ·
+  dist-gv ~1.1M (precache 1022KB, ngang app TA/OPS). CHƯA verify được: áp migration + smoke RPC
+  (cần máy thật: npm run migrate → npm run schema → commit schema.md — schema.md đang cũ hơn cả
+  4 migration 30-31/08 trước đó) · e2e data thật (đánh giá 1 buổi + bấm chuông → soi
+  canh_bao_yeu.nguon='danhgia' vào Dashboard học tập kênh báo động) · tạo Vercel project thứ 5.

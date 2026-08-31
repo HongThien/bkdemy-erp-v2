@@ -657,9 +657,11 @@ export async function listCanhBao(buoiId: string): Promise<CanhBao[]> {
   if (error) throw error
   return (data ?? []) as CanhBao[]
 }
-export async function themCanhBao(p: { buoiId: string; hocSinhId: string; maDang: string; ghiChu?: string }): Promise<void> {
+// `nguon` mặc định 'btvn' (chỗ gọi cũ giữ nguyên); app GV/ERP DanhGiaTab truyền 'danhgia'
+// (CEO 31/08 — chuông ở đánh giá sau buổi). CHECK canh_bao_yeu_nguon_chk giữ tập giá trị.
+export async function themCanhBao(p: { buoiId: string; hocSinhId: string; maDang: string; ghiChu?: string; nguon?: 'btvn' | 'danhgia' }): Promise<void> {
   const { data: { user } } = await supabase.auth.getUser()
-  const { error } = await supabase.from('canh_bao_yeu').insert({ buoi_hoc_id: p.buoiId, hoc_sinh_id: p.hocSinhId, ma_dang: p.maDang, ghi_chu: p.ghiChu ?? null, nguon: 'btvn', created_by: user?.id ?? null })
+  const { error } = await supabase.from('canh_bao_yeu').insert({ buoi_hoc_id: p.buoiId, hoc_sinh_id: p.hocSinhId, ma_dang: p.maDang, ghi_chu: p.ghiChu ?? null, nguon: p.nguon ?? 'btvn', created_by: user?.id ?? null })
   if (error) throw error
 }
 export async function xoaCanhBao(id: string): Promise<void> {

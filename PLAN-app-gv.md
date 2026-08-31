@@ -71,8 +71,8 @@ trong `lib/gami.ts`, per HS `co_mat`:
 
 ## 4. Entry Vite thứ 5
 
-`gv.html` (PWA "BK Giáo viên", theme-color **ĐỀ XUẤT `#ea580c` cam** — teal/indigo/xanh đã thuộc
-TA/OPS/HS) · `vite.config.gv.ts` (outDir `dist-gv`, `renameToIndex`, VitePWA manifest riêng,
+`gv.html` (PWA "BK Giáo viên", theme-color **`#16a34a` LÁ CÂY** — Thùy chốt 31/08 "màu giáo dục
+xanh"; da trời đã thuộc app HS, teal thuộc TA) · `vite.config.gv.ts` (outDir `dist-gv`, `renameToIndex`, VitePWA manifest riêng,
 `navigateFallbackDenylist` API) · `src/main-gv.tsx` (initErrorBuffer + registerSW immediate +
 `--app-z=1`) · `src/AppGv.tsx` (gate 3 tầng: chặn tài khoản HS → `getMyProfile` → `myQuyen`;
 `<Login staffOnly title="BK Giáo viên">`) · `src/screens/gv/` · scripts `dev:gv|build:gv|preview:gv`
@@ -123,10 +123,12 @@ Quyền: leaf `buoihoc` qua `my_quyen()` như app TA — KHÔNG đẻ khái ni�
 6. **Tổng verify**: tsc sạch · build CẢ 5 bundle không vỡ nhau · viewport iPad/iPhone · size
    dist-gv. Vercel project + domain (CEO tạo).
 
-## 8. Câu hỏi mở (chờ Thùy gật trước vòng 2)
+## 8. Câu hỏi mở — ĐÃ CHỐT HẾT (Thùy 31/08, phiên 2)
 
-1. Màu PWA **cam `#ea580c`** + domain `gv.bkacademy.edu.vn` — gật?
-2. Phạm vi = **chỉ lớp mình phụ trách** (④) — gật? (ERP desktop vẫn xem mọi lớp như cũ.)
-3. Chuông đỏ: chọn dạng là đủ hay **bắt buộc ghi chú**? (hiện ChamBtvn để ghi chú optional.)
-4. Bộ chỉ số §6: gật **tầng A** làm nền `fn_gv_dashboard` vòng 2? GV có **mốc thưởng tiền**
-   theo bar như TA không?
+1. Màu: **"màu giáo dục, xanh — lá cây hoặc da trời"** → chọn **LÁ CÂY `#16a34a`** (da trời
+   `#087fc6` đã thuộc app HS, teal thuộc TA). Domain chưa chốt tên — tạo Vercel project khi deploy.
+2. Phạm vi = **khoá theo lớp phụ trách** ✓.
+3. Chuông đỏ: **ghi chú BẮT BUỘC** ✓ (khác chuông BTVN của TA — bên đó vẫn optional).
+4. Dashboard: **CÓ mốc thưởng nhưng TẠM CHƯA LÀM** ("chưa đủ logic hết — mới làm được cái A,
+   B/C còn phải nghĩ") → build **tầng A ngay** (`fn_gv_dashboard`: đạt-chuẩn/đến-hạn, KHÔNG
+   mốc thưởng/xếp hạng/chất lượng), màn DashGv ghi rõ phần còn lại "sắp có".
