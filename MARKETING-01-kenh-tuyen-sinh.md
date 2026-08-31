@@ -10,8 +10,13 @@
 
 ## 0. Kết luận trong 5 dòng
 
-1. **Lợi thế cấu trúc lớn nhất của BK không nằm ở marketing — nằm ở chỗ BK có 4 môn.** Kỳ thi vào 10 Hà Nội thi **Toán – Văn – Ngoại ngữ**. Toàn bộ nhóm đối thủ mạnh nhất (MathExpress, MathX, CMath) **chỉ có Toán**. Họ không thể bán trọn bộ kỳ thi; BK thì có thể.
-2. **Kênh rẻ nhất BK đang bỏ quên là chính học sinh đang học** — cross-sell môn 2, môn 3. CAC gần 0, ERP đã biết ai học môn nào.
+> **⚠️ ĐÃ CHỈNH SAU KHI CEO TRẢ LỜI (31/08) — đọc mục này kèm cảnh báo:**
+> Bản gốc đặt "trọn bộ Toán–Văn–Anh" làm phát hiện số 1 và phân tích MathExpress/MathX/CMath làm đối thủ chính. **Cả hai đều sai.**
+> Văn/Anh giáo viên không toàn thời gian nên **không phải cửa vào**, chỉ là convert từ Toán sang. Và BK **không đi mảng chuyên/bồi dưỡng** nên ba chuỗi trên không phải đối thủ — đối thủ thật là thầy cô và trung tâm địa phương quanh Geleximco/An Khánh.
+> Kế hoạch hiện hành: **`MARKETING-02-quy-trinh-van-hanh.md`**. Phần bối cảnh thị trường và phân tích cơ chế (§1–§3) vẫn dùng được; phần xếp hạng kênh (§4–§5) đã bị thay.
+
+1. ~~Lợi thế trọn bộ Toán–Văn–Anh~~ → **GẠCH.** Không giao hàng nổi Văn/Anh ở quy mô; bán nó là phá niềm tin ở Toán.
+2. ~~Cross-sell là kênh tăng trưởng số 1~~ → **đổi vai: giữ chân + LTV**, không phải kênh tuyển sinh.
 3. **Referral không phải "kênh", là sản phẩm phụ của một khoảnh khắc.** BK đã có sẵn khoảnh khắc đó mà chưa dùng: `bao_cao_ph` (band năng lực + 7 chỉ số + `anh_bao_cao_url`).
 4. **"Thi/đánh giá đầu vào" là cỗ máy tuyển sinh của đối thủ, không phải khâu sàng lọc.** MathExpress thu 100.000đ/lượt thi. Nó tự trả chi phí acquisition. BK làm được tốt hơn vì trả về được *bản đồ lỗ hổng theo dạng*, không chỉ một điểm số.
 5. **Facebook Ads trả tiền để cuối cùng.** Bật ads khi phễu còn rò = đốt tiền có kỷ luật.
