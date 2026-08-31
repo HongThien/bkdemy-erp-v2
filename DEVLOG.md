@@ -7420,3 +7420,11 @@ Mig `202608312039`: fn_dong_phase v5 = v4 + điều kiện `p_phase in ('et','mt
 ingame miễn cả 2 lớp (0-ô lẫn full-lưới), ET/MT giữ nguyên chặt. Đóng ingame trống chạy nhánh
 rank bình thường (điểm 0, không ghi gì ngoài mốc) — vô hại. "Tạm thời": siết lại = migration mới.
 CHƯA áp DB — CEO dán SQL Editor (đã gửi trong chat). Không đụng UI (guard nằm server-side).
+
+## 2026-08-31 (tiếp 4) — Đóng khâu Đánh giá cho toàn bộ buổi TRƯỚC 23/08 (CEO chốt)
+
+CEO: app GV vừa chạy, không bắt GV gánh nợ đánh giá tồn từ trước → đóng danh_gia_xong_at cho
+MỌI buổi ngay < 2026-08-23 (mọi lớp). `scripts/sql_dong_danhgia_truoc_2308.sql` (CEO dán) —
+cùng khuôn backfill 8S0/12A1: chỉ điền mốc NULL, mốc 23:00 VN ngày buổi (không "đóng muộn"
+trong dashboard), CHỈ khâu đánh giá (ingame/ET/BTVN cũ còn mở = nợ thật TA, không đụng) +
+update hoan_tat cho buổi đủ 4 mốc.
