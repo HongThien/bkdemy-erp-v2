@@ -7411,3 +7411,12 @@ main khi code còn trên nhánh → merge PR #30 là qua). CEO dùng thật, ch�
   sheet 11 nhãn nhóm mức 5→1, mỗi nhãn 1 hàng wrap đủ dòng + badge số mức màu, hàng "Bỏ chọn",
   nhãn-cũ hiện "(nhãn cũ)" trên nút. ERP desktop giữ select (màn rộng đọc được).
 Verify: tsc 0 · build:gv pass. Nhánh reset từ main sau merge #30 (giữ tên, luật nhánh-đã-merge).
+
+## 2026-08-31 (tiếp 3) — fn_dong_phase v5: ingame KHÔNG bắt buộc dữ liệu (CEO chốt)
+
+CEO (dùng app GV thật): "chấm bài trên lớp không bắt buộc có dữ liệu — TẠM THỜI cho phép đóng
+khi dữ liệu trống". Guard v4 (202608310120) đang chặn cả ingame khi 0 ô chấm.
+Mig `202608312039`: fn_dong_phase v5 = v4 + điều kiện `p_phase in ('et','mt')` bọc khối guard —
+ingame miễn cả 2 lớp (0-ô lẫn full-lưới), ET/MT giữ nguyên chặt. Đóng ingame trống chạy nhánh
+rank bình thường (điểm 0, không ghi gì ngoài mốc) — vô hại. "Tạm thời": siết lại = migration mới.
+CHƯA áp DB — CEO dán SQL Editor (đã gửi trong chat). Không đụng UI (guard nằm server-side).
