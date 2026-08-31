@@ -7394,3 +7394,20 @@ cái A, B/C còn phải nghĩ") → build tầng A ngay, không mốc/xếp hạ
   (cần máy thật: npm run migrate → npm run schema → commit schema.md — schema.md đang cũ hơn cả
   4 migration 30-31/08 trước đó) · e2e data thật (đánh giá 1 buổi + bấm chuông → soi
   canh_bao_yeu.nguon='danhgia' vào Dashboard học tập kênh báo động) · tạo Vercel project thứ 5.
+
+## 2026-08-31 (tiếp 2) — App GV lên web + 3 chỉnh theo phản hồi đầu của CEO
+
+App GV deploy XONG (Vercel project thứ 5; lỗi đầu "Missing script build:gv" = project build từ
+main khi code còn trên nhánh → merge PR #30 là qua). CEO dùng thật, chốt 3 chỉnh:
+- **① Sort task GẦN → XA** (`GvHome`): canLam đổi sort ngày GIẢM dần (hôm nay trên cùng, nợ cũ
+  xuống dưới) — cả list tab Việc chấm lẫn preview box trang chủ.
+- **② Đóng toàn bộ task 2 lớp 8S0 + 12A1** (chưa vào quy trình mới) — thao tác DỮ LIỆU, không
+  phải code: `scripts/sql_dong_task_8s0_12a1.sql` (CEO dán SQL Editor). Chỉ SET mốc *_dong_at
+  (pure-derive → task tự biến mất mọi app), KHÔNG qua fn_dong_phase nên không Elo/EXP. ⭐ Mốc ghi
+  = 23:00 VN NGÀY BUỔI (backfill hành chính) chứ không phải now() — để fn_ta/gv_dashboard không
+  tính "đóng muộn" trừ oan bar tháng của GV/TA. Buổi tương lai không đụng — 2 lớp còn mở buổi
+  mới thì task lại sinh, chạy lại file.
+- **③ "Mức buổi" bỏ select hẹp → `MucPicker` popup FULL CHIỀU NGANG** (`ChamBuoiGv`): bottom
+  sheet 11 nhãn nhóm mức 5→1, mỗi nhãn 1 hàng wrap đủ dòng + badge số mức màu, hàng "Bỏ chọn",
+  nhãn-cũ hiện "(nhãn cũ)" trên nút. ERP desktop giữ select (màn rộng đọc được).
+Verify: tsc 0 · build:gv pass. Nhánh reset từ main sau merge #30 (giữ tên, luật nhánh-đã-merge).

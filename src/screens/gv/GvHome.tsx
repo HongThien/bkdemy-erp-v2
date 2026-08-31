@@ -73,7 +73,8 @@ export default function GvHome({ profile, quyen }: { profile: MyProfile; quyen: 
 
   if (view) return <ChamBuoiGv view={view} onBack={() => { setView(null); reload(true) }} />
 
-  const canLam = tasks.filter((t) => !t.done)
+  // Sắp theo thời gian GẦN → XA (CEO 31/08) — preview box trang chủ cũng ăn theo thứ tự này.
+  const canLam = tasks.filter((t) => !t.done).sort((a, b) => b.ngay.localeCompare(a.ngay) || a.lop.localeCompare(b.lop))
   const noCua = (k: NvKey) => canLam.filter((t) => t.tab === k).length
 
   return (
@@ -239,7 +240,8 @@ function ViecTab({ tasks, now, homNay, onOpen }: {
   tasks: MyTask[]; now: number; homNay: string; onOpen: (v: BuoiViewGv) => void
 }) {
   const [xemXong, setXemXong] = useState(false)
-  const canLam = tasks.filter((t) => !t.done).sort((a, b) => a.ngay.localeCompare(b.ngay) || a.lop.localeCompare(b.lop) || a.tab.localeCompare(b.tab))
+  // GẦN → XA (CEO 31/08): ngày giảm dần — hôm nay trên cùng, nợ cũ dần xuống dưới.
+  const canLam = tasks.filter((t) => !t.done).sort((a, b) => b.ngay.localeCompare(a.ngay) || a.lop.localeCompare(b.lop) || a.tab.localeCompare(b.tab))
   const daXong = tasks.filter((t) => t.done).sort((a, b) => (b.doneAt ?? '').localeCompare(a.doneAt ?? '')).slice(0, 20)
   const ngays = [...new Set(canLam.map((t) => t.ngay))]
   return (

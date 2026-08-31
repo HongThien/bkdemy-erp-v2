@@ -318,31 +318,66 @@ function DanhGiaPanel({ buoi, roster, tenDang, napTenDang, onChange }: {
                   })}
                 </div>
               )}
-              <div className="flex flex-col gap-1.5 sm:flex-row">
-                {/* Buổi chấm bằng bộ nhãn CŨ: có muc chưa có mã → option riêng "nhãn cũ", không im lặng đọc bằng nhãn mới. */}
-                <select value={hs?.mucMa ?? (hs?.muc ? `cu-${hs.muc}` : '')} onChange={(e) => saveMuc(hsId, e.target.value)} disabled={xong}
-                  title={nhanMuc(hs?.muc ?? null, hs?.mucMa ?? null) ?? undefined}
-                  className="h-10 min-w-0 flex-1 rounded-lg border border-slate-200 px-1.5 text-[12.5px] disabled:bg-slate-50 disabled:text-slate-500">
-                  <option value="">— Mức buổi: chưa chọn —</option>
-                  {!hs?.mucMa && hs?.muc != null && (
-                    <option value={`cu-${hs.muc}`} disabled>Mức {hs.muc} · {nhanMuc(hs.muc, null)} (nhãn cũ)</option>
-                  )}
-                  {MUC_OPTS.map((m) => (
-                    <optgroup key={m} label={`Mức ${m}`}>
-                      {MUC_CATALOG.filter((it) => it.muc === m).map((it) => (
-                        <option key={it.ma} value={it.ma} title={it.nhan}>{it.nhan}</option>
-                      ))}
-                    </optgroup>
-                  ))}
-                </select>
+              <div className="flex flex-col gap-1.5">
+                <MucPicker hsTen={tenHT[i]} muc={hs?.muc ?? null} mucMa={hs?.mucMa ?? null} disabled={xong} onPick={(ma) => saveMuc(hsId, ma ?? '')} />
                 <textarea defaultValue={hs?.nhan_xet ?? ''} onBlur={(e) => saveNX(hsId, e.target.value)} readOnly={xong} placeholder="nhận xét…"
-                  className="h-10 min-w-0 flex-1 rounded-lg border border-slate-200 px-2.5 py-2 text-[12.5px] read-only:bg-slate-50 read-only:text-slate-500" />
+                  className="h-10 min-w-0 rounded-lg border border-slate-200 px-2.5 py-2 text-[12.5px] read-only:bg-slate-50 read-only:text-slate-500" />
               </div>
             </div>
           )
         })}
       </div>
     </div>
+  )
+}
+
+// Chọn "Mức buổi" = POPUP FULL CHIỀU NGANG (CEO 31/08 — select hẹp đọc nhãn nhận xét khó).
+// Sheet đáy màn: 11 nhãn MUC_CATALOG nhóm theo mức 5→1, mỗi nhãn 1 hàng full-width, wrap đủ dòng.
+// Buổi chấm bằng bộ nhãn CŨ (có muc, chưa có mã): hiện trên nút là "(nhãn cũ)" — chọn nhãn mới = ghi đè.
+const MUC_BADGE: Record<number, string> = {
+  5: 'bg-emerald-600', 4: 'bg-lime-600', 3: 'bg-amber-500', 2: 'bg-orange-500', 1: 'bg-rose-600',
+}
+function MucPicker({ hsTen, muc, mucMa, disabled, onPick }: {
+  hsTen: string; muc: number | null; mucMa: string | null; disabled: boolean; onPick: (ma: string | null) => void
+}) {
+  const [mo, setMo] = useState(false)
+  const nhan = nhanMuc(muc, mucMa)
+  return (
+    <>
+      <button onClick={() => !disabled && setMo(true)} disabled={disabled}
+        className="flex min-h-[44px] w-full items-center gap-2 rounded-lg border border-slate-200 px-2.5 py-1.5 text-left disabled:bg-slate-50">
+        {muc != null && <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-md text-[12px] font-bold text-white ${MUC_BADGE[muc]}`}>{muc}</span>}
+        <span className={`min-w-0 flex-1 text-[12.5px] leading-snug ${nhan ? 'text-slate-700' : 'text-slate-400'}`}>
+          {nhan ? `${nhan}${muc != null && !mucMa ? ' (nhãn cũ)' : ''}` : 'Mức buổi: chưa chọn'}</span>
+        {!disabled && <span className="shrink-0 text-slate-300">▾</span>}
+      </button>
+      {mo && (
+        <div className="fixed inset-0 z-50 flex items-end bg-slate-900/40" onClick={() => setMo(false)}>
+          <div className="max-h-[82dvh] w-full overflow-auto rounded-t-2xl bg-white p-3 shadow-2xl" style={{ paddingBottom: 'max(0.75rem, env(safe-area-inset-bottom))' }} onClick={(e) => e.stopPropagation()}>
+            <div className="mb-1.5 flex items-center gap-2 px-1">
+              <p className="min-w-0 flex-1 truncate text-[14px] font-bold text-slate-900">Mức buổi · {hsTen}</p>
+              <button onClick={() => setMo(false)} className="rounded-lg px-2.5 py-1 text-[13px] text-slate-400 active:bg-slate-100">Đóng</button>
+            </div>
+            {mucMa != null && (
+              <button onClick={() => { onPick(null); setMo(false) }}
+                className="mb-1 w-full rounded-xl border border-slate-200 px-3 py-2.5 text-left text-[13px] text-slate-500 active:bg-slate-50">✕ Bỏ chọn (chưa chấm mức)</button>
+            )}
+            {MUC_OPTS.map((m) => (
+              <div key={m} className="mb-1">
+                {MUC_CATALOG.filter((it) => it.muc === m).map((it) => (
+                  <button key={it.ma} onClick={() => { onPick(it.ma); setMo(false) }}
+                    className={`mb-1 flex w-full items-start gap-2.5 rounded-xl border px-3 py-2.5 text-left active:bg-slate-50 ${mucMa === it.ma ? 'border-green-500 bg-green-50' : 'border-slate-200'}`}>
+                    <span className={`mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md text-[12px] font-bold text-white ${MUC_BADGE[m]}`}>{m}</span>
+                    <span className="min-w-0 flex-1 text-[13px] leading-snug text-slate-700">{it.nhan}</span>
+                    {mucMa === it.ma && <span className="shrink-0 font-bold text-green-600">✓</span>}
+                  </button>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </>
   )
 }
 
