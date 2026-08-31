@@ -7428,3 +7428,11 @@ MỌI buổi ngay < 2026-08-23 (mọi lớp). `scripts/sql_dong_danhgia_truoc_23
 cùng khuôn backfill 8S0/12A1: chỉ điền mốc NULL, mốc 23:00 VN ngày buổi (không "đóng muộn"
 trong dashboard), CHỈ khâu đánh giá (ingame/ET/BTVN cũ còn mở = nợ thật TA, không đụng) +
 update hoan_tat cho buổi đủ 4 mốc.
+
+## 2026-08-31 (tiếp 5) — Chống phóng-to-nhầm trên mobile (4 app PWA)
+
+CEO: "thi thoảng click nhầm app bị phóng to". Nguồn: iOS auto-zoom khi focus input chữ <16px +
+double-tap zoom. Fix 2 lớp: ① viewport meta gv/ta/ops/hs.html thêm `maximum-scale=1.0,
+user-scalable=no` (chặn zoom-khi-focus-input; pinch trợ năng HĐH vẫn còn) · ② index.css
+`html{touch-action:manipulation; text-size-adjust:100%}` (tắt double-tap-zoom, chặn phóng chữ
+khi xoay máy; desktop không ảnh hưởng — đều là hành vi cảm ứng). Build:gv pass.
