@@ -1938,13 +1938,16 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
   )
 }
 // Popup báo động: chọn dạng HS kém + ghi chú → themCanhBao.
-function AlertModal({ buoiId, hocSinhId, hsTen, dangBuoi, tenDang, onClose, onSaved }: {
+// `nguon` mặc định 'btvn' (BtvnTab như cũ); DanhGiaTab truyền 'danhgia' + batBuocGhiChu
+// (CEO 31/08: chuông ở đánh giá sau buổi, GV phải ghi rõ kém chỗ nào).
+function AlertModal({ buoiId, hocSinhId, hsTen, dangBuoi, tenDang, onClose, onSaved, nguon = 'btvn', batBuocGhiChu = false }: {
   buoiId: string; hocSinhId: string; hsTen: string; dangBuoi: string[]; tenDang: (md: string | null) => string; onClose: () => void; onSaved: () => void
+  nguon?: 'btvn' | 'danhgia'; batBuocGhiChu?: boolean
 }) {
   const [maDang, setMaDang] = useState(dangBuoi[0] ?? '')
   const [ghiChu, setGhiChu] = useState('')
   const [busy, setBusy] = useState(false)
-  async function luu() { if (!maDang) return; setBusy(true); try { await themCanhBao({ buoiId, hocSinhId, maDang, ghiChu: ghiChu.trim() || undefined }); onSaved() } catch (e: any) { alert(e.message ?? String(e)); setBusy(false) } }
+  async function luu() { if (!maDang || (batBuocGhiChu && !ghiChu.trim())) return; setBusy(true); try { await themCanhBao({ buoiId, hocSinhId, maDang, ghiChu: ghiChu.trim() || undefined, nguon }); onSaved() } catch (e: any) { alert(e.message ?? String(e)); setBusy(false) } }
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-4" onClick={onClose}>
       <div className="w-[460px] max-w-full rounded-2xl border border-slate-200 bg-white p-5 shadow-2xl" onClick={(e) => e.stopPropagation()}>
@@ -1953,10 +1956,10 @@ function AlertModal({ buoiId, hocSinhId, hsTen, dangBuoi, tenDang, onClose, onSa
         <select value={maDang} onChange={(e) => setMaDang(e.target.value)} className="mb-2 h-9 w-full rounded-md border border-slate-300 px-2 text-[13px]">
           {dangBuoi.map((md) => <option key={md} value={md}>{tenDang(md)}</option>)}
         </select>
-        <textarea value={ghiChu} onChange={(e) => setGhiChu(e.target.value)} placeholder="Ghi chú (tuỳ): kém chỗ nào…" className="mb-3 h-20 w-full rounded-md border border-slate-300 px-2 py-1 text-[13px]" />
+        <textarea value={ghiChu} onChange={(e) => setGhiChu(e.target.value)} placeholder={batBuocGhiChu ? 'Ghi chú (bắt buộc): kém chỗ nào, biểu hiện gì…' : 'Ghi chú (tuỳ): kém chỗ nào…'} className="mb-3 h-20 w-full rounded-md border border-slate-300 px-2 py-1 text-[13px]" />
         <div className="flex justify-end gap-2">
           <button onClick={onClose} className="rounded-md px-3 py-1.5 text-[13px] text-slate-500 hover:bg-slate-100">Huỷ</button>
-          <button onClick={luu} disabled={busy || !maDang} className="rounded-md bg-rose-600 px-4 py-1.5 text-[13px] font-medium text-white hover:bg-rose-500 disabled:opacity-40">{busy ? 'Đang gửi…' : 'Gửi báo động'}</button>
+          <button onClick={luu} disabled={busy || !maDang || (batBuocGhiChu && !ghiChu.trim())} className="rounded-md bg-rose-600 px-4 py-1.5 text-[13px] font-medium text-white hover:bg-rose-500 disabled:opacity-40">{busy ? 'Đang gửi…' : 'Gửi báo động'}</button>
         </div>
       </div>
     </div>
@@ -1977,6 +1980,10 @@ function DanhGiaTab({ buoiId, roster, dangOpts, buoi, onChange }: { buoiId: stri
   const [probs, setProbs] = useState<Problem[]>([])
   const [grades, setGrades] = useState<Grade[]>([])
   const [data, setData] = useState<Record<string, DanhGiaHS>>({})
+  // 🚨 chuông đỏ NGAY TRONG đánh giá (CEO 31/08 — trước chỉ BtvnTab có): nguon='danhgia',
+  // ghi chú bắt buộc; chảy thẳng vào luật duyệt bổ trợ (≥2/4 kênh HOẶC báo động).
+  const [cb, setCb] = useState<CanhBao[]>([])
+  const [alertFor, setAlertFor] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
   const xong = !!buoi.danh_gia_xong_at
   const coMat = roster.filter((r) => r.diem_danh === 'co_mat')
@@ -1992,6 +1999,7 @@ function DanhGiaTab({ buoiId, roster, dangOpts, buoi, onChange }: { buoiId: stri
     try {
       const [p, g] = await Promise.all([listProblems(buoiId, 'ingame'), listGrades(buoiId)])
       setProbs(p); setGrades(g)
+      setCb(await listCanhBao(buoiId).catch(() => []))
       try { setData(await getDanhGia(buoiId)) } catch { setData({}) }
     } finally { setLoading(false) }
   }
@@ -2069,9 +2077,23 @@ function DanhGiaTab({ buoiId, roster, dangOpts, buoi, onChange }: { buoiId: stri
           <tbody>
             {coMat.map((r, i) => {
               const hsId = r.hoc_sinh_id; const hs = data[hsId]
+              const cbHs = cb.filter((c) => c.hoc_sinh_id === hsId)
               return (
                 <tr key={r.id} className="align-top">
-                  <td className="sticky left-0 z-10 whitespace-nowrap border border-slate-200 bg-white px-3 py-2 text-left align-middle font-medium text-slate-800">{tenHT[i]}</td>
+                  <td className="sticky left-0 z-10 whitespace-nowrap border border-slate-200 bg-white px-3 py-2 text-left align-middle font-medium text-slate-800">
+                    <div className="flex items-center gap-1.5">{tenHT[i]}
+                      <button onClick={() => setAlertFor(hsId)} disabled={!dangs.length} title={dangs.length ? 'Báo động: HS cần bổ trợ dạng này' : 'Gắn dạng ở tab Chấm bài trên lớp trước'}
+                        className="rounded px-1 text-[13px] opacity-50 hover:bg-rose-50 hover:opacity-100 disabled:opacity-20">🚨</button>
+                    </div>
+                    {cbHs.length > 0 && (
+                      <div className="mt-1 flex max-w-[200px] flex-wrap gap-1">
+                        {cbHs.map((c) => (
+                          <span key={c.id} className="inline-flex items-center gap-1 rounded bg-rose-100 px-1.5 py-0.5 text-[10px] font-semibold text-rose-700" title={c.ghi_chu ?? ''}>{tenDang(c.ma_dang)}
+                            <button onClick={async () => { await xoaCanhBao(c.id); reload() }} className="text-rose-400 hover:text-rose-700">✕</button></span>
+                        ))}
+                      </div>
+                    )}
+                  </td>
                   {dangs.map((md) => {
                     const cur = hs?.diemTheoDang[md]
                     const baiDang = probs.filter((p) => p.ma_dang === md)
@@ -2121,6 +2143,11 @@ function DanhGiaTab({ buoiId, roster, dangOpts, buoi, onChange }: { buoiId: stri
           </tbody>
         </table>
       </div>
+      {alertFor && (
+        <AlertModal buoiId={buoiId} hocSinhId={alertFor} hsTen={coMat.find((r) => r.hoc_sinh_id === alertFor)?.hoc_sinh?.ho_ten ?? '?'}
+          dangBuoi={dangs} tenDang={(md) => (md ? tenDang(md) : '—')} nguon="danhgia" batBuocGhiChu
+          onClose={() => setAlertFor(null)} onSaved={() => { setAlertFor(null); reload() }} />
+      )}
     </div>
   )
 }

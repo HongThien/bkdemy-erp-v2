@@ -156,3 +156,16 @@ export async function getHeRankDiemMT(hocSinhId: string, mon: string, ym: string
   const r = await rankByDiemMT(hocSinhId, ((lops ?? []) as any[]).map((l) => l.id as string), mon, ym)
   return r ? { ...r, he, khoi } : null
 }
+
+// ── Rank MT CẢ LỚP 1 call (app GV tab Lớp — CEO 31/08: hiện MT theo THÁNG + rank khối nhỏ) ──
+// §2.0: bản BATCH của fn_rank_diem_mt (gọi per-HS cho cả lớp là N+1 RPC). Cùng luật nguyên văn
+// (điểm của em đi theo em · cửa sổ 25→10 · chưa thi = 0đ CHỈ trong xếp hạng); `tb` = null khi
+// chưa thi trong cửa sổ → ô hiển thị "—".
+export type RankMTRow = { hocSinhId: string; tb: number | null; rankNow: number; rankTotal: number }
+export async function rankDiemMTLop(lopId: string, mon: string, ym: string): Promise<Map<string, RankMTRow>> {
+  const { data, error } = await supabase.rpc('fn_rank_diem_mt_lop', { p_lop: lopId, p_mon: mon, p_ym: ym })
+  if (error) throw error
+  return new Map(((data ?? []) as any[]).map((r) => [r.hoc_sinh_id as string, {
+    hocSinhId: r.hoc_sinh_id, tb: r.tb == null ? null : Number(r.tb), rankNow: Number(r.rank_now), rankTotal: Number(r.rank_total),
+  }]))
+}
