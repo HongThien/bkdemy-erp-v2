@@ -7411,3 +7411,28 @@ main khi code còn trên nhánh → merge PR #30 là qua). CEO dùng thật, ch�
   sheet 11 nhãn nhóm mức 5→1, mỗi nhãn 1 hàng wrap đủ dòng + badge số mức màu, hàng "Bỏ chọn",
   nhãn-cũ hiện "(nhãn cũ)" trên nút. ERP desktop giữ select (màn rộng đọc được).
 Verify: tsc 0 · build:gv pass. Nhánh reset từ main sau merge #30 (giữ tên, luật nhánh-đã-merge).
+
+## 2026-08-31 (tiếp 3) — fn_dong_phase v5: ingame KHÔNG bắt buộc dữ liệu (CEO chốt)
+
+CEO (dùng app GV thật): "chấm bài trên lớp không bắt buộc có dữ liệu — TẠM THỜI cho phép đóng
+khi dữ liệu trống". Guard v4 (202608310120) đang chặn cả ingame khi 0 ô chấm.
+Mig `202608312039`: fn_dong_phase v5 = v4 + điều kiện `p_phase in ('et','mt')` bọc khối guard —
+ingame miễn cả 2 lớp (0-ô lẫn full-lưới), ET/MT giữ nguyên chặt. Đóng ingame trống chạy nhánh
+rank bình thường (điểm 0, không ghi gì ngoài mốc) — vô hại. "Tạm thời": siết lại = migration mới.
+CHƯA áp DB — CEO dán SQL Editor (đã gửi trong chat). Không đụng UI (guard nằm server-side).
+
+## 2026-08-31 (tiếp 4) — Đóng khâu Đánh giá cho toàn bộ buổi TRƯỚC 23/08 (CEO chốt)
+
+CEO: app GV vừa chạy, không bắt GV gánh nợ đánh giá tồn từ trước → đóng danh_gia_xong_at cho
+MỌI buổi ngay < 2026-08-23 (mọi lớp). `scripts/sql_dong_danhgia_truoc_2308.sql` (CEO dán) —
+cùng khuôn backfill 8S0/12A1: chỉ điền mốc NULL, mốc 23:00 VN ngày buổi (không "đóng muộn"
+trong dashboard), CHỈ khâu đánh giá (ingame/ET/BTVN cũ còn mở = nợ thật TA, không đụng) +
+update hoan_tat cho buổi đủ 4 mốc.
+
+## 2026-08-31 (tiếp 5) — Chống phóng-to-nhầm trên mobile (4 app PWA)
+
+CEO: "thi thoảng click nhầm app bị phóng to". Nguồn: iOS auto-zoom khi focus input chữ <16px +
+double-tap zoom. Fix 2 lớp: ① viewport meta gv/ta/ops/hs.html thêm `maximum-scale=1.0,
+user-scalable=no` (chặn zoom-khi-focus-input; pinch trợ năng HĐH vẫn còn) · ② index.css
+`html{touch-action:manipulation; text-size-adjust:100%}` (tắt double-tap-zoom, chặn phóng chữ
+khi xoay máy; desktop không ảnh hưởng — đều là hành vi cảm ứng). Build:gv pass.

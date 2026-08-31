@@ -17,6 +17,14 @@
   --color-ph-purple: #7656d8;
 }
 
+/* CHỐNG PHÓNG TO NHẦM trên mobile (CEO 31/08 — app GV "click nhầm bị zoom"):
+   touch-action:manipulation TẮT double-tap-zoom (pinch trợ năng của HĐH vẫn hoạt động);
+   text-size-adjust chặn iOS tự phóng chữ khi xoay máy. Đi kèm viewport meta
+   maximum-scale=1 + user-scalable=no ở gv/ta/ops/hs.html — CHẶN iOS tự zoom khi focus
+   vào input chữ <16px (nguồn "click nhầm phóng to" chính). Desktop không ảnh hưởng
+   (đều là hành vi cảm ứng). */
+html { touch-action: manipulation; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
 /* Công thức KaTeX cỡ bằng chữ thường.
    ⚠ !important: katex.min.css (import SAU index.css ở main.tsx) đặt `.katex{font-size:1.21em}` — cùng
    độ ưu tiên nên cái sau thắng, làm mọi công thức inline (kể cả $ABC$) to hơn chữ thường 21%. */
