@@ -80,7 +80,7 @@ export default function TaHome({ profile, quyen }: { profile: MyProfile; quyen: 
         {tab === 'dash' && <DashTa />}
         {tab !== 'home' && tab !== 'dash' && <ViecTab key={tab} nv={nvOf(tab)} tasks={tasks.filter((t) => t.tab === tab)} nopCount={nopCount} now={now} homNay={homNay} onOpen={setView} />}
       </div>
-      <GopY route={tab} />
+      {/* Nút 🐞 chuyển vào HeaderBar trang chủ (góc trên phải) — CEO 31/08, đồng bộ khuôn app GV. */}
 
       {/* bottom tab — active = pill màu (khuôn OpsHome), mỗi nghiệp vụ có bubble nợ, chừa safe-area */}
       <div className="border-t border-slate-200 bg-white" style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}>
@@ -119,6 +119,7 @@ function HeaderBar({ profile, sub }: { profile: MyProfile; sub: string }) {
           <p className="truncate text-[13.5px] font-bold text-slate-800">{ten}</p>
           <p className="text-[11px] text-slate-400">{sub}</p>
         </div>
+        <GopY route="home" />
         <button onClick={() => supabase.auth.signOut()} className="rounded-lg px-2.5 py-1.5 text-[12px] text-slate-400 active:bg-slate-100">Thoát</button>
       </div>
     </div>

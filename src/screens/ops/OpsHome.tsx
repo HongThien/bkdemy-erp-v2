@@ -16,6 +16,7 @@ import TuQuaScreen from './TuQuaScreen'
 import OpsReportScreen from '../vanhanhops/OpsReportScreen'
 import PrepScreen from '../vanhanhops/PrepScreen'
 import DiemDanhTestScreen from '../vanhanhops/DiemDanhTestScreen'
+import GopY from './GopY'
 
 type TabKey = 'home' | 'diemdanh' | 'report' | 'prep' | 'test' | 'tuqua'
 // Tab ↔ leaf quyền (cùng leaf-id cây Admin ERP) + bộ màu literal. home luôn hiện.
@@ -148,6 +149,7 @@ function HomTay({ profile, onGo, coQuyen, onThoat }: { profile: MyProfile; onGo:
             <p className="truncate text-[13.5px] font-bold text-slate-800">{profile.nhanSu.ho_ten}</p>
             <p className="text-[11px] text-slate-400">BK Vận hành</p>
           </div>
+          <GopY route="home" />
           <button onClick={onThoat} className="rounded-lg px-2.5 py-1.5 text-[12px] text-slate-400 active:bg-slate-100">Thoát</button>
         </div>
       </div>

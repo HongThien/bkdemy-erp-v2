@@ -7447,3 +7447,10 @@ khi xoay máy; desktop không ảnh hưởng — đều là hành vi cảm ứng
   top3/mẫu số tongTaXepHang; bar + 4 stat của chính họ vẫn tính). KHÔNG hard-code tên trong
   code/migration — seed chạy TAY: select tra ma_ns rồi update 2 người (§1.5 không đoán tên).
   Xếp hạng nhân sự trên app hiện chỉ có fn_ta_dashboard; fn_gv_dashboard chưa có xếp hạng.
+
+## 2026-08-31 (tiếp 7) — Nút 🐞 app TA + OPS đồng bộ khuôn app GV (CEO chốt)
+
+CEO: "báo lỗi làm toàn bộ app ops, ta giống giáo viên". App TA: GopY hết fixed nổi đè → inline
+trong HeaderBar trang chủ góc trên phải (cạnh Thoát), bỏ render global theo tab. App OPS: TRƯỚC
+GIỜ KHÔNG có nút báo lỗi → thêm `ops/GopY.tsx` (route app_ops:home, nút Gửi indigo) đặt ở top
+bar HomTay cạnh Thoát. Cùng hệ bao_loi, không kênh mới. tsc 0 · build:ta + build:ops pass.
