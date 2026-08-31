@@ -22,18 +22,20 @@
 --   and (b.ingame_dong_at is null or b.et_dong_at is null or b.btvn_dong_at is null
 --        or b.danh_gia_xong_at is null) group by l.ten_lop;
 
+-- (⚠ đã sửa 31/08: UPDATE...FROM không cho lateral tham chiếu bảng đích `b` — 42P10 →
+--  tính mốc inline trong từng SET.)
 update buoi_hoc b
-set ingame_dong_at   = coalesce(b.ingame_dong_at, moc.ts),
-    et_dong_at       = coalesce(b.et_dong_at, moc.ts),
-    btvn_dong_at     = coalesce(b.btvn_dong_at, moc.ts),
-    danh_gia_xong_at = coalesce(b.danh_gia_xong_at, moc.ts),
+set ingame_dong_at   = coalesce(b.ingame_dong_at, ((b.ngay)::text || ' 23:00')::timestamp at time zone 'Asia/Ho_Chi_Minh'),
+    et_dong_at       = coalesce(b.et_dong_at, ((b.ngay)::text || ' 23:00')::timestamp at time zone 'Asia/Ho_Chi_Minh'),
+    btvn_dong_at     = coalesce(b.btvn_dong_at, ((b.ngay)::text || ' 23:00')::timestamp at time zone 'Asia/Ho_Chi_Minh'),
+    danh_gia_xong_at = coalesce(b.danh_gia_xong_at, ((b.ngay)::text || ' 23:00')::timestamp at time zone 'Asia/Ho_Chi_Minh'),
     -- MT chỉ đóng khi buổi THẬT SỰ có gán MT (không có thì task MT vốn không sinh)
     mt_dong_at = case when exists (select 1 from gami_session_problems sp
                                    where sp.buoi_hoc_id = b.id and sp.phase = 'mt')
-                      then coalesce(b.mt_dong_at, moc.ts) else b.mt_dong_at end,
+                      then coalesce(b.mt_dong_at, ((b.ngay)::text || ' 23:00')::timestamp at time zone 'Asia/Ho_Chi_Minh')
+                      else b.mt_dong_at end,
     updated_at = now()
-from lop l,
-     lateral (select ((b.ngay)::text || ' 23:00')::timestamp at time zone 'Asia/Ho_Chi_Minh' as ts) moc
+from lop l
 where l.id = b.lop_id
   and l.ten_lop in ('8S0', '12A1')
   and b.trang_thai <> 'huy'
