@@ -7436,3 +7436,14 @@ double-tap zoom. Fix 2 lớp: ① viewport meta gv/ta/ops/hs.html thêm `maximum
 user-scalable=no` (chặn zoom-khi-focus-input; pinch trợ năng HĐH vẫn còn) · ② index.css
 `html{touch-action:manipulation; text-size-adjust:100%}` (tắt double-tap-zoom, chặn phóng chữ
 khi xoay máy; desktop không ảnh hưởng — đều là hành vi cảm ứng). Build:gv pass.
+
+## 2026-08-31 (tiếp 6) — Nút 🐞 về header trang chủ (app GV) + ẩn Thùy/Trang khỏi xếp hạng
+
+- **🐞 hết nổi đè** (CEO: vướng thao tác): app GV bỏ `<GopY>` global fixed bottom-left → nút
+  inline 8×8 trong HeaderBar TRANG CHỦ, góc trên phải cạnh Thoát. App TA giữ nguyên (CEO chưa
+  yêu cầu — đổi thì 1 edit tương tự).
+- **Ẩn nhân sự khỏi bảng xếp hạng app** (CEO: gỡ Thùy + Trang): mig `202608312055` — cột
+  `nhan_su.an_xep_hang` default false + fn_ta_dashboard v2 lọc cờ khỏi POOL xếp hạng (rank/
+  top3/mẫu số tongTaXepHang; bar + 4 stat của chính họ vẫn tính). KHÔNG hard-code tên trong
+  code/migration — seed chạy TAY: select tra ma_ns rồi update 2 người (§1.5 không đoán tên).
+  Xếp hạng nhân sự trên app hiện chỉ có fn_ta_dashboard; fn_gv_dashboard chưa có xếp hạng.

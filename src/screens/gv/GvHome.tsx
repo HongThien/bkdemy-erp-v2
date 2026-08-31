@@ -86,7 +86,7 @@ export default function GvHome({ profile, quyen }: { profile: MyProfile; quyen: 
         {tab === 'lop' && <LopView lops={lopsGv} />}
         {tab === 'dash' && <DashGv />}
       </div>
-      <GopY route={tab} />
+      {/* Nút 🐞 chuyển vào HeaderBar trang chủ (góc trên phải) — CEO 31/08: nổi đè mọi màn vướng thao tác. */}
 
       {/* bottom tab — active = pill màu (khuôn OpsHome), chừa safe-area */}
       <div className="border-t border-slate-200 bg-white" style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}>
@@ -124,6 +124,7 @@ function HeaderBar({ profile, sub }: { profile: MyProfile; sub: string }) {
           <p className="truncate text-[13.5px] font-bold text-slate-800">{ten}</p>
           <p className="text-[11px] text-slate-400">{sub}</p>
         </div>
+        <GopY route="home" />
         <button onClick={() => supabase.auth.signOut()} className="rounded-lg px-2.5 py-1.5 text-[12px] text-slate-400 active:bg-slate-100">Thoát</button>
       </div>
     </div>

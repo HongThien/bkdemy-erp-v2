@@ -1,5 +1,7 @@
-// Nút góp ý / báo lỗi nổi 🐞 cho app GV — tái dùng NGUYÊN hệ bao_loi của ERP (như app TA),
-// KHÔNG đẻ kênh mới, không import useStore (luật bundle). route = màn đang đứng, prefix app_gv.
+// Nút góp ý / báo lỗi 🐞 cho app GV — tái dùng NGUYÊN hệ bao_loi của ERP (như app TA),
+// KHÔNG đẻ kênh mới, không import useStore (luật bundle). route prefix app_gv.
+// CEO 31/08: KHÔNG nổi đè mọi màn nữa (vướng thao tác) — chỉ đặt Ở TRANG CHỦ, góc trên
+// phải (trong HeaderBar cạnh nút Thoát) → nút = inline, hết fixed.
 import { useState } from 'react'
 import { supabase } from '../../lib/supabase'
 import { createBaoLoi } from '../../lib/baoloi'
@@ -30,8 +32,7 @@ export default function GopY({ route }: { route: string }) {
   return (
     <>
       <button onClick={() => { setDone(false); setOpen(true) }} aria-label="Góp ý / báo lỗi"
-        className="fixed bottom-[76px] left-3 z-40 flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-[19px] shadow-lg active:bg-slate-100"
-        style={{ marginBottom: 'env(safe-area-inset-bottom)' }}>🐞</button>
+        className="flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 bg-white text-[15px] active:bg-slate-100">🐞</button>
       {open && (
         <div className="fixed inset-0 z-50 flex items-end justify-center bg-slate-900/40 p-3 sm:items-center" onClick={() => setOpen(false)}>
           <div className="w-full max-w-[440px] rounded-2xl bg-white p-4 shadow-2xl" onClick={(e) => e.stopPropagation()}>
