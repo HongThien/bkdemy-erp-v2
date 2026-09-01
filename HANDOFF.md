@@ -943,9 +943,85 @@ thẳng `ca_test.nguoi_cham_id`/`nguoi_tra_bai_id`, data đã sẵn, không cầ
 - Thi công trong worktree `wt-bot` (đứng cố định ở main) — KHÔNG merge/chạy gì từ checkout
   `bkdemy-erp-v2` (sân chung các phiên, hay bị đổi branch).
 
+### ⭐ 4 APP RIÊNG CHO 4 VAI (HS · OPS · TA · GV) — trạng thái đến hết 31/08
+- **Khuôn:** mỗi app = **1 entry Vite riêng trong CÙNG repo** (không đẻ repo mới): `index.html`
+  (ERP desktop) · `hs.html` · `ops.html` · `ta.html` · `gv.html`; mỗi cái 1 `vite.config.<x>.ts`,
+  `dist-<x>`, scripts `dev:x|build:x|preview:x`, PWA + màu riêng (HS da trời `#087fc6` · OPS indigo ·
+  TA teal `#0d9488` · GV lá cây `#16a34a`), **5 project Vercel**. Làm app mới = **nhân bản app gần
+  nhất**, KHÔNG import ngược màn ERP desktop (cấm `useStore`/`BuoiHocScreen`/screens kho — bundle
+  phình + logic desktop không hợp cảm ứng). Gate 3 tầng chặn HS → profile → `my_quyen`.
+- **Dùng CHUNG engine với ERP, app chỉ là mặt:** việc = `getMyTasks` lọc `TASKS_BY_VAI[vai]` (engine
+  0 sửa mỗi lần thêm app) · chấm vẫn `gami_grades` + `fn_dong_phase`/`fn_dong_btvn` · góp ý vẫn
+  `bao_loi`. Thêm app KHÔNG được đẻ hệ chấm/thông báo thứ 2.
+- **App TA (30/08) + luồng PH NỘP BTVN ẢNH:** 5 màn (Home việc-của-tôi · ChamBuoi ingame/ET ·
+  ChamBtvn hợp nhất 2 đường nộp · Dash tháng · góp ý). DB: `btvn_nop`/`btvn_nop_anh` (ảnh gốc
+  immutable, `path_cham` riêng; bucket **private** `btvn-nop` nên DB lưu PATH, hiện = signed URL) ·
+  `btvn_nhan_xet_mau` (8 mẫu, TA CHỌN không gõ) · role **`ph_nop`** chỉ EXECUTE 2 RPC nộp = đường
+  ghi DUY NHẤT của PH (không nới FDW ghi) · 5 view FDW gate `tra_at` để trả bài. PH **không chọn
+  buổi** — hệ gán tạm buổi gần nhất, **TA chốt buổi** trong màn chấm (pattern đề-xuất → người
+  confirm, giống chip trạng thái nộp).
+- **App GV (31/08):** 5 tab (Hôm nay · Việc chấm · Học sinh · Lớp · Của tôi). `DanhGiaPanel` viết
+  MỚI touch-first (ERP desktop `DanhGiaTab` 2100+ dòng, cấm import) + **🚨 chuông đỏ bổ trợ ghi chú
+  BẮT BUỘC** (`canh_bao_yeu.nguon='danhgia'` tự chảy vào luật duyệt bổ trợ, 0 công engine) · MT
+  **theo tháng + rank khối** (không có khái niệm "trung bình MT" — CEO chốt) · `fn_rank_diem_mt_lop`
+  batch để né N+1 RPC. **Dashboard GV mới TẦNG A (kỷ luật)** — tầng B (chất lượng đánh giá) và C
+  (outcome) chờ thống nhất bộ chỉ số, UI nói thẳng "🔜 sắp có".
+- **Dashboard tháng TA/GV:** bar = **đạt-chuẩn / đến-hạn** (chậm = không đạt · chất lượng duyệt <80
+  = không đạt) · **thiếu dữ liệu CHẶN đóng** (`fn_dong_phase` v4) · TA thấy MÌNH + TOP 3, ngưỡng ≥10
+  việc · 100% + đủ 10 việc = **mốc thưởng tiền** hiện trên bar. **Người bị ẩn xếp hạng**
+  (`nhan_su.an_xep_hang`, data-driven không hard-code tên) không có rank/không vào mẫu số, nhưng bar
+  + stat của chính họ vẫn tính. Đã seed đúng 2 người (NS001, NS002).
+- **⭐ `fn_dong_phase` v5 (31/08, CEO):** guard đủ-dữ-liệu **chỉ áp ET/MT**; **ingame cho đóng
+  trống** ("chấm bài trên lớp không bắt buộc có dữ liệu"). Đây là nới **TẠM THỜI** — siết lại phải
+  bằng migration mới, đừng tưởng guard v4 còn nguyên.
+- **Backfill hành chính đã chạy (đừng làm lại):** đóng khâu Đánh giá **mọi buổi < 23/08** + đóng
+  task 2 lớp **8S0 + 12A1**. Luật của loại thao tác này: chỉ điền mốc đang NULL, **mốc = 23:00 VN
+  NGÀY BUỔI** (không phải `now()`) để dashboard không tính "đóng muộn" trừ oan bar của GV/TA; buổi
+  `trang_thai='huy'` cố ý bỏ qua (còn 47 buổi NULL đều là huỷ — ĐÚNG, không phải sót).
+- **CÒN TREO:** e2e đường GHI của PH mới chạy 1 lượt nộp thật · bucket `btvn-nop` chưa verify được
+  từ CLI (`claude_build` cấm đọc schema `storage` — xem Dashboard) · dashboard GV tầng B/C · 4 nhánh
+  chưa merge (`feat/app-ops`, `feat/app-ops-ui`, `feat/fix-lane-v2`, `hocphi/phat-sinh-hs-nghi`).
+
+### Nền repo/DB — CHUẨN HOÁ 01/09 (sau chuỗi phiên làm từ điện thoại)
+- **Sổ `_migrations` giờ khớp DB thật:** 0 file treo · 0 báo-động-giả. Đã: baseline 10 file áp tay
+  27→31/08 · vá `bam()` bỏ CR trước khi băm (62 báo "file bị sửa" trước đó là **CRLF vs LF**, không
+  file nào đổi nội dung) · đóng dấu lại 133 dòng sổ · thêm chiều soi **"có trong sổ nhưng không còn
+  file trong repo"**.
+- **`schema.md` refresh 01/09:** 169 bảng · 7 view · 27 trigger · 152 function. (Chạy `npm run
+  schema` sau MỖI đợt áp migration — bản trước đó đứng ở 29/08, cũ hơn 14 migration.)
+- **⚠ Quyền FDW đang MỞ, chờ CEO quyết:** `fdw_bkdemy_web` SELECT được **35 bảng/view** (gồm
+  `hoa_don`, `phu_huynh`, `hoc_sinh`, `bao_cao_ph`, `bai_test_cau` = đề kèm đáp án…) — bản siết
+  15/08 còn-4-bảng đã bị đảo bởi `202608151600_hoan_tac_fdw_thu_hep.sql`, **file không có trong
+  repo** nên không truy được lý do. Hoặc siết lại đúng thứ web + app PH dùng thật, hoặc viết
+  migration ghi lại danh sách cố ý mở. Đang để nguyên hiện trạng.
+
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
 
 
+- **⭐⭐ PHIÊN LÀM TỪ ĐIỆN THOẠI (remote, KHÔNG có credential DB) — về máy có DB PHẢI chạy nghi thức
+  đóng sổ, nếu không repo và DB nói hai chuyện khác nhau (cắn 01/09, 5 ngày liền):** phiên remote
+  viết được migration nhưng **áp không được** → CEO dán tay qua SQL Editor → **DB có, sổ không**;
+  có file còn **chưa từng vào git** (4 file `giai_thuong` 22/08 — `git log --all` = 0 hit). Nghi
+  thức bắt buộc khi về máy có credential: ① `npm run migrate:status` → đối chiếu từng file "còn
+  treo" với `pg_catalog` (có bảng/cột/fn CHƯA đủ — phải **soi THÂN hàm** tìm dấu vân của đúng bản
+  mới, vì `create or replace` không đổi tên) → cái nào DB đã có thì `--baseline`, cái nào chưa thì
+  `npm run migrate` ② `npm run schema` + commit `schema.md` ③ **verify các thao tác dán tay** bằng
+  query thật (seed cờ, role, bucket, backfill) — đừng tin DEVLOG ghi "CEO đã dán".
+- **⭐ Băm file migration mà tính cả CRLF = 62 báo động giả (01/09):** cùng file áp từ Windows (CRLF)
+  và từ container remote (LF) ra 2 vân tay ⇒ `--status` la làng "DB và repo nói khác nhau" trong khi
+  nội dung y hệt. Báo động giả lâu ngày = **không ai đọc cảnh báo nữa**, nguy hơn không có cảnh báo.
+  Sửa gốc ở CÔNG CỤ (băm nội dung LOGIC, bỏ CR) chứ không sửa từng file. Cùng họ với bài học
+  "sửa `introspect` thay vì vá 1 constraint".
+- **⭐ Sổ migration phải soi ĐỦ 3 CHIỀU** — ① file có, sổ không (còn treo) ② file có, sổ có, vân tay
+  lệch (bị sửa sau khi áp) ③ **sổ có, file KHÔNG** ← chiều này trước 01/09 bị mù, và nó là chiều
+  nguy hiểm nhất: dựng lại DB từ repo sẽ **thiếu im lặng**, không lỗi, không cảnh báo. Migration áp
+  tay xong **phải commit file** — SQL chạy rồi mà file không vào git thì repo hết là source of truth.
+- **⭐ Khôi phục DDL từ DB thì CHÉP ĐÚNG HIỆN TRẠNG, đừng tiện tay "cho chuẩn" (01/09):** dựng lại
+  `giai_thuong` từ `pg_catalog` thấy bảng có **policy cho `fdw_bkdemy_web` nhưng KHÔNG có GRANT** —
+  suýt thêm `grant select` cho "đủ bộ", tức là **tự nới quyền đọc** trong lúc chỉ định khôi phục.
+  Policy và GRANT là **hai cổng độc lập** (đã ghi trong mig 15/08): chép cái đang có, ghi chú chỗ
+  lệch, để CEO quyết. Migration khôi phục cũng phải idempotent + bọc DO-block kiểm **chủ sở hữu**
+  (role migrate không sửa nổi RLS/trigger của bảng thuộc `postgres`).
 - **⭐ PURE-DERIVE thắng roster tĩnh khi vấn đề chỉ là "list quá dài" (Test đầu vào assign, 08-14):**
   build xong 1 bảng curate riêng (`test_dau_vao_nhan_su`) để rút gọn dropdown chọn người, Thùy phản
   biện ngay — sort theo GẦN NHẤT-TỪNG-ĐƯỢC-GÁN (derive từ lịch sử, đã có sẵn trong DB) giải quyết đúng

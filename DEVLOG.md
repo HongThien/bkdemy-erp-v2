@@ -7454,3 +7454,63 @@ CEO: "báo lỗi làm toàn bộ app ops, ta giống giáo viên". App TA: GopY 
 trong HeaderBar trang chủ góc trên phải (cạnh Thoát), bỏ render global theo tab. App OPS: TRƯỚC
 GIỜ KHÔNG có nút báo lỗi → thêm `ops/GopY.tsx` (route app_ops:home, nút Gửi indigo) đặt ở top
 bar HomTay cạnh Thoát. Cùng hệ bao_loi, không kênh mới. tsc 0 · build:ta + build:ops pass.
+
+## 2026-09-01 — CHUẨN HOÁ sau chuỗi phiên điện thoại: pull main · sổ migration · schema · dọn rác
+
+**BỐI CẢNH:** 27→31/08 CEO làm từ điện thoại (phiên remote KHÔNG có credential DB) → 60 commit vào
+main qua PR #17→#34 (app TA, app GV, tủ quà, siết quyền BTVN, §2.0 Phase 2-3). Máy này: checkout
+chung `bkdemy-erp-v2` đứng ở `fix/ops-home-hero` (sau main 60), `wt-bot` giữ nhánh `main` (sau 45).
+
+**PULL:** `wt-bot` → detach tại đúng commit đang chạy (nhả nhánh main, bot không đổi 1 dòng code) →
+checkout chung `switch main` + `pull --ff-only` tới `1afd9a4`. Commit local `a5d01b7` (hero app OPS)
+trùng patch-id với `6ae842f` trên main (PR #17) → không mất gì. `bkdemy-ph-app` +4 (luồng BTVN nộp
+qua FDW). `bkdemy-web` đã mới nhất.
+
+**KIỂM CODE MAIN:** `tsc --noEmit` exit 0 · build CẢ 5 bundle (erp/hs/ops/ta/gv) pass.
+
+**SỔ MIGRATION — 3 thứ lệch, sửa cả 3:**
+- **10 file "còn treo" mà DB đã có:** đối chiếu từng file với `pg_catalog` (fn/bảng/cột) + soi THÂN
+  hàm (`fn_dong_phase` có guard v5 `p_phase in ('et','mt')`, `fn_ta_dashboard` có lọc `an_xep_hang`)
+  ⇒ đúng là đã áp tay bằng SQL Editor, chỉ thiếu dòng sổ. `npm run migrate -- --baseline
+  202608312055_an_xep_hang_nhan_su.sql` đánh dấu 10 file, KHÔNG chạy SQL.
+- **62 file báo "đã áp nhưng bị sửa sau đó" = BÁO ĐỘNG GIẢ 100%:** đo lại — cả 62 vân tay lệch đều
+  khớp y hệt khi đổi CRLF→LF, KHÔNG file nào đổi nội dung thật. Nguồn: cùng file áp từ máy Windows
+  (CRLF) và từ container remote (LF) ra 2 vân tay. Vá `bam()` trong `migrate.mjs`: bỏ ký tự CR
+  trước khi băm (băm nội dung LOGIC) + chạy 1 lần đóng dấu lại 133 dòng sổ — CHỈ dòng chứng minh
+  được cùng nội dung (khớp bản thô HOẶC bản LF), dòng nào không chứng minh được thì bỏ qua.
+- **Chiều soi thứ 3 (mới):** `migrate:status` giờ báo cả "CÓ TRONG SỔ NHƯNG KHÔNG CÒN FILE TRONG
+  REPO" — chiều này trước giờ mù, và nó chính là chiều nguy hiểm nhất (dựng lại DB từ repo sẽ
+  THIẾU). Lộ ra 6 dòng: ① `202608292149_bao_loi_loai_va_order.sql` sống ở nhánh `feat/fix-lane-v2`
+  chưa merge → chép file về main (DB đã có, sổ đã có, giờ repo có) · ② 4 file `giai_thuong` 22/08
+  **chưa từng nằm trong git** (`git log --all` = 0 hit) → dựng lại
+  `202609012230_khoi_phuc_giai_thuong_tu_db.sql` bằng DDL ĐỌC NGƯỢC từ pg_catalog, idempotent, phần
+  RLS/policy/trigger bọc DO-block chỉ chạy khi role là CHỦ bảng (2 bảng này thuộc `postgres`, không
+  thuộc `claude_build`) → áp lên DB thật = no-op đã verify (owner/policy/grant/trigger/0 dòng y
+  nguyên) · ③ `202608151600_hoan_tac_fdw_thu_hep.sql` — xem cảnh báo dưới.
+
+**SCHEMA:** `npm run schema` (lần đầu kể từ 29/08): 165→**169 bảng**, 2→7 view, 17→**27 trigger**,
+81→**152 function**. Cảnh báo `claude_build` không sở hữu 5 bảng RLS (giai_thuong ×2, hinh_* ×3) giữ
+nguyên ở đầu file.
+
+**VERIFY THAO TÁC DÁN TAY CỦA CÁC PHIÊN REMOTE (đo trên DB thật):** `an_xep_hang` seed ĐÚNG 2 người
+(NS001 Đào Xuân Thùy · NS002 Phạm Thị Thùy Trang) ✓ · role `ph_nop` có ✓ · `btvn_nhan_xet_mau` 8
+dòng ✓ · `btvn_nop` có 1 lượt nộp thật (test HS con CEO) ✓ · backfill đóng Đánh giá <23/08 ĐÃ chạy
+(47 buổi còn NULL đều `trang_thai='huy'` — đúng ý đồ script) ✓ · 8S0/12A1 chỉ còn buổi 'huy' ✓.
+**CHƯA verify được:** bucket `btvn-nop` — `claude_build` bị `permission denied for schema storage`
+(bài học cũ: storage/auth phải xem qua Dashboard).
+
+**⚠ CẢNH BÁO BẢO MẬT — CHƯA XỬ, CHỜ CEO QUYẾT:** role FDW `fdw_bkdemy_web` (đường bkdemy-web/app PH
+đọc sang ERP) hiện SELECT được **35 bảng/view**, tức bản siết 15/08 (30 bảng → 4) ĐÃ BỊ ĐẢO bằng
+`202608151600_hoan_tac_fdw_thu_hep.sql` — file không có trong repo nên không ai đọc lại được lý do.
+Trong 35 có đúng những thứ migration 15/08 gọi tên là cấp thừa: `hoa_don`, `hoa_don_dong`,
+`phu_huynh`, `hoc_sinh`, `hoc_sinh_he_so`, `bao_cao_ph`, `bai_test_cau`/`bai_lam_cau` (đề KÈM đáp
+án), `gami_grades`, `diem_thi`… 2 hướng: (a) siết lại còn đúng thứ web+app PH dùng thật rồi commit
+migration mới; (b) nếu cố ý mở (app PH nộp BTVN cần 5 view `v_btvn_*` + vài bảng) thì viết migration
+GHI LẠI đúng danh sách để repo nói đúng sự thật. Đang để NGUYÊN hiện trạng, không tự nới/siết.
+
+**DỌN:** xoá 3 file rác 0 byte ở gốc repo (`cd`, `git`, `main` — gõ nhầm lệnh 29/08 21:42).
+
+**CÒN TREO SAU PHIÊN NÀY:** 4 nhánh chưa merge (`feat/app-ops` 1 · `feat/app-ops-ui` 2 ·
+`feat/fix-lane-v2` 2 · `hocphi/phat-sinh-hs-nghi` 1) · 5 nhánh remote `claude/*` đã merge chưa xoá ·
+6 worktree đang sau main 85-106 commit (rebase trước khi dùng tiếp) · 4 dòng sổ `giai_thuong` cũ vẫn
+kêu trong status (file mới đã thay nội dung — muốn im thì xoá 4 dòng sổ đó, cần CEO gật).

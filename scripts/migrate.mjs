@@ -98,7 +98,13 @@ if (denFile && !files.includes(denFile)) {
 
 // Vân tay nội dung — để phát hiện file ĐÃ ÁP nhưng sau đó bị sửa (lịch sử migration phải bất biến;
 // sửa file cũ = DB thật và repo nói hai chuyện khác nhau, và không ai nhận ra).
-const bam = (f) => createHash('sha256').update(readFileSync(join(dir, f))).digest('hex').slice(0, 16)
+// CHUẨN HOÁ XUỐNG DÒNG TRƯỚC KHI BĂM: cùng một file áp từ máy Windows (CRLF) và từ Linux/cloud
+// (LF) ra hai vân tay khác nhau ⇒ `--status` la làng "62 file bị sửa" trong khi nội dung y hệt
+// (cắn 01/09: cả 62 file lệch đều CHỈ vì CRLF — không file nào đổi nội dung thật).
+// Băm theo nội dung LOGIC: bỏ ký tự CR trước khi băm, không băm theo kiểu xuống dòng.
+const bam = (f) => createHash('sha256')
+  .update(readFileSync(join(dir, f), 'utf8').replace(/\r/g, ''), 'utf8')
+  .digest('hex').slice(0, 16)
 
 const c = new pg.Client({ connectionString: url })
 await c.connect()
@@ -114,9 +120,18 @@ try {
       : new Map()
     const treo0 = files.filter((f) => !daAp0.has(f))
     const sua0 = files.filter((f) => daAp0.has(f) && daAp0.get(f) !== bam(f))
+    // Dòng sổ KHÔNG còn file trong repo: SQL đã chạy trên DB thật nhưng file không nằm trong repo
+    // (áp tay qua SQL Editor rồi quên commit, hoặc file sống ở nhánh chưa merge). Repo hết là
+    // source of truth cho phần đó ⇒ dựng lại DB từ repo sẽ THIẾU. Phải nói ra, đừng để im.
+    const moCoi0 = [...daAp0.keys()].filter((t) => !files.includes(t)).sort()
     if (!co.so) console.log('(chưa có sổ `_migrations` — dựng bằng --baseline)')
     console.log(`Đã áp: ${daAp0.size}/${files.length}`)
     console.log(treo0.length ? `\nCÒN TREO (${treo0.length}):\n  ${treo0.join('\n  ')}` : '\nKhông còn file treo.')
+    if (moCoi0.length) {
+      console.log(`\n⚠ CÓ TRONG SỔ NHƯNG KHÔNG CÒN FILE TRONG REPO (${moCoi0.length}) — DB có, repo không:`)
+      console.log(`  ${moCoi0.join('\n  ')}`)
+      console.log('  Dựng lại DB từ repo sẽ THIẾU phần này. Tìm lại file (nhánh chưa merge?) rồi commit.')
+    }
     if (sua0.length) {
       console.log(`\n⚠ ĐÃ ÁP NHƯNG FILE BỊ SỬA SAU ĐÓ (${sua0.length}) — DB và repo đang nói khác nhau:`)
       console.log(`  ${sua0.join('\n  ')}`)
