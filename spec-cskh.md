@@ -15,7 +15,7 @@
    *"Đã gọi", "đã gửi báo cáo"* = hoạt động của ta ⇒ **KHÔNG tính**. *"PH phản hồi", "PH thêm môn", "người được giới thiệu gọi đến"* = hành động của họ ⇒ **tính**.
    *(Sale: exit criteria dự đoán tốt hơn entry criteria vì nó đòi hành động của người mua, không phải phán đoán của nhân viên.)*
 4. **Một stage không có tiêu chí là một cái NHÃN. Có tiêu chí mới là một cái CỔNG.**
-5. ⭐ **LEVEL chỉ đi LÊN (thành tựu tích luỹ). TRẠNG THÁI HIỆN TẠI nằm ở CỜ.** Không hài lòng / nguội = **cờ**, không phải tụt bậc. Sale có đích kết thúc (closed won); CSKH thì không — quan hệ còn mãi, nên tách *đã đi xa đến đâu* khỏi *hiện giờ thế nào*.
+5. ⭐ **LEVEL = SUY ĐỘNG trên CỬA SỔ TRƯỢT, không lưu** (đúng §1: *mastery không lưu, suy động*). Level phản ánh **hiện tại**; **lịch sử nằm ở `level_ph_log` + `level_cao_nhat_tung_dat`**, không mất. Không hài lòng vẫn là **cờ/điểm nóng**, không phải tụt bậc — tụt bậc chỉ do **im lặng/không hoạt động**.
 6. ⭐ **KHÔNG CÓ THANG ĐO KHÁCH QUAN** (khác bổ trợ yếu — HS có mastery). Mọi tín hiệu là **proxy** ⇒ (a) mọi level **luôn kèm ĐỘ PHỦ** · (b) độ phủ < 50% ⇒ **không xếp level**, việc lúc đó là **đi khám**.
 7. **Chưa đo ≠ thấp** (§5 CLAUDE.md). Mục chưa điền không phải 0 — tính **tỷ lệ trên các mục đã điền**.
 8. **KHÔNG lưu điểm. KHÔNG lưu tín hiệu máy** — suy động từ bảng gốc (§1: *mastery không lưu*). Chỉ lưu cái không suy được: **điền tay · lần chạm đã xảy ra · snapshot lúc chẩn đoán**.
@@ -52,7 +52,7 @@
         └──────────────────────────────────────────┘
 ```
 
-- **LEVEL** = mốc xa nhất PH từng đi tới. Luôn tồn tại, **chỉ đi lên**, không bao giờ tụt, không bao giờ đóng.
+- **LEVEL** = bậc cao nhất PH đạt **trong cửa sổ thời gian gần đây** (§2.1b). **Suy động, không lưu.** Tụt tự nhiên khi không có hoạt động mới — nhưng **lịch sử không mất** (`level_cao_nhat_tung_dat`).
 - **ĐIỂM NÓNG** = **một sự cố cụ thể** (bực vì đổi GV buổi thứ 3, phàn nàn bài nhiều, hỏi bảo lưu). **Mở → xử → ĐÓNG.** Bệnh (§3.2) gắn ở đây.
 - **CỜ** = trạng thái **kéo dài**, bật/tắt theo tín hiệu nguồn. Đỏ (xấu) · xanh (lợi thế) · vận hành (chặn).
 - **LẦN CHẠM** = hoạt động cụ thể của BK.
@@ -70,9 +70,9 @@
 
 ## 2. VIỆC 1 — BỘ LEVEL (bệnh án)
 
-### 2.1 Thang LEVEL — chỉ ĐI LÊN, là sự thật đã xảy ra
+### 2.1 Thang LEVEL
 
-Mọi bậc là **sự thật đã xảy ra** (*đã hiểu quy trình · đã có tương tác · đã nói hài lòng · đã giới thiệu*) — những cái đó **không thể trở thành chưa từng**. ⇒ **Level KHÔNG BAO GIỜ TỤT.**
+Mỗi bậc là một **sự thật đã xảy ra**. Level hiện tại = **bậc cao nhất đạt được trong cửa sổ gần đây** (§2.1b) ⇒ **tụt tự nhiên khi im lặng**, nhưng **không mất lịch sử**.
 
 | Level | Nghĩa | **Tiêu chí — HÀNH ĐỘNG CỦA PH** |
 |---|---|---|
@@ -85,13 +85,35 @@ Mọi bậc là **sự thật đã xảy ra** (*đã hiểu quy trình · đã c
 | **L7** | Đã giới thiệu 1 HS đến học | **người được giới thiệu LIÊN HỆ BK.** Lời hứa KHÔNG tính |
 | **L8** | Giới thiệu 2+ HS | |
 
+### 2.1b ⭐ CỬA SỔ PHÂN RÃ — level tụt tự nhiên, lịch sử vẫn còn
+
+**Không phải bậc nào cũng phân rã.** L1–L2 là **SÀN**: hiểu quy trình rồi thì không "hết hiểu" — không bao giờ tụt dưới L2.
+
+Cửa sổ theo **nhóm hành động** (§2.2b), không dùng chung một số — một cửa sổ 6 tháng cho tất cả sẽ **quá dài cho L3** (kênh nguội 5 tháng vẫn tính là mở) và **quá ngắn cho L7** (không ai giới thiệu người mỗi nửa năm):
+
+| Nhóm | Cửa sổ | Vì sao |
+|---|---|---|
+| **MỞ** (L1–L3) | **3 tháng** | tương tác là hành vi tần suất cao |
+| **NUÔI** (L4–L5) | **6 tháng** | khen / chia sẻ thưa hơn |
+| **NHỜ** (L6–L8) | **12 tháng** | giới thiệu là sự kiện hiếm |
+
+> PH im lặng cả năm ⇒ rơi về **L2 (sàn)** — đọc ra đúng: *"đã biết quy trình, nhưng không có gì gần đây"*.
+> Ba con số trên là **phỏng đoán khởi đầu** — §6 sẽ nói chúng đúng hay sai.
+
+**Lịch sử KHÔNG mất** (bắt buộc lưu, và bắt buộc hiển thị cùng level):
+- `level_cao_nhat_tung_dat` + `dat_luc`
+- **số HS đã giới thiệu TRỌN ĐỜI** (khác với "trong cửa sổ")
+- `level_ph_log` — mọi lần đổi
+
+> ⚠️ **Thiếu vế lịch sử thì một đại sứ cũ đang nguội trông y hệt một người chưa bao giờ giới thiệu** — mà cách tiếp cận hai người đó phải khác hẳn nhau.
+
 ### 2.2 CỜ — trạng thái hiện tại, cắt ngang mọi level
 
 > ⭐ **Không hài lòng là CỜ, KHÔNG phải level.** Lý do kỹ thuật: nếu nó làm tụt level thì PH L7 gặp trục trặc rồi hồi phục sẽ hiện ra là *"leo lại từ L0 lên L7"* — **tiến bộ giả**, làm bẩn ma trận dịch chuyển (§5.5), tức chỉ số sức khoẻ chính của cả hệ. Là cờ thì level giữ nguyên 7, cờ bật rồi tắt, **lịch sử không bị xoá**.
 
 | Nhóm cờ | Gồm | Dùng để |
 |---|---|---|
-| **CỜ ĐỎ** *(trạng thái kéo dài — không đóng được bằng 1 hành động)* | **nguội > 90 ngày** · con tụt band 2 tháng liên tiếp · vắng tăng so với chính mình · ngừng trả lời tin nhắn · **điểm nóng quá SLA chưa đóng** · **≥2 điểm nóng trong 1 quý** | ⇒ **playbook CỨU, bất kể level** |
+| **CỜ ĐỎ** *(trạng thái kéo dài — không đóng được bằng 1 hành động, và **không suy ra được từ level**)* | con tụt band 2 tháng liên tiếp · vắng tăng so với chính mình · ngừng trả lời tin nhắn · **điểm nóng quá SLA chưa đóng** · **≥2 điểm nóng trong 1 quý** | ⇒ **playbook CỨU, bất kể level** |
 | **CỜ XANH** | **đã TRẢ GIÁ** (thêm môn · con thứ 2 vào · ở lại qua tăng phí · theo qua chuyển cấp) · **cơ hội cao** (toà/khu · mạng lưới · vị thế cộng đồng) | xếp **thứ tự** hành động |
 | **CỜ VẬN HÀNH** | chỉ Thùy gọi · **đừng hỏi giới thiệu** (đã từ chối 2 lần) | chặn hành động sai |
 
@@ -102,7 +124,8 @@ PH phàn nàn về một chuyện · **hỏi về bảo lưu** · **chậm phí*
 
 > ⚠️ **"Đã trả giá" KHÔNG lên thang** dù nó là tín hiệu mạnh nhất sau giới thiệu. Vì trục này đo **sẵn sàng giới thiệu**; trả giá chứng minh **độ bền của quan hệ**, không chứng minh sẵn sàng giới thiệu — một PH có thể gắn bó sâu mà ít nói cả đời. Nhét vào thang là trộn hai trục.
 
-> ⚠️ **Rủi ro: level lạm phát** (ai cũng cao dần, không phản ánh hiện tại). Chặn bằng chính cờ: **level nói họ đã từng đi xa đến đâu · cờ nói hiện giờ thế nào.** Hiển thị luôn cặp đôi: *"L7 + cờ nguội 4 tháng"* — đầy đủ hơn hẳn *"đã tụt xuống L5"*.
+> ⭐ **BỎ cờ "nguội > 90 ngày"** — nó **trùng với cửa sổ phân rã**. Cửa sổ nhóm MỞ là 3 tháng, nên PH im lặng 4 tháng **tự tụt về L2**; level đã nói điều đó rồi. Giữ cả hai = đếm hai lần cùng một sự thật, và OPS thấy vừa "L2" vừa "cờ nguội" thì thừa.
+> ⇒ Cờ đỏ còn lại đúng loại **không suy ra được từ level**.
 
 ### 2.2b Bốn NHÓM HÀNH ĐỘNG — mịn để ĐO, thô để LÀM
 
@@ -305,7 +328,8 @@ Thang L1–L8 là **phỏng đoán khởi đầu**. Xếp xong 300 PH thì nhìn
 
 ## 9. Data model (reuse — verify trước)
 
-- `level_ph` (**TRUNG TÂM**): `phu_huynh_id` PK · `level` (L1–L8 / `chua_xep`) · `co` jsonb (đỏ/xanh/vận hành) · `so_diem_nong_mo` (suy động) · `do_phu` · `ly_do_level` · `tu_ngay` · `buoc_tiep_theo` · `ngay_buoc_tiep` · `nguoi_phu_trach` · cờ (`chi_ceo_goi`, `dung_hoi_gioi_thieu`).
+- `level_ph` (**TRUNG TÂM**): `phu_huynh_id` PK · **`level_cao_nhat_tung_dat` + `dat_luc`** (lịch sử, KHÔNG mất) · `so_hs_da_gioi_thieu_tron_doi` · `co` jsonb (đỏ/xanh/vận hành) · `do_phu`
+  ⚠️ **`level` hiện tại KHÔNG phải cột** — suy động qua `fn_ph_level(phu_huynh_id)` trên **cửa sổ trượt** (§2.1b), cùng nguyên tắc mastery không lưu (§1). · `ly_do_level` · `tu_ngay` · `buoc_tiep_theo` · `ngay_buoc_tiep` · `nguoi_phu_trach` · cờ (`chi_ceo_goi`, `dung_hoi_gioi_thieu`).
 - `level_ph_log`: mọi lần đổi level **và mọi lần bật/tắt cờ** — `tu_level`, `den_level`, `co_bat`, `co_tat`, `ly_do`, `bang_chung` (nguyên văn / sự kiện), `at`, `boi`. **Trigger DB tự đẻ, app không tự nhớ ghi** (§4).
 - `ho_so_ph` (**chỉ tín hiệu ĐIỀN TAY**): `loai` · `gia_tri` · `nguoi_ghi` · `ngay_ghi` · `ngay_het_han`. Append-only.
 - **Tín hiệu MÁY: KHÔNG có bảng.** `fn_ph_tin_hieu(phu_huynh_id)` đọc thẳng bảng gốc (§2.0).
@@ -325,7 +349,7 @@ Thang L1–L8 là **phỏng đoán khởi đầu**. Xếp xong 300 PH thì nhìn
 
 1. Đọc `CSKH-HANDOFF.md` · `HANDOFF.md` · `CLAUDE.md` · `BKDEMY_CANHBAO_BOTRO_SPEC.md` · spec này. Audit nguồn tín hiệu.
 2. **`level_ph` + `level_ph_log` + `case_ph` trước** — trục và xương sống. **Không dựng bảng tín hiệu máy**; viết `fn_ph_tin_hieu`.
-3. Tiêu chí lên level + luật bật/tắt cờ thành rule (deterministic, ngưỡng chỉnh được). Quy tắc nhiều con. **Không viết đường hạ level.**
+3. `fn_ph_level` — suy động trên **cửa sổ trượt theo nhóm** (3/6/12 tháng, chỉnh được), **sàn L2**. Luật bật/tắt cờ. Quy tắc nhiều con. **Không lưu cột level.**
 4. `ho_so_ph` + form điền tay (gồm **cờ xanh**: đã trả giá · cơ hội — tách khỏi level).
 5. **§6 phép kiểm bộ level trên dữ liệu lịch sử** — chạy TRƯỚC khi dùng. Sai thì sửa thang.
 6. Bộ câu hỏi 2 tầng + `diem_nong_ph` (mở/đóng + SLA + leo thang bật cờ) + AI đề xuất **kèm căn cứ + độ phủ** → UI duyệt **bắt delta + lý do**.
@@ -341,14 +365,15 @@ Thang L1–L8 là **phỏng đoán khởi đầu**. Xếp xong 300 PH thì nhìn
 - 1 PH end-to-end: tín hiệu → xếp **level + độ phủ** → khám tầng 1 (**có nguyên văn**) → AI đề xuất bệnh+playbook **kèm căn cứ + độ phủ** → **người duyệt CÓ ghi delta + lý do** → can thiệp → ghi chạm **có nguyên văn + bước tiếp theo** → đổi level **có log + bằng chứng**.
 - **Mọi tiêu chí lên level là HÀNH ĐỘNG CỦA PH.** Không tiêu chí nào là hoạt động của BK.
 - **L4 không lên được nếu thiếu nguyên văn.** **L7 không lên được nếu chỉ có lời hứa.**
-- ⭐ **LEVEL KHÔNG BAO GIỜ TỤT** — code không có đường hạ level. Không hài lòng/nguội ⇒ **bật cờ đỏ**.
+- ⭐ **LEVEL là SUY ĐỘNG, không có cột lưu.** Tính trên **cửa sổ trượt theo nhóm** (3/6/12 tháng), **sàn L2**. Không hài lòng ⇒ **điểm nóng / cờ**, KHÔNG hạ level; level chỉ tụt do **im lặng**.
+- **Lịch sử không mất:** `level_cao_nhat_tung_dat` + `dat_luc` + số HS đã giới thiệu **trọn đời**, và **luôn hiển thị cùng level hiện tại**.
 - ⭐ **ĐIỂM NÓNG tách khỏi CỜ:** cái đóng được bằng 1 hành động của BK là **điểm nóng** (có `dong_at`); cái chỉ tắt khi tín hiệu nguồn đổi là **cờ**. Phàn nàn / hỏi bảo lưu / chậm phí ⇒ **điểm nóng, KHÔNG phải cờ**.
 - **Leo thang tự động:** điểm nóng quá SLA chưa đóng, hoặc ≥2 điểm nóng trong 1 quý ⇒ **bật cờ đỏ**.
 - **Bệnh B1–B6 gắn vào ĐIỂM NÓNG (sự việc); B7–B8 gắn vào NGƯỜI** (vì sao kẹt level).
 - **Cờ đỏ ⇒ playbook CỨU bất kể level.** Ưu tiên xét đúng thứ tự (**điểm nóng → cờ đỏ → level → cờ xanh**).
 - **Độ phủ < 50% ⇒ "chưa xếp" + việc "đi khám"**, không xếp bừa.
 - **Cơ hội và "đã trả giá" KHÔNG nằm trong công thức level** — là cờ xanh, chỉ dùng xếp thứ tự.
-- Màn hình hiện **bộ ba (level + cờ + số điểm nóng đang mở)**, không hiện level trơ.
+- Màn hình hiện: **level hiện tại · từng đạt bậc nào (khi nào) · số HS đã giới thiệu trọn đời · cờ · số điểm nóng đang mở**. Không hiện level trơ.
 - **Mọi PH đang mở có bước tiếp theo + ngày**; *"follow up"* bị chặn; đình trệ 14 ngày vào hàng đợi.
 - **Approve trơn bị chặn** — buộc ghi delta.
 - **Tin xấu không có đường gửi tự động** — chặn ở tầng code.
@@ -370,7 +395,7 @@ Thang L1–L8 là **phỏng đoán khởi đầu**. Xếp xong 300 PH thì nhìn
 **ĐỌC TRƯỚC (bắt buộc):** `CSKH-HANDOFF.md` · `HANDOFF.md` · `CLAUDE.md` · `BKDEMY_CANHBAO_BOTRO_SPEC.md` · toàn bộ spec này.
 
 **KỶ LUẬT:**
-- **LEVEL là trục (chỉ đi lên) · ĐIỂM NÓNG là sự cố (mở-đóng) · CỜ là trạng thái kéo dài · LẦN CHẠM là hoạt động.** Đừng lấy ca làm trung tâm (mô hình bổ trợ yếu — sai ở đây). **Đừng hạ level. Đừng biến sự cố thành nhãn dán lên con người.**
+- **LEVEL là trục (chỉ đi lên) · ĐIỂM NÓNG là sự cố (mở-đóng) · CỜ là trạng thái kéo dài · LẦN CHẠM là hoạt động.** Đừng lấy ca làm trung tâm (mô hình bổ trợ yếu — sai ở đây). **LEVEL suy động trên cửa sổ trượt, KHÔNG lưu cột. Không hài lòng KHÔNG hạ level (chỉ im lặng mới hạ). Đừng biến sự cố thành nhãn dán lên con người.**
 - **KHÔNG đẩy PH lên level. KHÔNG ép. KHÔNG động chuyện giới thiệu khi PH chưa hài lòng.**
 - Tiêu chí lên level = **hành động của PH**, không phải hoạt động của BK.
 - **KHÔNG lưu điểm. KHÔNG lưu tín hiệu máy** (suy động từ bảng gốc). **KHÔNG chỉ lưu nhãn — luôn kèm nguyên văn.** **KHÔNG bảng nào mang `mon`.**
