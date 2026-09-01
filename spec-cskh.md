@@ -15,7 +15,7 @@
    *"Đã gọi", "đã gửi báo cáo"* = hoạt động của ta ⇒ **KHÔNG tính**. *"PH phản hồi", "PH thêm môn", "người được giới thiệu gọi đến"* = hành động của họ ⇒ **tính**.
    *(Sale: exit criteria dự đoán tốt hơn entry criteria vì nó đòi hành động của người mua, không phải phán đoán của nhân viên.)*
 4. **Một stage không có tiêu chí là một cái NHÃN. Có tiêu chí mới là một cái CỔNG.**
-5. **Level đi CẢ HAI CHIỀU.** Sale có đích kết thúc (closed won); CSKH thì không — "đại sứ" là trạng thái phải **duy trì**. Dấu hiệu XUỐNG ngang hàng dấu hiệu LÊN.
+5. ⭐ **LEVEL chỉ đi LÊN (thành tựu tích luỹ). TRẠNG THÁI HIỆN TẠI nằm ở CỜ.** Không hài lòng / nguội = **cờ**, không phải tụt bậc. Sale có đích kết thúc (closed won); CSKH thì không — quan hệ còn mãi, nên tách *đã đi xa đến đâu* khỏi *hiện giờ thế nào*.
 6. ⭐ **KHÔNG CÓ THANG ĐO KHÁCH QUAN** (khác bổ trợ yếu — HS có mastery). Mọi tín hiệu là **proxy** ⇒ (a) mọi level **luôn kèm ĐỘ PHỦ** · (b) độ phủ < 50% ⇒ **không xếp level**, việc lúc đó là **đi khám**.
 7. **Chưa đo ≠ thấp** (§5 CLAUDE.md). Mục chưa điền không phải 0 — tính **tỷ lệ trên các mục đã điền**.
 8. **KHÔNG lưu điểm. KHÔNG lưu tín hiệu máy** — suy động từ bảng gốc (§1: *mastery không lưu*). Chỉ lưu cái không suy được: **điền tay · lần chạm đã xảy ra · snapshot lúc chẩn đoán**.
@@ -32,12 +32,12 @@
 
 ```
         ┌──────────────────────────────────────────┐
-        │  LEVEL  (trạng thái THƯỜNG TRỰC)         │  ← TRỤC CHÍNH
-        │  L0 …………………………………………………… L5           │     không bao giờ "đóng"
+        │  LEVEL  (thành tựu tích luỹ, chỉ ĐI LÊN) │  ← TRỤC CHÍNH
+        │  L1 …………………………………………………… L8           │     + CỜ = trạng thái hiện tại
         └───────────┬──────────────────┬───────────┘
                     │                  │
-   BỆNH (chẩn đoán) │                  │ CƠ HỘI (thuộc tính riêng)
-   vì sao đang ở đây│                  │ xếp THỨ TỰ hành động
+   BỆNH (chẩn đoán) │                  │ CỜ (đỏ / xanh / vận hành)
+   vì sao đang ở đây│                  │ trạng thái HIỆN TẠI + thứ tự
    / vì sao chưa lên│                  │ KHÔNG vào level
                     ▼                  ▼
         ┌──────────────────────────────────────────┐
@@ -55,7 +55,7 @@
 - **LEVEL** = trạng thái quan hệ. Luôn tồn tại. Chỉ dịch chuyển, không đóng.
 - **BỆNH** = chẩn đoán tại một thời điểm: *vì sao đang ở level này*, hoặc *vì sao chưa lên được*.
 - **CA / LẦN CHẠM** = hoạt động, có mở-đóng. **Xoay quanh level, không phải ngược lại.**
-- **CƠ HỘI** = PH có bao nhiêu người để giới thiệu. **Tách riêng, tuyệt đối không nhét vào level** — xem §2.3.
+- **CỜ** = trạng thái hiện tại (đỏ), lợi thế (xanh), chặn (vận hành). **Tuyệt đối không nhét vào level** — xem §2.2, §2.3.
 
 > ⚠️ Bổ trợ yếu là **CA** (ngắn, mở-đóng, đo được). CSKH là **TRẠNG THÁI** (dài, không đóng). Đây là khác biệt mô hình lớn nhất — clone sai chỗ này là hỏng cả hệ.
 
@@ -63,33 +63,59 @@
 
 ## 2. VIỆC 1 — BỘ LEVEL (bệnh án)
 
-### 2.1 Thang
+### 2.1 Thang LEVEL — chỉ ĐI LÊN, là sự thật đã xảy ra
 
-| Level | Nghĩa | **LÊN — hành động của PH** | **XUỐNG** |
+Mọi bậc là **sự thật đã xảy ra** (*đã hiểu quy trình · đã có tương tác · đã nói hài lòng · đã giới thiệu*) — những cái đó **không thể trở thành chưa từng**. ⇒ **Level KHÔNG BAO GIỜ TỤT.**
+
+| Level | Nghĩa | **Tiêu chí — HÀNH ĐỘNG CỦA PH** |
+|---|---|---|
+| **L1** | PH mới | vào học |
+| **L2** | Đã hiểu quy trình | xác nhận đã đọc đầy đủ. ⚠️ **tín hiệu YẾU** (tick để đóng popup) — bậc thủ tục, đừng kỳ vọng nó dự đoán gì |
+| **L3** | **Kênh đã mở** | có **tương tác hai chiều**, bất kể nội dung tích cực hay tiêu cực. Cái chung của cả hai là **PH chịu mở miệng** — bước tiến thật so với PH im lặng. *(Nội dung tiêu cực xử riêng bằng cờ đỏ, không kéo level xuống.)* |
+| **L4** | Đã nói hài lòng | PH chủ động nói ra — **bắt buộc ghi NGUYÊN VĂN làm bằng chứng**. Không có nguyên văn ⇒ không lên L4 |
+| **L5** | **Chủ động chia sẻ sự kiện của con** | ⭐ khoảnh khắc PH chuyển từ *người nhận thông tin* sang **người kể chuyện** — tiền đề trực tiếp của giới thiệu |
+| **L6** | Xin contact để giới thiệu | ý định đã thành hành động cụ thể, chưa ra kết quả — **nhóm ở ngưỡng cửa** |
+| **L7** | Đã giới thiệu 1 HS đến học | **người được giới thiệu LIÊN HỆ BK.** Lời hứa KHÔNG tính |
+| **L8** | Giới thiệu 2+ HS | |
+
+### 2.2 CỜ — trạng thái hiện tại, cắt ngang mọi level
+
+> ⭐ **Không hài lòng là CỜ, KHÔNG phải level.** Lý do kỹ thuật: nếu nó làm tụt level thì PH L7 gặp trục trặc rồi hồi phục sẽ hiện ra là *"leo lại từ L0 lên L7"* — **tiến bộ giả**, làm bẩn ma trận dịch chuyển (§5.5), tức chỉ số sức khoẻ chính của cả hệ. Là cờ thì level giữ nguyên 7, cờ bật rồi tắt, **lịch sử không bị xoá**.
+
+| Nhóm cờ | Gồm | Dùng để |
+|---|---|---|
+| **CỜ ĐỎ** | không hài lòng · con tụt band 2 tháng liên tiếp · vắng tăng so với chính mình · **chậm phí lần đầu** (đổi hành vi) · hỏi về bảo lưu · ngừng trả lời tin nhắn · **nguội > 90 ngày** | ⇒ **playbook CỨU, bất kể level** |
+| **CỜ XANH** | **đã TRẢ GIÁ** (thêm môn · con thứ 2 vào · ở lại qua tăng phí · theo qua chuyển cấp) · **cơ hội cao** (toà/khu · mạng lưới · vị thế cộng đồng) | xếp **thứ tự** hành động |
+| **CỜ VẬN HÀNH** | chỉ Thùy gọi · **đừng hỏi giới thiệu** (đã từ chối 2 lần) | chặn hành động sai |
+
+**Ưu tiên hành động = hàm của (cờ đỏ → level → cờ xanh), xét đúng thứ tự đó.**
+
+> ⚠️ **"Đã trả giá" KHÔNG lên thang** dù nó là tín hiệu mạnh nhất sau giới thiệu. Vì trục này đo **sẵn sàng giới thiệu**; trả giá chứng minh **độ bền của quan hệ**, không chứng minh sẵn sàng giới thiệu — một PH có thể gắn bó sâu mà ít nói cả đời. Nhét vào thang là trộn hai trục.
+
+> ⚠️ **Rủi ro: level lạm phát** (ai cũng cao dần, không phản ánh hiện tại). Chặn bằng chính cờ: **level nói họ đã từng đi xa đến đâu · cờ nói hiện giờ thế nào.** Hiển thị luôn cặp đôi: *"L7 + cờ nguội 4 tháng"* — đầy đủ hơn hẳn *"đã tụt xuống L5"*.
+
+### 2.2b Bốn NHÓM HÀNH ĐỘNG — mịn để ĐO, thô để LÀM
+
+8 bậc quá mịn để vận hành: L1→L3 cách nhau vài tuần, L6→L7 có thể cách nhau một năm; và playbook cho L3 với L4 gần như giống nhau. Đội non chỉ cần nhớ 4 nhóm:
+
+| Nhóm | Bậc | Việc | CẤM |
 |---|---|---|---|
-| **L0** | **Nguy cơ** | — | **bất kỳ cờ đỏ nào ⇒ rơi thẳng về L0, GHI ĐÈ mọi level** |
-| **L1** | Trung tính / chưa rõ | cờ đỏ tắt **và** PH phản hồi lại ≥1 lần | im lặng > 90 ngày ⇒ tụt 1 bậc |
-| **L2** | Hài lòng | PH **chủ động** phản hồi tích cực / khen / cảm ơn — **ghi NGUYÊN VĂN làm bằng chứng** | con nghỉ 1 môn ⇒ tụt 1 bậc |
-| **L3** | Gắn bó | PH **TRẢ GIÁ**: thêm môn · cho con thứ 2 vào · ở lại qua một lần tăng phí · theo qua chuyển cấp | như trên |
-| **L4** | **Đại sứ** | **có 1 người được giới thiệu LIÊN HỆ BK** | — |
-| **L5** | Đại sứ mạnh | ≥2 người được giới thiệu, hoặc người thứ 2 nhập học | — |
+| **CỨU** | cờ đỏ bật (bất kể level) | Chặn nghỉ. **48h**, người cứng nhất | **Cấm mọi lời liên quan giới thiệu** |
+| **MỞ** | L1–L3 | Làm cho họ chịu nói. Mục tiêu: **1 phản hồi có nội dung** | Không xin gì |
+| **NUÔI** | L4–L5 | Cho họ **chuyện để kể** — tin vui về con, đều đặn | Chưa nhờ giới thiệu |
+| **NHỜ** | L6–L8 | Tạo dịp · cho **thứ để ĐƯA** · công nhận | Không nhờ chung chung |
 
-**Hai chỗ dễ làm sai:**
-- **L4 tính khi người kia GỌI ĐẾN, không tính khi PH HỨA.** Lời hứa là ý định; cuộc gọi là hành động.
-- **L2 bắt buộc có nguyên văn.** Không có câu PH nói thì không lên L2 — vì "hài lòng" không đo được, nguyên văn là bằng chứng duy nhất.
-
-### 2.2 Luật vận hành level
-- **Cờ đỏ ghi đè tất cả.** PH đang L5 mà con tụt band 2 tháng ⇒ **L0**, không phải "L5 có vấn đề nhỏ".
-- **Mọi level đi kèm ĐỘ PHỦ.** Độ phủ < 50% ⇒ level = **"chưa xếp"**, việc là **đi khám** (§3).
-- **PH nhiều con: lấy con có trạng thái XẤU NHẤT**, không lấy trung bình. Bố mẹ không tách bạch — họ chỉ nhớ *"BK đang có vấn đề với con tôi"*.
-- **Chuẩn hoá theo lớp** khi so PH với nhau: so với **trung vị lớp của con**. Lớp có GV được yêu thích thì cả lớp cao — đó là biến của **GV**, không phải của PH.
-- **Ở yên quá lâu là tín hiệu.** L1–L3 không dịch chuyển > 2 quý ⇒ nêu cờ xem lại (deal aging).
+### 2.2c Luật vận hành level
+- **Mọi level đi kèm ĐỘ PHỦ.** Độ phủ < 50% ⇒ **"chưa xếp"**, việc là **đi khám** (§3).
+- **PH nhiều con: cờ đỏ của MỘT con bật cờ cho cả PH.** Bố mẹ không tách bạch — họ chỉ nhớ *"BK đang có vấn đề với con tôi"*.
+- **Chuẩn hoá theo lớp** khi so PH với nhau: so với **trung vị lớp của con**. Lớp có GV được yêu thích thì cả lớp cao — biến của **GV**, không phải của PH.
+- **Ở yên quá lâu là tín hiệu.** L1–L5 không nhúc nhích > 2 quý ⇒ nêu cờ xem lại (deal aging).
 
 ### 2.3 ⭐ CƠ HỘI — tách riêng, KHÔNG vào level
 
 Khoảng từ *hài lòng* lên *đã giới thiệu* **không do hài lòng quyết định** — nó do **có ai để giới thiệu không**.
 
-Nhét cơ hội vào level ⇒ PH cực hài lòng mà không quen ai sẽ **mãi mãi bị coi là "chưa đạt"**, và đội sẽ đi thúc họ. Đúng thứ §0.1 và §0.2 cấm.
+Nhét cơ hội vào level ⇒ PH cực hài lòng mà không quen ai sẽ **mãi mãi bị coi là "chưa đạt"**, và đội sẽ đi thúc họ. Đúng thứ §0.1 và §0.2 cấm. *(Cơ hội = cờ xanh, xem §2.2.)*
 
 **Cơ hội = thuộc tính riêng**, dùng để **xếp thứ tự hành động**, không phải để đánh giá PH:
 
@@ -102,7 +128,7 @@ Nhét cơ hội vào level ⇒ PH cực hài lòng mà không quen ai sẽ **mã
 | Ai đưa họ vào BK | `nguoi_gioi_thieu_ph_id` |
 | Khối lớp con | `hoc_sinh.khoi` |
 
-> Hai PH cùng L3, người ở Gemek 1 **gọi trước** — nhưng cả hai **đều là L3**, không ai "kém" hơn ai.
+> Hai PH cùng L5, người ở Gemek 1 **gọi trước** — nhưng cả hai **đều là L5**, không ai "kém" hơn ai.
 
 ---
 
@@ -114,10 +140,10 @@ Nhét cơ hội vào level ⇒ PH cực hài lòng mà không quen ai sẽ **mã
 
 | | **Tầng 1 — QUÉT** | **Tầng 2 — ĐÀO** |
 |---|---|---|
-| Dùng cho | **tất cả 300 PH** | ca đáng đầu tư (L0, hoặc L2–L3 cơ hội cao) |
+| Dùng cho | **tất cả 300 PH** | ca đáng đầu tư (cờ đỏ, hoặc L4–L5 + cờ xanh cơ hội cao) |
 | Thời lượng | 3–5 phút | 20 phút+ |
 | Ai hỏi | OPS/CSKH ai cũng làm được | CSKH nền tâm lý / CEO |
-| Mục tiêu | **xếp được level + độ phủ**, phát hiện cờ | **tìm BỆNH cụ thể** |
+| Mục tiêu | **xếp được level + độ phủ**, bật/tắt cờ | **tìm BỆNH cụ thể** |
 
 **Tầng 1 — bốn câu, hỏi đúng thứ tự này:**
 1. *"Con học ở BK dạo này thế nào ạ?"* → mở, để họ tự nói trước
@@ -131,7 +157,7 @@ Nhét cơ hội vào level ⇒ PH cực hài lòng mà không quen ai sẽ **mã
 
 **Bệnh giải thích vì sao PH đang ở level đó** — chia hai loại theo vị trí trên thang:
 
-**Bệnh LÀM TỤT (gặp ở L0–L1):**
+**Bệnh gây CỜ ĐỎ (PH đang khó chịu):**
 
 | Mã | Bệnh | Triệu chứng | Câu đào (tầng 2) |
 |---|---|---|---|
@@ -142,7 +168,7 @@ Nhét cơ hội vào level ⇒ PH cực hài lòng mà không quen ai sẽ **mã
 | B5 | Mất niềm tin vào một GV | tụt sau đổi GV · cả lớp đó cùng tụt | *"Con có hay kể gì về buổi học không?"* |
 | B6 | Con không muốn đi học | vắng + GV báo đổi thái độ | *"Con nói gì khi đến giờ đi học?"* |
 
-**Bệnh CHẶN ĐƯỜNG LÊN (gặp ở L2–L3, PH không hề khó chịu):**
+**Bệnh CHẶN ĐƯỜNG LÊN (PH không hề khó chịu — kẹt ở L3–L5):**
 
 | Mã | Bệnh | Triệu chứng | Câu đào |
 |---|---|---|---|
@@ -162,16 +188,14 @@ Nhét cơ hội vào level ⇒ PH cực hài lòng mà không quen ai sẽ **mã
 
 ## 4. VIỆC 3 — PLAYBOOK THEO LEVEL
 
-**Logic chung theo level; chi tiết riêng theo bệnh.** 1 period = 1 chính sách; mỗi (level × bệnh) đúng 1 playbook; **KHÔNG A/B song song** (2 PH giống nhau xử khác nhau = loạn vận hành + chẻ mẫu). So sánh **theo THỜI GIAN**.
+**Logic chung theo NHÓM (§2.2b); chi tiết riêng theo bệnh.** 1 period = 1 chính sách; mỗi (nhóm × bệnh) đúng 1 playbook; **KHÔNG A/B song song** (2 PH giống nhau xử khác nhau = loạn vận hành + chẻ mẫu). So sánh **theo THỜI GIAN**.
 
-| Level | Mục tiêu | Làm gì | **CẤM** |
+| Nhóm | Mục tiêu | Làm gì | **CẤM** |
 |---|---|---|---|
-| **L0** | Chặn nghỉ | Chạm trong **48h**, người cứng nhất. Nói thẳng vấn đề + kế hoạch cụ thể | **Cấm mọi lời liên quan giới thiệu** |
-| **L1** | Lấy được **1 phản hồi** | Một sự thật cụ thể về con + một câu hỏi mở | Không xin gì |
-| **L2** | Giữ nhịp, nuôi | **Tin vui về con** đều đặn · giữ tần suất chạm | Chưa nhờ giới thiệu |
-| **L3** | Cho **thứ để ĐƯA** + tạo dịp | Suất chẩn đoán miễn phí để tặng · hỏi cảm nhận → tích cực thì mở lời **trong cùng mạch** | Không nhảy thẳng vào lời nhờ |
-| **L4** | Công nhận + mở rộng vòng | Nhờ **hành động cụ thể** (dẫn 1 người đến dự giờ, đứng tên trong group) · công nhận | Không nhờ chung chung |
-| **L5** | Giữ, không vắt | Ưu tiên chăm sóc · báo lại kết quả người họ đã giới thiệu | **Không coi là nguồn khai thác** |
+| **CỨU** (cờ đỏ, bất kể level) | Chặn nghỉ | Chạm trong **48h**, người cứng nhất. Nói thẳng vấn đề + kế hoạch cụ thể | **Cấm mọi lời liên quan giới thiệu** |
+| **MỞ** (L1–L3) | Lấy được **1 phản hồi có nội dung** | Một sự thật cụ thể về con + một câu hỏi mở. Giúp vào app nếu chưa | Không xin gì |
+| **NUÔI** (L4–L5) | Cho họ **chuyện để kể** | **Tin vui về con** đều đặn · giữ nhịp chạm · khơi lại lý do (với PH lâu năm) | Chưa nhờ giới thiệu |
+| **NHỜ** (L6–L8) | Tạo dịp + cho thứ để ĐƯA | Suất chẩn đoán để tặng · nhờ **hành động cụ thể** (dẫn 1 người đến dự giờ) · công nhận · **báo lại kết quả người họ đã giới thiệu** | Không nhờ chung chung. **L8 không coi là nguồn khai thác** |
 
 ### 4.1 Catalog can thiệp (chưa có, phải dựng)
 
@@ -242,8 +266,9 @@ Nhét cơ hội vào level ⇒ PH cực hài lòng mà không quen ai sẽ **mã
 **Phép kiểm:** lấy PH **đã từng giới thiệu** và PH **chưa bao giờ**, chấm ngược level của họ **tại thời điểm trước đó** (từ dữ liệu lịch sử).
 - Level cao hơn ⇒ tỉ lệ đã giới thiệu cao hơn, **tăng dần đều** ⇒ bộ level **có nghĩa**.
 - Phẳng, hoặc nhảy lung tung ⇒ **bộ level sai** ⇒ sửa trước khi dùng.
+- ⚠️ **Dự kiến thiếu mẫu ở bậc cao**: phần lớn 300 PH sẽ dồn vào L3–L5, L6–L8 rất thưa. Nếu hai bậc liền kề cho tỉ lệ gần bằng nhau ⇒ **gộp lại**.
 
-Ngưỡng L0–L5 là **phỏng đoán khởi đầu**. Xếp xong 300 PH thì nhìn phân bố thật rồi kéo lại — mục tiêu: nhóm "cần làm gì đó ngay" khoảng **30–50 người**, đủ xử trong 2–3 tuần.
+Thang L1–L8 là **phỏng đoán khởi đầu**. Xếp xong 300 PH thì nhìn phân bố thật rồi kéo lại — mục tiêu: nhóm "cần làm gì đó ngay" khoảng **30–50 người**, đủ xử trong 2–3 tuần.
 
 ---
 
@@ -260,7 +285,7 @@ Ngưỡng L0–L5 là **phỏng đoán khởi đầu**. Xếp xong 300 PH thì n
 
 ## 8. Phạm vi v1
 
-**IN:** bộ level L0–L5 + tiêu chí lên/xuống · **cơ hội tách riêng** · hồ sơ điền tay (`ngay_ghi`; quá 12 tháng ⇒ hạ trọng số) · bộ câu hỏi 2 tầng · danh mục bệnh B0–B8 · catalog C1–C9 · seed 1 playbook / (level × bệnh) · AI đề xuất **kèm căn cứ + độ phủ** → người duyệt **bắt delta** · **luật bước-tiếp-theo** · form ghi chạm (nguyên văn bắt buộc, dùng được trên điện thoại) · dòng thời gian hồ sơ PH · ma trận dịch chuyển level · **trường "biết BK qua ai"** ở luồng tuyển sinh inbound · §6 phép kiểm bộ level.
+**IN:** thang level L1–L8 (chỉ đi lên) + **3 nhóm cờ** (đỏ/xanh/vận hành) + **4 nhóm hành động** · hồ sơ điền tay (`ngay_ghi`; quá 12 tháng ⇒ hạ trọng số) · bộ câu hỏi 2 tầng · danh mục bệnh B0–B8 · catalog C1–C9 · seed 1 playbook / (level × bệnh) · AI đề xuất **kèm căn cứ + độ phủ** → người duyệt **bắt delta** · **luật bước-tiếp-theo** · form ghi chạm (nguyên văn bắt buộc, dùng được trên điện thoại) · dòng thời gian hồ sơ PH · ma trận dịch chuyển level · **trường "biết BK qua ai"** ở luồng tuyển sinh inbound · §6 phép kiểm bộ level.
 **3 màn hình:** Danh sách PH · Hồ sơ 1 PH (dòng thời gian) · Hàng đợi hôm nay.
 
 **OUT (phase sau):** AI tự chạy · **A/B song song (đã bác)** · hút Zalo tự động (⏳ chờ khảo sát 3 câu — `CSKH-HANDOFF.md`; tới đó tín hiệu Zalo vào bằng **người chép nguyên văn**).
@@ -269,8 +294,8 @@ Ngưỡng L0–L5 là **phỏng đoán khởi đầu**. Xếp xong 300 PH thì n
 
 ## 9. Data model (reuse — verify trước)
 
-- `level_ph` (**TRUNG TÂM**): `phu_huynh_id` PK · `level` (L0–L5 / `chua_xep`) · `do_phu` · `ly_do_level` · `tu_ngay` · `buoc_tiep_theo` · `ngay_buoc_tiep` · `nguoi_phu_trach` · cờ (`chi_ceo_goi`, `dung_hoi_gioi_thieu`).
-- `level_ph_log`: mọi lần đổi level — `tu_level`, `den_level`, `ly_do`, `bang_chung` (nguyên văn / sự kiện), `at`, `boi`. **Trigger DB tự đẻ, app không tự nhớ ghi** (§4).
+- `level_ph` (**TRUNG TÂM**): `phu_huynh_id` PK · `level` (L1–L8 / `chua_xep`) · `co` jsonb (đỏ/xanh/vận hành) · `do_phu` · `ly_do_level` · `tu_ngay` · `buoc_tiep_theo` · `ngay_buoc_tiep` · `nguoi_phu_trach` · cờ (`chi_ceo_goi`, `dung_hoi_gioi_thieu`).
+- `level_ph_log`: mọi lần đổi level **và mọi lần bật/tắt cờ** — `tu_level`, `den_level`, `co_bat`, `co_tat`, `ly_do`, `bang_chung` (nguyên văn / sự kiện), `at`, `boi`. **Trigger DB tự đẻ, app không tự nhớ ghi** (§4).
 - `ho_so_ph` (**chỉ tín hiệu ĐIỀN TAY**): `loai` · `gia_tri` · `nguoi_ghi` · `ngay_ghi` · `ngay_het_han`. Append-only.
 - **Tín hiệu MÁY: KHÔNG có bảng.** `fn_ph_tin_hieu(phu_huynh_id)` đọc thẳng bảng gốc (§2.0).
 - `van_de_ph`: `phu_huynh_id` · `loai_benh` (B0–B8) · `muc` · `tin_hieu` jsonb (snapshot lúc chẩn đoán) · `phan_khuc` · `trang_thai`.
@@ -289,8 +314,8 @@ Ngưỡng L0–L5 là **phỏng đoán khởi đầu**. Xếp xong 300 PH thì n
 
 1. Đọc `CSKH-HANDOFF.md` · `HANDOFF.md` · `CLAUDE.md` · `BKDEMY_CANHBAO_BOTRO_SPEC.md` · spec này. Audit nguồn tín hiệu.
 2. **`level_ph` + `level_ph_log` + `case_ph` trước** — trục và xương sống. **Không dựng bảng tín hiệu máy**; viết `fn_ph_tin_hieu`.
-3. Tiêu chí lên/xuống level thành rule (deterministic, ngưỡng chỉnh được). Quy tắc nhiều con. Cờ đỏ ghi đè.
-4. `ho_so_ph` + form điền tay (gồm nhóm **cơ hội**, tách khỏi level).
+3. Tiêu chí lên level + luật bật/tắt cờ thành rule (deterministic, ngưỡng chỉnh được). Quy tắc nhiều con. **Không viết đường hạ level.**
+4. `ho_so_ph` + form điền tay (gồm **cờ xanh**: đã trả giá · cơ hội — tách khỏi level).
 5. **§6 phép kiểm bộ level trên dữ liệu lịch sử** — chạy TRƯỚC khi dùng. Sai thì sửa thang.
 6. Bộ câu hỏi 2 tầng + `van_de_ph` (bệnh) + AI đề xuất **kèm căn cứ + độ phủ** → UI duyệt **bắt delta + lý do**.
 7. `playbook_ph` + `catalog_can_thiep_ph` + seed Cách-1.
@@ -304,10 +329,12 @@ Ngưỡng L0–L5 là **phỏng đoán khởi đầu**. Xếp xong 300 PH thì n
 
 - 1 PH end-to-end: tín hiệu → xếp **level + độ phủ** → khám tầng 1 (**có nguyên văn**) → AI đề xuất bệnh+playbook **kèm căn cứ + độ phủ** → **người duyệt CÓ ghi delta + lý do** → can thiệp → ghi chạm **có nguyên văn + bước tiếp theo** → đổi level **có log + bằng chứng**.
 - **Mọi tiêu chí lên level là HÀNH ĐỘNG CỦA PH.** Không tiêu chí nào là hoạt động của BK.
-- **L2 không lên được nếu thiếu nguyên văn.** **L4 không lên được nếu chỉ có lời hứa.**
-- **Cờ đỏ ghi đè mọi level.** Dấu hiệu xuống hoạt động, không chỉ có đi lên.
+- **L4 không lên được nếu thiếu nguyên văn.** **L7 không lên được nếu chỉ có lời hứa.**
+- ⭐ **LEVEL KHÔNG BAO GIỜ TỤT** — code không có đường hạ level. Không hài lòng/nguội ⇒ **bật cờ đỏ**.
+- **Cờ đỏ ⇒ playbook CỨU bất kể level.** Ưu tiên xét đúng thứ tự (cờ đỏ → level → cờ xanh).
 - **Độ phủ < 50% ⇒ "chưa xếp" + việc "đi khám"**, không xếp bừa.
-- **Cơ hội KHÔNG nằm trong công thức level** — chỉ dùng xếp thứ tự.
+- **Cơ hội và "đã trả giá" KHÔNG nằm trong công thức level** — là cờ xanh, chỉ dùng xếp thứ tự.
+- Màn hình hiện **cặp (level + cờ)**, không hiện level trơ.
 - **Mọi PH đang mở có bước tiếp theo + ngày**; *"follow up"* bị chặn; đình trệ 14 ngày vào hàng đợi.
 - **Approve trơn bị chặn** — buộc ghi delta.
 - **Tin xấu không có đường gửi tự động** — chặn ở tầng code.
@@ -329,7 +356,7 @@ Ngưỡng L0–L5 là **phỏng đoán khởi đầu**. Xếp xong 300 PH thì n
 **ĐỌC TRƯỚC (bắt buộc):** `CSKH-HANDOFF.md` · `HANDOFF.md` · `CLAUDE.md` · `BKDEMY_CANHBAO_BOTRO_SPEC.md` · toàn bộ spec này.
 
 **KỶ LUẬT:**
-- **LEVEL là trục, CA chỉ là hoạt động.** Đừng lấy ca làm trung tâm (đó là mô hình bổ trợ yếu — sai ở đây).
+- **LEVEL là trục (chỉ đi lên), CỜ là trạng thái hiện tại, CA chỉ là hoạt động.** Đừng lấy ca làm trung tâm (mô hình bổ trợ yếu — sai ở đây). **Đừng hạ level.**
 - **KHÔNG đẩy PH lên level. KHÔNG ép. KHÔNG động chuyện giới thiệu khi PH chưa hài lòng.**
 - Tiêu chí lên level = **hành động của PH**, không phải hoạt động của BK.
 - **KHÔNG lưu điểm. KHÔNG lưu tín hiệu máy** (suy động từ bảng gốc). **KHÔNG chỉ lưu nhãn — luôn kèm nguyên văn.** **KHÔNG bảng nào mang `mon`.**
