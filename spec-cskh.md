@@ -15,6 +15,11 @@
    *"Đã gọi", "đã gửi báo cáo"* = hoạt động của ta ⇒ **KHÔNG tính**. *"PH phản hồi", "PH thêm môn", "người được giới thiệu gọi đến"* = hành động của họ ⇒ **tính**.
    *(Sale: exit criteria dự đoán tốt hơn entry criteria vì nó đòi hành động của người mua, không phải phán đoán của nhân viên.)*
 4. **Một stage không có tiêu chí là một cái NHÃN. Có tiêu chí mới là một cái CỔNG.**
+5a. ⭐⭐ **THANG ĐO "ĐỘ BỘC LỘ", KHÔNG đo lòng trung thành, KHÔNG đo hài lòng.**
+   Mọi bậc phải chạy theo **diễn biến tâm lý và hành động thật của phụ huynh** — không theo cái gì BK dễ đo hay dễ làm.
+   Nền lý thuyết: **Social Penetration Theory** (Altman & Taylor, 1973) — quan hệ phát triển qua **tự bộc lộ tăng dần** (orientation → exploratory affective → affective → stable), và **depenetration** = rút lui khi **chi phí cảm nhận vượt lợi ích cảm nhận** (= chính cửa sổ phân rã §2.1b).
+   ⇒ **Hệ quả phải chấp nhận:** PH ít nói mà cực trung thành (con thứ 2 đang học, 4 năm, chưa từng phản hồi) sẽ nằm ở **L2** — và đó **ĐÚNG**, vì họ thật sự chưa bộc lộ gì. Lòng trung thành của họ nằm ở **cờ xanh "đã trả giá"**, và chính cờ đó đẩy họ lên đầu ưu tiên. **Đừng sửa thang vì ca này.**
+   ⇒ **Bộc lộ là CÓ ĐI CÓ LẠI** (norm of reciprocity): PH chỉ kể chuyện con mình khi **BK kể trước**. "Tin vui về con" không phải chiêu chăm sóc — nó là **mồi bộc lộ**.
 5. ⭐ **LEVEL = SUY ĐỘNG trên CỬA SỔ TRƯỢT, không lưu** (đúng §1: *mastery không lưu, suy động*). Level phản ánh **hiện tại**; **lịch sử nằm ở `level_ph_log` + `level_cao_nhat_tung_dat`**, không mất. Không hài lòng vẫn là **cờ/điểm nóng**, không phải tụt bậc — tụt bậc chỉ do **im lặng/không hoạt động**.
 6. ⭐ **KHÔNG CÓ THANG ĐO KHÁCH QUAN** (khác bổ trợ yếu — HS có mastery). Mọi tín hiệu là **proxy** ⇒ (a) **chưa chạm bao giờ trong cửa sổ ⇒ level "chưa đo"**, không phải bậc thấp · (b) **cờ xanh luôn kèm ĐỘ PHỦ**; độ phủ < 50% ⇒ không dùng cờ xanh để xếp thứ tự, việc là **đi điền**.
 7. **Chưa đo ≠ thấp** (§5 CLAUDE.md). Mục chưa điền không phải 0 — tính **tỷ lệ trên các mục đã điền**.
@@ -75,17 +80,17 @@
 
 Mỗi bậc là một **sự thật đã xảy ra**. Level hiện tại = **bậc cao nhất đạt được trong cửa sổ gần đây** (§2.1b) ⇒ **tụt tự nhiên khi im lặng**, nhưng **không mất lịch sử**.
 
-| Level | Nghĩa | **Điều kiện chính xác — HÀNH ĐỘNG CỦA PH** | Ai bắt |
-|---|---|---|---|
-| **chưa đo** | *(dưới sàn — không phải một bậc)* | **chưa có lần chạm nào được ghi trong cửa sổ** ⇒ việc = **ĐI KHÁM** | 🤖 |
-| **L1** | PH mới | có ≥1 con `trang_thai='dang_hoc'` | 🤖 |
-| **L2** | Đã hiểu quy trình | xác nhận **đã đọc bản quy trình** trong app PH. ⚠️ **tín hiệu YẾU** (tick để đóng popup) — bậc thủ tục. **Chưa build ⇒ tạm gộp L1+L2** | 🤖 *(cần build)* |
-| **L3** | **Kênh đã mở** | PH gửi ≥1 phản hồi **CÓ NỘI DUNG** — không tính *"vâng"/"ok"*/emoji. Tích cực hay tiêu cực đều tính: cái chung là **PH chịu mở miệng**. *(Nội dung tiêu cực ⇒ mở điểm nóng, KHÔNG kéo level xuống.)* | 👤 |
-| **L4** | Nói tốt về **BK** | có **NGUYÊN VĂN** tích cực, **chủ ngữ là BK**: *"trung tâm dạy tốt"* · *"em hài lòng"* · *"cô nhiệt tình"*. Không nguyên văn ⇒ không lên L4 | 👤 |
-| **L5** | Kể chuyện về **CON MÌNH** | ⭐ có **NGUYÊN VĂN**, **chủ ngữ là ĐỨA TRẺ**: *"dạo này con tự giác hơn"* · *"hôm qua nó khoe làm được bài khó"*. **Gợi chuyện hay tự nói đều tính** — tự nói thì **thêm cờ xanh**. Xem §2.1c | 👤 |
-| **L6** | Xin contact để giới thiệu | PH hỏi xin thông tin / suất để đưa cho người khác — **nhóm ở ngưỡng cửa** | 👤 |
-| **L7** | Đã giới thiệu 1 HS | có `hoc_sinh` mới với `nguoi_gioi_thieu_ph_id` = PH này **và người đó đã LIÊN HỆ BK**. Lời hứa KHÔNG tính | 🤖 |
-| **L8** | Giới thiệu 2+ HS | như trên, ≥2 | 🤖 |
+| Level | Nghĩa | **PH ĐANG NGHĨ GÌ** | **Điều kiện chính xác — HÀNH ĐỘNG CỦA PH** | Ai bắt |
+|---|---|---|---|---|
+| **chưa đo** | *(dưới sàn — không phải bậc)* | *(BK không biết)* | **chưa có lần chạm nào được ghi trong cửa sổ** ⇒ việc = **ĐI KHÁM** | 🤖 |
+| **L1** | PH mới | *"Chỗ này ra sao? Con mình có hợp không?"* — thăm dò, cảnh giác | có ≥1 con `trang_thai='dang_hoc'` | 🤖 |
+| **L2** | Đã hiểu quy trình | *"À, vận hành thế này. Đỡ bỡ ngỡ."* — yên tâm về thủ tục | xác nhận **đã đọc bản quy trình** trong app PH. ⚠️ **tín hiệu YẾU** (tick để đóng popup) — bậc thủ tục. **Chưa build ⇒ tạm gộp L1+L2** | 🤖 *(cần build)* |
+| **L3** | **Kênh đã mở** | *"Nói ra thì họ có nghe không?"* — thử mở lời | PH gửi ≥1 phản hồi **CÓ NỘI DUNG** — không tính *"vâng"/"ok"*/emoji. Tích cực hay tiêu cực đều tính: cái chung là **PH chịu mở miệng**. *(Nội dung tiêu cực ⇒ mở điểm nóng, KHÔNG kéo level xuống.)* | 👤 |
+| **L4** | Nói tốt về **BK** | *"Chỗ này được đấy."* — đánh giá **dịch vụ** tích cực | có **NGUYÊN VĂN** tích cực, **chủ ngữ là BK**: *"trung tâm dạy tốt"* · *"em hài lòng"* · *"cô nhiệt tình"*. Không nguyên văn ⇒ không lên L4 | 👤 |
+| **L5** | Kể chuyện về **CON MÌNH** | *"Con mình dạo này khác thật."* — chuyển từ **đánh giá dịch vụ** sang **tự hào về con** | ⭐ có **NGUYÊN VĂN**, **chủ ngữ là ĐỨA TRẺ**: *"dạo này con tự giác hơn"* · *"hôm qua nó khoe làm được bài khó"*. **Gợi chuyện hay tự nói đều tính** — tự nói thì **thêm cờ xanh**. Xem §2.1c | 👤 |
+| **L6** | Xin contact để giới thiệu | *"Có ai hỏi thì mình nói được."* — sẵn sàng nhắc đến với người ngoài | PH hỏi xin thông tin / suất để đưa cho người khác — **nhóm ở ngưỡng cửa** | 👤 |
+| **L7** | Đã giới thiệu 1 HS | *"Mình đứng ra bảo lãnh."* — **đặt uy tín cá nhân** lên bàn | có `hoc_sinh` mới với `nguoi_gioi_thieu_ph_id` = PH này **và người đó đã LIÊN HỆ BK**. Lời hứa KHÔNG tính | 🤖 |
+| **L8** | Giới thiệu 2+ HS | *"Đây là chỗ của mình."* — thành thói quen, thành bản sắc | như trên, ≥2 | 🤖 |
 
 > ⚠️ **RỦI RO SỐ MỘT của việc 1: bốn bậc giữa (L3–L6) phụ thuộc hoàn toàn vào OPS có ghi hay không.**
 > Không có kỷ luật ghi chép thì thang chết — và chết **âm thầm**: PH thật sự ở L5 sẽ hiện ra L2, không ai biết.
@@ -124,6 +129,8 @@ Cửa sổ theo **nhóm hành động** (§2.2b), không dùng chung một số 
 | **NHỜ** (L6–L8) | **12 tháng** | giới thiệu là sự kiện hiếm |
 
 > PH im lặng cả năm ⇒ rơi về **L2 (sàn)** — đọc ra đúng: *"đã biết quy trình, nhưng không có gì gần đây"*.
+> ⭐ **Phân rã = "depenetration"** trong Social Penetration Theory: người ta thu hẹp bộc lộ khi **chi phí cảm nhận vượt lợi ích cảm nhận**.
+> ⇒ Thấy PH tụt bậc, **câu chẩn đoán đúng KHÔNG phải *"họ bận à?"*** mà là: **"chi phí gì đang vượt lợi ích gì?"** — mất thời gian đọc? phiền vì bị nhắn nhiều? thấy nói cũng chẳng đổi được gì?
 > Ba con số trên là **phỏng đoán khởi đầu** — §6 sẽ nói chúng đúng hay sai.
 
 **PH nhiều con:** level tính **trên PH, gộp mọi sự kiện từ MỌI con** — PH khen về con A thì họ *đã nói hài lòng*, xong. Nhất quán với cờ đỏ (lấy con xấu nhất): **sự kiện tốt lấy cao nhất · sự kiện xấu lấy xấu nhất**, đều là *"bất kỳ con nào"*.
@@ -292,6 +299,8 @@ Level suy từ **sự kiện quan sát được** (có phản hồi có nội du
 1. ⭐ **Tin xấu KHÔNG BAO GIỜ để máy nói.** Tin tốt máy gửi được; tin xấu qua người. **Chặn ở tầng code**, không dựa lời hứa.
 2. **Hành động trước, chẩn đoán sau.** *"Con yếu → xếp bổ trợ"* = phán xét. *"Em xếp cho con buổi kèm thứ 5, con đang vướng dạng X"* = BK đang làm gì đó cho con.
 3. **ẤM = CỤ THỂ**, không phải emoji hay nhiều chữ. *"Con học tốt lắm ❤️"* = lạnh (rỗng).
+4. ⭐ **CHỦ NGỮ LÀ ĐỨA TRẺ, không phải BK.** *"BK đã xếp buổi bổ trợ cho con"* → chủ ngữ BK. *"Con đang vướng dạng phương trình chứa tham số, em xếp buổi thứ 5 để xử sớm"* → chủ ngữ con.
+   **Vì sao đây là luật, không phải gu văn phong:** bộc lộ là **có đi có lại** — những gì BK nói với PH chính là những gì PH sẽ nói lại. BK toàn nói về mình ⇒ PH cũng chỉ có chữ để nói về BK ⇒ **mắc mãi ở L4**. Muốn nhiều PH lên L5 thì phải sửa từ **đầu nguồn**.
 
 ### 4.3 Trần & dừng
 - **Một PH = MỘT người phụ trách duy nhất.** Mọi playbook đi qua người đó.
@@ -418,6 +427,8 @@ Thang L1–L8 là **phỏng đoán khởi đầu**. Xếp xong 300 PH thì nhìn
 - ⭐ **"Chưa đo" phân biệt được với L2** trên màn hình: chưa chạm bao giờ ⇒ *chưa đo* + việc **đi khám**; đã chạm mà không có tín hiệu ⇒ thật sự **L2**.
 - **L3–L6 có đường cho người ghi**, và form ghi làm cho việc đó **dễ hơn không ghi** (§5.2).
 - ⭐ **Câu hỏi tầng QUÉT gợi ý theo LEVEL hiện tại**, không phải một bộ cố định — hệ hiện đúng câu cần hỏi cho bậc đó.
+- ⭐ **Thang đo ĐỘ BỘC LỘ**, không đo trung thành. PH ít nói mà trung thành ở L2 là **đúng** — trung thành nằm ở cờ xanh. Bảng thang hiển thị cột **"PH đang nghĩ gì"** để đội hiểu vì sao có bậc đó.
+- **Mọi template gửi PH có CHỦ NGỮ LÀ ĐỨA TRẺ**, không phải BK (§4.2 luật 4).
 - ⭐ **Ranh giới L4/L5 là CHỦ NGỮ của nguyên văn** (BK ⇒ L4 · con họ ⇒ L5), không phải "ai mở lời". Hệ hiện nguyên văn để kiểm được.
 - **Ghi ĐƯỜNG ĐẠT L4/L5**: *được gợi* hay *tự nói*. Tự nói ⇒ **cờ xanh** (không lên bậc).
 - **SLA điểm nóng mặc định 24h**; quá hạn hoặc ≥2 điểm nóng/quý ⇒ bật cờ đỏ.
