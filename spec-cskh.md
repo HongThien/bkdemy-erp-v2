@@ -19,7 +19,8 @@
    HS có mastery (5 lần đo, khách quan). PH thì "hài lòng" **không đo trực tiếp được** — mọi tín hiệu đều là **proxy**.
    ⇒ Hệ quả bắt buộc: (a) bar can thiệp **cao hơn** bổ trợ yếu · (b) mọi điểm số **luôn đi kèm ĐỘ PHỦ** · (c) độ phủ < 50% ⇒ **không hành động theo điểm**, việc lúc đó là **đi khám**.
 8. **Chưa đo ≠ điểm thấp** (§5 CLAUDE.md). Mục chưa điền **không phải 0** — tính theo **tỷ lệ trên các mục đã điền**.
-9. **Lưu tín hiệu THÔ, không lưu điểm** (như §1: mastery không lưu, suy động). Công thức chấm sẽ đổi nhiều lần; lưu điểm = mất lịch sử.
+9. ⭐ **KHÔNG lưu điểm, và KHÔNG lưu tín hiệu MÁY.** Điểm suy từ tín hiệu; tín hiệu máy suy từ bảng gốc (`bao_cao_ph`, `canh_bao_yeu`, `buoi_hoc_hs`, `hoa_don`…). Chép tín hiệu sang bảng riêng = **nhân bản dữ liệu** + đẻ bài toán đồng bộ — đúng thứ §1 cấm (*mastery không lưu, suy động*).
+   **Chỉ lưu cái KHÔNG suy được:** (a) phần **điền tay** · (b) **lần chạm đã xảy ra** · (c) **snapshot lúc chẩn đoán** (đóng băng có chủ đích).
 10. **Lưu cả CẤU TRÚC lẫn NGUYÊN VĂN.** Nhãn suy được từ nguyên văn; nguyên văn không suy được từ nhãn. **Cấm chỉ lưu nhãn.**
 
 ---
@@ -161,7 +162,7 @@ Khám ─► Chẩn đoán ─► Điều trị ─► Tái khám
 ## 8. Phạm vi v1
 
 **IN:**
-- **Sổ tín hiệu** (thô, append-only) + phần **điền tay** (có `ngay_dien`; quá 12 tháng ⇒ hạ trọng số / coi như chưa đo).
+- **Hồ sơ điền tay** (`ho_so_ph`, append-only, có `ngay_ghi`; quá 12 tháng ⇒ hạ trọng số / coi như chưa đo). **Tín hiệu máy suy động, không lưu.**
 - **Phát hiện** deterministic → **mức** (Cảnh báo / Xử lý nhẹ-nặng) + **phân khúc**. Ngưỡng chỉnh được.
 - **Danh mục bệnh B0–B8** + **catalog can thiệp C1–C9** + seed playbook Cách-1 (1 playbook/bệnh).
 - **Chẩn đoán:** AI đề xuất bệnh + playbook → **người duyệt, hệ BẮT DELTA + lý do**; đề xuất **kèm tín hiệu căn cứ + độ phủ**.
@@ -179,7 +180,8 @@ Khám ─► Chẩn đoán ─► Điều trị ─► Tái khám
 
 ## 9. Data model (reuse — verify trước)
 
-- `tin_hieu_ph` (**sổ tín hiệu thô**): `phu_huynh_id`, `loai`, `gia_tri` jsonb, `nguon` (`may`/`nguoi`/`ai`), `hoc_sinh_id` (nullable), `ngay_ghi`, `ngay_het_han` (cho tín hiệu điền tay). **Append-only. Không lưu điểm.**
+- `ho_so_ph` (**chỉ tín hiệu ĐIỀN TAY** — thứ không suy được): `phu_huynh_id`, `loai` (vị thế cộng đồng · mạng lưới · toà/khu · đã từng phàn nàn · nghỉ rồi quay lại · ở lại qua tăng phí…), `gia_tri`, `nguoi_ghi`, `ngay_ghi`, `ngay_het_han`. **Append-only.**
+- **Tín hiệu MÁY: KHÔNG có bảng.** Suy động bằng `fn_ph_tin_hieu(phu_huynh_id)` đọc thẳng bảng gốc (§2.0: tính ở Postgres).
 - `van_de_ph` (risk case): `phu_huynh_id`, `loai_benh` (B0–B8), `muc` (`canh_bao`/`xu_ly_nhe`/`xu_ly_nang`), `tin_hieu` jsonb (snapshot lúc phát hiện), `phan_khuc`, `trang_thai`.
 - `playbook_ph`: `dieu_kien_ap` (bệnh + mức + phân khúc), `chuoi_hanh_dong` (ref catalog), `trang_thai` (`dang_thu`/`hieu_luc`/`loai`), `period`, số liệu hiệu quả.
 - `catalog_can_thiep_ph`: C1–C9.
@@ -189,7 +191,8 @@ Khám ─► Chẩn đoán ─► Điều trị ─► Tái khám
 - Bổ sung: `hoc_sinh.nguon_biet_den` + `hoc_sinh.nguoi_gioi_thieu_ph_id`.
 - **Reuse (KHÔNG tạo lại):** `bao_cao_ph` · `canh_bao_yeu` · `bo_tro_yeu` · `hoa_don`/`thanh_toan` · `buoi_hoc_hs` · `hoc_sinh` · `phu_huynh` · Cổng PH (`fetchPhLogins`).
 
-> **Về §1.6 (nhãn môn):** quan hệ với PH **KHÔNG phải dữ liệu học tập** ⇒ `van_de_ph` / `case_ph` / `cham_ph` **không mang nhãn `mon`**. Nhưng `tin_hieu_ph.gia_tri` **giữ nguyên `mon` của tín hiệu gốc** (band môn nào, cảnh báo môn nào). Quyết định kỹ thuật của CTO — nêu để CEO bác nếu thấy sai.
+> **Về §1.6 (nhãn môn):** quan hệ với PH **KHÔNG phải dữ liệu học tập** ⇒ **KHÔNG bảng nào của hệ này mang nhãn `mon`**, không query nào scope theo `mon`.
+> Môn chỉ tồn tại ở **bảng gốc** (`bao_cao_ph`, `canh_bao_yeu`…) — hệ này **đọc qua `fn_*`**, không chép sang. Nếu một ca cần nói rõ môn (vd *"phàn nàn GV môn Văn"*) thì nó nằm trong **nguyên văn / snapshot**, là chữ mô tả — **không phải một chiều dữ liệu**.
 > Verify `information_schema` + `pg_tables.rowsecurity` trước migration. Grep repo trước khi đổi.
 
 ---
@@ -197,7 +200,7 @@ Khám ─► Chẩn đoán ─► Điều trị ─► Tái khám
 ## 10. Các bước build
 
 1. Đọc `CSKH-HANDOFF.md` + `HANDOFF.md` + `CLAUDE.md` + `BKDEMY_CANHBAO_BOTRO_SPEC.md`. Audit: `bao_cao_ph`, `canh_bao_yeu`, `bo_tro_yeu`, hoá đơn, điểm danh, Cổng PH.
-2. **CASE LOG trước** (`case_ph`) + `van_de_ph` + `tin_hieu_ph` — xương sống.
+2. **CASE LOG trước** (`case_ph`) + `van_de_ph` + `ho_so_ph` — xương sống. **Không dựng bảng tín hiệu máy** — viết `fn_ph_tin_hieu` đọc bảng gốc.
 3. Phát hiện: rule trên tín hiệu (ưu tiên **delta**, không mức) → `van_de_ph` với `muc` + `phan_khuc`. Ngưỡng chỉnh được. Quy tắc gộp nhiều con (§2).
 4. `playbook_ph` + `catalog_can_thiep_ph` + seed 1 playbook/bệnh (Cách 1).
 5. Chẩn đoán: AI đề xuất bệnh+playbook (**kèm tín hiệu căn cứ + độ phủ**) → UI người duyệt **bắt delta + lý do** (chặn approve trơn).
@@ -219,6 +222,7 @@ Khám ─► Chẩn đoán ─► Điều trị ─► Tái khám
 - Mọi đề xuất AI **hiển thị tín hiệu căn cứ + độ phủ**.
 - **Tin xấu không có đường gửi tự động** — hệ chặn ở tầng code, không dựa lời hứa.
 - `cham_ph` chỉ có dòng khi **đã chạm thật** (§1.5) — không insert trước điền sau.
+- **Không có bảng tín hiệu máy** — mọi tín hiệu máy đọc qua `fn_*` từ bảng gốc. **Không bảng nào của hệ mang cột `mon`.**
 - Tín hiệu điền tay có `ngay_ghi`; quá hạn tự hạ trọng số.
 - **Nguồn mỗi trường phân biệt được** (máy / người / AI).
 - Benchmark theo phân khúc; chưa đủ mẫu = "đang thử" **miễn đánh giá**; dưới benchmark → thay **kèm nguồn ứng viên**.
@@ -240,7 +244,7 @@ Khám ─► Chẩn đoán ─► Điều trị ─► Tái khám
 - Reuse > đẻ mới: `bao_cao_ph`/`canh_bao_yeu`/`bo_tro_yeu`/hoá đơn/điểm danh/Cổng PH.
 - **CASE LOG dựng trước.** Phát hiện deterministic (không AI); AI chỉ ở "Chẩn đoán".
 - **KHÔNG ép PH. KHÔNG A/B song song. KHÔNG quy kết nhân quả.** Mọi hành động chạm PH qua người duyệt.
-- **KHÔNG lưu điểm — chỉ lưu tín hiệu thô.** **KHÔNG chỉ lưu nhãn — luôn kèm nguyên văn.**
+- **KHÔNG lưu điểm. KHÔNG lưu tín hiệu máy** (suy động từ bảng gốc). **KHÔNG chỉ lưu nhãn — luôn kèm nguyên văn.** **KHÔNG bảng nào mang nhãn `mon`.**
 - Việc = **suy ra** (§4 invariant). KHÔNG bảng `tasks`, KHÔNG row chờ.
 - RLS: data DISABLE / staffs ENABLE. Staff-only.
 
