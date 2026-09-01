@@ -275,7 +275,7 @@ Thang L1–L8 là **phỏng đoán khởi đầu**. Xếp xong 300 PH thì nhìn
 ## 7. Tiến hoá & tự động hoá
 
 - **Phase A (v1):** người quyết; AI đề xuất level+bệnh+playbook, **người duyệt bắt delta**. Mọi hành động chạm PH qua người.
-- **Phase B:** khi case log chứng minh đề xuất AI khớp người + kết quả tốt trên đủ ca → AI tự chạy mức nhẹ; ca L0 vẫn người ký.
+- **Phase B:** khi case log chứng minh đề xuất AI khớp người + kết quả tốt trên đủ ca → AI tự chạy nhóm MỞ; **ca có cờ đỏ vẫn người ký**.
 - **Benchmark playbook** (§6 spec bổ trợ): benchmark **theo phân khúc** · **gate đủ mẫu** (chưa đủ = *"đang thử"*, **miễn đánh giá**) · dưới benchmark → **thay kèm nguồn ứng viên** (*cắt mà không đắp = lỗ hổng*).
 - ⚠️ **Tốc độ tích mẫu chậm hơn bổ trợ yếu hàng bậc** (300 PH, mỗi người ít ca) ⇒ **period 6 tháng**, phân khúc **gộp thô**. Chẻ nhỏ = không bao giờ đủ mẫu.
 - ⭐ **Chống buồng vọng:** tách rõ nguồn mỗi trường — *máy sinh* / *người ghi* / *AI đề xuất*. Người copy đề xuất AI vào ô ghi chú ⇒ vòng sau AI đọc lại lời mình và **tự khẳng định**.
