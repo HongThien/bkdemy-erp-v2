@@ -81,8 +81,8 @@ Mỗi bậc là một **sự thật đã xảy ra**. Level hiện tại = **bậ
 | **L1** | PH mới | có ≥1 con `trang_thai='dang_hoc'` | 🤖 |
 | **L2** | Đã hiểu quy trình | xác nhận **đã đọc bản quy trình** trong app PH. ⚠️ **tín hiệu YẾU** (tick để đóng popup) — bậc thủ tục. **Chưa build ⇒ tạm gộp L1+L2** | 🤖 *(cần build)* |
 | **L3** | **Kênh đã mở** | PH gửi ≥1 phản hồi **CÓ NỘI DUNG** — không tính *"vâng"/"ok"*/emoji. Tích cực hay tiêu cực đều tính: cái chung là **PH chịu mở miệng**. *(Nội dung tiêu cực ⇒ mở điểm nóng, KHÔNG kéo level xuống.)* | 👤 |
-| **L4** | Đã nói hài lòng | có **NGUYÊN VĂN** được ghi + đánh dấu tích cực. Không nguyên văn ⇒ không lên L4 | 👤 |
-| **L5** | **Chủ động chia sẻ sự kiện của con** | ⭐ PH **TỰ MỞ LỜI** kể chuyện của con — **không phải trả lời câu hỏi của BK**. Khoảnh khắc PH chuyển từ *người nhận tin* sang **người kể chuyện** — tiền đề trực tiếp của giới thiệu | 👤 |
+| **L4** | Nói tốt về **BK** | có **NGUYÊN VĂN** tích cực, **chủ ngữ là BK**: *"trung tâm dạy tốt"* · *"em hài lòng"* · *"cô nhiệt tình"*. Không nguyên văn ⇒ không lên L4 | 👤 |
+| **L5** | Kể chuyện về **CON MÌNH** | ⭐ có **NGUYÊN VĂN**, **chủ ngữ là ĐỨA TRẺ**: *"dạo này con tự giác hơn"* · *"hôm qua nó khoe làm được bài khó"*. **Gợi chuyện hay tự nói đều tính** — tự nói thì **thêm cờ xanh**. Xem §2.1c | 👤 |
 | **L6** | Xin contact để giới thiệu | PH hỏi xin thông tin / suất để đưa cho người khác — **nhóm ở ngưỡng cửa** | 👤 |
 | **L7** | Đã giới thiệu 1 HS | có `hoc_sinh` mới với `nguoi_gioi_thieu_ph_id` = PH này **và người đó đã LIÊN HỆ BK**. Lời hứa KHÔNG tính | 🤖 |
 | **L8** | Giới thiệu 2+ HS | như trên, ≥2 | 🤖 |
@@ -90,6 +90,22 @@ Mỗi bậc là một **sự thật đã xảy ra**. Level hiện tại = **bậ
 > ⚠️ **RỦI RO SỐ MỘT của việc 1: bốn bậc giữa (L3–L6) phụ thuộc hoàn toàn vào OPS có ghi hay không.**
 > Không có kỷ luật ghi chép thì thang chết — và chết **âm thầm**: PH thật sự ở L5 sẽ hiện ra L2, không ai biết.
 > ⇒ **§5.2 (nhập liệu phải dễ) không phải chuyện phụ — nó là ĐIỀU KIỆN SỐNG của việc 1.**
+
+### 2.1c ⭐ Ranh giới L4 / L5 — CHỦ THỂ CỦA CÂU NÓI, không phải ai mở lời
+
+| | PH nói về | Ví dụ nguyên văn |
+|---|---|---|
+| **L4** | **BK** | *"Trung tâm dạy tốt"* · *"Em hài lòng"* · *"Cô giáo nhiệt tình"* |
+| **L5** | **CON MÌNH** | *"Dạo này con tự giác hơn hẳn"* · *"Hôm qua nó khoe làm được bài khó"* · *"Con bớt sợ môn Toán rồi"* |
+
+**Vì sao đây mới là cái dự đoán referral:** không ai đi kể với hàng xóm rằng *"trung tâm X dạy tốt"* — nghe như quảng cáo hộ. Người ta kể *"con tôi dạo này khác hẳn"*. Câu thứ hai lan truyền được vì nó là **social currency của chính họ** — làm **họ** trông tốt (con tôi tiến bộ), không phải làm **BK** trông tốt.
+⇒ L5 gần giới thiệu hơn L4 **không phải vì "chủ động"**, mà vì PH đã chuyển từ **đánh giá dịch vụ** sang **kể chuyện con mình** — và chính câu đó sẽ được lặp lại ở ngoài, gần như nguyên văn.
+
+**Phép thử cho OPS:** nghe lại nguyên văn, hỏi *"câu này chủ ngữ là ai?"* — **BK** ⇒ L4 · **con họ** ⇒ L5.
+
+**Gợi chuyện được, và nên gợi.** Không có luật "ngừng hỏi": một bậc mà BK không tác động được là bậc chết trong vận hành.
+⚠️ **Nhưng có rủi ro thật:** nếu chỉ đo *"có kể khi được gợi"* thì L5 đo **kỹ năng gợi chuyện của nhân viên** nhiều hơn đo trạng thái PH — OPS khéo sẽ nâng cả lớp lên L5 và thang lạm phát.
+⇒ Chặn bằng hai thứ: **(a)** bắt buộc nguyên văn (kiểm được chủ ngữ) · **(b)** ghi lại **đường đạt**: *được gợi* hay *tự nói*. **Tự nói ⇒ thêm CỜ XANH** (mạnh hơn, nhưng không lên bậc — nó chỉ xếp thứ tự trong cùng bậc).
 
 > ⭐ **"CHƯA ĐO" ≠ "L2".** PH chưa ai chạm bao giờ trong cửa sổ mà hiện ra L2 là **thiếu dữ liệu bị đọc thành level thấp** — đúng thứ §5 CLAUDE.md cấm. Phải phân biệt được trên màn hình:
 > · *chưa chạm bao giờ* ⇒ **"chưa đo"** ⇒ việc là **đi khám**
@@ -128,7 +144,7 @@ Cửa sổ theo **nhóm hành động** (§2.2b), không dùng chung một số 
 | Nhóm cờ | Gồm | Dùng để |
 |---|---|---|
 | **CỜ ĐỎ** *(trạng thái kéo dài — không đóng được bằng 1 hành động, và **không suy ra được từ level**)* | con tụt band 2 tháng liên tiếp · vắng tăng so với chính mình · ngừng trả lời tin nhắn · **điểm nóng quá SLA chưa đóng** · **≥2 điểm nóng trong 1 quý** | ⇒ **playbook CỨU, bất kể level** |
-| **CỜ XANH** | **đã TRẢ GIÁ** (thêm môn · con thứ 2 vào · ở lại qua tăng phí · theo qua chuyển cấp) · **cơ hội cao** (toà/khu · mạng lưới · vị thế cộng đồng) | xếp **thứ tự** hành động |
+| **CỜ XANH** | **đã TRẢ GIÁ** (thêm môn · con thứ 2 vào · ở lại qua tăng phí · theo qua chuyển cấp) · **cơ hội cao** (toà/khu · mạng lưới · vị thế cộng đồng) · **TỰ NÓI** (đạt L4/L5 mà không cần gợi) | xếp **thứ tự** hành động |
 | **CỜ VẬN HÀNH** | chỉ Thùy gọi · **đừng hỏi giới thiệu** (đã từ chối 2 lần) | chặn hành động sai |
 
 **Ưu tiên hành động = hàm của (điểm nóng đang mở → cờ đỏ → level → cờ xanh), xét đúng thứ tự đó.**
@@ -195,15 +211,13 @@ Level suy từ **sự kiện quan sát được** (có phản hồi có nội du
 |---|---|---|
 | **chưa đo / L1–L2** | một **phản hồi CÓ NỘI DUNG** | Hỏi **mở**, không thể trả lời bằng "vâng". ⚠️ *"Con học ổn không ạ?"* → nhận *"ổn em ạ"* ⇒ **KHÔNG tạo được L3**. Dùng: *"Nếu được đổi MỘT thứ ở BK, anh/chị đổi gì?"* · *"Có gì BK cần sắp xếp lại cho nhà mình không?"* |
 | **L3** (đã nói chuyện, chưa khen) | một câu **khen có NGUYÊN VĂN** | Khơi ra đánh giá: *"So với hồi mới vào, chị thấy con khác gì?"* · *"Chị có đủ thông tin về việc học của con không?"* |
-| **L4** (đã khen) | PH **CHỦ ĐỘNG kể** | ⭐ **NGỪNG HỎI** — xem nghịch lý dưới |
-| **L5** (đã chủ động kể) | PH **nghĩ đến chuyện giới thiệu** | Mở cửa, **không xin**: *"Chị có ai quanh khu đang tìm chỗ cho con không? Lớp [X] tháng này em còn 2 chỗ."* |
+| **L4** (đã nói tốt về BK) | một câu **chủ ngữ là CON** | Chuyển đề tài từ *trung tâm* sang *đứa trẻ*: *"Ở nhà con có gì khác so với trước không?"* · *"Con có hay kể gì về buổi học không?"* — kèm gửi tin vui để có cớ |
+| **L5** (đã kể chuyện con) | PH **nghĩ đến chuyện giới thiệu** | Mở cửa, **không xin**: *"Chị có ai quanh khu đang tìm chỗ cho con không? Lớp [X] tháng này em còn 2 chỗ."* |
 | **L6** (đã xin contact) | người kia **LIÊN HỆ BK** | Không hỏi nữa — **đưa thứ để đưa** (suất chẩn đoán) + theo dõi |
 | **L7–L8** | mở rộng vòng | Nhờ **hành động cụ thể** + **báo lại kết quả người họ đã giới thiệu** |
 
-> ⭐ **NGHỊCH LÝ L4→L5: BK KHÔNG THỂ HỎI để đẩy ai lên L5.**
-> L5 định nghĩa là **"chủ động"**. BK hỏi trước ⇒ câu trả lời **không còn là chủ động**, nó là trả lời. Về mặt định nghĩa, **hỏi làm hỏng chính cái đang tìm**.
-> ⇒ Ở L4, việc đúng là **cho nguyên liệu rồi IM**: gửi tin vui về con, báo cáo, khoảnh khắc — **rồi không hỏi gì**. Ai tự nhắn lại kể chuyện con mình ⇒ **L5 thật**.
-> ⇒ Đây là bậc **duy nhất** mà **can thiệp nhiều làm GIẢM khả năng lên bậc**. Phải là luật cứng, nếu không đội sẽ hỏi dồn để "đẩy chỉ tiêu" và tự phá.
+> ⭐ **L4→L5 là chuyển ĐỀ TÀI, không phải chờ tự phát.** Việc của OPS là **kéo câu chuyện từ "trung tâm thế nào" sang "con dạo này thế nào"**. Gợi chuyện là hợp lệ và nên làm — chỉ cần nguyên văn ghi lại có **chủ ngữ là đứa trẻ** (§2.1c).
+> Nếu PH **tự nói mà không cần gợi** ⇒ vẫn L5, **kèm cờ xanh**.
 
 **Tầng ĐÀO — câu hỏi chẩn đoán bệnh**
 
@@ -404,7 +418,8 @@ Thang L1–L8 là **phỏng đoán khởi đầu**. Xếp xong 300 PH thì nhìn
 - ⭐ **"Chưa đo" phân biệt được với L2** trên màn hình: chưa chạm bao giờ ⇒ *chưa đo* + việc **đi khám**; đã chạm mà không có tín hiệu ⇒ thật sự **L2**.
 - **L3–L6 có đường cho người ghi**, và form ghi làm cho việc đó **dễ hơn không ghi** (§5.2).
 - ⭐ **Câu hỏi tầng QUÉT gợi ý theo LEVEL hiện tại**, không phải một bộ cố định — hệ hiện đúng câu cần hỏi cho bậc đó.
-- ⭐ **Ở L4 hệ KHÔNG gợi ý câu hỏi** — chỉ gợi ý gửi tin vui rồi im (nghịch lý L4→L5).
+- ⭐ **Ranh giới L4/L5 là CHỦ NGỮ của nguyên văn** (BK ⇒ L4 · con họ ⇒ L5), không phải "ai mở lời". Hệ hiện nguyên văn để kiểm được.
+- **Ghi ĐƯỜNG ĐẠT L4/L5**: *được gợi* hay *tự nói*. Tự nói ⇒ **cờ xanh** (không lên bậc).
 - **SLA điểm nóng mặc định 24h**; quá hạn hoặc ≥2 điểm nóng/quý ⇒ bật cờ đỏ.
 - **Cơ hội và "đã trả giá" KHÔNG nằm trong công thức level** — là cờ xanh, chỉ dùng xếp thứ tự; **độ phủ áp cho cờ xanh, không áp cho level**.
 - **Level gộp mọi con** (tốt lấy cao nhất, xấu lấy xấu nhất). **PH mới miễn cờ "vắng tăng"/"band tụt" 2 tháng đầu.**
