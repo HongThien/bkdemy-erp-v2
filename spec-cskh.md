@@ -1,6 +1,6 @@
 # Chăm sóc Phụ huynh & Referral — Feature Spec · BKdemy ERP
 
-> **Trục chính = LEVEL của phụ huynh** (trạng thái thường trực), không phải ca.
+> **Trục chính = LEVEL của phụ huynh** (thành tựu tích luỹ, chỉ đi lên) + **CỜ** (trạng thái hiện tại). Không phải ca.
 > Mô hình tham chiếu: **Loyalty Ladder** (Prospect→Customer→Client→**Advocate**) + **sales pipeline stage-gate**.
 > Vay từ `BKDEMY_CANHBAO_BOTRO_SPEC.md`: case log · bắt delta · benchmark theo phân khúc · tự-động-hoá là phần thưởng kiếm được.
 > Nền: `CSKH-HANDOFF.md` (đọc trước). Ngày: 01/09/2026. Cấu trúc theo **4 việc** CEO chốt.
@@ -52,7 +52,7 @@
         └──────────────────────────────────────────┘
 ```
 
-- **LEVEL** = trạng thái quan hệ. Luôn tồn tại. Chỉ dịch chuyển, không đóng.
+- **LEVEL** = mốc xa nhất PH từng đi tới. Luôn tồn tại, **chỉ đi lên**, không bao giờ tụt, không bao giờ đóng.
 - **BỆNH** = chẩn đoán tại một thời điểm: *vì sao đang ở level này*, hoặc *vì sao chưa lên được*.
 - **CA / LẦN CHẠM** = hoạt động, có mở-đóng. **Xoay quanh level, không phải ngược lại.**
 - **CỜ** = trạng thái hiện tại (đỏ), lợi thế (xanh), chặn (vận hành). **Tuyệt đối không nhét vào level** — xem §2.2, §2.3.
