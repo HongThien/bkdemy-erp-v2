@@ -288,6 +288,29 @@ Level suy từ **sự kiện quan sát được** (có phản hồi có nội du
 | **NUÔI-b** | **L5** | → **L6** | Mở cửa, **không xin**: *"Chị có ai quanh khu đang tìm chỗ cho con không? Lớp [X] còn 2 chỗ"* | Không thúc, không nhắc lại quá 1 lần/quý |
 | **NHỜ** | L6–L8 | → **L7/L8** | **Đưa thứ để đưa** (suất chẩn đoán) · nhờ **hành động cụ thể** · công nhận · **báo lại kết quả người họ đã giới thiệu** | Không nhờ chung chung. **L8 không coi là nguồn khai thác** |
 
+### 4.0 Cấu trúc một PLAYBOOK CON — và luật chẻ nhỏ
+
+Mỗi nhóm có **nhiều playbook con** (mỗi loại một cái). Cấu trúc bắt buộc, để lúc điền không mỗi người một kiểu:
+
+| Trường | Nội dung |
+|---|---|
+| **Mã** | vd `NUOI-a/B7` |
+| **Điều kiện áp** | level (hoặc cờ/điểm nóng) + loại/bệnh + phân khúc |
+| **Mục tiêu** | **lên bậc nào**, hoặc **đóng sự việc gì**. Phải đo được, không được là "chăm sóc" |
+| **Chuỗi can thiệp** | ref catalog C1–C9 + **nhịp** |
+| **Mẫu câu** | câu hỏi + câu mở lời, viết sẵn — đội non không tự chế |
+| **Điều kiện ĐẠT / ĐÓNG** | dấu hiệu **quan sát được ở PH**, không phải "đã gọi xong" |
+| **CẤM** | những gì không được làm ở bậc này |
+| **Trạng thái** | `dang_thu` / `hieu_luc` / `loai` + `period` + số liệu hiệu quả |
+
+**⭐ LUẬT CHẺ NHỎ — điều kiện áp KHÔNG ĐƯỢC CHỒNG NHAU.**
+Bao nhiêu playbook con cũng được, miễn **mỗi ca rơi vào đúng MỘT cái**. Hai playbook cùng khớp một ca = **A/B trá hình** — vừa loạn vận hành vừa chẻ mẫu (§4 đã bác A/B).
+⇒ Khi thêm một playbook con, việc bắt buộc là **kiểm tra nó có giao với cái nào đang có không**, và nếu có thì **siết điều kiện của một trong hai**, không để cả hai cùng rộng.
+
+**⚠️ CẢNH BÁO CHẺ QUÁ NHỎ:** 300 PH, tốc độ tích mẫu vốn đã chậm hơn bổ trợ yếu hàng bậc (§7). L4 mà có 6 playbook con thì mỗi cái chỉ 3–5 ca/năm ⇒ **không bao giờ đủ mẫu để benchmark** ⇒ cơ chế tiến hoá §7 chết đứng.
+⇒ **Chỉ tách khi có LÝ DO HÀNH ĐỘNG khác nhau** — không tách vì "trông có vẻ khác".
+⇒ **v1 bắt đầu 1 playbook/nhóm** (Cách 1 thô: KHÁM · MỞ · NUÔI-a · NUÔI-b · NHỜ · CỨU) **+ 6 playbook XỬ** (B1–B6) ≈ **11 cái**. Chẻ tiếp chỉ khi case log chỉ ra chỗ cần.
+
 ### 4.1 Catalog can thiệp (chưa có, phải dựng)
 
 | Mã | Can thiệp | Chi phí | Ai |
@@ -419,7 +442,7 @@ Thang L1–L8 là **phỏng đoán khởi đầu**. Xếp xong 300 PH thì nhìn
 4. `ho_so_ph` + form điền tay (gồm **cờ xanh**: đã trả giá · cơ hội — tách khỏi level).
 5. **§6 phép kiểm bộ level trên dữ liệu lịch sử** — chạy TRƯỚC khi dùng. Sai thì sửa thang.
 6. Bộ câu hỏi 2 tầng + `diem_nong_ph` (mở/đóng + SLA + leo thang bật cờ) + AI đề xuất **kèm căn cứ + độ phủ** → UI duyệt **bắt delta + lý do**.
-7. `playbook_ph` + `catalog_can_thiep_ph` + seed Cách-1.
+7. `playbook_ph` (đủ 8 trường §4.0) + `catalog_can_thiep_ph` + **kiểm tra chồng điều kiện khi lưu** + seed Cách-1 (~11 cái).
 8. `cham_ph` + **luật bước-tiếp-theo** + form ghi chạm (mobile, nguyên văn bắt buộc, hiện lại lần trước).
 9. 3 màn hình + dòng thời gian + ma trận dịch chuyển level + trường "biết BK qua ai".
 10. RLS chuẩn. `tsc` sạch. Test 1 PH end-to-end.
@@ -446,6 +469,9 @@ Thang L1–L8 là **phỏng đoán khởi đầu**. Xếp xong 300 PH thì nhìn
 - **Ghi ĐƯỜNG ĐẠT L4/L5**: *được gợi* hay *tự nói*. Tự nói ⇒ **cờ xanh** (không lên bậc).
 - ⭐ **Form ghi chạm KHÔNG có ô chọn level** — chỉ ghi sự kiện; level do `fn_ph_level` suy ra.
 - **Hai họ playbook tách bạch:** playbook XỬ (theo bệnh điểm nóng, mục tiêu đóng sự việc) vs playbook ĐẨY LEVEL (theo nhóm, mục tiêu lên bậc).
+- ⭐ **Điều kiện áp của các playbook con KHÔNG chồng nhau** — hệ **chặn khi lưu** một playbook có điều kiện giao với cái đang hiệu lực. Mỗi ca khớp đúng **1** playbook.
+- **Mỗi playbook con có đủ 8 trường** (§4.0), trong đó **mục tiêu đo được** và **điều kiện đạt là dấu hiệu quan sát được ở PH**, không phải "đã gọi xong".
+- **v1 seed ≈ 11 playbook** (6 nhóm + 6 XỬ, trừ trùng), không chẻ nhỏ hơn.
 - **Nhịp chạm thưa dần khi lên bậc** — không chạm dày ở bậc cao.
 - **SLA điểm nóng mặc định 24h**; quá hạn hoặc ≥2 điểm nóng/quý ⇒ bật cờ đỏ.
 - **Cơ hội và "đã trả giá" KHÔNG nằm trong công thức level** — là cờ xanh, chỉ dùng xếp thứ tự; **độ phủ áp cho cờ xanh, không áp cho level**.
