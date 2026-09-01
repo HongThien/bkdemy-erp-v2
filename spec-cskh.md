@@ -237,6 +237,11 @@ Level suy từ **sự kiện quan sát được** (có phản hồi có nội du
 
 **Bắt buộc ở cả hai tầng: ghi NGUYÊN VĂN 1–2 câu PH nói.** Không có nguyên văn ⇒ cuộc gọi **không tính là đã chạm**, level không đổi.
 
+> 📄 **Nội dung câu hỏi đầy đủ: `CSKH-BO-CAU-HOI.md`** — luật hỏi (Mom Test), câu theo từng level, laddering, switch interview, câu CẤM.
+> ⭐ Hai thứ từ tài liệu đó phải vào build:
+> · **Luật cứng L4:** *"Có, ổn em ạ"* KHÔNG tính — nguyên văn phải chứa **một chi tiết cụ thể**.
+> · **Cửa sổ vàng 90 ngày:** mọi PH mới phải có **1 switch interview trong 90 ngày** (sau 3 tháng hồi tưởng tụt dưới 40%) ⇒ hệ tự sinh việc này khi có HS mới.
+
 ### 3.2 Danh mục BỆNH (v1 — thô, ít; Cách 1 trước)
 
 **Bệnh giải thích vì sao PH đang ở level đó** — chia hai loại theo vị trí trên thang:
@@ -462,6 +467,9 @@ Thang L1–L8 là **phỏng đoán khởi đầu**. Xếp xong 300 PH thì nhìn
 - **Cờ đỏ ⇒ playbook CỨU bất kể level.** Ưu tiên xét đúng thứ tự (**điểm nóng → cờ đỏ → level → cờ xanh**).
 - ⭐ **"Chưa đo" phân biệt được với L2** trên màn hình: chưa chạm bao giờ ⇒ *chưa đo* + việc **đi khám**; đã chạm mà không có tín hiệu ⇒ thật sự **L2**.
 - **L3–L6 có đường cho người ghi**, và form ghi làm cho việc đó **dễ hơn không ghi** (§5.2).
+- ⭐ **L4 chặn lời khen chung** — nguyên văn không có chi tiết cụ thể thì không lên bậc.
+- ⭐ **HS mới ⇒ hệ tự sinh việc "switch interview trong 90 ngày"** (`CSKH-BO-CAU-HOI.md` §2.3).
+- **Form KHÔNG có ô trống "ghi chú"** — chỉ ô nguyên văn bắt buộc.
 - ⭐ **Câu hỏi tầng QUÉT gợi ý theo LEVEL hiện tại**, không phải một bộ cố định — hệ hiện đúng câu cần hỏi cho bậc đó.
 - ⭐ **Thang đo ĐỘ BỘC LỘ**, không đo trung thành. PH ít nói mà trung thành ở L2 là **đúng** — trung thành nằm ở cờ xanh. Bảng thang hiển thị cột **"PH đang nghĩ gì"** để đội hiểu vì sao có bậc đó.
 - **Mọi template gửi PH có CHỦ NGỮ LÀ ĐỨA TRẺ**, không phải BK (§4.2 luật 4).
