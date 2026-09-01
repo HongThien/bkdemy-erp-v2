@@ -61,7 +61,8 @@
 > **Cái gì ĐÓNG được bằng một hành động của BK ⇒ ĐIỂM NÓNG. Cái gì chỉ tắt khi tín hiệu nguồn tự đổi ⇒ CỜ.**
 > PH L5 bực về một buổi học **không phải "PH không hài lòng"** — đó là **một việc cần xử**. Gắn nhãn xấu lên *con người* thay vì lên *sự việc* là đúng rủi ro §0.13, và làm OPS đọc sai: *"Chị Lan — cờ đỏ"* ⇒ nghĩ *chị Lan là ca có vấn đề*; *"Chị Lan L5 — điểm nóng: bực vì đổi GV"* ⇒ biết ngay **phải làm gì**.
 
-> ⭐ **Leo thang:** điểm nóng **quá SLA chưa đóng**, hoặc **≥2 điểm nóng trong một quý** ⇒ **bật CỜ ĐỎ**.
+> ⭐ **Leo thang:** điểm nóng **quá SLA (mặc định 24h) chưa đóng**, hoặc **≥2 điểm nóng trong một quý** ⇒ **bật CỜ ĐỎ**.
+> ⚠️ **Hệ quả của SLA 24h:** lúc đầu **rất nhiều** điểm nóng sẽ quá hạn và bật cờ đỏ. Không sao — miễn cờ đỏ được đọc là **hàng đợi việc**, không phải **chuông báo động**. Đọc là báo động thì tuần thứ hai đội sẽ bắt đầu lờ nó.
 > Một sự cố là chuyện bình thường của quan hệ dài. **Sự cố không được xử, hoặc lặp lại, mới là vấn đề quan hệ.**
 
 > ⚠️ Bổ trợ yếu là **CA** (ngắn, mở-đóng, đo được). CSKH là **TRẠNG THÁI** (dài, không đóng). Đây là khác biệt mô hình lớn nhất — clone sai chỗ này là hỏng cả hệ.
@@ -147,7 +148,7 @@ PH phàn nàn về một chuyện · **hỏi về bảo lưu** · **chậm phí*
 | Nhóm | Bậc | Việc | CẤM |
 |---|---|---|---|
 | **XỬ ĐIỂM NÓNG** | có điểm nóng đang mở (bất kể level) | Xử **sự việc cụ thể** trong SLA rồi **đóng**. Không gắn nhãn lên PH | **Cấm mọi lời liên quan giới thiệu** cho tới khi đóng |
-| **CỨU** | cờ đỏ bật (bất kể level) | Chặn nghỉ. **48h**, người cứng nhất | **Cấm mọi lời liên quan giới thiệu** |
+| **CỨU** | cờ đỏ bật (bất kể level) | Chặn nghỉ. **24h**, người cứng nhất | **Cấm mọi lời liên quan giới thiệu** |
 | **MỞ** | L1–L3 | Làm cho họ chịu nói. Mục tiêu: **1 phản hồi có nội dung** | Không xin gì |
 | **NUÔI** | L4–L5 | Cho họ **chuyện để kể** — tin vui về con, đều đặn | Chưa nhờ giới thiệu |
 | **NHỜ** | L6–L8 | Tạo dịp · cho **thứ để ĐƯA** · công nhận | Không nhờ chung chung |
@@ -182,24 +183,38 @@ Nhét cơ hội vào level ⇒ PH cực hài lòng mà không quen ai sẽ **mã
 
 ## 3. VIỆC 2 — BẮT BỆNH (chẩn đoán level)
 
-### 3.1 Hai tầng câu hỏi — không phải một bộ
+### 3.1 ⭐ Câu hỏi KHÔNG đo level — câu hỏi TẠO RA sự kiện
 
-*(Sale không chọn giữa BANT và MEDDIC — họ dùng cả hai theo stage: BANT nhanh để triage rộng, MEDDIC sâu cho ca đã lọc.)*
+Level suy từ **sự kiện quan sát được** (có phản hồi có nội dung ⇒ L3, có nguyên văn tích cực ⇒ L4…). Nên **câu hỏi không phải công cụ ĐO — nó là công cụ TẠO BẰNG CHỨNG.**
 
-| | **Tầng 1 — QUÉT** | **Tầng 2 — ĐÀO** |
+⇒ **Câu hỏi phải khác nhau theo level**, vì mỗi bậc cần **một loại sự kiện khác nhau** để lên. Một bộ câu hỏi cố định chỉ hợp bậc thấp.
+
+**Tầng QUÉT — câu hỏi theo level (mục tiêu: tạo sự kiện lên bậc kế tiếp)**
+
+| PH đang ở | Cần sự kiện gì | Hỏi thế nào |
 |---|---|---|
-| Dùng cho | **tất cả 300 PH** | ca đáng đầu tư (điểm nóng · cờ đỏ · L4–L5 + cờ xanh cơ hội cao) |
+| **chưa đo / L1–L2** | một **phản hồi CÓ NỘI DUNG** | Hỏi **mở**, không thể trả lời bằng "vâng". ⚠️ *"Con học ổn không ạ?"* → nhận *"ổn em ạ"* ⇒ **KHÔNG tạo được L3**. Dùng: *"Nếu được đổi MỘT thứ ở BK, anh/chị đổi gì?"* · *"Có gì BK cần sắp xếp lại cho nhà mình không?"* |
+| **L3** (đã nói chuyện, chưa khen) | một câu **khen có NGUYÊN VĂN** | Khơi ra đánh giá: *"So với hồi mới vào, chị thấy con khác gì?"* · *"Chị có đủ thông tin về việc học của con không?"* |
+| **L4** (đã khen) | PH **CHỦ ĐỘNG kể** | ⭐ **NGỪNG HỎI** — xem nghịch lý dưới |
+| **L5** (đã chủ động kể) | PH **nghĩ đến chuyện giới thiệu** | Mở cửa, **không xin**: *"Chị có ai quanh khu đang tìm chỗ cho con không? Lớp [X] tháng này em còn 2 chỗ."* |
+| **L6** (đã xin contact) | người kia **LIÊN HỆ BK** | Không hỏi nữa — **đưa thứ để đưa** (suất chẩn đoán) + theo dõi |
+| **L7–L8** | mở rộng vòng | Nhờ **hành động cụ thể** + **báo lại kết quả người họ đã giới thiệu** |
+
+> ⭐ **NGHỊCH LÝ L4→L5: BK KHÔNG THỂ HỎI để đẩy ai lên L5.**
+> L5 định nghĩa là **"chủ động"**. BK hỏi trước ⇒ câu trả lời **không còn là chủ động**, nó là trả lời. Về mặt định nghĩa, **hỏi làm hỏng chính cái đang tìm**.
+> ⇒ Ở L4, việc đúng là **cho nguyên liệu rồi IM**: gửi tin vui về con, báo cáo, khoảnh khắc — **rồi không hỏi gì**. Ai tự nhắn lại kể chuyện con mình ⇒ **L5 thật**.
+> ⇒ Đây là bậc **duy nhất** mà **can thiệp nhiều làm GIẢM khả năng lên bậc**. Phải là luật cứng, nếu không đội sẽ hỏi dồn để "đẩy chỉ tiêu" và tự phá.
+
+**Tầng ĐÀO — câu hỏi chẩn đoán bệnh**
+
+| | Tầng QUÉT | Tầng ĐÀO |
+|---|---|---|
+| Trả lời câu | *"Làm sao để họ đi tiếp?"* | *"Vì sao họ đang mắc?"* |
+| Dùng khi | thường xuyên, theo level | **có điểm nóng**, hoặc **kẹt một bậc > 2 quý** |
 | Thời lượng | 3–5 phút | 20 phút+ |
 | Ai hỏi | OPS/CSKH ai cũng làm được | CSKH nền tâm lý / CEO |
-| Mục tiêu | **xếp được level + độ phủ**, bật/tắt cờ, **phát hiện điểm nóng** | **tìm BỆNH cụ thể** |
 
-**Tầng 1 — bốn câu, hỏi đúng thứ tự này:**
-1. *"Con học ở BK dạo này thế nào ạ?"* → mở, để họ tự nói trước
-2. *"Anh/chị có đủ thông tin về việc học của con không?"* → bắt **B7 mù thông tin**
-3. *"Có gì BK cần sắp xếp lại cho nhà mình không?"* → bắt **B3 tiền / B4 lịch**
-4. *"Nếu được đổi MỘT thứ ở BK, anh/chị đổi gì?"* → câu gỡ hay nhất; hỏi thẳng *"chưa hài lòng chỗ nào"* thì 80% nhận về *"không có gì đâu em"*
-
-**Bắt buộc: ghi NGUYÊN VĂN 1–2 câu PH nói.** Không có nguyên văn ⇒ cuộc gọi **không tính là đã khám**, độ phủ không tăng.
+**Bắt buộc ở cả hai tầng: ghi NGUYÊN VĂN 1–2 câu PH nói.** Không có nguyên văn ⇒ cuộc gọi **không tính là đã chạm**, level không đổi.
 
 ### 3.2 Danh mục BỆNH (v1 — thô, ít; Cách 1 trước)
 
@@ -240,7 +255,7 @@ Nhét cơ hội vào level ⇒ PH cực hài lòng mà không quen ai sẽ **mã
 
 | Nhóm | Mục tiêu | Làm gì | **CẤM** |
 |---|---|---|---|
-| **CỨU** (cờ đỏ, bất kể level) | Chặn nghỉ | Chạm trong **48h**, người cứng nhất. Nói thẳng vấn đề + kế hoạch cụ thể | **Cấm mọi lời liên quan giới thiệu** |
+| **CỨU** (cờ đỏ, bất kể level) | Chặn nghỉ | Chạm trong **24h**, người cứng nhất. Nói thẳng vấn đề + kế hoạch cụ thể | **Cấm mọi lời liên quan giới thiệu** |
 | **MỞ** (L1–L3) | Lấy được **1 phản hồi có nội dung** | Một sự thật cụ thể về con + một câu hỏi mở. Giúp vào app nếu chưa | Không xin gì |
 | **NUÔI** (L4–L5) | Cho họ **chuyện để kể** | **Tin vui về con** đều đặn · giữ nhịp chạm · khơi lại lý do (với PH lâu năm) | Chưa nhờ giới thiệu |
 | **NHỜ** (L6–L8) | Tạo dịp + cho thứ để ĐƯA | Suất chẩn đoán để tặng · nhờ **hành động cụ thể** (dẫn 1 người đến dự giờ) · công nhận · **báo lại kết quả người họ đã giới thiệu** | Không nhờ chung chung. **L8 không coi là nguồn khai thác** |
@@ -347,7 +362,7 @@ Thang L1–L8 là **phỏng đoán khởi đầu**. Xếp xong 300 PH thì nhìn
 - `level_ph_log`: mọi lần đổi level **và mọi lần bật/tắt cờ** — `tu_level`, `den_level`, `co_bat`, `co_tat`, `ly_do`, `bang_chung` (nguyên văn / sự kiện), `at`, `boi`. **Trigger DB tự đẻ, app không tự nhớ ghi** (§4).
 - `ho_so_ph` (**chỉ tín hiệu ĐIỀN TAY**): `loai` · `gia_tri` · `nguoi_ghi` · `ngay_ghi` · `ngay_het_han`. Append-only.
 - **Tín hiệu MÁY: KHÔNG có bảng.** `fn_ph_tin_hieu(phu_huynh_id)` đọc thẳng bảng gốc (§2.0).
-- `diem_nong_ph` (**sự cố cụ thể — mở/đóng**): `phu_huynh_id` · `hoc_sinh_id` (nullable) · `loai_benh` (B1–B6) · `muc` · `tin_hieu` jsonb (snapshot lúc phát hiện) · `phan_khuc` · `mo_at` · **`sla_den`** · `dong_at` · `ket_qua` · `nguyen_van`. **Chỉ tạo dòng khi có sự cố THẬT** (§1.5).
+- `diem_nong_ph` (**sự cố cụ thể — mở/đóng**): `phu_huynh_id` · `hoc_sinh_id` (nullable) · `loai_benh` (B1–B6) · `muc` · `tin_hieu` jsonb (snapshot lúc phát hiện) · `phan_khuc` · `mo_at` · **`sla_den`** (mặc định **+24h** từ `mo_at`) · `dong_at` · `ket_qua` · `nguyen_van`. **Chỉ tạo dòng khi có sự cố THẬT** (§1.5).
 - `cham_ph`: mỗi lần chạm **đã xảy ra** — `nguoi_cham` · `kenh` · `can_thiep` (ref catalog) · **`nguyen_van` NOT NULL** · `ket_qua` · `level_sau` · `buoc_tiep_theo` · `ngay_buoc_tiep` · `at`.
 - `case_ph` (**CASE LOG**): `diem_nong_id` (nullable — ca có thể là *đẩy level*, không phải *xử sự cố*) · `playbook_id` · `de_xuat_ai` jsonb (**kèm `tin_hieu_can_cu` + `do_phu`**) · `nguoi_duyet` · `delta` jsonb · `ly_do` · `du_doan` (level kỳ vọng + mốc) · `ket_qua` · `case_truoc_id`.
 - `playbook_ph` · `catalog_can_thiep_ph` · `benchmark_ph` (per `phan_khuc` × `period`).
@@ -388,6 +403,9 @@ Thang L1–L8 là **phỏng đoán khởi đầu**. Xếp xong 300 PH thì nhìn
 - **Cờ đỏ ⇒ playbook CỨU bất kể level.** Ưu tiên xét đúng thứ tự (**điểm nóng → cờ đỏ → level → cờ xanh**).
 - ⭐ **"Chưa đo" phân biệt được với L2** trên màn hình: chưa chạm bao giờ ⇒ *chưa đo* + việc **đi khám**; đã chạm mà không có tín hiệu ⇒ thật sự **L2**.
 - **L3–L6 có đường cho người ghi**, và form ghi làm cho việc đó **dễ hơn không ghi** (§5.2).
+- ⭐ **Câu hỏi tầng QUÉT gợi ý theo LEVEL hiện tại**, không phải một bộ cố định — hệ hiện đúng câu cần hỏi cho bậc đó.
+- ⭐ **Ở L4 hệ KHÔNG gợi ý câu hỏi** — chỉ gợi ý gửi tin vui rồi im (nghịch lý L4→L5).
+- **SLA điểm nóng mặc định 24h**; quá hạn hoặc ≥2 điểm nóng/quý ⇒ bật cờ đỏ.
 - **Cơ hội và "đã trả giá" KHÔNG nằm trong công thức level** — là cờ xanh, chỉ dùng xếp thứ tự; **độ phủ áp cho cờ xanh, không áp cho level**.
 - **Level gộp mọi con** (tốt lấy cao nhất, xấu lấy xấu nhất). **PH mới miễn cờ "vắng tăng"/"band tụt" 2 tháng đầu.**
 - Màn hình hiện: **level hiện tại · từng đạt bậc nào (khi nào) · số HS đã giới thiệu trọn đời · cờ · số điểm nóng đang mở**. Không hiện level trơ.
