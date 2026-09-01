@@ -36,12 +36,12 @@
         │  L1 …………………………………………………… L8           │     + CỜ = trạng thái hiện tại
         └───────────┬──────────────────┬───────────┘
                     │                  │
-   BỆNH (chẩn đoán) │                  │ CỜ (đỏ / xanh / vận hành)
-   vì sao đang ở đây│                  │ trạng thái HIỆN TẠI + thứ tự
-   / vì sao chưa lên│                  │ KHÔNG vào level
+  ĐIỂM NÓNG (sự cố)│                  │ CỜ (đỏ / xanh / vận hành)
+  mở → xử → ĐÓNG   │                  │ trạng thái KÉO DÀI, bật/tắt
+  bệnh gắn ở đây   │   ── leo thang ──►│ KHÔNG vào level
                     ▼                  ▼
         ┌──────────────────────────────────────────┐
-        │  CA / LẦN CHẠM  (hoạt động, có mở-đóng)  │
+        │  LẦN CHẠM  (hoạt động)                    │
         └──────────────────┬───────────────────────┘
                            ▼
         ┌──────────────────────────────────────────┐
@@ -53,9 +53,16 @@
 ```
 
 - **LEVEL** = mốc xa nhất PH từng đi tới. Luôn tồn tại, **chỉ đi lên**, không bao giờ tụt, không bao giờ đóng.
-- **BỆNH** = chẩn đoán tại một thời điểm: *vì sao đang ở level này*, hoặc *vì sao chưa lên được*.
-- **CA / LẦN CHẠM** = hoạt động, có mở-đóng. **Xoay quanh level, không phải ngược lại.**
-- **CỜ** = trạng thái hiện tại (đỏ), lợi thế (xanh), chặn (vận hành). **Tuyệt đối không nhét vào level** — xem §2.2, §2.3.
+- **ĐIỂM NÓNG** = **một sự cố cụ thể** (bực vì đổi GV buổi thứ 3, phàn nàn bài nhiều, hỏi bảo lưu). **Mở → xử → ĐÓNG.** Bệnh (§3.2) gắn ở đây.
+- **CỜ** = trạng thái **kéo dài**, bật/tắt theo tín hiệu nguồn. Đỏ (xấu) · xanh (lợi thế) · vận hành (chặn).
+- **LẦN CHẠM** = hoạt động cụ thể của BK.
+
+> ⭐ **Luật phân biệt ĐIỂM NÓNG với CỜ:**
+> **Cái gì ĐÓNG được bằng một hành động của BK ⇒ ĐIỂM NÓNG. Cái gì chỉ tắt khi tín hiệu nguồn tự đổi ⇒ CỜ.**
+> PH L5 bực về một buổi học **không phải "PH không hài lòng"** — đó là **một việc cần xử**. Gắn nhãn xấu lên *con người* thay vì lên *sự việc* là đúng rủi ro §0.13, và làm OPS đọc sai: *"Chị Lan — cờ đỏ"* ⇒ nghĩ *chị Lan là ca có vấn đề*; *"Chị Lan L5 — điểm nóng: bực vì đổi GV"* ⇒ biết ngay **phải làm gì**.
+
+> ⭐ **Leo thang:** điểm nóng **quá SLA chưa đóng**, hoặc **≥2 điểm nóng trong một quý** ⇒ **bật CỜ ĐỎ**.
+> Một sự cố là chuyện bình thường của quan hệ dài. **Sự cố không được xử, hoặc lặp lại, mới là vấn đề quan hệ.**
 
 > ⚠️ Bổ trợ yếu là **CA** (ngắn, mở-đóng, đo được). CSKH là **TRẠNG THÁI** (dài, không đóng). Đây là khác biệt mô hình lớn nhất — clone sai chỗ này là hỏng cả hệ.
 
@@ -84,11 +91,14 @@ Mọi bậc là **sự thật đã xảy ra** (*đã hiểu quy trình · đã c
 
 | Nhóm cờ | Gồm | Dùng để |
 |---|---|---|
-| **CỜ ĐỎ** | không hài lòng · con tụt band 2 tháng liên tiếp · vắng tăng so với chính mình · **chậm phí lần đầu** (đổi hành vi) · hỏi về bảo lưu · ngừng trả lời tin nhắn · **nguội > 90 ngày** | ⇒ **playbook CỨU, bất kể level** |
+| **CỜ ĐỎ** *(trạng thái kéo dài — không đóng được bằng 1 hành động)* | **nguội > 90 ngày** · con tụt band 2 tháng liên tiếp · vắng tăng so với chính mình · ngừng trả lời tin nhắn · **điểm nóng quá SLA chưa đóng** · **≥2 điểm nóng trong 1 quý** | ⇒ **playbook CỨU, bất kể level** |
 | **CỜ XANH** | **đã TRẢ GIÁ** (thêm môn · con thứ 2 vào · ở lại qua tăng phí · theo qua chuyển cấp) · **cơ hội cao** (toà/khu · mạng lưới · vị thế cộng đồng) | xếp **thứ tự** hành động |
 | **CỜ VẬN HÀNH** | chỉ Thùy gọi · **đừng hỏi giới thiệu** (đã từ chối 2 lần) | chặn hành động sai |
 
-**Ưu tiên hành động = hàm của (cờ đỏ → level → cờ xanh), xét đúng thứ tự đó.**
+**Ưu tiên hành động = hàm của (điểm nóng đang mở → cờ đỏ → level → cờ xanh), xét đúng thứ tự đó.**
+
+**Những thứ KHÔNG phải cờ — chúng là ĐIỂM NÓNG (§1), vì đóng được bằng một hành động:**
+PH phàn nàn về một chuyện · **hỏi về bảo lưu** · **chậm phí** (đóng khi trả) · bực vì đổi GV hoặc một buổi cụ thể · con không muốn đi học.
 
 > ⚠️ **"Đã trả giá" KHÔNG lên thang** dù nó là tín hiệu mạnh nhất sau giới thiệu. Vì trục này đo **sẵn sàng giới thiệu**; trả giá chứng minh **độ bền của quan hệ**, không chứng minh sẵn sàng giới thiệu — một PH có thể gắn bó sâu mà ít nói cả đời. Nhét vào thang là trộn hai trục.
 
@@ -100,6 +110,7 @@ Mọi bậc là **sự thật đã xảy ra** (*đã hiểu quy trình · đã c
 
 | Nhóm | Bậc | Việc | CẤM |
 |---|---|---|---|
+| **XỬ ĐIỂM NÓNG** | có điểm nóng đang mở (bất kể level) | Xử **sự việc cụ thể** trong SLA rồi **đóng**. Không gắn nhãn lên PH | **Cấm mọi lời liên quan giới thiệu** cho tới khi đóng |
 | **CỨU** | cờ đỏ bật (bất kể level) | Chặn nghỉ. **48h**, người cứng nhất | **Cấm mọi lời liên quan giới thiệu** |
 | **MỞ** | L1–L3 | Làm cho họ chịu nói. Mục tiêu: **1 phản hồi có nội dung** | Không xin gì |
 | **NUÔI** | L4–L5 | Cho họ **chuyện để kể** — tin vui về con, đều đặn | Chưa nhờ giới thiệu |
@@ -140,10 +151,10 @@ Nhét cơ hội vào level ⇒ PH cực hài lòng mà không quen ai sẽ **mã
 
 | | **Tầng 1 — QUÉT** | **Tầng 2 — ĐÀO** |
 |---|---|---|
-| Dùng cho | **tất cả 300 PH** | ca đáng đầu tư (cờ đỏ, hoặc L4–L5 + cờ xanh cơ hội cao) |
+| Dùng cho | **tất cả 300 PH** | ca đáng đầu tư (điểm nóng · cờ đỏ · L4–L5 + cờ xanh cơ hội cao) |
 | Thời lượng | 3–5 phút | 20 phút+ |
 | Ai hỏi | OPS/CSKH ai cũng làm được | CSKH nền tâm lý / CEO |
-| Mục tiêu | **xếp được level + độ phủ**, bật/tắt cờ | **tìm BỆNH cụ thể** |
+| Mục tiêu | **xếp được level + độ phủ**, bật/tắt cờ, **phát hiện điểm nóng** | **tìm BỆNH cụ thể** |
 
 **Tầng 1 — bốn câu, hỏi đúng thứ tự này:**
 1. *"Con học ở BK dạo này thế nào ạ?"* → mở, để họ tự nói trước
@@ -157,7 +168,7 @@ Nhét cơ hội vào level ⇒ PH cực hài lòng mà không quen ai sẽ **mã
 
 **Bệnh giải thích vì sao PH đang ở level đó** — chia hai loại theo vị trí trên thang:
 
-**Bệnh gây CỜ ĐỎ (PH đang khó chịu):**
+**Bệnh của ĐIỂM NÓNG (gắn với SỰ VIỆC, không gắn với con người):**
 
 | Mã | Bệnh | Triệu chứng | Câu đào (tầng 2) |
 |---|---|---|---|
@@ -168,7 +179,7 @@ Nhét cơ hội vào level ⇒ PH cực hài lòng mà không quen ai sẽ **mã
 | B5 | Mất niềm tin vào một GV | tụt sau đổi GV · cả lớp đó cùng tụt | *"Con có hay kể gì về buổi học không?"* |
 | B6 | Con không muốn đi học | vắng + GV báo đổi thái độ | *"Con nói gì khi đến giờ đi học?"* |
 
-**Bệnh CHẶN ĐƯỜNG LÊN (PH không hề khó chịu — kẹt ở L3–L5):**
+**Bệnh CHẶN ĐƯỜNG LÊN (gắn với NGƯỜI — vì sao kẹt level; PH không hề khó chịu):**
 
 | Mã | Bệnh | Triệu chứng | Câu đào |
 |---|---|---|---|
@@ -294,13 +305,13 @@ Thang L1–L8 là **phỏng đoán khởi đầu**. Xếp xong 300 PH thì nhìn
 
 ## 9. Data model (reuse — verify trước)
 
-- `level_ph` (**TRUNG TÂM**): `phu_huynh_id` PK · `level` (L1–L8 / `chua_xep`) · `co` jsonb (đỏ/xanh/vận hành) · `do_phu` · `ly_do_level` · `tu_ngay` · `buoc_tiep_theo` · `ngay_buoc_tiep` · `nguoi_phu_trach` · cờ (`chi_ceo_goi`, `dung_hoi_gioi_thieu`).
+- `level_ph` (**TRUNG TÂM**): `phu_huynh_id` PK · `level` (L1–L8 / `chua_xep`) · `co` jsonb (đỏ/xanh/vận hành) · `so_diem_nong_mo` (suy động) · `do_phu` · `ly_do_level` · `tu_ngay` · `buoc_tiep_theo` · `ngay_buoc_tiep` · `nguoi_phu_trach` · cờ (`chi_ceo_goi`, `dung_hoi_gioi_thieu`).
 - `level_ph_log`: mọi lần đổi level **và mọi lần bật/tắt cờ** — `tu_level`, `den_level`, `co_bat`, `co_tat`, `ly_do`, `bang_chung` (nguyên văn / sự kiện), `at`, `boi`. **Trigger DB tự đẻ, app không tự nhớ ghi** (§4).
 - `ho_so_ph` (**chỉ tín hiệu ĐIỀN TAY**): `loai` · `gia_tri` · `nguoi_ghi` · `ngay_ghi` · `ngay_het_han`. Append-only.
 - **Tín hiệu MÁY: KHÔNG có bảng.** `fn_ph_tin_hieu(phu_huynh_id)` đọc thẳng bảng gốc (§2.0).
-- `van_de_ph`: `phu_huynh_id` · `loai_benh` (B0–B8) · `muc` · `tin_hieu` jsonb (snapshot lúc chẩn đoán) · `phan_khuc` · `trang_thai`.
+- `diem_nong_ph` (**sự cố cụ thể — mở/đóng**): `phu_huynh_id` · `hoc_sinh_id` (nullable) · `loai_benh` (B1–B6) · `muc` · `tin_hieu` jsonb (snapshot lúc phát hiện) · `phan_khuc` · `mo_at` · **`sla_den`** · `dong_at` · `ket_qua` · `nguyen_van`. **Chỉ tạo dòng khi có sự cố THẬT** (§1.5).
 - `cham_ph`: mỗi lần chạm **đã xảy ra** — `nguoi_cham` · `kenh` · `can_thiep` (ref catalog) · **`nguyen_van` NOT NULL** · `ket_qua` · `level_sau` · `buoc_tiep_theo` · `ngay_buoc_tiep` · `at`.
-- `case_ph` (**CASE LOG**): `van_de_id` · `playbook_id` · `de_xuat_ai` jsonb (**kèm `tin_hieu_can_cu` + `do_phu`**) · `nguoi_duyet` · `delta` jsonb · `ly_do` · `du_doan` (level kỳ vọng + mốc) · `ket_qua` · `case_truoc_id`.
+- `case_ph` (**CASE LOG**): `diem_nong_id` (nullable — ca có thể là *đẩy level*, không phải *xử sự cố*) · `playbook_id` · `de_xuat_ai` jsonb (**kèm `tin_hieu_can_cu` + `do_phu`**) · `nguoi_duyet` · `delta` jsonb · `ly_do` · `du_doan` (level kỳ vọng + mốc) · `ket_qua` · `case_truoc_id`.
 - `playbook_ph` · `catalog_can_thiep_ph` · `benchmark_ph` (per `phan_khuc` × `period`).
 - Bổ sung: `hoc_sinh.nguon_biet_den` · `hoc_sinh.nguoi_gioi_thieu_ph_id`.
 - **Reuse (KHÔNG tạo lại):** `bao_cao_ph` · `canh_bao_yeu` · `bo_tro_yeu` · `hoa_don`/`thanh_toan` · `buoi_hoc_hs` · `hoc_sinh` · `phu_huynh` · Cổng PH (`fetchPhLogins`).
@@ -317,7 +328,7 @@ Thang L1–L8 là **phỏng đoán khởi đầu**. Xếp xong 300 PH thì nhìn
 3. Tiêu chí lên level + luật bật/tắt cờ thành rule (deterministic, ngưỡng chỉnh được). Quy tắc nhiều con. **Không viết đường hạ level.**
 4. `ho_so_ph` + form điền tay (gồm **cờ xanh**: đã trả giá · cơ hội — tách khỏi level).
 5. **§6 phép kiểm bộ level trên dữ liệu lịch sử** — chạy TRƯỚC khi dùng. Sai thì sửa thang.
-6. Bộ câu hỏi 2 tầng + `van_de_ph` (bệnh) + AI đề xuất **kèm căn cứ + độ phủ** → UI duyệt **bắt delta + lý do**.
+6. Bộ câu hỏi 2 tầng + `diem_nong_ph` (mở/đóng + SLA + leo thang bật cờ) + AI đề xuất **kèm căn cứ + độ phủ** → UI duyệt **bắt delta + lý do**.
 7. `playbook_ph` + `catalog_can_thiep_ph` + seed Cách-1.
 8. `cham_ph` + **luật bước-tiếp-theo** + form ghi chạm (mobile, nguyên văn bắt buộc, hiện lại lần trước).
 9. 3 màn hình + dòng thời gian + ma trận dịch chuyển level + trường "biết BK qua ai".
@@ -331,10 +342,13 @@ Thang L1–L8 là **phỏng đoán khởi đầu**. Xếp xong 300 PH thì nhìn
 - **Mọi tiêu chí lên level là HÀNH ĐỘNG CỦA PH.** Không tiêu chí nào là hoạt động của BK.
 - **L4 không lên được nếu thiếu nguyên văn.** **L7 không lên được nếu chỉ có lời hứa.**
 - ⭐ **LEVEL KHÔNG BAO GIỜ TỤT** — code không có đường hạ level. Không hài lòng/nguội ⇒ **bật cờ đỏ**.
-- **Cờ đỏ ⇒ playbook CỨU bất kể level.** Ưu tiên xét đúng thứ tự (cờ đỏ → level → cờ xanh).
+- ⭐ **ĐIỂM NÓNG tách khỏi CỜ:** cái đóng được bằng 1 hành động của BK là **điểm nóng** (có `dong_at`); cái chỉ tắt khi tín hiệu nguồn đổi là **cờ**. Phàn nàn / hỏi bảo lưu / chậm phí ⇒ **điểm nóng, KHÔNG phải cờ**.
+- **Leo thang tự động:** điểm nóng quá SLA chưa đóng, hoặc ≥2 điểm nóng trong 1 quý ⇒ **bật cờ đỏ**.
+- **Bệnh B1–B6 gắn vào ĐIỂM NÓNG (sự việc); B7–B8 gắn vào NGƯỜI** (vì sao kẹt level).
+- **Cờ đỏ ⇒ playbook CỨU bất kể level.** Ưu tiên xét đúng thứ tự (**điểm nóng → cờ đỏ → level → cờ xanh**).
 - **Độ phủ < 50% ⇒ "chưa xếp" + việc "đi khám"**, không xếp bừa.
 - **Cơ hội và "đã trả giá" KHÔNG nằm trong công thức level** — là cờ xanh, chỉ dùng xếp thứ tự.
-- Màn hình hiện **cặp (level + cờ)**, không hiện level trơ.
+- Màn hình hiện **bộ ba (level + cờ + số điểm nóng đang mở)**, không hiện level trơ.
 - **Mọi PH đang mở có bước tiếp theo + ngày**; *"follow up"* bị chặn; đình trệ 14 ngày vào hàng đợi.
 - **Approve trơn bị chặn** — buộc ghi delta.
 - **Tin xấu không có đường gửi tự động** — chặn ở tầng code.
@@ -356,7 +370,7 @@ Thang L1–L8 là **phỏng đoán khởi đầu**. Xếp xong 300 PH thì nhìn
 **ĐỌC TRƯỚC (bắt buộc):** `CSKH-HANDOFF.md` · `HANDOFF.md` · `CLAUDE.md` · `BKDEMY_CANHBAO_BOTRO_SPEC.md` · toàn bộ spec này.
 
 **KỶ LUẬT:**
-- **LEVEL là trục (chỉ đi lên), CỜ là trạng thái hiện tại, CA chỉ là hoạt động.** Đừng lấy ca làm trung tâm (mô hình bổ trợ yếu — sai ở đây). **Đừng hạ level.**
+- **LEVEL là trục (chỉ đi lên) · ĐIỂM NÓNG là sự cố (mở-đóng) · CỜ là trạng thái kéo dài · LẦN CHẠM là hoạt động.** Đừng lấy ca làm trung tâm (mô hình bổ trợ yếu — sai ở đây). **Đừng hạ level. Đừng biến sự cố thành nhãn dán lên con người.**
 - **KHÔNG đẩy PH lên level. KHÔNG ép. KHÔNG động chuyện giới thiệu khi PH chưa hài lòng.**
 - Tiêu chí lên level = **hành động của PH**, không phải hoạt động của BK.
 - **KHÔNG lưu điểm. KHÔNG lưu tín hiệu máy** (suy động từ bảng gốc). **KHÔNG chỉ lưu nhãn — luôn kèm nguyên văn.** **KHÔNG bảng nào mang `mon`.**
