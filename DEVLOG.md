@@ -7514,3 +7514,41 @@ GHI LẠI đúng danh sách để repo nói đúng sự thật. Đang để NGUY
 `feat/fix-lane-v2` 2 · `hocphi/phat-sinh-hs-nghi` 1) · 5 nhánh remote `claude/*` đã merge chưa xoá ·
 6 worktree đang sau main 85-106 commit (rebase trước khi dùng tiếp) · 4 dòng sổ `giai_thuong` cũ vẫn
 kêu trong status (file mới đã thay nội dung — muốn im thì xoá 4 dòng sổ đó, cần CEO gật).
+
+## 2026-09-01 (tiếp) — ĐÍNH CHÍNH cảnh báo FDW + gỡ 10 bảng dư + chốt bố trí worktree
+
+**ĐÍNH CHÍNH mục trước trong ngày (tao báo sai, CEO bắt được):** cảnh báo "role `fdw_bkdemy_web`
+đọc được 35 bảng = lỗ hổng" là **SAI KHUNG**. Tao đọc mig 15/08 (viết lúc chỉ có bkdemy-web dùng, 4
+bảng) rồi suy ra hiện tại, mà không đo hộ dùng thật. CEO: *"có thay đổi gì trên web đâu… chỉ có PH
+app có tính năng chụp ảnh mới nên cần ghi vào DB"*. Đo lại bằng nguồn đúng — `limit to (...)` +
+`create foreign table` trong `bkdemy-ph-app/migrations/*.sql` và `bkdemy-web/supabase-ph-migrations/`:
+- **App PH là hộ dùng CHÍNH: 21 foreign table** (phu_huynh, hoc_sinh, lop, buoi_hoc, buoi_hoc_hs,
+  buoi_danh_gia, bao_cao_ph, bai_test, bai_test_cau, btvn_ket_qua, tai_lieu, tai_lieu_phan,
+  tai_lieu_cau, dai_cau_hoi, hoa_don, hoa_don_dong, hoc_sinh_he_so + 4 view `v_btvn_tra_*`/`nop_ph`).
+  bkdemy-web vẫn đúng 4 bảng như mig 15/08 viết. ⇒ `202608151600_hoan_tac_fdw_thu_hep.sql` mở lại là
+  **ĐÚNG nghiệp vụ**, không phải sự cố bảo mật.
+- Đối chiếu cấp-vs-dùng: **24/24 object đang import đều đã cấp** (không thiếu) · **11 cấp mà không
+  hộ nào import**, trong đó `v_btvn_dap_an` là view thứ 5 của luồng trả bài (PH mới import 4/5) →
+  giữ; **10 cái còn lại là dư thật**.
+- **BÀI HỌC:** đọc 1 migration cũ rồi suy ra hiện trạng = suy sai, vì migration chỉ nói **lúc đó**.
+  Muốn biết "ai đang dùng cái quyền này" phải đo ở **phía tiêu thụ** (repo hộ dùng khai báo gì), chứ
+  không phải đọc lịch sử phía cấp. Và khi phía tiêu thụ nằm ở REPO KHÁC thì phải mở repo đó ra đọc.
+
+**GỠ 10 BẢNG DƯ (CEO chốt):** mig `202609012300` — revoke GRANT + drop policy `fdw_bkdemy_web*` cho
+`bai_lam`, `bai_lam_cau`, `bt_grades`, `dai_ban_do`, `diem_thi`, `gami_grades`,
+`gami_session_problems`, `hoc_sinh_lop`, `ky_thi`, `thoi_khoa_bieu` (2 cổng độc lập, gỡ 1 là hở —
+bài học 15/08) + khối chốt-lại raise exception nếu sứt quyền của 25 object đang dùng. Áp OK, đo lại:
+**35 → 25 GRANT**, 10 bảng sạch cả grant lẫn policy, 25 object giữ nguyên. KHÔNG mất dòng dữ liệu nào.
+
+**TRAO GIẢI THÁNG (CEO trả lời):** `giai_thuong` 0 dòng là **đúng** — tính năng mới, 1 tháng mới
+trao 1 lần. Khung DB (bảng + trigger slot Xuất sắc 3/Tiến bộ 2/Chăm chỉ 1 mỗi lớp mỗi tháng) giữ
+nguyên, file khôi phục `202609012230` đã đưa nó vào repo. ⚠ Còn treo: **chưa có màn/RPC trao giải**
+trong bất kỳ repo hay nhánh nào (grep `src/` + bkdemy-web + bkdemy-ph-app + 43 nhánh remote = 0
+hit; DB chỉ có trigger `giai_thuong_check_slot`) — tới kỳ trao tháng đầu tiên là phải build UI +
+đường ghi, đừng tưởng đã có.
+
+**BỐ TRÍ WORKTREE (CEO chốt: giữ nguyên như sau khi pull sáng nay):** nhánh `main` đứng ở checkout
+chính `bkdemy-erp-v2`; `wt-bot` **detached** tại commit đang chạy, bot hỏi–đáp chạy y nguyên. Đánh
+đổi đã chấp nhận: wt-bot không tự theo main ⇒ **pull main xong, muốn bot ăn code mới thì
+`git -C ../wt-bot checkout main --detach`**. Đã sửa 2 chỗ luật cũ trong HANDOFF (① mục "Bố trí
+worktree" + mục bot) — trước ghi "thi công/merge từ wt-bot đứng cố định ở main", giờ sai.
