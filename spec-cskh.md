@@ -1,232 +1,321 @@
-# Chăm sóc Phụ huynh & Referral (hồ sơ sức khoẻ PH) — Feature Spec · BKdemy ERP
+# Chăm sóc Phụ huynh & Referral — Feature Spec · BKdemy ERP
 
-> **Viết bám sát `BKDEMY_CANHBAO_BOTRO_SPEC.md`** — cùng 4 mắt xích, cùng case log, cùng cơ chế delta + benchmark.
-> Đối tượng đổi: **(HS × dạng) → (PH × vấn đề)**. Đội đã hiểu mô hình đó ⇒ chi phí học ≈ 0.
-> Nền suy nghĩ: `CSKH-HANDOFF.md` (đọc trước). Ngày: 01/09/2026.
-> **Ẩn dụ chủ đạo:** mỗi PH có một **hồ sơ sức khoẻ** · mỗi sự kiện là một **diễn biến** · playbook là **phác đồ điều trị**.
+> **Trục chính = LEVEL của phụ huynh** (trạng thái thường trực), không phải ca.
+> Mô hình tham chiếu: **Loyalty Ladder** (Prospect→Customer→Client→**Advocate**) + **sales pipeline stage-gate**.
+> Vay từ `BKDEMY_CANHBAO_BOTRO_SPEC.md`: case log · bắt delta · benchmark theo phân khúc · tự-động-hoá là phần thưởng kiếm được.
+> Nền: `CSKH-HANDOFF.md` (đọc trước). Ngày: 01/09/2026. Cấu trúc theo **4 việc** CEO chốt.
 
 ---
 
 ## 0. Nguyên tắc nền
 
-1. **Case log là xương sống — dựng TRƯỚC, mọi mắt xích ghi vào.** Bỏ nó thì cả mảng thành đồ chơi: không đo được hiệu quả, không học được, không kiếm được quyền tự động.
-2. **Không quy kết nhân quả.** "Sau khi chăm sóc, PH có ấm lên không" — ấm thì tính là có hiệu quả; đủ nhiều ca thì kết luận về *loại/playbook* tự chắc. KHÔNG cố tách "ấm lên nhờ cái gì".
-3. **Tự động hoá là PHẦN THƯỞNG KIẾM ĐƯỢC, không phải nút bật.** v1 = **AI đề xuất, người duyệt (bắt DELTA)**.
-4. **Báo nhầm cũng gây hại.** Gắn nhãn "nguy cơ" lên một phụ huynh nhạy cảm không kém gắn lên một đứa trẻ. Mọi hành động chạm PH đi qua **người duyệt** ở phase đầu.
-5. ⭐ **KHÔNG ÉP PHỤ HUYNH.** Hệ là **bộ lọc tìm người sẵn sàng**, không phải bộ máy thúc người chưa sẵn sàng. **Chưa hài lòng thì không động tới chuyện giới thiệu.**
-6. ⭐ **Đo NGƯỜI THỰC HIỆN bằng chất lượng chạm, KHÔNG bằng số lời giới thiệu.** Treo chỉ số referral lên đầu cá nhân là đẻ ra hành vi ép. Referral chỉ đo ở **cấp hệ thống**.
-7. ⭐ **KHÁC CĂN BẢN với bổ trợ yếu: KHÔNG CÓ THANG ĐO KHÁCH QUAN.**
-   HS có mastery (5 lần đo, khách quan). PH thì "hài lòng" **không đo trực tiếp được** — mọi tín hiệu đều là **proxy**.
-   ⇒ Hệ quả bắt buộc: (a) bar can thiệp **cao hơn** bổ trợ yếu · (b) mọi điểm số **luôn đi kèm ĐỘ PHỦ** · (c) độ phủ < 50% ⇒ **không hành động theo điểm**, việc lúc đó là **đi khám**.
-8. **Chưa đo ≠ điểm thấp** (§5 CLAUDE.md). Mục chưa điền **không phải 0** — tính theo **tỷ lệ trên các mục đã điền**.
-9. ⭐ **KHÔNG lưu điểm, và KHÔNG lưu tín hiệu MÁY.** Điểm suy từ tín hiệu; tín hiệu máy suy từ bảng gốc (`bao_cao_ph`, `canh_bao_yeu`, `buoi_hoc_hs`, `hoa_don`…). Chép tín hiệu sang bảng riêng = **nhân bản dữ liệu** + đẻ bài toán đồng bộ — đúng thứ §1 cấm (*mastery không lưu, suy động*).
-   **Chỉ lưu cái KHÔNG suy được:** (a) phần **điền tay** · (b) **lần chạm đã xảy ra** · (c) **snapshot lúc chẩn đoán** (đóng băng có chủ đích).
-10. **Lưu cả CẤU TRÚC lẫn NGUYÊN VĂN.** Nhãn suy được từ nguyên văn; nguyên văn không suy được từ nhãn. **Cấm chỉ lưu nhãn.**
+1. ⭐ **KHÔNG ĐẨY PHỤ HUYNH LÊN LEVEL.** Ta **tạo điều kiện**, PH tự lên. Đây là chỗ khác sale căn bản — sale có người chủ động đẩy deal; ở đây **cấm**. Đội đọc mô hình sale rất dễ hành xử như sale: viết luật này ra để chặn.
+2. ⭐ **KHÔNG động tới chuyện giới thiệu khi PH chưa hài lòng.** Không cố chuyển hoá người chưa hài lòng — quá khó, việc của chuyên gia. Logic BK: *làm PH hài lòng → họ sẵn sàng, chỉ thiếu dịp hoặc chưa nghĩ đến*.
+3. ⭐ **Tiêu chí lên level = HÀNH ĐỘNG CỦA PHỤ HUYNH, không phải hoạt động của BK.**
+   *"Đã gọi", "đã gửi báo cáo"* = hoạt động của ta ⇒ **KHÔNG tính**. *"PH phản hồi", "PH thêm môn", "người được giới thiệu gọi đến"* = hành động của họ ⇒ **tính**.
+   *(Sale: exit criteria dự đoán tốt hơn entry criteria vì nó đòi hành động của người mua, không phải phán đoán của nhân viên.)*
+4. **Một stage không có tiêu chí là một cái NHÃN. Có tiêu chí mới là một cái CỔNG.**
+5. **Level đi CẢ HAI CHIỀU.** Sale có đích kết thúc (closed won); CSKH thì không — "đại sứ" là trạng thái phải **duy trì**. Dấu hiệu XUỐNG ngang hàng dấu hiệu LÊN.
+6. ⭐ **KHÔNG CÓ THANG ĐO KHÁCH QUAN** (khác bổ trợ yếu — HS có mastery). Mọi tín hiệu là **proxy** ⇒ (a) mọi level **luôn kèm ĐỘ PHỦ** · (b) độ phủ < 50% ⇒ **không xếp level**, việc lúc đó là **đi khám**.
+7. **Chưa đo ≠ thấp** (§5 CLAUDE.md). Mục chưa điền không phải 0 — tính **tỷ lệ trên các mục đã điền**.
+8. **KHÔNG lưu điểm. KHÔNG lưu tín hiệu máy** — suy động từ bảng gốc (§1: *mastery không lưu*). Chỉ lưu cái không suy được: **điền tay · lần chạm đã xảy ra · snapshot lúc chẩn đoán**.
+9. **KHÔNG chỉ lưu nhãn — luôn kèm NGUYÊN VĂN.** Nhãn suy được từ nguyên văn; ngược lại thì không.
+10. **KHÔNG bảng nào mang nhãn `mon`.** Quan hệ với PH không phải dữ liệu học tập (§1.6). Môn chỉ sống ở bảng gốc.
+11. **Không quy kết nhân quả.** Ấm lên = tính là có hiệu quả; đủ ca thì kết luận về *playbook* tự chắc.
+12. **Đo NGƯỜI THỰC HIỆN bằng chất lượng chạm, KHÔNG bằng số lời giới thiệu.** Treo chỉ số referral lên đầu cá nhân là đẻ ra hành vi ép. Referral chỉ đo ở **cấp hệ thống**.
+13. **Báo nhầm cũng gây hại.** Gắn nhãn "nguy cơ" lên một PH nhạy cảm không kém gắn lên một đứa trẻ. Mọi hành động chạm PH qua **người duyệt** ở phase đầu.
+14. **Tự động hoá là PHẦN THƯỞNG KIẾM ĐƯỢC, không phải nút bật.** v1 = AI đề xuất, người duyệt **bắt DELTA**.
 
 ---
 
-## 1. Vòng lõi (4 mắt xích + case log)
+## 1. Mô hình lõi — bốn khái niệm, đừng lẫn
 
 ```
-Khám ─► Chẩn đoán ─► Điều trị ─► Tái khám
-  │         │            │           │
-  └────┬────┴─────┬──────┴─────┬─────┘   (mọi mắt xích GHI vào)
-       ▼          ▼            ▼
- ┌──────────────────────────────────────────┐
- │ CASE LOG (xương sống)                      │
- │ tín hiệu+mức → bệnh → playbook →           │
- │ đề xuất AI → NGƯỜI SỬA GÌ+LÝ DO →          │
- │ can thiệp → pre/post-1/post-2 → NGUYÊN VĂN │
- └──────────────────────────────────────────┘
-       ↻ nuôi lại "Chẩn đoán" (playbook tiến hoá) + là thước autonomy
+        ┌──────────────────────────────────────────┐
+        │  LEVEL  (trạng thái THƯỜNG TRỰC)         │  ← TRỤC CHÍNH
+        │  L0 …………………………………………………… L5           │     không bao giờ "đóng"
+        └───────────┬──────────────────┬───────────┘
+                    │                  │
+   BỆNH (chẩn đoán) │                  │ CƠ HỘI (thuộc tính riêng)
+   vì sao đang ở đây│                  │ xếp THỨ TỰ hành động
+   / vì sao chưa lên│                  │ KHÔNG vào level
+                    ▼                  ▼
+        ┌──────────────────────────────────────────┐
+        │  CA / LẦN CHẠM  (hoạt động, có mở-đóng)  │
+        └──────────────────┬───────────────────────┘
+                           ▼
+        ┌──────────────────────────────────────────┐
+        │  CASE LOG — mọi thứ ghi vào              │
+        │  level trước → bệnh → playbook →         │
+        │  đề xuất AI → NGƯỜI SỬA GÌ + LÝ DO →     │
+        │  can thiệp → NGUYÊN VĂN → level sau      │
+        └──────────────────────────────────────────┘
 ```
 
+- **LEVEL** = trạng thái quan hệ. Luôn tồn tại. Chỉ dịch chuyển, không đóng.
+- **BỆNH** = chẩn đoán tại một thời điểm: *vì sao đang ở level này*, hoặc *vì sao chưa lên được*.
+- **CA / LẦN CHẠM** = hoạt động, có mở-đóng. **Xoay quanh level, không phải ngược lại.**
+- **CƠ HỘI** = PH có bao nhiêu người để giới thiệu. **Tách riêng, tuyệt đối không nhét vào level** — xem §2.3.
+
+> ⚠️ Bổ trợ yếu là **CA** (ngắn, mở-đóng, đo được). CSKH là **TRẠNG THÁI** (dài, không đóng). Đây là khác biệt mô hình lớn nhất — clone sai chỗ này là hỏng cả hệ.
+
 ---
 
-## 2. Mắt xích #1 — KHÁM / Phát hiện (deterministic, KHÔNG phải AI)
+## 2. VIỆC 1 — BỘ LEVEL (bệnh án)
 
-- **Bắt SỚM bằng THAY ĐỔI, không bằng MỨC.** PH luôn chậm phí = tính cách, không nói gì. PH luôn đúng hạn mà tháng này chậm = **tín hiệu**. Áp cho mọi tín hiệu hành vi.
-- **Output = MỨC (triage), không phải cờ có/không.** Hai băng:
+### 2.1 Thang
 
-| Băng | Bar | Ví dụ tín hiệu | Ý nghĩa |
+| Level | Nghĩa | **LÊN — hành động của PH** | **XUỐNG** |
 |---|---|---|---|
-| **Cảnh báo** | thấp — quét rộng, rẻ, **chấp nhận báo nhầm** | band con tụt 1 tháng · vắng nhích lên · im lặng > 30 ngày · độ phủ hồ sơ thấp | chỉ là cờ theo dõi, **không tốn người** |
-| **Xử lý — nhẹ** | cao | ≥2 tín hiệu cảnh báo cùng lúc · band tụt 2 tháng liên tiếp · **chậm phí lần đầu** | tốn 1 cuộc gọi |
-| **Xử lý — nặng** | rất cao | **hỏi về bảo lưu/nghỉ** · ngừng trả lời tin nhắn · nợ phí + con đang tụt | người cứng gọi, SLA 48h |
+| **L0** | **Nguy cơ** | — | **bất kỳ cờ đỏ nào ⇒ rơi thẳng về L0, GHI ĐÈ mọi level** |
+| **L1** | Trung tính / chưa rõ | cờ đỏ tắt **và** PH phản hồi lại ≥1 lần | im lặng > 90 ngày ⇒ tụt 1 bậc |
+| **L2** | Hài lòng | PH **chủ động** phản hồi tích cực / khen / cảm ơn — **ghi NGUYÊN VĂN làm bằng chứng** | con nghỉ 1 môn ⇒ tụt 1 bậc |
+| **L3** | Gắn bó | PH **TRẢ GIÁ**: thêm môn · cho con thứ 2 vào · ở lại qua một lần tăng phí · theo qua chuyển cấp | như trên |
+| **L4** | **Đại sứ** | **có 1 người được giới thiệu LIÊN HỆ BK** | — |
+| **L5** | Đại sứ mạnh | ≥2 người được giới thiệu, hoặc người thứ 2 nhập học | — |
 
-- **Nguồn tín hiệu (reuse, không đẻ lại):** `bao_cao_ph` (`nl_band` theo tháng → delta) · `canh_bao_yeu` · `bo_tro_yeu` · `buoi_hoc_hs` (vắng) · `hoa_don`/`thanh_toan` (chậm phí) · `hoc_sinh` (thâm niên, khối, trường) · Cổng PH (`last_sign_in_at`, `must_change_password` — **tín hiệu YẾU, chỉ nói "đã mở cửa"**, không nói thái độ) · phần điền tay · ghi âm cuộc gọi (trích xuất) · Zalo (⏳ chờ, xem §8).
-- ⭐ **Quy tắc PH có nhiều con:** tín hiệu đến theo (HS × môn), nhưng vấn đề gắn với **PH**. **Cờ đỏ của MỘT con kéo cả PH sang mức nặng** — bố mẹ không tách bạch, họ chỉ nhớ "BK đang có vấn đề với con tôi". Điểm hài lòng gộp: lấy **con có trạng thái xấu nhất**, không lấy trung bình.
-- **Chuẩn hoá theo lớp:** so PH với **trung vị lớp của con**, không so toàn trung tâm. Lớp có GV được yêu thích thì cả lớp điểm cao — đó là biến của **GV**, không phải của PH.
+**Hai chỗ dễ làm sai:**
+- **L4 tính khi người kia GỌI ĐẾN, không tính khi PH HỨA.** Lời hứa là ý định; cuộc gọi là hành động.
+- **L2 bắt buộc có nguyên văn.** Không có câu PH nói thì không lên L2 — vì "hài lòng" không đo được, nguyên văn là bằng chứng duy nhất.
+
+### 2.2 Luật vận hành level
+- **Cờ đỏ ghi đè tất cả.** PH đang L5 mà con tụt band 2 tháng ⇒ **L0**, không phải "L5 có vấn đề nhỏ".
+- **Mọi level đi kèm ĐỘ PHỦ.** Độ phủ < 50% ⇒ level = **"chưa xếp"**, việc là **đi khám** (§3).
+- **PH nhiều con: lấy con có trạng thái XẤU NHẤT**, không lấy trung bình. Bố mẹ không tách bạch — họ chỉ nhớ *"BK đang có vấn đề với con tôi"*.
+- **Chuẩn hoá theo lớp** khi so PH với nhau: so với **trung vị lớp của con**. Lớp có GV được yêu thích thì cả lớp cao — đó là biến của **GV**, không phải của PH.
+- **Ở yên quá lâu là tín hiệu.** L1–L3 không dịch chuyển > 2 quý ⇒ nêu cờ xem lại (deal aging).
+
+### 2.3 ⭐ CƠ HỘI — tách riêng, KHÔNG vào level
+
+Khoảng từ *hài lòng* lên *đã giới thiệu* **không do hài lòng quyết định** — nó do **có ai để giới thiệu không**.
+
+Nhét cơ hội vào level ⇒ PH cực hài lòng mà không quen ai sẽ **mãi mãi bị coi là "chưa đạt"**, và đội sẽ đi thúc họ. Đúng thứ §0.1 và §0.2 cấm.
+
+**Cơ hội = thuộc tính riêng**, dùng để **xếp thứ tự hành động**, không phải để đánh giá PH:
+
+| Yếu tố | Nguồn |
+|---|---|
+| Vị thế trong cộng đồng (admin group cư dân, giáo viên, người hay được hỏi) | **điền tay** — mạnh nhất |
+| Mạng lưới quen có con cùng tuổi | điền tay |
+| Toà / khu ở (Gemek 1–2, Golden, Geleximco) | điền tay |
+| Trường + lớp con đang học | `hoc_sinh.truong_hoc` |
+| Ai đưa họ vào BK | `nguoi_gioi_thieu_ph_id` |
+| Khối lớp con | `hoc_sinh.khoi` |
+
+> Hai PH cùng L3, người ở Gemek 1 **gọi trước** — nhưng cả hai **đều là L3**, không ai "kém" hơn ai.
 
 ---
 
-## 3. Mắt xích #2 — CHẨN ĐOÁN + PLAYBOOK (chỗ AI vào)
+## 3. VIỆC 2 — BẮT BỆNH (chẩn đoán level)
 
-**Playbook = chính sách quyết định viết thành DATA.** Cùng một mức nhưng **bệnh khác nhau → xử khác nhau** → mỗi bệnh một playbook.
+### 3.1 Hai tầng câu hỏi — không phải một bộ
 
-### 3.1 Danh mục BỆNH (v1 — Cách 1, thô, ít)
+*(Sale không chọn giữa BANT và MEDDIC — họ dùng cả hai theo stage: BANT nhanh để triage rộng, MEDDIC sâu cho ca đã lọc.)*
 
-| Mã | Bệnh | Triệu chứng quan sát được | Câu hỏi khám phân biệt |
+| | **Tầng 1 — QUÉT** | **Tầng 2 — ĐÀO** |
+|---|---|---|
+| Dùng cho | **tất cả 300 PH** | ca đáng đầu tư (L0, hoặc L2–L3 cơ hội cao) |
+| Thời lượng | 3–5 phút | 20 phút+ |
+| Ai hỏi | OPS/CSKH ai cũng làm được | CSKH nền tâm lý / CEO |
+| Mục tiêu | **xếp được level + độ phủ**, phát hiện cờ | **tìm BỆNH cụ thể** |
+
+**Tầng 1 — bốn câu, hỏi đúng thứ tự này:**
+1. *"Con học ở BK dạo này thế nào ạ?"* → mở, để họ tự nói trước
+2. *"Anh/chị có đủ thông tin về việc học của con không?"* → bắt **B7 mù thông tin**
+3. *"Có gì BK cần sắp xếp lại cho nhà mình không?"* → bắt **B3 tiền / B4 lịch**
+4. *"Nếu được đổi MỘT thứ ở BK, anh/chị đổi gì?"* → câu gỡ hay nhất; hỏi thẳng *"chưa hài lòng chỗ nào"* thì 80% nhận về *"không có gì đâu em"*
+
+**Bắt buộc: ghi NGUYÊN VĂN 1–2 câu PH nói.** Không có nguyên văn ⇒ cuộc gọi **không tính là đã khám**, độ phủ không tăng.
+
+### 3.2 Danh mục BỆNH (v1 — thô, ít; Cách 1 trước)
+
+**Bệnh giải thích vì sao PH đang ở level đó** — chia hai loại theo vị trí trên thang:
+
+**Bệnh LÀM TỤT (gặp ở L0–L1):**
+
+| Mã | Bệnh | Triệu chứng | Câu đào (tầng 2) |
 |---|---|---|---|
-| **B0** | **Chưa rõ** (chưa khám) | độ phủ < 50% | → playbook = **đi khám**, không đoán |
-| **B1** | Thất vọng về kết quả con | band tụt · cảnh báo yếu · so sánh điểm | *"Chị kỳ vọng con đạt mức nào? Hiện chị thấy cách chỗ đó bao xa?"* |
-| **B2** | Thấy không được quan tâm | im lặng · ít chạm · từng nhắn mà không ai trả lời | *"Chị có đủ thông tin về việc học của con không?"* |
-| **B3** | Vấn đề tiền | chậm phí (đổi hành vi) · hỏi về học bổng/giảm | *"Kỳ này nhà mình có gì cần em sắp xếp không?"* |
-| **B4** | Vấn đề lịch / đi lại | vắng tăng · xin đổi ca nhiều · vắng đúng khung giờ | *"Giờ học hiện tại có hợp với lịch nhà mình không?"* |
-| **B5** | Mất niềm tin vào một GV | tụt sau khi đổi GV · nhắc tên GV · cả lớp đó cùng tụt | *"Con có hay kể gì về buổi học không?"* |
-| **B6** | Con không muốn đi học | vắng + con phản đối · GV báo đổi thái độ | *"Con nói gì khi đến giờ đi học?"* |
-| **B7** | **Mù thông tin** — không biết con đang học gì | chưa vào app · chưa xem báo cáo · hỏi lại thứ đã báo | *"Chị có xem báo cáo tháng không? Có chỗ nào khó hiểu?"* |
-| **B8** | ⭐ **Hài lòng nhưng vô hình** | học ≥4 năm · không cờ xấu · không tương tác · chưa từng giới thiệu | *"Hồi đầu con thế nào, giờ chị thấy khác gì?"* → **khơi lại lý do** |
+| B1 | Thất vọng về kết quả con | band tụt · cảnh báo yếu | *"Chị kỳ vọng con đạt mức nào? Hiện cách chỗ đó bao xa?"* |
+| B2 | Thấy không được quan tâm | im lặng · từng nhắn mà không ai trả lời | *"Lần gần nhất BK chủ động báo tin về con là khi nào?"* |
+| B3 | Vấn đề tiền | **chậm phí lần đầu** (đổi hành vi) | *"Kỳ này nhà mình có gì cần em sắp xếp không?"* |
+| B4 | Vấn đề lịch / đi lại | vắng tăng · xin đổi ca · vắng đúng khung giờ | *"Giờ học hiện tại có hợp lịch nhà mình không?"* |
+| B5 | Mất niềm tin vào một GV | tụt sau đổi GV · cả lớp đó cùng tụt | *"Con có hay kể gì về buổi học không?"* |
+| B6 | Con không muốn đi học | vắng + GV báo đổi thái độ | *"Con nói gì khi đến giờ đi học?"* |
 
-> **B8 là bệnh không có triệu chứng khó chịu** — đúng "chữ U ngược" của thâm niên. Không cố ý tìm thì không hệ nào bắt được, và đây là nhóm PH lâu năm, hài lòng, mà **không bao giờ kể với ai**.
+**Bệnh CHẶN ĐƯỜNG LÊN (gặp ở L2–L3, PH không hề khó chịu):**
 
-- **1 period = 1 chính sách chung. Mỗi bệnh đúng 1 playbook. KHÔNG phân thân, KHÔNG A/B song song** (2 PH giống nhau xử khác nhau = loạn vận hành + chẻ mẫu). So sánh **theo THỜI GIAN, không theo không gian** (§6).
-- **AI ở đây (v1):** cho một ca (tín hiệu + mức), AI **đề xuất bệnh + playbook khớp** + diễn giải, có thể **gắn cờ ca đặc biệt** (không khớp bệnh nào). **v1 = luật/playbook-based**, CHƯA "học".
-- ⭐ **Người duyệt — BẮT DELTA (sống-chết):** không cho approve trơn. Hệ ghi **người sửa gì so với đề xuất AI + LÝ DO**. Approve mù = data rác. **Tín hiệu học nằm ở delta, không ở approve.**
-- ⭐ **Mỗi đề xuất AI PHẢI kèm "dựa trên tín hiệu nào" + "độ phủ bao nhiêu".** Không có ⇒ người duyệt sẽ tin những đề xuất dựng từ không khí (AI làm rác trông như vàng — rule engine thì lộ ra ngay, AI thì không).
+| Mã | Bệnh | Triệu chứng | Câu đào |
+|---|---|---|---|
+| B7 | **Mù thông tin** — không biết con đang học gì | chưa vào app · hỏi lại thứ đã báo | *"Chị có xem báo cáo tháng không? Chỗ nào khó hiểu?"* |
+| B8 | ⭐ **Hài lòng nhưng VÔ HÌNH** | học ≥4 năm · không cờ xấu · không tương tác · chưa từng giới thiệu | *"Hồi đầu con thế nào, giờ chị thấy khác gì?"* → **khơi lại lý do** |
+
+> **B8 là bệnh không có triệu chứng khó chịu** — đúng "chữ U ngược" của thâm niên (năm 1 chưa đủ tin · năm 2–3 vùng vàng · năm 4+ quen quá hoá vô hình). Không cố ý tìm thì không hệ nào bắt được, và đây có thể là nhóm đông nhất.
+
+**B0 = chưa rõ** (độ phủ < 50%) ⇒ playbook = **đi khám**, không đoán.
+
+### 3.3 AI ở đây
+- AI **đề xuất level + bệnh + playbook** khớp, có thể **gắn cờ ca đặc biệt** (không khớp bệnh nào). v1 = **luật/playbook-based**, chưa "học".
+- ⭐ **Mỗi đề xuất PHẢI hiển thị "dựa trên tín hiệu nào" + "độ phủ bao nhiêu".** Rule engine thiếu data thì báo *"không xếp được"*; AI thì dựng một đề xuất **trôi chảy từ không khí** — không ai nghi. Đây là rào chắn bắt buộc.
+- ⭐ **Người duyệt — BẮT DELTA:** chặn approve trơn. Ghi **người sửa gì so với đề xuất AI + LÝ DO**. *Tín hiệu học nằm ở delta, không ở approve.*
 
 ---
 
-## 4. Mắt xích #3 — ĐIỀU TRỊ / Chạy chăm sóc
+## 4. VIỆC 3 — PLAYBOOK THEO LEVEL
 
-**⚠️ Khác bổ trợ yếu: catalog can thiệp CHƯA CÓ, phải dựng.** (Bổ trợ yếu reuse được 5 loại bổ trợ + tài liệu + TKB sẵn.)
+**Logic chung theo level; chi tiết riêng theo bệnh.** 1 period = 1 chính sách; mỗi (level × bệnh) đúng 1 playbook; **KHÔNG A/B song song** (2 PH giống nhau xử khác nhau = loạn vận hành + chẻ mẫu). So sánh **theo THỜI GIAN**.
 
-### 4.1 Catalog can thiệp (v1)
+| Level | Mục tiêu | Làm gì | **CẤM** |
+|---|---|---|---|
+| **L0** | Chặn nghỉ | Chạm trong **48h**, người cứng nhất. Nói thẳng vấn đề + kế hoạch cụ thể | **Cấm mọi lời liên quan giới thiệu** |
+| **L1** | Lấy được **1 phản hồi** | Một sự thật cụ thể về con + một câu hỏi mở | Không xin gì |
+| **L2** | Giữ nhịp, nuôi | **Tin vui về con** đều đặn · giữ tần suất chạm | Chưa nhờ giới thiệu |
+| **L3** | Cho **thứ để ĐƯA** + tạo dịp | Suất chẩn đoán miễn phí để tặng · hỏi cảm nhận → tích cực thì mở lời **trong cùng mạch** | Không nhảy thẳng vào lời nhờ |
+| **L4** | Công nhận + mở rộng vòng | Nhờ **hành động cụ thể** (dẫn 1 người đến dự giờ, đứng tên trong group) · công nhận | Không nhờ chung chung |
+| **L5** | Giữ, không vắt | Ưu tiên chăm sóc · báo lại kết quả người họ đã giới thiệu | **Không coi là nguồn khai thác** |
 
-| Mã | Can thiệp | Chi phí | Ai làm |
+### 4.1 Catalog can thiệp (chưa có, phải dựng)
+
+| Mã | Can thiệp | Chi phí | Ai |
 |---|---|---|---|
 | C1 | Nhắn tin **có nội dung cụ thể** về con | thấp | OPS/CSKH |
 | C2 | Gọi ngắn (5–10') | vừa | CSKH |
-| C3 | Gọi sâu / tâm sự (20'+) | cao | CSKH (nền tâm lý) |
-| C4 | **Thùy gọi** | rất cao | CEO — dùng cho ca nặng/nhạy cảm |
+| C3 | Gọi sâu / tâm sự (20'+) | cao | CSKH nền tâm lý |
+| C4 | **Thùy gọi** | rất cao | CEO — ca nặng/nhạy cảm |
 | C5 | Mời dự giờ | vừa | OPS |
-| C6 | **Tặng suất chẩn đoán để PH ĐƯA cho người khác** | thấp | — mở cửa DÁM + NÓI ĐƯỢC |
+| C6 | **Tặng suất chẩn đoán để PH ĐƯA cho người khác** | thấp | mở cửa DÁM + NÓI ĐƯỢC |
 | C7 | Gặp trực tiếp | cao | CEO/CSKH |
 | C8 | Điều chỉnh vận hành (đổi ca/GV/xếp bổ trợ) | tuỳ | OPS |
-| C9 | Gửi **tin vui về con** (level up · Elo · ca bổ trợ đóng · delta band) | rất thấp | máy + người duyệt nội dung |
+| C9 | Gửi **tin vui về con** (level up · Elo · ca bổ trợ đóng · delta band) | rất thấp | máy, người duyệt nội dung |
 
-### 4.2 Ba luật phiên dịch (bắt buộc, áp cho mọi can thiệp)
-1. ⭐ **Tin xấu KHÔNG BAO GIỜ để máy nói.** Tin tốt máy gửi được; tin xấu qua người. Ranh giới cứng.
+### 4.2 Ba luật phiên dịch (áp cho mọi can thiệp)
+1. ⭐ **Tin xấu KHÔNG BAO GIỜ để máy nói.** Tin tốt máy gửi được; tin xấu qua người. **Chặn ở tầng code**, không dựa lời hứa.
 2. **Hành động trước, chẩn đoán sau.** *"Con yếu → xếp bổ trợ"* = phán xét. *"Em xếp cho con buổi kèm thứ 5, con đang vướng dạng X"* = BK đang làm gì đó cho con.
-3. **Cụ thể mới là quan tâm.** **Ấm = CỤ THỂ**, không phải emoji hay nhiều chữ.
+3. **ẤM = CỤ THỂ**, không phải emoji hay nhiều chữ. *"Con học tốt lắm ❤️"* = lạnh (rỗng).
 
-### 4.3 Trần chạm
+### 4.3 Trần & dừng
 - **Một PH = MỘT người phụ trách duy nhất.** Mọi playbook đi qua người đó.
-- Trần tần suất **không để giảm tổng số chạm** (ở VN nhiều chạm là **tính năng**) — mà để **tránh chạm trùng lặp từ nhiều người**.
-- **Ngưỡng DỪNG:** PH từ chối lời mời giới thiệu 2 lần ⇒ thôi, không hỏi nữa. Ghi cờ.
+- Trần tần suất **không để giảm tổng số chạm** (ở VN **nhiều chạm là TÍNH NĂNG**) — mà để **tránh chạm trùng lặp từ nhiều người**.
+- **Ngưỡng DỪNG:** PH từ chối lời mời giới thiệu 2 lần ⇒ **thôi, không hỏi nữa**. Ghi cờ vĩnh viễn.
 - **Cờ "chỉ Thùy gọi"** cho ca nhạy cảm.
 
 ---
 
-## 5. Mắt xích #4 — TÁI KHÁM / Đánh giá
+## 5. VIỆC 4 — GHI KẾT QUẢ & REVIEW (dài hạn)
 
-**⚠️ Đây là chỗ YẾU NHẤT khi clone** — không có mastery làm thước. Phải dùng proxy, và phải biết mình đang dùng proxy.
+> ⚠️ Khác bổ trợ yếu: **không phải ca ngắn mở-đóng, mà là quãng dài.** Hệ phải làm **nhập liệu dễ** và **đọc dữ liệu dễ** — nếu không, sau 3 tháng không ai ghi nữa.
 
-- **Per-CA, 2 mốc:**
-  - **post-1 = ngay sau can thiệp** → *PH có phản hồi không, phản hồi thế nào*. **BẮT BUỘC ghi NGUYÊN VĂN 1–2 câu PH nói** — không chỉ nhãn. Người gọi tự chấm ⇒ rất chủ quan ⇒ nguyên văn là thứ duy nhất kiểm chứng được.
-  - **post-2 = sau 30 ngày** → *có giữ được không*: cờ đỏ tắt chưa · có tương tác trở lại không · có đổi ô/level không.
-  - ⭐ **Tín hiệu quý "lên rồi rớt"** (post-1 tốt, post-2 nguội lại) = chạm **XOA DỊU** chứ không **GIẢI QUYẾT** → data để playbook học đổi cách. Một mốc thì mù chuyện này.
-- **So pre → post trên đúng bệnh đã điều trị.** Ấm lên = tính là có hiệu quả (không quy kết nhân quả).
-- **Per-BỆNH/PLAYBOOK = gộp nhiều ca** → nuôi benchmark (§6).
+### 5.1 ⭐ Luật vàng: mọi PH luôn có BƯỚC TIẾP THEO + NGÀY
+- Kết thúc mỗi lần chạm, **bắt buộc** đặt bước tiếp theo và ngày. Không đặt ⇒ **hệ nêu cờ**.
+- *"Follow up"* / *"theo dõi tiếp"* **KHÔNG tính**. Phải nói rõ **ai làm gì, khi nào**.
+- Đình trệ = không hoạt động **14+ ngày** *và* không có bước tiếp theo ⇒ vào hàng đợi.
+- Đây là vế **người tự đặt**, khác với invariant máy tự sinh (cờ đỏ). **Cần cả hai** — thiếu vế này thì quan hệ dài hạn trôi.
+
+### 5.2 Nhập liệu phải dễ (nếu không, hệ chết)
+- Form ghi chạm **ngắn**: bước tiếp theo + ngày · **nguyên văn 1–2 câu** (bắt buộc) · level sau · 1 nhãn bệnh.
+- **Hiện lại nguyên văn lần trước** ngay trên form — người ta ghi tử tế khi thấy cái mình ghi được dùng thật.
+- Hỏi **câu cụ thể**, không để ô trống "ghi chú". Ô trống ⇒ nhận về *"PH ok"*.
+- Nhập được **ngay trên điện thoại**, ngay sau cuộc gọi. Về bàn mới ghi = không bao giờ ghi.
+
+### 5.3 Đọc dữ liệu phải dễ
+- **Hồ sơ 1 PH = một DÒNG THỜI GIAN**, không phải bảng rời rạc: mọi sự kiện + mọi lần chạm + mọi lần đổi level, xếp theo ngày, đọc từ trên xuống là hiểu cả quá trình.
+- Hiện rõ: **level hiện tại · độ phủ · bước tiếp theo · lần chạm gần nhất · bao lâu chưa dịch chuyển**.
+
+### 5.4 Review — theo CHU KỲ, không theo ca
+- **Hàng tháng:** đối chiếu **dự đoán ↔ kết quả**. Khi hệ xếp PH vào level X và chỉ định playbook, đó là một **dự đoán ngầm** — phải ghi ra và so sau.
+- **Hàng quý:** cập nhật luật. Chỉ sửa khi có **≥5–10 ca cùng kiểu sai**. ⭐ Phải **tách LUẬT SAI khỏi THỰC THI SAI** — không tách thì sẽ sửa luật để chữa một vấn đề của người gọi, càng sửa càng hỏng.
+- Luật có **version + ngày hiệu lực**, và **mang theo vết sẹo**: mỗi luật ghi *vì sao tồn tại, ca nào đẻ ra nó*.
+
+### 5.5 Đo — bốn con số
+| Chỉ số | Ý nghĩa |
+|---|---|
+| ⭐ **Ma trận dịch chuyển level** (bao nhiêu PH lên/xuống mỗi quý) | **chỉ số sức khoẻ thật của cả hệ** |
+| % PH có bước tiếp theo hợp lệ | kỷ luật vận hành — biết ngay tuần này |
+| Độ phủ trung bình | < 50% thì mọi xếp hạng là tự lừa mình |
+| Số **lời giới thiệu thật** / tháng (cấp hệ thống) | đích cuối. **Không gán cho cá nhân** (§0.12) |
 
 ---
 
-## 6. Playbook quality + Benchmark (cơ chế tiến hoá — LÕI)
+## 6. Kiểm tra BỘ LEVEL bằng dữ liệu lịch sử — làm TRƯỚC khi tin nó
 
-> ⚠ **Đo quality PLAYBOOK ≠ đo hiệu quả CA.** Hiệu quả ca (#5) = PH có ấm lên không. Quality playbook = playbook có tốt hơn **mặt bằng trên cùng phân khúc** không → quyết nhân rộng / giết.
+*(Sale validate stage bằng cách kéo deal 12 tháng và xem tỉ lệ thắng có tăng dần theo stage không.)*
 
-1. Trong một **period**: cả trung tâm chạy **một chính sách chung**; mỗi bệnh 1 playbook.
-2. Mỗi playbook tích ca → ra **con số hiệu quả**.
-3. **Benchmark THEO PHÂN KHÚC (chuẩn hoá độ khó):** playbook xử ca nặng so với *mặt bằng ca nặng*, không so một con số chung (kẻo giết oan playbook xử ca khó).
-4. **Gate CỨNG "đủ mẫu + đủ thời gian":** chưa đủ N ca / T thời gian → playbook ở trạng thái **"đang thử", MIỄN đánh giá**.
-5. Cuối period: trên benchmark → giữ; dưới → **THAY bằng ứng viên mới**. Nguồn ứng viên: người rút từ case log / AI đề xuất biến thể từ ca thành công. ⭐ **Loại tệ + NẠP ứng viên = MỘT vòng, không chỉ cắt** (cắt mà không đắp = lỗ hổng).
-6. ⭐ **CẢNH BÁO TỐC ĐỘ:** 300 PH, mỗi PH ít ca hơn HS nhiều ⇒ **mẫu lên rất chậm**, chậm hơn bổ trợ yếu hàng bậc. ⇒ **period dài hơn** (6 tháng, không phải 3) và **phân khúc gộp thô hơn**. Đừng chẻ nhỏ phân khúc — sẽ không bao giờ đủ mẫu.
+**Phép kiểm:** lấy PH **đã từng giới thiệu** và PH **chưa bao giờ**, chấm ngược level của họ **tại thời điểm trước đó** (từ dữ liệu lịch sử).
+- Level cao hơn ⇒ tỉ lệ đã giới thiệu cao hơn, **tăng dần đều** ⇒ bộ level **có nghĩa**.
+- Phẳng, hoặc nhảy lung tung ⇒ **bộ level sai** ⇒ sửa trước khi dùng.
 
-**Cách XÂY playbook = 2 giai đoạn của 1 vòng:**
-- **Cách 1 (nền):** vài playbook chung THÔ trước — mọi ca xử theo *một khung nhất quán*.
-- **Cách 2 (tiến hoá):** chạy N ca → review case log → rút playbook phổ biến / tách ca đặc biệt / giết cái tệ.
-- **Bắt buộc Cách 1 trước** — không có khung chung thì 200 ca = 200 quyết định ngẫu hứng, review không ra pattern.
+Ngưỡng L0–L5 là **phỏng đoán khởi đầu**. Xếp xong 300 PH thì nhìn phân bố thật rồi kéo lại — mục tiêu: nhóm "cần làm gì đó ngay" khoảng **30–50 người**, đủ xử trong 2–3 tuần.
 
 ---
 
-## 7. Lộ trình tự-động-hoá & Học
+## 7. Tiến hoá & tự động hoá
 
-- **Phase A (v1):** người quyết là chính; **AI đề xuất bệnh + playbook, người duyệt + bắt delta**. Mọi hành động chạm PH qua người.
-- **Phase B:** khi case log chứng minh đề xuất AI khớp người + kết quả tốt trên đủ ca → AI tự chạy mức **Cảnh báo**; mức Xử lý vẫn người ký.
-- **Cơ chế học (KHÔNG fine-tune):** case log (đề xuất + **delta người sửa** + outcome + **nguyên văn**) → tiền lệ/rule/biến thể playbook. **Chỉ học được nếu mọi delta + mọi outcome được ghi có cấu trúc.**
-- ⭐ **Chống buồng vọng:** tách rõ **nguồn** mỗi trường — *máy sinh* / *người ghi* / *AI đề xuất*. Nếu người copy đề xuất AI vào ô ghi chú thì vòng sau AI đọc lại lời mình và **tự khẳng định**.
-- ⭐ **Khi AI đề xuất giống nhau 3 vòng liên tiếp cho cùng một loại tình huống ⇒ luật đã lộ ra ⇒ mã hoá thành rule cứng.** Vòng lặp là cách **khám phá luật**, không phải trạng thái cuối.
+- **Phase A (v1):** người quyết; AI đề xuất level+bệnh+playbook, **người duyệt bắt delta**. Mọi hành động chạm PH qua người.
+- **Phase B:** khi case log chứng minh đề xuất AI khớp người + kết quả tốt trên đủ ca → AI tự chạy mức nhẹ; ca L0 vẫn người ký.
+- **Benchmark playbook** (§6 spec bổ trợ): benchmark **theo phân khúc** · **gate đủ mẫu** (chưa đủ = *"đang thử"*, **miễn đánh giá**) · dưới benchmark → **thay kèm nguồn ứng viên** (*cắt mà không đắp = lỗ hổng*).
+- ⚠️ **Tốc độ tích mẫu chậm hơn bổ trợ yếu hàng bậc** (300 PH, mỗi người ít ca) ⇒ **period 6 tháng**, phân khúc **gộp thô**. Chẻ nhỏ = không bao giờ đủ mẫu.
+- ⭐ **Chống buồng vọng:** tách rõ nguồn mỗi trường — *máy sinh* / *người ghi* / *AI đề xuất*. Người copy đề xuất AI vào ô ghi chú ⇒ vòng sau AI đọc lại lời mình và **tự khẳng định**.
+- ⭐ **AI đề xuất giống nhau 3 vòng liên tiếp cho cùng loại tình huống ⇒ luật đã lộ ra ⇒ mã hoá thành rule cứng.** Vòng lặp là cách **khám phá luật**, không phải trạng thái cuối.
 
 ---
 
 ## 8. Phạm vi v1
 
-**IN:**
-- **Hồ sơ điền tay** (`ho_so_ph`, append-only, có `ngay_ghi`; quá 12 tháng ⇒ hạ trọng số / coi như chưa đo). **Tín hiệu máy suy động, không lưu.**
-- **Phát hiện** deterministic → **mức** (Cảnh báo / Xử lý nhẹ-nặng) + **phân khúc**. Ngưỡng chỉnh được.
-- **Danh mục bệnh B0–B8** + **catalog can thiệp C1–C9** + seed playbook Cách-1 (1 playbook/bệnh).
-- **Chẩn đoán:** AI đề xuất bệnh + playbook → **người duyệt, hệ BẮT DELTA + lý do**; đề xuất **kèm tín hiệu căn cứ + độ phủ**.
-- **Điều trị:** orchestration nối can thiệp; ghi lần chạm **chỉ khi đã chạm thật**.
-- **Tái khám:** pre → post-1 (kèm **nguyên văn**) → post-2 (30 ngày), per-ca; gộp per-playbook.
-- **CASE LOG** (central, dựng SỚM NHẤT).
-- **Benchmark/period** (§6) — build v1, chỉ *bite* khi đủ data.
-- **Quy kết referral:** trường bắt buộc **"biết BK qua ai"** ở luồng tuyển sinh inbound + link `nguoi_gioi_thieu`.
-- 3 màn hình: **Danh sách PH** · **Hồ sơ 1 PH** · **Hàng đợi hôm nay**.
+**IN:** bộ level L0–L5 + tiêu chí lên/xuống · **cơ hội tách riêng** · hồ sơ điền tay (`ngay_ghi`; quá 12 tháng ⇒ hạ trọng số) · bộ câu hỏi 2 tầng · danh mục bệnh B0–B8 · catalog C1–C9 · seed 1 playbook / (level × bệnh) · AI đề xuất **kèm căn cứ + độ phủ** → người duyệt **bắt delta** · **luật bước-tiếp-theo** · form ghi chạm (nguyên văn bắt buộc, dùng được trên điện thoại) · dòng thời gian hồ sơ PH · ma trận dịch chuyển level · **trường "biết BK qua ai"** ở luồng tuyển sinh inbound · §6 phép kiểm bộ level.
+**3 màn hình:** Danh sách PH · Hồ sơ 1 PH (dòng thời gian) · Hàng đợi hôm nay.
 
-**OUT (phase sau):**
-- AI tự chạy. A/B song song (**đã bác — không làm**). Hút Zalo tự động (⏳ chờ khảo sát 3 câu: có API đẩy ra ngoài? có nhóm? hợp đồng dữ liệu? — xem `CSKH-HANDOFF.md`). Cho tới lúc đó, tín hiệu Zalo vào bằng **người chép nguyên văn**.
+**OUT (phase sau):** AI tự chạy · **A/B song song (đã bác)** · hút Zalo tự động (⏳ chờ khảo sát 3 câu — `CSKH-HANDOFF.md`; tới đó tín hiệu Zalo vào bằng **người chép nguyên văn**).
 
 ---
 
 ## 9. Data model (reuse — verify trước)
 
-- `ho_so_ph` (**chỉ tín hiệu ĐIỀN TAY** — thứ không suy được): `phu_huynh_id`, `loai` (vị thế cộng đồng · mạng lưới · toà/khu · đã từng phàn nàn · nghỉ rồi quay lại · ở lại qua tăng phí…), `gia_tri`, `nguoi_ghi`, `ngay_ghi`, `ngay_het_han`. **Append-only.**
-- **Tín hiệu MÁY: KHÔNG có bảng.** Suy động bằng `fn_ph_tin_hieu(phu_huynh_id)` đọc thẳng bảng gốc (§2.0: tính ở Postgres).
-- `van_de_ph` (risk case): `phu_huynh_id`, `loai_benh` (B0–B8), `muc` (`canh_bao`/`xu_ly_nhe`/`xu_ly_nang`), `tin_hieu` jsonb (snapshot lúc phát hiện), `phan_khuc`, `trang_thai`.
-- `playbook_ph`: `dieu_kien_ap` (bệnh + mức + phân khúc), `chuoi_hanh_dong` (ref catalog), `trang_thai` (`dang_thu`/`hieu_luc`/`loai`), `period`, số liệu hiệu quả.
-- `catalog_can_thiep_ph`: C1–C9.
-- `case_ph` (**CASE LOG** — trung tâm): `van_de_id`, `playbook_id`, `de_xuat_ai` jsonb (**kèm `tin_hieu_can_cu` + `do_phu`**), `nguoi_duyet`, `delta` jsonb, `ly_do`, `plan`, `pre`, `post1` (**+ `nguyen_van` NOT NULL khi có chạm**), `post2`, `ket_qua`, `case_truoc_id`.
-- `cham_ph`: mỗi lần chạm **đã xảy ra** — `phu_huynh_id`, `case_id`, `nguoi_cham`, `kenh`, `noi_dung`, `nguyen_van`, `ket_qua`, `at`.
-- `benchmark_ph`: per `phan_khuc` × `period`.
-- Bổ sung: `hoc_sinh.nguon_biet_den` + `hoc_sinh.nguoi_gioi_thieu_ph_id`.
+- `level_ph` (**TRUNG TÂM**): `phu_huynh_id` PK · `level` (L0–L5 / `chua_xep`) · `do_phu` · `ly_do_level` · `tu_ngay` · `buoc_tiep_theo` · `ngay_buoc_tiep` · `nguoi_phu_trach` · cờ (`chi_ceo_goi`, `dung_hoi_gioi_thieu`).
+- `level_ph_log`: mọi lần đổi level — `tu_level`, `den_level`, `ly_do`, `bang_chung` (nguyên văn / sự kiện), `at`, `boi`. **Trigger DB tự đẻ, app không tự nhớ ghi** (§4).
+- `ho_so_ph` (**chỉ tín hiệu ĐIỀN TAY**): `loai` · `gia_tri` · `nguoi_ghi` · `ngay_ghi` · `ngay_het_han`. Append-only.
+- **Tín hiệu MÁY: KHÔNG có bảng.** `fn_ph_tin_hieu(phu_huynh_id)` đọc thẳng bảng gốc (§2.0).
+- `van_de_ph`: `phu_huynh_id` · `loai_benh` (B0–B8) · `muc` · `tin_hieu` jsonb (snapshot lúc chẩn đoán) · `phan_khuc` · `trang_thai`.
+- `cham_ph`: mỗi lần chạm **đã xảy ra** — `nguoi_cham` · `kenh` · `can_thiep` (ref catalog) · **`nguyen_van` NOT NULL** · `ket_qua` · `level_sau` · `buoc_tiep_theo` · `ngay_buoc_tiep` · `at`.
+- `case_ph` (**CASE LOG**): `van_de_id` · `playbook_id` · `de_xuat_ai` jsonb (**kèm `tin_hieu_can_cu` + `do_phu`**) · `nguoi_duyet` · `delta` jsonb · `ly_do` · `du_doan` (level kỳ vọng + mốc) · `ket_qua` · `case_truoc_id`.
+- `playbook_ph` · `catalog_can_thiep_ph` · `benchmark_ph` (per `phan_khuc` × `period`).
+- Bổ sung: `hoc_sinh.nguon_biet_den` · `hoc_sinh.nguoi_gioi_thieu_ph_id`.
 - **Reuse (KHÔNG tạo lại):** `bao_cao_ph` · `canh_bao_yeu` · `bo_tro_yeu` · `hoa_don`/`thanh_toan` · `buoi_hoc_hs` · `hoc_sinh` · `phu_huynh` · Cổng PH (`fetchPhLogins`).
 
-> **Về §1.6 (nhãn môn):** quan hệ với PH **KHÔNG phải dữ liệu học tập** ⇒ **KHÔNG bảng nào của hệ này mang nhãn `mon`**, không query nào scope theo `mon`.
-> Môn chỉ tồn tại ở **bảng gốc** (`bao_cao_ph`, `canh_bao_yeu`…) — hệ này **đọc qua `fn_*`**, không chép sang. Nếu một ca cần nói rõ môn (vd *"phàn nàn GV môn Văn"*) thì nó nằm trong **nguyên văn / snapshot**, là chữ mô tả — **không phải một chiều dữ liệu**.
+> **§1.6:** không bảng nào ở trên mang `mon`. Môn chỉ ở bảng gốc; nếu ca cần nói rõ môn thì nằm trong **nguyên văn/snapshot** — chữ mô tả, không phải chiều dữ liệu.
 > Verify `information_schema` + `pg_tables.rowsecurity` trước migration. Grep repo trước khi đổi.
 
 ---
 
 ## 10. Các bước build
 
-1. Đọc `CSKH-HANDOFF.md` + `HANDOFF.md` + `CLAUDE.md` + `BKDEMY_CANHBAO_BOTRO_SPEC.md`. Audit: `bao_cao_ph`, `canh_bao_yeu`, `bo_tro_yeu`, hoá đơn, điểm danh, Cổng PH.
-2. **CASE LOG trước** (`case_ph`) + `van_de_ph` + `ho_so_ph` — xương sống. **Không dựng bảng tín hiệu máy** — viết `fn_ph_tin_hieu` đọc bảng gốc.
-3. Phát hiện: rule trên tín hiệu (ưu tiên **delta**, không mức) → `van_de_ph` với `muc` + `phan_khuc`. Ngưỡng chỉnh được. Quy tắc gộp nhiều con (§2).
-4. `playbook_ph` + `catalog_can_thiep_ph` + seed 1 playbook/bệnh (Cách 1).
-5. Chẩn đoán: AI đề xuất bệnh+playbook (**kèm tín hiệu căn cứ + độ phủ**) → UI người duyệt **bắt delta + lý do** (chặn approve trơn).
-6. Điều trị: orchestration can thiệp; form ghi chạm **bắt buộc nguyên văn**; hiện lại nguyên văn lần trước ở lần chạm sau.
-7. Tái khám: post-1 (ngay) / post-2 (30 ngày) → ghi vào case; gộp per-playbook; bắt "lên rồi rớt".
-8. Benchmark/period: theo phân khúc + gate đủ-mẫu + giữ/thay + nguồn ứng viên. **Period 6 tháng.**
-9. 3 màn hình + trường "biết BK qua ai" ở luồng tuyển sinh.
-10. RLS chuẩn. `tsc` sạch. Test 1 ca end-to-end.
+1. Đọc `CSKH-HANDOFF.md` · `HANDOFF.md` · `CLAUDE.md` · `BKDEMY_CANHBAO_BOTRO_SPEC.md` · spec này. Audit nguồn tín hiệu.
+2. **`level_ph` + `level_ph_log` + `case_ph` trước** — trục và xương sống. **Không dựng bảng tín hiệu máy**; viết `fn_ph_tin_hieu`.
+3. Tiêu chí lên/xuống level thành rule (deterministic, ngưỡng chỉnh được). Quy tắc nhiều con. Cờ đỏ ghi đè.
+4. `ho_so_ph` + form điền tay (gồm nhóm **cơ hội**, tách khỏi level).
+5. **§6 phép kiểm bộ level trên dữ liệu lịch sử** — chạy TRƯỚC khi dùng. Sai thì sửa thang.
+6. Bộ câu hỏi 2 tầng + `van_de_ph` (bệnh) + AI đề xuất **kèm căn cứ + độ phủ** → UI duyệt **bắt delta + lý do**.
+7. `playbook_ph` + `catalog_can_thiep_ph` + seed Cách-1.
+8. `cham_ph` + **luật bước-tiếp-theo** + form ghi chạm (mobile, nguyên văn bắt buộc, hiện lại lần trước).
+9. 3 màn hình + dòng thời gian + ma trận dịch chuyển level + trường "biết BK qua ai".
+10. RLS chuẩn. `tsc` sạch. Test 1 PH end-to-end.
 
 ---
 
 ## 11. Definition of Done
 
-- 1 ca end-to-end: tín hiệu → `van_de_ph` đúng **mức + bệnh** → AI đề xuất **kèm căn cứ + độ phủ** → **người duyệt CÓ ghi delta + lý do** → can thiệp → **ghi chạm có NGUYÊN VĂN** → post-1/post-2 → case log ghi trọn vòng.
-- Phát hiện **deterministic** (không AI), output là **mức** (không cờ có/không), bắt bằng **delta** (không chỉ mức sàn).
-- **Độ phủ < 50% ⇒ hệ KHÔNG xếp hạng, mà ra việc "đi khám" (B0).**
-- Playbook là **data**; 1 period 1 chính sách; mỗi bệnh 1 playbook; **không A/B song song**.
-- **Approve trơn bị chặn** — buộc ghi delta khi người sửa khác đề xuất AI.
-- Mọi đề xuất AI **hiển thị tín hiệu căn cứ + độ phủ**.
-- **Tin xấu không có đường gửi tự động** — hệ chặn ở tầng code, không dựa lời hứa.
-- `cham_ph` chỉ có dòng khi **đã chạm thật** (§1.5) — không insert trước điền sau.
-- **Không có bảng tín hiệu máy** — mọi tín hiệu máy đọc qua `fn_*` từ bảng gốc. **Không bảng nào của hệ mang cột `mon`.**
-- Tín hiệu điền tay có `ngay_ghi`; quá hạn tự hạ trọng số.
-- **Nguồn mỗi trường phân biệt được** (máy / người / AI).
-- Benchmark theo phân khúc; chưa đủ mẫu = "đang thử" **miễn đánh giá**; dưới benchmark → thay **kèm nguồn ứng viên**.
-- Case log ghi đủ để (a) đo hiệu quả ca, (b) đo quality playbook, (c) có delta + outcome + nguyên văn cho học sau.
+- 1 PH end-to-end: tín hiệu → xếp **level + độ phủ** → khám tầng 1 (**có nguyên văn**) → AI đề xuất bệnh+playbook **kèm căn cứ + độ phủ** → **người duyệt CÓ ghi delta + lý do** → can thiệp → ghi chạm **có nguyên văn + bước tiếp theo** → đổi level **có log + bằng chứng**.
+- **Mọi tiêu chí lên level là HÀNH ĐỘNG CỦA PH.** Không tiêu chí nào là hoạt động của BK.
+- **L2 không lên được nếu thiếu nguyên văn.** **L4 không lên được nếu chỉ có lời hứa.**
+- **Cờ đỏ ghi đè mọi level.** Dấu hiệu xuống hoạt động, không chỉ có đi lên.
+- **Độ phủ < 50% ⇒ "chưa xếp" + việc "đi khám"**, không xếp bừa.
+- **Cơ hội KHÔNG nằm trong công thức level** — chỉ dùng xếp thứ tự.
+- **Mọi PH đang mở có bước tiếp theo + ngày**; *"follow up"* bị chặn; đình trệ 14 ngày vào hàng đợi.
+- **Approve trơn bị chặn** — buộc ghi delta.
+- **Tin xấu không có đường gửi tự động** — chặn ở tầng code.
+- `cham_ph` chỉ có dòng khi **đã chạm thật** (§1.5). `nguyen_van` NOT NULL.
+- **Không bảng tín hiệu máy. Không bảng nào có cột `mon`.** Nguồn mỗi trường phân biệt được (máy/người/AI).
+- **§6 phép kiểm bộ level đã chạy** và cho tỉ lệ tăng dần theo level.
+- Đổi level ghi vết bằng **trigger DB**, không dựa app nhớ.
+- Form ghi chạm **dùng được trên điện thoại**; hồ sơ PH đọc được như **một dòng thời gian**.
 - Verify schema, RLS chuẩn, `tsc` sạch.
 
 ---
@@ -240,13 +329,13 @@ Khám ─► Chẩn đoán ─► Điều trị ─► Tái khám
 **ĐỌC TRƯỚC (bắt buộc):** `CSKH-HANDOFF.md` · `HANDOFF.md` · `CLAUDE.md` · `BKDEMY_CANHBAO_BOTRO_SPEC.md` · toàn bộ spec này.
 
 **KỶ LUẬT:**
-- Verify schema TRƯỚC mọi migration. Grep repo trước khi đổi.
-- Reuse > đẻ mới: `bao_cao_ph`/`canh_bao_yeu`/`bo_tro_yeu`/hoá đơn/điểm danh/Cổng PH.
-- **CASE LOG dựng trước.** Phát hiện deterministic (không AI); AI chỉ ở "Chẩn đoán".
-- **KHÔNG ép PH. KHÔNG A/B song song. KHÔNG quy kết nhân quả.** Mọi hành động chạm PH qua người duyệt.
-- **KHÔNG lưu điểm. KHÔNG lưu tín hiệu máy** (suy động từ bảng gốc). **KHÔNG chỉ lưu nhãn — luôn kèm nguyên văn.** **KHÔNG bảng nào mang nhãn `mon`.**
+- **LEVEL là trục, CA chỉ là hoạt động.** Đừng lấy ca làm trung tâm (đó là mô hình bổ trợ yếu — sai ở đây).
+- **KHÔNG đẩy PH lên level. KHÔNG ép. KHÔNG động chuyện giới thiệu khi PH chưa hài lòng.**
+- Tiêu chí lên level = **hành động của PH**, không phải hoạt động của BK.
+- **KHÔNG lưu điểm. KHÔNG lưu tín hiệu máy** (suy động từ bảng gốc). **KHÔNG chỉ lưu nhãn — luôn kèm nguyên văn.** **KHÔNG bảng nào mang `mon`.**
 - Việc = **suy ra** (§4 invariant). KHÔNG bảng `tasks`, KHÔNG row chờ.
-- RLS: data DISABLE / staffs ENABLE. Staff-only.
+- **KHÔNG A/B song song. KHÔNG quy kết nhân quả.** Mọi hành động chạm PH qua người duyệt.
+- Verify schema TRƯỚC mọi migration. Grep repo trước khi đổi. RLS: data DISABLE / staffs ENABLE. Staff-only.
 
 **VÒNG LÀM:** implement → `tsc` sạch → tự review có trôi spec không → commit rõ → append `DEVLOG.md` → bước tiếp.
 
