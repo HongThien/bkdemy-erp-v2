@@ -4,6 +4,8 @@
 > Làm một lần, làm kỹ — vì **mọi thứ phía sau đọc dữ liệu do bộ câu hỏi này tạo ra**.
 > Ngày: 01/09/2026.
 > Nền phương pháp: **The Mom Test** (Fitzpatrick) · **JTBD Switch Interview** (Moesta) · **Laddering** (Reynolds & Gutman 1988) · nghiên cứu về **response bias**.
+>
+> ⚠️ **Giới hạn của Mom Test — đừng áp máy móc.** Nó viết cho founder phỏng vấn khách *tiềm năng* về một ý tưởng **chưa tồn tại**, nơi lời khen là độc dược vì tạo ảo tưởng có nhu cầu. BK **đã có sản phẩm, đã có 300 người trả tiền** — bối cảnh khác thì luật cũng khác. Cụ thể: **mời góp ý vẫn cần**, chỉ là đặt đúng chỗ (§1.1).
 
 ---
 
@@ -72,9 +74,32 @@ Sau khi PH trả lời, **đếm thầm 3 giây trước khi nói tiếp**. Ph�
 ### Câu CẤM ở mọi level
 - ❌ *"Chị có hài lòng không ạ?"* → mời gật bừa
 - ❌ *"Chị thấy BK thế nào?"* → mời khen xã giao
-- ❌ *"Chị có góp ý gì không?"* → *"không có gì đâu em"*
 - ❌ *"Chị thấy báo cáo có hữu ích không?"* → đã lộ đáp án mong muốn
 - ❌ Bất kỳ câu nào bắt đầu bằng *"Chị có đồng ý rằng…"*
+
+### 1.1 ⭐ CÂU MỜI GÓP Ý — không cấm, nhưng chỉ đặt ở CUỐI
+
+**Câu mời góp ý KHÔNG phục vụ việc đẩy level** — nó phục vụ **PHÁT HIỆN ĐIỂM NÓNG**. Hai việc khác nhau, đừng lẫn.
+
+**Vì sao bắt buộc phải có:** PH có bức xúc mà **không được mời nói sẽ im — rồi nghỉ**. Đó chính là cờ đỏ *"ngừng trả lời tin nhắn"* (§2.2 spec). Không hỏi = tự bịt kênh phát hiện sớm của chính mình.
+Và nó còn là **cử chỉ tôn trọng** — với PH Việt vốn thích sự sát sao, việc BK chủ động mời nói là tín hiệu quan tâm, kể cả khi thu được con số 0.
+
+**Vấn đề là VỊ TRÍ, không phải bản thân câu hỏi:**
+
+| Đặt ở | Kết quả |
+|---|---|
+| **Đầu cuộc** | *"không có gì đâu em"* — PH chưa ấm, chưa có ngữ cảnh, trả lời cho xong là an toàn nhất |
+| **Cuối cuộc**, sau 5 phút đã nói chuyện cụ thể | Lời mời thật — PH đã ấm, đã nhớ ra chuyện cụ thể, và thấy BK có nghe |
+
+⇒ **Luật: LUÔN ở cuối. Không bao giờ ở đầu. Không thay cho câu hỏi sự kiện.**
+
+**Dùng bản hẹp, đừng dùng bản rộng** — *"chị có góp ý gì không"* quá rộng, PH không biết bắt đầu từ đâu nên chọn cách dễ nhất là không nói gì:
+
+- ✅ *"Có chuyện gì bên em làm chưa tốt mà chị chưa tiện nói không ạ?"* — **gỡ sẵn cái ngại**, thừa nhận trước rằng có thể có chuyện họ ngại nói
+- ✅ *"Nếu có một việc em nên làm khác đi cho con chị, chị nghĩ là việc gì?"* — thu hẹp từ *"góp ý về BK"* xuống *"một việc, cho con chị"*
+- ⚠️ *"Chị có góp ý gì không?"* — dùng được, nhưng là bản yếu nhất
+
+**PH có nói ra chuyện gì ⇒ mở ĐIỂM NÓNG ngay** (SLA 24h), kể cả khi nghe nhẹ. Nghe nhẹ mà không xử là cách mất PH phổ biến nhất.
 
 ---
 
