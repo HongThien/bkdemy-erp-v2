@@ -1626,7 +1626,7 @@ function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: Buo
                 const c = hinh ? null : cauOf(idx)
                 return (
                   <th key={p.id} className={`sticky top-0 z-10 w-[130px] border border-slate-200 px-2 py-1.5 text-center align-top ${hinh ? 'bg-amber-50' : 'bg-slate-100'}`}>
-                    <div className="text-[12px] font-bold text-slate-700">{hinh ? `Bài ${p.hinh_nhan}` : `Câu ${p.problem_no}`}</div>
+                    <div className="text-[12px] font-bold text-slate-700">Câu {p.problem_no}{hinh && <span className="ml-1 text-[10px] font-normal text-violet-500" title="Bài Hình · nhãn ý">({p.hinh_nhan})</span>}</div>
                     <div className="mx-auto max-w-[120px] truncate text-[11px] font-medium normal-case text-violet-600" title={hinh ? 'Hình (mô hình)' : tenDangOf(p.ma_dang)}>{hinh ? 'Hình (mô hình)' : tenDangOf(p.ma_dang)}</div>
                     {c && <button onClick={() => setPreview(c)} className="mt-1 rounded border border-slate-200 px-1.5 py-0.5 text-[10px] font-normal normal-case text-slate-400 hover:border-indigo-300 hover:text-indigo-600">ⓘ đề</button>}
                   </th>

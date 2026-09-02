@@ -297,7 +297,13 @@ function MTPhieu({ full, phans, ver, gv, mapCau, hinhMucs, hoTen, lopTen }: {
 }) {
   let no = 0
   const next = () => ++no
-  let hinhNo = 0 // "Bài m" cho hàng Hình — đếm RIÊNG với "Câu n" (khớp nhãn "Bài …" ở tab chấm MT)
+  // ⭐ Thùy 02/09: "đánh giá theo từng ý" — bài Hình ĐÁNH SỐ THEO Ý, nối tiếp câu Đại: 16 câu Đại → bài Hình 3 ý = Câu
+  // 17–19, bài sau từ 20. Số của Hình bắt đầu SAU TOÀN BỘ câu Đại của phiếu (không theo vị trí hàng) — khớp ĐÚNG
+  // problem_no ở tab chấm MT (syncDocProblems cấp 1..N cho Đại rồi syncHinhProblems nối tiếp N+1…, bài học "số trên
+  // giấy ≠ số trên hệ → chấm nhầm câu → bẩn mastery"). Đặt hàng Hình SAU câu Đại thì số trên giấy cũng liền mạch theo vị trí.
+  const cauMapCua = (p: TaiLieuFull['phans'][number]) => new Map(p.caus.map((c) => [c.ma_cau, c]))
+  const soCauDai = phans.reduce((s, p) => { const cm = cauMapCua(p); return s + p.maCaus.filter((ma) => !laMaHinh(ma) && cm.has(ma)).length }, 0)
+  let hinhCau = soCauDai // số câu đã cấp cho Hình (bắt đầu sau câu Đại cuối)
   // Phần = chuỗi mục theo thứ tự tai_lieu_cau: đoạn câu Đại liền nhau → mtRunsOf như cũ; hàng HÌNH → MucsBlock tại chỗ.
   const doanCua = (p: TaiLieuFull['phans'][number]): ({ hinh: string } | { caus: CauHoi[] })[] => {
     const cauMap = new Map(p.caus.map((c) => [c.ma_cau, c]))
@@ -319,7 +325,11 @@ function MTPhieu({ full, phans, ver, gv, mapCau, hinhMucs, hoTen, lopTen }: {
         <section key={p.id} className="pv-sec">
           <h2 className="pv-h-dang">{p.tieu_de}</h2>
           {segs.length === 0 ? <p className="pv-empty">Phần này chưa có câu.</p> : segs.map((seg, si) => {
-            if ('hinh' in seg) { const m = mucHinh(seg.hinh); return m ? <div key={si} className="pv-mt-hinh"><MucsBlock mucs={[m]} gv={gv} batDau={++hinhNo} /></div> : null }
+            if ('hinh' in seg) {
+              const m = mucHinh(seg.hinh); if (!m) return null
+              const cauTu = hinhCau + 1; hinhCau += m.kieu === 'de' ? m.ys.length : 0
+              return <div key={si} className="pv-mt-hinh"><MucsBlock mucs={[m]} gv={gv} cauTu={cauTu} /></div>
+            }
             return mtRunsOf(seg.caus, mapCau, ver, gv).map((run, ri) => (
               run.tln
                 ? <TLNTable key={`${si}-${ri}`} rows={run.items.map((c) => { const n = next(); return { key: c.ma_cau, content: questionOnlyContent(n, mapCau(c, ver.v)) } })} />

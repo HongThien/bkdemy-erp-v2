@@ -300,9 +300,13 @@ function Noi({ ban, gv, perHS, perHSBtvn }: { ban: BanIn; gv: boolean; perHS?: H
 
 /** Render danh sách MucIn — tách khỏi `Noi` để dùng lại được cho CẢ bản gộp (1 khối) LẪN mỗi phiếu perHS
  *  (đánh số "Bài N" RIÊNG từng lần gọi — `soDe`/`moHinhLtDaHien` là biến cục bộ, không rò giữa các lần gọi). */
-// batDau = số "Bài" bắt đầu (mặc định 1) — MTPrintView in TỪNG bài Hình xen giữa câu Đại nên phải nối số qua nhiều lần gọi.
-export function MucsBlock({ mucs, gv, moHinhLyThuyet, batDau = 1 }: { mucs: MucIn[]; gv: boolean; moHinhLyThuyet?: BanIn['moHinhLyThuyet']; batDau?: number }) {
+// batDau = số "Bài" bắt đầu (mặc định 1) — nối số qua nhiều lần gọi.
+// cauTu (MT, Thùy 02/09: "đánh giá theo từng ý") = đánh số THEO Ý nối tiếp câu Đại: bài 3 ý sau 16 câu Đại =
+// "Câu 17–19." ở đầu bài, từng ý "Câu 17." "Câu 18." "Câu 19." (thay a/b/c); bài 1 ý = "Câu 17." không nhãn ý.
+export function MucsBlock({ mucs, gv, moHinhLyThuyet, batDau = 1, cauTu }: { mucs: MucIn[]; gv: boolean; moHinhLyThuyet?: BanIn['moHinhLyThuyet']; batDau?: number; cauTu?: number }) {
   let soDe = batDau - 1
+  let soCau = (cauTu ?? 1) - 1
+  const nhanY = (y: YIn, k0: number, j: number, n: number): string => (cauTu != null ? (n > 1 ? `Câu ${k0 + j}.` : '') : (y.nhan ? `${y.nhan})` : ''))
   let moHinhLtDaHien = ''  // gom LT mô hình 1 lần/nhóm liền nhau (khuôn Đại: LT chuyên đề hiện 1 lần)
   return (
     <>
@@ -322,6 +326,8 @@ export function MucsBlock({ mucs, gv, moHinhLyThuyet, batDau = 1 }: { mucs: MucI
           </div>
         )
         soDe++
+        const k0 = soCau + 1; const nY = m.ys.length; soCau += nY
+        const tieuDe = cauTu != null ? `Câu ${k0}${nY > 1 ? `–${k0 + nY - 1}` : ''}.` : `Bài ${soDe}.`
         // LT mô hình — hiện MỘT LẦN ngay trước bài đầu tiên của mỗi nhóm mô hình liền nhau (chỉ có data
         // khi banInTheoMoHinh dựng cho phan='lop' — bản BTVN không kèm, khuôn Đại "LT chỉ ở trên lớp").
         const ltMh = m.moHinhId ? moHinhLyThuyet?.[m.moHinhId] : null
@@ -344,7 +350,7 @@ export function MucsBlock({ mucs, gv, moHinhLyThuyet, batDau = 1 }: { mucs: MucI
                 ⚠ Dùng `flow-root`, KHÔNG dùng `overflow:hidden` — overflow ẩn trong paged.js CẮT nội
                 dung ở chỗ sang trang (bẫy đã ghi trong DEVLOG), còn flow-root vẫn cho ngắt trang bình thường. */}
             <div className="hp-khoi hp-khoi-de">
-              <div className="hp-de-h">Bài {soDe}.</div>
+              <div className="hp-de-h">{tieuDe}</div>
               {/* Hình / ô-vẽ FLOAT phải → đề + câu hỏi chảy SÁT bên trái, không bị đẩy xuống dưới hình.
                   Chi tiết 3 trạng thái ở khối ngay dưới. */}
               {/* 3 TRẠNG THÁI (Thùy 17/08):
@@ -370,7 +376,7 @@ export function MucsBlock({ mucs, gv, moHinhLyThuyet, batDau = 1 }: { mucs: MucI
                   giải b" như trước (đọc rối, và HS phải đợi giải xong ý này mới thấy đề ý sau). */}
               {m.ys.map((y, j) => (
                 <div key={j} className="hp-y hp-txt-flow">
-                  {y.nhan && <b>{y.nhan}) </b>}<MathText>{y.giaThietPhu ? `${y.giaThietPhu}. ${y.noiDung}` : y.noiDung}</MathText>
+                  {nhanY(y, k0, j, nY) && <b>{nhanY(y, k0, j, nY)} </b>}<MathText>{y.giaThietPhu ? `${y.giaThietPhu}. ${y.noiDung}` : y.noiDung}</MathText>
                   {y.ghiChu && <span className="hp-tag">{y.ghiChu}</span>}
                 </div>
               ))}
@@ -379,7 +385,7 @@ export function MucsBlock({ mucs, gv, moHinhLyThuyet, batDau = 1 }: { mucs: MucI
               ? <div className="hp-khoi hp-khoi-giai">{m.ys.map((y, j) => (
                 <div key={`giai-${j}`} className="hp-y">
                   <div className="hp-giai">
-                    {y.nhan && <b>{y.nhan}) </b>}
+                    {nhanY(y, k0, j, nY) && <b>{nhanY(y, k0, j, nY)} </b>}
                     {y.bacThamChieu && <div className="hp-bac">Lời giải THAM CHIẾU — lấy từ bài chuẩn, tên điểm theo hệ thống (không phải tên điểm của đề này).</div>}
                     {/* Node ẨN nở thành bước con (đề không hỏi vẫn phải giải) — đứng TRƯỚC lời giải chính. */}
                     {(y.buoc ?? []).map((b, bi) => (

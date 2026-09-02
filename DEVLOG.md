@@ -7702,3 +7702,16 @@ khối) → hàng sau mở thẳng bước 2. Hàng Hình: preview = đề + t�
 **Verify:** MT test khối 7 "TEST HINH3": bước 1 hiện 7 mô hình, tick "Hai góc Kề bù" → hiện thêm vệ tinh (8 ô),
 Tiếp → bước 2 "Mô hình: Hai góc Kề bù · 2 chuỗi" → ↻ Gợi ý → hàng 1 Hình BT.07.036, đề "Cho hình vẽ. Biết Oa và
 Ob…", có ảnh kho-anh. tsc + build sạch. Treo: Thùy tự xoá "TEST HINH3…".
+
+## 2026-09-02 (tiếp) — MT Hình: đánh số THEO Ý nối tiếp câu Đại ("16 câu Đại → bài Hình 3 ý = 17,18,19, bài sau từ 20")
+
+**Thùy:** đánh giá theo từng ý nên số câu phải đếm theo ý. **Làm:** `MucsBlock` (HinhPrintView) thêm `cauTu` → tiêu
+đề bài "Câu 17–19." (1 ý: "Câu 17."), từng ý "Câu 17." "Câu 18." "Câu 19." thay a/b/c (cả bản GV). `MTPrintView`:
+số của Hình bắt đầu SAU TOÀN BỘ câu Đại của phiếu (soCauDai) rồi nối tiếp theo thứ tự hàng Hình — KHÔNG theo vị trí
+hàng xen giữa, để khớp ĐÚNG `problem_no` ở tab chấm MT (syncDocProblems cấp 1..N cho Đại rồi syncHinhProblems nối
+N+1… qua noTiep — bài học "số trên giấy ≠ số trên hệ → chấm nhầm câu → bẩn mastery"). Đặt hàng Hình SAU câu Đại
+(cách dùng bình thường) thì số trên giấy cũng liền mạch theo vị trí. `MTTab` (BuoiHocScreen:1629): cột Hình đổi nhãn
+"Bài 5C" → "Câu {problem_no} (5C)" cho khớp phiếu. ET Hình (HinhPrintView không truyền cauTu) giữ nguyên "Bài m" + a/b/c.
+**Verify:** MT test khối 7 "TEST HINH3": hàng 1 câu Đại + hàng 2 bài Hình 3 ý → in: "Câu 1." rồi "Câu 2–4." / "Câu 2."
+"Câu 3." "Câu 4." kèm hình, không còn "Bài 1." (lần dựng đầu paged.js treo >30s — bẫy cũ 07-11, mở lại là được).
+tsc + build sạch. Treo: Thùy tự xoá "TEST HINH3…".
