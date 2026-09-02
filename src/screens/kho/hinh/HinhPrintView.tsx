@@ -300,8 +300,9 @@ function Noi({ ban, gv, perHS, perHSBtvn }: { ban: BanIn; gv: boolean; perHS?: H
 
 /** Render danh sách MucIn — tách khỏi `Noi` để dùng lại được cho CẢ bản gộp (1 khối) LẪN mỗi phiếu perHS
  *  (đánh số "Bài N" RIÊNG từng lần gọi — `soDe`/`moHinhLtDaHien` là biến cục bộ, không rò giữa các lần gọi). */
-function MucsBlock({ mucs, gv, moHinhLyThuyet }: { mucs: MucIn[]; gv: boolean; moHinhLyThuyet?: BanIn['moHinhLyThuyet'] }) {
-  let soDe = 0
+// batDau = số "Bài" bắt đầu (mặc định 1) — MTPrintView in TỪNG bài Hình xen giữa câu Đại nên phải nối số qua nhiều lần gọi.
+export function MucsBlock({ mucs, gv, moHinhLyThuyet, batDau = 1 }: { mucs: MucIn[]; gv: boolean; moHinhLyThuyet?: BanIn['moHinhLyThuyet']; batDau?: number }) {
+  let soDe = batDau - 1
   let moHinhLtDaHien = ''  // gom LT mô hình 1 lần/nhóm liền nhau (khuôn Đại: LT chuyên đề hiện 1 lần)
   return (
     <>
@@ -422,7 +423,7 @@ function MucsBlock({ mucs, gv, moHinhLyThuyet }: { mucs: MucIn[]; gv: boolean; m
 
 // CSS nội dung bản Hình. Nối SAU buildPagedCss nên ghi đè được phần chung khi cần.
 const HP_SANS = "'Noto Sans','Segoe UI',Arial,sans-serif"
-const HINH_CSS = `
+export const HINH_CSS = `
 /* Masthead — khuôn "mới nhất" bên Đại (gtbk-mh), namespace RIÊNG hpmh-* (xem comment ở Noi()). */
 .hpmh{position:relative;overflow:hidden;margin:2mm 0 5mm;min-height:26mm;padding:5mm 6mm;border:1px solid #dbe7f4;border-radius:5mm;background:linear-gradient(112deg,#f5fbff 0%,#f8fbff 42%,#fff7fb 100%);break-inside:avoid;break-after:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .hpmh:before{content:"";position:absolute;left:0;top:0;bottom:0;width:2.3mm;background:linear-gradient(180deg,#1997d4 0%,#18a889 36%,#f0a63b 68%,#e83483 100%);-webkit-print-color-adjust:exact;print-color-adjust:exact}

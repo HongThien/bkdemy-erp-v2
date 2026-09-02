@@ -7,8 +7,17 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
-import { getTaiLieuFull, etFormOf, fetchCausCuaTaiLieu, type TaiLieuFull, type CauHinh } from '../../lib/tailieu'
+import { getTaiLieuFull, etFormOf, fetchCausCuaTaiLieu, laMaHinh, type TaiLieuFull, type CauHinh } from '../../lib/tailieu'
 import type { CauHoi } from '../../lib/kho/api'
+// Hàng HÌNH (mô hình) xen giữa câu Đại (Thùy 02/09: "phải in cùng") — dựng MucIn bằng đúng engine của ET Hình
+// (banInTheoMoHinh) rồi in bằng MucsBlock của HinhPrintView ngay tại vị trí hàng; đánh số "Bài m" riêng (khớp nhãn
+// "Bài …" ở tab chấm MT — Hình xếp sau Đại lúc chấm nhưng nhãn không đổi), câu Đại vẫn "Câu n".
+import { loadLuoi } from '../../lib/kho/hinh'
+import { banInTheoMoHinh, DONG_BTVN } from '../kho/hinh/SoanTaiLieu'
+import { MucsBlock, HINH_CSS, type MucIn } from '../kho/hinh/HinhPrintView'
+import { applyBanToPick, chuoiSig, type CheDoHinh } from '../../lib/kho/hinhGiaoTrinh'
+import { pickCuaHinhRow } from '../../lib/mt'
+type HinhMucs = Record<string, (MucIn | null)[]> // ma hàng → [gốc, đề 2, đề 3]
 import { MathText } from '../kho/ui'
 import { BK_CSS, BK_PAGE_CSS } from './bkPrint'
 import { cauItemParts, CauFlow, OptGrid, GvAnswer, splitStem, questionOnlyContent, TLNTable, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChrome, printWithFilename, pruneGhostBlankPages } from './PrintView'
@@ -48,15 +57,42 @@ export default function MTPrintView({ id, onClose, headless, linkOnly, onFail, o
       .catch(() => { if (alive) setVarReady(true) })
     return () => { alive = false }
   }, [full])
+  // Bài HÌNH: dựng MucIn cho gốc + mã đề 2/3 (hinhMaDe theo chuoiSig) — 1 lần/bài, chặn paged.js tới khi xong.
+  const [hinhMucs, setHinhMucs] = useState<HinhMucs>({})
+  const [hinhReady, setHinhReady] = useState(false)
+  useEffect(() => {
+    if (!full) return
+    setHinhReady(false)
+    const ch = full.taiLieu.cau_hinh ?? {}
+    const mas = full.phans.filter((p) => p.loai_phan === 'custom').flatMap((p) => p.maCaus).filter((ma) => laMaHinh(ma) && !!ch.hinhByMa?.[ma])
+    if (!mas.length) { setHinhMucs({}); setHinhReady(true); return }
+    let alive = true
+    ;(async () => {
+      const L = await loadLuoi(full.taiLieu.khoi)
+      const out: HinhMucs = {}
+      for (const ma of mas) {
+        const h = ch.hinhByMa![ma]
+        const p0 = pickCuaHinhRow(ma, h)
+        const md = ch.hinhMaDe?.[chuoiSig(h.nodeIds)]
+        const picks = [p0, md?.[0] ? applyBanToPick(p0, md[0]) : null, md?.[1] ? applyBanToPick(p0, md[1]) : null]
+        const cheDo: Record<string, CheDoHinh> = { [ma]: h.cheDo ?? 'hien' }
+        // phan='mt' mặc định 0 dòng kẻ → truyền tường minh: số đã chỉnh, không thì DONG_BTVN như ET (HS làm thẳng vào phiếu).
+        const soDong: Record<string, number> = { [ma]: h.soDong ?? DONG_BTVN }
+        out[ma] = await Promise.all(picks.map(async (p) => (p ? (await banInTheoMoHinh(full.taiLieu.ten, 'mt', [p], L, cheDo, soDong)).mucs[0] ?? null : null)))
+      }
+      if (alive) { setHinhMucs(out); setHinhReady(true) }
+    })().catch(() => { if (alive) setHinhReady(true) })
+    return () => { alive = false }
+  }, [full])
 
   useEffect(() => {
-    if (!full || !varReady || !srcRef.current || !dstRef.current) return
+    if (!full || !varReady || !hinhReady || !srcRef.current || !dstRef.current) return
     let cancelled = false
     setRendering(true)
     // Kiểu BK có thương hiệu riêng trong thân → bỏ cả header lẫn footer cũ (đồng bộ ET/BTVN, Thùy báo MT
     // còn sót lại chrome cũ). Footer giờ là dải liên hệ cố định đáy trang của BK_PAGE_CSS.
     const ch = { ...(full.taiLieu.cau_hinh ?? {}), header: 'none' as const, footer: 'none' as const }
-    const css = buildPagedCss(full.taiLieu, ch, ch.mau || '#7c3aed') + MT_CSS + BK_CSS + BK_PAGE_CSS
+    const css = buildPagedCss(full.taiLieu, ch, ch.mau || '#7c3aed') + MT_CSS + BK_CSS + BK_PAGE_CSS + HINH_CSS
     const cssUrl = URL.createObjectURL(new Blob([css], { type: 'text/css' }))
     const html = srcRef.current.innerHTML
     // Race-safe: KHÔNG xoá DOM của container cũ (rút DOM giữa lúc paged.js còn đo layout dở → sinh trang
@@ -101,7 +137,7 @@ export default function MTPrintView({ id, onClose, headless, linkOnly, onFail, o
         .finally(() => URL.revokeObjectURL(cssUrl))
     })()
     return () => { cancelled = true; clearTimeout(watchdog) }
-  }, [full, gv, varReady])
+  }, [full, gv, varReady, hinhReady, hinhMucs])
 
   const seg = (on: boolean) => `rounded-md px-3 py-1 text-[13px] font-medium transition ${on ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`
   const printFileName = () => `${full?.taiLieu.ten ?? ''}${gv ? ' - Bản GV' : ''}`
@@ -135,7 +171,7 @@ export default function MTPrintView({ id, onClose, headless, linkOnly, onFail, o
   if (headless) return createPortal(
     <>
       <div style={{ position: 'fixed', top: 0, left: 0, zIndex: 88, width: '210mm', background: '#fff' }}><div ref={dstRef} className="pv-pages" /></div>
-      <div ref={srcRef} className="pv-src" aria-hidden>{full && <MTDoc full={full} gv={gv} varCau={varCau} perHS={perHS} lopTen={lopTen} />}</div>
+      <div ref={srcRef} className="pv-src" aria-hidden>{full && <MTDoc full={full} gv={gv} varCau={varCau} hinhMucs={hinhMucs} perHS={perHS} lopTen={lopTen} />}</div>
       <div className="no-print fixed inset-0 z-[95] flex items-center justify-center bg-white">
         <div className="rounded-xl border border-slate-200 bg-white px-6 py-4 text-sm font-medium text-slate-700 shadow-xl">
           {dlErr ? <span className="text-rose-600">{dlErr}</span> : linkOnly ? <>⏳ Đang lấy link…</> : <>⏳ Đang chuẩn bị in{pages ? ` (${pages} trang)` : ''}…</>}
@@ -166,7 +202,7 @@ export default function MTPrintView({ id, onClose, headless, linkOnly, onFail, o
           : !full ? <p className="text-center text-slate-400">Đang tải…</p>
           : <div ref={dstRef} className="pv-pages" />}
       </div>
-      <div ref={srcRef} className="pv-src" aria-hidden>{full && <MTDoc full={full} gv={gv} varCau={varCau} perHS={perHS} lopTen={lopTen} />}</div>
+      <div ref={srcRef} className="pv-src" aria-hidden>{full && <MTDoc full={full} gv={gv} varCau={varCau} hinhMucs={hinhMucs} perHS={perHS} lopTen={lopTen} />}</div>
       <style>{CHROME_CSS}</style>
     </div>,
     document.body,
@@ -214,19 +250,23 @@ function mtRunsOf(caus: CauHoi[], mapCau: (c: CauHoi, v: number | null) => CauHo
 // 3 MÃ ĐỀ (như ET): đề gốc = câu các phần; đề 2/3 = thay từng câu bằng ma_cau trong etMaDe (neo theo CÂU
 // GỐC, GIỮ NGUYÊN cấu trúc phần + thứ tự). Chưa đủ mã đề (etMaDe thiếu/ô trống) → in 1 đề như cũ.
 // perHS: mỗi HS 1 phiếu ĐÚNG mã đề đã gán (thay vì luôn in đủ 3 mã đề liên tiếp) + tên/lớp in sẵn.
-function MTDoc({ full, gv, varCau, perHS, lopTen }: { full: TaiLieuFull; gv: boolean; varCau: Record<string, CauHoi>; perHS?: { id: string; ho_ten: string; maDe: number }[]; lopTen?: string }) {
+function MTDoc({ full, gv, varCau, hinhMucs, perHS, lopTen }: { full: TaiLieuFull; gv: boolean; varCau: Record<string, CauHoi>; hinhMucs: HinhMucs; perHS?: { id: string; ho_ten: string; maDe: number }[]; lopTen?: string }) {
   const ch = full.taiLieu.cau_hinh ?? {}
   const phans = full.phans.filter((p) => p.loai_phan === 'custom')
   const base = phans.flatMap((p) => p.caus)
   const etMaDe = ch.etMaDe
-  const complete = !!etMaDe && base.length > 0 && base.every((c) => { const a = etMaDe[c.ma_cau]; return a && a[0] && a[1] })
+  // Đủ 3 mã đề = Đại (nếu có) đủ etMaDe + Hình (nếu có) đủ đề 2/3 — có ít nhất 1 nội dung.
+  const hinhMas = Object.keys(hinhMucs)
+  const daiComplete = base.length === 0 || (!!etMaDe && base.every((c) => { const a = etMaDe[c.ma_cau]; return a && a[0] && a[1] }))
+  const hinhComplete = hinhMas.every((ma) => !!hinhMucs[ma][1] && !!hinhMucs[ma][2])
+  const complete = (base.length > 0 || hinhMas.length > 0) && daiComplete && hinhComplete
   // Map câu gốc → biến thể theo version v (0=đề2, 1=đề3). Thiếu nội dung biến thể → FALLBACK câu gốc
   // (giữ vị trí + đúng dạng), KHÔNG dồn. v=null = đề gốc.
-  const mapCau = (c: CauHoi, v: number | null): CauHoi => (v == null ? c : (varCau[etMaDe![c.ma_cau][v] as string] ?? c))
+  const mapCau = (c: CauHoi, v: number | null): CauHoi => (v == null ? c : (varCau[etMaDe?.[c.ma_cau]?.[v] as string] ?? c))
   // Biến thể KẾ THỪA số dòng (tự luận) của câu gốc: lines keyed theo ma_cau → map ma_cau gốc → biến thể.
   const chVar = (v: number): CauHinh => {
     const lines = { ...(ch.btvnLinesByCau ?? {}) }
-    for (const c of base) { const vm = etMaDe![c.ma_cau][v]; const bl = ch.btvnLinesByCau?.[c.ma_cau]; if (vm && bl != null) lines[vm] = bl }
+    for (const c of base) { const vm = etMaDe?.[c.ma_cau]?.[v]; const bl = ch.btvnLinesByCau?.[c.ma_cau]; if (vm && bl != null) lines[vm] = bl }
     return { ...ch, btvnLinesByCau: lines }
   }
   // maDe (1/2/3) → { badge, v, ch } — DÙNG CHUNG cho in-đủ-3-đề (mặc định) và in-theo-HS (perHS, mỗi HS
@@ -242,35 +282,52 @@ function MTDoc({ full, gv, varCau, perHS, lopTen }: { full: TaiLieuFull; gv: boo
   // KHÁC .pv-mt-de-break (break-before:page, sang trang kế tiếp bất kỳ, có thể là trang CHẴN).
   if (perHS) {
     return <>{perHS.map((hs) => (
-      <div key={hs.id} className="pv-de-recto"><MTPhieu full={full} phans={phans} ver={verOf(hs.maDe)} gv={gv} mapCau={mapCau} hoTen={hs.ho_ten} lopTen={lopTen} /></div>
+      <div key={hs.id} className="pv-de-recto"><MTPhieu full={full} phans={phans} ver={verOf(hs.maDe)} gv={gv} mapCau={mapCau} hinhMucs={hinhMucs} hoTen={hs.ho_ten} lopTen={lopTen} /></div>
     ))}</>
   }
   const versions = complete ? [1, 2, 3].map(verOf) : [verOf(1)]
   return <>{versions.map((ver, vi) => (
-    <div key={vi} className="pv-de-recto"><MTPhieu full={full} phans={phans} ver={ver} gv={gv} mapCau={mapCau} /></div>
+    <div key={vi} className="pv-de-recto"><MTPhieu full={full} phans={phans} ver={ver} gv={gv} mapCau={mapCau} hinhMucs={hinhMucs} /></div>
   ))}</>
 }
 
-function MTPhieu({ full, phans, ver, gv, mapCau, hoTen, lopTen }: {
+function MTPhieu({ full, phans, ver, gv, mapCau, hinhMucs, hoTen, lopTen }: {
   full: TaiLieuFull; phans: TaiLieuFull['phans']; ver: { badge: string; v: number | null; ch: CauHinh }; gv: boolean
-  mapCau: (c: CauHoi, v: number | null) => CauHoi; hoTen?: string; lopTen?: string
+  mapCau: (c: CauHoi, v: number | null) => CauHoi; hinhMucs: HinhMucs; hoTen?: string; lopTen?: string
 }) {
   let no = 0
   const next = () => ++no
+  let hinhNo = 0 // "Bài m" cho hàng Hình — đếm RIÊNG với "Câu n" (khớp nhãn "Bài …" ở tab chấm MT)
+  // Phần = chuỗi mục theo thứ tự tai_lieu_cau: đoạn câu Đại liền nhau → mtRunsOf như cũ; hàng HÌNH → MucsBlock tại chỗ.
+  const doanCua = (p: TaiLieuFull['phans'][number]): ({ hinh: string } | { caus: CauHoi[] })[] => {
+    const cauMap = new Map(p.caus.map((c) => [c.ma_cau, c]))
+    const segs: ({ hinh: string } | { caus: CauHoi[] })[] = []
+    for (const ma of p.maCaus) {
+      if (laMaHinh(ma)) { if (hinhMucs[ma]) segs.push({ hinh: ma }); continue }
+      const c = cauMap.get(ma); if (!c) continue
+      const last = segs[segs.length - 1]
+      if (last && 'caus' in last) last.caus.push(c); else segs.push({ caus: [c] })
+    }
+    return segs
+  }
+  const mucHinh = (ma: string): MucIn | null => { const arr = hinhMucs[ma]; return (ver.v == null ? arr[0] : arr[ver.v + 1]) ?? arr[0] ?? null }
   return (
     <div className="pv-mt" style={{ '--pv-accent': ver.ch.mau || '#7c3aed' } as CSSProperties}>
       <MTHeaderBK ten={full.taiLieu.ten} badge={ver.badge} gv={gv} hoTen={hoTen} lopTen={lopTen} />
 
-      {phans.map((p) => (
+      {phans.map((p) => { const segs = doanCua(p); return (
         <section key={p.id} className="pv-sec">
           <h2 className="pv-h-dang">{p.tieu_de}</h2>
-          {p.caus.length === 0 ? <p className="pv-empty">Phần này chưa có câu.</p> : mtRunsOf(p.caus, mapCau, ver, gv).map((run, ri) => (
-            run.tln
-              ? <TLNTable key={ri} rows={run.items.map((c) => { const n = next(); return { key: c.ma_cau, content: questionOnlyContent(n, mapCau(c, ver.v)) } })} />
-              : <CauFlow key={ri} items={run.items.map((c) => ({ key: c.ma_cau, cols: ver.ch.colByCau?.[c.ma_cau] ?? 1, ...mtCauParts(next(), mapCau(c, ver.v), gv, ver.ch) }))} />
-          ))}
+          {segs.length === 0 ? <p className="pv-empty">Phần này chưa có câu.</p> : segs.map((seg, si) => {
+            if ('hinh' in seg) { const m = mucHinh(seg.hinh); return m ? <div key={si} className="pv-mt-hinh"><MucsBlock mucs={[m]} gv={gv} batDau={++hinhNo} /></div> : null }
+            return mtRunsOf(seg.caus, mapCau, ver, gv).map((run, ri) => (
+              run.tln
+                ? <TLNTable key={`${si}-${ri}`} rows={run.items.map((c) => { const n = next(); return { key: c.ma_cau, content: questionOnlyContent(n, mapCau(c, ver.v)) } })} />
+                : <CauFlow key={`${si}-${ri}`} items={run.items.map((c) => ({ key: c.ma_cau, cols: ver.ch.colByCau?.[c.ma_cau] ?? 1, ...mtCauParts(next(), mapCau(c, ver.v), gv, ver.ch) }))} />
+            ))
+          })}
         </section>
-      ))}
+      ) })}
       {phans.length === 0 && <p className="pv-empty">MT chưa có phần nào.</p>}
     </div>
   )

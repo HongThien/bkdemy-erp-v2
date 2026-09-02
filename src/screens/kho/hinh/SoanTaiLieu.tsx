@@ -372,7 +372,7 @@ function banInOnTap(L: Luoi, chon: { y: Y; bai: Bai; bt: BaiToan }[]): BanIn {
 // ══════════════════ CHẾ ĐỘ THEO MÔ HÌNH ══════════════════
 // Một buổi đi NHIỀU chuỗi (mỗi chuỗi = 1 dạng, kể cả chuỗi 1 câu). Mỗi chuỗi × phiếu = 1 DANH SÁCH pick
 // (đề chuẩn / lứa / biến thể / ý thật), N + Gợi ý hoặc thêm tay từng bài → xuất 2 phiếu. In nhẹ, không lưu DB.
-const DONG_BTVN = 6   // số dòng kẻ mặc định mỗi ý ở phiếu Về nhà (chỉnh được per bài)
+export const DONG_BTVN = 6   // số dòng kẻ mặc định mỗi ý ở phiếu Về nhà (chỉnh được per bài) — MT Hình cũng dùng làm mặc định
 // Chữ ký 1 pick = cùng phiếu + cùng bản (kind/luaId/bienTheId/yId) + cùng bộ node. 2 pick TRÙNG chữ ký
 // in ra Y HỆT NHAU — chỉ giữ phần tử ĐẦU khi ghép bản in (dùng chung bởi dedupePicks + badge cảnh báo
 // trùng trong ChuoiRow, Thùy 08-20: "builder hiện 2 câu nhưng preview chỉ hiện 1" — builder phải LỘ RÕ
@@ -868,7 +868,7 @@ async function rankBanOptions(opts: { ban: Ban; label: string }[], chuoi: BaiToa
     : o.ban.kind === 'bienthe' ? (usage.bienthe.get(o.ban.bienTheId) ?? 0) : (usage.y.get(o.ban.yId) ?? 0)
   return [...opts].sort((a, b) => usageOf(a) - usageOf(b))
 }
-async function goiYChuoi(chuoi: BaiToan[], phan: 'lop' | 'nha' | 'et' | 'mt', n: number): Promise<PickItem[]> {
+export async function goiYChuoi(chuoi: BaiToan[], phan: 'lop' | 'nha' | 'et' | 'mt', n: number): Promise<PickItem[]> {
   const opts = await banOptionsOfChuoi(chuoi)
   const sorted = await rankBanOptions(opts, chuoi)
   const nodeIds = chuoi.map((b) => b.id)
@@ -1106,7 +1106,7 @@ function PreviewPane({ L, xem, onNav, onClose }: {
 }
 // Popup 2 BƯỚC cho MỘT chuỗi: (1) chọn BẢN — đề chuẩn/lứa (≥2 node) hoặc biến thể/ý thật riêng lẻ (1 node).
 // (2) CHỈ chuỗi ≥2 node mới sang cây tick ý; chuỗi 1 node CONFIRM THẲNG (không tiền đề, không gì để nở/ẩn).
-function ChonChuoiPopup({ L, phan, chuoi, editing, daChonList, onClose, onConfirm }: {
+export function ChonChuoiPopup({ L, phan, chuoi, editing, daChonList, onClose, onConfirm }: {
   L: Luoi; phan: 'lop' | 'nha' | 'et' | 'mt'; chuoi: BaiToan[]; editing?: PickItem; daChonList?: PickItem[]
   onClose: () => void; onConfirm: (ban: Ban, nodeIds: string[]) => void
 }) {

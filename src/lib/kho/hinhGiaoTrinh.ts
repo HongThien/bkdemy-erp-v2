@@ -227,40 +227,28 @@ export async function loadBuoiPicksPhan(buoiId: string, phan: 'lop' | 'nha' | 'e
   return { picks: full.picks.filter((p) => p.phan === phan), cheDo: full.cheDo, soDong: full.soDong }
 }
 
-// ══════════════ MT Hình (mô hình) — 02/09 (Thùy: "Hình với Hình giải tích khác nhau") ══════════════
-// MT master (`tai_lieu` loai='mt') KHÔNG bám (lớp,ngày) như ET → cần 1 hinh_gt_buoi "MẪU" riêng (lop_id /
-// ngay / giao_trinh_id đều null, tieu_de = tên MT), id lưu ở `tai_lieu.cau_hinh.hinhBuoiId`; bài phan='mt'.
-// Gán MT vào buổi = COPY phan 'mt' (bài + mã đề 2/3) sang hinh_gt_buoi của (lớp,ngày) — tab chấm MT
-// (BuoiHocScreen.MTTab → loadHinhForBuoiPhase 'mt') vốn đã đọc đúng chỗ đó, không sửa gì thêm ở tầng chấm.
-// Buổi mẫu KHÔNG có bài 'lop'/'nha'/'et' nên listAllBuoiHinh (Kho tài liệu) tự bỏ qua, không thành rác hiển thị.
-export async function taoHinhGtBuoiMau(tieuDe: string): Promise<string> {
-  const { data: u } = await supabase.auth.getUser()
-  const { data, error } = await supabase.from('hinh_gt_buoi').insert({ tieu_de: tieuDe, thu_tu: 0, created_by: u.user?.id ?? null }).select('id').single()
-  if (error) throw error
-  return (data as { id: string }).id
-}
+// ══════════════ MT Hình (mô hình) — 02/09 (Thùy: "pick câu hình phải như ET, có dòng, là câu đấy, in cùng") ══════════════
+// Bài Hình của MT master sống NGAY TRONG PHẦN của tai_lieu như 1 hàng câu (`tai_lieu_cau.ma_cau = 'HINH:<uuid>'`,
+// nội dung ở `tai_lieu.cau_hinh.hinhByMa` — xem tailieu.ts). KHÔNG có buổi Hình "mẫu" riêng (bản sáng 02/09 đã
+// bỏ — thêm 1 kho trung gian chỉ để lệch). Gán MT vào buổi = GHI bài Hình vào hinh_gt_buoi của (lớp,ngày) phan='mt'
+// (REPLACE riêng phan đó, không đụng 'lop'/'nha'/'et' — buổi dùng chung, bài học 23/08) → tab chấm MT
+// (BuoiHocScreen.MTTab → loadHinhForBuoiPhase 'mt') vốn đã đọc đúng chỗ đó, không sửa gì ở tầng chấm.
 /** hinh_gt_buoi của (lớp,ngày) nếu có — KHÔNG tạo (khác ensureHinhGtBuoiForBuoi). */
 export async function findHinhGtBuoi(lopId: string, ngay: string): Promise<string | null> {
   const { data, error } = await supabase.from('hinh_gt_buoi').select('id').eq('lop_id', lopId).eq('ngay', ngay).order('created_at', { ascending: false }).limit(1)
   if (error) throw error
   return ((data as { id: string }[])?.[0])?.id ?? null
 }
-/** Copy bài + mã đề 2/3 của 1 phan từ buổi NGUỒN (mẫu MT) sang buổi Hình (lớp,ngày) — REPLACE riêng phan đó,
- *  KHÔNG đụng 'lop'/'nha'/'et' (buổi dùng chung, bài học 23/08). Nguồn KHÔNG có bài → không tạo buổi, không xoá
- *  gì (MTTab có đường "+ Bài Hình" nhập tay tại chỗ — không được xoá oan). hsMaDe của lớp KHÔNG copy (chia đề
- *  theo lớp, ở ChiaDeMTModal dùng chung `tai_lieu.cau_hinh.hsMaDe` của bản mt_buoi cho cả Đại lẫn Hình). */
-export async function copyPhanHinhSangBuoi(tuBuoiId: string, phan: 'mt', lopId: string, ngay: string): Promise<{ buoiId: string | null; soBai: number }> {
-  const bais = (await listGtBai(tuBuoiId)).filter((b) => b.phan === phan)
-  if (!bais.length) return { buoiId: null, soBai: 0 }
+/** Ghi bài Hình (+ mã đề 2/3) của MT vào buổi Hình (lớp,ngày), phan='mt'. picks rỗng → không tạo buổi, không xoá gì
+ *  (MTTab có đường "+ Bài Hình" nhập tay tại chỗ — không được xoá oan). hsMaDe KHÔNG ghi ở đây: chia đề theo lớp dùng
+ *  chung `tai_lieu.cau_hinh.hsMaDe` của bản mt_buoi cho cả Đại lẫn Hình (1 HS = 1 mã đề cả đề). */
+export async function ganHinhMTVaoBuoi(lopId: string, ngay: string, nhap: NhapBuoi, maDe: HinhCauHinhPhan['maDe']): Promise<number> {
+  const picks = nhap.picks.filter((p) => p.phan === 'mt')
+  if (!picks.length) return 0
   const buoiId = await ensureHinhGtBuoiForBuoi(lopId, ngay)
-  const { error: e1 } = await supabase.from('hinh_gt_bai').delete().eq('buoi_id', buoiId).eq('phan', phan)
-  if (e1) throw e1
-  const rows = bais.map((b) => ({ buoi_id: buoiId, phan: b.phan, loai: b.loai, ref_id: b.ref_id, ghep_node_ids: b.ghep_node_ids, lua_id: b.lua_id, an_de: b.an_de, hinh_che_do: b.hinh_che_do, so_dong: b.so_dong, thu_tu: b.thu_tu }))
-  const { error: e2 } = await supabase.from('hinh_gt_bai').insert(rows)
-  if (e2) throw e2
-  const cfg = await getHinhCauHinh(tuBuoiId, phan)
-  await patchHinhCauHinh(buoiId, phan, { maDe: cfg.maDe ?? {} })
-  return { buoiId, soBai: bais.length }
+  await saveBuoiSelectionPhan(buoiId, 'mt', { ...nhap, picks })
+  await patchHinhCauHinh(buoiId, 'mt', { maDe: maDe ?? {} })
+  return picks.length
 }
 /** Xoá bài 1 phan tại buổi Hình (lớp,ngày) nếu có — dùng khi re-gán MT sang NGÀY KHÁC (bản gán cũ hết hiệu lực). */
 export async function xoaPhanHinhTai(lopId: string, ngay: string, phan: 'mt'): Promise<void> {

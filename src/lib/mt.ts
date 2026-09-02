@@ -12,7 +12,17 @@ import { supabase } from './supabase'
 import { listPhan, addPhan, setCauOfPhan, getTaiLieuFull, createTaiLieu, updateTaiLieu, deleteTaiLieu, khoCuaMon, nhanhCuaCau, type TaiLieu, type TaiLieuPhan, type TaiLieuFull } from './tailieu'
 import { moBuoi } from './gami'
 import { listLopBac, type CauHoi } from './kho/api'
-import { copyPhanHinhSangBuoi, xoaPhanHinhTai, deleteBuoi as deleteHinhBuoi } from './kho/hinhGiaoTrinh'
+import { ganHinhMTVaoBuoi, xoaPhanHinhTai, deleteBuoi as deleteHinhBuoi, type CheDoHinh } from './kho/hinhGiaoTrinh'
+import { laMaHinh, type HinhRowInfo } from './tailieu'
+import type { PickItem } from '../store/useStore'
+
+// HinhRowInfo (cau_hinh.hinhByMa) → PickItem (khuôn ET/BuoiPickEditor), key = chính mã hàng `HINH:<uuid>`.
+export function pickCuaHinhRow(ma: string, h: HinhRowInfo): PickItem {
+  const base = { key: ma, phan: 'mt' as const, nodeIds: h.nodeIds }
+  if (h.kind === 'bienthe') return { ...base, kind: 'bienthe', bienTheId: h.bienTheId! }
+  if (h.kind === 'y') return { ...base, kind: 'y', yId: h.yId! }
+  return { ...base, kind: 'ghep', luaId: h.luaId ?? null }
+}
 
 const LIMIT = 10000
 
@@ -166,28 +176,38 @@ export async function ganMTVaoBuoi(masterId: string, opts: { lopId: string; ngay
     docCon = nw as TaiLieu
   }
   const phanBacEp = master.taiLieu.cau_hinh?.phanBac ?? {} // ép tay (GV chọn ở MTEditor) — đè lên suy tự động
+  const hinhByMa = master.taiLieu.cau_hinh?.hinhByMa ?? {}
   let t = 0
   let soCauLoai = 0
+  const maHinhGiu: string[] = [] // hàng Hình còn lại sau lọc, đúng thứ tự phần → hàng = thứ tự "Bài 1, 2…" lúc chấm/in
   for (const p of customPhans) {
     const ep = phanBacEp[p.id]
+    const coCau = new Set(p.caus.map((c) => c.ma_cau))
+    // Duyệt DANH SÁCH THÔ (p.maCaus) để giữ hàng HÌNH (`HINH:<uuid>`, không phải câu kho) đúng vị trí. Câu kho
+    // đã mất (không resolve được) thì rụng như trước. Bài Hình KHÔNG có bac_toi_thieu → không lọc theo hệ
+    // (chỉ theo ép tay cả phần).
     // Có ép tay → cả PHẦN theo 1 quyết định (đủ tư cách thì giữ NGUYÊN mọi câu, không thì loại HẾT).
     // Không ép → suy TỪNG CÂU theo bậc dạng của chính câu đó (mặc định).
-    const caus = ep
-      ? (thuTuCua(ep) <= lopThuTu ? p.caus : [])
-      : p.caus.filter((c) => thuTuCua(bacMap[c.ma_cau] ?? 'C') <= lopThuTu)
-    soCauLoai += p.caus.length - caus.length
-    if (!caus.length) continue // toàn câu nâng cao lớp này không học được → bỏ hẳn phần
+    const giu = p.maCaus.filter((ma) => {
+      if (laMaHinh(ma)) return hinhByMa[ma] ? (!ep || thuTuCua(ep) <= lopThuTu) : false
+      if (!coCau.has(ma)) return false
+      return ep ? thuTuCua(ep) <= lopThuTu : thuTuCua(bacMap[ma] ?? 'C') <= lopThuTu
+    })
+    soCauLoai += p.caus.length - giu.filter((ma) => !laMaHinh(ma)).length
+    if (!giu.length) continue // toàn câu nâng cao lớp này không học được → bỏ hẳn phần
     const np = await addPhan({ tai_lieu_id: docCon.id, thu_tu: t++, loai_phan: 'custom', ref_ma: null, tieu_de: p.tieu_de, noi_dung: p.noi_dung, kieu: p.kieu })
-    await setCauOfPhan(np.id, caus.map((c) => c.ma_cau))
+    await setCauOfPhan(np.id, giu)
+    maHinhGiu.push(...giu.filter(laMaHinh))
   }
 
-  // 3) HÌNH (mô hình) — bài phan='mt' của buổi Hình MẪU (master.cau_hinh.hinhBuoiId) → buổi Hình (lớp,ngày).
-  // Re-gán sang NGÀY KHÁC: bản Hình đã copy ở ngày cũ hết hiệu lực → xoá riêng phan 'mt' ở đó (cùng nguyên tắc
-  // "1 lớp chỉ 1 lượt gán / MT" của Đại). Master không có Hình → KHÔNG đụng buổi Hình của lớp (MTTab có đường
-  // "+ Bài Hình" nhập tay). Không lọc nâng cao theo hệ cho Hình (bài Hình không có bac_toi_thieu như dạng).
-  const hinhBuoiId = master.taiLieu.cau_hinh?.hinhBuoiId ?? null
-  if (hinhBuoiId && ngayCu && ngayCu !== opts.ngay) await xoaPhanHinhTai(opts.lopId, ngayCu, 'mt')
-  const soBaiHinh = hinhBuoiId ? (await copyPhanHinhSangBuoi(hinhBuoiId, 'mt', opts.lopId, opts.ngay)).soBai : 0
+  // 3) HÌNH (mô hình) — hàng Hình của master (cau_hinh.hinhByMa, đúng thứ tự) → buổi Hình (lớp,ngày) phan='mt'
+  // để tab chấm MT đọc. Re-gán sang NGÀY KHÁC: bản ở ngày cũ hết hiệu lực → xoá riêng phan 'mt' ở đó (cùng
+  // nguyên tắc "1 lớp chỉ 1 lượt gán / MT"). Master không có Hình → KHÔNG đụng buổi Hình của lớp (MTTab có đường
+  // "+ Bài Hình" nhập tay).
+  if (ngayCu && ngayCu !== opts.ngay && Object.keys(hinhByMa).length) await xoaPhanHinhTai(opts.lopId, ngayCu, 'mt')
+  const cheDo: Record<string, CheDoHinh> = {}; const soDong: Record<string, number> = {}
+  for (const ma of maHinhGiu) { const h = hinhByMa[ma]; cheDo[ma] = h.cheDo ?? 'hien'; if (h.soDong != null) soDong[ma] = h.soDong }
+  const soBaiHinh = await ganHinhMTVaoBuoi(opts.lopId, opts.ngay, { picks: maHinhGiu.map((ma) => pickCuaHinhRow(ma, hinhByMa[ma])), cheDo, soDong }, master.taiLieu.cau_hinh?.hinhMaDe ?? {})
 
   return { buoiId: buoiId!, taiLieuId: docCon.id, buoiMoi, soCauLoai, soBaiHinh }
 }

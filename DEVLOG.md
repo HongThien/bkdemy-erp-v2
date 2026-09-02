@@ -7653,3 +7653,40 @@ nên không dính.
 nhân sự) → `duyetCau` ghi nhan_su.id. Không migration.
 **Verify:** click-through thật (Admin, Kho K8 → Đơn thức-đa thức → T108010101 → Toàn bộ kho): duyệt câu
 T108010101001 OK, title "Đã duyệt · 2/9/2026", bỏ duyệt trả về "Chưa duyệt" — 0 alert lỗi. tsc sạch.
+
+## 2026-09-02 (tiếp) — LÀM LẠI MT Hình: bài Hình = HÀNG CÂU trong phần, in chung (Thùy: "sao m cứ làm phức tạp lên")
+
+**Thùy chê bản sáng:** "Pick câu hình phải như ET: có dòng, có option chọn hình, và phải là câu đấy. Sao tự
+dưng chọn hình nó nhảy xuống phần dưới và không in cùng được." → Bản sáng đẻ KHỐI Hình riêng + buổi Hình
+MẪU + nút In Hình riêng = 3 thứ thừa. Bỏ hết.
+
+**Mô hình mới (đơn giản hơn, 0 migration):**
+- Hàng Hình = 1 hàng câu bình thường trong phần: `tai_lieu_cau.ma_cau = 'HINH:<uuid>'` (text không FK, giữ đúng
+  VỊ TRÍ), nội dung bài ở `tai_lieu.cau_hinh.hinhByMa[ma]` {kind, luaId/bienTheId/yId, nodeIds, cheDo, soDong};
+  mã đề 2/3 ở `cau_hinh.hinhMaDe` (khoá chuoiSig, khuôn ET Hình). `PhanResolved.maCaus` (danh sách THÔ theo thứ tự)
+  để in/gán đọc cả hàng Hình; `caus` vẫn chỉ câu kho (consumer cũ không đổi).
+- Màn soạn (`MTScreen`): popup chọn dạng có pill "Hình" → `HinhBaiPicker` (17 chuỗi, tìm mã/phát biểu, ↻ Gợi ý =
+  goiYChuoi · ＋ Chọn… = ChonChuoiPopup — đúng 2 nút của ET Hình) → trả 1 bài về ĐÚNG hàng đó. Hàng Hình hiện
+  nhãn Hình + chuỗi, preview đề (banInTheoMoHinh 1 bài), nhãn bản, nút xoay 3 trạng thái hình vẽ (hiện/ô trống/
+  không — CHE_DO_HINH/cheDoKe của ET), số dòng, ↻ Đổi (goiYMaDeChoBai 1 bản khác), ✎ Chọn, ✕. `sinhMaDe` sinh
+  luôn Hình (hinhMaDe) cùng lượt với Đại; "3 mã đề" đếm cả hàng Hình trống.
+- In (`MTPrintView`): duyệt `maCaus`, đoạn câu Đại → mtRunsOf như cũ, hàng Hình → `MucsBlock` (export từ
+  HinhPrintView, thêm `batDau` nối số) + HINH_CSS; "Bài m" đếm riêng với "Câu n" (khớp nhãn "Bài …" ở MTTab);
+  3 mã đề: Hình dùng hinhMaDe (thiếu → về bài gốc), `complete` = Đại đủ ∧ Hình đủ. Chia đề theo HS (ChiaDeMTModal)
+  dùng NGUYÊN MTPrintView perHS → Hình in kèm, bỏ hết nút In Hình riêng.
+- Gán buổi (`mt.ts`): phần copy theo `maCaus` (giữ hàng Hình, lọc bậc chỉ câu kho); hàng Hình còn lại →
+  `ganHinhMTVaoBuoi(lopId, ngay, NhapBuoi, hinhMaDe)` ghi hinh_gt_bai phan='mt' + maDe vào buổi Hình (lớp,ngày)
+  cho MTTab chấm (đường chấm KHÔNG đổi). `pickCuaHinhRow` (mt.ts) = HinhRowInfo → PickItem dùng chung 3 nơi.
+- Xoá: `taoHinhGtBuoiMau`/`copyPhanHinhSangBuoi`, khối Hình, state buổi mẫu, `hinhBuoiId` chỉ còn để deleteMT
+  dọn di sản. Export thêm: `MucsBlock`, `HINH_CSS`, `goiYChuoi`, `ChonChuoiPopup`, `DONG_BTVN`.
+
+**Bẫy đã cắn lúc verify:** `banInTheoMoHinh(…, phan, picks)` LỌC picks theo `phan` — truyền 'et' để lấy mặc
+định dòng kẻ trong khi pick.phan='mt' ⇒ mucs RỖNG, preview treo "đang dựng đề…". Fix: phan='mt' + truyền soDong
+tường minh (mặc định DONG_BTVN=6 như ET).
+
+**Verify (click-through thật, MT test khối 7 "TEST HINH2 (Claude 02/09 - xoa duoc)"):** pill Hình → picker 17
+chuỗi → ↻ Gợi ý → hàng 1 = Hình BT.07.038→037→040, preview "Cho hai tia Ox và Oy đối nhau…", đóng/mở lại còn
+nguyên · đổi hình vẽ → "Ô trống" · thêm hàng 2 Đại (câu 077020101001) · 🎲 sinh: etMaDe + hinhMaDe (kho chỉ có
+1 bản → alert dùng lại gốc, ✓ đủ 3 mã đề) · DB: tai_lieu_cau [HINH:…(tt0), 077020101001(tt1)], cau_hinh đúng ·
+🖨 Xem/In: 5 trang, mỗi mã đề "Bài 1." (ô Vẽ hình + dòng kẻ) rồi "Câu 1", đúng thứ tự hàng. tsc + build sạch.
+**CHƯA test runtime:** gán vào buổi thật (ganHinhMTVaoBuoi → MTTab). Treo: MT test "TEST HINH2…" Thùy tự xoá.

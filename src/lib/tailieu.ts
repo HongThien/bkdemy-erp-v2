@@ -46,7 +46,7 @@ export const cauTblCuaCau = (tl: TaiLieuNhanhCtx, maCau: string): string => khoC
 // Nạp nội dung câu của 1 tài liệu theo đúng kho từng câu — gom theo BẢNG, 1 query/bảng (không N+1).
 export async function fetchCausCuaTaiLieu(tl: TaiLieuNhanhCtx, maCaus: string[]): Promise<CauHoi[]> {
   const byTbl = new Map<string, string[]>()
-  for (const ma of new Set(maCaus)) { const t = cauTblCuaCau(tl, ma); byTbl.set(t, [...(byTbl.get(t) ?? []), ma]) }
+  for (const ma of new Set(maCaus)) { if (laMaHinh(ma)) continue; const t = cauTblCuaCau(tl, ma); byTbl.set(t, [...(byTbl.get(t) ?? []), ma]) } // hàng Hình không ở kho câu
   const out: CauHoi[] = []
   for (const [tbl, mas] of byTbl) {
     const { data, error } = await supabase.from(tbl).select('*').in('ma_cau', mas).limit(LIMIT)
@@ -81,8 +81,10 @@ export type PhanLoai = 'buoi' | 'lt_chuyen_de' | 'dang' | 'btvn' | 'ontap' | 'cu
 // kiểu cột theo-phần (tai_lieu_phan.kieu) / theo-nhóm-form (etColByGroup) cũ.
 // nhanhByCau = NHÁNH KHO của TỪNG CÂU khi tài liệu trộn nhánh (MT: câu Đại + câu Hình giải tích trong cùng
 // đề). Chỉ có key cho câu KHÁC `tai_lieu.nhanh`; resolve qua `nhanhCuaCau` (kế thừa cho câu mã đề 2/3).
-export type CauHinh = { header?: 'wave' | 'none'; footer?: 'wave' | 'none'; watermark?: 'logo' | 'none'; mau?: string; inLyThuyet?: boolean; btvnLinesByCau?: Record<string, number>; etFormByCau?: Record<string, string>; phanBac?: Record<string, string>; etMaDe?: Record<string, (string | null)[]>; hsMaDe?: Record<string, number>; etColByGroup?: Record<number, string>; colByCau?: Record<string, number>; nhanhByCau?: Record<string, string>; hinhBuoiId?: string }
-// hinhBuoiId (MT) = id hinh_gt_buoi "MẪU" giữ bài HÌNH (mô hình) phan='mt' của MT master — xem hinhGiaoTrinh.ts §MT Hình.
+export type CauHinh = { header?: 'wave' | 'none'; footer?: 'wave' | 'none'; watermark?: 'logo' | 'none'; mau?: string; inLyThuyet?: boolean; btvnLinesByCau?: Record<string, number>; etFormByCau?: Record<string, string>; phanBac?: Record<string, string>; etMaDe?: Record<string, (string | null)[]>; hsMaDe?: Record<string, number>; etColByGroup?: Record<number, string>; colByCau?: Record<string, number>; nhanhByCau?: Record<string, string>; hinhBuoiId?: string; hinhByMa?: Record<string, HinhRowInfo>; hinhMaDe?: Record<string, [HinhBanRefLite | null, HinhBanRefLite | null]> }
+// hinhByMa (MT) = nội dung bài HÌNH của hàng `HINH:<uuid>` (xem laMaHinh). hinhMaDe = mã đề 2/3 của bài Hình, khoá =
+// chuoiSig(nodeIds) (khuôn ET Hình). hinhBuoiId = DI SẢN (buổi Hình mẫu, bản 02/09 sáng) — chỉ còn để deleteMT dọn.
+export type HinhBanRefLite = { kind: 'ghep'; luaId: string | null } | { kind: 'bienthe'; bienTheId: string } | { kind: 'y'; yId: string }
 export const DEFAULT_BTVN_LINES = 5
 // Form hiển thị trong ET (độc lập loai_cau kho).
 export type ETForm = 'trac_nghiem' | 'tra_loi_ngan' | 'tu_luan'
@@ -143,7 +145,16 @@ export type PhanResolved = TaiLieuPhan & {
   dang?: DangRow | null       // dang | btvn (đều ref_ma = ma_dang)
   lyThuyetDang?: LtRow | null // dang (lý thuyết · ví dụ của dạng)
   caus: CauHoi[]              // câu luyện (dang) / câu BTVN (btvn)
+  // maCaus = DANH SÁCH THÔ theo thứ tự tai_lieu_cau (kể cả mục KHÔNG phải câu kho, vd bài HÌNH `HINH:<id>` của
+  // MT — xem `laMaHinh`). `caus` chỉ có câu kho resolve được; ai cần đúng THỨ TỰ IN trộn Hình thì đọc maCaus.
+  maCaus: string[]
 }
+// MT trộn bài HÌNH (mô hình) NGAY TRONG PHẦN như 1 hàng câu (Thùy 02/09: "pick câu hình phải như ET, có dòng,
+// là câu đấy, in cùng") — tai_lieu_cau.ma_cau là TEXT không FK nên hàng Hình lưu mã tổng hợp `HINH:<uuid>`
+// giữ đúng VỊ TRÍ trong phần; nội dung bài (kind/nodeIds/cheDo/soDong) ở `cau_hinh.hinhByMa[ma]`.
+export const HINH_PREFIX = 'HINH:'
+export const laMaHinh = (ma: string): boolean => ma.startsWith(HINH_PREFIX)
+export type HinhRowInfo = { kind: 'ghep' | 'bienthe' | 'y'; luaId?: string | null; bienTheId?: string; yId?: string; nodeIds: string[]; cheDo?: 'hien' | 'o_trong' | 'khong'; soDong?: number | null }
 // ltChuyenDe / tenChuyenDe: map theo ma_chuyen_de — lý thuyết chuyên đề derive từ chuyên đề của các dạng.
 export type TaiLieuFull = { taiLieu: TaiLieu; phans: PhanResolved[]; ltChuyenDe: Record<string, LtRow | null>; tenChuyenDe: Record<string, string> }
 
@@ -472,6 +483,7 @@ export async function getTaiLieuFull(id: string): Promise<TaiLieuFull> {
       dang: dangLike && p.ref_ma ? dangMap.get(p.ref_ma) ?? null : undefined,
       lyThuyetDang: p.loai_phan === 'dang' && p.ref_ma ? ltDangMap.get(p.ref_ma) ?? null : undefined,
       caus: maList.map((ma) => cauMap.get(ma)).filter(Boolean) as CauHoi[],
+      maCaus: maList,
     }
   })
   return { taiLieu: tl as TaiLieu, phans: phansResolved, ltChuyenDe, tenChuyenDe }

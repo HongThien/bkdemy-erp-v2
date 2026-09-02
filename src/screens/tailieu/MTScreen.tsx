@@ -3,26 +3,24 @@
 // thi) rồi GÁN vào buổi (lớp+ngày) khi cần dùng. Khác ET: ET = 1 lớp+ngày cố định lúc tạo; MT tạo
 // xong nằm ở Kho tài liệu như 1 MẪU, gán được cho NHIỀU lớp/nhiều lần (giống mô hình Đề thi).
 // Phạm vi hiện tại: soạn + gán buổi. Chấm MT trong buổi (Đ/C/S, đóng phase, Elo K=60) = lượt sau.
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useStore, type PickItem } from '../../store/useStore'
 import { useMonScope } from '../../hooks/useMonScope'
 import {
-  listMT, createMT, renameMT, deleteMT, addPhanMT, ganMTVaoBuoi, listGanMT,
+  listMT, createMT, renameMT, deleteMT, addPhanMT, ganMTVaoBuoi, listGanMT, pickCuaHinhRow,
   type MTGanRow,
 } from '../../lib/mt'
 import {
-  getTaiLieuFull, deletePhan, setCauOfPhan, suggestCauForDang, khoCuaMon, updateTaiLieu, nhanhCuaMon, tenNhanh, nhanhCuaCau, fetchCausCuaTaiLieu, coKhoHinh,
-  ET_FORMS, etFormOf, type PhanResolved, type CauHinh, type ETForm as ETFormKind,
+  getTaiLieuFull, deletePhan, setCauOfPhan, suggestCauForDang, khoCuaMon, updateTaiLieu, nhanhCuaMon, tenNhanh, nhanhCuaCau, fetchCausCuaTaiLieu, coKhoHinh, laMaHinh, HINH_PREFIX,
+  ET_FORMS, etFormOf, type PhanResolved, type CauHinh, type ETForm as ETFormKind, type HinhRowInfo,
 } from '../../lib/tailieu'
-// Hình (mô hình) trong MT — tái dùng NGUYÊN bộ của ET Hình (ETScreen): BuoiPickEditor nhặt bài, banInTheoMoHinh
-// dựng bản in, goiYMaDeChoBai sinh mã đề 2/3 (bản KHÁC có sẵn cùng node, không AI sinh mới).
-import { BuoiPickEditor, banInTheoMoHinh, goiYMaDeChoBai, type Ban } from '../kho/hinh/SoanTaiLieu'
-import { loadLuoi, chuoiKetNoi, type Luoi } from '../../lib/kho/hinh'
-import HinhPrintView, { type HinhPerHS, type BanIn as HinhBanIn } from '../kho/hinh/HinhPrintView'
-import {
-  taoHinhGtBuoiMau, findHinhGtBuoi, loadBuoiPicksPhan, saveBuoiSelectionPhan, getHinhCauHinh, patchHinhCauHinh, chuoiSig, applyBanToPick,
-  type CheDoHinh, type HinhBanRef,
-} from '../../lib/kho/hinhGiaoTrinh'
+// Hình (mô hình) trong MT = 1 HÀNG câu như Đại (Thùy 02/09: "pick câu hình phải như ET, có dòng, là câu đấy, in
+// cùng"). Tái dùng engine của ET Hình: goiYChuoi/ChonChuoiPopup chọn bài, banInTheoMoHinh dựng đề (preview + in),
+// goiYMaDeChoBai sinh mã đề 2/3 (bản KHÁC có sẵn cùng node, không AI sinh mới).
+import { banInTheoMoHinh, goiYMaDeChoBai, goiYChuoi, ChonChuoiPopup, DONG_BTVN, type Ban } from '../kho/hinh/SoanTaiLieu'
+import { loadLuoi, chuoiKetNoi, type Luoi, type BaiToan } from '../../lib/kho/hinh'
+import type { MucIn } from '../kho/hinh/HinhPrintView'
+import { chuoiSig, CHE_DO_HINH, cheDoKe } from '../../lib/kho/hinhGiaoTrinh'
 import { buildMaDe as buildMaDeLib, oTrongMaDe, usedMoiDe as usedMoiDeLib, setVarInCh, maDeStale, type BaseItem } from '../../lib/made'
 import { listLop, listHSCuaLop, type Lop, type HocSinh } from '../../lib/nhansu'
 import { listCauByDang, listLopBac, LOAI_CAU, KHOI_OPTIONS, DEFAULT_KHOI, type CauHoi, type LopBac } from '../../lib/kho/api'
@@ -149,24 +147,13 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
   const tblCua = (nhanh: string | null) => khoCuaMon(d?.mon, nhanh).cauTbl // bảng câu theo nhánh của TỪNG HÀNG
   const coNhieuNhanh = nhanhCuaMon(d?.mon).length > 1
   const markSaved = () => { setSaved(true); setTimeout(() => setSaved(false), 2000) }
-  // ── HÌNH (mô hình) — Thùy 02/09 ("Hình với Hình giải tích khác nhau"): bài Hình = kho `hinh_*` (bài/node,
-  //    KHÔNG phải dạng) → không đi qua DangPickerOne; nhặt bằng NGUYÊN BuoiPickEditor (cơ chế ET Hình), lưu vào
-  //    hinh_gt_bai(phan='mt') của buổi Hình MẪU riêng của MT (cau_hinh.hinhBuoiId, tạo LƯỜI lần đầu có bài).
-  //    Autosave debounce như mọi thứ khác của MT. Gán buổi → copy sang buổi Hình (lớp,ngày), chấm ở MTTab. ──
+  // ── HÌNH (mô hình) = HÀNG câu (Thùy 02/09): hàng nhanh='hinh', maCau='HINH:<uuid>' (giữ vị trí trong phần),
+  //    nội dung bài ở ch.hinhByMa[ma]; in chung MTPrintView; gán buổi ghi sang hinh_gt_buoi (lớp,ngày) cho tab chấm.
+  //    KHÔNG khối riêng, KHÔNG buổi mẫu (bản sáng 02/09 đã bỏ). ──
   const [hinhL, setHinhL] = useState<Luoi | null>(null)
-  const [, setHinhBuoiId] = useState<string | null>(null) // giữ để re-render khi tạo buổi mẫu; giá trị đọc qua hinhBuoiIdRef
-  const [hinhPicks, setHinhPicks] = useState<PickItem[]>([])
-  const [hinhCheDo, setHinhCheDo] = useState<Record<string, CheDoHinh>>({})
-  const [hinhSoDong, setHinhSoDong] = useState<Record<string, number>>({})
-  const [hinhMaDe, setHinhMaDe] = useState<Record<string, [HinhBanRef | null, HinhBanRef | null]>>({})
-  const [hinhMaDeBusy, setHinhMaDeBusy] = useState(false)
-  const [hinhOpen, setHinhOpen] = useState(false)
-  const [hinhPrint, setHinhPrint] = useState<{ ban: HinhBanIn; perHS: HinhPerHS[] } | null>(null)
-  const hinhRef = useRef<HTMLDivElement>(null)
-  const hinhBuoiIdRef = useRef<string | null>(null)
-  const hinhRefs = useRef<{ picks: PickItem[]; cheDo: Record<string, CheDoHinh>; soDong: Record<string, number> }>({ picks: [], cheDo: {}, soDong: {} })
-  const hinhTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
-  const chRef = useRef<CauHinh>(ch); chRef.current = ch // cau_hinh MỚI NHẤT cho timer debounce (tránh đè bằng closure cũ)
+  const [hinhPicker, setHinhPicker] = useState<{ phanId: string; idx: number } | null>(null)
+  const [hinhMuc, setHinhMuc] = useState<Record<string, MucIn>>({}) // preview đề bài từng hàng Hình (banInTheoMoHinh)
+  const chRef = useRef<CauHinh>(ch); chRef.current = ch // cau_hinh MỚI NHẤT cho các hàm async (tránh đè bằng closure cũ)
 
   async function reload() {
     setLoading(true)
@@ -179,7 +166,12 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
       const rb: Record<string, Row[]> = {}
       const c: Record<string, CauHoi> = {}
       for (const p of ps) {
-        rb[p.id] = p.caus.map((x) => ({ maDang: x.dang_chinh, maCau: x.ma_cau, nhanh: nhanhCuaCau(full.taiLieu, x.ma_cau) }))
+        const byMa = new Map(p.caus.map((x) => [x.ma_cau, x]))
+        // Duyệt danh sách THÔ (maCaus) để giữ hàng HÌNH đúng vị trí; câu kho đã mất thì rụng như trước.
+        rb[p.id] = p.maCaus.map((ma): Row | null => {
+          if (laMaHinh(ma)) return ch0.hinhByMa?.[ma] ? { maDang: null, maCau: ma, nhanh: 'hinh' } : null
+          const x = byMa.get(ma); return x ? { maDang: x.dang_chinh, maCau: ma, nhanh: nhanhCuaCau(full.taiLieu, ma) } : null
+        }).filter((r): r is Row => !!r)
         for (const x of p.caus) c[x.ma_cau] = x
       }
       // Nạp thêm nội dung câu MÃ ĐỀ 2/3 (etMaDe) — trên chỉ nạp câu GỐC (phan.caus) nên mở lại MT cũ,
@@ -189,15 +181,6 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
       if (need.size) { const vs = await fetchCausCuaTaiLieu(full.taiLieu, [...need]); for (const v of vs) c[v.ma_cau] = v }
       setRowsByPhan(rb); setCau((prev) => ({ ...prev, ...c }))
       setGanList(await listGanMT(id))
-      // Hình (mô hình): bài phan='mt' + mã đề 2/3 của buổi Hình MẪU (cau_hinh.hinhBuoiId) — xem hinhGiaoTrinh.ts §MT Hình.
-      const hb = ch0.hinhBuoiId ?? null
-      hinhBuoiIdRef.current = hb; setHinhBuoiId(hb)
-      let nhap = { picks: [] as PickItem[], cheDo: {} as Record<string, CheDoHinh>, soDong: {} as Record<string, number> }
-      let maDe: Record<string, [HinhBanRef | null, HinhBanRef | null]> = {}
-      if (hb) { const [n, cfg] = await Promise.all([loadBuoiPicksPhan(hb, 'mt'), getHinhCauHinh(hb, 'mt')]); nhap = n; maDe = cfg.maDe ?? {} }
-      hinhRefs.current = nhap
-      setHinhPicks(nhap.picks); setHinhCheDo(nhap.cheDo); setHinhSoDong(nhap.soDong); setHinhMaDe(maDe)
-      if (nhap.picks.length) setHinhOpen(true)
     } finally { setLoading(false) }
   }
   useEffect(() => { reload() }, [id]) // eslint-disable-line
@@ -208,6 +191,23 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
     loadLuoi(d.khoi).then((L) => { if (alive) setHinhL(L) }).catch(() => { if (alive) setHinhL(null) })
     return () => { alive = false }
   }, [d?.khoi, d?.mon])
+  // Preview đề bài của từng hàng Hình — dựng bằng ĐÚNG engine in (banInTheoMoHinh, 1 bài/lượt), đổi khi hinhByMa đổi.
+  useEffect(() => {
+    if (!hinhL || !d) return
+    const entries = Object.entries(ch.hinhByMa ?? {})
+    if (!entries.length) { setHinhMuc({}); return }
+    let alive = true
+    ;(async () => {
+      const out: Record<string, MucIn> = {}
+      for (const [ma, h] of entries) {
+        // phan phải = 'mt' (banInTheoMoHinh lọc picks theo phan); dòng kẻ truyền tường minh (mặc định DONG_BTVN như ET).
+        const m = (await banInTheoMoHinh(d.ten, 'mt', [pickCuaHinhRow(ma, h)], hinhL, { [ma]: h.cheDo ?? 'hien' }, { [ma]: h.soDong ?? DONG_BTVN })).mucs[0]
+        if (m) out[ma] = m
+      }
+      if (alive) setHinhMuc(out)
+    })().catch(() => { /* preview thôi — in thật dựng lại ở MTPrintView */ })
+    return () => { alive = false }
+  }, [hinhL, ch.hinhByMa, d?.ten]) // eslint-disable-line
   useEffect(() => {
     if (!d?.khoi) { setDangOpts([]); return }
     // Nạp MỌI bản đồ của môn (registry nhanhCuaMon; môn 1 nhánh → chỉ nhánh mặc định) — MT trộn nhánh.
@@ -258,15 +258,25 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
   }
   // Ghi bền nhánh của TỪNG CÂU (cau_hinh.nhanhByCau) — chỉ giữ key cho câu KHÁC nhánh mặc định của tài liệu.
   // Mọi nơi đọc lại (getTaiLieuFull → in / chấm / gán buổi) resolve qua nhanhCuaCau, không đoán theo mã.
+  // Cùng lúc DỌN hinhByMa: chỉ giữ bài của hàng Hình còn tồn tại (xoá hàng = xoá luôn nội dung bài).
   async function syncNhanhByCau(all: Record<string, Row[]>) {
+    const cur = chRef.current
     const next: Record<string, string> = {}
-    for (const rows of Object.values(all)) for (const r of rows) if (r.maCau && r.nhanh && r.nhanh !== nhanhMacDinh) next[r.maCau] = r.nhanh
-    const cur = ch.nhanhByCau ?? {}
-    const same = Object.keys(cur).length === Object.keys(next).length && Object.entries(next).every(([k, v]) => cur[k] === v)
-    if (same) return
-    const nc: CauHinh = { ...ch }
+    const dungHinh = new Set<string>()
+    for (const rows of Object.values(all)) for (const r of rows) {
+      if (!r.maCau) continue
+      if (r.nhanh === 'hinh') { dungHinh.add(r.maCau); continue }
+      if (r.nhanh && r.nhanh !== nhanhMacDinh) next[r.maCau] = r.nhanh
+    }
+    const hinhByMa = Object.fromEntries(Object.entries(cur.hinhByMa ?? {}).filter(([ma]) => dungHinh.has(ma)))
+    const curN = cur.nhanhByCau ?? {}
+    const sameN = Object.keys(curN).length === Object.keys(next).length && Object.entries(next).every(([k, v]) => curN[k] === v)
+    const sameH = Object.keys(cur.hinhByMa ?? {}).length === Object.keys(hinhByMa).length
+    if (sameN && sameH) return
+    const nc: CauHinh = { ...cur }
     if (Object.keys(next).length) nc.nhanhByCau = next; else delete nc.nhanhByCau
-    setCh(nc); await updateTaiLieu(id, { cau_hinh: nc })
+    if (Object.keys(hinhByMa).length) nc.hinhByMa = hinhByMa; else delete nc.hinhByMa
+    chRef.current = nc; setCh(nc); await updateTaiLieu(id, { cau_hinh: nc })
   }
   async function luuPhan(phanId: string, rows: Row[]) {
     setRowsByPhan((rb) => ({ ...rb, [phanId]: rows }))
@@ -322,14 +332,18 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
   //    câu (cùng dạng + form), neo theo ma_cau gốc; lưu NGAY vào cau_hinh (MT autosave). Dùng lib/made. ──
   const baseRows = (): Row[] => phans.flatMap((p) => (rowsByPhan[p.id] ?? []).filter((r) => r.maCau && r.maDang))
   const baseAll = (): BaseItem[] => baseRows().map((r) => ({ maDang: r.maDang!, maCau: r.maCau! }))
-  async function saveCh(next: CauHinh) { setCh(next); await updateTaiLieu(id, { cau_hinh: next }); markSaved() }
+  async function saveCh(next: CauHinh) { chRef.current = next; setCh(next); await updateTaiLieu(id, { cau_hinh: next }); markSaved() }
+  const hinhRowsAll = (): Row[] => phans.flatMap((p) => (rowsByPhan[p.id] ?? []).filter((r) => r.nhanh === 'hinh' && r.maCau))
+  // Hàng Hình chưa có mã đề 2/3 (khoá theo chuoiSig(nodeIds) — khuôn ET Hình).
+  const hinhTrong = (): number => hinhRowsAll().filter((r) => { const h = ch.hinhByMa?.[r.maCau!]; return !h || !ch.hinhMaDe?.[chuoiSig(h.nodeIds)] }).length
   async function sinhMaDe() {
     const rows = baseRows()
-    if (!rows.length) return
+    const hinhRows = hinhRowsAll()
+    if (!rows.length && !hinhRows.length) return
     // Sinh THEO NHÁNH (mỗi nhánh 1 bảng câu) rồi GỘP etMaDe — buildMaDe reset etMaDe từ base của lượt gọi
     // (cố ý, bỏ entry stale) nên phải gộp tay giữa các nhánh; câu 2 nhánh không bao giờ trùng mã (bảng khác).
     const nhs = [...new Set(rows.map((r) => r.nhanh))]
-    let chNext: CauHinh = { ...ch, etMaDe: {} }
+    let chNext: CauHinh = { ...chRef.current, etMaDe: {} }
     const allCaus: CauHoi[] = []
     for (const nh of nhs) {
       const base: BaseItem[] = rows.filter((r) => r.nhanh === nh).map((r) => ({ maDang: r.maDang!, maCau: r.maCau! }))
@@ -337,67 +351,51 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
       chNext = { ...c2, etMaDe: { ...(chNext.etMaDe ?? {}), ...(c2.etMaDe ?? {}) } }
       allCaus.push(...caus)
     }
+    // HÌNH: mã đề 2/3 = bản KHÁC có sẵn cùng node (khuôn ET Hình, goiYMaDeChoBai); thiếu thì dùng lại bài gốc
+    // (Thùy 24/08 — không để trống chặn in).
+    if (hinhRows.length && hinhL) {
+      const hm: NonNullable<CauHinh['hinhMaDe']> = {}
+      const thieu: string[] = []
+      for (const r of hinhRows) {
+        const h = chNext.hinhByMa?.[r.maCau!]; if (!h) continue
+        const chuoi = chuoiKetNoi(hinhL, h.nodeIds[0]); const goc = banCuaHinh(h)
+        const opts = await goiYMaDeChoBai(chuoi, goc, 2)
+        hm[chuoiSig(h.nodeIds)] = [opts[0]?.ban ?? goc, opts[1]?.ban ?? goc]
+        if (opts.length < 2) thieu.push(chuoi.map((b) => b.ma).join('+'))
+      }
+      chNext = { ...chNext, hinhMaDe: hm }
+      if (thieu.length) alert(`Kho chưa đủ 2 bản khác cho ${thieu.length} bài Hình (chỉ đếm biến thể CÙNG node, không tự sinh AI) — đã dùng lại bài gốc cho phần thiếu:\n${thieu.join('\n')}`)
+    } else delete chNext.hinhMaDe
     setCau((p) => { const n = { ...p }; for (const c of allCaus) n[c.ma_cau] = c; return n })
     await saveCh(chNext)
+  }
+  // ── HÌNH: chọn bài cho 1 HÀNG (popup HinhBaiPicker → PickItem) · tuỳ chọn hình vẽ / số dòng · ↻ Đổi bản khác ──
+  async function pickHinh(phanId: string, idx: number, p: PickItem) {
+    const ma = HINH_PREFIX + crypto.randomUUID()
+    const info: HinhRowInfo = { kind: p.kind, nodeIds: p.nodeIds, cheDo: 'hien', ...(p.kind === 'ghep' ? { luaId: p.luaId } : p.kind === 'bienthe' ? { bienTheId: p.bienTheId } : { yId: p.yId }) }
+    const nc: CauHinh = { ...chRef.current, hinhByMa: { ...(chRef.current.hinhByMa ?? {}), [ma]: info } }
+    chRef.current = nc; setCh(nc); await updateTaiLieu(id, { cau_hinh: nc })
+    const rows = (rowsByPhan[phanId] ?? []).map((r, i): Row => (i === idx ? { maDang: null, maCau: ma, nhanh: 'hinh' } : r))
+    await luuPhan(phanId, rows)
+  }
+  async function setHinhInfo(ma: string, patch: Partial<HinhRowInfo>) {
+    const cur = chRef.current.hinhByMa?.[ma]; if (!cur) return
+    await saveCh({ ...chRef.current, hinhByMa: { ...(chRef.current.hinhByMa ?? {}), [ma]: { ...cur, ...patch } } })
+  }
+  const chuoiCuaHinh = (h: HinhRowInfo): BaiToan[] => h.nodeIds.map((nid) => hinhL?.baiToan.find((b) => b.id === nid)).filter((b): b is BaiToan => !!b)
+  const banCuaHinh = (h: HinhRowInfo): Ban => h.kind === 'ghep' ? { kind: 'ghep', luaId: h.luaId ?? null } : h.kind === 'bienthe' ? { kind: 'bienthe', bienTheId: h.bienTheId! } : { kind: 'y', yId: h.yId! }
+  const nhanBanHinh = (h: HinhRowInfo) => (h.kind === 'ghep' ? (h.luaId ? 'Lứa (đổi đỉnh)' : 'Đề chuẩn') : h.kind === 'bienthe' ? 'Biến thể' : 'Ý thật')
+  // ↻ Đổi = bản KHÁC cùng chuỗi/node, ít dùng nhất (đúng goiYMaDeChoBai của ET Hình) — hết bản khác thì báo.
+  async function doiHinh(ma: string) {
+    const h = chRef.current.hinhByMa?.[ma]; if (!h || !hinhL) return
+    const opts = await goiYMaDeChoBai(chuoiKetNoi(hinhL, h.nodeIds[0]), banCuaHinh(h), 1)
+    if (!opts.length) { alert('Kho chưa có bản khác cho bài này (cùng node).'); return }
+    const b = opts[0].ban
+    await setHinhInfo(ma, { kind: b.kind, luaId: b.kind === 'ghep' ? b.luaId : undefined, bienTheId: b.kind === 'bienthe' ? b.bienTheId : undefined, yId: b.kind === 'y' ? b.yId : undefined })
   }
   const setVar = (baseMaCau: string, v: number, maCau: string, form: ETFormKind) => saveCh(setVarInCh(ch, baseMaCau, v, maCau, form))
   const usedMoiDe = (): Set<string> => usedMoiDeLib(baseAll(), ch)
   const oTrong = (): { maCau: string; v: number }[] => oTrongMaDe(baseAll(), ch)
-
-  // ── HÌNH (mô hình): lưu / mã đề / in — khuôn ETScreen (luuHinh · sinhMaDeHinh · inTheoHSHinh) ──
-  async function ensureHinhBuoi(): Promise<string> {
-    if (hinhBuoiIdRef.current) return hinhBuoiIdRef.current
-    const nid = await taoHinhGtBuoiMau(ten.trim() || d?.ten || 'MT')
-    hinhBuoiIdRef.current = nid; setHinhBuoiId(nid)
-    const next: CauHinh = { ...chRef.current, hinhBuoiId: nid }
-    setCh(next); await updateTaiLieu(id, { cau_hinh: next })
-    return nid
-  }
-  function scheduleHinhSave() {
-    if (hinhTimer.current) clearTimeout(hinhTimer.current)
-    hinhTimer.current = setTimeout(async () => {
-      const { picks, cheDo, soDong } = hinhRefs.current
-      if (!hinhBuoiIdRef.current && !picks.length) return // chưa có buổi mẫu + chưa có bài → không đẻ hàng rỗng
-      try {
-        const bid = await ensureHinhBuoi()
-        await saveBuoiSelectionPhan(bid, 'mt', { picks, cheDo, soDong })
-        markSaved()
-      } catch (e: any) { alert('Lưu bài Hình lỗi: ' + (e?.message ?? String(e))) }
-    }, 600)
-  }
-  const onHinhPicks = (p: PickItem[]) => { hinhRefs.current = { ...hinhRefs.current, picks: p }; setHinhPicks(p); scheduleHinhSave() }
-  const onHinhCheDo = (c: Record<string, CheDoHinh>) => { hinhRefs.current = { ...hinhRefs.current, cheDo: c }; setHinhCheDo(c); scheduleHinhSave() }
-  const onHinhSoDong = (s: Record<string, number>) => { hinhRefs.current = { ...hinhRefs.current, soDong: s }; setHinhSoDong(s); scheduleHinhSave() }
-  const hinhTrong = hinhPicks.filter((p) => { const m = hinhMaDe[chuoiSig(p.nodeIds)]; return !m || !m[0] || !m[1] }).length
-  const hinhDeReady = hinhPicks.length > 0 && hinhTrong === 0
-  async function sinhMaDeHinh() {
-    if (!hinhL || !hinhPicks.length) return
-    setHinhMaDeBusy(true)
-    try {
-      const next = { ...hinhMaDe }
-      const thieu: string[] = []
-      for (const p of hinhPicks) {
-        const sig = chuoiSig(p.nodeIds)
-        const chuoi = chuoiKetNoi(hinhL, p.nodeIds[0])
-        const gocBan: Ban = p.kind === 'ghep' ? { kind: 'ghep', luaId: p.luaId } : p.kind === 'bienthe' ? { kind: 'bienthe', bienTheId: p.bienTheId } : { kind: 'y', yId: p.yId }
-        const opts = await goiYMaDeChoBai(chuoi, gocBan, 2)
-        // Thiếu bản khác → dùng lại bài gốc (Thùy 24/08, khuôn buildMaDe Đại) — KHÔNG để trống chặn in.
-        next[sig] = [opts[0]?.ban ?? gocBan, opts[1]?.ban ?? gocBan]
-        if (opts.length < 2) thieu.push(chuoi.map((b) => b.ma).join('+'))
-      }
-      setHinhMaDe(next)
-      const bid = await ensureHinhBuoi()
-      await patchHinhCauHinh(bid, 'mt', { maDe: next }); markSaved()
-      if (thieu.length) alert(`Kho chưa đủ 2 bản khác cho ${thieu.length} bài (chỉ đếm biến thể CÙNG node, không tự sinh AI) — đã tự dùng lại bài gốc cho phần thiếu:\n${thieu.join('\n')}`)
-    } finally { setHinhMaDeBusy(false) }
-  }
-  // In bản MẪU (không tên HS): 3 mã đề liên tiếp nếu đã sinh đủ, không thì 1 bản gốc. In theo HS = ChiaDeMTModal (bản đã gán lớp).
-  async function inHinh() {
-    if (!hinhL || !hinhPicks.length || !d) return
-    const picksCho = (v: 0 | 1) => hinhPicks.map((p) => { const alt = hinhMaDe[chuoiSig(p.nodeIds)]?.[v]; return alt ? applyBanToPick(p, alt) : p })
-    const bans = await Promise.all([hinhPicks, picksCho(0), picksCho(1)].map((ps) => banInTheoMoHinh(d.ten, 'mt', ps, hinhL, hinhCheDo, hinhSoDong)))
-    setHinhPrint({ ban: { ...bans[0], tieuDeIn: d.ten, lop: '', ngay: '' }, perHS: (hinhDeReady ? [1, 2, 3] : [1]).map((n) => ({ hoTen: '', maDe: n, mucs: bans[n - 1].mucs })) })
-  }
 
   if (loading || !d) return <div className="p-8 text-sm text-slate-400">Đang tải…</div>
   const soCau = Object.values(rowsByPhan).reduce((s, rows) => s + rows.filter((r) => r.maCau).length, 0)
@@ -412,15 +410,14 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
         <input value={ten} onChange={(e) => setTen(e.target.value)} onBlur={saveTen} className="min-w-[260px] flex-1 rounded-md border border-transparent px-2 py-1 text-[15px] font-semibold text-slate-900 hover:border-slate-200 focus:border-indigo-400 focus:outline-none" />
         <span className="rounded bg-violet-50 px-2 py-0.5 text-[11px] font-medium text-violet-600">{d.mon} · Khối {d.khoi} · mẫu độc lập</span>
         {saved && <span className="text-[12px] text-emerald-600">✓ Đã lưu</span>}
-        <span className="text-[12px] text-slate-400">{soCau} câu · {phans.length} phần{hinhPicks.length ? ` · ${hinhPicks.length} bài Hình` : ''}{ganList.length ? ` · đã gán ${ganList.length} lớp` : ''}</span>
+        <span className="text-[12px] text-slate-400">{soCau} câu · {phans.length} phần{ganList.length ? ` · đã gán ${ganList.length} lớp` : ''}</span>
         <button onClick={() => setPrinting(true)} disabled={!soCau} className="ml-auto rounded-md border border-slate-300 px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-indigo-400 disabled:opacity-40">🖨 Xem / In</button>
-        {laToanCoHinh && <button onClick={inHinh} disabled={!hinhPicks.length || !hinhL} title="In riêng phần Hình (bản mẫu, 3 mã đề nếu đã sinh)" className="rounded-md border border-amber-300 bg-amber-50 px-3 py-1.5 text-[13px] font-medium text-amber-700 hover:bg-amber-100 disabled:opacity-40">🖨 In Hình</button>}
-        <button onClick={() => setGanModal(true)} disabled={!soCau && !hinhPicks.length} className="rounded-md border border-emerald-300 bg-emerald-50 px-3 py-1.5 text-[13px] font-medium text-emerald-700 hover:bg-emerald-100 disabled:opacity-40">🎯 Gán vào buổi</button>
+        <button onClick={() => setGanModal(true)} disabled={!soCau} className="rounded-md border border-emerald-300 bg-emerald-50 px-3 py-1.5 text-[13px] font-medium text-emerald-700 hover:bg-emerald-100 disabled:opacity-40">🎯 Gán vào buổi</button>
         <button onClick={xoaMT} title="Xoá MT" className="rounded-md border border-rose-200 px-3 py-1.5 text-[13px] font-medium text-rose-600 hover:bg-rose-50">🗑 Xoá</button>
       </div>
 
       <div className="min-h-0 flex-1 overflow-auto p-5">
-        <div className={hinhOpen ? 'mx-auto max-w-none' : 'mx-auto max-w-[900px]'}>
+        <div className="mx-auto max-w-[900px]">
           {ganList.length > 0 && (
             <div className="mb-4 rounded-xl border border-slate-200 bg-white p-3">
               <p className="mb-1.5 text-[12px] font-semibold uppercase tracking-wide text-slate-400">Đã gán</p>
@@ -437,8 +434,8 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
             </div>
           )}
           <p className="mb-3 text-[12px] text-slate-400">Mỗi câu chọn 1 dạng → hệ gợi ý câu <b>ít dùng nhất</b> (đổi được). Câu không trùng nhau XUYÊN mọi phần của MT này.</p>
-          {soCau > 0 && (() => { const base = baseAll(); const t = oTrong().length
-            const gen = !!(ch.etMaDe && Object.keys(ch.etMaDe).length); const stale = gen && maDeStale(base, ch)
+          {soCau > 0 && (() => { const base = baseAll(); const t = oTrong().length + hinhTrong()
+            const gen = !!(ch.etMaDe && Object.keys(ch.etMaDe).length) || !!(ch.hinhMaDe && Object.keys(ch.hinhMaDe).length); const stale = gen && base.length > 0 && maDeStale(base, ch)
             return (
               <div className="mb-3 flex flex-wrap items-center gap-2 rounded-lg border border-violet-100 bg-violet-50/40 px-3 py-2">
                 <span className="text-[12px] font-semibold text-violet-700">🧩 3 mã đề</span>
@@ -468,6 +465,43 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
                   </div>
                   <div className="space-y-2">
                     {rows.map((r, i) => {
+                      // ── HÀNG HÌNH (mô hình): cùng khung hàng như câu Đại — nhãn "Hình" + chuỗi, preview đề, tuỳ chọn hình vẽ
+                      //    (hiện / ô trống / không — 3 trạng thái như ET Hình), số dòng, ↻ Đổi / ✎ Chọn / ✕. In chung ở "Xem / In".
+                      if (r.nhanh === 'hinh' && r.maCau) {
+                        const ma = r.maCau; const h = ch.hinhByMa?.[ma]; const m = hinhMuc[ma]
+                        const cd = CHE_DO_HINH.find((x) => x.ma === (h?.cheDo ?? 'hien'))!
+                        return (
+                          <div key={i} className="rounded-xl border border-amber-200 bg-amber-50/30 p-2.5">
+                            <div className="flex items-start gap-2">
+                              <span className="mt-1.5 w-6 shrink-0 text-center text-[13px] font-bold text-violet-600">{i + 1}</span>
+                              <button onClick={() => setHinhPicker({ phanId: p.id, idx: i })} className="w-56 shrink-0 rounded-md border border-slate-300 bg-white px-2.5 py-2 text-left text-[13px] hover:border-indigo-400" title="Chọn bài Hình khác">
+                                <span className="mr-1 rounded bg-amber-50 px-1 py-0.5 text-[10px] font-medium text-amber-700">Hình</span>
+                                <span className="font-mono text-[12px] text-slate-700">{h ? (chuoiCuaHinh(h).map((b) => b.ma).join(' → ') || `${h.nodeIds.length} node`) : '?'}</span>
+                              </button>
+                              <div className="min-w-0 flex-1 pt-1">
+                                {m && m.kieu === 'de' ? <div className="truncate text-[13px] text-slate-700"><MathText>{m.deBai}</MathText></div>
+                                  : <span className="text-[12px] italic text-slate-400">{hinhL ? 'đang dựng đề…' : 'đang tải kho Hình…'}</span>}
+                                {h && (
+                                  <div className="mt-1 flex flex-wrap items-center gap-1.5">
+                                    <span className="rounded bg-slate-100 px-1.5 py-0.5 text-[10px] font-medium text-slate-500">{nhanBanHinh(h)}</span>
+                                    <span className="text-[10px] text-slate-300">hình vẽ:</span>
+                                    <button onClick={() => setHinhInfo(ma, { cheDo: cheDoKe(h.cheDo ?? 'hien') })} title={`${cd.goi} — bấm để đổi (hiện → ô trống → không)`}
+                                      className="rounded bg-slate-100 px-1.5 py-0.5 text-[10px] font-medium text-slate-600 hover:bg-slate-200">{cd.icon} {cd.nhan}</button>
+                                  </div>
+                                )}
+                              </div>
+                              <label className="flex shrink-0 items-center gap-1 pt-1.5 text-[11px] text-slate-400" title="Số dòng kẻ cho HS viết (bản in) — trống = mặc định như ET">dòng
+                                <input type="number" min={0} max={30} value={h?.soDong ?? DONG_BTVN} onChange={(e) => setHinhInfo(ma, { soDong: e.target.value === '' ? null : Math.max(0, Math.min(30, +e.target.value || 0)) })} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
+                              </label>
+                              <div className="flex shrink-0 gap-1 pt-0.5">
+                                <button onClick={() => doiHinh(ma)} title="Đổi bản khác (cùng node, ít dùng nhất)" className="rounded-md bg-indigo-50 px-2 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-100">↻ Đổi</button>
+                                <button onClick={() => setHinhPicker({ phanId: p.id, idx: i })} className="rounded-md border border-slate-300 px-2 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-400">✎ Chọn</button>
+                              </div>
+                              <button onClick={() => xoaRow(p.id, i)} title="Xoá hàng" className="shrink-0 px-1 pt-1 text-[13px] text-slate-300 hover:text-rose-600">✕</button>
+                            </div>
+                          </div>
+                        )
+                      }
                       const c = r.maCau ? cau[r.maCau] : null
                       const form = c ? etFormOf(c, ch) : null
                       const formOpts = ET_FORMS.filter((f) => f.v !== 'trac_nghiem' || !!(c?.lua_chon && c.lua_chon.length))
@@ -553,38 +587,13 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
               )
             })}
             <button onClick={themPhan} className="w-full rounded-xl border-2 border-dashed border-slate-300 bg-white py-3 text-[14px] font-medium text-slate-600 hover:border-indigo-300 hover:text-indigo-700">+ Thêm phần (vd "Phần II. Hình học")</button>
-            {/* ⭐ HÌNH (mô hình) — khối riêng, không phải "phần" Đại: bài Hình chấm theo NODE và xếp SAU câu Đại ở tab chấm MT
-                (MTTab), nên soạn cũng tách khối. Bấm pill "Hình" trong popup chọn dạng cũng cuộn tới đây. */}
-            {laToanCoHinh && (
-              <div ref={hinhRef} className="rounded-xl border border-amber-200 bg-white p-4">
-                <div className="flex flex-wrap items-center gap-2">
-                  <button onClick={() => setHinhOpen((o) => !o)} className="text-left font-semibold text-slate-800">{hinhOpen ? '▾' : '▸'} 📐 Hình (mô hình)</button>
-                  <span className="text-[12px] text-slate-400">{hinhPicks.length} bài</span>
-                  <span className="rounded bg-amber-50 px-1.5 py-0.5 text-[11px] text-amber-700" title="Kho bài Hình (mô hình/lưới) — khác Hình giải tích (dạng-based, chọn ở popup dạng như Đại)">kho bài Hình · chấm theo node · xếp sau câu Đại</span>
-                  {hinhPicks.length > 0 && (
-                    <>
-                      <button onClick={sinhMaDeHinh} disabled={hinhMaDeBusy} className="ml-auto rounded-md border border-violet-300 bg-white px-2.5 py-1 text-[11px] font-medium text-violet-700 hover:bg-violet-100 disabled:opacity-50">{hinhMaDeBusy ? '⏳ Đang sinh…' : `🎲 ${Object.keys(hinhMaDe).length ? 'Sinh lại' : 'Sinh'} đề 2 & 3 (Hình)`}</button>
-                      {hinhDeReady ? <span className="rounded bg-emerald-50 px-2 py-0.5 text-[11px] font-medium text-emerald-600">✓ đủ 3 mã đề</span>
-                        : <span className="rounded bg-amber-50 px-2 py-0.5 text-[11px] font-medium text-amber-700">{hinhTrong} bài chưa có đề 2/3</span>}
-                    </>
-                  )}
-                </div>
-                {hinhOpen && (
-                  <div className="mt-3">
-                    <p className="mb-2 text-[12px] text-slate-400">Chọn bài (chuỗi / biến thể / ý thật) — <b>đúng cơ chế</b> ET Hình. Tự lưu sau mỗi thay đổi.</p>
-                    {!hinhL ? <p className="text-[12px] text-slate-400">Đang tải kho Hình…</p>
-                      : <BuoiPickEditor L={hinhL} picks={hinhPicks} cheDo={hinhCheDo} soDong={hinhSoDong} onChangePicks={onHinhPicks} onChangeCheDo={onHinhCheDo} onChangeSoDong={onHinhSoDong} phans={['mt']} />}
-                  </div>
-                )}
-              </div>
-            )}
           </div>
         </div>
       </div>
 
       {dangModal && d && (
         <DangPickerOne khoi={d.khoi} mon={d.mon} nhanh={dangModal.nhanh} chonNhanh onClose={() => setDangModal(null)}
-          pillsThem={laToanCoHinh ? [{ ten: 'Hình', onClick: () => { setDangModal(null); setHinhOpen(true); setTimeout(() => hinhRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 150) } }] : undefined}
+          pillsThem={laToanCoHinh ? [{ ten: 'Hình', onClick: () => { const { phanId, idx } = dangModal; setDangModal(null); setHinhPicker({ phanId, idx }) } }] : undefined}
           onPick={(ma, nh) => { const { phanId, idx } = dangModal; setDangModal(null); pickDang(phanId, idx, ma, nh) }} />
       )}
       {picker && (
@@ -615,7 +624,9 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
       )}
       {ganModal && d && <GanBuoiModal mtId={id} mon={d.mon} ganList={ganList} onClose={() => setGanModal(false)} onDone={async () => { setGanModal(false); await reload() }} />}
       {printing && <MTPrintView id={id} onClose={() => setPrinting(false)} />}
-      {hinhPrint && <HinhPrintView ban={hinhPrint.ban} perHS={hinhPrint.perHS} onClose={() => setHinhPrint(null)} />}
+      {hinhPicker && d && (hinhL
+        ? <HinhBaiPicker L={hinhL} khoi={d.khoi} onClose={() => setHinhPicker(null)} onPick={(pk) => { const { phanId, idx } = hinhPicker; setHinhPicker(null); pickHinh(phanId, idx, pk) }} />
+        : <div className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-900/40" onClick={() => setHinhPicker(null)}><div className="rounded-xl bg-white px-5 py-3 text-sm text-slate-600">Đang tải kho Hình khối {d.khoi}… (bấm lại sau giây lát)</div></div>)}
       {chiaDe && <ChiaDeMTModal {...chiaDe} onClose={() => setChiaDe(null)} />}
     </div>
   )
@@ -697,18 +708,12 @@ function ChiaDeMTModal({ taiLieuId, lopId, lopTen, onClose }: { taiLieuId: strin
   const [roster, setRoster] = useState<{ id: string; ho_ten: string; ma_hs: string | null }[]>([])
   const [saved, setSaved] = useState(false)
   const [printing, setPrinting] = useState<{ id: string; ho_ten: string; maDe: number }[] | null>(null)
-  // Hình (mô hình) của bản đã gán = bài phan='mt' ở buổi Hình (lớp,ngày) — copy lúc gán (mt.ts). In theo HS
-  // dùng CÙNG `ch.hsMaDe` với Đại (1 HS = 1 mã đề cho cả đề MT), mucs theo mã đề từ hinh_gt_buoi.cau_hinh.mt.maDe.
-  const [hinh, setHinh] = useState<{ L: Luoi; picks: PickItem[]; cheDo: Record<string, CheDoHinh>; soDong: Record<string, number>; maDe: Record<string, [HinhBanRef | null, HinhBanRef | null]> } | null>(null)
-  const [meta, setMeta] = useState<{ ten: string; ngay: string }>({ ten: '', ngay: '' })
-  const [hinhPrint, setHinhPrint] = useState<{ ban: HinhBanIn; perHS: HinhPerHS[] } | null>(null)
   const markSaved = () => { setSaved(true); setTimeout(() => setSaved(false), 2000) }
 
   useEffect(() => {
     let alive = true
-    setLoading(true); setHinh(null)
-    ;(async () => {
-      const [f, hsl] = await Promise.all([getTaiLieuFull(taiLieuId), listHSCuaLop(lopId)])
+    setLoading(true)
+    Promise.all([getTaiLieuFull(taiLieuId), listHSCuaLop(lopId)]).then(([f, hsl]) => {
       if (!alive) return
       setPhans(f.phans.filter((p) => p.loai_phan === 'custom'))
       setCh(f.taiLieu.cau_hinh ?? {})
@@ -717,27 +722,9 @@ function ChiaDeMTModal({ taiLieuId, lopId, lopTen, onClose }: { taiLieuId: strin
           .map((h) => ({ id: h.id, ho_ten: h.ho_ten, ma_hs: h.ma_hs }))
           .sort((a, b) => a.ho_ten.localeCompare(b.ho_ten, 'vi')),
       )
-      const tl = f.taiLieu as TaiLieuLike
-      setMeta({ ten: tl.ten, ngay: tl.ngay ?? '' })
-      if (coKhoHinh(tl.mon) && tl.lop_id && tl.ngay) {
-        const hb = await findHinhGtBuoi(tl.lop_id, tl.ngay)
-        if (hb) {
-          const [nhap, cfg, L] = await Promise.all([loadBuoiPicksPhan(hb, 'mt'), getHinhCauHinh(hb, 'mt'), loadLuoi(tl.khoi)])
-          if (alive && nhap.picks.length) setHinh({ L, picks: nhap.picks, cheDo: nhap.cheDo, soDong: nhap.soDong, maDe: cfg.maDe ?? {} })
-        }
-      }
-    })().catch(() => { /* lỗi tải → giữ trạng thái rỗng, UI báo "chưa đủ" */ }).finally(() => { if (alive) setLoading(false) })
+    }).finally(() => { if (alive) setLoading(false) })
     return () => { alive = false }
   }, [taiLieuId, lopId])
-  async function inHinh(list: { id: string; ho_ten: string }[]) {
-    if (!hinh) return
-    const picksCho = (v: 0 | 1) => hinh.picks.map((p) => { const alt = hinh.maDe[chuoiSig(p.nodeIds)]?.[v]; return alt ? applyBanToPick(p, alt) : p })
-    const bans = await Promise.all([hinh.picks, picksCho(0), picksCho(1)].map((ps) => banInTheoMoHinh(meta.ten, 'mt', ps, hinh.L, hinh.cheDo, hinh.soDong)))
-    setHinhPrint({
-      ban: { ...bans[0], tieuDeIn: meta.ten, lop: lopTen, ngay: meta.ngay.split('-').reverse().join('/') },
-      perHS: list.map((hs) => { const md = ch.hsMaDe?.[hs.id] ?? 1; return { hoTen: hs.ho_ten, maDe: md, mucs: (bans[md - 1] ?? bans[0]).mucs } }),
-    })
-  }
 
   const base: BaseItem[] = (phans ?? []).flatMap((p) => p.caus.filter((c) => c.ma_cau && c.dang_chinh).map((c) => ({ maDang: c.dang_chinh, maCau: c.ma_cau })))
   // ⭐ KHÔNG dùng maDeReady/maDeStale ở đây (Thùy báo "mỗi lần vào lại mất đề 2/3"): những hàm đó so
@@ -746,9 +733,11 @@ function ChiaDeMTModal({ taiLieuId, lopId, lopTen, onClose }: { taiLieuId: strin
   // etMaDe copy NGUYÊN từ master nên còn THỪA key của câu đã bị lọc. maDeStale thấy "thừa key" tưởng lệch
   // → báo "chưa đủ 3 mã đề" dù dữ liệu vẫn nguyên ở MT gốc. Ở đây chỉ cần: mọi câu CÒN LẠI (sau lọc) có
   // đủ cặp đề 2/3 — không quan tâm etMaDe dư key của câu đã lọc.
-  // MT chỉ có Hình (base rỗng) vẫn chia đề được; có Đại thì Đại phải đủ 3 mã đề như cũ.
+  // MT chỉ có hàng Hình (base Đại rỗng) vẫn chia đề được (bản in tự dùng hinhMaDe, thiếu thì về bài gốc); có Đại
+  // thì Đại phải đủ 3 mã đề như cũ. soMuc = mọi hàng (câu kho + hàng Hình) — đọc maCaus thô, không chỉ caus.
+  const soMuc = (phans ?? []).flatMap((p) => p.maCaus).length
   const daiReady = base.length === 0 || (!!ch.etMaDe && oTrongMaDe(base, ch).length === 0)
-  const deReady = phans != null && (base.length > 0 || !!hinh) && daiReady
+  const deReady = phans != null && soMuc > 0 && daiReady
 
   async function save(next: CauHinh) { setCh(next); await updateTaiLieu(taiLieuId, { cau_hinh: next }); markSaved() }
   const setHsMa = (hsId: string, maDe: number) => save({ ...ch, hsMaDe: { ...(ch.hsMaDe ?? {}), [hsId]: maDe } })
@@ -772,8 +761,7 @@ function ChiaDeMTModal({ taiLieuId, lopId, lopTen, onClose }: { taiLieuId: strin
             <>
               <div className="mb-2 flex items-center gap-2">
                 <button onClick={raiTuDong} className="rounded-md border border-violet-300 bg-white px-2.5 py-1 text-[11px] font-medium text-violet-700 hover:bg-violet-100">🎲 Rải tự động</button>
-                {base.length > 0 && <button onClick={inCaLop} className="ml-auto rounded-md bg-indigo-600 px-2.5 py-1 text-[11px] font-medium text-white hover:bg-indigo-500">🖨 Xem &amp; In cả lớp{hinh ? ' (Đại)' : ''}</button>}
-                {hinh && <button onClick={() => inHinh(roster)} className={`${base.length ? '' : 'ml-auto '}rounded-md bg-amber-600 px-2.5 py-1 text-[11px] font-medium text-white hover:bg-amber-500`} title={`${hinh.picks.length} bài Hình (mô hình) — in theo mã đề từng HS`}>📐 In Hình cả lớp</button>}
+                <button onClick={inCaLop} className="ml-auto rounded-md bg-indigo-600 px-2.5 py-1 text-[11px] font-medium text-white hover:bg-indigo-500">🖨 Xem &amp; In cả lớp</button>
               </div>
               <ol className="min-h-0 flex-1 space-y-1 overflow-auto">
                 {roster.map((hs) => { const cur = ch.hsMaDe?.[hs.id]
@@ -786,8 +774,7 @@ function ChiaDeMTModal({ taiLieuId, lopId, lopTen, onClose }: { taiLieuId: strin
                             className={`h-6 w-6 rounded text-[12px] font-bold ${cur === n ? 'bg-violet-600 text-white' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}>{n}</button>
                         ))}
                       </div>
-                      {base.length > 0 && <button onClick={() => setPrinting([{ id: hs.id, ho_ten: hs.ho_ten, maDe: ch.hsMaDe?.[hs.id] ?? 1 }])} title="In riêng phiếu HS này (Đại)" className="shrink-0 text-[13px] text-slate-400 hover:text-indigo-600">🖨</button>}
-                      {hinh && <button onClick={() => inHinh([hs])} title="In riêng phiếu Hình HS này" className="shrink-0 text-[13px] text-slate-400 hover:text-amber-600">📐</button>}
+                      <button onClick={() => setPrinting([{ id: hs.id, ho_ten: hs.ho_ten, maDe: ch.hsMaDe?.[hs.id] ?? 1 }])} title="In riêng phiếu HS này" className="shrink-0 text-[13px] text-slate-400 hover:text-indigo-600">🖨</button>
                     </li>
                   )
                 })}
@@ -800,8 +787,61 @@ function ChiaDeMTModal({ taiLieuId, lopId, lopTen, onClose }: { taiLieuId: strin
         </div>
       </div>
       {printing && <MTPrintView id={taiLieuId} perHS={printing} lopTen={lopTen} onClose={() => setPrinting(null)} />}
-      {hinhPrint && <HinhPrintView ban={hinhPrint.ban} perHS={hinhPrint.perHS} onClose={() => setHinhPrint(null)} />}
     </div>
   )
 }
-type TaiLieuLike = { ten: string; mon: string; khoi: string; lop_id?: string | null; ngay?: string | null }
+
+// ═══════════ CHỌN BÀI HÌNH CHO 1 HÀNG ═══════════
+// Liệt kê MỌI chuỗi của kho Hình khối này (cùng cách gom `chuoiKetNoi` như BuoiPickEditor), tìm theo mã/phát biểu.
+// Mỗi chuỗi: "↻ Gợi ý" = bản ít dùng nhất (goiYChuoi) · "＋ Chọn…" = ChonChuoiPopup (đề chuẩn / lứa / biến thể / ý)
+// — đúng 2 nút của ET Hình, chỉ khác là trả về ĐÚNG 1 bài cho 1 hàng rồi đóng.
+function HinhBaiPicker({ L, khoi, onClose, onPick }: { L: Luoi; khoi: string; onClose: () => void; onPick: (p: PickItem) => void }) {
+  const [q, setQ] = useState('')
+  const [chon, setChon] = useState<BaiToan[] | null>(null)
+  const [busy, setBusy] = useState<string | null>(null)
+  const chuois = useMemo(() => {
+    const seen = new Set<string>(); const out: BaiToan[][] = []
+    for (const n of [...L.baiToan].sort((a, b) => a.cap - b.cap || a.ma.localeCompare(b.ma))) {
+      if (seen.has(n.id)) continue
+      const chain = chuoiKetNoi(L, n.id); chain.forEach((b) => seen.add(b.id)); out.push(chain)
+    }
+    return out
+  }, [L])
+  const kw = q.trim().toLowerCase()
+  const hien = chuois.filter((c) => !kw || c.some((b) => b.ma.toLowerCase().includes(kw) || (b.phat_bieu ?? '').toLowerCase().includes(kw)))
+  const moHinhTen = (c: BaiToan[]) => { const deep = c.reduce((x, b) => (!x || b.cap > x.cap ? b : x), null as BaiToan | null); return L.moHinh.find((m) => m.id === deep?.mo_hinh_id)?.ten ?? '' }
+  async function goiY(c: BaiToan[]) {
+    setBusy(c[0].id)
+    try { const [p] = await goiYChuoi(c, 'mt', 1); if (!p) { alert('Chuỗi này chưa có bản nào trong kho.'); return } onPick(p) }
+    finally { setBusy(null) }
+  }
+  return (
+    <div className="fixed inset-0 z-[60] bg-slate-900/50 backdrop-blur-sm" onClick={onClose}>
+      <div className="absolute inset-x-[10%] inset-y-10 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <div className="flex items-center gap-3 border-b border-slate-200 px-6 py-3">
+          <h3 className="text-base font-semibold text-slate-900">Chọn bài Hình · Khối {khoi}</h3>
+          <span className="text-[12px] text-slate-400">{chuois.length} chuỗi</span>
+          <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm mã / phát biểu…" className="ml-2 h-8 w-64 rounded-md border border-slate-200 px-2.5 text-[13px] outline-none focus:border-indigo-400" autoFocus />
+          <button onClick={onClose} className="ml-auto flex h-8 w-8 items-center justify-center rounded-md text-slate-400 hover:bg-slate-100">✕</button>
+        </div>
+        <div className="min-h-0 flex-1 overflow-auto p-5">
+          {hien.length === 0 ? <p className="text-sm text-slate-400">Không có chuỗi nào khớp.</p> : (
+            <div className="space-y-1.5">
+              {hien.map((c) => (
+                <div key={c[0].id} className="flex items-center gap-3 rounded-lg border border-slate-100 px-3 py-2">
+                  <div className="min-w-0 flex-1">
+                    <div className="truncate text-[12px] font-semibold text-sky-700">{moHinhTen(c)} <span className="font-mono font-normal text-slate-500">· {c.map((b) => b.ma).join(' → ')}</span></div>
+                    <div className="truncate text-[13px] text-slate-700"><MathText>{c[c.length - 1]?.phat_bieu ?? ''}</MathText></div>
+                  </div>
+                  <button onClick={() => goiY(c)} disabled={busy === c[0].id} className="shrink-0 rounded-md bg-indigo-50 px-2.5 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-100 disabled:opacity-50">{busy === c[0].id ? '…' : '↻ Gợi ý'}</button>
+                  <button onClick={() => setChon(c)} className="shrink-0 rounded-md border border-slate-300 px-2.5 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-400">＋ Chọn…</button>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+      {chon && <ChonChuoiPopup L={L} phan="mt" chuoi={chon} onClose={() => setChon(null)} onConfirm={(ban, nodeIds) => { setChon(null); onPick({ key: crypto.randomUUID(), phan: 'mt', nodeIds, ...ban } as PickItem) }} />}
+    </div>
+  )
+}
