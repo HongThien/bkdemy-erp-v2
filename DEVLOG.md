@@ -8477,3 +8477,59 @@ cho bấm lại. (Thực tế DB có 2 buổi 03/09 17:30–17:30 của Tùng �
   trang_thai='huy', ly_do "OPS huỷ ở màn Xếp bổ trợ yếu"), buổi huỷ gạch ngang. Để Thùy tự dọn ca trùng.
 **Verify:** localhost:5211 case Tùng: form hiện 19:30/20:30 dạng chữ, 2 buổi trùng hiện kèm Huỷ, hỏi lại inline OK.
 Không tạo/huỷ buổi thật để test nhánh khoá nút (logic thuần state). tsc sạch.
+
+## 2026-09-03 (tiếp) — Ca bổ trợ yếu: phản biện story + PLAN-botro-yeu-ca.md
+
+**Thùy** đưa story 7 bước (TA cầm iPad, luyện theo cụm, đóng ca sinh test, TA điền test + nhận xét). Phản biện 2 vòng, chốt:
+- Tài khoản: mỗi em 1 iPad **tài khoản em** (app hs), TA **máy riêng tài khoản TA** (app ta) — tách "làm bài" / "quyết định".
+- Retest **2 tầng**: test cuối ca (nguồn `bt`, đo đầu ra ca, không đóng dạng) · bài riêng ngay SAU ET buổi thường
+  kế tiếp (`rieng`, đóng dạng, tính KPI TA). Claude ban đầu hiểu nhầm "retest = đo bằng ET" — Thùy sửa.
+- Em tự làm test, hệ tự chấm; TA chỉ nhận xét. Bỏ bước "TA điền dữ liệu test".
+- Cụm: Thùy gắn 04/09; dạng không cụm = 1 cụm. Số thật: Đại 39/406 dạng có câu gắn cụm (1.691/16.436 câu).
+  "Cụm" = nghĩa spec-cum-bai.md (lớp bài tương đương + tiền đề), khớp story.
+- Test cuối ca: sàn 2 · trần 6 · ≥3 cụm 1 câu/cụm · 1–2 cụm 2 câu/cụm. Hết giờ: không đếm ngược. "Hoàn thành cụm"
+  không lưu (derive), kết thúc dạng = day_at lúc đóng ca.
+**Phát hiện drift:** `bo_tro_yeu_dang.retest_nguon` DB thật CHECK ('et','mt','rieng'), migration 202607241948 ghi
+('bt','et','mt') → cần migration đồng bộ.
+**Viết:** `PLAN-botro-yeu-ca.md` (mô hình 2 máy, luồng 7 bước sửa, trạng thái derive, data model tái dùng bai_test/
+bai_lam + 3 ADD, 6 hàm fn_btyeu_*, UI 2 app, 5 câu treo, 5 pha). Chưa code, chờ Thùy duyệt + gật migration.
+
+## 2026-09-03 (tiếp) — Thùy trả lời 5 câu treo → cập nhật PLAN-botro-yeu-ca.md
+
+1 luyện tới khi TA bảo next (kỹ thuật: lô 3 câu tự nối, không có "lượt") · 2 em bỏ về → đánh dấu không test rồi
+vẫn hoàn tất ca · 3 TA chắc chắn có máy riêng (điện thoại) · 4 mức 3 cùng luồng · 5 **đóng ca tự sinh luôn retest
+tầng 2**: bai_test(loai='retest', ngay = buổi thường kế tiếp theo TKB, buoi_hoc_id = ca bổ trợ nguồn), giao TA lớp
+(task "Retest bổ trợ · em" derive từ bài chưa nộp & ngày ≤ hôm nay — em vắng thì tự trôi), em làm sau ET trên iPad
+trung tâm tài khoản em, nộp → trigger ghi retest_diem/dat/dong_at lên từng dạng. Claude tự chốt tạm: retest 3
+câu/dạng trần 9; ngưỡng đóng > 0.5; retest vào mastery như bt (level 0). Pha E gộp vào A–D. Chờ Thùy gật migration.
+
+## 2026-09-03 (tiếp) — BUILD ca bổ trợ yếu Pha A–D (PLAN-botro-yeu-ca.md) — Thùy: "làm luôn đến cuối, commit"
+
+**Pha A — DB (2 migration, ĐÃ ÁP + schema.md refresh):**
+- `202609030307_bo_tro_yeu_ca.sql`: bai_test.loai +bo_tro/bo_tro_test/retest · bai_test.buoi_hoc_id · bai_test_cau.ma_cum ·
+  RLS HS đọc bài của mình (bài THI vẫn giấu câu, lấy đề qua et_de) · retest_nguon CHECK = DB ('et','mt','rieng') ·
+  helper `_btyeu_my_ns/_kho_cum_tbl/_btyeu_today/_kho_snapshot_cau/_btyeu_chon_cau/_btyeu_buoi/_btyeu_tien_do` ·
+  `fn_btyeu_ca_cua_toi` (HS) · `fn_btyeu_luyen_sinh` (lô 3 câu, né câu đã gặp trong ca, cạn → lặp) · `fn_btyeu_ca_ta` ·
+  `fn_btyeu_dong_ca` (day_at/day_buoi_id + test cuối ca sàn2/trần6 + RETEST 3 câu/dạng trần 9 ngày = buổi thường kế
+  tiếp theo TKB ≤28 ngày; idempotent) · `fn_btyeu_hoan_tat` · `fn_btyeu_retest_cua_toi` · `fn_btyeu_retest_ghi` + 2
+  trigger (bai_lam_cau verdict / bai_lam da_nop) ghi retest_diem/dat/dong_at nguồn 'rieng' · et_de nới cho bài cá
+  nhân · fn_mastery_cells + hs_dang_evals: bài ca → nguồn 'bt' (trước rơi nhánh else = 'btvn' sai nhãn).
+- `202609030325_bo_tro_yeu_ca_viec.sql`: fix hoan_tat (CHECK muc↔muc_ma: suy muc từ chữ số đầu mã) + `fn_btyeu_viec_cua_toi`
+  (ca tôi đứng hôm nay/nợ/≤7 ngày + retest đến hạn lớp tôi là TA; admin thấy hết).
+- **Test parity `scripts/_diag_btyeu_test.mjs`** (1 transaction → ROLLBACK, jwt claims giả HS Tùng + TA Trang, buổi thật
+  03/09): 11 bước PASS — ca null trước điểm danh → có sau · lô 1/lô 2 né nhau · tiến độ · ca_ta · đóng ca (test 4 câu =
+  2 cụm×2, retest 6 câu = 2 dạng×3, ngày 07/09 = T2 8B1) · idempotent · chặn luyện sau đóng · et_de không lộ key ·
+  et_nop chấm · retest nộp đúng hết → retest_diem 1.0, dat, dong_at · hoàn tất ghi buoi_danh_gia · mastery có nguồn bt.
+**Pha B — app HS:** `CaBoTroHS.tsx` (ca → dạng → cụm → LamBai lô nối tiếp, "Đổi cụm" nổi; banner test cuối buổi →
+  LamET) + `RetestHS` + `BoTroBanner` (chỉ render khi có ca/retest). HocSinhApp: THI_LOAI +bo_tro_test/retest, direct
+  bo_tro/retest, banner ở cả màn cấp 1 (HomeCap1 `extra`) lẫn mobile. `botro_yeu_ca.ts` = wrapper RPC + `layBaiTestCaNhan`.
+  ⚠ CHƯA verify UI HS trên trình duyệt (không có login HS) — chỉ tsc + RPC test.
+**Pha C — app TA:** `CaBoTroTA.tsx` (list nhóm hôm nay/nợ/sắp tới + retest đến hạn; detail 4 bước: điểm danh (vắng =
+  huyBuoi) → tiến độ live 10s per dạng/cụm (💡 gợi ý, im >5') → Đóng ca & sinh test (hỏi lại, khoá sau) → nhận xét
+  mẫu + mức + "không test" kèm lý do → Hoàn tất). TaHome: box + bottom-tab "Bổ trợ" (bubble = ca ≤ hôm nay chưa xong
+  + retest). **Verify** localhost:5213 (dev:ta riêng — server 5211 của phiên khác lỗi `virtual:pwa-register` cho
+  main-ta/main-hs, không phải do code này): box hiện 2 ca Tùng, tab list, detail 4 bước đúng trạng thái; KHÔNG bấm
+  "Em có mặt" (ghi thật). Thêm `erp-ta-dev`/`erp-hs-dev` vào BKERP/.claude/launch.json.
+**Pha D:** getMyTasks: bo_tro_yeu chỉ còn 1 task "Điều hành ca bổ trợ (app TA)" (bỏ Chấm ET); retest là task theo BÀI
+  → sống ở app TA. tsc sạch. Treo: BuoiBoTroYeuDetail desktop (ERP vẫn rơi BuoiDetail chung) · ERP "Trạng thái ca"
+  chưa hiện trạng thái retest · `tu_luyen_sinh` chưa chuyển sang `_kho_snapshot_cau` (cố ý, không đổi hành vi tự luyện).

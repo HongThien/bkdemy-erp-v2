@@ -112,7 +112,8 @@ chọn khối — sẽ verify khi vào code, không chặn viết plan.
    lớp em theo TKB (mặc định buổi tiếp theo), giờ = sau tan lớp, phòng lớp, TA chính; mức 2/3: theo ca
    bổ trợ gần nhất (mức 3 không kéo người). Phòng đã nối danh mục `phong` + báo trùng (hết "tạm" 0.9).
    Nguồn: `goiYXepLichBoTroYeu` (botro_yeu.ts). Bước AI đề xuất lịch: xem DEVLOG 09-02 mục "cần gì".
-5. ⏳ **CHƯA LÀM.** Điểm danh/hủy ca (copy `botro.ts` — LƯU Ý copy đúng `botro.ts` có đếm số lần,
+5. ⏳ **CHƯA LÀM — plan riêng 09-03: [PLAN-botro-yeu-ca.md](PLAN-botro-yeu-ca.md)** (2 máy 2 vai, luyện theo
+   cụm, test cuối ca tự chấm, retest 2 tầng). Điểm danh/hủy ca (copy `botro.ts` — LƯU Ý copy đúng `botro.ts` có đếm số lần,
    KHÔNG phải `botro_duoi.ts`) + đánh giá sau buổi + retest theo cửa sổ 3-7 ngày (mục 0.3). Cần dựng
    `BuoiBoTroYeuDetail` riêng (đối xứng `BuoiDuoiDetail`) — hiện đang tạm rơi vào `BuoiDetail` chung,
    CHƯA CHẮC render đúng vì `lop_id=null` (xem cảnh báo ở `NhanSuHome.tsx`).

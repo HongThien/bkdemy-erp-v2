@@ -19,14 +19,17 @@ import {
   TU_LUYEN_SO_CAU_MOI_LUOT, SRC_LABEL, type DangHocTap, type RecentEval, type XepHangRow,
 } from '../../lib/tuluyen'
 import DoiMatKhau from './DoiMatKhau'
+import CaBoTroHS, { RetestHS, BoTroBanner } from './CaBoTroHS'
+import { caCuaToi, retestCuaToi } from '../../lib/botro_yeu_ca'
 
 type Chon = number | string | (string | null)[] | null // TN=index · TLN=chuỗi · ĐS=mảng 'D'/'S'
 type CauState = { chon: Chon; kq: { verdict: string; key: unknown; baiLamCauId: string } | null; baoRoi?: boolean }
 type MenhDeSnap = { noi_dung: string; loi_giai?: string | null }
 
-const LOAI_TEN: Record<string, string> = { btvn: 'BTVN', et: 'ET', giao_trinh: 'Bài tập', de_thi: 'Đề thi' }
-// Chế độ THI (giấu đáp án tới khi nộp, chấm server, chỉ tính lần nộp đầu) — ET và đề thi trường/sở đều vậy.
-const THI_LOAI = new Set(['et', 'de_thi'])
+const LOAI_TEN: Record<string, string> = { btvn: 'BTVN', et: 'ET', giao_trinh: 'Bài tập', de_thi: 'Đề thi', bo_tro: 'Bổ trợ', bo_tro_test: 'Kiểm tra cuối buổi', retest: 'Kiểm tra lại' }
+// Chế độ THI (giấu đáp án tới khi nộp, chấm server, chỉ tính lần nộp đầu) — ET, đề thi trường/sở, và 2 bài của
+// ca bổ trợ yếu (test cuối ca · retest) — PLAN-botro-yeu-ca.md.
+const THI_LOAI = new Set(['et', 'de_thi', 'bo_tro_test', 'retest'])
 
 // ── MÀN CHÍNH = 6 Ô VUÔNG (Thùy chốt 17/08) ─────────────────────────────────
 // 3 ô đầu nối THẲNG với tài liệu trên lớp: mỗi ô = 1 loại doc phát hành từ Kho
@@ -96,7 +99,7 @@ const BOX_CAP1: BoxCap1[] = [
 // Bỏ khoá `h-screen overflow-hidden` — mockup gốc của Thùy vốn là trang cuộn tự nhiên theo nội dung
 // (không ép vừa 1 màn hình), thân trang cao hơn viewport 13-14" thì cuộn nhẹ là đúng theo THIẾT KẾ
 // gốc, không phải bug — khác hẳn bug 21/08 (cuộn do zoom 1.15 lỗi, xem main-hs.tsx).
-function HomeCap1({ hoTen, maHS, onOpen }: { hoTen: string; maHS: string; onOpen: (d: 'tu_luyen' | 'thong_tin' | 'xep_hang') => void }) {
+function HomeCap1({ hoTen, maHS, onOpen, extra }: { hoTen: string; maHS: string; onOpen: (d: 'tu_luyen' | 'thong_tin' | 'xep_hang') => void; extra?: React.ReactNode }) {
   const initials = hoTen.trim().split(/\s+/).slice(-2).map((w) => w[0]).join('').toUpperCase()
   return (
     <div className="min-h-screen" style={{ background: 'radial-gradient(circle at 85% 5%, rgba(115,87,245,.10), transparent 24rem), radial-gradient(circle at 8% 25%, rgba(47,128,237,.08), transparent 22rem), #f4f7fb' }}>
@@ -138,6 +141,7 @@ function HomeCap1({ hoTen, maHS, onOpen }: { hoTen: string; maHS: string; onOpen
           </div>
         </section>
 
+        {extra}
         {/* Lưới 6 ô — số đo port thẳng từ mockup: min-h 208px, icon 58px/30px, tiêu đề 21px, mô tả 13px */}
         <section className="mt-5">
           <div className="mb-3.5 flex items-end justify-between gap-3">
@@ -182,17 +186,28 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [tab, setTab] = useState<'chua' | 'xong'>('chua')
   const [doiMK, setDoiMK] = useState(false)
   const [khu, setKhu] = useState<KhuId | null>(null) // null = màn chính, có ô
-  const [direct, setDirect] = useState<'tu_luyen' | 'thong_tin' | 'xep_hang' | null>(null)
+  const [direct, setDirect] = useState<'tu_luyen' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'retest' | null>(null)
   const [cap1, setCap1] = useState<boolean | null>(null) // null = chưa biết — chờ trước khi vẽ lưới ô
+  // Ca bổ trợ yếu hôm nay (đã điểm danh) + retest đến hạn — ô "Bổ trợ" CHỈ hiện khi có (không "sắp có", không ô trống).
+  const [boTro, setBoTro] = useState<{ coCa: boolean; soRetest: number }>({ coCa: false, soRetest: 0 })
 
   useEffect(() => { listBaiTestCuaHS().then(setTests).catch(() => setTests([])) }, [])
   useEffect(() => { laCap1HS().then(setCap1).catch(() => setCap1(false)) }, [])
+  useEffect(() => {
+    const tai = () => Promise.all([caCuaToi().catch(() => null), retestCuaToi().catch(() => [])])
+      .then(([ca, rt]) => setBoTro({ coCa: !!ca, soRetest: rt.filter((r) => !r.da_nop).length }))
+    tai()
+    const id = setInterval(() => { if (document.visibilityState === 'visible' && !direct && !khu) tai() }, 15000)
+    return () => clearInterval(id)
+  }, [direct, khu])
 
   if (doiMK) return <DoiMatKhau maHS={maHS} batBuoc={false} onXong={() => setDoiMK(false)} />
 
   if (direct === 'tu_luyen') return <LamTuLuyen hocSinhId={hocSinhId} onXong={() => setDirect(null)} desktop={!!cap1} />
   if (direct === 'thong_tin') return <ThongTinHocTap onXong={() => setDirect(null)} desktop={!!cap1} />
   if (direct === 'xep_hang') return <BangXepHang onXong={() => setDirect(null)} />
+  if (direct === 'bo_tro') return <CaBoTroHS hocSinhId={hocSinhId} desktop={!!cap1} onXong={() => setDirect(null)} LamBai={LamBai} LamET={LamET} />
+  if (direct === 'retest') return <RetestHS hocSinhId={hocSinhId} onXong={() => setDirect(null)} LamET={LamET} />
 
   if (active) {
     const back = () => { setActive(null); listBaiTestCuaHS().then(setTests) }
@@ -216,7 +231,8 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   // Cấp 1 (Thùy 21/08: "học sinh làm ở nhà trên máy tính/iPad, không phải điện thoại") — màn RIÊNG
   // desktop/iPad-first theo mockup HTML CEO gửi, KHÔNG dùng lưới mobile-first bên dưới (cấp 3 vẫn
   // giữ nguyên màn cũ — CEO xác nhận "cấp 3 chưa dùng màn này", bàn sau).
-  if (!khu && cap1) return <HomeCap1 hoTen={hoTen} maHS={maHS} onOpen={(d) => setDirect(d)} />
+  if (!khu && cap1) return <HomeCap1 hoTen={hoTen} maHS={maHS} onOpen={(d) => setDirect(d)}
+    extra={<BoTroBanner coCa={boTro.coCa} soRetest={boTro.soRetest} desktop onCa={() => setDirect('bo_tro')} onRetest={() => setDirect('retest')} />} />
   if (!khu) return (
     <div className="mx-auto min-h-screen max-w-md bg-ios px-4 pb-10 pt-[calc(14px+env(safe-area-inset-top))]">
       {/* Hàng nút phụ (đổi MK/thoát) — ĐÚNG ".top" (ph-v3.css): icon-button vuông-tròn nổi trên nền trang */}
@@ -234,6 +250,8 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
           <p className="mt-1 truncate text-[13px] text-ph-label-2">{maHS.toUpperCase()}{lopMon ? ` · ${lopMon}` : ''}</p>
         </div>
       </div>
+
+      <BoTroBanner coCa={boTro.coCa} soRetest={boTro.soRetest} onCa={() => setDirect('bo_tro')} onRetest={() => setDirect('retest')} />
 
       <div className="mt-5 grid grid-cols-2 gap-3">
         {KHU.filter((k) => !(cap1 && KHU_AN_CAP1.has(k.id)) && !(KHU_CHI_CAP1.has(k.id) && !cap1)).map((k) => {

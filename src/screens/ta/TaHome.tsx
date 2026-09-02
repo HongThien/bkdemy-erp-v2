@@ -16,9 +16,13 @@ import { homNayVN, ddmmVN, thuCuaNgay, mucDeadline, nhanConLai } from '../../lib
 import ChamBuoi from './ChamBuoi'
 import DashTa from './DashTa'
 import GopY from './GopY'
+import CaBoTroTA, { demNoBoTro } from './CaBoTroTA'
+import { viecBoTroCuaToi, type ViecCaBoTro, type ViecRetest } from '../../lib/botro_yeu_ca'
 
 type NvKey = 'ingame' | 'et' | 'btvn'
-type TabKey = 'home' | NvKey | 'dash'
+// 'botro' = ca bổ trợ yếu (PLAN-botro-yeu-ca.md) — nghiệp vụ thứ 4, dữ liệu riêng (fn_btyeu_viec_cua_toi), không qua getMyTasks.
+type TabKey = 'home' | NvKey | 'dash' | 'botro'
+type ViecBoTro = { ca: ViecCaBoTro[]; retest: ViecRetest[] }
 // ⚠ Tailwind JIT: class màu là CHUỖI LITERAL per nghiệp vụ (cấm ghép chuỗi động) — bài học OpsHome.
 const NGHIEP_VU: { key: NvKey; icon: string; label: string; chip: string; pill: string; text: string; strip: string }[] = [
   { key: 'ingame', icon: '📝', label: 'Bài trên lớp', chip: 'bg-sky-50', pill: 'bg-sky-100', text: 'text-sky-700', strip: 'bg-sky-600' },
@@ -47,6 +51,8 @@ export default function TaHome({ profile, quyen }: { profile: MyProfile; quyen: 
   const [now, setNow] = useState(() => Date.now())
   // tóm tắt dashboard tháng cho BOX ở trang chủ (CEO 31/08: dashboard = 1 box riêng cạnh các nghiệp vụ)
   const [dashTom, setDashTom] = useState<TaDash | null>(null)
+  const [boTro, setBoTro] = useState<ViecBoTro>({ ca: [], retest: [] })
+  const taiBoTro = () => viecBoTroCuaToi().then(setBoTro).catch(() => {})
   const coQuyen = quyen.laAdmin || quyen.chucNang.includes('buoihoc') // cùng leaf với tab chấm bên ERP
 
   async function reload(silent = false) {
@@ -59,6 +65,7 @@ export default function TaHome({ profile, quyen }: { profile: MyProfile; quyen: 
       setNopCount(btvnBuois.length ? await demNopTheoBuois(btvnBuois).catch(() => ({})) : {})
     } finally { setLoading(false) }
     taDashboard(homNay.slice(0, 7)).then(setDashTom).catch(() => setDashTom(null)) // best-effort, không chặn trang chủ
+    taiBoTro()
   }
   useEffect(() => { reload() }, []) // eslint-disable-line
   useEffect(() => { const id = setInterval(() => setNow(Date.now()), 60000); return () => clearInterval(id) }, [])
@@ -76,9 +83,10 @@ export default function TaHome({ profile, quyen }: { profile: MyProfile; quyen: 
   return (
     <div className="flex h-[100dvh] flex-col bg-[#f5f5f7]" style={{ fontFamily: "'Be Vietnam Pro', 'Segoe UI', system-ui, sans-serif" }}>
       <div className="min-h-0 flex-1 overflow-auto">
-        {tab === 'home' && <TrangChu profile={profile} homNay={homNay} loading={loading} coQuyen={coQuyen} tasks={tasks} canLam={canLam} noCua={noCua} now={now} onGo={setTab} dashTom={dashTom} />}
+        {tab === 'home' && <TrangChu profile={profile} homNay={homNay} loading={loading} coQuyen={coQuyen} tasks={tasks} canLam={canLam} noCua={noCua} now={now} onGo={setTab} dashTom={dashTom} boTro={boTro} />}
         {tab === 'dash' && <DashTa />}
-        {tab !== 'home' && tab !== 'dash' && <ViecTab key={tab} nv={nvOf(tab)} tasks={tasks.filter((t) => t.tab === tab)} nopCount={nopCount} now={now} homNay={homNay} onOpen={setView} />}
+        {tab === 'botro' && <CaBoTroTA viec={boTro} onDoi={taiBoTro} />}
+        {tab !== 'home' && tab !== 'dash' && tab !== 'botro' && <ViecTab key={tab} nv={nvOf(tab)} tasks={tasks.filter((t) => t.tab === tab)} nopCount={nopCount} now={now} homNay={homNay} onOpen={setView} />}
       </div>
       {/* Nút 🐞 chuyển vào HeaderBar trang chủ (góc trên phải) — CEO 31/08, đồng bộ khuôn app GV. */}
 
@@ -89,6 +97,7 @@ export default function TaHome({ profile, quyen }: { profile: MyProfile; quyen: 
           {NGHIEP_VU.map((n) => (
             <TabBtn key={n.key} active={tab === n.key} icon={n.icon} label={n.label} pill={n.pill} text={n.text} no={noCua(n.key)} onClick={() => setTab(n.key)} />
           ))}
+          <TabBtn active={tab === 'botro'} icon="🧑‍🏫" label="Bổ trợ" pill="bg-indigo-100" text="text-indigo-700" no={demNoBoTro(boTro)} onClick={() => setTab('botro')} />
           <TabBtn active={tab === 'dash'} icon="📈" label="Của tôi" pill="bg-amber-100" text="text-amber-700" no={0} onClick={() => setTab('dash')} />
         </div>
       </div>
@@ -127,10 +136,10 @@ function HeaderBar({ profile, sub }: { profile: MyProfile; sub: string }) {
 }
 
 // ── TRANG CHỦ: hero mỏng + 3 box nghiệp vụ (bubble nợ ở góc icon, bấm box → tab list việc) ──
-function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now, onGo, dashTom }: {
+function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now, onGo, dashTom, boTro }: {
   profile: MyProfile; homNay: string; loading: boolean; coQuyen: boolean
   tasks: MyTask[]; canLam: MyTask[]; noCua: (k: NvKey) => number; now: number; onGo: (t: TabKey) => void
-  dashTom: TaDash | null
+  dashTom: TaDash | null; boTro: ViecBoTro
 }) {
   const tenGoi = (profile.nhanSu.ho_ten ?? '').trim().split(/\s+/).pop() || 'bạn'
   const quaHan = canLam.filter((t) => mucDeadline(t.deadline, now) === 'qua_han').length
@@ -154,6 +163,7 @@ function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now
 
         {/* BOX DASHBOARD THÁNG — 1 cái riêng đứng cùng các nghiệp vụ (CEO 31/08), full hàng + % sống */}
         {!loading && coQuyen && <BoxDashThang d={dashTom} onGo={() => onGo('dash')} />}
+        {!loading && coQuyen && <BoxBoTro v={boTro} homNay={homNay} onGo={() => onGo('botro')} />}
 
         {!loading && coQuyen && (
           <div className="grid grid-cols-1 items-start gap-3 sm:grid-cols-3">
@@ -186,6 +196,41 @@ function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now
         )}
       </div>
     </div>
+  )
+}
+
+// Box "🧑‍🏫 Bổ trợ yếu" — ca hôm nay của tôi + retest đến hạn (PLAN-botro-yeu-ca.md). Bấm → tab botro.
+function BoxBoTro({ v, homNay, onGo }: { v: ViecBoTro; homNay: string; onGo: () => void }) {
+  const homNayCa = v.ca.filter((c) => c.ngay === homNay)
+  const no = demNoBoTro(v)
+  const noCu = v.ca.filter((c) => c.ngay < homNay && !c.danh_gia_xong_at).length
+  return (
+    <button onClick={onGo} className="mb-3 w-full rounded-2xl border border-slate-200/70 bg-white p-3.5 text-left shadow-sm active:bg-slate-50">
+      <div className="flex items-center gap-2.5">
+        <span className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-indigo-50 text-[21px]">🧑‍🏫<NoBadge n={no} /></span>
+        <div className="min-w-0 flex-1">
+          <p className="text-[15px] font-bold text-slate-800">Bổ trợ yếu</p>
+          <p className="text-[12px] text-slate-400">
+            {homNayCa.length === 0 && v.retest.length === 0 && noCu === 0 ? 'Không có ca hôm nay'
+              : [homNayCa.length ? `${homNayCa.length} ca hôm nay` : '', noCu ? `${noCu} ca chưa hoàn tất` : '', v.retest.length ? `${v.retest.length} retest đến hạn` : ''].filter(Boolean).join(' · ')}
+          </p>
+        </div>
+        <span className="text-slate-300">›</span>
+      </div>
+      {homNayCa.length > 0 && (
+        <div className="mt-2.5 flex flex-col gap-1.5">
+          {homNayCa.slice(0, 3).map((c) => (
+            <div key={c.buoi_id} className="flex items-center gap-2 rounded-xl bg-slate-50 px-3 py-2">
+              <span className="text-[13px] font-semibold text-slate-800">{c.ho_ten}</span>
+              <span className="min-w-0 truncate text-[11.5px] text-slate-400">{c.mon}{c.gio_bat_dau ? ` · ${String(c.gio_bat_dau).slice(0, 5)}` : ''}{c.phong ? ` · ${c.phong}` : ''}</span>
+              <span className={`ml-auto shrink-0 rounded-full px-2 py-0.5 text-[10.5px] font-semibold ${c.danh_gia_xong_at ? 'bg-emerald-100 text-emerald-700' : c.diem_danh === 'co_mat' ? 'bg-indigo-100 text-indigo-700' : 'bg-slate-200/60 text-slate-500'}`}>
+                {c.danh_gia_xong_at ? 'xong' : c.co_test ? (c.test_da_nop ? 'chờ nhận xét' : 'chờ test') : c.diem_danh === 'co_mat' ? 'đang luyện' : 'chờ em'}
+              </span>
+            </div>
+          ))}
+        </div>
+      )}
+    </button>
   )
 }
 

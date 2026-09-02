@@ -1144,11 +1144,14 @@ export async function getMyTasks(): Promise<MyTask[]> {
       else if (r.diem_danh == null) chuaDDBy.set(r.buoi_hoc_id, (chuaDDBy.get(r.buoi_hoc_id) ?? 0) + 1)
     }
   }
+  // ⭐ 09-03 (PLAN-botro-yeu-ca.md): ca bổ trợ yếu KHÔNG có ET — em luyện + test trên iPad, hệ tự chấm. TA
+  // "điều hành ca" trên app TA (điểm danh → đóng ca → nhận xét → hoàn tất = danh_gia_xong_at). Nên chỉ còn 1
+  // task, bỏ "Chấm ET (bổ trợ yếu)". Retest tầng 2 (bài riêng sau ET buổi thường) là task theo BÀI, không theo
+  // buổi → sống ở app TA qua fn_btyeu_viec_cua_toi, không nhét vào đây.
   for (const b of byMine) {
     if ((coMatCountBy.get(b.id) ?? 0) === 0 && (chuaDDBy.get(b.id) ?? 0) === 0) continue
     const vaiBy: 'gv' | 'tg' = b.nguoi_day_tg ? 'tg' : 'gv'
-    out.push({ buoiId: b.id, lopId: '', lop: 'Bổ trợ yếu', ngay: b.ngay, vai: vaiBy, tab: 'et', label: 'Chấm ET (bổ trợ yếu)', done: !!b.et_dong_at, doneAt: b.et_dong_at, deadline: vnInstant(congNgay(b.ngay, 1), '12:00'), loai: 'bo_tro_yeu' })
-    out.push({ buoiId: b.id, lopId: '', lop: 'Bổ trợ yếu', ngay: b.ngay, vai: vaiBy, tab: 'danhgia', label: 'Đánh giá bổ trợ yếu', done: !!b.danh_gia_xong_at, doneAt: b.danh_gia_xong_at, deadline: vnInstant(b.ngay, '23:59'), loai: 'bo_tro_yeu' })
+    out.push({ buoiId: b.id, lopId: '', lop: 'Bổ trợ yếu', ngay: b.ngay, vai: vaiBy, tab: 'danhgia', label: 'Điều hành ca bổ trợ (app TA)', done: !!b.danh_gia_xong_at, doneAt: b.danh_gia_xong_at, deadline: vnInstant(b.ngay, '23:59'), loai: 'bo_tro_yeu' })
   }
   // ── BUỔI ĐUỔI (loai='bo_tro_duoi'): TA đứng lớp (nguoi_day_tg) nhận xét + tick "dạng đã dạy" ở
   // BuoiDuoiDetail. Buổi đuổi do TA chạy như buổi bù (Thùy chốt 07-26 — nhất quán với buổi bù); GV
