@@ -38,9 +38,11 @@ export type ChiKyKhoan = { id: string; ma: string; ma_ns: string | null; ho_ten:
 export type ChiKyJson = {
   id: string | null; ma: string | null; tu_at: string; den_at: string; ghi_chu: string | null; chot_at: string | null; chot_boi_ten: string | null
   so_khoan: number; tong_tien: number; danh_muc: ChiKyDanhMuc[]; khoan: ChiKyKhoan[]
+  // v2 — quỹ: nợ cũ tại mốc chốt · tổng Ngân cần chuyển · số dư Lộc trước khi Ngân bù
+  quy_dinh_muc: number; no_cu: number; tong_can_chuyen: number; so_du_truoc_bu: number
 }
 export type ChiKy = { id: string; ma: string; tu_at: string; den_at: string; so_khoan: number; tong_tien: number; ghi_chu: string | null; chot_at: string; chot_boi_ten: string | null }
-export type ChiTongQuan = { cho_duyet: number; cho_duyet_tien: number; chua_chot: number; chua_chot_tien: number; ky_gan_nhat: { ma: string; den_at: string; tong_tien: number } | null }
+export type ChiTongQuan = { cho_duyet: number; cho_duyet_tien: number; chua_chot: number; chua_chot_tien: number; ky_gan_nhat: { ma: string; den_at: string; tong_tien: number } | null; can_bu: number }
 export type NhanSuBank = { id: string; ma_ns: string | null; ho_ten: string; bank_bin: string | null; bank_stk: string | null; bank_chu_tk: string | null; so_khoan_cho: number; so_khoan_tong: number }
 
 // ── Format (hiển thị thuần — không phải tính nghiệp vụ) ──────────
@@ -204,4 +206,39 @@ export async function qrChuyenTra(k: { bank_bin: string; bank_stk: string; ma_ns
 export async function qrTinh(bin: string, stk: string): Promise<string> {
   const QRCode = (await import('qrcode')).default
   return QRCode.toDataURL(buildVietQR({ bin, soTaiKhoan: stk }), { margin: 1, width: 240, errorCorrectionLevel: 'M' })
+}
+
+// ── Quỹ của Lộc + nhận tiền từ Ngân (v2, Thùy 03/09) ────────────────
+// Ngân để ở chỗ Lộc một quỹ định mức (10tr); hoàn ứng = Ngân bù phần đã chi để Lộc về đủ quỹ.
+// Mọi con số tính ở DB (fn_chi_cong_no / _chi_ky_json) — client chỉ hiển thị.
+export type ChiCongNo = {
+  quy_dinh_muc: number; tong_chi_chot: number; tong_chi_chua_chot: number; tong_nhan: number
+  can_bu: number; so_du_sau_chot: number; so_du_thuc: number
+}
+export type ChiNhanTien = { id: string; so_tien: number; ngay: string; ghi_chu: string | null; tao_boi_ten: string | null; created_at: string }
+export async function congNo(): Promise<ChiCongNo> {
+  const { data, error } = await supabase.rpc('fn_chi_cong_no')
+  if (error) throw error
+  return data as ChiCongNo
+}
+export async function listNhanTien(): Promise<ChiNhanTien[]> {
+  const { data, error } = await supabase.rpc('fn_chi_nhan_tien_list')
+  if (error) throw error
+  return (data ?? []) as ChiNhanTien[]
+}
+export async function themNhanTien(so_tien: number, ngay: string, ghi_chu: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_chi_nhan_tien_them', { p_so_tien: so_tien, p_ngay: ngay, p_ghi_chu: ghi_chu || null })
+  if (error) throw error
+}
+export async function suaNhanTien(id: string, patch: { so_tien?: number; ngay?: string; ghi_chu?: string | null }): Promise<void> {
+  const { error } = await supabase.from('chi_nhan_tien').update(patch).eq('id', id)
+  if (error) throw error
+}
+export async function xoaNhanTien(id: string): Promise<void> {
+  const { error } = await supabase.from('chi_nhan_tien').delete().eq('id', id)
+  if (error) throw error
+}
+export async function datQuyDinhMuc(gia_tri: number): Promise<void> {
+  const { error } = await supabase.from('chi_cau_hinh').update({ gia_tri, updated_at: new Date().toISOString() }).eq('ma', 'quy_dinh_muc')
+  if (error) throw error
 }

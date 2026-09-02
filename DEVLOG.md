@@ -7795,3 +7795,18 @@ gán vào buổi thật). Treo: Thùy tự xoá "TEST HINH3…".
 - Verify dev 5216: tab Chốt kỳ hiện card tổng theo danh mục (Thùy đã chốt thật KY001 = 4 khoản 1.173.500đ, còn 1
   khoản chưa chốt). Popup window.open không mở được trong pane preview (chặn popup) — cùng cơ chế report PH đang
   chạy production nên tin được; Thùy test trên Chrome thật.
+
+## 2026-09-03 (tiếp) — Thu Chi v2: quỹ 10tr của Lộc + sổ nhận tiền từ Ngân + phiếu QUYẾT TOÁN
+
+- Thùy: Ngân có lúc không bù đủ → cần ghi nhận tiền Lộc nhận từ Ngân và hệ tính còn âm/dương; quy tắc BK: Ngân luôn để
+  ở chỗ Lộc quỹ 10tr, hoàn ứng = bù phần đã chi để Lộc về đủ 10tr; ảnh gửi Ngân = ảnh quyết toán theo quỹ.
+- DB `202609030053_thu_chi_v2_quy_nhan_tien.sql` (ĐÃ áp + schema): `chi_cau_hinh` (quy_dinh_muc=10tr, đổi được trên
+  ERP) · `chi_nhan_tien` (Lộc ghi mỗi lần Ngân chuyển, KHÔNG gắn kỳ vì Ngân trả gộp/thiếu) + `chi_nhan_tien_log`
+  (trigger ghi vết insert/update/delete) · `fn_chi_nhan_tien_them/list` · `fn_chi_cong_no` (can_bu = Σ kỳ chốt − Σ
+  nhận; so_du_sau_chot = định mức − can_bu; so_du_thuc trừ cả chưa chốt) · `_chi_ky_json` thêm quy_dinh_muc / no_cu
+  (Σ kỳ trước mốc − Σ nhận trước lúc chốt → phiếu cũ mở lại vẫn đúng số đã gửi) / tong_can_chuyen / so_du_truoc_bu.
+- ERP tab Chốt kỳ: khối "Quỹ Lộc giữ · công nợ với Ngân" (định mức sửa inline, Lộc đang giữ, Ngân cần chuyển, nút
+  "+ Nhận tiền từ Ngân", lịch sử nhận có xoá). Phiếu chốt → phiếu QUYẾT TOÁN: chi kỳ này theo danh mục + khối
+  quyết toán (định mức · nợ cũ · chi kỳ này · Lộc đang giữ trước bù · NGÂN CẦN CHUYỂN). Chụp ảnh giữ khuôn popup.
+- Verify dev 5216 (data test của Thùy, sẽ xoá): KY001 1.173.500 → ghi nhận 500.000 → Lộc giữ 9.326.500, cần bù
+  673.500; phiếu phần chưa chốt (500k) ra nợ cũ 673.500 + kỳ này 500.000 = 1.173.500 đúng. tsc sạch.

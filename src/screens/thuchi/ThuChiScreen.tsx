@@ -9,11 +9,13 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useStore } from '../../store/useStore'
 import { NGAN_HANG, tenNganHang } from '../../lib/nganhang'
+import { homNayVN } from '../../lib/tuan'
 import {
   listKhoanDuyet, deXuatDanhMuc, tuChoiKhoan, thanhToanGhiSo, listDanhMuc, themDanhMuc, suaDanhMuc,
   listSo, suaSo, kyXemTruoc, kyChiTiet, chotKy, listKy, tongQuan, listNhanSuBank, luuBankNhanSu,
+  congNo, listNhanTien, themNhanTien, xoaNhanTien, datQuyDinhMuc,
   qrChuyenTra, noiDungCKChi, anhUrl, vnd, ddmmyyyy, ddmmhh, parseTien, fmtTienInput, CHI_TRANG_THAI_LABEL,
-  type ChiKhoanDuyet, type ChiDanhMuc, type ChiSoRow, type ChiKyJson, type ChiKy, type ChiTongQuan, type NhanSuBank, type ChiTrangThai,
+  type ChiKhoanDuyet, type ChiDanhMuc, type ChiSoRow, type ChiKyJson, type ChiKy, type ChiTongQuan, type NhanSuBank, type ChiTrangThai, type ChiCongNo, type ChiNhanTien,
 } from '../../lib/thuchi'
 
 type Tab = 'duyet' | 'so' | 'chot' | 'danhmuc' | 'taikhoan'
@@ -359,6 +361,7 @@ function TabChot({ coGhi, bao, onDoi }: { coGhi: boolean; bao: (t: string) => vo
   return (
     <div className="grid grid-cols-[380px_1fr] gap-4">
       <div className="flex flex-col gap-3">
+        <KhoiQuy coGhi={coGhi} bao={bao} onDoi={async () => { await tai(); onDoi(); if (xem) setXem(xem.id ? await kyChiTiet(xem.id) : await kyXemTruoc()) }} />
         <div className={`${card} p-4`}>
           <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">Chưa chốt (từ lần chốt trước đến bây giờ)</p>
           {truoc ? (
@@ -381,7 +384,7 @@ function TabChot({ coGhi, bao, onDoi }: { coGhi: boolean; bao: (t: string) => vo
                   </div>
                 )
               )}
-              <button onClick={() => setXem(truoc)} className={`${btnGhost} mt-2 w-full`}>Xem chi tiết phần chưa chốt</button>
+              <button onClick={() => setXem(truoc)} className={`${btnGhost} mt-2 w-full`}>Xem phiếu phần chưa chốt</button>
             </>
           ) : <p className="mt-2 text-sm text-slate-400">Đang tải…</p>}
         </div>
@@ -396,70 +399,173 @@ function TabChot({ coGhi, bao, onDoi }: { coGhi: boolean; bao: (t: string) => vo
           ))}
         </div>
       </div>
-      <div>{xem ? <PhieuChot ky={xem} bao={bao} /> : <p className="p-8 text-center text-sm text-slate-400">Chọn một kỳ để xem phiếu chốt / tải ảnh gửi Ngân.</p>}</div>
+      <div>{xem ? <PhieuChot ky={xem} bao={bao} /> : <p className="p-8 text-center text-sm text-slate-400">Chọn một kỳ để xem phiếu quyết toán / copy ảnh gửi Ngân.</p>}</div>
     </div>
   )
 }
 
-// Phiếu chốt gửi Ngân = CHỈ tổng theo danh mục + tổng cộng (Thùy 03/09: không liệt kê giao dịch — quá nhiều).
-// Chụp ảnh theo ĐÚNG khuôn Report PH (ReportPHScreen.PhAnhModal): card viết bằng INLINE STYLE (không Tailwind) →
-// serialize outerHTML vào popup HTML độc lập + html2canvas CDN → copy clipboard/tải. Chụp ngay trong app ERP
-// (html2canvas-pro trên node Tailwind v4 + zoom fitZoom) là nguyên nhân ảnh bị lệch.
+// Quỹ Ngân để ở chỗ Lộc (định mức) + sổ nhận tiền từ Ngân + công nợ (v2, Thùy 03/09). Số liệu từ fn_chi_cong_no.
+function KhoiQuy({ coGhi, bao, onDoi }: { coGhi: boolean; bao: (t: string) => void; onDoi: () => Promise<void> }) {
+  const [cn, setCn] = useState<ChiCongNo | null>(null)
+  const [ds, setDs] = useState<ChiNhanTien[]>([])
+  const [moThem, setMoThem] = useState(false)
+  const [moDs, setMoDs] = useState(false)
+  const [soTien, setSoTien] = useState(''); const [ngay, setNgay] = useState(homNayVN()); const [ghiChu, setGhiChu] = useState('')
+  const [suaDm, setSuaDm] = useState<string | null>(null)
+  const [busy, setBusy] = useState(false)
+  const tai = useCallback(async () => { const [c, d] = await Promise.all([congNo(), listNhanTien()]); setCn(c); setDs(d) }, [])
+  useEffect(() => { tai().catch((e) => bao(`Lỗi: ${e.message}`)) }, [tai, bao])
+  const doi = async () => { await tai(); await onDoi() }
+  const them = async () => {
+    const t = parseTien(soTien); if (t <= 0) return
+    setBusy(true)
+    try { await themNhanTien(t, ngay, ghiChu); setSoTien(''); setGhiChu(''); setMoThem(false); bao(`Đã ghi nhận ${vnd(t)} từ Ngân`); await doi() }
+    catch (e) { bao(`Lỗi: ${(e as Error).message}`) } finally { setBusy(false) }
+  }
+  const xoa = async (r: ChiNhanTien) => {
+    if (!window.confirm(`Xoá dòng nhận ${vnd(r.so_tien)} ngày ${ddmmyyyy(r.ngay)}? (vẫn còn vết trong log)`)) return
+    try { await xoaNhanTien(r.id); bao('Đã xoá'); await doi() } catch (e) { bao(`Lỗi: ${(e as Error).message}`) }
+  }
+  const luuDm = async () => {
+    const v = parseTien(suaDm ?? ''); if (v <= 0) return
+    try { await datQuyDinhMuc(v); setSuaDm(null); bao(`Quỹ định mức = ${vnd(v)}`); await doi() } catch (e) { bao(`Lỗi: ${(e as Error).message}`) }
+  }
+  if (!cn) return <div className={`${card} p-4 text-sm text-slate-400`}>Đang tải quỹ…</div>
+  const canBu = Number(cn.can_bu)
+  return (
+    <div className={`${card} p-4`}>
+      <div className="flex items-center justify-between">
+        <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">Quỹ Lộc giữ · công nợ với Ngân</p>
+        {coGhi && suaDm === null && <button onClick={() => setSuaDm(fmtTienInput(Number(cn.quy_dinh_muc)))} className="text-xs text-indigo-600 hover:underline">đổi định mức</button>}
+      </div>
+      {suaDm !== null ? (
+        <div className="mt-2 flex items-center gap-2">
+          <input className={`${inputCls} w-40 font-bold`} inputMode="numeric" value={suaDm} onChange={(e) => setSuaDm(fmtTienInput(parseTien(e.target.value)))} />
+          <button onClick={luuDm} className={btnPrimary}>Lưu</button><button onClick={() => setSuaDm(null)} className={btnGhost}>Thôi</button>
+        </div>
+      ) : (
+        <p className="mt-1 text-sm text-slate-600">Định mức Ngân để ở chỗ Lộc: <b className="text-slate-900">{vnd(cn.quy_dinh_muc)}</b></p>
+      )}
+      <div className="mt-3 grid grid-cols-2 gap-2">
+        <div className="rounded-lg bg-slate-50 p-2.5">
+          <p className="text-[11px] text-slate-400">Lộc đang giữ (theo kỳ đã chốt)</p>
+          <p className="text-lg font-extrabold text-slate-900">{vnd(cn.so_du_sau_chot)}</p>
+          <p className="text-[11px] text-slate-400">thực trong túi: {vnd(cn.so_du_thuc)}</p>
+        </div>
+        <div className={`rounded-lg p-2.5 ${canBu > 0 ? 'bg-amber-50' : canBu < 0 ? 'bg-emerald-50' : 'bg-slate-50'}`}>
+          <p className="text-[11px] text-slate-400">{canBu >= 0 ? 'Ngân cần chuyển để đủ quỹ' : 'Ngân đã chuyển dư'}</p>
+          <p className={`text-lg font-extrabold ${canBu > 0 ? 'text-amber-700' : canBu < 0 ? 'text-emerald-700' : 'text-slate-900'}`}>{vnd(Math.abs(canBu))}</p>
+          <p className="text-[11px] text-slate-400">đã chốt {vnd(cn.tong_chi_chot)} · đã nhận {vnd(cn.tong_nhan)}</p>
+        </div>
+      </div>
+      <div className="mt-3 flex gap-2">
+        {coGhi && <button onClick={() => setMoThem((v) => !v)} className={btnOk}>+ Nhận tiền từ Ngân</button>}
+        <button onClick={() => setMoDs((v) => !v)} className={btnGhost}>Lịch sử nhận ({ds.length})</button>
+      </div>
+      {moThem && coGhi && (
+        <div className="mt-3 rounded-lg border border-emerald-200 bg-emerald-50 p-3">
+          <div className="grid grid-cols-[1fr_140px] gap-2">
+            <input className={`${inputCls} font-bold`} inputMode="numeric" placeholder="Số tiền Ngân chuyển" value={soTien} onChange={(e) => setSoTien(fmtTienInput(parseTien(e.target.value)))} autoFocus />
+            <input type="date" className={inputCls} value={ngay} max={homNayVN()} onChange={(e) => setNgay(e.target.value)} />
+          </div>
+          <input className={`${inputCls} mt-2 w-full`} placeholder="Ghi chú (vd: bù kỳ KY001, chuyển thiếu 500k)" value={ghiChu} onChange={(e) => setGhiChu(e.target.value)} />
+          <div className="mt-2 flex gap-2"><button onClick={them} disabled={busy || parseTien(soTien) <= 0} className={btnOk}>{busy ? 'Đang ghi…' : 'Ghi nhận'}</button><button onClick={() => setMoThem(false)} className={btnGhost}>Thôi</button></div>
+        </div>
+      )}
+      {moDs && (
+        <div className="mt-3 max-h-64 overflow-auto rounded-lg border border-slate-100">
+          {ds.length === 0 && <p className="p-3 text-xs text-slate-400">Chưa ghi nhận lần nào.</p>}
+          {ds.map((r) => (
+            <div key={r.id} className="flex items-center gap-2 border-b border-slate-100 px-3 py-2 text-sm">
+              <span className="w-20 text-xs text-slate-500">{ddmmyyyy(r.ngay)}</span>
+              <span className="font-semibold text-emerald-700">{vnd(r.so_tien)}</span>
+              <span className="flex-1 truncate text-xs text-slate-500">{r.ghi_chu}</span>
+              {coGhi && <button onClick={() => xoa(r)} className="text-xs text-red-500 hover:underline">xoá</button>}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
+// Phiếu QUYẾT TOÁN gửi Ngân = chi kỳ này theo danh mục + nợ cũ + tổng Ngân cần chuyển để Lộc về đủ quỹ (Thùy 03/09:
+// không liệt kê giao dịch — quá nhiều). Chụp ảnh theo ĐÚNG khuôn Report PH (ReportPHScreen.PhAnhModal): card viết
+// bằng INLINE STYLE (không Tailwind) → serialize outerHTML vào popup HTML độc lập + html2canvas CDN → copy/tải.
+// Chụp ngay trong app ERP (html2canvas-pro trên node Tailwind v4 + zoom fitZoom) là nguyên nhân ảnh bị lệch.
 function PhieuChot({ ky, bao }: { ky: ChiKyJson; bao: (t: string) => void }) {
   const ref = useRef<HTMLDivElement>(null)
   const laKy = !!ky.id
-  const fname = laKy ? `ChotChi_${ky.ma}.png` : 'ChuaChot.png'
+  const fname = laKy ? `QuyetToan_${ky.ma}.png` : 'ChuaChot.png'
   const moPopup = () => {
     const el = ref.current; if (!el) return
     const html = '<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">'
-      + '<title>' + (laKy ? `Chốt chi ${ky.ma}` : 'Chưa chốt') + '</title><scr' + 'ipt src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></scr' + 'ipt>'
+      + '<title>' + (laKy ? `Quyết toán ${ky.ma}` : 'Chưa chốt') + '</title><scr' + 'ipt src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></scr' + 'ipt>'
       + '<style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif;background:#f1f5f9;padding:12px;display:flex;flex-direction:column;align-items:center}'
       + '.btn{width:100%;max-width:520px;padding:11px;border:none;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;background:#16a34a;color:#fff;margin-bottom:10px}.btn:hover{opacity:.9}'
       + '#msg{font-size:12px;color:#16a34a;margin-top:6px;min-height:18px}#c{background:#fff;border-radius:14px;overflow:hidden}</style></head><body>'
       + '<button class="btn" onclick="cp()">📋 Copy ảnh (paste vào Zalo gửi Ngân)</button><div id="c">' + el.outerHTML + '</div><p id="msg"></p>'
       + '<scr' + 'ipt>async function cp(){var m=document.getElementById("msg");m.textContent="⏳ Đang xử lý...";try{var n=document.getElementById("c");var cv=await html2canvas(n,{scale:2,backgroundColor:"#ffffff",useCORS:true,logging:false,width:n.scrollWidth,height:n.scrollHeight});cv.toBlob(async function(b){try{await navigator.clipboard.write([new ClipboardItem({"image/png":b})]);m.textContent="✅ Đã copy! Ctrl+V vào Zalo.";}catch(e){var u=URL.createObjectURL(b);var a=document.createElement("a");a.href=u;a.download=' + JSON.stringify(fname) + ';a.click();URL.revokeObjectURL(u);m.textContent="✅ Đã tải ảnh!";}},"image/png");}catch(e){m.textContent="Lỗi: "+e.message;}}</scr' + 'ipt></body></html>'
-    const p = window.open('', '_blank', 'width=600,height=760,scrollbars=yes')
+    const p = window.open('', '_blank', 'width=600,height=820,scrollbars=yes')
     if (!p) { bao('Trình duyệt chặn popup — bật "Allow pop-ups" cho site này.'); return }
     p.document.write(html); p.document.close()
   }
   const th: React.CSSProperties = { padding: '8px 10px', fontSize: 12, fontWeight: 700, color: '#64748b', textTransform: 'uppercase', letterSpacing: '.04em', borderBottom: '2px solid #0f172a', textAlign: 'left' }
   const td: React.CSSProperties = { padding: '9px 10px', fontSize: 14, color: '#0f172a', borderBottom: '1px solid #e2e8f0' }
+  const noCu = Number(ky.no_cu), tongCan = Number(ky.tong_can_chuyen)
+  const dongQT = (nhan: string, gia: string, opts?: { dam?: boolean; mau?: string; nho?: string }) => (
+    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', padding: '7px 0', borderBottom: '1px solid #e2e8f0' }}>
+      <span style={{ fontSize: 13, color: '#475569' }}>{nhan}{opts?.nho && <span style={{ fontSize: 11, color: '#94a3b8' }}> {opts.nho}</span>}</span>
+      <span style={{ fontSize: opts?.dam ? 20 : 15, fontWeight: opts?.dam ? 800 : 600, color: opts?.mau ?? '#0f172a' }}>{gia}</span>
+    </div>
+  )
   return (
     <div className="flex flex-col gap-3">
       <div className="flex items-center gap-2">
         <button onClick={moPopup} className={btnPrimary}>📋 Copy ảnh gửi Ngân</button>
         {!laKy && <span className="text-xs text-amber-700">Đây là phần CHƯA chốt — số liệu còn thay đổi.</span>}
-        <span className="text-xs text-slate-400">Ảnh chỉ có tổng theo danh mục. Chi tiết từng khoản xem ở tab Sổ chi (lọc theo kỳ).</span>
+        <span className="text-xs text-slate-400">Ảnh chỉ có tổng theo danh mục + quyết toán quỹ. Chi tiết từng khoản: tab Sổ chi (lọc theo kỳ).</span>
       </div>
       {/* Card INLINE STYLE — đây là thứ được chụp (outerHTML sang popup nên KHÔNG dùng class Tailwind). */}
       <div ref={ref} style={{ width: 560, background: '#ffffff', padding: 24, fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif', color: '#0f172a' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 16 }}>
           <div>
-            <div style={{ fontSize: 11, fontWeight: 700, color: '#64748b', textTransform: 'uppercase', letterSpacing: '.06em' }}>BK Academy · Bảng kê chi</div>
+            <div style={{ fontSize: 11, fontWeight: 700, color: '#64748b', textTransform: 'uppercase', letterSpacing: '.06em' }}>BK Academy · Quyết toán quỹ chi</div>
             <div style={{ fontSize: 22, fontWeight: 800, marginTop: 2 }}>{laKy ? `Kỳ ${ky.ma}` : 'Chưa chốt'}</div>
-            <div style={{ fontSize: 13, color: '#475569', marginTop: 2 }}>Từ {ddmmhh(ky.tu_at)} đến {ddmmhh(ky.den_at)}</div>
+            <div style={{ fontSize: 13, color: '#475569', marginTop: 2 }}>Chi từ {ddmmhh(ky.tu_at)} đến {ddmmhh(ky.den_at)}</div>
             {ky.ghi_chu && <div style={{ fontSize: 13, color: '#475569' }}>Ghi chú: {ky.ghi_chu}</div>}
           </div>
           <div style={{ textAlign: 'right' }}>
-            <div style={{ fontSize: 11, color: '#64748b' }}>Tổng cần bù</div>
-            <div style={{ fontSize: 26, fontWeight: 800, color: '#0f766e' }}>{vnd(ky.tong_tien)}</div>
-            <div style={{ fontSize: 11, color: '#64748b' }}>{ky.so_khoan} khoản{laKy ? ` · chốt ${ddmmhh(ky.chot_at)}` : ''}</div>
+            <div style={{ fontSize: 11, color: '#64748b' }}>Ngân cần chuyển</div>
+            <div style={{ fontSize: 26, fontWeight: 800, color: tongCan >= 0 ? '#0f766e' : '#b45309' }}>{vnd(Math.abs(tongCan))}</div>
+            <div style={{ fontSize: 11, color: '#64748b' }}>{tongCan >= 0 ? `để Lộc về đủ quỹ ${vnd(ky.quy_dinh_muc)}` : 'Ngân đang chuyển dư — không cần chuyển'}</div>
           </div>
         </div>
         <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: 18 }}>
-          <thead><tr><th style={th}>Danh mục</th><th style={{ ...th, textAlign: 'right' }}>Số khoản</th><th style={{ ...th, textAlign: 'right' }}>Số tiền</th></tr></thead>
+          <thead><tr><th style={th}>Chi kỳ này theo danh mục</th><th style={{ ...th, textAlign: 'right' }}>Số khoản</th><th style={{ ...th, textAlign: 'right' }}>Số tiền</th></tr></thead>
           <tbody>
             {ky.danh_muc.map((d) => (
               <tr key={d.danh_muc_id}><td style={td}>{d.ten}</td><td style={{ ...td, textAlign: 'right', color: '#475569' }}>{d.so_khoan}</td><td style={{ ...td, textAlign: 'right', fontWeight: 700 }}>{vnd(d.so_tien)}</td></tr>
             ))}
             <tr>
-              <td style={{ ...td, borderTop: '2px solid #0f172a', borderBottom: 'none', fontWeight: 800, paddingTop: 12 }}>TỔNG CỘNG</td>
+              <td style={{ ...td, borderTop: '2px solid #0f172a', borderBottom: 'none', fontWeight: 800, paddingTop: 12 }}>TỔNG CHI KỲ NÀY</td>
               <td style={{ ...td, borderTop: '2px solid #0f172a', borderBottom: 'none', textAlign: 'right', fontWeight: 800, paddingTop: 12 }}>{ky.so_khoan}</td>
-              <td style={{ ...td, borderTop: '2px solid #0f172a', borderBottom: 'none', textAlign: 'right', fontWeight: 800, paddingTop: 12, color: '#0f766e' }}>{vnd(ky.tong_tien)}</td>
+              <td style={{ ...td, borderTop: '2px solid #0f172a', borderBottom: 'none', textAlign: 'right', fontWeight: 800, paddingTop: 12 }}>{vnd(ky.tong_tien)}</td>
             </tr>
           </tbody>
         </table>
-        {laKy && ky.chot_boi_ten && <div style={{ fontSize: 11, color: '#94a3b8', marginTop: 14 }}>Người chốt: {ky.chot_boi_ten}</div>}
+        <div style={{ marginTop: 18, background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: 10, padding: '6px 14px' }}>
+          <div style={{ fontSize: 11, fontWeight: 700, color: '#64748b', textTransform: 'uppercase', letterSpacing: '.04em', padding: '6px 0 2px' }}>Quyết toán quỹ</div>
+          {dongQT('Quỹ định mức Ngân để ở chỗ Lộc', vnd(ky.quy_dinh_muc))}
+          {dongQT(noCu >= 0 ? 'Nợ cũ Ngân chưa bù' : 'Ngân đã chuyển dư từ trước', vnd(Math.abs(noCu)), { mau: noCu > 0 ? '#b45309' : noCu < 0 ? '#047857' : '#0f172a', nho: laKy ? '(tính đến lúc chốt)' : '(tính đến bây giờ)' })}
+          {dongQT('Chi kỳ này', vnd(ky.tong_tien))}
+          {dongQT('Lộc đang giữ trước khi Ngân bù', vnd(ky.so_du_truoc_bu), { mau: Number(ky.so_du_truoc_bu) < 0 ? '#b91c1c' : '#0f172a' })}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', padding: '10px 0 8px' }}>
+            <span style={{ fontSize: 14, fontWeight: 800 }}>{tongCan >= 0 ? 'NGÂN CẦN CHUYỂN CHO LỘC' : 'NGÂN ĐANG DƯ (không cần chuyển)'}</span>
+            <span style={{ fontSize: 22, fontWeight: 800, color: tongCan >= 0 ? '#0f766e' : '#b45309' }}>{vnd(Math.abs(tongCan))}</span>
+          </div>
+        </div>
+        <div style={{ fontSize: 11, color: '#94a3b8', marginTop: 12 }}>{laKy ? `Chốt ${ddmmhh(ky.chot_at)}${ky.chot_boi_ten ? ` · ${ky.chot_boi_ten}` : ''}` : `Xem trước ${ddmmhh(ky.den_at)}`} · Sau khi Ngân chuyển đủ, Lộc về đúng quỹ {vnd(ky.quy_dinh_muc)}.</div>
       </div>
     </div>
   )

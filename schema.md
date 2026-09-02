@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-175 bảng · 7 view · 0 enum · 30 trigger · 172 function
+178 bảng · 7 view · 0 enum · 31 trigger · 176 function
 
 ## _app_secrets
 
@@ -503,6 +503,15 @@
 | hinh_y_id | uuid | Y |  | FK→hinh_y.id |  |
 | ngu_canh_luot | text | Y |  |  | `mo_hinh` · `dang` · `luyen_de` |
 
+## chi_cau_hinh
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma | text |  |  | PK |  |
+| gia_tri | numeric |  |  |  |  |
+| ghi_chu | text | Y |  |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
 ## chi_danh_muc
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -567,6 +576,30 @@
 | ten_danh_muc | text |  |  |  |  |
 | so_khoan | integer |  |  |  |  |
 | so_tien | numeric |  |  |  |  |
+
+## chi_nhan_tien
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| so_tien | numeric |  |  |  |  |
+| ngay | date |  |  |  |  |
+| ghi_chu | text | Y |  |  |  |
+| tao_boi | uuid | Y |  | FK→nhan_su.id |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
+## chi_nhan_tien_log
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | bigint |  | nextval('chi_nhan_tien_log_id_seq'::regclass) | PK |  |
+| nhan_tien_id | uuid |  |  |  |  |
+| actor | uuid | Y |  |  |  |
+| at | timestamp with time zone |  | now() |  |  |
+| op | text |  |  |  |  |
+| truoc | jsonb | Y |  |  |  |
+| sau | jsonb | Y |  |  |  |
 
 ## chi_so
 
@@ -2670,6 +2703,7 @@ SELECT n.hoc_sinh_id,
 | ca_test_cau_kq | tg_ca_test_kq_diem | BEFORE | INSERT/UPDATE | fn_ca_test_kq_diem |
 | chi_khoan | tg_chi_khoan_bf | BEFORE | INSERT/UPDATE | trg_chi_khoan_bf |
 | chi_khoan | tg_chi_khoan_log | AFTER | INSERT/UPDATE | trg_chi_khoan_log |
+| chi_nhan_tien | tg_chi_nhan_tien_log | BEFORE | INSERT/DELETE/UPDATE | trg_chi_nhan_tien_log |
 | chi_so | tg_chi_so_bf | BEFORE | INSERT/DELETE/UPDATE | trg_chi_so_bf |
 | dai_cau_hoi | trg_log_kho_cau_dai | AFTER | DELETE/UPDATE | log_kho_cau |
 | diem_thi | tg_diem_thi_tinh | BEFORE | INSERT/UPDATE | fn_diem_thi_tinh |
@@ -2726,6 +2760,7 @@ SELECT n.hoc_sinh_id,
 - `fn_buoi_recompute_hoan_tat(p_buoi_id uuid)` → void
 - `fn_ca_test_kq_diem()` → trigger
 - `fn_chap_nhan_dap_an(p_ma_cau text, p_dap_an_raw text)` → jsonb
+- `fn_chi_cong_no()` → jsonb
 - `fn_chi_cua_toi()` → TABLE(id uuid, ma text, so_tien_bao numeric, muc_dich text, ngay_chi date, danh_muc_de_xuat_id uuid, danh_muc_de_xuat_ten text, anh_paths text[], trang_thai text, tu_choi_ly_do text, xu_ly_at timestamp with time zone, created_at timestamp with time zone, so_tien_duyet numeric, luu_y_duyet text, ghi_so_at timestamp with time zone, danh_muc_duyet_ten text)
 - `fn_chi_de_xuat_danh_muc(p_chi_khoan_id uuid)` → uuid
 - `fn_chi_huy(p_id uuid)` → void
@@ -2735,6 +2770,8 @@ SELECT n.hoc_sinh_id,
 - `fn_chi_ky_list()` → TABLE(id uuid, ma text, tu_at timestamp with time zone, den_at timestamp with time zone, so_khoan integer, tong_tien numeric, ghi_chu text, chot_at timestamp with time zone, chot_boi_ten text)
 - `fn_chi_ky_xem_truoc()` → jsonb
 - `fn_chi_nhan_su_bank()` → TABLE(id uuid, ma_ns text, ho_ten text, bank_bin text, bank_stk text, bank_chu_tk text, so_khoan_cho integer, so_khoan_tong integer)
+- `fn_chi_nhan_tien_list()` → TABLE(id uuid, so_tien numeric, ngay date, ghi_chu text, tao_boi_ten text, created_at timestamp with time zone)
+- `fn_chi_nhan_tien_them(p_so_tien numeric, p_ngay date, p_ghi_chu text DEFAULT NULL::text)` → uuid
 - `fn_chi_so_list(p_tu date DEFAULT NULL::date, p_den date DEFAULT NULL::date, p_danh_muc_id uuid DEFAULT NULL::uuid, p_nhan_su_id uuid DEFAULT NULL::uuid, p_ky_id uuid DEFAULT NULL::uuid, p_chua_chot boolean DEFAULT false)` → TABLE(id uuid, chi_khoan_id uuid, ma text, ma_ns text, ho_ten text, ngay date, so_tien numeric, so_tien_bao numeric, muc_dich text, danh_muc_id uuid, danh_muc_ten text, luu_y text, ghi_so_at timestamp with time zone, ghi_so_boi_ten text, ky_id uuid, ky_ma text, anh_paths text[])
 - `fn_chi_sua(p_id uuid, p_so_tien numeric, p_muc_dich text, p_ngay_chi date, p_danh_muc_id uuid DEFAULT NULL::uuid, p_anh_paths text[] DEFAULT '{}'::text[])` → void
 - `fn_chi_tao(p_so_tien numeric, p_muc_dich text, p_ngay_chi date, p_danh_muc_id uuid DEFAULT NULL::uuid, p_anh_paths text[] DEFAULT '{}'::text[])` → uuid
@@ -2867,6 +2904,7 @@ SELECT n.hoc_sinh_id,
 - `tln_norm(t text)` → text
 - `trg_chi_khoan_bf()` → trigger
 - `trg_chi_khoan_log()` → trigger
+- `trg_chi_nhan_tien_log()` → trigger
 - `trg_chi_so_bf()` → trigger
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 
@@ -2895,6 +2933,7 @@ SELECT n.hoc_sinh_id,
 | chi_khoan | chi_khoan_muc_dich_check | `CHECK ((length(TRIM(BOTH FROM muc_dich)) > 0))` |
 | chi_khoan | chi_khoan_so_tien_bao_check | `CHECK ((so_tien_bao > (0)::numeric))` |
 | chi_ky | chi_ky_check | `CHECK ((den_at >= tu_at))` |
+| chi_nhan_tien | chi_nhan_tien_so_tien_check | `CHECK ((so_tien > (0)::numeric))` |
 | chi_so | chi_so_muc_dich_check | `CHECK ((length(TRIM(BOTH FROM muc_dich)) > 0))` |
 | chi_so | chi_so_so_tien_check | `CHECK ((so_tien > (0)::numeric))` |
 | dai_ban_do | dai_ban_do_muc_do_check | `CHECK (((muc_do >= 1) AND (muc_do <= 5)))` |
