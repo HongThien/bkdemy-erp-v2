@@ -1,7 +1,7 @@
 // AppChi — shell RIÊNG cho bundle app BK CHI (PLAN-thu-chi.md, Thùy chốt 02/09). Y HỆT vai trò AppOps:
 // KHÔNG import gì thuộc NhanSuHome/useStore/kho — bundle build riêng (vite.config.chi.ts).
-// Ai là nhân sự `dang_lam` đều vào được (mọi nhân sự đều tạo khoản chi — không cần leaf).
-// Phần xử lý của kế toán (duyệt/ghi sổ/chốt kỳ) nằm trên ERP (leaf `thuchi`), không ở app này.
+// Ai là nhân sự `dang_lam` đều vào được (mọi nhân sự đều tạo khoản chi). Người có lá `thuchi` (Lộc) thấy thêm
+// tab "Duyệt" (Thùy 03/09: kế toán duyệt ngay trên điện thoại) — quyền = CÙNG nguồn với ERP (my_quyen).
 import { useEffect, useState } from 'react'
 import type { Session } from '@supabase/supabase-js'
 import { supabase } from './lib/supabase'
@@ -9,6 +9,7 @@ import Login from './auth/Login'
 import ChiHome from './screens/chi/ChiHome'
 import { getMyHocSinhId } from './lib/testonline'
 import { getMyProfile, type MyProfile } from './lib/nhansu'
+import { myQuyen, type MyQuyen } from './lib/quyen'
 
 function ManThongBao({ text }: { text: string }) {
   return (
@@ -22,7 +23,7 @@ const DangTai = () => <div className="flex min-h-screen items-center justify-cen
 
 export default function AppChi() {
   const [session, setSession] = useState<Session | null | undefined>(undefined)
-  const [gate, setGate] = useState<{ profile: MyProfile } | 'hs' | 'khong_link' | undefined>(undefined)
+  const [gate, setGate] = useState<{ profile: MyProfile; quyen: MyQuyen } | 'hs' | 'khong_link' | undefined>(undefined)
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => setSession(data.session))
@@ -38,7 +39,8 @@ export default function AppChi() {
       if (hsId) { setGate('hs'); return }
       const profile = await getMyProfile().catch(() => null)
       if (!profile) { setGate('khong_link'); return }
-      setGate({ profile })
+      const quyen = await myQuyen().catch((): MyQuyen => ({ laAdmin: false, chucNang: [], chiXem: [] }))
+      setGate({ profile, quyen })
     })()
   }, [session?.user?.id]) // eslint-disable-line
 
@@ -47,5 +49,5 @@ export default function AppChi() {
   if (gate === undefined) return <DangTai />
   if (gate === 'hs') return <ManThongBao text="Tài khoản này là học sinh — app này chỉ dành cho nhân sự." />
   if (gate === 'khong_link') return <ManThongBao text="Tài khoản chưa gắn với hồ sơ nhân sự nào — liên hệ quản trị." />
-  return <ChiHome profile={gate.profile} />
+  return <ChiHome profile={gate.profile} quyen={gate.quyen} />
 }

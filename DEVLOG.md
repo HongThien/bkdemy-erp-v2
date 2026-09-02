@@ -7770,3 +7770,17 @@ gán vào buổi thật). Treo: Thùy tự xoá "TEST HINH3…".
 - Treo: cấp lá `thuchi` cho ghế của Lộc ở màn Phân quyền · Vercel project dist-chi + domain chi.bkacademy.edu.vn ·
   ảnh chứng từ đang ở bucket public kho-anh (path khó đoán; muốn private cần bucket mới qua SQL Editor) ·
   merge feat/thu-chi.
+
+## 2026-09-03 — Thu Chi: tab "Duyệt" trong app BK Chi cho kế toán + cấp lá thuchi cho Core team
+
+- Thùy: "màn của Lộc có khác gì bình thường đâu" → Lộc phải duyệt được trên điện thoại, không chỉ ERP.
+  `AppChi` gọi thêm `myQuyen`; `ChiHome` thêm tab **Duyệt** (leaf `thuchi`, badge số chờ từ fn_chi_tong_quan,
+  kế toán mở app vào thẳng tab này); `screens/chi/DuyetChi.tsx` = hàng chờ (lọc 4 trạng thái) → chi tiết: nút COPY
+  STK/số tiền/nội dung (điện thoại không quét QR cùng máy; QR vẫn hiện để lưu ảnh quét từ thư viện) → "Đã thanh toán"
+  bottom-sheet ghi sổ → Từ chối. Cùng RPC với ERP. Chốt kỳ vẫn ở ERP.
+- Quyền: insert `vai_tro_chuc_nang (Core team, 'thuchi', chi_xem=false)` — cùng vai trò đang giữ lá `hocphi`
+  (Lộc NS003 · Thùy · Trang). Kiểm bằng co_quyen_ghi dưới email Lộc: ghi = true.
+- Deploy: đã push feat/thu-chi và ff `main` (5bf50d5 → 6e24756 → bản này). Vercel project BK Chi: build
+  `npm run build:chi`, output `dist-chi`, domain chi.bkacademy.edu.vn (Thùy đang tạo).
+- Verify: dev 5215, đăng nhập Trang (Core team) → tab Duyệt hiện 2 khoản thật Thùy tạo (CHI0002/0003), chi tiết
+  CHI0003 hiện Techcombank + copy + QR. tsc sạch.
