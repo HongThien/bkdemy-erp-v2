@@ -18,7 +18,8 @@ import {
 // cùng"). Tái dùng engine của ET Hình: goiYChuoi/ChonChuoiPopup chọn bài, banInTheoMoHinh dựng đề (preview + in),
 // goiYMaDeChoBai sinh mã đề 2/3 (bản KHÁC có sẵn cùng node, không AI sinh mới).
 import { banInTheoMoHinh, goiYMaDeChoBai, goiYChuoi, ChonChuoiPopup, DONG_BTVN, type Ban } from '../kho/hinh/SoanTaiLieu'
-import { loadLuoi, chuoiKetNoi, type Luoi, type BaiToan } from '../../lib/kho/hinh'
+import { loadLuoi, chuoiKetNoi, maPhanCapMap, conCua, type Luoi, type BaiToan, type MoHinh } from '../../lib/kho/hinh'
+import { Ma, tron } from '../kho/hinh/hinhUi'
 import type { MucIn } from '../kho/hinh/HinhPrintView'
 import { chuoiSig, CHE_DO_HINH, cheDoKe } from '../../lib/kho/hinhGiaoTrinh'
 import { buildMaDe as buildMaDeLib, oTrongMaDe, usedMoiDe as usedMoiDeLib, setVarInCh, maDeStale, type BaseItem } from '../../lib/made'
@@ -479,8 +480,16 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
                                 <span className="font-mono text-[12px] text-slate-700">{h ? (chuoiCuaHinh(h).map((b) => b.ma).join(' → ') || `${h.nodeIds.length} node`) : '?'}</span>
                               </button>
                               <div className="min-w-0 flex-1 pt-1">
-                                {m && m.kieu === 'de' ? <div className="truncate text-[13px] text-slate-700"><MathText>{m.deBai}</MathText></div>
-                                  : <span className="text-[12px] italic text-slate-400">{hinhL ? 'đang dựng đề…' : 'đang tải kho Hình…'}</span>}
+                                {/* Preview = đề + các ý + HÌNH VẼ (Thùy: "preview bài của hình thì phải có cả hình mới view chuẩn được") */}
+                                {m && m.kieu === 'de' ? (
+                                  <div className="flex items-start gap-3">
+                                    <div className="min-w-0 flex-1 text-[13px] text-slate-700">
+                                      <div><MathText>{m.deBai}</MathText></div>
+                                      {m.ys.map((y, yi) => <div key={yi} className="text-[12.5px] text-slate-600">{y.nhan && <b>{y.nhan}) </b>}<MathText>{y.giaThietPhu ? `${y.giaThietPhu}. ${y.noiDung}` : y.noiDung}</MathText></div>)}
+                                    </div>
+                                    {m.anhDe && <img src={m.anhDe} alt="" className="h-24 w-auto max-w-[180px] shrink-0 rounded border border-slate-200 bg-white object-contain" />}
+                                  </div>
+                                ) : <span className="text-[12px] italic text-slate-400">{hinhL ? 'đang dựng đề…' : 'đang tải kho Hình…'}</span>}
                                 {h && (
                                   <div className="mt-1 flex flex-wrap items-center gap-1.5">
                                     <span className="rounded bg-slate-100 px-1.5 py-0.5 text-[10px] font-medium text-slate-500">{nhanBanHinh(h)}</span>
@@ -791,22 +800,39 @@ function ChiaDeMTModal({ taiLieuId, lopId, lopTen, onClose }: { taiLieuId: strin
   )
 }
 
-// ═══════════ CHỌN BÀI HÌNH CHO 1 HÀNG ═══════════
-// Liệt kê MỌI chuỗi của kho Hình khối này (cùng cách gom `chuoiKetNoi` như BuoiPickEditor), tìm theo mã/phát biểu.
-// Mỗi chuỗi: "↻ Gợi ý" = bản ít dùng nhất (goiYChuoi) · "＋ Chọn…" = ChonChuoiPopup (đề chuẩn / lứa / biến thể / ý)
-// — đúng 2 nút của ET Hình, chỉ khác là trả về ĐÚNG 1 bài cho 1 hàng rồi đóng.
+// ═══════════ CHỌN BÀI HÌNH CHO 1 HÀNG — 2 BƯỚC như ET/Builder (Thùy 02/09) ═══════════
+// Bước 1: chọn MÔ HÌNH (chính + vệ tinh — y hệt popup "Chọn mô hình cho buổi này" của BuoiPickEditor, cùng
+// maPhanCapMap/conCua). Bước 2: các chuỗi thuộc mô hình đã chọn (gom `chuoiKetNoi` như BuoiPickEditor), tìm theo
+// mã/phát biểu; mỗi chuỗi "↻ Gợi ý" = bản ít dùng nhất (goiYChuoi) · "＋ Chọn…" = ChonChuoiPopup (đề chuẩn / lứa /
+// biến thể / ý) — đúng 2 nút của ET Hình, chỉ khác là trả về ĐÚNG 1 bài cho 1 hàng rồi đóng. Mô hình đã chọn nhớ
+// trong phiên (module-level) để hàng sau khỏi chọn lại — "✎ Đổi mô hình" quay về bước 1.
+const moHinhDaChon: { khoi: string; mainIds: string[]; satIds: string[] } = { khoi: '', mainIds: [], satIds: [] }
 function HinhBaiPicker({ L, khoi, onClose, onPick }: { L: Luoi; khoi: string; onClose: () => void; onPick: (p: PickItem) => void }) {
+  const nho = moHinhDaChon.khoi === khoi
+  const [mainIds, setMainIds] = useState<Set<string>>(new Set(nho ? moHinhDaChon.mainIds : []))
+  const [satIds, setSatIds] = useState<Set<string>>(new Set(nho ? moHinhDaChon.satIds : []))
+  const [buoc, setBuoc] = useState<1 | 2>(nho && moHinhDaChon.mainIds.length ? 2 : 1)
   const [q, setQ] = useState('')
   const [chon, setChon] = useState<BaiToan[] | null>(null)
   const [busy, setBusy] = useState<string | null>(null)
+  const maCap = useMemo(() => maPhanCapMap(L), [L])
+  const moHinhSorted = useMemo(() => L.moHinh.slice().sort((a, b) => (maCap.get(a.id) ?? '').localeCompare(maCap.get(b.id) ?? '')), [L, maCap])
+  // Vệ tinh của 1 mô hình chính = mô hình CON là LÁ (không có con) — cùng định nghĩa BuoiPickEditor 27/08.
+  const vetinhCua = (id: string): MoHinh[] => {
+    const seen = new Set<string>(); const out: MoHinh[] = []
+    for (const cid of conCua(L, id)) { if (seen.has(cid)) continue; const m = L.moHinh.find((x) => x.id === cid); if (m && conCua(L, m.id).length === 0) { seen.add(cid); out.push(m) } }
+    return out.sort((a, b) => a.ma.localeCompare(b.ma))
+  }
+  const toggleMain = (id: string) => setMainIds((s) => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n })
+  const toggleSat = (id: string) => setSatIds((s) => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n })
+  const modelIds = useMemo(() => [...mainIds, ...satIds], [mainIds, satIds])
   const chuois = useMemo(() => {
+    const nodes = (modelIds.length ? L.baiToan.filter((b) => modelIds.includes(b.mo_hinh_id)) : L.baiToan.slice()).sort((a, b) => a.cap - b.cap || a.ma.localeCompare(b.ma))
     const seen = new Set<string>(); const out: BaiToan[][] = []
-    for (const n of [...L.baiToan].sort((a, b) => a.cap - b.cap || a.ma.localeCompare(b.ma))) {
-      if (seen.has(n.id)) continue
-      const chain = chuoiKetNoi(L, n.id); chain.forEach((b) => seen.add(b.id)); out.push(chain)
-    }
+    for (const n of nodes) { if (seen.has(n.id)) continue; const chain = chuoiKetNoi(L, n.id); chain.forEach((b) => seen.add(b.id)); out.push(chain) }
     return out
-  }, [L])
+  }, [L, modelIds])
+  const xongBuoc1 = () => { Object.assign(moHinhDaChon, { khoi, mainIds: [...mainIds], satIds: [...satIds] }); setBuoc(2) }
   const kw = q.trim().toLowerCase()
   const hien = chuois.filter((c) => !kw || c.some((b) => b.ma.toLowerCase().includes(kw) || (b.phat_bieu ?? '').toLowerCase().includes(kw)))
   const moHinhTen = (c: BaiToan[]) => { const deep = c.reduce((x, b) => (!x || b.cap > x.cap ? b : x), null as BaiToan | null); return L.moHinh.find((m) => m.id === deep?.mo_hinh_id)?.ten ?? '' }
@@ -815,17 +841,59 @@ function HinhBaiPicker({ L, khoi, onClose, onPick }: { L: Luoi; khoi: string; on
     try { const [p] = await goiYChuoi(c, 'mt', 1); if (!p) { alert('Chuỗi này chưa có bản nào trong kho.'); return } onPick(p) }
     finally { setBusy(null) }
   }
+  if (buoc === 1) return (
+    <div className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-900/50 p-4 backdrop-blur-sm" onClick={onClose}>
+      <div className="max-h-[85vh] w-full max-w-md overflow-y-auto rounded-2xl border border-slate-200 bg-white p-5 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <h2 className="mb-1 text-[15px] font-semibold text-slate-900">Bước 1 · Chọn mô hình · Khối {khoi}</h2>
+        <p className="mb-3 text-[12.5px] leading-relaxed text-slate-500">Thu hẹp danh sách bài theo (các) mô hình chính — tick mô hình chính rồi tick thêm vệ tinh nếu cần. Nhớ cho các hàng sau.</p>
+        <div className="max-h-[26rem] overflow-y-auto pr-0.5">
+          {moHinhSorted.map((m) => {
+            const daChon = mainIds.has(m.id)
+            const conM = vetinhCua(m.id)
+            return (
+              <div key={m.id} className="mb-1">
+                <label className="flex cursor-pointer items-center gap-2 rounded-lg border border-dashed border-teal-200 bg-teal-50/40 px-2 py-1.5 text-[12px] text-slate-700 hover:bg-teal-50">
+                  <input type="checkbox" checked={daChon} onChange={() => toggleMain(m.id)} />
+                  <Ma>{maCap.get(m.id) ?? '?'}</Ma><span className="min-w-0 flex-1 truncate"><MathText>{tron(m.ten).slice(0, 42)}</MathText></span>
+                </label>
+                {daChon && (
+                  <div className="ml-4 mt-0.5 border-l-2 border-indigo-100 pl-2">
+                    {conM.length === 0
+                      ? <div className="py-0.5 text-[11px] text-slate-400">— không có vệ tinh (lá) —</div>
+                      : conM.map((v) => (
+                        <label key={v.id} className="mb-0.5 flex cursor-pointer items-center gap-2 rounded-lg border border-dashed border-indigo-200 bg-indigo-50/40 px-2 py-1 text-[11.5px] text-slate-700 hover:bg-indigo-50">
+                          <input type="checkbox" checked={satIds.has(v.id)} onChange={() => toggleSat(v.id)} />
+                          <Ma>{maCap.get(v.id) ?? '?'}</Ma><span className="min-w-0 flex-1 truncate"><MathText>{v.ten}</MathText></span>
+                        </label>
+                      ))}
+                  </div>
+                )}
+              </div>
+            )
+          })}
+        </div>
+        <div className="mt-4 flex items-center justify-between gap-2">
+          <button onClick={() => { setMainIds(new Set()); setSatIds(new Set()); Object.assign(moHinhDaChon, { khoi, mainIds: [], satIds: [] }); setBuoc(2) }}
+            className="rounded-lg border border-slate-300 px-3 py-2 text-[12.5px] text-slate-500 hover:bg-slate-50">Bỏ qua, xem tất cả</button>
+          <button onClick={xongBuoc1} className="rounded-lg bg-indigo-600 px-4 py-2 text-[13px] font-medium text-white">Tiếp → chọn bài{mainIds.size ? ` (${mainIds.size} mô hình)` : ''}</button>
+        </div>
+      </div>
+    </div>
+  )
   return (
     <div className="fixed inset-0 z-[60] bg-slate-900/50 backdrop-blur-sm" onClick={onClose}>
       <div className="absolute inset-x-[10%] inset-y-10 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
-        <div className="flex items-center gap-3 border-b border-slate-200 px-6 py-3">
-          <h3 className="text-base font-semibold text-slate-900">Chọn bài Hình · Khối {khoi}</h3>
-          <span className="text-[12px] text-slate-400">{chuois.length} chuỗi</span>
+        <div className="flex flex-wrap items-center gap-3 border-b border-slate-200 px-6 py-3">
+          <h3 className="text-base font-semibold text-slate-900">Bước 2 · Chọn bài Hình · Khối {khoi}</h3>
+          <span className="text-[12px] text-slate-500">
+            {mainIds.size ? <>Mô hình: <b className="text-slate-700">{[...mainIds].map((mid) => tron(L.moHinh.find((m) => m.id === mid)?.ten ?? '?')).join(', ')}</b></> : 'Tất cả chuỗi trong kho'} · <b>{chuois.length}</b> chuỗi
+          </span>
+          <button onClick={() => setBuoc(1)} className="rounded border border-indigo-300 px-1.5 py-0.5 text-[11px] text-indigo-600 hover:bg-indigo-50">✎ Đổi mô hình</button>
           <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm mã / phát biểu…" className="ml-2 h-8 w-64 rounded-md border border-slate-200 px-2.5 text-[13px] outline-none focus:border-indigo-400" autoFocus />
           <button onClick={onClose} className="ml-auto flex h-8 w-8 items-center justify-center rounded-md text-slate-400 hover:bg-slate-100">✕</button>
         </div>
         <div className="min-h-0 flex-1 overflow-auto p-5">
-          {hien.length === 0 ? <p className="text-sm text-slate-400">Không có chuỗi nào khớp.</p> : (
+          {hien.length === 0 ? <p className="text-sm text-slate-400">Không có chuỗi nào khớp{mainIds.size ? ' trong mô hình đã chọn — bấm ✎ Đổi mô hình' : ''}.</p> : (
             <div className="space-y-1.5">
               {hien.map((c) => (
                 <div key={c[0].id} className="flex items-center gap-3 rounded-lg border border-slate-100 px-3 py-2">

@@ -7690,3 +7690,15 @@ nguyên · đổi hình vẽ → "Ô trống" · thêm hàng 2 Đại (câu 0770
 1 bản → alert dùng lại gốc, ✓ đủ 3 mã đề) · DB: tai_lieu_cau [HINH:…(tt0), 077020101001(tt1)], cau_hinh đúng ·
 🖨 Xem/In: 5 trang, mỗi mã đề "Bài 1." (ô Vẽ hình + dòng kẻ) rồi "Câu 1", đúng thứ tự hàng. tsc + build sạch.
 **CHƯA test runtime:** gán vào buổi thật (ganHinhMTVaoBuoi → MTTab). Treo: MT test "TEST HINH2…" Thùy tự xoá.
+
+## 2026-09-02 (tiếp) — MT Hình: chọn bài 2 BƯỚC (mô hình → bài) + preview có hình vẽ
+
+**Thùy:** "Phải chọn làm 2 lần như ET và Builder: lần 1 chọn mô hình, lần 2 mới chọn bài tập. Preview bài Hình
+phải có cả hình mới view chuẩn." → `HinhBaiPicker` (MTScreen) thành 2 bước: bước 1 = popup chọn mô hình chính +
+vệ tinh (clone y hệt popup "Chọn mô hình cho buổi này" của BuoiPickEditor: maPhanCapMap, vệ tinh = con là lá qua
+conCua, Ma/tron từ hinhUi), có "Bỏ qua, xem tất cả"; bước 2 = chuỗi lọc theo mô hình đã chọn (như `nodes`→
+`components` của BuoiPickEditor) + "✎ Đổi mô hình" quay lại. Mô hình đã chọn NHỚ trong phiên (module-level theo
+khối) → hàng sau mở thẳng bước 2. Hàng Hình: preview = đề + từng ý a/b/c + `<img anhDe>` (h-24) bên phải.
+**Verify:** MT test khối 7 "TEST HINH3": bước 1 hiện 7 mô hình, tick "Hai góc Kề bù" → hiện thêm vệ tinh (8 ô),
+Tiếp → bước 2 "Mô hình: Hai góc Kề bù · 2 chuỗi" → ↻ Gợi ý → hàng 1 Hình BT.07.036, đề "Cho hình vẽ. Biết Oa và
+Ob…", có ảnh kho-anh. tsc + build sạch. Treo: Thùy tự xoá "TEST HINH3…".
