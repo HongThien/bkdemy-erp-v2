@@ -401,66 +401,65 @@ function TabChot({ coGhi, bao, onDoi }: { coGhi: boolean; bao: (t: string) => vo
   )
 }
 
-// Phiếu chốt (bảng tổng theo danh mục + tổng + phụ lục) → ảnh PNG (html2canvas-pro: Tailwind v4 oklch — html2canvas cũ ra trắng).
+// Phiếu chốt gửi Ngân = CHỈ tổng theo danh mục + tổng cộng (Thùy 03/09: không liệt kê giao dịch — quá nhiều).
+// Chụp ảnh theo ĐÚNG khuôn Report PH (ReportPHScreen.PhAnhModal): card viết bằng INLINE STYLE (không Tailwind) →
+// serialize outerHTML vào popup HTML độc lập + html2canvas CDN → copy clipboard/tải. Chụp ngay trong app ERP
+// (html2canvas-pro trên node Tailwind v4 + zoom fitZoom) là nguyên nhân ảnh bị lệch.
 function PhieuChot({ ky, bao }: { ky: ChiKyJson; bao: (t: string) => void }) {
   const ref = useRef<HTMLDivElement>(null)
-  const [busy, setBusy] = useState(false)
   const laKy = !!ky.id
-  const ten = laKy ? `ChotChi_${ky.ma}` : 'ChuaChot'
-  const render = async () => {
-    const { default: html2canvas } = await import('html2canvas-pro')
-    return html2canvas(ref.current!, { scale: 2, backgroundColor: '#ffffff', useCORS: true })
+  const fname = laKy ? `ChotChi_${ky.ma}.png` : 'ChuaChot.png'
+  const moPopup = () => {
+    const el = ref.current; if (!el) return
+    const html = '<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">'
+      + '<title>' + (laKy ? `Chốt chi ${ky.ma}` : 'Chưa chốt') + '</title><scr' + 'ipt src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></scr' + 'ipt>'
+      + '<style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif;background:#f1f5f9;padding:12px;display:flex;flex-direction:column;align-items:center}'
+      + '.btn{width:100%;max-width:520px;padding:11px;border:none;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;background:#16a34a;color:#fff;margin-bottom:10px}.btn:hover{opacity:.9}'
+      + '#msg{font-size:12px;color:#16a34a;margin-top:6px;min-height:18px}#c{background:#fff;border-radius:14px;overflow:hidden}</style></head><body>'
+      + '<button class="btn" onclick="cp()">📋 Copy ảnh (paste vào Zalo gửi Ngân)</button><div id="c">' + el.outerHTML + '</div><p id="msg"></p>'
+      + '<scr' + 'ipt>async function cp(){var m=document.getElementById("msg");m.textContent="⏳ Đang xử lý...";try{var n=document.getElementById("c");var cv=await html2canvas(n,{scale:2,backgroundColor:"#ffffff",useCORS:true,logging:false,width:n.scrollWidth,height:n.scrollHeight});cv.toBlob(async function(b){try{await navigator.clipboard.write([new ClipboardItem({"image/png":b})]);m.textContent="✅ Đã copy! Ctrl+V vào Zalo.";}catch(e){var u=URL.createObjectURL(b);var a=document.createElement("a");a.href=u;a.download=' + JSON.stringify(fname) + ';a.click();URL.revokeObjectURL(u);m.textContent="✅ Đã tải ảnh!";}},"image/png");}catch(e){m.textContent="Lỗi: "+e.message;}}</scr' + 'ipt></body></html>'
+    const p = window.open('', '_blank', 'width=600,height=760,scrollbars=yes')
+    if (!p) { bao('Trình duyệt chặn popup — bật "Allow pop-ups" cho site này.'); return }
+    p.document.write(html); p.document.close()
   }
-  const taiAnh = async () => {
-    setBusy(true)
-    try {
-      const c = await render()
-      const a = document.createElement('a'); a.href = c.toDataURL('image/png'); a.download = `${ten}.png`; a.click(); bao('Đã tải ảnh')
-    } catch (e) { bao(`Lỗi: ${(e as Error).message}`) } finally { setBusy(false) }
-  }
-  const copyAnh = async () => {
-    setBusy(true)
-    try {
-      const c = await render()
-      const blob: Blob = await new Promise((res, rej) => c.toBlob((b) => (b ? res(b) : rej(new Error('toBlob null'))), 'image/png'))
-      await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]); bao('Đã copy ảnh — dán vào Zalo gửi Ngân')
-    } catch (e) { bao(`Không copy được (${(e as Error).message}) — dùng Tải ảnh`) } finally { setBusy(false) }
-  }
+  const th: React.CSSProperties = { padding: '8px 10px', fontSize: 12, fontWeight: 700, color: '#64748b', textTransform: 'uppercase', letterSpacing: '.04em', borderBottom: '2px solid #0f172a', textAlign: 'left' }
+  const td: React.CSSProperties = { padding: '9px 10px', fontSize: 14, color: '#0f172a', borderBottom: '1px solid #e2e8f0' }
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-3">
       <div className="flex items-center gap-2">
-        <button onClick={copyAnh} disabled={busy} className={btnPrimary}>📋 Copy ảnh</button>
-        <button onClick={taiAnh} disabled={busy} className={btnGhost}>⬇ Tải ảnh PNG</button>
+        <button onClick={moPopup} className={btnPrimary}>📋 Copy ảnh gửi Ngân</button>
         {!laKy && <span className="text-xs text-amber-700">Đây là phần CHƯA chốt — số liệu còn thay đổi.</span>}
+        <span className="text-xs text-slate-400">Ảnh chỉ có tổng theo danh mục. Chi tiết từng khoản xem ở tab Sổ chi (lọc theo kỳ).</span>
       </div>
-      <div ref={ref} className="w-[720px] bg-white p-6 text-slate-900" style={{ fontFamily: "'Be Vietnam Pro', 'Segoe UI', system-ui, sans-serif" }}>
-        <div className="flex items-start justify-between">
+      {/* Card INLINE STYLE — đây là thứ được chụp (outerHTML sang popup nên KHÔNG dùng class Tailwind). */}
+      <div ref={ref} style={{ width: 560, background: '#ffffff', padding: 24, fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif', color: '#0f172a' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 16 }}>
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">BK Academy · Bảng kê chi</p>
-            <h2 className="text-xl font-bold">{laKy ? `Kỳ ${ky.ma}` : 'Chưa chốt'}</h2>
-            <p className="text-sm text-slate-600">Từ {ddmmhh(ky.tu_at)} đến {ddmmhh(ky.den_at)}</p>
-            {ky.ghi_chu && <p className="text-sm text-slate-600">Ghi chú: {ky.ghi_chu}</p>}
+            <div style={{ fontSize: 11, fontWeight: 700, color: '#64748b', textTransform: 'uppercase', letterSpacing: '.06em' }}>BK Academy · Bảng kê chi</div>
+            <div style={{ fontSize: 22, fontWeight: 800, marginTop: 2 }}>{laKy ? `Kỳ ${ky.ma}` : 'Chưa chốt'}</div>
+            <div style={{ fontSize: 13, color: '#475569', marginTop: 2 }}>Từ {ddmmhh(ky.tu_at)} đến {ddmmhh(ky.den_at)}</div>
+            {ky.ghi_chu && <div style={{ fontSize: 13, color: '#475569' }}>Ghi chú: {ky.ghi_chu}</div>}
           </div>
-          <div className="text-right">
-            <p className="text-xs text-slate-500">Tổng cần bù</p>
-            <p className="text-2xl font-extrabold">{vnd(ky.tong_tien)}</p>
-            <p className="text-xs text-slate-500">{ky.so_khoan} khoản{laKy ? ` · chốt ${ddmmhh(ky.chot_at)}${ky.chot_boi_ten ? ` bởi ${ky.chot_boi_ten}` : ''}` : ''}</p>
+          <div style={{ textAlign: 'right' }}>
+            <div style={{ fontSize: 11, color: '#64748b' }}>Tổng cần bù</div>
+            <div style={{ fontSize: 26, fontWeight: 800, color: '#0f766e' }}>{vnd(ky.tong_tien)}</div>
+            <div style={{ fontSize: 11, color: '#64748b' }}>{ky.so_khoan} khoản{laKy ? ` · chốt ${ddmmhh(ky.chot_at)}` : ''}</div>
           </div>
         </div>
-        <table className="mt-4 w-full border-collapse text-sm">
-          <thead><tr className="border-b-2 border-slate-800 text-left"><th className="py-1.5">Danh mục</th><th className="py-1.5 text-right">Số khoản</th><th className="py-1.5 text-right">Số tiền</th></tr></thead>
+        <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: 18 }}>
+          <thead><tr><th style={th}>Danh mục</th><th style={{ ...th, textAlign: 'right' }}>Số khoản</th><th style={{ ...th, textAlign: 'right' }}>Số tiền</th></tr></thead>
           <tbody>
-            {ky.danh_muc.map((d) => <tr key={d.danh_muc_id} className="border-b border-slate-200"><td className="py-1.5">{d.ten}</td><td className="py-1.5 text-right">{d.so_khoan}</td><td className="py-1.5 text-right font-semibold">{vnd(d.so_tien)}</td></tr>)}
-            <tr className="border-t-2 border-slate-800 font-bold"><td className="py-2">TỔNG CỘNG</td><td className="py-2 text-right">{ky.so_khoan}</td><td className="py-2 text-right">{vnd(ky.tong_tien)}</td></tr>
+            {ky.danh_muc.map((d) => (
+              <tr key={d.danh_muc_id}><td style={td}>{d.ten}</td><td style={{ ...td, textAlign: 'right', color: '#475569' }}>{d.so_khoan}</td><td style={{ ...td, textAlign: 'right', fontWeight: 700 }}>{vnd(d.so_tien)}</td></tr>
+            ))}
+            <tr>
+              <td style={{ ...td, borderTop: '2px solid #0f172a', borderBottom: 'none', fontWeight: 800, paddingTop: 12 }}>TỔNG CỘNG</td>
+              <td style={{ ...td, borderTop: '2px solid #0f172a', borderBottom: 'none', textAlign: 'right', fontWeight: 800, paddingTop: 12 }}>{ky.so_khoan}</td>
+              <td style={{ ...td, borderTop: '2px solid #0f172a', borderBottom: 'none', textAlign: 'right', fontWeight: 800, paddingTop: 12, color: '#0f766e' }}>{vnd(ky.tong_tien)}</td>
+            </tr>
           </tbody>
         </table>
-        <p className="mt-5 text-xs font-semibold uppercase tracking-wide text-slate-500">Phụ lục — chi tiết khoản</p>
-        <table className="mt-1 w-full border-collapse text-xs">
-          <thead><tr className="border-b border-slate-400 text-left text-slate-500"><th className="py-1">Ngày chi</th><th className="py-1">Mã</th><th className="py-1">Nhân sự</th><th className="py-1">Mục đích</th><th className="py-1">Danh mục</th><th className="py-1 text-right">Số tiền</th></tr></thead>
-          <tbody>
-            {ky.khoan.map((k) => <tr key={k.id} className="border-b border-slate-100"><td className="py-1 whitespace-nowrap">{ddmmyyyy(k.ngay)}</td><td className="py-1 font-mono">{k.ma}</td><td className="py-1">{k.ho_ten}</td><td className="py-1">{k.muc_dich}{k.luu_y ? <span className="text-slate-400"> — {k.luu_y}</span> : ''}</td><td className="py-1">{k.danh_muc_ten}</td><td className="py-1 text-right font-semibold">{vnd(k.so_tien)}</td></tr>)}
-          </tbody>
-        </table>
+        {laKy && ky.chot_boi_ten && <div style={{ fontSize: 11, color: '#94a3b8', marginTop: 14 }}>Người chốt: {ky.chot_boi_ten}</div>}
       </div>
     </div>
   )

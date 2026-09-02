@@ -7784,3 +7784,14 @@ gán vào buổi thật). Treo: Thùy tự xoá "TEST HINH3…".
   `npm run build:chi`, output `dist-chi`, domain chi.bkacademy.edu.vn (Thùy đang tạo).
 - Verify: dev 5215, đăng nhập Trang (Core team) → tab Duyệt hiện 2 khoản thật Thùy tạo (CHI0002/0003), chi tiết
   CHI0003 hiện Techcombank + copy + QR. tsc sạch.
+
+## 2026-09-03 (tiếp) — Chốt kỳ: ảnh gửi Ngân chỉ tổng theo danh mục + chụp theo khuôn Report PH
+
+- Thùy: (1) ảnh chốt không liệt kê giao dịch, chỉ danh mục + tổng; (2) ảnh bị lệch → "lấy module chụp ảnh của
+  report phụ huynh, dùng html mới không lệch". `PhieuChot` viết lại: card INLINE STYLE (không Tailwind) → nút
+  "Copy ảnh gửi Ngân" serialize outerHTML vào popup HTML độc lập + html2canvas@1.4.1 CDN → copy clipboard /
+  fallback tải PNG (y hệt `ReportPHScreen.PhAnhModal`). Bỏ html2canvas-pro chụp trong app (lệch do zoom
+  fitZoom + Tailwind v4). Bỏ phụ lục khoản khỏi ảnh — chi tiết xem tab Sổ chi lọc theo kỳ.
+- Verify dev 5216: tab Chốt kỳ hiện card tổng theo danh mục (Thùy đã chốt thật KY001 = 4 khoản 1.173.500đ, còn 1
+  khoản chưa chốt). Popup window.open không mở được trong pane preview (chặn popup) — cùng cơ chế report PH đang
+  chạy production nên tin được; Thùy test trên Chrome thật.
