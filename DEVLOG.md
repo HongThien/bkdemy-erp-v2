@@ -7741,3 +7741,32 @@ gán vào buổi thật). Treo: Thùy tự xoá "TEST HINH3…".
   ảnh (max-h-40, max-w-280) bên phải.
 - Verify: MT test khối 7 — hàng 2–4 đề chiếm hết bề ngang, hình phải; bản in "Câu 2–4." rồi a) b) c), "Câu 5." sau.
   tsc + build sạch.
+
+## 2026-09-02 (tiếp) — THU CHI v1: app BK Chi (hoàn ứng) + lá ERP "Thu chi" (worktree wt-thu-chi, nhánh feat/thu-chi)
+
+- Thùy trả lời 21 câu làm rõ (ghi bảng §0 `PLAN-thu-chi.md`): chỉ CHI · mọi NS tạo · chỉ hoàn ứng · Lộc từ chối/NS
+  huỷ khi chờ · không duyệt tầng 2 · NS tự khai STK · Lộc sửa số tiền phải ghi lưu ý · kỳ chốt cắt theo THỜI ĐIỂM
+  Lộc ghi sổ · file chốt = ảnh, chân lý = snapshot DB · Ngân không dùng ERP · sau chốt KHOÁ · app riêng
+  chi.bkacademy.edu.vn · lá mới `thuchi` · chỉ badge trong app · khoản cũ chưa hoàn = tạo như mới.
+- DB `202609022329_thu_chi_v1.sql` (ĐÃ áp, `npm run schema`): nhan_su +bank_bin/bank_stk/bank_chu_tk ·
+  chi_danh_muc (seed 7 mục) · chi_khoan (cho_duyet→da_thanh_toan|tu_choi|huy, `ma` CHI####) · chi_khoan_log
+  (trigger) · chi_so (1-1 khoản đã trả, `ghi_so_at` = trục cắt kỳ, `ky_id` = khoá) · chi_ky (KY###, tu_at/den_at
+  timestamptz) · chi_ky_danh_muc (snapshot tên+tổng). RPC fn_chi_* (tạo/sửa/huỷ/cua_toi · khoan_duyet ·
+  de_xuat_danh_muc theo lịch sử từ khoá · tu_choi · thanh_toan_ghi_so = 1 transaction · so_list · ky_xem_truoc /
+  ky_chot / ky_chi_tiet / ky_list · tong_quan · nhan_su_bank). Đổi trạng thái chỉ qua RPC (set_config
+  'chi.rpc' + trigger chặn update thẳng). RLS: own ∨ co_chuc_nang('thuchi'); ghi = co_quyen_ghi('thuchi').
+- App BK Chi = entry Vite thứ 5 (chi.html · main-chi.tsx · AppChi · vite.config.chi.ts · dev:chi/build:chi →
+  dist-chi). Màn: ChiHome (2 tab) · KhoanChi (list/form/detail, ảnh camera→thu nhỏ 1600px JPEG → bucket kho-anh
+  prefix thuchi/) · TaiKhoanBank (chọn NH theo BIN `lib/nganhang.ts`, preview QR tĩnh). Seam `lib/thuchi.ts`.
+- ERP `screens/thuchi/ThuChiScreen.tsx` (lá `thuchi`, Core team): Duyệt chi (QR VietQR động BIN+STK+tiền+nội dung
+  `BK CHI NSxxx CHIxxxx`, "Đã thanh toán → ghi sổ" popup, từ chối) · Sổ chi (lọc, sửa khi chưa chốt) · Chốt kỳ
+  (xem trước → chốt → phiếu chốt html2canvas-pro copy/tải PNG) · Danh mục · Tài khoản NS.
+- Verify: test SQL toàn luồng trong transaction ROLLBACK (savepoint từng bước): chặn đổi trạng thái thẳng, chặn
+  ghi sổ không quyền, bắt lưu ý khi lệch tiền, ghi sổ 2 lần fail, đề xuất danh mục theo từ khoá đúng, chốt kỳ gom
+  đúng, sửa/xoá dòng đã chốt bị chặn, chốt 0 khoản fail. Sequence reset về 1 sau test. UI: app đăng nhập Trang GV
+  → tạo CHI0001 (TEST) → ERP Thùy thấy ở Duyệt chi + popup ghi sổ prefill đúng (đóng, không xác nhận) → app huỷ
+  CHI0001 (còn dòng "Đã huỷ" — Thùy muốn xoá thì bảo). tsc sạch. Preview: launch.json `chi-dev` 5215 (mở
+  /chi.html) · `erp-thuchi-dev` 5216.
+- Treo: cấp lá `thuchi` cho ghế của Lộc ở màn Phân quyền · Vercel project dist-chi + domain chi.bkacademy.edu.vn ·
+  ảnh chứng từ đang ở bucket public kho-anh (path khó đoán; muốn private cần bucket mới qua SQL Editor) ·
+  merge feat/thu-chi.

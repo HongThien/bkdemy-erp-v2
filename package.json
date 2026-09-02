@@ -25,7 +25,10 @@
     "worker": "node worker/index.mjs",
     "test:dethi": "vite-node scripts/test-dethi-ingest.ts",
     "worker:danhgia": "node worker/danhgia.mjs",
-    "worker:troly": "node worker/troly.mjs"
+    "worker:troly": "node worker/troly.mjs",
+    "dev:chi": "vite --config vite.config.chi.ts",
+    "build:chi": "vite build --config vite.config.chi.ts",
+    "preview:chi": "vite preview --config vite.config.chi.ts --outDir dist-chi"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.113.0",
