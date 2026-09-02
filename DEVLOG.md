@@ -7731,3 +7731,13 @@ chuyển 17" (bản trước dồn Hình ra SAU toàn bộ câu Đại để kh�
 **Verify:** MT test khối 7: hàng Đại · hàng Hình 3 ý · hàng Đại → editor nhãn 1 / 2–4 / 5; bản in "Câu 1." →
 "Câu 2–4." (Câu 2./3./4.) → "Câu 5." đúng thứ tự. tsc + build sạch. Tab chấm đánh số lại CHƯA test runtime (cần
 gán vào buổi thật). Treo: Thùy tự xoá "TEST HINH3…".
+
+## 2026-09-02 (tiếp) — MT Hình: ý a/b/c dưới "Câu 17–19." + bố cục hàng Hình 2 dòng
+
+- Thùy: "bên trên đã ghi câu 17–19 rồi thì bên trong ghi ý a,b,c thôi" → `MucsBlock.nhanY` với `cauTu` vẫn trả
+  a)/b)/c) (chỉ tiêu đề "Câu 17–19."/"Câu 17." theo ý).
+- Thùy: "trái phải đều trống còn đề bài co cụm ở giữa" → hàng Hình trong MTScreen thành 2 dòng: dòng 1 = số · chuỗi
+  · nhãn bản · hình vẽ · dòng · ↻ Đổi/✎ Chọn/✕ (nút chuỗi không còn w-56 cứng); dòng 2 = đề + ý trải rộng bên trái,
+  ảnh (max-h-40, max-w-280) bên phải.
+- Verify: MT test khối 7 — hàng 2–4 đề chiếm hết bề ngang, hình phải; bản in "Câu 2–4." rồi a) b) c), "Câu 5." sau.
+  tsc + build sạch.

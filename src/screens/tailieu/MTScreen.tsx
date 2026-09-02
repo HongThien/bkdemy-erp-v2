@@ -481,42 +481,42 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
                       if (r.nhanh === 'hinh' && r.maCau) {
                         const ma = r.maCau; const h = ch.hinhByMa?.[ma]; const m = hinhMuc[ma]
                         const cd = CHE_DO_HINH.find((x) => x.ma === (h?.cheDo ?? 'hien'))!
+                        // Bố cục 2 dòng (Thùy 02/09: "trái phải đều trống, đề co cụm ở giữa"): dòng 1 = số · chuỗi · nhãn bản ·
+                        // hình vẽ · dòng · nút; dòng 2 = ĐỀ trải rộng bên trái + HÌNH bên phải, dùng hết bề ngang hàng.
                         return (
                           <div key={i} className="rounded-xl border border-amber-200 bg-amber-50/30 p-2.5">
-                            <div className="flex items-start gap-2">
-                              <span className="mt-1.5 w-10 shrink-0 text-center text-[12px] font-bold text-violet-600" title="Số câu trên phiếu (theo thứ tự builder; bài Hình = 1 số mỗi ý)">{nhanSo[`${p.id}:${i}`] || i + 1}</span>
-                              <button onClick={() => setHinhPicker({ phanId: p.id, idx: i })} className="w-56 shrink-0 rounded-md border border-slate-300 bg-white px-2.5 py-2 text-left text-[13px] hover:border-indigo-400" title="Chọn bài Hình khác">
+                            <div className="flex flex-wrap items-center gap-2">
+                              <span className="w-10 shrink-0 text-center text-[12px] font-bold text-violet-600" title="Số câu trên phiếu (theo thứ tự builder; bài Hình = 1 số mỗi ý)">{nhanSo[`${p.id}:${i}`] || i + 1}</span>
+                              <button onClick={() => setHinhPicker({ phanId: p.id, idx: i })} className="rounded-md border border-slate-300 bg-white px-2.5 py-1 text-left text-[13px] hover:border-indigo-400" title="Chọn bài Hình khác">
                                 <span className="mr-1 rounded bg-amber-50 px-1 py-0.5 text-[10px] font-medium text-amber-700">Hình</span>
                                 <span className="font-mono text-[12px] text-slate-700">{h ? (chuoiCuaHinh(h).map((b) => b.ma).join(' → ') || `${h.nodeIds.length} node`) : '?'}</span>
                               </button>
-                              <div className="min-w-0 flex-1 pt-1">
-                                {/* Preview = đề + các ý + HÌNH VẼ (Thùy: "preview bài của hình thì phải có cả hình mới view chuẩn được") */}
-                                {m && m.kieu === 'de' ? (
-                                  <div className="flex items-start gap-3">
-                                    <div className="min-w-0 flex-1 text-[13px] text-slate-700">
-                                      <div><MathText>{m.deBai}</MathText></div>
-                                      {m.ys.map((y, yi) => <div key={yi} className="text-[12.5px] text-slate-600">{y.nhan && <b>{y.nhan}) </b>}<MathText>{y.giaThietPhu ? `${y.giaThietPhu}. ${y.noiDung}` : y.noiDung}</MathText></div>)}
-                                    </div>
-                                    {m.anhDe && <img src={m.anhDe} alt="" className="h-24 w-auto max-w-[180px] shrink-0 rounded border border-slate-200 bg-white object-contain" />}
-                                  </div>
-                                ) : <span className="text-[12px] italic text-slate-400">{hinhL ? 'đang dựng đề…' : 'đang tải kho Hình…'}</span>}
-                                {h && (
-                                  <div className="mt-1 flex flex-wrap items-center gap-1.5">
-                                    <span className="rounded bg-slate-100 px-1.5 py-0.5 text-[10px] font-medium text-slate-500">{nhanBanHinh(h)}</span>
-                                    <span className="text-[10px] text-slate-300">hình vẽ:</span>
-                                    <button onClick={() => setHinhInfo(ma, { cheDo: cheDoKe(h.cheDo ?? 'hien') })} title={`${cd.goi} — bấm để đổi (hiện → ô trống → không)`}
-                                      className="rounded bg-slate-100 px-1.5 py-0.5 text-[10px] font-medium text-slate-600 hover:bg-slate-200">{cd.icon} {cd.nhan}</button>
-                                  </div>
-                                )}
-                              </div>
-                              <label className="flex shrink-0 items-center gap-1 pt-1.5 text-[11px] text-slate-400" title="Số dòng kẻ cho HS viết (bản in) — trống = mặc định như ET">dòng
+                              {h && (
+                                <>
+                                  <span className="rounded bg-slate-100 px-1.5 py-0.5 text-[10px] font-medium text-slate-500">{nhanBanHinh(h)}</span>
+                                  <span className="text-[10px] text-slate-300">hình vẽ:</span>
+                                  <button onClick={() => setHinhInfo(ma, { cheDo: cheDoKe(h.cheDo ?? 'hien') })} title={`${cd.goi} — bấm để đổi (hiện → ô trống → không)`}
+                                    className="rounded bg-slate-100 px-1.5 py-0.5 text-[10px] font-medium text-slate-600 hover:bg-slate-200">{cd.icon} {cd.nhan}</button>
+                                </>
+                              )}
+                              <label className="ml-auto flex shrink-0 items-center gap-1 text-[11px] text-slate-400" title="Số dòng kẻ cho HS viết (bản in) — trống = mặc định như ET">dòng
                                 <input type="number" min={0} max={30} value={h?.soDong ?? DONG_BTVN} onChange={(e) => setHinhInfo(ma, { soDong: e.target.value === '' ? null : Math.max(0, Math.min(30, +e.target.value || 0)) })} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
                               </label>
-                              <div className="flex shrink-0 gap-1 pt-0.5">
-                                <button onClick={() => doiHinh(ma)} title="Đổi bản khác (cùng node, ít dùng nhất)" className="rounded-md bg-indigo-50 px-2 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-100">↻ Đổi</button>
-                                <button onClick={() => setHinhPicker({ phanId: p.id, idx: i })} className="rounded-md border border-slate-300 px-2 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-400">✎ Chọn</button>
-                              </div>
-                              <button onClick={() => xoaRow(p.id, i)} title="Xoá hàng" className="shrink-0 px-1 pt-1 text-[13px] text-slate-300 hover:text-rose-600">✕</button>
+                              <button onClick={() => doiHinh(ma)} title="Đổi bản khác (cùng node, ít dùng nhất)" className="rounded-md bg-indigo-50 px-2 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-100">↻ Đổi</button>
+                              <button onClick={() => setHinhPicker({ phanId: p.id, idx: i })} className="rounded-md border border-slate-300 px-2 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-400">✎ Chọn</button>
+                              <button onClick={() => xoaRow(p.id, i)} title="Xoá hàng" className="shrink-0 px-1 text-[13px] text-slate-300 hover:text-rose-600">✕</button>
+                            </div>
+                            {/* Preview = đề + các ý (trái, trải rộng) + HÌNH VẼ (phải) — "preview bài của hình thì phải có cả hình" */}
+                            <div className="mt-2 flex items-start gap-4 pl-10">
+                              {m && m.kieu === 'de' ? (
+                                <>
+                                  <div className="min-w-0 flex-1 text-[13px] leading-relaxed text-slate-700">
+                                    <div><MathText>{m.deBai}</MathText></div>
+                                    {m.ys.map((y, yi) => <div key={yi} className="text-[12.5px] text-slate-600">{y.nhan && <b>{y.nhan}) </b>}<MathText>{y.giaThietPhu ? `${y.giaThietPhu}. ${y.noiDung}` : y.noiDung}</MathText></div>)}
+                                  </div>
+                                  {m.anhDe && <img src={m.anhDe} alt="" className="max-h-40 w-auto max-w-[280px] shrink-0 rounded border border-slate-200 bg-white object-contain" />}
+                                </>
+                              ) : <span className="text-[12px] italic text-slate-400">{hinhL ? 'đang dựng đề…' : 'đang tải kho Hình…'}</span>}
                             </div>
                           </div>
                         )

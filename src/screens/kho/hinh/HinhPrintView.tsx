@@ -302,11 +302,12 @@ function Noi({ ban, gv, perHS, perHSBtvn }: { ban: BanIn; gv: boolean; perHS?: H
  *  (đánh số "Bài N" RIÊNG từng lần gọi — `soDe`/`moHinhLtDaHien` là biến cục bộ, không rò giữa các lần gọi). */
 // batDau = số "Bài" bắt đầu (mặc định 1) — nối số qua nhiều lần gọi.
 // cauTu (MT, Thùy 02/09: "đánh giá theo từng ý") = đánh số THEO Ý nối tiếp câu Đại: bài 3 ý sau 16 câu Đại =
-// "Câu 17–19." ở đầu bài, từng ý "Câu 17." "Câu 18." "Câu 19." (thay a/b/c); bài 1 ý = "Câu 17." không nhãn ý.
+// tiêu đề "Câu 17–19." (bài 1 ý = "Câu 17."); bên trong vẫn ý a) b) c) như thường (Thùy: "bên trên đã ghi 17–19
+// rồi thì bên trong ghi ý a,b,c thôi").
 export function MucsBlock({ mucs, gv, moHinhLyThuyet, batDau = 1, cauTu }: { mucs: MucIn[]; gv: boolean; moHinhLyThuyet?: BanIn['moHinhLyThuyet']; batDau?: number; cauTu?: number }) {
   let soDe = batDau - 1
   let soCau = (cauTu ?? 1) - 1
-  const nhanY = (y: YIn, k0: number, j: number, n: number): string => (cauTu != null ? (n > 1 ? `Câu ${k0 + j}.` : '') : (y.nhan ? `${y.nhan})` : ''))
+  const nhanY = (y: YIn, _k0: number, _j: number, _n: number): string => (y.nhan ? `${y.nhan})` : '')
   let moHinhLtDaHien = ''  // gom LT mô hình 1 lần/nhóm liền nhau (khuôn Đại: LT chuyên đề hiện 1 lần)
   return (
     <>
