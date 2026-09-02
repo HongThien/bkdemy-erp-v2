@@ -7,8 +7,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
-import { getTaiLieuFull, etFormOf, khoCuaMon, type TaiLieuFull, type CauHinh } from '../../lib/tailieu'
-import { fetchCausByMa } from '../../lib/ontap'
+import { getTaiLieuFull, etFormOf, fetchCausCuaTaiLieu, type TaiLieuFull, type CauHinh } from '../../lib/tailieu'
 import type { CauHoi } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
 import { BK_CSS, BK_PAGE_CSS } from './bkPrint'
@@ -44,7 +43,7 @@ export default function MTPrintView({ id, onClose, headless, linkOnly, onFail, o
     for (const arr of Object.values(ch.etMaDe ?? {})) for (const m of arr) if (m) need.add(m)
     if (!need.size) { setVarCau({}); setVarReady(true); return }
     let alive = true
-    fetchCausByMa([...need], khoCuaMon(full.taiLieu.mon).cauTbl)
+    fetchCausCuaTaiLieu(full.taiLieu, [...need]) // theo nhánh từng câu (MT trộn Đại/Hình giải tích)
       .then((cs) => { if (alive) { setVarCau(Object.fromEntries(cs.map((c) => [c.ma_cau, c]))); setVarReady(true) } })
       .catch(() => { if (alive) setVarReady(true) })
     return () => { alive = false }

@@ -7552,3 +7552,53 @@ chính `bkdemy-erp-v2`; `wt-bot` **detached** tại commit đang chạy, bot h�
 đổi đã chấp nhận: wt-bot không tự theo main ⇒ **pull main xong, muốn bot ăn code mới thì
 `git -C ../wt-bot checkout main --detach`**. Đã sửa 2 chỗ luật cũ trong HANDOFF (① mục "Bố trí
 worktree" + mục bot) — trước ghi "thi công/merge từ wt-bot đứng cố định ở main", giờ sai.
+
+## 2026-09-02 — MT chọn được dạng HÌNH GIẢI TÍCH (trộn nhánh trong 1 đề) — fix trên main
+
+**Thùy báo:** "Tính năng tạo MT đang ko chọn được dạng bài từ giải tích và Hình". Kiểm main (e78136e):
+`MTScreen`/`mt.ts`/`MTPrintView` gọi `khoCuaMon(d.mon)` KHÔNG truyền `nhanh` ⇒ MT chỉ thấy bản đồ Đại
+(`dai_*`), popup `DangPickerOne` không có chỗ đổi bản đồ. Đúng mục "Phase 2 CHỦ ĐỘNG CHƯA làm" của
+nhánh hgt (08-08) — ET đã wire, MT chưa.
+
+**Hướng làm = quyết định Thùy 21/08 (DEVLOG "Đánh giá Hình học: nối tab MT"):** *"toggle chọn bản đồ
+lúc chọn câu (Đại/Hình giải tích/Hình mô hình) THAY VÌ cấu trúc cứng 2 Phần = Đại/Hình"* ⇒ 1 MT
+TRỘN nhánh theo TỪNG CÂU, không phải 1 nhánh/tài liệu như ET.
+
+**Làm:**
+- `tailieu.ts`: `cau_hinh.nhanhByCau[ma_cau]` = nhánh kho của TỪNG CÂU (chỉ ghi khi khác `tai_lieu.nhanh`
+  ⇒ 0 regression cho ET/giáo trình cũ, KHÔNG migration — cùng pattern per-câu `etFormByCau`/`colByCau`).
+  `nhanhCuaCau(tl, ma)` resolve (câu mã đề 2/3 kế thừa nhánh câu gốc qua `etMaDe`), `fetchCausCuaTaiLieu`
+  gom theo bảng (1 query/bảng). **`getTaiLieuFull` nạp câu qua hàm này ⇒ in / chấm MT (`getMTPhanCaus`)
+  / gán buổi / test đầu vào tự đúng, không sửa từng consumer.** Registry `nhanhCuaMon(mon)` (Toán: Đại
+  số · Hình giải tích) cho UI toggle — không `if mon==='Toán'` ở component.
+- `DangPickerOne`: prop `chonNhanh` → 2 pill Đại số / Hình giải tích trong popup, `onPick(ma, nhanh)`
+  (caller cũ bỏ qua tham số 2, không phải sửa).
+- `MTScreen`: `Row` mang `nhanh`; `dangOpts` = HỢP mọi bản đồ của môn (tra theo (nhanh, ma_dang) —
+  mã dạng 2 nhánh có thể trùng); gợi ý câu / ↻ Đổi / ✎ Chọn / mã đề 2/3 đi theo bảng của TỪNG HÀNG;
+  `sinhMaDe` chạy theo nhóm nhánh rồi GỘP `etMaDe` (buildMaDe reset etMaDe mỗi lượt — cố ý); badge
+  nhánh cạnh tên dạng; `syncNhanhByCau` ghi bền sau mỗi lần lưu phần.
+- `mt.ts` gán buổi: `bacOfDangs(mon, dạng)` → `bacTheoCau(master)` khoá theo CÂU, tra `ban_do` đúng
+  nhánh từng câu (lọc nâng cao theo hệ vẫn y nguyên).
+- `MTPrintView`: câu mã đề 2/3 nạp qua `fetchCausCuaTaiLieu`.
+
+**KHÔNG suy nhánh từ tiền tố mã** (bài học 08-21 `findCauInKho`): kiểm DB thật lần này — Đại
+`T109010201012`, hgt `T309010101017`, cùng bắt đầu 'T'; `hgt_ban_do` mã `T312…` chứ không `GT…`.
+Đại∩hgt = 0 mã trùng hiện tại nhưng không có constraint ⇒ phải lưu tường minh.
+
+**Verify:** tsc sạch · vite build sạch · click-through THẬT (dev pane, Admin, MT test khối 9 "TEST HGT
+(Claude 02/09 - xoa duoc)"): popup có 2 pill → cây Hình giải tích (Tỉ số lượng giác, 10 dạng K9) →
+chọn dạng → gợi ý câu hgt + badge · thêm câu Đại cùng phần → mở lại MT resolve đúng cả 2 · 🎲 sinh mã
+đề 2/3 đủ cho cả 2 nhánh (hgt 007/008 · Đại 013/014, biến thể nằm đúng bảng — kiểm SQL) · bản in
+hiện đủ 2 câu gốc + 4 biến thể · 0 lỗi console · DB `cau_hinh.nhanhByCau={T309010101017:'hinh_gt'}`.
+**CHƯA test runtime:** "Gán vào buổi" (tạo buổi thật + đóng 4 phase của lớp thật — không dám chạy
+trên data sống) và chấm MT có câu hgt trong `BuoiHocScreen` (đường đi `getMTPhanCaus`→`getTaiLieuFull`
+đã đúng theo test mở lại MT). Mastery/Elo cho dạng hgt vẫn là Phase 2 chưa làm (`getMasteryHS` scope
+`dai_ban_do` ⇒ dạng hgt bị bỏ qua, giống ET hgt hiện nay — không phải regression).
+
+**Bẫy phiên này:** `preview_start` đọc `.claude/launch.json` ở THƯ MỤC CHA `BKERP/` (config `gay-dev`
+→ chạy code `wt-gay-bk`), tưởng là main ⇒ test mãi không thấy toggle. Đã thêm config `erp-main-dev`
+(port 5211, cd vào `bkdemy-erp-v2`) vào file đó. Kiểm "server đang phục vụ code nào" bằng
+`fetch('/src/<file>')` trước khi tin UI.
+**Còn treo:** MT test "TEST HGT (Claude 02/09 - xoa duoc)" (1 phần, 2 câu) đang nằm trong DB — chờ
+Thùy gật mới xoá (Luật xoá). "Hình mô hình" (kho `hinh_*`, bài/lưới — không phải dạng) CHƯA nối vào
+soạn MT: khác model hoàn toàn (ET Hình dùng `hinh_gt_buoi` picks), cần lượt riêng.

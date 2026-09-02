@@ -9,7 +9,7 @@
 // đóng LUÔN đánh giá+ET của buổi đó (N/A — Thùy: "buổi MT chỉ có 1 hoạt động = kiểm tra").
 // ============================================================================
 import { supabase } from './supabase'
-import { listPhan, addPhan, setCauOfPhan, getTaiLieuFull, createTaiLieu, updateTaiLieu, deleteTaiLieu, khoCuaMon, type TaiLieu, type TaiLieuPhan } from './tailieu'
+import { listPhan, addPhan, setCauOfPhan, getTaiLieuFull, createTaiLieu, updateTaiLieu, deleteTaiLieu, khoCuaMon, nhanhCuaCau, type TaiLieu, type TaiLieuPhan, type TaiLieuFull } from './tailieu'
 import { moBuoi } from './gami'
 import { listLopBac, type CauHoi } from './kho/api'
 
@@ -65,11 +65,22 @@ async function tkbSlotCuaLop(lopId: string, ngay: string): Promise<{ gio_bat_dau
 // "bậc THẤP NHẤT còn học dạng") — TÁI DÙNG y hệt, KHÔNG đẻ cờ "chung/riêng" thủ công mới. Gán MT vào
 // lớp hệ thấp hơn yêu cầu của 1 câu → câu đó tự loại (giống HS lớp đó vốn không học dạng ấy). Phần rỗng
 // sau khi lọc (toàn câu nâng cao) → bỏ hẳn phần đó khỏi doc con.
-async function bacOfDangs(mon: string, maDangs: string[]): Promise<Record<string, string>> {
-  if (!maDangs.length) return {}
-  const { data, error } = await supabase.from(khoCuaMon(mon).banDoTbl).select('ma_dang, bac_toi_thieu').in('ma_dang', maDangs).limit(10000)
-  if (error) throw error
-  return Object.fromEntries((data as { ma_dang: string; bac_toi_thieu: string }[]).map((r) => [r.ma_dang, r.bac_toi_thieu]))
+// Trả map ma_cau → bac_toi_thieu của DẠNG CHÍNH câu đó. Khoá theo CÂU (không theo dạng) vì MT trộn nhánh
+// (Đại + Hình giải tích): mỗi câu tra đúng ban_do của nhánh nó (`nhanhCuaCau`), mã dạng 2 nhánh có thể trùng.
+async function bacTheoCau(master: TaiLieuFull): Promise<Record<string, string>> {
+  const caus = master.phans.filter((p) => p.loai_phan === 'custom').flatMap((p) => p.caus).filter((c) => c.dang_chinh)
+  const tblCua = (maCau: string) => khoCuaMon(master.taiLieu.mon, nhanhCuaCau(master.taiLieu, maCau)).banDoTbl
+  const byTbl = new Map<string, Set<string>>()
+  for (const c of caus) { const t = tblCua(c.ma_cau); if (!byTbl.has(t)) byTbl.set(t, new Set()); byTbl.get(t)!.add(c.dang_chinh) }
+  const bac: Record<string, string> = {} // `${banDoTbl}|${ma_dang}` → bac
+  for (const [tbl, mas] of byTbl) {
+    const { data, error } = await supabase.from(tbl).select('ma_dang, bac_toi_thieu').in('ma_dang', [...mas]).limit(LIMIT)
+    if (error) throw error
+    for (const r of (data as { ma_dang: string; bac_toi_thieu: string }[])) bac[`${tbl}|${r.ma_dang}`] = r.bac_toi_thieu
+  }
+  const out: Record<string, string> = {}
+  for (const c of caus) { const b = bac[`${tblCua(c.ma_cau)}|${c.dang_chinh}`]; if (b) out[c.ma_cau] = b }
+  return out
 }
 
 // ── GÁN VÀO BUỔI (lớp+ngày cụ thể) ───────────────────────────────────────
@@ -109,8 +120,7 @@ export async function ganMTVaoBuoi(masterId: string, opts: { lopId: string; ngay
   const { data: lopRow } = await supabase.from('lop').select('bac').eq('id', opts.lopId).single()
   const thuTuCua = (ma: string | null | undefined) => lopBacs.find((b) => b.ma === ma)?.thu_tu ?? 0
   const lopThuTu = thuTuCua((lopRow as { bac?: string } | null)?.bac)
-  const allMaDang = [...new Set(customPhans.flatMap((p) => p.caus.map((c) => c.dang_chinh).filter(Boolean)))]
-  const bacMap = await bacOfDangs(master.taiLieu.mon, allMaDang)
+  const bacMap = await bacTheoCau(master) // ma_cau → bac_toi_thieu (theo đúng nhánh kho của từng câu)
 
   // ⚠ BUG THẬT 07-13 (Thùy: "gán MT vẫn ko được" — báo thành công nhưng vào xem vẫn thiếu nội dung):
   // đời cũ XOÁ MỌI bản cũ rồi TẠO MỚI, không kiểm tra lỗi xoá. Nếu bản cũ đang bị bảng khác tham chiếu
@@ -155,7 +165,7 @@ export async function ganMTVaoBuoi(masterId: string, opts: { lopId: string; ngay
     // Không ép → suy TỪNG CÂU theo bậc dạng của chính câu đó (mặc định).
     const caus = ep
       ? (thuTuCua(ep) <= lopThuTu ? p.caus : [])
-      : p.caus.filter((c) => thuTuCua(bacMap[c.dang_chinh] ?? 'C') <= lopThuTu)
+      : p.caus.filter((c) => thuTuCua(bacMap[c.ma_cau] ?? 'C') <= lopThuTu)
     soCauLoai += p.caus.length - caus.length
     if (!caus.length) continue // toàn câu nâng cao lớp này không học được → bỏ hẳn phần
     const np = await addPhan({ tai_lieu_id: docCon.id, thu_tu: t++, loai_phan: 'custom', ref_ma: null, tieu_de: p.tieu_de, noi_dung: p.noi_dung, kieu: p.kieu })
