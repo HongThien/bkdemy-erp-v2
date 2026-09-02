@@ -135,10 +135,20 @@ export async function deleteCau(ma_cau: string, tbl = 'dai_cau_hoi'): Promise<vo
 // ⭐ Kiểm duyệt nội dung (Thùy 20/08) — GHI VẾT ai + lúc nào (khuôn duyet_boi/duyet_at đã dùng ở
 // bai_test_report/hoc_phi_xet_duyet…), không chỉ 1 cờ boolean trơ. Bỏ duyệt = về lại "chưa duyệt", KHÔNG
 // giữ lịch sử ai đã từng duyệt (đơn giản hoá — cần audit sâu hơn thì có kho_cau_log/trigger sau).
+// ⚠ Fix 02/09 (Thùy báo "violates foreign key constraint dai_cau_hoi_duyet_boi_fkey"): `duyet_boi` FK →
+// nhan_su.id, nhưng code cũ ghi auth user id (auth.users) → FK chặn mọi lượt duyệt ở DangHub/DungSaiBank.
+// Các đường duyệt khác (DuyetLoiGiaiScreen/ChoDuyetPanel) vốn đã map qua tai_khoan.nhan_su_id — làm y hệt.
+async function nhanSuIdCuaToi(): Promise<string> {
+  const { data: au } = await supabase.auth.getUser()
+  const { data: tk } = await supabase.from('tai_khoan').select('nhan_su_id').eq('id', au.user?.id ?? '').maybeSingle()
+  const id = (tk as { nhan_su_id?: string | null } | null)?.nhan_su_id
+  if (!id) throw new Error('Tài khoản chưa link nhân sự — không ghi được ai duyệt.')
+  return id
+}
 export async function duyetCau(ma_cau: string, tbl = 'dai_cau_hoi'): Promise<void> {
-  const { data: u } = await supabase.auth.getUser()
+  const nguoiDuyet = await nhanSuIdCuaToi()
   const { error } = await supabase.from(tbl)
-    .update({ da_duyet: true, duyet_boi: u.user?.id ?? null, duyet_at: new Date().toISOString() })
+    .update({ da_duyet: true, duyet_boi: nguoiDuyet, duyet_at: new Date().toISOString() })
     .eq('ma_cau', ma_cau)
   if (error) throw error
 }

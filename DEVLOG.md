@@ -7641,3 +7641,15 @@ và in Hình theo HS ở ChiaDeMTModal (cần bản đã gán). `hinh_gt_*` thu�
 bài đã lưu — chỉ verify qua UI mở lại.
 **Còn treo:** MT test "TEST HINH…" (khối 7, 2 bài Hình, 1 phần Đại rỗng) + buổi Hình mẫu của nó — Thùy
 tự xoá (🗑 ở list MT xoá kèm buổi mẫu).
+
+## 2026-09-02 (tiếp) — Fix duyệt câu trong Kho: "violates foreign key constraint dai_cau_hoi_duyet_boi_fkey"
+
+**Thùy báo:** duyệt câu ở DangHub/DungSaiBank lỗi FK. **Nguyên nhân:** `duyetCau` (kho/api.ts) ghi
+`auth.getUser().id` (auth.users) vào `duyet_boi`, nhưng cột này FK → `nhan_su.id`. Các đường duyệt khác
+(DuyetLoiGiaiScreen, ChoDuyetPanel) đã map đúng qua `tai_khoan.nhan_su_id` (`myNhanSuId`) — riêng
+`duyetCau` (20/08) viết tắt dùng thẳng auth id. `bai_test_report.duyet_boi` (testonline.ts) KHÔNG có FK
+nên không dính.
+**Fix:** `nhanSuIdCuaToi()` trong kho/api.ts (tai_khoan.nhan_su_id, throw rõ nếu tài khoản chưa link
+nhân sự) → `duyetCau` ghi nhan_su.id. Không migration.
+**Verify:** click-through thật (Admin, Kho K8 → Đơn thức-đa thức → T108010101 → Toàn bộ kho): duyệt câu
+T108010101001 OK, title "Đã duyệt · 2/9/2026", bỏ duyệt trả về "Chưa duyệt" — 0 alert lỗi. tsc sạch.
