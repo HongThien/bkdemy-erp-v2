@@ -7815,3 +7815,47 @@ gán vào buổi thật). Treo: Thùy tự xoá "TEST HINH3…".
 
 - Thùy: chốt xong "Ngân dư 826" phải thành "dư 326" ngay. Lỗi: `KhoiQuy` chỉ fetch lúc mount; `chot()` chỉ tải
   lại kỳ + tổng quan. Sửa: `TabChot` giữ `ver`, bump sau chốt → prop vào `KhoiQuy`, effect phụ thuộc `ver`.
+
+## 2026-09-03 — PHẦN A: ô nhập công thức không gõ LaTeX (MathLive) + phím tắt cá nhân + kiểm dữ liệu cũ (nhánh feat/cong-thuc, wt-cong-thuc)
+
+**Yêu cầu (Thùy):** người soạn KHÔNG gõ / KHÔNG thấy LaTeX; cấu trúc chỉ vào bằng CLICK mẫu hoặc PHÍM TẮT tự gán (không
+bộ mặc định); tắt gõ tắt kiểu chữ + tắt "\"; định dạng lưu KHÔNG đổi ($…$ trong cột cũ); MathLive nhập, KaTeX render;
+1 file macro chung; click công thức trong preview → sửa lại; phím tắt lưu jsonb trên nhan_su; script CHỈ ĐỌC đếm lỗi parse.
+**Làm:**
+- `lib/math/macros.ts` (1 nguồn macro cho MathLive + KaTeX; `\placeholder` chỉ KaTeX = ô xám bằng `\rule` — chạy cả
+  trong `\text{}`) · `lib/math/templates.ts` (96 mẫu, 5 tab; `#?` = ô trống; id = khoá phím tắt) · `lib/math/phimtat.ts`
+  (combo từ `e.code`, bắt buộc Ctrl/Alt/Meta hoặc F-key; tổ hợp dành riêng Ctrl+M/C/V/X/Z/Y/A).
+- `components/math/MathPopup.tsx` (MathLive `<math-field>`): `inlineShortcuts={}` · bỏ keybinding mặc định có `insert`/
+  `switchMode`/mũ-chỉ số/ma trận · chặn `\ ^ _` ở keydown-capture VÀ `beforeinput` (chỉ `isTrusted` — MathLive tự phát
+  beforeinput GIẢ khi `insert()`, lúc đầu handler nuốt luôn mẫu) · Tab = ô trống kế / hết → `moveAfterParent` + trả về
+  mode toán · Enter chèn / Esc huỷ · `stripPlaceholders` bỏ `\placeholder{}` + chuẩn hoá `\frac34`→`\frac{3}{4}`, `\sqrt2`
+  → `\sqrt{2}` · mẫu Văn bản: `\text{\placeholder{}}` + `switchMode text` (không ép thì chữ rơi vào mode toán, mất `\text`
+  và khoảng trắng) · chèn mẫu luôn ép về mode toán trước · React 18 không set className lên custom element → `classList.add`.
+- `components/math/MathTextarea.tsx` bọc textarea (forwardRef, `autoMaxPx` thay AutoTextarea): nút Σ · Ctrl+M · phím gán
+  bấm ngay trong textarea → mở ô kèm mẫu · preview `MathText editable` bọc `<span class="mt-f" data-fi>` → click = sửa đúng
+  công thức đó (`listMath` trong ui.tsx cùng regex + balanceDollars) · đệm khoảng trắng khi chèn sát `$` · focus trả về
+  textarea bằng setTimeout 50ms (rAF bị MathLive dọn focus async cướp lại).
+- `components/math/PhimTatModal.tsx`: mỗi mẫu 1 ô bấm phím; trùng / dành riêng → báo đỏ ngay, không nhận; Lưu →
+  `updatePhimTatCongThuc` (nhansu.ts) + `setPhimTatCongThuc` (store). Vào từ Hồ sơ (⌨ Phím tắt công thức) và từ chính popup.
+- `ui.tsx`: `tex()` thêm `macros: katexMacros()` → preview / in / test online cùng macro (3 nơi đều qua MathText).
+- Gắn: FormBaiToan (phát biểu · giả thiết phụ · giả thiết riêng · lời giải) · DangHub CauEditor (Đề cả 2 layout + SolutionField)
+  · NhapKho (Đề chung Đúng/Sai; các ô khác của NhapKho đi qua CauEditor). Không đụng textarea khác.
+- Migration `202609030144_nhan_su_phim_tat_cong_thuc.sql` (jsonb default '{}') — ĐÃ ÁP + `npm run schema`.
+- `scripts/kiem-mau-cong-thuc.ts` (`npm run kiem:mau`): 96 mẫu × 4 ca render KaTeX → 0 lỗi (sửa 7 mẫu thiếu khoảng
+  trắng sau `\int`/`\lim`/`\ln`/`\log`/`\sum`/`\prod` — "đã điền" ra `\intx`).
+- `scripts/kiem-cong-thuc-ro.ts` (`npm run kiem:congthuc`): CHỈ ĐỌC (`SET TRANSACTION READ ONLY`), ưu tiên DATABASE_URL_RO,
+  `--allow-rw` khi chưa có RO. Kết quả 03/09 01:50: **177.956 công thức · 48 lỗi parse / 35 dòng** (dai_cau_hoi 44 lỗi/30
+  dòng; khtn_cau_hoi 2; dai_dang_ly_thuyet 1; khtn_dang_ly_thuyet 1) + **464 dòng có $ lẻ** (render nhờ balanceDollars).
+  Loại lỗi: `\right` bị mất thành `ight` (AI bóc) · `\n` literal trong $…$ · `\x`/`\0` (thiếu `\` xuống dòng cases) ·
+  `$` lồng trong $…$ (T112010301022–032 cả cụm 11 câu) · `\unicode{x2103}` · `C%` trong dfrac. Báo cáo:
+  `scripts/tmp/kiem-cong-thuc-202609030150.md` (gitignored). CHƯA sửa dữ liệu — chờ Thùy quyết.
+**Verify (localhost:5217, tài khoản Admin, DangHub Sửa câu T108010101001):** Ctrl+M mở ô tại con trỏ · click Phân số →
+gõ 1 Tab 2 → Enter chèn `$\frac{1}{2}$` · gõ "sqrt" ra 4 chữ · `^ \ _` bị chặn · "/" ra chữ "/" · click công thức trong
+preview mở lại đúng `\frac34` → sửa → Enter thay đúng đoạn · gán Ctrl+Alt+F (Phân số) + Ctrl+Alt+F lần 2 cho Căn → báo
+trùng ngay · Ctrl+Alt+R cho Căn → Lưu → DB `nhan_su.phim_tat_cong_thuc = {"can_2":"Ctrl+Alt+R","phan_so":"Ctrl+Alt+F"}`
+(NS005) · trong textarea bấm Ctrl+Alt+F → ô mở kèm phân số, trong ô bấm Ctrl+Alt+R → chèn căn vào ô đang đứng · mẫu Văn
+bản gõ "với mọi" Tab "x" → `\text{với mọi}x`. tsc sạch. Không lưu câu test (đã huỷ). Console 0 lỗi.
+**Chưa làm / treo:** IME tiếng Việt thật (Unikey/Telex) trong ô MathLive chưa thử tay (chỉ test ký tự dựng sẵn) · FormBaiToan
++ NhapKho mới verify bằng tsc (cùng component) · `AutoTextarea` (DangHub) không còn ai dùng — giữ + export chờ gật xoá ·
+`.env` chưa có DATABASE_URL_RO nên script chạy `--allow-rw` · 48 lỗi + 464 $ lẻ chờ quyết cách sửa · PHẦN B chờ trả lời câu
+"AI sinh hình hay GV dựng tay".

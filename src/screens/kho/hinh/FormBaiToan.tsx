@@ -16,6 +16,7 @@ import { createPortal } from 'react-dom'
 import * as api from '../../../lib/kho/api'
 import type { BaiToan, Luoi } from '../../../lib/kho/hinh'
 import { MathText, inp } from '../ui'
+import { MathTextarea } from '../../../components/math/MathTextarea'
 import { AnhInput, Btn, Cap, Fig, IngestBaiButton, Ma, OcrButton, tron } from './hinhUi'
 
 export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, tienDeMacDinh, onClose, onDone }: {
@@ -204,7 +205,7 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, tienDe
                   </button>
                 ))}
               </div>
-              <textarea className={`${inp} mt-2 h-16`} value={gtRieng} onChange={(e) => setGtRieng(e.target.value)}
+              <MathTextarea className={`${inp} h-16`} wrapClassName="mt-2" value={gtRieng} onChange={setGtRieng}
                 placeholder={gtThayThe ? 'Giả thiết ĐẦY ĐỦ tự viết riêng cho bài này…' : 'Phần giả thiết THÊM riêng cho bài này (không bắt buộc)…'} />
               <div className="mt-1.5"><OcrButton onText={setGtRieng} /></div>
               {(gtThayThe || gtRieng.trim()) && (
@@ -247,7 +248,7 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, tienDe
 
             <div>
               <Lbl>Câu hỏi / yêu cầu <span className="font-normal normal-case text-slate-400">— bộ chữ chuẩn của họ (△ABC, trực tâm H, chân đường cao D·E·F)</span></Lbl>
-              <textarea className={`${inp} h-20`} value={phatBieu} onChange={(e) => setPhatBieu(e.target.value)}
+              <MathTextarea className={`${inp} h-20`} value={phatBieu} onChange={setPhatBieu}
                 placeholder="Chứng minh tứ giác $BFEC$ nội tiếp đường tròn đường kính $BC$" />
               <div className="mt-1.5"><OcrButton onText={setPhatBieu} /></div>
               {gan.length > 0 && (
@@ -264,7 +265,7 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, tienDe
 
             <div>
               <Lbl>Giả thiết phụ <span className="font-normal normal-case text-slate-400">— dữ kiện lẻ / vẽ thêm cho riêng bài này (không bắt buộc)</span></Lbl>
-              <textarea className={`${inp} h-16`} value={giaThietPhu} onChange={(e) => setGiaThietPhu(e.target.value)}
+              <MathTextarea className={`${inp} h-16`} value={giaThietPhu} onChange={setGiaThietPhu}
                 placeholder="gọi $I$ là giao điểm của $AC$ và $BD$" />
               <p className="mt-1 text-[11px] leading-snug text-slate-400">Đa số là <b>vẽ thêm</b> — hiện ở ĐỀ khi bài hỏi node này, ở BƯỚC giải khi node ẩn. Nhiều dữ kiện phụ ⇒ nên tách thành mô hình riêng.</p>
             </div>
@@ -282,7 +283,7 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, tienDe
 
             <div>
               <Lbl>Lời giải</Lbl>
-              <textarea className={`${inp} h-28`} value={loiGiai} onChange={(e) => setLoiGiai(e.target.value)} />
+              <MathTextarea className={`${inp} h-28`} value={loiGiai} onChange={setLoiGiai} />
               <div className="mt-1.5"><OcrButton onText={setLoiGiai} /></div>
             </div>
             <div>

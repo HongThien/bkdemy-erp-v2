@@ -1,6 +1,7 @@
 // Primitives UI gu SaaS — dùng chung cho mọi nhánh bản đồ (Đại / Hình).
 import type { ReactNode } from 'react'
 import katex from 'katex'
+import { katexMacros } from '../../lib/math/macros'
 
 // Render text có LaTeX ($…$ inline, $$…$$ block) thành công thức đẹp.
 const esc = (t: string) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -25,10 +26,22 @@ const tex = (s: string, display: boolean) => {
   const fixed = s
     .replace(/\\frac(?![a-zA-Z])/g, '\\dfrac')
     .replace(/\\vec\s*\{([A-Za-z][A-Za-z0-9']*)\}/g, (m, arg: string) => (arg.length >= 2 ? `\\overrightarrow{${arg}}` : m))
-  try { return katex.renderToString(fixed, { displayMode: display, throwOnError: false, output: 'html' }) }
+  // macros: CÙNG 1 file với ô nhập MathLive (lib/math/macros) → soạn thấy sao, in / test online ra vậy.
+  try { return katex.renderToString(fixed, { displayMode: display, throwOnError: false, output: 'html', macros: katexMacros() }) }
   catch { return esc(s) }
 }
 const MATH_RE = /\$\$([\s\S]+?)\$\$|\$([^$]+?)\$/g
+// Liệt kê các công thức $…$ / $$…$$ trong raw (đúng regex + cân $ như lúc render) — MathTextarea dùng để
+// map "click vào công thức thứ i trong preview" → đoạn [start,end) trong text gốc rồi mở lại để sửa.
+export type MathSpan = { start: number; end: number; latex: string; display: boolean }
+export function listMath(rawIn: string): MathSpan[] {
+  const raw = balanceDollars(rawIn)
+  const out: MathSpan[] = []
+  let m: RegExpExecArray | null
+  MATH_RE.lastIndex = 0
+  while ((m = MATH_RE.exec(raw))) out.push({ start: m.index, end: Math.min(MATH_RE.lastIndex, rawIn.length), latex: (m[1] ?? m[2]) as string, display: m[1] != null })
+  return out
+}
 // Tách raw thành các DÒNG html. Xuống dòng (\n thật, "\\n" literal, CRLF) CHỈ tính ở phần TEXT ngoài $…$.
 // → KHÔNG bao giờ đụng lệnh LaTeX ("\neq", "\nabla"…) vì chúng nằm TRONG $…$. Hết mơ hồ "\neq" vs "\nVì".
 // Render 1 phần TEXT (ngoài $…$): lệnh CÓ NGOẶC "\dfrac{6}{5}" (AI quên bọc $) → katex; phần còn lại esc.
@@ -72,9 +85,12 @@ function balanceDollars(s: string): string {
   for (let i = 0; i < s.length; i++) if (s[i] === '$' && s[i - 1] !== '\\') n++
   return n % 2 ? s + '$' : s
 }
-function buildLines(rawIn: string): string[] {
+// `editable`: bọc mỗi công thức $…$ trong <span class="mt-f" data-fi="i"> (i = thứ tự trong raw) để preview
+// click-để-sửa (MathTextarea). Mặc định TẮT → trang in / test online / mọi chỗ khác HTML y như cũ.
+function buildLines(rawIn: string, editable = false): string[] {
   const raw = balanceDollars(rawIn)
   const lines: string[] = ['']
+  let fi = 0
   const pushText = (txt: string) => {
     const t = uni(txt.replace(/<br\s*\/?>/gi, '\n'))        // <br> → xuống dòng; ký hiệu trần → Unicode
     const parts = t.replace(/\\n|\r\n?|\n/g, '\n').split('\n') // rồi cắt mọi kiểu xuống dòng
@@ -86,15 +102,16 @@ function buildLines(rawIn: string): string[] {
   MATH_RE.lastIndex = 0
   while ((m = MATH_RE.exec(raw))) {
     if (m.index > last) pushText(raw.slice(last, m.index))
-    lines[lines.length - 1] += m[1] != null ? tex(m[1], true) : tex(m[2]!, false) // math luôn nằm TRONG dòng hiện tại
+    const html = m[1] != null ? tex(m[1], true) : tex(m[2]!, false)
+    lines[lines.length - 1] += editable ? `<span class="mt-f" data-fi="${fi++}">${html}</span>` : html // math luôn nằm TRONG dòng hiện tại
     last = MATH_RE.lastIndex
   }
   if (last < raw.length) pushText(raw.slice(last))
   return lines
 }
 // `prefix` = HTML nhét vào ĐẦU dòng 1 (vd nhãn "Câu N.") → luôn cùng dòng với đề, kể cả đề nhiều dòng.
-export function MathText({ children, className, prefix }: { children: string | null | undefined; className?: string; prefix?: string }) {
-  const lines = buildLines(children ?? '')
+export function MathText({ children, className, prefix, editable }: { children: string | null | undefined; className?: string; prefix?: string; editable?: boolean }) {
+  const lines = buildLines(children ?? '', editable)
   const head = prefix ?? ''
   // 1 dòng → inline (căn baseline đẹp); nhiều dòng → block từng dòng (phân số không đè), nhãn ghép vào dòng đầu.
   if (lines.length <= 1) return <span className={`katex-text ${className ?? ''}`} dangerouslySetInnerHTML={{ __html: head + (lines[0] || '') }} />

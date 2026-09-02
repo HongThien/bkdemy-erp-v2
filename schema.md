@@ -1864,6 +1864,7 @@
 | bank_bin | text | Y |  |  |  |
 | bank_stk | text | Y |  |  |  |
 | bank_chu_tk | text | Y |  |  |  |
+| phim_tat_cong_thuc | jsonb |  | '{}'::jsonb |  |  |
 
 ## nhan_su_mon
 
