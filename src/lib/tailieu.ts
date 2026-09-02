@@ -24,6 +24,10 @@ export function nhanhCuaMon(mon?: string | null): { ma: string | null; ten: stri
 export function tenNhanh(mon: string | null | undefined, nhanh: string | null | undefined): string | null {
   return nhanhCuaMon(mon).find((n) => n.ma === (nhanh ?? null))?.ten ?? null
 }
+// Môn có KHO HÌNH (mô hình/lưới `hinh_*` — đơn vị là BÀI/node, KHÔNG phải dạng) để ET/MT nhặt bài. Registry
+// thay cho `if (mon === 'Toán')` rải ở màn hình (§1.6 symmetry test).
+const KHO_HINH_MO_HINH = new Set(['Toán'])
+export const coKhoHinh = (mon?: string | null): boolean => KHO_HINH_MO_HINH.has(mon ?? '')
 
 // ⭐ NHÁNH THEO TỪNG CÂU — tài liệu TRỘN nhánh (MT: Thùy 21/08 chốt "toggle chọn bản đồ lúc chọn câu",
 // KHÔNG cứng "2 phần = Đại/Hình"). Lưu ở `cau_hinh.nhanhByCau[ma_cau]` — CHỈ ghi khi câu KHÁC nhánh mặc
@@ -77,7 +81,8 @@ export type PhanLoai = 'buoi' | 'lt_chuyen_de' | 'dang' | 'btvn' | 'ontap' | 'cu
 // kiểu cột theo-phần (tai_lieu_phan.kieu) / theo-nhóm-form (etColByGroup) cũ.
 // nhanhByCau = NHÁNH KHO của TỪNG CÂU khi tài liệu trộn nhánh (MT: câu Đại + câu Hình giải tích trong cùng
 // đề). Chỉ có key cho câu KHÁC `tai_lieu.nhanh`; resolve qua `nhanhCuaCau` (kế thừa cho câu mã đề 2/3).
-export type CauHinh = { header?: 'wave' | 'none'; footer?: 'wave' | 'none'; watermark?: 'logo' | 'none'; mau?: string; inLyThuyet?: boolean; btvnLinesByCau?: Record<string, number>; etFormByCau?: Record<string, string>; phanBac?: Record<string, string>; etMaDe?: Record<string, (string | null)[]>; hsMaDe?: Record<string, number>; etColByGroup?: Record<number, string>; colByCau?: Record<string, number>; nhanhByCau?: Record<string, string> }
+export type CauHinh = { header?: 'wave' | 'none'; footer?: 'wave' | 'none'; watermark?: 'logo' | 'none'; mau?: string; inLyThuyet?: boolean; btvnLinesByCau?: Record<string, number>; etFormByCau?: Record<string, string>; phanBac?: Record<string, string>; etMaDe?: Record<string, (string | null)[]>; hsMaDe?: Record<string, number>; etColByGroup?: Record<number, string>; colByCau?: Record<string, number>; nhanhByCau?: Record<string, string>; hinhBuoiId?: string }
+// hinhBuoiId (MT) = id hinh_gt_buoi "MẪU" giữ bài HÌNH (mô hình) phan='mt' của MT master — xem hinhGiaoTrinh.ts §MT Hình.
 export const DEFAULT_BTVN_LINES = 5
 // Form hiển thị trong ET (độc lập loai_cau kho).
 export type ETForm = 'trac_nghiem' | 'tra_loi_ngan' | 'tu_luan'

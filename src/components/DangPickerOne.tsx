@@ -6,12 +6,15 @@ import { useEffect, useState } from 'react'
 import { groupMap, type Tier1Node } from '../lib/kho/api'
 import { khoCuaMon, nhanhCuaMon } from '../lib/tailieu'
 
-export default function DangPickerOne({ khoi, mon, nhanh, chonNhanh, onClose, onPick }: { khoi: string; mon?: string; nhanh?: string | null; chonNhanh?: boolean; onClose: () => void; onPick: (maDang: string, nhanh: string | null) => void }) {
+// `pillsThem` = pill NGOÀI hệ dạng (vd "Hình" mô hình của MT — kho bài/lưới, không có dạng để liệt kê ở đây):
+// bấm → caller tự xử lý (đóng popup, cuộn tới khối Hình). Giữ đủ "3 tab Đại / Hình giải tích / Hình" Thùy chốt 21/08.
+export default function DangPickerOne({ khoi, mon, nhanh, chonNhanh, pillsThem, onClose, onPick }: { khoi: string; mon?: string; nhanh?: string | null; chonNhanh?: boolean; pillsThem?: { ten: string; onClick: () => void }[]; onClose: () => void; onPick: (maDang: string, nhanh: string | null) => void }) {
   const [tree, setTree] = useState<Tier1Node[]>([])
   const [loading, setLoading] = useState(true)
   const [q, setQ] = useState('')
   const [nh, setNh] = useState<string | null>(nhanh ?? null)
   const nhanhOpts = chonNhanh ? nhanhCuaMon(mon) : []
+  const themOpts = chonNhanh ? (pillsThem ?? []) : []
   const listMap = khoCuaMon(mon, nh).listMap
   useEffect(() => {
     let alive = true
@@ -25,11 +28,15 @@ export default function DangPickerOne({ khoi, mon, nhanh, chonNhanh, onClose, on
       <div className="absolute inset-x-[8%] inset-y-8 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center gap-3 border-b border-slate-200 px-6 py-3">
           <h3 className="text-base font-semibold text-slate-900">Chọn dạng · Khối {khoi}</h3>
-          {nhanhOpts.length > 1 && (
+          {nhanhOpts.length + themOpts.length > 1 && (
             <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5" title="Chọn bản đồ kiến thức (nhánh kho) để lấy dạng">
               {nhanhOpts.map((o) => (
                 <button key={o.ma ?? '_'} onClick={() => setNh(o.ma)}
                   className={`rounded-md px-3 py-1 text-[13px] font-medium transition ${nh === o.ma ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>{o.ten}</button>
+              ))}
+              {themOpts.map((o) => (
+                <button key={'them:' + o.ten} onClick={o.onClick}
+                  className="rounded-md px-3 py-1 text-[13px] font-medium text-slate-500 transition hover:text-slate-700">{o.ten}</button>
               ))}
             </div>
           )}

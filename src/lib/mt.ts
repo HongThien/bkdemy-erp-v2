@@ -12,6 +12,7 @@ import { supabase } from './supabase'
 import { listPhan, addPhan, setCauOfPhan, getTaiLieuFull, createTaiLieu, updateTaiLieu, deleteTaiLieu, khoCuaMon, nhanhCuaCau, type TaiLieu, type TaiLieuPhan, type TaiLieuFull } from './tailieu'
 import { moBuoi } from './gami'
 import { listLopBac, type CauHoi } from './kho/api'
+import { copyPhanHinhSangBuoi, xoaPhanHinhTai, deleteBuoi as deleteHinhBuoi } from './kho/hinhGiaoTrinh'
 
 const LIMIT = 10000
 
@@ -30,7 +31,14 @@ export async function getMT(id: string): Promise<TaiLieu> {
 }
 export const createMT = (input: { ten: string; khoi: string; mon: string }): Promise<TaiLieu> => createTaiLieu({ loai: 'mt', ...input })
 export const renameMT = (id: string, ten: string): Promise<void> => updateTaiLieu(id, { ten })
-export const deleteMT = deleteTaiLieu // cascade phan+cau (KHÔNG xoá câu ở kho); xoá master KHÔNG tự xoá các instance đã gán (nguon_id giữ trace, nhưng đứng độc lập)
+// cascade phan+cau (KHÔNG xoá câu ở kho); xoá master KHÔNG tự xoá các instance đã gán (nguon_id giữ trace, nhưng
+// đứng độc lập). Buổi Hình MẪU (cau_hinh.hinhBuoiId) xoá kèm — bài Hình đã COPY sang buổi lớp vẫn còn (snapshot).
+export async function deleteMT(id: string): Promise<void> {
+  const { data } = await supabase.from('tai_lieu').select('cau_hinh').eq('id', id).single()
+  const hinhBuoiId = ((data as { cau_hinh?: { hinhBuoiId?: string } } | null)?.cau_hinh?.hinhBuoiId) ?? null
+  await deleteTaiLieu(id)
+  if (hinhBuoiId) await deleteHinhBuoi(hinhBuoiId).catch(() => { /* best-effort — không chặn xoá MT */ })
+}
 
 // ── PHẦN (mảng/chuyên đề trong MT) ───────────────────────────────────────
 export async function listPhanMT(taiLieuId: string): Promise<TaiLieuPhan[]> {
@@ -84,7 +92,7 @@ async function bacTheoCau(master: TaiLieuFull): Promise<Record<string, string>> 
 }
 
 // ── GÁN VÀO BUỔI (lớp+ngày cụ thể) ───────────────────────────────────────
-export type GanMTKetQua = { buoiId: string; taiLieuId: string; buoiMoi: boolean; soCauLoai: number }
+export type GanMTKetQua = { buoiId: string; taiLieuId: string; buoiMoi: boolean; soCauLoai: number; soBaiHinh: number }
 // Tìm/tạo buổi_hoc(loai='thuong', lop_id, ngay) — QUA `moBuoi` (giống hệt OPS "Mở buổi" thường, kể cả
 // seed sĩ số) — rồi tạo doc con bám (lớp+ngày) copy từ master (xoá-rồi-tạo nếu re-gán, cùng nguyên tắc
 // "doc vận hành 1-1 (lớp+ngày+loại)" như trichXuatBuoi).
@@ -132,10 +140,11 @@ export async function ganMTVaoBuoi(masterId: string, opts: { lopId: string; ngay
   // thay phans/câu) → không bao giờ đụng FK của bảng khác trỏ vào đúng bản đang giữ. Nếu lịch sử để lại
   // NHIỀU bản trùng (bug cũ), GIỮ bản CŨ NHẤT (nhiều khả năng là bản bị tham chiếu — created_at asc),
   // dọn các bản THỪA best-effort (bỏ qua nếu 1 bản thừa khác lại đang bị tham chiếu — cực hiếm).
-  const { data: existing, error: eFind } = await supabase.from('tai_lieu').select('id')
+  const { data: existing, error: eFind } = await supabase.from('tai_lieu').select('id, ngay')
     .eq('loai', 'mt_buoi').eq('nguon_id', masterId).eq('lop_id', opts.lopId).order('created_at', { ascending: true }).limit(LIMIT)
   if (eFind) throw eFind
   const keepId = (existing as { id: string }[] | null)?.[0]?.id ?? null
+  const ngayCu = (existing as { ngay: string | null }[] | null)?.[0]?.ngay ?? null
   for (const row of ((existing as { id: string }[] | null) ?? []).slice(1)) await supabase.from('tai_lieu').delete().eq('id', row.id)
 
   let docCon: TaiLieu
@@ -172,7 +181,15 @@ export async function ganMTVaoBuoi(masterId: string, opts: { lopId: string; ngay
     await setCauOfPhan(np.id, caus.map((c) => c.ma_cau))
   }
 
-  return { buoiId: buoiId!, taiLieuId: docCon.id, buoiMoi, soCauLoai }
+  // 3) HÌNH (mô hình) — bài phan='mt' của buổi Hình MẪU (master.cau_hinh.hinhBuoiId) → buổi Hình (lớp,ngày).
+  // Re-gán sang NGÀY KHÁC: bản Hình đã copy ở ngày cũ hết hiệu lực → xoá riêng phan 'mt' ở đó (cùng nguyên tắc
+  // "1 lớp chỉ 1 lượt gán / MT" của Đại). Master không có Hình → KHÔNG đụng buổi Hình của lớp (MTTab có đường
+  // "+ Bài Hình" nhập tay). Không lọc nâng cao theo hệ cho Hình (bài Hình không có bac_toi_thieu như dạng).
+  const hinhBuoiId = master.taiLieu.cau_hinh?.hinhBuoiId ?? null
+  if (hinhBuoiId && ngayCu && ngayCu !== opts.ngay) await xoaPhanHinhTai(opts.lopId, ngayCu, 'mt')
+  const soBaiHinh = hinhBuoiId ? (await copyPhanHinhSangBuoi(hinhBuoiId, 'mt', opts.lopId, opts.ngay)).soBai : 0
+
+  return { buoiId: buoiId!, taiLieuId: docCon.id, buoiMoi, soCauLoai, soBaiHinh }
 }
 
 // Các lượt đã gán của 1 MT master (hiện trong editor: "Đã gán cho: 9A1 · 12/07…"). buoiId = buổi

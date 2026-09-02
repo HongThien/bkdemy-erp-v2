@@ -7602,3 +7602,42 @@ trên data sống) và chấm MT có câu hgt trong `BuoiHocScreen` (đường �
 **Còn treo:** MT test "TEST HGT (Claude 02/09 - xoa duoc)" (1 phần, 2 câu) đang nằm trong DB — chờ
 Thùy gật mới xoá (Luật xoá). "Hình mô hình" (kho `hinh_*`, bài/lưới — không phải dạng) CHƯA nối vào
 soạn MT: khác model hoàn toàn (ET Hình dùng `hinh_gt_buoi` picks), cần lượt riêng.
+
+## 2026-09-02 (tiếp) — MT chọn được bài HÌNH (mô hình) — Thùy: "Hình với Hình giải tích khác nhau"
+
+**Sai của lượt trước:** đọc "giải tích và Hình" thành 1 nhánh Hình giải tích, cắt "Hình mô hình" ra
+"lượt riêng" dù Thùy 21/08 đã chốt đủ 3 tab (Đại / Hình giải tích / Hình mô hình). → Làm nốt Hình ngay.
+
+**Mô hình:** Hình = kho `hinh_*` (bài/node/lưới), KHÔNG có dạng → không đi qua DangPickerOne. MT master
+không bám (lớp,ngày) như ET nên cần **buổi Hình MẪU** riêng: 1 `hinh_gt_buoi` (lop_id/ngay/giao_trinh_id
+null, tieu_de = tên MT) tạo LƯỜI lần đầu có bài, id ở `tai_lieu.cau_hinh.hinhBuoiId`; bài `hinh_gt_bai`
+phan='mt'; mã đề 2/3 ở `hinh_gt_buoi.cau_hinh.mt.maDe` (khuôn ET Hình). Buổi mẫu không có bài
+lop/nha/et nên `listAllBuoiHinh` (Kho tài liệu) tự bỏ qua.
+
+**Làm:**
+- `hinhGiaoTrinh.ts` §MT Hình: `taoHinhGtBuoiMau` · `findHinhGtBuoi` · `copyPhanHinhSangBuoi` (bài + maDe
+  phan 'mt' → buổi Hình (lớp,ngày) qua ensureHinhGtBuoiForBuoi, REPLACE riêng phan 'mt', 0 bài = không
+  đụng gì — MTTab có "+ Bài Hình" nhập tay, không xoá oan) · `xoaPhanHinhTai` (re-gán sang ngày khác).
+- `mt.ts`: `ganMTVaoBuoi` bước 3 copy Hình (+ xoá phan 'mt' ở ngày cũ nếu đổi ngày), trả `soBaiHinh`;
+  `deleteMT` xoá kèm buổi mẫu (best-effort). Tab chấm MT (`MTTab` → `loadHinhForBuoiPhase 'mt'`) vốn đã
+  đọc buổi Hình (lớp,ngày) → KHÔNG sửa tầng chấm.
+- `MTScreen.tsx`: khối "📐 Hình (mô hình)" dưới các phần Đại — NGUYÊN `BuoiPickEditor phans=['mt']`,
+  autosave debounce 600ms (refs giữ picks/cheDo/soDong + chRef tránh đè cau_hinh bằng closure cũ), 🎲 sinh
+  đề 2/3 Hình (goiYMaDeChoBai, thiếu thì dùng lại bài gốc — 24/08), 🖨 In Hình (bản mẫu 3 mã đề, không tên
+  HS). "Gán vào buổi" mở khi có câu Đại HOẶC bài Hình. `ChiaDeMTModal`: đọc bài Hình đã copy ở buổi (lớp,
+  ngày) → "📐 In Hình cả lớp"/từng HS theo CÙNG `ch.hsMaDe` với Đại (1 HS = 1 mã đề cả đề MT); MT chỉ
+  Hình cũng chia đề được.
+- `DangPickerOne` prop `pillsThem` → pill "Hình" (đủ 3 tab) — bấm = đóng popup, mở + cuộn tới khối Hình.
+- `HinhPrintView.BanIn.tieuDeIn` (perHS): MT in tên MT thay vì "Đề kiểm tra cuối giờ lớp X" của ET.
+- `tailieu.ts`: registry `coKhoHinh(mon)` (Toán) thay `if mon==='Toán'`.
+
+**Verify:** tsc + vite build sạch · click-through thật (Admin, MT test khối 7 "TEST HINH (Claude 02/09 -
+xoa duoc)"): khối Hình hiện BuoiPickEditor 17 chuỗi tab "🏆 MT (phần Hình)" → ↻ Gợi ý → 2 bài, "✓ Đã
+lưu", đóng/mở lại MT vẫn 2 bài + `cau_hinh.hinhBuoiId` có trong DB → 🎲 sinh đề: "✓ đủ 3 mã đề", không
+alert thiếu → 🖨 In Hình: HinhPrintView tiêu đề = tên MT, 3 mã đề → popup chọn dạng có 3 pill Đại số /
+Hình giải tích / Hình, bấm Hình đóng popup + cuộn tới khối. 0 lỗi console.
+**CHƯA test runtime** (không chạy trên data sống): gán MT có Hình vào buổi (copyPhanHinhSangBuoi → MTTab)
+và in Hình theo HS ở ChiaDeMTModal (cần bản đã gán). `hinh_gt_*` thuộc postgres nên CLI không soi được
+bài đã lưu — chỉ verify qua UI mở lại.
+**Còn treo:** MT test "TEST HINH…" (khối 7, 2 bài Hình, 1 phần Đại rỗng) + buổi Hình mẫu của nó — Thùy
+tự xoá (🗑 ở list MT xoá kèm buổi mẫu).

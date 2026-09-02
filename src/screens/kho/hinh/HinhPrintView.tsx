@@ -52,6 +52,9 @@ export type BanIn = {
   // KHÔNG nhét vào `tieuDe`. Các đường gọi khác (giáo trình/ôn tập) không cần set 2 field này.
   lop?: string
   ngay?: string
+  // ⭐ 02/09 MT Hình: tiêu đề in ở chế độ perHS — mặc định (không set) = "Đề kiểm tra cuối giờ lớp X" của ET;
+  // MT đặt tên MT ("MT Học kỳ 1 — Toán 9") vì MT không phải ET cuối giờ.
+  tieuDeIn?: string
   // ⭐ 24/08 (Thùy: "header BTVN linh tinh, làm giống hệt form Đại đi") — bản "Về nhà" dùng ĐÚNG
   // BtvnBkHead của Đại (masthead .gtbk-mh* + ô Họ tên/Lớp/Điểm) thay vì masthead `hpmh` chung, và
   // Lớp/Ngày phát/Hạn nộp lên PILL CÓ CẤU TRÚC (như Đại) — KHÔNG nhét chung vào `tieuDe` nữa.
@@ -234,7 +237,7 @@ function Noi({ ban, gv, perHS, perHSBtvn }: { ban: BanIn; gv: boolean; perHS?: H
     // ⭐ Thùy 21/08 ("làm giống bên Đại số đi, cứ sáng tạo thêm làm gì"): dùng ĐÚNG `ETHeaderBK` của ET
     // Đại — không tự vẽ header riêng cho Hình. Tiêu đề = "Đề kiểm tra cuối giờ lớp {lớp}" y hệt Đại,
     // KHÔNG chữ "Hình"/"Buổi học". Ngày lên pill góc phải (prop `ngay` của ETHeaderBK), không nhét vào tiêu đề.
-    const title = `Đề kiểm tra cuối giờ lớp ${ban.lop ?? ''}`
+    const title = ban.tieuDeIn ?? `Đề kiểm tra cuối giờ lớp ${ban.lop ?? ''}`
     return (
       <div>
         {perHS.map((hs, hi) => (
