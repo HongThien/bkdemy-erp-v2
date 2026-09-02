@@ -351,17 +351,18 @@ function TabChot({ coGhi, bao, onDoi }: { coGhi: boolean; bao: (t: string) => vo
   const [ghiChu, setGhiChu] = useState('')
   const [hoi, setHoi] = useState(false)
   const [busy, setBusy] = useState(false)
+  const [ver, setVer] = useState(0) // bump sau chốt → KhoiQuy tải lại công nợ (chốt làm Σ kỳ chốt đổi ⇒ Ngân cần bù đổi)
   const tai = useCallback(async () => { const [t, k] = await Promise.all([kyXemTruoc(), listKy()]); setTruoc(t); setKys(k) }, [])
   useEffect(() => { tai().catch((e) => bao(`Lỗi: ${e.message}`)) }, [tai, bao])
   const chot = async () => {
     setBusy(true)
-    try { const id = await chotKy(ghiChu); setHoi(false); setGhiChu(''); await tai(); onDoi(); setXem(await kyChiTiet(id)); bao('Đã chốt kỳ') }
+    try { const id = await chotKy(ghiChu); setHoi(false); setGhiChu(''); await tai(); onDoi(); setVer((v) => v + 1); setXem(await kyChiTiet(id)); bao('Đã chốt kỳ') }
     catch (e) { bao(`Lỗi: ${(e as Error).message}`) } finally { setBusy(false) }
   }
   return (
     <div className="grid grid-cols-[380px_1fr] gap-4">
       <div className="flex flex-col gap-3">
-        <KhoiQuy coGhi={coGhi} bao={bao} onDoi={async () => { await tai(); onDoi(); if (xem) setXem(xem.id ? await kyChiTiet(xem.id) : await kyXemTruoc()) }} />
+        <KhoiQuy ver={ver} coGhi={coGhi} bao={bao} onDoi={async () => { await tai(); onDoi(); if (xem) setXem(xem.id ? await kyChiTiet(xem.id) : await kyXemTruoc()) }} />
         <div className={`${card} p-4`}>
           <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">Chưa chốt (từ lần chốt trước đến bây giờ)</p>
           {truoc ? (
@@ -405,7 +406,7 @@ function TabChot({ coGhi, bao, onDoi }: { coGhi: boolean; bao: (t: string) => vo
 }
 
 // Quỹ Ngân để ở chỗ Lộc (định mức) + sổ nhận tiền từ Ngân + công nợ (v2, Thùy 03/09). Số liệu từ fn_chi_cong_no.
-function KhoiQuy({ coGhi, bao, onDoi }: { coGhi: boolean; bao: (t: string) => void; onDoi: () => Promise<void> }) {
+function KhoiQuy({ ver, coGhi, bao, onDoi }: { ver: number; coGhi: boolean; bao: (t: string) => void; onDoi: () => Promise<void> }) {
   const [cn, setCn] = useState<ChiCongNo | null>(null)
   const [ds, setDs] = useState<ChiNhanTien[]>([])
   const [moThem, setMoThem] = useState(false)
@@ -414,7 +415,7 @@ function KhoiQuy({ coGhi, bao, onDoi }: { coGhi: boolean; bao: (t: string) => vo
   const [suaDm, setSuaDm] = useState<string | null>(null)
   const [busy, setBusy] = useState(false)
   const tai = useCallback(async () => { const [c, d] = await Promise.all([congNo(), listNhanTien()]); setCn(c); setDs(d) }, [])
-  useEffect(() => { tai().catch((e) => bao(`Lỗi: ${e.message}`)) }, [tai, bao])
+  useEffect(() => { tai().catch((e) => bao(`Lỗi: ${e.message}`)) }, [tai, bao, ver])
   const doi = async () => { await tai(); await onDoi() }
   const them = async () => {
     const t = parseTien(soTien); if (t <= 0) return

@@ -7810,3 +7810,8 @@ gán vào buổi thật). Treo: Thùy tự xoá "TEST HINH3…".
   quyết toán (định mức · nợ cũ · chi kỳ này · Lộc đang giữ trước bù · NGÂN CẦN CHUYỂN). Chụp ảnh giữ khuôn popup.
 - Verify dev 5216 (data test của Thùy, sẽ xoá): KY001 1.173.500 → ghi nhận 500.000 → Lộc giữ 9.326.500, cần bù
   673.500; phiếu phần chưa chốt (500k) ra nợ cũ 673.500 + kỳ này 500.000 = 1.173.500 đúng. tsc sạch.
+
+## 2026-09-03 (tiếp) — Fix: khối công nợ không tải lại sau khi bấm Chốt kỳ
+
+- Thùy: chốt xong "Ngân dư 826" phải thành "dư 326" ngay. Lỗi: `KhoiQuy` chỉ fetch lúc mount; `chot()` chỉ tải
+  lại kỳ + tổng quan. Sửa: `TabChot` giữ `ver`, bump sau chốt → prop vào `KhoiQuy`, effect phụ thuộc `ver`.
