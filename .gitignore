@@ -27,3 +27,6 @@ scripts/out-crops/
 dist-ops/
 dist-ta
 dist-gv/
+
+# build output app BK Chi (như dist-ops)
+dist-chi/
