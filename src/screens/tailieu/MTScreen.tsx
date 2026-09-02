@@ -400,6 +400,16 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
 
   if (loading || !d) return <div className="p-8 text-sm text-slate-400">Đang tải…</div>
   const soCau = Object.values(rowsByPhan).reduce((s, rows) => s + rows.filter((r) => r.maCau).length, 0)
+  // Số câu HIỆN TRÊN PHIẾU cho từng hàng (Thùy 02/09: đếm theo thứ tự builder, bài Hình = 1 số/ý): "17" hoặc "17–19".
+  const nhanSo: Record<string, string> = {}
+  { let n = 0
+    for (const p of phans) (rowsByPhan[p.id] ?? []).forEach((r, i) => {
+      if (!r.maCau) { nhanSo[`${p.id}:${i}`] = ''; return }
+      const m = hinhMuc[r.maCau]
+      const soY = r.nhanh === 'hinh' ? Math.max(1, m && m.kieu === 'de' ? m.ys.length : 1) : 1
+      nhanSo[`${p.id}:${i}`] = soY > 1 ? `${n + 1}–${n + soY}` : String(n + 1)
+      n += soY
+    }) }
   const laToanCoHinh = coKhoHinh(d.mon)
 
   return (
@@ -474,7 +484,7 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
                         return (
                           <div key={i} className="rounded-xl border border-amber-200 bg-amber-50/30 p-2.5">
                             <div className="flex items-start gap-2">
-                              <span className="mt-1.5 w-6 shrink-0 text-center text-[13px] font-bold text-violet-600">{i + 1}</span>
+                              <span className="mt-1.5 w-10 shrink-0 text-center text-[12px] font-bold text-violet-600" title="Số câu trên phiếu (theo thứ tự builder; bài Hình = 1 số mỗi ý)">{nhanSo[`${p.id}:${i}`] || i + 1}</span>
                               <button onClick={() => setHinhPicker({ phanId: p.id, idx: i })} className="w-56 shrink-0 rounded-md border border-slate-300 bg-white px-2.5 py-2 text-left text-[13px] hover:border-indigo-400" title="Chọn bài Hình khác">
                                 <span className="mr-1 rounded bg-amber-50 px-1 py-0.5 text-[10px] font-medium text-amber-700">Hình</span>
                                 <span className="font-mono text-[12px] text-slate-700">{h ? (chuoiCuaHinh(h).map((b) => b.ma).join(' → ') || `${h.nodeIds.length} node`) : '?'}</span>
@@ -517,7 +527,7 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
                       return (
                         <div key={i} className="rounded-xl border border-slate-200 bg-slate-50/60 p-2.5">
                           <div className="flex items-start gap-2">
-                          <span className="mt-1.5 w-6 shrink-0 text-center text-[13px] font-bold text-violet-600">{i + 1}</span>
+                          <span className="mt-1.5 w-10 shrink-0 text-center text-[12px] font-bold text-violet-600" title="Số câu trên phiếu (theo thứ tự builder; bài Hình = 1 số mỗi ý)">{nhanSo[`${p.id}:${i}`] || i + 1}</span>
                           <button onClick={() => setDangModal({ phanId: p.id, idx: i, nhanh: r.nhanh })} className="w-56 shrink-0 rounded-md border border-slate-300 bg-white px-2.5 py-2 text-left text-[13px] hover:border-indigo-400">
                             {r.maDang ? (
                               <span className="text-slate-700">

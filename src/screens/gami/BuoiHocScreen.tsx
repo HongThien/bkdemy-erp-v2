@@ -9,7 +9,7 @@ import {
   type BtvnKQ, type CanhBao, type BtvnTrangThai, type BtvnThaiDo,
   getDanhGia, setDanhGiaDang, setNhanXet, setMuc, MUC_OPTS, MUC_CATALOG, nhanMuc, dongDanhGia, moLaiDanhGia, setNoiDungBuoi,
   loadLiveTestForBuoi, getDangTen, loadMTForBuoi, syncMTProblems, getBangEloExp,
-  loadHinhForBuoiPhase, syncHinhProblems,
+  loadHinhForBuoiPhase, syncHinhProblems, danhSoLaiTheoDe, thuTuMTTheoDe,
   type BuoiAo, type BuoiTim, type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type Phase, type DiemDanh, type DanhGiaHS, type DanhGiaDiem, type TabKey, type ETResult, type LuoiSync, type EloExpRow,
 } from '../../lib/gami'
 import { getLiveSnapshot, type BaiTest, type BaiTestCau, type BaiLam, type LiveAnswer } from '../../lib/testonline'
@@ -1509,6 +1509,8 @@ function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: Buo
       setPhans(ps)
       const { dapAn: hinhDapAn } = await loadHinhForBuoiPhase(buoiId, 'mt')
       if (hinhDapAn.length) await syncHinhProblems(buoiId, 'mt', hinhDapAn, !!buoi.mt_dong_at)
+      // ⭐ 02/09: số ô = thứ tự trong đề (Hình xen giữa Đại thì số xen theo) — khớp số trên phiếu in.
+      await danhSoLaiTheoDe(buoiId, 'mt', thuTuMTTheoDe(await listProblems(buoiId, 'mt'), ps), !!buoi.mt_dong_at)
       setMtMissing(!mtId && !hinhDapAn.length)
       await reloadP()
     } catch { setMtMissing(true); setPhans([]) } finally { setLoading(false) }
@@ -1533,6 +1535,7 @@ function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: Buo
       await saveBuoiSelectionPhan(hinhBuoiId, 'mt', { picks, cheDo, soDong })
       const { dapAn } = await loadHinhForBuoiPhase(buoiId, 'mt')
       await syncHinhProblems(buoiId, 'mt', dapAn, !!buoi.mt_dong_at)
+      await danhSoLaiTheoDe(buoiId, 'mt', thuTuMTTheoDe(await listProblems(buoiId, 'mt'), phans), !!buoi.mt_dong_at)
       setMtMissing(false)
       await reloadP()
     } finally { setHinhSaving(false) }
@@ -1567,10 +1570,15 @@ function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: Buo
   if (coMat.length === 0) return <p className="text-[12px] text-slate-400">Chưa có HS nào điểm danh "có mặt" — điểm danh trước khi chấm.</p>
 
   const tenDangOf = (md: string | null) => (md ? dangTenMT[md] ?? md : '—')
-  const cauOf = (idx: number) => caus[idx] ?? null
-  // Hình (mô hình) luôn xếp SAU câu Đại (problem_no cấp lớn hơn — xem noTiep() trong syncHinhProblems),
-  // nên chỉ cần đếm để vẽ 1 nhóm "Phần Hình" cuối hàng nhóm, không cần chen giữa các Phần Đại.
+  // Ô ↔ câu theo MÃ CÂU (không theo vị trí — Hình xen giữa nên index không còn là danh tính).
+  const cauByMa = new Map(caus.map((c) => [c.ma_cau, c]))
+  const cauOf = (p: Problem) => (p.ma_cau ? cauByMa.get(p.ma_cau) ?? null : null)
   const hinhCount = probs.filter((p) => p.hinh_baitoan_id).length
+  // Hàng nhóm PHẦN theo thứ tự ô (đã đánh số theo đề — danhSoLaiTheoDe): ô Đại thuộc phần chứa ma_cau, ô Hình = nhóm
+  // "Hình"; các ô liền nhau cùng nhóm gộp 1 th (Hình xen giữa 2 phần Đại thì hiện 3 nhóm, đúng như trên phiếu).
+  const nhomCua = (p: Problem) => (p.hinh_baitoan_id ? '🏆 Hình (mô hình)' : (phans.find((ph) => ph.caus.some((c) => c.ma_cau === p.ma_cau))?.tieuDe ?? '—'))
+  const nhomCot: { ten: string; hinh: boolean; n: number }[] = []
+  for (const p of probs) { const ten = nhomCua(p); const last = nhomCot[nhomCot.length - 1]; if (last && last.ten === ten) last.n++; else nhomCot.push({ ten, hinh: !!p.hinh_baitoan_id, n: 1 }) }
 
   return (
     <div className="flex h-full flex-col">
@@ -1608,22 +1616,19 @@ function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: Buo
       <div className="min-h-0 flex-1 overflow-auto rounded-xl border border-slate-200">
         <table className="w-auto border-collapse text-sm">
           <thead>
-            {/* Hàng nhóm PHẦN — đúng cấu trúc file MT đã gán (Phần I/II…), KHÔNG làm phẳng câu.
-                Hình xếp SAU câu Đại (problem_no cấp lớn hơn — xem noTiep() trong syncHinhProblems). */}
+            {/* Hàng nhóm PHẦN — đúng cấu trúc file MT đã gán (Phần I/II…), KHÔNG làm phẳng câu. Thứ tự cột = thứ tự
+                đề (Hình xen giữa Đại thì cột cũng xen — 02/09), nhóm gộp theo ô liền nhau. */}
             <tr className="bg-violet-50">
               <th className="sticky left-0 top-0 z-30 border border-slate-200 bg-violet-50" />
-              {phans.map((ph, pi) => (
-                <th key={pi} colSpan={ph.caus.length} className="sticky top-0 z-10 border border-slate-200 bg-violet-50 px-2 py-1 text-center text-[12px] font-bold text-violet-700">{ph.tieuDe}</th>
+              {nhomCot.map((g, gi) => (
+                <th key={gi} colSpan={g.n} className={`sticky top-0 z-10 border border-slate-200 px-2 py-1 text-center text-[12px] font-bold ${g.hinh ? 'bg-amber-100 text-amber-700' : 'bg-violet-50 text-violet-700'}`}>{g.ten}</th>
               ))}
-              {hinhCount > 0 && (
-                <th colSpan={hinhCount} className="sticky top-0 z-10 border border-slate-200 bg-amber-100 px-2 py-1 text-center text-[12px] font-bold text-amber-700">🏆 Hình (mô hình)</th>
-              )}
             </tr>
             <tr className="bg-slate-100">
               <th className="sticky left-0 top-0 z-30 whitespace-nowrap border border-slate-200 bg-slate-100 px-4 py-1.5 text-left text-[12px] font-semibold text-slate-700">Học sinh</th>
-              {probs.map((p, idx) => {
+              {probs.map((p) => {
                 const hinh = !!p.hinh_baitoan_id
-                const c = hinh ? null : cauOf(idx)
+                const c = hinh ? null : cauOf(p)
                 return (
                   <th key={p.id} className={`sticky top-0 z-10 w-[130px] border border-slate-200 px-2 py-1.5 text-center align-top ${hinh ? 'bg-amber-50' : 'bg-slate-100'}`}>
                     <div className="text-[12px] font-bold text-slate-700">Câu {p.problem_no}{hinh && <span className="ml-1 text-[10px] font-normal text-violet-500" title="Bài Hình · nhãn ý">({p.hinh_nhan})</span>}</div>

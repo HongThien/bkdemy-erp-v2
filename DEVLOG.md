@@ -7715,3 +7715,19 @@ N+1… qua noTiep — bài học "số trên giấy ≠ số trên hệ → ch�
 **Verify:** MT test khối 7 "TEST HINH3": hàng 1 câu Đại + hàng 2 bài Hình 3 ý → in: "Câu 1." rồi "Câu 2–4." / "Câu 2."
 "Câu 3." "Câu 4." kèm hình, không còn "Bài 1." (lần dựng đầu paged.js treo >30s — bẫy cũ 07-11, mở lại là được).
 tsc + build sạch. Treo: Thùy tự xoá "TEST HINH3…".
+
+## 2026-09-02 (tiếp) — MT: số câu theo ĐÚNG thứ tự builder (Hình xen giữa thì số xen theo), cả in lẫn chấm
+
+**Thùy:** "câu hỏi phải đi theo thứ tự trong builder, câu nào nằm phía trên thì tính trước — chỗ này câu 16 phải
+chuyển 17" (bản trước dồn Hình ra SAU toàn bộ câu Đại để khớp tab chấm → in "Câu 16" rồi "Câu 28–30").
+**Làm:** MỘT bộ đếm theo thứ tự hàng cho cả 2 phía:
+- `MTPrintView`: `no` chạy liên tục qua maCaus — câu Đại +1, bài Hình +số ý (bỏ soCauDai/hinhCau).
+- Tab chấm: `thuTuMTTheoDe(probs, phans)` (gami.ts) xếp ô theo maCaus của bản mt_buoi (ô Đại khớp ma_cau; hàng
+  Hình thứ k khớp ô có hinh_nhan bắt đầu bằng k — thứ tự pick lúc gán = thứ tự hàng), `danhSoLaiTheoDe` cập nhật
+  problem_no = vị trí (2 bước qua vùng tạm +100000 vì unique (buoi,phase,problem_no); phase đóng thì không đụng).
+  MTTab gọi sau syncMT+syncHinh (và sau lưu pick Hình tại chỗ). Header nhóm phần tính theo ô liền nhau (Hình xen
+  giữa 2 phần Đại → 3 nhóm), ô↔câu tra theo ma_cau thay vì index. `MTPhanCaus` thêm `maCaus`.
+- Editor MT: mỗi hàng hiện số câu trên phiếu ("17" / "17–19") thay cho số thứ tự hàng trong phần.
+**Verify:** MT test khối 7: hàng Đại · hàng Hình 3 ý · hàng Đại → editor nhãn 1 / 2–4 / 5; bản in "Câu 1." →
+"Câu 2–4." (Câu 2./3./4.) → "Câu 5." đúng thứ tự. tsc + build sạch. Tab chấm đánh số lại CHƯA test runtime (cần
+gán vào buổi thật). Treo: Thùy tự xoá "TEST HINH3…".

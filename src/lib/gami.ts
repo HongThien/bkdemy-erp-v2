@@ -2,7 +2,7 @@
 // UI chỉ gọi qua đây. Engine thuần ở src/gami/*.js (đã test). Buổi pure-derive: đẻ dòng khi MỞ.
 import { supabase } from './supabase'
 import { getMyProfile } from './nhansu'
-import { getETByBuoi, getETCaus, getBTVNByBuoi, getBTVNCaus, getGiaoTrinhBuoiDoc, khoCuaMon } from './tailieu'
+import { getETByBuoi, getETCaus, getBTVNByBuoi, getBTVNCaus, getGiaoTrinhBuoiDoc, khoCuaMon, laMaHinh } from './tailieu'
 import { getMTInstanceByBuoi, getMTPhanCaus, type MTPhanCaus } from './mt'
 import { loadHinhForBuoi, type HinhDapAn } from './kho/hinhGiaoTrinh'
 import { getBaiTestByDoc, getBaiTestCaus, type BaiTest, type BaiTestCau } from './testonline'
@@ -481,6 +481,40 @@ export async function loadMTForBuoi(buoiId: string): Promise<{ mtId: string | nu
 // MT/BTVN dùng CHUNG syncDocProblems với ET — cùng một bản chất "lưới bám đề", đừng đẻ 3 bản logic
 // lệch nhau (bug ET lặp lại y hệt ở MT/BTVN vì trước đây copy-paste `if (cur.length) return`).
 export const syncMTProblems = (buoiId: string, caus: CauHoi[], daDong?: boolean) => syncDocProblems(buoiId, 'mt', caus, daDong)
+
+// ⭐ Thùy 02/09: "câu hỏi phải đi theo thứ tự trong builder — câu nào nằm phía trên thì tính trước" (Hình xen giữa
+// Đại thì số cũng xen theo, mỗi Ý Hình = 1 số). syncDocProblems/syncHinhProblems chỉ cấp SLOT (nối max) nên sau khi
+// cả hai sync xong phải ĐÁNH SỐ LẠI problem_no theo thứ tự đề. Số trên phiếu (MTPrintView) và số ở tab chấm phải
+// là MỘT — lệch là chấm nhầm câu → bẩn mastery (bài học 07-21).
+/** Thứ tự ô chấm MT theo đề: duyệt maCaus từng phần — câu kho khớp ma_cau; hàng Hình thứ k khớp các ô Hình có
+ *  hinh_nhan bắt đầu bằng số k (nhãn "k"/"kA","kB"… — thứ tự pick trong hinh_gt_bai = thứ tự hàng Hình lúc gán). Ô
+ *  không khớp (mồ côi) xếp cuối, giữ thứ tự cũ. */
+export function thuTuMTTheoDe(probs: Problem[], phans: MTPhanCaus[]): Problem[] {
+  const conLai = [...probs]
+  const out: Problem[] = []
+  let k = 0
+  for (const ph of phans) for (const ma of ph.maCaus) {
+    if (laMaHinh(ma)) {
+      k++
+      const cua = conLai.filter((p) => !!p.hinh_baitoan_id && parseInt(p.hinh_nhan ?? '', 10) === k).sort((a, b) => (a.hinh_nhan ?? '').localeCompare(b.hinh_nhan ?? ''))
+      for (const p of cua) { out.push(p); conLai.splice(conLai.indexOf(p), 1) }
+    } else {
+      const i = conLai.findIndex((p) => !p.hinh_baitoan_id && p.ma_cau === ma)
+      if (i >= 0) out.push(conLai.splice(i, 1)[0])
+    }
+  }
+  return [...out, ...conLai]
+}
+/** Đánh số lại problem_no = vị trí trong `thuTu` (1-based). Không đổi gì nếu đã đúng; phase đã đóng → không đụng.
+ *  Unique (buoi,phase,problem_no) ⇒ 2 bước: dời các ô đổi số lên vùng tạm (+100000) rồi hạ về số đích. */
+export async function danhSoLaiTheoDe(buoiId: string, phase: Phase, thuTu: Problem[], daDong?: boolean): Promise<void> {
+  if (daDong) return
+  const doi = thuTu.map((p, i) => ({ p, no: i + 1 })).filter((x) => x.p.problem_no !== x.no)
+  if (!doi.length) return
+  for (const x of doi) { const { error } = await supabase.from('gami_session_problems').update({ problem_no: 100000 + x.no }).eq('id', x.p.id); if (error) throw error }
+  for (const x of doi) { const { error } = await supabase.from('gami_session_problems').update({ problem_no: x.no }).eq('id', x.p.id); if (error) throw error }
+  void buoiId; void phase
+}
 export const syncBTVNProblems = (buoiId: string, caus: CauHoi[], daDong?: boolean) => syncDocProblems(buoiId, 'btvn', caus, daDong)
 
 // ── CHẤM Hình (mô hình) — nạp từ giáo trình Hình đã gán (lớp+ngày) ─────────────────

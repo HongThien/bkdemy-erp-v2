@@ -236,10 +236,11 @@ export async function getMTInstanceByBuoi(lopId: string, ngay: string): Promise<
 }
 // Câu MT của buổi — GIỮ NGUYÊN cấu trúc PHẦN (Thùy 07-08: "cấu trúc chấm MT phải giống file MT được
 // gán" — trước đây flatMap phẳng mất ranh giới phần, khác hẳn cách soạn/xem trong MTEditor).
-export type MTPhanCaus = { tieuDe: string; caus: CauHoi[] }
+// maCaus = danh sách THÔ đúng thứ tự builder (câu kho + hàng Hình `HINH:…`) — tab chấm dùng để đánh số theo đề.
+export type MTPhanCaus = { tieuDe: string; caus: CauHoi[]; maCaus: string[] }
 export async function getMTPhanCaus(taiLieuId: string): Promise<MTPhanCaus[]> {
   const full = await getTaiLieuFull(taiLieuId)
-  return full.phans.filter((p) => p.loai_phan === 'custom').map((p) => ({ tieuDe: p.tieu_de ?? '(không tên)', caus: p.caus }))
+  return full.phans.filter((p) => p.loai_phan === 'custom').map((p) => ({ tieuDe: p.tieu_de ?? '(không tên)', caus: p.caus, maCaus: p.maCaus }))
 }
 // Câu MT của buổi = gộp mọi phần 'custom' theo thứ tự (dùng cho seed problem_no liên tục toàn bài).
 export async function getMTCaus(taiLieuId: string): Promise<CauHoi[]> {
