@@ -12,6 +12,8 @@
 //   chịu trách nhiệm không gọi hàm này cho case thái độ.
 import { supabase } from './supabase'
 import { khoCuaMon } from './tailieu'
+import { getMasteryHS } from './mastery'
+import { homNayVN, congNgay } from './tuan'
 import { RESULT_VALUE } from '../gami/mastery.js'
 
 const LIMIT = 10000
@@ -136,6 +138,25 @@ export async function getDangCuaCase(boTroYeuId: string, mon: string): Promise<D
   }))
 }
 
+// Dạng YẾU/CẦN LUYỆN của HS theo mastery hiện tại — nguồn gợi ý cho nút "+ Thêm dạng" (Thùy 09-02:
+// "bấm thêm dạng thì phải hiện dạng nó yếu, hiện toàn bộ thì chọn kiểu gì"). Số lấy từ `getMasteryHS`
+// (fn_mastery_cells, §2.0) GỘP cả BTVN cho khớp `score` của stat sheet Dashboard (ET+MT+BTVN). Chỉ là
+// GỢI Ý — người duyệt vẫn tick/bỏ; dạng chưa đo hoặc khối khác đi đường "tìm toàn bản đồ" (DangPicker).
+export type DangGoiY = {
+  ma_dang: string; ten_dang: string; ten_chuyen_de: string
+  score: number; n: number; muc: 'yeu' | 'can_luyen'; tin: 'cao' | 'tb' | 'thap'
+}
+export async function getDangYeuGoiY(hocSinhId: string, mon: string): Promise<DangGoiY[]> {
+  const all = await getMasteryHS(hocSinhId, mon, { includeBTVN: true })
+  return all
+    .filter((d) => d.mastery && d.mastery.muc !== 'dat') // lọc theo NHÃN DB đã tính (fn_mastery_cells), không tính lại
+    .map((d) => ({
+      ma_dang: d.ma_dang, ten_dang: d.ten_dang, ten_chuyen_de: d.ten_chuyen_de,
+      score: d.mastery!.score, n: d.mastery!.n, muc: d.mastery!.muc as 'yeu' | 'can_luyen', tin: d.mastery!.tin,
+    }))
+    .sort((a, b) => a.score - b.score || b.n - a.n) // yếu nhất lên đầu; cùng điểm thì đo nhiều (tin hơn) trước
+}
+
 // Thêm tay — dùng cho "chủ động search dạng bài" (kể cả dạng khối KHÁC, kiến thức năm trước).
 // Dùng chung `DangPicker` (TaiLieuBuilder.tsx) truyền `khoi` tự chọn — picker không ép đúng khối HS.
 export async function themDangTayVaoCase(boTroYeuId: string, maDangs: string[]): Promise<void> {
@@ -172,6 +193,90 @@ export async function listCaseChoXepLich(mon?: string): Promise<CaseChoXep[]> {
   return items.map((c) => ({ ...c, daXep: daXepSet.has(c.id) }))
 }
 
+// ── GỢI Ý MẶC ĐỊNH KHI XẾP LỊCH (Thùy 09-02) ─────────────────────────────────────────
+// Mức 1 (L1, trước/sau giờ): ngày = BUỔI HỌC THƯỜNG của lớp HS (TKB × ngày, như `buoiAoCuaKhoang`
+// gami.ts), mặc định buổi tiếp theo; giờ/phòng theo slot; người = TA chính của lớp (phan_cong_lop).
+// Mức 2/3 (buổi riêng): mặc định giống CA BỔ TRỢ YẾU GẦN NHẤT em đã học; chưa có thì để trống.
+// Đây là DEFAULT để người xếp sửa — không phải ràng buộc; chỉ là list thô + tra cứu (§2.0 cho phép).
+const thuOf = (ngay: string): number => { const d = new Date(ngay + 'T00:00:00').getDay(); return d === 0 ? 8 : d + 1 } // CN=8, T2=2..T7=7
+const SO_NGAY_TKB_TOI = 28
+
+export type BuoiLopSapToi = {
+  lop_id: string; ten_lop: string; ngay: string; thu: number
+  gio_bat_dau: string | null; gio_ket_thuc: string | null; phong: string | null
+  daMo: boolean // đã có dòng buoi_hoc thường (giờ/phòng lấy từ đó — có thể đã đổi so với TKB)
+}
+export type GoiYXepLich = {
+  lops: { id: string; ten_lop: string }[]          // lớp đang học của HS ở MÔN này (thường 1)
+  buoiSapToi: BuoiLopSapToi[]                       // hôm nay → +28 ngày, tăng dần
+  ta_id: string | null                              // TA chính lớp đầu tiên
+  ganNhat: { ngay: string; gio_bat_dau: string | null; gio_ket_thuc: string | null; phong: string | null; nguoi_day_tg: string | null } | null
+}
+
+export async function goiYXepLichBoTroYeu(hocSinhId: string, mon: string): Promise<GoiYXepLich> {
+  const homNay = homNayVN()
+  const den = congNgay(homNay, SO_NGAY_TKB_TOI)
+
+  const [{ data: ghiDanh, error: eGd }, { data: buoiCu, error: eCu }] = await Promise.all([
+    supabase.from('hoc_sinh_lop')
+      .select('lop_id, lop:lop_id!inner(id, ten_lop, mon, ngay_khai_giang, trang_thai)')
+      .eq('hoc_sinh_id', hocSinhId).eq('trang_thai', 'dang_hoc').eq('lop.mon', mon).limit(LIMIT),
+    supabase.from('buoi_hoc_hs')
+      .select('buoi:buoi_hoc_id(ngay, gio_bat_dau, gio_ket_thuc, phong, nguoi_day_tg, trang_thai, loai)')
+      .eq('hoc_sinh_id', hocSinhId).not('bo_tro_yeu_id', 'is', null).limit(LIMIT),
+  ])
+  if (eGd) throw eGd
+  if (eCu) throw eCu
+
+  const lops = ((ghiDanh ?? []) as any[]).map((r) => r.lop).filter((l) => l && l.trang_thai === 'dang_hoc')
+  const lopIds = lops.map((l) => l.id)
+
+  let buoiSapToi: BuoiLopSapToi[] = []
+  let ta_id: string | null = null
+  if (lopIds.length) {
+    const [{ data: slots, error: eTkb }, { data: daMo }, { data: pc }] = await Promise.all([
+      supabase.from('thoi_khoa_bieu')
+        .select('lop_id, thu, gio_bat_dau, gio_ket_thuc, phong, hieu_luc_tu, hieu_luc_den')
+        .in('lop_id', lopIds).lte('hieu_luc_tu', den).limit(LIMIT),
+      supabase.from('buoi_hoc').select('lop_id, ngay, gio_bat_dau, gio_ket_thuc, phong')
+        .in('lop_id', lopIds).eq('loai', 'thuong').neq('trang_thai', 'huy').gte('ngay', homNay).lte('ngay', den).limit(LIMIT),
+      supabase.from('phan_cong_lop').select('nhan_su_id, vai_tro, la_chinh').eq('lop_id', lopIds[0]).eq('vai_tro', 'tg').limit(LIMIT),
+    ])
+    if (eTkb) throw eTkb
+    const lopMap = new Map(lops.map((l) => [l.id, l]))
+    const moMap = new Map(((daMo ?? []) as any[]).map((b) => [`${b.lop_id}|${b.ngay}`, b]))
+    const seen = new Set<string>() // 1 (lớp × ngày) = 1 buổi thường — TKB có thể có slot chồng (xem timBuoiTheoLop)
+    for (let d = homNay; d <= den; d = congNgay(d, 1)) {
+      const thu = thuOf(d)
+      for (const s of (slots ?? []) as any[]) {
+        const l = lopMap.get(s.lop_id)
+        if (!l || s.thu !== thu || s.hieu_luc_tu > d || (s.hieu_luc_den && s.hieu_luc_den < d)) continue
+        if (!l.ngay_khai_giang || l.ngay_khai_giang > d) continue
+        const k = `${s.lop_id}|${d}`
+        if (seen.has(k)) continue
+        seen.add(k)
+        const mo = moMap.get(k)
+        buoiSapToi.push({
+          lop_id: s.lop_id, ten_lop: l.ten_lop, ngay: d, thu,
+          gio_bat_dau: mo?.gio_bat_dau ?? s.gio_bat_dau ?? null, gio_ket_thuc: mo?.gio_ket_thuc ?? s.gio_ket_thuc ?? null,
+          phong: mo?.phong ?? s.phong ?? null, daMo: !!mo,
+        })
+      }
+    }
+    buoiSapToi.sort((a, b) => a.ngay.localeCompare(b.ngay) || (a.gio_bat_dau ?? '').localeCompare(b.gio_bat_dau ?? ''))
+    const pcs = (pc ?? []) as any[]
+    ta_id = pcs.find((p) => p.la_chinh)?.nhan_su_id ?? pcs[0]?.nhan_su_id ?? null
+  }
+
+  const cu = ((buoiCu ?? []) as any[]).map((r) => r.buoi)
+    .filter((b) => b && b.loai === 'bo_tro_yeu' && b.trang_thai !== 'huy')
+    .sort((a, b) => b.ngay.localeCompare(a.ngay))
+  const g = cu[0]
+  const ganNhat = g ? { ngay: g.ngay, gio_bat_dau: g.gio_bat_dau, gio_ket_thuc: g.gio_ket_thuc, phong: g.phong, nguoi_day_tg: g.nguoi_day_tg } : null
+
+  return { lops: lops.map((l) => ({ id: l.id, ten_lop: l.ten_lop })), buoiSapToi, ta_id, ganNhat }
+}
+
 // Tạo buổi bổ trợ yếu MỚI + gắn case + HS. 1 buổi = 1 HS (khác buổi bù có thể gom nhiều lần-nghỉ,
 // bổ trợ yếu luôn riêng-1-em dù mức 1 hay mức 2 — PLAN §0 mục 4, không có khái niệm gộp lớp).
 export async function taoBuoiBoTroYeu(input: {
@@ -179,12 +284,14 @@ export async function taoBuoiBoTroYeu(input: {
   hocSinhId: string
   ngay: string
   gio_bat_dau?: string | null
+  gio_ket_thuc?: string | null   // có giờ kết thúc thì lịch phòng (phong.ts) mới tính được trùng
   phong?: string | null
   nguoi_day_tg?: string | null   // TA (mức 1/2) hoặc GV cao cấp (mức 3) — người gọi tự chọn đúng pool
 }): Promise<string> {
   const { data: { user } } = await supabase.auth.getUser()
   const { data, error } = await supabase.from('buoi_hoc').insert({
-    loai: 'bo_tro_yeu', lop_id: null, ngay: input.ngay, gio_bat_dau: input.gio_bat_dau ?? null,
+    loai: 'bo_tro_yeu', lop_id: null, ngay: input.ngay, thu: thuOf(input.ngay),
+    gio_bat_dau: input.gio_bat_dau ?? null, gio_ket_thuc: input.gio_ket_thuc ?? null,
     phong: input.phong ?? null, nguoi_day_tg: input.nguoi_day_tg ?? null, trang_thai: 'mo', created_by: user?.id ?? null,
   }).select('id').single()
   if (error) throw error
@@ -249,12 +356,12 @@ export async function layTienDoCa(mon?: string): Promise<TienDoCase[]> {
 
 // Buổi bổ trợ yếu ĐÃ XẾP của 1 case — cho màn Xếp lịch hiện lại giờ/phòng/người dạy đã chốt.
 export type BuoiBoTroYeuDaXep = {
-  id: string; ngay: string; gio_bat_dau: string | null; phong: string | null
+  id: string; ngay: string; gio_bat_dau: string | null; gio_ket_thuc: string | null; phong: string | null
   nguoi_day_tg: string | null; trang_thai: string
 }
 export async function listBuoiCuaCase(boTroYeuId: string): Promise<BuoiBoTroYeuDaXep[]> {
   const { data, error } = await supabase.from('buoi_hoc_hs')
-    .select('buoi:buoi_hoc_id(id, ngay, gio_bat_dau, phong, nguoi_day_tg, trang_thai)')
+    .select('buoi:buoi_hoc_id(id, ngay, gio_bat_dau, gio_ket_thuc, phong, nguoi_day_tg, trang_thai)')
     .eq('bo_tro_yeu_id', boTroYeuId).limit(LIMIT)
   if (error) throw error
   return ((data ?? []) as any[]).map((r) => r.buoi).filter(Boolean)

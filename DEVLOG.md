@@ -8408,3 +8408,72 @@ làm bảng `cum_cong_thuc` + `cum_thu_muc` ngay bước kế.
   label "BK Trợ giảng". Chưa cài máy thật. Rebuild HS bằng script mới để chống regression (kết quả ghi dòng dưới nếu lỗi).
 - Lưu ý cho TA/PT: Web Push (sw-push.js, nhắc việc 10:30) **không chạy trong WebView Android** — muốn nhắc trong app native
   phải làm FCM qua Capacitor plugin. Web/PWA trên Chrome vẫn nhận như cũ.
+## 2026-09-02 (tiếp) — Bổ trợ yếu bước 4: "+ Thêm dạng" chỉ hiện dạng em đang YẾU
+
+**Thùy:** "khi bấm thêm dạng thì hệ thống phải hiện danh sách các dạng mà nó yếu chứ hiện toàn bộ các dạng thì
+chọn kiểu gì" (bản trước nút mở thẳng `DangPicker` toàn bản đồ theo khối).
+**Làm:**
+- `botro_yeu.ts`: `getDangYeuGoiY(hsId, mon)` = `getMasteryHS(…, includeBTVN: true)` (fn_mastery_cells, §2.0 — không
+  tính lại ở client) lọc theo nhãn DB `muc !== 'dat'`, sort score tăng (yếu nhất trước, cùng điểm thì n lớn trước).
+- `NoiDungBoTroYeuScreen`: popup mới `DangYeuPicker` — mỗi dòng: tên dạng · chuyên đề · nhãn yếu/cần luyện ·
+  `score% · n lần`; dạng đã có trong case mờ + "đã có" (checkbox disabled); "Chọn tất cả N dạng chưa có"; nút
+  "Thêm N dạng" (disabled khi 0). Toàn bản đồ (kiến thức năm trước / dạng chưa đo) hạ xuống thành đường phụ:
+  dòng nhỏ dưới nút có select khối + "Tìm trong toàn bản đồ…", và link cùng tên ở footer popup yếu.
+- `themXong` bọc try/catch hiện lỗi (trước nuốt lỗi upsert).
+**Verify (localhost:5211, case Triệu Đức Tùng · Toán · K8):** popup hiện 10 dạng yếu/cần luyện (0%·66 lần lên đầu),
+tick 1 → "Thêm 1 dạng" → case sang "1 dạng", mở lại thấy dòng đó "đã có" khoá. tsc sạch. Dạng test "Tách biểu
+thức thành bình phương" ĐÃ GHI THẬT vào case (chưa dạy, Thùy bỏ bằng ✕ nếu không muốn — Claude không tự xoá).
+
+## 2026-09-02 (tiếp) — Xếp bổ trợ yếu: bấm card ra thẳng form, mặc định theo MỨC (TKB lớp / ca gần nhất)
+
+**Thùy:** L1 = xếp trước/sau giờ buổi học → chỗ chọn ngày phải là BUỔI HỌC của lớp em (theo TKB), mặc định buổi
+tiếp theo; click card phải hiện luôn địa điểm/giờ/người, mặc định theo ca học của em. L2 = cùng field, mặc định giống
+ca bổ trợ gần nhất, không có thì trống. "Chưa có buổi nào / + Xếp buổi mới" khó hiểu → bỏ.
+**Làm:**
+- `botro_yeu.ts` `goiYXepLichBoTroYeu(hsId, mon)`: lớp đang học của HS ở môn → buổi thường 28 ngày tới (TKB × ngày,
+  ưu tiên `buoi_hoc` thường đã mở nếu có — giờ/phòng có thể đã đổi; gom 1 lớp×ngày = 1 buổi như timBuoiTheoLop) +
+  TA chính (`phan_cong_lop` tg, la_chinh) + ca bổ trợ yếu gần nhất của HS (buoi_hoc_hs.bo_tro_yeu_id, bỏ huỷ).
+- `taoBuoiBoTroYeu` nhận thêm `gio_ket_thuc` + ghi `thu` (trước không có giờ kết thúc → lịch phòng không tính trùng
+  được cho buổi bổ trợ yếu). `listBuoiCuaCase` trả thêm gio_ket_thuc.
+- `XepLichBoTroYeuScreen`: XepModal viết lại — form hiện NGAY. Mức 1: select "Buổi học của lớp (theo TKB)" (▶ buổi
+  tiếp theo mặc định, có "Ngày khác (nhập tay)"), ngày khoá theo slot, bắt đầu = giờ tan lớp, kết thúc = +60' (cùng
+  mặc định buổi bù), phòng = phòng slot, người = TA chính. Mức 2/3: ngày trống, giờ/phòng theo ca gần nhất, người:
+  mức 2 = người ca cũ, mức 3 = trống (đổi người, PLAN §0.4). Phòng dùng danh mục `phong` thật (SearchSelect, giữ mã
+  ngoài danh mục từ TKB cũ) + `kiemTraTrungPhong` báo trùng (cảnh báo, không chặn). Mức 2 hiện kiểm tra cửa sổ
+  retest 3–7 ngày tới buổi thường kế tiếp (PLAN §0.3, chỉ hiển thị). Buổi đã xếp hiện gọn ở đầu, form = xếp thêm.
+  Bỏ mảng ROOMS_TAM.
+**Verify (localhost:5211, case Tùng · Toán · K8, mức 1):** mở card → select 8 buổi 8B1 (T5 03/09 18:00–19:30 P102
+mặc định), ngày 03/09, 19:30–20:30, P102, TA Hoàng Thị Quỳnh Trang; cảnh báo trùng "P102 19:30–21:00 · 10A1 (TKB)"
+hiện đúng — lộ luôn vấn đề thật: "sau giờ" cùng phòng đụng lớp kế. KHÔNG bấm xác nhận (tránh đẻ buổi thật gán TA).
+Nhánh mức 2/3 chưa có case để test runtime. tsc sạch.
+
+## 2026-09-02 (tiếp) — AI đề xuất lịch bổ trợ yếu: cần gì (Thùy hỏi "tính luôn xem còn cần gì")
+
+Hiện có: case chờ xếp + mức (hs_level) + dạng · TKB lớp (→ buổi thường, giờ tan) · TA/GV lớp (phan_cong_lop) · môn
+của NS (nhan_su_mon) · lịch phòng 3 nguồn + kiemTraTrungPhong (phong.ts) · mẫu "AI đọc → người duyệt" (ai_job, danhgia.ts).
+Còn thiếu (theo thứ tự chặn):
+1. LỊCH RẢNH của TA (bảng riêng, thứ×khung giờ + hiệu lực; khác phan_cong_ca = OPS trực ca) — Thùy đang định làm.
+2. THỜI LƯỢNG chuẩn theo mức (đang default 60') — thiếu gio_ket_thuc thì không check trùng phòng/TA/HS được.
+3. Lịch BẬN của HS: TKB mọi lớp em học (mọi môn) + buổi bù/bổ trợ khác đã xếp — derive được, chưa có hàm.
+   Khung giờ PH cho phép (đón/về) → CHƯA có chỗ lưu, cần field trên HS hoặc hỏi PH tay.
+4. Cờ "GV cao cấp" cho mức 3 — vai_tro chưa có; cần vai_tro/bậc NS hoặc danh sách tay.
+5. Tải TA: số buổi bổ trợ/tuần đã nhận (derive từ buoi_hoc.nguoi_day_tg) + trần cho phép (chưa chốt).
+6. Ràng buộc cửa sổ retest 3–7 ngày (PLAN §0.3) — đã có ở UI, cần thành luật trong hàm chấm điểm slot.
+7. Ưu tiên ca: chuông đỏ / timer 14 ngày / số lần bổ trợ (case_truoc_id) — tín hiệu có, chưa gom thành 1 điểm.
+8. Gom nhóm: PLAN nói 1 buổi = 1 HS; nếu muốn AI ghép 2–3 em cùng dạng/khối/giờ thì phải quyết lại.
+9. Hạ tầng §2.0: fn_ đọc (slot rảnh TA · lịch phòng · lịch HS · case chờ) + bảng đề xuất (de_xuat_lich: ca, slot,
+   lý do, trạng thái duyệt) để AI ghi ĐỀ XUẤT, người bấm duyệt → mới tạo buoi_hoc. Không cho AI ghi thẳng buoi_hoc.
+
+## 2026-09-03 — Xếp bổ trợ yếu: giờ gõ chữ · khoá "Xác nhận" sau khi lưu · nút Huỷ buổi
+
+**Thùy:** (1) ô chọn giờ phải gõ chữ, picker giờ khó chịu; (2) bấm Xác nhận 2 lần đẻ 2 ca — lưu xong phải không
+cho bấm lại. (Thực tế DB có 2 buổi 03/09 17:30–17:30 của Tùng — kết thúc = bắt đầu vì picker cũ không tự kéo giờ kết.)
+**Làm (`XepLichBoTroYeuScreen`):**
+- Bắt đầu/Kết thúc = input text, `chuanHoaGio` nhận "19:30"·"1930"·"19h30"·"7:30" → HH:MM khi blur; viền đỏ khi
+  sai; lúc xác nhận chặn sai định dạng + kết thúc ≤ bắt đầu. Báo trùng phòng chỉ chạy khi giờ hợp lệ.
+- `daXep`: lưu xong → nút thành "✓ Đã xếp" (disabled, xanh), `xacNhan` guard `busy||daXep`; đổi field bất kỳ hoặc bấm
+  "+ Xếp thêm buổi khác cho ca này" mới mở khoá. Lý do bug cũ: `busy` chỉ chặn trong lúc chờ mạng.
+- Mỗi buổi 'mo' trong "Đã xếp cho ca này" có nút Huỷ → hỏi lại inline (Huỷ/Thôi) → `huyBuoi` (gami.ts, soft
+  trang_thai='huy', ly_do "OPS huỷ ở màn Xếp bổ trợ yếu"), buổi huỷ gạch ngang. Để Thùy tự dọn ca trùng.
+**Verify:** localhost:5211 case Tùng: form hiện 19:30/20:30 dạng chữ, 2 buổi trùng hiện kèm Huỷ, hỏi lại inline OK.
+Không tạo/huỷ buổi thật để test nhánh khoá nút (logic thuần state). tsc sạch.
