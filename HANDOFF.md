@@ -913,9 +913,164 @@ hàm `listNguoiChoCham`/`listNguoiChoTraBai` ở `tuyensinh.ts`). Badge tên hi�
 có màn báo cáo nào nối vào 2 cột này (Thùy có ý muốn báo theo người-được-assign) — khi làm thì join
 thẳng `ca_test.nguoi_cham_id`/`nguoi_tra_bai_id`, data đã sẵn, không cần thêm gì ở tầng data.
 
+### Bot hỏi–đáp nhân sự "💬 Hỏi hệ thống" (29/08 — chạy production)
+- **Luồng:** nhân sự hỏi trên ERP (tab thứ 4 trong Việc của tôi, KHÔNG đẻ leaf — cùng lý do TroLyTab) → job vào `hoi_dap_nhan_su` → bot **Claude Code chạy máy local** (`scripts/hoidap/bot.mjs`) claim atomic, đọc repo + tra DB, ghi `tra_loi` → UI poll 5s tự hiện. Phân vai với tab 🤖 Trợ lý: trợ lý đọc bảng sạch ngày; bot này trả lời "vì sao/quy trình" **+ số liệu** (CEO: "bản chất vẫn là trợ lý cũ, chạy bằng Claude Code").
+- **Pilot 3 người** (Thùy · Phạm Thị Thùy Trang · Trần Bảo Lộc): nguồn chân lý = hàm DB `hoi_dap_duoc_dung()` (mig `202608291205`) — RLS chặn thật, UI rpc cùng hàm để ẩn tab. Mở rộng = 1 migration mới thay hàm, KHÔNG đụng client.
+- **Số liệu theo nguyên tắc "AI chọn lệnh, không viết SQL":** kho 11 lệnh viết sẵn `scripts/hoidap/tools.mjs` (thieu_btvn · vang_hoc · bang_elo_exp · hoc_tap_hoc_sinh · hoc_phi_no · viec_dang_treo · buoi_hom_nay · tuyen_sinh_dem · diem_et · diem_mt · bo_tro bu/duoi/yeu) + runner `tracuu.mjs` (key=value, `begin transaction read only`, parameterized). SELECT tự do (`query.mjs`) = fallback; câu nào rơi vào fallback nhiều → thăng cấp thành lệnh. Thêm lệnh: entry mới trong tools.mjs + test `tracuu.mjs <lệnh> key=value` ra data thật (xem `scripts/hoidap/README.md`).
+- **Vận hành trên máy CEO (DESKTOP-EV1E49J):** listener chạy TỪ WORKTREE `wt-bot` (đứng cố định ở main) — Startup `.cmd` + Task Scheduler lưới vớt 15' đều trỏ wt-bot. Auth = `ANTHROPIC_API_KEY` (.env.local — CLI local không login; daemon dựa login CLI là chết định kỳ). Heartbeat `hoi_dap_bot` 60s → UI báo "bot mất liên lạc" khi quá 10'. Claude trong bot: allowedTools chỉ Read/Grep/Glob + 2 script tra cứu — không Bash tự do/Write/Edit; câu hỏi vào qua stdin.
+- ⚠ **Bố trí ĐỔI 01/09** (xem mục "Bố trí worktree" ở ①): `main` giờ ở checkout chính
+  `bkdemy-erp-v2`, `wt-bot` sang **detached** — bot vẫn chạy y nguyên từ `wt-bot`, nhưng `git pull`
+  trong đó hết ăn: pull main ở checkout chính rồi `git -C ../wt-bot checkout main --detach` để bot
+  ăn code mới. Bài học gốc vẫn giữ: checkout chính là **sân chung nhiều phiên Claude** — trước khi
+  merge/commit phải xem mình đang đứng nhánh nào (29/08 đã merge nhầm vào feat/app-ops, CEO reset gỡ).
+- Bẫy schema đã cắn khi viết 11 lệnh (chi tiết DEVLOG 29/08): `btvn_ket_qua` dùng `trang_thai_nop` (hoan_thanh/dung_han đời cũ); lịch ngày derive từ `thoi_khoa_bieu` vì `buoi_hoc` chỉ có dòng khi ĐÃ MỞ (thu = isodow+1); Realtime chỉ bắn INSERT + listener phải restart sau khi đổi publication; policy dùng `public.jwt_uid()` không phải `auth.uid()`.
+
+### ⭐ Chiến dịch "hạ tính toán xuống DB" — Phase 1+2 XONG · Phase 3 ~75% (đến hết 30/08)
+- Luật CLAUDE.md **§2.0** (CEO chốt 30/08): mọi query tổng hợp + tính toán nghiệp vụ ở
+  Postgres; client & AI chỉ gọi hàm sẵn (`rpc` / catalog bot). Code MỚI phải theo ngay.
+- Checklist sống = `AUDIT-client-tinh-toan.md` (tick từng đợt, migration nào, parity nào) —
+  ĐỌC FILE ĐÓ trước khi làm tiếp, đây chỉ là tóm tắt:
+  - **XONG:** Phase 1 (13/15 gốc tính-rồi-ghi-ngược → trigger/RPC: điểm chấm test, trạng thái
+    thu tiền, điểm/verdict MT, hiệu suất nghiệm thu+duyệt, gậy, NGUYÊN engine Elo/EXP, TLN
+    normalize+chấm lại) · Phase 2 (tiền 100% — hocphi.ts thành seam mỏng; phiếu & bảng cùng
+    1 nguồn số `hoc_phi_theo_mon_ky`) · Phase 3a/b/c (fn_mastery_cells parity 391/391 +
+    Hình + ma trận lớp + completion + fn_rank_diem_mt).
+  - **CÒN:** `getTongQuanHS` (mastery.ts) · `getStatSheetLop`+`listCandidatesLop` (danhgia.ts
+    — rule engine, ổ NẶNG cuối) · `nguongTuCohort` (troly.ts, percentile_disc) · Phase 4
+    (quét lớn còn lại + task-engine getMyTasks/listAllStaffTasks/quetGayTuDong + 68 VỪA + 27 NHẸ).
+- **Phương pháp bắt buộc mỗi đợt** (đã bắt được 4 bug thật nhờ nó): parity số cũ=mới trên DB
+  thật TRƯỚC khi cắt → áp migration → smoke bằng transaction ROLLBACK (giả JWT qua
+  `set_config('request.jwt.claims',...)`) → client mỏng gọi rpc → tsc+build → tick AUDIT.
+- Bẫy port JS→SQL (chi tiết DEVLOG 30/08): `Math.round` JS = floor(x+0.5) ≠ round() SQL số âm
+  (dùng `fn_jsround`) · `\b` JS là ASCII (bug thật đã vá 2 phía) · jsonb scalar bóc `#>>'{}'` ·
+  `substring(from pattern)` PG trả nhóm ngoặc đầu · tie-break xếp hạng phải TẤT ĐỊNH.
+- ~~Thi công trong worktree `wt-bot` (đứng cố định ở main)~~ → **ĐỔI 01/09, xem "Bố trí worktree"
+  ngay dưới**: nhánh `main` giờ nằm ở checkout chính `bkdemy-erp-v2`.
+
+### ⭐ 4 APP RIÊNG CHO 4 VAI (HS · OPS · TA · GV) — trạng thái đến hết 31/08
+- **Khuôn:** mỗi app = **1 entry Vite riêng trong CÙNG repo** (không đẻ repo mới): `index.html`
+  (ERP desktop) · `hs.html` · `ops.html` · `ta.html` · `gv.html`; mỗi cái 1 `vite.config.<x>.ts`,
+  `dist-<x>`, scripts `dev:x|build:x|preview:x`, PWA + màu riêng (HS da trời `#087fc6` · OPS indigo ·
+  TA teal `#0d9488` · GV lá cây `#16a34a`), **5 project Vercel**. Làm app mới = **nhân bản app gần
+  nhất**, KHÔNG import ngược màn ERP desktop (cấm `useStore`/`BuoiHocScreen`/screens kho — bundle
+  phình + logic desktop không hợp cảm ứng). Gate 3 tầng chặn HS → profile → `my_quyen`.
+- **Dùng CHUNG engine với ERP, app chỉ là mặt:** việc = `getMyTasks` lọc `TASKS_BY_VAI[vai]` (engine
+  0 sửa mỗi lần thêm app) · chấm vẫn `gami_grades` + `fn_dong_phase`/`fn_dong_btvn` · góp ý vẫn
+  `bao_loi`. Thêm app KHÔNG được đẻ hệ chấm/thông báo thứ 2.
+- **App TA (30/08) + luồng PH NỘP BTVN ẢNH:** 5 màn (Home việc-của-tôi · ChamBuoi ingame/ET ·
+  ChamBtvn hợp nhất 2 đường nộp · Dash tháng · góp ý). DB: `btvn_nop`/`btvn_nop_anh` (ảnh gốc
+  immutable, `path_cham` riêng; bucket **private** `btvn-nop` nên DB lưu PATH, hiện = signed URL) ·
+  `btvn_nhan_xet_mau` (8 mẫu, TA CHỌN không gõ) · role **`ph_nop`** chỉ EXECUTE 2 RPC nộp = đường
+  ghi DUY NHẤT của PH (không nới FDW ghi) · 5 view FDW gate `tra_at` để trả bài. PH **không chọn
+  buổi** — hệ gán tạm buổi gần nhất, **TA chốt buổi** trong màn chấm (pattern đề-xuất → người
+  confirm, giống chip trạng thái nộp).
+- **App GV (31/08):** 5 tab (Hôm nay · Việc chấm · Học sinh · Lớp · Của tôi). `DanhGiaPanel` viết
+  MỚI touch-first (ERP desktop `DanhGiaTab` 2100+ dòng, cấm import) + **🚨 chuông đỏ bổ trợ ghi chú
+  BẮT BUỘC** (`canh_bao_yeu.nguon='danhgia'` tự chảy vào luật duyệt bổ trợ, 0 công engine) · MT
+  **theo tháng + rank khối** (không có khái niệm "trung bình MT" — CEO chốt) · `fn_rank_diem_mt_lop`
+  batch để né N+1 RPC. **Dashboard GV mới TẦNG A (kỷ luật)** — tầng B (chất lượng đánh giá) và C
+  (outcome) chờ thống nhất bộ chỉ số, UI nói thẳng "🔜 sắp có".
+- **Dashboard tháng TA/GV:** bar = **đạt-chuẩn / đến-hạn** (chậm = không đạt · chất lượng duyệt <80
+  = không đạt) · **thiếu dữ liệu CHẶN đóng** (`fn_dong_phase` v4) · TA thấy MÌNH + TOP 3, ngưỡng ≥10
+  việc · 100% + đủ 10 việc = **mốc thưởng tiền** hiện trên bar. **Người bị ẩn xếp hạng**
+  (`nhan_su.an_xep_hang`, data-driven không hard-code tên) không có rank/không vào mẫu số, nhưng bar
+  + stat của chính họ vẫn tính. Đã seed đúng 2 người (NS001, NS002).
+- **⭐ `fn_dong_phase` v5 (31/08, CEO):** guard đủ-dữ-liệu **chỉ áp ET/MT**; **ingame cho đóng
+  trống** ("chấm bài trên lớp không bắt buộc có dữ liệu"). Đây là nới **TẠM THỜI** — siết lại phải
+  bằng migration mới, đừng tưởng guard v4 còn nguyên.
+- **Backfill hành chính đã chạy (đừng làm lại):** đóng khâu Đánh giá **mọi buổi < 23/08** + đóng
+  task 2 lớp **8S0 + 12A1**. Luật của loại thao tác này: chỉ điền mốc đang NULL, **mốc = 23:00 VN
+  NGÀY BUỔI** (không phải `now()`) để dashboard không tính "đóng muộn" trừ oan bar của GV/TA; buổi
+  `trang_thai='huy'` cố ý bỏ qua (còn 47 buổi NULL đều là huỷ — ĐÚNG, không phải sót).
+- **CÒN TREO:** e2e đường GHI của PH mới chạy 1 lượt nộp thật · bucket `btvn-nop` chưa verify được
+  từ CLI (`claude_build` cấm đọc schema `storage` — xem Dashboard) · dashboard GV tầng B/C · 4 nhánh
+  chưa merge (`feat/app-ops`, `feat/app-ops-ui`, `feat/fix-lane-v2`, `hocphi/phat-sinh-hs-nghi`).
+
+### Bố trí worktree trên máy CEO (ĐỔI 01/09 — CEO chốt)
+- **Nhánh `main` đứng ở checkout chính `bkdemy-erp-v2`** (trước 01/09 là `wt-bot` giữ). Làm việc
+  hằng ngày / pull main → ở đây.
+- **`wt-bot` sang detached HEAD**, giữ đúng code commit đang chạy. Bot hỏi–đáp vẫn chạy từ đường dẫn
+  cũ (Startup .cmd + Task Scheduler trỏ `wt-bot`), **không đổi 1 dòng code**. Đánh đổi đã biết: nó
+  KHÔNG tự theo main nữa ⇒ **pull main xong, muốn bot ăn code mới thì chạy**
+  `git -C ../wt-bot checkout main --detach` (bot đọc repo để trả lời, code trễ vài ngày không chết ai).
+- Các worktree `wt-*` còn lại = mỗi nhánh 1 thư mục cho các phiên chạy song song; hiện đều sau main
+  85-106 commit — **rebase/merge main trước khi dùng lại**.
+
+### Nền repo/DB — CHUẨN HOÁ 01/09 (sau chuỗi phiên làm từ điện thoại)
+- **Sổ `_migrations` giờ khớp DB thật:** 0 file treo · 0 báo-động-giả. Đã: baseline 10 file áp tay
+  27→31/08 · vá `bam()` bỏ CR trước khi băm (62 báo "file bị sửa" trước đó là **CRLF vs LF**, không
+  file nào đổi nội dung) · đóng dấu lại 133 dòng sổ · thêm chiều soi **"có trong sổ nhưng không còn
+  file trong repo"**.
+- **`schema.md` refresh 01/09:** 169 bảng · 7 view · 27 trigger · 152 function. (Chạy `npm run
+  schema` sau MỖI đợt áp migration — bản trước đó đứng ở 29/08, cũ hơn 14 migration.)
+- **⭐ Quyền FDW `fdw_bkdemy_web` — hộ dùng THẬT là app PH, không phải web (đã siết lại 01/09):**
+  role này là cổng đọc ERP của CẢ HAI hệ nằm chung project `bkdemy-ph`: **app PH** (`bkdemy-ph-app`,
+  hộ dùng chính — 21 foreign table: danh tính, buổi, đánh giá, báo cáo, hoá đơn, tài liệu, đáp án,
+  4 view trả BTVN) và **bkdemy-web** (đúng 4 bảng cho view `erp_fdw_live_gv_gia`). Vì vậy bản siết
+  15/08 "còn 4 bảng" bị `202608151600_hoan_tac_fdw_thu_hep.sql` mở lại là **ĐÚNG nghiệp vụ** — đừng
+  đọc mig 15/08 rồi tưởng đang có lỗ hổng (01/09 đã tưởng nhầm 1 lần). Trạng thái sau
+  `202609012300`: **25 object** = 24 cái đang import thật + `v_btvn_dap_an` (chừa cho bước trả đáp
+  án); đã gỡ 10 bảng không hộ nào import (bài làm/điểm/kho câu/lịch). Nguồn chân lý để đối chiếu =
+  `limit to (...)` trong `bkdemy-ph-app/migrations/*.sql` + `bkdemy-web/supabase-ph-migrations/`.
+  **Thêm foreign table bên PH ⇒ phải cấp KÈM 2 cổng bên ERP** (GRANT + policy `fdw_bkdemy_web*`).
+
+### ⭐ CÔNG THỨC — ô nhập MathLive không gõ LaTeX + phím tắt cá nhân (03/09, nhánh `feat/cong-thuc`, worktree `wt-cong-thuc`)
+- **Quyết định (Thùy):** người soạn KHÔNG gõ / KHÔNG thấy LaTeX. Cấu trúc chỉ vào bằng **CLICK mẫu** hoặc **PHÍM TẮT tự gán**
+  (không bộ mặc định). Tắt gõ tắt kiểu chữ (`sqrt` = 4 chữ), chặn `\` `^` `_`. **Định dạng lưu KHÔNG đổi**: text có `$…$`
+  trong cột cũ ⇒ in / ET / test online / AI sinh đề không đụng. MathLive nhập, KaTeX render.
+- **Code:** `src/lib/math/{macros,templates,phimtat}.ts` · `src/components/math/{MathPopup,MathTextarea,PhimTatModal}.tsx`.
+  `MathTextarea` bọc textarea (forwardRef, `autoMaxPx`): nút Σ · Ctrl+M · phím gán bấm ngay trong textarea → mở ô kèm mẫu ·
+  preview `<MathText editable>` (bọc `span.mt-f[data-fi]`, `listMath` ở ui.tsx) → **click công thức = mở lại sửa đúng đoạn**.
+  Gắn: FormBaiToan (4 ô) · DangHub `CauEditor` (Đề cả 2 bố cục + `SolutionField`) · NhapKho (Đề chung Đ/S). Không đụng ô khác.
+- **Macro = 1 file** `lib/math/macros.ts` cấp cho cả MathLive lẫn `tex()` của `MathText` (3 nơi render đều qua MathText).
+  `\placeholder` chỉ KaTeX (ô xám bằng `\rule`, chạy cả trong `\text{}`). Mẫu mới **phải qua `npm run kiem:mau`** (96 mẫu × 4 ca).
+- **Phím tắt:** `nhan_su.phim_tat_cong_thuc` jsonb (mig `202609030144`, ĐÃ áp) `{templateId: 'Ctrl+Alt+F'}`; load cùng `me`
+  (store), không localStorage ⇒ 2 người 1 máy mỗi người 1 bộ. Combo lấy theo `e.code`, bắt buộc Ctrl/Alt/Meta hoặc F-key;
+  dành riêng Ctrl+M/C/V/X/Z/Y/A. Trùng → báo đỏ ngay, không nhận. Vào từ Hồ sơ (⌨) hoặc từ chính popup.
+- **Audit dữ liệu cũ** `npm run kiem:congthuc` (CHỈ ĐỌC, `SET TRANSACTION READ ONLY`, ưu tiên `DATABASE_URL_RO`; chưa có RO
+  → `--allow-rw`): **177.956 công thức · 48 lỗi parse / 35 dòng · 464 dòng `$` lẻ**. Lỗi ở dai_cau_hoi (44): `\right`→`ight`,
+  `\n` literal trong `$…$`, thiếu `\` trong `cases`, `$` lồng (cụm T112010301022–032); khtn 2; lý thuyết 2. Báo cáo
+  `scripts/tmp/kiem-cong-thuc-*.md` (gitignored). **CHƯA sửa dữ liệu — chờ Thùy quyết.**
+- **Treo:** IME tiếng Việt thật (Telex/Unikey) trong MathLive chưa thử tay · FormBaiToan/NhapKho mới verify qua tsc (cùng
+  component) · in thật 1 đề đối chiếu preview chưa làm · `AutoTextarea` (DangHub) hết dùng, giữ+export chờ gật xoá ·
+  `.env` chưa có `DATABASE_URL_RO`.
+- **PHẦN B (vẽ hình phẳng JSXGraph, lưu có cấu trúc bảng riêng theo môn, SVG cho in) CHƯA làm — chặn bởi câu hỏi CEO:**
+  hình do AI sinh từ đề rồi người duyệt, hay GV tự dựng tay? PHẦN C (không gian) không làm.
+
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
 
 
+- **⭐⭐ PHIÊN LÀM TỪ ĐIỆN THOẠI (remote, KHÔNG có credential DB) — về máy có DB PHẢI chạy nghi thức
+  đóng sổ, nếu không repo và DB nói hai chuyện khác nhau (cắn 01/09, 5 ngày liền):** phiên remote
+  viết được migration nhưng **áp không được** → CEO dán tay qua SQL Editor → **DB có, sổ không**;
+  có file còn **chưa từng vào git** (4 file `giai_thuong` 22/08 — `git log --all` = 0 hit). Nghi
+  thức bắt buộc khi về máy có credential: ① `npm run migrate:status` → đối chiếu từng file "còn
+  treo" với `pg_catalog` (có bảng/cột/fn CHƯA đủ — phải **soi THÂN hàm** tìm dấu vân của đúng bản
+  mới, vì `create or replace` không đổi tên) → cái nào DB đã có thì `--baseline`, cái nào chưa thì
+  `npm run migrate` ② `npm run schema` + commit `schema.md` ③ **verify các thao tác dán tay** bằng
+  query thật (seed cờ, role, bucket, backfill) — đừng tin DEVLOG ghi "CEO đã dán".
+- **⭐ "Ai đang dùng quyền này?" phải đo ở PHÍA TIÊU THỤ, không suy từ migration cũ (cắn 01/09):**
+  đọc mig 15/08 (siết `fdw_bkdemy_web` còn 4 bảng, viết lúc chỉ có bkdemy-web dùng) rồi thấy DB đang
+  mở 35 bảng ⇒ tao kết luận "lỗ hổng". Sai: từ 15/08 tới giờ **app PH** đã thành hộ dùng chính với
+  21 foreign table, mở lại là đúng nghiệp vụ. Migration chỉ nói sự thật **lúc nó được viết**. Muốn
+  biết hiện trạng thì mở **repo phía tiêu thụ** đọc khai báo (`limit to (...)`/`create foreign
+  table`) rồi diff với grant — kết quả ra con số dùng được ngay (24 đang dùng / 10 dư). Cùng họ với
+  §2 "số lượng khớp không phải bằng chứng": chứng cứ phải đến từ nơi tiêu thụ, không từ nơi cấp.
+- **⭐ Băm file migration mà tính cả CRLF = 62 báo động giả (01/09):** cùng file áp từ Windows (CRLF)
+  và từ container remote (LF) ra 2 vân tay ⇒ `--status` la làng "DB và repo nói khác nhau" trong khi
+  nội dung y hệt. Báo động giả lâu ngày = **không ai đọc cảnh báo nữa**, nguy hơn không có cảnh báo.
+  Sửa gốc ở CÔNG CỤ (băm nội dung LOGIC, bỏ CR) chứ không sửa từng file. Cùng họ với bài học
+  "sửa `introspect` thay vì vá 1 constraint".
+- **⭐ Sổ migration phải soi ĐỦ 3 CHIỀU** — ① file có, sổ không (còn treo) ② file có, sổ có, vân tay
+  lệch (bị sửa sau khi áp) ③ **sổ có, file KHÔNG** ← chiều này trước 01/09 bị mù, và nó là chiều
+  nguy hiểm nhất: dựng lại DB từ repo sẽ **thiếu im lặng**, không lỗi, không cảnh báo. Migration áp
+  tay xong **phải commit file** — SQL chạy rồi mà file không vào git thì repo hết là source of truth.
+- **⭐ Khôi phục DDL từ DB thì CHÉP ĐÚNG HIỆN TRẠNG, đừng tiện tay "cho chuẩn" (01/09):** dựng lại
+  `giai_thuong` từ `pg_catalog` thấy bảng có **policy cho `fdw_bkdemy_web` nhưng KHÔNG có GRANT** —
+  suýt thêm `grant select` cho "đủ bộ", tức là **tự nới quyền đọc** trong lúc chỉ định khôi phục.
+  Policy và GRANT là **hai cổng độc lập** (đã ghi trong mig 15/08): chép cái đang có, ghi chú chỗ
+  lệch, để CEO quyết. Migration khôi phục cũng phải idempotent + bọc DO-block kiểm **chủ sở hữu**
+  (role migrate không sửa nổi RLS/trigger của bảng thuộc `postgres`).
 - **⭐ PURE-DERIVE thắng roster tĩnh khi vấn đề chỉ là "list quá dài" (Test đầu vào assign, 08-14):**
   build xong 1 bảng curate riêng (`test_dau_vao_nhan_su`) để rút gọn dropdown chọn người, Thùy phản
   biện ngay — sort theo GẦN NHẤT-TỪNG-ĐƯỢC-GÁN (derive từ lịch sử, đã có sẵn trong DB) giải quyết đúng
@@ -1144,6 +1299,18 @@ thẳng `ca_test.nguoi_cham_id`/`nguoi_tra_bai_id`, data đã sẵn, không cầ
 - **⭐ ORACLE ẨU CÒN NGUY HƠN KHÔNG CÓ ORACLE.** Claude viết query kiểm vội (`tuổi > 1`) rồi kết luận model sai
   ở "30/31", suýt đi sửa một tầng đang chạy ĐÚNG (bảng sạch tính theo deadline THẬT — 30 mới đúng).
   **Bản kiểm phải dùng ĐÚNG định nghĩa của bản được kiểm, nếu không nó chỉ đo sự khác nhau giữa hai định nghĩa.**
+
+- **⭐ Custom element trong React 18: `className` KHÔNG thành `class`.** `<math-field className="…">` không nhận class ⇒
+  CSS `::part()` không áp. Gán tay `el.classList.add` trong effect. Áp cho mọi web component nhúng React.
+- **⭐ Chặn phím ở tầng nào thì kiểm tầng đó, và lọc `isTrusted`.** Chỉ chặn `keydown` thì text qua `input`/IME/dán vẫn lọt;
+  chặn thêm `beforeinput` thì MathLive **tự phát `beforeinput` GIẢ** (isTrusted=false, data = LaTeX) mỗi lần `insert()` —
+  handler nuốt luôn mẫu. Sự kiện tổng hợp của thư viện và sự kiện người gõ đi chung một cửa.
+- **Mode chữ/toán của MathLive là trạng thái ẩn:** đang trong `\text{}` mà `insert()` LaTeX thì bị nhét như chữ thường;
+  ô trống trong `\text{}` vẫn ở mode toán (mất `\text`, mất khoảng trắng). Trước mỗi lần chèn mẫu **ép về mode toán**, mẫu
+  Văn bản **ép sang mode chữ**, Tab hết ô thì trả về toán.
+- **Trả focus sau khi gỡ web component: `setTimeout`, không chỉ rAF** — MathLive dọn focus async, focus sớm bị cướp về body.
+- **Mẫu LaTeX ghép với chữ gõ vào phải có khoảng trắng sau lệnh:** `\int#?` điền `x` thành `\intx` (lệnh lạ). Test mẫu theo
+  4 ca (nút · ô trống · đã điền · lưu còn ô trống), không chỉ 1.
 
 ## ③ Nhật ký
 → Chuyển sang **`DEVLOG.md`** (log thô append-only, theo ngày, KHÔNG load khi làm). Là nguồn bất biến để truy lại / tổng hợp lại HANDOFF nếu bản này sai logic.

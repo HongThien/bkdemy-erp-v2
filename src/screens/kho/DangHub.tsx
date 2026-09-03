@@ -1,11 +1,12 @@
 import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react'
 import {
-  listCauByDang, updateCau, deleteCau,
+  listCauByDang, updateCau, deleteCau, duyetCau, boDuyetCau,
   buildClonePrompt, parseCloneJson, saveCloneBatch,
   buildOcrGocPrompt, parseGocJson, buildCloneFromGocPrompt, parseVariantsJson, GOC_SCHEMA,
   buildBatchPrompt, parseBatchJson, parseStructuredText, saveCauBatch, callGeminiJson,
   CLONE_SCHEMA, BATCH_SCHEMA, callGeminiRich, buildIngestPrompt, parseIngestJson, INGEST_SCHEMA,
   uploadKhoImage, LOAI_CAU, CUM_TBL, callAiClone, saveCloneVariants, AI_MODELS,
+  createYeuCauClone,
   type CauHoi, type MapRow,
 } from '../../lib/kho/api'
 import CumBaiTab from './CumBaiTab'
@@ -13,6 +14,7 @@ import TienDeBox from './TienDeBox'
 import { fileToCanvases, canvasToJpegBase64, cropCanvasBox } from '../../lib/pdfRender'
 import PdfCropper from '../../components/PdfCropper'
 import { ImgInsertBar, insertImageAtCursor } from '../../components/ImgInsertBar'
+import { myNhanSuId } from '../../lib/giaoviec'
 
 const SAMPLE_TEXT = `Câu 1.
 Đề bài: Tìm số tự nhiên nhỏ nhất chia hết cho cả 3 và 5.
@@ -25,6 +27,7 @@ Câu 2.
 Lời giải chi tiết: Quy đồng: $\\frac{4}{6} + \\frac{1}{6} = \\frac{5}{6}$.`
 import type { BranchConfig } from './branches'
 import { BacChip, Code, inp, mucDoTone, MathText, readClipboardImageFile } from './ui'
+import { MathTextarea } from '../../components/math/MathTextarea'
 
 const loaiLabel = (v: string) => LOAI_CAU.find((x) => x.value === v)?.label ?? v
 const ta = `${inp} min-h-[72px] resize-y leading-relaxed`
@@ -46,12 +49,16 @@ export default function DangHub({ d, config, chuan, allDang, onClose, onEditDang
   const [cloneTu, setCloneTu] = useState<CauHoi | null>(null)   // clone TỪ BÀI CÓ SẴN trong kho
   const [tab, setTab] = useState<'cum' | 'chua' | 'kho'>('cum')
   const [moTienDe, setMoTienDe] = useState(false)
+  // ⭐ 20/08 (Thùy: "nhãn đã/chưa kiểm duyệt") — lọc "chỉ câu chưa duyệt" ngay ở đây, vì nhãn không có ý
+  // nghĩa gì nếu không có chỗ lọc-ra-làm-tiếp (hàng đợi duyệt), không chỉ là badge trang trí.
+  const [chiChuaDuyet, setChiChuaDuyet] = useState(false)
   const tone = mucDoTone(d.mucDo)
   // Câu GỐC = mọi câu KHÔNG do AI sinh (nguon ≠ 'clone'). Biến thể AI = nguon 'clone'.
   const laGoc = (c: CauHoi) => c.nguon !== 'clone'
   const gocCount = caus.filter(laGoc).length
   const chuaPhanCumCount = caus.filter((c) => laGoc(c) && !c.ma_cum).length
-  const shown = caus
+  const chuaDuyetCount = caus.filter((c) => !c.da_duyet).length
+  const shown = chiChuaDuyet ? caus.filter((c) => !c.da_duyet) : caus
   const tabBtn = (on: boolean) => `h-7 rounded-full px-3.5 text-[12px] font-semibold transition ${on ? 'bg-slate-800 text-white' : 'bg-white text-slate-500 ring-1 ring-slate-200 hover:text-slate-800'}`
 
   async function reload() {
@@ -67,6 +74,10 @@ export default function DangHub({ d, config, chuan, allDang, onClose, onEditDang
   async function onDelCau(c: CauHoi) {
     if (!confirm('Xoá câu này?')) return
     try { await deleteCau(c.ma_cau, cauTbl); await reload() } catch (e: any) { alert(e.message ?? e) }
+  }
+  async function onToggleDuyet(c: CauHoi) {
+    try { await (c.da_duyet ? boDuyetCau(c.ma_cau, cauTbl) : duyetCau(c.ma_cau, cauTbl)); await reload() }
+    catch (e: any) { alert(e.message ?? e) }
   }
 
   return (
@@ -138,6 +149,14 @@ export default function DangHub({ d, config, chuan, allDang, onClose, onEditDang
                   </button>
                   <button onClick={() => setTab('kho')} className={tabBtn(tab === 'kho')}>Toàn bộ kho <span className="opacity-60">{caus.length}</span></button>
                   <span className="ml-1 text-[12px] text-slate-400">{gocCount} gốc · {caus.length - gocCount} biến thể AI</span>
+                  {/* ⭐ 20/08: hàng đợi duyệt — chỉ áp cho danh sách phẳng "Toàn bộ kho" (Cụm bài có bộ lọc
+                      riêng, khác mục đích: nhóm tương đương, không phải soát chất lượng nội dung). */}
+                  {tab === 'kho' && (
+                    <label className="ml-auto flex cursor-pointer items-center gap-1.5 text-[12px] font-medium text-amber-700">
+                      <input type="checkbox" checked={chiChuaDuyet} onChange={(e) => setChiChuaDuyet(e.target.checked)} />
+                      Chỉ câu chưa duyệt <span className="opacity-70">({chuaDuyetCount})</span>
+                    </label>
+                  )}
                 </div>
               )}
 
@@ -161,6 +180,12 @@ export default function DangHub({ d, config, chuan, allDang, onClose, onEditDang
                             <span className="rounded bg-slate-100 px-2 py-0.5 text-[12px] font-medium text-slate-600">{loaiLabel(c.loai_cau)}</span>
                             <span className={`rounded px-2 py-0.5 text-[12px] font-medium ${c.nguon === 'clone' ? 'bg-violet-50 text-violet-600' : 'bg-emerald-50 text-emerald-600'}`}>{c.nguon === 'clone' ? 'clone' : 'gốc'}</span>
                             {c.nguon_giai === 'ai' && <span className="rounded bg-amber-50 px-2 py-0.5 text-[12px] font-medium text-amber-700" title="Lời giải do AI tạo — cần duyệt">🤖 AI giải</span>}
+                            {/* ⭐ 20/08 (Thùy): nhãn chất lượng — bấm để duyệt/bỏ duyệt tại chỗ, không cần mở Sửa. */}
+                            <button onClick={() => onToggleDuyet(c)}
+                              title={c.da_duyet ? `Đã duyệt${c.duyet_at ? ' · ' + new Date(c.duyet_at).toLocaleDateString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' }) : ''} — bấm để bỏ duyệt` : 'Chưa duyệt — bấm để duyệt'}
+                              className={`rounded px-2 py-0.5 text-[12px] font-medium ${c.da_duyet ? 'bg-emerald-50 text-emerald-700 hover:bg-emerald-100' : 'bg-rose-50 text-rose-600 hover:bg-rose-100'}`}>
+                              {c.da_duyet ? '✓ Đã duyệt' : '○ Chưa duyệt'}
+                            </button>
                           </div>
                           <div className="flex gap-3">
                             <button onClick={() => setCloneTu(c)} className="text-[13px] font-medium text-slate-500 hover:text-violet-600" title="Sinh biến thể từ chính bài này (không cần ảnh)">✨ Clone</button>
@@ -209,6 +234,15 @@ export function CauModal({ editing, cauTbl, onClose, onSaved }: { editing: CauHo
   const [loai, setLoai] = useState(editing.loai_cau)
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  // ⭐ 20/08 (Thùy): duyệt là hành động RIÊNG khỏi Lưu (soát xong nội dung mới duyệt, không phải cứ bấm
+  // Lưu là tự coi như đã duyệt). Gọi onSaved() để đóng + refresh list ngay — cùng độ "xong việc" như Lưu,
+  // nên KHÔNG cần state cục bộ phản ánh lại (component unmount ngay sau khi thành công).
+  const [duyeting, setDuyeting] = useState(false)
+  async function toggleDuyet() {
+    setDuyeting(true)
+    try { await (editing.da_duyet ? boDuyetCau(editing.ma_cau, cauTbl) : duyetCau(editing.ma_cau, cauTbl)); onSaved() }
+    catch (e: any) { setError(e.message ?? String(e)); setDuyeting(false) }
+  }
   async function save() {
     if (!item.noi_dung.trim()) return
     setSaving(true); setError(null)
@@ -240,6 +274,10 @@ export function CauModal({ editing, cauTbl, onClose, onSaved }: { editing: CauHo
         </div>
         {error && <p className="px-6 pb-1 text-xs text-rose-600">{error}</p>}
         <div className="flex items-center justify-end gap-2 border-t border-slate-200 px-6 py-4">
+          <button onClick={toggleDuyet} disabled={duyeting}
+            className={`mr-auto rounded-md px-3 py-1.5 text-sm font-medium disabled:opacity-40 ${editing.da_duyet ? 'bg-emerald-50 text-emerald-700 hover:bg-emerald-100' : 'bg-rose-50 text-rose-600 hover:bg-rose-100'}`}>
+            {duyeting ? 'Đang lưu…' : editing.da_duyet ? '✓ Đã duyệt — bấm để bỏ' : '○ Chưa duyệt — bấm để duyệt'}
+          </button>
           <button onClick={onClose} className="rounded-md px-3 py-1.5 text-sm text-slate-500 hover:bg-slate-100">Huỷ</button>
           <button onClick={save} disabled={!item.noi_dung.trim() || saving} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">{saving ? 'Đang lưu…' : 'Lưu'}</button>
         </div>
@@ -381,6 +419,18 @@ function AiImportModal({ mode, dangChinh, tenDang, cauTbl, presetGoc, onClose, o
       setItems(variants.map((v) => withImgShare({ ...toRI(v), nguonGiai: 'ai' }))); setShowVariants(true); setVi(0)
       if (!variants.length) setError('AI không sinh được biến thể nào — thử lại hoặc sửa bài gốc.')
     } catch (e: any) { setError(e.message ?? String(e)) } finally { setBusy(false) }
+  }
+  // Hàng đợi (26/08) — thay vì gọi API ngay, đưa yêu cầu vào hàng đợi cho Claude Code xử lý sau
+  // (quota subscription, không tốn API). Chỉ áp dụng khi clone TỪ 1 câu có sẵn (presetGoc) — câu
+  // "gốc" phải đã tồn tại thật trong dai_cau_hoi để hàng đợi FK vào đúng.
+  async function queueClone() {
+    if (!presetGoc) return
+    setBusy(true); setError(null)
+    try {
+      const nguoiYeuCau = await myNhanSuId()
+      await createYeuCauClone({ maCauGoc: presetGoc.ma_cau, soBienThe, ghiChu: ghiChu.trim(), nguoiYeuCau })
+      onSaved()
+    } catch (e: any) { setError(e.message ?? String(e)); setBusy(false) }
   }
   // NHẬP CHUỖI CÂU từ ảnh/PDF = nhập chuỗi câu + PHÂN TÍCH HÌNH: render trang DPI cao → AI tách câu + bbox hình
   // → cắt hình gắn anh_de → vào ĐÚNG màn preview từng câu (CauEditor) như nhập chuỗi câu. Đa trang gộp hết.
@@ -630,7 +680,12 @@ function AiImportModal({ mode, dangChinh, tenDang, cauTbl, presetGoc, onClose, o
                     <span className="text-3xl">✍️</span>
                     <span className="mt-2 text-sm font-semibold text-slate-600">Sửa &amp; chốt bài gốc bên trái</span>
                     <span className="mt-0.5 text-[12px] text-slate-400">chuẩn rồi bấm nút dưới để sinh <b>{soBienThe}</b> biến thể theo đúng bài gốc.</span>
-                    <button onClick={runCloneFromGoc} disabled={busy} className="mt-3 rounded-md bg-indigo-600 px-4 py-2 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">{busy ? '⏳ Đang clone…' : '② Clone theo bài gốc'}</button>
+                    <div className="mt-3 flex gap-2">
+                      <button onClick={runCloneFromGoc} disabled={busy} className="rounded-md bg-indigo-600 px-4 py-2 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">{busy ? '⏳ Đang clone…' : '② Clone ngay (API)'}</button>
+                      {presetGoc && (
+                        <button onClick={queueClone} disabled={busy} title="Không gọi API ngay — Claude Code xử lý theo lô sau, rẻ hơn, kết quả vào Chờ duyệt" className="rounded-md border border-violet-300 bg-violet-50 px-4 py-2 text-[13px] font-medium text-violet-700 shadow-sm hover:bg-violet-100 disabled:opacity-40">{busy ? '⏳…' : '📥 Đưa vào hàng đợi'}</button>
+                      )}
+                    </div>
                   </div>
                 ) : (
                   <button onClick={() => setShowVariants(true)} className="flex min-h-0 flex-1 flex-col items-center justify-center rounded-xl border-2 border-dashed border-indigo-200 bg-indigo-50/40 text-indigo-700 transition hover:bg-indigo-50">
@@ -771,7 +826,7 @@ export function CauEditor({ item, label, onChange, onToggle, fill }: {
         <div className="flex min-h-0 flex-1 flex-col gap-2.5">
           <div className="shrink-0">
             <label className={lbl}>Đề</label>
-            <AutoTextarea value={item.noi_dung} onChange={(v) => onChange({ noi_dung: v })} maxPx={200} className={`${inp} w-full resize-none leading-relaxed`} />
+            <MathTextarea rows={1} autoMaxPx={200} value={item.noi_dung} onChange={(v) => onChange({ noi_dung: v })} className={`${inp} w-full resize-none leading-relaxed`} />
             <div className="mt-1.5"><ImageSlot url={item.anhDe} label="Ảnh đề" onChange={(v) => onChange({ anhDe: v })} /></div>
           </div>
           <div className="shrink-0">
@@ -790,7 +845,7 @@ export function CauEditor({ item, label, onChange, onToggle, fill }: {
     <div className={cls}>
       {header}
       <label className={lbl}>Đề</label>
-      <textarea value={item.noi_dung} onChange={(e) => onChange({ noi_dung: e.target.value })} className={`${ta} min-h-[80px]`} />
+      <MathTextarea value={item.noi_dung} onChange={(v) => onChange({ noi_dung: v })} className={`${ta} min-h-[80px]`} />
       {hasOpts ? (
         <>
           <div className="mt-2">{optsEdit}</div>
@@ -822,7 +877,9 @@ function MethodBtn({ active, onClick, children }: { active: boolean; onClick: ()
 }
 
 // Textarea tự co cao theo nội dung (đề ngắn → thấp), tối đa maxPx rồi cuộn.
-function AutoTextarea({ value, onChange, className, maxPx }: { value: string; onChange: (v: string) => void; className?: string; maxPx?: number }) {
+// 09-03: ô Đề đã chuyển sang MathTextarea (prop autoMaxPx làm cùng việc) → KHÔNG còn chỗ dùng trong file này.
+// Giữ + export chờ Thùy gật mới xoá (Luật xoá).
+export function AutoTextarea({ value, onChange, className, maxPx }: { value: string; onChange: (v: string) => void; className?: string; maxPx?: number }) {
   const ref = useRef<HTMLTextAreaElement>(null)
   useLayoutEffect(() => {
     const el = ref.current; if (!el) return
@@ -841,7 +898,7 @@ function SolutionField({ value, onChange, taClassName, wrapClassName }: { value:
   return (
     <div className={`flex min-h-0 flex-col ${wrapClassName ?? ''}`}>
       <ImgInsertBar taRef={taRef} value={value} onChange={onChange} className="mb-1" />
-      <textarea ref={taRef} value={value} onChange={(e) => onChange(e.target.value)}
+      <MathTextarea ref={taRef} value={value} onChange={onChange} wrapClassName="flex min-h-0 flex-1 flex-col"
         onPaste={(e) => { const f = Array.from(e.clipboardData.files).find((x) => x.type.startsWith('image/')); if (f) { e.preventDefault(); e.stopPropagation(); void insertImageAtCursor(f, taRef, value, onChange).catch((err: any) => alert('Upload ảnh lỗi: ' + (err?.message ?? err))) } }}
         className={taClassName} />
     </div>

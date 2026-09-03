@@ -3,7 +3,7 @@
 // Tổng: tỉ lệ phát sinh, huỷ theo người giao, hạng mục quá chân trời.
 import { useEffect, useState } from 'react'
 import {
-  listViecTheoTuan, tiLePhatSinh, demViecHuyTheoNguoiGiao, type ViecFull,
+  listViecTheoTuan, tiLePhatSinh, demViecHuyTheoNguoiGiao, listCapNhatMoiNhat, type ViecFull, type CapNhatViec,
 } from '../../lib/giaoviec'
 import { kyTuanHienTai, kyTuanCuaNgay, nhanKyTuan, todayVN, soNgayLech } from '../../lib/giaoviec-config'
 import { Badge, VIEC_TT, Section, Empty, ErrBar, Stat, fmtNgay } from './ui'
@@ -13,6 +13,10 @@ export default function CongKhaiTab() {
   const [rows, setRows] = useState<ViecFull[]>([])
   const [phatSinh, setPhatSinh] = useState<{ tong: number; phatSinh: number; tiLe: number | null } | null>(null)
   const [huyMap, setHuyMap] = useState<Record<string, number>>({})
+  // Cập nhật mới nhất mỗi task (story 08-18) — CEO review nhanh cả team ngay tại bảng này,
+  // không phải mở từng task. Task mẹ dùng cập nhật CHUNG người cầm mẹ tự ghi; task con vẫn
+  // như cũ (cập nhật riêng của chính nó).
+  const [capNhatMap, setCapNhatMap] = useState<Map<string, CapNhatViec>>(new Map())
   const [loading, setLoading] = useState(true); const [err, setErr] = useState<string | null>(null)
 
   async function reload() {
@@ -20,6 +24,7 @@ export default function CongKhaiTab() {
     try {
       const [v, ps, hm] = await Promise.all([listViecTheoTuan(ky), tiLePhatSinh(ky), demViecHuyTheoNguoiGiao()])
       setRows(v); setPhatSinh(ps); setHuyMap(hm)
+      setCapNhatMap(await listCapNhatMoiNhat(v.map((r) => r.id)))
     } catch (e: any) { setErr(e?.message ?? String(e)) } finally { setLoading(false) }
   }
   useEffect(() => { reload() }, [ky])
@@ -52,22 +57,35 @@ export default function CongKhaiTab() {
         <Section title={`Ai nhận việc gì tuần này (${rows.length})`}>
           {!rows.length ? <Empty>Không có task nào trong tuần này.</Empty> : (
             <div className="overflow-x-auto rounded-2xl bg-white shadow-sm">
-              <table className="w-full min-w-[640px] text-[13px]">
+              <table className="w-full min-w-[760px] text-[13px]">
                 <thead><tr className="border-b border-slate-100 text-left text-[11px] text-slate-400">
-                  <th className="px-3 py-2">Việc</th><th className="px-3 py-2">Người làm</th><th className="px-3 py-2">Trạng thái</th><th className="px-3 py-2">Hạn</th><th className="px-3 py-2">Trễ/GH</th>
+                  <th className="px-3 py-2">Việc</th><th className="px-3 py-2">Người làm</th><th className="px-3 py-2">Trạng thái</th><th className="px-3 py-2">Hạn</th><th className="px-3 py-2">Trễ/GH</th><th className="px-3 py-2">Cập nhật mới nhất</th>
                 </tr></thead>
                 <tbody>
                   {rows.map((v) => {
                     const treNgay = v.deadline && ['moi_giao', 'dang_lam', 'tra_lai', 'cho_nghiem_thu'].includes(v.trang_thai) ? Math.max(0, soNgayLech(v.deadline, todayVN())) : 0
+                    const capNhat = capNhatMap.get(v.id)
+                    const laMe = !v.task_me_id && !!v.so_con
                     return (
                       <tr key={v.id} className="border-b border-slate-50 last:border-0">
-                        <td className="px-3 py-2"><span className="font-medium text-slate-800">{v.tieu_de}</span>{v.nguon === 'phat_sinh' && <span className="ml-1 rounded bg-orange-50 px-1 text-[10px] text-orange-700">PS</span>}</td>
+                        <td className="px-3 py-2">
+                          <span className="font-medium text-slate-800">{v.tieu_de}</span>{v.nguon === 'phat_sinh' && <span className="ml-1 rounded bg-orange-50 px-1 text-[10px] text-orange-700">PS</span>}
+                          {laMe && <span className="ml-1 rounded bg-slate-800 px-1 text-[10px] font-semibold text-white">MẸ</span>}
+                        </td>
                         <td className="px-3 py-2 text-slate-600">{v.nguoi_lam_ten}</td>
                         <td className="px-3 py-2"><Badge map={VIEC_TT} k={v.trang_thai} /></td>
                         <td className="px-3 py-2 text-slate-500">{fmtNgay(v.deadline)}</td>
                         <td className="px-3 py-2">
                           {treNgay > 0 && <span className="font-semibold text-rose-600">trễ {treNgay}d</span>}
                           {v.so_lan_gia_han > 0 && <span className="ml-1 text-amber-600">GH{v.so_lan_gia_han}</span>}
+                        </td>
+                        <td className="px-3 py-2 max-w-[260px] text-slate-600">
+                          {!capNhat ? <span className="text-slate-300">—</span> : (
+                            <>
+                              <span className="text-[11px] text-slate-400">{fmtNgay(capNhat.created_at)}{capNhat.tien_do_bao_cao != null && <> · {capNhat.tien_do_bao_cao}%</>}</span>
+                              <span className="ml-1">{capNhat.noi_dung}</span>
+                            </>
+                          )}
                         </td>
                       </tr>
                     )

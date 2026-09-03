@@ -1,0 +1,8 @@
+{
+  "git": {
+    "deploymentEnabled": {
+      "claude/teaching-assistant-app-jvdozw": false,
+      "claude/teacher-app-bk-cpzxbx": false
+    }
+  }
+}

@@ -165,14 +165,17 @@ export async function getCaTestCauKq(caTestId: string): Promise<CaTestCau[]> {
     }
   })
 }
-const HE_SO: Record<'correct' | 'partial' | 'wrong', number> = { correct: 1, partial: 0.5, wrong: 0 }
 // Click lại mức đang chọn = bỏ chấm (cùng UX ET đã có — HANDOFF ②).
-export async function chamCauTest(caTestCauId: string, diemToiDa: number, ketQua: 'correct' | 'partial' | 'wrong' | null): Promise<void> {
+// §2.0 (30/08): diem do TRIGGER tg_ca_test_kq_diem tính (diem_toi_da × hệ số kết quả) —
+// client chỉ ghi ket_qua thô và trả về diem DB đã tính để màn hình hiển thị đúng số thật.
+export async function chamCauTest(caTestCauId: string, ketQua: 'correct' | 'partial' | 'wrong' | null): Promise<number | null> {
   const { data: { user } } = await supabase.auth.getUser()
-  if (ketQua === null) { const { error } = await supabase.from('ca_test_cau_kq').delete().eq('ca_test_cau_id', caTestCauId); if (error) throw error; return }
-  const diem = diemToiDa * HE_SO[ketQua]
-  const { error } = await supabase.from('ca_test_cau_kq').upsert({ ca_test_cau_id: caTestCauId, ket_qua: ketQua, diem, cham_boi: user?.id ?? null }, { onConflict: 'ca_test_cau_id' })
+  if (ketQua === null) { const { error } = await supabase.from('ca_test_cau_kq').delete().eq('ca_test_cau_id', caTestCauId); if (error) throw error; return null }
+  const { data, error } = await supabase.from('ca_test_cau_kq')
+    .upsert({ ca_test_cau_id: caTestCauId, ket_qua: ketQua, cham_boi: user?.id ?? null }, { onConflict: 'ca_test_cau_id' })
+    .select('diem').single()
   if (error) throw error
+  return data?.diem == null ? null : Number(data.diem)
 }
 export function tongDiem(cau: CaTestCau[]): { diem: number; toiDa: number; pct: number } {
   const toiDa = cau.reduce((s, c) => s + c.diemToiDa, 0)

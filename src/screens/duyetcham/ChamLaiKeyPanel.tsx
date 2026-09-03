@@ -13,7 +13,7 @@
 // Mỗi lần phát hành là một phép đo riêng; sửa nhầm sang test cũ = ghi đè điểm đã chốt.
 // ============================================================================
 import { useEffect, useState } from 'react'
-import { listCauNghiSaiKey, suaKeyVaChamLai, chuCaiChon, type CauNghiSaiKey, type ChamLaiKetQua } from '../../lib/testonline'
+import { listCauNghiSaiKey, suaKeyVaChamLai, dongBaoSaiSauChamLai, tuChoiReports, chuCaiChon, type CauNghiSaiKey, type ChamLaiKetQua } from '../../lib/testonline'
 import { MathText } from '../kho/ui'
 
 const fmtNgay = (iso: string) => { const [y, m, d] = iso.split('-'); return `${d}/${m}/${y}` }
@@ -50,9 +50,21 @@ export default function ChamLaiKeyPanel() {
     setBusy(true); setErr(null)
     try {
       const kq = await suaKeyVaChamLai(r.cauId, moi, lyDo)
+      // Đóng 🚩 báo sai đề của câu này theo kết quả chấm lại (HS thành đúng ⇒ 'dung', còn lại 'sai').
+      // Tách khỏi RPC chấm lại: lỗi ở đây không làm mất kết quả chấm — chỉ còn cờ chờ, đóng tay được.
+      if (r.baoSai.reportIds.length) await dongBaoSaiSauChamLai(r.cauId)
       setXong({ cauId: r.cauId, kq }); setMo(null)
       await reload()
     } catch (e: any) { setErr(e?.message ?? String(e)) } finally { setBusy(false) }
+  }
+
+  // Đề/đáp án ĐÚNG, HS báo nhầm → đóng báo sai, key giữ nguyên, không chấm lại gì.
+  async function deDung(r: CauNghiSaiKey) {
+    if (!r.baoSai.reportIds.length) return
+    if (!confirm(`Đóng ${r.baoSai.reportIds.length} báo sai của câu ${r.thuTu} (${r.test.lopTen})?\nĐáp án "${keyRaText(r.dapAnKey)}" giữ nguyên, không chấm lại.`)) return
+    setBusy(true); setErr(null)
+    try { await tuChoiReports(r.baoSai.reportIds); await reload() }
+    catch (e: any) { setErr(e?.message ?? String(e)) } finally { setBusy(false) }
   }
 
   if (rows === null) return <p className="text-sm text-slate-400">Đang tải…</p>
@@ -68,13 +80,14 @@ export default function ChamLaiKeyPanel() {
 
       {rows.length === 0 ? (
         <div className="rounded-xl border border-dashed border-slate-300 bg-white py-14 text-center text-sm text-slate-400">
-          Không có câu nào tỉ lệ sai bất thường. 🎉
-          <div className="mt-1 text-[12px]">(ngưỡng: ≥3 HS đã trả lời và ≥70% sai)</div>
+          Không có câu nào tỉ lệ sai bất thường, không có báo sai đề nào chờ. 🎉
+          <div className="mt-1 text-[12px]">(ngưỡng: ≥3 HS đã trả lời và ≥70% sai · hoặc có HS 🚩 báo sai đề)</div>
         </div>
       ) : rows.map((r) => {
         const pct = Math.round(r.tiLeSai * 100)
+        const nBao = r.baoSai.reportIds.length
         return (
-          <div key={r.cauId} className="rounded-2xl border border-slate-200 bg-white shadow-sm">
+          <div key={r.cauId} className={`rounded-2xl border bg-white shadow-sm ${nBao ? 'border-l-4 border-slate-200 border-l-rose-400' : 'border-slate-200'}`}>
             <div className="border-b border-slate-100 px-5 py-3">
               <div className="mb-1 flex flex-wrap items-center gap-2 text-[12px]">
                 <span className="rounded bg-slate-100 px-1.5 py-0.5 font-semibold text-slate-600">Câu {r.thuTu}</span>
@@ -84,6 +97,11 @@ export default function ChamLaiKeyPanel() {
                 <span className="rounded-full bg-emerald-50 px-2 py-0.5 font-semibold text-emerald-700 ring-1 ring-emerald-200">
                   Đáp án: <MathText className="inline">{keyRaText(r.dapAnKey)}</MathText>
                 </span>
+                {nBao > 0 && (
+                  <span className="rounded-full bg-rose-50 px-2 py-0.5 font-semibold text-rose-600 ring-1 ring-rose-200" title={r.baoSai.yKien.join(' · ') || undefined}>
+                    🚩 {nBao} HS báo sai đề{r.baoSai.yKien[0] ? `: "${r.baoSai.yKien[0]}"` : ''}
+                  </span>
+                )}
                 {r.lanChamLai > 0 && <span className="rounded-full bg-amber-50 px-2 py-0.5 text-amber-700 ring-1 ring-amber-200">đã chấm lại {r.lanChamLai} lần</span>}
               </div>
               <div className="text-[14px] leading-relaxed text-slate-800"><MathText>{r.noiDung}</MathText></div>
@@ -91,10 +109,18 @@ export default function ChamLaiKeyPanel() {
 
             <div className="px-5 py-3">
               {mo !== r.cauId ? (
-                <button onClick={() => moForm(r)}
-                  className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-[12px] font-semibold text-slate-700 transition hover:border-indigo-400 hover:text-indigo-600">
-                  Sửa đáp án + chấm lại cả lớp
-                </button>
+                <div className="flex flex-wrap items-center gap-2">
+                  <button onClick={() => moForm(r)}
+                    className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-[12px] font-semibold text-slate-700 transition hover:border-indigo-400 hover:text-indigo-600">
+                    Sửa đáp án + chấm lại cả lớp
+                  </button>
+                  {nBao > 0 && (
+                    <button disabled={busy} onClick={() => deDung(r)}
+                      className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-[12px] font-semibold text-slate-600 transition hover:border-rose-300 hover:text-rose-600 disabled:opacity-40">
+                      ✕ Đề đúng — đóng báo sai
+                    </button>
+                  )}
+                </div>
               ) : (
                 <div className="space-y-2.5">
                   <div className="flex flex-wrap items-center gap-2">

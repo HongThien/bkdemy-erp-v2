@@ -15,8 +15,8 @@ import {
 import { mucDeadline, nhanConLai } from '../../lib/tuan'
 import { seededShuffleWithOrig, seededPermByDang } from '../../lib/shuffle'
 import {
-  timTuLuyenHomNay, sinhTuLuyen, monCuaHS, laCap1HS, khoiCuaHS, layDangHocTap, xepHangTuLuyen,
-  TU_LUYEN_TRAN_NGAY, TU_LUYEN_SO_CAU_MOI_LUOT, SRC_LABEL, type DangHocTap, type RecentEval, type XepHangRow,
+  luotTuLuyenHomNay, sinhTuLuyen, monCuaHS, laCap1HS, khoiCuaHS, layDangHocTap, xepHangTuLuyen,
+  TU_LUYEN_SO_CAU_MOI_LUOT, SRC_LABEL, type DangHocTap, type RecentEval, type XepHangRow,
 } from '../../lib/tuluyen'
 import DoiMatKhau from './DoiMatKhau'
 
@@ -107,12 +107,20 @@ function HomeCap1({ hoTen, maHS, onOpen }: { hoTen: string; maHS: string; onOpen
             <img src="/Logo.png" alt="BK Academy" className="h-9 w-auto" />
             <span className="rounded-full border border-[#e8edf5] bg-white/90 px-3.5 py-2 text-[13px] font-bold text-[#576073] shadow-[0_6px_16px_rgba(31,47,79,0.06)]">📚 App học tập cho học sinh</span>
           </div>
-          <div className="flex min-w-[250px] items-center gap-3 rounded-[18px] bg-white py-2 pl-2 pr-3 shadow-[0_6px_16px_rgba(31,47,79,0.06)]">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[14px] bg-gradient-to-br from-[#2486df] to-[#745bf0] text-[13px] font-black text-white">{initials}</div>
-            <div className="min-w-0 leading-tight">
-              <p className="truncate text-[14px] font-bold text-[#171a2b]">{hoTen}</p>
-              <p className="truncate text-[11px] text-[#7b8499]">{maHS.toUpperCase()}</p>
+          <div className="flex items-center gap-2.5">
+            <div className="flex min-w-[220px] items-center gap-3 rounded-[18px] bg-white py-2 pl-2 pr-3 shadow-[0_6px_16px_rgba(31,47,79,0.06)]">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[14px] bg-gradient-to-br from-[#2486df] to-[#745bf0] text-[13px] font-black text-white">{initials}</div>
+              <div className="min-w-0 leading-tight">
+                <p className="truncate text-[14px] font-bold text-[#171a2b]">{hoTen}</p>
+                <p className="truncate text-[11px] text-[#7b8499]">{maHS.toUpperCase()}</p>
+              </div>
             </div>
+            {/* Thoát (Thùy 22/08: "ko thấy nút đăng xuất") — mockup gốc chỉ vẽ mũi tên dropdown chưa
+                nối chức năng, thêm nút Thoát riêng, ĐÚNG style icon-button cấp 3 (squircle nổi). */}
+            <button onClick={() => supabase.auth.signOut()} title="Đăng xuất"
+              className="flex h-10 shrink-0 items-center justify-center rounded-[14px] bg-white px-3.5 text-[13px] font-bold text-[#576073] shadow-[0_6px_16px_rgba(31,47,79,0.06)]">
+              Thoát
+            </button>
           </div>
         </div>
 
@@ -363,6 +371,15 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
         init[cauId] = { chon: (r as BaiLamCau).dap_an_hs as number | string, kq: { verdict: (r as BaiLamCau).verdict ?? 'wrong', key: c?.dap_an_key, baiLamCauId: (r as BaiLamCau).id } }
       }
       setSt(init)
+      // TIẾN TRÌNH (Thùy 29/08: "vào toàn bắt bật lại từ câu 1"): mở lại bài dở → nhảy thẳng câu
+      // CHƯA làm đầu tiên; xong hết → vào thẳng màn kết quả (tự luyện: nơi có nút "Làm thêm").
+      // Vị trí KHÔNG cần lưu đâu cả — suy từ f.daLam (bai_lam_cau) theo ĐÚNG thứ tự hiển thị đã xáo
+      // seeded (tính lại y hệt useMemo `caus` dưới — seed ổn định nên 2 nơi cho cùng 1 hoán vị).
+      if (Object.keys(f.daLam).length > 0) {
+        const order = f.baiTest.loai === 'giao_trinh' ? f.caus : seededPermByDang(f.caus, `${hocSinhId}:${baiTestId}:q`).map((i) => f.caus[i])
+        const dau = order.findIndex((c) => !f.daLam[c.id])
+        setIdx(dau === -1 ? order.length : dau)
+      }
     })().catch(console.error)
   }, [baiTestId, hocSinhId])
 
@@ -377,7 +394,17 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
   // Xáo THỨ TỰ CÂU theo (HS×bài) — ổn định (mở lại vẫn thấy đúng thứ tự cũ), khác nhau giữa các HS
   // (chống liếc bài). CHỈ xáo câu TRONG CÙNG 1 DẠNG, giữ nguyên khối/thứ tự các dạng (xem shuffle.ts).
   // Chấm/khôi phục vẫn khớp `cau.id`, không phụ thuộc vị trí → an toàn tuyệt đối.
-  const caus = useMemo(() => (full ? seededPermByDang(full.caus, `${hocSinhId}:${baiTestId}:q`).map((i) => full.caus[i]) : []), [full, hocSinhId, baiTestId])
+  // ⚠ Thùy 22/08: "giáo trình phát hành phải giống HỆT lúc gán — sao lại tự đổi câu và thứ tự".
+  // Xáo trên vốn để chống-liếc-bài cho ET/BTVN — GIÁO TRÌNH không có khái niệm "liếc bài" (cả lớp học
+  // CHUNG 1 tài liệu in/chiếu, thứ tự phải khớp bản GV đang cầm) nên PHẢI khoá y hệt `full.caus` (đã
+  // đúng thứ tự gán từ `trichXuatBuoi`/`copyPhanInto`, xem tailieu.ts). Cùng nguyên tắc đã áp cho ET
+  // khi có ≥2 mã đề (LamET: `test.co_nhieu_ma_de` → bỏ xáo, commit 08b8321) — giáo trình luôn bỏ xáo.
+  const khoaThuTuGoc = full?.baiTest.loai === 'giao_trinh'
+  const caus = useMemo(() => {
+    if (!full) return []
+    if (khoaThuTuGoc) return full.caus
+    return seededPermByDang(full.caus, `${hocSinhId}:${baiTestId}:q`).map((i) => full.caus[i])
+  }, [full, khoaThuTuGoc, hocSinhId, baiTestId])
 
   if (!full) return <div className={`flex min-h-screen items-center justify-center text-sm text-ph-label-2 ${desktop ? 'bg-[#f4f7fb]' : 'bg-ios'}`}>Đang tải bài…</div>
   const total = caus.length
@@ -392,9 +419,14 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
   const chonArr: (string | null)[] = laDS ? ((cs?.chon as (string | null)[]) ?? menhDe.map(() => null)) : []
   // Xáo THỨ TỰ ĐÁP ÁN hiển thị (TN 4 phương án · ĐS 4 mệnh đề) theo (HS×bài×câu) — orig = chỉ số GỐC
   // dùng để ghi state/so đáp án đúng; dispI = vị trí hiển thị (chỉ để đặt nhãn A/B/C/D · a/b/c/d).
-  const optsShown = laTN && cau ? seededShuffleWithOrig(cau.lua_chon ?? [], `${hocSinhId}:${baiTestId}:${cau.id}:opt`) : []
+  // Giáo trình khoá NGUYÊN thứ tự (xem `khoaThuTuGoc` ở trên) — cùng lý do, cả lớp chung 1 tài liệu.
+  const optsShown = laTN && cau
+    ? (khoaThuTuGoc ? (cau.lua_chon ?? []).map((item, orig) => ({ item, orig })) : seededShuffleWithOrig(cau.lua_chon ?? [], `${hocSinhId}:${baiTestId}:${cau.id}:opt`))
+    : []
   const correctOrigTN = laTN && daCham && cau ? chiSoCuaChu(cau.dap_an_key) : -1
-  const menhOrder = laDS && cau ? seededShuffleWithOrig(menhDe, `${hocSinhId}:${baiTestId}:${cau.id}:ds`) : []
+  const menhOrder = laDS && cau
+    ? (khoaThuTuGoc ? menhDe.map((item, orig) => ({ item, orig })) : seededShuffleWithOrig(menhDe, `${hocSinhId}:${baiTestId}:${cau.id}:ds`))
+    : []
   // Đã chọn đủ để Xác nhận? TN=đã chọn 1 · TLN=nhập khác rỗng · ĐS=đủ 4 ý.
   const daDu = laTN ? typeof cs?.chon === 'number'
     : laDS ? (chonArr.length === menhDe.length && menhDe.length > 0 && chonArr.every((x) => x != null))
@@ -420,9 +452,14 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
     } finally { setBusy(false) }
   }
 
+  // Báo sai: TLN mọi loại bài = "em nghĩ mình đúng" (đường accepted-answer, tab 🚩 Duyệt chấm).
+  // TN/ĐS CHỈ giáo trình (Thùy 03/09: "phát hành giáo trình cũng cần báo sai đề như tự luyện") =
+  // "đề/đáp án sai" → đi đường KEY SAI (tab ⚠ Nghi sai đáp án — chấm lại), vì TN/ĐS không có
+  // chuyện "viết cách khác cũng đúng", chỉ có key kho sai. Cùng bảng bai_test_report, khác ý kiến.
+  const baoSaiDe = khoaThuTuGoc && (laTN || laDS)
   async function guiBaoSai() {
     if (!cau || !cs?.kq) return
-    await baoSai(cs.kq.baiLamCauId, hocSinhId, 'Em nghĩ mình đúng.')
+    await baoSai(cs.kq.baiLamCauId, hocSinhId, baoSaiDe ? 'Em nghĩ đề hoặc đáp án sai.' : 'Em nghĩ mình đúng.')
     setSt((s) => ({ ...s, [cau.id]: { ...s[cau.id], baoRoi: true } }))
   }
 
@@ -548,10 +585,12 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
                 </div>
               )}
               {cau.anh_dap_an && <img src={cau.anh_dap_an} alt="lời giải" className="mt-2 max-h-72 rounded-lg border border-black/[0.08]" />}
-              {cau.loai_cau === 'tra_loi_ngan' && vd !== 'correct' && (
+              {(cau.loai_cau === 'tra_loi_ngan' || baoSaiDe) && vd !== 'correct' && (
                 cs!.baoRoi
                   ? <p className="mt-2 text-[12px] text-ph-label-2">✓ Đã gửi ý kiến cho thầy cô.</p>
-                  : <button onClick={guiBaoSai} className="mt-2 rounded-lg border border-black/[0.1] px-3 py-1.5 text-[12px] text-ph-label-2">🚩 Em nghĩ mình đúng</button>
+                  : <button onClick={guiBaoSai} className="mt-2 rounded-lg border border-black/[0.1] px-3 py-1.5 text-[12px] text-ph-label-2">
+                      {baoSaiDe ? '🚩 Báo sai đề / đáp án' : '🚩 Em nghĩ mình đúng'}
+                    </button>
               )}
             </div>
           )}
@@ -589,20 +628,20 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
   )
 }
 
-// ── TỰ LUYỆN: bọc NGOÀI LamBai — chỉ lo "hôm nay đã có bài chưa, chưa thì sinh 10 câu, sinh thêm
-// khi bấm" — phần LÀM BÀI (chọn/chấm/lời giải/reveal-ngay) DÙNG NGUYÊN LamBai, không viết lại.
-// key={baiTestId+so_cau} → mỗi lần "làm thêm" đổi key ⇒ LamBai REMOUNT, tự fetch lại đủ câu mới.
+// ── TỰ LUYỆN: bọc NGOÀI LamBai — MỖI LƯỢT = 1 bai_test RIÊNG 10 câu (Thùy 29/08: "mỗi lần luyện
+// phải độc lập", KHÔNG cộng dồn 1 bài/ngày). Mở màn: lượt hôm nay đang DỞ → làm tiếp; hết dở →
+// sinh lượt mới. "Làm thêm" = sinh lượt mới tinh. Phần LÀM BÀI dùng nguyên LamBai — key={baiTestId}
+// đổi theo từng lượt ⇒ REMOUNT, mỗi lượt chấm điểm/kết quả độc lập 10 câu của chính nó.
 function LamTuLuyen({ hocSinhId, onXong, desktop }: { hocSinhId: string; onXong: () => void; desktop?: boolean }) {
   const [state, setState] = useState<'dang_tai' | 'san_sang' | 'trong' | 'loi'>('dang_tai')
   const [mon, setMon] = useState<string | null>(null)
   const [baiTestId, setBaiTestId] = useState<string | null>(null)
-  const [soCau, setSoCau] = useState(0)
+  const [tongNgay, setTongNgay] = useState(0)
   const [busy, setBusy] = useState(false)
   const [err, setErr] = useState<string | null>(null)
   // Guard StrictMode chạy effect 2 lần (bài học CLAUDE.md §"ensure* slot"): thiếu cái này thì lượt
-  // gọi thứ 2 cũng thấy "chưa có bài hôm nay" (đọc trước khi lượt 1 kịp ghi) → sinh THÊM 10 câu nữa
-  // đè lên — đã dính thật lúc verify (19 câu thay vì 10). unique index chặn được 2 DÒNG bai_test
-  // riêng biệt, nhưng RPC tự APPEND khi đụng unique nên không chặn được việc sinh THỪA câu.
+  // gọi thứ 2 cũng thấy "không có lượt dở" (đọc trước khi lượt 1 kịp ghi) → sinh THỪA 1 lượt mồ côi.
+  // Không còn unique index 1 bài/ngày (model lượt-độc-lập) nên guard client là hàng rào duy nhất.
   const daGoi = useRef(false)
 
   async function taiHomNay() {
@@ -611,21 +650,20 @@ function LamTuLuyen({ hocSinhId, onXong, desktop }: { hocSinhId: string; onXong:
       const m = await monCuaHS()
       if (!m) { setState('trong'); setErr('Chưa xác định được môn học của em — báo thầy cô nhé.'); return }
       setMon(m)
-      const co = await timTuLuyenHomNay(m)
-      if (co) { setBaiTestId(co.baiTestId); setSoCau(co.soCau); setState('san_sang'); return }
+      const { dangDo, tongCau } = await luotTuLuyenHomNay(m)
+      if (dangDo) { setBaiTestId(dangDo.baiTestId); setTongNgay(tongCau); setState('san_sang'); return }
       const kq = await sinhTuLuyen(m)
-      setBaiTestId(kq.baiTestId); setSoCau(kq.tong); setState('san_sang')
+      setBaiTestId(kq.baiTestId); setTongNgay(tongCau + kq.them); setState('san_sang')
     } catch (e: any) { setErr(e?.message ?? String(e)); setState('trong') }
   }
   useEffect(() => { if (daGoi.current) return; daGoi.current = true; taiHomNay() }, []) // eslint-disable-line
 
   async function lamThem() {
-    if (!mon || soCau >= TU_LUYEN_TRAN_NGAY) return
+    if (!mon) return
     setBusy(true); setErr(null)
     try {
-      const con = Math.min(TU_LUYEN_SO_CAU_MOI_LUOT, TU_LUYEN_TRAN_NGAY - soCau)
-      const kq = await sinhTuLuyen(mon, con)
-      setBaiTestId(kq.baiTestId); setSoCau(kq.tong)
+      const kq = await sinhTuLuyen(mon)
+      setBaiTestId(kq.baiTestId); setTongNgay((t) => t + kq.them)
     } catch (e: any) { setErr(e?.message ?? String(e)) } finally { setBusy(false) }
   }
 
@@ -641,24 +679,23 @@ function LamTuLuyen({ hocSinhId, onXong, desktop }: { hocSinhId: string; onXong:
     </div>
   )
 
-  const conLai = TU_LUYEN_TRAN_NGAY - soCau
   return (
     <LamBai
-      key={baiTestId + ':' + soCau}
+      key={baiTestId}
       baiTestId={baiTestId}
       hocSinhId={hocSinhId}
       onXong={onXong}
       desktop={desktop}
-      doneCaption={`Hôm nay đã làm ${soCau}/${TU_LUYEN_TRAN_NGAY} câu.`}
-      doneExtra={conLai > 0 ? (
+      doneCaption={`Hôm nay em đã luyện ${tongNgay} câu.`}
+      doneExtra={
         <div className={`mt-3 w-full ${desktop ? 'max-w-sm' : ''}`}>
           {err && <p className="mb-2 text-[12.5px] text-ph-red">{err}</p>}
           <button onClick={lamThem} disabled={busy}
             className={`w-full rounded-xl bg-brand/10 font-medium text-brand disabled:opacity-40 ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`}>
-            {busy ? 'Đang tạo thêm…' : `Làm thêm ${Math.min(TU_LUYEN_SO_CAU_MOI_LUOT, conLai)} câu`}
+            {busy ? 'Đang tạo lượt mới…' : `Luyện lượt mới ${TU_LUYEN_SO_CAU_MOI_LUOT} câu`}
           </button>
         </div>
-      ) : <p className="mt-3 text-[13px] text-ph-label-2">Đã đạt tối đa {TU_LUYEN_TRAN_NGAY} câu hôm nay — hẹn mai luyện tiếp!</p>}
+      }
     />
   )
 }

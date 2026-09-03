@@ -22,3 +22,26 @@ _design_thanhtich/
 scripts/tmp/
 scripts/out-crops/
 .vercel
+
+# build output app OPS (như dist/dist-hs)
+dist-ops/
+dist-ta
+dist-gv/
+
+# build output app BK Chi (như dist-ops)
+dist-chi/
+
+# APK Android (Capacitor) — keystore ký release + mật khẩu KHÔNG commit; build output gradle
+android/keystore/
+android/keystore.properties
+android/app/build/
+android/build/
+android/.gradle/
+android/local.properties
+android/app/src/main/assets/public/
+android/app/src/main/assets/capacitor.config.json
+android/capacitor-cordova-android-plugins/
+android/.idea/
+*.apk
+*.aab
+apk/

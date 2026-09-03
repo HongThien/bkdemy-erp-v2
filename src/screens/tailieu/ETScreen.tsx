@@ -40,17 +40,23 @@ export default function ETScreen() {
 }
 
 // et === undefined → tạo mới (lưu xong reset form). et !== undefined → sửa (lưu xong gọi onClose).
-export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void }) {
+// ⭐ 23/08 (Thùy: "làm đầy đủ giống Đại" cho ET Hình) — Hình KHÔNG có tài liệu tai_lieu riêng cho ET
+// (nội dung nằm hẳn trong hinh_gt_buoi/hinh_gt_bai, xem luuHinh() dưới), nên "Sửa" 1 dòng ET-Hình từ Kho
+// tài liệu không có `et: ETView` thật để truyền — chỉ có (lopId, ngày) của buổi đó. `presetHinh` mở
+// THẲNG vào form với lớp/ngày/nhánh đã điền sẵn — effect load-Hình-theo-(lopId,ngay) bên dưới tự chạy,
+// kéo đúng nội dung ET đã lưu lên (y hệt hành vi "chọn trúng buổi đã có ET" khi tạo mới, không cần code
+// load riêng). `onClose` vẫn hiện nút "← Kho tài liệu" bất kể editing hay không (xem JSX cuối file).
+export function ETEditor({ et, onClose, presetHinh }: { et?: ETView; onClose?: () => void; presetHinh?: { lopId: string; ngay: string } }) {
   const editing = !!et
   // Nháp ET tạo-mới đã lưu ở store (Thùy 07-31: rời màn rồi quay lại KHÔNG reset). Chỉ khôi phục khi TẠO MỚI.
   const draft0 = et ? null : useStore.getState().etDraft
   const [lops, setLops] = useState<Lop[]>([])
-  const [lopId, setLopId] = useState<string | null>(et?.lop_id ?? draft0?.lopId ?? null)
-  const [ngay, setNgay] = useState<string>(et?.ngay ?? draft0?.ngay ?? '')
+  const [lopId, setLopId] = useState<string | null>(et?.lop_id ?? presetHinh?.lopId ?? draft0?.lopId ?? null)
+  const [ngay, setNgay] = useState<string>(et?.ngay ?? presetHinh?.ngay ?? draft0?.ngay ?? '')
   // nhánh (Đại số | Hình giải tích, chỉ có ý nghĩa mon='Toán') — thuộc TÀI LIỆU (như giáo trình), KHÔNG
   // thuộc lớp (schema.md: bảng lop không có cột nhanh). Cố định 1 lần: sửa ET đã lưu KHÔNG đổi được nữa
   // (giống giáo trình — CreateModal chọn 1 lần), tránh đổi kho giữa chừng làm lệch câu đã chọn.
-  const [nhanh, setNhanh] = useState<string | null>(et?.nhanh ?? draft0?.nhanh ?? null)
+  const [nhanh, setNhanh] = useState<string | null>(et?.nhanh ?? (presetHinh ? 'hinh' : null) ?? draft0?.nhanh ?? null)
   const [rows, setRows] = useState<Row[]>(() => (draft0?.rows as Row[] | undefined) ?? blankRows())
   const [cau, setCau] = useState<Record<string, CauHoi>>(() => (draft0?.cau as Record<string, CauHoi>) ?? {}) // cache để preview
   const [dangOpts, setDangOpts] = useState<{ ma_dang: string; ten_dang: string; ten_chuyen_de: string }[]>([])
@@ -147,11 +153,16 @@ export function ETEditor({ et, onClose }: { et?: ETView; onClose?: () => void })
         const chuoi = chuoiKetNoi(hinhL, p.nodeIds[0])
         const gocBan: Ban = p.kind === 'ghep' ? { kind: 'ghep', luaId: p.luaId } : p.kind === 'bienthe' ? { kind: 'bienthe', bienTheId: p.bienTheId } : { kind: 'y', yId: p.yId }
         const opts = await goiYMaDeChoBai(chuoi, gocBan, 2)
-        next[sig] = [opts[0]?.ban ?? null, opts[1]?.ban ?? null]
+        // ⭐ 24/08 (Thùy: "chốt logic là nếu ko đủ bài trong cụm thì cùng lấy bài gốc cho đề 2 đề 3" —
+        // đúng khuôn buildMaDe của Đại, made.ts: hết biến thể khác thì CHO TRÙNG TRONG CỤM, tệ nhất
+        // dùng lại chính câu gốc — KHÔNG BAO GIỜ để trống). Trước đây thiếu bước cuối này ở Hình: opts
+        // ít hơn 2 thì để `null`, mà `null` chặn VĨNH VIỄN "👥 Gán mã đề theo HS"/"🖨 Cả lớp" qua
+        // hinhDeReady() (không tự lấp lại được nữa) — sinh 3 mã đề coi như bế tắc.
+        next[sig] = [opts[0]?.ban ?? gocBan, opts[1]?.ban ?? gocBan]
         if (opts.length < 2) thieu.push(chuoi.map((b) => b.ma).join('+'))
       }
       setHinhMaDe(next)
-      if (thieu.length) alert(`Kho chưa đủ 2 bản khác cho ${thieu.length} bài (chỉ đếm biến thể CÙNG node, không tự sinh AI):\n${thieu.join('\n')}`)
+      if (thieu.length) alert(`Kho chưa đủ 2 bản khác cho ${thieu.length} bài (chỉ đếm biến thể CÙNG node, không tự sinh AI) — đã tự dùng lại bài gốc cho phần thiếu:\n${thieu.join('\n')}`)
     } finally { setHinhMaDeBusy(false) }
   }
   const hinhTrong = () => hinhPicks.filter((p) => { const m = hinhMaDe[chuoiSig(p.nodeIds)]; return !m || !m[0] || !m[1] }).length

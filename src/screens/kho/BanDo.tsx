@@ -11,6 +11,7 @@ import type { BranchConfig, LyThuyetApi } from './branches'
 import { BacChip, Code, inp, Shell, Field, Row, Seg, Ghost, Actions, mucDoTone, MathText, readClipboardImageFile } from './ui'
 import DangHub from './DangHub'
 import DungSaiPanel from './DungSaiBank'
+import ChoDuyetPanel from './ChoDuyetPanel'
 import PdfCropper from '../../components/PdfCropper'
 
 const MUC_DO = [1, 2, 3, 4, 5]
@@ -36,6 +37,7 @@ export default function BanDo({ config, khoi }: { config: BranchConfig; khoi: st
   const [dungSaiT2, setDungSaiT2] = useState<null | { t2Ma: string; t2Ten: string }>(null)
   const [fMuc, setFMuc] = useState<Set<number>>(new Set())
   const [fBac, setFBac] = useState<Set<string>>(new Set())
+  const [choDuyet, setChoDuyet] = useState(false) // Câu chờ duyệt (26/08) — chỉ Đại, xem ChoDuyetPanel
 
   async function reload() {
     setLoading(true); setErr(null)
@@ -138,7 +140,13 @@ export default function BanDo({ config, khoi }: { config: BranchConfig; khoi: st
       <aside className="flex min-h-0 flex-col border-r border-slate-200 bg-white">
         <div className="flex items-center justify-between px-4 py-3">
           <span className="text-[13px] font-semibold uppercase tracking-wider text-slate-600">{L1} · K{khoi}</span>
-          <span className="rounded-full bg-slate-100 px-1.5 text-[11px] text-slate-500">{tree.length}</span>
+          <span className="flex items-center gap-1.5">
+            {config.key === 'dai' && (
+              <button onClick={() => setChoDuyet(true)} title="Câu clone từ hàng đợi Claude Code, chưa vào kho"
+                className="rounded-full bg-violet-50 px-2 py-0.5 text-[11px] font-medium text-violet-700 hover:bg-violet-100">Chờ duyệt</button>
+            )}
+            <span className="rounded-full bg-slate-100 px-1.5 text-[11px] text-slate-500">{tree.length}</span>
+          </span>
         </div>
         <div className="flex-1 overflow-auto px-2">
           {tree.length === 0 && <p className="px-2 py-6 text-center text-xs text-slate-400">Chưa có {L1.toLowerCase()}.</p>}
@@ -346,6 +354,7 @@ export default function BanDo({ config, khoi }: { config: BranchConfig; khoi: st
         <DungSaiPanel t2Ma={dungSaiT2.t2Ma} t2Ten={dungSaiT2.t2Ten} tbl={config.cauTbl} allDang={rows}
           onClose={() => setDungSaiT2(null)} />
       )}
+      {choDuyet && <ChoDuyetPanel onClose={() => setChoDuyet(false)} />}
     </div>
   )
 }

@@ -9,20 +9,19 @@
 //   đủ ngay lúc soạn) — nên không có bước "+ BTVN / Ôn tập" riêng.
 // In: bài buổi (chuan/bienthe/y/ghep) → BanIn → HinhPrintView (2 phiếu: Trên lớp / Về nhà).
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import * as api from '../../../lib/kho/api'
 import * as gt from '../../../lib/kho/hinhGiaoTrinh'
 import type { GiaoTrinh, GtBuoi, GtBai, TrichStateHinh, CheDoHinh } from '../../../lib/kho/hinhGiaoTrinh'
 import type { Luoi } from '../../../lib/kho/hinh'
 import type { PickItem } from '../../../store/useStore'
 import { listLop, type Lop } from '../../../lib/nhansu'
-import { ngayBuoiHopLeCuaLop } from '../../../lib/gami'
+import { ngayBuoiHopLeCuaLop, hsCoMatCuaBuoi } from '../../../lib/gami'
 import { homNayVN, congNgay, ddmmVN, thuCuaNgay } from '../../../lib/tuan'
 import { Btn, Empty, Ma, Seg, tron, inpCls } from './hinhUi'
 import { Shell, Field, inp } from '../ui'
 import SearchSelect from '../../../components/SearchSelect'
 import BuoiNgaySelect from '../../../components/BuoiNgaySelect'
-import HinhPrintView, { type BanIn, type MucIn } from './HinhPrintView'
-import { mucGhep, mucGhepLua, mucBienThe, mucY, BuoiPickEditor, banInTheoMoHinh } from './SoanTaiLieu'
+import HinhPrintView, { type BanIn, type HinhPerHS } from './HinhPrintView'
+import { BuoiPickEditor, banInTheoMoHinh } from './SoanTaiLieu'
 
 // Ngày giờ VN (CLAUDE.md §2: không toISOString) — hiển thị "dd/mm/yyyy". Khuôn TaiLieuScreen (Đại).
 function fmtNgay(iso?: string): string {
@@ -30,34 +29,85 @@ function fmtNgay(iso?: string): string {
   return new Date(iso).toLocaleDateString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', day: '2-digit', month: '2-digit', year: 'numeric' })
 }
 
-// ── Resolve bài ĐÃ LƯU của một buổi (master hoặc bản lớp) → BanIn cho 1 phiếu (lop/nha). Dùng CHUNG
-// resolver với builder sống (mucGhep/mucGhepLua/mucBienThe/mucY) — 1 nguồn, hết lệch preview↔bản lưu. ──
+// ⭐ 25/08 (Thùy: "header BTVN vẫn lằng nhằng, t bảo sửa theo kiểu đại rồi mà") — lần trước chỉ gắn
+// laBtvn/tieuBai/ngayNop NGAY TRONG resolveBanIn, nhưng "📝 Xem" ở thẻ buổi Master (BuoiCardHinh.xem
+// dưới) gọi THẲNG banInTheoMoHinh, không qua resolveBanIn → bỏ sót, vẫn ra masthead cũ. Tách riêng
+// thành helper DÙNG CHUNG cho MỌI nơi dựng BanIn phan='nha' của Hình — không còn đường nào lọt nữa.
+// ⭐ 28/08 (Thùy: "chưa có chế độ in cả lớp theo tên học sinh giống Đại số à") — gắn thêm `roster` (HS có
+// mặt buổi này) CÙNG hàm `hsCoMatCuaBuoi` Đại dùng — HinhPrintView tự có toggle "Cả lớp (N)" khi có data.
+async function attachBtvnMeta(ban: BanIn, buoiId: string | undefined, phan: 'lop' | 'nha'): Promise<BanIn> {
+  if (phan !== 'nha') return ban
+  const meta = buoiId ? await gt.getHinhBuoiMeta(buoiId).catch(() => null) : null
+  if (!meta?.ngay) return { ...ban, laBtvn: true }
+  const ngayPhat = meta.ngay.split('-').reverse().join('/')
+  let ngayNop = ''
+  let roster: { id: string; ho_ten: string }[] = []
+  if (meta.lopId) {
+    try {
+      const list2 = await ngayBuoiHopLeCuaLop(meta.lopId, meta.ngay, congNgay(meta.ngay, 120))
+      const next = list2.map((x) => x.ngay).find((d) => d > meta.ngay!)
+      ngayNop = next ? congNgay(next, -1).split('-').reverse().join('/') : ''
+    } catch { /* thiếu TKB — bỏ trống hạn nộp, không chặn in */ }
+    try { roster = await hsCoMatCuaBuoi(meta.lopId, meta.ngay) } catch { /* chưa điểm danh — không chặn in, chỉ mất nút "Cả lớp" */ }
+  }
+  return { ...ban, laBtvn: true, tieuBai: meta.tieuDe || undefined, lop: meta.tenLop ?? '', ngay: ngayPhat, ngayNop, roster }
+}
+
+// ── Resolve bài ĐÃ LƯU của một buổi (master hoặc bản lớp) → BanIn cho 1 phiếu (lop/nha).
+// ⭐ 24/08 (Thùy: "lúc làm tài liệu không thấy lý thuyết hiện ở phiếu trên lớp") — bug gốc: hàm này TỰ
+// build mucs qua mucGhep/mucBienThe/mucY thẳng, KHÔNG đi qua banInTheoMoHinh (SoanTaiLieu.tsx) nên
+// KHÔNG BAO GIỜ gắn lý thuyết — dù chính banInTheoMoHinh đã làm đúng việc này từ 08-10, chỉ có ĐƯỜNG
+// NÀY (Kho tài liệu 🖨 In/In nhanh/Copy link + worker gen-link, xem PrintJobPage.tsx) không đi qua nó,
+// nên lý thuyết chỉ hiện khi soạn/xem trước trong SoanTaiLieu chứ không hiện khi in thật. Giờ: build
+// PickItem[]/cheDo/soDong từ GtBai[] (khuôn loadBuoiPicks trong hinhGiaoTrinh.ts) rồi GIAO HẲN cho
+// banInTheoMoHinh — 1 nguồn build mục DUY NHẤT, hết lệch soạn↔in, lý thuyết tự động có ở MỌI đường in.
 export async function resolveBanIn(L: Luoi, tieuBuoi: string, bais: GtBai[], phan: 'lop' | 'nha'): Promise<BanIn> {
   const list = bais.filter((b) => b.phan === phan).sort((a, b) => a.thu_tu - b.thu_tu)
   const [btMap, yMap] = await Promise.all([
     gt.getBienTheByIds(list.filter((b) => b.loai === 'bienthe').map((b) => b.ref_id!).filter(Boolean)),
     gt.getYFull(list.filter((b) => b.loai === 'y').map((b) => b.ref_id!).filter(Boolean)),
   ])
-  const dong = (b: GtBai) => (phan === 'nha' ? (b.so_dong ?? 6) : (b.so_dong ?? 0))   // BTVN mặc định 6; trên lớp không kẻ dòng
-  const seenGhep = new Set<string>()   // khử bài ghép trùng (cùng bản + cùng bộ node)
-  const mucs: MucIn[] = []
+  const picks: PickItem[] = []
+  const cheDo: Record<string, CheDoHinh> = {}
+  const soDong: Record<string, number> = {}
   for (const b of list) {
-    if (b.loai === 'chuan') {
-      const node = L.baiToan.find((x) => x.id === b.ref_id); if (!node) continue
-      mucs.push(mucGhep(L, { key: b.id, phan: b.phan, kind: 'ghep', luaId: null, nodeIds: [node.id] }, (b.hinh_che_do ?? (b.an_de ? 'o_trong' : 'hien')), dong(b)))
-    } else if (b.loai === 'bienthe') {
-      const v = btMap.get(b.ref_id!); if (!v) continue
-      mucs.push(mucBienThe(L, v, (b.hinh_che_do ?? (b.an_de ? 'o_trong' : 'hien')), dong(b)))
-    } else if (b.loai === 'y') {
-      const yb = yMap.get(b.ref_id!); if (!yb) continue
-      mucs.push(mucY(L, yb, (b.hinh_che_do ?? (b.an_de ? 'o_trong' : 'hien')), dong(b)))
-    } else if (b.loai === 'ghep') {
-      const sig = `${b.lua_id ?? 'chuan'}|${[...b.ghep_node_ids].sort().join(',')}`; if (seenGhep.has(sig)) continue; seenGhep.add(sig)
-      if (b.lua_id) { const vs = await api.bienTheCuaLua(b.lua_id); mucs.push(mucGhepLua(L, b.ghep_node_ids, vs, (b.hinh_che_do ?? (b.an_de ? 'o_trong' : 'hien')), dong(b))) }
-      else mucs.push(mucGhep(L, { key: b.id, phan: b.phan, kind: 'ghep', luaId: b.lua_id, nodeIds: b.ghep_node_ids }, (b.hinh_che_do ?? (b.an_de ? 'o_trong' : 'hien')), dong(b)))
-    }
+    cheDo[b.id] = b.hinh_che_do ?? (b.an_de ? 'o_trong' : 'hien')
+    if (b.so_dong != null) soDong[b.id] = b.so_dong
+    if (b.loai === 'chuan' && b.ref_id) picks.push({ key: b.id, phan: b.phan, kind: 'ghep', luaId: null, nodeIds: [b.ref_id] })
+    else if (b.loai === 'bienthe' && b.ref_id) { const v = btMap.get(b.ref_id); if (v) picks.push({ key: b.id, phan: b.phan, kind: 'bienthe', bienTheId: b.ref_id, nodeIds: [v.baitoan_id] }) }
+    else if (b.loai === 'y' && b.ref_id) { const yb = yMap.get(b.ref_id); if (yb?.y.baitoan_id) picks.push({ key: b.id, phan: b.phan, kind: 'y', yId: b.ref_id, nodeIds: [yb.y.baitoan_id] }) }
+    else if (b.loai === 'ghep') picks.push({ key: b.id, phan: b.phan, kind: 'ghep', luaId: b.lua_id, nodeIds: b.ghep_node_ids })
   }
-  return { tieuDe: `${tieuBuoi} — ${phan === 'lop' ? 'Trên lớp' : 'Về nhà (BTVN)'}`, phuDe: `${mucs.length} mục`, mucs }
+  const ban = await banInTheoMoHinh(`${tieuBuoi} — ${phan === 'lop' ? 'Trên lớp' : 'Về nhà (BTVN)'}`, phan, picks, L, cheDo, soDong)
+  return attachBtvnMeta(ban, bais[0]?.buoi_id, phan)
+}
+
+// ── Resolve bài ET ĐÃ LƯU của 1 buổi → 3 "mã đề" (BẢN TRỐNG, không theo HS cụ thể) — dùng cho worker
+// gen-link (PrintJobPage.tsx) và "In nhanh"/"In" mở TỪ KHO (khác ETScreen: ở đó in "Cả lớp" theo ĐÚNG
+// roster có mặt + mã đề đã gán per-HS; ở Kho chỉ có buoiId trong tay, không có ngữ cảnh buổi-đang-điểm-
+// danh nào — Đại cũng vậy: Copy link của ET Đại luôn là bản trống 3 mã đề, không phải bản có tên HS,
+// xem PrintJobPage.tsx không truyền `perHS` cho ETPrintView). Tái dùng ĐÚNG cơ chế perHS của HinhPrintView
+// (hoTen rỗng) thay vì thêm nhánh render mới — "mỗi mã đề 1 phiếu, đầu phiếu BK" vốn đã là những gì
+// perHS vẽ, chỉ khác chỗ hoTen để trống cho HS tự viết tay (giống ETHeaderBK khi không có hoTen).
+export async function resolveEtBansHinh(L: Luoi, buoiId: string, tenLop: string, ngayFmt: string): Promise<{ ban: BanIn; perHS: HinhPerHS[] }> {
+  const { picks, cheDo, soDong } = await gt.loadBuoiPicksPhan(buoiId, 'et')
+  const ch = await gt.getHinhCauHinh(buoiId, 'et')
+  const maDe = ch.maDe ?? {}
+  const picksCho = (v: 0 | 1) => picks.map((p) => { const alt = maDe[gt.chuoiSig(p.nodeIds)]?.[v]; return alt ? gt.applyBanToPick(p, alt) : p })
+  const tieuDe = `ET Hình ${tenLop} · ${ngayFmt}`
+  const [base, v2, v3] = await Promise.all([
+    banInTheoMoHinh(tieuDe, 'et', picks, L, cheDo, soDong),
+    banInTheoMoHinh(tieuDe, 'et', picksCho(0), L, cheDo, soDong),
+    banInTheoMoHinh(tieuDe, 'et', picksCho(1), L, cheDo, soDong),
+  ])
+  return {
+    ban: { ...base, lop: tenLop, ngay: ngayFmt },
+    perHS: [
+      { hoTen: '', maDe: 1, mucs: base.mucs },
+      { hoTen: '', maDe: 2, mucs: v2.mucs },
+      { hoTen: '', maDe: 3, mucs: v3.mucs },
+    ],
+  }
 }
 
 export default function GiaoTrinhScreen({ L, khoi }: { L: Luoi; khoi: string }) {
@@ -278,7 +328,11 @@ function BuoiCardHinh({ L, buoi, no, onDeleted, onPreview }: {
   async function xem(phan: 'lop' | 'nha') {
     const n = nhap ?? await gt.loadBuoiPicks(buoi.id)
     if (!nhap) setNhap(n)
-    onPreview(await banInTheoMoHinh(tieuDe || `Buổi ${no}`, phan, n.picks, L, n.cheDo, n.soDong))
+    // ⭐ 25/08 — gọi thẳng banInTheoMoHinh TRƯỚC đây bỏ sót header BTVN chuẩn (attachBtvnMeta) vì không
+    // đi qua resolveBanIn. Buổi Master (chưa gán lớp) → meta.ngay null → laBtvn:true, Lớp/Ngày phát để
+    // trống (đúng bản chất "mẫu", không giả lập ngày phát/hạn nộp), vẫn đủ pill "BTVN" + ô Họ tên/Lớp/Điểm.
+    const ban = await banInTheoMoHinh(tieuDe || `Buổi ${no}`, phan, n.picks, L, n.cheDo, n.soDong)
+    onPreview(await attachBtvnMeta(ban, buoi.id, phan))
   }
 
   return (

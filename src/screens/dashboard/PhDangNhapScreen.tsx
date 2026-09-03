@@ -66,16 +66,27 @@ export default function PhDangNhapScreen() {
   async function load() {
     setLoading(true); setErr(null)
     try {
-      const j = await fetchPhLogins()
-      setRows(j.parents ?? [])
-      setSummary(j.summary ?? null)
-      // Tên con lấy từ chính DB ERP (hoc_sinh) — 1 query, gom theo phụ huynh. Để hiện kèm + search.
-      const { data: hs } = await supabase.from('hoc_sinh').select('ho_ten, phu_huynh_id').not('phu_huynh_id', 'is', null).limit(10000)
+      const [j, hsRes] = await Promise.all([
+        fetchPhLogins(),
+        // Tên con lấy từ chính DB ERP (hoc_sinh) — 1 query, gom theo phụ huynh. Để hiện kèm + search.
+        supabase.from('hoc_sinh').select('ho_ten, phu_huynh_id, trang_thai').not('phu_huynh_id', 'is', null).limit(10000),
+      ])
+      if (hsRes.error) throw hsRes.error
+      // Chỉ tính con ĐANG HỌC — PH có con đã nghỉ/bảo lưu/tốt nghiệp (hết con đang học) thì loại
+      // khỏi bộ đo, không hiện trong danh sách.
       const m: Record<string, string[]> = {}
-      for (const h of (hs ?? []) as { ho_ten: string; phu_huynh_id: string }[]) {
-        if (h.phu_huynh_id) (m[h.phu_huynh_id] ??= []).push(h.ho_ten)
+      for (const h of (hsRes.data ?? []) as { ho_ten: string; phu_huynh_id: string; trang_thai: string }[]) {
+        if (h.phu_huynh_id && h.trang_thai === 'dang_hoc') (m[h.phu_huynh_id] ??= []).push(h.ho_ten)
       }
       setConByPh(m)
+      const activeRows = (j.parents ?? []).filter((r) => (m[r.phu_huynh_id]?.length ?? 0) > 0)
+      setRows(activeRows)
+      setSummary({
+        total: activeRows.length,
+        hasAccount: activeRows.filter((r) => r.has_account).length,
+        loggedIn: activeRows.filter((r) => r.last_sign_in_at).length,
+        changedPw: activeRows.filter((r) => r.has_account && !r.must_change_password).length,
+      })
     } catch (e) {
       setErr((e as Error).message)
     } finally {

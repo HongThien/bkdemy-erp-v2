@@ -7,7 +7,7 @@ import { reopenPhase, moLaiDanhGia } from './gami'
 const LIMIT = 10000
 
 // ── Types ─────────────────────────────────────────────────────────
-export type NhanSu = { id: string; ma_ns?: string; ho_ten: string; so_dien_thoai: string | null; email: string | null; anh_url: string | null; trang_thai: 'dang_lam' | 'nghi'; ngay_vao_lam: string | null; created_at?: string }
+export type NhanSu = { id: string; ma_ns?: string; ho_ten: string; so_dien_thoai: string | null; email: string | null; anh_url: string | null; trang_thai: 'dang_lam' | 'nghi'; ngay_vao_lam: string | null; created_at?: string; phim_tat_cong_thuc?: Record<string, string> | null }
 
 // Ảnh đại diện → bucket public 'avatars' (tạo qua Dashboard, migration 0020). DB lưu URL.
 export async function uploadAvatar(file: File): Promise<string> {
@@ -22,6 +22,14 @@ export type Team = { id: string; ma: string; ten: string; thu_tu: number }
 export type ViTri = { id: string; team_id: string; ten: string | null; cap: 'truong' | 'pho' | 'thanh_vien'; cha_id: string | null; nhan_su_id: string | null; vai_tro_id?: string | null; mon?: string | null }
 export type MucNangLuc = { id: string; ma: string; bac: string; muc: number; thu_tu: number; ten: string | null }
 export type Lop = { id: string; ten_lop: string; mon: string; khoi: string | null; bac: string | null; co_so: string | null; ngay_khai_giang: string | null; trang_thai: 'dang_hoc' | 'dong'; created_at?: string; muc_hoc_phi_id?: string | null; muc_hoc_lieu_id?: string | null }
+
+// Bậc/hệ (S/A/B/C) + sĩ số tối đa MỖI LỚP của bậc (null = không giới hạn). Vd hệ S = 20.
+export type LopBac = { ma: string; ten: string; thu_tu: number; si_so_toi_da: number | null }
+export async function listLopBac(): Promise<LopBac[]> {
+  const { data, error } = await supabase.from('lop_bac').select('ma, ten, thu_tu, si_so_toi_da').order('thu_tu')
+  if (error) throw error
+  return (data ?? []) as LopBac[]
+}
 export type PhanCongLop = { id: string; nhan_su_id: string; lop_id: string; vai_tro: 'gv' | 'tg'; la_chinh: boolean }
 // TRƯỞNG KHỐI — phụ trách RÀ SOÁT dữ liệu cả 1 khối (không gán per-lớp được, phạm vi rộng hơn phan_cong_lop).
 // Độc lập vi_tri/team (không phải chức danh tổ chức chính thức) — Thùy chốt 21/08.
@@ -257,6 +265,11 @@ export async function updateMyProfile(nhanSuId: string, p: { so_dien_thoai?: str
   if ('email' in p) patch.email = p.email
   if ('anh_url' in p) patch.anh_url = p.anh_url
   const { error } = await supabase.from('nhan_su').update(patch).eq('id', nhanSuId)
+  if (error) throw error
+}
+// Phím tắt CÁ NHÂN cho mẫu công thức (mig 202609030144) — { templateId: 'Ctrl+Alt+F' }. Ghi đè cả map.
+export async function updatePhimTatCongThuc(nhanSuId: string, map: Record<string, string>): Promise<void> {
+  const { error } = await supabase.from('nhan_su').update({ phim_tat_cong_thuc: map, updated_at: new Date().toISOString() }).eq('id', nhanSuId)
   if (error) throw error
 }
 

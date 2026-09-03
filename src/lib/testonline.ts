@@ -156,8 +156,10 @@ export async function phatHanhTest(taiLieuId: string, override?: { lopId: string
     }
   }
 
-  // Hạn nộp tính Ở POSTGRES (mig 202608171359 — luật theo loại, giờ VN, đọc thoi_khoa_bieu).
-  // NULL hợp lệ cho de_thi; NULL cho btvn = KHÔNG tìm ra buổi kế ⇒ phải báo người, đừng đoán.
+  // Hạn nộp tính Ở POSTGRES (mig 202608171359, đổi luật 202609031701 — theo loại, giờ VN, đọc TKB):
+  // et = hết ca +15' (Thùy 03/09) · btvn = 23:59 ngày trước buổi kế · giao_trinh = NULL (không hạn,
+  // Thùy 03/09 "bỏ giới hạn với bài tập trên lớp") · de_thi = NULL (staff tự đặt).
+  // NULL cho btvn = KHÔNG tìm ra buổi kế ⇒ phải báo người, đừng đoán.
   const { data: hanNop, error: eH } = await supabase.rpc('han_nop_bai_test',
     { p_lop: lopId, p_ngay: ngay, p_loai: map.testLoai })
   if (eH) throw eH
@@ -408,38 +410,12 @@ export async function listAcceptedAnswers(maCaus: string[]): Promise<Map<string,
 // ③ resolve report 'moi' của các dòng đó → 'dung'. Trả số bài đã sửa.
 // Mastery đọc bai_lam_cau LIVE (suy động) → tự đúng theo, không phải sync gì thêm.
 export async function chapNhanDapAn(maCau: string, dapAnRaw: string): Promise<{ backfilled: number }> {
-  const norm = smartNormalize(dapAnRaw)
-  if (!norm) throw new Error('Đáp án rỗng sau chuẩn hoá — không chấp nhận được.')
-  // ① cache (idempotent — unique ma_cau+answer_normalized)
-  const { error: e1 } = await supabase.from('question_accepted_answers')
-    .upsert({ ma_cau: maCau, answer_normalized: norm, answer_raw: dapAnRaw, source: 'manual' },
-      { onConflict: 'ma_cau,answer_normalized', ignoreDuplicates: true })
-  if (e1) throw e1
-  // ② backfill: mọi dòng wrong cùng câu → lọc client theo normalize (smartNormalize là JS, DB không có)
-  const { data: wrongs, error: e2 } = await supabase.from('bai_lam_cau')
-    .select('id, dap_an_hs, cau:bai_test_cau_id!inner(ma_cau, diem)')
-    .eq('verdict', 'wrong').eq('cau.ma_cau', maCau).limit(LIMIT)
-  if (e2) throw e2
-  const targets = ((wrongs ?? []) as any[]).filter((r) => smartNormalize(String(r.dap_an_hs ?? '')) === norm)
-  if (!targets.length) return { backfilled: 0 }
-  // update theo nhóm diem (thường đồng nhất =1) — verdict correct, đường 'manual' (người duyệt)
-  const byDiem = new Map<number, string[]>()
-  for (const t of targets) {
-    const d = Number(t.cau?.diem ?? 1)
-    const arr = byDiem.get(d) ?? []; arr.push(t.id); byDiem.set(d, arr)
-  }
-  for (const [d, ids] of byDiem) {
-    const { error } = await supabase.from('bai_lam_cau')
-      .update({ verdict: 'correct', diem: d, cham_boi: 'manual', cham_at: new Date().toISOString() })
-      .in('id', ids)
-    if (error) throw error
-  }
-  // ③ resolve report của các dòng vừa sửa
-  const uid = (await supabase.auth.getUser()).data.user?.id ?? null
-  await supabase.from('bai_test_report')
-    .update({ trang_thai: 'dung', duyet_boi: uid, duyet_at: new Date().toISOString() })
-    .in('bai_lam_cau_id', targets.map((t) => t.id)).eq('trang_thai', 'moi')
-  return { backfilled: targets.length }
+  // §2.0 (30/08): cache + backfill + resolve report trong MỘT transaction ở DB
+  // (fn_chap_nhan_dap_an — mig 202608300251/0254). Chuẩn hoá = fn_tln_normalize, đã parity
+  // 615/615 với smartNormalize JS sau khi vá bug unicode ở CẢ hai phía.
+  const { data, error } = await supabase.rpc('fn_chap_nhan_dap_an', { p_ma_cau: maCau, p_dap_an_raw: dapAnRaw })
+  if (error) throw error
+  return { backfilled: Number((data as any)?.backfilled ?? 0) }
 }
 
 // ══ SỬA KEY SAI + CHẤM LẠI CẢ LỚP (spec §7) ═══════════════════════════════════
@@ -454,15 +430,57 @@ export type CauNghiSaiKey = {
   test: { loai: string; ngay: string; lopTen: string; mon: string }
   daTraLoi: number; sai: number; tiLeSai: number
   lanChamLai: number
+  // 🚩 HS báo "đề/đáp án sai" (TN/ĐS — giáo trình, Thùy 03/09) đang chờ: id report + ý kiến.
+  baoSai: { reportIds: string[]; yKien: string[] }
+}
+
+// Report 'moi' của câu TN/ĐS (đường KEY SAI). TLN KHÔNG lấy ở đây — "em nghĩ mình đúng" của TLN
+// đi đường accepted-answer (listTLNSai / tab 🚩 HS báo sai), hai đường không trộn (xem đầu mục).
+export async function listBaoSaiDe(): Promise<{ id: string; bai_lam_cau_id: string; bai_test_cau_id: string; y_kien: string | null }[]> {
+  const { data, error } = await supabase.from('bai_test_report')
+    .select('id, y_kien, bai_lam_cau_id, blc:bai_lam_cau_id!inner(bai_test_cau_id, cau:bai_test_cau_id!inner(loai_cau))')
+    .eq('trang_thai', 'moi').neq('blc.cau.loai_cau', 'tra_loi_ngan').limit(LIMIT)
+  if (error) throw error
+  return ((data ?? []) as any[]).map((r) => ({ id: r.id, bai_lam_cau_id: r.bai_lam_cau_id, bai_test_cau_id: r.blc?.bai_test_cau_id, y_kien: r.y_kien ?? null }))
+}
+
+// Sau khi sửa key + chấm lại 1 câu: đóng các báo sai 'moi' của câu đó theo kết quả chấm lại —
+// bài HS đã thành correct ⇒ 'dung' (HS nói đúng), còn lại ⇒ 'sai'. Ghi status thuần (không tính
+// toán) nên để client; fn_sua_key_va_cham_lai không đụng report (ghi vết chấm lại là việc của nó).
+export async function dongBaoSaiSauChamLai(baiTestCauId: string): Promise<void> {
+  const { data: blcs, error } = await supabase.from('bai_lam_cau').select('id, verdict').eq('bai_test_cau_id', baiTestCauId).limit(LIMIT)
+  if (error) throw error
+  const dung = (blcs ?? []).filter((b: any) => b.verdict === 'correct').map((b: any) => b.id as string)
+  const sai = (blcs ?? []).filter((b: any) => b.verdict !== 'correct').map((b: any) => b.id as string)
+  const uid = (await supabase.auth.getUser()).data.user?.id ?? null
+  const patch = { duyet_boi: uid, duyet_at: new Date().toISOString() }
+  if (dung.length) {
+    const { error: e1 } = await supabase.from('bai_test_report').update({ ...patch, trang_thai: 'dung' }).eq('trang_thai', 'moi').in('bai_lam_cau_id', dung)
+    if (e1) throw e1
+  }
+  if (sai.length) {
+    const { error: e2 } = await supabase.from('bai_test_report').update({ ...patch, trang_thai: 'sai' }).eq('trang_thai', 'moi').in('bai_lam_cau_id', sai)
+    if (e2) throw e2
+  }
 }
 
 // Câu mà TỈ LỆ SAI CAO — dấu hiệu key sai (cả lớp cùng sai 1 câu thì nghi key trước, nghi HS sau).
 // Ngưỡng mặc định: ≥3 HS đã trả lời và ≥70% sai. Trả mọi loại câu (key sai không riêng TLN).
+// + câu TN/ĐS có 🚩 báo sai đề đang chờ — vào danh sách BẤT KỂ ngưỡng (1 HS báo cũng phải có người xem).
 export async function listCauNghiSaiKey(nguongTiLe = 0.7, toiThieuHS = 3): Promise<CauNghiSaiKey[]> {
   const { data, error } = await supabase.from('bai_lam_cau')
     .select('verdict, cau:bai_test_cau_id!inner(id, bai_test_id, thu_tu, loai_cau, ma_cau, noi_dung, dap_an_key, test:bai_test_id(loai, ngay, mon, lop:lop_id(ten_lop)))')
     .not('verdict', 'is', null).limit(LIMIT)
   if (error) throw error
+  const reps = await listBaoSaiDe()
+  const repByCau = new Map<string, { reportIds: string[]; yKien: string[] }>()
+  for (const r of reps) {
+    if (!r.bai_test_cau_id) continue
+    const g = repByCau.get(r.bai_test_cau_id) ?? { reportIds: [], yKien: [] }
+    g.reportIds.push(r.id)
+    if (r.y_kien && !g.yKien.includes(r.y_kien)) g.yKien.push(r.y_kien)
+    repByCau.set(r.bai_test_cau_id, g)
+  }
   const byCau = new Map<string, CauNghiSaiKey>()
   for (const r of (data ?? []) as any[]) {
     const c = r.cau
@@ -474,6 +492,7 @@ export async function listCauNghiSaiKey(nguongTiLe = 0.7, toiThieuHS = 3): Promi
         maCau: c.ma_cau ?? null, noiDung: c.noi_dung ?? null, dapAnKey: c.dap_an_key,
         test: { loai: c.test?.loai ?? '?', ngay: c.test?.ngay ?? '', lopTen: c.test?.lop?.ten_lop ?? '?', mon: c.test?.mon ?? '' },
         daTraLoi: 0, sai: 0, tiLeSai: 0, lanChamLai: 0,
+        baoSai: repByCau.get(c.id) ?? { reportIds: [], yKien: [] },
       }
       byCau.set(c.id, g)
     }
@@ -482,7 +501,7 @@ export async function listCauNghiSaiKey(nguongTiLe = 0.7, toiThieuHS = 3): Promi
   }
   const out = [...byCau.values()]
     .map((g) => ({ ...g, tiLeSai: g.daTraLoi ? g.sai / g.daTraLoi : 0 }))
-    .filter((g) => g.daTraLoi >= toiThieuHS && g.tiLeSai >= nguongTiLe)
+    .filter((g) => g.baoSai.reportIds.length > 0 || (g.daTraLoi >= toiThieuHS && g.tiLeSai >= nguongTiLe))
   if (!out.length) return []
   // Đã chấm lại lần nào chưa (hiện lên UI để không chấm lại chồng chéo mà không biết).
   const { data: logs } = await supabase.from('bai_test_cham_lai_log')
@@ -491,7 +510,8 @@ export async function listCauNghiSaiKey(nguongTiLe = 0.7, toiThieuHS = 3): Promi
     const g = out.find((x) => x.cauId === l.bai_test_cau_id)
     if (g) g.lanChamLai++
   }
-  return out.sort((a, b) => b.tiLeSai - a.tiLeSai || b.daTraLoi - a.daTraLoi)
+  // Câu có 🚩 báo sai lên đầu (có người đang chờ), rồi tỉ lệ sai giảm dần.
+  return out.sort((a, b) => b.baoSai.reportIds.length - a.baoSai.reportIds.length || b.tiLeSai - a.tiLeSai || b.daTraLoi - a.daTraLoi)
 }
 
 export type ChamLaiKetQua = { soBai: number; saiThanhDung: number; dungThanhSai: number; khongDoi: number }
@@ -501,56 +521,15 @@ export type ChamLaiKetQua = { soBai: number; saiThanhDung: number; dungThanhSai:
 // mỗi lần phát hành là một phép đo riêng, sửa nhầm sang test cũ là ghi đè điểm đã chốt.
 // Mastery đọc bai_lam_cau LIVE ⇒ tự đúng theo, KHÔNG resync gì (et_nop không ghi gami_grades).
 export async function suaKeyVaChamLai(baiTestCauId: string, keyMoi: unknown, lyDo: string): Promise<ChamLaiKetQua> {
-  const { data: cauRow, error: e0 } = await supabase.from('bai_test_cau')
-    .select('id, loai_cau, dap_an_key, diem, ma_cau').eq('id', baiTestCauId).single()
-  if (e0) throw e0
-  const cau = cauRow as { id: string; loai_cau: string; dap_an_key: unknown; diem: number; ma_cau: string | null }
-  const keyCu = cau.dap_an_key
-
-  const { data: blcRows, error: e1 } = await supabase.from('bai_lam_cau')
-    .select('id, dap_an_hs, verdict').eq('bai_test_cau_id', baiTestCauId).limit(LIMIT)
-  if (e1) throw e1
-  const rows = (blcRows ?? []) as { id: string; dap_an_hs: unknown; verdict: string | null }[]
-
-  // ① Ghi key mới TRƯỚC — nếu bước chấm lại chết giữa chừng thì key vẫn đúng cho lần sau,
-  //    và log ở ③ sẽ không có ⇒ nhìn là biết "đã sửa key nhưng chưa chấm lại xong".
-  const { error: e2 } = await supabase.from('bai_test_cau').update({ dap_an_key: keyMoi as any }).eq('id', baiTestCauId)
-  if (e2) throw e2
-
-  // ② Chấm lại từng bài bằng ĐÚNG engine thuần đang dùng lúc HS làm (không chép lại công thức).
-  const kq: ChamLaiKetQua = { soBai: rows.length, saiThanhDung: 0, dungThanhSai: 0, khongDoi: 0 }
-  for (const r of rows) {
-    let g: { verdict: string; cham_boi: string; diemTho?: number } = cau.loai_cau === 'trac_nghiem'
-      ? gradeTracNghiem(r.dap_an_hs as number, keyMoi as string)
-      : cau.loai_cau === 'dung_sai'
-        ? gradeDungSai(r.dap_an_hs as string[], keyMoi as string[])
-        : gradeTraLoiNgan(r.dap_an_hs as string, keyMoi as string)
-    if (cau.loai_cau === 'tra_loi_ngan' && g.verdict === 'wrong' && cau.ma_cau) {
-      const { data: hit } = await supabase.rpc('tln_cache_check', { p_ma_cau: cau.ma_cau, p_norm: smartNormalize(r.dap_an_hs as string) })
-      if (hit === true) g = { verdict: 'correct', cham_boi: 'cache' }
-    }
-    const diem = g.diemTho != null ? g.diemTho * cau.diem
-      : g.verdict === 'correct' ? cau.diem : g.verdict === 'partial' ? cau.diem * 0.5 : 0
-    const { error } = await supabase.from('bai_lam_cau')
-      .update({ verdict: g.verdict, diem, cham_boi: g.cham_boi, cham_at: new Date().toISOString() })
-      .eq('id', r.id)
-    if (error) throw error
-    const cuDung = r.verdict === 'correct'
-    const moiDung = g.verdict === 'correct'
-    if (!cuDung && moiDung) kq.saiThanhDung++
-    else if (cuDung && !moiDung) kq.dungThanhSai++
-    else kq.khongDoi++
-  }
-
-  // ③ Vết (spec §7 — "in before/after + log")
-  const uid = (await supabase.auth.getUser()).data.user?.id ?? null
-  const { error: e3 } = await supabase.from('bai_test_cham_lai_log').insert({
-    bai_test_cau_id: baiTestCauId, key_cu: keyCu as any, key_moi: keyMoi as any,
-    so_bai: kq.soBai, sai_thanh_dung: kq.saiThanhDung, dung_thanh_sai: kq.dungThanhSai,
-    ly_do: lyDo || null, nguoi: uid,
+  // §2.0 (30/08): sửa key + chấm lại cả lớp + log trong MỘT transaction ở DB
+  // (fn_sua_key_va_cham_lai — mig 202608300301). Bộ chấm 3 loại câu parity 983/983
+  // với engine JS trên bài làm thật. Bản cũ N+1 update — chết giữa chừng là lớp
+  // nửa điểm cũ nửa điểm mới (đúng ca audit nêu).
+  const { data, error } = await supabase.rpc('fn_sua_key_va_cham_lai', {
+    p_bai_test_cau_id: baiTestCauId, p_key: keyMoi as any, p_ly_do: lyDo || '',
   })
-  if (e3) throw e3
-  return kq
+  if (error) throw error
+  return data as ChamLaiKetQua
 }
 
 // TA giữ nguyên "HS sai" cho các report của 1 đáp án (đóng 🚩, verdict giữ wrong).

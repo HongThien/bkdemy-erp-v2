@@ -94,11 +94,15 @@ export const adminLeaves: AdminLeaf[] = [
   // (Thùy 07-08: Tuyển sinh = quản lý level HS; test đầu vào = 4 story vận hành điểm danh→chấm→nhận
   // xét→trả bài). 1 leaf, 4 tab bên trong (Điểm danh/Đề/Chấm/Nhận xét) — TestDauVaoScreen.tsx.
   { id: 'test_dau_vao',nhom: 'Vận hành',  ten: 'Test đầu vào',                 founderOnly: false },
+  // Tủ quà (Thùy 30/08): đổi quà thanh toán bằng xu + order đặt trước + kho. Màn ở APP OPS (tab Quà);
+  // DB layer = mig 202608300908 (viết lại hệ qlht_* của Hải theo style ERP).
+  { id: 'tu_qua',      nhom: 'Vận hành',  ten: 'Tủ quà (đổi xu)',              founderOnly: false },
 
   // ── GAMIFICATION: Elo/EXP, thành tích, level ──
   { id: 'diemso',      nhom: 'Gamification', ten: 'Điểm số (Elo/EXP)',        founderOnly: false },
   { id: 'thanhtich',   nhom: 'Gamification', ten: 'Thành tích',               founderOnly: false },
   { id: 'quanlylevel', nhom: 'Gamification', ten: 'Quản lý Level',            founderOnly: false },
+  { id: 'chotxu',      nhom: 'Gamification', ten: 'Chốt xu tháng',            founderOnly: true }, // CEO chỉnh mốc + chốt (Thùy 08-29)
 
   // ── HỌC THUẬT: kho + soạn tài liệu ──
   { id: 'bdkt',        nhom: 'Học thuật', ten: 'Bản đồ kiến thức (Kho)',      founderOnly: false },
@@ -109,6 +113,7 @@ export const adminLeaves: AdminLeaf[] = [
   // ── QUẢN LÝ CHẤT LƯỢNG: đo lường kết quả học tập (sẽ break ra nhiều nhánh ở đây) ──
   { id: 'ketqua',      nhom: 'Quản lý chất lượng', ten: 'Kết quả học tập',    founderOnly: false }, // mastery (HS × dạng) suy động
   { id: 'duyetcham',   nhom: 'Quản lý chất lượng', ten: 'Duyệt chấm online',  founderOnly: false }, // review trả-lời-ngắn: chấp nhận đáp án + backfill
+  { id: 'duyetloigiai', nhom: 'Quản lý chất lượng', ten: 'Duyệt lời giải AI', founderOnly: false }, // 27/08: gộp theo khối — Đại/KHTN/HGT/Hình có loi_giai do AI viết, chưa duyệt
   { id: 'db_hoctap',   nhom: 'Quản lý chất lượng', ten: 'Dashboard học tập',  founderOnly: false }, // phát hiện → đề xuất → NGƯỜI duyệt (spec-danhgia-hoctap)
   { id: 'botroyeu',    nhom: 'Quản lý chất lượng', ten: 'Bổ trợ yếu',        founderOnly: false }, // Thùy 08-18: lá riêng, 4 tab con (duyệt/nội dung/trạng thái/đánh giá) — xem BOTROYEU_CHILDREN
   { id: 'report_ph',   nhom: 'Quản lý chất lượng', ten: 'Report phụ huynh',   founderOnly: false }, // report tháng gửi PH: số liệu HS + nhận xét GV
@@ -123,6 +128,9 @@ export const adminLeaves: AdminLeaf[] = [
   { id: 'baoloi',      nhom: 'Core team', ten: 'Quản lý báo lỗi',             founderOnly: true },
   { id: 'db_tuyendung',nhom: 'Core team', ten: 'Tuyển dụng',                  founderOnly: true },
   { id: 'giaoviec',    nhom: 'Core team', ten: 'Tạo & giao việc phát triển',  founderOnly: false },
+  { id: 'gay',         nhom: 'Core team', ten: 'Gậy của BK',                  founderOnly: false }, // hệ phạt: gậy tự động (chậm deadline ERP, máy đề xuất) + thủ công; công khai toàn công ty
+  { id: 'thuchi',      nhom: 'Core team', ten: 'Thu chi',                      founderOnly: false }, // hoàn ứng chi tiêu NS: duyệt/ghi sổ/chốt kỳ gửi Ngân (PLAN-thu-chi.md, Thùy 09-02)
+
 
   // ── DASHBOARD: chỉ phục vụ CEO ra quyết định (analytics, không phải màn thao tác) ──
   { id: 'db_tongquan', nhom: 'Dashboard', ten: 'Tổng quan',                   founderOnly: false },
