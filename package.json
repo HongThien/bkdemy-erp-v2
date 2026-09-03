@@ -30,10 +30,14 @@
     "build:chi": "vite build --config vite.config.chi.ts",
     "preview:chi": "vite preview --config vite.config.chi.ts --outDir dist-chi",
     "kiem:mau": "vite-node scripts/kiem-mau-cong-thuc.ts",
-    "kiem:congthuc": "vite-node scripts/kiem-cong-thuc-ro.ts"
+    "kiem:congthuc": "vite-node scripts/kiem-cong-thuc-ro.ts",
+    "apk": "node scripts/android/build-apk.mjs",
+    "apk:icons": "node scripts/android/gen-icons.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.113.0",
+    "@capacitor/android": "^8.5.1",
+    "@capacitor/core": "^8.5.1",
     "@supabase/supabase-js": "^2.45.0",
     "html-to-image": "^1.11.13",
     "html2canvas": "^1.4.1",
@@ -50,6 +54,7 @@
     "zustand": "^5.0.14"
   },
   "devDependencies": {
+    "@capacitor/cli": "^8.5.1",
     "@napi-rs/canvas": "^0.1.100",
     "@tailwindcss/vite": "^4.0.0",
     "@types/node": "^22.10.0",
