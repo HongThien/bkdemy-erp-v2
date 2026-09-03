@@ -1926,14 +1926,16 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
     </div>
   )
 }
-// Popup báo động: chọn dạng HS kém + ghi chú → themCanhBao.
-function AlertModal({ buoiId, hocSinhId, hsTen, dangBuoi, tenDang, onClose, onSaved }: {
-  buoiId: string; hocSinhId: string; hsTen: string; dangBuoi: string[]; tenDang: (md: string | null) => string; onClose: () => void; onSaved: () => void
+// Popup báo động: chọn dạng HS kém + ghi chú → themCanhBao. Dùng chung cho BTVN VÀ Đánh giá sau
+// buổi (Thùy 08-23) — `nguon` phân biệt nơi báo (đều feed thẳng vào ③ chuông đỏ, xem coChuongDo
+// ở danhgia.ts) để sau này audit lại vẫn biết báo lúc chấm BTVN hay lúc đánh giá buổi.
+function AlertModal({ buoiId, hocSinhId, hsTen, dangBuoi, tenDang, nguon = 'btvn', onClose, onSaved }: {
+  buoiId: string; hocSinhId: string; hsTen: string; dangBuoi: string[]; tenDang: (md: string | null) => string; nguon?: string; onClose: () => void; onSaved: () => void
 }) {
   const [maDang, setMaDang] = useState(dangBuoi[0] ?? '')
   const [ghiChu, setGhiChu] = useState('')
   const [busy, setBusy] = useState(false)
-  async function luu() { if (!maDang) return; setBusy(true); try { await themCanhBao({ buoiId, hocSinhId, maDang, ghiChu: ghiChu.trim() || undefined }); onSaved() } catch (e: any) { alert(e.message ?? String(e)); setBusy(false) } }
+  async function luu() { if (!maDang) return; setBusy(true); try { await themCanhBao({ buoiId, hocSinhId, maDang, ghiChu: ghiChu.trim() || undefined, nguon }); onSaved() } catch (e: any) { alert(e.message ?? String(e)); setBusy(false) } }
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-4" onClick={onClose}>
       <div className="w-[460px] max-w-full rounded-2xl border border-slate-200 bg-white p-5 shadow-2xl" onClick={(e) => e.stopPropagation()}>
@@ -1966,13 +1968,16 @@ function DanhGiaTab({ buoiId, roster, dangOpts, buoi, onChange }: { buoiId: stri
   const [probs, setProbs] = useState<Problem[]>([])
   const [grades, setGrades] = useState<Grade[]>([])
   const [data, setData] = useState<Record<string, DanhGiaHS>>({})
+  const [cb, setCb] = useState<CanhBao[]>([]) // ③ báo động — Thùy 08-23: nút chung với BTVN, link thẳng vào coChuongDo
+  const [alertFor, setAlertFor] = useState<string | null>(null) // hsId đang mở popup báo động
   const [loading, setLoading] = useState(true)
   const xong = !!buoi.danh_gia_xong_at
   const coMat = roster.filter((r) => r.diem_danh === 'co_mat')
   const tenHT = tenHienThiDs(coMat.map((r) => r.hoc_sinh?.ho_ten)) // 2 HS trùng tên rút gọn → bung đủ (Thùy 07-06)
-  const tenDang = (md: string) => dangOpts.find((d) => d.ma_dang === md)?.ten ?? md
+  const tenDang = (md: string | null) => (md ? dangOpts.find((d) => d.ma_dang === md)?.ten ?? md : '—')
   // dạng của buổi = ma_dang đã gắn ở "Chấm bài trên lớp" (ingame)
   const dangs = [...new Set(probs.map((p) => p.ma_dang).filter(Boolean))] as string[]
+  const cbOf = (hsId: string) => cb.filter((x) => x.hoc_sinh_id === hsId)
 
   // getDanhGia tách riêng try/catch: lỗi ở đây (vd cột mới hoan_thanh_pct chưa migrate) KHÔNG được kéo
   // sập luôn phần chấm-theo-dạng (probs/grades) — chỉ nhận xét/% hoàn thành tạm rỗng.
@@ -1981,6 +1986,7 @@ function DanhGiaTab({ buoiId, roster, dangOpts, buoi, onChange }: { buoiId: stri
     try {
       const [p, g] = await Promise.all([listProblems(buoiId, 'ingame'), listGrades(buoiId)])
       setProbs(p); setGrades(g)
+      setCb(await listCanhBao(buoiId))
       try { setData(await getDanhGia(buoiId)) } catch { setData({}) }
     } finally { setLoading(false) }
   }
@@ -2060,7 +2066,19 @@ function DanhGiaTab({ buoiId, roster, dangOpts, buoi, onChange }: { buoiId: stri
               const hsId = r.hoc_sinh_id; const hs = data[hsId]
               return (
                 <tr key={r.id} className="align-top">
-                  <td className="sticky left-0 z-10 whitespace-nowrap border border-slate-200 bg-white px-3 py-2 text-left align-middle font-medium text-slate-800">{tenHT[i]}</td>
+                  <td className="sticky left-0 z-10 whitespace-nowrap border border-slate-200 bg-white px-3 py-2 text-left align-middle font-medium text-slate-800">
+                    <div className="flex items-center gap-1.5">
+                      <span>{tenHT[i]}</span>
+                      <button onClick={() => setAlertFor(hsId)} disabled={!dangs.length || xong} className="shrink-0 rounded border border-rose-200 px-1.5 py-0.5 text-[12px] text-rose-600 hover:bg-rose-50 disabled:opacity-40" title="Báo động: HS kém 1 dạng">🚨</button>
+                    </div>
+                    {cbOf(hsId).length > 0 && (
+                      <div className="mt-1 flex flex-wrap items-center gap-1">
+                        {cbOf(hsId).map((c) => (
+                          <span key={c.id} className="inline-flex items-center gap-1 rounded bg-rose-100 px-1.5 py-0.5 text-[10px] font-semibold text-rose-700" title={c.ghi_chu ?? ''}>{tenDang(c.ma_dang)}{!xong && <button onClick={async () => { await xoaCanhBao(c.id); reload() }} className="text-rose-400 hover:text-rose-700">✕</button>}</span>
+                        ))}
+                      </div>
+                    )}
+                  </td>
                   {dangs.map((md) => {
                     const cur = hs?.diemTheoDang[md]
                     const baiDang = probs.filter((p) => p.ma_dang === md)
@@ -2110,6 +2128,10 @@ function DanhGiaTab({ buoiId, roster, dangOpts, buoi, onChange }: { buoiId: stri
           </tbody>
         </table>
       </div>
+      {alertFor && (
+        <AlertModal buoiId={buoiId} hocSinhId={alertFor} hsTen={coMat.find((r) => r.hoc_sinh_id === alertFor)?.hoc_sinh?.ho_ten ?? '?'}
+          dangBuoi={dangs} tenDang={tenDang} nguon="danh_gia" onClose={() => setAlertFor(null)} onSaved={() => { setAlertFor(null); reload() }} />
+      )}
     </div>
   )
 }

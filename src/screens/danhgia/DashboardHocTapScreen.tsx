@@ -380,14 +380,13 @@ export function CandidateDetailBody({ c, children }: { c: Candidate; children?: 
   const doiMuc = dangs.filter((d) => d.mucTruoc && d.mucTruoc !== d.muc)
   const tut = doiMuc.filter((d) => MUC_RANK[d.muc] < MUC_RANK[d.mucTruoc!])
   const len = doiMuc.filter((d) => MUC_RANK[d.muc] > MUC_RANK[d.mucTruoc!])
-  // Điểm chuyên đề: 2 cửa sổ có điểm gần nhất. Thùy 08-18: hiện lại TÊN (07-25 từng bỏ, giờ cần
-  // đọc nhanh không phải tra mã) + cho soi detail (lịch sử làm bài của chuyên đề đó).
-  const cdDelta = c.sheet.chuyenDes.map((cd) => {
-    const pts = cd.chuoi.filter((p) => p.score != null)
-    if (pts.length < 2) return null
-    const tu = pts[pts.length - 2].score!, den = pts[pts.length - 1].score!
-    return { ma: cd.ma_chuyen_de, ten: cd.ten_chuyen_de, tu, den, delta: den - tu }
-  }).filter(Boolean) as { ma: string; ten: string; tu: number; den: number; delta: number }[]
+  // Điểm chuyên đề: dùng THẲNG `cd.cham` (pha 2, engine tính ở getStatSheetLop) thay vì tự suy từ
+  // `cd.chuoi` — Thùy 08-23 (vòng 2): cửa sổ KHÔNG có lần làm nào thì KHÔNG được tính, và mốc "mới"
+  // phải là cửa sổ hiện tại hoặc liền trước (đã fix bug recency ở đó). Tự suy lại ở đây trước kia bỏ
+  // qua fix đó — 2 chỗ tính ra 2 kết quả khác nhau cho CÙNG 1 câu hỏi "chuyên đề nào đang tụt".
+  const cdDelta = c.sheet.chuyenDes
+    .filter((cd) => cd.cham?.pha === 2)
+    .map((cd) => ({ ma: cd.ma_chuyen_de, ten: cd.ten_chuyen_de, tu: cd.cham.truoc as number, den: cd.cham.sau as number, delta: (cd.cham.sau as number) - (cd.cham.truoc as number) }))
   // Dạng CÓ thay đổi điểm (gồm "mới" nếu đáng chú ý) — dùng để LOẠI khỏi "yếu ổn định" bên dưới,
   // không còn render bảng riêng theo chuyên đề nữa (Thùy 08-22: gộp vào drawer cho gọn).
   const doiDang = dangs.filter((d) => d.scoreTruoc == null ? (d.trongDien || d.muc !== 'dat') : Math.abs(d.score - d.scoreTruoc) > 0.005)
@@ -547,15 +546,15 @@ export function CandidateDetailBody({ c, children }: { c: Candidate; children?: 
         {/* ── VÙNG 2 — So với trung bình lớp theo từng bài ────────────────────────── */}
         <Khoi ten="So với trung bình lớp — 8 bài giám sát gần nhất">
           {c.sheet.soLop.length === 0 ? <p className="text-[11px] text-slate-400">Chưa có bài giám sát nào.</p> : (
-            <div className="grid grid-cols-4 gap-1.5">
+            <div className="grid grid-cols-8 gap-1">
               {c.sheet.soLop.map((b) => {
                 const tot = b.diemHS >= b.tbLop - 0.005
                 return (
-                  <div key={b.buoi_hoc_id} className={`rounded-lg border px-2 py-1.5 text-center tabular-nums ${tot ? 'border-emerald-100 bg-emerald-50' : 'border-rose-100 bg-rose-50'}`}>
-                    <div className={`whitespace-nowrap text-[13px] font-black ${tot ? 'text-emerald-600' : 'text-rose-600'}`}>
-                      {b.diemHS.toFixed(2)} <span className="text-[10.5px] font-semibold text-slate-400">/ {b.tbLop.toFixed(2)}</span>
+                  <div key={b.buoi_hoc_id} className={`rounded-md border px-1 py-1 text-center tabular-nums ${tot ? 'border-emerald-100 bg-emerald-50' : 'border-rose-100 bg-rose-50'}`}>
+                    <div className={`whitespace-nowrap text-[10.5px] font-black leading-tight ${tot ? 'text-emerald-600' : 'text-rose-600'}`}>
+                      {b.diemHS.toFixed(2)}<span className="text-[9px] font-semibold text-slate-400">/{b.tbLop.toFixed(2)}</span>
                     </div>
-                    <div className="mt-0.5 text-[10px] font-semibold text-slate-400">#{b.hang}/{b.siSo}</div>
+                    <div className="text-[9px] font-semibold text-slate-400">#{b.hang}/{b.siSo}</div>
                   </div>
                 )
               })}

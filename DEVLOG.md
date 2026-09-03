@@ -6975,3 +6975,61 @@ Breakdown: 84 vào vì ≥2/4 kênh · 11 vì báo động · 0 vì case-đang-m
 5210, đăng nhập admin thật) — "Duyệt bổ trợ" hiện **"66 ca"** (Toán, tất cả khối — trước đây badge
 này từng hiện "209 ca" ở phiên làm UI cùng ngày) · "Dashboard học tập" (consumer thứ 2 của cùng
 `listCandidatesLop`) vẫn render đúng, không lỗi console ở cả 2 màn.
+
+## 2026-08-23 (tiếp lần 3) — Recency 2-cửa-sổ cho CẢ 4 kênh + hạ ngưỡng ≥2/4 → ≥1/4 (chạy thử 1 tháng)
+
+**3 việc Thùy phát hiện qua review UI thật:**
+1. Bảng "CHUYÊN ĐỀ" (Vì sao cần lưu ý) tự tính lại `tu`/`den` từ `cd.chuoi` riêng, **bỏ qua** fix
+   recency đã làm cho `cd.cham` ở `getStatSheetLop` lần trước — 2 chỗ tính ra 2 câu trả lời khác
+   nhau cho cùng câu hỏi "chuyên đề nào đang tụt". **Fix**: `cdDelta` (`DashboardHocTapScreen.tsx`)
+   giờ dùng THẲNG `cd.cham` (`filter(cd => cd.cham?.pha === 2)`) thay vì tự suy — tự động thừa
+   hưởng gate recency, hết trùng logic.
+2. Khối "8 bài giám sát gần nhất" tràn 2 dòng (`grid-cols-4`) — đổi `grid-cols-8`, thu nhỏ chữ/
+   padding. Verify đo thật: các ô cùng 1 `top` (607px) trong khung 571px — đúng 1 hàng.
+3. **Việc lớn nhất**: Thùy chỉ ra kênh 1 (chuyên đề) đã giới hạn recency (cửa sổ hiện tại/liền
+   trước) nhưng kênh 2/3/4 thì CHƯA — kênh 2 (%dạng yếu) tính trên TOÀN BỘ lịch sử dạng đã đo,
+   kênh 3 (ET 4 buổi) không giới hạn tuổi 4 buổi đó, kênh 4 (MT gần nhất) không giới hạn tuổi bài
+   MT. "Phạm vi tối đa nên là 2 cửa sổ" — áp dụng NHẤT QUÁN cho cả 4.
+
+**Implement (`src/lib/danhgia.ts`):**
+- `buoiTinhTheoNguon` (dùng chung cho ET/MT) giờ trả thêm field `cuaSo` mỗi buổi.
+- `coSoLopET`: lọc buổi ET vào {cửa sổ hiện tại, liền trước} TRƯỚC khi tính trung bình (không còn
+  "4 buổi gần nhất" bất kể tuổi).
+- `coSoLopMT`: bài MT gần nhất phải nằm trong 2 cửa sổ đó mới tính (không còn "gần nhất" vô hạn).
+- Kênh 2 (%dạng yếu) trong `listCandidatesLop`: lọc `s.dangs` theo `cuoiCungAt` rơi vào 2 cửa sổ
+  đó trước khi tính %, thay vì tính trên MỌI dạng từng đo (không giới hạn thời gian) như cũ.
+
+**Đo thật lần 1 (sau khi thêm giới hạn 2 cửa sổ, còn giữ luật cứng "ET đủ 4 buổi"):** kênh 3 rơi
+từ ~13-14% xuống **1,3%** (4/299) — gần vô hiệu, vì đòi đủ 4 buổi ET NẰM TRONG đúng 1 tháng là quá
+chặt với lớp không học ET đều ≥1 lần/tuần. Tổng "Duyệt bổ trợ" (≥2/4 hoặc báo động): 52/299 = 17,4%
+— thấp hơn hẳn mục tiêu ~30% ban đầu.
+
+**Thùy chốt: bỏ luật cứng "đủ 4 buổi" ở kênh 3** — hạ gate còn **n≥2 buổi TRONG 2 cửa sổ, trung
+bình <90% TB lớp** (bản thân giới hạn 2 cửa sổ đã đủ chặn recency, không cần thêm ngưỡng số lượng
+cứng chồng lên). Đo lại: kênh 3 phục hồi 1,3%→**12,0%** (36/299). Tổng ≥2/4 hoặc báo động: 70/299
+= **23,4%** — sát mục tiêu hơn nhiều.
+
+**Phát hiện quan trọng nhất của Thùy**: so OR (≥1/4) TRƯỚC và SAU khi thêm giới hạn 2-cửa-sổ —
+- OR trước khi giới hạn recency (nhiều lần đo ở vòng trước): 49-58% — quá lỏng, đó là lý do ban
+  đầu phải chuyển từ OR sang ≥2/4.
+- OR SAU khi giới hạn recency cho cả 4 kênh: **29-32%** (đo tại các thời điểm khác nhau trong
+  ngày, dao động vì data sống) — gần đúng mục tiêu ~30% ban đầu.
+⇒ **Cái sửa thật sự hiệu quả là giới hạn recency, không phải luật "≥2 kênh"** — luật ≥2/4 chỉ đang
+bù cho vấn đề recency chưa fix ở vòng trước. Giờ recency đã fix đều cả 4 kênh, ≥2/4 có thể không
+còn cần thiết nữa.
+
+**Quyết định: hạ ngưỡng `duTinHieuKienThuc` từ ≥2/4 xuống ≥1/4 (OR), CHẠY THỬ 1 THÁNG** để đo lệch
+thật so với ≥2/4 qua dùng thật, thay vì đoán tiếp bằng calibrate. `soTinHieuKienThuc` (đếm 0-4 kênh
+chạm) VẪN giữ nguyên trong code dù không còn gate ở ≥2 nữa — cuối tháng chỉ cần lọc lại candidate
+có ĐÚNG 1 kênh (nhóm OR bắt thêm so với ≥2/4) để soát tay, không cần thêm code/DB nào cho việc so
+sánh này. Số liệu thật dao động RẤT MẠNH trong cùng 1 ngày do data sống thay đổi liên tục (roster
+299→301 HS, người đang chấm/nhập điểm song song) — OR đo được 29,4% / 32,1% / 40,9% / 43,5% ở 4
+thời điểm khác nhau chỉ trong buổi làm việc — đây chính là lý do "chạy thật 1 tháng" đáng tin hơn
+hẳn mọi con số tức thời, kể cả những con số ghi trong log này.
+
+**Verify (mỗi bước trong 4 vòng sửa đều chạy lại)**: `tsc --noEmit` sạch, `verify_danhgia.mjs`
+77/77 pass, live qua dev server thật (port 5210→5215→5220 — server cũ die giữa chừng vài lần, bình
+thường của phiên vite chạy nền dài) — badge "Duyệt bổ trợ" phản ánh đúng số script tính (chênh nhẹ
+do live data), không lỗi console. Scripts calibrate mới: `_diag_breakdown_12.ts` (so ≥1/4 vs ≥2/4
+chi tiết, dùng THẲNG `listCandidatesLop` thật — không phải mô phỏng riêng như các script trước),
+`_diag_find_buoi_dang.ts` (tìm buổi thật có dạng gắn sẵn để test UI, read-only).

@@ -280,7 +280,7 @@ export async function getStatSheetLop(lopId: string): Promise<StatSheetHS[]> {
     return [...m.entries()].map(([id, b]) => {
       const means = new Map<string, number>()
       for (const [hs, s] of b.perHS) means.set(hs, s.sum / s.count)
-      return { buoi_hoc_id: id, t: b.t, means }
+      return { buoi_hoc_id: id, t: b.t, cuaSo: cuaSoCua(b.t), means }
     }).sort((a, b) => Date.parse(a.t) - Date.parse(b.t))
   }
   const buoiTinhET = buoiTinhTheoNguon('et')
@@ -407,18 +407,22 @@ export async function getStatSheetLop(lopId: string): Promise<StatSheetHS[]> {
       return tbHS < tbLop * 0.8
     })()
 
-    // Kênh 3 (ET-only, candidate-list): TB 4 buổi ET gần nhất < 90% TB lớp cùng 4 buổi
-    // (average-vs-average, giữ tinh thần chống nhiễu 1-bài của kênh ⑤ cũ nhưng KHÔNG gộp nguồn).
-    const gan4ET = buoiTinhET.filter((b) => b.means.has(hsId)).slice(-4)
-    const coSoLopET = gan4ET.length >= 4 && (() => {
-      const tbHS = gan4ET.reduce((s, b) => s + b.means.get(hsId)!, 0) / gan4ET.length
-      const tbLop = gan4ET.reduce((s, b) => s + [...b.means.values()].reduce((x, y) => x + y, 0) / b.means.size, 0) / gan4ET.length
+    // Kênh 3 (ET-only, candidate-list): TB các buổi ET TRONG 2 CỬA SỔ gần nhất (hiện tại + liền
+    // trước) < 90% TB lớp cùng các buổi đó (average-vs-average, chống nhiễu 1-bài của kênh ⑤ cũ
+    // nhưng KHÔNG gộp nguồn). Thùy 08-23 (vòng 3): BỎ luật cứng "đủ 4 buổi" — đo thật cho thấy đòi
+    // 4 buổi NẰM TRONG đúng 2 cửa sổ (~1 tháng) làm kênh gần như vô hiệu (1,3% roster) vì lớp không
+    // học ET đều ≥1 lần/tuần. Gate hạ còn n≥2 (đủ để lấy trung bình, chống 1 bài lẻ) — phạm vi 2 cửa
+    // sổ tự nó ĐÃ giới hạn recency rồi, không cần thêm ngưỡng số lượng cứng chồng lên.
+    const etTrong2CuaSo = buoiTinhET.filter((b) => b.means.has(hsId) && (b.cuaSo === cuaSoHienTaiVal || b.cuaSo === cuaSoTruoc(cuaSoHienTaiVal)))
+    const coSoLopET = etTrong2CuaSo.length >= 2 && (() => {
+      const tbHS = etTrong2CuaSo.reduce((s, b) => s + b.means.get(hsId)!, 0) / etTrong2CuaSo.length
+      const tbLop = etTrong2CuaSo.reduce((s, b) => s + [...b.means.values()].reduce((x, y) => x + y, 0) / b.means.size, 0) / etTrong2CuaSo.length
       return tbHS < tbLop * 0.9
     })()
 
     // Kênh 4 (MT-only, candidate-list): bài MT GẦN NHẤT (n≥1 — MT hiếm 1 lần/tháng nhưng quan
-    // trọng, không đòi n≥3 như ET/dạng) < 90% TB lớp bài đó.
-    const mtGanNhat = buoiTinhMT.filter((b) => b.means.has(hsId)).at(-1)
+    // trọng, không đòi n≥3 như ET/dạng) < 90% TB lớp bài đó — cũng giới hạn 2 cửa sổ như kênh 3.
+    const mtGanNhat = buoiTinhMT.filter((b) => b.means.has(hsId) && (b.cuaSo === cuaSoHienTaiVal || b.cuaSo === cuaSoTruoc(cuaSoHienTaiVal))).at(-1)
     const coSoLopMT = !!mtGanNhat && (() => {
       const diemHS = mtGanNhat.means.get(hsId)!
       const tbLop = [...mtGanNhat.means.values()].reduce((x, y) => x + y, 0) / mtGanNhat.means.size
@@ -427,7 +431,9 @@ export async function getStatSheetLop(lopId: string): Promise<StatSheetHS[]> {
 
     const td = thaiDoRows.filter((r) => r.hoc_sinh_id === hsId).map((r) => ({ thai_do: r.thai_do, t: r.t }))
     const cb = canhBao.filter((r) => r.hoc_sinh_id === hsId)
-    const coChuongDo = cb.some((r) => r.nguon === 'btvn' || r.nguon === 'chuong_do')
+    // 'btvn' = báo lúc chấm BTVN · 'danh_gia' = báo lúc Đánh giá sau buổi (Thùy 08-23, cùng nút
+    // 🚨 AlertModal, khác chỗ bấm) · 'chuong_do' = giá trị chung dự phòng — cả 3 đều là ③ chuông đỏ.
+    const coChuongDo = cb.some((r) => r.nguon === 'btvn' || r.nguon === 'danh_gia' || r.nguon === 'chuong_do')
     const coLoTienQuyet = cb.some((r) => r.nguon === 'gv_tien_quyet')
     const lv = levels.get(hsId)
 
@@ -477,7 +483,7 @@ export async function listCandidatesLop(lopId: string): Promise<Candidate[]> {
     let uuTien = 0
 
     // ③④ — flag CỨNG của NGƯỜI. Tự đủ để vào danh sách, KHÔNG cần chờ ≥2/4 kênh dữ liệu.
-    if (s.coChuongDo) { kenh.push('chuong_do'); lyDo.push('③ chuông đỏ: TA báo lỗi nghiêm trọng khi chấm BTVN'); uuTien += 100 }
+    if (s.coChuongDo) { kenh.push('chuong_do'); lyDo.push('③ chuông đỏ: GV/TA báo lỗi nghiêm trọng (chấm BTVN hoặc đánh giá sau buổi)'); uuTien += 100 }
     if (s.coLoTienQuyet) { kenh.push('tien_quyet'); lyDo.push('④ GV báo hổng kiến thức NỀN'); uuTien += 100 }
     const baoDong = s.coChuongDo || s.coLoTienQuyet
 
@@ -503,14 +509,18 @@ export async function listCandidatesLop(lopId: string): Promise<Candidate[]> {
 
     // Kênh 2 — % dạng yếu / tổng dạng đã đo > 10% (Thùy 08-23: thay "dạng yếu tuyệt đối tự đủ vào
     // danh sách" cũ — 1 dạng yếu lẻ giữa hàng chục dạng ổn không còn tự kéo HS vào hàng đợi nữa,
-    // phải chiếm tỉ trọng đáng kể mới tính).
-    const nDangDo = s.dangs.length
-    const nYeu = s.dangs.filter((d) => d.muc === 'yeu').length
+    // phải chiếm tỉ trọng đáng kể mới tính). Thùy 08-23 (vòng 2): PHẠM VI TỐI ĐA 2 CỬA SỔ — chỉ tính
+    // trên dạng có lần đo GẦN NHẤT (`cuoiCungAt`) rơi vào cửa sổ hiện tại hoặc liền trước, cùng
+    // nguyên tắc recency với kênh 1/3/4 — dạng đã lâu không đo lại không nên góp vào tỉ lệ "đang yếu".
+    const hienTaiK2 = cuaSoHienTai(), truocK2 = cuaSoTruoc(hienTaiK2)
+    const dangGanDay = s.dangs.filter((d) => { const w = cuaSoCua(d.cuoiCungAt); return w === hienTaiK2 || w === truocK2 })
+    const nDangDo = dangGanDay.length
+    const nYeu = dangGanDay.filter((d) => d.muc === 'yeu').length
     const pctYeu = nDangDo > 0 ? nYeu / nDangDo : 0
     const sig2 = nDangDo > 0 && pctYeu > 0.10
     if (sig2) {
       kenh.push('pct_yeu')
-      lyDo.push(`② % dạng yếu: ${nYeu}/${nDangDo} = ${Math.round(pctYeu * 100)}%`)
+      lyDo.push(`② % dạng yếu (2 cửa sổ gần nhất): ${nYeu}/${nDangDo} = ${Math.round(pctYeu * 100)}%`)
       uuTien += 10
     }
 
@@ -518,7 +528,7 @@ export async function listCandidatesLop(lopId: string): Promise<Candidate[]> {
     // KHÔNG gộp MT/BTVN nữa — xem `coSoLopET` ở getStatSheetLop).
     if (s.coSoLopET) {
       kenh.push('so_lop_et')
-      lyDo.push('③ ET: TB 4 buổi gần nhất dưới 90% TB lớp')
+      lyDo.push('③ ET: TB các buổi trong 2 cửa sổ gần nhất dưới 90% TB lớp')
       uuTien += 12
     }
 
@@ -530,15 +540,23 @@ export async function listCandidatesLop(lopId: string): Promise<Candidate[]> {
       uuTien += 10
     }
 
-    // ≥2/4 kênh dữ liệu HOẶC báo động cứng — MỞ CASE MỚI cần tín hiệu mạnh mới đủ tin.
+    // ≥1/4 kênh dữ liệu HOẶC báo động cứng — MỞ CASE MỚI.
     // ⚠ CASE ĐANG MỞ (levelKienThuc>0) mà đề xuất muốn ĐỔI (lên/xuống/đóng) thì LUÔN hiện, bất kể
-    // ≥2/4 — đây không phải "phát hiện mới" mà là "case đã mở cần xử tiếp", nếu ẩn đi vì thiếu
+    // ngưỡng — đây không phải "phát hiện mới" mà là "case đã mở cần xử tiếp", nếu ẩn đi vì thiếu
     // tín hiệu MỚI thì case cũ (mở từ trước, do dữ liệu CŨ) sẽ kẹt không ai thấy để đóng/xử tiếp.
-    // Phân biệt rõ 2 việc: MỞ case mới (phải qua ≥2/4, đây là chỗ đã lỏng — dăm 08-23) vs QUẢN LÝ
-    // case đã mở (không qua ≥2/4, luôn hiện — không đổi).
+    // Phân biệt rõ 2 việc: MỞ case mới (qua ngưỡng dưới) vs QUẢN LÝ case đã mở (luôn hiện — không đổi).
+    //
+    // Thùy 08-23 (vòng 4): hạ từ ≥2/4 xuống ≥1/4 (OR) — CHẠY THỬ 1 THÁNG để đo lệch so với ≥2/4.
+    // Lý do đổi: cả 4 kênh giờ ĐÃ giới hạn recency (tối đa 2 cửa sổ, xem coSoLopET/MT/pct_yeu ở
+    // trên + sig1's cd.cham) — đây mới là chỗ sửa thật sự làm OR bớt lỏng (50-58% trước khi giới
+    // hạn cửa sổ → 29-32% sau khi giới hạn), luật ≥2/4 chỉ đang BÙ cho vấn đề recency chưa fix.
+    // Giờ recency đã fix đều cả 4 kênh, ≥2/4 có thể không còn cần thiết — đo thật qua 1 tháng dùng
+    // thật thay vì đoán tiếp. `soTinHieuKienThuc` (số kênh dữ liệu chạm, 0-4) VẪN giữ nguyên trong
+    // logic bên dưới — cuối tháng lọc lại candidate có ĐÚNG 1 kênh (OR bắt, ≥2/4 sẽ bỏ sót) để
+    // soát riêng nhóm đó mà KHÔNG cần thêm code/DB gì — dữ liệu để so sánh vốn có sẵn qua `kenh[]`.
     const soTinHieuKienThuc = [sig1, sig2, s.coSoLopET, s.coSoLopMT].filter(Boolean).length
     const caseDangMoCanXu = s.levelKienThuc > 0 && s.deXuatKienThuc.deXuat !== s.levelKienThuc
-    const duTinHieuKienThuc = soTinHieuKienThuc >= 2 || baoDong || caseDangMoCanXu
+    const duTinHieuKienThuc = soTinHieuKienThuc >= 1 || baoDong || caseDangMoCanXu
 
     // ② THÁI ĐỘ — ĐỘC LẬP HOÀN TOÀN với 4 kênh kiến thức trên (không cộng vào ≥2, không bị ≥2
     // chặn lại) — chuẩn TUYỆT ĐỐI (dưới Nghiêm túc là tín hiệu), tự đủ để vào danh sách đọc.
