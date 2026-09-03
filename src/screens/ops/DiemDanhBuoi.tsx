@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import {
   buoiAoCuaNgay, moBuoi, getBuoi, getRoster, diemDanh, markBaoDen, xoaHSKhoiBuoi, dongBoSiSo,
-  huyBuoiCuaNgay, huyBuoi, setNguoiDay, diemDanhTienDo,
+  huyBuoiCuaNgay, huyBuoi, moLaiBuoiDaHuy, setNguoiDay, diemDanhTienDo,
   type BuoiAo, type BuoiHoc, type BuoiHocHS, type DiemDanh,
 } from '../../lib/gami'
 import { listNhanSu } from '../../lib/nhansu'
@@ -64,6 +64,14 @@ export default function DiemDanhBuoi() {
     if (lyDo == null || !lyDo.trim()) return
     setBusyLop(ba.lop.id); setErr(null)
     try { await huyBuoiCuaNgay(ba.lop.id, ngay, ba.slot, lyDo.trim()); await reload(true) }
+    catch (e: any) { setErr(e.message ?? String(e)) } finally { setBusyLop(null) }
+  }
+
+  // Mở lại buổi hủy NHẦM → về "Đã mở" và vào thẳng buổi (như vừa bấm "Mở buổi").
+  async function moLai(ba: BuoiAo) {
+    if (!ba.buoi || !confirm(`Mở lại buổi ${ba.lop.ten_lop} ngày ${ddmmVN(ngay)}?\nBuổi sẽ về trạng thái "Đã mở" và tính lại sĩ số.`)) return
+    setBusyLop(ba.lop.id); setErr(null)
+    try { await moLaiBuoiDaHuy(ba.buoi.id); await reload(true); setOpenId(ba.buoi.id) }
     catch (e: any) { setErr(e.message ?? String(e)) } finally { setBusyLop(null) }
   }
 
@@ -151,9 +159,13 @@ export default function DiemDanhBuoi() {
                 <p className="mb-1.5 pl-1 text-[12px] font-bold uppercase tracking-wide text-slate-400">Đã hủy · {nhom.huy.length}</p>
                 <div className="flex flex-col gap-2">
                   {nhom.huy.map((ba) => (
-                    <div key={ba.lop.id} className="rounded-2xl border border-slate-200/70 bg-white px-3.5 py-3 opacity-60 shadow-sm">
-                      <p className="text-[14px] font-bold text-slate-700">{ba.lop.ten_lop} <span className="text-[12px] font-normal text-slate-400">· {hhmm(ba.slot.gio_bat_dau)}–{hhmm(ba.slot.gio_ket_thuc)}</span></p>
-                      {ba.buoi?.ly_do_huy && <p className="text-[12px] text-slate-500">Lý do: {ba.buoi.ly_do_huy}</p>}
+                    <div key={ba.lop.id} className="flex items-center gap-3 rounded-2xl border border-slate-200/70 bg-white px-3.5 py-3 shadow-sm">
+                      <div className="min-w-0 flex-1 opacity-60">
+                        <p className="text-[14px] font-bold text-slate-700">{ba.lop.ten_lop} <span className="text-[12px] font-normal text-slate-400">· {hhmm(ba.slot.gio_bat_dau)}–{hhmm(ba.slot.gio_ket_thuc)}</span></p>
+                        {ba.buoi?.ly_do_huy && <p className="text-[12px] text-slate-500">Lý do: {ba.buoi.ly_do_huy}</p>}
+                      </div>
+                      <button onClick={() => moLai(ba)} disabled={busyLop === ba.lop.id} title="Hủy nhầm? Mở lại buổi này"
+                        className="shrink-0 rounded-xl border border-emerald-200 px-3 py-2.5 text-[13px] font-semibold text-emerald-700 active:bg-emerald-50 disabled:opacity-40">Mở lại</button>
                     </div>
                   ))}
                 </div>

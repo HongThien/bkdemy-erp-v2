@@ -170,6 +170,24 @@ export async function huyBuoiCuaNgay(lopId: string, ngay: string, slot: { gio_ba
   if (error) throw error
 }
 
+// Mở lại buổi ĐÃ HUỶ (hủy nhầm). Đảo đúng đường đã hủy: trang_thai → mo, xoá lý do. Buổi hủy TRƯỚC khi mở
+// (dòng do huyBuoiCuaNgay đẻ, chưa có sĩ số, chưa có GV) thì seed y hệt moBuoi: GV chính của lớp + roster
+// từ ghi danh (qua dongBoSiSo — chỉ THÊM HS thiếu, nên buổi hủy SAU khi mở giữ nguyên điểm danh/chấm cũ).
+// Không xoá dòng để quay về "Chưa mở": giữ vết + tránh cấp lại id; kết quả = buổi "Đang mở".
+export async function moLaiBuoiDaHuy(buoiId: string): Promise<void> {
+  const { data: b, error } = await supabase.from('buoi_hoc').select('lop_id, trang_thai, nguoi_day').eq('id', buoiId).single()
+  if (error) throw error
+  if ((b as any).trang_thai !== 'huy') return
+  const patch: Record<string, unknown> = { trang_thai: 'mo', ly_do_huy: null, updated_at: new Date().toISOString() }
+  if (!(b as any).nguoi_day && (b as any).lop_id) {
+    const { data: pc } = await supabase.from('phan_cong_lop').select('nhan_su_id').eq('lop_id', (b as any).lop_id).eq('vai_tro', 'gv').eq('la_chinh', true).maybeSingle()
+    if ((pc as any)?.nhan_su_id) patch.nguoi_day = (pc as any).nhan_su_id
+  }
+  const { error: eUp } = await supabase.from('buoi_hoc').update(patch).eq('id', buoiId).eq('trang_thai', 'huy')
+  if (eUp) throw eUp
+  await dongBoSiSo(buoiId)
+}
+
 // ── Sĩ số + điểm danh (OPS) ───────────────────────────────────────
 export async function getRoster(buoiId: string): Promise<BuoiHocHS[]> {
   const { data, error } = await supabase.from('buoi_hoc_hs').select('*, hoc_sinh:hoc_sinh_id(ho_ten, ma_hs, anh_url)').eq('buoi_hoc_id', buoiId).limit(LIMIT)

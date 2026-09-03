@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 // (Ảnh gửi PH dùng html2canvas tải từ CDN TRONG popup — đúng pattern V1, không import vào bundle.)
 import {
-  buoiAoCuaNgay, timBuoiTheoLop, moBuoi, getBuoi, huyBuoi, huyBuoiCuaNgay, setNguoiDay,
+  buoiAoCuaNgay, timBuoiTheoLop, moBuoi, getBuoi, huyBuoi, huyBuoiCuaNgay, moLaiBuoiDaHuy, setNguoiDay,
   getRoster, diemDanh, markBaoDen, xoaHSKhoiBuoi, dongBoSiSo, listProblems, addProblem, setProblemDang, ensureProblems, listGrades, gradeMuc, closePhase,
   loadETForBuoi, syncDocProblems, xepLuoiTheoDe, gradeET, gradeETBulk, deleteGrade, reopenPhase,
   loadBTVNForBuoi, syncBTVNProblems, getBtvnKetQua, setBtvnKetQua, listCanhBao, themCanhBao, xoaCanhBao, closeBTVN, reopenBTVN,
@@ -255,6 +255,13 @@ function BuoiCard({ ba, ngay, onOpened, onChanged, canTruocBuoi, onOpenTruocBuoi
     try { await huyBuoiCuaNgay(ba.lop.id, ngay, ba.slot, ly); onChanged() }
     catch (e: any) { alert(e.message ?? String(e)); setBusy(false) }
   }
+  // Hủy nhầm → mở lại: buổi về "Đang mở", sĩ số seed lại từ ghi danh (dữ liệu cũ nếu có giữ nguyên).
+  async function moLai() {
+    if (!b || !confirm(`Mở lại buổi ${ba.lop.ten_lop} ngày ${ngay.slice(8)}/${ngay.slice(5, 7)}?\nBuổi sẽ về trạng thái "Đang mở".`)) return
+    setBusy(true)
+    try { await moLaiBuoiDaHuy(b.id); onChanged() }
+    catch (e: any) { alert(e.message ?? String(e)); setBusy(false) }
+  }
   const head = (
     <>
       <div className="flex items-center gap-2">
@@ -275,9 +282,15 @@ function BuoiCard({ ba, ngay, onOpened, onChanged, canTruocBuoi, onOpenTruocBuoi
     </button>
   )
   if (st === 'huy') return (
-    <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 opacity-80">
-      {head}
-      <div className="mt-2 text-[12px] text-slate-400">Lý do: {b!.ly_do_huy}</div>
+    <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+      <div className="opacity-80">
+        {head}
+        <div className="mt-2 text-[12px] text-slate-400">Lý do: {b!.ly_do_huy}</div>
+      </div>
+      <div className="mt-3">
+        <button onClick={moLai} disabled={busy} title="Hủy nhầm? Mở lại buổi này"
+          className="rounded-md border border-emerald-300 px-3 py-1.5 text-[13px] font-medium text-emerald-700 hover:bg-emerald-50 disabled:opacity-40">{busy ? '…' : 'Mở lại buổi'}</button>
+      </div>
     </div>
   )
   // Chưa mở → Mở buổi + Hủy buổi (kế hoạch).
@@ -361,7 +374,15 @@ export function BuoiDetail({ id, onClose, tabs, initialTab, canManage = true, on
       </div>
 
       {buoi.trang_thai === 'huy' ? (
-        <div className="p-8 text-center text-sm text-slate-400">Buổi đã hủy — {buoi.ly_do_huy}. Mọi việc chấm/điểm danh đã ngừng.</div>
+        <div className="p-8 text-center text-sm text-slate-400">
+          Buổi đã hủy — {buoi.ly_do_huy}. Mọi việc chấm/điểm danh đã ngừng.
+          {canManage && (
+            <div className="mt-4">
+              <button onClick={async () => { if (!confirm('Mở lại buổi này? Buổi sẽ về trạng thái "Đang mở".')) return; try { await moLaiBuoiDaHuy(id); reload() } catch (e: any) { alert(e.message ?? String(e)) } }}
+                className="rounded-md border border-emerald-300 px-3 py-1.5 text-[13px] font-medium text-emerald-700 hover:bg-emerald-50">Mở lại buổi (hủy nhầm)</button>
+            </div>
+          )}
+        </div>
       ) : (
         <>
           <div className="flex gap-1 overflow-x-auto border-b border-slate-200 bg-white px-6">

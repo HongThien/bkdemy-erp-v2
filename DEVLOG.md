@@ -7859,3 +7859,17 @@ bản gõ "với mọi" Tab "x" → `\text{với mọi}x`. tsc sạch. Không l�
 + NhapKho mới verify bằng tsc (cùng component) · `AutoTextarea` (DangHub) không còn ai dùng — giữ + export chờ gật xoá ·
 `.env` chưa có DATABASE_URL_RO nên script chạy `--allow-rw` · 48 lỗi + 464 $ lẻ chờ quyết cách sửa · PHẦN B chờ trả lời câu
 "AI sinh hình hay GV dựng tay".
+
+## 2026-09-03 (tiếp) — Vận hành buổi học: MỞ LẠI buổi đã hủy (đề phòng hủy nhầm)
+- Trước: hủy (`huyBuoi` / `huyBuoiCuaNgay`) là một chiều — không đường quay lại ngoài sửa tay DB.
+- `lib/gami.ts` `moLaiBuoiDaHuy(buoiId)`: đảo đúng đường đã hủy — `trang_thai: 'mo'`, `ly_do_huy: null`, guard
+  `.eq('trang_thai','huy')`. Buổi hủy TRƯỚC khi mở (dòng do `huyBuoiCuaNgay` đẻ: không GV, không sĩ số) → seed y hệt
+  `moBuoi`: `nguoi_day` = GV chính (`phan_cong_lop` la_chinh) nếu trống + roster qua `dongBoSiSo` (chỉ THÊM HS thiếu ⇒
+  buổi hủy SAU khi mở giữ nguyên điểm danh/chấm cũ). KHÔNG xoá dòng để về "Chưa mở" (giữ vết, không cấp lại id) ⇒ kết
+  quả luôn là "Đang mở". `buoi_hoc` không có trigger nào nên không có tác dụng phụ ẩn.
+- UI: OPS `DiemDanhBuoi` thẻ "Đã hủy" thêm nút **Mở lại** (confirm → mở lại → vào thẳng buổi). ERP `BuoiHocScreen`:
+  card đã hủy thêm **Mở lại buổi**; trong `BuoiDetail` màn "Buổi đã hủy" thêm **Mở lại buổi (hủy nhầm)** (chỉ `canManage`).
+- Bẫy tooling: Git Bash (MSYS) ăn `\` khi truyền code inline cho `node -e` ⇒ `\n` thành xuống dòng thật trong
+  template literal; file repo là CRLF. Sửa bằng script file + chuẩn hoá CRLF. tsc sạch (2 lỗi MathPopup/mathlive có sẵn,
+  do node_modules thiếu package, không liên quan).
+- Chưa verify tay trên app (mở lại = ghi DB thật; cần Thùy bấm thử trên 1 buổi hủy nhầm thật hoặc buổi test).
