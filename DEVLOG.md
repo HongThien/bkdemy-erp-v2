@@ -8011,3 +8011,40 @@ bản gõ "với mọi" Tab "x" → `\text{với mọi}x`. tsc sạch. Không l�
 - **Thùy chốt (03/09): "Dữ liệu tự vào. TA chỉ cần bấm xác nhận để đóng như bình thường."** ⇒ `getMyTasks` KHÔNG bỏ task ET
   của buổi có ET online nữa (spec §9 cũ đã bỏ ⇒ không ai vào tab, Elo = 0). Giữ task, nhãn đổi thành "Xác nhận ET (online)",
   deadline như ET thường (12h trưa hôm sau). tsc sạch.
+
+## 2026-09-03 — Bổ trợ yếu: merge lại main (phân kỳ lớn) + báo động cả ở tab ET
+
+**Merge `feat/botro-yeu` ← `main`**: worktree đã tách xa main từ 08-23, main từ đó có cả 1 chiến
+dịch DB-hoá tính toán (§2.0 CLAUDE.md, CEO chốt 30/08 sau audit 177 vi phạm — `AUDIT-client-tinh-
+toan.md`), 4 app mới (GV/TA/Ops/Chi), thu-chi, gậy phạt, tự luyện vô hạn, hỏi-đáp bot, Android
+scaffold. Xác nhận trước khi merge: `getStatSheetLop`/`listCandidatesLop` (toàn bộ rule engine bổ
+trợ yếu phiên này) đã có tên sẵn trong audit — mục **"Phase 3 còn lại"** — tức đây là nợ kỹ thuật
+ĐÃ BIẾT, ĐÃ CÓ KẾ HOẠCH, không phải lỗi mới tự gây ra khi merge.
+
+**Conflict thật (không phải chỉ DEVLOG append-only như mọi lần trước)**: 1 session khác (Claude
+Fable 5, App GV) ĐỘC LẬP xây đúng tính năng "chuông đỏ ở Đánh giá sau buổi" mà phiên này cũng vừa
+làm — `themCanhBao` thêm `nguon` param, `AlertModal` trong `DanhGiaTab`, y hệt ý tưởng, khác 2 chỗ:
+(1) `nguon='danhgia'` (không gạch dưới, ĐÃ áp CHECK `canh_bao_yeu_nguon_chk` giới hạn `('btvn',
+'danhgia')` — bản của phiên này `'danh_gia'` có gạch dưới sẽ VỠ CHECK nếu apply), (2) có thêm
+`batBuocGhiChu` (ghi chú bắt buộc) + App GV riêng dùng chung code này. **Giải quyết**: `git checkout
+--theirs` cho `gami.ts`/`BuoiHocScreen.tsx` (lấy bản main, bỏ bản trùng của phiên này) — không mất
+gì vì 2 bản làm cùng 1 việc, main đã hoàn thiện hơn. Sửa lại `coChuongDo` trong `danhgia.ts` (bản
+CHỈ phiên này có, không conflict) từ check `'danh_gia'` → `'danhgia'` khớp giá trị THẬT giờ được ghi.
+
+**Verify sau merge**: `npm install` (74 gói mới), `tsc --noEmit` sạch trên TOÀN cây đã merge,
+`verify_danhgia.mjs` 77/77 pass.
+
+**Thêm mới — 🚨 báo động ở tab ET** (Thùy: "Cần chuông báo động cả ở chỗ chấm ET nữa"): `ETChamTab`
+giờ có state `cb`/`alertFor` giống BtvnTab, nút 🚨 cạnh tên HS (disabled khi `!dangBuoi.length ||
+dongCol` — `dangBuoi` suy từ `ma_dang` của các câu ET đang chấm), badge dạng đã báo + nút gỡ, render
+`<AlertModal>` cuối component. Dùng `nguon` MẶC ĐỊNH `'btvn'` (không truyền tường minh) — ET và BTVN
+đều là bối cảnh "TA/GV chấm bài, thấy lỗi ngay" nên gộp chung bucket, tránh phải mở CHECK constraint
+cho 1 giá trị `'et'` riêng (không cần thiết, provenance-tracking không phải yêu cầu ở đây).
+
+**Verify**: `tsc --noEmit` sạch, `verify_danhgia.mjs` 77/77 pass, live qua dev server thật (port
+5230) — buổi 9C1 (08-20, ET đã xác nhận): nút 🚨 đúng disabled (5/5). Test đường ENABLED: bấm "Mở
+lại để sửa" tạm thời → 5 nút hết disabled → bấm 1 nút → modal mở đúng "🚨 Báo động: Gia Hân đang kém
+dạng" với dropdown đúng 4 dạng thật của đề ET đang chấm → đóng KHÔNG lưu (tránh ghi báo động giả lên
+HS thật) → xác nhận lại ET (override `window.confirm` vì môi trường browser tool không có người bấm
+OK thật) để khôi phục đúng trạng thái "Đã xác nhận ET" ban đầu — không đổi Elo/EXP vì không có ô
+điểm nào bị sửa trong lúc test. Không lỗi console.

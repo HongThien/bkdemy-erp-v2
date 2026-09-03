@@ -431,9 +431,11 @@ export async function getStatSheetLop(lopId: string): Promise<StatSheetHS[]> {
 
     const td = thaiDoRows.filter((r) => r.hoc_sinh_id === hsId).map((r) => ({ thai_do: r.thai_do, t: r.t }))
     const cb = canhBao.filter((r) => r.hoc_sinh_id === hsId)
-    // 'btvn' = báo lúc chấm BTVN · 'danh_gia' = báo lúc Đánh giá sau buổi (Thùy 08-23, cùng nút
-    // 🚨 AlertModal, khác chỗ bấm) · 'chuong_do' = giá trị chung dự phòng — cả 3 đều là ③ chuông đỏ.
-    const coChuongDo = cb.some((r) => r.nguon === 'btvn' || r.nguon === 'danh_gia' || r.nguon === 'chuong_do')
+    // 'btvn' = báo lúc chấm BTVN · 'danhgia' = báo lúc Đánh giá sau buổi (CEO 31/08, cùng nút 🚨
+    // AlertModal, khác chỗ bấm — ĐÚNG giá trị CHECK canh_bao_yeu_nguon_chk cho phép, KHÔNG có gạch
+    // dưới) · 'chuong_do' = giá trị lịch sử dự phòng (dữ liệu cũ trước CHECK, nếu còn sót) — cả 3
+    // đều là ③ chuông đỏ.
+    const coChuongDo = cb.some((r) => r.nguon === 'btvn' || r.nguon === 'danhgia' || r.nguon === 'chuong_do')
     const coLoTienQuyet = cb.some((r) => r.nguon === 'gv_tien_quyet')
     const lv = levels.get(hsId)
 

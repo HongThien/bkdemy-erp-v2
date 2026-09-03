@@ -889,9 +889,12 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
   const [sync, setSync] = useState<LuoiSync | null>(null) // kết quả bám đề của lưới (xem syncDocProblems)
   const [onl, setOnl] = useState<ETOnlineDongBo | null>(null) // kết quả đổ ET online vào lưới (xem dongBoETOnline)
   const [onlBusy, setOnlBusy] = useState(false)
+  const [cb, setCb] = useState<CanhBao[]>([]) // ③ báo động — chuông đỏ cũng cần ngay lúc chấm ET (Thùy)
+  const [alertFor, setAlertFor] = useState<string | null>(null) // hsId đang mở popup báo động
   const coMat = roster.filter((r) => r.diem_danh === 'co_mat')
   const tenHT = tenHienThiDs(coMat.map((r) => r.hoc_sinh?.ho_ten)) // 2 HS trùng tên rút gọn → bung đủ (Thùy 07-06)
   const dongCol = buoi.et_dong_at
+  const cbOf = (hsId: string) => cb.filter((x) => x.hoc_sinh_id === hsId)
 
   // Lưới hiển thị THEO THỨ TỰ ĐỀ (khớp ô↔câu qua ma_cau), không theo problem_no — xem syncDocProblems.
   const causRef = useRef<CauHoi[]>([])
@@ -899,9 +902,11 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
     const [p, g] = await Promise.all([listProblems(buoiId, 'et'), listGrades(buoiId)])
     setProbs(xepLuoiTheoDe(p, causRef.current)); setGrades(g)
   }
+  async function reloadCb() { setCb(await listCanhBao(buoiId).catch(() => [])) }
   useEffect(() => { (async () => {
     setLoading(true)
     try {
+      await reloadCb()
       const { etId, caus } = await loadETForBuoi(buoiId)
       causRef.current = caus
       // Sync CHỦ ĐỘNG mỗi lần mở tab — lưới tự bám đề. Phase đã đóng thì chỉ báo, không sửa lén.
@@ -1010,11 +1015,13 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
   // Đề của 1 ô = tra theo MÃ CÂU (không theo vị trí) — ô mồ côi thì không có đề, đúng bản chất.
   const cauOf = (p: Problem) => etCaus?.find((c) => c.ma_cau === p.ma_cau) ?? null
   const moCoiIds = new Set((sync?.moCoi ?? []).map((m) => m.problem.id))
+  // Dạng của buổi (cho popup báo động) = dạng có trong đề ET đang chấm.
+  const dangBuoi = [...new Set(probs.map((p) => p.ma_dang).filter(Boolean))] as string[]
 
   return (
     <div className="flex h-full flex-col">
       <div className="mb-3 flex items-center gap-2">
-        <span className="text-[12px] text-slate-400">{probs.length} câu (từ ET) · {coMat.length} HS · 1 click <b className="text-emerald-600">Đ</b>/<b className="text-amber-600">C</b>/<b className="text-rose-600">S</b> — C/S mở ô lỗi · <b>Tất cả</b> cạnh tên = tích cả hàng, sửa riêng ô lệch.</span>
+        <span className="text-[12px] text-slate-400">{probs.length} câu (từ ET) · {coMat.length} HS · 1 click <b className="text-emerald-600">Đ</b>/<b className="text-amber-600">C</b>/<b className="text-rose-600">S</b> — C/S mở ô lỗi · <b>Tất cả</b> cạnh tên = tích cả hàng, sửa riêng ô lệch · 🚨 báo động kém dạng.</span>
         <div className="ml-auto flex items-center gap-2">
           <button onClick={() => setAnhPH(true)} title="Tạo ảnh kết quả ET (dọc) để chụp gửi phụ huynh" className="rounded-md border border-slate-300 px-2.5 py-1.5 text-[12px] font-medium text-slate-600 hover:border-indigo-400">📷 Ảnh gửi PH</button>
           {dongCol ? (
@@ -1104,7 +1111,17 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
             {coMat.map((r, i) => (
               <tr key={r.id}>
                 <td className="sticky left-0 z-10 whitespace-nowrap border border-slate-200 bg-white px-3 py-1 text-left align-top font-medium text-slate-800">
-                  {tenHT[i]}
+                  <div className="flex items-center gap-1">
+                    <span>{tenHT[i]}</span>
+                    <button onClick={() => setAlertFor(r.hoc_sinh_id)} disabled={!dangBuoi.length || !!dongCol} className="shrink-0 rounded border border-rose-200 px-1.5 py-0.5 text-[12px] text-rose-600 hover:bg-rose-50 disabled:opacity-40" title="Báo động: HS kém 1 dạng">🚨</button>
+                  </div>
+                  {cbOf(r.hoc_sinh_id).length > 0 && (
+                    <div className="mt-1 flex flex-wrap items-center gap-1">
+                      {cbOf(r.hoc_sinh_id).map((c) => (
+                        <span key={c.id} className="inline-flex items-center gap-1 rounded bg-rose-100 px-1.5 py-0.5 text-[10px] font-semibold text-rose-700" title={c.ghi_chu ?? ''}>{tenDang(c.ma_dang)}{!dongCol && <button onClick={async () => { await xoaCanhBao(c.id); reloadCb() }} className="text-rose-400 hover:text-rose-700">✕</button>}</span>
+                      ))}
+                    </div>
+                  )}
                   <BulkRowKQ onPick={(result) => bulkRow(r.hoc_sinh_id, result)} disabled={!!dongCol} />
                 </td>
                 {probs.map((p) => {
@@ -1151,6 +1168,11 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
             {preview.lua_chon?.length ? <div className="mt-3 space-y-1 text-[13px] text-slate-600">{preview.lua_chon.map((lc, i) => <div key={i}><b>{String.fromCharCode(65 + i)}.</b> <MathText>{lc}</MathText></div>)}</div> : null}
           </div>
         </div>
+      )}
+
+      {alertFor && (
+        <AlertModal buoiId={buoiId} hocSinhId={alertFor} hsTen={coMat.find((r) => r.hoc_sinh_id === alertFor)?.hoc_sinh?.ho_ten ?? '?'}
+          dangBuoi={dangBuoi} tenDang={tenDang} onClose={() => setAlertFor(null)} onSaved={() => { setAlertFor(null); reloadCb() }} />
       )}
     </div>
   )
