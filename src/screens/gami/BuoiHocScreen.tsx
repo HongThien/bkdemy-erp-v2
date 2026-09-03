@@ -9,7 +9,7 @@ import {
   type BtvnKQ, type CanhBao, type BtvnTrangThai, type BtvnThaiDo,
   getDanhGia, setDanhGiaDang, setNhanXet, setMuc, MUC_OPTS, MUC_CATALOG, nhanMuc, dongDanhGia, moLaiDanhGia, setNoiDungBuoi,
   loadLiveTestForBuoi, getDangTen, loadMTForBuoi, syncMTProblems, getBangEloExp,
-  loadHinhForBuoiPhase, syncHinhProblems, danhSoLaiTheoDe, thuTuMTTheoDe,
+  loadHinhForBuoiPhase, syncHinhProblems, danhSoLaiTheoDe, thuTuMTTheoDe, dongBoETOnline, type ETOnlineDongBo,
   type BuoiAo, type BuoiTim, type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type Phase, type DiemDanh, type DanhGiaHS, type DanhGiaDiem, type TabKey, type ETResult, type LuoiSync, type EloExpRow,
 } from '../../lib/gami'
 import { getLiveSnapshot, type BaiTest, type BaiTestCau, type BaiLam, type LiveAnswer } from '../../lib/testonline'
@@ -887,6 +887,8 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
   const [closing, setClosing] = useState(false)
   const [anhPH, setAnhPH] = useState(false) // overlay ảnh kết quả ET gửi phụ huynh
   const [sync, setSync] = useState<LuoiSync | null>(null) // kết quả bám đề của lưới (xem syncDocProblems)
+  const [onl, setOnl] = useState<ETOnlineDongBo | null>(null) // kết quả đổ ET online vào lưới (xem dongBoETOnline)
+  const [onlBusy, setOnlBusy] = useState(false)
   const coMat = roster.filter((r) => r.diem_danh === 'co_mat')
   const tenHT = tenHienThiDs(coMat.map((r) => r.hoc_sinh?.ho_ten)) // 2 HS trùng tên rút gọn → bung đủ (Thùy 07-06)
   const dongCol = buoi.et_dong_at
@@ -917,9 +919,19 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
         khongRoRang: s.khongRoRang ?? sh.khongRoRang, doiCauTruc: s.doiCauTruc || sh.doiCauTruc,
       }
       setSync(merged); setProbs(merged.probs)
+      // ET ONLINE → lưới (Thùy 03/09). Sau syncDocProblems để ô đã tồn tại; phase đóng thì RPC tự bỏ qua.
+      // Lỗi ở đây KHÔNG làm hỏng tab (lưới chấm tay vẫn dùng được) — chỉ ghi kết quả để hiện dòng báo.
+      try { setOnl(await dongBoETOnline(buoiId)) } catch (e: any) { setOnl({ khongCoTest: true }); console.error('dongBoETOnline', e) }
       setGrades(await listGrades(buoiId))
     } catch { setEtMissing(true); setEtCaus([]); setSync(null) } finally { setLoading(false) }
   })() }, [buoiId]) // eslint-disable-line
+
+  async function layOnline() {
+    if (onlBusy) return
+    setOnlBusy(true)
+    try { setOnl(await dongBoETOnline(buoiId)); await reloadP() }
+    catch (e: any) { alert(e?.message ?? String(e)) } finally { setOnlBusy(false) }
+  }
 
   const gradeOf = (pid: string, hsid: string) => grades.find((g) => g.problem_id === pid && g.hoc_sinh_id === hsid)
   async function pickKQ(pid: string, hsId: string, result: ETResult) {
@@ -1016,6 +1028,22 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
         </div>
       </div>
       {anhPH && <EtAnhGuiPH buoiId={buoiId} coMat={coMat} probs={probs} gradeOf={gradeOf} buoi={buoi} onClose={() => setAnhPH(false)} />}
+
+      {/* ET ONLINE → lưới (Thùy 03/09). Chỉ hiện khi buổi CÓ test ET online; nói rõ đã đổ gì / giữ gì. */}
+      {onl && !onl.khongCoTest && !dongCol && (
+        <div className="mb-3 flex flex-wrap items-center gap-2 rounded-lg border border-sky-200 bg-sky-50 px-3 py-2 text-[12px] text-sky-800">
+          <span>📱 ET online: <b>{onl.hsNop ?? 0}</b> HS đã nộp
+            {(onl.moi ?? 0) + (onl.capNhat ?? 0) > 0 && <> · đã đổ <b>{(onl.moi ?? 0) + (onl.capNhat ?? 0)}</b> ô vào lưới</>}
+            {!!onl.giuTay && <> · <b>{onl.giuTay}</b> ô giữ theo chấm tay</>}
+            {!!onl.khongKhopO && <> · <b className="text-rose-700">{onl.khongKhopO}</b> câu không khớp ô (đề ET của buổi khác đề online?)</>}
+            {!!onl.khongTrongBuoi && <> · <b className="text-rose-700">{onl.khongTrongBuoi}</b> phép đo của HS <b>không có trong buổi</b> (kiểm điểm danh)</>}
+            . Ô sync có thể sửa tay; sửa rồi thì lần đổ sau không ghi đè.
+          </span>
+          <button onClick={layOnline} disabled={onlBusy} className="ml-auto rounded-md border border-sky-300 bg-white px-2.5 py-1 text-[12px] font-medium text-sky-700 hover:bg-sky-100 disabled:opacity-40">
+            {onlBusy ? 'Đang lấy…' : '↻ Lấy lại kết quả online'}
+          </button>
+        </div>
+      )}
 
       {/* Lưới KHÔNG khớp đề — 3 tình huống, mỗi cái nói rõ mất gì / phải làm gì. Im lặng là điều DUY
           NHẤT không được phép ở đây (bug 07-21: lệch âm thầm suốt từ 20/07 tới lúc Thùy tự phát hiện). */}

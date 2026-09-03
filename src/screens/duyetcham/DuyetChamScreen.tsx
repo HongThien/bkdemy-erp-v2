@@ -4,7 +4,7 @@
 // Mastery đọc bai_lam_cau LIVE (suy động) → tự đúng theo, không sync gì thêm.
 // Nhóm 2 tầng: CÂU (theo ma_cau) → từng ĐÁP ÁN HS distinct (đơn vị duyệt).
 import { useEffect, useMemo, useState } from 'react'
-import { listTLNSai, listAcceptedAnswers, chapNhanDapAn, tuChoiReports, type TLNSaiRow } from '../../lib/testonline'
+import { listTLNSai, listAcceptedAnswers, chapNhanDapAn, tuChoiReports, listBaoSaiDe, type TLNSaiRow } from '../../lib/testonline'
 import { smartNormalize } from '../../gami/testgrade'
 import { MathText } from '../kho/ui'
 import { tenHienThiDs } from '../../lib/hoten'
@@ -29,12 +29,15 @@ export default function DuyetChamScreen() {
   const [flash, setFlash] = useState<string | null>(null)
   const [suaKhoBusy, setSuaKhoBusy] = useState<string | null>(null) // maCau đang dò trong Kho
   const [suaKho, setSuaKho] = useState<{ cau: CauHoi; cauTbl: string } | null>(null)
+  // 🚩 báo sai ĐỀ (TN/ĐS — giáo trình) đang chờ: nằm ở tab ⚠ (đường KEY SAI), đếm để hiện badge —
+  // task "Duyệt báo sai" (gami) đếm MỌI report 'moi', không có badge này thì tab 🚩 hiện 0 mà task vẫn treo.
+  const [nBaoSaiDe, setNBaoSaiDe] = useState(0)
 
   async function reload() {
     setLoading(true); setErr(null)
     try {
-      const r = await listTLNSai()
-      setRows(r)
+      const [r, bsd] = await Promise.all([listTLNSai(), listBaoSaiDe()])
+      setRows(r); setNBaoSaiDe(bsd.length)
       setAccepted(await listAcceptedAnswers([...new Set(r.map((x) => x.cau.ma_cau).filter(Boolean) as string[])]))
     } catch (e: any) { setErr(e?.message ?? String(e)) } finally { setLoading(false) }
   }
@@ -103,7 +106,7 @@ export default function DuyetChamScreen() {
         <button onClick={() => setFilter('baosai')} className={tab(filter === 'baosai')}>🚩 HS báo sai{totalRepsMoi ? ` (${totalRepsMoi})` : ''}</button>
         <button onClick={() => setFilter('all')} className={tab(filter === 'all')}>Tất cả câu bị chấm sai ({groups.length})</button>
         {/* Đường THỨ HAI, đừng lẫn với hai tab trên: trên = key đúng/HS viết khác · đây = KEY SAI. */}
-        <button onClick={() => setFilter('keysai')} className={tab(filter === 'keysai')}>⚠ Nghi sai đáp án — chấm lại</button>
+        <button onClick={() => setFilter('keysai')} className={tab(filter === 'keysai')}>⚠ Nghi sai đáp án — chấm lại{nBaoSaiDe ? ` (🚩 ${nBaoSaiDe})` : ''}</button>
         <button onClick={reload} className="rounded-md border border-slate-300 px-2.5 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-400">↻ Tải lại</button>
         <span className="ml-auto text-[12px] text-slate-400">
           {filter === 'keysai' ? 'Cả lớp cùng sai 1 câu ⇒ nghi ĐÁP ÁN sai trước, nghi HS sau.' : 'Chấp nhận đúng = thêm vào bộ đáp án (lần sau tự đúng) + sửa mọi bài làm trùng.'}

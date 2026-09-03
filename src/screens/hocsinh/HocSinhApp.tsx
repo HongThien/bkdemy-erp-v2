@@ -452,9 +452,14 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
     } finally { setBusy(false) }
   }
 
+  // Báo sai: TLN mọi loại bài = "em nghĩ mình đúng" (đường accepted-answer, tab 🚩 Duyệt chấm).
+  // TN/ĐS CHỈ giáo trình (Thùy 03/09: "phát hành giáo trình cũng cần báo sai đề như tự luyện") =
+  // "đề/đáp án sai" → đi đường KEY SAI (tab ⚠ Nghi sai đáp án — chấm lại), vì TN/ĐS không có
+  // chuyện "viết cách khác cũng đúng", chỉ có key kho sai. Cùng bảng bai_test_report, khác ý kiến.
+  const baoSaiDe = khoaThuTuGoc && (laTN || laDS)
   async function guiBaoSai() {
     if (!cau || !cs?.kq) return
-    await baoSai(cs.kq.baiLamCauId, hocSinhId, 'Em nghĩ mình đúng.')
+    await baoSai(cs.kq.baiLamCauId, hocSinhId, baoSaiDe ? 'Em nghĩ đề hoặc đáp án sai.' : 'Em nghĩ mình đúng.')
     setSt((s) => ({ ...s, [cau.id]: { ...s[cau.id], baoRoi: true } }))
   }
 
@@ -580,10 +585,12 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
                 </div>
               )}
               {cau.anh_dap_an && <img src={cau.anh_dap_an} alt="lời giải" className="mt-2 max-h-72 rounded-lg border border-black/[0.08]" />}
-              {cau.loai_cau === 'tra_loi_ngan' && vd !== 'correct' && (
+              {(cau.loai_cau === 'tra_loi_ngan' || baoSaiDe) && vd !== 'correct' && (
                 cs!.baoRoi
                   ? <p className="mt-2 text-[12px] text-ph-label-2">✓ Đã gửi ý kiến cho thầy cô.</p>
-                  : <button onClick={guiBaoSai} className="mt-2 rounded-lg border border-black/[0.1] px-3 py-1.5 text-[12px] text-ph-label-2">🚩 Em nghĩ mình đúng</button>
+                  : <button onClick={guiBaoSai} className="mt-2 rounded-lg border border-black/[0.1] px-3 py-1.5 text-[12px] text-ph-label-2">
+                      {baoSaiDe ? '🚩 Báo sai đề / đáp án' : '🚩 Em nghĩ mình đúng'}
+                    </button>
               )}
             </div>
           )}

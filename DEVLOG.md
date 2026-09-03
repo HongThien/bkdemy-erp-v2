@@ -7873,3 +7873,83 @@ bản gõ "với mọi" Tab "x" → `\text{với mọi}x`. tsc sạch. Không l�
   template literal; file repo là CRLF. Sửa bằng script file + chuẩn hoá CRLF. tsc sạch (2 lỗi MathPopup/mathlive có sẵn,
   do node_modules thiếu package, không liên quan).
 - Chưa verify tay trên app (mở lại = ghi DB thật; cần Thùy bấm thử trên 1 buổi hủy nhầm thật hoặc buổi test).
+
+## 2026-09-03 (tiếp) — Giáo trình online: HS báo sai ĐỀ cho câu TN/ĐS (Thùy: "phát hành giáo trình cũng cần báo sai đề như tự luyện")
+- **Kiểm trước khi làm (lớp 12, 5 test giao_trinh 12A1/12B1):** thứ tự đã đúng 2 yêu cầu — mỗi dạng 1 chùm liên tục
+  (snapshot flatMap phan 'dang' theo thu_tu; app khoá `khoaThuTuGoc` không xáo câu/phương án), làm tuần tự (chỉ "Xác nhận"
+  → "Câu tiếp", không nhảy). Script `scripts/_chk_gt12_chum_dang.mjs` / `_chk_gt12_lech.mjs` (SELECT).
+  Phát hiện thêm: 12B1 23/08 thiếu 3 câu TN dạng T112070105 (017/029/041 KHÔNG có đáp án trong kho → bị bỏ qua lúc phát
+  hành); 12B1 19/08 có **3 test mồ côi** (nguon_tai_lieu_id null, doc đã xoá) vẫn `mo` → HS thấy 3 mục cùng ngày. Chưa đụng.
+- **Vì sao "không có báo sai":** nút 🚩 chỉ hiện với `tra_loi_ngan` sai (rule 17/08 "TN/ĐS tuyệt đối, ko tranh cãi").
+  Tự luyện 97% TLN nên thấy suốt; giáo trình lớp 12 = 138 TN / 16 TLN nên gần như không bao giờ thấy. Cơ chế chung (LamBai)
+  vẫn đúng — thiếu là ĐƯỜNG cho TN/ĐS.
+- **Thiết kế:** TN/ĐS không có chuyện "viết cách khác cũng đúng" ⇒ báo sai TN/ĐS = **nghi KEY SAI**, đi đường
+  `ChamLaiKeyPanel` (tab ⚠), KHÔNG vào tab 🚩 accepted-answer (2 đường không trộn, comment đầu ChamLaiKeyPanel). Cùng bảng
+  `bai_test_report`, phân biệt bằng loai_cau của câu (TLN → tab 🚩 · TN/ĐS → tab ⚠).
+- `HocSinhApp.tsx` LamBai: `baoSaiDe = khoaThuTuGoc && (TN||ĐS)` → nút "🚩 Báo sai đề / đáp án" khi verdict ≠ correct,
+  y_kien "Em nghĩ đề hoặc đáp án sai." CHỈ giáo trình (đúng scope Thùy nêu; BTVN chưa bật — 1 dòng nếu muốn).
+- `testonline.ts`: `listBaoSaiDe()` (report 'moi' của câu ≠ TLN) · `listCauNghiSaiKey` gộp `baoSai{reportIds,yKien}`, câu có
+  báo sai vào list **bất kể ngưỡng 3HS/70%**, sort báo sai lên đầu · `dongBaoSaiSauChamLai(cauId)`: sau chấm lại, report
+  'moi' → 'dung' nếu bài HS đó đã correct, còn lại 'sai' (status thuần, client; `fn_sua_key_va_cham_lai` giữ nguyên).
+- `ChamLaiKeyPanel.tsx`: badge "🚩 n HS báo sai đề: ý kiến" + viền đỏ · nút **"✕ Đề đúng — đóng báo sai"** (`tuChoiReports`,
+  confirm) · chấm lại xong tự đóng report. `DuyetChamScreen.tsx`: tab ⚠ hiện `(🚩 n)` để khớp task "Duyệt báo sai" (gami
+  đếm mọi report 'moi' — không có badge thì tab 🚩 báo 0 mà task vẫn treo).
+- Không migration, không đổi RLS (policy `report_hs` đã cho HS insert report của mình mọi loại test).
+
+## 2026-09-03 (tiếp) — Hạn nộp test online: ET = hết ca +15' · bài tập trên lớp = KHÔNG hạn (mig 202609031701)
+- Thùy: "Mở giới hạn ET: 15 phút so với ca học · Bỏ giới hạn với bài tập trên lớp". Rào duy nhất của test online là
+  `bai_test.deadline` (không có "giờ mở"; `bai_test_con_han` + RLS ghi + app HS đều suy từ deadline, NULL = còn hạn).
+- `han_nop_bai_test`: **et** = `gio_ket_thuc` slot TKB (đúng thứ + hiệu lực) **+ 15 phút**; không có slot → 23:59 hôm đó
+  (không trả NULL vì NULL = mở vĩnh viễn, ngược ý "thi trong ca"). **giao_trinh** = NULL. btvn/de_thi giữ nguyên.
+  Cũ: et = 12h trưa hôm sau · giao_trinh = hết buổi (mig 202608171359).
+- **Backfill trong migration:** 8 test giao_trinh đang `mo` (đều đã "quá hạn" → HS bị khoá) → deadline NULL, mở lại ngay.
+  **ET đã phát hành GIỮ hạn cũ** (kể cả ET 12A1 hôm nay 03/09, hạn 12h mai) — không đổi luật giữa chừng phép đo.
+- Verify hàm trên DB thật: 12A1 T5 03/09 (15–17h) → 17:15 · 12B1 CN 06/09 (14–16h) → 16:15 · ngày không có slot → 23:59 ·
+  giao_trinh → null. Sau backfill: giao_trinh mo 8/8 không hạn, 0 quá hạn. `npm run schema` đã chạy.
+- App không phải sửa: dòng "⏳ Hạn" và khoá "quá hạn" tự ẩn khi deadline null; Kho tài liệu chỉ in "Hạn nộp" khi có.
+
+## 2026-09-03 (tiếp) — ET ONLINE → lưới chấm ET của buổi (mig 202609031709) — Thùy: "dữ liệu ET HS làm từ điện thoại chưa đi thẳng vào chỗ nhập liệu ET buổi học"
+- **Chẩn đoán:** spec test-online §6/§110 (sync verdict → `gami_grades(phase='et')`) CHƯA BAO GIỜ được build. `et_nop` chỉ ghi
+  `bai_lam_cau`; không trigger, không RPC (DEVLOG 17/08 đã verify pg_proc). Mastery đọc thẳng `bai_lam_cau` nên không thiếu;
+  THIẾU = tab ET BuoiHocScreen (đọc `gami_grades`) + Elo/EXP (`fn_dong_phase` đọc `gami_grades`). Thêm nữa `getMyTasks` BỎ task
+  "Chấm ET" khi buổi có ET online (spec §9) ⇒ không ai vào tab, không ai "Xác nhận ET" ⇒ Elo ET online = 0 từ trước tới nay.
+  Data: 12A1 03/09 — 5 HS nộp, 34 phép đo, 7 ô ET khớp ma_cau, 0 điểm.
+- **Build:** `gami_grades.bai_lam_cau_id` (khoá nguồn — bài học 17/08 "đường một chiều không dấu vết"; NULL = chấm tay) ·
+  `fn_et_online_dong_bo(p_buoi)` (invoker): bai_lam da_nop → verdict → ô `gami_session_problems(phase et, ma_cau)` (danh tính
+  = ma_cau, §2) → upsert gami_grades points 100/50/0 (= problemPoints, ghi rõ 2 nơi). Luật: **không ghi đè ô chấm tay** ·
+  **không đụng phase đã đóng** (trả `daDong`) · HS không trong roster → đếm `khongTrongBuoi` (mâu thuẫn điểm danh, không tự
+  thêm) · câu không có ô → `khongKhopO`. Idempotent.
+- `gami.ts` `dongBoETOnline` · `BuoiHocScreen` ETChamTab: gọi tự động sau `syncDocProblems` mỗi lần mở tab (phase mở) + dải
+  xanh "📱 ET online: n HS nộp · đã đổ m ô · giữ tay · không khớp · không trong buổi" + nút "↻ Lấy lại kết quả online".
+- **Verify DB thật (12A1 03/09):** lần 1 đổ 34 ô mới cho 5 HS, lần 2 = 0 (idempotent); chuỗi Đ/C/S per HS trên lưới KHỚP
+  chuỗi verdict `bai_lam_cau`. Chưa click UI (cần login staff).
+- **CÒN / cần Thùy quyết:** (1) `getMyTasks` vẫn bỏ task ET khi có ET online ⇒ GV/TG không được nhắc "Xác nhận ET" ⇒ Elo không
+  tính; đề xuất đổi thành task "Xác nhận ET (online)" thay vì bỏ. (2) 3 buổi ET online cũ (12B1 23/08, 10A1 23/08, 12B1 19/08)
+  đã ĐÓNG với điểm chấm tay — không tự đổ; muốn thì "Mở lại" → tab tự đổ (ô tay giữ nguyên) → xác nhận lại.
+- **ĐÍNH CHÍNH ngay sau (mig 202609031712):** lần đổ đầu báo `khongKhopO=4` — ET 12A1 có 3 MÃ ĐỀ, HS mã 2/3 làm câu BIẾN THỂ
+  (ma_cau khác, cùng thu_tu, cùng dạng) mà lưới chỉ có ô câu GỐC ⇒ khớp thẳng ma_cau rụng đúng câu có biến thể (thu_tu 7).
+  Sửa: bien_the>1 quy về câu gốc cùng bai_test+thu_tu+bien_the=1 rồi tra ô — thu_tu chung là khoá cấu trúc CÓ CHỦ Ý của
+  snapshot mã đề (không phải nối vị trí 2 tập độc lập). Chạy lại: thêm 11 ô, tổng 48 ô của 7 HS (ET đang diễn ra, có HS nộp thêm giữa 2 lần chạy), 0 không khớp, lần 2 = 0 (idempotent).
+
+## 2026-09-03 (tiếp) — APK Android cho app HỌC SINH (hs.bkacademy.edu.vn) — Thùy: "t cần làm phiên bản Apk cho điện thoại android cho app học sinh"
+- **Cách làm:** Capacitor 8 → WebView native **trỏ thẳng `server.url = https://hs.bkacademy.edu.vn`**, KHÔNG đóng gói bundle
+  (web deploy là HS có ngay, không phát hành lại APK; cùng cơ chế SW autoUpdate của PWA). `allowNavigation` = `*.bkacademy.edu.vn`,
+  `*.supabase.co`. appId `vn.edu.bkacademy.hs`, tên "BK Academy", quyền INTERNET + CAMERA. Icon/splash sinh từ `public/icon-512.png`
+  bằng `@napi-rs/canvas` (`scripts/android/gen-icons.mjs`, nền trắng adaptive, splash #f3f5fa). Docs: `docs/APK-android.md`.
+- **Toolchain (máy Thùy KHÔNG có JDK 17+/Android SDK, chỉ JRE 8):** tải PORTABLE, không admin, vào `C:\Users\WBPC\android-tools\`:
+  Temurin JDK 21 + cmdline-tools (platform-tools, platforms;android-36, build-tools;36.0.0 — Capacitor 8 cần SDK 36) + Gradle 8.14.3.
+- **Ký release:** keystore `android/keystore/bkacademy-hs.jks` + `android/keystore.properties` (mật khẩu random) — cả 2 **.gitignore**;
+  `app/build.gradle` đọc keystore.properties nếu có. **PHẢI backup keystore ngoài repo** (mất = HS phải gỡ cài lại).
+- **Lệnh:** `npm run apk` → `apk/BKAcademy-HS.apk` (build:hs → cap sync → gradle assembleRelease). `--debug` cho bản test.
+- **2 bẫy đã cắn:** (1) gradle **wrapper** tải gradle qua Java HTTP chỉ ~85 KB/s (45 phút) trong khi curl từ mirror 40 MB/s ⇒ tải
+  zip tay, script ưu tiên gradle standalone trong android-tools; wrapper đổi sang `-bin.zip`. (2) `local.properties` với
+  `sdk.dir=C:\Users\...` — `.properties` coi `\` là escape ⇒ đường dẫn thành `C:UsersWBPC…`, build chết với lỗi mù
+  *"The filename, directory name, or volume label syntax is incorrect"* ở `compileReleaseJavaWithJavac`. Dùng `/`.
+- **Verify:** `gradle assembleRelease` BUILD SUCCESSFUL, APK 4.8 MB; `apksigner verify` ⇒ Signer CN=BK Academy; `aapt2 dump badging`
+  ⇒ package/versionCode 1/targetSdk 36/quyền đúng. **CHƯA cài lên máy thật** (không có adb device) — Thùy cài thử, đặc biệt
+  kiểm login + camera nộp ảnh + nút Back.
+- Bash heredoc `<<'EOF'` trên máy này vẫn NUỐT `\` trong nội dung (python script ghi `/\/g` thành `/\/g`) — sửa file có backslash
+  thì dùng Edit tool, đừng qua heredoc.
+- **Thùy chốt (03/09): "Dữ liệu tự vào. TA chỉ cần bấm xác nhận để đóng như bình thường."** ⇒ `getMyTasks` KHÔNG bỏ task ET
+  của buổi có ET online nữa (spec §9 cũ đã bỏ ⇒ không ai vào tab, Elo = 0). Giữ task, nhãn đổi thành "Xác nhận ET (online)",
+  deadline như ET thường (12h trưa hôm sau). tsc sạch.

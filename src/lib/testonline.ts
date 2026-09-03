@@ -156,8 +156,10 @@ export async function phatHanhTest(taiLieuId: string, override?: { lopId: string
     }
   }
 
-  // Hạn nộp tính Ở POSTGRES (mig 202608171359 — luật theo loại, giờ VN, đọc thoi_khoa_bieu).
-  // NULL hợp lệ cho de_thi; NULL cho btvn = KHÔNG tìm ra buổi kế ⇒ phải báo người, đừng đoán.
+  // Hạn nộp tính Ở POSTGRES (mig 202608171359, đổi luật 202609031701 — theo loại, giờ VN, đọc TKB):
+  // et = hết ca +15' (Thùy 03/09) · btvn = 23:59 ngày trước buổi kế · giao_trinh = NULL (không hạn,
+  // Thùy 03/09 "bỏ giới hạn với bài tập trên lớp") · de_thi = NULL (staff tự đặt).
+  // NULL cho btvn = KHÔNG tìm ra buổi kế ⇒ phải báo người, đừng đoán.
   const { data: hanNop, error: eH } = await supabase.rpc('han_nop_bai_test',
     { p_lop: lopId, p_ngay: ngay, p_loai: map.testLoai })
   if (eH) throw eH
@@ -428,15 +430,57 @@ export type CauNghiSaiKey = {
   test: { loai: string; ngay: string; lopTen: string; mon: string }
   daTraLoi: number; sai: number; tiLeSai: number
   lanChamLai: number
+  // 🚩 HS báo "đề/đáp án sai" (TN/ĐS — giáo trình, Thùy 03/09) đang chờ: id report + ý kiến.
+  baoSai: { reportIds: string[]; yKien: string[] }
+}
+
+// Report 'moi' của câu TN/ĐS (đường KEY SAI). TLN KHÔNG lấy ở đây — "em nghĩ mình đúng" của TLN
+// đi đường accepted-answer (listTLNSai / tab 🚩 HS báo sai), hai đường không trộn (xem đầu mục).
+export async function listBaoSaiDe(): Promise<{ id: string; bai_lam_cau_id: string; bai_test_cau_id: string; y_kien: string | null }[]> {
+  const { data, error } = await supabase.from('bai_test_report')
+    .select('id, y_kien, bai_lam_cau_id, blc:bai_lam_cau_id!inner(bai_test_cau_id, cau:bai_test_cau_id!inner(loai_cau))')
+    .eq('trang_thai', 'moi').neq('blc.cau.loai_cau', 'tra_loi_ngan').limit(LIMIT)
+  if (error) throw error
+  return ((data ?? []) as any[]).map((r) => ({ id: r.id, bai_lam_cau_id: r.bai_lam_cau_id, bai_test_cau_id: r.blc?.bai_test_cau_id, y_kien: r.y_kien ?? null }))
+}
+
+// Sau khi sửa key + chấm lại 1 câu: đóng các báo sai 'moi' của câu đó theo kết quả chấm lại —
+// bài HS đã thành correct ⇒ 'dung' (HS nói đúng), còn lại ⇒ 'sai'. Ghi status thuần (không tính
+// toán) nên để client; fn_sua_key_va_cham_lai không đụng report (ghi vết chấm lại là việc của nó).
+export async function dongBaoSaiSauChamLai(baiTestCauId: string): Promise<void> {
+  const { data: blcs, error } = await supabase.from('bai_lam_cau').select('id, verdict').eq('bai_test_cau_id', baiTestCauId).limit(LIMIT)
+  if (error) throw error
+  const dung = (blcs ?? []).filter((b: any) => b.verdict === 'correct').map((b: any) => b.id as string)
+  const sai = (blcs ?? []).filter((b: any) => b.verdict !== 'correct').map((b: any) => b.id as string)
+  const uid = (await supabase.auth.getUser()).data.user?.id ?? null
+  const patch = { duyet_boi: uid, duyet_at: new Date().toISOString() }
+  if (dung.length) {
+    const { error: e1 } = await supabase.from('bai_test_report').update({ ...patch, trang_thai: 'dung' }).eq('trang_thai', 'moi').in('bai_lam_cau_id', dung)
+    if (e1) throw e1
+  }
+  if (sai.length) {
+    const { error: e2 } = await supabase.from('bai_test_report').update({ ...patch, trang_thai: 'sai' }).eq('trang_thai', 'moi').in('bai_lam_cau_id', sai)
+    if (e2) throw e2
+  }
 }
 
 // Câu mà TỈ LỆ SAI CAO — dấu hiệu key sai (cả lớp cùng sai 1 câu thì nghi key trước, nghi HS sau).
 // Ngưỡng mặc định: ≥3 HS đã trả lời và ≥70% sai. Trả mọi loại câu (key sai không riêng TLN).
+// + câu TN/ĐS có 🚩 báo sai đề đang chờ — vào danh sách BẤT KỂ ngưỡng (1 HS báo cũng phải có người xem).
 export async function listCauNghiSaiKey(nguongTiLe = 0.7, toiThieuHS = 3): Promise<CauNghiSaiKey[]> {
   const { data, error } = await supabase.from('bai_lam_cau')
     .select('verdict, cau:bai_test_cau_id!inner(id, bai_test_id, thu_tu, loai_cau, ma_cau, noi_dung, dap_an_key, test:bai_test_id(loai, ngay, mon, lop:lop_id(ten_lop)))')
     .not('verdict', 'is', null).limit(LIMIT)
   if (error) throw error
+  const reps = await listBaoSaiDe()
+  const repByCau = new Map<string, { reportIds: string[]; yKien: string[] }>()
+  for (const r of reps) {
+    if (!r.bai_test_cau_id) continue
+    const g = repByCau.get(r.bai_test_cau_id) ?? { reportIds: [], yKien: [] }
+    g.reportIds.push(r.id)
+    if (r.y_kien && !g.yKien.includes(r.y_kien)) g.yKien.push(r.y_kien)
+    repByCau.set(r.bai_test_cau_id, g)
+  }
   const byCau = new Map<string, CauNghiSaiKey>()
   for (const r of (data ?? []) as any[]) {
     const c = r.cau
@@ -448,6 +492,7 @@ export async function listCauNghiSaiKey(nguongTiLe = 0.7, toiThieuHS = 3): Promi
         maCau: c.ma_cau ?? null, noiDung: c.noi_dung ?? null, dapAnKey: c.dap_an_key,
         test: { loai: c.test?.loai ?? '?', ngay: c.test?.ngay ?? '', lopTen: c.test?.lop?.ten_lop ?? '?', mon: c.test?.mon ?? '' },
         daTraLoi: 0, sai: 0, tiLeSai: 0, lanChamLai: 0,
+        baoSai: repByCau.get(c.id) ?? { reportIds: [], yKien: [] },
       }
       byCau.set(c.id, g)
     }
@@ -456,7 +501,7 @@ export async function listCauNghiSaiKey(nguongTiLe = 0.7, toiThieuHS = 3): Promi
   }
   const out = [...byCau.values()]
     .map((g) => ({ ...g, tiLeSai: g.daTraLoi ? g.sai / g.daTraLoi : 0 }))
-    .filter((g) => g.daTraLoi >= toiThieuHS && g.tiLeSai >= nguongTiLe)
+    .filter((g) => g.baoSai.reportIds.length > 0 || (g.daTraLoi >= toiThieuHS && g.tiLeSai >= nguongTiLe))
   if (!out.length) return []
   // Đã chấm lại lần nào chưa (hiện lên UI để không chấm lại chồng chéo mà không biết).
   const { data: logs } = await supabase.from('bai_test_cham_lai_log')
@@ -465,7 +510,8 @@ export async function listCauNghiSaiKey(nguongTiLe = 0.7, toiThieuHS = 3): Promi
     const g = out.find((x) => x.cauId === l.bai_test_cau_id)
     if (g) g.lanChamLai++
   }
-  return out.sort((a, b) => b.tiLeSai - a.tiLeSai || b.daTraLoi - a.daTraLoi)
+  // Câu có 🚩 báo sai lên đầu (có người đang chờ), rồi tỉ lệ sai giảm dần.
+  return out.sort((a, b) => b.baoSai.reportIds.length - a.baoSai.reportIds.length || b.tiLeSai - a.tiLeSai || b.daTraLoi - a.daTraLoi)
 }
 
 export type ChamLaiKetQua = { soBai: number; saiThanhDung: number; dungThanhSai: number; khongDoi: number }

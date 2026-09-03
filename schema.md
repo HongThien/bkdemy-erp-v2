@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-178 bảng · 7 view · 0 enum · 31 trigger · 176 function
+178 bảng · 7 view · 0 enum · 33 trigger · 194 function
 
 ## _app_secrets
 
@@ -78,7 +78,7 @@
 | nguon_tai_lieu_id | uuid | Y |  | FK→tai_lieu.id |  |
 | lop_id | uuid |  |  | FK→lop.id |  |
 | ngay | date |  |  |  |  |
-| loai | text |  |  |  | `et` · `btvn` · `giao_trinh` · `de_thi` · `tu_luyen` |
+| loai | text |  |  |  | `et` · `btvn` · `giao_trinh` · `de_thi` · `tu_luyen` · `bo_tro` · `bo_tro_test` · `retest` |
 | mon | text |  | 'Toán'::text |  |  |
 | trang_thai | text |  | 'mo'::text |  | `mo` · `dong` |
 | mo_at | timestamp with time zone |  | now() |  |  |
@@ -90,6 +90,7 @@
 | so_cau | integer |  | 0 |  |  |
 | co_nhieu_ma_de | boolean |  | false |  |  |
 | hoc_sinh_id | uuid | Y |  | FK→hoc_sinh.id |  |
+| buoi_hoc_id | uuid | Y |  | FK→buoi_hoc.id |  |
 
 ## bai_test_cau
 
@@ -111,6 +112,7 @@
 | ly_thuyet | text | Y |  |  |  |
 | anh_de | text | Y |  |  |  |
 | bien_the | smallint |  | 1 |  |  |
+| ma_cum | text | Y |  |  |  |
 
 ## bai_test_cham_lai_log
 
@@ -867,6 +869,7 @@
 | graded_at | timestamp with time zone |  | now() |  |  |
 | loi | jsonb |  | '[]'::jsonb |  |  |
 | muc | smallint | Y |  |  |  |
+| bai_lam_cau_id | uuid | Y |  | FK→bai_lam_cau.id |  |
 
 ## gami_session_problems
 
@@ -2698,6 +2701,8 @@ SELECT n.hoc_sinh_id,
 
 | bảng | trigger | timing | event | function |
 |---|---|---|---|---|
+| bai_lam | trg_btyeu_retest_lam | AFTER | UPDATE | _trg_btyeu_retest_lam |
+| bai_lam_cau | trg_btyeu_retest_cau | AFTER | INSERT/UPDATE | _trg_btyeu_retest_cau |
 | bao_loi | trg_log_bao_loi | BEFORE | UPDATE | log_bao_loi |
 | btvn_nop_anh | tg_btvn_nop_anh_touch | AFTER | INSERT/DELETE/UPDATE | fn_btvn_nop_touch |
 | ca_test | trg_log_ca_test | AFTER | INSERT/UPDATE | log_ca_test |
@@ -2732,10 +2737,19 @@ SELECT n.hoc_sinh_id,
 
 ## Functions
 
+- `_btyeu_buoi(p_buoi uuid)` → TABLE(buoi_id uuid, hoc_sinh_id uuid, bo_tro_yeu_id uuid, mon text, ngay date, trang_thai text, diem_danh text, nguoi_day_tg uuid, danh_gia_xong_at timestamp with time zone, buoi_hoc_hs_id uuid)
+- `_btyeu_chon_cau(p_cautbl text, p_ma_dang text, p_ma_cum text, p_tru text[], p_n integer)` → text[]
+- `_btyeu_my_ns()` → uuid
+- `_btyeu_tien_do(p_buoi uuid)` → TABLE(ma_dang text, ma_cum text, so_cau bigint, so_dung bigint, so_goi_y bigint, cau_cuoi_at timestamp with time zone)
+- `_btyeu_today()` → date
 - `_chi_ky_json(p_ky uuid)` → jsonb
 - `_kho_ban_do_tbl(p_mon text, p_nhanh text DEFAULT NULL::text)` → text
 - `_kho_cau_tbl(p_mon text, p_nhanh text DEFAULT NULL::text)` → text
+- `_kho_cum_tbl(p_cautbl text)` → text
 - `_kho_lt_tbl(p_mon text, p_nhanh text DEFAULT NULL::text)` → text
+- `_kho_snapshot_cau(p_bt_id uuid, p_cautbl text, p_lttbl text, p_ma_cau text, p_thu_tu integer, p_ma_cum text DEFAULT NULL::text)` → void
+- `_trg_btyeu_retest_cau()` → trigger
+- `_trg_btyeu_retest_lam()` → trigger
 - `bai_test_con_han(p_bai_test uuid)` → boolean
 - `buoi_ke_tiep(p_lop uuid, p_tu date)` → date
 - `chi_me_id()` → uuid
@@ -2758,6 +2772,14 @@ SELECT n.hoc_sinh_id,
 - `fn_btvn_tra_bai(p_hoc_sinh_id uuid, p_buoi_hoc_id uuid)` → void
 - `fn_btvn_tra_bai_buoi(p_buoi_hoc_id uuid)` → integer
 - `fn_btvn_xac_nhan_buoi(p_hoc_sinh_id uuid, p_buoi_hoc_id uuid)` → void
+- `fn_btyeu_ca_cua_toi()` → jsonb
+- `fn_btyeu_ca_ta(p_buoi uuid)` → jsonb
+- `fn_btyeu_dong_ca(p_buoi uuid)` → jsonb
+- `fn_btyeu_hoan_tat(p_buoi uuid, p_nhan_xet text, p_muc_ma text DEFAULT NULL::text, p_khong_test_ly_do text DEFAULT NULL::text)` → void
+- `fn_btyeu_luyen_sinh(p_buoi uuid, p_ma_dang text, p_ma_cum text DEFAULT NULL::text, p_so_cau integer DEFAULT 3)` → jsonb
+- `fn_btyeu_retest_cua_toi()` → jsonb
+- `fn_btyeu_retest_ghi(p_bai_lam uuid)` → void
+- `fn_btyeu_viec_cua_toi()` → jsonb
 - `fn_buoi_recompute_hoan_tat(p_buoi_id uuid)` → void
 - `fn_ca_test_kq_diem()` → trigger
 - `fn_chap_nhan_dap_an(p_ma_cau text, p_dap_an_raw text)` → jsonb
@@ -2783,6 +2805,7 @@ SELECT n.hoc_sinh_id,
 - `fn_diem_thi_tinh()` → trigger
 - `fn_dong_btvn(p_buoi_id uuid)` → jsonb
 - `fn_dong_phase(p_buoi_id uuid, p_phase text)` → jsonb
+- `fn_et_online_dong_bo(p_buoi uuid)` → jsonb
 - `fn_exp_btvn_bai(p_trang_thai text, p_thai_do text)` → numeric
 - `fn_exp_et_rank(p_rank integer, p_n integer)` → numeric
 - `fn_exp_for_rank(p_rank integer, p_n integer, p_bands numeric[])` → numeric
