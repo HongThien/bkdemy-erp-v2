@@ -20,7 +20,9 @@ const fmtNgay = (iso: string) => { const [y, m, d] = iso.split('-'); return `${d
 const LOAI_LABEL: Record<string, string> = { et: 'ET', btvn: 'BTVN', giao_trinh: 'Giáo trình', de_thi: 'Đề thi' }
 const keyRaText = (k: unknown) => (Array.isArray(k) ? k.join(' · ') : String(k ?? ''))
 
-export default function ChamLaiKeyPanel() {
+// khoi: lọc theo khối (lop.khoi của test) do màn cha giữ — chung 1 bộ chip cho cả 3 tab.
+// onKhoiOpts: báo ngược tập khối có trong danh sách này để cha hiện đủ chip (cha không load rows của tab này).
+export default function ChamLaiKeyPanel({ khoi = null, onKhoiOpts }: { khoi?: string | null; onKhoiOpts?: (ks: string[]) => void } = {}) {
   const [rows, setRows] = useState<CauNghiSaiKey[] | null>(null)
   const [err, setErr] = useState<string | null>(null)
   const [mo, setMo] = useState<string | null>(null)        // cauId đang mở form
@@ -35,6 +37,8 @@ export default function ChamLaiKeyPanel() {
     try { setRows(await listCauNghiSaiKey()) } catch (e: any) { setErr(e?.message ?? String(e)); setRows([]) }
   }
   useEffect(() => { reload() }, [])
+  useEffect(() => { onKhoiOpts?.([...new Set((rows ?? []).map((r) => r.test.khoi).filter(Boolean) as string[])]) }, [rows]) // eslint-disable-line react-hooks/exhaustive-deps
+  const shown = khoi ? (rows ?? []).filter((r) => r.test.khoi === khoi) : (rows ?? [])
 
   function moForm(r: CauNghiSaiKey) {
     setMo(r.cauId); setXong(null); setLyDo('')
@@ -78,12 +82,12 @@ export default function ChamLaiKeyPanel() {
         </div>
       )}
 
-      {rows.length === 0 ? (
+      {shown.length === 0 ? (
         <div className="rounded-xl border border-dashed border-slate-300 bg-white py-14 text-center text-sm text-slate-400">
-          Không có câu nào tỉ lệ sai bất thường, không có báo sai đề nào chờ. 🎉
+          {khoi ? `Khối ${khoi}: ` : ''}Không có câu nào tỉ lệ sai bất thường, không có báo sai đề nào chờ. 🎉
           <div className="mt-1 text-[12px]">(ngưỡng: ≥3 HS đã trả lời và ≥70% sai · hoặc có HS 🚩 báo sai đề)</div>
         </div>
-      ) : rows.map((r) => {
+      ) : shown.map((r) => {
         const pct = Math.round(r.tiLeSai * 100)
         const nBao = r.baoSai.reportIds.length
         return (

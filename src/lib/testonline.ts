@@ -363,7 +363,7 @@ export function chiSoCuaChu(letter: unknown): number { return LETTERS.indexOf(St
 export type TLNSaiRow = {
   blcId: string; dapAnHs: string; chamAt: string
   hocSinh: { id: string; ho_ten: string; ma_hs: string | null }
-  test: { loai: string; ngay: string; lopTen: string }
+  test: { loai: string; ngay: string; lopTen: string; khoi: string | null } // khoi = lop.khoi (filter khối ở màn duyệt)
   cau: { id: string; ma_cau: string | null; noi_dung: string | null; dapAnKey: string; loi_giai: string | null }
   reports: { id: string; y_kien: string | null; trang_thai: string; nguon: 'hs_bao_sai' | 'ai_de_xuat' }[]
 }
@@ -371,7 +371,7 @@ export type TLNSaiRow = {
 // Mọi câu TLN đang verdict='wrong' (mọi test) + report của chúng (join client — bảng report nhỏ).
 export async function listTLNSai(): Promise<TLNSaiRow[]> {
   const { data, error } = await supabase.from('bai_lam_cau')
-    .select('id, dap_an_hs, cham_at, cau:bai_test_cau_id!inner(id, ma_cau, noi_dung, dap_an_key, loi_giai, loai_cau, test:bai_test_id(loai, ngay, lop:lop_id(ten_lop))), lam:bai_lam_id(hoc_sinh:hoc_sinh_id(id, ho_ten, ma_hs))')
+    .select('id, dap_an_hs, cham_at, cau:bai_test_cau_id!inner(id, ma_cau, noi_dung, dap_an_key, loi_giai, loai_cau, test:bai_test_id(loai, ngay, lop:lop_id(ten_lop, khoi))), lam:bai_lam_id(hoc_sinh:hoc_sinh_id(id, ho_ten, ma_hs))')
     .eq('verdict', 'wrong').eq('cau.loai_cau', 'tra_loi_ngan')
     .order('cham_at', { ascending: false }).limit(LIMIT)
   if (error) throw error
@@ -386,7 +386,7 @@ export async function listTLNSai(): Promise<TLNSaiRow[]> {
   return rows.map((r) => ({
     blcId: r.id, dapAnHs: String(r.dap_an_hs ?? ''), chamAt: r.cham_at,
     hocSinh: { id: r.lam?.hoc_sinh?.id, ho_ten: r.lam?.hoc_sinh?.ho_ten ?? '?', ma_hs: r.lam?.hoc_sinh?.ma_hs ?? null },
-    test: { loai: r.cau?.test?.loai ?? '?', ngay: r.cau?.test?.ngay ?? '', lopTen: r.cau?.test?.lop?.ten_lop ?? '?' },
+    test: { loai: r.cau?.test?.loai ?? '?', ngay: r.cau?.test?.ngay ?? '', lopTen: r.cau?.test?.lop?.ten_lop ?? '?', khoi: r.cau?.test?.lop?.khoi ?? null },
     cau: { id: r.cau?.id, ma_cau: r.cau?.ma_cau ?? null, noi_dung: r.cau?.noi_dung ?? null, dapAnKey: String(r.cau?.dap_an_key ?? ''), loi_giai: r.cau?.loi_giai ?? null },
     reports: repMap.get(r.id) ?? [],
   }))
@@ -427,7 +427,7 @@ export async function chapNhanDapAn(maCau: string, dapAnRaw: string): Promise<{ 
 export type CauNghiSaiKey = {
   cauId: string; baiTestId: string; thuTu: number; loaiCau: string
   maCau: string | null; noiDung: string | null; dapAnKey: unknown
-  test: { loai: string; ngay: string; lopTen: string; mon: string }
+  test: { loai: string; ngay: string; lopTen: string; mon: string; khoi: string | null }
   daTraLoi: number; sai: number; tiLeSai: number
   lanChamLai: number
   // 🚩 HS báo "đề/đáp án sai" (TN/ĐS — giáo trình, Thùy 03/09) đang chờ: id report + ý kiến.
@@ -469,7 +469,7 @@ export async function dongBaoSaiSauChamLai(baiTestCauId: string): Promise<void> 
 // + câu TN/ĐS có 🚩 báo sai đề đang chờ — vào danh sách BẤT KỂ ngưỡng (1 HS báo cũng phải có người xem).
 export async function listCauNghiSaiKey(nguongTiLe = 0.7, toiThieuHS = 3): Promise<CauNghiSaiKey[]> {
   const { data, error } = await supabase.from('bai_lam_cau')
-    .select('verdict, cau:bai_test_cau_id!inner(id, bai_test_id, thu_tu, loai_cau, ma_cau, noi_dung, dap_an_key, test:bai_test_id(loai, ngay, mon, lop:lop_id(ten_lop)))')
+    .select('verdict, cau:bai_test_cau_id!inner(id, bai_test_id, thu_tu, loai_cau, ma_cau, noi_dung, dap_an_key, test:bai_test_id(loai, ngay, mon, lop:lop_id(ten_lop, khoi)))')
     .not('verdict', 'is', null).limit(LIMIT)
   if (error) throw error
   const reps = await listBaoSaiDe()
@@ -490,7 +490,7 @@ export async function listCauNghiSaiKey(nguongTiLe = 0.7, toiThieuHS = 3): Promi
       g = {
         cauId: c.id, baiTestId: c.bai_test_id, thuTu: c.thu_tu, loaiCau: c.loai_cau,
         maCau: c.ma_cau ?? null, noiDung: c.noi_dung ?? null, dapAnKey: c.dap_an_key,
-        test: { loai: c.test?.loai ?? '?', ngay: c.test?.ngay ?? '', lopTen: c.test?.lop?.ten_lop ?? '?', mon: c.test?.mon ?? '' },
+        test: { loai: c.test?.loai ?? '?', ngay: c.test?.ngay ?? '', lopTen: c.test?.lop?.ten_lop ?? '?', mon: c.test?.mon ?? '', khoi: c.test?.lop?.khoi ?? null },
         daTraLoi: 0, sai: 0, tiLeSai: 0, lanChamLai: 0,
         baoSai: repByCau.get(c.id) ?? { reportIds: [], yKien: [] },
       }

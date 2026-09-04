@@ -8096,3 +8096,23 @@ còn disabled → popup → "Chọn dạng trong kho" → DangPickerOne Khối 9
   chấm chưa đúng đều có "🚩 Em nghĩ mình đúng" (đúng chữ tự luyện). Staff-side không đổi: TLN → tab 🚩 accepted-answer,
   TN/ĐS → tab ⚠ key sai (phân biệt theo loai_cau, `listBaoSaiDe`). Tự luyện TN (57 câu/2192) giờ cũng báo được — hợp lý.
 - Lưu ý PWA: SW autoUpdate — máy HS có thể còn bản cũ tới lần mở sau; đóng app mở lại 1–2 lần là nhận bản mới.
+
+## 2026-09-04 — Duyệt chấm online: lọc theo KHỐI
+- Thùy: "trong phần Duyệt chấm online, cần có filter theo khối để dễ thấy học sinh báo cáo hơn".
+- Khối lấy từ `lop.khoi` của test (join thêm 1 cột vào select có sẵn — `listTLNSai` + `listCauNghiSaiKey`,
+  thêm `test.khoi` vào `TLNSaiRow` / `CauNghiSaiKey`). Không tính toán gì mới, chỉ filter UI thuần (§2.0 cho phép).
+- `DuyetChamScreen`: state `khoi` + chip "Khối · Tất cả / 6 / 7 …" cạnh nút Tải lại, áp cho cả 3 tab; số trên tab
+  🚩/Tất cả đổi theo khối đang chọn (groups tính từ `rowsKhoi`). Tab ⚠ (`ChamLaiKeyPanel`) nhận prop `khoi` tự lọc,
+  và báo ngược tập khối nó có qua `onKhoiOpts` để chip hiện đủ (cha không load rows tab này). Chip chỉ hiện khi có ≥1
+  khối; trạng thái rỗng ghi "Khối X: …" để khỏi tưởng hết việc.
+- Badge 🚩 báo sai ĐỀ trên tab ⚠ (`listBaoSaiDe`) KHÔNG theo khối — vẫn là tổng, vì hàm đó không join lop. Chấp nhận.
+
+**Verify:** tsc 0 · vite build pass · dev 5173 kẹt màn login (không có VITE_DEV_ACCOUNTS, không tự nhập mật khẩu) ⇒
+CHƯA nhìn tận mắt, Thùy bấm thử. Dev log có sẵn lỗi `virtual:pwa-register` từ `main-ta.tsx` — có từ trước, không liên quan.
+
+## 2026-09-04 — Hạn BTVN online = 2 giờ TRƯỚC ca học kế tiếp (mig 202609041507)
+- Thùy: "Mở giới hạn BTVN thành trước 2h trước buổi học". Cũ (17/08): 23:59 ngày trước buổi kế. Mới: `buoi_ke_tiep` →
+  slot TKB sớm nhất ngày đó → `gio_bat_dau − 2h`. Không TKB → NULL như cũ. Khớp lại với mốc task TA ở `getMyTasks`/tuan.ts.
+- Backfill 7 BTVN đang 'mo' (chỉ khi luật mới ra hạn). Verify: 12A1 (T6 15:00) → 13:00 · 12B1 (CN 14:00) → 12:00 ·
+  12B1 sau CN → T4 19:30 → 17:30. Script `scripts/_chk_han_btvn.mjs` (SELECT; `fn` để thử hàm).
+- Commit chỉ migration + schema.md + script; DEVLOG để phiên đang sửa DuyetCham (lọc khối) commit chung, tránh trộn.
