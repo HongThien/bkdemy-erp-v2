@@ -8136,3 +8136,15 @@ CHƯA nhìn tận mắt, Thùy bấm thử. Dev log có sẵn lỗi `virtual:pwa
   auto-start, chờ Thùy quyết máy nào/VPS").
 - ⚠ Hai nhánh gán MT 7A1/7S2 lúc 10:52-10:53 (04103acd/307b9ac6) đã biến mất, thay bằng 926d76be/2b9779f2 lúc 10:58
   (id KHÁC ⇒ không phải cập-nhật-tại-chỗ; có thể Thùy xoá tay rồi gán lại). Hiện mỗi lớp đúng 1 bản, không trùng.
+
+## 2026-09-04 (tiếp) — "9K1 MT bị lỗi trắng file" = lớp CHƯA xếp bậc → gán MT lọc HẾT câu → doc con 0 phần (commit 7c18073)
+- Bản `mt_buoi` "KHTN 9 - MT Tháng 8 - Đề 01" gán 9K1 18:12 có **0 phần** (master 2 phần/30 câu) ⇒ Xem/In chỉ còn
+  header + "MT chưa có phần nào" = "trắng file". `ganMTVaoBuoi`: `lopThuTu = thuTuCua(lop.bac)`, 9K1 `bac=null` ⇒ 0 ⇒
+  mọi câu (bậc thấp nhất C = thu_tu 1) bị coi "nâng cao hơn lớp" ⇒ loại hết; UI chỉ nói "đã tự loại 30 câu nâng cao".
+  9K2/9K3 (KHTN) có bậc A nên không dính (Thùy gán lại sang 9K2 lúc 18:14: 2 phần OK); 37/37 lớp Toán đều có bậc.
+- Fix `mt.ts`: `lopChuaCoBac` (bac null hoặc không có trong lop_bac) ⇒ KHÔNG lọc theo bậc (§1.5 NULL = không áp dụng),
+  trả cờ; `MTScreen` báo "⚠ Lớp này CHƯA xếp bậc… giữ nguyên toàn bộ đề". 60 câu KHTN của 2 đề đã rà nội dung: sạch.
+- Bản 9K1 rỗng đã bị Thùy xoá tay trước khi tôi kịp vá (`scripts/_fix_mt_9k1_rong.mjs` báo "không thấy doc con" —
+  script giữ lại, guard 0 phần). Sau deploy: gán lại 9K1 là đủ, hoặc xếp bậc cho 9K1 ở màn Lớp rồi gán để lọc như thường.
+- Bẫy tooling lặp lại: `node && cat <<EOF … EOF` rồi dòng sau `git …` — heredoc kết thúc chuỗi `&&`, git vẫn chạy dù
+  node fail ⇒ commit 7c18073 thiếu DEVLOG; mục này bù.
