@@ -8148,3 +8148,39 @@ CHƯA nhìn tận mắt, Thùy bấm thử. Dev log có sẵn lỗi `virtual:pwa
   script giữ lại, guard 0 phần). Sau deploy: gán lại 9K1 là đủ, hoặc xếp bậc cho 9K1 ở màn Lớp rồi gán để lọc như thường.
 - Bẫy tooling lặp lại: `node && cat <<EOF … EOF` rồi dòng sau `git …` — heredoc kết thúc chuỗi `&&`, git vẫn chạy dù
   node fail ⇒ commit 7c18073 thiếu DEVLOG; mục này bù.
+
+## 2026-09-04 (tiếp) — Duyệt lời giải AI: tab "Chưa có lời giải" + hàng đợi ĐẶT CLAUDE GIẢI (mig 202609041808 + 1811)
+**Thùy:** "Thay vì t phải bấm giải ở đây, t muốn 1 tab ở chỗ Duyệt bài — hiện danh sách bài chưa có đáp án trong kho
+để t biết và giải. 2 option: (1) t làm lời giải và up ảnh vào đấy; (2) order Claude giải vào hàng đợi (giống clone)."
+- **Định nghĩa "chưa có lời giải"** = `loi_giai IS NULL AND anh_dap_an IS NULL` (ảnh lời giải cũng là lời giải; Story 2
+  cũ chỉ xét `loi_giai`). Số liệu lúc làm: Đại 10/11/12 = 180/280/159 · cấp 1 (3/4/5) = 26/104/50 · KHTN 9 = 21 · HGT 12 = 9.
+- **DB (mig 202609041808):** 3 bảng đối xứng `{dai,khtn,hgt}_cau_hoi_yeu_cau_giai` (id · ma_cau FK cascade · ghi_chu ·
+  nguoi_yeu_cau · created_at · xu_ly_at; **unique partial `ma_cau where xu_ly_at is null`** = 1 câu chỉ 1 yêu cầu treo) —
+  cùng shape hàng đợi clone 26/08. **KHÔNG bảng nháp** như clone: câu đã tồn tại, Claude chỉ điền `loi_giai` với
+  `nguon_giai='ai', giai_method='claude_code', da_duyet=false` → tự rơi vào tab "Lời giải mới từ Claude" để duyệt (hàng rào sẵn có).
+  Registry SQL môn→tiền tố `fn_kho_tbl(mon)` (1 chỗ; TS là `khoTbls` thêm `yeuCauGiaiTbl`). Function (§2.0, join/đếm ở DB):
+  `fn_kho_cau_chua_giai(mon,khoi,limit)` list kèm trạng thái yêu cầu · `fn_kho_dem_cau_chua_giai(mon|null)` đếm theo khối
+  (null = gộp 3 môn, union ở SQL) · `fn_kho_dat_giai(mon, ma_cau[], ghi_chu, nguoi)` đặt 1/cả lô, DB tự bỏ câu đã giải /
+  đã treo, trả số đặt được · `fn_kho_giai_nguoi_xong(mon, ma_cau)` đóng dấu `nguon_giai='nguoi', giai_method=null` + gỡ
+  yêu cầu treo, **từ chối nếu câu vẫn chưa có gì** · `fn_kho_yeu_cau_giai_cho(mon)` cho worker. Mig 1811 = bổ sung ngay sau
+  (trả thêm `menh_de` + đếm gộp) — viết file MỚI, không sửa 1808 đã áp.
+- **UI:** `ChuaGiaiTab.tsx` (tab đầu, mặc định) trong `DuyetLoiGiaiScreen`: gộp 3 nhánh theo khối, **nhóm theo dạng**
+  (chuyên đề › dạng · mã), mỗi card: mã · loại · nhãn clone · đề (MathText + ảnh đề + phương án/mệnh đề + đáp án sẵn).
+  Nút **📥 Đặt Claude giải** (→ badge tím "Đã đặt · giờ · ghi chú" + **✕ Huỷ đặt** = xoá dòng treo) · **✍️ Tự giải / up ảnh**
+  mở panel inline: `SolutionField` (chèn/dán/cắt ảnh vào giữa lời giải) + `ImageSlot` "Ảnh giải" + ô đáp án (nếu trống);
+  Lưu cần text HOẶC ảnh → `updateCau` rồi `fn_kho_giai_nguoi_xong` → câu rời danh sách. Ô "Ghi chú gửi Claude" chung cho
+  đặt lẻ/đặt lô; nút **đặt tất cả chưa đặt (N)**. Dropdown khối (chung 3 tab) hiện "Khối 11 · 280 chưa giải (k đã đặt)".
+  `SolutionField`/`ImageSlot` chuyển thành `export` từ DangHub (tiền lệ DangPicker/KhoPicker).
+- **Worker = `scripts/hangdoi-giai.mjs`** (Claude Code chạy khi Thùy bảo "xử lý hàng đợi giải"): `--list [--out f.json]`
+  (yêu cầu treo 3 môn + ≤2 mẫu tham khảo đã duyệt cùng cụm→cùng dạng) → Claude tự giải trong chat → file
+  `[{mon, yeu_cau_id, ma_cau, loi_giai, dap_an?}]` → `--ghi f.json` (1 transaction/câu; câu đã có lời giải trong lúc chờ
+  thì **không ghi đè**, chỉ đóng) · `--don` đóng yêu cầu mà câu đã có lời giải · `--bo <mon> <id> [lý do]` đóng không ghi,
+  lý do nối vào ghi_chu. Luật §1.5: không chắc → `--bo`, không ghi bừa.
+- **Verify:** tsc + vite build sạch · trình duyệt: tab hiện 3 câu khối 8 thật, bấm Đặt → badge + dropdown "(1 đã đặt)",
+  `--list` thấy đúng 1 yêu cầu DC000016, Huỷ → về 0; panel tự giải render đủ toolbar. SQL test trong transaction ROLLBACK:
+  đặt trùng → 0 · đóng khi chưa có lời giải → raise · có `anh_dap_an` → nguon_giai='nguoi', treo=0.
+- Chưa làm: nhánh **Hình** (biến thể/cách giải) không có trong tab này — bảng khác hẳn, hiện 0 biến thể chưa giải.
+- 18:19 Thùy gán lại 9K1 (5fc924b8) — vẫn bằng bản cũ trên web ⇒ lại 0 phần. Đã VÁ data bằng `_fix_mt_9k1_rong.mjs <id>`
+  (chép 2 phần/30 câu từ master, đặt lại job link) → worker in lại. Link PDF các đề MT tháng 8 (Toán 5/6/7/8/9, KHTN 9,
+  bản con 5A1/5A2/6S1/7A1/7S2/9K2) đã DONE. Còn kẹt: "Giáo trình 8A" (699 câu, >90s timeout, đang retry) + 8 job
+  23/08 `upload: fetch failed` (bấm ↻ trong Kho khi cần).

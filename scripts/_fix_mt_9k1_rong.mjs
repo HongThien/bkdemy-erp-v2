@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs'
 import pg from 'pg'
 const env = Object.fromEntries(readFileSync('.env', 'utf8').split('\n').map((l) => l.match(/^\s*([A-Z_]+)\s*=\s*(.+?)\s*$/)).filter(Boolean).map((m) => [m[1], m[2].replace(/^["']|["']$/g, '')]))
 const c = new pg.Client({ connectionString: env.DATABASE_URL }); await c.connect()
-const CON = '0bd260b8-cdd5-41bd-99cb-a853477b4220'
+const CON = process.argv[2] ?? '0bd260b8-cdd5-41bd-99cb-a853477b4220' // id doc con (truyền qua argv)
 const { rows: [con] } = await c.query(`select id, nguon_id, ten, (select count(*)::int from tai_lieu_phan p where p.tai_lieu_id=$1) n_phan from tai_lieu where id=$1`, [CON])
 if (!con) throw new Error('không thấy doc con')
 if (con.n_phan !== 0) throw new Error(`doc con đã có ${con.n_phan} phần — không vá`)
