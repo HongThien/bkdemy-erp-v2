@@ -8124,3 +8124,15 @@ CHƯA nhìn tận mắt, Thùy bấm thử. Dev log có sẵn lỗi `virtual:pwa
   vườn…") thành lưới → bị coi như lưới lựa chọn → ép 0 dòng. ETPrintView có đúng điều kiện `gv || grid ? 0` như vậy.
 - Sửa cả 2: bỏ `!grid` — GV đã chọn tự luận thì dòng theo ô "dòng" (mặc định 4), bản GV vẫn 0. Không đụng dữ liệu.
 - Chưa mở bản in để nhìn (cần login); tsc sạch. Script soi: `scripts/_chk_mt7_tuluan.mjs` (SELECT).
+
+## 2026-09-04 (tiếp) — "MT gán vào lớp thì tài liệu tạo ra ở kho bị lỗi" = WORKER LINK PDF TẮT từ 26/08
+- Soi bản `mt_buoi` khối 7 (7A1/7S2 04/09, nguồn 0cf120be): 3 phần / 25 câu = master, cau_hinh copy đủ (etMaDe 23,
+  hinhByMa 2, phanBac) — NỘI DUNG KHÔNG lỗi. Lỗi là ở Kho: `linkgen_jobs` **67 pending từ 26/08** (done gần nhất 26/08
+  14:23), tức `npm run worker` (worker/index.mjs — Chrome + puppeteer, serve dist/) KHÔNG chạy trên máy nào 9 ngày nay
+  → mọi tài liệu tạo từ 26/08 (28 cái riêng 03/09) treo "⏳ đang tạo…" (Kho không có nhãn nào nói "worker tắt").
+  Thêm 6 failed + 2 processing kẹt từ 23/08 03:4x (cùng lỗi `upload: fetch failed` — mất mạng lúc đó).
+- Làm: `npm run build` (dist/ 14:47 chưa có sửa dòng kẻ MT/ET 751ca77) → `npm run worker` nền trên máy này; đăng nhập OK,
+  quét 5s, đang xử lý. Worker chỉ sống trong phiên này — máy tắt/đóng phiên là lại dồn job (HANDOFF đã ghi "chưa
+  auto-start, chờ Thùy quyết máy nào/VPS").
+- ⚠ Hai nhánh gán MT 7A1/7S2 lúc 10:52-10:53 (04103acd/307b9ac6) đã biến mất, thay bằng 926d76be/2b9779f2 lúc 10:58
+  (id KHÁC ⇒ không phải cập-nhật-tại-chỗ; có thể Thùy xoá tay rồi gán lại). Hiện mỗi lớp đúng 1 bản, không trùng.
