@@ -8087,3 +8087,12 @@ còn disabled → popup → "Chọn dạng trong kho" → DangPickerOne Khối 9
 ẩn cơ bản" hiện đúng trên nút → gõ ghi chú → "Gửi báo động" bật → **Huỷ, KHÔNG gửi** (không ghi báo
 động giả lên HS thật) · tab Trước buổi trong ChamBuoiGv render đúng (BTVN buổi 23/08 3/4 em, 4/4 cần
 để mắt). Console 0 lỗi.
+
+## 2026-09-03 (tiếp) — "Em nghĩ mình đúng" cho MỌI bài làm online, mọi loại câu
+- Thùy (lần 2): "tài liệu online chưa có chức năng report câu sai 'Em nghĩ mình đúng' như phần tự luyện". Kiểm: bundle
+  thật trên hs.bkacademy.edu.vn ĐÃ chứa nút (deploy từ main OK) — nhưng lần đầu tôi chỉ bật TN/ĐS cho GIÁO TRÌNH và đặt
+  chữ khác ("Báo sai đề / đáp án"); BTVN online vẫn không có nút với TN/ĐS. Không đủ.
+- Sửa `LamBai`: `baoSaiDe = laTN || laDS` (bỏ điều kiện giáo trình) ⇒ giáo trình / BTVN / tự luyện, mọi loại câu, khi
+  chấm chưa đúng đều có "🚩 Em nghĩ mình đúng" (đúng chữ tự luyện). Staff-side không đổi: TLN → tab 🚩 accepted-answer,
+  TN/ĐS → tab ⚠ key sai (phân biệt theo loai_cau, `listBaoSaiDe`). Tự luyện TN (57 câu/2192) giờ cũng báo được — hợp lý.
+- Lưu ý PWA: SW autoUpdate — máy HS có thể còn bản cũ tới lần mở sau; đóng app mở lại 1–2 lần là nhận bản mới.
