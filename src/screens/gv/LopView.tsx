@@ -3,15 +3,20 @@
 // · Bản đồ = thanh đạt/cần/yếu per HS (fn_mastery_cells qua getMasteryRollup — "bộ nhớ iPhone").
 // · MT = bảng THEO THÁNG per HS: điểm + rank khối nhỏ bên cạnh (fn_rank_diem_mt_lop, 1 call/tháng)
 //   — KHÔNG có ô "MT trung bình lớp" (CEO 31/08 chốt ①: MT 1 tháng 1 lần, không trung bình).
+// · Trước buổi (CEO 04/09) = TruocBuoiTab dùng chung ERP (compact), mở trên BUỔI ẢO: ngày = buổi kế
+//   tiếp theo TKB (ngayBuoiHopLeCuaLop), ‹ › nhảy giữa các ngày hợp lệ — KHÔNG đẻ dòng buoi_hoc.
 import { useEffect, useState } from 'react'
 import { listHSCuaLop, type Lop } from '../../lib/nhansu'
 import { getClassMatrix, getMasteryRollup, type ClassMatrix, type HSRollup, type MatrixPhase } from '../../lib/mastery'
 import { rankDiemMTLop, type RankMTRow } from '../../lib/report'
-import { homNayVN, ddmmVN } from '../../lib/tuan'
+import { ngayBuoiHopLeCuaLop } from '../../lib/gami'
+import { homNayVN, ddmmVN, congNgay, thuCuaNgay } from '../../lib/tuan'
+import TruocBuoiTab from '../gami/TruocBuoiTab'
 
-type SubKey = 'et' | 'btvn' | 'mt' | 'bando'
+export type LopSubKey = 'truocbuoi' | 'et' | 'btvn' | 'mt' | 'bando'
+type SubKey = LopSubKey
 const SUBS: { key: SubKey; label: string }[] = [
-  { key: 'et', label: 'ET' }, { key: 'btvn', label: 'BTVN' }, { key: 'mt', label: 'MT tháng' }, { key: 'bando', label: 'Bản đồ' },
+  { key: 'truocbuoi', label: 'Trước buổi' }, { key: 'et', label: 'ET' }, { key: 'btvn', label: 'BTVN' }, { key: 'mt', label: 'MT' }, { key: 'bando', label: 'Bản đồ' },
 ]
 const pctCls = (p: number) => (p >= 80 ? 'text-emerald-600' : p >= 50 ? 'text-amber-600' : 'text-rose-600')
 
@@ -21,9 +26,10 @@ function ymCong(ym: string, n: number): string {
   return `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}`
 }
 
-export default function LopView({ lops }: { lops: Lop[] }) {
-  const [lopId, setLopId] = useState<string | null>(lops[0]?.id ?? null)
-  const [sub, setSub] = useState<SubKey>('et')
+// `init` = mở thẳng 1 lớp + 1 sub (từ box "Trước buổi" trang chủ) — chỉ đọc lúc mount (GvHome đổi key để remount).
+export default function LopView({ lops, init }: { lops: Lop[]; init?: { lopId: string; sub: SubKey } | null }) {
+  const [lopId, setLopId] = useState<string | null>(init?.lopId ?? lops[0]?.id ?? null)
+  const [sub, setSub] = useState<SubKey>(init?.sub ?? 'truocbuoi')
   const lop = lops.find((l) => l.id === lopId) ?? null
   if (!lops.length) return <p className="mx-auto max-w-[1000px] px-3 pt-4 text-center text-[13px] text-slate-400">Bạn chưa được phân công lớp nào (vai giáo viên).</p>
   return (
@@ -39,12 +45,46 @@ export default function LopView({ lops }: { lops: Lop[] }) {
       <div className="mt-2.5 mb-3 flex gap-1.5">
         {SUBS.map((s) => (
           <button key={s.key} onClick={() => setSub(s.key)}
-            className={`min-h-[36px] flex-1 rounded-xl text-[13px] font-semibold ${sub === s.key ? 'bg-green-600 text-white' : 'border border-slate-200 bg-white text-slate-500'}`}>{s.label}</button>
+            className={`min-h-[36px] flex-auto whitespace-nowrap rounded-xl px-2 text-[12.5px] font-semibold ${sub === s.key ? 'bg-green-600 text-white' : 'border border-slate-200 bg-white text-slate-500'}`}>{s.label}</button>
         ))}
       </div>
+      {lop && sub === 'truocbuoi' && <TruocBuoiLop key={lop.id} lop={lop} />}
       {lop && (sub === 'et' || sub === 'btvn') && <LuoiPhase key={lop.id + sub} lop={lop} phase={sub} />}
       {lop && sub === 'mt' && <MTThangLop key={lop.id} lop={lop} />}
       {lop && sub === 'bando' && <RollupLop key={lop.id} lop={lop} />}
+    </div>
+  )
+}
+
+// ── Trước buổi trên BUỔI ẢO: ngày mặc định = buổi kế tiếp theo TKB (≥ hôm nay), ‹ › nhảy giữa các ngày
+// hợp lệ của lớp trong ±4 tuần. Báo cáo = tổng kết buổi TRƯỚC ngày đó + tháng của ngày đó (spec-truocbuoi). ──
+function TruocBuoiLop({ lop }: { lop: Lop }) {
+  const homNay = homNayVN()
+  const [ngays, setNgays] = useState<string[] | null>(null)
+  const [ngay, setNgay] = useState<string>(homNay)
+  useEffect(() => {
+    let live = true
+    setNgays(null)
+    ngayBuoiHopLeCuaLop(lop.id, congNgay(homNay, -28), congNgay(homNay, 28))
+      .then((r) => { if (!live) return; const ds = r.map((x) => x.ngay); setNgays(ds); setNgay(ds.find((d) => d >= homNay) ?? ds[ds.length - 1] ?? homNay) })
+      .catch(() => { if (live) setNgays([]) })
+    return () => { live = false }
+  }, [lop.id]) // eslint-disable-line
+  if (!ngays) return <p className="text-[13px] text-slate-400">Đang tìm buổi theo TKB…</p>
+  const idx = ngays.indexOf(ngay)
+  const nhan = ngay === homNay ? 'hôm nay' : ngay > homNay ? 'buổi tới' : 'đã qua'
+  return (
+    <div>
+      <div className="mb-2 flex items-center gap-1">
+        <span className="text-[12px] text-slate-400">Trước buổi của lớp</span>
+        <div className="ml-auto flex items-center gap-1">
+          <button onClick={() => idx > 0 && setNgay(ngays[idx - 1])} disabled={idx <= 0} className="rounded-lg px-2.5 py-1 text-[15px] font-bold text-slate-500 active:bg-slate-100 disabled:opacity-30">‹</button>
+          <span className="text-[13px] font-semibold text-slate-700">{thuCuaNgay(ngay)} · {ddmmVN(ngay)} <span className={`font-medium ${ngay === homNay ? 'text-green-600' : 'text-slate-400'}`}>· {nhan}</span></span>
+          <button onClick={() => idx >= 0 && idx < ngays.length - 1 && setNgay(ngays[idx + 1])} disabled={idx < 0 || idx >= ngays.length - 1} className="rounded-lg px-2.5 py-1 text-[15px] font-bold text-slate-500 active:bg-slate-100 disabled:opacity-30">›</button>
+        </div>
+      </div>
+      {ngays.length === 0 && <p className="mb-2 rounded-xl border border-amber-300 bg-amber-50 px-3 py-2 text-[12px] text-amber-800">Lớp chưa có TKB hiệu lực quanh hôm nay — đang xem theo ngày hôm nay.</p>}
+      <TruocBuoiTab key={ngay} compact lopId={lop.id} ngayBuoi={ngay} mon={lop.mon} />
     </div>
   )
 }

@@ -8048,3 +8048,42 @@ dạng" với dropdown đúng 4 dạng thật của đề ET đang chấm → đ
 HS thật) → xác nhận lại ET (override `window.confirm` vì môi trường browser tool không có người bấm
 OK thật) để khôi phục đúng trạng thái "Đã xác nhận ET" ban đầu — không đổi Elo/EXP vì không có ô
 điểm nào bị sửa trong lúc test. Không lỗi console.
+
+## 2026-09-04 — App GV: fix chuông báo động không bấm được + thêm "Trước buổi" (worktree app-gv-truocbuoi)
+
+CEO: "① không ấn được chuông báo động trên app · ② thêm tính năng Trước buổi vào app". Worktree mới
+`.claude/worktrees/app-gv-truocbuoi` từ main 2f907c2 (main == origin/main, không có gì để kéo thêm).
+
+**① Chuông — nguyên nhân (soi DB thật, không đoán):** `canh_bao_yeu` **0 dòng `nguon='danhgia'`**
+từ khi có app GV (31/08) → chuông chưa từng ghi được. RLS `canh_bao_yeu_member_all` (la_thanh_vien)
+ổn, CHECK nguon có `danhgia` — không phải lỗi ghi. Lỗi ở UI: nút 🚨 `disabled={!dangBuoi.length}`
+(dạng của buổi = ma_dang gắn ở tab Bài trên lớp), mà **41/44 buổi từ 25/08 KHÔNG gắn dạng nào**
+(GV chấm ingame không gắn dạng — 10 bài/buổi đều `ma_dang null`) ⇒ chuông mờ ở gần như mọi buổi.
+Bài học: điều kiện "phải có dạng của buổi" là giả định của người viết code, không phải hành vi thật.
+**Sửa (`ChamBuoiGv.ChuongDo`):** nút luôn bấm được; popup = chip dạng-của-buổi (nếu có) để bấm nhanh
++ nút "Chọn dạng trong kho" mở `DangPickerOne` (khối/môn của lớp — cùng popup gắn dạng bài) → chọn
+bất kỳ dạng nào; tên dạng mới nạp qua `napTenDang`. Ghi chú vẫn BẮT BUỘC, nguon='danhgia' giữ nguyên.
+⚠ ERP desktop `DanhGiaTab` (BuoiHocScreen ~2161) VẪN `disabled={!dangs.length}` — cùng bệnh, chưa sửa
+(ngoài scope "trên app"), nên làm tương tự (AlertModal + DangPickerOne) đợt sau.
+
+**② Trước buổi trong app GV — tái dùng `TruocBuoiTab` của ERP (1 nguồn, thêm prop `compact`):**
+- `TruocBuoiTab` (screens/gami) thêm `compact`: bảng "Cả lớp" 900px → `ClassList` 1 thẻ/HS lưới 2×2
+  (BTVN trước · BTVN tháng · ET trước · ET TB tháng) + dạng yếu; bỏ font Lora (gv.html không nạp),
+  padding gọn. ERP không truyền prop → y nguyên. Dữ liệu/ngưỡng (TRUOCBUOI_CONFIG) không đổi.
+- 3 chỗ vào trong app: (a) `ChamBuoiGv` tab thứ 3 "Trước buổi" (buổi thật đã mở) · (b) `LopView` sub
+  đầu tiên "Trước buổi" trên BUỔI ẢO: ngày = buổi kế tiếp theo TKB (`ngayBuoiHopLeCuaLop` ±4 tuần,
+  chọn ngày đầu ≥ hôm nay), ‹ › nhảy giữa ngày hợp lệ — KHÔNG đẻ dòng buoi_hoc (như
+  TruocBuoiVirtualPanel ERP) · (c) trang chủ box "📋 Trước buổi": lớp mình có buổi HÔM NAY
+  (`buoiAoCuaNgay` lọc theo lớp phụ trách vai gv) mỗi lớp 1 hàng → mở tab Lớp đúng lớp + sub trước
+  buổi (`LopView` nhận `init`, GvHome đổi `key` để remount). Sub LopView đổi `flex-1`→`flex-auto` để
+  5 nút không gãy chữ ở 375px.
+- `.claude/launch.json` thêm `dev-gv` (npm run dev:gv). ⚠ Browser pane đọc launch.json của REPO GỐC,
+  không phải worktree → phiên này chạy vite tay port 5241 rồi preview_start theo url.
+
+**Verify:** tsc 0 · build:gv pass · live dev 5241 (login dev Admin + hack tạm mượn mọi lớp/`?buoi=`,
+ĐÃ GỠ trước commit): trang chủ box liệt kê 8 lớp có buổi hôm nay (T6) → bấm 12A1 mở đúng tab Lớp/
+Trước buổi ngày 04/09 (6/9 em cần để mắt, thẻ compact) · buổi 9C1 02/09 (0 dạng gắn): nút 🚨 KHÔNG
+còn disabled → popup → "Chọn dạng trong kho" → DangPickerOne Khối 9 → chọn "Giải hệ PT bậc nhất hai
+ẩn cơ bản" hiện đúng trên nút → gõ ghi chú → "Gửi báo động" bật → **Huỷ, KHÔNG gửi** (không ghi báo
+động giả lên HS thật) · tab Trước buổi trong ChamBuoiGv render đúng (BTVN buổi 23/08 3/4 em, 4/4 cần
+để mắt). Console 0 lỗi.
