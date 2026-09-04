@@ -227,7 +227,10 @@ function mtCauParts(no: number, c: CauHoi, gv: boolean, ch: CauHinh): { content:
       {c.anh_de && <img src={c.anh_de} alt="" className="pv-img" />}
       {gv && <GvAnswer c={c} />}
     </>),
-    lines: (!gv && !grid && form === 'tu_luan') ? nLines : 0,
+    // Dòng kẻ theo ô "dòng" GV đặt — KHÔNG chặn khi câu có ý con a)/b) (splitStem → `grid`). Trước đây
+    // `!grid` làm mọi câu tự luận nhiều ý (kiểu "Bác Lan có mảnh vườn… a) … b) …") in ra 0 dòng dù GV đã
+    // đặt 10 (Thùy 04/09, MT tháng 8 khối 7: "chọn tự luận và thêm dòng nhưng vẫn không thêm được dòng").
+    lines: (!gv && form === 'tu_luan') ? nLines : 0,
     hasImg: !!c.anh_de,
   }
 }

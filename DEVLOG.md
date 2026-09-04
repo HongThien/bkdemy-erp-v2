@@ -8116,3 +8116,11 @@ CHƯA nhìn tận mắt, Thùy bấm thử. Dev log có sẵn lỗi `virtual:pwa
 - Backfill 7 BTVN đang 'mo' (chỉ khi luật mới ra hạn). Verify: 12A1 (T6 15:00) → 13:00 · 12B1 (CN 14:00) → 12:00 ·
   12B1 sau CN → T4 19:30 → 17:30. Script `scripts/_chk_han_btvn.mjs` (SELECT; `fn` để thử hàm).
 - Commit chỉ migration + schema.md + script; DEVLOG để phiên đang sửa DuyetCham (lọc khối) commit chung, tránh trộn.
+
+## 2026-09-04 (tiếp) — MT/ET in: câu tự luận có ý con a)/b) không ra dòng kẻ dù đã đặt "dòng"
+- Thùy: "Có những câu đưa vào MT chọn trạng thái tự luận và thêm dòng nhưng vẫn ko thêm được dòng — đề MT tháng 8 khối 7".
+  Soi DB: `cau_hinh.btvnLinesByCau` ĐÃ lưu (vd T107010205065: 10) — lưu OK, lỗi ở lúc IN. `mtCauParts` (MTPrintView):
+  `lines = !gv && !grid && form==='tu_luan' ? n : 0` — `grid` = splitStem tách ý con "a) … b) …" (kiểu "Bác Lan có mảnh
+  vườn…") thành lưới → bị coi như lưới lựa chọn → ép 0 dòng. ETPrintView có đúng điều kiện `gv || grid ? 0` như vậy.
+- Sửa cả 2: bỏ `!grid` — GV đã chọn tự luận thì dòng theo ô "dòng" (mặc định 4), bản GV vẫn 0. Không đụng dữ liệu.
+- Chưa mở bản in để nhìn (cần login); tsc sạch. Script soi: `scripts/_chk_mt7_tuluan.mjs` (SELECT).
