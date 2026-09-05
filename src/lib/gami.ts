@@ -170,6 +170,24 @@ export async function huyBuoiCuaNgay(lopId: string, ngay: string, slot: { gio_ba
   if (error) throw error
 }
 
+// Mở lại buổi ĐÃ HUỶ (hủy nhầm). Đảo đúng đường đã hủy: trang_thai → mo, xoá lý do. Buổi hủy TRƯỚC khi mở
+// (dòng do huyBuoiCuaNgay đẻ, chưa có sĩ số, chưa có GV) thì seed y hệt moBuoi: GV chính của lớp + roster
+// từ ghi danh (qua dongBoSiSo — chỉ THÊM HS thiếu, nên buổi hủy SAU khi mở giữ nguyên điểm danh/chấm cũ).
+// Không xoá dòng để quay về "Chưa mở": giữ vết + tránh cấp lại id; kết quả = buổi "Đang mở".
+export async function moLaiBuoiDaHuy(buoiId: string): Promise<void> {
+  const { data: b, error } = await supabase.from('buoi_hoc').select('lop_id, trang_thai, nguoi_day').eq('id', buoiId).single()
+  if (error) throw error
+  if ((b as any).trang_thai !== 'huy') return
+  const patch: Record<string, unknown> = { trang_thai: 'mo', ly_do_huy: null, updated_at: new Date().toISOString() }
+  if (!(b as any).nguoi_day && (b as any).lop_id) {
+    const { data: pc } = await supabase.from('phan_cong_lop').select('nhan_su_id').eq('lop_id', (b as any).lop_id).eq('vai_tro', 'gv').eq('la_chinh', true).maybeSingle()
+    if ((pc as any)?.nhan_su_id) patch.nguoi_day = (pc as any).nhan_su_id
+  }
+  const { error: eUp } = await supabase.from('buoi_hoc').update(patch).eq('id', buoiId).eq('trang_thai', 'huy')
+  if (eUp) throw eUp
+  await dongBoSiSo(buoiId)
+}
+
 // ── Sĩ số + điểm danh (OPS) ───────────────────────────────────────
 export async function getRoster(buoiId: string): Promise<BuoiHocHS[]> {
   const { data, error } = await supabase.from('buoi_hoc_hs').select('*, hoc_sinh:hoc_sinh_id(ho_ten, ma_hs, anh_url)').eq('buoi_hoc_id', buoiId).limit(LIMIT)
@@ -647,6 +665,19 @@ export async function gradeETBulk(p: { buoiId: string; hocSinhId: string; proble
   if (error) throw error
 }
 
+// ET ONLINE → lưới chấm ET của buổi (Thùy 03/09: "dữ liệu ET HS làm từ điện thoại chưa đi thẳng vào
+// chỗ nhập liệu ET buổi học"). Toàn bộ ở DB — fn_et_online_dong_bo (mig 202609031709): verdict của
+// bai_lam_cau (đã nộp) → gami_grades phase='et', khớp ô↔câu qua ma_cau, ghi khoá nguồn
+// gami_grades.bai_lam_cau_id. KHÔNG ghi đè ô chấm tay (bai_lam_cau_id null) · KHÔNG đụng phase đã
+// đóng · HS nộp mà không trong roster buổi thì đếm `khongTrongBuoi` để người xem. Idempotent — gọi
+// mỗi lần mở tab ET (sau syncDocProblems để ô đã có) và khi GV bấm "Lấy lại".
+export type ETOnlineDongBo = { daDong?: boolean; khongCoTest?: boolean; hsNop?: number; moi?: number; capNhat?: number; giuTay?: number; khongKhopO?: number; khongTrongBuoi?: number }
+export async function dongBoETOnline(buoiId: string): Promise<ETOnlineDongBo> {
+  const { data, error } = await supabase.rpc('fn_et_online_dong_bo', { p_buoi: buoiId })
+  if (error) throw error
+  return (data ?? {}) as ETOnlineDongBo
+}
+
 // Bỏ chấm 1 ô (HS × bài): xoá dòng grade (anti-NULL: chưa đo = không có dòng). Dùng khi click lại mức đang chọn.
 export async function deleteGrade(problemId: string, hocSinhId: string): Promise<void> {
   const { error } = await supabase.from('gami_grades').delete().match({ problem_id: problemId, hoc_sinh_id: hocSinhId })
@@ -986,9 +1017,10 @@ export async function getMyTasks(): Promise<MyTask[]> {
     }
     return null
   }
-  // ⭐ ET ONLINE = auto-chấm ⇒ BỎ task "Chấm ET" của buổi đó (spec test-online §9).
-  // Điều kiện theo TỪNG BUỔI (lớp+ngày có `bai_test` loại 'et'), KHÔNG bỏ đại trà: ET giấy
-  // vẫn là đường chính, bỏ hết là TG mất task chấm thật.
+  // ⭐ ET ONLINE: máy chấm + tự đổ vào lưới (fn_et_online_dong_bo, 03/09) nhưng vẫn cần người
+  // bấm "Xác nhận ET" mới tính Elo/EXP + đóng buổi. Thùy 03/09: "Dữ liệu tự vào. TA chỉ cần bấm
+  // xác nhận để đóng như bình thường" ⇒ GIỮ task, chỉ đổi nhãn "Xác nhận ET (online)". (Trước
+  // đây bỏ hẳn task theo spec §9 — hậu quả: không ai vào tab, Elo ET online = 0 suốt từ đầu.)
   const etOnlineKeys = new Set<string>()
   {
     const { data: etTests } = await supabase.from('bai_test')
@@ -1011,10 +1043,10 @@ export async function getMyTasks(): Promise<MyTask[]> {
       if (!roles.has(vai)) continue
       for (const t of TASKS_BY_VAI[vai]) {
         if (seen.has(t.tab)) continue
-        // Buổi này đã phát hành ET online ⇒ máy chấm rồi, không còn việc chấm tay.
-        if (t.tab === 'et' && etOnlineKeys.has(`${b.lop_id}|${b.ngay}`)) { seen.add(t.tab); continue }
         seen.add(t.tab)
-        out.push({ buoiId: b.id, lopId: b.lop_id, lop: b.lop?.ten_lop ?? '?', ngay: b.ngay, vai, tab: t.tab, label: t.label, done: !!doneAtTab[t.tab], doneAt: doneAtTab[t.tab], deadline: deadlineOf(t.tab) })
+        // Buổi có ET online: máy đã chấm + đổ lưới, việc còn lại là bấm xác nhận — nhãn nói rõ để TA khỏi đi tìm bài giấy.
+        const label = t.tab === 'et' && etOnlineKeys.has(`${b.lop_id}|${b.ngay}`) ? 'Xác nhận ET (online)' : t.label
+        out.push({ buoiId: b.id, lopId: b.lop_id, lop: b.lop?.ten_lop ?? '?', ngay: b.ngay, vai, tab: t.tab, label, done: !!doneAtTab[t.tab], doneAt: doneAtTab[t.tab], deadline: deadlineOf(t.tab) })
       }
       // MT — CHỈ khi buổi này thật sự có gán MT (mtKeys). TG chấm (giống ET); GV không có task riêng.
       if (vai === 'tg' && mtKeys.has(`${b.lop_id}|${b.ngay}`) && !seen.has('mt')) {

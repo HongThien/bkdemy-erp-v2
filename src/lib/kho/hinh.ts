@@ -1092,6 +1092,36 @@ export async function giaiBienTheAI(id: string, loiGiai: string): Promise<void> 
   if (error) throw error
 }
 
+// ══ TAB "CHƯA CÓ LỜI GIẢI" — nhánh HÌNH (Thùy 04/09: "cuối cùng vẫn là từng bài một"; mig 202609041826/1835) ══
+// 1 "bài" = bài toán gốc (node — chưa có cách giải nào có nội dung) HOẶC biến thể (chưa có loi_giai/anh_loi_giai).
+// List/đặt/ghi đều là function Postgres; đề = giả thiết mô hình + phát biểu, khối = mô hình.
+export type HinhLoaiBai = 'baitoan' | 'bien_the'
+export type HinhChuaGiai = {
+  loai: HinhLoaiBai; id: string; ma: string; khoi: string; mo_hinh_ma: string; mo_hinh_ten: string
+  gia_thiet: string; de_bai: string; anh: string | null; kieu: string | null; created_at: string
+  yeu_cau_id: string | null; yeu_cau_at: string | null; yeu_cau_ghi_chu: string | null
+}
+export async function listHinhChuaGiai(khoi: string): Promise<HinhChuaGiai[]> {
+  const { data, error } = await supabase.rpc('fn_hinh_cau_chua_giai', { p_khoi: khoi, p_limit: LIMIT })
+  if (error) throw error
+  return (data ?? []) as HinhChuaGiai[]
+}
+export async function datClaudeGiaiHinh(loai: HinhLoaiBai, ids: string[], ghiChu: string, nguoiYeuCau: string): Promise<number> {
+  const { data, error } = await supabase.rpc('fn_hinh_dat_giai', { p_loai: loai, p_ids: ids, p_ghi_chu: ghiChu, p_nguoi: nguoiYeuCau })
+  if (error) throw error
+  return Number(data ?? 0)
+}
+export async function huyYeuCauGiaiHinh(loai: HinhLoaiBai, yeuCauId: string): Promise<void> {
+  const tbl = loai === 'baitoan' ? 'hinh_baitoan_yeu_cau_giai' : 'hinh_bien_the_yeu_cau_giai'
+  const { error } = await supabase.from(tbl).delete().eq('id', yeuCauId).is('xu_ly_at', null)
+  if (error) throw error
+}
+// Người tự giải: 1 RPC transactional — node: điền vào cách giải rỗng sẵn có / tạo cách mặc định; biến thể: update.
+export async function luuLoiGiaiNguoiHinh(loai: HinhLoaiBai, id: string, a: { loiGiai: string | null; anh: string | null }): Promise<void> {
+  const { error } = await supabase.rpc('fn_hinh_luu_loi_giai_nguoi', { p_loai: loai, p_id: id, p_loi_giai: a.loiGiai, p_anh: a.anh })
+  if (error) throw error
+}
+
 // Cho màn "Duyệt lời giải AI" gộp (xem api.ts listCauChoDuyetLoiGiai cho Đại/KHTN/HGT) — Hình
 // bảng khác hẳn (bien_the, không phải cau_hoi) nên hàm riêng, KHÔNG ép vào registry chung.
 // chiMoi: true = chỉ lời giải MỚI (giai_method='claude_code') · false/undefined = backlog cũ.

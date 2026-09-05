@@ -560,3 +560,20 @@ export function holdQuaHan(ngayHold: string | null): boolean {
   if (!ngayHold) return false
   return Math.floor(soNgayLech(ngayHold.slice(0, 10), todayVN()) / 7) >= GV.HOLD_CANH_BAO_TUAN
 }
+
+// ════════════════════════════════════════════════════════════════════════════
+// 8) APP PHÁT TRIỂN (pt) — việc CẦN CẬP NHẬT TÌNH TRẠNG hôm nay (mig 202609051300)
+// ════════════════════════════════════════════════════════════════════════════
+// Derive ở DB (fn_pt_viec_hom_nay): việc tôi đang cầm (moi_giao/dang_lam/tra_lai, không phải
+// mẹ-có-con) + cờ "đã có viec_cap_nhat trong ngày VN". Chỉ tab Hôm nay dùng — push 10:30 là
+// tin chung, không đọc danh sách này.
+export type ViecHomNay = {
+  id: string; tieu_de: string; trang_thai: TrangThaiViec; deadline: string | null; task_me_id: string | null
+  qua_han: boolean; da_cap_nhat_hom_nay: boolean; cap_nhat_cuoi_at: string | null
+  tien_do_bao_cao: number | null; so_ngay_im: number
+}
+export async function listViecHomNay(): Promise<ViecHomNay[]> {
+  const { data, error } = await supabase.rpc('fn_pt_viec_hom_nay')
+  if (error) throw error
+  return (data ?? []) as ViecHomNay[]
+}

@@ -31,5 +31,23 @@ dist-gv/
 # build output app BK Chi (như dist-ops)
 dist-chi/
 
+# APK Android (Capacitor) — keystore ký release + mật khẩu KHÔNG commit; build output gradle
+android/keystore/
+android/keystore.properties
+android/app/build/
+android/build/
+android/.gradle/
+android/local.properties
+android/app/src/main/assets/public/
+android/app/src/main/assets/capacitor.config.json
+android/capacitor-cordova-android-plugins/
+android/.idea/
+*.apk
+*.aab
+apk/
+
+# build output app Phát triển (pt) — như dist-ta
+dist-pt/
+
 # build output tool SOẠN THẢO (như dist-ops)
 dist-soan/

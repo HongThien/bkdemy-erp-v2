@@ -4,7 +4,9 @@
 // Ingame port gần nguyên từ app TA (ChamBuoi.tsx) đổi tông lá cây; DanhGiaPanel VIẾT MỚI:
 // mức 1-5 + nhãn muc_ma + verdict Đ/C/S per dạng + nhận xét + 🚨 CHUÔNG ĐỎ bổ trợ
 // (nguon='danhgia', ghi chú BẮT BUỘC — CEO 31/08; kênh "báo động vào thẳng" luật duyệt bổ trợ ≥2/4).
+// Tab thứ 3 "Trước buổi" (CEO 04/09) = TruocBuoiTab dùng chung với ERP (compact cho điện thoại).
 import { useEffect, useState } from 'react'
+import TruocBuoiTab from '../gami/TruocBuoiTab'
 import {
   getBuoi, getRoster, getDangTen, listProblems, listGrades, addProblem, setProblemDang,
   ensureProblems, gradeMuc, deleteGrade, closePhase, reopenPhase,
@@ -35,9 +37,9 @@ const DG_SCORES: { v: DanhGiaDiem; lbl: string; sel: string }[] = [
 const MUC_REF = (muc?: number | null) => muc == null ? 'bg-slate-100 text-slate-300'
   : muc >= 4 ? 'bg-emerald-100 text-emerald-700' : muc === 3 ? 'bg-amber-100 text-amber-700' : 'bg-rose-100 text-rose-700'
 
-type TabKey = 'ingame' | 'danhgia'
+type TabKey = 'ingame' | 'danhgia' | 'truocbuoi'
 const TABS: { key: TabKey; label: string }[] = [
-  { key: 'ingame', label: 'Bài trên lớp' }, { key: 'danhgia', label: 'Đánh giá' },
+  { key: 'ingame', label: 'Bài trên lớp' }, { key: 'danhgia', label: 'Đánh giá' }, { key: 'truocbuoi', label: 'Trước buổi' },
 ]
 
 export type BuoiFull = BuoiHoc & { lop?: { ten_lop: string; mon: string; khoi: string | null }; gv_chinh_id: string | null }
@@ -92,6 +94,9 @@ export default function ChamBuoiGv({ view, onBack }: { view: BuoiViewGv; onBack:
             <>
               {tab === 'ingame' && <IngamePanel buoi={buoi} roster={roster} tenDang={tenDang} napTenDang={napTenDang} onChange={reload} />}
               {tab === 'danhgia' && <DanhGiaPanel buoi={buoi} roster={roster} tenDang={tenDang} napTenDang={napTenDang} onChange={reload} />}
+              {tab === 'truocbuoi' && (buoi.lop_id
+                ? <TruocBuoiTab compact lopId={buoi.lop_id} ngayBuoi={buoi.ngay} mon={buoi.lop?.mon ?? ''} />
+                : <p className="text-[13px] text-slate-400">Buổi này không gắn lớp — không có "Trước buổi".</p>)}
             </>
           )}
         </div>
@@ -289,7 +294,8 @@ function DanhGiaPanel({ buoi, roster, tenDang, napTenDang, onChange }: {
             <div key={r.id} className="rounded-2xl border border-slate-200/70 bg-white p-3">
               <div className="mb-2 flex flex-wrap items-center gap-1.5">
                 <span className="min-w-0 flex-1 truncate text-[14px] font-bold text-slate-800">{tenHT[i]}</span>
-                <ChuongDo buoiId={buoiId} hsId={hsId} hsTen={tenHT[i]} dangBuoi={dangs} tenDang={tenDang} cb={cbHs} onChanged={reload} />
+                <ChuongDo buoiId={buoiId} hsId={hsId} hsTen={tenHT[i]} dangBuoi={dangs} khoi={buoi.lop?.khoi ?? ''} mon={buoi.lop?.mon}
+                  tenDang={tenDang} napTenDang={napTenDang} cb={cbHs} onChanged={reload} />
               </div>
               {dangs.length > 0 && (
                 <div className="mb-2 flex flex-col gap-1.5">
@@ -384,31 +390,50 @@ function MucPicker({ hsTen, muc, mucMa, disabled, onPick }: {
 // 🚨 chuông đỏ "HS kém dạng" ngay trong đánh giá (CEO 31/08) — tín hiệu NGƯỜI-confirm, KHÔNG vào
 // điểm; nguon='danhgia' chảy thẳng vào luật duyệt bổ trợ (≥2/4 kênh HOẶC báo động). Khác chuông
 // BTVN của TA: GHI CHÚ BẮT BUỘC (chốt 31/08 — GV phải nói kém chỗ nào).
-function ChuongDo({ buoiId, hsId, hsTen, dangBuoi, tenDang, cb, onChanged }: {
-  buoiId: string; hsId: string; hsTen: string; dangBuoi: string[]; tenDang: (md: string | null) => string
+// ⭐ Fix 04/09 (CEO: "không ấn được chuông"): nút từng `disabled` khi buổi chưa gắn dạng ở tab Bài trên
+// lớp — mà thực tế 41/44 buổi từ 25/08 KHÔNG gắn dạng nào ⇒ chuông chết gần như mọi buổi (0 dòng
+// nguon='danhgia' trong DB). Giờ luôn bấm được: dạng của buổi (nếu có) = chip bấm nhanh, còn lại chọn
+// bất kỳ dạng nào trong kho khối/môn qua DangPickerOne (cùng popup với gắn dạng bài).
+function ChuongDo({ buoiId, hsId, hsTen, dangBuoi, khoi, mon, tenDang, napTenDang, cb, onChanged }: {
+  buoiId: string; hsId: string; hsTen: string; dangBuoi: string[]; khoi: string; mon?: string
+  tenDang: (md: string | null) => string; napTenDang: (mds: (string | null)[]) => Promise<void>
   cb: CanhBao[]; onChanged: () => void
 }) {
   const [mo, setMo] = useState(false)
-  const [maDang, setMaDang] = useState(dangBuoi[0] ?? '')
+  const [pick, setPick] = useState(false)
+  const [maDang, setMaDang] = useState('')
   const [ghiChu, setGhiChu] = useState('')
   const [busy, setBusy] = useState(false)
+  const dangNgoai = !!maDang && !dangBuoi.includes(maDang) // dạng chọn từ kho, không thuộc buổi
   return (
     <div className="flex flex-wrap items-center gap-1.5">
       {cb.map((c) => (
-        <span key={c.id} className="inline-flex items-center gap-1 rounded bg-rose-100 px-1.5 py-1 text-[10.5px] font-semibold text-rose-700">{tenDang(c.ma_dang)}
+        <span key={c.id} className="inline-flex items-center gap-1 rounded bg-rose-100 px-1.5 py-1 text-[10.5px] font-semibold text-rose-700" title={c.ghi_chu ?? ''}>{tenDang(c.ma_dang)}
           <button onClick={async () => { await xoaCanhBao(c.id); onChanged() }} className="text-rose-400">✕</button></span>
       ))}
-      <button onClick={() => { setMaDang(dangBuoi[0] ?? ''); setMo(true) }} disabled={!dangBuoi.length}
-        title={dangBuoi.length ? undefined : 'Gắn dạng ở tab Bài trên lớp trước'}
-        className="min-h-[38px] rounded-lg border border-rose-200 px-2.5 text-[12.5px] font-semibold text-rose-600 active:bg-rose-50 disabled:opacity-40">🚨 Báo bổ trợ</button>
+      <button onClick={() => { setMaDang(dangBuoi[0] ?? ''); setGhiChu(''); setMo(true) }}
+        className="min-h-[38px] rounded-lg border border-rose-200 px-2.5 text-[12.5px] font-semibold text-rose-600 active:bg-rose-50">🚨 Báo bổ trợ</button>
       {mo && (
         <div className="fixed inset-0 z-50 flex items-end justify-center bg-slate-900/40 p-3 sm:items-center" onClick={() => setMo(false)}>
           <div className="w-full max-w-[440px] rounded-2xl bg-white p-4 shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <p className="mb-1 text-[14px] font-bold text-slate-900">🚨 {hsTen} đang kém dạng</p>
             <p className="mb-2 text-[11.5px] text-slate-400">Tín hiệu này KHÔNG vào điểm — hệ thống dùng để xét bổ trợ cho con.</p>
-            <select value={maDang} onChange={(e) => setMaDang(e.target.value)} className="mb-2 h-10 w-full rounded-lg border border-slate-300 px-2 text-[13px]">
-              {dangBuoi.map((md) => <option key={md} value={md}>{tenDang(md)}</option>)}
-            </select>
+            <p className="mb-1 text-[11.5px] font-semibold text-slate-500">Kém dạng nào?{dangBuoi.length ? <span className="font-normal text-slate-400"> · dạng của buổi này:</span> : null}</p>
+            {dangBuoi.length > 0 && (
+              <div className="mb-1.5 flex flex-wrap gap-1.5">
+                {dangBuoi.map((md) => (
+                  <button key={md} onClick={() => setMaDang(md)}
+                    className={`min-h-[36px] max-w-full rounded-lg border px-2.5 text-left text-[12.5px] font-medium ${maDang === md ? 'border-rose-500 bg-rose-50 text-rose-700' : 'border-slate-200 text-slate-600 active:bg-slate-50'}`}>
+                    <span className="line-clamp-2">{tenDang(md)}</span></button>
+                ))}
+              </div>
+            )}
+            <button onClick={() => setPick(true)}
+              className={`mb-2 flex min-h-[44px] w-full items-center gap-2 rounded-lg border px-2.5 text-left ${dangNgoai ? 'border-rose-500 bg-rose-50' : 'border-slate-300'}`}>
+              <span className={`min-w-0 flex-1 text-[13px] leading-snug ${dangNgoai ? 'font-medium text-rose-700' : 'text-slate-400'}`}>
+                {dangNgoai ? tenDang(maDang) : dangBuoi.length ? '… hoặc chọn dạng khác trong kho' : 'Chọn dạng trong kho'}</span>
+              <span className="shrink-0 text-slate-300">▾</span>
+            </button>
             <textarea value={ghiChu} onChange={(e) => setGhiChu(e.target.value)} placeholder="Ghi chú (bắt buộc): con kém chỗ nào, biểu hiện gì…" className="mb-3 h-20 w-full rounded-lg border border-slate-300 px-2 py-1 text-[13px]" />
             <div className="flex justify-end gap-2">
               <button onClick={() => setMo(false)} className="min-h-[40px] rounded-lg px-3 text-[13px] text-slate-500">Huỷ</button>
@@ -421,6 +446,8 @@ function ChuongDo({ buoiId, hsId, hsTen, dangBuoi, tenDang, cb, onChanged }: {
           </div>
         </div>
       )}
+      {pick && <DangPickerOne khoi={khoi} mon={mon} onClose={() => setPick(false)}
+        onPick={async (md) => { setPick(false); setMaDang(md); await napTenDang([md]) }} />}
     </div>
   )
 }

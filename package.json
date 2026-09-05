@@ -33,10 +33,17 @@
     "kiem:congthuc": "vite-node scripts/kiem-cong-thuc-ro.ts",
     "dev:soan": "vite --config vite.config.soan.ts",
     "build:soan": "vite build --config vite.config.soan.ts",
-    "preview:soan": "vite preview --config vite.config.soan.ts --outDir dist-soan"
+    "preview:soan": "vite preview --config vite.config.soan.ts --outDir dist-soan",
+    "apk": "node scripts/android/build-apk.mjs",
+    "apk:icons": "node scripts/android/gen-icons.mjs",
+    "dev:pt": "vite --config vite.config.pt.ts",
+    "build:pt": "vite build --config vite.config.pt.ts",
+    "preview:pt": "vite preview --config vite.config.pt.ts --outDir dist-pt"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.113.0",
+    "@capacitor/android": "^8.5.1",
+    "@capacitor/core": "^8.5.1",
     "@supabase/supabase-js": "^2.45.0",
     "html-to-image": "^1.11.13",
     "html2canvas": "^1.4.1",
@@ -50,9 +57,11 @@
     "qrcode": "^1.5.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "web-push": "^3.6.7",
     "zustand": "^5.0.14"
   },
   "devDependencies": {
+    "@capacitor/cli": "^8.5.1",
     "@napi-rs/canvas": "^0.1.100",
     "@tailwindcss/vite": "^4.0.0",
     "@types/node": "^22.10.0",

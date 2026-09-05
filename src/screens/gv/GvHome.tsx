@@ -9,12 +9,12 @@ import { supabase } from '../../lib/supabase'
 import type { MyProfile } from '../../lib/nhansu'
 import type { Lop } from '../../lib/nhansu'
 import type { MyQuyen } from '../../lib/quyen'
-import { getMyTasks, type MyTask } from '../../lib/gami'
+import { getMyTasks, buoiAoCuaNgay, type MyTask, type BuoiAo } from '../../lib/gami'
 import { gvDashboard, type GvDash } from '../../lib/gvdash'
 import { homNayVN, ddmmVN, thuCuaNgay, mucDeadline, nhanConLai } from '../../lib/tuan'
 import ChamBuoiGv from './ChamBuoiGv'
 import HocSinhView from './HocSinhView'
-import LopView from './LopView'
+import LopView, { type LopSubKey } from './LopView'
 import DashGv from './DashGv'
 import GopY from './GopY'
 
@@ -44,6 +44,9 @@ export default function GvHome({ profile, quyen }: { profile: MyProfile; quyen: 
   const [tasks, setTasks] = useState<MyTask[]>([])
   const [now, setNow] = useState(() => Date.now())
   const [dashTom, setDashTom] = useState<GvDash | null>(null)
+  // Buổi ẢO hôm nay của lớp mình (TKB) → box "Trước buổi" trang chủ; bấm = mở tab Lớp đúng lớp + sub trước buổi.
+  const [buoiHomNay, setBuoiHomNay] = useState<BuoiAo[]>([])
+  const [lopInit, setLopInit] = useState<{ lopId: string; sub: LopSubKey; n: number } | null>(null)
   const coQuyen = quyen.laAdmin || quyen.chucNang.includes('buoihoc') // cùng leaf với tab chấm bên ERP
 
   // Lớp phụ trách vai GV (chốt ④) — nguồn cho tab Học sinh + Lớp.
@@ -62,7 +65,9 @@ export default function GvHome({ profile, quyen }: { profile: MyProfile; quyen: 
       setTasks(all.filter((x) => x.vai === 'gv' && (x.tab === 'danhgia' || x.tab === 'ingame')))
     } finally { setLoading(false) }
     gvDashboard(homNay.slice(0, 7)).then(setDashTom).catch(() => setDashTom(null)) // best-effort, không chặn trang chủ
+    buoiAoCuaNgay(homNay).then((all) => setBuoiHomNay(all.filter((b) => seenLop.has(b.lop.id)))).catch(() => setBuoiHomNay([]))
   }
+  function moTruocBuoi(lopId: string) { setLopInit({ lopId, sub: 'truocbuoi', n: Date.now() }); setTab('lop') }
   useEffect(() => { reload() }, []) // eslint-disable-line
   useEffect(() => { const id = setInterval(() => setNow(Date.now()), 60000); return () => clearInterval(id) }, [])
   useEffect(() => {
@@ -80,10 +85,11 @@ export default function GvHome({ profile, quyen }: { profile: MyProfile; quyen: 
   return (
     <div className="flex h-[100dvh] flex-col bg-[#f5f5f7]" style={{ fontFamily: "'Be Vietnam Pro', 'Segoe UI', system-ui, sans-serif" }}>
       <div className="min-h-0 flex-1 overflow-auto">
-        {tab === 'home' && <TrangChu profile={profile} homNay={homNay} loading={loading} coQuyen={coQuyen} tasks={tasks} canLam={canLam} noCua={noCua} now={now} onGo={setTab} dashTom={dashTom} />}
+        {tab === 'home' && <TrangChu profile={profile} homNay={homNay} loading={loading} coQuyen={coQuyen} tasks={tasks} canLam={canLam} noCua={noCua} now={now} onGo={setTab} dashTom={dashTom}
+          buoiHomNay={buoiHomNay} coLop={lopsGv.length > 0} onTruocBuoi={moTruocBuoi} />}
         {tab === 'viec' && <ViecTab tasks={tasks} now={now} homNay={homNay} onOpen={setView} />}
         {tab === 'hs' && <HocSinhView lops={lopsGv} />}
-        {tab === 'lop' && <LopView lops={lopsGv} />}
+        {tab === 'lop' && <LopView key={lopInit?.n ?? 0} lops={lopsGv} init={lopInit} />}
         {tab === 'dash' && <DashGv />}
       </div>
       {/* Nút 🐞 chuyển vào HeaderBar trang chủ (góc trên phải) — CEO 31/08: nổi đè mọi màn vướng thao tác. */}
@@ -132,10 +138,10 @@ function HeaderBar({ profile, sub }: { profile: MyProfile; sub: string }) {
 }
 
 // ── TRANG CHỦ: hero mỏng + box dashboard + 2 box nghiệp vụ ──
-function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now, onGo, dashTom }: {
+function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now, onGo, dashTom, buoiHomNay, coLop, onTruocBuoi }: {
   profile: MyProfile; homNay: string; loading: boolean; coQuyen: boolean
   tasks: MyTask[]; canLam: MyTask[]; noCua: (k: NvKey) => number; now: number; onGo: (t: TabKey) => void
-  dashTom: GvDash | null
+  dashTom: GvDash | null; buoiHomNay: BuoiAo[]; coLop: boolean; onTruocBuoi: (lopId: string) => void
 }) {
   const tenGoi = (profile.nhanSu.ho_ten ?? '').trim().split(/\s+/).pop() || 'bạn'
   const quaHan = canLam.filter((t) => mucDeadline(t.deadline, now) === 'qua_han').length
@@ -157,6 +163,8 @@ function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now
         </div>
 
         {!loading && coQuyen && <BoxDashThang d={dashTom} onGo={() => onGo('dash')} />}
+
+        {!loading && coLop && <BoxTruocBuoi buoi={buoiHomNay} onOpen={onTruocBuoi} onGoLop={() => onGo('lop')} />}
 
         {!loading && coQuyen && (
           <div className="grid grid-cols-1 items-start gap-3 sm:grid-cols-2">
@@ -218,6 +226,35 @@ function BoxDashThang({ d, onGo }: { d: GvDash | null; onGo: () => void }) {
         </div>
       )}
     </button>
+  )
+}
+
+// Box "📋 Trước buổi hôm nay" (CEO 04/09): lớp mình có buổi HÔM NAY theo TKB (buổi ảo — chưa cần OPS mở),
+// mỗi lớp 1 hàng → mở tab Lớp đúng lớp, sub Trước buổi. Không có buổi → đường tắt sang tab Lớp.
+function BoxTruocBuoi({ buoi, onOpen, onGoLop }: { buoi: BuoiAo[]; onOpen: (lopId: string) => void; onGoLop: () => void }) {
+  const rows = [...buoi].sort((a, b) => a.slot.gio_bat_dau.localeCompare(b.slot.gio_bat_dau) || a.lop.ten_lop.localeCompare(b.lop.ten_lop, 'vi'))
+  return (
+    <div className="mb-3 rounded-2xl border border-slate-200/70 bg-white p-3.5 shadow-sm">
+      <button onClick={onGoLop} className="flex w-full items-center gap-2.5 text-left">
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-violet-50 text-[21px]">📋</span>
+        <div className="min-w-0 flex-1">
+          <p className="text-[15px] font-bold text-slate-800">Trước buổi</p>
+          <p className="text-[12px] text-slate-400">{rows.length ? `Hôm nay ${rows.length} lớp có buổi — xem tình hình lớp trước giờ dạy` : 'Hôm nay lớp bạn không có buổi · xem lớp khác ở tab Lớp'}</p>
+        </div>
+        <span className="text-slate-300">›</span>
+      </button>
+      {rows.length > 0 && (
+        <div className="mt-2.5 flex flex-col gap-1.5">
+          {rows.map((b) => (
+            <button key={b.lop.id} onClick={() => onOpen(b.lop.id)} className="flex items-center gap-2 rounded-xl bg-slate-50 px-3 py-2 text-left active:bg-slate-100">
+              <span className="text-[13px] font-semibold text-slate-800">{b.lop.ten_lop}</span>
+              <span className="min-w-0 truncate text-[11.5px] text-slate-400">{b.lop.mon} · {b.slot.gio_bat_dau.slice(0, 5)}{b.slot.phong ? ` · ${b.slot.phong}` : ''}</span>
+              <span className="ml-auto shrink-0 text-[11.5px] font-semibold text-violet-600">Xem ›</span>
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
   )
 }
 

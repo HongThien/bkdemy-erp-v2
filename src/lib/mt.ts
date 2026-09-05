@@ -102,7 +102,7 @@ async function bacTheoCau(master: TaiLieuFull): Promise<Record<string, string>> 
 }
 
 // ── GÁN VÀO BUỔI (lớp+ngày cụ thể) ───────────────────────────────────────
-export type GanMTKetQua = { buoiId: string; taiLieuId: string; buoiMoi: boolean; soCauLoai: number; soBaiHinh: number }
+export type GanMTKetQua = { buoiId: string; taiLieuId: string; buoiMoi: boolean; soCauLoai: number; soBaiHinh: number; lopChuaCoBac: boolean }
 // Tìm/tạo buổi_hoc(loai='thuong', lop_id, ngay) — QUA `moBuoi` (giống hệt OPS "Mở buổi" thường, kể cả
 // seed sĩ số) — rồi tạo doc con bám (lớp+ngày) copy từ master (xoá-rồi-tạo nếu re-gán, cùng nguyên tắc
 // "doc vận hành 1-1 (lớp+ngày+loại)" như trichXuatBuoi).
@@ -137,7 +137,13 @@ export async function ganMTVaoBuoi(masterId: string, opts: { lopId: string; ngay
   const lopBacs = await listLopBac() // desc thu_tu: S,A,B,C
   const { data: lopRow } = await supabase.from('lop').select('bac').eq('id', opts.lopId).single()
   const thuTuCua = (ma: string | null | undefined) => lopBacs.find((b) => b.ma === ma)?.thu_tu ?? 0
-  const lopThuTu = thuTuCua((lopRow as { bac?: string } | null)?.bac)
+  // ⚠ BUG THẬT 04/09 (Thùy: "9K1 MT bị lỗi trắng file"): lớp CHƯA xếp bậc (`lop.bac` null — 9K1 KHTN) ⇒
+  // lopThuTu = 0 ⇒ mọi câu (bậc thấp nhất C = thu_tu 1) đều "nâng cao hơn lớp" ⇒ loại HẾT ⇒ doc con 0 phần
+  // ⇒ in trắng, không một lời báo. §1.5: NULL = "KHÔNG áp dụng" ⇒ lớp không có bậc = KHÔNG lọc theo bậc
+  // (giữ nguyên đề), trả cờ `lopChuaCoBac` để UI nói ra; xếp bậc cho lớp rồi gán lại thì lọc như thường.
+  const lopBac = (lopRow as { bac?: string | null } | null)?.bac ?? null
+  const lopChuaCoBac = !lopBac || !lopBacs.some((b) => b.ma === lopBac)
+  const lopThuTu = thuTuCua(lopBac)
   const bacMap = await bacTheoCau(master) // ma_cau → bac_toi_thieu (theo đúng nhánh kho của từng câu)
 
   // ⚠ BUG THẬT 07-13 (Thùy: "gán MT vẫn ko được" — báo thành công nhưng vào xem vẫn thiếu nội dung):
@@ -189,8 +195,9 @@ export async function ganMTVaoBuoi(masterId: string, opts: { lopId: string; ngay
     // Có ép tay → cả PHẦN theo 1 quyết định (đủ tư cách thì giữ NGUYÊN mọi câu, không thì loại HẾT).
     // Không ép → suy TỪNG CÂU theo bậc dạng của chính câu đó (mặc định).
     const giu = p.maCaus.filter((ma) => {
-      if (laMaHinh(ma)) return hinhByMa[ma] ? (!ep || thuTuCua(ep) <= lopThuTu) : false
+      if (laMaHinh(ma)) return hinhByMa[ma] ? (lopChuaCoBac || !ep || thuTuCua(ep) <= lopThuTu) : false
       if (!coCau.has(ma)) return false
+      if (lopChuaCoBac) return true // lớp chưa xếp bậc → không lọc (xem ghi chú lopChuaCoBac)
       return ep ? thuTuCua(ep) <= lopThuTu : thuTuCua(bacMap[ma] ?? 'C') <= lopThuTu
     })
     soCauLoai += p.caus.length - giu.filter((ma) => !laMaHinh(ma)).length
@@ -209,7 +216,7 @@ export async function ganMTVaoBuoi(masterId: string, opts: { lopId: string; ngay
   for (const ma of maHinhGiu) { const h = hinhByMa[ma]; cheDo[ma] = h.cheDo ?? 'hien'; if (h.soDong != null) soDong[ma] = h.soDong }
   const soBaiHinh = await ganHinhMTVaoBuoi(opts.lopId, opts.ngay, { picks: maHinhGiu.map((ma) => pickCuaHinhRow(ma, hinhByMa[ma])), cheDo, soDong }, master.taiLieu.cau_hinh?.hinhMaDe ?? {})
 
-  return { buoiId: buoiId!, taiLieuId: docCon.id, buoiMoi, soCauLoai, soBaiHinh }
+  return { buoiId: buoiId!, taiLieuId: docCon.id, buoiMoi, soCauLoai, soBaiHinh, lopChuaCoBac }
 }
 
 // Các lượt đã gán của 1 MT master (hiện trong editor: "Đã gán cho: 9A1 · 12/07…"). buoiId = buổi

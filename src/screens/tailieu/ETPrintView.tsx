@@ -316,7 +316,9 @@ function ETDoc({ ten, caus, ch, gv, badge, hoTen }: { ten: string; caus: CauHoi[
                   {c.anh_de && <img src={c.anh_de} alt="" className="pv-img" />}
                   {gv && <GvAnswer c={c} />}
                 </>),
-                lines: gv || grid ? 0 : (lines[c.ma_cau] ?? (run.g === 1 ? DEFAULT_TLN_LINES : DEFAULT_TL_LINES)),
+                // Cùng bug MT 04/09: `grid` (ý con a)/b) trong đề) từng chặn dòng kẻ của câu tự luận — bỏ điều kiện,
+                // dòng theo ô "dòng" GV đặt. Bản GV vẫn 0 dòng.
+                lines: gv ? 0 : (lines[c.ma_cau] ?? (run.g === 1 ? DEFAULT_TLN_LINES : DEFAULT_TL_LINES)),
                 hasImg: !!c.anh_de,
               }
             })} />

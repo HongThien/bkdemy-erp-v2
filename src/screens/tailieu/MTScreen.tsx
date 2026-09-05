@@ -677,7 +677,9 @@ function GanBuoiModal({ mtId, mon, ganList, onClose, onDone }: { mtId: string; m
       useStore.getState().enqueueLinkGen(kq.taiLieuId, 'mt_buoi')
       const loaiMsg = kq.soCauLoai > 0 ? ` (đã tự loại ${kq.soCauLoai} câu nâng cao — lớp này không đủ tư cách theo bậc dạng ở bản đồ kiến thức)` : ''
       const hinhMsg = kq.soBaiHinh > 0 ? ` Kèm ${kq.soBaiHinh} bài Hình (mô hình).` : ''
-      setRes({ ok: true, msg: (kq.buoiMoi ? 'Đã tạo buổi mới + gán nội dung MT.' : 'Đã gán nội dung MT vào buổi có sẵn (lớp+ngày này đã có buổi).') + loaiMsg + hinhMsg + ' Chấm ở tab "🏆 MT" trong buổi (Buổi học/Việc của tôi).' })
+      // Lớp chưa xếp bậc (lop.bac trống) → không lọc câu nâng cao, giữ nguyên đề — nói ra để người biết (04/09: 9K1).
+      const bacMsg = kq.lopChuaCoBac ? ' ⚠ Lớp này CHƯA xếp bậc (S/A/B/C) nên giữ nguyên toàn bộ đề, không lọc câu nâng cao — xếp bậc ở Quản lý lớp rồi gán lại nếu cần lọc.' : ''
+      setRes({ ok: true, msg: (kq.buoiMoi ? 'Đã tạo buổi mới + gán nội dung MT.' : 'Đã gán nội dung MT vào buổi có sẵn (lớp+ngày này đã có buổi).') + loaiMsg + hinhMsg + bacMsg + ' Chấm ở tab "🏆 MT" trong buổi (Buổi học/Việc của tôi).' })
     } catch (e: any) { setRes({ ok: false, msg: e.message ?? String(e) }) } finally { setBusy(false) }
   }
   return (

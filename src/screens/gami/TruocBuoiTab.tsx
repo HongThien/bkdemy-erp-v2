@@ -38,9 +38,12 @@ const OB_SQ: Record<TrangThaiNop, React.CSSProperties> = { nop_dung_han: C.sqOk,
 const ddmm = (ngay: string) => { const [, m, d] = ngay.split('-'); return `${d}/${m}` }
 const initials = (ten: string): string => { const parts = ten.trim().split(/\s+/).filter(Boolean); return parts.slice(-2).map((p) => p[0]?.toUpperCase() ?? '').join('') || '?' }
 
-export default function TruocBuoiTab({ lopId, ngayBuoi, mon }: { lopId: string; ngayBuoi: string; mon: string }) {
+// `compact` = app GIÁO VIÊN trên điện thoại (04/09): cùng dữ liệu/ngưỡng, chỉ đổi cách bày —
+// bảng "Cả lớp" 900px thành danh sách thẻ 1 HS/hàng, bỏ font Lora (gv.html không nạp), padding gọn.
+export default function TruocBuoiTab({ lopId, ngayBuoi, mon, compact = false }: { lopId: string; ngayBuoi: string; mon: string; compact?: boolean }) {
   const [data, setData] = useState<BaoCaoTruocBuoi | null>(null)
   const [err, setErr] = useState<string | null>(null)
+  const hd = compact ? undefined : SERIF
 
   useEffect(() => {
     setData(null); setErr(null)
@@ -52,7 +55,7 @@ export default function TruocBuoiTab({ lopId, ngayBuoi, mon }: { lopId: string; 
 
   if (data.trangThaiRong === 'chua_co_buoi_truoc') return (
     <div className="rounded-2xl border border-dashed py-16 text-center" style={{ borderColor: C.line, background: C.paper }}>
-      <div className="text-[17px] font-bold" style={{ ...SERIF, color: C.navy }}>Chưa có buổi trước</div>
+      <div className="text-[17px] font-bold" style={{ ...hd, color: C.navy }}>Chưa có buổi trước</div>
       <div className="mx-auto mt-1.5 max-w-sm text-[13px]" style={{ color: C.muted }}>Lớp mới khai giảng — chưa có buổi học nào trước buổi này để tổng hợp.</div>
     </div>
   )
@@ -62,7 +65,7 @@ export default function TruocBuoiTab({ lopId, ngayBuoi, mon }: { lopId: string; 
   const capped = canDe.length > CFG.CARD_CAP
 
   return (
-    <div className="space-y-7 rounded-2xl p-5" style={{ background: C.bg }}>
+    <div className={compact ? 'space-y-5 rounded-2xl p-3' : 'space-y-7 rounded-2xl p-5'} style={{ background: C.bg }}>
       {data.chuaChamBTVN.daCham < data.chuaChamBTVN.tong && (
         <div className="flex items-start gap-2.5 rounded-xl border px-4 py-3 text-[13px] leading-relaxed" style={{ background: C.amberSoft, borderColor: C.amberBorder, color: C.amberText }}>
           <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded text-[11px] font-bold" style={{ background: C.amberIconBg, color: C.amberIconText }}>!</span>
@@ -75,7 +78,7 @@ export default function TruocBuoiTab({ lopId, ngayBuoi, mon }: { lopId: string; 
         <div className="mb-3 flex items-end justify-between gap-3">
           <div className="flex items-center gap-2.5">
             <span className="h-6 w-2 rounded-full" style={{ background: C.red }} />
-            <h2 className="text-[19px] font-bold" style={{ ...SERIF, color: C.navy }}>Cần để mắt</h2>
+            <h2 className={`${compact ? 'text-[16px]' : 'text-[19px]'} font-bold`} style={{ ...hd, color: C.navy }}>Cần để mắt</h2>
           </div>
           <span className="rounded-full border px-2.5 py-1 text-[12px] font-semibold" style={{ borderColor: C.line, color: C.navy2, background: C.paper }}>{canDe.length} / {data.hang.length} học sinh</span>
         </div>
@@ -95,14 +98,14 @@ export default function TruocBuoiTab({ lopId, ngayBuoi, mon }: { lopId: string; 
         <div className="mb-3 flex items-end justify-between gap-3">
           <div className="flex items-center gap-2.5">
             <span className="h-6 w-2 rounded-full" style={{ background: '#8ea0aa' }} />
-            <h2 className="text-[19px] font-bold" style={{ ...SERIF, color: C.navy }}>Cả lớp</h2>
+            <h2 className={`${compact ? 'text-[16px]' : 'text-[19px]'} font-bold`} style={{ ...hd, color: C.navy }}>Cả lớp</h2>
           </div>
           <span className="rounded-full border px-2.5 py-1 text-[12px] font-semibold" style={{ borderColor: C.line, color: C.navy2, background: C.paper }}>{data.hang.length} học sinh</span>
         </div>
         {data.trangThaiRong === 'chua_co_du_lieu_thang' && (
           <div className="mb-2 text-[12px]" style={{ color: C.muted }}>Tháng {data.thang} chưa có buổi nào đóng — cột “tháng” chưa có dữ liệu.</div>
         )}
-        <ClassTable hang={data.hang} />
+        {compact ? <ClassList hang={data.hang} /> : <ClassTable hang={data.hang} />}
       </section>
     </div>
   )
@@ -213,6 +216,36 @@ function Row({ h }: { h: HangHS }) {
   )
 }
 
+// Bản ĐIỆN THOẠI của ClassTable (compact): 1 thẻ / HS, 4 ô số xếp lưới 2×2 + dạng yếu — cùng
+// ô con (BtvnPill/BtvnStrip/EtTruocCell/EtThangCell/DangCell) với bảng, chỉ khác khung.
+function ClassList({ hang }: { hang: HangHS[] }) {
+  const lbl: React.CSSProperties = { color: C.headText }
+  return (
+    <div className="flex flex-col gap-1.5">
+      {hang.map((h) => {
+        const flag = h.batThuong.length > 0
+        return (
+          <div key={h.hocSinhId} className="rounded-xl border px-3 py-2" style={{ background: flag ? '#fffafa' : '#fff', borderColor: C.line, borderLeft: `4px solid ${flag ? C.red : C.line}` }}>
+            <div className="mb-1.5 flex items-center gap-2">
+              <span className="min-w-0 flex-1 truncate text-[13px] font-bold" style={{ color: C.navy }}>{h.tenNgan}</span>
+              {h.level != null && <span className="shrink-0 text-[10.5px]" style={{ color: C.muted }}>Level {h.level}</span>}
+            </div>
+            <div className="grid grid-cols-2 gap-x-3 gap-y-1.5">
+              <div><span className="mb-0.5 block text-[9.5px] font-bold uppercase tracking-wide" style={lbl}>BTVN buổi trước</span><BtvnPill h={h} /></div>
+              <div><span className="mb-0.5 block text-[9.5px] font-bold uppercase tracking-wide" style={lbl}>BTVN tháng</span><BtvnStrip h={h} align="left" /></div>
+              <div><span className="mb-0.5 block text-[9.5px] font-bold uppercase tracking-wide" style={lbl}>ET buổi trước</span><EtTruocCell h={h} /></div>
+              <div><span className="mb-0.5 block text-[9.5px] font-bold uppercase tracking-wide" style={lbl}>ET TB tháng</span><EtThangCell h={h} /></div>
+            </div>
+            {h.dangYeuThang.length > 0 && (
+              <div className="mt-1.5"><span className="mb-0.5 block text-[9.5px] font-bold uppercase tracking-wide" style={lbl}>Dạng còn yếu</span><DangCell dang={h.dangYeuThang} /></div>
+            )}
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
 function BtvnPill({ h }: { h: HangHS }) {
   if (h.btvnTruoc.chuaCham) return <span className="inline-block rounded-full border border-dashed px-2.5 py-1 text-[10.5px] font-bold" style={{ ...waitStripe, borderColor: C.waitBorder, color: C.wait }}>Chưa chấm</span>
   const tt = h.btvnTruoc.trangThai
@@ -220,10 +253,10 @@ function BtvnPill({ h }: { h: HangHS }) {
   return <span className="inline-block min-w-[74px] rounded-full border px-2.5 py-1 text-[10.5px] font-bold" style={TT_PILL_STYLE[tt]}>{TT_LABEL[tt]}</span>
 }
 
-function BtvnStrip({ h }: { h: HangHS }) {
+function BtvnStrip({ h, align = 'center' }: { h: HangHS; align?: 'center' | 'left' }) {
   if (!h.btvnThang.tongBuoi) return <span style={{ color: '#a8b1b5' }}>—</span>
   return (
-    <div className="flex items-center justify-center gap-1.5">
+    <div className={`flex items-center gap-1.5 ${align === 'left' ? 'justify-start' : 'justify-center'}`}>
       <span className="inline-flex gap-[3px]">
         {h.btvnThang.oPerBuoi.map((o) => (
           <span key={o.buoiId} title={o.chuaCham ? 'Chưa chấm' : o.trangThai ? TT_LABEL[o.trangThai] : ''}
