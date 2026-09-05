@@ -80,15 +80,22 @@ export default function WeeklyPlanningTab() {
             const dat = cons.filter((c) => c.trang_thai === 'dat').length
             return (
               <div key={me.id} className="rounded-2xl border border-slate-200 bg-white p-3 shadow-sm">
-                <button onClick={() => setMeDetail(me)} className="flex w-full flex-wrap items-center gap-x-3 gap-y-1 rounded-xl px-2 py-1.5 text-left hover:bg-slate-50">
-                  <span className="rounded bg-slate-800 px-1.5 py-0.5 text-[10px] font-semibold text-white shrink-0">MẸ</span>
-                  <span className="min-w-0 flex-1 truncate font-semibold text-slate-800">{me.tieu_de}</span>
-                  {me.y_tuong_tieu_de && <span className="rounded bg-indigo-50 px-1.5 py-0.5 text-[10px] text-indigo-700 shrink-0">từ backlog</span>}
-                  {/* Mẹ CÓ người làm riêng (story 08-18: giao thẳng 1 người trước khi tách con) — mẹ ownerless cũ (Backlog→Weekly) không hiện chip này. */}
-                  {me.nguoi_lam_id && <NguoiChip ten={me.nguoi_lam_ten} />}
-                  <DeadlineChip deadline={me.deadline} />
-                  {me.trang_thai === 'dat' && <Badge map={VIEC_TT} k="dat" />}
-                  <span className="w-20 shrink-0 text-right text-[12px] font-semibold text-slate-600">{cons.length ? `${dat}/${cons.length} đạt` : 'chưa có con'}</span>
+                {/* 2 DÒNG (CEO 05/09, nhìn trên điện thoại): dòng 1 = tên ĐẦY ĐỦ (không truncate) + tỉ lệ đạt;
+                    dòng 2 = chip nhỏ (người/deadline/trạng thái). Trước đây 1 hàng flex-wrap, tên bị cắt "Tài li…"
+                    còn chip đè nhau trên màn hẹp. */}
+                <button onClick={() => setMeDetail(me)} className="block w-full rounded-xl px-2 py-1.5 text-left hover:bg-slate-50">
+                  <div className="flex items-start gap-2">
+                    <span className="mt-0.5 shrink-0 rounded bg-slate-800 px-1.5 py-0.5 text-[10px] font-semibold text-white">MẸ</span>
+                    <span className="min-w-0 flex-1 text-[14px] font-semibold leading-snug text-slate-800">{me.tieu_de}</span>
+                    <span className="shrink-0 text-[12px] font-semibold text-slate-600">{cons.length ? `${dat}/${cons.length} đạt` : 'chưa có con'}</span>
+                  </div>
+                  <div className="mt-1.5 flex flex-wrap items-center gap-1.5 pl-8">
+                    {me.y_tuong_tieu_de && <span className="rounded bg-indigo-50 px-1.5 py-0.5 text-[10px] text-indigo-700">từ backlog</span>}
+                    {/* Mẹ CÓ người làm riêng (story 08-18: giao thẳng 1 người trước khi tách con) — mẹ ownerless cũ (Backlog→Weekly) không hiện chip này. */}
+                    {me.nguoi_lam_id && <NguoiChip ten={me.nguoi_lam_ten} />}
+                    <DeadlineChip deadline={me.deadline} />
+                    {me.trang_thai === 'dat' && <Badge map={VIEC_TT} k="dat" />}
+                  </div>
                 </button>
                 <div className="mt-2 space-y-1.5 border-l-2 border-slate-100 pl-3">
                   {!cons.length ? <div className="py-1.5 text-[12px] italic text-slate-400">Chưa tách con nào.</div>
@@ -141,15 +148,19 @@ function TaskCard({ v, onClick }: { v: ViecFull; onClick: () => void }) {
   const active = !['dat', 'huy', 'chuyen'].includes(v.trang_thai)
   const canhBao = (v.trang_thai === 'hold' && holdQuaHan(v.ngay_hold)) || !!v.gia_han_xin_deadline
   return (
-    <button onClick={onClick} className="flex w-full flex-wrap items-center gap-x-3 gap-y-1.5 rounded-2xl bg-white p-3.5 text-left shadow-sm transition hover:shadow-md">
-      <span className="min-w-0 flex-1 truncate text-[13px] font-medium text-slate-800">{v.tieu_de}</span>
-      <span className="w-36 shrink-0"><NguoiChip ten={v.nguoi_lam_ten} /></span>
-      <span className="w-32 shrink-0"><DeadlineChip deadline={v.deadline} active={active} /></span>
-      <span className="w-28 shrink-0 flex items-center gap-1">
+    // 2 DÒNG (CEO 05/09): dòng 1 = tên đầy đủ + %; dòng 2 = chip nhỏ người · deadline · trạng thái.
+    // Bỏ cột cố định w-36/w-32 — trên màn hẹp chúng đẩy nhau xuống hàng lộn xộn.
+    <button onClick={onClick} className="block w-full rounded-2xl border border-slate-200/70 bg-white p-3 text-left shadow-sm transition hover:shadow-md">
+      <div className="flex items-start gap-2">
+        <span className="min-w-0 flex-1 text-[13.5px] font-medium leading-snug text-slate-800">{v.tieu_de}</span>
+        <span className="shrink-0 text-[12px] font-semibold text-slate-600">{v.phan_tram !== null ? `${v.phan_tram}%` : '—'}</span>
+      </div>
+      <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
+        <NguoiChip ten={v.nguoi_lam_ten} />
+        <DeadlineChip deadline={v.deadline} active={active} />
         <Badge map={VIEC_TT} k={v.trang_thai} />
         {canhBao && <span className="h-1.5 w-1.5 rounded-full bg-rose-500" title="Có việc cần xử lý (gia hạn chờ duyệt / hold quá hạn)" />}
-      </span>
-      <span className="w-14 shrink-0 text-right text-[12px] font-semibold text-slate-600">{v.phan_tram !== null ? `${v.phan_tram}%` : '—'}</span>
+      </div>
     </button>
   )
 }

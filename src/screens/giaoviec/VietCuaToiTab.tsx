@@ -8,7 +8,7 @@ import {
   type ViecFull, type HieuSuatKy, type CapNhatViec,
 } from '../../lib/giaoviec'
 import { thangCuaKyTuan, kyTuanHienTai } from '../../lib/giaoviec-config'
-import { CX_INPUT, CX_BTN, CX_BTN_GHOST, Badge, VIEC_TT, Section, Empty, ErrBar, Stat, Modal, Field, fmtNgay } from './ui'
+import { CX_INPUT, CX_BTN, CX_BTN_GHOST, Badge, VIEC_TT, Section, Empty, ErrBar, Stat, Modal, Field, fmtNgay, DeadlineChip } from './ui'
 import GiaoViecModal, { type GiaoPrefill } from './GiaoViecModal'
 import { TaskDetailModal } from './WeeklyPlanningTab'
 import { NghiemThuModal, HuyModal, ChuyenModal } from './TaskActions'
@@ -132,16 +132,20 @@ function MyTaskCard({ v, conVersion, onOpenCon, children }: {
 }) {
   const coCon = !v.task_me_id && !!v.so_con
   return (
-    <div className="rounded-2xl bg-white p-4 shadow-sm">
-      <div className="flex flex-wrap items-start gap-2">
-        <div className="min-w-0 flex-1">
-          <div className="flex items-center gap-2">
-            <span className="font-semibold text-slate-800">{v.tieu_de}</span>
+    // CEO 05/09 (nhìn trên iPhone dọc): KHÔNG chia cột — tên task full chiều ngang dòng 1, chip trạng thái
+    // + người giao/deadline chữ nhỏ dòng dưới, nút thao tác xuống HÀNG RIÊNG cuối card (trước đây nút nằm
+    // cột phải shrink-0 → bóp nội dung còn một dải hẹp).
+    <div className="rounded-2xl border border-slate-200/70 bg-white p-4 shadow-sm">
+      <div>
+        <div className="min-w-0">
+          <div className="text-[14px] font-semibold leading-snug text-slate-800">{v.tieu_de}</div>
+          <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
             <Badge map={VIEC_TT} k={v.trang_thai} />
             {v.phan_tram !== null && <span className="text-[12px] font-semibold text-slate-700">{v.phan_tram}%</span>}
+            {v.deadline && <DeadlineChip deadline={v.deadline} active={!['dat', 'huy', 'chuyen'].includes(v.trang_thai)} />}
           </div>
-          <div className="mt-0.5 text-[12px] text-slate-500">
-            Giao bởi {v.nguoi_giao_ten} · KL {v.khoi_luong}{v.deadline && <> · hạn {fmtNgay(v.deadline)}</>}
+          <div className="mt-1 text-[12px] text-slate-500">
+            Giao bởi {v.nguoi_giao_ten} · KL {v.khoi_luong}
           </div>
           {/* Đọc đầy đủ thông tin leader viết lúc giao — trước đây chỉ hiện output, thiếu mục tiêu. */}
           {v.muc_tieu && <div className="mt-0.5 text-[12px] text-slate-600">🎯 {v.muc_tieu}</div>}
@@ -154,7 +158,7 @@ function MyTaskCard({ v, conVersion, onOpenCon, children }: {
               bảng "Công khai" chung cả team để leader review nhanh, không phải mở từng task. */}
           {!['dat', 'huy', 'chuyen'].includes(v.trang_thai) && <CapNhatSection v={v} laMe={coCon} />}
         </div>
-        {children && <div className="flex shrink-0 items-center gap-1.5">{children}</div>}
+        {children && <div className="mt-3 flex flex-wrap items-center gap-1.5">{children}</div>}
       </div>
     </div>
   )

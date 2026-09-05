@@ -1,18 +1,17 @@
 // PtHome — shell + trang chủ app PHÁT TRIỂN (CEO chốt 05/09, khuôn bottom-tab app TA/OPS):
-// · HÔM NAY = việc đang mở CHƯA CẬP NHẬT TÌNH TRẠNG hôm nay (derive ở DB fn_pt_viec_hom_nay)
-//   → bấm "Cập nhật" ghi 1 dòng viec_cap_nhat (append-only). Push 10:30 là TIN CHUNG cho mọi máy
-//   đăng ký (CEO 05/09), không phụ thuộc danh sách này.
-// · VIỆC CỦA TÔI = tái dùng VietCuaToiTab của ERP (đủ hành động: bắt đầu/hoàn thành/gia hạn/tách con…).
+// · MỘT nguồn dữ liệu cho cả Hôm nay lẫn Việc của tôi = fn_pt_viec_cua_toi (mig 202609051451).
+//   Hôm nay = lọc `dang_mo` (việc tôi đang cầm, chưa tách con) — chưa/đã cập nhật hôm nay.
+//   Việc của tôi = toàn bộ, nhóm theo trạng thái. CÙNG card ViecPtCard, CÙNG modal ChiTietModal.
 // · QUẢN LÝ (chỉ ai có lá `giaoviec` hoặc admin) = 5 tab của màn ERP (PtQuanLy).
-// · CÀI ĐẶT = bật/tắt nhắc việc (Web Push) + thiết bị đang nhận + thoát.
+// · CÀI ĐẶT = bật/tắt nhắc việc (Web Push tin chung 10:30) + thiết bị đang nhận + thoát.
 import { useEffect, useState } from 'react'
 import { supabase } from '../../lib/supabase'
 import type { PtGate } from '../../AppPt'
-import { listViecHomNay, themCapNhat, batDauLam, type ViecHomNay } from '../../lib/giaoviec'
+import { listViecCuaToiPt, type ViecPt } from '../../lib/giaoviec'
 import { homNayVN, ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import { kiemTraHoTro, trangThaiNhacViec, batNhacViec, tatNhacViec, listThietBiCuaToi, type PushHoTro, type TrangThaiNhac, type PushDangKy } from '../../lib/push'
-import { Badge, VIEC_TT, DeadlineChip, Modal, Field, CX_INPUT, CX_BTN, CX_BTN_GHOST, ErrBar } from '../giaoviec/ui'
-import VietCuaToiTab from '../giaoviec/VietCuaToiTab'
+import { ErrBar } from '../giaoviec/ui'
+import { ViecPtCard, ChiTietModal } from './ViecPt'
 import PtQuanLy from './PtQuanLy'
 
 type TabKey = 'homnay' | 'viec' | 'quanly' | 'caidat'
@@ -26,17 +25,17 @@ function NoBadge({ n, small }: { n: number; small?: boolean }) {
 
 export default function PtHome({ gate }: { gate: PtGate }) {
   const { profile, quyen, laQuanLy } = gate
-  const nhanSuId = profile.nhanSu.id
   const coQuanLy = quyen.laAdmin || quyen.chucNang.includes('giaoviec')   // cùng lá với ERP, không đẻ quyền mới
   const [tab, setTab] = useState<TabKey>('homnay')
-  const [rows, setRows] = useState<ViecHomNay[]>([])
+  const [rows, setRows] = useState<ViecPt[]>([])
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
+  const [chiTiet, setChiTiet] = useState<ViecPt | null>(null)
 
   async function reload(silent = false) {
     if (!silent) setLoading(true)
     setErr(null)
-    try { setRows(await listViecHomNay()) }
+    try { setRows(await listViecCuaToiPt()) }
     catch (e: any) { setErr(e?.message ?? String(e)) }
     finally { setLoading(false) }
   }
@@ -47,18 +46,17 @@ export default function PtHome({ gate }: { gate: PtGate }) {
     return () => document.removeEventListener('visibilitychange', h)
   }, []) // eslint-disable-line
 
-  const chuaCapNhat = rows.filter((r) => !r.da_cap_nhat_hom_nay).length
+  const homNay = rows.filter((r) => r.dang_mo)
+  const chuaCapNhat = homNay.filter((r) => !r.da_cap_nhat_hom_nay).length
+  const onChanged = () => reload(true)
+  // modal chi tiết đọc bản MỚI NHẤT của việc sau mỗi reload (không giữ snapshot cũ)
+  const chiTietRow = chiTiet ? (rows.find((r) => r.id === chiTiet.id) ?? chiTiet) : null
 
   return (
     <div className="flex h-[100dvh] flex-col bg-[#f5f5f7]" style={{ fontFamily: "'Be Vietnam Pro', 'Segoe UI', system-ui, sans-serif" }}>
       <div className="min-h-0 flex-1 overflow-auto">
-        {tab === 'homnay' && <HomNay profile={profile} rows={rows} loading={loading} err={err} onReload={() => reload(true)} onGoCaiDat={() => setTab('caidat')} />}
-        {tab === 'viec' && (
-          <div>
-            <HeaderBar profile={profile} sub="Việc của tôi" />
-            <div className="mx-auto max-w-[1000px] px-3 pb-6 pt-3"><VietCuaToiTab nhanSuId={nhanSuId} /></div>
-          </div>
-        )}
+        {tab === 'homnay' && <HomNay profile={profile} rows={homNay} loading={loading} err={err} onOpen={setChiTiet} onChanged={onChanged} onGoCaiDat={() => setTab('caidat')} />}
+        {tab === 'viec' && <VietCuaToi profile={profile} rows={rows} loading={loading} err={err} onOpen={setChiTiet} onChanged={onChanged} />}
         {tab === 'quanly' && coQuanLy && (
           <div>
             <HeaderBar profile={profile} sub="Giao việc phát triển" />
@@ -76,6 +74,7 @@ export default function PtHome({ gate }: { gate: PtGate }) {
           <TabBtn active={tab === 'caidat'} icon="🔔" label="Cài đặt" pill="bg-amber-100" text="text-amber-700" no={0} onClick={() => setTab('caidat')} />
         </div>
       </div>
+      {chiTietRow && <ChiTietModal v={chiTietRow} onClose={() => setChiTiet(null)} onChanged={onChanged} />}
     </div>
   )
 }
@@ -108,29 +107,30 @@ function HeaderBar({ profile, sub }: { profile: PtGate['profile']; sub: string }
   )
 }
 
+function Nhom({ title, highlight, children }: { title: string; highlight?: boolean; children: React.ReactNode }) {
+  return (
+    <div className="mb-4">
+      <p className={`mb-2 px-1 text-[12px] font-bold uppercase tracking-wide ${highlight ? 'text-rose-600' : 'text-slate-400'}`}>{title}</p>
+      <div className="flex flex-col gap-2">{children}</div>
+    </div>
+  )
+}
+const Trong = ({ children }: { children: React.ReactNode }) => <p className="rounded-xl border border-dashed border-slate-200 bg-white px-3 py-4 text-center text-[12.5px] text-slate-400">{children}</p>
+
+type ListProps = { profile: PtGate['profile']; rows: ViecPt[]; loading: boolean; err: string | null; onOpen: (v: ViecPt) => void; onChanged: () => void }
+
 // ── HÔM NAY: hero + banner bật nhắc + 2 nhóm (chưa / đã cập nhật) ─────────────────────
-function HomNay({ profile, rows, loading, err, onReload, onGoCaiDat }: {
-  profile: PtGate['profile']; rows: ViecHomNay[]; loading: boolean; err: string | null; onReload: () => void; onGoCaiDat: () => void
-}) {
+function HomNay({ profile, rows, loading, err, onOpen, onChanged, onGoCaiDat }: ListProps & { onGoCaiDat: () => void }) {
   const homNay = homNayVN()
   const tenGoi = (profile.nhanSu.ho_ten ?? '').trim().split(/\s+/).pop() || 'bạn'
   const chua = rows.filter((r) => !r.da_cap_nhat_hom_nay)
   const da = rows.filter((r) => r.da_cap_nhat_hom_nay)
   const quaHan = chua.filter((r) => r.qua_han).length
-  const [cn, setCn] = useState<ViecHomNay | null>(null)
-  const [busy, setBusy] = useState<string | null>(null)
-  const [actErr, setActErr] = useState<string | null>(null)
-  // Banner nhắc bật push — chỉ khi môi trường hỗ trợ và chưa bật.
-  const [goiYBat, setGoiYBat] = useState(false)
+  const [goiYBat, setGoiYBat] = useState(false)   // banner nhắc bật push — chỉ khi môi trường hỗ trợ và chưa bật
   useEffect(() => {
     if (kiemTraHoTro() !== 'ok') return
     trangThaiNhacViec().then((t) => setGoiYBat(t === 'tat')).catch(() => {})
   }, [])
-
-  async function act(fn: () => Promise<void>, id: string) {
-    setBusy(id); setActErr(null)
-    try { await fn(); onReload() } catch (e: any) { setActErr(e?.message ?? String(e)) } finally { setBusy(null) }
-  }
 
   return (
     <div>
@@ -160,97 +160,52 @@ function HomNay({ profile, rows, loading, err, onReload, onGoCaiDat }: {
           </button>
         )}
 
-        <ErrBar msg={err ?? actErr} />
+        <ErrBar msg={err} />
         {loading ? <p className="py-6 text-center text-sm text-slate-400">Đang tải…</p> : (
           <>
             <Nhom title={`Chưa cập nhật hôm nay (${chua.length})`} highlight={chua.length > 0}>
-              {chua.length === 0
-                ? <p className="rounded-xl border border-dashed border-slate-200 bg-white px-3 py-4 text-center text-[12.5px] text-slate-400">{rows.length ? 'Đã cập nhật hết 🎉' : 'Không có việc nào đang mở.'}</p>
-                : chua.map((r) => <ViecCard key={r.id} r={r} busy={busy === r.id} onCapNhat={() => setCn(r)} onBatDau={r.trang_thai === 'moi_giao' ? () => act(() => batDauLam(r.id), r.id) : undefined} />)}
+              {chua.length === 0 ? <Trong>{rows.length ? 'Đã cập nhật hết 🎉' : 'Không có việc nào đang mở.'}</Trong>
+                : chua.map((r) => <ViecPtCard key={r.id} v={r} onOpen={onOpen} onChanged={onChanged} />)}
             </Nhom>
             {da.length > 0 && (
               <Nhom title={`Đã cập nhật hôm nay (${da.length})`}>
-                {da.map((r) => <ViecCard key={r.id} r={r} busy={busy === r.id} onCapNhat={() => setCn(r)} />)}
+                {da.map((r) => <ViecPtCard key={r.id} v={r} onOpen={onOpen} onChanged={onChanged} />)}
               </Nhom>
             )}
           </>
         )}
       </div>
-      {cn && <CapNhatModal r={cn} onClose={() => setCn(null)} onDone={() => { setCn(null); onReload() }} />}
     </div>
   )
 }
 
-function Nhom({ title, highlight, children }: { title: string; highlight?: boolean; children: React.ReactNode }) {
+// ── VIỆC CỦA TÔI: toàn bộ, nhóm theo trạng thái — CÙNG card với Hôm nay ───────────────
+function VietCuaToi({ profile, rows, loading, err, onOpen, onChanged }: ListProps) {
+  const dangLam = rows.filter((r) => ['moi_giao', 'dang_lam', 'tra_lai', 'hold'].includes(r.trang_thai))
+  const choNT = rows.filter((r) => r.trang_thai === 'cho_nghiem_thu')
+  const daDong = rows.filter((r) => ['dat', 'huy', 'chuyen'].includes(r.trang_thai))
   return (
-    <div className="mb-4">
-      <p className={`mb-2 px-1 text-[12px] font-bold uppercase tracking-wide ${highlight ? 'text-rose-600' : 'text-slate-400'}`}>{title}</p>
-      <div className="flex flex-col gap-2">{children}</div>
-    </div>
-  )
-}
-
-function ViecCard({ r, busy, onCapNhat, onBatDau }: { r: ViecHomNay; busy: boolean; onCapNhat: () => void; onBatDau?: () => void }) {
-  const im = r.so_ngay_im
-  return (
-    <div className={`rounded-2xl border bg-white p-3.5 shadow-sm ${r.qua_han ? 'border-rose-200' : 'border-slate-200/70'}`}>
-      <div className="flex items-start gap-2">
-        <div className="min-w-0 flex-1">
-          <p className="text-[14px] font-semibold leading-snug text-slate-800">{r.tieu_de}</p>
-          <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
-            <Badge map={VIEC_TT} k={r.trang_thai} />
-            <DeadlineChip deadline={r.deadline} />
-            {r.tien_do_bao_cao != null && <span className="rounded-md bg-sky-50 px-1.5 py-0.5 text-[11px] font-semibold text-sky-700">{r.tien_do_bao_cao}%</span>}
-            {!r.da_cap_nhat_hom_nay && im >= 1 && (
-              <span className={`rounded-md px-1.5 py-0.5 text-[11px] font-semibold ${im >= 3 ? 'bg-rose-50 text-rose-600' : 'bg-amber-50 text-amber-700'}`}>
-                {r.cap_nhat_cuoi_at ? `im ${im} ngày` : `chưa cập nhật lần nào · ${im} ngày`}
-              </span>
-            )}
-          </div>
-        </div>
-      </div>
-      <div className="mt-2.5 flex gap-2">
-        {onBatDau && <button disabled={busy} onClick={onBatDau} className={`${CX_BTN_GHOST} flex-1 py-2`}>▶ Bắt đầu</button>}
-        <button disabled={busy} onClick={onCapNhat} className={`${CX_BTN} flex-1 py-2 ${r.da_cap_nhat_hom_nay ? 'bg-slate-500 hover:bg-slate-600' : 'bg-violet-600 hover:bg-violet-700'}`}>
-          {r.da_cap_nhat_hom_nay ? '✎ Cập nhật thêm' : '✎ Cập nhật tình trạng'}
-        </button>
-      </div>
-    </div>
-  )
-}
-
-// Ghi 1 dòng viec_cap_nhat (tường thuật + % tự báo). Cùng hàm themCapNhat với ERP.
-function CapNhatModal({ r, onClose, onDone }: { r: ViecHomNay; onClose: () => void; onDone: () => void }) {
-  const [noiDung, setNoiDung] = useState('')
-  const [tienDo, setTienDo] = useState<string>(r.tien_do_bao_cao != null ? String(r.tien_do_bao_cao) : '')
-  const [busy, setBusy] = useState(false)
-  const [err, setErr] = useState<string | null>(null)
-  async function luu() {
-    setBusy(true); setErr(null)
-    try {
-      const td = tienDo.trim() === '' ? null : Number(tienDo)
-      if (td != null && (Number.isNaN(td) || td < 0 || td > 100)) throw new Error('Tiến độ phải là số 0–100.')
-      await themCapNhat(r.id, { noiDung, tienDoBaoCao: td })
-      onDone()
-    } catch (e: any) { setErr(e?.message ?? String(e)) } finally { setBusy(false) }
-  }
-  return (
-    <Modal title="Cập nhật tình trạng" onClose={onClose}>
-      <p className="mb-3 text-[13px] font-semibold text-slate-700">{r.tieu_de}</p>
-      <div className="flex flex-col gap-3">
-        <Field label="Hôm nay làm được gì / vướng gì?">
-          <textarea autoFocus value={noiDung} onChange={(e) => setNoiDung(e.target.value)} rows={4} className={CX_INPUT} placeholder="Ví dụ: xong phần A, đang vướng B vì…" />
-        </Field>
-        <Field label="Tiến độ tự đánh giá (%) — không bắt buộc">
-          <input type="number" inputMode="numeric" min={0} max={100} value={tienDo} onChange={(e) => setTienDo(e.target.value)} className={CX_INPUT} placeholder="0–100" />
-        </Field>
+    <div>
+      <HeaderBar profile={profile} sub="Việc của tôi" />
+      <div className="mx-auto max-w-[1000px] px-3 pb-6 pt-3">
         <ErrBar msg={err} />
-        <div className="flex gap-2">
-          <button onClick={onClose} className={`${CX_BTN_GHOST} flex-1`}>Huỷ</button>
-          <button onClick={luu} disabled={busy || !noiDung.trim()} className={`${CX_BTN} flex-1 bg-violet-600 hover:bg-violet-700`}>{busy ? 'Đang lưu…' : 'Lưu cập nhật'}</button>
-        </div>
+        {loading ? <p className="py-6 text-center text-sm text-slate-400">Đang tải…</p> : (
+          <>
+            <Nhom title={`Đang làm (${dangLam.length})`}>
+              {!dangLam.length ? <Trong>Không có việc nào đang làm.</Trong> : dangLam.map((r) => <ViecPtCard key={r.id} v={r} onOpen={onOpen} onChanged={onChanged} />)}
+            </Nhom>
+            {choNT.length > 0 && (
+              <Nhom title={`Chờ nghiệm thu (${choNT.length})`}>
+                {choNT.map((r) => <ViecPtCard key={r.id} v={r} onOpen={onOpen} onChanged={onChanged} />)}
+              </Nhom>
+            )}
+            <Nhom title={`Đã đóng (${daDong.length})`}>
+              {!daDong.length ? <Trong>Chưa có việc nào đóng.</Trong> : daDong.map((r) => <ViecPtCard key={r.id} v={r} onOpen={onOpen} onChanged={onChanged} />)}
+            </Nhom>
+          </>
+        )}
       </div>
-    </Modal>
+    </div>
   )
 }
 

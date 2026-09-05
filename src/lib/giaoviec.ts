@@ -577,3 +577,20 @@ export async function listViecHomNay(): Promise<ViecHomNay[]> {
   if (error) throw error
   return (data ?? []) as ViecHomNay[]
 }
+
+// ── APP pt: MỌI việc của tôi + cột suy ra, 1 nguồn cho cả Hôm nay lẫn Việc của tôi (mig 202609051451) ──
+// Hôm nay = lọc `dang_mo` trên cùng tập (lọc UI thuần). tien_do_bao_cao = % tự báo GẦN NHẤT có giá trị.
+export type ViecPt = {
+  id: string; tieu_de: string; trang_thai: TrangThaiViec; deadline: string | null; task_me_id: string | null
+  muc_tieu: string | null; output: string | null; mo_ta: string | null; khoi_luong: number
+  nguoi_giao_ten: string | null; phan_tram: number | null; tien_do: number | null; chat_luong: number | null
+  so_lan_gia_han: number; gia_han_xin_deadline: string | null; ghi_chu_nghiem_thu: string | null; evidence: string | null
+  so_con: number; so_con_dat: number; dang_mo: boolean
+  qua_han: boolean; da_cap_nhat_hom_nay: boolean; cap_nhat_cuoi_at: string | null; tien_do_bao_cao: number | null
+  created_at: string; hoan_thanh_at: string | null
+}
+export async function listViecCuaToiPt(): Promise<ViecPt[]> {
+  const { data, error } = await supabase.rpc('fn_pt_viec_cua_toi')
+  if (error) throw error
+  return (data ?? []) as ViecPt[]
+}
