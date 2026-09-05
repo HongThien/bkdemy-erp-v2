@@ -8222,6 +8222,14 @@ CHƯA nhìn tận mắt, Thùy bấm thử. Dev log có sẵn lỗi `virtual:pwa
   `fn_pt_push_danh_sach(secret)` giờ chỉ trả `(id, endpoint, p256dh, auth)` của máy còn sống thuộc NS đang làm ·
   `api/pt-nhac-viec.mjs` gửi 1 payload `NOI_DUNG` (đổi câu = sửa 1 chỗ) · text Cài đặt/PtHome cập nhật. Hàm derive
   `fn_pt_viec_can_cap_nhat`/`fn_pt_viec_hom_nay` GIỮ cho tab Hôm nay. Dry-run ROLLBACK lại pass (0 → 1 → 0 sau 410). tsc 0.
+- **(tiếp, 14:30) App pt đã deploy, CEO soi trên iPhone: tab Weekly + Việc của tôi "UI quá tệ, đè nhau".** Nguyên nhân: card 1
+  hàng flex-wrap với cột cố định (w-36/w-32/w-28) + tên `truncate` — trên 375px cột đẩy nhau xuống hàng lộn xộn, tên còn "Tài li…".
+  Sửa theo luật CEO: **tên task ĐẦY ĐỦ full chiều ngang dòng 1; người làm/deadline/trạng thái chữ nhỏ dòng 2; giữ border**.
+  `WeeklyPlanningTab` (header MẸ + `TaskCard`) và `VietCuaToiTab.MyTaskCard` (nút thao tác xuống hàng riêng cuối card, không còn cột
+  phải shrink-0). `DeadlineChip`/`NguoiChip` thêm `whitespace-nowrap` (chip không gãy "22/08/26 (trễ / 14d)"). Áp cho cả ERP
+  desktop (cùng component) — chấp nhận, 2 dòng vẫn đọc tốt. Tab Công khai là bảng `min-w-[760px]` cuộn ngang, chưa đụng.
+  Verify dev 375px: Weekly 2 cụm MẸ + con hiện đủ tên, chip 1 hàng; Việc của tôi card full ngang. tsc 0 · build:pt pass.
+
 ## 2026-09-04 (tiếp) — Tab "Chưa có lời giải": thêm HÌNH + thanh lọc nhánh (mig 202609041826 + 1835)
 **Thùy:** "T muốn hình cũng ở trong đấy, có toggle bar để filter. Hình khác chỗ mô hình các thứ nhưng cuối cùng vẫn là từng bài một."
 - **Đơn vị "1 bài" bên Hình = 2 loại:** `baitoan` (node gốc `hinh_baitoan` — chưa có = KHÔNG có `hinh_cach_giai` nào có nội dung)
@@ -8265,6 +8273,21 @@ CHƯA nhìn tận mắt, Thùy bấm thử. Dev log có sẵn lỗi `virtual:pwa
   đúng tập nhánh của môn (Toán K8 = 24, KHTN K8 = 1; trước gộp = 25). Drop signature cũ (client duy nhất = màn này).
 - **Verify:** tsc + build sạch; trình duyệt (admin): Toán → chip "Tất cả 24 · Đại 2 · HGT 0 · Hình 22", dropdown "Khối 8 · 24";
   bấm KHTN → 1 câu KHTN, không chip, dropdown "Khối 8 · 1". Không console error.
+- **(tiếp, 15:10) CEO 5 ý về card app pt (Hôm nay + Việc của tôi):** ① bỏ đếm ngày (chip đỏ là đủ) · ② bấm Bắt đầu thì nút biến
+  mất ngay · ③ "Hoàn thành" CHỈ hiện khi % tự báo gần nhất = 100 · ④ % chọn dropdown 10→100 thay vì gõ số · ⑤ hai tab cùng
+  một việc phải CÙNG UI, card không hiện "Giao bởi"/mục tiêu/output — bấm vào mới ra chi tiết. Làm:
+  - **1 nguồn:** mig `202609051451_pt_fn_viec_cua_toi` = `fn_pt_viec_cua_toi()` (mọi việc tôi cầm + qua_han · da_cap_nhat_hom_nay ·
+    tien_do_bao_cao = % GẦN NHẤT CÓ GIÁ TRỊ · so_con/so_con_dat · dang_mo). Hôm nay = lọc `dang_mo` UI. ĐÃ ÁP (npm run migrate) +
+    `npm run schema`. 2 hàm cũ fn_pt_viec_can_cap_nhat/hom_nay giữ, app không gọi.
+  - **`src/screens/pt/ViecPt.tsx`:** `ViecPtCard` (tên · badge · DeadlineChip · % · nút Bắt đầu(moi_giao, ẩn ngay khi bấm — state
+    cục bộ + reload) / Cập nhật / Hoàn thành(khi tien_do_bao_cao===100)) · `ChiTietModal` (mục tiêu/output/mô tả/giao bởi/KL + form
+    cập nhật textarea + select % + lịch sử cập nhật + xin gia hạn inline; cập nhật lần đầu trên moi_giao tự batDauLam) ·
+    `HoanThanhModal` (evidence bắt buộc; tra_lai → guiLaiNghiemThu). `PtHome` viết lại: rows từ listViecCuaToiPt, tab Việc của tôi
+    KHÔNG dùng VietCuaToiTab ERP nữa (nhóm Đang làm / Chờ nghiệm thu / Đã đóng, cùng card).
+  - `DeadlineChip` (ui.tsx, dùng chung ERP): bỏ hậu tố "(trễ Nd)", giữ "(hôm nay)".
+  - Chưa có trên app: tách task con / quản lý con (vẫn ở ERP). Verify: dry-run ROLLBACK giả jwt Lộc → 13 dòng đúng cờ; dev 375px
+    card + modal chi tiết render gọn (admin chỉ có 1 việc đã huỷ nên chưa soi được nút Hoàn thành trên máy). tsc 0.
+
 
 ## 2026-09-05 — TOOL SOẠN THẢO công thức: app riêng `soan` (WYSIWYG, không LaTeX) — spike (nhánh feat/cong-thuc-b, worktree bkdemy-erp-v2-congthuc)
 **Bối cảnh / quyết định (Thùy, 3 lần chỉnh hướng CTO trong 1 buổi):** (1) CTO đề xuất "hàng đợi từ kho (11.815 lời giải AI chưa duyệt)" → SAI, Thùy:
