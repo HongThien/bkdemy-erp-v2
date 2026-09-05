@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-185 bảng · 8 view · 0 enum · 33 trigger · 211 function
+185 bảng · 8 view · 0 enum · 33 trigger · 212 function
 
 ## _app_secrets
 
@@ -2992,6 +2992,7 @@ UNION ALL
 - `fn_pt_push_danh_sach(p_secret text)` → TABLE(id uuid, endpoint text, p256dh text, auth text)
 - `fn_pt_push_ghi_ket_qua(p_secret text, p_ket_qua jsonb)` → integer
 - `fn_pt_viec_can_cap_nhat(p_ns uuid)` → TABLE(id uuid, tieu_de text, trang_thai text, deadline date, task_me_id uuid, qua_han boolean, da_cap_nhat_hom_nay boolean, cap_nhat_cuoi_at timestamp with time zone, tien_do_bao_cao numeric, so_ngay_im integer)
+- `fn_pt_viec_cua_toi()` → TABLE(id uuid, tieu_de text, trang_thai text, deadline date, task_me_id uuid, muc_tieu text, output text, mo_ta text, khoi_luong numeric, nguoi_giao_ten text, phan_tram numeric, tien_do numeric, chat_luong numeric, so_lan_gia_han integer, gia_han_xin_deadline date, ghi_chu_nghiem_thu text, evidence text, so_con integer, so_con_dat integer, dang_mo boolean, qua_han boolean, da_cap_nhat_hom_nay boolean, cap_nhat_cuoi_at timestamp with time zone, tien_do_bao_cao numeric, created_at timestamp with time zone, hoan_thanh_at timestamp with time zone)
 - `fn_pt_viec_hom_nay()` → TABLE(id uuid, tieu_de text, trang_thai text, deadline date, task_me_id uuid, qua_han boolean, da_cap_nhat_hom_nay boolean, cap_nhat_cuoi_at timestamp with time zone, tien_do_bao_cao numeric, so_ngay_im integer)
 - `fn_rank_diem_mt(p_hs uuid, p_lop_ids uuid[], p_mon text, p_ym text)` → TABLE(rank_now integer, rank_total integer)
 - `fn_rank_diem_mt_lop(p_lop uuid, p_mon text, p_ym text)` → TABLE(hoc_sinh_id uuid, tb numeric, rank_now integer, rank_total integer)

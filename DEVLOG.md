@@ -8273,3 +8273,17 @@ CHƯA nhìn tận mắt, Thùy bấm thử. Dev log có sẵn lỗi `virtual:pwa
   đúng tập nhánh của môn (Toán K8 = 24, KHTN K8 = 1; trước gộp = 25). Drop signature cũ (client duy nhất = màn này).
 - **Verify:** tsc + build sạch; trình duyệt (admin): Toán → chip "Tất cả 24 · Đại 2 · HGT 0 · Hình 22", dropdown "Khối 8 · 24";
   bấm KHTN → 1 câu KHTN, không chip, dropdown "Khối 8 · 1". Không console error.
+- **(tiếp, 15:10) CEO 5 ý về card app pt (Hôm nay + Việc của tôi):** ① bỏ đếm ngày (chip đỏ là đủ) · ② bấm Bắt đầu thì nút biến
+  mất ngay · ③ "Hoàn thành" CHỈ hiện khi % tự báo gần nhất = 100 · ④ % chọn dropdown 10→100 thay vì gõ số · ⑤ hai tab cùng
+  một việc phải CÙNG UI, card không hiện "Giao bởi"/mục tiêu/output — bấm vào mới ra chi tiết. Làm:
+  - **1 nguồn:** mig `202609051451_pt_fn_viec_cua_toi` = `fn_pt_viec_cua_toi()` (mọi việc tôi cầm + qua_han · da_cap_nhat_hom_nay ·
+    tien_do_bao_cao = % GẦN NHẤT CÓ GIÁ TRỊ · so_con/so_con_dat · dang_mo). Hôm nay = lọc `dang_mo` UI. ĐÃ ÁP (npm run migrate) +
+    `npm run schema`. 2 hàm cũ fn_pt_viec_can_cap_nhat/hom_nay giữ, app không gọi.
+  - **`src/screens/pt/ViecPt.tsx`:** `ViecPtCard` (tên · badge · DeadlineChip · % · nút Bắt đầu(moi_giao, ẩn ngay khi bấm — state
+    cục bộ + reload) / Cập nhật / Hoàn thành(khi tien_do_bao_cao===100)) · `ChiTietModal` (mục tiêu/output/mô tả/giao bởi/KL + form
+    cập nhật textarea + select % + lịch sử cập nhật + xin gia hạn inline; cập nhật lần đầu trên moi_giao tự batDauLam) ·
+    `HoanThanhModal` (evidence bắt buộc; tra_lai → guiLaiNghiemThu). `PtHome` viết lại: rows từ listViecCuaToiPt, tab Việc của tôi
+    KHÔNG dùng VietCuaToiTab ERP nữa (nhóm Đang làm / Chờ nghiệm thu / Đã đóng, cùng card).
+  - `DeadlineChip` (ui.tsx, dùng chung ERP): bỏ hậu tố "(trễ Nd)", giữ "(hôm nay)".
+  - Chưa có trên app: tách task con / quản lý con (vẫn ở ERP). Verify: dry-run ROLLBACK giả jwt Lộc → 13 dòng đúng cờ; dev 375px
+    card + modal chi tiết render gọn (admin chỉ có 1 việc đã huỷ nên chưa soi được nút Hoàn thành trên máy). tsc 0.

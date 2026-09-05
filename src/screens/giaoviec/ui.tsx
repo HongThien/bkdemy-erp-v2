@@ -150,7 +150,8 @@ export function DeadlineChip({ deadline, active = true }: { deadline?: string | 
     : con < 0 ? 'bg-rose-50 text-rose-700 ring-rose-200'
     : con <= 2 ? 'bg-amber-50 text-amber-700 ring-amber-200'
     : 'bg-slate-100 text-slate-600 ring-slate-200'
-  const nhan = con < 0 && active ? ` (trễ ${-con}d)` : con === 0 && active ? ' (hôm nay)' : ''
+  // CEO 05/09: bỏ đếm ngày trễ — chip đỏ là đủ biết quá hạn, chữ thêm chỉ làm card dày.
+  const nhan = con === 0 && active ? ' (hôm nay)' : ''
   return <span className={`inline-flex items-center gap-1 whitespace-nowrap rounded-full px-2 py-0.5 text-[11px] font-semibold ring-1 ${cls}`}>📅 {fmtNgay(deadline)}{nhan}</span>
 }
 
