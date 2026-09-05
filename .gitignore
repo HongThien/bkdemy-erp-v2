@@ -51,3 +51,16 @@ dist-pt/
 
 # build output tool SOẠN THẢO (như dist-ops)
 dist-soan/
+
+# APK app TA (android-ta/) — y hệt android/
+android-ta/keystore/
+android-ta/keystore.properties
+android-ta/app/build/
+android-ta/build/
+android-ta/.gradle/
+android-ta/local.properties
+android-ta/app/src/main/assets/public/
+android-ta/app/src/main/assets/capacitor.config.json
+android-ta/capacitor-cordova-android-plugins/
+android-ta/.idea/
+dist-ta/

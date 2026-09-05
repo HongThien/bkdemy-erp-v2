@@ -1,13 +1,19 @@
 // Sinh icon + splash cho APK Android từ public/icon-512.png (nguồn duy nhất, cùng icon PWA).
-// Chạy: node scripts/android/gen-icons.mjs  (sau khi `npx cap add android` hoặc khi đổi icon).
+// Chạy: node scripts/android/gen-icons.mjs [hs|ta]  (mặc định hs — sau `npx cap add android` hoặc khi đổi icon).
+// Splash nền = `backgroundColor` của app trong capacitor.config.ts (trùng background_color PWA manifest).
 import { createCanvas, loadImage } from '@napi-rs/canvas'
 import { mkdirSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
+import { APPS } from '../../capacitor.config.ts'
 
-const RES = 'android/app/src/main/res'
+const key = process.argv[2] ?? 'hs'
+const app = APPS[key]
+if (!app) { console.error(`✗ app "${key}" không hợp lệ — chọn: ${Object.keys(APPS).join(', ')}`); process.exit(1) }
+
+const RES = join(app.androidPath, 'app/src/main/res')
 const SRC = 'public/icon-512.png'
 const BG_ICON = '#ffffff'   // nền adaptive icon (icon gốc trong suốt)
-const BG_SPLASH = '#f3f5fa' // trùng background_color của PWA manifest
+const BG_SPLASH = app.backgroundColor
 
 const img = await loadImage(SRC)
 const out = (dir, name, canvas) => { mkdirSync(join(RES, dir), { recursive: true }); writeFileSync(join(RES, dir, name), canvas.toBuffer('image/png')) }
@@ -46,4 +52,8 @@ for (const [d, [w, h]] of Object.entries(PORT)) {
   out(`drawable-land-${d}`, 'splash.png', splash(h, w))
 }
 out('drawable', 'splash.png', splash(1280, 1920))
-console.log('✓ icons + splash → ' + RES)
+
+// nền adaptive icon (Capacitor template mặc định màu xanh)
+writeFileSync(join(RES, 'values/ic_launcher_background.xml'),
+  '<?xml version="1.0" encoding="utf-8"?>\n<resources>\n    <color name="ic_launcher_background">#FFFFFF</color>\n</resources>\n')
+console.log(`✓ [${key}] icons + splash → ${RES}`)

@@ -8371,3 +8371,17 @@ tự lưu vào đúng chỗ mở ra."
 (bundle ERP chính) xem mục dưới. Nút ⤢ trong ERP CHƯA click thử tay (cần đăng nhập) — Thùy thử ở DangHub Sửa câu / FormBaiToan.
 **⚠ Bộ cụm theo ORIGIN (localStorage):** ERP (5173) và soan.html (5180) là 2 bộ cụm khác nhau cho tới khi lên DB → đây là lý do cụ thể để
 làm bảng `cum_cong_thuc` + `cum_thu_muc` ngay bước kế.
+
+## 2026-09-05 — APK Android app TRỢ GIẢNG (ta.bkacademy.edu.vn) — Thùy: "làm file apk cho trợ giảng luôn nhé, y như này luôn"
+- **1 repo → N app:** `capacitor.config.ts` thành bảng `APPS` {hs, ta} (appId/appName/webDir/url/backgroundColor/androidPath/
+  build), chọn bằng env `CAP_APP` (mặc định hs). Mỗi app 1 project Android riêng: `android/` (HS, giữ tên vì đã commit),
+  `android-ta/` (TA). appId `vn.edu.bkacademy.ta`, tên "BK Trợ giảng", splash #f5f5f7, cùng icon PWA. Quyền INTERNET + CAMERA.
+- `scripts/android/gen-icons.mjs <app>` và `build-apk.mjs [app] [--debug]` đọc thẳng `APPS` từ file .ts (Node 24 strip types
+  OK, không cần vite-node). `npm run apk -- ta` → `apk/BKAcademy-TA.apk`.
+- Keystore RIÊNG cho TA: `android-ta/keystore/bkacademy-ta.jks` + `android-ta/keystore.properties` (.gitignore, đã check-ignore).
+  **Backup 4 file keystore (HS+TA) ngoài repo.** `android-ta/app/build.gradle` = copy bản HS đổi appId (diff xác nhận chỉ
+  khác khối signing). Wrapper đổi `-bin.zip` như HS. Docs `docs/APK-android.md` viết lại theo mô hình nhiều app.
+- **Verify:** BUILD SUCCESSFUL, APK 3.7 MB; apksigner ⇒ Signer OU=TroGiang; aapt2 ⇒ package ta / versionCode 1 / targetSdk 36 /
+  label "BK Trợ giảng". Chưa cài máy thật. Rebuild HS bằng script mới để chống regression (kết quả ghi dòng dưới nếu lỗi).
+- Lưu ý cho TA/PT: Web Push (sw-push.js, nhắc việc 10:30) **không chạy trong WebView Android** — muốn nhắc trong app native
+  phải làm FCM qua Capacitor plugin. Web/PWA trên Chrome vẫn nhận như cũ.
