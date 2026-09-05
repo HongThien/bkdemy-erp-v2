@@ -893,7 +893,7 @@ export function AutoTextarea({ value, onChange, className, maxPx }: { value: str
 // ![](url) NGAY TẠI CON TRỎ trong lời giải. MathText render ![](url) sẵn (màn + preview) → hình hiện
 // thẳng trong bài giải. Dùng khi clone bài có hình rồi bổ sung hình vào lời giải sau ("upload ảnh xong
 // lấy link đặt vào bài giải"). Chèn được NHIỀU hình, ở bất kỳ vị trí nào trong lời giải.
-function SolutionField({ value, onChange, taClassName, wrapClassName }: { value: string; onChange: (v: string) => void; taClassName: string; wrapClassName?: string }) {
+export function SolutionField({ value, onChange, taClassName, wrapClassName }: { value: string; onChange: (v: string) => void; taClassName: string; wrapClassName?: string }) {
   const taRef = useRef<HTMLTextAreaElement>(null)
   return (
     <div className={`flex min-h-0 flex-col ${wrapClassName ?? ''}`}>
@@ -906,7 +906,7 @@ function SolutionField({ value, onChange, taClassName, wrapClassName }: { value:
 }
 
 // Ảnh đề/đáp án: click chọn file HOẶC bấm vào ô rồi Ctrl+V dán ảnh → UPLOAD Supabase Storage, DB chỉ lưu URL.
-function ImageSlot({ url, label, onChange }: { url: string | null; label: string; onChange: (v: string | null) => void }) {
+export function ImageSlot({ url, label, onChange }: { url: string | null; label: string; onChange: (v: string | null) => void }) {
   const ref = useRef<HTMLInputElement>(null)
   const [busy, setBusy] = useState(false)
   const [crop, setCrop] = useState(false)

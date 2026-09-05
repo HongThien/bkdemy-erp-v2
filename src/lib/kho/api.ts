@@ -809,6 +809,61 @@ export async function duyetLoiGiaiCau(mon: KhoMon, maCau: string, nguoiDuyet: st
   if (error) throw error
 }
 
+// ── TAB "CHƯA CÓ LỜI GIẢI" + HÀNG ĐỢI GIẢI (04/09, mig 202609041808) — Thùy: thay vì nhờ Claude giải
+// trong chat, ERP liệt kê câu CHƯA CÓ LỜI GIẢI (loi_giai IS NULL và anh_dap_an IS NULL) để người biết mà
+// làm; mỗi câu 2 lựa chọn: (1) tự giải/up ảnh tại chỗ · (2) đặt Claude giải = đưa vào hàng đợi
+// `{dai,khtn,hgt}_cau_hoi_yeu_cau_giai` (như hàng đợi clone 26/08), worker = scripts/hangdoi-giai.mjs.
+// List/đếm/đặt/đóng đều là function Postgres (§2.0) — client chỉ gọi rpc, không join/đếm ở JS. ──
+export type CauChuaGiai = {
+  ma_cau: string; dang_chinh: string; ten_dang: string; ten_chuyen_de: string; khoi: string; loai_cau: string
+  noi_dung: string; lua_chon: string[] | null; menh_de: MenhDe[] | null; dap_an: string | null; anh_de: string | null; nguon: string; created_at: string
+  yeu_cau_id: string | null; yeu_cau_at: string | null; yeu_cau_ghi_chu: string | null
+}
+export async function listCauChuaGiaiTab(mon: KhoMon, khoi: string): Promise<CauChuaGiai[]> {
+  const { data, error } = await supabase.rpc('fn_kho_cau_chua_giai', { p_mon: mon, p_khoi: khoi, p_limit: LIMIT })
+  if (error) throw error
+  return (data ?? []) as CauChuaGiai[]
+}
+export type DemChuaGiai = { khoi: string; so_cau: number; so_cho_giai: number }
+// ⭐ MÔN ≠ NHÁNH (Thùy 04/09: "KHTN là MÔN. Ai phụ trách môn nào mới thấy môn đó"): màn duyệt/giải scope theo
+// MÔN (nhãn nhan_su_mon, khớp MON_LIST) → mỗi môn gồm các NHÁNH kho của nó. Toán = Đại + Hình giải tích + Hình;
+// KHTN = 1 cây. Registry 1 chỗ, mọi màn gộp-nhánh dùng cái này, KHÔNG tự liệt kê ['toan','khtn','hgt'] rồi trộn môn.
+export type KhoNhanh = KhoMon | 'hinh'
+export const NHANH_LABEL: Record<KhoNhanh, string> = { toan: 'Đại', khtn: 'KHTN', hgt: 'Hình giải tích', hinh: 'Hình' }
+export const KHO_MON: { mon: string; nhanh: KhoNhanh[] }[] = [
+  { mon: 'Toán', nhanh: ['toan', 'hgt', 'hinh'] },
+  { mon: 'KHTN', nhanh: ['khtn'] },
+]
+export const nhanhCuaMon = (mon: string): KhoNhanh[] => KHO_MON.find((m) => m.mon === mon)?.nhanh ?? []
+// Đếm câu chưa có lời giải theo khối cho đúng TẬP NHÁNH của môn đang chọn (không cộng chéo môn).
+export async function demCauChuaGiai(nhanh: KhoNhanh[]): Promise<DemChuaGiai[]> {
+  const { data, error } = await supabase.rpc('fn_kho_dem_cau_chua_giai', { p_nhanh: nhanh })
+  if (error) throw error
+  return (data ?? []) as DemChuaGiai[]
+}
+// Trả SỐ câu thật sự được đặt (bỏ câu đã có lời giải / đã có yêu cầu treo — DB tự lọc).
+export async function datClaudeGiai(mon: KhoMon, maCaus: string[], ghiChu: string, nguoiYeuCau: string): Promise<number> {
+  const { data, error } = await supabase.rpc('fn_kho_dat_giai', { p_mon: mon, p_ma_cau: maCaus, p_ghi_chu: ghiChu, p_nguoi: nguoiYeuCau })
+  if (error) throw error
+  return Number(data ?? 0)
+}
+// Huỷ yêu cầu còn treo (chưa xử lý) — xoá dòng: yêu cầu chưa ai làm thì không có gì để giữ vết.
+export async function huyYeuCauGiai(mon: KhoMon, id: string): Promise<void> {
+  const { yeuCauGiaiTbl } = khoTbls(mon)
+  const { error } = await supabase.from(yeuCauGiaiTbl).delete().eq('id', id).is('xu_ly_at', null)
+  if (error) throw error
+}
+// Người tự giải: ghi loi_giai/anh_dap_an (PostgREST) rồi gọi fn đóng dấu nguon_giai='nguoi' + gỡ yêu cầu treo.
+export async function luuLoiGiaiNguoi(mon: KhoMon, maCau: string, a: { loiGiai: string | null; anhDapAn: string | null; dapAn?: string | null }): Promise<void> {
+  const { cauTbl } = khoTbls(mon)
+  const patch: Record<string, unknown> = { loi_giai: a.loiGiai || null, anh_dap_an: a.anhDapAn || null }
+  if (a.dapAn !== undefined) patch.dap_an = a.dapAn || null
+  const { error } = await supabase.from(cauTbl).update(patch).eq('ma_cau', maCau)
+  if (error) throw error
+  const { error: e2 } = await supabase.rpc('fn_kho_giai_nguoi_xong', { p_mon: mon, p_ma_cau: maCau })
+  if (e2) throw e2
+}
+
 // ── NHẬP CHUỖI CÂU CÓ SẴN (batch): prompt tách + parse + lưu (tất cả 'le') ──
 // Luật lời giải theo 2 luồng: bóc-nguyên (người, tin) vs AI-tự-giải (cần duyệt).
 const giaiRule = (giaiAI?: boolean) => giaiAI
@@ -1151,12 +1206,12 @@ export function parseIngestJson(text: string): IngestCau[] {
 // Bóc/crop hình chạy ở SCREEN (DOM); ở đây = prompt + parse + phân loại grounded + verify + AI-giải + save + log.
 // ════════════════════════════════════════════════════════════════
 export type KhoMon = 'toan' | 'khtn' | 'hgt'
-export function khoTbls(mon: KhoMon): { cauTbl: string; banDoTbl: string; lyThuyetTbl: string } {
+export function khoTbls(mon: KhoMon): { cauTbl: string; banDoTbl: string; lyThuyetTbl: string; yeuCauGiaiTbl: string } {
   return mon === 'khtn'
-    ? { cauTbl: 'khtn_cau_hoi', banDoTbl: 'khtn_ban_do', lyThuyetTbl: 'khtn_dang_ly_thuyet' }
+    ? { cauTbl: 'khtn_cau_hoi', banDoTbl: 'khtn_ban_do', lyThuyetTbl: 'khtn_dang_ly_thuyet', yeuCauGiaiTbl: 'khtn_cau_hoi_yeu_cau_giai' }
     : mon === 'hgt'
-    ? { cauTbl: 'hgt_cau_hoi', banDoTbl: 'hgt_ban_do', lyThuyetTbl: 'hgt_dang_ly_thuyet' }
-    : { cauTbl: 'dai_cau_hoi', banDoTbl: 'dai_ban_do', lyThuyetTbl: 'dai_dang_ly_thuyet' }
+    ? { cauTbl: 'hgt_cau_hoi', banDoTbl: 'hgt_ban_do', lyThuyetTbl: 'hgt_dang_ly_thuyet', yeuCauGiaiTbl: 'hgt_cau_hoi_yeu_cau_giai' }
+    : { cauTbl: 'dai_cau_hoi', banDoTbl: 'dai_ban_do', lyThuyetTbl: 'dai_dang_ly_thuyet', yeuCauGiaiTbl: 'dai_cau_hoi_yeu_cau_giai' }
 }
 
 // Chủ đề trong 1 khối — chọn ở ĐẦU luồng (tài liệu chung 1 chủ đề, người biết sẵn).

@@ -8222,3 +8222,46 @@ CHƯA nhìn tận mắt, Thùy bấm thử. Dev log có sẵn lỗi `virtual:pwa
   `fn_pt_push_danh_sach(secret)` giờ chỉ trả `(id, endpoint, p256dh, auth)` của máy còn sống thuộc NS đang làm ·
   `api/pt-nhac-viec.mjs` gửi 1 payload `NOI_DUNG` (đổi câu = sửa 1 chỗ) · text Cài đặt/PtHome cập nhật. Hàm derive
   `fn_pt_viec_can_cap_nhat`/`fn_pt_viec_hom_nay` GIỮ cho tab Hôm nay. Dry-run ROLLBACK lại pass (0 → 1 → 0 sau 410). tsc 0.
+## 2026-09-04 (tiếp) — Tab "Chưa có lời giải": thêm HÌNH + thanh lọc nhánh (mig 202609041826 + 1835)
+**Thùy:** "T muốn hình cũng ở trong đấy, có toggle bar để filter. Hình khác chỗ mô hình các thứ nhưng cuối cùng vẫn là từng bài một."
+- **Đơn vị "1 bài" bên Hình = 2 loại:** `baitoan` (node gốc `hinh_baitoan` — chưa có = KHÔNG có `hinh_cach_giai` nào có nội dung)
+  · `bien_the` (`hinh_baitoan_bien_the` — `loi_giai` & `anh_loi_giai` NULL). **Ý** (`hinh_y`) KHÔNG đưa vào: ý trống rơi về cách giải
+  node (§3 đáp án hai bậc) nên giải node là lấp; hiện 0 ý trống. Số liệu: 30 node chưa có cách giải (K7: 8 · K8: 22), 0 biến thể.
+- **Schema thật ≠ schema.md khi đọc bằng sed:** `hinh_baitoan_bien_the` KHÔNG có cột `khoi` (mục schema.md bị dính cột bảng sau khi
+  cắt +30 dòng) — đã đối chiếu `information_schema`. Khối Hình = `hinh_mo_hinh.khoi` qua bài toán.
+- **DB (1826):** 2 bảng `hinh_baitoan_yeu_cau_giai(baitoan_id)` · `hinh_bien_the_yeu_cau_giai(bien_the_id)` (FK cascade, unique partial
+  treo) · view `v_hinh_chua_giai` (shape chung 2 loại: đề = `concat_ws` giả thiết mô hình + giả thiết phụ/riêng bài toán; ảnh =
+  `anh_chuan` → `anh_cau_hinh` mô hình, không leo cha kế thừa ở SQL) · `fn_hinh_cau_chua_giai(khoi)` · `fn_hinh_dat_giai(loai, ids[],…)`
+  · `fn_hinh_yeu_cau_giai_cho()` (kèm mẫu = cách giải node gốc cho biến thể) · `fn_kho_dem_cau_chua_giai(null)` gộp thêm Hình, `'hinh'` = riêng.
+- **Bẫy bắt được khi test rollback (→ mig 1835):** node có sẵn cách giải MẶC ĐỊNH nhưng RỖNG (cách giải là CẤU TRÚC giữ tiền đề, được phép
+  không có lời giải). Insert dòng mới ⇒ node 2 cách (mặc-định-rỗng + mới) ⇒ `dapAnHaiBac` lấy mặc định → vẫn trống. Sửa: **1 hàm ghi chung
+  `fn_hinh_ghi_loi_giai(loai, id, loi_giai, anh, nguon 'nguoi'|'ai')`** — có dòng rỗng thì ĐIỀN vào (ưu tiên la_mac_dinh), không có thì tạo
+  mặc định; từ chối nếu đã có nội dung; 'ai' ⇒ giai_method='claude_code', da_duyet=false + đóng yêu cầu; 'nguoi' ⇒ gỡ yêu cầu; bump
+  `hinh_baitoan.updated_at`. `fn_hinh_luu_loi_giai_nguoi` = wrapper. Worker Hình gọi hàm này, KHÔNG tự viết UPDATE.
+- **UI `ChuaGiaiTab`:** Row chung 2 nguồn (`src: kho|hinh`, khoá tự nhiên ma_cau/id), thanh chip **Tất cả · Đại · KHTN · Hình giải tích · Hình**
+  (đếm item render), nhóm Hình theo MÔ HÌNH (ma · tên), card Hình = mã bài toán · nhãn "Bài toán gốc"/"Biến thể đổi số/đỉnh" · Giả thiết
+  · phát biểu · hình bên phải. Panel tự giải dùng chung (Hình không hỏi đáp án; ghi chú node → thành cách giải mặc định).
+  `hinh.ts`: `listHinhChuaGiai` · `datClaudeGiaiHinh` · `huyYeuCauGiaiHinh` · `luuLoiGiaiNguoiHinh`.
+- **Worker `hangdoi-giai.mjs`:** `--list` gộp thêm Hình (`mon:'hinh', loai, id, gia_thiet, de_bai, anh, mau_loi_giai`) · `--ghi` nhận
+  `{mon:'hinh', loai, id, loi_giai, anh?}` → `fn_hinh_ghi_loi_giai(…,'ai')` · `--don`/`--bo hinh <id>` phủ 2 bảng Hình.
+- **Verify:** tsc + build sạch · trình duyệt khối 8: chip "Tất cả 25 · Đại 2 · KHTN 1 · HGT 0 · Hình 22", dropdown "Khối 8 · 25 chưa giải";
+  lọc Hình → nhóm "Hình bình hành MH.023 · 4 bài" có giả thiết + đề + hình; Đặt Claude BT.08.107 → badge, `--list` thấy đúng 1 yêu cầu
+  `hinh baitoan BT.08.107` kèm giả thiết/đề/ảnh; Huỷ → về 0. SQL rollback: ghi 'ai' điền vào cách rỗng (la_mac_dinh giữ true), yêu cầu
+  đóng, ghi đè lần 2 → raise, bài rời view, hiện ở duyệt AI.
+
+## 2026-09-04 (tiếp) — Duyệt lời giải AI: SCOPE THEO MÔN, hết lẫn KHTN vào Toán (mig 202609041905)
+**Thùy:** "Sao KHTN cứ lẫn vào toán vậy. Thống nhất là KHTN nó là MÔN. Ai phụ trách môn nào mới thấy môn đó cơ mà???"
+- **Sai của tôi:** 2 lượt trước gộp ['toan','khtn','hgt'] (+ Hình) thành 1 danh sách "theo khối" ở cả 3 tab, coi KHTN như 1
+  NHÁNH ngang hàng Đại/HGT — vi phạm §1.6 (mỗi môn = bounded context) và scope④ (`useMonScope`, Thùy chốt 08-08 áp TOÀN BỘ
+  màn Kho/Làm tài liệu). Màn này là màn kho mà không dùng hook đó. Bài học: **"gộp theo khối" chỉ được gộp NHÁNH trong 1 MÔN;
+  môn luôn là trục ngoài cùng, đặt bộ chọn môn TRƯỚC mọi bộ lọc khác** (khuôn KhoScreen/NhapKhoScreen `gate` môn).
+- **Registry MÔN → NHÁNH (api.ts `KHO_MON`, 1 chỗ):** Toán = `toan` (Đại) + `hgt` (Hình giải tích) + `hinh` (Hình: biến thể +
+  bài toán gốc) · KHTN = `khtn`. `nhanhCuaMon(mon)`, `NHANH_LABEL`, type `KhoNhanh`. Chỗ nào gộp nhánh phải đi qua đây.
+- **Màn:** bộ chọn môn Toán/KHTN ở đầu (y khuôn KhoScreen: `useMonScope` → admin/ops thấy tất, GV/TA/học thuật chỉ môn trong
+  `nhan_su_mon`, chưa gán = "Bạn chưa được phân môn nào"; nhớ `localStorage duyetlg.mon`; môn không được phép → nhảy môn đầu).
+  **Cả 3 tab** (Chưa có lời giải / Lời giải mới / Tồn đọng) chỉ tải nhánh của môn đang chọn; Hình chỉ tải khi môn có nhánh `hinh`.
+  `ChuaGiaiTab` nhận `mon`; thanh chip NHÁNH chỉ hiện khi môn có >1 nhánh (Toán: Tất cả · Đại · Hình giải tích · Hình; KHTN: không chip).
+- **DB (1905):** `fn_kho_dem_cau_chua_giai(p_nhanh text[])` thay bản `(p_mon text, null = gộp 4 nhánh)` — đếm dropdown khối theo
+  đúng tập nhánh của môn (Toán K8 = 24, KHTN K8 = 1; trước gộp = 25). Drop signature cũ (client duy nhất = màn này).
+- **Verify:** tsc + build sạch; trình duyệt (admin): Toán → chip "Tất cả 24 · Đại 2 · HGT 0 · Hình 22", dropdown "Khối 8 · 24";
+  bấm KHTN → 1 câu KHTN, không chip, dropdown "Khối 8 · 1". Không console error.
