@@ -1014,28 +1014,74 @@ thẳng `ca_test.nguoi_cham_id`/`nguoi_tra_bai_id`, data đã sẵn, không cầ
   `limit to (...)` trong `bkdemy-ph-app/migrations/*.sql` + `bkdemy-web/supabase-ph-migrations/`.
   **Thêm foreign table bên PH ⇒ phải cấp KÈM 2 cổng bên ERP** (GRANT + policy `fdw_bkdemy_web*`).
 
-### ⭐ CÔNG THỨC — ô nhập MathLive không gõ LaTeX + phím tắt cá nhân (03/09, nhánh `feat/cong-thuc`, worktree `wt-cong-thuc`)
-- **Quyết định (Thùy):** người soạn KHÔNG gõ / KHÔNG thấy LaTeX. Cấu trúc chỉ vào bằng **CLICK mẫu** hoặc **PHÍM TẮT tự gán**
-  (không bộ mặc định). Tắt gõ tắt kiểu chữ (`sqrt` = 4 chữ), chặn `\` `^` `_`. **Định dạng lưu KHÔNG đổi**: text có `$…$`
-  trong cột cũ ⇒ in / ET / test online / AI sinh đề không đụng. MathLive nhập, KaTeX render.
-- **Code:** `src/lib/math/{macros,templates,phimtat}.ts` · `src/components/math/{MathPopup,MathTextarea,PhimTatModal}.tsx`.
-  `MathTextarea` bọc textarea (forwardRef, `autoMaxPx`): nút Σ · Ctrl+M · phím gán bấm ngay trong textarea → mở ô kèm mẫu ·
-  preview `<MathText editable>` (bọc `span.mt-f[data-fi]`, `listMath` ở ui.tsx) → **click công thức = mở lại sửa đúng đoạn**.
-  Gắn: FormBaiToan (4 ô) · DangHub `CauEditor` (Đề cả 2 bố cục + `SolutionField`) · NhapKho (Đề chung Đ/S). Không đụng ô khác.
-- **Macro = 1 file** `lib/math/macros.ts` cấp cho cả MathLive lẫn `tex()` của `MathText` (3 nơi render đều qua MathText).
-  `\placeholder` chỉ KaTeX (ô xám bằng `\rule`, chạy cả trong `\text{}`). Mẫu mới **phải qua `npm run kiem:mau`** (96 mẫu × 4 ca).
-- **Phím tắt:** `nhan_su.phim_tat_cong_thuc` jsonb (mig `202609030144`, ĐÃ áp) `{templateId: 'Ctrl+Alt+F'}`; load cùng `me`
-  (store), không localStorage ⇒ 2 người 1 máy mỗi người 1 bộ. Combo lấy theo `e.code`, bắt buộc Ctrl/Alt/Meta hoặc F-key;
-  dành riêng Ctrl+M/C/V/X/Z/Y/A. Trùng → báo đỏ ngay, không nhận. Vào từ Hồ sơ (⌨) hoặc từ chính popup.
-- **Audit dữ liệu cũ** `npm run kiem:congthuc` (CHỈ ĐỌC, `SET TRANSACTION READ ONLY`, ưu tiên `DATABASE_URL_RO`; chưa có RO
-  → `--allow-rw`): **177.956 công thức · 48 lỗi parse / 35 dòng · 464 dòng `$` lẻ**. Lỗi ở dai_cau_hoi (44): `\right`→`ight`,
-  `\n` literal trong `$…$`, thiếu `\` trong `cases`, `$` lồng (cụm T112010301022–032); khtn 2; lý thuyết 2. Báo cáo
-  `scripts/tmp/kiem-cong-thuc-*.md` (gitignored). **CHƯA sửa dữ liệu — chờ Thùy quyết.**
-- **Treo:** IME tiếng Việt thật (Telex/Unikey) trong MathLive chưa thử tay · FormBaiToan/NhapKho mới verify qua tsc (cùng
-  component) · in thật 1 đề đối chiếu preview chưa làm · `AutoTextarea` (DangHub) hết dùng, giữ+export chờ gật xoá ·
-  `.env` chưa có `DATABASE_URL_RO`.
-- **PHẦN B (vẽ hình phẳng JSXGraph, lưu có cấu trúc bảng riêng theo môn, SVG cho in) CHƯA làm — chặn bởi câu hỏi CEO:**
-  hình do AI sinh từ đề rồi người duyệt, hay GV tự dựng tay? PHẦN C (không gian) không làm.
+### ⭐ CÔNG THỨC — PHẦN A (ô ERP không gõ LaTeX) + TOOL SOẠN THẢO riêng `soan` (04–05/09, nhánh `feat/cong-thuc-b`, worktree `bkdemy-erp-v2-congthuc`) — ĐÃ MERGE + PUSH `main`
+- **PHẦN A (03/09, đã merge từ trước) — ô nhập trong ERP:** người soạn KHÔNG gõ / KHÔNG thấy LaTeX. Cấu trúc chỉ vào bằng
+  **CLICK mẫu** hoặc **PHÍM TẮT tự gán** (không bộ mặc định). Tắt gõ tắt kiểu chữ (`sqrt`=4 chữ), chặn `\` `^` `_`. Định dạng
+  lưu KHÔNG đổi (`$…$` trong cột cũ) ⇒ in/ET/test online/AI sinh đề không đụng. Code gốc: `MathPopup`/`MathTextarea`/
+  `PhimTatModal` + `lib/math/{macros,templates,phimtat}.ts`. Phím tắt `nhan_su.phim_tat_cong_thuc` jsonb (mig
+  `202609030144`, ĐÃ áp), load cùng `me` — không localStorage. Gắn: FormBaiToan · DangHub CauEditor (Đề + SolutionField) ·
+  NhapKho. Audit dữ liệu cũ (`npm run kiem:congthuc`, CHỈ ĐỌC): 177.956 công thức · 48 lỗi parse / 35 dòng · 464 dòng `$`
+  lẻ — **CHƯA sửa, chờ Thùy quyết**.
+- **⭐ Bước ngoặt 04/09 (Thùy chỉnh hướng CTO 3 lần trong 1 buổi):** (1) đề xuất "hàng đợi từ 11.815 lời giải AI chưa
+  duyệt trong kho" → SAI, Thùy: **"độc lập với kho, sao cứ dính kho"**. (2) đề xuất "toggle xem code LaTeX để copy" → SAI,
+  Thùy: **"KHÔNG có code LaTeX ở đâu cả, y như MathType"**. Chốt: soạn thảo là **app RIÊNG** (dễ test, không ghi data
+  thật), nhúng vào kho SAU qua 1 nút mở (lõi `{value,onSave}` không đổi khi nhúng).
+- **`soan.html`/`vite.config.soan.ts` (bundle thứ 6, port 5180, KHÔNG PWA):** `src/AppSoan.tsx` (Lưu = nháp localStorage
+  máy này) chỉ bọc **`src/soan/SoanWorkspace.tsx`** = TOÀN BỘ màn, tái dùng nguyên khi nhúng ERP.
+- **Vùng soạn WYSIWYG (`soan/RichMath.tsx` + `soan/doc.ts`):** DOM phẳng — text node (IME tiếng Việt NATIVE, không qua
+  MathLive) xen `<span.rm-f contenteditable=false>` = 1 công thức nguyên khối (KaTeX, cùng `tex()`/macro với in/ET) ↔
+  chuỗi kho `$…$` qua `listMath`. Gõ `$` hoặc Ctrl+M → bảng dựng (`soan/MathBuilder.tsx`, MathLive, y hệt luật PHẦN A);
+  click công thức trong bài = sửa tại chỗ; Backspace xoá nguyên khối 1 phát; dán text có `$…$` → render ngay; **undo/redo
+  tự làm** (stack chuỗi, gõ chữ gom 400ms — undo native của trình duyệt vỡ khi chèn node bằng tay).
+- **Cụm dùng sẵn (`soan/cum.ts`) — 2 loại:** `cong_thuc` (1 công thức, có ô trống `#?`) và **`doan`** (cả ĐOẠN văn kèm
+  công thức — bổ đề con dùng lặp lại nhiều bài, vd *"Vì ABCD là hình bình hành nên AB∥CD và AB=CD"*). Tạo bằng
+  **"＋ Cụm mới"** (bảng kiểu MathType, `soan/CumModal.tsx`) hoặc **bôi đen 1 đoạn đang soạn → "Lưu đoạn chọn → cụm"**
+  (đường tạo tự nhiên nhất — viết 1 lần dùng mãi). Mỗi cụm: tên · gõ tắt (gõ rồi Space là ra) · phím tắt riêng.
+- **Thư mục (`ThuMuc`) tới TỪNG CHƯƠNG của TỪNG KHỐI** ("Hình 8 · Tứ giác", không chỉ "Đại/Hình 7/8") — vì trong 1
+  chương độ lặp cụm/lời văn cực cao (Thùy). Sidebar trái gom theo nhánh+khối, mỗi thư mục đếm cụm, ✎/× khi hover (xoá
+  thư mục → cụm bên trong về "Chung", không mất).
+- **⭐ Thanh TAB 1..10 kiểu MathType (05/09, theo ảnh Thùy gửi):** mỗi THƯ MỤC có 10 tab riêng, mỗi tab = 1 hàng cụm bên
+  dưới → lưu rất nhiều cụm mà không tốn diện tích header. Đặt tên tab (double-click hoặc ✎). Cụm nào hiện ở tab nào (hay
+  **"Ẩn khỏi thanh"** — vẫn dùng được bằng gõ tắt/phím tắt, vẫn thấy ở "Tất cả cụm") do người soạn quyết qua ô "Hiện ở
+  tab" khi tạo/sửa cụm. **Kéo-thả** (tay nắm ⠿ trên chip): thả lên cụm khác = chen vào trước; thả lên tab = chuyển tab +
+  xếp cuối + tự nhảy sang tab đó (`Cum.tab`/`Cum.thuTu`, `sortCum`).
+- **⭐⭐ ĐỔI TÊN ĐIỂM khi dùng cụm (`soan/diem.ts` + `DoiDiemModal.tsx`) — Thùy: "cực kì quan trọng với Hình học".**
+  Bổ đề lưu bằng ABC/DEF, bài đang làm MNP/HIK → click cụm có tên điểm → bảng hiện mỗi điểm 1 ô (A→M, B→N…), preview
+  sống, Enter chèn bản đã đổi. Nhận điểm ở CẢ công thức (`\triangle ABC`→A,B,C; bỏ qua `\mathbb{R}` `\text{}` `\Rightarrow`)
+  LẪN lời văn ("tứ giác ABCD", ranh giới Unicode để "Vì"/"Xét" không bị bắt nhầm). Thay ĐỒNG THỜI 1 lượt (A↔B hoán đổi
+  đúng); tên mới tự do (`A'`, `M_1`). **Bộ điểm nhớ theo CẢ BÀI** (không phải theo cụm) — cụm sau tự điền sẵn; header
+  hiện chip "Bộ điểm: A→M · B→N…" + × xoá về tên gốc.
+- **⭐ Nối vào ERP (05/09) — nút ⤢ ở `MathTextarea`** (component ô soạn dùng chung của ERP, KHÔNG sửa từng màn): bấm ⤢ →
+  `soan/SoanModal.tsx` (portal full màn `z-[90]`, bọc `SoanWorkspace`) mở với `initial=value` của đúng ô → soạn xong Lưu
+  → `onChange(raw)` trả về **đúng ô đã mở**, đóng modal. **Trình soạn thảo KHÔNG tự ghi DB** — ghi DB vẫn là nút Lưu của
+  form ERP như cũ (ô có thể thuộc câu chưa tạo). ⇒ mọi ô đang dùng `MathTextarea` có luôn: FormBaiToan (4 ô) · DangHub
+  Đề+Lời giải · NhapKho Đề chung. `lib/math/mathfield.ts` (mới, tách từ MathPopup) = MỘT nguồn cấu hình MathLive
+  (font/KB_DROP/chặn `\^_`/stripPlaceholders/insertLatexInto/tabNext) dùng chung cho MathPopup (ERP) và MathBuilder
+  (tool soạn) — sửa luật gõ chỉ sửa 1 chỗ.
+- **Số đo trước khi làm (đối chiếu DB thật, chỉ đọc):** 4.716 lời giải người soạn → 17.253 đoạn `$…$` khác nhau; nút
+  thắt thật = **gõ bị chẻ vụn** (`$A$` 224 lần, `$và$` 162, `$nên$` 53 — mở/đóng `$` ~10–15 lần/bài), KHÔNG phải thiếu
+  mẫu ký hiệu. Khuôn lặp có nghĩa: `▢²=▢²+▢²` (Pytago) 53 lần · `k∈ℤ` 47 lần. Kho: dai 16.747 câu (828 trống lời giải ·
+  **11.815 nguon_giai='ai' chưa duyệt**) · hgt 464 · khtn 2.850; chỉ 3 câu đã duyệt.
+- **⚠ BẢN THỬ (spike) — CHƯA phải sản phẩm:** cụm + thư mục + bản nháp ở **localStorage theo ORIGIN** (ERP cổng 5173 và
+  `soan.html` cổng 5180 là **2 bộ cụm khác nhau**; nhiều người/nhiều máy không chung) — vi phạm §2 "data nhiều user →
+  DB", cố ý tạm để Thùy gõ thử cảm giác trước khi định hình DB. **Chưa đăng nhập.**
+- **Verify đã làm (Browser pane, không phải người thật):** đủ vòng gõ chữ→chèn cụm→gõ tắt→dựng công thức→sửa tại
+  chỗ→Ctrl+Z→dán→tạo cụm-đoạn→bôi đen lưu cụm→tạo thư mục→đổi tên điểm→đặt tên tab→kéo-thả tab. tsc sạch mọi bước;
+  `npm run build` (bundle ERP chính, có cả nút ⤢) chạy được. **IME tiếng Việt thật (Telex/Unikey) CHƯA ai gõ tay** — máy
+  chỉ gửi được ký tự dựng sẵn qua automation, đây là rủi ro lớn nhất còn lại chưa loại trừ.
+- **Bẫy verify Browser pane đã ghi memory** (`browser-pane-automation-quirks.md`): click ngay sau `navigate` luôn trượt
+  (cần screenshot trước) · phím Space/Enter không tới React `onKeyDown` qua `computer.key` (native vẫn chạy — phải
+  dispatch `KeyboardEvent` bằng JS, `composed:true` cho MathLive xuyên shadow DOM) · HMR giữ state cũ (phải reload sau
+  mỗi sửa).
+- **Đã MERGE `main` (05/09):** `d62afeb` (nội dung) → `5682a35`/`467d261` (gộp 20 commit khác cùng ngày: Duyệt lời giải
+  AI, app `pt`, APK Android) → **đã PUSH `origin/main`** (local `main` cũng đã merge+push, hiện khớp origin). Không có
+  xung đột thật (3 file "cùng nối cuối" — giữ cả hai bên).
+- **PHẦN B (vẽ hình phẳng JSXGraph, lưu cấu trúc riêng theo môn, SVG cho in) CHƯA làm** — chặn bởi câu hỏi CEO: hình do
+  AI sinh từ đề rồi người duyệt, hay GV tự dựng tay? PHẦN C (không gian) không làm.
+- **Bước kế đã thống nhất (chưa làm):** cụm/thư mục → bảng DB dùng chung (`cum_cong_thuc`, `cum_thu_muc`, nhãn
+  `mon`/`nhanh` §1.6, thư mục trỏ được `chuong` của bản đồ kiến thức từng nhánh) + đăng nhập → nút ⤢ ghi thẳng
+  `loi_giai` theo `ma_cau` (dispatch môn→bảng qua registry, KHÔNG rải `if mon===...`). IME thật cần Thùy tự gõ thử tay
+  1 lần trước khi tin. `AutoTextarea` (DangHub) vẫn hết dùng, giữ+export chờ gật xoá.
 
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
 
