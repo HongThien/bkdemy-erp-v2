@@ -30,3 +30,6 @@ dist-gv/
 
 # build output app BK Chi (như dist-ops)
 dist-chi/
+
+# build output tool SOẠN THẢO (như dist-ops)
+dist-soan/

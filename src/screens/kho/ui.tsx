@@ -18,7 +18,8 @@ const UNI: [RegExp, string][] = [
 ]
 // Đổi ký hiệu toán TRẦN (ngoài $…$) → Unicode. Chạy TRƯỚC bước cắt dòng để "\neq" trần không bị nuốt "\n".
 const uni = (t: string) => { let s = t; for (const [re, u] of UNI) s = s.replace(re, u); return s }
-const tex = (s: string, display: boolean) => {
+// export: tool soạn thảo (src/soan/doc.ts) render từng công thức nguyên khối bằng ĐÚNG hàm này → soạn thấy sao, in ra vậy.
+export const tex = (s: string, display: boolean) => {
   // \frac hiển thị bé (scriptstyle khi inline) → đổi sang \dfrac cho phân số to, đẹp.
   // \vec{AB} (vector 2 điểm) → mũi tên KHÔNG giãn hết bề rộng, chỉ phủ đúng 1 ký hiệu (đúng chuẩn LaTeX
   // của \vec) → nhìn như chỉ phủ mỗi chữ cuối. Vector 2 điểm (AB, PN, PM…) phải dùng \overrightarrow mới

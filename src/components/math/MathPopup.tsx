@@ -5,49 +5,18 @@
 // Định dạng LƯU không đổi: chuỗi LaTeX bọc $…$ (MathTextarea lo phần bọc + chèn vào textarea).
 import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react'
 import { createPortal } from 'react-dom'
-import { MathfieldElement } from 'mathlive'
+import type { MathfieldElement } from 'mathlive'
 import { MathText } from '../../screens/kho/ui'
-import { MATH_MACROS } from '../../lib/math/macros'
-import { MATH_TABS, MATH_TEMPLATES, MATH_TEMPLATE_BY_ID, hasPlaceholder, toPreview, type MathTab, type MathTemplate } from '../../lib/math/templates'
+import { MATH_TABS, MATH_TEMPLATES, MATH_TEMPLATE_BY_ID, toPreview, type MathTab, type MathTemplate } from '../../lib/math/templates'
 import { comboFromEvent, findTemplateByCombo } from '../../lib/math/phimtat'
+import { KEY_BLOCK, insertTemplateInto, readClean, setupMathField, tabNext as mfTabNext } from '../../lib/math/mathfield'
 import { usePhimTat } from '../../store/useStore'
 import PhimTatModal from './PhimTatModal'
 
-// Font: MathLive dùng đúng họ font KaTeX mà app đã nạp qua katex.min.css → không tải lại từ CDN/thư mục.
-MathfieldElement.fontsDirectory = null
-MathfieldElement.soundsDirectory = null
-
-declare global {
-  // eslint-disable-next-line @typescript-eslint/no-namespace
-  namespace JSX {
-    interface IntrinsicElements {
-      'math-field': React.DetailedHTMLProps<React.HTMLAttributes<MathfieldElement>, MathfieldElement>
-    }
-  }
-}
-
-// Bỏ MỌI keybinding mặc định của MathLive có tác dụng CHÈN cấu trúc / đổi mode / sửa ma trận
-// (alt+v → căn, "/" → phân số, "\" → LaTeX, ctrl+6 → mũ…). Chỉ giữ di chuyển · xoá · chọn · undo · clipboard.
-const KB_DROP = new Set([
-  'insert', 'switchMode', 'toggleVirtualKeyboard', 'toggleKeystrokeCaption', 'toggleContextMenu',
-  'moveToSuperscript', 'moveToSubscript', 'moveToOpposite', 'addRowAfter', 'addRowBefore', 'addColumnAfter',
-  'addColumnBefore', 'removeRow', 'removeColumn', 'commit', 'complete', 'moveToNextPlaceholder', 'moveToPreviousPlaceholder',
-])
-// Phím gõ thẳng vào ô mà MathLive tự đổi thành cấu trúc → CHẶN (cấu trúc chỉ vào qua mẫu/phím gán).
-const KEY_BLOCK = new Set(['\\', '^', '_'])
-
-// Bỏ ô trống còn sót khi lưu: \placeholder{} → {} (KaTeX không biết \placeholder; {} render rỗng, không lỗi).
-export function stripPlaceholders(latex: string): string {
-  const ARG = '(\\{[^{}]*\\}|[0-9a-zA-Z])'
-  return latex
-    .replace(/\\placeholder(?:\[[^\]]*\])?\{([^{}]*)\}/g, '{$1}')
-    .replace(/\{\{\}\}/g, '{}')                       // \frac{a}{\placeholder{}} → \frac{a}{} (không ra {{}})
-    // MathLive tiết kiệm ngoặc: \frac34, \sqrt2 → chuẩn hoá \frac{3}{4}, \sqrt{2} (dễ đọc, khớp dữ liệu cũ).
-    .replace(new RegExp(`\\\\(frac|dfrac|tfrac|binom)${ARG}${ARG}`, 'g'), (_m, c: string, x: string, y: string) => `\\${c}{${x.replace(/^\{|\}$/g, '')}}{${y.replace(/^\{|\}$/g, '')}}`)
-    .replace(new RegExp(`\\\\sqrt${ARG}`, 'g'), (_m, x: string) => `\\sqrt{${x.replace(/^\{|\}$/g, '')}}`)
-    .trim()
-}
-const isBlank = (latex: string) => latex.replace(/[{}\s]/g, '') === ''
+// 05/09: toàn bộ cấu hình MathLive (font, keybinding bỏ, chặn "\" "^" "_", strip placeholder, chèn mẫu, Tab)
+// chuyển sang lib/math/mathfield.ts — DÙNG CHUNG với MathBuilder của tool soạn thảo (src/soan).
+// Sửa luật gõ thì sửa ở đó, không sửa ở đây. Re-export để chỗ cũ import từ MathPopup vẫn chạy.
+export { stripPlaceholders } from '../../lib/math/mathfield'
 
 export type MathPopupProps = {
   initial: string                       // LaTeX đang sửa ('' = công thức mới)
@@ -73,66 +42,24 @@ export default function MathPopup({ initial, display, anchor, startTemplate, onC
   function insertTemplate(id: string) {
     const mf = mfRef.current; const t = MATH_TEMPLATE_BY_ID[id]
     if (!mf || !t) return
-    // Đang bôi đen 1 đoạn → đoạn đó vào Ô TRỐNG ĐẦU TIÊN của mẫu (bôi "x+1" rồi bấm phân số → tử = x+1).
-    const sel = mf.selectionIsCollapsed ? '' : mf.getValue(mf.selection, 'latex')
-    let s = t.latex
-    if (sel && hasPlaceholder(t)) s = s.replace('#?', sel)
-    s = s.replace(/#\?/g, '\\placeholder{}')
-    // Đang ở mode chữ (trong \text{…}) mà chèn mẫu → MathLive nhét LaTeX như chữ thường. Luôn về mode toán trước.
-    if (mf.mode !== 'math') mf.executeCommand(['switchMode', 'math'])
-    mf.insert(s, { format: 'latex', selectionMode: s.includes('\\placeholder') ? 'placeholder' : 'after', focus: true })
-    // Mẫu Văn bản: ô trống trong \text{} vẫn ở mode toán (chữ nghiêng, mất khoảng trắng, mất \text) → ép sang
-    // mode text để tiếng Việt có dấu gõ vào thành \text{với mọi x}. Rời khỏi \text{} (Tab) tự về mode toán.
-    if (t.tab === 'van_ban') mf.executeCommand(['switchMode', 'text'])
+    insertTemplateInto(mf, t)
     setLatex(mf.getValue('latex'))
   }
   function commit() {
     const mf = mfRef.current; if (!mf) return
-    const clean = stripPlaceholders(mf.getValue('latex'))
-    if (isBlank(clean)) { onCancel(); return }
+    const clean = readClean(mf)
+    if (clean == null) { onCancel(); return }
     onCommit(clean)
   }
-  // Tab: còn ô trống PHÍA SAU con trỏ → nhảy tới; hết → thoát ra sau khung đang đứng (moveAfterParent).
-  function tabNext(back: boolean) {
-    const mf = mfRef.current; if (!mf) return
-    const rest = back ? mf.getValue(0, mf.position, 'latex') : mf.getValue(mf.position, mf.lastOffset, 'latex')
-    if (rest.includes('\\placeholder')) mf.executeCommand(back ? 'moveToPreviousPlaceholder' : 'moveToNextPlaceholder')
-    else {
-      mf.executeCommand(back ? 'moveToPreviousChar' : 'moveAfterParent')
-      // Đang trong \text{…} ở tầng gốc: moveAfterParent không có "cha" để thoát → tự trả về mode toán
-      // (Tab = "thoát khung chữ", chữ gõ tiếp là biến/số).
-      if (mf.mode !== 'math') mf.executeCommand(['switchMode', 'math'])
-    }
-  }
+  function tabNext(back: boolean) { const mf = mfRef.current; if (mf) mfTabNext(mf, back) }
 
   useEffect(() => {
     const mf = mfRef.current; if (!mf) return
-    mf.classList.add('mf-input')                  // React 18 KHÔNG set className lên custom element → gán tay
-    mf.inlineShortcuts = {}                       // TẮT gõ tắt kiểu chữ: "sqrt" phải ra 4 chữ s q r t
-    mf.smartMode = false
-    mf.smartSuperscript = false
-    mf.mathVirtualKeyboardPolicy = 'manual'       // không bật bàn phím ảo
-    mf.menuItems = []                             // không menu chuột phải (có mục chèn LaTeX)
-    mf.macros = { ...mf.macros, ...MATH_MACROS }  // cùng 1 file macro với KaTeX
-    mf.keybindings = mf.keybindings.filter((kb) => !KB_DROP.has(String(Array.isArray(kb.command) ? kb.command[0] : kb.command)))
-    mf.value = initial
-    const onInput = () => setLatex(mf.getValue('latex'))
-    mf.addEventListener('input', onInput)
-    // Chặn "\" "^" "_" cả ở tầng beforeinput (IME / dán / gõ không qua keydown) — đi kèm onKeyDownCapture ở dưới.
-    const onBeforeInput = (e: Event) => {
-      // MathLive tự phát beforeinput GIẢ (isTrusted=false, data = LaTeX) mỗi lần insert() → bỏ qua, chỉ bắt gõ thật.
-      if (!e.isTrusted) return
-      const d = (e as InputEvent).data
-      if (!d || !/[\\^_]/.test(d)) return
-      e.preventDefault(); e.stopImmediatePropagation()
-      const clean = d.replace(/[\\^_]/g, '')            // dán / IME nhiều ký tự: chỉ bỏ ký tự cấm, giữ phần còn lại
-      if (clean) mf.executeCommand(['typedText', clean])
-    }
-    mf.addEventListener('beforeinput', onBeforeInput, true)
+    const off = setupMathField(mf, initial, () => setLatex(mf.getValue('latex')))
     mf.focus()
     if (initial) mf.executeCommand('moveToMathfieldEnd')
     if (startTemplate) insertTemplate(startTemplate)
-    return () => { mf.removeEventListener('input', onInput); mf.removeEventListener('beforeinput', onBeforeInput, true) }
+    return off
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

@@ -98,5 +98,7 @@ export const MATH_TEMPLATE_BY_ID: Record<string, MathTemplate> = Object.fromEntr
 export const hasPlaceholder = (t: MathTemplate) => t.latex.includes('#?')
 // Chuỗi đưa vào MathLive (#? → ô trống thật).
 export const toMathLive = (t: MathTemplate) => t.latex.replace(/#\?/g, '\\placeholder{}')
-// Chuỗi preview cho NÚT mẫu (KaTeX): #? → ô vuông xám.
-export const toPreview = (t: MathTemplate) => (t.mau ?? t.latex).replace(/#\?/g, '\\textcolor{silver}{\\square}')
+// Chuỗi preview (KaTeX) cho LaTeX có ô trống: #? → ô vuông xám. Dùng cho nút mẫu + bảng cụm của tool soạn.
+export const previewLatex = (latex: string) => latex.replace(/#\?/g, '\\textcolor{silver}{\\square}')
+// Chuỗi preview cho NÚT mẫu.
+export const toPreview = (t: MathTemplate) => previewLatex(t.mau ?? t.latex)

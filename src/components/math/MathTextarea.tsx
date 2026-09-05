@@ -3,11 +3,15 @@
 //   · Ctrl+M hoặc nút Σ → mở ô công thức (MathPopup) NGAY DƯỚI con trỏ → Enter chèn `$…$` tại con trỏ.
 //   · Phím tắt tự gán bấm ngay trong textarea → mở ô công thức với mẫu đó đã chèn sẵn.
 //   · Preview KaTeX bên dưới (khi có $): CLICK vào 1 công thức đã render → mở lại để sửa đúng công thức đó.
+//   · Nút ⤢ → mở TRÌNH SOẠN THẢO full màn (src/soan — WYSIWYG, cụm/thư mục/đổi tên điểm) với nội dung ô này;
+//     Lưu ở đó → nội dung về đúng ô này (form ERP bấm Lưu như thường). Thùy 05/09: "ở ERP muốn giải/soạn/sửa gì
+//     có 1 option mở trình soạn thảo, soạn xong bấm save là tự lưu vào đúng chỗ mở ra".
 import { forwardRef, useCallback, useLayoutEffect, useRef, useState, type TextareaHTMLAttributes } from 'react'
 import { MathText, listMath } from '../../screens/kho/ui'
 import { comboFromEvent, findTemplateByCombo } from '../../lib/math/phimtat'
 import { usePhimTat } from '../../store/useStore'
 import MathPopup from './MathPopup'
+import { SoanModal } from '../../soan/SoanModal'
 
 type Props = Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'value' | 'onChange'> & {
   value: string
@@ -15,6 +19,7 @@ type Props = Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'value' | 'onChan
   wrapClassName?: string   // class cho khung bọc (vd 'min-h-0 flex-1 flex flex-col' khi textarea phải giãn hết chỗ)
   preview?: boolean        // mặc định true — preview + click-để-sửa
   autoMaxPx?: number       // có = textarea tự co cao theo nội dung (như AutoTextarea cũ), tối đa autoMaxPx rồi cuộn
+  soanTitle?: string       // tiêu đề hiện trên trình soạn thảo full màn (vd "Lời giải · DC000123")
 }
 type Pop = { initial: string; display: boolean; range: [number, number]; anchor: { x: number; y: number }; startTemplate?: string }
 
@@ -40,8 +45,9 @@ function caretXY(ta: HTMLTextAreaElement): { x: number; y: number } {
 }
 
 export const MathTextarea = forwardRef<HTMLTextAreaElement, Props>(function MathTextarea(
-  { value, onChange, className, wrapClassName, preview = true, autoMaxPx, onKeyDown, ...rest }, fwdRef,
+  { value, onChange, className, wrapClassName, preview = true, autoMaxPx, soanTitle, onKeyDown, ...rest }, fwdRef,
 ) {
+  const [soan, setSoan] = useState(false)
   const taRef = useRef<HTMLTextAreaElement | null>(null)
   useLayoutEffect(() => {
     if (autoMaxPx == null) return
@@ -96,6 +102,9 @@ export const MathTextarea = forwardRef<HTMLTextAreaElement, Props>(function Math
       <textarea ref={setRef} value={value} onChange={(e) => onChange(e.target.value)} onKeyDown={onKey} className={className} {...rest} />
       <button type="button" tabIndex={-1} title="Chèn công thức (Ctrl+M)" onMouseDown={(e) => e.preventDefault()} onClick={() => open()}
         className="absolute right-1.5 top-1.5 z-10 flex h-6 w-7 items-center justify-center rounded border border-slate-200 bg-white/90 text-[13px] font-bold text-indigo-600 shadow-sm hover:border-indigo-400 hover:bg-indigo-50">Σ</button>
+      <button type="button" tabIndex={-1} title="Mở trình soạn thảo (full màn: cụm, thư mục, đổi tên điểm)" onMouseDown={(e) => e.preventDefault()} onClick={() => setSoan(true)}
+        className="absolute right-9 top-1.5 z-10 flex h-6 w-7 items-center justify-center rounded border border-slate-200 bg-white/90 text-[13px] font-bold text-indigo-600 shadow-sm hover:border-indigo-400 hover:bg-indigo-50">⤢</button>
+      {soan && <SoanModal initial={value} title={soanTitle} onSave={(raw) => onChange(raw)} onClose={() => { setSoan(false); setTimeout(() => taRef.current?.focus(), 50) }} />}
       {preview && value.includes('$') && (
         <div className="mt-1 shrink-0 rounded-md border border-dashed border-indigo-200 bg-indigo-50/30 px-2 py-1 text-[13px] leading-relaxed text-slate-700" title="Click vào một công thức để sửa" onClick={onPreviewClick}>
           <MathText editable>{value}</MathText>

@@ -1,0 +1,72 @@
+/* ── Tool soạn thảo công thức (src/soan) — chỉ bundle soan nạp file này ── */
+.rm-doc {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  outline: none;
+  font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+  font-size: 18px;
+  line-height: 2;
+  color: #0f172a;
+  caret-color: #4f46e5;
+}
+.rm-doc.rm-doc--empty::before { content: attr(data-placeholder); color: #94a3b8; pointer-events: none; }
+/* Công thức = khối nguyên trong dòng chữ: click để sửa, xoá bằng 1 Backspace */
+.rm-f {
+  display: inline-block;
+  padding: 0 3px;
+  margin: 0 1px;
+  border-radius: 4px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: background 0.12s, box-shadow 0.12s;
+  vertical-align: baseline;
+}
+.rm-f:hover { background: #e0e7ff; box-shadow: 0 0 0 1px #a5b4fc; }
+.rm-f.rm-f--sel { background: #c7d2fe; box-shadow: 0 0 0 1.5px #6366f1; }
+.rm-f[data-display="1"] { display: block; text-align: center; margin: 4px 0; }
+.rm-f .katex { font-size: 1.02em !important; }
+/* Bảng cụm phía trên */
+.cum {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 4px 8px 4px 12px; border: 1px solid #e2e8f0; border-radius: 8px; background: #fff;
+  cursor: pointer; transition: border-color 0.12s, background 0.12s, box-shadow 0.12s;
+  font-size: 13px; color: #334155; max-width: 100%;
+}
+.cum:hover { border-color: #818cf8; background: #eef2ff; box-shadow: 0 1px 2px rgb(15 23 42 / 0.06); }
+.cum-ten { font-weight: 500; white-space: nowrap; }
+.cum-f { font-size: 15px; color: #0f172a; white-space: nowrap; }
+.cum-key { font-family: ui-monospace, monospace; font-size: 10.5px; color: #64748b; background: #f1f5f9; border-radius: 4px; padding: 1px 5px; white-space: nowrap; }
+.cum-x { margin-left: 2px; color: #94a3b8; font-size: 12px; line-height: 1; padding: 2px 4px; border-radius: 4px; }
+.cum-x:hover { color: #e11d48; background: #ffe4e6; }
+/* Chip cụm ĐOẠN (văn + công thức): nội dung dài → 2 dòng, cắt … */
+.cum--doan { align-items: flex-start; padding-top: 5px; padding-bottom: 5px; }
+.cum--doan .cum-ten { padding-top: 1px; }
+.cum--doan .cum-f { font-size: 13px; white-space: normal; max-width: 420px; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; color: #334155; }
+/* Ô soạn cụm-đoạn trong modal */
+.rm-doc--cum { min-height: 120px; max-height: 40vh; overflow-y: auto; font-size: 16px; line-height: 1.9; }
+/* Sidebar thư mục = chương của khối */
+.side { width: 220px; flex-shrink: 0; display: flex; flex-direction: column; gap: 1px; overflow-y: auto; border-right: 1px solid #e2e8f0; background: #fff; padding: 8px; }
+.side-top { display: flex; align-items: center; justify-content: space-between; padding: 4px 6px 8px; }
+.side-h { padding: 10px 8px 3px; font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #94a3b8; }
+.side-item { display: flex; align-items: center; gap: 6px; width: 100%; text-align: left; padding: 5px 8px; border-radius: 6px; font-size: 13px; color: #334155; cursor: pointer; }
+.side-item:hover { background: #f1f5f9; }
+.side-item--on { background: #eef2ff; color: #3730a3; font-weight: 600; }
+.side-n { margin-left: auto; font-size: 11px; color: #94a3b8; font-weight: 500; }
+/* Thanh tab 1..10 kiểu MathType — mỗi tab 1 hàng cụm bên dưới */
+.tabbar { display: flex; align-items: flex-end; gap: 2px; border-bottom: 1px solid #e2e8f0; }
+.tab { display: inline-flex; align-items: center; gap: 5px; height: 26px; padding: 0 9px; border: 1px solid #e2e8f0; border-bottom: none; border-radius: 6px 6px 0 0; background: #f8fafc; font-size: 12px; color: #475569; cursor: pointer; margin-bottom: -1px; }
+.tab:hover { background: #eef2ff; color: #3730a3; }
+.tab--on { background: #fff; color: #3730a3; font-weight: 600; border-color: #c7d2fe; box-shadow: 0 1px 0 #fff; }
+.tab--empty { color: #94a3b8; }
+.tab--empty.tab--on { color: #6366f1; }
+.tab-n { font-family: ui-monospace, monospace; font-size: 11px; }
+.tab-ten { max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tab-so { font-size: 10px; color: #94a3b8; background: #f1f5f9; border-radius: 8px; padding: 0 5px; line-height: 14px; }
+.tab--on .tab-so { background: #e0e7ff; color: #4338ca; }
+.tab--edit { width: 130px; outline: none; border-color: #6366f1; background: #fff; }
+/* Kéo-thả cụm: tay nắm ⠿ (chip vẫn click-để-chèn), chip đang kéo mờ đi, tab nhận thả sáng lên */
+.cum-grip { cursor: grab; color: #cbd5e1; font-size: 13px; margin-left: -4px; user-select: none; }
+.cum-grip:hover { color: #6366f1; }
+.cum--drag { opacity: 0.45; }
+.tab--over { background: #c7d2fe !important; color: #312e81 !important; border-color: #818cf8 !important; }

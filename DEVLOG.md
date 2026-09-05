@@ -7859,3 +7859,109 @@ bản gõ "với mọi" Tab "x" → `\text{với mọi}x`. tsc sạch. Không l�
 + NhapKho mới verify bằng tsc (cùng component) · `AutoTextarea` (DangHub) không còn ai dùng — giữ + export chờ gật xoá ·
 `.env` chưa có DATABASE_URL_RO nên script chạy `--allow-rw` · 48 lỗi + 464 $ lẻ chờ quyết cách sửa · PHẦN B chờ trả lời câu
 "AI sinh hình hay GV dựng tay".
+
+## 2026-09-05 — TOOL SOẠN THẢO công thức: app riêng `soan` (WYSIWYG, không LaTeX) — spike (nhánh feat/cong-thuc-b, worktree bkdemy-erp-v2-congthuc)
+**Bối cảnh / quyết định (Thùy, 3 lần chỉnh hướng CTO trong 1 buổi):** (1) CTO đề xuất "hàng đợi từ kho (11.815 lời giải AI chưa duyệt)" → SAI, Thùy:
+"độc lập với kho, sao cứ dính kho". (2) CTO đề xuất "toggle xem code LaTeX để copy" → SAI, Thùy: "KHÔNG có code LaTeX ở đâu cả, y như
+MathType". Chốt: **TRÊN = bảng cụm** (tên trái · công thức phải, người soạn tự tạo qua "Tạo công thức mới" kiểu MathType + gõ tắt + phím tắt)
+· **DƯỚI = vùng soạn WYSIWYG** (chọn cụm → công thức hiện ngay trong bài) · **Lưu → máy tự dịch chuỗi kho `$…$`**, người soạn không thấy.
+Làm ĐỘC LẬP trước (dễ test, không ghi data thật), nhúng vào kho sau (nút "Soạn thảo đáp án" ở DangHub) — lõi `{value,onSave}` không đổi.
+**Số đo trước khi làm (chỉ đọc):** 4.716 lời giải người soạn → 17.253 đoạn `$…$` khác nhau; top lặp = `$A$` 224 · `$x$` 203 · `$,$` 191 ·
+`$và$` 162 (!) · `$nên$` 53 → nút thắt thật = **gõ bị chẻ vụn** (mở/đóng `$` ~10–15 lần/bài), không phải thiếu mẫu ký hiệu. Khuôn có nghĩa:
+`▢^2=▢^2+▢^2` 53 · `k\in\mathbb{Z}` 47. Kho: dai 16.747 (828 trống lời giải · 11.815 nguon_giai='ai' chưa duyệt) · hgt 464 · khtn 2.850; đã duyệt 3.
+**Làm:**
+- App thứ 6 cùng repo: `soan.html` · `src/main-soan.tsx` · `src/AppSoan.tsx` · `vite.config.soan.ts` (port 5180, KHÔNG PWA) · scripts
+  `dev:soan/build:soan/preview:soan` · `.gitignore` dist-soan. Không kéo NhanSuHome/useStore/screens kho (chỉ kho/ui.tsx = KaTeX primitive).
+- **Tách `lib/math/mathfield.ts`** = MỘT nguồn cấu hình MathLive (font, KB_DROP, chặn `\ ^ _`, stripPlaceholders, insertLatexInto, tabNext,
+  readClean) — MathPopup (ERP) đổi sang import từ đây, hành vi giữ nguyên; tool soạn dùng chung mà không kéo store ERP. `ui.tsx` export `tex`;
+  `templates.ts` thêm `previewLatex`.
+- `src/soan/doc.ts`: mô hình DOM PHẲNG — text node (pre-wrap, `\n` = xuống dòng) xen `<span.rm-f contenteditable=false data-latex>` (KaTeX)
+  ↔ chuỗi kho qua `listMath`/`tex` (cùng regex + macro với in/ET). ZW (`\u200B`) đệm sau công thức để caret có chỗ đứng, bỏ khi serialize.
+- `src/soan/RichMath.tsx`: contenteditable + công thức nguyên khối. Chữ gõ native (IME VN không qua MathLive). `$`/Ctrl+M → mở bảng dựng;
+  click công thức → sửa tại chỗ; gõ tắt + Space → thay bằng cụm (có ô trống → mở bảng dựng nạp sẵn); phím tắt cụm; dán text có `$…$` →
+  render ngay; Enter chèn `\n` tay (không để Chrome đẻ div); **undo/redo tự làm** (stack chuỗi, gõ chữ gom 400ms) vì undo native vỡ khi chèn node tay.
+- `src/soan/MathBuilder.tsx`: modal dựng công thức (tab mẫu + tab "Cụm của tôi" + math-field + preview) · `CumModal` = builder + ô tên/gõ tắt/
+  phím tắt (bắt tổ hợp, chặn trùng + dành riêng)/nhánh. `src/soan/cum.ts`: model cụm có `mon`+`nhanh` (§1.6), seed 12 cụm ví dụ Đại/Hình.
+**Sai → sửa (3 bug tìm bằng test thật):** (a) cụm chèn nhảy lên ĐẦU bài: `focus()` vào contenteditable trước khi đọc range → Chrome reset
+selection về đầu → đọc `currentRange()` TRƯỚC, focus SAU. (b) chèn lệch 2 ký tự về trước: `Range` sống tự dời offset sau `deleteContents()`,
+mình đọc `rg.startOffset` SAU khi xoá → chốt `off` trước. (c) "Tạo công thức mới": `mf.focus()` trong effect giành focus của ô Tên autoFocus →
+chữ gõ tên rơi vào ô toán → chỉ focus mf khi không có form; nút mẫu `tabIndex=-1`; trả focus vùng soạn bằng setTimeout 60ms (bài học MathLive
+dọn focus async) + `focus()` khôi phục savedRange nếu selection đã bị đá ra ngoài.
+**Verify (localhost:5180/soan.html, Browser pane):** gõ chữ VN → click "Suy ra" chèn ⇒ đúng chỗ → gõ `ss`+Space mở bảng nạp `▢∥▢` → AB Tab CD
+Enter → chuỗi `Ta có $AB\parallel CD$ nên $\Rightarrow$ xong.` · click công thức sửa → `AB\parallel CDEF` thay tại chỗ · Ctrl+Z về bản cũ ·
+Backspace xoá nguyên khối (spans 4→3) · dán `$x^2+1$ và $\frac{a}{b}$` render ngay · Tạo cụm "Định lý Talet"/gõ tắt `talet`/`\frac{AB}{AC}` →
+hiện trên bảng → gõ `talet`+Space chèn thẳng · Ctrl+S "✓ Đã lưu". tsc sạch · `build:soan` OK (1.26MB, cảnh báo chunk như các app khác). Console 0 lỗi.
+**Bẫy test Browser pane (đã ghi memory):** click đầu sau navigate luôn trượt → screenshot trước; `key` Space/Enter KHÔNG tới React onKeyDown
+(native vẫn chạy) → dispatch KeyboardEvent bằng JS (`composed:true` cho MathLive); HMR giữ state cũ → reload sau mỗi sửa.
+**⚠ Bản THỬ — chưa phải sản phẩm:** chưa đăng nhập · cụm + nháp ở localStorage (vi phạm §2 "data nhiều user → DB", CỐ Ý tạm để Thùy gõ thử
+cảm giác) · "Lưu" mới lưu nháp máy này, CHƯA ghi kho · chưa có công thức riêng dòng (`$$…$$` chỉ giữ khi nạp) · "bộ điểm của bài" chưa làm ·
+IME Telex/Unikey thật chưa gõ tay (chỉ ký tự dựng sẵn qua automation). Chưa commit — Thùy gõ thử rồi quyết.
+**Bước kế (sau khi Thùy thử):** bảng `cum_cong_thuc` + migration + đăng nhập → Lưu ghi `loi_giai` theo `ma_cau` (dispatch môn→bảng qua registry)
+→ nút "Soạn thảo đáp án" ở DangHub mở `soan.html?ma_cau=…`.
+
+## 2026-09-05 (tiếp) — Tool soạn thảo: CỤM-ĐOẠN (văn + công thức) + THƯ MỤC tới từng chương của khối + "Lưu đoạn chọn → cụm"
+**Thùy (sau khi xem bản thử):** "về ý tưởng tương đối hoàn thiện" + 2 bổ sung: (1) cụm dài cả LỜI VĂN kèm công thức (bổ đề con dùng đi dùng
+lại nhiều bài); (2) THƯ MỤC nhỏ tới TỪNG CHƯƠNG của mỗi khối (không chỉ Đại/Hình 7/8) — trong 1 chương độ tương đồng cụm cực cao.
+**Làm:**
+- `cum.ts`: `Cum.loai = 'cong_thuc' | 'doan'`, `noiDung` (cong_thuc = LaTeX có `#?`; doan = chuỗi kho text+$…$), `thuMucId`. `ThuMuc {ten, mon,
+  nhanh, khoi}` = 1 chương của 1 khối. localStorage v1→v2 tự nâng (giữ cụm chị đã tạo). Seed 3 thư mục + 2 cụm-đoạn ví dụ (HBH → cạnh đối; g.g).
+- `RichMath`: thêm `insertRaw(raw)` (chèn nguyên đoạn text+CT tại con trỏ — dán dùng chung) + `getSelectionRaw()` (đoạn bôi đen → chuỗi kho qua
+  `serialize(cloneContents)`). `resolveGoTat` đổi hợp đồng 2 pha: trả HÀNH ĐỘNG; RichMath xoá từ + đặt con trỏ xong mới gọi → cụm-đoạn/công thức
+  đều chèn đúng chỗ, không tự lo xoá chữ.
+- `MathDoc.tsx` (mới) = RichMath + toàn bộ dây nối cụm (click/gõ tắt/phím tắt → `useCum`; `$`/Ctrl+M → MathBuilder; click CT → sửa). Dùng ở vùng
+  soạn chính VÀ ô soạn cụm-đoạn trong modal (cụm-đoạn cũng chứa công thức → lồng MathBuilder trong CumModal).
+- `CumModal.tsx` (tách khỏi MathBuilder — tránh import vòng): seg Loại (Công thức / Đoạn văn + CT) · tên · gõ tắt · phím tắt · **Thư mục** (select
+  chương). Đoạn: Ctrl+Enter lưu (Enter = xuống dòng). `ThuMucModal.tsx`: nhánh · khối · tên chương.
+- `AppSoan`: sidebar TRÁI = thư mục gom theo "HÌNH 8 / ĐẠI 8" (Tất cả · Chung · từng chương, đếm cụm, ✎/× khi hover; xoá → cụm bên trong về Chung);
+  bảng cụm lọc theo thư mục đang chọn + nhóm CHUNG; nút **"Lưu đoạn chọn → cụm"** (bật khi đang bôi đen, mở CumModal loai=doan nạp sẵn đoạn + thư mục
+  đang chọn); "＋ Cụm mới" mặc định vào thư mục đang chọn. Bỏ seg Đại/Hình ở header (thư mục đã mang nhánh).
+- **Bẫy portal lồng nhau:** sự kiện React bubble theo CÂY REACT, không theo DOM → Esc / mousedown trong MathBuilder lồng bên trong CumModal chạy
+  lên handler của CumModal → đóng nhầm cả modal. Vá: overlay chỉ đóng khi `e.target === e.currentTarget`; MathBuilder gắn `data-modal="builder"`,
+  shell ngoài bỏ qua keydown có target nằm trong đó.
+**Verify (Browser pane, localStorage xoá sạch → seed):** click chip "Hình bình hành → cạnh đối" → cả câu `Vì $ABCD$ là hình bình hành nên
+$AB \parallel CD$ và $AB = CD$.` vào bài · gõ `gg`+Space → bổ đề g.g nguyên đoạn (8 công thức) · bôi đen 2 câu → nút bật → modal đoạn nạp
+sẵn đúng nội dung + thư mục "Hình 8 · Tứ giác" → tên "Bổ đề HBH + đồng dạng" → Ctrl+Enter → cụm mới loai=doan, thuMucId đúng, Tứ giác 3→4 ·
+"＋" thư mục → "Hàm số bậc nhất" Enter → xuất hiện + tự chọn, bảng hiện thông báo trống + nhóm Chung. tsc sạch. Vẫn CHƯA commit, chờ Thùy gõ thử.
+**Còn treo (không đổi):** localStorage/chưa login/chưa ghi kho · IME thật chưa gõ tay · khi lên DB: thư mục nên trỏ `chuong` bản đồ từng nhánh
+thay vì tên tự do · "bộ điểm của bài" (đổi tên điểm hàng loạt trong 1 cụm-đoạn) chưa làm — với cụm-đoạn nó càng đáng làm.
+
+## 2026-09-05 (tiếp) — Tool soạn thảo: ĐỔI TÊN ĐIỂM khi dùng cụm ("bộ điểm của bài")
+**Thùy:** "vụ đổi tên điểm cực kì quan trọng với Hình học — lúc sử dụng cụm phải có 1 chỗ để đổi tên điểm. Làm luôn."
+**Làm:**
+- `soan/diem.ts`: `timDiem(raw)` / `doiDiem(raw, map)` đi qua chuỗi kho: trong `$…$` mọi `[A-Z]` KHÔNG thuộc lệnh LaTeX và KHÔNG trong nhóm
+  chữ/tập số (`\text{} \mathrm{} \mathbb{R} \operatorname{}`…) = điểm (`\triangle ABC` → A B C, `\widehat{A}` → A); ngoài `$…$` = từ toàn chữ hoa
+  1–4 ký tự đứng riêng ("tứ giác ABCD", "đường cao AH"), ranh giới Unicode (`\p{L}`) để "Vì"/"Xét" không bị bắt. Thay ĐỒNG THỜI 1 lượt
+  (A↔B hoán đổi đúng); tên mới tự do (`A'`, `M_1`). Kiểm 6 ca bằng vite-node: đúng hết.
+- `soan/DoiDiemModal.tsx`: mỗi điểm 1 ô (nạp sẵn theo bộ điểm đang nhớ), preview sống, Enter chèn · Tab điểm kế · Esc · "Giữ nguyên".
+- `MathDoc.useCum`: cụm có ô trống → bảng dựng · có tên điểm → DoiDiemModal → chèn bản đã đổi · còn lại chèn thẳng. Bộ điểm (`DiemMap`)
+  do AppSoan giữ (prop `diemMap/onDiemMap`), CumModal dùng bộ nội bộ. Header hiện chip **"Bộ điểm: A→M · B→N…"** + × xoá.
+**Verify (Browser pane):** click cụm-đoạn HBH → bảng A/B/C/D → gõ M Tab N Tab P Tab Q → preview đổi sống → Enter →
+`Vì $MNPQ$ là hình bình hành nên $MN \parallel PQ$ và $MN = PQ$.` · dùng lại cụm → ô nạp sẵn MNPQ · chip Bộ điểm hiện đúng. tsc sạch.
+**Chưa:** đổi tên điểm cho công thức ĐÃ nằm trong bài (chỉ áp lúc chèn cụm) · điểm có chỉ số sẵn trong cụm (`A_1`) coi là A + `_1`.
+
+## 2026-09-05 (tiếp) — Tool soạn thảo: THANH TAB 1..10 kiểu MathType + tuỳ chọn cụm nào hiện trên thanh
+**Thùy (kèm ảnh thanh tab MathType):** "trông khá hoàn hảo rồi" + header hiện toàn bộ tốn không gian → cần custom cái gì hiện; làm
+subtab 1..10, mỗi ô 1 hàng công thức bên dưới → lưu rất nhiều mà không tốn diện tích.
+**Làm:** `Cum.tab` (1..10; 0 = ẩn khỏi thanh; thiếu = 1 → dữ liệu cũ giữ nguyên chỗ) · `ThuMuc.tabTen` (tên tab, không tên hiện số) · nhóm Chung
+có bộ tên tab riêng (`soan.tabchung.v1`). Thanh tab THEO TỪNG THƯ MỤC (mỗi chương 10 tab riêng). AppSoan: thanh tab + badge số cụm, click chọn,
+double-click / ✎ đặt tên inline (Enter/blur lưu, Esc huỷ), chỉ hiện hàng cụm của tab đang mở; "n cụm ẩn khỏi thanh" → bấm sang «Tất cả cụm»
+(danh sách phẳng, chip ghi thư mục · tab). CumModal thêm ô "Hiện ở tab" (Ẩn / 1..10 kèm tên). "＋ Cụm mới" / "Lưu đoạn chọn" mặc định vào tab
+đang mở. Bỏ nhóm CHUNG khỏi màn thư mục (từng chiếm chỗ) — cụm Chung vẫn dùng qua gõ tắt/phím tắt/bảng dựng, xem ở mục Chung.
+**Verify:** Tứ giác: tab 1 (4) · double-click tab 2 → "HBH" → lưu `tabTen {2:'HBH'}` · ✎ cụm HBH → Hiện ở tab = 2 → Ctrl+Enter → tab 1 (3) / tab 2 HBH (1),
+hàng chỉ hiện cụm của tab đang mở; header từ 3–4 hàng chip còn 1 hàng. tsc sạch.
+
+## 2026-09-05 (tiếp) — Tool soạn thảo: KÉO-THẢ sắp xếp/đổi tab + NỐI VÀO ERP (nút ⤢ ở mọi MathTextarea)
+**Thùy:** "custom tab làm rồi; kéo thả được thì ok. Nối vào ERP: muốn giải/soạn/sửa gì có option mở trình soạn thảo, soạn xong bấm save
+tự lưu vào đúng chỗ mở ra."
+**Làm:**
+- **Tách `soan/SoanWorkspace.tsx`** = toàn bộ màn (sidebar · tab · hàng cụm · vùng soạn · modal) nhận `{initial, onSave, onClose?, title?}`.
+  `AppSoan` (bundle riêng) chỉ còn bọc: onSave = lưu nháp máy. `soan/SoanModal.tsx` = portal full màn z-[90] bọc Workspace, Lưu → onSave(raw) + đóng.
+- **`MathTextarea` thêm nút ⤢** (cạnh Σ) → SoanModal với `initial=value`, Lưu → `onChange(raw)` về ĐÚNG ô đó. ⇒ mọi ô đang dùng MathTextarea
+  (FormBaiToan 4 ô · DangHub Đề + Lời giải · NhapKho) có trình soạn thảo NGAY, không sửa từng màn. Prop `soanTitle?` để màn đặt tiêu đề.
+  Sau khi về ô, form ERP bấm Lưu như thường (CauModal.save → updateCau) — trình soạn thảo KHÔNG tự ghi DB (ô có thể thuộc câu chưa tạo).
+- Kéo-thả: `Cum.thuTu` + `sortCum`; tay nắm ⠿ (chip vẫn `mousedown.preventDefault` để giữ selection vùng soạn — preventDefault chặn drag
+  nên chỉ tay nắm mới draggable); thả lên cụm khác = chen TRƯỚC (đánh lại thuTu cả tab); thả lên tab = chuyển tab + xếp cuối + nhảy sang tab đó.
+**Verify:** soan.html: dispatch dragstart(⠿ Song song) → dragover/drop(tab 3) → tab 1 ② / tab 3 ①, hàng hiện Song song. tsc sạch; `npm run build`
+(bundle ERP chính) xem mục dưới. Nút ⤢ trong ERP CHƯA click thử tay (cần đăng nhập) — Thùy thử ở DangHub Sửa câu / FormBaiToan.
+**⚠ Bộ cụm theo ORIGIN (localStorage):** ERP (5173) và soan.html (5180) là 2 bộ cụm khác nhau cho tới khi lên DB → đây là lý do cụ thể để
+làm bảng `cum_cong_thuc` + `cum_thu_muc` ngay bước kế.

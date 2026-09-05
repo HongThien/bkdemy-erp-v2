@@ -30,7 +30,10 @@
     "build:chi": "vite build --config vite.config.chi.ts",
     "preview:chi": "vite preview --config vite.config.chi.ts --outDir dist-chi",
     "kiem:mau": "vite-node scripts/kiem-mau-cong-thuc.ts",
-    "kiem:congthuc": "vite-node scripts/kiem-cong-thuc-ro.ts"
+    "kiem:congthuc": "vite-node scripts/kiem-cong-thuc-ro.ts",
+    "dev:soan": "vite --config vite.config.soan.ts",
+    "build:soan": "vite build --config vite.config.soan.ts",
+    "preview:soan": "vite preview --config vite.config.soan.ts --outDir dist-soan"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.113.0",
