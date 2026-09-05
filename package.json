@@ -32,7 +32,10 @@
     "kiem:mau": "vite-node scripts/kiem-mau-cong-thuc.ts",
     "kiem:congthuc": "vite-node scripts/kiem-cong-thuc-ro.ts",
     "apk": "node scripts/android/build-apk.mjs",
-    "apk:icons": "node scripts/android/gen-icons.mjs"
+    "apk:icons": "node scripts/android/gen-icons.mjs",
+    "dev:pt": "vite --config vite.config.pt.ts",
+    "build:pt": "vite build --config vite.config.pt.ts",
+    "preview:pt": "vite preview --config vite.config.pt.ts --outDir dist-pt"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.113.0",
@@ -51,6 +54,7 @@
     "qrcode": "^1.5.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "web-push": "^3.6.7",
     "zustand": "^5.0.14"
   },
   "devDependencies": {

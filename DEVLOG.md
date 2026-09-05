@@ -8184,3 +8184,41 @@ CHƯA nhìn tận mắt, Thùy bấm thử. Dev log có sẵn lỗi `virtual:pwa
   (chép 2 phần/30 câu từ master, đặt lại job link) → worker in lại. Link PDF các đề MT tháng 8 (Toán 5/6/7/8/9, KHTN 9,
   bản con 5A1/5A2/6S1/7A1/7S2/9K2) đã DONE. Còn kẹt: "Giáo trình 8A" (699 câu, >90s timeout, đang retry) + 8 job
   23/08 `upload: fetch failed` (bấm ↻ trong Kho khi cần).
+
+## 2026-09-05 — App PHÁT TRIỂN (pt) tách riêng + Web Push nhắc cập nhật việc 10:30 (worktree `app-pt`, nhánh `worktree-app-pt`)
+- **CEO chốt (4 câu):** kênh = **Web Push qua PWA** (không APK/Zalo) · giờ = **10:30 sáng**, nội dung = nhắc **CẬP NHẬT DAILY
+  tình trạng công việc** · phạm vi = **cả bộ** (cá nhân + quản lý; ERP giữ màn cũ chạy song song như TA/OPS) · domain
+  **`pt.bkacademy.edu.vn`**.
+- **Scaffold (khuôn y hệt app TA):** `pt.html` · `src/main-pt.tsx` · `src/AppPt.tsx` (gate HS/không-link, quyền = my_quyen +
+  getMyScope.laQuanLy) · `vite.config.pt.ts` (outDir `dist-pt`, PWA "BK Phát triển" #7c3aed, **`workbox.importScripts:['sw-push.js']`**)
+  · scripts `dev:pt|build:pt|preview:pt` · `.gitignore` dist-pt · launch.json `dev-pt`.
+- **UI `src/screens/pt/`:** `PtHome` bottom-tab 4 tab: **Hôm nay** (việc chưa cập nhật hôm nay → nút Cập nhật = themCapNhat, Bắt đầu
+  nếu moi_giao; banner gợi ý bật nhắc) · **Việc của tôi** (tái dùng `VietCuaToiTab` ERP nguyên vẹn) · **Quản lý** (`PtQuanLy` = 5 tab
+  IdeaTab/BacklogTab/WeeklyPlanningTab/CongKhaiTab/LoaiViecTab tái dùng, không useStore; chỉ hiện khi admin hoặc có lá `giaoviec`) ·
+  **Cài đặt** (bật/tắt nhắc việc + danh sách máy đang nhận + thoát). Data-layer vẫn `lib/giaoviec.ts` (thêm `listViecHomNay`).
+- **DB (2 mig, CHƯA ÁP — chờ CEO):** `202609051259_pt_push_dang_ky` = bảng `push_dang_ky` (1 dòng = 1 thiết bị thật, RLS own-row qua
+  tai_khoan→nhan_su; tắt = xoá dòng) + bảng `he_thong_bi_mat` (RLS, không policy, revoke hết; **secret `push_cron` sinh ngay trong
+  migration bằng sha256 ngẫu nhiên** — không nằm trong git). `202609051300_pt_fn_nhac_viec` = `fn_pt_viec_can_cap_nhat(p_ns)` lõi
+  (invariant: việc đang cầm moi_giao/dang_lam/tra_lai, không phải mẹ-có-con ⇒ phải có `viec_cap_nhat` trong ngày VN) ·
+  `fn_pt_viec_hom_nay()` wrapper invoker cho app · `fn_pt_push_danh_sach(secret)` + `fn_pt_push_ghi_ket_qua(secret, jsonb)`
+  security-definer cho cron (anon key + secret, **KHÔNG service-role** — giữ đúng quyết định 19/08).
+- **Cron:** `api/pt-nhac-viec.mjs` (web-push, dep mới `web-push@3.6.7`) + `vercel.json crons` `30 3 * * *` (=10:30 VN). ⚠ vercel.json
+  chung cả repo ⇒ MỌI project Vercel nhận lịch; function thoát 204 ngay nếu thiếu `PUSH_VAPID_PRIVATE` ⇒ chỉ project pt gửi.
+  `CRON_SECRET` dùng 1 giá trị cho cả header Vercel lẫn secret RPC. `public/sw-push.js` = handler push/notificationclick.
+- **Verify:** tsc 0 · `build:pt` pass (pt 467 kB gz 130, sw.js có importScripts sw-push.js) · **dry-run 2 mig trong transaction
+  ROLLBACK trên DB thật:** hàm lõi ra đúng (vd 1 NS: 4 việc chưa cập nhật, 3 quá hạn, 3 tiêu đề) · sai secret → raise · chưa ai đăng ký
+  → 0 dòng · giả 1 đăng ký → 1 dòng · ghi 410 → 0 dòng. Dev preview 375px: login staffOnly (quick-login Admin) → 4 tab render
+  (Hôm nay báo lỗi RPC chưa có — đúng vì mig chưa áp; Quản lý hiện Weekly tuần 31/08 data thật; Cài đặt báo "bản dev không có SW").
+- **CEO cần làm để chạy thật:** ① `npm run migrate` (2 file) rồi `npm run schema` · ② `select gia_tri from he_thong_bi_mat where
+  khoa='push_cron'` → Vercel env `CRON_SECRET` · ③ `npx web-push generate-vapid-keys` → env `VITE_PUSH_VAPID_PUBLIC` +
+  `PUSH_VAPID_PRIVATE` (+ `PUSH_VAPID_SUBJECT` tuỳ chọn) · ④ Vercel project mới build `npm run build:pt` output `dist-pt` +
+  DNS `pt.bkacademy.edu.vn` · ⑤ nhân sự mở app → Cài đặt → Bật nhắc việc (iPhone phải Add to Home Screen trước).
+- **Chưa làm / mở:** push chưa test end-to-end (cần VAPID + deploy) · nhắc cả T7/CN (CEO nói "hàng ngày") · chưa nhắc leader
+  "K việc chờ nghiệm thu" (CEO chỉ chốt nội dung cập nhật daily) · các tab Quản lý dùng nguyên layout ERP, chưa tinh chỉnh riêng cho
+  màn hẹp.
+- **(tiếp, 13:40) CEO chốt lại push = TIN CHUNG cho tất cả:** "Đến giờ cập nhật Công việc Daily rồi các tình yêu" — KHÔNG cá nhân
+  hoá theo việc. CEO hỏi đúng: "push chỉ là gửi 1 tin cho mọi người thôi mà?" → trả lời: Web Push không có broadcast (mỗi máy 1 địa
+  chỉ, server lặp gửi), nên bảng địa chỉ + secret cho cron vẫn cần; phần cá nhân hoá là tôi làm quá ý → bỏ. Sửa:
+  `fn_pt_push_danh_sach(secret)` giờ chỉ trả `(id, endpoint, p256dh, auth)` của máy còn sống thuộc NS đang làm ·
+  `api/pt-nhac-viec.mjs` gửi 1 payload `NOI_DUNG` (đổi câu = sửa 1 chỗ) · text Cài đặt/PtHome cập nhật. Hàm derive
+  `fn_pt_viec_can_cap_nhat`/`fn_pt_viec_hom_nay` GIỮ cho tab Hôm nay. Dry-run ROLLBACK lại pass (0 → 1 → 0 sau 410). tsc 0.

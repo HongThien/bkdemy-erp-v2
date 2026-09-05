@@ -45,3 +45,6 @@ android/.idea/
 *.apk
 *.aab
 apk/
+
+# build output app Phát triển (pt) — như dist-ta
+dist-pt/
