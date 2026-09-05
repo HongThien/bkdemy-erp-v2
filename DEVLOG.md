@@ -8222,6 +8222,14 @@ CHƯA nhìn tận mắt, Thùy bấm thử. Dev log có sẵn lỗi `virtual:pwa
   `fn_pt_push_danh_sach(secret)` giờ chỉ trả `(id, endpoint, p256dh, auth)` của máy còn sống thuộc NS đang làm ·
   `api/pt-nhac-viec.mjs` gửi 1 payload `NOI_DUNG` (đổi câu = sửa 1 chỗ) · text Cài đặt/PtHome cập nhật. Hàm derive
   `fn_pt_viec_can_cap_nhat`/`fn_pt_viec_hom_nay` GIỮ cho tab Hôm nay. Dry-run ROLLBACK lại pass (0 → 1 → 0 sau 410). tsc 0.
+- **(tiếp, 14:30) App pt đã deploy, CEO soi trên iPhone: tab Weekly + Việc của tôi "UI quá tệ, đè nhau".** Nguyên nhân: card 1
+  hàng flex-wrap với cột cố định (w-36/w-32/w-28) + tên `truncate` — trên 375px cột đẩy nhau xuống hàng lộn xộn, tên còn "Tài li…".
+  Sửa theo luật CEO: **tên task ĐẦY ĐỦ full chiều ngang dòng 1; người làm/deadline/trạng thái chữ nhỏ dòng 2; giữ border**.
+  `WeeklyPlanningTab` (header MẸ + `TaskCard`) và `VietCuaToiTab.MyTaskCard` (nút thao tác xuống hàng riêng cuối card, không còn cột
+  phải shrink-0). `DeadlineChip`/`NguoiChip` thêm `whitespace-nowrap` (chip không gãy "22/08/26 (trễ / 14d)"). Áp cho cả ERP
+  desktop (cùng component) — chấp nhận, 2 dòng vẫn đọc tốt. Tab Công khai là bảng `min-w-[760px]` cuộn ngang, chưa đụng.
+  Verify dev 375px: Weekly 2 cụm MẸ + con hiện đủ tên, chip 1 hàng; Việc của tôi card full ngang. tsc 0 · build:pt pass.
+
 ## 2026-09-04 (tiếp) — Tab "Chưa có lời giải": thêm HÌNH + thanh lọc nhánh (mig 202609041826 + 1835)
 **Thùy:** "T muốn hình cũng ở trong đấy, có toggle bar để filter. Hình khác chỗ mô hình các thứ nhưng cuối cùng vẫn là từng bài một."
 - **Đơn vị "1 bài" bên Hình = 2 loại:** `baitoan` (node gốc `hinh_baitoan` — chưa có = KHÔNG có `hinh_cach_giai` nào có nội dung)
