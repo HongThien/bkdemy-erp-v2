@@ -8533,3 +8533,39 @@ câu/dạng trần 9; ngưỡng đóng > 0.5; retest vào mastery như bt (level
 **Pha D:** getMyTasks: bo_tro_yeu chỉ còn 1 task "Điều hành ca bổ trợ (app TA)" (bỏ Chấm ET); retest là task theo BÀI
   → sống ở app TA. tsc sạch. Treo: BuoiBoTroYeuDetail desktop (ERP vẫn rơi BuoiDetail chung) · ERP "Trạng thái ca"
   chưa hiện trạng thái retest · `tu_luyen_sinh` chưa chuyển sang `_kho_snapshot_cau` (cố ý, không đổi hành vi tự luyện).
+
+## 2026-09-06 — Tool GIẢI BÀI kho chung (giaibai.bkacademy.edu.vn) — nhánh feat/giaibai
+
+**Thùy (story to):** hệ liệt kê bài chưa có lời giải → TA "Nhận giải" (bài rời danh sách chung, về danh sách riêng) → soạn bằng
+tool soạn thảo có sẵn → Nộp → duyệt trên hệ → duyệt xong mới thành lời giải chính thức → ghi ai/lúc nào/bao lâu. "Giống Qanda".
+**Góc kiến trúc (Thùy):** tách hẳn khỏi ERP, domain riêng, chỉ chung DB — "không đổ dồn vào 1 ERP khổng lồ, tách module nhỏ".
+**Chốt 7 câu:** ai có môn cũng nhận (lọc bằng tên miền) · ≤3 bài/người, hạn 48h · từ chối ≤3 lần, trả về đúng người, lần 3 về pool ·
+học thuật duyệt · Claude = 1 TA cao cấp (bài đặt Claude không hiện người khác) · tiền NGOÀI hệ (chỉ báo cáo số bài/độ khó/ký tự/công
+thức) + top 3 · web thôi. **"Luồng này không xoá gì trong kho cả."** → lời giải nằm ở dòng nhận bài cho tới khi duyệt.
+**Nhầm đầu phiên (bài học):** grep local kết luận "chưa có tab Chưa có lời giải" — local outdate, origin/main đã có commit 61f1d1b
+(05/09). Trước khi kết luận "chưa có" phải `git fetch` + so origin/main, không tin worktree đang đứng.
+**Làm:**
+- Mig `202609060122_giaibai_nhan_bai.sql`: mở rộng 5 bảng `*_yeu_cau_giai` thành bảng nhận bài chung người/Claude (nguoi_giai NULL =
+  Claude; trang_thai; han_at/nop_at; *_nhap; tu_choi_lan; generated so_ky_tu/so_cong_thuc; trigger Claude đóng → 'da_xong') ·
+  `v_giaibai_nhan` / `v_giaibai_bai` · `fn_giaibai_{pool,dem_pool,nhan,tra,luu_nhap,nop,cua_toi,cho_duyet,la_nguoi_duyet,duyet,tu_choi,
+  bao_cao_tong,bao_cao_chi_tiet}` · vá `fn_kho_cau_chua_giai`/`v_hinh_chua_giai` (trả người giữ) · `fn_*_yeu_cau_giai_cho` chỉ dòng
+  Claude · `fn_kho_giai_nguoi_xong`/`fn_hinh_ghi_loi_giai` chặn khi người đang giữ · `fn_*_dat_giai` đóng quá hạn trước.
+  Sửa 2 bẫy plpgsql trước khi áp: `execute … into record` không có dòng → dùng FOUND; `y.baitoan_id`/`y.bien_the_id` trong CASE = record
+  thiếu field → lấy khoá bằng `execute format('select %I …')`.
+- Entry thứ 8: `giaibai.html` · `vite.config.giaibai.ts` (không PWA) · `main-giaibai.tsx` · `AppGiaiBai.tsx` (gate như AppChi; nạp
+  `useStore.me` để phím tắt MathTextarea chạy; mons theo luật useMonScope — `CROSS_MON_TEAMS` dời sang lib/mon.ts dùng chung) ·
+  `lib/giaibai.ts` · `screens/giaibai/{GiaiBaiHome,KhoBai,BaiCuaToi,DuyetBai,ThongKe,BaiCard,GiaiEditor}`. GiaiEditor KHÔNG import
+  DangHub (kéo CumBai/PdfRender/Gemini) — chỉ MathTextarea + ImgInsertBar + AnhSlot riêng.
+- ERP: ChuaGiaiTab hiện "🧑 X đang giải" (không huỷ/không tự giải được khi người khác giữ). Worker `hangdoi-giai.mjs --don` lọc
+  `nguoi_giai is null`. launch.json thêm `giaibai-dev` (5218). PLAN-giaibai.md.
+- tsc sạch · build:giaibai OK (3.2 MB). Dev: login + shell + 4 tab render; RPC chờ migration (classifier chặn `npm run migrate` —
+  Thùy tự chạy).
+**Treo:** áp migration + `npm run schema` · test e2e nhận→nháp→nộp→từ chối/duyệt→báo cáo · Vercel project + domain · Hình chưa có muc_do.
+**(tiếp, sau khi Thùy áp migration)** e2e trên dev (tài khoản học thuật): pool khối 8 = 24 → Nhận (23, badge 1/3) → gõ lời giải
+LaTeX + đáp án → Lưu nháp → Nộp (nop_at, "giải trong 5 phút · 86 ký tự · 3 công thức") → tab Duyệt: nút Duyệt tự khoá (không tự
+duyệt bài mình) → Từ chối kèm lý do → Bài của tôi: "Cần sửa · lần 1/3", hạn reset 48h → Trả bài → Lịch sử "Đã trả" → pool = 24. ✓
+2 bug bắt được lúc test: ① plpgsql `EXECUTE 'update…'` không RETURNING ⇒ FOUND luôn false → 3 fn tra/luu_nhap/nop ném lỗi dù đã
+update — vá bằng mig MỚI `202609060200_giaibai_fix_found_execute.sql` (GET DIAGNOSTICS row_count). ② `The`/`LoiGiaiDaNop` khai báo
+TRONG thân BaiCuaToi ⇒ mỗi render cha = component type mới ⇒ remount thẻ + editor (ref DOM stale liên tục, sẽ mất text đang gõ) — hoist
+ra module. Dev-only: font KaTeX 403 vì junction node_modules ngoài fs.allow của Vite (build prod bundle font, không ảnh hưởng).
+**Chưa test:** nhánh Hình (nhận/nộp/duyệt bài toán gốc + biến thể) · nhãn "🧑 X đang giải" ở ERP tab Chưa có lời giải · Thống kê có dữ liệu.

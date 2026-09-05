@@ -26,6 +26,7 @@ type Row = {
   ma: string; nhan: string; laClone: boolean
   giaThiet: string | null; deBai: string; anh: string | null; luaChon: string[] | null; menhDe: CauChuaGiai['menh_de']; dapAn: string | null
   yeuCauId: string | null; yeuCauAt: string | null; yeuCauGhiChu: string | null
+  yeuCauNguoi: string | null // ≠ null = NGƯỜI đang giữ bài trên tool giaibai (mig 202609060122) — không phải Claude, không huỷ ở đây
   src: { kind: 'kho'; mon: KhoMon; maCau: string; coDapAn: boolean } | { kind: 'hinh'; loai: HinhLoaiBai; id: string }
 }
 const tuKho = (mon: KhoMon, r: CauChuaGiai): Row => ({
@@ -33,7 +34,7 @@ const tuKho = (mon: KhoMon, r: CauChuaGiai): Row => ({
   groupLabel: { truoc: r.ten_chuyen_de, ten: r.ten_dang, ma: r.dang_chinh },
   ma: r.ma_cau, nhan: LOAI_LABEL[r.loai_cau] ?? r.loai_cau, laClone: r.nguon === 'clone',
   giaThiet: null, deBai: r.noi_dung, anh: r.anh_de, luaChon: r.lua_chon, menhDe: r.menh_de, dapAn: r.dap_an,
-  yeuCauId: r.yeu_cau_id, yeuCauAt: r.yeu_cau_at, yeuCauGhiChu: r.yeu_cau_ghi_chu,
+  yeuCauId: r.yeu_cau_id, yeuCauAt: r.yeu_cau_at, yeuCauGhiChu: r.yeu_cau_ghi_chu, yeuCauNguoi: r.yeu_cau_nguoi_giai_ten,
   src: { kind: 'kho', mon, maCau: r.ma_cau, coDapAn: !!r.dap_an },
 })
 const tuHinh = (r: HinhChuaGiai): Row => ({
@@ -41,7 +42,7 @@ const tuHinh = (r: HinhChuaGiai): Row => ({
   groupLabel: { truoc: 'Mô hình', ten: r.mo_hinh_ten, ma: r.mo_hinh_ma },
   ma: r.ma, nhan: r.loai === 'baitoan' ? 'Bài toán gốc' : (KIEU_LABEL[r.kieu ?? ''] ?? 'Biến thể'), laClone: false,
   giaThiet: r.gia_thiet || null, deBai: r.de_bai, anh: r.anh, luaChon: null, menhDe: null, dapAn: null,
-  yeuCauId: r.yeu_cau_id, yeuCauAt: r.yeu_cau_at, yeuCauGhiChu: r.yeu_cau_ghi_chu,
+  yeuCauId: r.yeu_cau_id, yeuCauAt: r.yeu_cau_at, yeuCauGhiChu: r.yeu_cau_ghi_chu, yeuCauNguoi: r.yeu_cau_nguoi_giai_ten,
   src: { kind: 'hinh', loai: r.loai, id: r.id },
 })
 
@@ -110,7 +111,7 @@ export default function ChuaGiaiTab({ mon, khoi, onChanged }: { mon: string; kho
     setBusyKey(r.key)
     try {
       if (r.src.kind === 'kho') await huyYeuCauGiai(r.src.mon, r.yeuCauId); else await huyYeuCauGiaiHinh(r.src.loai, r.yeuCauId)
-      setAll((a) => a.map((x) => (x.key === r.key ? { ...x, yeuCauId: null, yeuCauAt: null, yeuCauGhiChu: null } : x)))
+      setAll((a) => a.map((x) => (x.key === r.key ? { ...x, yeuCauId: null, yeuCauAt: null, yeuCauGhiChu: null, yeuCauNguoi: null } : x)))
       onChanged?.()
     } catch (e: any) { alert(e.message ?? String(e)) } finally { setBusyKey(null) }
   }
@@ -170,13 +171,17 @@ export default function ChuaGiaiTab({ mon, khoi, onChanged }: { mon: string; kho
                       <code className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] text-slate-600">{r.ma}</code>
                       <span>{r.nhan}</span>
                       {r.laClone && <span className="rounded bg-amber-50 px-1.5 py-0.5 text-amber-700">clone</span>}
-                      {r.yeuCauId ? (
+                      {r.yeuCauId && r.yeuCauNguoi ? (
+                        <span className="rounded bg-sky-50 px-2 py-0.5 font-medium text-sky-700" title="Đang giữ trên tool giaibai.bkacademy.edu.vn — người đó nộp, học thuật duyệt bên đó">
+                          🧑 {r.yeuCauNguoi} đang giải · {r.yeuCauAt ? fmtTs(r.yeuCauAt) : ''}
+                        </span>
+                      ) : r.yeuCauId ? (
                         <span className="rounded bg-violet-50 px-2 py-0.5 font-medium text-violet-700" title={r.yeuCauGhiChu ?? undefined}>
                           📥 Đã đặt Claude · {r.yeuCauAt ? fmtTs(r.yeuCauAt) : ''}{r.yeuCauGhiChu ? ` · “${r.yeuCauGhiChu}”` : ''}
                         </span>
                       ) : null}
                       <div className="ml-auto flex items-center gap-1.5">
-                        {r.yeuCauId ? (
+                        {r.yeuCauId && r.yeuCauNguoi ? null : r.yeuCauId ? (
                           <button onClick={() => onHuy(r)} disabled={busyKey === r.key || busyAll}
                             className="rounded-md px-2.5 py-1 text-[12px] font-medium text-rose-600 hover:bg-rose-50 disabled:opacity-40">{busyKey === r.key ? '⏳…' : '✕ Huỷ đặt'}</button>
                         ) : (
@@ -184,7 +189,7 @@ export default function ChuaGiaiTab({ mon, khoi, onChanged }: { mon: string; kho
                             title="Không gọi API ngay — Claude Code giải theo lô sau, kết quả vào tab “Lời giải mới từ Claude”"
                             className="rounded-md border border-violet-300 bg-violet-50 px-2.5 py-1 text-[12px] font-medium text-violet-700 hover:bg-violet-100 disabled:opacity-40">{busyKey === r.key ? '⏳…' : '📥 Đặt Claude giải'}</button>
                         )}
-                        <button onClick={() => setOpenKey(openKey === r.key ? null : r.key)} disabled={busyAll}
+                        <button onClick={() => setOpenKey(openKey === r.key ? null : r.key)} disabled={busyAll || !!r.yeuCauNguoi} title={r.yeuCauNguoi ? `${r.yeuCauNguoi} đang giữ bài này trên tool giải bài` : undefined}
                           className={`rounded-md px-2.5 py-1 text-[12px] font-medium shadow-sm disabled:opacity-40 ${openKey === r.key ? 'bg-slate-200 text-slate-700' : 'bg-emerald-600 text-white hover:bg-emerald-500'}`}>
                           {openKey === r.key ? 'Đóng' : '✍️ Tự giải / up ảnh'}
                         </button>

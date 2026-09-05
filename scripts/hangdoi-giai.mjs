@@ -20,6 +20,8 @@
 //      node scripts/hangdoi-giai.mjs --bo <mon> <yeu_cau_id> [lý do]  → đóng 1 yêu cầu KHÔNG ghi gì
 //      (không giải được / đề sai) — lý do nối vào ghi_chu để người thấy vì sao.
 //
+// 06/09 (mig 202609060122): 5 bảng yêu cầu giờ dùng chung với tool giaibai (người nhận bài = nguoi_giai ≠ null) —
+// worker CHỈ đụng dòng nguoi_giai IS NULL (fn_*_yeu_cau_giai_cho đã lọc ở DB; --don lọc ở đây).
 // Luật (CLAUDE.md §1.5): không ghi lời giải dở/không chắc — thà --bo kèm lý do còn hơn ghi sai.
 // Kết nối: DATABASE_URL trong .env (cùng cách các script khác trong scripts/).
 import pg from 'pg'
@@ -97,14 +99,14 @@ try {
       const t = await tbl(mon)
       const r = await c.query(
         `update ${t}_cau_hoi_yeu_cau_giai y set xu_ly_at = now() from ${t}_cau_hoi c
-         where c.ma_cau = y.ma_cau and y.xu_ly_at is null and (c.loi_giai is not null or c.anh_dap_an is not null)`)
+         where c.ma_cau = y.ma_cau and y.xu_ly_at is null and y.nguoi_giai is null and (c.loi_giai is not null or c.anh_dap_an is not null)`)
       n += r.rowCount
     }
     const h = await c.query(`
       with a as (update hinh_baitoan_yeu_cau_giai y set xu_ly_at = now()
-                 where y.xu_ly_at is null and exists (select 1 from hinh_cach_giai cg where cg.baitoan_id = y.baitoan_id and (cg.loi_giai is not null or cg.anh_loi_giai is not null)) returning 1),
+                 where y.xu_ly_at is null and y.nguoi_giai is null and exists (select 1 from hinh_cach_giai cg where cg.baitoan_id = y.baitoan_id and (cg.loi_giai is not null or cg.anh_loi_giai is not null)) returning 1),
            b as (update hinh_bien_the_yeu_cau_giai y set xu_ly_at = now() from hinh_baitoan_bien_the v
-                 where v.id = y.bien_the_id and y.xu_ly_at is null and (v.loi_giai is not null or v.anh_loi_giai is not null) returning 1)
+                 where v.id = y.bien_the_id and y.xu_ly_at is null and y.nguoi_giai is null and (v.loi_giai is not null or v.anh_loi_giai is not null) returning 1)
       select (select count(*) from a) + (select count(*) from b) n`)
     n += Number(h.rows[0].n)
     console.log(`Đã đóng ${n} yêu cầu mà bài đã có lời giải.`)

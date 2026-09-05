@@ -38,7 +38,10 @@
     "apk:icons": "node scripts/android/gen-icons.mjs",
     "dev:pt": "vite --config vite.config.pt.ts",
     "build:pt": "vite build --config vite.config.pt.ts",
-    "preview:pt": "vite preview --config vite.config.pt.ts --outDir dist-pt"
+    "preview:pt": "vite preview --config vite.config.pt.ts --outDir dist-pt",
+    "dev:giaibai": "vite --config vite.config.giaibai.ts",
+    "build:giaibai": "vite build --config vite.config.giaibai.ts",
+    "preview:giaibai": "vite preview --config vite.config.giaibai.ts --outDir dist-giaibai"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.113.0",

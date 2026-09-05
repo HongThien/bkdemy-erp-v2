@@ -8,9 +8,8 @@
 // (08-29, app OPS: hook TÁCH từ lib/mon.ts ra đây — mon.ts phải là hằng số THUẦN vì lib data-layer
 // import nó; hook dính useStore mà nằm chung file là mọi bundle import MON_LIST đều ăn mock/fixtures.)
 import { useStore } from '../store/useStore'
-import { MON_LIST } from '../lib/mon'
+import { MON_LIST, CROSS_MON_TEAMS } from '../lib/mon'
 
-const CROSS_MON_TEAMS = ['ops', 'media', 'marketing']
 export function useMonScope(): { allowedMons: string[]; isAll: boolean; allowed: (mon: string) => boolean } {
   const me = useStore((s) => s.me)
   const laAdmin = !!useStore((s) => s.quyen)?.laAdmin

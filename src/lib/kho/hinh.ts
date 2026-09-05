@@ -1100,6 +1100,7 @@ export type HinhChuaGiai = {
   loai: HinhLoaiBai; id: string; ma: string; khoi: string; mo_hinh_ma: string; mo_hinh_ten: string
   gia_thiet: string; de_bai: string; anh: string | null; kieu: string | null; created_at: string
   yeu_cau_id: string | null; yeu_cau_at: string | null; yeu_cau_ghi_chu: string | null
+  yeu_cau_nguoi_giai: string | null; yeu_cau_nguoi_giai_ten: string | null; yeu_cau_trang_thai: string | null
 }
 export async function listHinhChuaGiai(khoi: string): Promise<HinhChuaGiai[]> {
   const { data, error } = await supabase.rpc('fn_hinh_cau_chua_giai', { p_khoi: khoi, p_limit: LIMIT })

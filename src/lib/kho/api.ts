@@ -818,6 +818,8 @@ export type CauChuaGiai = {
   ma_cau: string; dang_chinh: string; ten_dang: string; ten_chuyen_de: string; khoi: string; loai_cau: string
   noi_dung: string; lua_chon: string[] | null; menh_de: MenhDe[] | null; dap_an: string | null; anh_de: string | null; nguon: string; created_at: string
   yeu_cau_id: string | null; yeu_cau_at: string | null; yeu_cau_ghi_chu: string | null
+  // 06/09 (mig 202609060122): dòng yêu cầu giờ có thể là NGƯỜI đang giữ trên tool giaibai (nguoi_giai ≠ null) chứ không chỉ Claude.
+  yeu_cau_nguoi_giai: string | null; yeu_cau_nguoi_giai_ten: string | null; yeu_cau_trang_thai: string | null
 }
 export async function listCauChuaGiaiTab(mon: KhoMon, khoi: string): Promise<CauChuaGiai[]> {
   const { data, error } = await supabase.rpc('fn_kho_cau_chua_giai', { p_mon: mon, p_khoi: khoi, p_limit: LIMIT })
