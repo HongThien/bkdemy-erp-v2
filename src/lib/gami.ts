@@ -1038,20 +1038,26 @@ export async function getMyTasks(): Promise<MyTask[]> {
       return null
     }
     const roles = rolesByLop.get(b.lop_id)!
+    const coMT = mtKeys.has(`${b.lop_id}|${b.ngay}`)
     const seen = new Set<TabKey>() // dedup tab trùng (chấm bài có ở cả gv lẫn tg)
     for (const vai of ['gv', 'tg'] as const) {
       if (!roles.has(vai)) continue
+      // ⭐ Buổi có gán MT (Thùy 09-06: "buổi có MT thì không có ET, đánh giá và nhận xét —
+      // nói chung không có hoạt động nào khác"): MT THAY HẲN ingame/ET/đánh giá/BTVN, không
+      // cộng thêm. GV không còn task nào ở buổi này; TG chỉ còn "Chấm MT".
+      if (coMT) {
+        if (vai === 'tg' && !seen.has('mt')) {
+          seen.add('mt')
+          out.push({ buoiId: b.id, lopId: b.lop_id, lop: b.lop?.ten_lop ?? '?', ngay: b.ngay, vai: 'tg', tab: 'mt', label: 'Chấm MT', done: !!b.mt_dong_at, doneAt: b.mt_dong_at, deadline: deadlineOf('mt') })
+        }
+        continue
+      }
       for (const t of TASKS_BY_VAI[vai]) {
         if (seen.has(t.tab)) continue
         seen.add(t.tab)
         // Buổi có ET online: máy đã chấm + đổ lưới, việc còn lại là bấm xác nhận — nhãn nói rõ để TA khỏi đi tìm bài giấy.
         const label = t.tab === 'et' && etOnlineKeys.has(`${b.lop_id}|${b.ngay}`) ? 'Xác nhận ET (online)' : t.label
         out.push({ buoiId: b.id, lopId: b.lop_id, lop: b.lop?.ten_lop ?? '?', ngay: b.ngay, vai, tab: t.tab, label, done: !!doneAtTab[t.tab], doneAt: doneAtTab[t.tab], deadline: deadlineOf(t.tab) })
-      }
-      // MT — CHỈ khi buổi này thật sự có gán MT (mtKeys). TG chấm (giống ET); GV không có task riêng.
-      if (vai === 'tg' && mtKeys.has(`${b.lop_id}|${b.ngay}`) && !seen.has('mt')) {
-        seen.add('mt')
-        out.push({ buoiId: b.id, lopId: b.lop_id, lop: b.lop?.ten_lop ?? '?', ngay: b.ngay, vai: 'tg', tab: 'mt', label: 'Chấm MT', done: !!b.mt_dong_at, doneAt: b.mt_dong_at, deadline: deadlineOf('mt') })
       }
     }
   }
@@ -1228,24 +1234,28 @@ export async function listAllStaffTasks(tu: string, den: string): Promise<StaffT
     }
     const byNs = rolesByLop.get(b.lop_id)
     if (!byNs) continue
+    const coMT = mtKeys.has(`${b.lop_id}|${b.ngay}`)
     for (const [nsId, roles] of byNs) {
       const seen = new Set<TabKey>()
       for (const vai of ['gv', 'tg'] as const) {
         if (!roles.has(vai)) continue
+        // Buổi có gán MT: MT thay hẳn ingame/ET/đánh giá/BTVN — xem comment ở getMyTasks.
+        if (coMT) {
+          if (vai === 'tg' && !seen.has('mt')) {
+            seen.add('mt')
+            out.push({
+              nhan_su_id: nsId, buoiId: b.id, lopId: b.lop_id, lop: b.lop?.ten_lop ?? '?', ngay: b.ngay, vai: 'tg', tab: 'mt',
+              label: 'Chấm MT', done: !!b.mt_dong_at, doneAt: b.mt_dong_at, deadline: deadlineOf('mt'),
+            })
+          }
+          continue
+        }
         for (const t of TASKS_BY_VAI[vai]) {
           if (seen.has(t.tab)) continue
           seen.add(t.tab)
           out.push({
             nhan_su_id: nsId, buoiId: b.id, lopId: b.lop_id, lop: b.lop?.ten_lop ?? '?', ngay: b.ngay, vai, tab: t.tab,
             label: t.label, done: !!doneAtTab[t.tab], doneAt: doneAtTab[t.tab], deadline: deadlineOf(t.tab),
-          })
-        }
-        // MT — CHỈ khi buổi này thật sự có gán MT (mtKeys), CHỈ TG chấm (giống getMyTasks/ET).
-        if (vai === 'tg' && mtKeys.has(`${b.lop_id}|${b.ngay}`) && !seen.has('mt')) {
-          seen.add('mt')
-          out.push({
-            nhan_su_id: nsId, buoiId: b.id, lopId: b.lop_id, lop: b.lop?.ten_lop ?? '?', ngay: b.ngay, vai: 'tg', tab: 'mt',
-            label: 'Chấm MT', done: !!b.mt_dong_at, doneAt: b.mt_dong_at, deadline: deadlineOf('mt'),
           })
         }
       }
