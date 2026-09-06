@@ -68,7 +68,7 @@ export default function DashTa({ profile }: { profile: MyProfile }) {
   const goc = box === null
   // Màn có TRANH CEO vẽ sẵn (Của tôi · Xếp hạng): spacer giữ chỗ phần cảnh + nút ‹ đặt lên tranh. Màn khác:
   // header HTML trên nền trời gradient (chờ CEO vẽ thêm tranh).
-  const tranh = goc ? BK_TRANH.cuatoi : box === 'xephang' ? BK_TRANH.xephang : null
+  const tranh = goc ? BK_TRANH.cuatoi : box === 'xephang' ? BK_TRANH.xephang : box === 'gay' ? BK_TRANH.gay : null
   const ts = tranh ? bkTranhStyle(tranh) : null
 
   return (
@@ -84,8 +84,8 @@ export default function DashTa({ profile }: { profile: MyProfile }) {
           ? <div className="relative shrink-0" style={{ height: ts.spacerH }}>
               {/* nút ‹ đặt DƯỚI logo trong tranh (logo cao ~15cqw), trên bảng gỗ (~32cqw) */}
               {!goc && <button onClick={() => setBox(null)} aria-label="Quay lại"
-                className="absolute left-3 flex h-10 w-10 items-center justify-center rounded-full bg-white text-[22px] font-bold text-[#2F73F6] shadow-md active:scale-95"
-                style={{ top: `calc(${ts.offsetY} + 17.5cqw)` }}>‹</button>}
+                className="absolute left-2 h-11 w-11 active:scale-95"
+                style={{ top: `calc(${ts.offsetY} + 17.5cqw)` }}><img src="/bk-ui/gay_back.png" alt="" className="h-full w-full drop-shadow-md" draggable={false} /></button>}
             </div>
           : <BKPageHeader title={h!.title} tagline={h!.tagline} mascot={h!.mascot} bubble={h!.bubble} onBack={() => setBox(null)} />}
         <BKProfileSummary ten={ten} anhUrl={profile.nhanSu.anh_url} tags={['TA', 'BK Academy', '🌱 Luôn cố gắng']}
@@ -107,7 +107,8 @@ export default function DashTa({ profile }: { profile: MyProfile }) {
               <BKMascotBanner text="Bạn đang làm rất tốt!" sub="Cùng nhau lan toả những giá trị tích cực nhé! 💙" />
             </>
           )}
-          <div className={goc ? 'hidden' : 'mt-1'}>
+          {/* màn con: chiếm hết phần còn lại (min-h-0 để danh sách bên trong tự cuộn), chừa đáy đúng banner vẽ sẵn trong tranh */}
+          <div className={goc ? 'hidden' : 'mt-1 flex min-h-0 flex-1 flex-col'} style={ts && !goc ? { paddingBottom: ts.dayH } : undefined}>
           {box === 'xephang' && <XepHangScreen tenRieng="trợ giảng" ten={ten} anhUrl={profile.nhanSu.anh_url}
             rieng={data ? { rank: data.rank, tongXepHang: data.tongXepHang, top: data.top, nguongRankFinal: data.nguongRankFinal, nguongRankTop: data.nguongRankTop, me: data.me } : null}
             chung={chung ? { rank: chung.rank, tongXepHang: chung.tongXepHang, top: chung.top, nguongRankFinal: chung.nguongRankFinal, nguongRankTop: chung.nguongRankTop, me: chung.me } : null} />}
