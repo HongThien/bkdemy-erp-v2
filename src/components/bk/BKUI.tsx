@@ -1,7 +1,9 @@
 // BỘ PRIMITIVE "BK" cho khu Của tôi app mobile (CEO duyệt design 07/09 — handoff BK_TA_Claude_UI):
-// tông pastel xanh-tím, tiêu đề bong bóng, thẻ pastel bo lớn, minh hoạ = emoji/vector (KHÔNG nhúng
-// ảnh raster làm nền). Token: primary #2F73F6 · text #16224D · secondary #63709A · success #31C875
-// · warning #FFB33D · danger #FF5D78. Dùng chung mọi app (TA trước, GV/OPS lắp sau).
+// tông pastel xanh, tiêu đề bong bóng (Baloo 2), chữ tay nghiêng (Itim), thẻ pastel bo lớn, minh hoạ =
+// PNG từ UI kit (KHÔNG emoji). Màn gốc dùng THẲNG tranh nền CEO vẽ (public/bk-ui/bg_cua_toi.jpg — đã
+// có sẵn logo, tiêu đề CỦA TÔI, tagline, mascot); màn con dùng BKPageHeader = bầu trời gradient + tiêu
+// đề HTML. Token: primary #2F73F6 · text #16224D · secondary #63709A · success #31C875 · warning
+// #FFB33D · danger #FF5D78. Dùng chung mọi app (TA trước, GV/OPS lắp sau).
 import { useEffect, type ReactNode } from 'react'
 
 export const BK = {
@@ -9,35 +11,57 @@ export const BK = {
   success: '#31C875', warning: '#FFB33D', danger: '#FF5D78',
 } as const
 
-// ── HERO: bầu trời + tiêu đề bong bóng + tagline + mascot ──────────────────
-export function BKPageHeader({ title, tagline, onBack, mascot = '/bk-ui/mascot_wave.png', bubble }: {
-  title: string; tagline?: string; onBack?: () => void; mascot?: string; bubble?: string   // mascot = URL PNG trong kit
+// Tranh nền màn gốc = "headerv3" CEO chốt 07/09 (đã thử V4 tranh kín màn → thẻ hồ sơ che mặt mascot,
+// CEO bảo quay lại V3): 941×1594 sau khi cắt status bar giả 78px. Phần CẢNH (logo → bụi cây, có sẵn
+// tiêu đề CỦA TÔI, tagline, mascot + bong bóng) cao 440px = 46.8% bề ngang → spacer aspect 941/440;
+// phần dưới là trời xanh nhạt cho 6 ô. Vẽ theo BỀ NGANG (100% auto — thấy trọn tranh, không cắt mép),
+// đáy nối màu đáy ảnh #CCE7FE khi màn cao hơn tranh.
+export const BK_BG = { url: '/bk-ui/bg_cua_toi.jpg', aspectCanh: '941 / 440', mauDay: '#CCE7FE' } as const
+
+// ── HEADER màn con: bầu trời gradient + tia sáng + tiêu đề bong bóng trắng viền xanh + tagline chữ
+// tay + mascot PNG góc dưới-phải với bong bóng lời. (Tranh nền có chữ CỦA TÔI cố định nên màn con
+// không dùng lại được — CEO có thể gửi bản tranh KHÔNG chữ để lắp cho màn con.)
+export function BKPageHeader({ title, tagline, onBack, mascot = '/bk-ui/mascot_wave.png', bubble, hero }: {
+  title: string; tagline?: string; onBack?: () => void; mascot?: string; bubble?: string; hero?: boolean   // hero = màn gốc (tiêu đề IN HOA, to hơn)
 }) {
   return (
-    <div className="relative overflow-hidden bg-gradient-to-b from-[#CFE9FF] via-[#DDF4FF] to-[#EEF3FF]" style={{ paddingTop: 'max(0.75rem, env(safe-area-inset-top))' }}>
-      {/* mây + hoa trang trí (vector thuần) */}
-      <span className="pointer-events-none absolute -left-6 top-10 h-16 w-28 rounded-full bg-white/70 blur-[1px]" />
-      <span className="pointer-events-none absolute left-16 top-4 h-10 w-20 rounded-full bg-white/60" />
-      <span className="pointer-events-none absolute right-8 top-12 h-14 w-24 rounded-full bg-white/60" />
-      <span className="pointer-events-none absolute right-2 top-2 text-[16px] text-[#FFD84D]">✦</span>
-      <span className="pointer-events-none absolute left-1/4 bottom-6 text-[12px] text-[#FFD84D]">✦</span>
-      <span className="pointer-events-none absolute left-3 bottom-3 text-[22px]">🌸</span>
-      <span className="pointer-events-none absolute right-24 bottom-2 text-[20px]">🌳</span>
-      <div className="relative mx-auto flex max-w-[1000px] items-start px-4 pb-5">
-        {onBack ? (
-          <button onClick={onBack} aria-label="Quay lại"
-            className="mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-[22px] font-bold text-[#2F73F6] shadow-md active:scale-95">‹</button>
-        ) : <span className="mt-1 text-[12px] font-extrabold text-[#2F73F6]">BK<br /><span className="text-[9px]">Academy</span></span>}
-        <div className="min-w-0 flex-1 px-2 pt-1 text-center">
-          <span className="text-[16px] text-[#FFD84D]">👑</span>
-          <h1 className="text-[32px] font-extrabold leading-none tracking-tight text-[#2F73F6]"
-            style={{ textShadow: '0 3px 0 #fff, 0 6px 14px rgba(47,115,246,.25)' }}>{title}</h1>
-          {tagline && <p className="mt-1 text-[12.5px] italic font-medium text-[#63709A]">{tagline}</p>}
+    <div className="relative overflow-hidden" style={{ paddingTop: 'max(0.75rem, env(safe-area-inset-top))', minHeight: hero ? 236 : 196, background: 'linear-gradient(180deg, #9ED0F8 0%, #BFE0FD 55%, #CFE7FE 100%)' }}>
+      <span className="pointer-events-none absolute left-5 top-16 text-[14px] text-[#FFE27A]">✦</span>
+      <span className="pointer-events-none absolute right-6 top-24 text-[10px] text-[#FFE27A]">✦</span>
+      <span className="pointer-events-none absolute left-1/4 bottom-6 text-[11px] text-white/80">✦</span>
+      <div className="relative mx-auto max-w-[1000px] px-4">
+        <div className="flex items-start justify-between">
+          {onBack ? (
+            <button onClick={onBack} aria-label="Quay lại"
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-[22px] font-bold text-[#2F73F6] shadow-md active:scale-95">‹</button>
+          ) : (
+            <span className="font-bubble leading-none">
+              <span className="text-[19px] font-extrabold text-[#2F73F6]">BK<span className="text-[#FFD84D]">✦</span></span>
+              <span className="block -mt-1 text-[11px] font-bold text-[#2F73F6]">Academy</span>
+            </span>
+          )}
+          {/* Góc phải: màn con đặt BONG BÓNG LỜI của mascot ở đây (design 01_xep_hang) — không đè tagline giữa;
+              màn gốc (hero) giữ câu "Better TAs · Brighter Students" */}
+          {bubble && !hero
+            ? <span className="font-hand relative max-w-[128px] rounded-2xl rounded-bl-sm bg-white px-2.5 py-1.5 text-center text-[12px] italic leading-tight text-[#2F73F6] shadow-sm">{bubble}</span>
+            : <span className="font-hand max-w-[120px] -rotate-6 text-right text-[13px] italic leading-tight text-[#2F73F6]">Better TAs<br />Brighter Students ♡</span>}
         </div>
-        <div className="relative mt-1 shrink-0">
-          {bubble && <span className="absolute -left-6 -top-7 whitespace-nowrap rounded-2xl bg-white px-2.5 py-1 text-[10.5px] font-semibold text-[#2F73F6] shadow-sm">{bubble}</span>}
-          <img src={mascot} alt="" className="h-[72px] w-[72px] object-contain drop-shadow" draggable={false} />
+        <div className="-mt-4 text-center">
+          <span className="text-[18px] text-[#FFD84D]">👑</span>
+          <h1 className="font-bubble leading-none"
+            style={{
+              fontWeight: 800, fontSize: hero ? 46 : 38, letterSpacing: hero ? 1 : 0,
+              color: '#fff', WebkitTextStroke: '2px #2F73F6', paintOrder: 'stroke fill',
+              textShadow: '0 4px 0 rgba(23,77,175,.35), 0 8px 16px rgba(47,115,246,.25)',
+            }}>{hero ? title.toUpperCase() : title}</h1>
+          {tagline && <p className="font-hand mx-auto mt-1 max-w-[240px] text-[14px] italic leading-snug text-[#3B62C4]">{tagline}</p>}
         </div>
+      </div>
+      {/* mascot góc dưới-phải, đè nhẹ lên thẻ hồ sơ như thiết kế */}
+      <div className="absolute bottom-0 right-3 z-10">
+        {/* bong bóng lời đặt ngang đầu mascot, bên trái — không đè lên tagline ở giữa */}
+        {bubble && hero && <span className="font-hand absolute top-2 right-[92px] whitespace-nowrap rounded-2xl rounded-br-sm bg-white px-2.5 py-1 text-[12.5px] italic text-[#2F73F6] shadow-sm">{bubble}</span>}
+        <img src={mascot} alt="" className="h-[92px] w-[92px] object-contain drop-shadow-md" draggable={false} />
       </div>
     </div>
   )
@@ -49,35 +73,38 @@ export function BKProfileSummary({ ten, anhUrl, tags, diem, pct, onPct, streak }
 }) {
   const tenGoi = ten.trim().split(/\s+/).pop() || 'bạn'
   return (
-    <div className="mx-auto -mt-4 max-w-[1000px] px-4">
-      <div className="rounded-3xl bg-white p-3.5 shadow-[0_4px_14px_rgba(22,34,77,.10)]">
-        <div className="flex items-center gap-3">
+    <div className="relative z-20 mx-auto -mt-3 w-full max-w-[1000px] px-3">
+      {/* 1 HÀNG như thiết kế: avatar · tên/tags · 2 ô số. Màn hẹp (<430px) 2 ô xếp dọc; rộng hơn đứng cạnh nhau.
+          Gọn theo chiều cao (cả màn gốc phải nằm trong 1 màn iPhone, không cuộn) */}
+      <div className="flex items-center gap-2.5 rounded-[22px] bg-white/95 px-3 py-2.5 shadow-[0_4px_14px_rgba(22,34,77,.10)]">
+        {/* avatar khung tròn viền pastel dày + tim nhỏ như thiết kế; ảnh không vuông vẫn tròn nhờ object-cover */}
+        <span className="relative shrink-0">
           {anhUrl
-            ? <img src={anhUrl} alt="" className="h-14 w-14 shrink-0 rounded-full object-cover ring-4 ring-[#DDF4FF]" />
-            : <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#DDF4FF] text-[24px] font-extrabold text-[#2F73F6] ring-4 ring-[#EEF3FF]">{tenGoi.charAt(0).toUpperCase()}</span>}
-          <div className="min-w-0 flex-1">
-            <p className="truncate text-[16px] font-extrabold text-[#16224D]">{ten}</p>
-            <p className="truncate text-[11.5px] text-[#63709A]">Cùng nhau tạo nên giá trị tốt đẹp hơn! 💙</p>
-            <div className="mt-1 flex flex-wrap gap-1">
-              {tags.map((t) => <span key={t} className="rounded-full bg-[#EEF3FF] px-2 py-0.5 text-[10.5px] font-semibold text-[#2F73F6]">{t}</span>)}
-            </div>
+            ? <img src={anhUrl} alt="" className="block h-[60px] w-[60px] rounded-full object-cover ring-[4px] ring-[#DCE6FF]" />
+            : <span className="flex h-[60px] w-[60px] items-center justify-center rounded-full bg-[#DDF4FF] font-bubble text-[26px] font-extrabold text-[#2F73F6] ring-[4px] ring-[#DCE6FF]">{tenGoi.charAt(0).toUpperCase()}</span>}
+          <span className="absolute -left-1 top-0.5 flex h-[18px] w-[18px] items-center justify-center rounded-full bg-white text-[10px] shadow-sm">💗</span>
+        </span>
+        <div className="min-w-0 flex-1">
+          {/* tên KHÔNG cắt (tên Việt dài) — cho xuống 2 dòng; câu phụ chỉ hiện khi màn ≥430px */}
+          <p className="font-bubble text-[15.5px] font-extrabold leading-tight text-[#16224D]">{ten}</p>
+          <p className="hidden truncate text-[11px] text-[#63709A] min-[430px]:block">Cùng nhau tạo nên giá trị tốt đẹp hơn! 💙</p>
+          <div className="mt-1 flex flex-wrap gap-1">
+            {tags.map((t) => <span key={t} className="rounded-full bg-[#EEF3FF] px-1.5 py-0.5 text-[9px] font-semibold text-[#2F73F6]">{t}</span>)}
           </div>
         </div>
-        {/* 2 ô số xếp hàng riêng bên dưới — màn 375px không đủ chỗ đứng cạnh tên */}
-        <div className="mt-3 grid grid-cols-2 gap-2">
-          <div className="flex items-center gap-2 rounded-2xl bg-[#EEF3FF] px-3 py-2">
-            <img src="/bk-ui/coin_star.png" alt="" className="h-9 w-9 object-contain" draggable={false} />
-            <div className="min-w-0 leading-tight">
-              <p className="text-[10px] font-semibold text-[#63709A]">Điểm tích lũy</p>
-              <p className="text-[20px] font-extrabold text-[#16224D]">{diem == null ? '—' : diem.toLocaleString('vi-VN')}</p>
-              {streak != null && streak > 0 && <p className="text-[10px] font-semibold text-[#FF8A3D]">🔥 chuỗi {streak} ngày</p>}
+        <div className="flex shrink-0 flex-col gap-1 min-[430px]:flex-row">
+          <div className="flex w-[110px] items-center gap-1.5 rounded-xl bg-[#EEF3FF] px-2 py-1 min-[430px]:w-auto min-[430px]:px-2.5">
+            <img src="/bk-ui/coin_star.png" alt="" className="h-6 w-6 object-contain" draggable={false} />
+            <div className="leading-tight">
+              <p className="whitespace-nowrap text-[8.5px] font-semibold text-[#63709A]">Điểm tích lũy</p>
+              <p className="text-[15px] font-extrabold leading-none text-[#16224D]">{diem == null ? '—' : diem.toLocaleString('vi-VN')}{streak != null && streak > 0 && <span className="ml-1 text-[8.5px] font-semibold text-[#FF8A3D]">🔥{streak}</span>}</p>
             </div>
           </div>
-          <button onClick={onPct} className="flex items-center gap-2 rounded-2xl bg-[#E8F9EF] px-3 py-2 text-left active:bg-[#d6f2e2]">
-            <BKProgressRing pct={pct ?? 0} size={34} stroke={5} color={BK.success} />
-            <div className="min-w-0 leading-tight">
-              <p className="text-[10px] font-semibold text-[#63709A]">Hoàn thành nhiệm vụ</p>
-              <p className="text-[20px] font-extrabold text-[#16224D]">{pct == null ? '—' : `${pct}%`}</p>
+          <button onClick={onPct} className="flex w-[110px] items-center gap-1.5 rounded-xl bg-[#E8F9EF] px-2 py-1 text-left active:bg-[#d6f2e2] min-[430px]:w-auto min-[430px]:px-2.5">
+            <BKProgressRing pct={pct ?? 0} size={24} stroke={4} color={BK.success} />
+            <div className="leading-tight">
+              <p className="whitespace-nowrap text-[8.5px] font-semibold leading-[1.1] text-[#63709A]">Hoàn thành<br />nhiệm vụ</p>
+              <p className="text-[15px] font-extrabold leading-none text-[#16224D]">{pct == null ? '—' : `${pct}%`}</p>
             </div>
           </button>
         </div>
@@ -121,20 +148,21 @@ export function BKMenuCard({ image, title, sub, tagline, gradient, accent, onCli
 }) {
   return (
     <button onClick={onClick} disabled={disabled}
-      className="relative flex min-h-[124px] items-stretch overflow-hidden rounded-[22px] p-2.5 text-left shadow-[0_4px_14px_rgba(22,34,77,.10)] transition duration-100 active:scale-[.98] disabled:opacity-60"
-      style={{ background: `linear-gradient(160deg, ${gradient[0]}, ${gradient[1]})`, boxShadow: '0 4px 14px rgba(22,34,77,.10), inset 0 1px 0 rgba(255,255,255,.7)' }}>
-      <span className="pointer-events-none absolute left-2 top-1.5 text-[11px] text-[#FFD84D]">✦</span>
-      <img src={image} alt="" className="w-[38%] shrink-0 self-center object-contain drop-shadow-sm" draggable={false} />
-      <div className="flex min-w-0 flex-1 flex-col pl-1.5 pt-1">
-        <p className="text-[15px] font-extrabold leading-tight text-[#16224D]">{title}</p>
-        <p className="mt-0.5 text-[10.5px] leading-snug text-[#63709A]">{sub}</p>
-        <div className="mt-auto flex items-end justify-between gap-1 pt-1.5">
-          <span className="min-w-0 text-[9.5px] italic font-semibold leading-tight" style={{ color: accent }}>{tagline}</span>
-          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[16px] font-bold text-white shadow-sm" style={{ background: accent }}>›</span>
-        </div>
+      className="relative flex h-full min-h-[100px] items-stretch overflow-hidden rounded-[20px] p-2 text-left transition duration-100 active:scale-[.98] disabled:opacity-60"
+      // KHÔNG bóng đổ / viền mờ — CEO 07/09: "lớp xanh xanh mờ mờ ở khe giữa các box" chính là shadow lan ra nền trời
+      style={{ background: `linear-gradient(160deg, ${gradient[0]}, ${gradient[1]})` }}>
+      {/* badge "sắp mở" thế chỗ ngôi sao góc trên-trái (trên vùng ảnh) — góc phải là tiêu đề, đè lên là mất chữ */}
+      {badge
+        ? <span className="absolute left-2 top-1.5 z-10 rounded-full bg-white/90 px-1.5 py-px text-[9px] font-bold text-[#63709A] shadow-sm">{badge}</span>
+        : <span className="pointer-events-none absolute left-2 top-1 text-[12px] text-[#FFD84D]">✦</span>}
+      {/* Đúng design: icon TO bên trái (~46%), chữ NHỎ bên phải; câu chữ tay nghiêng góc dưới cột chữ, nút mũi tên góc dưới-phải */}
+      <img src={image} alt="" className="w-[46%] shrink-0 self-center object-contain drop-shadow-sm" draggable={false} />
+      <div className="flex min-w-0 flex-1 flex-col pl-1 pt-0.5">
+        <p className="font-bubble text-[14px] font-extrabold leading-tight tracking-tight text-[#16224D]">{title}</p>
+        <p className="mt-px text-[9px] leading-snug text-[#63709A]">{sub}</p>
+        <p className="font-hand mt-auto -rotate-3 pb-1 pr-7 text-[10.5px] italic leading-[1.1]" style={{ color: accent }}>{tagline}</p>
       </div>
-      {/* badge đặt góc dưới-trái (trên vùng ảnh) để không đè tiêu đề ở màn 375px */}
-      {badge && <span className="absolute bottom-2 left-2 rounded-full bg-white/90 px-2 py-0.5 text-[9.5px] font-bold text-[#63709A] shadow-sm">{badge}</span>}
+      <span className="absolute bottom-2 right-2 flex h-7 w-7 items-center justify-center rounded-full text-[15px] font-bold text-white shadow-sm" style={{ background: accent }}>›</span>
     </button>
   )
 }
@@ -145,7 +173,7 @@ export function BKSectionCard({ children, tone, className = '' }: { children: Re
   return <div className={`rounded-3xl p-4 shadow-[0_4px_14px_rgba(22,34,77,.08)] ${bg} ${className}`}>{children}</div>
 }
 export function BKSectionTitle({ children, right }: { children: ReactNode; right?: ReactNode }) {
-  return <div className="mb-2 flex items-center justify-between px-1"><p className="text-[17px] font-extrabold text-[#16224D]">{children}</p>{right}</div>
+  return <div className="mb-2 flex items-center justify-between px-1"><p className="font-bubble text-[18px] font-extrabold text-[#16224D]">{children}</p>{right}</div>
 }
 export type BKStatus = 'dat' | 'thieu' | 'thua' | 'cho' | 'nguy'
 const PILL: Record<BKStatus, string> = {
@@ -204,13 +232,13 @@ export function BKEmptyState({ icon = '🌱', children }: { icon?: string; child
 // Banner mascot động viên (cuối màn) — câu chữ đổi theo ngữ cảnh
 export function BKMascotBanner({ text, sub }: { text: string; sub?: string }) {
   return (
-    <div className="relative mt-3 flex items-center gap-3 overflow-hidden rounded-3xl bg-gradient-to-r from-[#DDF4FF] to-[#EEF3FF] p-3.5">
-      <img src="/bk-ui/mascot_cheer.png" alt="" className="h-16 w-16 shrink-0 object-contain" draggable={false} />
+    <div className="relative mt-2.5 flex items-center gap-2.5 overflow-hidden rounded-[20px] bg-white/70 px-3 py-2">
+      <img src="/bk-ui/mascot_cheer.png" alt="" className="h-12 w-12 shrink-0 object-contain" draggable={false} />
       <div className="min-w-0 flex-1">
-        <span className="inline-block rounded-2xl bg-[#EAE2FF] px-3 py-1 text-[13px] font-bold text-[#6A4BD6]">{text}</span>
-        {sub && <p className="mt-1 text-[11.5px] text-[#63709A]">{sub}</p>}
+        <span className="font-bubble inline-block rounded-xl bg-[#EAE2FF] px-2.5 py-0.5 text-[12.5px] font-bold text-[#6A4BD6]">{text}</span>
+        {sub && <p className="mt-0.5 truncate text-[10.5px] text-[#63709A]">{sub}</p>}
       </div>
-      <span className="pointer-events-none absolute right-3 top-2 -rotate-6 text-[10px] italic font-semibold text-[#2F73F6]">Small TAs<br />Big Impact ♡</span>
+      <span className="font-hand pointer-events-none absolute right-3 top-1.5 -rotate-6 text-[11px] italic leading-tight text-[#2F73F6]">Small TAs<br />Big Impact ♡</span>
     </div>
   )
 }

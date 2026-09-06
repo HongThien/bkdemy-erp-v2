@@ -15,6 +15,12 @@
   --color-ph-orange: #ff9418;
   --color-ph-red: #e64040;
   --color-ph-purple: #7656d8;
+
+  /* Font cách điệu khu "Của tôi" app TA (design CEO 07/09): bubble = tiêu đề bong bóng · hand = chữ tay
+     tagline/bong bóng lời. Cả hai đều có glyph tiếng Việt (Fredoka/Patrick Hand KHÔNG có). Chỉ app nào
+     link font trong html mới hiện đúng; app khác rơi về Be Vietnam Pro — vô hại. */
+  --font-bubble: 'Baloo 2', 'Be Vietnam Pro', system-ui, sans-serif;
+  --font-hand: 'Itim', 'Be Vietnam Pro', system-ui, sans-serif;
 }
 
 /* CHỐNG PHÓNG TO NHẦM trên mobile (CEO 31/08 — app GV "click nhầm bị zoom"):

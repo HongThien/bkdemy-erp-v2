@@ -1,18 +1,20 @@
 // DashTa — "CỦA TÔI" app TA theo design CEO duyệt 07/09 (handoff BK_TA_Claude_UI, anchor 00_cua_toi):
-// hero bầu trời + thẻ hồ sơ (avatar · tên · 🪙 điểm tích lũy · vòng % hoàn thành) + lưới 6 card
-// pastel (Xếp hạng · Gậy · May mắn · Tiến trình · Shopping · Hướng dẫn) + banner mascot. Bấm card →
-// màn con cùng hero (có nút ‹) và cùng thẻ hồ sơ. Lead (laQuanLy) có thêm card Chấm công TA.
+// NGUYÊN TẮC CEO 07/09: (1) dùng THẲNG tranh nền CEO vẽ (bg_cua_toi.jpg — logo, tiêu đề, tagline,
+// mascot đã nằm trong tranh), các ô chức năng đặt LÊN tranh; (2) mọi thứ nằm gọn 1 màn iPhone, không
+// cuộn (icon to, chữ nhỏ, lưới 6 ô co giãn theo chiều cao còn lại); (3) chữ tay nghiêng như design.
+// Bố cục: spacer cảnh (aspect 941/440) → thẻ hồ sơ (avatar · tên · 🪙 điểm tích lũy · vòng %) → thanh
+// tháng → lưới 2×3 (Xếp hạng · Gậy · May mắn · Tiến trình · Shopping · Hướng dẫn) → banner mascot.
+// Bấm card → màn con: header HTML (nút ‹, tiêu đề bong bóng) trên nền trời gradient + cùng thẻ hồ sơ.
+// Chấm công TA (lead) KHÔNG ở app này — CEO 07/09 "Trang là ở màn khác".
 // Dữ liệu: taDashboard (đạt chuẩn) · xepHangChung · tichLuy (điểm/chuỗi) — mọi số ở Postgres (§2.0).
-// Tháng đang xem đổi bằng ‹ › ở thanh nhỏ dưới thẻ hồ sơ; áp cho mọi màn con theo tháng.
 import { useEffect, useState } from 'react'
 import type { MyProfile } from '../../lib/nhansu'
-import { getMyScope, type MyScope } from '../../lib/nhansu'
 import { taDashboard, type TaDash } from '../../lib/tadash'
 import { xepHangChung, type XepHangChung } from '../../lib/xephang'
 import { tichLuy, type TichLuy } from '../../lib/tichluy'
 import { GAY_DON_GIA } from '../../lib/gay'
 import { homNayVN } from '../../lib/tuan'
-import { BKPageHeader, BKProfileSummary, BKMenuCard, BKMascotBanner } from '../../components/bk/BKUI'
+import { BKPageHeader, BKProfileSummary, BKMenuCard, BKMascotBanner, BK_BG } from '../../components/bk/BKUI'
 import { XepHangScreen } from '../../components/bk/XepHangScreen'
 import { GayCuaToiScreen } from '../../components/bk/GayCuaToiScreen'
 import { MayManScreen } from '../../components/bk/MayManScreen'
@@ -20,9 +22,8 @@ import { ShopScreen } from '../../components/bk/ShopScreen'
 import { HuongDanScreen } from '../../components/bk/HuongDanScreen'
 import { DatChuanScreen } from '../../components/bk/DatChuanScreen'
 import TienTrinhTa from './TienTrinhTa'
-import ChamCongTa from './ChamCongTa'
 
-type Box = 'xephang' | 'gay' | 'maymai' | 'tientrinh' | 'shop' | 'huongdan' | 'datchuan' | 'chamcong'
+type Box = 'xephang' | 'gay' | 'maymai' | 'tientrinh' | 'shop' | 'huongdan' | 'datchuan'
 const A = (n: string) => `/bk-ui/${n}.png`   // asset PNG từ UI kit (public/bk-ui)
 const TIEU_DE: Record<Box, { title: string; tagline: string; mascot: string; bubble: string }> = {
   xephang: { title: 'Xếp hạng', tagline: 'Cùng nhau toả sáng, làm nên một BK tuyệt hơn! ♡', mascot: A('mascot_cheer'), bubble: 'Nỗ lực hôm nay, toả sáng ngày mai!' },
@@ -32,7 +33,6 @@ const TIEU_DE: Record<Box, { title: string; tagline: string; mascot: string; bub
   shop: { title: 'Shopping', tagline: 'Đổi quà bằng điểm. Làm nhiều, nhận quà xịn! ♡', mascot: A('mascot_hearts'), bubble: 'Tích điểm đổi quà thôi!' },
   huongdan: { title: 'Hướng dẫn', tagline: 'Mọi quy trình trong tầm tay TA! ♡', mascot: A('mascot_read'), bubble: 'Học hiểu hơn, làm tốt hơn!' },
   datchuan: { title: 'Nhiệm vụ', tagline: 'Đóng đúng hạn, chất lượng tốt — đạt chuẩn! ♡', mascot: A('mascot_wave'), bubble: 'Giữ nhịp nha!' },
-  chamcong: { title: 'Chấm công', tagline: 'Mặc định có mặt — chỉ ghi khi TA vắng có phép', mascot: A('mascot_read'), bubble: 'Lead ghi nhé!' },
 }
 // 6 card theo spec/layout_cua_toi.json (gradient + accent + asset đúng từng card)
 const CARDS: { key: Box; title: string; sub: string; tagline: string; image: string; gradient: [string, string]; accent: string; badge?: string }[] = [
@@ -59,7 +59,6 @@ export default function DashTa({ profile }: { profile: MyProfile }) {
   const [data, setData] = useState<TaDash | null>(null)
   const [chung, setChung] = useState<XepHangChung | null>(null)
   const [tl, setTl] = useState<TichLuy | null>(null)
-  const [scope, setScope] = useState<MyScope | null>(null)
   const [err, setErr] = useState<string | null>(null)
 
   const reload = () => {
@@ -69,39 +68,48 @@ export default function DashTa({ profile }: { profile: MyProfile }) {
       .catch((e) => setErr(e?.message ?? String(e)))
   }
   useEffect(reload, [ym]) // eslint-disable-line
-  useEffect(() => { getMyScope().then(setScope).catch(() => setScope(null)) }, [])
 
   const me = data?.me ?? {}
   const ten = (profile.nhanSu.ho_ten ?? '').trim()
   const [thang, nam] = [ym.slice(5, 7), ym.slice(0, 4)]
-  const h = box ? TIEU_DE[box] : { title: 'Của tôi', tagline: 'Mỗi nỗ lực hôm nay là một BK tốt hơn ♡', mascot: A('mascot_wave'), bubble: 'Cố lên TA ơi!' }
-  const laLead = !!scope?.laQuanLy
+  const h = box ? TIEU_DE[box] : null
+  const goc = box === null
 
   return (
-    <div className="min-h-full bg-gradient-to-b from-[#EEF3FF] to-[#F5F5F7] pb-6">
-      <BKPageHeader title={h.title} tagline={h.tagline} mascot={h.mascot} bubble={h.bubble} onBack={box ? () => setBox(null) : undefined} />
-      <BKProfileSummary ten={ten} anhUrl={profile.nhanSu.anh_url} tags={['TA', 'BK Academy', '🌱 Luôn cố gắng']}
-        diem={tl ? tl.xai_duoc + tl.diem_thang : null} streak={tl?.chuoi} pct={me.pct} onPct={() => setBox('datchuan')} />
+    // Ngoài: kín màn, màu trời để 2 mép desktop không lộ nền xám. Trong: cột ≤480px (khổ điện thoại) cao
+    // ĐÚNG bằng màn (h-full) và TỰ CUỘN nội bộ (màn thấp như iPhone SE) → tranh nền đứng yên, nội dung
+    // trượt lên trên tranh. Màn gốc = tranh V3 vẽ theo bề ngang, spacer giữ chỗ phần cảnh, thẻ hồ sơ +
+    // 6 ô đặt thẳng lên tranh (CEO 07/09).
+    <div className="flex h-full flex-col bg-[#CCE7FE]">
+      <div className="mx-auto flex h-full w-full max-w-[480px] flex-col overflow-y-auto"
+        style={goc
+          ? { backgroundImage: `url(${BK_BG.url})`, backgroundSize: '100% auto', backgroundRepeat: 'no-repeat', backgroundPosition: `center env(safe-area-inset-top, 0px)`, backgroundColor: BK_BG.mauDay }
+          : { background: 'linear-gradient(180deg, #CFE7FE 0%, #E3EEFC 40%, #EEF3FC 100%)' }}>
+        {goc
+          ? <div className="shrink-0" style={{ paddingTop: 'env(safe-area-inset-top, 0px)' }}><div style={{ aspectRatio: BK_BG.aspectCanh }} /></div>
+          : <BKPageHeader title={h!.title} tagline={h!.tagline} mascot={h!.mascot} bubble={h!.bubble} onBack={() => setBox(null)} />}
+        <BKProfileSummary ten={ten} anhUrl={profile.nhanSu.anh_url} tags={['TA', 'BK Academy', '🌱 Luôn cố gắng']}
+          diem={tl ? tl.xai_duoc + tl.diem_thang : null} streak={tl?.chuoi} pct={me.pct} onPct={() => setBox('datchuan')} />
 
-      <div className="mx-auto max-w-[1000px] px-4">
-        {/* thanh tháng — áp cho mọi màn con theo tháng */}
-        <div className="mt-3 flex items-center justify-center gap-1">
-          <button onClick={() => setYm(ymCong(ym, -1))} className="h-9 w-9 rounded-full bg-white text-[16px] font-bold text-[#2F73F6] shadow-sm active:scale-95">‹</button>
-          <span className="rounded-full bg-white px-4 py-1.5 text-[13px] font-extrabold text-[#16224D] shadow-sm">📅 Tháng {thang}/{nam}</span>
-          <button onClick={() => setYm(ymCong(ym, 1))} disabled={ym >= ymNay} className="h-9 w-9 rounded-full bg-white text-[16px] font-bold text-[#2F73F6] shadow-sm active:scale-95 disabled:opacity-30">›</button>
-        </div>
-        {err && <p className="mt-3 rounded-2xl bg-[#FFE3EA] px-3 py-2 text-[12.5px] text-[#C0355A]">⚠ {err}</p>}
+        <div className="flex flex-1 flex-col px-3 pb-2">
+          {/* thanh tháng gọn — áp cho mọi màn con theo tháng */}
+          <div className="mt-2 flex items-center justify-center gap-1">
+            <button onClick={() => setYm(ymCong(ym, -1))} className="h-7 w-7 rounded-full bg-white/90 text-[14px] font-bold text-[#2F73F6] shadow-sm active:scale-95">‹</button>
+            <span className="rounded-full bg-white/90 px-3 py-1 text-[12px] font-extrabold text-[#16224D] shadow-sm">📅 Tháng {thang}/{nam}</span>
+            <button onClick={() => setYm(ymCong(ym, 1))} disabled={ym >= ymNay} className="h-7 w-7 rounded-full bg-white/90 text-[14px] font-bold text-[#2F73F6] shadow-sm active:scale-95 disabled:opacity-30">›</button>
+          </div>
+          {err && <p className="mt-2 rounded-2xl bg-[#FFE3EA] px-3 py-2 text-[12.5px] text-[#C0355A]">⚠ {err}</p>}
 
-        <div className="mt-3">
-          {box === null && (
+          {goc && (
             <>
-              <div className="grid grid-cols-2 gap-3">
+              {/* lưới 2×3 co giãn lấp hết chiều cao còn lại → luôn vừa 1 màn (≥ ~700px cao); màn thấp hơn mới cuộn */}
+              <div className="mt-2 grid min-h-[320px] flex-1 grid-cols-2 grid-rows-3 gap-2.5">
                 {CARDS.map((c) => <BKMenuCard key={c.key} image={c.image} title={c.title} sub={c.sub} tagline={c.tagline} gradient={c.gradient} accent={c.accent} badge={c.badge} onClick={() => setBox(c.key)} />)}
-                {laLead && <BKMenuCard image={A('mascot_read')} title="Chấm công TA" sub="Ghi TA vắng có phép" tagline="Dành cho lead" gradient={['#EEF3FF', '#DDE4F3']} accent="#2F73F6" onClick={() => setBox('chamcong')} />}
               </div>
               <BKMascotBanner text="Bạn đang làm rất tốt!" sub="Cùng nhau lan toả những giá trị tích cực nhé! 💙" />
             </>
           )}
+          <div className={goc ? 'hidden' : 'mt-3'}>
           {box === 'xephang' && <XepHangScreen tenRieng="trợ giảng" ten={ten}
             rieng={data ? { rank: data.rank, tongXepHang: data.tongXepHang, top: data.top, nguongRankFinal: data.nguongRankFinal, nguongRankTop: data.nguongRankTop, me: data.me } : null}
             chung={chung ? { rank: chung.rank, tongXepHang: chung.tongXepHang, top: chung.top, nguongRankFinal: chung.nguongRankFinal, nguongRankTop: chung.nguongRankTop, me: chung.me } : null} />}
@@ -110,11 +118,11 @@ export default function DashTa({ profile }: { profile: MyProfile }) {
           {box === 'tientrinh' && <TienTrinhTa ym={ym} />}
           {box === 'shop' && <ShopScreen xaiDuoc={tl?.xai_duoc ?? 0} diemThang={tl?.diem_thang ?? 0} chuoi={tl?.chuoi ?? 0} diemMoiNgay={tl?.diem_moi_ngay ?? 100} onChanged={reload} />}
           {box === 'huongdan' && <HuongDanScreen vaiTro="ta" />}
-          {box === 'chamcong' && scope && <ChamCongTa ym={ym} scope={scope} />}
           {box === 'datchuan' && (data
             ? <DatChuanScreen me={me} items={data.items} tabTen={TAB_TEN} lyDoTen={LY_DO_TEN}
                 chuThich={`Đạt chuẩn = đóng đúng hạn + chất lượng duyệt ≥${data.nguongChatLuong}. Trễ hạn tính theo GẬY đã chốt. Việc trước 01/09/2026 luôn tính đạt.`} />
             : <p className="text-center text-[13px] text-[#63709A]">Đang tính…</p>)}
+          </div>
         </div>
       </div>
     </div>
