@@ -49,7 +49,8 @@ export default function BaiCuaToi({ me, onChanged }: { me: string; onChanged: ()
           <Section title="Đang giải" count={dang.length} hint="tối đa 3 bài · hạn 48h kể từ lúc nhận / lúc bị từ chối" empty="Chưa nhận bài nào — sang tab Kho bài để nhận.">
             {dang.map((r) => the(r, openId === r.id && (
               <GiaiEditor key={r.id} initial={{ loiGiai: r.loi_giai_nhap, anh: r.anh_nhap, dapAn: r.dap_an_nhap }}
-                hoiDapAn={!laHinh(r.nhanh) && !r.dap_an} tieuDe={`Lời giải · ${r.ma}`} busy={busyId === r.id}
+                hoiDapAn={!laHinh(r.nhanh) && !r.dap_an} tieuDe={`Lời giải · ${r.ma}`}
+                deBai={<><BaiHead b={r} /><BaiBody b={r} /></>} aiModel={r.loi_giai_ai ? r.ai_model : null} busy={busyId === r.id}
                 onLuuNhap={onLuu(r)} onNop={onNop(r)} onClose={() => setOpenId(null)} />
             )))}
           </Section>

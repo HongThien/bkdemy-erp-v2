@@ -23,7 +23,7 @@ export function DoiDiemModal({ ten, raw, diem, initialMap, onCommit, onCancel }:
     if (e.key === 'Enter') { e.preventDefault(); commit() }
   }
   return createPortal(
-    <div className="fixed inset-0 z-[70] flex items-center justify-center bg-slate-900/35 p-4" onMouseDown={(e) => { if (e.target === e.currentTarget) onCancel() }}>
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/35 p-4" onMouseDown={(e) => { if (e.target === e.currentTarget) onCancel() }}>
       <div className="w-[720px] max-w-full rounded-2xl border border-slate-200 bg-white shadow-2xl" onKeyDown={onKeyDown}>
         <div className="flex items-center gap-2 border-b border-slate-200 px-4 py-2.5">
           <h2 className="text-[14px] font-semibold text-slate-800">Đổi tên điểm <span className="font-normal text-slate-400">— {ten}</span></h2>

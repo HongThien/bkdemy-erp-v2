@@ -1086,7 +1086,7 @@ thẳng `ca_test.nguoi_cham_id`/`nguoi_tra_bai_id`, data đã sẵn, không cầ
   `loi_giai` theo `ma_cau` (dispatch môn→bảng qua registry, KHÔNG rải `if mon===...`). IME thật cần Thùy tự gõ thử tay
   1 lần trước khi tin. `AutoTextarea` (DangHub) vẫn hết dùng, giữ+export chờ gật xoá.
 
-### ⭐ TOOL GIẢI BÀI kho chung `giaibai.bkacademy.edu.vn` (06/09, nhánh `feat/giaibai`, worktree `wt-giaibai`) — ĐÃ PUSH `main` (d172a09), CHƯA deploy
+### ⭐ TOOL GIẢI BÀI kho chung `giaibai.bkacademy.edu.vn` (06/09, nhánh `feat/giaibai`, worktree `wt-giaibai`) — ĐÃ PUSH `main` (d172a09) + ĐÃ DEPLOY (Thùy, 06/09) — xem thêm mục "06/09 chiều" cuối phần này
 - **Story (Thùy, "giống Qanda"):** hệ liệt kê bài chưa có lời giải → TA **Nhận giải** (bài rời pool, về danh sách riêng) → soạn
   (MathTextarea + ⤢ SoanModal) → **Nộp** → **học thuật duyệt** → duyệt xong mới thành lời giải chính thức → ghi ai/lúc nào/bao lâu.
   **Kiến trúc CEO chốt: tách hẳn khỏi ERP, chỉ chung DB** ("không đổ dồn vào 1 ERP khổng lồ") = modular monolith: **entry Vite thứ 8**
@@ -1120,13 +1120,55 @@ thẳng `ca_test.nguoi_cham_id`/`nguoi_tra_bai_id`, data đã sẵn, không cầ
   vercel.json theo project. ② Hình chưa có `muc_do` → cột độ khó trống trong báo cáo. ③ Bundle 3.2 MB (useStore/pdfjs qua
   MathTextarea/ImgInsertBar) — chấp nhận. ④ Worktree `wt-giaibai` dùng **junction** `node_modules` → `bkdemy-erp-v2/node_modules`
   (tạo bằng PowerShell `New-Item -ItemType Junction`; `cmd mklink` qua bash báo OK giả) — dev-only font KaTeX 403 vì ngoài fs.allow.
+- **06/09 CHIỀU (audit Thùy + đổi thiết kế, 10 migration `202609061419`…`1543` — checkout chính, chưa worktree):**
+  - **Lọc pool "Giải" đúng luật Thùy:** chỉ câu THIẾU CẢ đáp án ngắn LẪN lời giải chi tiết (`dap_an`, `loi_giai`, `anh_dap_an` đều
+    null). Trước lọc thiếu `dap_an` → 716/839 câu Đại trắc nghiệm đã có đáp án vẫn hiện (Thùy: "vốn đơn giản, không cần chi tiết").
+    Kết quả: Đại 839→123 · KHTN 21→8 · HGT 10→2 · Hình không đổi (không có khái niệm đáp án ngắn).
+  - **Race "2 người cùng Nhận":** dữ liệu vốn AN TOÀN (unique index `*_cho_uniq (khoá) where xu_ly_at is null` từ mig cũ) — chỉ vá
+    THÔNG BÁO: `fn_giaibai_nhan` catch `unique_violation` → "vừa có người khác nhận trước 1 bước".
+  - **Tab 🛠 Quản trị** (gate như Duyệt): `fn_giaibai_dashboard(nhanh[], me)` — MỌI người có `nhan_su_mon` (kể cả giữ 0) × đang giữ/
+    quá hạn/chờ duyệt/đã duyệt/từ chối 3/đã trả; gác `fn_giaibai_la_nguoi_duyet` ở DB. Khác Thống kê (chỉ đã duyệt theo tháng).
+  - **Trình soạn thảo full màn có ĐỀ BÀI bên trái** (`SoanWorkspace` prop `deBai`, nối qua `SoanModal` → `MathTextarea.soanDeBai` →
+    `GiaiEditor.deBai`; BaiCuaToi truyền `<BaiHead/><BaiBody/>`). Không truyền = layout cũ (DangHub/FormBaiToan không đổi).
+  - **BUG "bấm công thức không hiện gì" khi phóng to:** 4 modal con của tool soạn (`MathBuilder/CumModal/DoiDiemModal/ThuMucModal`)
+    z-70 nằm DƯỚI `SoanModal` z-90 → bảng dựng mở thật mà không thấy, gõ mù làm hỏng công thức. Vá: z-100. (soan.html độc lập không lộ.)
+  - **⭐ 2 CHẾ ĐỘ (Thùy chốt sau khi BÁC thiết kế "worker gọi API Claude Sonnet/Haiku" — đã dựng rồi XOÁ trong ngày, mig `1524`
+    drop `giaibai_ai_job` + 2 fn; "dùng thẳng Claude Code, có luồng hangdoi-giai.mjs rồi, KHÔNG gọi API"):**
+    · **Giải** = giải từ đầu, pool `v_giaibai_bai` (thiếu cả 2) — PHÒNG lúc Claude có sự cố vẫn có việc.
+    · **Hoàn thiện** = trên nền Claude ĐÃ GIẢI THẬT, pool `v_giaibai_hoan_thien` = `nguon_giai='ai' AND giai_method='claude_code'
+      AND NOT da_duyet` (Hình đọc `hinh_cach_giai`/`bien_the`). Đo thật: dai/khtn/hgt MỌI câu AI chưa duyệt đều `giai_method IS NULL`
+      (= clone, 11.854/42/141, KHÔNG thuộc pool này); chỉ Hình có `claude_code` (7 → 41 trong ngày vì có phiên chạy hangdoi-giai).
+      **Claude Code giải qua `hangdoi-giai.mjs` y như cũ** (ghi thẳng `loi_giai` + `giai_method='claude_code'`) ⇒ câu tự RỜI Giải,
+      VÀO Hoàn thiện — 2 pool loại trừ nhau bằng cột sẵn có, không đẻ khái niệm.
+    · DB: cột `che_do` trên 5 bảng `*_yeu_cau_giai` (set lúc Nhận). `fn_giaibai_nhan` GIỮ CHỮ KÝ, tự dò pool: Giải → nháp trắng;
+      Hoàn thiện → pre-fill `loi_giai_nhap` từ bản Claude + SNAPSHOT `loi_giai_ai/ai_model` trên dòng nhận (bất biến — so trước/sau,
+      trả/nhận lại không mất). `fn_giaibai_duyet` rẽ theo `che_do`: Giải đòi `loi_giai` trống · Hoàn thiện đòi đang là bản
+      `claude_code` chưa duyệt, ghi đè + `nguon_giai='nguoi', giai_method='ta'` (Hình UPDATE thẳng `hinh_cach_giai`/`bien_the`).
+      `fn_giaibai_pool/dem_pool` thêm `p_che_do default 'giai'` (client cũ không đổi).
+    · UI: KhoBai toggle "✍️ Giải | 🤖 Hoàn thiện" (localStorage), Hoàn thiện có badge + BẢN CLAUDE xem trước dưới đề + nút "Nhận hoàn
+      thiện"; GiaiEditor banner; DuyetBai "So với bản Claude gốc · giữ nguyên/đã sửa"; chip che_do; Dashboard 2 KPI Kho Giải/Hoàn thiện.
+  - **⭐ `fn_giaibai_duyet` CHƯA TỪNG CHẠY ĐƯỢC trên prod tới `1543`:** `IF NOT FOUND` sau `EXECUTE … INTO` — đo bằng DO block:
+    `found=false` DÙ biến đã nạp đủ (bài học ② hôm qua ghi "EXECUTE INTO thì FOUND đúng" là SAI, đã sửa). E2E hôm qua chỉ test từ
+    chối/trả. Vá: kiểm `v_key is null`. Verify 06/09 (transaction rollback, người duyệt thứ 2 giả lập): Hoàn thiện Hình nhận→nộp→
+    duyệt ✓ · Giải Đại ✓ · câu clone bị chặn ✓ · duyệt sau khi nơi khác duyệt/câu có lời giải giữa chừng/tự duyệt: chặn ✓.
+  - **THỪA chưa xoá (Luật xoá, chờ gật):** 4 cột `loi_giai_ai/dap_an_ai/ai_model/ai_de_xuat_at` trên 5 bảng CÂU GỐC (mig `1458`,
+    thiết kế worker; không ai ghi, luôn null; `v_giaibai_bai` vẫn select cho đủ shape) + `fn_giaibai_dem_cho_ai`. Snapshot cùng tên
+    trên `*_yeu_cau_giai` thì ĐANG DÙNG — đừng nhầm. Thống kê `fn_giaibai_bao_cao_*` KHÔNG lọc môn (KHTN học thuật thấy cả Toán) — cũ, chưa sửa.
+  - **Tính công: để sau** (Thùy) — hiện chỉ track số lượng + `muc_do` + snapshot để so diff khi cần.
 
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
 
-- **⭐ plpgsql: `EXECUTE 'update/delete …'` KHÔNG có RETURNING ⇒ `FOUND` LUÔN false (cắn 06/09).** Docs: EXECUTE sets FOUND
-  chỉ khi "produces one or more rows". SQL động mà kiểm "có sửa được dòng nào không" PHẢI dùng `GET DIAGNOSTICS n = ROW_COUNT`
-  (hoặc `RETURNING … INTO` rồi kiểm null). UPDATE tĩnh và `EXECUTE … INTO` (select) thì FOUND đúng. 3 fn `fn_giaibai_tra/luu_nhap/nop`
-  ném "Không lưu được" dù DB đã ghi — phải vá bằng migration MỚI. Cùng họ: `EXECUTE … INTO record` không có dòng ⇒ record null,
+- **⭐ plpgsql: sau `EXECUTE` (bất kỳ dạng nào) ĐỪNG TIN `FOUND` (cắn 06/09 hai lần).** `EXECUTE 'update …'` không RETURNING
+  ⇒ FOUND false dù đã sửa dòng. **`EXECUTE 'select …' INTO` cũng vậy: đo bằng DO block 06/09 chiều → `found=false` DÙ biến đã nạp
+  đủ giá trị** (bản đầu của mục này ghi "EXECUTE INTO thì FOUND đúng" — sai, khiến `fn_giaibai_duyet` chưa từng chạy được tới mig
+  `202609061543`). Luật: SQL động kiểm kết quả bằng `GET DIAGNOSTICS n = ROW_COUNT` (ghi) hoặc **kiểm biến INTO có null không** (đọc).
+  3 fn `fn_giaibai_tra/luu_nhap/nop` ném "Không lưu được" dù DB đã ghi — phải vá bằng migration MỚI.
+- **⭐ `CREATE OR REPLACE VIEW`: cột MỚI PHẢI đứng SAU CÙNG — mọi cột cũ giữ nguyên vị trí/tên/kiểu (cắn 06/09 hai lần).** Đặt cột
+  mới trước cột cũ (kể cả ẩn qua `k.*`) ⇒ "cannot change name of view column X to Y". Với UNION nhiều nhánh: nhánh liệt kê tay phải
+  khớp VỊ TRÍ với nhánh dùng `y.*` (cột `ALTER TABLE ADD` nằm CUỐI bảng ⇒ `y.*` đẩy chúng ra cuối). Đừng `k.*` khi thêm cột — liệt kê tay.
+- **⭐ `CREATE OR REPLACE FUNCTION` mà THÊM tham số (dù có DEFAULT) = tạo OVERLOAD thứ 2, KHÔNG thay hàm cũ (cắn 06/09).** Gọi bằng
+  số tham số cũ khớp cả hai ⇒ "function … is not unique" cho MỌI caller cũ (kể cả supabase.rpc). Phải `DROP FUNCTION` đúng chữ ký cũ
+  trong migration kế (mig `202609061533`). Kiểm bằng `pg_get_function_identity_arguments`. Cùng họ: `EXECUTE … INTO record` không có dòng ⇒ record null,
   và truy `y.<cột>` mà bảng nhánh khác không có cột đó (`y.baitoan_id` vs `y.bien_the_id` trong CASE) = lỗi field — lấy khoá qua
   `execute format('select %I …', key_col)`.
 - **⭐ React: KHÔNG khai báo component trong THÂN component khác (cắn 06/09 BaiCuaToi).** `const The = (…) => <li>…</li>` bên trong

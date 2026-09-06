@@ -54,6 +54,24 @@
       "port": 5202
     },
     {
+      "name": "dev-soan",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev:soan"
+      ],
+      "port": 5180
+    },
+    {
+      "name": "dev-giaibai",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev:giaibai"
+      ],
+      "port": 5181
+    },
+    {
       "name": "bkdemy-web-dev",
       "runtimeExecutable": "cmd",
       "runtimeArgs": [

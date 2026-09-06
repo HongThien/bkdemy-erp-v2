@@ -33,6 +33,9 @@ export type BaiChuaGiai = {
   loai_cau: string; de_bai: string; gia_thiet: string | null; anh: string | null
   lua_chon: string[] | null; menh_de: MenhDe[] | null; dap_an: string | null; nguon: string; created_at: string
   yc_id: string | null; yc_nguoi_giai: string | null; yc_nguoi_giai_ten: string | null; yc_trang_thai: TrangThaiNhan | null; yc_han_at: string | null; yc_created_at: string | null; yc_ghi_chu: string | null
+  // Pool 'hoan_thien' (v_giaibai_hoan_thien): loi_giai_ai = bản Claude đã giải (xem trước trên card), ai_model=
+  // 'claude_code'. Pool 'giai' (v_giaibai_bai): cả 4 đều null (cột thừa từ thiết kế worker API đã bỏ 06/09).
+  loi_giai_ai: string | null; dap_an_ai: string | null; ai_model: string | null; ai_de_xuat_at: string | null
 }
 // 1 DÒNG NHẬN BÀI (v_giaibai_nhan) — của người hoặc Claude, mọi trạng thái.
 export type DongNhan = {
@@ -45,6 +48,9 @@ export type DongNhan = {
   loai_cau: string; de_bai: string; gia_thiet: string | null; anh: string | null
   lua_chon: string[] | null; menh_de: MenhDe[] | null; dap_an: string | null; bai_loi_giai: string | null
   mon: string; dang_giu: boolean; qua_han: boolean; nguoi_giai_ten: string | null; duyet_boi_ten: string | null; giay_giai: number | null
+  // che_do set lúc Nhận (mig 202609061526): 'hoan_thien' ⇒ loi_giai_ai = SNAPSHOT bản Claude gốc lúc nhận (bất
+  // biến, để so với bản người sửa) · 'giai' ⇒ loi_giai_ai null (viết từ đầu).
+  che_do: CheDo; loi_giai_ai: string | null; ai_model: string | null
 }
 
 async function rpc<T>(fn: string, args: Record<string, unknown>): Promise<T> {
@@ -53,11 +59,19 @@ async function rpc<T>(fn: string, args: Record<string, unknown>): Promise<T> {
   return data as T
 }
 
+// ── 2 CHẾ ĐỘ (Thùy 06/09): 'giai' = giải TỪ ĐẦU — câu thiếu CẢ đáp án lẫn lời giải chi tiết (phòng lúc Claude
+// có sự cố vẫn có việc làm) · 'hoan_thien' = trên NỀN Claude đã giải THẬT (nguon_giai='ai' + giai_method=
+// 'claude_code', chưa duyệt — KHÔNG phải clone). 2 pool loại trừ nhau; fn_giaibai_nhan/duyệt TỰ DÒ theo câu,
+// client chỉ truyền cheDo khi LIỆT KÊ pool. Hình: v_giaibai_hoan_thien lấy từ hinh_cach_giai/bien_the.
+export type CheDo = 'giai' | 'hoan_thien'
+export const CHE_DO_LABEL: Record<CheDo, string> = { giai: 'Giải', hoan_thien: 'Hoàn thiện' }
+
 // ── Kho bài (pool) ──
-export const listPool = (nhanh: GiaiBaiNhanh[], khoi: string | null) =>
-  rpc<BaiChuaGiai[]>('fn_giaibai_pool', { p_nhanh: nhanh, p_khoi: khoi, p_limit: LIMIT }).then((r) => r ?? [])
+export const listPool = (nhanh: GiaiBaiNhanh[], khoi: string | null, cheDo: CheDo = 'giai') =>
+  rpc<BaiChuaGiai[]>('fn_giaibai_pool', { p_nhanh: nhanh, p_khoi: khoi, p_limit: LIMIT, p_che_do: cheDo }).then((r) => r ?? [])
 export type DemPool = { khoi: string; so_bai: number }
-export const demPool = (nhanh: GiaiBaiNhanh[]) => rpc<DemPool[]>('fn_giaibai_dem_pool', { p_nhanh: nhanh }).then((r) => r ?? [])
+export const demPool = (nhanh: GiaiBaiNhanh[], cheDo: CheDo = 'giai') =>
+  rpc<DemPool[]>('fn_giaibai_dem_pool', { p_nhanh: nhanh, p_che_do: cheDo }).then((r) => r ?? [])
 
 // ── Nhận / trả / nháp / nộp — DB tự chặn: >3 bài đang giữ · bài đã có người/Claude giữ · bị từ chối 3 lần ──
 export const nhanBai = (nhanh: GiaiBaiNhanh, key: string, me: string) => rpc<string>('fn_giaibai_nhan', { p_nhanh: nhanh, p_key: key, p_me: me })
@@ -75,6 +89,13 @@ export const duyetBai = (nhanh: GiaiBaiNhanh, id: string, me: string) => rpc<voi
 export const tuChoiBai = (nhanh: GiaiBaiNhanh, id: string, me: string, lyDo: string) =>
   rpc<void>('fn_giaibai_tu_choi', { p_nhanh: nhanh, p_id: id, p_me: me, p_ly_do: lyDo })
 export const laNguoiDuyet = (me: string, nhanh: GiaiBaiNhanh) => rpc<boolean>('fn_giaibai_la_nguoi_duyet', { p_me: me, p_nhanh: nhanh })
+
+// ── Dashboard quản trị (ghế học thuật đúng môn / admin — DB kiểm lại): mỗi người đang giữ/chờ duyệt/đã duyệt bao nhiêu ──
+export type DashboardHang = {
+  nhan_su_id: string; ho_ten: string
+  dang_giu: number; qua_han: number; cho_duyet: number; da_duyet: number; tu_choi_3: number; da_tra: number
+}
+export const dashboard = (nhanh: GiaiBaiNhanh[], me: string) => rpc<DashboardHang[]>('fn_giaibai_dashboard', { p_nhanh: nhanh, p_me: me }).then((r) => r ?? [])
 
 // ── Báo cáo (bài đã duyệt trong khoảng ngày VN, theo duyet_at) — Thùy tự tính tiền từ đây ──
 export type BaoCaoTong = {

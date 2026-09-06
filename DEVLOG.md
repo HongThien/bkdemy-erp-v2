@@ -8569,3 +8569,160 @@ update — vá bằng mig MỚI `202609060200_giaibai_fix_found_execute.sql` (GE
 TRONG thân BaiCuaToi ⇒ mỗi render cha = component type mới ⇒ remount thẻ + editor (ref DOM stale liên tục, sẽ mất text đang gõ) — hoist
 ra module. Dev-only: font KaTeX 403 vì junction node_modules ngoài fs.allow của Vite (build prod bundle font, không ảnh hưởng).
 **Chưa test:** nhánh Hình (nhận/nộp/duyệt bài toán gốc + biến thể) · nhãn "🧑 X đang giải" ở ERP tab Chưa có lời giải · Thống kê có dữ liệu.
+
+## 2026-09-06 — Giải bài: audit 3 việc Thùy chỉ ra (nhận-bài race, dashboard học thuật, lọc câu theo đáp án) + đề bài cạnh lời giải khi soạn full màn
+**Thùy giao 3 việc audit + 1 việc UX (chen giữa lúc đang audit):**
+1. "Check kĩ lại logic: người này nhận rồi - người kia chưa nhận chưa" (race-condition NHẬN BÀI).
+2. "Tài khoản học thuật cần dashboard quản trị: mỗi người đang nhận bao nhiêu câu, đã làm bao nhiêu câu."
+3. "Check lại logic câu hỏi: chỉ câu KHÔNG có cả đáp án LẪN đáp án chi tiết mới xuất hiện — có 1 trong 2 rồi thì không cần hiện."
+4. (giữa chừng) "Khi soạn lời giải phóng full màn vẫn cần thấy đề bài — ở ngang lời giải, hiện đang trống."
+**Việc 4 làm trước (nhanh, không đụng DB):** `SoanWorkspace` thêm prop `deBai?: ReactNode` — có thì `<main>` tách 2 cột (đề trái
+chỉ đọc/cuộn riêng · soạn phải), không có thì layout GIỮ NGUYÊN (card giữa màn, không ảnh hưởng DangHub/FormBaiToan/NhapKho).
+Nối xuyên: `SoanModal` → `MathTextarea` (`soanDeBai?`) → `GiaiEditor` (`deBai?`) → `BaiCuaToi` truyền `<BaiHead b={r}/><BaiBody b={r}/>`
+(tái dùng nguyên component đang hiện đề bài trên card, không viết lại). Verify: full màn "BT.08.121" — đề (mã+hình+giả thiết) cố định
+trái, gõ lời giải phải, Lưu → đúng về ô GiaiEditor. 0 lỗi console.
+**Việc 1 — audit trước khi sửa (không đoán):** query `pg_indexes` xác nhận CÓ SẴN unique index `*_cho_uniq (khoá) WHERE xu_ly_at IS NULL`
+trên cả 5 bảng nhận bài (từ mig cũ 202609041808/1826) ⇒ **DATA chưa từng có thể sai** — 2 người bấm Nhận cùng lúc, DB tự chặn INSERT
+thứ 2. Khe hở DUY NHẤT: `fn_giaibai_nhan` check-rồi-insert (TOCTOU) nên người thua cuộc (hiếm, đúng cùng mili-giây) nhận lỗi Postgres
+THÔ thay vì thông báo. Vá: bọc INSERT bằng `EXCEPTION WHEN unique_violation` → "Bài này vừa có người khác nhận trước 1 bước".
+**Việc 3 — đo thật trước khi kết luận (chỉ đọc):** `v_giaibai_bai` hiện CHỈ lọc `loi_giai/anh_dap_an is null`, KHÔNG lọc `dap_an`.
+dai_cau_hoi: pool 839 câu nhưng **716/839 (85%) ĐÃ CÓ `dap_an`** (546 trắc_nghiệm có sẵn đáp án đúng lúc tạo, 132 trả_lời_ngắn, 38 tự_luận)
+— đúng luật Thùy chỉ CÒN 123. khtn 21→8, hgt 10→2 (Hình không có khái niệm "đáp án ngắn" nên KHÔNG đổi, dap_an luôn null trong view).
+Mig `202609061419_giaibai_loc_dap_an_va_dashboard.sql`: `create or replace view v_giaibai_bai` thêm `and c.dap_an is null` cho 3 nhánh
+toan/khtn/hgt (không xoá gì — chỉ đổi tập câu HIỆN trong pool, ai đang giữ bài loại cũ vẫn giữ bình thường tới khi nộp/trả).
+**Việc 2 — RPC mới `fn_giaibai_dashboard(p_nhanh, p_me)`:** liệt kê MỌI người có `nhan_su_mon` khớp môn (kể cả đang giữ 0 câu) kèm
+đang giữ/quá hạn/chờ duyệt/đã duyệt(luỹ kế)/từ chối-3-lần/đã trả — gác cửa `fn_giaibai_la_nguoi_duyet` (học thuật đúng môn hoặc admin,
+verify: uuid ngẫu nhiên bị chặn đúng). Khác `ThongKe` (chỉ báo cáo ĐÃ DUYỆT theo tháng chọn) — đây là ẢNH CHỤP SỐNG cho vận hành hàng
+ngày. `screens/giaibai/Dashboard.tsx` (4 ô KPI + bảng theo người) + tab **🛠 Quản trị** trong `GiaiBaiHome` (gate `laNguoiDuyet`, cùng
+điều kiện với tab Duyệt), tự làm mới theo `tick` (bump mỗi lần `taiBadge` chạy — sau mọi nhận/nộp/duyệt ở tab khác).
+**Verify (Browser pane + query trực tiếp DB, dev port 5181):** `fn_giaibai_dashboard` trả đúng khớp query tay (Thùy: 2 đang giữ+1 chờ
+duyệt sau khi em nhận thử) · dashboard chặn uuid lạ với thông báo đúng · pool khối 8 Toán 56 (đúng sau lọc, trước là số lớn hơn gồm cả
+câu đã có dap_an) · nhận 2 câu Hình thử nghiệm → hiện ở Bài của tôi → soạn full màn thấy đề bên trái → dọn lại bằng UPDATE trực tiếp
+(`trang_thai='da_tra'`) để không chiếm hạn mức thật, reload xác nhận cả 2 câu về đúng pool, badge 0/3, 0 lỗi console. tsc sạch. `npm run
+schema` đã refresh. **Chưa commit** — chờ Thùy xem qua rồi chốt.
+
+## 2026-09-06 (tiếp) — Giải bài: FIX "phóng to trình soạn thảo, bấm công thức không hiện gì" = modal con nằm DƯỚI modal full màn
+**Thùy báo:** "khi phóng to trình soạn thảo thì nhiều công thức lỗi, bấm vào không hiện ra nữa."
+**Chẩn đoán (grep z-index + tái hiện trên dev):** `SoanModal` (nhúng ERP/giaibai) là portal `z-[90]`; 4 modal con của tool soạn
+(`MathBuilder` / `CumModal` / `DoiDiemModal` / `ThuMucModal`) cũng portal ra `document.body` nhưng `z-[70]` ⇒ bấm công thức → bảng dựng
+MỞ THẬT nhưng bị modal full màn đè lên, mắt không thấy. Bản `soan.html` độc lập không có lớp z-90 nên hôm qua test không lộ. "Nhiều công
+thức lỗi" nhiều khả năng là HỆ QUẢ: bảng dựng ẩn vẫn nhận focus/phím → người dùng gõ/Enter mù → công thức bị thay bằng nội dung gõ nhầm.
+**Vá:** 4 modal con `z-[70]` → `z-[100]` (trên cả `z-[95]` của PrintView, không màn nào dùng chung với soạn thảo). MathPopup (z-70, ô
+inline của ERP, không mở trong SoanModal) giữ nguyên.
+**Verify (giaibai dev 5181, BT.08.109):** nạp lời giải 6 công thức (ma trận `$$\left\{\begin{matrix}…$$`, `\overrightarrow`, `\dfrac`,
+chỉ số dưới) vào ô → ⤢ → cả 6 `.rm-f` render sạch (0 `.katex-error`, kích thước đúng) → click công thức → `math-field` hiện, `elementFromPoint`
+tại tâm = chính math-field (onTop=true), `zIndex=100`, nạp đúng LaTeX. Esc/Đóng bình thường. Dọn: trả bài BT.08.109 bằng UPDATE (chưa lưu nháp).
+**Ghi nhận thêm (chưa sửa, hỏi Thùy):** lệnh LaTeX ĐỨNG TRẦN ngoài `$…$` (vd `8 \times 10` — AI sinh hay quên bọc $) thì `MathText`
+(preview/in) tự đổi thành `×` để nhìn đẹp, còn vùng soạn WYSIWYG hiện nguyên chữ `\times` (đúng nội dung đang lưu). Nếu muốn vùng soạn
+tự bọc `$\times$` lúc nạp thì chuỗi lưu SẼ ĐỔI khi bấm Lưu — là chuẩn hoá dữ liệu, cần Thùy gật trước.
+
+## 2026-09-06 (tiếp) — Giải bài: PIPELINE "AI đề xuất trước" (Claude Sonnet/Haiku giải → nhân sự SỬA thay vì viết từ trắng)
+**Thùy (idea tối ưu flow):** "Dùng Claude giải các bài trong kho (Sonnet/Haiku) → trang giải bài KHÔNG hiện bài chưa giải nữa
+mà hiện bài AI ĐÃ GIẢI để nhân sự sửa. Hành vi giống hệt, chỉ khác thời gian hoàn thiện ngắn hơn."
+**Chốt 4 điểm (Thùy, trả lời câu hỏi trước đó):** (1) nhóm "có đáp án ngắn, thiếu lời giải chi tiết" vốn ĐƠN GIẢN không cần —
+chỉ nhóm "thiếu thật cả 2" (123 Đại/8 KHTN/2 HGT/30 Hình, đã lọc mig 202609061419) mới cần AI. (2) KHÔNG đụng 11.815 câu Đại
+đã có lời giải AI CŨ trong kho — flow MỚI tách hẳn, dùng cột riêng. (3) lưu cả bản AI đề xuất lẫn model để SAU so hiệu suất
+model (đối chiếu bản AI với lời giải người đã duyệt — vốn đã có sẵn). (4) tính công để sau, chỉ track số lượng + độ khó.
+**Kiến trúc — mirror `worker/danhgia.mjs`** (job queue + Claude API, KHÁC hẳn `hangdoi-giai.mjs` "Claude Code thủ công"):
+- Mig `202609061458_giaibai_ai_de_xuat.sql` (+ 3 mig vá nhỏ theo sau, xem dưới):
+  - Cột "kho ý tưởng AI mới nhất" trên 5 bảng câu hỏi/mô hình gốc: `loi_giai_ai, dap_an_ai, ai_model, ai_de_xuat_at`.
+    KHÔNG đụng cột `loi_giai` chính thức cho tới khi DUYỆT — đúng luật cũ "giải bài không xoá/ghi đè gì trong kho".
+  - Snapshot `loi_giai_ai, ai_model` trên 5 bảng `*_yeu_cau_giai` — copy 1 LẦN lúc "Nhận" (bất biến, sống ở dòng giao dịch
+    KHÔNG phải câu gốc → trả/nhận lại nhiều lần không mất, so sánh về sau không lệ thuộc câu gốc bị AI chạy lại cho lượt khác).
+  - Bảng job `giaibai_ai_job` (id, nhanh, key, trang_thai, model_chon, usage, tien_dong, do_tin, ghi_chu, error, attempt).
+    RLS bật, KHÔNG policy cho authenticated/anon — CHẶT hơn `danhgia_ai_job` (la_thanh_vien() cho mọi nhân sự); mọi thao tác
+    qua RPC `security definer` hoặc worker (service-role). Unique index `(nhanh,key) where trang_thai in (pending,processing)`
+    — bấm "Tạo job" nhiều lần không tạo trùng.
+  - `fn_giaibai_nhan` (giữ NGUYÊN chữ ký, KHÔNG đổi API client): thêm bước lấy `loi_giai_ai/dap_an_ai/ai_model` từ câu gốc →
+    pre-fill `loi_giai_nhap/dap_an_nhap` (người sửa thay vì viết từ đầu) + snapshot vào dòng nhận. Client (`nhanBai(nhanh,
+    key, me)`) không biết/không cần biết có AI hay không.
+  - `v_giaibai_bai` (nguồn "Kho bài"): CHỈ hiện câu ĐÃ CÓ `loi_giai_ai` (đúng ý #2 — pool tạm RỖNG cho tới khi AI xử lý,
+    ĐÂY LÀ TÁC DỤNG ĐÚNG chứ không phải lỗi). `v_hinh_chua_giai` append 4 cột ai (create-or-replace CHỈ NỐI cột — ERP tab
+    "Chưa có lời giải" không bị ảnh hưởng).
+  - `fn_giaibai_dem_cho_ai` (đếm câu chưa qua AI, không gate) · `fn_giaibai_ai_tao_job(nhanh[], me, model?)` (tạo job hàng
+    loạt cho câu thiếu thật chưa có AI chưa có job treo, gate `fn_giaibai_la_nguoi_duyet`) · `fn_giaibai_ai_job_status`.
+- **`worker/gia_model.mjs`** (mới): tách bảng GIA/CO_ADAPTIVE/USD_VND dùng CHUNG khỏi `danhgia.mjs` (trước đó chỉ 1 worker
+  có bảng giá, sửa giá phải nhớ sửa 2 nơi — nay 1 nguồn).
+- **`worker/giaibai_ai.mjs`** (mới, mirror `danhgia.mjs`): poll `giaibai_ai_job` mỗi 5s, đọc đề bài (+ ẢNH base64 cho Hình —
+  gửi kèm content block `image` để Claude NHÌN hình vẽ, không đoán mù cấu hình) → gọi Claude (`GIAIBAI_AI_MODEL` env, mặc
+  định `claude-sonnet-5`; Sonnet chọn vì phần khó là suy luận nhiều bước, Haiku rẻ hơn nhưng CHƯA ĐO độ chính xác hình học
+  nhiều bước — để học thuật tự thử qua model_chon rồi so `do_tin`/tỉ lệ sửa) → ghi `loi_giai_ai/dap_an_ai/ai_model/
+  ai_de_xuat_at` vào câu gốc + đóng job 'done' kèm `do_tin`/`ghi_chu` (model tự báo mức tin + điều còn nghi ngờ — ưu tiên
+  học thuật xem câu "thấp" trước). Guard tiền `TRAN_TIEN_1_LUOT=2.000đ/câu` (nhỏ hơn danhgia vì 1 câu, không phải 1 lớp).
+- **`worker/giaibai_ai_prompt.mjs`** (mới): SYSTEM nhấn mạnh ĐỊNH DẠNG `$…$`/`$$…$$` bắt buộc (sai định dạng = công thức
+  không hiện), là NHÁP không phải bản cuối, `do_tin` phải THẬT (không mặc định cao). SCHEMA `{loi_giai, dap_an, do_tin,
+  ghi_chu}` structured outputs.
+- **`scripts/verify_giaibai_ai_claude.mjs`** (mới, mirror `verify_danhgia_claude.mjs`): soát model string (đọc danh mục
+  THẬT từ `gia_model.mjs`, không chép tay), schema structured-outputs, `thinking:adaptive` đúng chỗ, key không rò bundle
+  browser. `npm run verify:giaibai-ai` — CHẠY XANH cả 16 mục.
+- UI: `Dashboard.tsx` thêm panel "🤖 AI đề xuất trước" (đếm câu chờ AI theo nhánh + chọn model Sonnet/Haiku + nút Tạo job +
+  trạng thái job, tự dò lại 4s/lần khi có job đang treo). `BaiCard.tsx` badge "🤖 AI đề xuất" khi `ai_model` có giá trị.
+  `GiaiEditor.tsx` banner tím nhắc "đang nạp sẵn bản AI — đọc kỹ trước khi nộp" khi ô lời giải bắt nguồn từ AI.
+**Sai → sửa (bug thật, bắt bằng test tay UI, KHÔNG phải suy đoán):**
+- View `create or replace` đặt cột mới GIỮA `k.*` và `mon` → Postgres báo "cannot change name of view column mon to
+  loi_giai_ai" (rule CHỈ cho nối cột Ở CUỐI). Sửa: liệt kê tay cột `k` theo đúng thứ tự cũ, 4 cột AI đặt SAU CÙNG.
+- `fn_giaibai_ai_tao_job`/`fn_giaibai_ai_job_status` viết COMMENT "SECURITY DEFINER" nhưng QUÊN từ khoá thật trong code
+  (nói một đằng làm một nẻo) → bấm nút thật ra lỗi "new row violates row-level security policy for table giaibai_ai_job"
+  (RLS đúng ý thiết kế — chặn `authenticated` — nhưng hàm chạy SECURITY INVOKER nên bị chặn luôn thay vì bypass). Vá
+  `202609061511`: thêm `security definer set search_path = public` (đúng mẫu `202609030325`/`202609051300`).
+**Verify (Browser pane, dev 5181, tài khoản Admin):** `fn_giaibai_dem_cho_ai` khớp CHÍNH XÁC 123/8/2/30 đã đo trước đó ·
+tạo job (rollback SQL) → 123 job cho Đại, gọi lại lần 2 → 0 job mới (chống trùng đúng) · chặn uuid ngẫu nhiên đúng thông
+báo · **test qua UI thật**: bấm "Tạo job (158)" → lỗi RLS lộ ra → vá → bấm lại → "Đã tạo 158 job" + panel job "158 chờ
+chạy" hiện đúng · dọn sạch 158 job test bằng DELETE trực tiếp (chưa worker nào chạy nên CHƯA tốn tiền thật). `tsc` sạch,
+`build:giaibai` OK (3.27MB). `npm run schema` đã refresh.
+**⚠ CHƯA VẬN HÀNH THẬT — cần trước khi dùng:**
+- `.env.local` cần `ANTHROPIC_API_KEY` thật (108 ký tự, `sk-ant-...`) — worker kiểm ngay lúc khởi động, chết sớm nếu sai/thiếu.
+- Chạy `npm run worker:giaibai-ai` (nền, liên tục — như `worker:danhgia`) thì job mới thật sự được xử lý; bấm "Tạo job" chỉ
+  xếp hàng, KHÔNG tự chạy.
+- **CHƯA ĐO độ chính xác Sonnet vs Haiku** trên dữ liệu thật của trung tâm — cố ý để học thuật tự thử qua `model_chon` rồi
+  đọc `do_tin`/tỉ lệ sửa nhiều-hay-ít, KHÔNG đoán trước (đúng luật CLAUDE.md "công thức nghiệp vụ không được đoán").
+- Vision cho Hình CHƯA test THẬT với ảnh thật (chỉ verify cấu trúc code qua guard script) — lượt chạy job Hình đầu tiên
+  nên xem kỹ trước khi tin.
+- Chưa commit — việc lớn, chờ Thùy xem qua migration/worker rồi chốt trước khi cắm API key thật.
+
+## 2026-09-06 (tiếp) — Giải bài: BỎ worker API · 2 CHẾ ĐỘ "Giải" / "Hoàn thiện" (Claude Code giải, người sửa)
+**Thùy sửa hướng 2 lần trong buổi:** (1) "luồng này KHÔNG gọi API Claude, dùng thẳng Claude Code — có luồng đấy rồi
+(hangdoi-giai.mjs)" → em đã dựng nhầm worker API + job queue (mig 202609061458/1503/1504/1511 + worker/giaibai_ai*.mjs).
+(2) "Web vẫn để 2 mode: **Giải** = giải từ đầu (câu thiếu CẢ đáp án lẫn đáp án chi tiết — phòng lúc Claude có sự cố vẫn có
+việc) · **Hoàn thiện** = trên nền Claude đã giải (KHÔNG phải clone) — cả mấy bài trước đây lẫn từ nay trở đi."
+**Xoá (Thùy gật "OK xóa bảng đi"):** mig `202609061524_giaibai_bo_job_api` — drop `giaibai_ai_job` (0 dòng thật, 158 dòng
+test đã tự xoá trước) + `fn_giaibai_ai_tao_job` + `fn_giaibai_ai_job_status`. Xoá file `worker/giaibai_ai.mjs`,
+`worker/giaibai_ai_prompt.mjs`, `scripts/verify_giaibai_ai_claude.mjs`, 2 npm script. GIỮ `worker/gia_model.mjs` (tách bảng
+giá dùng chung cho danhgia.mjs — cải thiện độc lập, không liên quan lỗi).
+**Đo thật trước khi thiết kế (chỉ đọc):** dai/khtn/hgt: MỌI câu `nguon_giai='ai'` chưa duyệt đều `giai_method IS NULL`
+(11.854/42/141 = clone, KHÔNG phải Claude tự giải) — chỉ `hinh_cach_giai` có ĐÚNG 7 dòng `giai_method='claude_code'` (khớp
+"có mấy bài thôi"). ⇒ Định nghĩa "Hoàn thiện" = `nguon_giai='ai' AND giai_method='claude_code' AND NOT da_duyet`, dùng
+CHÍNH cột đã có, không đẻ khái niệm mới. Claude Code giải qua hangdoi-giai.mjs (ghi thẳng loi_giai + giai_method='claude_code',
+KHÔNG đổi script) ⇒ câu tự RỜI pool Giải (hết thiếu) và VÀO pool Hoàn thiện. 2 pool loại trừ nhau theo định nghĩa.
+**Mig `202609061526_giaibai_giai_va_hoan_thien`:** cột `che_do ('giai'|'hoan_thien')` trên 5 bảng *_yeu_cau_giai (set lúc
+Nhận) · `v_giaibai_nhan` nối 3 cột cuối (loi_giai_ai, ai_model, che_do) · `v_giaibai_bai` BỎ điều kiện `loi_giai_ai is not
+null` (về đúng "thiếu cả 2") · **`v_giaibai_hoan_thien`** MỚI (cùng shape v_giaibai_bai; Hình đọc từ hinh_cach_giai/bien_the,
+bỏ bài đã có cách giải khác) · `fn_giaibai_pool/dem_pool` thêm `p_che_do default 'giai'` · `fn_giaibai_nhan` GIỮ CHỮ KÝ, tự
+dò pool (Giải → nhập trắng · Hoàn thiện → pre-fill loi_giai_nhap TỪ bản Claude + SNAPSHOT vào `loi_giai_ai/ai_model` của dòng
+nhận — bất biến, so trước/sau) · `fn_giaibai_duyet` đọc `che_do`: Giải giữ nguyên (đòi loi_giai trống) · Hoàn thiện đòi
+`nguon_giai='ai' and giai_method='claude_code' and not da_duyet` rồi ghi đè + nguon_giai='nguoi', giai_method='ta'
+(Hình: UPDATE thẳng hinh_cach_giai/bien_the, KHÔNG qua fn_hinh_ghi_loi_giai — hàm đó cho câu trống).
+**4 bug bắt bằng verify tay (không đoán), mỗi bug 1 mig vá:**
+- `create or replace view` đặt cột mới trước `mon` → "cannot change name of view column" (lần 2 trong ngày — quy tắc: cột mới
+  LUÔN ở CUỐI, liệt kê tay, đừng `k.*`). Với UNION, nhánh Hình liệt kê tay phải khớp VỊ TRÍ nhánh k dùng `y.*`.
+- `dai_cau_hoi` không có `updated_at` → placeholder ai_de_xuat_at dùng `c.ai_de_xuat_at`.
+- `202609061533`: `create or replace function` THÊM tham số (dù có default) = tạo OVERLOAD thứ 2, không replace → gọi 3
+  tham số "is not unique". Phải `drop function` chữ ký cũ.
+- `202609061535`: `hinh_baitoan` KHÔNG có cột `loi_giai` (nằm ở hinh_cach_giai) → fn_giaibai_nhan Hoàn thiện Hình tách case.
+- `202609061543`: **fn_giaibai_duyet luôn ném "không ở trạng thái chờ duyệt"** — `IF NOT FOUND` sau `EXECUTE … INTO` trả
+  `found=false` DÙ đã nạp đủ biến (đo bằng DO block: found=f, v_key có giá trị). Cùng họ bẫy 202609060200; DEVLOG hôm qua
+  ghi "EXECUTE INTO nên FOUND đúng" là SAI, và e2e hôm qua CHỈ test từ chối/trả, CHƯA test duyệt-thành-công. Vá: kiểm
+  `v_key is null`. ⇒ **Đường duyệt của tool giải bài chưa từng chạy được trên prod cho tới bản này.**
+**UI:** KhoBai toggle "✍️ Giải | 🤖 Hoàn thiện" (nhớ localStorage), Hoàn thiện: badge "Claude đã giải" + BẢN CLAUDE xem trước
+ngay dưới đề (BaiBody `xemAi`) + nút "Nhận hoàn thiện" · GiaiEditor banner Hoàn thiện · DuyetBai nút "So với bản Claude
+gốc · giữ nguyên/đã sửa" (mở snapshot) · chip che_do trên BaiHead · Dashboard bỏ panel job, thêm 2 KPI "Kho Giải / Kho Hoàn
+thiện" (demPool 2 chế độ). lib/giaibai.ts bỏ hết API-job, thêm `CheDo`.
+**Verify (DB thật, transaction ROLLBACK + Browser pane dev 5181):** Hoàn thiện Hình BT.07.095: nhận (che_do=hoan_thien,
+loi_giai_nhap=bản Claude, snapshot=true) → nộp (sửa) → duyệt → hinh_cach_giai nguon_giai='nguoi', giai_method='ta',
+da_duyet, text đã sửa; rời pool · Giải Đại: nhận (trắng) → nộp → duyệt → dai_cau_hoi đúng, rời pool · câu clone bị chặn
+"không còn trong danh sách" · duyệt sau khi nơi khác đã duyệt: chặn · duyệt khi câu có lời giải giữa chừng: chặn · tự
+duyệt: chặn · fn_giaibai_pool 3 tham số (cách gọi cũ) hết mơ hồ. UI: toggle, pool Hoàn thiện 21 câu K8 kèm bản Claude,
+Dashboard 2 kho. tsc sạch, build:giaibai OK. Số Hoàn thiện tăng 7→17→41 trong buổi = phiên khác đang chạy hangdoi-giai.
+**Còn thừa, CHƯA xoá (chờ Thùy gật, Luật xoá):** 4 cột `loi_giai_ai/dap_an_ai/ai_model/ai_de_xuat_at` trên 5 bảng câu gốc
+(mig 202609061458 — thiết kế worker, giờ không ai ghi; v_giaibai_bai vẫn select cho đủ shape, luôn null) · `fn_giaibai_dem_cho_ai`
+(đếm theo cột đó, vô nghĩa) · cột `do_tin/ghi_chu` đã đi theo bảng job (đã drop). Snapshot trên *_yeu_cau_giai thì ĐANG DÙNG.

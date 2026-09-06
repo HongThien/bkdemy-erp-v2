@@ -21,7 +21,7 @@ export function ThuMucModal({ initial, onSave, onCancel }: { initial?: ThuMuc; o
     if (e.key === 'Enter') { e.preventDefault(); save() }
   }
   return createPortal(
-    <div className="fixed inset-0 z-[70] flex items-center justify-center bg-slate-900/35 p-4" onMouseDown={(e) => { if (e.target === e.currentTarget) onCancel() }}>
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/35 p-4" onMouseDown={(e) => { if (e.target === e.currentTarget) onCancel() }}>
       <div className="w-[520px] max-w-full rounded-2xl border border-slate-200 bg-white shadow-2xl" onKeyDown={onKeyDown}>
         <div className="border-b border-slate-200 px-4 py-2.5"><h2 className="text-[14px] font-semibold text-slate-800">{initial ? 'Sửa thư mục' : 'Thư mục mới (chương của khối)'}</h2></div>
         <div className="grid grid-cols-[0.8fr_0.6fr_1.6fr] gap-3 px-4 py-3">

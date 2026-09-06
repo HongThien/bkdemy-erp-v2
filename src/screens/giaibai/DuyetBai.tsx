@@ -13,6 +13,7 @@ export default function DuyetBai({ mon, me, onChanged }: { mon: string; me: stri
   const [busyId, setBusyId] = useState<string | null>(null)
   const [tuChoiId, setTuChoiId] = useState<string | null>(null)
   const [lyDo, setLyDo] = useState('')
+  const [xemGocId, setXemGocId] = useState<string | null>(null)   // Hoàn thiện: mở bản Claude gốc để so với bản người sửa
 
   async function reload() {
     setLoading(true); setErr(null)
@@ -51,10 +52,23 @@ export default function DuyetBai({ mon, me, onChanged }: { mon: string; me: stri
                     <BaiBody b={r} compact />
                   </div>
                   <div>
-                    <div className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-slate-400">Lời giải · {r.so_ky_tu} ký tự · {r.so_cong_thuc} công thức</div>
+                    <div className="mb-1 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wide text-slate-400">
+                      <span>Lời giải · {r.so_ky_tu} ký tự · {r.so_cong_thuc} công thức</span>
+                      {r.che_do === 'hoan_thien' && r.loi_giai_ai && (
+                        <button onClick={() => setXemGocId(xemGocId === r.id ? null : r.id)} className="rounded border border-fuchsia-200 bg-fuchsia-50 px-1.5 py-0.5 normal-case tracking-normal text-fuchsia-700 hover:bg-fuchsia-100">
+                          {xemGocId === r.id ? 'Ẩn bản Claude gốc' : '🤖 So với bản Claude gốc'}{r.loi_giai_ai === r.loi_giai_nhap ? ' · giữ nguyên' : ' · đã sửa'}
+                        </button>
+                      )}
+                    </div>
                     <div className="text-[14px] leading-relaxed text-slate-800"><MathText>{r.loi_giai_nhap}</MathText></div>
                     {r.dap_an_nhap && <div className="mt-1.5 text-[13px] text-slate-600">Đáp án ngắn: <MathText>{r.dap_an_nhap}</MathText></div>}
                     {r.anh_nhap && <img src={r.anh_nhap} alt="ảnh lời giải" className="mt-2 max-h-72 max-w-full rounded-lg border border-slate-200 bg-white" />}
+                    {xemGocId === r.id && r.loi_giai_ai && (
+                      <div className="mt-2 rounded-lg border border-fuchsia-200 bg-fuchsia-50/50 px-3 py-2">
+                        <div className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-fuchsia-700">Bản Claude gốc (lúc nhận)</div>
+                        <div className="text-[13px] leading-relaxed text-slate-700"><MathText>{r.loi_giai_ai}</MathText></div>
+                      </div>
+                    )}
                   </div>
                 </div>
                 {tuChoiId === r.id && (

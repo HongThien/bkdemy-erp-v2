@@ -9,7 +9,7 @@
 //   DƯỚI  = vùng soạn WYSIWYG: chọn cụm → hiện ngay trong bài; cụm có tên điểm → hỏi đổi tên (bộ điểm nhớ theo bài).
 //           KHÔNG có LaTeX ở bất kỳ đâu. Lưu → máy tự dịch chuỗi kho ($…$).
 // ⚠ BẢN THỬ: cụm + thư mục ở localStorage (theo origin — ERP và soan.html KHÔNG chung bộ cụm cho tới khi lên DB).
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { MathText } from '../screens/kho/ui'
 import { MathDoc, type DiemMap, type MathDocHandle } from './MathDoc'
 import { coDoi } from './diem'
@@ -25,9 +25,13 @@ export type SoanWorkspaceProps = {
   onSave: (raw: string) => void
   onClose?: () => void              // có = đang nhúng trong ERP: hiện nút Đóng, Lưu xong host tự đóng
   title?: string                    // vd "Lời giải · DC000123"
+  // Đề bài (chỉ để ĐỌC) hiện cạnh vùng soạn — full màn thì bên cạnh trống, giữ nguyên context "đang giải câu gì"
+  // thay vì phải đóng lại mới xem đề (Thùy 06/09: "vẫn cần không gian để có đề bài — ở ngang với lời giải").
+  // Không dùng thì layout giữ NGUYÊN (card giữa màn, max-w-920) — không ảnh hưởng mọi chỗ khác đang dùng ⤢.
+  deBai?: ReactNode
 }
 
-export function SoanWorkspace({ initial, onSave, onClose, title }: SoanWorkspaceProps) {
+export function SoanWorkspace({ initial, onSave, onClose, title, deBai }: SoanWorkspaceProps) {
   const [thuMucs, setThuMucs] = useState<ThuMuc[]>(() => loadThuMucs())
   const [cums, setCums] = useState<Cum[]>(() => loadCums(loadThuMucs()))
   const [tabChung, setTabChung] = useState<Record<string, string>>(() => loadTabChung())
@@ -215,13 +219,26 @@ export function SoanWorkspace({ initial, onSave, onClose, title }: SoanWorkspace
           </p>
         </section>
 
-        {/* Vùng soạn */}
-        <main className="min-h-0 flex-1 overflow-y-auto px-6 py-5">
-          <div className="mx-auto min-h-full w-full max-w-[920px] rounded-xl border border-slate-200 bg-white px-10 py-8 shadow-sm">
-            <MathDoc ref={doc} initial={initial} cums={cums} placeholder="Gõ lời giải ở đây…" className="min-h-[60vh]" onChange={() => setDirty(true)}
-              diemMap={diemMap} onDiemMap={setDiemMap} />
-          </div>
-        </main>
+        {/* Vùng soạn — có đề bài thì tách 2 cột (đề trái, chỉ đọc · soạn phải), cột nào cuộn riêng cột đó. */}
+        {deBai ? (
+          <main className="grid min-h-0 flex-1 grid-cols-[minmax(320px,38%)_1fr] gap-5 overflow-hidden px-6 py-5">
+            <div className="min-h-0 overflow-y-auto rounded-xl border border-slate-200 bg-white px-6 py-6 shadow-sm">
+              <div className="mb-3 text-[11px] font-semibold uppercase tracking-wide text-slate-400">Đề bài</div>
+              {deBai}
+            </div>
+            <div className="min-h-0 overflow-y-auto rounded-xl border border-slate-200 bg-white px-10 py-8 shadow-sm">
+              <MathDoc ref={doc} initial={initial} cums={cums} placeholder="Gõ lời giải ở đây…" className="min-h-[60vh]" onChange={() => setDirty(true)}
+                diemMap={diemMap} onDiemMap={setDiemMap} />
+            </div>
+          </main>
+        ) : (
+          <main className="min-h-0 flex-1 overflow-y-auto px-6 py-5">
+            <div className="mx-auto min-h-full w-full max-w-[920px] rounded-xl border border-slate-200 bg-white px-10 py-8 shadow-sm">
+              <MathDoc ref={doc} initial={initial} cums={cums} placeholder="Gõ lời giải ở đây…" className="min-h-[60vh]" onChange={() => setDirty(true)}
+                diemMap={diemMap} onDiemMap={setDiemMap} />
+            </div>
+          </main>
+        )}
       </div>
 
       {modal?.kind === 'cum' && (

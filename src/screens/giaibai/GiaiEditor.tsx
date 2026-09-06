@@ -1,7 +1,7 @@
 // Ô soạn lời giải của tool giải bài: MathTextarea (Ctrl+M công thức · phím tắt cá nhân · nút ⤢ mở trình soạn thảo
 // full màn SoanModal) + thanh chèn ảnh vào giữa lời giải + ô ảnh lời giải riêng + đáp án (câu kho chưa có).
 // KHÔNG import DangHub (kéo cả CumBai/PdfRender/Gemini vào bundle) — chỉ lấy đúng 2 mảnh nhỏ dùng chung.
-import { useRef, useState } from 'react'
+import { useRef, useState, type ReactNode } from 'react'
 import { MathTextarea } from '../../components/math/MathTextarea'
 import { ImgInsertBar, insertImageAtCursor } from '../../components/ImgInsertBar'
 import { uploadKhoImage } from '../../lib/kho/api'
@@ -32,8 +32,11 @@ export function AnhSlot({ url, onChange }: { url: string | null; onChange: (v: s
   )
 }
 
-export default function GiaiEditor({ initial, hoiDapAn, tieuDe, busy, onLuuNhap, onNop, onClose }: {
-  initial: NoiDungGiai; hoiDapAn: boolean; tieuDe: string; busy: boolean
+export default function GiaiEditor({ initial, hoiDapAn, tieuDe, deBai, aiModel, busy, onLuuNhap, onNop, onClose }: {
+  initial: NoiDungGiai; hoiDapAn: boolean; tieuDe: string
+  deBai?: ReactNode  // đề bài (BaiHead+BaiBody, chỉ đọc) — hiện cạnh lời giải khi mở trình soạn thảo full màn (⤢)
+  aiModel?: string | null  // có = ô Lời giải đang nạp SẴN bản AI đề xuất (06/09) — nhắc đọc kỹ trước khi nộp
+  busy: boolean
   onLuuNhap: (a: NoiDungGiai) => Promise<void>; onNop: (a: NoiDungGiai) => Promise<void>; onClose: () => void
 }) {
   const [loiGiai, setLoiGiai] = useState(initial.loiGiai ?? '')
@@ -55,13 +58,18 @@ export default function GiaiEditor({ initial, hoiDapAn, tieuDe, busy, onLuuNhap,
   }
   return (
     <div className="mt-3 rounded-xl border border-emerald-200 bg-emerald-50/40 p-3">
+      {aiModel && (
+        <div className="mb-2 rounded-lg border border-fuchsia-200 bg-fuchsia-50 px-3 py-2 text-[12px] text-fuchsia-800">
+          🤖 <b>Hoàn thiện</b> — ô lời giải đang nạp sẵn bản <b>Claude đã giải</b>. Đọc kỹ, sửa cho đúng rồi nộp duyệt. Bản gốc của Claude được giữ riêng để đối chiếu, sửa thoải mái.
+        </div>
+      )}
       <div className="grid grid-cols-[1fr_280px] gap-3">
         <div className="flex min-h-0 flex-col">
           <div className="mb-1 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wide text-slate-500">
             Lời giải <span className="font-normal normal-case text-slate-400">— gõ LaTeX trong $…$, Ctrl+M mở ô công thức, nút ⤢ mở trình soạn thảo, dán ảnh vào giữa được</span>
           </div>
           <ImgInsertBar taRef={taRef} value={loiGiai} onChange={setLoiGiai} className="mb-1" />
-          <MathTextarea ref={taRef} value={loiGiai} onChange={setLoiGiai} soanTitle={tieuDe} wrapClassName="flex min-h-0 flex-1 flex-col"
+          <MathTextarea ref={taRef} value={loiGiai} onChange={setLoiGiai} soanTitle={tieuDe} soanDeBai={deBai} wrapClassName="flex min-h-0 flex-1 flex-col"
             onPaste={(e) => { const f = Array.from(e.clipboardData.files).find((x) => x.type.startsWith('image/')); if (f) { e.preventDefault(); e.stopPropagation(); void insertImageAtCursor(f, taRef, loiGiai, setLoiGiai).catch((err: any) => alert('Upload ảnh lỗi: ' + (err?.message ?? err))) } }}
             className="min-h-[180px] w-full rounded-md border border-slate-200 bg-white px-2.5 py-2 text-[13px] leading-relaxed focus:border-emerald-400 focus:outline-none" />
         </div>

@@ -1,5 +1,6 @@
-// GiaiBaiHome — shell tool giải bài (web máy bàn): thanh trên = tên tool · chọn MÔN · 4 tab (Kho bài · Bài của tôi ·
-// Duyệt [chỉ học thuật] · Thống kê) · người dùng. Badge "đang giữ N/3" + "chờ duyệt N" đọc từ DB mỗi lần có thay đổi.
+// GiaiBaiHome — shell tool giải bài (web máy bàn): thanh trên = tên tool · chọn MÔN · 5 tab (Kho bài · Bài của tôi ·
+// Duyệt [chỉ học thuật] · Quản trị [chỉ học thuật] · Thống kê) · người dùng. Badge "đang giữ N/3" + "chờ duyệt N"
+// đọc từ DB mỗi lần có thay đổi.
 import { useCallback, useEffect, useState } from 'react'
 import { supabase } from '../../lib/supabase'
 import type { GiaiBaiScope } from '../../AppGiaiBai'
@@ -7,9 +8,10 @@ import { listCuaToi, listChoDuyet, nhanhCuaMon } from '../../lib/giaibai'
 import KhoBai from './KhoBai'
 import BaiCuaToi from './BaiCuaToi'
 import DuyetBai from './DuyetBai'
+import Dashboard from './Dashboard'
 import ThongKe from './ThongKe'
 
-type Tab = 'kho' | 'toi' | 'duyet' | 'thongke'
+type Tab = 'kho' | 'toi' | 'duyet' | 'qt' | 'thongke'
 const readMon = (mons: string[]) => { const m = localStorage.getItem('giaibai.mon'); return m && mons.includes(m) ? m : mons[0] }
 
 export default function GiaiBaiHome({ scope }: { scope: GiaiBaiScope }) {
@@ -18,14 +20,16 @@ export default function GiaiBaiHome({ scope }: { scope: GiaiBaiScope }) {
   const [tab, setTab] = useState<Tab>('kho')
   const [dangGiu, setDangGiu] = useState(0)
   const [choDuyet, setChoDuyet] = useState(0)
+  const [tick, setTick] = useState(0)   // bump mỗi lần taiBadge chạy → Dashboard (tab Quản trị) tự làm mới theo
   const laNguoiDuyet = scope.monDuyet.includes(mon)
   useEffect(() => { localStorage.setItem('giaibai.mon', mon) }, [mon])
-  useEffect(() => { if (tab === 'duyet' && !laNguoiDuyet) setTab('kho') }, [laNguoiDuyet, tab])
+  useEffect(() => { if ((tab === 'duyet' || tab === 'qt') && !laNguoiDuyet) setTab('kho') }, [laNguoiDuyet, tab])
 
   // Badge = đếm item đang render của list DB trả về (không tính nghiệp vụ ở client).
   const taiBadge = useCallback(() => {
     listCuaToi(me).then((rs) => setDangGiu(rs.filter((r) => r.dang_giu && (r.trang_thai === 'dang_giai' || r.trang_thai === 'can_sua')).length)).catch(() => {})
     if (laNguoiDuyet) listChoDuyet(nhanhCuaMon(mon)).then((rs) => setChoDuyet(rs.length)).catch(() => {}); else setChoDuyet(0)
+    setTick((t) => t + 1)
   }, [me, mon, laNguoiDuyet])
   useEffect(() => { taiBadge() }, [taiBadge, tab])
 
@@ -33,6 +37,7 @@ export default function GiaiBaiHome({ scope }: { scope: GiaiBaiScope }) {
     { key: 'kho', label: '📚 Kho bài' },
     { key: 'toi', label: '✍️ Bài của tôi', badge: dangGiu },
     { key: 'duyet', label: '✅ Duyệt', badge: choDuyet, hide: !laNguoiDuyet },
+    { key: 'qt', label: '🛠 Quản trị', hide: !laNguoiDuyet },
     { key: 'thongke', label: '🏆 Thống kê' },
   ]
 
@@ -69,6 +74,7 @@ export default function GiaiBaiHome({ scope }: { scope: GiaiBaiScope }) {
         {tab === 'kho' && <KhoBai key={mon} mon={mon} me={me} dangGiu={dangGiu} onChanged={taiBadge} />}
         {tab === 'toi' && <BaiCuaToi me={me} onChanged={taiBadge} />}
         {tab === 'duyet' && laNguoiDuyet && <DuyetBai key={mon} mon={mon} me={me} onChanged={taiBadge} />}
+        {tab === 'qt' && laNguoiDuyet && <Dashboard key={mon} mon={mon} me={me} refreshKey={tick} />}
         {tab === 'thongke' && <ThongKe />}
       </div>
     </div>

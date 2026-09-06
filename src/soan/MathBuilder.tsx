@@ -73,7 +73,7 @@ export function MathBuilder({ title, initial, cums, commitLabel = 'Chèn', onCom
   return createPortal(
     // data-modal + target===currentTarget: modal này có thể LỒNG trong CumModal (đoạn) — sự kiện React bubble qua portal
     // lên shell ngoài, nên shell ngoài phải nhận ra "đang ở trong bảng dựng" để không tự đóng.
-    <div data-modal="builder" className="fixed inset-0 z-[70] flex items-center justify-center bg-slate-900/35 p-4" onMouseDown={(e) => { if (e.target === e.currentTarget) onCancel() }}>
+    <div data-modal="builder" className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/35 p-4" onMouseDown={(e) => { if (e.target === e.currentTarget) onCancel() }}>
       <div className="w-[760px] max-w-full rounded-2xl border border-slate-200 bg-white shadow-2xl" onKeyDownCapture={onKeyDownCapture} onMouseDown={stop} onClick={stop}>
         <div className="flex items-center gap-2 border-b border-slate-200 px-4 py-2.5">
           <h2 className="text-[14px] font-semibold text-slate-800">{title}</h2>
