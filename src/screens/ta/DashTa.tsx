@@ -14,7 +14,7 @@ import { xepHangChung, type XepHangChung } from '../../lib/xephang'
 import { tichLuy, type TichLuy } from '../../lib/tichluy'
 import { GAY_DON_GIA } from '../../lib/gay'
 import { homNayVN } from '../../lib/tuan'
-import { BKPageHeader, BKProfileSummary, BKMenuCard, BKMascotBanner, BK_BG } from '../../components/bk/BKUI'
+import { BKPageHeader, BKProfileSummary, BKMenuCard, BKMascotBanner, BK_TRANH, bkTranhStyle } from '../../components/bk/BKUI'
 import { XepHangScreen } from '../../components/bk/XepHangScreen'
 import { GayCuaToiScreen } from '../../components/bk/GayCuaToiScreen'
 import { MayManScreen } from '../../components/bk/MayManScreen'
@@ -74,19 +74,27 @@ export default function DashTa({ profile }: { profile: MyProfile }) {
   const [thang, nam] = [ym.slice(5, 7), ym.slice(0, 4)]
   const h = box ? TIEU_DE[box] : null
   const goc = box === null
+  // Màn có TRANH CEO vẽ sẵn (Của tôi · Xếp hạng): spacer giữ chỗ phần cảnh + nút ‹ đặt lên tranh. Màn khác:
+  // header HTML trên nền trời gradient (chờ CEO vẽ thêm tranh).
+  const tranh = goc ? BK_TRANH.cuatoi : box === 'xephang' ? BK_TRANH.xephang : null
+  const ts = tranh ? bkTranhStyle(tranh) : null
 
   return (
-    // Ngoài: kín màn, màu trời để 2 mép desktop không lộ nền xám. Trong: cột ≤480px (khổ điện thoại) cao
-    // ĐÚNG bằng màn (h-full) và TỰ CUỘN nội bộ (màn thấp như iPhone SE) → tranh nền đứng yên, nội dung
-    // trượt lên trên tranh. Màn gốc = tranh V3 vẽ theo bề ngang, spacer giữ chỗ phần cảnh, thẻ hồ sơ +
-    // 6 ô đặt thẳng lên tranh (CEO 07/09).
-    <div className="flex h-full flex-col bg-[#CCE7FE]">
-      <div className="mx-auto flex h-full w-full max-w-[480px] flex-col overflow-y-auto"
-        style={goc
-          ? { backgroundImage: `url(${BK_BG.url})`, backgroundSize: '100% auto', backgroundRepeat: 'no-repeat', backgroundPosition: `center env(safe-area-inset-top, 0px)`, backgroundColor: BK_BG.mauDay }
-          : { background: 'linear-gradient(180deg, #CFE7FE 0%, #E3EEFC 40%, #EEF3FC 100%)' }}>
-        {goc
-          ? <div className="shrink-0" style={{ paddingTop: 'env(safe-area-inset-top, 0px)' }}><div style={{ aspectRatio: BK_BG.aspectCanh }} /></div>
+    // Ngoài: kín màn, màu trời để 2 mép desktop không lộ nền xám. Khung ≤480px (khổ điện thoại) cao ĐÚNG
+    // bằng màn = container-type:size để cột con đo tranh/spacer theo cqw/cqh (đơn vị cq chỉ tra TỔ TIÊN —
+    // đặt container lên chính cột thì background của cột rơi về viewport, đã dính). Cột TỰ CUỘN nội bộ
+    // (màn thấp như iPhone SE) → tranh nền đứng yên, nội dung trượt lên trên tranh (CEO 07/09).
+    <div className="flex h-full flex-col" style={{ background: tranh?.mauTroi ?? '#CFE7FE' }}>
+      <div className="mx-auto h-full w-full max-w-[480px]" style={{ containerType: 'size' }}>
+      <div className="flex h-full w-full flex-col overflow-y-auto"
+        style={ts ? ts.nen : { background: 'linear-gradient(180deg, #CFE7FE 0%, #E3EEFC 40%, #EEF3FC 100%)' }}>
+        {ts
+          ? <div className="relative shrink-0" style={{ height: ts.spacerH }}>
+              {/* nút ‹ đặt DƯỚI logo trong tranh (logo cao ~15cqw), trên bảng gỗ (~32cqw) */}
+              {!goc && <button onClick={() => setBox(null)} aria-label="Quay lại"
+                className="absolute left-3 flex h-10 w-10 items-center justify-center rounded-full bg-white text-[22px] font-bold text-[#2F73F6] shadow-md active:scale-95"
+                style={{ top: `calc(${ts.offsetY} + 17.5cqw)` }}>‹</button>}
+            </div>
           : <BKPageHeader title={h!.title} tagline={h!.tagline} mascot={h!.mascot} bubble={h!.bubble} onBack={() => setBox(null)} />}
         <BKProfileSummary ten={ten} anhUrl={profile.nhanSu.anh_url} tags={['TA', 'BK Academy', '🌱 Luôn cố gắng']}
           diem={tl ? tl.xai_duoc + tl.diem_thang : null} streak={tl?.chuoi} pct={me.pct} onPct={() => setBox('datchuan')} />
@@ -124,6 +132,7 @@ export default function DashTa({ profile }: { profile: MyProfile }) {
             : <p className="text-center text-[13px] text-[#63709A]">Đang tính…</p>)}
           </div>
         </div>
+      </div>
       </div>
     </div>
   )

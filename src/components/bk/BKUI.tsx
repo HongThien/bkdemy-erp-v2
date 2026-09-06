@@ -11,12 +11,28 @@ export const BK = {
   success: '#31C875', warning: '#FFB33D', danger: '#FF5D78',
 } as const
 
-// Tranh nền màn gốc = "headerv3" CEO chốt 07/09 (đã thử V4 tranh kín màn → thẻ hồ sơ che mặt mascot,
-// CEO bảo quay lại V3): 941×1594 sau khi cắt status bar giả 78px. Phần CẢNH (logo → bụi cây, có sẵn
-// tiêu đề CỦA TÔI, tagline, mascot + bong bóng) cao 440px = 46.8% bề ngang → spacer aspect 941/440;
-// phần dưới là trời xanh nhạt cho 6 ô. Vẽ theo BỀ NGANG (100% auto — thấy trọn tranh, không cắt mép),
-// đáy nối màu đáy ảnh #CCE7FE khi màn cao hơn tranh.
-export const BK_BG = { url: '/bk-ui/bg_cua_toi.jpg', aspectCanh: '941 / 440', mauDay: '#CCE7FE' } as const
+// ── TRANH NỀN CEO vẽ (public/bk-ui/*.jpg) — mỗi màn 1 tranh, có sẵn logo · tiêu đề · tagline · mascot.
+// Vẽ theo BỀ NGANG (100% auto: thấy trọn tranh, không cắt bảng gỗ/bong bóng ở 2 mép); màn cao hơn tranh
+// thì phần thừa nối màu trời. `canh` = chiều cao (px ảnh) phần cảnh trên cùng → spacer giữ chỗ, nội dung
+// đặt dưới. `neo`: 'tren' = tranh dính đỉnh, đáy nối màu (đáy tranh là trời — Của tôi V3); 'duoi' = tranh
+// dính đáy, ĐỈNH nối màu trời (đáy tranh là cỏ hoa không nối được — Xếp hạng); màn thấp hơn tranh thì
+// tự về dính đỉnh (max(0, …)). Đơn vị cqw/cqh → cột chứa phải có container-type:size (DashTa).
+// Đã thử V4 tranh kín màn phủ cover → thẻ hồ sơ che mặt mascot, CEO bảo quay lại V3.
+export type BKTranh = { url: string; rong: number; cao: number; canh: number; neo: 'tren' | 'duoi'; mauTroi: string }
+export const BK_TRANH = {
+  cuatoi: { url: '/bk-ui/bg_cua_toi.jpg', rong: 941, cao: 1594, canh: 440, neo: 'tren', mauTroi: '#CCE7FE' },   // headerv3 cắt status bar giả 78px
+  xephang: { url: '/bk-ui/bg_xephang.jpg', rong: 941, cao: 1672, canh: 520, neo: 'duoi', mauTroi: '#8ACDFE' },   // xephang.png · màu trời đo ở hàng pixel đỉnh
+} as const satisfies Record<string, BKTranh>
+export function bkTranhStyle(t: BKTranh) {
+  const pct = (px: number) => `${((px / t.rong) * 100).toFixed(2)}cqw`
+  const offsetY = t.neo === 'duoi' ? `max(0px, 100cqh - ${pct(t.cao)})` : '0px'   // đỉnh tranh cách đỉnh cột
+  const dinh = `calc(${offsetY} + env(safe-area-inset-top, 0px))`
+  return {
+    offsetY: dinh,
+    spacerH: `calc(${dinh} + ${pct(t.canh)})`,
+    nen: { backgroundImage: `url(${t.url})`, backgroundSize: '100% auto', backgroundRepeat: 'no-repeat', backgroundPosition: `center ${dinh}`, backgroundColor: t.mauTroi } as const,
+  }
+}
 
 // ── HEADER màn con: bầu trời gradient + tia sáng + tiêu đề bong bóng trắng viền xanh + tagline chữ
 // tay + mascot PNG góc dưới-phải với bong bóng lời. (Tranh nền có chữ CỦA TÔI cố định nên màn con

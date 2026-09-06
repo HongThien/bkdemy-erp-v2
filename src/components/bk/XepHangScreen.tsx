@@ -62,7 +62,8 @@ export function XepHangScreen({ rieng, chung, tenRieng, ten }: { rieng: XepHangD
               </span>
             </div>
           </BKSectionCard>
-          <p className="px-2 text-[11px] text-[#63709A]">Xếp theo % đạt chuẩn. Vào bảng khi ≥{d.nguongRankFinal} việc/tháng, hoặc đang lọt top {d.nguongRankTop} khối lượng (bảng tạm).</p>
+          {/* nền trắng mờ vì màn này đặt trên tranh (cỏ hoa ở đáy) — chữ trần không đọc được */}
+          <p className="rounded-2xl bg-white/85 px-3 py-2 text-[11px] text-[#63709A]">Xếp theo % đạt chuẩn. Vào bảng khi ≥{d.nguongRankFinal} việc/tháng, hoặc đang lọt top {d.nguongRankTop} khối lượng (bảng tạm).</p>
         </>
       )}
     </div>
