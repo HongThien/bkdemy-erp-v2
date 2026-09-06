@@ -1,9 +1,12 @@
-// DashOps — "📈 Của tôi" app OPS (CEO chốt 06/09 tối, cùng khuôn TA/GV — app OPS chưa
-// từng có màn này). Việc = Report + Báo tan + Prep phòng + Coi test đầu vào, sở hữu theo
-// NGƯỜI TRỰC CA (phan_cong_ca), fn_ops_dashboard §2.0. Bar đạt chuẩn + 4 số + xếp hạng
-// RIÊNG (OPS) và CHUNG (toàn BK) + danh sách việc cả tháng (đạt lẫn không đạt, ẩn chi
-// tiết — bấm mới xoè). "Không đạt do TRỄ HẠN" tự cập nhật theo GẬY đã chốt & còn hiệu
-// lực — bỏ qua/thu hồi gậy thì tự lật lại đạt; chất lượng (report/tan/prep) tính trực tiếp.
+// DashOps — "📈 Của tôi" app OPS. Việc = Report + Điểm danh + Báo tan + Prep phòng + Coi
+// test đầu vào, GỘP THEO CA (CEO 07/09: "mỗi loại việc trong ca tính 1 task" — 1 nhóm =
+// report/điểm danh/báo tan cả ca, hoặc 7 phòng prep 1 ca). Nhóm đạt khi ≥90% mục trong
+// nhóm đạt (ngưỡng tạm, hạ chuẩn để tập huấn — sẽ siết dần), sở hữu theo NGƯỜI TRỰC CA
+// (phan_cong_ca), fn_ops_dashboard/fn_ops_viec_nhom_thang §2.0. Bar đạt chuẩn + 4 số +
+// xếp hạng RIÊNG (OPS) và CHUNG (toàn BK) + danh sách việc cả tháng (đạt lẫn không đạt,
+// ẩn chi tiết — bấm mới xoè). "Không đạt" tự cập nhật theo GẬY đã chốt & còn hiệu lực —
+// bỏ qua/thu hồi gậy thì tự lật lại đạt (áp đồng loạt cho nhóm, không tách trễ/chất lượng
+// như TA/GV — 1 nhóm có thể vừa có mục trễ vừa có mục chất lượng kém).
 import { useEffect, useState } from 'react'
 import { opsDashboard, type OpsDash } from '../../lib/opsdash'
 import { xepHangChung, type XepHangChung } from '../../lib/xephang'
@@ -11,9 +14,9 @@ import { homNayVN, ddmmVN } from '../../lib/tuan'
 import { XepHangBlock, ViecThangAccordion } from '../../components/CuaToiWidgets'
 
 const TAB_TEN: Record<string, string> = {
-  ops_report: 'Report trước buổi', ops_tan: 'Báo tan', ops_prep: 'Chuẩn bị phòng', ops_test: 'Coi test đầu vào',
+  ops_report: 'Report trước buổi', ops_diemdanh: 'Điểm danh', ops_tan: 'Báo tan', ops_prep: 'Chuẩn bị phòng', ops_test: 'Coi test đầu vào',
 }
-const LY_DO_TEN: Record<string, string> = { tre: 'đóng muộn', no_qua_han: 'đang nợ quá hạn', chat_luong: 'chất lượng chưa đạt' }
+const LY_DO_TEN: Record<string, string> = {}
 
 function ymCong(ym: string, n: number): string {
   const [y, m] = ym.split('-').map(Number)
@@ -75,7 +78,7 @@ export default function DashOps() {
                     <div className={`h-full rounded-full transition-all ${(pct ?? 0) >= 80 ? 'bg-indigo-500' : (pct ?? 0) >= 50 ? 'bg-amber-500' : 'bg-rose-500'}`}
                       style={{ width: `${pct ?? 0}%` }} />
                   </div>
-                  <p className="mt-2 text-[12.5px] text-slate-500">Việc = Report + Báo tan (gồm điểm danh) + Chuẩn bị phòng + Coi test đầu vào, theo ca bạn trực. Trễ hạn: tính theo GẬY đã chốt. Chất lượng duyệt ≥{data.nguongChatLuong}.</p>
+                  <p className="mt-2 text-[12.5px] text-slate-500">Việc = Report + Điểm danh + Báo tan + Chuẩn bị phòng + Coi test đầu vào, mỗi loại gộp theo CA bạn trực thành 1 việc (đạt khi ≥90% mục trong ca đó đạt). Trễ/thiếu: tính theo GẬY đã chốt.</p>
                 </div>
 
                 {/* 4 SỐ */}

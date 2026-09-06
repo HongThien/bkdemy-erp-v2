@@ -15,7 +15,7 @@
 import { supabase } from './supabase'
 import { myNhanSuId } from './giaoviec'
 import { listAllStaffTasks } from './gami'
-import { listAllOpsTasks } from './opsvanhanh'
+import { listAllOpsTaskNhom } from './opsvanhanh'
 import { homNayVN, congNgay, vnInstant, ddmmVN } from './tuan'
 
 const LIMIT = 5000
@@ -174,22 +174,21 @@ export async function quetGayTuDong(): Promise<number> {
     })
   }
 
-  // ── (a2) Việc OPS (report/báo tan/prep/coi test) — cùng invariant, tái dùng
-  // listAllOpsTasks (fn_viec_ops_thuong). Sở hữu đã resolve sẵn ở DB (người trực
-  // ca) — không cần tra phan_cong_lop như (a).
-  const opsRows = await listAllOpsTasks(congNgay(monthStart, -7), today)
+  // ── (a2) Việc OPS ĐÃ GỘP THEO CA (report/báo tan/điểm danh/prep/coi test) —
+  // CEO 07/09: "mỗi loại việc trong ca tính 1 task", đạt khi ≥90% mục trong
+  // nhóm đạt (fn_ops_viec_nhom_thang, mig 202609070046). 1 NHÓM = 1 đề xuất,
+  // không còn theo từng lớp/phòng. Sở hữu + % đã tính sẵn ở DB.
+  const opsRows = await listAllOpsTaskNhom(congNgay(monthStart, -7), today)
   for (const r of opsRows) {
-    if (r.deadline == null || r.deadline < monthStartMs) continue
+    if (r.han < monthStartMs) continue
     if (mien.has(r.nhanSuId)) continue
-    let tre = 0
-    if (r.dongAt) tre = new Date(r.dongAt).getTime() - r.deadline
-    else tre = now - r.deadline
-    if (tre <= 0) continue
+    if (r.kqRaw !== 'khong_dat') continue
+    const tre = Math.max(1, now - r.han)
     props.push({
       nhan_su_id: r.nhanSuId, nguon: 'vanhanh',
       ref_key: r.refKey,
-      mo_ta: `${r.tenViec} ${ddmmVN(r.ngay)}${r.dongAt ? '' : ' (chưa xong)'}`,
-      deadline_at: new Date(r.deadline).toISOString(),
+      mo_ta: `${r.tenViec} — không đạt (${r.soDat}/${r.soTong})`,
+      deadline_at: new Date(r.han).toISOString(),
       tre_phut: Math.ceil(tre / 60000),
     })
   }

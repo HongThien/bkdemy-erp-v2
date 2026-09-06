@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-188 bảng · 11 view · 0 enum · 39 trigger · 251 function
+188 bảng · 11 view · 0 enum · 39 trigger · 252 function
 
 ## _app_secrets
 
@@ -4091,6 +4091,7 @@ UNION ALL
 - `fn_mo_lai_phase(p_buoi_id uuid, p_phase text)` → void
 - `fn_nguoi_truc_ca(p_thu smallint, p_ca text, p_ngay date)` → uuid
 - `fn_ops_dashboard(p_ym text)` → jsonb
+- `fn_ops_viec_nhom_thang(p_tu date, p_den date, p_tat_ca boolean DEFAULT false)` → TABLE(nhan_su_id uuid, ten_viec text, ngay date, tab text, kq_raw text, so_dat integer, so_tong integer, han timestamp with time zone, ref_key text)
 - `fn_ops_viec_thang(p_tu date, p_den date)` → TABLE(nhan_su_id uuid, ho_ten text, an_xep_hang boolean, ten_viec text, ngay date, tab text, kq text, ly_do text)
 - `fn_pt_push_danh_sach(p_secret text, p_app text DEFAULT 'pt'::text)` → TABLE(id uuid, endpoint text, p256dh text, auth text)
 - `fn_pt_push_ghi_ket_qua(p_secret text, p_ket_qua jsonb)` → integer
@@ -4127,7 +4128,7 @@ UNION ALL
 - `fn_vh_hieu_suat(p_tien_do numeric, p_chat_luong numeric)` → numeric
 - `fn_viec_buoi_thuong(p_tu date DEFAULT NULL::date, p_den date DEFAULT NULL::date, p_tat_ca boolean DEFAULT false)` → TABLE(nhan_su_id uuid, buoi_id uuid, lop_id uuid, ten_lop text, ngay date, vai text, tab text, dong_at timestamp with time zone, han timestamp with time zone, et_online boolean, ref_key text)
 - `fn_viec_nghiem_thu_tinh()` → trigger
-- `fn_viec_ops_thuong(p_tu date, p_den date, p_tat_ca boolean DEFAULT false)` → TABLE(nhan_su_id uuid, ten_viec text, ngay date, tab text, dong_at timestamp with time zone, han timestamp with time zone, chat_luong numeric, ref_key text)
+- `fn_viec_ops_thuong(p_tu date, p_den date, p_tat_ca boolean DEFAULT false)` → TABLE(nhan_su_id uuid, ten_viec text, ngay date, ca text, tab text, dong_at timestamp with time zone, han timestamp with time zone, chat_luong numeric, ref_key text)
 - `fn_vvhd_tinh()` → trigger
 - `fn_xephang_chung(p_ym text)` → jsonb
 - `giai_thuong_check_slot()` → trigger

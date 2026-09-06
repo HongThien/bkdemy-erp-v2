@@ -382,19 +382,21 @@ export async function chotPrepLeader(phong: string, ngay: string, luot: PrepLuot
 // Lượt Prep CỦA TÔI trong khoảng ngày (lọc theo người trực ca đầu) + trạng thái đã đóng chưa —
 // dùng cho "Việc của tôi" (bulk, KHÔNG N+1 gọi getPrepRow từng lượt).
 export type MyPrepTask = { phong: string; ngay: string; luot: PrepLuotKey; gioCaDau: string; done: boolean; dongAt: string | null; deadline: number }
-// ── TOÀN BỘ việc OPS (report/tan/prep/test), MỌI người — nguồn cho gay.ts:quetGayTuDong
-// quét gậy OPS. Derive ở DB (fn_viec_ops_thuong, mig 202609062344) — ref_key tính SẴN ở đó,
-// KHÔNG tự ghép chuỗi ở đây (1 nguồn duy nhất, cùng nguyên tắc StaffTaskRow bên gami.ts).
-export type OpsTaskAll = {
+// ── VIỆC OPS ĐÃ GỘP THEO CA (report/tan/điểm danh/prep/test), MỌI người —
+// nguồn cho gay.ts:quetGayTuDong quét gậy OPS. Derive ở DB (fn_ops_viec_nhom_thang,
+// mig 202609070046 — CEO 07/09: "mỗi loại việc trong ca tính 1 task", đạt khi
+// ≥90% mục trong nhóm đạt). 1 nhóm = 1 đề xuất gậy, KHÔNG còn theo từng lớp/phòng.
+// ref_key tính SẴN ở DB — không tự ghép chuỗi ở đây.
+export type OpsTaskNhom = {
   nhanSuId: string; tenViec: string; ngay: string; tab: string
-  dongAt: string | null; deadline: number | null; refKey: string
+  kqRaw: 'dat' | 'khong_dat' | 'cho'; soDat: number; soTong: number; han: number; refKey: string
 }
-export async function listAllOpsTasks(tu: string, den: string): Promise<OpsTaskAll[]> {
-  const { data, error } = await supabase.rpc('fn_viec_ops_thuong', { p_tu: tu, p_den: den, p_tat_ca: true }).limit(5000)
+export async function listAllOpsTaskNhom(tu: string, den: string): Promise<OpsTaskNhom[]> {
+  const { data, error } = await supabase.rpc('fn_ops_viec_nhom_thang', { p_tu: tu, p_den: den, p_tat_ca: true }).limit(5000)
   if (error) throw error
   return ((data ?? []) as any[]).map((r) => ({
     nhanSuId: r.nhan_su_id, tenViec: r.ten_viec, ngay: r.ngay, tab: r.tab,
-    dongAt: r.dong_at, deadline: r.han ? new Date(r.han).getTime() : null, refKey: r.ref_key,
+    kqRaw: r.kq_raw, soDat: r.so_dat, soTong: r.so_tong, han: new Date(r.han).getTime(), refKey: r.ref_key,
   }))
 }
 
