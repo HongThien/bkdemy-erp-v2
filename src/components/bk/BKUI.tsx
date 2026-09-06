@@ -38,6 +38,8 @@ export const BK_TRANH = {
   // Shopping: cảnh trên y0–520 (title Shopping · túi quà · mascot · bảng gỗ), trời phẳng phía dưới; mảnh trên y0–1040
   // dính đỉnh, mây đáy y1300–1672 dính đáy. Không thẻ hồ sơ — ShopScreen tự vẽ hàng "Điểm tích lũy · Chuỗi · Cố lên".
   shop: { url: '/bk-ui/bg_shop.jpg', rong: 941, canh: 530, troi: ['#A6DCFD', '#9AD8FD'], day: '/bk-ui/bg_shop_day.jpg', hoSo: false, nutVe: 12 },
+  // Hướng dẫn: cảnh trên y0–510 (logo · sách bóng đèn · HƯỚNG DẪN · mascot đọc sách) dính đỉnh, mây y1300–1672 dính đáy; có thẻ hồ sơ.
+  huongdan: { url: '/bk-ui/bg_huongdan.jpg', rong: 941, canh: 520, troi: ['#C2E2FD', '#CDE7FD'], day: '/bk-ui/bg_huongdan_day.jpg', nutVe: 19 },
 } as const satisfies Record<string, BKTranh>
 export function bkTranhStyle(t: BKTranh) {
   const pct = (px: number) => `${((px / t.rong) * 100).toFixed(2)}cqw`

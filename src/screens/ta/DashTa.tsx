@@ -68,7 +68,7 @@ export default function DashTa({ profile }: { profile: MyProfile }) {
   const goc = box === null
   // Màn có TRANH CEO vẽ sẵn (Của tôi · Xếp hạng): spacer giữ chỗ phần cảnh + nút ‹ đặt lên tranh. Màn khác:
   // header HTML trên nền trời gradient (chờ CEO vẽ thêm tranh).
-  const tranh: BKTranh | null = goc ? BK_TRANH.cuatoi : box === 'xephang' ? BK_TRANH.xephang : box === 'gay' ? BK_TRANH.gay : box === 'maymai' ? BK_TRANH.mayman : box === 'shop' ? BK_TRANH.shop : null
+  const tranh: BKTranh | null = goc ? BK_TRANH.cuatoi : box === 'xephang' ? BK_TRANH.xephang : box === 'gay' ? BK_TRANH.gay : box === 'maymai' ? BK_TRANH.mayman : box === 'shop' ? BK_TRANH.shop : box === 'huongdan' ? BK_TRANH.huongdan : null
   const ts = tranh ? bkTranhStyle(tranh) : null
 
   return (
