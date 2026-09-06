@@ -995,6 +995,9 @@ thẳng `ca_test.nguoi_cham_id`/`nguoi_tra_bai_id`, data đã sẵn, không cầ
   `git -C ../wt-bot checkout main --detach` (bot đọc repo để trả lời, code trễ vài ngày không chết ai).
 - Các worktree `wt-*` còn lại = mỗi nhánh 1 thư mục cho các phiên chạy song song; hiện đều sau main
   85-106 commit — **rebase/merge main trước khi dùng lại**.
+- **`wt-giaibai`** (06/09, nhánh `feat/giaibai` = main d172a09): `node_modules` là **junction** trỏ
+  `bkdemy-erp-v2/node_modules`; `.env`/`.env.local` copy tay từ checkout chính (gitignore). Thêm
+  worktree mới = làm 3 việc đó trước khi `npm run dev:*`/`migrate`.
 
 ### Nền repo/DB — CHUẨN HOÁ 01/09 (sau chuỗi phiên làm từ điện thoại)
 - **Sổ `_migrations` giờ khớp DB thật:** 0 file treo · 0 báo-động-giả. Đã: baseline 10 file áp tay
@@ -1083,7 +1086,55 @@ thẳng `ca_test.nguoi_cham_id`/`nguoi_tra_bai_id`, data đã sẵn, không cầ
   `loi_giai` theo `ma_cau` (dispatch môn→bảng qua registry, KHÔNG rải `if mon===...`). IME thật cần Thùy tự gõ thử tay
   1 lần trước khi tin. `AutoTextarea` (DangHub) vẫn hết dùng, giữ+export chờ gật xoá.
 
+### ⭐ TOOL GIẢI BÀI kho chung `giaibai.bkacademy.edu.vn` (06/09, nhánh `feat/giaibai`, worktree `wt-giaibai`) — ĐÃ PUSH `main` (d172a09), CHƯA deploy
+- **Story (Thùy, "giống Qanda"):** hệ liệt kê bài chưa có lời giải → TA **Nhận giải** (bài rời pool, về danh sách riêng) → soạn
+  (MathTextarea + ⤢ SoanModal) → **Nộp** → **học thuật duyệt** → duyệt xong mới thành lời giải chính thức → ghi ai/lúc nào/bao lâu.
+  **Kiến trúc CEO chốt: tách hẳn khỏi ERP, chỉ chung DB** ("không đổ dồn vào 1 ERP khổng lồ") = modular monolith: **entry Vite thứ 8**
+  `giaibai.html` → `dist-giaibai/`, Vercel project riêng, login = tài khoản nhân sự ERP. Spec đầy đủ: **`PLAN-giaibai.md`**.
+- **7 quyết định:** ai có môn cũng nhận (lọc người bằng "ai biết tên miền") · **≤3 bài/người, hạn 48h** (quá hạn tự về pool, có Trả
+  bài) · **từ chối ≤3 lần** trả về đúng người kèm lý do, lần 3 về pool + người đó không nhận lại · **học thuật duyệt** (ghế `hoc_thuat`
+  đúng môn / admin; không tự duyệt bài mình) · **Claude = 1 TA cao cấp** (bài đặt Claude cũng biến khỏi pool) · **tiền NGOÀI hệ** —
+  tool chỉ xuất báo cáo tháng (số bài đã duyệt · độ khó · ký tự · công thức · thời gian) + top 3 · web máy bàn, không app.
+  **⭐ "Luồng này không xoá/ghi đè gì trong kho"** — lời giải nằm ở dòng nhận bài cho tới khi DUYỆT mới ghi vào câu.
+- **DB (mig `202609060122` + vá `202609060200`):** KHÔNG đẻ khái niệm mới — 5 bảng hàng đợi Claude `{dai,khtn,hgt}_cau_hoi_yeu_cau_giai`
+  · `hinh_{baitoan,bien_the}_yeu_cau_giai` **mở rộng** thành bảng NHẬN BÀI chung: `nguoi_giai` (NULL = Claude) · `trang_thai`
+  (`cho_claude|da_xong|dang_giai|cho_duyet|can_sua|da_duyet|da_tra|qua_han|tu_choi_3`, CHECK ràng với nguoi_giai) · `han_at/nop_at` ·
+  `loi_giai_nhap/anh_nhap/dap_an_nhap` · `tu_choi_lan/ly_do_tu_choi` · `duyet_boi/duyet_at` · generated `so_ky_tu`/`so_cong_thuc` ·
+  trigger đóng dòng Claude → `da_xong`. Index unique `(bài) where xu_ly_at is null` sẵn có = 1 bài 1 người giữ. View `v_giaibai_nhan`
+  (mọi dòng nhận + nhãn bài + tên người + `dang_giu`/`qua_han`/`giay_giai`) · `v_giaibai_bai` (mọi bài chưa giải 4 nhánh + ai giữ).
+  `fn_giaibai_{pool,dem_pool,nhan,tra,luu_nhap,nop,cua_toi,cho_duyet,la_nguoi_duyet,duyet,tu_choi,bao_cao_tong,bao_cao_chi_tiet}`;
+  registry SQL `fn_giaibai_tbl(nhanh)` (nhanh ∈ toan|khtn|hgt|hinh_baitoan|hinh_bien_the) + `fn_giaibai_mon`. Vá fn cũ: ERP tab
+  "Chưa có lời giải" (`fn_kho_cau_chua_giai`, `v_hinh_chua_giai`) trả người giữ → ChuaGiaiTab hiện "🧑 X đang giải" và khoá nút tự
+  giải/huỷ; worker `hangdoi-giai.mjs` + `fn_*_yeu_cau_giai_cho` chỉ dòng Claude; `fn_kho_giai_nguoi_xong`/`fn_hinh_ghi_loi_giai` chặn
+  khi người đang giữ; `fn_*_dat_giai` đóng dòng quá hạn trước.
+- **App:** `AppGiaiBai.tsx` (gate như AppChi; `useStore.setState({me})` để phím tắt MathTextarea chạy; scope môn = luật useMonScope,
+  `CROSS_MON_TEAMS` dời sang `lib/mon.ts`) · `lib/giaibai.ts` · `screens/giaibai/`: `GiaiBaiHome` (chọn môn, 4 tab, badge đang giữ N/3
+  + chờ duyệt) · `KhoBai` · `BaiCuaToi` (nháp trên DB, đếm ngược hạn, Soạn/Trả) · `DuyetBai` · `ThongKe` (tháng, top 3, bảng, CSV) ·
+  `GiaiEditor` (KHÔNG import DangHub — chỉ MathTextarea + ImgInsertBar + AnhSlot riêng). Lệnh `npm run dev:giaibai` / `build:giaibai`;
+  launch.json `giaibai-dev` (5218, URL phải có **`/giaibai.html`** — `/` trần ra ERP chính).
+- **Đã test e2e 06/09 (Đại, tài khoản học thuật):** nhận → nháp → nộp → Duyệt tự khoá (bài mình) → từ chối → cần sửa lần 1/3, hạn reset
+  → trả bài → pool lại đủ. ✓ **CHƯA test:** nhánh Hình (bài toán gốc/biến thể) · duyệt thật (cần tài khoản thứ 2) · nhãn "🧑" ở ERP ·
+  Thống kê có dữ liệu.
+- **TREO:** ① **Deploy Vercel** — project mới trỏ repo, nhánh main, Build `npm run build:giaibai`, Output `dist-giaibai`, env
+  `VITE_SUPABASE_URL/KEY`, domain `giaibai.bkacademy.edu.vn`; `vercel.json` root có `crons` `/api/pt-nhac-viec` — nếu build kêu thì tách
+  vercel.json theo project. ② Hình chưa có `muc_do` → cột độ khó trống trong báo cáo. ③ Bundle 3.2 MB (useStore/pdfjs qua
+  MathTextarea/ImgInsertBar) — chấp nhận. ④ Worktree `wt-giaibai` dùng **junction** `node_modules` → `bkdemy-erp-v2/node_modules`
+  (tạo bằng PowerShell `New-Item -ItemType Junction`; `cmd mklink` qua bash báo OK giả) — dev-only font KaTeX 403 vì ngoài fs.allow.
+
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
+
+- **⭐ plpgsql: `EXECUTE 'update/delete …'` KHÔNG có RETURNING ⇒ `FOUND` LUÔN false (cắn 06/09).** Docs: EXECUTE sets FOUND
+  chỉ khi "produces one or more rows". SQL động mà kiểm "có sửa được dòng nào không" PHẢI dùng `GET DIAGNOSTICS n = ROW_COUNT`
+  (hoặc `RETURNING … INTO` rồi kiểm null). UPDATE tĩnh và `EXECUTE … INTO` (select) thì FOUND đúng. 3 fn `fn_giaibai_tra/luu_nhap/nop`
+  ném "Không lưu được" dù DB đã ghi — phải vá bằng migration MỚI. Cùng họ: `EXECUTE … INTO record` không có dòng ⇒ record null,
+  và truy `y.<cột>` mà bảng nhánh khác không có cột đó (`y.baitoan_id` vs `y.bien_the_id` trong CASE) = lỗi field — lấy khoá qua
+  `execute format('select %I …', key_col)`.
+- **⭐ React: KHÔNG khai báo component trong THÂN component khác (cắn 06/09 BaiCuaToi).** `const The = (…) => <li>…</li>` bên trong
+  render ⇒ mỗi render cha là 1 type mới ⇒ React unmount/mount lại toàn bộ cây con ⇒ editor mất text đang gõ, ref DOM stale liên tục,
+  form nhấp nháy. Dấu hiệu: tool test báo "ref is stale" ngay sau mỗi state change. Hoist ra mức module, truyền callback qua props.
+- **⭐ Trước khi kết luận "tính năng X chưa có": `git fetch` + so `origin/main`, đừng grep worktree đang đứng (cắn 06/09).** Local
+  outdate ⇒ grep sạch ⇒ báo CEO "chưa build" trong khi main đã có từ hôm trước. Nghi thức: `git fetch origin main` →
+  `git log --oneline HEAD..origin/main` → grep trong `git show origin/main:<file>` nếu cần.
 
 
 - **⭐⭐ PHIÊN LÀM TỪ ĐIỆN THOẠI (remote, KHÔNG có credential DB) — về máy có DB PHẢI chạy nghi thức
