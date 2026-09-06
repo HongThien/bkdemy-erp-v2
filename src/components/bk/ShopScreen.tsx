@@ -20,7 +20,7 @@ const TT: Record<ShopDon['trang_thai'], { ten: string; st: 'cho' | 'dat' | 'nguy
 type Tab = 'tatca' | 'do_an' | 'do_uong' | 'hot'
 const TABS: { key: Tab; ten: string }[] = [{ key: 'tatca', ten: 'Tất cả' }, { key: 'do_an', ten: 'Đồ ăn' }, { key: 'do_uong', ten: 'Đồ uống' }, { key: 'hot', ten: 'Hot' }]
 
-export function ShopScreen({ xaiDuoc, diemThang, chuoi, diemMoiNgay, onChanged }: { xaiDuoc: number; diemThang: number; chuoi: number; diemMoiNgay: number; onChanged: () => void }) {
+export function ShopScreen({ xaiDuoc, diemThang, chuoi, diemMoiNgay, onChanged, hoTro = 'TA' }: { xaiDuoc: number; diemThang: number; chuoi: number; diemMoiNgay: number; onChanged: () => void; hoTro?: string }) {
   const [items, setItems] = useState<ShopVatPham[] | null>(null)
   const [don, setDon] = useState<ShopDon[]>([])
   const [tab, setTab] = useState<Tab>('tatca')
@@ -58,7 +58,7 @@ export function ShopScreen({ xaiDuoc, diemThang, chuoi, diemMoiNgay, onChanged }
           </div>
           <img src={S('lich')} alt="" className="h-8 w-8 shrink-0 rounded-lg object-cover" draggable={false} />
         </div>
-        <div className="font-hand flex items-center rounded-2xl px-2 text-center text-[11px] italic leading-tight text-[#1E8A52]" style={{ background: '#E5FBF2' }}>Cố lên<br />TA ơi! ♡</div>
+        <div className="font-hand flex items-center rounded-2xl px-2 text-center text-[11px] italic leading-tight text-[#1E8A52]" style={{ background: '#E5FBF2' }}>Cố lên<br />{hoTro} ơi! ♡</div>
       </div>
 
       {/* banner quy tắc: robot ôm quà trái · pill tiêu đề + 3 dòng luật · câu chữ tay phải */}

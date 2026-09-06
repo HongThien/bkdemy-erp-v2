@@ -8945,3 +8945,58 @@ không đổi bảng/view).
   file riêng app → chỉ app đó build; `design/ docs/ supabase/ scripts/ *.md` → không ai build; còn lại (lib/components/
   api/package) → mọi project build; không chắc → build. `components/bk` + `public/bk-ui` = ta+ops+gv cùng sở hữu.
 - **Quy tắc làm việc:** gom commit, push theo đợt (1–2 lần/phiên), không push từng sửa nhỏ.
+
+## 07/09/2026 (đêm) — App OPS: redesign toàn bộ theo handoff 7-màn (CEO gửi lúc đi ngủ, "tự làm không cần hỏi")
+- **Nguồn:** CEO gửi `ops1-6.png` (backdrop — thực chất là 6/7 màn OPS thật dù file zip tên
+  "BK_TA_7_SCREEN..." do lấy nhầm khuôn cũ) + zip SVG icon + `spec/CLAUDE_REBUILD_GUIDE.md` (chữ trong
+  guide mô tả sai — nói "học sinh" — bỏ qua, dùng đúng ảnh reference 7 màn: Hôm nay/Điểm danh/Report &
+  Báo tan/Chuẩn bị phòng/Test đầu vào/Của tôi + `07_my.png` riêng cho Của tôi). Đã copy toàn bộ zip SVG
+  vào `public/ops-ui/**` (giữ cấu trúc thư mục gốc: common/home/attendance/report/prep/test/gift/my);
+  6 backdrop PNG + 2 file zip gốc + `anhgoc_*`/`shoping.png` linh tinh CEO up nhầm app trước đó →
+  chuyển vào `design/bk-ui-src/` (không vào build, theo quy ước đã lập cho TA).
+- **Khác phong cách "tranh vẽ BK Academy" của TA:** OPS dùng flat card + gradient màu theo màn + nhân
+  vật chibi SVG (report/header_boy · prep/header_girl+broom · test/header_boy_clipboard+star ·
+  common/avatar_ta_girl_sign cho Home) + bong bóng lời, KHÔNG có backdrop tranh vẽ tay. Token màu +
+  primitive dùng chung: `src/components/ops/OpsUI.tsx` (`OPS` tokens 7 tông, `OpsHero`, `OpsRow`,
+  `OpsSegmented`, `OpsEmptyState`, icon tự vẽ inline `Ico*` — không dùng nav SVG có sẵn trong kit vì
+  chất lượng không đều (vài file là base64 PNG nhúng, vài file trùng lặp giữa các mục khác nhau)).
+- **An toàn:** `OpsReportScreen`/`PrepScreen`/`DiemDanhTestScreen` (`screens/vanhanhops/*`) DÙNG CHUNG
+  với desktop ERP → KHÔNG sửa bên trong, chỉ bọc `ManCon` (header màu+nhân vật) ở NGOÀI trong
+  `OpsHome.tsx`. `DiemDanhBuoi.tsx` + `TuQuaScreen.tsx` là file riêng app OPS → sửa sâu (header, tab
+  pill, list row) nhưng KHÔNG đụng handler nghiệp vụ (mo/huy/moLai/danh/xoa/doiGV/dongBoSiSo… giữ
+  nguyên 100%).
+- **`OpsHome.tsx`:** viết lại toàn bộ Home tab (`HomTay`) — hero lục avatar+chào+trạng thái+nhân vật,
+  thanh ngày nổi, lưới 6 module (Điểm danh/Report/Prep/Test/**Tủ quà**/Của tôi), "Công việc hôm nay"
+  GỘP 1 danh sách (trước đây tách riêng theo card) + chip lọc + mèo ngủ (`sleeping_cat.svg`) khi trống,
+  banner câu động viên. Bottom-nav icon tự vẽ + pill màu. ⚠ Đổi label "Quà"→"**Tủ quà**" (đổi XU HỌC
+  SINH lấy quà, vận hành) để KHÔNG nhầm với "Shopping" trong Của tôi (điểm tích luỹ CÁ NHÂN nhân viên)
+  — 2 khái niệm khác hẳn dù cùng nằm trong bộ icon "Quà" của thiết kế.
+- **`DashOps.tsx` viết lại HOÀN TOÀN (khác TA):** 07_my.png là LIST không phải GRID — hero hồng + thẻ
+  hồ sơ (avatar · tên · "BK Vận hành" · vòng % bấm mở "Tiến trình") + 6 dòng menu icon vuông màu SẴN
+  TRONG kit (`my/icon_rank.svg` v.v. — đã tô màu nền sẵn, không cần code thêm bg) + Cài đặt + Đăng
+  xuất. Sub-screen TÁI DÙNG NGUYÊN từ `components/bk/*` (Xếp hạng/Gậy/May mắn/Shopping/Hướng dẫn/Đạt
+  chuẩn-làm-Tiến-trình) — ĐÃ TEST THẬT trên tài khoản Admin: Xếp hạng hiện đúng BXH OPS thật (Quỳnh
+  Trang, Khánh Linh…), May mắn quay được + thấy lại lịch sử của TA (chung sổ toàn công ty, đúng thiết
+  kế), Shopping/Hướng dẫn/Gậy render sạch — KHÔNG cần sửa gì trong các file `bk/*` ngoài 2 chỗ nhỏ:
+  (1) `ShopScreen` thêm prop `hoTro?: string` (mặc định `'TA'`, OPS truyền `'bạn'`) để câu "Cố lên TA
+  ơi!" không lặp sai vai trò; (2) `HuongDanScreen` tách `GOI_Y_THEO_VAI` theo `vaiTro` (trước là 1 mảng
+  cứng nhắc tới ET/BTVN — vô nghĩa với OPS) — cả 2 đều additive, có default giữ nguyên hành vi TA, đã
+  `build:ta` + `build:ops` lại để xác nhận không vỡ app TA.
+  Xoá bỏ import `OpsBoxes.tsx` cũ (file để lại KHÔNG XOÁ, không còn ai import — theo Luật xoá, chờ CEO
+  duyệt xoá tay khi rảnh).
+- **`CaiDatBox` (Cài đặt) mới, tối giản:** avatar/tên + hàng "Góp ý/Báo lỗi" (đặt `<GopY/>` — component
+  có sẵn — làm control, KHÔNG lồng trong bottom-sheet khác vì z-index GopY=50 < BKBottomSheet=90 sẽ bị
+  đè khuất).
+- **tsc sạch, `npm run build:ta` + `build:ops` đều pass**, browser-test thật (đăng nhập Admin, ops app
+  cổng dev): Hôm nay/Điểm danh (list+detail)/Report/Prep/Test/Tủ quà/Của tôi + 5 sub-screen — 0 lỗi
+  console (1 dòng "GOI_Y is not defined" là artefact cache cũ của tool đọc console, đã xác nhận qua
+  get_page_text nội dung trang luôn đúng, không phải lỗi thật).
+- **Còn treo (để CEO duyệt sáng mai):**
+  ① `OpsBoxes.tsx` không dùng nữa — xin xoá?
+  ② "Cài đặt" mới chỉ có Góp ý — chưa có gì để cấu hình thật, có cần thêm gì không?
+  ③ Icon `gift/header_gift_box.svg` dùng cho Tủ quà có sẵn chữ "Better TAs Brighter Students ♡" bị lẫn
+     từ app khác (rất nhỏ, khó thấy) — kệ hay đổi ảnh khác?
+  ④ Chưa động tới nội dung 3 tab trong Tủ quà (Đổi quà/Đơn đặt/Kho) — chỉ đổi header, xin ý kiến có cần
+     redesign sâu hơn không (tốn nhiều công vì đây là tool vận hành phức tạp, rủi ro cao nếu làm vội).
+  ⑤ Tiến trình OPS đang tạm dùng lại "Đạt chuẩn" (DatChuanScreen) — như đã ghi từ trước, CEO chưa chốt
+     định nghĩa "tiến trình" riêng cho OPS (ca trực) nên chưa tách hẳn.

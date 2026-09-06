@@ -13,6 +13,7 @@ import { listNhanSu } from '../../lib/nhansu'
 import { homNayVN, congNgay, thuCuaNgay, ddmmVN } from '../../lib/tuan'
 import { tenHienThiDs } from '../../lib/hoten'
 import SearchSelect, { type Opt } from '../../components/SearchSelect'
+import { OA, OpsHero, OpsSegmented, OpsEmptyState, IcoCalendar } from '../../components/ops/OpsUI'
 
 const hhmm = (t: string | null) => (t ? t.slice(0, 5) : '—')
 const DD_LABEL: Record<DiemDanh, string> = { co_mat: 'Có', vang: 'Vắng', vang_phep: 'Phép' }
@@ -37,6 +38,8 @@ export default function DiemDanhBuoi() {
   const [openId, setOpenId] = useState<string | null>(null)
   const [busyLop, setBusyLop] = useState<string | null>(null)
   const [err, setErr] = useState<string | null>(null)
+  // Lọc HIỂN THỊ theo nhóm (Tất cả/Đã mở/Chưa mở/Đã hủy) — thuần UI trên list đã fetch, không đổi dữ liệu.
+  const [loc, setLoc] = useState<'tatca' | 'mo' | 'chua' | 'huy'>('tatca')
 
   async function reload(silent = false) {
     if (!silent) setLoading(true)
@@ -81,97 +84,100 @@ export default function DiemDanhBuoi() {
   const nhom = { chua: list.filter((b) => !b.buoi), mo: list.filter((b) => b.buoi && b.buoi.trang_thai !== 'huy'), huy: list.filter((b) => b.buoi?.trang_thai === 'huy') }
   const daXong = nhom.mo.filter((b) => { const td = tienDo[b.buoi!.id]; return td && td.tong > 0 && td.daDanh >= td.tong }).length
 
+  const LOC_TABS = ([
+    { key: 'tatca', label: `Tất cả (${list.length})` }, { key: 'mo', label: `Đã mở (${nhom.mo.length})` }, { key: 'chua', label: `Chưa mở (${nhom.chua.length})` },
+    ...(nhom.huy.length ? [{ key: 'huy' as const, label: `Đã hủy (${nhom.huy.length})` }] : []),
+  ] as const)
+  const hienMo = loc === 'tatca' || loc === 'mo', hienChua = loc === 'tatca' || loc === 'chua', hienHuy = loc === 'tatca' || loc === 'huy'
+
   return (
     <div>
-      {/* hero lục: tiêu đề + điều hướng ngày */}
-      <div className="bg-emerald-700 px-4 pb-4" style={{ paddingTop: 'max(0.75rem, env(safe-area-inset-top))' }}>
-        <div className="mx-auto max-w-[760px]">
-          <p className="text-[12px] font-bold uppercase tracking-wide text-emerald-200">Điểm danh buổi học</p>
-          <div className="mt-2 flex items-center gap-2">
-            <button onClick={() => setNgay((n) => congNgay(n, -1))} className="rounded-xl bg-emerald-600 px-4 py-2.5 text-[17px] leading-none text-white active:bg-emerald-500">‹</button>
-            <button onClick={() => setNgay(homNay)} className="flex-1 rounded-xl bg-emerald-600 px-3 py-2.5 text-center text-[15px] font-bold text-white active:bg-emerald-500">
-              {thuCuaNgay(ngay)} · {ddmmVN(ngay)}{ngay === homNay ? ' (hôm nay)' : ''}
-            </button>
-            <button onClick={() => setNgay((n) => congNgay(n, 1))} className="rounded-xl bg-emerald-600 px-4 py-2.5 text-[17px] leading-none text-white active:bg-emerald-500">›</button>
-          </div>
-          {!loading && list.length > 0 && (
-            <p className="mt-2 text-[12.5px] text-emerald-100">{nhom.mo.length} đã mở ({daXong} điểm danh đủ) · {nhom.chua.length} chưa mở{nhom.huy.length ? ` · ${nhom.huy.length} hủy` : ''}</p>
-          )}
+      {/* hero lục: icon lịch-check · tiêu đề · điều hướng ngày (pill trắng nổi) */}
+      <OpsHero tone="green" title="Điểm danh buổi học" right={<img src={OA('attendance/header_calendar_badge.svg')} alt="" className="h-9 w-9" draggable={false} />}>
+        <div className="relative mx-auto mt-2.5 flex max-w-[760px] items-center gap-2 rounded-2xl bg-white px-2 py-2 shadow-sm">
+          <button onClick={() => setNgay((n) => congNgay(n, -1))} className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#E0FBE9] text-[15px] font-bold text-[#0E6B37] active:bg-[#c9f5d9]">‹</button>
+          <button onClick={() => setNgay(homNay)} className="flex flex-1 items-center justify-center gap-1.5 text-[13.5px] font-extrabold text-[#16224D]">
+            <IcoCalendar cls="h-4 w-4 text-[#16A34A]" />{thuCuaNgay(ngay)} · {ddmmVN(ngay)}{ngay === homNay ? ' (hôm nay)' : ''}
+          </button>
+          <button onClick={() => setNgay((n) => congNgay(n, 1))} className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#E0FBE9] text-[15px] font-bold text-[#0E6B37] active:bg-[#c9f5d9]">›</button>
         </div>
-      </div>
+      </OpsHero>
 
       <div className="mx-auto max-w-[760px] px-3 pb-24 pt-3">
-        {err && <p className="mb-2 rounded-xl bg-rose-50 px-3 py-2 text-[13px] text-rose-700">{err}</p>}
-        {loading ? <p className="py-10 text-center text-sm text-slate-400">Đang tải…</p> : list.length === 0 ? (
-          <div className="rounded-2xl border border-dashed border-slate-300 py-14 text-center">
-            <p className="text-[28px]">🌤️</p>
-            <p className="mt-1 text-sm text-slate-400">Ngày này không có buổi học nào.</p>
-          </div>
+        {err && <p className="mb-2 rounded-2xl bg-[#FFE1E7] px-3 py-2 text-[13px] text-[#9F2244]">{err}</p>}
+        {loading ? <p className="py-10 text-center text-sm text-[#9AA5C4]">Đang tải…</p> : list.length === 0 ? (
+          <OpsEmptyState icon={<span className="text-[40px]">🌤️</span>} title="Ngày này không có buổi học nào" />
         ) : (
-          <div className="flex flex-col gap-4">
-            {nhom.mo.length > 0 && (
-              <section>
-                <p className="mb-1.5 pl-1 text-[12px] font-bold uppercase tracking-wide text-slate-400">Đã mở · {nhom.mo.length}</p>
-                <div className="flex flex-col gap-2">
-                  {nhom.mo.map((ba) => {
-                    const td = tienDo[ba.buoi!.id]
-                    const du = td && td.tong > 0 && td.daDanh >= td.tong
-                    return (
-                      <button key={ba.lop.id} onClick={() => setOpenId(ba.buoi!.id)}
-                        className="flex min-h-[60px] items-center gap-3 rounded-2xl border border-slate-200/70 bg-white px-3.5 py-3 text-left shadow-sm active:bg-slate-50">
-                        <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-[13px] font-bold ${du ? 'bg-emerald-50 text-emerald-700' : 'bg-amber-50 text-amber-700'}`}>{hhmm(ba.slot.gio_bat_dau)}</span>
+          <>
+            <div className="mb-3"><OpsSegmented value={loc} onChange={setLoc} items={LOC_TABS as any} tone="green" /></div>
+            {!loading && list.length > 0 && (
+              <p className="mb-2 px-1 text-[11.5px] font-semibold text-[#6B7AAE]">{nhom.mo.length} đã mở ({daXong} điểm danh đủ) · {nhom.chua.length} chưa mở{nhom.huy.length ? ` · ${nhom.huy.length} hủy` : ''}</p>
+            )}
+            <div className="flex flex-col gap-4">
+              {hienMo && nhom.mo.length > 0 && (
+                <section>
+                  <p className="mb-1.5 pl-1 text-[11px] font-bold uppercase tracking-wide text-[#9AA5C4]">Đã mở · {nhom.mo.length}</p>
+                  <div className="flex flex-col gap-2">
+                    {nhom.mo.map((ba) => {
+                      const td = tienDo[ba.buoi!.id]
+                      const du = td && td.tong > 0 && td.daDanh >= td.tong
+                      return (
+                        <button key={ba.lop.id} onClick={() => setOpenId(ba.buoi!.id)}
+                          className="flex min-h-[64px] items-center gap-3 rounded-2xl bg-white px-3.5 py-3 text-left shadow-sm active:bg-[#F7F9FF]">
+                          <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl text-[12.5px] font-bold ${du ? 'bg-[#E0FBE9] text-[#0E6B37]' : 'bg-[#FFF3D6] text-[#93600A]'}`}>{hhmm(ba.slot.gio_bat_dau)}</span>
+                          <div className="min-w-0 flex-1">
+                            <p className="text-[15px] font-bold text-[#16224D]">{ba.lop.ten_lop} <span className="text-[12px] font-normal text-[#9AA5C4]">· {ba.lop.mon}</span></p>
+                            <p className="text-[12px] text-[#6B7AAE]">đến {hhmm(ba.slot.gio_ket_thuc)} · phòng {ba.slot.phong ?? '—'}</p>
+                          </div>
+                          {td && (
+                            <span className={`rounded-full px-2.5 py-1 text-[12.5px] font-bold ${du ? 'bg-[#E0FBE9] text-[#0E6B37]' : 'bg-[#FFF3D6] text-[#93600A]'}`}>
+                              {du ? '✓ ' : ''}{td.daDanh}/{td.tong}
+                            </span>
+                          )}
+                          <span className="text-[#C7D0E8]">›</span>
+                        </button>
+                      )
+                    })}
+                  </div>
+                </section>
+              )}
+              {hienChua && nhom.chua.length > 0 && (
+                <section>
+                  <p className="mb-1.5 pl-1 text-[11px] font-bold uppercase tracking-wide text-[#9AA5C4]">Chưa mở · {nhom.chua.length}</p>
+                  <div className="flex flex-col gap-2">
+                    {nhom.chua.map((ba) => (
+                      <div key={ba.lop.id} className="flex min-h-[64px] items-center gap-3 rounded-2xl bg-white px-3.5 py-3 shadow-sm">
+                        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#F1F3FA] text-[12.5px] font-bold text-[#6B7AAE]">{hhmm(ba.slot.gio_bat_dau)}</span>
                         <div className="min-w-0 flex-1">
-                          <p className="text-[15px] font-bold text-slate-800">{ba.lop.ten_lop} <span className="text-[12px] font-normal text-slate-400">· {ba.lop.mon}</span></p>
-                          <p className="text-[12px] text-slate-500">đến {hhmm(ba.slot.gio_ket_thuc)} · phòng {ba.slot.phong ?? '—'}</p>
+                          <p className="text-[15px] font-bold text-[#16224D]">{ba.lop.ten_lop} <span className="text-[12px] font-normal text-[#9AA5C4]">· {ba.lop.mon}</span></p>
+                          <p className="text-[12px] text-[#6B7AAE]">đến {hhmm(ba.slot.gio_ket_thuc)} · phòng {ba.slot.phong ?? '—'}</p>
                         </div>
-                        {td && (
-                          <span className={`rounded-full px-2.5 py-1 text-[12.5px] font-bold ${du ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}`}>
-                            {du ? '✓ ' : ''}{td.daDanh}/{td.tong}
-                          </span>
-                        )}
-                        <span className="text-slate-300">›</span>
-                      </button>
-                    )
-                  })}
-                </div>
-              </section>
-            )}
-            {nhom.chua.length > 0 && (
-              <section>
-                <p className="mb-1.5 pl-1 text-[12px] font-bold uppercase tracking-wide text-slate-400">Chưa mở · {nhom.chua.length}</p>
-                <div className="flex flex-col gap-2">
-                  {nhom.chua.map((ba) => (
-                    <div key={ba.lop.id} className="flex min-h-[60px] items-center gap-3 rounded-2xl border border-slate-200/70 bg-white px-3.5 py-3 shadow-sm">
-                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-[13px] font-bold text-slate-500">{hhmm(ba.slot.gio_bat_dau)}</span>
-                      <div className="min-w-0 flex-1">
-                        <p className="text-[15px] font-bold text-slate-800">{ba.lop.ten_lop} <span className="text-[12px] font-normal text-slate-400">· {ba.lop.mon}</span></p>
-                        <p className="text-[12px] text-slate-500">đến {hhmm(ba.slot.gio_ket_thuc)} · phòng {ba.slot.phong ?? '—'}</p>
+                        <button onClick={() => huy(ba)} disabled={busyLop === ba.lop.id} className="rounded-xl px-2.5 py-2.5 text-[13px] font-medium text-[#9AA5C4] active:bg-[#FFE1E7] active:text-[#9F2244] disabled:opacity-40">Hủy</button>
+                        <button onClick={() => mo(ba)} disabled={busyLop === ba.lop.id} className="rounded-full bg-[#16A34A] px-4 py-2.5 text-[14px] font-bold text-white active:bg-[#0E8A46] disabled:opacity-40">Mở buổi</button>
                       </div>
-                      <button onClick={() => huy(ba)} disabled={busyLop === ba.lop.id} className="rounded-xl px-2.5 py-2.5 text-[13px] font-medium text-slate-400 active:bg-rose-50 active:text-rose-600 disabled:opacity-40">Hủy</button>
-                      <button onClick={() => mo(ba)} disabled={busyLop === ba.lop.id} className="rounded-xl bg-emerald-600 px-4 py-2.5 text-[14px] font-bold text-white active:bg-emerald-500 disabled:opacity-40">Mở buổi</button>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            )}
-            {nhom.huy.length > 0 && (
-              <section>
-                <p className="mb-1.5 pl-1 text-[12px] font-bold uppercase tracking-wide text-slate-400">Đã hủy · {nhom.huy.length}</p>
-                <div className="flex flex-col gap-2">
-                  {nhom.huy.map((ba) => (
-                    <div key={ba.lop.id} className="flex items-center gap-3 rounded-2xl border border-slate-200/70 bg-white px-3.5 py-3 shadow-sm">
-                      <div className="min-w-0 flex-1 opacity-60">
-                        <p className="text-[14px] font-bold text-slate-700">{ba.lop.ten_lop} <span className="text-[12px] font-normal text-slate-400">· {hhmm(ba.slot.gio_bat_dau)}–{hhmm(ba.slot.gio_ket_thuc)}</span></p>
-                        {ba.buoi?.ly_do_huy && <p className="text-[12px] text-slate-500">Lý do: {ba.buoi.ly_do_huy}</p>}
+                    ))}
+                  </div>
+                </section>
+              )}
+              {hienHuy && nhom.huy.length > 0 && (
+                <section>
+                  <p className="mb-1.5 pl-1 text-[11px] font-bold uppercase tracking-wide text-[#9AA5C4]">Đã hủy · {nhom.huy.length}</p>
+                  <div className="flex flex-col gap-2">
+                    {nhom.huy.map((ba) => (
+                      <div key={ba.lop.id} className="flex items-center gap-3 rounded-2xl bg-white px-3.5 py-3 shadow-sm">
+                        <div className="min-w-0 flex-1 opacity-60">
+                          <p className="text-[14px] font-bold text-[#16224D]">{ba.lop.ten_lop} <span className="text-[12px] font-normal text-[#9AA5C4]">· {hhmm(ba.slot.gio_bat_dau)}–{hhmm(ba.slot.gio_ket_thuc)}</span></p>
+                          {ba.buoi?.ly_do_huy && <p className="text-[12px] text-[#6B7AAE]">Lý do: {ba.buoi.ly_do_huy}</p>}
+                        </div>
+                        <button onClick={() => moLai(ba)} disabled={busyLop === ba.lop.id} title="Hủy nhầm? Mở lại buổi này"
+                          className="shrink-0 rounded-xl bg-[#E0FBE9] px-3 py-2.5 text-[13px] font-semibold text-[#0E6B37] active:bg-[#c9f5d9] disabled:opacity-40">Mở lại</button>
                       </div>
-                      <button onClick={() => moLai(ba)} disabled={busyLop === ba.lop.id} title="Hủy nhầm? Mở lại buổi này"
-                        className="shrink-0 rounded-xl border border-emerald-200 px-3 py-2.5 text-[13px] font-semibold text-emerald-700 active:bg-emerald-50 disabled:opacity-40">Mở lại</button>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            )}
-          </div>
+                    ))}
+                  </div>
+                </section>
+              )}
+            </div>
+          </>
         )}
       </div>
     </div>
@@ -237,60 +243,56 @@ function BuoiDetailOps({ buoiId, onBack }: { buoiId: string; onBack: () => void 
   return (
     <div>
       {/* hero lục: quay lại + lớp + tiến độ */}
-      <div className="bg-emerald-700 px-4 pb-4" style={{ paddingTop: 'max(0.75rem, env(safe-area-inset-top))' }}>
-        <div className="mx-auto max-w-[760px]">
-          <div className="flex items-center gap-2">
-            <button onClick={onBack} className="-ml-1 rounded-xl px-2 py-2 text-[14px] font-bold text-emerald-100 active:bg-emerald-600">‹ Buổi học</button>
-            <button onClick={huyBuoiNay} className="ml-auto rounded-xl px-2.5 py-2 text-[12.5px] text-emerald-200 active:bg-emerald-600">Hủy buổi</button>
+      <OpsHero tone="green" onBack={onBack} title="" right={
+        <button onClick={huyBuoiNay} className="shrink-0 rounded-full bg-white/15 px-2.5 py-1.5 text-[12px] font-semibold text-white active:bg-white/25">Hủy buổi</button>
+      }>
+        <div className="relative mx-auto -mt-1 flex max-w-[760px] items-center gap-3">
+          <div className="min-w-0 flex-1">
+            <p className="truncate text-[19px] font-extrabold text-white">{buoi.lop?.ten_lop ?? '?'} <span className="text-[13px] font-normal text-white/70">· {buoi.lop?.mon ?? ''}</span></p>
+            <p className="text-[12px] text-white/75">{ddmmVN(buoi.ngay)} · {hhmm(buoi.gio_bat_dau)}–{hhmm(buoi.gio_ket_thuc)} · {buoi.phong ?? '—'}{gvTen ? ` · GV ${gvTen.trim().split(/\s+/).slice(-2).join(' ')}` : ''}</p>
           </div>
-          <div className="mt-1 flex items-center gap-3">
-            <div className="min-w-0 flex-1">
-              <p className="truncate text-[19px] font-bold text-white">{buoi.lop?.ten_lop ?? '?'} <span className="text-[13px] font-normal text-emerald-200">· {buoi.lop?.mon ?? ''}</span></p>
-              <p className="text-[12.5px] text-emerald-200">{ddmmVN(buoi.ngay)} · {hhmm(buoi.gio_bat_dau)}–{hhmm(buoi.gio_ket_thuc)} · {buoi.phong ?? '—'}{gvTen ? ` · GV ${gvTen.trim().split(/\s+/).slice(-2).join(' ')}` : ''}</p>
-            </div>
-            <span className="rounded-full bg-emerald-900/50 px-3 py-1.5 text-[13.5px] font-bold text-emerald-100">{daDanh}/{roster.length}</span>
-          </div>
-          <div className="mt-2.5 h-1.5 rounded-full bg-emerald-900/40">
-            <div className="h-1.5 rounded-full bg-emerald-200 transition-all" style={{ width: roster.length ? `${(daDanh / roster.length) * 100}%` : '0%' }} />
-          </div>
+          <span className="rounded-full bg-white/20 px-3 py-1.5 text-[13.5px] font-bold text-white">{daDanh}/{roster.length}</span>
         </div>
-      </div>
+        <div className="relative mx-auto mt-2.5 h-1.5 max-w-[760px] rounded-full bg-black/15">
+          <div className="h-1.5 rounded-full bg-white transition-all" style={{ width: roster.length ? `${(daDanh / roster.length) * 100}%` : '0%' }} />
+        </div>
+      </OpsHero>
 
       <div className="mx-auto max-w-[760px] px-3 pb-24 pt-3">
-        {err && <p className="mb-2 rounded-xl bg-rose-50 px-3 py-2 text-[13px] text-rose-700">{err}</p>}
+        {err && <p className="mb-2 rounded-2xl bg-[#FFE1E7] px-3 py-2 text-[13px] text-[#9F2244]">{err}</p>}
         <div className="mb-3 flex items-center gap-2">
           <button onClick={() => setBaoDen(true)}
-            className="min-h-[44px] flex-1 rounded-2xl border border-slate-200/70 bg-white px-4 text-[14px] font-bold text-emerald-700 shadow-sm active:bg-emerald-50">
+            className="min-h-[44px] flex-1 rounded-2xl bg-white px-4 text-[14px] font-bold text-[#0E6B37] shadow-sm active:bg-[#F7F9FF]">
             💬 Báo đến PH{chuaBao ? ` (${chuaBao})` : ''}
           </button>
           {suaGV ? (
             <div className="min-w-[220px] flex-1"><SearchSelect value={gvId} onChange={doiGV} options={nsOpts} placeholder="Chọn GV dạy…" avatars autoFocus /></div>
           ) : (
-            <button onClick={() => setSuaGV(true)} className="min-h-[44px] rounded-2xl border border-slate-200/70 bg-white px-4 text-[13px] text-slate-500 shadow-sm active:bg-slate-100">GV ✎</button>
+            <button onClick={() => setSuaGV(true)} className="min-h-[44px] rounded-2xl bg-white px-4 text-[13px] text-[#6B7AAE] shadow-sm active:bg-[#F7F9FF]">GV ✎</button>
           )}
         </div>
         {baoDen && <BaoDenModalOps roster={roster} onClose={() => setBaoDen(false)} onDone={reload} />}
 
         <div className="flex flex-col gap-2">
           {roster.map((r, i) => (
-            <div key={r.id} className="flex items-center gap-2.5 rounded-2xl border border-slate-200/70 bg-white py-2 pl-3 pr-1.5 shadow-sm">
+            <div key={r.id} className="flex items-center gap-2.5 rounded-2xl bg-white py-2 pl-3 pr-1.5 shadow-sm">
               <Ava ten={tenHT[i] ?? '?'} img={r.hoc_sinh?.anh_url} />
-              <span className="min-w-0 flex-1 truncate text-[14.5px] font-semibold text-slate-800">{tenHT[i]}</span>
-              <div className="flex shrink-0 rounded-full bg-slate-100 p-1">
+              <span className="min-w-0 flex-1 truncate text-[14.5px] font-semibold text-[#16224D]">{tenHT[i]}</span>
+              <div className="flex shrink-0 rounded-full bg-[#F1F3FA] p-1">
                 {(['co_mat', 'vang', 'vang_phep'] as DiemDanh[]).map((d) => (
                   <button key={d} onClick={() => danh(r, d)}
-                    className={`min-h-[38px] rounded-full px-3.5 text-[12.5px] font-bold transition ${r.diem_danh === d ? DD_SEL[d] : 'text-slate-500 active:bg-slate-200'}`}>
+                    className={`min-h-[38px] rounded-full px-3.5 text-[12.5px] font-bold transition ${r.diem_danh === d ? DD_SEL[d] : 'text-[#6B7AAE] active:bg-[#E5E9F5]'}`}>
                     {DD_LABEL[d]}
                   </button>
                 ))}
               </div>
-              <button onClick={() => xoa(r)} title="Gỡ HS khỏi buổi (xếp nhầm lớp)" className="min-h-[44px] rounded-xl px-1.5 text-[13px] text-slate-300 active:bg-rose-50 active:text-rose-600">✕</button>
+              <button onClick={() => xoa(r)} title="Gỡ HS khỏi buổi (xếp nhầm lớp)" className="min-h-[44px] rounded-xl px-1.5 text-[13px] text-[#C7D0E8] active:bg-[#FFE1E7] active:text-[#9F2244]">✕</button>
             </div>
           ))}
-          {roster.length === 0 && <p className="py-8 text-center text-sm text-slate-400">Buổi chưa có HS nào (lớp chưa ghi danh?).</p>}
+          {roster.length === 0 && <p className="py-8 text-center text-sm text-[#9AA5C4]">Buổi chưa có HS nào (lớp chưa ghi danh?).</p>}
         </div>
         {roster.length > 0 && (
-          <p className="mt-3 text-center text-[12.5px] text-slate-400">{chuaDD > 0 ? `Còn ${chuaDD} bạn chưa điểm danh` : '✓ Đã điểm danh đủ cả lớp'}</p>
+          <p className="mt-3 text-center text-[12.5px] text-[#6B7AAE]">{chuaDD > 0 ? `Còn ${chuaDD} bạn chưa điểm danh` : '✓ Đã điểm danh đủ cả lớp'}</p>
         )}
       </div>
     </div>

@@ -22,14 +22,26 @@ const CHU_DE: { re: RegExp; icon: string; bg: string; accent: string; tagline: s
 const MAC_DINH = { icon: H('thuvien'), bg: '#E4ECFB', accent: '#2F73F6', tagline: 'Hiểu rõ hơn · Làm tốt hơn! ♡' }
 const chuDe = (s: string) => CHU_DE.find((c) => c.re.test(s)) ?? MAC_DINH
 
-const GOI_Y: { tieu_de: string; tom_tat: string }[] = [
-  { tieu_de: 'Quy trình chấm ET', tom_tat: 'Hướng dẫn chi tiết các bước chấm ET' },
-  { tieu_de: 'Quy trình chấm BTVN', tom_tat: 'Quy trình chấm & phản hồi BTVN' },
-  { tieu_de: 'Quy trình bổ trợ', tom_tat: 'Quy trình hỗ trợ HS yếu và nâng cao' },
-  { tieu_de: 'Quy trình điểm danh', tom_tat: 'Hướng dẫn điểm danh và xử lý vắng mặt' },
-  { tieu_de: 'Quy trình báo cáo phụ huynh', tom_tat: 'Các bước tổng hợp và gửi báo cáo' },
-  { tieu_de: 'Thư viện tài liệu', tom_tat: 'Biểu mẫu, mẫu tin nhắn, tài liệu tham khảo' },
-]
+// Gợi ý khi bảng quy_trinh CHƯA có nội dung cho vai trò này — khác nhau theo vai trò để không lạc đề
+// (OPS không chấm ET/BTVN; TA/GV không trực report/prep/test).
+const GOI_Y_THEO_VAI: Record<string, { tieu_de: string; tom_tat: string }[]> = {
+  ta: [
+    { tieu_de: 'Quy trình chấm ET', tom_tat: 'Hướng dẫn chi tiết các bước chấm ET' },
+    { tieu_de: 'Quy trình chấm BTVN', tom_tat: 'Quy trình chấm & phản hồi BTVN' },
+    { tieu_de: 'Quy trình bổ trợ', tom_tat: 'Quy trình hỗ trợ HS yếu và nâng cao' },
+    { tieu_de: 'Quy trình điểm danh', tom_tat: 'Hướng dẫn điểm danh và xử lý vắng mặt' },
+    { tieu_de: 'Quy trình báo cáo phụ huynh', tom_tat: 'Các bước tổng hợp và gửi báo cáo' },
+    { tieu_de: 'Thư viện tài liệu', tom_tat: 'Biểu mẫu, mẫu tin nhắn, tài liệu tham khảo' },
+  ],
+  ops: [
+    { tieu_de: 'Quy trình điểm danh buổi học', tom_tat: 'Mở buổi, điểm danh, báo đến phụ huynh' },
+    { tieu_de: 'Quy trình report trước buổi', tom_tat: 'Nội dung cần gửi trước mỗi buổi học' },
+    { tieu_de: 'Quy trình báo tan', tom_tat: 'Báo tan lớp đúng giờ, đúng nội dung' },
+    { tieu_de: 'Quy trình chuẩn bị phòng', tom_tat: 'Dọn phòng, chuẩn bị đồ dùng trước ca' },
+    { tieu_de: 'Quy trình coi test đầu vào', tom_tat: 'Coi thi, chấm, trả kết quả test đầu vào' },
+    { tieu_de: 'Quy trình báo cáo phụ huynh', tom_tat: 'Các bước tổng hợp và gửi báo cáo' },
+  ],
+}
 
 type Card = { id: string; tieu_de: string; tom_tat: string | null; noi_dung: string | null; updated_at: string | null }
 // tách tối đa 4 bước từ markdown: dòng bắt đầu "1." / "1)" / "- " / "• "
@@ -48,10 +60,10 @@ export function HuongDanScreen({ vaiTro }: { vaiTro: string }) {
   const cards: Card[] = useMemo(() => {
     const src: Card[] = ds && ds.length
       ? ds.map((x) => ({ id: x.id, tieu_de: x.tieu_de, tom_tat: x.tom_tat, noi_dung: x.noi_dung, updated_at: x.updated_at }))
-      : GOI_Y.map((g, i) => ({ id: `goi-y-${i}`, tieu_de: g.tieu_de, tom_tat: g.tom_tat, noi_dung: null, updated_at: null }))
+      : (GOI_Y_THEO_VAI[vaiTro] ?? GOI_Y_THEO_VAI.ta).map((g, i) => ({ id: `goi-y-${i}`, tieu_de: g.tieu_de, tom_tat: g.tom_tat, noi_dung: null, updated_at: null }))
     const kw = q.trim().toLowerCase()
     return kw ? src.filter((c) => c.tieu_de.toLowerCase().includes(kw) || (c.tom_tat ?? '').toLowerCase().includes(kw)) : src
-  }, [ds, q])
+  }, [ds, q, vaiTro])
   const cdMo = mo ? chuDe(mo.tieu_de) : null
   const buoc = tachBuoc(mo?.noi_dung ?? null)
 

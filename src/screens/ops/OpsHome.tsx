@@ -1,8 +1,9 @@
-// OpsHome — shell + trang chủ app OPS (PLAN-app-ops.md). Bottom-tab (chạm, iPad/iPhone-first).
-// UI REDESIGN 30/08 (Thùy duyệt mockup): style "app giáo dục làm việc" — mỗi tab 1 màu chủ đạo, hero
-// đậm màu + vòng tiến độ việc trong ngày, card việc có icon squircle màu theo loại, bottom-tab active
-// = pill màu, font Be Vietnam Pro (đã load ở ops.html). Nền vẫn sáng kiểu iPhone (KHÔNG sci-fi).
-// ⚠ Tailwind JIT: class màu phải là CHUỖI LITERAL per-tab (cấm ghép chuỗi động).
+// OpsHome — shell + trang chủ app OPS. REDESIGN 07/09 (CEO gửi handoff ops1-6.png + kit SVG 7 màn):
+// hero gradient lục + avatar/chào/trạng thái + nhân vật chibi, lưới 6 module (icon vuông màu),
+// "Công việc hôm nay" gộp 1 danh sách (mèo ngủ khi trống), bottom-nav icon tự vẽ + pill màu theo màn.
+// Report/Prep/Test là 3 màn TÁI DÙNG TỪ ERP (screens/vanhanhops/*, KHÔNG được sửa nội dung vì ảnh hưởng
+// cả desktop ERP) — chỉ bọc header màu+nhân vật RIÊNG cho app OPS ở NGOÀI các component đó (ManCon).
+// ⚠ Tailwind JIT: không ghép class màu động — mọi màu ở đây truyền qua style={{}} (OPS_UI tokens), an toàn.
 import { useEffect, useState } from 'react'
 import { supabase } from '../../lib/supabase'
 import type { MyProfile } from '../../lib/nhansu'
@@ -11,6 +12,7 @@ import { myBuoiAoCuaKhoang, getMyOpsTasks, getMyPrepTasks, OPS_TASK_LABEL, type 
 import { listCaTestDangChay, type CaTest } from '../../lib/tuyensinh'
 import { homNayVN, ddmmVN, thuCuaNgay, mucDeadline } from '../../lib/tuan'
 import { diemDanhTienDo, type BuoiAo } from '../../lib/gami'
+import { OPS, OA, type OpsTone, OpsHero, IcoHome, IcoCheck, IcoMail, IcoBroom, IcoPencil, IcoGift, IcoChart, IcoCalendar, IcoPower } from '../../components/ops/OpsUI'
 import DiemDanhBuoi from './DiemDanhBuoi'
 import TuQuaScreen from './TuQuaScreen'
 import OpsReportScreen from '../vanhanhops/OpsReportScreen'
@@ -20,15 +22,15 @@ import GopY from './GopY'
 import DashOps from './DashOps'
 
 type TabKey = 'home' | 'diemdanh' | 'report' | 'prep' | 'test' | 'tuqua' | 'dash'
-// Tab ↔ leaf quyền (cùng leaf-id cây Admin ERP) + bộ màu literal. home + dash luôn hiện.
-const TABS: { key: TabKey; leaf: string | null; icon: string; label: string; pill: string; text: string }[] = [
-  { key: 'home', leaf: null, icon: '🏠', label: 'Hôm nay', pill: 'bg-indigo-100', text: 'text-indigo-600' },
-  { key: 'diemdanh', leaf: 'buoihoc', icon: '✅', label: 'Điểm danh', pill: 'bg-emerald-100', text: 'text-emerald-700' },
-  { key: 'report', leaf: 'ops_report', icon: '📨', label: 'Report', pill: 'bg-blue-100', text: 'text-blue-700' },
-  { key: 'prep', leaf: 'prep', icon: '🧹', label: 'Prep', pill: 'bg-amber-100', text: 'text-amber-700' },
-  { key: 'test', leaf: 'test_dau_vao', icon: '📝', label: 'Test', pill: 'bg-violet-100', text: 'text-violet-700' },
-  { key: 'tuqua', leaf: 'tu_qua', icon: '🎁', label: 'Quà', pill: 'bg-rose-100', text: 'text-rose-600' },
-  { key: 'dash', leaf: null, icon: '📈', label: 'Của tôi', pill: 'bg-teal-100', text: 'text-teal-700' },
+// Tab ↔ leaf quyền (cùng leaf-id cây Admin ERP) + tông màu + icon tự vẽ. home + dash luôn hiện.
+const TABS: { key: TabKey; leaf: string | null; label: string; tone: OpsTone; Ico: (p: { cls?: string }) => JSX.Element }[] = [
+  { key: 'home', leaf: null, label: 'Hôm nay', tone: 'indigo', Ico: IcoHome },
+  { key: 'diemdanh', leaf: 'buoihoc', label: 'Điểm danh', tone: 'green', Ico: IcoCheck },
+  { key: 'report', leaf: 'ops_report', label: 'Report', tone: 'blue', Ico: IcoMail },
+  { key: 'prep', leaf: 'prep', label: 'Prep', tone: 'amber', Ico: IcoBroom },
+  { key: 'test', leaf: 'test_dau_vao', label: 'Test', tone: 'purple', Ico: IcoPencil },
+  { key: 'tuqua', leaf: 'tu_qua', label: 'Tủ quà', tone: 'orange', Ico: IcoGift },
+  { key: 'dash', leaf: null, label: 'Của tôi', tone: 'pink', Ico: IcoChart },
 ]
 
 const hhmm = (t: string | null) => (t ? t.slice(0, 5) : '—')
@@ -39,58 +41,53 @@ export default function OpsHome({ profile, quyen }: { profile: MyProfile; quyen:
   const tabs = TABS.filter((t) => coQuyen(t.leaf))
 
   return (
-    <div className="flex h-[100dvh] flex-col bg-[#f5f5f7]" style={{ fontFamily: "'Be Vietnam Pro', 'Segoe UI', system-ui, sans-serif" }}>
+    <div className="flex h-[100dvh] flex-col bg-[#F5F8FF]" style={{ fontFamily: "'Be Vietnam Pro', 'Segoe UI', system-ui, sans-serif" }}>
       <div className="min-h-0 flex-1 overflow-auto">
         {tab === 'home' && <HomTay profile={profile} onGo={setTab} coQuyen={coQuyen} onThoat={() => supabase.auth.signOut()} />}
         {tab === 'diemdanh' && <DiemDanhBuoi />}
-        {tab === 'report' && <ManCon mau="bg-blue-700"><OpsReportScreen chiViec /></ManCon>}
-        {tab === 'prep' && <ManCon mau="bg-amber-600"><PrepScreen /></ManCon>}
-        {tab === 'test' && <ManCon mau="bg-violet-600"><DiemDanhTestScreen /></ManCon>}
+        {tab === 'report' && <ManCon tone="blue" title="Report & Báo tan" character={OA('report/header_boy.svg')} bubble="Làm xong rồi nè!"><OpsReportScreen chiViec /></ManCon>}
+        {tab === 'prep' && <ManCon tone="amber" title="Chuẩn bị phòng" character={OA('prep/header_girl.svg')} bubble="Phòng sạch là học vui hơn!"><PrepScreen /></ManCon>}
+        {tab === 'test' && <ManCon tone="purple" title="Test đầu vào" character={OA('test/header_boy_clipboard.svg')} bubble="Cố lên! Bạn làm được mà!"><DiemDanhTestScreen /></ManCon>}
         {tab === 'tuqua' && <TuQuaScreen />}
-        {tab === 'dash' && <DashOps />}
+        {tab === 'dash' && <DashOps profile={profile} />}
       </div>
 
-      {/* bottom tab bar — active = pill màu (mockup duyệt), chừa safe-area iPhone */}
-      <div className="border-t border-slate-200 bg-white" style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}>
+      {/* bottom tab — icon tự vẽ (currentColor), active = pill màu theo tông, chừa safe-area iPhone */}
+      <div className="border-t border-[#EAEFFB] bg-white" style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}>
         <div className="mx-auto flex max-w-[760px]">
-          {tabs.map((t) => (
-            <button key={t.key} onClick={() => setTab(t.key)}
-              className="flex min-h-[56px] flex-1 flex-col items-center justify-center gap-0.5">
-              <span className={`rounded-full px-3.5 py-0.5 text-[17px] leading-[24px] transition ${tab === t.key ? t.pill : ''}`}>{t.icon}</span>
-              <span className={`text-[10px] font-semibold ${tab === t.key ? t.text : 'text-slate-400'}`}>{t.label}</span>
-            </button>
-          ))}
+          {tabs.map((t) => {
+            const c = OPS[t.tone]; const active = tab === t.key
+            return (
+              <button key={t.key} onClick={() => setTab(t.key)} className="flex min-h-[56px] flex-1 flex-col items-center justify-center gap-0.5">
+                <span className="flex h-7 w-11 items-center justify-center rounded-full transition" style={{ background: active ? c.chip : 'transparent', color: active ? c.solid : '#9AA5C4' }}>
+                  <t.Ico cls="h-[19px] w-[19px]" />
+                </span>
+                <span className="text-[10px] font-bold" style={{ color: active ? c.solid : '#9AA5C4' }}>{t.label}</span>
+              </button>
+            )
+          })}
         </div>
       </div>
     </div>
   )
 }
 
-// Dải màu mỏng cho 3 màn tái dùng từ ERP (chưa restyle sâu) — kéo vào tông màu app + đệm safe-area
-// iPhone PWA (màn ERP tự có header chữ nên dải này KHÔNG lặp tiêu đề).
-function ManCon({ mau, children }: { mau: string; children: React.ReactNode }) {
+// Dải header cho 3 màn TÁI DÙNG TỪ ERP (Report/Prep/Test) — bọc NGOÀI, không đụng nội dung bên trong
+// (OpsReportScreen/PrepScreen/DiemDanhTestScreen dùng chung với desktop ERP, sửa trong đó ảnh hưởng cả 2 nơi).
+function ManCon({ tone, character, bubble, children }: { tone: OpsTone; title: string; character: string; bubble: string; children: React.ReactNode }) {
+  // KHÔNG truyền title — 3 màn tái dùng ERP (Report/Prep/Test) đã tự có tiêu đề riêng bên trong, tránh lặp chữ.
   return (
     <div className="flex h-full min-h-0 flex-col">
-      <div className={`${mau} pb-2`} style={{ paddingTop: 'max(0.25rem, env(safe-area-inset-top))' }} />
-      <div className="min-h-0 flex-1 overflow-auto">{children}</div>
+      <OpsHero tone={tone} character={character} bubble={bubble} characterSize={82} />
+      <div className="min-h-0 flex-1 overflow-auto bg-white">{children}</div>
     </div>
   )
 }
 
-function ProgressRing({ done, tong }: { done: number; tong: number }) {
-  const r = 21, c = 2 * Math.PI * r
-  const phan = tong > 0 ? done / tong : 1
-  return (
-    <svg width="56" height="56" viewBox="0 0 52 52">
-      <circle cx="26" cy="26" r={r} fill="none" stroke="rgba(255,255,255,0.28)" strokeWidth="5" />
-      <circle cx="26" cy="26" r={r} fill="none" stroke="#fff" strokeWidth="5" strokeLinecap="round"
-        strokeDasharray={`${c * phan} ${c}`} transform="rotate(-90 26 26)" />
-      <text x="26" y="30" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#fff">{done}/{tong}</text>
-    </svg>
-  )
-}
+type Item = { key: string; tone: OpsTone; Ico: (p: { cls?: string }) => JSX.Element; main: string; sub: string; badge: string; badgeStrong?: boolean }
 
-// ── Trang chủ "Hôm nay" — hero tím (chào + vòng tiến độ) + card việc theo loại, bấm → sang tab ──
+// ── Trang chủ "Hôm nay" — hero lục (avatar + chào + trạng thái + nhân vật), thanh ngày, lưới 6
+//    module, "Công việc hôm nay" gộp 1 danh sách (mèo ngủ khi trống), banner câu động viên ──
 function HomTay({ profile, onGo, coQuyen, onThoat }: { profile: MyProfile; onGo: (t: TabKey) => void; coQuyen: (leaf: string | null) => boolean; onThoat: () => void }) {
   const homNay = homNayVN()
   const [loading, setLoading] = useState(true)
@@ -100,6 +97,7 @@ function HomTay({ profile, onGo, coQuyen, onThoat }: { profile: MyProfile; onGo:
   const [preps, setPreps] = useState<MyPrepTask[]>([])
   const [caTests, setCaTests] = useState<CaTest[]>([])
   const [now, setNow] = useState(() => Date.now())
+  const [loc, setLoc] = useState<'tatca' | 'diemdanh' | 'report' | 'prep' | 'test'>('tatca')
 
   async function reload(silent = false) {
     if (!silent) setLoading(true)
@@ -138,115 +136,131 @@ function HomTay({ profile, onGo, coQuyen, onThoat }: { profile: MyProfile; onGo:
   const opsCanLam = opsTasks.filter((t) => !t.done)
   const prepCanLam = preps.filter((p) => !p.done)
 
+  // Gộp 4 nguồn thành 1 danh sách việc — filter theo `loc` (chip lọc, thuần UI trên dữ liệu đã fetch).
+  const viecGop: Item[] = [
+    ...buoiCanDanh.map((b): Item => ({ key: 'dd' + b.lop.id, tone: 'green', Ico: IcoCheck, main: b.lop.ten_lop, sub: `${hhmm(b.slot.gio_bat_dau)} · ${b.slot.phong ?? '—'}`, badge: b.buoi ? (tienDo[b.buoi.id] ? `${tienDo[b.buoi.id].daDanh}/${tienDo[b.buoi.id].tong}` : 'đang mở') : 'chưa mở' })),
+    ...opsCanLam.map((t): Item => {
+      const muc = mucDeadline(t.deadline, now)
+      const han = new Date(t.deadline).toLocaleTimeString('vi', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Ho_Chi_Minh' })
+      return { key: 'rp' + t.tkbId + t.tab + t.ngay, tone: 'blue', Ico: IcoMail, main: `${OPS_TASK_LABEL[t.tab]} · ${t.lopTen}`, sub: muc === 'qua_han' ? 'quá hạn' : `hạn ${han}`, badge: muc === 'qua_han' ? '⚠' : muc === 'sat' ? '⏰' : '', badgeStrong: muc === 'qua_han' }
+    }),
+    ...(['sang', 'chieu', 'toi'] as const).filter((ca) => prepCanLam.some((p) => p.luot === ca)).map((ca): Item => {
+      const cua = prepCanLam.filter((p) => p.luot === ca)
+      return { key: 'pr' + ca, tone: 'amber', Ico: IcoBroom, main: `Prep ca ${ca === 'sang' ? 'Sáng' : ca === 'chieu' ? 'Chiều' : 'Tối'}`, sub: `phòng ${cua.map((p) => p.phong).join(', ')}`, badge: `${cua.length} phòng` }
+    }),
+    ...caTests.map((c): Item => ({ key: 'ts' + c.id, tone: 'purple', Ico: IcoPencil, main: `Ca test ${c.mon}`, sub: `bắt đầu ${hhmm(c.gioBatDau)} · ${c.thoiLuongPhut} phút`, badge: 'đang chạy' })),
+  ]
+  const LOC_TABS = (
+    [{ key: 'tatca', label: 'Tất cả' }, { key: 'diemdanh', label: 'Điểm danh' }, { key: 'report', label: 'Report' }, { key: 'prep', label: 'Prep' }, { key: 'test', label: 'Test' }] as const
+  ).filter((l) => l.key === 'tatca' || viecGop.some((v) => v.key.startsWith(l.key === 'diemdanh' ? 'dd' : l.key === 'report' ? 'rp' : l.key === 'prep' ? 'pr' : 'ts')))
+  const viecHien = loc === 'tatca' ? viecGop : viecGop.filter((v) => v.key.startsWith(loc === 'diemdanh' ? 'dd' : loc === 'report' ? 'rp' : loc === 'prep' ? 'pr' : 'ts'))
+
+  const MODULES: { key: TabKey; leaf: string | null; tone: OpsTone; Ico: (p: { cls?: string }) => JSX.Element; label: string; sub: string }[] = [
+    { key: 'diemdanh', leaf: 'buoihoc', tone: 'green', Ico: IcoCheck, label: 'Điểm danh buổi học', sub: buoiSong.length ? `${buoiCanDanh.length} buổi chờ` : 'Không có ca hôm nay' },
+    { key: 'report', leaf: 'ops_report', tone: 'blue', Ico: IcoMail, label: 'Report & Báo tan', sub: opsCanLam.length ? `${opsCanLam.length} chờ gửi` : 'Không có báo cáo hôm nay' },
+    { key: 'prep', leaf: 'prep', tone: 'amber', Ico: IcoBroom, label: 'Chuẩn bị phòng', sub: prepCanLam.length ? `${prepCanLam.length} lượt chờ` : 'Không có lượt prep hôm nay' },
+    { key: 'test', leaf: 'test_dau_vao', tone: 'purple', Ico: IcoPencil, label: 'Test đầu vào', sub: caTests.length ? `${caTests.length} ca đang chạy` : 'Không có ca test hôm nay' },
+    // ⚠ "Quà" ở đây = TỦ QUÀ (đổi xu học sinh lấy quà — vận hành), KHÁC "Shopping" trong Của tôi
+    // (điểm tích luỹ CÁ NHÂN của nhân viên). Đừng nhầm 2 khái niệm khi sửa label/sub.
+    { key: 'tuqua', leaf: 'tu_qua', tone: 'orange', Ico: IcoGift, label: 'Tủ quà', sub: 'Đổi xu học sinh lấy quà' },
+    { key: 'dash', leaf: null, tone: 'pink', Ico: IcoChart, label: 'Của tôi', sub: 'Xếp hạng, gậy, điểm cá nhân' },
+  ]
+
   const nsAnh = profile.nhanSu.anh_url
   return (
     <div>
-      {/* top bar trắng gọn: avatar + tên + thoát (hero "tảng màu đặc" cũ Thùy chê 30/08 — đổi sang
-          kiểu app PH/HS: bar trắng + CARD gradient nổi bên dưới) */}
-      <div className="border-b border-slate-200/60 bg-white px-4 pb-2" style={{ paddingTop: 'max(0.5rem, env(safe-area-inset-top))' }}>
-        <div className="mx-auto flex max-w-[760px] items-center gap-2.5">
-          {nsAnh
-            ? <img src={nsAnh} alt="" className="h-8 w-8 rounded-full object-cover ring-1 ring-slate-200" />
-            : <span className="flex h-8 w-8 items-center justify-center rounded-full bg-indigo-100 text-[13px] font-bold text-indigo-600">{tenGoi.charAt(0).toUpperCase()}</span>}
-          <div className="min-w-0 flex-1 leading-tight">
-            <p className="truncate text-[13.5px] font-bold text-slate-800">{profile.nhanSu.ho_ten}</p>
-            <p className="text-[11px] text-slate-400">BK Vận hành</p>
-          </div>
+      <OpsHero tone="green" title="" right={
+        <div className="flex shrink-0 items-center gap-1.5">
           <GopY route="home" />
-          <button onClick={onThoat} className="rounded-lg px-2.5 py-1.5 text-[12px] text-slate-400 active:bg-slate-100">Thoát</button>
+          <button onClick={onThoat} className="flex h-9 w-9 items-center justify-center rounded-full bg-white/20 text-white active:bg-white/30" aria-label="Thoát"><IcoPower cls="h-[18px] w-[18px]" /></button>
         </div>
-      </div>
+      }>
+        {/* hàng avatar + chào + trạng thái (thay cho title mặc định) — đặt lại vì layout Home khác các màn khác */}
+        <div className="relative -mt-9 flex items-center gap-3">
+          {nsAnh
+            ? <img src={nsAnh} alt="" className="h-14 w-14 shrink-0 rounded-full object-cover ring-[3px] ring-white/70" />
+            : <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-white/25 text-[20px] font-extrabold text-white ring-[3px] ring-white/70">{tenGoi.charAt(0).toUpperCase()}</span>}
+          <div className="min-w-0 flex-1">
+            <p className="truncate text-[20px] font-extrabold text-white">Chào {tenGoi} 👋</p>
+            <p className="text-[12px] font-semibold text-white/80">BK Vận hành</p>
+          </div>
+        </div>
+        <p className="mt-2 inline-block max-w-full truncate rounded-full bg-white/20 px-3 py-1.5 text-[12.5px] font-semibold text-white">
+          {loading ? 'Đang tải việc hôm nay…' : tongViec === 0 ? '☕ Không còn việc — nghỉ ngơi thôi!' : conLai === 0 ? '✓ Xong hết việc hôm nay, đỉnh!' : `Còn ${conLai} việc hôm nay`}
+        </p>
+        <div className="mt-2 flex items-end justify-end">
+          <img src={OA('common/avatar_ta_girl_sign.svg')} alt="" className="h-[76px] w-[76px] object-contain drop-shadow" draggable={false} />
+        </div>
+      </OpsHero>
 
       <div className="mx-auto max-w-[760px] px-3 pb-24 pt-3">
-        {/* card chào — gradient nổi trên nền xám, deco tròn mờ (kiểu hero app PH) */}
-        <div className="relative mb-3 overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-500 via-indigo-600 to-violet-600 p-4 shadow-md shadow-indigo-200">
-          <div className="pointer-events-none absolute -right-8 -top-10 h-32 w-32 rounded-full bg-white/10" />
-          <div className="pointer-events-none absolute -bottom-14 right-16 h-28 w-28 rounded-full bg-white/[0.07]" />
-          <div className="relative flex items-center gap-3">
-            <div className="min-w-0 flex-1">
-              <p className="text-[12.5px] font-medium text-indigo-200">{thuCuaNgay(homNay)} · {ddmmVN(homNay)}</p>
-              <p className="mt-0.5 truncate text-[21px] font-bold text-white">Chào {tenGoi} 👋</p>
-              <p className="mt-1 inline-block rounded-full bg-white/15 px-2.5 py-1 text-[12.5px] font-medium text-indigo-50">
-                {loading ? 'Đang tải việc hôm nay…' : tongViec === 0 ? 'Không có việc — nghỉ ngơi thôi ☕' : conLai === 0 ? '✓ Xong hết việc hôm nay, đỉnh!' : `Còn ${conLai} việc hôm nay`}
-              </p>
-            </div>
-            {!loading && tongViec > 0 && <ProgressRing done={tongXong} tong={tongViec} />}
-          </div>
+        {/* thanh ngày — trắng, nổi lên trên hero */}
+        <div className="-mt-6 mb-3 flex items-center gap-2 rounded-2xl bg-white px-4 py-3 shadow-md">
+          <IcoCalendar cls="h-5 w-5 text-[#16A34A]" />
+          <p className="text-[14.5px] font-extrabold text-[#16224D]">{thuCuaNgay(homNay)}, {ddmmVN(homNay)}</p>
         </div>
+
+        {/* lưới 6 module */}
         {!loading && (
-          <div className="flex flex-col gap-3">
-            {coQuyen('buoihoc') && (
-              <SectionCard icon="✅" chip="bg-emerald-50" badge="bg-emerald-600" title="Điểm danh buổi học"
-                sub={buoiSong.length ? `${buoiSong.length} buổi trong ca của bạn` : ''} count={buoiCanDanh.length} onGo={() => onGo('diemdanh')}
-                empty={buoiSong.length ? '✓ Xong các buổi trong ca trực' : 'Không có ca trực điểm danh hôm nay'}>
-                {buoiCanDanh.map((b) => {
-                  const td = b.buoi && tienDo[b.buoi.id]
-                  return <RowMini key={b.lop.id} main={b.lop.ten_lop} sub={`${hhmm(b.slot.gio_bat_dau)} · ${b.slot.phong ?? '—'}`}
-                    badge={b.buoi ? (td ? `${td.daDanh}/${td.tong}` : 'đang mở') : 'chưa mở'}
-                    badgeCls={b.buoi ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'} />
-                })}
-              </SectionCard>
+          <div className="grid grid-cols-2 gap-2.5">
+            {MODULES.filter((m) => coQuyen(m.leaf)).map((m) => {
+              const c = OPS[m.tone]
+              return (
+                <button key={m.key} onClick={() => onGo(m.key)} className="rounded-2xl bg-white p-3 text-left shadow-sm active:bg-[#F7F9FF]">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-2xl" style={{ background: c.chip, color: c.solid }}><m.Ico cls="h-6 w-6" /></span>
+                  <p className="mt-2 text-[13.5px] font-extrabold leading-tight text-[#16224D]">{m.label}</p>
+                  <p className="mt-0.5 text-[11px] leading-snug text-[#6B7AAE]">{m.sub}</p>
+                </button>
+              )
+            })}
+          </div>
+        )}
+
+        {/* Công việc hôm nay — gộp 1 danh sách, chip lọc theo loại */}
+        {!loading && (
+          <div className="mt-4">
+            <div className="mb-2 flex items-center justify-between">
+              <p className="flex items-center gap-1.5 text-[15px] font-extrabold text-[#16224D]"><span className="h-2.5 w-2.5 rounded-full bg-[#16A34A]" />Công việc hôm nay</p>
+            </div>
+            {LOC_TABS.length > 1 && (
+              <div className="mb-2 flex gap-1.5 overflow-x-auto pb-0.5">
+                {LOC_TABS.map((l) => (
+                  <button key={l.key} onClick={() => setLoc(l.key)} className="shrink-0 rounded-full px-3 py-1.5 text-[12px] font-bold"
+                    style={loc === l.key ? { background: '#E7E9FF', color: '#38399B' } : { background: '#fff', color: '#9AA5C4' }}>{l.label}</button>
+                ))}
+              </div>
             )}
-            {coQuyen('ops_report') && (
-              <SectionCard icon="📨" chip="bg-blue-50" badge="bg-blue-600" title="Report & Báo tan"
-                sub="" count={opsCanLam.length} onGo={() => onGo('report')} empty="✓ Không còn report/báo tan hôm nay">
-                {opsCanLam.map((t) => {
-                  const muc = mucDeadline(t.deadline, now)
-                  const han = new Date(t.deadline).toLocaleTimeString('vi', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Ho_Chi_Minh' })
-                  return <RowMini key={t.tkbId + t.tab + t.ngay} main={`${OPS_TASK_LABEL[t.tab]} · ${t.lopTen}`} sub={muc === 'qua_han' ? '' : `hạn ${han}`}
-                    badge={muc === 'qua_han' ? '⚠ quá hạn' : muc === 'sat' ? 'sát hạn' : han}
-                    badgeCls={muc === 'qua_han' ? 'bg-rose-100 text-rose-700' : muc === 'sat' ? 'bg-orange-100 text-orange-700' : 'bg-slate-100 text-slate-500'} />
-                })}
-              </SectionCard>
-            )}
-            {coQuyen('prep') && (
-              <SectionCard icon="🧹" chip="bg-amber-50" badge="bg-amber-500" title="Chuẩn bị phòng"
-                sub="" count={prepCanLam.length} onGo={() => onGo('prep')}
-                empty={preps.length ? '✓ Xong các lượt prep hôm nay' : 'Không có lượt prep hôm nay'}>
-                {(['sang', 'chieu', 'toi'] as const).filter((ca) => prepCanLam.some((p) => p.luot === ca)).map((ca) => {
-                  const cua = prepCanLam.filter((p) => p.luot === ca)
-                  return <RowMini key={ca} main={`Ca ${ca === 'sang' ? 'Sáng' : ca === 'chieu' ? 'Chiều' : 'Tối'}`}
-                    sub={`phòng ${cua.map((p) => p.phong).join(', ')}`} badge={`${cua.length} phòng`} badgeCls="bg-amber-100 text-amber-800" />
-                })}
-              </SectionCard>
-            )}
-            {coQuyen('test_dau_vao') && (
-              <SectionCard icon="📝" chip="bg-violet-50" badge="bg-violet-600" title="Test đầu vào"
-                sub="" count={caTests.length} onGo={() => onGo('test')} empty="Không có ca test nào đang chạy">
-                {caTests.map((c) => <RowMini key={c.id} main={`Ca test ${c.mon}`} sub={`bắt đầu ${hhmm(c.gioBatDau)} · ${c.thoiLuongPhut} phút`} badge="đang chạy" badgeCls="bg-violet-100 text-violet-700" />)}
-              </SectionCard>
+            {viecHien.length === 0 ? (
+              <div className="flex items-center gap-3 rounded-2xl bg-white p-4 shadow-sm">
+                <img src={OA('common/sleeping_cat.svg')} alt="" className="h-16 w-16 shrink-0 object-contain" draggable={false} />
+                <div className="min-w-0">
+                  <p className="text-[13.5px] font-extrabold text-[#16224D]">Hôm nay chưa có công việc nào</p>
+                  <p className="text-[11.5px] leading-snug text-[#6B7AAE]">Tranh thủ nghỉ ngơi để có năng lượng cho những buổi học tiếp theo nhé!</p>
+                </div>
+              </div>
+            ) : (
+              <div className="flex flex-col gap-1.5">
+                {viecHien.map((v) => (
+                  <div key={v.key} className="flex items-center gap-2.5 rounded-2xl bg-white px-3 py-2.5 shadow-sm">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl" style={{ background: OPS[v.tone].chip, color: OPS[v.tone].solid }}><v.Ico cls="h-[18px] w-[18px]" /></span>
+                    <div className="min-w-0 flex-1">
+                      <p className="truncate text-[13.5px] font-bold text-[#16224D]">{v.main}</p>
+                      <p className="truncate text-[11px] text-[#6B7AAE]">{v.sub}</p>
+                    </div>
+                    {v.badge && <span className="shrink-0 rounded-full px-2 py-0.5 text-[10.5px] font-bold" style={v.badgeStrong ? { background: '#FFE1E7', color: '#9F2244' } : { background: OPS[v.tone].chip, color: OPS[v.tone].text }}>{v.badge}</span>}
+                  </div>
+                ))}
+              </div>
             )}
           </div>
         )}
-      </div>
-    </div>
-  )
-}
 
-function SectionCard({ icon, chip, badge, title, sub, count, empty, onGo, children }: {
-  icon: string; chip: string; badge: string; title: string; sub: string; count: number; empty: string; onGo: () => void; children?: React.ReactNode
-}) {
-  return (
-    <button onClick={onGo} className="rounded-2xl border border-slate-200/70 bg-white p-3.5 text-left shadow-sm active:bg-slate-50">
-      <div className="flex items-center gap-2.5">
-        <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-[19px] ${chip}`}>{icon}</span>
-        <div className="min-w-0 flex-1">
-          <p className="text-[14.5px] font-bold text-slate-800">{title}</p>
-          {count === 0 ? <p className="text-[12.5px] text-slate-400">{empty}</p> : sub ? <p className="text-[12.5px] text-slate-400">{sub}</p> : null}
+        {/* câu động viên cuối màn — chọn cố định theo ngày trong tháng để khỏi nhảy khi re-render */}
+        <div className="mt-3 rounded-2xl bg-[#E0FBE9] px-4 py-2.5 text-center">
+          <p className="text-[12px] font-semibold text-[#0E6B37]">🌱 {QUOTES[new Date(homNay).getDate() % QUOTES.length]}</p>
         </div>
-        {count > 0 && <span className={`rounded-full px-2.5 py-0.5 text-[12.5px] font-bold text-white ${badge}`}>{count}</span>}
-        <span className="text-slate-300">›</span>
       </div>
-      {count > 0 && <div className="mt-2.5 flex flex-col gap-1.5">{children}</div>}
-    </button>
-  )
-}
-function RowMini({ main, sub, badge, badgeCls }: { main: string; sub: string; badge: string; badgeCls: string }) {
-  return (
-    <div className="flex items-center gap-2 rounded-xl bg-slate-50 px-3 py-2">
-      <span className="text-[13px] font-semibold text-slate-800">{main}</span>
-      {sub && <span className="min-w-0 truncate text-[12px] text-slate-400">{sub}</span>}
-      <span className={`ml-auto shrink-0 rounded-full px-2 py-0.5 text-[11px] font-semibold ${badgeCls}`}>{badge}</span>
     </div>
   )
 }
+const QUOTES = ['"Không cần hoàn hảo, chỉ cần tiến bộ mỗi ngày."', '"Việc nhỏ làm tốt mỗi ngày, tạo nên khác biệt lớn."', '"Chăm chỉ hôm nay, an tâm hôm sau."', '"Mỗi ca trực chỉn chu là một viên gạch cho BK vững vàng hơn."']
