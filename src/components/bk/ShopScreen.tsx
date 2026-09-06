@@ -1,25 +1,29 @@
-// Màn SHOPPING (design 05): tile điểm + chuỗi, banner luật đổi quà, lưới card pastel (emoji minh
-// hoạ, giá xu, nút Đổi quà), đơn của tôi. Chỉ ĐIỂM ĐÃ CHỐT mới xài (shop.ts / fn_shop_doi).
-// Luật hiển thị lấy đúng luật CEO chốt (100 điểm/ngày, trượt về 0, cutoff tháng) — không chép luật
-// tam giác trong handoff (đã bị CEO bác).
+// Màn SHOPPING (ảnh gốc anhgoc_shopping + backdrop_shopping, CEO 07/09). Tranh nền có sẵn title · túi quà ·
+// mascot · bảng gỗ; code đặt lên: hàng "Điểm tích lũy · Chuỗi hoàn thành · Cố lên TA ơi!", banner "Quy tắc đổi
+// quà" (robot ôm quà), tab kệ (Tất cả · Đồ ăn · Đồ uống · Hot), lưới 3 cột card pastel (ảnh món · tên · tagline ·
+// giá xu · nút Đổi quà · nhãn Hot/Mới). Lưới CUỘN NỘI BỘ → cả màn không cuộn. Ảnh món = cắt từ design (nền
+// cùng màu card nên liền mạch); icon zip SHOPPING phần lớn cắt lệch, không dùng.
+// Luật điểm hiển thị = luật CEO chốt (100 điểm/ngày có việc đạt 100%, trượt về 0, chỉ điểm ĐÃ CHỐT tháng mới
+// xài — shop.ts / fn_shop_doi), KHÔNG chép luật "+1 điểm" trong ảnh design.
 import { useEffect, useState } from 'react'
 import { listVatPham, listDonCuaToi, doiVatPham, type ShopVatPham, type ShopDon } from '../../lib/shop'
 import { ddmmVN } from '../../lib/tuan'
-import { BKSectionCard, BKSectionTitle, BKEmptyState, BKBottomSheet, BKStatusPill, type BKTone } from './BKUI'
+import { BKBottomSheet, BKStatusPill } from './BKUI'
 
-const TONES: BKTone[] = ['yellow', 'purple', 'peach', 'mint', 'pink', 'blue']
-const TONE_CLS: Record<BKTone, { card: string; btn: string }> = {
-  yellow: { card: 'bg-[#FFF6D6] border-[#FFE59A]', btn: 'bg-[#FF8FB1]' }, purple: { card: 'bg-[#EAE2FF] border-[#D6C8FF]', btn: 'bg-[#9B7CF7]' },
-  peach: { card: 'bg-[#FFE7D6] border-[#FFD3B1]', btn: 'bg-[#FF8A3D]' }, mint: { card: 'bg-[#DDF7E8] border-[#BDF0D6]', btn: 'bg-[#31C875]' },
-  pink: { card: 'bg-[#FFE3EA] border-[#FFC3D2]', btn: 'bg-[#FF5D78]' }, blue: { card: 'bg-[#DDF4FF] border-[#BFE3FF]', btn: 'bg-[#2F73F6]' },
-}
-const ICON: [RegExp, string][] = [[/trà sữa/i, '🧋'], [/kem/i, '🍦'], [/tokbokki|tteok/i, '🍢'], [/snack|bim/i, '🍿'], [/voucher/i, '🎟️'], [/sổ|notebook/i, '📔'], [/cà phê|coffee/i, '☕']]
-const iconCho = (s: string) => ICON.find(([re]) => re.test(s))?.[1] ?? '🎁'
+const S = (n: string) => `/bk-ui/shop_${n}.png`
+// màu card theo vị trí (đo từ design) + màu nút; ảnh món cắt từ đúng card đó nên nền trùng màu
+const CARD = [
+  { bg: '#FEF3DB', btn: '#FF7FA8' }, { bg: '#F2EDFE', btn: '#A585F5' }, { bg: '#FDEBE8', btn: '#FF8A4D' },
+  { bg: '#DAFAE7', btn: '#3ECF82' }, { bg: '#FEECF7', btn: '#FF6B95' }, { bg: '#D7EFFD', btn: '#3B8BF6' },
+]
 const TT: Record<ShopDon['trang_thai'], { ten: string; st: 'cho' | 'dat' | 'nguy' }> = { cho_giao: { ten: 'Chờ giao', st: 'cho' }, da_giao: { ten: 'Đã giao', st: 'dat' }, huy: { ten: 'Đã huỷ', st: 'nguy' } }
+type Tab = 'tatca' | 'do_an' | 'do_uong' | 'hot'
+const TABS: { key: Tab; ten: string }[] = [{ key: 'tatca', ten: 'Tất cả' }, { key: 'do_an', ten: 'Đồ ăn' }, { key: 'do_uong', ten: 'Đồ uống' }, { key: 'hot', ten: 'Hot' }]
 
 export function ShopScreen({ xaiDuoc, diemThang, chuoi, diemMoiNgay, onChanged }: { xaiDuoc: number; diemThang: number; chuoi: number; diemMoiNgay: number; onChanged: () => void }) {
   const [items, setItems] = useState<ShopVatPham[] | null>(null)
   const [don, setDon] = useState<ShopDon[]>([])
+  const [tab, setTab] = useState<Tab>('tatca')
   const [busy, setBusy] = useState(false)
   const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null)
   const [xacNhan, setXacNhan] = useState<ShopVatPham | null>(null)
@@ -31,78 +35,106 @@ export function ShopScreen({ xaiDuoc, diemThang, chuoi, diemMoiNgay, onChanged }
     try { await doiVatPham(v.id); setMsg({ ok: true, text: `Đã đổi ${v.ten} — chờ giao 🎉` }); setXacNhan(null); await load(); onChanged() }
     catch (e: any) { setMsg({ ok: false, text: e?.message ?? String(e) }) } finally { setBusy(false) }
   }
+  // lọc theo tab đang mở — filter UI thuần trên list đã fetch
+  const hien = (items ?? []).filter((v) => tab === 'tatca' || (tab === 'hot' ? v.nhan === 'hot' : v.loai === tab))
 
   return (
-    <div className="flex flex-col gap-1">
-      <div className="grid grid-cols-[1fr_1fr_auto] gap-2">
-        <BKSectionCard className="!p-3">
-          <p className="text-[10.5px] font-semibold text-[#63709A]">🪙 Điểm xài được</p>
-          <p className="text-[22px] font-extrabold text-[#16224D]">{xaiDuoc.toLocaleString('vi-VN')}</p>
-          <p className="text-[10px] text-[#63709A]">+{diemThang.toLocaleString('vi-VN')} tháng này (chốt cuối tháng)</p>
-        </BKSectionCard>
-        <BKSectionCard className="!p-3">
-          <p className="text-[10.5px] font-semibold text-[#63709A]">🔥 Chuỗi hoàn thành</p>
-          <p className="text-[22px] font-extrabold text-[#FF8A3D]">{chuoi} <span className="text-[13px] text-[#16224D]">ngày</span></p>
-          <p className="text-[10px] text-[#63709A]">100% việc/ngày có việc</p>
-        </BKSectionCard>
-        <BKSectionCard tone="mint" className="!p-3 text-center"><p className="text-[12px] font-extrabold leading-tight text-[#1E8A52]">Cố lên<br />TA ơi! ♡</p></BKSectionCard>
+    <div className="flex min-h-0 flex-1 flex-col gap-1">
+      {/* hàng 3 ô: điểm xài được · chuỗi · cố lên (đúng ảnh gốc) */}
+      <div className="grid grid-cols-[1.1fr_1.2fr_auto] gap-1 rounded-[20px] bg-white/90 p-1.5">
+        <div className="flex items-center gap-1.5 rounded-2xl px-2 py-1.5" style={{ background: '#FEF4E1' }}>
+          <img src="/bk-ui/coin_star.png" alt="" className="h-9 w-9 shrink-0 object-contain" draggable={false} />
+          <div className="min-w-0 leading-tight">
+            <p className="truncate text-[9.5px] font-semibold text-[#63709A]">Điểm tích lũy</p>
+            <p className="text-[20px] font-extrabold leading-none text-[#16224D]">{xaiDuoc.toLocaleString('vi-VN')}</p>
+            <p className="truncate text-[8.5px] text-[#63709A]">+{diemThang.toLocaleString('vi-VN')} tháng này</p>
+          </div>
+        </div>
+        <div className="flex items-center gap-1.5 rounded-2xl px-2 py-1.5" style={{ background: '#FEF8FB' }}>
+          <img src={S('lua')} alt="" className="h-9 w-9 shrink-0 rounded-xl object-cover" draggable={false} />
+          <div className="min-w-0 flex-1 leading-tight">
+            <p className="truncate text-[9.5px] font-semibold text-[#63709A]">Chuỗi hoàn thành</p>
+            <p className="text-[18px] font-extrabold leading-none text-[#FF5D78]">{chuoi} <span className="text-[12px] text-[#16224D]">ngày</span></p>
+          </div>
+          <img src={S('lich')} alt="" className="h-8 w-8 shrink-0 rounded-lg object-cover" draggable={false} />
+        </div>
+        <div className="font-hand flex items-center rounded-2xl px-2 text-center text-[11px] italic leading-tight text-[#1E8A52]" style={{ background: '#E5FBF2' }}>Cố lên<br />TA ơi! ♡</div>
       </div>
 
-      <BKSectionCard tone="blue" className="flex items-center gap-3">
-        <span className="text-[40px] leading-none">🤖</span>
-        <div className="min-w-0 flex-1 text-[12px] leading-relaxed text-[#16224D]">
-          <span className="rounded-full bg-[#2F73F6] px-2.5 py-0.5 text-[11px] font-bold text-white">Quy tắc đổi quà</span>
-          <p className="mt-1">Mỗi ngày có việc mà hoàn thành 100%: <b>+{diemMoiNgay} điểm</b>, liên tiếp thì dồn lên. Trượt 1 ngày → chuỗi về 0. Cuối tháng chốt sổ — chỉ điểm đã chốt mới đổi được; sang tháng tính lại từ đầu.</p>
+      {/* banner quy tắc: robot ôm quà trái · pill tiêu đề + 3 dòng luật · câu chữ tay phải */}
+      <div className="relative flex items-center gap-1 overflow-hidden rounded-[20px] px-2 py-1.5" style={{ background: '#DDEEFE' }}>
+        <img src={S('robot_qua')} alt="" className="h-[74px] w-[90px] shrink-0 rounded-xl object-cover" draggable={false} />
+        <div className="min-w-0 flex-1 leading-tight">
+          <span className="font-bubble inline-block rounded-full bg-[#2F73F6] px-2.5 py-0.5 text-[11px] font-bold text-white">Quy tắc đổi quà</span>
+          <p className="mt-1 text-[10px] leading-[1.35] text-[#16224D]">
+            Ngày có việc xong 100%: <b>+{diemMoiNgay} điểm</b>, liên tiếp thì dồn lên. Trượt 1 ngày → chuỗi về 0. Cuối tháng chốt sổ, chỉ điểm đã chốt mới đổi được.
+          </p>
         </div>
-      </BKSectionCard>
+        <span className="font-hand shrink-0 -rotate-6 pr-1 text-right text-[10.5px] italic leading-tight text-[#2F73F6]">Làm task<br />Tích điểm<br />Đổi quà xịn! ♡</span>
+      </div>
 
-      {msg && <p className={`rounded-2xl px-3 py-2 text-[12.5px] ${msg.ok ? 'bg-[#E8F9EF] text-[#1E8A52]' : 'bg-[#FFE3EA] text-[#C0355A]'}`}>{msg.text}</p>}
+      {/* tab kệ */}
+      <div className="flex gap-1">
+        {TABS.map((t) => (
+          <button key={t.key} onClick={() => setTab(t.key)}
+            className={`flex-1 rounded-full py-1.5 text-[11.5px] font-bold transition ${tab === t.key ? 'bg-[#2F73F6] text-white shadow' : 'bg-white/90 text-[#2F73F6]'}`}>{t.ten}</button>
+        ))}
+      </div>
 
-      {items === null ? <p className="text-center text-[13px] text-[#63709A]">Đang tải…</p>
-        : !items.length ? <BKEmptyState icon="🛍️">Chưa có vật phẩm nào — BK sẽ lên kệ sớm!</BKEmptyState>
-        : (
-          <div className="grid grid-cols-2 gap-1 sm:grid-cols-3">
-            {items.map((v, i) => {
-              const t = TONE_CLS[TONES[i % TONES.length]]
-              const du = xaiDuoc >= v.gia_diem
-              return (
-                <div key={v.id} className={`relative flex flex-col rounded-3xl border p-3 text-center shadow-[0_4px_14px_rgba(22,34,77,.06)] ${t.card}`}>
-                  <span className="pointer-events-none absolute left-3 top-2 text-[12px] text-[#FFD84D]">✦</span>
-                  {v.anh_url ? <img src={v.anh_url} alt="" className="mx-auto h-20 w-20 rounded-2xl object-cover" /> : <span className="text-[56px] leading-none">{iconCho(v.ten)}</span>}
-                  <p className="mt-1.5 text-[15px] font-extrabold text-[#16224D]">{v.ten}</p>
-                  {v.mo_ta && <p className="text-[11px] leading-snug text-[#63709A]">{v.mo_ta}</p>}
-                  <p className="mt-1.5 text-[16px] font-extrabold text-[#16224D]">🪙 {v.gia_diem.toLocaleString('vi-VN')}</p>
-                  <button disabled={!du || busy} onClick={() => setXacNhan(v)}
-                    className={`mt-2 rounded-full py-2 text-[13px] font-extrabold text-white shadow disabled:opacity-40 ${t.btn}`}>
-                    {du ? 'Đổi quà' : `Thiếu ${(v.gia_diem - xaiDuoc).toLocaleString('vi-VN')}`}
-                  </button>
+      {msg && <p className={`rounded-2xl px-3 py-1.5 text-[12px] ${msg.ok ? 'bg-[#E8F9EF] text-[#1E8A52]' : 'bg-[#FFE3EA] text-[#C0355A]'}`}>{msg.text}</p>}
+
+      {/* kệ hàng — cuộn nội bộ */}
+      <div className="min-h-0 flex-1 overflow-y-auto">
+        {items === null ? <p className="py-4 text-center text-[13px] text-[#63709A]">Đang tải…</p>
+          : !hien.length ? <p className="rounded-2xl bg-white/80 py-4 text-center text-[12.5px] text-[#63709A]">Kệ này chưa có món nào.</p>
+          : (
+            <div className="grid grid-cols-3 gap-1">
+              {hien.map((v) => {
+                const c = CARD[(v.thu_tu - 1 + CARD.length) % CARD.length]
+                const du = xaiDuoc >= v.gia_diem
+                return (
+                  <div key={v.id} className="relative flex flex-col rounded-[18px] p-1.5 text-center" style={{ background: c.bg }}>
+                    <span className="pointer-events-none absolute left-2 top-1 text-[11px] text-[#FFD84D]">✦</span>
+                    {v.nhan === 'hot' && <span className="absolute right-1.5 top-1.5 rounded-full bg-[#FF5D78] px-1.5 py-px text-[8.5px] font-bold text-white">Hot</span>}
+                    {v.nhan === 'moi' && <span className="absolute right-1.5 top-1.5 rounded-full bg-[#FF8FB1] px-1.5 py-px text-[8.5px] font-bold text-white">Mới</span>}
+                    {v.anh_url
+                      ? <img src={v.anh_url} alt="" className="mx-auto mt-2 h-[68px] w-[72px] rounded-xl object-cover" draggable={false} />
+                      : <img src="/bk-ui/shopping_bag_gift.png" alt="" className="mx-auto mt-2 h-[68px] w-[72px] object-contain" draggable={false} />}
+                    <p className="mt-1 truncate text-[12px] font-extrabold leading-tight text-[#16224D]">{v.ten}</p>
+                    <p className="font-hand line-clamp-2 min-h-[22px] text-[9px] italic leading-[1.2] text-[#63709A]">{v.mo_ta}</p>
+                    <p className="mt-0.5 flex items-center justify-center gap-0.5 text-[13px] font-extrabold text-[#16224D]">
+                      <img src="/bk-ui/coin_star.png" alt="" className="h-3.5 w-3.5" draggable={false} />{v.gia_diem.toLocaleString('vi-VN')}
+                    </p>
+                    <button disabled={!du || busy} onClick={() => setXacNhan(v)}
+                      className="mt-1 rounded-full py-1 text-[11px] font-extrabold text-white shadow-sm disabled:opacity-45" style={{ background: c.btn }}>
+                      {du ? 'Đổi quà' : `Thiếu ${(v.gia_diem - xaiDuoc).toLocaleString('vi-VN')}`}
+                    </button>
+                  </div>
+                )
+              })}
+            </div>
+          )}
+        {don.length > 0 && (
+          <div className="mt-1 rounded-[18px] bg-white/90 px-2.5 py-2">
+            <p className="font-bubble text-[12.5px] font-extrabold text-[#16224D]">🧾 Đơn của tôi</p>
+            <div className="flex flex-col divide-y divide-[#EEF3FF]">
+              {don.map((d) => (
+                <div key={d.id} className="flex items-center gap-2 py-1.5">
+                  <span className="min-w-0 flex-1 truncate text-[12px] font-bold text-[#16224D]">{d.ten_vat_pham}</span>
+                  <span className="text-[10.5px] text-[#63709A]">🪙{d.gia_diem} · {ddmmVN(d.created_at.slice(0, 10))}</span>
+                  <BKStatusPill status={TT[d.trang_thai].st}>{TT[d.trang_thai].ten}</BKStatusPill>
                 </div>
-              )
-            })}
+              ))}
+            </div>
           </div>
         )}
-
-      {don.length > 0 && (
-        <BKSectionCard>
-          <BKSectionTitle>🧾 Đơn của tôi</BKSectionTitle>
-          <div className="flex flex-col divide-y divide-[#EEF3FF]">
-            {don.map((d) => (
-              <div key={d.id} className="flex items-center gap-2 py-2">
-                <span className="text-[22px]">{iconCho(d.ten_vat_pham)}</span>
-                <span className="min-w-0 flex-1 truncate text-[13px] font-bold text-[#16224D]">{d.ten_vat_pham}</span>
-                <span className="text-[11px] text-[#63709A]">🪙{d.gia_diem} · {ddmmVN(d.created_at.slice(0, 10))}</span>
-                <BKStatusPill status={TT[d.trang_thai].st}>{TT[d.trang_thai].ten}</BKStatusPill>
-              </div>
-            ))}
-          </div>
-        </BKSectionCard>
-      )}
+      </div>
 
       <BKBottomSheet open={!!xacNhan} onClose={() => setXacNhan(null)}>
         {xacNhan && (
           <div className="text-center">
-            <span className="text-[64px] leading-none">{iconCho(xacNhan.ten)}</span>
-            <p className="mt-2 text-[18px] font-extrabold text-[#16224D]">Đổi {xacNhan.ten}?</p>
+            {xacNhan.anh_url && <img src={xacNhan.anh_url} alt="" className="mx-auto h-24 w-24 rounded-2xl object-cover" draggable={false} />}
+            <p className="font-bubble mt-2 text-[18px] font-extrabold text-[#16224D]">Đổi {xacNhan.ten}?</p>
             <p className="mt-1 text-[13px] text-[#63709A]">Trừ 🪙 {xacNhan.gia_diem.toLocaleString('vi-VN')} · còn lại {(xaiDuoc - xacNhan.gia_diem).toLocaleString('vi-VN')}. Đơn sẽ ở trạng thái "chờ giao".</p>
             <div className="mt-4 flex gap-2">
               <button onClick={() => setXacNhan(null)} className="flex-1 rounded-full border border-[#DDE4F3] py-2.5 text-[13.5px] font-bold text-[#63709A]">Thôi</button>

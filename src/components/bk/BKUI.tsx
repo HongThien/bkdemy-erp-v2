@@ -35,6 +35,9 @@ export const BK_TRANH = {
   // mảnh đáy y1385–1672 (chỉ mây) dính đáy; bảng "Cơ hội trúng thưởng" (y1048–1385) là mảnh RIÊNG do MayManScreen
   // đặt trong luồng ngay dưới nút Quay. canh=0: MayManScreen tự xếp theo cqw (vòng quay đè lên công viên).
   mayman: { url: '/bk-ui/bg_mayman.jpg', rong: 941, canh: 0, troi: ['#DDEFFC', '#DDEFFC'], day: '/bk-ui/bg_mayman_day.jpg', hoSo: false, nutVe: 11 },
+  // Shopping: cảnh trên y0–520 (title Shopping · túi quà · mascot · bảng gỗ), trời phẳng phía dưới; mảnh trên y0–1040
+  // dính đỉnh, mây đáy y1300–1672 dính đáy. Không thẻ hồ sơ — ShopScreen tự vẽ hàng "Điểm tích lũy · Chuỗi · Cố lên".
+  shop: { url: '/bk-ui/bg_shop.jpg', rong: 941, canh: 530, troi: ['#A6DCFD', '#9AD8FD'], day: '/bk-ui/bg_shop_day.jpg', hoSo: false, nutVe: 12 },
 } as const satisfies Record<string, BKTranh>
 export function bkTranhStyle(t: BKTranh) {
   const pct = (px: number) => `${((px / t.rong) * 100).toFixed(2)}cqw`

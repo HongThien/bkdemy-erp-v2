@@ -68,7 +68,7 @@ export default function DashTa({ profile }: { profile: MyProfile }) {
   const goc = box === null
   // Màn có TRANH CEO vẽ sẵn (Của tôi · Xếp hạng): spacer giữ chỗ phần cảnh + nút ‹ đặt lên tranh. Màn khác:
   // header HTML trên nền trời gradient (chờ CEO vẽ thêm tranh).
-  const tranh: BKTranh | null = goc ? BK_TRANH.cuatoi : box === 'xephang' ? BK_TRANH.xephang : box === 'gay' ? BK_TRANH.gay : box === 'maymai' ? BK_TRANH.mayman : null
+  const tranh: BKTranh | null = goc ? BK_TRANH.cuatoi : box === 'xephang' ? BK_TRANH.xephang : box === 'gay' ? BK_TRANH.gay : box === 'maymai' ? BK_TRANH.mayman : box === 'shop' ? BK_TRANH.shop : null
   const ts = tranh ? bkTranhStyle(tranh) : null
 
   return (
@@ -93,7 +93,7 @@ export default function DashTa({ profile }: { profile: MyProfile }) {
 
         {/* QUY TẮC KHOẢNG CÁCH (CEO 07/09, áp mọi màn khu Của tôi): mọi khe = 4px đều nhau — card↔card,
             card↔mép màn, hồ sơ↔lưới↔banner — để không lộ nền sau; màn con dùng gap-1 tương ứng */}
-        <div className="flex flex-1 flex-col px-1 pb-1">
+        <div className="flex min-h-0 flex-1 flex-col px-1 pb-1">
           {/* KHÔNG có thanh chọn tháng — CEO 07/09: "màn Của tôi không cần thời gian", đặt giữa 2 card làm bố cục rời
               rạc; mọi số là THÁNG HIỆN TẠI. Xem tháng cũ → màn Hôm nay. */}
           {err && <p className="mt-2 rounded-2xl bg-[#FFE3EA] px-3 py-2 text-[12.5px] text-[#C0355A]">⚠ {err}</p>}

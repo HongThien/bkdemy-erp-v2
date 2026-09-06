@@ -4,7 +4,8 @@
 // đã giao làm ở ERP sau. Không lưu số dư — suy từ chốt tháng − đơn.
 import { supabase } from './supabase'
 
-export type ShopVatPham = { id: string; ten: string; mo_ta: string | null; anh_url: string | null; gia_diem: number; active: boolean; thu_tu: number }
+// loai = tab kệ (do_an · do_uong · khac) · nhan = nhãn góc card (hot · moi) — 07/09
+export type ShopVatPham = { id: string; ten: string; mo_ta: string | null; anh_url: string | null; gia_diem: number; active: boolean; thu_tu: number; loai: 'do_an' | 'do_uong' | 'khac'; nhan: 'hot' | 'moi' | null }
 export type ShopDon = {
   id: string; nhan_su_id: string; vat_pham_id: string | null; ten_vat_pham: string; gia_diem: number
   trang_thai: 'cho_giao' | 'da_giao' | 'huy'; created_at: string; giao_at: string | null; ghi_chu: string | null

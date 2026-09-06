@@ -2364,6 +2364,8 @@
 | thu_tu | integer |  | 100 |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
+| loai | text |  | 'khac'::text |  | `do_an` · `do_uong` · `khac` |
+| nhan | text | Y |  |  | `hot` · `moi` |
 
 ## ta_dinh_muc
 
