@@ -38,7 +38,7 @@ const TIEU_DE: Record<Box, { title: string; tagline: string; mascot: string; bub
 const CARDS: { key: Box; title: string; sub: string; tagline: string; image: string; gradient: [string, string]; accent: string; badge?: string }[] = [
   { key: 'xephang', title: 'Xếp hạng', sub: 'Xem thứ hạng cá nhân', tagline: 'Higher Together!', image: A('ranking_trophy'), gradient: ['#FFF7D8', '#FFF0B9'], accent: '#F8B83E' },
   { key: 'gay', title: 'Gậy', sub: 'Lỗi bị nhắc & lý do', tagline: 'Học từ sai lầm để tốt hơn! ♡', image: A('stick_gavel_warning'), gradient: ['#FFE9F1', '#FFD8E7'], accent: '#F06292' },
-  { key: 'maymai', title: 'May mắn', sub: '1 lượt quay mỗi ngày', tagline: 'Chút may mắn mỗi ngày! ♡', image: A('lucky_wheel_gift'), gradient: ['#EEE5FF', '#E5D6FF'], accent: '#8B6BEF', badge: 'sắp mở' },
+  { key: 'maymai', title: 'May mắn', sub: '1 lượt quay mỗi ngày', tagline: 'Chút may mắn mỗi ngày! ♡', image: A('lucky_wheel_gift'), gradient: ['#EEE5FF', '#E5D6FF'], accent: '#8B6BEF' },   // backend quay đã mở 07/09
   { key: 'tientrinh', title: 'Tiến trình', sub: 'Theo dõi KPI theo lớp', tagline: 'Tiến bộ mỗi ngày cùng BK!', image: A('progress_chart'), gradient: ['#DDF5FF', '#D2EEFF'], accent: '#56B6F2' },
   { key: 'shop', title: 'Shopping', sub: 'Đổi quà bằng điểm', tagline: 'Làm nhiều · Nhận quà xịn! ♡', image: A('shopping_bag_gift'), gradient: ['#DFF8E9', '#CFF4DF'], accent: '#4DC47A' },
   { key: 'huongdan', title: 'Hướng dẫn', sub: 'Quy trình & tài liệu BK', tagline: 'Hiểu rõ hơn · Làm tốt hơn! ♡', image: A('guide_book_bulb'), gradient: ['#FFEAD9', '#FFDDBF'], accent: '#FF914D' },

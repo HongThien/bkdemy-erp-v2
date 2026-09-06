@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-194 bảng · 11 view · 0 enum · 39 trigger · 259 function
+196 bảng · 11 view · 0 enum · 39 trigger · 261 function
 
 ## _app_secrets
 
@@ -2012,6 +2012,26 @@
 |---|---|---|---|---|---|
 | min_exp | integer |  |  | PK |  |
 | xu | integer |  |  |  |  |
+
+## may_man_cau_hinh
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma | text |  |  | PK |  |
+| gia_tri | numeric |  |  |  |  |
+| mo_ta | text | Y |  |  |  |
+
+## may_man_luot
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| nhan_su_id | uuid |  |  | FK→nhan_su.id |  |
+| ngay | date |  |  |  |  |
+| tien | integer |  |  |  |  |
+| rnd | numeric |  |  |  |  |
+| vuot_tran | boolean |  | false |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
 
 ## muc_hoc_duoi
 
@@ -4165,6 +4185,8 @@ UNION ALL
 - `fn_mastery_cells_hinh(p_hs uuid[], p_include_btvn boolean DEFAULT false, p_since timestamp with time zone DEFAULT NULL::timestamp with time zone)` → TABLE(hoc_sinh_id uuid, hinh_baitoan_id uuid, score numeric, n bigint, muc text, tin text)
 - `fn_mastery_rollup(p_hs uuid[], p_include_btvn boolean DEFAULT false, p_since timestamp with time zone DEFAULT NULL::timestamp with time zone)` → TABLE(hoc_sinh_id uuid, dat bigint, can_luyen bigint, yeu bigint, tin_thap bigint)
 - `fn_matrix_lop(p_lop uuid, p_phase text, p_ym text DEFAULT NULL::text)` → TABLE(hoc_sinh_id uuid, buoi_hoc_id uuid, pct integer, status text)
+- `fn_may_man_cua_toi()` → jsonb
+- `fn_may_man_quay()` → jsonb
 - `fn_mo_lai_phase(p_buoi_id uuid, p_phase text)` → void
 - `fn_nguoi_truc_ca(p_thu smallint, p_ca text, p_ngay date)` → uuid
 - `fn_ops_dashboard(p_ym text)` → jsonb
@@ -4339,6 +4361,7 @@ UNION ALL
 | khtn_cum_tien_de | khtn_cum_tien_de_check | `CHECK ((ma_cum <> tien_de_ma_cum))` |
 | khtn_dang_tien_de | khtn_dang_tien_de_check | `CHECK ((ma_dang <> tien_de_ma_dang))` |
 | ky_thi | ky_thi_he_so_check | `CHECK ((he_so = ANY (ARRAY[1, 2])))` |
+| may_man_luot | may_man_luot_tien_check | `CHECK ((tien >= 0))` |
 | muc_nang_luc | muc_nang_luc_muc_check | `CHECK (((muc >= 1) AND (muc <= 3)))` |
 | phan_cong_ca | phan_cong_ca_thu_check | `CHECK (((thu >= 2) AND (thu <= 8)))` |
 | qlht_doi_qua | qlht_doi_qua_so_luong_check | `CHECK ((so_luong > 0))` |

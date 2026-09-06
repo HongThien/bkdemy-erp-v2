@@ -10,21 +10,14 @@ import { useEffect, useState, type ReactNode } from 'react'
 import { taTienTrinh, type TaTienTrinh, type TienTrinhLop } from '../../lib/tatientrinh'
 import { BKProgressRing, BKEmptyState, BK } from '../../components/bk/BKUI'
 
+// Icon = bộ CEO up 07/09 (tientrinh1–10.png, 9.png — nền trong, 1254px) tách thành pr_*.png; không còn icon cắt tay/SVG.
 const P = (n: string) => `/bk-ui/pr_${n}.png`
-// Icon nhỏ không có trong kit (trợ giảng, tai nghe, sao, cảnh báo) = SVG vector sắc nét — ảnh cắt tay từ design bị
-// lộ nền/vỡ nét (CEO 07/09 "icon cắt ra bị lỗi xấu"), không dùng nữa.
-const SVG = {
-  nguoi: <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="#2F73F6"><circle cx="9" cy="8" r="3.5" /><circle cx="17" cy="9" r="2.8" /><path d="M2 19c0-3.5 3-6 7-6s7 2.5 7 6v1H2z" /><path d="M15.5 13.6c3 .3 5.5 2.4 5.5 5.4v1h-4v-1c0-2-.6-3.9-1.5-5.4z" /></svg>,
-  taiNghe: <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="#2F73F6" strokeWidth="2.4" strokeLinecap="round"><path d="M4 14v-2a8 8 0 0 1 16 0v2" /><rect x="3" y="13" width="4.5" height="7" rx="2" fill="#2F73F6" /><rect x="16.5" y="13" width="4.5" height="7" rx="2" fill="#2F73F6" /></svg>,
-  sao: (cls = 'h-3 w-3') => <svg viewBox="0 0 24 24" className={cls} fill="#FFC531" stroke="#E0A200" strokeWidth="1"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.4l-5.9 3.2 1.3-6.6L2.5 9.4l6.6-.8z" /></svg>,
-  canhBaoCam: (cls = 'h-3 w-3') => <svg viewBox="0 0 24 24" className={cls}><circle cx="12" cy="12" r="10.5" fill="#FF9F2E" /><path d="M12 6.5v7" stroke="#fff" strokeWidth="2.8" strokeLinecap="round" /><circle cx="12" cy="17" r="1.5" fill="#fff" /></svg>,
-  canhBaoDo: (cls = 'h-3 w-3') => <svg viewBox="0 0 24 24" className={cls}><path d="M12 2.5L23 21H1z" fill="#FF4D6D" stroke="#fff" strokeWidth="1.2" strokeLinejoin="round" /><path d="M12 9v5.5" stroke="#fff" strokeWidth="2.6" strokeLinecap="round" /><circle cx="12" cy="17.6" r="1.4" fill="#fff" /></svg>,
-}
+const Ico = ({ n, cls = 'h-3.5 w-3.5' }: { n: string; cls?: string }) => <img src={P(n)} alt="" className={`${cls} object-contain`} draggable={false} />
 type Key = 'buoi' | 'btvn' | 'et'
 const CHI_SO: { key: Key; label: string; icon: ReactNode }[] = [
-  { key: 'buoi', label: 'Trợ giảng buổi', icon: SVG.nguoi },
-  { key: 'btvn', label: 'Chấm BTVN', icon: <img src={P('btvn')} alt="" className="h-3.5 w-3.5 object-contain" draggable={false} /> },
-  { key: 'et', label: 'Chấm ET', icon: <img src={P('et')} alt="" className="h-3.5 w-3.5 object-contain" draggable={false} /> },
+  { key: 'buoi', label: 'Trợ giảng buổi', icon: <Ico n="nguoi" /> },
+  { key: 'btvn', label: 'Chấm BTVN', icon: <Ico n="btvn" /> },
+  { key: 'et', label: 'Chấm ET', icon: <Ico n="et" /> },
 ]
 const thuc = (l: TienTrinhLop, k: Key) => l[`${k}_thuc`]
 const chuan = (l: TienTrinhLop, k: Key) => l[`${k}_chuan`]
@@ -39,10 +32,10 @@ function trangThai(thieu: number): { st: St; text: string; sub: string } {
   if (thieu <= 1) return { st: 'thieu', text: 'Thiếu 1 lần', sub: 'Cố lên! Bạn sắp đạt chuẩn rồi!' }
   return { st: 'nguy', text: 'Cần bổ sung', sub: `Còn thiếu ${thieu} — vài tiêu chí chưa đạt` }
 }
-const ST_CLS: Record<St, { pill: string; text: string; icon: (cls?: string) => ReactNode; ring: string }> = {
-  dat: { pill: 'bg-[#E4F8EC]', text: 'text-[#1E8A52]', icon: SVG.sao, ring: BK.success },
-  thieu: { pill: 'bg-[#FFF1D6]', text: 'text-[#C27A00]', icon: SVG.canhBaoCam, ring: BK.warning },
-  nguy: { pill: 'bg-[#FFE3EA]', text: 'text-[#C0355A]', icon: SVG.canhBaoDo, ring: BK.danger },
+const ST_CLS: Record<St, { pill: string; text: string; icon: (cls?: string) => ReactNode; chevron: string; ring: string }> = {
+  dat: { pill: 'bg-[#E4F8EC]', text: 'text-[#1E8A52]', icon: (cls) => <Ico n="star" cls={cls} />, chevron: 'chevron', ring: BK.success },
+  thieu: { pill: 'bg-[#FFF1D6]', text: 'text-[#C27A00]', icon: (cls) => <Ico n="warn_cam" cls={cls} />, chevron: 'chevron_cam', ring: BK.warning },
+  nguy: { pill: 'bg-[#FFE3EA]', text: 'text-[#C0355A]', icon: (cls) => <Ico n="warn_do" cls={cls} />, chevron: 'chevron_hong', ring: BK.danger },
 }
 
 // tile KPI trắng như design: icon + nhãn · vòng % + thực/chuẩn · pill trạng thái
@@ -102,7 +95,7 @@ export default function TienTrinhTa({ ym }: { ym: string }) {
             <p className="font-hand mt-1 text-[10.5px] italic leading-snug text-[#63709A]">Tiếp tục duy trì để đạt đầy đủ chuẩn nhé! ♡</p>
           </div>
           <img src={P('chart')} alt="" className="h-12 w-11 shrink-0 object-contain" draggable={false} />
-          <img src="/bk-ui/mascot_cheer.png" alt="" className="h-14 w-14 shrink-0 object-contain" draggable={false} />
+          <img src={P('mascot_note')} alt="" className="h-[68px] w-[54px] shrink-0 object-contain" draggable={false} />
         </div>
         <p className="mt-1 flex items-center gap-1 rounded-xl bg-white/70 px-2 py-1 text-[9.5px] text-[#63709A]"><img src={P('info')} alt="" className="h-3.5 w-3.5" draggable={false} />Tiến trình dùng để đánh giá KPI hàng tháng.</p>
       </div>
@@ -134,7 +127,7 @@ export default function TienTrinhTa({ ym }: { ym: string }) {
                       <p className={`text-[11px] font-extrabold ${sc.text}`}>{tt.text}</p>
                       <p className="text-[7.5px] text-[#63709A]">{tt.sub}</p>
                     </div>
-                    <img src={P('chevron')} alt="" className="h-3.5 w-3.5 object-contain opacity-70" draggable={false} />
+                    <Ico n={sc.chevron} cls="h-3.5 w-3" />
                   </div>
                 </div>
                 <div className="grid grid-cols-3 gap-1">
@@ -145,15 +138,13 @@ export default function TienTrinhTa({ ym }: { ym: string }) {
           })}
         <div className="rounded-[20px] p-2" style={{ background: '#E6DDFF' }}>
           <div className="mb-1.5 flex items-center gap-2">
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-white/90">
-              <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="#8B6BEF" strokeWidth="2.4" strokeLinecap="round"><path d="M4 14v-2a8 8 0 0 1 16 0v2" /><rect x="3" y="13" width="4.5" height="7" rx="2" fill="#8B6BEF" /><rect x="16.5" y="13" width="4.5" height="7" rx="2" fill="#8B6BEF" /></svg>
-            </span>
+            <Ico n="tai_nghe" cls="h-10 w-11 shrink-0" />
             <div className="min-w-0 flex-1 leading-tight">
               <p className="font-bubble text-[15px] font-extrabold text-[#16224D]">Bổ trợ</p>
               <p className="text-[10px] text-[#63709A]">Theo bạn (không theo lớp) · {d.botro.so_ca} ca đã đứng · ca không ghi giờ tính 1h</p>
             </div>
           </div>
-          <div className="grid grid-cols-3 gap-1"><Tile icon={SVG.taiNghe} label="Giờ bổ trợ" th={d.botro.thuc_gio} ch={d.botro.chuan_gio} unit="h" /></div>
+          <div className="grid grid-cols-3 gap-1"><Tile icon={<Ico n="tai_nghe" />} label="Giờ bổ trợ" th={d.botro.thuc_gio} ch={d.botro.chuan_gio} unit="h" /></div>
         </div>
       </div>
     </div>
