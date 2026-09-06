@@ -1049,6 +1049,7 @@
 | ly_do | text | Y |  |  |  |
 | created_by | uuid | Y |  | FK→nhan_su.id |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
+| thu_bat_dau | smallint |  | 0 | PK |  |
 
 ## han_nop_ngoai_le_log
 
@@ -1062,6 +1063,7 @@
 | so_phut_cu | integer | Y |  |  |  |
 | so_phut_moi | integer | Y |  |  |  |
 | ly_do | text | Y |  |  |  |
+| thu_bat_dau | smallint | Y |  |  |  |
 
 ## he_thong_bi_mat
 
@@ -4215,6 +4217,7 @@ UNION ALL
 | gay_ledger | gay_ledger_go_co_hoat_dong | `CHECK (((loai <> 'go'::text) OR (hoat_dong_id IS NOT NULL)))` |
 | gay_ledger | gay_ledger_so_gay_check | `CHECK ((so_gay <> 0))` |
 | gay_loi | gay_loi_so_gay_mac_dinh_check | `CHECK ((so_gay_mac_dinh > 0))` |
+| han_nop_ngoai_le | han_nop_ngoai_le_thu_check | `CHECK ((thu_bat_dau = ANY (ARRAY[0, 2, 3, 4, 5, 6, 7, 8])))` |
 | hgt_cum_tien_de | hgt_cum_tien_de_check | `CHECK ((ma_cum <> tien_de_ma_cum))` |
 | hgt_dang_tien_de | hgt_dang_tien_de_check | `CHECK ((ma_dang <> tien_de_ma_dang))` |
 | hinh_mo_hinh | hinh_mo_hinh_cap_mo_hinh_check | `CHECK (((cap_mo_hinh >= 1) AND (cap_mo_hinh <= 4)))` |
