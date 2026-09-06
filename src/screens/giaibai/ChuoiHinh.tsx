@@ -1,15 +1,15 @@
-// CHUỖI Hình = 1 BÀI nhiều Ý a), b), c)… (Thùy 06/09 tối: "mỗi câu trong chuỗi sẽ thành ý a,b,c,d của một bài — làm
-// giống builder ấy"). Tối giản theo đúng yêu cầu: CHỈ hiện mã bài toán + đề + ý a/b/c — KHÔNG hiện mô hình/cấp/trạng
-// thái/biến thể (bớt thông tin bên lề, tập trung vào bài toán).
-//   · ChuoiDoc  — đọc cả chuỗi (Kho bài · Bài của tôi khi không soạn · Duyệt · panel đề trong full màn).
-//   · ChuoiSoan — builder: TAB BAR chuyển qua lại giữa các ý (giống thanh tab của tool soạn công thức), mỗi ý chưa
-//                 chính thức có 1 ô nhập riêng (MathTextarea, ⤢ mở full màn với đề = cả chuỗi, ý đang soạn nổi bật);
-//                 ý đã duyệt hiện lại lời giải, không có ô. Nhãn ý = a)/b)/c)… theo VỊ TRÍ trong chuỗi (tiền đề
-//                 trước, đích cuối) — [[chuY]] dùng chung với gopYNhap (lib/giaibai.ts) để việc ghép khi vào kho
-//                 luôn khớp nhãn hiện trên màn hình. Giá trị theo `YNhap[]` (khoá = id node, không bám vị trí).
-import { useEffect, useRef, useState, type ReactNode } from 'react'
+// CHUỖI Hình = 1 BÀI nhiều Ý a), b), c)… (Thùy 06/09 tối: "mỗi câu trong chuỗi sẽ thành ý a,b,c,d của một bài —
+// làm giống builder ấy"). Tối giản: CHỈ mã bài toán + đề + ý a/b/c (không mô hình/cấp/trạng thái).
+// Đề bài GHÉP CHUNG 1 CARD (không có card riêng cho từng ý) — Thùy 06/09 tối (2): "ghép chung tất cả lại thành 1
+// card chung đi, ko cần card riêng. Hình mặc định lấy ý cuối để hiển thị." → CumDe/ChuoiDoc dùng ẢNH CỦA Ý CUỐI
+// đang hiện, không lặp ảnh từng ý. CHỈ RIÊNG lúc GIẢI (ChuoiSoan) mới cần hiện LŨY TIẾN theo builder: click ý a
+// → đề gồm ý a; click ý b → đề gồm ý a+ý b + ảnh của ý b — vì soạn xong mỗi ý ghép ngay được vào kho.
+//   · ChuoiDoc  — đọc cả chuỗi, 1 card, ảnh = ảnh ý CUỐI. Dùng ở Kho bài · Bài của tôi (không đang soạn) · Duyệt.
+//   · ChuoiSoan — builder: tab a)/b)/c)… đề LŨY TIẾN 0..ý đang chọn, RichMathBox cho ý đang chọn (KHÔNG hiện LaTeX
+//                 thô — gõ liền chữ + công thức như MathType, chỉ hiện công thức đã dựng, sửa được bằng click).
+import { useEffect, useRef, useState } from 'react'
 import { MathText } from '../kho/ui'
-import { MathTextarea } from '../../components/math/MathTextarea'
+import { RichMathBox } from '../../components/math/RichMathBox'
 import { chuY, laHinh, layChuoi, yCanNhap, type ChuoiHinh as ChuoiHinhT, type ChuoiY, type GiaiBaiNhanh, type YNhap } from '../../lib/giaibai'
 
 export const chuoiKey = (nhanh: GiaiBaiNhanh, key: string) => `${nhanh}:${key}`
@@ -54,33 +54,48 @@ function YDe({ y }: { y: ChuoiY }) {
   )
 }
 
-/** Đọc cả chuỗi. `noiBat` = id ý đang soạn (viền đậm). */
-export function ChuoiDoc({ chuoi, noiBat, compact }: { chuoi: ChuoiHinhT; noiBat?: string; compact?: boolean }) {
-  const [mo, setMo] = useState<Set<string>>(new Set())
+/** Đề gộp 1 khối — ý 0..upTo (bao gồm); ảnh = ảnh của ý upTo (ý cuối ĐANG hiện), không lặp ảnh từng ý. */
+function CumDe({ chuoi, upTo, compact }: { chuoi: ChuoiHinhT; upTo: number; compact?: boolean }) {
+  const anh = chuoi.y[upTo]?.anh
   return (
-    <div className="space-y-2">
-      {chuoi.y.map((y, i) => (
-        <div key={y.id} className={`rounded-lg border px-3 py-2 ${noiBat === y.id ? 'border-indigo-400 ring-2 ring-indigo-200' : 'border-slate-200'}`}>
-          <div className="mb-1"><NhanY i={i} y={y} /></div>
-          <div className={y.anh && !compact ? 'grid grid-cols-[1fr_auto] gap-3' : ''}>
+    <div className={anh && !compact ? 'grid grid-cols-[1fr_auto] gap-3' : ''}>
+      <div className="space-y-2">
+        {chuoi.y.slice(0, upTo + 1).map((y, i) => (
+          <div key={y.id}>
+            <div className="mb-0.5"><NhanY i={i} y={y} /></div>
             <YDe y={y} />
-            {y.anh && !compact && <img src={y.anh} alt="hình" className="max-h-40 max-w-[220px] self-start rounded-lg border border-slate-200 bg-white" />}
           </div>
-          {(y.loi_giai || y.anh_loi_giai) && (
-            <div className="mt-1.5">
+        ))}
+      </div>
+      {anh && !compact && <img src={anh} alt="hình" className="max-h-56 max-w-[260px] self-start rounded-lg border border-slate-200 bg-white" />}
+    </div>
+  )
+}
+
+/** Đọc cả chuỗi — 1 CARD CHUNG (không card riêng từng ý), ảnh mặc định = ảnh ý CUỐI. */
+export function ChuoiDoc({ chuoi, compact }: { chuoi: ChuoiHinhT; compact?: boolean }) {
+  const [mo, setMo] = useState<Set<string>>(new Set())
+  const coLoiGiai = chuoi.y.some((y) => y.loi_giai || y.anh_loi_giai)
+  return (
+    <div className="rounded-lg border border-slate-200 bg-white px-3 py-3">
+      <CumDe chuoi={chuoi} upTo={chuoi.y.length - 1} compact={compact} />
+      {coLoiGiai && (
+        <div className="mt-2 space-y-1 border-t border-slate-100 pt-2">
+          {chuoi.y.map((y, i) => (y.loi_giai || y.anh_loi_giai) ? (
+            <div key={y.id}>
               <button onClick={() => setMo((s) => { const n = new Set(s); n.has(y.id) ? n.delete(y.id) : n.add(y.id); return n })} className="text-[12px] font-medium text-indigo-600 hover:text-indigo-800">
-                {mo.has(y.id) ? '▾ Ẩn lời giải' : '▸ Xem lời giải hiện có'}
+                {mo.has(y.id) ? `▾ Ẩn lời giải ${chuY(i)}` : `▸ Xem lời giải ${chuY(i)} hiện có`}
               </button>
               {mo.has(y.id) && (
-                <div className="mt-1 rounded-md border border-dashed border-slate-200 bg-white px-3 py-2 text-[13px] leading-relaxed text-slate-700">
+                <div className="mt-1 rounded-md border border-dashed border-slate-200 bg-slate-50 px-3 py-2 text-[13px] leading-relaxed text-slate-700">
                   {y.loi_giai && <MathText>{y.loi_giai}</MathText>}
                   {y.anh_loi_giai && <img src={y.anh_loi_giai} alt="ảnh lời giải" className="mt-1 max-h-48 max-w-full rounded-lg border border-slate-200" />}
                 </div>
               )}
             </div>
-          )}
+          ) : null)}
         </div>
-      ))}
+      )}
     </div>
   )
 }
@@ -122,10 +137,11 @@ export function YNhapDoc({ chuoi, yNhap }: { chuoi: ChuoiHinhT; yNhap: YNhap[] }
   )
 }
 
-/** Soạn theo BUILDER: tab bar a)/b)/c)… chuyển giữa các ý, mỗi lần hiện đúng 1 ý (đề + ô nhập hoặc lời giải đã có). */
-export function ChuoiSoan({ chuoi, values, onChange, tieuDe, deBaiChung }: {
+/** Soạn theo BUILDER: tab a)/b)/c)… — đề LŨY TIẾN (0..ý đang chọn), ảnh = ảnh ý đang chọn. Ô nhập của ý đang chọn
+ *  dùng RichMathBox (không hiện LaTeX thô). `key={y.id}` khi dựng ô — RichMath không tự đồng bộ prop `value` sau
+ *  mount, đổi tab phải remount để nạp đúng nội dung ý mới (đã kiểm trong test tay). */
+export function ChuoiSoan({ chuoi, values, onChange, tieuDe }: {
   chuoi: ChuoiHinhT; values: YNhap[]; onChange: (v: YNhap[]) => void; tieuDe: string
-  deBaiChung?: (noiBat: string) => ReactNode   // panel đề cho full màn — mặc định = cả chuỗi, ý đang soạn nổi bật
 }) {
   const [active, setActive] = useState(() => { const i = chuoi.y.findIndex(yCanNhap); return i >= 0 ? i : 0 })
   const get = (id: string) => values.find((v) => v.id === id) ?? { id, loi_giai: null, anh: null }
@@ -148,16 +164,13 @@ export function ChuoiSoan({ chuoi, values, onChange, tieuDe, deBaiChung }: {
       </div>
       {y && (
         <div className="rounded-lg border border-slate-200 bg-white px-3 py-3">
-          <div className="mb-1"><NhanY i={active} y={y} /></div>
-          <div className={y.anh ? 'grid grid-cols-[1fr_auto] gap-3' : ''}>
-            <YDe y={y} />
-            {y.anh && <img src={y.anh} alt="hình" className="max-h-40 max-w-[220px] self-start rounded-lg border border-slate-200 bg-white" />}
-          </div>
+          <CumDe chuoi={chuoi} upTo={active} />
           {can ? (
             <div className="mt-2">
-              <MathTextarea value={v!.loi_giai ?? ''} onChange={(t) => set(y.id, { loi_giai: t || null })} soanTitle={`${tieuDe} · ${chuY(active)}`}
-                soanDeBai={deBaiChung ? deBaiChung(y.id) : <ChuoiDoc chuoi={chuoi} noiBat={y.id} />}
-                className="min-h-[120px] w-full rounded-md border border-slate-200 bg-white px-2.5 py-2 text-[13px] leading-relaxed focus:border-emerald-400 focus:outline-none" />
+              <RichMathBox key={y.id} value={v!.loi_giai ?? ''} onChange={(t) => set(y.id, { loi_giai: t || null })}
+                placeholder="Gõ lời giải — bấm $ hoặc Ctrl+M chèn công thức…" soanTitle={`${tieuDe} · ${chuY(active)}`}
+                soanDeBai={<CumDe chuoi={chuoi} upTo={active} />}
+                className="min-h-[120px] w-full rounded-md border border-slate-200 bg-white px-2.5 py-2 focus:border-emerald-400 focus:outline-none" />
             </div>
           ) : (
             y.loi_giai && <div className="mt-1.5 rounded-md border border-dashed border-emerald-200 bg-emerald-50/40 px-3 py-2 text-[13px] leading-relaxed text-slate-700"><MathText>{y.loi_giai}</MathText></div>

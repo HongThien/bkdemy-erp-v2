@@ -8775,3 +8775,29 @@ nên hệ thống có thể dễ dàng ghép khi vào kho." Rồi chốt thêm: 
 **Verify:** tsc sạch · Browser dev 5181 (restart server, HMR stale trước đó): Kho bài Hoàn thiện hiện đúng mã+a)/b)/c)/
 đề, không còn mô hình/cấp/trạng thái · Bài của tôi mở BT.08.083: tab "a) ✓" / "b) ★ ✓", bấm Sau › chuyển đúng sang ý
 b) ĐÍCH (hình + lời giải Claude nạp sẵn) · trả bài dọn xong.
+
+### 06/09 tối (2) — Đề bài gộp 1 card + WYSIWYG thật (RichMathBox), không hiện LaTeX thô
+**Thùy:** "Với đề bài: ghép chung tất cả lại thành 1 card chung đi, ko cần card riêng. Hình mặc định lấy ý cuối để
+hiển thị. Chỉ có giải mới cần hiện riêng thôi. Cấu trúc vẫn là: click vào ý a thì hiện đề và ý a bên trái như hiện
+tại. Click vào ý b thì hiện đề + ý a + ý b và hình của ý b ấy. Và tuyệt đối ko hiện latex. chỉ hiện cái công thức
+sửa được thôi nhé." — phát hiện khi soi kỹ ô nhập builder mới làm: textarea đang hiện RAW LaTeX ("$M$", "\dfrac{1}{2}
+AB$"…) — đúng thứ "05/09 chốt" (người soạn KHÔNG thấy LaTeX) nhưng lúc build chuỗi Hình lại lỡ dùng MathTextarea
+(textarea+preview) thay vì WYSIWYG thật.
+**Đổi:**
+- `ChuoiDoc` (đọc — Kho bài/Bài của tôi không đang soạn/Duyệt): 1 CARD DUY NHẤT (bỏ khung riêng từng ý), ảnh MẶC
+  ĐỊNH = ảnh của Ý CUỐI (không lặp ảnh từng ý). `CumDe(chuoi, upTo)` = hàm dùng chung: đề gộp từ ý 0..upTo, ảnh của
+  ý `upTo`.
+- `ChuoiSoan` (soạn — CHỈ chỗ này hiện riêng): builder LŨY TIẾN — tab a) đề chỉ gồm a; tab b) đề gồm a+b + ảnh của
+  b (`CumDe(chuoi, active)`), khớp đúng "ghép ngay được vào kho" (ý sau kế thừa ngữ cảnh ý trước).
+- **[RichMathBox.tsx](src/components/math/RichMathBox.tsx)** (MỚI) — ô soạn dùng `RichMath` (WYSIWYG contenteditable
+  của tool soạn thảo công thức, `src/soan/RichMath.tsx`) TRỰC TIẾP thay vì `MathTextarea` (textarea raw + preview
+  dưới). Cùng chuỗi kho `$…$` (`getValue`/`onChange` tương thích), thêm nút ⤢ mở SoanModal full màn khi cần soạn
+  dài (cụm/thư mục/đổi tên điểm). PHẠM VI: chỉ áp cho ô lời giải TỪNG Ý của chuỗi Hình (ChuoiSoan) — chưa đụng
+  MathTextarea ở các form khác (FormBaiToan/CauEditor/NhapKho/GiaiEditor Đại-KHTN-HGT) vì Thùy chỉ nói "với đề bài"
+  của chuỗi Hình; nếu muốn đồng bộ toàn bộ tool giải bài thì làm tiếp riêng.
+- Bẫy: RichMath KHÔNG tự đồng bộ prop `value` sau mount (uncontrolled, chỉ load 1 lần) — đổi tab trong builder mà
+  không remount thì ô vẫn hiện nội dung ý CŨ. Sửa bằng `key={y.id}` trên RichMathBox trong ChuoiSoan.
+**Verify:** tsc sạch · Browser dev 5181 (restart server): Kho bài BT.08.083/BT.08.121 hiện đúng 1 card + 1 ảnh (ý
+cuối) · nhận BT.08.121, mở Bài của tôi: tab a)/b)/c)★, đổi tab lũy tiến đúng (a → a+b → a+b+c), ảnh đổi theo ý đang
+chọn · ô lời giải KHÔNG còn hiện `$…$` thô — công thức hiện dạng render ngay khi gõ (Ctrl+M mở bảng dựng, chèn
+đúng, Esc huỷ sạch không để lại rác) · trả 2 bài test, dọn xong.
