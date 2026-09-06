@@ -12,26 +12,36 @@ export const BK = {
 } as const
 
 // ── TRANH NỀN CEO vẽ (public/bk-ui/*.jpg) — mỗi màn 1 tranh, có sẵn logo · tiêu đề · tagline · mascot.
-// Vẽ theo BỀ NGANG (100% auto: thấy trọn tranh, không cắt bảng gỗ/bong bóng ở 2 mép); màn cao hơn tranh
-// thì phần thừa nối màu trời. `canh` = chiều cao (px ảnh) phần cảnh trên cùng → spacer giữ chỗ, nội dung
-// đặt dưới. `neo`: 'tren' = tranh dính đỉnh, đáy nối màu (đáy tranh là trời — Của tôi V3); 'duoi' = tranh
-// dính đáy, ĐỈNH nối màu trời (đáy tranh là cỏ hoa không nối được — Xếp hạng); màn thấp hơn tranh thì
-// tự về dính đỉnh (max(0, …)). Đơn vị cqw/cqh → cột chứa phải có container-type:size (DashTa).
-// Đã thử V4 tranh kín màn phủ cover → thẻ hồ sơ che mặt mascot, CEO bảo quay lại V3.
-export type BKTranh = { url: string; rong: number; cao: number; canh: number; neo: 'tren' | 'duoi'; mauTroi: string }
+// Vẽ theo BỀ NGANG (100% auto: thấy trọn tranh, không cắt bảng gỗ/bong bóng ở 2 mép), DÍNH ĐỈNH. `canh` =
+// chiều cao (px ảnh) phần cảnh trên cùng → spacer giữ chỗ, nội dung đặt dưới. Tranh 9:16 luôn "rộng" hơn
+// cột điện thoại (375×755) nên không lấp hết chiều cao: phần thừa nối `mauTroi`; tranh nào đáy là cỏ hoa
+// (Xếp hạng) thì cắt thêm mảnh `day` dính ĐÁY cột, khoảng giữa là trời — không mảnh nào bị cắt/kéo.
+// Đã thử: V4 phủ cover → thẻ hồ sơ che mặt mascot; neo đáy → thừa cục trời trên đỉnh (CEO chê cả hai).
+// Đơn vị cqw → khung bọc cột phải có container-type:size (DashTa).
+// `troi` = [màu trời ngay dưới mảnh trên, màu trời ngay trên mảnh đáy] → gradient nối giữa. Mép mảnh làm
+// mờ dần bằng mask nên mây bị cắt ngang không lộ đường ghép. Đường cắt chọn ở hàng pixel đồng màu nhất
+// (đo stddev từng hàng): Xếp hạng cắt y=560 (dưới bụi cây) và y=830 (trước khi tán cây bắt đầu ~870).
+export type BKTranh = { url: string; rong: number; canh: number; troi: [string, string]; day?: string }
 export const BK_TRANH = {
-  cuatoi: { url: '/bk-ui/bg_cua_toi.jpg', rong: 941, cao: 1594, canh: 440, neo: 'tren', mauTroi: '#CCE7FE' },   // headerv3 cắt status bar giả 78px
-  xephang: { url: '/bk-ui/bg_xephang.jpg', rong: 941, cao: 1672, canh: 520, neo: 'duoi', mauTroi: '#8ACDFE' },   // xephang.png · màu trời đo ở hàng pixel đỉnh
+  cuatoi: { url: '/bk-ui/bg_cua_toi.jpg', rong: 941, canh: 440, troi: ['#CCE7FE', '#CCE7FE'] },                                  // headerv3 cắt status bar giả 78px
+  xephang: { url: '/bk-ui/bg_xephang.jpg', rong: 941, canh: 520, troi: ['#93D0FA', '#A5D9FC'], day: '/bk-ui/bg_xephang_day.jpg' }, // backdrop_xephang.png: mảnh trên y0–560 · mảnh đáy y830–1672
 } as const satisfies Record<string, BKTranh>
 export function bkTranhStyle(t: BKTranh) {
   const pct = (px: number) => `${((px / t.rong) * 100).toFixed(2)}cqw`
-  const offsetY = t.neo === 'duoi' ? `max(0px, 100cqh - ${pct(t.cao)})` : '0px'   // đỉnh tranh cách đỉnh cột
-  const dinh = `calc(${offsetY} + env(safe-area-inset-top, 0px))`
-  return {
-    offsetY: dinh,
-    spacerH: `calc(${dinh} + ${pct(t.canh)})`,
-    nen: { backgroundImage: `url(${t.url})`, backgroundSize: '100% auto', backgroundRepeat: 'no-repeat', backgroundPosition: `center ${dinh}`, backgroundColor: t.mauTroi } as const,
-  }
+  const dinh = 'env(safe-area-inset-top, 0px)'
+  return { offsetY: dinh, spacerH: `calc(${dinh} + ${pct(t.canh)})`, nen: { background: `linear-gradient(180deg, ${t.troi[0]} 0%, ${t.troi[1]} 100%)` } as const }
+}
+// Lớp tranh đặt TRONG khung (position:relative, overflow:hidden) ĐẰNG SAU cột cuộn → tranh đứng yên khi
+// nội dung cuộn. Mảnh trên dính đỉnh (mép dưới mờ dần), mảnh đáy dính đáy (mép trên mờ dần).
+export function BKTranhNen({ t }: { t: BKTranh }) {
+  const fadeDuoi = { WebkitMaskImage: 'linear-gradient(to bottom, #000 calc(100% - 28px), transparent)', maskImage: 'linear-gradient(to bottom, #000 calc(100% - 28px), transparent)' }
+  const fadeTren = { WebkitMaskImage: 'linear-gradient(to top, #000 calc(100% - 60px), transparent)', maskImage: 'linear-gradient(to top, #000 calc(100% - 60px), transparent)' }
+  return (
+    <>
+      <img src={t.url} alt="" draggable={false} className="pointer-events-none absolute left-0 w-full select-none" style={{ top: 'env(safe-area-inset-top, 0px)', ...fadeDuoi }} />
+      {t.day && <img src={t.day} alt="" draggable={false} className="pointer-events-none absolute bottom-0 left-0 w-full select-none" style={fadeTren} />}
+    </>
+  )
 }
 
 // ── HEADER màn con: bầu trời gradient + tia sáng + tiêu đề bong bóng trắng viền xanh + tagline chữ
@@ -89,7 +99,7 @@ export function BKProfileSummary({ ten, anhUrl, tags, diem, pct, onPct, streak }
 }) {
   const tenGoi = ten.trim().split(/\s+/).pop() || 'bạn'
   return (
-    <div className="relative z-20 mx-auto -mt-3 w-full max-w-[1000px] px-3">
+    <div className="relative z-20 mx-auto -mt-3 w-full max-w-[1000px] px-1">
       {/* 1 HÀNG như thiết kế: avatar · tên/tags · 2 ô số. Màn hẹp (<430px) 2 ô xếp dọc; rộng hơn đứng cạnh nhau.
           Gọn theo chiều cao (cả màn gốc phải nằm trong 1 màn iPhone, không cuộn) */}
       <div className="flex items-center gap-2.5 rounded-[22px] bg-white/95 px-3 py-2.5 shadow-[0_4px_14px_rgba(22,34,77,.10)]">
@@ -248,7 +258,7 @@ export function BKEmptyState({ icon = '🌱', children }: { icon?: string; child
 // Banner mascot động viên (cuối màn) — câu chữ đổi theo ngữ cảnh
 export function BKMascotBanner({ text, sub }: { text: string; sub?: string }) {
   return (
-    <div className="relative mt-2.5 flex items-center gap-2.5 overflow-hidden rounded-[20px] bg-white/70 px-3 py-2">
+    <div className="relative mt-1 flex items-center gap-2.5 overflow-hidden rounded-[20px] bg-white/70 px-3 py-2">
       <img src="/bk-ui/mascot_cheer.png" alt="" className="h-12 w-12 shrink-0 object-contain" draggable={false} />
       <div className="min-w-0 flex-1">
         <span className="font-bubble inline-block rounded-xl bg-[#EAE2FF] px-2.5 py-0.5 text-[12.5px] font-bold text-[#6A4BD6]">{text}</span>

@@ -39,7 +39,7 @@ export function GayCuaToiScreen({ ym, donGia }: { ym: string; donGia: number }) 
   const hieuLuc = data?.ledger.filter((e) => !e.thu_hoi_at) ?? []
   const soGay = hieuLuc.reduce((s, e) => s + e.so_gay, 0)   // đếm items đang render — không phải công thức nghiệp vụ
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-1">
       <BKSectionCard tone="pink" className="relative overflow-hidden">
         <span className="pointer-events-none absolute right-3 top-2 text-[14px] text-[#FFD84D]">✦</span>
         <div className="flex items-center gap-3">
@@ -60,7 +60,7 @@ export function GayCuaToiScreen({ ym, donGia }: { ym: string; donGia: number }) 
       {data && data.deXuatCho.length > 0 && (
         <div>
           <BKSectionTitle right={<BKStatusPill status="thieu">chờ leader duyệt</BKStatusPill>}>Đang đề xuất ({data.deXuatCho.length})</BKSectionTitle>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-1">
             {data.deXuatCho.map((d) => (
               <div key={d.id} className="flex gap-3 rounded-3xl border border-[#FFE59A] bg-[#FFF6D6] p-3.5">
                 <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white text-[24px]">⏳</span>
@@ -78,7 +78,7 @@ export function GayCuaToiScreen({ ym, donGia }: { ym: string; donGia: number }) 
         <div>
           <BKSectionTitle>Đã chốt ({data.ledger.length})</BKSectionTitle>
           {!data.ledger.length ? <BKEmptyState icon="🎉">Chưa có gậy nào được chốt{pham === 'thang' ? ' tháng này' : ''}.</BKEmptyState>
-            : <div className="flex flex-col gap-2">{data.ledger.map((e) => <PenaltyCard key={e.id} e={e} />)}</div>}
+            : <div className="flex flex-col gap-1">{data.ledger.map((e) => <PenaltyCard key={e.id} e={e} />)}</div>}
         </div>
       )}
     </div>

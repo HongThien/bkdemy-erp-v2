@@ -33,7 +33,7 @@ export function ShopScreen({ xaiDuoc, diemThang, chuoi, diemMoiNgay, onChanged }
   }
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-1">
       <div className="grid grid-cols-[1fr_1fr_auto] gap-2">
         <BKSectionCard className="!p-3">
           <p className="text-[10.5px] font-semibold text-[#63709A]">🪙 Điểm xài được</p>
@@ -61,7 +61,7 @@ export function ShopScreen({ xaiDuoc, diemThang, chuoi, diemMoiNgay, onChanged }
       {items === null ? <p className="text-center text-[13px] text-[#63709A]">Đang tải…</p>
         : !items.length ? <BKEmptyState icon="🛍️">Chưa có vật phẩm nào — BK sẽ lên kệ sớm!</BKEmptyState>
         : (
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+          <div className="grid grid-cols-2 gap-1 sm:grid-cols-3">
             {items.map((v, i) => {
               const t = TONE_CLS[TONES[i % TONES.length]]
               const du = xaiDuoc >= v.gia_diem

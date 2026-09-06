@@ -39,14 +39,14 @@ export function HuongDanScreen({ vaiTro }: { vaiTro: string }) {
   }, [ds, q])
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-1">
       <div className="relative">
         <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[18px] text-[#9AA5C4]">🔍</span>
         <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm quy trình..."
           className="w-full rounded-full bg-white py-3 pl-12 pr-4 text-[14px] text-[#16224D] shadow-[0_4px_14px_rgba(22,34,77,.08)] outline-none placeholder:text-[#9AA5C4] focus:ring-2 focus:ring-[#2F73F6]/30" />
       </div>
       {ds === null ? <p className="text-center text-[13px] text-[#63709A]">Đang tải…</p> : (
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-1">
           {cards.map((c, i) => {
             const tone = TONES[i % TONES.length]
             const chuaCo = !c.noi_dung

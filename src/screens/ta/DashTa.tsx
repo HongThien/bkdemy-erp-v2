@@ -14,7 +14,7 @@ import { xepHangChung, type XepHangChung } from '../../lib/xephang'
 import { tichLuy, type TichLuy } from '../../lib/tichluy'
 import { GAY_DON_GIA } from '../../lib/gay'
 import { homNayVN } from '../../lib/tuan'
-import { BKPageHeader, BKProfileSummary, BKMenuCard, BKMascotBanner, BK_TRANH, bkTranhStyle } from '../../components/bk/BKUI'
+import { BKPageHeader, BKProfileSummary, BKMenuCard, BKMascotBanner, BK_TRANH, BKTranhNen, bkTranhStyle } from '../../components/bk/BKUI'
 import { XepHangScreen } from '../../components/bk/XepHangScreen'
 import { GayCuaToiScreen } from '../../components/bk/GayCuaToiScreen'
 import { MayManScreen } from '../../components/bk/MayManScreen'
@@ -46,15 +46,8 @@ const CARDS: { key: Box; title: string; sub: string; tagline: string; image: str
 const TAB_TEN: Record<string, string> = { ingame: 'Bài trên lớp', et: 'Chấm ET', btvn: 'Chấm BTVN' }
 const LY_DO_TEN: Record<string, string> = { tre: 'đóng muộn', no_qua_han: 'đang nợ quá hạn', chat_luong: 'chất lượng chưa đạt' }
 
-function ymCong(ym: string, n: number): string {
-  const [y, m] = ym.split('-').map(Number)
-  const d = new Date(Date.UTC(y, m - 1 + n, 1))
-  return `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}`
-}
-
 export default function DashTa({ profile }: { profile: MyProfile }) {
-  const ymNay = homNayVN().slice(0, 7)
-  const [ym, setYm] = useState(ymNay)
+  const ym = homNayVN().slice(0, 7)   // luôn tháng hiện tại (không có chọn tháng ở màn này)
   const [box, setBox] = useState<Box | null>(null)
   const [data, setData] = useState<TaDash | null>(null)
   const [chung, setChung] = useState<XepHangChung | null>(null)
@@ -71,7 +64,6 @@ export default function DashTa({ profile }: { profile: MyProfile }) {
 
   const me = data?.me ?? {}
   const ten = (profile.nhanSu.ho_ten ?? '').trim()
-  const [thang, nam] = [ym.slice(5, 7), ym.slice(0, 4)]
   const h = box ? TIEU_DE[box] : null
   const goc = box === null
   // Màn có TRANH CEO vẽ sẵn (Của tôi · Xếp hạng): spacer giữ chỗ phần cảnh + nút ‹ đặt lên tranh. Màn khác:
@@ -84,10 +76,10 @@ export default function DashTa({ profile }: { profile: MyProfile }) {
     // bằng màn = container-type:size để cột con đo tranh/spacer theo cqw/cqh (đơn vị cq chỉ tra TỔ TIÊN —
     // đặt container lên chính cột thì background của cột rơi về viewport, đã dính). Cột TỰ CUỘN nội bộ
     // (màn thấp như iPhone SE) → tranh nền đứng yên, nội dung trượt lên trên tranh (CEO 07/09).
-    <div className="flex h-full flex-col" style={{ background: tranh?.mauTroi ?? '#CFE7FE' }}>
-      <div className="mx-auto h-full w-full max-w-[480px]" style={{ containerType: 'size' }}>
-      <div className="flex h-full w-full flex-col overflow-y-auto"
-        style={ts ? ts.nen : { background: 'linear-gradient(180deg, #CFE7FE 0%, #E3EEFC 40%, #EEF3FC 100%)' }}>
+    <div className="flex h-full flex-col" style={{ background: tranh?.troi[1] ?? '#CFE7FE' }}>
+      <div className="relative mx-auto h-full w-full max-w-[480px] overflow-hidden" style={{ containerType: 'size', ...(ts ? ts.nen : { background: 'linear-gradient(180deg, #CFE7FE 0%, #E3EEFC 40%, #EEF3FC 100%)' }) }}>
+      {tranh && <BKTranhNen t={tranh} />}
+      <div className="relative flex h-full w-full flex-col overflow-y-auto">
         {ts
           ? <div className="relative shrink-0" style={{ height: ts.spacerH }}>
               {/* nút ‹ đặt DƯỚI logo trong tranh (logo cao ~15cqw), trên bảng gỗ (~32cqw) */}
@@ -99,25 +91,23 @@ export default function DashTa({ profile }: { profile: MyProfile }) {
         <BKProfileSummary ten={ten} anhUrl={profile.nhanSu.anh_url} tags={['TA', 'BK Academy', '🌱 Luôn cố gắng']}
           diem={tl ? tl.xai_duoc + tl.diem_thang : null} streak={tl?.chuoi} pct={me.pct} onPct={() => setBox('datchuan')} />
 
-        <div className="flex flex-1 flex-col px-3 pb-2">
-          {/* thanh tháng gọn — áp cho mọi màn con theo tháng */}
-          <div className="mt-2 flex items-center justify-center gap-1">
-            <button onClick={() => setYm(ymCong(ym, -1))} className="h-7 w-7 rounded-full bg-white/90 text-[14px] font-bold text-[#2F73F6] shadow-sm active:scale-95">‹</button>
-            <span className="rounded-full bg-white/90 px-3 py-1 text-[12px] font-extrabold text-[#16224D] shadow-sm">📅 Tháng {thang}/{nam}</span>
-            <button onClick={() => setYm(ymCong(ym, 1))} disabled={ym >= ymNay} className="h-7 w-7 rounded-full bg-white/90 text-[14px] font-bold text-[#2F73F6] shadow-sm active:scale-95 disabled:opacity-30">›</button>
-          </div>
+        {/* QUY TẮC KHOẢNG CÁCH (CEO 07/09, áp mọi màn khu Của tôi): mọi khe = 4px đều nhau — card↔card,
+            card↔mép màn, hồ sơ↔lưới↔banner — để không lộ nền sau; màn con dùng gap-1 tương ứng */}
+        <div className="flex flex-1 flex-col px-1 pb-1">
+          {/* KHÔNG có thanh chọn tháng — CEO 07/09: "màn Của tôi không cần thời gian", đặt giữa 2 card làm bố cục rời
+              rạc; mọi số là THÁNG HIỆN TẠI. Xem tháng cũ → màn Hôm nay. */}
           {err && <p className="mt-2 rounded-2xl bg-[#FFE3EA] px-3 py-2 text-[12.5px] text-[#C0355A]">⚠ {err}</p>}
 
           {goc && (
             <>
               {/* lưới 2×3 co giãn lấp hết chiều cao còn lại → luôn vừa 1 màn (≥ ~700px cao); màn thấp hơn mới cuộn */}
-              <div className="mt-2 grid min-h-[320px] flex-1 grid-cols-2 grid-rows-3 gap-2.5">
+              <div className="mt-1 grid min-h-[320px] flex-1 grid-cols-2 grid-rows-3 gap-1">
                 {CARDS.map((c) => <BKMenuCard key={c.key} image={c.image} title={c.title} sub={c.sub} tagline={c.tagline} gradient={c.gradient} accent={c.accent} badge={c.badge} onClick={() => setBox(c.key)} />)}
               </div>
               <BKMascotBanner text="Bạn đang làm rất tốt!" sub="Cùng nhau lan toả những giá trị tích cực nhé! 💙" />
             </>
           )}
-          <div className={goc ? 'hidden' : 'mt-3'}>
+          <div className={goc ? 'hidden' : 'mt-1'}>
           {box === 'xephang' && <XepHangScreen tenRieng="trợ giảng" ten={ten}
             rieng={data ? { rank: data.rank, tongXepHang: data.tongXepHang, top: data.top, nguongRankFinal: data.nguongRankFinal, nguongRankTop: data.nguongRankTop, me: data.me } : null}
             chung={chung ? { rank: chung.rank, tongXepHang: chung.tongXepHang, top: chung.top, nguongRankFinal: chung.nguongRankFinal, nguongRankTop: chung.nguongRankTop, me: chung.me } : null} />}

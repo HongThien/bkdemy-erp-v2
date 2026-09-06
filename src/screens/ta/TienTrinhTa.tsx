@@ -36,7 +36,7 @@ export default function TienTrinhTa({ ym }: { ym: string }) {
   const loi = pct == null ? 'Chưa có dữ liệu tháng này.' : pct >= 90 ? 'Bạn đang làm rất tốt!' : pct >= 60 ? 'Sắp đủ chuẩn rồi, cố lên!' : 'Cần bổ sung thêm nhé!'
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-1">
       <BKSectionCard tone="blue" className="relative overflow-hidden">
         <span className="pointer-events-none absolute right-2 top-2 text-[34px]">🌱</span>
         <p className="text-[16px] font-extrabold text-[#16224D]">👑 Tổng tiến trình tháng</p>
@@ -66,7 +66,7 @@ export default function TienTrinhTa({ ym }: { ym: string }) {
                 </div>
                 <BKStatusPill status={tt.st}>{tt.st === 'dat' ? '⭐' : '❗'} {tt.text}</BKStatusPill>
               </div>
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-3 gap-1">
                 {CHI_SO.map((c) => <BKMetricTile key={c.key} icon={c.icon} label={c.label} thuc={thuc(l, c.key)} chuan={chuan(l, c.key)} />)}
               </div>
             </BKSectionCard>
@@ -81,7 +81,7 @@ export default function TienTrinhTa({ ym }: { ym: string }) {
             <p className="text-[11.5px] text-[#63709A]">Theo bạn (không theo lớp) · {d.botro.so_ca} ca đã đứng · ca không ghi giờ tính 1h</p>
           </div>
         </div>
-        <div className="grid grid-cols-3 gap-2"><BKMetricTile icon="⏱" label="Giờ bổ trợ" thuc={d.botro.thuc_gio} chuan={d.botro.chuan_gio} unit="h" /></div>
+        <div className="grid grid-cols-3 gap-1"><BKMetricTile icon="⏱" label="Giờ bổ trợ" thuc={d.botro.thuc_gio} chuan={d.botro.chuan_gio} unit="h" /></div>
       </BKSectionCard>
     </div>
   )

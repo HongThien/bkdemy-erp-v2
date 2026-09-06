@@ -12,7 +12,7 @@ export function DatChuanScreen({ me, items, tabTen, lyDoTen, chuThich }: {
   if (!me.tong) return <BKEmptyState icon="☕">Tháng này chưa có việc nào được giao.</BKEmptyState>
   const color = (pct ?? 0) >= 80 ? BK.success : (pct ?? 0) >= 50 ? BK.warning : BK.danger
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-1">
       <BKSectionCard tone="mint" className="flex items-center gap-4">
         <BKProgressRing pct={pct ?? 0} size={84} stroke={10} color={color}><span className="text-[20px] font-extrabold text-[#16224D]">{pct == null ? '—' : `${pct}%`}</span></BKProgressRing>
         <div className="min-w-0 flex-1">

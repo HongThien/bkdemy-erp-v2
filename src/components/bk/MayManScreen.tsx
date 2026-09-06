@@ -33,7 +33,7 @@ function Wheel() {
 
 export function MayManScreen() {
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-1">
       <BKSectionCard tone="blue" className="text-center">
         <p className="text-[13px] font-bold text-[#16224D]">🎁 Mỗi ngày 1 lượt quay</p>
         <p className="text-[11.5px] text-[#63709A]">Cơ hội nhận những phần quà bất ngờ! ♡</p>
