@@ -227,6 +227,37 @@ export async function loadBuoiPicksPhan(buoiId: string, phan: 'lop' | 'nha' | 'e
   return { picks: full.picks.filter((p) => p.phan === phan), cheDo: full.cheDo, soDong: full.soDong }
 }
 
+// ══════════════ MT Hình (mô hình) — 02/09 (Thùy: "pick câu hình phải như ET, có dòng, là câu đấy, in cùng") ══════════════
+// Bài Hình của MT master sống NGAY TRONG PHẦN của tai_lieu như 1 hàng câu (`tai_lieu_cau.ma_cau = 'HINH:<uuid>'`,
+// nội dung ở `tai_lieu.cau_hinh.hinhByMa` — xem tailieu.ts). KHÔNG có buổi Hình "mẫu" riêng (bản sáng 02/09 đã
+// bỏ — thêm 1 kho trung gian chỉ để lệch). Gán MT vào buổi = GHI bài Hình vào hinh_gt_buoi của (lớp,ngày) phan='mt'
+// (REPLACE riêng phan đó, không đụng 'lop'/'nha'/'et' — buổi dùng chung, bài học 23/08) → tab chấm MT
+// (BuoiHocScreen.MTTab → loadHinhForBuoiPhase 'mt') vốn đã đọc đúng chỗ đó, không sửa gì ở tầng chấm.
+/** hinh_gt_buoi của (lớp,ngày) nếu có — KHÔNG tạo (khác ensureHinhGtBuoiForBuoi). */
+export async function findHinhGtBuoi(lopId: string, ngay: string): Promise<string | null> {
+  const { data, error } = await supabase.from('hinh_gt_buoi').select('id').eq('lop_id', lopId).eq('ngay', ngay).order('created_at', { ascending: false }).limit(1)
+  if (error) throw error
+  return ((data as { id: string }[])?.[0])?.id ?? null
+}
+/** Ghi bài Hình (+ mã đề 2/3) của MT vào buổi Hình (lớp,ngày), phan='mt'. picks rỗng → không tạo buổi, không xoá gì
+ *  (MTTab có đường "+ Bài Hình" nhập tay tại chỗ — không được xoá oan). hsMaDe KHÔNG ghi ở đây: chia đề theo lớp dùng
+ *  chung `tai_lieu.cau_hinh.hsMaDe` của bản mt_buoi cho cả Đại lẫn Hình (1 HS = 1 mã đề cả đề). */
+export async function ganHinhMTVaoBuoi(lopId: string, ngay: string, nhap: NhapBuoi, maDe: HinhCauHinhPhan['maDe']): Promise<number> {
+  const picks = nhap.picks.filter((p) => p.phan === 'mt')
+  if (!picks.length) return 0
+  const buoiId = await ensureHinhGtBuoiForBuoi(lopId, ngay)
+  await saveBuoiSelectionPhan(buoiId, 'mt', { ...nhap, picks })
+  await patchHinhCauHinh(buoiId, 'mt', { maDe: maDe ?? {} })
+  return picks.length
+}
+/** Xoá bài 1 phan tại buổi Hình (lớp,ngày) nếu có — dùng khi re-gán MT sang NGÀY KHÁC (bản gán cũ hết hiệu lực). */
+export async function xoaPhanHinhTai(lopId: string, ngay: string, phan: 'mt'): Promise<void> {
+  const id = await findHinhGtBuoi(lopId, ngay)
+  if (!id) return
+  const { error } = await supabase.from('hinh_gt_bai').delete().eq('buoi_id', id).eq('phan', phan)
+  if (error) throw error
+}
+
 // ══════════════ ⭐ BỘ LỌC "MÔ HÌNH" của buổi giáo trình — LƯU LẠI (Thùy 25/08) ══════════════
 // "Giáo trình hình vẫn ko lưu lại tiến trình đã chọn" — trước đây mainIds/satIds (SoanTaiLieu.tsx,
 // BuoiPickEditor) chỉ sống trong Zustand RAM (buoiMoHinhLoc) — mất khi F5/phiên mới/máy khác. Dùng

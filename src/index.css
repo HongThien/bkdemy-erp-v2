@@ -17,6 +17,14 @@
   --color-ph-purple: #7656d8;
 }
 
+/* CHỐNG PHÓNG TO NHẦM trên mobile (CEO 31/08 — app GV "click nhầm bị zoom"):
+   touch-action:manipulation TẮT double-tap-zoom (pinch trợ năng của HĐH vẫn hoạt động);
+   text-size-adjust chặn iOS tự phóng chữ khi xoay máy. Đi kèm viewport meta
+   maximum-scale=1 + user-scalable=no ở gv/ta/ops/hs.html — CHẶN iOS tự zoom khi focus
+   vào input chữ <16px (nguồn "click nhầm phóng to" chính). Desktop không ảnh hưởng
+   (đều là hành vi cảm ứng). */
+html { touch-action: manipulation; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
 /* Công thức KaTeX cỡ bằng chữ thường.
    ⚠ !important: katex.min.css (import SAU index.css ở main.tsx) đặt `.katex{font-size:1.21em}` — cùng
    độ ưu tiên nên cái sau thắng, làm mọi công thức inline (kể cả $ABC$) to hơn chữ thường 21%. */
@@ -34,3 +42,11 @@
 
 /* Ảnh chèn trong lý thuyết (markdown ![](url) qua MathText) — cắt từ PDF/ảnh */
 .mt-img { display: block; max-width: 100%; max-height: 360px; object-fit: contain; margin: 8px auto; border: 1px solid #e2e8f0; border-radius: 8px; }
+
+/* ── Ô nhập công thức (MathLive) + preview click-để-sửa (components/math) ── */
+math-field.mf-input { display: block; width: 100%; font-size: 20px; min-height: 52px; padding: 6px 8px; border: 1px solid #cbd5e1; border-radius: 8px; background: #fff; }
+math-field.mf-input:focus-within { border-color: #6366f1; box-shadow: 0 0 0 3px rgb(99 102 241 / 0.2); outline: none; }
+math-field.mf-input::part(virtual-keyboard-toggle), math-field.mf-input::part(menu-toggle) { display: none; }
+math-field.mf-input::part(placeholder) { color: #94a3b8; }
+.mt-f { cursor: pointer; border-radius: 3px; transition: background 0.12s; }
+.mt-f:hover { background: #e0e7ff; outline: 1px solid #a5b4fc; }

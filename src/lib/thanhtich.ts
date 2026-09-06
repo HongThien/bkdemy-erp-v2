@@ -1,6 +1,7 @@
 // Data-layer THÀNH TÍCH (seam) — Level (Σ điểm sát hạch) · Xu (lương tháng) · catalog · điểm thi.
 // Level/Xu = SUY ĐỘNG từ event (diem_thi / gami_exp_ledger). UI chỉ gọi qua đây.
 import { supabase } from './supabase'
+import { EXP_NOTE_SOURCES } from './gami'
 import { LEVEL } from '../gami/config.js'
 import { seasonOf } from '../gami/season.js'
 
@@ -14,17 +15,14 @@ export type Verdict = 'dat' | 'gan_dat' | 'khong_dat'
 export type KyThi = { id: string; ten: string; loai: string; he_so: number; dot: string | null; ngay: string | null; mon: string | null; khoi: string | null; mua: string | null; buoi_hoc_id: string | null; khung_co_ban?: number | null; khung_nang_cao?: number | null }
 export type DiemThi = { ky_thi_id: string; hoc_sinh_id: string; diem: number | null; band_luc_thi: string | null; verdict: Verdict; vuot_band: boolean; diem_co_ban?: number | null; diem_nang_cao?: number | null; full_diem?: boolean }
 
-// Điểm MT (BK sát hạch) = ĐIỂM CƠ BẢN + ĐIỂM NÂNG CAO (GV nhập thẳng). Trần: tổng ≥ 10 → 9.75.
-// "Full điểm" (tick) → 10 (chỉ cách này ra 10 — làm trọn vẹn không sai). Làm tròn 2 chữ số.
+// ⚠ §2.0 (30/08): NGUỒN CHÂN LÝ của điểm + verdict MT = trigger `tg_diem_thi_tinh` ở DB
+// (mig 202608300221) — dòng có cơ bản/nâng cao/full là DB TỰ tính khi ghi, client gửi gì
+// cũng bị đè. Hàm dưới đây CHỈ còn để PREVIEW khi đang gõ (chưa lưu); số hiển thị sau lưu
+// phải lấy từ dòng DB trả về, không phải từ hàm này. Sửa công thức → sửa TRIGGER trước.
 export function tinhDiemMT(coBan: number | null | undefined, nangCao: number | null | undefined, full: boolean): number {
   if (full) return 10
   const tong = (coBan ?? 0) + (nangCao ?? 0)
   return tong >= 10 ? 9.75 : Math.round(tong * 100) / 100
-}
-// Verdict TỰ SUY từ điểm (màn MT bỏ chọn verdict tay — cột `verdict` NOT NULL nên vẫn lưu ngầm để Level dùng).
-// Ngưỡng thang-10: đạt ≥8 · gần đạt 6.5–<8 · <6.5 không đạt.
-export function verdictTuDiem(diem: number): Verdict {
-  return diem >= 8 ? 'dat' : diem >= 6.5 ? 'gan_dat' : 'khong_dat'
 }
 export type ThanhTichLoai = { key: string; ten: string; icon: string | null; nhom: string | null; kieu: string | null; per_mon: boolean; thu_tu: number }
 export type LuongBac = { min_exp: number; xu: number }
@@ -35,28 +33,34 @@ const verdictPoint = verdictDiem
 export const currentMua = () => seasonOf(vnTodayStr())
 
 // ── LEVEL + XU của 1 HS × môn (mùa hiện tại + lương THÁNG hiện tại) ──
-export type LevelXu = { mua: string; level: number; levelMax: number; xu: number; expThang: number; xuKe: number | null; expKeMoc: number | null }
+// xu = ƯỚC TÍNH tháng này theo bảng mốc (chưa phát) · viXu = VÍ THẬT (Σ xu_ledger — đã chốt, sau này trừ đổi quà).
+export type LevelXu = { mua: string; level: number; levelMax: number; xu: number; viXu: number; expThang: number; xuKe: number | null; expKeMoc: number | null }
 export async function getLevelXu(hocSinhId: string, mon: string): Promise<LevelXu> {
   const mua = seasonOf(vnTodayStr())
   const ym = vnTodayStr().slice(0, 7) // tháng VN hiện tại 'YYYY-MM' = tháng EXP thuộc về
-  const [dt, exp, bac] = await Promise.all([
+  const [dt, exp, expFloor, bac, viR] = await Promise.all([
     supabase.from('diem_thi').select('verdict, ky_thi:ky_thi_id(he_so, mon, mua)').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
     // ⚠ EXP THÁNG key theo `note`=ym, KHÔNG theo created_at: recompute có thể chạy ở tháng khác (reset đầu mùa
     // recompute tháng cũ ĐÚNG NGÀY 1 tháng mới) → dòng note tháng trước có created_at tháng này sẽ lọt window
-    // created_at. exp_thang lọc note===ym; attend_floor (bù, no note, sinh 1 lần) lọc created_at. Vẫn loại legacy rank_*/btvn.
-    supabase.from('gami_exp_ledger').select('amount, source, note, created_at').eq('hoc_sinh_id', hocSinhId).eq('mon', mon).in('source', ['exp_thang', 'attend_floor']).limit(LIMIT),
+    // created_at. Nguồn note-keyed (exp_et/exp_btvn/exp_btvn_thang + exp_thang legacy) lọc note===ym
+    // NGAY TRÊN SERVER — ledger chi tiết cả mùa 1 HS có thể chạm cap 1000 dòng PostgREST, 1 tháng thì luôn nhỏ.
+    supabase.from('gami_exp_ledger').select('amount, source, note, created_at').eq('hoc_sinh_id', hocSinhId).eq('mon', mon).in('source', EXP_NOTE_SOURCES).eq('note', ym).limit(LIMIT),
+    // attend_floor (bù, no note, sinh 1 lần) lọc created_at ≥ đầu tháng.
+    supabase.from('gami_exp_ledger').select('amount, created_at').eq('hoc_sinh_id', hocSinhId).eq('mon', mon).eq('source', 'attend_floor').gte('created_at', monthStartUtcISO()).limit(LIMIT),
     supabase.from('luong_bac').select('min_exp, xu').order('min_exp', { ascending: true }).limit(LIMIT),
+    // Ví xu = số dư từ view chung qlht_v_so_du_xu (sổ của hệ quà — BK chỉ có 1 xu, Thùy 08-29)
+    supabase.from('qlht_v_so_du_xu').select('so_du').eq('hoc_sinh_id', hocSinhId).maybeSingle(),
   ])
   let level = 0
   for (const r of (dt.data ?? []) as any[]) { const k = r.ky_thi; if (k && k.mon === mon && k.mua === mua) level += verdictPoint(r.verdict, k.he_so) }
-  const monthStart = monthStartUtcISO()
-  const expThang = ((exp.data ?? []) as any[]).reduce((s, x) => s + ((x.source === 'exp_thang' ? x.note === ym : x.created_at >= monthStart) ? Number(x.amount) : 0), 0)
+  const expThang = [...((exp.data ?? []) as any[]), ...((expFloor.data ?? []) as any[])].reduce((s, x) => s + Number(x.amount), 0)
   const bacs = (bac.data ?? []) as LuongBac[]
   let xu = 0, xuKe: number | null = null, expKeMoc: number | null = null
   for (let i = 0; i < bacs.length; i++) {
     if (expThang >= bacs[i].min_exp) { xu = bacs[i].xu; const nx = bacs[i + 1]; xuKe = nx?.xu ?? null; expKeMoc = nx?.min_exp ?? null }
   }
-  return { mua, level, levelMax: LEVEL.MAX, xu, expThang, xuKe, expKeMoc }
+  const viXu = Number((viR.data as any)?.so_du ?? 0)
+  return { mua, level, levelMax: LEVEL.MAX, xu, viXu, expThang, xuKe, expKeMoc }
 }
 
 // ── Catalog thành tích ──
@@ -96,15 +100,19 @@ export async function listDiemThiByKyThi(kyThiIds: string[]): Promise<DiemThi[]>
   if (error) throw error
   return (data ?? []) as DiemThi[]
 }
-// Nhập/sửa điểm thi 1 HS. verdict do staff duyệt (gợi ý theo band sau). Anti-NULL: có dòng = đã chấm.
-export async function upsertDiemThi(d: { kyThiId: string; hocSinhId: string; diem: number | null; bandLucThi: string | null; verdict: Verdict; vuotBand: boolean; coBan?: number | null; nangCao?: number | null; full?: boolean }): Promise<void> {
+// Nhập/sửa điểm thi 1 HS. Anti-NULL: có dòng = đã chấm. Trả về DÒNG DB SAU KHI GHI —
+// với đường MT (có coBan/nangCao/full) thì diem+verdict do trigger tính, client phải dùng
+// giá trị trả về này chứ không tự suy (§2.0). Đường thi trường/khảo sát: diem nhập thẳng,
+// verdict staff duyệt — trigger không đụng.
+export async function upsertDiemThi(d: { kyThiId: string; hocSinhId: string; diem: number | null; bandLucThi: string | null; verdict: Verdict; vuotBand: boolean; coBan?: number | null; nangCao?: number | null; full?: boolean }): Promise<DiemThi> {
   const { data: { user } } = await supabase.auth.getUser()
-  const { error } = await supabase.from('diem_thi').upsert(
+  const { data, error } = await supabase.from('diem_thi').upsert(
     { ky_thi_id: d.kyThiId, hoc_sinh_id: d.hocSinhId, diem: d.diem, band_luc_thi: d.bandLucThi, verdict: d.verdict, vuot_band: d.vuotBand,
       diem_co_ban: d.coBan ?? null, diem_nang_cao: d.nangCao ?? null, full_diem: d.full ?? false,
       graded_by: user?.id ?? null, updated_at: new Date().toISOString() },
-    { onConflict: 'ky_thi_id,hoc_sinh_id' })
+    { onConflict: 'ky_thi_id,hoc_sinh_id' }).select().single()
   if (error) throw error
+  return data as DiemThi
 }
 
 // Khung điểm (tối đa) của CẢ ĐỀ — 1 khung dùng chung cho mọi HS trong buổi (CEO 21/08), khác

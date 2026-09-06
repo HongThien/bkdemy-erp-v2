@@ -62,6 +62,8 @@ interface UiState {
   loadQuyen: () => Promise<void>
   loadMe: () => Promise<void>
   clearQuyen: () => void
+  // Phím tắt công thức CÁ NHÂN (nhan_su.phim_tat_cong_thuc) — cập nhật store ngay sau khi lưu DB để mọi ô soạn dùng
+  setPhimTatCongThuc: (m: Record<string, string>) => void
   // ── Bộ lọc màn Học phí — giữ NGUYÊN khi rời/quay lại màn (component unmount không mất chọn) ──
   hocPhiTab: string
   hocPhiKy: string
@@ -123,6 +125,7 @@ export const useStore = create<UiState>()(persist((set, get) => ({
   loadQuyen: async () => { try { set({ quyen: await myQuyen() }) } catch { set({ quyen: { laAdmin: false, chucNang: [], chiXem: [] } }) } },
   loadMe: async () => { try { set({ me: await getMyProfile() }) } catch { set({ me: null }) } },
   clearQuyen: () => set({ quyen: null, me: null }),
+  setPhimTatCongThuc: (m) => set((s) => (s.me ? { me: { ...s.me, nhanSu: { ...s.me.nhanSu, phim_tat_cong_thuc: m } } } : {})),
   hocPhiTab: 'theomon',
   hocPhiKy: '',
   hocPhiPhId: null,
@@ -318,3 +321,8 @@ export const staffNavForUser = (u: User): NavGroup[] => {
   if (nodes.length) groups.push({ nhom: 'Tra cứu & sửa', leaves: nodes })
   return groups
 }
+
+// Phím tắt công thức của NGƯỜI ĐANG ĐĂNG NHẬP (từ nhan_su.phim_tat_cong_thuc, load cùng `me`). Không persist
+// localStorage → 2 người dùng chung máy mỗi người thấy đúng bộ phím của mình. EMPTY cố định để selector ổn định.
+const PHIM_TAT_EMPTY: Record<string, string> = {}
+export const usePhimTat = () => useStore((s) => s.me?.nhanSu.phim_tat_cong_thuc ?? PHIM_TAT_EMPTY)

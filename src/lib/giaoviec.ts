@@ -7,7 +7,7 @@
 // ============================================================================
 import { supabase } from './supabase'
 import {
-  GV, tinhTienDo, tinhChatLuong, gopPhanTram,
+  GV, // tinhTienDo/tinhChatLuong/gopPhanTram đã xuống DB (fn_gv_*, mig 202608300228 — §2.0)
   todayVN, kyTuanHienTai, thangCuaKyTuan, soNgayLech,
 } from './giaoviec-config'
 
@@ -319,7 +319,9 @@ export async function duyetGiaHan(id: string, dongY: boolean): Promise<void> {
 }
 
 // LEADER NGHIỆM THU (§4.2 một chạm). Đạt = chất lượng 100 mặc định; HẠ điểm mới bắt gõ lý do.
-// Tiến độ = MÁY tính (ngay_nop vs deadline). Chất lượng bị chặn trần theo số lần trả lại.
+// §2.0 (30/08): client gửi ĐIỂM LEADER THÔ vào chat_luong — trigger tg_viec_nghiem_thu_tinh
+// (mig 202608300228) tự áp trần trả-lại + tính tien_do/phan_tram trong DB. Công thức duy
+// nhất = fn_gv_* — hết cảnh housekeeping (SQL) và client (JS) mỗi bên một bản.
 export async function nghiemThu(id: string, p: { dat: boolean; chat_luong?: number; ly_do?: string | null }): Promise<void> {
   const { data: v, error: e0 } = await supabase.from('viec').select('*').eq('id', id).single()
   if (e0) throw e0
@@ -328,11 +330,9 @@ export async function nghiemThu(id: string, p: { dat: boolean; chat_luong?: numb
     const diemLeader = p.chat_luong ?? 100
     if (diemLeader < 100 && !p.ly_do?.trim()) throw new Error('Hạ chất lượng dưới 100 thì phải ghi lý do.')
     const ngayNop = (viec.hoan_thanh_at ? new Date(viec.hoan_thanh_at).toLocaleDateString('en-CA', { timeZone: 'Asia/Ho_Chi_Minh' }) : todayVN())
-    const tienDo = tinhTienDo(viec.deadline, ngayNop)
-    const chatLuong = tinhChatLuong(diemLeader, viec.so_lan_tra_lai)
     const { error } = await supabase.from('viec').update({
-      trang_thai: 'dat', ngay_nop: ngayNop, tien_do: tienDo, chat_luong: chatLuong,
-      phan_tram: gopPhanTram(tienDo, chatLuong), nghiem_thu_at: new Date().toISOString(),
+      trang_thai: 'dat', ngay_nop: ngayNop, chat_luong: diemLeader, // thô — DB áp trần + tính nốt
+      nghiem_thu_at: new Date().toISOString(),
       nghiem_thu_nguon: 'nguoi', // đối trọng với 'tu_dong' của giaoviec_housekeeping()
       ghi_chu_nghiem_thu: p.ly_do?.trim() || null,
     }).eq('id', id)
@@ -559,4 +559,38 @@ export async function demViecHuyTheoNguoiGiao(): Promise<Record<string, number>>
 export function holdQuaHan(ngayHold: string | null): boolean {
   if (!ngayHold) return false
   return Math.floor(soNgayLech(ngayHold.slice(0, 10), todayVN()) / 7) >= GV.HOLD_CANH_BAO_TUAN
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+// 8) APP PHÁT TRIỂN (pt) — việc CẦN CẬP NHẬT TÌNH TRẠNG hôm nay (mig 202609051300)
+// ════════════════════════════════════════════════════════════════════════════
+// Derive ở DB (fn_pt_viec_hom_nay): việc tôi đang cầm (moi_giao/dang_lam/tra_lai, không phải
+// mẹ-có-con) + cờ "đã có viec_cap_nhat trong ngày VN". Chỉ tab Hôm nay dùng — push 10:30 là
+// tin chung, không đọc danh sách này.
+export type ViecHomNay = {
+  id: string; tieu_de: string; trang_thai: TrangThaiViec; deadline: string | null; task_me_id: string | null
+  qua_han: boolean; da_cap_nhat_hom_nay: boolean; cap_nhat_cuoi_at: string | null
+  tien_do_bao_cao: number | null; so_ngay_im: number
+}
+export async function listViecHomNay(): Promise<ViecHomNay[]> {
+  const { data, error } = await supabase.rpc('fn_pt_viec_hom_nay')
+  if (error) throw error
+  return (data ?? []) as ViecHomNay[]
+}
+
+// ── APP pt: MỌI việc của tôi + cột suy ra, 1 nguồn cho cả Hôm nay lẫn Việc của tôi (mig 202609051451) ──
+// Hôm nay = lọc `dang_mo` trên cùng tập (lọc UI thuần). tien_do_bao_cao = % tự báo GẦN NHẤT có giá trị.
+export type ViecPt = {
+  id: string; tieu_de: string; trang_thai: TrangThaiViec; deadline: string | null; task_me_id: string | null
+  muc_tieu: string | null; output: string | null; mo_ta: string | null; khoi_luong: number
+  nguoi_giao_ten: string | null; phan_tram: number | null; tien_do: number | null; chat_luong: number | null
+  so_lan_gia_han: number; gia_han_xin_deadline: string | null; ghi_chu_nghiem_thu: string | null; evidence: string | null
+  so_con: number; so_con_dat: number; dang_mo: boolean
+  qua_han: boolean; da_cap_nhat_hom_nay: boolean; cap_nhat_cuoi_at: string | null; tien_do_bao_cao: number | null
+  created_at: string; hoan_thanh_at: string | null
+}
+export async function listViecCuaToiPt(): Promise<ViecPt[]> {
+  const { data, error } = await supabase.rpc('fn_pt_viec_cua_toi')
+  if (error) throw error
+  return (data ?? []) as ViecPt[]
 }

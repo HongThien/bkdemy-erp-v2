@@ -10,17 +10,23 @@
 
 // ── smartNormalize (port V1 TabDailyPractice.jsx) ───────────────────────────
 // Chuẩn hoá đáp án tự-điền để so bằng: bỏ đơn vị, space, 1,5→1.5, 1/2→0.5, +/trailing-zero.
+// ⚠ §2.0 (30/08): NGUỒN CHÂN LÝ = fn_tln_normalize ở DB (mig 202608300252) — bản JS này
+// phải GIỐNG HỆT (parity test scripts trong chiến dịch audit chạy cả hai trên data thật).
+// Đã SỬA 2 bug lộ ra khi so với SQL: ① \b của JS là ASCII → chữ có dấu bị coi là ranh giới
+// từ, "10 học sinh" bị bóc mất h/m thành "10ọcsinh" (bóc "đơn vị" ngay trong chữ!) — thay
+// bằng lookaround \p{L}\p{N} unicode. ② chia phân số không tận cùng format khác nhau giữa
+// JS/SQL — chốt round 10 chữ số (toFixed(10), zero thừa bị strip ở bước cuối như cũ).
 export function smartNormalize(val) {
   if (val == null) return ''
   let s = String(val).toLowerCase().trim()
-  // bỏ đơn vị thường gặp
-  s = s.replace(/\b(km\/giờ|km\/h|m\/s|m\/giây|km|cm|mm|m²|cm²|m|kg|gam|g|lít|l|đồng|vnđ|vnd|nghìn|triệu|tỷ|giờ|phút|giây|h|min|s|%)\b/gi, '')
+  // bỏ đơn vị thường gặp — ranh giới từ UNICODE (không ăn vào chữ có dấu liền kề)
+  s = s.replace(/(?<![\p{L}\p{N}_])(km\/giờ|km\/h|m\/s|m\/giây|km|cm|mm|m²|cm²|m|kg|gam|g|lít|l|đồng|vnđ|vnd|nghìn|triệu|tỷ|giờ|phút|giây|h|min|s|%)(?![\p{L}\p{N}_])/giu, '')
   s = s.replace(/\s+/g, '')          // bỏ space
   s = s.replace(/[.,]$/, '')         // bỏ chấm/phẩy trailing
   s = s.replace(/(\d),(\d)/g, '$1.$2')       // 1,5 → 1.5 (decimal VN)
-  s = s.replace(/(\d)\.(\d{3})\b/g, '$1$2')  // 1.000 → 1000 (nghìn)
-  const frac = s.match(/^(-?\d+)\/(\d+)$/)   // phân số 1/2 → 0.5
-  if (frac) { const b = parseInt(frac[2]); if (b !== 0) s = String(parseInt(frac[1]) / b) }
+  s = s.replace(/(\d)\.(\d{3})(?![\p{L}\p{N}_])/gu, '$1$2')  // 1.000 → 1000 (nghìn; ranh giới unicode như \y SQL)
+  const frac = s.match(/^(-?\d+)\/(\d+)$/)   // phân số 1/2 → 0.5 (round 10 chữ số — khớp SQL)
+  if (frac) { const b = parseInt(frac[2]); if (b !== 0) s = (parseInt(frac[1]) / b).toFixed(10) }
   s = s.replace(/^\+/, '')                    // bỏ dấu + đầu
   s = s.replace(/\.0+$/, '').replace(/(\.\d*?)0+$/, '$1')  // 0.50→0.5, 5.0→5
   return s

@@ -260,7 +260,7 @@ export function deXuatLevelKienThuc(input) {
 
   // ③④ — flag CỨNG của người: vọt thẳng L2+, bỏ qua nấc (spec §4.1).
   if (coChuongDo || coLoTienQuyet) {
-    lyDo.push(coChuongDo ? '③ chuông đỏ (TA báo lỗi rất nghiêm trọng ở bài đang học)' : '④ lỗ hổng tiên quyết (GV báo hổng kiến thức nền)')
+    lyDo.push(coChuongDo ? '③ chuông đỏ (GV/TA báo lỗi rất nghiêm trọng ở bài đang học)' : '④ lỗ hổng tiên quyết (GV báo hổng kiến thức nền)')
     return ket(Math.max(levelHienTai, 2), lyDo, { dien, yeuThieuDo, canLuyen, btvnChe, nhay: true })
   }
 

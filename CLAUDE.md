@@ -99,6 +99,31 @@
 
 ---
 
+## 2.0 ⭐ LUẬT QUERY & TÍNH TOÁN (CEO chốt 30/08/2026 — sau audit 177 chỗ vi phạm)
+
+- **MỌI query tổng hợp và MỌI phép tính nghiệp vụ PHẢI nằm ở Postgres** (function/view/
+  trigger/generated column). **Người gọi hay AI gọi thì CHỈ GỌI HÀM SẴN** — client qua
+  `supabase.rpc(...)`, bot hỏi–đáp qua catalog `scripts/hoidap/tools.mjs`.
+- Cụ thể hoá — trong TS/TSX **CẤM**:
+  - `reduce`/`filter().length`/đếm/cộng/trung bình/tỉ lệ/xếp hạng trên dữ liệu NGHIỆP VỤ
+    fetch về (tiền, điểm, mastery, hiệu suất, SLA, sĩ số…).
+  - fetch ≥2 bảng rồi join bằng JS để ra con số/trạng thái nghiệp vụ.
+  - **tính ở client rồi ghi kết quả vào DB** (nặng nhất — hư dữ liệu vĩnh viễn, đã có
+    tiền lệ: bug tiền thật do limit cắt cụt, xem `AUDIT-client-tinh-toan.md`).
+  - công thức nghiệp vụ tồn tại 2 nơi (JS + SQL, hoặc 2 bản JS) — nguồn công thức DUY
+    NHẤT là function Postgres, tên `fn_*`.
+- Client CÒN ĐƯỢC làm gì: CRUD dòng đơn qua PostgREST · list thô để render · format hiển
+  thị (ngày, tiền tệ, nhãn) · sort/filter thuần túy theo lựa chọn UI đang mở · đếm items
+  đang render (badge). Nghi ngờ ranh giới → mặc định đẩy xuống DB.
+- Quy ước: hàm đọc `fn_<domain>_<viec>` trả bảng/jsonb; hàm ghi có tính toán = RPC
+  transactional (tính + ghi trong CÙNG transaction); cột suy được từ cột khác cùng dòng =
+  generated column; trạng thái suy từ bảng khác = trigger. `security definer` chỉ khi thật
+  cần, mặc định invoker + RLS.
+- Mẫu tham chiếu đúng: `xep_hang_tu_luyen` (rank ở RPC) · `count_cau_by_dang`.
+  Chiến dịch trả nợ 177 chỗ cũ: `AUDIT-client-tinh-toan.md` (lộ trình 4 phase).
+
+---
+
 ## 2.1 Truy cập schema (read-only — single source = DB)
 
 - **Nguồn chuẩn của schema = DB Postgres THẬT.** `schema.md` trong repo là **bản chiếu auto-gen**, KHÔNG sửa tay.

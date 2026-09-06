@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../lib/kho/api'
 import { listTaiLieu, createTaiLieu, deleteTaiLieu, type TaiLieu } from '../../lib/tailieu'
 import { useStore } from '../../store/useStore'
-import { useMonScope } from '../../lib/mon'
+import { useMonScope } from '../../hooks/useMonScope'
 import { Shell, Field, inp } from '../kho/ui'
 import TaiLieuBuilder from './TaiLieuBuilder'
 

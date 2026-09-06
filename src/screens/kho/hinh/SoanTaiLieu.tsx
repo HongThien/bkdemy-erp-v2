@@ -372,7 +372,7 @@ function banInOnTap(L: Luoi, chon: { y: Y; bai: Bai; bt: BaiToan }[]): BanIn {
 // ══════════════════ CHẾ ĐỘ THEO MÔ HÌNH ══════════════════
 // Một buổi đi NHIỀU chuỗi (mỗi chuỗi = 1 dạng, kể cả chuỗi 1 câu). Mỗi chuỗi × phiếu = 1 DANH SÁCH pick
 // (đề chuẩn / lứa / biến thể / ý thật), N + Gợi ý hoặc thêm tay từng bài → xuất 2 phiếu. In nhẹ, không lưu DB.
-const DONG_BTVN = 6   // số dòng kẻ mặc định mỗi ý ở phiếu Về nhà (chỉnh được per bài)
+export const DONG_BTVN = 6   // số dòng kẻ mặc định mỗi ý ở phiếu Về nhà (chỉnh được per bài) — MT Hình cũng dùng làm mặc định
 // Chữ ký 1 pick = cùng phiếu + cùng bản (kind/luaId/bienTheId/yId) + cùng bộ node. 2 pick TRÙNG chữ ký
 // in ra Y HỆT NHAU — chỉ giữ phần tử ĐẦU khi ghép bản in (dùng chung bởi dedupePicks + badge cảnh báo
 // trùng trong ChuoiRow, Thùy 08-20: "builder hiện 2 câu nhưng preview chỉ hiện 1" — builder phải LỘ RÕ
@@ -589,70 +589,65 @@ export function BuoiPickEditor({ L, picks, cheDo, soDong, onChangePicks, onChang
         → bắt chọn mô hình TRƯỚC khi vào builder đầy đủ, khớp đúng luồng Thùy tả. Chọn xong (đóng popup)
         picks vẫn rỗng — builder hiện ra đã lọc sẵn, khỏi phải tự lọc lại. "Bỏ qua" = lưu bộ lọc RỖNG có
         chủ đích (setHinhMoHinhLoc({mainIds:[],satIds:[]})) để KHÔNG hỏi lại buổi này lần sau — phân biệt
-        với "chưa từng hỏi" (null): cả hai đều "không lọc gì" nhưng chỉ cái sau mới còn bật popup lại. */}
+        với "chưa từng hỏi" (null): cả hai đều "không lọc gì" nhưng chỉ cái sau mới còn bật popup lại.
+        ⭐ 28/08 (Thùy: "sau khi chọn mô hình rồi thì cái cột bên trái builder bỏ đi... Muốn chọn lại mô
+        hình thì có nút chọn để chọn lại") — popup này giờ là NƠI DUY NHẤT chọn mô hình chính + vệ tinh
+        (trước đây cột trái đứng SONG SONG làm việc này, dư thừa khi popup đã có) — dùng LẠI được bất cứ
+        lúc nào qua nút "✎ Đổi mô hình" ở thanh tóm tắt, không chỉ lúc buổi mới tinh. */}
     {chonMoHinhPopup && (
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-4">
         <div className="max-h-[85vh] w-full max-w-md overflow-y-auto rounded-2xl border border-slate-200 bg-white p-5 shadow-2xl">
           <h2 className="mb-1 text-[15px] font-semibold text-slate-900">Chọn mô hình cho buổi này</h2>
           <p className="mb-3 text-[12.5px] leading-relaxed text-slate-500">Thu hẹp danh sách bài theo (các) mô hình chính — lưu lại luôn, lần sau mở buổi khỏi phải lọc lại.</p>
-          <div className="max-h-96 overflow-y-auto pr-0.5">
-            {L.moHinh.slice().sort((a, b) => (maCap.get(a.id) ?? '').localeCompare(maCap.get(b.id) ?? '')).map((m) => (
-              <label key={m.id} className="mb-1 flex cursor-pointer items-center gap-2 rounded-lg border border-dashed border-teal-200 bg-teal-50/40 px-2 py-1.5 text-[12px] text-slate-700 hover:bg-teal-50">
-                <input type="checkbox" checked={mainIds.has(m.id)} onChange={() => toggleMain(m.id)} />
-                <Ma>{maCap.get(m.id) ?? '?'}</Ma><span className="min-w-0 flex-1 truncate"><MathText>{tron(m.ten).slice(0, 42)}</MathText></span>
-              </label>
-            ))}
+          <div className="max-h-[26rem] overflow-y-auto pr-0.5">
+            {L.moHinh.slice().sort((a, b) => (maCap.get(a.id) ?? '').localeCompare(maCap.get(b.id) ?? '')).map((m) => {
+              const daChon = mainIds.has(m.id)
+              const conM = vetinhCuaId.get(m.id) ?? []
+              return (
+                <div key={m.id} className="mb-1">
+                  <label className="flex cursor-pointer items-center gap-2 rounded-lg border border-dashed border-teal-200 bg-teal-50/40 px-2 py-1.5 text-[12px] text-slate-700 hover:bg-teal-50">
+                    <input type="checkbox" checked={daChon} onChange={() => toggleMain(m.id)} />
+                    <Ma>{maCap.get(m.id) ?? '?'}</Ma><span className="min-w-0 flex-1 truncate"><MathText>{tron(m.ten).slice(0, 42)}</MathText></span>
+                  </label>
+                  {daChon && (
+                    <div className="ml-4 mt-0.5 border-l-2 border-indigo-100 pl-2">
+                      {conM.length === 0
+                        ? <div className="py-0.5 text-[11px] text-slate-400">— không có vệ tinh (lá) —</div>
+                        : conM.map((v) => (
+                          <label key={v.id} className="mb-0.5 flex cursor-pointer items-center gap-2 rounded-lg border border-dashed border-indigo-200 bg-indigo-50/40 px-2 py-1 text-[11.5px] text-slate-700 hover:bg-indigo-50">
+                            <input type="checkbox" checked={satIds.has(v.id)} onChange={() => toggleSat(v.id)} />
+                            <Ma>{maCap.get(v.id) ?? '?'}</Ma><span className="min-w-0 flex-1 truncate"><MathText>{v.ten}</MathText></span>
+                          </label>
+                        ))}
+                    </div>
+                  )}
+                </div>
+              )
+            })}
           </div>
           <div className="mt-4 flex items-center justify-between gap-2">
-            <button onClick={async () => { if (filterKey) await gt.setHinhMoHinhLoc(filterKey, { mainIds: [], satIds: [] }).catch(() => {}); setChonMoHinhPopup(false) }}
+            <button onClick={async () => { if (filterKey) await gt.setHinhMoHinhLoc(filterKey, { mainIds: [], satIds: [] }).catch(() => {}); setMainIds(new Set()); setSatIds(new Set()); setChonMoHinhPopup(false) }}
               className="rounded-lg border border-slate-300 px-3 py-2 text-[12.5px] text-slate-500 hover:bg-slate-50">Bỏ qua, xem tất cả</button>
-            <button onClick={() => setChonMoHinhPopup(false)} disabled={mainIds.size === 0}
-              className="rounded-lg bg-indigo-600 px-4 py-2 text-[13px] font-medium text-white disabled:opacity-40">Bắt đầu soạn{mainIds.size ? ` (${mainIds.size} mô hình)` : ''}</button>
+            <button onClick={() => setChonMoHinhPopup(false)}
+              className="rounded-lg bg-indigo-600 px-4 py-2 text-[13px] font-medium text-white">{picks.length ? 'Xong' : 'Bắt đầu soạn'}{mainIds.size ? ` (${mainIds.size} mô hình)` : ''}</button>
           </div>
         </div>
       </div>
     )}
     {/* ⭐ 17/08 (Thùy: "bỏ cái màn ở bên góc phải đi, t chả thấy có ý nghĩa gì") — panel "Tóm tắt" cũ đã bỏ.
         ⭐ 08-20 (Thùy: "bên phải preview luôn"): cột phải MỚI không phải "Tóm tắt" cũ — là panel XEM TRƯỚC
-        sống (đề + hình), thay hẳn popup 👁. Lọc mô hình = MỤC LỤC, BÉ, chỉ để tìm nhanh; cột giữa (danh
-        sách chuỗi/bài) vẫn rộng nhất — panel xem trước ăn vào phần không gian trống bên phải trước đây bỏ. */}
-    <div className="grid items-start gap-3 xl:grid-cols-[190px_minmax(0,1fr)_360px]">
-      <Panel label="Lọc mô hình (mục lục)">
-        <div className="mb-1 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Mô hình chính · chọn được nhiều</div>
-        {/* ⭐ 27/08 (Thùy: "vệ tinh phải ở ngay dưới mô hình chính") — mỗi dòng mô hình chính, nếu đang
-            được chọn, kéo theo NGAY DƯỚI nó (thụt lề) đúng các vệ tinh của riêng nó — thay vì 1 khối vệ
-            tinh gộp chung nằm cuối, không rõ vệ tinh nào của mô hình nào. */}
-        <div className="max-h-72 overflow-y-auto pr-0.5">
-          {L.moHinh.slice().sort((a, b) => (maCap.get(a.id) ?? '').localeCompare(maCap.get(b.id) ?? '')).map((m) => {
-            const daChon = mainIds.has(m.id)
-            const conM = vetinhCuaId.get(m.id) ?? []
-            return (
-              <div key={m.id} className="mb-1">
-                <label className="flex cursor-pointer items-center gap-2 rounded-lg border border-dashed border-teal-200 bg-teal-50/40 px-2 py-1.5 text-[12px] text-slate-700 hover:bg-teal-50">
-                  <input type="checkbox" checked={daChon} onChange={() => toggleMain(m.id)} />
-                  <Ma>{maCap.get(m.id) ?? '?'}</Ma><span className="min-w-0 flex-1 truncate"><MathText>{tron(m.ten).slice(0, 42)}</MathText></span>
-                </label>
-                {daChon && (
-                  <div className="ml-4 mt-0.5 border-l-2 border-indigo-100 pl-2">
-                    {conM.length === 0
-                      ? <div className="py-0.5 text-[11px] text-slate-400">— không có vệ tinh (lá) —</div>
-                      : conM.map((v) => (
-                        <label key={v.id} className="mb-0.5 flex cursor-pointer items-center gap-2 rounded-lg border border-dashed border-indigo-200 bg-indigo-50/40 px-2 py-1 text-[11.5px] text-slate-700 hover:bg-indigo-50">
-                          <input type="checkbox" checked={satIds.has(v.id)} onChange={() => toggleSat(v.id)} />
-                          <Ma>{maCap.get(v.id) ?? '?'}</Ma><span className="min-w-0 flex-1 truncate"><MathText>{v.ten}</MathText></span>
-                        </label>
-                      ))}
-                  </div>
-                )}
-              </div>
-            )
-          })}
-        </div>
-      </Panel>
-
+        sống (đề + hình), thay hẳn popup 👁.
+        ⭐ 28/08 (Thùy: "tự dưng có cột trái làm gì") — cột trái "Lọc mô hình (mục lục)" BỎ hẳn, việc chọn
+        mô hình dồn về popup ở trên (mở lại qua nút "✎ Đổi mô hình" ngay dưới đây) — chỉ còn 2 cột. */}
+    <div className="grid items-start gap-3 xl:grid-cols-[minmax(0,1fr)_360px]">
       <div className="min-w-0">
-        <div className="mb-2 flex items-center gap-2 text-[11px] text-slate-400">
-          <span>{mainIds.size ? `Đang lọc theo ${mainIds.size} mô hình chính` : 'Tất cả chuỗi trong kho'} · <b className="text-slate-600">{components.length}</b> chuỗi</span>
+        <div className="mb-2 flex flex-wrap items-center gap-2 text-[11px] text-slate-400">
+          <span>
+            {mainIds.size
+              ? <>Mô hình: <b className="text-slate-600">{[...mainIds].map((id) => tron(L.moHinh.find((m) => m.id === id)?.ten ?? '?')).join(', ')}</b></>
+              : 'Tất cả chuỗi trong kho'} · <b className="text-slate-600">{components.length}</b> chuỗi
+          </span>
+          <button onClick={() => setChonMoHinhPopup(true)} className="rounded border border-indigo-300 px-1.5 py-0.5 text-indigo-600 hover:bg-indigo-50">✎ Đổi mô hình</button>
           {mainIds.size > 0 && <button onClick={() => { setMainIds(new Set()); setSatIds(new Set()) }} className="rounded border border-slate-300 px-1.5 py-0.5 text-slate-500 hover:bg-slate-50">✕ Bỏ lọc</button>}
         </div>
         {!nodes.length
@@ -873,7 +868,7 @@ async function rankBanOptions(opts: { ban: Ban; label: string }[], chuoi: BaiToa
     : o.ban.kind === 'bienthe' ? (usage.bienthe.get(o.ban.bienTheId) ?? 0) : (usage.y.get(o.ban.yId) ?? 0)
   return [...opts].sort((a, b) => usageOf(a) - usageOf(b))
 }
-async function goiYChuoi(chuoi: BaiToan[], phan: 'lop' | 'nha' | 'et' | 'mt', n: number): Promise<PickItem[]> {
+export async function goiYChuoi(chuoi: BaiToan[], phan: 'lop' | 'nha' | 'et' | 'mt', n: number): Promise<PickItem[]> {
   const opts = await banOptionsOfChuoi(chuoi)
   const sorted = await rankBanOptions(opts, chuoi)
   const nodeIds = chuoi.map((b) => b.id)
@@ -1111,7 +1106,7 @@ function PreviewPane({ L, xem, onNav, onClose }: {
 }
 // Popup 2 BƯỚC cho MỘT chuỗi: (1) chọn BẢN — đề chuẩn/lứa (≥2 node) hoặc biến thể/ý thật riêng lẻ (1 node).
 // (2) CHỈ chuỗi ≥2 node mới sang cây tick ý; chuỗi 1 node CONFIRM THẲNG (không tiền đề, không gì để nở/ẩn).
-function ChonChuoiPopup({ L, phan, chuoi, editing, daChonList, onClose, onConfirm }: {
+export function ChonChuoiPopup({ L, phan, chuoi, editing, daChonList, onClose, onConfirm }: {
   L: Luoi; phan: 'lop' | 'nha' | 'et' | 'mt'; chuoi: BaiToan[]; editing?: PickItem; daChonList?: PickItem[]
   onClose: () => void; onConfirm: (ban: Ban, nodeIds: string[]) => void
 }) {

@@ -52,6 +52,9 @@ export type BanIn = {
   // KHÔNG nhét vào `tieuDe`. Các đường gọi khác (giáo trình/ôn tập) không cần set 2 field này.
   lop?: string
   ngay?: string
+  // ⭐ 02/09 MT Hình: tiêu đề in ở chế độ perHS — mặc định (không set) = "Đề kiểm tra cuối giờ lớp X" của ET;
+  // MT đặt tên MT ("MT Học kỳ 1 — Toán 9") vì MT không phải ET cuối giờ.
+  tieuDeIn?: string
   // ⭐ 24/08 (Thùy: "header BTVN linh tinh, làm giống hệt form Đại đi") — bản "Về nhà" dùng ĐÚNG
   // BtvnBkHead của Đại (masthead .gtbk-mh* + ô Họ tên/Lớp/Điểm) thay vì masthead `hpmh` chung, và
   // Lớp/Ngày phát/Hạn nộp lên PILL CÓ CẤU TRÚC (như Đại) — KHÔNG nhét chung vào `tieuDe` nữa.
@@ -61,6 +64,11 @@ export type BanIn = {
   laBtvn?: boolean
   tieuBai?: string
   ngayNop?: string
+  // ⭐ 28/08 (Thùy: "Bài tập Hình chưa có chế độ in cả lớp theo tên học sinh giống Đại số à") — HS có mặt
+  // buổi này (khớp lop_id+ngay), gắn ở attachBtvnMeta (GiaoTrinhScreen.tsx), CÙNG hàm `hsCoMatCuaBuoi`
+  // Đại dùng. Chỉ có ý nghĩa khi laBtvn — giáo trình 'lop'/ET không cần roster ở đây (ET dùng `perHS` prop
+  // riêng vì mỗi HS có mã đề/mucs KHÁC NHAU, còn BTVN "Cả lớp" mọi HS CHUNG 1 mucs, chỉ khác tên trên đầu phiếu).
+  roster?: { id: string; ho_ten: string }[]
 }
 
 // ⭐ 22/08 (Thùy: "làm nốt cho giống Đại — In nhanh"): `headless` = khuôn PrintView.tsx của Đại — ẩn
@@ -73,6 +81,10 @@ export default function HinhPrintView({ ban, onClose, perHS, headless, onReady, 
   headless?: boolean; onReady?: () => void; onRenderErr?: (msg: string) => void
 }) {
   const [gv, setGv] = useState(false)      // bản GV = kèm lời giải + hình đáp án
+  // ⭐ 28/08 (Thùy: "chưa có chế độ in cả lớp theo tên học sinh giống Đại") — BTVN "Cả lớp": mọi HS chung
+  // 1 mucs, chỉ khác tên đầu phiếu — khuôn `perHS` của Đại (PrintView.tsx `scope==='btvn'` toggle), tách
+  // TÊN state riêng vì `perHS` (prop) đã có nghĩa khác ở đây (mã đề ET, mỗi HS mucs KHÁC nhau).
+  const [perHSBtvn, setPerHSBtvn] = useState(false)
   const [pages, setPages] = useState(0)
   const [rendering, setRendering] = useState(true)
   const [loi, setLoi] = useState<string | null>(null)
@@ -134,7 +146,7 @@ export default function HinhPrintView({ ban, onClose, perHS, headless, onReady, 
     }, 0)
     return () => { cancelled = true; clearTimeout(hoan); if (watchdog) clearTimeout(watchdog) }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ban, gv, perHS])
+  }, [ban, gv, perHS, perHSBtvn])
 
   // "In nhanh" (headless) — dựng xong TỰ gọi window.print() sau đệm 350ms (phòng render 2-pass), đóng
   // khi hộp thoại in đóng. Khuôn PrintView.tsx của Đại (headless KHÔNG linkOnly).
@@ -155,7 +167,7 @@ export default function HinhPrintView({ ban, onClose, perHS, headless, onReady, 
 
   if (headless) return createPortal(
     <>
-      <div className="pv-src" ref={srcRef} aria-hidden><Noi ban={ban} gv={gv} perHS={perHS} /></div>
+      <div className="pv-src" ref={srcRef} aria-hidden><Noi ban={ban} gv={gv} perHS={perHS} perHSBtvn={perHSBtvn} /></div>
       <div style={{ position: 'fixed', top: 0, left: 0, zIndex: 88, width: '210mm', background: '#fff' }}><div ref={dstRef} className="pv-pages" /></div>
       {/* no-print: chỉ hiện trên màn hình, @media print tự ẩn khi window.print() mở — không lọt vào PDF/giấy. */}
       <div className="no-print fixed inset-0 z-[95] flex items-center justify-center bg-white">
@@ -183,6 +195,19 @@ export default function HinhPrintView({ ban, onClose, perHS, headless, onReady, 
             </button>
           ))}
         </div>
+        {/* ⭐ 28/08 (Thùy: "chưa có chế độ in cả lớp theo tên học sinh giống Đại") — khuôn ĐÚNG toggle
+            "Bản trống"/"🖨 Cả lớp (N)" của Đại (PrintView.tsx, scope==='btvn'), chỉ hiện cho BTVN — giáo
+            trình 'lop'/ET không có khái niệm "cả lớp theo tên" (ET đã có mã đề riêng per-HS rồi). */}
+        {ban.laBtvn && (
+          <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5"
+            title={ban.roster?.length ? `${ban.roster.length} HS có mặt — in mỗi HS 1 phiếu, tên sẵn` : 'Chưa điểm danh có mặt → chỉ in bản trống'}>
+            <button onClick={() => setPerHSBtvn(false)} className={`rounded-md px-3 py-1 text-[12.5px] font-medium transition ${!perHSBtvn ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>Bản trống</button>
+            <button onClick={() => setPerHSBtvn(true)} disabled={!ban.roster?.length}
+              className={`rounded-md px-3 py-1 text-[12.5px] font-medium transition disabled:opacity-40 ${perHSBtvn ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>
+              🖨 Cả lớp{ban.roster?.length ? ` (${ban.roster.length})` : ''}
+            </button>
+          </div>
+        )}
         <span className="text-[12px] text-slate-400">{rendering ? 'đang dựng trang…' : `${pages} trang`}</span>
         <button disabled={rendering || !!loi} onClick={() => printWithFilename(safeFileName(`${ban.tieuDe}${gv ? ' - GV' : ''}`))}
           className="ml-auto rounded-lg bg-teal-600 px-3 py-1.5 text-[13px] font-medium text-white disabled:bg-slate-300">⎙ In / Lưu PDF</button>
@@ -191,7 +216,7 @@ export default function HinhPrintView({ ban, onClose, perHS, headless, onReady, 
       {loi && <div className="no-print bg-rose-50 px-4 py-2 text-[12.5px] text-rose-700">{loi}</div>}
 
       {/* nguồn ẩn — paged.js đọc innerHTML từ đây rồi tự phân trang */}
-      <div className="pv-src" ref={srcRef}><Noi ban={ban} gv={gv} perHS={perHS} /></div>
+      <div className="pv-src" ref={srcRef}><Noi ban={ban} gv={gv} perHS={perHS} perHSBtvn={perHSBtvn} /></div>
       <div className="pv-scroll h-[calc(100vh-42px)] overflow-y-auto bg-slate-200 p-5">
         <div className="pv-pages" ref={dstRef} />
       </div>
@@ -206,13 +231,13 @@ export default function HinhPrintView({ ban, onClose, perHS, headless, onReady, 
 // (ETScreen.tsx) — component này không biết "mã đề" là gì, chỉ vẽ mucs được đưa.
 export type HinhPerHS = { hoTen: string; maDe: number; mucs: MucIn[] }
 
-function Noi({ ban, gv, perHS }: { ban: BanIn; gv: boolean; perHS?: HinhPerHS[] }) {
+function Noi({ ban, gv, perHS, perHSBtvn }: { ban: BanIn; gv: boolean; perHS?: HinhPerHS[]; perHSBtvn?: boolean }) {
   const logoUrl = location.origin + '/Logo.png'
   if (perHS) {
     // ⭐ Thùy 21/08 ("làm giống bên Đại số đi, cứ sáng tạo thêm làm gì"): dùng ĐÚNG `ETHeaderBK` của ET
     // Đại — không tự vẽ header riêng cho Hình. Tiêu đề = "Đề kiểm tra cuối giờ lớp {lớp}" y hệt Đại,
     // KHÔNG chữ "Hình"/"Buổi học". Ngày lên pill góc phải (prop `ngay` của ETHeaderBK), không nhét vào tiêu đề.
-    const title = `Đề kiểm tra cuối giờ lớp ${ban.lop ?? ''}`
+    const title = ban.tieuDeIn ?? `Đề kiểm tra cuối giờ lớp ${ban.lop ?? ''}`
     return (
       <div>
         {perHS.map((hs, hi) => (
@@ -229,6 +254,23 @@ function Noi({ ban, gv, perHS }: { ban: BanIn; gv: boolean; perHS?: HinhPerHS[] 
     // ⭐ 24/08 (Thùy: "header BTVN linh tinh, làm giống hệt form Đại đi") — BtvnBkHead ĐÚNG như Đại:
     // masthead .gtbk-mh (pill "BTVN" + tiêu đề buổi TRẦN, không nhét lớp/ngày vào) + Lớp/Ngày phát/Hạn
     // nộp trên dòng sub CÓ CẤU TRÚC + hàng ô Họ tên/Lớp/Điểm cho HS điền tay (bản GV ẩn hàng ô này).
+    // ⭐ 28/08 (Thùy: "chưa có chế độ in cả lớp theo tên học sinh giống Đại số à") — "Cả lớp": mọi HS
+    // CHUNG 1 `ban.mucs` (khác ET, mỗi HS mucs riêng vì mã đề đổi) — chỉ lặp lại phiếu N lần, đổi TÊN ở
+    // đầu mỗi phiếu. `.hp-hs-recto` (trừ phiếu đầu) = ngắt sang trang LẺ, khuôn `.pv-hs-recto` của Đại
+    // (in 2 mặt không dính phiếu HS này sang HS khác).
+    if (perHSBtvn && ban.roster?.length) {
+      return (
+        <div>
+          {ban.roster.map((hs, hi) => (
+            <div key={hs.id} className={hi > 0 ? 'hp-hs-recto' : undefined}>
+              <BtvnBkHead buoiTitle={ban.tieuBai || ban.tieuDe} ngayPhat={ban.ngay ?? ''} ngayNop={ban.ngayNop ?? ''} lopTen={ban.lop ?? ''} hoTen={hs.ho_ten} gv={gv} />
+              {ban.ghiChuDau && <div className="hp-note">{ban.ghiChuDau}</div>}
+              <MucsBlock mucs={ban.mucs} gv={gv} moHinhLyThuyet={ban.moHinhLyThuyet} />
+            </div>
+          ))}
+        </div>
+      )
+    }
     return (
       <div>
         <BtvnBkHead buoiTitle={ban.tieuBai || ban.tieuDe} ngayPhat={ban.ngay ?? ''} ngayNop={ban.ngayNop ?? ''} lopTen={ban.lop ?? ''} gv={gv} />
@@ -258,8 +300,14 @@ function Noi({ ban, gv, perHS }: { ban: BanIn; gv: boolean; perHS?: HinhPerHS[] 
 
 /** Render danh sách MucIn — tách khỏi `Noi` để dùng lại được cho CẢ bản gộp (1 khối) LẪN mỗi phiếu perHS
  *  (đánh số "Bài N" RIÊNG từng lần gọi — `soDe`/`moHinhLtDaHien` là biến cục bộ, không rò giữa các lần gọi). */
-function MucsBlock({ mucs, gv, moHinhLyThuyet }: { mucs: MucIn[]; gv: boolean; moHinhLyThuyet?: BanIn['moHinhLyThuyet'] }) {
-  let soDe = 0
+// batDau = số "Bài" bắt đầu (mặc định 1) — nối số qua nhiều lần gọi.
+// cauTu (MT, Thùy 02/09: "đánh giá theo từng ý") = đánh số THEO Ý nối tiếp câu Đại: bài 3 ý sau 16 câu Đại =
+// tiêu đề "Câu 17–19." (bài 1 ý = "Câu 17."); bên trong vẫn ý a) b) c) như thường (Thùy: "bên trên đã ghi 17–19
+// rồi thì bên trong ghi ý a,b,c thôi").
+export function MucsBlock({ mucs, gv, moHinhLyThuyet, batDau = 1, cauTu }: { mucs: MucIn[]; gv: boolean; moHinhLyThuyet?: BanIn['moHinhLyThuyet']; batDau?: number; cauTu?: number }) {
+  let soDe = batDau - 1
+  let soCau = (cauTu ?? 1) - 1
+  const nhanY = (y: YIn, _k0: number, _j: number, _n: number): string => (y.nhan ? `${y.nhan})` : '')
   let moHinhLtDaHien = ''  // gom LT mô hình 1 lần/nhóm liền nhau (khuôn Đại: LT chuyên đề hiện 1 lần)
   return (
     <>
@@ -279,6 +327,8 @@ function MucsBlock({ mucs, gv, moHinhLyThuyet }: { mucs: MucIn[]; gv: boolean; m
           </div>
         )
         soDe++
+        const k0 = soCau + 1; const nY = m.ys.length; soCau += nY
+        const tieuDe = cauTu != null ? `Câu ${k0}${nY > 1 ? `–${k0 + nY - 1}` : ''}.` : `Bài ${soDe}.`
         // LT mô hình — hiện MỘT LẦN ngay trước bài đầu tiên của mỗi nhóm mô hình liền nhau (chỉ có data
         // khi banInTheoMoHinh dựng cho phan='lop' — bản BTVN không kèm, khuôn Đại "LT chỉ ở trên lớp").
         const ltMh = m.moHinhId ? moHinhLyThuyet?.[m.moHinhId] : null
@@ -301,7 +351,7 @@ function MucsBlock({ mucs, gv, moHinhLyThuyet }: { mucs: MucIn[]; gv: boolean; m
                 ⚠ Dùng `flow-root`, KHÔNG dùng `overflow:hidden` — overflow ẩn trong paged.js CẮT nội
                 dung ở chỗ sang trang (bẫy đã ghi trong DEVLOG), còn flow-root vẫn cho ngắt trang bình thường. */}
             <div className="hp-khoi hp-khoi-de">
-              <div className="hp-de-h">Bài {soDe}.</div>
+              <div className="hp-de-h">{tieuDe}</div>
               {/* Hình / ô-vẽ FLOAT phải → đề + câu hỏi chảy SÁT bên trái, không bị đẩy xuống dưới hình.
                   Chi tiết 3 trạng thái ở khối ngay dưới. */}
               {/* 3 TRẠNG THÁI (Thùy 17/08):
@@ -327,7 +377,7 @@ function MucsBlock({ mucs, gv, moHinhLyThuyet }: { mucs: MucIn[]; gv: boolean; m
                   giải b" như trước (đọc rối, và HS phải đợi giải xong ý này mới thấy đề ý sau). */}
               {m.ys.map((y, j) => (
                 <div key={j} className="hp-y hp-txt-flow">
-                  {y.nhan && <b>{y.nhan}) </b>}<MathText>{y.giaThietPhu ? `${y.giaThietPhu}. ${y.noiDung}` : y.noiDung}</MathText>
+                  {nhanY(y, k0, j, nY) && <b>{nhanY(y, k0, j, nY)} </b>}<MathText>{y.giaThietPhu ? `${y.giaThietPhu}. ${y.noiDung}` : y.noiDung}</MathText>
                   {y.ghiChu && <span className="hp-tag">{y.ghiChu}</span>}
                 </div>
               ))}
@@ -336,7 +386,7 @@ function MucsBlock({ mucs, gv, moHinhLyThuyet }: { mucs: MucIn[]; gv: boolean; m
               ? <div className="hp-khoi hp-khoi-giai">{m.ys.map((y, j) => (
                 <div key={`giai-${j}`} className="hp-y">
                   <div className="hp-giai">
-                    {y.nhan && <b>{y.nhan}) </b>}
+                    {nhanY(y, k0, j, nY) && <b>{nhanY(y, k0, j, nY)} </b>}
                     {y.bacThamChieu && <div className="hp-bac">Lời giải THAM CHIẾU — lấy từ bài chuẩn, tên điểm theo hệ thống (không phải tên điểm của đề này).</div>}
                     {/* Node ẨN nở thành bước con (đề không hỏi vẫn phải giải) — đứng TRƯỚC lời giải chính. */}
                     {(y.buoc ?? []).map((b, bi) => (
@@ -380,7 +430,7 @@ function MucsBlock({ mucs, gv, moHinhLyThuyet }: { mucs: MucIn[]; gv: boolean; m
 
 // CSS nội dung bản Hình. Nối SAU buildPagedCss nên ghi đè được phần chung khi cần.
 const HP_SANS = "'Noto Sans','Segoe UI',Arial,sans-serif"
-const HINH_CSS = `
+export const HINH_CSS = `
 /* Masthead — khuôn "mới nhất" bên Đại (gtbk-mh), namespace RIÊNG hpmh-* (xem comment ở Noi()). */
 .hpmh{position:relative;overflow:hidden;margin:2mm 0 5mm;min-height:26mm;padding:5mm 6mm;border:1px solid #dbe7f4;border-radius:5mm;background:linear-gradient(112deg,#f5fbff 0%,#f8fbff 42%,#fff7fb 100%);break-inside:avoid;break-after:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .hpmh:before{content:"";position:absolute;left:0;top:0;bottom:0;width:2.3mm;background:linear-gradient(180deg,#1997d4 0%,#18a889 36%,#f0a63b 68%,#e83483 100%);-webkit-print-color-adjust:exact;print-color-adjust:exact}
@@ -391,6 +441,8 @@ const HINH_CSS = `
 .hpmh-title{position:relative;z-index:3;margin:0;font-family:${HP_SANS};font-size:21pt;line-height:1.1;letter-spacing:-.03em;color:#142744;font-weight:900}
 .hpmh-sub{position:relative;z-index:3;margin-top:1.8mm;font-family:${HP_SANS};font-size:9.6pt;color:#6a7a93;font-weight:600}
 .hp-note{background:#fffaf1;border:1px solid #f0c987;border-radius:8px;padding:8px 11px;font-size:14px;color:#8a5a12;margin-bottom:12px}
+/* "Cả lớp" BTVN — mỗi phiếu HS (trừ phiếu đầu) ngắt sang trang LẺ, khuôn .pv-hs-recto của Đại (PrintView.tsx). */
+.hp-hs-recto{break-before:right}
 /* Lý thuyết mô hình — khuôn .pv-box-lt/.pv-box-label của Đại (PrintView.tsx), namespace hp-*. */
 .hp-box-lt{background:#eff7fd;border:1px solid #cfe6f5;border-radius:9px;padding:11px 13px;margin-bottom:10px;break-inside:avoid}
 .hp-box-lt-t{font-size:15px;font-weight:800;text-transform:uppercase;color:#2D9CDB;letter-spacing:.3px;margin-bottom:5px;break-after:avoid}
@@ -410,8 +462,11 @@ const HINH_CSS = `
 .hp-txt-flow{font-size:17px}
 .hp-fig-r{float:right;width:36%;margin:0 0 3px 5mm;box-sizing:border-box}
 .hp-fig-r img{width:100%;max-height:50mm;object-fit:contain;border:1px solid #e2e8f0;border-radius:6px;background:#fff}
-.hp-draw-r{float:right;width:40%;height:58mm;margin:0 0 3px 5mm;box-sizing:border-box;border:1px dashed #94a3b8;border-radius:6px;background:#fff;position:relative}
-.hp-draw-r span{position:absolute;top:4px;left:6px;font-size:10px;color:#94a3b8;text-transform:uppercase;letter-spacing:.05em}
+/* ⭐ Ô TRỐNG vẽ hình (Thùy 28/08: "to hơn 1 chút và có chia lưới ô vuông mờ mờ để HS vẽ hình cho dễ") —
+   to hơn (40%×58mm → 46%×68mm) + lưới ô vuông 5mm mờ (giống giấy kẻ ly) làm nền, không đụng khung/nhãn. */
+.hp-draw-r{float:right;width:46%;height:68mm;margin:0 0 3px 5mm;box-sizing:border-box;border:1px dashed #94a3b8;border-radius:6px;background:#fff;position:relative;
+  background-image:linear-gradient(#eef1f6 1px,transparent 1px),linear-gradient(90deg,#eef1f6 1px,transparent 1px);background-size:5mm 5mm}
+.hp-draw-r span{position:absolute;top:4px;left:6px;font-size:10px;color:#94a3b8;text-transform:uppercase;letter-spacing:.05em;background:#fff;padding:0 3px}
 /* văn bản trái · hình phải: inline-block thay vì flex/grid — paged.js đo layout grid không đáng tin (DEVLOG 07-05) */
 .hp-row{font-size:0;break-inside:avoid}
 .hp-txt{display:inline-block;vertical-align:top;width:66%;font-size:17px;padding-right:4mm;box-sizing:border-box}

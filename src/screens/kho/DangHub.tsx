@@ -27,6 +27,7 @@ Câu 2.
 Lời giải chi tiết: Quy đồng: $\\frac{4}{6} + \\frac{1}{6} = \\frac{5}{6}$.`
 import type { BranchConfig } from './branches'
 import { BacChip, Code, inp, mucDoTone, MathText, readClipboardImageFile } from './ui'
+import { MathTextarea } from '../../components/math/MathTextarea'
 
 const loaiLabel = (v: string) => LOAI_CAU.find((x) => x.value === v)?.label ?? v
 const ta = `${inp} min-h-[72px] resize-y leading-relaxed`
@@ -825,7 +826,7 @@ export function CauEditor({ item, label, onChange, onToggle, fill }: {
         <div className="flex min-h-0 flex-1 flex-col gap-2.5">
           <div className="shrink-0">
             <label className={lbl}>Đề</label>
-            <AutoTextarea value={item.noi_dung} onChange={(v) => onChange({ noi_dung: v })} maxPx={200} className={`${inp} w-full resize-none leading-relaxed`} />
+            <MathTextarea rows={1} autoMaxPx={200} value={item.noi_dung} onChange={(v) => onChange({ noi_dung: v })} className={`${inp} w-full resize-none leading-relaxed`} />
             <div className="mt-1.5"><ImageSlot url={item.anhDe} label="Ảnh đề" onChange={(v) => onChange({ anhDe: v })} /></div>
           </div>
           <div className="shrink-0">
@@ -844,7 +845,7 @@ export function CauEditor({ item, label, onChange, onToggle, fill }: {
     <div className={cls}>
       {header}
       <label className={lbl}>Đề</label>
-      <textarea value={item.noi_dung} onChange={(e) => onChange({ noi_dung: e.target.value })} className={`${ta} min-h-[80px]`} />
+      <MathTextarea value={item.noi_dung} onChange={(v) => onChange({ noi_dung: v })} className={`${ta} min-h-[80px]`} />
       {hasOpts ? (
         <>
           <div className="mt-2">{optsEdit}</div>
@@ -876,7 +877,9 @@ function MethodBtn({ active, onClick, children }: { active: boolean; onClick: ()
 }
 
 // Textarea tự co cao theo nội dung (đề ngắn → thấp), tối đa maxPx rồi cuộn.
-function AutoTextarea({ value, onChange, className, maxPx }: { value: string; onChange: (v: string) => void; className?: string; maxPx?: number }) {
+// 09-03: ô Đề đã chuyển sang MathTextarea (prop autoMaxPx làm cùng việc) → KHÔNG còn chỗ dùng trong file này.
+// Giữ + export chờ Thùy gật mới xoá (Luật xoá).
+export function AutoTextarea({ value, onChange, className, maxPx }: { value: string; onChange: (v: string) => void; className?: string; maxPx?: number }) {
   const ref = useRef<HTMLTextAreaElement>(null)
   useLayoutEffect(() => {
     const el = ref.current; if (!el) return
@@ -890,12 +893,12 @@ function AutoTextarea({ value, onChange, className, maxPx }: { value: string; on
 // ![](url) NGAY TẠI CON TRỎ trong lời giải. MathText render ![](url) sẵn (màn + preview) → hình hiện
 // thẳng trong bài giải. Dùng khi clone bài có hình rồi bổ sung hình vào lời giải sau ("upload ảnh xong
 // lấy link đặt vào bài giải"). Chèn được NHIỀU hình, ở bất kỳ vị trí nào trong lời giải.
-function SolutionField({ value, onChange, taClassName, wrapClassName }: { value: string; onChange: (v: string) => void; taClassName: string; wrapClassName?: string }) {
+export function SolutionField({ value, onChange, taClassName, wrapClassName }: { value: string; onChange: (v: string) => void; taClassName: string; wrapClassName?: string }) {
   const taRef = useRef<HTMLTextAreaElement>(null)
   return (
     <div className={`flex min-h-0 flex-col ${wrapClassName ?? ''}`}>
       <ImgInsertBar taRef={taRef} value={value} onChange={onChange} className="mb-1" />
-      <textarea ref={taRef} value={value} onChange={(e) => onChange(e.target.value)}
+      <MathTextarea ref={taRef} value={value} onChange={onChange} wrapClassName="flex min-h-0 flex-1 flex-col"
         onPaste={(e) => { const f = Array.from(e.clipboardData.files).find((x) => x.type.startsWith('image/')); if (f) { e.preventDefault(); e.stopPropagation(); void insertImageAtCursor(f, taRef, value, onChange).catch((err: any) => alert('Upload ảnh lỗi: ' + (err?.message ?? err))) } }}
         className={taClassName} />
     </div>
@@ -903,7 +906,7 @@ function SolutionField({ value, onChange, taClassName, wrapClassName }: { value:
 }
 
 // Ảnh đề/đáp án: click chọn file HOẶC bấm vào ô rồi Ctrl+V dán ảnh → UPLOAD Supabase Storage, DB chỉ lưu URL.
-function ImageSlot({ url, label, onChange }: { url: string | null; label: string; onChange: (v: string | null) => void }) {
+export function ImageSlot({ url, label, onChange }: { url: string | null; label: string; onChange: (v: string | null) => void }) {
   const ref = useRef<HTMLInputElement>(null)
   const [busy, setBusy] = useState(false)
   const [crop, setCrop] = useState(false)

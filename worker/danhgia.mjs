@@ -24,6 +24,7 @@ import { fileURLToPath } from 'node:url'
 import { createClient } from '@supabase/supabase-js'
 import Anthropic from '@anthropic-ai/sdk'
 import { SYSTEM, SCHEMA } from './danhgia_prompt.mjs'
+import { GIA, CO_ADAPTIVE, USD_VND } from './gia_model.mjs'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const POLL_MS = 5000
@@ -65,17 +66,7 @@ const TOK_NEN = 1500         // phần tổng quan + cảnh báo cả lớp
 const HE_SO_AN_TOAN = 1.6    // chừa chỗ cho em có nhiều dạng bất thường
 const TRAN_TOKEN_RA = 40_000 // trần cứng, chặn ca sinh chữ chạy loạn
 const TRAN_TIEN_1_LUOT = 25_000 // đ — vượt thì DỪNG, báo người, không âm thầm tiêu
-const USD_VND = 26_000
-const GIA = { // USD / 1 triệu token
-  'claude-opus-4-8': { vao: 5, ra: 25 },
-  'claude-opus-4-7': { vao: 5, ra: 25 },
-  'claude-sonnet-5': { vao: 2, ra: 10 },
-  'claude-sonnet-4-6': { vao: 3, ra: 15 },
-  'claude-haiku-4-5': { vao: 1, ra: 5 },
-}
-// ⚠ Haiku 4.5 KHÔNG hỗ trợ adaptive thinking (API trả 400 "adaptive thinking is not
-//   supported on this model"). Gửi kèm `thinking` cho model không hỗ trợ = job chết.
-const CO_ADAPTIVE = new Set(['claude-opus-4-8', 'claude-opus-4-7', 'claude-sonnet-5', 'claude-sonnet-4-6', 'claude-fable-5'])
+// GIA / CO_ADAPTIVE / USD_VND: dùng chung mọi worker — xem worker/gia_model.mjs (sửa giá Ở ĐÓ).
 
 async function phan(job) {
   // Model do NGƯỜI chọn trên màn hình (cột `model_chon`) — để Thùy tự so Sonnet vs Opus

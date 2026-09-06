@@ -14,6 +14,47 @@ export function khoCuaMon(mon?: string | null, nhanh?: string | null): { cauTbl:
     ? { cauTbl: 'hgt_cau_hoi', banDoTbl: 'hgt_ban_do', ltDangTbl: 'hgt_dang_ly_thuyet', ltCdTbl: 'hgt_chuyen_de_ly_thuyet', listMap: listHgtMap }
     : { cauTbl: 'dai_cau_hoi', banDoTbl: 'dai_ban_do', ltDangTbl: 'dai_dang_ly_thuyet', ltCdTbl: 'dai_chuyen_de_ly_thuyet', listMap: listDaiMap }
 }
+// REGISTRY nhánh dạng-based TRONG 1 môn (UI toggle "chọn bản đồ"). Môn không có trong registry = 1 nhánh
+// duy nhất (nhanh=null), không hiện toggle. Thêm nhánh mới = thêm dòng ở đây + nhánh trong khoCuaMon —
+// KHÔNG `if (mon === 'Toán')` rải rác ở component (symmetry test §1.6).
+const NHANH_CUA_MON: Record<string, { ma: string | null; ten: string }[]> = {
+  'Toán': [{ ma: null, ten: 'Đại số' }, { ma: 'hinh_gt', ten: 'Hình giải tích' }],
+}
+export function nhanhCuaMon(mon?: string | null): { ma: string | null; ten: string }[] { return NHANH_CUA_MON[mon ?? ''] ?? [] }
+export function tenNhanh(mon: string | null | undefined, nhanh: string | null | undefined): string | null {
+  return nhanhCuaMon(mon).find((n) => n.ma === (nhanh ?? null))?.ten ?? null
+}
+// Môn có KHO HÌNH (mô hình/lưới `hinh_*` — đơn vị là BÀI/node, KHÔNG phải dạng) để ET/MT nhặt bài. Registry
+// thay cho `if (mon === 'Toán')` rải ở màn hình (§1.6 symmetry test).
+const KHO_HINH_MO_HINH = new Set(['Toán'])
+export const coKhoHinh = (mon?: string | null): boolean => KHO_HINH_MO_HINH.has(mon ?? '')
+
+// ⭐ NHÁNH THEO TỪNG CÂU — tài liệu TRỘN nhánh (MT: Thùy 21/08 chốt "toggle chọn bản đồ lúc chọn câu",
+// KHÔNG cứng "2 phần = Đại/Hình"). Lưu ở `cau_hinh.nhanhByCau[ma_cau]` — CHỈ ghi khi câu KHÁC nhánh mặc
+// định của tài liệu (`tai_lieu.nhanh`); thiếu key = theo nhánh tài liệu (0 regression cho ET/giáo trình
+// cũ). Câu mã đề 2/3 (etMaDe) luôn cùng dạng câu gốc → KẾ THỪA nhánh câu gốc, không lưu lặp.
+// KHÔNG suy nhánh từ TIỀN TỐ mã câu — đã kiểm DB thật: dai_cau_hoi có mã 'T14T…', hgt_ban_do có 'T312…'
+// (tiền tố không đáng tin, xem DEVLOG 08-21 findCauInKho).
+export type TaiLieuNhanhCtx = { mon?: string | null; nhanh?: string | null; cau_hinh?: CauHinh | null }
+export function nhanhCuaCau(tl: TaiLieuNhanhCtx, maCau: string): string | null {
+  const byCau = tl.cau_hinh?.nhanhByCau ?? {}
+  if (maCau in byCau) return byCau[maCau] ?? null
+  for (const [goc, arr] of Object.entries(tl.cau_hinh?.etMaDe ?? {})) if (goc in byCau && arr.includes(maCau)) return byCau[goc] ?? null
+  return tl.nhanh ?? null
+}
+export const cauTblCuaCau = (tl: TaiLieuNhanhCtx, maCau: string): string => khoCuaMon(tl.mon, nhanhCuaCau(tl, maCau)).cauTbl
+// Nạp nội dung câu của 1 tài liệu theo đúng kho từng câu — gom theo BẢNG, 1 query/bảng (không N+1).
+export async function fetchCausCuaTaiLieu(tl: TaiLieuNhanhCtx, maCaus: string[]): Promise<CauHoi[]> {
+  const byTbl = new Map<string, string[]>()
+  for (const ma of new Set(maCaus)) { if (laMaHinh(ma)) continue; const t = cauTblCuaCau(tl, ma); byTbl.set(t, [...(byTbl.get(t) ?? []), ma]) } // hàng Hình không ở kho câu
+  const out: CauHoi[] = []
+  for (const [tbl, mas] of byTbl) {
+    const { data, error } = await supabase.from(tbl).select('*').in('ma_cau', mas).limit(LIMIT)
+    if (error) throw error
+    out.push(...((data ?? []) as CauHoi[]))
+  }
+  return out
+}
 
 // buoi = mốc tầng-1 (Buổi 1, 2…). Trong 1 buổi: dang (trên lớp) + btvn (per-dạng) của các dạng đã chọn.
 // Lý thuyết chuyên đề KHÔNG lưu phan — DERIVE từ chuyên đề của các dạng trong buổi (lt_chuyen_de chỉ còn cho data cũ).
@@ -38,7 +79,12 @@ export type PhanLoai = 'buoi' | 'lt_chuyen_de' | 'dang' | 'btvn' | 'ontap' | 'cu
 // colByCau = SỐ CỘT khi in RIÊNG TỪNG CÂU (key = ma_cau → 2/3/4; thiếu/1 = full width). Câu tag cột LIỀN
 // NHAU tự xếp cạnh nhau (mỗi câu 1 cột); câu tag cột cách xa nhau KHÔNG ghép; câu lẻ = nửa trang. Thay cho
 // kiểu cột theo-phần (tai_lieu_phan.kieu) / theo-nhóm-form (etColByGroup) cũ.
-export type CauHinh = { header?: 'wave' | 'none'; footer?: 'wave' | 'none'; watermark?: 'logo' | 'none'; mau?: string; inLyThuyet?: boolean; btvnLinesByCau?: Record<string, number>; etFormByCau?: Record<string, string>; phanBac?: Record<string, string>; etMaDe?: Record<string, (string | null)[]>; hsMaDe?: Record<string, number>; etColByGroup?: Record<number, string>; colByCau?: Record<string, number> }
+// nhanhByCau = NHÁNH KHO của TỪNG CÂU khi tài liệu trộn nhánh (MT: câu Đại + câu Hình giải tích trong cùng
+// đề). Chỉ có key cho câu KHÁC `tai_lieu.nhanh`; resolve qua `nhanhCuaCau` (kế thừa cho câu mã đề 2/3).
+export type CauHinh = { header?: 'wave' | 'none'; footer?: 'wave' | 'none'; watermark?: 'logo' | 'none'; mau?: string; inLyThuyet?: boolean; btvnLinesByCau?: Record<string, number>; etFormByCau?: Record<string, string>; phanBac?: Record<string, string>; etMaDe?: Record<string, (string | null)[]>; hsMaDe?: Record<string, number>; etColByGroup?: Record<number, string>; colByCau?: Record<string, number>; nhanhByCau?: Record<string, string>; hinhBuoiId?: string; hinhByMa?: Record<string, HinhRowInfo>; hinhMaDe?: Record<string, [HinhBanRefLite | null, HinhBanRefLite | null]> }
+// hinhByMa (MT) = nội dung bài HÌNH của hàng `HINH:<uuid>` (xem laMaHinh). hinhMaDe = mã đề 2/3 của bài Hình, khoá =
+// chuoiSig(nodeIds) (khuôn ET Hình). hinhBuoiId = DI SẢN (buổi Hình mẫu, bản 02/09 sáng) — chỉ còn để deleteMT dọn.
+export type HinhBanRefLite = { kind: 'ghep'; luaId: string | null } | { kind: 'bienthe'; bienTheId: string } | { kind: 'y'; yId: string }
 export const DEFAULT_BTVN_LINES = 5
 // Form hiển thị trong ET (độc lập loai_cau kho).
 export type ETForm = 'trac_nghiem' | 'tra_loi_ngan' | 'tu_luan'
@@ -99,7 +145,16 @@ export type PhanResolved = TaiLieuPhan & {
   dang?: DangRow | null       // dang | btvn (đều ref_ma = ma_dang)
   lyThuyetDang?: LtRow | null // dang (lý thuyết · ví dụ của dạng)
   caus: CauHoi[]              // câu luyện (dang) / câu BTVN (btvn)
+  // maCaus = DANH SÁCH THÔ theo thứ tự tai_lieu_cau (kể cả mục KHÔNG phải câu kho, vd bài HÌNH `HINH:<id>` của
+  // MT — xem `laMaHinh`). `caus` chỉ có câu kho resolve được; ai cần đúng THỨ TỰ IN trộn Hình thì đọc maCaus.
+  maCaus: string[]
 }
+// MT trộn bài HÌNH (mô hình) NGAY TRONG PHẦN như 1 hàng câu (Thùy 02/09: "pick câu hình phải như ET, có dòng,
+// là câu đấy, in cùng") — tai_lieu_cau.ma_cau là TEXT không FK nên hàng Hình lưu mã tổng hợp `HINH:<uuid>`
+// giữ đúng VỊ TRÍ trong phần; nội dung bài (kind/nodeIds/cheDo/soDong) ở `cau_hinh.hinhByMa[ma]`.
+export const HINH_PREFIX = 'HINH:'
+export const laMaHinh = (ma: string): boolean => ma.startsWith(HINH_PREFIX)
+export type HinhRowInfo = { kind: 'ghep' | 'bienthe' | 'y'; luaId?: string | null; bienTheId?: string; yId?: string; nodeIds: string[]; cheDo?: 'hien' | 'o_trong' | 'khong'; soDong?: number | null }
 // ltChuyenDe / tenChuyenDe: map theo ma_chuyen_de — lý thuyết chuyên đề derive từ chuyên đề của các dạng.
 export type TaiLieuFull = { taiLieu: TaiLieu; phans: PhanResolved[]; ltChuyenDe: Record<string, LtRow | null>; tenChuyenDe: Record<string, string> }
 
@@ -402,7 +457,8 @@ export async function getTaiLieuFull(id: string): Promise<TaiLieuFull> {
     : []
   const K = khoCuaMon((tl as any).mon, (tl as any).nhanh) // dispatch kho theo (MÔN, NHÁNH) của tài liệu
   const maCaus = [...new Set(cauRows.map((r) => r.ma_cau))]
-  const caus = maCaus.length ? (((await supabase.from(K.cauTbl).select('*').in('ma_cau', maCaus).limit(LIMIT)).data ?? []) as CauHoi[]) : []
+  // Câu nạp theo NHÁNH TỪNG CÂU (cau_hinh.nhanhByCau — MT trộn Đại/Hình giải tích); câu không có key → K.cauTbl như cũ.
+  const caus = await fetchCausCuaTaiLieu(tl as TaiLieuNhanhCtx, maCaus)
   const cauMap = new Map(caus.map((c) => [c.ma_cau, c]))
   // Dạng dùng cho CẢ 'dang' (trên lớp) lẫn 'btvn' (về nhà) — đều ref_ma = ma_dang.
   const dangMas = [...new Set(phans.filter((p) => (p.loai_phan === 'dang' || p.loai_phan === 'btvn' || p.loai_phan === 'ontap') && p.ref_ma).map((p) => p.ref_ma as string))]
@@ -427,6 +483,7 @@ export async function getTaiLieuFull(id: string): Promise<TaiLieuFull> {
       dang: dangLike && p.ref_ma ? dangMap.get(p.ref_ma) ?? null : undefined,
       lyThuyetDang: p.loai_phan === 'dang' && p.ref_ma ? ltDangMap.get(p.ref_ma) ?? null : undefined,
       caus: maList.map((ma) => cauMap.get(ma)).filter(Boolean) as CauHoi[],
+      maCaus: maList,
     }
   })
   return { taiLieu: tl as TaiLieu, phans: phansResolved, ltChuyenDe, tenChuyenDe }

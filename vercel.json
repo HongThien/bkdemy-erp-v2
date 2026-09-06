@@ -1,0 +1,14 @@
+{
+  "git": {
+    "deploymentEnabled": {
+      "claude/teaching-assistant-app-jvdozw": false,
+      "claude/teacher-app-bk-cpzxbx": false
+    }
+  },
+  "crons": [
+    {
+      "path": "/api/pt-nhac-viec",
+      "schedule": "30 3 * * *"
+    }
+  ]
+}
