@@ -40,6 +40,8 @@ export const BK_TRANH = {
   shop: { url: '/bk-ui/bg_shop.jpg', rong: 941, canh: 530, troi: ['#A6DCFD', '#9AD8FD'], day: '/bk-ui/bg_shop_day.jpg', hoSo: false, nutVe: 12 },
   // Hướng dẫn: cảnh trên y0–510 (logo · sách bóng đèn · HƯỚNG DẪN · mascot đọc sách) dính đỉnh, mây y1300–1672 dính đáy; có thẻ hồ sơ.
   huongdan: { url: '/bk-ui/bg_huongdan.jpg', rong: 941, canh: 520, troi: ['#C2E2FD', '#CDE7FD'], day: '/bk-ui/bg_huongdan_day.jpg', nutVe: 19 },
+  // Tiến trình: cảnh trên y0–430 (vương miện · TIẾN TRÌNH · mascot ôm sao · bảng gỗ) dính đỉnh, mây+lá y1400–1672 dính đáy; có thẻ hồ sơ.
+  tientrinh: { url: '/bk-ui/bg_tientrinh.jpg', rong: 941, canh: 440, troi: ['#D0EAFD', '#CFE8FD'], day: '/bk-ui/bg_tientrinh_day.jpg', nutVe: 12 },
 } as const satisfies Record<string, BKTranh>
 export function bkTranhStyle(t: BKTranh) {
   const pct = (px: number) => `${((px / t.rong) * 100).toFixed(2)}cqw`
