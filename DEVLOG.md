@@ -8833,3 +8833,17 @@ a)/b)/c) nằm ở góc trên trái full màn · gõ text ở ý a) CHƯA bấm 
 nguyên (chụp bằng getValue, không mất) · nút "✕ Đóng" của modal (phân biệt với nút "Đóng" của GiaiEditor phía dưới
 bị modal che — test tay lúc đầu bấm nhầm nút bị che do querySelector không phân biệt lớp phủ, sửa lại chọn đúng nút
 mới thấy hành vi đúng) đưa về đúng thẻ GiaiEditor với tóm tắt "2/3 ý đã có lời giải".
+
+### 06/09 tối (5) — BUG: Kho bài Hình không hiện ảnh (mig 202609061736)
+**Thùy báo:** "Lúc ở kho bài, các bài hình đang ko có hình. T dặn để hình là của câu cuối cùng mà."
+**Nguyên nhân:** `fn_hinh_chuoi_json` (202609061619) lấy ảnh mỗi node CHỈ từ `hinh_baitoan.anh_chuan` — thiếu
+fallback về `hinh_mo_hinh.anh_cau_hinh` (ảnh hình chung của mô hình, nơi PHẦN LỚN bài toán thực sự lấy ảnh — mỗi
+node hiếm khi tự có `anh_chuan` riêng). Mọi view khác (`v_hinh_chua_giai`, `v_giaibai_bai/hoan_thien` nhánh Hình…)
+đều `coalesce(b.anh_chuan, m.anh_cau_hinh)` đúng — chỉ riêng hàm chuỗi mới viết tối nay thiếu, và thiếu luôn cả
+`join hinh_mo_hinh m` ở nhánh bài toán nên không có gì để coalesce vào. Ý CUỐI (ĐÍCH) hầu hết không có anh_chuan
+riêng ⇒ card không hiện ảnh gì — đúng triệu chứng Thùy thấy.
+**Sửa:** thêm join `hinh_mo_hinh m`, coalesce `b.anh_chuan → m.anh_cau_hinh` (nhánh bài toán) và
+`v.anh → b.anh_chuan → m.anh_cau_hinh` (nhánh biến thể, đúng thứ tự v_hinh_chua_giai).
+**Verify:** query read-only (rollback) — 25/25 bài Hoàn thiện Hình giờ có ảnh ở ý cuối (trước đó nhiều bài null) ·
+Browser dev 5181 Kho bài: mọi card đều hiện ảnh kể cả bài trước đây trống. `npm run schema` refresh (chỉ đổi hàm,
+không đổi bảng/view).
