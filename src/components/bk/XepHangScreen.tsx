@@ -9,39 +9,38 @@ export type XepHangData = { rank: number | null; tongXepHang: number; top: XepHa
 
 const AV = ['🧑‍🏫', '👩‍🏫', '🧑‍🎓', '👩‍🎓', '🧑', '👩']
 const av = (s: string) => AV[(s.charCodeAt(0) + s.length) % AV.length]
-// Trang trí bục: cắt từ sprite CEO gửi 07/09 (public/bk-ui/cautrangtri.png → tt_*.png nền trong)
-const TT = (n: string) => `/bk-ui/tt_${n}.png`
+// BỤC TRAO GIẢI = ảnh CEO vẽ (buctraogia.png → cắt lề y150–920, thu 1000px: public/bk-ui/buc_trao_giai.png)
+// đã có sẵn 3 khung tròn avatar, 3 thẻ tên, bục 1/2/3, vương miện, bong bóng, mây, tia sáng. Code chỉ
+// ĐẶT avatar vào lỗ tròn và tên + số liệu lên thẻ theo toạ độ % đo trên ảnh (cx/cy = tâm lỗ, d = đường
+// kính lỗ theo % bề ngang; the = hộp chữ phủ lên 2 vạch placeholder của thẻ, màu = màu nền thẻ).
+// Chữ cỡ theo cqw (bục là container inline-size) → co giãn đúng theo bề ngang máy.
+const BUC = { url: '/bk-ui/buc_trao_giai.png', aspect: '1448 / 770' }
+// Hộp chữ phủ GẦN HẾT thẻ (kể cả icon vương miện/sao nhỏ) — tên Việt 2 chữ cần ~21% bề ngang, chừa icon thì cắt tên.
+const VI_TRI = [
+  { cx: 49.9, cy: 29.2, d: 17.0, the: { l: 39.6, t: 49.5, w: 21.4, h: 12.6 }, mau: '#FCF5E7' },   // #1
+  { cx: 25.0, cy: 44.2, d: 14.6, the: { l: 14.8, t: 62.6, w: 19.6, h: 12.6 }, mau: '#F1F3FF' },   // #2
+  { cx: 74.9, cy: 44.2, d: 14.6, the: { l: 65.9, t: 61.9, w: 19.8, h: 12.6 }, mau: '#FFF1F4' },   // #3
+]
 
 function Podium({ top }: { top: XepHangTop[] }) {
-  const [a, b, c] = [top[0], top[1], top[2]]
-  const Col = ({ p, h, tone, num, size, vuongMien }: { p?: XepHangTop; h: string; tone: string; num: string; size: string; vuongMien?: boolean }) => (
-    <div className="flex flex-1 flex-col items-center justify-end">
-      {p ? (
-        <>
-          {vuongMien && <img src={TT('vuong_mien')} alt="" className="-mb-1.5 h-6 w-auto object-contain" draggable={false} />}
-          <span className={`flex items-center justify-center rounded-full bg-white shadow-md ring-4 ${size}`}>{av(p.ho_ten)}</span>
-          <p className="mt-1 max-w-full truncate px-1 text-[12.5px] font-extrabold text-[#16224D]">{p.ho_ten.split(' ').slice(-2).join(' ')}</p>
-          <p className="text-[11px] font-semibold text-[#63709A]">👑 {p.pct ?? '—'}% · {p.dat}/{p.den_han}</p>
-        </>
-      ) : <span className="text-[11px] text-[#9AA5C4]">—</span>}
-      <div className={`mt-1 flex w-full items-center justify-center rounded-t-2xl text-[22px] font-extrabold text-white ${tone}`} style={{ height: h }}>{num}</div>
-    </div>
-  )
   return (
-    // bục gọn theo chiều cao — cả màn Xếp hạng (tranh + hồ sơ + tháng + 2 bảng + bục + dòng Bạn) phải vừa 1 màn iPhone.
-    // Trang trí như ảnh gốc 01_xep_hang: 2 bong bóng lời góc trên, vương miện trên #1, tia sáng + tim rải quanh.
-    <div className="relative mt-1 flex items-end gap-2 px-1 pt-10">
-      <img src={TT('bubble_trai')} alt="" className="pointer-events-none absolute -left-1 -top-1 w-[74px]" draggable={false} />
-      <img src={TT('bubble_phai')} alt="" className="pointer-events-none absolute -right-1 -top-1 w-[70px]" draggable={false} />
-      <img src={TT('tia_to')} alt="" className="pointer-events-none absolute left-[27%] top-1 w-4" draggable={false} />
-      <img src={TT('tia_nho')} alt="" className="pointer-events-none absolute right-[26%] top-9 w-3" draggable={false} />
-      <img src={TT('tia_to')} alt="" className="pointer-events-none absolute right-1 top-[84px] w-4" draggable={false} />
-      <img src={TT('tia_nho')} alt="" className="pointer-events-none absolute left-1.5 top-[96px] w-3" draggable={false} />
-      <img src={TT('tim_hong')} alt="" className="pointer-events-none absolute left-[7%] top-[70px] w-4" draggable={false} />
-      <img src={TT('sao_xanh')} alt="" className="pointer-events-none absolute right-[7%] top-[76px] w-4" draggable={false} />
-      <Col p={b} h="42px" tone="bg-[#B9C8FF]" num="2" size="h-12 w-12 text-[22px] ring-[#DDE4FF]" />
-      <Col p={a} h="58px" tone="bg-[#FFD84D]" num="1" size="h-[60px] w-[60px] text-[28px] ring-[#FFE59A]" vuongMien />
-      <Col p={c} h="34px" tone="bg-[#FFB3C6]" num="3" size="h-12 w-12 text-[22px] ring-[#FFD6E0]" />
+    <div className="relative w-full" style={{ aspectRatio: BUC.aspect, containerType: 'inline-size' }}>
+      <img src={BUC.url} alt="" className="absolute inset-0 h-full w-full select-none" draggable={false} />
+      {VI_TRI.map((v, i) => {
+        const p = top[i]
+        if (!p) return null
+        return (
+          <div key={i}>
+            <span className="absolute flex items-center justify-center rounded-full bg-white"
+              style={{ left: `${v.cx}%`, top: `${v.cy}%`, width: `${v.d}%`, aspectRatio: '1', transform: 'translate(-50%,-50%)', fontSize: `${v.d * 0.55}cqw` }}>{av(p.ho_ten)}</span>
+            <div className="absolute flex flex-col justify-center overflow-hidden rounded-md text-center"
+              style={{ left: `${v.the.l}%`, top: `${v.the.t}%`, width: `${v.the.w}%`, height: `${v.the.h}%`, background: v.mau }}>
+              <p className="truncate font-extrabold leading-tight text-[#16224D]" style={{ fontSize: '2.9cqw' }}>{p.ho_ten.split(' ').slice(-2).join(' ')}</p>
+              <p className="truncate font-semibold leading-tight text-[#63709A]" style={{ fontSize: '2.5cqw' }}>👑 {p.pct ?? '—'}% · {p.dat}/{p.den_han}</p>
+            </div>
+          </div>
+        )
+      })}
     </div>
   )
 }
@@ -57,9 +56,8 @@ export function XepHangScreen({ rieng, chung, tenRieng, ten }: { rieng: XepHangD
       ]} />
       {!d ? <BKEmptyState>Đang tính…</BKEmptyState> : (
         <>
-          <BKSectionCard tone="blue" className="!p-3">
-            {d.top.length ? <Podium top={d.top} /> : <BKEmptyState icon="🏆">Chưa ai đủ điều kiện tháng này.</BKEmptyState>}
-          </BKSectionCard>
+          {/* bục là ảnh có sẵn mây nền → không bọc thẻ */}
+          {d.top.length ? <Podium top={d.top} /> : <BKEmptyState icon="🏆">Chưa ai đủ điều kiện tháng này.</BKEmptyState>}
           <BKSectionCard className={`!p-3 ${d.rank ? 'ring-2 ring-[#2F73F6]/40' : ''}`}>
             <div className="flex items-center gap-2.5">
               <span className="w-6 text-center text-[18px] font-extrabold text-[#2F73F6]">{d.rank ?? '—'}</span>
