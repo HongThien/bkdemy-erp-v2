@@ -21,10 +21,12 @@ export const BK = {
 // `troi` = [màu trời ngay dưới mảnh trên, màu trời ngay trên mảnh đáy] → gradient nối giữa. Mép mảnh làm
 // mờ dần bằng mask nên mây bị cắt ngang không lộ đường ghép. Đường cắt chọn ở hàng pixel đồng màu nhất
 // (đo stddev từng hàng): Xếp hạng cắt y=560 (dưới bụi cây) và y=830 (trước khi tán cây bắt đầu ~870).
-export type BKTranh = { url: string; rong: number; canh: number; troi: [string, string]; day?: string }
+// `phu` = lớp phủ xanh mờ từ thẻ hồ sơ trở xuống (CEO 07/09: nội dung phải nổi trên nền như màn Của tôi —
+// mảnh công viên phía dưới quá rực) — màu trời Của tôi pha trong suốt.
+export type BKTranh = { url: string; rong: number; canh: number; troi: [string, string]; day?: string; phu?: string }
 export const BK_TRANH = {
   cuatoi: { url: '/bk-ui/bg_cua_toi.jpg', rong: 941, canh: 440, troi: ['#CCE7FE', '#CCE7FE'] },                                  // headerv3 cắt status bar giả 78px
-  xephang: { url: '/bk-ui/bg_xephang.jpg', rong: 941, canh: 520, troi: ['#93D0FA', '#A5D9FC'], day: '/bk-ui/bg_xephang_day.jpg' }, // backdrop_xephang.png: mảnh trên y0–560 · mảnh đáy y830–1672
+  xephang: { url: '/bk-ui/bg_xephang.jpg', rong: 941, canh: 520, troi: ['#93D0FA', '#A5D9FC'], day: '/bk-ui/bg_xephang_day.jpg', phu: 'rgba(178,215,253,.93)' },   // CEO: "xanh đậm tí, che backdrop cho đỡ rối" // backdrop_xephang.png: mảnh trên y0–560 · mảnh đáy y830–1672
 } as const satisfies Record<string, BKTranh>
 export function bkTranhStyle(t: BKTranh) {
   const pct = (px: number) => `${((px / t.rong) * 100).toFixed(2)}cqw`
@@ -36,10 +38,14 @@ export function bkTranhStyle(t: BKTranh) {
 export function BKTranhNen({ t }: { t: BKTranh }) {
   const fadeDuoi = { WebkitMaskImage: 'linear-gradient(to bottom, #000 calc(100% - 28px), transparent)', maskImage: 'linear-gradient(to bottom, #000 calc(100% - 28px), transparent)' }
   const fadeTren = { WebkitMaskImage: 'linear-gradient(to top, #000 calc(100% - 60px), transparent)', maskImage: 'linear-gradient(to top, #000 calc(100% - 60px), transparent)' }
+  const { spacerH } = bkTranhStyle(t)
   return (
     <>
       <img src={t.url} alt="" draggable={false} className="pointer-events-none absolute left-0 w-full select-none" style={{ top: 'env(safe-area-inset-top, 0px)', ...fadeDuoi }} />
       {t.day && <img src={t.day} alt="" draggable={false} className="pointer-events-none absolute bottom-0 left-0 w-full select-none" style={fadeTren} />}
+      {/* lớp phủ bắt đầu từ mép trên thẻ hồ sơ (spacer − 12px), mép trên mờ dần 24px để không thành đường kẻ */}
+      {t.phu && <div className="pointer-events-none absolute inset-x-0 bottom-0"
+        style={{ top: `calc(${spacerH} - 12px)`, background: t.phu, WebkitMaskImage: 'linear-gradient(to bottom, transparent, #000 24px)', maskImage: 'linear-gradient(to bottom, transparent, #000 24px)' }} />}
     </>
   )
 }

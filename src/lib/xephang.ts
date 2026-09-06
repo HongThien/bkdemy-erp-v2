@@ -4,7 +4,8 @@
 import { supabase } from './supabase'
 
 export type ViecItem = { ten_lop: string; ngay: string; tab: string; kq: 'dat' | 'khong_dat'; ly_do: string | null }
-export type XepHangTop = { ho_ten: string; pct: number | null; dat: number; den_han: number }
+// top = 6 người đầu bảng (fn trả limit 6 từ 07/09): [0..2] lên bục, [3..5] danh sách dưới bục; anh_url = avatar thật
+export type XepHangTop = { ho_ten: string; pct: number | null; dat: number; den_han: number; anh_url?: string | null }
 
 export type XepHangChung = {
   ym: string

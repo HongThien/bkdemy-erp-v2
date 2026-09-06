@@ -24,7 +24,8 @@ export function XepHangBlock({ title, icon, rank, tongXepHang, top, nguongFinal,
       {!top.length ? <p className="text-[12.5px] text-slate-400">Chưa ai đủ điều kiện tháng này.</p>
         : top.map((t, i) => (
           <div key={t.ho_ten} className="flex items-center gap-2 border-t border-slate-100 py-1.5 first:border-0">
-            <span className="text-[16px]">{['🥇', '🥈', '🥉'][i]}</span>
+            {/* fn trả top 6 (07/09): 3 đầu huy chương, 4..6 số hạng */}
+            <span className={i < 3 ? 'text-[16px]' : 'w-6 text-center text-[13px] font-bold text-slate-400'}>{['🥇', '🥈', '🥉'][i] ?? `#${i + 1}`}</span>
             <span className={`min-w-0 flex-1 truncate text-[13.5px] font-semibold ${accentText}`}>{t.ho_ten}</span>
             <span className="text-[13px] font-bold text-slate-800">{t.pct ?? '—'}%</span>
             <span className="text-[11.5px] text-slate-400">({t.dat}/{t.den_han})</span>

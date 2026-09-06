@@ -108,7 +108,7 @@ export default function DashTa({ profile }: { profile: MyProfile }) {
             </>
           )}
           <div className={goc ? 'hidden' : 'mt-1'}>
-          {box === 'xephang' && <XepHangScreen tenRieng="trợ giảng" ten={ten}
+          {box === 'xephang' && <XepHangScreen tenRieng="trợ giảng" ten={ten} anhUrl={profile.nhanSu.anh_url}
             rieng={data ? { rank: data.rank, tongXepHang: data.tongXepHang, top: data.top, nguongRankFinal: data.nguongRankFinal, nguongRankTop: data.nguongRankTop, me: data.me } : null}
             chung={chung ? { rank: chung.rank, tongXepHang: chung.tongXepHang, top: chung.top, nguongRankFinal: chung.nguongRankFinal, nguongRankTop: chung.nguongRankTop, me: chung.me } : null} />}
           {box === 'gay' && <GayCuaToiScreen ym={ym} donGia={GAY_DON_GIA} />}
