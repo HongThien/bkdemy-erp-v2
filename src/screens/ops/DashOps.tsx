@@ -1,18 +1,18 @@
-// DashTa — "📈 Của tôi": dashboard công việc TA theo THÁNG (CEO chốt 30/08 đêm, mở rộng
-// 06/09 tối): bar đạt chuẩn/mốc thưởng + 4 số + xếp hạng RIÊNG (trợ giảng) VÀ CHUNG (toàn
-// bộ nhân sự BK) + danh sách việc cả tháng (đạt lẫn không đạt, ẩn chi tiết — bấm mới xoè).
-// Bar = việc ĐẠT CHUẨN / việc đã đến hạn (chậm = không đạt · chất lượng <80 = không đạt).
-// "Không đạt do TRỄ HẠN" giờ tự cập nhật theo GẬY (đã chốt & còn hiệu lực mới tính không đạt
-// — bỏ qua/thu hồi gậy thì tự lật lại đạt, không cần sửa tay) — chất lượng vẫn tính trực tiếp.
-// 100% + ≥20 việc/tháng = mốc THƯỞNG TIỀN. Xếp hạng: ≥20 việc/tháng CHÍNH THỨC, hoặc đang
-// lọt top 10 khối lượng thì vào bảng TẠM THỜI (chặn "1 việc 100% nhảy top 3").
+// DashOps — "📈 Của tôi" app OPS (CEO chốt 06/09 tối, cùng khuôn TA/GV — app OPS chưa
+// từng có màn này). Việc = Report + Báo tan + Prep phòng + Coi test đầu vào, sở hữu theo
+// NGƯỜI TRỰC CA (phan_cong_ca), fn_ops_dashboard §2.0. Bar đạt chuẩn + 4 số + xếp hạng
+// RIÊNG (OPS) và CHUNG (toàn BK) + danh sách việc cả tháng (đạt lẫn không đạt, ẩn chi
+// tiết — bấm mới xoè). "Không đạt do TRỄ HẠN" tự cập nhật theo GẬY đã chốt & còn hiệu
+// lực — bỏ qua/thu hồi gậy thì tự lật lại đạt; chất lượng (report/tan/prep) tính trực tiếp.
 import { useEffect, useState } from 'react'
-import { taDashboard, type TaDash } from '../../lib/tadash'
+import { opsDashboard, type OpsDash } from '../../lib/opsdash'
 import { xepHangChung, type XepHangChung } from '../../lib/xephang'
 import { homNayVN, ddmmVN } from '../../lib/tuan'
 import { XepHangBlock, ViecThangAccordion } from '../../components/CuaToiWidgets'
 
-const TAB_TEN: Record<string, string> = { ingame: 'Bài trên lớp', et: 'Chấm ET', btvn: 'Chấm BTVN' }
+const TAB_TEN: Record<string, string> = {
+  ops_report: 'Report trước buổi', ops_tan: 'Báo tan', ops_prep: 'Chuẩn bị phòng', ops_test: 'Coi test đầu vào',
+}
 const LY_DO_TEN: Record<string, string> = { tre: 'đóng muộn', no_qua_han: 'đang nợ quá hạn', chat_luong: 'chất lượng chưa đạt' }
 
 function ymCong(ym: string, n: number): string {
@@ -21,10 +21,10 @@ function ymCong(ym: string, n: number): string {
   return `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}`
 }
 
-export default function DashTa() {
+export default function DashOps() {
   const ymNay = homNayVN().slice(0, 7)
   const [ym, setYm] = useState(ymNay)
-  const [data, setData] = useState<TaDash | null>(null)
+  const [data, setData] = useState<OpsDash | null>(null)
   const [chung, setChung] = useState<XepHangChung | null>(null)
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
@@ -32,7 +32,7 @@ export default function DashTa() {
   useEffect(() => { (async () => {
     setLoading(true); setErr(null)
     try {
-      const [d, c] = await Promise.all([taDashboard(ym), xepHangChung(ym)])
+      const [d, c] = await Promise.all([opsDashboard(ym), xepHangChung(ym)])
       setData(d); setChung(c)
     } catch (e: any) { setErr(e.message ?? String(e)) }
     finally { setLoading(false) }
@@ -40,13 +40,12 @@ export default function DashTa() {
 
   const me = data?.me ?? {}
   const pct = me.pct ?? null
-  const datMoc = !!me.dat_moc_thuong
   const [thang, nam] = [ym.slice(5, 7), ym.slice(0, 4)]
 
   return (
     <div>
-      <div className="bg-teal-600 px-4 pb-2" style={{ paddingTop: 'max(0.5rem, env(safe-area-inset-top))' }}>
-        <div className="mx-auto flex max-w-[1000px] items-center gap-2">
+      <div className="bg-indigo-600 px-4 pb-2" style={{ paddingTop: 'max(0.5rem, env(safe-area-inset-top))' }}>
+        <div className="mx-auto flex max-w-[760px] items-center gap-2">
           <p className="text-[15px] font-bold text-white">📈 Công việc của tôi</p>
           <div className="ml-auto flex items-center gap-1">
             <button onClick={() => setYm(ymCong(ym, -1))} className="rounded-lg px-2.5 py-1 text-[15px] font-bold text-white/80 active:bg-white/10">‹</button>
@@ -56,34 +55,27 @@ export default function DashTa() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-[1000px] px-3 pb-6 pt-3">
+      <div className="mx-auto max-w-[760px] px-3 pb-24 pt-3">
         {loading ? <p className="text-[13px] text-slate-400">Đang tính…</p>
           : err ? <p className="rounded-2xl border border-rose-200 bg-rose-50 p-3 text-[13px] text-rose-700">⚠ {err}</p>
           : !data ? <p className="rounded-2xl border border-slate-200/70 bg-white p-4 text-center text-[13px] text-slate-400">Không tải được dữ liệu.</p>
           : (
           <div className="flex flex-col gap-3">
             {!me.tong ? (
-              <p className="rounded-2xl border border-slate-200/70 bg-white p-4 text-center text-[13px] text-slate-400">Tháng này chưa có việc chấm nào được giao.</p>
+              <p className="rounded-2xl border border-slate-200/70 bg-white p-4 text-center text-[13px] text-slate-400">Tháng này chưa có việc trực ca nào của bạn.</p>
             ) : (
               <>
-                {/* BAR ĐẠT CHUẨN + MỐC THƯỞNG */}
-                <div className={`rounded-2xl border p-4 shadow-sm ${datMoc ? 'border-amber-300 bg-gradient-to-br from-amber-50 to-yellow-50' : 'border-slate-200/70 bg-white'}`}>
+                {/* BAR ĐẠT CHUẨN */}
+                <div className="rounded-2xl border border-slate-200/70 bg-white p-4 shadow-sm">
                   <div className="mb-1.5 flex items-baseline gap-2">
                     <span className="text-[28px] font-extrabold text-slate-800">{pct == null ? '—' : `${pct}%`}</span>
                     <span className="text-[13px] font-semibold text-slate-500">đạt chuẩn · {me.dat ?? 0}/{me.den_han ?? 0} việc đến hạn</span>
                   </div>
-                  <div className="relative h-4 overflow-hidden rounded-full bg-slate-100">
-                    <div className={`h-full rounded-full transition-all ${pct === 100 ? 'bg-gradient-to-r from-amber-400 to-yellow-500' : (pct ?? 0) >= 80 ? 'bg-teal-500' : (pct ?? 0) >= 50 ? 'bg-amber-500' : 'bg-rose-500'}`}
+                  <div className="h-4 overflow-hidden rounded-full bg-slate-100">
+                    <div className={`h-full rounded-full transition-all ${(pct ?? 0) >= 80 ? 'bg-indigo-500' : (pct ?? 0) >= 50 ? 'bg-amber-500' : 'bg-rose-500'}`}
                       style={{ width: `${pct ?? 0}%` }} />
-                    <span className="absolute right-0 top-0 h-full w-[3px] bg-amber-400" />
                   </div>
-                  <p className={`mt-2 text-[12.5px] font-semibold ${datMoc ? 'text-amber-700' : 'text-slate-500'}`}>
-                    {datMoc
-                      ? '🎁 ĐẠT MỐC 100% — tháng này có THƯỞNG THÊM! Giữ vững tới hết tháng nhé.'
-                      : pct === 100
-                        ? `🎯 Đang 100% — đủ ${data.nguongRankFinal} việc đến hạn là chạm mốc thưởng (hiện ${me.den_han}/${data.nguongRankFinal}).`
-                        : `🎁 Mốc thưởng thêm = 100% đạt chuẩn (≥${data.nguongRankFinal} việc). ${me.khong_dat ? `Tháng này đã lỡ ${me.khong_dat} việc.` : ''}`}
-                  </p>
+                  <p className="mt-2 text-[12.5px] text-slate-500">Việc = Report + Báo tan (gồm điểm danh) + Chuẩn bị phòng + Coi test đầu vào, theo ca bạn trực. Trễ hạn: tính theo GẬY đã chốt. Chất lượng duyệt ≥{data.nguongChatLuong}.</p>
                 </div>
 
                 {/* 4 SỐ */}
@@ -96,19 +88,18 @@ export default function DashTa() {
               </>
             )}
 
-            {/* XẾP HẠNG: RIÊNG (trợ giảng) + CHUNG (toàn BK) — luôn hiện, kể cả tháng này chưa có việc */}
-            <XepHangBlock title={`Xếp hạng trợ giảng tháng ${thang}`} icon="🏆" rank={data.rank} tongXepHang={data.tongXepHang}
+            {/* XẾP HẠNG: RIÊNG (OPS) + CHUNG (toàn BK) — luôn hiện, kể cả tháng này chưa có việc */}
+            <XepHangBlock title={`Xếp hạng OPS tháng ${thang}`} icon="🏆" rank={data.rank} tongXepHang={data.tongXepHang}
               top={data.top} nguongFinal={data.nguongRankFinal} nguongTop={data.nguongRankTop}
-              accentBg="bg-teal-600" accentText="text-teal-700" />
+              accentBg="bg-indigo-600" accentText="text-indigo-700" />
             {chung && (
               <XepHangBlock title={`Xếp hạng CHUNG toàn BK tháng ${thang}`} icon="🌐" rank={chung.rank} tongXepHang={chung.tongXepHang}
                 top={chung.top} nguongFinal={chung.nguongRankFinal} nguongTop={chung.nguongRankTop}
-                accentBg="bg-indigo-600" accentText="text-indigo-700" />
+                accentBg="bg-violet-600" accentText="text-violet-700" />
             )}
 
             {/* DANH SÁCH VIỆC CẢ THÁNG — accordion, ẩn chi tiết mặc định */}
             {!!me.tong && <ViecThangAccordion items={data.items} tenViecLabel="Việc" tabTen={TAB_TEN} lyDoTen={LY_DO_TEN} fmtNgay={ddmmVN} />}
-            <p className="px-1 text-[11px] text-slate-400">Đạt chuẩn = đóng đúng hạn + chất lượng duyệt ≥{data.nguongChatLuong}. Trễ hạn: tính theo GẬY đã chốt (bỏ qua/thu hồi gậy → tự cập nhật lại đạt). Việc trước 01/09/2026 luôn tính đạt (mốc lịch sử). Đóng → mở lại sửa → đóng lại: tính theo LẦN ĐÓNG CUỐI.</p>
           </div>
         )}
       </div>

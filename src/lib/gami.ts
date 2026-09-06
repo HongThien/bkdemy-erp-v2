@@ -966,9 +966,11 @@ export type TabKey = 'diemdanh' | 'danhgia' | 'ingame' | 'et' | 'btvn' | 'mt' | 
 // Hạn + owner việc BUỔI THƯỜNG tính ở DB (fn_han_viec / fn_viec_buoi_thuong, mig 202609062312) — client KHÔNG tính lại.
 // vai 'tk' = trưởng khối (khối × môn) nhận Chấm MT; không có trưởng khối → về GV lớp (vai 'gv', tab 'mt').
 export type VaiViec = 'gv' | 'tg' | 'tk'
-export type MyTask = { buoiId: string; lopId: string; lop: string; ngay: string; vai: VaiViec; tab: TabKey; label: string; done: boolean; doneAt: string | null; deadline: number | null; loai?: 'bu' | 'bo_tro_duoi' | 'bo_tro_yeu' }
+export type MyTask = { buoiId: string; lopId: string; lop: string; ngay: string; vai: VaiViec; tab: TabKey; label: string; done: boolean; doneAt: string | null; deadline: number | null; loai?: 'bu' | 'bo_tro_duoi' | 'bo_tro_yeu'; refKey: string }
 const LABEL_BY_TAB: Record<string, string> = { danhgia: 'Đánh giá sau buổi', ingame: 'Chấm bài trên lớp', et: 'Chấm ET', btvn: 'Chấm BTVN', mt: 'Chấm MT' }
-type ViecBuoiThuongRow = { nhan_su_id: string; buoi_id: string; lop_id: string; ten_lop: string; ngay: string; vai: VaiViec; tab: TabKey; dong_at: string | null; han: string | null; et_online: boolean }
+// ref_key: khoá gậy tự động (vh:buoi|tab|nhansu) — tính SẴN ở fn_viec_buoi_thuong (§2.0), gay.ts đọc
+// THẲNG cột này, không tự ghép chuỗi lần 2 (1 nguồn duy nhất, đổi công thức chỉ sửa 1 chỗ).
+type ViecBuoiThuongRow = { nhan_su_id: string; buoi_id: string; lop_id: string; ten_lop: string; ngay: string; vai: VaiViec; tab: TabKey; dong_at: string | null; han: string | null; et_online: boolean; ref_key: string }
 async function viecBuoiThuong(tu: string | null, den: string | null, tatCa: boolean): Promise<ViecBuoiThuongRow[]> {
   const { data, error } = await supabase.rpc('fn_viec_buoi_thuong', { p_tu: tu, p_den: den, p_tat_ca: tatCa }).limit(LIMIT)
   if (error) throw error
@@ -979,6 +981,7 @@ const taskTuRow = (r: ViecBuoiThuongRow): MyTask => ({
   buoiId: r.buoi_id, lopId: r.lop_id, lop: r.ten_lop, ngay: r.ngay, vai: r.vai, tab: r.tab,
   label: r.tab === 'et' && r.et_online ? 'Xác nhận ET (online)' : (LABEL_BY_TAB[r.tab] ?? r.tab),
   done: !!r.dong_at, doneAt: r.dong_at, deadline: r.han ? new Date(r.han).getTime() : null,
+  refKey: r.ref_key,
 })
 // Export: trợ lý cần ĐÚNG bảng vai→khâu này để dựng rổ "dự kiến hôm nay" cho buổi CHƯA MỞ
 // (chưa có dòng buoi_hoc ⇒ chưa có task để đọc). Chép lại một bản thứ hai ở troly.ts là đẻ
@@ -1023,6 +1026,7 @@ export async function getMyTasks(): Promise<MyTask[]> {
           label: `Duyệt báo sai (${v.n})`,
           done: false, doneAt: null,
           deadline: Number.isFinite(v.sinh) ? v.sinh + 24 * 3600000 : null, // 24h từ báo sai đầu tiên
+          refKey: `vh:${b?.buoi_id ?? lopId}|baosai|${prof.nhanSu.id}`, // ngoài phạm vi gậy/dashboard hiện tại — chỉ cần khoá ổn định
         })
       }
     }
@@ -1062,8 +1066,8 @@ export async function getMyTasks(): Promise<MyTask[]> {
     // HS chưa điểm danh. CHỈ bỏ qua khi điểm danh XONG mà 0 ai có mặt (toàn vắng — không có gì để chấm).
     if ((coMatCountBu.get(b.id) ?? 0) === 0 && (chuaDDBu.get(b.id) ?? 0) === 0) continue
     const vaiBu: 'gv' | 'tg' = b.nguoi_day_tg ? 'tg' : 'gv' // nhãn vai theo slot owner thật (fallback GV khi thiếu TA)
-    out.push({ buoiId: b.id, lopId: '', lop: 'Buổi bù', ngay: b.ngay, vai: vaiBu, tab: 'et', label: 'Chấm ET (bù)', done: !!b.et_dong_at, doneAt: b.et_dong_at, deadline: vnInstant(congNgay(b.ngay, 1), '12:00'), loai: 'bu' })
-    out.push({ buoiId: b.id, lopId: '', lop: 'Buổi bù', ngay: b.ngay, vai: vaiBu, tab: 'danhgia', label: 'Đánh giá buổi bù', done: !!b.danh_gia_xong_at, doneAt: b.danh_gia_xong_at, deadline: vnInstant(b.ngay, '23:59'), loai: 'bu' })
+    out.push({ buoiId: b.id, lopId: '', lop: 'Buổi bù', ngay: b.ngay, vai: vaiBu, tab: 'et', label: 'Chấm ET (bù)', done: !!b.et_dong_at, doneAt: b.et_dong_at, deadline: vnInstant(congNgay(b.ngay, 1), '12:00'), loai: 'bu', refKey: `vh:${b.id}|et|${myId}` })
+    out.push({ buoiId: b.id, lopId: '', lop: 'Buổi bù', ngay: b.ngay, vai: vaiBu, tab: 'danhgia', label: 'Đánh giá buổi bù', done: !!b.danh_gia_xong_at, doneAt: b.danh_gia_xong_at, deadline: vnInstant(b.ngay, '23:59'), loai: 'bu', refKey: `vh:${b.id}|danhgia|${myId}` })
   }
   // ── BUỔI BỔ TRỢ YẾU (loai='bo_tro_yeu'): TA/GV cao cấp đứng lớp (nguoi_day_tg) làm CẢ chấm ET LẪN
   // đánh giá, ĐỐI XỨNG buổi bù (khác đuổi — đuổi không đo mastery nên không có ET). 1 buổi = 1 HS,
@@ -1090,7 +1094,7 @@ export async function getMyTasks(): Promise<MyTask[]> {
   for (const b of byMine) {
     if ((coMatCountBy.get(b.id) ?? 0) === 0 && (chuaDDBy.get(b.id) ?? 0) === 0) continue
     const vaiBy: 'gv' | 'tg' = b.nguoi_day_tg ? 'tg' : 'gv'
-    out.push({ buoiId: b.id, lopId: '', lop: 'Bổ trợ yếu', ngay: b.ngay, vai: vaiBy, tab: 'danhgia', label: 'Điều hành ca bổ trợ (app TA)', done: !!b.danh_gia_xong_at, doneAt: b.danh_gia_xong_at, deadline: vnInstant(b.ngay, '23:59'), loai: 'bo_tro_yeu' })
+    out.push({ buoiId: b.id, lopId: '', lop: 'Bổ trợ yếu', ngay: b.ngay, vai: vaiBy, tab: 'danhgia', label: 'Điều hành ca bổ trợ (app TA)', done: !!b.danh_gia_xong_at, doneAt: b.danh_gia_xong_at, deadline: vnInstant(b.ngay, '23:59'), loai: 'bo_tro_yeu', refKey: `vh:${b.id}|danhgia|${myId}` })
   }
   // ── BUỔI ĐUỔI (loai='bo_tro_duoi'): TA đứng lớp (nguoi_day_tg) nhận xét + tick "dạng đã dạy" ở
   // BuoiDuoiDetail. Buổi đuổi do TA chạy như buổi bù (Thùy chốt 07-26 — nhất quán với buổi bù); GV
@@ -1102,7 +1106,7 @@ export async function getMyTasks(): Promise<MyTask[]> {
   for (const b of (duoi ?? []) as any[]) {
     if ((b.nguoi_day_tg ?? b.nguoi_day) !== myId) continue // owner = TA đứng lớp, fallback GV khi buổi chưa gán TA
     const vaiDuoi: 'gv' | 'tg' = b.nguoi_day_tg ? 'tg' : 'gv'
-    out.push({ buoiId: b.id, lopId: '', lop: 'Buổi đuổi', ngay: b.ngay, vai: vaiDuoi, tab: 'danhgia', label: 'Đánh giá buổi đuổi', done: !!b.danh_gia_xong_at, doneAt: b.danh_gia_xong_at, deadline: vnInstant(b.ngay, '23:59'), loai: 'bo_tro_duoi' })
+    out.push({ buoiId: b.id, lopId: '', lop: 'Buổi đuổi', ngay: b.ngay, vai: vaiDuoi, tab: 'danhgia', label: 'Đánh giá buổi đuổi', done: !!b.danh_gia_xong_at, doneAt: b.danh_gia_xong_at, deadline: vnInstant(b.ngay, '23:59'), loai: 'bo_tro_duoi', refKey: `vh:${b.id}|danhgia|${myId}` })
   }
   return out
 }

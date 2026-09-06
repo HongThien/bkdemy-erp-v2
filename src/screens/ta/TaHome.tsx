@@ -272,7 +272,7 @@ function BoxDashThang({ d, onGo }: { d: TaDash | null; onGo: () => void }) {
         <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-[21px] ${moc ? 'bg-amber-100' : 'bg-amber-50'}`}>📈</span>
         <div className="min-w-0 flex-1">
           <p className="flex items-center gap-2 text-[15px] font-bold text-slate-800">Công việc tháng này
-            {d?.rank ? <span className="rounded-full bg-teal-600 px-2 py-0.5 text-[11.5px] font-bold text-white">#{d.rank}/{d.tongTaXepHang}</span> : null}
+            {d?.rank ? <span className="rounded-full bg-teal-600 px-2 py-0.5 text-[11.5px] font-bold text-white">#{d.rank}/{d.tongXepHang}</span> : null}
             {moc && <span className="rounded-full bg-amber-500 px-2 py-0.5 text-[11.5px] font-bold text-white">🎁 mốc thưởng</span>}
           </p>
           <p className="text-[12px] text-slate-400">

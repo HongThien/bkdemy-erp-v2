@@ -382,6 +382,22 @@ export async function chotPrepLeader(phong: string, ngay: string, luot: PrepLuot
 // Lượt Prep CỦA TÔI trong khoảng ngày (lọc theo người trực ca đầu) + trạng thái đã đóng chưa —
 // dùng cho "Việc của tôi" (bulk, KHÔNG N+1 gọi getPrepRow từng lượt).
 export type MyPrepTask = { phong: string; ngay: string; luot: PrepLuotKey; gioCaDau: string; done: boolean; dongAt: string | null; deadline: number }
+// ── TOÀN BỘ việc OPS (report/tan/prep/test), MỌI người — nguồn cho gay.ts:quetGayTuDong
+// quét gậy OPS. Derive ở DB (fn_viec_ops_thuong, mig 202609062344) — ref_key tính SẴN ở đó,
+// KHÔNG tự ghép chuỗi ở đây (1 nguồn duy nhất, cùng nguyên tắc StaffTaskRow bên gami.ts).
+export type OpsTaskAll = {
+  nhanSuId: string; tenViec: string; ngay: string; tab: string
+  dongAt: string | null; deadline: number | null; refKey: string
+}
+export async function listAllOpsTasks(tu: string, den: string): Promise<OpsTaskAll[]> {
+  const { data, error } = await supabase.rpc('fn_viec_ops_thuong', { p_tu: tu, p_den: den, p_tat_ca: true }).limit(5000)
+  if (error) throw error
+  return ((data ?? []) as any[]).map((r) => ({
+    nhanSuId: r.nhan_su_id, tenViec: r.ten_viec, ngay: r.ngay, tab: r.tab,
+    dongAt: r.dong_at, deadline: r.han ? new Date(r.han).getTime() : null, refKey: r.ref_key,
+  }))
+}
+
 export async function getMyPrepTasks(tu: string, den: string): Promise<MyPrepTask[]> {
   const prof = await getMyProfile()
   if (!prof) return []

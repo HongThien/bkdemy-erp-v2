@@ -1,9 +1,12 @@
 // ============================================================================
 // gay.ts — DATA-LAYER "Gậy của BK" (hệ phạt nhân sự). 1 gậy = 20k.
-// · Gậy TỰ ĐỘNG: quetGayTuDong() quét deadline ERP (vận hành TÁI DÙNG
-//   listAllStaffTasks — KHÔNG tính lại deadline; giao tay đọc bảng viec) → đẻ
-//   dòng gay_de_xuat 'cho'. Máy CHỈ đề xuất — leader chốt (chotDeXuat) mới
-//   thành ledger. Quét lazy lúc mở màn (không pg_cron, pattern housekeeping).
+// · Gậy TỰ ĐỘNG: quetGayTuDong() quét deadline ERP (vận hành TA/GV tái dùng
+//   listAllStaffTasks, OPS tái dùng listAllOpsTasks — KHÔNG tính lại deadline;
+//   giao tay đọc bảng viec) → đẻ dòng gay_de_xuat 'cho'. Máy CHỈ đề xuất —
+//   leader chốt (chotDeXuat) mới thành ledger. Quét lazy lúc mở màn (không
+//   pg_cron, pattern housekeeping). ref_key đọc THẲNG từ DB (fn_viec_buoi_thuong/
+//   fn_viec_ops_thuong đã tính sẵn, mig 202609062344) — không tự ghép chuỗi ở
+//   đây nữa, để dashboard (fn_ta/gv/ops_viec_thang) soi ĐÚNG cùng 1 khoá.
 // · Gậy THỦ CÔNG / GỠ: danhGayThuCong / goGay ghi thẳng ledger (dương/âm).
 // · Tháng mới RESET: mọi tổng đều scope theo ky (ngày 1 của tháng VN) — derive
 //   từ ledger, không cache. Chốt tháng = snapshot vào gay_chot_thang.
@@ -12,6 +15,7 @@
 import { supabase } from './supabase'
 import { myNhanSuId } from './giaoviec'
 import { listAllStaffTasks } from './gami'
+import { listAllOpsTasks } from './opsvanhanh'
 import { homNayVN, congNgay, vnInstant, ddmmVN } from './tuan'
 
 const LIMIT = 5000
@@ -163,8 +167,28 @@ export async function quetGayTuDong(): Promise<number> {
     if (tre <= 0) continue // đúng hạn (hoặc chưa tới hạn) — "1 phút cũng phạt" nên KHÔNG có ân hạn
     props.push({
       nhan_su_id: r.nhan_su_id, nguon: 'vanhanh',
-      ref_key: `vh:${r.buoiId}|${r.tab}|${r.nhan_su_id}`,
+      ref_key: r.refKey,
       mo_ta: `${r.label} — ${r.lop} ${ddmmVN(r.ngay)}${r.done ? '' : ' (chưa xong)'}`,
+      deadline_at: new Date(r.deadline).toISOString(),
+      tre_phut: Math.ceil(tre / 60000),
+    })
+  }
+
+  // ── (a2) Việc OPS (report/báo tan/prep/coi test) — cùng invariant, tái dùng
+  // listAllOpsTasks (fn_viec_ops_thuong). Sở hữu đã resolve sẵn ở DB (người trực
+  // ca) — không cần tra phan_cong_lop như (a).
+  const opsRows = await listAllOpsTasks(congNgay(monthStart, -7), today)
+  for (const r of opsRows) {
+    if (r.deadline == null || r.deadline < monthStartMs) continue
+    if (mien.has(r.nhanSuId)) continue
+    let tre = 0
+    if (r.dongAt) tre = new Date(r.dongAt).getTime() - r.deadline
+    else tre = now - r.deadline
+    if (tre <= 0) continue
+    props.push({
+      nhan_su_id: r.nhanSuId, nguon: 'vanhanh',
+      ref_key: r.refKey,
+      mo_ta: `${r.tenViec} ${ddmmVN(r.ngay)}${r.dongAt ? '' : ' (chưa xong)'}`,
       deadline_at: new Date(r.deadline).toISOString(),
       tre_phut: Math.ceil(tre / 60000),
     })
