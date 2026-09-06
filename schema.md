@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-188 bảng · 11 view · 0 enum · 39 trigger · 252 function
+190 bảng · 11 view · 0 enum · 39 trigger · 253 function
 
 ## _app_secrets
 
@@ -2322,6 +2322,29 @@
 | hit_count | integer |  | 1 |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 
+## quy_trinh
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| tieu_de | text |  |  |  |  |
+| tom_tat | text | Y |  |  |  |
+| noi_dung | text |  | ''::text |  |  |
+| vai_tro | text[] |  | '{}'::text[] |  |  |
+| thu_tu | integer |  | 100 |  |  |
+| active | boolean |  | true |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
+## ta_dinh_muc
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma | text |  |  | PK |  |
+| gia_tri | numeric |  |  |  |  |
+| mo_ta | text | Y |  |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
 ## tai_khoan
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -4103,6 +4126,7 @@ UNION ALL
 - `fn_recompute_exp_thang(p_lop_id uuid, p_ym text)` → jsonb
 - `fn_sua_key_va_cham_lai(p_bai_test_cau_id uuid, p_key jsonb, p_ly_do text)` → jsonb
 - `fn_ta_dashboard(p_ym text)` → jsonb
+- `fn_ta_tien_trinh(p_ym text)` → jsonb
 - `fn_ta_viec_thang(p_tu date, p_den date)` → TABLE(nhan_su_id uuid, ho_ten text, an_xep_hang boolean, ten_lop text, ngay date, tab text, kq text, ly_do text)
 - `fn_thu_cua_ngay(p_ngay date)` → smallint
 - `fn_tln_check(p_user text, p_key text)` → boolean
