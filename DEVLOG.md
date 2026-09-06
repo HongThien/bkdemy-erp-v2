@@ -8758,3 +8758,20 @@ trái = chuỗi, bài nộp kiểu cũ vẫn hiện. tsc sạch.
 **Chưa làm / ghi nhận:** duyệt-thành-công qua UI cần tài khoản học thuật thứ 2 (DB e2e đã chứng minh) · v_hinh_chua_giai (ERP tab
 "Chưa có lời giải") vẫn liệt kê từng node — Thùy chưa đòi đổi · so sánh hiệu suất Claude theo ý: snapshot vẫn là `loi_giai_ai` bản
 gộp lúc nhận; theo ý so bằng `ChuoiY.loi_giai` (trạng thái claude) — đủ cho UI, chưa có báo cáo.
+
+### 06/09 tối — Chuỗi Hình → builder a)/b)/c), tối giản UI
+**Thùy:** "Khi ghép chuỗi, làm giống như builder ấy. Mỗi câu trong chuỗi sẽ thành ý a,b,c,d của một bài. Khi ấn vào soạn
+bài thì mỗi ý a,b,c sẽ có ô nhập riêng. Tốt nhất là để dạng toggle bar để chuyển giữa các ý cho dễ ấy. Vì ô nhập riêng
+nên hệ thống có thể dễ dàng ghép khi vào kho." Rồi chốt thêm: "đừng hiện thêm thông tin bên lề xung quanh. Tập trung
+đúng vào bài toán thôi: Đề, ý a, ý b, ý c... Chỉ giữ lại mã bài toán còn các thông tin mô hình các thứ bỏ hết đi."
+**Đổi (không migration, chỉ UI + 1 hàm lib):**
+- `src/lib/giaibai.ts`: `chuY(i) = "a)"/"b)"/…` theo VỊ TRÍ trong chuỗi — dùng CHUNG giữa UI và `gopYNhap` (nhãn hiện
+  trên tab luôn khớp nhãn trong bản gộp gửi DB).
+- [ChuoiHinh.tsx](src/screens/giaibai/ChuoiHinh.tsx) viết lại: bỏ hẳn `GiaThietMoHinh` (giả thiết mô hình chung), bỏ
+  "cấp N", "biến thể", chip trạng thái dài (chua/claude/nguoi/da_duyet) — chỉ còn **mã + a)/b)/c) + ĐÍCH (nếu có) + đề**.
+  `ChuoiSoan` đổi từ danh sách cuộn dọc sang **builder tab bar**: mỗi ý 1 tab (a), b)…, ★ nếu là ĐÍCH, ✓ nếu đã gõ nội
+  dung), bấm tab hoặc nút ‹ Trước/Sau › để chuyển, MỘT ý hiện tại một lúc (đề + ô nhập hoặc lời giải đã có).
+- GiaiEditor: bớt câu hướng dẫn dài dòng, còn "chuyển ý bằng tab phía trên".
+**Verify:** tsc sạch · Browser dev 5181 (restart server, HMR stale trước đó): Kho bài Hoàn thiện hiện đúng mã+a)/b)/c)/
+đề, không còn mô hình/cấp/trạng thái · Bài của tôi mở BT.08.083: tab "a) ✓" / "b) ★ ✓", bấm Sau › chuyển đúng sang ý
+b) ĐÍCH (hình + lời giải Claude nạp sẵn) · trả bài dọn xong.
