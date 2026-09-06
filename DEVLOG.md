@@ -8936,3 +8936,12 @@ không đổi bảng/view).
 - **Còn treo:** `BKMascotBanner` (bk/) hardcode "Small TAs Big Impact" — cần prop trước khi OPS dùng ·
   admin nhập `quy_trinh` nhãn `'ops'` + `shop_vat_pham` · Tiến trình OPS chờ CEO định nghĩa (đề xuất "Ca
   trực": ca đã trực / mục đạt theo 5 loại; cũng là chỗ tự nhiên ghi OPS vắng ca / trực thay sau này).
+
+## 07/09/2026 — Vercel Ignored Build Step (tách build 8 project)
+- **Sai:** repo gắn 8 project Vercel, mọi push build cả 8 → hôm nay ~15 push × 8 = vượt trần 100 build/ngày Hobby,
+  7/8 project bị "Deployment rate limited — retry in 24 hours" (app TA không lên). CEO đã dặn tách trước đó, chưa làm.
+- **Sửa:** `vercel.json.ignoreCommand = node scripts/vercel-ignore.mjs` — nhận diện project qua
+  `VERCEL_PROJECT_PRODUCTION_URL` (ta-v2/gv/ops/hs/pt/chi/gb→giaibai/gốc→erp), `git diff` từ `VERCEL_GIT_PREVIOUS_SHA`;
+  file riêng app → chỉ app đó build; `design/ docs/ supabase/ scripts/ *.md` → không ai build; còn lại (lib/components/
+  api/package) → mọi project build; không chắc → build. `components/bk` + `public/bk-ui` = ta+ops+gv cùng sở hữu.
+- **Quy tắc làm việc:** gom commit, push theo đợt (1–2 lần/phiên), không push từng sửa nhỏ.
