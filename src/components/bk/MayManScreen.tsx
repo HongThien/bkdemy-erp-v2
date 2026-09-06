@@ -29,7 +29,13 @@ function Wheel({ goc }: { goc: number }) {
   const bg = `conic-gradient(from ${-g / 2}deg, ${O.map((o, i) => `${o.mau} ${i * g}deg ${(i + 1) * g}deg`).join(', ')})`
   return (
     <div className="relative mx-auto" style={{ width: '64cqw', height: '64cqw' }}>
-      <img src={M('pointer')} alt="" className="pointer-events-none absolute left-1/2 z-20 -translate-x-1/2" style={{ top: '-9cqw', width: '13cqw' }} draggable={false} />
+      {/* kim = SVG (mm_pointer.png trong zip dính bóng đồng xu bên dưới — CEO 07/09) */}
+      <svg viewBox="0 0 48 64" className="pointer-events-none absolute left-1/2 z-20 -translate-x-1/2 drop-shadow-md" style={{ top: '-8cqw', width: '11cqw' }} aria-hidden>
+        <path d="M24 62C24 62 4 38 4 22a20 20 0 0 1 40 0c0 16-20 40-20 40z" fill="#FF5D8A" stroke="#C4325E" strokeWidth="2.5" strokeLinejoin="round" />
+        <path d="M24 60C24 60 8 38 8 22a16 16 0 0 1 32 0c0 16-16 38-16 38z" fill="#FF7FA8" />
+        <circle cx="24" cy="22" r="9" fill="#fff" stroke="#C4325E" strokeWidth="2" />
+        <circle cx="21" cy="19" r="2.5" fill="#FFD6E4" />
+      </svg>
       {/* phần quay: viền vàng + đĩa + chấm sáng; transition 4.2s ease-out — góc do server quyết, không random ở client */}
       <div className="h-full w-full rounded-full p-[2.6cqw] shadow-[0_8px_24px_rgba(22,34,77,.18)]"
         style={{ background: 'radial-gradient(circle at 50% 30%, #FFE59A, #F5B63A 70%, #D9962A)', transform: `rotate(${goc}deg)`, transition: 'transform 4.2s cubic-bezier(.17,.67,.12,1)' }}>
