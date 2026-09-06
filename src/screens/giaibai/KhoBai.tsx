@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from 'react'
 import { KHOI_OPTIONS } from '../../lib/kho/api'
 import { listPool, demPool, nhanBai, nhanhCuaMon, NHANH_LABEL, CHE_DO_LABEL, type BaiChuaGiai, type CheDo, type DemPool, type GiaiBaiNhanh } from '../../lib/giaibai'
 import { BaiBody, BaiHead, NhomHead } from './BaiCard'
+import { ChuoiDoc, chuoiKey, useChuoi } from './ChuoiHinh'
 
 const readKhoi = () => { const k = localStorage.getItem('giaibai.khoi'); return k && (KHOI_OPTIONS as readonly string[]).includes(k) ? k : '8' }
 const readCheDo = (): CheDo => (localStorage.getItem('giaibai.chedo') === 'hoan_thien' ? 'hoan_thien' : 'giai')
@@ -38,6 +39,7 @@ export default function KhoBai({ mon, me, dangGiu, onChanged }: { mon: string; m
   const laHoanThien = cheDo === 'hoan_thien'
 
   const rows = nhanh === 'all' ? all : all.filter((r) => r.nhanh === nhanh)
+  const chuoi = useChuoi(rows)   // Hình: hiện CẢ chuỗi (đích + tiền đề) để đọc trước khi nhận
   const demNhanh = (n: GiaiBaiNhanh) => all.filter((r) => r.nhanh === n).length
   const soKhoi = (k: string) => dem.find((d) => d.khoi === k)?.so_bai ?? 0
 
@@ -118,7 +120,7 @@ export default function KhoBai({ mon, me, dangGiu, onChanged }: { mon: string; m
                         {busyKey === r.key ? '⏳…' : laHoanThien ? '✋ Nhận hoàn thiện' : '✋ Nhận giải'}
                       </button>
                     } />
-                    <BaiBody b={r} xemAi={laHoanThien} />
+                    {(() => { const c = chuoi.get(chuoiKey(r.nhanh, r.key)); return c ? <ChuoiDoc chuoi={c} /> : <BaiBody b={r} xemAi={laHoanThien} /> })()}
                   </li>
                 ))}
               </ul>

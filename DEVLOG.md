@@ -8726,3 +8726,35 @@ Dashboard 2 kho. tsc sạch, build:giaibai OK. Số Hoàn thiện tăng 7→17�
 **Còn thừa, CHƯA xoá (chờ Thùy gật, Luật xoá):** 4 cột `loi_giai_ai/dap_an_ai/ai_model/ai_de_xuat_at` trên 5 bảng câu gốc
 (mig 202609061458 — thiết kế worker, giờ không ai ghi; v_giaibai_bai vẫn select cho đủ shape, luôn null) · `fn_giaibai_dem_cho_ai`
 (đếm theo cột đó, vô nghĩa) · cột `do_tin/ghi_chu` đã đi theo bảng job (đã drop). Snapshot trên *_yeu_cau_giai thì ĐANG DÙNG.
+
+### 06/09 16:20–17:10 — HÌNH = CHUỖI trên tool giải bài (mig 202609061619)
+**Thùy:** "Với Hình, khi hiện thì phải hiện CẢ CHUỖI câu để nhân sự đọc. Khi nhập giải thì MỖI Ý trong chuỗi có ô nhập giải riêng.
+Claude giải bài thì phải đọc cả các bài TIỀN ĐỀ nữa." Bám spec-kho-hinh-soan-chuoi §2: 1 bài = 1 ĐÍCH + bao đóng tiền đề.
+**Đo trước khi làm:** 112 node, 58 cạnh tiền đề, 84 biến thể; `hinh_bao_dong_tien_de` = đệ quy theo cạnh của CÁCH MẶC ĐỊNH, KHÔNG
+chứa gốc (hàm này KHÔNG có trong migrations — tạo tay, chỉ có trong DB; đọc bằng pg_get_functiondef).
+**DB (1 mig):** `fn_hinh_tt_node(id)` / `fn_hinh_tt_bien_the(id)` → trạng thái chua·claude·nguoi·da_duyet (1 chỗ định nghĩa, view +
+chuỗi + duyệt cùng dùng) · `fn_hinh_chuoi_json(loai,id)` → {mo_hinh, y[]} sắp cấp↑ (đích cuối; biến thể = chuỗi gốc chỉ đọc + chính
+nó) · `fn_giaibai_chuoi(nhanh, keys[])` gọi theo LÔ · `fn_hinh_co_phu_thuoc_cho(id)` = có node PHỤ THUỘC (đi NGƯỢC cạnh cách mặc
+định) đang chua/claude → **pool chỉ hiện ĐÍCH** (v_giaibai_bai nhánh h + v_giaibai_hoan_thien; v_hinh_chua_giai ERP KHÔNG đổi) ·
+cột `y_nhap jsonb` [{id,loi_giai,anh}] trên 5 bảng *_yeu_cau_giai (Đại/KHTN/HGT luôn null, cho union đồng hình) — `v_giaibai_nhan`
+nối y_nhap ở CUỐI · `fn_giaibai_luu_nhap/nop` + `p_y_nhap default null` (DROP chữ ký 6 tham số — bài học overload 1533; nộp chấp
+nhận chỉ có y_nhap) · `fn_giaibai_duyet` Hình có y_nhap → duyệt TỪNG Ý theo trạng thái HIỆN TẠI của node: chua → fn_hinh_ghi_loi_giai
+'nguoi' + đóng dấu · claude → UPDATE ghi đè · nguoi/da_duyet → BỎ QUA (không ghi đè của người khác); ý ném lỗi (người khác đang giữ)
+→ bắt exception, bỏ qua ý đó; 0 ý ghi được → raise. Không y_nhap → đường 1543 giữ nguyên · `fn_hinh_yeu_cau_giai_cho` DROP/tạo lại
++ cột `chuoi` → `hangdoi-giai.mjs --list` dump nguyên chuỗi cho Claude (chú thích đầu file: đọc cả chuỗi, ý 'chua' cũng giải, xuất
+1 item / node id).
+**Kết quả pool sau luật ĐÍCH:** Hình Giải 9, Hoàn thiện 25 (từ 27); 23 node bị ẩn vì là ý của bài khác (BT.08.082, 09.129/130…).
+**UI:** `ChuoiHinh.tsx` mới: `useChuoi(rows)` (1 RPC/nhánh, chỉ key thiếu) · `ChuoiDoc` (giả thiết mô hình + từng ý: nhãn "Ý k/n ·
+ĐÍCH", MÃ node, cấp, chip trạng thái, lời giải hiện có gập) · `ChuoiSoan` (mỗi ý chưa duyệt 1 MathTextarea; ⤢ mở full màn với đề =
+CẢ chuỗi, ý đang soạn viền đậm; tiêu đề "BT.08.083 · BT.08.082") · `YNhapDoc` (lời giải đã nộp theo ý + "So với bản Claude · giữ
+nguyên/đã sửa" TỪNG Ý). GiaiEditor prop `chuoi` → state `yNhap` (nháp DB > bản Claude của ý > trống), `loiGiai` gửi = bản gộp
+`gopYNhap` (chỉ để hiện/đếm ký tự). KhoBai/BaiCuaToi/DuyetBai: Hình → ChuoiDoc thay BaiBody (đang soạn thì không hiện lặp).
+**Verify:** e2e ROLLBACK: Hoàn thiện BT.08.082→084 (2 ý claude): tiền đề ẩn khỏi pool ✓ · nhận snapshot ✓ · lưu nháp 2 ý ✓ · nộp
+không lời giải gộp nhưng có y_nhap ✓ · tự duyệt chặn ✓ · duyệt → CẢ 2 node nguon_giai='nguoi', giai_method='ta', da_duyet, duyet_boi
+đúng người, text đã sửa ✓ · đích rời pool ✓ · Giải BT.09.137→138→139 nộp 1 ý đích → chỉ đích da_duyet, 2 tiền đề vẫn chua ✓ ·
+đường cũ không y_nhap ✓. Browser dev 5181: Kho bài Hoàn thiện Hình hiện chuỗi 3 ý (trạng thái từng ý), nhận BT.08.083 → Bài của
+tôi: 2 ô, nạp sẵn bản Claude, ⤢ full màn đề = chuỗi + ý nổi bật, lưu nháp → reload còn nguyên (y_nhap DB), trả bài; Duyệt: đề
+trái = chuỗi, bài nộp kiểu cũ vẫn hiện. tsc sạch.
+**Chưa làm / ghi nhận:** duyệt-thành-công qua UI cần tài khoản học thuật thứ 2 (DB e2e đã chứng minh) · v_hinh_chua_giai (ERP tab
+"Chưa có lời giải") vẫn liệt kê từng node — Thùy chưa đòi đổi · so sánh hiệu suất Claude theo ý: snapshot vẫn là `loi_giai_ai` bản
+gộp lúc nhận; theo ý so bằng `ChuoiY.loi_giai` (trạng thái claude) — đủ cho UI, chưa có báo cáo.

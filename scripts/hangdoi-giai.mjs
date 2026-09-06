@@ -22,6 +22,11 @@
 //
 // 06/09 (mig 202609060122): 5 bảng yêu cầu giờ dùng chung với tool giaibai (người nhận bài = nguoi_giai ≠ null) —
 // worker CHỈ đụng dòng nguoi_giai IS NULL (fn_*_yeu_cau_giai_cho đã lọc ở DB; --don lọc ở đây).
+// ⭐ 06/09 chiều (mig 202609061619) — HÌNH = CHUỖI: mỗi yêu cầu Hình kèm `chuoi` = {mo_hinh, y[]} (đích + BAO ĐÓNG TIỀN ĐỀ,
+// sắp cấp↑, mỗi node có phát biểu / giả thiết riêng+phụ / trạng thái lời giải hiện có: chua·claude·nguoi·da_duyet + nội
+// dung). Thùy: "Claude giải bài thì phải đọc cả các bài tiền đề." Khi giải: ĐỌC cả chuỗi; ý đã có lời giải (da_duyet/
+// nguoi) → DÙNG lại, viện dẫn theo TÊN tính chất (không "theo ý a/b"); ý 'chua' TRONG CHUỖI cũng cần giải → xuất MỖI
+// node 1 mục `{ mon:'hinh', loai:'baitoan', id:<node id>, loi_giai }` (không chỉ đích) — fn_hinh_ghi_loi_giai nhận từng node.
 // Luật (CLAUDE.md §1.5): không ghi lời giải dở/không chắc — thà --bo kèm lý do còn hơn ghi sai.
 // Kết nối: DATABASE_URL trong .env (cùng cách các script khác trong scripts/).
 import pg from 'pg'

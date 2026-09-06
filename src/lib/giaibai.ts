@@ -51,6 +51,7 @@ export type DongNhan = {
   // che_do set lúc Nhận (mig 202609061526): 'hoan_thien' ⇒ loi_giai_ai = SNAPSHOT bản Claude gốc lúc nhận (bất
   // biến, để so với bản người sửa) · 'giai' ⇒ loi_giai_ai null (viết từ đầu).
   che_do: CheDo; loi_giai_ai: string | null; ai_model: string | null
+  y_nhap: YNhap[] | null   // Hình: nháp theo TỪNG ý (mig 202609061609); Đại/KHTN/HGT: null
 }
 
 async function rpc<T>(fn: string, args: Record<string, unknown>): Promise<T> {
@@ -76,11 +77,30 @@ export const demPool = (nhanh: GiaiBaiNhanh[], cheDo: CheDo = 'giai') =>
 // ── Nhận / trả / nháp / nộp — DB tự chặn: >3 bài đang giữ · bài đã có người/Claude giữ · bị từ chối 3 lần ──
 export const nhanBai = (nhanh: GiaiBaiNhanh, key: string, me: string) => rpc<string>('fn_giaibai_nhan', { p_nhanh: nhanh, p_key: key, p_me: me })
 export const traBai = (nhanh: GiaiBaiNhanh, id: string, me: string) => rpc<void>('fn_giaibai_tra', { p_nhanh: nhanh, p_id: id, p_me: me })
-export type NoiDungGiai = { loiGiai: string | null; anh: string | null; dapAn: string | null }
+// ── HÌNH = CHUỖI (Thùy 06/09 + docs/spec-kho-hinh-soan-chuoi.md): 1 bài = 1 ĐÍCH + bao đóng tiền đề. Hiện CẢ chuỗi
+// để đọc; khi giải, MỖI Ý (node chưa có lời giải / bản Claude) một ô riêng. Nháp/nộp gửi kèm `yNhap` (mỗi ý 1 mục);
+// `loiGiai` với Hình = bản gộp chỉ để hiện/đếm ký tự, DB ghi theo TỪNG ý lúc duyệt. Đại/KHTN/HGT: yNhap undefined.
+export type YNhap = { id: string; loi_giai: string | null; anh: string | null }
+export type ChuoiY = {
+  id: string; ma: string; cap: number; do_sau: number; la_dich: boolean; loai: 'baitoan' | 'bien_the'
+  gia_thiet_rieng: string | null; gt_thay_the: boolean; gia_thiet_phu: string | null; phat_bieu: string; anh: string | null
+  // chua = chưa ai giải · claude = bản Claude chưa duyệt · nguoi = người đã viết (chưa duyệt) · da_duyet = chính thức
+  trang_thai: 'chua' | 'claude' | 'nguoi' | 'da_duyet'; loi_giai: string | null; anh_loi_giai: string | null
+}
+export type ChuoiHinh = { mo_hinh: { ma: string; ten: string; gia_thiet: string; gia_thiet_them: string | null; anh: string | null }; y: ChuoiY[] }
+export const layChuoi = (nhanh: GiaiBaiNhanh, keys: string[]) =>
+  rpc<{ key: string; chuoi: ChuoiHinh }[]>('fn_giaibai_chuoi', { p_nhanh: nhanh, p_keys: keys }).then((r) => new Map((r ?? []).map((x) => [x.key, x.chuoi])))
+// Ý cần ô nhập = chưa chính thức (chua / claude / nguoi-chưa-duyệt). Ý đã duyệt chỉ đọc.
+export const yCanNhap = (y: ChuoiY) => y.trang_thai !== 'da_duyet'
+// Bản gộp để hiện + đếm ký tự (KHÔNG phải nguồn ghi DB) — nhãn theo MÃ node, không a/b/c (spec §3: nhãn động).
+export const gopYNhap = (chuoi: ChuoiHinh, yNhap: YNhap[]) =>
+  chuoi.y.filter(yCanNhap).map((y) => { const v = yNhap.find((x) => x.id === y.id); return v?.loi_giai?.trim() ? `**${y.ma}** — ${v.loi_giai.trim()}` : '' }).filter(Boolean).join('\n\n') || null
+
+export type NoiDungGiai = { loiGiai: string | null; anh: string | null; dapAn: string | null; yNhap?: YNhap[] }
 export const luuNhap = (nhanh: GiaiBaiNhanh, id: string, me: string, a: NoiDungGiai) =>
-  rpc<void>('fn_giaibai_luu_nhap', { p_nhanh: nhanh, p_id: id, p_me: me, p_loi_giai: a.loiGiai, p_anh: a.anh, p_dap_an: a.dapAn })
+  rpc<void>('fn_giaibai_luu_nhap', { p_nhanh: nhanh, p_id: id, p_me: me, p_loi_giai: a.loiGiai, p_anh: a.anh, p_dap_an: a.dapAn, p_y_nhap: a.yNhap ?? null })
 export const nopBai = (nhanh: GiaiBaiNhanh, id: string, me: string, a: NoiDungGiai) =>
-  rpc<void>('fn_giaibai_nop', { p_nhanh: nhanh, p_id: id, p_me: me, p_loi_giai: a.loiGiai, p_anh: a.anh, p_dap_an: a.dapAn })
+  rpc<void>('fn_giaibai_nop', { p_nhanh: nhanh, p_id: id, p_me: me, p_loi_giai: a.loiGiai, p_anh: a.anh, p_dap_an: a.dapAn, p_y_nhap: a.yNhap ?? null })
 export const listCuaToi = (me: string) => rpc<DongNhan[]>('fn_giaibai_cua_toi', { p_me: me }).then((r) => r ?? [])
 
 // ── Duyệt (ghế học thuật đúng môn / admin — DB kiểm lại) ──

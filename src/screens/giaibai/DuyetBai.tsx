@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { MathText } from '../kho/ui'
 import { listChoDuyet, duyetBai, tuChoiBai, nhanhCuaMon, fmtTs, fmtGiay, type DongNhan } from '../../lib/giaibai'
 import { BaiBody, BaiHead } from './BaiCard'
+import { ChuoiDoc, YNhapDoc, chuoiKey, useChuoi } from './ChuoiHinh'
 
 export default function DuyetBai({ mon, me, onChanged }: { mon: string; me: string; onChanged: () => void }) {
   const NHANH = nhanhCuaMon(mon)
@@ -20,6 +21,7 @@ export default function DuyetBai({ mon, me, onChanged }: { mon: string; me: stri
     try { setRows(await listChoDuyet(NHANH)) } catch (e: any) { setErr(e.message ?? String(e)) } finally { setLoading(false) }
   }
   useEffect(() => { reload() }, [mon]) // eslint-disable-line
+  const chuoi = useChuoi(rows)   // Hình: đề = cả chuỗi · lời giải = theo từng ý (y_nhap)
 
   async function chay(r: DongNhan, f: () => Promise<void>) {
     setBusyId(r.id)
@@ -37,7 +39,7 @@ export default function DuyetBai({ mon, me, onChanged }: { mon: string; me: stri
         : rows.length === 0 ? <p className="text-sm text-slate-400">Không có bài nào chờ duyệt. 🎉</p>
         : (
           <ul className="space-y-4">
-            {rows.map((r) => (
+            {rows.map((r) => { const c = chuoi.get(chuoiKey(r.nhanh, r.key)); return (
               <li key={r.id} className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
                 <BaiHead b={r} right={<>
                   <span className="text-[12px] text-slate-500">🧑 <b className="text-slate-700">{r.nguoi_giai_ten}</b> · nộp {fmtTs(r.nop_at)} · giải trong {fmtGiay(r.giay_giai)}{r.tu_choi_lan ? ` · đã từ chối ${r.tu_choi_lan} lần` : ''}</span>
@@ -48,19 +50,21 @@ export default function DuyetBai({ mon, me, onChanged }: { mon: string; me: stri
                 </>} />
                 <div className="grid grid-cols-2 gap-5">
                   <div>
-                    <div className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-slate-400">Đề bài</div>
-                    <BaiBody b={r} compact />
+                    <div className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-slate-400">Đề bài{c ? ` · chuỗi ${c.y.length} ý` : ''}</div>
+                    {c ? <ChuoiDoc chuoi={c} compact /> : <BaiBody b={r} compact />}
                   </div>
                   <div>
                     <div className="mb-1 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wide text-slate-400">
-                      <span>Lời giải · {r.so_ky_tu} ký tự · {r.so_cong_thuc} công thức</span>
-                      {r.che_do === 'hoan_thien' && r.loi_giai_ai && (
+                      <span>Lời giải · {r.so_ky_tu} ký tự · {r.so_cong_thuc} công thức{r.y_nhap?.length ? ` · ${r.y_nhap.length} ý` : ''}</span>
+                      {r.che_do === 'hoan_thien' && r.loi_giai_ai && !r.y_nhap?.length && (
                         <button onClick={() => setXemGocId(xemGocId === r.id ? null : r.id)} className="rounded border border-fuchsia-200 bg-fuchsia-50 px-1.5 py-0.5 normal-case tracking-normal text-fuchsia-700 hover:bg-fuchsia-100">
                           {xemGocId === r.id ? 'Ẩn bản Claude gốc' : '🤖 So với bản Claude gốc'}{r.loi_giai_ai === r.loi_giai_nhap ? ' · giữ nguyên' : ' · đã sửa'}
                         </button>
                       )}
                     </div>
-                    <div className="text-[14px] leading-relaxed text-slate-800"><MathText>{r.loi_giai_nhap}</MathText></div>
+                    {c && r.y_nhap?.length
+                      ? <YNhapDoc chuoi={c} yNhap={r.y_nhap} />
+                      : <div className="text-[14px] leading-relaxed text-slate-800"><MathText>{r.loi_giai_nhap}</MathText></div>}
                     {r.dap_an_nhap && <div className="mt-1.5 text-[13px] text-slate-600">Đáp án ngắn: <MathText>{r.dap_an_nhap}</MathText></div>}
                     {r.anh_nhap && <img src={r.anh_nhap} alt="ảnh lời giải" className="mt-2 max-h-72 max-w-full rounded-lg border border-slate-200 bg-white" />}
                     {xemGocId === r.id && r.loi_giai_ai && (
@@ -80,7 +84,7 @@ export default function DuyetBai({ mon, me, onChanged }: { mon: string; me: stri
                   </div>
                 )}
               </li>
-            ))}
+            ) })}
           </ul>
         )}
     </div>

@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-185 bảng · 11 view · 0 enum · 38 trigger · 233 function
+185 bảng · 11 view · 0 enum · 38 trigger · 238 function
 
 ## _app_secrets
 
@@ -732,6 +732,7 @@
 | loi_giai_ai | text | Y |  |  |  |
 | ai_model | text | Y |  |  |  |
 | che_do | text |  | 'giai'::text |  | `giai` · `hoan_thien` |
+| y_nhap | jsonb | Y |  |  |  |
 
 ## dai_chuyen_de_ly_thuyet
 
@@ -1121,6 +1122,7 @@
 | loi_giai_ai | text | Y |  |  |  |
 | ai_model | text | Y |  |  |  |
 | che_do | text |  | 'giai'::text |  | `giai` · `hoan_thien` |
+| y_nhap | jsonb | Y |  |  |  |
 
 ## hgt_chuyen_de_ly_thuyet
 
@@ -1263,6 +1265,7 @@
 | loi_giai_ai | text | Y |  |  |  |
 | ai_model | text | Y |  |  |  |
 | che_do | text |  | 'giai'::text |  | `giai` · `hoan_thien` |
+| y_nhap | jsonb | Y |  |  |  |
 
 ## hinh_ban_do
 
@@ -1306,6 +1309,7 @@
 | loi_giai_ai | text | Y |  |  |  |
 | ai_model | text | Y |  |  |  |
 | che_do | text |  | 'giai'::text |  | `giai` · `hoan_thien` |
+| y_nhap | jsonb | Y |  |  |  |
 
 ## hinh_bo_de
 
@@ -1862,6 +1866,7 @@
 | loi_giai_ai | text | Y |  |  |  |
 | ai_model | text | Y |  |  |  |
 | che_do | text |  | 'giai'::text |  | `giai` · `hoan_thien` |
+| y_nhap | jsonb | Y |  |  |  |
 
 ## khtn_chuyen_de_ly_thuyet
 
@@ -3027,6 +3032,7 @@ WITH k AS (
             h.ai_model,
             h.ai_de_xuat_at
            FROM v_hinh_chua_giai h
+          WHERE NOT (h.loai = 'baitoan'::text AND fn_hinh_co_phu_thuoc_cho(h.id))
         )
  SELECT k.nhanh,
     k.key,
@@ -3246,7 +3252,7 @@ WITH k AS (
              JOIN hinh_mo_hinh m ON m.id = b.mo_hinh_id
           WHERE cg.nguon_giai = 'ai'::text AND cg.giai_method = 'claude_code'::text AND cg.da_duyet = false AND NOT (EXISTS ( SELECT 1
                    FROM hinh_cach_giai x
-                  WHERE x.baitoan_id = b.id AND x.id <> cg.id AND (x.loi_giai IS NOT NULL OR x.anh_loi_giai IS NOT NULL)))
+                  WHERE x.baitoan_id = b.id AND x.id <> cg.id AND (x.loi_giai IS NOT NULL OR x.anh_loi_giai IS NOT NULL))) AND NOT fn_hinh_co_phu_thuoc_cho(b.id)
         UNION ALL
          SELECT 'hinh_bien_the'::text,
             v.id::text AS id,
@@ -3404,6 +3410,7 @@ WITH k AS (
 | loi_giai_ai | text |
 | ai_model | text |
 | che_do | text |
+| y_nhap | jsonb |
 
 ```sql
 WITH k AS (
@@ -3432,6 +3439,7 @@ WITH k AS (
             y.loi_giai_ai,
             y.ai_model,
             y.che_do,
+            y.y_nhap,
             y.ma_cau AS key,
             c.ma_cau AS ma,
             b.khoi,
@@ -3476,6 +3484,7 @@ WITH k AS (
             y.loi_giai_ai,
             y.ai_model,
             y.che_do,
+            y.y_nhap,
             y.ma_cau,
             c.ma_cau,
             b.khoi,
@@ -3520,6 +3529,7 @@ WITH k AS (
             y.loi_giai_ai,
             y.ai_model,
             y.che_do,
+            y.y_nhap,
             y.ma_cau,
             c.ma_cau,
             b.khoi,
@@ -3582,7 +3592,8 @@ WITH k AS (
                  LIMIT 1) AS bai_loi_giai,
             y.loi_giai_ai,
             y.ai_model,
-            y.che_do
+            y.che_do,
+            y.y_nhap
            FROM hinh_baitoan_yeu_cau_giai y
              JOIN hinh_baitoan b ON b.id = y.baitoan_id
              JOIN hinh_mo_hinh m ON m.id = b.mo_hinh_id
@@ -3626,7 +3637,8 @@ WITH k AS (
             v.loi_giai,
             y.loi_giai_ai,
             y.ai_model,
-            y.che_do
+            y.che_do,
+            y.y_nhap
            FROM hinh_bien_the_yeu_cau_giai y
              JOIN hinh_baitoan_bien_the v ON v.id = y.bien_the_id
              JOIN hinh_baitoan b ON b.id = v.baitoan_id
@@ -3670,7 +3682,8 @@ WITH k AS (
             k.bai_loi_giai,
             k.loi_giai_ai,
             k.ai_model,
-            k.che_do
+            k.che_do,
+            k.y_nhap
            FROM k
         UNION ALL
          SELECT h.nhanh,
@@ -3711,7 +3724,8 @@ WITH k AS (
             h.bai_loi_giai,
             h.loi_giai_ai,
             h.ai_model,
-            h.che_do
+            h.che_do,
+            h.y_nhap
            FROM h
         )
  SELECT u.nhanh,
@@ -3758,7 +3772,8 @@ WITH k AS (
     EXTRACT(epoch FROM u.nop_at - u.created_at)::integer AS giay_giai,
     u.loi_giai_ai,
     u.ai_model,
-    u.che_do
+    u.che_do,
+    u.y_nhap
    FROM u
      LEFT JOIN nhan_su ns ON ns.id = u.nguoi_giai
      LEFT JOIN nhan_su nd ON nd.id = u.duyet_boi;
@@ -3975,6 +3990,7 @@ UNION ALL
 - `fn_giaibai_bao_cao_chi_tiet(p_tu date, p_den date)` → SETOF v_giaibai_nhan
 - `fn_giaibai_bao_cao_tong(p_tu date, p_den date)` → TABLE(nguoi_giai uuid, ho_ten text, so_bai bigint, md1 bigint, md2 bigint, md3 bigint, md4 bigint, md5 bigint, md_khac bigint, tong_ky_tu bigint, tong_cong_thuc bigint, tb_giay_giai integer)
 - `fn_giaibai_cho_duyet(p_nhanh text[])` → SETOF v_giaibai_nhan
+- `fn_giaibai_chuoi(p_nhanh text, p_keys text[])` → TABLE(key text, chuoi jsonb)
 - `fn_giaibai_cua_toi(p_me uuid)` → SETOF v_giaibai_nhan
 - `fn_giaibai_dang_giu(p_trang_thai text, p_han_at timestamp with time zone, p_xu_ly_at timestamp with time zone)` → boolean
 - `fn_giaibai_dashboard(p_nhanh text[], p_me uuid)` → TABLE(nhan_su_id uuid, ho_ten text, dang_giu bigint, qua_han bigint, cho_duyet bigint, da_duyet bigint, tu_choi_3 bigint, da_tra bigint)
@@ -3983,10 +3999,10 @@ UNION ALL
 - `fn_giaibai_dong_qua_han(p_nhanh text, p_key text)` → void
 - `fn_giaibai_duyet(p_nhanh text, p_id uuid, p_me uuid)` → void
 - `fn_giaibai_la_nguoi_duyet(p_me uuid, p_nhanh text)` → boolean
-- `fn_giaibai_luu_nhap(p_nhanh text, p_id uuid, p_me uuid, p_loi_giai text, p_anh text, p_dap_an text)` → void
+- `fn_giaibai_luu_nhap(p_nhanh text, p_id uuid, p_me uuid, p_loi_giai text, p_anh text, p_dap_an text, p_y_nhap jsonb DEFAULT NULL::jsonb)` → void
 - `fn_giaibai_mon(p_nhanh text)` → text
 - `fn_giaibai_nhan(p_nhanh text, p_key text, p_me uuid)` → uuid
-- `fn_giaibai_nop(p_nhanh text, p_id uuid, p_me uuid, p_loi_giai text, p_anh text, p_dap_an text)` → void
+- `fn_giaibai_nop(p_nhanh text, p_id uuid, p_me uuid, p_loi_giai text, p_anh text, p_dap_an text, p_y_nhap jsonb DEFAULT NULL::jsonb)` → void
 - `fn_giaibai_pool(p_nhanh text[], p_khoi text, p_limit integer DEFAULT 500, p_che_do text DEFAULT 'giai'::text)` → SETOF v_giaibai_bai
 - `fn_giaibai_src(p_nhanh text, OUT src text, OUT src_key text)` → record
 - `fn_giaibai_tbl(p_nhanh text, OUT yc text, OUT key_col text, OUT key_cast text)` → record
@@ -3998,10 +4014,14 @@ UNION ALL
 - `fn_gv_tien_do(p_deadline date, p_ngay_nop date)` → numeric
 - `fn_gv_tran_chat_luong(p_so_lan_tra_lai integer)` → numeric
 - `fn_hinh_cau_chua_giai(p_khoi text, p_limit integer DEFAULT 500)` → SETOF v_hinh_chua_giai
+- `fn_hinh_chuoi_json(p_loai text, p_id uuid)` → jsonb
+- `fn_hinh_co_phu_thuoc_cho(p_id uuid)` → boolean
 - `fn_hinh_dat_giai(p_loai text, p_ids uuid[], p_ghi_chu text, p_nguoi uuid)` → integer
 - `fn_hinh_ghi_loi_giai(p_loai text, p_id uuid, p_loi_giai text, p_anh text, p_nguon text)` → void
 - `fn_hinh_luu_loi_giai_nguoi(p_loai text, p_id uuid, p_loi_giai text, p_anh text)` → void
-- `fn_hinh_yeu_cau_giai_cho()` → TABLE(yeu_cau_id uuid, yeu_cau_at timestamp with time zone, ghi_chu text, loai text, id uuid, ma text, khoi text, mo_hinh_ma text, mo_hinh_ten text, gia_thiet text, de_bai text, anh text, kieu text, da_co_loi_giai boolean, mau_loi_giai text, mau_anh text)
+- `fn_hinh_tt_bien_the(p_id uuid)` → text
+- `fn_hinh_tt_node(p_id uuid)` → TABLE(trang_thai text, loi_giai text, anh_loi_giai text, cach_id uuid)
+- `fn_hinh_yeu_cau_giai_cho()` → TABLE(yeu_cau_id uuid, yeu_cau_at timestamp with time zone, ghi_chu text, loai text, id uuid, ma text, khoi text, mo_hinh_ma text, mo_hinh_ten text, gia_thiet text, de_bai text, anh text, kieu text, da_co_loi_giai boolean, mau_loi_giai text, mau_anh text, chuoi jsonb)
 - `fn_hoa_don_cap_nhat_trang_thai()` → trigger
 - `fn_hocphi_chi_tiet_ky(p_ky date)` → TABLE(phu_huynh_id uuid, loai text, hoc_sinh_id uuid, hoc_sinh_ten text, lop_id uuid, lop_ten text, mo_ta text, so_luong numeric, don_gia numeric, he_so numeric, thanh_tien numeric)
 - `fn_hocphi_chot_ky(p_ph uuid, p_ky date, p_phat_sinh jsonb DEFAULT '[]'::jsonb)` → jsonb

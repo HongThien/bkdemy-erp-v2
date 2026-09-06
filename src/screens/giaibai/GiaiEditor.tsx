@@ -1,11 +1,14 @@
 // Ô soạn lời giải của tool giải bài: MathTextarea (Ctrl+M công thức · phím tắt cá nhân · nút ⤢ mở trình soạn thảo
 // full màn SoanModal) + thanh chèn ảnh vào giữa lời giải + ô ảnh lời giải riêng + đáp án (câu kho chưa có).
+// HÌNH (Thùy 06/09): bài = CHUỖI (đích + tiền đề) → truyền `chuoi` ⇒ MỖI Ý chưa chính thức 1 ô riêng (ChuoiSoan);
+// nháp/nộp gửi `yNhap` theo id node, `loiGiai` = bản gộp chỉ để hiện/đếm. Ý là bản Claude (Hoàn thiện) → nạp sẵn.
 // KHÔNG import DangHub (kéo cả CumBai/PdfRender/Gemini vào bundle) — chỉ lấy đúng 2 mảnh nhỏ dùng chung.
 import { useRef, useState, type ReactNode } from 'react'
 import { MathTextarea } from '../../components/math/MathTextarea'
 import { ImgInsertBar, insertImageAtCursor } from '../../components/ImgInsertBar'
 import { uploadKhoImage } from '../../lib/kho/api'
-import type { NoiDungGiai } from '../../lib/giaibai'
+import { gopYNhap, yCanNhap, type ChuoiHinh, type NoiDungGiai, type YNhap } from '../../lib/giaibai'
+import { ChuoiSoan } from './ChuoiHinh'
 
 export function AnhSlot({ url, onChange }: { url: string | null; onChange: (v: string | null) => void }) {
   const ref = useRef<HTMLInputElement>(null)
@@ -32,21 +35,35 @@ export function AnhSlot({ url, onChange }: { url: string | null; onChange: (v: s
   )
 }
 
-export default function GiaiEditor({ initial, hoiDapAn, tieuDe, deBai, aiModel, busy, onLuuNhap, onNop, onClose }: {
+// Nháp ý ban đầu: nháp đã lưu (DB) > bản Claude của ý (Hoàn thiện, trạng thái 'claude') > trống.
+function yNhapBanDau(chuoi: ChuoiHinh, daLuu: YNhap[] | undefined): YNhap[] {
+  return chuoi.y.filter(yCanNhap).map((y) => {
+    const v = daLuu?.find((x) => x.id === y.id)
+    if (v) return v
+    return { id: y.id, loi_giai: y.trang_thai === 'claude' ? y.loi_giai : null, anh: null }
+  })
+}
+
+export default function GiaiEditor({ initial, hoiDapAn, tieuDe, deBai, aiModel, chuoi, busy, onLuuNhap, onNop, onClose }: {
   initial: NoiDungGiai; hoiDapAn: boolean; tieuDe: string
   deBai?: ReactNode  // đề bài (BaiHead+BaiBody, chỉ đọc) — hiện cạnh lời giải khi mở trình soạn thảo full màn (⤢)
-  aiModel?: string | null  // có = ô Lời giải đang nạp SẴN bản AI đề xuất (06/09) — nhắc đọc kỹ trước khi nộp
+  aiModel?: string | null  // có = ô Lời giải đang nạp SẴN bản Claude (Hoàn thiện) — nhắc đọc kỹ trước khi nộp
+  chuoi?: ChuoiHinh        // HÌNH: soạn theo từng ý của chuỗi (thay cho 1 ô lời giải)
   busy: boolean
   onLuuNhap: (a: NoiDungGiai) => Promise<void>; onNop: (a: NoiDungGiai) => Promise<void>; onClose: () => void
 }) {
   const [loiGiai, setLoiGiai] = useState(initial.loiGiai ?? '')
   const [anh, setAnh] = useState<string | null>(initial.anh)
   const [dapAn, setDapAn] = useState(initial.dapAn ?? '')
+  const [yNhap, setYNhap] = useState<YNhap[]>(() => (chuoi ? yNhapBanDau(chuoi, initial.yNhap) : []))
   const [err, setErr] = useState<string | null>(null)
   const [daLuu, setDaLuu] = useState(false)
   const taRef = useRef<HTMLTextAreaElement>(null)
-  const ok = !!loiGiai.trim() || !!anh
-  const gom = (): NoiDungGiai => ({ loiGiai: loiGiai.trim() || null, anh, dapAn: hoiDapAn ? dapAn.trim() || null : null })
+  const laChuoi = !!chuoi
+  const ok = laChuoi ? yNhap.some((v) => v.loi_giai?.trim() || v.anh) : (!!loiGiai.trim() || !!anh)
+  const gom = (): NoiDungGiai => laChuoi
+    ? { loiGiai: gopYNhap(chuoi!, yNhap), anh, dapAn: null, yNhap: yNhap.filter((v) => v.loi_giai?.trim() || v.anh) }
+    : { loiGiai: loiGiai.trim() || null, anh, dapAn: hoiDapAn ? dapAn.trim() || null : null }
   async function luu() {
     setErr(null)
     try { await onLuuNhap(gom()); setDaLuu(true); setTimeout(() => setDaLuu(false), 2000) } catch (e: any) { setErr(e.message ?? String(e)) }
@@ -56,38 +73,55 @@ export default function GiaiEditor({ initial, hoiDapAn, tieuDe, deBai, aiModel, 
     setErr(null)
     try { await onNop(gom()) } catch (e: any) { setErr(e.message ?? String(e)) }
   }
+  const soY = chuoi ? chuoi.y.filter(yCanNhap).length : 0
   return (
     <div className="mt-3 rounded-xl border border-emerald-200 bg-emerald-50/40 p-3">
       {aiModel && (
         <div className="mb-2 rounded-lg border border-fuchsia-200 bg-fuchsia-50 px-3 py-2 text-[12px] text-fuchsia-800">
-          🤖 <b>Hoàn thiện</b> — ô lời giải đang nạp sẵn bản <b>Claude đã giải</b>. Đọc kỹ, sửa cho đúng rồi nộp duyệt. Bản gốc của Claude được giữ riêng để đối chiếu, sửa thoải mái.
+          🤖 <b>Hoàn thiện</b> — {laChuoi ? 'các ý là bản Claude đã giải đang nạp sẵn' : 'ô lời giải đang nạp sẵn bản Claude đã giải'}. Đọc kỹ, sửa cho đúng rồi nộp duyệt. Bản gốc của Claude được giữ riêng để đối chiếu, sửa thoải mái.
         </div>
       )}
-      <div className="grid grid-cols-[1fr_280px] gap-3">
-        <div className="flex min-h-0 flex-col">
+      {laChuoi ? (
+        <>
           <div className="mb-1 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wide text-slate-500">
-            Lời giải <span className="font-normal normal-case text-slate-400">— gõ LaTeX trong $…$, Ctrl+M mở ô công thức, nút ⤢ mở trình soạn thảo, dán ảnh vào giữa được</span>
+            Chuỗi {chuoi!.y.length} ý · {soY} ý cần lời giải <span className="font-normal normal-case text-slate-400">— mỗi ý một ô; ý đã duyệt chỉ đọc. Viện dẫn tiền đề theo TÊN tính chất, không "theo ý a/b".</span>
           </div>
-          <ImgInsertBar taRef={taRef} value={loiGiai} onChange={setLoiGiai} className="mb-1" />
-          <MathTextarea ref={taRef} value={loiGiai} onChange={setLoiGiai} soanTitle={tieuDe} soanDeBai={deBai} wrapClassName="flex min-h-0 flex-1 flex-col"
-            onPaste={(e) => { const f = Array.from(e.clipboardData.files).find((x) => x.type.startsWith('image/')); if (f) { e.preventDefault(); e.stopPropagation(); void insertImageAtCursor(f, taRef, loiGiai, setLoiGiai).catch((err: any) => alert('Upload ảnh lỗi: ' + (err?.message ?? err))) } }}
-            className="min-h-[180px] w-full rounded-md border border-slate-200 bg-white px-2.5 py-2 text-[13px] leading-relaxed focus:border-emerald-400 focus:outline-none" />
+          <ChuoiSoan chuoi={chuoi!} values={yNhap} onChange={setYNhap} tieuDe={tieuDe} />
+          <div className="mt-2 grid grid-cols-[1fr_280px] gap-3">
+            <div />
+            <div className="flex flex-col gap-2">
+              <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">Ảnh lời giải chung (tuỳ chọn)</div>
+              <AnhSlot url={anh} onChange={setAnh} />
+            </div>
+          </div>
+        </>
+      ) : (
+        <div className="grid grid-cols-[1fr_280px] gap-3">
+          <div className="flex min-h-0 flex-col">
+            <div className="mb-1 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wide text-slate-500">
+              Lời giải <span className="font-normal normal-case text-slate-400">— gõ LaTeX trong $…$, Ctrl+M mở ô công thức, nút ⤢ mở trình soạn thảo, dán ảnh vào giữa được</span>
+            </div>
+            <ImgInsertBar taRef={taRef} value={loiGiai} onChange={setLoiGiai} className="mb-1" />
+            <MathTextarea ref={taRef} value={loiGiai} onChange={setLoiGiai} soanTitle={tieuDe} soanDeBai={deBai} wrapClassName="flex min-h-0 flex-1 flex-col"
+              onPaste={(e) => { const f = Array.from(e.clipboardData.files).find((x) => x.type.startsWith('image/')); if (f) { e.preventDefault(); e.stopPropagation(); void insertImageAtCursor(f, taRef, loiGiai, setLoiGiai).catch((err: any) => alert('Upload ảnh lỗi: ' + (err?.message ?? err))) } }}
+              className="min-h-[180px] w-full rounded-md border border-slate-200 bg-white px-2.5 py-2 text-[13px] leading-relaxed focus:border-emerald-400 focus:outline-none" />
+          </div>
+          <div className="flex flex-col gap-2">
+            <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">Ảnh lời giải (tuỳ chọn)</div>
+            <AnhSlot url={anh} onChange={setAnh} />
+            {hoiDapAn && (
+              <>
+                <div className="mt-1 text-[11px] font-semibold uppercase tracking-wide text-slate-500">Đáp án ngắn (tuỳ chọn)</div>
+                <input value={dapAn} onChange={(e) => setDapAn(e.target.value)} placeholder="vd: x = 3"
+                  className="rounded-md border border-slate-200 bg-white px-2.5 py-1.5 text-[13px] focus:border-emerald-400 focus:outline-none" />
+              </>
+            )}
+          </div>
         </div>
-        <div className="flex flex-col gap-2">
-          <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">Ảnh lời giải (tuỳ chọn)</div>
-          <AnhSlot url={anh} onChange={setAnh} />
-          {hoiDapAn && (
-            <>
-              <div className="mt-1 text-[11px] font-semibold uppercase tracking-wide text-slate-500">Đáp án ngắn (tuỳ chọn)</div>
-              <input value={dapAn} onChange={(e) => setDapAn(e.target.value)} placeholder="vd: x = 3"
-                className="rounded-md border border-slate-200 bg-white px-2.5 py-1.5 text-[13px] focus:border-emerald-400 focus:outline-none" />
-            </>
-          )}
-        </div>
-      </div>
+      )}
       {err && <p className="mt-2 text-xs text-rose-600">{err}</p>}
       <div className="mt-3 flex items-center gap-2">
-        <span className="mr-auto text-[12px] text-slate-400">Cần lời giải text HOẶC ảnh. Nháp tự giữ trên hệ thống — đóng rồi mở lại vẫn còn.</span>
+        <span className="mr-auto text-[12px] text-slate-400">{laChuoi ? 'Cần ít nhất 1 ý có lời giải. ' : 'Cần lời giải text HOẶC ảnh. '}Nháp tự giữ trên hệ thống — đóng rồi mở lại vẫn còn.</span>
         <button onClick={onClose} disabled={busy} className="rounded-md px-3 py-1.5 text-[13px] text-slate-500 hover:bg-slate-100">Đóng</button>
         <button onClick={luu} disabled={busy} className="rounded-md border border-slate-300 bg-white px-3.5 py-1.5 text-[13px] font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-40">
           {daLuu ? '✓ Đã lưu nháp' : '💾 Lưu nháp'}
