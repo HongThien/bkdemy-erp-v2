@@ -9,7 +9,7 @@
 //   DƯỚI  = vùng soạn WYSIWYG: chọn cụm → hiện ngay trong bài; cụm có tên điểm → hỏi đổi tên (bộ điểm nhớ theo bài).
 //           KHÔNG có LaTeX ở bất kỳ đâu. Lưu → máy tự dịch chuỗi kho ($…$).
 // ⚠ BẢN THỬ: cụm + thư mục ở localStorage (theo origin — ERP và soan.html KHÔNG chung bộ cụm cho tới khi lên DB).
-import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
+import { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState, type ReactNode } from 'react'
 import { MathText } from '../screens/kho/ui'
 import { MathDoc, type DiemMap, type MathDocHandle } from './MathDoc'
 import { coDoi } from './diem'
@@ -30,8 +30,13 @@ export type SoanWorkspaceProps = {
   // Không dùng thì layout giữ NGUYÊN (card giữa màn, max-w-920) — không ảnh hưởng mọi chỗ khác đang dùng ⤢.
   deBai?: ReactNode
 }
+// Lộ getValue() ra ngoài — dùng khi 1 màn full màn NGOÀI cần đọc buffer đang gõ TRƯỚC khi tự đóng/chuyển chỗ khác mà
+// KHÔNG qua nút "Lưu" (vd ChuoiSoanModal chuyển ý a↔b: chụp lại nội dung ý đang gõ rồi mới nạp ý kế tiếp — không thì mất).
+export type SoanWorkspaceHandle = { getValue: () => string }
 
-export function SoanWorkspace({ initial, onSave, onClose, title, deBai }: SoanWorkspaceProps) {
+export const SoanWorkspace = forwardRef<SoanWorkspaceHandle, SoanWorkspaceProps>(function SoanWorkspace(
+  { initial, onSave, onClose, title, deBai }, fwdRef,
+) {
   const [thuMucs, setThuMucs] = useState<ThuMuc[]>(() => loadThuMucs())
   const [cums, setCums] = useState<Cum[]>(() => loadCums(loadThuMucs()))
   const [tabChung, setTabChung] = useState<Record<string, string>>(() => loadTabChung())
@@ -46,6 +51,7 @@ export function SoanWorkspace({ initial, onSave, onClose, title, deBai }: SoanWo
   const [hasSel, setHasSel] = useState(false)
   const [diemMap, setDiemMap] = useState<DiemMap>({})   // bộ điểm của bài: A→M, B→N… nhớ cho mọi cụm chèn sau
   const doc = useRef<MathDocHandle>(null)
+  useImperativeHandle(fwdRef, () => ({ getValue: () => doc.current?.getValue() ?? '' }))
 
   const persistCums = (l: Cum[]) => { setCums(l); saveCums(l) }
   const persistTm = (l: ThuMuc[]) => { setThuMucs(l); saveThuMucs(l) }
@@ -260,4 +266,4 @@ export function SoanWorkspace({ initial, onSave, onClose, title, deBai }: SoanWo
       )}
     </div>
   )
-}
+})

@@ -8813,3 +8813,23 @@ này cho 1 ô ngắn thật sự gõ tại chỗ, không đáng mở full màn.
 **Verify:** tsc sạch · Browser dev 5181: nhận BT.08.108, tab a) chỉ hiện đề + nút full màn (không ô gõ) → bấm nút →
 SoanModal mở đúng tiêu đề "Lời giải · BT.08.108 · a)", đề trái đúng CHỈ ý a), vùng soạn WYSIWYG trống sẵn sàng gõ →
 đóng, trả bài dọn sạch.
+
+### 06/09 tối (4) — Toggle ý a/b/c CHUYỂN VÀO full màn, "Sửa" tự bung full màn ngay
+**Thùy:** "Làm cái chọn ý a,b,c ở chỗ full màn luôn đi, Tốt nhất khi bấm sửa là tự động chuyển sang full màn luôn vì
+sẽ ko có ai sửa ở cái màn bé tý kia đâu." → rồi xác nhận thêm: "nên chỗ full màn cũng cần có toggle ý a,b,c ấy."
+**Đổi:**
+- `SoanWorkspace` (`src/soan/SoanWorkspace.tsx`) → `forwardRef` lộ `getValue()` (kiểu `SoanWorkspaceHandle`) — để
+  chỗ NGOÀI đọc được buffer đang gõ TRƯỚC khi tự chuyển/tự đóng mà KHÔNG qua nút "Lưu" (không đổi hành vi cho mọi
+  chỗ dùng cũ không truyền ref — AppSoan, SoanModal đơn-giá-trị vẫn y nguyên).
+- **`ChuoiSoanModal`** (mới, trong ChuoiHinh.tsx) — full màn RIÊNG cho chuỗi: THANH TAB a)/b)/c)…★✓ NGAY TRONG modal
+  (không phải ở màn bé nữa). Đổi ý → `wsRef.current.getValue()` chụp lại nội dung ý cũ RỒI mới nạp ý mới
+  (`key={y.id}` ép SoanWorkspace remount) — đổi ý khi CHƯA bấm Lưu vẫn không mất. Đề trái = `CumDe` lũy tiến đúng ý
+  đang chọn (giữ từ tối (2)).
+- `ChuoiSoan` (màn bé) giờ chỉ còn tác dụng: TỰ MỞ full màn NGAY khi lên (`useState(true)`) — đúng "bấm sửa là tự
+  động chuyển sang full màn luôn". Nếu đóng full màn giữa chừng, quay lại đúng thẻ Bài của tôi/GiaiEditor (không
+  văng ra ngoài danh sách) với tóm tắt (`ChuoiDoc` gộp 1 card) + số ý đã xong + nút "Tiếp tục soạn — full màn".
+**Verify:** tsc sạch · Browser dev 5181: bấm "Sửa tiếp" → bung full màn NGAY (đúng, không qua màn bé) · toggle
+a)/b)/c) nằm ở góc trên trái full màn · gõ text ở ý a) CHƯA bấm Lưu → đổi sang b) → quay lại a): nội dung vẫn còn
+nguyên (chụp bằng getValue, không mất) · nút "✕ Đóng" của modal (phân biệt với nút "Đóng" của GiaiEditor phía dưới
+bị modal che — test tay lúc đầu bấm nhầm nút bị che do querySelector không phân biệt lớp phủ, sửa lại chọn đúng nút
+mới thấy hành vi đúng) đưa về đúng thẻ GiaiEditor với tóm tắt "2/3 ý đã có lời giải".
