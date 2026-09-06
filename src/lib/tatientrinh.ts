@@ -5,7 +5,8 @@ import { supabase } from './supabase'
 
 export type TienTrinhLop = {
   lop_id: string; ten_lop: string; buoi_tuan: number
-  buoi_chuan: number; buoi_thuc: number
+  khong_ro_chinh: boolean          // lớp gán ≥2 TA mà không ai la_chinh — hiện cờ, không đoán
+  buoi_chuan: number; buoi_thuc: number; buoi_vang: number   // vắng = lead ghi (ta_vang), đã trừ khỏi buoi_thuc
   btvn_chuan: number; btvn_thuc: number
   et_chuan: number; et_thuc: number
 }

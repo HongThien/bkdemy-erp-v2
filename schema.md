@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-190 bảng · 11 view · 0 enum · 39 trigger · 253 function
+194 bảng · 11 view · 0 enum · 39 trigger · 259 function
 
 ## _app_secrets
 
@@ -2336,6 +2336,35 @@
 | created_at | timestamp with time zone |  | now() |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
 
+## shop_don
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| nhan_su_id | uuid |  |  | FK→nhan_su.id |  |
+| vat_pham_id | uuid | Y |  | FK→shop_vat_pham.id |  |
+| ten_vat_pham | text |  |  |  |  |
+| gia_diem | integer |  |  |  |  |
+| trang_thai | text |  | 'cho_giao'::text |  | `cho_giao` · `da_giao` · `huy` |
+| created_at | timestamp with time zone |  | now() |  |  |
+| giao_at | timestamp with time zone | Y |  |  |  |
+| nguoi_giao | uuid | Y |  | FK→nhan_su.id |  |
+| ghi_chu | text | Y |  |  |  |
+
+## shop_vat_pham
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| ten | text |  |  |  |  |
+| mo_ta | text | Y |  |  |  |
+| anh_url | text | Y |  |  |  |
+| gia_diem | integer |  |  |  |  |
+| active | boolean |  | true |  |  |
+| thu_tu | integer |  | 100 |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
 ## ta_dinh_muc
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -2344,6 +2373,17 @@
 | gia_tri | numeric |  |  |  |  |
 | mo_ta | text | Y |  |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
+
+## ta_vang
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| buoi_hoc_id | uuid |  |  | FK→buoi_hoc.id |  |
+| nhan_su_id | uuid |  |  | FK→nhan_su.id |  |
+| ly_do | text | Y |  |  |  |
+| nguoi_ghi | uuid |  |  | FK→nhan_su.id |  |
+| created_at | timestamp with time zone |  | now() |  |  |
 
 ## tai_khoan
 
@@ -2463,6 +2503,17 @@
 | noi_dung | text |  |  |  |  |
 | doc_at | timestamp with time zone | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
+
+## tich_luy_chot_thang
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ky | date |  |  | PK |  |
+| nhan_su_id | uuid |  |  | PK FK→nhan_su.id |  |
+| diem | integer |  |  |  |  |
+| chuoi | integer |  |  |  |  |
+| nguoi_chot | uuid |  |  | FK→nhan_su.id |  |
+| chot_at | timestamp with time zone |  | now() |  |  |
 
 ## tln_ai_cham_log
 
@@ -3985,6 +4036,7 @@ UNION ALL
 - `_kho_cum_tbl(p_cautbl text)` → text
 - `_kho_lt_tbl(p_mon text, p_nhanh text DEFAULT NULL::text)` → text
 - `_kho_snapshot_cau(p_bt_id uuid, p_cautbl text, p_lttbl text, p_ma_cau text, p_thu_tu integer, p_ma_cum text DEFAULT NULL::text)` → void
+- `_tich_luy_cua(p_ns uuid, p_ym text)` → TABLE(diem_thang integer, chuoi integer, ngay_cuoi date, ngay_trot date)
 - `_trg_btyeu_retest_cau()` → trigger
 - `_trg_btyeu_retest_lam()` → trigger
 - `bai_test_con_han(p_bai_test uuid)` → boolean
@@ -4124,11 +4176,16 @@ UNION ALL
 - `fn_rank_diem_mt(p_hs uuid, p_lop_ids uuid[], p_mon text, p_ym text)` → TABLE(rank_now integer, rank_total integer)
 - `fn_rank_diem_mt_lop(p_lop uuid, p_mon text, p_ym text)` → TABLE(hoc_sinh_id uuid, tb numeric, rank_now integer, rank_total integer)
 - `fn_recompute_exp_thang(p_lop_id uuid, p_ym text)` → jsonb
+- `fn_shop_doi(p_vat_pham uuid)` → shop_don
+- `fn_shop_don_cua_toi()` → SETOF shop_don
 - `fn_sua_key_va_cham_lai(p_bai_test_cau_id uuid, p_key jsonb, p_ly_do text)` → jsonb
+- `fn_ta_buoi_thang(p_ns uuid, p_ym text)` → TABLE(buoi_id uuid, ten_lop text, ngay date, gio_bat_dau time without time zone, vang boolean, ly_do text)
 - `fn_ta_dashboard(p_ym text)` → jsonb
 - `fn_ta_tien_trinh(p_ym text)` → jsonb
 - `fn_ta_viec_thang(p_tu date, p_den date)` → TABLE(nhan_su_id uuid, ho_ten text, an_xep_hang boolean, ten_lop text, ngay date, tab text, kq text, ly_do text)
 - `fn_thu_cua_ngay(p_ngay date)` → smallint
+- `fn_tich_luy(p_ym text)` → jsonb
+- `fn_tich_luy_chot_thang(p_ky date)` → integer
 - `fn_tln_check(p_user text, p_key text)` → boolean
 - `fn_tln_normalize(p_val text)` → text
 - `fn_tuqua_actor()` → uuid
@@ -4286,6 +4343,7 @@ UNION ALL
 | qlht_qua | qlht_qua_gia_xu_check | `CHECK ((gia_xu > 0))` |
 | qlht_qua_order | qlht_qua_order_gia_xu_check | `CHECK ((gia_xu > 0))` |
 | qlht_xu_ledger | qlht_xu_ledger_amount_check | `CHECK ((amount <> 0))` |
+| shop_vat_pham | shop_vat_pham_gia_diem_check | `CHECK ((gia_diem > 0))` |
 | thoi_khoa_bieu | thoi_khoa_bieu_thu_check | `CHECK (((thu >= 2) AND (thu <= 8)))` |
 | troly_nhan_dinh | troly_nhan_dinh_gac_ck | `CHECK (((quyet_dinh = 'gac'::text) = (gac_den IS NOT NULL)))` |
 | troly_ra_soat | troly_ra_soat_gac_ck | `CHECK (((ket_luan = 'gac'::text) = (gac_den IS NOT NULL)))` |
