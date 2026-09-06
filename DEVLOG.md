@@ -8288,7 +8288,6 @@ CHƯA nhìn tận mắt, Thùy bấm thử. Dev log có sẵn lỗi `virtual:pwa
   - Chưa có trên app: tách task con / quản lý con (vẫn ở ERP). Verify: dry-run ROLLBACK giả jwt Lộc → 13 dòng đúng cờ; dev 375px
     card + modal chi tiết render gọn (admin chỉ có 1 việc đã huỷ nên chưa soi được nút Hoàn thành trên máy). tsc 0.
 
-
 ## 2026-09-05 — TOOL SOẠN THẢO công thức: app riêng `soan` (WYSIWYG, không LaTeX) — spike (nhánh feat/cong-thuc-b, worktree bkdemy-erp-v2-congthuc)
 **Bối cảnh / quyết định (Thùy, 3 lần chỉnh hướng CTO trong 1 buổi):** (1) CTO đề xuất "hàng đợi từ kho (11.815 lời giải AI chưa duyệt)" → SAI, Thùy:
 "độc lập với kho, sao cứ dính kho". (2) CTO đề xuất "toggle xem code LaTeX để copy" → SAI, Thùy: "KHÔNG có code LaTeX ở đâu cả, y như
@@ -8847,3 +8846,39 @@ riêng ⇒ card không hiện ảnh gì — đúng triệu chứng Thùy thấy.
 **Verify:** query read-only (rollback) — 25/25 bài Hoàn thiện Hình giờ có ảnh ở ý cuối (trước đó nhiều bài null) ·
 Browser dev 5181 Kho bài: mọi card đều hiện ảnh kể cả bài trước đây trống. `npm run schema` refresh (chỉ đổi hàm,
 không đổi bảng/view).
+## 2026-09-06 — App TA cũng có push nhắc việc hàng ngày (23:30), dùng chung hạ tầng với app pt
+- **CEO 06/09:** "app TA cũng cần push để không miss việc, giống pt". Chốt qua hỏi: tin CHUNG (khuôn y
+  hệt pt, không đếm bài ET/BTVN cá nhân — tránh lặp lại độ phức tạp derive server-side của getMyTasks()
+  vốn đang chạy client-side, TKB + buổi huỷ ad-hoc…) · giờ gửi **23:30 VN** (khác 10:30 của pt).
+- **`push_dang_ky` giờ DÙNG CHUNG 2 app** — mig `202609061913_push_dang_ky_app_scope`: thêm cột `app`
+  (check `pt`/`ta`, mặc định `pt` — 3 dòng cũ ĐÃ có thật từ lúc app pt bật thử, backfill đúng vì lúc đó
+  chỉ có pt). **Bài học ghi lại:** Web Push subscribe theo TỪNG ORIGIN + CẶP KHOÁ VAPID riêng — không
+  phân biệt app thì cron app này sẽ cố gửi payload/giờ của app kia cho thiết bị đăng ký app khác (push
+  service từ chối vì sai khoá, hoặc gửi nhầm nội dung nếu lỡ dùng chung khoá).
+  `fn_pt_push_danh_sach` SỬA TẠI CHỖ (create or replace) — thêm `p_app text default 'pt'` filter theo
+  app; **DROP overload 1-tham-số CŨ trước khi tạo overload mới** (giữ cả hai chữ ký ≠ số tham số sẽ
+  ĐỤNG ĐỘ "function is not unique" khi gọi chỉ `p_secret` — Postgres coi 2 chữ ký khác nhau, không tự
+  biết ưu tiên bản có default). Giữ TÊN hàm có tiền tố `pt` dù giờ 2 app cùng gọi — đổi tên sẽ phải đồng
+  bộ code đã deploy trên Vercel đúng lúc migration chạy, rủi ro hơn lợi (app pt gọi hàm cũ 1-tham-số vẫn
+  chạy y nguyên nhờ default). Dry-run ROLLBACK: gọi kiểu cũ vẫn ra đúng 3 dòng pt, `p_app='ta'` ra 0 rồi
+  1 sau khi giả đăng ký, constraint chặn giá trị app lạ.
+- **Code dùng chung:** `src/lib/push.ts` thêm tham số `app: 'pt'|'ta'` cho mọi hàm ghi/đọc `push_dang_ky`
+  · `src/components/NhacViecCaiDat.tsx` (MỚI) = `NhacViecCard` (nội dung thẻ, dùng trong trang Cài đặt
+  của pt — PtHome.tsx rút gọn, xoá code trùng) + `NhacViecNutHeader` (nút chuông 🔔 + modal nổi khuôn
+  GopY, dùng cho ta vì bottom-tab 5 ô đã đủ, không chèn thêm tab Cài đặt được).
+- **`api/ta-nhac-viec.mjs`** (mới, khuôn y hệt `api/pt-nhac-viec.mjs`): gọi `fn_pt_push_danh_sach(secret,
+  'ta')`, nội dung "Nhớ kiểm tra & chấm hết ET/BTVN/bài trên lớp hôm nay nha các tình yêu 💜", tag
+  `ta-nhac-viec`. `vercel.json` thêm cron `30 16 * * *` (=23:30 VN). `vite.config.ta.ts` thêm
+  `workbox.importScripts:['sw-push.js']` (file JS thuần đã có sẵn từ pt, tái dùng nguyên).
+  `TaHome.tsx` thêm nút chuông cạnh Góp ý + banner gợi ý bật ở trang chủ (giống pt).
+  `.env.example`: ghi rõ 2 app cần **2 CẶP KHOÁ VAPID RIÊNG** (sinh 2 lần), CRON_SECRET dùng chung được.
+- **Verify:** tsc 0 · `build:pt` + `build:ta` pass, `dist-ta/sw.js` xác nhận có `importScripts(sw-push.js)`
+  · dev 375px app ta: nút chuông render cạnh 🐞, bấm ra modal đúng nội dung "23:30…", đúng cảnh báo
+  "bản dev không có service worker" (khớp môi trường thật). Migration ĐÃ ÁP (`npm run migrate` +
+  `npm run schema`) — schema.md lần này còn kèm rất nhiều bảng/hàm KHÔNG PHẢI của phiên này (song song
+  nhiều worktree khác đang merge lên cùng DB sống — `migrate.mjs --status` liệt kê ~15 file
+  "giaibai_*"/"han_nop_ngoai_le" chưa có trong nhánh này, đúng cảnh báo README "nhánh chưa merge").
+- **CEO cần làm thêm để chạy thật (ngoài phần pt đã ghi 05/09):** sinh THÊM 1 cặp khoá VAPID RIÊNG cho
+  ta (`npx web-push generate-vapid-keys`, ĐỪNG dùng lại cặp của pt) → dán `VITE_PUSH_VAPID_PUBLIC` +
+  `PUSH_VAPID_PRIVATE` vào Vercel project **ta** (project TA sẵn có, chỉ thêm 2 biến + CRON_SECRET —
+  không cần Vercel project mới, không cần domain mới).

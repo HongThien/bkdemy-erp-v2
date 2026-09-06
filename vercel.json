@@ -9,6 +9,10 @@
     {
       "path": "/api/pt-nhac-viec",
       "schedule": "30 3 * * *"
+    },
+    {
+      "path": "/api/ta-nhac-viec",
+      "schedule": "30 16 * * *"
     }
   ]
 }

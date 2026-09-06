@@ -9,7 +9,8 @@ import { supabase } from '../../lib/supabase'
 import type { PtGate } from '../../AppPt'
 import { listViecCuaToiPt, type ViecPt } from '../../lib/giaoviec'
 import { homNayVN, ddmmVN, thuCuaNgay } from '../../lib/tuan'
-import { kiemTraHoTro, trangThaiNhacViec, batNhacViec, tatNhacViec, listThietBiCuaToi, type PushHoTro, type TrangThaiNhac, type PushDangKy } from '../../lib/push'
+import { kiemTraHoTro, trangThaiNhacViec } from '../../lib/push'
+import { NhacViecCard } from '../../components/NhacViecCaiDat'
 import { ErrBar } from '../giaoviec/ui'
 import { ViecPtCard, ChiTietModal } from './ViecPt'
 import PtQuanLy from './PtQuanLy'
@@ -129,7 +130,7 @@ function HomNay({ profile, rows, loading, err, onOpen, onChanged, onGoCaiDat }: 
   const [goiYBat, setGoiYBat] = useState(false)   // banner nhắc bật push — chỉ khi môi trường hỗ trợ và chưa bật
   useEffect(() => {
     if (kiemTraHoTro() !== 'ok') return
-    trangThaiNhacViec().then((t) => setGoiYBat(t === 'tat')).catch(() => {})
+    trangThaiNhacViec('pt').then((t) => setGoiYBat(t === 'tat')).catch(() => {})
   }, [])
 
   return (
@@ -209,85 +210,14 @@ function VietCuaToi({ profile, rows, loading, err, onOpen, onChanged }: ListProp
   )
 }
 
-// ── CÀI ĐẶT: nhắc việc (Web Push) ─────────────────────────────────────────────
-const HO_TRO_TEXT: Record<PushHoTro, string> = {
-  ok: '',
-  dev: 'Bản dev (vite) không có service worker — nhắc việc chỉ thử được trên bản build/preview hoặc bản deploy.',
-  thieu_cau_hinh: 'Bản deploy này chưa khai VITE_PUSH_VAPID_PUBLIC — quản trị cần cấu hình trên Vercel.',
-  ios_can_cai: 'Trên iPhone/iPad: bấm Chia sẻ → "Thêm vào MH chính", rồi mở app từ màn hình chính để bật nhắc việc (Safari yêu cầu vậy).',
-  khong_ho_tro: 'Trình duyệt này không hỗ trợ thông báo đẩy — dùng Chrome (Android) hoặc cài app lên màn hình chính (iPhone).',
-}
-
+// ── CÀI ĐẶT: nhắc việc (Web Push) — nội dung thẻ dùng chung components/NhacViecCaiDat.tsx,
+// đăng ký thiết bị dùng CHUNG với app ta (mig 202609061913 — push_dang_ky.app) ─────────────
 function CaiDat({ profile }: { profile: PtGate['profile'] }) {
-  const hoTro = kiemTraHoTro()
-  const [tt, setTt] = useState<TrangThaiNhac | null>(null)
-  const [thietBi, setThietBi] = useState<PushDangKy[]>([])
-  const [busy, setBusy] = useState(false)
-  const [err, setErr] = useState<string | null>(null)
-  const [ok, setOk] = useState<string | null>(null)
-
-  async function reload() {
-    if (hoTro === 'ok') setTt(await trangThaiNhacViec().catch(() => 'tat' as TrangThaiNhac))
-    setThietBi(await listThietBiCuaToi().catch(() => []))
-  }
-  useEffect(() => { reload() }, []) // eslint-disable-line
-
-  async function doi(bat: boolean) {
-    setBusy(true); setErr(null); setOk(null)
-    try {
-      if (bat) { await batNhacViec(); setOk('Đã bật — máy này sẽ nhận nhắc cập nhật việc lúc 10:30 mỗi ngày.') }
-      else { await tatNhacViec(); setOk('Đã tắt nhắc việc trên máy này.') }
-      await reload()
-    } catch (e: any) { setErr(e?.message ?? String(e)) } finally { setBusy(false) }
-  }
-
   return (
     <div>
       <HeaderBar profile={profile} sub="Cài đặt" />
       <div className="mx-auto max-w-[1000px] px-3 pb-6 pt-3">
-        <div className="rounded-2xl border border-slate-200/70 bg-white p-4 shadow-sm">
-          <div className="flex items-start gap-3">
-            <span className="text-[26px]">🔔</span>
-            <div className="min-w-0 flex-1">
-              <p className="text-[15px] font-bold text-slate-800">Nhắc cập nhật việc hàng ngày</p>
-              <p className="mt-0.5 text-[12.5px] leading-relaxed text-slate-500">
-                10:30 mỗi ngày, máy này nhận một thông báo chung nhắc cả team cập nhật tình trạng công việc daily.
-              </p>
-            </div>
-          </div>
-          {hoTro !== 'ok' ? (
-            <p className="mt-3 rounded-xl bg-amber-50 px-3 py-2.5 text-[12.5px] leading-relaxed text-amber-800">{HO_TRO_TEXT[hoTro]}</p>
-          ) : tt === null ? <p className="mt-3 text-[12.5px] text-slate-400">Đang kiểm tra…</p> : tt === 'chan' ? (
-            <p className="mt-3 rounded-xl bg-rose-50 px-3 py-2.5 text-[12.5px] leading-relaxed text-rose-700">Thông báo đang bị CHẶN cho trang này — vào cài đặt trình duyệt/điện thoại → Thông báo → cho phép, rồi mở lại.</p>
-          ) : (
-            <div className="mt-3 flex items-center justify-between rounded-xl bg-slate-50 px-3 py-2.5">
-              <span className={`text-[13px] font-semibold ${tt === 'bat' ? 'text-emerald-700' : 'text-slate-600'}`}>{tt === 'bat' ? '● Đang bật trên máy này' : '○ Đang tắt trên máy này'}</span>
-              <button disabled={busy} onClick={() => doi(tt !== 'bat')}
-                className={`rounded-lg px-3.5 py-2 text-[13px] font-semibold text-white shadow-sm disabled:opacity-40 ${tt === 'bat' ? 'bg-slate-500' : 'bg-violet-600'}`}>
-                {busy ? '…' : tt === 'bat' ? 'Tắt' : 'Bật nhắc việc'}
-              </button>
-            </div>
-          )}
-          {ok && <p className="mt-2 text-[12.5px] text-emerald-700">{ok}</p>}
-          <ErrBar msg={err} />
-        </div>
-
-        {thietBi.length > 0 && (
-          <div className="mt-3 rounded-2xl border border-slate-200/70 bg-white p-4 shadow-sm">
-            <p className="mb-2 text-[12px] font-bold uppercase tracking-wide text-slate-400">Máy đang nhận nhắc việc ({thietBi.length})</p>
-            <div className="flex flex-col divide-y divide-slate-100">
-              {thietBi.map((d) => (
-                <div key={d.id} className="flex items-center justify-between py-2 text-[12.5px]">
-                  <span className="font-medium text-slate-700">{d.thiet_bi ?? 'Máy không rõ'}</span>
-                  <span className={`text-[11.5px] ${d.loi_ma === 410 ? 'text-rose-500' : 'text-slate-400'}`}>
-                    {d.loi_ma === 410 ? 'endpoint đã chết' : d.gui_ok_at ? `gửi ok ${ddmmVN(d.gui_ok_at.slice(0, 10))}` : d.loi_at ? `lỗi ${d.loi_ma ?? ''}` : 'chưa gửi lần nào'}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
+        <NhacViecCard app="pt" gioNhac="10:30" moTa="nhắc cả team cập nhật tình trạng công việc daily." />
         <button onClick={() => supabase.auth.signOut()} className="mt-4 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-[13.5px] font-medium text-slate-600 active:bg-slate-100">Đăng xuất</button>
       </div>
     </div>

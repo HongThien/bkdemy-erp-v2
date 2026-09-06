@@ -13,11 +13,17 @@ import { getMyTasks, type MyTask } from '../../lib/gami'
 import { demNopTheoBuois } from '../../lib/btvnnop'
 import { taDashboard, type TaDash } from '../../lib/tadash'
 import { homNayVN, ddmmVN, thuCuaNgay, mucDeadline, nhanConLai } from '../../lib/tuan'
+import { kiemTraHoTro, trangThaiNhacViec } from '../../lib/push'
+import { NhacViecNutHeader } from '../../components/NhacViecCaiDat'
 import ChamBuoi from './ChamBuoi'
 import DashTa from './DashTa'
 import GopY from './GopY'
 import CaBoTroTA, { demNoBoTro } from './CaBoTroTA'
 import { viecBoTroCuaToi, type ViecCaBoTro, type ViecRetest } from '../../lib/botro_yeu_ca'
+
+// CEO 06/09: "app TA cũng cần push để không miss việc, giống app pt". Khuôn Y HỆT pt (tin
+// chung, không cá nhân hoá theo bài chấm) — chỉ khác GIỜ GỬI (23:30 tối, sau giờ dạy) và app id.
+const TA_MO_TA_NHAC = 'nhớ kiểm tra & chấm hết ET/BTVN/bài trên lớp hôm nay nha các tình yêu 💜'
 
 type NvKey = 'ingame' | 'et' | 'btvn'
 // 'botro' = ca bổ trợ yếu (PLAN-botro-yeu-ca.md) — nghiệp vụ thứ 4, dữ liệu riêng (fn_btyeu_viec_cua_toi), không qua getMyTasks.
@@ -128,6 +134,9 @@ function HeaderBar({ profile, sub }: { profile: MyProfile; sub: string }) {
           <p className="truncate text-[13.5px] font-bold text-slate-800">{ten}</p>
           <p className="text-[11px] text-slate-400">{sub}</p>
         </div>
+        {/* Nút chuông = nhắc việc 23:30 (CEO 06/09) — app ta không có tab Cài đặt riêng (5 ô đáy đã
+            đủ khuôn OpsHome), nên gộp vào đây cạnh Góp ý, khuôn NÚT NỔI GopY. */}
+        <NhacViecNutHeader app="ta" gioNhac="23:30" moTa={TA_MO_TA_NHAC} />
         <GopY route="home" />
         <button onClick={() => supabase.auth.signOut()} className="rounded-lg px-2.5 py-1.5 text-[12px] text-slate-400 active:bg-slate-100">Thoát</button>
       </div>
@@ -143,6 +152,12 @@ function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now
 }) {
   const tenGoi = (profile.nhanSu.ho_ten ?? '').trim().split(/\s+/).pop() || 'bạn'
   const quaHan = canLam.filter((t) => mucDeadline(t.deadline, now) === 'qua_han').length
+  // Banner gợi ý bật nhắc việc (CEO 06/09) — chỉ khi môi trường hỗ trợ push VÀ máy này chưa bật.
+  const [goiYBatNhac, setGoiYBatNhac] = useState(false)
+  useEffect(() => {
+    if (kiemTraHoTro() !== 'ok') return
+    trangThaiNhacViec('ta').then((t) => setGoiYBatNhac(t === 'tat')).catch(() => {})
+  }, [])
   return (
     <div>
       <HeaderBar profile={profile} sub="BK Trợ giảng" />
@@ -160,6 +175,16 @@ function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now
             {!loading && canLam.length > 0 && <span className="shrink-0 rounded-full bg-white/20 px-3 py-1.5 text-[15px] font-bold text-white">{canLam.length}</span>}
           </div>
         </div>
+
+        {goiYBatNhac && (
+          <div className="mb-3 flex items-center gap-3 rounded-2xl border border-amber-200 bg-amber-50 p-3.5">
+            <span className="text-[22px]">🔔</span>
+            <div className="min-w-0 flex-1">
+              <p className="text-[13.5px] font-bold text-amber-800">Bật nhắc việc 23:30 mỗi tối</p>
+              <p className="text-[12px] text-amber-700">Máy này chưa nhận thông báo — bấm chuông 🔔 cạnh Góp ý ở trên để bật.</p>
+            </div>
+          </div>
+        )}
 
         {/* BOX DASHBOARD THÁNG — 1 cái riêng đứng cùng các nghiệp vụ (CEO 31/08), full hàng + % sống */}
         {!loading && coQuyen && <BoxDashThang d={dashTom} onGo={() => onGo('dash')} />}
