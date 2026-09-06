@@ -21,6 +21,7 @@ import {
 import DoiMatKhau from './DoiMatKhau'
 import CaBoTroHS, { RetestHS, BoTroBanner } from './CaBoTroHS'
 import { caCuaToi, retestCuaToi } from '../../lib/botro_yeu_ca'
+import { listThongBaoHS, docTatCaThongBao, type ThongBaoHS } from '../../lib/thongbaohs'
 
 type Chon = number | string | (string | null)[] | null // TN=index · TLN=chuỗi · ĐS=mảng 'D'/'S'
 type CauState = { chon: Chon; kq: { verdict: string; key: unknown; baiLamCauId: string } | null; baoRoi?: boolean }
@@ -99,7 +100,7 @@ const BOX_CAP1: BoxCap1[] = [
 // Bỏ khoá `h-screen overflow-hidden` — mockup gốc của Thùy vốn là trang cuộn tự nhiên theo nội dung
 // (không ép vừa 1 màn hình), thân trang cao hơn viewport 13-14" thì cuộn nhẹ là đúng theo THIẾT KẾ
 // gốc, không phải bug — khác hẳn bug 21/08 (cuộn do zoom 1.15 lỗi, xem main-hs.tsx).
-function HomeCap1({ hoTen, maHS, onOpen, extra }: { hoTen: string; maHS: string; onOpen: (d: 'tu_luyen' | 'thong_tin' | 'xep_hang') => void; extra?: React.ReactNode }) {
+function HomeCap1({ hoTen, maHS, onOpen, extra, chuaDoc, onHopThu }: { hoTen: string; maHS: string; onOpen: (d: 'tu_luyen' | 'thong_tin' | 'xep_hang') => void; extra?: React.ReactNode; chuaDoc: number; onHopThu: () => void }) {
   const initials = hoTen.trim().split(/\s+/).slice(-2).map((w) => w[0]).join('').toUpperCase()
   return (
     <div className="min-h-screen" style={{ background: 'radial-gradient(circle at 85% 5%, rgba(115,87,245,.10), transparent 24rem), radial-gradient(circle at 8% 25%, rgba(47,128,237,.08), transparent 22rem), #f4f7fb' }}>
@@ -118,6 +119,14 @@ function HomeCap1({ hoTen, maHS, onOpen, extra }: { hoTen: string; maHS: string;
                 <p className="truncate text-[11px] text-[#7b8499]">{maHS.toUpperCase()}</p>
               </div>
             </div>
+            {/* Hòm thư — chuông nổi, badge đỏ khi có thư chưa đọc (§ "báo lỗi đúng" gửi vào đây). */}
+            <button onClick={onHopThu} title="Hòm thư"
+              className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-[14px] bg-white text-[16px] shadow-[0_6px_16px_rgba(31,47,79,0.06)]">
+              🔔
+              {chuaDoc > 0 && (
+                <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-ph-red px-1 text-[10px] font-bold text-white">{chuaDoc}</span>
+              )}
+            </button>
             {/* Thoát (Thùy 22/08: "ko thấy nút đăng xuất") — mockup gốc chỉ vẽ mũi tên dropdown chưa
                 nối chức năng, thêm nút Thoát riêng, ĐÚNG style icon-button cấp 3 (squircle nổi). */}
             <button onClick={() => supabase.auth.signOut()} title="Đăng xuất"
@@ -186,13 +195,17 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [tab, setTab] = useState<'chua' | 'xong'>('chua')
   const [doiMK, setDoiMK] = useState(false)
   const [khu, setKhu] = useState<KhuId | null>(null) // null = màn chính, có ô
-  const [direct, setDirect] = useState<'tu_luyen' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'retest' | null>(null)
+  const [direct, setDirect] = useState<'tu_luyen' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'retest' | 'hop_thu' | null>(null)
   const [cap1, setCap1] = useState<boolean | null>(null) // null = chưa biết — chờ trước khi vẽ lưới ô
   // Ca bổ trợ yếu hôm nay (đã điểm danh) + retest đến hạn — ô "Bổ trợ" CHỈ hiện khi có (không "sắp có", không ô trống).
   const [boTro, setBoTro] = useState<{ coCa: boolean; soRetest: number }>({ coCa: false, soRetest: 0 })
+  // Hòm thư — chỉ cần SỐ chưa đọc để hiện badge chuông (đếm items đang render, không phải tính nghiệp vụ).
+  const [chuaDoc, setChuaDoc] = useState(0)
+  const taiChuaDoc = () => listThongBaoHS().then((ds) => setChuaDoc(ds.filter((d) => !d.doc_at).length)).catch(() => {})
 
   useEffect(() => { listBaiTestCuaHS().then(setTests).catch(() => setTests([])) }, [])
   useEffect(() => { laCap1HS().then(setCap1).catch(() => setCap1(false)) }, [])
+  useEffect(() => { taiChuaDoc() }, [])
   useEffect(() => {
     const tai = () => Promise.all([caCuaToi().catch(() => null), retestCuaToi().catch(() => [])])
       .then(([ca, rt]) => setBoTro({ coCa: !!ca, soRetest: rt.filter((r) => !r.da_nop).length }))
@@ -208,6 +221,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   if (direct === 'xep_hang') return <BangXepHang onXong={() => setDirect(null)} />
   if (direct === 'bo_tro') return <CaBoTroHS hocSinhId={hocSinhId} desktop={!!cap1} onXong={() => setDirect(null)} LamBai={LamBai} LamET={LamET} />
   if (direct === 'retest') return <RetestHS hocSinhId={hocSinhId} onXong={() => setDirect(null)} LamET={LamET} />
+  if (direct === 'hop_thu') return <HopThuHS onXong={() => { setDirect(null); taiChuaDoc() }} />
 
   if (active) {
     const back = () => { setActive(null); listBaiTestCuaHS().then(setTests) }
@@ -232,11 +246,18 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   // desktop/iPad-first theo mockup HTML CEO gửi, KHÔNG dùng lưới mobile-first bên dưới (cấp 3 vẫn
   // giữ nguyên màn cũ — CEO xác nhận "cấp 3 chưa dùng màn này", bàn sau).
   if (!khu && cap1) return <HomeCap1 hoTen={hoTen} maHS={maHS} onOpen={(d) => setDirect(d)}
+    chuaDoc={chuaDoc} onHopThu={() => setDirect('hop_thu')}
     extra={<BoTroBanner coCa={boTro.coCa} soRetest={boTro.soRetest} desktop onCa={() => setDirect('bo_tro')} onRetest={() => setDirect('retest')} />} />
   if (!khu) return (
     <div className="mx-auto min-h-screen max-w-md bg-ios px-4 pb-10 pt-[calc(14px+env(safe-area-inset-top))]">
       {/* Hàng nút phụ (đổi MK/thoát) — ĐÚNG ".top" (ph-v3.css): icon-button vuông-tròn nổi trên nền trang */}
       <div className="mb-3 flex items-center justify-end gap-2">
+        <button onClick={() => setDirect('hop_thu')} title="Hòm thư" className={`relative flex h-[42px] w-[42px] items-center justify-center rounded-[14px] bg-white text-[16px] ${SHADOW}`}>
+          🔔
+          {chuaDoc > 0 && (
+            <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-ph-red px-1 text-[10px] font-bold text-white">{chuaDoc}</span>
+          )}
+        </button>
         <button onClick={() => setDoiMK(true)} title="Đổi mật khẩu" className={`flex h-[42px] w-[42px] items-center justify-center rounded-[14px] bg-white text-[16px] ${SHADOW}`}>🔑</button>
         <button onClick={() => supabase.auth.signOut()} className={`flex h-[42px] items-center justify-center rounded-[14px] bg-white px-3.5 text-[13px] font-semibold text-ph-label-2 ${SHADOW}`}>Thoát</button>
       </div>
@@ -890,6 +911,39 @@ function BangXepHang({ onXong }: { onXong: () => void }) {
           ))}
         </div>
       )}
+    </div>
+  )
+}
+
+// ── HÒM THƯ — hiện tại chỉ 1 nguồn: TA/GV duyệt "Em nghĩ mình đúng" là ĐÚNG (fn_chap_nhan_dap_an).
+// Mở ra là đánh dấu đã đọc HẾT (hòm thư đơn giản, không cần bấm từng cái) — chỉ để HS thấy hệ thống
+// có lắng nghe khi mình báo lỗi, không phải trung tâm điều hành việc phải làm.
+function HopThuHS({ onXong }: { onXong: () => void }) {
+  const [items, setItems] = useState<ThongBaoHS[] | null>(null)
+  useEffect(() => {
+    listThongBaoHS().then((ds) => {
+      setItems(ds)
+      if (ds.some((d) => !d.doc_at)) docTatCaThongBao().catch(() => {})
+    }).catch(() => setItems([]))
+  }, [])
+  return (
+    <div className="mx-auto min-h-screen max-w-md bg-ios px-4 pb-10">
+      <Head title="Hòm thư" onBack={onXong} />
+      {items === null && <p className="py-10 text-center text-sm text-ph-label-2">Đang tải…</p>}
+      {items && items.length === 0 && (
+        <div className={`mt-3 rounded-[21px] bg-white p-8 text-center ${SHADOW}`}>
+          <p className="text-3xl">📭</p>
+          <p className="mt-2 text-sm font-medium text-ph-label">Chưa có thông báo nào</p>
+        </div>
+      )}
+      <div className="mt-3 flex flex-col gap-3">
+        {items?.map((tb) => (
+          <div key={tb.id} className={`rounded-[18px] bg-white p-4 ${SHADOW} ${!tb.doc_at ? 'ring-2 ring-brand/30' : ''}`}>
+            <p className="text-[14px] leading-snug text-ph-label">{tb.noi_dung}</p>
+            <p className="mt-1.5 text-[11px] text-ph-label-2">{fmtShort(tb.created_at)}</p>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }

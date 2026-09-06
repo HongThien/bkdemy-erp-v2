@@ -2,14 +2,14 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-> ## ⚠️ ĐIỂM MÙ ĐỌC DỮ LIỆU — `5` BẢNG
-> Role `claude_build` **không sở hữu** và **không có `bypassrls`** với: `giai_thuong` · `giai_thuong_lop_thang` · `hinh_giao_trinh` · `hinh_gt_bai` · `hinh_gt_buoi`
+> ## ⚠️ ĐIỂM MÙ ĐỌC DỮ LIỆU — `6` BẢNG
+> Role `claude_build` **không sở hữu** và **không có `bypassrls`** với: `giai_thuong` · `giai_thuong_lop_thang` · `hinh_giao_trinh` · `hinh_gt_bai` · `hinh_gt_buoi` · `thong_bao_hs`
 > Các bảng này bật RLS với policy `to authenticated`, nên `SELECT` từ script/CLI trả **0 dòng,
 > im lặng, không lỗi**. ⚠ **"0 dòng" ở đây KHÔNG phải bằng chứng bảng rỗng** — muốn biết số thật
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-187 bảng · 11 view · 0 enum · 39 trigger · 241 function
+188 bảng · 11 view · 0 enum · 39 trigger · 251 function
 
 ## _app_secrets
 
@@ -2430,6 +2430,17 @@
 | hieu_luc_den | date | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 
+## thong_bao_hs
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |  |
+| mon | text |  |  |  |  |
+| noi_dung | text |  |  |  |  |
+| doc_at | timestamp with time zone | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
 ## tln_ai_cham_log
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -3984,6 +3995,7 @@ UNION ALL
 - `fn_btyeu_retest_ghi(p_bai_lam uuid)` → void
 - `fn_btyeu_viec_cua_toi()` → jsonb
 - `fn_buoi_recompute_hoan_tat(p_buoi_id uuid)` → void
+- `fn_ca_cua_gio(p_gio time without time zone)` → text
 - `fn_ca_test_kq_diem()` → trigger
 - `fn_chap_nhan_dap_an(p_ma_cau text, p_dap_an_raw text)` → jsonb
 - `fn_chi_cong_no()` → jsonb
@@ -4015,6 +4027,7 @@ UNION ALL
 - `fn_gay_bang(p_ky date)` → TABLE(nhan_su_id uuid, ns_ten text, so_gay_danh bigint, so_gay_go bigint, con_lai bigint, don_gia numeric, tien_phat numeric)
 - `fn_gay_bang_khoang(p_tu date, p_den date)` → TABLE(nhan_su_id uuid, ns_ten text, so_gay_danh bigint, so_gay_go bigint, con_lai bigint, so_task_khong_dat bigint, don_gia numeric, tien_phat numeric)
 - `fn_gay_chot_thang(p_ky date)` → integer
+- `fn_gay_dang_hieu_luc(p_ref_key text)` → boolean
 - `fn_gay_theo_task(p_nhan_su_id uuid DEFAULT NULL::uuid)` → TABLE(nhan_su_id uuid, ref_loai text, ref_id text, so_gay bigint, lan_cuoi timestamp with time zone)
 - `fn_giaibai_bao_cao_chi_tiet(p_tu date, p_den date)` → SETOF v_giaibai_nhan
 - `fn_giaibai_bao_cao_tong(p_tu date, p_den date)` → TABLE(nguoi_giai uuid, ho_ten text, so_bai bigint, md1 bigint, md2 bigint, md3 bigint, md4 bigint, md5 bigint, md_khac bigint, tong_ky_tu bigint, tong_cong_thuc bigint, tb_giay_giai integer)
@@ -4042,6 +4055,7 @@ UNION ALL
 - `fn_gv_phan_tram(p_tien_do numeric, p_chat_luong numeric)` → numeric
 - `fn_gv_tien_do(p_deadline date, p_ngay_nop date)` → numeric
 - `fn_gv_tran_chat_luong(p_so_lan_tra_lai integer)` → numeric
+- `fn_gv_viec_thang(p_tu date, p_den date)` → TABLE(nhan_su_id uuid, ho_ten text, an_xep_hang boolean, ten_lop text, ngay date, tab text, kq text, ly_do text)
 - `fn_han_viec(p_lop uuid, p_ngay date, p_gio_bat_dau time without time zone, p_tab text)` → timestamp with time zone
 - `fn_hinh_cau_chua_giai(p_khoi text, p_limit integer DEFAULT 500)` → SETOF v_hinh_chua_giai
 - `fn_hinh_chuoi_json(p_loai text, p_id uuid)` → jsonb
@@ -4075,6 +4089,9 @@ UNION ALL
 - `fn_mastery_rollup(p_hs uuid[], p_include_btvn boolean DEFAULT false, p_since timestamp with time zone DEFAULT NULL::timestamp with time zone)` → TABLE(hoc_sinh_id uuid, dat bigint, can_luyen bigint, yeu bigint, tin_thap bigint)
 - `fn_matrix_lop(p_lop uuid, p_phase text, p_ym text DEFAULT NULL::text)` → TABLE(hoc_sinh_id uuid, buoi_hoc_id uuid, pct integer, status text)
 - `fn_mo_lai_phase(p_buoi_id uuid, p_phase text)` → void
+- `fn_nguoi_truc_ca(p_thu smallint, p_ca text, p_ngay date)` → uuid
+- `fn_ops_dashboard(p_ym text)` → jsonb
+- `fn_ops_viec_thang(p_tu date, p_den date)` → TABLE(nhan_su_id uuid, ho_ten text, an_xep_hang boolean, ten_viec text, ngay date, tab text, kq text, ly_do text)
 - `fn_pt_push_danh_sach(p_secret text, p_app text DEFAULT 'pt'::text)` → TABLE(id uuid, endpoint text, p256dh text, auth text)
 - `fn_pt_push_ghi_ket_qua(p_secret text, p_ket_qua jsonb)` → integer
 - `fn_pt_viec_can_cap_nhat(p_ns uuid)` → TABLE(id uuid, tieu_de text, trang_thai text, deadline date, task_me_id uuid, qua_han boolean, da_cap_nhat_hom_nay boolean, cap_nhat_cuoi_at timestamp with time zone, tien_do_bao_cao numeric, so_ngay_im integer)
@@ -4085,6 +4102,8 @@ UNION ALL
 - `fn_recompute_exp_thang(p_lop_id uuid, p_ym text)` → jsonb
 - `fn_sua_key_va_cham_lai(p_bai_test_cau_id uuid, p_key jsonb, p_ly_do text)` → jsonb
 - `fn_ta_dashboard(p_ym text)` → jsonb
+- `fn_ta_viec_thang(p_tu date, p_den date)` → TABLE(nhan_su_id uuid, ho_ten text, an_xep_hang boolean, ten_lop text, ngay date, tab text, kq text, ly_do text)
+- `fn_thu_cua_ngay(p_ngay date)` → smallint
 - `fn_tln_check(p_user text, p_key text)` → boolean
 - `fn_tln_normalize(p_val text)` → text
 - `fn_tuqua_actor()` → uuid
@@ -4106,9 +4125,11 @@ UNION ALL
 - `fn_tuqua_so_du(p_hoc_sinh_id uuid)` → integer
 - `fn_tuqua_ton(p_qua_id uuid)` → integer
 - `fn_vh_hieu_suat(p_tien_do numeric, p_chat_luong numeric)` → numeric
-- `fn_viec_buoi_thuong(p_tu date DEFAULT NULL::date, p_den date DEFAULT NULL::date, p_tat_ca boolean DEFAULT false)` → TABLE(nhan_su_id uuid, buoi_id uuid, lop_id uuid, ten_lop text, ngay date, vai text, tab text, dong_at timestamp with time zone, han timestamp with time zone, et_online boolean)
+- `fn_viec_buoi_thuong(p_tu date DEFAULT NULL::date, p_den date DEFAULT NULL::date, p_tat_ca boolean DEFAULT false)` → TABLE(nhan_su_id uuid, buoi_id uuid, lop_id uuid, ten_lop text, ngay date, vai text, tab text, dong_at timestamp with time zone, han timestamp with time zone, et_online boolean, ref_key text)
 - `fn_viec_nghiem_thu_tinh()` → trigger
+- `fn_viec_ops_thuong(p_tu date, p_den date, p_tat_ca boolean DEFAULT false)` → TABLE(nhan_su_id uuid, ten_viec text, ngay date, tab text, dong_at timestamp with time zone, han timestamp with time zone, chat_luong numeric, ref_key text)
 - `fn_vvhd_tinh()` → trigger
+- `fn_xephang_chung(p_ym text)` → jsonb
 - `giai_thuong_check_slot()` → trigger
 - `giaoviec_auto_dong_task_me()` → trigger
 - `giaoviec_housekeeping()` → void
