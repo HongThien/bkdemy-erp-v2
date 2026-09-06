@@ -25,11 +25,16 @@ export const BK = {
 // mảnh công viên phía dưới quá rực) — màu trời Của tôi pha trong suốt.
 // `chanDay` = số px ảnh (của mảnh `day`) ở ĐÁY đã vẽ sẵn banner mascot ("Bạn đang làm rất tốt!") → nội dung
 // chừa chỗ đúng bấy nhiêu (paddingBottom) và lớp phủ dừng trên banner; danh sách dài thì CUỘN NỘI BỘ ở giữa.
-export type BKTranh = { url: string; rong: number; canh: number; troi: [string, string]; day?: string; phu?: string; chanDay?: number }
+// `hoSo: false` = màn không có thẻ hồ sơ (May mắn). `nutVe` = vị trí nút ‹ tính từ đỉnh tranh (cqw), mặc định 17.5.
+export type BKTranh = { url: string; rong: number; canh: number; troi: [string, string]; day?: string; phu?: string; chanDay?: number; hoSo?: boolean; nutVe?: number }
 export const BK_TRANH = {
   cuatoi: { url: '/bk-ui/bg_cua_toi.jpg', rong: 941, canh: 440, troi: ['#CCE7FE', '#CCE7FE'] },                                  // headerv3 cắt status bar giả 78px
   xephang: { url: '/bk-ui/bg_xephang.jpg', rong: 941, canh: 520, troi: ['#93D0FA', '#A5D9FC'], day: '/bk-ui/bg_xephang_day.jpg', phu: 'rgba(178,215,253,.93)' },   // CEO: "xanh đậm tí, che backdrop cho đỡ rối" // backdrop_xephang.png: mảnh trên y0–560 · mảnh đáy y830–1672
   gay: { url: '/bk-ui/bg_gay.jpg', rong: 863, canh: 560, troi: ['#B5E3FD', '#BFE4F5'], day: '/bk-ui/bg_gay_day.jpg', phu: 'rgba(178,215,253,.93)', chanDay: 262 },   // backdrop_gay.png 863×1822: mảnh trên y0–600 · mảnh đáy y683–1822 (banner vẽ sẵn ở 262px cuối)
+  // May mắn: tranh kín màn, KHÔNG thẻ hồ sơ; mảnh trên y0–1040 (title · banner · mascot · công viên · quà) dính đỉnh,
+  // mảnh đáy y1385–1672 (chỉ mây) dính đáy; bảng "Cơ hội trúng thưởng" (y1048–1385) là mảnh RIÊNG do MayManScreen
+  // đặt trong luồng ngay dưới nút Quay. canh=0: MayManScreen tự xếp theo cqw (vòng quay đè lên công viên).
+  mayman: { url: '/bk-ui/bg_mayman.jpg', rong: 941, canh: 0, troi: ['#DDEFFC', '#DDEFFC'], day: '/bk-ui/bg_mayman_day.jpg', hoSo: false, nutVe: 11 },
 } as const satisfies Record<string, BKTranh>
 export function bkTranhStyle(t: BKTranh) {
   const pct = (px: number) => `${((px / t.rong) * 100).toFixed(2)}cqw`

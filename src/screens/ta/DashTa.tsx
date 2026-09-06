@@ -14,7 +14,7 @@ import { xepHangChung, type XepHangChung } from '../../lib/xephang'
 import { tichLuy, type TichLuy } from '../../lib/tichluy'
 import { GAY_DON_GIA } from '../../lib/gay'
 import { homNayVN } from '../../lib/tuan'
-import { BKPageHeader, BKProfileSummary, BKMenuCard, BKMascotBanner, BK_TRANH, BKTranhNen, bkTranhStyle } from '../../components/bk/BKUI'
+import { BKPageHeader, BKProfileSummary, BKMenuCard, BKMascotBanner, BK_TRANH, BKTranhNen, bkTranhStyle, type BKTranh } from '../../components/bk/BKUI'
 import { XepHangScreen } from '../../components/bk/XepHangScreen'
 import { GayCuaToiScreen } from '../../components/bk/GayCuaToiScreen'
 import { MayManScreen } from '../../components/bk/MayManScreen'
@@ -68,7 +68,7 @@ export default function DashTa({ profile }: { profile: MyProfile }) {
   const goc = box === null
   // Màn có TRANH CEO vẽ sẵn (Của tôi · Xếp hạng): spacer giữ chỗ phần cảnh + nút ‹ đặt lên tranh. Màn khác:
   // header HTML trên nền trời gradient (chờ CEO vẽ thêm tranh).
-  const tranh = goc ? BK_TRANH.cuatoi : box === 'xephang' ? BK_TRANH.xephang : box === 'gay' ? BK_TRANH.gay : null
+  const tranh: BKTranh | null = goc ? BK_TRANH.cuatoi : box === 'xephang' ? BK_TRANH.xephang : box === 'gay' ? BK_TRANH.gay : box === 'maymai' ? BK_TRANH.mayman : null
   const ts = tranh ? bkTranhStyle(tranh) : null
 
   return (
@@ -84,12 +84,12 @@ export default function DashTa({ profile }: { profile: MyProfile }) {
           ? <div className="relative shrink-0" style={{ height: ts.spacerH }}>
               {/* nút ‹ đặt DƯỚI logo trong tranh (logo cao ~15cqw), trên bảng gỗ (~32cqw) */}
               {!goc && <button onClick={() => setBox(null)} aria-label="Quay lại"
-                className="absolute left-2 h-11 w-11 active:scale-95"
-                style={{ top: `calc(${ts.offsetY} + 17.5cqw)` }}><img src="/bk-ui/gay_back.png" alt="" className="h-full w-full drop-shadow-md" draggable={false} /></button>}
+                className="absolute left-2 h-11 w-11 rounded-full shadow-[0_3px_10px_rgba(22,34,77,.28)] active:scale-95"
+                style={{ top: `calc(${ts.offsetY} + ${tranh!.nutVe ?? 17.5}cqw)` }}><img src="/bk-ui/gay_back.png" alt="" className="h-full w-full drop-shadow-md" draggable={false} /></button>}
             </div>
           : <BKPageHeader title={h!.title} tagline={h!.tagline} mascot={h!.mascot} bubble={h!.bubble} onBack={() => setBox(null)} />}
-        <BKProfileSummary ten={ten} anhUrl={profile.nhanSu.anh_url} tags={['TA', 'BK Academy', '🌱 Luôn cố gắng']}
-          diem={tl ? tl.xai_duoc + tl.diem_thang : null} streak={tl?.chuoi} pct={me.pct} onPct={() => setBox('datchuan')} />
+        {tranh?.hoSo !== false && <BKProfileSummary ten={ten} anhUrl={profile.nhanSu.anh_url} tags={['TA', 'BK Academy', '🌱 Luôn cố gắng']}
+          diem={tl ? tl.xai_duoc + tl.diem_thang : null} streak={tl?.chuoi} pct={me.pct} onPct={() => setBox('datchuan')} />}
 
         {/* QUY TẮC KHOẢNG CÁCH (CEO 07/09, áp mọi màn khu Của tôi): mọi khe = 4px đều nhau — card↔card,
             card↔mép màn, hồ sơ↔lưới↔banner — để không lộ nền sau; màn con dùng gap-1 tương ứng */}
