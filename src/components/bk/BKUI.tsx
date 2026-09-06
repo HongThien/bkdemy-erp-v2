@@ -10,6 +10,43 @@ export const BK = {
   primary: '#2F73F6', primaryDark: '#174DAF', text: '#16224D', sub: '#63709A',
   success: '#31C875', warning: '#FFB33D', danger: '#FF5D78',
 } as const
+// Nền trời dùng cho MỌI màn app TA ngoài khu tranh (Hôm nay, tab nghiệp vụ, Bổ trợ, màn chấm) — CEO 07/09:
+// "sửa các màn còn lại theo đúng style này".
+export const BK_TROI = 'linear-gradient(180deg, #CCE7FE 0%, #E3EEFC 55%, #EEF3FC 100%)'
+
+// Thanh đầu tab nghiệp vụ / màn con ngoài khu tranh: icon PNG + tiêu đề bong bóng + dòng phụ + slot phải.
+export function BKTabHeader({ icon, title, sub, right, onBack }: { icon?: string; title: string; sub?: string; right?: ReactNode; onBack?: () => void }) {
+  return (
+    <div className="px-2 pb-1" style={{ paddingTop: 'max(0.5rem, env(safe-area-inset-top))' }}>
+      <div className="mx-auto flex max-w-[1000px] items-center gap-2 rounded-[20px] bg-white/90 px-2.5 py-2">
+        {onBack && <button onClick={onBack} aria-label="Quay lại" className="h-9 w-9 shrink-0 active:scale-95"><img src="/bk-ui/gay_back.png" alt="" className="h-full w-full drop-shadow" draggable={false} /></button>}
+        {icon && <img src={icon} alt="" className="h-9 w-9 shrink-0 object-contain" draggable={false} />}
+        <div className="min-w-0 flex-1 leading-tight">
+          <p className="font-bubble truncate text-[16px] font-extrabold text-[#16224D]">{title}</p>
+          {sub && <p className="truncate text-[11px] text-[#63709A]">{sub}</p>}
+        </div>
+        {right}
+      </div>
+    </div>
+  )
+}
+// Card dòng việc: icon PNG trên nền pastel · tiêu đề · dòng phụ (chip) · slot phải · mũi tên accent
+export function BKRowCard({ icon, bg, accent, title, sub, right, onClick, className = '' }: {
+  icon?: string; bg: string; accent: string; title: ReactNode; sub?: ReactNode; right?: ReactNode; onClick?: () => void; className?: string
+}) {
+  const Tag: any = onClick ? 'button' : 'div'
+  return (
+    <Tag onClick={onClick} className={`flex w-full items-center gap-2 rounded-[18px] p-2 text-left ${onClick ? 'active:scale-[.99]' : ''} ${className}`} style={{ background: bg }}>
+      {icon && <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white/80"><img src={icon} alt="" className="h-8 w-8 object-contain" draggable={false} /></span>}
+      <div className="min-w-0 flex-1 leading-tight">
+        <p className="text-[13.5px] font-extrabold text-[#16224D]">{title}</p>
+        {sub && <p className="mt-0.5 flex flex-wrap items-center gap-1 text-[10.5px] text-[#63709A]">{sub}</p>}
+      </div>
+      {right}
+      {onClick && <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[13px] font-bold text-white" style={{ background: accent }}>›</span>}
+    </Tag>
+  )
+}
 
 // ── TRANH NỀN CEO vẽ (public/bk-ui/*.jpg) — mỗi màn 1 tranh, có sẵn logo · tiêu đề · tagline · mascot.
 // Vẽ theo BỀ NGANG (100% auto: thấy trọn tranh, không cắt bảng gỗ/bong bóng ở 2 mép), DÍNH ĐỈNH. `canh` =

@@ -8,6 +8,7 @@ import { caTA, dongCa, hoanTatCa, type CaTA, type ViecCaBoTro, type ViecRetest }
 import { diemDanh, huyBuoi, MUC_CATALOG } from '../../lib/gami'
 import { timNhanXetMau, type NhanXetMau } from '../../lib/detest'
 import { homNayVN, ddmmVN, thuCuaNgay } from '../../lib/tuan'
+import { BKTabHeader, BKRowCard } from '../../components/bk/BKUI'
 
 const POLL_MS = 10000
 const hhmm = (t: string | null | undefined) => (t ? String(t).slice(0, 5) : '')
@@ -23,14 +24,15 @@ function trangThaiCa(c: ViecCaBoTro, homNay: string): TrangThai {
   if (!c.test_da_nop) return 'cho_test'
   return 'cho_nhan_xet'
 }
+// pill trạng thái — bảng màu BK (vỏ BK 07/09)
 const TT_NHAN: Record<TrangThai, { ten: string; cls: string }> = {
-  cho_em: { ten: 'Chờ em đến', cls: 'bg-slate-100 text-slate-600' },
-  vang: { ten: 'Vắng', cls: 'bg-rose-50 text-rose-700' },
-  dang_luyen: { ten: 'Đang luyện', cls: 'bg-indigo-50 text-indigo-700' },
-  cho_test: { ten: 'Đã đóng ca · chờ test', cls: 'bg-amber-50 text-amber-700' },
-  cho_nhan_xet: { ten: 'Đã test · chờ nhận xét', cls: 'bg-violet-50 text-violet-700' },
-  hoan_tat: { ten: 'Hoàn tất', cls: 'bg-emerald-50 text-emerald-700' },
-  sap_toi: { ten: 'Sắp tới', cls: 'bg-slate-100 text-slate-500' },
+  cho_em: { ten: 'Chờ em đến', cls: 'bg-white/85 text-[#63709A]' },
+  vang: { ten: 'Vắng', cls: 'bg-[#FFE3EA] text-[#C0355A]' },
+  dang_luyen: { ten: 'Đang luyện', cls: 'bg-[#EEF3FF] text-[#2F73F6]' },
+  cho_test: { ten: 'Đã đóng ca · chờ test', cls: 'bg-[#FFF1D6] text-[#C27A00]' },
+  cho_nhan_xet: { ten: 'Đã test · chờ nhận xét', cls: 'bg-[#E6DDFF] text-[#6A4BD6]' },
+  hoan_tat: { ten: 'Hoàn tất', cls: 'bg-[#E4F8EC] text-[#1E8A52]' },
+  sap_toi: { ten: 'Sắp tới', cls: 'bg-white/85 text-[#63709A]' },
 }
 
 export default function CaBoTroTA({ viec, onDoi }: { viec: { ca: ViecCaBoTro[]; retest: ViecRetest[] }; onDoi: () => void }) {
@@ -45,30 +47,23 @@ export default function CaBoTroTA({ viec, onDoi }: { viec: { ca: ViecCaBoTro[]; 
 
   return (
     <div>
-      <div className="bg-indigo-600 px-4 pb-2" style={{ paddingTop: 'max(0.5rem, env(safe-area-inset-top))' }}>
-        <p className="mx-auto max-w-[1000px] text-[15px] font-bold text-white">🧑‍🏫 Bổ trợ yếu <span className="font-medium opacity-75">· {homNayCa.length ? `${homNayCa.length} ca hôm nay` : 'không có ca hôm nay'}{viec.retest.length ? ` · ${viec.retest.length} retest` : ''}</span></p>
-      </div>
-      <div className="mx-auto max-w-[1000px] px-3 pb-6 pt-3">
-        {noCu.length > 0 && <Nhom tieuDe="⚠ Ca chưa hoàn tất" cls="text-rose-500" items={noCu} homNay={homNay} onMo={setMoId} />}
-        <Nhom tieuDe="Hôm nay" cls="text-slate-400" items={homNayCa} homNay={homNay} onMo={setMoId} rong="Không có ca bổ trợ hôm nay." />
+      <BKTabHeader icon="/bk-ui/pr_tai_nghe.png" title="Bổ trợ yếu"
+        sub={`${homNayCa.length ? `${homNayCa.length} ca hôm nay` : 'Không có ca hôm nay'}${viec.retest.length ? ` · ${viec.retest.length} retest` : ''}`} />
+      <div className="mx-auto flex max-w-[1000px] flex-col gap-1 px-2 pb-4">
+        {noCu.length > 0 && <Nhom tieuDe="⚠ Ca chưa hoàn tất" cls="text-[#C0355A]" items={noCu} homNay={homNay} onMo={setMoId} />}
+        <Nhom tieuDe="Hôm nay" cls="text-[#63709A]" items={homNayCa} homNay={homNay} onMo={setMoId} rong="Không có ca bổ trợ hôm nay." />
         {viec.retest.length > 0 && (
-          <div className="mt-4">
-            <p className="mb-1.5 px-1 text-[12px] font-bold uppercase tracking-wide text-violet-600">📝 Retest đến hạn · đưa iPad cho em sau ET</p>
-            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-              {viec.retest.map((r) => (
-                <div key={r.bai_test_id} className="flex items-center gap-2.5 rounded-2xl border border-violet-200/70 bg-white p-3 shadow-sm">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-50 text-[19px]">📝</span>
-                  <div className="min-w-0 flex-1">
-                    <p className="text-[14px] font-bold text-slate-800">{r.ho_ten} <span className="font-normal text-slate-400">· {r.ten_lop}</span></p>
-                    <p className="text-[12px] text-slate-400">{r.so_cau} câu · {r.mon}{r.ngay < homNay ? ` · ⚠ hạn ${ddmmVN(r.ngay)} (em vắng?)` : ' · hôm nay'}{r.buoi_bo_tro_ngay ? ` · ca ${ddmmVN(r.buoi_bo_tro_ngay)}` : ''}</p>
-                  </div>
-                  <span className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] font-medium text-slate-500">em tự làm trên iPad</span>
-                </div>
-              ))}
-            </div>
+          <div className="flex flex-col gap-1">
+            <p className="px-1 pt-1 text-[11px] font-bold uppercase tracking-wide text-[#6A4BD6]">Retest đến hạn · đưa iPad cho em sau ET</p>
+            {viec.retest.map((r) => (
+              <BKRowCard key={r.bai_test_id} icon="/bk-ui/pr_et.png" bg="#E6DDFF" accent="#8B6BEF"
+                title={<>{r.ho_ten} <span className="font-normal text-[#63709A]">· {r.ten_lop}</span></>}
+                sub={<span>{r.so_cau} câu · {r.mon}{r.ngay < homNay ? ` · ⚠ hạn ${ddmmVN(r.ngay)} (em vắng?)` : ' · hôm nay'}{r.buoi_bo_tro_ngay ? ` · ca ${ddmmVN(r.buoi_bo_tro_ngay)}` : ''}</span>}
+                right={<span className="shrink-0 rounded-full bg-white/85 px-2 py-0.5 text-[10px] font-bold text-[#63709A]">em tự làm trên iPad</span>} />
+            ))}
           </div>
         )}
-        {sapToi.length > 0 && <div className="mt-4"><Nhom tieuDe="Sắp tới" cls="text-slate-400" items={sapToi} homNay={homNay} onMo={setMoId} /></div>}
+        {sapToi.length > 0 && <Nhom tieuDe="Sắp tới" cls="text-[#63709A]" items={sapToi} homNay={homNay} onMo={setMoId} />}
       </div>
     </div>
   )
@@ -77,29 +72,26 @@ export default function CaBoTroTA({ viec, onDoi }: { viec: { ca: ViecCaBoTro[]; 
 function Nhom({ tieuDe, cls, items, homNay, onMo, rong }: { tieuDe: string; cls: string; items: ViecCaBoTro[]; homNay: string; onMo: (id: string) => void; rong?: string }) {
   if (items.length === 0 && !rong) return null
   return (
-    <div className="mb-3">
-      <p className={`mb-1.5 px-1 text-[12px] font-bold uppercase tracking-wide ${cls}`}>{tieuDe}</p>
-      {items.length === 0 ? <p className="rounded-2xl border border-slate-200/70 bg-white p-4 text-center text-[13px] text-slate-400">{rong}</p> : (
-        <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-          {items.map((c) => {
-            const tt = TT_NHAN[trangThaiCa(c, homNay)]
-            return (
-              <button key={c.buoi_id} onClick={() => onMo(c.buoi_id)} className="flex items-center gap-2.5 rounded-2xl border border-slate-200/70 bg-white p-3 text-left shadow-sm active:bg-slate-50">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-indigo-50 text-[19px]">🧑‍🏫</span>
-                <div className="min-w-0 flex-1">
-                  <p className="text-[14px] font-bold text-slate-800">{c.ho_ten} <span className="font-normal text-slate-400">· {c.mon}{c.khoi ? ` · K${c.khoi}` : ''}</span></p>
-                  <p className="flex flex-wrap items-center gap-1.5 text-[12px] text-slate-400">
-                    <span>{c.ngay === homNay ? 'hôm nay' : `${thuCuaNgay(c.ngay)} ${ddmmVN(c.ngay)}`}{c.gio_bat_dau ? ` · ${hhmm(c.gio_bat_dau)}` : ''}{c.phong ? ` · ${c.phong}` : ''}</span>
-                    <span className="rounded bg-slate-100 px-1.5 py-0.5 font-medium text-slate-500">{MUC_TEN[c.level ?? 1] ?? `L${c.level}`}</span>
-                    <span>{c.so_dang} dạng</span>
-                  </p>
-                </div>
-                <span className={`shrink-0 rounded-full px-2 py-0.5 text-[11px] font-semibold ${tt.cls}`}>{tt.ten}</span>
-              </button>
-            )
-          })}
+    <div className="flex flex-col gap-1">
+      <p className={`px-1 pt-1 text-[11px] font-bold uppercase tracking-wide ${cls}`}>{tieuDe}</p>
+      {items.length === 0 ? (
+        <div className="flex items-center gap-2 rounded-[20px] bg-white/80 px-3 py-2">
+          <img src="/bk-ui/mascot_read.png" alt="" className="h-12 w-12 object-contain" draggable={false} />
+          <p className="text-[12.5px] text-[#63709A]">{rong}</p>
         </div>
-      )}
+      ) : items.map((c) => {
+        const tt = TT_NHAN[trangThaiCa(c, homNay)]
+        return (
+          <BKRowCard key={c.buoi_id} icon="/bk-ui/pr_tai_nghe.png" bg="#E6DDFF" accent="#8B6BEF" onClick={() => onMo(c.buoi_id)}
+            title={<>{c.ho_ten} <span className="font-normal text-[#63709A]">· {c.mon}{c.khoi ? ` · K${c.khoi}` : ''}</span></>}
+            sub={<>
+              <span>{c.ngay === homNay ? 'hôm nay' : `${thuCuaNgay(c.ngay)} ${ddmmVN(c.ngay)}`}{c.gio_bat_dau ? ` · ${hhmm(c.gio_bat_dau)}` : ''}{c.phong ? ` · ${c.phong}` : ''}</span>
+              <span className="rounded-full bg-white/80 px-1.5 py-px font-semibold">{MUC_TEN[c.level ?? 1] ?? `L${c.level}`}</span>
+              <span>{c.so_dang} dạng</span>
+            </>}
+            right={<span className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-bold ${tt.cls}`}>{tt.ten}</span>} />
+        )
+      })}
     </div>
   )
 }
@@ -144,17 +136,10 @@ function CaDetail({ buoiId, onBack }: { buoiId: string; onBack: () => void }) {
 
   return (
     <div>
-      <div className="bg-indigo-600 px-4 pb-2.5" style={{ paddingTop: 'max(0.5rem, env(safe-area-inset-top))' }}>
-        <div className="mx-auto flex max-w-[1000px] items-center gap-2">
-          <button onClick={onBack} className="rounded-lg px-2 py-1 text-[15px] font-bold text-white/90 active:bg-white/10">‹</button>
-          <div className="min-w-0 flex-1">
-            <p className="truncate text-[15px] font-bold text-white">{ca.hs.ho_ten} <span className="font-medium opacity-75">· {ca.mon}{ca.hs.khoi ? ` · K${ca.hs.khoi}` : ''}</span></p>
-            <p className="text-[11.5px] text-indigo-100">{thuCuaNgay(ca.ngay)} {ddmmVN(ca.ngay)} · {MUC_TEN[ca.hs.level ?? 1] ?? `L${ca.hs.level}`} · {ca.dangs.length} dạng{ca.so_lan_huy ? ` · đã huỷ ${ca.so_lan_huy} lần` : ''}</p>
-          </div>
-        </div>
-      </div>
+      <BKTabHeader onBack={onBack} icon="/bk-ui/pr_tai_nghe.png" title={`${ca.hs.ho_ten} · ${ca.mon}${ca.hs.khoi ? ` · K${ca.hs.khoi}` : ''}`}
+        sub={`${thuCuaNgay(ca.ngay)} ${ddmmVN(ca.ngay)} · ${MUC_TEN[ca.hs.level ?? 1] ?? `L${ca.hs.level}`} · ${ca.dangs.length} dạng${ca.so_lan_huy ? ` · đã huỷ ${ca.so_lan_huy} lần` : ''}`} />
 
-      <div className="mx-auto max-w-[1000px] px-3 pb-8 pt-3">
+      <div className="mx-auto max-w-[1000px] px-2 pb-8 pt-1">
         {loi && <p className="mb-3 rounded-xl bg-rose-50 px-3 py-2 text-[12.5px] text-rose-700">{loi}</p>}
         {ok && <p className="mb-3 rounded-xl bg-emerald-50 px-3 py-2 text-[12.5px] font-medium text-emerald-700">✓ {ok}</p>}
 
