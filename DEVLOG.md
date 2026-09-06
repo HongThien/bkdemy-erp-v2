@@ -8801,3 +8801,15 @@ AB$"…) — đúng thứ "05/09 chốt" (người soạn KHÔNG thấy LaTeX) n
 cuối) · nhận BT.08.121, mở Bài của tôi: tab a)/b)/c)★, đổi tab lũy tiến đúng (a → a+b → a+b+c), ảnh đổi theo ý đang
 chọn · ô lời giải KHÔNG còn hiện `$…$` thô — công thức hiện dạng render ngay khi gõ (Ctrl+M mở bảng dựng, chèn
 đúng, Esc huỷ sạch không để lại rác) · trả 2 bài test, dọn xong.
+
+### 06/09 tối (3) — Chuỗi Hình: BỎ ô gõ tại chỗ, luôn qua full màn
+**Thùy:** "t sẽ ko giải ở màn hình con đâu. Story là luôn luôn phóng to ra làm full màn hình cơ." — người dùng KHÔNG
+gõ ở màn con bao giờ, luôn bấm ⤢ mở full màn để soạn thật.
+**Đổi:** `ChuoiSoan` bỏ hẳn ô nhập tại chỗ (không còn RichMathBox trong màn con) — mỗi ý giờ chỉ hiện: lời giải ĐÃ
+CÓ (rendered qua MathText, không latex thô) hoặc dòng "Chưa soạn lời giải cho ý X", cộng 1 nút to
+"⤢ Soạn/Sửa lời giải X — full màn" mở thẳng `SoanModal` (đã tự WYSIWYG sẵn, không cần bọc thêm) với đề = `CumDe`
+lũy tiến đúng ý đang chọn. `RichMathBox.tsx` (mig trước mới tạo) giữ lại nhưng ĐÁNH DẤU CHƯA DÙNG — có thể cần sau
+này cho 1 ô ngắn thật sự gõ tại chỗ, không đáng mở full màn.
+**Verify:** tsc sạch · Browser dev 5181: nhận BT.08.108, tab a) chỉ hiện đề + nút full màn (không ô gõ) → bấm nút →
+SoanModal mở đúng tiêu đề "Lời giải · BT.08.108 · a)", đề trái đúng CHỈ ý a), vùng soạn WYSIWYG trống sẵn sàng gõ →
+đóng, trả bài dọn sạch.

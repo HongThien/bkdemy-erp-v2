@@ -3,6 +3,10 @@
 // khác BỀ MẶT soạn: không có ô raw-text ở giữa — gõ liền chữ + công thức như Word/MathType, công thức hiện đúng
 // hình dạng ngay khi gõ (bấm $ hoặc Ctrl+M mở bảng dựng, click vào công thức đã có để sửa). Vẫn có nút ⤢ mở
 // SoanModal full màn (cụm/thư mục/đổi tên điểm) khi cần soạn dài — Lưu ở đó nạp thẳng lại vào đây.
+// ⚠ HIỆN CHƯA DÙNG Ở CHUỖI HÌNH (ChuoiSoan): Thùy 06/09 tối (3) chốt "ko giải ở màn hình con đâu, luôn luôn phóng
+// to ra làm full màn hình" — nên ChuoiSoan bỏ hẳn ô gõ tại chỗ, chỉ hiện lời giải đã có (rendered) + nút mở
+// SoanModal (đã tự WYSIWYG, không cần bọc thêm). Giữ file này lại — cùng chuỗi kho, cùng RichMath — cho lúc nào
+// cần một ô WYSIWYG NGẮN/gõ tại chỗ thật (không phải mọi input đều đủ dài để đáng mở full màn).
 import { useRef, useState, type ReactNode } from 'react'
 import { RichMath, type RichMathHandle } from '../../soan/RichMath'
 import { SoanModal } from '../../soan/SoanModal'

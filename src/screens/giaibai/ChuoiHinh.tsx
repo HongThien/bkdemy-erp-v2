@@ -9,7 +9,7 @@
 //                 thô — gõ liền chữ + công thức như MathType, chỉ hiện công thức đã dựng, sửa được bằng click).
 import { useEffect, useRef, useState } from 'react'
 import { MathText } from '../kho/ui'
-import { RichMathBox } from '../../components/math/RichMathBox'
+import { SoanModal } from '../../soan/SoanModal'
 import { chuY, laHinh, layChuoi, yCanNhap, type ChuoiHinh as ChuoiHinhT, type ChuoiY, type GiaiBaiNhanh, type YNhap } from '../../lib/giaibai'
 
 export const chuoiKey = (nhanh: GiaiBaiNhanh, key: string) => `${nhanh}:${key}`
@@ -137,25 +137,28 @@ export function YNhapDoc({ chuoi, yNhap }: { chuoi: ChuoiHinhT; yNhap: YNhap[] }
   )
 }
 
-/** Soạn theo BUILDER: tab a)/b)/c)… — đề LŨY TIẾN (0..ý đang chọn), ảnh = ảnh ý đang chọn. Ô nhập của ý đang chọn
- *  dùng RichMathBox (không hiện LaTeX thô). `key={y.id}` khi dựng ô — RichMath không tự đồng bộ prop `value` sau
- *  mount, đổi tab phải remount để nạp đúng nội dung ý mới (đã kiểm trong test tay). */
+/** Soạn theo BUILDER: tab a)/b)/c)… — đề LŨY TIẾN (0..ý đang chọn), ảnh = ảnh ý đang chọn. KHÔNG có ô gõ trực tiếp
+ *  ở màn hình con (Thùy 06/09 tối (3): "t sẽ ko giải ở màn hình con đâu. Story là luôn luôn phóng to ra làm full
+ *  màn hình cơ") — màn con chỉ hiện ĐỀ + LỜI GIẢI ĐÃ CÓ (rendered, không latex thô) + 1 nút mở SoanModal full màn
+ *  để soạn/sửa; đề trong full màn cũng lũy tiến đúng ý đang chọn. */
 export function ChuoiSoan({ chuoi, values, onChange, tieuDe }: {
   chuoi: ChuoiHinhT; values: YNhap[]; onChange: (v: YNhap[]) => void; tieuDe: string
 }) {
   const [active, setActive] = useState(() => { const i = chuoi.y.findIndex(yCanNhap); return i >= 0 ? i : 0 })
+  const [soan, setSoan] = useState(false)
   const get = (id: string) => values.find((v) => v.id === id) ?? { id, loi_giai: null, anh: null }
   const set = (id: string, patch: Partial<YNhap>) => onChange(values.some((v) => v.id === id) ? values.map((v) => (v.id === id ? { ...v, ...patch } : v)) : [...values, { ...get(id), ...patch }])
   const y = chuoi.y[active]
   const can = y ? yCanNhap(y) : false
   const v = y ? get(y.id) : null
+  const chon = (i: number) => { setActive(i); setSoan(false) }
   return (
     <div className="space-y-2">
       <div className="flex flex-wrap gap-1 border-b border-slate-200">
         {chuoi.y.map((yy, i) => {
           const co = !!(get(yy.id).loi_giai?.trim() || get(yy.id).anh)
           return (
-            <button key={yy.id} onClick={() => setActive(i)}
+            <button key={yy.id} onClick={() => chon(i)}
               className={`rounded-t-md border-b-2 px-3 py-1.5 text-[13px] font-semibold transition ${active === i ? 'border-indigo-600 bg-indigo-50 text-indigo-700' : 'border-transparent text-slate-500 hover:bg-slate-50'}`}>
               {chuY(i)}{yy.la_dich ? ' ★' : ''}{yCanNhap(yy) && co ? ' ✓' : ''}
             </button>
@@ -167,18 +170,27 @@ export function ChuoiSoan({ chuoi, values, onChange, tieuDe }: {
           <CumDe chuoi={chuoi} upTo={active} />
           {can ? (
             <div className="mt-2">
-              <RichMathBox key={y.id} value={v!.loi_giai ?? ''} onChange={(t) => set(y.id, { loi_giai: t || null })}
-                placeholder="Gõ lời giải — bấm $ hoặc Ctrl+M chèn công thức…" soanTitle={`${tieuDe} · ${chuY(active)}`}
-                soanDeBai={<CumDe chuoi={chuoi} upTo={active} />}
-                className="min-h-[120px] w-full rounded-md border border-slate-200 bg-white px-2.5 py-2 focus:border-emerald-400 focus:outline-none" />
+              {v!.loi_giai ? (
+                <div className="rounded-md border border-dashed border-emerald-200 bg-emerald-50/40 px-3 py-2 text-[13px] leading-relaxed text-slate-700"><MathText>{v!.loi_giai}</MathText></div>
+              ) : (
+                <div className="rounded-md border border-dashed border-slate-300 bg-slate-50 px-3 py-6 text-center text-[13px] text-slate-400">Chưa soạn lời giải cho ý {chuY(active)}</div>
+              )}
+              <button onClick={() => setSoan(true)}
+                className="mt-2 w-full rounded-md border border-indigo-300 bg-indigo-50 px-3 py-2 text-[13px] font-semibold text-indigo-700 hover:bg-indigo-100">
+                ⤢ {v!.loi_giai ? 'Sửa' : 'Soạn'} lời giải {chuY(active)} — full màn
+              </button>
+              {soan && (
+                <SoanModal initial={v!.loi_giai ?? ''} title={`${tieuDe} · ${chuY(active)}`} deBai={<CumDe chuoi={chuoi} upTo={active} />}
+                  onSave={(raw) => set(y.id, { loi_giai: raw || null })} onClose={() => setSoan(false)} />
+              )}
             </div>
           ) : (
             y.loi_giai && <div className="mt-1.5 rounded-md border border-dashed border-emerald-200 bg-emerald-50/40 px-3 py-2 text-[13px] leading-relaxed text-slate-700"><MathText>{y.loi_giai}</MathText></div>
           )}
           <div className="mt-2 flex items-center justify-between">
-            <button onClick={() => setActive((a) => Math.max(0, a - 1))} disabled={active === 0} className="rounded px-2 py-1 text-[12px] font-medium text-slate-500 hover:bg-slate-100 disabled:opacity-30">‹ Trước</button>
+            <button onClick={() => chon(Math.max(0, active - 1))} disabled={active === 0} className="rounded px-2 py-1 text-[12px] font-medium text-slate-500 hover:bg-slate-100 disabled:opacity-30">‹ Trước</button>
             <span className="text-[11px] text-slate-400">{active + 1}/{chuoi.y.length}</span>
-            <button onClick={() => setActive((a) => Math.min(chuoi.y.length - 1, a + 1))} disabled={active === chuoi.y.length - 1} className="rounded px-2 py-1 text-[12px] font-medium text-slate-500 hover:bg-slate-100 disabled:opacity-30">Sau ›</button>
+            <button onClick={() => chon(Math.min(chuoi.y.length - 1, active + 1))} disabled={active === chuoi.y.length - 1} className="rounded px-2 py-1 text-[12px] font-medium text-slate-500 hover:bg-slate-100 disabled:opacity-30">Sau ›</button>
           </div>
         </div>
       )}
