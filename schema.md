@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-187 bảng · 11 view · 0 enum · 39 trigger · 239 function
+187 bảng · 11 view · 0 enum · 39 trigger · 241 function
 
 ## _app_secrets
 
@@ -2120,6 +2120,7 @@
 | nhan_su_id | uuid |  |  | FK→nhan_su.id |  |
 | khoi | text |  |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
+| mon | text |  |  |  |  |
 
 ## phan_cong_lop
 
@@ -4041,6 +4042,7 @@ UNION ALL
 - `fn_gv_phan_tram(p_tien_do numeric, p_chat_luong numeric)` → numeric
 - `fn_gv_tien_do(p_deadline date, p_ngay_nop date)` → numeric
 - `fn_gv_tran_chat_luong(p_so_lan_tra_lai integer)` → numeric
+- `fn_han_viec(p_lop uuid, p_ngay date, p_gio_bat_dau time without time zone, p_tab text)` → timestamp with time zone
 - `fn_hinh_cau_chua_giai(p_khoi text, p_limit integer DEFAULT 500)` → SETOF v_hinh_chua_giai
 - `fn_hinh_chuoi_json(p_loai text, p_id uuid)` → jsonb
 - `fn_hinh_co_phu_thuoc_cho(p_id uuid)` → boolean
@@ -4104,6 +4106,7 @@ UNION ALL
 - `fn_tuqua_so_du(p_hoc_sinh_id uuid)` → integer
 - `fn_tuqua_ton(p_qua_id uuid)` → integer
 - `fn_vh_hieu_suat(p_tien_do numeric, p_chat_luong numeric)` → numeric
+- `fn_viec_buoi_thuong(p_tu date DEFAULT NULL::date, p_den date DEFAULT NULL::date, p_tat_ca boolean DEFAULT false)` → TABLE(nhan_su_id uuid, buoi_id uuid, lop_id uuid, ten_lop text, ngay date, vai text, tab text, dong_at timestamp with time zone, han timestamp with time zone, et_online boolean)
 - `fn_viec_nghiem_thu_tinh()` → trigger
 - `fn_vvhd_tinh()` → trigger
 - `giai_thuong_check_slot()` → trigger

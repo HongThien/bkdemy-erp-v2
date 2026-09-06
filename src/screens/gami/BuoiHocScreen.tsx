@@ -49,7 +49,7 @@ export default function BuoiHocScreen() {
   const [err, setErr] = useState<string | null>(null)
   // Buổi ẢO: tab "Trước buổi" phải mở được TRƯỚC khi OPS bấm "Mở buổi" (spec-truocbuoi §2.1) — không có
   // uuid nên nhận {lopId, ngay, mon} thay vì id, và KHÔNG được gọi moBuoi (không đẻ dòng buoi_hoc).
-  const [open, setOpen] = useState<{ id: string; lopId: string; khoi: string | null } | { virt: { lopId: string; tenLop: string; ngay: string; mon: string } } | null>(null)
+  const [open, setOpen] = useState<{ id: string; lopId: string; khoi: string | null; mon: string } | { virt: { lopId: string; tenLop: string; ngay: string; mon: string } } | null>(null)
   const [filter, setFilter] = useState<BuoiStatus>('chua')
   // ⭐ 07-24: 2 CHẾ ĐỘ XEM, gạt qua lại — KHÔNG trộn vào nhau. "Theo ngày" là trục vận hành hằng ngày
   // (buổi ẢO của 1 ngày, suy từ TKB, có bộ đếm chưa-mở/đã-mở/đã-huỷ theo ngày đó); "Tìm lớp" lật trục
@@ -70,10 +70,10 @@ export default function BuoiHocScreen() {
   // OPS/người ngoài lớp không có việc "chấm bài như TA" — chỉ GV/TG của CHÍNH lớp đó (hoặc admin) mới
   // thấy đủ 4 tab; còn lại (OPS quản lý buổi qua leaf "Buổi học") chỉ thấy Điểm danh (đúng việc của họ).
   const myLopIds = new Set((me?.phanCong ?? []).map((pc) => pc.lop_id))
-  // Trưởng khối — sửa được ET/MT/BTVN của MỌI lớp trong khối phụ trách (không cần phân công per-lớp).
+  // Trưởng khối (khối × MÔN) — sửa được ET/MT/BTVN của MỌI lớp cùng khối+môn phụ trách (không cần phân công per-lớp).
   // Điểm danh KHÔNG mở thêm ở đây — tab đó vẫn luôn hiện, chỉ 4 tab chấm là bị khoá khi thiếu quyền.
-  const myKhoi = new Set(me?.khoiPhuTrach ?? [])
-  const coQuyenChamLop = (lopId: string, khoi: string | null) => laAdmin || myLopIds.has(lopId) || (!!khoi && myKhoi.has(khoi))
+  const myKhoiMon = new Set((me?.khoiPhuTrach ?? []).map((k) => `${k.khoi}|${k.mon}`))
+  const coQuyenChamLop = (lopId: string, khoi: string | null, mon: string) => laAdmin || myLopIds.has(lopId) || (!!khoi && myKhoiMon.has(`${khoi}|${mon}`))
 
   async function reload() {
     setLoading(true); setErr(null)
@@ -83,7 +83,7 @@ export default function BuoiHocScreen() {
 
   if (open) {
     if ('virt' in open) return <TruocBuoiVirtualPanel v={open.virt} onClose={() => { setOpen(null); reload() }} />
-    const tabs = coQuyenChamLop(open.lopId, open.khoi) ? undefined : (['diemdanh'] as TabKey[])
+    const tabs = coQuyenChamLop(open.lopId, open.khoi, open.mon) ? undefined : (['diemdanh'] as TabKey[])
     return <BuoiDetail id={open.id} tabs={tabs} onClose={() => { setOpen(null); reload() }} />
   }
 
@@ -113,7 +113,7 @@ export default function BuoiHocScreen() {
       </div>
 
       {mode === 'tim' ? (
-        <TimLopPanel q={q} setQ={setQ} monScope={(laAdmin || laOps || myMons.length === 0) ? null : myMons} onOpened={(id, lopId, khoi) => setOpen({ id, lopId, khoi })}
+        <TimLopPanel q={q} setQ={setQ} monScope={(laAdmin || laOps || myMons.length === 0) ? null : myMons} onOpened={(id, lopId, khoi, mon) => setOpen({ id, lopId, khoi, mon })}
           canTruocBuoi={(lopId) => laAdmin || myLopIds.has(lopId)}
           onOpenTruocBuoi={(v) => setOpen({ virt: v })} />
       ) : (
@@ -125,7 +125,7 @@ export default function BuoiHocScreen() {
           : (
             <div className="grid grid-cols-1 gap-3 md:grid-cols-2 2xl:grid-cols-3">
               {shown.map((b) => (
-                <BuoiCard key={b.lop.id} ba={b} ngay={ngay} onOpened={(id, lopId, khoi) => setOpen({ id, lopId, khoi })} onChanged={reload}
+                <BuoiCard key={b.lop.id} ba={b} ngay={ngay} onOpened={(id, lopId, khoi, mon) => setOpen({ id, lopId, khoi, mon })} onChanged={reload}
                   canTruocBuoi={laAdmin || myLopIds.has(b.lop.id)}
                   onOpenTruocBuoi={() => setOpen({ virt: { lopId: b.lop.id, tenLop: b.lop.ten_lop, ngay, mon: b.lop.mon } })} />
               ))}
@@ -141,7 +141,7 @@ export default function BuoiHocScreen() {
 // Chỉ đọc, không đụng state của chế độ "Theo ngày" — gạt qua lại không mất gì.
 type VirtDesc = { lopId: string; tenLop: string; ngay: string; mon: string }
 function TimLopPanel({ q, setQ, monScope, onOpened, canTruocBuoi, onOpenTruocBuoi }: {
-  q: string; setQ: (v: string) => void; monScope: string[] | null; onOpened: (id: string, lopId: string, khoi: string | null) => void
+  q: string; setQ: (v: string) => void; monScope: string[] | null; onOpened: (id: string, lopId: string, khoi: string | null, mon: string) => void
   canTruocBuoi: (lopId: string) => boolean; onOpenTruocBuoi: (v: VirtDesc) => void
 }) {
   const [rows, setRows] = useState<BuoiTim[]>([])
@@ -189,7 +189,7 @@ function TimLopPanel({ q, setQ, monScope, onOpened, canTruocBuoi, onOpenTruocBuo
 }
 
 const LOAI_BUOI_TEN: Record<string, string> = { bu: 'Bù', bo_tro_yeu: 'Bổ trợ yếu', bo_tro_duoi: 'Bổ trợ đuổi', mt: 'MT' }
-function BuoiTimRow({ r, onOpened, canTruocBuoi, onOpenTruocBuoi }: { r: BuoiTim; onOpened: (id: string, lopId: string, khoi: string | null) => void; canTruocBuoi: boolean; onOpenTruocBuoi: () => void }) {
+function BuoiTimRow({ r, onOpened, canTruocBuoi, onOpenTruocBuoi }: { r: BuoiTim; onOpened: (id: string, lopId: string, khoi: string | null, mon: string) => void; canTruocBuoi: boolean; onOpenTruocBuoi: () => void }) {
   const [busy, setBusy] = useState(false)
   const b = r.buoi
   const ngayVN = r.ngay.split('-').reverse().join('/')
@@ -197,7 +197,7 @@ function BuoiTimRow({ r, onOpened, canTruocBuoi, onOpenTruocBuoi }: { r: BuoiTim
   const gio = r.slot.gio_bat_dau ? `${r.slot.gio_bat_dau.slice(0, 5)}–${(r.slot.gio_ket_thuc ?? '').slice(0, 5)}` : ''
   async function moRoiVao() {
     setBusy(true)
-    try { const nw = await moBuoi(r.lop.id, r.ngay, r.slot as any); onOpened(nw.id, r.lop.id, r.lop.khoi) }
+    try { const nw = await moBuoi(r.lop.id, r.ngay, r.slot as any); onOpened(nw.id, r.lop.id, r.lop.khoi, r.lop.mon) }
     catch (e: any) { alert(e.message ?? String(e)); setBusy(false) }
   }
   const chip = b?.trang_thai === 'huy' ? <span className="rounded bg-slate-200 px-1.5 py-0.5 text-[11px] font-medium text-slate-500">Đã hủy</span>
@@ -219,7 +219,7 @@ function BuoiTimRow({ r, onOpened, canTruocBuoi, onOpenTruocBuoi }: { r: BuoiTim
   )
   // Buổi đã có dòng → bấm cả hàng để vào. Chưa mở (ảo) → nút "Mở buổi" (không bấm nhầm cả hàng mà đẻ dòng).
   if (b && b.trang_thai !== 'huy') return (
-    <button onClick={() => onOpened(b.id, r.lop.id, r.lop.khoi)} className="flex w-full items-center gap-3 rounded-lg border border-slate-200 bg-white px-3 py-2 text-left transition hover:border-indigo-400 hover:bg-indigo-50/40">
+    <button onClick={() => onOpened(b.id, r.lop.id, r.lop.khoi, r.lop.mon)} className="flex w-full items-center gap-3 rounded-lg border border-slate-200 bg-white px-3 py-2 text-left transition hover:border-indigo-400 hover:bg-indigo-50/40">
       {noiDung}
       <span className="shrink-0 text-[12px] font-medium text-indigo-600">→</span>
     </button>
@@ -237,7 +237,7 @@ function BuoiTimRow({ r, onOpened, canTruocBuoi, onOpenTruocBuoi }: { r: BuoiTim
 }
 
 function BuoiCard({ ba, ngay, onOpened, onChanged, canTruocBuoi, onOpenTruocBuoi }: {
-  ba: BuoiAo; ngay: string; onOpened: (id: string, lopId: string, khoi: string | null) => void; onChanged: () => void
+  ba: BuoiAo; ngay: string; onOpened: (id: string, lopId: string, khoi: string | null, mon: string) => void; onChanged: () => void
   canTruocBuoi: boolean; onOpenTruocBuoi: () => void
 }) {
   const [busy, setBusy] = useState(false)
@@ -246,7 +246,7 @@ function BuoiCard({ ba, ngay, onOpened, onChanged, canTruocBuoi, onOpenTruocBuoi
   const gio = `${ba.slot.gio_bat_dau?.slice(0, 5)}–${ba.slot.gio_ket_thuc?.slice(0, 5)}${ba.slot.phong ? ` · ${ba.slot.phong}` : ''}`
   async function open() {
     setBusy(true)
-    try { const buoi = await moBuoi(ba.lop.id, ngay, ba.slot); onOpened(buoi.id, ba.lop.id, ba.lop.khoi) }
+    try { const buoi = await moBuoi(ba.lop.id, ngay, ba.slot); onOpened(buoi.id, ba.lop.id, ba.lop.khoi, ba.lop.mon) }
     catch (e: any) { alert(e.message ?? String(e)); setBusy(false) }
   }
   async function huy() {
@@ -276,7 +276,7 @@ function BuoiCard({ ba, ngay, onOpened, onChanged, canTruocBuoi, onOpenTruocBuoi
 
   // Đã mở → cả CARD bấm vào để vào buổi (không cần nút riêng).
   if (st === 'mo') return (
-    <button onClick={() => onOpened(b!.id, ba.lop.id, ba.lop.khoi)} className="rounded-xl border border-indigo-300 bg-indigo-50/40 p-4 text-left transition hover:border-indigo-400 hover:bg-indigo-50">
+    <button onClick={() => onOpened(b!.id, ba.lop.id, ba.lop.khoi, ba.lop.mon)} className="rounded-xl border border-indigo-300 bg-indigo-50/40 p-4 text-left transition hover:border-indigo-400 hover:bg-indigo-50">
       {head}
       <div className="mt-3 text-[12px] font-medium text-indigo-600">Vào chấm / điểm danh →</div>
     </button>

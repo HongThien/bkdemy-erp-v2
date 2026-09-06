@@ -113,9 +113,10 @@ export async function updateGayHoatDong(id: string, patch: Partial<Pick<GayHoatD
 type DeXuatMoi = Omit<GayDeXuat, 'id' | 'trang_thai' | 'so_gay' | 'nguoi_quyet' | 'quyet_at' | 'ly_do_bo_qua' | 'ledger_id' | 'created_at'>
 type PhanCongRow = { nhan_su_id: string; lop_id: string; vai_tro: 'gv' | 'tg'; la_chinh: boolean }
 
-// Người phụ trách CHÍNH của 1 khâu trong 1 lớp — danhgia: GV · chấm (ingame/et/btvn/mt):
+// Người phụ trách CHÍNH của 1 khâu trong 1 lớp — danhgia: GV · chấm (ingame/et/btvn):
 // TG, riêng ingame lớp KHÔNG có TG thì về GV. 1 ứng viên → người đó; nhiều ứng viên →
-// người la_chinh duy nhất; vẫn nhập nhằng → null (không đánh ai).
+// người la_chinh duy nhất; vẫn nhập nhằng → null (không đánh ai). MT KHÔNG đi qua đây
+// (owner = trưởng khối khối×môn → GV lớp, chọn ở DB fn_viec_buoi_thuong).
 export function nguoiPhuTrach(pcs: PhanCongRow[], tab: string): string | null {
   const chon = (vai: 'gv' | 'tg'): string | null => {
     const cands = pcs.filter((p) => p.vai_tro === vai)
@@ -152,8 +153,9 @@ export async function quetGayTuDong(): Promise<number> {
   const rows = await listAllStaffTasks(congNgay(monthStart, -7), today)
   for (const r of rows) {
     if (r.deadline == null || r.deadline < monthStartMs) continue
-    // chỉ tính cho NGƯỜI PHỤ TRÁCH CHÍNH của khâu này — task của người khác bỏ qua
-    if (nguoiPhuTrach(pcByLop.get(r.lopId) ?? [], r.tab) !== r.nhan_su_id) continue
+    // chỉ tính cho NGƯỜI PHỤ TRÁCH CHÍNH của khâu này — task của người khác bỏ qua.
+    // MT: owner (trưởng khối → GV lớp) đã do fn_viec_buoi_thuong chọn duy nhất — không tra phan_cong_lop.
+    if (r.tab !== 'mt' && nguoiPhuTrach(pcByLop.get(r.lopId) ?? [], r.tab) !== r.nhan_su_id) continue
     if (mien.has(r.nhan_su_id)) continue
     let tre = 0
     if (r.done && r.doneAt) tre = new Date(r.doneAt).getTime() - r.deadline

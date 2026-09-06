@@ -8882,3 +8882,36 @@ không đổi bảng/view).
   ta (`npx web-push generate-vapid-keys`, ĐỪNG dùng lại cặp của pt) → dán `VITE_PUSH_VAPID_PUBLIC` +
   `PUSH_VAPID_PRIVATE` vào Vercel project **ta** (project TA sẵn có, chỉ thêm 2 biến + CRON_SECRET —
   không cần Vercel project mới, không cần domain mới).
+## 2026-09-06 — Hạn 36h/72h + MT về trưởng khối (khối × môn) + derive task buổi thường XUỐNG DB
+- **CEO chốt (tối 06/09):** ① hạn "Đánh giá buổi học" + "Chấm bài trên lớp" (+ Chấm ET) = **36 giờ kể từ giờ
+  BẮT ĐẦU buổi** · ② MT **không gán mặc định cho TA lớp** ("MT là việc quan trọng") → **trưởng khối**, hạn **72h
+  từ giờ bắt đầu ca thi** · ③ hỏi thêm: trưởng khối theo (khối) hay (khối × môn)? → **"theo môn nhé, KHTN sẽ có
+  trưởng khối riêng"**; thiếu trưởng khối → **về GV phụ trách lớp**.
+- **Hiện trạng dò được trước khi sửa (đáng ghi):** deadline nhân sự tồn tại **4 chỗ, 2 chuẩn** — client
+  `gami.ts` getMyTasks + bản sao listAllStaffTasks (23:59 ngày buổi / ET 12h trưa hôm sau) và DB
+  `fn_ta_dashboard`/`fn_gv_dashboard` (00:00 hôm sau / ET = han_nop_bai_test). App và KPI tháng chấm "trễ" theo 2
+  luật khác nhau suốt từ 30/08. `phan_cong_khoi` chỉ có `khoi`, 12/12 dòng đều người Toán; khối 7/8/9 có lớp
+  KHTN/Văn/Anh + 4 MT KHTN đã gán ⇒ không có `mon` là trưởng khối Toán nhận MT KHTN (vi phạm §1.6).
+  `buoi_ke_tiep` (DB) KHÔNG né buổi huỷ ad-hoc + không xét khai giảng — client caTiepTheo đã fix 07-19, DB chưa
+  (hạn BTVN HS lẫn TA tính theo buổi đã huỷ). `buoi_hoc.gio_bat_dau` có 662/663 buổi (anchor dùng được).
+  Không có bảng "ca thi" — MT là phase của buổi thường ⇒ giờ ca thi = giờ bắt đầu buổi.
+- **Mig `202609062311_phan_cong_khoi_mon`:** thêm `mon` not null (backfill 'Toán' — đúng sự thật, đã kiểm
+  nhan_su_mon), unique (nhan_su_id, khoi, mon) thay unique cũ.
+- **Mig `202609062312_viec_buoi_thuong_han_36h_mt_truong_khoi`:** `fn_han_viec(lop, ngay, gio_bat_dau, tab)` =
+  NGUỒN DUY NHẤT hạn (ingame/danhgia/et +36h · mt +72h · btvn = han_nop_bai_test; giờ bắt đầu: tham số → TKB →
+  00:00) · `fn_viec_buoi_thuong(tu, den, tat_ca)` = derive task buổi thường (gv/tg theo phan_cong_lop; buổi có MT
+  chỉ 1 việc mt: vai **`tk`** = phan_cong_khoi khớp (lop.khoi, lop.mon) → fallback gv lớp, la_chinh ưu tiên; dedup
+  distinct on (ns, buổi, tab) ưu tiên gv trước tg như client cũ) · `fn_ta_dashboard`/`fn_gv_dashboard` đọc từ đó
+  (TA mất MT khỏi KPI; GV fallback MT thì MT vào KPI GV) · `buoi_ke_tiep` né buổi huỷ + khai giảng.
+- **Client:** `getMyTasks`/`listAllStaffTasks` phần buổi thường → gọi RPC (bỏ ~120 dòng derive/deadline/caTiepTheo
+  client — đúng §2.0); bù/đuổi/bổ trợ/báo sai vẫn client (hạn bù/đuổi CHƯA đổi — CEO chỉ nói buổi học). `MyTask.vai`
+  thêm `'tk'`; NhanSuHome `tabsCuaVai('tk')=['mt']`, gv thêm 'mt'. `khoiPhuTrach` → `{khoi, mon}[]`;
+  BuoiHocScreen `coQuyenChamLop(lopId, khoi, mon)`. PhanCongScreen: trưởng khối chuyển vào từng nhóm MÔN (chip +
+  picker per (khối × môn), nhãn vàng "chưa gán — MT về GV lớp"). gay.ts: MT không tra nguoiPhuTrach (owner đã do DB
+  chọn) — trước đây trưởng khối làm MT sẽ không bao giờ bị gậy vì nguoiPhuTrach('mt') trả TA.
+- **Verify:** migrate OK · tsc 0 · SELECT read-only trên RPC: 918 gv danhgia/ingame · 612 tg et/btvn · 487 tg
+  ingame · **51 mt→tk** · **4 mt→gv** (8K1/9K2/9K3 KHTN — chưa có trưởng khối KHTN, đúng fallback) · 0 MT mồ côi ·
+  0 trùng (ns,buổi,tab) · mẫu: buổi 06/09 19:30 → ET/ingame hạn 08/09 07:30, MT hạn 09/09 19:30.
+- **Còn treo / lưu ý:** `--status` báo 8 file có trong sổ mà không có trong repo (nhánh khác chưa merge, có từ
+  trước) · trưởng khối chưa có dashboard KPI riêng · Trang cần gán trưởng khối KHTN ở màn Phân công (nhóm KHTN
+  khối 8/9) · hạn buổi bù/đuổi/bổ trợ vẫn 23:59/12h trưa (client) — hỏi CEO có áp 36h không.

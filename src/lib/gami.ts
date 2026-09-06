@@ -963,8 +963,23 @@ export async function setDanhGiaDang(buoiId: string, hsId: string, maDang: strin
 // 'baosai' = duyệt HS báo sai ở test online — KHÔNG phải khâu của buổi như 5 tab kia:
 // nó mở màn "Duyệt chấm online", không mở BuoiDetail (xem TaskCard ở NhanSuHome).
 export type TabKey = 'diemdanh' | 'danhgia' | 'ingame' | 'et' | 'btvn' | 'mt' | 'baosai'
-// deadline (Thùy chốt): chấm bài + đánh giá = 23h59 ngày buổi · ET = 12h trưa hôm sau · BTVN = 2h TRƯỚC ca học tiếp theo của lớp · MT = 23h59 ngày thi (giống chấm bài).
-export type MyTask = { buoiId: string; lopId: string; lop: string; ngay: string; vai: 'gv' | 'tg'; tab: TabKey; label: string; done: boolean; doneAt: string | null; deadline: number | null; loai?: 'bu' | 'bo_tro_duoi' | 'bo_tro_yeu' }
+// Hạn + owner việc BUỔI THƯỜNG tính ở DB (fn_han_viec / fn_viec_buoi_thuong, mig 202609062312) — client KHÔNG tính lại.
+// vai 'tk' = trưởng khối (khối × môn) nhận Chấm MT; không có trưởng khối → về GV lớp (vai 'gv', tab 'mt').
+export type VaiViec = 'gv' | 'tg' | 'tk'
+export type MyTask = { buoiId: string; lopId: string; lop: string; ngay: string; vai: VaiViec; tab: TabKey; label: string; done: boolean; doneAt: string | null; deadline: number | null; loai?: 'bu' | 'bo_tro_duoi' | 'bo_tro_yeu' }
+const LABEL_BY_TAB: Record<string, string> = { danhgia: 'Đánh giá sau buổi', ingame: 'Chấm bài trên lớp', et: 'Chấm ET', btvn: 'Chấm BTVN', mt: 'Chấm MT' }
+type ViecBuoiThuongRow = { nhan_su_id: string; buoi_id: string; lop_id: string; ten_lop: string; ngay: string; vai: VaiViec; tab: TabKey; dong_at: string | null; han: string | null; et_online: boolean }
+async function viecBuoiThuong(tu: string | null, den: string | null, tatCa: boolean): Promise<ViecBuoiThuongRow[]> {
+  const { data, error } = await supabase.rpc('fn_viec_buoi_thuong', { p_tu: tu, p_den: den, p_tat_ca: tatCa }).limit(LIMIT)
+  if (error) throw error
+  return (data ?? []) as ViecBuoiThuongRow[]
+}
+// Buổi có ET online: máy đã chấm + đổ lưới, việc còn lại là bấm xác nhận — nhãn nói rõ để TA khỏi đi tìm bài giấy.
+const taskTuRow = (r: ViecBuoiThuongRow): MyTask => ({
+  buoiId: r.buoi_id, lopId: r.lop_id, lop: r.ten_lop, ngay: r.ngay, vai: r.vai, tab: r.tab,
+  label: r.tab === 'et' && r.et_online ? 'Xác nhận ET (online)' : (LABEL_BY_TAB[r.tab] ?? r.tab),
+  done: !!r.dong_at, doneAt: r.dong_at, deadline: r.han ? new Date(r.han).getTime() : null,
+})
 // Export: trợ lý cần ĐÚNG bảng vai→khâu này để dựng rổ "dự kiến hôm nay" cho buổi CHƯA MỞ
 // (chưa có dòng buoi_hoc ⇒ chưa có task để đọc). Chép lại một bản thứ hai ở troly.ts là đẻ
 // hai nguồn sự thật rồi lệch — thêm khâu ở đây mà quên bên kia thì rổ dự kiến thiếu âm thầm.
@@ -975,92 +990,11 @@ export const TASKS_BY_VAI: Record<'gv' | 'tg', { tab: TabKey; label: string }[]>
 export async function getMyTasks(): Promise<MyTask[]> {
   const prof = await getMyProfile()
   if (!prof) return []
-  // 1 người có thể giữ NHIỀU vai trên CÙNG lớp (vd gv-phụ + tg) → gom TẤT CẢ vai, đừng gộp về 1.
-  const rolesByLop = new Map<string, Set<'gv' | 'tg'>>()
-  for (const pc of prof.phanCong) {
-    const v = pc.vai_tro === 'gv' ? 'gv' : 'tg'
-    if (!rolesByLop.has(pc.lop_id)) rolesByLop.set(pc.lop_id, new Set())
-    rolesByLop.get(pc.lop_id)!.add(v)
-  }
-  const lopIds = [...rolesByLop.keys()]
-  if (!lopIds.length) return []
-  // mo + hoan_tat (bỏ huy): task XONG vẫn trả về (cờ done + doneAt) để hiện ở nhóm "Đã xong" — mở lại xem/sửa được.
-  const { data: buois, error } = await supabase.from('buoi_hoc')
-    .select('id, lop_id, ngay, ingame_dong_at, et_dong_at, danh_gia_xong_at, btvn_dong_at, mt_dong_at, lop:lop_id(ten_lop)').neq('trang_thai', 'huy').eq('loai', 'thuong').in('lop_id', lopIds).order('ngay').limit(LIMIT)
-  if (error) throw error
-  // MT (Thùy 07-08: "phải hiện trong buổi học giống ET") KHÔNG tự có trên MỌI buổi (khác ingame/et/btvn
-  // luôn có) → phải hỏi thật buổi nào ĐÃ được gán MT (tai_lieu loai='mt_buoi' khớp lớp+ngày), tránh vỡ
-  // "Việc của tôi" với "Chấm MT" rỗng ở 99% ngày thường.
-  const mtKeys = new Set<string>()
-  if ((buois ?? []).length) {
-    const { data: mtDocs } = await supabase.from('tai_lieu').select('lop_id, ngay').eq('loai', 'mt_buoi').in('lop_id', lopIds).limit(LIMIT)
-    for (const d of (mtDocs ?? []) as any[]) mtKeys.add(`${d.lop_id}|${d.ngay}`)
-  }
-  // TKB cho deadline BTVN (= 2h trước ca học tiếp theo của lớp). Tải 1 lần, suy ca-kế client.
-  const { data: tkb } = await supabase.from('thoi_khoa_bieu')
-    .select('lop_id, thu, gio_bat_dau, hieu_luc_tu, hieu_luc_den, lop:lop_id(ngay_khai_giang)').in('lop_id', lopIds).limit(LIMIT)
-  const tkbByLop = new Map<string, any[]>()
-  for (const s of (tkb ?? []) as any[]) { if (!tkbByLop.has(s.lop_id)) tkbByLop.set(s.lop_id, []); tkbByLop.get(s.lop_id)!.push(s) }
-  // ⭐ Fix 07-19 (Thùy: "kiểm tra lại deadline BTVN, phải trước buổi tiếp theo"): TKB chỉ là LỊCH LẶP —
-  // ngày TKB dự đoán "buổi tiếp theo" có thể đã bị HUỶ ad-hoc (huyBuoi/huyBuoiCuaNgay, vd "GV bận") mà TKB
-  // không biết. Trước đây caTiepTheo bỏ qua việc này → tính deadline theo 1 buổi ĐÃ HUỶ, cắt ngắn hạn nộp
-  // BTVN vô lý (buổi thật kế tiếp có thể xa hơn nhiều). Nạp danh sách buổi 'thuong' đã huỷ để SKIP qua.
-  const { data: huyRows } = await supabase.from('buoi_hoc')
-    .select('lop_id, ngay').eq('loai', 'thuong').eq('trang_thai', 'huy').in('lop_id', lopIds).limit(LIMIT)
-  const huyKeys = new Set((huyRows ?? []).map((r: any) => `${r.lop_id}|${r.ngay}`))
-  const caTiepTheo = (lopId: string, after: string): number | null => {
-    for (let i = 1; i <= 21; i++) {
-      const day = congNgay(after, i); const thu = thuOf(day)
-      if (huyKeys.has(`${lopId}|${day}`)) continue // buổi ngày này đã huỷ → không phải "buổi tiếp theo" thật
-      const slot = (tkbByLop.get(lopId) ?? []).find((s: any) => s.thu === thu && s.hieu_luc_tu <= day && (!s.hieu_luc_den || s.hieu_luc_den >= day) && (!s.lop?.ngay_khai_giang || s.lop.ngay_khai_giang <= day))
-      if (slot) return vnInstant(day, String(slot.gio_bat_dau).slice(0, 5))
-    }
-    return null
-  }
-  // ⭐ ET ONLINE: máy chấm + tự đổ vào lưới (fn_et_online_dong_bo, 03/09) nhưng vẫn cần người
-  // bấm "Xác nhận ET" mới tính Elo/EXP + đóng buổi. Thùy 03/09: "Dữ liệu tự vào. TA chỉ cần bấm
-  // xác nhận để đóng như bình thường" ⇒ GIỮ task, chỉ đổi nhãn "Xác nhận ET (online)". (Trước
-  // đây bỏ hẳn task theo spec §9 — hậu quả: không ai vào tab, Elo ET online = 0 suốt từ đầu.)
-  const etOnlineKeys = new Set<string>()
-  {
-    const { data: etTests } = await supabase.from('bai_test')
-      .select('lop_id, ngay').eq('loai', 'et').in('lop_id', lopIds).limit(LIMIT)
-    for (const t of (etTests ?? []) as any[]) etOnlineKeys.add(`${t.lop_id}|${t.ngay}`)
-  }
-
-  const out: MyTask[] = []
-  for (const b of (buois ?? []) as any[]) {
-    const doneAtTab: Record<TabKey, string | null> = { diemdanh: null, ingame: b.ingame_dong_at, danhgia: b.danh_gia_xong_at, et: b.et_dong_at, btvn: b.btvn_dong_at, mt: b.mt_dong_at, baosai: null }
-    const deadlineOf = (tab: TabKey): number | null => {
-      if (tab === 'ingame' || tab === 'danhgia' || tab === 'mt') return vnInstant(b.ngay, '23:59')
-      if (tab === 'et') return vnInstant(congNgay(b.ngay, 1), '12:00')
-      if (tab === 'btvn') { const ca = caTiepTheo(b.lop_id, b.ngay); return ca == null ? null : ca - 2 * 3600000 }
-      return null
-    }
-    const roles = rolesByLop.get(b.lop_id)!
-    const coMT = mtKeys.has(`${b.lop_id}|${b.ngay}`)
-    const seen = new Set<TabKey>() // dedup tab trùng (chấm bài có ở cả gv lẫn tg)
-    for (const vai of ['gv', 'tg'] as const) {
-      if (!roles.has(vai)) continue
-      // ⭐ Buổi có gán MT (Thùy 09-06: "buổi có MT thì không có ET, đánh giá và nhận xét —
-      // nói chung không có hoạt động nào khác"): MT THAY HẲN ingame/ET/đánh giá/BTVN, không
-      // cộng thêm. GV không còn task nào ở buổi này; TG chỉ còn "Chấm MT".
-      if (coMT) {
-        if (vai === 'tg' && !seen.has('mt')) {
-          seen.add('mt')
-          out.push({ buoiId: b.id, lopId: b.lop_id, lop: b.lop?.ten_lop ?? '?', ngay: b.ngay, vai: 'tg', tab: 'mt', label: 'Chấm MT', done: !!b.mt_dong_at, doneAt: b.mt_dong_at, deadline: deadlineOf('mt') })
-        }
-        continue
-      }
-      for (const t of TASKS_BY_VAI[vai]) {
-        if (seen.has(t.tab)) continue
-        seen.add(t.tab)
-        // Buổi có ET online: máy đã chấm + đổ lưới, việc còn lại là bấm xác nhận — nhãn nói rõ để TA khỏi đi tìm bài giấy.
-        const label = t.tab === 'et' && etOnlineKeys.has(`${b.lop_id}|${b.ngay}`) ? 'Xác nhận ET (online)' : t.label
-        out.push({ buoiId: b.id, lopId: b.lop_id, lop: b.lop?.ten_lop ?? '?', ngay: b.ngay, vai, tab: t.tab, label, done: !!doneAtTab[t.tab], doneAt: doneAtTab[t.tab], deadline: deadlineOf(t.tab) })
-      }
-    }
-  }
+  // Buổi THƯỜNG: owner + hạn + MT-thay-hẳn-các-khâu đều derive ở DB (fn_viec_buoi_thuong). Task XONG vẫn
+  // trả về (done + doneAt) để hiện ở nhóm "Đã xong" — mở lại xem/sửa được.
+  const rows = await viecBuoiThuong(null, null, false)
+  const out: MyTask[] = rows.map(taskTuRow)
+  const tgLops = new Set(prof.phanCong.filter((pc) => pc.vai_tro === 'tg').map((pc) => pc.lop_id))
   // ── DUYỆT BÁO SAI test online (spec test-online §9) — THAY cho task "Chấm ET" đã bỏ ở trên.
   // Pure-derive đúng nghĩa: report `moi` TỒN TẠI ⇒ task; duyệt xong (dung/sai) là task tự biến
   // mất, không có cờ done nào phải dọn. Gom về 1 task / (lớp × buổi) để không vỡ list khi 1 câu
@@ -1068,7 +1002,6 @@ export async function getMyTasks(): Promise<MyTask[]> {
   // ⚠ PostgREST không filter được quan hệ LỒNG (CLAUDE.md §2) — bảng report nhỏ nên tải hết
   // rồi lọc client theo lớp của tôi, đừng cố nhét filter vào select lồng 3 tầng.
   {
-    const tgLops = new Set([...rolesByLop.entries()].filter(([, r]) => r.has('tg')).map(([id]) => id))
     if (tgLops.size) {
       const { data: reps } = await supabase.from('bai_test_report')
         .select('created_at, blc:bai_lam_cau_id(cau:bai_test_cau_id(test:bai_test_id(lop_id, ngay)))')
@@ -1084,9 +1017,9 @@ export async function getMyTasks(): Promise<MyTask[]> {
       }
       for (const [k, v] of gom) {
         const [lopId, ngay] = k.split('|')
-        const b = (buois ?? []).find((x: any) => x.lop_id === lopId && x.ngay === ngay) as any
+        const b = rows.find((x) => x.lop_id === lopId && x.ngay === ngay)
         out.push({
-          buoiId: b?.id ?? '', lopId, lop: b?.lop?.ten_lop ?? '?', ngay, vai: 'tg', tab: 'baosai',
+          buoiId: b?.buoi_id ?? '', lopId, lop: b?.ten_lop ?? '?', ngay, vai: 'tg', tab: 'baosai',
           label: `Duyệt báo sai (${v.n})`,
           done: false, doneAt: null,
           deadline: Number.isFinite(v.sinh) ? v.sinh + 24 * 3600000 : null, // 24h từ báo sai đầu tiên
@@ -1181,87 +1114,8 @@ export async function getMyTasks(): Promise<MyTask[]> {
 // chưa attribute được theo TỪNG NGƯỜI (xem listOpsDiemDanhTeam bên dưới, đo theo TEAM).
 export type StaffTaskRow = MyTask & { nhan_su_id: string; lop: string }
 export async function listAllStaffTasks(tu: string, den: string): Promise<StaffTaskRow[]> {
-  const { data: pcAll, error: e1 } = await supabase.from('phan_cong_lop').select('nhan_su_id, lop_id, vai_tro').limit(LIMIT)
-  if (e1) throw e1
-  const rolesByLop = new Map<string, Map<string, Set<'gv' | 'tg'>>>() // lop_id -> nhan_su_id -> roles
-  const lopIdsSet = new Set<string>()
-  for (const pc of (pcAll ?? []) as any[]) {
-    lopIdsSet.add(pc.lop_id)
-    const v: 'gv' | 'tg' = pc.vai_tro === 'gv' ? 'gv' : 'tg'
-    if (!rolesByLop.has(pc.lop_id)) rolesByLop.set(pc.lop_id, new Map())
-    const byNs = rolesByLop.get(pc.lop_id)!
-    if (!byNs.has(pc.nhan_su_id)) byNs.set(pc.nhan_su_id, new Set())
-    byNs.get(pc.nhan_su_id)!.add(v)
-  }
-  const lopIds = [...lopIdsSet]
-  if (!lopIds.length) return []
-  const { data: buois, error } = await supabase.from('buoi_hoc')
-    .select('id, lop_id, ngay, ingame_dong_at, et_dong_at, danh_gia_xong_at, btvn_dong_at, mt_dong_at, lop:lop_id(ten_lop)')
-    .neq('trang_thai', 'huy').eq('loai', 'thuong').in('lop_id', lopIds).gte('ngay', tu).lte('ngay', den).order('ngay').limit(LIMIT)
-  if (error) throw error
-  // MT KHÔNG tự có trên mọi buổi (khác ingame/et/btvn) → hỏi thật buổi nào đã gán MT (tai_lieu loai='mt_buoi'
-  // khớp lớp+ngày), CÙNG logic getMyTasks — trước đây bị bỏ sót ở đây (comment cũ "buổi thường không có phase mt").
-  const mtKeys = new Set<string>()
-  if ((buois ?? []).length) {
-    const { data: mtDocs } = await supabase.from('tai_lieu').select('lop_id, ngay').eq('loai', 'mt_buoi').in('lop_id', lopIds).limit(LIMIT)
-    for (const d of (mtDocs ?? []) as any[]) mtKeys.add(`${d.lop_id}|${d.ngay}`)
-  }
-  const { data: tkb } = await supabase.from('thoi_khoa_bieu')
-    .select('lop_id, thu, gio_bat_dau, hieu_luc_tu, hieu_luc_den, lop:lop_id(ngay_khai_giang)').in('lop_id', lopIds).limit(LIMIT)
-  const tkbByLop = new Map<string, any[]>()
-  for (const s of (tkb ?? []) as any[]) { if (!tkbByLop.has(s.lop_id)) tkbByLop.set(s.lop_id, []); tkbByLop.get(s.lop_id)!.push(s) }
-  // ⭐ Fix 07-19 — cùng bug với getMyTasks (xem comment ở đó): TKB không biết buổi bị huỷ ad-hoc.
-  const { data: huyRows } = await supabase.from('buoi_hoc')
-    .select('lop_id, ngay').eq('loai', 'thuong').eq('trang_thai', 'huy').in('lop_id', lopIds).limit(LIMIT)
-  const huyKeys = new Set((huyRows ?? []).map((r: any) => `${r.lop_id}|${r.ngay}`))
-  const caTiepTheo = (lopId: string, after: string): number | null => {
-    for (let i = 1; i <= 21; i++) {
-      const day = congNgay(after, i); const thu = thuOf(day)
-      if (huyKeys.has(`${lopId}|${day}`)) continue
-      const slot = (tkbByLop.get(lopId) ?? []).find((s: any) => s.thu === thu && s.hieu_luc_tu <= day && (!s.hieu_luc_den || s.hieu_luc_den >= day) && (!s.lop?.ngay_khai_giang || s.lop.ngay_khai_giang <= day))
-      if (slot) return vnInstant(day, String(slot.gio_bat_dau).slice(0, 5))
-    }
-    return null
-  }
-  const out: StaffTaskRow[] = []
-  for (const b of (buois ?? []) as any[]) {
-    const doneAtTab: Record<TabKey, string | null> = { diemdanh: null, ingame: b.ingame_dong_at, danhgia: b.danh_gia_xong_at, et: b.et_dong_at, btvn: b.btvn_dong_at, mt: b.mt_dong_at, baosai: null }
-    const deadlineOf = (tab: TabKey): number | null => {
-      if (tab === 'ingame' || tab === 'danhgia' || tab === 'mt') return vnInstant(b.ngay, '23:59')
-      if (tab === 'et') return vnInstant(congNgay(b.ngay, 1), '12:00')
-      if (tab === 'btvn') { const ca = caTiepTheo(b.lop_id, b.ngay); return ca == null ? null : ca - 2 * 3600000 }
-      return null
-    }
-    const byNs = rolesByLop.get(b.lop_id)
-    if (!byNs) continue
-    const coMT = mtKeys.has(`${b.lop_id}|${b.ngay}`)
-    for (const [nsId, roles] of byNs) {
-      const seen = new Set<TabKey>()
-      for (const vai of ['gv', 'tg'] as const) {
-        if (!roles.has(vai)) continue
-        // Buổi có gán MT: MT thay hẳn ingame/ET/đánh giá/BTVN — xem comment ở getMyTasks.
-        if (coMT) {
-          if (vai === 'tg' && !seen.has('mt')) {
-            seen.add('mt')
-            out.push({
-              nhan_su_id: nsId, buoiId: b.id, lopId: b.lop_id, lop: b.lop?.ten_lop ?? '?', ngay: b.ngay, vai: 'tg', tab: 'mt',
-              label: 'Chấm MT', done: !!b.mt_dong_at, doneAt: b.mt_dong_at, deadline: deadlineOf('mt'),
-            })
-          }
-          continue
-        }
-        for (const t of TASKS_BY_VAI[vai]) {
-          if (seen.has(t.tab)) continue
-          seen.add(t.tab)
-          out.push({
-            nhan_su_id: nsId, buoiId: b.id, lopId: b.lop_id, lop: b.lop?.ten_lop ?? '?', ngay: b.ngay, vai, tab: t.tab,
-            label: t.label, done: !!doneAtTab[t.tab], doneAt: doneAtTab[t.tab], deadline: deadlineOf(t.tab),
-          })
-        }
-      }
-    }
-  }
-  return out
+  const rows = await viecBuoiThuong(tu, den, true)
+  return rows.map((r) => ({ ...taskTuRow(r), nhan_su_id: r.nhan_su_id }))
 }
 
 // OPS điểm danh — team-wide (KHÔNG per-person, xem comment listAllStaffTasks): tỉ lệ HS đã điểm danh /
