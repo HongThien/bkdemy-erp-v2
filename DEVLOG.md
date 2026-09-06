@@ -8915,3 +8915,24 @@ không đổi bảng/view).
 - **Còn treo / lưu ý:** `--status` báo 8 file có trong sổ mà không có trong repo (nhánh khác chưa merge, có từ
   trước) · trưởng khối chưa có dashboard KPI riêng · Trang cần gán trưởng khối KHTN ở màn Phân công (nhóm KHTN
   khối 8/9) · hạn buổi bù/đuổi/bổ trợ vẫn 23:59/12h trưa (client) — hỏi CEO có áp 36h không.
+## 2026-09-07 — App OPS: "Của tôi" 6 box (context OPS, song song context TA) + mốc tích lũy 09/2026
+- **CEO chốt:** OPS làm y khuôn TA (6 box). **Tiến trình OPS tạm bỏ** (OPS không có định mức theo lớp;
+  đơn vị OPS = ca trực) → box "sắp mở". Điểm tích lũy **chỉ tính từ 09/2026**, trước đó không tính.
+  "Đi làm ít thưởng ít là bình thường" (OPS 1 ca/tuần ít điểm hơn TA — chấp nhận). Lộc = lead OPS, bỏ qua.
+  UI: làm theo style cũ trước, "UI mới chỉ đổi hình, logic không đổi".
+- **Verify read-only trước khi code (6 OPS thật):** `fn_ops_viec_thang` trả đúng `dat/cho`, ngày = ngày ca;
+  `_tich_luy_cua` ra số hợp lý (T9: 100–400). Lộ: **T8 là "điểm quà tặng"** (việc trước 01/09 luôn đạt ⇒
+  chuỗi = số ngày có việc, 1400–2400 điểm) và hàm chốt không chặn T8. `quy_trinh` 0 dòng (chưa có quy ước
+  nhãn — OPS dùng `'ops'`, TA `'ta'`), `shop_vat_pham` 0 dòng, `tich_luy_chot_thang` 0 dòng.
+- **Mig `202609070217_tich_luy_moc_bat_dau_09_2026`:** `_tich_luy_cua` tháng < 09/2026 → 0/0;
+  `fn_tich_luy_chot_thang` kỳ < 01/09/2026 → raise. Mốc hardcode trong hàm (`ta_dinh_muc.gia_tri` là
+  numeric, không chứa date). Thân còn lại chép nguyên 202609070151. Đã áp + `npm run schema`.
+  Verify sau áp: T8 = 0 cho cả 6 OPS, T9 giữ nguyên.
+- **Code:** `DashOps.tsx` viết lại = dữ liệu + điều hướng box (opsDashboard · xepHangChung · tichLuy);
+  `OpsBoxes.tsx` (MỚI) = render thuần style cũ (header/lưới/Gậy/Hướng dẫn/Đạt chuẩn/Shop) — **cố ý
+  KHÔNG import `CuaToiBoxes`/`ShopBox`/`components/bk`** vì bên TA đang xoá/sửa các file đó trong cùng
+  working tree; khi `bk/` chốt thì thay `OpsBoxes.tsx`, `DashOps.tsx` không đổi. Chip ⭐ = xai_duoc +
+  diem_thang (cùng công thức DashTa mới). tsc + `build:ops` pass. Chưa test browser (cần login OPS).
+- **Còn treo:** `BKMascotBanner` (bk/) hardcode "Small TAs Big Impact" — cần prop trước khi OPS dùng ·
+  admin nhập `quy_trinh` nhãn `'ops'` + `shop_vat_pham` · Tiến trình OPS chờ CEO định nghĩa (đề xuất "Ca
+  trực": ca đã trực / mục đạt theo 5 loại; cũng là chỗ tự nhiên ghi OPS vắng ca / trực thay sau này).
