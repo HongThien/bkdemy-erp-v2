@@ -15,12 +15,15 @@ import {
 import { mucDeadline, nhanConLai } from '../../lib/tuan'
 import { seededShuffleWithOrig, seededPermByDang } from '../../lib/shuffle'
 import {
-  luotTuLuyenHomNay, sinhTuLuyen, monCuaHS, laCap1HS, khoiCuaHS, layDangHocTap, xepHangTuLuyen,
+  luotTuLuyenHomNay, sinhTuLuyen, monCuaHS, laCap1HS, khoiCuaHS, hoSoCuaToi, layDangHocTap, xepHangTuLuyen,
   TU_LUYEN_SO_CAU_MOI_LUOT, SRC_LABEL, type DangHocTap, type RecentEval, type XepHangRow,
 } from '../../lib/tuluyen'
 import DoiMatKhau from './DoiMatKhau'
 import CaBoTroHS, { RetestHS, BoTroBanner } from './CaBoTroHS'
 import { caCuaToi, retestCuaToi } from '../../lib/botro_yeu_ca'
+import { listThongBaoHS, docTatCaThongBao, type ThongBaoHS } from '../../lib/thongbaohs'
+import HomeHS, { type HomeCard } from './HomeHS'
+import DanhSachHS, { type DsRow } from './DanhSachHS'
 
 type Chon = number | string | (string | null)[] | null // TN=index · TLN=chuỗi · ĐS=mảng 'D'/'S'
 type CauState = { chon: Chon; kq: { verdict: string; key: unknown; baiLamCauId: string } | null; baoRoi?: boolean }
@@ -39,10 +42,6 @@ const THI_LOAI = new Set(['et', 'de_thi', 'bo_tro_test', 'retest'])
 // 10 câu theo dạng yếu, ĐẾM vào mastery) · thông tin học tập (dạng yếu + %Đ-C-S theo
 // dạng/chuyên đề + xếp hạng lớp/khối) · làm đề thi thử (đề trường/sở, sắp nhập nhiều).
 // 2 CỘT — màn điện thoại dọc (Thùy: "màn hình điện thoại là dọc mà").
-// ⭐ CẤP 1 (Thùy 20/08): "cấp 1 ko có làm ET, BTVN hay BTTL trên điện thoại. Chỉ có tự luyện" — 3 ô
-// đầu ẨN HẲN (không phải "Sắp có") cho cấp 1, KHÔNG đổi gì ở tầng dữ liệu (cấp 1 vốn không có
-// bai_test loại giao_trinh/et/btvn nào — cuaKhu() các ô đó luôn rỗng, ẩn chỉ là bớt nhiễu UI).
-const KHU_AN_CAP1 = new Set<KhuId>(['giao_trinh', 'et', 'btvn'])
 // Bảng xếp hạng (Thùy 21/08: "ko phải chỉ 5T. Hiện cho các khối tiểu học") — mọi khối cấp 1, MỖI
 // EM xếp hạng với ĐÚNG khối của mình (BangXepHang tự đọc khoiCuaHS(), không hardcode '5T' nữa).
 const KHU_CHI_CAP1 = new Set<KhuId>(['xep_hang'])
@@ -61,8 +60,16 @@ const KHU: { id: KhuId; ten: string; icon: string; loai?: string; direct?: boole
   { id: 'xep_hang', ten: 'Bảng xếp hạng', icon: '🏆', direct: true, mau: 'ph-orange' },
   { id: 'de_thi_thu', ten: 'Làm đề thi thử', icon: '📄', mau: 'ph-purple' },
 ]
-// Tailwind quét class TĨNH trong nguồn — không ghép chuỗi `bg-${mau}/10` (mất class). Liệt kê đủ.
-const MAU_BG: Record<string, string> = { brand: 'bg-brand/10', 'ph-purple': 'bg-ph-purple/10', 'ph-orange': 'bg-ph-orange/10', 'ph-green': 'bg-ph-green/10' }
+// Kit hs-home-v4: minh hoạ (PNG cutout ở public/bk-ui/hs) + doodle chữ tay (Itim, TEXT) + tông màu từng ô.
+const KIT_O: Record<KhuId, Pick<HomeCard, 'ill' | 'doodle' | 'tone'>> = {
+  giao_trinh: { ill: 'purple_bookmark_book', doodle: 'Cố lên!', tone: 'pink' },
+  et:         { ill: 'orange_documents', doodle: 'Kiến thức là sức mạnh', tone: 'purple' },
+  btvn:       { ill: 'homework_house', doodle: 'Ôn tập mỗi ngày nhé!', tone: 'orange' },
+  tu_luyen:   { ill: 'self_practice_target', doodle: 'Small Steps Big Progress', tone: 'green' },
+  thong_tin:  { ill: 'study_progress_chart', doodle: 'Hiểu mình để tiến bộ hơn!', tone: 'blue' },
+  xep_hang:   { ill: 'self_practice_target', doodle: 'Thi đua vui!', tone: 'green' },
+  de_thi_thu: { ill: 'mock_exam_locked', doodle: 'Sắp ra mắt! Hãy chờ nhé!', tone: 'gray' },
+}
 const SHADOW = 'shadow-[0_8px_24px_rgba(28,38,61,0.07)]' // ĐÚNG --shadow của bkdemy-ph-app/app/ph-v3.css
 
 // Header sub-màn (Thùy: "làm header giống app phụ huynh") — ĐÚNG `.pageHead` (ph-v3.css:65-67):
@@ -99,7 +106,7 @@ const BOX_CAP1: BoxCap1[] = [
 // Bỏ khoá `h-screen overflow-hidden` — mockup gốc của Thùy vốn là trang cuộn tự nhiên theo nội dung
 // (không ép vừa 1 màn hình), thân trang cao hơn viewport 13-14" thì cuộn nhẹ là đúng theo THIẾT KẾ
 // gốc, không phải bug — khác hẳn bug 21/08 (cuộn do zoom 1.15 lỗi, xem main-hs.tsx).
-function HomeCap1({ hoTen, maHS, onOpen, extra }: { hoTen: string; maHS: string; onOpen: (d: 'tu_luyen' | 'thong_tin' | 'xep_hang') => void; extra?: React.ReactNode }) {
+function HomeCap1({ hoTen, maHS, onOpen, extra, chuaDoc, onHopThu }: { hoTen: string; maHS: string; onOpen: (d: 'tu_luyen' | 'thong_tin' | 'xep_hang') => void; extra?: React.ReactNode; chuaDoc: number; onHopThu: () => void }) {
   const initials = hoTen.trim().split(/\s+/).slice(-2).map((w) => w[0]).join('').toUpperCase()
   return (
     <div className="min-h-screen" style={{ background: 'radial-gradient(circle at 85% 5%, rgba(115,87,245,.10), transparent 24rem), radial-gradient(circle at 8% 25%, rgba(47,128,237,.08), transparent 22rem), #f4f7fb' }}>
@@ -118,6 +125,14 @@ function HomeCap1({ hoTen, maHS, onOpen, extra }: { hoTen: string; maHS: string;
                 <p className="truncate text-[11px] text-[#7b8499]">{maHS.toUpperCase()}</p>
               </div>
             </div>
+            {/* Hòm thư — chuông nổi, badge đỏ khi có thư chưa đọc (§ "báo lỗi đúng" gửi vào đây). */}
+            <button onClick={onHopThu} title="Hòm thư"
+              className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-[14px] bg-white text-[16px] shadow-[0_6px_16px_rgba(31,47,79,0.06)]">
+              🔔
+              {chuaDoc > 0 && (
+                <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-ph-red px-1 text-[10px] font-bold text-white">{chuaDoc}</span>
+              )}
+            </button>
             {/* Thoát (Thùy 22/08: "ko thấy nút đăng xuất") — mockup gốc chỉ vẽ mũi tên dropdown chưa
                 nối chức năng, thêm nút Thoát riêng, ĐÚNG style icon-button cấp 3 (squircle nổi). */}
             <button onClick={() => supabase.auth.signOut()} title="Đăng xuất"
@@ -186,13 +201,20 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [tab, setTab] = useState<'chua' | 'xong'>('chua')
   const [doiMK, setDoiMK] = useState(false)
   const [khu, setKhu] = useState<KhuId | null>(null) // null = màn chính, có ô
-  const [direct, setDirect] = useState<'tu_luyen' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'retest' | null>(null)
+  const [direct, setDirect] = useState<'tu_luyen' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'retest' | 'hop_thu' | null>(null)
   const [cap1, setCap1] = useState<boolean | null>(null) // null = chưa biết — chờ trước khi vẽ lưới ô
+  const [gioiTinh, setGioiTinh] = useState<'nam' | 'nu' | null>(null) // theme nam/nữ màn chính cấp 2/3 (kit hs-home-v4)
+  const [anhUrl, setAnhUrl] = useState<string | null>(null) // avatar HS (đổi ngay trong app — ốp từ TA, mig 202609080215)
   // Ca bổ trợ yếu hôm nay (đã điểm danh) + retest đến hạn — ô "Bổ trợ" CHỈ hiện khi có (không "sắp có", không ô trống).
   const [boTro, setBoTro] = useState<{ coCa: boolean; soRetest: number }>({ coCa: false, soRetest: 0 })
+  // Hòm thư — chỉ cần SỐ chưa đọc để hiện badge chuông (đếm items đang render, không phải tính nghiệp vụ).
+  const [chuaDoc, setChuaDoc] = useState(0)
+  const taiChuaDoc = () => listThongBaoHS().then((ds) => setChuaDoc(ds.filter((d) => !d.doc_at).length)).catch(() => {})
 
   useEffect(() => { listBaiTestCuaHS().then(setTests).catch(() => setTests([])) }, [])
   useEffect(() => { laCap1HS().then(setCap1).catch(() => setCap1(false)) }, [])
+  useEffect(() => { hoSoCuaToi().then((h) => { setGioiTinh(h?.gioi_tinh ?? null); setAnhUrl(h?.anh_url ?? null) }).catch(() => setGioiTinh(null)) }, [])
+  useEffect(() => { taiChuaDoc() }, [])
   useEffect(() => {
     const tai = () => Promise.all([caCuaToi().catch(() => null), retestCuaToi().catch(() => [])])
       .then(([ca, rt]) => setBoTro({ coCa: !!ca, soRetest: rt.filter((r) => !r.da_nop).length }))
@@ -208,6 +230,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   if (direct === 'xep_hang') return <BangXepHang onXong={() => setDirect(null)} />
   if (direct === 'bo_tro') return <CaBoTroHS hocSinhId={hocSinhId} desktop={!!cap1} onXong={() => setDirect(null)} LamBai={LamBai} LamET={LamET} />
   if (direct === 'retest') return <RetestHS hocSinhId={hocSinhId} onXong={() => setDirect(null)} LamET={LamET} />
+  if (direct === 'hop_thu') return <HopThuHS onXong={() => { setDirect(null); taiChuaDoc() }} />
 
   if (active) {
     const back = () => { setActive(null); listBaiTestCuaHS().then(setTests) }
@@ -232,127 +255,69 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   // desktop/iPad-first theo mockup HTML CEO gửi, KHÔNG dùng lưới mobile-first bên dưới (cấp 3 vẫn
   // giữ nguyên màn cũ — CEO xác nhận "cấp 3 chưa dùng màn này", bàn sau).
   if (!khu && cap1) return <HomeCap1 hoTen={hoTen} maHS={maHS} onOpen={(d) => setDirect(d)}
+    chuaDoc={chuaDoc} onHopThu={() => setDirect('hop_thu')}
     extra={<BoTroBanner coCa={boTro.coCa} soRetest={boTro.soRetest} desktop onCa={() => setDirect('bo_tro')} onRetest={() => setDirect('retest')} />} />
-  if (!khu) return (
-    <div className="mx-auto min-h-screen max-w-md bg-ios px-4 pb-10 pt-[calc(14px+env(safe-area-inset-top))]">
-      {/* Hàng nút phụ (đổi MK/thoát) — ĐÚNG ".top" (ph-v3.css): icon-button vuông-tròn nổi trên nền trang */}
-      <div className="mb-3 flex items-center justify-end gap-2">
-        <button onClick={() => setDoiMK(true)} title="Đổi mật khẩu" className={`flex h-[42px] w-[42px] items-center justify-center rounded-[14px] bg-white text-[16px] ${SHADOW}`}>🔑</button>
-        <button onClick={() => supabase.auth.signOut()} className={`flex h-[42px] items-center justify-center rounded-[14px] bg-white px-3.5 text-[13px] font-semibold text-ph-label-2 ${SHADOW}`}>Thoát</button>
-      </div>
-      {/* Danh tính — ĐÚNG ".studentCard" (ph-v3.css): card trắng bo 24px, avatar SQUIRCLE (không tròn) */}
-      <div className={`flex items-center gap-3 rounded-[24px] bg-white p-3.5 ${SHADOW}`}>
-        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-[18px] bg-gradient-to-br from-brand to-brand-2 text-[22px] font-bold text-white">
-          {hoTen.trim().split(/\s+/).slice(-2).map((w) => w[0]).join('').toUpperCase()}
-        </div>
-        <div className="min-w-0 flex-1">
-          <p className="truncate text-[19px] font-bold tracking-tight text-ph-label">{hoTen}</p>
-          <p className="mt-1 truncate text-[13px] text-ph-label-2">{maHS.toUpperCase()}{lopMon ? ` · ${lopMon}` : ''}</p>
-        </div>
-      </div>
+  // Cấp 2/3 — màn chính theo KIT hs-home-v4 (HomeHS.tsx). Ở đây CHỈ tính số/trạng thái từng ô rồi
+  // truyền xuống; HomeHS thuần vẽ. Badge = việc CÒN LÀM ĐƯỢC (bài quá hạn vẫn hiện trong danh sách —
+  // Thùy: "hiện quá hạn thôi" — nhưng không đếm vào badge; badge đếm cả thứ không bấm được thì thành nhiễu).
+  if (!khu) {
+    const cards: HomeCard[] = KHU.filter((k) => !KHU_CHI_CAP1.has(k.id)).map((k) => {
+      const sapCo = !k.loai && !k.direct
+      const ds = k.loai ? cuaKhu(k.id) : []
+      const nChuaLam = ds.filter((t) => !xongCua(t) && !daHetHan(t)).length
+      const nQuaHan = ds.filter((t) => !xongCua(t) && daHetHan(t)).length
+      const [sub, subMau]: [string, HomeCard['subMau']] =
+        sapCo ? ['Sắp có', 'xam']
+        : k.direct ? [CHU_DUOI[k.id] ?? '', 'xam']
+        : tests === null ? ['…', 'xam']
+        : nChuaLam > 0 ? [`${nChuaLam} bài chưa làm`, 'ton']
+        : nQuaHan > 0 ? [`${nQuaHan} bài quá hạn`, 'do']
+        : ds.length ? ['Xong hết rồi', 'xanh'] : ['Chưa có bài', 'xam']
+      return {
+        id: k.id, ten: k.ten, sub, subMau, badge: nChuaLam, disabled: sapCo, ...KIT_O[k.id],
+        onClick: sapCo ? undefined : k.direct ? () => setDirect(k.id as 'tu_luyen' | 'thong_tin' | 'xep_hang') : () => { setKhu(k.id); setTab('chua') },
+      }
+    })
+    return <HomeHS hoTen={hoTen} maHS={maHS} lopMon={lopMon} gioiTinh={gioiTinh} anhUrl={anhUrl} onAnhChanged={setAnhUrl} chuaDoc={chuaDoc}
+      coCa={boTro.coCa} soRetest={boTro.soRetest} cards={cards}
+      onHopThu={() => setDirect('hop_thu')} onDoiMK={() => setDoiMK(true)} onThoat={() => supabase.auth.signOut()}
+      onCa={() => setDirect('bo_tro')} onRetest={() => setDirect('retest')} />
+  }
 
-      <BoTroBanner coCa={boTro.coCa} soRetest={boTro.soRetest} onCa={() => setDirect('bo_tro')} onRetest={() => setDirect('retest')} />
-
-      <div className="mt-5 grid grid-cols-2 gap-3">
-        {KHU.filter((k) => !(cap1 && KHU_AN_CAP1.has(k.id)) && !(KHU_CHI_CAP1.has(k.id) && !cap1)).map((k) => {
-          const sapCo = !k.loai && !k.direct
-          const ds = k.loai ? cuaKhu(k.id) : []
-          // Badge = việc CÒN LÀM ĐƯỢC. Bài quá hạn vẫn hiện trong danh sách (Thùy: "hiện quá hạn
-          // thôi") nhưng không đếm vào badge — badge mà đếm cả thứ không bấm được thì thành nhiễu.
-          const nChuaLam = ds.filter((t) => !xongCua(t) && !daHetHan(t)).length
-          const nQuaHan = ds.filter((t) => !xongCua(t) && daHetHan(t)).length
-          const onClick = sapCo ? undefined : k.direct ? () => setDirect(k.id as 'tu_luyen' | 'thong_tin' | 'xep_hang') : () => { setKhu(k.id); setTab('chua') }
-          return (
-            <button key={k.id} disabled={sapCo} onClick={onClick}
-              className={`relative flex min-h-[132px] flex-col justify-between rounded-[22px] p-4 text-left transition ${
-                sapCo ? 'bg-black/[0.03]' : `bg-white active:scale-[0.98] ${SHADOW}`}`}>
-              <span className={`flex h-11 w-11 items-center justify-center rounded-[15px] text-[21px] ${sapCo ? 'bg-black/[0.05] opacity-40' : MAU_BG[k.mau]}`}>{k.icon}</span>
-              <span>
-                <span className={`block text-[15px] font-bold tracking-tight ${sapCo ? 'text-ph-label-2/70' : 'text-ph-label'}`}>{k.ten}</span>
-                <span className={`mt-1 block text-[11px] leading-snug ${nChuaLam === 0 && nQuaHan > 0 ? 'text-ph-red' : 'text-ph-label-2'}`}>
-                  {sapCo ? 'Sắp có' : k.direct ? CHU_DUOI[k.id] : tests === null ? '…'
-                    : nChuaLam > 0 ? `${nChuaLam} bài chưa làm`
-                    : nQuaHan > 0 ? `${nQuaHan} bài quá hạn`
-                    : ds.length ? 'Xong hết rồi' : 'Chưa có bài'}
-                </span>
-              </span>
-              {nChuaLam > 0 && (
-                <span className="absolute right-3 top-3 flex h-6 min-w-6 items-center justify-center rounded-full bg-ph-red px-1.5 text-[12px] font-bold text-white shadow-[0_4px_12px_rgba(230,64,64,0.38)]">{nChuaLam}</span>
-              )}
-            </button>
-          )
-        })}
-      </div>
-    </div>
-  )
-
-  // ── DANH SÁCH 1 KHU ───────────────────────────────────────────────────────
+  // ── DANH SÁCH 1 KHU — dựng theo kit hs-bai-tap-tren-lop-v1 (DanhSachHS.tsx, dùng chung 3 khu). Ở đây CHỈ
+  // suy trạng thái từng bài (mới / đang làm / quá hạn / hoàn thành + dòng hạn) rồi giao xuống; DanhSachHS thuần vẽ.
   const dsKhu = cuaKhu(khu)
   const nChua = dsKhu.filter((t) => !xongCua(t)).length
   const nXong = dsKhu.filter(xongCua).length
   const shown = dsKhu.filter((t) => (tab === 'xong' ? xongCua(t) : !xongCua(t)))
   const tenKhu = KHU.find((k) => k.id === khu)?.ten ?? ''
-
+  const rows: DsRow[] = shown.map((t) => {
+    const daNop = xongCua(t)
+    const hetHan = daHetHan(t)
+    const khoa = hetHan && !daNop // quá hạn mà CHƯA nộp → khoá; đã nộp vẫn xem lại được
+    const dlMs = t.deadline ? new Date(t.deadline).getTime() : null
+    const muc = mucDeadline(dlMs)
+    return {
+      id: t.id,
+      ten: `${LOAI_TEN[t.loai] ?? 'Bài'} ${t.mon} · ${t.lop_ten}`,
+      sub: `Buổi ${fmtNgay(t.ngay)} · ${t.so_cau} câu${THI_LOAI.has(t.loai) ? ' · nộp 1 lần' : ''}`,
+      laThi: THI_LOAI.has(t.loai),
+      trangThai: daNop ? 'xong' : khoa ? 'qua_han' : t.bai_lam ? 'dang_lam' : 'moi',
+      han: dlMs !== null && !daNop && muc ? { text: `Hạn ${fmtHan(t.deadline!)} · ${nhanConLai(dlMs)}`, muc } : null,
+      khoa,
+      onClick: () => setActive(t),
+    }
+  })
   return (
-    <div className="mx-auto min-h-screen max-w-md bg-ios px-4 pb-10">
-      <Head title={tenKhu} onBack={() => setKhu(null)} />
-
-      <div className="mb-4 mt-3 grid grid-cols-2 gap-1 rounded-[15px] bg-black/[0.05] p-1">
-        {([['chua', 'Chưa làm', nChua], ['xong', 'Hoàn thành', nXong]] as const).map(([k, label, n]) => (
-          <button key={k} onClick={() => setTab(k)}
-            className={`rounded-xl py-2.5 text-[13px] font-bold transition ${tab === k ? `bg-white text-brand ${SHADOW}` : 'text-ph-label-2'}`}>
-            {label} {n > 0 && <span className="text-[12px] font-medium text-ph-label-2">({n})</span>}
-          </button>
-        ))}
-      </div>
-
-      {tests === null && <p className="py-10 text-center text-sm text-ph-label-2">Đang tải…</p>}
-      {tests && shown.length === 0 && (
-        <div className={`rounded-[21px] bg-white p-8 text-center ${SHADOW}`}>
+    <DanhSachHS tieuDe={tenKhu} ill={KIT_O[khu].ill} gioiTinh={gioiTinh} tab={tab} nChua={nChua} nXong={nXong}
+      rows={rows} dangTai={tests === null} onBack={() => setKhu(null)} onTab={setTab}
+      empty={
+        <div className="rounded-[26px] bg-white/90 p-8 text-center" style={{ boxShadow: '0 8px 24px rgba(76,108,170,.10)' }}>
           <p className="text-3xl">{tab === 'xong' ? '📭' : '🎉'}</p>
-          <p className="mt-2 text-sm font-medium text-ph-label">{tab === 'xong' ? 'Chưa hoàn thành bài nào' : 'Không có bài nào cần làm'}</p>
-          <p className="mt-1 text-[13px] text-ph-label-2">{tab === 'xong' ? 'Làm xong bài sẽ chuyển sang đây.' : `Khi thầy cô giao ${tenKhu.toLowerCase()}, bài sẽ hiện ở đây.`}</p>
+          <p className="mt-2 text-[15px] font-bold" style={{ color: '#0F1745' }}>{tab === 'xong' ? 'Chưa hoàn thành bài nào' : 'Không có bài nào cần làm'}</p>
+          <p className="mt-1 text-[13px]" style={{ color: '#6E7EAA' }}>{tab === 'xong' ? 'Làm xong bài sẽ chuyển sang đây.' : `Khi thầy cô giao ${tenKhu.toLowerCase()}, bài sẽ hiện ở đây.`}</p>
         </div>
-      )}
-      <div className="flex flex-col gap-3">
-        {shown.map((t) => {
-          const lam = t.bai_lam
-          const daNop = xongCua(t)
-          const laThi = THI_LOAI.has(t.loai)
-          // Quá hạn mà CHƯA nộp → khoá, không mở được nữa. Đã nộp rồi thì vẫn xem lại được.
-          const hetHan = daHetHan(t)
-          const khoa = hetHan && !daNop
-          const dlMs = t.deadline ? new Date(t.deadline).getTime() : null
-          const muc = mucDeadline(dlMs)
-          return (
-            <button key={t.id} disabled={khoa} onClick={() => setActive(t)}
-              className={`rounded-[21px] p-4 text-left transition ${khoa ? 'bg-black/[0.03]' : `bg-white active:scale-[0.99] ${SHADOW}`}`}>
-              <div className="flex items-center justify-between">
-                <span className={`text-[15px] font-semibold ${khoa ? 'text-ph-label-2' : 'text-ph-label'}`}>
-                  {laThi && <span className="mr-1.5 rounded bg-ph-purple/10 px-1.5 py-0.5 text-[11px] font-semibold text-ph-purple">THI</span>}
-                  {LOAI_TEN[t.loai] ?? 'Bài'} {t.mon} · {t.lop_ten}
-                </span>
-                <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${
-                  daNop ? 'bg-ph-green/10 text-ph-green' : khoa ? 'bg-ph-red/10 text-ph-red'
-                  : lam ? 'bg-ph-orange/10 text-ph-orange' : 'bg-brand/10 text-brand'}`}>
-                  {daNop ? '✓ hoàn thành' : khoa ? 'quá hạn' : lam ? 'đang làm' : 'mới'}
-                </span>
-              </div>
-              <p className="mt-1 text-[13px] text-ph-label-2">Buổi {fmtNgay(t.ngay)} · {t.so_cau} câu{laThi ? ' · nộp 1 lần' : ''}</p>
-              {dlMs !== null && !daNop && (
-                <p className={`mt-1 text-[12.5px] font-medium ${
-                  muc === 'qua_han' ? 'text-ph-red' : muc === 'sat' ? 'text-ph-orange' : muc === 'gan' ? 'text-ph-orange' : 'text-ph-label-2'}`}>
-                  ⏳ Hạn {fmtHan(t.deadline!)} · {nhanConLai(dlMs)}
-                </p>
-              )}
-              <p className={`mt-2 text-[13px] font-medium ${khoa ? 'text-ph-label-2' : 'text-brand'}`}>
-                {khoa ? 'Đã đóng — không nộp được nữa' : `${daNop ? 'Xem lại' : lam ? 'Tiếp tục' : 'Bắt đầu'} →`}
-              </p>
-            </button>
-          )
-        })}
-      </div>
-    </div>
+      } />
   )
 }
 
@@ -890,6 +855,39 @@ function BangXepHang({ onXong }: { onXong: () => void }) {
           ))}
         </div>
       )}
+    </div>
+  )
+}
+
+// ── HÒM THƯ — hiện tại chỉ 1 nguồn: TA/GV duyệt "Em nghĩ mình đúng" là ĐÚNG (fn_chap_nhan_dap_an).
+// Mở ra là đánh dấu đã đọc HẾT (hòm thư đơn giản, không cần bấm từng cái) — chỉ để HS thấy hệ thống
+// có lắng nghe khi mình báo lỗi, không phải trung tâm điều hành việc phải làm.
+function HopThuHS({ onXong }: { onXong: () => void }) {
+  const [items, setItems] = useState<ThongBaoHS[] | null>(null)
+  useEffect(() => {
+    listThongBaoHS().then((ds) => {
+      setItems(ds)
+      if (ds.some((d) => !d.doc_at)) docTatCaThongBao().catch(() => {})
+    }).catch(() => setItems([]))
+  }, [])
+  return (
+    <div className="mx-auto min-h-screen max-w-md bg-ios px-4 pb-10">
+      <Head title="Hòm thư" onBack={onXong} />
+      {items === null && <p className="py-10 text-center text-sm text-ph-label-2">Đang tải…</p>}
+      {items && items.length === 0 && (
+        <div className={`mt-3 rounded-[21px] bg-white p-8 text-center ${SHADOW}`}>
+          <p className="text-3xl">📭</p>
+          <p className="mt-2 text-sm font-medium text-ph-label">Chưa có thông báo nào</p>
+        </div>
+      )}
+      <div className="mt-3 flex flex-col gap-3">
+        {items?.map((tb) => (
+          <div key={tb.id} className={`rounded-[18px] bg-white p-4 ${SHADOW} ${!tb.doc_at ? 'ring-2 ring-brand/30' : ''}`}>
+            <p className="text-[14px] leading-snug text-ph-label">{tb.noi_dung}</p>
+            <p className="mt-1.5 text-[11px] text-ph-label-2">{fmtShort(tb.created_at)}</p>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }

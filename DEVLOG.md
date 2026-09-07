@@ -9342,3 +9342,92 @@ modal ✓ · click cụm đoạn "Hình bình hành → cạnh đối" → vẫn
   mẫu trả hàng. HANDOFF-PIPELINE §0 thêm bước 0 "gửi CHATGPT-UI-KIT.md" + ghi rõ 2 file 2 người đọc.
 - `design-check.mjs` thêm kiểm HỢP ĐỒNG: DESIGN.md phải có ≥5 dòng cột Loại (thiếu = chưa kiểm kê) · file ghi trong
   bảng mà không có trong assets/ → RỚT · file trong assets/ mà DESIGN.md không nhắc → CHÚ Ý mồ côi.
+## 2026-09-07 (00:17, ghi bù) — App HS: HÒM THƯ in-app — báo tin khi "Em nghĩ mình đúng" được duyệt ĐÚNG (nhánh feat/app-hs, mig 202609062356)
+- **Vì sao:** `fn_chap_nhan_dap_an` (30/08) đã backfill verdict đúng cho HS khi TA/GV chấp nhận đáp án TLN,
+  nhưng HS không hề biết trừ khi tự mở lại đúng bài xem lại. CEO muốn HS THẤY hệ thống có lắng nghe khi
+  mình báo lỗi. Chốt: đi **in-app trước** (app HS chưa có hạ tầng push OS — `push_dang_ky` CHECK `app in
+  ('pt','ta')`, KHÔNG mở rộng ở đây).
+- **Mig `202609062356_thong_bao_hs_baoloi_duyet`:** bảng mới `thong_bao_hs(id, hoc_sinh_id, mon, noi_dung,
+  doc_at, created_at)` — có `mon` (§1.6); `doc_at` NULL = chưa đọc (trạng thái chưa xảy ra, không phải
+  "chưa đo"). RLS: staff `la_thanh_vien()` full (hàm chạy INVOKER, người bấm "Chấp nhận đúng" là TA/GV);
+  HS chỉ select + update thư CỦA MÌNH (`my_hoc_sinh_id()`), không tạo/xoá. `fn_chap_nhan_dap_an` CREATE OR
+  REPLACE: chèn thêm 1 INSERT vào `thong_bao_hs` **trong cùng transaction**, CHỈ cho HS có `bai_test_report`
+  đang `'moi'` (HS trùng đáp án mà chưa lên tiếng thì không có gì để "xác nhận lại"); 2 UPDATE cũ giữ nguyên.
+- **Client:** `src/lib/thongbaohs.ts` (`listThongBaoHS` limit 50 · `docTatCaThongBao`) · `HocSinhApp.tsx`: nút
+  chuông 🔔 + badge số-chưa-đọc ở màn chính cấp 1 (`HomeCap1`) và cấp 3; màn `HopThuHS` mở ra đánh dấu đọc
+  HẾT (hòm thư đơn giản, không bấm từng cái). Badge = đếm items đang render (không phải tính nghiệp vụ).
+- **Đã áp DB thật** (`--status`: không còn file treo). Đã commit + push `2ae068e`.
+- **Lưu ý introspect:** `thong_bao_hs` nằm trong 6 bảng role `claude_build` KHÔNG sở hữu và không bypassrls
+  ⇒ SELECT từ CLI trả 0 dòng im lặng — đối chiếu qua app/dashboard, đừng tin "0 dòng".
+## 2026-09-07 (tối) — feat/app-hs: gộp main (48 commit) để tiếp tục
+- `git merge main` → chỉ conflict `schema.md` (auto-gen) ⇒ lấy bản main rồi `npm run schema` từ DB sống (196 bảng
+  · 264 function), commit merge `46a5261`. tsc 0 · `build:hs` pass. Chưa push.
+## 2026-09-08 — App HS cấp 2/3: MÀN CHÍNH dựng theo KIT hs-home-v4 + v4.1 (nhánh feat/app-hs)
+- **Kit:** `design/handoff/hs-home-v4/` (+7 minh hoạ v4.1 gộp vào `assets/illustrations/`). Script + mắt: backdrop
+  2 biến thể trời mây thuần · nhân vật nam/nữ cutout 1254px · 6 minh hoạ ô + mascot "Bổ trợ" 3D pastel đúng style ·
+  decor sách/cốc · SVG bell/key/crown. Không dùng: SVG icon_*/doodle_* gõ tay (thay bằng PNG v4.1 + font Itim).
+- **Asset build:** `public/bk-ui/hs/` — resize bằng PowerShell System.Drawing (không có sharp/Python): backdrop →
+  JPG 941w q82 (~60KB) · nhân vật PNG 480h · minh hoạ 256 · mascot 400 · decor 600w. File gốc ở design/handoff.
+- **Code:** `src/screens/hocsinh/HomeHS.tsx` (MỚI, thuần vẽ; props = dữ liệu đã tính) · `HocSinhApp.tsx` nhánh
+  `!khu` cấp 2/3 → tính `cards` (badge = chưa làm & còn hạn; sub "N bài chưa làm"/"N bài quá hạn" đỏ/"Xong hết
+  rồi"/"Chưa có bài") + `KIT_O` (ô → minh hoạ/doodle/tone) → `<HomeHS>`; bỏ `KHU_AN_CAP1`/`MAU_BG` không còn
+  dùng (cấp 1 đi HomeCap1 trước). 2 theme nam/nữ = cùng component, chỉ đổi 6 giá trị (nền, nhân vật, primary,
+  gradient hero, màu chữ chào, quote). Banner Bổ trợ/Retest = dải vàng + mascot (reference_support_banner), chỉ
+  hiện khi có. Chữ viết tay (chào, doodle ô, quote, "Dream Learn Grow Repeat") = font Itim; UI = Baloo 2 —
+  `hs.html` thêm 2 font vào link Google Fonts (trước chỉ Be Vietnam Pro).
+- **Giới tính:** mig `202609080131_hs_gioi_tinh_cua_toi` (RPC security definer, khuôn hs_khoi_cua_toi vì `hoc_sinh`
+  staff-only) + `gioiTinhCuaHS()` (tuluyen.ts). Null → theme nam.
+- **⚠ Migrate:** `npm run migrate` FAIL ở file khác của main `202609031903_xu_luy_tien_theo_khuc_exp.sql` ("must be
+  owner of function fn_xu_tu_exp" — hàm đang thuộc `postgres`, body 67 ký tự = bản EXP:100 đã áp tay?). Áp file
+  của mình bằng `scripts/_apply_one.mjs` OK, rồi `--baseline 202609080131…` — **LỖI CỦA MÌNH: --baseline đánh dấu
+  MỌI file tới file đó ⇒ file xu 202609031903 cũng bị ghi "đã áp" dù chưa chạy.** Chưa xoá dòng sổ (Luật xoá —
+  chờ CEO gật): nếu file đó đã bị thay bằng bản EXP:100 áp tay thì giữ nguyên là ĐÚNG (chạy lại sẽ đè công thức
+  luỹ tiến cũ lên); nếu chưa thì phải `delete from _migrations where ten='202609031903_…'` rồi sửa owner.
+- **Demo không cần đăng nhập (chỉ dev):** `hs.html?demo` · `?demo=nu` · `&ca` (banner) · `&khong` — `AppHS.tsx`
+  `DemoHome`, gate `import.meta.env.DEV`. Lý do: Claude không nhập mật khẩu; CEO so cạnh reference nhanh.
+  `.claude/launch.json` (repo gốc) thêm `dev-hs-wt` = `npm --prefix <worktree> run dev:hs -- --port 5190` để
+  preview worktree từ session ở thư mục gốc.
+- **Verify:** tsc 0 · `build:hs` pass · preview 430×932: nam / nữ+banner khớp reference (chào 2 dòng cạnh 3 nút,
+  hero tên không cắt, nhân vật không đè chữ, doodle ô xuống dưới badge khi có badge). Chỉnh 2 vòng: chào 20→18px
+  nowrap, nút 44→40, nhân vật right-9 h-152, text right-135.
+- **Chưa làm (CEO chốt sau):** màn con (danh sách bài, làm bài, tự luyện, hòm thư…) vẫn style trắng iOS cũ; sticker
+  "HỌC TỐT SỐNG ĐẸP" bỏ; xếp hạng (chỉ cấp 1) không có ở lưới cấp 3. Chưa commit.
+## 2026-09-08 (tiếp) — HomeHS: 3 chỉnh của CEO trên màn thật (font Pacifico · Home không cuộn · giữ tỉ lệ) + xu EXP:100
+- **Font chữ tay:** CEO "font chưa đẹp bằng thiết kế gốc, có nên bảo nó xuất doodle chữ?" → mình thử 5 font Google có
+  tiếng Việt qua `?font=` trên demo (Itim/Sriracha/Mali/Dancing Script/Pacifico) thay vì xuất ảnh → **CEO chọn
+  Pacifico**. Cách làm: HomeHS ghi đè biến `--font-hand` NGAY TRÊN cây của nó (không đụng index.css chung — TA vẫn
+  Itim); `hs.html` chỉ còn Baloo 2 + Itim + Pacifico; bỏ tham số `?font` sau khi chốt.
+- **"BK ACADEMY"** trên đầu chật → xuống chân trang dưới quote.
+- **Home không cuộn** (`h-[100dvh] overflow-hidden`) — bản đầu mình cho lưới ô `flex-1 grid-rows-3` chia đều chiều
+  cao → SE 667 ô bẹp, CEO bác ngay: **"không bị kéo thôi chứ trống không sao, tỉ lệ phải như gốc"**. Sửa: hero
+  `aspectRatio 870/280`, ô `417/280`, ô icon `w-31%` vuông, decor `w-32%`, cỡ chữ `clamp(…vw…)`; phần dư để trống.
+  Verify JS `scrollHeight === innerHeight`: 390×844 (844/844, footer đáy 684) · 430×932 + 2 banner (932/932, footer 916).
+- **Xu = EXP:100** (CEO xác nhận): `fn_xu_tu_exp` trên DB = `ceil(exp/100)` ⇒ sổ `_migrations` đang đánh dấu file luỹ
+  tiến `202609031903` "đã áp" là ĐÚNG Ý (giữ, không bao giờ chạy đè công thức cũ). Không xoá gì.
+- Docs: CHATGPT-UI-KIT nền tảng chung thêm Pacifico(HS)/Itim(TA) + luật Home không cuộn/không kéo giãn; HANDOFF §8
+  thêm bài học; memory `man-home-khong-cuon-giu-ti-le`. Chưa commit.
+- **Tên ở hero = 2 từ cuối** ("Đức Huy"), CEO 08/09 — `tenNgan` trong HomeHS; cỡ 16–19px theo vw.
+## 2026-09-08 (tiếp) — App HS: màn DANH SÁCH BÀI theo kit hs-bai-tap-tren-lop-v1 (kit đầu tiên qua giao thức 1.1 ngay lần đầu)
+- **Kit:** `design/handoff/hs-bai-tap-tren-lop-v1/` — script ĐẠT 100% lần đầu; DESIGN.md có bảng kiểm kê 25 dòng đúng 7
+  loại; **tái dùng asset kit Home** (backdrop/decor/ill_classwork md5 TRÙNG hs-home-v4) ⇒ đồng bộ, không xuất thêm.
+  Chỉ 4 SVG mới (back/chevron/paper_plane/sparkle). Kit chỉ vẽ 1 trạng thái; thiếu decor nữ (CEO đã xin thêm).
+- **CEO chốt:** ① trạng thái đang làm/quá hạn/hoàn thành/hạn nộp → Claude tự suy theo palette kit ("quan trọng
+  nhất là nhân vật, backdrop, icon") · ② 1 component dùng chung 3 khu (BTTL/ET/BTVN) "chuẩn đấy" · ③ decor nữ sẽ gửi
+  → tạm dùng decor xanh, đổi 1 dòng THEME.nu.decor · ④ decor + quote cố định đáy, list cuộn đè ("màn này không nhiều").
+- **Code:** `DanhSachHS.tsx` (MỚI, thuần vẽ: top back+tiêu đề+glyph, tabs pill, card icon-tint/tên/buổi/hạn/pill/CTA,
+  footer fixed) · HocSinhApp nhánh `khu` → suy `rows` (trangThai: moi/dang_lam/qua_han/xong · han: text+muc) → giao
+  DanhSachHS; empty-state giữ nội dung cũ. `AppHS` demo `?demo=list` (+`&nu`, `&rong`). Font tay Pacifico (DESIGN.md kit
+  ghi Itim vì sinh từ md bản cũ — bỏ qua).
+- Verify: tsc 0 · preview 430×932 nam/nữ: 3 trạng thái pill + hạn màu đúng, tab active trắng chữ primary, quote đưa lên
+  trên decor (bản đầu đè lên sách). Chưa commit.
+## 2026-09-08 (tiếp) — Decor nữ về + ốp module đổi avatar TA sang app HS (mig 202609080215)
+- **Decor nữ** `decor_books_cup_female.png` (1254², cutout thật, chữ Việt đúng dấu) → kit `hs-bai-tap-tren-lop-v1/assets/decor`
+  + DESIGN.md dòng 23 ghi biến thể nam/nữ; resize 600w → `public/bk-ui/hs/decor_books_female.png`. HomeHS + DanhSachHS
+  theme nữ đổi decor. **CEO chốt lại: HS nam dùng bộ nam, HS nữ dùng bộ nữ** — đã đúng vậy qua `hoc_sinh.gioi_tinh`
+  (null → nam).
+- **Avatar HS** (CEO: "lấy module thay avatar của TA ốp sang"): `AvatarHS.tsx` ốp từ `components/AvatarEditButton.tsx`,
+  dùng chung `uploadAvatar` (bucket `avatars`, policy 0020 đã cho authenticated ghi). Khác TA: HS không UPDATE `hoc_sinh`
+  thẳng (RLS staff-only) → mig `202609080215_hs_ho_so_va_doi_anh_dai_dien`: `hs_ho_so_cua_toi()` (jsonb ho_ten/ma_hs/
+  gioi_tinh/anh_url — 1 RPC thay cho hs_gioi_tinh_cua_toi, hàm cũ giữ) + `hs_doi_anh_dai_dien(p_url)` (chỉ sửa anh_url
+  của chính mình, p_url phải là public URL bucket avatars). `tuluyen.ts`: `hoSoCuaToi`, `doiAnhDaiDienHS`. HomeHS avatar
+  = AvatarHS (vòng trắng + vương miện vẽ ngoài, badge 📷 màu primary). Migrate + schema OK. tsc 0.

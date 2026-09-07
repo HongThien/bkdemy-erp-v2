@@ -115,6 +115,28 @@ export async function khoiCuaHS(): Promise<string | null> {
   return (data as string | null) ?? null
 }
 
+// Giới tính — màn chính cấp 2/3 có 2 biến thể nam/nữ (kit hs-home-v4). Null/khác = mặc định nam.
+export async function gioiTinhCuaHS(): Promise<'nam' | 'nu' | null> {
+  const { data, error } = await supabase.rpc('hs_gioi_tinh_cua_toi')
+  if (error) throw error
+  return data === 'nu' ? 'nu' : data === 'nam' ? 'nam' : null
+}
+
+// Hồ sơ gộp cho màn chính (giới tính → theme · anh_url → avatar) — 1 RPC thay vì mỗi cột 1 RPC (mig 202609080215).
+export type HoSoHS = { ho_ten: string; ma_hs: string; gioi_tinh: 'nam' | 'nu' | null; anh_url: string | null }
+export async function hoSoCuaToi(): Promise<HoSoHS | null> {
+  const { data, error } = await supabase.rpc('hs_ho_so_cua_toi')
+  if (error) throw error
+  if (!data) return null
+  const d = data as Record<string, unknown>
+  return { ho_ten: String(d.ho_ten ?? ''), ma_hs: String(d.ma_hs ?? ''), gioi_tinh: d.gioi_tinh === 'nu' ? 'nu' : d.gioi_tinh === 'nam' ? 'nam' : null, anh_url: (d.anh_url as string | null) ?? null }
+}
+// Đổi ảnh đại diện — HS không UPDATE hoc_sinh thẳng được (RLS staff-only) → RPC chỉ sửa anh_url của chính mình.
+export async function doiAnhDaiDienHS(url: string): Promise<void> {
+  const { error } = await supabase.rpc('hs_doi_anh_dai_dien', { p_url: url })
+  if (error) throw error
+}
+
 export const SRC_LABEL: Record<RawEval['src'], string> = { et: 'ET', mt: 'MT', btvn: 'BTVN', bt: 'BT', tu_luyen: 'TL' }
 export type RecentEval = { value: number; t: string; src: RawEval['src'] }
 export type DangHocTap = {

@@ -12,6 +12,16 @@
       "autoPort": true
     },
     {
+      "name": "dev-hs",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev:hs"
+      ],
+      "port": 5173,
+      "autoPort": true
+    },
+    {
       "name": "dev-ops",
       "runtimeExecutable": "npm",
       "runtimeArgs": [
