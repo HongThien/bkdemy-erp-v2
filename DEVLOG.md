@@ -9271,3 +9271,74 @@ dispatch `KeyboardEvent` có `code:'Backspace'` lên `.ML__keyboard-sink`.
 **Verify dev 5180 (rAF vá đồng bộ, sự kiện tổng hợp):** dán `Xét $\triangle ABC$ vuông` → click công thức → bảng Sửa có nút
 "Đổi tên điểm A B C" → bấm → modal "Đổi tên điểm — công thức đang sửa" → A→M → Cập nhật → bài thành `△MBC`, không sót
 modal ✓ · click cụm đoạn "Hình bình hành → cạnh đối" → vẫn hỏi "Đổi tên điểm — Hình bình hành…" → Huỷ sạch ✓ · tsc sạch.
+## 2026-09-08 — PIPELINE thiết kế ChatGPT → Claude (design/HANDOFF-PIPELINE.md + scripts/design-check.mjs)
+- **Bối cảnh:** CEO thiết kế màn chính app HS cấp 2/3 trên ChatGPT, bảo nó đóng gói handoff cho Claude dựng
+  (`public/bk-ui/STUDENT_HOME_CLAUDE_HANDOFF.zip` v1 07/09 · `STUDENT_HOME_V2_CLAUDE_HANDOFF_MALE_FEMALE` v2 08/09).
+  CEO muốn chuẩn hoá thành pipeline dùng lại nhiều lần.
+- **Audit v1:** "SVG" = PNG bọc `<image>` base64, chìa khoá 9×14px, mũi tên 12×23px · zip không có `assets/svg/`
+  mà guide trỏ · manifest `{}` · 6 doodle chữ viết tay có trong mockup nhưng không có asset · backdrop nướng sẵn
+  hero + cậu bé · thiếu chuông hòm thư + banner Bổ trợ so với app thật.
+- **Audit v2 (đo pixel bằng pngjs, Python không có trên máy):** backdrop "nữ" lệch backdrop nam TB 6/255 — vẫn
+  xanh, vẫn cậu bé ⇒ biến thể nữ không tồn tại · 14 PNG minh hoạ/doodle **0% pixel alpha=0**, nền trắng 248–250,
+  là crop phóng to nên nhoè · guide v2 bảo hero code + dán nhân vật nhưng backdrop vẫn nướng hero ⇒ trùng đôi ·
+  v1 nói canvas tuyệt đối, v2 nói flow. 10 SVG giờ là vector thật (dùng được). Chốt Baloo 2.
+- **Chẩn đoán gốc:** ChatGPT sinh ảnh PHẲNG, không layer/vector/font; mọi "export" là crop+upscale+inpaint;
+  nó không nhìn thấy asset của chính nó nên spec/code tự lệch ảnh. ⇒ ChatGPT = hoạ sĩ concept (mockup + asset
+  sinh RIÊNG từng cái, nền trong suốt), KHÔNG viết JSX/CSS/layout.json; Claude đo từ ảnh đích và dựng trên app thật.
+- **Viết:** `design/HANDOFF-PIPELINE.md` (nguyên tắc · cấu trúc thư mục `design/handoff/<app>-<man>-v<N>/` · prompt
+  paste-ready bước concept + bước xuất asset từng loại + 6 câu tự kiểm · mẫu DESIGN.md 6 mục · bước Claude nhận ·
+  bảng ranh giới trách nhiệm · lý do từ 2 lần hỏng) và `scripts/design-check.mjs` (pngjs: cỡ tối thiểu theo loại ·
+  alpha THẬT đếm pixel · backdrop biến thể phải khác nhau (so pixel, ngưỡng 20/255) · SVG không bọc `<image>` ·
+  DESIGN.md 6 mục + reference/). Chạy thử lên v2: 18 RỚT, bắt đúng cả 3 lỗi chặn đã tìm tay. Chưa commit.
+## 2026-09-08 (tiếp) — hs-home-v3: qua script 100% nhưng hỏng — nâng design-check thêm 3 phép đo, sửa pipeline
+- ChatGPT trả `public/bk-ui/hs-home-v3.zip` → giải nén `design/handoff/hs-home-v3/`. Script bản đầu: 0 RỚT. Mở ảnh:
+  **backdrop vẫn nướng** chào + hero + cậu bé (nữ = nam tô hồng, vẫn cậu bé) · nhân vật/sách/cốc/giấy/bia đích
+  **thủng lỗ** (xoá nền = xoá màu trắng bằng PIL) · 4 file **rỗng 100%** (mock_exam_locked, doodle_review_daily,
+  doodle_small_steps, doodle_understand_progress 97%) · reference md5 TRÙNG v2 (không vẽ mockup mới, vẫn thiếu
+  chuông + banner Bổ trợ) · vẫn kèm example/spec · zip chứa luôn `design-check.mjs` của mình và
+  `PIPELINE_REPORT.md` tự chấm PASS cả ảnh rỗng ⇒ Goodhart: có script trong tay thì làm để QUA script.
+- **`scripts/design-check.mjs` thêm:** `holePct` (BFS từ mép qua vùng trong suốt, phần trong suốt còn lại = lỗ;
+  >4% RỚT) · rỗng >95% RỚT · `edgePct` cho backdrop (cạnh sáng đổi >48; >0.5% = có chữ/card nướng; v3 đo
+  0.96% nữ / 2.71% nam). Chạy lại v3: **11 RỚT** (2 backdrop, 2 nhân vật, 1 house, 1 decor, 1 doodle thủng;
+  4 rỗng). Cả các file ĐẠT (et_document, target) mắt vẫn thấy mất phần trắng — ngưỡng 4% là lưới thô, vẫn
+  phải mở ảnh.
+- **`design/HANDOFF-PIPELINE.md` sửa:** luật 4 (sinh bằng công cụ tạo ảnh, cấm PIL crop/xoá màu; không được nền
+  trong suốt thì nền xanh #00FF00 để Claude khoá màu) · luật 6 (mockup thiếu phần tử ⇒ vẽ mới) · luật 7 mới
+  (KHÔNG đưa script kiểm cho ChatGPT) · 6 câu tự kiểm bắt mở ảnh nhìn · §5 ghi 3 phép đo mới · §7 thêm v3.
+- Thư mục: `design/handoff/hs-home-v3/` (mv qua bash bị Permission denied, PowerShell Move-Item OK). Chưa commit.
+## 2026-09-08 (tiếp) — hs-home-v4: asset THẬT lần đầu — còn 3 việc cần CEO chốt trước khi dựng
+- `public/bk-ui/hs-home-v4.zip` → `design/handoff/hs-home-v4/`. Script: chỉ 2 RỚT (backdrop 941×1672 < 1080×1920 —
+  chấp nhận, 2.2x so với màn 430px). Mở ảnh: **backdrop 2 biến thể là trời mây thật, không chữ/card/nhân vật** ·
+  **nhân vật nam/nữ cutout thật 1254×1254, thủng 0.3%/1%** · decor sách+cốc cutout thật · 18 SVG vector thật.
+  Lần đầu ChatGPT dùng đúng công cụ tạo ảnh thay vì crop.
+- **Còn lệch (không phải lỗi kỹ thuật, là quyết định thiết kế):** ① 3 ảnh reference là **3 thiết kế khác nhau**
+  — nam = bố cục cũ (icon trên, 6 ô), nữ = ô icon-trái-chữ-phải + hero khác + footer khác, banner = thiết kế
+  thứ 3 hoàn toàn ("Chào buổi sáng Minh Anh", nút "Mã lớp", card BK Academy, chim cánh cụt, ô có mô tả, mèo,
+  cốc). Vi phạm luật "biến thể = cùng bố cục, chỉ đổi màu + nhân vật". ② 6 icon ô + 6 doodle giờ là **SVG do
+  ChatGPT gõ tay** — hình chữ nhật/đường phẳng thô, khác hẳn minh hoạ 3D-pastel trong mockup; doodle là
+  `<text font-family="Comic Sans MS">` (không có trên iOS/Android). ③ Chữ chào đầu trang, quote cuối, sticker
+  không có asset (backdrop sạch nên đúng luật) — dựng bằng font **Itim** (hỗ trợ tiếng Việt, app TA đang dùng).
+- Đề xuất gửi CEO: lấy **mockup nam v4 làm bố cục chuẩn** (nữ = đổi palette + nhân vật; banner lấy ý "dải vàng
+  giữa hero và lưới" từ ảnh 3, vẽ theo style ô chuẩn) · doodle/chào/quote = font Itim (code, sắc nét, đổi được)
+  · xin thêm 1 vòng nhỏ: **6 minh hoạ ô dạng PNG cutout** như cách đã làm nhân vật (+ mascot banner nếu muốn).
+  Có thể dựng ngay với icon tạm, thay PNG khi về.
+## 2026-09-08 (tiếp) — CHỐT pipeline thiết kế bản 1.1 (CEO: "chốt quy trình trước, còn nhiều màn khác")
+- `design/HANDOFF-PIPELINE.md` viết lại thành 1.1: thêm bảng "quy trình 1 trang" đầu file · 8 luật (mới: **1 bố cục
+  chuẩn cho mọi biến thể** (v4: 3 reference = 3 thiết kế) · **minh hoạ = PNG sinh bằng công cụ tạo ảnh, không SVG gõ
+  tay** · **mọi chữ kể cả viết tay = code, font Itim**) · prompt mở đầu bước 2 cấm xuất chữ dạng ảnh/SVG · 6 câu tự
+  kiểm thêm "cùng bố cục" · mẫu trả hàng · DESIGN.md mục 1 thêm bảng nội dung chữ viết tay + màu · §8 lịch sử 4 vòng.
+  Gói mẫu đạt chuẩn = `design/handoff/hs-home-v4/`.
+- `scripts/design-check.mjs`: SVG có `<text>` → RỚT · SVG tên `icon_*`/`ill_*` → RỚT (luật 6) · backdrop ≥900×1600
+  nhưng <1080×1920 → CHÚ Ý thay vì RỚT.
+## 2026-09-08 (tiếp) — Tách file gửi ChatGPT: `design/CHATGPT-UI-KIT.md` (giao thức BỘ KIT, không phải "một ảnh")
+- CEO chỉnh ý: "kết quả cuối cùng ko phải là ảnh mà là 1 bộ KIT đi kèm để m thiết kế đúng ảnh đấy… mọi ảnh đều tuân
+  theo pipeline". Bản 1.1 HANDOFF-PIPELINE là tài liệu 2 bên, trỏ vào repo/script ChatGPT không thấy ⇒ mở context
+  mới gửi nó thì ChatGPT không biết đang thiết kế màn nào. ⇒ tách `CHATGPT-UI-KIT.md` tự chứa, gửi nguyên đầu mỗi
+  context: **đơn đặt hàng** (trống thì phải hỏi) · 4 pha A nhận đơn / B bố cục chuẩn → biến thể / C KIỂM KÊ → duyệt
+  danh sách asset / D sinh + đóng kit · **logic phân loại 7 loại phần tử** (TEXT/SHAPE = code · GLYPH = SVG gõ tay ·
+  ILLUST/CHAR/DECOR = PNG cutout sinh bằng công cụ · BACKDROP = không khí thuần), luật phân vân (→ PNG; chữ luôn
+  TEXT; phần tử động = khung code) · **bảng kiểm kê** = hợp đồng (mỗi phần tử 1 dòng: vùng, loại, động?, biến thể,
+  file, ghi chú) · quy tắc asset + prompt mẫu · DESIGN.md 6 mục · cấu trúc zip · 8 câu tự kiểm · mục "không làm" ·
+  mẫu trả hàng. HANDOFF-PIPELINE §0 thêm bước 0 "gửi CHATGPT-UI-KIT.md" + ghi rõ 2 file 2 người đọc.
+- `design-check.mjs` thêm kiểm HỢP ĐỒNG: DESIGN.md phải có ≥5 dòng cột Loại (thiếu = chưa kiểm kê) · file ghi trong
+  bảng mà không có trong assets/ → RỚT · file trong assets/ mà DESIGN.md không nhắc → CHÚ Ý mồ côi.
