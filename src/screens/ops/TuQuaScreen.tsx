@@ -53,16 +53,19 @@ export default function TuQuaScreen() {
       // "Quà" trong bộ 7 màn OPS mới (ops6.png), dù đây là tính năng KHÁC (tủ quà học sinh, không phải
       // shopping cá nhân nhân viên) — chỉ mượn màu cho đồng bộ giao diện.
     <div>
-      <OpsHero tone="orange" title="Tủ quà · đổi bằng xu" bgImage="/bk-ui/bg_ops_tuqua.jpg" bgAspect={150 / 863}>
-        <div className="relative mx-auto mt-2.5 flex max-w-[760px] rounded-2xl bg-white/20 p-1">
+      <OpsHero tone="orange" title="Tủ quà · đổi bằng xu" bgImage="/bk-ui/bg_ops_tuqua.jpg" bgAspect={150 / 863} />
+
+      {/* Thanh tab đặt HẲN dưới header (nền trắng đục) — CEO 07/09: đặt đè lên ảnh header bị trùng, khó nhìn */}
+      <div className="mx-auto max-w-[760px] px-3 pt-3">
+        <div className="relative mx-auto flex rounded-2xl bg-white p-1 shadow-sm">
           {([['doi', '🎁 Đổi quà'], ['don', '📦 Đơn đặt'], ['kho', '🗃️ Kho']] as [Muc, string][]).map(([k, lbl]) => (
             <button key={k} onClick={() => setMuc(k)}
-              className={`min-h-[40px] flex-1 rounded-xl text-[13.5px] font-bold transition ${muc === k ? 'bg-white text-[#9A3E10]' : 'text-white/80 active:bg-white/10'}`}>
+              className={`min-h-[40px] flex-1 rounded-xl text-[13.5px] font-bold transition ${muc === k ? 'bg-[#FFE9D2] text-[#9A3E10]' : 'text-[#9AA5C4] active:bg-[#F7F9FF]'}`}>
               {lbl}
             </button>
           ))}
         </div>
-      </OpsHero>
+      </div>
 
       <div className="mx-auto max-w-[760px] px-3 pb-24 pt-3">
         {muc === 'doi' && <DoiTab bao={bao} />}
