@@ -11,6 +11,7 @@ import Login from './auth/Login'
 import HocSinhApp from './screens/hocsinh/HocSinhApp'
 import DoiMatKhau from './screens/hocsinh/DoiMatKhau'
 import HomeHS, { type HomeCard } from './screens/hocsinh/HomeHS'
+import DanhSachHS, { type DsRow } from './screens/hocsinh/DanhSachHS'
 import { getMyHocSinhId } from './lib/testonline'
 
 // DEMO màn chính (CHỈ bản dev, không vào build): `hs.html?demo` · `?demo=nu` (nữ) · thêm `&ca` (banner bổ trợ)
@@ -18,8 +19,19 @@ import { getMyHocSinhId } from './lib/testonline'
 // được nhập mật khẩu) và để CEO so cạnh reference. Dữ liệu giả, không đụng Supabase.
 function DemoHome() {
   const q = new URLSearchParams(location.search)
-  const nu = q.get('demo') === 'nu'
+  const nu = q.get('demo') === 'nu' || q.get('nu') !== null
   const khong = q.has('khong')
+  // `?demo=list` (+`&nu`, +`&rong`) — màn danh sách bài (kit hs-bai-tap-tren-lop-v1) với 4 trạng thái suy sẵn
+  if (q.get('demo') === 'list') {
+    const noop = () => {}
+    const rows: DsRow[] = q.has('rong') ? [] : [
+      { id: '1', ten: 'Bài tập Toán · 11A1', sub: 'Buổi 19/08/2026 · 87 câu', trangThai: 'moi', han: { text: 'Hạn 21/08 23:59 · còn 2 ngày 3h', muc: 'con_nhieu' }, khoa: false, onClick: noop },
+      { id: '2', ten: 'Bài tập Toán · 11A1', sub: 'Buổi 12/08/2026 · 60 câu', trangThai: 'dang_lam', han: { text: 'Hạn 13/08 23:59 · còn 5h 12p', muc: 'sat' }, khoa: false, onClick: noop },
+      { id: '3', ten: 'Bài tập Toán · 11A1', sub: 'Buổi 05/08/2026 · 42 câu', trangThai: 'qua_han', han: { text: 'Hạn 06/08 23:59 · quá hạn 3 ngày', muc: 'qua_han' }, khoa: true, onClick: noop },
+    ]
+    return <DanhSachHS tieuDe="Bài tập trên lớp" ill="purple_bookmark_book" gioiTinh={nu ? 'nu' : 'nam'} tab="chua" nChua={rows.length} nXong={2}
+      rows={rows} dangTai={false} onBack={noop} onTab={noop} empty={<div className="rounded-[26px] bg-white/90 p-8 text-center">🎉 Không có bài nào cần làm</div>} />
+  }
   const noop = () => {}
   const cards: HomeCard[] = [
     { id: 'giao_trinh', ten: 'Bài tập trên lớp', sub: khong ? 'Chưa có bài' : '1 bài chưa làm', subMau: khong ? 'xam' : 'ton', badge: khong ? 0 : 1, doodle: 'Cố lên!', ill: 'purple_bookmark_book', tone: 'pink', onClick: noop },
@@ -30,7 +42,7 @@ function DemoHome() {
     { id: 'de_thi_thu', ten: 'Làm đề thi thử', sub: 'Sắp có', subMau: 'xam', doodle: 'Sắp ra mắt! Hãy chờ nhé!', ill: 'mock_exam_locked', tone: 'gray', disabled: true },
   ]
   return <HomeHS hoTen={nu ? 'Trần Mai Anh' : 'Nguyễn Văn Đức Huy'} maHS={nu ? 'hs0088' : 'hs0059'} lopMon={nu ? '11A2 - Toán' : '11A1 - Toán'} gioiTinh={nu ? 'nu' : 'nam'}
-    chuaDoc={3} coCa={q.has('ca')} soRetest={q.has('ca') ? 1 : 0} cards={cards}
+    anhUrl={null} onAnhChanged={noop} chuaDoc={3} coCa={q.has('ca')} soRetest={q.has('ca') ? 1 : 0} cards={cards}
     onHopThu={noop} onDoiMK={noop} onThoat={noop} onCa={noop} onRetest={noop} />
 }
 

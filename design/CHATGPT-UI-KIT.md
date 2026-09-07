@@ -30,6 +30,8 @@ App:            [hs / ph / ta / gv / ops]  → tên ngắn dùng đặt tên kit
 Màn:            [ví dụ: home, lam-bai, ket-qua]  → tên ngắn, không dấu
 Mô tả màn:      [màn này để làm gì, ai dùng, thiết bị: điện thoại dọc 430px / iPad / TV]
 Phần tử ĐỘNG:   [liệt kê mọi thứ đổi theo dữ liệu: tên, mã, số đếm, badge, trạng thái, danh sách...]
+                → Với màn ĐÃ CÓ trong app: liệt kê MỌI trạng thái đang chạy (vd bài: mới / đang làm / quá hạn /
+                  hoàn thành + dòng hạn nộp) — thiếu là mockup chỉ vẽ 1 trạng thái, lập trình viên phải tự suy.
 Trạng thái:     [mọi trạng thái phải vẽ riêng 1 ảnh: có banner / rỗng / quá hạn / đang tải...]
 Biến thể:       [nam-nữ / sáng-tối / theo khối... hoặc "không"]
 Phong cách:     [pastel tròn mềm / game / sci-fi... + ảnh tham chiếu nếu có]

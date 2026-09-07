@@ -8,6 +8,7 @@
 // Component này CHỈ vẽ — mọi số đếm/trạng thái ô do HocSinhApp tính và truyền vào `cards`.
 // ============================================================================
 import type { ReactNode } from 'react'
+import AvatarHS from './AvatarHS'
 
 const A = '/bk-ui/hs' // thư mục asset đã tối ưu (xuất từ kit bằng scripts PowerShell — file gốc ở design/handoff)
 
@@ -38,8 +39,8 @@ const TONE: Record<HomeTone, { bg: string; c: string; ill: string }> = {
 
 // 2 theme — chỉ khác 6 giá trị này (DESIGN.md kit §6 + reference nữ).
 const THEME = {
-  nam: { bg: `${A}/bg_home_male.jpg`, char: `${A}/char_male.png`, primary: '#2F79F6', hero: 'linear-gradient(135deg,#3C85FF,#5868F7)', avatar: '#1a63d8', greet: '#1c2a6b', quote: 'Một phiên bản tốt hơn\ncủa chính mình ♡' },
-  nu:  { bg: `${A}/bg_home_female.jpg`, char: `${A}/char_female.png`, primary: '#E96AA8', hero: 'linear-gradient(135deg,#FF8EB8,#F46BA9)', avatar: '#d83f86', greet: '#c93f82', quote: 'Mỗi ngày cố gắng\nlà một ngày tiến bộ ♡' },
+  nam: { bg: `${A}/bg_home_male.jpg`, char: `${A}/char_male.png`, decor: `${A}/decor_books.png`, primary: '#2F79F6', hero: 'linear-gradient(135deg,#3C85FF,#5868F7)', avatar: '#1a63d8', greet: '#1c2a6b', quote: 'Một phiên bản tốt hơn\ncủa chính mình ♡' },
+  nu:  { bg: `${A}/bg_home_female.jpg`, char: `${A}/char_female.png`, decor: `${A}/decor_books_female.png`, primary: '#E96AA8', hero: 'linear-gradient(135deg,#FF8EB8,#F46BA9)', avatar: '#d83f86', greet: '#c93f82', quote: 'Mỗi ngày cố gắng\nlà một ngày tiến bộ ♡' },
 }
 
 const NAVY = '#111C55'
@@ -71,8 +72,9 @@ function NutTron({ onClick, title, children }: { onClick: () => void; title: str
   )
 }
 
-export default function HomeHS({ hoTen, maHS, lopMon, gioiTinh, chuaDoc, coCa, soRetest, cards, onHopThu, onDoiMK, onThoat, onCa, onRetest }: {
+export default function HomeHS({ hoTen, maHS, lopMon, gioiTinh, anhUrl, onAnhChanged, chuaDoc, coCa, soRetest, cards, onHopThu, onDoiMK, onThoat, onCa, onRetest }: {
   hoTen: string; maHS: string; lopMon: string | null; gioiTinh: 'nam' | 'nu' | null
+  anhUrl: string | null; onAnhChanged: (url: string) => void
   chuaDoc: number; coCa: boolean; soRetest: number; cards: HomeCard[]
   onHopThu: () => void; onDoiMK: () => void; onThoat: () => void; onCa: () => void; onRetest: () => void
 }) {
@@ -120,9 +122,10 @@ export default function HomeHS({ hoTen, maHS, lopMon, gioiTinh, chuaDoc, coCa, s
             <span className="absolute -top-6 right-24 h-16 w-28 rounded-full bg-white/10 blur-md" />
           </div>
           <div className="absolute left-4 top-[calc(50%-6px)] -translate-y-1/2">
-            <div className="relative flex h-[68px] w-[68px] items-center justify-center rounded-full border-[4px] border-white text-[26px] font-extrabold text-white" style={{ background: t.avatar }}>
-              {initials}
-              <img src={`${A}/crown.svg`} alt="" className="absolute -left-2 -top-4 h-6 w-7 -rotate-[18deg]" />
+            {/* Avatar bấm-để-đổi (ốp từ app TA, CEO 08/09) — vòng trắng + vương miện vẽ ngoài, AvatarHS lo hình + upload */}
+            <div className="relative rounded-full border-[4px] border-white">
+              <AvatarHS anhUrl={anhUrl} initials={initials} size={60} fill={t.avatar} badge={t.primary} onChanged={onAnhChanged} />
+              <img src={`${A}/crown.svg`} alt="" className="pointer-events-none absolute -left-2 -top-4 h-6 w-7 -rotate-[18deg]" />
             </div>
           </div>
           {/* Cỡ chữ theo bề ngang (clamp vw) để màn 390 vẫn giữ tỉ lệ như mockup 430, không cắt tên */}
@@ -180,7 +183,7 @@ export default function HomeHS({ hoTen, maHS, lopMon, gioiTinh, chuaDoc, coCa, s
             {/* Thùy 08/09: "BK ACADEMY" trên đầu chật → đưa xuống chân trang */}
             <div className="mt-2 text-[9.5px] font-semibold tracking-[0.22em]" style={{ color: SEC }}>— BK ACADEMY</div>
           </div>
-          <img src={`${A}/decor_books.png`} alt="" className="pointer-events-none -mr-2 -mb-1 w-[32%] shrink-0" />
+          <img src={t.decor} alt="" className="pointer-events-none -mr-2 -mb-1 w-[32%] shrink-0" />
         </div>
       </div>
     </div>

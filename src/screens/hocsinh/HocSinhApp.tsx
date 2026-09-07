@@ -15,7 +15,7 @@ import {
 import { mucDeadline, nhanConLai } from '../../lib/tuan'
 import { seededShuffleWithOrig, seededPermByDang } from '../../lib/shuffle'
 import {
-  luotTuLuyenHomNay, sinhTuLuyen, monCuaHS, laCap1HS, khoiCuaHS, gioiTinhCuaHS, layDangHocTap, xepHangTuLuyen,
+  luotTuLuyenHomNay, sinhTuLuyen, monCuaHS, laCap1HS, khoiCuaHS, hoSoCuaToi, layDangHocTap, xepHangTuLuyen,
   TU_LUYEN_SO_CAU_MOI_LUOT, SRC_LABEL, type DangHocTap, type RecentEval, type XepHangRow,
 } from '../../lib/tuluyen'
 import DoiMatKhau from './DoiMatKhau'
@@ -23,6 +23,7 @@ import CaBoTroHS, { RetestHS, BoTroBanner } from './CaBoTroHS'
 import { caCuaToi, retestCuaToi } from '../../lib/botro_yeu_ca'
 import { listThongBaoHS, docTatCaThongBao, type ThongBaoHS } from '../../lib/thongbaohs'
 import HomeHS, { type HomeCard } from './HomeHS'
+import DanhSachHS, { type DsRow } from './DanhSachHS'
 
 type Chon = number | string | (string | null)[] | null // TN=index · TLN=chuỗi · ĐS=mảng 'D'/'S'
 type CauState = { chon: Chon; kq: { verdict: string; key: unknown; baiLamCauId: string } | null; baoRoi?: boolean }
@@ -203,6 +204,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [direct, setDirect] = useState<'tu_luyen' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'retest' | 'hop_thu' | null>(null)
   const [cap1, setCap1] = useState<boolean | null>(null) // null = chưa biết — chờ trước khi vẽ lưới ô
   const [gioiTinh, setGioiTinh] = useState<'nam' | 'nu' | null>(null) // theme nam/nữ màn chính cấp 2/3 (kit hs-home-v4)
+  const [anhUrl, setAnhUrl] = useState<string | null>(null) // avatar HS (đổi ngay trong app — ốp từ TA, mig 202609080215)
   // Ca bổ trợ yếu hôm nay (đã điểm danh) + retest đến hạn — ô "Bổ trợ" CHỈ hiện khi có (không "sắp có", không ô trống).
   const [boTro, setBoTro] = useState<{ coCa: boolean; soRetest: number }>({ coCa: false, soRetest: 0 })
   // Hòm thư — chỉ cần SỐ chưa đọc để hiện badge chuông (đếm items đang render, không phải tính nghiệp vụ).
@@ -211,7 +213,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
 
   useEffect(() => { listBaiTestCuaHS().then(setTests).catch(() => setTests([])) }, [])
   useEffect(() => { laCap1HS().then(setCap1).catch(() => setCap1(false)) }, [])
-  useEffect(() => { gioiTinhCuaHS().then(setGioiTinh).catch(() => setGioiTinh(null)) }, [])
+  useEffect(() => { hoSoCuaToi().then((h) => { setGioiTinh(h?.gioi_tinh ?? null); setAnhUrl(h?.anh_url ?? null) }).catch(() => setGioiTinh(null)) }, [])
   useEffect(() => { taiChuaDoc() }, [])
   useEffect(() => {
     const tai = () => Promise.all([caCuaToi().catch(() => null), retestCuaToi().catch(() => [])])
@@ -276,79 +278,46 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
         onClick: sapCo ? undefined : k.direct ? () => setDirect(k.id as 'tu_luyen' | 'thong_tin' | 'xep_hang') : () => { setKhu(k.id); setTab('chua') },
       }
     })
-    return <HomeHS hoTen={hoTen} maHS={maHS} lopMon={lopMon} gioiTinh={gioiTinh} chuaDoc={chuaDoc}
+    return <HomeHS hoTen={hoTen} maHS={maHS} lopMon={lopMon} gioiTinh={gioiTinh} anhUrl={anhUrl} onAnhChanged={setAnhUrl} chuaDoc={chuaDoc}
       coCa={boTro.coCa} soRetest={boTro.soRetest} cards={cards}
       onHopThu={() => setDirect('hop_thu')} onDoiMK={() => setDoiMK(true)} onThoat={() => supabase.auth.signOut()}
       onCa={() => setDirect('bo_tro')} onRetest={() => setDirect('retest')} />
   }
 
-  // ── DANH SÁCH 1 KHU ───────────────────────────────────────────────────────
+  // ── DANH SÁCH 1 KHU — dựng theo kit hs-bai-tap-tren-lop-v1 (DanhSachHS.tsx, dùng chung 3 khu). Ở đây CHỈ
+  // suy trạng thái từng bài (mới / đang làm / quá hạn / hoàn thành + dòng hạn) rồi giao xuống; DanhSachHS thuần vẽ.
   const dsKhu = cuaKhu(khu)
   const nChua = dsKhu.filter((t) => !xongCua(t)).length
   const nXong = dsKhu.filter(xongCua).length
   const shown = dsKhu.filter((t) => (tab === 'xong' ? xongCua(t) : !xongCua(t)))
   const tenKhu = KHU.find((k) => k.id === khu)?.ten ?? ''
-
+  const rows: DsRow[] = shown.map((t) => {
+    const daNop = xongCua(t)
+    const hetHan = daHetHan(t)
+    const khoa = hetHan && !daNop // quá hạn mà CHƯA nộp → khoá; đã nộp vẫn xem lại được
+    const dlMs = t.deadline ? new Date(t.deadline).getTime() : null
+    const muc = mucDeadline(dlMs)
+    return {
+      id: t.id,
+      ten: `${LOAI_TEN[t.loai] ?? 'Bài'} ${t.mon} · ${t.lop_ten}`,
+      sub: `Buổi ${fmtNgay(t.ngay)} · ${t.so_cau} câu${THI_LOAI.has(t.loai) ? ' · nộp 1 lần' : ''}`,
+      laThi: THI_LOAI.has(t.loai),
+      trangThai: daNop ? 'xong' : khoa ? 'qua_han' : t.bai_lam ? 'dang_lam' : 'moi',
+      han: dlMs !== null && !daNop && muc ? { text: `Hạn ${fmtHan(t.deadline!)} · ${nhanConLai(dlMs)}`, muc } : null,
+      khoa,
+      onClick: () => setActive(t),
+    }
+  })
   return (
-    <div className="mx-auto min-h-screen max-w-md bg-ios px-4 pb-10">
-      <Head title={tenKhu} onBack={() => setKhu(null)} />
-
-      <div className="mb-4 mt-3 grid grid-cols-2 gap-1 rounded-[15px] bg-black/[0.05] p-1">
-        {([['chua', 'Chưa làm', nChua], ['xong', 'Hoàn thành', nXong]] as const).map(([k, label, n]) => (
-          <button key={k} onClick={() => setTab(k)}
-            className={`rounded-xl py-2.5 text-[13px] font-bold transition ${tab === k ? `bg-white text-brand ${SHADOW}` : 'text-ph-label-2'}`}>
-            {label} {n > 0 && <span className="text-[12px] font-medium text-ph-label-2">({n})</span>}
-          </button>
-        ))}
-      </div>
-
-      {tests === null && <p className="py-10 text-center text-sm text-ph-label-2">Đang tải…</p>}
-      {tests && shown.length === 0 && (
-        <div className={`rounded-[21px] bg-white p-8 text-center ${SHADOW}`}>
+    <DanhSachHS tieuDe={tenKhu} ill={KIT_O[khu].ill} gioiTinh={gioiTinh} tab={tab} nChua={nChua} nXong={nXong}
+      rows={rows} dangTai={tests === null} onBack={() => setKhu(null)} onTab={setTab}
+      empty={
+        <div className="rounded-[26px] bg-white/90 p-8 text-center" style={{ boxShadow: '0 8px 24px rgba(76,108,170,.10)' }}>
           <p className="text-3xl">{tab === 'xong' ? '📭' : '🎉'}</p>
-          <p className="mt-2 text-sm font-medium text-ph-label">{tab === 'xong' ? 'Chưa hoàn thành bài nào' : 'Không có bài nào cần làm'}</p>
-          <p className="mt-1 text-[13px] text-ph-label-2">{tab === 'xong' ? 'Làm xong bài sẽ chuyển sang đây.' : `Khi thầy cô giao ${tenKhu.toLowerCase()}, bài sẽ hiện ở đây.`}</p>
+          <p className="mt-2 text-[15px] font-bold" style={{ color: '#0F1745' }}>{tab === 'xong' ? 'Chưa hoàn thành bài nào' : 'Không có bài nào cần làm'}</p>
+          <p className="mt-1 text-[13px]" style={{ color: '#6E7EAA' }}>{tab === 'xong' ? 'Làm xong bài sẽ chuyển sang đây.' : `Khi thầy cô giao ${tenKhu.toLowerCase()}, bài sẽ hiện ở đây.`}</p>
         </div>
-      )}
-      <div className="flex flex-col gap-3">
-        {shown.map((t) => {
-          const lam = t.bai_lam
-          const daNop = xongCua(t)
-          const laThi = THI_LOAI.has(t.loai)
-          // Quá hạn mà CHƯA nộp → khoá, không mở được nữa. Đã nộp rồi thì vẫn xem lại được.
-          const hetHan = daHetHan(t)
-          const khoa = hetHan && !daNop
-          const dlMs = t.deadline ? new Date(t.deadline).getTime() : null
-          const muc = mucDeadline(dlMs)
-          return (
-            <button key={t.id} disabled={khoa} onClick={() => setActive(t)}
-              className={`rounded-[21px] p-4 text-left transition ${khoa ? 'bg-black/[0.03]' : `bg-white active:scale-[0.99] ${SHADOW}`}`}>
-              <div className="flex items-center justify-between">
-                <span className={`text-[15px] font-semibold ${khoa ? 'text-ph-label-2' : 'text-ph-label'}`}>
-                  {laThi && <span className="mr-1.5 rounded bg-ph-purple/10 px-1.5 py-0.5 text-[11px] font-semibold text-ph-purple">THI</span>}
-                  {LOAI_TEN[t.loai] ?? 'Bài'} {t.mon} · {t.lop_ten}
-                </span>
-                <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${
-                  daNop ? 'bg-ph-green/10 text-ph-green' : khoa ? 'bg-ph-red/10 text-ph-red'
-                  : lam ? 'bg-ph-orange/10 text-ph-orange' : 'bg-brand/10 text-brand'}`}>
-                  {daNop ? '✓ hoàn thành' : khoa ? 'quá hạn' : lam ? 'đang làm' : 'mới'}
-                </span>
-              </div>
-              <p className="mt-1 text-[13px] text-ph-label-2">Buổi {fmtNgay(t.ngay)} · {t.so_cau} câu{laThi ? ' · nộp 1 lần' : ''}</p>
-              {dlMs !== null && !daNop && (
-                <p className={`mt-1 text-[12.5px] font-medium ${
-                  muc === 'qua_han' ? 'text-ph-red' : muc === 'sat' ? 'text-ph-orange' : muc === 'gan' ? 'text-ph-orange' : 'text-ph-label-2'}`}>
-                  ⏳ Hạn {fmtHan(t.deadline!)} · {nhanConLai(dlMs)}
-                </p>
-              )}
-              <p className={`mt-2 text-[13px] font-medium ${khoa ? 'text-ph-label-2' : 'text-brand'}`}>
-                {khoa ? 'Đã đóng — không nộp được nữa' : `${daNop ? 'Xem lại' : lam ? 'Tiếp tục' : 'Bắt đầu'} →`}
-              </p>
-            </button>
-          )
-        })}
-      </div>
-    </div>
+      } />
   )
 }
 

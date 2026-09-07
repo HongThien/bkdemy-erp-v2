@@ -168,5 +168,11 @@ không lệch bố cục · không chữ nào bị raster hoá · tsc + build s�
   cuộn** (h-100dvh + overflow-hidden) · ③ **nhưng không kéo giãn cho đầy màn** — "tỉ lệ phải như gốc mới đẹp, scale sai
   tỉ lệ xấu": hero/ô dùng aspect-ratio của mockup (870:280 · 417:280), cỡ chữ clamp theo vw, màn cao để trống dưới.
   Lần đầu mình làm flex-1 chia đều → SE 667 ô bẹp dí, CEO bác ngay. ④ "BK ACADEMY" trên đầu chật → xuống chân trang.
- càng bảo ChatGPT viết spec/code, càng nhiều thứ phải bỏ. Bảo nó vẽ đúng, sinh asset riêng
+- **hs-bai-tap-tren-lop-v1 (08/09 đêm, kit ĐẦU TIÊN theo giao thức 1.1 + đơn đặt hàng):** qua script 100% ngay lần đầu,
+  bảng kiểm kê 25 dòng đúng loại, không file thừa, **tự tái dùng asset kit Home** (md5 trùng) ⇒ giao thức chạy. Còn
+  lệch 2 chỗ do ĐƠN, không do ChatGPT: ① đơn không liệt kê hết trạng thái app đang có (đang làm / quá hạn / hoàn thành /
+  dòng hạn nộp) ⇒ mockup chỉ 1 trạng thái → luật: trước khi điền đơn, mở màn cũ liệt kê MỌI trạng thái đang chạy;
+  ② decor nữ khác reference nữ nhưng kit chỉ giao decor "chung" → bảng kiểm kê phải có cột Biến thể ĐÚNG với reference
+  (script chưa bắt được). Dựng xong DanhSachHS.tsx dùng chung 3 khu.
+- Kết luận chung: càng bảo ChatGPT viết spec/code, càng nhiều thứ phải bỏ. Bảo nó vẽ đúng, sinh asset riêng
   từng cái bằng công cụ tạo ảnh, còn lại Claude làm từ ảnh đích.

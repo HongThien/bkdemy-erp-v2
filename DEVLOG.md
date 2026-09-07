@@ -9242,3 +9242,27 @@ build (exit 1, đúng — 3 app thật sự dùng).
 - Docs: CHATGPT-UI-KIT nền tảng chung thêm Pacifico(HS)/Itim(TA) + luật Home không cuộn/không kéo giãn; HANDOFF §8
   thêm bài học; memory `man-home-khong-cuon-giu-ti-le`. Chưa commit.
 - **Tên ở hero = 2 từ cuối** ("Đức Huy"), CEO 08/09 — `tenNgan` trong HomeHS; cỡ 16–19px theo vw.
+## 2026-09-08 (tiếp) — App HS: màn DANH SÁCH BÀI theo kit hs-bai-tap-tren-lop-v1 (kit đầu tiên qua giao thức 1.1 ngay lần đầu)
+- **Kit:** `design/handoff/hs-bai-tap-tren-lop-v1/` — script ĐẠT 100% lần đầu; DESIGN.md có bảng kiểm kê 25 dòng đúng 7
+  loại; **tái dùng asset kit Home** (backdrop/decor/ill_classwork md5 TRÙNG hs-home-v4) ⇒ đồng bộ, không xuất thêm.
+  Chỉ 4 SVG mới (back/chevron/paper_plane/sparkle). Kit chỉ vẽ 1 trạng thái; thiếu decor nữ (CEO đã xin thêm).
+- **CEO chốt:** ① trạng thái đang làm/quá hạn/hoàn thành/hạn nộp → Claude tự suy theo palette kit ("quan trọng
+  nhất là nhân vật, backdrop, icon") · ② 1 component dùng chung 3 khu (BTTL/ET/BTVN) "chuẩn đấy" · ③ decor nữ sẽ gửi
+  → tạm dùng decor xanh, đổi 1 dòng THEME.nu.decor · ④ decor + quote cố định đáy, list cuộn đè ("màn này không nhiều").
+- **Code:** `DanhSachHS.tsx` (MỚI, thuần vẽ: top back+tiêu đề+glyph, tabs pill, card icon-tint/tên/buổi/hạn/pill/CTA,
+  footer fixed) · HocSinhApp nhánh `khu` → suy `rows` (trangThai: moi/dang_lam/qua_han/xong · han: text+muc) → giao
+  DanhSachHS; empty-state giữ nội dung cũ. `AppHS` demo `?demo=list` (+`&nu`, `&rong`). Font tay Pacifico (DESIGN.md kit
+  ghi Itim vì sinh từ md bản cũ — bỏ qua).
+- Verify: tsc 0 · preview 430×932 nam/nữ: 3 trạng thái pill + hạn màu đúng, tab active trắng chữ primary, quote đưa lên
+  trên decor (bản đầu đè lên sách). Chưa commit.
+## 2026-09-08 (tiếp) — Decor nữ về + ốp module đổi avatar TA sang app HS (mig 202609080215)
+- **Decor nữ** `decor_books_cup_female.png` (1254², cutout thật, chữ Việt đúng dấu) → kit `hs-bai-tap-tren-lop-v1/assets/decor`
+  + DESIGN.md dòng 23 ghi biến thể nam/nữ; resize 600w → `public/bk-ui/hs/decor_books_female.png`. HomeHS + DanhSachHS
+  theme nữ đổi decor. **CEO chốt lại: HS nam dùng bộ nam, HS nữ dùng bộ nữ** — đã đúng vậy qua `hoc_sinh.gioi_tinh`
+  (null → nam).
+- **Avatar HS** (CEO: "lấy module thay avatar của TA ốp sang"): `AvatarHS.tsx` ốp từ `components/AvatarEditButton.tsx`,
+  dùng chung `uploadAvatar` (bucket `avatars`, policy 0020 đã cho authenticated ghi). Khác TA: HS không UPDATE `hoc_sinh`
+  thẳng (RLS staff-only) → mig `202609080215_hs_ho_so_va_doi_anh_dai_dien`: `hs_ho_so_cua_toi()` (jsonb ho_ten/ma_hs/
+  gioi_tinh/anh_url — 1 RPC thay cho hs_gioi_tinh_cua_toi, hàm cũ giữ) + `hs_doi_anh_dai_dien(p_url)` (chỉ sửa anh_url
+  của chính mình, p_url phải là public URL bucket avatars). `tuluyen.ts`: `hoSoCuaToi`, `doiAnhDaiDienHS`. HomeHS avatar
+  = AvatarHS (vòng trắng + vương miện vẽ ngoài, badge 📷 màu primary). Migrate + schema OK. tsc 0.
