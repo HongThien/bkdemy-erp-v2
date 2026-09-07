@@ -61,8 +61,33 @@ const PH_GLYPH = '▢'
 // (đã dính thật: "Gõcôngthứctrựctiếptạiđây" khi test tay 07/09).
 export const MF_PLACEHOLDER = '\\text{Gõ công thức trực tiếp tại đây…}'
 
+// ⭐ MathLive 0.110: AccentAtom (\widehat \hat \vec \bar \dot … — MỌI dấu MŨ) gán `captureSelection = true` trong
+// constructor → với CHUỘT cả khối là 1 đơn vị: bind() không cấp id cho atom con của khối captureSelection → hit-test
+// (nearestAtomFromPoint) không thấy chữ dưới mũ → click vào "A" của \widehat{A_1} rơi ra SAU cả khối, Backspace xoá
+// nguyên ký hiệu (Thùy 08/09: "copy góc A1 muốn đổi thành B1 nhưng ko thể xoá A viết B, xoá cái là xoá cả ký hiệu").
+// Phím ←/→ vẫn vào được (ô ▢ trong mũ vẫn chọn được sau khi chèn) ⇒ thuần bug hit-test chuột. \overline/\sqrt/\frac
+// không dính (không captureSelection). MathLive không có option → ghi đè accessor trên prototype: constructor gán true
+// → setter bỏ qua, getter luôn false. Class không export → dựng <math-field> tạm ngoài màn, nạp \hat{x}, lấy prototype
+// từ atom, gỡ. Chạy 1 lần/trang, TRƯỚC khi ô đầu tiên parse nội dung. Đo sau vá: click A → position 2 (sau A, trong
+// mũ) → Backspace → \widehat{_1} → gõ B → \widehat{B_1}. Nâng MathLive thì kiểm lại đúng thao tác này.
+let accentPatched = false
+function patchAccentSelection() {
+  if (accentPatched || typeof document === 'undefined') return
+  const t = document.createElement('math-field') as MathfieldElement
+  t.style.cssText = 'position:fixed;left:-9999px;top:0'
+  document.body.appendChild(t)
+  try {
+    t.value = '\\hat{x}'
+    const acc = (t as unknown as { _mathfield?: { model?: { atoms?: { type: string }[] } } })._mathfield?.model?.atoms?.find((a) => a.type === 'accent')
+    if (!acc) return
+    Object.defineProperty(Object.getPrototypeOf(acc), 'captureSelection', { configurable: true, get: () => false, set() { /* bỏ qua `true` từ constructor */ } })
+    accentPatched = true
+  } finally { t.remove() }
+}
+
 // Cấu hình 1 <math-field> theo luật trên + nạp giá trị đầu. Trả hàm gỡ listener (gọi trong cleanup effect).
 export function setupMathField(mf: MathfieldElement, initial: string, onInput: () => void): () => void {
+  patchAccentSelection()                        // trước mf.value: atom dấu mũ parse sau đây mới nhận prototype đã vá
   mf.classList.add('mf-input')                  // React 18 KHÔNG set className lên custom element → gán tay
   mf.placeholder = MF_PLACEHOLDER
   mf.inlineShortcuts = {}                       // TẮT gõ tắt kiểu chữ: "sqrt" phải ra 4 chữ s q r t

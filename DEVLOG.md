@@ -9220,3 +9220,39 @@ hành vi MathLive, Tab/→ để thoát khối; không đổi.
 **Bẫy công cụ:** Bash tool trên máy này ĂN 1 lớp backslash trong heredoc (`\\s` → `s`) + 3 file này là CRLF → node replace
 đa dòng không khớp — sửa bằng Edit tool. Clipboard của Browser pane KHÔNG hoạt động (Ctrl+C/V ra rỗng) → test copy/dán
 bằng `new ClipboardEvent(..., {clipboardData: new DataTransfer()})` dispatch tay rồi đọc lại.
+
+## 08/09/2026 (đêm) — Bảng dựng công thức: click vào CHỮ DƯỚI DẤU MŨ không vào được (MathLive `captureSelection`)
+**Thùy:** "Vẫn rất bất tiện khi ko click vào từng thành phần con của công thức… ko click trực tiếp hay xoá 1 phần được."
+Hỏi lại: cả trong popup lẫn trong bài đều không. Ca cụ thể: "copy góc A1 muốn đổi thành B1 nhưng ko thể xoá A và viết B
+vào. Xoá cái là xoá cả ký hiệu. MathType làm cái này rất mượt." Kèm câu hỏi chiến lược: story MathType đang KHÔNG làm
+theo hay KHÔNG làm được? → Trả lời: popup hiện tại CHÍNH LÀ story MathType (cửa sổ soạn riêng + bảng mẫu + click vào
+từng phần); cái Thùy mong "click thẳng vào mũ trong bài" là story trình soạn phương trình có sẵn của Word (tại chỗ +
+thanh công cụ nổi), MathType cũng không làm. Đề xuất giữ MathType, chưa chuyển sang Word-inline (1–2 ngày) — chờ Thùy chọn.
+**Đo (dev soan 5180, JS trong shadow DOM MathLive, KHÔNG đoán):**
+- Chỉ số trên/dưới, tử/mẫu phân số, `\overline{CD}`, `\sqrt{x}`: click vào đúng chỗ, Backspace xoá đúng phần → KHÔNG lỗi.
+- `\widehat{A_1}` / `\vec{u}` / `\hat{x}` (mọi DẤU MŨ): click vào "A" hay "1" → con trỏ rơi ra SAU CẢ KHỐI (position 6)
+  → Backspace xoá nguyên `\widehat{A_1}`. Đúng ca Thùy tả (góc A1 → B1).
+- Nguyên nhân (đọc `node_modules/mathlive/mathlive.mjs` 0.110.0): `AccentAtom` constructor gán `captureSelection = true`;
+  `Atom.bind()` KHÔNG cấp `data-atom-id` cho atom con nằm dưới bất kỳ cha `captureSelection` nào; `nearestAtomFromPoint`
+  chỉ xét atom có id, `offsetFromPoint` còn kéo về cha captureSelection ⇒ chữ dưới mũ vô hình với chuột. Phím ←/→ vẫn vào
+  được (ô ▢ vẫn chọn được khi chèn) ⇒ THUẦN hit-test chuột. Đây cũng là gốc sâu của bug ô ▢ hôm qua (07/09 tối) — hôm qua
+  vá ngọn bằng cách tìm glyph ▢; hôm nay vá gốc. Changelog MathLive: 0.110.0 là bản mới nhất, không có fix liên quan.
+- Thử sống: `Object.defineProperty(AccentAtom.prototype, 'captureSelection', {get: () => false, set() {}})` → render lại
+  cấp id cho A/1/u/x, `getOffsetFromPoint` trả 2 (sau A trong mũ) → click A → Backspace → `\widehat{_1}` → gõ B →
+  `\widehat{B_1}`. Đúng y luồng Thùy cần.
+**Sửa (`src/lib/math/mathfield.ts`, không migration):** `patchAccentSelection()` chạy 1 lần/trang ở ĐẦU `setupMathField`
+(trước `mf.value`): class AccentAtom không export → tạo `<math-field>` tạm ngoài màn, nạp `\hat{x}`, lấy prototype từ
+`_mathfield.model.atoms` (API private, MathLive pin 0.110.0), ghi đè accessor `captureSelection` (setter nuốt `true` từ
+constructor, getter false), gỡ element tạm. Từ đó mọi atom dấu mũ parse sau đều click được. Giữ nguyên handler ▢ hôm qua
+(vô hại, giờ MathLive tự lo được cả).
+**Verify từ trang nạp MỚI (sự kiện pointer tổng hợp đúng toạ độ glyph — xem bẫy dưới):** `captureSelection` = false trên
+cả 2 atom mũ, không own-prop · click A → pos 2 → Backspace → `\widehat{_1}+\vec{u}` → gõ B → `\widehat{B_1}+\vec{u}` ✓ ·
+click "1" → pos 4 (trong chỉ số dưới) ✓ · click u trong `\vec` → pos 9 ✓ · click ▢ → gõ XY → `\widehat{XY}` ✓ · tsc sạch.
+**Bẫy công cụ (mất ~30' vì nó):** cửa sổ Claude bị cửa sổ khác che ⇒ tab KHÔNG vẽ: `requestAnimationFrame` không chạy
+(MathLive render qua rAF ⇒ DOM CŨ, mọi phép đo bounds/ids trên DOM cũ đều vô nghĩa — đã đo nhầm 2 lượt), screenshot
+timeout, và sau ~5' Chrome "intensive throttling" ép `setTimeout` xuống 1 lần/phút ⇒ script có `await wait()` treo 45s.
+Cách làm được khi bị che: ghi đè `window.requestAnimationFrame = cb => cb(now)` (render ĐỒNG BỘ), viết script KHÔNG await,
+click bằng `PointerEvent` (pointerdown/mousedown/pointerup/mouseup/click, `composed:true`) dispatch lên
+`shadowRoot.elementFromPoint(x,y)` — MathLive không kiểm `isTrusted`. Toạ độ `computer.left_click` lúc này KHÔNG tin được
+(khung ảnh cũ). Phím Backspace của Browser pane gửi `code=''` ⇒ MathLive (so keybinding theo `code`) bỏ qua — phải
+dispatch `KeyboardEvent` có `code:'Backspace'` lên `.ML__keyboard-sink`.
