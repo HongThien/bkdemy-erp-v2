@@ -83,7 +83,7 @@ export default function DashOps({ profile }: { profile?: MyProfile }) {
     // Khung ≤480px như TA. Màn gốc dùng TRANH (spacer giữ chỗ phần cảnh, nút back không cần vì đây là
     // gốc — không có onBack). Sub-screen (chưa có tranh riêng) dùng fallback BKPageHeader nền trời gradient.
     <div className="flex h-full flex-col" style={{ background: ts?.nen.background ?? '#CFE7FE' }}>
-      <div className="relative mx-auto h-full w-full max-w-[480px] overflow-hidden" style={ts ? ts.nen : { background: 'linear-gradient(180deg, #CFE7FE 0%, #E3EEFC 40%, #EEF3FC 100%)' }}>
+      <div className="relative mx-auto h-full w-full max-w-[480px] overflow-hidden" style={{ containerType: 'size', ...(ts ? ts.nen : { background: 'linear-gradient(180deg, #CFE7FE 0%, #E3EEFC 40%, #EEF3FC 100%)' }) }}>
       {goc && <BKTranhNen t={OPS_TRANH_CUATOI} />}
       <div className="relative flex h-full w-full flex-col overflow-y-auto">
         {ts

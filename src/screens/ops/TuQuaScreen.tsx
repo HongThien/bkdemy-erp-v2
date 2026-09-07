@@ -53,7 +53,9 @@ export default function TuQuaScreen() {
       // "Quà" trong bộ 7 màn OPS mới (ops6.png), dù đây là tính năng KHÁC (tủ quà học sinh, không phải
       // shopping cá nhân nhân viên) — chỉ mượn màu cho đồng bộ giao diện.
     <div>
-      <OpsHero tone="orange" title="Tủ quà · đổi bằng xu" bgImage="/bk-ui/bg_ops_tuqua.jpg" bgAspect={150 / 863} />
+      {/* bgFill bắt buộc: hero không còn children nào khác (thanh tab đã dời xuống dưới) → flow rỗng sẽ
+          sập chiều cao về ~mỗi dòng tiêu đề, ảnh (absolute) bị overflow-hidden cắt cụt phần dưới. */}
+      <OpsHero tone="orange" title="Tủ quà · đổi bằng xu" bgImage="/bk-ui/bg_ops_tuqua.jpg" bgAspect={150 / 863} bgFill />
 
       {/* Thanh tab đặt HẲN dưới header (nền trắng đục) — CEO 07/09: đặt đè lên ảnh header bị trùng, khó nhìn */}
       <div className="mx-auto max-w-[760px] px-3 pt-3">
