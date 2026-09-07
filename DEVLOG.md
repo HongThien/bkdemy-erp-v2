@@ -9129,3 +9129,51 @@ thật — lưu ý phải `git rev-parse` ra SHA tường minh, `efd7bd9^` truy�
 bị nuốt mất, `git diff` báo "0 file đổi" sai — không phải lỗi script, lỗi cách gọi test):
 `gv · pt · ta · ops · hs · chi` → BỎ QUA build (exit 0, đúng — trước đây build oan) · `giaibai · soan · erp` →
 build (exit 1, đúng — 3 app thật sự dùng).
+
+## 2026-09-03 (tiếp) — Xu tháng: quy EXP→xu LŨY TIẾN theo khúc (nhánh worktree-gamification)
+- CEO chốt: KHÔNG phải "đạt mốc nào lấy nguyên xu mốc đó" (xuForExp cũ, `src/gami/xu.js`) mà là **thuế lũy tiến /
+  marginal rate**: mỗi khúc 1000 EXP có tỉ lệ riêng do CEO nhập, EXP cắt theo khúc, mỗi khúc × tỉ lệ, cộng lại, **làm
+  tròn LÊN** 1 lần. VD khúc 0→9, 1000→10: 1500 EXP = 9 + 5 = 14 xu. CEO nói sẽ nhập đủ khúc nên khúc cuối không trần
+  (áp tỉ lệ khúc cuối cho phần vượt — an toàn hơn cắt về 0).
+- Nghĩa MỚI của `luong_bac`: dòng = khúc `[min_exp, min_exp dòng kế)`; `xu` = xu cho MỖI 1000 EXP trong khúc (comment
+  bảng/cột ghi vào DB). Không đổi cột — chỉ đổi nghĩa ⇒ **9 dòng đang có (1000→10 … 20000→110) mang nghĩa CŨ, CEO phải
+  nhập lại** sau khi áp migration; không tự chuyển đổi (không có phép quy đổi trung thực), không xoá dòng nào.
+- §2.0: công thức xuống DB — migration `202609031903_xu_luy_tien_theo_khuc_exp.sql`: `fn_xu_tu_exp(int)` (SQL stable,
+  lead() over min_exp) + `fn_gami_exp_xu_thang(p_ym, p_hoc_sinh_id?, p_mon?)` trả (hs, mon, exp, xu, moc_ke, xu_moc_ke)
+  — gộp luôn tổng EXP tháng (note-keyed + attend_floor cửa sổ tháng VN) vốn đang reduce ở client (`expThangPerHsMon`).
+  security invoker ⇒ RLS bảng gốc áp như cũ.
+- Client: `lib/xu.ts` bỏ `expThangPerHsMon` + import `xuForExp`, gọi RPC; `lib/thanhtich.ts` `getLevelXu` gọi RPC
+  (bỏ 2 query ledger + query luong_bac + vòng for tính mốc; `xuKe/expKeMoc` = `xu_moc_ke/moc_ke`); `ChotXuScreen`
+  BangMoc đổi nhãn "≥ X EXP → Y xu" thành "X – Y → Z xu/1000" + chú thích lũy tiến.
+- Verify: chạy SQL migration trong transaction ROLLBACK trên DB thật với bảng test (0→9, 1000→10, 2000→12):
+  null/−5/0→0 · 100→1 · 500→5 · 999→9 · 1000→9 · 1500→14 · 1999→19 · 2000→19 · 2500→25 · 7300→83.
+  `fn_gami_exp_xu_thang('2026-08')`: 337 dòng, Σ EXP 751 408 = đúng bằng query kiểu client cũ. tsc sạch.
+- **Chưa áp migration** (chờ CEO `npm run migrate` + `npm run schema`) · chưa verify tay trên app · `src/gami/xu.js`
+  không còn ai import — chờ gật xoá (Luật xoá) · `chotXu` vẫn tính-ở-client-rồi-insert (giờ số lấy từ RPC) — chuyển
+  thành RPC transactional là việc riêng.
+
+## 2026-09-07 (tiếp) — Chốt xu: CEO đổi ý bỏ lũy tiến, dùng EXP:100 cố định + chốt theo lớp + phát sinh tay
+- **Đổi ý so với mục 09-03 ở trên:** Thùy chốt "phiên bản này dùng cái đơn giản đã: Xu = exp:100, làm tròn lên. mặc
+  định là thế." → sửa THẲNG migration `202609031903_...sql` (chưa từng áp nên sửa tại chỗ, không đẻ file mới):
+  `fn_xu_tu_exp` bỏ đọc `luong_bac`, trả `ceil(EXP/100)`; `fn_gami_exp_xu_thang` tính `moc_ke` = bội số 100 kế tiếp
+  (không cần bảng khúc). Bảng "Khúc quy đổi" (luong_bac) trên `ChotXuScreen` giữ nguyên UI (CHƯA xoá, chờ gật) nhưng
+  thêm banner cam "tạm ngưng dùng" — sửa khúc không còn đổi số.
+- **Chốt THEO LỚP (Thùy: "chốt từ từ theo lớp chứ không phải chốt toàn bộ"):** nút Chốt đổi từ chốt cả tháng sang
+  chỉ tác động các dòng ĐANG LỌC (`hienThi` — theo khối/lớp/tìm kiếm đã có sẵn trên màn); `chotXu(ym, chi?)` thêm
+  tham số `chi` = danh sách (hoc_sinh_id, mon) cần chốt, lọc trên `previewChotXu` tươi (không tin state cũ). Không
+  lọc gì = vẫn chốt được TOÀN BỘ nhưng nút chuyển màu cam để nhắc.
+- **Phát sinh điền tay ngay tại bảng:** thêm `themPhatSinh(hocSinhId, amount, lyDo)` (xu.ts) ghi thẳng
+  `qlht_xu_ledger` (loai suy từ dấu: `cong_tay`/`tru_tay`), UI `PhatSinhCell` — 2 ô nhỏ (lý do + ±xu) + nút Ghi,
+  reload sau khi ghi. Trước đó cột này chỉ ĐỌC (tính từ ledger có sẵn), không có đường nhập.
+- **Nhánh `worktree-gamification` thiếu `scripts/vercel-ignore.mjs`** (tạo trước khi main có cơ chế Ignored Build
+  Step 07/09) — thiếu file ⇒ ignoreCommand không chạy ⇒ mặc định BUILD hết. Copy nguyên bản từ `origin/main` +
+  thêm 1 dòng `RIENG`: `xu.ts`/`thanhtich.ts`/`ChotXuScreen.tsx` chỉ vào được qua `NhanSuHome.tsx`, mà
+  `NhanSuHome` CHỈ `App.tsx` (erp) import (grep xác nhận AppTa/AppGv/AppOps/AppChi không import trực tiếp) → `chu:
+  ['erp']`. Verify bằng mô phỏng diff qua cả 9 project: erp exit=1 (build), 8 project còn lại exit=0 (bỏ qua).
+- **Merge `worktree-gamification` → `main`:** nhánh tạo cũ (86 commit sau so với `origin/main` lúc merge), diff thật
+  chỉ 6 file (đúng những file đã sửa trong 2 mục trên). Conflict: `DEVLOG.md` (cả 2 nhánh cùng append cuối file —
+  giữ cả 2 khối, không xoá gì) · `scripts/vercel-ignore.mjs` (add/add — main đã có file lúc merge do commit khác
+  thêm trước, giữ bản main + thêm đúng 1 dòng RIENG của nhánh này).
+- **Còn treo:** áp migration lên DB thật (`npm run migrate` + `npm run schema`) · verify tay trên app sau khi áp ·
+  gật xoá `src/gami/xu.js` (không ai import) và bảng "Khúc quy đổi" (luong_bac UI, giờ vô dụng) · `chotXu` vẫn
+  tính-ở-client-rồi-insert.

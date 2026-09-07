@@ -40,6 +40,9 @@ const RIENG = [
   // build oan cả 8 project mỗi lần sửa (Thùy báo "sao sửa giải bài lại đụng gv/pt"). "src/soan/" ở đây KHÔNG
   // đụng ta.html/gv.html/… (những entry app khác) vì prefix so đầu chuỗi khác nhau hoàn toàn.
   { p: ['src/lib/math/', 'src/components/math/', 'src/soan/'], chu: ['erp', 'giaibai', 'soan'] },
+  // Chốt xu tháng (07/09) — ChotXuScreen/xu.ts/thanhtich.ts chỉ vào được qua NhanSuHome.tsx, mà NhanSuHome
+  // CHỈ App.tsx (erp) import (đã grep xác nhận: AppTa/AppGv/AppOps/AppChi không import trực tiếp).
+  { p: ['src/lib/xu.ts', 'src/lib/thanhtich.ts', 'src/screens/gami/ChotXuScreen.tsx'], chu: ['erp'] },
 ]
 // Đường dẫn KHÔNG ảnh hưởng bundle nào
 const BO_QUA = [
