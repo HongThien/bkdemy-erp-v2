@@ -11,7 +11,7 @@ import {
   type SoDuXu, type TonQua, type DoiQua, type QuaOrder, type QuaNhap, type XuLedgerRow,
 } from '../../lib/tuqua'
 import SearchSelect, { type Opt } from '../../components/SearchSelect'
-import { OA, OpsHero } from '../../components/ops/OpsUI'
+import { OpsHero } from '../../components/ops/OpsUI'
 
 type Muc = 'doi' | 'don' | 'kho'
 const ddmm = (iso: string) => new Date(iso).toLocaleDateString('vi', { day: '2-digit', month: '2-digit', timeZone: 'Asia/Ho_Chi_Minh' })
@@ -53,7 +53,7 @@ export default function TuQuaScreen() {
       // "Quà" trong bộ 7 màn OPS mới (ops6.png), dù đây là tính năng KHÁC (tủ quà học sinh, không phải
       // shopping cá nhân nhân viên) — chỉ mượn màu cho đồng bộ giao diện.
     <div>
-      <OpsHero tone="orange" title="Tủ quà · đổi bằng xu" character={OA('gift/header_gift_box.svg')} characterSize={64}>
+      <OpsHero tone="orange" title="Tủ quà · đổi bằng xu" bgImage="/bk-ui/bg_ops_tuqua.jpg" bgAspect={150 / 863}>
         <div className="relative mx-auto mt-2.5 flex max-w-[760px] rounded-2xl bg-white/20 p-1">
           {([['doi', '🎁 Đổi quà'], ['don', '📦 Đơn đặt'], ['kho', '🗃️ Kho']] as [Muc, string][]).map(([k, lbl]) => (
             <button key={k} onClick={() => setMuc(k)}

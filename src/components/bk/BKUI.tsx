@@ -110,8 +110,9 @@ export function BKTranhNen({ t }: { t: BKTranh }) {
 // ── HEADER màn con: bầu trời gradient + tia sáng + tiêu đề bong bóng trắng viền xanh + tagline chữ
 // tay + mascot PNG góc dưới-phải với bong bóng lời. (Tranh nền có chữ CỦA TÔI cố định nên màn con
 // không dùng lại được — CEO có thể gửi bản tranh KHÔNG chữ để lắp cho màn con.)
-export function BKPageHeader({ title, tagline, onBack, mascot = '/bk-ui/mascot_wave.png', bubble, hero }: {
+export function BKPageHeader({ title, tagline, onBack, mascot = '/bk-ui/mascot_wave.png', bubble, hero, slogan = ['Better TAs', 'Brighter Students ♡'], logo = ['BK', 'Academy'] }: {
   title: string; tagline?: string; onBack?: () => void; mascot?: string; bubble?: string; hero?: boolean   // hero = màn gốc (tiêu đề IN HOA, to hơn)
+  slogan?: [string, string]; logo?: [string, string]   // OPS dùng lại HEADER này cho "Của tôi" (CEO 07/09: "giống hệt app TA") — đổi được câu khẩu hiệu góc phải + logo góc trái để không hiện chữ "TA"/"Academy" sai vai trò, mặc định giữ nguyên TA
 }) {
   return (
     <div className="relative overflow-hidden" style={{ paddingTop: 'max(0.75rem, env(safe-area-inset-top))', minHeight: hero ? 236 : 196, background: 'linear-gradient(180deg, #9ED0F8 0%, #BFE0FD 55%, #CFE7FE 100%)' }}>
@@ -125,15 +126,15 @@ export function BKPageHeader({ title, tagline, onBack, mascot = '/bk-ui/mascot_w
               className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-[22px] font-bold text-[#2F73F6] shadow-md active:scale-95">‹</button>
           ) : (
             <span className="font-bubble leading-none">
-              <span className="text-[19px] font-extrabold text-[#2F73F6]">BK<span className="text-[#FFD84D]">✦</span></span>
-              <span className="block -mt-1 text-[11px] font-bold text-[#2F73F6]">Academy</span>
+              <span className="text-[19px] font-extrabold text-[#2F73F6]">{logo[0]}<span className="text-[#FFD84D]">✦</span></span>
+              <span className="block -mt-1 text-[11px] font-bold text-[#2F73F6]">{logo[1]}</span>
             </span>
           )}
           {/* Góc phải: màn con đặt BONG BÓNG LỜI của mascot ở đây (design 01_xep_hang) — không đè tagline giữa;
-              màn gốc (hero) giữ câu "Better TAs · Brighter Students" */}
+              màn gốc (hero) giữ câu khẩu hiệu `slogan` */}
           {bubble && !hero
             ? <span className="font-hand relative max-w-[128px] rounded-2xl rounded-bl-sm bg-white px-2.5 py-1.5 text-center text-[12px] italic leading-tight text-[#2F73F6] shadow-sm">{bubble}</span>
-            : <span className="font-hand max-w-[120px] -rotate-6 text-right text-[13px] italic leading-tight text-[#2F73F6]">Better TAs<br />Brighter Students ♡</span>}
+            : <span className="font-hand max-w-[120px] -rotate-6 text-right text-[13px] italic leading-tight text-[#2F73F6]">{slogan[0]}<br />{slogan[1]}</span>}
         </div>
         <div className="-mt-4 text-center">
           <span className="text-[18px] text-[#FFD84D]">👑</span>
@@ -319,7 +320,7 @@ export function BKEmptyState({ icon = '🌱', children }: { icon?: string; child
 }
 
 // Banner mascot động viên (cuối màn) — câu chữ đổi theo ngữ cảnh
-export function BKMascotBanner({ text, sub }: { text: string; sub?: string }) {
+export function BKMascotBanner({ text, sub, corner = ['Small TAs', 'Big Impact ♡'] }: { text: string; sub?: string; corner?: [string, string] }) {
   return (
     <div className="relative mt-1 flex items-center gap-2.5 overflow-hidden rounded-[20px] bg-white/70 px-3 py-2">
       <img src="/bk-ui/mascot_cheer.png" alt="" className="h-12 w-12 shrink-0 object-contain" draggable={false} />
@@ -327,7 +328,9 @@ export function BKMascotBanner({ text, sub }: { text: string; sub?: string }) {
         <span className="font-bubble inline-block rounded-xl bg-[#EAE2FF] px-2.5 py-0.5 text-[12.5px] font-bold text-[#6A4BD6]">{text}</span>
         {sub && <p className="mt-0.5 truncate text-[10.5px] text-[#63709A]">{sub}</p>}
       </div>
-      <span className="font-hand pointer-events-none absolute right-3 top-1.5 -rotate-6 text-[11px] italic leading-tight text-[#2F73F6]">Small TAs<br />Big Impact ♡</span>
+      {/* `corner`: OPS dùng lại banner này cho "Của tôi" (CEO 07/09: "giống hệt app TA") — đổi câu góc
+          trên-phải để không hiện chữ "TA" sai vai trò, mặc định giữ nguyên câu gốc của TA. */}
+      <span className="font-hand pointer-events-none absolute right-3 top-1.5 -rotate-6 text-[11px] italic leading-tight text-[#2F73F6]">{corner[0]}<br />{corner[1]}</span>
     </div>
   )
 }

@@ -45,9 +45,9 @@ export default function OpsHome({ profile, quyen }: { profile: MyProfile; quyen:
       <div className="min-h-0 flex-1 overflow-auto">
         {tab === 'home' && <HomTay profile={profile} onGo={setTab} coQuyen={coQuyen} onThoat={() => supabase.auth.signOut()} />}
         {tab === 'diemdanh' && <DiemDanhBuoi />}
-        {tab === 'report' && <ManCon tone="blue" title="Report & Báo tan" character={OA('report/header_boy.svg')} bubble="Làm xong rồi nè!"><OpsReportScreen chiViec /></ManCon>}
-        {tab === 'prep' && <ManCon tone="amber" title="Chuẩn bị phòng" character={OA('prep/header_girl.svg')} bubble="Phòng sạch là học vui hơn!"><PrepScreen /></ManCon>}
-        {tab === 'test' && <ManCon tone="purple" title="Test đầu vào" character={OA('test/header_boy_clipboard.svg')} bubble="Cố lên! Bạn làm được mà!"><DiemDanhTestScreen /></ManCon>}
+        {tab === 'report' && <ManCon tone="blue" bgImage="/bk-ui/bg_ops_report.jpg" bgAspect={360 / 863}><OpsReportScreen chiViec /></ManCon>}
+        {tab === 'prep' && <ManCon tone="amber" bgImage="/bk-ui/bg_ops_prep.jpg" bgAspect={359 / 863}><PrepScreen /></ManCon>}
+        {tab === 'test' && <ManCon tone="purple" bgImage="/bk-ui/bg_ops_test.jpg" bgAspect={377 / 863}><DiemDanhTestScreen /></ManCon>}
         {tab === 'tuqua' && <TuQuaScreen />}
         {tab === 'dash' && <DashOps profile={profile} />}
       </div>
@@ -74,11 +74,14 @@ export default function OpsHome({ profile, quyen }: { profile: MyProfile; quyen:
 
 // Dải header cho 3 màn TÁI DÙNG TỪ ERP (Report/Prep/Test) — bọc NGOÀI, không đụng nội dung bên trong
 // (OpsReportScreen/PrepScreen/DiemDanhTestScreen dùng chung với desktop ERP, sửa trong đó ảnh hưởng cả 2 nơi).
-function ManCon({ tone, character, bubble, children }: { tone: OpsTone; title: string; character: string; bubble: string; children: React.ReactNode }) {
-  // KHÔNG truyền title — 3 màn tái dùng ERP (Report/Prep/Test) đã tự có tiêu đề riêng bên trong, tránh lặp chữ.
+// Ảnh gốc (bg_ops_report/prep/test.jpg) đã bake sẵn tiêu đề + nhân vật + bong bóng lời ĐÚNG NGUYÊN BẢN
+// thiết kế (CEO 07/09: "để header đẹp như ảnh gốc") — không cần vẽ thêm HTML đè lên, tránh lặp chữ.
+function ManCon({ tone, bgImage, bgAspect, children }: { tone: OpsTone; bgImage: string; bgAspect: number; children: React.ReactNode }) {
   return (
     <div className="flex h-full min-h-0 flex-col">
-      <OpsHero tone={tone} character={character} bubble={bubble} characterSize={82} />
+      {/* bgFill: hero KHÔNG có children nào khác → không có gì để tràn, ép cao đúng ảnh cho chắc (không thì
+          hero cao 0 vì flow rỗng, ảnh — vốn absolute — bị overflow-hidden cắt hết). */}
+      <OpsHero tone={tone} bgImage={bgImage} bgAspect={bgAspect} bgFill />
       <div className="min-h-0 flex-1 overflow-auto bg-white">{children}</div>
     </div>
   )
@@ -169,7 +172,7 @@ function HomTay({ profile, onGo, coQuyen, onThoat }: { profile: MyProfile; onGo:
   const nsAnh = profile.nhanSu.anh_url
   return (
     <div>
-      <OpsHero tone="green" title="" right={
+      <OpsHero tone="green" title="" bgImage="/bk-ui/bg_ops_home.jpg" bgAspect={370 / 863} bgFill right={
         <div className="flex shrink-0 items-center gap-1.5">
           <GopY route="home" />
           <button onClick={onThoat} className="flex h-9 w-9 items-center justify-center rounded-full bg-white/20 text-white active:bg-white/30" aria-label="Thoát"><IcoPower cls="h-[18px] w-[18px]" /></button>
@@ -185,11 +188,14 @@ function HomTay({ profile, onGo, coQuyen, onThoat }: { profile: MyProfile; onGo:
             <p className="text-[12px] font-semibold text-white/80">BK Vận hành</p>
           </div>
         </div>
-        <p className="mt-2 inline-block max-w-full truncate rounded-full bg-white/20 px-3 py-1.5 text-[12.5px] font-semibold text-white">
+        <p className="mt-2 inline-block max-w-full truncate rounded-full bg-white px-3 py-1.5 text-[12.5px] font-semibold text-[#0E6B37] shadow-sm">
           {loading ? 'Đang tải việc hôm nay…' : tongViec === 0 ? '☕ Không còn việc — nghỉ ngơi thôi!' : conLai === 0 ? '✓ Xong hết việc hôm nay, đỉnh!' : `Còn ${conLai} việc hôm nay`}
         </p>
-        <div className="mt-2 flex items-end justify-end">
-          <img src={OA('common/avatar_ta_girl_sign.svg')} alt="" className="h-[76px] w-[76px] object-contain drop-shadow" draggable={false} />
+        {/* Bảng gỗ trong ẢNH GỐC (bg_ops_home.jpg) đã để trống chữ (chỉ giữ nhân vật) — chữ "Cố lên {tên} ơi!"
+            vẽ đè bằng HTML tại đúng toạ độ bảng (742,330 trong ảnh gốc 863×1822, nghiêng -13°) để tên luôn
+            đúng người đăng nhập, không hardcode như bản demo gốc. */}
+        <div className="pointer-events-none absolute left-[86%] top-[68%] w-[17%] -translate-x-1/2 -translate-y-1/2 -rotate-[13deg] text-center font-hand text-[11px] italic leading-tight text-[#7A4B12]">
+          Cố lên<br />{tenGoi} ơi!
         </div>
       </OpsHero>
 

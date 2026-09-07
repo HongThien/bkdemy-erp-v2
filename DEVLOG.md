@@ -9000,3 +9000,46 @@ không đổi bảng/view).
      redesign sâu hơn không (tốn nhiều công vì đây là tool vận hành phức tạp, rủi ro cao nếu làm vội).
   ⑤ Tiến trình OPS đang tạm dùng lại "Đạt chuẩn" (DatChuanScreen) — như đã ghi từ trước, CEO chưa chốt
      định nghĩa "tiến trình" riêng cho OPS (ca trực) nên chưa tách hẳn.
+
+## 07/09/2026 (sáng) — OPS: header dùng ẢNH GỐC thật (không phải CSS gradient) + "Của tôi" đổi sang khuôn TA
+- **CEO phản hồi sau bản OPS đêm qua:** "phải dùng ảnh gốc trong kho ops1 ops2 làm background… header
+  của m xấu quá" + "Phần của tôi: làm giống hệt như bên app TA cơ mà".
+- **Header Hôm nay/Report/Prep/Test/Tủ quà — đổi từ CSS gradient sang ẢNH GỐC thật:** `OpsHero` (OpsUI.tsx)
+  thêm `bgImage`/`bgAspect`/`bgFill`/`wash`. Report/Prep/Test: ảnh gốc giữ NGUYÊN 100% (title+nhân vật+
+  bong bóng đã bake đúng sẵn, không vẽ gì đè lên) → pixel-perfect với ảnh CEO gửi. Home: ảnh gốc CHỈ xoá
+  4 vùng nhỏ (avatar/tên/vai trò/chuông+bánh răng) bằng nội suy biên (an toàn ở quy mô nhỏ — vùng RỘNG
+  trước đó gây streak xấu, đã thử và bỏ) + tô phẳng chữ trên bảng gỗ nhân vật đang cầm bằng màu kem thật
+  (không nội suy) → chữ "Cố lên {tên đăng nhập} ơi!" vẽ đè đúng toạ độ đo từ ảnh gốc (742,330 trong ảnh
+  863×1822 gốc, nghiêng -13°) — xoá luôn SVG placeholder tự vẽ trước đó (`avatar_ta_girl_sign.svg` — hoá
+  ra là hình đặt tạm rất xấu VÀ hardcode cứng tên "Thuỳ" ngay trong text SVG, không phải asset thật của
+  kit). Tủ quà: xoá tiêu đề "Quà của BK" tĩnh bằng nội suy biên (vùng nhỏ, an toàn), giữ nguyên hộp quà+sao.
+  **`bgFill` (mới):** true = ép chiều cao hero đúng ảnh (bắt buộc khi children cần toạ độ % chính xác trên
+  ảnh, vd chữ đè lên bảng gỗ Home; cũng cần cho Report/Prep/Test dù không children vì flow rỗng sẽ sập về
+  cao 0) — false/mặc định = ảnh chỉ ghim sát đỉnh theo tỉ lệ riêng, hero cao theo NỘI DUNG con (Tủ quà cần
+  cái này vì hàng tab Đổi quà/Đơn đặt/Kho cao hơn ảnh gốc rất ngắn — dùng `bgFill` sai đã cắt mất hàng tab,
+  CEO báo "Tủ quà bị lỗi phần header", sửa bằng cách bỏ `bgFill` cho riêng màn này).
+- **"Của tôi" — 2 lần đổi trong buổi sáng:**
+  1) CEO nói "giống hệt như bên app TA" → soi lại: TA dùng cơ chế **tranh nền vẽ sẵn** (BK_TRANH/
+     BKTranhNen/bkTranhStyle) chứ không phải BKPageHeader (đó chỉ là fallback tạm khi CHƯA CÓ tranh).
+     Kiểm cả 6 tranh TA (`bg_xephang/gay/mayman/shop/huongdan/tientrinh.jpg`) — hầu hết baked chữ
+     "TA"/"Better TAs"/"GOOD TAs" ngay trong ảnh → KHÔNG dùng lại được cho OPS (trừ `bg_gay.jpg` tình cờ
+     sạch). Viết lại `DashOps.tsx` theo khuôn `DashTa.tsx`: lưới 2×3 `BKMenuCard` (ảnh/gradient DÙNG
+     CHUNG với TA — 6 icon `ranking_trophy/stick_gavel_warning/lucky_wheel_gift/progress_chart/
+     shopping_bag_gift/guide_book_bulb.png` đều hình BK chung, không chữ TA) + `BKProfileSummary` +
+     `BKMascotBanner`, bỏ hẳn khung LIST (07_my.png) trước đó. Phát hiện thêm: TA **không có** box "Cài
+     đặt" riêng (Đăng xuất nằm ở header tab Hôm nay) — bỏ luôn box Cài đặt tự thêm trước đó cho đúng
+     "giống hệt". `BKPageHeader` (dùng cho sub-screen chưa có tranh) + `BKMascotBanner` thêm prop
+     `slogan`/`logo`/`corner` (mặc định giữ nguyên chữ TA, OPS truyền chữ khác) để tránh hiện "Better
+     TAs"/"Small TAs Big Impact" sai vai trò — additive, không đổi hành vi TA.
+  2) Ngay sau đó CEO up thêm `ops_Cuatoi.png` (941×1672, cùng khuôn `bg_cua_toi.jpg` của TA nhưng đổi
+     "TAs"→"QLHTs", tagline theo học sinh) — TRANH THẬT riêng cho OPS. Thay lưới+BKPageHeader-gradient
+     bằng ĐÚNG cơ chế tranh của TA (`BKTranhNen`/`bkTranhStyle`) cho màn gốc, định nghĩa `OPS_TRANH_CUATOI`
+     cục bộ trong `DashOps.tsx` (không đụng `BK_TRANH` dùng chung); sub-screen (Xếp hạng/Gậy/…) vẫn
+     `BKPageHeader` vì OPS chưa có tranh riêng cho các màn đó.
+- **Dọn dẹp:** gộp `BK_TA_7_SCREEN_ALL_SVG/`, `BK_TA_7_SCREEN_FULL_HANDOFF/` (CEO tự copy thẳng vào
+  `public/bk-ui/` — trùng 100% nội dung đã có ở `public/ops-ui/**` từ đêm qua, làm PWA precache phồng
+  gấp đôi 171→339 file) + `ops_Cuatoi.png` gốc → `design/bk-ui-src/` (không vào build); xoá các file
+  `ops_ico_*/ops_mod_*/ops_nav_*.png` tự tạo khi dò toạ độ, không dùng tới (không phải asset CEO gửi).
+- tsc + `build:ta` + `build:ops` sạch (precache về lại 159, đúng như trước khi CEO copy nhầm 2 thư mục).
+  Browser-test thật (Admin): Hôm nay/Report/Prep/Test/Tủ quà/Của tôi (gốc + Xếp hạng + Tiến trình) — ảnh
+  đúng ảnh gốc, dữ liệu thật, không lỗi.

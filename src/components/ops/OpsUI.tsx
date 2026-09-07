@@ -69,14 +69,42 @@ export function OpsBack({ onClick, dark }: { onClick: () => void; dark?: boolean
 
 // ── HERO gradient dùng chung: back(tuỳ) · title(tuỳ — bỏ trống khi nội dung bên dưới đã có tiêu đề
 //    riêng, ví dụ 3 màn tái dùng ERP, tránh lặp chữ) · nhân vật + bong bóng lời(tuỳ) · slot dưới ──────
-export function OpsHero({ tone, title, onBack, character, characterSize = 92, bubble, right, children }: {
-  tone: OpsTone; title?: string; onBack?: () => void; character?: string; characterSize?: number; bubble?: string; right?: ReactNode; children?: ReactNode
+// `bgImage`(+`bgAspect`=cao/rộng ảnh) thay gradient CSS bằng ẢNH GỐC thật (CEO 07/09: "dùng ảnh gốc làm
+// background, đẹp như ảnh gốc ấy") — ảnh phủ kín (object-cover), sao trang trí ẩn đi vì ảnh đã có sẵn.
+// `wash`: phủ thêm lớp màu tone lên ảnh (đậm ở đỉnh, nhạt dần) để giấu chữ/avatar TĨNH baked sẵn trong
+// ảnh (khác dữ liệu THẬT — tên, avatar, trạng thái — HTML vẽ đè lên trên); ảnh KHÔNG cần sửa pixel, tránh
+// artefact khi tự xoá vùng rộng. Report/Prep/Test (nội dung baked ĐÃ ĐÚNG, không có dữ liệu động) → không wash.
+export function OpsHero({ tone, title, onBack, character, characterSize = 92, bubble, right, children, bgImage, bgAspect, bgFill, wash }: {
+  tone: OpsTone; title?: string; onBack?: () => void; character?: string; characterSize?: number; bubble?: string; right?: ReactNode; children?: ReactNode; bgImage?: string; bgAspect?: number; bgFill?: boolean; wash?: boolean
 }) {
   const c = OPS[tone]
+  // `bgFill`: ép chiều cao hero ĐÚNG tỉ lệ ảnh (box-sizing border-box) — dùng khi children có chữ/hình
+  // vẽ đè lên TOẠ ĐỘ % cụ thể trên ảnh (vd bảng gỗ ở Home) nên cần chiều cao khớp ảnh tuyệt đối. KHÔNG
+  // bật khi children có thể cao hơn ảnh (vd hàng tab ở Tủ quà) — ép cao sẽ CẮT MẤT phần vượt (đã dính
+  // lỗi này, CEO báo "Tủ quà bị lỗi phần header"). Mặc định: ảnh chỉ ghim SÁT ĐỈNH theo đúng tỉ lệ của
+  // nó, hero cao theo NỘI DUNG (children) như bình thường — ảnh không co giãn theo, chỉ đứng yên phía sau.
   return (
-    <div className="relative overflow-hidden px-3 pb-3" style={{ paddingTop: 'max(0.6rem, env(safe-area-inset-top))', background: c.grad }}>
-      <span className="pointer-events-none absolute right-9 top-3 text-[13px] text-white/50">✦</span>
-      <span className="pointer-events-none absolute right-24 top-10 text-[10px] text-white/40">✦</span>
+    <div className="relative overflow-hidden px-3 pb-3" style={{
+      paddingTop: 'max(0.6rem, env(safe-area-inset-top))', background: bgImage ? undefined : c.grad,
+      ...(bgImage && bgFill ? { aspectRatio: `1 / ${bgAspect ?? 0.43}`, boxSizing: 'border-box' as const } : {}),
+    }}>
+      {bgImage && (
+        <>
+          <div className="pointer-events-none absolute inset-0" style={{ background: c.grad }} />
+          {bgFill
+            ? <img src={bgImage} alt="" className="pointer-events-none absolute inset-0 h-full w-full object-cover object-top" draggable={false} />
+            : <div className="pointer-events-none absolute inset-x-0 top-0" style={{ paddingTop: `${(bgAspect ?? 0.43) * 100}%` }}>
+                <img src={bgImage} alt="" className="absolute inset-0 h-full w-full object-cover object-top" draggable={false} />
+              </div>}
+          {/* wash phải ĐỦ ĐẬM để giấu hẳn avatar/tên/chữ TĨNH baked sẵn trong ảnh gốc (vd tên mẫu demo) —
+              không phải chỉ làm mờ nhẹ; ảnh gốc chỉ còn lấp ló làm KẾT CẤU/ánh sáng phía sau, không lộ chữ. */}
+          {wash && <div className="pointer-events-none absolute inset-x-0 top-0" style={{ paddingTop: `${(bgAspect ?? 0.43) * 100}%`, background: `linear-gradient(180deg, ${c.solid}F5 0%, ${c.solid}EE 60%, ${c.solid}DE 100%)` }} />}
+        </>
+      )}
+      {!bgImage && <>
+        <span className="pointer-events-none absolute right-9 top-3 text-[13px] text-white/50">✦</span>
+        <span className="pointer-events-none absolute right-24 top-10 text-[10px] text-white/40">✦</span>
+      </>}
       {(title || onBack || right) && (
         <div className="relative mx-auto flex max-w-[760px] items-center gap-2">
           {onBack && <OpsBack onClick={onBack} />}
