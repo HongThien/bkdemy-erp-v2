@@ -28,7 +28,7 @@ export default defineConfig({
     VitePWA({
       injectRegister: 'auto',
       registerType: 'autoUpdate',
-      includeAssets: ['icon-192.png', 'icon-512.png'],
+      includeAssets: ['icon-hs-192.png', 'icon-hs-512.png'],
       manifest: {
         name: 'BK Academy — Học sinh',
         short_name: 'BK Academy',
@@ -40,9 +40,9 @@ export default defineConfig({
         scope: '/',
         lang: 'vi',
         icons: [
-          { src: '/icon-192.png', sizes: '192x192', type: 'image/png' },
-          { src: '/icon-512.png', sizes: '512x512', type: 'image/png' },
-          { src: '/icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
+          { src: '/icon-hs-192.png', sizes: '192x192', type: 'image/png' },
+          { src: '/icon-hs-512.png', sizes: '512x512', type: 'image/png' },
+          { src: '/icon-hs-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
         ],
       },
       workbox: {
