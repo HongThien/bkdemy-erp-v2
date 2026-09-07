@@ -21,6 +21,12 @@ import DashTa from './DashTa'
 import GopY from './GopY'
 import CaBoTroTA, { demNoBoTro } from './CaBoTroTA'
 import { viecBoTroCuaToi, type ViecCaBoTro, type ViecRetest } from '../../lib/botro_yeu_ca'
+import TripCountdownBanner, { type CountdownRect } from '../../components/TripCountdownBanner'
+
+// Banner đếm ngược đi chơi Ba Vì (CEO 07/09, đã lắp cho OPS — "làm cái này cho ta app luôn") — ảnh + rect
+// giống hệt OpsHome.tsx (đo tay theo pixel ảnh gốc goout_2.png 1672×941, xem OpsHome.tsx để biết chi tiết đo).
+const NGAY_DI_CHOI = '2026-09-30'
+const RECT_DEM_NGUOC: CountdownRect = { left: 554 / 1672, top: 396 / 941, width: 272 / 1672, height: 178 / 941 }
 
 // CEO 06/09: "app TA cũng cần push để không miss việc, giống app pt". Khuôn Y HỆT pt (tin
 // chung, không cá nhân hoá theo bài chấm) — chỉ khác GIỜ GỬI (23:30 tối, sau giờ dạy) và app id.
@@ -193,6 +199,8 @@ function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now
             <button onClick={() => supabase.auth.signOut()} className="rounded-full px-2 py-1.5 text-[13px] font-semibold text-[#63709A] active:bg-[#EEF3FF]">Thoát</button>
           </div>
         </div>
+
+        <TripCountdownBanner bgImage="/bk-ui/bg_ops_goout2.jpg" aspect={1672 / 941} targetDate={NGAY_DI_CHOI} rect={RECT_DEM_NGUOC} className="rounded-[22px] shadow-sm" />
 
         {goiYBatNhac && (
           <div className="flex items-center gap-2 rounded-[18px] bg-[#FFF3D6] px-3 py-2">

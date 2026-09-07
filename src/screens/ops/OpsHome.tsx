@@ -10,7 +10,8 @@ import type { MyProfile } from '../../lib/nhansu'
 import type { MyQuyen } from '../../lib/quyen'
 import { myBuoiAoCuaKhoang, getMyOpsTasks, getMyPrepTasks, OPS_TASK_LABEL, type OpsTask, type MyPrepTask } from '../../lib/opsvanhanh'
 import { listCaTestDangChay, type CaTest } from '../../lib/tuyensinh'
-import { homNayVN, ddmmVN, thuCuaNgay, mucDeadline, soNgayGiua } from '../../lib/tuan'
+import { homNayVN, ddmmVN, thuCuaNgay, mucDeadline } from '../../lib/tuan'
+import TripCountdownBanner, { type CountdownRect } from '../../components/TripCountdownBanner'
 import { diemDanhTienDo, type BuoiAo } from '../../lib/gami'
 import { OPS, OA, type OpsTone, OpsHero, IcoHome, IcoCheck, IcoMail, IcoBroom, IcoPencil, IcoGift, IcoChart, IcoCalendar, IcoPower } from '../../components/ops/OpsUI'
 import DiemDanhBuoi from './DiemDanhBuoi'
@@ -173,41 +174,44 @@ function HomTay({ profile, onGo, coQuyen, onThoat, onAvatarChanged }: { profile:
   const nsAnh = profile.nhanSu.anh_url
   return (
     <div>
-      <OpsHero tone="green" title="" bgImage="/bk-ui/bg_ops_home.jpg" bgAspect={370 / 863} bgFill right={
+      {/* CEO 07/09: "header to quá mà hơi trống, bỏ 30% phía trên đi" → bg_ops_home.jpg đã crop bớt 30%
+          chiều cao (giữ nguyên avatar/nhân vật/bảng gỗ ở nửa dưới ảnh gốc, chỉ bỏ dải trời trống phía
+          trên). "Thứ 2, 07/09 cho vào header" → dời thanh ngày từ ngoài (nổi đè -mt-6) vào LUÔN bên
+          trong hero, ghép chung 1 hàng với trạng thái việc cho gọn (hero giờ thấp hơn, không đủ chỗ 2 hàng riêng). */}
+      <OpsHero tone="green" title="" bgImage="/bk-ui/bg_ops_home.jpg" bgAspect={259 / 863} bgFill right={
         <div className="flex shrink-0 items-center gap-1.5">
           <GopY route="home" />
           <button onClick={onThoat} className="flex h-9 w-9 items-center justify-center rounded-full bg-white/20 text-white active:bg-white/30" aria-label="Thoát"><IcoPower cls="h-[18px] w-[18px]" /></button>
         </div>
       }>
-        {/* hàng avatar + chào + trạng thái (thay cho title mặc định) — đặt lại vì layout Home khác các màn khác.
+        {/* hàng avatar + chào (thay cho title mặc định) — đặt lại vì layout Home khác các màn khác.
             Avatar bấm để đổi (mượn module từ app TA) — AvatarEditButton tự upload + cập nhật nhan_su.anh_url. */}
-        <div className="relative -mt-9 flex items-center gap-3">
-          <AvatarEditButton nhanSuId={profile.nhanSu.id} anhUrl={nsAnh} initial={tenGoi.charAt(0).toUpperCase()} size={56} ring="#ffffffB3" badge="#16A34A" onChanged={onAvatarChanged} />
-          <div className="min-w-0 flex-1">
-            <p className="truncate text-[20px] font-extrabold text-white">Chào {tenGoi} 👋</p>
-            <p className="text-[12px] font-semibold text-white/80">BK Vận hành</p>
-          </div>
+        <div className="relative flex items-center gap-2.5">
+          <AvatarEditButton nhanSuId={profile.nhanSu.id} anhUrl={nsAnh} initial={tenGoi.charAt(0).toUpperCase()} size={44} ring="#ffffffB3" badge="#16A34A" onChanged={onAvatarChanged} />
+          <p className="min-w-0 flex-1 truncate text-[17px] font-extrabold text-white">Chào {tenGoi} 👋</p>
         </div>
-        <p className="mt-2 inline-block max-w-full truncate rounded-full bg-white px-3 py-1.5 text-[12.5px] font-semibold text-[#0E6B37] shadow-sm">
-          {loading ? 'Đang tải việc hôm nay…' : tongViec === 0 ? '☕ Không còn việc — nghỉ ngơi thôi!' : conLai === 0 ? '✓ Xong hết việc hôm nay, đỉnh!' : `Còn ${conLai} việc hôm nay`}
-        </p>
+        <div className="mt-1.5 flex items-center gap-1.5">
+          <span className="flex shrink-0 items-center gap-1 rounded-full bg-white px-2.5 py-1 text-[11.5px] font-bold text-[#0E6B37] shadow-sm">
+            <IcoCalendar cls="h-3.5 w-3.5" />{thuCuaNgay(homNay)}, {ddmmVN(homNay)}
+          </span>
+          <span className="min-w-0 flex-1 truncate rounded-full bg-white/90 px-2.5 py-1 text-[11px] font-semibold text-[#0E6B37]">
+            {loading ? 'Đang tải…' : tongViec === 0 ? '☕ Không còn việc — nghỉ ngơi!' : conLai === 0 ? '✓ Xong hết việc, đỉnh!' : `Còn ${conLai} việc hôm nay`}
+          </span>
+        </div>
         {/* Bảng gỗ trong ẢNH GỐC (bg_ops_home.jpg) đã để trống chữ (chỉ giữ nhân vật) — chữ "Cố lên {tên} ơi!"
-            vẽ đè bằng HTML tại đúng toạ độ bảng (742,330 trong ảnh gốc 863×1822, nghiêng -13°) để tên luôn
-            đúng người đăng nhập, không hardcode như bản demo gốc. */}
-        <div className="pointer-events-none absolute left-[86%] top-[68%] w-[17%] -translate-x-1/2 -translate-y-1/2 -rotate-[13deg] text-center font-hand text-[11px] italic leading-tight text-[#7A4B12]">
+            vẽ đè bằng HTML tại đúng toạ độ bảng (742,330 trong ảnh gốc 863×1822, nghiêng -13°, đã trừ 111px
+            crop trên) để tên luôn đúng người đăng nhập, không hardcode như bản demo gốc. */}
+        <div className="pointer-events-none absolute left-[86%] top-[54%] w-[17%] -translate-x-1/2 -translate-y-1/2 -rotate-[13deg] text-center font-hand text-[10px] italic leading-tight text-[#7A4B12]">
           Cố lên<br />{tenGoi} ơi!
         </div>
       </OpsHero>
 
+      {/* Ảnh đi chơi "kịch chiều ngang điện thoại" (CEO 07/09) — full-bleed, đặt NGOÀI khung px-3/max-w
+          của nội dung bên dưới để tràn hết bề ngang màn hình thật, không bị viền/bo góc thu hẹp lại. */}
+      {/* CEO: "2 cái ảnh cách nhau 1 tý chứ đừng liền nhau" — thêm khe hở giữa hero và banner đi chơi */}
+      <TripCountdownBanner bgImage="/bk-ui/bg_ops_goout2.jpg" aspect={1672 / 941} targetDate={NGAY_DI_CHOI} rect={RECT_DEM_NGUOC} className="mt-2 mb-3" />
+
       <div className="mx-auto max-w-[760px] px-3 pb-24 pt-3">
-        {/* thanh ngày — trắng, nổi lên trên hero */}
-        <div className="-mt-6 mb-3 flex items-center gap-2 rounded-2xl bg-white px-4 py-3 shadow-md">
-          <IcoCalendar cls="h-5 w-5 text-[#16A34A]" />
-          <p className="text-[14.5px] font-extrabold text-[#16224D]">{thuCuaNgay(homNay)}, {ddmmVN(homNay)}</p>
-        </div>
-
-        <BannerDiChoi homNay={homNay} />
-
         {/* lưới 6 module */}
         {!loading && (
           <div className="grid grid-cols-2 gap-2.5">
@@ -273,21 +277,9 @@ function HomTay({ profile, onGo, coQuyen, onThoat, onAvatarChanged }: { profile:
 }
 const QUOTES = ['"Không cần hoàn hảo, chỉ cần tiến bộ mỗi ngày."', '"Việc nhỏ làm tốt mỗi ngày, tạo nên khác biệt lớn."', '"Chăm chỉ hôm nay, an tâm hôm sau."', '"Mỗi ca trực chỉn chu là một viên gạch cho BK vững vàng hơn."']
 
-// Banner đếm ngược ngày đi chơi (CEO 07/09, ảnh gốc go_out.png) — mốc CỐ ĐỊNH 30/9/2026 (khớp ảnh gốc:
-// "còn 23 ngày" tính từ hôm gửi ảnh 07/09 → 30/9 = đúng 23 ngày). Ảnh gốc đã xoá 2 chỗ số "23" (tiêu đề to
-// + số trong hình lịch), số hiện tại vẽ đè bằng HTML tại đúng % toạ độ đo trên ảnh 1672×941 nên tự đếm
-// lùi mỗi ngày (22, 21, …) không cần sửa ảnh nữa. Qua ngày 30/9 (đã đi/đang đi) → ẩn banner, không đếm âm.
+// Mốc đi chơi Ba Vì — CEO 07/09 gửi ảnh mới goout_2.png (ảnh sạch, đã chừa sẵn ô trắng trống trong hình
+// lịch, không cần xoá số như bản trước). Rect CEO cho (545,312,265,245) hơi lệch so với ô trắng THẬT
+// trong ảnh (đã dò lại bằng cách quét màu pixel: ô thật là x 554–826, y 396–574) — dùng số đã dò, không
+// dùng số CEO cho thẳng (CEO cũng xác nhận "số 23 hơi lệch, phải thấp xuống" khớp đúng độ lệch đo được).
 const NGAY_DI_CHOI = '2026-09-30'
-function BannerDiChoi({ homNay }: { homNay: string }) {
-  const conLai = soNgayGiua(homNay, NGAY_DI_CHOI)
-  if (conLai < 0) return null
-  return (
-    <div className="relative mb-3 overflow-hidden rounded-2xl shadow-md" style={{ aspectRatio: '1672 / 941', containerType: 'inline-size' }}>
-      <img src="/bk-ui/bg_ops_goout.jpg" alt="" className="absolute inset-0 h-full w-full object-cover" draggable={false} />
-      <p className="font-bubble pointer-events-none absolute left-[42.6%] top-[13.7%] -translate-x-1/2 -translate-y-1/2 text-center font-extrabold text-[#FFD84D]"
-        style={{ fontSize: '9.5cqw', WebkitTextStroke: '0.35cqw #0E6B37', paintOrder: 'stroke fill' }}>{conLai}</p>
-      <p className="font-bubble pointer-events-none absolute left-[62%] top-[63.4%] -translate-x-1/2 -translate-y-1/2 text-center font-extrabold text-[#FFD84D]"
-        style={{ fontSize: '6.2cqw', WebkitTextStroke: '0.22cqw #0E6B37', paintOrder: 'stroke fill' }}>{conLai}</p>
-    </div>
-  )
-}
+const RECT_DEM_NGUOC: CountdownRect = { left: 554 / 1672, top: 396 / 941, width: 272 / 1672, height: 178 / 941 }
