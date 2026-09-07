@@ -195,10 +195,13 @@ export const RichMath = forwardRef<RichMathHandle, Props>(function RichMath(
     const combo = comboFromEvent(e)
     if (combo && cb.current.onCombo?.(combo)) { e.preventDefault(); return }
   }
-  // Dán: chỉ lấy text; text có $…$ (copy từ kho) → công thức hiện ngay.
+  // Dán: chỉ lấy text; text có $…$ (copy từ kho) → công thức hiện ngay. BUG Thùy 07/09: dán 1 công thức copy từ
+  // NGUỒN NGOÀI tự động xuống dòng — nguồn ngoài (trang khác, PDF, Word…) hay kèm 1 "\n" cuối khi copy 1 dòng/khối;
+  // "\n" đó lọt vào text node, CSS `white-space: pre-wrap` của .rm-doc render thành xuống dòng thật ngay lập tức.
+  // Chỉ TRIM \n THỪA ở ĐẦU/CUỐI (giữ nguyên \n Ở GIỮA cho dán nhiều dòng thật sự — soạn lời giải nhiều bước).
   const onPaste = (e: React.ClipboardEvent<HTMLDivElement>) => {
     e.preventDefault()
-    insertRaw(e.clipboardData.getData('text/plain').replace(/\r\n?/g, '\n'))
+    insertRaw(e.clipboardData.getData('text/plain').replace(/\r\n?/g, '\n').replace(/^\n+|\n+$/g, ''))
   }
   const onClick = (e: React.MouseEvent<HTMLDivElement>) => {
     const el = (e.target as HTMLElement).closest?.('.rm-f') as HTMLElement | null

@@ -9063,3 +9063,21 @@ không đổi bảng/view).
 - **Còn treo:** không rõ khi nào trần tự hạ lại (đoán cửa sổ trượt theo giờ, không phải theo ngày lịch —
   cần quan sát thêm). CEO cân nhắc nâng gói Vercel nếu hôm nay còn cần deploy nhiều, hoặc tạm ngừng push
   các phiên đang chạy song song cho tới khi 1 project build được trở lại (dấu hiệu trần đã hạ).
+
+### 07/09 — 2 bug ô soạn công thức (MathPopup/MathBuilder + RichMath)
+**Thùy báo:** "1. Ko có nút tạo công thức mới, bắt buộc phải chọn 1 trong các công thức đã cho. 2. Nó bị tự động
+xuống dòng, t copy paste 1 công thức khác là nó tự xuống dòng."
+**Bug 1 — không rõ có thể gõ trực tiếp:** kiểm tay: gõ thẳng vào `<math-field>` KHÔNG chọn mẫu vẫn chèn được bình
+thường ("2x+3" gõ thẳng → chèn OK) — không phải bug chức năng, là bug NHÌN: ô nhập trống trơn không placeholder,
+nằm ngay dưới bảng mẫu đầy màu sắc → tưởng bắt buộc phải click mẫu. Sửa: `setupMathField` (nguồn CHUNG cho
+MathPopup lẫn MathBuilder) đặt `mf.placeholder`. Chú ý: đặt string thường bị MathLive render Ở CHẾ ĐỘ TOÁN → chữ
+dính liền mất khoảng trắng ("Gõcôngthứctrựctiếptạiđây") — phải bọc `\text{…}`. Thêm dòng hint "gõ trực tiếp ở ô
+dưới, hoặc click ký hiệu" ở cả 2 popup.
+**Bug 2 — dán công thức tự xuống dòng (RichMath.onPaste):** tái hiện bằng dispatch ClipboardEvent tay: dán
+`"$x^2$\n"` (mô phỏng clipboard từ nguồn NGOÀI — hay kèm 1 "\n" cuối khi copy 1 dòng/khối) → DOM ra
+`...formula-span​\n<br>` — text node chứa "\n" NGAY SAU công thức, CSS `white-space: pre-wrap` của `.rm-doc` render
+"\n" đó thành xuống dòng THẬT ngay khi dán. Sửa: `onPaste` trim `\n` THỪA Ở ĐẦU/CUỐI (giữ nguyên `\n` Ở GIỮA — dán
+nhiều dòng thật sự vẫn xuống dòng đúng ý).
+**Verify:** tsc sạch · Browser dev 5181: placeholder hiện đúng "Gõ công thức trực tiếp tại đây…" có khoảng trắng ·
+dispatch paste "$x^2+1$\n" → DOM chỉ còn `formula-span​<br>`, không còn "\n" giữa, ảnh chụp xác nhận công thức nằm
+gọn 1 dòng, con trỏ đứng ngay sau · đóng không lưu, trả 2 bài test dọn sạch.
