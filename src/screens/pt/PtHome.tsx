@@ -7,7 +7,7 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '../../lib/supabase'
 import type { PtGate } from '../../AppPt'
-import { listViecCuaToiPt, type ViecPt } from '../../lib/giaoviec'
+import { listViecCuaToiPt, listChoNghiemThuCuaToi, type ViecPt } from '../../lib/giaoviec'
 import { homNayVN, ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import { kiemTraHoTro, trangThaiNhacViec } from '../../lib/push'
 import { NhacViecCard } from '../../components/NhacViecCaiDat'
@@ -32,11 +32,15 @@ export default function PtHome({ gate }: { gate: PtGate }) {
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
   const [chiTiet, setChiTiet] = useState<ViecPt | null>(null)
+  const [choDuyet, setChoDuyet] = useState(0)   // việc TÔI GIAO đang chờ TÔI nghiệm thu (chỉ ai có quyền Quản lý)
 
   async function reload(silent = false) {
     if (!silent) setLoading(true)
     setErr(null)
-    try { setRows(await listViecCuaToiPt()) }
+    try {
+      setRows(await listViecCuaToiPt())
+      if (coQuanLy) listChoNghiemThuCuaToi().then((r) => setChoDuyet(r.length)).catch(() => {})
+    }
     catch (e: any) { setErr(e?.message ?? String(e)) }
     finally { setLoading(false) }
   }
@@ -61,7 +65,7 @@ export default function PtHome({ gate }: { gate: PtGate }) {
         {tab === 'quanly' && coQuanLy && (
           <div>
             <HeaderBar profile={profile} sub="Giao việc phát triển" />
-            <div className="mx-auto max-w-[1000px]"><PtQuanLy laAdmin={quyen.laAdmin} laQuanLy={laQuanLy} /></div>
+            <div className="mx-auto max-w-[1000px]"><PtQuanLy laAdmin={quyen.laAdmin} laQuanLy={laQuanLy} onChoDuyetChange={setChoDuyet} /></div>
           </div>
         )}
         {tab === 'caidat' && <CaiDat profile={profile} />}
@@ -71,7 +75,7 @@ export default function PtHome({ gate }: { gate: PtGate }) {
         <div className="mx-auto flex max-w-[1000px]">
           <TabBtn active={tab === 'homnay'} icon="☀️" label="Hôm nay" pill="bg-violet-100" text="text-violet-700" no={chuaCapNhat} onClick={() => setTab('homnay')} />
           <TabBtn active={tab === 'viec'} icon="🗂️" label="Việc của tôi" pill="bg-sky-100" text="text-sky-700" no={0} onClick={() => setTab('viec')} />
-          {coQuanLy && <TabBtn active={tab === 'quanly'} icon="🧭" label="Quản lý" pill="bg-indigo-100" text="text-indigo-700" no={0} onClick={() => setTab('quanly')} />}
+          {coQuanLy && <TabBtn active={tab === 'quanly'} icon="🧭" label="Quản lý" pill="bg-indigo-100" text="text-indigo-700" no={choDuyet} onClick={() => setTab('quanly')} />}
           <TabBtn active={tab === 'caidat'} icon="🔔" label="Cài đặt" pill="bg-amber-100" text="text-amber-700" no={0} onClick={() => setTab('caidat')} />
         </div>
       </div>

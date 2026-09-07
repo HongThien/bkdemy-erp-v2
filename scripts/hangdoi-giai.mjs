@@ -121,11 +121,11 @@ try {
     const note = `[Claude bỏ: ${ly.join(' ') || 'không giải được'}]`
     let r
     if (mon === 'hinh') {
-      r = await c.query(`update hinh_baitoan_yeu_cau_giai set xu_ly_at = now(), ghi_chu = concat_ws(' | ', ghi_chu, $2) where id = $1 and xu_ly_at is null`, [id, note])
-      if (!r.rowCount) r = await c.query(`update hinh_bien_the_yeu_cau_giai set xu_ly_at = now(), ghi_chu = concat_ws(' | ', ghi_chu, $2) where id = $1 and xu_ly_at is null`, [id, note])
+      r = await c.query(`update hinh_baitoan_yeu_cau_giai set xu_ly_at = now(), ghi_chu = concat_ws(' | ', ghi_chu, $2::text) where id = $1 and xu_ly_at is null`, [id, note])
+      if (!r.rowCount) r = await c.query(`update hinh_bien_the_yeu_cau_giai set xu_ly_at = now(), ghi_chu = concat_ws(' | ', ghi_chu, $2::text) where id = $1 and xu_ly_at is null`, [id, note])
     } else {
       const t = await tbl(mon)
-      r = await c.query(`update ${t}_cau_hoi_yeu_cau_giai set xu_ly_at = now(), ghi_chu = concat_ws(' | ', ghi_chu, $2) where id = $1 and xu_ly_at is null`, [id, note])
+      r = await c.query(`update ${t}_cau_hoi_yeu_cau_giai set xu_ly_at = now(), ghi_chu = concat_ws(' | ', ghi_chu, $2::text) where id = $1 and xu_ly_at is null`, [id, note])
     }
     console.log(r.rowCount ? 'Đã đóng yêu cầu (không ghi lời giải).' : 'Không thấy yêu cầu treo với id này.')
   } else {

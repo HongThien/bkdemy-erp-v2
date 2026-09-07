@@ -101,7 +101,7 @@ export default function ChuaGiaiTab({ mon, khoi, onChanged }: { mon: string; kho
   async function onDatTatCa() {
     const chuaDat = rows.filter((r) => !r.yeuCauId)
     const nhan = nhanh === 'all' ? 'mọi nhánh' : NHANH_LABEL[nhanh]
-    if (!chuaDat.length || !confirm(`Đặt Claude giải ${chuaDat.length} bài chưa đặt (${nhan}, khối ${khoi})?`)) return
+    if (!chuaDat.length || !confirm(`Đánh dấu ưu tiên ${chuaDat.length} bài chưa đặt (${nhan}, khối ${khoi})?`)) return
     setBusyAll(true)
     try { await datLo(chuaDat, await myNhanSuId()); await reload(); onChanged?.() }
     catch (e: any) { alert(e.message ?? String(e)) } finally { setBusyAll(false) }
@@ -141,14 +141,14 @@ export default function ChuaGiaiTab({ mon, khoi, onChanged }: { mon: string; kho
           </div>
         )}
         <span className="text-[12px] text-slate-500">
-          <b className="text-slate-800">{rows.length}</b> bài chưa có lời giải · <b className="text-violet-700">{soDaDat}</b> đã đặt Claude
+          <b className="text-slate-800">{rows.length}</b> bài chưa có lời giải · <b className="text-violet-700">{soDaDat}</b> đã ưu tiên
         </span>
         <input value={ghiChu} onChange={(e) => setGhiChu(e.target.value)} placeholder="Ghi chú gửi Claude khi đặt (tuỳ chọn) — vd: trình bày theo mẫu SGK, bám đáp án có sẵn…"
           className="min-w-[240px] flex-1 rounded-md border border-slate-200 px-2.5 py-1 text-[13px] focus:border-violet-400 focus:outline-none" />
         <button onClick={onDatTatCa} disabled={busyAll || rows.length - soDaDat === 0}
-          title="Đưa mọi bài chưa đặt (đang lọc) vào hàng đợi cho Claude Code giải theo lô"
+          title="Đánh dấu ưu tiên mọi bài chưa đặt (đang lọc) — Claude xử lý các bài này trước, còn lại tự quét theo lượt"
           className="rounded-md border border-violet-300 bg-violet-50 px-3.5 py-1.5 text-[13px] font-medium text-violet-700 shadow-sm hover:bg-violet-100 disabled:opacity-40">
-          {busyAll ? '⏳ Đang đặt…' : `📥 Đặt Claude giải tất cả chưa đặt (${rows.length - soDaDat})`}
+          {busyAll ? '⏳ Đang đặt…' : `⭐ Ưu tiên tất cả chưa đặt (${rows.length - soDaDat})`}
         </button>
       </div>
       <div className="flex-1 overflow-auto px-6 py-4">
@@ -186,8 +186,8 @@ export default function ChuaGiaiTab({ mon, khoi, onChanged }: { mon: string; kho
                             className="rounded-md px-2.5 py-1 text-[12px] font-medium text-rose-600 hover:bg-rose-50 disabled:opacity-40">{busyKey === r.key ? '⏳…' : '✕ Huỷ đặt'}</button>
                         ) : (
                           <button onClick={() => onDat(r)} disabled={busyKey === r.key || busyAll}
-                            title="Không gọi API ngay — Claude Code giải theo lô sau, kết quả vào tab “Lời giải mới từ Claude”"
-                            className="rounded-md border border-violet-300 bg-violet-50 px-2.5 py-1 text-[12px] font-medium text-violet-700 hover:bg-violet-100 disabled:opacity-40">{busyKey === r.key ? '⏳…' : '📥 Đặt Claude giải'}</button>
+                            title="Ưu tiên bài này — Claude xử lý trước các lượt quét tự động khác, kết quả vào tab “Lời giải mới từ Claude”"
+                            className="rounded-md border border-violet-300 bg-violet-50 px-2.5 py-1 text-[12px] font-medium text-violet-700 hover:bg-violet-100 disabled:opacity-40">{busyKey === r.key ? '⏳…' : '⭐ Ưu tiên'}</button>
                         )}
                         <button onClick={() => setOpenKey(openKey === r.key ? null : r.key)} disabled={busyAll || !!r.yeuCauNguoi} title={r.yeuCauNguoi ? `${r.yeuCauNguoi} đang giữ bài này trên tool giải bài` : undefined}
                           className={`rounded-md px-2.5 py-1 text-[12px] font-medium shadow-sm disabled:opacity-40 ${openKey === r.key ? 'bg-slate-200 text-slate-700' : 'bg-emerald-600 text-white hover:bg-emerald-500'}`}>

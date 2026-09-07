@@ -43,9 +43,17 @@ export function stripPlaceholders(latex: string): string {
 }
 export const isBlankLatex = (latex: string) => latex.replace(/[{}\s]/g, '') === ''
 
+// Ô trống KHÔNG có gợi ý → nhìn như trang trí, người soạn tưởng "phải click 1 mẫu trước" (Thùy 07/09: "Ko có nút
+// tạo công thức mới, bắt buộc phải chọn 1 trong các công thức đã cho") — thật ra gõ thẳng vào đây LUÔN ĐƯỢC, mẫu
+// chỉ để chèn nhanh cấu trúc (phân số, căn…). Đặt placeholder để rõ ngay từ cái nhìn đầu.
+// \text{…} — không bọc thì MathLive render placeholder Ở CHẾ ĐỘ TOÁN, chữ dính liền mất hết khoảng trắng
+// (đã dính thật: "Gõcôngthứctrựctiếptạiđây" khi test tay 07/09).
+export const MF_PLACEHOLDER = '\\text{Gõ công thức trực tiếp tại đây…}'
+
 // Cấu hình 1 <math-field> theo luật trên + nạp giá trị đầu. Trả hàm gỡ listener (gọi trong cleanup effect).
 export function setupMathField(mf: MathfieldElement, initial: string, onInput: () => void): () => void {
   mf.classList.add('mf-input')                  // React 18 KHÔNG set className lên custom element → gán tay
+  mf.placeholder = MF_PLACEHOLDER
   mf.inlineShortcuts = {}                       // TẮT gõ tắt kiểu chữ: "sqrt" phải ra 4 chữ s q r t
   mf.smartMode = false
   mf.smartSuperscript = false
@@ -78,8 +86,15 @@ export function insertLatexInto(mf: MathfieldElement, latex: string, opts: { tex
   let s = latex
   if (sel && s.includes('#?')) s = s.replace('#?', sel)
   s = s.replace(/#\?/g, '\\placeholder{}')
+  const coCho = s.includes('\\placeholder')
   if (mf.mode !== 'math') mf.executeCommand(['switchMode', 'math'])
-  mf.insert(s, { format: 'latex', selectionMode: s.includes('\\placeholder') ? 'placeholder' : 'after', focus: true })
+  mf.insert(s, { format: 'latex', selectionMode: coCho ? 'placeholder' : 'after', focus: true })
+  // TEST 07/09 (chưa commit — Thùy báo "chọn ký hiệu Góc, ko điền được chữ vào ô trống"): tái hiện được — ô trống
+  // NẰM TRONG ngoặc {} của 1 lệnh (`\widehat{#?}`) mà insert() là THAO TÁC ĐẦU TIÊN vào field còn trống thì
+  // `selectionMode:'placeholder'` không bắt được ô trống đó (con trỏ rơi ra NGOÀI, gõ vào thành text sau khối) —
+  // placeholder ĐỨNG RIÊNG (`\angle #?`) hoặc field đã có nội dung trước đó thì selectionMode hoạt động đúng.
+  // Ép tìm lại placeholder từ ĐẦU tài liệu, không dựa vào selectionMode.
+  if (coCho) { mf.executeCommand('moveToMathfieldStart'); mf.executeCommand('moveToNextPlaceholder') }
   if (opts.textMode) mf.executeCommand(['switchMode', 'text'])
 }
 // Mẫu Văn bản: ô trống trong \text{} vẫn ở mode toán (chữ nghiêng, mất khoảng trắng, mất \text) → ép sang

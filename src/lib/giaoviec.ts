@@ -469,6 +469,18 @@ export async function listViecToiGiao(nguoiGiaoId: string): Promise<ViecFull[]> 
   if (error) throw error
   return decorateViec((data ?? []) as Viec[])
 }
+// DUYỆT (§4.2, người giao) — hộp duyệt CÁ NHÂN: task TÔI giao, người làm đã nộp, đang
+// CHỜ TÔI nghiệm thu. Trước đây chỉ có ở tab Weekly Planning (phải lần đúng tuần + đào qua
+// cụm mẹ/con mới thấy nút Nghiệm thu) — CEO 06/09: thiếu hẳn 1 màn "việc cần tôi duyệt" gom
+// thẳng, giống DuyetTab.tsx. Cũ nhất nộp trước lên đầu (FIFO — ai chờ lâu nhất duyệt trước).
+export async function listChoNghiemThuCuaToi(): Promise<ViecFull[]> {
+  const me = await myNhanSuId()
+  const { data, error } = await supabase.from('viec').select('*')
+    .eq('nguoi_giao_id', me).eq('trang_thai', 'cho_nghiem_thu')
+    .order('hoan_thanh_at', { ascending: true }).limit(LIMIT)
+  if (error) throw error
+  return decorateViec((data ?? []) as Viec[])
+}
 // REVIEW TUẦN (§7 màn 1): mọi task ĐANG MỞ của cả team (nghiệm thu hàng loạt) — toàn trung tâm.
 export async function listViecDangMo(): Promise<ViecFull[]> {
   const { data, error } = await supabase.from('viec').select('*')

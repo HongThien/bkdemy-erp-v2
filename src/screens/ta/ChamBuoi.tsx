@@ -14,6 +14,7 @@ import DangPickerOne from '../../components/DangPickerOne'
 import ChamBtvn from './ChamBtvn'
 import type { BuoiView } from './TaHome'
 import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
+import { BK_TROI } from '../../components/bk/BKUI'
 
 export const ET_KQ: { v: ETResult; lbl: string; idle: string; sel: string }[] = [
   { v: 'correct', lbl: 'Đ', idle: 'border-slate-200 text-emerald-700', sel: 'border-transparent bg-emerald-600 text-white' },
@@ -61,21 +62,23 @@ export default function ChamBuoi({ view, onBack }: { view: BuoiView; onBack: () 
   const tenDang = (md: string | null) => (md ? tenDangMap[md] ?? md : '—')
 
   return (
-    <div className="flex h-[100dvh] flex-col bg-[#f5f5f7]" style={{ fontFamily: "'Be Vietnam Pro', 'Segoe UI', system-ui, sans-serif" }}>
-      <div className="border-b border-slate-200/60 bg-white px-3 pb-0" style={{ paddingTop: 'max(0.5rem, env(safe-area-inset-top))' }}>
-        <div className="mx-auto max-w-[1000px]">
+    // Vỏ BK (CEO 07/09): nền trời, thanh đầu trắng mờ bo tròn (nút ‹ ảnh, tên lớp bong bóng), tab = pill xanh.
+    // Nội dung 3 panel chấm giữ nguyên (nút ≥44px, màu trạng thái Đ/C/S là ngữ nghĩa).
+    <div className="flex h-[100dvh] flex-col" style={{ fontFamily: "'Be Vietnam Pro', 'Segoe UI', system-ui, sans-serif", background: BK_TROI }}>
+      <div className="px-2" style={{ paddingTop: 'max(0.5rem, env(safe-area-inset-top))' }}>
+        <div className="mx-auto max-w-[1000px] rounded-[20px] bg-white/90 px-2 pb-2 pt-1.5">
           <div className="flex items-center gap-2 pb-1.5">
-            <button onClick={onBack} className="rounded-lg px-2 py-1.5 text-[14px] font-semibold text-teal-700 active:bg-teal-50">‹ Việc của tôi</button>
+            <button onClick={onBack} aria-label="Việc của tôi" className="h-9 w-9 shrink-0 active:scale-95"><img src="/bk-ui/gay_back.png" alt="" className="h-full w-full drop-shadow" draggable={false} /></button>
             <div className="min-w-0 flex-1 text-center leading-tight">
-              <p className="truncate text-[14.5px] font-bold text-slate-800">{view.lop}</p>
-              <p className="text-[11px] text-slate-400">{thuCuaNgay(view.ngay)} · {ddmmVN(view.ngay)}{buoi?.lop?.mon ? ` · ${buoi.lop.mon}` : ''}</p>
+              <p className="font-bubble truncate text-[15px] font-extrabold text-[#16224D]">{view.lop}</p>
+              <p className="text-[11px] text-[#63709A]">{thuCuaNgay(view.ngay)} · {ddmmVN(view.ngay)}{buoi?.lop?.mon ? ` · ${buoi.lop.mon}` : ''}</p>
             </div>
-            <span className="w-[104px]" />
+            <span className="w-9" />
           </div>
-          <div className="flex gap-1.5 pb-2">
+          <div className="flex gap-1">
             {TABS.map((t) => (
               <button key={t.key} onClick={() => setTab(t.key)}
-                className={`min-h-[36px] flex-1 rounded-xl text-[13px] font-semibold transition ${tab === t.key ? 'bg-teal-600 text-white' : 'bg-slate-100 text-slate-500 active:bg-slate-200'}`}>{t.label}</button>
+                className={`min-h-[34px] flex-1 rounded-full text-[12.5px] font-bold transition ${tab === t.key ? 'bg-[#2F73F6] text-white shadow' : 'bg-[#EEF3FF] text-[#2F73F6] active:bg-[#DCE6FF]'}`}>{t.label}</button>
             ))}
           </div>
         </div>

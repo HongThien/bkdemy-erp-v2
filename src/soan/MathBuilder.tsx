@@ -77,7 +77,7 @@ export function MathBuilder({ title, initial, cums, commitLabel = 'Chèn', onCom
       <div className="w-[760px] max-w-full rounded-2xl border border-slate-200 bg-white shadow-2xl" onKeyDownCapture={onKeyDownCapture} onMouseDown={stop} onClick={stop}>
         <div className="flex items-center gap-2 border-b border-slate-200 px-4 py-2.5">
           <h2 className="text-[14px] font-semibold text-slate-800">{title}</h2>
-          <span className="ml-auto text-[11px] text-slate-400">click ký hiệu · <b className="text-slate-500">Tab</b> ô kế · <b className="text-slate-500">Enter</b> {commitLabel.toLowerCase()} · <b className="text-slate-500">Esc</b> huỷ</span>
+          <span className="ml-auto text-[11px] text-slate-400">gõ trực tiếp ở ô dưới, hoặc click ký hiệu · <b className="text-slate-500">Tab</b> ô kế · <b className="text-slate-500">Enter</b> {commitLabel.toLowerCase()} · <b className="text-slate-500">Esc</b> huỷ</span>
         </div>
         {children && <div className="border-b border-slate-100 px-4 py-2.5">{children}</div>}
         {/* Bảng ký hiệu */}

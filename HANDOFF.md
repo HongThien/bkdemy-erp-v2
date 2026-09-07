@@ -1450,6 +1450,29 @@ thẳng `ca_test.nguoi_cham_id`/`nguoi_tra_bai_id`, data đã sẵn, không cầ
 - **Trả focus sau khi gỡ web component: `setTimeout`, không chỉ rAF** — MathLive dọn focus async, focus sớm bị cướp về body.
 - **Mẫu LaTeX ghép với chữ gõ vào phải có khoảng trắng sau lệnh:** `\int#?` điền `x` thành `\intx` (lệnh lạ). Test mẫu theo
   4 ca (nút · ô trống · đã điền · lưu còn ô trống), không chỉ 1.
+- **⭐⭐ Vercel 1 repo × 8 project = TRẦN BUILD DÙNG CHUNG CẢ TÀI KHOẢN (Hobby: 100/ngày), không phải riêng
+  từng project — cắn 07/09, 2 LẦN TRONG CÙNG 1 NGÀY.** Lần 1: chưa có `ignoreCommand` ⇒ mỗi push build cả
+  8 project ⇒ ~15 push/ngày × 8 = vượt trần ⇒ Vercel lặng lẽ chặn 7/8 project ("Deployment rate limited —
+  retry in 24 hours") — **không hiện lỗi gì trong Deployments**, chỉ đơn giản NGỪNG tạo deployment mới cho
+  project đó dù `main` vẫn nhận commit đều. Dấu hiệu nhận biết: so commit mới nhất trong Deployments với
+  `git log` HEAD — thấy khoảng trống nhiều commit/nhiều giờ là đủ kết luận, ĐỪNG đợi thấy dòng "Error".
+  Đã sửa (`vercel.json.ignoreCommand = scripts/vercel-ignore.mjs`): mỗi push chỉ build project có file
+  RIÊNG của nó đổi (file dùng chung như `src/lib`/`src/components`/`package.json` vẫn build cả 8).
+  **Lần 2 (cùng ngày, ~3h sau, SUÝT bị hiểu nhầm là bug script):** dù đã có `ignoreCommand`, 2 project
+  (TA lẫn OPS) đột nhiên NGỪNG nhận deployment y hệt kiểu lần 1 — ban đầu nghi sai do 2 commit TA "chỉ
+  đụng đúng file riêng của nó vẫn không build" (tưởng bug diff/shallow-clone), commit rỗng ép trigger 2
+  lần cũng im lặng luôn. Chỉ khi xác nhận **OPS — project khác hẳn — cũng bị y hệt cùng lúc** mới chốt
+  đúng: `ignoreCommand` chỉ giảm SỐ PROJECT build MỖI PUSH (8→1), KHÔNG giảm SỐ LƯỢT PUSH — nhiều phiên
+  Claude Code chạy song song, mỗi phiên tự push sau mỗi sửa nhỏ (kể cả phiên đang ghi bài học "gom commit"
+  này cũng lỡ push riêng 2 lần cho 2 sửa nhỏ ngay buổi sáng cùng ngày) vẫn cộng đủ lượt để đụng trần lại,
+  dù mỗi push nhẹ hơn. **Luật chẩn đoán: khi 1 project "im lặng không build", luôn kiểm project KHÁC có
+  bị y hệt không TRƯỚC khi nghi ngờ code/script riêng của project đó** — bị 1 project = có thể là bug
+  local; bị ≥2 project không liên quan cùng lúc = gần như chắc chắn trần tài khoản, không phải bug.
+  **Không có cách sửa CODE nào chặn được lần tái diễn** — chỉ NGỪNG PUSH một lúc (quan sát: lần 1 tự
+  thông lại sau ~7-8h, có vẻ cửa sổ trượt theo giờ chứ không phải khoá cứng 24h lịch) hoặc NÂNG GÓI Vercel.
+  **Quy tắc thật (không phải chỉ "gom commit của 1 phiên"):** khi NHIỀU phiên cùng làm việc trên 1 repo
+  Vercel-8-project trong cùng khung giờ, tổng lượt push của TẤT CẢ phiên cộng lại mới là con số so với
+  trần — 1 phiên tự kỷ luật gom commit không đủ nếu các phiên khác vẫn push dồn dập song song.
 
 ## ③ Nhật ký
 → Chuyển sang **`DEVLOG.md`** (log thô append-only, theo ngày, KHÔNG load khi làm). Là nguồn bất biến để truy lại / tổng hợp lại HANDOFF nếu bản này sai logic.

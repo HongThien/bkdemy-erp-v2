@@ -11,6 +11,7 @@ import {
   type SoDuXu, type TonQua, type DoiQua, type QuaOrder, type QuaNhap, type XuLedgerRow,
 } from '../../lib/tuqua'
 import SearchSelect, { type Opt } from '../../components/SearchSelect'
+import { OpsHero } from '../../components/ops/OpsUI'
 
 type Muc = 'doi' | 'don' | 'kho'
 const ddmm = (iso: string) => new Date(iso).toLocaleDateString('vi', { day: '2-digit', month: '2-digit', timeZone: 'Asia/Ho_Chi_Minh' })
@@ -48,19 +49,24 @@ export default function TuQuaScreen() {
   const bao = (m: string) => { setToast(m); setTimeout(() => setToast(null), 2500) }
 
   return (
+    // REDESIGN 07/09 (nhẹ tay — chỉ đổi header, KHÔNG đụng logic 3 tab bên dưới): tông cam đúng khuôn
+      // "Quà" trong bộ 7 màn OPS mới (ops6.png), dù đây là tính năng KHÁC (tủ quà học sinh, không phải
+      // shopping cá nhân nhân viên) — chỉ mượn màu cho đồng bộ giao diện.
     <div>
-      {/* hero hồng: tiêu đề + segmented 3 mục */}
-      <div className="bg-rose-600 px-4 pb-4" style={{ paddingTop: 'max(0.75rem, env(safe-area-inset-top))' }}>
-        <div className="mx-auto max-w-[760px]">
-          <p className="text-[12px] font-bold uppercase tracking-wide text-rose-200">Tủ quà · đổi bằng xu</p>
-          <div className="mt-2 flex rounded-xl bg-rose-700/60 p-1">
-            {([['doi', '🎁 Đổi quà'], ['don', '📦 Đơn đặt'], ['kho', '🗃️ Kho']] as [Muc, string][]).map(([k, lbl]) => (
-              <button key={k} onClick={() => setMuc(k)}
-                className={`min-h-[40px] flex-1 rounded-lg text-[13.5px] font-bold transition ${muc === k ? 'bg-white text-rose-700' : 'text-rose-100 active:bg-rose-600'}`}>
-                {lbl}
-              </button>
-            ))}
-          </div>
+      {/* CEO 07/09 gửi ảnh chuẩn "ops_doiqua.png" — ảnh đã bake sẵn tiêu đề "Đổi quà cho học sinh" +
+          tagline, không cần vẽ chữ đè lên nữa (khác bản cũ dùng ảnh ops6.png phải giữ title HTML).
+          bgFill bắt buộc vì hero không còn children khác (thanh tab đã dời xuống dưới). */}
+      <OpsHero tone="orange" bgImage="/bk-ui/bg_ops_tuqua.jpg" bgAspect={700 / 1448} bgFill />
+
+      {/* Thanh tab đặt HẲN dưới header (nền trắng đục) — CEO 07/09: đặt đè lên ảnh header bị trùng, khó nhìn */}
+      <div className="mx-auto max-w-[760px] px-3 pt-3">
+        <div className="relative mx-auto flex rounded-2xl bg-white p-1 shadow-sm">
+          {([['doi', '🎁 Đổi quà'], ['don', '📦 Đơn đặt'], ['kho', '🗃️ Kho']] as [Muc, string][]).map(([k, lbl]) => (
+            <button key={k} onClick={() => setMuc(k)}
+              className={`min-h-[40px] flex-1 rounded-xl text-[13.5px] font-bold transition ${muc === k ? 'bg-[#FFE9D2] text-[#9A3E10]' : 'text-[#9AA5C4] active:bg-[#F7F9FF]'}`}>
+              {lbl}
+            </button>
+          ))}
         </div>
       </div>
 

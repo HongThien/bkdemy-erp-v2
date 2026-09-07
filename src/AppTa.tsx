@@ -48,5 +48,9 @@ export default function AppTa() {
   if (gate === undefined) return <DangTai />
   if (gate === 'hs') return <ManThongBao text="Tài khoản này là học sinh — app này chỉ dành cho trợ giảng." />
   if (gate === 'khong_link') return <ManThongBao text="Tài khoản chưa gắn với hồ sơ nhân sự nào — liên hệ quản trị." />
-  return <TaHome profile={gate.profile} quyen={gate.quyen} />
+  // Đổi avatar ngay trong app TA (CEO 07/09: "tiện hơn ERP") — sửa STATE Ở ĐÂY (gốc profile) để avatar
+  // mới hiện lại ở MỌI nơi dùng `profile` (Hôm nay + Của tôi), không chỉ nơi bấm đổi.
+  const onAvatarChanged = (url: string) =>
+    setGate((g) => (g && typeof g !== 'string' ? { ...g, profile: { ...g.profile, nhanSu: { ...g.profile.nhanSu, anh_url: url } } } : g))
+  return <TaHome profile={gate.profile} quyen={gate.quyen} onAvatarChanged={onAvatarChanged} />
 }

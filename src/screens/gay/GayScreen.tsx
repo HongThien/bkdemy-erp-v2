@@ -242,6 +242,10 @@ function DeXuatTab({ lois, canAct, laAdmin, scopeIds, meId, onBao }: {
     setLoading(false)
   }
   useEffect(() => { load() }, [])
+  // SLA duyệt gậy (CEO 06/09): quản lý phải quyết trong 48h — quá hạn mà vẫn 'cho' thì dashboard
+  // "Của tôi" đã TỰ TÍNH ĐẠT CHUẨN cho task đó rồi (fn_gay_dang_hieu_luc chỉ true khi đã CHỐT) —
+  // đây chỉ là NHẮC leader, không đổi được gì bằng cách lờ đi.
+  const qua48h = (createdAt: string) => Date.now() - new Date(createdAt).getTime() > 48 * 3600000
 
   // Gom theo người (nhiều nhất lên đầu) — mặc định mở sẵn người đang lọc / chính mình
   const nhom = useMemo(() => {
@@ -287,12 +291,14 @@ function DeXuatTab({ lois, canAct, laAdmin, scopeIds, meId, onBao }: {
       ) : nhomHien.map((n) => {
         const mo = moNs === n.nsId
         const duocLam = canAct && (laAdmin || scopeIds.has(n.nsId))
+        const soQua48h = n.items.filter((d) => qua48h(d.created_at)).length
         return (
           <div key={n.nsId} className="mt-2 overflow-hidden rounded-xl border border-slate-100 shadow-sm">
             <button className="flex w-full items-center gap-3 bg-white px-4 py-3 text-left transition hover:bg-slate-50/70" onClick={() => setMoNs(mo ? null : n.nsId)}>
               <span className="text-sm font-semibold text-slate-800">{n.ten}</span>
               {n.nsId === meId && <span className="rounded-full bg-indigo-50 px-1.5 py-0.5 text-[10px] font-semibold text-indigo-600">bạn</span>}
               <span className={pill('amber')}>{n.items.length} việc trễ</span>
+              {soQua48h > 0 && <span className={pill('red')} title="Quá 48h chưa duyệt — hệ thống đã tự tính ĐẠT CHUẨN cho các việc này">⏰ {soQua48h} quá 48h</span>}
               <span className="ml-auto text-xs font-medium text-indigo-500">{mo ? 'Đóng ▲' : 'Chi tiết ▼'}</span>
             </button>
             {mo && (
@@ -303,6 +309,7 @@ function DeXuatTab({ lois, canAct, laAdmin, scopeIds, meId, onBao }: {
                       <p className="text-sm text-slate-700">{d.mo_ta}</p>
                       <p className="mt-0.5 text-xs text-slate-400">
                         {d.nguon === 'vanhanh' ? 'Vận hành' : 'Giao việc'} · hạn {ddmmhh(d.deadline_at)} · <span className="font-medium text-red-600">trễ {nhanTre(d.tre_phut)}</span>
+                        {qua48h(d.created_at) && <span className="ml-1.5 font-semibold text-rose-600">· ⏰ quá 48h chưa duyệt (đang tính ĐẠT CHUẨN)</span>}
                       </p>
                     </div>
                     {duocLam ? (

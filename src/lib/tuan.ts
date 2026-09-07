@@ -12,6 +12,8 @@ export function homNayVN(): string { const vn = new Date(Date.now() + 7 * 360000
 // 'YYYY-MM-DD' (giờ VN) của 1 epoch ms — dùng để gom việc theo NGÀY DEADLINE (không phải ngày tạo/ngày buổi).
 export function ngayCuaTs(ms: number): string { const vn = new Date(ms + 7 * 3600000); return utcToYmd(Date.UTC(vn.getUTCFullYear(), vn.getUTCMonth(), vn.getUTCDate())) }
 export function congNgay(ngay: string, n: number): string { return utcToYmd(ymdToUTC(ngay) + n * DAY) }
+// Số ngày từ `a` đến `b` (b - a, có thể âm nếu b ở quá khứ) — dùng cho đếm ngược hiển thị (vd banner sự kiện).
+export function soNgayGiua(a: string, b: string): number { return Math.round((ymdToUTC(b) - ymdToUTC(a)) / DAY) }
 
 export function tuanCuaNgay(ngay: string): number { return Math.floor((ymdToUTC(ngay) - WEEK1_MONDAY_UTC) / (7 * DAY)) + 1 }
 export function khoangTuan(tuan: number): { tu: string; den: string } {

@@ -142,8 +142,13 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, tienDe
     } catch (e: any) { setLoi(e.message ?? String(e)); setSaving(false) }
   }
 
-  const themTienDe = (id: string) => setTienDe((a) => (a.includes(id) ? a : [...a, id]))
-  const boTienDe = (id: string) => { setTienDe((a) => a.filter((x) => x !== id)); setVanIds((s) => { const n = new Set(s); n.delete(id); return n }) }
+  // ⭐ 07/09 (Thùy: "sửa gì thì sơ đồ chả update theo gì cả"): node ĐANG SỬA khoá cấp = "đã chốt" (dòng
+  // 43-45) — đúng cho lúc chỉ sửa câu hỏi/lời giải, nhưng nếu NGAY TRONG PHIÊN SỬA NÀY người chủ động
+  // đổi tiền đề, cấp cũ hết còn ý nghĩa "đã chốt theo cấu trúc hiện tại" nữa. Không mở khoá thì node
+  // đứng NGUYÊN cột cũ, mất hết dây nối — nhìn như bồ côi giữa sơ đồ dù DB đã lưu đúng tiền đề mới.
+  // Mở khoá lại (như node MỚI) mỗi lần đổi tiền đề; gõ tay cấp sau đó vẫn khoá lại bình thường.
+  const themTienDe = (id: string) => { setTienDe((a) => (a.includes(id) ? a : [...a, id])); setCapTuNhap(false) }
+  const boTienDe = (id: string) => { setTienDe((a) => a.filter((x) => x !== id)); setVanIds((s) => { const n = new Set(s); n.delete(id); return n }); setCapTuNhap(false) }
   const toggleVan = (id: string) => setVanIds((s) => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n })
 
   return createPortal(

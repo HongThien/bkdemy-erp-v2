@@ -197,12 +197,16 @@ function ViewBaiToan({ L, ho, nodes: nodesHo, chon, setChon, onSua, onTaoKeTiep,
     for (const n of nodes) for (const t of api.tienDeCua(L, n.id)) if (!pos.has(t)) { s.add(n.id); break }
     return s
   }, [nodes, pos, scope, L])
-  // Dây MÔ HÌNH (hub) → từng node — khuôn `RadialEco` (tâm–vệ tinh) nhưng phóng vào canvas cột-cấp chính.
+  // Dây MÔ HÌNH (hub) → CHỈ bài ĐẦU CHUỖI (không tiền đề — sinh trực tiếp từ giả thiết mô hình).
+  // Bài kế tiếp trong chuỗi đã có dây tiền đề riêng rồi; nối thêm dây hub vào ĐÓ nữa là 2 dây chồng lên
+  // 1 node, hub lại quét chéo suốt canvas (hub nằm giữa cột, bài cuối chuỗi có thể ở hàng rất xa) — rối
+  // vô ích (Thùy 07/09: "mũi tên từ mô hình chỉ cần hướng đến bài đầu chuỗi thôi").
   const hubCanh = useMemo(() => {
     if (scope !== 'mh') return []
     const x1 = MH_W, y1 = hubY + MH_H / 2
-    return nodes.map((n) => { const b = pos.get(n.id)!; return { x1, y1, x2: b.x, y2: b.y + NODE_H / 2 } })
-  }, [scope, nodes, pos, hubY])
+    return nodes.filter((n) => api.tienDeCua(L, n.id).length === 0)
+      .map((n) => { const b = pos.get(n.id)!; return { x1, y1, x2: b.x, y2: b.y + NODE_H / 2 } })
+  }, [scope, nodes, pos, hubY, L])
 
   const bt = chon ? L.baiToan.find((b) => b.id === chon) ?? null : null
 
