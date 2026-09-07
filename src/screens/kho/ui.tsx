@@ -28,9 +28,44 @@ export const tex = (s: string, display: boolean) => {
     .replace(/\\frac(?![a-zA-Z])/g, '\\dfrac')
     .replace(/\\vec\s*\{([A-Za-z][A-Za-z0-9']*)\}/g, (m, arg: string) => (arg.length >= 2 ? `\\overrightarrow{${arg}}` : m))
   // macros: CÙNG 1 file với ô nhập MathLive (lib/math/macros) → soạn thấy sao, in / test online ra vậy.
-  try { return katex.renderToString(fixed, { displayMode: display, throwOnError: false, output: 'html', macros: katexMacros() }) }
+  // Bọc thêm span mang data-latex = nguồn LaTeX: để COPY từ vùng đã render trả về `$…$` (xem installTexCopy) —
+  // output:'html' không có MathML annotation nên copy-tex của KaTeX không dùng được, tự gắn nguồn vào DOM.
+  try { return `<span class="tex-src" data-latex="${attr(s)}"${display ? ' data-display="1"' : ''}>${katex.renderToString(fixed, { displayMode: display, throwOnError: false, output: 'html', macros: katexMacros() })}</span>` }
   catch { return esc(s) }
 }
+const attr = (t: string) => t.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;')
+
+// COPY từ vùng đã render KaTeX → clipboard nhận CHUỖI KHO (`$…$` / `$$…$$`) thay vì chữ vụn. KaTeX dựng công thức
+// bằng bảng (vlist-t = inline-table, vlist-r = table-row) nên Chrome copy text/plain sẽ chèn xuống dòng/tab giữa các
+// mảnh (mũ, mũ số, phân số…) → dán vào tool soạn thành "mỗi ký hiệu 1 dòng riêng" (Thùy 07/09 tối — fix chiều chỉ trim
+// \n đầu/cuối nên vẫn lỗi vì \n nằm GIỮA). Cách làm = copy-tex của KaTeX nhưng đọc data-latex do tex() gắn.
+// Chỉ can thiệp khi vùng bôi đen có công thức; bôi đen 1 PHẦN công thức vẫn ra cả công thức (clone giữ attribute).
+// Cài 1 lần toàn tài liệu; vùng nào tự lo copy (RichMath) thì preventDefault trước → đây bỏ qua.
+let texCopyOn = false
+export function installTexCopy() {
+  if (texCopyOn || typeof document === 'undefined') return
+  texCopyOn = true
+  document.addEventListener('copy', (e) => {
+    if (e.defaultPrevented || !e.clipboardData) return
+    const sel = window.getSelection(); if (!sel || sel.rangeCount === 0 || sel.isCollapsed) return
+    const rg = sel.getRangeAt(0)
+    const anc = rg.commonAncestorContainer
+    const ancEl = anc instanceof Element ? anc : anc.parentElement
+    if (!ancEl || (!ancEl.closest('[data-latex]') && !ancEl.querySelector('[data-latex]'))) return
+    const host = document.createElement('div')
+    host.style.cssText = 'position:fixed;left:-9999px;top:0;white-space:pre-wrap'
+    host.appendChild(rg.cloneContents())
+    const fs = host.querySelectorAll<HTMLElement>('[data-latex]')
+    if (!fs.length) return
+    fs.forEach((el) => { const l = el.dataset.latex ?? ''; el.replaceWith(document.createTextNode(el.dataset.display === '1' ? `$$${l}$$` : `$${l}$`)) })
+    document.body.appendChild(host)                  // innerText cần phần tử ĐANG render (br / div → xuống dòng)
+    const text = host.innerText.replace(/​/g, '')   // ZW đệm sau công thức của tool soạn (doc.ts) — không đem theo
+    host.remove()
+    e.clipboardData.setData('text/plain', text)
+    e.preventDefault()
+  })
+}
+installTexCopy()
 const MATH_RE = /\$\$([\s\S]+?)\$\$|\$([^$]+?)\$/g
 // Liệt kê các công thức $…$ / $$…$$ trong raw (đúng regex + cân $ như lúc render) — MathTextarea dùng để
 // map "click vào công thức thứ i trong preview" → đoạn [start,end) trong text gốc rồi mở lại để sửa.

@@ -199,9 +199,21 @@ export const RichMath = forwardRef<RichMathHandle, Props>(function RichMath(
   // NGUỒN NGOÀI tự động xuống dòng — nguồn ngoài (trang khác, PDF, Word…) hay kèm 1 "\n" cuối khi copy 1 dòng/khối;
   // "\n" đó lọt vào text node, CSS `white-space: pre-wrap` của .rm-doc render thành xuống dòng thật ngay lập tức.
   // Chỉ TRIM \n THỪA ở ĐẦU/CUỐI (giữ nguyên \n Ở GIỮA cho dán nhiều dòng thật sự — soạn lời giải nhiều bước).
+  // 07/09 tối (vẫn "1 dòng riêng" sau fix trim): `$$…$$` (công thức HIỂN THỊ — từ kho/bản Claude copy sang) render
+  // thành khối riêng dòng (.rm-f[data-display]). Tool soạn là inline-first ("chữ và công thức chung 1 dòng", bảng dựng
+  // cũng chỉ chèn inline) → dán thì hạ về `$…$`. Nội dung đang có trong bài (nạp từ initial) KHÔNG đụng.
   const onPaste = (e: React.ClipboardEvent<HTMLDivElement>) => {
     e.preventDefault()
-    insertRaw(e.clipboardData.getData('text/plain').replace(/\r\n?/g, '\n').replace(/^\n+|\n+$/g, ''))
+    insertRaw(e.clipboardData.getData('text/plain').replace(/\r\n?/g, '\n').replace(/^\n+|\n+$/g, '')
+      .replace(/\$\$([\s\S]+?)\$\$/g, (_m, l: string) => `$${l.trim()}$`))
+  }
+  // Copy/Cut TRONG vùng soạn → clipboard = chuỗi kho của đoạn bôi đen (`$…$` nguyên khối). Mặc định của Chrome lấy text
+  // từ DOM KaTeX (bảng vlist) → xuống dòng vụn; .rm-f còn user-select:none nên có khi mất hẳn công thức. Cut: xoá tay + mốc undo.
+  const onCopyCut = (e: React.ClipboardEvent<HTMLDivElement>, cut: boolean) => {
+    const raw = getSelectionRaw(); if (!raw) return             // bôi đen rỗng / ngoài vùng → để mặc định
+    e.preventDefault()
+    e.clipboardData.setData('text/plain', raw)
+    if (cut) { const rg = currentRange(); rg.deleteContents(); emit(true) }
   }
   const onClick = (e: React.MouseEvent<HTMLDivElement>) => {
     const el = (e.target as HTMLElement).closest?.('.rm-f') as HTMLElement | null
@@ -231,6 +243,6 @@ export const RichMath = forwardRef<RichMathHandle, Props>(function RichMath(
 
   return (
     <div ref={rootRef} className={`rm-doc ${className ?? ''}`} contentEditable suppressContentEditableWarning spellCheck={false}
-      data-placeholder={placeholder ?? ''} onInput={() => emit(false)} onKeyDown={onKeyDown} onPaste={onPaste} onClick={onClick} />
+      data-placeholder={placeholder ?? ''} onInput={() => emit(false)} onKeyDown={onKeyDown} onPaste={onPaste} onCopy={(e) => onCopyCut(e, false)} onCut={(e) => onCopyCut(e, true)} onClick={onClick} />
   )
 })

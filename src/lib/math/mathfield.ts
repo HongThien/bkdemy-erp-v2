@@ -43,6 +43,17 @@ export function stripPlaceholders(latex: string): string {
 }
 export const isBlankLatex = (latex: string) => latex.replace(/[{}\s]/g, '') === ''
 
+// Chiều ngược của stripPlaceholders — dùng khi NẠP LẠI công thức đã lưu để sửa. Lúc lưu \placeholder{} đã thành {};
+// mở lại thì {} là nhóm RỖNG KHÔNG BỀ RỘNG: \widehat{} hiện cái mũ trên KHÔNG GÌ, không có gì để click/gõ vào
+// (Thùy 07/09 tối: "ko thể click vào ô trống trong ký hiệu góc" — đúng ca sửa lại công thức đã chèn). Đổi {} →
+// {\placeholder{}} để lại thành ô ▢ bấm/Tab vào được; lưu lại thì stripPlaceholders bỏ đi như cũ (không đổi dữ liệu).
+// Lookbehind: KHÔNG đụng `{}` là chính đối số của \placeholder{} (chuỗi đã có ô trống sẵn — đã dính: ra \placeholder{\placeholder{}}).
+export const reviveBlanks = (latex: string) => latex.replace(/(?<!\\placeholder)\{\}/g, '{\\placeholder{}}')
+
+// Glyph MathLive vẽ cho \placeholder{} rỗng (U+25A2). DOM trong shadow root KHÔNG có class riêng cho ô trống
+// (chỉ ML__cmr) → nhận diện bằng đúng ký tự này.
+const PH_GLYPH = '▢'
+
 // Ô trống KHÔNG có gợi ý → nhìn như trang trí, người soạn tưởng "phải click 1 mẫu trước" (Thùy 07/09: "Ko có nút
 // tạo công thức mới, bắt buộc phải chọn 1 trong các công thức đã cho") — thật ra gõ thẳng vào đây LUÔN ĐƯỢC, mẫu
 // chỉ để chèn nhanh cấu trúc (phân số, căn…). Đặt placeholder để rõ ngay từ cái nhìn đầu.
@@ -61,8 +72,21 @@ export function setupMathField(mf: MathfieldElement, initial: string, onInput: (
   mf.menuItems = []                             // không menu chuột phải (có mục chèn LaTeX)
   mf.macros = { ...mf.macros, ...MATH_MACROS }  // cùng 1 file macro với KaTeX
   mf.keybindings = mf.keybindings.filter((kb) => !KB_DROP.has(String(Array.isArray(kb.command) ? kb.command[0] : kb.command)))
-  mf.value = initial
+  mf.value = reviveBlanks(initial)
   mf.addEventListener('input', onInput)
+  // CLICK CHUỘT vào ô ▢: hit-test của MathLive với ô trống nằm TRONG ngoặc của 1 lệnh (\widehat{▢}) trả vị trí
+  // SAU CẢ KHỐI → con trỏ rơi ra ngoài, gõ thành chữ đứng sau mũ (đo 07/09 tối: click ▢ → position=3 với
+  // \widehat{\placeholder{}}, gõ ABC ra \widehat{▢}ABC). Fix chiều 07/09 chỉ lo lúc CHÈN (selectionMode) — người
+  // dùng click vào ô là hỏng lại. Tự tìm ô ▢ thứ i nằm dưới con trỏ chuột rồi nhảy vào nó (từ đầu tài liệu, i+1 lần).
+  // setTimeout 0: chạy SAU khi MathLive xử lý xong pointerup của chính nó (đặt caret lệch), mình đặt lại sau cùng.
+  const onClick = (e: MouseEvent) => {
+    const sr = mf.shadowRoot; if (!sr) return
+    const boxes = Array.from(sr.querySelectorAll('.ML__latex span')).filter((el) => el.children.length === 0 && el.textContent === PH_GLYPH)
+    const i = boxes.findIndex((el) => { const r = el.getBoundingClientRect(); return e.clientX >= r.left - 3 && e.clientX <= r.right + 3 && e.clientY >= r.top - 3 && e.clientY <= r.bottom + 3 })
+    if (i < 0) return
+    setTimeout(() => { mf.executeCommand('moveToMathfieldStart'); for (let k = 0; k <= i; k++) mf.executeCommand('moveToNextPlaceholder') }, 0)
+  }
+  mf.addEventListener('click', onClick)
   // Chặn "\" "^" "_" cả ở tầng beforeinput (IME / dán / gõ không qua keydown) — đi kèm chặn keydown ở component.
   const onBeforeInput = (e: Event) => {
     // MathLive tự phát beforeinput GIẢ (isTrusted=false, data = LaTeX) mỗi lần insert() → bỏ qua, chỉ bắt gõ thật.
@@ -74,7 +98,7 @@ export function setupMathField(mf: MathfieldElement, initial: string, onInput: (
     if (clean) mf.executeCommand(['typedText', clean])
   }
   mf.addEventListener('beforeinput', onBeforeInput, true)
-  return () => { mf.removeEventListener('input', onInput); mf.removeEventListener('beforeinput', onBeforeInput, true) }
+  return () => { mf.removeEventListener('input', onInput); mf.removeEventListener('beforeinput', onBeforeInput, true); mf.removeEventListener('click', onClick) }
 }
 
 // Chèn 1 đoạn LaTeX (có thể chứa ô trống `#?`) vào vị trí con trỏ của ô.
@@ -85,11 +109,11 @@ export function insertLatexInto(mf: MathfieldElement, latex: string, opts: { tex
   const sel = mf.selectionIsCollapsed ? '' : mf.getValue(mf.selection, 'latex')
   let s = latex
   if (sel && s.includes('#?')) s = s.replace('#?', sel)
-  s = s.replace(/#\?/g, '\\placeholder{}')
+  s = reviveBlanks(s.replace(/#\?/g, '\\placeholder{}'))   // {} đã lưu → ô ▢ (xem reviveBlanks)
   const coCho = s.includes('\\placeholder')
   if (mf.mode !== 'math') mf.executeCommand(['switchMode', 'math'])
   mf.insert(s, { format: 'latex', selectionMode: coCho ? 'placeholder' : 'after', focus: true })
-  // TEST 07/09 (chưa commit — Thùy báo "chọn ký hiệu Góc, ko điền được chữ vào ô trống"): tái hiện được — ô trống
+  // 07/09 chiều (Thùy báo "chọn ký hiệu Góc, ko điền được chữ vào ô trống"): tái hiện được — ô trống
   // NẰM TRONG ngoặc {} của 1 lệnh (`\widehat{#?}`) mà insert() là THAO TÁC ĐẦU TIÊN vào field còn trống thì
   // `selectionMode:'placeholder'` không bắt được ô trống đó (con trỏ rơi ra NGOÀI, gõ vào thành text sau khối) —
   // placeholder ĐỨNG RIÊNG (`\angle #?`) hoặc field đã có nội dung trước đó thì selectionMode hoạt động đúng.

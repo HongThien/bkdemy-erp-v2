@@ -9177,3 +9177,46 @@ build (exit 1, đúng — 3 app thật sự dùng).
 - **Còn treo:** áp migration lên DB thật (`npm run migrate` + `npm run schema`) · verify tay trên app sau khi áp ·
   gật xoá `src/gami/xu.js` (không ai import) và bảng "Khúc quy đổi" (luong_bac UI, giờ vô dụng) · `chotXu` vẫn
   tính-ở-client-rồi-insert.
+
+## 07/09/2026 (đêm) — Ô công thức giaibai: 2 bug Thùy báo "vẫn lỗi" sau fix chiều (click ô ▢ · copy ra dòng riêng)
+**Bối cảnh:** Thùy test lại prod giaibai.bkacademy.edu.vn (soi bundle prod: ĐÃ chứa cả 2 fix chiều 16:18/16:59 — không
+phải chưa deploy) và báo: (1) "ko thể click vào ô trống trong ký hiệu góc" (ảnh: `▢̂ = 50°`) · (2) "mỗi lần copy ký hiệu
+vẫn bị 1 dòng riêng, cái này chưa fix". Rule Thùy nhắc: **KHÔNG auto-deploy giữa chừng (Vercel dễ dính giới hạn) — chỉ
+commit, Thùy tự bấm Create Deployment.**
+**Tái hiện trên dev soan (5180, cùng component với giaibai) — đo bằng JS trong shadow DOM MathLive, không đoán:**
+- Bug 1a — click chuột vào ô ▢: sau khi chèn cụm "Góc", ô trống ĐANG được chọn đúng (selection [1,2] — fix chiều đúng
+  cho lúc CHÈN). Nhưng người dùng theo bản năng CLICK vào ô ▢ → hit-test của MathLive với ô nằm TRONG ngoặc của
+  `\widehat{…}` trả vị trí SAU CẢ KHỐI (position 3) → gõ "ABC" ra `\widehat{▢}ABC`. Fix chiều không lo ca này.
+- Bug 1b — mở lại công thức ĐÃ LƯU để sửa: lúc lưu `stripPlaceholders` đã đổi `\placeholder{}` → `{}`; nạp lại thì
+  `\widehat{}` là nhóm rỗng KHÔNG BỀ RỘNG — MathLive vẽ cái mũ trên không gì, KHÔNG có ô ▢ nào để click (đúng ảnh Thùy:
+  mũ + "= 50°" gõ ngoài). Đây là đường Thùy thực sự đang đứng (sửa lại công thức đã chèn).
+- Bug 2 — copy công thức đã render (đề bài / bản Claude / preview — MathText) rồi dán vào tool soạn: KaTeX dựng công thức
+  bằng BẢNG (`.vlist-t` inline-table, `.vlist-r` table-row) → Chrome serialize text/plain chèn `\n`/tab GIỮA các mảnh
+  (mũ, số mũ, phân số) → dán ra "mỗi ký hiệu 1 dòng". Fix chiều chỉ trim `\n` ĐẦU/CUỐI nên trúng ca nguồn ngoài, hụt
+  ca này. Thêm: `.rm-f` có `user-select:none` nên copy trong vùng soạn có khi mất luôn công thức. KaTeX render
+  `output:'html'` (không MathML annotation) nên copy-tex có sẵn của KaTeX không dùng được.
+**Sửa (3 file, không migration):**
+- `src/lib/math/mathfield.ts`: `reviveBlanks(latex)` = `{}` → `{\placeholder{}}` (lookbehind bỏ qua `{}` là đối số của
+  chính `\placeholder` — lần đầu viết thiếu, ra `\placeholder{\placeholder{}}` lồng đôi, bắt ngay bằng đo JS). Áp ở
+  `setupMathField` (`mf.value`, đường MathPopup ERP) và `insertLatexInto` (đường MathBuilder tool soạn/giaibai) → mở lại
+  công thức đã lưu luôn có ô ▢. + `setupMathField` gắn `click`: tìm các span `▢` (U+25A2, MathLive KHÔNG có class riêng
+  cho ô trống, chỉ `ML__cmr`) trong shadow root, ô nào chứa toạ độ chuột (±3px) → `setTimeout 0` (sau pointerup của
+  MathLive) `moveToMathfieldStart` + `moveToNextPlaceholder` (i+1) lần. Gỡ listener trong cleanup.
+- `src/screens/kho/ui.tsx`: `tex()` bọc kết quả KaTeX trong `<span class="tex-src" data-latex="…" [data-display]>` +
+  `installTexCopy()` (cài 1 lần khi module nạp, mọi bundle render toán đều import file này): listener `copy` toàn tài
+  liệu — vùng bôi đen có `[data-latex]` thì clone range, thay từng công thức bằng `$…$`/`$$…$$`, lấy `innerText` (cần
+  gắn vào DOM để br/div ra xuống dòng đúng), bỏ ZW, `setData('text/plain')` + preventDefault. Bôi đen 1 PHẦN công thức
+  vẫn ra cả công thức (clone giữ attribute). Không có công thức → không can thiệp (đo: `prevented=false`).
+- `src/soan/RichMath.tsx`: `onCopy`/`onCut` = `getSelectionRaw()` (chuỗi kho) → clipboard, cut xoá tay + mốc undo (chạy
+  TRƯỚC listener toàn cục, preventDefault nên listener kia bỏ qua) · `onPaste` thêm `$$…$$` → `$…$` (tool soạn inline-
+  first: bảng dựng chỉ chèn inline; nội dung nạp từ `initial` KHÔNG đụng).
+**Verify dev 5180 (JS + click thật):** chèn Góc → click ô ▢ → selection vẫn [1,2] → gõ ABC → `\widehat{ABC}` ✓ · Chèn
+`\widehat{}` trống → click lại trong bài → builder "Sửa công thức" hiện `\widehat{\placeholder{}}` + 1 ô ▢ → click ô → gõ
+XYZ → `\widehat{XYZ}` → Cập nhật đúng ✓ · copy vùng soạn (synthetic ClipboardEvent) → `$\widehat{ABC=50}$` ✓ · copy
+MathText bảng cụm → `$\textcolor{silver}{\square} \parallel …$` ✓ · bôi 1 phần → vẫn cả công thức ✓ · copy chữ thường →
+không can thiệp ✓ · dán `"\n$$\dfrac{1}{2}AB$$\n"` → 1 công thức inline (không data-display) ✓ · tsc sạch ·
+`build:giaibai` OK (3.28 MB như cũ). Ghi chú: gõ tiếp sau khi điền ô thì chữ vẫn NẰM TRONG mũ (`\widehat{ABC=50}`) — đúng
+hành vi MathLive, Tab/→ để thoát khối; không đổi.
+**Bẫy công cụ:** Bash tool trên máy này ĂN 1 lớp backslash trong heredoc (`\\s` → `s`) + 3 file này là CRLF → node replace
+đa dòng không khớp — sửa bằng Edit tool. Clipboard của Browser pane KHÔNG hoạt động (Ctrl+C/V ra rỗng) → test copy/dán
+bằng `new ClipboardEvent(..., {clipboardData: new DataTransfer()})` dispatch tay rồi đọc lại.
