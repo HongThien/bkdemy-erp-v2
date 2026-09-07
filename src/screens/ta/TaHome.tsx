@@ -140,27 +140,27 @@ function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now
   }, [])
   return (
     <div>
-      <div className="mx-auto flex max-w-[1000px] flex-col gap-1 px-2 pb-4" style={{ paddingTop: 'max(0.5rem, env(safe-area-inset-top))' }}>
+      <div className="mx-auto flex max-w-[1000px] flex-col gap-2 px-2 pb-4" style={{ paddingTop: 'max(0.5rem, env(safe-area-inset-top))' }}>
         {/* thẻ hồ sơ = avatar viền pastel · Chào X · ngày chữ tay · nợ hôm nay · nút chuông/góp ý/thoát */}
-        <div className="relative flex items-center gap-2.5 overflow-hidden rounded-[20px] bg-white/90 px-3 py-2">
+        <div className="relative flex items-center gap-4 overflow-hidden rounded-[28px] bg-white/90 px-4 py-4">
           <span className="relative shrink-0">
             {profile.nhanSu.anh_url
-              ? <img src={profile.nhanSu.anh_url} alt="" className="block h-12 w-12 rounded-full object-cover ring-[3px] ring-[#DCE6FF]" />
-              : <span className="font-bubble flex h-12 w-12 items-center justify-center rounded-full bg-[#DDF4FF] text-[20px] font-extrabold text-[#2F73F6] ring-[3px] ring-[#DCE6FF]">{tenGoi.charAt(0).toUpperCase()}</span>}
-            <span className="absolute -left-1 top-0 flex h-4 w-4 items-center justify-center rounded-full bg-white text-[9px] shadow-sm">💗</span>
+              ? <img src={profile.nhanSu.anh_url} alt="" className="block h-24 w-24 rounded-full object-cover ring-[4px] ring-[#DCE6FF]" />
+              : <span className="font-bubble flex h-24 w-24 items-center justify-center rounded-full bg-[#DDF4FF] text-[36px] font-extrabold text-[#2F73F6] ring-[4px] ring-[#DCE6FF]">{tenGoi.charAt(0).toUpperCase()}</span>}
+            <span className="absolute -left-1.5 top-0 flex h-7 w-7 items-center justify-center rounded-full bg-white text-[15px] shadow-sm">💗</span>
           </span>
           <div className="min-w-0 flex-1 leading-tight">
-            <p className="font-bubble truncate text-[16px] font-extrabold text-[#16224D]">Chào {tenGoi}! 👋</p>
-            <p className="font-hand text-[11px] italic text-[#3B62C4]">{thuCuaNgay(homNay)} · {ddmmVN(homNay)}</p>
+            <p className="font-bubble truncate text-[32px] font-extrabold text-[#16224D]">Chào {tenGoi}! 👋</p>
+            <p className="font-hand text-[20px] italic text-[#3B62C4]">{thuCuaNgay(homNay)} · {ddmmVN(homNay)}</p>
             {/* CEO 07/09: sạch nợ thì KHÔNG ghi gì; chỉ hiện khi đang nợ / chưa có quyền */}
-            {!loading && !coQuyen && <p className="mt-0.5 text-[11.5px] font-semibold text-[#C27A00]">Tài khoản chưa được cấp quyền màn Buổi học</p>}
-            {!loading && coQuyen && canLam.length > 0 && <p className="mt-0.5 text-[11.5px] font-semibold text-[#C0355A]">Đang nợ {canLam.length} việc chấm{quaHan ? ` · ${quaHan} quá hạn` : ''}</p>}
+            {!loading && !coQuyen && <p className="mt-1 text-[15px] font-semibold text-[#C27A00]">Tài khoản chưa được cấp quyền màn Buổi học</p>}
+            {!loading && coQuyen && canLam.length > 0 && <p className="mt-1 text-[15px] font-semibold text-[#C0355A]">Đang nợ {canLam.length} việc chấm{quaHan ? ` · ${quaHan} quá hạn` : ''}</p>}
           </div>
           {/* Nút chuông = nhắc việc 23:30 (CEO 06/09) — app ta không có tab Cài đặt riêng, gộp vào đây cạnh Góp ý. */}
-          <div className="flex shrink-0 items-center gap-0.5">
+          <div className="flex shrink-0 items-center gap-1">
             <NhacViecNutHeader app="ta" gioNhac="23:30" moTa={TA_MO_TA_NHAC} />
             <GopY route="home" />
-            <button onClick={() => supabase.auth.signOut()} className="rounded-full px-1.5 py-1 text-[10.5px] font-semibold text-[#63709A] active:bg-[#EEF3FF]">Thoát</button>
+            <button onClick={() => supabase.auth.signOut()} className="rounded-full px-2 py-1.5 text-[13px] font-semibold text-[#63709A] active:bg-[#EEF3FF]">Thoát</button>
           </div>
         </div>
 
@@ -183,19 +183,19 @@ function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now
           const xong = tasks.filter((t) => t.tab === n.key && t.done).length
           const preview = cua.slice(0, 3)
           return (
-            <button key={n.key} onClick={() => onGo(n.key)} className="rounded-[20px] p-2 text-left active:scale-[.99]" style={{ background: n.bg }}>
-              <div className="flex items-center gap-2">
-                <span className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white/80"><img src={n.icon} alt="" className="h-8 w-8 object-contain" draggable={false} /><NoBadge n={noCua(n.key)} /></span>
+            <button key={n.key} onClick={() => onGo(n.key)} className="rounded-[22px] p-3 text-left active:scale-[.99]" style={{ background: n.bg }}>
+              <div className="flex items-center gap-2.5">
+                <span className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white/80"><img src={n.icon} alt="" className="h-10 w-10 object-contain" draggable={false} /><NoBadge n={noCua(n.key)} /></span>
                 <div className="min-w-0 flex-1 leading-tight">
-                  <p className="font-bubble text-[15px] font-extrabold text-[#16224D]">{n.label}</p>
-                  <p className="text-[11px] text-[#63709A]">
+                  <p className="font-bubble text-[17px] font-extrabold text-[#16224D]">{n.label}</p>
+                  <p className="text-[12.5px] text-[#63709A]">
                     {cua.length === 0 ? (xong > 0 ? `✓ Đã xong ${xong} buổi` : 'Không có việc') : `${cua.length} buổi chờ chấm${xong ? ` · ${xong} đã xong` : ''}`}
                   </p>
                 </div>
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[13px] font-bold text-white" style={{ background: n.accent }}>›</span>
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[15px] font-bold text-white" style={{ background: n.accent }}>›</span>
               </div>
               {preview.length > 0 && (
-                <div className="mt-1.5 flex flex-col gap-1">
+                <div className="mt-2 flex flex-col gap-1">
                   {preview.map((t) => <RowMini key={t.buoiId + t.tab} t={t} now={now} homNay={homNay} />)}
                   {cua.length > 3 && <p className="px-1 text-[10.5px] font-semibold text-[#63709A]">+ {cua.length - 3} buổi nữa…</p>}
                 </div>
@@ -214,25 +214,25 @@ function BoxBoTro({ v, homNay, onGo }: { v: ViecBoTro; homNay: string; onGo: () 
   const no = demNoBoTro(v)
   const noCu = v.ca.filter((c) => c.ngay < homNay && !c.danh_gia_xong_at).length
   return (
-    <button onClick={onGo} className="rounded-[20px] p-2 text-left active:scale-[.99]" style={{ background: '#E6DDFF' }}>
-      <div className="flex items-center gap-2">
-        <span className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white/80"><img src={A('pr_tai_nghe')} alt="" className="h-8 w-8 object-contain" draggable={false} /><NoBadge n={no} /></span>
+    <button onClick={onGo} className="rounded-[22px] p-3 text-left active:scale-[.99]" style={{ background: '#E6DDFF' }}>
+      <div className="flex items-center gap-2.5">
+        <span className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white/80"><img src={A('pr_tai_nghe')} alt="" className="h-10 w-10 object-contain" draggable={false} /><NoBadge n={no} /></span>
         <div className="min-w-0 flex-1 leading-tight">
-          <p className="font-bubble text-[15px] font-extrabold text-[#16224D]">Bổ trợ yếu</p>
-          <p className="text-[11px] text-[#63709A]">
+          <p className="font-bubble text-[17px] font-extrabold text-[#16224D]">Bổ trợ yếu</p>
+          <p className="text-[12.5px] text-[#63709A]">
             {homNayCa.length === 0 && v.retest.length === 0 && noCu === 0 ? 'Không có ca hôm nay'
               : [homNayCa.length ? `${homNayCa.length} ca hôm nay` : '', noCu ? `${noCu} ca chưa hoàn tất` : '', v.retest.length ? `${v.retest.length} retest đến hạn` : ''].filter(Boolean).join(' · ')}
           </p>
         </div>
-        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#8B6BEF] text-[13px] font-bold text-white">›</span>
+        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#8B6BEF] text-[15px] font-bold text-white">›</span>
       </div>
       {homNayCa.length > 0 && (
-        <div className="mt-1.5 flex flex-col gap-1">
+        <div className="mt-2 flex flex-col gap-1">
           {homNayCa.slice(0, 3).map((c) => (
-            <div key={c.buoi_id} className="flex items-center gap-2 rounded-xl bg-white/80 px-2.5 py-1.5">
-              <span className="text-[12.5px] font-bold text-[#16224D]">{c.ho_ten}</span>
-              <span className="min-w-0 truncate text-[10.5px] text-[#63709A]">{c.mon}{c.gio_bat_dau ? ` · ${String(c.gio_bat_dau).slice(0, 5)}` : ''}{c.phong ? ` · ${c.phong}` : ''}</span>
-              <span className={`ml-auto shrink-0 rounded-full px-2 py-0.5 text-[10px] font-bold ${c.danh_gia_xong_at ? 'bg-[#E4F8EC] text-[#1E8A52]' : c.diem_danh === 'co_mat' ? 'bg-[#EEF3FF] text-[#2F73F6]' : 'bg-[#F1F3F9] text-[#63709A]'}`}>
+            <div key={c.buoi_id} className="flex items-center gap-2 rounded-xl bg-white/80 px-3 py-2">
+              <span className="text-[13.5px] font-bold text-[#16224D]">{c.ho_ten}</span>
+              <span className="min-w-0 truncate text-[11.5px] text-[#63709A]">{c.mon}{c.gio_bat_dau ? ` · ${String(c.gio_bat_dau).slice(0, 5)}` : ''}{c.phong ? ` · ${c.phong}` : ''}</span>
+              <span className={`ml-auto shrink-0 rounded-full px-2 py-0.5 text-[11px] font-bold ${c.danh_gia_xong_at ? 'bg-[#E4F8EC] text-[#1E8A52]' : c.diem_danh === 'co_mat' ? 'bg-[#EEF3FF] text-[#2F73F6]' : 'bg-[#F1F3F9] text-[#63709A]'}`}>
                 {c.danh_gia_xong_at ? 'xong' : c.co_test ? (c.test_da_nop ? 'chờ nhận xét' : 'chờ test') : c.diem_danh === 'co_mat' ? 'đang luyện' : 'chờ em'}
               </span>
             </div>
@@ -251,25 +251,25 @@ function BoxDashThang({ d, onGo }: { d: TaDash | null; onGo: () => void }) {
   const coViec = (me.tong ?? 0) > 0
   const mau = pct === 100 ? '#F8B83E' : (pct ?? 0) >= 80 ? '#31C875' : (pct ?? 0) >= 50 ? '#FFB33D' : '#FF5D78'
   return (
-    <button onClick={onGo} className="rounded-[20px] p-2 text-left active:scale-[.99]" style={{ background: moc ? 'linear-gradient(135deg, #FFF1C9, #FFE59A)' : '#FFF1C9' }}>
-      <div className="flex items-center gap-2">
-        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white/80"><img src={A('pr_chart')} alt="" className="h-8 w-8 object-contain" draggable={false} /></span>
+    <button onClick={onGo} className="rounded-[22px] p-3 text-left active:scale-[.99]" style={{ background: moc ? 'linear-gradient(135deg, #FFF1C9, #FFE59A)' : '#FFF1C9' }}>
+      <div className="flex items-center gap-2.5">
+        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white/80"><img src={A('pr_chart')} alt="" className="h-10 w-10 object-contain" draggable={false} /></span>
         <div className="min-w-0 flex-1 leading-tight">
-          <p className="font-bubble flex flex-wrap items-center gap-1.5 text-[15px] font-extrabold text-[#16224D]">Công việc tháng này
-            {d?.rank ? <span className="rounded-full bg-[#2F73F6] px-2 py-0.5 font-sans text-[10.5px] font-bold text-white">#{d.rank}/{d.tongXepHang}</span> : null}
-            {moc && <span className="rounded-full bg-[#F8B83E] px-2 py-0.5 font-sans text-[10.5px] font-bold text-white">🎁 mốc thưởng</span>}
+          <p className="font-bubble flex flex-wrap items-center gap-1.5 text-[17px] font-extrabold text-[#16224D]">Công việc tháng này
+            {d?.rank ? <span className="rounded-full bg-[#2F73F6] px-2 py-0.5 font-sans text-[12px] font-bold text-white">#{d.rank}/{d.tongXepHang}</span> : null}
+            {moc && <span className="rounded-full bg-[#F8B83E] px-2 py-0.5 font-sans text-[12px] font-bold text-white">🎁 mốc thưởng</span>}
           </p>
-          <p className="text-[11px] text-[#63709A]">
+          <p className="text-[12.5px] text-[#63709A]">
             {!d ? 'Hiệu suất · xếp hạng · mốc thưởng 100%'
               : !coViec ? 'Tháng này chưa có việc chấm được giao'
               : `Đạt chuẩn ${me.dat ?? 0}/${me.den_han ?? 0} việc đến hạn${(me.khong_dat ?? 0) > 0 ? ` · lỡ ${me.khong_dat}` : ''}`}
           </p>
         </div>
-        {coViec && pct != null && <span className="font-bubble text-[20px] font-extrabold" style={{ color: mau }}>{pct}%</span>}
-        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#F8B83E] text-[13px] font-bold text-white">›</span>
+        {coViec && pct != null && <span className="font-bubble text-[24px] font-extrabold" style={{ color: mau }}>{pct}%</span>}
+        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#F8B83E] text-[15px] font-bold text-white">›</span>
       </div>
       {coViec && (
-        <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-white/70">
+        <div className="mt-2 h-3 overflow-hidden rounded-full bg-white/70">
           <div className="h-full rounded-full" style={{ width: `${pct ?? 0}%`, background: mau }} />
         </div>
       )}
