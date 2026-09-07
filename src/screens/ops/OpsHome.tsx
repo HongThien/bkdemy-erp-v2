@@ -20,6 +20,7 @@ import PrepScreen from '../vanhanhops/PrepScreen'
 import DiemDanhTestScreen from '../vanhanhops/DiemDanhTestScreen'
 import GopY from './GopY'
 import DashOps from './DashOps'
+import AvatarEditButton from '../../components/AvatarEditButton'
 
 type TabKey = 'home' | 'diemdanh' | 'report' | 'prep' | 'test' | 'tuqua' | 'dash'
 // Tab ↔ leaf quyền (cùng leaf-id cây Admin ERP) + tông màu + icon tự vẽ. home + dash luôn hiện.
@@ -35,7 +36,7 @@ const TABS: { key: TabKey; leaf: string | null; label: string; tone: OpsTone; Ic
 
 const hhmm = (t: string | null) => (t ? t.slice(0, 5) : '—')
 
-export default function OpsHome({ profile, quyen }: { profile: MyProfile; quyen: MyQuyen }) {
+export default function OpsHome({ profile, quyen, onAvatarChanged }: { profile: MyProfile; quyen: MyQuyen; onAvatarChanged?: (url: string) => void }) {
   const [tab, setTab] = useState<TabKey>('home')
   const coQuyen = (leaf: string | null) => !leaf || quyen.laAdmin || quyen.chucNang.includes(leaf)
   const tabs = TABS.filter((t) => coQuyen(t.leaf))
@@ -43,7 +44,7 @@ export default function OpsHome({ profile, quyen }: { profile: MyProfile; quyen:
   return (
     <div className="flex h-[100dvh] flex-col bg-[#F5F8FF]" style={{ fontFamily: "'Be Vietnam Pro', 'Segoe UI', system-ui, sans-serif" }}>
       <div className="min-h-0 flex-1 overflow-auto">
-        {tab === 'home' && <HomTay profile={profile} onGo={setTab} coQuyen={coQuyen} onThoat={() => supabase.auth.signOut()} />}
+        {tab === 'home' && <HomTay profile={profile} onGo={setTab} coQuyen={coQuyen} onThoat={() => supabase.auth.signOut()} onAvatarChanged={onAvatarChanged} />}
         {tab === 'diemdanh' && <DiemDanhBuoi />}
         {tab === 'report' && <ManCon tone="blue" bgImage="/bk-ui/bg_ops_report.jpg" bgAspect={360 / 863}><OpsReportScreen chiViec /></ManCon>}
         {tab === 'prep' && <ManCon tone="amber" bgImage="/bk-ui/bg_ops_prep.jpg" bgAspect={359 / 863}><PrepScreen /></ManCon>}
@@ -91,7 +92,7 @@ type Item = { key: string; tone: OpsTone; Ico: (p: { cls?: string }) => JSX.Elem
 
 // ── Trang chủ "Hôm nay" — hero lục (avatar + chào + trạng thái + nhân vật), thanh ngày, lưới 6
 //    module, "Công việc hôm nay" gộp 1 danh sách (mèo ngủ khi trống), banner câu động viên ──
-function HomTay({ profile, onGo, coQuyen, onThoat }: { profile: MyProfile; onGo: (t: TabKey) => void; coQuyen: (leaf: string | null) => boolean; onThoat: () => void }) {
+function HomTay({ profile, onGo, coQuyen, onThoat, onAvatarChanged }: { profile: MyProfile; onGo: (t: TabKey) => void; coQuyen: (leaf: string | null) => boolean; onThoat: () => void; onAvatarChanged?: (url: string) => void }) {
   const homNay = homNayVN()
   const [loading, setLoading] = useState(true)
   const [buoi, setBuoi] = useState<(BuoiAo & { ngay: string })[]>([])
@@ -178,11 +179,10 @@ function HomTay({ profile, onGo, coQuyen, onThoat }: { profile: MyProfile; onGo:
           <button onClick={onThoat} className="flex h-9 w-9 items-center justify-center rounded-full bg-white/20 text-white active:bg-white/30" aria-label="Thoát"><IcoPower cls="h-[18px] w-[18px]" /></button>
         </div>
       }>
-        {/* hàng avatar + chào + trạng thái (thay cho title mặc định) — đặt lại vì layout Home khác các màn khác */}
+        {/* hàng avatar + chào + trạng thái (thay cho title mặc định) — đặt lại vì layout Home khác các màn khác.
+            Avatar bấm để đổi (mượn module từ app TA) — AvatarEditButton tự upload + cập nhật nhan_su.anh_url. */}
         <div className="relative -mt-9 flex items-center gap-3">
-          {nsAnh
-            ? <img src={nsAnh} alt="" className="h-14 w-14 shrink-0 rounded-full object-cover ring-[3px] ring-white/70" />
-            : <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-white/25 text-[20px] font-extrabold text-white ring-[3px] ring-white/70">{tenGoi.charAt(0).toUpperCase()}</span>}
+          <AvatarEditButton nhanSuId={profile.nhanSu.id} anhUrl={nsAnh} initial={tenGoi.charAt(0).toUpperCase()} size={56} ring="#ffffffB3" badge="#16A34A" onChanged={onAvatarChanged} />
           <div className="min-w-0 flex-1">
             <p className="truncate text-[20px] font-extrabold text-white">Chào {tenGoi} 👋</p>
             <p className="text-[12px] font-semibold text-white/80">BK Vận hành</p>
