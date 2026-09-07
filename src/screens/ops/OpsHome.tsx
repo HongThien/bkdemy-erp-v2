@@ -10,7 +10,7 @@ import type { MyProfile } from '../../lib/nhansu'
 import type { MyQuyen } from '../../lib/quyen'
 import { myBuoiAoCuaKhoang, getMyOpsTasks, getMyPrepTasks, OPS_TASK_LABEL, type OpsTask, type MyPrepTask } from '../../lib/opsvanhanh'
 import { listCaTestDangChay, type CaTest } from '../../lib/tuyensinh'
-import { homNayVN, ddmmVN, thuCuaNgay, mucDeadline } from '../../lib/tuan'
+import { homNayVN, ddmmVN, thuCuaNgay, mucDeadline, soNgayGiua } from '../../lib/tuan'
 import { diemDanhTienDo, type BuoiAo } from '../../lib/gami'
 import { OPS, OA, type OpsTone, OpsHero, IcoHome, IcoCheck, IcoMail, IcoBroom, IcoPencil, IcoGift, IcoChart, IcoCalendar, IcoPower } from '../../components/ops/OpsUI'
 import DiemDanhBuoi from './DiemDanhBuoi'
@@ -206,6 +206,8 @@ function HomTay({ profile, onGo, coQuyen, onThoat, onAvatarChanged }: { profile:
           <p className="text-[14.5px] font-extrabold text-[#16224D]">{thuCuaNgay(homNay)}, {ddmmVN(homNay)}</p>
         </div>
 
+        <BannerDiChoi homNay={homNay} />
+
         {/* lưới 6 module */}
         {!loading && (
           <div className="grid grid-cols-2 gap-2.5">
@@ -270,3 +272,22 @@ function HomTay({ profile, onGo, coQuyen, onThoat, onAvatarChanged }: { profile:
   )
 }
 const QUOTES = ['"Không cần hoàn hảo, chỉ cần tiến bộ mỗi ngày."', '"Việc nhỏ làm tốt mỗi ngày, tạo nên khác biệt lớn."', '"Chăm chỉ hôm nay, an tâm hôm sau."', '"Mỗi ca trực chỉn chu là một viên gạch cho BK vững vàng hơn."']
+
+// Banner đếm ngược ngày đi chơi (CEO 07/09, ảnh gốc go_out.png) — mốc CỐ ĐỊNH 30/9/2026 (khớp ảnh gốc:
+// "còn 23 ngày" tính từ hôm gửi ảnh 07/09 → 30/9 = đúng 23 ngày). Ảnh gốc đã xoá 2 chỗ số "23" (tiêu đề to
+// + số trong hình lịch), số hiện tại vẽ đè bằng HTML tại đúng % toạ độ đo trên ảnh 1672×941 nên tự đếm
+// lùi mỗi ngày (22, 21, …) không cần sửa ảnh nữa. Qua ngày 30/9 (đã đi/đang đi) → ẩn banner, không đếm âm.
+const NGAY_DI_CHOI = '2026-09-30'
+function BannerDiChoi({ homNay }: { homNay: string }) {
+  const conLai = soNgayGiua(homNay, NGAY_DI_CHOI)
+  if (conLai < 0) return null
+  return (
+    <div className="relative mb-3 overflow-hidden rounded-2xl shadow-md" style={{ aspectRatio: '1672 / 941', containerType: 'inline-size' }}>
+      <img src="/bk-ui/bg_ops_goout.jpg" alt="" className="absolute inset-0 h-full w-full object-cover" draggable={false} />
+      <p className="font-bubble pointer-events-none absolute left-[42.6%] top-[13.7%] -translate-x-1/2 -translate-y-1/2 text-center font-extrabold text-[#FFD84D]"
+        style={{ fontSize: '9.5cqw', WebkitTextStroke: '0.35cqw #0E6B37', paintOrder: 'stroke fill' }}>{conLai}</p>
+      <p className="font-bubble pointer-events-none absolute left-[62%] top-[63.4%] -translate-x-1/2 -translate-y-1/2 text-center font-extrabold text-[#FFD84D]"
+        style={{ fontSize: '6.2cqw', WebkitTextStroke: '0.22cqw #0E6B37', paintOrder: 'stroke fill' }}>{conLai}</p>
+    </div>
+  )
+}
