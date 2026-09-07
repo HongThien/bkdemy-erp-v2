@@ -5,9 +5,9 @@
 //   Chấm ET / Chấm BTVN), góc icon có BUBBLE ĐỎ số việc đang nợ. Bấm box → tab list việc. Bấm card → ChamBuoi.
 // · Bottom-tab: Hôm nay + 3 nghiệp vụ + Bổ trợ + Của tôi (mỗi tab có bubble nợ).
 // Việc = getMyTasks() (CÙNG derive với "Việc của tôi" ERP — 1 nguồn). Badge 📱 = số HS nộp BTVN app.
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { supabase } from '../../lib/supabase'
-import type { MyProfile } from '../../lib/nhansu'
+import { uploadAvatar, updateMyProfile, type MyProfile } from '../../lib/nhansu'
 import type { MyQuyen } from '../../lib/quyen'
 import { getMyTasks, type MyTask } from '../../lib/gami'
 import { demNopTheoBuois } from '../../lib/btvnnop'
@@ -49,7 +49,7 @@ function NoBadge({ n, small }: { n: number; small?: boolean }) {
   )
 }
 
-export default function TaHome({ profile, quyen }: { profile: MyProfile; quyen: MyQuyen }) {
+export default function TaHome({ profile, quyen, onAvatarChanged }: { profile: MyProfile; quyen: MyQuyen; onAvatarChanged?: (url: string) => void }) {
   const homNay = homNayVN()
   const [tab, setTab] = useState<TabKey>('home')
   const [view, setView] = useState<BuoiView | null>(null)
@@ -91,7 +91,7 @@ export default function TaHome({ profile, quyen }: { profile: MyProfile; quyen: 
   return (
     <div className="flex h-[100dvh] flex-col" style={{ fontFamily: "'Be Vietnam Pro', 'Segoe UI', system-ui, sans-serif", background: BK_TROI }}>
       <div className="min-h-0 flex-1 overflow-auto">
-        {tab === 'home' && <TrangChu profile={profile} homNay={homNay} loading={loading} coQuyen={coQuyen} tasks={tasks} canLam={canLam} noCua={noCua} now={now} onGo={setTab} dashTom={dashTom} boTro={boTro} />}
+        {tab === 'home' && <TrangChu profile={profile} homNay={homNay} loading={loading} coQuyen={coQuyen} tasks={tasks} canLam={canLam} noCua={noCua} now={now} onGo={setTab} dashTom={dashTom} boTro={boTro} onAvatarChanged={onAvatarChanged} />}
         {tab === 'dash' && <DashTa profile={profile} />}
         {tab === 'botro' && <CaBoTroTA viec={boTro} onDoi={taiBoTro} />}
         {tab !== 'home' && tab !== 'dash' && tab !== 'botro' && <ViecTab key={tab} nv={nvOf(tab)} tasks={tasks.filter((t) => t.tab === tab)} nopCount={nopCount} now={now} homNay={homNay} onOpen={setView} />}
@@ -125,10 +125,10 @@ function TabBtn({ active, icon, label, no, onClick }: { active: boolean; icon: s
 
 // ── TRANG CHỦ: 1 thẻ hồ sơ (avatar · Chào X · ngày · nợ · chuông/góp ý/thoát) + box tháng + box bổ trợ + 3 box
 //    nghiệp vụ (bubble nợ ở góc icon). CEO 07/09: gộp thanh trên + hero, bỏ dòng tên/"BK Trợ giảng" lặp. ──
-function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now, onGo, dashTom, boTro }: {
+function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now, onGo, dashTom, boTro, onAvatarChanged }: {
   profile: MyProfile; homNay: string; loading: boolean; coQuyen: boolean
   tasks: MyTask[]; canLam: MyTask[]; noCua: (k: NvKey) => number; now: number; onGo: (t: TabKey) => void
-  dashTom: TaDash | null; boTro: ViecBoTro
+  dashTom: TaDash | null; boTro: ViecBoTro; onAvatarChanged?: (url: string) => void
 }) {
   const tenGoi = (profile.nhanSu.ho_ten ?? '').trim().split(/\s+/).pop() || 'bạn'
   const quaHan = canLam.filter((t) => mucDeadline(t.deadline, now) === 'qua_han').length
@@ -138,23 +138,53 @@ function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now
     if (kiemTraHoTro() !== 'ok') return
     trangThaiNhacViec('ta').then((t) => setGoiYBatNhac(t === 'tat')).catch(() => {})
   }, [])
+
+  // Đổi avatar ngay tại đây (CEO 07/09) — dùng LẠI uploadAvatar/updateMyProfile của HoSoModal (ERP),
+  // KHÔNG đẻ bucket/RPC mới. Lưu ngay khi chọn ảnh (không có nút "Lưu" riêng — mobile-first, ~2s feedback).
+  const avatarInputRef = useRef<HTMLInputElement>(null)
+  const [avatarPreview, setAvatarPreview] = useState<string | null>(null)
+  const [avatarUploading, setAvatarUploading] = useState(false)
+  const [avatarErr, setAvatarErr] = useState<string | null>(null)
+  async function onChonAvatar(e: React.ChangeEvent<HTMLInputElement>) {
+    const f = e.target.files?.[0]; e.target.value = ''
+    if (!f) return
+    setAvatarErr(null)
+    setAvatarPreview(URL.createObjectURL(f))   // xem ngay trong lúc chờ upload — cùng byte ảnh, không cần swap lại
+    setAvatarUploading(true)
+    try {
+      const url = await uploadAvatar(f)
+      await updateMyProfile(profile.nhanSu.id, { anh_url: url })
+      onAvatarChanged?.(url)
+    } catch (err: any) {
+      setAvatarErr(err?.message ?? String(err))
+      setAvatarPreview(null)
+    } finally {
+      setAvatarUploading(false)
+    }
+  }
+  const anhHienThi = avatarPreview ?? profile.nhanSu.anh_url
   return (
     <div>
       <div className="mx-auto flex max-w-[1000px] flex-col gap-2 px-2 pb-4" style={{ paddingTop: 'max(0.5rem, env(safe-area-inset-top))' }}>
         {/* thẻ hồ sơ = avatar viền pastel · Chào X · ngày chữ tay · nợ hôm nay · nút chuông/góp ý/thoát */}
         <div className="relative flex items-center gap-4 overflow-hidden rounded-[28px] bg-white/90 px-4 py-4">
-          <span className="relative shrink-0">
-            {profile.nhanSu.anh_url
-              ? <img src={profile.nhanSu.anh_url} alt="" className="block h-24 w-24 rounded-full object-cover ring-[4px] ring-[#DCE6FF]" />
-              : <span className="font-bubble flex h-24 w-24 items-center justify-center rounded-full bg-[#DDF4FF] text-[36px] font-extrabold text-[#2F73F6] ring-[4px] ring-[#DCE6FF]">{tenGoi.charAt(0).toUpperCase()}</span>}
+          <button onClick={() => !avatarUploading && avatarInputRef.current?.click()} className="relative shrink-0 active:scale-95" aria-label="Đổi ảnh đại diện">
+            {anhHienThi
+              ? <img src={anhHienThi} alt="" className={`block h-24 w-24 rounded-full object-cover ring-[4px] ring-[#DCE6FF] ${avatarUploading ? 'opacity-50' : ''}`} />
+              : <span className={`font-bubble flex h-24 w-24 items-center justify-center rounded-full bg-[#DDF4FF] text-[36px] font-extrabold text-[#2F73F6] ring-[4px] ring-[#DCE6FF] ${avatarUploading ? 'opacity-50' : ''}`}>{tenGoi.charAt(0).toUpperCase()}</span>}
+            {avatarUploading
+              ? <span className="absolute inset-0 flex items-center justify-center text-[13px] font-bold text-[#2F73F6]">…</span>
+              : <span className="absolute -right-0.5 -bottom-0.5 flex h-8 w-8 items-center justify-center rounded-full bg-[#2F73F6] text-[14px] shadow-sm ring-2 ring-white">📷</span>}
             <span className="absolute -left-1.5 top-0 flex h-7 w-7 items-center justify-center rounded-full bg-white text-[15px] shadow-sm">💗</span>
-          </span>
+            <input ref={avatarInputRef} type="file" accept="image/*" className="hidden" onChange={onChonAvatar} />
+          </button>
           <div className="min-w-0 flex-1 leading-tight">
             <p className="font-bubble truncate text-[32px] font-extrabold text-[#16224D]">Chào {tenGoi}! 👋</p>
             <p className="font-hand text-[20px] italic text-[#3B62C4]">{thuCuaNgay(homNay)} · {ddmmVN(homNay)}</p>
             {/* CEO 07/09: sạch nợ thì KHÔNG ghi gì; chỉ hiện khi đang nợ / chưa có quyền */}
             {!loading && !coQuyen && <p className="mt-1 text-[15px] font-semibold text-[#C27A00]">Tài khoản chưa được cấp quyền màn Buổi học</p>}
             {!loading && coQuyen && canLam.length > 0 && <p className="mt-1 text-[15px] font-semibold text-[#C0355A]">Đang nợ {canLam.length} việc chấm{quaHan ? ` · ${quaHan} quá hạn` : ''}</p>}
+            {avatarErr && <p className="mt-1 text-[13px] font-semibold text-[#C0355A]">⚠ Đổi ảnh lỗi: {avatarErr}</p>}
           </div>
           {/* Nút chuông = nhắc việc 23:30 (CEO 06/09) — app ta không có tab Cài đặt riêng, gộp vào đây cạnh Góp ý. */}
           <div className="flex shrink-0 items-center gap-1">
