@@ -34,6 +34,12 @@ const RIENG = [
   // Banner đếm ngược đi chơi — CHỈ TA + OPS dùng (07/09). File này nằm ngoài components/bk/ nên PHẢI khai
   // riêng, không thì rơi vào nhóm "chung" ở dưới → build oan cả 8 project (đã dính đúng lần đầu commit).
   { p: ['src/components/TripCountdownBanner.tsx'], chu: ['ta', 'ops'] },
+  // Bộ soạn công thức (MathPopup/MathBuilder/RichMath/MathDoc/mathfield.ts/cum.ts…) — CHỈ erp (kho/nhập kho
+  // dùng MathTextarea → kéo cả SoanModal), giaibai (GiaiEditor/ChuoiSoanModal), soan (app riêng) đụng tới.
+  // gv/pt/ta/ops/hs/chi KHÔNG import (đã grep xác nhận 07/09) — trước đây rơi vào nhóm "chung" ở dưới nên
+  // build oan cả 8 project mỗi lần sửa (Thùy báo "sao sửa giải bài lại đụng gv/pt"). "src/soan/" ở đây KHÔNG
+  // đụng ta.html/gv.html/… (những entry app khác) vì prefix so đầu chuỗi khác nhau hoàn toàn.
+  { p: ['src/lib/math/', 'src/components/math/', 'src/soan/'], chu: ['erp', 'giaibai', 'soan'] },
 ]
 // Đường dẫn KHÔNG ảnh hưởng bundle nào
 const BO_QUA = [

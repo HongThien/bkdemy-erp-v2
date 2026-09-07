@@ -9093,3 +9093,39 @@ gọn 1 dòng, con trỏ đứng ngay sau · đóng không lưu, trả 2 bài te
 - `gami.ts` `dongBoBTVNOnline` · `BtvnTab`: gọi sau syncBTVNProblems mỗi lần mở (BTVN mở) + dải xanh + nút "↻ Lấy lại".
 - Verify DB thật: 12A1 03/09 (HS0042 làm dở 24/34) → 24 ô, chuỗi Đ/S khớp online, lần 2 = 0; 10A1 03/09 đã đóng → `daDong`
   (muốn đổ 5 HS thì "Mở lại" → tab tự đổ → đóng lại; EXP tính lại). Script `scripts/_chk_btvn_online_dong_bo.mjs`.
+
+### 07/09 (tiếp) — Fix cụm "Góc" không gõ được vào ô trống (`\widehat{#?}`)
+**Thùy báo lại rõ hơn:** không phải mẫu Σ, mà là CỤM tên "Góc" (`\widehat{#?}`, gõ tắt "goc", `src/soan/cum.ts`)
+trong bảng cụm phía trên tool soạn thảo — "khi t chọn, t ko điền được chữ vào trong ô trống đấy".
+**Root cause:** ô trống nằm TRONG ngoặc `{}` của 1 lệnh (`\widehat{#?}` → `\widehat{\placeholder{}}`). Khi đây là
+thao tác chèn ĐẦU TIÊN vào 1 `<math-field>` còn TRỐNG (đúng luồng cụm: `useCum` → `MathBuilder` với
+`initial='\widehat{#?}'` → chèn ngay lúc mount), `mf.insert(s, {selectionMode:'placeholder'})` của MathLive
+KHÔNG bắt được ô trống lồng trong ngoặc — con trỏ rơi RA NGOÀI khối, gõ chữ thành text nằm sau (`◌̂ABC` thay vì
+`$\widehat{ABC}$`). Tái hiện qua CẢ 2 đường: click cụm "Góc" lẫn click thẳng mẫu "Góc (mũ)" trong bảng Σ khi đó
+là chèn đầu tiên vào ô trống. Mẫu KHÔNG lồng ngoặc (`\angle #?` — ô trống đứng riêng cùng cấp) hoặc chèn vào ô
+ĐàCÓ nội dung từ trước thì `selectionMode:'placeholder'` vẫn hoạt động đúng — chỉ ca "ô trống lồng trong ngoặc +
+field còn trống" mới dính.
+**Sửa** `insertLatexInto` (`src/lib/math/mathfield.ts`, nguồn DÙNG CHUNG cho MathPopup lẫn MathBuilder): sau khi
+`mf.insert(...)`, nếu chuỗi vừa chèn có `\placeholder` thì CHỦ ĐỘNG `moveToMathfieldStart` rồi `moveToNextPlaceholder`
+— tìm lại ô trống từ đầu tài liệu, không phụ thuộc `selectionMode` của `.insert()`.
+**Verify:** gõ trực tiếp "XYZ" ngay sau khi chèn "Góc (mũ)" lần đầu vào field trống → ra đúng `$\widehat{XYZ}$`
+(trước đó ra `◌̂` rỗng + "XYZ" rơi ra ngoài, phím rơi thành shortcut toàn cục — từng nhảy cả trang do phím lọt ra
+ngoài field). tsc sạch.
+
+### 07/09 (tiếp 2) — vercel-ignore.mjs: bộ soạn công thức build oan cả 8 project
+**Thùy hỏi:** "cái này liên quan đến project giải bài chứ sao lại liên quan đến gv và pt mà t lại thấy deploy 2
+file đấy lên vậy?" → sau đó chốt: "Sửa đi. t muốn sau này chỉ push và deploy cái nào đang sửa thôi, cái nào ko
+sửa thì tốt nhất ko động vào."
+**Nguyên nhân:** `src/lib/math/`, `src/components/math/`, `src/soan/` (MathPopup/MathBuilder/RichMath/MathDoc/
+mathfield.ts/cum.ts…) KHÔNG có mặt trong danh sách `RIENG` của `scripts/vercel-ignore.mjs` → rơi vào nhóm "chung"
+→ build TẤT CẢ 8 project mỗi lần sửa, dù grep xác nhận `src/screens/gv/` và `src/screens/pt/` (cũng như ta/ops/
+hs/chi) KHÔNG hề import các file này — chỉ `erp` (kho/nhập kho dùng `MathTextarea` → kéo cả `SoanModal`),
+`giaibai` (GiaiEditor/ChuoiSoanModal), `soan` (app riêng) đụng tới thật.
+**Sửa:** thêm 1 dòng `RIENG`: `{ p: ['src/lib/math/', 'src/components/math/', 'src/soan/'], chu: ['erp',
+'giaibai', 'soan'] }`.
+**Verify bằng dữ liệu THẬT** (không đoán): lấy đúng commit `efd7bd9` (chỉ sửa 4 file trong bộ soạn công thức),
+chạy `vercel-ignore.mjs` cục bộ cho cả 9 domain (`VERCEL_GIT_PREVIOUS_SHA`/`VERCEL_GIT_COMMIT_SHA` = SHA cha/con
+thật — lưu ý phải `git rev-parse` ra SHA tường minh, `efd7bd9^` truyền thẳng vào biến môi trường qua for-loop bash
+bị nuốt mất, `git diff` báo "0 file đổi" sai — không phải lỗi script, lỗi cách gọi test):
+`gv · pt · ta · ops · hs · chi` → BỎ QUA build (exit 0, đúng — trước đây build oan) · `giaibai · soan · erp` →
+build (exit 1, đúng — 3 app thật sự dùng).

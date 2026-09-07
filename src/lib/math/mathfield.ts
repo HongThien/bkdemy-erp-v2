@@ -86,8 +86,15 @@ export function insertLatexInto(mf: MathfieldElement, latex: string, opts: { tex
   let s = latex
   if (sel && s.includes('#?')) s = s.replace('#?', sel)
   s = s.replace(/#\?/g, '\\placeholder{}')
+  const coCho = s.includes('\\placeholder')
   if (mf.mode !== 'math') mf.executeCommand(['switchMode', 'math'])
-  mf.insert(s, { format: 'latex', selectionMode: s.includes('\\placeholder') ? 'placeholder' : 'after', focus: true })
+  mf.insert(s, { format: 'latex', selectionMode: coCho ? 'placeholder' : 'after', focus: true })
+  // TEST 07/09 (chưa commit — Thùy báo "chọn ký hiệu Góc, ko điền được chữ vào ô trống"): tái hiện được — ô trống
+  // NẰM TRONG ngoặc {} của 1 lệnh (`\widehat{#?}`) mà insert() là THAO TÁC ĐẦU TIÊN vào field còn trống thì
+  // `selectionMode:'placeholder'` không bắt được ô trống đó (con trỏ rơi ra NGOÀI, gõ vào thành text sau khối) —
+  // placeholder ĐỨNG RIÊNG (`\angle #?`) hoặc field đã có nội dung trước đó thì selectionMode hoạt động đúng.
+  // Ép tìm lại placeholder từ ĐẦU tài liệu, không dựa vào selectionMode.
+  if (coCho) { mf.executeCommand('moveToMathfieldStart'); mf.executeCommand('moveToNextPlaceholder') }
   if (opts.textMode) mf.executeCommand(['switchMode', 'text'])
 }
 // Mẫu Văn bản: ô trống trong \text{} vẫn ở mode toán (chữ nghiêng, mất khoảng trắng, mất \text) → ép sang
