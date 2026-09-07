@@ -31,6 +31,9 @@ const RIENG = [
   { p: ['index.html', 'vite.config.ts', 'src/main.tsx', 'src/App.tsx'], chu: ['erp'] },
   // khu "Của tôi" (TA đã lắp; OPS/GV sắp lắp cùng khuôn) — 3 app cùng sở hữu để không bỏ lỡ
   { p: ['src/components/bk/', 'public/bk-ui/'], chu: ['ta', 'ops', 'gv'] },
+  // Banner đếm ngược đi chơi — CHỈ TA + OPS dùng (07/09). File này nằm ngoài components/bk/ nên PHẢI khai
+  // riêng, không thì rơi vào nhóm "chung" ở dưới → build oan cả 8 project (đã dính đúng lần đầu commit).
+  { p: ['src/components/TripCountdownBanner.tsx'], chu: ['ta', 'ops'] },
 ]
 // Đường dẫn KHÔNG ảnh hưởng bundle nào
 const BO_QUA = [
