@@ -22,6 +22,16 @@
       "autoPort": true
     },
     {
+      "name": "dev-ta",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev:ta"
+      ],
+      "port": 5173,
+      "autoPort": true
+    },
+    {
       "name": "dev-gv",
       "runtimeExecutable": "npm",
       "runtimeArgs": [

@@ -43,9 +43,17 @@ export function stripPlaceholders(latex: string): string {
 }
 export const isBlankLatex = (latex: string) => latex.replace(/[{}\s]/g, '') === ''
 
+// Ô trống KHÔNG có gợi ý → nhìn như trang trí, người soạn tưởng "phải click 1 mẫu trước" (Thùy 07/09: "Ko có nút
+// tạo công thức mới, bắt buộc phải chọn 1 trong các công thức đã cho") — thật ra gõ thẳng vào đây LUÔN ĐƯỢC, mẫu
+// chỉ để chèn nhanh cấu trúc (phân số, căn…). Đặt placeholder để rõ ngay từ cái nhìn đầu.
+// \text{…} — không bọc thì MathLive render placeholder Ở CHẾ ĐỘ TOÁN, chữ dính liền mất hết khoảng trắng
+// (đã dính thật: "Gõcôngthứctrựctiếptạiđây" khi test tay 07/09).
+export const MF_PLACEHOLDER = '\\text{Gõ công thức trực tiếp tại đây…}'
+
 // Cấu hình 1 <math-field> theo luật trên + nạp giá trị đầu. Trả hàm gỡ listener (gọi trong cleanup effect).
 export function setupMathField(mf: MathfieldElement, initial: string, onInput: () => void): () => void {
   mf.classList.add('mf-input')                  // React 18 KHÔNG set className lên custom element → gán tay
+  mf.placeholder = MF_PLACEHOLDER
   mf.inlineShortcuts = {}                       // TẮT gõ tắt kiểu chữ: "sqrt" phải ra 4 chữ s q r t
   mf.smartMode = false
   mf.smartSuperscript = false

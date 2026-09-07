@@ -43,7 +43,9 @@ export default defineConfig({
       workbox: {
         // Dữ liệu chấm LUÔN phải mới — không cache API, chỉ asset tĩnh (như app OPS).
         globPatterns: ['**/*.{js,css,html,png,svg,woff2}'],
-        navigateFallbackDenylist: [/^\/rest\//, /^\/auth\//, /^\/storage\//],
+        navigateFallbackDenylist: [/^\/rest\//, /^\/auth\//, /^\/storage\//, /^\/api\//],
+        // Push nhắc việc 23:30 (CEO 06/09) — cùng handler thuần JS với app pt, KHÔNG qua bundler.
+        importScripts: ['sw-push.js'],
       },
     }),
     renameToIndex(),

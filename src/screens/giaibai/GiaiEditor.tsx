@@ -84,7 +84,7 @@ export default function GiaiEditor({ initial, hoiDapAn, tieuDe, deBai, aiModel, 
       {laChuoi ? (
         <>
           <div className="mb-1 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wide text-slate-500">
-            Chuỗi {chuoi!.y.length} ý · {soY} ý cần lời giải <span className="font-normal normal-case text-slate-400">— mỗi ý một ô; ý đã duyệt chỉ đọc. Viện dẫn tiền đề theo TÊN tính chất, không "theo ý a/b".</span>
+            Chuỗi {chuoi!.y.length} ý · {soY} ý cần lời giải <span className="font-normal normal-case text-slate-400">— chuyển ý bằng tab phía trên</span>
           </div>
           <ChuoiSoan chuoi={chuoi!} values={yNhap} onChange={setYNhap} tieuDe={tieuDe} />
           <div className="mt-2 grid grid-cols-[1fr_280px] gap-3">

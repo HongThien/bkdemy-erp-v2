@@ -8288,7 +8288,6 @@ CHƯA nhìn tận mắt, Thùy bấm thử. Dev log có sẵn lỗi `virtual:pwa
   - Chưa có trên app: tách task con / quản lý con (vẫn ở ERP). Verify: dry-run ROLLBACK giả jwt Lộc → 13 dòng đúng cờ; dev 375px
     card + modal chi tiết render gọn (admin chỉ có 1 việc đã huỷ nên chưa soi được nút Hoàn thành trên máy). tsc 0.
 
-
 ## 2026-09-05 — TOOL SOẠN THẢO công thức: app riêng `soan` (WYSIWYG, không LaTeX) — spike (nhánh feat/cong-thuc-b, worktree bkdemy-erp-v2-congthuc)
 **Bối cảnh / quyết định (Thùy, 3 lần chỉnh hướng CTO trong 1 buổi):** (1) CTO đề xuất "hàng đợi từ kho (11.815 lời giải AI chưa duyệt)" → SAI, Thùy:
 "độc lập với kho, sao cứ dính kho". (2) CTO đề xuất "toggle xem code LaTeX để copy" → SAI, Thùy: "KHÔNG có code LaTeX ở đâu cả, y như
@@ -8758,3 +8757,327 @@ trái = chuỗi, bài nộp kiểu cũ vẫn hiện. tsc sạch.
 **Chưa làm / ghi nhận:** duyệt-thành-công qua UI cần tài khoản học thuật thứ 2 (DB e2e đã chứng minh) · v_hinh_chua_giai (ERP tab
 "Chưa có lời giải") vẫn liệt kê từng node — Thùy chưa đòi đổi · so sánh hiệu suất Claude theo ý: snapshot vẫn là `loi_giai_ai` bản
 gộp lúc nhận; theo ý so bằng `ChuoiY.loi_giai` (trạng thái claude) — đủ cho UI, chưa có báo cáo.
+
+### 06/09 tối — Chuỗi Hình → builder a)/b)/c), tối giản UI
+**Thùy:** "Khi ghép chuỗi, làm giống như builder ấy. Mỗi câu trong chuỗi sẽ thành ý a,b,c,d của một bài. Khi ấn vào soạn
+bài thì mỗi ý a,b,c sẽ có ô nhập riêng. Tốt nhất là để dạng toggle bar để chuyển giữa các ý cho dễ ấy. Vì ô nhập riêng
+nên hệ thống có thể dễ dàng ghép khi vào kho." Rồi chốt thêm: "đừng hiện thêm thông tin bên lề xung quanh. Tập trung
+đúng vào bài toán thôi: Đề, ý a, ý b, ý c... Chỉ giữ lại mã bài toán còn các thông tin mô hình các thứ bỏ hết đi."
+**Đổi (không migration, chỉ UI + 1 hàm lib):**
+- `src/lib/giaibai.ts`: `chuY(i) = "a)"/"b)"/…` theo VỊ TRÍ trong chuỗi — dùng CHUNG giữa UI và `gopYNhap` (nhãn hiện
+  trên tab luôn khớp nhãn trong bản gộp gửi DB).
+- [ChuoiHinh.tsx](src/screens/giaibai/ChuoiHinh.tsx) viết lại: bỏ hẳn `GiaThietMoHinh` (giả thiết mô hình chung), bỏ
+  "cấp N", "biến thể", chip trạng thái dài (chua/claude/nguoi/da_duyet) — chỉ còn **mã + a)/b)/c) + ĐÍCH (nếu có) + đề**.
+  `ChuoiSoan` đổi từ danh sách cuộn dọc sang **builder tab bar**: mỗi ý 1 tab (a), b)…, ★ nếu là ĐÍCH, ✓ nếu đã gõ nội
+  dung), bấm tab hoặc nút ‹ Trước/Sau › để chuyển, MỘT ý hiện tại một lúc (đề + ô nhập hoặc lời giải đã có).
+- GiaiEditor: bớt câu hướng dẫn dài dòng, còn "chuyển ý bằng tab phía trên".
+**Verify:** tsc sạch · Browser dev 5181 (restart server, HMR stale trước đó): Kho bài Hoàn thiện hiện đúng mã+a)/b)/c)/
+đề, không còn mô hình/cấp/trạng thái · Bài của tôi mở BT.08.083: tab "a) ✓" / "b) ★ ✓", bấm Sau › chuyển đúng sang ý
+b) ĐÍCH (hình + lời giải Claude nạp sẵn) · trả bài dọn xong.
+
+### 06/09 tối (2) — Đề bài gộp 1 card + WYSIWYG thật (RichMathBox), không hiện LaTeX thô
+**Thùy:** "Với đề bài: ghép chung tất cả lại thành 1 card chung đi, ko cần card riêng. Hình mặc định lấy ý cuối để
+hiển thị. Chỉ có giải mới cần hiện riêng thôi. Cấu trúc vẫn là: click vào ý a thì hiện đề và ý a bên trái như hiện
+tại. Click vào ý b thì hiện đề + ý a + ý b và hình của ý b ấy. Và tuyệt đối ko hiện latex. chỉ hiện cái công thức
+sửa được thôi nhé." — phát hiện khi soi kỹ ô nhập builder mới làm: textarea đang hiện RAW LaTeX ("$M$", "\dfrac{1}{2}
+AB$"…) — đúng thứ "05/09 chốt" (người soạn KHÔNG thấy LaTeX) nhưng lúc build chuỗi Hình lại lỡ dùng MathTextarea
+(textarea+preview) thay vì WYSIWYG thật.
+**Đổi:**
+- `ChuoiDoc` (đọc — Kho bài/Bài của tôi không đang soạn/Duyệt): 1 CARD DUY NHẤT (bỏ khung riêng từng ý), ảnh MẶC
+  ĐỊNH = ảnh của Ý CUỐI (không lặp ảnh từng ý). `CumDe(chuoi, upTo)` = hàm dùng chung: đề gộp từ ý 0..upTo, ảnh của
+  ý `upTo`.
+- `ChuoiSoan` (soạn — CHỈ chỗ này hiện riêng): builder LŨY TIẾN — tab a) đề chỉ gồm a; tab b) đề gồm a+b + ảnh của
+  b (`CumDe(chuoi, active)`), khớp đúng "ghép ngay được vào kho" (ý sau kế thừa ngữ cảnh ý trước).
+- **[RichMathBox.tsx](src/components/math/RichMathBox.tsx)** (MỚI) — ô soạn dùng `RichMath` (WYSIWYG contenteditable
+  của tool soạn thảo công thức, `src/soan/RichMath.tsx`) TRỰC TIẾP thay vì `MathTextarea` (textarea raw + preview
+  dưới). Cùng chuỗi kho `$…$` (`getValue`/`onChange` tương thích), thêm nút ⤢ mở SoanModal full màn khi cần soạn
+  dài (cụm/thư mục/đổi tên điểm). PHẠM VI: chỉ áp cho ô lời giải TỪNG Ý của chuỗi Hình (ChuoiSoan) — chưa đụng
+  MathTextarea ở các form khác (FormBaiToan/CauEditor/NhapKho/GiaiEditor Đại-KHTN-HGT) vì Thùy chỉ nói "với đề bài"
+  của chuỗi Hình; nếu muốn đồng bộ toàn bộ tool giải bài thì làm tiếp riêng.
+- Bẫy: RichMath KHÔNG tự đồng bộ prop `value` sau mount (uncontrolled, chỉ load 1 lần) — đổi tab trong builder mà
+  không remount thì ô vẫn hiện nội dung ý CŨ. Sửa bằng `key={y.id}` trên RichMathBox trong ChuoiSoan.
+**Verify:** tsc sạch · Browser dev 5181 (restart server): Kho bài BT.08.083/BT.08.121 hiện đúng 1 card + 1 ảnh (ý
+cuối) · nhận BT.08.121, mở Bài của tôi: tab a)/b)/c)★, đổi tab lũy tiến đúng (a → a+b → a+b+c), ảnh đổi theo ý đang
+chọn · ô lời giải KHÔNG còn hiện `$…$` thô — công thức hiện dạng render ngay khi gõ (Ctrl+M mở bảng dựng, chèn
+đúng, Esc huỷ sạch không để lại rác) · trả 2 bài test, dọn xong.
+
+### 06/09 tối (3) — Chuỗi Hình: BỎ ô gõ tại chỗ, luôn qua full màn
+**Thùy:** "t sẽ ko giải ở màn hình con đâu. Story là luôn luôn phóng to ra làm full màn hình cơ." — người dùng KHÔNG
+gõ ở màn con bao giờ, luôn bấm ⤢ mở full màn để soạn thật.
+**Đổi:** `ChuoiSoan` bỏ hẳn ô nhập tại chỗ (không còn RichMathBox trong màn con) — mỗi ý giờ chỉ hiện: lời giải ĐÃ
+CÓ (rendered qua MathText, không latex thô) hoặc dòng "Chưa soạn lời giải cho ý X", cộng 1 nút to
+"⤢ Soạn/Sửa lời giải X — full màn" mở thẳng `SoanModal` (đã tự WYSIWYG sẵn, không cần bọc thêm) với đề = `CumDe`
+lũy tiến đúng ý đang chọn. `RichMathBox.tsx` (mig trước mới tạo) giữ lại nhưng ĐÁNH DẤU CHƯA DÙNG — có thể cần sau
+này cho 1 ô ngắn thật sự gõ tại chỗ, không đáng mở full màn.
+**Verify:** tsc sạch · Browser dev 5181: nhận BT.08.108, tab a) chỉ hiện đề + nút full màn (không ô gõ) → bấm nút →
+SoanModal mở đúng tiêu đề "Lời giải · BT.08.108 · a)", đề trái đúng CHỈ ý a), vùng soạn WYSIWYG trống sẵn sàng gõ →
+đóng, trả bài dọn sạch.
+
+### 06/09 tối (4) — Toggle ý a/b/c CHUYỂN VÀO full màn, "Sửa" tự bung full màn ngay
+**Thùy:** "Làm cái chọn ý a,b,c ở chỗ full màn luôn đi, Tốt nhất khi bấm sửa là tự động chuyển sang full màn luôn vì
+sẽ ko có ai sửa ở cái màn bé tý kia đâu." → rồi xác nhận thêm: "nên chỗ full màn cũng cần có toggle ý a,b,c ấy."
+**Đổi:**
+- `SoanWorkspace` (`src/soan/SoanWorkspace.tsx`) → `forwardRef` lộ `getValue()` (kiểu `SoanWorkspaceHandle`) — để
+  chỗ NGOÀI đọc được buffer đang gõ TRƯỚC khi tự chuyển/tự đóng mà KHÔNG qua nút "Lưu" (không đổi hành vi cho mọi
+  chỗ dùng cũ không truyền ref — AppSoan, SoanModal đơn-giá-trị vẫn y nguyên).
+- **`ChuoiSoanModal`** (mới, trong ChuoiHinh.tsx) — full màn RIÊNG cho chuỗi: THANH TAB a)/b)/c)…★✓ NGAY TRONG modal
+  (không phải ở màn bé nữa). Đổi ý → `wsRef.current.getValue()` chụp lại nội dung ý cũ RỒI mới nạp ý mới
+  (`key={y.id}` ép SoanWorkspace remount) — đổi ý khi CHƯA bấm Lưu vẫn không mất. Đề trái = `CumDe` lũy tiến đúng ý
+  đang chọn (giữ từ tối (2)).
+- `ChuoiSoan` (màn bé) giờ chỉ còn tác dụng: TỰ MỞ full màn NGAY khi lên (`useState(true)`) — đúng "bấm sửa là tự
+  động chuyển sang full màn luôn". Nếu đóng full màn giữa chừng, quay lại đúng thẻ Bài của tôi/GiaiEditor (không
+  văng ra ngoài danh sách) với tóm tắt (`ChuoiDoc` gộp 1 card) + số ý đã xong + nút "Tiếp tục soạn — full màn".
+**Verify:** tsc sạch · Browser dev 5181: bấm "Sửa tiếp" → bung full màn NGAY (đúng, không qua màn bé) · toggle
+a)/b)/c) nằm ở góc trên trái full màn · gõ text ở ý a) CHƯA bấm Lưu → đổi sang b) → quay lại a): nội dung vẫn còn
+nguyên (chụp bằng getValue, không mất) · nút "✕ Đóng" của modal (phân biệt với nút "Đóng" của GiaiEditor phía dưới
+bị modal che — test tay lúc đầu bấm nhầm nút bị che do querySelector không phân biệt lớp phủ, sửa lại chọn đúng nút
+mới thấy hành vi đúng) đưa về đúng thẻ GiaiEditor với tóm tắt "2/3 ý đã có lời giải".
+
+### 06/09 tối (5) — BUG: Kho bài Hình không hiện ảnh (mig 202609061736)
+**Thùy báo:** "Lúc ở kho bài, các bài hình đang ko có hình. T dặn để hình là của câu cuối cùng mà."
+**Nguyên nhân:** `fn_hinh_chuoi_json` (202609061619) lấy ảnh mỗi node CHỈ từ `hinh_baitoan.anh_chuan` — thiếu
+fallback về `hinh_mo_hinh.anh_cau_hinh` (ảnh hình chung của mô hình, nơi PHẦN LỚN bài toán thực sự lấy ảnh — mỗi
+node hiếm khi tự có `anh_chuan` riêng). Mọi view khác (`v_hinh_chua_giai`, `v_giaibai_bai/hoan_thien` nhánh Hình…)
+đều `coalesce(b.anh_chuan, m.anh_cau_hinh)` đúng — chỉ riêng hàm chuỗi mới viết tối nay thiếu, và thiếu luôn cả
+`join hinh_mo_hinh m` ở nhánh bài toán nên không có gì để coalesce vào. Ý CUỐI (ĐÍCH) hầu hết không có anh_chuan
+riêng ⇒ card không hiện ảnh gì — đúng triệu chứng Thùy thấy.
+**Sửa:** thêm join `hinh_mo_hinh m`, coalesce `b.anh_chuan → m.anh_cau_hinh` (nhánh bài toán) và
+`v.anh → b.anh_chuan → m.anh_cau_hinh` (nhánh biến thể, đúng thứ tự v_hinh_chua_giai).
+**Verify:** query read-only (rollback) — 25/25 bài Hoàn thiện Hình giờ có ảnh ở ý cuối (trước đó nhiều bài null) ·
+Browser dev 5181 Kho bài: mọi card đều hiện ảnh kể cả bài trước đây trống. `npm run schema` refresh (chỉ đổi hàm,
+không đổi bảng/view).
+## 2026-09-06 — App TA cũng có push nhắc việc hàng ngày (23:30), dùng chung hạ tầng với app pt
+- **CEO 06/09:** "app TA cũng cần push để không miss việc, giống pt". Chốt qua hỏi: tin CHUNG (khuôn y
+  hệt pt, không đếm bài ET/BTVN cá nhân — tránh lặp lại độ phức tạp derive server-side của getMyTasks()
+  vốn đang chạy client-side, TKB + buổi huỷ ad-hoc…) · giờ gửi **23:30 VN** (khác 10:30 của pt).
+- **`push_dang_ky` giờ DÙNG CHUNG 2 app** — mig `202609061913_push_dang_ky_app_scope`: thêm cột `app`
+  (check `pt`/`ta`, mặc định `pt` — 3 dòng cũ ĐÃ có thật từ lúc app pt bật thử, backfill đúng vì lúc đó
+  chỉ có pt). **Bài học ghi lại:** Web Push subscribe theo TỪNG ORIGIN + CẶP KHOÁ VAPID riêng — không
+  phân biệt app thì cron app này sẽ cố gửi payload/giờ của app kia cho thiết bị đăng ký app khác (push
+  service từ chối vì sai khoá, hoặc gửi nhầm nội dung nếu lỡ dùng chung khoá).
+  `fn_pt_push_danh_sach` SỬA TẠI CHỖ (create or replace) — thêm `p_app text default 'pt'` filter theo
+  app; **DROP overload 1-tham-số CŨ trước khi tạo overload mới** (giữ cả hai chữ ký ≠ số tham số sẽ
+  ĐỤNG ĐỘ "function is not unique" khi gọi chỉ `p_secret` — Postgres coi 2 chữ ký khác nhau, không tự
+  biết ưu tiên bản có default). Giữ TÊN hàm có tiền tố `pt` dù giờ 2 app cùng gọi — đổi tên sẽ phải đồng
+  bộ code đã deploy trên Vercel đúng lúc migration chạy, rủi ro hơn lợi (app pt gọi hàm cũ 1-tham-số vẫn
+  chạy y nguyên nhờ default). Dry-run ROLLBACK: gọi kiểu cũ vẫn ra đúng 3 dòng pt, `p_app='ta'` ra 0 rồi
+  1 sau khi giả đăng ký, constraint chặn giá trị app lạ.
+- **Code dùng chung:** `src/lib/push.ts` thêm tham số `app: 'pt'|'ta'` cho mọi hàm ghi/đọc `push_dang_ky`
+  · `src/components/NhacViecCaiDat.tsx` (MỚI) = `NhacViecCard` (nội dung thẻ, dùng trong trang Cài đặt
+  của pt — PtHome.tsx rút gọn, xoá code trùng) + `NhacViecNutHeader` (nút chuông 🔔 + modal nổi khuôn
+  GopY, dùng cho ta vì bottom-tab 5 ô đã đủ, không chèn thêm tab Cài đặt được).
+- **`api/ta-nhac-viec.mjs`** (mới, khuôn y hệt `api/pt-nhac-viec.mjs`): gọi `fn_pt_push_danh_sach(secret,
+  'ta')`, nội dung "Nhớ kiểm tra & chấm hết ET/BTVN/bài trên lớp hôm nay nha các tình yêu 💜", tag
+  `ta-nhac-viec`. `vercel.json` thêm cron `30 16 * * *` (=23:30 VN). `vite.config.ta.ts` thêm
+  `workbox.importScripts:['sw-push.js']` (file JS thuần đã có sẵn từ pt, tái dùng nguyên).
+  `TaHome.tsx` thêm nút chuông cạnh Góp ý + banner gợi ý bật ở trang chủ (giống pt).
+  `.env.example`: ghi rõ 2 app cần **2 CẶP KHOÁ VAPID RIÊNG** (sinh 2 lần), CRON_SECRET dùng chung được.
+- **Verify:** tsc 0 · `build:pt` + `build:ta` pass, `dist-ta/sw.js` xác nhận có `importScripts(sw-push.js)`
+  · dev 375px app ta: nút chuông render cạnh 🐞, bấm ra modal đúng nội dung "23:30…", đúng cảnh báo
+  "bản dev không có service worker" (khớp môi trường thật). Migration ĐÃ ÁP (`npm run migrate` +
+  `npm run schema`) — schema.md lần này còn kèm rất nhiều bảng/hàm KHÔNG PHẢI của phiên này (song song
+  nhiều worktree khác đang merge lên cùng DB sống — `migrate.mjs --status` liệt kê ~15 file
+  "giaibai_*"/"han_nop_ngoai_le" chưa có trong nhánh này, đúng cảnh báo README "nhánh chưa merge").
+- **CEO cần làm thêm để chạy thật (ngoài phần pt đã ghi 05/09):** sinh THÊM 1 cặp khoá VAPID RIÊNG cho
+  ta (`npx web-push generate-vapid-keys`, ĐỪNG dùng lại cặp của pt) → dán `VITE_PUSH_VAPID_PUBLIC` +
+  `PUSH_VAPID_PRIVATE` vào Vercel project **ta** (project TA sẵn có, chỉ thêm 2 biến + CRON_SECRET —
+  không cần Vercel project mới, không cần domain mới).
+## 2026-09-06 — Hạn 36h/72h + MT về trưởng khối (khối × môn) + derive task buổi thường XUỐNG DB
+- **CEO chốt (tối 06/09):** ① hạn "Đánh giá buổi học" + "Chấm bài trên lớp" (+ Chấm ET) = **36 giờ kể từ giờ
+  BẮT ĐẦU buổi** · ② MT **không gán mặc định cho TA lớp** ("MT là việc quan trọng") → **trưởng khối**, hạn **72h
+  từ giờ bắt đầu ca thi** · ③ hỏi thêm: trưởng khối theo (khối) hay (khối × môn)? → **"theo môn nhé, KHTN sẽ có
+  trưởng khối riêng"**; thiếu trưởng khối → **về GV phụ trách lớp**.
+- **Hiện trạng dò được trước khi sửa (đáng ghi):** deadline nhân sự tồn tại **4 chỗ, 2 chuẩn** — client
+  `gami.ts` getMyTasks + bản sao listAllStaffTasks (23:59 ngày buổi / ET 12h trưa hôm sau) và DB
+  `fn_ta_dashboard`/`fn_gv_dashboard` (00:00 hôm sau / ET = han_nop_bai_test). App và KPI tháng chấm "trễ" theo 2
+  luật khác nhau suốt từ 30/08. `phan_cong_khoi` chỉ có `khoi`, 12/12 dòng đều người Toán; khối 7/8/9 có lớp
+  KHTN/Văn/Anh + 4 MT KHTN đã gán ⇒ không có `mon` là trưởng khối Toán nhận MT KHTN (vi phạm §1.6).
+  `buoi_ke_tiep` (DB) KHÔNG né buổi huỷ ad-hoc + không xét khai giảng — client caTiepTheo đã fix 07-19, DB chưa
+  (hạn BTVN HS lẫn TA tính theo buổi đã huỷ). `buoi_hoc.gio_bat_dau` có 662/663 buổi (anchor dùng được).
+  Không có bảng "ca thi" — MT là phase của buổi thường ⇒ giờ ca thi = giờ bắt đầu buổi.
+- **Mig `202609062311_phan_cong_khoi_mon`:** thêm `mon` not null (backfill 'Toán' — đúng sự thật, đã kiểm
+  nhan_su_mon), unique (nhan_su_id, khoi, mon) thay unique cũ.
+- **Mig `202609062312_viec_buoi_thuong_han_36h_mt_truong_khoi`:** `fn_han_viec(lop, ngay, gio_bat_dau, tab)` =
+  NGUỒN DUY NHẤT hạn (ingame/danhgia/et +36h · mt +72h · btvn = han_nop_bai_test; giờ bắt đầu: tham số → TKB →
+  00:00) · `fn_viec_buoi_thuong(tu, den, tat_ca)` = derive task buổi thường (gv/tg theo phan_cong_lop; buổi có MT
+  chỉ 1 việc mt: vai **`tk`** = phan_cong_khoi khớp (lop.khoi, lop.mon) → fallback gv lớp, la_chinh ưu tiên; dedup
+  distinct on (ns, buổi, tab) ưu tiên gv trước tg như client cũ) · `fn_ta_dashboard`/`fn_gv_dashboard` đọc từ đó
+  (TA mất MT khỏi KPI; GV fallback MT thì MT vào KPI GV) · `buoi_ke_tiep` né buổi huỷ + khai giảng.
+- **Client:** `getMyTasks`/`listAllStaffTasks` phần buổi thường → gọi RPC (bỏ ~120 dòng derive/deadline/caTiepTheo
+  client — đúng §2.0); bù/đuổi/bổ trợ/báo sai vẫn client (hạn bù/đuổi CHƯA đổi — CEO chỉ nói buổi học). `MyTask.vai`
+  thêm `'tk'`; NhanSuHome `tabsCuaVai('tk')=['mt']`, gv thêm 'mt'. `khoiPhuTrach` → `{khoi, mon}[]`;
+  BuoiHocScreen `coQuyenChamLop(lopId, khoi, mon)`. PhanCongScreen: trưởng khối chuyển vào từng nhóm MÔN (chip +
+  picker per (khối × môn), nhãn vàng "chưa gán — MT về GV lớp"). gay.ts: MT không tra nguoiPhuTrach (owner đã do DB
+  chọn) — trước đây trưởng khối làm MT sẽ không bao giờ bị gậy vì nguoiPhuTrach('mt') trả TA.
+- **Verify:** migrate OK · tsc 0 · SELECT read-only trên RPC: 918 gv danhgia/ingame · 612 tg et/btvn · 487 tg
+  ingame · **51 mt→tk** · **4 mt→gv** (8K1/9K2/9K3 KHTN — chưa có trưởng khối KHTN, đúng fallback) · 0 MT mồ côi ·
+  0 trùng (ns,buổi,tab) · mẫu: buổi 06/09 19:30 → ET/ingame hạn 08/09 07:30, MT hạn 09/09 19:30.
+- **Còn treo / lưu ý:** `--status` báo 8 file có trong sổ mà không có trong repo (nhánh khác chưa merge, có từ
+  trước) · trưởng khối chưa có dashboard KPI riêng · Trang cần gán trưởng khối KHTN ở màn Phân công (nhóm KHTN
+  khối 8/9) · hạn buổi bù/đuổi/bổ trợ vẫn 23:59/12h trưa (client) — hỏi CEO có áp 36h không.
+## 2026-09-07 — App OPS: "Của tôi" 6 box (context OPS, song song context TA) + mốc tích lũy 09/2026
+- **CEO chốt:** OPS làm y khuôn TA (6 box). **Tiến trình OPS tạm bỏ** (OPS không có định mức theo lớp;
+  đơn vị OPS = ca trực) → box "sắp mở". Điểm tích lũy **chỉ tính từ 09/2026**, trước đó không tính.
+  "Đi làm ít thưởng ít là bình thường" (OPS 1 ca/tuần ít điểm hơn TA — chấp nhận). Lộc = lead OPS, bỏ qua.
+  UI: làm theo style cũ trước, "UI mới chỉ đổi hình, logic không đổi".
+- **Verify read-only trước khi code (6 OPS thật):** `fn_ops_viec_thang` trả đúng `dat/cho`, ngày = ngày ca;
+  `_tich_luy_cua` ra số hợp lý (T9: 100–400). Lộ: **T8 là "điểm quà tặng"** (việc trước 01/09 luôn đạt ⇒
+  chuỗi = số ngày có việc, 1400–2400 điểm) và hàm chốt không chặn T8. `quy_trinh` 0 dòng (chưa có quy ước
+  nhãn — OPS dùng `'ops'`, TA `'ta'`), `shop_vat_pham` 0 dòng, `tich_luy_chot_thang` 0 dòng.
+- **Mig `202609070217_tich_luy_moc_bat_dau_09_2026`:** `_tich_luy_cua` tháng < 09/2026 → 0/0;
+  `fn_tich_luy_chot_thang` kỳ < 01/09/2026 → raise. Mốc hardcode trong hàm (`ta_dinh_muc.gia_tri` là
+  numeric, không chứa date). Thân còn lại chép nguyên 202609070151. Đã áp + `npm run schema`.
+  Verify sau áp: T8 = 0 cho cả 6 OPS, T9 giữ nguyên.
+- **Code:** `DashOps.tsx` viết lại = dữ liệu + điều hướng box (opsDashboard · xepHangChung · tichLuy);
+  `OpsBoxes.tsx` (MỚI) = render thuần style cũ (header/lưới/Gậy/Hướng dẫn/Đạt chuẩn/Shop) — **cố ý
+  KHÔNG import `CuaToiBoxes`/`ShopBox`/`components/bk`** vì bên TA đang xoá/sửa các file đó trong cùng
+  working tree; khi `bk/` chốt thì thay `OpsBoxes.tsx`, `DashOps.tsx` không đổi. Chip ⭐ = xai_duoc +
+  diem_thang (cùng công thức DashTa mới). tsc + `build:ops` pass. Chưa test browser (cần login OPS).
+- **Còn treo:** `BKMascotBanner` (bk/) hardcode "Small TAs Big Impact" — cần prop trước khi OPS dùng ·
+  admin nhập `quy_trinh` nhãn `'ops'` + `shop_vat_pham` · Tiến trình OPS chờ CEO định nghĩa (đề xuất "Ca
+  trực": ca đã trực / mục đạt theo 5 loại; cũng là chỗ tự nhiên ghi OPS vắng ca / trực thay sau này).
+
+## 07/09/2026 — Vercel Ignored Build Step (tách build 8 project)
+- **Sai:** repo gắn 8 project Vercel, mọi push build cả 8 → hôm nay ~15 push × 8 = vượt trần 100 build/ngày Hobby,
+  7/8 project bị "Deployment rate limited — retry in 24 hours" (app TA không lên). CEO đã dặn tách trước đó, chưa làm.
+- **Sửa:** `vercel.json.ignoreCommand = node scripts/vercel-ignore.mjs` — nhận diện project qua
+  `VERCEL_PROJECT_PRODUCTION_URL` (ta-v2/gv/ops/hs/pt/chi/gb→giaibai/gốc→erp), `git diff` từ `VERCEL_GIT_PREVIOUS_SHA`;
+  file riêng app → chỉ app đó build; `design/ docs/ supabase/ scripts/ *.md` → không ai build; còn lại (lib/components/
+  api/package) → mọi project build; không chắc → build. `components/bk` + `public/bk-ui` = ta+ops+gv cùng sở hữu.
+- **Quy tắc làm việc:** gom commit, push theo đợt (1–2 lần/phiên), không push từng sửa nhỏ.
+
+## 07/09/2026 (đêm) — App OPS: redesign toàn bộ theo handoff 7-màn (CEO gửi lúc đi ngủ, "tự làm không cần hỏi")
+- **Nguồn:** CEO gửi `ops1-6.png` (backdrop — thực chất là 6/7 màn OPS thật dù file zip tên
+  "BK_TA_7_SCREEN..." do lấy nhầm khuôn cũ) + zip SVG icon + `spec/CLAUDE_REBUILD_GUIDE.md` (chữ trong
+  guide mô tả sai — nói "học sinh" — bỏ qua, dùng đúng ảnh reference 7 màn: Hôm nay/Điểm danh/Report &
+  Báo tan/Chuẩn bị phòng/Test đầu vào/Của tôi + `07_my.png` riêng cho Của tôi). Đã copy toàn bộ zip SVG
+  vào `public/ops-ui/**` (giữ cấu trúc thư mục gốc: common/home/attendance/report/prep/test/gift/my);
+  6 backdrop PNG + 2 file zip gốc + `anhgoc_*`/`shoping.png` linh tinh CEO up nhầm app trước đó →
+  chuyển vào `design/bk-ui-src/` (không vào build, theo quy ước đã lập cho TA).
+- **Khác phong cách "tranh vẽ BK Academy" của TA:** OPS dùng flat card + gradient màu theo màn + nhân
+  vật chibi SVG (report/header_boy · prep/header_girl+broom · test/header_boy_clipboard+star ·
+  common/avatar_ta_girl_sign cho Home) + bong bóng lời, KHÔNG có backdrop tranh vẽ tay. Token màu +
+  primitive dùng chung: `src/components/ops/OpsUI.tsx` (`OPS` tokens 7 tông, `OpsHero`, `OpsRow`,
+  `OpsSegmented`, `OpsEmptyState`, icon tự vẽ inline `Ico*` — không dùng nav SVG có sẵn trong kit vì
+  chất lượng không đều (vài file là base64 PNG nhúng, vài file trùng lặp giữa các mục khác nhau)).
+- **An toàn:** `OpsReportScreen`/`PrepScreen`/`DiemDanhTestScreen` (`screens/vanhanhops/*`) DÙNG CHUNG
+  với desktop ERP → KHÔNG sửa bên trong, chỉ bọc `ManCon` (header màu+nhân vật) ở NGOÀI trong
+  `OpsHome.tsx`. `DiemDanhBuoi.tsx` + `TuQuaScreen.tsx` là file riêng app OPS → sửa sâu (header, tab
+  pill, list row) nhưng KHÔNG đụng handler nghiệp vụ (mo/huy/moLai/danh/xoa/doiGV/dongBoSiSo… giữ
+  nguyên 100%).
+- **`OpsHome.tsx`:** viết lại toàn bộ Home tab (`HomTay`) — hero lục avatar+chào+trạng thái+nhân vật,
+  thanh ngày nổi, lưới 6 module (Điểm danh/Report/Prep/Test/**Tủ quà**/Của tôi), "Công việc hôm nay"
+  GỘP 1 danh sách (trước đây tách riêng theo card) + chip lọc + mèo ngủ (`sleeping_cat.svg`) khi trống,
+  banner câu động viên. Bottom-nav icon tự vẽ + pill màu. ⚠ Đổi label "Quà"→"**Tủ quà**" (đổi XU HỌC
+  SINH lấy quà, vận hành) để KHÔNG nhầm với "Shopping" trong Của tôi (điểm tích luỹ CÁ NHÂN nhân viên)
+  — 2 khái niệm khác hẳn dù cùng nằm trong bộ icon "Quà" của thiết kế.
+- **`DashOps.tsx` viết lại HOÀN TOÀN (khác TA):** 07_my.png là LIST không phải GRID — hero hồng + thẻ
+  hồ sơ (avatar · tên · "BK Vận hành" · vòng % bấm mở "Tiến trình") + 6 dòng menu icon vuông màu SẴN
+  TRONG kit (`my/icon_rank.svg` v.v. — đã tô màu nền sẵn, không cần code thêm bg) + Cài đặt + Đăng
+  xuất. Sub-screen TÁI DÙNG NGUYÊN từ `components/bk/*` (Xếp hạng/Gậy/May mắn/Shopping/Hướng dẫn/Đạt
+  chuẩn-làm-Tiến-trình) — ĐÃ TEST THẬT trên tài khoản Admin: Xếp hạng hiện đúng BXH OPS thật (Quỳnh
+  Trang, Khánh Linh…), May mắn quay được + thấy lại lịch sử của TA (chung sổ toàn công ty, đúng thiết
+  kế), Shopping/Hướng dẫn/Gậy render sạch — KHÔNG cần sửa gì trong các file `bk/*` ngoài 2 chỗ nhỏ:
+  (1) `ShopScreen` thêm prop `hoTro?: string` (mặc định `'TA'`, OPS truyền `'bạn'`) để câu "Cố lên TA
+  ơi!" không lặp sai vai trò; (2) `HuongDanScreen` tách `GOI_Y_THEO_VAI` theo `vaiTro` (trước là 1 mảng
+  cứng nhắc tới ET/BTVN — vô nghĩa với OPS) — cả 2 đều additive, có default giữ nguyên hành vi TA, đã
+  `build:ta` + `build:ops` lại để xác nhận không vỡ app TA.
+  Xoá bỏ import `OpsBoxes.tsx` cũ (file để lại KHÔNG XOÁ, không còn ai import — theo Luật xoá, chờ CEO
+  duyệt xoá tay khi rảnh).
+- **`CaiDatBox` (Cài đặt) mới, tối giản:** avatar/tên + hàng "Góp ý/Báo lỗi" (đặt `<GopY/>` — component
+  có sẵn — làm control, KHÔNG lồng trong bottom-sheet khác vì z-index GopY=50 < BKBottomSheet=90 sẽ bị
+  đè khuất).
+- **tsc sạch, `npm run build:ta` + `build:ops` đều pass**, browser-test thật (đăng nhập Admin, ops app
+  cổng dev): Hôm nay/Điểm danh (list+detail)/Report/Prep/Test/Tủ quà/Của tôi + 5 sub-screen — 0 lỗi
+  console (1 dòng "GOI_Y is not defined" là artefact cache cũ của tool đọc console, đã xác nhận qua
+  get_page_text nội dung trang luôn đúng, không phải lỗi thật).
+- **Còn treo (để CEO duyệt sáng mai):**
+  ① `OpsBoxes.tsx` không dùng nữa — xin xoá?
+  ② "Cài đặt" mới chỉ có Góp ý — chưa có gì để cấu hình thật, có cần thêm gì không?
+  ③ Icon `gift/header_gift_box.svg` dùng cho Tủ quà có sẵn chữ "Better TAs Brighter Students ♡" bị lẫn
+     từ app khác (rất nhỏ, khó thấy) — kệ hay đổi ảnh khác?
+  ④ Chưa động tới nội dung 3 tab trong Tủ quà (Đổi quà/Đơn đặt/Kho) — chỉ đổi header, xin ý kiến có cần
+     redesign sâu hơn không (tốn nhiều công vì đây là tool vận hành phức tạp, rủi ro cao nếu làm vội).
+  ⑤ Tiến trình OPS đang tạm dùng lại "Đạt chuẩn" (DatChuanScreen) — như đã ghi từ trước, CEO chưa chốt
+     định nghĩa "tiến trình" riêng cho OPS (ca trực) nên chưa tách hẳn.
+
+## 07/09/2026 (sáng) — OPS: header dùng ẢNH GỐC thật (không phải CSS gradient) + "Của tôi" đổi sang khuôn TA
+- **CEO phản hồi sau bản OPS đêm qua:** "phải dùng ảnh gốc trong kho ops1 ops2 làm background… header
+  của m xấu quá" + "Phần của tôi: làm giống hệt như bên app TA cơ mà".
+- **Header Hôm nay/Report/Prep/Test/Tủ quà — đổi từ CSS gradient sang ẢNH GỐC thật:** `OpsHero` (OpsUI.tsx)
+  thêm `bgImage`/`bgAspect`/`bgFill`/`wash`. Report/Prep/Test: ảnh gốc giữ NGUYÊN 100% (title+nhân vật+
+  bong bóng đã bake đúng sẵn, không vẽ gì đè lên) → pixel-perfect với ảnh CEO gửi. Home: ảnh gốc CHỈ xoá
+  4 vùng nhỏ (avatar/tên/vai trò/chuông+bánh răng) bằng nội suy biên (an toàn ở quy mô nhỏ — vùng RỘNG
+  trước đó gây streak xấu, đã thử và bỏ) + tô phẳng chữ trên bảng gỗ nhân vật đang cầm bằng màu kem thật
+  (không nội suy) → chữ "Cố lên {tên đăng nhập} ơi!" vẽ đè đúng toạ độ đo từ ảnh gốc (742,330 trong ảnh
+  863×1822 gốc, nghiêng -13°) — xoá luôn SVG placeholder tự vẽ trước đó (`avatar_ta_girl_sign.svg` — hoá
+  ra là hình đặt tạm rất xấu VÀ hardcode cứng tên "Thuỳ" ngay trong text SVG, không phải asset thật của
+  kit). Tủ quà: xoá tiêu đề "Quà của BK" tĩnh bằng nội suy biên (vùng nhỏ, an toàn), giữ nguyên hộp quà+sao.
+  **`bgFill` (mới):** true = ép chiều cao hero đúng ảnh (bắt buộc khi children cần toạ độ % chính xác trên
+  ảnh, vd chữ đè lên bảng gỗ Home; cũng cần cho Report/Prep/Test dù không children vì flow rỗng sẽ sập về
+  cao 0) — false/mặc định = ảnh chỉ ghim sát đỉnh theo tỉ lệ riêng, hero cao theo NỘI DUNG con (Tủ quà cần
+  cái này vì hàng tab Đổi quà/Đơn đặt/Kho cao hơn ảnh gốc rất ngắn — dùng `bgFill` sai đã cắt mất hàng tab,
+  CEO báo "Tủ quà bị lỗi phần header", sửa bằng cách bỏ `bgFill` cho riêng màn này).
+- **"Của tôi" — 2 lần đổi trong buổi sáng:**
+  1) CEO nói "giống hệt như bên app TA" → soi lại: TA dùng cơ chế **tranh nền vẽ sẵn** (BK_TRANH/
+     BKTranhNen/bkTranhStyle) chứ không phải BKPageHeader (đó chỉ là fallback tạm khi CHƯA CÓ tranh).
+     Kiểm cả 6 tranh TA (`bg_xephang/gay/mayman/shop/huongdan/tientrinh.jpg`) — hầu hết baked chữ
+     "TA"/"Better TAs"/"GOOD TAs" ngay trong ảnh → KHÔNG dùng lại được cho OPS (trừ `bg_gay.jpg` tình cờ
+     sạch). Viết lại `DashOps.tsx` theo khuôn `DashTa.tsx`: lưới 2×3 `BKMenuCard` (ảnh/gradient DÙNG
+     CHUNG với TA — 6 icon `ranking_trophy/stick_gavel_warning/lucky_wheel_gift/progress_chart/
+     shopping_bag_gift/guide_book_bulb.png` đều hình BK chung, không chữ TA) + `BKProfileSummary` +
+     `BKMascotBanner`, bỏ hẳn khung LIST (07_my.png) trước đó. Phát hiện thêm: TA **không có** box "Cài
+     đặt" riêng (Đăng xuất nằm ở header tab Hôm nay) — bỏ luôn box Cài đặt tự thêm trước đó cho đúng
+     "giống hệt". `BKPageHeader` (dùng cho sub-screen chưa có tranh) + `BKMascotBanner` thêm prop
+     `slogan`/`logo`/`corner` (mặc định giữ nguyên chữ TA, OPS truyền chữ khác) để tránh hiện "Better
+     TAs"/"Small TAs Big Impact" sai vai trò — additive, không đổi hành vi TA.
+  2) Ngay sau đó CEO up thêm `ops_Cuatoi.png` (941×1672, cùng khuôn `bg_cua_toi.jpg` của TA nhưng đổi
+     "TAs"→"QLHTs", tagline theo học sinh) — TRANH THẬT riêng cho OPS. Thay lưới+BKPageHeader-gradient
+     bằng ĐÚNG cơ chế tranh của TA (`BKTranhNen`/`bkTranhStyle`) cho màn gốc, định nghĩa `OPS_TRANH_CUATOI`
+     cục bộ trong `DashOps.tsx` (không đụng `BK_TRANH` dùng chung); sub-screen (Xếp hạng/Gậy/…) vẫn
+     `BKPageHeader` vì OPS chưa có tranh riêng cho các màn đó.
+- **Dọn dẹp:** gộp `BK_TA_7_SCREEN_ALL_SVG/`, `BK_TA_7_SCREEN_FULL_HANDOFF/` (CEO tự copy thẳng vào
+  `public/bk-ui/` — trùng 100% nội dung đã có ở `public/ops-ui/**` từ đêm qua, làm PWA precache phồng
+  gấp đôi 171→339 file) + `ops_Cuatoi.png` gốc → `design/bk-ui-src/` (không vào build); xoá các file
+  `ops_ico_*/ops_mod_*/ops_nav_*.png` tự tạo khi dò toạ độ, không dùng tới (không phải asset CEO gửi).
+- tsc + `build:ta` + `build:ops` sạch (precache về lại 159, đúng như trước khi CEO copy nhầm 2 thư mục).
+  Browser-test thật (Admin): Hôm nay/Report/Prep/Test/Tủ quà/Của tôi (gốc + Xếp hạng + Tiến trình) — ảnh
+  đúng ảnh gốc, dữ liệu thật, không lỗi.
+
+## 2026-09-07 (tiếp, ~08:30–09:20) — Vercel lại chặn build, LẦN 2 TRONG NGÀY — không phải lỗi ignoreCommand
+- **Hiện tượng:** sau `ignoreCommand` (mig sáng nay, xem mục "Vercel Ignored Build Step"), project TA
+  (`bkdemy-erp-v2-ta-v2`) NGỪNG nhận deployment từ commit `9111e8a` (build cuối cùng thấy được) — 2 commit
+  TA thật (`428d999` header to gấp đôi, `6105a1e` đổi avatar) + 2 lần commit rỗng ép trigger (`5db0b75`,
+  `b97e43d`) đều **không hề xuất hiện trong Deployments**, kể cả trạng thái Canceled/Error — hoàn toàn
+  im lặng, không phải "Ready" cũng không phải lỗi hiện ra. Ban đầu tưởng lỗi `ignoreCommand` nhận sai
+  project hoặc bug diff shallow-clone (2 commit TA chỉ đụng đúng file `src/screens/ta/`, `src/AppTa.tsx`
+  — thuộc RIENG['ta'], đáng lẽ phải build) → sau đó xác nhận **app OPS cũng ngừng deploy được** cùng lúc
+  ⇒ loại bỏ giả thuyết lỗi riêng project/script, đúng là **lại chạm trần 100 build/ngày Hobby TOÀN TÀI
+  KHOẢN, lần 2 trong ngày**, y hệt vụ sáng nay nhưng tái diễn.
+- **Vì sao `ignoreCommand` không đủ:** nó chỉ giảm SỐ PROJECT build MỖI PUSH (8→1 hoặc vài project thay
+  vì cả 8), KHÔNG giảm SỐ LƯỢT PUSH. Hôm nay nhiều phiên Claude Code chạy song song trên cùng repo, mỗi
+  phiên tự push sau mỗi sửa nhỏ (kể cả tôi — 2 lần push riêng cho "to header" và "avatar", đúng lúc vừa
+  ghi bài học "gom commit" vào buổi sáng) ⇒ tổng lượt push cả ngày vẫn đủ đụng trần dù mỗi push nhẹ hơn.
+  Không có cách "sửa code" nào chặn được cái này — chỉ có NGỪNG PUSH một lúc (đợi trần hạ, có vẻ theo cửa
+  sổ trượt chứ không phải chờ đủ 24h cứng — lần 1 tự thông sau ~7-8h) hoặc NÂNG GÓI Vercel (bỏ trần 100/ngày).
+- **Còn treo:** không rõ khi nào trần tự hạ lại (đoán cửa sổ trượt theo giờ, không phải theo ngày lịch —
+  cần quan sát thêm). CEO cân nhắc nâng gói Vercel nếu hôm nay còn cần deploy nhiều, hoặc tạm ngừng push
+  các phiên đang chạy song song cho tới khi 1 project build được trở lại (dấu hiệu trần đã hạ).
+
+### 07/09 — 2 bug ô soạn công thức (MathPopup/MathBuilder + RichMath)
+**Thùy báo:** "1. Ko có nút tạo công thức mới, bắt buộc phải chọn 1 trong các công thức đã cho. 2. Nó bị tự động
+xuống dòng, t copy paste 1 công thức khác là nó tự xuống dòng."
+**Bug 1 — không rõ có thể gõ trực tiếp:** kiểm tay: gõ thẳng vào `<math-field>` KHÔNG chọn mẫu vẫn chèn được bình
+thường ("2x+3" gõ thẳng → chèn OK) — không phải bug chức năng, là bug NHÌN: ô nhập trống trơn không placeholder,
+nằm ngay dưới bảng mẫu đầy màu sắc → tưởng bắt buộc phải click mẫu. Sửa: `setupMathField` (nguồn CHUNG cho
+MathPopup lẫn MathBuilder) đặt `mf.placeholder`. Chú ý: đặt string thường bị MathLive render Ở CHẾ ĐỘ TOÁN → chữ
+dính liền mất khoảng trắng ("Gõcôngthứctrựctiếptạiđây") — phải bọc `\text{…}`. Thêm dòng hint "gõ trực tiếp ở ô
+dưới, hoặc click ký hiệu" ở cả 2 popup.
+**Bug 2 — dán công thức tự xuống dòng (RichMath.onPaste):** tái hiện bằng dispatch ClipboardEvent tay: dán
+`"$x^2$\n"` (mô phỏng clipboard từ nguồn NGOÀI — hay kèm 1 "\n" cuối khi copy 1 dòng/khối) → DOM ra
+`...formula-span​\n<br>` — text node chứa "\n" NGAY SAU công thức, CSS `white-space: pre-wrap` của `.rm-doc` render
+"\n" đó thành xuống dòng THẬT ngay khi dán. Sửa: `onPaste` trim `\n` THỪA Ở ĐẦU/CUỐI (giữ nguyên `\n` Ở GIỮA — dán
+nhiều dòng thật sự vẫn xuống dòng đúng ý).
+**Verify:** tsc sạch · Browser dev 5181: placeholder hiện đúng "Gõ công thức trực tiếp tại đây…" có khoảng trắng ·
+dispatch paste "$x^2+1$\n" → DOM chỉ còn `formula-span​<br>`, không còn "\n" giữa, ảnh chụp xác nhận công thức nằm
+gọn 1 dòng, con trỏ đứng ngay sau · đóng không lưu, trả 2 bài test dọn sạch.

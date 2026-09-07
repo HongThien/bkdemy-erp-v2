@@ -3,7 +3,7 @@ import type { User, NavGroup } from '../types'
 import { useStore, staffNavFromScope, adminNavFromQuyen } from '../store/useStore'
 import { getMyScope, type MyScope } from '../lib/nhansu'
 import { useIsMobile } from '../hooks/useIsMobile'
-import { getMyTasks, moBuoi, diemDanhTienDo, danhGiaTienDo, type MyTask, type BuoiAo, type TabKey } from '../lib/gami'
+import { getMyTasks, moBuoi, diemDanhTienDo, danhGiaTienDo, type MyTask, type BuoiAo, type TabKey, type VaiViec } from '../lib/gami'
 import { getMyOpsTasks, getMyPrepTasks, myBuoiAoCuaKhoang, OPS_TASK_LABEL, type OpsTask, type MyPrepTask } from '../lib/opsvanhanh'
 import { listCanScanDaCham, type CaTestChoScanDaCham } from '../lib/detest'
 import { homNayVN, tuanCuaNgay, khoangTuan, nhanTuan, mucDeadline, nhanConLai, thuCuaNgay, ddmmVN, ngayCuaTs, type DeadlineMuc } from '../lib/tuan'
@@ -66,8 +66,8 @@ import XepLichBoTroYeuScreen from './danhgia/XepLichBoTroYeuScreen'
 import GayScreen from './gay/GayScreen'
 import ThuChiScreen from './thuchi/ThuChiScreen'
 
-// tg thấy thêm tab 'mt' (chấm MT nếu buổi có gán — tự ẩn/hiện rỗng như ET nếu chưa có).
-const tabsCuaVai = (vai: 'gv' | 'tg'): TabKey[] => (vai === 'gv' ? ['danhgia', 'ingame'] : ['ingame', 'et', 'mt'])
+// tk (trưởng khối) chỉ có Chấm MT · gv thêm 'mt' khi là fallback không có trưởng khối (tab tự ẩn nếu buổi không gán MT).
+const tabsCuaVai = (vai: VaiViec): TabKey[] => (vai === 'tk' ? ['mt'] : vai === 'gv' ? ['danhgia', 'ingame', 'mt'] : ['ingame', 'et', 'mt'])
 type OpenBuoi = { id: string; tabs: TabKey[]; initialTab: TabKey; canManage: boolean; loai?: 'bu' | 'bo_tro_duoi' | 'bo_tro_yeu' }
 type TienDo = { tong: number; daDanh: number }
 

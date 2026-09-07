@@ -2,14 +2,14 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-> ## ⚠️ ĐIỂM MÙ ĐỌC DỮ LIỆU — `5` BẢNG
-> Role `claude_build` **không sở hữu** và **không có `bypassrls`** với: `giai_thuong` · `giai_thuong_lop_thang` · `hinh_giao_trinh` · `hinh_gt_bai` · `hinh_gt_buoi`
+> ## ⚠️ ĐIỂM MÙ ĐỌC DỮ LIỆU — `6` BẢNG
+> Role `claude_build` **không sở hữu** và **không có `bypassrls`** với: `giai_thuong` · `giai_thuong_lop_thang` · `hinh_giao_trinh` · `hinh_gt_bai` · `hinh_gt_buoi` · `thong_bao_hs`
 > Các bảng này bật RLS với policy `to authenticated`, nên `SELECT` từ script/CLI trả **0 dòng,
 > im lặng, không lỗi**. ⚠ **"0 dòng" ở đây KHÔNG phải bằng chứng bảng rỗng** — muốn biết số thật
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-185 bảng · 11 view · 0 enum · 38 trigger · 238 function
+196 bảng · 11 view · 0 enum · 39 trigger · 261 function
 
 ## _app_secrets
 
@@ -1039,6 +1039,32 @@
 | hoan_thanh_at | timestamp with time zone | Y |  |  |  |
 | hoan_thanh_boi | uuid | Y |  | FK→nhan_su.id |  |
 
+## han_nop_ngoai_le
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| lop_id | uuid |  |  | PK FK→lop.id |  |
+| loai | text |  |  | PK | `et` · `btvn` |
+| so_phut_lech | integer |  |  |  |  |
+| ly_do | text | Y |  |  |  |
+| created_by | uuid | Y |  | FK→nhan_su.id |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+| thu_bat_dau | smallint |  | 0 | PK |  |
+
+## han_nop_ngoai_le_log
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | bigint |  | nextval('han_nop_ngoai_le_log_id_seq'::regclass) | PK |  |
+| lop_id | uuid |  |  |  |  |
+| loai | text |  |  |  |  |
+| actor | uuid | Y |  | FK→nhan_su.id |  |
+| at | timestamp with time zone |  | now() |  |  |
+| so_phut_cu | integer | Y |  |  |  |
+| so_phut_moi | integer | Y |  |  |  |
+| ly_do | text | Y |  |  |  |
+| thu_bat_dau | smallint | Y |  |  |  |
+
 ## he_thong_bi_mat
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -1987,6 +2013,26 @@
 | min_exp | integer |  |  | PK |  |
 | xu | integer |  |  |  |  |
 
+## may_man_cau_hinh
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma | text |  |  | PK |  |
+| gia_tri | numeric |  |  |  |  |
+| mo_ta | text | Y |  |  |  |
+
+## may_man_luot
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| nhan_su_id | uuid |  |  | FK→nhan_su.id |  |
+| ngay | date |  |  |  |  |
+| tien | integer |  |  |  |  |
+| rnd | numeric |  |  |  |  |
+| vuot_tran | boolean |  | false |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
 ## muc_hoc_duoi
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -2094,6 +2140,7 @@
 | nhan_su_id | uuid |  |  | FK→nhan_su.id |  |
 | khoi | text |  |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
+| mon | text |  |  |  |  |
 
 ## phan_cong_lop
 
@@ -2177,6 +2224,7 @@
 | gui_ok_at | timestamp with time zone | Y |  |  |  |
 | loi_at | timestamp with time zone | Y |  |  |  |
 | loi_ma | integer | Y |  |  |  |
+| app | text |  | 'pt'::text |  | `pt` · `ta` |
 
 ## qlht_doi_qua
 
@@ -2294,6 +2342,71 @@
 | hit_count | integer |  | 1 |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 
+## quy_trinh
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| tieu_de | text |  |  |  |  |
+| tom_tat | text | Y |  |  |  |
+| noi_dung | text |  | ''::text |  |  |
+| vai_tro | text[] |  | '{}'::text[] |  |  |
+| thu_tu | integer |  | 100 |  |  |
+| active | boolean |  | true |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
+## shop_don
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| nhan_su_id | uuid |  |  | FK→nhan_su.id |  |
+| vat_pham_id | uuid | Y |  | FK→shop_vat_pham.id |  |
+| ten_vat_pham | text |  |  |  |  |
+| gia_diem | integer |  |  |  |  |
+| trang_thai | text |  | 'cho_giao'::text |  | `cho_giao` · `da_giao` · `huy` |
+| created_at | timestamp with time zone |  | now() |  |  |
+| giao_at | timestamp with time zone | Y |  |  |  |
+| nguoi_giao | uuid | Y |  | FK→nhan_su.id |  |
+| ghi_chu | text | Y |  |  |  |
+
+## shop_vat_pham
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| ten | text |  |  |  |  |
+| mo_ta | text | Y |  |  |  |
+| anh_url | text | Y |  |  |  |
+| gia_diem | integer |  |  |  |  |
+| active | boolean |  | true |  |  |
+| thu_tu | integer |  | 100 |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+| loai | text |  | 'khac'::text |  | `do_an` · `do_uong` · `khac` |
+| nhan | text | Y |  |  | `hot` · `moi` |
+
+## ta_dinh_muc
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma | text |  |  | PK |  |
+| gia_tri | numeric |  |  |  |  |
+| mo_ta | text | Y |  |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
+## ta_vang
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| buoi_hoc_id | uuid |  |  | FK→buoi_hoc.id |  |
+| nhan_su_id | uuid |  |  | FK→nhan_su.id |  |
+| ly_do | text | Y |  |  |  |
+| nguoi_ghi | uuid |  |  | FK→nhan_su.id |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
 ## tai_khoan
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -2401,6 +2514,28 @@
 | hieu_luc_tu | date |  |  |  |  |
 | hieu_luc_den | date | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
+
+## thong_bao_hs
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |  |
+| mon | text |  |  |  |  |
+| noi_dung | text |  |  |  |  |
+| doc_at | timestamp with time zone | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
+## tich_luy_chot_thang
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ky | date |  |  | PK |  |
+| nhan_su_id | uuid |  |  | PK FK→nhan_su.id |  |
+| diem | integer |  |  |  |  |
+| chuoi | integer |  |  |  |  |
+| nguoi_chot | uuid |  |  | FK→nhan_su.id |  |
+| chot_at | timestamp with time zone |  | now() |  |  |
 
 ## tln_ai_cham_log
 
@@ -3886,6 +4021,7 @@ UNION ALL
 | gay_de_xuat | trg_log_gay_de_xuat | AFTER | INSERT/UPDATE | log_gay_de_xuat |
 | gay_ledger | trg_log_gay_ledger | AFTER | INSERT/UPDATE | log_gay_ledger |
 | giai_thuong | trg_giai_thuong_check_slot | BEFORE | INSERT | giai_thuong_check_slot |
+| han_nop_ngoai_le | tg_han_nop_ngoai_le_log | AFTER | INSERT/DELETE/UPDATE | trg_han_nop_ngoai_le_log |
 | hgt_cau_hoi | trg_log_kho_cau_hgt | AFTER | DELETE/UPDATE | log_kho_cau |
 | hgt_cau_hoi_yeu_cau_giai | hgt_cau_hoi_yeu_cau_giai_claude_dong | BEFORE | UPDATE | fn_giaibai_tg_claude_dong |
 | hinh_baitoan | hinh_baitoan_gen_ma_trg | BEFORE | INSERT | hinh_baitoan_gen_ma |
@@ -3922,6 +4058,7 @@ UNION ALL
 - `_kho_cum_tbl(p_cautbl text)` → text
 - `_kho_lt_tbl(p_mon text, p_nhanh text DEFAULT NULL::text)` → text
 - `_kho_snapshot_cau(p_bt_id uuid, p_cautbl text, p_lttbl text, p_ma_cau text, p_thu_tu integer, p_ma_cum text DEFAULT NULL::text)` → void
+- `_tich_luy_cua(p_ns uuid, p_ym text)` → TABLE(diem_thang integer, chuoi integer, ngay_cuoi date, ngay_trot date)
 - `_trg_btyeu_retest_cau()` → trigger
 - `_trg_btyeu_retest_lam()` → trigger
 - `bai_test_con_han(p_bai_test uuid)` → boolean
@@ -3955,6 +4092,7 @@ UNION ALL
 - `fn_btyeu_retest_ghi(p_bai_lam uuid)` → void
 - `fn_btyeu_viec_cua_toi()` → jsonb
 - `fn_buoi_recompute_hoan_tat(p_buoi_id uuid)` → void
+- `fn_ca_cua_gio(p_gio time without time zone)` → text
 - `fn_ca_test_kq_diem()` → trigger
 - `fn_chap_nhan_dap_an(p_ma_cau text, p_dap_an_raw text)` → jsonb
 - `fn_chi_cong_no()` → jsonb
@@ -3986,6 +4124,7 @@ UNION ALL
 - `fn_gay_bang(p_ky date)` → TABLE(nhan_su_id uuid, ns_ten text, so_gay_danh bigint, so_gay_go bigint, con_lai bigint, don_gia numeric, tien_phat numeric)
 - `fn_gay_bang_khoang(p_tu date, p_den date)` → TABLE(nhan_su_id uuid, ns_ten text, so_gay_danh bigint, so_gay_go bigint, con_lai bigint, so_task_khong_dat bigint, don_gia numeric, tien_phat numeric)
 - `fn_gay_chot_thang(p_ky date)` → integer
+- `fn_gay_dang_hieu_luc(p_ref_key text)` → boolean
 - `fn_gay_theo_task(p_nhan_su_id uuid DEFAULT NULL::uuid)` → TABLE(nhan_su_id uuid, ref_loai text, ref_id text, so_gay bigint, lan_cuoi timestamp with time zone)
 - `fn_giaibai_bao_cao_chi_tiet(p_tu date, p_den date)` → SETOF v_giaibai_nhan
 - `fn_giaibai_bao_cao_tong(p_tu date, p_den date)` → TABLE(nguoi_giai uuid, ho_ten text, so_bai bigint, md1 bigint, md2 bigint, md3 bigint, md4 bigint, md5 bigint, md_khac bigint, tong_ky_tu bigint, tong_cong_thuc bigint, tb_giay_giai integer)
@@ -4013,6 +4152,8 @@ UNION ALL
 - `fn_gv_phan_tram(p_tien_do numeric, p_chat_luong numeric)` → numeric
 - `fn_gv_tien_do(p_deadline date, p_ngay_nop date)` → numeric
 - `fn_gv_tran_chat_luong(p_so_lan_tra_lai integer)` → numeric
+- `fn_gv_viec_thang(p_tu date, p_den date)` → TABLE(nhan_su_id uuid, ho_ten text, an_xep_hang boolean, ten_lop text, ngay date, tab text, kq text, ly_do text)
+- `fn_han_viec(p_lop uuid, p_ngay date, p_gio_bat_dau time without time zone, p_tab text)` → timestamp with time zone
 - `fn_hinh_cau_chua_giai(p_khoi text, p_limit integer DEFAULT 500)` → SETOF v_hinh_chua_giai
 - `fn_hinh_chuoi_json(p_loai text, p_id uuid)` → jsonb
 - `fn_hinh_co_phu_thuoc_cho(p_id uuid)` → boolean
@@ -4044,8 +4185,14 @@ UNION ALL
 - `fn_mastery_cells_hinh(p_hs uuid[], p_include_btvn boolean DEFAULT false, p_since timestamp with time zone DEFAULT NULL::timestamp with time zone)` → TABLE(hoc_sinh_id uuid, hinh_baitoan_id uuid, score numeric, n bigint, muc text, tin text)
 - `fn_mastery_rollup(p_hs uuid[], p_include_btvn boolean DEFAULT false, p_since timestamp with time zone DEFAULT NULL::timestamp with time zone)` → TABLE(hoc_sinh_id uuid, dat bigint, can_luyen bigint, yeu bigint, tin_thap bigint)
 - `fn_matrix_lop(p_lop uuid, p_phase text, p_ym text DEFAULT NULL::text)` → TABLE(hoc_sinh_id uuid, buoi_hoc_id uuid, pct integer, status text)
+- `fn_may_man_cua_toi()` → jsonb
+- `fn_may_man_quay()` → jsonb
 - `fn_mo_lai_phase(p_buoi_id uuid, p_phase text)` → void
-- `fn_pt_push_danh_sach(p_secret text)` → TABLE(id uuid, endpoint text, p256dh text, auth text)
+- `fn_nguoi_truc_ca(p_thu smallint, p_ca text, p_ngay date)` → uuid
+- `fn_ops_dashboard(p_ym text)` → jsonb
+- `fn_ops_viec_nhom_thang(p_tu date, p_den date, p_tat_ca boolean DEFAULT false)` → TABLE(nhan_su_id uuid, ten_viec text, ngay date, tab text, kq_raw text, so_dat integer, so_tong integer, han timestamp with time zone, ref_key text)
+- `fn_ops_viec_thang(p_tu date, p_den date)` → TABLE(nhan_su_id uuid, ho_ten text, an_xep_hang boolean, ten_viec text, ngay date, tab text, kq text, ly_do text)
+- `fn_pt_push_danh_sach(p_secret text, p_app text DEFAULT 'pt'::text)` → TABLE(id uuid, endpoint text, p256dh text, auth text)
 - `fn_pt_push_ghi_ket_qua(p_secret text, p_ket_qua jsonb)` → integer
 - `fn_pt_viec_can_cap_nhat(p_ns uuid)` → TABLE(id uuid, tieu_de text, trang_thai text, deadline date, task_me_id uuid, qua_han boolean, da_cap_nhat_hom_nay boolean, cap_nhat_cuoi_at timestamp with time zone, tien_do_bao_cao numeric, so_ngay_im integer)
 - `fn_pt_viec_cua_toi()` → TABLE(id uuid, tieu_de text, trang_thai text, deadline date, task_me_id uuid, muc_tieu text, output text, mo_ta text, khoi_luong numeric, nguoi_giao_ten text, phan_tram numeric, tien_do numeric, chat_luong numeric, so_lan_gia_han integer, gia_han_xin_deadline date, ghi_chu_nghiem_thu text, evidence text, so_con integer, so_con_dat integer, dang_mo boolean, qua_han boolean, da_cap_nhat_hom_nay boolean, cap_nhat_cuoi_at timestamp with time zone, tien_do_bao_cao numeric, created_at timestamp with time zone, hoan_thanh_at timestamp with time zone)
@@ -4053,8 +4200,16 @@ UNION ALL
 - `fn_rank_diem_mt(p_hs uuid, p_lop_ids uuid[], p_mon text, p_ym text)` → TABLE(rank_now integer, rank_total integer)
 - `fn_rank_diem_mt_lop(p_lop uuid, p_mon text, p_ym text)` → TABLE(hoc_sinh_id uuid, tb numeric, rank_now integer, rank_total integer)
 - `fn_recompute_exp_thang(p_lop_id uuid, p_ym text)` → jsonb
+- `fn_shop_doi(p_vat_pham uuid)` → shop_don
+- `fn_shop_don_cua_toi()` → SETOF shop_don
 - `fn_sua_key_va_cham_lai(p_bai_test_cau_id uuid, p_key jsonb, p_ly_do text)` → jsonb
+- `fn_ta_buoi_thang(p_ns uuid, p_ym text)` → TABLE(buoi_id uuid, ten_lop text, ngay date, gio_bat_dau time without time zone, vang boolean, ly_do text)
 - `fn_ta_dashboard(p_ym text)` → jsonb
+- `fn_ta_tien_trinh(p_ym text)` → jsonb
+- `fn_ta_viec_thang(p_tu date, p_den date)` → TABLE(nhan_su_id uuid, ho_ten text, an_xep_hang boolean, ten_lop text, ngay date, tab text, kq text, ly_do text)
+- `fn_thu_cua_ngay(p_ngay date)` → smallint
+- `fn_tich_luy(p_ym text)` → jsonb
+- `fn_tich_luy_chot_thang(p_ky date)` → integer
 - `fn_tln_check(p_user text, p_key text)` → boolean
 - `fn_tln_normalize(p_val text)` → text
 - `fn_tuqua_actor()` → uuid
@@ -4076,8 +4231,11 @@ UNION ALL
 - `fn_tuqua_so_du(p_hoc_sinh_id uuid)` → integer
 - `fn_tuqua_ton(p_qua_id uuid)` → integer
 - `fn_vh_hieu_suat(p_tien_do numeric, p_chat_luong numeric)` → numeric
+- `fn_viec_buoi_thuong(p_tu date DEFAULT NULL::date, p_den date DEFAULT NULL::date, p_tat_ca boolean DEFAULT false)` → TABLE(nhan_su_id uuid, buoi_id uuid, lop_id uuid, ten_lop text, ngay date, vai text, tab text, dong_at timestamp with time zone, han timestamp with time zone, et_online boolean, ref_key text)
 - `fn_viec_nghiem_thu_tinh()` → trigger
+- `fn_viec_ops_thuong(p_tu date, p_den date, p_tat_ca boolean DEFAULT false)` → TABLE(nhan_su_id uuid, ten_viec text, ngay date, ca text, tab text, dong_at timestamp with time zone, han timestamp with time zone, chat_luong numeric, ref_key text)
 - `fn_vvhd_tinh()` → trigger
+- `fn_xephang_chung(p_ym text)` → jsonb
 - `giai_thuong_check_slot()` → trigger
 - `giaoviec_auto_dong_task_me()` → trigger
 - `giaoviec_housekeeping()` → void
@@ -4148,6 +4306,7 @@ UNION ALL
 - `trg_chi_khoan_log()` → trigger
 - `trg_chi_nhan_tien_log()` → trigger
 - `trg_chi_so_bf()` → trigger
+- `trg_han_nop_ngoai_le_log()` → trigger
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 
 ## Checks khác (không phải dạng enum)
@@ -4188,6 +4347,7 @@ UNION ALL
 | gay_ledger | gay_ledger_go_co_hoat_dong | `CHECK (((loai <> 'go'::text) OR (hoat_dong_id IS NOT NULL)))` |
 | gay_ledger | gay_ledger_so_gay_check | `CHECK ((so_gay <> 0))` |
 | gay_loi | gay_loi_so_gay_mac_dinh_check | `CHECK ((so_gay_mac_dinh > 0))` |
+| han_nop_ngoai_le | han_nop_ngoai_le_thu_check | `CHECK ((thu_bat_dau = ANY (ARRAY[0, 2, 3, 4, 5, 6, 7, 8])))` |
 | hgt_cum_tien_de | hgt_cum_tien_de_check | `CHECK ((ma_cum <> tien_de_ma_cum))` |
 | hgt_dang_tien_de | hgt_dang_tien_de_check | `CHECK ((ma_dang <> tien_de_ma_dang))` |
 | hinh_mo_hinh | hinh_mo_hinh_cap_mo_hinh_check | `CHECK (((cap_mo_hinh >= 1) AND (cap_mo_hinh <= 4)))` |
@@ -4201,12 +4361,14 @@ UNION ALL
 | khtn_cum_tien_de | khtn_cum_tien_de_check | `CHECK ((ma_cum <> tien_de_ma_cum))` |
 | khtn_dang_tien_de | khtn_dang_tien_de_check | `CHECK ((ma_dang <> tien_de_ma_dang))` |
 | ky_thi | ky_thi_he_so_check | `CHECK ((he_so = ANY (ARRAY[1, 2])))` |
+| may_man_luot | may_man_luot_tien_check | `CHECK ((tien >= 0))` |
 | muc_nang_luc | muc_nang_luc_muc_check | `CHECK (((muc >= 1) AND (muc <= 3)))` |
 | phan_cong_ca | phan_cong_ca_thu_check | `CHECK (((thu >= 2) AND (thu <= 8)))` |
 | qlht_doi_qua | qlht_doi_qua_so_luong_check | `CHECK ((so_luong > 0))` |
 | qlht_qua | qlht_qua_gia_xu_check | `CHECK ((gia_xu > 0))` |
 | qlht_qua_order | qlht_qua_order_gia_xu_check | `CHECK ((gia_xu > 0))` |
 | qlht_xu_ledger | qlht_xu_ledger_amount_check | `CHECK ((amount <> 0))` |
+| shop_vat_pham | shop_vat_pham_gia_diem_check | `CHECK ((gia_diem > 0))` |
 | thoi_khoa_bieu | thoi_khoa_bieu_thu_check | `CHECK (((thu >= 2) AND (thu <= 8)))` |
 | troly_nhan_dinh | troly_nhan_dinh_gac_ck | `CHECK (((quyet_dinh = 'gac'::text) = (gac_den IS NOT NULL)))` |
 | troly_ra_soat | troly_ra_soat_gac_ck | `CHECK (((ket_luan = 'gac'::text) = (gac_den IS NOT NULL)))` |

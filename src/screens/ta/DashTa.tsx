@@ -1,129 +1,130 @@
-// DashTa — "📈 Của tôi": dashboard công việc TA theo THÁNG (CEO chốt 30/08 đêm).
-// Bar = việc ĐẠT CHUẨN / việc đã đến hạn (chậm = không đạt · chất lượng <80 = không đạt).
-// 100% + ≥10 việc = mốc THƯỞNG TIỀN (hiện rõ trên bar). Xếp hạng: thấy MÌNH + TOP 3
-// (ngưỡng ≥10 việc — chốt ③). Mọi số tính ở fn_ta_dashboard (§2.0).
+// DashTa — "CỦA TÔI" app TA theo design CEO duyệt 07/09 (handoff BK_TA_Claude_UI, anchor 00_cua_toi):
+// NGUYÊN TẮC CEO 07/09: (1) dùng THẲNG tranh nền CEO vẽ (bg_cua_toi.jpg — logo, tiêu đề, tagline,
+// mascot đã nằm trong tranh), các ô chức năng đặt LÊN tranh; (2) mọi thứ nằm gọn 1 màn iPhone, không
+// cuộn (icon to, chữ nhỏ, lưới 6 ô co giãn theo chiều cao còn lại); (3) chữ tay nghiêng như design.
+// Bố cục: spacer cảnh (aspect 941/440) → thẻ hồ sơ (avatar · tên · 🪙 điểm tích lũy · vòng %) → thanh
+// tháng → lưới 2×3 (Xếp hạng · Gậy · May mắn · Tiến trình · Shopping · Hướng dẫn) → banner mascot.
+// Bấm card → màn con: header HTML (nút ‹, tiêu đề bong bóng) trên nền trời gradient + cùng thẻ hồ sơ.
+// Chấm công TA (lead) KHÔNG ở app này — CEO 07/09 "Trang là ở màn khác".
+// Dữ liệu: taDashboard (đạt chuẩn) · xepHangChung · tichLuy (điểm/chuỗi) — mọi số ở Postgres (§2.0).
 import { useEffect, useState } from 'react'
+import type { MyProfile } from '../../lib/nhansu'
 import { taDashboard, type TaDash } from '../../lib/tadash'
-import { homNayVN, ddmmVN } from '../../lib/tuan'
+import { xepHangChung, type XepHangChung } from '../../lib/xephang'
+import { tichLuy, type TichLuy } from '../../lib/tichluy'
+import { GAY_DON_GIA } from '../../lib/gay'
+import { homNayVN } from '../../lib/tuan'
+import { BKPageHeader, BKProfileSummary, BKMenuCard, BKMascotBanner, BK_TRANH, BKTranhNen, bkTranhStyle, type BKTranh } from '../../components/bk/BKUI'
+import { XepHangScreen } from '../../components/bk/XepHangScreen'
+import { GayCuaToiScreen } from '../../components/bk/GayCuaToiScreen'
+import { MayManScreen } from '../../components/bk/MayManScreen'
+import { ShopScreen } from '../../components/bk/ShopScreen'
+import { HuongDanScreen } from '../../components/bk/HuongDanScreen'
+import { DatChuanScreen } from '../../components/bk/DatChuanScreen'
+import TienTrinhTa from './TienTrinhTa'
 
+type Box = 'xephang' | 'gay' | 'maymai' | 'tientrinh' | 'shop' | 'huongdan' | 'datchuan'
+const A = (n: string) => `/bk-ui/${n}.png`   // asset PNG từ UI kit (public/bk-ui)
+const TIEU_DE: Record<Box, { title: string; tagline: string; mascot: string; bubble: string }> = {
+  xephang: { title: 'Xếp hạng', tagline: 'Cùng nhau toả sáng, làm nên một BK tuyệt hơn! ♡', mascot: A('mascot_cheer'), bubble: 'Nỗ lực hôm nay, toả sáng ngày mai!' },
+  gay: { title: 'Gậy', tagline: 'Lỗi bị nhắc & lý do ♡', mascot: A('mascot_hearts'), bubble: 'Cố lên bạn ơi!' },
+  maymai: { title: 'May mắn', tagline: 'Quay nhỏ mỗi ngày, thêm niềm vui lớn! ♡', mascot: A('mascot_cheer'), bubble: 'Vận may cùng BK!' },
+  tientrinh: { title: 'Tiến trình', tagline: 'Nỗ lực hôm nay, tạo giá trị ngày mai! 💙', mascot: A('mascot_wave'), bubble: 'Cùng cố gắng nha!' },
+  shop: { title: 'Shopping', tagline: 'Đổi quà bằng điểm. Làm nhiều, nhận quà xịn! ♡', mascot: A('mascot_hearts'), bubble: 'Tích điểm đổi quà thôi!' },
+  huongdan: { title: 'Hướng dẫn', tagline: 'Mọi quy trình trong tầm tay TA! ♡', mascot: A('mascot_read'), bubble: 'Học hiểu hơn, làm tốt hơn!' },
+  datchuan: { title: 'Nhiệm vụ', tagline: 'Đóng đúng hạn, chất lượng tốt — đạt chuẩn! ♡', mascot: A('mascot_wave'), bubble: 'Giữ nhịp nha!' },
+}
+// 6 card theo spec/layout_cua_toi.json (gradient + accent + asset đúng từng card)
+const CARDS: { key: Box; title: string; sub: string; tagline: string; image: string; gradient: [string, string]; accent: string; badge?: string }[] = [
+  { key: 'xephang', title: 'Xếp hạng', sub: 'Xem thứ hạng cá nhân', tagline: 'Higher Together!', image: A('ranking_trophy'), gradient: ['#FFF7D8', '#FFF0B9'], accent: '#F8B83E' },
+  { key: 'gay', title: 'Gậy', sub: 'Lỗi bị nhắc & lý do', tagline: 'Học từ sai lầm để tốt hơn! ♡', image: A('stick_gavel_warning'), gradient: ['#FFE9F1', '#FFD8E7'], accent: '#F06292' },
+  { key: 'maymai', title: 'May mắn', sub: '1 lượt quay mỗi ngày', tagline: 'Chút may mắn mỗi ngày! ♡', image: A('lucky_wheel_gift'), gradient: ['#EEE5FF', '#E5D6FF'], accent: '#8B6BEF' },   // backend quay đã mở 07/09
+  { key: 'tientrinh', title: 'Tiến trình', sub: 'Theo dõi KPI theo lớp', tagline: 'Tiến bộ mỗi ngày cùng BK!', image: A('progress_chart'), gradient: ['#DDF5FF', '#D2EEFF'], accent: '#56B6F2' },
+  { key: 'shop', title: 'Shopping', sub: 'Đổi quà bằng điểm', tagline: 'Làm nhiều · Nhận quà xịn! ♡', image: A('shopping_bag_gift'), gradient: ['#DFF8E9', '#CFF4DF'], accent: '#4DC47A' },
+  { key: 'huongdan', title: 'Hướng dẫn', sub: 'Quy trình & tài liệu BK', tagline: 'Hiểu rõ hơn · Làm tốt hơn! ♡', image: A('guide_book_bulb'), gradient: ['#FFEAD9', '#FFDDBF'], accent: '#FF914D' },
+]
 const TAB_TEN: Record<string, string> = { ingame: 'Bài trên lớp', et: 'Chấm ET', btvn: 'Chấm BTVN' }
 const LY_DO_TEN: Record<string, string> = { tre: 'đóng muộn', no_qua_han: 'đang nợ quá hạn', chat_luong: 'chất lượng chưa đạt' }
 
-function ymCong(ym: string, n: number): string {
-  const [y, m] = ym.split('-').map(Number)
-  const d = new Date(Date.UTC(y, m - 1 + n, 1))
-  return `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}`
-}
-
-export default function DashTa() {
-  const ymNay = homNayVN().slice(0, 7)
-  const [ym, setYm] = useState(ymNay)
+export default function DashTa({ profile }: { profile: MyProfile }) {
+  const ym = homNayVN().slice(0, 7)   // luôn tháng hiện tại (không có chọn tháng ở màn này)
+  const [box, setBox] = useState<Box | null>(null)
   const [data, setData] = useState<TaDash | null>(null)
-  const [loading, setLoading] = useState(true)
+  const [chung, setChung] = useState<XepHangChung | null>(null)
+  const [tl, setTl] = useState<TichLuy | null>(null)
   const [err, setErr] = useState<string | null>(null)
 
-  useEffect(() => { (async () => {
-    setLoading(true); setErr(null)
-    try { setData(await taDashboard(ym)) } catch (e: any) { setErr(e.message ?? String(e)) }
-    finally { setLoading(false) }
-  })() }, [ym])
+  const reload = () => {
+    setErr(null)
+    Promise.all([taDashboard(ym), xepHangChung(ym), tichLuy(ym)])
+      .then(([d, c, t]) => { setData(d); setChung(c); setTl(t) })
+      .catch((e) => setErr(e?.message ?? String(e)))
+  }
+  useEffect(reload, [ym]) // eslint-disable-line
 
   const me = data?.me ?? {}
-  const pct = me.pct ?? null
-  const datMoc = !!me.dat_moc_thuong
-  const [thang, nam] = [ym.slice(5, 7), ym.slice(0, 4)]
+  const ten = (profile.nhanSu.ho_ten ?? '').trim()
+  const h = box ? TIEU_DE[box] : null
+  const goc = box === null
+  // Màn có TRANH CEO vẽ sẵn (Của tôi · Xếp hạng): spacer giữ chỗ phần cảnh + nút ‹ đặt lên tranh. Màn khác:
+  // header HTML trên nền trời gradient (chờ CEO vẽ thêm tranh).
+  const tranh: BKTranh | null = goc ? BK_TRANH.cuatoi : box === 'xephang' ? BK_TRANH.xephang : box === 'gay' ? BK_TRANH.gay : box === 'maymai' ? BK_TRANH.mayman : box === 'shop' ? BK_TRANH.shop : box === 'huongdan' ? BK_TRANH.huongdan : box === 'tientrinh' ? BK_TRANH.tientrinh : null
+  const ts = tranh ? bkTranhStyle(tranh) : null
 
   return (
-    <div>
-      <div className="bg-teal-600 px-4 pb-2" style={{ paddingTop: 'max(0.5rem, env(safe-area-inset-top))' }}>
-        <div className="mx-auto flex max-w-[1000px] items-center gap-2">
-          <p className="text-[15px] font-bold text-white">📈 Công việc của tôi</p>
-          <div className="ml-auto flex items-center gap-1">
-            <button onClick={() => setYm(ymCong(ym, -1))} className="rounded-lg px-2.5 py-1 text-[15px] font-bold text-white/80 active:bg-white/10">‹</button>
-            <span className="text-[13px] font-semibold text-white">Tháng {thang}/{nam}</span>
-            <button onClick={() => setYm(ymCong(ym, 1))} disabled={ym >= ymNay} className="rounded-lg px-2.5 py-1 text-[15px] font-bold text-white/80 active:bg-white/10 disabled:opacity-30">›</button>
+    // Ngoài: kín màn, màu trời để 2 mép desktop không lộ nền xám. Khung ≤480px (khổ điện thoại) cao ĐÚNG
+    // bằng màn = container-type:size để cột con đo tranh/spacer theo cqw/cqh (đơn vị cq chỉ tra TỔ TIÊN —
+    // đặt container lên chính cột thì background của cột rơi về viewport, đã dính). Cột TỰ CUỘN nội bộ
+    // (màn thấp như iPhone SE) → tranh nền đứng yên, nội dung trượt lên trên tranh (CEO 07/09).
+    <div className="flex h-full flex-col" style={{ background: tranh?.troi[1] ?? '#CFE7FE' }}>
+      <div className="relative mx-auto h-full w-full max-w-[480px] overflow-hidden" style={{ containerType: 'size', ...(ts ? ts.nen : { background: 'linear-gradient(180deg, #CFE7FE 0%, #E3EEFC 40%, #EEF3FC 100%)' }) }}>
+      {tranh && <BKTranhNen t={tranh} />}
+      <div className="relative flex h-full w-full flex-col overflow-y-auto">
+        {ts
+          ? <div className="relative shrink-0" style={{ height: ts.spacerH }}>
+              {/* nút ‹ đặt DƯỚI logo trong tranh (logo cao ~15cqw), trên bảng gỗ (~32cqw) */}
+              {!goc && <button onClick={() => setBox(null)} aria-label="Quay lại"
+                className="absolute left-2 h-11 w-11 rounded-full shadow-[0_3px_10px_rgba(22,34,77,.28)] active:scale-95"
+                style={{ top: `calc(${ts.offsetY} + ${tranh!.nutVe ?? 17.5}cqw)` }}><img src="/bk-ui/gay_back.png" alt="" className="h-full w-full drop-shadow-md" draggable={false} /></button>}
+            </div>
+          : <BKPageHeader title={h!.title} tagline={h!.tagline} mascot={h!.mascot} bubble={h!.bubble} onBack={() => setBox(null)} />}
+        {tranh?.hoSo !== false && <BKProfileSummary ten={ten} anhUrl={profile.nhanSu.anh_url} tags={['TA', 'BK Academy', '🌱 Luôn cố gắng']}
+          diem={tl ? tl.xai_duoc + tl.diem_thang : null} streak={tl?.chuoi} pct={me.pct} onPct={() => setBox('datchuan')} />}
+
+        {/* QUY TẮC KHOẢNG CÁCH (CEO 07/09, áp mọi màn khu Của tôi): mọi khe = 4px đều nhau — card↔card,
+            card↔mép màn, hồ sơ↔lưới↔banner — để không lộ nền sau; màn con dùng gap-1 tương ứng */}
+        <div className="flex min-h-0 flex-1 flex-col px-1 pb-1">
+          {/* KHÔNG có thanh chọn tháng — CEO 07/09: "màn Của tôi không cần thời gian", đặt giữa 2 card làm bố cục rời
+              rạc; mọi số là THÁNG HIỆN TẠI. Xem tháng cũ → màn Hôm nay. */}
+          {err && <p className="mt-2 rounded-2xl bg-[#FFE3EA] px-3 py-2 text-[12.5px] text-[#C0355A]">⚠ {err}</p>}
+
+          {goc && (
+            <>
+              {/* lưới 2×3 co giãn lấp hết chiều cao còn lại → luôn vừa 1 màn (≥ ~700px cao); màn thấp hơn mới cuộn */}
+              <div className="mt-1 grid min-h-[320px] flex-1 grid-cols-2 grid-rows-3 gap-1">
+                {CARDS.map((c) => <BKMenuCard key={c.key} image={c.image} title={c.title} sub={c.sub} tagline={c.tagline} gradient={c.gradient} accent={c.accent} badge={c.badge} onClick={() => setBox(c.key)} />)}
+              </div>
+              <BKMascotBanner text="Bạn đang làm rất tốt!" sub="Cùng nhau lan toả những giá trị tích cực nhé! 💙" />
+            </>
+          )}
+          {/* màn con: chiếm hết phần còn lại (min-h-0 để danh sách bên trong tự cuộn), chừa đáy đúng banner vẽ sẵn trong tranh */}
+          <div className={goc ? 'hidden' : 'mt-1 flex min-h-0 flex-1 flex-col'} style={ts && !goc ? { paddingBottom: ts.dayH } : undefined}>
+          {box === 'xephang' && <XepHangScreen tenRieng="trợ giảng" ten={ten} anhUrl={profile.nhanSu.anh_url}
+            rieng={data ? { rank: data.rank, tongXepHang: data.tongXepHang, top: data.top, nguongRankFinal: data.nguongRankFinal, nguongRankTop: data.nguongRankTop, me: data.me } : null}
+            chung={chung ? { rank: chung.rank, tongXepHang: chung.tongXepHang, top: chung.top, nguongRankFinal: chung.nguongRankFinal, nguongRankTop: chung.nguongRankTop, me: chung.me } : null} />}
+          {box === 'gay' && <GayCuaToiScreen ym={ym} donGia={GAY_DON_GIA} />}
+          {box === 'maymai' && <MayManScreen />}
+          {box === 'tientrinh' && <TienTrinhTa ym={ym} />}
+          {box === 'shop' && <ShopScreen xaiDuoc={tl?.xai_duoc ?? 0} diemThang={tl?.diem_thang ?? 0} chuoi={tl?.chuoi ?? 0} diemMoiNgay={tl?.diem_moi_ngay ?? 100} onChanged={reload} />}
+          {box === 'huongdan' && <HuongDanScreen vaiTro="ta" />}
+          {box === 'datchuan' && (data
+            ? <DatChuanScreen me={me} items={data.items} tabTen={TAB_TEN} lyDoTen={LY_DO_TEN}
+                chuThich={`Đạt chuẩn = đóng đúng hạn + chất lượng duyệt ≥${data.nguongChatLuong}. Trễ hạn tính theo GẬY đã chốt. Việc trước 01/09/2026 luôn tính đạt.`} />
+            : <p className="text-center text-[13px] text-[#63709A]">Đang tính…</p>)}
           </div>
         </div>
       </div>
-
-      <div className="mx-auto max-w-[1000px] px-3 pb-6 pt-3">
-        {loading ? <p className="text-[13px] text-slate-400">Đang tính…</p>
-          : err ? <p className="rounded-2xl border border-rose-200 bg-rose-50 p-3 text-[13px] text-rose-700">⚠ {err}</p>
-          : !data || !me.tong ? <p className="rounded-2xl border border-slate-200/70 bg-white p-4 text-center text-[13px] text-slate-400">Tháng này chưa có việc chấm nào được giao.</p>
-          : (
-          <div className="flex flex-col gap-3">
-            {/* BAR ĐẠT CHUẨN + MỐC THƯỞNG */}
-            <div className={`rounded-2xl border p-4 shadow-sm ${datMoc ? 'border-amber-300 bg-gradient-to-br from-amber-50 to-yellow-50' : 'border-slate-200/70 bg-white'}`}>
-              <div className="mb-1.5 flex items-baseline gap-2">
-                <span className="text-[28px] font-extrabold text-slate-800">{pct == null ? '—' : `${pct}%`}</span>
-                <span className="text-[13px] font-semibold text-slate-500">đạt chuẩn · {me.dat ?? 0}/{me.den_han ?? 0} việc đến hạn</span>
-              </div>
-              <div className="relative h-4 overflow-hidden rounded-full bg-slate-100">
-                <div className={`h-full rounded-full transition-all ${pct === 100 ? 'bg-gradient-to-r from-amber-400 to-yellow-500' : (pct ?? 0) >= 80 ? 'bg-teal-500' : (pct ?? 0) >= 50 ? 'bg-amber-500' : 'bg-rose-500'}`}
-                  style={{ width: `${pct ?? 0}%` }} />
-                {/* vạch mốc thưởng 100% */}
-                <span className="absolute right-0 top-0 h-full w-[3px] bg-amber-400" />
-              </div>
-              <p className={`mt-2 text-[12.5px] font-semibold ${datMoc ? 'text-amber-700' : 'text-slate-500'}`}>
-                {datMoc
-                  ? '🎁 ĐẠT MỐC 100% — tháng này có THƯỞNG THÊM! Giữ vững tới hết tháng nhé.'
-                  : pct === 100
-                    ? `🎯 Đang 100% — đủ ${data.nguongXepHang} việc đến hạn là chạm mốc thưởng (hiện ${me.den_han}/${data.nguongXepHang}).`
-                    : `🎁 Mốc thưởng thêm = 100% đạt chuẩn (≥${data.nguongXepHang} việc). ${me.khong_dat ? `Tháng này đã lỡ ${me.khong_dat} việc.` : ''}`}
-              </p>
-            </div>
-
-            {/* 4 SỐ */}
-            <div className="grid grid-cols-4 gap-2">
-              <StatBox n={me.tong ?? 0} label="Được giao" cls="text-slate-700" />
-              <StatBox n={me.dat ?? 0} label="Đạt chuẩn" cls="text-emerald-600" />
-              <StatBox n={me.khong_dat ?? 0} label="Không đạt" cls="text-rose-600" />
-              <StatBox n={me.cho ?? 0} label="Đang chờ" cls="text-slate-400" />
-            </div>
-
-            {/* XẾP HẠNG: mình + top 3 */}
-            <div className="rounded-2xl border border-slate-200/70 bg-white p-3.5 shadow-sm">
-              <p className="mb-2 text-[14px] font-bold text-slate-800">🏆 Xếp hạng trợ giảng tháng {thang}
-                {data.rank ? <span className="ml-2 rounded-full bg-teal-600 px-2.5 py-0.5 text-[13px] font-bold text-white">Bạn: #{data.rank}/{data.tongTaXepHang}</span>
-                  : <span className="ml-2 text-[11.5px] font-medium text-slate-400">(cần ≥{data.nguongXepHang} việc đến hạn để vào bảng — bạn đang {me.den_han ?? 0})</span>}
-              </p>
-              {data.top.length === 0 ? <p className="text-[12.5px] text-slate-400">Chưa ai đủ {data.nguongXepHang} việc trong tháng.</p>
-                : data.top.map((t, i) => (
-                  <div key={t.ho_ten} className="flex items-center gap-2 border-t border-slate-100 py-1.5 first:border-0">
-                    <span className="text-[16px]">{['🥇', '🥈', '🥉'][i]}</span>
-                    <span className="min-w-0 flex-1 truncate text-[13.5px] font-semibold text-slate-700">{t.ho_ten}</span>
-                    <span className="text-[13px] font-bold text-slate-800">{t.pct ?? '—'}%</span>
-                    <span className="text-[11.5px] text-slate-400">({t.dat}/{t.den_han})</span>
-                  </div>
-                ))}
-            </div>
-
-            {/* VIỆC KHÔNG ĐẠT — biết mất điểm ở đâu */}
-            {data.khongDat.length > 0 && (
-              <div className="rounded-2xl border border-slate-200/70 bg-white p-3.5 shadow-sm">
-                <p className="mb-1.5 text-[14px] font-bold text-slate-800">Việc chưa đạt chuẩn ({data.khongDat.length})</p>
-                {data.khongDat.map((v, i) => (
-                  <div key={i} className="flex items-center gap-2 border-t border-slate-100 py-1.5 first:border-0 text-[12.5px]">
-                    <span className="font-semibold text-slate-700">{v.ten_lop}</span>
-                    <span className="text-slate-400">{ddmmVN(v.ngay)} · {TAB_TEN[v.tab] ?? v.tab}</span>
-                    <span className={`ml-auto rounded px-1.5 py-0.5 font-semibold ${v.ly_do === 'chat_luong' ? 'bg-violet-50 text-violet-700' : 'bg-rose-50 text-rose-600'}`}>{LY_DO_TEN[v.ly_do ?? ''] ?? v.ly_do}</span>
-                  </div>
-                ))}
-              </div>
-            )}
-            <p className="px-1 text-[11px] text-slate-400">Đạt chuẩn = đóng đúng hạn + chất lượng duyệt ≥{data.nguongChatLuong}. Đóng → mở lại sửa → đóng lại: tính theo LẦN ĐÓNG CUỐI.</p>
-          </div>
-        )}
       </div>
-    </div>
-  )
-}
-
-function StatBox({ n, label, cls }: { n: number; label: string; cls: string }) {
-  return (
-    <div className="rounded-2xl border border-slate-200/70 bg-white p-2.5 text-center shadow-sm">
-      <p className={`text-[20px] font-extrabold ${cls}`}>{n}</p>
-      <p className="text-[10.5px] font-semibold text-slate-400">{label}</p>
     </div>
   )
 }

@@ -1,9 +1,12 @@
 // ============================================================================
 // gay.ts — DATA-LAYER "Gậy của BK" (hệ phạt nhân sự). 1 gậy = 20k.
-// · Gậy TỰ ĐỘNG: quetGayTuDong() quét deadline ERP (vận hành TÁI DÙNG
-//   listAllStaffTasks — KHÔNG tính lại deadline; giao tay đọc bảng viec) → đẻ
-//   dòng gay_de_xuat 'cho'. Máy CHỈ đề xuất — leader chốt (chotDeXuat) mới
-//   thành ledger. Quét lazy lúc mở màn (không pg_cron, pattern housekeeping).
+// · Gậy TỰ ĐỘNG: quetGayTuDong() quét deadline ERP (vận hành TA/GV tái dùng
+//   listAllStaffTasks, OPS tái dùng listAllOpsTasks — KHÔNG tính lại deadline;
+//   giao tay đọc bảng viec) → đẻ dòng gay_de_xuat 'cho'. Máy CHỈ đề xuất —
+//   leader chốt (chotDeXuat) mới thành ledger. Quét lazy lúc mở màn (không
+//   pg_cron, pattern housekeeping). ref_key đọc THẲNG từ DB (fn_viec_buoi_thuong/
+//   fn_viec_ops_thuong đã tính sẵn, mig 202609062344) — không tự ghép chuỗi ở
+//   đây nữa, để dashboard (fn_ta/gv/ops_viec_thang) soi ĐÚNG cùng 1 khoá.
 // · Gậy THỦ CÔNG / GỠ: danhGayThuCong / goGay ghi thẳng ledger (dương/âm).
 // · Tháng mới RESET: mọi tổng đều scope theo ky (ngày 1 của tháng VN) — derive
 //   từ ledger, không cache. Chốt tháng = snapshot vào gay_chot_thang.
@@ -12,6 +15,7 @@
 import { supabase } from './supabase'
 import { myNhanSuId } from './giaoviec'
 import { listAllStaffTasks } from './gami'
+import { listAllOpsTaskNhom } from './opsvanhanh'
 import { homNayVN, congNgay, vnInstant, ddmmVN } from './tuan'
 
 const LIMIT = 5000
@@ -113,9 +117,10 @@ export async function updateGayHoatDong(id: string, patch: Partial<Pick<GayHoatD
 type DeXuatMoi = Omit<GayDeXuat, 'id' | 'trang_thai' | 'so_gay' | 'nguoi_quyet' | 'quyet_at' | 'ly_do_bo_qua' | 'ledger_id' | 'created_at'>
 type PhanCongRow = { nhan_su_id: string; lop_id: string; vai_tro: 'gv' | 'tg'; la_chinh: boolean }
 
-// Người phụ trách CHÍNH của 1 khâu trong 1 lớp — danhgia: GV · chấm (ingame/et/btvn/mt):
+// Người phụ trách CHÍNH của 1 khâu trong 1 lớp — danhgia: GV · chấm (ingame/et/btvn):
 // TG, riêng ingame lớp KHÔNG có TG thì về GV. 1 ứng viên → người đó; nhiều ứng viên →
-// người la_chinh duy nhất; vẫn nhập nhằng → null (không đánh ai).
+// người la_chinh duy nhất; vẫn nhập nhằng → null (không đánh ai). MT KHÔNG đi qua đây
+// (owner = trưởng khối khối×môn → GV lớp, chọn ở DB fn_viec_buoi_thuong).
 export function nguoiPhuTrach(pcs: PhanCongRow[], tab: string): string | null {
   const chon = (vai: 'gv' | 'tg'): string | null => {
     const cands = pcs.filter((p) => p.vai_tro === vai)
@@ -152,8 +157,9 @@ export async function quetGayTuDong(): Promise<number> {
   const rows = await listAllStaffTasks(congNgay(monthStart, -7), today)
   for (const r of rows) {
     if (r.deadline == null || r.deadline < monthStartMs) continue
-    // chỉ tính cho NGƯỜI PHỤ TRÁCH CHÍNH của khâu này — task của người khác bỏ qua
-    if (nguoiPhuTrach(pcByLop.get(r.lopId) ?? [], r.tab) !== r.nhan_su_id) continue
+    // chỉ tính cho NGƯỜI PHỤ TRÁCH CHÍNH của khâu này — task của người khác bỏ qua.
+    // MT: owner (trưởng khối → GV lớp) đã do fn_viec_buoi_thuong chọn duy nhất — không tra phan_cong_lop.
+    if (r.tab !== 'mt' && nguoiPhuTrach(pcByLop.get(r.lopId) ?? [], r.tab) !== r.nhan_su_id) continue
     if (mien.has(r.nhan_su_id)) continue
     let tre = 0
     if (r.done && r.doneAt) tre = new Date(r.doneAt).getTime() - r.deadline
@@ -161,9 +167,28 @@ export async function quetGayTuDong(): Promise<number> {
     if (tre <= 0) continue // đúng hạn (hoặc chưa tới hạn) — "1 phút cũng phạt" nên KHÔNG có ân hạn
     props.push({
       nhan_su_id: r.nhan_su_id, nguon: 'vanhanh',
-      ref_key: `vh:${r.buoiId}|${r.tab}|${r.nhan_su_id}`,
+      ref_key: r.refKey,
       mo_ta: `${r.label} — ${r.lop} ${ddmmVN(r.ngay)}${r.done ? '' : ' (chưa xong)'}`,
       deadline_at: new Date(r.deadline).toISOString(),
+      tre_phut: Math.ceil(tre / 60000),
+    })
+  }
+
+  // ── (a2) Việc OPS ĐÃ GỘP THEO CA (report/báo tan/điểm danh/prep/coi test) —
+  // CEO 07/09: "mỗi loại việc trong ca tính 1 task", đạt khi ≥90% mục trong
+  // nhóm đạt (fn_ops_viec_nhom_thang, mig 202609070046). 1 NHÓM = 1 đề xuất,
+  // không còn theo từng lớp/phòng. Sở hữu + % đã tính sẵn ở DB.
+  const opsRows = await listAllOpsTaskNhom(congNgay(monthStart, -7), today)
+  for (const r of opsRows) {
+    if (r.han < monthStartMs) continue
+    if (mien.has(r.nhanSuId)) continue
+    if (r.kqRaw !== 'khong_dat') continue
+    const tre = Math.max(1, now - r.han)
+    props.push({
+      nhan_su_id: r.nhanSuId, nguon: 'vanhanh',
+      ref_key: r.refKey,
+      mo_ta: `${r.tenViec} — không đạt (${r.soDat}/${r.soTong})`,
+      deadline_at: new Date(r.han).toISOString(),
       tre_phut: Math.ceil(tre / 60000),
     })
   }

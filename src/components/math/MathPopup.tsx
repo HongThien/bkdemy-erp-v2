@@ -114,7 +114,7 @@ export default function MathPopup({ initial, display, anchor, startTemplate, onC
         </div>
       </div>
       <div className="flex items-center gap-2 border-t border-slate-200 px-3 py-2 text-[11px] text-slate-400">
-        <span><b className="text-slate-500">Enter</b> chèn · <b className="text-slate-500">Esc</b> huỷ · <b className="text-slate-500">Tab</b> ô kế</span>
+        <span>gõ trực tiếp ở ô trên, hoặc click mẫu · <b className="text-slate-500">Enter</b> chèn · <b className="text-slate-500">Esc</b> huỷ · <b className="text-slate-500">Tab</b> ô kế</span>
         <button type="button" onMouseDown={(e) => e.preventDefault()} onClick={() => setPtOpen(true)} className="ml-auto rounded border border-slate-200 px-2 py-0.5 text-[11px] font-medium text-slate-500 hover:border-indigo-300 hover:text-indigo-700" title="Gán phím tắt cho mẫu (cá nhân)">⌨ Phím tắt</button>
         <button type="button" onMouseDown={(e) => e.preventDefault()} onClick={onCancel} className="rounded px-2 py-0.5 text-[12px] text-slate-500 hover:bg-slate-100">Huỷ</button>
         <button type="button" onMouseDown={(e) => e.preventDefault()} onClick={commit} className="rounded bg-indigo-600 px-3 py-0.5 text-[12px] font-semibold text-white hover:bg-indigo-500">Chèn</button>

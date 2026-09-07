@@ -92,9 +92,13 @@ export const layChuoi = (nhanh: GiaiBaiNhanh, keys: string[]) =>
   rpc<{ key: string; chuoi: ChuoiHinh }[]>('fn_giaibai_chuoi', { p_nhanh: nhanh, p_keys: keys }).then((r) => new Map((r ?? []).map((x) => [x.key, x.chuoi])))
 // Ý cần ô nhập = chưa chính thức (chua / claude / nguoi-chưa-duyệt). Ý đã duyệt chỉ đọc.
 export const yCanNhap = (y: ChuoiY) => y.trang_thai !== 'da_duyet'
-// Bản gộp để hiện + đếm ký tự (KHÔNG phải nguồn ghi DB) — nhãn theo MÃ node, không a/b/c (spec §3: nhãn động).
+// Nhãn ý = a) b) c)… theo VỊ TRÍ trong chuỗi (Thùy 06/09 tối: "mỗi câu trong chuỗi sẽ thành ý a,b,c,d của một
+// bài" — builder). DÙNG CHUNG giữa UI (tab bar ChuoiSoan/ChuoiDoc) và gopYNhap để ghép vào kho luôn khớp nhãn
+// đang hiện trên màn hình.
+export const chuY = (i: number) => `${String.fromCharCode(97 + i)})`
+// Bản gộp để hiện + đếm ký tự (KHÔNG phải nguồn ghi DB — DB ghi theo TỪNG ý lúc duyệt, xem fn_giaibai_duyet).
 export const gopYNhap = (chuoi: ChuoiHinh, yNhap: YNhap[]) =>
-  chuoi.y.filter(yCanNhap).map((y) => { const v = yNhap.find((x) => x.id === y.id); return v?.loi_giai?.trim() ? `**${y.ma}** — ${v.loi_giai.trim()}` : '' }).filter(Boolean).join('\n\n') || null
+  chuoi.y.map((y, i) => { if (!yCanNhap(y)) return ''; const v = yNhap.find((x) => x.id === y.id); return v?.loi_giai?.trim() ? `${chuY(i)} ${v.loi_giai.trim()}` : '' }).filter(Boolean).join('\n\n') || null
 
 export type NoiDungGiai = { loiGiai: string | null; anh: string | null; dapAn: string | null; yNhap?: YNhap[] }
 export const luuNhap = (nhanh: GiaiBaiNhanh, id: string, me: string, a: NoiDungGiai) =>

@@ -51,5 +51,9 @@ export default function AppOps() {
   if (gate === undefined) return <DangTai />
   if (gate === 'hs') return <ManThongBao text="Tài khoản này là học sinh — app này chỉ dành cho nhân sự vận hành." />
   if (gate === 'khong_link') return <ManThongBao text="Tài khoản chưa gắn với hồ sơ nhân sự nào — liên hệ quản trị." />
-  return <OpsHome profile={gate.profile} quyen={gate.quyen} />
+  // Đổi avatar ngay trong app OPS (mượn module từ app TA) — sửa STATE Ở ĐÂY (gốc profile) để avatar mới
+  // hiện lại ở MỌI nơi dùng `profile` (Hôm nay + Của tôi), không chỉ nơi bấm đổi.
+  const onAvatarChanged = (url: string) =>
+    setGate((g) => (g && typeof g !== 'string' ? { ...g, profile: { ...g.profile, nhanSu: { ...g.profile.nhanSu, anh_url: url } } } : g))
+  return <OpsHome profile={gate.profile} quyen={gate.quyen} onAvatarChanged={onAvatarChanged} />
 }
