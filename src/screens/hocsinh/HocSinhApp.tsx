@@ -15,13 +15,14 @@ import {
 import { mucDeadline, nhanConLai } from '../../lib/tuan'
 import { seededShuffleWithOrig, seededPermByDang } from '../../lib/shuffle'
 import {
-  luotTuLuyenHomNay, sinhTuLuyen, monCuaHS, laCap1HS, khoiCuaHS, layDangHocTap, xepHangTuLuyen,
+  luotTuLuyenHomNay, sinhTuLuyen, monCuaHS, laCap1HS, khoiCuaHS, gioiTinhCuaHS, layDangHocTap, xepHangTuLuyen,
   TU_LUYEN_SO_CAU_MOI_LUOT, SRC_LABEL, type DangHocTap, type RecentEval, type XepHangRow,
 } from '../../lib/tuluyen'
 import DoiMatKhau from './DoiMatKhau'
 import CaBoTroHS, { RetestHS, BoTroBanner } from './CaBoTroHS'
 import { caCuaToi, retestCuaToi } from '../../lib/botro_yeu_ca'
 import { listThongBaoHS, docTatCaThongBao, type ThongBaoHS } from '../../lib/thongbaohs'
+import HomeHS, { type HomeCard } from './HomeHS'
 
 type Chon = number | string | (string | null)[] | null // TN=index · TLN=chuỗi · ĐS=mảng 'D'/'S'
 type CauState = { chon: Chon; kq: { verdict: string; key: unknown; baiLamCauId: string } | null; baoRoi?: boolean }
@@ -40,10 +41,6 @@ const THI_LOAI = new Set(['et', 'de_thi', 'bo_tro_test', 'retest'])
 // 10 câu theo dạng yếu, ĐẾM vào mastery) · thông tin học tập (dạng yếu + %Đ-C-S theo
 // dạng/chuyên đề + xếp hạng lớp/khối) · làm đề thi thử (đề trường/sở, sắp nhập nhiều).
 // 2 CỘT — màn điện thoại dọc (Thùy: "màn hình điện thoại là dọc mà").
-// ⭐ CẤP 1 (Thùy 20/08): "cấp 1 ko có làm ET, BTVN hay BTTL trên điện thoại. Chỉ có tự luyện" — 3 ô
-// đầu ẨN HẲN (không phải "Sắp có") cho cấp 1, KHÔNG đổi gì ở tầng dữ liệu (cấp 1 vốn không có
-// bai_test loại giao_trinh/et/btvn nào — cuaKhu() các ô đó luôn rỗng, ẩn chỉ là bớt nhiễu UI).
-const KHU_AN_CAP1 = new Set<KhuId>(['giao_trinh', 'et', 'btvn'])
 // Bảng xếp hạng (Thùy 21/08: "ko phải chỉ 5T. Hiện cho các khối tiểu học") — mọi khối cấp 1, MỖI
 // EM xếp hạng với ĐÚNG khối của mình (BangXepHang tự đọc khoiCuaHS(), không hardcode '5T' nữa).
 const KHU_CHI_CAP1 = new Set<KhuId>(['xep_hang'])
@@ -62,8 +59,16 @@ const KHU: { id: KhuId; ten: string; icon: string; loai?: string; direct?: boole
   { id: 'xep_hang', ten: 'Bảng xếp hạng', icon: '🏆', direct: true, mau: 'ph-orange' },
   { id: 'de_thi_thu', ten: 'Làm đề thi thử', icon: '📄', mau: 'ph-purple' },
 ]
-// Tailwind quét class TĨNH trong nguồn — không ghép chuỗi `bg-${mau}/10` (mất class). Liệt kê đủ.
-const MAU_BG: Record<string, string> = { brand: 'bg-brand/10', 'ph-purple': 'bg-ph-purple/10', 'ph-orange': 'bg-ph-orange/10', 'ph-green': 'bg-ph-green/10' }
+// Kit hs-home-v4: minh hoạ (PNG cutout ở public/bk-ui/hs) + doodle chữ tay (Itim, TEXT) + tông màu từng ô.
+const KIT_O: Record<KhuId, Pick<HomeCard, 'ill' | 'doodle' | 'tone'>> = {
+  giao_trinh: { ill: 'purple_bookmark_book', doodle: 'Cố lên!', tone: 'pink' },
+  et:         { ill: 'orange_documents', doodle: 'Kiến thức là sức mạnh', tone: 'purple' },
+  btvn:       { ill: 'homework_house', doodle: 'Ôn tập mỗi ngày nhé!', tone: 'orange' },
+  tu_luyen:   { ill: 'self_practice_target', doodle: 'Small Steps Big Progress', tone: 'green' },
+  thong_tin:  { ill: 'study_progress_chart', doodle: 'Hiểu mình để tiến bộ hơn!', tone: 'blue' },
+  xep_hang:   { ill: 'self_practice_target', doodle: 'Thi đua vui!', tone: 'green' },
+  de_thi_thu: { ill: 'mock_exam_locked', doodle: 'Sắp ra mắt! Hãy chờ nhé!', tone: 'gray' },
+}
 const SHADOW = 'shadow-[0_8px_24px_rgba(28,38,61,0.07)]' // ĐÚNG --shadow của bkdemy-ph-app/app/ph-v3.css
 
 // Header sub-màn (Thùy: "làm header giống app phụ huynh") — ĐÚNG `.pageHead` (ph-v3.css:65-67):
@@ -197,6 +202,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [khu, setKhu] = useState<KhuId | null>(null) // null = màn chính, có ô
   const [direct, setDirect] = useState<'tu_luyen' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'retest' | 'hop_thu' | null>(null)
   const [cap1, setCap1] = useState<boolean | null>(null) // null = chưa biết — chờ trước khi vẽ lưới ô
+  const [gioiTinh, setGioiTinh] = useState<'nam' | 'nu' | null>(null) // theme nam/nữ màn chính cấp 2/3 (kit hs-home-v4)
   // Ca bổ trợ yếu hôm nay (đã điểm danh) + retest đến hạn — ô "Bổ trợ" CHỈ hiện khi có (không "sắp có", không ô trống).
   const [boTro, setBoTro] = useState<{ coCa: boolean; soRetest: number }>({ coCa: false, soRetest: 0 })
   // Hòm thư — chỉ cần SỐ chưa đọc để hiện badge chuông (đếm items đang render, không phải tính nghiệp vụ).
@@ -205,6 +211,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
 
   useEffect(() => { listBaiTestCuaHS().then(setTests).catch(() => setTests([])) }, [])
   useEffect(() => { laCap1HS().then(setCap1).catch(() => setCap1(false)) }, [])
+  useEffect(() => { gioiTinhCuaHS().then(setGioiTinh).catch(() => setGioiTinh(null)) }, [])
   useEffect(() => { taiChuaDoc() }, [])
   useEffect(() => {
     const tai = () => Promise.all([caCuaToi().catch(() => null), retestCuaToi().catch(() => [])])
@@ -248,64 +255,32 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   if (!khu && cap1) return <HomeCap1 hoTen={hoTen} maHS={maHS} onOpen={(d) => setDirect(d)}
     chuaDoc={chuaDoc} onHopThu={() => setDirect('hop_thu')}
     extra={<BoTroBanner coCa={boTro.coCa} soRetest={boTro.soRetest} desktop onCa={() => setDirect('bo_tro')} onRetest={() => setDirect('retest')} />} />
-  if (!khu) return (
-    <div className="mx-auto min-h-screen max-w-md bg-ios px-4 pb-10 pt-[calc(14px+env(safe-area-inset-top))]">
-      {/* Hàng nút phụ (đổi MK/thoát) — ĐÚNG ".top" (ph-v3.css): icon-button vuông-tròn nổi trên nền trang */}
-      <div className="mb-3 flex items-center justify-end gap-2">
-        <button onClick={() => setDirect('hop_thu')} title="Hòm thư" className={`relative flex h-[42px] w-[42px] items-center justify-center rounded-[14px] bg-white text-[16px] ${SHADOW}`}>
-          🔔
-          {chuaDoc > 0 && (
-            <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-ph-red px-1 text-[10px] font-bold text-white">{chuaDoc}</span>
-          )}
-        </button>
-        <button onClick={() => setDoiMK(true)} title="Đổi mật khẩu" className={`flex h-[42px] w-[42px] items-center justify-center rounded-[14px] bg-white text-[16px] ${SHADOW}`}>🔑</button>
-        <button onClick={() => supabase.auth.signOut()} className={`flex h-[42px] items-center justify-center rounded-[14px] bg-white px-3.5 text-[13px] font-semibold text-ph-label-2 ${SHADOW}`}>Thoát</button>
-      </div>
-      {/* Danh tính — ĐÚNG ".studentCard" (ph-v3.css): card trắng bo 24px, avatar SQUIRCLE (không tròn) */}
-      <div className={`flex items-center gap-3 rounded-[24px] bg-white p-3.5 ${SHADOW}`}>
-        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-[18px] bg-gradient-to-br from-brand to-brand-2 text-[22px] font-bold text-white">
-          {hoTen.trim().split(/\s+/).slice(-2).map((w) => w[0]).join('').toUpperCase()}
-        </div>
-        <div className="min-w-0 flex-1">
-          <p className="truncate text-[19px] font-bold tracking-tight text-ph-label">{hoTen}</p>
-          <p className="mt-1 truncate text-[13px] text-ph-label-2">{maHS.toUpperCase()}{lopMon ? ` · ${lopMon}` : ''}</p>
-        </div>
-      </div>
-
-      <BoTroBanner coCa={boTro.coCa} soRetest={boTro.soRetest} onCa={() => setDirect('bo_tro')} onRetest={() => setDirect('retest')} />
-
-      <div className="mt-5 grid grid-cols-2 gap-3">
-        {KHU.filter((k) => !(cap1 && KHU_AN_CAP1.has(k.id)) && !(KHU_CHI_CAP1.has(k.id) && !cap1)).map((k) => {
-          const sapCo = !k.loai && !k.direct
-          const ds = k.loai ? cuaKhu(k.id) : []
-          // Badge = việc CÒN LÀM ĐƯỢC. Bài quá hạn vẫn hiện trong danh sách (Thùy: "hiện quá hạn
-          // thôi") nhưng không đếm vào badge — badge mà đếm cả thứ không bấm được thì thành nhiễu.
-          const nChuaLam = ds.filter((t) => !xongCua(t) && !daHetHan(t)).length
-          const nQuaHan = ds.filter((t) => !xongCua(t) && daHetHan(t)).length
-          const onClick = sapCo ? undefined : k.direct ? () => setDirect(k.id as 'tu_luyen' | 'thong_tin' | 'xep_hang') : () => { setKhu(k.id); setTab('chua') }
-          return (
-            <button key={k.id} disabled={sapCo} onClick={onClick}
-              className={`relative flex min-h-[132px] flex-col justify-between rounded-[22px] p-4 text-left transition ${
-                sapCo ? 'bg-black/[0.03]' : `bg-white active:scale-[0.98] ${SHADOW}`}`}>
-              <span className={`flex h-11 w-11 items-center justify-center rounded-[15px] text-[21px] ${sapCo ? 'bg-black/[0.05] opacity-40' : MAU_BG[k.mau]}`}>{k.icon}</span>
-              <span>
-                <span className={`block text-[15px] font-bold tracking-tight ${sapCo ? 'text-ph-label-2/70' : 'text-ph-label'}`}>{k.ten}</span>
-                <span className={`mt-1 block text-[11px] leading-snug ${nChuaLam === 0 && nQuaHan > 0 ? 'text-ph-red' : 'text-ph-label-2'}`}>
-                  {sapCo ? 'Sắp có' : k.direct ? CHU_DUOI[k.id] : tests === null ? '…'
-                    : nChuaLam > 0 ? `${nChuaLam} bài chưa làm`
-                    : nQuaHan > 0 ? `${nQuaHan} bài quá hạn`
-                    : ds.length ? 'Xong hết rồi' : 'Chưa có bài'}
-                </span>
-              </span>
-              {nChuaLam > 0 && (
-                <span className="absolute right-3 top-3 flex h-6 min-w-6 items-center justify-center rounded-full bg-ph-red px-1.5 text-[12px] font-bold text-white shadow-[0_4px_12px_rgba(230,64,64,0.38)]">{nChuaLam}</span>
-              )}
-            </button>
-          )
-        })}
-      </div>
-    </div>
-  )
+  // Cấp 2/3 — màn chính theo KIT hs-home-v4 (HomeHS.tsx). Ở đây CHỈ tính số/trạng thái từng ô rồi
+  // truyền xuống; HomeHS thuần vẽ. Badge = việc CÒN LÀM ĐƯỢC (bài quá hạn vẫn hiện trong danh sách —
+  // Thùy: "hiện quá hạn thôi" — nhưng không đếm vào badge; badge đếm cả thứ không bấm được thì thành nhiễu).
+  if (!khu) {
+    const cards: HomeCard[] = KHU.filter((k) => !KHU_CHI_CAP1.has(k.id)).map((k) => {
+      const sapCo = !k.loai && !k.direct
+      const ds = k.loai ? cuaKhu(k.id) : []
+      const nChuaLam = ds.filter((t) => !xongCua(t) && !daHetHan(t)).length
+      const nQuaHan = ds.filter((t) => !xongCua(t) && daHetHan(t)).length
+      const [sub, subMau]: [string, HomeCard['subMau']] =
+        sapCo ? ['Sắp có', 'xam']
+        : k.direct ? [CHU_DUOI[k.id] ?? '', 'xam']
+        : tests === null ? ['…', 'xam']
+        : nChuaLam > 0 ? [`${nChuaLam} bài chưa làm`, 'ton']
+        : nQuaHan > 0 ? [`${nQuaHan} bài quá hạn`, 'do']
+        : ds.length ? ['Xong hết rồi', 'xanh'] : ['Chưa có bài', 'xam']
+      return {
+        id: k.id, ten: k.ten, sub, subMau, badge: nChuaLam, disabled: sapCo, ...KIT_O[k.id],
+        onClick: sapCo ? undefined : k.direct ? () => setDirect(k.id as 'tu_luyen' | 'thong_tin' | 'xep_hang') : () => { setKhu(k.id); setTab('chua') },
+      }
+    })
+    return <HomeHS hoTen={hoTen} maHS={maHS} lopMon={lopMon} gioiTinh={gioiTinh} chuaDoc={chuaDoc}
+      coCa={boTro.coCa} soRetest={boTro.soRetest} cards={cards}
+      onHopThu={() => setDirect('hop_thu')} onDoiMK={() => setDoiMK(true)} onThoat={() => supabase.auth.signOut()}
+      onCa={() => setDirect('bo_tro')} onRetest={() => setDirect('retest')} />
+  }
 
   // ── DANH SÁCH 1 KHU ───────────────────────────────────────────────────────
   const dsKhu = cuaKhu(khu)

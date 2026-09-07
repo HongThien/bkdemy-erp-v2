@@ -115,6 +115,13 @@ export async function khoiCuaHS(): Promise<string | null> {
   return (data as string | null) ?? null
 }
 
+// Giới tính — màn chính cấp 2/3 có 2 biến thể nam/nữ (kit hs-home-v4). Null/khác = mặc định nam.
+export async function gioiTinhCuaHS(): Promise<'nam' | 'nu' | null> {
+  const { data, error } = await supabase.rpc('hs_gioi_tinh_cua_toi')
+  if (error) throw error
+  return data === 'nu' ? 'nu' : data === 'nam' ? 'nam' : null
+}
+
 export const SRC_LABEL: Record<RawEval['src'], string> = { et: 'ET', mt: 'MT', btvn: 'BTVN', bt: 'BT', tu_luyen: 'TL' }
 export type RecentEval = { value: number; t: string; src: RawEval['src'] }
 export type DangHocTap = {

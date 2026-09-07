@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-196 bảng · 11 view · 0 enum · 39 trigger · 264 function
+196 bảng · 11 view · 0 enum · 39 trigger · 265 function
 
 ## _app_secrets
 
@@ -4256,6 +4256,7 @@ UNION ALL
 - `hs_cap1_cua_toi()` → boolean
 - `hs_cham_tln_ai(p_bai_lam_cau_id uuid)` → jsonb
 - `hs_dang_evals(p_mon text, p_nhanh text DEFAULT NULL::text)` → jsonb
+- `hs_gioi_tinh_cua_toi()` → text
 - `hs_khoi_cua_toi()` → text
 - `hs_mon_cua_toi()` → text[]
 - `hs_nghi_tu_roi_lop()` → trigger
