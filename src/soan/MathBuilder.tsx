@@ -75,7 +75,8 @@ export function MathBuilder({ title, initial, cums, commitLabel = 'Chèn', onCom
     // data-modal + target===currentTarget: modal này có thể LỒNG trong CumModal (đoạn) — sự kiện React bubble qua portal
     // lên shell ngoài, nên shell ngoài phải nhận ra "đang ở trong bảng dựng" để không tự đóng.
     <div data-modal="builder" className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/35 p-4" onMouseDown={(e) => { if (e.target === e.currentTarget) onCancel() }}>
-      <div className="w-[760px] max-w-full rounded-2xl border border-slate-200 bg-white shadow-2xl" onKeyDownCapture={onKeyDownCapture} onMouseDown={stop} onClick={stop}>
+      {/* 08/09 Thùy: "để popup soạn công thức to ra" — 760 → 1040px, bảng mẫu cao hơn, ô nhập + preview chữ to (mf-lg). */}
+      <div className="w-[1040px] max-w-full rounded-2xl border border-slate-200 bg-white shadow-2xl" onKeyDownCapture={onKeyDownCapture} onMouseDown={stop} onClick={stop}>
         <div className="flex items-center gap-2 border-b border-slate-200 px-4 py-2.5">
           <h2 className="text-[14px] font-semibold text-slate-800">{title}</h2>
           <span className="ml-auto text-[11px] text-slate-400">gõ trực tiếp ở ô dưới, hoặc click ký hiệu · <b className="text-slate-500">Tab</b> ô kế · <b className="text-slate-500">Enter</b> {commitLabel.toLowerCase()} · <b className="text-slate-500">Esc</b> huỷ</span>
@@ -90,7 +91,7 @@ export function MathBuilder({ title, initial, cums, commitLabel = 'Chèn', onCom
           <button type="button" tabIndex={-1} onMouseDown={noFocusSteal} onClick={() => setTab('cum')}
             className={`rounded-md px-2.5 py-1 text-[12px] font-semibold ${tab === 'cum' ? 'bg-indigo-600 text-white' : 'text-slate-500 hover:bg-slate-100'}`}>Cụm của tôi</button>
         </div>
-        <div className="flex max-h-[176px] flex-wrap content-start gap-1 overflow-y-auto px-3 py-2">
+        <div className="flex max-h-[232px] flex-wrap content-start gap-1 overflow-y-auto px-3 py-2">
           {tab === 'cum'
             ? (cumCongThuc.length === 0 ? <span className="px-1 py-2 text-[12px] text-slate-400">Chưa có cụm công thức nào — tạo ở bảng phía trên màn soạn.</span>
               : cumCongThuc.map((c) => (
@@ -108,9 +109,9 @@ export function MathBuilder({ title, initial, cums, commitLabel = 'Chèn', onCom
             ))}
         </div>
         {/* Ô nhập + preview */}
-        <div className="px-4 pb-2">
+        <div className="mf-lg px-4 pb-2">
           <math-field ref={mfRef} />
-          <div className="mt-1.5 min-h-[38px] rounded-md border border-dashed border-slate-200 bg-slate-50 px-2.5 py-1 text-[17px] text-slate-800">
+          <div className="mt-1.5 min-h-[44px] rounded-md border border-dashed border-slate-200 bg-slate-50 px-2.5 py-1 text-[22px] text-slate-800">
             {latex.trim() ? <MathText>{`$${latex}$`}</MathText> : <span className="text-[12px] text-slate-400">Preview — hiện đúng như khi in</span>}
           </div>
           {err && <p className="mt-1 text-[12px] text-rose-600">{err}</p>}

@@ -54,5 +54,7 @@ math-field.mf-input { display: block; width: 100%; font-size: 20px; min-height: 
 math-field.mf-input:focus-within { border-color: #6366f1; box-shadow: 0 0 0 3px rgb(99 102 241 / 0.2); outline: none; }
 math-field.mf-input::part(virtual-keyboard-toggle), math-field.mf-input::part(menu-toggle) { display: none; }
 math-field.mf-input::part(placeholder) { color: #94a3b8; }
+/* Bảng dựng công thức (soan/MathBuilder) — ô nhập TO (Thùy 08/09: "để popup soạn công thức to ra"); MathPopup ERP giữ 20px. */
+.mf-lg math-field.mf-input { font-size: 28px; min-height: 76px; padding: 8px 12px; }
 .mt-f { cursor: pointer; border-radius: 3px; transition: background 0.12s; }
 .mt-f:hover { background: #e0e7ff; outline: 1px solid #a5b4fc; }

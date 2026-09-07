@@ -5,6 +5,7 @@
 // hoặc PHÍM TẮT tự gán; chữ + số gõ vào ô trống của mẫu. TẮT gõ tắt kiểu chữ, chặn "\" "^" "_".
 import { MathfieldElement } from 'mathlive'
 import { MATH_MACROS } from './macros'
+import { fixAccentScript } from './latex-fix'
 import type { MathTemplate } from './templates'
 
 // Font: MathLive dùng đúng họ font KaTeX mà app đã nạp qua katex.min.css → không tải lại từ CDN/thư mục.
@@ -162,8 +163,8 @@ export function tabNext(mf: MathfieldElement, back: boolean) {
   }
 }
 
-// Giá trị SẠCH để lưu (bỏ ô trống sót); null nếu rỗng.
+// Giá trị SẠCH để lưu (bỏ ô trống sót; \widehat{A_2} → \widehat{A}_2 — xem latex-fix.ts); null nếu rỗng.
 export function readClean(mf: MathfieldElement): string | null {
-  const clean = stripPlaceholders(mf.getValue('latex'))
+  const clean = fixAccentScript(stripPlaceholders(mf.getValue('latex')))
   return isBlankLatex(clean) ? null : clean
 }

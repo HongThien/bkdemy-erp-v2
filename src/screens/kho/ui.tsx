@@ -2,6 +2,7 @@
 import type { ReactNode } from 'react'
 import katex from 'katex'
 import { katexMacros } from '../../lib/math/macros'
+import { fixAccentScript, widenSingleHat } from '../../lib/math/latex-fix'
 
 // Render text có LaTeX ($…$ inline, $$…$$ block) thành công thức đẹp.
 const esc = (t: string) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -24,7 +25,9 @@ export const tex = (s: string, display: boolean) => {
   // \vec{AB} (vector 2 điểm) → mũi tên KHÔNG giãn hết bề rộng, chỉ phủ đúng 1 ký hiệu (đúng chuẩn LaTeX
   // của \vec) → nhìn như chỉ phủ mỗi chữ cuối. Vector 2 điểm (AB, PN, PM…) phải dùng \overrightarrow mới
   // giãn đúng; \vec{u}/\vec{n} (1 ký hiệu) vẫn đúng, GIỮ NGUYÊN. Tự sửa theo độ dài nội dung trong ngoặc.
-  const fixed = s
+  // fixAccentScript: \widehat{A_2} → \widehat{A}_2 (mũ trên chữ, chỉ số ngoài — cùng luật với lúc lưu, xem latex-fix.ts).
+  // widenSingleHat: \widehat{A} → \widehat{{}A{}} chỉ lúc render — mũ cỡ 2 phủ đúng chữ thay vì mũ tí hon lệch phải.
+  const fixed = widenSingleHat(fixAccentScript(s))
     .replace(/\\frac(?![a-zA-Z])/g, '\\dfrac')
     .replace(/\\vec\s*\{([A-Za-z][A-Za-z0-9']*)\}/g, (m, arg: string) => (arg.length >= 2 ? `\\overrightarrow{${arg}}` : m))
   // macros: CÙNG 1 file với ô nhập MathLive (lib/math/macros) → soạn thấy sao, in / test online ra vậy.

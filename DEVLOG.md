@@ -9271,6 +9271,27 @@ dispatch `KeyboardEvent` có `code:'Backspace'` lên `.ML__keyboard-sink`.
 **Verify dev 5180 (rAF vá đồng bộ, sự kiện tổng hợp):** dán `Xét $\triangle ABC$ vuông` → click công thức → bảng Sửa có nút
 "Đổi tên điểm A B C" → bấm → modal "Đổi tên điểm — công thức đang sửa" → A→M → Cập nhật → bài thành `△MBC`, không sót
 modal ✓ · click cụm đoạn "Hình bình hành → cạnh đối" → vẫn hỏi "Đổi tên điểm — Hình bình hành…" → Huỷ sạch ✓ · tsc sạch.
+
+### 08/09 (đêm, tiếp 2) — Popup soạn công thức TO hơn + dấu góc `\widehat{A_2}` "bé tý, lệch hẳn" → như MathType
+**Thùy (kèm ảnh `Â₂` mũ tí hon lệch phải):** "1. để popup soạn công thức to ra. 2. Có cách nào xử lý cái dấu góc này ko.
+hiển thị quá tệ. bé tý và lệch hẳn. làm như mathtype ấy."
+**Đo (KaTeX DOM, dev 5180):** `\widehat{A_2}`: mũ nằm trên CẢ thân "A₂" → tâm lệch phải; `\widehat{A}` một mình: KaTeX chọn
+cỡ mũ theo SỐ PHẦN TỬ trong thân (1 → widehat1) → mũ 8.7×4.4px lệch phải 2.5px trên chữ rộng 13.8px. Thử: `\widehat{\,A\,}`
+→ cỡ 2 (19.9px) nhưng nới thân; `\widehat{{}A{}}` → cỡ 2, mũ 13.8×5.5 phủ ĐÚNG chữ, lệch 0, không thêm khoảng trắng. ✓
+**Sửa:**
+- `src/lib/math/latex-fix.ts` (MỚI, không import gì — ui.tsx không được kéo MathLive): `fixAccentScript`: thân dấu mũ
+  = 1 chữ (+phẩy) + chỉ số → đưa chỉ số RA NGOÀI (`\widehat{A_2}` → `\widehat{A}_2`, `\vec{u_1}` → `\vec{u}_1`; áp cho
+  widehat/hat/vec/overrightarrow/bar/tilde/dot; KHÔNG áp \overline — đoạn thẳng nhiều chữ). Dùng ở CẢ 2 nơi: `tex()`
+  lúc render (data cũ trong kho tự đẹp, KHÔNG sửa DB) và `readClean` lúc lưu từ ô MathLive (data mới sạch từ đầu).
+  `widenSingleHat`: `\widehat{X}` → `\widehat{{}X{}}` CHỈ lúc render (`tex()`), không lưu.
+- Popup `MathBuilder`: 760 → 1040px, bảng mẫu cao 176 → 232px, ô MathLive 20 → 28px (`.mf-lg` trong index.css — chỉ bảng
+  dựng; MathPopup ERP giữ 20px), preview 17 → 22px.
+**Verify dev 5180 (đo DOM, cửa sổ vẫn bị che nên không chụp được):** dán `$\widehat{A_2}$` → chỉ số ngoài mũ, mũ 13.8×5.5
+lệch 0 ✓ · `$\widehat{A}$` mũ 13.8 (trước 8.7) lệch 0 (trước 2.5) ✓ · `$\widehat{ABC}$` không đổi ✓ · `$\widehat{A'}$` OK ✓
+· builder: gõ `\widehat{A_2}` → Chèn → lưu `\widehat{A}_2` ✓ · font ô nhập 28px ✓ · tsc sạch. Bề rộng popup chưa đo được
+(innerWidth = 0 khi cửa sổ bị che) — CSS tĩnh, Thùy nhìn thật.
+**Ghi chú:** ô MathLive trong popup vẫn vẽ mũ theo cách của MathLive (thân gồm chỉ số thì hơi lệch) — preview KaTeX ngay
+dưới ô mới là "đúng như khi in". Chỉnh MathLive render là việc khác, chưa làm.
 ## 2026-09-08 — PIPELINE thiết kế ChatGPT → Claude (design/HANDOFF-PIPELINE.md + scripts/design-check.mjs)
 - **Bối cảnh:** CEO thiết kế màn chính app HS cấp 2/3 trên ChatGPT, bảo nó đóng gói handoff cho Claude dựng
   (`public/bk-ui/STUDENT_HOME_CLAUDE_HANDOFF.zip` v1 07/09 · `STUDENT_HOME_V2_CLAUDE_HANDOFF_MALE_FEMALE` v2 08/09).
