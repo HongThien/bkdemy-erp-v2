@@ -9256,3 +9256,18 @@ click bằng `PointerEvent` (pointerdown/mousedown/pointerup/mouseup/click, `com
 `shadowRoot.elementFromPoint(x,y)` — MathLive không kiểm `isTrusted`. Toạ độ `computer.left_click` lúc này KHÔNG tin được
 (khung ảnh cũ). Phím Backspace của Browser pane gửi `code=''` ⇒ MathLive (so keybinding theo `code`) bỏ qua — phải
 dispatch `KeyboardEvent` có `code:'Backspace'` lên `.ML__keyboard-sink`.
+
+### 08/09 (đêm, tiếp) — Phím tắt cụm chèn THẲNG công thức; "Đổi tên điểm" dời vào bảng Sửa công thức
+**Thùy:** "gõ phím tắt, nó mặc định hiện cái chuyển điểm. T muốn gõ phím tắt thì ra đúng cái công thức đấy. Muốn chuyển
+điểm thì click vào công thức rồi mới có option." (Bảng đổi tên điểm 05/09 vốn hiện TRƯỚC khi chèn với mọi cụm có tên điểm.)
+**Đổi (3 file `src/soan`, không migration):**
+- `MathDoc.useCum`: cụm CÔNG THỨC có tên điểm → `insertRaw` thẳng, không hỏi (`timDiem` chỉ chạy cho `loai==='doan'`).
+  Cụm ĐOẠN GIỮ hỏi trước — điểm rải trong cả lời văn lẫn nhiều công thức, sửa sau từng khối thì mất phần chữ ("tứ giác
+  ABCD" trong prose). Quyết định của em, chưa hỏi Thùy; đổi 1 dòng nếu muốn đoạn cũng chèn thẳng.
+- Bảng "Sửa công thức" (click vào công thức trong bài) thêm nút **"Đổi tên điểm A B C"** ở góc trái thanh đáy — chỉ hiện
+  khi `timDiem($latex$)` có điểm → mở `DoiDiemModal` (kind mới `diem_edit`, nhãn "Cập nhật") → `replaceMath` đúng khối,
+  bộ điểm vẫn nhớ cho bài. `MathBuilder` thêm prop `footer` (khác `children`: KHÔNG cướp focus khỏi ô toán).
+  `DoiDiemModal` thêm `commitLabel`.
+**Verify dev 5180 (rAF vá đồng bộ, sự kiện tổng hợp):** dán `Xét $\triangle ABC$ vuông` → click công thức → bảng Sửa có nút
+"Đổi tên điểm A B C" → bấm → modal "Đổi tên điểm — công thức đang sửa" → A→M → Cập nhật → bài thành `△MBC`, không sót
+modal ✓ · click cụm đoạn "Hình bình hành → cạnh đối" → vẫn hỏi "Đổi tên điểm — Hình bình hành…" → Huỷ sạch ✓ · tsc sạch.

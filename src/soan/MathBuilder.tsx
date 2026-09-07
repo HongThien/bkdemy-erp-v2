@@ -22,9 +22,10 @@ export type MathBuilderProps = {
   onCancel: () => void
   children?: ReactNode               // form thêm (CumModal nhét ô tên/gõ tắt/phím ở đây)
   canCommit?: () => string | null    // trả lỗi (chuỗi) nếu chưa được lưu; null = OK
+  footer?: ReactNode                 // nút phụ ở góc trái thanh đáy (vd "Đổi tên điểm" khi sửa) — KHÔNG ảnh hưởng focus như children
 }
 
-export function MathBuilder({ title, initial, cums, commitLabel = 'Chèn', onCommit, onCancel, children, canCommit }: MathBuilderProps) {
+export function MathBuilder({ title, initial, cums, commitLabel = 'Chèn', onCommit, onCancel, children, canCommit, footer }: MathBuilderProps) {
   const mfRef = useRef<MathfieldElement | null>(null)
   const [latex, setLatex] = useState('')
   const [tab, setTab] = useState<Tab>('cau_truc')
@@ -115,6 +116,7 @@ export function MathBuilder({ title, initial, cums, commitLabel = 'Chèn', onCom
           {err && <p className="mt-1 text-[12px] text-rose-600">{err}</p>}
         </div>
         <div className="flex items-center gap-2 border-t border-slate-200 px-4 py-2.5">
+          {footer}
           <button type="button" onMouseDown={noFocusSteal} onClick={onCancel} className="ml-auto rounded-md px-3 py-1.5 text-[13px] text-slate-500 hover:bg-slate-100">Huỷ</button>
           <button type="button" onMouseDown={noFocusSteal} onClick={commit} className="rounded-md bg-indigo-600 px-4 py-1.5 text-[13px] font-semibold text-white shadow-sm hover:bg-indigo-500">{commitLabel}</button>
         </div>

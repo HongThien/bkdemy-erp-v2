@@ -12,9 +12,10 @@ type Props = {
   initialMap: Record<string, string>   // bộ điểm đang nhớ trong bài
   onCommit: (raw: string, map: Record<string, string>) => void
   onCancel: () => void
+  commitLabel?: string                 // "Chèn" (cụm mới) · "Cập nhật" (công thức đang sửa)
 }
 
-export function DoiDiemModal({ ten, raw, diem, initialMap, onCommit, onCancel }: Props) {
+export function DoiDiemModal({ ten, raw, diem, initialMap, onCommit, onCancel, commitLabel = 'Chèn' }: Props) {
   const [map, setMap] = useState<Record<string, string>>(() => Object.fromEntries(diem.map((d) => [d, initialMap[d] ?? d])))
   const preview = useMemo(() => doiDiem(raw, map), [raw, map])
   const commit = () => onCommit(preview, map)
@@ -46,7 +47,7 @@ export function DoiDiemModal({ ten, raw, diem, initialMap, onCommit, onCancel }:
           <span className="text-[11px] text-slate-400">Bộ điểm được nhớ cho cả bài — cụm sau tự điền sẵn.</span>
           <button type="button" onClick={onCancel} className="ml-auto rounded-md px-3 py-1.5 text-[13px] text-slate-500 hover:bg-slate-100">Huỷ</button>
           <button type="button" onClick={() => onCommit(raw, Object.fromEntries(diem.map((d) => [d, d])))} className="rounded-md border border-slate-300 px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-indigo-400 hover:text-indigo-700">Giữ nguyên</button>
-          <button type="button" onClick={commit} className="rounded-md bg-indigo-600 px-4 py-1.5 text-[13px] font-semibold text-white shadow-sm hover:bg-indigo-500">Chèn</button>
+          <button type="button" onClick={commit} className="rounded-md bg-indigo-600 px-4 py-1.5 text-[13px] font-semibold text-white shadow-sm hover:bg-indigo-500">{commitLabel}</button>
         </div>
       </div>
     </div>,
