@@ -9081,3 +9081,15 @@ nhiều dòng thật sự vẫn xuống dòng đúng ý).
 **Verify:** tsc sạch · Browser dev 5181: placeholder hiện đúng "Gõ công thức trực tiếp tại đây…" có khoảng trắng ·
 dispatch paste "$x^2+1$\n" → DOM chỉ còn `formula-span​<br>`, không còn "\n" giữa, ảnh chụp xác nhận công thức nằm
 gọn 1 dòng, con trỏ đứng ngay sau · đóng không lưu, trả 2 bài test dọn sạch.
+
+## 2026-09-07 — BTVN ONLINE → lưới BTVN của buổi (mig 202609071643) — Thùy: "BTVN HS làm trên app chưa tự nhảy vào phần BTVN trong buổi học"
+- Cùng lỗ với ET online (03/09): HS làm BTVN trên app → `bai_lam_cau` (chấm ngay từng câu); tab BTVN buổi đọc `gami_grades`
+  phase='btvn' + `btvn_ket_qua` → không có đường nối. 10A1 03/09: 5 HS nộp/140 phép đo/28 ô/0 điểm, TA tick tay 7 HS rồi đóng.
+- `fn_btvn_online_dong_bo(p_buoi)` — như `fn_et_online_dong_bo` (khoá nguồn `gami_grades.bai_lam_cau_id`, khớp ma_cau, quy
+  về câu gốc, không đè ô tay, không đụng phase đã đóng) NHƯNG: lấy CẢ bài dở (BTVN reveal-ngay, HS ít khi "nộp" tường
+  minh — `nopBai` chỉ chạy khi trả lời hết) · tự điền `btvn_ket_qua.trang_thai_nop` = nop_dung_han/nop_muon (nop_at so
+  deadline) CHỈ cho HS đã làm HẾT và TA chưa tick; bài dở để TA quyết. Trả hsLam/hsNop/moi/capNhat/giuTay/khongKhopO/
+  khongTrongBuoi/nopMoi.
+- `gami.ts` `dongBoBTVNOnline` · `BtvnTab`: gọi sau syncBTVNProblems mỗi lần mở (BTVN mở) + dải xanh + nút "↻ Lấy lại".
+- Verify DB thật: 12A1 03/09 (HS0042 làm dở 24/34) → 24 ô, chuỗi Đ/S khớp online, lần 2 = 0; 10A1 03/09 đã đóng → `daDong`
+  (muốn đổ 5 HS thì "Mở lại" → tab tự đổ → đóng lại; EXP tính lại). Script `scripts/_chk_btvn_online_dong_bo.mjs`.

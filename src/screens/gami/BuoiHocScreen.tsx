@@ -9,7 +9,7 @@ import {
   type BtvnKQ, type CanhBao, type BtvnTrangThai, type BtvnThaiDo,
   getDanhGia, setDanhGiaDang, setNhanXet, setMuc, MUC_OPTS, MUC_CATALOG, nhanMuc, dongDanhGia, moLaiDanhGia, setNoiDungBuoi,
   loadLiveTestForBuoi, getDangTen, loadMTForBuoi, syncMTProblems, getBangEloExp,
-  loadHinhForBuoiPhase, syncHinhProblems, danhSoLaiTheoDe, thuTuMTTheoDe, dongBoETOnline, type ETOnlineDongBo,
+  loadHinhForBuoiPhase, syncHinhProblems, danhSoLaiTheoDe, thuTuMTTheoDe, dongBoETOnline, type ETOnlineDongBo, dongBoBTVNOnline, type BTVNOnlineDongBo,
   type BuoiAo, type BuoiTim, type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type Phase, type DiemDanh, type DanhGiaHS, type DanhGiaDiem, type TabKey, type ETResult, type LuoiSync, type EloExpRow,
 } from '../../lib/gami'
 import { getLiveSnapshot, type BaiTest, type BaiTestCau, type BaiLam, type LiveAnswer } from '../../lib/testonline'
@@ -1872,6 +1872,8 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
   const [loading, setLoading] = useState(true)
   const [closing, setClosing] = useState(false)
   const [alertFor, setAlertFor] = useState<string | null>(null) // hsId đang mở popup báo động
+  const [onl, setOnl] = useState<BTVNOnlineDongBo | null>(null) // kết quả đổ BTVN online vào lưới (xem dongBoBTVNOnline)
+  const [onlBusy, setOnlBusy] = useState(false)
   const coMat = roster.filter((r) => r.diem_danh === 'co_mat')
   const tenHT = tenHienThiDs(coMat.map((r) => r.hoc_sinh?.ho_ten)) // 2 HS trùng tên rút gọn → bung đủ (Thùy 07-06)
   const dong = !!buoi.btvn_dong_at
@@ -1889,6 +1891,9 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
       const { dapAn: hinhDapAn } = await loadHinhForBuoiPhase(buoiId, 'btvn')
       if (hinhDapAn.length) await syncHinhProblems(buoiId, 'btvn', hinhDapAn, !!buoi.btvn_dong_at)
       setMissing(!btvnId && !hinhDapAn.length)
+      // BTVN ONLINE → lưới + trạng thái nộp (Thùy 07/09). Sau sync để ô đã có; BTVN đã đóng thì RPC tự bỏ qua.
+      // Lỗi ở đây KHÔNG làm hỏng tab (lưới chấm tay vẫn dùng được) — chỉ ghi kết quả để hiện dòng báo.
+      if (btvnId) { try { setOnl(await dongBoBTVNOnline(buoiId)) } catch (e: any) { setOnl({ khongCoTest: true }); console.error('dongBoBTVNOnline', e) } }
       await reloadP(); await reloadKq()
     } catch { setMissing(true) } finally { setLoading(false) }
   })() }, [buoiId]) // eslint-disable-line
@@ -1912,6 +1917,12 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
   async function setKQField(hsId: string, patch: Partial<BtvnKQ>) {
     setKq((m) => { const base = m[hsId] ?? { trang_thai_nop: null, thai_do: null }; return { ...m, [hsId]: { ...base, ...patch } } })
     try { await setBtvnKetQua(buoiId, hsId, patch) } catch (e: any) { alert(e.message ?? String(e)); reloadKq() }
+  }
+  async function layOnline() {
+    if (onlBusy) return
+    setOnlBusy(true)
+    try { setOnl(await dongBoBTVNOnline(buoiId)); await reloadP(); await reloadKq() }
+    catch (e: any) { alert(e?.message ?? String(e)) } finally { setOnlBusy(false) }
   }
   async function dong_() {
     if (closing) return
@@ -1939,6 +1950,22 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
           <button onClick={dong_} disabled={closing} className="ml-auto rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-indigo-500 disabled:opacity-40">{closing ? 'Đang đóng…' : 'Đóng BTVN'}</button>
         )}
       </div>
+      {/* BTVN ONLINE → lưới (Thùy 07/09). Chỉ hiện khi buổi CÓ BTVN online và chưa đóng; nói rõ đã đổ gì / giữ gì. */}
+      {onl && !onl.khongCoTest && !dong && (
+        <div className="mb-3 flex flex-wrap items-center gap-2 rounded-lg border border-sky-200 bg-sky-50 px-3 py-2 text-[12px] text-sky-800">
+          <span>📱 BTVN online: <b>{onl.hsLam ?? 0}</b> HS đã làm ({onl.hsNop ?? 0} làm hết)
+            {(onl.moi ?? 0) + (onl.capNhat ?? 0) > 0 && <> · đã đổ <b>{(onl.moi ?? 0) + (onl.capNhat ?? 0)}</b> ô vào lưới</>}
+            {!!onl.nopMoi && <> · tự điền trạng thái nộp cho <b>{onl.nopMoi}</b> HS làm hết</>}
+            {!!onl.giuTay && <> · <b>{onl.giuTay}</b> ô giữ theo chấm tay</>}
+            {!!onl.khongKhopO && <> · <b className="text-rose-700">{onl.khongKhopO}</b> câu không khớp ô (BTVN của buổi khác đề online?)</>}
+            {!!onl.khongTrongBuoi && <> · <b className="text-rose-700">{onl.khongTrongBuoi}</b> phép đo của HS <b>không có trong buổi</b></>}
+            . Bài làm dở vẫn đổ điểm, trạng thái nộp để TA quyết. Ô/trạng thái TA đã tick không bị đè.
+          </span>
+          <button onClick={layOnline} disabled={onlBusy} className="ml-auto rounded-md border border-sky-300 bg-white px-2.5 py-1 text-[12px] font-medium text-sky-700 hover:bg-sky-100 disabled:opacity-40">
+            {onlBusy ? 'Đang lấy…' : '↻ Lấy lại kết quả online'}
+          </button>
+        </div>
+      )}
       <div className="min-h-0 flex-1 overflow-auto rounded-xl border border-slate-200">
         <table className="border-collapse text-sm">
           <thead>

@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-196 bảng · 11 view · 0 enum · 39 trigger · 261 function
+196 bảng · 11 view · 0 enum · 39 trigger · 262 function
 
 ## _app_secrets
 
@@ -4080,6 +4080,7 @@ UNION ALL
 - `fn_btvn_nop_tao(p_hoc_sinh_id uuid, p_buoi_hoc_id uuid, p_paths text[])` → jsonb
 - `fn_btvn_nop_tao_auto(p_hoc_sinh_id uuid, p_paths text[])` → jsonb
 - `fn_btvn_nop_touch()` → trigger
+- `fn_btvn_online_dong_bo(p_buoi uuid)` → jsonb
 - `fn_btvn_tra_bai(p_hoc_sinh_id uuid, p_buoi_hoc_id uuid)` → void
 - `fn_btvn_tra_bai_buoi(p_buoi_hoc_id uuid)` → integer
 - `fn_btvn_xac_nhan_buoi(p_hoc_sinh_id uuid, p_buoi_hoc_id uuid)` → void

@@ -677,6 +677,16 @@ export async function dongBoETOnline(buoiId: string): Promise<ETOnlineDongBo> {
   if (error) throw error
   return (data ?? {}) as ETOnlineDongBo
 }
+// BTVN ONLINE → lưới BTVN của buổi (Thùy 07/09: "BTVN HS làm trên app chưa tự nhảy vào phần BTVN trong
+// buổi học"). fn_btvn_online_dong_bo (mig 202609071643): như ET nhưng lấy CẢ bài dở (BTVN chấm ngay từng
+// câu) + tự điền trạng thái nộp (đúng hạn/muộn theo deadline) cho HS đã làm HẾT và TA chưa tick.
+// Không đè ô/trạng thái TA đã tick · không đụng BTVN đã đóng. hsLam = HS có ≥1 phép đo · hsNop = làm hết.
+export type BTVNOnlineDongBo = ETOnlineDongBo & { hsLam?: number; nopMoi?: number }
+export async function dongBoBTVNOnline(buoiId: string): Promise<BTVNOnlineDongBo> {
+  const { data, error } = await supabase.rpc('fn_btvn_online_dong_bo', { p_buoi: buoiId })
+  if (error) throw error
+  return (data ?? {}) as BTVNOnlineDongBo
+}
 
 // Bỏ chấm 1 ô (HS × bài): xoá dòng grade (anti-NULL: chưa đo = không có dòng). Dùng khi click lại mức đang chọn.
 export async function deleteGrade(problemId: string, hocSinhId: string): Promise<void> {
