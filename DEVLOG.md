@@ -9043,3 +9043,23 @@ không đổi bảng/view).
 - tsc + `build:ta` + `build:ops` sạch (precache về lại 159, đúng như trước khi CEO copy nhầm 2 thư mục).
   Browser-test thật (Admin): Hôm nay/Report/Prep/Test/Tủ quà/Của tôi (gốc + Xếp hạng + Tiến trình) — ảnh
   đúng ảnh gốc, dữ liệu thật, không lỗi.
+
+## 2026-09-07 (tiếp, ~08:30–09:20) — Vercel lại chặn build, LẦN 2 TRONG NGÀY — không phải lỗi ignoreCommand
+- **Hiện tượng:** sau `ignoreCommand` (mig sáng nay, xem mục "Vercel Ignored Build Step"), project TA
+  (`bkdemy-erp-v2-ta-v2`) NGỪNG nhận deployment từ commit `9111e8a` (build cuối cùng thấy được) — 2 commit
+  TA thật (`428d999` header to gấp đôi, `6105a1e` đổi avatar) + 2 lần commit rỗng ép trigger (`5db0b75`,
+  `b97e43d`) đều **không hề xuất hiện trong Deployments**, kể cả trạng thái Canceled/Error — hoàn toàn
+  im lặng, không phải "Ready" cũng không phải lỗi hiện ra. Ban đầu tưởng lỗi `ignoreCommand` nhận sai
+  project hoặc bug diff shallow-clone (2 commit TA chỉ đụng đúng file `src/screens/ta/`, `src/AppTa.tsx`
+  — thuộc RIENG['ta'], đáng lẽ phải build) → sau đó xác nhận **app OPS cũng ngừng deploy được** cùng lúc
+  ⇒ loại bỏ giả thuyết lỗi riêng project/script, đúng là **lại chạm trần 100 build/ngày Hobby TOÀN TÀI
+  KHOẢN, lần 2 trong ngày**, y hệt vụ sáng nay nhưng tái diễn.
+- **Vì sao `ignoreCommand` không đủ:** nó chỉ giảm SỐ PROJECT build MỖI PUSH (8→1 hoặc vài project thay
+  vì cả 8), KHÔNG giảm SỐ LƯỢT PUSH. Hôm nay nhiều phiên Claude Code chạy song song trên cùng repo, mỗi
+  phiên tự push sau mỗi sửa nhỏ (kể cả tôi — 2 lần push riêng cho "to header" và "avatar", đúng lúc vừa
+  ghi bài học "gom commit" vào buổi sáng) ⇒ tổng lượt push cả ngày vẫn đủ đụng trần dù mỗi push nhẹ hơn.
+  Không có cách "sửa code" nào chặn được cái này — chỉ có NGỪNG PUSH một lúc (đợi trần hạ, có vẻ theo cửa
+  sổ trượt chứ không phải chờ đủ 24h cứng — lần 1 tự thông sau ~7-8h) hoặc NÂNG GÓI Vercel (bỏ trần 100/ngày).
+- **Còn treo:** không rõ khi nào trần tự hạ lại (đoán cửa sổ trượt theo giờ, không phải theo ngày lịch —
+  cần quan sát thêm). CEO cân nhắc nâng gói Vercel nếu hôm nay còn cần deploy nhiều, hoặc tạm ngừng push
+  các phiên đang chạy song song cho tới khi 1 project build được trở lại (dấu hiệu trần đã hạ).
