@@ -1,10 +1,7 @@
 {
   "ignoreCommand": "node scripts/vercel-ignore.mjs",
   "git": {
-    "deploymentEnabled": {
-      "claude/teaching-assistant-app-jvdozw": false,
-      "claude/teacher-app-bk-cpzxbx": false
-    }
+    "deploymentEnabled": false
   },
   "crons": [
     {
