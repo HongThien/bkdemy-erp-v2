@@ -1,15 +1,12 @@
 // Data-layer THÀNH TÍCH (seam) — Level (Σ điểm sát hạch) · Xu (lương tháng) · catalog · điểm thi.
 // Level/Xu = SUY ĐỘNG từ event (diem_thi / gami_exp_ledger). UI chỉ gọi qua đây.
 import { supabase } from './supabase'
-import { EXP_NOTE_SOURCES } from './gami'
 import { LEVEL } from '../gami/config.js'
 import { seasonOf } from '../gami/season.js'
 
 const LIMIT = 10000
 const vnNow = () => new Date(Date.now() + 7 * 3600 * 1000) // giờ VN
 const vnTodayStr = () => { const v = vnNow(); return `${v.getUTCFullYear()}-${String(v.getUTCMonth() + 1).padStart(2, '0')}-${String(v.getUTCDate()).padStart(2, '0')}` }
-// Đầu tháng VN → instant UTC ISO (so created_at). Date.UTC -7h = VN-midnight.
-const monthStartUtcISO = () => { const v = vnNow(); return new Date(Date.UTC(v.getUTCFullYear(), v.getUTCMonth(), 1, -7, 0, 0)).toISOString() }
 
 export type Verdict = 'dat' | 'gan_dat' | 'khong_dat'
 export type KyThi = { id: string; ten: string; loai: string; he_so: number; dot: string | null; ngay: string | null; mon: string | null; khoi: string | null; mua: string | null; buoi_hoc_id: string | null; khung_co_ban?: number | null; khung_nang_cao?: number | null }
@@ -25,7 +22,6 @@ export function tinhDiemMT(coBan: number | null | undefined, nangCao: number | n
   return tong >= 10 ? 9.75 : Math.round(tong * 100) / 100
 }
 export type ThanhTichLoai = { key: string; ten: string; icon: string | null; nhom: string | null; kieu: string | null; per_mon: boolean; thu_tu: number }
-export type LuongBac = { min_exp: number; xu: number }
 
 // Điểm Level mỗi lần đo: đạt=hệ số · gần đạt=½ hệ số (hệ2→1, hệ1→0.5) · không đạt=0.
 export const verdictDiem = (v: Verdict, heSo: number) => (v === 'dat' ? heSo : v === 'gan_dat' ? heSo / 2 : 0)
@@ -38,27 +34,20 @@ export type LevelXu = { mua: string; level: number; levelMax: number; xu: number
 export async function getLevelXu(hocSinhId: string, mon: string): Promise<LevelXu> {
   const mua = seasonOf(vnTodayStr())
   const ym = vnTodayStr().slice(0, 7) // tháng VN hiện tại 'YYYY-MM' = tháng EXP thuộc về
-  const [dt, exp, expFloor, bac, viR] = await Promise.all([
+  const [dt, lxR, viR] = await Promise.all([
     supabase.from('diem_thi').select('verdict, ky_thi:ky_thi_id(he_so, mon, mua)').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
-    // ⚠ EXP THÁNG key theo `note`=ym, KHÔNG theo created_at: recompute có thể chạy ở tháng khác (reset đầu mùa
-    // recompute tháng cũ ĐÚNG NGÀY 1 tháng mới) → dòng note tháng trước có created_at tháng này sẽ lọt window
-    // created_at. Nguồn note-keyed (exp_et/exp_btvn/exp_btvn_thang + exp_thang legacy) lọc note===ym
-    // NGAY TRÊN SERVER — ledger chi tiết cả mùa 1 HS có thể chạm cap 1000 dòng PostgREST, 1 tháng thì luôn nhỏ.
-    supabase.from('gami_exp_ledger').select('amount, source, note, created_at').eq('hoc_sinh_id', hocSinhId).eq('mon', mon).in('source', EXP_NOTE_SOURCES).eq('note', ym).limit(LIMIT),
-    // attend_floor (bù, no note, sinh 1 lần) lọc created_at ≥ đầu tháng.
-    supabase.from('gami_exp_ledger').select('amount, created_at').eq('hoc_sinh_id', hocSinhId).eq('mon', mon).eq('source', 'attend_floor').gte('created_at', monthStartUtcISO()).limit(LIMIT),
-    supabase.from('luong_bac').select('min_exp, xu').order('min_exp', { ascending: true }).limit(LIMIT),
+    // EXP THÁNG (note-keyed theo `note`=ym + attend_floor theo cửa sổ tháng VN) và XU LŨY TIẾN theo khúc luong_bac:
+    // tính ở DB (fn_gami_exp_xu_thang, §2.0). moc_ke/xu_moc_ke = đầu khúc kế + xu khi chạm khúc đó (thanh tiến độ).
+    supabase.rpc('fn_gami_exp_xu_thang', { p_ym: ym, p_hoc_sinh_id: hocSinhId, p_mon: mon }),
     // Ví xu = số dư từ view chung qlht_v_so_du_xu (sổ của hệ quà — BK chỉ có 1 xu, Thùy 08-29)
     supabase.from('qlht_v_so_du_xu').select('so_du').eq('hoc_sinh_id', hocSinhId).maybeSingle(),
   ])
   let level = 0
   for (const r of (dt.data ?? []) as any[]) { const k = r.ky_thi; if (k && k.mon === mon && k.mua === mua) level += verdictPoint(r.verdict, k.he_so) }
-  const expThang = [...((exp.data ?? []) as any[]), ...((expFloor.data ?? []) as any[])].reduce((s, x) => s + Number(x.amount), 0)
-  const bacs = (bac.data ?? []) as LuongBac[]
-  let xu = 0, xuKe: number | null = null, expKeMoc: number | null = null
-  for (let i = 0; i < bacs.length; i++) {
-    if (expThang >= bacs[i].min_exp) { xu = bacs[i].xu; const nx = bacs[i + 1]; xuKe = nx?.xu ?? null; expKeMoc = nx?.min_exp ?? null }
-  }
+  if (lxR.error) throw lxR.error
+  const lx = ((lxR.data ?? []) as any[])[0]
+  const expThang = Number(lx?.exp ?? 0), xu = Number(lx?.xu ?? 0)
+  const xuKe: number | null = lx?.xu_moc_ke ?? null, expKeMoc: number | null = lx?.moc_ke ?? null
   const viXu = Number((viR.data as any)?.so_du ?? 0)
   return { mua, level, levelMax: LEVEL.MAX, xu, viXu, expThang, xuKe, expKeMoc }
 }

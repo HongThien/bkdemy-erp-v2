@@ -7873,3 +7873,25 @@ bản gõ "với mọi" Tab "x" → `\text{với mọi}x`. tsc sạch. Không l�
   template literal; file repo là CRLF. Sửa bằng script file + chuẩn hoá CRLF. tsc sạch (2 lỗi MathPopup/mathlive có sẵn,
   do node_modules thiếu package, không liên quan).
 - Chưa verify tay trên app (mở lại = ghi DB thật; cần Thùy bấm thử trên 1 buổi hủy nhầm thật hoặc buổi test).
+
+## 2026-09-03 (tiếp) — Xu tháng: quy EXP→xu LŨY TIẾN theo khúc (nhánh worktree-gamification)
+- CEO chốt: KHÔNG phải "đạt mốc nào lấy nguyên xu mốc đó" (xuForExp cũ, `src/gami/xu.js`) mà là **thuế lũy tiến /
+  marginal rate**: mỗi khúc 1000 EXP có tỉ lệ riêng do CEO nhập, EXP cắt theo khúc, mỗi khúc × tỉ lệ, cộng lại, **làm
+  tròn LÊN** 1 lần. VD khúc 0→9, 1000→10: 1500 EXP = 9 + 5 = 14 xu. CEO nói sẽ nhập đủ khúc nên khúc cuối không trần
+  (áp tỉ lệ khúc cuối cho phần vượt — an toàn hơn cắt về 0).
+- Nghĩa MỚI của `luong_bac`: dòng = khúc `[min_exp, min_exp dòng kế)`; `xu` = xu cho MỖI 1000 EXP trong khúc (comment
+  bảng/cột ghi vào DB). Không đổi cột — chỉ đổi nghĩa ⇒ **9 dòng đang có (1000→10 … 20000→110) mang nghĩa CŨ, CEO phải
+  nhập lại** sau khi áp migration; không tự chuyển đổi (không có phép quy đổi trung thực), không xoá dòng nào.
+- §2.0: công thức xuống DB — migration `202609031903_xu_luy_tien_theo_khuc_exp.sql`: `fn_xu_tu_exp(int)` (SQL stable,
+  lead() over min_exp) + `fn_gami_exp_xu_thang(p_ym, p_hoc_sinh_id?, p_mon?)` trả (hs, mon, exp, xu, moc_ke, xu_moc_ke)
+  — gộp luôn tổng EXP tháng (note-keyed + attend_floor cửa sổ tháng VN) vốn đang reduce ở client (`expThangPerHsMon`).
+  security invoker ⇒ RLS bảng gốc áp như cũ.
+- Client: `lib/xu.ts` bỏ `expThangPerHsMon` + import `xuForExp`, gọi RPC; `lib/thanhtich.ts` `getLevelXu` gọi RPC
+  (bỏ 2 query ledger + query luong_bac + vòng for tính mốc; `xuKe/expKeMoc` = `xu_moc_ke/moc_ke`); `ChotXuScreen`
+  BangMoc đổi nhãn "≥ X EXP → Y xu" thành "X – Y → Z xu/1000" + chú thích lũy tiến.
+- Verify: chạy SQL migration trong transaction ROLLBACK trên DB thật với bảng test (0→9, 1000→10, 2000→12):
+  null/−5/0→0 · 100→1 · 500→5 · 999→9 · 1000→9 · 1500→14 · 1999→19 · 2000→19 · 2500→25 · 7300→83.
+  `fn_gami_exp_xu_thang('2026-08')`: 337 dòng, Σ EXP 751 408 = đúng bằng query kiểu client cũ. tsc sạch.
+- **Chưa áp migration** (chờ CEO `npm run migrate` + `npm run schema`) · chưa verify tay trên app · `src/gami/xu.js`
+  không còn ai import — chờ gật xoá (Luật xoá) · `chotXu` vẫn tính-ở-client-rồi-insert (giờ số lấy từ RPC) — chuyển
+  thành RPC transactional là việc riêng.
