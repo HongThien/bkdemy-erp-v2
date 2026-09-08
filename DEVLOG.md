@@ -9303,6 +9303,55 @@ mở bảng dựng với phần đã điền (`pyta_a,b` → `a^2 = b^2 + ▢^2`
 đặt thêm gõ tắt nào — mọi cụm có ô trống tự có tham số. Hint dưới bảng cụm ghi thêm 2 ví dụ.
 **Verify dev 5180 (keydown Space tổng hợp lên RichMath):** `goc_ABC` → `\widehat{ABC}` ✓ · `ss_AB,CD` → `AB \parallel CD` ✓ ·
 `goc_A_1` → `\widehat{A}_1` ✓ · `pyta_a,b` → bảng dựng `a^2 = b^2 + \placeholder{}^2` ✓ · tsc sạch.
+
+### 09/09 (rạng sáng) — Thùy chốt 4 điểm tham số · GỘP công thức lúc lưu · BỘ CỤM CHUNG lên DB (mig 202609081013)
+**Thùy (Sparring → chốt):** "gõ tắt hay hơn phím tắt" · lo "chuyển sang LaTeX bị vụn: góc ABC = 50° là 2 công thức riêng, có
+cách gộp không, hệ tự ghép?" · 4 điểm em nêu: (1) "nhiều cái có thể có tham số mà" (2) "dấu phân cách nên là `_`" → sau
+đổi: "`_` phải 2 phím, `.` 1 phím, goc.abc thì `.` làm sao nhầm được" (3) "gõ nhiều là nhớ, phức tạp thì dùng cả cụm — t
+nói về thứ đơn giản gõ đi gõ lại mà biến ảo cao, vd góc có hàng trăm tên" (4) "dùng BỘ CHUNG của trung tâm trước, ưu tiên
+ngôn ngữ chung" · thêm: "có chỗ setup công thức tham số để t điều chỉnh không, nhiều lắm — vd 50_do là 50 độ".
+**R7 (đứng trên vai ai):** cụm có ô trống + gõ tắt = macro có tham số của TeX (`\newcommand{\goc}[1]{\widehat{#1}}`) không dấu
+`\`, người dùng tự định nghĩa; gõ `goc.ABC` rồi Space "nở" ra = linear format của Word (UnicodeMath, Sargent). Ranh giới giữ:
+từ khoá là tiếng Việt không dấu do người đặt, KHÔNG BAO GIỜ là tên lệnh LaTeX.
+**A — Tham số (MathDoc.resolveGoTat/useCumVoi):**
+- Phân cách `.` (giữ `_` cho ai quen; có `.` thì tách theo `.`); `_` BÊN TRONG tham số = chỉ số dưới (goc.A_1 → \widehat{A}_1).
+- Cụm CÓ `#?`: điền lần lượt; thừa → gộp vào ô cuối; thiếu → bảng dựng với phần đã điền (pyta.a.b → a²=b²+▢²).
+- Cụm KHÔNG `#?` nhưng có TÊN ĐIỂM (đoạn bổ đề / công thức cố định): tham số = tên điểm mới thay theo thứ tự timDiem
+  (hbh.MNPQ → "Vì MNPQ là hình bình hành nên MN ∥ PQ…"; gg.MNP.DEF ≡ gg.MNPDEF), bộ điểm nhớ cho bài. Thay bảng đổi điểm
+  ở đường gõ tắt.
+- **Chỗ setup = chính form Cụm:** gõ tắt được viết có `#` = vị trí tham số — `#.do` (50.do → 50°), `goc.#`, `ss.#.#`; khớp
+  bằng regex (chữ không phân biệt hoa/thường, mỗi `#` bắt ≥1 ký tự), ưu tiên trước mẫu ngầm `<gõ tắt>.<tham số>`. Placeholder
+  + tooltip ô Gõ tắt trong CumModal ghi luật; hint dưới bảng cụm đổi ví dụ sang `.`.
+- **Bug sẵn có bắt được khi test:** cụm tạo bằng bảng dựng lưu ô trống thành `{}` (readClean/stripPlaceholders) chứ KHÔNG
+  phải `#?` ⇒ `hasBlank` false ⇒ mọi cụm-có-ô-trống tạo qua UI từ 05/09 tới nay KHÔNG nhận tham số và chèn ra `{}` rỗng
+  (chỉ SEED viết tay có `#?`). Vá: `CumModal.save` chuẩn hoá `{}` → `#?` cho cụm công thức.
+**B — Gộp công thức lúc LƯU (`doc.ts gopCongThuc`):** 2 công thức inline mà giữa chỉ có `= + − < > ≤ ≥ ≠ · × : / ° %`, chữ
+số, khoảng trắng → 1 công thức (Unicode giữa dịch sang LaTeX: ≤→\le, °→^\circ…); có chữ/dấu phẩy ở giữa → câu văn, giữ.
+Áp ở `SoanWorkspace.save` + `getValue()` của handle (ChuoiSoanModal), KHÔNG áp lúc gõ (con trỏ không nhảy). `$$…$$` không đụng.
+Trả lời Thùy "có vấn đề gì không": không hỏng (AI/ET đọc được cả 2), nhưng xấu 3 chỗ — khoảng cách quanh `=`, GÃY DÒNG giữa
+2 vế khi in, sửa phải click 2 lần.
+**C — Bộ cụm CHUNG ở DB (mig `202609081013_soan_cum_chung`, đã áp + `npm run schema`):** `soan_thu_muc` · `soan_cum`
+(unique `lower(go_tat)` where xoa_at is null — gõ tắt là ngôn ngữ chung, 1 gõ tắt = 1 cụm) · `soan_tab_chung` · `soan_cum_lich_su`
+(trigger after insert/update/delete ghi to_jsonb old/new + `boi` = tao_boi/sua_boi do app điền = nhan_su.id của store.me) ·
+`fn_soan_touch` updated_at · RLS `la_thanh_vien()` cho mọi bảng · xoá MỀM `xoa_at`. `src/soan/cumDb.ts`: tải 3 bảng 1 lượt
+(limit 500/5000/20), `ghi()` phân insert (điền tao_boi) / update (KHÔNG đè tao_boi) theo Set id đã tải, xoá mềm, tab chung
+delete+insert, `nhapTuMay()` đưa cụm+thư mục localStorage lên bộ chung (thư mục khớp tên/nhánh/khối thì dùng lại; cụm trùng
+gõ tắt hoặc nội dung → bỏ qua; tab chung chỉ nhập khi DB chưa có). `SoanWorkspace`: state khởi rỗng → useEffect tải DB →
+`nguon` 'db' | 'may' (lỗi/không đăng nhập → rơi về localStorage như cũ, nhãn vàng ở đáy sidebar) · `persistCums/persistTm`
+GIỮ call site "thay cả danh sách", tự tính CHÊNH LỆCH (dòng đổi → luuCums, dòng mất → xoaCums) · nút "⬆ Đưa cụm trên máy này
+lên bộ chung" (chỉ khi nguon=db và máy có cụm) → báo số nhập/bỏ qua. `AppSoan`: gate đăng nhập nhân sự (khuôn AppGiaiBai) +
+`useStore.setState({me})` để cumDb có tao_boi.
+- ⚠ `npm run migrate` áp LUÔN cả `202609080246_khao_sat_hs_ban_cua_con.sql` (của phiên khác, đã commit 299b044 nhưng
+  chưa áp) vì em không dùng `--only`. File đó chỉ THÊM cột/bảng/hàm, không phá gì. Ghi để phiên kia biết đã áp.
+**Verify:** pg transaction ROLLBACK: insert thư mục+cụm ✓ · go_tat trùng (GOC vs goc) bị chặn unique ✓ · lịch sử 3 dòng
+tạo/sửa/xoá ✓ · xoá mềm → hết trong "còn sống" ✓ (updated_at>created_at đo false chỉ vì cùng now() trong 1 transaction).
+UI dev 5180 (đăng nhập nhanh DEV "Thùy", cửa sổ bị che → rAF đồng bộ + sự kiện tổng hợp): footer "● Bộ chung của trung tâm",
+0 cụm (DB mới) ✓ · ＋ Cụm mới: tên "TEST độ", gõ tắt `#.do`, ô trống+° → Lưu → DB có dòng `noi_dung='#?^\circ'`, tao_boi ✓,
+1 dòng lịch sử ✓ · gõ `50.do` Space → `$50^\circ$` ✓ · xoá chip → dòng có xoa_at, hết khỏi danh sách ✓ · tsc sạch. Dòng test
+"TEST độ" còn nằm XOÁ MỀM trong `soan_cum` (+ 2 dòng lịch sử) — theo Luật xoá em KHÔNG tự xoá cứng, chờ Thùy gật.
+**Chưa làm / bàn tiếp:** cụm cá nhân đè lên bộ chung (Thùy: chung trước) · thư mục trỏ `chuong` bản đồ kiến thức (ghi ở
+cum.ts từ 05/09) · phím tắt (`phim`) vẫn theo cụm chung → 2 người có thể đặt trùng tổ hợp cho cụm khác nhau, CumModal chỉ
+chặn trong danh sách đang tải.
 ## 2026-09-08 — PIPELINE thiết kế ChatGPT → Claude (design/HANDOFF-PIPELINE.md + scripts/design-check.mjs)
 - **Bối cảnh:** CEO thiết kế màn chính app HS cấp 2/3 trên ChatGPT, bảo nó đóng gói handoff cho Claude dựng
   (`public/bk-ui/STUDENT_HOME_CLAUDE_HANDOFF.zip` v1 07/09 · `STUDENT_HOME_V2_CLAUDE_HANDOFF_MALE_FEMALE` v2 08/09).

@@ -9,7 +9,7 @@ import { forwardRef, useImperativeHandle, useRef, useState } from 'react'
 import { RichMath, type RichMathHandle } from './RichMath'
 import { MathBuilder } from './MathBuilder'
 import { DoiDiemModal } from './DoiDiemModal'
-import { timDiem } from './diem'
+import { doiDiem, timDiem } from './diem'
 import { findCumByCombo, findCumByGoTat, hasBlank, insertRawOf, needsFill, type Cum } from './cum'
 import { fixAccentScript } from '../lib/math/latex-fix'
 
@@ -46,25 +46,55 @@ export const MathDoc = forwardRef<MathDocHandle, Props>(function MathDoc({ initi
     else ed.current?.insertRaw(raw)
   }
   // GÕ TẮT CÓ THAM SỐ (Thùy 08/09: "gocabc cho góc ABC, nhưng góc MIN thì không thể đặt phím tắt cho từng góc — hệ
-  // phải hiểu `goc` là ký hiệu góc, phần sau là tên góc: goc_ABC"). Luật: từ = <gõ tắt cụm>_<tham số>; cụm phải có ô
-  // trống `#?`; tham số tách bằng "," điền lần lượt vào các ô (ss_AB,CD → AB ∥ CD; goc_A_1 → chỉ tách ở "_" ĐẦU nên
-  // tham số = A_1). Điền đủ → chèn thẳng; còn ô trống (thiếu tham số) → mở bảng dựng với phần đã điền để gõ nốt.
-  // Gõ tắt NGUYÊN (goc) vẫn như cũ → bảng dựng với ô trống.
-  const useCumVoi = (c: Cum, args: string[]) => {
-    let k = 0
-    const filled = c.noiDung.replace(/#\?/g, () => args[k++]?.trim() || '#?')
-    if (hasBlank(filled)) { setModal({ kind: 'new', prefill: filled }); return }
-    ed.current?.insertRaw(`$${fixAccentScript(filled)}$`)
+  // phải hiểu `goc` là ký hiệu góc, phần sau là tên góc: goc_ABC"; chốt thêm: dấu phân cách = `_` "chuẩn nhất", và
+  // "nhiều cái có thể có tham số" → áp cho MỌI cụm). Từ gõ = <gõ tắt cụm>_<tham số 1>_<tham số 2>…
+  //   · Cụm CÓ ô trống `#?` (công thức hay đoạn): tham số điền lần lượt vào từng ô — ss_AB_CD → AB ∥ CD. THỪA tham số →
+  //     phần thừa gộp vào ô CUỐI bằng `_` (goc_A_1 → \widehat{A_1} → lưu \widehat{A}_1: chỉ số dưới gõ tự nhiên). THIẾU →
+  //     mở bảng dựng với phần đã điền để gõ nốt.
+  //   · Cụm KHÔNG ô trống nhưng CÓ TÊN ĐIỂM (đoạn bổ đề, công thức cố định): tham số = tên điểm MỚI — ghép mọi phần lại,
+  //     thay từng chữ theo thứ tự điểm xuất hiện (timDiem): hbh_MNPQ → "Vì MNPQ là hình bình hành nên MN ∥ PQ và MN = PQ";
+  //     gg_MNP_DEF ≡ gg_MNPDEF. Thiếu chữ → điểm còn lại giữ nguyên. Bộ điểm được nhớ cho bài như bảng đổi điểm.
+  //   · Gõ tắt NGUYÊN (goc / hbh) → như cũ.
+  const useCumVoi = (c: Cum, args: string[], sep = '_') => {
+    if (hasBlank(c.noiDung)) {
+      const n = (c.noiDung.match(/#\?/g) ?? []).length
+      const parts = args.length > n ? [...args.slice(0, n - 1), args.slice(n - 1).join(sep)] : args
+      let k = 0
+      const filled = c.noiDung.replace(/#\?/g, () => parts[k++]?.trim() || '#?')
+      if (hasBlank(filled)) { setModal({ kind: 'new', prefill: filled }); return }
+      ed.current?.insertRaw(c.loai === 'doan' ? filled : `$${fixAccentScript(filled)}$`)
+      return
+    }
+    const raw = insertRawOf(c)
+    const diem = timDiem(raw)
+    const chu = args.join('').replace(/[^A-Za-z]/g, '').toUpperCase()
+    if (!diem.length || !chu) { useCum(c); return }
+    const bo: DiemMap = Object.fromEntries(diem.map((d, i) => [d, chu[i] ?? d]))
+    setMap({ ...map, ...bo })
+    ed.current?.insertRaw(doiDiem(raw, bo))
   }
+  // Thùy 08/09 (tiếp): "_ phải bấm 2 phím, dấu . chỉ 1 phím — goc.abc thì dấu . làm sao nhầm được" → phân cách = `.`
+  // (giữ `_` cho ai quen; `_` BÊN TRONG tham số = chỉ số dưới: goc.A_1). Và "có chỗ setup công thức tham số không, ví dụ
+  // 50_do là 50 độ" → chỗ setup = chính form Cụm: gõ tắt được viết có `#` đánh dấu VỊ TRÍ tham số: `#.do` (50.do → 50°),
+  // `goc.#`, `ss.#.#`. Gõ tắt KHÔNG có `#` thì ngầm hiểu = <gõ tắt>.<tham số>… như trước.
   const resolveGoTat = (w: string): (() => void) | null => {
     const c = findCumByGoTat(cumsRef.current, w)
     if (c) return () => useCum(c)
-    const i = w.indexOf('_')
-    if (i <= 0) return null
-    const base = findCumByGoTat(cumsRef.current, w.slice(0, i))
-    if (!base || base.loai !== 'cong_thuc' || !hasBlank(base.noiDung)) return null
-    const args = w.slice(i + 1).split(',')
-    return () => useCumVoi(base, args)
+    // 1) Mẫu tường minh có `#`: khớp phần chữ (không phân biệt hoa/thường), mỗi `#` bắt 1 tham số (≥1 ký tự).
+    for (const m of cumsRef.current) {
+      const gt = m.goTat?.trim()
+      if (!gt || !gt.includes('#')) continue
+      const re = new RegExp('^' + gt.split('#').map((s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('(.+?)') + '$', 'i')
+      const hit = re.exec(w)
+      if (hit) return () => useCumVoi(m, hit.slice(1))
+    }
+    // 2) Mẫu ngầm: <gõ tắt>.<tham số>.<tham số>… (có `.` thì tách theo `.`, không thì theo `_`).
+    const sep = w.includes('.') ? '.' : '_'
+    const parts = w.split(sep)
+    if (parts.length < 2 || !parts[0]) return null
+    const base = findCumByGoTat(cumsRef.current, parts[0])
+    if (!base) return null
+    return () => useCumVoi(base, parts.slice(1), sep)
   }
   // Nút trong bảng Sửa công thức: chỉ hiện khi công thức có tên điểm. Đổi xong thay đúng khối đó, nhớ bộ điểm cho bài.
   const nutDoiDiem = (el: HTMLElement, latex: string) => {

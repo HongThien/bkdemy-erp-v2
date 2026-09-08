@@ -58,9 +58,12 @@ export function CumModal({ initial, prefill, cums, thuMucs, tabTenChung, onSave,
     if (dupGt) return `Gõ tắt «${gt}» đã dùng cho «${dupGt.ten}».`
     return null
   }
-  const save = (noiDung: string) => {
+  // Ô trống trong bảng dựng: readClean lưu \placeholder{} thành `{}` (nhóm rỗng) — với CỤM thì `{}` chính là ô trống
+  // `#?` (để gõ tắt có tham số điền vào, và chèn cụm mở bảng dựng chờ điền). Chuẩn hoá ở đây 1 lần (08/09).
+  const save = (noiDungRaw: string) => {
     const s = st.current
     const tm = thuMucs.find((t) => t.id === s.thuMucId)
+    const noiDung = loai === 'cong_thuc' ? noiDungRaw.replace(/\{\}/g, '#?') : noiDungRaw
     onSave({ ten: s.ten.trim(), loai, noiDung, goTat: s.goTat.trim() || undefined, phim: s.phim || undefined, mon: 'Toán', nhanh: tm?.nhanh, thuMucId: tm?.id, tab: s.tab })
   }
 
@@ -78,7 +81,8 @@ export function CumModal({ initial, prefill, cums, thuMucs, tabTenChung, onSave,
           <input autoFocus value={ten} onChange={(e) => setTen(e.target.value)} placeholder="vd: Tam giác bằng nhau" className={inp} />
         </label>
         <label className={lbl}>Gõ tắt
-          <input value={goTat} onChange={(e) => setGoTat(e.target.value)} placeholder="vd: tgbn" className={`${inp} font-mono`} title="Gõ chữ này rồi Space trong bài → thay bằng cụm" />
+          <input value={goTat} onChange={(e) => setGoTat(e.target.value)} placeholder="vd: goc · goc.# · #.do" className={`${inp} font-mono`}
+            title={'Gõ chữ này rồi Space trong bài → thay bằng cụm.\nCó THAM SỐ: viết # ở chỗ tham số — "goc.#" (goc.ABC → góc ABC), "#.do" (50.do → 50°), "ss.#.#" (ss.AB.CD). Tham số điền vào các ô trống của cụm theo thứ tự; cụm không có ô trống thì tham số = tên điểm mới.\nKhông viết # thì mặc định hiểu là <gõ tắt>.<tham số>.'} />
         </label>
         <div className={lbl}>Phím tắt
           <div tabIndex={0} role="button" onFocus={() => setPhimFocus(true)} onBlur={() => setPhimFocus(false)} onKeyDown={onPhimKey}

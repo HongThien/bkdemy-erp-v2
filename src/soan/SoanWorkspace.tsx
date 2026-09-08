@@ -8,14 +8,19 @@
 //           soạn quyết (ô "Hiện ở tab", hoặc KÉO cụm thả vào tab / thả lên cụm khác để sắp thứ tự).
 //   DƯỚI  = vùng soạn WYSIWYG: chọn cụm → hiện ngay trong bài; cụm có tên điểm → hỏi đổi tên (bộ điểm nhớ theo bài).
 //           KHÔNG có LaTeX ở bất kỳ đâu. Lưu → máy tự dịch chuỗi kho ($…$).
-// ⚠ BẢN THỬ: cụm + thư mục ở localStorage (theo origin — ERP và soan.html KHÔNG chung bộ cụm cho tới khi lên DB).
+// Cụm + thư mục + tên tab = BỘ CHUNG của trung tâm ở DB (cumDb.ts, mig 202609081013 — Thùy 08/09: "ưu tiên ngôn ngữ
+// chung trước"). Mọi người đăng nhập thấy cùng 1 bộ, ai sửa cũng được (vết do trigger DB ghi). Không đăng nhập/không tải
+// được → tạm dùng bộ trên máy (localStorage) như bản thử cũ, có nhãn báo rõ; và có nút đưa bộ trên máy lên bộ chung.
+// Lưu bài → gopCongThuc (doc.ts): công thức liền kề chỉ cách nhau toán tử/số → gộp 1 công thức.
 import { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState, type ReactNode } from 'react'
 import { MathText } from '../screens/kho/ui'
 import { MathDoc, type DiemMap, type MathDocHandle } from './MathDoc'
 import { coDoi } from './diem'
+import { gopCongThuc } from './doc'
 import { CumModal } from './CumModal'
 import { ThuMucModal } from './ThuMucModal'
 import { NHANH_TEN, TABS, loadCums, loadTabChung, loadThuMucs, makeCum, makeThuMuc, previewRaw, saveCums, saveTabChung, saveThuMucs, sortCum, tabOf, type Cum, type ThuMuc } from './cum'
+import { coCumLocal, luuCums, luuTabChung, luuThuMucs, nhapTuMay, taiBoChung, xoaCums, xoaThuMucs } from './cumDb'
 
 type Modal = { kind: 'cum'; cum?: Cum; prefill?: Partial<Cum> } | { kind: 'tm'; tm?: ThuMuc }
 type Chon = 'all' | 'chung' | string   // string = thuMucId
@@ -37,10 +42,13 @@ export type SoanWorkspaceHandle = { getValue: () => string }
 export const SoanWorkspace = forwardRef<SoanWorkspaceHandle, SoanWorkspaceProps>(function SoanWorkspace(
   { initial, onSave, onClose, title, deBai }, fwdRef,
 ) {
-  const [thuMucs, setThuMucs] = useState<ThuMuc[]>(() => loadThuMucs())
-  const [cums, setCums] = useState<Cum[]>(() => loadCums(loadThuMucs()))
-  const [tabChung, setTabChung] = useState<Record<string, string>>(() => loadTabChung())
-  const [chon, setChon] = useState<Chon>(() => thuMucs[0]?.id ?? 'all')
+  const [thuMucs, setThuMucs] = useState<ThuMuc[]>([])
+  const [cums, setCums] = useState<Cum[]>([])
+  const [tabChung, setTabChung] = useState<Record<string, string>>({})
+  const [nguon, setNguon] = useState<'dang_tai' | 'db' | 'may'>('dang_tai')   // bộ cụm đang dùng: DB chung hay máy này
+  const [loiDb, setLoiDb] = useState<string | null>(null)
+  const [nhap, setNhap] = useState<string | null>(null)                          // kết quả "Đưa cụm lên bộ chung"
+  const [chon, setChon] = useState<Chon>('all')
   const [activeTab, setActiveTab] = useState<Record<string, number>>({})     // tab đang mở của từng thư mục
   const [renaming, setRenaming] = useState<{ n: number; text: string } | null>(null)
   const [dragId, setDragId] = useState<string | null>(null)                   // cụm đang kéo
@@ -51,12 +59,54 @@ export const SoanWorkspace = forwardRef<SoanWorkspaceHandle, SoanWorkspaceProps>
   const [hasSel, setHasSel] = useState(false)
   const [diemMap, setDiemMap] = useState<DiemMap>({})   // bộ điểm của bài: A→M, B→N… nhớ cho mọi cụm chèn sau
   const doc = useRef<MathDocHandle>(null)
-  useImperativeHandle(fwdRef, () => ({ getValue: () => doc.current?.getValue() ?? '' }))
+  useImperativeHandle(fwdRef, () => ({ getValue: () => gopCongThuc(doc.current?.getValue() ?? '') }))
 
-  const persistCums = (l: Cum[]) => { setCums(l); saveCums(l) }
-  const persistTm = (l: ThuMuc[]) => { setThuMucs(l); saveThuMucs(l) }
+  // Nạp bộ chung 1 lần khi mở. Lỗi (chưa đăng nhập, mất mạng, chưa migrate) → bộ trên máy + nhãn cảnh báo.
+  useEffect(() => {
+    let alive = true
+    taiBoChung().then((d) => {
+      if (!alive) return
+      setThuMucs(d.thuMucs); setCums(d.cums); setTabChung(d.tabChung); setNguon('db'); setChon(d.thuMucs[0]?.id ?? 'all')
+    }).catch((e: unknown) => {
+      if (!alive) return
+      const tm = loadThuMucs()
+      setThuMucs(tm); setCums(loadCums(tm)); setTabChung(loadTabChung()); setNguon('may'); setChon(tm[0]?.id ?? 'all')
+      setLoiDb(e instanceof Error ? e.message : String(e))
+    })
+    return () => { alive = false }
+  }, [])
+  const baoLoi = (e: unknown) => setLoiDb(e instanceof Error ? e.message : String(e))
+  // Ghi DB theo CHÊNH LỆCH giữa danh sách cũ/mới (call site giữ nguyên kiểu "thay cả danh sách"): dòng đổi → update/insert,
+  // dòng biến mất → xoá mềm. Nguồn máy → localStorage như cũ.
+  const persistCums = (l: Cum[]) => {
+    const truoc = cums; setCums(l)
+    if (nguon !== 'db') { saveCums(l); return }
+    const cu = new Map(truoc.map((c) => [c.id, JSON.stringify(c)]))
+    const doi = l.filter((c) => cu.get(c.id) !== JSON.stringify(c))
+    const mat = truoc.filter((c) => !l.some((x) => x.id === c.id)).map((c) => c.id)
+    Promise.all([doi.length ? luuCums(doi) : null, mat.length ? xoaCums(mat) : null]).catch(baoLoi)
+  }
+  const persistTm = (l: ThuMuc[]) => {
+    const truoc = thuMucs; setThuMucs(l)
+    if (nguon !== 'db') { saveThuMucs(l); return }
+    const cu = new Map(truoc.map((t) => [t.id, JSON.stringify(t)]))
+    const doi = l.filter((t) => cu.get(t.id) !== JSON.stringify(t))
+    const mat = truoc.filter((t) => !l.some((x) => x.id === t.id)).map((t) => t.id)
+    Promise.all([doi.length ? luuThuMucs(doi) : null, mat.length ? xoaThuMucs(mat) : null]).catch(baoLoi)
+  }
+  const persistTabChung = (m: Record<string, string>) => { setTabChung(m); if (nguon === 'db') luuTabChung(m).catch(baoLoi); else saveTabChung(m) }
+  const duaLenBoChung = async () => {
+    if (nguon !== 'db') return
+    if (!confirm('Đưa toàn bộ cụm + thư mục đang lưu trên máy này lên bộ chung của trung tâm? (Cụm trùng gõ tắt/nội dung sẽ bỏ qua.)')) return
+    try {
+      const kq = await nhapTuMay({ thuMucs, cums, tabChung })
+      const d = await taiBoChung()
+      setThuMucs(d.thuMucs); setCums(d.cums); setTabChung(d.tabChung)
+      setNhap(`Đã đưa lên ${kq.cum} cụm, ${kq.tm} thư mục · bỏ qua ${kq.boQua} cụm trùng`)
+    } catch (e) { baoLoi(e) }
+  }
   const save = () => {
-    const raw = doc.current?.getValue() ?? ''
+    const raw = gopCongThuc(doc.current?.getValue() ?? '')
     onSave(raw)
     setSavedAt(Date.now()); setDirty(false)
   }
@@ -94,7 +144,7 @@ export const SoanWorkspace = forwardRef<SoanWorkspaceHandle, SoanWorkspaceProps>
   const setTabTen = (n: number, ten: string) => {
     const next = { ...tabTen }; if (ten.trim()) next[String(n)] = ten.trim(); else delete next[String(n)]
     if (tmChon) persistTm(thuMucs.map((t) => (t.id === tmChon.id ? { ...t, tabTen: next } : t)))
-    else if (chon === 'chung') { setTabChung(next); saveTabChung(next) }
+    else if (chon === 'chung') persistTabChung(next)
   }
   const cumTab = cumCua.filter((c) => tabOf(c) === active).sort(sortCum)
   const soAn = cumCua.filter((c) => tabOf(c) === 0).length
@@ -163,6 +213,17 @@ export const SoanWorkspace = forwardRef<SoanWorkspaceHandle, SoanWorkspaceProps>
             ))}
           </div>
         ))}
+        {/* Nguồn bộ cụm: chung (DB) hay máy này — và nút đưa bộ trên máy lên bộ chung (1 lần, bỏ qua trùng). */}
+        <div className="mt-auto border-t border-slate-200 px-2 pt-2 text-[11px] text-slate-400">
+          {nguon === 'dang_tai' && 'Đang tải bộ cụm chung…'}
+          {nguon === 'db' && <span className="text-emerald-700">● Bộ chung của trung tâm</span>}
+          {nguon === 'may' && <span className="text-amber-700" title={loiDb ?? ''}>● Đang dùng cụm trên MÁY NÀY (không tải được bộ chung{loiDb ? `: ${loiDb}` : ''})</span>}
+          {nguon === 'db' && coCumLocal() && (
+            <button type="button" onClick={duaLenBoChung} className="mt-1 block w-full rounded-md border border-slate-300 bg-white px-2 py-1 text-left text-[11px] font-medium text-slate-600 hover:border-indigo-400 hover:text-indigo-700">⬆ Đưa cụm trên máy này lên bộ chung</button>
+          )}
+          {nhap && <div className="mt-1 text-emerald-700">{nhap}</div>}
+          {nguon === 'db' && loiDb && <div className="mt-1 text-rose-600">Lỗi ghi bộ chung: {loiDb}</div>}
+        </div>
       </aside>
 
       <div className="flex min-w-0 flex-1 flex-col">
@@ -221,7 +282,7 @@ export const SoanWorkspace = forwardRef<SoanWorkspaceHandle, SoanWorkspaceProps>
               : <span className="basis-full py-1 text-[12px] text-slate-400">Tab {active}{tabTen[String(active)] ? ` · ${tabTen[String(active)]}` : ''} chưa có cụm — «＋ Cụm mới» sẽ vào tab này, hoặc kéo ⠿ một cụm thả vào tab.</span>}
           </div>
           <p className="mt-1.5 text-[11px] text-slate-400">
-            Click cụm để chèn tại con trỏ · gõ tắt rồi <b>Space</b> · gõ tắt kèm tham số: <b>goc_ABC</b> → góc ABC, <b>ss_AB,CD</b> → AB ∥ CD · gõ <b>$</b> hoặc <b>Ctrl+M</b> mở bảng dựng công thức · click vào công thức trong bài để sửa · kéo <b>⠿</b> để sắp xếp / đổi tab · <b>Ctrl+Z</b> hoàn tác
+            Click cụm để chèn tại con trỏ · gõ tắt rồi <b>Space</b> · gõ tắt kèm tham số: <b>goc.ABC</b> → góc ABC, <b>ss.AB.CD</b> → AB ∥ CD, <b>hbh.MNPQ</b> → đoạn bổ đề đổi tên điểm (gõ tắt của cụm viết <b>#</b> ở chỗ tham số, vd <b>#.do</b> → 50.do = 50°) · gõ <b>$</b> hoặc <b>Ctrl+M</b> mở bảng dựng công thức · click vào công thức trong bài để sửa · kéo <b>⠿</b> để sắp xếp / đổi tab · <b>Ctrl+Z</b> hoàn tác
           </p>
         </section>
 
