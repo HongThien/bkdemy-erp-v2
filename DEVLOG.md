@@ -9782,3 +9782,11 @@ dòng, không dựng lại UI để đo.
   23 thẻ đúng; app HS chưa soi bằng trình duyệt (không có đăng nhập nhanh HS) — RPC đã kiểm end-to-end.
 - **Còn treo:** 0/23 duyệt (CEO duyệt trên tab) · ma_dang của câu điền ô = null (cách giải khối 7 chưa gán hinh_dang) ⇒ chưa vào
   mastery theo dạng · Sửa tại chỗ trong tab duyệt (D3) · fn_chon_form · 34 biến thể chưa có ô. Chưa commit.
+## 2026-09-08 (tiếp) — HS nữ vẫn ra bộ nam: DB thiếu giới tính, không phải lỗi app
+- CEO: "học sinh nữ sao vẫn có UI như học sinh nam". Query DB: HS đang học **235 NULL · 64 nu · 24 nam** ⇒ app đọc đúng cột, chỉ
+  là gioi_tinh trống → mặc định nam. CEO: "do DB sai để t cập nhật luôn". App KHÔNG realtime hồ sơ (đọc 1 lần lúc mount) → HS tải
+  lại trang/mở lại app mới thấy; đề nghị thêm đọc lại khi app quay về foreground (chưa làm, chờ CEO gật).
+- Đã push icon TA/OPS `a0358f6` (push rớt 2 lần vì github.com timeout, lần 3 OK) + icon HS `b97ea4f`.
+- Distill HANDOFF: thêm block App HS cấp 2/3 (kit, 2 theme, avatar, gioi_tinh NULL, font, demo) + Pipeline thiết kế 1.1 + Icon từng
+  app vào ①; 6 bài học vào ② (Goodhart script · ChatGPT ảnh phẳng · --baseline đánh dấu mọi file · Home không cuộn không kéo giãn ·
+  file untracked trong public vào build · thử font trước doodle ảnh).

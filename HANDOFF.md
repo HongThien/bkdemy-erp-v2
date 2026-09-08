@@ -255,6 +255,29 @@
 - **⭐ ENGINE CHẤM `src/gami/testgrade.js`** (PURE, 30 test `node scripts/verify_testgrade.mjs`): `smartNormalize`/`smartCheckTLN` (port V1; **tách CHỈ theo `;`** — `,` là thập phân VN, V1 split cả `,` là bug) · `gradeTracNghiem` (index HS chọn → chữ cái == dap_an) · `gradeDungSai` (**thang THPT 2025**: 0/0.1/0.25/0.5/1.0 theo số ý đúng; 4/4=correct·1-3=partial·0=wrong) · `gradeTraLoiNgan` (wrong→HS report) · `extractKey` (validate lúc snapshot, câu thiếu key/loại tu_luan → skip+warn).
 - **⭐ Service `src/lib/testonline.ts`** (seam): **`phatHanhTest`** tổng quát — `DOC_MAP` dispatch: btvn→`getBTVNCaus` · et→`getETCaus` · giao_trinh_buoi→`getGiaoTrinhBuoiCaus` (**CHỈ bài luyện** phan 'dang', Thùy: "online chỉ giao BT, bỏ lý thuyết") · snapshot kèm lý thuyết dạng (`khoCuaMon(mon).ltDangTbl` — HS ko đọc kho nên phải snapshot). `moBaiLam` (upsert slot) · `traLoiCau` (chấm client exact cho reveal-ngay) · `nopBai` (claim atomic) · `baoSai`. Nút staff "📱 Phát hành online" ở `KhoTaiLieuScreen` (doc btvn/et/giao_trinh_buoi bám lớp+ngày; modal kết quả + câu bị bỏ qua).
 - **⭐ APP HS `src/screens/hocsinh/HocSinhApp.tsx` (mobile-first):** bọc `zoom:1/1.15` huỷ zoom desktop → net 1.0 (Thùy: tối ưu đt). List: **toggle "Chưa làm / Hoàn thành"** (đếm; hoàn thành = da_nop, TỰ đánh dấu khi trả lời hết câu); nhãn loại + badge tím **THI** cho ET. **Luồng làm bài (Thùy chốt): 1 câu/màn → chọn → nút "Xác nhận" (chống ấn nhầm) → chấm → hiện đáp án + LỜI GIẢI chi tiết → "Câu tiếp"** → màn kết quả X/Y. 3 loại render: TN nút A-D · ĐS 4 mệnh đề mỗi ý 2 nút Đúng/Sai (reveal per-ý + lời giải mệnh đề + "X/4 ý đúng") · TLN ô nhập. **Nút "💡 Gợi ý"** (chỉ khi câu có `ly_thuyet`) bung lý thuyết dạng. Báo sai "🚩 Em nghĩ mình đúng" CHỈ tra_loi_ngan.
+- **⭐ APP HS CẤP 2/3 — MÀN CHÍNH + DANH SÁCH theo KIT thiết kế (08/09, nhánh feat/app-hs đã merge main `083a64a`):**
+  `HomeHS.tsx` (thuần vẽ; HocSinhApp tính `cards` rồi giao) · `DanhSachHS.tsx` (1 component cho Bài tập trên lớp/ET/BTVN; pill
+  mới/đang làm/quá hạn/hoàn thành + dòng hạn do mình suy theo palette kit) · `AvatarHS.tsx` (ốp AvatarEditButton của TA; bucket
+  `avatars` chung, ghi qua RPC `hs_doi_anh_dai_dien` vì `hoc_sinh` staff-only). **2 theme nam/nữ = CÙNG component**, chọn theo
+  `hoc_sinh.gioi_tinh` qua RPC `hs_ho_so_cua_toi()` (jsonb ho_ten/ma_hs/gioi_tinh/anh_url; mig `202609080131` + `202609080215`);
+  **NULL → bộ nam**. ⚠ 08/09: 235/323 HS đang học gioi_tinh NULL ⇒ em nữ vẫn ra bộ nam — CEO tự cập nhật DB; app KHÔNG realtime,
+  HS tải lại trang mới thấy. Font: UI Baloo 2, chữ tay **Pacifico** (ghi đè `--font-hand` trong cây HS; TA vẫn Itim) — `hs.html`
+  link 3 font. Asset build ở `public/bk-ui/hs/` (resize bằng PowerShell System.Drawing — máy không có sharp/Python); kit gốc ở
+  `design/handoff/hs-home-v4` + `hs-bai-tap-tren-lop-v1`. **Home KHÔNG cuộn (h-100dvh) nhưng KHÔNG kéo giãn** — hero/ô giữ
+  aspect-ratio mockup (870:280 · 417:280), chữ clamp(vw), dư để trống dưới; tên hero = 2 từ cuối. Demo không cần login (chỉ dev):
+  `hs.html?demo` · `?demo=nu` · `&ca` · `?demo=list&nu`. Màn con (làm bài, tự luyện, thông tin, hòm thư) VẪN style trắng cũ — là
+  màn tiếp theo cho ChatGPT. Launch: `dev-hs` (worktree) / `dev-hs-wt` (chạy worktree từ repo gốc, port 5190).
+- **⭐ PIPELINE THIẾT KẾ UI ChatGPT (vẽ) → Claude (dựng) — chốt 1.1 (08/09), dùng cho MỌI màn/app:** 2 file, 2 người đọc:
+  `design/CHATGPT-UI-KIT.md` = gửi ChatGPT đầu mỗi context (đơn đặt hàng; 4 pha; **logic 7 loại phần tử** TEXT/SHAPE=code ·
+  GLYPH=SVG gõ tay · ILLUST/CHAR/DECOR=PNG cutout sinh bằng công cụ tạo ảnh · BACKDROP=không khí thuần; **bảng kiểm kê** mỗi phần
+  tử 1 dòng = hợp đồng; 8 câu tự kiểm) · `design/HANDOFF-PIPELINE.md` = Thùy+Claude (8 luật + lý do, bước nhận hàng, §8 lịch sử
+  v1→v4.1 + 2 màn). Nhận hàng: `node scripts/design-check.mjs design/handoff/<kit>` (alpha thật · rỗng · THỦNG (xoá nền bằng xoá
+  trắng) · backdrop có chữ (cạnh sắc) · biến thể trùng · SVG không <image>/<text> · DESIGN.md↔assets 2 chiều) **+ mở ảnh nhìn**.
+  Luật đứng CEO: sau MỖI vòng phải ghi vấn đề vào §8 + sửa CHATGPT-UI-KIT + thêm phép đo script. **Không đưa script cho ChatGPT.**
+- **Icon riêng từng app (08/09):** `public/icon-{hs,ta,ops}-192/512.png` + manifest/apple-touch từng app (gv/pt vẫn icon-192/512
+  chung); APK `android/` (HS) + `android-ta/` mipmap 5 mật độ + `ic_launcher_background`. Ảnh gốc + master 1024 ở
+  `design/bk-ui-src/icon_*`. Khuôn xử lý: ảnh vẽ sẵn ô bo góc (lề trắng hay góc đen) → cắt bbox, clip bo 19%, 4 góc đổ MÀU MÉP.
+  Icon mới chỉ lên máy khi build lại APK / xoá-thêm lại PWA.
 - **⭐ ET = CHẾ ĐỘ THI (Thùy chốt; mig 0068+0069):** HS **KHÔNG đọc được `bai_test_cau` của ET** (RLS loại et) → đề qua **RPC `et_de`** (lọc sạch key/lời giải, menh_de chỉ noi_dung) · làm bài = `luuDapAnET` (lưu, KHÔNG chấm) · **"Nộp bài" (confirm) → RPC `et_nop` CHẤM SERVER-SIDE** (TN/ĐS/TLN trong plpgsql) + đông cứng `da_nop` + trả reveal cả bài. **0069: chỉ chấm lần nộp ĐẦU** (row_count claim) — sửa đáp án qua API rồi nộp lại vô hiệu. UI `LamET` riêng (tím, đếm đã-trả-lời, mở lại bài đã nộp = reveal). BTVN/giáo trình = `LamBai` reveal-ngay.
 - **✅ VERIFY THẬT (scripts `_diag_rls_hs`/`_diag_dungsai`/`_diag_et`, anon client + auth HS):** RLS cách ly lớp đúng (HS 8B1 thấy test 8B1, HS 8S1 thấy 0) · HS GHI bài làm qua RLS OK · ĐS 3/4 → partial 0.5 · `et_de` giấu key sạch + đọc thẳng bị chặn · `et_nop` chấm đúng cả 3 loại. **Demo:** `scripts/seed_demo_test_online.mjs` → 2 doc 11B1 "DEMO Test online" (BTVN) + "DEMO ET (thi)" (2TN+1ĐS+1TLN, 3/4 câu có gợi ý LT) — staff phát hành → login HS0004/HS0004 (`--xoa` dọn).
 - **CÒN (test online):** task "Duyệt báo sai" trong `getMyTasks` (spec §9 — thay task Chấm ET khi ET online) · nút "Chấm lại câu N/lớp" khi KEY sai cả lớp (spec §7, khác luồng accepted-answer) · view "Theo buổi" (KetQua ②) chưa hiện bài test online · màn HS đổi mật khẩu · deadline/`khoa_reveal` chưa dùng · skin game HS-facing (đang plain-clean).
@@ -1158,6 +1181,22 @@ thẳng `ca_test.nguoi_cham_id`/`nguoi_tra_bai_id`, data đã sẵn, không cầ
 
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
 
+- **⭐⭐ Đưa script kiểm cho bên bị kiểm = Goodhart (hs-home v3, 08/09):** ChatGPT cầm `design-check.mjs` trong tay → sinh asset để
+  QUA script (ảnh rỗng 100% trong suốt tự chấm PASS), không để ĐÚNG. Script là của bên nhận; bên giao chỉ nhận câu hỏi tự kiểm.
+  Kèm theo: **script chỉ là lưới thô — vẫn phải MỞ ẢNH nhìn** (v3 qua 100% mà mắt thấy hỏng ngay).
+- **⭐⭐ ChatGPT sinh ảnh PHẲNG, không layer:** mọi "asset" nó xuất từ ảnh tổng = crop + phóng to + xoá màu trắng (áo/giấy/cốc thủng
+  lỗ, icon xám rỗng). Chỉ chấp nhận asset **sinh mới bằng công cụ tạo ảnh**, từng cái, nền trong suốt; spec/JSX/layout.json của nó
+  bỏ hết — nó không nhìn thấy asset của chính nó nên spec tự lệch ảnh. Chữ (kể cả viết tay) LUÔN là code + font.
+- **⭐ `migrate.mjs --baseline <file>` đánh dấu MỌI file tới-và-gồm file đó, không chỉ 1 file (cắn 08/09):** áp 1 file bằng
+  `_apply_one` rồi baseline ⇒ file khác đang FAIL cũng bị ghi "đã áp". Lần đó vô tình đúng ý (file luỹ tiến xu đã bị thay bằng
+  EXP:100 áp tay) — lần sau kiểm `--status` TRƯỚC khi baseline, hoặc sửa nguyên nhân fail rồi `npm run migrate` bình thường.
+- **⭐ Màn Home mobile: không cuộn NHƯNG không kéo giãn cho đầy màn** (CEO 08/09: "tỉ lệ phải như gốc mới đẹp, scale sai tỉ lệ xấu").
+  `flex-1`/`grid-rows` chia đều → SE bẹp, Pro Max phình. Đúng: aspect-ratio đo từ mockup + chữ clamp(vw) + dư để trống dưới; kiểm
+  `scrollHeight === innerHeight` ở 390×844 và 430×932 kể cả trạng thái có banner.
+- **⭐ File chưa theo dõi trong `public/` VẪN vào build + precache PWA:** zip/kit thả vào `public/bk-ui` làm `build:hs` fail
+  ("asset > 2 MiB won't be precached") dù Vercel (checkout sạch) không sao. File gốc → `design/`, đúng `design/README.md`.
+- **⭐ Font chữ tay: thử font trước khi xuất doodle ảnh.** Đổi 5 font qua `?font=` trên demo trong 5 phút → CEO chọn Pacifico;
+  doodle ảnh là mỗi câu 1 vòng ảnh, không sửa được chữ, dễ sai dấu — chỉ là ngoại lệ.
 - **⭐ plpgsql: sau `EXECUTE` (bất kỳ dạng nào) ĐỪNG TIN `FOUND` (cắn 06/09 hai lần).** `EXECUTE 'update …'` không RETURNING
   ⇒ FOUND false dù đã sửa dòng. **`EXECUTE 'select …' INTO` cũng vậy: đo bằng DO block 06/09 chiều → `found=false` DÙ biến đã nạp
   đủ giá trị** (bản đầu của mục này ghi "EXECUTE INTO thì FOUND đúng" — sai, khiến `fn_giaibai_duyet` chưa từng chạy được tới mig
