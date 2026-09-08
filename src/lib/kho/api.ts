@@ -2254,3 +2254,30 @@ export async function mcqMetric(mon: KhoMon): Promise<McqMetric | null> {
   if (error) throw error
   return data && Object.keys(data).length ? (data as McqMetric) : null
 }
+
+// ── ĐIỀN Ô chứng minh hình (spec-dien-o.md §0b) — form thứ 3 của bài, kho hình (không có ma_cau). RPC fn_dien_form_* ──
+export type DienPhuongAn = { text?: string; ma?: string; dung: boolean; loi?: string; vi_sao_sai?: string | null }
+export type DienO = { id: string; kieu: 'ket_luan' | 'ly_do'; buoc: number; key: string; dap_an: string; phuong_an: DienPhuongAn[] }
+export type FormDienChoDuyet = {
+  id: string; loai: 'cach' | 'bien_the'; ref_id: string; ma: string; khoi: string; de: string; gia_thiet: string | null; anh: string | null
+  buoc: { k: number; text: string }[]; o: DienO[]; sinh_at: string; da_duyet: boolean; sua_truoc_duyet: boolean; ai_model: string | null
+}
+export type HinhLyDo = { ma: string; nhom: string; ten: string; phat_bieu: string | null; duc: boolean }
+export async function listFormDienChoDuyet(khoi?: string, daDuyet = false): Promise<FormDienChoDuyet[]> {
+  const { data, error } = await supabase.rpc('fn_dien_form_cho_duyet', { p_khoi: khoi || null, p_da_duyet: daDuyet })
+  if (error) throw error
+  return (data ?? []) as FormDienChoDuyet[]
+}
+export async function duyetFormDien(id: string, nguoiDuyet: string, o?: DienO[]): Promise<void> {
+  const { error } = await supabase.rpc('fn_dien_form_duyet', { p_id: id, p_nguoi: nguoiDuyet, p_o: o ?? null })
+  if (error) throw error
+}
+export async function tuChoiFormDien(id: string, nguoi: string, lyDo: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_dien_form_tu_choi', { p_id: id, p_nguoi: nguoi, p_ly_do: lyDo })
+  if (error) throw error
+}
+export async function listHinhLyDo(): Promise<HinhLyDo[]> {
+  const { data, error } = await supabase.from('hinh_ly_do').select('ma, nhom, ten, phat_bieu, duc').eq('active', true).order('ma').limit(500)
+  if (error) throw error
+  return (data ?? []) as HinhLyDo[]
+}

@@ -9687,3 +9687,98 @@ dòng, không dựng lại UI để đo.
   kéo form (để sau). tsc 0. Chưa soi preview (cần GV phát hành ET thật).
 - Xuất `mcq-xem.mjs` 488 câu gửi CEO. Chưa commit. Sáng CEO duyệt trên tab "Trắc nghiệm AI"; duyệt xong câu tự vào tự luyện (M3).
 
+## 2026-09-08 (tiếp) — "Vào app như…" ĐỔI HƯỚNG: bỏ Vercel function, thành launcher chạy tại máy (`npm run vao-app`)
+- **CEO:** "Vụ thêm key lên Vercel rủi ro mà — nên mới có luật đấy chứ." → Rút phương án api/dang-nhap-thay.mjs. Luật 19/08 giữ nguyên.
+- **Làm:** `scripts/vao-app.mjs` — Node http bind 127.0.0.1:5199, đọc SUPABASE_SERVICE_ROLE từ `.env.local` (đã có sẵn cho
+  provision HS), phục vụ 1 trang tìm-chọn tài khoản (Nhân sự/Học sinh, bỏ dấu, avatar, "Vừa mở" localStorage) + `/go?id&app`
+  = mint session (generateLink magiclink → verifyOtp) rồi **302** sang `https://<app>.bkacademy.edu.vn/#access_token=…` (link
+  target=_blank ⇒ tab mới ⇒ tải trang ⇒ supabase-js bắt hash). Không cần gate admin: chỉ máy chạy script gọi được. Có
+  `--no-open` / `VAO_APP_NO_OPEN` (không tự bật trình duyệt) · `VAO_APP_URL_<app>` đè URL để test bản dev. package.json `vao-app`
+  · launch.json `vao-app`. ERP chính vẫn cố ý không có trong danh sách.
+- **XOÁ (CEO gật):** `api/dang-nhap-thay.mjs` · `src/lib/dangnhapthay.ts` · `src/screens/phanquyen/VaoAppNhuTab.tsx` ·
+  `scripts/_chk_dang_nhap_thay.mjs`; revert PhanQuyenScreen/.env.example/vercel-ignore.
+- **⚠ SỰ CỐ TỰ GÂY:** revert bằng `git checkout -- scripts/vercel-ignore.mjs` đã **đè mất sửa đổi CHƯA COMMIT của phiên
+  khảo sát** (khai riêng `khaosat` — file đó do 2 phiên cùng sửa trong working tree). Đã dựng lại theo DEVLOG phiên đó:
+  URL_APP `bkdemy-erp-v2-khaosat` · APPS thêm `khaosat` · RIENG `khaosat.html/vite.config.khaosat.ts/src/main-khaosat.tsx/
+  src/AppKhaoSat.tsx/src/screens/khaosat/`. **Phiên khảo sát cần đối chiếu lại** (có thể thiếu chi tiết như `public/icon-khaosat-*`).
+  **Bài học:** working tree DÙNG CHUNG nhiều phiên ⇒ KHÔNG `git checkout --` cả file để revert phần mình; chỉ gỡ đúng dòng mình thêm
+  (sed/Edit), hoặc `git diff` file trước khi checkout.
+- **Verify END-TO-END trên PROD:** preview `vao-app` → trang hiện 314 HS → gõ "hs0004" → chọn → "Mở app Học sinh" → tab
+  `https://hs.bkacademy.edu.vn` vào thẳng session `hs0004@hs.bkdemy.local` (màn "Đặt mật khẩu riêng" vì PIN = mã HS), hash đã xoá,
+  server log `→ hs0004@hs.bkdemy.local · Học sinh`. Đã bấm Thoát (signOut) sau test. Chưa commit.
+## 2026-09-09 (sáng sớm) — Nhập kho từ file Word: đọc tính.docx (64 câu giữa kì lớp 7), thêm dạng, dời câu gán nhầm
+- **CEO:** "UI nhập kho vẫn cần (bản đồ kiến thức), nhưng việc đơn giản làm ở phiên này tiện hơn". Gửi `tính.docx`.
+- **Đọc docx:** `scripts/docx-doc.mjs` (jszip, OMML→LaTeX, placeholder ảnh) — file này dùng **MathType (OLE)** nên công thức
+  là ảnh WMF → trích 64 WMF bằng jszip (file đang mở trong Word, .NET không mở được), render PNG bằng System.Drawing
+  (PowerShell), ghép 16 ảnh/tấm, Claude đọc bằng mắt. **Thứ tự dễ cho Claude: Word Equation gốc > PDF ≈ Word MathType.**
+- **Phân loại 64 câu (3 trùng):** 47 vào dạng có sẵn, 14 rơi vào 3 dạng kho chưa có. CEO tạo `T107010405` "Tìm x trong bài toán
+  Tích các biểu thức bằng 0"; Claude thêm `T107010302` "Rút gọn biểu thức luỹ thừa (cùng cơ số)" và `T107010406` "Tìm x ở số mũ"
+  (insert dai_ban_do thẳng, cùng khuôn mã). **Dời 6 câu T107010203049–054** `(4x²+9)(2^{x−1}−1)=0` từ 203 → 405 (CEO chỉ rõ).
+- **`scripts/nhapkho-file.mjs`** `--in json --xem html | --ghi`: đáp số máy tính qua mcq-auto.tinh(); máy không tính được (căn,
+  GTTĐ, mũ chứa x, tích = 0) thì lấy đáp số tay trong JSON; máy ≠ tay ⇒ báo, không ghi. `scripts/mcq-lo/tinh-docx-lop7.json` =
+  61 câu Claude chép + dạng + đáp số. 0 lệch máy/tay. HTML gửi CEO duyệt; **CHƯA ghi kho** (chờ CEO gật, nguồn 'le', da_duyet=false).
+## 2026-09-09 (sáng) — Lời giải 61 câu tính.docx · phản biện "2 cửa duyệt" · quét đáp số toàn kho · spec-kho-chuan.md
+- **Lời giải chi tiết** cho 61 câu (`scripts/mcq-lo/tinh-docx-lop7.json` trường `lg`, phong cách kho); `nhapkho-file.mjs` ghi
+  loi_giai + nguon_giai='ai', giai_method='claude_code', da_duyet=false. `_chk_lg_tinh.mjs`: dòng cuối lời giải = đáp số 61/61.
+  HTML gửi CEO; CHƯA ghi kho (chờ duyệt). CEO: "vào kho là phải có lời giải chi tiết".
+- **CEO đề xuất 2 cửa duyệt** (chất lượng câu · form mới) + Claude quét cả kho tìm câu sai đáp án + màn duyệt = chuẩn hoá (sửa
+  dạng/cụm). Phản biện bằng số (`scripts/kho-quet-dapso.mjs`, chỉ đọc): 17.743 câu Đại, 60 da_duyet, **cờ da_duyet không được lọc
+  ở bất kỳ chỗ chọn câu nào**; máy tính kiểm được 2.456 (14%), đáng tin 1.611; lần quét đầu 627 "lệch" phần lớn BÁO GIẢ (toán có
+  lời, đặt tính, làm tròn, lớp 6 dấu chấm = nhân) → phải whitelist dạng. Trong dạng đáng tin: clone 0,64% lệch, gốc 1,45%; 2 lỗi
+  thật pool 7 đều câu GỐC ⇒ giả thuyết CEO "clone sai là chính" chưa có bằng chứng.
+- **CEO chốt:** quét một lượt; đúng ⇒ coi như đã duyệt, vào kho chuẩn; có vấn đề ⇒ màn duyệt lại; **từ giờ câu mới phải qua duyệt
+  mới được dùng**. → `spec-kho-chuan.md`: hàm `_kho_cau_chuan` (câu mới cần da_duyet; câu cũ tạm dùng tới khi quét, máy NGHI thì rút
+  ngay), cột kiem_may/duyet_nguon, quét 3 mức (máy whitelist → Claude giải lại theo lô, chỉ báo nghi → người + mẫu 2%), màn duyệt
+  hợp nhất 1 hàng đợi (bỏ bảng nháp clone), 6 bước. Chưa làm bước nào.
+## 2026-09-09 (sáng) — Tách 2 luồng: kho chuẩn (worktree mới) · ĐIỀN Ô (phiên này) — spec-dien-o.md
+- CEO đặt ý tưởng "lời giải chi tiết bỏ trống chỗ quan trọng, mỗi chỗ 4 phương án, 1 tự luận → 2–3 trắc nghiệm". Tên lý thuyết:
+  faded worked examples / completion problems (Sweller, Renkl); hình = Proof Blocks. Phân công: phiên này giữ luồng ĐIỀN Ô (dựa
+  trên mcq-auto + rule + form table), worktree mới làm kho chuẩn theo spec-kho-chuan.md (dặn: migrate --only).
+- **Đo khả thi** `scripts/_do_dien_o.mjs` (491 câu lớp 7 có lời giải, tách theo dòng): 61% dòng máy đọc được · 154 câu đọc hết ·
+  237 chuỗi nhất quán · **140 câu tìm được ô bằng máy, 1,9 ô/câu**. Nghẽn = lời giải kho viết tự do. CEO: tách bước theo dấu `=`
+  (mỗi biến đổi qua 1 `=`) thay vì ép 1 dòng 1 bước.
+- **CEO chốt:** đo theo CÂU: đúng hết = Đ, một phần = C, sai >60% ô = S · hiện đúng/sai từng ô · hệ thống tự chọn form có lý do,
+  giai đoạn đầu ưu tiên TN + ĐIỀN (nhanh, HS không nản), TLN/TL sau · quy ước lời giải đưa vào cửa 1 OK.
+- `spec-dien-o.md`: định nghĩa ô bằng máy (giá trị của biểu thức con ở bước trước), 3 loại ô (giá trị/chuyển vế: máy 100%; lý do
+  hình: AI+người v2), `fn_dien_cham`, bảng `dai_cau_form_dien` + trigger thu hồi khi lời giải/đáp án đổi, snapshot `dien jsonb`,
+  pipeline `mcq-dien.mjs`, tab "Điền ô AI", component HS, `fn_chon_form` có lý do, lộ trình D1–D4. Chưa code.
+- **CEO đổi trọng tâm ĐIỀN Ô:** bỏ câu đã trắc nghiệm được; phase 1 = câu KHÔNG có đáp số (chứng minh hình + đại). Nguyên tắc chung:
+  mỗi câu rồi có đủ hình thái (TN · TLN · điền ô · tự luận), thứ tự xây theo độ dễ. Soi kho hình: 194 lời giải (7:74, 8:101, 9:19),
+  113 có "(lý do)", 117 cụm lý do viết lộn xộn ⇒ cần DANH MỤC LÝ DO CHUẨN (vai trò = bảng rule). Nháp `scripts/mcq-lo/hinh-ly-do-
+  catalog.json`: LD01–LD52 theo nhóm hoán đổi + GT/CT/TT không đục + 5 nhãn lỗi E01–E05. spec-dien-o.md thêm §0b (phase 1 chứng
+  minh: 3 loại ô, Claude đề xuất + máy kiểm cấu trúc + người duyệt 100%, bảng `hinh_form_dien`, pilot khối 7 ≈100 bài).
+  Tự chốt (R2): chỉ lý do trong danh mục; cả 3 loại ô; pilot khối 7; danh mục CEO duyệt lần đầu (HTML gửi).
+- **ĐIỀN Ô chứng minh — D1 pilot hình khối 7:** CEO chốt thêm: mỗi bước = cặp "kết luận (lý do)", để trống được 1 trong 2 (ô kết
+  luận ngang ô lý do); CHỈ đục PHẦN GIỮA (không đục bước chép giả thiết, không đục bước đích "ai cũng biết"). spec-dien-o.md §0b
+  sửa theo. `scripts/hinh-dien.mjs`: `--list` (74 bài khối 7 = 29 cách giải + 45 biến thể, tách bước theo câu, cờ tham chiếu/GT/
+  đích, nhận diện LD 67/76 cụm) · `--ap-khuon` (đề xuất ô của bài GỐC → nhân sang biến thể: khớp bước theo bộ xương câu, ánh xạ
+  tên góc + số theo vị trí, xoay vị trí đúng; lệch ⇒ bỏ) · `--verify --xem` (kiểm cấu trúc + HTML). Claude viết tay 17 bài gốc
+  (`scripts/mcq-lo/hinh7-dien-goc.json`, 2–3 ô/bài, xen kẽ kiểu, LD cùng nhóm, nhãn E0x + vì sao sai); bỏ 5 khuôn 1–2 bước.
+  Kết quả `hinh7-dien-kq.json`: **23 bài OK (17 gốc + 6 áp khuôn), 0 FAIL, 8 bỏ; 34 biến thể áp KHÔNG được** (biến thể gộp/tách
+  bước, đặt tên góc khác thứ tự, distractor dùng góc không có trong bài gốc). HTML gửi CEO duyệt. CHƯA có bảng DB (D2).
+  Bài học: biến thể "đổi số" của kho hình KHÔNG cùng cấu trúc câu văn như tưởng → áp khuôn chỉ ăn ~15%; muốn phủ hết phải hoặc
+  Claude đề xuất từng bài, hoặc chuẩn hoá lời giải biến thể theo gốc ở cửa 1.
+- **CEO duyệt pilot điền ô khối 7: "ý tưởng khá ok"**; chốt mật độ: **4–5 dòng/ô, tối đa 4 ô/bài**; rule chọn ô theo kiểu bài xây
+  dần (spec §0b). Lỗi CEO bắt "D2 thành 2": KHO lời giải BT.07.096 (cách giải 457995b6) ghi `\widehat{2}`/`\widehat{1}` thiếu D
+  → đã UPDATE loi_giai thành `\widehat{D_2}`/`\widehat{D_1}` (đồng bộ với BT.07.095), sửa đề xuất ô theo. HTML duyệt chuyển sang
+  TỰ CHỨA (`scripts/lib/html-tu-chua.mjs`: KaTeX render trong node + font base64 + ảnh data URI) vì trình xem trong app chặn CDN/ảnh.
+## 2026-09-09 — ĐIỀN Ô chứng minh: D2+D3 "full 1 vòng" (mig 202609081019 + 202609081045)
+- **CEO:** "D2 đi, full 1 vòng mới có cái nhìn để sửa; chưa ai làm cái này ở VN". Mật độ 4–5 dòng/ô, ≤4 ô/bài (trigger DB 1–4 ô).
+- **Mig `202609081019_hinh_form_dien`:** `hinh_ly_do` (55, seed từ catalog JSON, `duc=false` cho GT/CT/TT) + `hinh_loi_cm` (E01–E05) ·
+  `hinh_form_dien` (khoá cach_giai_id XOR bien_the_id, `loi_giai_bam` md5, `buoc`/`o` jsonb, trigger kiểm cấu trúc, **trigger thu
+  hồi** khi lời giải cách giải/biến thể đổi) · `bai_test_cau` +`dien` (bản HS) +`form_dien_id` +`o_rule` · `fn_dien_cham` (Đ = đúng
+  hết; S khi đúng < 40% ô; còn lại C) · RPC duyệt `fn_dien_form_cho_duyet/duyet/tu_choi` · RPC HS `tu_luyen_dien_sinh` (lượt 3 bài,
+  né 30 bài gần nhất, lọc khối lớp) + `hs_dien_tra_loi` (upsert bai_lam_cau, chấm ở DB) · view `v_dien_loi_hs`.
+  **Mig `202609081045`:** `_dien_buoc_hs` cắt key khỏi bước → `⟦oN⟧` (bản đầu chép nguyên lời giải = lộ đáp án ngay trong câu).
+  Bẫy: `jsonb -> bigint` (ordinality) phải `::int`.
+- `hinh-dien.mjs --ghi` → **23 form** vào `hinh_form_dien` (da_duyet=false). `_chk_dien_o.mjs` (JWT HS, rollback): 14/14 ✓ —
+  cho_duyet · fn_dien_cham 4 ca · duyệt/chặn duyệt lần 2 (savepoint) · từ chối → rác · sinh 3 bài · bản HS không lộ key/dung ·
+  ⟦oN⟧ đúng bước · trả lời đúng hết = correct, sai hết = wrong · v_dien_loi_hs ra E01 · lời giải đổi → thu hồi.
+- **UI:** `DienOAiTab.tsx` (tab "Điền ô AI" trong Duyệt lời giải AI, chỉ môn có kho hình; thẻ đề+hình+bước có ô \boxed{?}/⟦ ? ⟧,
+  phương án xanh/đỏ+nhãn lỗi; Duyệt/Từ chối — chưa có Sửa tại chỗ) · `hocsinh/DienOCau.tsx` (`DienOCau`: đến ô nào hiện đúng/sai ô
+  đó, điền đáp án đúng vào chỗ trống, hết ô → RPC chấm; `LamDienO`: lượt 3 bài, kết quả, luyện tiếp) · nút "📐 Luyện chứng minh"
+  ở màn kết quả tự luyện (LamTuLuyen; return sớm đặt SAU mọi hook). api: listFormDienChoDuyet/duyetFormDien/tuChoiFormDien/
+  listHinhLyDo; tuluyen: sinhTuLuyenDienO/traLoiDienO. tsc 0. Preview 5202 (đăng nhập nhanh Thùy): tab Điền ô AI khối 7 hiện
+  23 thẻ đúng; app HS chưa soi bằng trình duyệt (không có đăng nhập nhanh HS) — RPC đã kiểm end-to-end.
+- **Còn treo:** 0/23 duyệt (CEO duyệt trên tab) · ma_dang của câu điền ô = null (cách giải khối 7 chưa gán hinh_dang) ⇒ chưa vào
+  mastery theo dạng · Sửa tại chỗ trong tab duyệt (D3) · fn_chon_form · 34 biến thể chưa có ô. Chưa commit.
