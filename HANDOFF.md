@@ -1156,6 +1156,34 @@ thẳng `ca_test.nguoi_cham_id`/`nguoi_tra_bai_id`, data đã sẵn, không cầ
     trên `*_yeu_cau_giai` thì ĐANG DÙNG — đừng nhầm. Thống kê `fn_giaibai_bao_cao_*` KHÔNG lọc môn (KHTN học thuật thấy cả Toán) — cũ, chưa sửa.
   - **Tính công: để sau** (Thùy) — hiện chỉ track số lượng + `muc_do` + snapshot để so diff khi cần.
 
+### ⭐ KHO CHUẨN — cửa 1 đã BẬT (08/09, nhánh `worktree-kho-chuan` e2e9d41, spec `spec-kho-chuan.md`) — bước 1–3/6 XONG
+- **Định nghĩa "vào kho chuẩn" = 1 hàm** `_kho_cau_chuan(da_duyet, kiem_may, created_at)`, vật hoá thành cột generated
+  **`kho_chuan`** trên `dai_/khtn_/hgt_cau_hoi`. Câu MỚI (created_at ≥ **NGÀY BẬT 2026-09-08 09:12+07**, hàm `_kho_ngay_bat()`) chỉ dùng
+  khi `da_duyet`; câu CŨ tạm dùng tới khi quét, máy/AI **`kiem_may='nghi'` ⇒ rút khỏi HS ngay**. Cột thêm: `kiem_may`(khop/nghi/
+  khong_kiem_duoc) · `kiem_may_boi`(mcq-auto/claude_code/nguoi) · `kiem_may_ghi` · `kiem_may_at` · `duyet_nguon`(nguoi/may/ai — trigger
+  tự điền 'nguoi' khi client duyệt) · `dang_ai_de_xuat` (AI gán lúc vào; người chốt = `dang_chinh` ⇒ precision đo bằng query).
+- **Chỗ chọn câu đã cắm:** DB = `_kho_dk_online_sql` (điều kiện ứng viên chung của `tu_luyen_sinh` + `_btyeu_chon_cau` = tự luyện ·
+  bổ trợ yếu · retest) bọc `c.kho_chuan and` · client = `listCauByDang` lọc `kho_chuan` mặc định (soạn ET/BTVN/giáo trình/mã đề/
+  KhoPicker); **`{ tatCa: true }`** cho màn KHO (DangHub) và chỗ RESOLVE câu đã trong ET (ETScreen ~395). Cửa 2 (`mcq-sinh --list`)
+  chỉ nhận câu `da_duyet`. **Chỉ trên DB** — prod client CHƯA deploy nhánh này (client prod chưa lọc kho_chuan, nhưng tự luyện/bổ
+  trợ/retest đã bỏ câu nghi vì hàm DB).
+- **Mức A đã chạy (`scripts/kho-quet-dapso.mjs --ghi`, whitelist 48 dạng "đáp số = giá trị biểu thức"):** máy ký khớp **1.670** (+9
+  người ký trước) · **NGHI 17** (soát tay: máy đúng, kho/đề sai thật; 14 clone, 3 gốc) · **15.996 chưa kiểm** → mức B. Loại khỏi
+  whitelist (ghi lý do trong script): đặt-tính-chia (dư/làm tròn), quy đồng, làm tròn, đơn vị đo, 2 ý/câu, nhận diện. Lớp 6 dấu chấm =
+  nhân: `mcq-auto.tinh(noiDung, {chamLaNhan})` bật theo dạng. Chạy lại an toàn (idempotent, không đè `kiem_may_boi` người/Claude).
+- **Màn duyệt hợp nhất** = màn "Duyệt lời giải AI" (lá `duyetloigiai`, tiêu đề mới "Duyệt câu & lời giải"): tab = Chưa có lời giải ·
+  **Câu mới chờ duyệt** · Lời giải mới từ Claude · **Máy nghi đáp số** · **Không kiểm được** · Tồn đọng (AI cũ) · Trắc nghiệm AI. Badge
+  đếm từ `fn_kho_dem_hang_duyet`; list `fn_kho_hang_duyet(mon, loc, khoi)`; điều kiện 5 bộ lọc = `_kho_loc_duyet_sql`. Thẻ
+  (`DuyetCauTab.tsx`) sửa tại chỗ dạng (DangPickerOne) / cụm (pill theo dạng, đổi dạng ⇒ reset) / đề / đáp số / lời giải →
+  **`fn_kho_duyet_cau`** (1 transaction: áp sửa + `da_duyet` + `duyet_nguon='nguoi'`; **sửa đáp số ⇒ thu hồi mọi form TN của câu**;
+  câu nghi/chưa kiểm ⇒ `kiem_may='khop'` bởi 'nguoi', máy đã khớp mà người không đổi ⇒ giữ kết quả máy để đo precision mẫu) ·
+  **`fn_kho_tu_choi_cau`** (kho rác `xoa_at`, lý do bắt buộc vào `kiem_may_ghi`). KHÔNG có duyệt lô cho hàng nghi/không kiểm/câu mới.
+  Phần HÌNH (biến thể/cách giải) của 2 tab lời giải qua toggle "Câu kho / Hình".
+- **Còn lại theo spec §4:** bước 4 mức B (Claude giải lại theo lô, khuôn `hangdoi-giai.mjs`, chỉ báo nghi — ưu tiên câu HS đã làm,
+  ngưỡng ký ≥98%/200 câu chờ CEO chốt) · bước 5 gộp đường vào (clone/giải AI/nhập file ghi thẳng `da_duyet=false`, bỏ bảng nháp
+  `dai_cau_hoi_clone_cho_duyet`; `nhapkho-file.mjs` phải ghi `dang_ai_de_xuat`) · bước 6 bỏ vế "câu cũ tạm dùng" — **PHẢI DROP/ADD
+  lại cột `kho_chuan`** (generated stored không tự tính lại khi đổi thân hàm). 17 câu nghi đang chờ TA duyệt (khối 5:11 · 5T:2 · 6:2 · 7:2).
+
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
 
 - **⭐ plpgsql: sau `EXECUTE` (bất kỳ dạng nào) ĐỪNG TIN `FOUND` (cắn 06/09 hai lần).** `EXECUTE 'update …'` không RETURNING
@@ -1473,6 +1501,30 @@ thẳng `ca_test.nguoi_cham_id`/`nguoi_tra_bai_id`, data đã sẵn, không cầ
   **Quy tắc thật (không phải chỉ "gom commit của 1 phiên"):** khi NHIỀU phiên cùng làm việc trên 1 repo
   Vercel-8-project trong cùng khung giờ, tổng lượt push của TẤT CẢ phiên cộng lại mới là con số so với
   trần — 1 phiên tự kỷ luật gom commit không đủ nếu các phiên khác vẫn push dồn dập song song.
+
+### Bài học 08/09 — kho chuẩn & làm việc song song 2 phiên
+- **Cờ duyệt mà không chỗ nào lọc = cờ trang trí.** `da_duyet` có 60/17.743 câu ký và 0 chỗ chọn câu lọc theo nó suốt 3 tuần.
+  Sửa bằng ĐỊNH NGHĨA (1 hàm SQL + cột generated để PostgREST lọc được), rồi grep TỪNG chỗ chọn câu để cắm — chọn ≠ resolve: chỗ
+  resolve câu đã nằm trong tài liệu KHÔNG lọc, nếu không câu bị rút làm ET cũ không lưu được (cùng luật kho rác 07-21).
+- **Máy kiểm đáp số: whitelist theo BẢN CHẤT DẠNG, không theo thống kê lệch.** "Đáp số = giá trị biểu thức" thì máy đúng gần
+  tuyệt đối (17/1.696 lệch đều là kho sai thật); dạng lệch 27% (`T105040204`) vẫn vào whitelist vì máy đúng — kho sai hàng loạt là
+  chuyện của kho. Ngược lại dạng máy "khớp" nhiều nhưng bản chất khác (đặt tính chia có dư, quy đồng ra cặp, đổi đơn vị) phải loại
+  dù số đẹp. Lớp 6 viết nhân bằng dấu chấm — quy tắc parse theo DẠNG, không toàn cục.
+- **Người ghi đè máy có điều kiện.** Người duyệt câu máy đã ký khớp mà không đổi đáp số ⇒ GIỮ `kiem_may_boi='mcq-auto'` — nếu
+  ghi đè thành 'nguoi' thì mất mẫu để đo precision máy/AI ở mức C. Chỉ ghi đè khi người ĐỔI đáp số hoặc câu đang nghi/chưa kiểm.
+- **Hàm `stable`/`immutable` không được tạo temp table** — Postgres nổ ngay lần gọi đầu "CREATE TABLE is not allowed in a non-volatile
+  function". Bắt được trước khi lên màn nhờ **test RPC bằng JWT giả lập**: `select set_config('request.jwt.claims', '{"sub":…,
+  "email":…}', true)` trong transaction rồi ROLLBACK — `la_thanh_vien()`/`jwt_uid()` chạy như user thật, DB không đổi. Dùng khuôn này
+  cho mọi RPC security definer trước khi tin UI.
+- **Generated STORED column không tính lại khi đổi thân hàm.** Đổi thân mà kết quả y hệt (gom literal vào `_kho_ngay_bat()`) thì
+  không sao; đổi NGHĨA (bước 6) thì phải DROP/ADD lại cột — ghi thẳng vào comment migration để người sau không quên.
+- **2 phiên song song trên 1 repo + 1 DB:** mở worktree (`EnterWorktree`), copy `.env`/`.env.local`, junction `node_modules`; file
+  UNTRACKED ở thư mục chính không tự sang (spec, script mới) — copy tay; `npm run migrate` áp luôn file treo của phiên kia ⇒ **chỉ
+  `--only <file>`**. Preview tool chỉ đọc `.claude/launch.json` THƯ MỤC CHÍNH và phiên worktree không sửa được file đó ⇒ chạy vite nền
+  `npm run dev -- --port 5191 --host 127.0.0.1 --strictPort` rồi `preview_start {url}`; đăng nhập bằng nút dev account của `Login.tsx`
+  (`VITE_DEV_ACCOUNTS` trong `.env.local`). 403 font KaTeX qua `@fs/` = junction ngoài root vite, không phải lỗi code.
+- **Sidebar "không hiện" trong accessibility tree nhưng screenshot có** — tree của Browser pane có thể stale sau login; tin screenshot,
+  hoặc click bằng `javascript_tool` theo text khi ref trả toạ độ âm.
 
 ## ③ Nhật ký
 → Chuyển sang **`DEVLOG.md`** (log thô append-only, theo ngày, KHÔNG load khi làm). Là nguồn bất biến để truy lại / tổng hợp lại HANDOFF nếu bản này sai logic.
