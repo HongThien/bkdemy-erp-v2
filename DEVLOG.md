@@ -9790,3 +9790,15 @@ dòng, không dựng lại UI để đo.
 - Distill HANDOFF: thêm block App HS cấp 2/3 (kit, 2 theme, avatar, gioi_tinh NULL, font, demo) + Pipeline thiết kế 1.1 + Icon từng
   app vào ①; 6 bài học vào ② (Goodhart script · ChatGPT ảnh phẳng · --baseline đánh dấu mọi file · Home không cuộn không kéo giãn ·
   file untracked trong public vào build · thử font trước doodle ảnh).
+## 2026-09-09 (sáng) — Khảo sát "Bạn của con": commit 299b044 + push · Vercel project khaosat · lỗi "Invalid API key"
+- CEO duyệt → commit `299b044` (21 file, CHỈ phần khảo sát; `package.json`/`launch.json` stage từ HEAD + đúng dòng của mình,
+  không kéo `vao-app` phiên khác đang sửa dở). Push ngay theo lệnh mới của CEO: **"commit đi" = commit + push luôn** (Vercel
+  tắt auto-deploy nên push vô hại) — đã ghi memory.
+- CEO hỏi "scale thì gộp 1 project Vercel hay tách?" → CTO: **tách project mỗi app** (blast radius, rollback riêng, env riêng);
+  trần 100 build/ngày là ràng buộc gói Hobby → lên Pro thay vì gộp. Ngoại lệ tương lai: gộp tầng "công cụ/chiến dịch"
+  (khảo sát/soạn/giải bài) vào 1 project rewrite theo host khi ≥5 app. Giữ 2 tầng, không gộp lẻ 1 app.
+- Vercel project khaosat: build `npm run build:khaosat`, output `dist-khaosat`, env `VITE_SUPABASE_URL` + `VITE_SUPABASE_KEY`
+  (anon). CEO deploy xong → login báo **"Invalid API key"**. Chẩn đoán KHÔNG đoán: tải bundle prod
+  (`bkdemy-erp-v2-khaosat.vercel.app/assets/khaosat-*.js`), grep key nướng trong đó, so với `.env.local` từng ký tự ⇒ key
+  trên Vercel **thừa đúng 1 ký tự "W" ở cuối** (209 vs 208). Sửa: Edit env → Redeploy (Vite nướng env lúc build, sửa env
+  không tự có hiệu lực). Bài học: "prod vẫn lỗi" thì soi bundle đang chạy trước (đã có memory), so BẰNG ký tự, không so bằng mắt.

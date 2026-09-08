@@ -1088,9 +1088,33 @@ thẳng `ca_test.nguoi_cham_id`/`nguoi_tra_bai_id`, data đã sẵn, không cầ
   thắt thật = **gõ bị chẻ vụn** (`$A$` 224 lần, `$và$` 162, `$nên$` 53 — mở/đóng `$` ~10–15 lần/bài), KHÔNG phải thiếu
   mẫu ký hiệu. Khuôn lặp có nghĩa: `▢²=▢²+▢²` (Pytago) 53 lần · `k∈ℤ` 47 lần. Kho: dai 16.747 câu (828 trống lời giải ·
   **11.815 nguon_giai='ai' chưa duyệt**) · hgt 464 · khtn 2.850; chỉ 3 câu đã duyệt.
-- **⚠ BẢN THỬ (spike) — CHƯA phải sản phẩm:** cụm + thư mục + bản nháp ở **localStorage theo ORIGIN** (ERP cổng 5173 và
-  `soan.html` cổng 5180 là **2 bộ cụm khác nhau**; nhiều người/nhiều máy không chung) — vi phạm §2 "data nhiều user →
-  DB", cố ý tạm để Thùy gõ thử cảm giác trước khi định hình DB. **Chưa đăng nhập.**
+- **⭐⭐ BỘ CỤM CHUNG của trung tâm — ĐÃ LÊN DB (09/09, mig `202609081013_soan_cum_chung`, Thùy: "ưu tiên ngôn ngữ chung
+  trước"):** `soan_thu_muc` · `soan_cum` (**unique `lower(go_tat)`** khi còn sống — 1 gõ tắt = 1 cụm) · `soan_tab_chung` ·
+  `soan_cum_lich_su` (trigger ghi vết tạo/sửa/xoá, `boi` = nhan_su.id từ `store.me`) · RLS `la_thanh_vien()` · xoá MỀM
+  `xoa_at`. `src/soan/cumDb.ts` tải 3 bảng 1 lượt, ghi theo CHÊNH LỆCH danh sách (call site giữ nguyên), `nhapTuMay()` đưa
+  cụm+thư mục localStorage lên bộ chung (bỏ qua trùng gõ tắt/nội dung). `SoanWorkspace`: nhãn đáy sidebar "● Bộ chung" /
+  "● cụm trên MÁY NÀY" (rơi về localStorage khi không tải được) + nút "⬆ Đưa cụm trên máy này lên bộ chung". `AppSoan`
+  gate đăng nhập nhân sự (khuôn AppGiaiBai). **Chờ Thùy:** bấm nút ⬆ trên máy chị 1 lần; 1 dòng "TEST độ" xoá mềm (test
+  của CTO) chờ gật xoá cứng. Chưa làm: cụm cá nhân đè bộ chung · thư mục trỏ `chuong` bản đồ · `phim` trùng giữa 2 người.
+- **⭐⭐ GÕ TẮT CÓ THAM SỐ (08–09/09, `MathDoc.resolveGoTat`) — Thùy: "gõ tắt hay hơn phím tắt", góc có hàng trăm tên:**
+  từ = `<gõ tắt>.<tham số>.<tham số>…`, phân cách **CHỈ `.`** (1 phím; `_` = chỉ số dưới: `goc.A_1` → góc A₁). Cụm có `#?`:
+  điền lần lượt (`ss.AB.CD`), thừa → gộp ô cuối, thiếu → bảng dựng với phần đã điền. Cụm KHÔNG `#?` nhưng có tên điểm
+  (đoạn bổ đề): tham số = tên điểm mới theo thứ tự (`hbh.MNPQ`). **Chỗ setup = form Cụm:** gõ tắt viết `#` ở vị trí tham
+  số — `#.do` (50.do → 50°), `goc.#`, `ss.#.#` (regex, ưu tiên trước mẫu ngầm). R7: = macro có tham số TeX không dấu `\`
+  + linear format của Word. Ranh giới: từ khoá tiếng Việt không dấu do người đặt, KHÔNG là tên lệnh LaTeX.
+  Đường gõ tắt/phím tắt cụm công thức **chèn thẳng** (không hỏi đổi điểm); đổi tên điểm nay là nút trong bảng **Sửa công
+  thức** (click công thức trong bài); cụm ĐOẠN vẫn hỏi trước. Bug cũ đã vá: cụm tạo qua bảng dựng lưu ô trống thành `{}`
+  (không phải `#?`) → chưa bao giờ nhận tham số; `CumModal.save` chuẩn hoá.
+- **GỘP công thức lúc LƯU (`doc.ts gopCongThuc`):** 2 công thức inline chỉ cách nhau toán tử/số/khoảng trắng → 1 công
+  thức (`góc ABC = 50°` không còn 2 mảnh: hết gãy dòng khi in, 1 click sửa). Có chữ/dấu phẩy giữa → giữ. Áp ở
+  `SoanWorkspace.save` + `getValue()` của handle; KHÔNG áp lúc gõ.
+- **Ô công thức MathLive — 4 vá 07–09/09 (`lib/math/mathfield.ts`, `latex-fix.ts`, `kho/ui.tsx`):** ① click ô ▢ tự nhảy vào ô
+  · ② mở lại công thức đã lưu: `{}` → ô ▢ (`reviveBlanks`) · ③ **`patchAccentSelection`**: MathLive 0.110 gán
+  `captureSelection=true` cho AccentAtom → chữ dưới mọi dấu mũ (`\widehat \hat \vec`…) không click được, Backspace xoá cả
+  ký hiệu → ghi đè accessor trên prototype (lấy qua `<math-field>` tạm) 1 lần/trang · ④ `fixAccentScript` `\widehat{A_2}` →
+  `\widehat{A}_2` (cả lúc render lẫn lúc lưu) + `widenSingleHat` `\widehat{A}` → `\widehat{{}A{}}` chỉ lúc render (mũ phủ đúng
+  chữ thay vì tí hon lệch phải). COPY từ vùng KaTeX render → clipboard `$…$` (`installTexCopy`, `tex()` bọc `data-latex`);
+  RichMath onCopy/onCut = chuỗi kho; dán `$$…$$` hạ về `$…$`. Popup bảng dựng 1040px, ô nhập 28px (`.mf-lg`).
 - **Verify đã làm (Browser pane, không phải người thật):** đủ vòng gõ chữ→chèn cụm→gõ tắt→dựng công thức→sửa tại
   chỗ→Ctrl+Z→dán→tạo cụm-đoạn→bôi đen lưu cụm→tạo thư mục→đổi tên điểm→đặt tên tab→kéo-thả tab. tsc sạch mọi bước;
   `npm run build` (bundle ERP chính, có cả nút ⤢) chạy được. **IME tiếng Việt thật (Telex/Unikey) CHƯA ai gõ tay** — máy
@@ -1104,10 +1128,10 @@ thẳng `ca_test.nguoi_cham_id`/`nguoi_tra_bai_id`, data đã sẵn, không cầ
   xung đột thật (3 file "cùng nối cuối" — giữ cả hai bên).
 - **PHẦN B (vẽ hình phẳng JSXGraph, lưu cấu trúc riêng theo môn, SVG cho in) CHƯA làm** — chặn bởi câu hỏi CEO: hình do
   AI sinh từ đề rồi người duyệt, hay GV tự dựng tay? PHẦN C (không gian) không làm.
-- **Bước kế đã thống nhất (chưa làm):** cụm/thư mục → bảng DB dùng chung (`cum_cong_thuc`, `cum_thu_muc`, nhãn
-  `mon`/`nhanh` §1.6, thư mục trỏ được `chuong` của bản đồ kiến thức từng nhánh) + đăng nhập → nút ⤢ ghi thẳng
-  `loi_giai` theo `ma_cau` (dispatch môn→bảng qua registry, KHÔNG rải `if mon===...`). IME thật cần Thùy tự gõ thử tay
-  1 lần trước khi tin. `AutoTextarea` (DangHub) vẫn hết dùng, giữ+export chờ gật xoá.
+- **Còn lại (chưa làm):** nút ⤢ ghi thẳng `loi_giai` theo `ma_cau` (dispatch môn→bảng qua registry, KHÔNG rải
+  `if mon===...`) — hiện vẫn trả về ô rồi form ERP Lưu. IME thật cần Thùy tự gõ thử tay 1 lần trước khi tin.
+  `AutoTextarea` (DangHub) vẫn hết dùng, giữ+export chờ gật xoá. Sửa công thức TẠI CHỖ trong bài (story Word inline, không
+  popup) — Thùy 08/09 nói "popup cũng chấp nhận được", chưa chọn; hiện là story MathType (popup, click được từng phần).
 
 ### ⭐ TOOL GIẢI BÀI kho chung `giaibai.bkacademy.edu.vn` (06/09, nhánh `feat/giaibai`, worktree `wt-giaibai`) — ĐÃ PUSH `main` (d172a09) + ĐÃ DEPLOY (Thùy, 06/09) — xem thêm mục "06/09 chiều" cuối phần này
 - **Story (Thùy, "giống Qanda"):** hệ liệt kê bài chưa có lời giải → TA **Nhận giải** (bài rời pool, về danh sách riêng) → soạn
@@ -1178,6 +1202,14 @@ thẳng `ca_test.nguoi_cham_id`/`nguoi_tra_bai_id`, data đã sẵn, không cầ
     thiết kế worker; không ai ghi, luôn null; `v_giaibai_bai` vẫn select cho đủ shape) + `fn_giaibai_dem_cho_ai`. Snapshot cùng tên
     trên `*_yeu_cau_giai` thì ĐANG DÙNG — đừng nhầm. Thống kê `fn_giaibai_bao_cao_*` KHÔNG lọc môn (KHTN học thuật thấy cả Toán) — cũ, chưa sửa.
   - **Tính công: để sau** (Thùy) — hiện chỉ track số lượng + `muc_do` + snapshot để so diff khi cần.
+
+### ⭐ KHẢO SÁT "Bạn của con ở BK" — PWA iPad riêng + tab ERP (08–09/09) — ĐÃ PUSH main `299b044`, Vercel project riêng (CEO deploy 09/09)
+- **Mục đích** (`spec-khao-sat-hs.md`): vẽ đồ thị quan hệ ~300 HS (cùng lớp trường / cùng toà-tầng / rủ vào) để kiểm giả thuyết referral trước khi thiết kế CSKH. Trò chơi 3 phút, HS làm trên iPad trung tâm, TA cầm máy. Câu 1–8 = sự thật (đồ thị), câu 9 = ý muốn (lead). **Không nhắc quà** trước màn cuối.
+- **2 quyết định CEO KHÁC spec:** (1) chỉ **form** ra PWA riêng (`khaosat.html` → `dist-khaosat`, khuôn app TA); khớp tên + kết quả ở ERP lá **Vận hành → Khảo sát Bạn của con**. (2) **9 trường khảo sát = thông tin cá nhân HS** → cột trên `hoc_sinh` (lop_truong · noi_o_loai · toa · tang · khu · ly_do_vao · bo_me_ban_ph_lop · bo_me_chuc_vu_toa · nghe_bo_me; trường dùng `truong_hoc` sẵn có), sửa tay được ở hồ sơ HS.
+- **DB (mig `202609080246_khao_sat_hs_ban_cua_con`):** `khao_sat_hs` (1 dòng/HS/đợt ĐÃ NỘP, `tra_loi` jsonb snapshot bất biến, `nguoi_bam_ho`, unique hoc_sinh×dot) · `khao_sat_hs_quan_he` (1 dòng/CẠNH: loai biet/duoc_ru_boi/da_ru/muon_ru, `ten_goc` gõ tự do, `den_hoc_sinh_id` khớp SAU bằng tay, `ngoai_bk`) · RLS `la_thanh_vien()` · `fn_bo_dau` (translate thuần, DB không có unaccent) · RPC `fn_khao_sat_hs_nop(jsonb)` = 1 transaction (insert khảo sát + UPDATE hoc_sinh + insert cạnh; câu tuỳ chọn null → giữ cũ) · `fn_khao_sat_lop_tien_do/luoi_lop/danh_sach/canh/goi_y_khop/khop/tong_quan` · 5 view `v_khao_sat_cum_truong/cum_toa/kenh/vector/lead`. Param đợt kiểu `int` (literal 1 không resolve hàm smallint).
+- **Client:** seam `src/lib/khaosat.ts` · `src/screens/khaosat/`: `KhaoSatForm` (1 câu/màn, thẻ to, chip tên + pill, confetti canvas tự viết, visualViewport chống bàn phím iOS che nút Tiếp, mất mạng giữ state + Nộp lại, màn cuối tự về lưới sau 3s) · `KhaoSatLuoi` (lớp theo khối + tiến độ → lưới avatar, đã làm mờ+✓, toggle "TA bấm hộ" mặc định bật khối ≤5) · `KhopTenTab` · `KetQuaTab` · `KhaoSatScreen`. Entry: `AppKhaoSat.tsx`/`main-khaosat.tsx`/`vite.config.khaosat.ts` (port 5184, icon `icon-khaosat-*`), script `dev/build/preview:khaosat`, `vercel-ignore` nhận `bkdemy-erp-v2-khaosat`.
+- **Deploy:** Vercel project riêng, build `npm run build:khaosat`, output `dist-khaosat`, env `VITE_SUPABASE_URL` + `VITE_SUPABASE_KEY` (anon). iPad = iOS ⇒ chỉ PWA (Safari → Chia sẻ → Thêm vào MH chính). Domain đề xuất `khaosat.bkacademy.edu.vn`.
+- **Trạng thái/tồn đọng:** đã verify end-to-end trên bản build khổ iPad; **dữ liệu thử còn trong DB** (khảo sát Bùi Tuệ An đợt 1 + 5 cạnh, 1 cạnh đã khớp Đinh Thế Bảo) — xoá dòng `khao_sat_hs` id=1 (cascade) trước khi chạy thật. Bước tiếp theo theo spec §6: chạy thử 1 lớp (~20 HS) → sửa câu/danh sách → phủ hết 1 tuần → khớp tên → đọc 4 view.
 
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
 
@@ -1512,6 +1544,12 @@ thẳng `ca_test.nguoi_cham_id`/`nguoi_tra_bai_id`, data đã sẵn, không cầ
   **Quy tắc thật (không phải chỉ "gom commit của 1 phiên"):** khi NHIỀU phiên cùng làm việc trên 1 repo
   Vercel-8-project trong cùng khung giờ, tổng lượt push của TẤT CẢ phiên cộng lại mới là con số so với
   trần — 1 phiên tự kỷ luật gom commit không đủ nếu các phiên khác vẫn push dồn dập song song.
+
+### Bài học 08–09/09 — hạ tầng đa phiên & deploy
+- **`npm run migrate` của phiên khác quét cả file migration ĐANG VIẾT DỞ của mình.** `new-migration` tạo file template rỗng trước; phiên MCQ chạy `npm run migrate` ⇒ sổ `_migrations` ghi "đã áp" với vân tay của template, DB không có bảng, `--status` báo sạch. Rule: làm song song thì viết xong SQL rồi mới tạo file (hoặc đổi tên file lúc xong), và **không chạy `npm run migrate` trần** khi biết có phiên khác đang có file treo — áp đúng file mình. Sửa sổ: update `bam` trong CÙNG transaction với SQL thật.
+- **Prod báo "Invalid API key"** = key nướng trong bundle sai. Đừng đoán: tải `assets/*.js` đang chạy, grep key, so với `.env.local` **từng ký tự** (09/09: thừa đúng 1 chữ "W" cuối key trên Vercel). Vite nướng env lúc build ⇒ sửa env xong PHẢI Redeploy.
+- **Commit của mình chỉ chứa hunk của mình** khi nhiều phiên cùng sửa `package.json`/`launch.json`: dựng blob từ `git show HEAD:file` + đúng dòng mình thêm rồi `git update-index --cacheinfo`, không `git add` cả file. "commit đi" của CEO = commit + push luôn (Vercel tắt auto-deploy).
+- **Scale app riêng:** mỗi app một project Vercel (blast radius, rollback/env riêng); trần build/ngày là chuyện gói Hobby → lên Pro, không gộp project. Gộp chỉ cân nhắc cho tầng "công cụ/chiến dịch" khi ≥5 app, bằng rewrite theo host.
 
 ## ③ Nhật ký
 → Chuyển sang **`DEVLOG.md`** (log thô append-only, theo ngày, KHÔNG load khi làm). Là nguồn bất biến để truy lại / tổng hợp lại HANDOFF nếu bản này sai logic.
