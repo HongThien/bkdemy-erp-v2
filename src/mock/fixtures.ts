@@ -97,6 +97,8 @@ export const adminLeaves: AdminLeaf[] = [
   // Tủ quà (Thùy 30/08): đổi quà thanh toán bằng xu + order đặt trước + kho. Màn ở APP OPS (tab Quà);
   // DB layer = mig 202608300908 (viết lại hệ qlht_* của Hải theo style ERP).
   { id: 'tu_qua',      nhom: 'Vận hành',  ten: 'Tủ quà (đổi xu)',              founderOnly: false },
+  // Khảo sát 'Bạn của con ở BK' (CEO 08/09, spec-khao-sat-hs.md): đồ thị quan hệ HS — làm trên iPad (PWA riêng) + khớp tên + kết quả ở đây.
+  { id: 'khaosat',     nhom: 'Vận hành',  ten: 'Khảo sát Bạn của con',         founderOnly: false },
 
   // ── GAMIFICATION: Elo/EXP, thành tích, level ──
   { id: 'diemso',      nhom: 'Gamification', ten: 'Điểm số (Elo/EXP)',        founderOnly: false },

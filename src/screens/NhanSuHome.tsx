@@ -52,6 +52,7 @@ import PhanCongOpsScreen from './vanhanhops/PhanCongOpsScreen'
 import ScanDaChamScreen from './vanhanhops/ScanDaChamScreen'
 import TuyenSinhScreen from './tuyensinh/TuyenSinhScreen'
 import TestDauVaoScreen from './tuyensinh/TestDauVaoScreen'
+import KhaoSatScreen from './khaosat/KhaoSatScreen'
 import BoTroScreen from './botro/BoTroScreen'
 import BoTroDuoiScreen from './botro/BoTroDuoiScreen'
 import ChatLuongVanHanhScreen from './dashboard/ChatLuongVanHanhScreen'
@@ -623,6 +624,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'hs' ? <HocSinhScreen />
       : staffLeaf === 'tuyensinh' ? <TuyenSinhScreen />
       : staffLeaf === 'test_dau_vao' ? <TestDauVaoScreen />
+      : staffLeaf === 'khaosat' ? <KhaoSatScreen />
       : staffLeaf === 'botro' ? <BoTroScreen />
       : staffLeaf === 'botro_duoi' ? <BoTroDuoiScreen />
       : staffLeaf === 'buoihoc' ? <BuoiHocScreen />

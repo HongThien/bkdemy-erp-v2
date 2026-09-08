@@ -34,7 +34,10 @@ export type PhanCongLop = { id: string; nhan_su_id: string; lop_id: string; vai_
 // TRƯỞNG KHỐI — phụ trách RÀ SOÁT dữ liệu cả 1 khối (không gán per-lớp được, phạm vi rộng hơn phan_cong_lop).
 // Độc lập vi_tri/team (không phải chức danh tổ chức chính thức) — Thùy chốt 21/08.
 export type PhanCongKhoi = { id: string; nhan_su_id: string; khoi: string; mon: string; created_at?: string }
-export type HocSinh = { id: string; ma_hs: string | null; ho_ten: string; ngay_sinh: string | null; gioi_tinh: 'nam' | 'nu' | null; khoi: string | null; trang_thai: 'dang_hoc' | 'bao_luu' | 'nghi'; phu_huynh_id: string | null; diem_test_dau_vao: number | null; ngay_nhap_hoc: string | null; dia_chi: string | null; truong_hoc: string | null; anh_url: string | null; ngay_nghi: string | null; ly_do_nghi: string | null; created_at?: string }
+export type HocSinh = { id: string; ma_hs: string | null; ho_ten: string; ngay_sinh: string | null; gioi_tinh: 'nam' | 'nu' | null; khoi: string | null; trang_thai: 'dang_hoc' | 'bao_luu' | 'nghi'; phu_huynh_id: string | null; diem_test_dau_vao: number | null; ngay_nhap_hoc: string | null; dia_chi: string | null; truong_hoc: string | null; anh_url: string | null; ngay_nghi: string | null; ly_do_nghi: string | null; created_at?: string
+  // Thông tin cá nhân từ khảo sát 'Bạn của con ở BK' (mig 202609080246) — hồ sơ ERP sửa được, khảo sát ghi đè khi HS nộp.
+  lop_truong?: string | null; noi_o_loai?: 'chung_cu' | 'nha_dat' | null; toa?: string | null; tang?: number | null; khu?: string | null
+  ly_do_vao?: 'ban_ru' | 'bo_me_quyet' | 'bo_me_hoi_con_chon' | 'khac' | null; bo_me_ban_ph_lop?: 'co' | 'khong' | 'khong_biet' | null; bo_me_chuc_vu_toa?: 'co' | 'khong' | 'khong_biet' | null; nghe_bo_me?: string | null }
 export type PhuHuynh = { id: string; ma_ph: string; ho_ten: string; so_dien_thoai: string | null; email: string | null; dia_chi: string | null; created_at?: string }
 export type HocSinhLop = { id: string; hoc_sinh_id: string; lop_id: string; muc_nang_luc_id: string | null; ngay_vao: string | null; ngay_roi: string | null; trang_thai: 'dang_hoc' | 'da_roi' }
 // Ngày hôm nay giờ VN (CLAUDE.md §2 — không toISOString)

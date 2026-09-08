@@ -41,7 +41,10 @@
     "preview:pt": "vite preview --config vite.config.pt.ts --outDir dist-pt",
     "dev:giaibai": "vite --config vite.config.giaibai.ts",
     "build:giaibai": "vite build --config vite.config.giaibai.ts",
-    "preview:giaibai": "vite preview --config vite.config.giaibai.ts --outDir dist-giaibai"
+    "preview:giaibai": "vite preview --config vite.config.giaibai.ts --outDir dist-giaibai",
+    "dev:khaosat": "vite --config vite.config.khaosat.ts",
+    "build:khaosat": "vite build --config vite.config.khaosat.ts",
+    "preview:khaosat": "vite preview --config vite.config.khaosat.ts --outDir dist-khaosat"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.113.0",

@@ -115,6 +115,18 @@
         "127.0.0.1"
       ],
       "port": 5190
+    },
+    {
+      "name": "dev-khaosat",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev:khaosat"],
+      "port": 5184
+    },
+    {
+      "name": "preview-khaosat",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "preview:khaosat", "--", "--port", "5185", "--strictPort"],
+      "port": 5185
     }
   ]
 }
