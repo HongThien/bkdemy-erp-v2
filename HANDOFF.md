@@ -1179,8 +1179,34 @@ thẳng `ca_test.nguoi_cham_id`/`nguoi_tra_bai_id`, data đã sẵn, không cầ
   câu nghi/chưa kiểm ⇒ `kiem_may='khop'` bởi 'nguoi', máy đã khớp mà người không đổi ⇒ giữ kết quả máy để đo precision mẫu) ·
   **`fn_kho_tu_choi_cau`** (kho rác `xoa_at`, lý do bắt buộc vào `kiem_may_ghi`). KHÔNG có duyệt lô cho hàng nghi/không kiểm/câu mới.
   Phần HÌNH (biến thể/cách giải) của 2 tab lời giải qua toggle "Câu kho / Hình".
-- **Còn lại theo spec §4:** bước 4 mức B (Claude giải lại theo lô, khuôn `hangdoi-giai.mjs`, chỉ báo nghi — ưu tiên câu HS đã làm,
-  ngưỡng ký ≥98%/200 câu chờ CEO chốt) · bước 5 gộp đường vào (clone/giải AI/nhập file ghi thẳng `da_duyet=false`, bỏ bảng nháp
+- **Mức B (Claude giải lại từng câu trong chat) — hạ tầng mig `202609081120_kho_kiem_lo` + `scripts/kho-kiem-ai.mjs`:** mỗi lượt
+  ghi = 1 dòng `kho_kiem_lo` (tên "B-NN K<khối> lô M (dd/mm)"), câu trỏ `kiem_may_lo`; `fn_kho_kiem_lo_thong_ke` / `--thong-ke` =
+  precision người trên từng lô. **Quy trình 1 lô (250 câu):** `--list --khoi 11 --n 250 --out lo.json` (mặc định chỉ câu
+  `created_at < _kho_ngay_bat()`; câu mới cần `--ca-moi`) → render gọn `lo-txt.mjs` → Claude đọc, giải độc lập, chỉ ghi câu lệch vào
+  `kq-dac.json {lo, ghi_chu, dac:{ma_cau:{khop,dap_an_ai,ghi}}}` → `anh-null.mjs` (mọi câu [ẢNH] ⇒ `khop:null`, AI mù hình) →
+  `kq-build.mjs` (câu còn lại mặc định khớp) → `--ghi kq.json` (lô KÝ: khớp ⇒ `da_duyet` + `duyet_nguon='ai'`). Sửa 1 câu đã ký:
+  `scripts/_sua_nghi.mjs <ma_cau> "<ghi>"`. Thống kê: `scripts/_tk_khoi.mjs <khối>`. Helper render/build nằm ở scratchpad phiên
+  (mất thì viết lại 10 dòng — DEVLOG 08/09 tối có nguồn).
+- **Tiến độ mức A+B (08/09, lô A-01 + B-01…B-42):** **khớp 8.580 (đã ký) · nghi 585 · không kiểm được 542** (hầu hết câu có ảnh:
+  đồ thị/BBT/đường tròn LG/hình không gian). Theo khối (khớp/nghi/kk): K6 730/5/0 · K7 828/5/12 · K8 2.115/177/13 · K9 1.402/72/2 ·
+  K10 620/43/78 · K11 2.650/162/293 · **K12 235/121/144 (mới 2/6 lô)**. **CÒN: K12 988 câu (≈4 lô) + toàn bộ cấp 1 (5, 5T, 4, 4T,
+  3).** Tỉ lệ nghi K6–K11 ≈ 5% đúng như CEO ước; **K12 nhảy lên 24%** vì lỗi dữ liệu/khuôn chứ không phải toán.
+- **Nghi gom theo LOẠI (cho người duyệt + cho nhapkho chặn từ đầu — mức A bắt được, không cần AI):**
+  ① trắc nghiệm KHÔNG có `lua_chon` hoặc phương án nằm trong text đề (K12: T112010307, T112020305011–020, T112010102001–011) ·
+  ② khuôn sinh ≥2 phương án đúng / không phương án đúng / phương án trùng nhau (K10 T110010203, T110020102; K11 T111010202;
+  K12 T112010308 16/21, T112010102/103 "đồng biến trên khoảng") — máy tự thử 4 phương án vào đề là lộ ·
+  ③ đáp án ≠ số cuối trong chính lời giải (K11 T111040403; K12 T112070311003, T112070105035…) — so text là bắt được ·
+  ④ đáp án `'null'`/rỗng/chữ, thiếu "+kπ", sai định dạng số thập phân (T112070203007) ·
+  ⑤ đề chứa rác/lời giải của câu khác, hoặc lời giải chứa câu tự thú của AI sinh biến thể ("Oops…", "I made a mistake", "chúng ta sẽ
+  thay thế bằng hàm số", "cần chọn khác") — grep từ khoá ·
+  ⑥ biến thể đổi số mà không tính lại đáp án (cụm lớn nhất về số câu: K8/K9/K11 rút gọn căn, PTLG, tối ưu; K12 vectơ) ·
+  ⑦ đề sai bản chất (hàm không có cực trị, không có GTLN, LP vô số nghiệm) ·
+  ⑧ câu có ảnh ⇒ bắt buộc cửa người (AI mức B để `khong_kiem_duoc`).
+- **Sự cố đã xử lý 08/09:** 126 câu K8 tạo SAU ngày bật bị ký nhầm ⇒ `_revert_ky_moi.mjs` gỡ; `--list` từ đó khoá theo mốc thời gian.
+  Claude tự sửa 1 câu ký nhầm (T110010203027) sau khi thấy cả cụm ở lô sau.
+- **Còn lại theo spec §4:** bước 4 chạy nốt K12 + cấp 1 (ngưỡng ký ≥98%/200 câu chờ CEO chốt — đang ký theo mặc định spec; mức C
+  người soát mẫu 2% rồi `--thong-ke` để có precision thật; 585 câu nghi + 542 không kiểm được đang nằm ở màn duyệt tab "Máy nghi"/
+  "Không kiểm được") · bước 5 gộp đường vào (clone/giải AI/nhập file ghi thẳng `da_duyet=false`, bỏ bảng nháp
   `dai_cau_hoi_clone_cho_duyet`; `nhapkho-file.mjs` phải ghi `dang_ai_de_xuat`) · bước 6 bỏ vế "câu cũ tạm dùng" — **PHẢI DROP/ADD
   lại cột `kho_chuan`** (generated stored không tự tính lại khi đổi thân hàm). 17 câu nghi đang chờ TA duyệt (khối 5:11 · 5T:2 · 6:2 · 7:2).
 
@@ -1523,6 +1549,12 @@ thẳng `ca_test.nguoi_cham_id`/`nguoi_tra_bai_id`, data đã sẵn, không cầ
   `--only <file>`**. Preview tool chỉ đọc `.claude/launch.json` THƯ MỤC CHÍNH và phiên worktree không sửa được file đó ⇒ chạy vite nền
   `npm run dev -- --port 5191 --host 127.0.0.1 --strictPort` rồi `preview_start {url}`; đăng nhập bằng nút dev account của `Login.tsx`
   (`VITE_DEV_ACCOUNTS` trong `.env.local`). 403 font KaTeX qua `@fs/` = junction ngoài root vite, không phải lỗi code.
+- **Mức B: ký cả CỤM chỉ sau khi giải lại TỪNG câu — "cụm này sạch" là ảo giác.** Bỏ sót 4 câu T111040201 (B-38) và 7 câu
+  T111010202 (B-29) đều do đọc lướt cụm cùng khuôn rồi mặc định khớp; lỗi khuôn MCQ (2 phương án đúng) chỉ lộ khi thử từng phương án.
+  Gặp 1 câu lạ trong cụm ⇒ quay lại rà mọi câu cùng khuôn đã ký. `lo-txt` cắt lời giải 250 ký tự — nghi thì đọc FULL lời giải
+  (số cuối lời giải ≠ đáp án là loại lỗi phổ biến nhất K11/K12).
+- **Quét lô phải đóng đinh tập câu theo MỐC THỜI GIAN, không theo "cái gì đang null".** Kho SỐNG (2 phiên ghi cùng lúc): 126 câu
+  mới tạo trong lúc quét bị ký nhầm vì `--list` chọn theo `kiem_may is null`.
 - **Sidebar "không hiện" trong accessibility tree nhưng screenshot có** — tree của Browser pane có thể stale sau login; tin screenshot,
   hoặc click bằng `javascript_tool` theo text khi ref trả toạ độ âm.
 

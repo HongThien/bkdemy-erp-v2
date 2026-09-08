@@ -9668,3 +9668,126 @@ dưới ô mới là "đúng như khi in". Chỉnh MathLive render là việc kh
   bằng nút dev account của Login.tsx): badge tab đúng, khối 5 hiện 11 thẻ nghi đủ thành phần. 403 font KaTeX qua `@fs/` = do junction
   node_modules ngoài root vite của worktree, không phải lỗi code. **Chưa bấm Duyệt câu thật nào** (việc của TA — spec).
 - Chưa commit (chờ CEO). Bước 4 (mức B theo lô) và bước 5 (gộp đường vào) chưa làm.
+## 2026-09-08 (trưa, ~10:40–11:30) — KHO CHUẨN bước 4: MỨC B lô đầu (Claude giải lại) — worktree `kho-chuan`
+- **Mig `202609081120_kho_kiem_lo`:** bảng `kho_kiem_lo` (kho · boi mcq-auto/claude_code · ten · ky · so_cau/khop/nghi/khong_kiem ·
+  ghi_chu) + cột `kiem_may_lo` trên 3 bảng câu + `fn_kho_kiem_lo_thong_ke` (precision người = xác nhận/(xác nhận+sửa), đọc từ
+  kiem_may_ghi do fn_kho_duyet_cau để lại). Backfill lô **A-01** (mcq-auto 08/09, 1.696 câu) từ dữ liệu thật để không có "đợt vô danh".
+- **`scripts/kho-kiem-ai.mjs`** (khuôn hangdoi-giai): `--list` (ưu tiên câu HS ĐÃ LÀM — có trong bai_test_cau — rồi khối 6→12→cấp 1) ·
+  `--ghi kq.json [--chi-bao]` (1 transaction: dòng lô + update từng câu; khớp ⇒ khop + da_duyet + duyet_nguon='ai' nếu lô KÝ; sai ⇒ nghi;
+  null ⇒ khong_kiem_duoc; không đè câu người/máy đã kiểm) · `--thong-ke`. Ứng viên: 1.570 câu HS đã làm chưa kiểm (K6-8: 73, K10: 205).
+- **Lô B-01 (150 câu: K6 29 · K7 24 · K8 20 · K10 77, đều HS đã làm) — Claude giải độc lập trong chat, KÝ:** khớp **146** · nghi **3** ·
+  không kiểm được **1**. Nghi: `T107010504009` (đề 13/42 < I, kho gõ 13/43) · `T107010506009` (đề A<3/25, kho ghi A<1/15 — SAI, A≈0,12) ·
+  `T108010503089` (kho 5, đúng −15 — lời giải kho cũng ra −15). Không kiểm được: `T110010204050` (70 gà + 60 vịt ≠ 120, lẫn loài với
+  vaccine). 3 câu nghi tự rời kho chuẩn; câu K10 tự luận/trắc nghiệm mệnh đề (không đáp số số học) đọc bằng lý luận.
+  Nhận xét: sai kho lô này 2% và đều là lỗi GÕ/đề (không phải lỗi tính) — máy mức A không bắt được vì ngoài whitelist. Ngưỡng ký
+  ≥98%/200 câu (§5) chưa CEO chốt — lô 1 ký theo mặc định spec §2; hàng đợi giờ nghi 20 · không kiểm 1.
+- Chưa commit.
+## 2026-09-08 (chiều, ~11:30–12:30) — MỨC B chạy hết K6 · K7 · K8 (lô B-02…B-18) — worktree `kho-chuan`
+- CEO: "chạy lần lượt tất cả các câu còn lại trong kho, mỗi lần xong toàn bộ 1 khối". Cách làm mỗi lô: `--list --khoi N --n 250` →
+  render txt gọn (scratch `lo-txt.mjs`) → Claude đọc & giải độc lập trong chat → `kq-dac.json` chỉ ghi câu KHÁC (nghi/không kiểm) →
+  `kq-build.mjs` nở ra đủ 250 (mặc định khớp) → `--ghi`. Lô nào cũng KÝ (chưa có ngưỡng CEO chốt).
+- **Kết quả:** K6 706 câu (B-02..04): nghi 5 · K7 821 (B-05..08): nghi 3, không kiểm 12 (hình) · **K8 2.585 (B-09..18): nghi 176, không
+  kiểm 13.** K8 sai NHIỀU hơn hẳn (6,8%) và lỗi tập trung theo CỤM SINH BIẾN THỂ: kho có nhiều dãy câu "đổi số nhưng không tính lại"
+  — chia đa thức rơi biến (T108010402001–014), tìm x lấy căn đáp số (T108010503051–058: kho 2,3,4… đúng 4,9,16…), rút gọn 1 biến
+  (T108010501034–055: 21/22 sai, đề không rút gọn được hằng số), nhân 3 đa thức (T108010303045–055: 10/11 sai), hoàn thiện HĐT đáp số
+  thiếu hạng tử x² (21 câu), GTNN 3 bình phương tách sai/không bị chặn dưới (7 câu), ĐTTNT dạng ax−b+cy(k−x) 8 đề không có nhân tử chung,
+  lời giải chứa text rác AI ("Xin lỗi, tôi đã chọn sai biến thể…"). ⇒ **bài học cho nhapkho:** biến thể sinh hàng loạt phải chạy mức A/B
+  ngay khi nhập, và nên soát theo CỤM (cùng dạng, cùng khuôn) chứ không theo câu lẻ.
+- **SAI của Claude, đã sửa:** `--list` không lọc `created_at` ⇒ 2 lô cuối K8 (B-17: 96 câu, B-18: 30 câu) đã KÝ `da_duyet` cho câu
+  vừa được PHIÊN KHÁC nhập kho lúc 12:06–12:13 (sau NGÀY BẬT) — vi phạm spec cửa 1 (câu mới phải người duyệt; AI mức B là để quét kho
+  CŨ). Phát hiện nhờ `--list --khoi 8` chạy xong vẫn ra 6 → 12 câu (import đang chạy song song). Đã gỡ ký 126 câu (`_revert_ky_moi.mjs`:
+  da_duyet=false, duyet_nguon/duyet_at=null, GIỮ kiem_may='khop' + ghi chú vào kiem_may_ghi) ⇒ chúng về tab "Câu mới chờ duyệt" với badge
+  máy khớp; `--list` giờ mặc định `created_at < _kho_ngay_bat()`, thêm cờ `--ca-moi` khi cố ý. 12 câu K8 mới (T108030301098+, 12:13) không
+  kiểm — để cửa 1. **Bài học:** kho đang SỐNG (2 phiên ghi cùng lúc) — mọi quét lô phải đóng đinh tập câu theo mốc thời gian, không theo
+  "cái gì đang null".
+- Đang chạy K9 (1.476 câu ≈ 6 lô): B-19 lô 1/6 xong (247 khớp · 3 nghi — hệ PT đáp số không thỏa hệ). Chưa commit.
+
+## 2026-09-08 (chiều, ~12:30–14:00) — MỨC B chạy hết K9 (lô B-19…B-24)
+- **K9 XONG:** 1.476 câu → 1.402 khớp (đã KÝ da_duyet, duyet_nguon='ai') · 72 nghi (4,9%) · 2 không kiểm được. 0 câu K9 (trước NGÀY BẬT)
+  còn `kiem_may` null. Lô: B-19 247/3 · B-20 244/6 · B-21 232/18 · B-22 236/12(+2 kk) · B-23 243/7 · B-24 200/26 (226 câu).
+- **Lỗi K9 gom theo CỤM (cùng khuôn sinh biến thể) — người duyệt nên sửa cả cụm 1 lần:**
+  - T109080101023–034 (11 câu) "Tìm GTNN ax²+bx+c": lời giải ra k(x+m)² − d nhưng đáp án ghi **+d** (mất dấu âm).
+  - T109080102019/024/029/031/033 GTLN-GTNN trên đoạn: lấy sai đầu mút (lời giải nhẩm đúng, đáp số ghi sai).
+  - T109090101002/003/004/010/011 tối ưu doanh thu: lấy sai x tối ưu (5/14 câu). T109090201009/010/012/013 tối ưu chi phí 1 biến:
+    biến thể cho x² không chính phương nhưng đáp án vẫn ghi "số đẹp" sai. T109080103016/019 Cauchy 3 số: đáp án ≠ lời giải.
+  - T109020203007–010 (4/4) BPT có mẫu: đáp án ≠ lời giải. T109020304027, T109020305002/003, T109020307004, T109020303011,
+    T109020204028, T109080106026, T109020301039, T109090301013, T109090201014, T109090401021: bài toán thực tế biến thể đổi số không tính lại.
+  - **B-24 (rút gọn căn thức chứa biến)**: T109030203030–034 (5) sai DẤU (−1/(√x+a)); T109030203055–059 (5) đề sai dấu → không rút gọn
+    được; T109030203060–064 (5) rút gọn ra **−1** nhưng kho ghi (√x+a)/(√x−a); T109030204017–026 (10) |ax−b|=c có 2 nghiệm, lời giải ra
+    cả 2 nhưng đáp án chỉ ghi 1; T109030203050 đề in nhầm mẫu (x−8 thay vì √x−8).
+  - T109090401018/019 (LP): hệ số hàm mục tiêu song song cạnh ràng buộc → vô số nghiệm tối ưu → `khong_kiem_duoc`, cần sửa đề.
+  - Cụm SẠCH (0 lỗi/230 câu): rút gọn căn số T109030101 (120) + HĐT trong căn T109030102 (110); ĐKXĐ + tính giá trị căn (110 câu) 0 lỗi.
+- Helper mới (untracked): `scripts/_tk_khoi.mjs <khoi>` — thống kê kiem_may theo khối + bảng lô + số câu còn chưa kiểm.
+- Bắt đầu K10 (lô B-25 = 250 câu, có 128 câu HS đã làm; created 08-10 → 08-28, sau_bat 0).
+
+## 2026-09-08 (chiều, ~14:00–15:30) — MỨC B chạy hết K10 (lô B-25…B-27)
+- **K10 XONG:** 741 câu → 620 khớp (KÝ) · 43 nghi (5,8%) · **78 không kiểm được** (10,5% — câu có [ẢNH] trục số / miền nghiệm /
+  "chọn Hình 1–4", Claude không xem được hình → để người duyệt). Lô: B-25 211/11(+28 kk) · B-26 200/31(+19 kk) · B-27 133/1(+30 kk).
+- **Lỗi K10 gom theo CỤM — tất cả là lỗi KHUÔN sinh biến thể MCQ (đề có ≥2 phương án đúng hoặc không có phương án đúng):**
+  - T110010203025–035 "Chọn kết quả đúng" (A∪B / A∩B / A∖B / B∖A): 027 (2 pa đúng), 028/030/031/032/033/034/035 (3 pa đúng — chỉ A∩B
+    sai), 029 (kho chọn pa sai). Khuôn gốc chỉ 1 pa đúng; sinh biến thể xong cả A, C, D đều đúng. → 9/11 câu hỏng.
+  - T110020102019–023 & 040–052 (điểm thuộc/không thuộc miền nghiệm BPT ĐƠN, cặp số là nghiệm): 16/19 câu có ≥2 pa đúng hoặc đáp án
+    sai (kho chọn điểm THUỘC làm "không thuộc"). Ngược lại cụm HỆ BPT T110020203 (38 câu) 0 lỗi — khuôn hệ chặt hơn.
+  - T110010203003/004/006 giao khoảng: A ∩ B = [−2;−1) nhưng 4 phương án đều lệch đầu mút → không có pa đúng.
+  - T110010206008/009/010/011/012 tham số "bao nhiêu m nguyên": 4/5 chép đáp số 4046 của câu gốc không tính lại (đúng: 4042/4040/4044/4038/4036).
+  - Lẻ: T110010203038/043 (2a+b, a+b đáp số ≠ lời giải), T110010202066/095 (chọn sai pa dù lời giải đúng), T110010206005, T110020204011 (LP
+    lấy điểm vi phạm ràng buộc), T110010203029.
+  - Cụm SẠCH: mệnh đề T1100101xx (122 câu) 0 lỗi; nhận diện BPT/hệ BPT (~90 câu) 0 lỗi; tối ưu tuyến tính T110020204 51/52.
+- **SAI của Claude, đã sửa:** T110010203027 (B-25) ghi khớp nhầm — phát hiện khi gặp cả cụm ở B-26 → `scripts/_sua_nghi.mjs <ma_cau> "<ghi>"`
+  (gỡ ký AI 1 câu: kiem_may='nghi', da_duyet=false, chỉ đụng câu kiem_may_boi='claude_code'). **Bài học:** lỗi khuôn MCQ chỉ lộ khi
+  soát cả cụm — gặp 1 câu lạ trong cụm thì quay lại rà các câu cùng khuôn đã ký.
+- **Đề xuất cho nhapkho (K10):** với MCQ sinh biến thể, máy phải tự thử 4 phương án vào đề (thay số/thay điểm) và từ chối nếu ≠ đúng 1 pa đúng
+  — mức A làm được, không cần AI.
+- Bắt đầu K11 (3.105 câu ≈ 13 lô; lô B-28 = 250, HS đã làm 105; created 06-15 → 08-24, sau_bat 0).
+
+## 2026-09-08 (chiều–tối, ~15:30–18:30) — MỨC B chạy hết K11 (lô B-28…B-40)
+- **K11 XONG:** 3.105 câu → 2.650 khớp (KÝ, 85,3%) · 162 nghi (5,2%) · **293 không kiểm được** (9,4% — câu [ẢNH]: đường tròn lượng giác,
+  đồ thị hàm lượng giác, "chọn hình"). 0 câu K11 (trước NGÀY BẬT) còn `kiem_may` null. Lô: B-28 161/24(+65 kk) · B-29 198/46(+6) ·
+  B-30 240/10 · B-31 244/6 · B-32 248/2 · B-33 247/3 · B-34 247/3 · B-35 127/5(+118 kk) · B-36 180/8(+62 kk) · B-37 241/9 ·
+  B-38 204/36(+10 kk) · B-39 209/9(+32 kk) · B-40 104/1 (105 câu).
+- **Lỗi K11 gom theo CỤM:**
+  - Chương 1 (góc/GTLG): T111010302 (16 câu) biến thể "xét dấu" cho khoảng mà dấu KHÔNG xác định được; T111010301 (6) lỗi dấu khi biến đổi
+    α−π; T111010202 (12) MCQ 2 pa đúng / góc ngoài khoảng; T111020302 (6) sai số học/dấu; T111030401085–089 thiếu phương án (chỉ có chữ cái).
+  - Chương 4 (PTLG) — B-38: **T111040301001–005 (5/6)** "mực nước cao nhất lúc mấy giờ" kho ghi giờ THẤP nhất (cos π = −1) hoặc giờ bất kỳ;
+    **T111040302001–012 (10/12)** đếm số lần đạt max sai (đếm thiếu họ −α+k2π, hoặc đếm gấp đôi), 017/021/022/027/030 đếm sai cận;
+    **T111040103061–063** đáp án D "cot x = a vô nghiệm" SAI kiến thức (cot nhận mọi giá trị) — đúng là C cos x = −2;
+    T111040204001/002 đáp án là chuỗi 'null'; T111040204026/027 + T111040203012 thiếu "+kπ"; T111040203003/005/013, T111040204031,
+    T111040201026/035/050/055 sai họ nghiệm (dấu/chu kì) — 2 câu MCQ không có pa đúng. T111040101055–058 cos=0 giải ra kπ; T111040202 'null'.
+  - **B-39 — T111040403 "x1 + x2 = a/b·π, tính a+b" (7/48 câu: 018/021/024/025/038/039/053): đáp án trong kho KHÁC kết quả cuối của
+    CHÍNH lời giải** (021 LG ra 1, kho 3; 025 LG ra 2, kho 1; 038 LG ra 4, kho 11) hoặc lời giải sai (024/039 lấy x2 = 0 hoặc bỏ sót nghiệm
+    dương nhỏ hơn; 018 viết −2π = −23π/12; 053 cộng −π/12 + π/3 = π/6). → Loại lỗi MỚI: **đáp án và lời giải cùng câu mâu thuẫn nhau** —
+    mức A bắt được bằng cách so số cuối lời giải với dap_an (không cần AI).
+  - Chương 6 (dãy số) gần sạch: T111060101019 (u1 = 6, u2 = 3 — không pa nào đúng), T111060104041 (C "Mọi a" ≡ D "Không phụ thuộc a"),
+    T111060201004 (2 pa cùng không phải CSC). Cụm SẠCH: T111060102 (31) · T111060103 (21) · T111060104 (47/48) · T111060105 (47) · T111060201 (42/43).
+  - Không kiểm được: T111030501/502/503 (~190, đồ thị/hình), T111040401 (đường tròn LG, 22), T111040402011–030 (đếm nghiệm trên đồ thị, 20 —
+    Claude tính giải tích đều KHỚP kho nhưng vẫn để kk vì không xem được hình).
+- **SAI của Claude, đã sửa trước khi ghi:** B-38 lúc tóm tắt bỏ sót 4 câu T111040201 (026/035/050/055) đã đọc là "khớp" — soát lại cả
+  cụm 37 câu bằng tay trước khi `--ghi` mới lộ. Lặp lại bài học K10: **ký cả cụm chỉ sau khi giải lại từng câu, không tin "cụm này sạch".**
+- Helper mới (scratchpad, không commit): `anh-null.mjs` (tự thêm khop:null cho mọi câu có [ẢNH]), `lg-full.mjs` (in full lời giải kho
+  của vài mã — lo-txt cắt LG 250 ký tự nên phải đọc full khi nghi).
+- **Đề xuất cho nhapkho (K11):** (1) so **số cuối trong lời giải** với `dap_an` (mức A); (2) đáp án PTLG phải có "+kπ/+k2π" nếu lời giải có;
+  (3) từ chối `dap_an` = 'null'/rỗng/chữ; (4) câu có ảnh → bắt buộc cửa người (AI mức B mù hình).
+- Còn lại: K12, rồi cấp 1 (5, 5T, 4, 4T, 3). Chưa commit.
+
+## 2026-09-08 (tối, ~18:30–21:00) — MỨC B K12 lô B-41, B-42 (2/6 lô) — CEO bảo tạm dừng, tổng hợp, push
+- **K12 mới xong 2/6 lô (500/1.488 câu):** B-41 88 khớp · **67 nghi** · 95 kk (ảnh) · B-42 147 khớp · **54 nghi** · 49 kk. Tỉ lệ nghi
+  K12 cao bất thường (24%) — không phải toán sai nhiều mà là **lỗi DỮ LIỆU/KHUÔN**:
+  - **Trắc nghiệm không có phương án** (đáp án chỉ là chữ cái): T112010307002–011 (10), T112020305011–020 (10); **phương án nằm trong
+    text đề, `lua_chon` rỗng**: T112010102001–011 (11). Máy mức A bắt được ngay (loai='trac_nghiem' and lua_chon is null/empty).
+  - **Khuôn sinh 2 phương án đúng:** T112010308 "tiệm cận bằng định nghĩa" 16/21 (đưa cả TCĐ lẫn TCN đúng vào 4 phương án);
+    T112010102030–040 + T112010103 "đồng/nghịch biến trên khoảng" 8 câu (hàm bậc 3 có 2 khoảng cùng chiều, khuôn đưa cả 2 vào).
+  - **Đề chứa rác / lời giải:** T112020202004/006, T112010304010/012, T112030101007, T112030103014/040 (đề bắt đầu bằng đoạn lời
+    giải của câu khác); 4 phương án giống hệt (T112010101011/012); phương án trùng (T112070302014); phương án rỗng/thừa E
+    (T112020201009, T112010302007/016/021, T112070304019/021); đáp án 'null' (T112010401027); đáp án sai định dạng (T112070203007).
+  - **Lời giải chứa câu tự thú của AI sinh biến thể:** T112020305002/003 ("Oops, the original was true…", "Again, I made a mistake"),
+    T112020303020 ("chúng ta sẽ thay thế bằng hàm số khác"), T112030103024 (LG lan man "có thể đây là lỗi"), T112070307025 ("không nguyên,
+    cần chọn khác"). → **grep lời giải theo từ khoá tiếng Anh/"thay thế"/"cần chọn khác" là bắt được cả cụm, không cần AI.**
+  - Biến thể vectơ/hàm số không tính lại đáp án: T112070101051, T112070102012/042, T112070105035, T112070107011/024, T112070101032/
+    034/045, T112020303014/021, T112020305022–026 (tiếp tuyến vuông góc có 2 hoành độ, kho chỉ chọn 1), T112020303015/018/020 (hàm
+    KHÔNG có cực trị). Bài toán thực tế sai: T112030103041/063/020/024/047, T112030104006, T112030102022/025/062, T112010403009,
+    T112070311003 (LG ra 7,28, kho 8.00); đề ≠ lời giải: T112030101015, T112030102020, T112030102045 (không có dạng m·eⁿ).
+- **Tổng mức A+B tới giờ (K6→K12):** khớp 8.580 (ký `da_duyet`, `duyet_nguon='ai'`) · nghi 585 · không kiểm được 542 (đa số câu có
+  ảnh). Theo khối: K6 730/5/0 · K7 828/5/12 · K8 2.115/177/13 · K9 1.402/72/2 · K10 620/43/78 · K11 2.650/162/293 · K12 235/121/144.
+  **Còn chưa kiểm: K12 988 câu (≈4 lô) + toàn bộ cấp 1 (5, 5T, 4, 4T, 3).** Chưa commit gì từ e2e9d41 tới giờ → commit + push theo lệnh CEO.
+- Scratchpad phiên này (không commit): `lo29..lo42.json/txt`, `kq-dac29..42.json`, `kq29..42.json`, helper `kq-build.mjs`,
+  `anh-null.mjs`, `lg-full.mjs`, `lo-txt.mjs`. Mất scratchpad không sao — mọi kết quả đã ở `kho_kiem_lo` + `kiem_may_ghi`.
