@@ -9802,3 +9802,7 @@ dòng, không dựng lại UI để đo.
   (`bkdemy-erp-v2-khaosat.vercel.app/assets/khaosat-*.js`), grep key nướng trong đó, so với `.env.local` từng ký tự ⇒ key
   trên Vercel **thừa đúng 1 ký tự "W" ở cuối** (209 vs 208). Sửa: Edit env → Redeploy (Vite nướng env lúc build, sửa env
   không tự có hiệu lực). Bài học: "prod vẫn lỗi" thì soi bundle đang chạy trước (đã có memory), so BẰNG ký tự, không so bằng mắt.
+- **Commit `4c61e44` + push main** (CEO gật): điền ô D1–D3, spec kho chuẩn, nhập kho từ Word, catalog lý do, 2 migration. Loại
+  `package.json`/`launch.json` (của phiên khác). CEO test app HS không thấy câu hình: vì prod chưa deploy bản này + nút "Luyện chứng
+  minh" nằm ở màn KẾT QUẢ tự luyện (luồng riêng, không trộn lượt thường). 23/23 form CEO đã duyệt.
+- **Distill HANDOFF.md** (mục ① thêm "08–09/09 — FORM CÂU + KHO CHUẨN + NHẬP KHO TỪ FILE" A–E; mục ② thêm "Bài học 08–09/09" 13 gạch).

@@ -1211,6 +1211,58 @@ thẳng `ca_test.nguoi_cham_id`/`nguoi_tra_bai_id`, data đã sẵn, không cầ
 - **Deploy:** Vercel project riêng, build `npm run build:khaosat`, output `dist-khaosat`, env `VITE_SUPABASE_URL` + `VITE_SUPABASE_KEY` (anon). iPad = iOS ⇒ chỉ PWA (Safari → Chia sẻ → Thêm vào MH chính). Domain đề xuất `khaosat.bkacademy.edu.vn`.
 - **Trạng thái/tồn đọng:** đã verify end-to-end trên bản build khổ iPad; **dữ liệu thử còn trong DB** (khảo sát Bùi Tuệ An đợt 1 + 5 cạnh, 1 cạnh đã khớp Đinh Thế Bảo) — xoá dòng `khao_sat_hs` id=1 (cascade) trước khi chạy thật. Bước tiếp theo theo spec §6: chạy thử 1 lớp (~20 HS) → sửa câu/danh sách → phủ hết 1 tuần → khớp tên → đọc 4 view.
 
+### ⭐ 08–09/09 — FORM CÂU (TN AI · ĐIỀN Ô chứng minh) + KHO CHUẨN (spec) + NHẬP KHO TỪ FILE — ĐÃ PUSH `main` (c694571, 4c61e44)
+
+**Nguyên tắc CEO chốt 09/09:** mỗi câu rồi sẽ có đủ hình thái (TN 4 phương án · trả lời ngắn · điền ô · tự luận); **thứ tự xây theo
+độ dễ**: dễ trắc nghiệm → TN trước; khó (chứng minh, hình) → ĐIỀN Ô trước. HS **không** thấy "đường sai"/nhãn lỗi — chỉ để staff.
+
+**A. Form TRẮC NGHIỆM AI (spec-mcq-form.md, mig 202609080230/0246/0259/0318) — xong M1–M4, đang chờ duyệt**
+- Form = bảng riêng `dai_cau_form_tn` khoá `ma_cau` (KHÔNG đổ `lua_chon` vào câu gốc — etFormOf coi "có lua_chon" = TN ⇒ ET in giấy tự
+  đổi form). 1 form hiệu lực/câu, từ chối = `xoa_at`. Distractor = kết quả THẬT của 1 rule lỗi (`dai_mcq_rule` R01–R27, nhóm
+  khai_niem/tinh). HS chọn sai ⇒ rule ghi 100% chắc (`bai_test_cau.lua_chon_rule[]` song song `lua_chon`, view `v_mcq_loi_hs`).
+- **Pool 1** = lớp 7 "Số hữu tỉ" 9 dạng tính toán: **488 form** (35 tay + 453 máy sinh `scripts/mcq-auto.mjs`: parser LaTeX + Rat
+  BigInt + 27 đường sai + solver tìm x; đáp án máy PHẢI = đáp số kho). Tab **"Trắc nghiệm AI"** (Duyệt lời giải AI) duyệt/sửa/từ
+  chối + `fn_mcq_metric`. Tự luyện/bổ trợ yếu/retest đã coi câu có form duyệt là chấm online được (mở khoá 282 câu tu_luan).
+  ET online lấy form khi GV chọn form TN cho câu không có phương án (`phatHanhTest`); in giấy CHƯA.
+- Clone đổi số `mcq-clone-doi-so.mjs`: 56 clone chờ duyệt (0201 +36…). Máy phát hiện **2 đáp số kho sai**: T107010202053 (13/16→37/24),
+  T107010403036 (8/5→8/3) — chưa sửa kho.
+- Luật "cùng hình thức" ĐÃ NỚI: đáp án đúng phải có ≥1 phương án cùng kiểu (không phải cả 4); tập nghiệm ≤2 phương án đơn.
+
+**B. ĐIỀN Ô chứng minh (spec-dien-o.md, mig 202609081019/1045) — vòng 1 chạy hết, đã push, CHƯA deploy lúc ghi**
+- Lời giải chi tiết bỏ trống **1–4 ô** (4–5 dòng/ô), mỗi ô 4 phương án. Mỗi bước = cặp **"kết luận (lý do)"**, để trống 1 trong 2.
+  **Chỉ đục PHẦN GIỮA** (không đục bước chép giả thiết, không đục bước đích). Đo theo **CÂU**: Đ = đúng hết · S = đúng <40% ô · còn lại C
+  (`fn_dien_cham`). **Đến ô nào hiện đúng/sai ô đó**, điền đáp án đúng vào chỗ trống rồi mở ô kế.
+- Kho hình không có ma_cau ⇒ `hinh_form_dien` khoá `cach_giai_id` XOR `bien_the_id`; `loi_giai_bam` md5 + trigger **thu hồi khi lời
+  giải đổi**. Danh mục lý do chuẩn `hinh_ly_do` (55, nhóm hoán đổi, `duc=false` cho giả thiết/tham chiếu) + `hinh_loi_cm` E01–E05 —
+  vai trò như bảng rule. Bản HS `bai_test_cau.dien` đã **cắt key → ⟦oN⟧** (`_dien_buoc_hs`), `dap_an_key` chữ cái, `o_rule` staff.
+- **Pilot khối 7: 23 form** (17 bài gốc Claude đề xuất tay `scripts/mcq-lo/hinh7-dien-goc.json` + 6 biến thể `--ap-khuon`), CEO đã duyệt
+  23/23. 34 biến thể áp khuôn KHÔNG được (biến thể gộp/tách bước, đặt tên góc khác) — cần đề xuất tay hoặc chuẩn hoá lời giải theo gốc.
+- UI: tab **"Điền ô AI"** (chỉ môn có kho hình) · app HS: nút **"📐 Luyện chứng minh"** ở màn KẾT QUẢ tự luyện → `LamDienO`
+  (RPC `tu_luyen_dien_sinh` 3 bài, `hs_dien_tra_loi` chấm ở DB). Câu hình KHÔNG trộn vào lượt 10 câu thường (logic chọn form = vòng sau).
+- Còn treo: sửa tại chỗ trong tab duyệt · `ma_dang` câu điền ô = null (cách giải khối 7 chưa gán `hinh_dang`) ⇒ chưa vào mastery ·
+  `fn_chon_form` (yếu → ĐIỀN, ổn → TN) · ô "lý do" cho đại số chứng minh (160 câu).
+
+**C. KHO CHUẨN — spec-kho-chuan.md (CEO chốt 09/09, giao WORKTREE KHÁC làm)**
+- Sự thật: 17.743 câu Đại, **60 da_duyet**, cờ `da_duyet` **không được lọc ở bất kỳ chỗ chọn câu nào** (99,7% câu HS làm là chưa duyệt).
+- Chốt: quét một lượt (máy whitelist dạng → Claude giải lại theo lô chỉ BÁO NGHI → người + mẫu 2%); đúng ⇒ coi như duyệt; có vấn đề
+  ⇒ hàng duyệt lại; **câu MỚI phải qua duyệt mới được dùng** — định nghĩa bằng hàm `_kho_cau_chuan` (câu cũ tạm dùng tới khi quét).
+  Màn duyệt = chuẩn hoá (sửa dạng bằng ô tìm kiếm, cụm theo dạng, lưu `dang_ai_de_xuat`), gộp 4 đường vào → 1 hàng đợi.
+- Đo: máy tính (`scripts/kho-quet-dapso.mjs`) chỉ phủ 14% câu, đáng tin 1.611; lệch clone 0,64% vs gốc 1,45% ⇒ giả thuyết "clone sai
+  là chính" chưa có bằng chứng. Lớp 6 dùng dấu chấm làm phép nhân ⇒ máy báo giả, phải xử theo dạng.
+
+**D. Nhập kho từ file Word / PDF (`scripts/docx-doc.mjs`, `nhapkho-file.mjs`)**
+- Thứ tự dễ cho Claude: **Word Equation gốc** (OMML→LaTeX, 0 sai số) > PDF ≈ Word MathType (ảnh, đọc mắt). `tính.docx` (61 câu giữa kì 7)
+  đã đọc + phân loại + lời giải chi tiết (`scripts/mcq-lo/tinh-docx-lop7.json`), **CHƯA ghi kho** (chờ CEO gật): lệnh
+  `node scripts/nhapkho-file.mjs --in scripts/mcq-lo/tinh-docx-lop7.json --ghi`.
+- Dạng mới khối 7: `T107010405` Tích bằng 0 (CEO tạo) · `T107010302` Rút gọn luỹ thừa · `T107010406` Tìm x ở số mũ (Claude tạo);
+  6 câu T107010203049–054 đã dời sang 405.
+- HTML để CEO duyệt phải **TỰ CHỨA** (`scripts/lib/html-tu-chua.mjs`: KaTeX render trong node + font base64 + ảnh data URI) — trình xem
+  trong app chặn CDN và ảnh ngoài.
+
+**E. Hạ tầng:** `node scripts/migrate.mjs --only <file>` (áp đúng 1 file treo — dùng khi có file treo của phiên khác; `npm run migrate`
+và `--baseline` đều đụng file người khác, đã dính 2 lần 08/09).
+
+
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
 
 - **⭐⭐ Đưa script kiểm cho bên bị kiểm = Goodhart (hs-home v3, 08/09):** ChatGPT cầm `design-check.mjs` trong tay → sinh asset để
@@ -1432,6 +1484,35 @@ thẳng `ca_test.nguoi_cham_id`/`nguoi_tra_bai_id`, data đã sẵn, không cầ
 - **⭐⭐ 1 cột (`mon`) phục vụ ĐỒNG THỜI 2 mục đích xung đột (RBAC/billing cần GIÁ TRỊ CỐ ĐỊNH vs content-dispatch cần PHÂN BIỆT thêm) — đừng ép giá trị mới vào cột đó, TÁCH THÊM 1 CỘT CHIỀU KHÁC (Hình giải tích 08-08, áp dụng "Chiều MÔN §1.6" cho ca khó hơn KHTN):** KHTN dùng `tai_lieu.mon='KHTN'` làm khoá dispatch kho ĐƯỢC vì KHTN cũng là 1 mon RBAC hợp lệ — nhưng "Hình giải tích" KHÔNG PHẢI 1 môn mới, nó là 1 NHÁNH bên trong mon='Toán' (RBAC/billing/`lop.mon` đều cần thấy 'Toán' y hệt Đại). Nếu dùng `mon` để phân biệt sẽ phá §1.6 symmetry test ở MỌI nơi khác dùng `mon` (billing, RBAC scope④, `lop.mon`). Giải đúng: thêm cột `nhanh` (nullable, default = hành vi cũ) làm chiều dispatch RIÊNG, độc lập `mon`. **Quy tắc tổng quát: khi 1 field vừa là khoá NGHIỆP VỤ ổn định (không được đổi ý nghĩa) vừa cần thêm 1 chiều PHÂN LOẠI NỘI DUNG mới — đừng ép 2 việc vào 1 cột, tách cột mới cho chiều mới, giữ field gốc nguyên nghĩa cho MỌI consumer khác của nó.**
 
 ---
+
+### Bài học 08–09/09 — form câu, sinh bằng máy, quét kho
+- **⭐ Distractor phải là KẾT QUẢ THẬT của một đường sai có tên, không phải số bịa.** HS chọn nó = tự khai lỗi với độ chắc 100% (§1.5) —
+  đó là lợi ích thật duy nhất của MCQ so với trả lời ngắn. Distractor ngẫu nhiên là tệ nhất cả hai phía.
+- **⭐ Verify "≠ đáp án" phải so GIÁ TRỊ sau chuẩn hoá, không so chuỗi.** `4/8`, `1/2`, `0,5`, `-a/b`, `a/-b` là MỘT đáp án; so chuỗi ⇒
+  HS làm đúng bị chấm sai. `parseHuuTi` (BigInt, tối giản, tập nghiệm sắp) là nhân chứng thứ hai độc lập với AI.
+- **⭐ Đáp án máy PHẢI khớp đáp số kho mới được sinh gì lên câu đó** — lệch thì bỏ, KHÔNG đoán. Chính cái "lệch" đó phát hiện 2 đáp số
+  kho sai (đều câu gốc do người nhập, không phải clone).
+- **⭐ Máy quét toàn kho không phải một lệnh — là chương trình theo dạng.** Lần quét đầu 627 "lệch" phần lớn BÁO GIẢ (toán có lời,
+  đặt tính, làm tròn, quy đồng, lớp 6 dấu chấm = nhân). Phải whitelist dạng "đáp số = giá trị biểu thức" rồi mới tin số.
+- **Cờ duyệt mà không có chỗ nào LỌC theo nó = cờ trang trí.** `da_duyet` 60/17.743 và 0 chỗ chọn câu lọc ⇒ "vào kho chuẩn" phải định
+  nghĩa bằng hàm SQL mọi nơi cùng gọi, không phải bằng cột.
+- **Luật hình thức phương án đúng là "không được là cái duy nhất khác kiểu", không phải "cả 4 cùng kiểu"** — cứng quá thì câu đáp số
+  nguyên/0/1 đói distractor (bỏ 5 câu lô 1 oan).
+- **Biến thể "đổi số" trong kho hình KHÔNG cùng cấu trúc câu văn với bài gốc** (gộp/tách bước, đổi thứ tự tên góc) ⇒ áp khuôn chỉ ăn
+  ~15%. Muốn tự động phải chuẩn hoá lời giải biến thể theo gốc ở cửa 1, hoặc chấp nhận đề xuất tay từng bài.
+- **Bản HS thấy phải được CẮT key ở SERVER** (`_dien_buoc_hs`), không "lược trường dung" rồi chép nguyên lời giải — bản đầu lộ đáp án
+  ngay trong câu văn. Kiểm bằng script: bản HS không chứa dap_an/key/dung.
+- **Return sớm trong component React phải nằm SAU mọi hook** (`LamTuLuyen`: `if (dienO) return …` đặt trước `useState` khác = đổi số
+  hook giữa 2 lần render).
+- **`format('%I', NULL)` trong Postgres NỔ** ("null values cannot be formatted as an SQL identifier") — guard bằng `case when … is null`
+  trước khi `format`. `jsonb -> bigint` (cột `ordinality`) cũng nổ, ép `::int`.
+- **Nhiều phiên trên 1 DB: `npm run migrate` áp MỌI file treo, `--baseline <f>` đánh dấu "tới và gồm"** ⇒ cả hai đều đụng file của
+  phiên khác (2 lần trong 1 ngày). Luôn `--status` trước; có file lạ thì `--only <file>`.
+- **HTML gửi CEO xem trong app phải tự chứa**: trình xem chặn script CDN và ảnh ngoài ⇒ KaTeX render trong node, font base64, ảnh data URI.
+  Ba bảng duyệt đầu (488 form, 61 câu docx) CEO không thấy công thức vì lý do này.
+- **Docx MathType = ảnh WMF**, không có công thức trong XML; đọc bằng mắt sau khi render qua `System.Drawing` (PowerShell), biến lặp
+  `$s`/`$S` trong PowerShell là MỘT (không phân biệt hoa thường) — vòng `for ($s…)` đè mất `$S`.
+
 
 ### Bài học 12/08 — đọc dữ liệu & viết tài liệu
 
