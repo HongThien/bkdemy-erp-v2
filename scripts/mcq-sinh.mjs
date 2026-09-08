@@ -47,6 +47,7 @@ async function list() {
     select q.ma_cau, q.dang_chinh, b.ten_dang, q.noi_dung, q.dap_an, q.loi_giai
     from dai_cau_hoi q join dai_ban_do b on b.ma_dang = q.dang_chinh
     where q.xoa_at is null and q.dang_chinh = any($1)
+      and q.da_duyet                                   -- CỬA 2 chỉ nhận câu đã qua CỬA 1 (spec-kho-chuan.md §4, từ 08/09)
       and q.dap_an is not null and q.dap_an <> '' and q.lua_chon is null and q.menh_de is null
       and not exists (select 1 from ${TBL} f where f.ma_cau = q.ma_cau and f.xoa_at is null)
     order by q.dang_chinh, q.ma_cau`, [dangs])

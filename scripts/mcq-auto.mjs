@@ -51,7 +51,9 @@ function rootR(a, k) {
 }
 
 // ── Tokenizer / Parser ────────────────────────────────────────────────────────────────────────────────────────
-function mathOf(noiDung) {
+// opts.chamLaNhan: lớp 6 (số tự nhiên) viết phép nhân bằng DẤU CHẤM (`9.6 − 81:3³` = 54 − 3), không phải số thập phân —
+// bật theo DẠNG (whitelist trong kho-quet-dapso.mjs), mặc định tắt để lớp 5/7 vẫn đọc "9.6" là 9,6.
+function mathOf(noiDung, opts = {}) {
   let s = String(noiDung ?? '').replace(/\r/g, ' ')
   const n = (s.match(/\$/g) || []).length
   if (n >= 2) { // "Tìm $x$ biết: $…$" → nhiều đoạn $…$ → lấy đoạn DÀI NHẤT (biểu thức); đoạn lẻ cuối (mở không đóng) cũng tính
@@ -65,6 +67,7 @@ function mathOf(noiDung) {
     .replace(/\\\{|\[/g, '(').replace(/\\\}|\]/g, ')')
     .replace(/\\text\{[^}]*\}/g, ' ').replace(/\s+/g, ' ').trim().replace(/[.;]$/, '').trim()
   s = s.replace(/^[A-Z]\s*=\s*/, '')
+  if (opts.chamLaNhan) s = s.replace(/(\d)\s*\.\s*(?=\d)/g, '$1*')
   return s
 }
 function tokenize(s) {
@@ -406,9 +409,9 @@ function evalRule(tree, treeFlat, rule) {
 }
 
 // ── API cho script khác (mcq-clone-doi-so.mjs): tính đáp số 1 đề, format giá trị ────────────────────────────
-export function tinh(noiDung) {
+export function tinh(noiDung, opts = {}) {
   try {
-    const tree = parse(mathOf(noiDung))
+    const tree = parse(mathOf(noiDung, opts))
     if (tree.t === 'eq' && countX(tree) < 1) return { ok: false, ly_do: 'không có x' }
     if (tree.t !== 'eq' && hasX(tree)) return { ok: false, ly_do: 'có x không có =' }
     const v = tree.t === 'eq' ? solve(tree, { rule: null }) : ev(tree, { rule: null })

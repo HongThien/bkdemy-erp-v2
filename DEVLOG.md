@@ -9623,3 +9623,48 @@ dưới ô mới là "đúng như khi in". Chỉnh MathLive render là việc kh
   không có toggle → không đổi (giấy khớp online). `canBeETForm` nhận `form_tn`; `coFormTn()` registry bảng đã có. In giấy CHƯA
   kéo form (để sau). tsc 0. Chưa soi preview (cần GV phát hành ET thật).
 - Xuất `mcq-xem.mjs` 488 câu gửi CEO. Chưa commit. Sáng CEO duyệt trên tab "Trắc nghiệm AI"; duyệt xong câu tự vào tự luyện (M3).
+## 2026-09-08 (sáng, ~09:00–10:00) — KHO CHUẨN bước 1 + 2 (spec-kho-chuan.md §4) — worktree `kho-chuan`, phiên chạy song song
+- **Worktree riêng** (CEO: "mở worktree mới cho đỡ conflict") `.claude/worktrees/kho-chuan`, nhánh `worktree-kho-chuan` từ 299b044.
+  Worktree không có `.env`/`node_modules` → copy `.env`, junction `node_modules`; file untracked ở thư mục chính (`kho-quet-dapso.mjs`,
+  `spec-kho-chuan.md`) không tự sang → copy tay. Áp migration bằng `--only`, KHÔNG `npm run migrate` (file `202609080246_khao_sat…` của phiên kia vẫn treo).
+- **Bước 1 — mig `202609080912_kho_chuan_cua_1`:** 3 bảng câu (dai/khtn/hgt) thêm `kiem_may`/`kiem_may_at`/`kiem_may_boi`/`kiem_may_ghi`/
+  `duyet_nguon` (CHECK đủ) + hàm `_kho_cau_chuan(da_duyet, kiem_may, created_at)` immutable, **NGÀY BẬT = 2026-09-08 09:12+07** (literal trong
+  thân hàm) + cột **generated stored `kho_chuan`** (để PostgREST lọc được — client không gọi hàm trong filter) + index partial
+  `(dang_chinh) where kho_chuan and xoa_at is null` + trigger `trg_kho_cau_duyet_nguon` (da_duyet→true mà thiếu nguồn ⇒ 'nguoi'; false ⇒ null;
+  backfill 60+1 câu người ký). **⚠ Bước 6 (bỏ vế "câu cũ tạm dùng") phải DROP/ADD lại `kho_chuan`** — generated stored không tự tính lại khi đổi thân hàm.
+  Cắm chỗ chọn câu: DB = `_kho_dk_online_sql` bọc thêm `c.kho_chuan and` (phủ tu_luyen_sinh + _btyeu_chon_cau = tự luyện/bổ trợ yếu/retest, không
+  phải copy lại 2 hàm dài); client = `listCauByDang` lọc `kho_chuan` mặc định, `{ tatCa: true }` cho DangHub (màn kho) và chỗ RESOLVE câu đã
+  trong ET (ETScreen ~395 — nếu không, câu bị rút khỏi kho chuẩn làm ET cũ không lưu được). Cửa 2: `mcq-sinh.mjs --list` thêm `q.da_duyet`.
+  Verify: bảng chân trị `_kho_cau_chuan` (mới-chưa-duyệt=false · mới-đã-duyệt=true · cũ=true · cũ-nghi=false · cũ-nghi-người-ký=true), tsc pass.
+- **Bước 2 — mức A:** `mcq-auto.tinh(noiDung, {chamLaNhan})` — lớp 6 dấu chấm = nhân (`9.6−81:3³`→51), bật theo dạng. `kho-quet-dapso.mjs`
+  viết lại: WHITELIST **48 dạng** (đáp số = giá trị biểu thức; loại đặt-tính-chia/quy đồng/làm tròn/đơn vị/2-ý-1-câu/nhận diện — ghi lý do trong
+  script) + `--ghi` (1 transaction, idempotent, không đè `kiem_may_boi` người/Claude; khớp ⇒ khop + da_duyet + duyet_nguon='may'; lệch ⇒ nghi +
+  ghi chú, KHÔNG đụng dap_an). Kết quả: **ký máy 1.670** (+9 câu người đã ký, chỉ thêm kiem_may) · **NGHI 17** (soát tay cả 17: máy đúng, kho
+  sai/đề sai thật — 14 clone/ai, 3 gốc; vd T106020302031 `39×65+38×36−39` kho 3900 đúng 3864; T106020402010 kho 72900 đúng 0) → 17 câu tự rời kho
+  chuẩn (kho_chuan=false), chờ màn duyệt lại (bước 3). Máy ký = 9,6% kho Đại; còn ~15.996 câu chưa kiểm → mức B.
+- Sau `npm run schema`: schema.md ghi đủ cột mới; chưa có bảng khảo sát của phiên kia (chưa áp). **Chưa commit** (chờ CEO).
+## 2026-09-08 (sáng, ~09:30–10:30) — KHO CHUẨN bước 3: MÀN DUYỆT HỢP NHẤT (spec-kho-chuan.md §3) — worktree `kho-chuan`
+- **DB — mig `202609080938_kho_duyet_hop_nhat`** (+ `202609080955_kho_dem_hang_duyet_fix`): `dang_ai_de_xuat` trên 3 bảng câu ·
+  `_kho_ngay_bat()` gom NGÀY BẬT 1 chỗ (`_kho_cau_chuan` viết lại gọi nó, kết quả y hệt ⇒ không phải drop/add `kho_chuan`) ·
+  `_kho_loc_duyet_sql(loc)` = điều kiện 5 bộ lọc (cau_moi · moi · nghi · khong_kiem · ton_dong) dùng chung cho list + đếm ·
+  `fn_kho_hang_duyet(mon, loc, khoi, limit)` · `fn_kho_dem_hang_duyet(nhanh[])` (grouping sets, dòng khoi=null = tổng) ·
+  `fn_kho_duyet_cau(mon, ma_cau, nguoi, sua jsonb)` = áp sửa đề/đáp số/lời giải/dạng/cụm + da_duyet + duyet_nguon='nguoi' trong 1
+  transaction; cụm phải thuộc dạng (sai ⇒ nổ; đổi dạng ⇒ cụm cũ về null); **sửa đáp số ⇒ thu hồi mọi form TN của câu** (xoa_at +
+  tu_choi_ly_do, kể cả form đã duyệt); câu nghi/không kiểm/chưa kiểm ⇒ kiem_may='khop' bởi 'nguoi' (ghi "người sửa đáp số X → Y (trước:
+  …)"), máy/AI đã khớp mà người không đổi ⇒ giữ kết quả máy (đo precision mẫu mức C) · `fn_kho_tu_choi_cau` = kho rác + lý do vào
+  kiem_may_ghi (trigger log_kho_cau ghi vết actor). Không có hàm duyệt lô.
+  **Sai 1 lần:** hàm đếm khai `stable` mà dùng temp table ⇒ "CREATE TABLE is not allowed in a non-volatile function" — bắt được nhờ
+  test RPC bằng JWT giả lập (`set_config('request.jwt.claims')` + rollback) TRƯỚC khi lên màn; lịch sử migration bất biến ⇒ file fix mới.
+- **Client:** `api.ts` thêm `listHangDuyet/demHangDuyet/duyetCauHangDuyet/tuChoiCauHangDuyet` + `HANG_DUYET_LABEL`. Tab mới
+  `DuyetCauTab.tsx`: thẻ sửa tại chỗ — dạng qua `DangPickerOne` (browse + tìm, không dropdown), cụm = pill theo dạng (reset khi đổi dạng),
+  đề/đáp số/lời giải (`SolutionField` chèn ảnh), badge kiem_may ("⚠ máy nghi: máy 4/9 ≠ kho 2/9") + "ngoài kho chuẩn"; chỉ gửi key ĐÃ ĐỔI;
+  ✓ Duyệt / ✕ Từ chối (lý do bắt buộc). "Duyệt tất cả" CHỈ còn ở 2 tab lời giải (moi/ton_dong) + phần Hình. `DuyetLoiGiaiScreen.tsx`
+  viết lại: tabs = Chưa có lời giải · Câu mới chờ duyệt · Lời giải mới từ Claude · Máy nghi đáp số · Không kiểm được · Tồn đọng (AI cũ) ·
+  Trắc nghiệm AI — badge số câu từ DB; dropdown khối hiện số câu của bộ lọc đang chọn; phần Hình (biến thể/cách giải) của 2 tab lời giải
+  qua toggle "Câu kho / Hình" (chỉ môn có Hình). Tiêu đề màn đổi "Duyệt câu & lời giải" (lá nav vẫn `duyetloigiai`).
+- **Verify:** test RPC rollback (đếm moi=7 · nghi=17 · ton_dong=10.881; duyệt sửa đáp số 67→68 đúng cờ; cụm sai dạng nổ; đổi dạng reset cụm;
+  sửa đáp số câu có form ⇒ thu hồi 1 form; từ chối ⇒ rác + log actor; thiếu lý do nổ) · tsc pass · **màn thật** trên vite worktree cổng
+  5191 (preview tool chỉ đọc `launch.json` thư mục chính và không sửa được từ worktree ⇒ chạy `npm run dev -- --port 5191` nền, đăng nhập
+  bằng nút dev account của Login.tsx): badge tab đúng, khối 5 hiện 11 thẻ nghi đủ thành phần. 403 font KaTeX qua `@fs/` = do junction
+  node_modules ngoài root vite của worktree, không phải lỗi code. **Chưa bấm Duyệt câu thật nào** (việc của TA — spec).
+- Chưa commit (chờ CEO). Bước 4 (mức B theo lô) và bước 5 (gộp đường vào) chưa làm.

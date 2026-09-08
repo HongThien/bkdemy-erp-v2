@@ -78,6 +78,12 @@ export type CauHoi = {
   da_duyet: boolean
   duyet_boi: string | null      // nhan_su.id — ai duyệt (ghi vết, không chỉ 1 cờ boolean trơ)
   duyet_at: string | null
+  // ⭐ KHO CHUẨN (spec-kho-chuan.md §1, mig 202609080912): `kho_chuan` = cột generated từ hàm `_kho_cau_chuan` — câu mới
+  // (sau NGÀY BẬT 08/09/2026 09:12) cần da_duyet; câu cũ tạm dùng trừ khi máy/AI NGHI đáp số. Chỗ CHỌN câu chỉ lấy kho_chuan.
+  kho_chuan?: boolean
+  kiem_may?: 'khop' | 'nghi' | 'khong_kiem_duoc' | null   // kết quả máy/AI kiểm đáp số; null = chưa kiểm
+  kiem_may_at?: string | null; kiem_may_boi?: 'mcq-auto' | 'claude_code' | 'nguoi' | null; kiem_may_ghi?: string | null
+  duyet_nguon?: 'nguoi' | 'may' | 'ai' | null              // ai ký da_duyet — trigger DB tự điền 'nguoi' khi client duyệt
   created_at?: string
 }
 
@@ -98,11 +104,15 @@ export const cumKey = (c: Pick<CauHoi, 'ma_cum' | 'parent_ma_cau' | 'ma_cau'>): 
 // LUẬT: chỗ CHỌN câu lọc `xoa_at is null` · chỗ RESOLVE câu (getTaiLieuFull/bản in/chấm) KHÔNG lọc.
 const CHUA_XOA = 'xoa_at' // tên cột, gom 1 chỗ cho dễ grep
 
-// CHỌN câu → chỉ câu đang dùng.
+// CHỌN câu → chỉ câu đang dùng VÀ thuộc KHO CHUẨN (`kho_chuan`, spec-kho-chuan.md §1 — cửa 1). Mặc định lọc vì mọi
+// caller ngoài màn Kho đều là chỗ CHỌN (soạn ET/BTVN/giáo trình/mã đề/KhoPicker). Màn quản kho (DangHub) và chỗ RESOLVE
+// câu đã nằm trong tài liệu (ET mở lại để sửa) truyền `{ tatCa: true }` — câu bị rút khỏi kho chuẩn vẫn phải hiện ra,
+// không được lặng lẽ rụng khỏi đề đã soạn (cùng luật với kho rác ở trên).
 // tbl = bảng câu theo MÔN (default Toán 'dai_cau_hoi'; KHTN 'khtn_cau_hoi'). Giữ default → Toán không đổi hành vi.
-export async function listCauByDang(maDang: string, tbl = 'dai_cau_hoi'): Promise<CauHoi[]> {
-  const { data, error } = await supabase.from(tbl).select('*')
-    .eq('dang_chinh', maDang).is(CHUA_XOA, null).order('created_at').limit(LIMIT)
+export async function listCauByDang(maDang: string, tbl = 'dai_cau_hoi', opts: { tatCa?: boolean } = {}): Promise<CauHoi[]> {
+  let q = supabase.from(tbl).select('*').eq('dang_chinh', maDang).is(CHUA_XOA, null)
+  if (!opts.tatCa) q = q.eq('kho_chuan', true)
+  const { data, error } = await q.order('created_at').limit(LIMIT)
   if (error) throw error
   return (data ?? []) as CauHoi[]
 }
@@ -2244,6 +2254,47 @@ export async function tuChoiFormTn(mon: KhoMon, id: string, nguoi: string, lyDo:
   const { error } = await supabase.rpc('fn_mcq_form_tu_choi', { p_kho: khoPrefix(mon), p_id: id, p_nguoi: nguoi, p_ly_do: lyDo })
   if (error) throw error
 }
+// ══ HÀNG DUYỆT HỢP NHẤT (spec-kho-chuan.md §3, mig 202609080938) — màn "Duyệt lời giải AI" thành 1 hàng đợi nhiều bộ lọc ══
+// Bộ lọc = trạng thái thật trong bảng câu (da_duyet=false / kiem_may), KHÔNG có bảng hàng đợi riêng. List/đếm/duyệt/từ chối
+// đều là function Postgres; ở đây chỉ gọi rpc + render. `cau_moi` = câu sau NGÀY BẬT chưa duyệt — cửa 1 đang chặn khỏi HS.
+export type HangDuyetLoc = 'cau_moi' | 'moi' | 'nghi' | 'khong_kiem' | 'ton_dong'
+export const HANG_DUYET_LABEL: Record<HangDuyetLoc, string> = {
+  cau_moi: 'Câu mới chờ duyệt', moi: 'Lời giải mới từ Claude', nghi: 'Máy nghi đáp số', khong_kiem: 'Không kiểm được', ton_dong: 'Tồn đọng (AI cũ)',
+}
+export type CauHangDuyet = {
+  ma_cau: string; dang_chinh: string; ten_dang: string; ten_chuyen_de: string; khoi: string; loai_cau: string
+  noi_dung: string; lua_chon: string[] | null; menh_de: MenhDe[] | null; dap_an: string | null; loi_giai: string | null
+  anh_de: string | null; anh_dap_an: string | null; nguon: string; nguon_giai: string; giai_method: string | null; created_at: string
+  ma_cum: string | null; ten_cum: string | null; da_duyet: boolean; kho_chuan: boolean
+  kiem_may: 'khop' | 'nghi' | 'khong_kiem_duoc' | null; kiem_may_boi: string | null; kiem_may_ghi: string | null; kiem_may_at: string | null
+  dang_ai_de_xuat: string | null
+}
+export async function listHangDuyet(mon: KhoMon, loc: HangDuyetLoc, khoi?: string | null): Promise<CauHangDuyet[]> {
+  const { data, error } = await supabase.rpc('fn_kho_hang_duyet', { p_mon: mon, p_loc: loc, p_khoi: khoi || null, p_limit: LIMIT })
+  if (error) throw error
+  return (data ?? []) as CauHangDuyet[]
+}
+// khoi = null ⇒ tổng của bộ lọc (grouping sets ở DB)
+export type DemHangDuyet = { loc: HangDuyetLoc; khoi: string | null; so_cau: number }
+export async function demHangDuyet(nhanh: KhoNhanh[]): Promise<DemHangDuyet[]> {
+  const { data, error } = await supabase.rpc('fn_kho_dem_hang_duyet', { p_nhanh: nhanh })
+  if (error) throw error
+  return ((data ?? []) as any[]).map((r) => ({ loc: r.loc, khoi: r.khoi, so_cau: Number(r.so_cau) }))
+}
+// Duyệt = áp sửa (key vắng = giữ nguyên; '' = xoá) + da_duyet + duyet_nguon='nguoi' trong 1 transaction.
+// Sửa đáp số ⇒ DB thu hồi mọi form TN của câu (trả thu_hoi_form để báo người).
+export type SuaCauDuyet = { noi_dung?: string; dap_an?: string | null; loi_giai?: string | null; dang_chinh?: string; ma_cum?: string | null }
+export async function duyetCauHangDuyet(mon: KhoMon, maCau: string, nguoi: string, sua: SuaCauDuyet = {}): Promise<{ thu_hoi_form: number; doi_dap_an: boolean; doi_dang: boolean }> {
+  const { data, error } = await supabase.rpc('fn_kho_duyet_cau', { p_mon: mon, p_ma_cau: maCau, p_nguoi: nguoi, p_sua: sua })
+  if (error) throw error
+  return data as { thu_hoi_form: number; doi_dap_an: boolean; doi_dang: boolean }
+}
+// Từ chối = kho rác (xoa_at) + lý do bắt buộc — không xoá cứng (CLAUDE.md §2 kho rác).
+export async function tuChoiCauHangDuyet(mon: KhoMon, maCau: string, nguoi: string, lyDo: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_kho_tu_choi_cau', { p_mon: mon, p_ma_cau: maCau, p_nguoi: nguoi, p_ly_do: lyDo })
+  if (error) throw error
+}
+
 export async function listMcqRule(mon: KhoMon): Promise<McqRule[]> {
   const { data, error } = await supabase.rpc('fn_mcq_rule', { p_kho: khoPrefix(mon) })
   if (error) throw error

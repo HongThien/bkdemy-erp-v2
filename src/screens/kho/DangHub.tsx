@@ -64,7 +64,7 @@ export default function DangHub({ d, config, chuan, allDang, onClose, onEditDang
   async function reload() {
     if (!hasCau) return
     setLoading(true); setErr(null)
-    try { setCaus(await listCauByDang(d.leafMa, cauTbl)) }
+    try { setCaus(await listCauByDang(d.leafMa, cauTbl, { tatCa: true })) } // màn KHO: xem cả câu chưa/không vào kho chuẩn
     catch (e: any) { setErr(e.message ?? String(e)) }
     finally { setLoading(false) }
     onChanged()

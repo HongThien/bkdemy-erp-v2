@@ -392,7 +392,7 @@ export function ETEditor({ et, onClose, presetHinh }: { et?: ETView; onClose?: (
       if (thieu.length) {
         const them: Record<string, CauHoi> = {}
         for (const md of new Set(thieu.map((r) => r.maDang).filter(Boolean) as string[])) {
-          for (const c of await listCauByDang(md, cauTbl)) them[c.ma_cau] = c
+          for (const c of await listCauByDang(md, cauTbl, { tatCa: true })) them[c.ma_cau] = c // RESOLVE câu đã trong đề — kể cả câu đã rút khỏi kho chuẩn
         }
         bank = { ...bank, ...them }
         setCau(bank)
