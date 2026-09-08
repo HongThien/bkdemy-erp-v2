@@ -1521,6 +1521,28 @@ thẳng `ca_test.nguoi_cham_id`/`nguoi_tra_bai_id`, data đã sẵn, không cầ
 - **Trả focus sau khi gỡ web component: `setTimeout`, không chỉ rAF** — MathLive dọn focus async, focus sớm bị cướp về body.
 - **Mẫu LaTeX ghép với chữ gõ vào phải có khoảng trắng sau lệnh:** `\int#?` điền `x` thành `\intx` (lệnh lạ). Test mẫu theo
   4 ca (nút · ô trống · đã điền · lưu còn ô trống), không chỉ 1.
+- **⭐ MathLive: `captureSelection=true` = vô hình với CHUỘT (08/09).** `Atom.bind()` không cấp `data-atom-id` cho atom con
+  dưới cha `captureSelection`; `nearestAtomFromPoint` chỉ xét atom có id ⇒ click vào chữ dưới `\widehat{…}` rơi ra SAU cả
+  khối, Backspace xoá nguyên ký hiệu — mà PHÍM ←/→ vẫn vào được nên tưởng "đúng". Fix ngọn (tìm glyph ▢) chỉ cứu 1 ca;
+  fix gốc = tắt cờ trên prototype. Nâng MathLive thì đo lại đúng thao tác "click A trong góc A1 → Backspace → gõ B".
+- **⭐ KaTeX `\widehat`: cỡ mũ chọn theo SỐ PHẦN TỬ trong thân, không theo bề rộng.** 1 chữ → cỡ nhỏ nhất, lệch phải theo
+  italic. `\widehat{{}A{}}` (2 nhóm rỗng) lên cỡ 2, phủ đúng chữ, không thêm khoảng trắng — chỉ làm lúc render, không lưu.
+  Và chỉ số phải đứng NGOÀI dấu mũ (`\widehat{A}_2`) — trong thân thì mũ căn theo cả "A₂".
+- **⭐ Copy từ vùng KaTeX render: Chrome serialize `.vlist-t/.vlist-r` (table) thành xuống dòng/tab GIỮA các mảnh** — trim
+  `\n` đầu/cuối không cứu được. Cách đúng = copy-tex: gắn `data-latex` lúc render, listener `copy` thay bằng `$…$`.
+- **⭐ Ô trống của cụm là `#?`, còn ô trống MathLive lưu ra là `{}`** — hai thứ khác nhau, đường tạo cụm qua bảng dựng phải
+  chuẩn hoá `{}` → `#?`, không thì mọi "cụm có ô trống" tạo bằng UI đều câm (không nhận tham số, chèn ra rỗng).
+- **⭐ Verify trong Browser pane khi cửa sổ Claude bị che (08/09, mất ~30'):** tab không vẽ ⇒ `requestAnimationFrame` không
+  chạy (MathLive/React render qua rAF ⇒ DOM CŨ, mọi phép đo bounds/ids sai), screenshot timeout, ~5' sau Chrome ép
+  `setTimeout` 1 lần/phút (script `await` treo). Làm được: ghi đè `requestAnimationFrame = cb => cb(now)`, script KHÔNG await
+  dài, click bằng `PointerEvent` (`composed:true`) dispatch lên `shadowRoot.elementFromPoint`, Backspace phải là
+  `KeyboardEvent` có `code:'Backspace'` lên `.ML__keyboard-sink` (`computer.key` gửi `code=''`, MathLive so theo `code`).
+  `innerWidth` = 0 lúc này — bề rộng layout không đo được.
+- **Bash tool trên máy này ăn 1 lớp backslash trong heredoc + nhiều file là CRLF** — patch nhiều dòng bằng node/sed
+  không khớp im lặng; sửa file bằng Edit tool. `git add -p` không có: tách phần DEVLOG của mình khỏi phần phiên khác
+  đang viết dở bằng `awk` cắt tới heading lạ → `git hash-object -w --path` → `git update-index --cacheinfo`.
+- **`npm run migrate` áp MỌI file treo, kể cả của phiên khác** — có file lạ thì `--only <file>`; đã lỡ áp
+  `202609080246_khao_sat…` (không phá gì) vì quên.
 - **⭐⭐ Vercel 1 repo × 8 project = TRẦN BUILD DÙNG CHUNG CẢ TÀI KHOẢN (Hobby: 100/ngày), không phải riêng
   từng project — cắn 07/09, 2 LẦN TRONG CÙNG 1 NGÀY.** Lần 1: chưa có `ignoreCommand` ⇒ mỗi push build cả
   8 project ⇒ ~15 push/ngày × 8 = vượt trần ⇒ Vercel lặng lẽ chặn 7/8 project ("Deployment rate limited —
