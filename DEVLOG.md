@@ -9352,6 +9352,9 @@ UI dev 5180 (đăng nhập nhanh DEV "Thùy", cửa sổ bị che → rAF đồn
 **Chưa làm / bàn tiếp:** cụm cá nhân đè lên bộ chung (Thùy: chung trước) · thư mục trỏ `chuong` bản đồ kiến thức (ghi ở
 cum.ts từ 05/09) · phím tắt (`phim`) vẫn theo cụm chung → 2 người có thể đặt trùng tổ hợp cho cụm khác nhau, CumModal chỉ
 chặn trong danh sách đang tải.
+**09/09 chốt tiếp (Thùy: "để . hết cho thống nhất, _ là muốn chỉ số đi xuống"):** bỏ nhánh `_` — mẫu ngầm CHỈ tách theo `.`;
+`_` không bao giờ tách, chỉ là chỉ số dưới trong tham số (goc.A_1). Thừa tham số gộp vào ô cuối bằng `.`. tsc sạch; logic 3
+dòng, không dựng lại UI để đo.
 ## 2026-09-08 — PIPELINE thiết kế ChatGPT → Claude (design/HANDOFF-PIPELINE.md + scripts/design-check.mjs)
 - **Bối cảnh:** CEO thiết kế màn chính app HS cấp 2/3 trên ChatGPT, bảo nó đóng gói handoff cho Claude dựng
   (`public/bk-ui/STUDENT_HOME_CLAUDE_HANDOFF.zip` v1 07/09 · `STUDENT_HOME_V2_CLAUDE_HANDOFF_MALE_FEMALE` v2 08/09).

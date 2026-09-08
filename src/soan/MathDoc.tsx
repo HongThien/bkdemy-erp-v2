@@ -48,17 +48,17 @@ export const MathDoc = forwardRef<MathDocHandle, Props>(function MathDoc({ initi
   // GÕ TẮT CÓ THAM SỐ (Thùy 08/09: "gocabc cho góc ABC, nhưng góc MIN thì không thể đặt phím tắt cho từng góc — hệ
   // phải hiểu `goc` là ký hiệu góc, phần sau là tên góc: goc_ABC"; chốt thêm: dấu phân cách = `_` "chuẩn nhất", và
   // "nhiều cái có thể có tham số" → áp cho MỌI cụm). Từ gõ = <gõ tắt cụm>_<tham số 1>_<tham số 2>…
-  //   · Cụm CÓ ô trống `#?` (công thức hay đoạn): tham số điền lần lượt vào từng ô — ss_AB_CD → AB ∥ CD. THỪA tham số →
-  //     phần thừa gộp vào ô CUỐI bằng `_` (goc_A_1 → \widehat{A_1} → lưu \widehat{A}_1: chỉ số dưới gõ tự nhiên). THIẾU →
-  //     mở bảng dựng với phần đã điền để gõ nốt.
+  //   · Cụm CÓ ô trống `#?` (công thức hay đoạn): tham số điền lần lượt vào từng ô — ss.AB.CD → AB ∥ CD. THỪA tham số →
+  //     phần thừa gộp vào ô CUỐI. THIẾU → mở bảng dựng với phần đã điền để gõ nốt. Chỉ số dưới gõ bằng `_` ngay trong tham
+  //     số: goc.A_1 → \widehat{A_1} → lưu \widehat{A}_1.
   //   · Cụm KHÔNG ô trống nhưng CÓ TÊN ĐIỂM (đoạn bổ đề, công thức cố định): tham số = tên điểm MỚI — ghép mọi phần lại,
   //     thay từng chữ theo thứ tự điểm xuất hiện (timDiem): hbh_MNPQ → "Vì MNPQ là hình bình hành nên MN ∥ PQ và MN = PQ";
   //     gg_MNP_DEF ≡ gg_MNPDEF. Thiếu chữ → điểm còn lại giữ nguyên. Bộ điểm được nhớ cho bài như bảng đổi điểm.
   //   · Gõ tắt NGUYÊN (goc / hbh) → như cũ.
-  const useCumVoi = (c: Cum, args: string[], sep = '_') => {
+  const useCumVoi = (c: Cum, args: string[]) => {
     if (hasBlank(c.noiDung)) {
       const n = (c.noiDung.match(/#\?/g) ?? []).length
-      const parts = args.length > n ? [...args.slice(0, n - 1), args.slice(n - 1).join(sep)] : args
+      const parts = args.length > n ? [...args.slice(0, n - 1), args.slice(n - 1).join('.')] : args
       let k = 0
       const filled = c.noiDung.replace(/#\?/g, () => parts[k++]?.trim() || '#?')
       if (hasBlank(filled)) { setModal({ kind: 'new', prefill: filled }); return }
@@ -73,8 +73,8 @@ export const MathDoc = forwardRef<MathDocHandle, Props>(function MathDoc({ initi
     setMap({ ...map, ...bo })
     ed.current?.insertRaw(doiDiem(raw, bo))
   }
-  // Thùy 08/09 (tiếp): "_ phải bấm 2 phím, dấu . chỉ 1 phím — goc.abc thì dấu . làm sao nhầm được" → phân cách = `.`
-  // (giữ `_` cho ai quen; `_` BÊN TRONG tham số = chỉ số dưới: goc.A_1). Và "có chỗ setup công thức tham số không, ví dụ
+  // Thùy 08/09 (tiếp): "_ phải bấm 2 phím, dấu . chỉ 1 phím — goc.abc thì dấu . làm sao nhầm được" → phân cách = `.`;
+  // 09/09 chốt: CHỈ `.`, `_` không bao giờ tách — `_` là chỉ số dưới (goc.A_1 → góc A₁). Và "có chỗ setup công thức tham số không, ví dụ
   // 50_do là 50 độ" → chỗ setup = chính form Cụm: gõ tắt được viết có `#` đánh dấu VỊ TRÍ tham số: `#.do` (50.do → 50°),
   // `goc.#`, `ss.#.#`. Gõ tắt KHÔNG có `#` thì ngầm hiểu = <gõ tắt>.<tham số>… như trước.
   const resolveGoTat = (w: string): (() => void) | null => {
@@ -88,13 +88,12 @@ export const MathDoc = forwardRef<MathDocHandle, Props>(function MathDoc({ initi
       const hit = re.exec(w)
       if (hit) return () => useCumVoi(m, hit.slice(1))
     }
-    // 2) Mẫu ngầm: <gõ tắt>.<tham số>.<tham số>… (có `.` thì tách theo `.`, không thì theo `_`).
-    const sep = w.includes('.') ? '.' : '_'
-    const parts = w.split(sep)
+    // 2) Mẫu ngầm: <gõ tắt>.<tham số>.<tham số>… — CHỈ `.` (Thùy 09/09: "để . hết cho thống nhất, _ là chỉ số đi xuống").
+    const parts = w.split('.')
     if (parts.length < 2 || !parts[0]) return null
     const base = findCumByGoTat(cumsRef.current, parts[0])
     if (!base) return null
-    return () => useCumVoi(base, parts.slice(1), sep)
+    return () => useCumVoi(base, parts.slice(1))
   }
   // Nút trong bảng Sửa công thức: chỉ hiện khi công thức có tên điểm. Đổi xong thay đúng khối đó, nhớ bộ điểm cho bài.
   const nutDoiDiem = (el: HTMLElement, latex: string) => {
