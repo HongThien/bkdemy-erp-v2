@@ -4,7 +4,7 @@
 // 3 tầng: KHO → bai_test (snapshot đề+key) → bai_lam (HS-facing) → đo lường.
 // ============================================================================
 import { supabase } from './supabase'
-import { getBTVNCaus, getETCaus, getGiaoTrinhBuoiCaus, khoCuaMon } from './tailieu'
+import { getBTVNCaus, getETCaus, getGiaoTrinhBuoiCaus, khoCuaMon, coFormTn, etFormOf, type CauHinh } from './tailieu'
 import { getDeThiCaus } from './dethi'
 import { fetchCausByMa } from './ontap'
 import { maDeReady, type BaseItem } from './made'
@@ -27,6 +27,9 @@ export type BaiTestCau = {
   noi_dung: string | null; lua_chon: string[] | null; menh_de: unknown; dap_an_key: unknown
   loi_giai: string | null; anh_de: string | null; anh_dap_an: string | null
   ma_dang: string | null; ly_thuyet: string | null; diem: number
+  // Phiên bản TRẮC NGHIỆM AI (spec-mcq-form.md §8.2): snapshot từ <kho>_cau_form_tn khi GV chọn form trắc nghiệm cho câu
+  // không có phương án sẵn. lua_chon_rule song song lua_chon (null = đúng, 'R19' = sai theo rule) — cùng INSERT.
+  form_tn_id?: string | null; lua_chon_rule?: (string | null)[] | null
 }
 export type BaiLam = { id: string; bai_test_id: string; hoc_sinh_id: string; trang_thai: 'dang_lam' | 'da_nop'; nop_at: string | null; bien_the: number }
 export type BaiLamCau = { id: string; bai_lam_id: string; bai_test_cau_id: string; dap_an_hs: unknown; verdict: string | null; diem: number | null; cham_boi: string | null }
@@ -90,6 +93,16 @@ export async function phatHanhTest(taiLieuId: string, override?: { lopId: string
     const { data: lt } = await supabase.from(ltTbl).select('ma_dang, noi_dung').in('ma_dang', dangs).limit(LIMIT)
     for (const r of (lt ?? []) as { ma_dang: string; noi_dung: string | null }[]) if (r.noi_dung) ltMap.set(r.ma_dang, r.noi_dung)
   }
+  // Form TRẮC NGHIỆM AI đã duyệt của các câu trong doc (spec-mcq-form.md §8.2) — chỉ dùng khi GV CHỌN form trắc nghiệm
+  // cho câu không có phương án sẵn (etFormByCau). BTVN/giáo trình không có toggle form → không đổi (giấy và online khớp nhau).
+  const chDoc = (doc.cau_hinh ?? {}) as CauHinh
+  const formTbl = khoCuaMon(doc.mon, doc.nhanh).formTnTbl
+  const formMap = new Map<string, { id: string; lua_chon: { text: string; dung: boolean; rule?: string }[]; dap_an: string }>()
+  if (coFormTn(formTbl) && caus.length) {
+    const { data: fr } = await supabase.from(formTbl).select('id, ma_cau, lua_chon, dap_an')
+      .in('ma_cau', caus.map((c) => c.ma_cau)).eq('da_duyet', true).is('xoa_at', null).limit(LIMIT)
+    for (const f of (fr ?? []) as { id: string; ma_cau: string; lua_chon: any; dap_an: string }[]) formMap.set(f.ma_cau, f)
+  }
   const skipped: { ma_cau: string; warn: string }[] = []
   const rows: Omit<BaiTestCau, 'id'>[] = []
   let thu_tu = 0
@@ -97,6 +110,19 @@ export async function phatHanhTest(taiLieuId: string, override?: { lopId: string
   // cùng cấu trúc). effLoai giữ chung cho mọi biến thể của 1 vị trí (đều cùng dạng câu hỏi khi được
   // sinh bởi buildMaDe — made.ts ép canBeETForm khớp form câu gốc).
   const snap = (c: CauHoi, tt: number, bienThe: number): { row: Omit<BaiTestCau, 'id'> | null; warn?: { ma_cau: string; warn: string } } => {
+    // GV chọn form TRẮC NGHIỆM cho câu KHÔNG có phương án sẵn + kho có form AI đã duyệt ⇒ snapshot form (§8.2).
+    const ft = formMap.get(c.ma_cau)
+    if (ft && !(c.lua_chon && c.lua_chon.length) && etFormOf(c, chDoc) === 'trac_nghiem') {
+      return {
+        row: {
+          bai_test_id: '', thu_tu: tt, bien_the: bienThe, ma_cau: c.ma_cau, loai_cau: 'trac_nghiem',
+          noi_dung: c.noi_dung ?? null, lua_chon: ft.lua_chon.map((o) => o.text), menh_de: null, dap_an_key: ft.dap_an,
+          loi_giai: c.loi_giai ?? null, anh_de: c.anh_de ?? null, anh_dap_an: c.anh_dap_an ?? null,
+          ma_dang: c.dang_chinh ?? null, ly_thuyet: ltMap.get(c.dang_chinh) ?? null, diem: 1,
+          form_tn_id: ft.id, lua_chon_rule: ft.lua_chon.map((o) => (o.dung ? null : o.rule ?? null)),
+        },
+      }
+    }
     const effLoai = c.loai_cau === 'tu_luan' && c.dap_an?.trim() ? 'tra_loi_ngan' : c.loai_cau
     if (!SUPPORTED.has(effLoai)) return { row: null, warn: { ma_cau: c.ma_cau, warn: `loại "${c.loai_cau}" chưa hỗ trợ online` } }
     const k = extractKey({ ...c, loai_cau: effLoai })

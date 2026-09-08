@@ -18,6 +18,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { KHOI_OPTIONS, KHO_MON, nhanhCuaMon, NHANH_LABEL, listCauChoDuyetLoiGiai, duyetLoiGiaiCau, demCauChuaGiai, type CauChoDuyetLoiGiai, type KhoMon, type DemChuaGiai } from '../../lib/kho/api'
 import ChuaGiaiTab from './ChuaGiaiTab'
+import TracNghiemAiTab from './TracNghiemAiTab'
 import { listBienTheChoDuyetLoiGiai, duyetLoiGiaiBienThe, type BienTheChoDuyetLoiGiai, listCachGiaiChoDuyetLoiGiai, duyetLoiGiaiCachGiai, type CachGiaiChoDuyetLoiGiai } from '../../lib/kho/hinh'
 import { MathText } from '../kho/ui'
 import { myNhanSuId } from '../../lib/giaoviec'
@@ -26,7 +27,9 @@ import { useStore } from '../../store/useStore'
 
 const HINH_LABEL = { bien_the: 'Hình (biến thể)', bai_toan_goc: 'Hình (bài toán gốc)' }
 type Row = { key: string; nhanh: string; khoi: string; deBai: string; loiGiai: string; duyet: () => Promise<void> }
-type Tab = 'chua' | 'kho' | 'moi'
+// 'tn' = "Trắc nghiệm AI" (spec-mcq-form.md §6, 08/09): phiên bản 4 phương án AI sinh cho câu tính toán — sống ở TracNghiemAiTab.tsx.
+type Tab = 'chua' | 'kho' | 'moi' | 'tn'
+const TAB_TU_TAI = new Set<Tab>(['chua', 'tn']) // tab tự tải trong component con — màn cha không reload/đếm rows
 const readMon = () => localStorage.getItem('duyetlg.mon') ?? ''
 
 export default function DuyetLoiGiaiScreen() {
@@ -60,7 +63,7 @@ export default function DuyetLoiGiaiScreen() {
   }
   useEffect(() => { reloadDem() }, [mon, monOk]) // eslint-disable-line
   async function reload() {
-    if (tab === 'chua' || !monOk) return // tab "chưa" tự tải trong ChuaGiaiTab
+    if (TAB_TU_TAI.has(tab) || !monOk) return // tab "chưa"/"tn" tự tải trong component con
     const myReqId = ++reqId.current
     setLoading(true); setErr(null)
     try {
@@ -130,15 +133,16 @@ export default function DuyetLoiGiaiScreen() {
           {tabBtn('chua', 'Chưa có lời giải')}
           {tabBtn('moi', 'Lời giải mới từ Claude')}
           {tabBtn('kho', 'Câu trong kho (tồn đọng)')}
+          {tabBtn('tn', 'Trắc nghiệm AI')}
         </div>
-        {tab !== 'chua' && <span className="text-[12px] text-slate-400">{rows.length} câu chờ duyệt</span>}
+        {!TAB_TU_TAI.has(tab) && <span className="text-[12px] text-slate-400">{rows.length} câu chờ duyệt</span>}
         <select value={khoi} onChange={(e) => setKhoi(e.target.value)} className="ml-3 rounded-md border border-slate-200 px-2 py-1 text-[13px]">
           {KHOI_OPTIONS.map((k) => {
             const d = dem.find((x) => x.khoi === k)
             return <option key={k} value={k}>Khối {k}{d ? ` · ${d.so_cau} chưa giải${d.so_cho_giai ? ` (${d.so_cho_giai} đã đặt)` : ''}` : ''}</option>
           })}
         </select>
-        {tab !== 'chua' && (
+        {!TAB_TU_TAI.has(tab) && (
           <button onClick={onDuyetTatCa} disabled={!rows.length || busyAll}
             className="ml-auto rounded-md bg-emerald-600 px-3.5 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-emerald-500 disabled:opacity-40">
             {busyAll ? '⏳ Đang duyệt…' : `✓ Duyệt tất cả đang lọc (${rows.length})`}
@@ -147,7 +151,8 @@ export default function DuyetLoiGiaiScreen() {
       </div>
       {profileLoading ? <p className="px-6 py-4 text-sm text-slate-400">Đang tải hồ sơ…</p>
       : !monOk ? <p className="px-6 py-4 text-sm text-slate-400">Bạn chưa được phân môn nào (nhan_su_mon) — không có kho để duyệt.</p>
-      : tab === 'chua' ? <ChuaGiaiTab mon={mon} khoi={khoi} onChanged={reloadDem} /> : (
+      : tab === 'chua' ? <ChuaGiaiTab mon={mon} khoi={khoi} onChanged={reloadDem} />
+      : tab === 'tn' ? <TracNghiemAiTab mon={mon} khoi={khoi} /> : (
       <div className="flex-1 overflow-auto px-6 py-4">
         {loading ? <p className="text-sm text-slate-400">Đang tải…</p>
           : err ? <p className="text-sm text-rose-600">Lỗi: {err}</p>

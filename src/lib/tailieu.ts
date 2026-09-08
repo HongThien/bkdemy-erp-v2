@@ -7,12 +7,14 @@ const LIMIT = 10000
 // ── DISPATCH KHO theo (MÔN, NHÁNH) của tài liệu (Toán→dai_, KHTN→khtn_, Toán+nhanh='hinh_gt'→hgt_).
 // `nhanh` chỉ có ý nghĩa TRONG mon='Toán' (Đại/Hình giải tích cùng mon để RBAC/billing/lop.mon sạch —
 // xem §1.6; phân biệt nhánh KHÔNG qua mon). Mặc định (mon≠KHTN, nhanh trống) → mã cũ KHÔNG đổi (Đại). ──
-export function khoCuaMon(mon?: string | null, nhanh?: string | null): { cauTbl: string; banDoTbl: string; ltDangTbl: string; ltCdTbl: string; listMap: (khoi: string) => Promise<MapRow[]> } {
+// formTnTbl = phiên bản TRẮC NGHIỆM (distractor theo lỗi) của câu — spec-mcq-form.md. Mới có bảng dai_ (pool 1 lớp 7);
+// khtn_/hgt_ là TÊN theo quy ước, bảng tạo cùng DDL khi môn đó cần — gọi sớm thì PostgREST báo lỗi to, không im lặng.
+export function khoCuaMon(mon?: string | null, nhanh?: string | null): { cauTbl: string; banDoTbl: string; ltDangTbl: string; ltCdTbl: string; formTnTbl: string; listMap: (khoi: string) => Promise<MapRow[]> } {
   return mon === 'KHTN'
-    ? { cauTbl: 'khtn_cau_hoi', banDoTbl: 'khtn_ban_do', ltDangTbl: 'khtn_dang_ly_thuyet', ltCdTbl: 'khtn_chuyen_de_ly_thuyet', listMap: listKhtnMap }
+    ? { cauTbl: 'khtn_cau_hoi', banDoTbl: 'khtn_ban_do', ltDangTbl: 'khtn_dang_ly_thuyet', ltCdTbl: 'khtn_chuyen_de_ly_thuyet', formTnTbl: 'khtn_cau_form_tn', listMap: listKhtnMap }
     : nhanh === 'hinh_gt'
-    ? { cauTbl: 'hgt_cau_hoi', banDoTbl: 'hgt_ban_do', ltDangTbl: 'hgt_dang_ly_thuyet', ltCdTbl: 'hgt_chuyen_de_ly_thuyet', listMap: listHgtMap }
-    : { cauTbl: 'dai_cau_hoi', banDoTbl: 'dai_ban_do', ltDangTbl: 'dai_dang_ly_thuyet', ltCdTbl: 'dai_chuyen_de_ly_thuyet', listMap: listDaiMap }
+    ? { cauTbl: 'hgt_cau_hoi', banDoTbl: 'hgt_ban_do', ltDangTbl: 'hgt_dang_ly_thuyet', ltCdTbl: 'hgt_chuyen_de_ly_thuyet', formTnTbl: 'hgt_cau_form_tn', listMap: listHgtMap }
+    : { cauTbl: 'dai_cau_hoi', banDoTbl: 'dai_ban_do', ltDangTbl: 'dai_dang_ly_thuyet', ltCdTbl: 'dai_chuyen_de_ly_thuyet', formTnTbl: 'dai_cau_form_tn', listMap: listDaiMap }
 }
 // REGISTRY nhánh dạng-based TRONG 1 môn (UI toggle "chọn bản đồ"). Môn không có trong registry = 1 nhánh
 // duy nhất (nhanh=null), không hiện toggle. Thêm nhánh mới = thêm dòng ở đây + nhánh trong khoCuaMon —
@@ -98,12 +100,18 @@ export function etFormOf(c: { ma_cau: string; loai_cau: string; lua_chon?: strin
 // Câu ứng viên có IN ĐƯỢC ở `form` không (cho sinh mã đề 2/3 — "phải cùng form"). Chỉ trắc nghiệm cần
 // phương án; trả-lời-ngắn/tự-luận thì câu nào cũng ép được (set etFormByCau khi sinh). Câu Đúng/Sai
 // (có menh_de) chỉ khớp trắc nghiệm — bảng TLN/TL không hiển thị nổi 4 mệnh đề.
-export function canBeETForm(c: { lua_chon?: string[] | null; menh_de?: unknown[] | null }, form: ETForm): boolean {
+export function canBeETForm(c: { lua_chon?: string[] | null; menh_de?: unknown[] | null; form_tn?: unknown }, form: ETForm): boolean {
   const coMenhDe = !!(c.menh_de && c.menh_de.length)
   if (coMenhDe) return form === 'trac_nghiem'
-  if (form === 'trac_nghiem') return !!(c.lua_chon && c.lua_chon.length)
+  // form_tn = phiên bản trắc nghiệm AI đã duyệt (spec-mcq-form.md §8.2) gắn lên câu bởi người gọi (khi có tải) — câu
+  // không có phương án sẵn vẫn in/phát hành được ở form trắc nghiệm nhờ form này.
+  if (form === 'trac_nghiem') return !!(c.lua_chon && c.lua_chon.length) || !!c.form_tn
   return true
 }
+// Kho nào ĐÃ CÓ bảng form trắc nghiệm AI (<kho>_cau_form_tn). khoCuaMon().formTnTbl là TÊN theo quy ước cho mọi kho;
+// bảng chưa tạo thì PostgREST 404 → chỗ gọi kiểm qua đây trước. Tạo bảng cho kho mới = thêm tên vào đây (registry, §1.6).
+const KHO_CO_FORM_TN = new Set(['dai_cau_form_tn'])
+export const coFormTn = (formTnTbl: string): boolean => KHO_CO_FORM_TN.has(formTnTbl)
 // ⭐ THỨ TỰ CHUẨN CỦA ET (Thùy chốt 07-20) — gom theo NHÓM IN: trắc nghiệm → trả lời ngắn → tự luận,
 // GIỮ NGUYÊN thứ tự chọn bên trong mỗi nhóm. Gom TẠI LÚC LƯU (ETScreen.luu) → ghi thẳng vào `thu_tu`.
 // VÌ SAO: trước đây CHỈ ETPrintView gom lúc render, còn bảng phiếu chấm / màn Chấm ET / ET online đọc

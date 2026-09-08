@@ -41,7 +41,7 @@ const files = readdirSync(dir).filter((f) => f.endsWith('.sql')).sort()
 const argv = process.argv.slice(2)
 const laBaseline = argv.includes('--baseline')
 const laStatus = argv.includes('--status')
-const denFile = argv.find((a) => !a.startsWith('--')) ?? null
+const denFile = argv.find((a, i) => !a.startsWith('--') && argv[i - 1] !== '--only') ?? null
 
 // --status chỉ ĐỌC ⇒ dùng được role chỉ-đọc. Hai đường kia GHI ⇒ bắt buộc role ghi.
 // Ưu tiên DATABASE_URL_RW truyền lúc gọi: giữ chuỗi kết nối GHI ra khỏi đĩa hoàn toàn,
@@ -193,8 +193,15 @@ try {
     console.warn('  Không áp lại. Muốn đổi thì viết migration MỚI đè lên.\n')
   }
   if (!conTreo.length) { console.log(`Không có file nào treo (đã áp ${daAp.size}/${files.length}).`); process.exit(0) }
+  // --only <file>: áp ĐÚNG 1 file treo, ghi sổ 1 dòng — dùng khi có file treo của NGƯỜI KHÁC (08/09: `npm run migrate` áp
+  // luôn template rỗng của phiên khác, `--baseline` lại đánh dấu "tới và gồm" — cả hai đều đụng việc người ta).
+  const onlyIdx = argv.indexOf('--only')
+  const only = onlyIdx >= 0 ? argv[onlyIdx + 1] : null
+  if (only && !conTreo.includes(only)) { console.error(`❌ --only: "${only}" không nằm trong danh sách treo: ${conTreo.join(', ')}`); process.exit(1) }
+  const seAp = only ? [only] : conTreo
+  if (!only && conTreo.length > 1) console.warn(`⚠ Sẽ áp ${conTreo.length} file treo — có file của người khác thì dùng --only <file>.`)
 
-  for (const f of conTreo) {
+  for (const f of seAp) {
     process.stdout.write(`Applying ${f} ... `)
     try {
       await c.query('begin')
@@ -209,7 +216,7 @@ try {
       throw e
     }
   }
-  console.log(`— Đã áp ${conTreo.length} file. Nhớ chạy \`npm run schema\` rồi commit schema.md kèm migration.`)
+  console.log(`— Đã áp ${seAp.length} file. Nhớ chạy \`npm run schema\` rồi commit schema.md kèm migration.`)
 } catch (e) {
   console.error('❌', e.message)
   process.exitCode = 1

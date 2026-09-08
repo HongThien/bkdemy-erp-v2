@@ -2214,3 +2214,43 @@ export async function deleteHgtChuyenDeLyThuyet(ma_chuyen_de: string): Promise<v
 // Ở FILE RIÊNG `hinh.ts` cho dễ đọc; re-export tại đây để UI chỉ cần 1 cửa `kho/api`.
 export * from './hinh'
 export * from './hinhConfig'
+
+// ── MCQ FORM — phiên bản TRẮC NGHIỆM (distractor theo lỗi) của câu, spec-mcq-form.md (CEO chốt 08/09) ──
+// Mọi đọc/ghi qua RPC fn_mcq_* (dispatch theo tiền tố kho ở DB; kho chưa có bảng → list rỗng, không nổ).
+export type LuaChonTn = { text: string; dung: boolean; rule?: string; duong_sai?: string }
+export type FormTnChoDuyet = {
+  id: string; ma_cau: string; dang_chinh: string; ten_dang: string; khoi: string; noi_dung: string; anh_de: string | null
+  loi_giai: string | null; dap_an_kho: string | null; lua_chon: LuaChonTn[]; dap_an: string; key_gia_tri: string
+  ai_model: string | null; sinh_at: string; da_duyet: boolean; sua_truoc_duyet: boolean
+}
+export type McqRule = { ma: string; ten: string; nhom: 'khai_niem' | 'tinh'; du_phong: boolean }
+export type McqMetric = {
+  tong: number; cho_duyet: number; duyet: number; duyet_khong_sua: number; sua: number; tu_choi: number
+  precision: number | null; ti_le_sua: number | null; ly_do_tu_choi: { ly_do: string; n: number }[]
+  phan_bo: Record<string, number>; do_lua: { ma_cau: string; luot: number; chon: number[] }[]
+}
+export const khoPrefix = (mon: KhoMon): 'dai' | 'khtn' | 'hgt' => (mon === 'khtn' ? 'khtn' : mon === 'hgt' ? 'hgt' : 'dai')
+export async function listFormTnChoDuyet(mon: KhoMon, khoi?: string, daDuyet = false): Promise<FormTnChoDuyet[]> {
+  const { data, error } = await supabase.rpc('fn_mcq_form_cho_duyet', { p_kho: khoPrefix(mon), p_khoi: khoi || null, p_da_duyet: daDuyet })
+  if (error) throw error
+  return (data ?? []) as FormTnChoDuyet[]
+}
+// luaChon truyền khi người SỬA trước khi duyệt — DB tự so với bản cũ để ghi sua_truoc_duyet (metric).
+export async function duyetFormTn(mon: KhoMon, id: string, nguoiDuyet: string, luaChon?: LuaChonTn[]): Promise<void> {
+  const { error } = await supabase.rpc('fn_mcq_form_duyet', { p_kho: khoPrefix(mon), p_id: id, p_nguoi: nguoiDuyet, p_lua_chon: luaChon ?? null })
+  if (error) throw error
+}
+export async function tuChoiFormTn(mon: KhoMon, id: string, nguoi: string, lyDo: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_mcq_form_tu_choi', { p_kho: khoPrefix(mon), p_id: id, p_nguoi: nguoi, p_ly_do: lyDo })
+  if (error) throw error
+}
+export async function listMcqRule(mon: KhoMon): Promise<McqRule[]> {
+  const { data, error } = await supabase.rpc('fn_mcq_rule', { p_kho: khoPrefix(mon) })
+  if (error) throw error
+  return (data ?? []) as McqRule[]
+}
+export async function mcqMetric(mon: KhoMon): Promise<McqMetric | null> {
+  const { data, error } = await supabase.rpc('fn_mcq_metric', { p_kho: khoPrefix(mon) })
+  if (error) throw error
+  return data && Object.keys(data).length ? (data as McqMetric) : null
+}

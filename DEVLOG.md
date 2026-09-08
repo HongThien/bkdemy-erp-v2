@@ -9452,3 +9452,174 @@ dưới ô mới là "đúng như khi in". Chỉnh MathLive render là việc kh
   gioi_tinh/anh_url — 1 RPC thay cho hs_gioi_tinh_cua_toi, hàm cũ giữ) + `hs_doi_anh_dai_dien(p_url)` (chỉ sửa anh_url
   của chính mình, p_url phải là public URL bucket avatars). `tuluyen.ts`: `hoSoCuaToi`, `doiAnhDaiDienHS`. HomeHS avatar
   = AvatarHS (vòng trắng + vương miện vẽ ngoài, badge 📷 màu primary). Migrate + schema OK. tsc 0.
+## 2026-09-08 (tiếp) — Bài tập app HS: CEO chốt MCQ trước, spec `spec-mcq-form.md`
+- **Bối cảnh:** bài cấp 2 có tự luận + trắc nghiệm; CEO đặt 2 hướng (AI sinh bản MCQ cho câu tính được · nộp ảnh cho câu
+  phải trình bày). CTO phản biện: MCQ đoán 25% làm mastery kém tin hơn TLN; nhưng **distractor theo lỗi** = HS chọn sai là
+  ghi `ma_loi` 100% chắc (§1.5), lợi ích thật duy nhất của MCQ. Nộp ảnh: đã có `btvn_nop` theo buổi; chưa có theo câu.
+- **CEO chốt:** MCQ ưu tiên (HS chưa quen thì TLN "làm đúng gõ sai" = app đểu) · là phiên bản THÊM, không làm lại câu ·
+  TLN chỉ khi khoá cấu trúc đáp án (answer type như Khan) · tự luận sau: AI chấm, TA duyệt · pool 1 = lớp 7 "Số hữu tỉ"
+  nhóm tính toán · 5 rule lỗi CEO đưa + CTO bổ sung thành 25 rule (R01–R25) · sau spec phải clone thêm câu cho đa dạng.
+- **Soi kho (DB live):** pool 1 = 9 dạng, 497 câu, 100% có đáp số, **0 có phương án**, 282 đang `tu_luan` ⇒ `tu_luyen_sinh`
+  hiện KHÔNG bao giờ chọn (chỉ lấy TN/TLN/ĐS) → form MCQ mở khoá 282 câu cho tự luyện. Đáp số kho lộn xộn (`-$\dfrac{17}{2}$`,
+  thiếu `$`, 2 nghiệm `;`, nhiều ý a/b) ⇒ spec bắt bước chuẩn hoá `parseHuuTi` + verify so GIÁ TRỊ, không so chuỗi.
+- **Quyết định thiết kế (CTO):** KHÔNG đổ `lua_chon` vào câu gốc (etFormOf coi "có lua_chon" = TN ⇒ ET in giấy tự đổi form);
+  bảng form riêng `dai_cau_form_tn` khoá `ma_cau` (1 form hiệu lực/câu, từ chối = `xoa_at`) + `dai_mcq_rule`; snapshot thêm
+  `bai_test_cau.form_tn_id` + `lua_chon_rule[]` (song song, cùng INSERT); lỗi HS = view `v_mcq_loi_hs`, không cột mới ở
+  `bai_lam_cau`. Không dựng taxonomy lỗi chung — rule pool trước, taxonomy nổi từ data. Pipeline theo `hangdoi-giai.mjs`
+  (`--list/--verify/--ghi`), duyệt 100% pool 1, metric precision/tỉ lệ sửa/độ lừa distractor.
+- Chưa code, chưa commit. Mở: bật feedback "đường sai" cho HS sau khi sai? · CEO gom form tính toán thật trong đề → R26+.
+## 2026-09-08 (tiếp) — Icon riêng cho app TA + OPS (CEO gửi icon_TA.png, icon_QLHT.png)
+- Trước: 5 app dùng chung `public/icon-192/512.png`. CEO hỏi "thay icon chỉ cần ảnh?" → chuẩn: PNG vuông ≥1024, nền kín,
+  chủ thể trong ~65% giữa. 2 ảnh về 1254², nền kín, nhưng **vẽ sẵn hình vuông bo góc trên nền trắng** ⇒ dùng nguyên sẽ lòi
+  góc trắng khi iOS/Android tự bo. Xử lý (scratchpad `make-icons.ps1`, System.Drawing): cắt sát bounding box khung bo
+  góc → canvas 1024 đổ **màu mép** (trung bình 4 điểm sát cạnh: TA #17CED4, OPS #22B2FE) → clip bo góc 19% rồi vẽ ảnh
+  (4 góc trắng biến thành màu mép). Master lưu `design/bk-ui-src/icon_*_master1024.png`; gốc dời về `design/bk-ui-src/`.
+- PWA: `public/icon-ta-192/512.png`, `icon-ops-192/512.png`; `vite.config.ta/ops.ts` includeAssets + manifest icons
+  (512 kiêm maskable); `ta.html`/`ops.html` apple-touch-icon. `icon-192/512.png` cũ giữ cho hs/gv/pt.
+- APK TA (`android-ta/`): mipmap 5 mật độ — `ic_launcher_foreground` = art 80% giữa canvas 108dp trên nền màu mép (safe
+  zone 72/108 ⇒ thấy ~83% art, clipboard/TA vừa lọt) · `ic_launcher` vuông · `ic_launcher_round` cắt tròn ·
+  `values/ic_launcher_background.xml` = #17CED4. OPS không có APK. Icon mới chỉ lên máy khi build lại APK / thêm lại PWA.
+- build:ta + build:ops pass, manifest trỏ đúng file. Chưa commit. Trong working tree main có thay đổi KHÔNG phải của
+  phiên này (CLAUDE.md, spec-mcq-form.md, mig 202609080230_mcq_form_tn.sql) — không đụng.
+## 2026-09-08 (tiếp) — MCQ form M1 xong: mig 202609080230 + rule + script sinh + lô 1 (35 form chờ duyệt)
+- **CEO chốt thêm:** KHÔNG hiện "đường sai" cho HS (HS đọc lời giải chi tiết là tự thấy); rule/đường sai chỉ staff phân tích.
+  Spec §8.1/§11 đã sửa theo. "Xong rồi bắt đầu" → M1.
+- **Mig `202609080230_mcq_form_tn`:** `dai_mcq_rule` (25 rule R01–R25 seed idempotent, cột `nhom` khai_niem/tinh + `du_phong`) ·
+  `dai_cau_form_tn` (khoá ma_cau, partial unique 1 form hiệu lực, trigger `dai_cau_form_tn_kiem` chặn: ≠4 phương án / ≠1 đúng /
+  dap_an lệch vị trí / rule không tồn tại / text trống; RLS staff `la_thanh_vien`) · `bai_test_cau` +`form_tn_id` +`lua_chon_rule[]`
+  (song song có chủ đích, cùng INSERT; HS đã SELECT được dap_an_key ở tự luyện nên không lộ thêm; ET đi qua et_de liệt kê cột) ·
+  view `v_mcq_loi_hs` (security_invoker) + `fn_mcq_loi_theo_hs/dang` · `_kho_form_tn_tbl` registry SQL; TS `khoCuaMon().formTnTbl`.
+  Migrate OK, `npm run schema` OK (+69 dòng), tsc 0.
+- **`scripts/lib/huuti.mjs`** `parseHuuTi` (BigInt, tối giản, tập nghiệm sắp tăng, fail có lý do) + `hinhThuc`; test `node --test
+  scripts/lib/huuti.test.mjs` 5/5. **`scripts/mcq-sinh.mjs`** `--list/--verify/--ghi` theo pattern hangdoi-giai; verify so GIÁ TRỊ
+  (đúng = key kho, 4 khác nhau đôi một, cùng hình thức, 3 rule khác nhau ≤1 dự phòng, phân bố đúng ≤40%).
+- **Lô 1 T107010401:** `--list` 40/40 parse được. Claude tính tay → `scripts/mcq-lo/lo1-T107010401.json`. **35 OK · 5 BỎ** (023/024/025
+  đáp số 0, 028/029 đáp số 1: đường sai không ra số nguyên cùng hình thức → không đủ 3 distractor). Phân bố đúng A9/B9/C9/D8.
+  `--ghi` → 35 dòng `da_duyet=false`. `_chk_mcq_form.mjs`: trigger chặn đủ 4 ca sai; unique chặn trùng.
+- **Bài học cho clone (§9):** câu đáp số "đẹp" (0, 1) KHÓ làm MCQ vì đường sai thường ra phân số ⇒ khi clone ưu tiên đáp số phân số.
+  Kho có 4 câu 037–040 mở `$` mà không đóng (đề hiển thị vẫn OK vì renderer khoan dung) — chưa sửa.
+- Chưa commit. Tiếp: M2 tab duyệt "Trắc nghiệm AI" + `fn_mcq_metric`; sau đó lô 2 (T107010401 còn 29 câu) và các dạng khác.
+## 2026-09-08 (tiếp) — MCQ form M2 xong: tab "Trắc nghiệm AI" + RPC duyệt/từ chối + fn_mcq_metric (mig 202609080246)
+- **Mig `202609080246_mcq_form_duyet_metric`:** `fn_mcq_form_cho_duyet(p_kho,p_khoi,p_da_duyet)` (join dạng/khối ở DB; kho chưa có
+  bảng → rỗng qua to_regclass, không nổ) · `fn_mcq_form_duyet(p_kho,p_id,p_nguoi,p_lua_chon)` (p_lua_chon khác bản cũ ⇒
+  `sua_truoc_duyet=true`; trigger kiểm lại) · `fn_mcq_form_tu_choi` (lý do bắt buộc → `xoa_at` + cột mới `tu_choi_boi`) ·
+  `fn_mcq_metric` (tong/cho_duyet/duyet/sua/tu_choi/precision/ti_le_sua/ly_do_tu_choi/phan_bo/do_lua ≥30 lượt) · `fn_mcq_rule`.
+  Dispatch theo tiền tố `dai/khtn/hgt` = KhoMon ở TS (`khoPrefix`). `_chk_mcq_m2.mjs` (ghi trong rollback): 10/10 ca đúng.
+- **UI:** `TracNghiemAiTab.tsx` (metric strip · thẻ: đề MathText + 4 phương án, xanh = đúng, rule + đường sai · Sửa (text/rule/
+  đường sai phương án SAI) → "Lưu & duyệt" · Từ chối có ô lý do inline · KHÔNG có duyệt-tất-cả, CEO chốt duyệt 100%).
+  Cắm vào `DuyetLoiGiaiScreen` tab 'tn' qua `TAB_TU_TAI` (chua/tn tự tải). api: `listFormTnChoDuyet/duyetFormTn/tuChoiFormTn/
+  listMcqRule/mcqMetric`. tsc 0. Soi preview 5202 (đăng nhập nhanh dev): 35 thẻ khối 7 render LaTeX đúng, Sửa/Từ chối mở đúng,
+  console sạch. Chưa duyệt câu nào thật (việc của người duyệt).
+- **⚠ SỰ CỐ migrate:** `npm run migrate` áp luôn `202609080246_khao_sat_hs_ban_cua_con.sql` — file TEMPLATE RỖNG (8 dòng comment)
+  của PHIÊN KHÁC cùng phút. Sổ `_migrations` ghi "đã áp" với vân tay bản rỗng ⇒ phiên kia điền SQL rồi migrate sẽ bị TỪ CHỐI
+  ("file đã áp mà bị sửa"). Cần xoá 1 dòng sổ cho file đó (chờ CEO gật — Luật xoá). **Bài học:** migrate.mjs áp MỌI file treo,
+  kể cả của người khác; trước `npm run migrate` phải `--status` và nhìn danh sách treo có đúng file mình không.
+- Chưa commit. Tiếp: M3 cắm tự luyện (mở ứng viên + snapshot form TN vào bai_test_cau) sau khi CEO duyệt thử vài câu.
+## 2026-09-08 (tiếp) — Icon app HS (icon_apphs.png từ Downloads) — cùng khuôn TA/OPS
+- Ảnh 1254², nền kín nhưng **tràn viền, 4 góc ĐEN** (khác TA/OPS lề trắng) ⇒ bbox = cả ảnh; màu mép KHÔNG lấy trung bình
+  4 cạnh (cạnh trái/phải đụng tay áo sáng) mà lấy riêng cạnh TRÊN (trời) = #1FA2FE. Clip bo góc 19% > góc vẽ sẵn ~15% nên
+  toàn bộ góc đen nằm ngoài clip → đổ màu trời. PWA `icon-hs-192/512`, `vite.config.hs.ts` + `hs.html`; APK HS `android/`
+  mipmap 5 mật độ + background #1FA2FE. build:hs pass. Commit riêng file icon (working tree có việc MCQ/khảo sát của
+  phiên khác — không đụng).
+- **Đã sửa sự cố sổ (CEO gật):** xoá 1 dòng `_migrations` cho `202609080246_khao_sat_hs_ban_cua_con.sql` (bam 24896ea8…, file rỗng
+  nên DB không có object nào của nó). `--status` giờ liệt kê file đó là CÒN TREO — phiên kia điền SQL rồi migrate bình thường.
+## 2026-09-08 (tiếp) — MCQ form M3 xong: form TN đã duyệt vào TỰ LUYỆN + bổ trợ yếu/retest (mig 202609080259)
+- **Mig `202609080259_mcq_tu_luyen_snapshot`:** `_kho_form_tn_cua(cautbl)` (bảng form tương ứng, null nếu chưa có) ·
+  `_kho_dk_online_sql(cautbl)` (chuỗi điều kiện "chấm online được" dùng chung: TN/TLN có đáp án · ĐS ≥2 mệnh đề · HOẶC có form
+  TN đã duyệt) · `_kho_snapshot_cau` ƯU TIÊN form đã duyệt (loai_cau='trac_nghiem', lua_chon=text[], dap_an_key=chữ, form_tn_id,
+  lua_chon_rule) · `_btyeu_chon_cau` dùng dk chung · `tu_luyen_sinh` viết lại: ứng viên theo dk chung, ORDER BY có-form desc
+  rồi random (CEO: MCQ trước), snapshot qua `_kho_snapshot_cau` (1 nguồn mapping; ma_cum tự luyện giờ có giá trị thật).
+  Bẫy đã tránh: `format('%I', null)` NỔ ⇒ dùng case-when. Áp bằng `_apply_one` + `--baseline` (không đụng file treo phiên khác).
+- **⚠ `--baseline <file>` đánh dấu "TỚI VÀ GỒM"** ⇒ lại ghi sổ cả `202609080246_khao_sat_hs_ban_cua_con.sql` của phiên kia; đã xoá
+  lại dòng đó ngay (cùng dòng CEO gật). Bài học: có file treo của người khác thì KHÔNG dùng `npm run migrate` lẫn `--baseline`;
+  áp `_apply_one` rồi INSERT sổ thủ công 1 dòng (hoặc thêm cờ `--only` cho migrate.mjs — chưa làm).
+- **Kiểm `_chk_mcq_m3.mjs`** (JWT HS giả lập qua request.jwt.claims, rollback): dk khtn không có exists ✓ · `_btyeu_chon_cau`
+  ra 5 câu tu_luan đều có form ✓ · `tu_luyen_sinh` 3 slot T107010401 đều snapshot từ form, cấu trúc đúng, null rule đúng vị trí
+  đáp án ✓ · HS chọn sai → `v_mcq_loi_hs` ra R03, `fn_mcq_loi_theo_hs` đếm đúng ✓. Slot T107010201 (24 câu tu_luan, chưa form)
+  bị bỏ như trước — đúng hành vi cũ.
+- **Hiện trạng prod:** 0/35 form `da_duyet` ⇒ tự luyện CHƯA đổi gì cho HS tới khi TA/CEO duyệt trên tab "Trắc nghiệm AI".
+  schema.md refresh (đã gồm object của phiên khác đang thêm: 200 bảng/17 view). Chưa commit. Còn M4: sinh hết pool 1, clone §9, ET/BTVN §8.2.
+## 2026-09-08 (tiếp) — Khảo sát "Bạn của con ở BK": mig 202609080246 + PWA iPad riêng + tab ERP (CEO duyệt sáng 09/09)
+- **Spec:** `spec-khao-sat-hs.md` (CEO gửi 08/09) — đồ thị quan hệ ~300 HS để kiểm 5 giả thuyết referral. CEO chốt thêm 2 điều
+  KHÁC spec: (1) "trỏ riêng ra thành 1 PWA cho iPad" — CHỈ phần form (lưới lớp → HS bấm tên → 9 câu); khớp tên + kết quả ở ERP;
+  (2) "các trường thông tin này cập nhật hết thành thông tin cá nhân của HS" ⇒ trường/lớp trường/nơi ở/toà/tầng/khu/nghề bố mẹ/
+  ban PH/chức vụ toà/lý do vào = cột trên `hoc_sinh` (spec §3 nói "không thêm cột hoc_sinh" — bỏ theo lệnh CEO).
+- **Mig `202609080246_khao_sat_hs_ban_cua_con`:** `hoc_sinh` +9 cột (lop_truong · noi_o_loai · toa · tang · khu · ly_do_vao ·
+  bo_me_ban_ph_lop · bo_me_chuc_vu_toa · nghe_bo_me; CHECK từng cột) · `khao_sat_hs` (1 dòng/HS/đợt ĐÃ NỘP, `tra_loi` jsonb
+  snapshot bất biến, `nguoi_bam_ho`, unique hoc_sinh×dot) · `khao_sat_hs_quan_he` (1 dòng/CẠNH: loai biet/duoc_ru_boi/da_ru/muon_ru,
+  ten_goc gõ tự do, den_hoc_sinh_id khớp sau, +`ngoai_bk`) · RLS `la_thanh_vien()` · `fn_bo_dau` (translate thuần — DB không có
+  unaccent) · RPC: `fn_khao_sat_hs_nop(jsonb)` (1 transaction: insert khảo sát + UPDATE hoc_sinh + insert cạnh; câu tuỳ chọn null →
+  giữ giá trị cũ) · `fn_khao_sat_lop_tien_do` · `fn_khao_sat_luoi_lop` · `fn_khao_sat_danh_sach` (trường/toà gợi ý = DISTINCT từ data
+  + seed toà, tự lớn dần) · `fn_khao_sat_canh` · `fn_khao_sat_goi_y_khop` (tên bỏ dấu chứa TỪ CUỐI + điểm cùng trường/lớp/toà/khối) ·
+  `fn_khao_sat_khop` · `fn_khao_sat_tong_quan` · 5 view security_invoker `v_khao_sat_cum_truong/cum_toa/kenh/vector/lead` (§5 4 query).
+  Param đợt dùng `int` (không `smallint` — literal `1` không resolve được hàm smallint).
+- **⚠ Sự cố migrate — bài học:** `npm run new-migration` tạo file TEMPLATE RỖNG trước; phiên khác (MCQ) chạy `npm run migrate` lúc 02:48
+  đã quét file rỗng đó vào sổ `_migrations` (bam = template) ⇒ sổ nói "đã áp", DB không có bảng, `--status` "không còn treo".
+  Xử lý: áp SQL thật + `update _migrations set bam` trong cùng transaction (script scratchpad). **Rule:** 2 phiên làm song song thì
+  KHÔNG chạy `npm run migrate` trần — hoặc viết xong nội dung rồi mới `new-migration` (đổi tên file), hoặc migrate chỉ file mình.
+  (Cân nhắc sửa migrate.mjs: bỏ qua file chỉ có comment/template.)
+- **Client:** `src/lib/khaosat.ts` (seam) · `src/screens/khaosat/KhaoSatForm.tsx` (trò chơi 9 câu: 1 câu/màn, thẻ to, chip tên,
+  pill quen_tu/quan_he, confetti canvas tự viết, visualViewport để nút Tiếp không bị bàn phím iOS che, mất mạng → giữ state + "Nộp lại",
+  màn cuối mới nhắc quà, tự về lưới sau 3s) · `KhaoSatLuoi.tsx` (lớp theo khối + tiến độ → lưới avatar HS, đã làm mờ+✓, toggle "TA
+  bấm hộ" mặc định bật khối ≤5) · `KhopTenTab.tsx` (lọc chưa/đã/ngoài BK × loại, gợi ý DB, SearchSelect tìm tay, Ngoài BK, Bỏ khớp) ·
+  `KetQuaTab.tsx` (tổng quan + 4 bảng) · `KhaoSatScreen.tsx` leaf `khaosat` nhóm Vận hành (fixtures + NhanSuHome).
+- **PWA riêng (entry thứ 10):** `khaosat.html` · `main-khaosat.tsx` · `AppKhaoSat.tsx` (gate = nhân sự, y hệt AppTa) ·
+  `vite.config.khaosat.ts` (dist-khaosat, port 5184, manifest tím #8B6BEF, icon `public/icon-khaosat-192/512.png` vẽ bằng canvas) ·
+  package.json `dev/build/preview:khaosat` · vercel-ignore RIENG + URL `bkdemy-erp-v2-khaosat` · launch.json `dev-khaosat`/`preview-khaosat`.
+  iPad = iOS ⇒ chỉ PWA (Safari → Chia sẻ → Thêm vào MH chính), không APK. CEO cần tạo Vercel project + domain (đề xuất
+  `khaosat.bkacademy.edu.vn`), build command `npm run build:khaosat`, output `dist-khaosat`.
+- **Hồ sơ HS (ERP):** `HocSinhScreen` EditModal thêm Lớp ở trường · Nơi ở (chung cư → Toà+Tầng / nhà đất → Khu) · Nghề bố mẹ ·
+  Ban PH lớp · Chức vụ toà · Vì sao vào BK. `HocSinh` type mở rộng.
+- **Verify:** tsc 0 · build:khaosat OK (JS 394 KB) · build ERP OK · chạy END-TO-END trên bản build khổ iPad 768×1024: 7A1 → Bùi Tuệ An
+  → 9 câu (2 bạn biết, được rủ, đã rủ có, ban PH có, chức vụ không biết, nghề Kỹ sư, muốn rủ Hà My 7A3) → nộp → DB đúng 1 dòng
+  khao_sat_hs + 5 cạnh + hoc_sinh cập nhật đủ 9 cột → lưới hiện 1/10 + mờ ✓ → bấm lại báo "đã làm rồi". Dữ liệu này là DỮ LIỆU THỬ
+  (HS thật Bùi Tuệ An, đợt 1) — CEO duyệt xong thì xoá dòng khao_sat_hs id=1 (cascade cạnh) nếu muốn HS đó làm lại thật.
+  grep "quà" trong form: chỉ màn kết thúc. Chưa commit (chờ CEO duyệt sáng 09/09).
+
+## 2026-09-08 (tiếp) — "Đăng nhập thay" (Founder vào app TA/GV/OPS/PT/Chi/Giải bài/HS như tài khoản khác, không cần mật khẩu)
+- **Nhu cầu (CEO):** dev nhiều app, nhiều loại tài khoản — "out ra vào lại đăng nhập mệt; app làm việc, không có gì riêng tư".
+  Hỏi R1: dev máy hay bản deploy? → CEO: "tiện thì bản deploy, phức tạp thì thôi". APK ngoài phạm vi.
+- **Làm:** `api/dang-nhap-thay.mjs` (Vercel function, CHỈ project ERP): GET = danh sách tai_khoan × nhan_su đang làm / hoc_sinh
+  đang học (tai_khoan RLS chỉ-thấy-mình ⇒ client không tự đọc được); POST {tai_khoan_id} = `admin.generateLink(magiclink)` →
+  `verifyOtp(token_hash)` bằng anon ⇒ access+refresh token THẬT của người đó. Gate: JWT người gọi + `my_quyen().la_admin`
+  (kiểm bằng anon client + token của họ, KHÔNG dùng service role cho bước kiểm). Thiếu env → 503 nói rõ. Mỗi lần cấp ghi console.log.
+  Client `src/lib/dangnhapthay.ts` (APPS map domain prod · mở tab TRƯỚC rồi fetch — tránh popup blocker · URL `#access_token=…
+  &refresh_token=…&expires_in=…&token_type=bearer`) + tab 3 màn Phân quyền `VaoAppNhuTab.tsx` (toggle Nhân sự/HS · SearchSelect
+  avatars · nút mở từng app · "Vừa mở"). vercel-ignore: 3 file này RIENG erp. `.env.example` ghi SUPABASE_SERVICE_ROLE cho ERP.
+- **Quyết định cần CEO biết:** 19/08 CEO chọn KHÔNG đặt SUPABASE_SERVICE_ROLE lên Vercel. Tính năng này KHÔNG có đường khác (chỉ
+  admin API cấp được session cho user khác — Cổng PH cũng làm y vậy với preview-token). Code INERT cho tới khi CEO tự thêm env
+  vào project ERP (Production) + Redeploy ⇒ bước bật/không bật nằm ở CEO.
+- **Verify:** tsc 0 · `scripts/_chk_dang_nhap_thay.mjs` gọi thẳng handler trong Node với key .env.local: no-token→401 · Trang GV
+  (không admin)→403 · Admin GET→200 (350 tk: 36 ns + 314 hs) · POST HS0004→200 token_type=bearer · token gọi `my_hoc_sinh_id` đúng ·
+  id lạ→404. Trình duyệt: mở dev app với hash ⇒ supabase-js tự set session hs0004, xoá hash, render màn HS. Đã signOut sau test.
+- **⭐ Bẫy:** hash-login CHỈ chạy lúc `_initialize` (tải trang). Đổi hash trên tab đang mở (navigate cùng origin) = hashchange, KHÔNG
+  reload ⇒ không nhận. Vì vậy client luôn `window.open` tab MỚI. Preview tool "dev-hs" báo port 5173 nhưng thực ra trúng server ERP
+  của phiên khác đang chạy cùng port — title "BKdemy ERP v2 — Kho"; không ảnh hưởng kết luận (cùng supabase client).
+- **Chưa:** audit trail impersonation chỉ ở Vercel Logs (chưa có bảng) · app PH là repo khác (đã có preview-token riêng) · ERP chính
+  cố ý KHÔNG có trong APPS (cùng origin ⇒ sẽ đè session Founder). Chưa commit.
+## 2026-09-08 (đêm) — MCQ form M4 xong: máy sinh 453 form cả pool 1, clone đổi số 56 câu, ET online lấy form (CEO: "chạy full đến cuối")
+- **Bộ sinh tự động `scripts/mcq-auto.mjs`** (thay vì tính tay 460 câu): tokenizer+parser LaTeX lớp 7 (\dfrac, hỗn số 2¾, thập
+  phân "0,25", ^{n}, ngoặc {…}/[…]/\left, nhân ngầm 2x·(x+1)), Rat BigInt, `ev(AST, rule)` = làm méo ĐÚNG 1 quy tắc tại mọi
+  nút áp được (R01–R27), Tìm x = bóc dần (peel) 1 lần x + giải tuyến tính khi x xuất hiện nhiều lần (lin), rule tìm-x
+  (R19/R20/R21/R22/R16-căn) can thiệp lúc bóc, rule số dùng chung `binVal` cả lúc tính hằng lẫn lúc gộp vế. Đáp án máy
+  PHẢI = đáp số kho (parseHuuTi, thêm `\pm a` và `{a; b}`) mới sinh — lệch = bỏ. Vị trí đúng cân A/B/C/D tự động.
+  → **453/462 câu ra form, `--verify` 0 FAIL**, ghi `da_duyet=false`. File: `scripts/mcq-lo/lo2-pool1-auto.json` (+ input).
+  Tần suất rule: R04 187 · R06 127 · R19 118 · R16 97 · R07 92 · R20 89 · R10/R08 70 · R02 69 · R26 56 · R11 56 · R01 50 · R27 49…
+- **9 câu bỏ:** 6 câu T107010203049–054 có `2^{x-1}` (mũ chứa x — không phải tính toán hữu tỉ, nên xem lại dạng) · T107010404003 chỉ 2
+  distractor · **2 ĐÁP SỐ KHO SAI (máy tính lại):** T107010202053 kho ghi 13/16, đúng là **37/24** · T107010403036 kho ghi 8/5,
+  đúng là **8/3**. Chưa sửa kho (việc người).
+- **Luật "cùng hình thức" NỚI** (verify + generator): đáp án đúng không được là kiểu duy nhất (≥2 phương án cùng kiểu); distractor
+  khác kiểu được phép; tập nghiệm ≤2 phương án đơn. Lý do: rule cứng làm câu đáp số nguyên đói distractor (0/1 loại ở lô 1).
+- **Rule mới (mig `202609080318_mcq_rule_r26`, áp bằng `--only`):** R26 bỏ qua dấu âm ở mẫu/tử · R27 đổi hỗn số sai. CEO gom
+  form thật trong đề thi thì ghi từ **R28**.
+- **`migrate.mjs --only <file>`** mới: áp đúng 1 file treo, ghi sổ 1 dòng — không đụng file treo của phiên khác (sự cố 2 lần hôm nay).
+- **Clone đổi số `scripts/mcq-clone-doi-so.mjs`** (§9): thay số trong đề, số lặp thay nhất quán, phân số cùng-mẫu-sau-rút-gọn
+  → cùng mẫu mới, giữ hệ số chưa tối giản; đáp số tính bằng bộ tính, chỉ nhận |tử| ≤ 100, mẫu ≤ 50, ≠ gốc, không 0/±1 nếu gốc
+  không vậy. Ghi `dai_cau_hoi_clone_cho_duyet` (`clone_method='mcq_auto_doi_so'`, loi_giai NULL → sau duyệt vào hàng "Chưa có
+  lời giải"). **56 clone chờ duyệt:** 0201 +36 · 0301 +11 · 0203 +6 · 0202 +2 · 0404 +1 (0207 52 câu để nguyên — thuận tiện
+  a·b+a·c đổi số dễ mất thiết kế). Form MCQ cho clone chỉ sinh SAU khi clone được duyệt.
+- **ET/BTVN online (§8.2):** `phatHanhTest` (testonline.ts) — GV chọn form trắc nghiệm (etFormByCau) cho câu KHÔNG có phương án
+  + kho có form đã duyệt ⇒ snapshot form (loai_cau TN, lua_chon text, dap_an_key chữ, form_tn_id, lua_chon_rule). BTVN/giáo trình
+  không có toggle → không đổi (giấy khớp online). `canBeETForm` nhận `form_tn`; `coFormTn()` registry bảng đã có. In giấy CHƯA
+  kéo form (để sau). tsc 0. Chưa soi preview (cần GV phát hành ET thật).
+- Xuất `mcq-xem.mjs` 488 câu gửi CEO. Chưa commit. Sáng CEO duyệt trên tab "Trắc nghiệm AI"; duyệt xong câu tự vào tự luyện (M3).

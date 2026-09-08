@@ -1,0 +1,1002 @@
+[
+ {
+  "ma_cau": "T107010401001",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "text": "$-\\dfrac{43}{12}$",
+    "dung": true
+   },
+   {
+    "text": "$\\dfrac{29}{12}$",
+    "dung": false,
+    "rule": "R03",
+    "duong_sai": "coi (−2)² = −4 nên −(−4)·3/4 thành +3"
+   },
+   {
+    "text": "$-\\dfrac{37}{12}$",
+    "dung": false,
+    "rule": "R04",
+    "duong_sai": "2/3 + (−1/4) tính thành 2/3 + 1/4"
+   },
+   {
+    "text": "$-\\dfrac{59}{16}$",
+    "dung": false,
+    "rule": "R12",
+    "duong_sai": "tính hết trong ngoặc trái sang phải rồi mới nhân 3/4"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107010401002",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "text": "$\\dfrac{2}{3}$",
+    "dung": false,
+    "rule": "R03",
+    "duong_sai": "coi (−3)² = −9 nên −(−9)·1/6 thành +3/2"
+   },
+   {
+    "text": "$-\\dfrac{7}{3}$",
+    "dung": true
+   },
+   {
+    "text": "$-\\dfrac{5}{3}$",
+    "dung": false,
+    "rule": "R04",
+    "duong_sai": "1/2 + (−1/3) tính thành 1/2 + 1/3"
+   },
+   {
+    "text": "$-\\dfrac{89}{36}$",
+    "dung": false,
+    "rule": "R12",
+    "duong_sai": "trừ 9 trước rồi mới nhân 1/6"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107010401003",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "text": "$\\dfrac{1}{3}$",
+    "dung": false,
+    "rule": "R03",
+    "duong_sai": "coi (−4)² = −16 nên thành +2"
+   },
+   {
+    "text": "$-\\dfrac{8}{3}$",
+    "dung": false,
+    "rule": "R04",
+    "duong_sai": "5/6 + (−1/2) tính thành 5/6 + 1/2"
+   },
+   {
+    "text": "$-\\dfrac{11}{3}$",
+    "dung": true
+   },
+   {
+    "text": "$-\\dfrac{95}{24}$",
+    "dung": false,
+    "rule": "R12",
+    "duong_sai": "trừ 16 trước rồi mới nhân 1/8"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107010401004",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "text": "$\\dfrac{17}{8}$",
+    "dung": false,
+    "rule": "R03",
+    "duong_sai": "coi (−2)² = −4 nên thành +5/2"
+   },
+   {
+    "text": "$-\\dfrac{21}{8}$",
+    "dung": false,
+    "rule": "R04",
+    "duong_sai": "3/4 + (−1/8) tính thành 3/4 + 1/8"
+   },
+   {
+    "text": "$-\\dfrac{199}{64}$",
+    "dung": false,
+    "rule": "R12",
+    "duong_sai": "trừ 4 trước rồi mới nhân 5/8"
+   },
+   {
+    "text": "$-\\dfrac{23}{8}$",
+    "dung": true
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107010401005",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "text": "$-\\dfrac{62}{15}$",
+    "dung": true
+   },
+   {
+    "text": "$-\\dfrac{2}{15}$",
+    "dung": false,
+    "rule": "R03",
+    "duong_sai": "coi (−3)² = −9 nên thành +2"
+   },
+   {
+    "text": "$-\\dfrac{4}{5}$",
+    "dung": false,
+    "rule": "R02",
+    "duong_sai": "coi (−3)² = (−3)·2 = −6"
+   },
+   {
+    "text": "$-\\dfrac{649}{135}$",
+    "dung": false,
+    "rule": "R12",
+    "duong_sai": "trừ 9 trước rồi mới nhân 2/9"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107010401006",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "text": "$\\dfrac{5}{4}$",
+    "dung": false,
+    "rule": "R03",
+    "duong_sai": "coi (−5)² = −25 nên thành +5/4"
+   },
+   {
+    "text": "$-\\dfrac{5}{4}$",
+    "dung": true
+   },
+   {
+    "text": "$-\\dfrac{17}{20}$",
+    "dung": false,
+    "rule": "R04",
+    "duong_sai": "7/10 + (−1/5) tính thành 7/10 + 1/5"
+   },
+   {
+    "text": "$-\\dfrac{69}{40}$",
+    "dung": false,
+    "rule": "R12",
+    "duong_sai": "trừ 25 trước rồi mới nhân 1/20"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107010401007",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "text": "$\\dfrac{12}{41}$",
+    "dung": false,
+    "rule": "R03",
+    "duong_sai": "coi (−2)² = −4, ngoặc thành 41/12"
+   },
+   {
+    "text": "$-\\dfrac{12}{25}$",
+    "dung": false,
+    "rule": "R04",
+    "duong_sai": "2/3 + (−1/4) tính thành 2/3 + 1/4, ngoặc thành −25/12"
+   },
+   {
+    "text": "$-\\dfrac{12}{31}$",
+    "dung": true
+   },
+   {
+    "text": "$-\\dfrac{31}{12}$",
+    "dung": false,
+    "rule": "R08",
+    "duong_sai": "1 : (−31/12) tính như 1·(−31/12), không nghịch đảo"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107010401008",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "text": "$\\dfrac{6}{5}$",
+    "dung": false,
+    "rule": "R03",
+    "duong_sai": "coi (−3)² = −9, ngoặc thành 5/3"
+   },
+   {
+    "text": "$-\\dfrac{72}{53}$",
+    "dung": false,
+    "rule": "R12",
+    "duong_sai": "trong ngoặc trừ 9 trước rồi nhân 1/6, ngoặc thành −53/36"
+   },
+   {
+    "text": "$-\\dfrac{8}{3}$",
+    "dung": false,
+    "rule": "R08",
+    "duong_sai": "2 : (−4/3) tính như 2·(−4/3)"
+   },
+   {
+    "text": "$-\\dfrac{3}{2}$",
+    "dung": true
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107010401009",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "text": "$-\\dfrac{6}{13}$",
+    "dung": true
+   },
+   {
+    "text": "$\\dfrac{6}{11}$",
+    "dung": false,
+    "rule": "R03",
+    "duong_sai": "coi (−4)² = −16, ngoặc thành 11/6"
+   },
+   {
+    "text": "$-\\dfrac{6}{7}$",
+    "dung": false,
+    "rule": "R04",
+    "duong_sai": "1/3 + (−1/2) tính thành 1/3 + 1/2, ngoặc thành −7/6"
+   },
+   {
+    "text": "$-\\dfrac{13}{6}$",
+    "dung": false,
+    "rule": "R08",
+    "duong_sai": "1 : (−13/6) tính như 1·(−13/6)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107010401010",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "text": "$-\\dfrac{6}{13}$",
+    "dung": false,
+    "rule": "R10",
+    "duong_sai": "âm chia âm ra âm"
+   },
+   {
+    "text": "$\\dfrac{6}{13}$",
+    "dung": true
+   },
+   {
+    "text": "$\\dfrac{10}{21}$",
+    "dung": false,
+    "rule": "R04",
+    "duong_sai": "3/5 + (−1/10) tính thành 3/5 + 1/10, ngoặc thành −63/10"
+   },
+   {
+    "text": "$\\dfrac{39}{2}$",
+    "dung": false,
+    "rule": "R08",
+    "duong_sai": "−3 : (−13/2) tính như −3·(−13/2)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107010401011",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "text": "$\\dfrac{16}{11}$",
+    "dung": false,
+    "rule": "R03",
+    "duong_sai": "coi (−5)² = −25, ngoặc thành 11/4"
+   },
+   {
+    "text": "$-\\dfrac{48}{13}$",
+    "dung": false,
+    "rule": "R04",
+    "duong_sai": "5/6 + (−1/12) tính thành 5/6 + 1/12, ngoặc thành −13/12"
+   },
+   {
+    "text": "$-\\dfrac{16}{5}$",
+    "dung": true
+   },
+   {
+    "text": "$-\\dfrac{200}{97}$",
+    "dung": false,
+    "rule": "R12",
+    "duong_sai": "trong ngoặc trừ 25 trước rồi nhân 2/25, ngoặc thành −97/50"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107010401012",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "text": "$-\\dfrac{8}{5}$",
+    "dung": false,
+    "rule": "R10",
+    "duong_sai": "âm chia âm ra âm"
+   },
+   {
+    "text": "$-\\dfrac{8}{15}$",
+    "dung": false,
+    "rule": "R03",
+    "duong_sai": "coi (−2)² = −4, ngoặc thành 15/8"
+   },
+   {
+    "text": "$\\dfrac{5}{8}$",
+    "dung": false,
+    "rule": "R08",
+    "duong_sai": "−1 : (−5/8) tính như −1·(−5/8)"
+   },
+   {
+    "text": "$\\dfrac{8}{5}$",
+    "dung": true
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107010401013",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "text": "$\\dfrac{7}{8}$",
+    "dung": true
+   },
+   {
+    "text": "$\\dfrac{3}{8}$",
+    "dung": false,
+    "rule": "R01",
+    "duong_sai": "bỏ ngoặc vuông sau dấu trừ mà không đổi dấu: 1 − 3/8 − 1/4"
+   },
+   {
+    "text": "$\\dfrac{9}{8}$",
+    "dung": false,
+    "rule": "R16",
+    "duong_sai": "(1/2)² = 1/2 (chỉ bình phương tử)"
+   },
+   {
+    "text": "$\\dfrac{13}{8}$",
+    "dung": false,
+    "rule": "R02",
+    "duong_sai": "(1/2)² = 1/2·2 = 1"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107010401014",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "text": "$\\dfrac{7}{50}$",
+    "dung": false,
+    "rule": "R01",
+    "duong_sai": "bỏ ngoặc vuông không đổi dấu: 1 − 1/2 − 9/25"
+   },
+   {
+    "text": "$\\dfrac{43}{50}$",
+    "dung": true
+   },
+   {
+    "text": "$\\dfrac{23}{10}$",
+    "dung": false,
+    "rule": "R16",
+    "duong_sai": "(3/5)² = 9/5"
+   },
+   {
+    "text": "$\\dfrac{17}{10}$",
+    "dung": false,
+    "rule": "R02",
+    "duong_sai": "(3/5)² = 3/5·2 = 6/5"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107010401015",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "text": "$\\dfrac{2}{9}$",
+    "dung": false,
+    "rule": "R01",
+    "duong_sai": "bỏ ngoặc vuông không đổi dấu: 1 − 2/3 − 1/9"
+   },
+   {
+    "text": "$\\dfrac{2}{3}$",
+    "dung": false,
+    "rule": "R16",
+    "duong_sai": "(1/3)² = 1/3"
+   },
+   {
+    "text": "$\\dfrac{4}{9}$",
+    "dung": true
+   },
+   {
+    "text": "$\\dfrac{1}{3}$",
+    "dung": false,
+    "rule": "R06",
+    "duong_sai": "1/2 − 1/6 = (1−1)/(2−6) = 0, bình phương = 0"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107010401016",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "text": "$\\dfrac{59}{100}$",
+    "dung": false,
+    "rule": "R01",
+    "duong_sai": "bỏ ngoặc vuông không đổi dấu: 1 − 1/4 − 4/25"
+   },
+   {
+    "text": "$\\dfrac{31}{20}$",
+    "dung": false,
+    "rule": "R16",
+    "duong_sai": "(2/5)² = 4/5"
+   },
+   {
+    "text": "$\\dfrac{9}{100}$",
+    "dung": false,
+    "rule": "R24",
+    "duong_sai": "quên \"1 −\" ở đầu, chỉ tính phần trong ngoặc"
+   },
+   {
+    "text": "$\\dfrac{91}{100}$",
+    "dung": true
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107010401017",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "text": "$\\dfrac{11}{16}$",
+    "dung": true
+   },
+   {
+    "text": "$\\dfrac{9}{16}$",
+    "dung": false,
+    "rule": "R01",
+    "duong_sai": "bỏ ngoặc vuông không đổi dấu: 1 − 3/8 − 1/16"
+   },
+   {
+    "text": "$\\dfrac{7}{8}$",
+    "dung": false,
+    "rule": "R16",
+    "duong_sai": "(1/4)² = 1/4"
+   },
+   {
+    "text": "$\\dfrac{9}{8}$",
+    "dung": false,
+    "rule": "R02",
+    "duong_sai": "(1/4)² = 1/4·2 = 1/2"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107010401018",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "text": "$\\dfrac{23}{50}$",
+    "dung": false,
+    "rule": "R01",
+    "duong_sai": "bỏ ngoặc vuông không đổi dấu: 1 − 1/2 − 1/25"
+   },
+   {
+    "text": "$\\dfrac{27}{50}$",
+    "dung": true
+   },
+   {
+    "text": "$\\dfrac{7}{10}$",
+    "dung": false,
+    "rule": "R16",
+    "duong_sai": "(1/5)² = 1/5"
+   },
+   {
+    "text": "$\\dfrac{9}{10}$",
+    "dung": false,
+    "rule": "R02",
+    "duong_sai": "(1/5)² = 1/5·2 = 2/5"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107010401019",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "text": "$-\\dfrac{115}{432}$",
+    "dung": false,
+    "rule": "R18",
+    "duong_sai": "(−1)⁵ = 1 nên thành 8/27 − 9/16"
+   },
+   {
+    "text": "$\\dfrac{59}{12}$",
+    "dung": false,
+    "rule": "R16",
+    "duong_sai": "(2/3)³ = 8/3 và (3/4)² = 9/4 (chỉ mũ tử)"
+   },
+   {
+    "text": "$\\dfrac{371}{432}$",
+    "dung": true
+   },
+   {
+    "text": "$\\dfrac{7}{2}$",
+    "dung": false,
+    "rule": "R02",
+    "duong_sai": "(2/3)³ = 2/3·3 = 2 và (3/4)² = 3/4·2 = 3/2"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107010401020",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "text": "$\\dfrac{1}{72}$",
+    "dung": false,
+    "rule": "R18",
+    "duong_sai": "(−1)⁷ = 1 nên thành 1/8 − 1/9"
+   },
+   {
+    "text": "$\\dfrac{5}{6}$",
+    "dung": false,
+    "rule": "R16",
+    "duong_sai": "(1/2)³ = 1/2 và (1/3)² = 1/3"
+   },
+   {
+    "text": "$\\dfrac{13}{6}$",
+    "dung": false,
+    "rule": "R02",
+    "duong_sai": "(1/2)³ = 3/2 và (1/3)² = 2/3"
+   },
+   {
+    "text": "$\\dfrac{17}{72}$",
+    "dung": true
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107010401021",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "text": "$\\dfrac{707}{200}$",
+    "dung": true
+   },
+   {
+    "text": "$\\dfrac{643}{200}$",
+    "dung": false,
+    "rule": "R18",
+    "duong_sai": "(−1)³ = 1 nên thành 27/8 − 4/25"
+   },
+   {
+    "text": "$\\dfrac{143}{10}$",
+    "dung": false,
+    "rule": "R16",
+    "duong_sai": "(3/2)³ = 27/2 và (2/5)² = 4/5"
+   },
+   {
+    "text": "$\\dfrac{53}{10}$",
+    "dung": false,
+    "rule": "R02",
+    "duong_sai": "(3/2)³ = 9/2 và (2/5)² = 4/5"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107010401022",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "text": "$-\\dfrac{15}{64}$",
+    "dung": false,
+    "rule": "R18",
+    "duong_sai": "(−1)⁹ = 1 nên thành 1/64 − 1/4"
+   },
+   {
+    "text": "$\\dfrac{17}{64}$",
+    "dung": true
+   },
+   {
+    "text": "$\\dfrac{3}{4}$",
+    "dung": false,
+    "rule": "R16",
+    "duong_sai": "(1/4)³ = 1/4 và (1/2)² = 1/2"
+   },
+   {
+    "text": "$\\dfrac{7}{4}$",
+    "dung": false,
+    "rule": "R02",
+    "duong_sai": "(1/4)³ = 3/4 và (1/2)² = 1"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107010401026",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "text": "$-\\dfrac{1}{4}$",
+    "dung": false,
+    "rule": "R16",
+    "duong_sai": "(−1/2)³ = −1/2 (chỉ mũ tử)"
+   },
+   {
+    "text": "$-\\dfrac{9}{4}$",
+    "dung": false,
+    "rule": "R02",
+    "duong_sai": "(−1/2)³ = (−1/2)·3 = −3/2"
+   },
+   {
+    "text": "$\\dfrac{1}{2}$",
+    "dung": true
+   },
+   {
+    "text": "$\\dfrac{5}{4}$",
+    "dung": false,
+    "rule": "R12",
+    "duong_sai": "cộng 3/4 vào trong trước rồi mới nhân 2"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107010401027",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "text": "$\\dfrac{275}{256}$",
+    "dung": false,
+    "rule": "R08",
+    "duong_sai": "25/16 : 11/16 tính như 25/16 · 11/16"
+   },
+   {
+    "text": "$\\dfrac{100}{11}$",
+    "dung": false,
+    "rule": "R16",
+    "duong_sai": "(5/4)² = 25/4"
+   },
+   {
+    "text": "$\\dfrac{40}{11}$",
+    "dung": false,
+    "rule": "R02",
+    "duong_sai": "(5/4)² = 5/4·2 = 5/2"
+   },
+   {
+    "text": "$\\dfrac{25}{11}$",
+    "dung": true
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107010401030",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "text": "$13$",
+    "dung": true
+   },
+   {
+    "text": "$39$",
+    "dung": false,
+    "rule": "R16",
+    "duong_sai": "(13/3)² = 169/3"
+   },
+   {
+    "text": "$6$",
+    "dung": false,
+    "rule": "R02",
+    "duong_sai": "(13/3)² = 13/3·2 = 26/3"
+   },
+   {
+    "text": "$3$",
+    "dung": false,
+    "rule": "R24",
+    "duong_sai": "quên bình phương, tính 13/3 : 13/9"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107010401031",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "text": "$-\\dfrac{34}{5}$",
+    "dung": false,
+    "rule": "R03",
+    "duong_sai": "(−2/7)² = −4/49 nên phần đầu = −4"
+   },
+   {
+    "text": "$\\dfrac{6}{5}$",
+    "dung": true
+   },
+   {
+    "text": "$\\dfrac{82}{5}$",
+    "dung": false,
+    "rule": "R12",
+    "duong_sai": "lấy 4 − 7/12 trước rồi mới chia cho 5/24"
+   },
+   {
+    "text": "$-\\dfrac{154}{5}$",
+    "dung": false,
+    "rule": "R02",
+    "duong_sai": "(−2/7)² = (−2/7)·2 = −4/7, nhân 49 = −28"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107010401032",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "text": "$-15$",
+    "dung": false,
+    "rule": "R03",
+    "duong_sai": "(−3/5)² = −9/25 nên phần đầu = −9"
+   },
+   {
+    "text": "$24$",
+    "dung": false,
+    "rule": "R12",
+    "duong_sai": "lấy 9 − 9/5 trước rồi mới chia cho 3/10"
+   },
+   {
+    "text": "$3$",
+    "dung": true
+   },
+   {
+    "text": "$-36$",
+    "dung": false,
+    "rule": "R02",
+    "duong_sai": "(−3/5)² = (−3/5)·2 = −6/5, nhân 25 = −30"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107010401033",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "text": "$-\\dfrac{5}{2}$",
+    "dung": false,
+    "rule": "R03",
+    "duong_sai": "(−1/4)² = −1/16 nên phần đầu = −1"
+   },
+   {
+    "text": "$\\dfrac{15}{4}$",
+    "dung": false,
+    "rule": "R12",
+    "duong_sai": "lấy 1 − 2/7 trước rồi mới chia cho 4/21"
+   },
+   {
+    "text": "$-\\dfrac{19}{2}$",
+    "dung": false,
+    "rule": "R02",
+    "duong_sai": "(−1/4)² = (−1/4)·2 = −1/2, nhân 16 = −8"
+   },
+   {
+    "text": "$-\\dfrac{1}{2}$",
+    "dung": true
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107010401034",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "text": "$-14$",
+    "dung": true
+   },
+   {
+    "text": "$-16$",
+    "dung": false,
+    "rule": "R03",
+    "duong_sai": "(−1/3)² = −1/9 nên phần đầu = −1"
+   },
+   {
+    "text": "$-3$",
+    "dung": false,
+    "rule": "R12",
+    "duong_sai": "lấy 1 − 5/4 trước rồi mới chia cho 1/12"
+   },
+   {
+    "text": "$-21$",
+    "dung": false,
+    "rule": "R02",
+    "duong_sai": "(−1/3)² = (−1/3)·2 = −2/3, nhân 9 = −6"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107010401035",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "text": "$-19$",
+    "dung": false,
+    "rule": "R03",
+    "duong_sai": "(−2/3)² = −4/9 nên phần đầu = −4"
+   },
+   {
+    "text": "$-11$",
+    "dung": true
+   },
+   {
+    "text": "$25$",
+    "dung": false,
+    "rule": "R12",
+    "duong_sai": "lấy 4 − 3/2 trước rồi mới chia cho 1/10"
+   },
+   {
+    "text": "$-27$",
+    "dung": false,
+    "rule": "R02",
+    "duong_sai": "(−2/3)² = (−2/3)·2 = −4/3, nhân 9 = −12"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107010401036",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "text": "$-23$",
+    "dung": false,
+    "rule": "R03",
+    "duong_sai": "(−3/2)² = −9/4 nên phần đầu = −9"
+   },
+   {
+    "text": "$40$",
+    "dung": false,
+    "rule": "R12",
+    "duong_sai": "lấy 9 − 7/3 trước rồi mới chia cho 1/6"
+   },
+   {
+    "text": "$-5$",
+    "dung": true
+   },
+   {
+    "text": "$-26$",
+    "dung": false,
+    "rule": "R02",
+    "duong_sai": "(−3/2)² = (−3/2)·2 = −3, nhân 4 = −12"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107010401037",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "text": "$1$",
+    "dung": false,
+    "rule": "R14",
+    "duong_sai": "(1/2022)⁰ = 0 nên mất −4"
+   },
+   {
+    "text": "$13$",
+    "dung": false,
+    "rule": "R18",
+    "duong_sai": "(−2)³ = 8"
+   },
+   {
+    "text": "$-1$",
+    "dung": false,
+    "rule": "R02",
+    "duong_sai": "(−2)³ = (−2)·3 = −6"
+   },
+   {
+    "text": "$-3$",
+    "dung": true
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107010401038",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "text": "$-11$",
+    "dung": true
+   },
+   {
+    "text": "$-9$",
+    "dung": false,
+    "rule": "R14",
+    "duong_sai": "(1/100)⁰ = 0 nên mất −2"
+   },
+   {
+    "text": "$43$",
+    "dung": false,
+    "rule": "R18",
+    "duong_sai": "(−3)³ = 27"
+   },
+   {
+    "text": "$7$",
+    "dung": false,
+    "rule": "R02",
+    "duong_sai": "(−3)³ = (−3)·3 = −9"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107010401039",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "text": "$3$",
+    "dung": false,
+    "rule": "R14",
+    "duong_sai": "(1/500)⁰ = 0 nên mất −5"
+   },
+   {
+    "text": "$-2$",
+    "dung": true
+   },
+   {
+    "text": "$0$",
+    "dung": false,
+    "rule": "R18",
+    "duong_sai": "(−1)⁵ = 1"
+   },
+   {
+    "text": "$-6$",
+    "dung": false,
+    "rule": "R02",
+    "duong_sai": "(−1)⁵ = (−1)·5 = −5"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107010401040",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "text": "$-59$",
+    "dung": false,
+    "rule": "R14",
+    "duong_sai": "(1/1234)⁰ = 0 nên mất −3"
+   },
+   {
+    "text": "$66$",
+    "dung": false,
+    "rule": "R18",
+    "duong_sai": "(−4)³ = 64"
+   },
+   {
+    "text": "$-62$",
+    "dung": true
+   },
+   {
+    "text": "$-10$",
+    "dung": false,
+    "rule": "R02",
+    "duong_sai": "(−4)³ = (−4)·3 = −12"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107010401023",
+  "bo": "đáp số 0: các đường sai (R18→1, R04→−1) chỉ ra 2 số nguyên, R02/R16/R12/R13 đều ra phân số → không đủ 3 distractor cùng hình thức"
+ },
+ {
+  "ma_cau": "T107010401024",
+  "bo": "đáp số 0: mọi đường sai ra phân số (R18→2/3, R04→−2/3…), không có distractor số nguyên"
+ },
+ {
+  "ma_cau": "T107010401025",
+  "bo": "đáp số 0: mọi đường sai ra phân số (R18→1/2…), không có distractor số nguyên"
+ },
+ {
+  "ma_cau": "T107010401028",
+  "bo": "đáp số 1: chỉ R16→2 ra số nguyên; R02→4/5, R08→625/16, R06→16/25 → không đủ 3"
+ },
+ {
+  "ma_cau": "T107010401029",
+  "bo": "đáp số 1: R16→3, R06→0; R02 trùng R16, R08→16/81, R24→3/2 → không đủ 3"
+ }
+]
