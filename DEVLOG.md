@@ -9292,6 +9292,17 @@ lệch 0 ✓ · `$\widehat{A}$` mũ 13.8 (trước 8.7) lệch 0 (trước 2.5) 
 (innerWidth = 0 khi cửa sổ bị che) — CSS tĩnh, Thùy nhìn thật.
 **Ghi chú:** ô MathLive trong popup vẫn vẽ mũ theo cách của MathLive (thân gồm chỉ số thì hơi lệch) — preview KaTeX ngay
 dưới ô mới là "đúng như khi in". Chỉnh MathLive render là việc khác, chưa làm.
+
+### 08/09 (đêm, tiếp 3) — Gõ tắt CÓ THAM SỐ: `goc_ABC` → góc ABC, `ss_AB,CD` → AB ∥ CD
+**Thùy:** "phím tắt cho góc ABC là gocabc, nhưng góc MIN thì không thể setup phím tắt cho từng góc. Có cách nào để hệ
+thống biết `goc` là ký hiệu góc, phần đằng sau là tên góc không? Ví dụ goc_ABC."
+**Làm (`MathDoc.resolveGoTat`, không migration):** từ gõ = `<gõ tắt cụm>_<tham số>` — tra gõ tắt NGUYÊN trước (như cũ);
+không có thì tách ở dấu `_` ĐẦU TIÊN: phần trước phải là gõ tắt của một cụm CÔNG THỨC có ô trống `#?`; phần sau tách bằng
+`,` điền lần lượt vào từng ô. Điền đủ → chèn thẳng (qua `fixAccentScript` để `goc_A_1` ra `\widehat{A}_1`); còn ô trống →
+mở bảng dựng với phần đã điền (`pyta_a,b` → `a^2 = b^2 + ▢^2`). Gõ tắt nguyên (`goc`) vẫn mở bảng dựng như cũ. Không phải
+đặt thêm gõ tắt nào — mọi cụm có ô trống tự có tham số. Hint dưới bảng cụm ghi thêm 2 ví dụ.
+**Verify dev 5180 (keydown Space tổng hợp lên RichMath):** `goc_ABC` → `\widehat{ABC}` ✓ · `ss_AB,CD` → `AB \parallel CD` ✓ ·
+`goc_A_1` → `\widehat{A}_1` ✓ · `pyta_a,b` → bảng dựng `a^2 = b^2 + \placeholder{}^2` ✓ · tsc sạch.
 ## 2026-09-08 — PIPELINE thiết kế ChatGPT → Claude (design/HANDOFF-PIPELINE.md + scripts/design-check.mjs)
 - **Bối cảnh:** CEO thiết kế màn chính app HS cấp 2/3 trên ChatGPT, bảo nó đóng gói handoff cho Claude dựng
   (`public/bk-ui/STUDENT_HOME_CLAUDE_HANDOFF.zip` v1 07/09 · `STUDENT_HOME_V2_CLAUDE_HANDOFF_MALE_FEMALE` v2 08/09).
@@ -9623,3 +9634,4 @@ dưới ô mới là "đúng như khi in". Chỉnh MathLive render là việc kh
   không có toggle → không đổi (giấy khớp online). `canBeETForm` nhận `form_tn`; `coFormTn()` registry bảng đã có. In giấy CHƯA
   kéo form (để sau). tsc 0. Chưa soi preview (cần GV phát hành ET thật).
 - Xuất `mcq-xem.mjs` 488 câu gửi CEO. Chưa commit. Sáng CEO duyệt trên tab "Trắc nghiệm AI"; duyệt xong câu tự vào tự luyện (M3).
+

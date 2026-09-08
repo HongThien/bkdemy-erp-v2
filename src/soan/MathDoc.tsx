@@ -10,7 +10,8 @@ import { RichMath, type RichMathHandle } from './RichMath'
 import { MathBuilder } from './MathBuilder'
 import { DoiDiemModal } from './DoiDiemModal'
 import { timDiem } from './diem'
-import { findCumByCombo, findCumByGoTat, insertRawOf, needsFill, type Cum } from './cum'
+import { findCumByCombo, findCumByGoTat, hasBlank, insertRawOf, needsFill, type Cum } from './cum'
+import { fixAccentScript } from '../lib/math/latex-fix'
 
 export type DiemMap = Record<string, string>
 export type MathDocHandle = RichMathHandle & { useCum: (c: Cum) => void }
@@ -44,6 +45,27 @@ export const MathDoc = forwardRef<MathDocHandle, Props>(function MathDoc({ initi
     if (diem.length) setModal({ kind: 'diem', cum: c, raw, diem })
     else ed.current?.insertRaw(raw)
   }
+  // GÕ TẮT CÓ THAM SỐ (Thùy 08/09: "gocabc cho góc ABC, nhưng góc MIN thì không thể đặt phím tắt cho từng góc — hệ
+  // phải hiểu `goc` là ký hiệu góc, phần sau là tên góc: goc_ABC"). Luật: từ = <gõ tắt cụm>_<tham số>; cụm phải có ô
+  // trống `#?`; tham số tách bằng "," điền lần lượt vào các ô (ss_AB,CD → AB ∥ CD; goc_A_1 → chỉ tách ở "_" ĐẦU nên
+  // tham số = A_1). Điền đủ → chèn thẳng; còn ô trống (thiếu tham số) → mở bảng dựng với phần đã điền để gõ nốt.
+  // Gõ tắt NGUYÊN (goc) vẫn như cũ → bảng dựng với ô trống.
+  const useCumVoi = (c: Cum, args: string[]) => {
+    let k = 0
+    const filled = c.noiDung.replace(/#\?/g, () => args[k++]?.trim() || '#?')
+    if (hasBlank(filled)) { setModal({ kind: 'new', prefill: filled }); return }
+    ed.current?.insertRaw(`$${fixAccentScript(filled)}$`)
+  }
+  const resolveGoTat = (w: string): (() => void) | null => {
+    const c = findCumByGoTat(cumsRef.current, w)
+    if (c) return () => useCum(c)
+    const i = w.indexOf('_')
+    if (i <= 0) return null
+    const base = findCumByGoTat(cumsRef.current, w.slice(0, i))
+    if (!base || base.loai !== 'cong_thuc' || !hasBlank(base.noiDung)) return null
+    const args = w.slice(i + 1).split(',')
+    return () => useCumVoi(base, args)
+  }
   // Nút trong bảng Sửa công thức: chỉ hiện khi công thức có tên điểm. Đổi xong thay đúng khối đó, nhớ bộ điểm cho bài.
   const nutDoiDiem = (el: HTMLElement, latex: string) => {
     const raw = `$${latex}$`
@@ -74,7 +96,7 @@ export const MathDoc = forwardRef<MathDocHandle, Props>(function MathDoc({ initi
         onEditMath={(el, latex) => setModal({ kind: 'edit', el, latex })}
         onRequestNew={(prefill) => setModal({ kind: 'new', prefill })}
         onCombo={(combo) => { const c = findCumByCombo(cumsRef.current, combo); if (!c) return false; useCum(c); return true }}
-        resolveGoTat={(w) => { const c = findCumByGoTat(cumsRef.current, w); return c ? () => useCum(c) : null }} />
+        resolveGoTat={resolveGoTat} />
       {modal?.kind === 'new' && (
         <MathBuilder title="Chèn công thức" initial={modal.prefill ?? ''} cums={cums} onCancel={closeModal}
           onCommit={(latex) => { setModal(null); ed.current?.insertMath(latex); refocus() }} />

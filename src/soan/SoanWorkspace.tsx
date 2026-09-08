@@ -221,7 +221,7 @@ export const SoanWorkspace = forwardRef<SoanWorkspaceHandle, SoanWorkspaceProps>
               : <span className="basis-full py-1 text-[12px] text-slate-400">Tab {active}{tabTen[String(active)] ? ` · ${tabTen[String(active)]}` : ''} chưa có cụm — «＋ Cụm mới» sẽ vào tab này, hoặc kéo ⠿ một cụm thả vào tab.</span>}
           </div>
           <p className="mt-1.5 text-[11px] text-slate-400">
-            Click cụm để chèn tại con trỏ · gõ tắt rồi <b>Space</b> · gõ <b>$</b> hoặc <b>Ctrl+M</b> mở bảng dựng công thức · click vào công thức trong bài để sửa · kéo <b>⠿</b> để sắp xếp / đổi tab · <b>Ctrl+Z</b> hoàn tác
+            Click cụm để chèn tại con trỏ · gõ tắt rồi <b>Space</b> · gõ tắt kèm tham số: <b>goc_ABC</b> → góc ABC, <b>ss_AB,CD</b> → AB ∥ CD · gõ <b>$</b> hoặc <b>Ctrl+M</b> mở bảng dựng công thức · click vào công thức trong bài để sửa · kéo <b>⠿</b> để sắp xếp / đổi tab · <b>Ctrl+Z</b> hoàn tác
           </p>
         </section>
 
