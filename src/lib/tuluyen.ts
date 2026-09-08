@@ -184,3 +184,18 @@ export async function xepHangTuLuyen(khoi: string): Promise<XepHangRow[]> {
   if (error) throw error
   return (data ?? []) as XepHangRow[]
 }
+
+// ── LUYỆN CHỨNG MINH (điền ô) — spec-dien-o.md §0b, D2. Mỗi lượt = 1 bai_test loai 'tu_luyen' gồm N bài hình có form điền ô
+// đã duyệt (RPC tu_luyen_dien_sinh: chọn + snapshot ở server, bản HS thấy đã cắt key). Chấm ở DB (hs_dien_tra_loi → fn_dien_cham:
+// đúng hết Đ, sai >60% ô S, còn lại C — CEO 09/09). Client chỉ hiển thị và đến ô nào hiện đúng/sai ô đó. ──
+export type DienHsView = { buoc: { k: number; text: string }[]; o: { id: string; kieu: 'ket_luan' | 'ly_do'; buoc: number; key_len: number; phuong_an: string[] }[] }
+export async function sinhTuLuyenDienO(mon: string, soBai = 3): Promise<{ baiTestId: string; soCau: number }> {
+  const { data, error } = await supabase.rpc('tu_luyen_dien_sinh', { p_mon: mon, p_n: soBai })
+  if (error) throw error
+  return { baiTestId: data.bai_test_id, soCau: data.so_cau }
+}
+export async function traLoiDienO(baiLamId: string, baiTestCauId: string, dapAnHs: number[]): Promise<{ verdict: string; ti_le: number; key: string[]; bai_lam_cau_id: string }> {
+  const { data, error } = await supabase.rpc('hs_dien_tra_loi', { p_bai_lam_id: baiLamId, p_bai_test_cau_id: baiTestCauId, p_dap_an_hs: dapAnHs })
+  if (error) throw error
+  return data as { verdict: string; ti_le: number; key: string[]; bai_lam_cau_id: string }
+}

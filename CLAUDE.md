@@ -245,6 +245,11 @@
 - **`spec-giai-bai-ai.md` — ĐỌC BẮT BUỘC trước khi chạy "quét/giải câu chưa có đáp án" bằng AI**
   (Đại/KHTN/HGT/Hình). Rule quan trọng nhất: bài nhiều ý phải dùng lại kết quả ý trước, không chứng
   minh lại từ đầu; cách xử lý khi `gia_thiet_rieng` mâu thuẫn hình vẽ; verify trước khi ghi DB.
+- `spec-kho-chuan.md` — KHO CHUẨN (CEO chốt 09/09): 1 cửa duyệt câu hợp nhất, "vào kho" định nghĩa bằng hàm `_kho_cau_chuan`
+  (câu mới phải `da_duyet`; câu cũ tạm dùng tới khi quét), quét lại toàn kho 3 mức (máy → Claude → người). Cửa 2 = form trắc nghiệm.
+- `spec-dien-o.md` — Form ĐIỀN Ô (CEO chốt 09/09): lời giải chi tiết có 2–3 ô trống, mỗi ô 4 phương án (faded worked examples);
+  ô = "vừa thực hiện một phép tính con" tìm bằng máy, tách bước theo dấu `=`; đo theo CÂU (Đ/C/S, S khi sai >60% ô); hiện
+  đúng/sai từng ô; logic chọn form cho HS (yếu → ĐIỀN, ổn → TN; TLN/tự luận để sau).
 - `spec-mcq-form.md` — Phiên bản TRẮC NGHIỆM (distractor theo lỗi) của câu tính toán, pool 1 lớp 7 "Số hữu tỉ".
   CEO chốt 08/09: MCQ ưu tiên, là form THÊM (bảng `dai_cau_form_tn`), **không đổ `lua_chon` vào câu gốc**.
 - `erp-v2-ui-spec.md` — Shell UI/UX **view-first**: React + Vite + Zustand + Tailwind, **mock data, CHƯA đụng Supabase**. Đơn vị = ROLE; derive nav/queue theo role; 2 loại việc (vận hành derive / phát triển giao tay) tách hẳn. Kho = 1 lá "Bản đồ kiến thức" trong cây Admin.

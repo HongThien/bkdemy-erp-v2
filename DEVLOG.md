@@ -9292,6 +9292,69 @@ lệch 0 ✓ · `$\widehat{A}$` mũ 13.8 (trước 8.7) lệch 0 (trước 2.5) 
 (innerWidth = 0 khi cửa sổ bị che) — CSS tĩnh, Thùy nhìn thật.
 **Ghi chú:** ô MathLive trong popup vẫn vẽ mũ theo cách của MathLive (thân gồm chỉ số thì hơi lệch) — preview KaTeX ngay
 dưới ô mới là "đúng như khi in". Chỉnh MathLive render là việc khác, chưa làm.
+
+### 08/09 (đêm, tiếp 3) — Gõ tắt CÓ THAM SỐ: `goc_ABC` → góc ABC, `ss_AB,CD` → AB ∥ CD
+**Thùy:** "phím tắt cho góc ABC là gocabc, nhưng góc MIN thì không thể setup phím tắt cho từng góc. Có cách nào để hệ
+thống biết `goc` là ký hiệu góc, phần đằng sau là tên góc không? Ví dụ goc_ABC."
+**Làm (`MathDoc.resolveGoTat`, không migration):** từ gõ = `<gõ tắt cụm>_<tham số>` — tra gõ tắt NGUYÊN trước (như cũ);
+không có thì tách ở dấu `_` ĐẦU TIÊN: phần trước phải là gõ tắt của một cụm CÔNG THỨC có ô trống `#?`; phần sau tách bằng
+`,` điền lần lượt vào từng ô. Điền đủ → chèn thẳng (qua `fixAccentScript` để `goc_A_1` ra `\widehat{A}_1`); còn ô trống →
+mở bảng dựng với phần đã điền (`pyta_a,b` → `a^2 = b^2 + ▢^2`). Gõ tắt nguyên (`goc`) vẫn mở bảng dựng như cũ. Không phải
+đặt thêm gõ tắt nào — mọi cụm có ô trống tự có tham số. Hint dưới bảng cụm ghi thêm 2 ví dụ.
+**Verify dev 5180 (keydown Space tổng hợp lên RichMath):** `goc_ABC` → `\widehat{ABC}` ✓ · `ss_AB,CD` → `AB \parallel CD` ✓ ·
+`goc_A_1` → `\widehat{A}_1` ✓ · `pyta_a,b` → bảng dựng `a^2 = b^2 + \placeholder{}^2` ✓ · tsc sạch.
+
+### 09/09 (rạng sáng) — Thùy chốt 4 điểm tham số · GỘP công thức lúc lưu · BỘ CỤM CHUNG lên DB (mig 202609081013)
+**Thùy (Sparring → chốt):** "gõ tắt hay hơn phím tắt" · lo "chuyển sang LaTeX bị vụn: góc ABC = 50° là 2 công thức riêng, có
+cách gộp không, hệ tự ghép?" · 4 điểm em nêu: (1) "nhiều cái có thể có tham số mà" (2) "dấu phân cách nên là `_`" → sau
+đổi: "`_` phải 2 phím, `.` 1 phím, goc.abc thì `.` làm sao nhầm được" (3) "gõ nhiều là nhớ, phức tạp thì dùng cả cụm — t
+nói về thứ đơn giản gõ đi gõ lại mà biến ảo cao, vd góc có hàng trăm tên" (4) "dùng BỘ CHUNG của trung tâm trước, ưu tiên
+ngôn ngữ chung" · thêm: "có chỗ setup công thức tham số để t điều chỉnh không, nhiều lắm — vd 50_do là 50 độ".
+**R7 (đứng trên vai ai):** cụm có ô trống + gõ tắt = macro có tham số của TeX (`\newcommand{\goc}[1]{\widehat{#1}}`) không dấu
+`\`, người dùng tự định nghĩa; gõ `goc.ABC` rồi Space "nở" ra = linear format của Word (UnicodeMath, Sargent). Ranh giới giữ:
+từ khoá là tiếng Việt không dấu do người đặt, KHÔNG BAO GIỜ là tên lệnh LaTeX.
+**A — Tham số (MathDoc.resolveGoTat/useCumVoi):**
+- Phân cách `.` (giữ `_` cho ai quen; có `.` thì tách theo `.`); `_` BÊN TRONG tham số = chỉ số dưới (goc.A_1 → \widehat{A}_1).
+- Cụm CÓ `#?`: điền lần lượt; thừa → gộp vào ô cuối; thiếu → bảng dựng với phần đã điền (pyta.a.b → a²=b²+▢²).
+- Cụm KHÔNG `#?` nhưng có TÊN ĐIỂM (đoạn bổ đề / công thức cố định): tham số = tên điểm mới thay theo thứ tự timDiem
+  (hbh.MNPQ → "Vì MNPQ là hình bình hành nên MN ∥ PQ…"; gg.MNP.DEF ≡ gg.MNPDEF), bộ điểm nhớ cho bài. Thay bảng đổi điểm
+  ở đường gõ tắt.
+- **Chỗ setup = chính form Cụm:** gõ tắt được viết có `#` = vị trí tham số — `#.do` (50.do → 50°), `goc.#`, `ss.#.#`; khớp
+  bằng regex (chữ không phân biệt hoa/thường, mỗi `#` bắt ≥1 ký tự), ưu tiên trước mẫu ngầm `<gõ tắt>.<tham số>`. Placeholder
+  + tooltip ô Gõ tắt trong CumModal ghi luật; hint dưới bảng cụm đổi ví dụ sang `.`.
+- **Bug sẵn có bắt được khi test:** cụm tạo bằng bảng dựng lưu ô trống thành `{}` (readClean/stripPlaceholders) chứ KHÔNG
+  phải `#?` ⇒ `hasBlank` false ⇒ mọi cụm-có-ô-trống tạo qua UI từ 05/09 tới nay KHÔNG nhận tham số và chèn ra `{}` rỗng
+  (chỉ SEED viết tay có `#?`). Vá: `CumModal.save` chuẩn hoá `{}` → `#?` cho cụm công thức.
+**B — Gộp công thức lúc LƯU (`doc.ts gopCongThuc`):** 2 công thức inline mà giữa chỉ có `= + − < > ≤ ≥ ≠ · × : / ° %`, chữ
+số, khoảng trắng → 1 công thức (Unicode giữa dịch sang LaTeX: ≤→\le, °→^\circ…); có chữ/dấu phẩy ở giữa → câu văn, giữ.
+Áp ở `SoanWorkspace.save` + `getValue()` của handle (ChuoiSoanModal), KHÔNG áp lúc gõ (con trỏ không nhảy). `$$…$$` không đụng.
+Trả lời Thùy "có vấn đề gì không": không hỏng (AI/ET đọc được cả 2), nhưng xấu 3 chỗ — khoảng cách quanh `=`, GÃY DÒNG giữa
+2 vế khi in, sửa phải click 2 lần.
+**C — Bộ cụm CHUNG ở DB (mig `202609081013_soan_cum_chung`, đã áp + `npm run schema`):** `soan_thu_muc` · `soan_cum`
+(unique `lower(go_tat)` where xoa_at is null — gõ tắt là ngôn ngữ chung, 1 gõ tắt = 1 cụm) · `soan_tab_chung` · `soan_cum_lich_su`
+(trigger after insert/update/delete ghi to_jsonb old/new + `boi` = tao_boi/sua_boi do app điền = nhan_su.id của store.me) ·
+`fn_soan_touch` updated_at · RLS `la_thanh_vien()` cho mọi bảng · xoá MỀM `xoa_at`. `src/soan/cumDb.ts`: tải 3 bảng 1 lượt
+(limit 500/5000/20), `ghi()` phân insert (điền tao_boi) / update (KHÔNG đè tao_boi) theo Set id đã tải, xoá mềm, tab chung
+delete+insert, `nhapTuMay()` đưa cụm+thư mục localStorage lên bộ chung (thư mục khớp tên/nhánh/khối thì dùng lại; cụm trùng
+gõ tắt hoặc nội dung → bỏ qua; tab chung chỉ nhập khi DB chưa có). `SoanWorkspace`: state khởi rỗng → useEffect tải DB →
+`nguon` 'db' | 'may' (lỗi/không đăng nhập → rơi về localStorage như cũ, nhãn vàng ở đáy sidebar) · `persistCums/persistTm`
+GIỮ call site "thay cả danh sách", tự tính CHÊNH LỆCH (dòng đổi → luuCums, dòng mất → xoaCums) · nút "⬆ Đưa cụm trên máy này
+lên bộ chung" (chỉ khi nguon=db và máy có cụm) → báo số nhập/bỏ qua. `AppSoan`: gate đăng nhập nhân sự (khuôn AppGiaiBai) +
+`useStore.setState({me})` để cumDb có tao_boi.
+- ⚠ `npm run migrate` áp LUÔN cả `202609080246_khao_sat_hs_ban_cua_con.sql` (của phiên khác, đã commit 299b044 nhưng
+  chưa áp) vì em không dùng `--only`. File đó chỉ THÊM cột/bảng/hàm, không phá gì. Ghi để phiên kia biết đã áp.
+**Verify:** pg transaction ROLLBACK: insert thư mục+cụm ✓ · go_tat trùng (GOC vs goc) bị chặn unique ✓ · lịch sử 3 dòng
+tạo/sửa/xoá ✓ · xoá mềm → hết trong "còn sống" ✓ (updated_at>created_at đo false chỉ vì cùng now() trong 1 transaction).
+UI dev 5180 (đăng nhập nhanh DEV "Thùy", cửa sổ bị che → rAF đồng bộ + sự kiện tổng hợp): footer "● Bộ chung của trung tâm",
+0 cụm (DB mới) ✓ · ＋ Cụm mới: tên "TEST độ", gõ tắt `#.do`, ô trống+° → Lưu → DB có dòng `noi_dung='#?^\circ'`, tao_boi ✓,
+1 dòng lịch sử ✓ · gõ `50.do` Space → `$50^\circ$` ✓ · xoá chip → dòng có xoa_at, hết khỏi danh sách ✓ · tsc sạch. Dòng test
+"TEST độ" còn nằm XOÁ MỀM trong `soan_cum` (+ 2 dòng lịch sử) — theo Luật xoá em KHÔNG tự xoá cứng, chờ Thùy gật.
+**Chưa làm / bàn tiếp:** cụm cá nhân đè lên bộ chung (Thùy: chung trước) · thư mục trỏ `chuong` bản đồ kiến thức (ghi ở
+cum.ts từ 05/09) · phím tắt (`phim`) vẫn theo cụm chung → 2 người có thể đặt trùng tổ hợp cho cụm khác nhau, CumModal chỉ
+chặn trong danh sách đang tải.
+**09/09 chốt tiếp (Thùy: "để . hết cho thống nhất, _ là muốn chỉ số đi xuống"):** bỏ nhánh `_` — mẫu ngầm CHỈ tách theo `.`;
+`_` không bao giờ tách, chỉ là chỉ số dưới trong tham số (goc.A_1). Thừa tham số gộp vào ô cuối bằng `.`. tsc sạch; logic 3
+dòng, không dựng lại UI để đo.
 ## 2026-09-08 — PIPELINE thiết kế ChatGPT → Claude (design/HANDOFF-PIPELINE.md + scripts/design-check.mjs)
 - **Bối cảnh:** CEO thiết kế màn chính app HS cấp 2/3 trên ChatGPT, bảo nó đóng gói handoff cho Claude dựng
   (`public/bk-ui/STUDENT_HOME_CLAUDE_HANDOFF.zip` v1 07/09 · `STUDENT_HOME_V2_CLAUDE_HANDOFF_MALE_FEMALE` v2 08/09).
@@ -9791,3 +9854,123 @@ dưới ô mới là "đúng như khi in". Chỉnh MathLive render là việc kh
   **Còn chưa kiểm: K12 988 câu (≈4 lô) + toàn bộ cấp 1 (5, 5T, 4, 4T, 3).** Chưa commit gì từ e2e9d41 tới giờ → commit + push theo lệnh CEO.
 - Scratchpad phiên này (không commit): `lo29..lo42.json/txt`, `kq-dac29..42.json`, `kq29..42.json`, helper `kq-build.mjs`,
   `anh-null.mjs`, `lg-full.mjs`, `lo-txt.mjs`. Mất scratchpad không sao — mọi kết quả đã ở `kho_kiem_lo` + `kiem_may_ghi`.
+
+## 2026-09-08 (tiếp) — "Vào app như…" ĐỔI HƯỚNG: bỏ Vercel function, thành launcher chạy tại máy (`npm run vao-app`)
+- **CEO:** "Vụ thêm key lên Vercel rủi ro mà — nên mới có luật đấy chứ." → Rút phương án api/dang-nhap-thay.mjs. Luật 19/08 giữ nguyên.
+- **Làm:** `scripts/vao-app.mjs` — Node http bind 127.0.0.1:5199, đọc SUPABASE_SERVICE_ROLE từ `.env.local` (đã có sẵn cho
+  provision HS), phục vụ 1 trang tìm-chọn tài khoản (Nhân sự/Học sinh, bỏ dấu, avatar, "Vừa mở" localStorage) + `/go?id&app`
+  = mint session (generateLink magiclink → verifyOtp) rồi **302** sang `https://<app>.bkacademy.edu.vn/#access_token=…` (link
+  target=_blank ⇒ tab mới ⇒ tải trang ⇒ supabase-js bắt hash). Không cần gate admin: chỉ máy chạy script gọi được. Có
+  `--no-open` / `VAO_APP_NO_OPEN` (không tự bật trình duyệt) · `VAO_APP_URL_<app>` đè URL để test bản dev. package.json `vao-app`
+  · launch.json `vao-app`. ERP chính vẫn cố ý không có trong danh sách.
+- **XOÁ (CEO gật):** `api/dang-nhap-thay.mjs` · `src/lib/dangnhapthay.ts` · `src/screens/phanquyen/VaoAppNhuTab.tsx` ·
+  `scripts/_chk_dang_nhap_thay.mjs`; revert PhanQuyenScreen/.env.example/vercel-ignore.
+- **⚠ SỰ CỐ TỰ GÂY:** revert bằng `git checkout -- scripts/vercel-ignore.mjs` đã **đè mất sửa đổi CHƯA COMMIT của phiên
+  khảo sát** (khai riêng `khaosat` — file đó do 2 phiên cùng sửa trong working tree). Đã dựng lại theo DEVLOG phiên đó:
+  URL_APP `bkdemy-erp-v2-khaosat` · APPS thêm `khaosat` · RIENG `khaosat.html/vite.config.khaosat.ts/src/main-khaosat.tsx/
+  src/AppKhaoSat.tsx/src/screens/khaosat/`. **Phiên khảo sát cần đối chiếu lại** (có thể thiếu chi tiết như `public/icon-khaosat-*`).
+  **Bài học:** working tree DÙNG CHUNG nhiều phiên ⇒ KHÔNG `git checkout --` cả file để revert phần mình; chỉ gỡ đúng dòng mình thêm
+  (sed/Edit), hoặc `git diff` file trước khi checkout.
+- **Verify END-TO-END trên PROD:** preview `vao-app` → trang hiện 314 HS → gõ "hs0004" → chọn → "Mở app Học sinh" → tab
+  `https://hs.bkacademy.edu.vn` vào thẳng session `hs0004@hs.bkdemy.local` (màn "Đặt mật khẩu riêng" vì PIN = mã HS), hash đã xoá,
+  server log `→ hs0004@hs.bkdemy.local · Học sinh`. Đã bấm Thoát (signOut) sau test. Chưa commit.
+## 2026-09-09 (sáng sớm) — Nhập kho từ file Word: đọc tính.docx (64 câu giữa kì lớp 7), thêm dạng, dời câu gán nhầm
+- **CEO:** "UI nhập kho vẫn cần (bản đồ kiến thức), nhưng việc đơn giản làm ở phiên này tiện hơn". Gửi `tính.docx`.
+- **Đọc docx:** `scripts/docx-doc.mjs` (jszip, OMML→LaTeX, placeholder ảnh) — file này dùng **MathType (OLE)** nên công thức
+  là ảnh WMF → trích 64 WMF bằng jszip (file đang mở trong Word, .NET không mở được), render PNG bằng System.Drawing
+  (PowerShell), ghép 16 ảnh/tấm, Claude đọc bằng mắt. **Thứ tự dễ cho Claude: Word Equation gốc > PDF ≈ Word MathType.**
+- **Phân loại 64 câu (3 trùng):** 47 vào dạng có sẵn, 14 rơi vào 3 dạng kho chưa có. CEO tạo `T107010405` "Tìm x trong bài toán
+  Tích các biểu thức bằng 0"; Claude thêm `T107010302` "Rút gọn biểu thức luỹ thừa (cùng cơ số)" và `T107010406` "Tìm x ở số mũ"
+  (insert dai_ban_do thẳng, cùng khuôn mã). **Dời 6 câu T107010203049–054** `(4x²+9)(2^{x−1}−1)=0` từ 203 → 405 (CEO chỉ rõ).
+- **`scripts/nhapkho-file.mjs`** `--in json --xem html | --ghi`: đáp số máy tính qua mcq-auto.tinh(); máy không tính được (căn,
+  GTTĐ, mũ chứa x, tích = 0) thì lấy đáp số tay trong JSON; máy ≠ tay ⇒ báo, không ghi. `scripts/mcq-lo/tinh-docx-lop7.json` =
+  61 câu Claude chép + dạng + đáp số. 0 lệch máy/tay. HTML gửi CEO duyệt; **CHƯA ghi kho** (chờ CEO gật, nguồn 'le', da_duyet=false).
+## 2026-09-09 (sáng) — Lời giải 61 câu tính.docx · phản biện "2 cửa duyệt" · quét đáp số toàn kho · spec-kho-chuan.md
+- **Lời giải chi tiết** cho 61 câu (`scripts/mcq-lo/tinh-docx-lop7.json` trường `lg`, phong cách kho); `nhapkho-file.mjs` ghi
+  loi_giai + nguon_giai='ai', giai_method='claude_code', da_duyet=false. `_chk_lg_tinh.mjs`: dòng cuối lời giải = đáp số 61/61.
+  HTML gửi CEO; CHƯA ghi kho (chờ duyệt). CEO: "vào kho là phải có lời giải chi tiết".
+- **CEO đề xuất 2 cửa duyệt** (chất lượng câu · form mới) + Claude quét cả kho tìm câu sai đáp án + màn duyệt = chuẩn hoá (sửa
+  dạng/cụm). Phản biện bằng số (`scripts/kho-quet-dapso.mjs`, chỉ đọc): 17.743 câu Đại, 60 da_duyet, **cờ da_duyet không được lọc
+  ở bất kỳ chỗ chọn câu nào**; máy tính kiểm được 2.456 (14%), đáng tin 1.611; lần quét đầu 627 "lệch" phần lớn BÁO GIẢ (toán có
+  lời, đặt tính, làm tròn, lớp 6 dấu chấm = nhân) → phải whitelist dạng. Trong dạng đáng tin: clone 0,64% lệch, gốc 1,45%; 2 lỗi
+  thật pool 7 đều câu GỐC ⇒ giả thuyết CEO "clone sai là chính" chưa có bằng chứng.
+- **CEO chốt:** quét một lượt; đúng ⇒ coi như đã duyệt, vào kho chuẩn; có vấn đề ⇒ màn duyệt lại; **từ giờ câu mới phải qua duyệt
+  mới được dùng**. → `spec-kho-chuan.md`: hàm `_kho_cau_chuan` (câu mới cần da_duyet; câu cũ tạm dùng tới khi quét, máy NGHI thì rút
+  ngay), cột kiem_may/duyet_nguon, quét 3 mức (máy whitelist → Claude giải lại theo lô, chỉ báo nghi → người + mẫu 2%), màn duyệt
+  hợp nhất 1 hàng đợi (bỏ bảng nháp clone), 6 bước. Chưa làm bước nào.
+## 2026-09-09 (sáng) — Tách 2 luồng: kho chuẩn (worktree mới) · ĐIỀN Ô (phiên này) — spec-dien-o.md
+- CEO đặt ý tưởng "lời giải chi tiết bỏ trống chỗ quan trọng, mỗi chỗ 4 phương án, 1 tự luận → 2–3 trắc nghiệm". Tên lý thuyết:
+  faded worked examples / completion problems (Sweller, Renkl); hình = Proof Blocks. Phân công: phiên này giữ luồng ĐIỀN Ô (dựa
+  trên mcq-auto + rule + form table), worktree mới làm kho chuẩn theo spec-kho-chuan.md (dặn: migrate --only).
+- **Đo khả thi** `scripts/_do_dien_o.mjs` (491 câu lớp 7 có lời giải, tách theo dòng): 61% dòng máy đọc được · 154 câu đọc hết ·
+  237 chuỗi nhất quán · **140 câu tìm được ô bằng máy, 1,9 ô/câu**. Nghẽn = lời giải kho viết tự do. CEO: tách bước theo dấu `=`
+  (mỗi biến đổi qua 1 `=`) thay vì ép 1 dòng 1 bước.
+- **CEO chốt:** đo theo CÂU: đúng hết = Đ, một phần = C, sai >60% ô = S · hiện đúng/sai từng ô · hệ thống tự chọn form có lý do,
+  giai đoạn đầu ưu tiên TN + ĐIỀN (nhanh, HS không nản), TLN/TL sau · quy ước lời giải đưa vào cửa 1 OK.
+- `spec-dien-o.md`: định nghĩa ô bằng máy (giá trị của biểu thức con ở bước trước), 3 loại ô (giá trị/chuyển vế: máy 100%; lý do
+  hình: AI+người v2), `fn_dien_cham`, bảng `dai_cau_form_dien` + trigger thu hồi khi lời giải/đáp án đổi, snapshot `dien jsonb`,
+  pipeline `mcq-dien.mjs`, tab "Điền ô AI", component HS, `fn_chon_form` có lý do, lộ trình D1–D4. Chưa code.
+- **CEO đổi trọng tâm ĐIỀN Ô:** bỏ câu đã trắc nghiệm được; phase 1 = câu KHÔNG có đáp số (chứng minh hình + đại). Nguyên tắc chung:
+  mỗi câu rồi có đủ hình thái (TN · TLN · điền ô · tự luận), thứ tự xây theo độ dễ. Soi kho hình: 194 lời giải (7:74, 8:101, 9:19),
+  113 có "(lý do)", 117 cụm lý do viết lộn xộn ⇒ cần DANH MỤC LÝ DO CHUẨN (vai trò = bảng rule). Nháp `scripts/mcq-lo/hinh-ly-do-
+  catalog.json`: LD01–LD52 theo nhóm hoán đổi + GT/CT/TT không đục + 5 nhãn lỗi E01–E05. spec-dien-o.md thêm §0b (phase 1 chứng
+  minh: 3 loại ô, Claude đề xuất + máy kiểm cấu trúc + người duyệt 100%, bảng `hinh_form_dien`, pilot khối 7 ≈100 bài).
+  Tự chốt (R2): chỉ lý do trong danh mục; cả 3 loại ô; pilot khối 7; danh mục CEO duyệt lần đầu (HTML gửi).
+- **ĐIỀN Ô chứng minh — D1 pilot hình khối 7:** CEO chốt thêm: mỗi bước = cặp "kết luận (lý do)", để trống được 1 trong 2 (ô kết
+  luận ngang ô lý do); CHỈ đục PHẦN GIỮA (không đục bước chép giả thiết, không đục bước đích "ai cũng biết"). spec-dien-o.md §0b
+  sửa theo. `scripts/hinh-dien.mjs`: `--list` (74 bài khối 7 = 29 cách giải + 45 biến thể, tách bước theo câu, cờ tham chiếu/GT/
+  đích, nhận diện LD 67/76 cụm) · `--ap-khuon` (đề xuất ô của bài GỐC → nhân sang biến thể: khớp bước theo bộ xương câu, ánh xạ
+  tên góc + số theo vị trí, xoay vị trí đúng; lệch ⇒ bỏ) · `--verify --xem` (kiểm cấu trúc + HTML). Claude viết tay 17 bài gốc
+  (`scripts/mcq-lo/hinh7-dien-goc.json`, 2–3 ô/bài, xen kẽ kiểu, LD cùng nhóm, nhãn E0x + vì sao sai); bỏ 5 khuôn 1–2 bước.
+  Kết quả `hinh7-dien-kq.json`: **23 bài OK (17 gốc + 6 áp khuôn), 0 FAIL, 8 bỏ; 34 biến thể áp KHÔNG được** (biến thể gộp/tách
+  bước, đặt tên góc khác thứ tự, distractor dùng góc không có trong bài gốc). HTML gửi CEO duyệt. CHƯA có bảng DB (D2).
+  Bài học: biến thể "đổi số" của kho hình KHÔNG cùng cấu trúc câu văn như tưởng → áp khuôn chỉ ăn ~15%; muốn phủ hết phải hoặc
+  Claude đề xuất từng bài, hoặc chuẩn hoá lời giải biến thể theo gốc ở cửa 1.
+- **CEO duyệt pilot điền ô khối 7: "ý tưởng khá ok"**; chốt mật độ: **4–5 dòng/ô, tối đa 4 ô/bài**; rule chọn ô theo kiểu bài xây
+  dần (spec §0b). Lỗi CEO bắt "D2 thành 2": KHO lời giải BT.07.096 (cách giải 457995b6) ghi `\widehat{2}`/`\widehat{1}` thiếu D
+  → đã UPDATE loi_giai thành `\widehat{D_2}`/`\widehat{D_1}` (đồng bộ với BT.07.095), sửa đề xuất ô theo. HTML duyệt chuyển sang
+  TỰ CHỨA (`scripts/lib/html-tu-chua.mjs`: KaTeX render trong node + font base64 + ảnh data URI) vì trình xem trong app chặn CDN/ảnh.
+## 2026-09-09 — ĐIỀN Ô chứng minh: D2+D3 "full 1 vòng" (mig 202609081019 + 202609081045)
+- **CEO:** "D2 đi, full 1 vòng mới có cái nhìn để sửa; chưa ai làm cái này ở VN". Mật độ 4–5 dòng/ô, ≤4 ô/bài (trigger DB 1–4 ô).
+- **Mig `202609081019_hinh_form_dien`:** `hinh_ly_do` (55, seed từ catalog JSON, `duc=false` cho GT/CT/TT) + `hinh_loi_cm` (E01–E05) ·
+  `hinh_form_dien` (khoá cach_giai_id XOR bien_the_id, `loi_giai_bam` md5, `buoc`/`o` jsonb, trigger kiểm cấu trúc, **trigger thu
+  hồi** khi lời giải cách giải/biến thể đổi) · `bai_test_cau` +`dien` (bản HS) +`form_dien_id` +`o_rule` · `fn_dien_cham` (Đ = đúng
+  hết; S khi đúng < 40% ô; còn lại C) · RPC duyệt `fn_dien_form_cho_duyet/duyet/tu_choi` · RPC HS `tu_luyen_dien_sinh` (lượt 3 bài,
+  né 30 bài gần nhất, lọc khối lớp) + `hs_dien_tra_loi` (upsert bai_lam_cau, chấm ở DB) · view `v_dien_loi_hs`.
+  **Mig `202609081045`:** `_dien_buoc_hs` cắt key khỏi bước → `⟦oN⟧` (bản đầu chép nguyên lời giải = lộ đáp án ngay trong câu).
+  Bẫy: `jsonb -> bigint` (ordinality) phải `::int`.
+- `hinh-dien.mjs --ghi` → **23 form** vào `hinh_form_dien` (da_duyet=false). `_chk_dien_o.mjs` (JWT HS, rollback): 14/14 ✓ —
+  cho_duyet · fn_dien_cham 4 ca · duyệt/chặn duyệt lần 2 (savepoint) · từ chối → rác · sinh 3 bài · bản HS không lộ key/dung ·
+  ⟦oN⟧ đúng bước · trả lời đúng hết = correct, sai hết = wrong · v_dien_loi_hs ra E01 · lời giải đổi → thu hồi.
+- **UI:** `DienOAiTab.tsx` (tab "Điền ô AI" trong Duyệt lời giải AI, chỉ môn có kho hình; thẻ đề+hình+bước có ô \boxed{?}/⟦ ? ⟧,
+  phương án xanh/đỏ+nhãn lỗi; Duyệt/Từ chối — chưa có Sửa tại chỗ) · `hocsinh/DienOCau.tsx` (`DienOCau`: đến ô nào hiện đúng/sai ô
+  đó, điền đáp án đúng vào chỗ trống, hết ô → RPC chấm; `LamDienO`: lượt 3 bài, kết quả, luyện tiếp) · nút "📐 Luyện chứng minh"
+  ở màn kết quả tự luyện (LamTuLuyen; return sớm đặt SAU mọi hook). api: listFormDienChoDuyet/duyetFormDien/tuChoiFormDien/
+  listHinhLyDo; tuluyen: sinhTuLuyenDienO/traLoiDienO. tsc 0. Preview 5202 (đăng nhập nhanh Thùy): tab Điền ô AI khối 7 hiện
+  23 thẻ đúng; app HS chưa soi bằng trình duyệt (không có đăng nhập nhanh HS) — RPC đã kiểm end-to-end.
+- **Còn treo:** 0/23 duyệt (CEO duyệt trên tab) · ma_dang của câu điền ô = null (cách giải khối 7 chưa gán hinh_dang) ⇒ chưa vào
+  mastery theo dạng · Sửa tại chỗ trong tab duyệt (D3) · fn_chon_form · 34 biến thể chưa có ô. Chưa commit.
+## 2026-09-08 (tiếp) — HS nữ vẫn ra bộ nam: DB thiếu giới tính, không phải lỗi app
+- CEO: "học sinh nữ sao vẫn có UI như học sinh nam". Query DB: HS đang học **235 NULL · 64 nu · 24 nam** ⇒ app đọc đúng cột, chỉ
+  là gioi_tinh trống → mặc định nam. CEO: "do DB sai để t cập nhật luôn". App KHÔNG realtime hồ sơ (đọc 1 lần lúc mount) → HS tải
+  lại trang/mở lại app mới thấy; đề nghị thêm đọc lại khi app quay về foreground (chưa làm, chờ CEO gật).
+- Đã push icon TA/OPS `a0358f6` (push rớt 2 lần vì github.com timeout, lần 3 OK) + icon HS `b97ea4f`.
+- Distill HANDOFF: thêm block App HS cấp 2/3 (kit, 2 theme, avatar, gioi_tinh NULL, font, demo) + Pipeline thiết kế 1.1 + Icon từng
+  app vào ①; 6 bài học vào ② (Goodhart script · ChatGPT ảnh phẳng · --baseline đánh dấu mọi file · Home không cuộn không kéo giãn ·
+  file untracked trong public vào build · thử font trước doodle ảnh).
+## 2026-09-09 (sáng) — Khảo sát "Bạn của con": commit 299b044 + push · Vercel project khaosat · lỗi "Invalid API key"
+- CEO duyệt → commit `299b044` (21 file, CHỈ phần khảo sát; `package.json`/`launch.json` stage từ HEAD + đúng dòng của mình,
+  không kéo `vao-app` phiên khác đang sửa dở). Push ngay theo lệnh mới của CEO: **"commit đi" = commit + push luôn** (Vercel
+  tắt auto-deploy nên push vô hại) — đã ghi memory.
+- CEO hỏi "scale thì gộp 1 project Vercel hay tách?" → CTO: **tách project mỗi app** (blast radius, rollback riêng, env riêng);
+  trần 100 build/ngày là ràng buộc gói Hobby → lên Pro thay vì gộp. Ngoại lệ tương lai: gộp tầng "công cụ/chiến dịch"
+  (khảo sát/soạn/giải bài) vào 1 project rewrite theo host khi ≥5 app. Giữ 2 tầng, không gộp lẻ 1 app.
+- Vercel project khaosat: build `npm run build:khaosat`, output `dist-khaosat`, env `VITE_SUPABASE_URL` + `VITE_SUPABASE_KEY`
+  (anon). CEO deploy xong → login báo **"Invalid API key"**. Chẩn đoán KHÔNG đoán: tải bundle prod
+  (`bkdemy-erp-v2-khaosat.vercel.app/assets/khaosat-*.js`), grep key nướng trong đó, so với `.env.local` từng ký tự ⇒ key
+  trên Vercel **thừa đúng 1 ký tự "W" ở cuối** (209 vs 208). Sửa: Edit env → Redeploy (Vite nướng env lúc build, sửa env
+  không tự có hiệu lực). Bài học: "prod vẫn lỗi" thì soi bundle đang chạy trước (đã có memory), so BẰNG ký tự, không so bằng mắt.
+- **Commit `4c61e44` + push main** (CEO gật): điền ô D1–D3, spec kho chuẩn, nhập kho từ Word, catalog lý do, 2 migration. Loại
+  `package.json`/`launch.json` (của phiên khác). CEO test app HS không thấy câu hình: vì prod chưa deploy bản này + nút "Luyện chứng
+  minh" nằm ở màn KẾT QUẢ tự luyện (luồng riêng, không trộn lượt thường). 23/23 form CEO đã duyệt.
+- **Distill HANDOFF.md** (mục ① thêm "08–09/09 — FORM CÂU + KHO CHUẨN + NHẬP KHO TỪ FILE" A–E; mục ② thêm "Bài học 08–09/09" 13 gạch).

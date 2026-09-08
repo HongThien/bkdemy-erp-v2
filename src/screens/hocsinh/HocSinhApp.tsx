@@ -7,6 +7,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { supabase } from '../../lib/supabase'
 import { MathText } from '../kho/ui'
+import { LamDienO } from './DienOCau'
 import {
   listBaiTestCuaHS, getBaiTestFull, moBaiLam, traLoiCau, baoSai, nopBai, chuCaiChon, chiSoCuaChu,
   getETDe, luuDapAnET, nopET, getETDapAnDaLuu, xemGoiY, daHetHan,
@@ -618,6 +619,8 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
 // sinh lượt mới. "Làm thêm" = sinh lượt mới tinh. Phần LÀM BÀI dùng nguyên LamBai — key={baiTestId}
 // đổi theo từng lượt ⇒ REMOUNT, mỗi lượt chấm điểm/kết quả độc lập 10 câu của chính nó.
 function LamTuLuyen({ hocSinhId, onXong, desktop }: { hocSinhId: string; onXong: () => void; desktop?: boolean }) {
+  // "Luyện chứng minh" (điền ô, spec-dien-o.md D2/D3): luồng riêng vì câu điền ô có tương tác từng ô, không đi qua LamBai.
+  const [dienO, setDienO] = useState(false)
   const [state, setState] = useState<'dang_tai' | 'san_sang' | 'trong' | 'loi'>('dang_tai')
   const [mon, setMon] = useState<string | null>(null)
   const [baiTestId, setBaiTestId] = useState<string | null>(null)
@@ -653,6 +656,7 @@ function LamTuLuyen({ hocSinhId, onXong, desktop }: { hocSinhId: string; onXong:
   }
 
   if (state === 'dang_tai') return <div className={`flex min-h-screen items-center justify-center text-sm text-ph-label-2 ${desktop ? 'bg-[#f4f7fb]' : 'bg-ios'}`}>Đang chuẩn bị bài…</div>
+  if (dienO) return <LamDienO hocSinhId={hocSinhId} onXong={() => setDienO(false)} desktop={desktop} />
   if (state === 'trong' || !baiTestId || !mon) return (
     <div className={desktop
       ? 'flex min-h-screen flex-col items-center justify-center bg-[#f4f7fb] px-6 text-center'
@@ -678,6 +682,10 @@ function LamTuLuyen({ hocSinhId, onXong, desktop }: { hocSinhId: string; onXong:
           <button onClick={lamThem} disabled={busy}
             className={`w-full rounded-xl bg-brand/10 font-medium text-brand disabled:opacity-40 ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`}>
             {busy ? 'Đang tạo lượt mới…' : `Luyện lượt mới ${TU_LUYEN_SO_CAU_MOI_LUOT} câu`}
+          </button>
+          <button onClick={() => setDienO(true)}
+            className={`mt-2 w-full rounded-xl bg-ph-orange/10 font-medium text-ph-orange ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`}>
+            📐 Luyện chứng minh (điền vào lời giải)
           </button>
         </div>
       }

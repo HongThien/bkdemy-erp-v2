@@ -19,15 +19,19 @@ import { KHOI_OPTIONS, KHO_MON, nhanhCuaMon, demCauChuaGiai, demHangDuyet, HANG_
 import ChuaGiaiTab from './ChuaGiaiTab'
 import TracNghiemAiTab from './TracNghiemAiTab'
 import DuyetCauTab from './DuyetCauTab'
+import DienOAiTab from './DienOAiTab'
 import { listBienTheChoDuyetLoiGiai, duyetLoiGiaiBienThe, type BienTheChoDuyetLoiGiai, listCachGiaiChoDuyetLoiGiai, duyetLoiGiaiCachGiai, type CachGiaiChoDuyetLoiGiai } from '../../lib/kho/hinh'
 import { MathText } from '../kho/ui'
+import { coKhoHinh } from '../../lib/tailieu'
 import { myNhanSuId } from '../../lib/giaoviec'
 import { useMonScope } from '../../hooks/useMonScope'
 import { useStore } from '../../store/useStore'
 
 const HINH_LABEL = { bien_the: 'Hình (biến thể)', bai_toan_goc: 'Hình (bài toán gốc)' }
 type Row = { key: string; nhanh: string; khoi: string; deBai: string; loiGiai: string; duyet: () => Promise<void> }
-type Tab = 'chua' | HangDuyetLoc | 'tn'
+// 'tn' = "Trắc nghiệm AI" (spec-mcq-form.md §6, 08/09): phiên bản 4 phương án AI sinh cho câu tính toán — sống ở TracNghiemAiTab.tsx.
+// 'dien' = "Điền ô AI" (spec-dien-o.md, 09/09): lời giải chứng minh hình có ô trống — sống ở DienOAiTab.tsx (chỉ môn Toán, kho hình).
+type Tab = 'chua' | HangDuyetLoc | 'tn' | 'dien'
 const TAB_LOC: HangDuyetLoc[] = ['cau_moi', 'moi', 'nghi', 'khong_kiem', 'ton_dong']
 const TAB_CO_HINH = new Set<Tab>(['moi', 'ton_dong']) // 2 tab lời giải có thêm phần Hình (biến thể / cách giải)
 const readMon = () => localStorage.getItem('duyetlg.mon') ?? ''
@@ -132,6 +136,7 @@ export default function DuyetLoiGiaiScreen() {
           {tabBtn('chua', 'Chưa có lời giải')}
           {TAB_LOC.map((l) => tabBtn(l, HANG_DUYET_LABEL[l], demLoc(l)))}
           {tabBtn('tn', 'Trắc nghiệm AI')}
+          {coKhoHinh(mon) && tabBtn('dien', 'Điền ô AI')}
         </div>
         <select value={khoi} onChange={(e) => setKhoi(e.target.value)} className="ml-3 rounded-md border border-slate-200 px-2 py-1 text-[13px]">
           {KHOI_OPTIONS.map((k) => {
@@ -159,6 +164,7 @@ export default function DuyetLoiGiaiScreen() {
       : !monOk ? <p className="px-6 py-4 text-sm text-slate-400">Bạn chưa được phân môn nào (nhan_su_mon) — không có kho để duyệt.</p>
       : tab === 'chua' ? <ChuaGiaiTab mon={mon} khoi={khoi} onChanged={reloadDem} />
       : tab === 'tn' ? <TracNghiemAiTab mon={mon} khoi={khoi} />
+      : tab === 'dien' ? <DienOAiTab mon={mon} khoi={khoi} />
       : !hienHinh ? <DuyetCauTab mon={mon} khoi={khoi} loc={tab as HangDuyetLoc} onChanged={reloadDem} /> : (
       <div className="flex-1 overflow-auto px-6 py-4">
         {loading ? <p className="text-sm text-slate-400">Đang tải…</p>

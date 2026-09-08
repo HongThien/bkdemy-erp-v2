@@ -9,6 +9,34 @@ import { tex, listMath } from '../screens/kho/ui'
 // đặt được caret sát sau phần tử contenteditable=false ở cuối dòng). Bỏ hết khi serialize.
 export const ZW = '\u200B'
 
+// GỘP công thức liền kề lúc LƯU (Thùy 08/09: "góc ABC = 50° — LaTeX là 1 công thức, ở đây thành 2 mảnh riêng; có
+// cách gộp không, hệ tự ghép?"). Hai công thức inline mà GIỮA chúng chỉ có toán tử/quan hệ/số/khoảng trắng → thành 1
+// công thức (khoảng cách quanh dấu = chuẩn KaTeX, không bao giờ gãy dòng giữa 2 vế, click sửa 1 lần). Giữa có CHỮ
+// hoặc DẤU PHẨY ("$x$ và $y$", "$a$, $b$") = câu văn → giữ nguyên. Chỉ chạy lúc LƯU (không lúc gõ — con trỏ không bị
+// nhảy); `$$…$$` không đụng. Ký hiệu Unicode gõ ngoài công thức được dịch sang LaTeX khi vào trong.
+const GIUA_RE = /^[\s=+\-<>≤≥≠·×:/°%\d.]*$/
+const giuaToLatex = (s: string) => s.replace(/≤/g, '\\le ').replace(/≥/g, '\\ge ').replace(/≠/g, '\\ne ').replace(/·/g, '\\cdot ').replace(/×/g, '\\times ').replace(/°/g, '^\\circ ').replace(/%/g, '\\% ').replace(/\s+/g, ' ').trim()
+export function gopCongThuc(raw: string): string {
+  const ms = listMath(raw)
+  if (ms.length < 2) return raw
+  let out = ''; let pos = 0; let i = 0
+  while (i < ms.length) {
+    const m = ms[i]
+    out += raw.slice(pos, m.start)
+    if (m.display) { out += raw.slice(m.start, m.end); pos = m.end; i++; continue }
+    let latex = m.latex; let end = m.end
+    while (i + 1 < ms.length && !ms[i + 1].display) {
+      const giua = raw.slice(end, ms[i + 1].start)
+      if (!GIUA_RE.test(giua)) break
+      const g = giuaToLatex(giua)
+      latex = g ? `${latex} ${g} ${ms[i + 1].latex}` : giua ? `${latex} ${ms[i + 1].latex}` : `${latex}${ms[i + 1].latex}`
+      end = ms[i + 1].end; i++
+    }
+    out += `$${latex}$`; pos = end; i++
+  }
+  return out + raw.slice(pos)
+}
+
 export function renderMath(el: HTMLElement, latex: string, display: boolean) {
   el.dataset.latex = latex
   if (display) el.dataset.display = '1'; else delete el.dataset.display
