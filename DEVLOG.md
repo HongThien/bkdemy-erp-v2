@@ -9995,4 +9995,22 @@ dòng, không dựng lại UI để đo.
   trang giữ nháp OK, console 0 lỗi, tsc 0. **Bẫy:** `prompt()` thật bị automation tự đóng → phải override ở main world (trong harness)
   mới test được tool text. **Chưa test Lưu/Trả bài** (cần Supabase thật) — CEO test trên app TA thật.
 - Harness (3 file untracked) chưa xoá — Luật xoá, chờ CEO gật. Không commit harness.
+## 2026-09-09 (chiều) — Test THẬT màn chấm BTVN app TA: PASS 10/10 · fix Đ/C/S mất chữ · seed lượt nộp bằng RPC
+- Harness 3 file đã xoá (CEO gật); `package-lock.json` về HEAD (npm install không thêm package). Commit `7cda2e8`.
+- **Checkout `Desktop\2\…` là clone mới: không `.env`, không `node_modules`.** CEO tạo `.env` nhưng đặt `VITE_SUPABASE_ANON_KEY` — app
+  đọc **`VITE_SUPABASE_KEY`** (supabase.ts + nhansu.ts) → trang trắng "supabaseKey is required". Đã đổi tên biến. `.env.example`
+  KHÔNG liệt kê 2 biến VITE_SUPABASE_* (chỉ DATABASE_URL_RO + VAPID) — nên bổ sung. App TA = `/ta.html`, `/` là ERP desktop.
+- **Seed lượt nộp để test (không có PH nộp thật):** `scripts/_seed_btvn_nop.mjs` (helper tạm, service role từ `.env.local`) — upload 2
+  ảnh giả (System.Drawing) vào `btvn-nop/test/<hs>/`, gọi đúng RPC PH-app `fn_btvn_nop_tao` (service role gọi được, trả
+  `{moi:true,so_anh_them:2}`). HS Chu Bảo Ngọc · 9S1 · 08/09 (buoi `ecc9b663…`, hs `25efb621…`).
+- **CEO test trên app TA thật (Cốc Cốc, laptop landscape): PASS** — list badge 📱/chưa chốt/đề xuất · màn 70/30 · chốt buổi
+  (`buoi_xac_nhan_at/boi`) · vẽ đỏ/xanh/✓/✗/tẩy/text · Lưu 2 trang (2 `path_cham` = `cham/<anh_id>-<ms>.png`, 443KB, signed URL
+  CORS OK, canvas không taint) · form (`btvn_ket_qua` nop_dung_han/nghiem_tuc · `gami_grades` 18/18) · nhận xét (`nhan_xet_ma`) ·
+  Trả bài (`tra_at/tra_boi`) · chấm giấy chỉ form. Đối chiếu DB bằng script chỉ đọc qua service role.
+- **Bug CEO bắt: bấm Đ/C/S thì CHỮ BIẾN MẤT.** Nút có `bg-white` ở lớp nền + khi chọn thêm `bg-emerald-600 text-white` — Tailwind
+  v4 xếp `bg-white` SAU trong stylesheet ⇒ nền vẫn trắng, chữ trắng. Có từ code cũ (ChamBtvn bản 30/08 y hệt), ET/ingame không dính.
+  Sửa: `bg-white` chỉ đi cùng nhánh idle. **Bài học Tailwind v4:** 2 utility cùng property trong 1 className thì thứ tự CSS quyết
+  định, không phải thứ tự chữ — đừng đặt màu mặc định ở phần tĩnh rồi "đè" bằng phần động.
+- **Còn:** data seed test (1 btvn_nop, 2 anh, ket_qua, 18 grades, 4 file storage) là data thật của HS Chu Bảo Ngọc — cần dọn (chờ
+  CEO gật); `scripts/_seed_btvn_nop.mjs` xoá sau khi dọn. PH-app xem bài đã chấm (repo `bkdemy-ph`) chưa test.
 - **Distill HANDOFF.md** (mục ① thêm "08–09/09 — FORM CÂU + KHO CHUẨN + NHẬP KHO TỪ FILE" A–E; mục ② thêm "Bài học 08–09/09" 13 gạch).

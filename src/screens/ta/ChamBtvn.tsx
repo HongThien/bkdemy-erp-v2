@@ -262,7 +262,7 @@ function ChamMotHS({ r, ten, buoi, n, dx, v, probs, gradeOf, dong, urls, nxMau, 
                       <div className="flex gap-1">
                         {ET_KQ.map((k) => (
                           <button key={k.v} onClick={() => pickKQ(p.id, hsId, k.v)} disabled={dong}
-                            className={`h-9 w-10 rounded-lg border text-[13px] font-bold bg-white transition ${g?.result === k.v ? k.sel : k.idle} ${dong && g?.result !== k.v ? 'opacity-40' : ''}`}>{k.lbl}</button>
+                            className={`h-9 w-10 rounded-lg border text-[13px] font-bold transition ${g?.result === k.v ? k.sel : `${k.idle} bg-white`} ${dong && g?.result !== k.v ? 'opacity-40' : ''}`}>{k.lbl}</button>
                         ))}
                       </div>
                     </div>
