@@ -10050,6 +10050,16 @@ dòng, không dựng lại UI để đo.
 - **Bẫy automation:** phím "Return" của tool trình duyệt KHÔNG phải Enter — dùng "Enter"; `read_console_messages` trả log tích luỹ
   cả lỗi HMR trung gian, phải reload rồi đối chiếu tsc trước khi tin. Verify harness (đã xoá): Đ/S 24 & 48, khoanh, khung, chữ Enter
   + blur, Ctrl+Z, tsc 0, console sạch. Chưa test bút thật trên iPad (Apple Pencil) — pointer events giữ nguyên nên kỳ vọng như bản 1.
+- Thêm màu ĐEN (CEO): tách chọn Màu 🔴🔵⚫ áp cho Bút + Chữ; phím 1/2/3 màu, B bút, E tẩy. Commit `200396e`.
+## 2026-09-09 (đêm) — PH-app lên PROD + iPhone thật PASS · audit service key ERP · merge main PH
+- CEO merge local (không PR): `feat/btvn-nop-anh` → `main` PH `1574f29` (no-ff). Audit theo CEO trước khi đưa env lên Vercel:
+  `ERP_SUPABASE_SERVICE_ROLE_KEY` chỉ ở `lib/erp.ts:15`, chỉ `app/actions/btvn-nop.ts` ("use server") import, không `NEXT_PUBLIC_`;
+  thêm `import "server-only"` (build fail nếu import từ client); `next build` → 0 client chunk chứa từ khoá. **CEO chốt giữ service
+  key trên Vercel** (Storage REST xác thực JWT, `ph_nop` không thay được); bot account = "sau pilot" (HANDOFF PH §12.1). `ce2b044`.
+- CEO nối Vercel–GitHub + 3 env → prod `ph.bkacademy.edu.vn` có ô Nộp bài tập. **iPhone thật nộp 2 ảnh: JPEG 423KB/ảnh, hệ gán
+  4T1·05/09 (buổi gần nhất — mig 202609091810 chạy đúng trên prod), 0 mồ côi.** Dọn theo lệnh CEO: 1 nop + 2 anh + 2 file.
+- **Còn treo:** bút iPad thật với tool v2 · `npm run schema` (thiếu DATABASE_URL_RO) · object mồ côi khi RPC fail · PH xem ảnh trước
+  khi trả · BtvnTab ERP desktop vẫn tool cũ · push "bài đã chấm" · distill HANDOFF cuối ngày.
 - **Distill HANDOFF.md** (mục ① thêm "08–09/09 — FORM CÂU + KHO CHUẨN + NHẬP KHO TỪ FILE" A–E; mục ② thêm "Bài học 08–09/09" 13 gạch).
 
 ## 2026-09-09 — Bổ trợ yếu: BUG THẬT cap-1000 PostgREST — engine MÙ dữ liệu mới ở 33/46 lớp (worktree botroyeu, feat/botro-yeu)
