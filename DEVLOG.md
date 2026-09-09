@@ -10079,6 +10079,16 @@ dòng, không dựng lại UI để đo.
   auto-build dù Git đã nối (deployment mới nhất `a0358f6` 2 ngày trước). CEO "Create Deployment → main 3afe622" → Ready; curl bundle
   `ta-BhkL1o_R.js` có "Khoanh"/"Làm lại trang". **Chưa rõ vì sao auto-deploy im** (ignoreCommand trả 0? webhook?) — soi tab
   Deployments filter Ignored/Canceled lần sau; các project khác (gv/ops/hs) có thể cùng cảnh.
+## 2026-09-09 (đêm) — Tạo role `claude_ro` THẬT (CLAUDE.md §2.1 mô tả từ 12/08 mà DB chưa từng có)
+- CEO `alter role claude_ro` → 42704: role không tồn tại. Liệt kê `pg_roles` qua kết nối `ph_nop` (pg_catalog đọc được với mọi
+  role): có claude_build (chủ 203/209 bảng), ph_nop, fdw_bkdemy_web, web_lead_writer, postgres (createrole+bypassrls, KHÔNG superuser).
+- **BYPASSRLS không gán được từ SQL Editor** (cần superuser) → đi cách 2 của §2.1: `grant pg_read_all_data` (SELECT mọi bảng kể cả
+  tạo sau) + DO block tạo policy `claude_ro_select for select using(true)` trên 202 bảng RLS — tạo policy cần chủ bảng nên
+  `grant claude_build to postgres` trước. `introspect.mjs` chỉ đọc pg_catalog nên LOGIN là đủ cho schema; policy là cho dò dữ liệu.
+- Verify từ máy Claude (pooler `claude_ro.<ref>@aws-1…`): SELECT btvn_nhan_xet_mau 8 · hoc_sinh 442 (RLS qua policy OK) · INSERT
+  "permission denied" · CREATE TABLE "permission denied". CEO dán nhầm placeholder làm mật khẩu 1 lần → đã alter lại.
+- **Nợ:** bảng RLS tạo sau này chưa có policy claude_ro → 0 dòng im lặng; chạy lại DO block (idempotent) hoặc nối vào migrate.mjs.
+  `.env.example` đã đúng tên `DATABASE_URL_RO`. `npm run schema` chạy được từ checkout này.
 - **Distill HANDOFF.md** (mục ① thêm "08–09/09 — FORM CÂU + KHO CHUẨN + NHẬP KHO TỪ FILE" A–E; mục ② thêm "Bài học 08–09/09" 13 gạch).
 
 ## 2026-09-09 — Bổ trợ yếu: BUG THẬT cap-1000 PostgREST — engine MÙ dữ liệu mới ở 33/46 lớp (worktree botroyeu, feat/botro-yeu)
