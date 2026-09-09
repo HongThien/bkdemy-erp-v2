@@ -10227,3 +10227,27 @@ mới mở ⇒ nằm hàng ưu tiên, không qua auto-nạp). Còn treo: --ghi t
 không gọi claude ✓. NHƯNG khoá còn: `process.exit(0)` trong Node KHÔNG chạy `finally` ⇒ khoá 14:22 nằm lại, các lượt tới
 14:52 bị bỏ im lặng rồi tự dọn (tuổi khoá >30'). Sửa: unlink khoá ngay trước `process.exit`. Không xoá tay khoá cũ (luật xoá),
 để cơ chế 30' tự dọn — mất 3 lượt rỗng, vô hại vì pool đang rỗng.
+
+## 2026-09-09 (tiếp) — Luồng chuông báo động → bổ trợ yếu: kiểm chứng end-to-end sau khi 2 phiên hợp lại
+
+**Thùy:** "Check xem dữ liệu báo động từ ET, BTVN, MT đã vào bổ trợ yếu chưa" → rồi "bên kia dừng rồi, sửa tất cả để hoàn
+thiện luồng này rồi push". Trước khi viết gì, ĐỌC trước cái phiên kia để lại — hoá ra họ **không** để dở: `030360f` "Chuông
+báo động dùng chung 4 chỗ chấm" đã push, sau commit cap-1000 của t. Kiểm trên `origin/main` (không giả định):
+- `coChuongDo` = `['btvn','danhgia','et','mt','chuong_do'].includes(nguon)` — cái bẫy t vừa cảnh (ghi 'et'/'mt' mà engine
+  bỏ qua) **họ đã đóng**. `NguonCanhBao` + `TEN_NGUON_CANH_BAO` (gami.ts) đủ 4 giá trị; `schema.md` tái sinh CHECK 4 giá trị;
+  migration `202609091428_canh_bao_yeu_nguon_et_mt.sql` ĐÃ áp DB. `ChuongBaoDong.tsx` wire cả 4 tab (`nguon="et"/"mt"/
+  "btvn"/"danhgia"`), dạng lấy từ TÀI LIỆU + fallback `DangPickerOne` ⇒ nút không còn mờ (bug 04-09 ERP desktop đã hết).
+- Fix cap-1000 của t **còn nguyên** qua merge `d44fb5b` của họ: `fetchAllRows` ×5 danhgia.ts, ×2 botro_yeu.ts, `pgrest.ts` có.
+⇒ 5 việc "hoàn thiện" t liệt kê đều đã xong upstream. **Không code lại** (đúng bài học reconcile 03-09: 2 bản cùng 1 việc).
+
+**Data thật (`_diag_canhbao_flow.ts`):** `canh_bao_yeu` 35 dòng, TẤT CẢ `nguon='btvn'` (17 dòng/30 ngày, mới nhất 08/09).
+0 dòng 'danhgia' từ 31/08 (nút chết vì ingame không gắn dạng — 14% buổi có dạng, đo `_diag_chuong_src.ts`; ET 91%, MT 100%).
+0 dòng 'et'/'mt' — vì tính năng mới lên hôm nay, không phải lỗi. **Pipeline đúng:** 11/11 báo động trong 2 cửa sổ gần nhất
+(7 HS, 4 lớp) → kênh ③ + đủ `duTinHieuKienThuc`. Đường 'et'/'mt' mới chưa có data để chứng minh bằng số — mắt xích duy nhất
+chưa chạy thật là INSERT với nguon mới, mà CHECK đã áp + `themCanhBao` pass-through ⇒ đảm bảo cơ học; không tạo báo động giả
+lên HS thật để test (Luật xoá + không ghi rác). Sẽ tự lộ ở dòng 'et'/'mt' đầu tiên.
+
+**Hygiene:** `token.txt` (24 KB, repo root checkout main) chưa từng bị commit nhưng CHƯA gitignore — 1 lần `git add .` là lộ.
+Thêm vào `.gitignore`. Verify trên cây đã ff lên origin/main (+9 commit kho chuẩn/duyệt-gate/chốt xu): tsc sạch · 77/77 ·
+end-to-end 11/11. Bài học tự thân: dashboard/`git status` chụp lúc 14:2x là ảnh CŨ — phiên kia commit+push ngay sau; đọc
+`git log origin/main` trước khi kết luận "họ để dở", kẻo viết bản trùng.
