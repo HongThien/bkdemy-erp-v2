@@ -10040,6 +10040,16 @@ dòng, không dựng lại UI để đo.
   `bam` tính sẵn (`sha256(nội dung bỏ CR)[:16]` = `f5f1c0ce93f847aa`) — tương đương `--only`. Verify service role: picker 4T1 ra
   8 buổi đúng cờ (05/09 không phiếu; 22/08→11/07 có phiếu; 29/08 vắng vì huỷ), hàm auto chọn 05/09 cho Quân, sổ có dòng đúng hash.
 - **Chưa `npm run schema`** (thiếu `DATABASE_URL_RO` ở checkout này) → schema.md lệch 1 hàm (co_phieu) — chạy trên máy chính.
+## 2026-09-09 (tối) — Tool vẽ chấm BTVN v2 theo CEO: Đ/S đỏ, khoanh/khung, chữ nhập tại chỗ, cỡ chữ số kiểu Paint, phím tắt
+- CEO: bỏ ✓/✗ → dấu **Đ / S đỏ**; **khoanh ◯ / khung ▭** kéo to nhỏ để đánh chỗ sai; bút cho iPad, chữ cho laptop, **cỡ chữ chọn
+  số như Paint** (14…72, mặc định 24, áp cho chữ + Đ/S; nét bút cố định). Thêm phím tắt 1/2/3 bút-tẩy · D · S · O khoanh · R khung ·
+  T chữ · Ctrl+Z. Mark model: net · dau{D|S,co} · text{co} · hinh{tron|cn,x1y1x2y2}; cỡ px = co × (W/800) nên ảnh to nhỏ đều đúng tỉ lệ.
+- **Bẫy ô nhập chữ (đã cắn 2 lần):** (1) input mount trong `pointerdown` bị `mousedown` mặc định dời focus (canvas không focus được)
+  → blur → ô biến mất ⇒ `e.preventDefault()` ở pointerdown khi tool chữ + bỏ qua blur <300ms; (2) focus bằng `setTimeout` chậm hơn
+  người gõ ngay ⇒ `autoFocus` (đồng bộ lúc commit) + fallback. Khung/khoanh kéo <8px (chạm nhầm) tự bỏ.
+- **Bẫy automation:** phím "Return" của tool trình duyệt KHÔNG phải Enter — dùng "Enter"; `read_console_messages` trả log tích luỹ
+  cả lỗi HMR trung gian, phải reload rồi đối chiếu tsc trước khi tin. Verify harness (đã xoá): Đ/S 24 & 48, khoanh, khung, chữ Enter
+  + blur, Ctrl+Z, tsc 0, console sạch. Chưa test bút thật trên iPad (Apple Pencil) — pointer events giữ nguyên nên kỳ vọng như bản 1.
 - **Distill HANDOFF.md** (mục ① thêm "08–09/09 — FORM CÂU + KHO CHUẨN + NHẬP KHO TỪ FILE" A–E; mục ② thêm "Bài học 08–09/09" 13 gạch).
 
 ## 2026-09-09 — Bổ trợ yếu: BUG THẬT cap-1000 PostgREST — engine MÙ dữ liệu mới ở 33/46 lớp (worktree botroyeu, feat/botro-yeu)
