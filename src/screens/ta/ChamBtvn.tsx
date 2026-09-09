@@ -407,7 +407,11 @@ function VeAnh({ anhDs, urls, reloadNop }: { anhDs: BtvnNopAnh[]; urls: Record<s
 
   const anh = anhs[idx]
   const src = anh ? localUrls[anh.path_cham ?? anh.path] : undefined
-  const marks = () => (marksRef.current[anh.id] ??= [])
+  // Đọc id trang qua REF: handler phím tắt (đăng ký 1 lần) gọi undo/paint từ closure cũ — bám `anh` của
+  // lần render đầu thì Ctrl+Z ở trang 2 xoá nhầm mark trang 1 rồi vẽ đè nét trang 1 lên canvas (bug 09/09).
+  const anhIdRef = useRef(anh?.id ?? '')
+  anhIdRef.current = anh?.id ?? ''
+  const marks = () => (marksRef.current[anhIdRef.current] ??= [])
 
   useEffect(() => {
     setReady(false); imgRef.current = null; setNhap(null)
