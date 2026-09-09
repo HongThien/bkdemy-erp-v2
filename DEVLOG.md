@@ -10375,3 +10375,22 @@ tsc sạch. Buổi 10/09 trùng do test — Thùy tự huỷ trong modal nếu t
   giải nào đã công bố bị đụng; không khôi phục được (bảng chưa có trigger lịch sử, trang bị vite reload nên state mất). Dấu vết còn
   ở Supabase Dashboard → Logs → API (`fn_traogiai_xac_nhan`). **Vi phạm Luật xoá** — bài học: "dòng test của tao" phải chứng minh
   bằng `duyet_boi`/timestamp trước khi xoá, không suy từ "lúc nãy còn 0"; và server dev dùng chung máy = có thể có người khác đang ghi.
+
+## 2026-09-09 — App HS: box "Bổ trợ" (lịch 3 loại yếu/bù/đuổi) + box "Bài tập được giao" (placeholder)
+
+**Vì sao ca bổ trợ hiện ở app TA mà không hiện ở app HS:** app HS chỉ có `fn_btyeu_ca_cua_toi` = ca YẾU HÔM NAY ĐÃ ĐIỂM DANH
+có mặt (để vào luyện). Không có "lịch" — xếp xong HS/PH không thấy gì tới lúc TA điểm danh; bù/đuổi không hiện bao giờ.
+**Làm:**
+- Migration `202609091750_hs_lich_bo_tro.sql` (ĐÃ ÁP): `fn_hs_lich_bo_tro()` security definer — buổi `mo`, ngày ≥ hôm nay VN, loai ∈
+  {bo_tro_yeu, bu, bo_tro_duoi} của `my_hoc_sinh_id()`; kèm mon (yếu→bo_tro_yeu.mon; bù→lớp của buổi gốc; đuổi→bo_tro_duoi.lop_id),
+  người dạy, diem_danh, `hom_nay`, `vao_ca` (yếu + hôm nay + có mặt + chưa hoàn tất). schema.md refresh (+1 function).
+- `lichBoTroCuaToi()` (botro_yeu_ca.ts). HocSinhApp poll cùng nhịp 15s với caCuaToi/retest.
+- HomeHS (cấp 2/3): 2 box 2 cột giữa hero và lưới — "Bổ trợ" (sub = ca gần nhất "Bổ trợ yếu · Hôm nay · 16:00 · P102", badge = số
+  buổi; "Vào ca ngay →" khi vao_ca) · "Bài tập được giao" (Sắp có, disabled — Thùy: bàn sau). LUÔN hiện 2 box. Banner "ca hôm nay"
+  cũ gộp vào box; banner retest giữ.
+- Cấp 1 (`BoTroBanner` trong HomeCap1 extra): cùng 2 box + banner ca hôm nay + retest.
+- Màn mới `LichBoTroHS`: list buổi (nhãn loại màu riêng, thứ/ngày/giờ, phòng, người; "Hôm nay" nổi; nút "Vào ca luyện →" khi vao_ca;
+  yếu hôm nay chưa điểm danh → nhắc "thầy cô điểm danh xong là vào được").
+**Verify SQL thật (`scripts/_diag_hs_lich.mjs`, read-only):** Tùng → 2 buổi yếu 09/09 16:00 P102 (1 đã co_mat ⇒ vao_ca=true);
+toàn hệ buổi mở sắp tới: 16 đuổi · 3 bù · 2 yếu ⇒ từ giờ HS các ca đó thấy lịch. tsc sạch. Chưa login HS thật để bấm (không có tài
+khoản HS trong VITE_DEV_ACCOUNTS) — Thùy test full luồng.

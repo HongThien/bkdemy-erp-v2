@@ -98,3 +98,19 @@ export async function hoanTatCa(buoiId: string, nhanXet: string, mucMa: string |
   const { error } = await supabase.rpc('fn_btyeu_hoan_tat', { p_buoi: buoiId, p_nhan_xet: nhanXet, p_muc_ma: mucMa, p_khong_test_ly_do: khongTestLyDo })
   if (error) throw error
 }
+
+// ── LỊCH BỔ TRỢ của HS (Thùy 09-09: "ca bổ trợ hiện ở app TA nhưng chưa hiện ở app HS") ──────────
+// `caCuaToi` chỉ trả ca yếu HÔM NAY đã điểm danh có mặt (để vào luyện) — còn LỊCH (đã xếp, sắp tới, cả 3 loại
+// yếu/bù/đuổi) nằm ở `fn_hs_lich_bo_tro` (migration 202609091750). Box "Bổ trợ" màn chính đọc cái này.
+export type LoaiBoTro = 'bo_tro_yeu' | 'bu' | 'bo_tro_duoi'
+export type LichBoTro = {
+  buoi_id: string; loai: LoaiBoTro; ngay: string; gio_bat_dau: string | null; gio_ket_thuc: string | null
+  phong: string | null; mon: string | null; nguoi: string | null; diem_danh: string | null
+  hom_nay: boolean; vao_ca: boolean // vao_ca = ca yếu hôm nay, đã có mặt, chưa hoàn tất ⇒ bấm "Vào ca" (CaBoTroHS)
+}
+export const LOAI_BO_TRO_TEN: Record<LoaiBoTro, string> = { bo_tro_yeu: 'Bổ trợ yếu', bu: 'Học bù', bo_tro_duoi: 'Học đuổi' }
+export async function lichBoTroCuaToi(): Promise<LichBoTro[]> {
+  const { data, error } = await supabase.rpc('fn_hs_lich_bo_tro')
+  if (error) throw error
+  return (data as LichBoTro[]) ?? []
+}

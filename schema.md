@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-209 bảng · 18 view · 0 enum · 49 trigger · 322 function
+209 bảng · 18 view · 0 enum · 49 trigger · 323 function
 
 ## _app_secrets
 
@@ -4642,6 +4642,7 @@ SELECT bl.hoc_sinh_id,
 - `fn_hocphi_so_du_no(p_ph uuid)` → numeric
 - `fn_hocphi_tin_dung_con_lai(p_phs uuid[], p_ky date)` → TABLE(phu_huynh_id uuid, con_lai numeric)
 - `fn_hocphi_tong_hop_ky(p_ky date)` → TABLE(phu_huynh_id uuid, tien_chinh numeric, tien_duoi numeric)
+- `fn_hs_lich_bo_tro()` → jsonb
 - `fn_js_parsefloat(p text)` → double precision
 - `fn_jsround(x numeric)` → integer
 - `fn_khao_sat_canh()` → TABLE(id bigint, loai text, ten_goc text, ghi_chu_goc text, quen_tu text, quan_he text, ket_qua_ru text, tu_hoc_sinh_id uuid, tu_ho_ten text, tu_khoi text, tu_truong text, tu_lop_truong text, tu_toa text, den_hoc_sinh_id uuid, den_ho_ten text, ngoai_bk boolean, khop_luc timestamp with time zone, nop_luc timestamp with time zone)
