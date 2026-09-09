@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-208 bảng · 18 view · 0 enum · 49 trigger · 310 function
+208 bảng · 18 view · 0 enum · 49 trigger · 319 function
 
 ## _app_secrets
 
@@ -701,9 +701,9 @@
 | kiem_may_boi | text | Y |  |  | `mcq-auto` · `claude_code` · `nguoi` |
 | kiem_may_ghi | text | Y |  |  |  |
 | duyet_nguon | text | Y |  |  | `nguoi` · `may` · `ai` |
-| kho_chuan | boolean | Y | _kho_cau_chuan(da_duyet, kiem_may, created_at) |  |  |
 | dang_ai_de_xuat | text | Y |  |  |  |
 | kiem_may_lo | uuid | Y |  | FK→kho_kiem_lo.id |  |
+| kho_chuan | boolean | Y | _kho_cau_chuan(da_duyet, kiem_may, created_at, giai_method) |  |  |
 
 ## dai_cau_hoi_clone_cho_duyet
 
@@ -1172,9 +1172,9 @@
 | kiem_may_boi | text | Y |  |  | `mcq-auto` · `claude_code` · `nguoi` |
 | kiem_may_ghi | text | Y |  |  |  |
 | duyet_nguon | text | Y |  |  | `nguoi` · `may` · `ai` |
-| kho_chuan | boolean | Y | _kho_cau_chuan(da_duyet, kiem_may, created_at) |  |  |
 | dang_ai_de_xuat | text | Y |  |  |  |
 | kiem_may_lo | uuid | Y |  | FK→kho_kiem_lo.id |  |
+| kho_chuan | boolean | Y | _kho_cau_chuan(da_duyet, kiem_may, created_at, giai_method) |  |  |
 
 ## hgt_cau_hoi_yeu_cau_giai
 
@@ -2023,9 +2023,9 @@
 | kiem_may_boi | text | Y |  |  | `mcq-auto` · `claude_code` · `nguoi` |
 | kiem_may_ghi | text | Y |  |  |  |
 | duyet_nguon | text | Y |  |  | `nguoi` · `may` · `ai` |
-| kho_chuan | boolean | Y | _kho_cau_chuan(da_duyet, kiem_may, created_at) |  |  |
 | dang_ai_de_xuat | text | Y |  |  |  |
 | kiem_may_lo | uuid | Y |  | FK→kho_kiem_lo.id |  |
+| kho_chuan | boolean | Y | _kho_cau_chuan(da_duyet, kiem_may, created_at, giai_method) |  |  |
 
 ## khtn_cau_hoi_yeu_cau_giai
 
@@ -4495,7 +4495,7 @@ SELECT bl.hoc_sinh_id,
 - `_dien_buoc_hs(p_buoc jsonb, p_o jsonb)` → jsonb
 - `_dien_hs_view(p_o jsonb)` → jsonb
 - `_kho_ban_do_tbl(p_mon text, p_nhanh text DEFAULT NULL::text)` → text
-- `_kho_cau_chuan(p_da_duyet boolean, p_kiem_may text, p_created_at timestamp with time zone)` → boolean
+- `_kho_cau_chuan(p_da_duyet boolean, p_kiem_may text, p_created_at timestamp with time zone, p_giai_method text)` → boolean
 - `_kho_cau_duyet_nguon()` → trigger
 - `_kho_cau_tbl(p_mon text, p_nhanh text DEFAULT NULL::text)` → text
 - `_kho_cum_tbl(p_cautbl text)` → text
@@ -4692,6 +4692,15 @@ SELECT bl.hoc_sinh_id,
 - `fn_tich_luy_chot_thang(p_ky date)` → integer
 - `fn_tln_check(p_user text, p_key text)` → boolean
 - `fn_tln_normalize(p_val text)` → text
+- `fn_traogiai_actor()` → uuid
+- `fn_traogiai_bo_xac_nhan(p_id uuid)` → void
+- `fn_traogiai_chot_thang(p_ym text)` → integer
+- `fn_traogiai_doi_nguoi(p_id uuid, p_hs_moi uuid)` → uuid
+- `fn_traogiai_hoan_thanh_lop(p_ym text, p_lop uuid)` → void
+- `fn_traogiai_kiem_khoa(p_lop uuid, p_thang date)` → void
+- `fn_traogiai_mo_lai_lop(p_ym text, p_lop uuid)` → void
+- `fn_traogiai_thang(p_ym text, p_khoi text DEFAULT NULL::text)` → jsonb
+- `fn_traogiai_xac_nhan(p_ym text, p_lop uuid, p_hs uuid, p_loai text)` → uuid
 - `fn_tuqua_actor()` → uuid
 - `fn_tuqua_doi(p_hoc_sinh_id uuid, p_qua_id uuid, p_so_luong integer DEFAULT 1, p_giao_ngay boolean DEFAULT true)` → TABLE(doi_qua_id uuid, so_du_moi integer)
 - `fn_tuqua_doi_giao(p_doi_qua_id uuid)` → void
