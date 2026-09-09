@@ -10095,6 +10095,26 @@ chạy khi Thùy deploy tay; log này vẫn có giá trị lúc đó.
 **Cách commit:** làm trong worktree tạm từ origin/main (checkout chung đang dính ~14 file dở của phiên khác + 3 commit chiều 09/09
 của Thùy chưa pull) — chỉ mang đúng 1 file này + DEVLOG, không đụng việc của ai.
 
+## 2026-09-09 (chiều) — Luật "Claude giải phải duyệt mới được dùng" (CEO chốt) — Đại/KHTN/HGT + Hình
+**Thùy:** "Tất cả câu Claude giải từ ngày xây tới giờ đều KHÔNG đạt. Gemini giải: tạm đạt, dùng được. Claude giải: không đạt,
+phải duyệt. Sau này: tất cả phải duyệt mới được dùng." Dấu nhận diện duy nhất: `giai_method='claude_code'` + chưa `da_duyet`.
+**Phát hiện trước đó (cùng chiều):** (1) Đại: `_kho_cau_chuan` cho câu cũ tạm dùng bất kể da_duyet ⇒ 54 Đại + 8 KHTN + 2 HGT câu
+Claude giải chưa duyệt vẫn kho_chuan=true, 52 câu đang nằm trong 28 tài liệu. (2) Hình khối 7: 12/33 bài có cách giải Claude
+chưa duyệt, đều `la_mac_dinh`; `loadLuoi` nạp `hinh_cach_giai` không lọc cờ, SoDo hiện thẳng, không nhãn; bản in/đáp án
+tham chiếu (`dapAnHaiBac`) lấy cách mặc định ⇒ in ra lời giải AI chưa duyệt.
+**Làm (worktree `.claude/worktrees/duyet-gate`, nhánh `worktree-duyet-gate` từ origin/main 293f4ce):**
+- Mig `202609091448_kho_chuan_claude_phai_duyet.sql`: `_kho_cau_chuan(da_duyet, kiem_may, created_at, giai_method)` — câu cũ
+  tạm dùng thêm điều kiện `giai_method is distinct from 'claude_code'`. kho_chuan là generated stored ⇒ drop/add cột trên 3 bảng
+  + dựng lại 3 index partial; drop bản 3 tham số. Kiểm sau áp: Claude-chưa-duyệt-mà-kho_chuan = 0/0/0; Gemini cũ vẫn 4.706 tạm
+  dùng (đúng câu chốt); Đại kho_chuan 17.093/18.404. `npm run schema` xong.
+- Hình (`hinh.ts`): `loiGiaiDungDuoc(c)`; `dapAnHaiBac` bậc tham chiếu bỏ qua cách Claude chưa duyệt (in ra "—");
+  `layCachMacDinhBaiToan` (mẫu cho Claude) lọc theo đó; type CachGiai/BienThe thêm `nguon_giai/da_duyet/giai_method`.
+  `SoDo.tsx` nhãn đỏ `NhanChuaDuyet` (hinhUi) ở danh sách cách, lời giải mặc định, biến thể. KHÔNG đổi `cachMacDinh` vì
+  cấu trúc (tiền đề/dạng/cấp/bổ đề) đi theo cách mặc định — chỉ gate nội dung. tsc sạch. Chưa verify màn hình (cần login app).
+- `spec-kho-chuan.md` thêm mục "Bổ sung 09/09".
+**Còn:** 28 tài liệu chứa 52 câu Đại (lời giải Claude chưa duyệt) — tài liệu cũ vẫn in ra lời giải đó; chưa có quyết định
+chặn ở chỗ in. Hai worktree đang có thay đổi chưa commit: -auto (scheduler/hangdoi-clone/2 mig pool) và duyet-gate (mig này +
+Hình). Bẫy: file trong worktree là CRLF — patch bằng anchor có `\n` phải normalize trước.
 ## 2026-09-09 (chiều) — 🚨 Chuông báo động DÙNG CHUNG 4 chỗ chấm (Đánh giá · ET · BTVN · MT) + luật "dạng trong tài liệu"
 
 CEO: "cần báo động ở Đánh giá trên lớp, ET, MT. Đánh giá trên ERP không bấm được, app thì bấm được. ET/MT chưa có.
@@ -10128,3 +10148,145 @@ KHÔNG có chuông. App GV `ChuongDo` + app TA `NutChuongDo` = 2 bản nữa. CH
 (không ghi báo động giả lên HS thật). ET/BTVN cùng buổi: popup đúng "Chỗ bấm: ET/BTVN", 2 dạng của đề. 9S1 06/09 tab MT
 (đã đóng): 🚨 có, popup 23 dạng của đề (17 Đại + 6 Hình GT, tên đầy đủ sau fix ②). tsc 0 lỗi, console 0 lỗi.
 Chưa verify trên app GV/TA (chỉ tsc). CHƯA commit (memory: chỉ commit khi được yêu cầu).
+## 2026-09-08 (chiều) — Luồng 2 Claude Code: worker CLONE câu đã đặt hàng (`hangdoi-clone.mjs`)
+**Bối cảnh:** Thùy hỏi "luồng Claude clone các câu được đặt hàng trong kho có đang chạy không". Kiểm: bảng hàng đợi
+`dai_cau_hoi_yeu_cau_clone` + nút "đưa vào hàng đợi" (DangHub) có từ 26/08, nhưng KHÔNG có worker nào đọc bảng đó
+(pg_stat: 6 insert/4 delete/0 update từ trước tới nay ⇒ chưa yêu cầu nào từng được đánh dấu xử lý). Task Scheduler
+`BKdemy-AutoGiaiBai` chỉ đếm `*_yeu_cau_giai` (luồng 1). 56 nháp `mcq_auto_doi_so` (03:29 sáng) là luồng khác
+(`mcq-clone-doi-so.mjs`, máy đổi số, không qua đặt hàng). Thùy chốt: **Claude Code có 2 luồng — (1) giải bài
+chưa có đáp án, (2) clone câu đã đặt hàng.**
+**Làm:** `scripts/hangdoi-clone.mjs` theo đúng khuôn `hangdoi-giai.mjs`: `--list [--out]` (yêu cầu treo + câu gốc
+đầy đủ + tên dạng + ≤2 mẫu cùng dạng + cờ `co_hinh`/`goc_da_xoa`/`so_da_co`) · `--ghi f.json` (mỗi yêu cầu 1
+transaction: insert nháp `dai_cau_hoi_clone_cho_duyet` clone_method=`claude_code_batch`, parent=gốc, yeu_cau_id +
+đóng `xu_ly_at`; yêu cầu đã đóng ⇒ không ghi) · `--don` (gốc xoá mềm) · `--bo <id> [lý do]` (lý do nối vào ghi_chu)
+· `--tu-kiem` (chạy cả đường --ghi trong 1 transaction rồi ROLLBACK). Luật cứng ở code: gốc có `anh_de` ⇒ từ chối
+(hình lệch số) · dung_sai/menh_de ⇒ từ chối (bảng nháp không có cột) · biến thể thiếu lời giải/trùng gốc/trùng nhau
+⇒ bỏ · trắc nghiệm phải đúng 4 lựa chọn + đáp án A–D · không ghi quá `so_bien_the`. `spec-clone-ai.md` = luật sinh
+(chép từ `buildCloneFromGocPrompt`/FMT_RULES — nguồn luật vẫn ở api.ts, sửa thì sửa cả 2).
+**Chạy thật lần đầu:** 2 yêu cầu của Thùy Trang (16:25, T108030501007 + T108030501005, dạng nhẩm nghiệm lớp 8, 5
+biến thể/câu). Sinh bằng khuôn (x+1)(x−m)(ax−n) qua script `_auto_clone_sinh.mjs`: nhân đa thức bằng máy, kiểm
+A(−1)=0 từ hệ số thật, khuôn phải TÁI TẠO ĐÚNG 2 câu gốc trước khi tin. `--ghi` ⇒ 10 nháp, 2 yêu cầu đóng 17:12.
+Duyệt ở ERP › Bản đồ kiến thức › Đại › "Câu chờ duyệt".
+**Chưa làm (chờ Thùy):** nối vào `auto-giai-scheduler.mjs` (đếm thêm `dai_cau_hoi_yeu_cau_clone` + prompt bước 2)
+— là sửa cấu hình tác vụ đang chạy nên chưa tự đụng. **Phát hiện phụ:** scheduler luồng 1 đang hỏng — log
+`.auto-giai.log`: 13 lượt `spawnSync claude ETIMEDOUT` (20 phút), chỉ 2 lượt exit=0; 5 yêu cầu giải ưu tiên treo.
+Repo main máy này sau origin/main 26 commit. Hàng đợi clone chỉ có cho Đại (KHTN/HGT chưa có bảng — §1.6 symmetry).
+Bẫy nhỏ: template sinh in "1x^2"/"1(-1)" khi hệ số = 1 — khuôn tái tạo gốc lộ ra ngay, sửa trước khi ghi.
+
+## 2026-09-08 (tối) — Scheduler treo = CLI `claude` CHƯA LOGIN; nối luồng 2 vào scheduler
+**Thùy đoán:** "treo vì không có bài để giải". **Không phải:** log ghi rõ "Có việc: 5 yêu cầu ưu tiên, 126 bài pool"
+rồi mới treo. Giữa "Bắt đầu gọi claude -p" và "exit=null ETIMEDOUT" KHÔNG có một dòng output nào (lượt thành công
+06/09, 07/09 sáng đều in bảng báo cáo). Diễn biến: 07/09 09:47 exit=0 → 10:12–14:42 ETIMEDOUT ×9 → 15:00–15:22
+exit=1 "You've hit your session limit · resets 10:50pm" ×4 → 08/09 ETIMEDOUT tiếp. Kiểm trực tiếp: `claude auth status`
+→ `loggedIn:false, authMethod:none`; `~/.claude/.credentials.json` chỉ còn khoá `mcpOAuth`, KHÔNG có `claudeAiOauth`;
+không có `CLAUDE_CODE_OAUTH_TOKEN` ở HKCU/HKLM. Desktop app (claude.exe 2.1.260 trong AppData\Roaming\Claude) tự cấp
+auth qua host (`CLAUDE_CODE_SDK_HAS_HOST_AUTH_REFRESH`) nên phiên chat vẫn chạy; còn CLI `claude` 2.1.162 trong PATH
+mà scheduler gọi thì trắng auth ⇒ `claude -p` treo tới hết 20' timeout mỗi lượt (non-TTY, stdin ignore), khoá giữ 20'.
+**Hình cũng KHÔNG có clone** (Thùy chốt) — chỉ luồng giải; symmetry §1.6 không áp cho hàng đợi clone Hình.
+**Sửa `auto-giai-scheduler.mjs`:** (a) bước 2b kiểm `claude auth status` TRƯỚC khi tạo khoá — chưa login ⇒ log 1 lần
+(không lặp mỗi 10') + hướng dẫn `claude login` / `claude setup-token`, thoát ngay; (b) đếm thêm
+`dai_cau_hoi_yeu_cau_clone` (xu_ly_at null) → có clone treo cũng là "có việc"; (c) prompt ghép 2 phần theo việc thật
+có: LUỒNG 1 giải (spec-giai-bai-ai.md + hangdoi-giai.mjs) · LUỒNG 2 clone (spec-clone-ai.md + hangdoi-clone.mjs);
+`auto-nap-hang-doi` chỉ chạy khi có việc giải. Đã xoá 2 file tạm `_auto_clone_sinh.mjs`/`_auto_clone_kq.json` (Thùy ok).
+**Việc người phải làm (Claude không được tự đăng nhập):** mở terminal → `claude login` (hoặc `claude setup-token` rồi
+set biến user `CLAUDE_CODE_OAUTH_TOKEN`) → `node scripts/auto-giai-scheduler.mjs` chạy tay 1 lần xem exit=0.
+**Kết quả sau khi Thùy `claude login` (18:3x):** lượt Task Scheduler 18:42 qua kiểm auth → `claude -p` chạy 12 phút,
+exit=0 lúc 18:54: 5 yêu cầu Hình (BT.07.093/097/103/105, BT.08.143) → giải 7 node theo chuỗi tiền đề, verify toạ độ
+18/18, ghi qua `fn_hinh_ghi_loi_giai`, hàng đợi rỗng, dọn file tạm. Lệnh chạy tay của Thùy thoát im lặng là ĐÚNG
+thiết kế (gặp khoá của lượt 18:42 đang chạy). Pool còn 126 bài → các lượt sau tự nạp 5 bài/lượt.
+**Ưu tiên THCS (Thùy 08/09 tối):** mig `202609081920_giaibai_pool_uu_tien_thcs.sql` — `fn_giaibai_pool` đổi ORDER BY:
+`(khoi in ('6','7','8','9')) desc, nhanh, nhom_ma, ma` (cả 2 chế độ giai/hoan_thien; `khoi` là text nên so tập chữ,
+không cast). Chữ ký giữ nguyên ⇒ `auto-nap-hang-doi.mjs` không đổi (thứ tự ở SQL, §2.0). Đã áp + `npm run schema`.
+Kiểm: 10 bài đầu pool = toàn khối 8; 40 bài đầu = 31 khối 8 + 1 khối 9 rồi mới tới 4/5/10. Lượt 19:02 đã nạp 5 bài
+TRƯỚC khi đổi (theo thứ tự cũ); từ lượt 19:22 áp dụng THCS trước. Tốc độ: 5 bài/lượt ~12–16', lượt kế bỏ vì khoá ⇒
+thực tế 5 bài/20'; pool 126 ⇒ ~8h. Đề xuất chưa duyệt: --ghi từng bài (chống mất trắng khi timeout) · lô 10 +
+timeout 40' + tuổi khoá 45'.
+
+## 2026-09-09 (chiều) — Kiểm tình trạng 2 luồng · bỏ qua khối 12 · vá lỗ rò "bài Claude bỏ bị nạp lại"
+**Tình trạng (19:00 08/09 → 14:00 09/09):** 28 lượt scheduler, tất cả exit=0, 0 timeout, 0 đụng quota. 101 lời giải mới
+chờ duyệt (93 Đại + 8 KHTN). Máy tắt 22:15 → 12:42 (Task Scheduler chỉ chạy khi máy bật). THCS hết (pool còn 66 khối 12
++ 1 khối 11 + 1 khối 8). Clone: 0 đơn mới; 10 nháp Claude + 56 nháp đổi số vẫn chưa ai duyệt.
+**Lỗ rò phát hiện:** `--bo` đóng yêu cầu không ghi ⇒ bài rơi lại pool (view chỉ loại yêu cầu ĐANG MỞ) ⇒ lượt sau nạp
+lại ⇒ bỏ lại. DC000016 (câu test) bị nạp 26 lần, DCDEMO01/T111040204012 5 lần, 3 bài "vẽ đoạn thẳng" khối 4 3–4 lần
+⇒ 54/140 lượt-bài là lặp vô ích (~40%). Lý do bỏ đều đúng (data test, đề thiếu, TN 2 đáp án đúng, đáp án là hình vẽ).
+**Thùy chốt: "bỏ qua khối 12".** Hệ quả: pool sau khi bỏ khối 12 chỉ còn 2 bài thật + đám bài đã bỏ ⇒ phải vá lỗ rò
+cùng lúc, không thì scheduler đốt quota vào rác mỗi 10'.
+**Làm — mig `202609091412_giaibai_pool_bo_khoi_va_bo_claude_da_bo.sql`:** `fn_giaibai_pool` thêm 2 tham số có default
+`p_bo_khoi text[]` + `p_bo_claude_da_bo boolean` (DROP chữ ký cũ trước — create or replace chữ ký khác = overload ⇒
+"function is not unique" cho caller 4 tham số). "Claude đã bỏ" = tồn tại yêu cầu đã đóng cùng (nhanh,key) có ghi_chu
+ilike '%Claude bỏ%' trong `v_giaibai_nhan`. UI (`giaibai.ts`, 4 tham số tên) giữ nguyên hành vi — vẫn thấy 63 bài khối 12.
+`auto-nap-hang-doi.mjs`: `--bo-khoi` default "12" (đổi/xoá bằng cờ) + truyền `true` cho bỏ-Claude-đã-bỏ. Kiểm: auto pool
+= 0 bài, DC000016 không còn. Đã áp + `npm run schema`.
+**Vá scheduler kèm:** `tongPool` (fn_giaibai_dem_pool) đếm cả khối bị bỏ qua lẫn bài đã bỏ ⇒ không dùng nó để quyết định
+gọi claude nữa. Có việc giải = còn ưu tiên treo HOẶC auto-nạp nạp được ≥1 (parse "Đã nạp N"). Không việc + 0 clone ⇒ log
+"Không có gì cho Claude lượt này" rồi thoát (finally xoá khoá). Trước vá: pool 63 khối 12 ⇒ vẫn gọi claude -p mỗi 10'
+cho hàng đợi rỗng. Lượt 14:12 chạy trước vá (đã nạp 5 bài kiểu cũ), lượt 14:22 là lượt đầu theo logic mới.
+**Muốn chạy lại 1 bài Claude đã bỏ:** người sửa đề rồi xoá/đổi ghi_chu yêu cầu đã đóng (hoặc bấm ⭐ Ưu tiên — yêu cầu
+mới mở ⇒ nằm hàng ưu tiên, không qua auto-nạp). Còn treo: --ghi từng bài (chống mất trắng khi timeout) · lô 10/40'.
+**Kiểm lượt 14:22 (đầu tiên theo logic mới):** auto-nạp "Pool tổng cũng rỗng" → log "Không có gì cho Claude lượt này" → thoát
+không gọi claude ✓. NHƯNG khoá còn: `process.exit(0)` trong Node KHÔNG chạy `finally` ⇒ khoá 14:22 nằm lại, các lượt tới
+14:52 bị bỏ im lặng rồi tự dọn (tuổi khoá >30'). Sửa: unlink khoá ngay trước `process.exit`. Không xoá tay khoá cũ (luật xoá),
+để cơ chế 30' tự dọn — mất 3 lượt rỗng, vô hại vì pool đang rỗng.
+
+## 2026-09-09 (tiếp) — Luồng chuông báo động → bổ trợ yếu: kiểm chứng end-to-end sau khi 2 phiên hợp lại
+
+**Thùy:** "Check xem dữ liệu báo động từ ET, BTVN, MT đã vào bổ trợ yếu chưa" → rồi "bên kia dừng rồi, sửa tất cả để hoàn
+thiện luồng này rồi push". Trước khi viết gì, ĐỌC trước cái phiên kia để lại — hoá ra họ **không** để dở: `030360f` "Chuông
+báo động dùng chung 4 chỗ chấm" đã push, sau commit cap-1000 của t. Kiểm trên `origin/main` (không giả định):
+- `coChuongDo` = `['btvn','danhgia','et','mt','chuong_do'].includes(nguon)` — cái bẫy t vừa cảnh (ghi 'et'/'mt' mà engine
+  bỏ qua) **họ đã đóng**. `NguonCanhBao` + `TEN_NGUON_CANH_BAO` (gami.ts) đủ 4 giá trị; `schema.md` tái sinh CHECK 4 giá trị;
+  migration `202609091428_canh_bao_yeu_nguon_et_mt.sql` ĐÃ áp DB. `ChuongBaoDong.tsx` wire cả 4 tab (`nguon="et"/"mt"/
+  "btvn"/"danhgia"`), dạng lấy từ TÀI LIỆU + fallback `DangPickerOne` ⇒ nút không còn mờ (bug 04-09 ERP desktop đã hết).
+- Fix cap-1000 của t **còn nguyên** qua merge `d44fb5b` của họ: `fetchAllRows` ×5 danhgia.ts, ×2 botro_yeu.ts, `pgrest.ts` có.
+⇒ 5 việc "hoàn thiện" t liệt kê đều đã xong upstream. **Không code lại** (đúng bài học reconcile 03-09: 2 bản cùng 1 việc).
+
+**Data thật (`_diag_canhbao_flow.ts`):** `canh_bao_yeu` 35 dòng, TẤT CẢ `nguon='btvn'` (17 dòng/30 ngày, mới nhất 08/09).
+0 dòng 'danhgia' từ 31/08 (nút chết vì ingame không gắn dạng — 14% buổi có dạng, đo `_diag_chuong_src.ts`; ET 91%, MT 100%).
+0 dòng 'et'/'mt' — vì tính năng mới lên hôm nay, không phải lỗi. **Pipeline đúng:** 11/11 báo động trong 2 cửa sổ gần nhất
+(7 HS, 4 lớp) → kênh ③ + đủ `duTinHieuKienThuc`. Đường 'et'/'mt' mới chưa có data để chứng minh bằng số — mắt xích duy nhất
+chưa chạy thật là INSERT với nguon mới, mà CHECK đã áp + `themCanhBao` pass-through ⇒ đảm bảo cơ học; không tạo báo động giả
+lên HS thật để test (Luật xoá + không ghi rác). Sẽ tự lộ ở dòng 'et'/'mt' đầu tiên.
+
+**Hygiene:** `token.txt` (24 KB, repo root checkout main) chưa từng bị commit nhưng CHƯA gitignore — 1 lần `git add .` là lộ.
+Thêm vào `.gitignore`. Verify trên cây đã ff lên origin/main (+9 commit kho chuẩn/duyệt-gate/chốt xu): tsc sạch · 77/77 ·
+end-to-end 11/11. Bài học tự thân: dashboard/`git status` chụp lúc 14:2x là ảnh CŨ — phiên kia commit+push ngay sau; đọc
+`git log origin/main` trước khi kết luận "họ để dở", kẻo viết bản trùng.
+
+## 2026-09-09 — UX: duyệt xong KHÔNG reload cả danh sách (Thùy: "gặp nhiều màn rồi, ghi vào để sau ko mắc lại")
+
+**Lỗi:** `DuyetBoTroYeuScreen` gắn `onXong={reload}` → `setCands([]); setLoading(true)` rồi quét lại TOÀN BỘ lớp của môn
+(~3s trắng "Đang quét…", card unmount ⇒ cuộn về đầu, HS vừa duyệt LẠI HIỆN vì tín hiệu engine chưa đổi). Cùng pattern ở
+`DashboardHocTapScreen` (`reload = setLopId('') → setTimeout(setLopId(id))` — ép effect chạy lại) và `DanhGiaCaBoTroScreen`
+(`setLoading(true)` blank list).
+
+**Sửa:** `DuyetKhoi.onXong` giờ trả `DuyetKetQua {hocSinhId, mon, loai, level}` → cha vá tại chỗ:
+- Duyệt bổ trợ: `setCands(prev => prev.filter(≠ hocSinhId))` — ca rời hàng đợi, card kế trượt lên đúng chỗ đang đứng, badge "N ca" giảm 1.
+- Dashboard: `setCands(prev => prev.map(vá sheet.levelKienThuc/levelThaiDo))` + đóng modal; `CandidateDetailBody` thêm level vào deps
+  để "Lịch sử duyệt" tự nạp lại.
+- Đánh giá ca: `setItems(prev => prev.filter(≠ case.id))`.
+tsc sạch. Không chạy duyệt thử trên HS thật (ghi `hs_level_log` thật) — logic thuần state, tự kiểm bằng mắt.
+
+**Luật ghi vào CLAUDE.md §2 (⭐ React — sau mutation không reload cả danh sách):** *đổi ngữ cảnh* ⇒ reset+fetch; *mutation cùng
+ngữ cảnh* ⇒ vá phần tử tại chỗ, callback trả kết quả vừa ghi; cần refetch thì refetch NỀN giữ list cũ, không bao giờ blank.
+
+**Còn treo (đích, chưa làm):** F5 lại thì HS đã duyệt VẪN vào hàng đợi vì `listCandidatesLop` không biết "đã duyệt trong cửa sổ này"
+(`hs_level_log` có timestamp — có thể loại candidate đã duyệt ≥1 lần trong cửa sổ hiện tại). Chờ Thùy chốt.
+
+## 2026-09-09 — Rời màn quay lại vẫn đúng chỗ cũ (Thùy: "đang click ở HS a, sang màn khác quay lại vẫn ở đấy")
+
+Màn unmount khi đổi tab (`NhanSuHome` render có điều kiện) ⇒ mọi state (filter, list, cuộn, khối đang soi) mất, quét lại 3s.
+**Sửa:** `DuyetBoTroYeuScreen` + `DashboardHocTapScreen` nhớ module-level `NHO = { mon/khoi | lopId, cands, scrollTop }` (sống tới F5):
+mount lại đúng filter ⇒ dùng cache, bỏ qua fetch đầu (`coCache` ref), `useLayoutEffect` trả `scrollTop`; đổi filter/bấm ↻ ⇒ quét lại.
+`CandidateDetailBody` nhớ khối đang mở theo HS (`MO_CHI_TIET_NHO` Map) — data soi chuyên đề fetch lại qua effect theo `moChiTiet`
+(chỉ cache "đang mở gì", không cache data). tsc sạch. Luật thêm vào CLAUDE.md §2 (cùng mục "sau mutation không reload").
+
+## 2026-09-09 — Hàng đợi Duyệt bổ trợ: HS đã có cờ KHÔNG hiện lại (Thùy: "chốt bổ trợ rồi vẫn nằm trong danh sách là sao??")
+
+**Nguyên nhân:** engine đề xuất từ tín hiệu dữ liệu (không đổi trong nửa tháng) + `caseDangMoCanXu` cố ý giữ HS có case mở
+⇒ duyệt xong, F5 là HS lại hiện y nguyên. Luật mới (Thùy chốt): **HS nào đã có cờ bổ trợ (levelKienThuc ≥1) thì không vào hàng
+đợi này nữa** — hàng đợi chỉ để MỞ cờ; HS có cờ xử ở Nội dung/Trạng thái/Đánh giá ca. Thêm: đã chốt (kể cả giữ L0) trong cửa sổ
+hiện tại cũng loại (`Candidate.daDuyetKienThucAt` — đọc `hs_level_log` loai=kien_thuc từ 00:00 VN ngày đầu cửa sổ, 1 query/lớp).
+Dashboard học tập KHÔNG đổi (vẫn hiện để đọc/quản lý case).
+**Đo thật Toán 2026-09-A, 36 lớp:** 236 đủ tín hiệu → loại 4 đã có cờ (7B2 ×2, 8B1 ×2 — đúng các ca Thùy vừa duyệt), 0 chốt L0 kỳ này
+→ còn 232. Script `scripts/_diag_hangdoi_loai.ts` (read-only). tsc sạch.
+"Mỗi lần bật lại reset danh sách" = bản cache-chỗ-cũ (`7d8c739`) lúc đó Vercel chưa build xong; F5 vẫn quét lại (cache sống trong tab).
