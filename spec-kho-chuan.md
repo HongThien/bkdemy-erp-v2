@@ -95,3 +95,15 @@ Cửa 2 (form trắc nghiệm) từ bước 1 chỉ sinh cho câu `da_duyet=true
 
 - Ngưỡng độ tin để AI được **ký** (mức B) thay vì chỉ báo: đề xuất precision mẫu ≥ 98% trên 200 câu đầu.
 - Khối/dạng nào quét trước: đề xuất khối 6–9 (đang dạy, HS làm nhiều), rồi 10–12, rồi cấp 1.
+
+## Bổ sung 09/09/2026 — lời giải do luồng Claude Code ghi PHẢI DUYỆT (CEO chốt)
+> "Gemini giải: tạm đạt, dùng được. Claude giải: không đạt, phải duyệt. Sau này: tất cả phải duyệt mới được dùng."
+
+- Định nghĩa "vào kho" (`_kho_cau_chuan`) thêm điều kiện: câu CŨ chỉ tạm dùng khi lời giải **không** do luồng Claude Code
+  ghi (`giai_method = 'claude_code'`) hoặc đã `da_duyet`. Câu mới vẫn cần `da_duyet` như §1. Mig `202609091448`.
+- Lời giải AI cũ (Gemini, `giai_method` null) giữ nguyên "tạm dùng tới khi quét" — sẽ hết hiệu lực khi quét lại toàn kho xong
+  ("sau này tất cả phải duyệt").
+- Hình: cách giải / biến thể có `giai_method='claude_code'` chưa `da_duyet` = chưa đạt — kho hiện kèm nhãn đỏ, KHÔNG in,
+  KHÔNG làm đáp án tham chiếu, KHÔNG làm mẫu cho Claude giải bài khác (`loiGiaiDungDuoc`, `src/lib/kho/hinh.ts`).
+  Cấu trúc (tiền đề/dạng/cấp) vẫn theo cách mặc định — chỉ gate nội dung lời giải.
+- Nơi duyệt không đổi: màn Duyệt lời giải AI (tab "Lời giải mới từ Claude" / Hình).

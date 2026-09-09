@@ -254,3 +254,8 @@ export function AnhInput({ value, onChange, cap }: { value: string | null | unde
     </div>
   )
 }
+
+/** Nhãn "lời giải Claude chưa duyệt" (CEO 09/09: Claude giải = chưa đạt tới khi duyệt). Chỉ hiện trong kho; nội dung này KHÔNG in, KHÔNG tham chiếu. */
+export const NhanChuaDuyet = () => (
+  <span className="inline-block rounded bg-rose-100 px-1.5 py-0.5 text-[13px] font-semibold text-rose-700" title="Lời giải do luồng Claude Code ghi, chưa ai duyệt — chưa được dùng (không in, không làm đáp án tham chiếu). Duyệt ở màn Duyệt lời giải AI.">🤖 Claude giải · CHƯA DUYỆT — chưa được dùng</span>
+)

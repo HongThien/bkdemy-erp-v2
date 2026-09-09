@@ -19,6 +19,7 @@ import {
   bucketOfScore, BUCKET_RANK,
 } from '../gami/danhgia.js'
 import { khoCuaMon } from './tailieu'
+import { fetchAllRows } from './pgrest' // phân trang THẬT — PostgREST cap 1000 dòng/query, xem pgrest.ts
 
 const LIMIT = 10000
 
@@ -101,13 +102,16 @@ type DoRow = { hoc_sinh_id: string; ma_dang: string; value: number; t: string; s
 // (1 buổi bù gom HS từ nhiều lớp/môn khác nhau → không thể suy 1 môn cho cả buổi).
 async function napLanDo(hsIds: string[], mon: string): Promise<DoRow[]> {
   if (!hsIds.length) return []
-  const { data: grades, error } = await supabase
+  // Phân trang THẬT (xem `fetchAllRows`) — 1 lớp 14 HS có lịch sử từ tháng 7 đã vượt 1000 dòng, và
+  // `.limit(LIMIT)` cũ bị PostgREST cắt im lặng ở 1000. `.order('graded_at')` để trang nào cũng tất
+  // định (không có order thì `.range()` trên UUID PK có thể lặp/thiếu dòng giữa các trang).
+  const rows = await fetchAllRows<any>((from, to) => supabase
     .from('gami_grades')
     .select('hoc_sinh_id, result, graded_at, buoi_hoc_id, prob:problem_id(phase, ma_dang)')
     .in('hoc_sinh_id', hsIds)
-    .limit(LIMIT)
-  if (error) throw error
-  const rows = (grades ?? []) as any[]
+    .order('graded_at', { ascending: true })
+    .order('id', { ascending: true })
+    .range(from, to))
 
   // Môn của buổi: 1 query cho mọi buổi liên quan.
   const buoiIds = [...new Set(rows.map((r) => r.buoi_hoc_id).filter(Boolean))]
@@ -431,11 +435,10 @@ export async function getStatSheetLop(lopId: string): Promise<StatSheetHS[]> {
 
     const td = thaiDoRows.filter((r) => r.hoc_sinh_id === hsId).map((r) => ({ thai_do: r.thai_do, t: r.t }))
     const cb = canhBao.filter((r) => r.hoc_sinh_id === hsId)
-    // 'btvn' = báo lúc chấm BTVN · 'danhgia' = báo lúc Đánh giá sau buổi (CEO 31/08, cùng nút 🚨
-    // AlertModal, khác chỗ bấm — ĐÚNG giá trị CHECK canh_bao_yeu_nguon_chk cho phép, KHÔNG có gạch
-    // dưới) · 'chuong_do' = giá trị lịch sử dự phòng (dữ liệu cũ trước CHECK, nếu còn sót) — cả 3
-    // đều là ③ chuông đỏ.
-    const coChuongDo = cb.some((r) => r.nguon === 'btvn' || r.nguon === 'danhgia' || r.nguon === 'chuong_do')
+    // 'btvn' = báo lúc chấm BTVN · 'danhgia' = Đánh giá sau buổi (CEO 31/08) · 'et' | 'mt' = chấm ET/MT
+    // (CEO 09/09, cùng component ChuongBaoDong, khác chỗ bấm — ĐÚNG giá trị CHECK canh_bao_yeu_nguon_chk)
+    // · 'chuong_do' = giá trị lịch sử dự phòng (dữ liệu cũ trước CHECK, nếu còn sót) — TẤT CẢ đều là ③ chuông đỏ.
+    const coChuongDo = cb.some((r) => ['btvn', 'danhgia', 'et', 'mt', 'chuong_do'].includes(r.nguon))
     const coLoTienQuyet = cb.some((r) => r.nguon === 'gv_tien_quyet')
     const lv = levels.get(hsId)
 
@@ -473,11 +476,31 @@ export type Candidate = {
   lyDo: string[]
   duTinHieuKienThuc: boolean // ≥2/4 kênh dữ liệu HOẶC báo động HOẶC case kiến thức đang mở cần xử —
                               // dùng cái NÀY để lọc màn "Duyệt bổ trợ", đừng suy luận lại từ `kenh`
+  daDuyetKienThucAt: string | null // lần chốt level kiến thức GẦN NHẤT trong cửa sổ hiện tại (null = chưa) — Duyệt bổ trợ loại ra
   deXuatKienThuc: any; deXuatThaiDo: any
   sheet: StatSheetHS
 }
+// Thùy 09-09: "HS chốt bổ trợ rồi vẫn nằm trong danh sách là sao??" — hàng đợi Duyệt bổ trợ phải LOẠI
+// HS đã có quyết định kiến thức (bất kể chốt L0/L1/L2/L3) trong CỬA SỔ HIỆN TẠI: tín hiệu dữ liệu không
+// đổi trong nửa tháng nên engine cứ đề xuất lại mãi → người duyệt thấy "duyệt rồi mà vẫn hiện".
+// Sang cửa sổ mới (dữ liệu mới) thì xét lại bình thường. Nguồn = `hs_level_log` (log là bằng chứng).
+async function mapDaDuyetKienThucCuaSoNay(hsIds: string[], mon: string): Promise<Map<string, string>> {
+  const m = new Map<string, string>()
+  if (!hsIds.length) return m
+  const win = cuaSoHienTai()
+  const y = +win.slice(0, 4), mo = +win.slice(5, 7), day = win.slice(8) === 'A' ? 1 : 16
+  const batDau = new Date(Date.UTC(y, mo - 1, day, -7, 0, 0)).toISOString() // 00:00 giờ VN của ngày đầu cửa sổ
+  const { data, error } = await supabase.from('hs_level_log').select('hoc_sinh_id, created_at')
+    .eq('mon', mon).eq('loai', 'kien_thuc').in('hoc_sinh_id', hsIds).gte('created_at', batDau)
+    .order('created_at', { ascending: false }).limit(LIMIT)
+  if (error) throw error
+  for (const r of (data ?? []) as any[]) if (!m.has(r.hoc_sinh_id)) m.set(r.hoc_sinh_id, r.created_at)
+  return m
+}
+
 export async function listCandidatesLop(lopId: string): Promise<Candidate[]> {
   const sheets = await getStatSheetLop(lopId)
+  const daDuyet = sheets.length ? await mapDaDuyetKienThucCuaSoNay(sheets.map((s) => s.hoc_sinh_id), sheets[0].mon) : new Map<string, string>()
   const out: Candidate[] = []
   for (const s of sheets) {
     const kenh: Candidate['kenh'] = []
@@ -588,6 +611,7 @@ export async function listCandidatesLop(lopId: string): Promise<Candidate[]> {
       hoc_sinh_id: s.hoc_sinh_id, ho_ten: s.ho_ten, mon: s.mon,
       kenh, uuTien, trongDigest: uuTien >= DANHGIA_CONFIG.NGUONG_DIGEST, lyDo,
       duTinHieuKienThuc, // ⭐ dùng CÁI NÀY để lọc "Duyệt bổ trợ" — KHÔNG suy luận lại từ `kenh`
+      daDuyetKienThucAt: daDuyet.get(s.hoc_sinh_id) ?? null, // đã chốt trong cửa sổ này ⇒ rời hàng đợi duyệt (Dashboard vẫn hiện)
       // (đọc "kenh có > 1 phần tử ngoài thai_do" từng ĐÚNG hồi mỗi kênh là 1 OR độc lập, giờ SAI vì
       // 1 kênh riêng lẻ vẫn được push vào `kenh` để hiện lý do dù chưa đủ ≥2/4 — bug thật đã bắt 08-23).
       deXuatKienThuc: s.deXuatKienThuc, deXuatThaiDo: s.deXuatThaiDo, sheet: s,
@@ -599,10 +623,13 @@ export async function listCandidatesLop(lopId: string): Promise<Candidate[]> {
 }
 
 async function napThaiDo(hsIds: string[]): Promise<{ hoc_sinh_id: string; thai_do: string; t: string }[]> {
-  const { data } = await supabase.from('btvn_ket_qua')
+  // Cùng bẫy cap-1000 với `napLanDo` (1 dòng/HS/buổi có BTVN — 1 lớp cả học kỳ đủ vượt) → phân trang.
+  const data = await fetchAllRows<any>((from, to) => supabase.from('btvn_ket_qua')
     .select('hoc_sinh_id, thai_do, buoi:buoi_hoc_id(ngay)')
-    .in('hoc_sinh_id', hsIds).not('thai_do', 'is', null).limit(LIMIT)
-  return ((data ?? []) as any[])
+    .in('hoc_sinh_id', hsIds).not('thai_do', 'is', null)
+    .order('hoc_sinh_id', { ascending: true }).order('buoi_hoc_id', { ascending: true })
+    .range(from, to))
+  return (data as any[])
     .filter((r) => r.buoi?.ngay)
     .map((r) => ({ hoc_sinh_id: r.hoc_sinh_id, thai_do: r.thai_do, t: r.buoi.ngay }))
 }
@@ -836,10 +863,12 @@ export async function getLichSuChuyenDe(hocSinhId: string, maChuyenDe: string, m
   const tenMap = new Map(rows.map((d) => [d.ma_dang, d.ten_dang]))
   const maDangSet = new Set(rows.map((d) => d.ma_dang))
 
-  const { data: grades, error: eG } = await supabase.from('gami_grades')
-    .select('result, graded_at, prob:problem_id(ma_dang, phase)').eq('hoc_sinh_id', hocSinhId).limit(LIMIT)
-  if (eG) throw eG
-  return ((grades ?? []) as any[])
+  // Per-HS: chưa HS nào vượt 1000 dòng (max 770 ngày 09-09) nhưng đang tiến sát (~giữa tháng 10 sẽ
+  // vượt) — phân trang sẵn cùng bẫy cap-1000 với `napLanDo`, kẻo "lịch sử gần nhất" mất đúng dòng mới.
+  const grades = await fetchAllRows<any>((from, to) => supabase.from('gami_grades')
+    .select('result, graded_at, prob:problem_id(ma_dang, phase)').eq('hoc_sinh_id', hocSinhId)
+    .order('graded_at', { ascending: true }).order('id', { ascending: true }).range(from, to))
+  return (grades as any[])
     .filter((g) => g.prob?.ma_dang && maDangSet.has(g.prob.ma_dang))
     .map((g) => ({ ma_dang: g.prob.ma_dang, ten_dang: tenMap.get(g.prob.ma_dang) ?? g.prob.ma_dang, nguon: g.prob.phase, ngay: g.graded_at, result: g.result }))
     .sort((a, b) => Date.parse(b.ngay) - Date.parse(a.ngay))

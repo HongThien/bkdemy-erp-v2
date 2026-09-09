@@ -34,6 +34,7 @@ export type BienThe = {
   id: string; baitoan_id: string; mon: string; kieu: 'doi_so' | 'doi_dinh'
   de_bai: string; anh: string | null; loi_giai: string | null; anh_loi_giai: string | null
   ghi_chu: string | null; thu_tu: number
+  nguon_giai?: string | null; da_duyet?: boolean | null; giai_method?: string | null // xem loiGiaiDungDuoc
   lua_id: string | null       // cùng lua_id = cùng một LỨA clone chuỗi (1 map điểm); null = biến thể lẻ
   tien_de_ids: string[]        // id các biến thể tiền đề TRỰC TIẾP (trong lứa) — ĐÓNG BĂNG lúc clone, không derive
 }
@@ -42,6 +43,8 @@ export type CachGiai = {
   // tiền đề/bổ đề là CẤU TRÚC, phải lưu được dù chưa phân loại Dạng. Đừng gate lưu-cách-giải theo dang_id.
   id: string; baitoan_id: string; ten: string | null; dang_id: string | null
   loi_giai: string | null; anh_loi_giai: string | null; la_mac_dinh: boolean; thu_tu: number
+  // Nhãn nguồn/duyệt (mig 0044/202609041826): dùng cho luật "lời giải Claude phải duyệt" — xem loiGiaiDungDuoc.
+  nguon_giai?: string | null; da_duyet?: boolean | null; giai_method?: string | null
 }
 export type DangHinh = { id: string; mon: string; ma: string; ten: string; cap: 'loai_ch' | 'dang'; cha_id: string | null; thu_tu: number; khoi: string | null }
 export type BoDe = { id: string; mon: string; ma: string; ten: string; phat_bieu: string | null; thu_tu: number; khoi: string | null }
@@ -290,6 +293,12 @@ export function cachMacDinh(L: Luoi, baiToanId: string): CachGiai | null {
   if (!ds.length) return null
   return ds.find((c) => c.la_mac_dinh) ?? ds.slice().sort((a, b) => a.thu_tu - b.thu_tu)[0]
 }
+/** LỜI GIẢI DÙNG ĐƯỢC (CEO chốt 09/09/2026: "Gemini giải tạm đạt · Claude giải KHÔNG đạt, phải duyệt · sau này tất cả
+ *  phải duyệt"). Lời giải do luồng Claude Code ghi (`giai_method='claude_code'`) mà chưa `da_duyet` = CHƯA ĐẠT: kho vẫn
+ *  hiện để người duyệt nhưng kèm nhãn đỏ, KHÔNG in, KHÔNG làm đáp án tham chiếu, KHÔNG làm mẫu cho Claude giải bài khác.
+ *  CẤU TRÚC (tiền đề/dạng/cấp/bổ đề) vẫn đi theo cách mặc định như cũ — luật này chỉ gate NỘI DUNG lời giải. */
+export const loiGiaiDungDuoc = (c: { giai_method?: string | null; da_duyet?: boolean | null } | null | undefined): boolean =>
+  !!c && !(c.giai_method === 'claude_code' && !c.da_duyet)
 export const cachCua = (L: Luoi, baiToanId: string) => L.cach.filter((c) => c.baitoan_id === baiToanId)
 export const tienDeCuaCach = (L: Luoi, cachId: string) => L.tienDe.filter((t) => t.cach_id === cachId).map((t) => t.tien_de_id)
 export const boDeCuaCach = (L: Luoi, cachId: string) => L.cachBoDe.filter((t) => t.cach_id === cachId).map((t) => t.bo_de_id)
@@ -822,7 +831,8 @@ export function dapAnHaiBac(L: Luoi, y: Y): { bac: 'chuan_xac' | 'tham_chieu' | 
   if (y.loi_giai || y.anh_loi_giai) return { bac: 'chuan_xac', loiGiai: y.loi_giai, anh: y.anh_loi_giai }
   const bt = y.baitoan_id ? L.baiToan.find((b) => b.id === y.baitoan_id) : null
   if (!bt) return { bac: 'chua_co', loiGiai: null, anh: null }
-  const c = cachMacDinh(L, bt.id)
+  const c0 = cachMacDinh(L, bt.id)
+  const c = loiGiaiDungDuoc(c0) ? c0 : null // lời giải Claude chưa duyệt ⇒ coi như chưa có (không in, không tham chiếu)
   // Hình tham chiếu: ảnh lời giải của cách → thiếu thì hình cấu hình của MÔ HÌNH (node không có hình riêng).
   // Đề chuẩn = giả thiết đầy đủ của mô hình + câu hỏi (derive), không đọc cột de_bai_chuan cũ nữa.
   return { bac: 'tham_chieu', loiGiai: c?.loi_giai ?? null, anh: c?.anh_loi_giai ?? anhCuaBaiToan(L, bt.id), deBaiChuan: bt.phat_bieu }
@@ -1083,7 +1093,7 @@ export async function listBienTheChuaGiai(khoi?: string): Promise<BienTheChuaGia
 export async function layCachMacDinhBaiToan(baitoanId: string): Promise<CachGiai | null> {
   const { data, error } = await supabase.from('hinh_cach_giai').select('*').eq('baitoan_id', baitoanId).limit(LIMIT)
   if (error) throw error
-  const ds = (data ?? []) as CachGiai[]
+  const ds = ((data ?? []) as CachGiai[]).filter(loiGiaiDungDuoc) // mẫu tham khảo phải là lời giải ĐÃ đạt
   if (!ds.length) return null
   return ds.find((c) => c.la_mac_dinh) ?? ds.slice().sort((a, b) => a.thu_tu - b.thu_tu)[0]
 }
