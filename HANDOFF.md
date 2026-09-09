@@ -874,6 +874,8 @@ năng quản lý học tập, cần chốt người cụ thể.)
 Minh Phúc (4T · 29 ngày → Thùy) · Lã Gia Huy (K11 · 34 ngày → chưa định được) ·
 Nguyễn Bá Thiện Minh (K7 · 32 ngày → Trang) · Nguyễn Test QA (K8 · data QA).
 **Đây đúng loại việc CEO hay miss — nằm sẵn trong DB hơn 1 tháng, chỉ chưa ai nhìn.**
+*(Cập nhật 09/09: 4 ca này + Nguyễn Thắng Tùng 07/09 vẫn treo, và nguyên nhân gốc đã rõ — cả 5 đều KHÔNG có đề
+gán nên không vào được hàng đợi chấm. Đường cứu = card "Gán đề đang dùng" trong Chấm test, xem mục 09/09 tối.)*
 
 **⚠ ĐỪNG KHAI HÀNG LOẠT:** khai 2–3 chuỗi rồi **CHẠY THẬT 1 TUẦN** xem nhắc có đổi hành vi không.
 Hệ này đã 4 lần dựng năng lực rồi bỏ không dùng (`viec` 15 dòng đứng im · `bo_tro_yeu` không có đường
@@ -1316,6 +1318,45 @@ thẳng `ca_test.nguoi_cham_id`/`nguoi_tra_bai_id`, data đã sẵn, không cầ
 và `--baseline` đều đụng file người khác, đã dính 2 lần 08/09).
 
 
+### ⭐ 09/09 tối — TEST ĐẦU VÀO: audit đủ luồng + 8 quyết định CEO + DB ĐÃ SẴN, CODE MÀN CHƯA SỬA (làm tiếp ở nhà)
+**Sự thật hiện tại (đo DB 09/09):** 6/6 `ca_test` đều `tai_lieu_id` NULL ⇒ hàng đợi Chấm rỗng, không ai thấy ô Đ/C/S
+(ô này CÓ trong `ChamTestScreen`, chỉ hiện khi ca có đề). Ca Nguyễn Thắng Tùng (K7, 07/09): `ca_test_log` chứng
+minh đề chưa từng được lưu (UI 2 bước chọn→bấm "Gán đề", Hoàn tất không đòi đề). Ca hoàn thành thiếu đề **biến
+mất im lặng** khỏi mọi hàng đợi (Chấm lọc `tai_lieu_id not null`, Điểm danh chỉ liệt kê hôm nay). 1 dòng `ca_test_cau`
+mồ côi (ca Test QA 07/07). Chi tiết: DEVLOG 09/09 tối.
+
+**8 quyết định CEO (chốt, đừng hỏi lại):** ① gán đề = **mặc định đề đang dùng** của (khối×môn), Ops chỉ đổi khi
+cần · ② + ⑤ chấm test (TA được gán) và trả bài (GV được gán) **phải nằm trong "Việc của tôi"** · ③ màn chấm hiện
+tại (1 HS, Đ/C/S từng câu) là đủ, **không cần mã lỗi** · ④ **điểm test NHẬP RIÊNG**, độc lập Đ/C/S (`ca_test.diem_nhap`)
+· ⑥ ứng viên chưa là HS vẫn tính ở Postgres (khoá = `ca_test_id`) · ⑦ **Đại/Hình = pick từ bản đồ nào thì tính từ
+đấy** (Đại→'dai'; Hình + Hình giải tích→'hinh'); đề không có câu hình thì **bỏ qua khối đó**, không hiện 0% · ⑧ tên
+GV + lịch lớp đề xuất **chỉ trên ẢNH gửi PH**, không trên UI trả bài. Trả bài phải hiện: % theo CHUYÊN ĐỀ · % cơ
+bản (`muc_do` ≤3) / nâng cao (≥4) · % Đại/Hình · thang Trình bày–Tính toán · nhận xét thêm · lớp đề xuất (+GV+lịch
+trên ảnh) · **xuất ảnh** (đã có html2canvas popup, chỉ cần thêm khối).
+
+**ĐÃ ÁP DB (mig `202609092245_test_dau_vao_phieu_rpc.sql`, schema.md đã refresh):** `ca_test.diem_nhap` ·
+`ca_test_cau.nhanh/muc_do/ten_chuyen_de` = **SNAPSHOT lúc gán đề** (không join lại kho; NULL = không áp dụng) ·
+**`fn_test_dau_vao_phieu(uuid) → jsonb`** trả TOÀN BỘ số liệu phiếu (tong · theoChuyenDe · theoMucDo{coBan,nangCao}
+· theoNhanh{dai,hinh} · nhanXet · lopDeXuat{tenLop,gv[],lich[]}). % = Σdiem/Σtoi_da trên câu ĐÃ CHẤM. ⚠ Nhóm rỗng
+trả `{soCau:0,pct:null}` — client ẩn khi `soCau===0` (hoặc mig nhỏ `create or replace`, KHÔNG sửa file đã áp).
+
+**VIỆC TIẾP (thứ tự A→G, chi tiết từng hàm ở DEVLOG 09/09 tối):** (A) `detest.ts` — snapshot 3 cột khi gán
+(`getTaiLieuFull` + `nhanhCuaCau` + `khoCuaMon(..).banDoTbl`; **hàng HÌNH `HINH:<uuid>` đang bị bỏ rơi im lặng**,
+phải snapshot nhanh='hinh' qua `loadLuoi`+`pickCuaHinhRow`+`banInTheoMoHinh`) · `ganDeDangDung` · `listCanCham`
+gộp cả ca thiếu đề + nút "Gán đề đang dùng" (đường cứu Tùng + 4 ca cũ, KHÔNG sửa DB tay) · list "của tôi" theo
+`nguoi_cham_id`/`nguoi_tra_bai_id` · `setDiemNhap` · đóng chấm đòi `diem_nhap` · `getPhieuKetQua` → rpc, XOÁ
+`tongDiem`/`getBieuDoChuyenDe` (JS cộng điểm, vi phạm §2.0). (B) `DiemDanhTestScreen`: chọn = lưu ngay, tự gán
+đề đang dùng lúc tạo ca/mount card, Hoàn tất chặn khi chưa có đề. (C) `ChamTestScreen`: Đ/C/S inline trên hàng
+câu (khuôn `ET_KQ` ChamBuoi.tsx), ô Điểm, tổng/% từ rpc, toggle Của tôi/Tất cả. (D) `TraBaiTestScreen`: 3 khối %
+từ rpc, không GV. (E) `PhieuTestDauVao`: điểm nhập + 3 khối % + GV + lịch (`THU_LABEL` 2..8, 8=CN). (F) `NhanSuHome`:
+2 khối flat "cần chấm / cần trả bài (của tôi)" theo `me.nhanSu.id` → `setStaffLeaf('test_dau_vao')` + (G) setter
+tab module-level ở `TestDauVaoScreen`. Dữ liệu thô cần học thuật rà: đề K7 34/34 câu `muc_do`=3 (kể cả chuyên đề
+"Nâng cao") ⇒ phiếu sẽ ra 100% cơ bản; 8 câu "Hình học" đề K7 pick từ kho Đại ⇒ đếm là Đại theo ⑦.
+
+**Cảnh báo hạ tầng:** `migrate --status` thấy **11 migration có trong sổ DB nhưng không có file ở main** (nhánh/
+worktree chưa merge: 202608151600 · 202609041045 · 202609051251 · 202609081858 · 202609091354/1411/1416/1428/1750/
+1810/1959). Dựng lại DB từ repo sẽ thiếu — gom file về main trước khi tin `npm run migrate` trên máy mới.
+
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
 
 - **⭐⭐ Đưa script kiểm cho bên bị kiểm = Goodhart (hs-home v3, 08/09):** ChatGPT cầm `design-check.mjs` trong tay → sinh asset để
@@ -1735,6 +1776,15 @@ và `--baseline` đều đụng file người khác, đã dính 2 lần 08/09).
 - **Prod báo "Invalid API key"** = key nướng trong bundle sai. Đừng đoán: tải `assets/*.js` đang chạy, grep key, so với `.env.local` **từng ký tự** (09/09: thừa đúng 1 chữ "W" cuối key trên Vercel). Vite nướng env lúc build ⇒ sửa env xong PHẢI Redeploy.
 - **Commit của mình chỉ chứa hunk của mình** khi nhiều phiên cùng sửa `package.json`/`launch.json`: dựng blob từ `git show HEAD:file` + đúng dòng mình thêm rồi `git update-index --cacheinfo`, không `git add` cả file. "commit đi" của CEO = commit + push luôn (Vercel tắt auto-deploy).
 - **Scale app riêng:** mỗi app một project Vercel (blast radius, rollback/env riêng); trần build/ngày là chuyện gói Hobby → lên Pro, không gộp project. Gộp chỉ cân nhắc cho tầng "công cụ/chiến dịch" khi ≥5 app, bằng rewrite theo host.
+
+### Bài học 09/09 tối — test đầu vào (luồng "biến mất im lặng")
+- **"Chọn rồi phải bấm thêm nút mới lưu" = mất dữ liệu im lặng.** Dropdown chọn đề + nút "Gán đề" chỉ hiện sau khi chọn: người thao tác chọn → upload → Hoàn tất trong 51 giây, đề chưa từng tới DB, không lỗi nào hiện. Lựa chọn có 1 giá trị hợp lý mặc định (đề đang dùng) thì **tự gán**, chọn là lưu ngay; nút xác nhận riêng chỉ cho thao tác có hậu quả.
+- **Gate "hoàn tất" phải đòi ĐỦ bằng chứng mà khâu SAU cần.** Hoàn tất chỉ đòi bài upload, còn Chấm cần đề ⇒ ca lọt qua rồi kẹt vĩnh viễn. Hỏi "khâu kế tiếp cần gì để chạy" trước khi viết điều kiện đóng.
+- **Hàng đợi LỌC BỎ ≠ hàng đợi TRỐNG.** `.not('tai_lieu_id','is',null)` làm 5 ca thiếu đề biến mất khỏi mọi màn, kể cả màn có thể sửa nó. Đúng luật invariant §4: thiếu bằng chứng ⇒ **nổi lên thành việc** (card "chưa có đề → gán"), không lọc đi. Lọc theo ngày ("hoàn thành hôm nay") cũng là một dạng lọc bỏ.
+- **Trigger log là nhân chứng tốt nhất khi người nói "tôi đã làm rồi".** `ca_test_log` ghi mọi UPDATE, đọc diff từng cột ra ngay đề chưa từng được set — không cần đoán, không cần cãi. Đầu tư trigger log cho entity vận hành trả lãi đúng lúc này.
+- **"Nhãn" (`nguoi_cham_id`) không phải "việc".** Cột gán người tồn tại từ 14/08 nhưng không màn nào lọc theo nó và Việc của tôi không có card ⇒ với người dùng bằng không có. Thêm cột assign thì phải thêm luôn đường "việc của tôi" trong cùng lượt.
+- **Snapshot thuộc tính phân loại lúc neo, đừng join live để tính báo cáo.** `nhanh`/`muc_do`/`ten_chuyen_de` ghi vào `ca_test_cau` lúc gán đề ⇒ hàm phiếu chỉ gom 2 bảng, không nhân đôi registry môn→bảng trong SQL, đề/dạng sửa sau không làm lệch phiếu cũ.
+- **Hàng "không ở kho câu" (`HINH:<uuid>`) bị `layCauTheoThuTu` bỏ rơi không báo** — cùng họ với `.filter(Boolean)` nuốt tham chiếu chết. Mọi chỗ "resolve mã → nội dung" phải nói ra số hàng KHÔNG resolve được.
 
 ## ③ Nhật ký
 → Chuyển sang **`DEVLOG.md`** (log thô append-only, theo ngày, KHÔNG load khi làm). Là nguồn bất biến để truy lại / tổng hợp lại HANDOFF nếu bản này sai logic.
