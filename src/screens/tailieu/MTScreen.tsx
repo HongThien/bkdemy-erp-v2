@@ -8,8 +8,9 @@ import { useStore, type PickItem } from '../../store/useStore'
 import { useMonScope } from '../../hooks/useMonScope'
 import {
   listMT, createMT, renameMT, deleteMT, addPhanMT, ganMTVaoBuoi, listGanMT, pickCuaHinhRow,
-  type MTGanRow,
+  MT_LOAI_DE, mtMeta, mtLoaiDeLabel, type MTGanRow, type MTLoaiDe,
 } from '../../lib/mt'
+import { homNayVN } from '../../lib/tuan'
 import {
   getTaiLieuFull, deletePhan, setCauOfPhan, suggestCauForDang, khoCuaMon, updateTaiLieu, nhanhCuaMon, tenNhanh, nhanhCuaCau, fetchCausCuaTaiLieu, coKhoHinh, laMaHinh, HINH_PREFIX,
   ET_FORMS, etFormOf, type PhanResolved, type CauHinh, type ETForm as ETFormKind, type HinhRowInfo,
@@ -39,6 +40,8 @@ const DEFAULT_ROWS_PER_PHAN = 3
 // (gợi ý câu, ✎ Chọn, mã đề 2/3) đi theo `khoCuaMon(mon, row.nhanh)`; lưu bền ở `cau_hinh.nhanhByCau`.
 type Row = { maDang: string | null; maCau: string | null; nhanh: string | null }
 const loaiLabel = (v: string) => LOAI_CAU.find((x) => x.value === v)?.label ?? v
+// 'YYYY-MM' → "T09/2026" (khuôn hiển thị tháng dùng chung, xem MTThangLop/LopView.tsx).
+const nhanThang = (ym: string) => `T${ym.slice(5, 7)}/${ym.slice(0, 4)}`
 
 // ═══════════ LIST (leaf lamtailieu:mt) — chọn MT để sửa / tạo mới ═══════════
 export default function MTScreen() {
@@ -50,12 +53,28 @@ export default function MTScreen() {
   const [loading, setLoading] = useState(true)
   const [openId, setOpenId] = useState<string | null>(null)
   const [creating, setCreating] = useState(false)
+  const [fThang, setFThang] = useState('__all__')
+  const [fLoaiDe, setFLoaiDe] = useState('__all__')
+  const [fKhoi, setFKhoi] = useState('__all__')
 
   async function reload() { setLoading(true); try { setList(await listMT(mon)) } finally { setLoading(false) } }
   useEffect(() => { reload() }, [mon]) // eslint-disable-line
 
+  const thangOptions = useMemo(() => [...new Set(list.map((d) => mtMeta(d).thang).filter((t): t is string => !!t))].sort((a, b) => b.localeCompare(a)), [list])
+  const khoiOptions = useMemo(() => [...new Set(list.map((d) => d.khoi))].sort(), [list])
+  const shown = useMemo(() => list.filter((d) => {
+    const m = mtMeta(d)
+    if (fThang !== '__all__' && m.thang !== fThang) return false
+    if (fLoaiDe !== '__all__' && m.loaiDe !== fLoaiDe) return false
+    if (fKhoi !== '__all__' && d.khoi !== fKhoi) return false
+    return true
+  }), [list, fThang, fLoaiDe, fKhoi])
+  const dangLoc = fThang !== '__all__' || fLoaiDe !== '__all__' || fKhoi !== '__all__'
+  const xoaLoc = () => { setFThang('__all__'); setFLoaiDe('__all__'); setFKhoi('__all__') }
+
   if (openId) return <MTEditor id={openId} onClose={() => { setOpenId(null); reload() }} />
 
+  const selCls = "h-8 rounded-md border border-slate-200 bg-white px-2 text-[12.5px] text-slate-600 outline-none focus:border-indigo-400"
   return (
     <div className="flex h-full flex-col bg-[#fafafb]">
       <div className="flex items-center gap-3 border-b border-slate-200 bg-white px-6 py-2.5">
@@ -68,28 +87,65 @@ export default function MTScreen() {
         )}
         <button onClick={() => setCreating(true)} className="ml-auto rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500">+ Tạo MT mới</button>
       </div>
+      <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 bg-white px-6 py-2">
+        <select value={fThang} onChange={(e) => setFThang(e.target.value)} className={selCls}>
+          <option value="__all__">Mọi tháng</option>
+          {thangOptions.map((t) => <option key={t} value={t}>{nhanThang(t)}</option>)}
+        </select>
+        <select value={fLoaiDe} onChange={(e) => setFLoaiDe(e.target.value)} className={selCls}>
+          <option value="__all__">Mọi loại đề</option>
+          {MT_LOAI_DE.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
+        </select>
+        <select value={fKhoi} onChange={(e) => setFKhoi(e.target.value)} className={selCls}>
+          <option value="__all__">Mọi khối</option>
+          {khoiOptions.map((k) => <option key={k} value={k}>Khối {k}</option>)}
+        </select>
+        {dangLoc && <button onClick={xoaLoc} className="text-[12px] text-slate-400 hover:text-indigo-600">Xoá lọc</button>}
+        <span className="ml-auto text-[12px] text-slate-400">{shown.length}/{list.length} MT</span>
+      </div>
       <div className="min-h-0 flex-1 overflow-auto p-6">
         {loading ? <p className="text-sm text-slate-400">Đang tải…</p>
           : list.length === 0 ? <div className="rounded-xl border border-dashed border-slate-200 bg-white py-14 text-center text-sm text-slate-400">Chưa có MT nào ở môn {mon}.</div>
+          : shown.length === 0 ? <div className="rounded-xl border border-dashed border-slate-200 bg-white py-14 text-center text-sm text-slate-400">Không có MT nào khớp bộ lọc. <button onClick={xoaLoc} className="text-indigo-600 hover:underline">Xoá lọc</button></div>
           : (
-            <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
-              {list.map((d) => (
-                <div key={d.id} className="group relative rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition hover:border-indigo-300 hover:shadow-md">
-                  <button onClick={() => setOpenId(d.id)} className="block w-full text-left">
-                    <div className="font-medium text-slate-800 pr-6">{d.ten}</div>
-                    <div className="mt-1 text-[12px] text-slate-500">Khối {d.khoi}</div>
-                  </button>
-                  <button
-                    onClick={async (e) => {
-                      e.stopPropagation()
-                      if (!confirm(`Xoá MT "${d.ten}"? Toàn bộ phần/câu trong mẫu này sẽ mất (câu vẫn còn trong kho). Các buổi đã gán từ mẫu này trước đó KHÔNG bị xoá theo.`)) return
-                      await deleteMT(d.id); reload()
-                    }}
-                    title="Xoá MT"
-                    className="absolute right-2 top-2 rounded-md px-1.5 py-1 text-[13px] text-slate-300 opacity-0 hover:text-rose-600 group-hover:opacity-100"
-                  >🗑</button>
-                </div>
-              ))}
+            <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
+              <table className="w-full text-[13px]">
+                <thead className="text-left text-[11px] uppercase tracking-wide text-slate-400">
+                  <tr>
+                    <th className="sticky top-0 z-10 bg-slate-50 px-4 py-2.5">Tên MT</th>
+                    <th className="sticky top-0 z-10 bg-slate-50 px-3">Tháng</th>
+                    <th className="sticky top-0 z-10 bg-slate-50 px-3">Loại đề</th>
+                    <th className="sticky top-0 z-10 bg-slate-50 px-3">Khối</th>
+                    <th className="sticky top-0 z-10 bg-slate-50 px-3 text-right">Thao tác</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {shown.map((d) => {
+                    const m = mtMeta(d)
+                    return (
+                      <tr key={d.id} className="border-t border-slate-100 hover:bg-slate-50/60">
+                        <td className="px-4 py-2">
+                          <button onClick={() => setOpenId(d.id)} title={d.ten} className="block max-w-[360px] truncate text-left font-medium text-slate-800 hover:text-indigo-600">{d.ten}</button>
+                        </td>
+                        <td className="px-3 py-2 text-slate-600">{m.thang ? nhanThang(m.thang) : <span className="text-slate-300">—</span>}</td>
+                        <td className="px-3 py-2">{m.loaiDe ? <span className="rounded bg-violet-50 px-1.5 py-0.5 text-[11px] font-medium text-violet-600">{mtLoaiDeLabel(m.loaiDe)}</span> : <span className="text-slate-300">—</span>}</td>
+                        <td className="px-3 py-2 text-slate-600">Khối {d.khoi}</td>
+                        <td className="px-3 py-2 text-right">
+                          <button onClick={() => setOpenId(d.id)} className="rounded-md px-2 py-1 text-[12px] font-medium text-indigo-600 hover:bg-indigo-50">Mở</button>
+                          <button
+                            onClick={async () => {
+                              if (!confirm(`Xoá MT "${d.ten}"? Toàn bộ phần/câu trong mẫu này sẽ mất (câu vẫn còn trong kho). Các buổi đã gán từ mẫu này trước đó KHÔNG bị xoá theo.`)) return
+                              await deleteMT(d.id); reload()
+                            }}
+                            title="Xoá MT"
+                            className="rounded-md px-2 py-1 text-[13px] text-slate-300 hover:text-rose-600"
+                          >🗑</button>
+                        </td>
+                      </tr>
+                    )
+                  })}
+                </tbody>
+              </table>
             </div>
           )}
       </div>
@@ -101,11 +157,13 @@ export default function MTScreen() {
 function TaoMTModal({ mon, onClose, onCreated }: { mon: string; onClose: () => void; onCreated: (id: string) => void }) {
   const [ten, setTen] = useState('')
   const [khoi, setKhoi] = useState(DEFAULT_KHOI)
+  const [loaiDe, setLoaiDe] = useState<MTLoaiDe | null>(null)
+  const [thang, setThang] = useState(homNayVN().slice(0, 7))
   const [busy, setBusy] = useState(false)
   async function tao() {
     if (!ten.trim()) return
     setBusy(true)
-    try { const d = await createMT({ ten: ten.trim(), khoi, mon }); onCreated(d.id) } finally { setBusy(false) }
+    try { const d = await createMT({ ten: ten.trim(), khoi, mon, loaiDe, thang: thang || null }); onCreated(d.id) } finally { setBusy(false) }
   }
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 px-4" onClick={onClose}>
@@ -113,8 +171,20 @@ function TaoMTModal({ mon, onClose, onCreated }: { mon: string; onClose: () => v
         <p className="text-[15px] font-semibold text-slate-900">Tạo MT mới</p>
         <label className="mt-3 block text-[12px] font-medium text-slate-600">Tên MT</label>
         <input autoFocus value={ten} onChange={(e) => setTen(e.target.value)} placeholder='vd "MT Học kỳ 1 — Toán 9"' className={`${inp} mt-1 w-full`} />
-        <label className="mt-3 block text-[12px] font-medium text-slate-600">Khối</label>
-        <div className="mt-1 flex flex-wrap gap-1.5">{KHOI_OPTIONS.map((k) => <button key={k} onClick={() => setKhoi(k)} className={`rounded-lg px-2.5 py-1 text-[13px] font-medium ${khoi === k ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-600'}`}>{k}</button>)}</div>
+        <label className="mt-3 block text-[12px] font-medium text-slate-600">Loại đề</label>
+        <div className="mt-1 flex flex-wrap gap-1.5">
+          {MT_LOAI_DE.map((o) => <button key={o.value} onClick={() => setLoaiDe(loaiDe === o.value ? null : o.value)} className={`rounded-lg px-2.5 py-1 text-[13px] font-medium ${loaiDe === o.value ? 'bg-violet-600 text-white' : 'bg-slate-100 text-slate-600'}`}>{o.label}</button>)}
+        </div>
+        <div className="mt-3 flex gap-3">
+          <div>
+            <label className="block text-[12px] font-medium text-slate-600">Tháng</label>
+            <input type="month" value={thang} onChange={(e) => setThang(e.target.value)} className={`${inp} mt-1`} />
+          </div>
+          <div className="flex-1">
+            <label className="block text-[12px] font-medium text-slate-600">Khối</label>
+            <div className="mt-1 flex flex-wrap gap-1.5">{KHOI_OPTIONS.map((k) => <button key={k} onClick={() => setKhoi(k)} className={`rounded-lg px-2.5 py-1 text-[13px] font-medium ${khoi === k ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-600'}`}>{k}</button>)}</div>
+          </div>
+        </div>
         <div className="mt-4 flex justify-end gap-2">
           <button onClick={onClose} className="rounded-lg border border-slate-300 px-3 py-1.5 text-[13px] text-slate-600">Huỷ</button>
           <button disabled={!ten.trim() || busy} onClick={tao} className="rounded-lg bg-indigo-600 px-4 py-1.5 text-[13px] font-medium text-white disabled:opacity-40">{busy ? 'Đang tạo…' : 'Tạo'}</button>
@@ -334,6 +404,8 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
   const baseRows = (): Row[] => phans.flatMap((p) => (rowsByPhan[p.id] ?? []).filter((r) => r.maCau && r.maDang))
   const baseAll = (): BaseItem[] => baseRows().map((r) => ({ maDang: r.maDang!, maCau: r.maCau! }))
   async function saveCh(next: CauHinh) { chRef.current = next; setCh(next); await updateTaiLieu(id, { cau_hinh: next }); markSaved() }
+  const mMeta = mtMeta({ cau_hinh: ch })
+  const setMtField = (patch: { loaiDe?: MTLoaiDe | null; thang?: string | null }) => saveCh({ ...ch, mtMeta: { loaiDe: mMeta.loaiDe, thang: mMeta.thang, ...patch } })
   const hinhRowsAll = (): Row[] => phans.flatMap((p) => (rowsByPhan[p.id] ?? []).filter((r) => r.nhanh === 'hinh' && r.maCau))
   // Hàng Hình chưa có mã đề 2/3 (khoá theo chuoiSig(nodeIds) — khuôn ET Hình).
   const hinhTrong = (): number => hinhRowsAll().filter((r) => { const h = ch.hinhByMa?.[r.maCau!]; return !h || !ch.hinhMaDe?.[chuoiSig(h.nodeIds)] }).length
@@ -420,6 +492,13 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
         <button onClick={() => { useStore.getState().enqueueLinkGen(id, 'mt'); onClose() }} className="text-[13px] font-medium text-slate-400 hover:text-indigo-600">← Kho tài liệu</button>
         <input value={ten} onChange={(e) => setTen(e.target.value)} onBlur={saveTen} className="min-w-[260px] flex-1 rounded-md border border-transparent px-2 py-1 text-[15px] font-semibold text-slate-900 hover:border-slate-200 focus:border-indigo-400 focus:outline-none" />
         <span className="rounded bg-violet-50 px-2 py-0.5 text-[11px] font-medium text-violet-600">{d.mon} · Khối {d.khoi} · mẫu độc lập</span>
+        <select value={mMeta.loaiDe ?? ''} onChange={(e) => setMtField({ loaiDe: (e.target.value || null) as MTLoaiDe | null })}
+          title="Loại đề" className="h-7 rounded-md border border-slate-200 bg-white px-1.5 text-[11.5px] font-medium text-slate-500 hover:border-violet-300">
+          <option value="">Chưa gắn loại đề</option>
+          {MT_LOAI_DE.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
+        </select>
+        <input type="month" value={mMeta.thang ?? ''} onChange={(e) => setMtField({ thang: e.target.value || null })}
+          title="Tháng" className="h-7 rounded-md border border-slate-200 bg-white px-1.5 text-[11.5px] font-medium text-slate-500 hover:border-violet-300" />
         {saved && <span className="text-[12px] text-emerald-600">✓ Đã lưu</span>}
         <span className="text-[12px] text-slate-400">{soCau} câu · {phans.length} phần{ganList.length ? ` · đã gán ${ganList.length} lớp` : ''}</span>
         <button onClick={() => setPrinting(true)} disabled={!soCau} className="ml-auto rounded-md border border-slate-300 px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-indigo-400 disabled:opacity-40">🖨 Xem / In</button>

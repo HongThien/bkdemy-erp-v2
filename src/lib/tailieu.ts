@@ -83,9 +83,11 @@ export type PhanLoai = 'buoi' | 'lt_chuyen_de' | 'dang' | 'btvn' | 'ontap' | 'cu
 // kiểu cột theo-phần (tai_lieu_phan.kieu) / theo-nhóm-form (etColByGroup) cũ.
 // nhanhByCau = NHÁNH KHO của TỪNG CÂU khi tài liệu trộn nhánh (MT: câu Đại + câu Hình giải tích trong cùng
 // đề). Chỉ có key cho câu KHÁC `tai_lieu.nhanh`; resolve qua `nhanhCuaCau` (kế thừa cho câu mã đề 2/3).
-export type CauHinh = { header?: 'wave' | 'none'; footer?: 'wave' | 'none'; watermark?: 'logo' | 'none'; mau?: string; inLyThuyet?: boolean; btvnLinesByCau?: Record<string, number>; etFormByCau?: Record<string, string>; phanBac?: Record<string, string>; etMaDe?: Record<string, (string | null)[]>; hsMaDe?: Record<string, number>; etColByGroup?: Record<number, string>; colByCau?: Record<string, number>; nhanhByCau?: Record<string, string>; hinhBuoiId?: string; hinhByMa?: Record<string, HinhRowInfo>; hinhMaDe?: Record<string, [HinhBanRefLite | null, HinhBanRefLite | null]> }
+export type CauHinh = { header?: 'wave' | 'none'; footer?: 'wave' | 'none'; watermark?: 'logo' | 'none'; mau?: string; inLyThuyet?: boolean; btvnLinesByCau?: Record<string, number>; etFormByCau?: Record<string, string>; phanBac?: Record<string, string>; etMaDe?: Record<string, (string | null)[]>; hsMaDe?: Record<string, number>; etColByGroup?: Record<number, string>; colByCau?: Record<string, number>; nhanhByCau?: Record<string, string>; hinhBuoiId?: string; hinhByMa?: Record<string, HinhRowInfo>; hinhMaDe?: Record<string, [HinhBanRefLite | null, HinhBanRefLite | null]>; mtMeta?: { loaiDe?: string | null; thang?: string | null } }
 // hinhByMa (MT) = nội dung bài HÌNH của hàng `HINH:<uuid>` (xem laMaHinh). hinhMaDe = mã đề 2/3 của bài Hình, khoá =
 // chuoiSig(nodeIds) (khuôn ET Hình). hinhBuoiId = DI SẢN (buổi Hình mẫu, bản 02/09 sáng) — chỉ còn để deleteMT dọn.
+// mtMeta (MT) = phân loại đề (loaiDe: xem MTLoaiDe/mt.ts) + tháng dự kiến dùng ('YYYY-MM', gắn tay, KHÔNG
+// suy từ ngày gán buổi) — kiểu lỏng ở đây để tránh vòng import với mt.ts, validate chặt ở mtMeta()/mt.ts.
 export type HinhBanRefLite = { kind: 'ghep'; luaId: string | null } | { kind: 'bienthe'; bienTheId: string } | { kind: 'y'; yId: string }
 export const DEFAULT_BTVN_LINES = 5
 // Form hiển thị trong ET (độc lập loai_cau kho).
@@ -363,6 +365,23 @@ export async function usedCausOfBuoi(taiLieuId: string, buoiId: string, exceptPh
 }
 
 // ── BUỔI = tầng 1 ─────────────────────────────────────────────────
+// Danh sách RỖNG (chỉ mốc 'buoi': id/tieu_de/thu_tu, KHÔNG câu/dạng) — cho dropdown lọc buổi ở Builder.
+// Nhẹ hơn getTaiLieuFull hẳn 1 bậc: 1 query trên tai_lieu_phan, không đụng câu/kho/lý thuyết.
+export async function listBuoiTaiLieu(taiLieuId: string): Promise<{ id: string; tieu_de: string | null; thu_tu: number }[]> {
+  const { data, error } = await supabase.from('tai_lieu_phan').select('id, tieu_de, thu_tu')
+    .eq('tai_lieu_id', taiLieuId).eq('loai_phan', 'buoi').order('thu_tu').limit(LIMIT)
+  if (error) throw error
+  return (data ?? []) as { id: string; tieu_de: string | null; thu_tu: number }[]
+}
+// Cắt phans về ĐÚNG 1 buổi (mốc + các phan đến mốc kế/hết) — dùng để scope getTaiLieuFull khi builder
+// chỉ cần load 1 buổi (giáo trình càng nhiều buổi, load cả doc càng nặng — §"onlyBuoiId" bên dưới).
+function sliceBuoi(phans: TaiLieuPhan[], buoiId: string): TaiLieuPhan[] {
+  const i = phans.findIndex((p) => p.id === buoiId)
+  if (i < 0) return []
+  const out = [phans[i]]
+  for (let j = i + 1; j < phans.length && phans[j].loai_phan !== 'buoi'; j++) out.push(phans[j])
+  return out
+}
 // Gom 1 buổi (mốc 'buoi' + các phan đến mốc kế / hết): trả thứ tự dạng + map dang/btvn theo ma_dang.
 type BuoiGroup = { order: string[]; dangs: Record<string, string>; btvns: Record<string, string> }
 function groupBuoi(phans: TaiLieuPhan[], buoiId: string): BuoiGroup {
@@ -455,10 +474,14 @@ export async function reorderDangInBuoi(taiLieuId: string, buoiId: string, order
 }
 
 // ── Resolver: gom phần + nội dung SỐNG từ kho (cho print-view) ──
-export async function getTaiLieuFull(id: string): Promise<TaiLieuFull> {
+// onlyBuoiId (Thùy 07/09 — giáo trình dài ra thì load CẢ DOC mỗi lần builder mở/tự-lưu ngày càng nặng):
+// CẮT về đúng 1 buổi TRƯỚC khi chạy các query nặng (câu/dạng/lý thuyết) → chỉ trả nội dung buổi đó.
+// Không truyền = load full như cũ (Xem/Xuất PDF cả giáo trình, ET/BT/Đề thi… vẫn 1-doc-1-buổi vốn nhẹ sẵn).
+export async function getTaiLieuFull(id: string, opts?: { onlyBuoiId?: string }): Promise<TaiLieuFull> {
   const { data: tl, error } = await supabase.from('tai_lieu').select('*').eq('id', id).single()
   if (error) throw error
-  const phans = await listPhan(id)
+  const phansAll = await listPhan(id)
+  const phans = opts?.onlyBuoiId ? sliceBuoi(phansAll, opts.onlyBuoiId) : phansAll
   const phanIds = phans.map((p) => p.id)
   const cauRows = phanIds.length
     ? (((await supabase.from('tai_lieu_cau').select('*').in('phan_id', phanIds).order('thu_tu').limit(LIMIT)).data ?? []) as { phan_id: string; ma_cau: string; thu_tu: number }[])

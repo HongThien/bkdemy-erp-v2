@@ -9,7 +9,7 @@
 // đóng LUÔN đánh giá+ET của buổi đó (N/A — Thùy: "buổi MT chỉ có 1 hoạt động = kiểm tra").
 // ============================================================================
 import { supabase } from './supabase'
-import { listPhan, addPhan, setCauOfPhan, getTaiLieuFull, createTaiLieu, updateTaiLieu, deleteTaiLieu, khoCuaMon, nhanhCuaCau, type TaiLieu, type TaiLieuPhan, type TaiLieuFull } from './tailieu'
+import { listPhan, addPhan, setCauOfPhan, getTaiLieuFull, updateTaiLieu, deleteTaiLieu, khoCuaMon, nhanhCuaCau, type TaiLieu, type TaiLieuPhan, type TaiLieuFull } from './tailieu'
 import { moBuoi } from './gami'
 import { listLopBac, type CauHoi } from './kho/api'
 import { ganHinhMTVaoBuoi, xoaPhanHinhTai, deleteBuoi as deleteHinhBuoi, type CheDoHinh } from './kho/hinhGiaoTrinh'
@@ -26,6 +26,34 @@ export function pickCuaHinhRow(ma: string, h: HinhRowInfo): PickItem {
 
 const LIMIT = 10000
 
+// ── METADATA phân loại MT (Thùy 07-09: "chuyển MT sang dạng list, thêm loại đề") — lưu trong
+// cau_hinh.mtMeta (KHÔNG cột riêng, giống mẫu deThiMeta của dethi.ts) — free-metadata, không phải
+// đo lường (§1.5 không áp), nên NULL = "chưa gắn" là hợp lệ, không phải NULL cấm.
+export type MTLoaiDe = 'khao_sat_thang' | 'test_dau_vao' | 'thi_thu' | 'luyen'
+export const MT_LOAI_DE: { value: MTLoaiDe; label: string }[] = [
+  { value: 'khao_sat_thang', label: 'Đề khảo sát tháng' },
+  { value: 'test_dau_vao', label: 'Đề Test đầu vào' },
+  { value: 'thi_thu', label: 'Đề thi thử' },
+  { value: 'luyen', label: 'Đề luyện' },
+]
+export const mtLoaiDeLabel = (v: string | null | undefined): string => MT_LOAI_DE.find((x) => x.value === v)?.label ?? (v ?? '')
+// thang = 'YYYY-MM' (khuôn `ym` dùng chung toàn app, vd rankDiemMTLop) — tháng DỰ KIẾN dùng đề này,
+// gắn tay lúc tạo/sửa, KHÔNG suy từ ngày gán buổi (1 MT gán được nhiều lớp/nhiều ngày khác nhau).
+export type MTMeta = { loaiDe: MTLoaiDe | null; thang: string | null }
+const EMPTY_MT_META: MTMeta = { loaiDe: null, thang: null }
+export function mtMeta(d: Pick<TaiLieu, 'cau_hinh'>): MTMeta {
+  const raw = d.cau_hinh?.mtMeta ?? {}
+  const loaiDe = MT_LOAI_DE.some((o) => o.value === raw.loaiDe) ? (raw.loaiDe as MTLoaiDe) : null
+  return { loaiDe, thang: raw.thang ?? null }
+}
+export async function updateMtMeta(id: string, patch: Partial<MTMeta>): Promise<void> {
+  const { data: cur, error: e0 } = await supabase.from('tai_lieu').select('cau_hinh').eq('id', id).single()
+  if (e0) throw e0
+  const cauHinh = { ...(cur as { cau_hinh?: Record<string, unknown> } | null)?.cau_hinh, mtMeta: { ...EMPTY_MT_META, ...((cur as any)?.cau_hinh?.mtMeta ?? {}), ...patch } }
+  const { error } = await supabase.from('tai_lieu').update({ cau_hinh: cauHinh, updated_at: new Date().toISOString() }).eq('id', id)
+  if (error) throw error
+}
+
 // ── MT MASTER (CRUD) ──────────────────────────────────────────────────────
 export async function listMT(mon?: string): Promise<TaiLieu[]> {
   let q = supabase.from('tai_lieu').select('*').eq('loai', 'mt').is('lop_id', null).order('created_at', { ascending: false }).limit(LIMIT)
@@ -39,7 +67,16 @@ export async function getMT(id: string): Promise<TaiLieu> {
   if (error) throw error
   return data as TaiLieu
 }
-export const createMT = (input: { ten: string; khoi: string; mon: string }): Promise<TaiLieu> => createTaiLieu({ loai: 'mt', ...input })
+// Insert TRỰC TIẾP (không qua createTaiLieu) để gắn cau_hinh.mtMeta NGAY lúc tạo — cùng khuôn createDeThi.
+export async function createMT(input: { ten: string; khoi: string; mon: string; loaiDe?: MTLoaiDe | null; thang?: string | null }): Promise<TaiLieu> {
+  const { data: { user } } = await supabase.auth.getUser()
+  const { data, error } = await supabase.from('tai_lieu').insert({
+    loai: 'mt', ten: input.ten, khoi: input.khoi, mon: input.mon, created_by: user?.id ?? null,
+    cau_hinh: { mtMeta: { loaiDe: input.loaiDe ?? null, thang: input.thang ?? null } },
+  }).select().single()
+  if (error) throw error
+  return data as TaiLieu
+}
 export const renameMT = (id: string, ten: string): Promise<void> => updateTaiLieu(id, { ten })
 // cascade phan+cau (KHÔNG xoá câu ở kho); xoá master KHÔNG tự xoá các instance đã gán (nguon_id giữ trace, nhưng
 // đứng độc lập). Buổi Hình MẪU (cau_hinh.hinhBuoiId) xoá kèm — bài Hình đã COPY sang buổi lớp vẫn còn (snapshot).

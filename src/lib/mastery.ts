@@ -285,7 +285,7 @@ export type TongQuanHS = {
 export async function getTongQuanHS(hocSinhId: string, mon: string, opts?: { ym?: string }): Promise<TongQuanHS> {
   const K = khoCuaMon(mon)
   const [{ data: grades }, { data: dt }, online, btGradeEvals, { data: hsRow }] = await Promise.all([
-    supabase.from('gami_grades').select('result, graded_at, prob:problem_id(phase, ma_dang, hinh_baitoan_id)').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
+    supabase.from('gami_grades').select('result, graded_at, prob:problem_id(phase, ma_dang, hinh_baitoan_id, buoi:buoi_hoc_id(ngay))').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
     supabase.from('diem_thi').select('diem, diem_co_ban, diem_nang_cao, ky_thi:ky_thi_id(loai, mon, ngay, buoi:buoi_hoc_id(ngay))').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
     fetchOnlineEvals(hocSinhId),
     fetchBTEvals(hocSinhId),
@@ -325,14 +325,16 @@ export async function getTongQuanHS(hocSinhId: string, mon: string, opts?: { ym?
   // Raw theo NGUỒN (et/btvn/mt/tu_luyen) — bucket cơ bản/nâng cao SAU khi có muc_do (chung 1 vòng lặp).
   // tu_luyen TÁCH riêng khỏi btvn (khác chỗ được vào byDangTop hay không — xem dưới) dù cả 2 KHÔNG
   // đụng tới hoatDong (%ET/%BTVN/%MT hiện tại) — đó là 3 cột CỐ ĐỊNH, ngoài phạm vi việc hôm nay.
-  type Raw = { ma: string | null; value: number; t: string }
+  // bd = ngày BUỔI (khi nguồn gắn buổi_hoc — et/mt/btvn chấm ở lớp) — null cho online/tự luyện/bổ trợ.
+  type Raw = { ma: string | null; value: number; t: string; bd?: string | null }
   const etRows: Raw[] = [], btvnRows: Raw[] = [], mtRows: Raw[] = [], tuLuyenRows: Raw[] = []
   for (const g of (grades ?? []) as any[]) {
     const p = g.prob; if (!p) continue
     const v = RESULT_VALUE[g.result as keyof typeof RESULT_VALUE]; if (v === undefined) continue
-    if (p.phase === 'et') etRows.push({ ma: p.ma_dang ?? null, value: v, t: g.graded_at })
-    else if (p.phase === 'mt') mtRows.push({ ma: p.ma_dang ?? null, value: v, t: g.graded_at })
-    else if (p.phase === 'btvn') btvnRows.push({ ma: p.ma_dang ?? null, value: v, t: g.graded_at })
+    const bd = p.buoi?.ngay ?? null
+    if (p.phase === 'et') etRows.push({ ma: p.ma_dang ?? null, value: v, t: g.graded_at, bd })
+    else if (p.phase === 'mt') mtRows.push({ ma: p.ma_dang ?? null, value: v, t: g.graded_at, bd })
+    else if (p.phase === 'btvn') btvnRows.push({ ma: p.ma_dang ?? null, value: v, t: g.graded_at, bd })
   }
   // Online: scope theo môn của TEST (có sẵn nhãn mon — §1.6).
   for (const o of online) {
@@ -364,9 +366,14 @@ export async function getTongQuanHS(hocSinhId: string, mon: string, opts?: { ym?
   let byDangTopCur = byDangTop, byDangBottomCur = byDangBottom
   let etRowsCur = etRows, mtRowsCur = mtRows, btvnRowsCur = btvnRows
   if (monthFromMs != null) {
-    const inMonthRow = (r: Raw) => inMonth(Date.parse(r.t))
+    // Neo theo NGÀY BUỔI (r.bd) khi có, KHÔNG phải graded_at — GV/TA chấm trễ (vd buổi 23/08 nhưng
+    // chấm ngày 05/09) không được làm hoạt động của buổi đó "biến mất" khỏi report đúng tháng nó
+    // diễn ra. graded_at chỉ còn fallback cho nguồn không gắn buổi (online/tự luyện/bổ trợ) — xem
+    // comment "bd" ở khai báo Raw.
+    const inMonthRow = (r: Raw) => r.bd ? (r.bd >= monthFromDate && r.bd < monthToDate) : inMonth(Date.parse(r.t))
     // mtRowsCur dùng inMtWindow (25/M→10/M+1), KHÔNG dùng inMonth — xem comment "MT" ở khai báo mtFromMs.
-    etRowsCur = etRows.filter(inMonthRow); mtRowsCur = mtRows.filter((r) => inMtWindow(Date.parse(r.t))); btvnRowsCur = btvnRows.filter(inMonthRow)
+    const inMtWindowRow = (r: Raw) => r.bd ? (r.bd >= mtFromDate && r.bd < mtToDate) : inMtWindow(Date.parse(r.t))
+    etRowsCur = etRows.filter(inMonthRow); mtRowsCur = mtRows.filter(inMtWindowRow); btvnRowsCur = btvnRows.filter(inMonthRow)
     byDangTopCur = {}; byDangBottomCur = {}
     for (const e of etRowsCur) { const ev: DangEval = { value: e.value, t: e.t, src: 'et' }; pushHT(byDangTopCur, e.ma, ev); pushHT(byDangBottomCur, e.ma, ev) }
     for (const m of mtRowsCur) { const ev: DangEval = { value: m.value, t: m.t, src: 'mt' }; pushHT(byDangTopCur, m.ma, ev); pushHT(byDangBottomCur, m.ma, ev) }
@@ -409,14 +416,15 @@ export async function getTongQuanHS(hocSinhId: string, mon: string, opts?: { ym?
   // KHÔNG cần denominator canonical). KP = hinh_baitoan_id, nguồn CHỈ et/mt/btvn (Hình mô hình chưa có
   // tự luyện/bt online — xem getHinhMasteryHS). Bucket cơ bản/nâng cao theo `cap` CLIP 1-5 (xấp xỉ
   // mucDoTuCap thật — như DangBaiTab, chưa join hinh_cach_giai/hinh_cach_bo_de).
-  type RawH = { id: string | null; value: number; t: string }
+  type RawH = { id: string | null; value: number; t: string; bd?: string | null }
   const hEtRows: RawH[] = [], hMtRows: RawH[] = [], hBtvnRows: RawH[] = []
   for (const g of (grades ?? []) as any[]) {
     const p = g.prob; if (!p || !p.hinh_baitoan_id) continue
     const v = RESULT_VALUE[g.result as keyof typeof RESULT_VALUE]; if (v === undefined) continue
-    if (p.phase === 'et') hEtRows.push({ id: p.hinh_baitoan_id, value: v, t: g.graded_at })
-    else if (p.phase === 'mt') hMtRows.push({ id: p.hinh_baitoan_id, value: v, t: g.graded_at })
-    else if (p.phase === 'btvn') hBtvnRows.push({ id: p.hinh_baitoan_id, value: v, t: g.graded_at })
+    const bd = p.buoi?.ngay ?? null
+    if (p.phase === 'et') hEtRows.push({ id: p.hinh_baitoan_id, value: v, t: g.graded_at, bd })
+    else if (p.phase === 'mt') hMtRows.push({ id: p.hinh_baitoan_id, value: v, t: g.graded_at, bd })
+    else if (p.phase === 'btvn') hBtvnRows.push({ id: p.hinh_baitoan_id, value: v, t: g.graded_at, bd })
   }
   const hinhTop: Record<string, DangEval[]> = {}, hinhBottom: Record<string, DangEval[]> = {}
   const pushHinh = (map: Record<string, DangEval[]>, id: string | null, ev: DangEval) => { if (id) (map[id] ??= []).push(ev) }
@@ -426,8 +434,10 @@ export async function getTongQuanHS(hocSinhId: string, mon: string, opts?: { ym?
 
   let hinhTopCur = hinhTop, hinhBottomCur = hinhBottom
   if (monthFromMs != null) {
-    const inMonthRow = (r: RawH) => inMonth(Date.parse(r.t))
-    const hEtCur = hEtRows.filter(inMonthRow), hMtCur = hMtRows.filter((r) => inMtWindow(Date.parse(r.t))), hBtvnCur = hBtvnRows.filter(inMonthRow)
+    // Cùng luật "neo theo ngày buổi" như nhánh Đại/KHTN ở trên — xem comment ở đó.
+    const inMonthRow = (r: RawH) => r.bd ? (r.bd >= monthFromDate && r.bd < monthToDate) : inMonth(Date.parse(r.t))
+    const inMtWindowRow = (r: RawH) => r.bd ? (r.bd >= mtFromDate && r.bd < mtToDate) : inMtWindow(Date.parse(r.t))
+    const hEtCur = hEtRows.filter(inMonthRow), hMtCur = hMtRows.filter(inMtWindowRow), hBtvnCur = hBtvnRows.filter(inMonthRow)
     hinhTopCur = {}; hinhBottomCur = {}
     for (const e of hEtCur) { const ev: DangEval = { value: e.value, t: e.t, src: 'et' }; pushHinh(hinhTopCur, e.id, ev); pushHinh(hinhBottomCur, e.id, ev) }
     for (const m of hMtCur) { const ev: DangEval = { value: m.value, t: m.t, src: 'mt' }; pushHinh(hinhTopCur, m.id, ev); pushHinh(hinhBottomCur, m.id, ev) }
