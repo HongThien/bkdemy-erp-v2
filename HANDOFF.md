@@ -1005,9 +1005,37 @@ thẳng `ca_test.nguoi_cham_id`/`nguoi_tra_bai_id`, data đã sẵn, không cầ
   task 2 lớp **8S0 + 12A1**. Luật của loại thao tác này: chỉ điền mốc đang NULL, **mốc = 23:00 VN
   NGÀY BUỔI** (không phải `now()`) để dashboard không tính "đóng muộn" trừ oan bar của GV/TA; buổi
   `trang_thai='huy'` cố ý bỏ qua (còn 47 buổi NULL đều là huỷ — ĐÚNG, không phải sót).
-- **CÒN TREO:** e2e đường GHI của PH mới chạy 1 lượt nộp thật · bucket `btvn-nop` chưa verify được
-  từ CLI (`claude_build` cấm đọc schema `storage` — xem Dashboard) · dashboard GV tầng B/C · 4 nhánh
-  chưa merge (`feat/app-ops`, `feat/app-ops-ui`, `feat/fix-lane-v2`, `hocphi/phat-sinh-hs-nghi`).
+- **CÒN TREO (31/08):** dashboard GV tầng B/C · 4 nhánh chưa merge (`feat/app-ops`, `feat/app-ops-ui`,
+  `feat/fix-lane-v2`, `hocphi/phat-sinh-hs-nghi`). (E2E nộp BTVN ảnh đã xong 09/09 — khối dưới.)
+
+### ⭐ BTVN ẢNH end-to-end — ĐÃ CHẠY THẬT TRÊN PROD (09/09)
+- **Luồng:** PH (`ph.bkacademy.edu.vn`, repo `bkdemy-ph-app`, Supabase riêng) chụp/chọn ≤12 ảnh → **nén ở client**
+  (HEIC→JPEG `heic2any`, cạnh dài ≤1600, q0.8 → ~200–450KB/ảnh) → PUT thẳng lên storage ERP `btvn-nop` bằng **signed upload
+  URL** server cấp → `nopBtvn(childId, paths)` kiểm path/size/mime qua `storage.list` → pg role `ph_nop` gọi
+  `fn_btvn_nop_tao_auto` → ERP gán **buổi thường gần nhất ≤ hôm nay, KHÔNG có `mt_buoi`** (mig 202609091810 + 1959; CEO: nộp
+  muộn/bù thì TA chuyển buổi). TA (`ta.bkacademy.edu.vn`, `src/screens/ta/ChamBtvn.tsx`) chốt buổi → vẽ → Đ/C/S → nhận xét
+  → Trả bài → PH xem ảnh chấm + kết quả từng câu + nhận xét (4 view FDW, mig PH `0027` đã áp).
+- **Màn chấm TA (v2):** full-screen 1 HS, `landscape:` 70/30 (ảnh+tool | form) · portrait xếp dọc · HS không ảnh = chấm giấy chỉ form.
+  Tool: Màu 🔴🔵⚫ (áp Bút + Chữ) · Bút · Tẩy (`destination-out`, chỉ xoá nét) · **Đ / S** đỏ · ◯ Khoanh / ▭ Khung kéo · Aa Chữ (ô nhập
+  tại chỗ, Enter/blur lưu) · Cỡ chữ số kiểu Paint 14–72 (px = co × W/800) · ↩ Hoàn tác/Ctrl+Z (theo TRANG) · **↺ Làm lại trang**
+  (`path_cham=null`, ẩn khi đã trả) · "✓ Đã lưu trang" flash 2.5s. Nét = canvas trong suốt đè `<img>`; Lưu = ghép 2 lớp → PNG
+  mới (`uploadAnhCham`, ảnh gốc immutable, PNG cũ thành mồ côi — bucket không policy delete). Nháp theo trang giữ ở `marksRef`
+  (memory, mất khi đóng màn). Phím tắt 1/2/3 màu · B · E · D · S · O · R · T.
+- **Hạ tầng đã chốt:** `ERP_SUPABASE_SERVICE_ROLE_KEY` nằm trên Vercel PH (CEO chốt giữ thiết kế 30/08; Storage REST cần JWT,
+  `ph_nop` không thay được; `lib/erp.ts` có `import "server-only"`, build → 0 client chunk chứa key). `PH_NOP_DATABASE_URL` phải
+  dạng **pooler** `ph_nop.<ref>@aws-1-ap-southeast-1.pooler…` (host `db.<ref>` chỉ IPv6 → ENOTFOUND ở dev lẫn Vercel).
+  TaHome "Đã xong" sắp theo ngày buổi, 60 dòng. Prod TA phải **Create Deployment tay** — auto-deploy Git của project
+  `bkdemy-erp-v2-ta-v2` không bắn (chưa rõ vì sao; gv/ops/hs có thể cùng cảnh).
+- **CÒN TREO (09/09):** Apple Pencil trên iPad với tool v2 · object mồ côi trong `btvn-nop` khi RPC fail sau upload · PH xem
+  ảnh đã nộp TRƯỚC khi trả (cần view ERP mới + FDW) · `BtvnTab` ERP desktop vẫn tool cũ · push "bài đã chấm" · **sau pilot:**
+  bot account Auth ERP thay service key (HANDOFF PH §12.1) · tìm vì sao Vercel TA không auto-build.
+
+### Role `claude_ro` THẬT (09/09) — `npm run schema` + dò dữ liệu từ máy Claude
+- Mãi tới 09/09 DB **chưa từng có** role này (CLAUDE.md §2.1 mô tả ý định từ 12/08). Tạo qua SQL Editor: `pg_read_all_data` +
+  policy `claude_ro_select for select using(true)` trên 202 bảng RLS (bypassrls cần superuser, `postgres` Supabase không phải).
+  Tạo policy cần chủ bảng → `grant claude_build to postgres`. Verify: đọc `hoc_sinh` 442 dòng, INSERT/CREATE "permission denied".
+- `.env` checkout `Desktop\2\…` có `DATABASE_URL_RO` (pooler `claude_ro.<ref>`). `migrate.mjs` tự thêm policy cho bảng RLS mới
+  (chỉ bảng role ghi sở hữu; 6 bảng của `postgres` phải chạy DO block tay). Canary `introspect.mjs` giờ xét policy — hết cảnh báo giả.
 
 ### Bố trí worktree trên máy CEO (ĐỔI 01/09 — CEO chốt)
 - **Nhánh `main` đứng ở checkout chính `bkdemy-erp-v2`** (trước 01/09 là `wt-bot` giữ). Làm việc
@@ -1735,6 +1763,27 @@ và `--baseline` đều đụng file người khác, đã dính 2 lần 08/09).
 - **Prod báo "Invalid API key"** = key nướng trong bundle sai. Đừng đoán: tải `assets/*.js` đang chạy, grep key, so với `.env.local` **từng ký tự** (09/09: thừa đúng 1 chữ "W" cuối key trên Vercel). Vite nướng env lúc build ⇒ sửa env xong PHẢI Redeploy.
 - **Commit của mình chỉ chứa hunk của mình** khi nhiều phiên cùng sửa `package.json`/`launch.json`: dựng blob từ `git show HEAD:file` + đúng dòng mình thêm rồi `git update-index --cacheinfo`, không `git add` cả file. "commit đi" của CEO = commit + push luôn (Vercel tắt auto-deploy).
 - **Scale app riêng:** mỗi app một project Vercel (blast radius, rollback/env riêng); trần build/ngày là chuyện gói Hobby → lên Pro, không gộp project. Gộp chỉ cân nhắc cho tầng "công cụ/chiến dịch" khi ≥5 app, bằng rewrite theo host.
+### Bài học 09/09 — BTVN ảnh xuyên 2 repo, tool vẽ, role RO
+- **Bước 0 trước khi tin spec:** spec "tạo bảng btvn_nop/btvn_anh" hoá ra bảng + RPC + màn đã có từ 30/08; và audit repo PH bản
+  CŨ cho kết luận "chưa có luồng nộp" sai hoàn toàn. Rule: grep repo TRƯỚC, và hỏi "bản này final chưa" trước khi audit repo khác.
+- **Server action Next mặc định trần body 1MB (Vercel function 4.5MB)** — nộp ảnh qua FormData là chết với ảnh điện thoại thật.
+  Ảnh đi thẳng client → storage bằng signed upload URL; action chỉ nhận mảng path rồi kiểm lại bằng `storage.list` (size/mimetype).
+- **Tailwind v4: 2 utility cùng property trong 1 className thì thứ tự CSS quyết định** (`bg-white` đè `bg-emerald-600`) — màu
+  mặc định đặt trong nhánh idle, không đặt tĩnh rồi "đè" bằng nhánh động (bug Đ/C/S mất chữ có từ 30/08).
+- **Listener đăng ký với deps `[]` gọi hàm đóng state → state đọc trong đó phải qua ref** (Ctrl+Z ở trang 2 xoá mark trang 1).
+- **Input mount trong `pointerdown`:** `mousedown` mặc định dời focus (canvas không focus được) → `e.preventDefault()` + `autoFocus`
+  (đồng bộ lúc commit; `setTimeout` chậm hơn người gõ ngay) + bỏ qua blur <300ms.
+- **Sau lưu phải có tín hiệu** ("✓ Đã lưu" 2.5s) — nút chỉ mờ đi thì CEO tưởng treo dù DB đã ghi.
+- **Task engine = must-exist:** buổi có `mt_buoi` không sinh task BTVN (`where not b.co_mt`) → bài PH gán vào buổi MT là tàng hình
+  với TA. Mọi "tự gán" phải kiểm cùng điều kiện với engine sinh task, nếu không dữ liệu rơi vào chỗ không ai thấy.
+- **`pg.Pool` module-scope giữ chuỗi kết nối cũ** sau khi `.env.local` đổi — Next nạp lại env nhưng pool không; restart dev.
+- **Key nhầm project cùng độ dài** (service key PH vs ERP đều 219 ký tự) — kiểm bằng claim `ref` trong JWT, không so độ dài.
+- **Host `db.<ref>.supabase.co` chỉ IPv6** — dev Windows lẫn Vercel đều ENOTFOUND; luôn dùng pooler với user `role.<ref>`.
+- **Automation trình duyệt:** phím "Return" của tool KHÔNG phải Enter (dùng "Enter"); `read_console_messages` trả log tích luỹ cả
+  lỗi HMR trung gian → reload + tsc trước khi tin; `prompt()` thật bị tự đóng.
+- **Test trên data thật:** đọc snapshot trước, chỉ đụng dòng test, không "Mở lại/Đóng" phase của lớp thật (đổi `btvn_dong_at` →
+  dashboard TA "đóng muộn", EXP hoàn/thưởng lại); dọn lá→gốc theo danh sách đã gật, kiểm snapshot khớp sau dọn.
+- **Deploy tay khi auto-deploy im:** kiểm bằng cách curl bundle prod grep chuỗi UI mới, không tin "đã push = đã lên".
 
 ## ③ Nhật ký
 → Chuyển sang **`DEVLOG.md`** (log thô append-only, theo ngày, KHÔNG load khi làm). Là nguồn bất biến để truy lại / tổng hợp lại HANDOFF nếu bản này sai logic.

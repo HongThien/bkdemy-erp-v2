@@ -10089,6 +10089,12 @@ dòng, không dựng lại UI để đo.
   "permission denied" · CREATE TABLE "permission denied". CEO dán nhầm placeholder làm mật khẩu 1 lần → đã alter lại.
 - **Nợ:** bảng RLS tạo sau này chưa có policy claude_ro → 0 dòng im lặng; chạy lại DO block (idempotent) hoặc nối vào migrate.mjs.
   `.env.example` đã đúng tên `DATABASE_URL_RO`. `npm run schema` chạy được từ checkout này.
+- **CEO chọn (b):** `migrate.mjs` sau khi áp file tự tạo policy `claude_ro_select` cho bảng RLS mới (chỉ bảng role ghi sở hữu,
+  `pg_has_role(current_user, relowner)`; có role claude_ro mới chạy; idempotent). Canary `introspect.mjs` sửa xét policy.
+  `schema.md` tái sinh (đổi thật: `fn_btvn_buoi_cua_lop` + `co_phieu`). CLAUDE.md §2.1 ghi thực tế claude_ro đã có.
+- **Distill cuối ngày:** HANDOFF ① thêm khối "BTVN ẢNH end-to-end" + "Role claude_ro thật", prune CÒN TREO 31/08; ② thêm
+  "Bài học 09/09" (12 mục). `migrate.mjs --status` báo 3 file `202609091411/1416/1428_mcq_*` có trong sổ nhưng KHÔNG có trong
+  repo — của phiên MCQ khác, chưa commit; không đụng.
 - **Distill HANDOFF.md** (mục ① thêm "08–09/09 — FORM CÂU + KHO CHUẨN + NHẬP KHO TỪ FILE" A–E; mục ② thêm "Bài học 08–09/09" 13 gạch).
 
 ## 2026-09-09 — Bổ trợ yếu: BUG THẬT cap-1000 PostgREST — engine MÙ dữ liệu mới ở 33/46 lớp (worktree botroyeu, feat/botro-yeu)
