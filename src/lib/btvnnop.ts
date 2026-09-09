@@ -62,6 +62,13 @@ export async function uploadAnhCham(anhId: string, blob: Blob): Promise<string> 
   return path
 }
 
+// "Làm lại trang": bỏ bản chấm → PH/TA thấy lại ảnh gốc. Chỉ đổi con trỏ path_cham; file PNG cũ để nguyên
+// (bucket không có policy delete — cùng luật với mỗi lần lưu lại đè path mới).
+export async function boAnhCham(anhId: string): Promise<void> {
+  const { error } = await supabase.from('btvn_nop_anh').update({ path_cham: null }).eq('id', anhId)
+  if (error) throw error
+}
+
 export async function listNhanXetMau(): Promise<NhanXetMau[]> {
   const { data, error } = await supabase.from('btvn_nhan_xet_mau').select('ma,noi_dung,thu_tu').eq('active', true).order('thu_tu').limit(100)
   if (error) throw error

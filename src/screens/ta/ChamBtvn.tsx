@@ -14,7 +14,7 @@ import {
   listCanhBao,
   type BuoiHocHS, type Problem, type Grade, type ETResult, type BtvnKQ, type BtvnTrangThai, type BtvnThaiDo, type CanhBao, type DangTaiLieu,
 } from '../../lib/gami'
-import { listNopTheoBuoi, deXuatTrangThai, signUrls, uploadAnhCham, listNhanXetMau, setNhanXet, traBai, xacNhanBuoi, chuyenBuoi, listBuoiBtvnCuaLop, type BtvnNop, type BtvnNopAnh, type NhanXetMau, type BuoiBtvn } from '../../lib/btvnnop'
+import { listNopTheoBuoi, deXuatTrangThai, signUrls, uploadAnhCham, boAnhCham, listNhanXetMau, setNhanXet, traBai, xacNhanBuoi, chuyenBuoi, listBuoiBtvnCuaLop, type BtvnNop, type BtvnNopAnh, type NhanXetMau, type BuoiBtvn } from '../../lib/btvnnop'
 import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import { tenHienThiDs } from '../../lib/hoten'
 import { ET_KQ, DongBar, type BuoiFull } from './ChamBuoi'
@@ -220,7 +220,7 @@ function ChamMotHS({ r, ten, buoi, n, dx, v, probs, gradeOf, dong, urls, nxMau, 
       <div className="flex min-h-0 flex-1 flex-col landscape:flex-row">
         {coAnh && (
           <div className="flex min-h-0 flex-col border-slate-200 portrait:h-[55%] portrait:border-b landscape:w-[70%] landscape:border-r">
-            <VeAnh key={hsId} anhDs={n!.anh} urls={urls} reloadNop={reloadNop} />
+            <VeAnh key={hsId} anhDs={n!.anh} urls={urls} reloadNop={reloadNop} daTra={!!n!.tra_at} />
           </div>
         )}
         <div className="min-h-0 flex-1 overflow-y-auto bg-white px-3 py-2.5">
@@ -378,7 +378,7 @@ const PHIM_TOOL: Record<string, Tool> = { b: 'but', e: 'tay', d: 'D', s: 'S', o:
 const CO_LIST: Co[] = [14, 16, 18, 20, 22, 24, 26, 28, 32, 36, 40, 48, 56, 64, 72]
 const pxChu = (co: Co, W: number) => Math.round(co * (W / 800))
 
-function VeAnh({ anhDs, urls, reloadNop }: { anhDs: BtvnNopAnh[]; urls: Record<string, string>; reloadNop: () => Promise<void> }) {
+function VeAnh({ anhDs, urls, reloadNop, daTra }: { anhDs: BtvnNopAnh[]; urls: Record<string, string>; reloadNop: () => Promise<void>; daTra: boolean }) {
   // Bản local của xấp ảnh + URL: sau Lưu tự cập nhật path_cham ngay, không chờ cha reload.
   const [anhs, setAnhs] = useState<BtvnNopAnh[]>(anhDs)
   const [localUrls, setLocalUrls] = useState<Record<string, string>>(urls)
@@ -543,6 +543,19 @@ function VeAnh({ anhDs, urls, reloadNop }: { anhDs: BtvnNopAnh[]; urls: Record<s
 
   const soNet = marks().length
   const chuaLuu = (id: string) => (marksRef.current[id]?.length ?? 0) > 0
+  // "Làm lại trang": bỏ bản chấm đã lưu (nét đã ghép vào ảnh không hoàn tác được) → về ảnh gốc PH nộp.
+  async function lamLai() {
+    if (!anh?.path_cham || busy) return
+    if (!confirm('Bỏ bản chấm của trang này và quay về ảnh gốc? Nét đã vẽ trên trang này sẽ mất.')) return
+    setBusy(true)
+    try {
+      await boAnhCham(anh.id)
+      marksRef.current[anh.id] = []
+      setAnhs((cur) => cur.map((a) => (a.id === anh.id ? { ...a, path_cham: null } : a)))
+      setNhap(null); setTick((n) => n + 1)
+      reloadNop().catch(() => {})
+    } catch (e: any) { alert(e.message ?? String(e)) } finally { setBusy(false) }
+  }
   const conTro = tool === 'text' || tool === 'D' || tool === 'S' ? 'cursor-cell' : 'cursor-crosshair'
   return (
     <div className="flex min-h-0 flex-1 flex-col">
@@ -564,6 +577,10 @@ function VeAnh({ anhDs, urls, reloadNop }: { anhDs: BtvnNopAnh[]; urls: Record<s
           </select>
         </label>
         <button onClick={undo} disabled={!soNet} title="Ctrl+Z" className="min-h-[36px] rounded-lg border border-slate-200 px-2.5 text-[12.5px] font-semibold text-slate-600 disabled:opacity-30">↩ Hoàn tác</button>
+        {anh?.path_cham && !daTra && (
+          <button onClick={lamLai} disabled={busy} title="Bỏ bản chấm đã lưu của trang này, quay về ảnh gốc"
+            className="min-h-[36px] rounded-lg border border-rose-200 px-2.5 text-[12.5px] font-semibold text-rose-600 active:bg-rose-50 disabled:opacity-40">↺ Làm lại trang</button>
+        )}
         <button onClick={luu} disabled={busy || !soNet || !ready}
           className={`ml-auto min-h-[36px] rounded-lg px-3.5 text-[12.5px] font-bold text-white active:bg-teal-500 ${daLuu ? 'bg-emerald-600 disabled:opacity-100' : 'bg-teal-600 disabled:opacity-40'}`}>
           {busy ? 'Đang lưu…' : daLuu ? '✓ Đã lưu trang' : '💾 Lưu trang này'}</button>
