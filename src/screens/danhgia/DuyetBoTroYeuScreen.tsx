@@ -96,7 +96,11 @@ export default function DuyetBoTroYeuScreen() {
               <div key={c.hoc_sinh_id} className="rounded-2xl border border-slate-200 bg-white p-3.5 shadow-sm">
                 <CandidateHeader c={c} phu={c.ten_lop} uuTien={c.uuTien} />
                 <CandidateDetailBody c={c}>
-                  <DuyetKhoi c={c} loai="kien_thuc" ten="Level kiến thức" hienTai={c.sheet.levelKienThuc} deXuat={c.deXuatKienThuc} onXong={reload} />
+                  {/* Thùy 09-09: duyệt xong = ca đó rời hàng đợi TẠI CHỖ (không reload: 3s trắng màn + cuộn
+                      về đầu + HS vừa duyệt lại hiện vì tín hiệu chưa đổi). Card kế tiếp trượt lên đúng vị trí
+                      đang đứng → duyệt tiếp luôn. Đổi môn/khối mới quét lại. (CLAUDE.md §2 React) */}
+                  <DuyetKhoi c={c} loai="kien_thuc" ten="Level kiến thức" hienTai={c.sheet.levelKienThuc} deXuat={c.deXuatKienThuc}
+                    onXong={(kq) => setCands((prev) => prev.filter((x) => x.hoc_sinh_id !== kq.hocSinhId))} />
                 </CandidateDetailBody>
               </div>
             ))}

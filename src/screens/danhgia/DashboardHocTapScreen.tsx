@@ -91,7 +91,13 @@ export default function DashboardHocTapScreen() {
   const duoiNguong = useMemo(() => cands.filter((c) => !c.trongDigest), [cands])
   const lopOpts: Opt[] = lops.map((l) => ({ id: l.id, label: l.ten_lop, sub: l.mon }))
 
-  const reload = () => { const id = lopId; setLopId(''); setTimeout(() => setLopId(id), 0) }
+  // Thùy 09-09: duyệt xong KHÔNG reload cả lớp (3s trắng màn + cuộn về đầu + HS vừa duyệt lại hiện).
+  // Cùng ngữ cảnh (vẫn lớp này) ⇒ vá đúng 1 phần tử tại chỗ; chỉ đổi lớp mới reset+fetch lại (CLAUDE.md §2 React).
+  const apDungDuyet = (kq: DuyetKetQua) => {
+    setCands((prev) => prev.map((x) => x.hoc_sinh_id !== kq.hocSinhId ? x
+      : { ...x, sheet: { ...x.sheet, [kq.loai === 'kien_thuc' ? 'levelKienThuc' : 'levelThaiDo']: kq.level } }))
+    setMoHS(null)
+  }
 
   return (
     <section className="min-h-0 overflow-auto bg-[#f5f5f7] p-8">
@@ -143,7 +149,7 @@ export default function DashboardHocTapScreen() {
           </>
         )}
       </div>
-      {moHS && <ChiTietModal c={moHS} onDong={() => setMoHS(null)} onXong={() => { setMoHS(null); reload() }} />}
+      {moHS && <ChiTietModal c={moHS} onDong={() => setMoHS(null)} onXong={apDungDuyet} />}
     </section>
   )
 }
@@ -357,7 +363,8 @@ function CandCard({ c, onMo }: { c: Candidate; onMo: () => void }) {
 // thức lẫn thái độ; Duyệt bổ trợ: chỉ kiến thức) nên để caller tự quyết, không cứng trong này.
 export function CandidateDetailBody({ c, children }: { c: Candidate; children?: React.ReactNode }) {
   const [log, setLog] = useState<LevelLogRow[]>([])
-  useEffect(() => { getLevelLog(c.hoc_sinh_id, c.mon).then(setLog) }, [c.hoc_sinh_id, c.mon])
+  // Deps có cả level: cha vá level tại chỗ sau duyệt (không reload) ⇒ "Lịch sử duyệt" tự nạp lại.
+  useEffect(() => { getLevelLog(c.hoc_sinh_id, c.mon).then(setLog) }, [c.hoc_sinh_id, c.mon, c.sheet.levelKienThuc, c.sheet.levelThaiDo])
 
   // Detail lười (Thùy 08-18): "soi" chuyên đề = lịch sử làm bài; "soi" thái độ = danh sách buổi.
   // Chỉ 1 khối mở tại 1 thời điểm (đơn giản UI) — mở khối khác thì đóng khối cũ.
@@ -624,7 +631,7 @@ function YeuOnDinhDrawer({ tut, len, dienYen, onClose }: { tut: DangStat[]; len:
 
 // Modal chrome (header/close/overlay) — nội dung THẬT nằm ở `CandidateDetailBody` (tái dùng ở
 // DuyetBoTroYeuScreen.tsx). Tách để không lặp code chrome/nội dung.
-function ChiTietModal({ c, onDong, onXong }: { c: Candidate; onDong: () => void; onXong: () => void }) {
+function ChiTietModal({ c, onDong, onXong }: { c: Candidate; onDong: () => void; onXong: (kq: DuyetKetQua) => void }) {
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center overflow-auto bg-slate-900/40 p-8" onClick={onDong}>
       <div className="w-full max-w-[1300px] rounded-[24px] border border-slate-200 bg-white p-6 shadow-2xl" onClick={(e) => e.stopPropagation()}>
@@ -663,8 +670,10 @@ function thaiDoTomTat(td: { thai_do: string; t: string }[]): string {
 // Người duyệt: mặc định = đề xuất của máy, sửa được. Ghi log CẢ HAI VẾ ⇒ delta tự lộ.
 // Export cho `DuyetBoTroYeuScreen.tsx` tái dùng nguyên logic duyệt + mở case (Thùy 08-18: tách
 // "Duyệt bổ trợ" thành 1 tab riêng, KHÔNG viết lại — DRY, tránh 2 đường mở case lệch nhau).
+// `onXong` nhận KẾT QUẢ vừa ghi để cha vá state tại chỗ (không reload cả danh sách — Thùy 09-09).
+export type DuyetKetQua = { hocSinhId: string; mon: string; loai: 'kien_thuc' | 'thai_do'; level: number }
 export function DuyetKhoi({ c, loai, ten, hienTai, deXuat, onXong }: {
-  c: Candidate; loai: 'kien_thuc' | 'thai_do'; ten: string; hienTai: number; deXuat: any; onXong: () => void
+  c: Candidate; loai: 'kien_thuc' | 'thai_do'; ten: string; hienTai: number; deXuat: any; onXong: (kq: DuyetKetQua) => void
 }) {
   const [chot, setChot] = useState<number>(deXuat.deXuat)
   const [lyDo, setLyDo] = useState('')
@@ -691,7 +700,7 @@ export function DuyetKhoi({ c, loai, ten, hienTai, deXuat, onXong }: {
           nguon, lyDo: lyDo.trim() || deXuat.lyDo.join('; ') || null,
         })
       }
-      onXong()
+      onXong({ hocSinhId: c.hoc_sinh_id, mon: c.mon, loai, level: chot })
     } finally { setBusy(false) }
   }
   return (

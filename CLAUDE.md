@@ -82,6 +82,13 @@
 - **Migration:** verify schema TRƯỚC. Sau migrate: grep toàn repo + `pg_trigger` + `pg_proc.prosrc` tìm cột/đường cũ.
   Trigger là "hidden code" — nghi ngờ đầu tiên khi INSERT/UPDATE 400 dù code/RLS/constraint đúng.
 - **React:** reset state ngay trước async query; `useState` cho data hiển thị, `useRef` cho data chỉ trigger logic.
+- **⭐ React — SAU MUTATION KHÔNG RELOAD CẢ DANH SÁCH (Thùy 09-09, dính ≥3 màn).** Phân biệt 2 ca:
+  *đổi ngữ cảnh* (đổi lớp/môn/ngày) ⇒ reset + fetch lại là đúng; *mutation trong cùng ngữ cảnh* (duyệt
+  1 ca, đóng 1 case, sửa 1 dòng) ⇒ **vá đúng phần tử đó tại chỗ** (`setRows(prev => prev.map/filter)`),
+  callback `onXong` **trả về kết quả vừa ghi** để cha vá — KHÔNG `setRows([]); setLoading(true)` rồi quét
+  lại (trắng màn 3s, cuộn về đầu, `key` unmount, ca vừa duyệt lại hiện vì tín hiệu chưa đổi). Người dùng
+  đứng nguyên vị trí, làm ca kế tiếp. Nếu server có thể đổi thêm dòng khác ⇒ refetch NỀN không xoá
+  list (giữ `rows` cũ tới khi có `rows` mới), không bao giờ blank.
 - **⭐ DANH TÍNH bám KHOÁ TỰ NHIÊN, KHÔNG bám VỊ TRÍ.** Nối 2 tập bằng "phần tử thứ i ↔ phần tử thứ i"
   là **sai ngay khi một bên thêm/bớt ở giữa** — và hỏng ÂM THẦM (không lỗi, chỉ gắn nhầm). Lưu thẳng
   khoá của bên kia (`ma_cau`, `ma_dang`…), vị trí chỉ để HIỂN THỊ. *(Đã dính: ô chấm ET ↔ câu trong đề

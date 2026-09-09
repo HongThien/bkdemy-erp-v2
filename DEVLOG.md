@@ -10251,3 +10251,23 @@ lên HS thật để test (Luật xoá + không ghi rác). Sẽ tự lộ ở d�
 Thêm vào `.gitignore`. Verify trên cây đã ff lên origin/main (+9 commit kho chuẩn/duyệt-gate/chốt xu): tsc sạch · 77/77 ·
 end-to-end 11/11. Bài học tự thân: dashboard/`git status` chụp lúc 14:2x là ảnh CŨ — phiên kia commit+push ngay sau; đọc
 `git log origin/main` trước khi kết luận "họ để dở", kẻo viết bản trùng.
+
+## 2026-09-09 — UX: duyệt xong KHÔNG reload cả danh sách (Thùy: "gặp nhiều màn rồi, ghi vào để sau ko mắc lại")
+
+**Lỗi:** `DuyetBoTroYeuScreen` gắn `onXong={reload}` → `setCands([]); setLoading(true)` rồi quét lại TOÀN BỘ lớp của môn
+(~3s trắng "Đang quét…", card unmount ⇒ cuộn về đầu, HS vừa duyệt LẠI HIỆN vì tín hiệu engine chưa đổi). Cùng pattern ở
+`DashboardHocTapScreen` (`reload = setLopId('') → setTimeout(setLopId(id))` — ép effect chạy lại) và `DanhGiaCaBoTroScreen`
+(`setLoading(true)` blank list).
+
+**Sửa:** `DuyetKhoi.onXong` giờ trả `DuyetKetQua {hocSinhId, mon, loai, level}` → cha vá tại chỗ:
+- Duyệt bổ trợ: `setCands(prev => prev.filter(≠ hocSinhId))` — ca rời hàng đợi, card kế trượt lên đúng chỗ đang đứng, badge "N ca" giảm 1.
+- Dashboard: `setCands(prev => prev.map(vá sheet.levelKienThuc/levelThaiDo))` + đóng modal; `CandidateDetailBody` thêm level vào deps
+  để "Lịch sử duyệt" tự nạp lại.
+- Đánh giá ca: `setItems(prev => prev.filter(≠ case.id))`.
+tsc sạch. Không chạy duyệt thử trên HS thật (ghi `hs_level_log` thật) — logic thuần state, tự kiểm bằng mắt.
+
+**Luật ghi vào CLAUDE.md §2 (⭐ React — sau mutation không reload cả danh sách):** *đổi ngữ cảnh* ⇒ reset+fetch; *mutation cùng
+ngữ cảnh* ⇒ vá phần tử tại chỗ, callback trả kết quả vừa ghi; cần refetch thì refetch NỀN giữ list cũ, không bao giờ blank.
+
+**Còn treo (đích, chưa làm):** F5 lại thì HS đã duyệt VẪN vào hàng đợi vì `listCandidatesLop` không biết "đã duyệt trong cửa sổ này"
+(`hs_level_log` có timestamp — có thể loại candidate đã duyệt ≥1 lần trong cửa sổ hiện tại). Chờ Thùy chốt.
