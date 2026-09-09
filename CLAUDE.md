@@ -152,6 +152,9 @@
     file là có — vẫn là lời hứa. Truyền lúc gọi thì Claude không thể lấy thứ không tồn tại trong file nào.
     Cú pháp + 2 bẫy đã cắn thật (nối `&&` cùng dòng `set` ⇒ dấu cách lọt vào biến; biến ĐÈ `.env` và
     sống hết phiên terminal): xem `.env.example`. `migrate.mjs` tự bắt cả hai và in nguồn chuỗi kết nối.
+  - **✅ 09/09: `claude_ro` ĐÃ TỒN TẠI THẬT** (trước đó chỉ là ý định) — `pg_read_all_data` + policy `claude_ro_select`
+    trên từng bảng RLS (bypassrls KHÔNG gán được từ SQL Editor vì `postgres` Supabase không phải superuser).
+    `migrate.mjs` tự thêm policy cho bảng RLS mới do role ghi sở hữu; bảng tạo tay bởi `postgres` phải chạy DO block tay.
   - **⚠️ TẠO `claude_ro` PHẢI KÈM `bypassrls`** (hoặc policy `for select to claude_ro using (true)` trên
     từng bảng). 116/124 bảng bật RLS với policy `to authenticated`; role thường khớp **0 policy** ⇒
     **mọi SELECT trả 0 dòng, im lặng, không lỗi** — mà `npm run schema` VẪN đúng (nó đọc `pg_catalog`,

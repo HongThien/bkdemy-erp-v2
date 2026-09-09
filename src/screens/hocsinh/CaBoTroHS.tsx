@@ -4,7 +4,8 @@
 // Không có nút đóng ca / nhận xét ở đây — đó là việc của TA (tách quyền, chốt 03/09).
 // LamBai/LamET truyền vào qua props (không import ngược HocSinhApp → tránh vòng import).
 import { useEffect, useRef, useState, type ComponentType, type ReactNode } from 'react'
-import { caCuaToi, sinhLoLuyen, layBaiTestCaNhan, retestCuaToi, type CaCuaToi, type DangCaHS, type CumCaHS, type RetestCuaToi } from '../../lib/botro_yeu_ca'
+import { caCuaToi, sinhLoLuyen, layBaiTestCaNhan, retestCuaToi, LOAI_BO_TRO_TEN, type CaCuaToi, type DangCaHS, type CumCaHS, type RetestCuaToi, type LichBoTro } from '../../lib/botro_yeu_ca'
+import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import type { BaiTestCuaHS } from '../../lib/testonline'
 
 type LamBaiProps = { baiTestId: string; hocSinhId: string; onXong: () => void; doneCaption?: string; doneExtra?: ReactNode; desktop?: boolean }
@@ -191,10 +192,29 @@ function CumCard({ ten, sub, soCau, soDung, busy, onLuyen }: { ten: string; sub:
 }
 
 // ── Banner ở màn chính: CHỈ render khi có ca hôm nay hoặc retest đến hạn (không "sắp có", không ô trống) ──
-export function BoTroBanner({ coCa, soRetest, desktop, onCa, onRetest }: { coCa: boolean; soRetest: number; desktop?: boolean; onCa: () => void; onRetest: () => void }) {
-  if (!coCa && soRetest === 0) return null
+// Cấp 1 (HomeCap1 `extra`): 2 box Bổ trợ · Bài tập được giao (Thùy 09-09) + banner ca hôm nay + retest.
+export function BoTroBanner({ lich, coCa, soRetest, desktop, onLich, onCa, onRetest }: { lich: LichBoTro[]; coCa: boolean; soRetest: number; desktop?: boolean; onLich: () => void; onCa: () => void; onRetest: () => void }) {
+  const ke = lich[0]
+  const sub = !ke ? 'Chưa có lịch' : `${LOAI_BO_TRO_TEN[ke.loai]} · ${ke.hom_nay ? 'Hôm nay' : `${thuCuaNgay(ke.ngay)} ${ddmmVN(ke.ngay)}`}${ke.gio_bat_dau ? ` · ${String(ke.gio_bat_dau).slice(0, 5)}` : ''}${ke.phong ? ` · ${ke.phong}` : ''}`
   return (
     <div className={`flex flex-col gap-3 ${desktop ? 'mt-5' : 'mt-4'}`}>
+      <div className="grid grid-cols-2 gap-3">
+        <button onClick={onLich} className={`relative flex items-center gap-3 rounded-[22px] bg-white p-4 text-left ${SHADOW}`}>
+          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[15px] bg-ph-orange/10 text-[21px]">🧑‍🏫</span>
+          <span className="min-w-0 flex-1">
+            <span className="block text-[15px] font-bold tracking-tight text-ph-label">Bổ trợ</span>
+            <span className={`mt-0.5 block truncate text-[12px] ${ke ? 'font-semibold text-ph-orange' : 'text-ph-label-2'}`}>{sub}</span>
+          </span>
+          {lich.length > 0 && <span className="absolute -right-1.5 -top-1.5 flex h-6 min-w-6 items-center justify-center rounded-full bg-ph-red px-1.5 text-[12px] font-bold text-white">{lich.length}</span>}
+        </button>
+        <button disabled className={`flex items-center gap-3 rounded-[22px] bg-white p-4 text-left opacity-70 saturate-50 ${SHADOW}`}>
+          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[15px] bg-ph-purple/10 text-[21px]">📚</span>
+          <span className="min-w-0 flex-1">
+            <span className="block text-[15px] font-bold tracking-tight text-ph-label">Bài tập được giao</span>
+            <span className="mt-0.5 block text-[12px] text-ph-label-2">Sắp có</span>
+          </span>
+        </button>
+      </div>
       {coCa && (
         <button onClick={onCa} className={`flex items-center gap-3 rounded-[22px] bg-gradient-to-br from-brand to-brand-2 p-4 text-left text-white ${SHADOW}`}>
           <span className="flex h-11 w-11 items-center justify-center rounded-[15px] bg-white/20 text-[21px]">🧑‍🏫</span>
@@ -246,6 +266,53 @@ export function RetestHS({ hocSinhId, onXong, LamET }: { hocSinhId: string; onXo
             <p className="mt-2 text-[13px] font-medium text-brand">{r.da_nop ? 'Xem lại' : 'Bắt đầu'} →</p>
           </button>
         ))}
+    </div>
+  )
+}
+
+// ── LỊCH BỔ TRỢ (Thùy 09-09) — 3 loại yếu / bù / đuổi đã xếp cho em, sắp tới + hôm nay. Ca yếu hôm nay đã
+// điểm danh ⇒ nút "Vào ca" (CaBoTroHS). Bù/đuổi chỉ để em + PH biết lịch (làm bài trong ca là việc của TA/GV).
+const LOAI_MAU: Record<LichBoTro['loai'], string> = { bo_tro_yeu: 'bg-ph-orange/10 text-ph-orange', bu: 'bg-brand/10 text-brand', bo_tro_duoi: 'bg-ph-purple/10 text-ph-purple' }
+export function LichBoTroHS({ lich, coCa, onXong, onVaoCa }: { lich: LichBoTro[]; coCa: boolean; onXong: () => void; onVaoCa: () => void }) {
+  return (
+    <div className="mx-auto min-h-screen max-w-[640px] bg-ios px-4 pb-8">
+      <div className="sticky top-0 z-10 -mx-4 flex items-center gap-3 bg-ios px-4 pb-3 pt-[calc(12px+env(safe-area-inset-top))]">
+        <button onClick={onXong} className={`flex h-10 w-10 items-center justify-center rounded-[13px] bg-white text-[18px] ${SHADOW}`}>‹</button>
+        <div className="min-w-0">
+          <div className="text-[17px] font-bold text-ph-label">Bổ trợ</div>
+          <div className="text-[12px] text-ph-label-2">{lich.length ? `${lich.length} buổi sắp tới` : 'Chưa có lịch bổ trợ'}</div>
+        </div>
+      </div>
+      {lich.length === 0 && (
+        <div className={`rounded-[22px] bg-white p-6 text-center text-[13px] text-ph-label-2 ${SHADOW}`}>
+          Em chưa có buổi bổ trợ nào được xếp. Khi thầy cô xếp lịch (bổ trợ yếu · học bù · học đuổi) sẽ hiện ở đây.
+        </div>
+      )}
+      <div className="space-y-3">
+        {lich.map((c) => (
+          <div key={c.buoi_id} className={`rounded-[22px] bg-white p-4 ${SHADOW} ${c.hom_nay ? 'ring-2 ring-ph-orange/40' : ''}`}>
+            <div className="flex items-center gap-2">
+              <span className={`rounded-full px-2 py-0.5 text-[11px] font-bold ${LOAI_MAU[c.loai]}`}>{LOAI_BO_TRO_TEN[c.loai]}</span>
+              {c.mon && <span className="text-[12px] text-ph-label-2">{c.mon}</span>}
+              {c.hom_nay && <span className="ml-auto rounded-full bg-ph-red px-2 py-0.5 text-[11px] font-bold text-white">Hôm nay</span>}
+            </div>
+            <div className="mt-2 text-[16px] font-bold text-ph-label">
+              {thuCuaNgay(c.ngay)} {ddmmVN(c.ngay)}{c.gio_bat_dau ? ` · ${String(c.gio_bat_dau).slice(0, 5)}${c.gio_ket_thuc ? `–${String(c.gio_ket_thuc).slice(0, 5)}` : ''}` : ''}
+            </div>
+            <div className="mt-1 text-[13px] text-ph-label-2">
+              {c.phong ? `Phòng ${c.phong}` : 'Chưa có phòng'}{c.nguoi ? ` · ${c.nguoi}` : ''}
+            </div>
+            {c.vao_ca && coCa && (
+              <button onClick={onVaoCa} className={`mt-3 flex w-full items-center justify-center rounded-[16px] bg-gradient-to-br from-brand to-brand-2 py-3 text-[15px] font-bold text-white ${SHADOW}`}>
+                Vào ca luyện →
+              </button>
+            )}
+            {c.hom_nay && c.loai === 'bo_tro_yeu' && !c.vao_ca && (
+              <div className="mt-2 text-[12px] text-ph-label-2">Đến phòng, thầy cô điểm danh xong là vào luyện được.</div>
+            )}
+          </div>
+        ))}
+      </div>
     </div>
   )
 }

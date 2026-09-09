@@ -20,8 +20,8 @@ import {
   TU_LUYEN_SO_CAU_MOI_LUOT, SRC_LABEL, type DangHocTap, type RecentEval, type XepHangRow,
 } from '../../lib/tuluyen'
 import DoiMatKhau from './DoiMatKhau'
-import CaBoTroHS, { RetestHS, BoTroBanner } from './CaBoTroHS'
-import { caCuaToi, retestCuaToi } from '../../lib/botro_yeu_ca'
+import CaBoTroHS, { RetestHS, BoTroBanner, LichBoTroHS } from './CaBoTroHS'
+import { caCuaToi, retestCuaToi, lichBoTroCuaToi, type LichBoTro } from '../../lib/botro_yeu_ca'
 import { listThongBaoHS, docTatCaThongBao, type ThongBaoHS } from '../../lib/thongbaohs'
 import HomeHS, { type HomeCard } from './HomeHS'
 import DanhSachHS, { type DsRow } from './DanhSachHS'
@@ -202,12 +202,12 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [tab, setTab] = useState<'chua' | 'xong'>('chua')
   const [doiMK, setDoiMK] = useState(false)
   const [khu, setKhu] = useState<KhuId | null>(null) // null = màn chính, có ô
-  const [direct, setDirect] = useState<'tu_luyen' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'retest' | 'hop_thu' | null>(null)
+  const [direct, setDirect] = useState<'tu_luyen' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'lich_bo_tro' | 'retest' | 'hop_thu' | null>(null)
   const [cap1, setCap1] = useState<boolean | null>(null) // null = chưa biết — chờ trước khi vẽ lưới ô
   const [gioiTinh, setGioiTinh] = useState<'nam' | 'nu' | null>(null) // theme nam/nữ màn chính cấp 2/3 (kit hs-home-v4)
   const [anhUrl, setAnhUrl] = useState<string | null>(null) // avatar HS (đổi ngay trong app — ốp từ TA, mig 202609080215)
-  // Ca bổ trợ yếu hôm nay (đã điểm danh) + retest đến hạn — ô "Bổ trợ" CHỈ hiện khi có (không "sắp có", không ô trống).
-  const [boTro, setBoTro] = useState<{ coCa: boolean; soRetest: number }>({ coCa: false, soRetest: 0 })
+  // Ca yếu hôm nay (đã điểm danh) + retest đến hạn + LỊCH bổ trợ 3 loại (Thùy 09-09: box "Bổ trợ" LUÔN hiện, có lịch thì liệt kê).
+  const [boTro, setBoTro] = useState<{ coCa: boolean; soRetest: number; lich: LichBoTro[] }>({ coCa: false, soRetest: 0, lich: [] })
   // Hòm thư — chỉ cần SỐ chưa đọc để hiện badge chuông (đếm items đang render, không phải tính nghiệp vụ).
   const [chuaDoc, setChuaDoc] = useState(0)
   const taiChuaDoc = () => listThongBaoHS().then((ds) => setChuaDoc(ds.filter((d) => !d.doc_at).length)).catch(() => {})
@@ -217,8 +217,8 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   useEffect(() => { hoSoCuaToi().then((h) => { setGioiTinh(h?.gioi_tinh ?? null); setAnhUrl(h?.anh_url ?? null) }).catch(() => setGioiTinh(null)) }, [])
   useEffect(() => { taiChuaDoc() }, [])
   useEffect(() => {
-    const tai = () => Promise.all([caCuaToi().catch(() => null), retestCuaToi().catch(() => [])])
-      .then(([ca, rt]) => setBoTro({ coCa: !!ca, soRetest: rt.filter((r) => !r.da_nop).length }))
+    const tai = () => Promise.all([caCuaToi().catch(() => null), retestCuaToi().catch(() => []), lichBoTroCuaToi().catch(() => [] as LichBoTro[])])
+      .then(([ca, rt, lich]) => setBoTro({ coCa: !!ca, soRetest: rt.filter((r) => !r.da_nop).length, lich }))
     tai()
     const id = setInterval(() => { if (document.visibilityState === 'visible' && !direct && !khu) tai() }, 15000)
     return () => clearInterval(id)
@@ -231,6 +231,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   if (direct === 'xep_hang') return <BangXepHang onXong={() => setDirect(null)} />
   if (direct === 'bo_tro') return <CaBoTroHS hocSinhId={hocSinhId} desktop={!!cap1} onXong={() => setDirect(null)} LamBai={LamBai} LamET={LamET} />
   if (direct === 'retest') return <RetestHS hocSinhId={hocSinhId} onXong={() => setDirect(null)} LamET={LamET} />
+  if (direct === 'lich_bo_tro') return <LichBoTroHS lich={boTro.lich} coCa={boTro.coCa} onXong={() => setDirect(null)} onVaoCa={() => setDirect('bo_tro')} />
   if (direct === 'hop_thu') return <HopThuHS onXong={() => { setDirect(null); taiChuaDoc() }} />
 
   if (active) {
@@ -257,7 +258,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   // giữ nguyên màn cũ — CEO xác nhận "cấp 3 chưa dùng màn này", bàn sau).
   if (!khu && cap1) return <HomeCap1 hoTen={hoTen} maHS={maHS} onOpen={(d) => setDirect(d)}
     chuaDoc={chuaDoc} onHopThu={() => setDirect('hop_thu')}
-    extra={<BoTroBanner coCa={boTro.coCa} soRetest={boTro.soRetest} desktop onCa={() => setDirect('bo_tro')} onRetest={() => setDirect('retest')} />} />
+    extra={<BoTroBanner lich={boTro.lich} coCa={boTro.coCa} soRetest={boTro.soRetest} desktop onLich={() => setDirect('lich_bo_tro')} onCa={() => setDirect('bo_tro')} onRetest={() => setDirect('retest')} />} />
   // Cấp 2/3 — màn chính theo KIT hs-home-v4 (HomeHS.tsx). Ở đây CHỈ tính số/trạng thái từng ô rồi
   // truyền xuống; HomeHS thuần vẽ. Badge = việc CÒN LÀM ĐƯỢC (bài quá hạn vẫn hiện trong danh sách —
   // Thùy: "hiện quá hạn thôi" — nhưng không đếm vào badge; badge đếm cả thứ không bấm được thì thành nhiễu).
@@ -280,9 +281,9 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
       }
     })
     return <HomeHS hoTen={hoTen} maHS={maHS} lopMon={lopMon} gioiTinh={gioiTinh} anhUrl={anhUrl} onAnhChanged={setAnhUrl} chuaDoc={chuaDoc}
-      coCa={boTro.coCa} soRetest={boTro.soRetest} cards={cards}
+      lich={boTro.lich} soRetest={boTro.soRetest} cards={cards}
       onHopThu={() => setDirect('hop_thu')} onDoiMK={() => setDoiMK(true)} onThoat={() => supabase.auth.signOut()}
-      onCa={() => setDirect('bo_tro')} onRetest={() => setDirect('retest')} />
+      onLich={() => setDirect('lich_bo_tro')} onRetest={() => setDirect('retest')} />
   }
 
   // ── DANH SÁCH 1 KHU — dựng theo kit hs-bai-tap-tren-lop-v1 (DanhSachHS.tsx, dùng chung 3 khu). Ở đây CHỈ

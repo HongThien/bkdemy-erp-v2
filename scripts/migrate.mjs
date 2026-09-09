@@ -216,6 +216,18 @@ try {
       throw e
     }
   }
+  // Bảng RLS MỚI → policy đọc cho claude_ro (CEO 09/09 chọn (b)): claude_ro không có bypassrls (SQL Editor không gán được)
+  // nên đi đường policy `claude_ro_select using(true)`; bảng tạo sau mà thiếu policy thì SELECT trả 0 dòng im lặng.
+  // Idempotent; chỉ bảng role hiện tại sở hữu (6 bảng của postgres bỏ qua — chạy DO block trong SQL Editor cho chúng).
+  const { rows: thieu } = await c.query(`
+    select c.relname from pg_class c join pg_namespace n on n.oid = c.relnamespace
+    where n.nspname = 'public' and c.relkind in ('r','p') and c.relrowsecurity
+      and pg_has_role(current_user, c.relowner, 'USAGE')
+      and exists (select 1 from pg_roles where rolname = 'claude_ro')
+      and not exists (select 1 from pg_policies p where p.schemaname = 'public' and p.tablename = c.relname and p.policyname = 'claude_ro_select')
+    order by 1`)
+  for (const r of thieu) await c.query(`create policy claude_ro_select on public."${r.relname.replace(/"/g, '""')}" for select to claude_ro using (true)`)
+  if (thieu.length) console.log(`— Policy claude_ro_select thêm cho ${thieu.length} bảng RLS mới: ${thieu.map((r) => r.relname).join(', ')}`)
   console.log(`— Đã áp ${seAp.length} file. Nhớ chạy \`npm run schema\` rồi commit schema.md kèm migration.`)
 } catch (e) {
   console.error('❌', e.message)
