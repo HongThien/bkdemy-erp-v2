@@ -10148,3 +10148,82 @@ KHÔNG có chuông. App GV `ChuongDo` + app TA `NutChuongDo` = 2 bản nữa. CH
 (không ghi báo động giả lên HS thật). ET/BTVN cùng buổi: popup đúng "Chỗ bấm: ET/BTVN", 2 dạng của đề. 9S1 06/09 tab MT
 (đã đóng): 🚨 có, popup 23 dạng của đề (17 Đại + 6 Hình GT, tên đầy đủ sau fix ②). tsc 0 lỗi, console 0 lỗi.
 Chưa verify trên app GV/TA (chỉ tsc). CHƯA commit (memory: chỉ commit khi được yêu cầu).
+## 2026-09-08 (chiều) — Luồng 2 Claude Code: worker CLONE câu đã đặt hàng (`hangdoi-clone.mjs`)
+**Bối cảnh:** Thùy hỏi "luồng Claude clone các câu được đặt hàng trong kho có đang chạy không". Kiểm: bảng hàng đợi
+`dai_cau_hoi_yeu_cau_clone` + nút "đưa vào hàng đợi" (DangHub) có từ 26/08, nhưng KHÔNG có worker nào đọc bảng đó
+(pg_stat: 6 insert/4 delete/0 update từ trước tới nay ⇒ chưa yêu cầu nào từng được đánh dấu xử lý). Task Scheduler
+`BKdemy-AutoGiaiBai` chỉ đếm `*_yeu_cau_giai` (luồng 1). 56 nháp `mcq_auto_doi_so` (03:29 sáng) là luồng khác
+(`mcq-clone-doi-so.mjs`, máy đổi số, không qua đặt hàng). Thùy chốt: **Claude Code có 2 luồng — (1) giải bài
+chưa có đáp án, (2) clone câu đã đặt hàng.**
+**Làm:** `scripts/hangdoi-clone.mjs` theo đúng khuôn `hangdoi-giai.mjs`: `--list [--out]` (yêu cầu treo + câu gốc
+đầy đủ + tên dạng + ≤2 mẫu cùng dạng + cờ `co_hinh`/`goc_da_xoa`/`so_da_co`) · `--ghi f.json` (mỗi yêu cầu 1
+transaction: insert nháp `dai_cau_hoi_clone_cho_duyet` clone_method=`claude_code_batch`, parent=gốc, yeu_cau_id +
+đóng `xu_ly_at`; yêu cầu đã đóng ⇒ không ghi) · `--don` (gốc xoá mềm) · `--bo <id> [lý do]` (lý do nối vào ghi_chu)
+· `--tu-kiem` (chạy cả đường --ghi trong 1 transaction rồi ROLLBACK). Luật cứng ở code: gốc có `anh_de` ⇒ từ chối
+(hình lệch số) · dung_sai/menh_de ⇒ từ chối (bảng nháp không có cột) · biến thể thiếu lời giải/trùng gốc/trùng nhau
+⇒ bỏ · trắc nghiệm phải đúng 4 lựa chọn + đáp án A–D · không ghi quá `so_bien_the`. `spec-clone-ai.md` = luật sinh
+(chép từ `buildCloneFromGocPrompt`/FMT_RULES — nguồn luật vẫn ở api.ts, sửa thì sửa cả 2).
+**Chạy thật lần đầu:** 2 yêu cầu của Thùy Trang (16:25, T108030501007 + T108030501005, dạng nhẩm nghiệm lớp 8, 5
+biến thể/câu). Sinh bằng khuôn (x+1)(x−m)(ax−n) qua script `_auto_clone_sinh.mjs`: nhân đa thức bằng máy, kiểm
+A(−1)=0 từ hệ số thật, khuôn phải TÁI TẠO ĐÚNG 2 câu gốc trước khi tin. `--ghi` ⇒ 10 nháp, 2 yêu cầu đóng 17:12.
+Duyệt ở ERP › Bản đồ kiến thức › Đại › "Câu chờ duyệt".
+**Chưa làm (chờ Thùy):** nối vào `auto-giai-scheduler.mjs` (đếm thêm `dai_cau_hoi_yeu_cau_clone` + prompt bước 2)
+— là sửa cấu hình tác vụ đang chạy nên chưa tự đụng. **Phát hiện phụ:** scheduler luồng 1 đang hỏng — log
+`.auto-giai.log`: 13 lượt `spawnSync claude ETIMEDOUT` (20 phút), chỉ 2 lượt exit=0; 5 yêu cầu giải ưu tiên treo.
+Repo main máy này sau origin/main 26 commit. Hàng đợi clone chỉ có cho Đại (KHTN/HGT chưa có bảng — §1.6 symmetry).
+Bẫy nhỏ: template sinh in "1x^2"/"1(-1)" khi hệ số = 1 — khuôn tái tạo gốc lộ ra ngay, sửa trước khi ghi.
+
+## 2026-09-08 (tối) — Scheduler treo = CLI `claude` CHƯA LOGIN; nối luồng 2 vào scheduler
+**Thùy đoán:** "treo vì không có bài để giải". **Không phải:** log ghi rõ "Có việc: 5 yêu cầu ưu tiên, 126 bài pool"
+rồi mới treo. Giữa "Bắt đầu gọi claude -p" và "exit=null ETIMEDOUT" KHÔNG có một dòng output nào (lượt thành công
+06/09, 07/09 sáng đều in bảng báo cáo). Diễn biến: 07/09 09:47 exit=0 → 10:12–14:42 ETIMEDOUT ×9 → 15:00–15:22
+exit=1 "You've hit your session limit · resets 10:50pm" ×4 → 08/09 ETIMEDOUT tiếp. Kiểm trực tiếp: `claude auth status`
+→ `loggedIn:false, authMethod:none`; `~/.claude/.credentials.json` chỉ còn khoá `mcpOAuth`, KHÔNG có `claudeAiOauth`;
+không có `CLAUDE_CODE_OAUTH_TOKEN` ở HKCU/HKLM. Desktop app (claude.exe 2.1.260 trong AppData\Roaming\Claude) tự cấp
+auth qua host (`CLAUDE_CODE_SDK_HAS_HOST_AUTH_REFRESH`) nên phiên chat vẫn chạy; còn CLI `claude` 2.1.162 trong PATH
+mà scheduler gọi thì trắng auth ⇒ `claude -p` treo tới hết 20' timeout mỗi lượt (non-TTY, stdin ignore), khoá giữ 20'.
+**Hình cũng KHÔNG có clone** (Thùy chốt) — chỉ luồng giải; symmetry §1.6 không áp cho hàng đợi clone Hình.
+**Sửa `auto-giai-scheduler.mjs`:** (a) bước 2b kiểm `claude auth status` TRƯỚC khi tạo khoá — chưa login ⇒ log 1 lần
+(không lặp mỗi 10') + hướng dẫn `claude login` / `claude setup-token`, thoát ngay; (b) đếm thêm
+`dai_cau_hoi_yeu_cau_clone` (xu_ly_at null) → có clone treo cũng là "có việc"; (c) prompt ghép 2 phần theo việc thật
+có: LUỒNG 1 giải (spec-giai-bai-ai.md + hangdoi-giai.mjs) · LUỒNG 2 clone (spec-clone-ai.md + hangdoi-clone.mjs);
+`auto-nap-hang-doi` chỉ chạy khi có việc giải. Đã xoá 2 file tạm `_auto_clone_sinh.mjs`/`_auto_clone_kq.json` (Thùy ok).
+**Việc người phải làm (Claude không được tự đăng nhập):** mở terminal → `claude login` (hoặc `claude setup-token` rồi
+set biến user `CLAUDE_CODE_OAUTH_TOKEN`) → `node scripts/auto-giai-scheduler.mjs` chạy tay 1 lần xem exit=0.
+**Kết quả sau khi Thùy `claude login` (18:3x):** lượt Task Scheduler 18:42 qua kiểm auth → `claude -p` chạy 12 phút,
+exit=0 lúc 18:54: 5 yêu cầu Hình (BT.07.093/097/103/105, BT.08.143) → giải 7 node theo chuỗi tiền đề, verify toạ độ
+18/18, ghi qua `fn_hinh_ghi_loi_giai`, hàng đợi rỗng, dọn file tạm. Lệnh chạy tay của Thùy thoát im lặng là ĐÚNG
+thiết kế (gặp khoá của lượt 18:42 đang chạy). Pool còn 126 bài → các lượt sau tự nạp 5 bài/lượt.
+**Ưu tiên THCS (Thùy 08/09 tối):** mig `202609081920_giaibai_pool_uu_tien_thcs.sql` — `fn_giaibai_pool` đổi ORDER BY:
+`(khoi in ('6','7','8','9')) desc, nhanh, nhom_ma, ma` (cả 2 chế độ giai/hoan_thien; `khoi` là text nên so tập chữ,
+không cast). Chữ ký giữ nguyên ⇒ `auto-nap-hang-doi.mjs` không đổi (thứ tự ở SQL, §2.0). Đã áp + `npm run schema`.
+Kiểm: 10 bài đầu pool = toàn khối 8; 40 bài đầu = 31 khối 8 + 1 khối 9 rồi mới tới 4/5/10. Lượt 19:02 đã nạp 5 bài
+TRƯỚC khi đổi (theo thứ tự cũ); từ lượt 19:22 áp dụng THCS trước. Tốc độ: 5 bài/lượt ~12–16', lượt kế bỏ vì khoá ⇒
+thực tế 5 bài/20'; pool 126 ⇒ ~8h. Đề xuất chưa duyệt: --ghi từng bài (chống mất trắng khi timeout) · lô 10 +
+timeout 40' + tuổi khoá 45'.
+
+## 2026-09-09 (chiều) — Kiểm tình trạng 2 luồng · bỏ qua khối 12 · vá lỗ rò "bài Claude bỏ bị nạp lại"
+**Tình trạng (19:00 08/09 → 14:00 09/09):** 28 lượt scheduler, tất cả exit=0, 0 timeout, 0 đụng quota. 101 lời giải mới
+chờ duyệt (93 Đại + 8 KHTN). Máy tắt 22:15 → 12:42 (Task Scheduler chỉ chạy khi máy bật). THCS hết (pool còn 66 khối 12
++ 1 khối 11 + 1 khối 8). Clone: 0 đơn mới; 10 nháp Claude + 56 nháp đổi số vẫn chưa ai duyệt.
+**Lỗ rò phát hiện:** `--bo` đóng yêu cầu không ghi ⇒ bài rơi lại pool (view chỉ loại yêu cầu ĐANG MỞ) ⇒ lượt sau nạp
+lại ⇒ bỏ lại. DC000016 (câu test) bị nạp 26 lần, DCDEMO01/T111040204012 5 lần, 3 bài "vẽ đoạn thẳng" khối 4 3–4 lần
+⇒ 54/140 lượt-bài là lặp vô ích (~40%). Lý do bỏ đều đúng (data test, đề thiếu, TN 2 đáp án đúng, đáp án là hình vẽ).
+**Thùy chốt: "bỏ qua khối 12".** Hệ quả: pool sau khi bỏ khối 12 chỉ còn 2 bài thật + đám bài đã bỏ ⇒ phải vá lỗ rò
+cùng lúc, không thì scheduler đốt quota vào rác mỗi 10'.
+**Làm — mig `202609091412_giaibai_pool_bo_khoi_va_bo_claude_da_bo.sql`:** `fn_giaibai_pool` thêm 2 tham số có default
+`p_bo_khoi text[]` + `p_bo_claude_da_bo boolean` (DROP chữ ký cũ trước — create or replace chữ ký khác = overload ⇒
+"function is not unique" cho caller 4 tham số). "Claude đã bỏ" = tồn tại yêu cầu đã đóng cùng (nhanh,key) có ghi_chu
+ilike '%Claude bỏ%' trong `v_giaibai_nhan`. UI (`giaibai.ts`, 4 tham số tên) giữ nguyên hành vi — vẫn thấy 63 bài khối 12.
+`auto-nap-hang-doi.mjs`: `--bo-khoi` default "12" (đổi/xoá bằng cờ) + truyền `true` cho bỏ-Claude-đã-bỏ. Kiểm: auto pool
+= 0 bài, DC000016 không còn. Đã áp + `npm run schema`.
+**Vá scheduler kèm:** `tongPool` (fn_giaibai_dem_pool) đếm cả khối bị bỏ qua lẫn bài đã bỏ ⇒ không dùng nó để quyết định
+gọi claude nữa. Có việc giải = còn ưu tiên treo HOẶC auto-nạp nạp được ≥1 (parse "Đã nạp N"). Không việc + 0 clone ⇒ log
+"Không có gì cho Claude lượt này" rồi thoát (finally xoá khoá). Trước vá: pool 63 khối 12 ⇒ vẫn gọi claude -p mỗi 10'
+cho hàng đợi rỗng. Lượt 14:12 chạy trước vá (đã nạp 5 bài kiểu cũ), lượt 14:22 là lượt đầu theo logic mới.
+**Muốn chạy lại 1 bài Claude đã bỏ:** người sửa đề rồi xoá/đổi ghi_chu yêu cầu đã đóng (hoặc bấm ⭐ Ưu tiên — yêu cầu
+mới mở ⇒ nằm hàng ưu tiên, không qua auto-nạp). Còn treo: --ghi từng bài (chống mất trắng khi timeout) · lô 10/40'.
+**Kiểm lượt 14:22 (đầu tiên theo logic mới):** auto-nạp "Pool tổng cũng rỗng" → log "Không có gì cho Claude lượt này" → thoát
+không gọi claude ✓. NHƯNG khoá còn: `process.exit(0)` trong Node KHÔNG chạy `finally` ⇒ khoá 14:22 nằm lại, các lượt tới
+14:52 bị bỏ im lặng rồi tự dọn (tuổi khoá >30'). Sửa: unlink khoá ngay trước `process.exit`. Không xoá tay khoá cũ (luật xoá),
+để cơ chế 30' tự dọn — mất 3 lượt rỗng, vô hại vì pool đang rỗng.
