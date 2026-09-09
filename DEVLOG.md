@@ -10073,6 +10073,12 @@ dòng, không dựng lại UI để đo.
   nộp/thái độ · 18/18 Đ/C/S · nhận xét · Trả bài (NS008) → view PH `v_btvn_tra_anh` 2 ảnh + `v_btvn_tra_ket_qua` có nhận xét. PASS.
   Dọn (CEO gật): grades 18 · ket_qua 1 · anh 2 · nop 1 · file 3; problems 18 giữ; BTVN 08/09 vẫn mở cho TA thật.
 - **Còn treo thêm:** nét đã lưu (ghép vào ảnh) không hoàn tác được — cân nhắc nút "Làm lại trang" (về ảnh gốc PH nộp).
+- **"↺ Làm lại trang"** (CEO gật): `boAnhCham` set `path_cham=null` (ảnh gốc immutable, PNG cũ để nguyên như mọi lần lưu lại);
+  nút chỉ hiện khi trang có bản chấm và bài CHƯA trả PH. `3afe622`.
+- **Deploy TA prod:** `ta.bkacademy.edu.vn` (project `bkdemy-erp-v2-ta-v2`) vẫn bundle 30/08 — 10 commit hôm nay KHÔNG kích
+  auto-build dù Git đã nối (deployment mới nhất `a0358f6` 2 ngày trước). CEO "Create Deployment → main 3afe622" → Ready; curl bundle
+  `ta-BhkL1o_R.js` có "Khoanh"/"Làm lại trang". **Chưa rõ vì sao auto-deploy im** (ignoreCommand trả 0? webhook?) — soi tab
+  Deployments filter Ignored/Canceled lần sau; các project khác (gv/ops/hs) có thể cùng cảnh.
 - **Distill HANDOFF.md** (mục ① thêm "08–09/09 — FORM CÂU + KHO CHUẨN + NHẬP KHO TỪ FILE" A–E; mục ② thêm "Bài học 08–09/09" 13 gạch).
 
 ## 2026-09-09 — Bổ trợ yếu: BUG THẬT cap-1000 PostgREST — engine MÙ dữ liệu mới ở 33/46 lớp (worktree botroyeu, feat/botro-yeu)
