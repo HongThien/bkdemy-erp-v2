@@ -5,12 +5,14 @@
 // · HS không nộp app: chấm nhập tay từ bài Zalo y hệt BtvnTab ERP (2 đường sống song song).
 // Đóng BTVN = fn_dong_btvn (EXP như cũ + TỰ TRẢ nốt lượt nộp đã chấm). BTVN vẫn THAM KHẢO —
 // không mastery/Elo (CEO ⑦).
+// Màn chấm 1 HS (09/09): full-screen, landscape = ảnh+tool 70% trái · form 30% phải; portrait = xếp dọc.
+// HS không có ảnh = chấm giấy, chỉ có form.
 import { useEffect, useRef, useState } from 'react'
 import {
   listProblems, listGrades, gradeET, gradeETBulk, deleteGrade, loadBTVNForBuoi, syncBTVNProblems,
   loadHinhForBuoiPhase, syncHinhProblems, getBtvnKetQua, setBtvnKetQua, closeBTVN, reopenBTVN,
   listCanhBao,
-  type BuoiHocHS, type Problem, type Grade, type ETResult, type BtvnKQ, type BtvnTrangThai, type BtvnThaiDo, type CanhBao,
+  type BuoiHocHS, type Problem, type Grade, type ETResult, type BtvnKQ, type BtvnTrangThai, type BtvnThaiDo, type CanhBao, type DangTaiLieu,
 } from '../../lib/gami'
 import { listNopTheoBuoi, deXuatTrangThai, signUrls, uploadAnhCham, listNhanXetMau, setNhanXet, traBai, xacNhanBuoi, chuyenBuoi, listBuoiBtvnCuaLop, type BtvnNop, type BtvnNopAnh, type NhanXetMau, type BuoiBtvn } from '../../lib/btvnnop'
 import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
@@ -25,6 +27,8 @@ const THAIDO_OPTS: { v: BtvnThaiDo; l: string }[] = [
   { v: 'nghiem_tuc', l: 'Nghiêm túc' }, { v: 'chua_het_suc', l: 'Chưa hết sức' }, { v: 'chua_nghiem_tuc', l: 'Chưa nghiêm túc' }, { v: 'chong_doi', l: 'Chống đối' },
 ]
 
+type DeXuat = { nopAt: string; deXuat: string }
+
 export default function ChamBtvn({ buoi, roster, tenDang, napTenDang, onChange }: {
   buoi: BuoiFull; roster: BuoiHocHS[]; tenDang: (md: string | null) => string
   napTenDang: (mds: (string | null)[]) => Promise<void>; onChange: () => void
@@ -35,14 +39,13 @@ export default function ChamBtvn({ buoi, roster, tenDang, napTenDang, onChange }
   const [missing, setMissing] = useState(false)
   const [kq, setKq] = useState<Record<string, BtvnKQ>>({})
   const [nop, setNop] = useState<Record<string, BtvnNop>>({})
-  const [deXuat, setDeXuat] = useState<Record<string, { nopAt: string; deXuat: string }>>({})
+  const [deXuat, setDeXuat] = useState<Record<string, DeXuat>>({})
   const [urls, setUrls] = useState<Record<string, string>>({})
   const [nxMau, setNxMau] = useState<NhanXetMau[]>([])
   const [cb, setCb] = useState<CanhBao[]>([])
   const [loading, setLoading] = useState(true)
   const [closing, setClosing] = useState(false)
   const [hsMo, setHsMo] = useState<string | null>(null)
-  const [veAnh, setVeAnh] = useState<BtvnNopAnh | null>(null)
   const dong = !!buoi.btvn_dong_at
   const coMat = roster.filter((r) => r.diem_danh === 'co_mat')
   // HS nộp app nhưng KHÔNG co_mat (vắng/chưa điểm danh) vẫn hiện để chấm — bài đã nộp là bài thật.
@@ -117,6 +120,14 @@ export default function ChamBtvn({ buoi, roster, tenDang, napTenDang, onChange }
   async function chuyen_(hsId: string, buoiMoi: string) {
     try { await chuyenBuoi(hsId, buoiId, buoiMoi); setHsMo(null); await reloadNop() } catch (e: any) { alert(e.message ?? String(e)) }
   }
+  async function toggleNhanXet(hsId: string, ma: string) {
+    const n = nop[hsId]
+    if (!n) return
+    const on = n.nhan_xet_ma.includes(ma)
+    const next = on ? n.nhan_xet_ma.filter((x) => x !== ma) : [...n.nhan_xet_ma, ma]
+    setNop((cur) => ({ ...cur, [hsId]: { ...cur[hsId], nhan_xet_ma: next } }))
+    try { await setNhanXet(buoiId, hsId, next) } catch (e: any) { alert(e.message ?? String(e)); reloadNop() }
+  }
 
   if (loading) return <p className="text-[13px] text-slate-400">Đang tải BTVN…</p>
   if (missing && Object.keys(nop).length === 0)
@@ -124,6 +135,8 @@ export default function ChamBtvn({ buoi, roster, tenDang, napTenDang, onChange }
   if (dsHS.length === 0) return <p className="text-[13px] text-slate-400">Chưa có HS điểm danh "có mặt" và chưa ai nộp app.</p>
 
   const soNop = Object.keys(nop).length
+  const iMo = dsHS.findIndex((r) => r.hoc_sinh_id === hsMo)
+  const rMo = iMo >= 0 ? dsHS[iMo] : null
   return (
     <div>
       <div className="mb-2.5 flex items-center gap-2">
@@ -136,140 +149,156 @@ export default function ChamBtvn({ buoi, roster, tenDang, napTenDang, onChange }
           const hsId = r.hoc_sinh_id
           const n = nop[hsId]
           const dx = deXuat[hsId]
-          const v = kq[hsId] ?? { trang_thai_nop: null, thai_do: null }
           const daChamSo = probs.filter((p) => gradeOf(p.id, hsId)).length
-          const mo = hsMo === hsId
+          const daVe = n?.anh.filter((a) => a.path_cham).length ?? 0
           return (
-            <div key={r.id} className={`overflow-hidden rounded-2xl border border-slate-200/70 bg-white shadow-sm ${mo ? 'sm:col-span-2' : ''}`}>
-              <button onClick={() => setHsMo(mo ? null : hsId)} className="flex min-h-[52px] w-full items-center gap-2 px-3 py-2 text-left active:bg-slate-50">
-                <div className="min-w-0 flex-1">
-                  <p className="flex items-center gap-1.5 text-[13.5px] font-bold text-slate-800">
-                    <span className="truncate">{tenHT[i]}</span>
-                    {r.diem_danh !== 'co_mat' && <span className="shrink-0 rounded bg-slate-100 px-1.5 py-0.5 text-[10px] font-semibold text-slate-500">vắng buổi</span>}
-                  </p>
-                  <p className="flex flex-wrap items-center gap-1.5 text-[11.5px] text-slate-400">
-                    {n ? (
-                      <>
-                        <span className="rounded bg-teal-50 px-1.5 py-0.5 font-semibold text-teal-700">📱 {n.anh.length} ảnh</span>
-                        {!n.buoi_xac_nhan_at && <span className="rounded bg-amber-100 px-1.5 py-0.5 font-semibold text-amber-700">⚠ chưa chốt buổi</span>}
-                        {dx && <span className={`rounded px-1.5 py-0.5 font-semibold ${dx.deXuat === 'nop_dung_han' ? 'bg-emerald-50 text-emerald-700' : 'bg-orange-50 text-orange-600'}`}>đề xuất: {dx.deXuat === 'nop_dung_han' ? 'đúng hạn' : 'nộp muộn'}</span>}
-                        {n.tra_at ? <span className="rounded bg-indigo-50 px-1.5 py-0.5 font-semibold text-indigo-600">✓ đã trả PH</span> : null}
-                      </>
-                    ) : <span>chấm từ bài Zalo</span>}
-                    {probs.length > 0 && <span>· chấm {daChamSo}/{probs.length}</span>}
-                  </p>
-                </div>
-                <span className={`text-slate-300 transition ${mo ? 'rotate-90' : ''}`}>›</span>
-              </button>
-
-              {mo && (
-                <div className="border-t border-slate-100 px-3 py-2.5">
-                  {/* Hệ gán TẠM buổi (PH nộp không chọn buổi) → TA CHỐT trước khi trả bài */}
-                  {n && !n.buoi_xac_nhan_at && !dong && (
-                    <ChotBuoiBanner lopId={buoi.lop_id ?? ''} buoiNgay={buoi.ngay}
-                      onDungBuoi={() => xacNhan_(hsId)} onChuyen={(bm) => chuyen_(hsId, bm)} />
-                  )}
-                  {/* xấp ảnh nộp qua app — bấm ảnh để VẼ ĐÁNH DẤU */}
-                  {n && n.anh.length > 0 && (
-                    <div className="mb-2.5 flex gap-2 overflow-x-auto pb-1">
-                      {n.anh.map((a) => {
-                        const src = urls[a.path_cham ?? a.path]
-                        return (
-                          <button key={a.id} onClick={() => setVeAnh(a)} className="relative shrink-0">
-                            {src ? <img src={src} alt="" className="h-28 w-20 rounded-lg border border-slate-200 object-cover" /> : <span className="flex h-28 w-20 items-center justify-center rounded-lg border border-slate-200 text-[10px] text-slate-400">ảnh…</span>}
-                            {a.path_cham && <span className="absolute right-1 top-1 rounded bg-rose-600 px-1 text-[9px] font-bold text-white">✎</span>}
-                          </button>
-                        )
-                      })}
-                    </div>
-                  )}
-
-                  {/* trạng thái nộp (đề xuất sẵn — TA tick) + thái độ */}
-                  <div className="mb-2.5 flex flex-wrap gap-1.5">
-                    {NOP_OPTS.map((o) => (
-                      <button key={o.v} disabled={dong} onClick={() => setKQField(hsId, { trang_thai_nop: v.trang_thai_nop === o.v ? null : o.v })}
-                        className={`min-h-[34px] rounded-lg border px-2.5 text-[12px] font-semibold disabled:opacity-50 ${v.trang_thai_nop === o.v ? 'border-transparent bg-teal-600 text-white' : dx && dx.deXuat === o.v && !v.trang_thai_nop ? 'border-teal-400 border-dashed text-teal-700' : 'border-slate-200 text-slate-500'}`}>{o.l}{dx && dx.deXuat === o.v && !v.trang_thai_nop ? ' ←' : ''}</button>
-                    ))}
-                  </div>
-                  <div className="mb-2.5 flex flex-wrap gap-1.5">
-                    {THAIDO_OPTS.map((o) => (
-                      <button key={o.v} disabled={dong} onClick={() => setKQField(hsId, { thai_do: v.thai_do === o.v ? null : o.v })}
-                        className={`min-h-[34px] rounded-lg border px-2.5 text-[12px] font-semibold disabled:opacity-50 ${v.thai_do === o.v ? 'border-transparent bg-slate-700 text-white' : 'border-slate-200 text-slate-500'}`}>{o.l}</button>
-                    ))}
-                  </div>
-
-                  {/* chấm per câu Đ/C/S (tham khảo — không mastery/Elo) */}
-                  {probs.length > 0 && (
-                    <div className="mb-2.5 rounded-xl border border-slate-100 bg-slate-50/60 p-2">
-                      <div className="mb-1.5 flex items-center gap-1.5">
-                        <span className="text-[11px] font-semibold text-slate-400">Tất cả:</span>
-                        {ET_KQ.map((k) => (
-                          <button key={k.v} onClick={() => bulkRow(hsId, k.v)} disabled={dong} className={`h-8 w-9 rounded-lg border bg-white text-[12px] font-bold ${k.idle} disabled:opacity-40`}>{k.lbl}</button>
-                        ))}
-                      </div>
-                      <div className="flex flex-col gap-1">
-                        {probs.map((p) => {
-                          const g = gradeOf(p.id, hsId)
-                          return (
-                            <div key={p.id} className="flex items-center gap-2">
-                              <span className="min-w-0 flex-1 truncate text-[12px] text-slate-600">
-                                <b>{p.hinh_baitoan_id ? `Bài ${p.hinh_nhan}` : `Câu ${p.problem_no}`}</b>
-                                <span className="text-slate-400"> · {p.hinh_baitoan_id ? 'Hình' : tenDang(p.ma_dang)}</span>
-                              </span>
-                              <div className="flex gap-1">
-                                {ET_KQ.map((k) => (
-                                  <button key={k.v} onClick={() => pickKQ(p.id, hsId, k.v)} disabled={dong}
-                                    className={`h-9 w-10 rounded-lg border text-[13px] font-bold bg-white transition ${g?.result === k.v ? k.sel : k.idle} ${dong && g?.result !== k.v ? 'opacity-40' : ''}`}>{k.lbl}</button>
-                                ))}
-                              </div>
-                            </div>
-                          )
-                        })}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* nhận xét gửi PH — CHỌN TỪ LIST (CEO 30/08), chỉ có nghĩa với lượt nộp app */}
-                  {n && nxMau.length > 0 && (
-                    <div className="mb-2.5">
-                      <p className="mb-1 text-[11px] font-semibold text-slate-400">Nhận xét gửi PH (chọn):</p>
-                      <div className="flex flex-wrap gap-1.5">
-                        {nxMau.map((m) => {
-                          const on = n.nhan_xet_ma.includes(m.ma)
-                          return (
-                            <button key={m.ma} onClick={async () => {
-                              const next = on ? n.nhan_xet_ma.filter((x) => x !== m.ma) : [...n.nhan_xet_ma, m.ma]
-                              setNop((cur) => ({ ...cur, [hsId]: { ...cur[hsId], nhan_xet_ma: next } }))
-                              try { await setNhanXet(buoiId, hsId, next) } catch (e: any) { alert(e.message ?? String(e)); reloadNop() }
-                            }} className={`rounded-lg border px-2 py-1 text-left text-[11.5px] font-medium ${on ? 'border-transparent bg-teal-600 text-white' : 'border-slate-200 text-slate-500'}`}>{m.noi_dung}</button>
-                          )
-                        })}
-                      </div>
-                    </div>
-                  )}
-
-                  <div className="flex items-center gap-2">
-                    <div className="flex flex-wrap items-center gap-1.5">
-                      <ChuongBaoDong buoiId={buoiId} hsId={hsId} hsTen={r.hoc_sinh?.ho_ten ?? '?'} nguon="btvn" khoi={buoi.lop?.khoi} mon={buoi.lop?.mon} nhan="Kém dạng"
-                        className="min-h-[38px] rounded-lg border border-rose-200 px-2.5 text-[12.5px] font-semibold text-rose-600 active:bg-rose-50"
-                        dangTaiLieu={hopDang(dangTL.dang, dangBuoi, tenDang)} dangLoading={dangTL.loading} onSaved={async () => setCb(await listCanhBao(buoiId))} />
-                      <ChipCanhBao cb={cb.filter((x) => x.hoc_sinh_id === hsId)} tenDang={tenDang} mon={buoi.lop?.mon} onChanged={async () => setCb(await listCanhBao(buoiId))} />
-                    </div>
-                    {n && (n.tra_at
-                      ? <span className="ml-auto rounded-lg bg-indigo-50 px-2.5 py-1.5 text-[12px] font-semibold text-indigo-600">✓ Đã trả bài cho PH</span>
-                      : <button onClick={() => { if (confirm('Trả bài cho PH? PH sẽ thấy ảnh bài chấm + kết quả + đáp án chi tiết.')) traBai_(hsId) }}
-                          disabled={!n.buoi_xac_nhan_at} title={n.buoi_xac_nhan_at ? '' : 'Chốt buổi trước đã'}
-                          className="ml-auto min-h-[38px] rounded-lg bg-indigo-600 px-3 text-[12.5px] font-semibold text-white active:bg-indigo-500 disabled:opacity-40">📤 Trả bài cho PH</button>)}
-                  </div>
-                </div>
-              )}
-            </div>
+            <button key={r.id} onClick={() => setHsMo(hsId)} className="flex min-h-[52px] w-full items-center gap-2 rounded-2xl border border-slate-200/70 bg-white px-3 py-2 text-left shadow-sm active:bg-slate-50">
+              <div className="min-w-0 flex-1">
+                <p className="flex items-center gap-1.5 text-[13.5px] font-bold text-slate-800">
+                  <span className="truncate">{tenHT[i]}</span>
+                  {r.diem_danh !== 'co_mat' && <span className="shrink-0 rounded bg-slate-100 px-1.5 py-0.5 text-[10px] font-semibold text-slate-500">vắng buổi</span>}
+                </p>
+                <p className="flex flex-wrap items-center gap-1.5 text-[11.5px] text-slate-400">
+                  {n ? (
+                    <>
+                      <span className="rounded bg-teal-50 px-1.5 py-0.5 font-semibold text-teal-700">📱 {n.anh.length} ảnh{daVe > 0 && ` · ✎ ${daVe}`}</span>
+                      {!n.buoi_xac_nhan_at && <span className="rounded bg-amber-100 px-1.5 py-0.5 font-semibold text-amber-700">⚠ chưa chốt buổi</span>}
+                      {dx && <span className={`rounded px-1.5 py-0.5 font-semibold ${dx.deXuat === 'nop_dung_han' ? 'bg-emerald-50 text-emerald-700' : 'bg-orange-50 text-orange-600'}`}>đề xuất: {dx.deXuat === 'nop_dung_han' ? 'đúng hạn' : 'nộp muộn'}</span>}
+                      {n.tra_at ? <span className="rounded bg-indigo-50 px-1.5 py-0.5 font-semibold text-indigo-600">✓ đã trả PH</span> : null}
+                    </>
+                  ) : <span>chấm giấy / Zalo</span>}
+                  {probs.length > 0 && <span>· chấm {daChamSo}/{probs.length}</span>}
+                </p>
+              </div>
+              <span className="text-slate-300">›</span>
+            </button>
           )
         })}
       </div>
 
-      {veAnh && <AnnotateModal anh={veAnh} src={urls[veAnh.path_cham ?? veAnh.path]} onClose={() => setVeAnh(null)}
-        onSaved={async () => { setVeAnh(null); await reloadNop() }} />}
+      {rMo && (
+        <ChamMotHS key={rMo.hoc_sinh_id} r={rMo} ten={tenHT[iMo]} buoi={buoi} n={nop[rMo.hoc_sinh_id]} dx={deXuat[rMo.hoc_sinh_id]}
+          v={kq[rMo.hoc_sinh_id] ?? { trang_thai_nop: null, thai_do: null }} probs={probs} gradeOf={gradeOf} dong={dong}
+          urls={urls} nxMau={nxMau} dangTaiLieu={hopDang(dangTL.dang, dangBuoi, tenDang)} dangLoading={dangTL.loading} tenDang={tenDang} cb={cb.filter((x) => x.hoc_sinh_id === rMo.hoc_sinh_id)}
+          onClose={() => setHsMo(null)} pickKQ={pickKQ} bulkRow={bulkRow} setKQField={setKQField} traBai={traBai_}
+          xacNhan={xacNhan_} chuyen={chuyen_} toggleNhanXet={toggleNhanXet} reloadNop={reloadNop}
+          onCanhBaoChanged={async () => setCb(await listCanhBao(buoiId))} />
+      )}
+    </div>
+  )
+}
+
+// ── MÀN CHẤM 1 HS — full-screen. Landscape: ảnh+tool 70% trái · form 30% phải. Portrait: ảnh trên, form dưới.
+// HS không có ảnh (chấm giấy) → chỉ form.
+function ChamMotHS({ r, ten, buoi, n, dx, v, probs, gradeOf, dong, urls, nxMau, dangTaiLieu, dangLoading, tenDang, cb,
+  onClose, pickKQ, bulkRow, setKQField, traBai, xacNhan, chuyen, toggleNhanXet, reloadNop, onCanhBaoChanged }: {
+  r: BuoiHocHS; ten: string; buoi: BuoiFull; n?: BtvnNop; dx?: DeXuat; v: BtvnKQ; probs: Problem[]
+  gradeOf: (pid: string, hsId: string) => Grade | undefined; dong: boolean; urls: Record<string, string>
+  nxMau: NhanXetMau[]; dangTaiLieu: DangTaiLieu[]; dangLoading: boolean; tenDang: (md: string | null) => string; cb: CanhBao[]
+  onClose: () => void; pickKQ: (pid: string, hsId: string, result: ETResult) => void; bulkRow: (hsId: string, result: ETResult) => void
+  setKQField: (hsId: string, patch: Partial<BtvnKQ>) => void; traBai: (hsId: string) => void; xacNhan: (hsId: string) => void
+  chuyen: (hsId: string, buoiMoi: string) => void; toggleNhanXet: (hsId: string, ma: string) => void
+  reloadNop: () => Promise<void>; onCanhBaoChanged: () => Promise<void>
+}) {
+  const hsId = r.hoc_sinh_id
+  const coAnh = !!n && n.anh.length > 0
+  return (
+    <div className="fixed inset-0 z-[60] flex flex-col bg-slate-100" style={{ paddingTop: 'env(safe-area-inset-top)', paddingBottom: 'env(safe-area-inset-bottom)' }}>
+      <div className="flex min-h-[46px] items-center gap-2 border-b border-slate-200 bg-white px-3">
+        <button onClick={onClose} className="rounded-lg px-2.5 py-1.5 text-[13.5px] font-semibold text-slate-600 active:bg-slate-100">‹ Danh sách</button>
+        <p className="min-w-0 flex-1 truncate text-[14px] font-bold text-slate-900">{ten}
+          {r.diem_danh !== 'co_mat' && <span className="ml-1.5 rounded bg-slate-100 px-1.5 py-0.5 text-[10px] font-semibold text-slate-500">vắng buổi</span>}
+          {!coAnh && <span className="ml-1.5 text-[11.5px] font-medium text-slate-400">chấm giấy</span>}
+        </p>
+        {n && (n.tra_at
+          ? <span className="rounded-lg bg-indigo-50 px-2.5 py-1.5 text-[12px] font-semibold text-indigo-600">✓ Đã trả PH</span>
+          : <button onClick={() => { if (confirm('Trả bài cho PH? PH sẽ thấy ảnh bài chấm + kết quả + đáp án chi tiết.')) traBai(hsId) }}
+              disabled={!n.buoi_xac_nhan_at} title={n.buoi_xac_nhan_at ? '' : 'Chốt buổi trước đã'}
+              className="min-h-[36px] rounded-lg bg-indigo-600 px-3 text-[12.5px] font-semibold text-white active:bg-indigo-500 disabled:opacity-40">📤 Trả bài PH</button>)}
+      </div>
+
+      <div className="flex min-h-0 flex-1 flex-col landscape:flex-row">
+        {coAnh && (
+          <div className="flex min-h-0 flex-col border-slate-200 portrait:h-[55%] portrait:border-b landscape:w-[70%] landscape:border-r">
+            <VeAnh key={hsId} anhDs={n!.anh} urls={urls} reloadNop={reloadNop} />
+          </div>
+        )}
+        <div className="min-h-0 flex-1 overflow-y-auto bg-white px-3 py-2.5">
+          {n && !n.buoi_xac_nhan_at && !dong && (
+            <ChotBuoiBanner lopId={buoi.lop_id ?? ''} buoiNgay={buoi.ngay} onDungBuoi={() => xacNhan(hsId)} onChuyen={(bm) => chuyen(hsId, bm)} />
+          )}
+
+          <p className="mb-1 text-[11px] font-semibold text-slate-400">Trạng thái nộp{dx ? ' (hệ đề xuất ←)' : ''}:</p>
+          <div className="mb-2.5 flex flex-wrap gap-1.5">
+            {NOP_OPTS.map((o) => (
+              <button key={o.v} disabled={dong} onClick={() => setKQField(hsId, { trang_thai_nop: v.trang_thai_nop === o.v ? null : o.v })}
+                className={`min-h-[34px] rounded-lg border px-2.5 text-[12px] font-semibold disabled:opacity-50 ${v.trang_thai_nop === o.v ? 'border-transparent bg-teal-600 text-white' : dx && dx.deXuat === o.v && !v.trang_thai_nop ? 'border-teal-400 border-dashed text-teal-700' : 'border-slate-200 text-slate-500'}`}>{o.l}{dx && dx.deXuat === o.v && !v.trang_thai_nop ? ' ←' : ''}</button>
+            ))}
+          </div>
+          <p className="mb-1 text-[11px] font-semibold text-slate-400">Thái độ:</p>
+          <div className="mb-2.5 flex flex-wrap gap-1.5">
+            {THAIDO_OPTS.map((o) => (
+              <button key={o.v} disabled={dong} onClick={() => setKQField(hsId, { thai_do: v.thai_do === o.v ? null : o.v })}
+                className={`min-h-[34px] rounded-lg border px-2.5 text-[12px] font-semibold disabled:opacity-50 ${v.thai_do === o.v ? 'border-transparent bg-slate-700 text-white' : 'border-slate-200 text-slate-500'}`}>{o.l}</button>
+            ))}
+          </div>
+
+          {/* chấm per câu Đ/C/S (tham khảo — không mastery/Elo) */}
+          {probs.length > 0 && (
+            <div className="mb-2.5 rounded-xl border border-slate-100 bg-slate-50/60 p-2">
+              <div className="mb-1.5 flex items-center gap-1.5">
+                <span className="text-[11px] font-semibold text-slate-400">Tất cả:</span>
+                {ET_KQ.map((k) => (
+                  <button key={k.v} onClick={() => bulkRow(hsId, k.v)} disabled={dong} className={`h-8 w-9 rounded-lg border bg-white text-[12px] font-bold ${k.idle} disabled:opacity-40`}>{k.lbl}</button>
+                ))}
+              </div>
+              <div className="flex flex-col gap-1">
+                {probs.map((p) => {
+                  const g = gradeOf(p.id, hsId)
+                  return (
+                    <div key={p.id} className="flex items-center gap-2">
+                      <span className="min-w-0 flex-1 truncate text-[12px] text-slate-600">
+                        <b>{p.hinh_baitoan_id ? `Bài ${p.hinh_nhan}` : `Câu ${p.problem_no}`}</b>
+                        <span className="text-slate-400"> · {p.hinh_baitoan_id ? 'Hình' : tenDang(p.ma_dang)}</span>
+                      </span>
+                      <div className="flex gap-1">
+                        {ET_KQ.map((k) => (
+                          <button key={k.v} onClick={() => pickKQ(p.id, hsId, k.v)} disabled={dong}
+                            className={`h-9 w-10 rounded-lg border text-[13px] font-bold transition ${g?.result === k.v ? k.sel : `${k.idle} bg-white`} ${dong && g?.result !== k.v ? 'opacity-40' : ''}`}>{k.lbl}</button>
+                        ))}
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* nhận xét gửi PH — CHỌN TỪ LIST (CEO 30/08), chỉ có nghĩa với lượt nộp app */}
+          {n && nxMau.length > 0 && (
+            <div className="mb-2.5">
+              <p className="mb-1 text-[11px] font-semibold text-slate-400">Nhận xét gửi PH (chọn):</p>
+              <div className="flex flex-wrap gap-1.5">
+                {nxMau.map((m) => {
+                  const on = n.nhan_xet_ma.includes(m.ma)
+                  return (
+                    <button key={m.ma} onClick={() => toggleNhanXet(hsId, m.ma)}
+                      className={`rounded-lg border px-2 py-1 text-left text-[11.5px] font-medium ${on ? 'border-transparent bg-teal-600 text-white' : 'border-slate-200 text-slate-500'}`}>{m.noi_dung}</button>
+                  )
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* 🚨 chuông dùng chung (CEO 09/09): luôn bấm được, dạng = có trong phiếu BTVN + ghi chú */}
+          <div className="flex flex-wrap items-center gap-1.5">
+            <ChuongBaoDong buoiId={buoi.id} hsId={hsId} hsTen={r.hoc_sinh?.ho_ten ?? '?'} nguon="btvn" khoi={buoi.lop?.khoi} mon={buoi.lop?.mon} nhan="Kém dạng"
+              className="min-h-[38px] rounded-lg border border-rose-200 px-2.5 text-[12.5px] font-semibold text-rose-600 active:bg-rose-50"
+              dangTaiLieu={dangTaiLieu} dangLoading={dangLoading} onSaved={() => { void onCanhBaoChanged() }} />
+            <ChipCanhBao cb={cb} tenDang={tenDang} mon={buoi.lop?.mon} onChanged={() => { void onCanhBaoChanged() }} />
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
@@ -292,7 +321,7 @@ function ChotBuoiBanner({ lopId, buoiNgay, onDungBuoi, onChuyen }: {
         <button onClick={moChuyen} className="min-h-[36px] rounded-lg border border-amber-400 px-3 text-[12.5px] font-semibold text-amber-800 active:bg-amber-100">→ Bài thuộc buổi khác</button>
       </div>
       {moPicker && (
-        <div className="fixed inset-0 z-50 flex items-end justify-center bg-slate-900/40 p-3 sm:items-center" onClick={() => setMoPicker(false)}>
+        <div className="fixed inset-0 z-[70] flex items-end justify-center bg-slate-900/40 p-3 sm:items-center" onClick={() => setMoPicker(false)}>
           <div className="max-h-[70dvh] w-full max-w-[440px] overflow-auto rounded-2xl bg-white p-4 shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <p className="mb-2 text-[14px] font-bold text-slate-900">Chuyển bài sang buổi nào?</p>
             {dsBuoi === null ? <p className="text-[12px] text-slate-400">Đang tải…</p>
@@ -313,17 +342,45 @@ function ChotBuoiBanner({ lopId, buoiNgay, onDungBuoi, onChuyen }: {
 }
 
 
-// ── VẼ ĐÁNH DẤU lên ảnh bài nộp: bút đỏ + undo, lưu = PNG MỚI (path_cham) — ảnh gốc immutable.
-// Toạ độ chạm map qua tỉ lệ rect (bài học PdfCropper: chia tỉ lệ, không trừ thẳng — né zoom CSS).
-function AnnotateModal({ anh, src, onClose, onSaved }: { anh: BtvnNopAnh; src?: string; onClose: () => void; onSaved: () => void }) {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
-  const imgRef = useRef<HTMLImageElement | null>(null)
-  const strokesRef = useRef<{ x: number; y: number }[][]>([])
+// ── VẼ ĐÁNH DẤU lên xấp ảnh. Ảnh = <img> lớp dưới, nét vẽ = canvas TRONG SUỐT lớp trên (tẩy chỉ xoá nét,
+// không đụng ảnh); Lưu = ghép 2 lớp thành PNG MỚI (path_cham) — ảnh gốc immutable. Nét CHƯA LƯU của từng
+// trang giữ trong memory khi chuyển trang (mất khi đóng màn). Toạ độ chạm map qua tỉ lệ rect (né zoom CSS).
+type Tool = 'do' | 'xanh' | 'tay' | 'check' | 'cross' | 'text'
+type Mark =
+  | { k: 'net'; mau: string; tay: boolean; pts: { x: number; y: number }[] }
+  | { k: 'dau'; loai: 'check' | 'cross'; x: number; y: number }
+  | { k: 'text'; x: number; y: number; text: string }
+const TOOLS: { t: Tool; lbl: string; cls: string }[] = [
+  { t: 'do', lbl: '🔴 Đỏ', cls: 'bg-rose-600 text-white border-transparent' },
+  { t: 'xanh', lbl: '🔵 Xanh', cls: 'bg-blue-600 text-white border-transparent' },
+  { t: 'tay', lbl: '🧹 Tẩy', cls: 'bg-slate-600 text-white border-transparent' },
+  { t: 'check', lbl: '✓', cls: 'bg-emerald-600 text-white border-transparent' },
+  { t: 'cross', lbl: '✗', cls: 'bg-rose-600 text-white border-transparent' },
+  { t: 'text', lbl: 'Aa', cls: 'bg-slate-800 text-white border-transparent' },
+]
+
+function VeAnh({ anhDs, urls, reloadNop }: { anhDs: BtvnNopAnh[]; urls: Record<string, string>; reloadNop: () => Promise<void> }) {
+  // Bản local của xấp ảnh + URL: sau Lưu tự cập nhật path_cham ngay, không chờ cha reload.
+  const [anhs, setAnhs] = useState<BtvnNopAnh[]>(anhDs)
+  const [localUrls, setLocalUrls] = useState<Record<string, string>>(urls)
+  const [idx, setIdx] = useState(0)
+  const [tool, setTool] = useState<Tool>('do')
   const [ready, setReady] = useState(false)
   const [busy, setBusy] = useState(false)
-  const [tick, setTick] = useState(0) // đếm nét để enable nút
+  const [tick, setTick] = useState(0)
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const imgRef = useRef<HTMLImageElement | null>(null)
+  const marksRef = useRef<Record<string, Mark[]>>({}) // nháp theo TRANG (key = anh.id)
+  const drawing = useRef(false)
+
+  useEffect(() => { setLocalUrls((cur) => ({ ...urls, ...cur })) }, [urls])
+
+  const anh = anhs[idx]
+  const src = anh ? localUrls[anh.path_cham ?? anh.path] : undefined
+  const marks = () => (marksRef.current[anh.id] ??= [])
 
   useEffect(() => {
+    setReady(false); imgRef.current = null
     if (!src) return
     const img = new Image()
     img.crossOrigin = 'anonymous' // signed URL Supabase có CORS * — cần để canvas export không taint
@@ -336,53 +393,122 @@ function AnnotateModal({ anh, src, onClose, onSaved }: { anh: BtvnNopAnh; src?: 
   function paint() {
     const cv = canvasRef.current, img = imgRef.current
     if (!cv || !img) return
-    cv.width = img.naturalWidth; cv.height = img.naturalHeight
+    if (cv.width !== img.naturalWidth || cv.height !== img.naturalHeight) { cv.width = img.naturalWidth; cv.height = img.naturalHeight }
     const ctx = cv.getContext('2d')!
-    ctx.drawImage(img, 0, 0)
-    ctx.strokeStyle = '#e11d48'; ctx.lineWidth = Math.max(3, img.naturalWidth / 300); ctx.lineCap = 'round'; ctx.lineJoin = 'round'
-    for (const s of strokesRef.current) {
-      ctx.beginPath()
-      s.forEach((p, i) => (i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y)))
-      ctx.stroke()
+    ctx.clearRect(0, 0, cv.width, cv.height)
+    const W = cv.width
+    const lw = Math.max(3, W / 300)
+    ctx.lineCap = 'round'; ctx.lineJoin = 'round'
+    for (const m of marks()) {
+      if (m.k === 'net') {
+        ctx.globalCompositeOperation = m.tay ? 'destination-out' : 'source-over'
+        ctx.strokeStyle = m.mau; ctx.lineWidth = m.tay ? lw * 4 : lw
+        ctx.beginPath()
+        m.pts.forEach((p, i) => (i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y)))
+        if (m.pts.length === 1) ctx.lineTo(m.pts[0].x + 0.1, m.pts[0].y)
+        ctx.stroke()
+      } else if (m.k === 'dau') {
+        ctx.globalCompositeOperation = 'source-over'
+        const s = Math.max(28, W / 14)
+        ctx.lineWidth = lw * 1.6
+        ctx.beginPath()
+        if (m.loai === 'check') { ctx.strokeStyle = '#059669'; ctx.moveTo(m.x - s * 0.45, m.y); ctx.lineTo(m.x - s * 0.1, m.y + s * 0.4); ctx.lineTo(m.x + s * 0.5, m.y - s * 0.45) }
+        else { ctx.strokeStyle = '#e11d48'; ctx.moveTo(m.x - s * 0.4, m.y - s * 0.4); ctx.lineTo(m.x + s * 0.4, m.y + s * 0.4); ctx.moveTo(m.x + s * 0.4, m.y - s * 0.4); ctx.lineTo(m.x - s * 0.4, m.y + s * 0.4) }
+        ctx.stroke()
+      } else {
+        ctx.globalCompositeOperation = 'source-over'
+        ctx.fillStyle = '#b91c1c'
+        ctx.font = `bold ${Math.max(20, Math.round(W / 28))}px sans-serif`
+        ctx.textBaseline = 'middle'
+        ctx.fillText(m.text, m.x, m.y)
+      }
     }
+    ctx.globalCompositeOperation = 'source-over'
   }
   function toaDo(e: React.PointerEvent): { x: number; y: number } {
     const cv = canvasRef.current!
     const rect = cv.getBoundingClientRect()
     return { x: ((e.clientX - rect.left) / rect.width) * cv.width, y: ((e.clientY - rect.top) / rect.height) * cv.height }
   }
-  const drawing = useRef(false)
-  function down(e: React.PointerEvent) { if (!ready) return; drawing.current = true; strokesRef.current.push([toaDo(e)]); (e.target as Element).setPointerCapture(e.pointerId) }
-  function move(e: React.PointerEvent) { if (!drawing.current) return; strokesRef.current[strokesRef.current.length - 1].push(toaDo(e)); paint() }
+  function down(e: React.PointerEvent) {
+    if (!ready) return
+    const p = toaDo(e)
+    if (tool === 'check' || tool === 'cross') { marks().push({ k: 'dau', loai: tool, x: p.x, y: p.y }); paint(); setTick((t) => t + 1); return }
+    if (tool === 'text') {
+      const text = (prompt('Ghi chú ngắn:') ?? '').trim()
+      if (text) { marks().push({ k: 'text', x: p.x, y: p.y, text }); paint(); setTick((t) => t + 1) }
+      return
+    }
+    drawing.current = true
+    marks().push({ k: 'net', mau: tool === 'xanh' ? '#2563eb' : '#e11d48', tay: tool === 'tay', pts: [p] });
+    (e.target as Element).setPointerCapture(e.pointerId)
+    paint()
+  }
+  function move(e: React.PointerEvent) {
+    if (!drawing.current) return
+    const ms = marks(); const m = ms[ms.length - 1]
+    if (m?.k === 'net') { m.pts.push(toaDo(e)); paint() }
+  }
   function up() { if (drawing.current) { drawing.current = false; setTick((t) => t + 1) } }
-  function undo() { strokesRef.current.pop(); paint(); setTick((t) => t + 1) }
+  function undo() { marks().pop(); paint(); setTick((t) => t + 1) }
 
   async function luu() {
-    const cv = canvasRef.current
-    if (!cv || busy) return
+    const cv = canvasRef.current, img = imgRef.current
+    if (!cv || !img || busy) return
     setBusy(true)
     try {
-      const blob = await new Promise<Blob>((res, rej) => cv.toBlob((b) => (b ? res(b) : rej(new Error('Không xuất được ảnh'))), 'image/png'))
-      await uploadAnhCham(anh.id, blob)
-      onSaved()
-    } catch (e: any) { alert(e.message ?? String(e)); setBusy(false) }
+      const out = document.createElement('canvas')
+      out.width = img.naturalWidth; out.height = img.naturalHeight
+      const ctx = out.getContext('2d')!
+      ctx.drawImage(img, 0, 0); ctx.drawImage(cv, 0, 0)
+      const blob = await new Promise<Blob>((res, rej) => out.toBlob((b) => (b ? res(b) : rej(new Error('Không xuất được ảnh'))), 'image/png'))
+      const path = await uploadAnhCham(anh.id, blob)
+      const u = await signUrls([path])
+      marksRef.current[anh.id] = []
+      setLocalUrls((cur) => ({ ...cur, ...u }))
+      setAnhs((cur) => cur.map((a) => (a.id === anh.id ? { ...a, path_cham: path } : a)))
+      reloadNop().catch(() => {})
+    } catch (e: any) { alert(e.message ?? String(e)) } finally { setBusy(false) }
   }
 
+  const soNet = marks().length
+  const chuaLuu = (id: string) => (marksRef.current[id]?.length ?? 0) > 0
   return (
-    <div className="fixed inset-0 z-[60] flex flex-col bg-slate-900/95" style={{ paddingTop: 'env(safe-area-inset-top)', paddingBottom: 'env(safe-area-inset-bottom)' }}>
-      <div className="flex items-center gap-2 px-3 py-2">
-        <button onClick={onClose} className="rounded-lg px-3 py-2 text-[13.5px] font-semibold text-white/80 active:bg-white/10">✕ Đóng</button>
-        <span className="text-[12px] text-white/50">Vẽ bút đỏ lên ảnh · lưu = bản chấm gửi PH (ảnh gốc giữ nguyên)</span>
-        <div className="ml-auto flex gap-2">
-          <button onClick={undo} disabled={!strokesRef.current.length} className="rounded-lg border border-white/20 px-3 py-2 text-[13px] font-semibold text-white/80 disabled:opacity-30">↩ Hoàn tác</button>
-          <button onClick={luu} disabled={busy || (!strokesRef.current.length && !anh.path_cham) || !ready} className="rounded-lg bg-teal-500 px-4 py-2 text-[13px] font-bold text-white disabled:opacity-40">{busy ? 'Đang lưu…' : '💾 Lưu bản chấm'}</button>
-        </div>
+    <div className="flex min-h-0 flex-1 flex-col">
+      <div className="flex flex-wrap items-center gap-1.5 border-b border-slate-200 bg-white px-2 py-1.5">
+        {TOOLS.map((t) => (
+          <button key={t.t} onClick={() => setTool(t.t)} className={`min-h-[36px] min-w-[40px] rounded-lg border px-2 text-[12.5px] font-bold ${tool === t.t ? t.cls : 'border-slate-200 bg-white text-slate-600'}`}>{t.lbl}</button>
+        ))}
+        <button onClick={undo} disabled={!soNet} className="min-h-[36px] rounded-lg border border-slate-200 px-2.5 text-[12.5px] font-semibold text-slate-600 disabled:opacity-30">↩ Hoàn tác</button>
+        <button onClick={luu} disabled={busy || !soNet || !ready} className="ml-auto min-h-[36px] rounded-lg bg-teal-600 px-3.5 text-[12.5px] font-bold text-white active:bg-teal-500 disabled:opacity-40">{busy ? 'Đang lưu…' : '💾 Lưu trang này'}</button>
       </div>
-      <div className="min-h-0 flex-1 overflow-auto p-2">
+
+      <div className="min-h-0 flex-1 overflow-auto bg-slate-800 p-2">
         {!src && <p className="p-6 text-center text-[13px] text-white/60">Không có URL ảnh (thử mở lại tab BTVN).</p>}
-        <canvas ref={canvasRef} onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={up}
-          className="mx-auto h-auto w-full max-w-[860px] touch-none select-none rounded-lg" data-tick={tick} />
+        {src && (
+          <div className="relative mx-auto w-full max-w-[1100px]">
+            <img src={src} alt="" className="block h-auto w-full select-none rounded-lg" draggable={false} />
+            <canvas ref={canvasRef} onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={up}
+              className={`absolute inset-0 h-full w-full touch-none select-none rounded-lg ${tool === 'text' || tool === 'check' || tool === 'cross' ? 'cursor-cell' : 'cursor-crosshair'}`} data-tick={tick} />
+          </div>
+        )}
       </div>
+
+      {anhs.length > 1 && (
+        <div className="flex items-center gap-1.5 overflow-x-auto border-t border-slate-200 bg-white px-2 py-1.5">
+          <span className="shrink-0 text-[11px] font-semibold text-slate-400">Trang {idx + 1}/{anhs.length}</span>
+          {anhs.map((a, i) => {
+            const s = localUrls[a.path_cham ?? a.path]
+            return (
+              <button key={a.id} onClick={() => setIdx(i)} className={`relative shrink-0 overflow-hidden rounded-md border-2 ${i === idx ? 'border-teal-500' : 'border-transparent'}`}>
+                {s ? <img src={s} alt="" className="h-14 w-10 object-cover" draggable={false} /> : <span className="flex h-14 w-10 items-center justify-center bg-slate-100 text-[9px] text-slate-400">…</span>}
+                {a.path_cham && <span className="absolute right-0.5 top-0.5 rounded bg-rose-600 px-0.5 text-[8px] font-bold text-white">✎</span>}
+                {chuaLuu(a.id) && <span className="absolute bottom-0.5 left-0.5 h-2 w-2 rounded-full bg-amber-400" title="chưa lưu" />}
+              </button>
+            )
+          })}
+        </div>
+      )}
     </div>
   )
 }

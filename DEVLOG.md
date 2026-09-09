@@ -9973,7 +9973,127 @@ dòng, không dựng lại UI để đo.
 - **Commit `4c61e44` + push main** (CEO gật): điền ô D1–D3, spec kho chuẩn, nhập kho từ Word, catalog lý do, 2 migration. Loại
   `package.json`/`launch.json` (của phiên khác). CEO test app HS không thấy câu hình: vì prod chưa deploy bản này + nút "Luyện chứng
   minh" nằm ở màn KẾT QUẢ tự luyện (luồng riêng, không trộn lượt thường). 23/23 form CEO đã duyệt.
+## 2026-09-09 (chiều) — Chấm BTVN app TA: màn chấm 1 HS full-screen (ảnh+tool 70/30 · portrait dọc · nhiều trang · bộ tool vẽ)
+- **CEO đưa spec "Chấm BTVN PH-app + TA-app"** (giả định bảng mới `btvn_nop`/`btvn_anh`, enum `trang_thai`, cột `mon`, tách
+  cham_luc/gui_ph_luc). **Bước 0 grep: TOÀN BỘ đã có** theo `PLAN-app-ta.md` (CEO chốt 30/08): `btvn_nop`/`btvn_nop_anh` (khác spec —
+  không `mon` (derive qua buoi→lop), không enum, chỉ 1 mốc `tra_at`), `btvn_nhan_xet_mau`, role `ph_nop`, 7 RPC `fn_btvn_*`, 3 view FDW,
+  `ChamBtvn.tsx` (đã vẽ bút đỏ+undo, 1 ảnh/modal). Đ/C/S per câu = `gami_grades` phase btvn (KHÔNG phải `buoi_danh_gia` — đó là tab
+  "Đánh giá sau buổi"); trạng thái nộp/thái độ = `btvn_ket_qua`; phân công = `phan_cong_lop` vai `tg`. **PH-app ở repo riêng `bkdemy-ph`**,
+  không có trong repo này. → Dừng hỏi theo luật; **CEO chốt: hoàn thiện cái đang có, KHÔNG đụng DB.**
+- **`ChamBtvn.tsx` viết lại phần UI (logic data giữ nguyên):** list HS thu gọn (badge 📱 N ảnh · ✎ số ảnh đã vẽ · chưa chốt buổi · đề
+  xuất · đã trả) → bấm mở `ChamMotHS` full-screen: header (‹ Danh sách · tên · 📤 Trả bài PH) · `landscape:flex-row` ảnh+tool 70% trái /
+  form 30% phải · portrait ảnh 55% trên, form dưới · HS không ảnh = "chấm giấy", chỉ form. Form = đúng các control cũ (btvn_ket_qua,
+  gami_grades, nhận xét chọn list, chốt buổi, chuông đỏ) chỉ dời chỗ; z-index popup con nâng z-[70].
+- **`VeAnh` (thay AnnotateModal):** ảnh = `<img>` lớp dưới, nét = canvas TRONG SUỐT lớp trên (tẩy = `destination-out` → chỉ xoá nét,
+  không đụng ảnh); Lưu trang = ghép 2 lớp ở canvas offscreen → PNG → `uploadAnhCham` (path_cham MỚI, gốc immutable) → tự ký URL mới +
+  cập nhật local ngay, `reloadNop` chạy nền. Tool: 🔴 đỏ · 🔵 xanh · 🧹 tẩy · ✓ xanh lá · ✗ đỏ · Aa (prompt ghi chú ngắn) · ↩ Hoàn tác.
+  Nháp theo TRANG ở `marksRef[anh.id]` (memory, mất khi đóng màn — đúng spec "không mất khi chuyển trang"); thanh thumbnail chuyển
+  trang, chấm vàng = chưa lưu, ✎ = đã có bản chấm. Nét/dấu/chữ tỉ lệ theo `naturalWidth`; toạ độ map qua rect (né zoom CSS).
+- **Verify:** checkout này KHÔNG có `.env`/`node_modules` (đã `npm install`; không đi tìm key) → không vào màn thật. Dựng harness tạm
+  `harness.html` + `src/_harness.tsx` + `.env.harness.local` (env giả, vite `--mode harness` cổng 5186, export tạm ChamMotHS — đã gỡ)
+  render ChamMotHS với 3 ảnh canvas giả: landscape 1180×820, portrait 820×1180, `?giay=1` đều đúng; đỏ/xanh/✓/✗/tẩy/undo/text/chuyển
+  trang giữ nháp OK, console 0 lỗi, tsc 0. **Bẫy:** `prompt()` thật bị automation tự đóng → phải override ở main world (trong harness)
+  mới test được tool text. **Chưa test Lưu/Trả bài** (cần Supabase thật) — CEO test trên app TA thật.
+- Harness (3 file untracked) chưa xoá — Luật xoá, chờ CEO gật. Không commit harness.
+## 2026-09-09 (chiều) — Test THẬT màn chấm BTVN app TA: PASS 10/10 · fix Đ/C/S mất chữ · seed lượt nộp bằng RPC
+- Harness 3 file đã xoá (CEO gật); `package-lock.json` về HEAD (npm install không thêm package). Commit `7cda2e8`.
+- **Checkout `Desktop\2\…` là clone mới: không `.env`, không `node_modules`.** CEO tạo `.env` nhưng đặt `VITE_SUPABASE_ANON_KEY` — app
+  đọc **`VITE_SUPABASE_KEY`** (supabase.ts + nhansu.ts) → trang trắng "supabaseKey is required". Đã đổi tên biến. `.env.example`
+  KHÔNG liệt kê 2 biến VITE_SUPABASE_* (chỉ DATABASE_URL_RO + VAPID) — nên bổ sung. App TA = `/ta.html`, `/` là ERP desktop.
+- **Seed lượt nộp để test (không có PH nộp thật):** `scripts/_seed_btvn_nop.mjs` (helper tạm, service role từ `.env.local`) — upload 2
+  ảnh giả (System.Drawing) vào `btvn-nop/test/<hs>/`, gọi đúng RPC PH-app `fn_btvn_nop_tao` (service role gọi được, trả
+  `{moi:true,so_anh_them:2}`). HS Chu Bảo Ngọc · 9S1 · 08/09 (buoi `ecc9b663…`, hs `25efb621…`).
+- **CEO test trên app TA thật (Cốc Cốc, laptop landscape): PASS** — list badge 📱/chưa chốt/đề xuất · màn 70/30 · chốt buổi
+  (`buoi_xac_nhan_at/boi`) · vẽ đỏ/xanh/✓/✗/tẩy/text · Lưu 2 trang (2 `path_cham` = `cham/<anh_id>-<ms>.png`, 443KB, signed URL
+  CORS OK, canvas không taint) · form (`btvn_ket_qua` nop_dung_han/nghiem_tuc · `gami_grades` 18/18) · nhận xét (`nhan_xet_ma`) ·
+  Trả bài (`tra_at/tra_boi`) · chấm giấy chỉ form. Đối chiếu DB bằng script chỉ đọc qua service role.
+- **Bug CEO bắt: bấm Đ/C/S thì CHỮ BIẾN MẤT.** Nút có `bg-white` ở lớp nền + khi chọn thêm `bg-emerald-600 text-white` — Tailwind
+  v4 xếp `bg-white` SAU trong stylesheet ⇒ nền vẫn trắng, chữ trắng. Có từ code cũ (ChamBtvn bản 30/08 y hệt), ET/ingame không dính.
+  Sửa: `bg-white` chỉ đi cùng nhánh idle. **Bài học Tailwind v4:** 2 utility cùng property trong 1 className thì thứ tự CSS quyết
+  định, không phải thứ tự chữ — đừng đặt màu mặc định ở phần tĩnh rồi "đè" bằng phần động.
+- **Còn:** data seed test (1 btvn_nop, 2 anh, ket_qua, 18 grades, 4 file storage) là data thật của HS Chu Bảo Ngọc — cần dọn (chờ
+  CEO gật); `scripts/_seed_btvn_nop.mjs` xoá sau khi dọn. PH-app xem bài đã chấm (repo `bkdemy-ph`) chưa test.
+- **Đã dọn (CEO gật "dọn"):** xoá lá→gốc grades 18 · ket_qua 1 · anh 2 · nop 1 · storage 4 file; `gami_session_problems` buổi giữ 18;
+  xoá `_seed_btvn_nop.mjs`. Push `7cda2e8` + `8e42ae0`.
 - **Distill HANDOFF.md** (mục ① thêm "08–09/09 — FORM CÂU + KHO CHUẨN + NHẬP KHO TỪ FILE" A–E; mục ② thêm "Bài học 08–09/09" 13 gạch).
+
+## 2026-09-09 — Bổ trợ yếu: BUG THẬT cap-1000 PostgREST — engine MÙ dữ liệu mới ở 33/46 lớp (worktree botroyeu, feat/botro-yeu)
+
+**Thùy:** "Đã cập nhật MT các lớp, m kiểm tra xem luồng bổ trợ yếu đã chạy đúng chưa." Trả lời thẳng:
+**CHƯA — và không phải vì MT.** Trong lúc trace MT mới (22 buổi/7 ngày, 5685 dòng MT) qua kênh 4 thì lộ ra
+1 bug nền, ĐÃ CÓ từ lúc viết engine (08-23), chỉ lộ khi lớp tích đủ lịch sử.
+
+**Bug:** Supabase project này **hard-cap 1000 dòng/query bất kể `.limit()`** — đo thật `select('id')
+.limit(10000)` trên `gami_grades` (88.265 dòng) trả ĐÚNG 1000, không lỗi, không cảnh báo. `napLanDo`
+(danhgia.ts — loader DUY NHẤT nuôi toàn bộ getStatSheetLop/listCandidatesLop) dùng `.limit(LIMIT=10000)`
+KHÔNG `.order()` ⇒ 1000 dòng "trúng" là KHÔNG XÁC ĐỊNH (PK UUID). Kiểm 6A1 (14 HS, lịch sử từ tháng 7):
+query trả 1000/1000, **0 dòng MT vừa chấm hôm nay** ⇒ engine không thấy MT mới, `coSoLopMT=false` cả lớp,
+listCandidatesLop ra 5 candidate/0 kênh MT. Đây ĐÚNG là bẫy CLAUDE.md §2 đã cảnh "luôn .limit()/paginate
+(không xài default 1000)" — engine vi phạm chính luật này từ đầu; mọi số calibrate 08-23 (72%→30%…) đều
+chạy trên dữ liệu bị cắt của các lớp lớn (lúc đó nhiều lớp chưa vượt 1000 nên số vẫn "có vẻ" đúng).
+
+**Phạm vi (đo exact count, không cap):** 33/46 lớp đang học (72%) vượt 1000 dòng — Toán 25/36, KHTN 5/5,
+Anh 2/4, Văn 1/1. Nặng nhất 8B1 7654 dòng (engine thấy ~13%), 8S1 5782, 9A1 5761, 8K1 5305, 9A2 5250…
+Lớp dưới 1000 (không ảnh hưởng): 5T1 792, 10A1 636, 10B1 456, 5T2 422, 8B2 352, 12A1 328… (13 lớp).
+
+**Fix (`src/lib/pgrest.ts` MỚI + 2 file):** helper `fetchAllRows(build)` phân trang `.range()` từng
+1000, lấy HẾT, throw khi lỗi; builder PHẢI `.order()` tất định (graded_at, id) — không order thì `.range()`
+giữa trang có thể lặp/thiếu (PK UUID). Áp cho 4 reader trong luồng bổ trợ yếu:
+- `napLanDo` (danhgia.ts) — gốc bug, per-LỚP, ĐANG cắt 33 lớp.
+- `napThaiDo` (danhgia.ts) — per-lớp, 1 dòng/HS/buổi BTVN, 1 học kỳ đủ vượt — sửa sẵn.
+- `getLichSuChuyenDe` (danhgia.ts) + `getDanhGiaCase` (botro_yeu.ts) — per-HS: CHƯA HS nào vượt 1000
+  (đo 318 HS đang học: max 770 Nguyễn Hải An 8K1, 0 HS >800) nhưng đà này ~giữa tháng 10 sẽ vượt —
+  `getDanhGiaCase` chấm trước/sau của case, mất dòng mới nhất là kết luận sai "bổ trợ có work không".
+Helper để module riêng (không nhét trong danhgia.ts) để mastery/report/troly dùng lại; comment provenance
+đầy đủ trong pgrest.ts. Đây là fix tạm đúng luật §2 — đích cuối theo §2.0 vẫn là đẩy aggregate xuống RPC
+(AUDIT-client-tinh-toan.md "Phase 3 còn lại" đã có tên getStatSheetLop/listCandidatesLop).
+
+**Verify:** `tsc --noEmit` sạch · `verify_danhgia.mjs` 77/77 · **ground truth độc lập**
+(`_diag_mt_groundtruth.ts`, phân trang thật, tái hiện đúng luật kênh 4: buổi MT trong {cửa sổ hiện tại,
+liền trước}, buổi muộn nhất per HS, mean HS < 0.9×mean lớp) vs engine THẬT: **9A1 3/3 KHỚP · 6A1 3/3
+KHỚP** (6A1 từ 0 → 3 dính MT sau fix: Hồ Quang Lâm 48%, Đỗ Hiểu Minh 35%, Nguyễn Quang Minh 65%). 8A1
+engine 2 vs truth 1 — LỆCH có giải thích, KHÔNG phải bug: buổi MT 8A1 06/09 có 27 dòng `ma_dang null`
+(3 câu/28 chưa gắn dạng); engine bỏ câu không dạng (đúng thiết kế HS×dạng) ⇒ TB lớp 0.732→0.758, Nam Phong
+0.661 = 90%→87% ⇒ dính. Script thô của t không lọc ma_dang nên lệch — engine đúng. Chạy lại SAU khi tách
+helper sang pgrest.ts + paginate botro_yeu: kết quả y hệt ⇒ refactor không hồi quy. Verify ở tầng engine
+(gọi thẳng listCandidatesLop) — KHÔNG click UI (UI chỉ render kết quả này; dev server nền chết liên tục).
+⚠ Bài học tự thân: script kiểm tra ĐẦU TIÊN của t (`_diag_verify_mt_manual.ts`) cũng `.limit(20000)` nên
+dính ĐÚNG bug đang tìm — báo 9A1 "5 dính MT, TB 0.512" hoàn toàn sai (thật: 3 dính, TB 0.606). Giữ file
+làm bằng chứng; **nguồn đúng là `_diag_mt_groundtruth.ts`**. Kiểm chứng bug bằng công cụ có cùng bug =
+vô nghĩa — luôn đo cap bằng count exact (head) hoặc phân trang trước khi tin bất kỳ số nào.
+
+**Phát hiện phụ (không sửa đợt này, báo Thùy):**
+1. **Reader khác cùng bẫy, module người khác** — `mastery.ts:115/195/288` (per-HS, latent như trên),
+   `report.ts:41`, `gami.ts:824` (per problemIds), `botro.ts:354` (per buoiIds), **`troly.ts:779`
+   `.limit(20000)` per buoiIds — nhiều khả năng ĐANG cắt hôm nay** (dashboard trợ lý). Nên đổi sang
+   `fetchAllRows` hoặc RPC theo §2.0.
+2. **Data-quality MT:** 13/579 câu MT 7 ngày qua (2%) chưa gắn `ma_dang`, tập trung 5 buổi Khối 8 Toán
+   (8S1/8A2/8A1/8B2/8B1, 2–3 câu/đề ≈10%) — engine mù đúng phần đó + lệch TB lớp kênh 4. Việc gắn dạng
+   ở MT builder, không phải code engine.
+3. Luật ≥1/4 (OR) "chạy thử 1 tháng" từ 08-23 vẫn đang bật — nhưng mọi số đo tháng qua chạy trên data bị
+   cắt ở 72% lớp ⇒ so sánh OR vs ≥2/4 cuối tháng cần đo LẠI sau fix, số cũ không dùng được.
+
+Scripts đợt này: `_diag_check_pgrest_cap.ts` (đo cap) · `_diag_scope_cap1000.ts` (phạm vi lớp) ·
+`_diag_perhs_max.ts` (per-HS) · `_diag_mt_groundtruth.ts` (chuẩn) · `_diag_namphong.ts` (8A1) ·
+`_diag_mt_madang_null.ts` · `_diag_verify_mt_flow*.ts` / `_diag_verify_6a1*.ts` (trace ban đầu).
+
+### 09/09 — vercel-ignore.mjs: in bằng chứng thật thay vì đoán (chốt từ 07/09 tối, commit muộn)
+**Bối cảnh 07/09 tối:** Thùy soi Deployments thấy `ta-v2` build cùng lúc `giaibai` cho commit "Merge worktree-gamification (chốt
+xu)", hỏi "tính xu sao lại build TA?". Em giải thích "Vercel so với LẦN BUILD GẦN NHẤT của CHÍNH project đó (VERCEL_GIT_PREVIOUS_SHA),
+không phải commit liền trước — project lâu chưa build thì gộp cả khoảng tích luỹ" — đúng cơ chế, nhưng Thùy chê "Đéo thấy khác
+gì cũ" vì em KHÔNG có bằng chứng (không vào được dashboard để xem PREVIOUS_SHA thật của lần build đó). Chê đúng.
+**Sửa:** script LUÔN in ra: `VERCEL_PROJECT_PRODUCTION_URL` + project nhận diện · `VERCEL_GIT_COMMIT_SHA` · `VERCEL_GIT_PREVIOUS_SHA`
+(hay RỖNG) · đường diff đã dùng (PREVIOUS_SHA thật, hay rơi về `HEAD^` vì thiếu/lỗi) · TOÀN BỘ file đổi (trước chỉ in file
+"liên quan" khi build, khi bỏ qua thì không in gì — không thể chẩn đoán "sao lại build"/"sao không build") · mỗi file liên quan
+ghi rõ khớp RIENG nào (chu gồm ai) hay "chung — không khớp RIENG nào". Đọc ở Build Logs › "Ignored Build Step" của ĐÚNG
+project trên Vercel — không suy luận từ tên commit ngoài list Deployments (đó chỉ là commit mới nhất đang đứng).
+**Bẫy test cục bộ:** truyền `VERCEL_GIT_PREVIOUS_SHA=efd7bd9^` qua for-loop bash bị nuốt ⇒ "0 file đổi" — không phải lỗi script,
+phải `git rev-parse` ra SHA tường minh. Merge commit: `HEAD^` = cha thứ nhất (diff = phần nhánh mang vào, đúng ý); cha thứ hai
+diff ra gần cả repo (nhánh tách quá xa) — Vercel không dùng cha thứ hai.
+**Lưu ý:** từ 07/09 auto-deploy git đã TẮT (`deploymentEnabled:false`, Thùy tự bấm Create Deployment) — ignoreCommand chỉ còn
+chạy khi Thùy deploy tay; log này vẫn có giá trị lúc đó.
+**Cách commit:** làm trong worktree tạm từ origin/main (checkout chung đang dính ~14 file dở của phiên khác + 3 commit chiều 09/09
+của Thùy chưa pull) — chỉ mang đúng 1 file này + DEVLOG, không đụng việc của ai.
 
 ## 2026-09-09 (chiều) — 🚨 Chuông báo động DÙNG CHUNG 4 chỗ chấm (Đánh giá · ET · BTVN · MT) + luật "dạng trong tài liệu"
 
