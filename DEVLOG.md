@@ -10015,6 +10015,23 @@ dòng, không dựng lại UI để đo.
   CEO gật); `scripts/_seed_btvn_nop.mjs` xoá sau khi dọn. PH-app xem bài đã chấm (repo `bkdemy-ph`) chưa test.
 - **Đã dọn (CEO gật "dọn"):** xoá lá→gốc grades 18 · ket_qua 1 · anh 2 · nop 1 · storage 4 file; `gami_session_problems` buổi giữ 18;
   xoá `_seed_btvn_nop.mjs`. Push `7cda2e8` + `8e42ae0`.
+## 2026-09-09 (chiều–tối) — PH-app nộp BTVN ảnh: e2e THẬT PASS xuyên 2 repo (bkdemy-ph-app nhánh `feat/btvn-nop-anh`)
+- **Bước 0 sai 1 lần:** đọc bản PH-app CŨ ở `Desktop\2\PH-App` (HEAD bff3512) → kết luận "chưa có luồng nộp" — CEO chỉnh: PH-app là
+  **project riêng, Supabase riêng**, bản đó cũ. Clone final (b937f4a, merge `feat/btvn-nop` 30/08) thì luồng ĐÃ CÓ: màn `nopbai`,
+  action `btvn-nop.ts`, `lib/erp.ts` (storage ERP bằng service key + pg role `ph_nop` gọi `fn_btvn_nop_tao_auto`), mig `0027` FDW.
+  **Bài học:** hỏi "bản này là final chưa" trước khi audit repo khác.
+- **Gap chặn cứng:** ảnh đi qua server action nguyên bản, `next.config.ts` rỗng ⇒ trần 1MB ⇒ ảnh thật fail. Sửa (commit `8b47775`
+  bên PH): nén client (HEIC→JPEG, ≤1600px, q0.8) + **signed upload URL** PUT thẳng storage ERP + `nopBtvn(childId, paths)` kiểm
+  path/size/mime qua `list(search)`. Thêm ◀▶ sắp xếp, chip Đ/C/S từng câu. Verify nén bằng harness `/harness-anh` (đã xoá).
+- **Env/hạ tầng:** `.env.local` PH thiếu 2 biến ERP; CEO dán nhầm service key project PH (bắt bằng claim `ref` JWT); `ph_nop` phải
+  qua **pooler aws-1** user `ph_nop.<ref>` (host direct ENOTFOUND); `pg.Pool` module-scope giữ chuỗi cũ sau khi đổi env ⇒ restart.
+  Đã áp mig PH `0027` (4 view FDW đọc OK). launch.json ERP thêm `dev-ph` (npm --prefix, cổng 3010).
+- **E2E thật:** PH (Đào Minh Quân 4T1) nộp 3 ảnh 211–320KB → ERP `btvn_nop` + hệ gán 4T1·22/08 (buổi DUY NHẤT có phiếu BTVN,
+  **đã đóng** 04/09) → NS010 mở từ "Đã xong", chốt buổi (tôi gọi RPC vì banner ẩn khi đóng), vẽ/lưu 3 trang, nhận xét, Trả bài
+  (UI tự khoá tick vì BTVN đóng ⇒ điểm thật của Quân không đổi) → PH thấy ảnh chấm + 16Đ/2C/18 + chip câu + nhận xét. PASS.
+  Dọn (CEO gật): `btvn_nop_anh` 3 · `btvn_nop` 1 · 10 file storage (3 gốc + 3 chấm + 4 mồ côi từ lần nộp lỗi). Snapshot Quân khớp.
+- **Gap ERP còn:** `fn_btvn_nop_tao_auto` nên ưu tiên buổi có phiếu BTVN **chưa đóng**; object mồ côi khi RPC fail sau upload
+  (chưa có dọn). Prod PH đang bản cũ — chờ CEO nối Vercel–GitHub + 3 env.
 - **Distill HANDOFF.md** (mục ① thêm "08–09/09 — FORM CÂU + KHO CHUẨN + NHẬP KHO TỪ FILE" A–E; mục ② thêm "Bài học 08–09/09" 13 gạch).
 
 ## 2026-09-09 — Bổ trợ yếu: BUG THẬT cap-1000 PostgREST — engine MÙ dữ liệu mới ở 33/46 lớp (worktree botroyeu, feat/botro-yeu)
