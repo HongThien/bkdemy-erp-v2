@@ -10290,3 +10290,17 @@ Dashboard học tập KHÔNG đổi (vẫn hiện để đọc/quản lý case).
 **Đo thật Toán 2026-09-A, 36 lớp:** 236 đủ tín hiệu → loại 4 đã có cờ (7B2 ×2, 8B1 ×2 — đúng các ca Thùy vừa duyệt), 0 chốt L0 kỳ này
 → còn 232. Script `scripts/_diag_hangdoi_loai.ts` (read-only). tsc sạch.
 "Mỗi lần bật lại reset danh sách" = bản cache-chỗ-cũ (`7d8c739`) lúc đó Vercel chưa build xong; F5 vẫn quét lại (cache sống trong tab).
+
+## 2026-09-09 — Xếp bổ trợ yếu: "xếp Tùng 16-17h, người = t, không thấy lưu, bấm vào reset từ đầu"
+
+**Kiểm DB thật (`scripts/_diag_xeplich_tung.ts`):** ĐÃ LƯU — 2 buổi `bo_tro_yeu` case 55b97f6c: 09/09 16:00–17:00 P102 (09:11 UTC)
+và 10/09 16:00–17:00 P102 (09:12 UTC), cùng người dạy. Tức lỗi là UI: mở lại modal, form LUÔN prefill mặc định TKB/ca cũ,
+buổi vừa xếp chỉ nằm ở list phía trên ⇒ nhìn như chưa lưu; bấm Xác nhận lần nữa ⇒ đẻ buổi thứ 2 (đúng ca Thùy gặp).
+**Sửa (`XepLichBoTroYeuScreen.tsx`):**
+- Case có buổi còn `mo` ⇒ modal mở ở chế độ SỬA buổi gần nhất (prefill đúng cái đã lưu, nút "Lưu thay đổi" → `updateBuoiMeta`,
+  không đẻ buổi mới). Sau khi tạo mới, `suaId` = buổi vừa tạo ⇒ bấm lại cũng là update. "+ Xếp thêm buổi khác" mới về chế độ tạo.
+  List "Đã xếp" có nút Sửa từng buổi; huỷ đúng buổi đang sửa ⇒ về chế độ tạo.
+- Giờ = select khung sẵn 06:00–22:00 bước 30' (Thùy: "để khung giờ sẵn chứ ko gõ") — chọn bắt đầu tự đặt kết thúc +60'; giá trị
+  lẻ từ DB vẫn hiện. Bỏ ô gõ chữ (gõ "16h" từng rớt định dạng).
+- Xếp xong vá `daXep` tại chỗ, không reload list (luật §2 React).
+tsc sạch. Buổi 10/09 trùng do test — Thùy tự huỷ trong modal nếu thừa (không xoá hộ — Luật xoá).

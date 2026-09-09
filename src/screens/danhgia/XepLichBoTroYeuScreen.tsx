@@ -15,7 +15,7 @@ import {
   type CaseChoXep, type BuoiBoTroYeuDaXep, type GoiYXepLich,
 } from '../../lib/botro_yeu'
 import { getLevels } from '../../lib/danhgia'
-import { huyBuoi } from '../../lib/gami'
+import { huyBuoi, updateBuoiMeta } from '../../lib/gami'
 import { listNhanSu, type NhanSu } from '../../lib/nhansu'
 import { listPhong, kiemTraTrungPhong, type Phong, type KhoiBanPhong } from '../../lib/phong'
 import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
@@ -42,6 +42,10 @@ function chuanHoaGio(s: string): string | null {
   if (h > 23 || mi > 59) return null
   return `${String(h).padStart(2, '0')}:${String(mi).padStart(2, '0')}`
 }
+// Thùy 09-09: khung giờ SẴN (bước 30', 06:00–22:00) thay vì gõ chữ — gõ "16h" rớt định dạng, người xếp
+// tưởng không lưu. Giá trị lẻ từ DB (vd 16:45) vẫn hiện được: thêm vào đầu danh sách nếu thiếu.
+const KHUNG_GIO = Array.from({ length: (22 - 6) * 2 + 1 }, (_, i) => `${String(6 + Math.floor(i / 2)).padStart(2, '0')}:${i % 2 ? '30' : '00'}`)
+const khungGioCo = (v: string) => (v && !KHUNG_GIO.includes(v) ? [v, ...KHUNG_GIO] : KHUNG_GIO)
 const soNgayCach = (a: string, b: string) => Math.round((Date.parse(b + 'T00:00:00Z') - Date.parse(a + 'T00:00:00Z')) / 86400000)
 
 export default function XepLichBoTroYeuScreen() {
@@ -107,7 +111,9 @@ export default function XepLichBoTroYeuScreen() {
           </div>
         )}
       </div>
-      {moCase && <XepModal c={moCase} mucLv={muc.get(moCase.hoc_sinh_id) ?? 0} onDong={() => setMoId(null)} onDoi={reload} />}
+      {/* Xếp/sửa xong = vá `daXep` của đúng case tại chỗ, KHÔNG reload (blank list + mất chỗ) — CLAUDE.md §2 React. */}
+      {moCase && <XepModal c={moCase} mucLv={muc.get(moCase.hoc_sinh_id) ?? 0} onDong={() => setMoId(null)}
+        onDoi={() => setItems((prev) => prev.map((x) => x.id === moCase.id ? { ...x, daXep: true } : x))} />}
     </section>
   )
 }
@@ -158,22 +164,37 @@ function XepModal({ c, mucLv, onDong, onDoi }: { c: CaseChoXep; mucLv: number; o
   const [daXep, setDaXep] = useState(false)
   const [huyId, setHuyId] = useState<string | null>(null) // buổi đang hỏi "huỷ thật không?"
   const [huyBusy, setHuyBusy] = useState(false)
+  // Thùy 09-09: "xếp xong bấm vào lại reset từ đầu" — trước đây form LUÔN mặc định theo TKB/ca cũ, buổi vừa
+  // xếp chỉ nằm ở list phía trên nên nhìn như chưa lưu (DB có lưu). Giờ: case đã có buổi còn 'mo' ⇒ mở
+  // form ở chế độ SỬA buổi đó (prefill đúng cái đã lưu, nút = "Lưu thay đổi", update chứ không đẻ buổi
+  // mới); "+ Xếp thêm buổi khác" mới về chế độ tạo với mặc định.
+  const [suaId, setSuaId] = useState<string | null>(null)
+
+  function apDungMacDinh(g: GoiYXepLich) {
+    if (muc1) {
+      const s = g.buoiSapToi[0]
+      if (s) { setSlotKey(`${s.lop_id}|${s.ngay}`); apDungSlot(s) } else { setSlotKey(NGAY_KHAC); setNgay(''); setGio(''); setGioKt(''); setPhong(null) }
+      setNguoiDay(g.ta_id)
+    } else {
+      const gn = g.ganNhat
+      setSlotKey(NGAY_KHAC); setNgay('')
+      setGio(hhmm(gn?.gio_bat_dau)); setGioKt(hhmm(gn?.gio_ket_thuc)); setPhong(gn?.phong ?? null)
+      setNguoiDay(mucLv >= 3 ? null : gn?.nguoi_day_tg ?? null)
+    }
+  }
+  function moSua(b: BuoiBoTroYeuDaXep) {
+    setSuaId(b.id); setSlotKey(NGAY_KHAC)
+    setNgay(b.ngay); setGio(hhmm(b.gio_bat_dau)); setGioKt(hhmm(b.gio_ket_thuc)); setPhong(b.phong ?? null); setNguoiDay(b.nguoi_day_tg ?? null)
+    setDaXep(false); setXong(null); setLoi(null)
+  }
 
   useEffect(() => {
     setLoading(true); setLoi(null)
     Promise.all([listBuoiCuaCase(c.id), goiYXepLichBoTroYeu(c.hoc_sinh_id, c.mon)])
       .then(([b, g]) => {
         setBuois(b); setGoiY(g)
-        if (muc1) {
-          const s = g.buoiSapToi[0]
-          if (s) { setSlotKey(`${s.lop_id}|${s.ngay}`); apDungSlot(s) } else setSlotKey(NGAY_KHAC)
-          setNguoiDay(g.ta_id)
-        } else {
-          const gn = g.ganNhat
-          setSlotKey(NGAY_KHAC); setNgay('')
-          setGio(hhmm(gn?.gio_bat_dau)); setGioKt(hhmm(gn?.gio_ket_thuc)); setPhong(gn?.phong ?? null)
-          setNguoiDay(mucLv >= 3 ? null : gn?.nguoi_day_tg ?? null)
-        }
+        const dangMo = b.find((x) => x.trang_thai === 'mo') // b đã sort ngày giảm dần ⇒ buổi mở gần nhất
+        if (dangMo) moSua(dangMo); else apDungMacDinh(g)
       })
       .catch((e: any) => setLoi(e?.message ?? String(e)))
       .finally(() => setLoading(false))
@@ -233,11 +254,18 @@ function XepModal({ c, mucLv, onDong, onDoi }: { c: CaseChoXep; mucLv: number; o
     if (gBd && gKt && gKt <= gBd) { setLoi('Giờ kết thúc phải sau giờ bắt đầu'); return }
     setLoi(null); setBusy(true)
     try {
-      await taoBuoiBoTroYeu({
-        boTroYeuId: c.id, hocSinhId: c.hoc_sinh_id, ngay,
-        gio_bat_dau: gBd, gio_ket_thuc: gKt, phong: phong || null, nguoi_day_tg: nguoiDay,
-      })
-      setXong(`Đã xếp ${thuCuaNgay(ngay)} ${ddmmVN(ngay)}${gBd ? ` · ${gBd}` : ''}${phong ? ` · ${phong}` : ''}${nguoiDay ? ` · ${tenNs(nguoiDay)}` : ''}`)
+      const tom = `${thuCuaNgay(ngay)} ${ddmmVN(ngay)}${gBd ? ` · ${gBd}${gKt ? `–${gKt}` : ''}` : ''}${phong ? ` · ${phong}` : ''}${nguoiDay ? ` · ${tenNs(nguoiDay)}` : ''}`
+      if (suaId) {
+        await updateBuoiMeta(suaId, { ngay, gio_bat_dau: gBd, gio_ket_thuc: gKt, phong: phong || null, nguoi_day_tg: nguoiDay })
+        setXong(`Đã lưu thay đổi: ${tom}`)
+      } else {
+        const id = await taoBuoiBoTroYeu({
+          boTroYeuId: c.id, hocSinhId: c.hoc_sinh_id, ngay,
+          gio_bat_dau: gBd, gio_ket_thuc: gKt, phong: phong || null, nguoi_day_tg: nguoiDay,
+        })
+        setSuaId(id) // từ giờ sửa tiếp = update buổi này, không đẻ buổi mới
+        setXong(`Đã xếp ${tom}`)
+      }
       setDaXep(true)
       setBuois(await listBuoiCuaCase(c.id))
       onDoi()
@@ -250,7 +278,9 @@ function XepModal({ c, mucLv, onDong, onDoi }: { c: CaseChoXep; mucLv: number; o
     try {
       await huyBuoi(b.id, 'OPS huỷ ở màn Xếp bổ trợ yếu')
       setHuyId(null)
-      setBuois(await listBuoiCuaCase(c.id))
+      const bs = await listBuoiCuaCase(c.id)
+      setBuois(bs)
+      if (suaId === b.id) { setSuaId(null); if (goiY) apDungMacDinh(goiY) } // đang sửa đúng buổi vừa huỷ ⇒ về chế độ tạo
       onDoi()
     } catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setHuyBusy(false) }
   }
@@ -285,28 +315,33 @@ function XepModal({ c, mucLv, onDong, onDoi }: { c: CaseChoXep; mucLv: number; o
                   {b.trang_thai === 'huy' ? (
                     <span className="shrink-0 rounded bg-rose-50 px-1.5 py-0.5 text-[11px] font-semibold text-rose-700">đã huỷ</span>
                   ) : b.trang_thai === 'mo' ? (
-                    huyId === b.id ? (
+                    suaId === b.id ? (
+                      <span className="shrink-0 rounded bg-indigo-50 px-1.5 py-0.5 text-[11px] font-semibold text-indigo-700">đang sửa ↓</span>
+                    ) : huyId === b.id ? (
                       <span className="flex shrink-0 items-center gap-1 text-[12px]">
                         <span className="text-slate-500">Huỷ buổi này?</span>
                         <button onClick={() => huy(b)} disabled={huyBusy} className="rounded bg-rose-600 px-2 py-0.5 font-semibold text-white hover:bg-rose-700 disabled:opacity-50">{huyBusy ? '…' : 'Huỷ'}</button>
                         <button onClick={() => setHuyId(null)} className="rounded px-2 py-0.5 text-slate-500 hover:bg-slate-200">Thôi</button>
                       </span>
                     ) : (
-                      <button onClick={() => setHuyId(b.id)} title="Huỷ buổi (giữ dấu, không xoá)" className="shrink-0 text-[12px] text-slate-400 hover:text-rose-600">Huỷ</button>
+                      <span className="flex shrink-0 items-center gap-2 text-[12px]">
+                        <button onClick={() => moSua(b)} className="text-indigo-600 hover:underline">Sửa</button>
+                        <button onClick={() => setHuyId(b.id)} title="Huỷ buổi (giữ dấu, không xoá)" className="text-slate-400 hover:text-rose-600">Huỷ</button>
+                      </span>
                     )
                   ) : <span className="shrink-0 text-[11px] text-slate-400">{b.trang_thai}</span>}
                 </li>
               ))}
             </ul>
-            <p className="mt-1.5 text-[11px] text-slate-400">Form dưới = xếp THÊM 1 buổi nữa cho ca này (ca cần nhiều buổi, hoặc buổi cũ đã huỷ).</p>
+            <p className="mt-1.5 text-[11px] text-slate-400">{suaId ? 'Form dưới đang SỬA buổi đã xếp (đổi giờ/phòng/người rồi "Lưu thay đổi"). Muốn thêm buổi nữa: bấm "+ Xếp thêm buổi khác".' : 'Form dưới = xếp THÊM 1 buổi nữa cho ca này (ca cần nhiều buổi, hoặc buổi cũ đã huỷ).'}</p>
           </div>
         )}
 
         {loading ? <p className="text-[13px] text-slate-400">Đang lấy lịch lớp / ca gần nhất…</p> : (
           <div className="space-y-3">
-            <p className="text-[12px] text-slate-500">{nhanMacDinh}</p>
+            <p className="text-[12px] text-slate-500">{suaId ? `Đang sửa buổi ${thuCuaNgay(ngay)} ${ddmmVN(ngay)} đã xếp — sửa xong bấm "Lưu thay đổi".` : nhanMacDinh}</p>
 
-            {muc1 && goiY && goiY.buoiSapToi.length > 0 && (
+            {!suaId && muc1 && goiY && goiY.buoiSapToi.length > 0 && (
               <div>
                 <label className="mb-1 block text-[11px] font-medium text-slate-500">Buổi học của lớp (theo TKB) *</label>
                 <select value={slotKey} onChange={(e) => chonSlot(e.target.value)}
@@ -324,23 +359,25 @@ function XepModal({ c, mucLv, onDong, onDoi }: { c: CaseChoXep; mucLv: number; o
             <div className="grid grid-cols-3 gap-2">
               <div>
                 <label className="mb-1 block text-[11px] font-medium text-slate-500">Ngày *</label>
-                <input type="date" value={ngay} disabled={muc1 && slotKey !== NGAY_KHAC}
+                <input type="date" value={ngay} disabled={!suaId && muc1 && slotKey !== NGAY_KHAC}
                   onChange={(e) => setNgay(e.target.value)}
                   className="w-full rounded-lg border border-slate-300 px-2 py-1.5 text-[13px] outline-none focus:border-indigo-400 disabled:bg-slate-50 disabled:text-slate-500" />
               </div>
               <div>
                 <label className="mb-1 block text-[11px] font-medium text-slate-500">Bắt đầu</label>
-                <input type="text" inputMode="numeric" placeholder="19:30" value={gio}
-                  onChange={(e) => setGio(e.target.value)}
-                  onBlur={() => { const g = chuanHoaGio(gio); if (g) { setGio(g); if (!gioKt) setGioKt(congPhut(g, THOI_LUONG_MAC_DINH)) } }}
-                  className={`w-full rounded-lg border px-2 py-1.5 text-[13px] tabular-nums outline-none focus:border-indigo-400 ${gio && !chuanHoaGio(gio) ? 'border-rose-300' : 'border-slate-300'}`} />
+                <select value={gio} onChange={(e) => { const g = e.target.value; setGio(g); if (g) setGioKt(congPhut(g, THOI_LUONG_MAC_DINH)) }}
+                  className="w-full rounded-lg border border-slate-300 px-2 py-1.5 text-[13px] tabular-nums outline-none focus:border-indigo-400">
+                  <option value="">— giờ —</option>
+                  {khungGioCo(gio).map((g) => <option key={g} value={g}>{g}</option>)}
+                </select>
               </div>
               <div>
                 <label className="mb-1 block text-[11px] font-medium text-slate-500">Kết thúc</label>
-                <input type="text" inputMode="numeric" placeholder="20:30" value={gioKt}
-                  onChange={(e) => setGioKt(e.target.value)}
-                  onBlur={() => { const g = chuanHoaGio(gioKt); if (g) setGioKt(g) }}
-                  className={`w-full rounded-lg border px-2 py-1.5 text-[13px] tabular-nums outline-none focus:border-indigo-400 ${gioKt && !chuanHoaGio(gioKt) ? 'border-rose-300' : 'border-slate-300'}`} />
+                <select value={gioKt} onChange={(e) => setGioKt(e.target.value)}
+                  className="w-full rounded-lg border border-slate-300 px-2 py-1.5 text-[13px] tabular-nums outline-none focus:border-indigo-400">
+                  <option value="">— giờ —</option>
+                  {khungGioCo(gioKt).filter((g) => !gio || g > gio).map((g) => <option key={g} value={g}>{g}</option>)}
+                </select>
               </div>
             </div>
 
@@ -376,15 +413,15 @@ function XepModal({ c, mucLv, onDong, onDoi }: { c: CaseChoXep; mucLv: number; o
             {loi && <p className="text-[12px] text-rose-600">{loi}</p>}
             {xong && <p className="rounded-lg bg-emerald-50 px-3 py-2 text-[12px] font-medium text-emerald-700">✓ {xong}</p>}
             <div className="flex items-center justify-end gap-2 pt-1">
-              {daXep && (
-                <button onClick={() => { setDaXep(false); setXong(null) }} className="mr-auto text-[12px] font-medium text-indigo-600 hover:underline">
+              {(daXep || suaId) && (
+                <button onClick={() => { setSuaId(null); setDaXep(false); setXong(null); if (goiY) apDungMacDinh(goiY) }} className="mr-auto text-[12px] font-medium text-indigo-600 hover:underline">
                   + Xếp thêm buổi khác cho ca này
                 </button>
               )}
               <button onClick={onDong} className="rounded-lg border border-slate-200 px-3 py-1.5 text-[13px] text-slate-600 hover:bg-slate-50">Đóng</button>
               <button onClick={xacNhan} disabled={busy || !ngay || daXep}
                 className={`rounded-lg px-3 py-1.5 text-[13px] font-semibold text-white disabled:opacity-60 ${daXep ? 'bg-emerald-600' : 'bg-indigo-600 hover:bg-indigo-700'}`}>
-                {busy ? 'Đang lưu…' : daXep ? '✓ Đã xếp' : 'Xác nhận đã xếp'}
+                {busy ? 'Đang lưu…' : daXep ? '✓ Đã lưu' : suaId ? 'Lưu thay đổi' : 'Xác nhận đã xếp'}
               </button>
             </div>
           </div>
