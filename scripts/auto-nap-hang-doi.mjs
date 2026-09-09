@@ -19,6 +19,8 @@ const envf = (f) => Object.fromEntries(readFileSync(f, 'utf8').split('\n').map((
 const args = process.argv.slice(2)
 const after = (f, dflt) => { const i = args.indexOf(f); return i >= 0 ? args[i + 1] : dflt }
 const N = Number(after('--n', 5))
+// Khối KHÔNG tự nạp (Thùy 09/09: "bỏ qua khối 12"). Đổi bằng --bo-khoi "12,11" hoặc --bo-khoi "" để nạp hết.
+const BO_KHOI = after('--bo-khoi', '12').split(',').map((x) => x.trim()).filter(Boolean)
 
 const c = new pg.Client({ connectionString: envf(join(root, '.env')).DATABASE_URL })
 await c.connect()
@@ -44,9 +46,11 @@ try {
     process.exit(0)
   }
 
-  // 2) Hàng đợi ưu tiên rỗng → lấy tối đa N bài từ pool tổng (chưa ai giữ), theo thứ tự nhanh/nhóm/mã có sẵn.
+  // 2) Hàng đợi ưu tiên rỗng → lấy tối đa N bài từ pool tổng (chưa ai giữ). Thứ tự/lọc nằm ở SQL (fn_giaibai_pool):
+  //    THCS trước · bỏ khối trong BO_KHOI · KHÔNG nạp lại bài Claude đã --bo (mig 202609091412 — trước đó bài bỏ rơi lại
+  //    pool và bị nạp lại mỗi lượt, DC000016 26 lần).
   const nhanh = [...MON, ...HINH_NHANH]
-  const pool = await c.query(`select * from public.fn_giaibai_pool($1, null, $2, 'giai')`, [nhanh, N])
+  const pool = await c.query(`select * from public.fn_giaibai_pool($1, null, $2, 'giai', $3, true)`, [nhanh, N, BO_KHOI.length ? BO_KHOI : null])
   if (!pool.rows.length) {
     console.log('Pool tổng cũng rỗng — không còn bài nào cần giải lúc này.')
     process.exit(0)
