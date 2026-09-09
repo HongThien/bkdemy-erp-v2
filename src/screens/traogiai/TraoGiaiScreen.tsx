@@ -6,19 +6,19 @@
 // §2.0 (09/09): màn này KHÔNG tính gì — 1 rpc `fn_traogiai_thang` trả đủ (summary + lớp + slot + metric);
 // mọi nút ghi = 1 rpc transactional, kiểm khoá/trùng ở DB. Client chỉ render + format chip + giữ lựa chọn
 // dropdown CHƯA xác nhận (state UI thuần).
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
 import {
-  getTraoGiaiThang, xacNhanSlot, boXacNhanSlot, doiNguoiSlotDaXacNhan, hoanThanhLop, moLaiLop, chotKetQuaThang, metricChips,
-  curYM, shiftYM, LOAI_GIAI_TEN, TONG_SLOT,
-  type TraoGiaiThang, type TraoGiaiClass, type TraoGiaiAward, type TraoGiaiSlot, type LoaiGiai, type MetricChip,
+  getTraoGiaiThang, xacNhanSlot, boXacNhanSlot, doiNguoiSlotDaXacNhan, hoanThanhLop, moLaiLop, chotKetQuaThang, datSlotLop, metricChips,
+  curYM, shiftYM, LOAI_GIAI_TEN, LOAI_GIAI_THU_TU, TONG_SLOT,
+  type TraoGiaiThang, type TraoGiaiClass, type TraoGiaiAward, type TraoGiaiSlot, type LoaiGiai, type MetricChip, type SlotCauHinh,
 } from '../../lib/traogiai'
 
 type EffSlot = TraoGiaiSlot & { taken: boolean; metrics: MetricChip[] }
 
-const AWARD_UI: Record<LoaiGiai, { icon: string; ten: string; rule: string; ring: string; iconBg: string; iconText: string; cols: string; span: string }> = {
-  xuat_sac: { icon: '🏆', ten: 'Xuất sắc', rule: 'MT ↓ → ET ↓ → BTVN ↓', ring: 'ring-amber-100', iconBg: 'bg-amber-50', iconText: 'text-amber-600', cols: 'grid-cols-3', span: 'xl:col-span-3' },
-  tien_bo: { icon: '📈', ten: 'Tiến bộ', rule: 'Lên hạng MT (lớp + khối) so với tháng trước ↓', ring: 'ring-violet-100', iconBg: 'bg-violet-50', iconText: 'text-violet-600', cols: 'grid-cols-2', span: 'xl:col-span-2' },
-  cham_chi: { icon: '✅', ten: 'Chăm chỉ', rule: 'Đủ BTVN ↓ → BTVN đúng TB ↓', ring: 'ring-emerald-100', iconBg: 'bg-emerald-50', iconText: 'text-emerald-600', cols: 'grid-cols-1', span: 'xl:col-span-1' },
+const AWARD_UI: Record<LoaiGiai, { icon: string; ten: string; rule: string; ring: string; iconBg: string; iconText: string }> = {
+  xuat_sac: { icon: '🏆', ten: 'Xuất sắc', rule: 'MT ↓ → ET ↓ → BTVN ↓', ring: 'ring-amber-100', iconBg: 'bg-amber-50', iconText: 'text-amber-600' },
+  tien_bo: { icon: '📈', ten: 'Tiến bộ', rule: 'Lên hạng MT (lớp + khối) so với tháng trước ↓', ring: 'ring-violet-100', iconBg: 'bg-violet-50', iconText: 'text-violet-600' },
+  cham_chi: { icon: '✅', ten: 'Chăm chỉ', rule: 'Đủ BTVN ↓ → BTVN đúng TB ↓', ring: 'ring-emerald-100', iconBg: 'bg-emerald-50', iconText: 'text-emerald-600' },
 }
 const slotLabel = (loaiGiai: LoaiGiai, i: number) => loaiGiai === 'xuat_sac' ? `TOP ${i + 1}` : `SLOT ${i + 1}`
 const slotKey = (lopId: string, loaiGiai: LoaiGiai, idx: number) => `${lopId}:${loaiGiai}:${idx}`
@@ -153,6 +153,22 @@ export default function TraoGiaiScreen() {
     finally { setBusy((s) => { const n = new Set(s); n.delete(key); return n }) }
   }
 
+  // Đặt slot (lớp × tháng) — vá slotCauHinh/tongSlot tại chỗ, đề xuất lấp slot mới lấy từ refetch nền.
+  async function datSlot(card: TraoGiaiClass, c: { xuat_sac: number; tien_bo: number; cham_chi: number }): Promise<boolean> {
+    setBusy((s) => new Set(s).add(`slot:${card.lopId}`))
+    try {
+      await datSlotLop(card.lopId, ym, c)
+      const tong = c.xuat_sac + c.tien_bo + c.cham_chi
+      const tuyChinh = !(c.xuat_sac === 3 && c.tien_bo === 2 && c.cham_chi === 1)
+      vaLop(card.lopId, (k) => ({ ...k, tongSlot: tong, slotCauHinh: { ...c, tuyChinh }, awards: k.awards.map((a) => ({ ...a, slotCount: c[a.loaiGiai], slots: a.slots.filter((sl) => sl.confirmed || sl.slotIndex < c[a.loaiGiai]) })) }))
+      vaSummary((s) => ({ ...s, tongSlot: s.tongSlot - card.tongSlot + tong }))
+      flash(`Đã đặt slot lớp ${card.tenLop}: ${c.xuat_sac} Xuất sắc · ${c.tien_bo} Tiến bộ · ${c.cham_chi} Chăm chỉ`)
+      void refetchNen()
+      return true
+    } catch (e) { flash('⚠️ ' + (e as Error).message); return false }
+    finally { setBusy((s) => { const n = new Set(s); n.delete(`slot:${card.lopId}`); return n }) }
+  }
+
   async function toggleCompleteClass(card: TraoGiaiClass) {
     setBusy((s) => new Set(s).add(`class:${card.lopId}`))
     try {
@@ -162,7 +178,7 @@ export default function TraoGiaiScreen() {
         vaSummary((s) => ({ ...s, lopHoanThanh: s.lopHoanThanh - 1 }))
         flash(`Đã mở lại lớp ${card.tenLop}`)
       } else {
-        if (card.daXacNhan < TONG_SLOT && !confirm(`Lớp ${card.tenLop} mới xác nhận ${card.daXacNhan}/${TONG_SLOT} slot. Bạn vẫn muốn hoàn thành lớp này chứ?`)) return
+        if (card.daXacNhan < card.tongSlot && !confirm(`Lớp ${card.tenLop} mới xác nhận ${card.daXacNhan}/${card.tongSlot} slot. Bạn vẫn muốn hoàn thành lớp này chứ?`)) return
         await hoanThanhLop(card.lopId, ym)
         vaLop(card.lopId, (c) => ({ ...c, hoanThanhAt: new Date().toISOString() }))
         vaSummary((s) => ({ ...s, lopHoanThanh: s.lopHoanThanh + 1 }))
@@ -207,7 +223,7 @@ export default function TraoGiaiScreen() {
           {/* ── Summary stats ── */}
           <div className="mb-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
             <StatCard label="Lớp cần trao giải" value={summary.soLop} />
-            <StatCard label="Lớp đã duyệt đủ 6 slot" value={`${summary.lopDuSlot} / ${summary.soLop}`} pct={summary.soLop ? summary.lopDuSlot / summary.soLop * 100 : 0} />
+            <StatCard label="Lớp đã duyệt đủ slot" value={`${summary.lopDuSlot} / ${summary.soLop}`} pct={summary.soLop ? summary.lopDuSlot / summary.soLop * 100 : 0} />
             <StatCard label="Học sinh được trao" value={summary.daXacNhan} pct={summary.tongSlot ? summary.daXacNhan / summary.tongSlot * 100 : 0} tone="text-emerald-600" />
             <StatCard label="Slot chờ duyệt" value={choDuyet} pct={summary.tongSlot ? choDuyet / summary.tongSlot * 100 : 0} tone="text-orange-600" />
             <StatCard label="Lớp đã hoàn thành" value={summary.lopHoanThanh} pct={summary.soLop ? summary.lopHoanThanh / summary.soLop * 100 : 0} tone="text-emerald-600" />
@@ -233,7 +249,7 @@ export default function TraoGiaiScreen() {
             <div className="grid grid-cols-1 gap-3">
               {filtered.map((card) => (
                 <ClassCard key={card.lopId} card={card} busy={busy} effectiveSlot={effectiveSlot}
-                  onToggleConfirm={toggleConfirm} onChangePerson={changePerson} onToggleComplete={toggleCompleteClass} />
+                  onToggleConfirm={toggleConfirm} onChangePerson={changePerson} onToggleComplete={toggleCompleteClass} onDatSlot={datSlot} />
               ))}
             </div>
           )}
@@ -268,16 +284,22 @@ function StatCard({ label, value, pct, tone }: { label: string; value: string | 
 
 // ── Card NGANG full màn (CEO 09/09: "card dọc phải kéo đi kéo lại") — trái = lớp + trạng thái + nút, phải = 6 slot
 //    trên 1 hàng (3 Xuất sắc · 2 Tiến bộ · 1 Chăm chỉ). Dưới xl thì 3 nhóm giải xếp dọc, không tràn ngang.
-function ClassCard({ card, busy, effectiveSlot, onToggleConfirm, onChangePerson, onToggleComplete }: {
+function ClassCard({ card, busy, effectiveSlot, onToggleConfirm, onChangePerson, onToggleComplete, onDatSlot }: {
   card: TraoGiaiClass
   busy: Set<string>
   effectiveSlot: (card: TraoGiaiClass, award: TraoGiaiAward, slot: TraoGiaiSlot) => EffSlot
   onToggleConfirm: (card: TraoGiaiClass, award: TraoGiaiAward, eff: TraoGiaiSlot) => void
   onChangePerson: (card: TraoGiaiClass, award: TraoGiaiAward, eff: TraoGiaiSlot, newId: string) => void
   onToggleComplete: (card: TraoGiaiClass) => void
+  onDatSlot: (card: TraoGiaiClass, c: { xuat_sac: number; tien_bo: number; cham_chi: number }) => Promise<boolean>
 }) {
   const locked = !!card.hoanThanhAt
   const classBusy = busy.has(`class:${card.lopId}`)
+  const slotBusy = busy.has(`slot:${card.lopId}`)
+  // Editor slot (state UI thuần): mở → 3 ô số → Lưu. Tổng ≤ 6 kiểm ở DB, đây chỉ hiện tổng để người thấy trước.
+  const [suaSlot, setSuaSlot] = useState(false)
+  const [nhap, setNhap] = useState<SlotCauHinh>(card.slotCauHinh)
+  const tongNhap = nhap.xuat_sac + nhap.tien_bo + nhap.cham_chi
   return (
     <article className={`overflow-hidden rounded-2xl border bg-white shadow-sm ${locked ? 'border-emerald-200' : 'border-slate-200'}`}>
       <div className="flex flex-col xl:flex-row xl:items-stretch">
@@ -288,8 +310,31 @@ function ClassCard({ card, busy, effectiveSlot, onToggleConfirm, onChangePerson,
             <div className="min-w-0">
               <h3 className="truncate text-[14px] font-bold text-slate-900">Lớp {card.tenLop}</h3>
               <div className={`text-[11px] font-semibold ${locked ? 'text-emerald-600' : card.daXacNhan ? 'text-orange-600' : 'text-slate-400'}`}>
-                {card.daXacNhan}/{TONG_SLOT}{locked ? ' · đã HT' : ''}{card.daCongBo > 0 ? ` · CB ${card.daCongBo}` : ''}
+                {card.daXacNhan}/{card.tongSlot}{locked ? ' · đã HT' : ''}{card.daCongBo > 0 ? ` · CB ${card.daCongBo}` : ''}
               </div>
+              {/* Cấu trúc slot của lớp — bấm để đổi khi nhiều em bằng điểm (CEO 09/09) */}
+              {!suaSlot ? (
+                <button disabled={locked} onClick={() => { setNhap(card.slotCauHinh); setSuaSlot(true) }} title="Đổi số slot từng loại cho lớp này (tháng này)"
+                  className={`mt-0.5 rounded-md px-1.5 py-0.5 text-[10.5px] font-bold ${card.slotCauHinh.tuyChinh ? 'bg-violet-50 text-violet-700' : 'bg-slate-100 text-slate-500'} disabled:opacity-60`}>
+                  {card.slotCauHinh.xuat_sac}·{card.slotCauHinh.tien_bo}·{card.slotCauHinh.cham_chi} ⚙
+                </button>
+              ) : (
+                <div className="mt-1 space-y-1 rounded-md border border-violet-200 bg-violet-50/40 p-1.5">
+                  {LOAI_GIAI_THU_TU.map((lg) => (
+                    <label key={lg} className="flex items-center justify-between gap-1 text-[10.5px] font-semibold text-slate-600">
+                      {LOAI_GIAI_TEN[lg]}
+                      <input type="number" min={0} max={TONG_SLOT} value={nhap[lg]} onChange={(e) => setNhap({ ...nhap, [lg]: Math.max(0, Math.min(TONG_SLOT, Number(e.target.value) || 0)) })}
+                        className="w-10 rounded border border-slate-200 bg-white px-1 py-0.5 text-right text-[11px]" />
+                    </label>
+                  ))}
+                  <div className={`text-[10px] ${tongNhap < 1 || tongNhap > TONG_SLOT ? 'text-rose-600' : 'text-slate-400'}`}>Tổng {tongNhap}/{TONG_SLOT}</div>
+                  <div className="flex gap-1">
+                    <button disabled={slotBusy || tongNhap < 1 || tongNhap > TONG_SLOT} onClick={async () => { if (await onDatSlot(card, nhap)) setSuaSlot(false) }}
+                      className="flex-1 rounded bg-violet-600 px-1.5 py-1 text-[10.5px] font-bold text-white disabled:opacity-50">{slotBusy ? '…' : 'Lưu'}</button>
+                    <button onClick={() => setSuaSlot(false)} className="rounded border border-slate-200 bg-white px-1.5 py-1 text-[10.5px] font-semibold text-slate-600">Huỷ</button>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
           <button disabled={classBusy} onClick={() => onToggleComplete(card)}
@@ -299,8 +344,8 @@ function ClassCard({ card, busy, effectiveSlot, onToggleConfirm, onChangePerson,
         </div>
 
         {/* ── Phải: 6 slot trên 1 hàng ── */}
-        <div className="grid flex-1 grid-cols-1 gap-2 p-3 xl:grid-cols-6">
-          {card.awards.map((award) => (
+        <div className="flex flex-1 flex-col gap-2 p-3 xl:flex-row">
+          {card.awards.filter((a) => a.slotCount > 0).map((award) => (
             <AwardBlock key={award.loaiGiai} card={card} award={award} locked={locked} busy={busy} effectiveSlot={effectiveSlot} onToggleConfirm={onToggleConfirm} onChangePerson={onChangePerson} />
           ))}
         </div>
@@ -317,14 +362,15 @@ function AwardBlock({ card, award, locked, busy, effectiveSlot, onToggleConfirm,
 }) {
   const ui = AWARD_UI[award.loaiGiai]
   return (
-    <div className={`rounded-xl border border-slate-200 p-2 ring-1 ${ui.ring} ${ui.span}`}>
+    // Rộng theo SỐ SLOT (3 slot = gấp 3 lần 1 slot) — chỉ ở xl (hàng ngang); dưới xl xếp dọc, không áp tỉ lệ.
+    <div className={`min-w-0 rounded-xl border border-slate-200 p-2 ring-1 xl:[flex:var(--n)_1_0%] ${ui.ring}`} style={{ ['--n' as string]: award.slotCount } as CSSProperties}>
       <div className="mb-1.5 flex items-center justify-between gap-2 px-0.5">
         <div className="flex items-center gap-1.5 whitespace-nowrap text-[12px] font-extrabold text-slate-800" title={ui.rule}>
           <span className={`flex h-6 w-6 items-center justify-center rounded-md text-[13px] ${ui.iconBg}`}>{ui.icon}</span>
           {ui.ten}
         </div>
       </div>
-      <div className={`grid gap-2 ${ui.cols}`}>
+      <div className="grid gap-2" style={{ gridTemplateColumns: `repeat(${award.slotCount}, minmax(0, 1fr))` }}>
         {award.slots.length === 0 && <div className="col-span-full rounded-lg border border-dashed border-slate-200 px-2 py-3 text-center text-[10.5px] text-slate-400">Chưa có đề xuất — chưa đủ dữ liệu tháng này</div>}
         {award.slots.map((slot) => {
           const eff = effectiveSlot(card, award, slot)

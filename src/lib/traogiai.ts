@@ -12,11 +12,13 @@
 import { supabase } from './supabase'
 import { todayVN } from './nhansu'
 
-// ── Loại giải / slot cố định (KHÔNG scale theo sĩ số — CEO chốt). Số slot thật do DB quyết
-//    (trigger giai_thuong_check_slot + fn_traogiai_thang) — hằng ở đây chỉ để hiển thị nhãn. ──
+// ── Loại giải. Slot MẶC ĐỊNH 3/2/1, tổng ngân sách 6/lớp/tháng (CEO chốt, không scale theo sĩ số); từ 09/09
+//    người duyệt đặt lại được số slot từng loại cho đúng (lớp, tháng) khi nhiều em bằng điểm (bảng giai_thuong_slot,
+//    không có dòng = mặc định). Số slot THẬT luôn do DB trả (`slotCauHinh`/`tongSlot`) — hằng ở đây chỉ để hiển thị. ──
 export type LoaiGiai = 'xuat_sac' | 'tien_bo' | 'cham_chi'
 export const SLOT_COUNT: Record<LoaiGiai, number> = { xuat_sac: 3, tien_bo: 2, cham_chi: 1 }
-export const TONG_SLOT = SLOT_COUNT.xuat_sac + SLOT_COUNT.tien_bo + SLOT_COUNT.cham_chi // 6
+export const TONG_SLOT = SLOT_COUNT.xuat_sac + SLOT_COUNT.tien_bo + SLOT_COUNT.cham_chi // 6 = ngân sách tối đa
+export type SlotCauHinh = { xuat_sac: number; tien_bo: number; cham_chi: number; tuyChinh: boolean }
 export const LOAI_GIAI_THU_TU: LoaiGiai[] = ['xuat_sac', 'tien_bo', 'cham_chi']
 export const LOAI_GIAI_TEN: Record<LoaiGiai, string> = { xuat_sac: 'Xuất sắc', tien_bo: 'Tiến bộ', cham_chi: 'Chăm chỉ' }
 
@@ -46,6 +48,7 @@ export type TraoGiaiClass = {
   siSo: number
   hoanThanhAt: string | null; hoanThanhBoi: string | null
   daXacNhan: number; daCongBo: number
+  tongSlot: number; slotCauHinh: SlotCauHinh
   roster: RosterHS[]
   metricsCuaHs: Record<string, HsMetric>
   awards: TraoGiaiAward[]
@@ -107,6 +110,11 @@ export async function doiNguoiSlotDaXacNhan(giaiThuongIdCu: string, hocSinhIdMoi
   const { data, error } = await supabase.rpc('fn_traogiai_doi_nguoi', { p_id: giaiThuongIdCu, p_hs_moi: hocSinhIdMoi })
   if (error) throw rpcErr(error)
   return data as string
+}
+// Đặt số slot từng loại cho (lớp, tháng) — DB kiểm: 0–6 mỗi loại, tổng 1–6, không giảm dưới số đã xác nhận, lớp chưa khoá.
+export async function datSlotLop(lopId: string, thangYm: string, c: { xuat_sac: number; tien_bo: number; cham_chi: number }): Promise<void> {
+  const { error } = await supabase.rpc('fn_traogiai_dat_slot', { p_ym: thangYm, p_lop: lopId, p_xuat_sac: c.xuat_sac, p_tien_bo: c.tien_bo, p_cham_chi: c.cham_chi })
+  if (error) throw rpcErr(error)
 }
 export async function hoanThanhLop(lopId: string, thangYm: string): Promise<void> {
   const { error } = await supabase.rpc('fn_traogiai_hoan_thanh_lop', { p_ym: thangYm, p_lop: lopId })

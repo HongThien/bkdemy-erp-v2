@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-208 bảng · 18 view · 0 enum · 49 trigger · 319 function
+209 bảng · 18 view · 0 enum · 49 trigger · 322 function
 
 ## _app_secrets
 
@@ -1086,6 +1086,18 @@
 | thang | date |  |  | PK |  |
 | hoan_thanh_at | timestamp with time zone | Y |  |  |  |
 | hoan_thanh_boi | uuid | Y |  | FK→nhan_su.id |  |
+
+## giai_thuong_slot
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| lop_id | uuid |  |  | PK FK→lop.id |  |
+| thang | date |  |  | PK |  |
+| xuat_sac | integer |  |  |  |  |
+| tien_bo | integer |  |  |  |  |
+| cham_chi | integer |  |  |  |  |
+| cap_nhat_boi | uuid | Y |  | FK→nhan_su.id |  |
+| cap_nhat_at | timestamp with time zone |  | now() |  |  |
 
 ## han_nop_ngoai_le
 
@@ -4695,11 +4707,14 @@ SELECT bl.hoc_sinh_id,
 - `fn_traogiai_actor()` → uuid
 - `fn_traogiai_bo_xac_nhan(p_id uuid)` → void
 - `fn_traogiai_chot_thang(p_ym text)` → integer
+- `fn_traogiai_dat_slot(p_ym text, p_lop uuid, p_xuat_sac integer, p_tien_bo integer, p_cham_chi integer)` → void
 - `fn_traogiai_doi_nguoi(p_id uuid, p_hs_moi uuid)` → uuid
 - `fn_traogiai_hoan_thanh_lop(p_ym text, p_lop uuid)` → void
 - `fn_traogiai_kiem_khoa(p_lop uuid, p_thang date)` → void
 - `fn_traogiai_mo_lai_lop(p_ym text, p_lop uuid)` → void
+- `fn_traogiai_slot_max(p_lop uuid, p_thang date, p_loai text)` → integer
 - `fn_traogiai_thang(p_ym text, p_khoi text DEFAULT NULL::text)` → jsonb
+- `fn_traogiai_tong_slot(p_lop uuid, p_thang date)` → integer
 - `fn_traogiai_xac_nhan(p_ym text, p_lop uuid, p_hs uuid, p_loai text)` → uuid
 - `fn_tuqua_actor()` → uuid
 - `fn_tuqua_doi(p_hoc_sinh_id uuid, p_qua_id uuid, p_so_luong integer DEFAULT 1, p_giao_ngay boolean DEFAULT true)` → TABLE(doi_qua_id uuid, so_du_moi integer)
@@ -4844,6 +4859,10 @@ SELECT bl.hoc_sinh_id,
 | gay_ledger | gay_ledger_go_co_hoat_dong | `CHECK (((loai <> 'go'::text) OR (hoat_dong_id IS NOT NULL)))` |
 | gay_ledger | gay_ledger_so_gay_check | `CHECK ((so_gay <> 0))` |
 | gay_loi | gay_loi_so_gay_mac_dinh_check | `CHECK ((so_gay_mac_dinh > 0))` |
+| giai_thuong_slot | giai_thuong_slot_cham_chi_check | `CHECK (((cham_chi >= 0) AND (cham_chi <= 6)))` |
+| giai_thuong_slot | giai_thuong_slot_tien_bo_check | `CHECK (((tien_bo >= 0) AND (tien_bo <= 6)))` |
+| giai_thuong_slot | giai_thuong_slot_tong | `CHECK (((((xuat_sac + tien_bo) + cham_chi) >= 1) AND (((xuat_sac + tien_bo) + cham_chi) <= 6)))` |
+| giai_thuong_slot | giai_thuong_slot_xuat_sac_check | `CHECK (((xuat_sac >= 0) AND (xuat_sac <= 6)))` |
 | han_nop_ngoai_le | han_nop_ngoai_le_thu_check | `CHECK ((thu_bat_dau = ANY (ARRAY[0, 2, 3, 4, 5, 6, 7, 8])))` |
 | hgt_cum_tien_de | hgt_cum_tien_de_check | `CHECK ((ma_cum <> tien_de_ma_cum))` |
 | hgt_dang_tien_de | hgt_dang_tien_de_check | `CHECK ((ma_dang <> tien_de_ma_dang))` |
