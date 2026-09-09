@@ -19,6 +19,7 @@ import {
   bucketOfScore, BUCKET_RANK,
 } from '../gami/danhgia.js'
 import { khoCuaMon } from './tailieu'
+import { fetchAllRows } from './pgrest' // phân trang THẬT — PostgREST cap 1000 dòng/query, xem pgrest.ts
 
 const LIMIT = 10000
 
@@ -101,13 +102,16 @@ type DoRow = { hoc_sinh_id: string; ma_dang: string; value: number; t: string; s
 // (1 buổi bù gom HS từ nhiều lớp/môn khác nhau → không thể suy 1 môn cho cả buổi).
 async function napLanDo(hsIds: string[], mon: string): Promise<DoRow[]> {
   if (!hsIds.length) return []
-  const { data: grades, error } = await supabase
+  // Phân trang THẬT (xem `fetchAllRows`) — 1 lớp 14 HS có lịch sử từ tháng 7 đã vượt 1000 dòng, và
+  // `.limit(LIMIT)` cũ bị PostgREST cắt im lặng ở 1000. `.order('graded_at')` để trang nào cũng tất
+  // định (không có order thì `.range()` trên UUID PK có thể lặp/thiếu dòng giữa các trang).
+  const rows = await fetchAllRows<any>((from, to) => supabase
     .from('gami_grades')
     .select('hoc_sinh_id, result, graded_at, buoi_hoc_id, prob:problem_id(phase, ma_dang)')
     .in('hoc_sinh_id', hsIds)
-    .limit(LIMIT)
-  if (error) throw error
-  const rows = (grades ?? []) as any[]
+    .order('graded_at', { ascending: true })
+    .order('id', { ascending: true })
+    .range(from, to))
 
   // Môn của buổi: 1 query cho mọi buổi liên quan.
   const buoiIds = [...new Set(rows.map((r) => r.buoi_hoc_id).filter(Boolean))]
@@ -599,10 +603,13 @@ export async function listCandidatesLop(lopId: string): Promise<Candidate[]> {
 }
 
 async function napThaiDo(hsIds: string[]): Promise<{ hoc_sinh_id: string; thai_do: string; t: string }[]> {
-  const { data } = await supabase.from('btvn_ket_qua')
+  // Cùng bẫy cap-1000 với `napLanDo` (1 dòng/HS/buổi có BTVN — 1 lớp cả học kỳ đủ vượt) → phân trang.
+  const data = await fetchAllRows<any>((from, to) => supabase.from('btvn_ket_qua')
     .select('hoc_sinh_id, thai_do, buoi:buoi_hoc_id(ngay)')
-    .in('hoc_sinh_id', hsIds).not('thai_do', 'is', null).limit(LIMIT)
-  return ((data ?? []) as any[])
+    .in('hoc_sinh_id', hsIds).not('thai_do', 'is', null)
+    .order('hoc_sinh_id', { ascending: true }).order('buoi_hoc_id', { ascending: true })
+    .range(from, to))
+  return (data as any[])
     .filter((r) => r.buoi?.ngay)
     .map((r) => ({ hoc_sinh_id: r.hoc_sinh_id, thai_do: r.thai_do, t: r.buoi.ngay }))
 }
@@ -836,10 +843,12 @@ export async function getLichSuChuyenDe(hocSinhId: string, maChuyenDe: string, m
   const tenMap = new Map(rows.map((d) => [d.ma_dang, d.ten_dang]))
   const maDangSet = new Set(rows.map((d) => d.ma_dang))
 
-  const { data: grades, error: eG } = await supabase.from('gami_grades')
-    .select('result, graded_at, prob:problem_id(ma_dang, phase)').eq('hoc_sinh_id', hocSinhId).limit(LIMIT)
-  if (eG) throw eG
-  return ((grades ?? []) as any[])
+  // Per-HS: chưa HS nào vượt 1000 dòng (max 770 ngày 09-09) nhưng đang tiến sát (~giữa tháng 10 sẽ
+  // vượt) — phân trang sẵn cùng bẫy cap-1000 với `napLanDo`, kẻo "lịch sử gần nhất" mất đúng dòng mới.
+  const grades = await fetchAllRows<any>((from, to) => supabase.from('gami_grades')
+    .select('result, graded_at, prob:problem_id(ma_dang, phase)').eq('hoc_sinh_id', hocSinhId)
+    .order('graded_at', { ascending: true }).order('id', { ascending: true }).range(from, to))
+  return (grades as any[])
     .filter((g) => g.prob?.ma_dang && maDangSet.has(g.prob.ma_dang))
     .map((g) => ({ ma_dang: g.prob.ma_dang, ten_dang: tenMap.get(g.prob.ma_dang) ?? g.prob.ma_dang, nguon: g.prob.phase, ngay: g.graded_at, result: g.result }))
     .sort((a, b) => Date.parse(b.ngay) - Date.parse(a.ngay))

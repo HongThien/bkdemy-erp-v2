@@ -9974,3 +9974,63 @@ dòng, không dựng lại UI để đo.
   `package.json`/`launch.json` (của phiên khác). CEO test app HS không thấy câu hình: vì prod chưa deploy bản này + nút "Luyện chứng
   minh" nằm ở màn KẾT QUẢ tự luyện (luồng riêng, không trộn lượt thường). 23/23 form CEO đã duyệt.
 - **Distill HANDOFF.md** (mục ① thêm "08–09/09 — FORM CÂU + KHO CHUẨN + NHẬP KHO TỪ FILE" A–E; mục ② thêm "Bài học 08–09/09" 13 gạch).
+
+## 2026-09-09 — Bổ trợ yếu: BUG THẬT cap-1000 PostgREST — engine MÙ dữ liệu mới ở 33/46 lớp (worktree botroyeu, feat/botro-yeu)
+
+**Thùy:** "Đã cập nhật MT các lớp, m kiểm tra xem luồng bổ trợ yếu đã chạy đúng chưa." Trả lời thẳng:
+**CHƯA — và không phải vì MT.** Trong lúc trace MT mới (22 buổi/7 ngày, 5685 dòng MT) qua kênh 4 thì lộ ra
+1 bug nền, ĐÃ CÓ từ lúc viết engine (08-23), chỉ lộ khi lớp tích đủ lịch sử.
+
+**Bug:** Supabase project này **hard-cap 1000 dòng/query bất kể `.limit()`** — đo thật `select('id')
+.limit(10000)` trên `gami_grades` (88.265 dòng) trả ĐÚNG 1000, không lỗi, không cảnh báo. `napLanDo`
+(danhgia.ts — loader DUY NHẤT nuôi toàn bộ getStatSheetLop/listCandidatesLop) dùng `.limit(LIMIT=10000)`
+KHÔNG `.order()` ⇒ 1000 dòng "trúng" là KHÔNG XÁC ĐỊNH (PK UUID). Kiểm 6A1 (14 HS, lịch sử từ tháng 7):
+query trả 1000/1000, **0 dòng MT vừa chấm hôm nay** ⇒ engine không thấy MT mới, `coSoLopMT=false` cả lớp,
+listCandidatesLop ra 5 candidate/0 kênh MT. Đây ĐÚNG là bẫy CLAUDE.md §2 đã cảnh "luôn .limit()/paginate
+(không xài default 1000)" — engine vi phạm chính luật này từ đầu; mọi số calibrate 08-23 (72%→30%…) đều
+chạy trên dữ liệu bị cắt của các lớp lớn (lúc đó nhiều lớp chưa vượt 1000 nên số vẫn "có vẻ" đúng).
+
+**Phạm vi (đo exact count, không cap):** 33/46 lớp đang học (72%) vượt 1000 dòng — Toán 25/36, KHTN 5/5,
+Anh 2/4, Văn 1/1. Nặng nhất 8B1 7654 dòng (engine thấy ~13%), 8S1 5782, 9A1 5761, 8K1 5305, 9A2 5250…
+Lớp dưới 1000 (không ảnh hưởng): 5T1 792, 10A1 636, 10B1 456, 5T2 422, 8B2 352, 12A1 328… (13 lớp).
+
+**Fix (`src/lib/pgrest.ts` MỚI + 2 file):** helper `fetchAllRows(build)` phân trang `.range()` từng
+1000, lấy HẾT, throw khi lỗi; builder PHẢI `.order()` tất định (graded_at, id) — không order thì `.range()`
+giữa trang có thể lặp/thiếu (PK UUID). Áp cho 4 reader trong luồng bổ trợ yếu:
+- `napLanDo` (danhgia.ts) — gốc bug, per-LỚP, ĐANG cắt 33 lớp.
+- `napThaiDo` (danhgia.ts) — per-lớp, 1 dòng/HS/buổi BTVN, 1 học kỳ đủ vượt — sửa sẵn.
+- `getLichSuChuyenDe` (danhgia.ts) + `getDanhGiaCase` (botro_yeu.ts) — per-HS: CHƯA HS nào vượt 1000
+  (đo 318 HS đang học: max 770 Nguyễn Hải An 8K1, 0 HS >800) nhưng đà này ~giữa tháng 10 sẽ vượt —
+  `getDanhGiaCase` chấm trước/sau của case, mất dòng mới nhất là kết luận sai "bổ trợ có work không".
+Helper để module riêng (không nhét trong danhgia.ts) để mastery/report/troly dùng lại; comment provenance
+đầy đủ trong pgrest.ts. Đây là fix tạm đúng luật §2 — đích cuối theo §2.0 vẫn là đẩy aggregate xuống RPC
+(AUDIT-client-tinh-toan.md "Phase 3 còn lại" đã có tên getStatSheetLop/listCandidatesLop).
+
+**Verify:** `tsc --noEmit` sạch · `verify_danhgia.mjs` 77/77 · **ground truth độc lập**
+(`_diag_mt_groundtruth.ts`, phân trang thật, tái hiện đúng luật kênh 4: buổi MT trong {cửa sổ hiện tại,
+liền trước}, buổi muộn nhất per HS, mean HS < 0.9×mean lớp) vs engine THẬT: **9A1 3/3 KHỚP · 6A1 3/3
+KHỚP** (6A1 từ 0 → 3 dính MT sau fix: Hồ Quang Lâm 48%, Đỗ Hiểu Minh 35%, Nguyễn Quang Minh 65%). 8A1
+engine 2 vs truth 1 — LỆCH có giải thích, KHÔNG phải bug: buổi MT 8A1 06/09 có 27 dòng `ma_dang null`
+(3 câu/28 chưa gắn dạng); engine bỏ câu không dạng (đúng thiết kế HS×dạng) ⇒ TB lớp 0.732→0.758, Nam Phong
+0.661 = 90%→87% ⇒ dính. Script thô của t không lọc ma_dang nên lệch — engine đúng. Chạy lại SAU khi tách
+helper sang pgrest.ts + paginate botro_yeu: kết quả y hệt ⇒ refactor không hồi quy. Verify ở tầng engine
+(gọi thẳng listCandidatesLop) — KHÔNG click UI (UI chỉ render kết quả này; dev server nền chết liên tục).
+⚠ Bài học tự thân: script kiểm tra ĐẦU TIÊN của t (`_diag_verify_mt_manual.ts`) cũng `.limit(20000)` nên
+dính ĐÚNG bug đang tìm — báo 9A1 "5 dính MT, TB 0.512" hoàn toàn sai (thật: 3 dính, TB 0.606). Giữ file
+làm bằng chứng; **nguồn đúng là `_diag_mt_groundtruth.ts`**. Kiểm chứng bug bằng công cụ có cùng bug =
+vô nghĩa — luôn đo cap bằng count exact (head) hoặc phân trang trước khi tin bất kỳ số nào.
+
+**Phát hiện phụ (không sửa đợt này, báo Thùy):**
+1. **Reader khác cùng bẫy, module người khác** — `mastery.ts:115/195/288` (per-HS, latent như trên),
+   `report.ts:41`, `gami.ts:824` (per problemIds), `botro.ts:354` (per buoiIds), **`troly.ts:779`
+   `.limit(20000)` per buoiIds — nhiều khả năng ĐANG cắt hôm nay** (dashboard trợ lý). Nên đổi sang
+   `fetchAllRows` hoặc RPC theo §2.0.
+2. **Data-quality MT:** 13/579 câu MT 7 ngày qua (2%) chưa gắn `ma_dang`, tập trung 5 buổi Khối 8 Toán
+   (8S1/8A2/8A1/8B2/8B1, 2–3 câu/đề ≈10%) — engine mù đúng phần đó + lệch TB lớp kênh 4. Việc gắn dạng
+   ở MT builder, không phải code engine.
+3. Luật ≥1/4 (OR) "chạy thử 1 tháng" từ 08-23 vẫn đang bật — nhưng mọi số đo tháng qua chạy trên data bị
+   cắt ở 72% lớp ⇒ so sánh OR vs ≥2/4 cuối tháng cần đo LẠI sau fix, số cũ không dùng được.
+
+Scripts đợt này: `_diag_check_pgrest_cap.ts` (đo cap) · `_diag_scope_cap1000.ts` (phạm vi lớp) ·
+`_diag_perhs_max.ts` (per-HS) · `_diag_mt_groundtruth.ts` (chuẩn) · `_diag_namphong.ts` (8A1) ·
+`_diag_mt_madang_null.ts` · `_diag_verify_mt_flow*.ts` / `_diag_verify_6a1*.ts` (trace ban đầu).

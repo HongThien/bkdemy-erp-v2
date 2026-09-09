@@ -15,6 +15,7 @@ import { khoCuaMon } from './tailieu'
 import { getMasteryHS } from './mastery'
 import { homNayVN, congNgay } from './tuan'
 import { RESULT_VALUE } from '../gami/mastery.js'
+import { fetchAllRows } from './pgrest' // phân trang THẬT — PostgREST cap 1000 dòng/query, xem pgrest.ts
 
 const LIMIT = 10000
 
@@ -397,9 +398,12 @@ export async function getDanhGiaCase(boTroYeuId: string, hocSinhId: string, mon:
   if (!rows.length) return []
   const maDangs = rows.map((r) => r.ma_dang)
 
-  const { data: grades, error: eG } = await supabase.from('gami_grades')
-    .select('result, graded_at, prob:problem_id(ma_dang)').eq('hoc_sinh_id', hocSinhId).limit(LIMIT)
-  if (eG) throw eG
+  // Per-HS, phân trang THẬT (PostgREST cap 1000/query, xem pgrest.ts) — hàm này chấm trước/sau của
+  // case nên mất dòng MỚI NHẤT là kết luận sai "bổ trợ có work không". Chưa HS nào vượt 1000 (max 770
+  // ngày 09-09) nhưng sẽ vượt ~giữa tháng 10, sửa sẵn cùng đợt với napLanDo.
+  const grades = await fetchAllRows<any>((from, to) => supabase.from('gami_grades')
+    .select('result, graded_at, prob:problem_id(ma_dang)').eq('hoc_sinh_id', hocSinhId)
+    .order('graded_at', { ascending: true }).order('id', { ascending: true }).range(from, to))
   const K = khoCuaMon(mon)
   const { data: banDo } = await supabase.from(K.banDoTbl).select('ma_dang, ten_dang').in('ma_dang', maDangs).limit(LIMIT)
   const ten = new Map((banDo ?? []).map((d: any) => [d.ma_dang, d.ten_dang]))
