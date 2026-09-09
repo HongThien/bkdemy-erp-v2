@@ -10060,6 +10060,19 @@ dòng, không dựng lại UI để đo.
   4T1·05/09 (buổi gần nhất — mig 202609091810 chạy đúng trên prod), 0 mồ côi.** Dọn theo lệnh CEO: 1 nop + 2 anh + 2 file.
 - **Còn treo:** bút iPad thật với tool v2 · `npm run schema` (thiếu DATABASE_URL_RO) · object mồ côi khi RPC fail · PH xem ảnh trước
   khi trả · BtvnTab ERP desktop vẫn tool cũ · push "bài đã chấm" · distill HANDOFF cuối ngày.
+## 2026-09-09 (đêm, tiếp) — Test luồng CHẤM tool v2 thật · 3 bug/lỗ bắt được · mig bỏ buổi MT
+- **Lỗ luật "buổi gần nhất":** Quân nộp lại → gán 4T1·05/09 là buổi **Test tháng** → `fn_viec_buoi_thuong` không sinh task BTVN
+  (`where not b.co_mt`) → TA không mở được = bài tàng hình. CEO gật: **mig `202609091959`** — auto bỏ buổi có `mt_buoi`, picker
+  ẩn buổi MT (giữ chữ ký). CEO dán SQL Editor + sổ (`bam 4086278bd6f81eb5`), verify picker 4T1 hết 05/09. Lượt Quân 05/09 đã xoá.
+- **TaHome "Đã xong"** cắt 20 + sắp theo lúc đóng (backfill đẩy buổi cũ lên) → đổi sắp theo ngày buổi, 60 dòng (`1f87159`).
+- **Bug Ctrl+Z:** handler phím tắt đăng ký 1 lần → `undo` bám `anh` của render đầu → ở trang 2 xoá nhầm mark trang 1 và vẽ đè
+  nét trang 1 lên canvas; bấm Đ/S xong vẽ lại đúng trang 2 nên CEO thấy "mọi thứ quay lại". Fix: id trang qua ref (`0e44d21`).
+  **Bài học:** listener đăng ký với deps `[]` mà gọi hàm đóng state → mọi state đọc trong đó phải qua ref.
+- **UX Lưu:** sau lưu nút chỉ mờ → CEO tưởng treo (thực ra đã lưu, path_cham 447KB) → flash "✓ Đã lưu trang" 2.5s (`ceeea75`).
+- **Test chấm thật (cách B, seed RPC auto cho Trần Mạnh Tiến 9S1·08/09, BTVN đang mở):** chốt buổi · vẽ v2 + lưu trang 1 · tick
+  nộp/thái độ · 18/18 Đ/C/S · nhận xét · Trả bài (NS008) → view PH `v_btvn_tra_anh` 2 ảnh + `v_btvn_tra_ket_qua` có nhận xét. PASS.
+  Dọn (CEO gật): grades 18 · ket_qua 1 · anh 2 · nop 1 · file 3; problems 18 giữ; BTVN 08/09 vẫn mở cho TA thật.
+- **Còn treo thêm:** nét đã lưu (ghép vào ảnh) không hoàn tác được — cân nhắc nút "Làm lại trang" (về ảnh gốc PH nộp).
 - **Distill HANDOFF.md** (mục ① thêm "08–09/09 — FORM CÂU + KHO CHUẨN + NHẬP KHO TỪ FILE" A–E; mục ② thêm "Bài học 08–09/09" 13 gạch).
 
 ## 2026-09-09 — Bổ trợ yếu: BUG THẬT cap-1000 PostgREST — engine MÙ dữ liệu mới ở 33/46 lớp (worktree botroyeu, feat/botro-yeu)
