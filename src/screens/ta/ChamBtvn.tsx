@@ -388,6 +388,7 @@ function VeAnh({ anhDs, urls, reloadNop }: { anhDs: BtvnNopAnh[]; urls: Record<s
   const [co, setCo] = useState<Co>(24)
   const [ready, setReady] = useState(false)
   const [busy, setBusy] = useState(false)
+  const [daLuu, setDaLuu] = useState(false) // flash "✓ Đã lưu" 2.5s (§6: feedback sau lưu, không alert)
   const [tick, setTick] = useState(0)
   // ô nhập chữ tại chỗ: toạ độ canvas + vị trí % để đặt input đè lên ảnh
   const [nhap, setNhap] = useState<{ x: number; y: number; px: number; py: number } | null>(null)
@@ -532,6 +533,7 @@ function VeAnh({ anhDs, urls, reloadNop }: { anhDs: BtvnNopAnh[]; urls: Record<s
       setLocalUrls((cur) => ({ ...cur, ...u }))
       setAnhs((cur) => cur.map((a) => (a.id === anh.id ? { ...a, path_cham: path } : a)))
       reloadNop().catch(() => {})
+      setDaLuu(true); setTimeout(() => setDaLuu(false), 2500)
     } catch (e: any) { alert(e.message ?? String(e)) } finally { setBusy(false) }
   }
 
@@ -558,7 +560,9 @@ function VeAnh({ anhDs, urls, reloadNop }: { anhDs: BtvnNopAnh[]; urls: Record<s
           </select>
         </label>
         <button onClick={undo} disabled={!soNet} title="Ctrl+Z" className="min-h-[36px] rounded-lg border border-slate-200 px-2.5 text-[12.5px] font-semibold text-slate-600 disabled:opacity-30">↩ Hoàn tác</button>
-        <button onClick={luu} disabled={busy || !soNet || !ready} className="ml-auto min-h-[36px] rounded-lg bg-teal-600 px-3.5 text-[12.5px] font-bold text-white active:bg-teal-500 disabled:opacity-40">{busy ? 'Đang lưu…' : '💾 Lưu trang này'}</button>
+        <button onClick={luu} disabled={busy || !soNet || !ready}
+          className={`ml-auto min-h-[36px] rounded-lg px-3.5 text-[12.5px] font-bold text-white active:bg-teal-500 ${daLuu ? 'bg-emerald-600 disabled:opacity-100' : 'bg-teal-600 disabled:opacity-40'}`}>
+          {busy ? 'Đang lưu…' : daLuu ? '✓ Đã lưu trang' : '💾 Lưu trang này'}</button>
       </div>
 
       <div className="min-h-0 flex-1 overflow-auto bg-slate-800 p-2">
