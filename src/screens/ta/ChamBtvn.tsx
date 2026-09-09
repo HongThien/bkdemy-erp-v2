@@ -351,25 +351,30 @@ function ChotBuoiBanner({ lopId, buoiNgay, onDungBuoi, onChuyen }: {
 // trang giữ trong memory khi chuyển trang (mất khi đóng màn). Toạ độ chạm map qua tỉ lệ rect (né zoom CSS).
 // Bộ tool (CEO 09/09): bút đỏ/xanh (iPad) · tẩy · dấu Đ/S đỏ · khoanh ◯ / khung ▭ kéo to nhỏ · chữ (laptop,
 // ô nhập tại chỗ) · cỡ Nhỏ/Vừa/Lớn áp cho chữ + dấu + nét · phím tắt 1 2 3 D S T O R, Ctrl+Z.
-type Tool = 'do' | 'xanh' | 'tay' | 'D' | 'S' | 'text' | 'tron' | 'cn'
+type Tool = 'but' | 'tay' | 'D' | 'S' | 'text' | 'tron' | 'cn'
 type Co = number // cỡ chữ kiểu Paint (14…72) — px trên ảnh rộng 800, ảnh khác tự tỉ lệ
 type Mark =
   | { k: 'net'; mau: string; tay: boolean; pts: { x: number; y: number }[] }
   | { k: 'dau'; loai: 'D' | 'S'; x: number; y: number; co: Co }
-  | { k: 'text'; x: number; y: number; text: string; co: Co }
+  | { k: 'text'; x: number; y: number; text: string; co: Co; mau: string }
   | { k: 'hinh'; loai: 'tron' | 'cn'; x1: number; y1: number; x2: number; y2: number }
-const DO = '#e11d48', XANH = '#2563eb'
+const DO = '#e11d48', XANH = '#2563eb', DEN = '#111827'
+// Màu áp cho Bút + Chữ (CEO 09/09: cần đen ngoài đỏ/xanh). Đ/S/khoanh/khung luôn đỏ.
+const MAUS: { v: string; lbl: string; cls: string; phim: string }[] = [
+  { v: DO, lbl: 'Đỏ', cls: 'bg-rose-600', phim: '1' },
+  { v: XANH, lbl: 'Xanh', cls: 'bg-blue-600', phim: '2' },
+  { v: DEN, lbl: 'Đen', cls: 'bg-slate-900', phim: '3' },
+]
 const TOOLS: { t: Tool; lbl: string; phim: string; cls: string }[] = [
-  { t: 'do', lbl: '🔴 Bút', phim: '1', cls: 'bg-rose-600 text-white border-transparent' },
-  { t: 'xanh', lbl: '🔵 Bút', phim: '2', cls: 'bg-blue-600 text-white border-transparent' },
-  { t: 'tay', lbl: '🧹 Tẩy', phim: '3', cls: 'bg-slate-600 text-white border-transparent' },
+  { t: 'but', lbl: '✏️ Bút', phim: 'B', cls: 'bg-slate-700 text-white border-transparent' },
+  { t: 'tay', lbl: '🧹 Tẩy', phim: 'E', cls: 'bg-slate-600 text-white border-transparent' },
   { t: 'D', lbl: 'Đ', phim: 'D', cls: 'bg-rose-600 text-white border-transparent' },
   { t: 'S', lbl: 'S', phim: 'S', cls: 'bg-rose-600 text-white border-transparent' },
   { t: 'tron', lbl: '◯ Khoanh', phim: 'O', cls: 'bg-rose-600 text-white border-transparent' },
   { t: 'cn', lbl: '▭ Khung', phim: 'R', cls: 'bg-rose-600 text-white border-transparent' },
-  { t: 'text', lbl: 'Aa Chữ', phim: 'T', cls: 'bg-slate-800 text-white border-transparent' },
+  { t: 'text', lbl: 'Aa Chữ', phim: 'T', cls: 'bg-slate-700 text-white border-transparent' },
 ]
-const PHIM_TOOL: Record<string, Tool> = { '1': 'do', '2': 'xanh', '3': 'tay', d: 'D', s: 'S', o: 'tron', r: 'cn', t: 'text' }
+const PHIM_TOOL: Record<string, Tool> = { b: 'but', e: 'tay', d: 'D', s: 'S', o: 'tron', r: 'cn', t: 'text' }
 const CO_LIST: Co[] = [14, 16, 18, 20, 22, 24, 26, 28, 32, 36, 40, 48, 56, 64, 72]
 const pxChu = (co: Co, W: number) => Math.round(co * (W / 800))
 
@@ -378,7 +383,8 @@ function VeAnh({ anhDs, urls, reloadNop }: { anhDs: BtvnNopAnh[]; urls: Record<s
   const [anhs, setAnhs] = useState<BtvnNopAnh[]>(anhDs)
   const [localUrls, setLocalUrls] = useState<Record<string, string>>(urls)
   const [idx, setIdx] = useState(0)
-  const [tool, setTool] = useState<Tool>('do')
+  const [tool, setTool] = useState<Tool>('but')
+  const [mau, setMau] = useState<string>(DO)
   const [co, setCo] = useState<Co>(24)
   const [ready, setReady] = useState(false)
   const [busy, setBusy] = useState(false)
@@ -391,8 +397,10 @@ function VeAnh({ anhDs, urls, reloadNop }: { anhDs: BtvnNopAnh[]; urls: Record<s
   const imgRef = useRef<HTMLImageElement | null>(null)
   const marksRef = useRef<Record<string, Mark[]>>({}) // nháp theo TRANG (key = anh.id)
   const drawing = useRef(false)
-  const toolRef = useRef<Tool>('do')
+  const toolRef = useRef<Tool>('but')
   toolRef.current = tool
+  const mauRef = useRef(DO)
+  mauRef.current = mau
 
   useEffect(() => { setLocalUrls((cur) => ({ ...urls, ...cur })) }, [urls])
 
@@ -417,6 +425,8 @@ function VeAnh({ anhDs, urls, reloadNop }: { anhDs: BtvnNopAnh[]; urls: Record<s
       if ((e.target as HTMLElement)?.tagName === 'INPUT' || (e.target as HTMLElement)?.tagName === 'TEXTAREA') return
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') { e.preventDefault(); undo(); return }
       if (e.ctrlKey || e.metaKey || e.altKey) return
+      const m = MAUS.find((x) => x.phim === e.key)
+      if (m) { setMau(m.v); if (toolRef.current !== 'text') setTool('but'); return }
       const t = PHIM_TOOL[e.key.toLowerCase()]
       if (t) { setTool(t); setNhap(null) }
     }
@@ -449,7 +459,7 @@ function VeAnh({ anhDs, urls, reloadNop }: { anhDs: BtvnNopAnh[]; urls: Record<s
         ctx.textAlign = 'center'; ctx.textBaseline = 'middle'
         ctx.fillText(m.loai === 'D' ? 'Đ' : 'S', m.x, m.y)
       } else if (m.k === 'text') {
-        ctx.fillStyle = DO
+        ctx.fillStyle = m.mau
         ctx.font = `bold ${pxChu(m.co, W)}px sans-serif`
         ctx.textAlign = 'left'; ctx.textBaseline = 'middle'
         ctx.fillText(m.text, m.x, m.y)
@@ -480,7 +490,7 @@ function VeAnh({ anhDs, urls, reloadNop }: { anhDs: BtvnNopAnh[]; urls: Record<s
     if (t === 'text') { e.preventDefault(); nhapMoAt.current = Date.now(); setNhapText(''); setNhap(p); return }
     drawing.current = true
     if (t === 'tron' || t === 'cn') marks().push({ k: 'hinh', loai: t, x1: p.x, y1: p.y, x2: p.x, y2: p.y })
-    else marks().push({ k: 'net', mau: t === 'xanh' ? XANH : DO, tay: t === 'tay', pts: [p] })
+    else marks().push({ k: 'net', mau: mauRef.current, tay: t === 'tay', pts: [p] })
     ;(e.target as Element).setPointerCapture(e.pointerId)
     paint()
   }
@@ -502,7 +512,7 @@ function VeAnh({ anhDs, urls, reloadNop }: { anhDs: BtvnNopAnh[]; urls: Record<s
   function undo() { marks().pop(); paint(); setTick((n) => n + 1) }
   function xacNhanText() {
     const text = nhapText.trim()
-    if (nhap && text) { marks().push({ k: 'text', x: nhap.x, y: nhap.y, text, co }); paint() }
+    if (nhap && text) { marks().push({ k: 'text', x: nhap.x, y: nhap.y, text, co, mau }); paint() }
     setNhap(null); setNhapText(''); setTick((n) => n + 1)
   }
 
@@ -531,6 +541,11 @@ function VeAnh({ anhDs, urls, reloadNop }: { anhDs: BtvnNopAnh[]; urls: Record<s
   return (
     <div className="flex min-h-0 flex-1 flex-col">
       <div className="flex flex-wrap items-center gap-1.5 border-b border-slate-200 bg-white px-2 py-1.5">
+        {MAUS.map((m) => (
+          <button key={m.v} onClick={() => { setMau(m.v); if (tool !== 'text') setTool('but') }} title={`${m.lbl} (phím ${m.phim})`} aria-label={`Màu ${m.lbl}`}
+            className={`h-9 w-9 rounded-full border-2 ${m.cls} ${mau === m.v ? 'border-slate-900 ring-2 ring-slate-300' : 'border-white'}`} />
+        ))}
+        <span className="mx-0.5 h-6 w-px bg-slate-200" />
         {TOOLS.map((t) => (
           <button key={t.t} onClick={() => { setTool(t.t); setNhap(null) }} title={`phím ${t.phim}`}
             className={`min-h-[36px] min-w-[40px] rounded-lg border px-2 text-[12.5px] font-bold ${tool === t.t ? t.cls : 'border-slate-200 bg-white text-slate-600'}`}>{t.lbl}</button>
@@ -558,8 +573,8 @@ function VeAnh({ anhDs, urls, reloadNop }: { anhDs: BtvnNopAnh[]; urls: Record<s
                 value={nhapText} onChange={(e) => setNhapText(e.target.value)}
                 onKeyDown={(e) => { if (e.key === 'Enter') xacNhanText(); if (e.key === 'Escape') { setNhap(null); setNhapText('') } }}
                 onBlur={(e) => { if (Date.now() - nhapMoAt.current < 300) { e.target.focus(); return } xacNhanText() }} placeholder="Gõ rồi Enter" maxLength={80}
-                style={{ left: `${nhap.px * 100}%`, top: `${nhap.py * 100}%`, transform: 'translateY(-50%)', fontSize: `${Math.max(13, Math.min(28, co * 0.7))}px` }}
-                className="absolute z-10 w-[220px] max-w-[60%] rounded-md border-2 border-rose-500 bg-white/95 px-2 py-1 font-bold text-rose-600 shadow-lg outline-none" />
+                style={{ left: `${nhap.px * 100}%`, top: `${nhap.py * 100}%`, transform: 'translateY(-50%)', fontSize: `${Math.max(13, Math.min(28, co * 0.7))}px`, color: mau, borderColor: mau }}
+                className="absolute z-10 w-[220px] max-w-[60%] rounded-md border-2 bg-white/95 px-2 py-1 font-bold shadow-lg outline-none" />
             )}
           </div>
         )}
