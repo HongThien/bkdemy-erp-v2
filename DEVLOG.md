@@ -10304,3 +10304,10 @@ buổi vừa xếp chỉ nằm ở list phía trên ⇒ nhìn như chưa lưu; b
   lẻ từ DB vẫn hiện. Bỏ ô gõ chữ (gõ "16h" từng rớt định dạng).
 - Xếp xong vá `daXep` tại chỗ, không reload list (luật §2 React).
 tsc sạch. Buổi 10/09 trùng do test — Thùy tự huỷ trong modal nếu thừa (không xoá hộ — Luật xoá).
+
+## 2026-09-09 — Xếp bổ trợ yếu: "hiện 1 buổi mà vẫn báo trùng" (Thùy, test Tùng)
+
+**DB thật lúc báo:** case Tùng có **2 buổi `mo` CÙNG 09/09 16:00–17:00 P102** (2de89692 + 4a3678d5 — bản 10/09 đã được sửa về 09/09)
+⇒ trùng là THẬT (do test tạo 2). Thêm 2 lỗi UI: (1) chế độ SỬA prefill buổi đã lưu rồi `kiemTraTrungPhong` va với CHÍNH NÓ
+→ truyền `boQuaRefId = suaId` (hàm đã hỗ trợ sẵn); (2) cảnh báo trùng không nói rõ buổi va là buổi khác của cùng ca → gắn nhãn
+"← buổi KHÁC của chính ca này — xếp trùng? Huỷ bớt 1". Không xoá buổi thừa hộ (Luật xoá) — Thùy tự Huỷ trong modal.

@@ -218,14 +218,15 @@ function XepModal({ c, mucLv, onDong, onDoi }: { c: CaseChoXep; mucLv: number; o
   // Đổi bất kỳ field nào sau khi đã lưu = đang xếp buổi KHÁC → mở khoá nút xác nhận.
   useEffect(() => { if (daXep) { setDaXep(false); setXong(null) } }, [ngay, gio, gioKt, phong, nguoiDay]) // eslint-disable-line
 
-  // Báo trùng phòng (cảnh báo, không chặn) — chỉ khi đủ phòng + ngày + giờ.
+  // Báo trùng phòng (cảnh báo, không chặn) — chỉ khi đủ phòng + ngày + giờ. Đang SỬA thì bỏ qua chính buổi
+  // đó (Thùy 09-09: "hiện 1 buổi mà vẫn báo trùng" = form prefill buổi đã lưu tự va với chính nó).
   useEffect(() => {
     const gBd = chuanHoaGio(gio), gKt = chuanHoaGio(gioKt)
     if (!phong || !ngay || !gBd || !gKt) { setTrung([]); return }
     let alive = true
-    kiemTraTrungPhong(phong, ngay, gBd, gKt).then((r) => { if (alive) setTrung(r) }).catch(() => { if (alive) setTrung([]) })
+    kiemTraTrungPhong(phong, ngay, gBd, gKt, suaId ?? undefined).then((r) => { if (alive) setTrung(r) }).catch(() => { if (alive) setTrung([]) })
     return () => { alive = false }
-  }, [phong, ngay, gio, gioKt])
+  }, [phong, ngay, gio, gioKt, suaId])
 
   // Mức 2: PLAN §0 mục 3 — buổi thường TIẾP THEO của em nên rơi 3–7 ngày sau buổi bổ trợ (retest trong buổi đó).
   const retest = useMemo(() => {
@@ -398,7 +399,7 @@ function XepModal({ c, mucLv, onDong, onDoi }: { c: CaseChoXep; mucLv: number; o
               <div className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-[12px] text-amber-800">
                 <b>⚠ Phòng {phong} đã có lịch trùng giờ:</b>
                 <ul className="mt-0.5 list-inside list-disc">
-                  {trung.map((k) => <li key={k.ref_id}>{hhmm(k.gio_bat_dau)}–{hhmm(k.gio_ket_thuc)} · {k.tieu_de}{k.phu_trach ? ` · ${k.phu_trach}` : ''}</li>)}
+                  {trung.map((k) => <li key={k.ref_id}>{hhmm(k.gio_bat_dau)}–{hhmm(k.gio_ket_thuc)} · {k.tieu_de}{k.phu_trach ? ` · ${k.phu_trach}` : ''}{buois.some((b) => b.id === k.ref_id) && <b className="ml-1 text-rose-700">← buổi KHÁC của chính ca này — xếp trùng? Huỷ bớt 1 ở list trên.</b>}</li>)}
                 </ul>
               </div>
             )}
