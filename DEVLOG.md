@@ -9973,4 +9973,26 @@ dòng, không dựng lại UI để đo.
 - **Commit `4c61e44` + push main** (CEO gật): điền ô D1–D3, spec kho chuẩn, nhập kho từ Word, catalog lý do, 2 migration. Loại
   `package.json`/`launch.json` (của phiên khác). CEO test app HS không thấy câu hình: vì prod chưa deploy bản này + nút "Luyện chứng
   minh" nằm ở màn KẾT QUẢ tự luyện (luồng riêng, không trộn lượt thường). 23/23 form CEO đã duyệt.
+## 2026-09-09 (chiều) — Chấm BTVN app TA: màn chấm 1 HS full-screen (ảnh+tool 70/30 · portrait dọc · nhiều trang · bộ tool vẽ)
+- **CEO đưa spec "Chấm BTVN PH-app + TA-app"** (giả định bảng mới `btvn_nop`/`btvn_anh`, enum `trang_thai`, cột `mon`, tách
+  cham_luc/gui_ph_luc). **Bước 0 grep: TOÀN BỘ đã có** theo `PLAN-app-ta.md` (CEO chốt 30/08): `btvn_nop`/`btvn_nop_anh` (khác spec —
+  không `mon` (derive qua buoi→lop), không enum, chỉ 1 mốc `tra_at`), `btvn_nhan_xet_mau`, role `ph_nop`, 7 RPC `fn_btvn_*`, 3 view FDW,
+  `ChamBtvn.tsx` (đã vẽ bút đỏ+undo, 1 ảnh/modal). Đ/C/S per câu = `gami_grades` phase btvn (KHÔNG phải `buoi_danh_gia` — đó là tab
+  "Đánh giá sau buổi"); trạng thái nộp/thái độ = `btvn_ket_qua`; phân công = `phan_cong_lop` vai `tg`. **PH-app ở repo riêng `bkdemy-ph`**,
+  không có trong repo này. → Dừng hỏi theo luật; **CEO chốt: hoàn thiện cái đang có, KHÔNG đụng DB.**
+- **`ChamBtvn.tsx` viết lại phần UI (logic data giữ nguyên):** list HS thu gọn (badge 📱 N ảnh · ✎ số ảnh đã vẽ · chưa chốt buổi · đề
+  xuất · đã trả) → bấm mở `ChamMotHS` full-screen: header (‹ Danh sách · tên · 📤 Trả bài PH) · `landscape:flex-row` ảnh+tool 70% trái /
+  form 30% phải · portrait ảnh 55% trên, form dưới · HS không ảnh = "chấm giấy", chỉ form. Form = đúng các control cũ (btvn_ket_qua,
+  gami_grades, nhận xét chọn list, chốt buổi, chuông đỏ) chỉ dời chỗ; z-index popup con nâng z-[70].
+- **`VeAnh` (thay AnnotateModal):** ảnh = `<img>` lớp dưới, nét = canvas TRONG SUỐT lớp trên (tẩy = `destination-out` → chỉ xoá nét,
+  không đụng ảnh); Lưu trang = ghép 2 lớp ở canvas offscreen → PNG → `uploadAnhCham` (path_cham MỚI, gốc immutable) → tự ký URL mới +
+  cập nhật local ngay, `reloadNop` chạy nền. Tool: 🔴 đỏ · 🔵 xanh · 🧹 tẩy · ✓ xanh lá · ✗ đỏ · Aa (prompt ghi chú ngắn) · ↩ Hoàn tác.
+  Nháp theo TRANG ở `marksRef[anh.id]` (memory, mất khi đóng màn — đúng spec "không mất khi chuyển trang"); thanh thumbnail chuyển
+  trang, chấm vàng = chưa lưu, ✎ = đã có bản chấm. Nét/dấu/chữ tỉ lệ theo `naturalWidth`; toạ độ map qua rect (né zoom CSS).
+- **Verify:** checkout này KHÔNG có `.env`/`node_modules` (đã `npm install`; không đi tìm key) → không vào màn thật. Dựng harness tạm
+  `harness.html` + `src/_harness.tsx` + `.env.harness.local` (env giả, vite `--mode harness` cổng 5186, export tạm ChamMotHS — đã gỡ)
+  render ChamMotHS với 3 ảnh canvas giả: landscape 1180×820, portrait 820×1180, `?giay=1` đều đúng; đỏ/xanh/✓/✗/tẩy/undo/text/chuyển
+  trang giữ nháp OK, console 0 lỗi, tsc 0. **Bẫy:** `prompt()` thật bị automation tự đóng → phải override ở main world (trong harness)
+  mới test được tool text. **Chưa test Lưu/Trả bài** (cần Supabase thật) — CEO test trên app TA thật.
+- Harness (3 file untracked) chưa xoá — Luật xoá, chờ CEO gật. Không commit harness.
 - **Distill HANDOFF.md** (mục ① thêm "08–09/09 — FORM CÂU + KHO CHUẨN + NHẬP KHO TỪ FILE" A–E; mục ② thêm "Bài học 08–09/09" 13 gạch).
