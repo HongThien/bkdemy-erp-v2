@@ -11,13 +11,14 @@ import { useEffect, useRef, useState } from 'react'
 import {
   listProblems, listGrades, gradeET, gradeETBulk, deleteGrade, loadBTVNForBuoi, syncBTVNProblems,
   loadHinhForBuoiPhase, syncHinhProblems, getBtvnKetQua, setBtvnKetQua, closeBTVN, reopenBTVN,
-  listCanhBao, themCanhBao, xoaCanhBao,
-  type BuoiHocHS, type Problem, type Grade, type ETResult, type BtvnKQ, type BtvnTrangThai, type BtvnThaiDo, type CanhBao,
+  listCanhBao,
+  type BuoiHocHS, type Problem, type Grade, type ETResult, type BtvnKQ, type BtvnTrangThai, type BtvnThaiDo, type CanhBao, type DangTaiLieu,
 } from '../../lib/gami'
 import { listNopTheoBuoi, deXuatTrangThai, signUrls, uploadAnhCham, listNhanXetMau, setNhanXet, traBai, xacNhanBuoi, chuyenBuoi, listBuoiBtvnCuaLop, type BtvnNop, type BtvnNopAnh, type NhanXetMau, type BuoiBtvn } from '../../lib/btvnnop'
 import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import { tenHienThiDs } from '../../lib/hoten'
 import { ET_KQ, DongBar, type BuoiFull } from './ChamBuoi'
+import { ChuongBaoDong, ChipCanhBao, useDangTaiLieu, hopDang } from '../../components/ChuongBaoDong'
 
 const NOP_OPTS: { v: BtvnTrangThai; l: string }[] = [
   { v: 'nop_dung_han', l: 'Nộp đúng hạn' }, { v: 'nop_muon', l: 'Nộp muộn' }, { v: 'xin_phep', l: 'Đã xin phép' }, { v: 'khong_lam', l: 'Không làm bài' },
@@ -52,6 +53,7 @@ export default function ChamBtvn({ buoi, roster, tenDang, napTenDang, onChange }
   const dsHS = [...coMat, ...themNop]
   const tenHT = tenHienThiDs(dsHS.map((r) => r.hoc_sinh?.ho_ten))
   const dangBuoi = [...new Set(probs.map((p) => p.ma_dang).filter(Boolean))] as string[]
+  const dangTL = useDangTaiLieu(buoi.id, 'btvn', buoi.lop?.mon) // 🚨 luật chung chuông (CEO 09/09): dạng có trong PHIẾU BTVN
 
   async function reloadP() {
     const [p, g] = await Promise.all([listProblems(buoiId, 'btvn'), listGrades(buoiId)])
@@ -177,7 +179,7 @@ export default function ChamBtvn({ buoi, roster, tenDang, napTenDang, onChange }
       {rMo && (
         <ChamMotHS key={rMo.hoc_sinh_id} r={rMo} ten={tenHT[iMo]} buoi={buoi} n={nop[rMo.hoc_sinh_id]} dx={deXuat[rMo.hoc_sinh_id]}
           v={kq[rMo.hoc_sinh_id] ?? { trang_thai_nop: null, thai_do: null }} probs={probs} gradeOf={gradeOf} dong={dong}
-          urls={urls} nxMau={nxMau} dangBuoi={dangBuoi} tenDang={tenDang} cb={cb.filter((x) => x.hoc_sinh_id === rMo.hoc_sinh_id)}
+          urls={urls} nxMau={nxMau} dangTaiLieu={hopDang(dangTL.dang, dangBuoi, tenDang)} dangLoading={dangTL.loading} tenDang={tenDang} cb={cb.filter((x) => x.hoc_sinh_id === rMo.hoc_sinh_id)}
           onClose={() => setHsMo(null)} pickKQ={pickKQ} bulkRow={bulkRow} setKQField={setKQField} traBai={traBai_}
           xacNhan={xacNhan_} chuyen={chuyen_} toggleNhanXet={toggleNhanXet} reloadNop={reloadNop}
           onCanhBaoChanged={async () => setCb(await listCanhBao(buoiId))} />
@@ -188,11 +190,11 @@ export default function ChamBtvn({ buoi, roster, tenDang, napTenDang, onChange }
 
 // ── MÀN CHẤM 1 HS — full-screen. Landscape: ảnh+tool 70% trái · form 30% phải. Portrait: ảnh trên, form dưới.
 // HS không có ảnh (chấm giấy) → chỉ form.
-function ChamMotHS({ r, ten, buoi, n, dx, v, probs, gradeOf, dong, urls, nxMau, dangBuoi, tenDang, cb,
+function ChamMotHS({ r, ten, buoi, n, dx, v, probs, gradeOf, dong, urls, nxMau, dangTaiLieu, dangLoading, tenDang, cb,
   onClose, pickKQ, bulkRow, setKQField, traBai, xacNhan, chuyen, toggleNhanXet, reloadNop, onCanhBaoChanged }: {
   r: BuoiHocHS; ten: string; buoi: BuoiFull; n?: BtvnNop; dx?: DeXuat; v: BtvnKQ; probs: Problem[]
   gradeOf: (pid: string, hsId: string) => Grade | undefined; dong: boolean; urls: Record<string, string>
-  nxMau: NhanXetMau[]; dangBuoi: string[]; tenDang: (md: string | null) => string; cb: CanhBao[]
+  nxMau: NhanXetMau[]; dangTaiLieu: DangTaiLieu[]; dangLoading: boolean; tenDang: (md: string | null) => string; cb: CanhBao[]
   onClose: () => void; pickKQ: (pid: string, hsId: string, result: ETResult) => void; bulkRow: (hsId: string, result: ETResult) => void
   setKQField: (hsId: string, patch: Partial<BtvnKQ>) => void; traBai: (hsId: string) => void; xacNhan: (hsId: string) => void
   chuyen: (hsId: string, buoiMoi: string) => void; toggleNhanXet: (hsId: string, ma: string) => void
@@ -288,7 +290,13 @@ function ChamMotHS({ r, ten, buoi, n, dx, v, probs, gradeOf, dong, urls, nxMau, 
             </div>
           )}
 
-          {dangBuoi.length > 0 && !dong && <NutChuongDo buoiId={buoi.id} hsId={hsId} hsTen={r.hoc_sinh?.ho_ten ?? '?'} dangBuoi={dangBuoi} tenDang={tenDang} cb={cb} onChanged={onCanhBaoChanged} />}
+          {/* 🚨 chuông dùng chung (CEO 09/09): luôn bấm được, dạng = có trong phiếu BTVN + ghi chú */}
+          <div className="flex flex-wrap items-center gap-1.5">
+            <ChuongBaoDong buoiId={buoi.id} hsId={hsId} hsTen={r.hoc_sinh?.ho_ten ?? '?'} nguon="btvn" khoi={buoi.lop?.khoi} mon={buoi.lop?.mon} nhan="Kém dạng"
+              className="min-h-[38px] rounded-lg border border-rose-200 px-2.5 text-[12.5px] font-semibold text-rose-600 active:bg-rose-50"
+              dangTaiLieu={dangTaiLieu} dangLoading={dangLoading} onSaved={() => { void onCanhBaoChanged() }} />
+            <ChipCanhBao cb={cb} tenDang={tenDang} mon={buoi.lop?.mon} onChanged={() => { void onCanhBaoChanged() }} />
+          </div>
         </div>
       </div>
     </div>
@@ -333,45 +341,6 @@ function ChotBuoiBanner({ lopId, buoiNgay, onDungBuoi, onChuyen }: {
   )
 }
 
-// 🚨 chuông đỏ "HS kém dạng" — tín hiệu NGƯỜI-confirm (kênh ③ dashboard đánh giá), không vào điểm.
-function NutChuongDo({ buoiId, hsId, hsTen, dangBuoi, tenDang, cb, onChanged }: {
-  buoiId: string; hsId: string; hsTen: string; dangBuoi: string[]; tenDang: (md: string | null) => string
-  cb: CanhBao[]; onChanged: () => void
-}) {
-  const [mo, setMo] = useState(false)
-  const [maDang, setMaDang] = useState(dangBuoi[0] ?? '')
-  const [ghiChu, setGhiChu] = useState('')
-  const [busy, setBusy] = useState(false)
-  return (
-    <div className="flex flex-wrap items-center gap-1.5">
-      <button onClick={() => setMo(true)} className="min-h-[38px] rounded-lg border border-rose-200 px-2.5 text-[12.5px] font-semibold text-rose-600 active:bg-rose-50">🚨 Kém dạng</button>
-      {cb.map((c) => (
-        <span key={c.id} className="inline-flex items-center gap-1 rounded bg-rose-100 px-1.5 py-1 text-[10.5px] font-semibold text-rose-700">{tenDang(c.ma_dang)}
-          <button onClick={async () => { await xoaCanhBao(c.id); onChanged() }} className="text-rose-400">✕</button></span>
-      ))}
-      {mo && (
-        <div className="fixed inset-0 z-[70] flex items-end justify-center bg-slate-900/40 p-3 sm:items-center" onClick={() => setMo(false)}>
-          <div className="w-full max-w-[440px] rounded-2xl bg-white p-4 shadow-2xl" onClick={(e) => e.stopPropagation()}>
-            <p className="mb-1 text-[14px] font-bold text-slate-900">🚨 {hsTen} đang kém dạng</p>
-            <p className="mb-2 text-[11.5px] text-slate-400">Tín hiệu này KHÔNG vào điểm — để hệ thống biết HS cần hỗ trợ.</p>
-            <select value={maDang} onChange={(e) => setMaDang(e.target.value)} className="mb-2 h-10 w-full rounded-lg border border-slate-300 px-2 text-[13px]">
-              {dangBuoi.map((md) => <option key={md} value={md}>{tenDang(md)}</option>)}
-            </select>
-            <textarea value={ghiChu} onChange={(e) => setGhiChu(e.target.value)} placeholder="Ghi chú (tuỳ): kém chỗ nào…" className="mb-3 h-16 w-full rounded-lg border border-slate-300 px-2 py-1 text-[13px]" />
-            <div className="flex justify-end gap-2">
-              <button onClick={() => setMo(false)} className="min-h-[40px] rounded-lg px-3 text-[13px] text-slate-500">Huỷ</button>
-              <button disabled={busy || !maDang} onClick={async () => {
-                setBusy(true)
-                try { await themCanhBao({ buoiId, hocSinhId: hsId, maDang, ghiChu: ghiChu.trim() || undefined }); setMo(false); setGhiChu(''); onChanged() }
-                catch (e: any) { alert(e.message ?? String(e)) } finally { setBusy(false) }
-              }} className="min-h-[40px] rounded-lg bg-rose-600 px-4 text-[13px] font-semibold text-white disabled:opacity-40">Gửi báo động</button>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
-  )
-}
 
 // ── VẼ ĐÁNH DẤU lên xấp ảnh. Ảnh = <img> lớp dưới, nét vẽ = canvas TRONG SUỐT lớp trên (tẩy chỉ xoá nét,
 // không đụng ảnh); Lưu = ghép 2 lớp thành PNG MỚI (path_cham) — ảnh gốc immutable. Nét CHƯA LƯU của từng
