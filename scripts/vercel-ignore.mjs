@@ -59,26 +59,42 @@ function app() {
   for (const [k, a] of URL_APP) if (url.startsWith(k) && (a !== 'erp' || url === k)) return a
   return null
 }
+// ⭐ 07/09 tối — Thùy soi log thấy `ta-v2` build cùng lúc với `giaibai` cho 1 commit "tính xu", không tin lời giải
+// thích suông ("so với lần build gần nhất của CHÍNH project đó, không phải commit liền trước") — ĐÚNG, không có
+// bằng chứng thật thì đừng đoán. Từ nay LUÔN in ra SHA thật + đường đi (VERCEL_GIT_PREVIOUS_SHA có hay không) +
+// TOÀN BỘ danh sách file đổi (không chỉ file "liên quan") — đọc thẳng ở "Ignored Build Step" trong Build Logs
+// của đúng project đó trên Vercel, không suy luận từ tên commit hiển thị ngoài Deployments (đó là commit MỚI
+// NHẤT đang đứng, không phải toàn bộ khoảng diff project đó đang so).
 function daDoi() {
   const truoc = process.env.VERCEL_GIT_PREVIOUS_SHA, sau = process.env.VERCEL_GIT_COMMIT_SHA ?? 'HEAD'
   const thu = (cmd) => { try { return execSync(cmd, { encoding: 'utf8' }).split('\n').map((s) => s.trim()).filter(Boolean) } catch { return null } }
-  if (truoc) { const r = thu(`git diff --name-only ${truoc} ${sau}`); if (r) return r }
-  return thu(`git diff --name-only HEAD^ HEAD`)   // clone nông: ít nhất so với commit trước
+  if (truoc) {
+    const r = thu(`git diff --name-only ${truoc} ${sau}`)
+    if (r) return { files: r, duong: `so với PREVIOUS_SHA thật (${truoc.slice(0, 8)} → ${sau.slice(0, 8)})` }
+    console.log(`[vercel-ignore] có PREVIOUS_SHA=${truoc} nhưng git diff LỖI (SHA không có trong lịch sử clone?) → rơi về so HEAD^`)
+  } else {
+    console.log('[vercel-ignore] VERCEL_GIT_PREVIOUS_SHA RỖNG (Vercel không cấp — có thể lần đầu deploy dự án này với ignoreCommand, hoặc không phải push GitHub thường) → rơi về so HEAD^')
+  }
+  const r = thu(`git diff --name-only HEAD^ HEAD`)   // clone nông / thiếu previous SHA: ít nhất so với commit liền trước
+  return r ? { files: r, duong: 'so với HEAD^ (KHÔNG phải lần build gần nhất thật của project — chỉ 1 commit gần nhất)' } : { files: null, duong: null }
 }
 
 const a = app()
-const files = daDoi()
-if (!a) { console.log(`[vercel-ignore] không nhận ra project (${process.env.VERCEL_PROJECT_PRODUCTION_URL ?? 'no url'}) → BUILD`); process.exit(1) }
-if (!files) { console.log('[vercel-ignore] git diff lỗi (clone nông?) → BUILD'); process.exit(1) }
+console.log(`[vercel-ignore] VERCEL_PROJECT_PRODUCTION_URL="${process.env.VERCEL_PROJECT_PRODUCTION_URL ?? ''}" → nhận là project="${a ?? '???'}" · VERCEL_GIT_COMMIT_SHA=${process.env.VERCEL_GIT_COMMIT_SHA ?? '(không có, dùng HEAD)'} · VERCEL_GIT_PREVIOUS_SHA=${process.env.VERCEL_GIT_PREVIOUS_SHA ?? '(rỗng)'}`)
+const { files, duong } = daDoi()
+if (!a) { console.log(`[vercel-ignore] không nhận ra project → BUILD (an toàn)`); process.exit(1) }
+if (!files) { console.log('[vercel-ignore] git diff lỗi cả 2 đường (clone nông?) → BUILD (an toàn)'); process.exit(1) }
+console.log(`[vercel-ignore] ${duong} — ${files.length} file đổi:`)
+console.log(files.map((f) => '  · ' + f).join('\n'))
 
 const lienQuan = []
 for (const f of files) {
   if (laBoQua(f)) continue
   const r = RIENG.find((x) => x.p.some((p) => f.startsWith(p)))
-  if (!r) { lienQuan.push(f + ' (chung)'); continue }
-  if (r.chu.includes(a)) lienQuan.push(f)
+  if (!r) { lienQuan.push(f + ' (chung — không khớp RIENG nào)'); continue }
+  if (r.chu.includes(a)) lienQuan.push(f + ` (riêng, chu gồm: ${r.chu.join(',')})`)
 }
-console.log(`[vercel-ignore] project=${a} · ${files.length} file đổi · ${lienQuan.length} liên quan`)
-if (lienQuan.length) { console.log(lienQuan.slice(0, 20).map((s) => '  · ' + s).join('\n')); process.exit(1) }
+console.log(`[vercel-ignore] project=${a} · ${lienQuan.length}/${files.length} liên quan`)
+if (lienQuan.length) { console.log(lienQuan.slice(0, 30).map((s) => '  ✓ ' + s).join('\n')); console.log('[vercel-ignore] → BUILD'); process.exit(1) }
 console.log('[vercel-ignore] không file nào liên quan → BỎ QUA build')
 process.exit(0)
