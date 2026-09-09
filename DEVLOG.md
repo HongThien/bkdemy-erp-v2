@@ -10016,3 +10016,21 @@ dòng, không dựng lại UI để đo.
 - **Đã dọn (CEO gật "dọn"):** xoá lá→gốc grades 18 · ket_qua 1 · anh 2 · nop 1 · storage 4 file; `gami_session_problems` buổi giữ 18;
   xoá `_seed_btvn_nop.mjs`. Push `7cda2e8` + `8e42ae0`.
 - **Distill HANDOFF.md** (mục ① thêm "08–09/09 — FORM CÂU + KHO CHUẨN + NHẬP KHO TỪ FILE" A–E; mục ② thêm "Bài học 08–09/09" 13 gạch).
+
+### 09/09 — vercel-ignore.mjs: in bằng chứng thật thay vì đoán (chốt từ 07/09 tối, commit muộn)
+**Bối cảnh 07/09 tối:** Thùy soi Deployments thấy `ta-v2` build cùng lúc `giaibai` cho commit "Merge worktree-gamification (chốt
+xu)", hỏi "tính xu sao lại build TA?". Em giải thích "Vercel so với LẦN BUILD GẦN NHẤT của CHÍNH project đó (VERCEL_GIT_PREVIOUS_SHA),
+không phải commit liền trước — project lâu chưa build thì gộp cả khoảng tích luỹ" — đúng cơ chế, nhưng Thùy chê "Đéo thấy khác
+gì cũ" vì em KHÔNG có bằng chứng (không vào được dashboard để xem PREVIOUS_SHA thật của lần build đó). Chê đúng.
+**Sửa:** script LUÔN in ra: `VERCEL_PROJECT_PRODUCTION_URL` + project nhận diện · `VERCEL_GIT_COMMIT_SHA` · `VERCEL_GIT_PREVIOUS_SHA`
+(hay RỖNG) · đường diff đã dùng (PREVIOUS_SHA thật, hay rơi về `HEAD^` vì thiếu/lỗi) · TOÀN BỘ file đổi (trước chỉ in file
+"liên quan" khi build, khi bỏ qua thì không in gì — không thể chẩn đoán "sao lại build"/"sao không build") · mỗi file liên quan
+ghi rõ khớp RIENG nào (chu gồm ai) hay "chung — không khớp RIENG nào". Đọc ở Build Logs › "Ignored Build Step" của ĐÚNG
+project trên Vercel — không suy luận từ tên commit ngoài list Deployments (đó chỉ là commit mới nhất đang đứng).
+**Bẫy test cục bộ:** truyền `VERCEL_GIT_PREVIOUS_SHA=efd7bd9^` qua for-loop bash bị nuốt ⇒ "0 file đổi" — không phải lỗi script,
+phải `git rev-parse` ra SHA tường minh. Merge commit: `HEAD^` = cha thứ nhất (diff = phần nhánh mang vào, đúng ý); cha thứ hai
+diff ra gần cả repo (nhánh tách quá xa) — Vercel không dùng cha thứ hai.
+**Lưu ý:** từ 07/09 auto-deploy git đã TẮT (`deploymentEnabled:false`, Thùy tự bấm Create Deployment) — ignoreCommand chỉ còn
+chạy khi Thùy deploy tay; log này vẫn có giá trị lúc đó.
+**Cách commit:** làm trong worktree tạm từ origin/main (checkout chung đang dính ~14 file dở của phiên khác + 3 commit chiều 09/09
+của Thùy chưa pull) — chỉ mang đúng 1 file này + DEVLOG, không đụng việc của ai.
