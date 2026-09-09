@@ -10032,6 +10032,14 @@ dòng, không dựng lại UI để đo.
   Dọn (CEO gật): `btvn_nop_anh` 3 · `btvn_nop` 1 · 10 file storage (3 gốc + 3 chấm + 4 mồ côi từ lần nộp lỗi). Snapshot Quân khớp.
 - **Gap ERP còn:** `fn_btvn_nop_tao_auto` nên ưu tiên buổi có phiếu BTVN **chưa đóng**; object mồ côi khi RPC fail sau upload
   (chưa có dọn). Prod PH đang bản cũ — chờ CEO nối Vercel–GitHub + 3 env.
+## 2026-09-09 (tối) — CEO chốt: bài PH nộp → BUỔI HỌC GẦN NHẤT, TA tự gán lại khi nộp muộn/bù (mig 202609091810)
+- Bỏ điều kiện "buổi có phiếu BTVN" + ưu tiên "chưa đóng" trong `fn_btvn_nop_tao_auto` → buổi thường gần nhất ≤ hôm nay VN của
+  lớp HS đang học. `fn_btvn_buoi_cua_lop` DROP/CREATE (đổi return type): mọi buổi thường 60 ngày + cột `co_phieu`; picker
+  ChamBtvn hiện chip "có phiếu BTVN / không có phiếu / đã đóng". Commit `4308b22`.
+- **Áp bằng SQL Editor** (checkout này không có DATABASE_URL, đúng rào cứng): CEO dán file + INSERT sổ `_migrations` tay với
+  `bam` tính sẵn (`sha256(nội dung bỏ CR)[:16]` = `f5f1c0ce93f847aa`) — tương đương `--only`. Verify service role: picker 4T1 ra
+  8 buổi đúng cờ (05/09 không phiếu; 22/08→11/07 có phiếu; 29/08 vắng vì huỷ), hàm auto chọn 05/09 cho Quân, sổ có dòng đúng hash.
+- **Chưa `npm run schema`** (thiếu `DATABASE_URL_RO` ở checkout này) → schema.md lệch 1 hàm (co_phieu) — chạy trên máy chính.
 - **Distill HANDOFF.md** (mục ① thêm "08–09/09 — FORM CÂU + KHO CHUẨN + NHẬP KHO TỪ FILE" A–E; mục ② thêm "Bài học 08–09/09" 13 gạch).
 
 ## 2026-09-09 — Bổ trợ yếu: BUG THẬT cap-1000 PostgREST — engine MÙ dữ liệu mới ở 33/46 lớp (worktree botroyeu, feat/botro-yeu)
