@@ -10016,3 +10016,54 @@ dòng, không dựng lại UI để đo.
 - **Đã dọn (CEO gật "dọn"):** xoá lá→gốc grades 18 · ket_qua 1 · anh 2 · nop 1 · storage 4 file; `gami_session_problems` buổi giữ 18;
   xoá `_seed_btvn_nop.mjs`. Push `7cda2e8` + `8e42ae0`.
 - **Distill HANDOFF.md** (mục ① thêm "08–09/09 — FORM CÂU + KHO CHUẨN + NHẬP KHO TỪ FILE" A–E; mục ② thêm "Bài học 08–09/09" 13 gạch).
+
+## 2026-09-09 (chiều) — Nhánh feat/trao-giai: merge main + đưa tính toán xuống Postgres (§2.0) + test luồng ghi
+- **Hiện trạng lúc mở:** nhánh 1 commit (24/08), tụt sau main 275 commit; 4 file migration `giai_thuong` 22/08 nằm trong
+  nhánh (main chỉ có bản khôi phục `202609012230`); code `lib/traogiai.ts` viết TRƯỚC §2.0 — ~10 query × 46 lớp kéo về browser
+  rồi tự cộng/chia/xếp hạng. Merge `origin/main` vào nhánh: xung đột `schema.md` (lấy bản main, tái sinh sau) + `fixtures.ts`
+  (thêm lá `traogiai` cạnh `chotxu`). Hash 4 file migration cũ **khớp y hệt** `_migrations.bam` trên DB ⇒ giữ file, sổ hết kêu
+  4 dòng "có trong sổ nhưng không còn file" (còn 11).
+- **Mig `202609091431_traogiai_rpc`:** `fn_traogiai_thang(p_ym, p_khoi)` → jsonb {summary, khoiOpts, lops[...]} — 1 call cho cả
+  màn (46 lớp ~1s). Metric ET%/BTVN% = TB các buổi của Σđiểm/(100×số câu đã chấm) — cùng công thức `_ret_acc` của
+  `fn_recompute_exp_thang`; Tiến bộ = Σ delta `gami_elo_history` phase='et'; Chăm chỉ = số buổi (giao BTVN + có mặt) có ≥1 dòng
+  chấm. **Đổi nguồn MT:** lấy `fn_rank_diem_mt_lop(...).tb` (điểm thang 10, `diem_thi`, cửa sổ 25→10) thay bản 22/08 tự tính %
+  từ `gami_grades` phase='mt' — 1 nguồn công thức MT duy nhất (§2.0). Đề xuất **tham lam theo ưu tiên** Xuất sắc > Tiến bộ >
+  Chăm chỉ (1 HS chỉ được đề xuất ở 1 giải — bản cũ để 1 em hiện ở cả 3 giải, bấm xác nhận cái thứ 2 là chắc chắn lỗi UNIQUE).
+  6 hàm ghi security invoker (RLS `la_thanh_vien` vẫn gác), actor lấy từ JWT (`fn_tuqua_actor` ∥ `current_nhan_su_id`), kiểm
+  khoá lớp/HS thuộc lớp/đã công bố ở DB trong cùng transaction. Client: `traogiai.ts` chỉ rpc + format chip; màn bỏ reduce/
+  getMyProfile/listKhoiCoLop; thêm ô "Giải đã công bố" + badge trên card.
+- **Mig `202609091441`:** "Mở lại lớp" XOÁ dòng `giai_thuong_lop_thang` thay vì upsert NULL (§1.5 thiếu data = không có dòng).
+- **Test trên DB thật (worktree vite :5252, login dev admin, lớp 6A1 tháng 8):** tick xác nhận → dòng có thật (UI reload từ DB
+  hiện "Đã xác nhận"); Hoàn thành lớp → khoá; gọi rpc khi khoá: bỏ xác nhận/xác nhận đều bị chặn đúng message; Mở lại → dòng
+  lop_thang = 0; trùng giải → message thân thiện; HS ngoài lớp → chặn; slot thứ 4 Xuất sắc → trigger chặn; đổi người OK; chốt
+  tháng công bố 3; bỏ xác nhận sau công bố → chặn. **Dọn:** xoá 3 dòng test do chính tao tạo (delete qua PostgREST vì rpc từ chối
+  xoá giải đã công bố — đúng thiết kế) → `giai_thuong` 0 · `giai_thuong_lop_thang` 0. `tsc` 0 lỗi.
+- **Bẫy gặp:** (1) `claude_build` SELECT `giai_thuong` trả **0 dòng im lặng** dù UI thấy dòng (bảng thuộc `postgres`, RLS — đúng
+  cảnh báo đầu schema.md) ⇒ verify ghi phải qua app/PostgREST, không tin CLI. (2) `confirm()` native trong Browser pane trả false
+  ⇒ phải đè `window.confirm` khi test. (3) worktree node_modules từ 24/08 thiếu `mathlive`/`vite-plugin-pwa` ⇒ `npm install`.
+  (4) `create temp table ... on commit drop` gọi hàm 2 lần trong 1 transaction là chết "already exists" ⇒ `drop table if exists`
+  trước mỗi create (PostgREST mỗi rpc 1 transaction nên chưa lộ, nhưng SQL Editor/test sẽ lộ).
+- **Chưa làm / chờ CEO:** commit (chỉ commit khi được yêu cầu) · merge nhánh vào main · app PH/HS đọc `giai_thuong` (policy
+  `fdw_bkdemy_web_read` có, GRANT chưa — 01/09 cố ý giữ nguyên) · "Chăm chỉ" vẫn theo dòng chấm `gami_grades` (CEO chốt 22/08);
+  giờ `btvn_ket_qua.trang_thai_nop` đã có pipeline ghi (1503/1505 dòng T8) — nếu CEO muốn đổi nguồn là 1 dòng SQL.
+- **(chiều, tiếp) UI theo CEO:** filter khối đã có sẵn, chỉ sửa sort hiển thị 3→12 (DB trả thứ tự chữ). **Card lớp đổi NGANG full
+  màn** ("card dọc phải kéo đi kéo lại"): trái = lớp + trạng thái + nút Hoàn thành, phải = 6 slot trên 1 hàng (grid 6 cột, Xuất sắc
+  span 3 · Tiến bộ 2 · Chăm chỉ 1; dưới xl xếp dọc). Bỏ dòng luật xếp hạng trong header nhóm (chật, đã có legend dưới + tooltip),
+  nhãn slot thống nhất TOP n / SLOT n, nhóm rỗng hiện "Chưa có đề xuất — chưa đủ dữ liệu". Verify ở 1600px + màn pane hẹp.
+- **(tiếp) CEO: "Chăm chỉ thiếu chỗ, cột 6A1 thừa chỗ, quá nhiều thông tin"** → cột trái thu còn 132px: mã + tên lớp + dòng nhỏ
+  "x/6 · đã HT · CB n" + nút "Hoàn thành"/"Mở lại"; bỏ hẳn 2 pill trạng thái (thông tin đã có ở dòng nhỏ + màu). 6 slot giờ rộng
+  đều nhau, Chăm chỉ không còn bị bóp. tsc 0 lỗi, verify 1600px.
+- **(tiếp) CEO: luật Tiến bộ SAI** — không phải Σ Elo. Đúng: "vị trí trong lớp khi so thứ hạng trong lớp, khối về MT (cả 2 đều
+  tăng nhiều nhất)". Mig `202609091548`: hạng MT tháng trước → tháng này trong LỚP (rank() theo tb trong roster) + trong KHỐI
+  (`fn_rank_diem_mt_lop.rank_now`), Δ = trước − nay; xếp (ΔLớp+ΔKhối) ↓ → ΔLớp ↓ → MT ↓. Pool: có MT cả 2 tháng, ΔLớp ≥ 0, ΔKhối ≥ 0,
+  tổng > 0 (dry-run lộ 11B1 đề xuất em tụt −6 vì 2 em lên hạng đã bị Xuất sắc lấy → siết). Chăm chỉ pool cần btvn_ht > 0. Bỏ Elo
+  khỏi output. Dry-run T8: 9/46 lớp có đề xuất Tiến bộ (T7 ít MT), ví dụ 8S1 Đào Tùng Chi lớp 10→1 khối 17→1 = +25.
+- **Luật mutation (CLAUDE.md §2 React, Thùy 09-09 — đang ở nhánh feat/botro-yeu, chưa về main):** màn Trao giải bỏ `reload()` sau
+  mọi mutation → `vaLop`/`vaSummary` vá tại chỗ (slot confirmed/giaiThuongId/daXacNhan, hoanThanhAt) + `refetchNen()` giữ data cũ
+  tới khi có bản mới (đề xuất slot khác dịch theo), overrides chỉ xoá khi đổi tháng/khối. `NHO` module-level nhớ ym/khoi/q/tab/data/
+  scrollTop → rời lá quay lại đúng chỗ, bỏ fetch đầu; nút ↻ ép quét.
+- **Bẫy khi làm NHO cache:** dùng `useRef(false)` "đã mount" để bỏ fetch đầu ⇒ StrictMode chạy effect 2 lần, lần 2 thấy ref=true
+  rơi xuống `reload()` ⇒ vẫn "Đang tải…" khi quay lại (cùng họ bài học StrictMode+ref-cleanup trong HANDOFF). Sửa: so
+  `NHO.fetchedFor === \`${ym}|${khoi}\`` + `data` có sẵn — thuần theo dữ liệu, chạy mấy lần cũng ra cùng kết quả. Verify: vá slot
+  không blank, rời lá → quay lại giữ tháng 8 + ô tìm "8S1" + slot đã chốt + vị trí cuộn (scrollTop 719 → 719), không "Đang tải".
+  Dọn dòng test qua rpc bỏ xác nhận → giai_thuong 0 dòng.
