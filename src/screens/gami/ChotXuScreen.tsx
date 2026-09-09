@@ -2,8 +2,8 @@
 // của HS. Công thức hiện tại (Thùy chốt 07-09, dùng cái đơn giản trước): xu = EXP:100, làm tròn lên — CỐ
 // ĐỊNH ở DB (fn_xu_tu_exp), không phải bảng khúc luong_bac (mig 09-03 lũy tiến TẠM NGƯNG dùng, chưa xoá).
 // Đóng băng sau chốt; data trễ/sửa điểm làm lệch → nút chốt hiện "điều chỉnh ±" (dòng chot_lai, kiểu học phí).
-// ⭐ CHỐT THEO LỚP (Thùy chốt 07-09): nút Chốt chỉ tác động ĐÚNG các dòng đang lọc (khối/lớp/tìm kiếm)
-// trên bảng — chốt dần từng lớp, không bắt buộc chốt cả tháng 1 lượt.
+// ⭐ CHỐT THEO LỚP (Thùy chốt 07-09, siết lại 09-09: "ko có nút chốt theo lớp à, t có chốt toàn bộ
+// đâu"): BẮT BUỘC chọn đúng 1 lớp mới bấm Chốt được — KHÔNG có đường chốt cả tháng/cả khối 1 lượt.
 import { useEffect, useMemo, useState } from 'react'
 import { addBacXu, updateBacXu, deleteBacXu, previewChotXu, chotXu, themPhatSinh, listViXu, type BacXu, type ChotRow } from '../../lib/xu'
 
@@ -51,17 +51,17 @@ export default function ChotXuScreen() {
     (!khoiF || r.khoi === khoiF) && (!lopF || r.tenLop === lopF) &&
     (!search.trim() || khongDau(r.ho_ten).includes(khongDau(search.trim())) || (r.ma_hs ?? '').toLowerCase().includes(search.trim().toLowerCase()))
   ), [rows, khoiF, lopF, search])
-  // NÚT CHỐT chỉ tác động các dòng ĐANG LỌC (hienThi) — chốt theo lớp/khối, không phải cả tháng 1 lượt.
-  const dangLoc = !!(khoiF || lopF || search.trim())
+  // NÚT CHỐT BẮT BUỘC chọn đúng 1 LỚP (Thùy 07-09: "chốt theo lớp chứ không phải chốt toàn bộ") —
+  // KHÔNG có đường chốt cả tháng/cả khối, tránh bấm nhầm chốt hết. Chốt đúng danh sách đang hiển thị
+  // (lớp + tìm kiếm nếu có gõ) — WYSIWYG, thấy gì chốt đó.
   const chuaChot = hienThi.filter((r) => !r.daChot && r.xu > 0)
   const lech = hienThi.filter((r) => r.daChot && r.lech !== 0)
-  const phamVi = lopF ? `lớp ${lopF}` : khoiF ? `khối ${khoiF}` : 'TOÀN BỘ (mọi lớp)'
   const onChot = async () => {
-    if (busy) return
+    if (busy || !lopF) return
     setBusy(true); setMsg(null)
     try {
       const kq = await chotXu(ym, hienThi.map((r) => ({ hoc_sinh_id: r.hoc_sinh_id, mon: r.mon })))
-      setMsg(`Đã chốt ${phamVi}: ${kq.moi} dòng mới · ${kq.dieuChinh} điều chỉnh · ${kq.tongXu >= 0 ? '+' : ''}${kq.tongXu} xu vào ví.`)
+      setMsg(`Đã chốt lớp ${lopF}: ${kq.moi} dòng mới · ${kq.dieuChinh} điều chỉnh · ${kq.tongXu >= 0 ? '+' : ''}${kq.tongXu} xu vào ví.`)
       load()
     } catch (e: any) { setMsg('Lỗi chốt: ' + (e?.message ?? e)) } finally { setBusy(false) }
   }
@@ -73,19 +73,19 @@ export default function ChotXuScreen() {
         <select value={ym} onChange={(e) => setYm(e.target.value)} className="h-9 rounded-lg border border-slate-300 px-2 text-sm">
           {thangs.map((t) => <option key={t} value={t}>Tháng {Number(t.slice(5))}/{t.slice(0, 4)}</option>)}
         </select>
-        <button onClick={onChot} disabled={busy || !rows || (chuaChot.length === 0 && lech.length === 0)}
-          className={`h-9 rounded-lg px-4 text-sm font-semibold text-white shadow-sm transition disabled:cursor-not-allowed disabled:bg-slate-300 ${!dangLoc ? 'bg-amber-600 hover:bg-amber-700' : 'bg-indigo-600 hover:bg-indigo-700'}`}>
-          {busy ? 'Đang chốt…' : chuaChot.length > 0 ? `Chốt ${phamVi} (${chuaChot.length} dòng)` : lech.length > 0 ? `Chốt lại ${phamVi} — ghi ${lech.length} điều chỉnh ±`
-            // Phân biệt 2 lý do nút tắt: EXP chưa đủ ra xu ≠ đã chốt thật sự (trong phạm vi đang lọc).
-            : hienThi.some((r) => r.exp > 0 && !r.daChot) ? 'EXP hiện tại chưa đủ ra xu' : 'Đã chốt đủ'}
+        <button onClick={onChot} disabled={busy || !rows || !lopF || (chuaChot.length === 0 && lech.length === 0)}
+          className="h-9 rounded-lg bg-indigo-600 px-4 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700 disabled:cursor-not-allowed disabled:bg-slate-300">
+          {busy ? 'Đang chốt…' : !lopF ? 'Chọn 1 lớp để chốt' : chuaChot.length > 0 ? `Chốt lớp ${lopF} (${chuaChot.length} dòng)` : lech.length > 0 ? `Chốt lại lớp ${lopF} — ghi ${lech.length} điều chỉnh ±`
+            // Phân biệt 2 lý do nút tắt: EXP chưa đủ ra xu ≠ đã chốt thật sự (trong lớp đang chọn).
+            : hienThi.some((r) => r.exp > 0 && !r.daChot) ? 'EXP hiện tại chưa đủ ra xu' : 'Lớp này đã chốt đủ'}
         </button>
         {msg && <span className={`text-[13px] font-medium ${msg.startsWith('Lỗi') ? 'text-rose-600' : 'text-emerald-700'}`}>{msg}</span>}
       </div>
       <p className="text-[12px] text-slate-400">
         Quy đổi TỪNG MÔN theo công thức cố định EXP:100 (làm tròn lên) rồi cộng ví chung. Chốt xong là đóng băng —
         nếu EXP tháng đã chốt thay đổi (nhập trễ/sửa điểm), bảng hiện cột lệch và nút chuyển thành "Chốt lại" ghi dòng điều chỉnh ±.
-        "Phát sinh" = xu thưởng/phạt TAY, gõ trực tiếp ở cột cuối. <b>Nút chốt chỉ tác động các dòng ĐANG LỌC bên dưới</b> —
-        chọn khối/lớp rồi chốt dần từng lớp; không lọc gì = chốt TOÀN BỘ tháng (nút màu cam để nhắc).
+        "Phát sinh" = xu thưởng/phạt TAY, gõ trực tiếp ở cột cuối. <b>Bắt buộc chọn 1 LỚP bên dưới mới chốt được</b> —
+        chốt dần từng lớp, KHÔNG có đường chốt cả tháng/cả khối một lượt.
       </p>
       <div className="flex flex-wrap items-center gap-2">
         <select value={khoiF} onChange={(e) => { setKhoiF(e.target.value); setLopF('') }} className="h-8 rounded-lg border border-slate-300 px-2 text-[13px]">
